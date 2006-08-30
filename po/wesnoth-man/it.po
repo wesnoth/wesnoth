@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2006-07-14 13:00+0200\n"
-"PO-Revision-Date: 2006-08-29 02:36+0100\n"
+"PO-Revision-Date: 2006-08-30 14:55+0100\n"
 "Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -103,7 +103,7 @@ msgstr "B<--bpp>I<\\ number>"
 # type: Plain text
 #: man/wesnoth.6:48 man/wesnoth_editor.6:54
 msgid "sets BitsPerPixel value. Example: --bpp 32"
-msgstr "imposta il numerodi  Bits Per Pixel. Esempio: --bpp 32"
+msgstr "imposta il numero di bit per pixel. Esempio: --bpp 32"
 
 # type: TP
 #: man/wesnoth.6:48
@@ -259,6 +259,7 @@ msgstr "B<--path>"
 #: man/wesnoth.6:98 man/wesnoth_editor.6:46
 msgid "prints the name of the game data directory and exits."
 msgstr ""
+"Visualizzza il nome della cartella contenente i dati del gioco ed esce."
 
 # type: TP
 #: man/wesnoth.6:98
@@ -448,12 +449,14 @@ msgstr "B<--turns=value>"
 msgid ""
 "sets the number of turns for the chosen scenario. The default is \"50\"."
 msgstr ""
+"imposta il numero di turni per lo scenario scelto. L'impostazione standard è "
+"\"50\" "
 
 # type: TP
 #: man/wesnoth.6:159
 #, no-wrap
 msgid "Example to test your own AI: "
-msgstr ""
+msgstr "Esempio per testare la tua IA:"
 
 # type: Plain text
 #: man/wesnoth.6:162
@@ -461,6 +464,8 @@ msgid ""
 "wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
 "parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
 msgstr ""
+"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
+"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
 
 # type: SH
 #: man/wesnoth.6:163 man/wesnoth_editor.6:63 man/wesnothd.6:132
@@ -471,7 +476,7 @@ msgstr "AUTORE"
 # type: Plain text
 #: man/wesnoth.6:166
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
-msgstr ""
+msgstr "Scritto da David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #: man/wesnoth.6:168
@@ -514,7 +519,7 @@ msgid ""
 msgstr ""
 "Questo gioco è rilasciato come Software Libero; Viene rilasciato secondo i "
 "termini della licenza GPL versione 2 come pubblicata dalla Free Software "
-"Foundation."
+"Foundation. Non vi è nessuna garanzia sul suo utilizzo; "
 
 # type: SH
 #: man/wesnoth.6:180 man/wesnoth_editor.6:76 man/wesnothd.6:147
@@ -537,7 +542,7 @@ msgstr "WESNOTH_EDITOR"
 #: man/wesnoth_editor.6:16
 #, no-wrap
 msgid "June 2005"
-msgstr "Giugno 2005"
+msgstr "giugno 2005"
 
 # type: TH
 #: man/wesnoth_editor.6:16
@@ -559,7 +564,7 @@ msgstr "B<wesnoth_editor>"
 # type: Plain text
 #: man/wesnoth_editor.6:28
 msgid "Battle for B<Wesnoth> map editor."
-msgstr ""
+msgstr "Editor per le mappe di Battle for B<Wesnoth>"
 
 # type: TP
 #: man/wesnoth_editor.6:31
@@ -581,7 +586,7 @@ msgstr "B<-f>,B<\\ --fullscreen>"
 # type: Plain text
 #: man/wesnoth_editor.6:38
 msgid "runs the editor in full screen mode."
-msgstr ""
+msgstr "carica l'editor in modalità schermo intero"
 
 # type: TP
 #: man/wesnoth_editor.6:39
@@ -592,7 +597,7 @@ msgstr "B<-h>,B<\\ --help>"
 # type: Plain text
 #: man/wesnoth_editor.6:42 man/wesnothd.6:53
 msgid "tells you what the command line options do."
-msgstr ""
+msgstr "spiega che cosa fanno le opzioni da linea di comando"
 
 # type: TP
 #: man/wesnoth_editor.6:47
@@ -603,7 +608,7 @@ msgstr "B<-r>,B<\\ --resolution>"
 # type: Plain text
 #: man/wesnoth_editor.6:50
 msgid "sets screen resolution. Example: -r 800x600"
-msgstr ""
+msgstr "imposta la risoluzione dello schermo. Esempio: -r 800x600"
 
 # type: TP
 #: man/wesnoth_editor.6:51
@@ -631,7 +636,7 @@ msgstr "B<-w>,B<\\ --windowed>"
 # type: Plain text
 #: man/wesnoth_editor.6:62
 msgid "runs the editor in windowed mode."
-msgstr ""
+msgstr "Carica l'editor in una finestra"
 
 # type: Plain text
 #: man/wesnoth_editor.6:67
@@ -956,6 +961,10 @@ msgid ""
 "Soliton E<lt>soliton@sonnenkinder.orgE<gt>.  This manual page was originally "
 "written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Scritto David White E<lt>davidnwhite@verizon.netE<gt>.  Modificato da Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt>.  Questo manuale è stato scritto "
+"in origine da Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: man/wesnothd.6:150
