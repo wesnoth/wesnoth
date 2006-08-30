@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 12:59+0200\n"
+"POT-Creation-Date: 2006-08-30 17:22+0200\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -1074,7 +1074,7 @@ msgstr ""
 #: data/units/Dwarvish_Sentinel.cfg:104 data/units/Dwarvish_Stalwart.cfg:33
 #: data/units/Dwarvish_Stalwart.cfg:99 data/units/Goblin_Impaler.cfg:23
 #: data/units/Goblin_Impaler.cfg:184 data/units/Goblin_Rouser.cfg:41
-#: data/units/Goblin_Spearman.cfg:22 data/units/Goblin_Spearman.cfg:68
+#: data/units/Goblin_Spearman.cfg:23 data/units/Goblin_Spearman.cfg:195
 #: data/units/Human_Horseman.cfg:24
 #: data/units/Human_Loyalist_Javelineer.cfg:27
 #: data/units/Human_Loyalist_Javelineer.cfg:105
@@ -1115,8 +1115,8 @@ msgstr "spies"
 #: data/units/Elvish_Rider.cfg:102 data/units/Elvish_Scout.cfg:101
 #: data/units/Elvish_Sharpshooter.cfg:115 data/units/Elvish_Shyde.cfg:86
 #: data/units/Goblin_Impaler.cfg:24 data/units/Goblin_Impaler.cfg:185
-#: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:23
-#: data/units/Goblin_Spearman.cfg:69
+#: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
+#: data/units/Goblin_Spearman.cfg:196
 #: data/units/Human_Horse_Grand_Knight.cfg:73
 #: data/units/Human_Horse_Knight.cfg:72 data/units/Human_Horse_Lancer.cfg:25
 #: data/units/Human_Horse_Paladin.cfg:80 data/units/Human_Horseman.cfg:25
@@ -7023,7 +7023,7 @@ msgstr ""
 msgid "Goblin Spearman"
 msgstr "Kabouter Spiesman"
 
-#: data/units/Goblin_Spearman.cfg:18
+#: data/units/Goblin_Spearman.cfg:19
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -10351,7 +10351,7 @@ msgstr ""
 "Waarskuwing: Die lêer wat jy probeer laai het is beskadig. Laai in elk "
 "geval.\n"
 
-#: src/game.cpp:668 src/multiplayer_connect.cpp:1216
+#: src/game.cpp:668 src/multiplayer_connect.cpp:1217
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -10359,7 +10359,7 @@ msgstr ""
 "Hierdie lêer is van 'n ander weergawe van die spel. Wil jy probeer om dit te "
 "laai?"
 
-#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1201
+#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1202
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die lêer wat jy probeer laai het, is beskadig: '"
 
@@ -10891,7 +10891,7 @@ msgid "Leader"
 msgstr "Leier"
 
 #: src/menu_events.cpp:298 src/menu_events.cpp:309
-#: src/multiplayer_connect.cpp:726
+#: src/multiplayer_connect.cpp:727
 msgid "Gold"
 msgstr "Goud"
 
@@ -10903,7 +10903,7 @@ msgstr "Dorpies"
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/menu_events.cpp:302 src/multiplayer_connect.cpp:727
+#: src/menu_events.cpp:302 src/multiplayer_connect.cpp:728
 #: src/multiplayer_wait.cpp:411
 msgid "Income"
 msgstr "Inkomste"
@@ -11256,77 +11256,77 @@ msgstr "Rekenaar speler"
 msgid "(Empty slot)"
 msgstr "(Leë gleuf)"
 
-#: src/multiplayer_connect.cpp:678
+#: src/multiplayer_connect.cpp:679
 msgid "No non-random sides in the current era"
 msgstr "Geen nie-willekeurige kante in die huidige tydperk"
 
-#: src/multiplayer_connect.cpp:700
+#: src/multiplayer_connect.cpp:701
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Kon nie 'n leiersoort vasstel vir $faction|-stam"
 
-#: src/multiplayer_connect.cpp:709 src/multiplayer_lobby.cpp:460
+#: src/multiplayer_connect.cpp:710 src/multiplayer_lobby.cpp:460
 #: src/multiplayer_wait.cpp:154
 msgid "Game Lobby"
 msgstr "Spelsaal"
 
-#: src/multiplayer_connect.cpp:715 src/multiplayer_connect.cpp:724
+#: src/multiplayer_connect.cpp:716 src/multiplayer_connect.cpp:725
 msgid "Team"
 msgstr "Span"
 
-#: src/multiplayer_connect.cpp:722
+#: src/multiplayer_connect.cpp:723
 msgid "Player/Type"
 msgstr "Speler/Tipe"
 
-#: src/multiplayer_connect.cpp:723
+#: src/multiplayer_connect.cpp:724
 msgid "Faction"
 msgstr "Faksie"
 
-#: src/multiplayer_connect.cpp:725
+#: src/multiplayer_connect.cpp:726
 msgid "Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:729
+#: src/multiplayer_connect.cpp:730
 msgid "Computer vs Computer"
 msgstr "Rekenaar teen Rekenaar"
 
-#: src/multiplayer_connect.cpp:730
+#: src/multiplayer_connect.cpp:731
 msgid "I'm Ready"
 msgstr "Ek is Gereed"
 
-#: src/multiplayer_connect.cpp:731 src/multiplayer_create.cpp:69
+#: src/multiplayer_connect.cpp:732 src/multiplayer_create.cpp:69
 #: src/multiplayer_wait.cpp:156
 msgid "Cancel"
 msgstr "Kanselleer"
 
-#: src/multiplayer_connect.cpp:759
+#: src/multiplayer_connect.cpp:760
 msgid "The scenario is invalid because it has no sides."
 msgstr "Die scenario is ongeldig want daar is geen kante nie."
 
-#: src/multiplayer_connect.cpp:1105
+#: src/multiplayer_connect.cpp:1106
 msgid "Network Player"
 msgstr "Netwerkspeler"
 
-#: src/multiplayer_connect.cpp:1106
+#: src/multiplayer_connect.cpp:1107
 msgid "Local Player"
 msgstr "Plaaslike Speler"
 
-#: src/multiplayer_connect.cpp:1107
+#: src/multiplayer_connect.cpp:1108
 msgid "Computer Player"
 msgstr "Rekenaar Speler"
 
-#: src/multiplayer_connect.cpp:1108
+#: src/multiplayer_connect.cpp:1109
 msgid "Empty"
 msgstr "Leeg"
 
-#: src/multiplayer_connect.cpp:1208
+#: src/multiplayer_connect.cpp:1209
 msgid "This is not a multiplayer save"
 msgstr "Hierdie is nie 'n veelspeler gestoorde lêer nie"
 
-#: src/multiplayer_connect.cpp:1258
+#: src/multiplayer_connect.cpp:1259
 msgid "Cannot find era $era"
 msgstr "Kan nie die $era|-era vind nie"
 
-#: src/multiplayer_connect.cpp:1276
+#: src/multiplayer_connect.cpp:1277
 #, fuzzy
 msgid ""
 "Victory:\n"
@@ -11335,7 +11335,7 @@ msgstr ""
 "Oorwinning\n"
 "@Verslaan vyandige leier(s)"
 
-#: src/multiplayer_connect.cpp:1312
+#: src/multiplayer_connect.cpp:1313
 msgid "Waiting for players to join..."
 msgstr "Wag vir spelers om aan te sluit"
 
