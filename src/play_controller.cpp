@@ -518,12 +518,15 @@ void play_controller::handle_event(const SDL_Event& event)
 		//in which case the key press events should go only to it.
 		if(menu_handler_.get_textbox().active() == false) {
 			hotkey::key_event(*gui_,event.key,this);
-		} else if(event.key.keysym.sym == SDLK_ESCAPE) {
-			menu_handler_.get_textbox().close(*gui_);
-		} else if(event.key.keysym.sym == SDLK_TAB) {
-			menu_handler_.get_textbox().tab(teams_, units_, *gui_);
-		} else if(event.key.keysym.sym == SDLK_RETURN) {
-			enter_textbox();
+		} else {
+			if(event.key.keysym.sym == SDLK_ESCAPE) {
+				menu_handler_.get_textbox().close(*gui_);
+			} else if(event.key.keysym.sym == SDLK_TAB) {
+				menu_handler_.get_textbox().tab(teams_, units_, *gui_);
+			} else if(event.key.keysym.sym == SDLK_RETURN) {
+				enter_textbox();
+			}
+			break;
 		}
 
 		//intentionally fall-through
