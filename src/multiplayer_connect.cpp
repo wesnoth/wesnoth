@@ -272,10 +272,14 @@ void connect::side::process_event()
 
 			// Update controller first, or else kick will reset it.
 			controller_ = mp::controller(combo_controller_.selected());
-			if(!id_.empty() && id_ != preferences::login()) {
-				parent_->kick_player(id_);
+
+			// Don't kick an empty player or the game creator
+			if(!id_.empty()) {
+				if (id_ != preferences::login()) {
+					parent_->kick_player(id_);
+				}
+				id_ = "";
 			}
-			id_ = "";
 			changed_ = true;
 		} else {
 			size_t user = combo_controller_.selected() - CNTR_LAST - 1;
@@ -723,7 +727,6 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	gold_title_label_(video(), _("Gold"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	income_title_label_(video(), _("Income"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 
-	ai_(video(), _("Computer vs Computer")),
 	launch_(video(), _("I'm Ready")),
 	cancel_(video(), _("Cancel"))
 {
@@ -795,15 +798,6 @@ void connect::process_event()
 		return;
 	}
 
-	if (ai_.pressed()) {
-		for(size_t m = 0; m != sides_.size(); ++m) {
-			if(sides_[m].get_id() != preferences::login())
-				kick_player(sides_[m].get_id());
-			sides_[m].set_controller(CNTR_COMPUTER);
-		}
-		changed = true;
-	}
-
 	if (launch_.pressed()) {
 		if (!sides_available())
 			set_result(mp::ui::PLAY);
@@ -862,7 +856,6 @@ void connect::hide_children(bool hide)
 	gold_title_label_.hide(hide);
 	income_title_label_.hide(hide);
 
-	ai_.hide(hide);
 	launch_.hide(hide);
 	cancel_.hide(hide);
 }
@@ -1076,10 +1069,7 @@ void connect::layout_children(const SDL_Rect& rect)
 	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding,
 	                          bottom - left_button->height());
 
-	ai_.set_location(left, bottom-left_button->height());
-	waiting_label_.set_location(ai_.location().x + ai_.location().w + 8,
-	                            bottom-left_button->height() + 4);
-
+	waiting_label_.set_location(left + 8, bottom-left_button->height() + 4);
 	type_title_label_.set_location(left+30, top+35);
 	faction_title_label_.set_location((left+145), top+35);
 	team_title_label_.set_location((left+260), top+35);

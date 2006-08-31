@@ -236,7 +236,6 @@ private:
 	gui::label gold_title_label_;
 	gui::label income_title_label_;
 
-	gui::button ai_;
 	gui::button launch_;
 	gui::button cancel_;
 
