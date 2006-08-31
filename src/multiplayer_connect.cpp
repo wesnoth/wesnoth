@@ -150,14 +150,14 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_leader_.set_items(leader_name_pseudolist);
 		combo_leader_.set_selected(0);
 	} else if(parent_->params_.use_map_settings) {
-		//lock gold and income sliders if those are set by the scenario
-		if(!cfg_["gold"].empty())
+		//gold, income, team, and colour are only suggestions unless explicitly locked
+		if(cfg_["gold_lock"] == "yes")
 			slider_gold_.enable(false);
-		if(!cfg_["income"].empty())
+		if(cfg_["income_lock"] == "yes")
 			slider_income_.enable(false);
-		if(!cfg_["team_name"].empty())
+		if(cfg_["team_lock"] == "yes")
 			combo_team_.enable(false);
-		if(!cfg_["colour"].empty())
+		if(cfg_["colour_lock"] == "yes")
 			combo_colour_.enable(false);
 
 		//set the leader
@@ -550,9 +550,10 @@ config connect::side::get_config() const
 
 	if(parent_->params_.use_map_settings && enabled_) {
 		config trimmed = cfg_;
+		trimmed["side"] = "";
 		trimmed["controller"] = "";
 		trimmed["description"] = "";
-		trimmed["side"] = "";
+		trimmed["team_name"] = "";
 		if(controller_ != CNTR_COMPUTER) {
 			//only override names for computer controlled players
 			trimmed["user_description"] = "";
