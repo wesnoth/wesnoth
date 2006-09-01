@@ -23,29 +23,30 @@
 #include <vector>
 
 //a class to describe a unit's animation sequence
+extern std::string grr(const char*);
 class unit_frame {
 	public:
 	// constructors
 		unit_frame();
 		explicit unit_frame(const std::string& str, const std::string & diag ="",
 				int begin=0,int end = 0,
-				Uint32 blend_color = 0, double blend_rate = 0.0,
-				fixed_t highlight = ftofxp(1),
+				Uint32 blend_color = 0, const std::string& blend_rate = "",
+				const std::string& highlight="1.0",
 				std::string in_halo = "",int halox = 0,int haloy = 0);
 		explicit unit_frame(const config& cfg);
 
 		int xoffset() const { return xoffset_ ; }
 		std::string image() const { return image_ ;}
 		std::string image_diagonal() const { return image_diagonal_ ; }
-		const std::string halo(int current_time) const ;
+		const std::string halo(int current_time) const;
 		std::string sound() const { return sound_ ; };
 		int halo_x() const { return halo_x_; }
 		int halo_y() const { return halo_y_; }
 		int begin_time() const { return begin_time_; }
 		int end_time() const { return end_time_ ; }
 		Uint32 blend_with() const { return blend_with_; }
-		double blend_ratio() const { return blend_ratio_; }
-		fixed_t highlight_ratio() const { return highlight_ratio_ ; }
+		double blend_ratio(int current_time) const;
+		fixed_t highlight_ratio(int current_time) const;
 	private:
 		int xoffset_;
 		std::string image_;
@@ -55,8 +56,8 @@ class unit_frame {
 		int halo_x_, halo_y_;
 		int begin_time_, end_time_;
 		Uint32 blend_with_;
-		double blend_ratio_;
-		fixed_t highlight_ratio_;
+		std::vector<std::pair<std::pair<double,double>,int> > blend_ratio_;
+		std::vector<std::pair<std::pair<double,double>,int> > highlight_ratio_;
 };
 
 #endif

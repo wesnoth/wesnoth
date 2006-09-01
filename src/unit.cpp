@@ -1540,11 +1540,10 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 	int anim_time = anim_->get_last_frame_time();
 	const std::string my_image = anim_->get_last_frame().image();
 	if(damage) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,0,0),0.5));
-		anim_time += 50;
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,0,0),0.0));
-		anim_time += 50;
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+100,display::rgb(255,0,0),"0.5:50,0.0:50"));
+		anim_time+=100;
 	}
+	anim_->add_frame(anim_time);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -1608,13 +1607,8 @@ void unit::set_leveling_in(const display &disp,const gamemap::location& /*loc*/)
 	my_image = absolute_image();
 	anim_ = new unit_animation();
 	// add a fade in effect
-	double blend_ratio =1;
-	int anim_time =0;
-	while(blend_ratio > 0) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+10,display::rgb(255,255,255),blend_ratio));
-		blend_ratio -=0.015;
-		anim_time += 10;
-	}
+	anim_->add_frame(0,unit_frame(my_image,"",0,600,display::rgb(255,255,255),"1~0:600"));
+	anim_->add_frame(600);
 
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
@@ -1632,13 +1626,8 @@ void unit::set_leveling_out(const display &disp,const gamemap::location& /*loc*/
 	my_image = absolute_image();
 	anim_ = new unit_animation();
 	// add a fade out effect
-	double blend_ratio =0;
-	int anim_time =0;
-	while(blend_ratio < 1) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+10,display::rgb(255,255,255),blend_ratio));
-		blend_ratio +=0.015;
-		anim_time += 10;
-	}
+	anim_->add_frame(0,unit_frame(my_image,"",0,600,display::rgb(255,255,255),"0~1:600"));
+	anim_->add_frame(600);
 
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
@@ -1654,18 +1643,13 @@ void unit::set_recruited(const display &disp,const gamemap::location& /*loc*/)
 	}
 	anim_ = new unit_animation();
 	// add a fade in effect
-	double blend_ratio =0;
-	int anim_time =0;
-	while(blend_ratio < 1) {
-		anim_->add_frame(anim_time,unit_frame(absolute_image(),"",anim_time,anim_time+10,0,0,ftofxp(blend_ratio)));
-		blend_ratio +=0.015;
-		anim_time += 10;
-	}
+	anim_->add_frame(0,unit_frame(absolute_image(),"",0,600,0,"","0~1:600"));
+	anim_->add_frame(600);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int healing)
+void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int /*healing*/)
 {
 	state_ = STATE_HEALED;
 	draw_bars_ = true;
@@ -1675,22 +1659,14 @@ void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int 
 	}
 	anim_ = new unit_animation(absolute_image());
 	// add a blink on heal effect
-	int anim_time = anim_->get_last_frame_time();
-	int heal_left = healing;
 	const std::string my_image = anim_->get_last_frame().image();
-	while(anim_time < 1000 && heal_left > 0 ) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.5));
-		anim_time += 30;
-		heal_left --;
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.0));
-		anim_time += 30;
-		heal_left --;
-	}
+	anim_->add_frame(0,unit_frame(my_image,"",0,240,display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
+	anim_->add_frame(240);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, int damage)
+void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, int /*damage*/)
 {
 	state_ = STATE_POISONED;
 	draw_bars_ = true;
@@ -1700,17 +1676,9 @@ void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, in
 	}
 	anim_ = new unit_animation(absolute_image());
 	// add a blink on damage effect
-	int anim_time = anim_->get_last_frame_time();
-	int damage_left = damage;
 	const std::string my_image = anim_->get_last_frame().image();
-	while(anim_time < 1000 && damage_left > 0 ) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(0,255,0),0.5));
-		anim_time += 30;
-		damage_left --;
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(0,255,0),0.0));
-		anim_time += 30;
-		damage_left --;
-	}
+	anim_->add_frame(0,unit_frame(my_image,"",0,240,display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
+	anim_->add_frame(240);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -1739,14 +1707,10 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 		anim_ = NULL;
 	}
 	anim_ =  new death_animation(die_animation(disp.get_map().underlying_union_terrain(loc),fighting_animation::KILL,attack));
-	double blend_ratio = 1.0;
 	std::string tmp_image = anim_->get_last_frame().image();
 	int anim_time =anim_->get_last_frame_time();
-	while(blend_ratio > 0.0) {
-		anim_->add_frame(anim_time,unit_frame(tmp_image,"",anim_time,anim_time+10,0,0,ftofxp(blend_ratio)));
-		blend_ratio -=0.015;
-		anim_time += 10;
-	}
+	anim_->add_frame(0,unit_frame(tmp_image,"",anim_time,anim_time+600,0,"","1~0:600"));
+	anim_->add_frame(anim_time+600);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -1877,9 +1841,9 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	}
 
 	Uint32 blend_with = current_frame.blend_with();
-	double blend_ratio = current_frame.blend_ratio();
+	double blend_ratio = current_frame.blend_ratio(anim_->get_animation_time());
 	if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
-	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio());
+	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio(anim_->get_animation_time()));
 	if(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			highlight_ratio > ftofxp(0.5)) {
 		highlight_ratio = ftofxp(0.5);
