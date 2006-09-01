@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-31 12:50+0200\n"
-"PO-Revision-Date: 2006-07-19 20:19+0200\n"
+"PO-Revision-Date: 2006-09-01 19:23+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -4117,7 +4117,7 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:50
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:78
 msgid "teamname^North"
-msgstr ""
+msgstr "Pohjoinen"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:27
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:51
@@ -4135,7 +4135,7 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:39
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:47
 msgid "teamname^South"
-msgstr ""
+msgstr "Etelä"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
@@ -4452,7 +4452,7 @@ msgstr ""
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:36
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:22
 msgid "teamname^West"
-msgstr ""
+msgstr "Länsi"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:23
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:23
@@ -4465,7 +4465,7 @@ msgstr ""
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:22
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:29
 msgid "teamname^East"
-msgstr ""
+msgstr "Itä"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
@@ -4649,7 +4649,7 @@ msgstr ""
 #: data/scenarios/multiplayer/8p_Morituri.cfg:48
 #: data/scenarios/multiplayer/8p_Morituri.cfg:55
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "Joukkue 1"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:22
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:29
@@ -4666,7 +4666,7 @@ msgstr ""
 #: data/scenarios/multiplayer/8p_Morituri.cfg:34
 #: data/scenarios/multiplayer/8p_Morituri.cfg:62
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "Joukkue 2"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:9
 msgid "4p - Castle Hopping Isle"
@@ -4714,7 +4714,7 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:43
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:71
 msgid "teamname^South-West"
-msgstr ""
+msgstr "Lounas"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:23
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:31
@@ -4725,7 +4725,7 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:27
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:41
 msgid "teamname^North-East"
-msgstr ""
+msgstr "Koillinen"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
@@ -4750,14 +4750,14 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:57
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:64
 msgid "teamname^South-East"
-msgstr ""
+msgstr "Kaakko"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:36
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:21
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:42
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:17
 msgid "teamname^North-West"
-msgstr ""
+msgstr "Luode"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -5401,12 +5401,11 @@ msgstr "Lopeta"
 
 #: data/themes/dfool.cfg:218
 msgid "MP"
-msgstr ""
+msgstr "moninpeli"
 
 #: data/themes/macros.cfg:13
-#, fuzzy
 msgid "time left"
-msgstr "Aikaraja"
+msgstr "aikaa jäljellä"
 
 #: data/themes/macros.cfg:52
 msgid "Replay"
@@ -5434,7 +5433,7 @@ msgstr "Palaa alkuun"
 
 #: data/themes/macros.cfg:96
 msgid "reset to beginning"
-msgstr ""
+msgstr "palauta alkutilanteeseen"
 
 #: data/themes/macros.cfg:109
 msgid "Next Turn"
@@ -10497,13 +10496,12 @@ msgid "Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
 #: src/game.cpp:1719
-#, fuzzy
 msgid "Loading game configuration."
-msgstr "Virhe ladattaessa asetustiedostoja: '"
+msgstr "Ladataan asetustiedostoja."
 
 #: src/game.cpp:1725
 msgid "Re-initialize fonts for the current language."
-msgstr ""
+msgstr "Uudelleenasenna merkistö tätä kieltä varten."
 
 #: src/game.cpp:1741
 msgid "Loading title screen."
