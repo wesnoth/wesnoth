@@ -6,6 +6,7 @@
 
 DOMAIN= wesnoth-man
 MSGMERGE = msgmerge
+MSGFMT = msgfmt
 
 .SUFFIXES: .gmo .po .po-update
 
@@ -13,7 +14,7 @@ MSGMERGE = msgmerge
 	@lang=`echo $@ | sed -e 's/\.po-update$$//'`; \
 	tmpdir=`pwd`; \
 	echo "$$lang:"; \
-	echo "$${cdcmd}$(MSGMERGE) $$lang.po $(DOMAIN).pot -o $$lang.new.po"; \
+	echo "$(MSGMERGE) $$lang.po $(DOMAIN).pot -o $$lang.new.po"; \
 	if $(MSGMERGE) $$lang.po $(DOMAIN).pot -o $$tmpdir/$$lang.new.po; then \
 	  mv -f $$tmpdir/$$lang.new.po $$lang.po; \
 	else \
@@ -21,5 +22,9 @@ MSGMERGE = msgmerge
 	  rm -f $$tmpdir/$$lang.new.po; \
 	fi
 
+# this dummy rule only displays the statistics, there is no need to
+# generate .gmo files for po4a manpages
 .po.gmo:
-	# dummy rule
+	@lang=`echo $* | sed -e 's,.*/,,'`; \
+	echo "$(MSGFMT) -c --statistics -o /dev/null $${lang}.po"; \
+	$(MSGFMT) -c --statistics -o /dev/null $${lang}.po
