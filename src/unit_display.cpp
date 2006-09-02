@@ -390,10 +390,7 @@ bool unit_attack(display& disp, unit_map& units,
 	                  || preferences::show_combat() == false || (!update_display);
 
 	if(!hide) {
-		//we try to scroll the map if the unit is at the edge.
-		//keep track of the old position, and if the map moves at all,
-		//then recenter it on the unit
-		disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
+		disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
 	}
 
 	log_scope("unit_attack");
