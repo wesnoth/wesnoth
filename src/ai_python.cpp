@@ -609,8 +609,8 @@ static PyMethodDef unit_methods[] = {
         "Finds a path from 'from' to 'to' costing less than 'max_cost' "
         "movement points to reach and returns it as a list of locations. "
         "path[0] will be 'from', path[-1] will be 'to'. "
-        "If no path can be found (for example, if the target is occupied by "
-        "another unit, or it would cost more than max_cost), an empty list is returned."},
+        "If no path can be found (for example, if the target is not reachable,
+        "or it would cost more than max_cost), an empty list is returned."},
     { "attack_statistics", (PyCFunction)python_ai::wrapper_unit_attack_statistics, METH_VARARGS,
         "Parameters: location from, location to, int attack = -1\n"
         "Returns: own_hp, enemy_hp\n"
