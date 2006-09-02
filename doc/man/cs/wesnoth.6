@@ -1,0 +1,182 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2006 wesnoth "Bitva o Wesnoth"
+.
+.SH NÁZEV
+wesnoth \- Bitva o Wesnoth, tahová fantasy strategická hra
+.
+.SH POUŽITÍ
+.
+\fBwesnoth\fP [\fIVOLBY\fP] [\fICESTA_K_DATŮM\fP]
+.
+.SH POPIS
+.
+Bitva o \fBWesnoth\fP je tahová fantasy strategická hra.
+
+Poraz všechny vůdce nepřátel použitím vhodně zvolené sestavy 
+jednotek, dbajepřitom na množství zlata a vesnic. Všechny jednotky mají 
+své silné stránky islabiny; cesta k vítězství vede i přes postupné 
+posilování vlastních jednoteka zabránění soupeři v tomtéž. Tak jak 
+jednotky získávají zkušenosti, získávajíi nové schopnosti a 
+stávají se silnějšími. Hraj ve svém rodném jazyce aotestuj si své 
+schopnosti proti silnému počítači nebo se připoj k velkékomunitě 
+hráčů Wesnothu hrajících po síti hry více hráčů. Vytvoř si 
+vlastníjednotky, scénáře a kampaně a poděl se o ně s ostatními.
+.
+.SH VOLBY
+.
+.TP 
+\fB\-\-bpp\fP\fI\ číslo\fP
+nastavuje počet bitů na bod. Příklad: \-\-bpp 32
+.TP 
+\fB\-\-compress\fP\fI\ <vstupní_soubor>\fP\fB\ \fP\fI<výstupní_soubor>\fP
+komprimuje soubor s uloženou hrou (vstupní_soubor), který je v textovém 
+formátu WML, do binárního tvaru (výstupní_soubor).
+.TP 
+\fB\-d\fP, \fB\-\-debug\fP
+zobrazuje ladící informace a umožňuje použít rozšiřující volby 
+příkazového módu (více viz. Wiki na http://www.wesnoth.org/).
+.TP 
+\fB\-\-decompress\fP\fI\ <vstupní_soubor>\fP\fB\ \fP\fI<výstupní_soubor>\fP
+dekomprimuje soubor s uloženou hrou (vstupní_soubor), který je v 
+binárním formátu WML, do textového tvaru (výstupní_soubor).
+.TP 
+\fB\-f\fP, \fB\-\-fullscreen\fP
+spouští hru v celoobrazovkovém režimu.
+.TP 
+\fB\-\-fps\fP
+zobrazuje počet fps, tedy počet zobrazení za sekundu, během hry v rohu 
+obrazovky.
+.TP 
+\fB\-h\fP, \fB\-\-help\fP
+zobrazuje nápovědu k parametrům příkazové řádky.
+.TP 
+\fB\-\-load\fP\fI\ soubor_s_hrou\fP
+nahraje uloženou hru ze souboru ze standardního adresáře pro uložené 
+hry.
+.TP 
+\fB\-\-log\-error="kategorie1,kategorie2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+nastavuje úroveň závažnosti, od které se mají vypisovat logovací 
+hlášky projednotlivé kategorie. "all" znamená, že bude vypisováno vše 
+z dané kategorie.\fB\-\-log\-info\fP zobrazuje všechny hlášky, 
+\fB\-\-log\-warning\fP pouze varování a chyby, a \fB\-\-log\-error\fP pouze chyby.
+.TP 
+\fB\-\-multiplayer\fP
+spouští hru více hráčů. Níže jsou popsány další volby, které se 
+k této volbě váží.
+.TP 
+\fB\-\-nocache\fP
+vypíná cache pro data her.
+.TP 
+\fB\-\-nosound\fP
+spustí her bez zvuků a hudby.
+.TP 
+\fB\-\-path\fP
+pouze zobrazí cestu k adresáři s daty.
+.TP 
+\fB\-r\fP, \fB\-\-resolution\fP\ \fIXxY\fP
+nastavuje rozlišení. Příklad: \-r 800x600
+.TP 
+\fB\-t\fP, \fB\-\-test\fP
+spouští hru v malém testovacím scénáři.
+.TP 
+\fB\-v\fP, \fB\-\-version\fP
+zobrazí verzi wesnothu.
+.TP 
+\fB\-w\fP, \fB\-\-windowed\fP
+spustí hry v okně.
+.TP 
+\fB\-\-no\-delay\fP
+vypustí testování grafiky během startu. Tato volba je automaticky 
+použita použitím \-\-nogui.
+.TP 
+\fB\-\-exit\-at\-end\fP
+skončí hru při konci scénáře, tedy bez zobrazení okénka s informací 
+ovítězství/prohře, které vyžaduje uživatelskou akci \- stisk 
+tlačítka OK. tatovolba se používá při ruzných měřeních.
+.
+.SH "Volby pro \-\-multiplayer"
+.
+Volby s platností pouze pro jednu stranu jsou označeny 
+<strana>. kde <strana>je třeba nahradit za číslo 
+konkrétní strany. Obvykle je to 1 nebo 2, alezáleží to vždy od 
+konkrétního scénáře a od počtu hráčů.
+.TP 
+\fB\-\-algorithm<strana>=hodnota\fP
+vybírá nestandardní algoritmus, který bude použit pro umělou 
+inteligenci této strany. Momentálně jsou k dispozici hodnoty: "idle_ai" a 
+"sample_ai".
+.TP  
+\fB\-\-controller<strana>=hodnota\fP
+vybírá druh ovládání. Použitelné hodnoty jsou "human" a "ai".
+.TP  
+\fB\-\-era=hodnota\fP
+použij tuto volbu pro hraní ve specifické éře místo "Default" 
+éry. Éra jevybrána pomocí svého id. Všechny éry jsou popsány v 
+souboru data/multiplayer.cfg
+.TP 
+\fB\-\-nogui\fP
+spouští hru bez GUI. Musí být použito před \fB\-\-multiplayer\fP pro 
+docílení kýženého efektu.
+.TP 
+\fB\-\-parm<strana>=jméno:hodnota\fP
+nastavuje další parametry pro tuto stranu. Jméno a hodnota parametru 
+závisí nahodnotách voleb \fB\-\-controller\fP a \fB\-\-algorithm.\fP Mělo by být 
+použito pouze lidmi vyvíjejícími si vlastní umělouinteligenci. Není 
+zdokumentováno.
+.TP 
+\fB\-\-scenario=hodnota\fP
+vybírá scénář pro hru více hráčů. Defaultní scénář je 
+"multiplayer_Charge".
+.TP 
+\fB\-\-side<strana>=hodnota\fP
+vybírá frakci současné éry pro vybranou stranu. Frakce je vybrána na 
+základě ID. Frakce jsou popsány v souboru data/multiplayer.cfg
+.TP 
+\fB\-\-turns=hodnota\fP
+nastavuje počet kol pro vybraný scénář, implicitně je "50".
+.TP 
+Příklad na testování vlastního AI:
+wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai 
+\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+.
+.SH AUTOŘI
+.
+Vytvořil David White <davidnwhite@verizon.net>.
+.br
+Upravili Nils Kneuper <crazy\-ivanovic@gmx.net>, ott 
+<ott@gaon.net> and Soliton <soliton@sonnenkinder.org>.
+.br
+Tuto manovou stránku původně vytvořil Cyril Bouthors 
+<cyril@bouthors.org>.  Překlad Oto 'tapik' Buchta 
+<tapik@buchtovi.cz>
+.br
+Navštivte oficiální stránky: http://www.wesnoth.org/ a oficiální 
+české stránky http://www.wesnoth.wz.cz/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br
+Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak 
+jepublikována nadací Free Software Foundation.Tento program je bez 
+záruky; a to i co se týká obchodovatelnosti apoužitelnosti.
+.
+.SH "VIZ TAKÉ"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

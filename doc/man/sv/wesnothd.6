@@ -2,154 +2,144 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
-.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
-.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\"
 .
-.TH WESNOTHD 6 "2006" "wesnothd" "Kampen om Wesnoths n\[:a]tverksdaemon"
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2006 wesnothd "Kampen om Wesnoths nätverksdaemon"
 .
 .SH NAMN
-wesnothd \- Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon
+.
+wesnothd \- Kampen om \fBWesnoth\fPs nätverksdaemon
 .
 .SH SYNOPSIS
 .
-.B wesnothd 
-.RB [\| \-dvV \|]
-.RB [\| \-c
-.IR s\[:o]kv\[:a]g \|]
-.RB [\| \-p
-.IR port \|]
-.RB [\| \-t
-.IR antal \|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIsökväg\fP\|] [\|\fB\-p\fP \fIport\fP\|] 
+[\|\fB\-t\fP \fIantal\fP\|]
 .
 .SH BESKRIVNING
 .
-Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon f\[:o]r gruppspel. Se 
-http://www.wesnoth.org/wiki/ServerAdministration f\[:o]r information om vilka 
-kommandon servern accepterar via wesnoth-klienten eller sockeln.
+Kampen om Wesnoths nätverksdaemon för gruppspel. Se 
+http://www.wesnoth.org/wiki/ServerAdministration för information om vilka 
+kommandon servern accepterar via wesnoth\-klienten eller sockeln.
 .
 .SH FLAGGOR
 .
-.TP
-.BI -c,\ --config \ s\[:o]kv\[:a]g
+.TP 
+\fB\-c,\ \-\-config\fP\fI\ sökväg\fP
 anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om 
-.B SERVERKONFIGURATION
-nedan f\[:o]r syntaxen.
-.TP
-.B -d, \ --daemon
-k\[:o]r wesnothd som en daemon.
-.TP
-.B -h, \ --help
-visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
-.TP
-.BI -p,\ --port \ port
-knyter servern till den specificerade porten. Om ingen port anges s\[oa] 
-anv\[:a]nds port 15000. 
-.TP
-.BI -t,\ --threads \ antal
-anger antalet tr\[oa]dar f\[:o]r n\[:a]tverkstrafik (standardv\[:a]rde: 5; max: 30)
-.TP
-.B -V,\ --version
+\fBSERVERKONFIGURATION\fP nedan för syntaxen.
+.TP 
+\fB\-d,\ \-\-daemon\fP
+kör wesnothd som en daemon.
+.TP 
+\fB\-h,\ \-\-help\fP
+visar en sammanfattning av möjliga kommandoradsflaggor.
+.TP 
+\fB\-p,\ \-\-port\fP\fI\ port\fP
+knyter servern till den specificerade porten. Om ingen port anges så 
+används port 15000. 
+.TP 
+\fB\-t,\ \-\-threads\fP\fI\ antal\fP
+anger antalet trådar för nätverkstrafik (standardvärde: 5; max: 30)
+.TP 
+\fB\-V,\ \-\-version\fP
 visar versionen.
-.TP
-.B -v,\ --verbose
-ger mer utf\[:o]rlig information.
+.TP 
+\fB\-v,\ \-\-verbose\fP
+ger mer utförlig information.
 .
 .SH SERVERKONFIGURATION
 .
-.SS Den allm\[:a]nna syntaxen \[:a]r:
+.SS "Den allmänna syntaxen är:"
 .
 .P
-[\fItag\fR]
+[\fItag\fP]
 .IP
-parameter="\fIv\[:a]rde\fR"
+parameter="\fIvärde\fP"
 .IP
-parameter="\fIv\[:a]rde\fR,\fIv\[:a]rde\fR,..."
+parameter="\fIvärde\fP,\fIvärde\fP,..."
 .P
-[/\fItag\fR]
+[/\fItag\fP]
 .
 .SS "Globala parametrar:"
 .
-.TP
-.B connections_allowed
-Antal till\[oa]tna anslutningar fr\[oa]n samma v\[:a]rd (IP).
-.TP
-.B disallow_names
-Spelarnamn som ej accepteras av servern. '*' och '?' \[:a]r 
-till\[oa]tna f\[:o]r att matcha flera tecken. Se 
-.BR glob (7) 
-f\[:o]r detaljer. Standardv\[:a]rden (som anv\[:a]nds om inget 
-anges) \[:a]r 'server,ai,player,network,human,admin,computer'. 
-.TP
-.B max_messages
-Antal till\[oa]tna meddelanden inom \fBmessages_time_period\fR.
-.TP
-.B messages_time_period
-Tidsperioden (i sekunder) under vilken meddelande\[:o]versv\[:a]mning detekteras.
-.TP
-.B motd
-Meddelandet f\[:o]r dagen.
-.TP
-.B passwd
-L\[:o]senordet f\[:o]r administrationsr\[:a]ttigheter. B\[:o]rjar ofta med "admin ".
-.TP
-.B versions_accepted
-En komma-separerad lista med versionsstr\[:a]ngar som accepteras av servern. '*' 
-och '?' \[:a]r till\[oa]tna f\[:o]r att matcha flera tecken. 
+.TP 
+\fBconnections_allowed\fP
+Antal tillåtna anslutningar från samma värd (IP).
+.TP 
+\fBdisallow_names\fP
+Spelarnamn som ej accepteras av servern. '*' och '?' är tillåtna för att 
+matcha flera tecken. Se \fBglob\fP (7) för detaljer. Standardvärden (som 
+används om inget anges) är 
+\&'server,ai,player,network,human,admin,computer'. 
+.TP 
+\fBmax_messages\fP
+Antal tillåtna meddelanden inom \fBmessages_time_period\fP.
+.TP 
+\fBmessages_time_period\fP
+Tidsperioden (i sekunder) under vilken meddelandeöversvämning detekteras.
+.TP 
+\fBmotd\fP
+Meddelandet för dagen.
+.TP 
+\fBpasswd\fP
+Lösenordet för administrationsrättigheter. Börjar ofta med "admin ". 
+.TP 
+\fBversions_accepted\fP
+En komma\-separerad lista med versionssträngar som accepteras av 
+servern. '*' och '?' är tillåtna för att matcha flera tecken.
 .br
-Exempel: versions_accepted="*" accepterar alla versionsstr\[:a]ngar.
+Exempel: versions_accepted="*" accepterar alla versionssträngar.
 .
 .SS "Globala taggar:"
 .
 .P
-.B [redirect]
-En tag som anger vart en server skall omdirigera vissa klientversioner.
+\fB[redirect]\fP En tag som anger vart en server skall omdirigera vissa 
+klientversioner.
 .RS
-.TP
-.B host
-V\[:a]rdadressen att omdirigera till.
-.TP
-.B port
+.TP 
+\fBhost\fP
+Värdadressen att omdirigera till.
+.TP 
+\fBport\fP
 Porten att ansluta till.
-.TP
-.B version
-En komma-separerad lista av versioner att omdirigera. Fungerar p\[oa] samma 
-s\[:a]tt som \fBversions_accepted\fR.
+.TP 
+\fBversion\fP
+En komma\-separerad lista av versioner att omdirigera. Fungerar på samma 
+sätt som \fBversions_accepted\fP vad gäller strängmatchning.
 .RE
 .P
-.B [proxy]
-En tag som anger att servern skall agera som proxy och vidarebefordra 
-klientf\[:o]rfr\[oa]gningar till den angiva servern. Accepterar samma parametrar 
-som [redirect].
+\fB[proxy]\fP En tag som anger att servern skall agera som proxy och 
+vidarebefordra klientförfrågningar till den angiva servern. Accepterar 
+samma parametrar som [redirect].
 .
-.SH F\[:O]RFATTARE
-Skriven av David White <davidnwhite@verizon.net>.
+.SH FÖRFATTARE
+.
+Skriven av David White <davidnwhite@verizon.net>. Redigerad av Nils 
+Kneuper <crazy\-ivanovic@gmx.net> och ott 
+<ott@gaon.net>. Denna manualsida skrevs ursprungligen av Cyril 
+Bouthors <cyril@bouthors.org>.
 .br
-Redigerad av Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> och 
-Soliton <soliton@sonnenkinder.org>.
-.br
-\[:O]versatt till svenska av Stefan Bergstr\[:o]m <stefan PUNKT bergstrom HOS 
-gmail PUNKT com>. 
-.br
-Denna manualsida skrevs ursprungligen av Cyril Bouthors <cyril@bouthors.org>.
-.br
-Bes\[:o]k den officiella hemsidan: http://www.wesnoth.org/
+Besök den officiella hemsidan: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
-Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
+.
+Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-Detta \[:a]r fri mjukvara; denna mjukvara \[:a]r licensierad under GPL version  2, 
-s\[oa]som publicerad av Free Software Foundation. INGEN garanti ges; inte ens  
-f\[:o]r S\[:A]LJBARHET eller L\[:A]MPLIGHET F\[:O]R ETT VISST SYFTE.
+Detta är fri mjukvara; denna mjukvara är licensierad under GPL version 2, 
+såsom publicerad av Free Software Foundation. INGEN garanti ges; inte ens 
+för SÄLJBARHET eller LÄMPLIGHET FÖR ETT VISST SYFTE.
 .
-.SH SE \[:A]VEN
+.SH "SE ÄVEN"
 .
-.BR wesnoth (6), 
-.BR wesnoth_editor (6)
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

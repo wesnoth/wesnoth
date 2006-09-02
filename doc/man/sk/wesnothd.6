@@ -1,0 +1,147 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2006 wesnothd "Démon na sieťovú hru Bitky o Wesnoth"
+.
+.SH NÁZOV
+.
+wesnothd \- Démon na sieťovú hru Bitky o \fBWesnoth\fP
+.
+.SH ZHRNUTIE
+.
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP 
+\fIčíslo\fP\|]
+.
+.SH POPIS
+.
+Riadi sieťové hry Bitky o Wesnoth. Na stránke 
+http://www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, 
+ktoré server príjíma cez klienta alebo socket.
+.
+.SH MOŽNOSTI
+.
+.TP 
+\fB\-c,\ \-\-config\fP\fI\ cesta\fP
+povie wesnothd, kde má hľadať konfiguračný súbor. Syntax, viď sekciu  
+\fBKONFIGURÁCIA SERVERA\fP nižšie.
+.TP 
+\fB\-d,\ \-\-daemon\fP
+spustí wesnothd ako démona.
+.TP 
+\fB\-h,\ \-\-help\fP
+povie, čo robia jednotlivé možnosti príkazového riadku.
+.TP 
+\fB\-p,\ \-\-port\fP\fI\ port\fP
+zavesí server na daný port. Ak nie je daný port, použije sa port číslo 
+15000.
+.TP 
+\fB\-t,\ \-\-threads\fP\fI\ číslo\fP
+nastaví číslo pracovných vlákien pre sieťové I/O (štandardne: 5, 
+maximum: 30).
+.TP 
+\fB\-V,\ \-\-version\fP
+vypíše číslo verzie a skončí.
+.TP 
+\fB\-v,\ \-\-verbose\fP
+zapne ukecanejšie zaznamenávanie.
+.
+.SH "KONFIGURÁCIA SERVERA"
+.
+.SS "Všeobecná syntax je:"
+.
+.P
+[\fIznačka\fP]
+.IP
+kľúč="\fIhodnota\fP"
+.IP
+kľúč="\fIhodnota\fP,\fIhodnota\fP,..."
+.P
+[/\fIznačka\fP]
+.
+.SS "Globálne kľúče:"
+.
+.TP 
+\fBconnections_allowed\fP
+Počet povolených spojení z rovnakej IP adresy.
+.TP 
+\fBdisallow_names\fP
+Mená/prezývky, ktoré server neprijíma. Podporujú sa žolíkové znaky 
+"*" a "?". Ďalšie podrobnosti viď \fBglob\fP(7). Štandardné hodnoty (ak sa 
+nič nezadá) sú: "server,ai,player,network,human,admin,computer".
+.TP 
+\fBmax_messages\fP
+Počet povolených správ za \fBmessages_time_period\fP.
+.TP 
+\fBmessages_time_period\fP
+Časové obdobie (v sekundách), v ktorom sa meria zasypávanie správami.
+.TP 
+\fBmotd\fP
+Správa dňa.
+.TP 
+\fBpasswd\fP
+Heslo používané na získanie administrátorských práv. Zvyčajne 
+začína na "admin ".
+.TP 
+\fBversions_accepted\fP
+Čiarkami oddelený zoznam verzií, ktoré má server prijímať. Podporujú 
+sa žolíkové znaky "*" a "?".
+.br
+Napríklad: versions_accepted="*" prijme hocijakú verziu.
+.
+.SS "Globálne značky:"
+.
+.P
+\fB[redirect]\fP Značka určujúca server, na ktorý sa presmerujú niektoré 
+vezie klientov.
+.RS
+.TP 
+\fBhost\fP
+Adresa servera, kam sa presmerujú.
+.TP 
+\fBport\fP
+Port, na ktorý sa majú pripojiť.
+.TP 
+\fBversion\fP
+Čiarkami oddelený zoznam verzií, ktoré sa majú presmerovať. Podporuje 
+žolíkové znaky rovnako ako  \fBversions_accepted\fP.
+.RE
+.P
+\fB[proxy]\fP Značka, ktorá povie serveru, aby sa správal ako proxy a 
+preposielal požiadavky pripojených klientov na daný server. Podporuje 
+rovnaké kľúče ako [redirect].
+.
+.SH AUTOR
+.
+Napísal David White <davidnwhite@verizon.net>. Editovali Nils 
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> a 
+Soliton <soliton@sonnenkinder.org>.  Túto manuálovú stránku 
+pôvodne napísal Cyril Bouthors <cyril@bouthors.org>.
+.br
+Navštívte oficiálnu stránku: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br
+Toto je slobodný softvér; tento softvér je zverejnená pod Všeobecnou 
+verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného 
+softvéru (Free Software Foundation). Nie je naň ŽIADNA záruka; dokonca 
+ani PREDATEĽNOSTI či VHODNOSTI NA DANÝ ÚČEL.
+.
+.SH "VIĎ AJ"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
