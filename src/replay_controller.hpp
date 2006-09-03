@@ -49,6 +49,7 @@ public:
 	const bool is_loading_game();
 
 	//event handlers
+	virtual void preferences();
 	void play_replay();
 	void reset_replay();
 	void stop_replay();
@@ -69,6 +70,7 @@ private:
 	virtual void play_side(const unsigned int team_index, bool save);
 	void update_teams();
 	void update_gui();
+	void init_replay_display();
 
 	game_state gamestate_start_;
 	gamestatus status_start_;

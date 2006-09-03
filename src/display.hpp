@@ -237,6 +237,10 @@ public:
 	//function to invalidate animated terrains which may have changed.
 	void invalidate_animations();
 
+	//function to invalidate controls and panels when changed after
+	//they have been drawn initially. Useful for dynamic theme modification.
+	void invalidate_theme();
+
 	//function to schedule the minimap for recalculation. Useful if any
 	//terrain in the map has changed.
 	void recalculate_minimap();
