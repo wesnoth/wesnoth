@@ -19,6 +19,11 @@ Version 1.3-svn:
      during other team's turns
    * improve the tiny gui support (resolution of 320x240 pixels)
    * changed the hotkey for 'end turn' from 'alt+space' to 'ctrl/cmd+space'
+     because it interferes with several common window managers
+   * changed the hotkey for 'repeat recruit' from 'ctrl+shift+r' to
+     'ctrl+alt+r' since shift toggles accelerated mode and produced an
+     animation glitch with this hotkey; this needs to be considered for
+     future hotkey changes/additions (see bug #6312)
  * WML engine
    * allow_new_game key (default=yes) to prevent [multiplayer] scenarios to
      show up in the multiplayer game creation interface (FR #6397)
@@ -31,7 +36,8 @@ Version 1.3-svn:
  * multiplayer game management
    * client now tells the server if a game ended in victory or defeat 
  * multiplayer scenarios
-   * scenarios can set faction, recruit, leader, and some other initial settings previously ignored in multiplayer
+   * scenarios can set faction, recruit, leader, and some other initial 
+     settings previously ignored in multiplayer
  * language and i18n:
    * new manpages: Czech, Italian, Slovak.
    * updated manpages: German, Swedish.
