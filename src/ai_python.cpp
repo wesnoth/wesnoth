@@ -617,7 +617,7 @@ static PyMethodDef unit_methods[] = {
         "Returns two dictionaries with the expected battle results when the "
         "unit attacks from 'from' to the unit at 'to', optionally using the "
         "attack with index 'attack', or if no attack is given the attack which "
-        "would be presented to the playe in the attack dialog. The "
+        "would be presented to the player in the attack dialog. The "
         "dictionaries contain the expected hitpoints after "
         "the fight, as a mapping from hitpoints to percent, where percent are "
         "specified as floating point value from 0 to 1. For example, a return of: "
