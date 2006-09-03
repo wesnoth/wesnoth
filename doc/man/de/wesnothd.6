@@ -29,28 +29,28 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .SH BESCHREIBUNG
 .
 Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe auf 
-http://www.wesnoth.org/wiki/ServerAdministration fÃ¼r die Befehle, die der 
-Server von Wesnoth oder Ã¼ber den Socket entgegen nimmt.
+http://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der 
+Server von Wesnoth oder über den Socket entgegen nimmt.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ Pfad\fP
 sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im 
-Abschnitt \fBSERVER KONFIGURATION\fP unterhalb fÃ¼r den genauen Syntax.
+Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für den genauen Syntax.
 .TP 
 \fB\-d,\ \-\-daemon\fP
-started wesnothd als DÃ¤mon.
+started wesnothd als Dämon.
 .TP 
 \fB\-h,\ \-\-help\fP
-Gibt die mÃ¶glichen Kommandozeilenoptionen aus.
+Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ Port\fP
 bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist, 
 wird Port 15000 genommen.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ WERT\fP
-setzt die Anzahl der Threads fÃ¼r Netzwerk I/O auf n (Standard: 5, Max: 30).
+setzt die Anzahl der Threads für Netzwerk I/O auf n (Standard: 5, Max: 30).
 .TP 
 \fB\-V,\ \-\-version\fP
 Zeigt die Versionsnummer an und beendet das Programm.
@@ -65,21 +65,21 @@ aktiviert mehr Details in der Logausgabe.
 .P
 [\fIElement\fP]
 .IP
-SchlÃ¼ssel="\fIWert\fP"
+Schlüssel="\fIWert\fP"
 .IP
-SchlÃ¼ssel="\fIWert\fP,\fIWert\fP,..."
+Schlüssel="\fIWert\fP,\fIWert\fP,..."
 .P
 [/\fIElement\fP]
 .
-.SS "Globale SchlÃ¼ssel:"
+.SS "Globale Schlüssel:"
 .
 .TP 
 \fBconnections_allowed\fP
-Die Anzahl zulÃ¤ssiger Verbindungen von der gleichen IP Adresse.
+Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse.
 .TP 
 \fBdisallow_names\fP
 Namen/Spitznamen die der Server nicht akzeptiert. '*' und '?' sind als 
-Platzhalter unterstÃ¼tzt. Siehe \fBglob\fP(7) fÃ¼r mehr Details. Standardwerte 
+Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte 
 (wenn sonst nichts angegeben wurde) sind: 
 \&'server,ai,player,network,human,admin,computer'.
 .TP 
@@ -98,7 +98,7 @@ per Konvention mit "admin ".
 .TP 
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server 
-zulÃ¤sst. `*' und `?' sind erlaubt.
+zulässt. `*' und `?' sind erlaubt.
 .br
 Beispiel: versions_accepted="*" akzeptiert alle Versionen.
 .
@@ -117,13 +117,13 @@ Der dabei zu verwendende Port.
 .TP 
 \fBversion\fP
 Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden 
-sollen. VerhÃ¤lt sich  in Bezug auf Wildcards genauso wie 
+sollen. Verhält sich  in Bezug auf Wildcards genauso wie 
 \fBversions_accepted\fP.
 .RE
 .P
 \fB[proxy]\fP Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein 
 Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an 
-den angegebenen Server weiterzuleiten. Es werden die gleichen SchlÃ¼ssel wie 
+den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie 
 bei [redirect] akzeptiert.
 .
 .SH AUTOR
@@ -131,7 +131,7 @@ bei [redirect] akzeptiert.
 Geschrieben von David White <davidnwhite@verizon.net>.  Bearbeitet 
 von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott 
 <ott@gaon.net>und Soliton  <soliton@sonnenkinder.org>.  
-Ãœbersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de>, Nils 
+Übersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de>, Nils 
 Kneuper <crazy\-ivanovic@gmx.net>und Soliton 
 <soliton@sonnenkinder.org>.  Diese Beschreibung stammt im Original 
 von Cyril Bouthors <cyril@bouthors.org>.
@@ -142,13 +142,13 @@ Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
 GNU General Public License, wie von der Free Software Foundation 
-verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 
-2 der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.  Die 
-VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen 
+veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 
+2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.  Die 
+Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen 
 von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
-implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
+implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
 BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.  Sie 
 sollten eine Kopie der GNU General Public License zusammen mit diesem 
 Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software 

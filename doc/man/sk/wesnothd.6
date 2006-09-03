@@ -15,133 +15,133 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2006 wesnothd "DÃ©mon na sieÅ¥ovÃº hru Bitky o Wesnoth"
+.TH WESNOTHD 6 2006 wesnothd "Démon na sie»ovú hru Bitky o Wesnoth"
 .
-.SH NÃZOV
+.SH NÁZOV
 .
-wesnothd \- DÃ©mon na sieÅ¥ovÃº hru Bitky o \fBWesnoth\fP
+wesnothd \- Démon na sie»ovú hru Bitky o \fBWesnoth\fP
 .
 .SH ZHRNUTIE
 .
 \fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP 
-\fIÄÃ­slo\fP\|]
+\fIèíslo\fP\|]
 .
 .SH POPIS
 .
-Riadi sieÅ¥ovÃ© hry Bitky o Wesnoth. Na strÃ¡nke 
-http://www.wesnoth.org/wiki/ServerAdministration sÃº uvedenÃ© prÃ­kazy, 
-ktorÃ© server prÃ­jÃ­ma cez klienta alebo socket.
+Riadi sie»ové hry Bitky o Wesnoth. Na stránke 
+http://www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, 
+ktoré server príjíma cez klienta alebo socket.
 .
-.SH MOÅ½NOSTI
+.SH MO®NOSTI
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ cesta\fP
-povie wesnothd, kde mÃ¡ hÄ¾adaÅ¥ konfiguraÄnÃ½ sÃºbor. Syntax, viÄ sekciu  
-\fBKONFIGURÃCIA SERVERA\fP niÅ¾Å¡ie.
+povie wesnothd, kde má hµada» konfiguraènı súbor. Syntax, viï sekciu  
+\fBKONFIGURÁCIA SERVERA\fP ni¾¹ie.
 .TP 
 \fB\-d,\ \-\-daemon\fP
-spustÃ­ wesnothd ako dÃ©mona.
+spustí wesnothd ako démona.
 .TP 
 \fB\-h,\ \-\-help\fP
-povie, Äo robia jednotlivÃ© moÅ¾nosti prÃ­kazovÃ©ho riadku.
+povie, èo robia jednotlivé mo¾nosti príkazového riadku.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
-zavesÃ­ server na danÃ½ port. Ak nie je danÃ½ port, pouÅ¾ije sa port ÄÃ­slo 
+zavesí server na danı port. Ak nie je danı port, pou¾ije sa port èíslo 
 15000.
 .TP 
-\fB\-t,\ \-\-threads\fP\fI\ ÄÃ­slo\fP
-nastavÃ­ ÄÃ­slo pracovnÃ½ch vlÃ¡kien pre sieÅ¥ovÃ© I/O (Å¡tandardne: 5, 
+\fB\-t,\ \-\-threads\fP\fI\ èíslo\fP
+nastaví èíslo pracovnıch vlákien pre sie»ové I/O (¹tandardne: 5, 
 maximum: 30).
 .TP 
 \fB\-V,\ \-\-version\fP
-vypÃ­Å¡e ÄÃ­slo verzie a skonÄÃ­.
+vypí¹e èíslo verzie a skonèí.
 .TP 
 \fB\-v,\ \-\-verbose\fP
-zapne ukecanejÅ¡ie zaznamenÃ¡vanie.
+zapne ukecanej¹ie zaznamenávanie.
 .
-.SH "KONFIGURÃCIA SERVERA"
+.SH "KONFIGURÁCIA SERVERA"
 .
-.SS "VÅ¡eobecnÃ¡ syntax je:"
+.SS "V¹eobecná syntax je:"
 .
 .P
-[\fIznaÄka\fP]
+[\fIznaèka\fP]
 .IP
-kÄ¾ÃºÄ="\fIhodnota\fP"
+kµúè="\fIhodnota\fP"
 .IP
-kÄ¾ÃºÄ="\fIhodnota\fP,\fIhodnota\fP,..."
+kµúè="\fIhodnota\fP,\fIhodnota\fP,..."
 .P
-[/\fIznaÄka\fP]
+[/\fIznaèka\fP]
 .
-.SS "GlobÃ¡lne kÄ¾ÃºÄe:"
+.SS "Globálne kµúèe:"
 .
 .TP 
 \fBconnections_allowed\fP
-PoÄet povolenÃ½ch spojenÃ­ z rovnakej IP adresy.
+Poèet povolenıch spojení z rovnakej IP adresy.
 .TP 
 \fBdisallow_names\fP
-MenÃ¡/prezÃ½vky, ktorÃ© server neprijÃ­ma. PodporujÃº sa Å¾olÃ­kovÃ© znaky 
-"*" a "?". ÄalÅ¡ie podrobnosti viÄ \fBglob\fP(7). Å tandardnÃ© hodnoty (ak sa 
-niÄ nezadÃ¡) sÃº: "server,ai,player,network,human,admin,computer".
+Mená/prezıvky, ktoré server neprijíma. Podporujú sa ¾olíkové znaky 
+"*" a "?". Ïal¹ie podrobnosti viï \fBglob\fP(7). ©tandardné hodnoty (ak sa 
+niè nezadá) sú: "server,ai,player,network,human,admin,computer".
 .TP 
 \fBmax_messages\fP
-PoÄet povolenÃ½ch sprÃ¡v za \fBmessages_time_period\fP.
+Poèet povolenıch správ za \fBmessages_time_period\fP.
 .TP 
 \fBmessages_time_period\fP
-ÄŒasovÃ© obdobie (v sekundÃ¡ch), v ktorom sa meria zasypÃ¡vanie sprÃ¡vami.
+Èasové obdobie (v sekundách), v ktorom sa meria zasypávanie správami.
 .TP 
 \fBmotd\fP
-SprÃ¡va dÅˆa.
+Správa dòa.
 .TP 
 \fBpasswd\fP
-Heslo pouÅ¾Ã­vanÃ© na zÃ­skanie administrÃ¡torskÃ½ch prÃ¡v. ZvyÄajne 
-zaÄÃ­na na "admin ".
+Heslo pou¾ívané na získanie administrátorskıch práv. Zvyèajne 
+zaèína na "admin ".
 .TP 
 \fBversions_accepted\fP
-ÄŒiarkami oddelenÃ½ zoznam verziÃ­, ktorÃ© mÃ¡ server prijÃ­maÅ¥. PodporujÃº 
-sa Å¾olÃ­kovÃ© znaky "*" a "?".
+Èiarkami oddelenı zoznam verzií, ktoré má server prijíma». Podporujú 
+sa ¾olíkové znaky "*" a "?".
 .br
-NaprÃ­klad: versions_accepted="*" prijme hocijakÃº verziu.
+Napríklad: versions_accepted="*" prijme hocijakú verziu.
 .
-.SS "GlobÃ¡lne znaÄky:"
+.SS "Globálne znaèky:"
 .
 .P
-\fB[redirect]\fP ZnaÄka urÄujÃºca server, na ktorÃ½ sa presmerujÃº niektorÃ© 
+\fB[redirect]\fP Znaèka urèujúca server, na ktorı sa presmerujú niektoré 
 vezie klientov.
 .RS
 .TP 
 \fBhost\fP
-Adresa servera, kam sa presmerujÃº.
+Adresa servera, kam sa presmerujú.
 .TP 
 \fBport\fP
-Port, na ktorÃ½ sa majÃº pripojiÅ¥.
+Port, na ktorı sa majú pripoji».
 .TP 
 \fBversion\fP
-ÄŒiarkami oddelenÃ½ zoznam verziÃ­, ktorÃ© sa majÃº presmerovaÅ¥. Podporuje 
-Å¾olÃ­kovÃ© znaky rovnako ako  \fBversions_accepted\fP.
+Èiarkami oddelenı zoznam verzií, ktoré sa majú presmerova». Podporuje 
+¾olíkové znaky rovnako ako  \fBversions_accepted\fP.
 .RE
 .P
-\fB[proxy]\fP ZnaÄka, ktorÃ¡ povie serveru, aby sa sprÃ¡val ako proxy a 
-preposielal poÅ¾iadavky pripojenÃ½ch klientov na danÃ½ server. Podporuje 
-rovnakÃ© kÄ¾ÃºÄe ako [redirect].
+\fB[proxy]\fP Znaèka, ktorá povie serveru, aby sa správal ako proxy a 
+preposielal po¾iadavky pripojenıch klientov na danı server. Podporuje 
+rovnaké kµúèe ako [redirect].
 .
 .SH AUTOR
 .
-NapÃ­sal David White <davidnwhite@verizon.net>. Editovali Nils 
+Napísal David White <davidnwhite@verizon.net>. Editovali Nils 
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> a 
-Soliton <soliton@sonnenkinder.org>.  TÃºto manuÃ¡lovÃº strÃ¡nku 
-pÃ´vodne napÃ­sal Cyril Bouthors <cyril@bouthors.org>.
+Soliton <soliton@sonnenkinder.org>.  Túto manuálovú stránku 
+pôvodne napísal Cyril Bouthors <cyril@bouthors.org>.
 .br
-NavÅ¡tÃ­vte oficiÃ¡lnu strÃ¡nku: http://www.wesnoth.org/
+Nav¹tívte oficiálnu stránku: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-Toto je slobodnÃ½ softvÃ©r; tento softvÃ©r je zverejnenÃ¡ pod VÅ¡eobecnou 
-verejnou licenciou (GPL) verzia 2, ako ju zverejnila NadÃ¡cia slobodnÃ©ho 
-softvÃ©ru (Free Software Foundation). Nie je naÅˆ Å½IADNA zÃ¡ruka; dokonca 
-ani PREDATEÄ½NOSTI Äi VHODNOSTI NA DANÃ ÃšÄŒEL.
+Toto je slobodnı softvér; tento softvér je zverejnená pod V¹eobecnou 
+verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného 
+softvéru (Free Software Foundation). Nie je naò ®IADNA záruka; dokonca 
+ani PREDATE¥NOSTI èi VHODNOSTI NA DANİ ÚÈEL.
 .
-.SH "VIÄ AJ"
+.SH "VIÏ AJ"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
