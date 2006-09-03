@@ -973,7 +973,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		//		const unit_map::const_iterator tgt = units_.find(target_loc);
 
 		const location arrived_at = move_unit(from,to,possible_moves);
-		if(arrived_at != to) {
+		if(arrived_at != to || units_.find(to) == units_.end()) {
 			LOG_STREAM(warn, ai) << "unit moving to attack has ended up unexpectedly at "
 			                     << arrived_at << " when moving to " << to << " moved from "
 			                     << from << '\n';
