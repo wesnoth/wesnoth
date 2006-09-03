@@ -1339,7 +1339,10 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 
 				// If we can't move, we should be more aggressive in lashing out.
 				if (best_pos == i->first) {
-					return desperate_attack(i->first);
+					if (i->second.attacks_left()) {
+						return desperate_attack(i->first);
+					}
+					return false;
 				}
 
 				if(best_pos.valid()) {
