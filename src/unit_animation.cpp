@@ -52,8 +52,8 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 				expanded_chunk.append(*(*child).second);
 				to_add.push_back(expanded_chunk);
 				child++;
-				if(*(*child).first == "else") {
-					while(*(*child).first == "else") {
+				if(child != analyzed_anim.ordered_end() && *(*child).first == "else") {
+					while(child != analyzed_anim.ordered_end() && *(*child).first == "else") {
 						expanded_chunk = expanded_anim;
 						// add the content of else to the stored one
 						expanded_chunk.append(*(*child).second);

@@ -332,6 +332,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 			return VICTORY;
 		}
+		image::flush_cache();
 	} //end catch
 	catch(replay::error&) {
 		gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),
