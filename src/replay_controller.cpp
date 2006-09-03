@@ -80,13 +80,7 @@ void replay_controller::init(){
 
 	//guarantee the cursor goes back to 'normal' at the end of the level
 	const cursor::setter cursor_setter(cursor::NORMAL);
-
-	LOG_NG << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
-	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
-	const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
-	if (NULL != replay_theme_cfg)
-	    gui_->get_theme().modify(replay_theme_cfg);
-	LOG_NG << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
+	init_replay_display();
 
 	fire_prestart(true);
 	init_gui();
@@ -110,6 +104,16 @@ void replay_controller::init_gui(){
 		t->set_fog(false);
 		t->set_shroud(false);
 	}
+}
+
+void replay_controller::init_replay_display(){
+	LOG_NG << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
+	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
+	const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
+	if (NULL != replay_theme_cfg)
+	    gui_->get_theme().modify(replay_theme_cfg);
+	gui_->invalidate_theme();
+	LOG_NG << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
 std::vector<team>& replay_controller::get_teams(){
@@ -291,6 +295,12 @@ void replay_controller::update_gui(){
 	(*gui_).invalidate_all();
 	events::raise_draw_event();
 	(*gui_).draw();
+}
+
+void replay_controller::preferences(){
+	play_controller::preferences();
+	init_replay_display();
+	update_gui();
 }
 
 bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const

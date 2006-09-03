@@ -829,6 +829,8 @@ void display::draw(bool update,bool force)
 			draw_label(video(),screen,*i);
 		}
 
+		create_buttons();
+
 		//invalidate the reports so they are redrawn
 		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
 		invalidateGameStatus_ = true;
@@ -2072,6 +2074,10 @@ void display::invalidate_animations()
 	}
 
 
+}
+
+void display::invalidate_theme(){
+	panelsDrawn_ = false;
 }
 
 void display::recalculate_minimap()
