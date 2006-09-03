@@ -1518,7 +1518,7 @@ void unit::set_standing(const display &disp,const gamemap::location& loc, bool w
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack)
+void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,int swing_num)
 {
 	state_ =  STATE_DEFENDING;
 	draw_bars_ = false;
@@ -1534,7 +1534,7 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 	}else {
 		hit_type = fighting_animation::MISS;
 	}
-	anim_ =  new defensive_animation(defend_animation(disp.get_map().underlying_union_terrain(loc),hit_type,attack));
+	anim_ =  new defensive_animation(defend_animation(disp.get_map().underlying_union_terrain(loc),hit_type,attack,swing_num));
 
 	// add a blink on damage effect
 	int anim_time = anim_->get_last_frame_time();
@@ -1567,7 +1567,7 @@ void unit::set_extra_anim(const display &disp,const gamemap::location& loc, std:
 	anim_->update_current_frame();
 }
 
-const unit_animation & unit::set_attacking(const display &disp,const gamemap::location& /*loc*/,bool hit,const attack_type& type)
+const unit_animation & unit::set_attacking(const display &disp,const gamemap::location& loc,int damage,const attack_type& type,int swing_num)
 {
 	state_ =  STATE_ATTACKING;
 	draw_bars_ = false;
@@ -1575,12 +1575,19 @@ const unit_animation & unit::set_attacking(const display &disp,const gamemap::lo
 		delete anim_;
 		anim_ = NULL;
 	}
-	const attack_type::attack_animation &attack_anim = type.animation(hit,facing_) ;
-	anim_ =  new unit_animation(attack_anim.animation);
+	fighting_animation::hit_type hit_type;
+	if(damage >= hitpoints()) {
+		hit_type = fighting_animation::KILL;
+	} else if(damage > 0) {
+		hit_type = fighting_animation::HIT;
+	}else {
+		hit_type = fighting_animation::MISS;
+	}
+	anim_ =   new attack_animation(type.animation(disp.get_map().underlying_union_terrain(loc),hit_type,facing_,swing_num));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
-	return attack_anim.missile_animation;
+	return ((attack_animation*)anim_)->get_missile_anim();
 }
 void unit::set_leading(const display &disp,const gamemap::location& loc)
 {
@@ -2696,13 +2703,13 @@ const std::string& unit::race() const
 }
 
 const defensive_animation& unit::defend_animation(const std::string &terrain,
-		fighting_animation::hit_type hits, const attack_type* attack) const
+		fighting_animation::hit_type hits, const attack_type* attack,int swing_num) const
 {
 	//select one of the matching animations at random
 	std::vector<const defensive_animation*> options;
 	int max_val = -1;
 	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
-		int matching = i->matches(terrain,facing_,hits,attack);
+		int matching = i->matches(terrain,facing_,hits,attack,swing_num);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {
@@ -2746,7 +2753,7 @@ const death_animation& unit::die_animation(const std::string &terrain,
 	std::vector<const death_animation*> options;
 	int max_val = -1;
 	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
-		int matching = i->matches(terrain,facing_,hits,attack);
+		int matching = i->matches(terrain,facing_,hits,attack,0);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {

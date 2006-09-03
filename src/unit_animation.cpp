@@ -170,10 +170,15 @@ fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg), 
 			hits.push_back(KILL);
 		}
 	}
+	std::vector<std::string> swing_str = utils::split(cfg["swing"]);
+	std::vector<std::string>::iterator swing;
+	for(swing=swing_str.begin() ; swing != swing_str.end() ; swing++) {
+		swing_num.push_back(atoi(swing->c_str()));
+	}
 }
 
 
-int fighting_animation::matches(const std::string &terrain,gamemap::location::DIRECTION dir,hit_type hit,const attack_type* attack) const
+int fighting_animation::matches(const std::string &terrain,gamemap::location::DIRECTION dir,hit_type hit,const attack_type* attack, int swing) const
 {
 	int result = unit_animation::matches(terrain,dir);
 	if(!attack) {
@@ -184,6 +189,13 @@ int fighting_animation::matches(const std::string &terrain,gamemap::location::DI
 	}
 	if(hits.empty() == false ) {
 		if (std::find(hits.begin(),hits.end(),hit)== hits.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
+	}
+	if(swing_num.empty() == false ) {
+		if (std::find(swing_num.begin(),swing_num.end(),swing)== swing_num.end()) {
 			return -1;
 		} else {
 			result ++;
