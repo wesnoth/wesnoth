@@ -49,7 +49,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 		animation_.push_back(attack_animation(cfg));
 	}
 	if(animation_.empty()) {
-		animation_.push_back(attack_animation(image_fighting));
+		animation_.push_back(attack_animation(unit_frame(image_fighting,-200,100)));
 	}
 	assert(!animation_.empty());
 
@@ -620,7 +620,7 @@ unit_type::unit_type(const unit_type& o)
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
       standing_animations_(o.standing_animations_),leading_animations_(o.leading_animations_),
-      healing_animations_(o.healing_animations_),
+      healing_animations_(o.healing_animations_), recruit_animations_(o.recruit_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -777,19 +777,19 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	if(!cfg["image_defensive_short"].empty()) {
 		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive_short tag, which is deprecated\n";
-		defensive_animations_.push_back(defensive_animation(cfg["image_defensive_short"],"melee"));
+		defensive_animations_.push_back(defensive_animation(unit_frame(cfg["image_defensive_short"],-150,150),"melee"));
 
 	}
 	if(!cfg["image_defensive_long"].empty()) {
 		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive_long tag, which is deprecated\n";
-		defensive_animations_.push_back(defensive_animation(cfg["image_defensive_long"],"ranged"));
+		defensive_animations_.push_back(defensive_animation(unit_frame(cfg["image_defensive_long"],-150,150),"ranged"));
 	}
 	if(!cfg["image_defensive"].empty()) {
 		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive tag, which is deprecated\n";
-		defensive_animations_.push_back(defensive_animation(cfg["image_defensive"]));
+		defensive_animations_.push_back(defensive_animation(unit_frame(cfg["image_defensive"],-150,150)));
 	}
 	if(defensive_animations_.empty()) {
-		defensive_animations_.push_back(defensive_animation(image()));
+		defensive_animations_.push_back(defensive_animation(unit_frame(image(),-150,150)));
 		// always have a defensive animation
 	}
 
@@ -801,7 +801,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		teleport_animations_.push_back(unit_animation(**t));
 	}
 	if(teleport_animations_.empty()) {
-		teleport_animations_.push_back(unit_animation(image(),-20,20));
+		teleport_animations_.push_back(unit_animation(unit_frame(image(),-20,20)));
 		// always have a defensive animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
@@ -818,7 +818,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		death_animations_.push_back(death_animation(**death));
 	}
 	if(death_animations_.empty()) {
-		death_animations_.push_back(death_animation(image()));
+		death_animations_.push_back(death_animation(unit_frame(image(),0,10)));
 		// always have a defensive animation
 	}
 
@@ -829,10 +829,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	if(!cfg["image_moving"].empty()) {
 		LOG_STREAM(err, config) << "unit " << id() << " uses an image_moving tag, which is deprecated\n";
-		movement_animations_.push_back(movement_animation(cfg["image_moving"]));
+		movement_animations_.push_back(movement_animation(unit_frame(cfg["image_moving"],0,150)));
 	}
 	if(movement_animations_.empty()) {
-		movement_animations_.push_back(movement_animation(image()));
+		movement_animations_.push_back(movement_animation(unit_frame(image(),0,150)));
 		// always have a movement animation
 	}
 
@@ -842,7 +842,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		standing_animations_.push_back(standing_animation(**standing_anim));
 	}
 	if(standing_animations_.empty()) {
-		standing_animations_.push_back(standing_animation(image()));
+		standing_animations_.push_back(standing_animation(unit_frame(image(),0,1)));
 		// always have a standing animation
 	}
 
@@ -852,7 +852,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		leading_animations_.push_back(leading_animation(**leading_anim));
 	}
 	if(leading_animations_.empty()) {
-		leading_animations_.push_back(leading_animation(image()));
+		leading_animations_.push_back(leading_animation(unit_frame(image(),0,150)));
 		// always have a leading animation
 	}
 
@@ -862,8 +862,18 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		healing_animations_.push_back(healing_animation(**healing_anim));
 	}
 	if(healing_animations_.empty()) {
-		healing_animations_.push_back(healing_animation(cfg["image_healing"],cfg["image_halo_healing"]));
+		healing_animations_.push_back(healing_animation(unit_frame(cfg["image_healing"],0,1,"1.0",0,"",cfg["image_halo_healing"])));
 		// always have a healing animation
+	}
+
+	expanded_cfg = unit_animation::prepare_animation(cfg,"recruit_anim");
+	const config::child_list& recruit_anims = expanded_cfg.get_children("recruit_anim");
+	for(config::child_list::const_iterator recruit_anim = recruit_anims.begin(); recruit_anim != recruit_anims.end(); ++recruit_anim) {
+		recruit_animations_.push_back(recruit_animation(**recruit_anim));
+	}
+	if(recruit_animations_.empty()) {
+		recruit_animations_.push_back(recruit_animation(unit_frame(image(),0,600,"0~1:600")));
+		// always have a recruit animation
 	}
 	flag_rgb_ = cfg["flag_rgb"];
 	// deprecation messages, only seen when unit is parsed for the first time

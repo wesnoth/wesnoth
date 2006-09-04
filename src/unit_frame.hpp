@@ -28,11 +28,11 @@ class unit_frame {
 	public:
 	// constructors
 		unit_frame();
-		explicit unit_frame(const std::string& str, const std::string & diag ="",
-				int begin=0,int end = 0,
-				Uint32 blend_color = 0, const std::string& blend_rate = "",
+		explicit unit_frame(const std::string& str, int begin=0,int end=1,
 				const std::string& highlight="1.0",
-				std::string in_halo = "",int halox = 0,int haloy = 0);
+				Uint32 blend_color = 0, const std::string& blend_rate = "",
+				std::string in_halo = "",int halox = 0,int haloy = 0,
+				const std::string & diag ="");
 		explicit unit_frame(const config& cfg);
 
 		int xoffset() const { return xoffset_ ; }

@@ -12,6 +12,8 @@ Version 1.3-svn:
      * removed Necrophage from random_leader
    * new units
      * added the Armagedon Drake, it is not used in any mainline eras
+   * unit Art
+     * added a recruit animation to the skeleton
  * user interface
    * disable inactive sliders instead of hiding them
    * sliders can be adjusted with keyboard left and right
@@ -33,6 +35,11 @@ Version 1.3-svn:
    * obsolete set_special= in [effect] tags
    * correct handling of UTF8 filenames under windows
    * fighting animations can now be filtered on swing number
+   * add progressive paramteters, allow to specify a value that will move
+   continuously in an animation
+   * alpha blending is our first progressive parameter
+   * units can now have a recruit animation that will be played on unit
+   recruit.
  * multiplayer game management
    * client now tells the server if a game ended in victory or defeat 
  * multiplayer scenarios

@@ -246,6 +246,7 @@ class unit
 		const standing_animation& stand_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const leading_animation& lead_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const healing_animation& heal_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+		const recruit_animation& recruiting_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
@@ -339,22 +340,19 @@ class unit
 //		std::map<gamemap::TERRAIN,int> defense_mods_, defense_mods_b_;
 
 		string_map modification_descriptions_;
+		// animations
 		std::vector<defensive_animation> defensive_animations_;
-
 		std::vector<unit_animation> teleport_animations_;
-
 		std::multimap<std::string,unit_animation> extra_animations_;
-
 		std::vector<death_animation> death_animations_;
-
 		std::vector<movement_animation> movement_animations_;
-
 		std::vector<standing_animation> standing_animations_;
-
 		std::vector<leading_animation> leading_animations_;
-
 		std::vector<healing_animation> healing_animations_;
+		std::vector<recruit_animation> recruit_animations_;
 		unit_animation *anim_;
+
+
 		int frame_begin_time;
 		double offset_;
 		int unit_halo_;

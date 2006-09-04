@@ -122,28 +122,24 @@ unit_frame::unit_frame() :
 }
 
 
-unit_frame::unit_frame(const std::string& str, const std::string & diag,
-		int begin,int end,
-		Uint32 blend_color, const std::string& blend_rate,
+unit_frame::unit_frame(const std::string& str, int begin,int end,
 		const std::string& highlight,
-		std::string in_halo, int halox, int haloy) :
+		Uint32 blend_color, const std::string& blend_rate,
+		std::string in_halo, int halox, int haloy,
+		const std::string & diag) :
 	xoffset_(0), image_(str),image_diagonal_(diag),
 	halo_(),halo_x_(halox), halo_y_(haloy),
 	begin_time_(begin), end_time_(end),
 	blend_with_(blend_color) 
 {
-	// let's decide of duration ourselves
-	if(begin == end) {
-		halo_ = prepare_timed_list(in_halo,0);
-		blend_ratio_ = prepare_progressive_double(blend_rate,0);
-		highlight_ratio_ = prepare_progressive_double(highlight,0);
-		end_time_ =  maximum<int>(duration_double(blend_ratio_),duration_string(halo_));
-		end_time_ = maximum<int>(end_time_,duration_double(highlight_ratio_));
-		end_time_ += begin_time_;
-	}
 	halo_ = prepare_timed_list(in_halo,end_time_ - begin_time_);
 	blend_ratio_ = prepare_progressive_double(blend_rate,end_time_ - begin_time_);
 	highlight_ratio_ = prepare_progressive_double(highlight,end_time_ - begin_time_);
+	// let's decide of duration ourselves
+	end_time_ = end;
+	end_time_ = maximum<int>(end_time_,begin + duration_double(highlight_ratio_));
+	end_time_ = maximum<int>(end_time_,begin + duration_double(blend_ratio_));
+	end_time_ = maximum<int>(end_time_,begin + duration_string(halo_));
 }
 
 
@@ -161,7 +157,7 @@ unit_frame::unit_frame(const config& cfg)
 	halo_ = prepare_timed_list(cfg["halo"],end_time_-begin_time_);
 	blend_with_= 0;
 	blend_ratio_ = prepare_progressive_double(cfg["blend_ratio"],end_time_-begin_time_);
-	highlight_ratio_ = prepare_progressive_double(cfg["highlight"].empty()?"1.0":cfg["highlight"],end_time_-begin_time_);
+	highlight_ratio_ = prepare_progressive_double(cfg["alpha"].empty()?"1.0":cfg["alpha"],end_time_-begin_time_);
 
 }
 

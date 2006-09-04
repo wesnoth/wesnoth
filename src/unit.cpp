@@ -135,22 +135,18 @@ unit::unit(const unit& o):
 		flying_(o.flying_),
 
 		modification_descriptions_(o.modification_descriptions_),
+
 		defensive_animations_(o.defensive_animations_),
-
 		teleport_animations_(o.teleport_animations_),
-
 		extra_animations_(o.extra_animations_),
-
 		death_animations_(o.death_animations_),
-
 		movement_animations_(o.movement_animations_),
-
 		standing_animations_(o.standing_animations_),
-
 		leading_animations_(o.leading_animations_),
-
 		healing_animations_(o.healing_animations_),
+		recruit_animations_(o.recruit_animations_),
 		anim_(o.anim_),
+
 		frame_begin_time(o.frame_begin_time),
 		offset_(o.offset_),
 		unit_halo_(o.unit_halo_),
@@ -411,6 +407,7 @@ void unit::advance_to(const unit_type* t)
 	standing_animations_ = t->standing_animations_;
 	leading_animations_ = t->leading_animations_;
 	healing_animations_ = t->healing_animations_;
+	recruit_animations_ = t->recruit_animations_;
 	flag_rgb_ = t->flag_rgb();
 
 	backup_state();
@@ -1264,15 +1261,17 @@ void unit::read(const config& cfg)
 			standing_animations_ = ut->standing_animations_;
 			leading_animations_ = ut->leading_animations_;
 			healing_animations_ = ut->healing_animations_;
+			recruit_animations_ = ut->recruit_animations_;
 			// remove animations from private cfg, since they're not needed there now
 			cfg_.clear_children("defend");
 			cfg_.clear_children("teleport_anim");
 			cfg_.clear_children("extra_anim");
 			cfg_.clear_children("death");
 			cfg_.clear_children("movement_anim");
-			cfg_.clear_children("healing_anim");
-			cfg_.clear_children("leading_anim");
 			cfg_.clear_children("standing_anim");
+			cfg_.clear_children("leading_anim");
+			cfg_.clear_children("healing_anim");
+			cfg_.clear_children("recruit_anim");
 		} else {
 			const config::child_list& defends = cfg_.get_children("defend");
 			const config::child_list& teleports = cfg_.get_children("teleport_anim");
@@ -1282,6 +1281,7 @@ void unit::read(const config& cfg)
 			const config::child_list& standing_anims = cfg_.get_children("standing_anim");
 			const config::child_list& leading_anims = cfg_.get_children("leading_anim");
 			const config::child_list& healing_anims = cfg_.get_children("healing_anim");
+			const config::child_list& recruit_anims = cfg_.get_children("recruit_anim");
 			for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 				defensive_animations_.push_back(defensive_animation(**d));
 			}
@@ -1306,33 +1306,41 @@ void unit::read(const config& cfg)
 			for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
 				healing_animations_.push_back(healing_animation(**healing_anim));
 			}
+			for(config::child_list::const_iterator recruit_anim = recruit_anims.begin(); recruit_anim != recruit_anims.end(); ++recruit_anim) {
+				recruit_animations_.push_back(recruit_animation(**recruit_anim));
+			}
 			if(defensive_animations_.empty()) {
-				defensive_animations_.push_back(defensive_animation(absolute_image()));
+				defensive_animations_.push_back(defensive_animation(unit_frame(absolute_image(),-150,150)));
 				// always have a defensive animation
 			}
 			if(teleport_animations_.empty()) {
-				teleport_animations_.push_back(unit_animation(absolute_image(),-20,20));
+				teleport_animations_.push_back(unit_animation(unit_frame(absolute_image(),-20,20)));
 				// always have a teleport animation
 			}
 			if(death_animations_.empty()) {
-				death_animations_.push_back(death_animation(absolute_image()));
+				death_animations_.push_back(death_animation(unit_frame(absolute_image(),0,10)));
 				// always have a death animation
 			}
 			if(movement_animations_.empty()) {
-				movement_animations_.push_back(movement_animation(absolute_image()));
+				movement_animations_.push_back(movement_animation(unit_frame(absolute_image(),0,150)));
 				// always have a movement animation
 			}
 			if(standing_animations_.empty()) {
-				standing_animations_.push_back(standing_animation(absolute_image()));
+				standing_animations_.push_back(standing_animation(unit_frame(absolute_image(),0,0)));
 				// always have a standing animation
 			}
 			if(leading_animations_.empty()) {
-				leading_animations_.push_back(leading_animation(absolute_image()));
+				leading_animations_.push_back(leading_animation(unit_frame(absolute_image(),0,150)));
 				// always have a leading animation
 			}
 			if(healing_animations_.empty()) {
-				healing_animations_.push_back(healing_animation(image_healing(),image_halo_healing()));
+				healing_animations_.push_back(healing_animation(unit_frame(image_healing(),0,150,
+								"1.0",0,"",image_halo_healing(),0,0)));
 				// always have a healing animation
+			}
+			if(recruit_animations_.empty()) {
+				recruit_animations_.push_back(recruit_animation(unit_frame(absolute_image(),0,600,"0~1:600")));
+				// always have a recruit animation
 			}
 		}
 	} else {
@@ -1342,9 +1350,10 @@ void unit::read(const config& cfg)
 		cfg_.clear_children("extra_anim");
 		cfg_.clear_children("death");
 		cfg_.clear_children("movement_anim");
-		cfg_.clear_children("healing_anim");
-		cfg_.clear_children("leading_anim");
 		cfg_.clear_children("standing_anim");
+		cfg_.clear_children("leading_anim");
+		cfg_.clear_children("healing_anim");
+		cfg_.clear_children("recruit_anim");
 	}
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
@@ -1540,7 +1549,7 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 	int anim_time = anim_->get_last_frame_time();
 	const std::string my_image = anim_->get_last_frame().image();
 	if(damage) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+100,display::rgb(255,0,0),"0.5:50,0.0:50"));
+		anim_->add_frame(anim_time,unit_frame(my_image,anim_time,anim_time+100,"1.0",display::rgb(255,0,0),"0.5:50,0.0:50"));
 		anim_time+=100;
 	}
 	anim_->add_frame(anim_time);
@@ -1614,7 +1623,7 @@ void unit::set_leveling_in(const display &disp,const gamemap::location& /*loc*/)
 	my_image = absolute_image();
 	anim_ = new unit_animation();
 	// add a fade in effect
-	anim_->add_frame(0,unit_frame(my_image,"",0,600,display::rgb(255,255,255),"1~0:600"));
+	anim_->add_frame(0,unit_frame(my_image,0,600,"1.0",display::rgb(255,255,255),"1~0:600"));
 	anim_->add_frame(600);
 
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
@@ -1633,14 +1642,14 @@ void unit::set_leveling_out(const display &disp,const gamemap::location& /*loc*/
 	my_image = absolute_image();
 	anim_ = new unit_animation();
 	// add a fade out effect
-	anim_->add_frame(0,unit_frame(my_image,"",0,600,display::rgb(255,255,255),"0~1:600"));
+	anim_->add_frame(0,unit_frame(my_image,0,600,"1.0",display::rgb(255,255,255),"0~1:600"));
 	anim_->add_frame(600);
 
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_recruited(const display &disp,const gamemap::location& /*loc*/)
+void unit::set_recruited(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_RECRUITED;
 	draw_bars_ = false;
@@ -1648,10 +1657,8 @@ void unit::set_recruited(const display &disp,const gamemap::location& /*loc*/)
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ = new unit_animation();
+	anim_ = new recruit_animation(recruiting_animation(disp.get_map().underlying_union_terrain(loc),facing_));
 	// add a fade in effect
-	anim_->add_frame(0,unit_frame(absolute_image(),"",0,600,0,"","0~1:600"));
-	anim_->add_frame(600);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -1664,11 +1671,7 @@ void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int 
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ = new unit_animation(absolute_image());
-	// add a blink on heal effect
-	const std::string my_image = anim_->get_last_frame().image();
-	anim_->add_frame(0,unit_frame(my_image,"",0,240,display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
-	anim_->add_frame(240);
+	anim_ = new unit_animation(unit_frame(absolute_image(),0,240,"1.0",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -1681,11 +1684,7 @@ void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, in
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ = new unit_animation(absolute_image());
-	// add a blink on damage effect
-	const std::string my_image = anim_->get_last_frame().image();
-	anim_->add_frame(0,unit_frame(my_image,"",0,240,display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
-	anim_->add_frame(240);
+	anim_ = new unit_animation(unit_frame(absolute_image(),0,240,"1.0",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -1716,7 +1715,7 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 	anim_ =  new death_animation(die_animation(disp.get_map().underlying_union_terrain(loc),fighting_animation::KILL,attack));
 	std::string tmp_image = anim_->get_last_frame().image();
 	int anim_time =anim_->get_last_frame_time();
-	anim_->add_frame(0,unit_frame(tmp_image,"",anim_time,anim_time+600,0,"","1~0:600"));
+	anim_->add_frame(0,unit_frame(tmp_image,anim_time,anim_time+600,"1~0:600"));
 	anim_->add_frame(anim_time+600);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
@@ -2847,6 +2846,25 @@ const healing_animation& unit::heal_animation(const std::string terrain,gamemap:
 	return *options[rand()%options.size()];
 }
 
+const recruit_animation& unit::recruiting_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+{
+	//select one of the matching animations at random
+	std::vector<const recruit_animation*> options;
+	int max_val = -1;
+	for(std::vector<recruit_animation>::const_iterator i = recruit_animations_.begin(); i != recruit_animations_.end(); ++i) {
+		int matching = i->matches(terrain,dir);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
 
 void unit::apply_modifications()
 {

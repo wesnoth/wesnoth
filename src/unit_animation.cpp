@@ -88,9 +88,11 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 	return expanded_animations;
 }
 
-unit_animation::unit_animation(const std::string image )
+unit_animation::unit_animation(const unit_frame & frame )
 {
-	add_frame(0,unit_frame(image));
+	add_frame(0,frame);
+	if(frame.end_time() != frame.begin_time()) add_frame(frame.end_time());
+	
 }
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string ):terrain_types(utils::split(cfg["terrain"])){
@@ -116,21 +118,6 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	}
 }
 
-unit_animation::unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal,const std::string halo,int halo_x,int halo_y)
-{
-	add_frame(begin_at, unit_frame(image,image_diagonal,begin_at,end_at,0,"0.0","1.0",halo,halo_x,halo_y));
-	if (end_at != begin_at) {
-		add_frame(end_at);
-	}
-}
-
-unit_animation::unit_animation(const std::string image, const std::string halo,int halo_x,int halo_y)
-{
-	add_frame(0, unit_frame(image,"",0,0,0,"0.0","1.0",halo,halo_x,halo_y));
-	if (!halo.empty()) {
-		add_frame();
-	}
-}
 
 int unit_animation::matches(const std::string &terrain,const gamemap::location::DIRECTION dir) const
 {

@@ -260,21 +260,16 @@ private:
 
 	std::vector<unit_race::GENDER> genders_;
 
+	// animations
 	std::vector<defensive_animation> defensive_animations_;
-
 	std::vector<unit_animation> teleport_animations_;
-
 	std::multimap<std::string,unit_animation> extra_animations_;
-
 	std::vector<death_animation> death_animations_;
-
 	std::vector<movement_animation> movement_animations_;
-
 	std::vector<standing_animation> standing_animations_;
-
 	std::vector<leading_animation> leading_animations_;
-
 	std::vector<healing_animation> healing_animations_;
+	std::vector<recruit_animation> recruit_animations_;
     std::string flag_rgb_;
 };
 

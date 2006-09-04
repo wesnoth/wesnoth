@@ -33,10 +33,7 @@ class unit_animation:public animated<unit_frame>
 
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
-		explicit unit_animation(const std::string image, int begin_at, int end_at,
-				const std::string image_diagonal = "",const std::string halo="",int halo_x=0,int halo_y=0);
-		explicit unit_animation(const std::string image,const std::string halo,int halo_x=0,int halo_y=0);
-		explicit unit_animation(const std::string image);
+		explicit unit_animation(const unit_frame &frame);
 		int matches(const std::string &terrain,const gamemap::location::DIRECTION dir) const;
 
 		enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
@@ -55,8 +52,8 @@ class fighting_animation:public unit_animation
 		typedef enum { HIT, MISS, KILL} hit_type;
 
 		explicit fighting_animation(const config& cfg);
-		explicit fighting_animation(const std::string &image, const std::string &range="",int begin_at = -150, int end_at = 150):
-			unit_animation(image,begin_at,end_at),range(utils::split(range)) {};
+		explicit fighting_animation(const unit_frame &frame, const std::string &range=""):
+			unit_animation(frame),range(utils::split(range)) {};
 		int matches(const std::string &terrain,gamemap::location::DIRECTION dir,hit_type hit,const attack_type* attack,int swing_num) const;
 
 	private:
@@ -70,7 +67,7 @@ class defensive_animation:public fighting_animation
 {
 	public:
 		explicit defensive_animation(const config& cfg):fighting_animation(cfg){};
-		explicit defensive_animation(const std::string &image, const std::string &range="",int begin_at = -150, int end_at = 150):fighting_animation(image,range,begin_at,end_at){};
+		explicit defensive_animation(const unit_frame &frame, const std::string &range=""):fighting_animation(frame,range){};
 };
 
 
@@ -78,7 +75,7 @@ class death_animation:public fighting_animation
 {
 	public:
 		explicit death_animation(const config& cfg):fighting_animation(cfg){};
-		explicit death_animation(const std::string &image):fighting_animation(image,"",0,10) {};
+		explicit death_animation(const unit_frame &frame,const std::string &range=""):fighting_animation(frame,range) {};
 	private:
 };
 
@@ -86,7 +83,7 @@ class attack_animation: public fighting_animation
 {
 	public:
 		explicit attack_animation(const config& cfg):fighting_animation(cfg),missile_anim(cfg,"missile_frame"){};
-		explicit attack_animation(const std::string &image):fighting_animation(image,"",-200,100) {};
+		explicit attack_animation(const unit_frame &frame):fighting_animation(frame) {};
 		const unit_animation &get_missile_anim() {return missile_anim;}
 	private:
 		unit_animation missile_anim;
@@ -97,8 +94,8 @@ class movement_animation:public unit_animation
 {
 	public:
 		explicit movement_animation(const config& cfg):unit_animation(cfg){};
-		explicit movement_animation(const std::string& image):
-			unit_animation(image,0,150){};
+		explicit movement_animation(const unit_frame &frame):
+			unit_animation(frame){};
 
 	private:
 };
@@ -107,8 +104,8 @@ class standing_animation:public unit_animation
 {
 	public:
 		explicit standing_animation(const config& cfg):unit_animation(cfg){};
-		explicit standing_animation(const std::string& image):
-			unit_animation(image,0,0){};
+		explicit standing_animation(const unit_frame &frame):
+			unit_animation(frame){};
 
 	private:
 };
@@ -117,8 +114,8 @@ class leading_animation:public unit_animation
 {
 	public:
 		explicit leading_animation(const config& cfg):unit_animation(cfg){};
-		explicit leading_animation(const std::string& image):
-			unit_animation(image,0,150){};
+		explicit leading_animation(const unit_frame &frame):
+			unit_animation(frame){};
 
 	private:
 };
@@ -127,8 +124,18 @@ class healing_animation:public unit_animation
 {
 	public:
 		explicit healing_animation(const config& cfg):unit_animation(cfg){};
-		explicit healing_animation(const std::string& image, const std::string& halo ="",int halo_x=0,int halo_y=0):
-			unit_animation(image,halo,halo_x,halo_y){};
+		explicit healing_animation(const unit_frame &frame):
+			unit_animation(frame){};
+
+	private:
+};
+
+class recruit_animation:public unit_animation
+{
+	public:
+		explicit recruit_animation(const config& cfg):unit_animation(cfg){};
+		explicit recruit_animation(const unit_frame &frame):
+			unit_animation(frame){};
 
 	private:
 };
