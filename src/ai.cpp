@@ -201,7 +201,7 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 		return new python_ai(info);
 #else
     {
-		LOG_STREAM(err, ai) << "No Python AI support available in this Wesnoth version!\n";
+		LOG_STREAM(err, ai) << "No Python AI support available in this Wesnoth build!\n";
 		return new ai2(info);
     }
 #endif
