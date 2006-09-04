@@ -974,7 +974,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		//		const unit_map::const_iterator tgt = units_.find(target_loc);
 
 		const location arrived_at = move_unit(from,to,possible_moves);
-		if(arrived_at != to) {
+		if(arrived_at != to || units_.find(to) == units_.end()) {
 			LOG_STREAM(warn, ai) << "unit moving to attack has ended up unexpectedly at "
 			                     << arrived_at << " when moving to " << to << " moved from "
 			                     << from << '\n';
@@ -1341,6 +1341,10 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 				// If we can't move, we should be more aggressive in lashing out.
 				if (best_pos == i->first) {
 					return desperate_attack(i->first);
+					if (i->second.attacks_left()) {
+						return desperate_attack(i->first);
+					}
+					return false;
 				}
 
 				if(best_pos.valid()) {
