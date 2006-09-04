@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 #include "actions.hpp"
+#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "game_errors.hpp"
 #include "game_events.hpp"
@@ -23,7 +24,7 @@
 #include "menu_events.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
-#include "show_dialog.hpp"
+#include "SDL_timer.h"
 #include "sound.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
@@ -55,6 +56,43 @@ game_state* state_of_game = NULL;
 const game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
 int floating_label = 0;
+typedef Uint32 msecs;
+const msecs prevent_misclick_duration = 10;
+const msecs average_frame_time = 30;
+
+class message_dialog : public gui::dialog
+{
+public:
+	message_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
+		: dialog(disp, title, message, type), prevent_misclick_until_(0)
+	{}
+	~message_dialog();
+	int show(const dimension_measurements &dim, msecs minimum_lifetime);
+protected:
+	void action(gui::dialog_process_info &dp_info);
+private:
+	msecs prevent_misclick_until_;
+};
+
+int message_dialog::show(const gui::dialog::dimension_measurements &dim, msecs minimum_lifetime)
+{
+	prevent_misclick_until_ = SDL_GetTicks() + minimum_lifetime;
+	return dialog::show(dim);
+}
+
+void message_dialog::action(gui::dialog_process_info &dp_info)
+{
+	dialog::action(dp_info);
+	if(done() && SDL_GetTicks() < prevent_misclick_until_) {
+		//discard premature results
+		set_result(gui::CONTINUE_DIALOG);
+	}
+}
+
+message_dialog::~message_dialog()
+{
+}
+
 } //end anonymous namespace
 
 namespace game_events {
@@ -1271,8 +1309,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			//this will redraw the unit, with its new stats
 			screen->draw();
-
-			gui::show_dialog(*screen,surface,caption,text);
+		
+			const std::string duration_str = utils::interpolate_variables_into_string(cfg["duration"], *state_of_game);
+			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
+			message_dialog to_show(*screen,((surface.null())? caption : ""),text);
+			if(!surface.null()) {
+				to_show.set_image(surface, caption);
+			}
+			to_show.show(to_show.layout(), lifetime);
 		}
 
 		const vconfig::child_list commands = cfg.get_children(command_type);
@@ -1421,12 +1465,19 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		//to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
 			const std::string msg = utils::interpolate_variables_into_string(cfg["message"], *state_of_game);
+			const std::string duration_str = utils::interpolate_variables_into_string(cfg["duration"], *state_of_game);
+			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
 			const SDL_Rect& map_area = screen->map_area();
-			option_chosen = gui::show_dialog2(*screen,surface,caption,msg,
-		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
-		                        options.empty() ? NULL : &options,
-								NULL, "", NULL, 256, NULL, NULL, -1, map_area.y+4);
 
+			message_dialog to_show(*screen, ((surface.null())? caption : ""),
+				msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));
+			if(!surface.null()) {
+				to_show.set_image(surface, caption);
+			}
+			if(!options.empty()) {
+				to_show.set_menu(options);
+			}
+			option_chosen = to_show.show(to_show.layout(-1, map_area.y + 4), lifetime);
 			LOG_DP << "showed dialog...\n";
 
 			if (option_chosen == gui::ESCAPE_DIALOG){
