@@ -73,6 +73,7 @@ public:
 		std::vector<int> enemies;
 		std::string team_name;
 		std::string save_id;
+		std::string current_player;
 		std::string countdown_time;
 		int action_bonus_count;
 
@@ -129,12 +130,14 @@ public:
 	void set_countdown_time(int amount);
 	int action_bonus_count() const;
 	void set_action_bonus_count(int count);
+	void set_current_player(const std::string player);
 
 	const std::set<std::string>& recruits() const;
 	std::set<std::string>& recruits();
 	const std::vector<std::string>& recruitment_pattern() const;
 	const std::string& name() const;
 	const std::string& save_id() const;
+	const std::string& current_player() const;
 
 	void set_objectives(const t_string& new_objectives, bool silently=false);
 	void reset_objectives_changed();

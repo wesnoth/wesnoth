@@ -425,9 +425,10 @@ const std::string& game::transfer_side_control(const config& cfg)
 	config& change = response.add_child("change_controller");
 
 	change["side"] = side;
+	change["player"] = player;
 
 	change["controller"] = "network";
-	network::queue_data(response,players_.front());
+	network::send_data(response,players_.front());
 
 	change["controller"] = "human";
 	network::queue_data(response, sock_entering);
