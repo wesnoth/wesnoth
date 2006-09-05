@@ -139,14 +139,16 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const size_t index = static_cast<size_t>(side-1);
 
 		const std::string& controller = (*change)["controller"];
+		const std::string& player = (*change)["player"];
 
 		if(index < teams_.size()) {
-			if(controller == "human") {
+			teams_[index].set_current_player(player);
+			if ( (controller == "human") && (!teams_[index].is_human()) ) {
 				teams_[index].make_human();
 				gui_.set_team(index);
-			} else if(controller == "network") {
+			} else if ( (controller == "network") && (!teams_[index].is_network()) ){
 				teams_[index].make_network();
-			} else if(controller == "ai") {
+			} else if ( (controller == "ai") && (!teams_[index].is_ai()) ) {
 				teams_[index].make_ai();
 			}
 
@@ -165,20 +167,33 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		int action = 0;
 
 		std::vector<std::string> observers;
+		std::vector<team*> allies;
+		std::vector<std::string> options;
 
 		//see if the side still has a leader alive. If they have
 		//no leader, we assume they just want to be replaced by
 		//the AI.
 		const unit_map::const_iterator leader = find_leader(units_,side+1);
 		if(leader != units_.end()) {
-			std::vector<std::string> options;
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
 			options.push_back(_("Abort game"));
 
+			//get all observers in as options to transfer control
 			for(std::set<std::string>::const_iterator ob = gui_.observers().begin(); ob != gui_.observers().end(); ++ob) {
 				options.push_back(_("Replace with ") + *ob);
 				observers.push_back(*ob);
+			}
+
+			//get all allies in as options to transfer control
+			for (std::vector<team>::iterator team = teams_.begin(); team != teams_.end(); team++){
+				if ( (!team->is_enemy(side + 1)) && (!team->is_human()) 
+					&& (team->current_player() != teams_[side].current_player()) ){
+					//if this is an ally of the dropping side and it is not us (choose local player
+					//if you want that) and if it is not the dropping side itself, get this team in as well
+					options.push_back(_("Replace with ") + team->save_id());
+					allies.push_back(team);
+				}
 			}
 
 			const std::string msg = leader->second.description() + " " + _("has left the game. What do you want to do?");
@@ -201,6 +216,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					if (index < observers.size()) {
 						teams_[side].make_network();
 						change_side_controller(cfg["side_drop"], observers[index], false /*not our own side*/);
+					} else if (index < options.size() - 1) {
+						allies[index - observers.size()]->make_network();
+						change_side_controller(cfg["side_drop"], allies[index - observers.size()]->save_id(), false /*not our own side*/);
 					} else {
 						teams_[side].make_ai();
 					}

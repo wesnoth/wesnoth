@@ -102,6 +102,10 @@ team::team_info::team_info(const config& cfg)
 	if(save_id.empty()) {
 		save_id = cfg["description"];
 	}
+	current_player = cfg["current_player"];
+	if (current_player.empty()) {
+		current_player = save_id;
+	}
 
 	countdown_time = cfg["countdown_time"];
 
@@ -254,6 +258,7 @@ void team::team_info::write(config& cfg) const
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
 	cfg["save_id"] = save_id;
+	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
 	cfg["description"] = description;
 	cfg["objectives"] = objectives;
@@ -480,6 +485,10 @@ void team::set_action_bonus_count(int count)
 	action_bonus_count_=count;
 }
 
+void team::set_current_player(const std::string player){
+	info_.current_player = player;
+}
+
 const std::set<std::string>& team::recruits() const
 {
 	return info_.can_recruit;
@@ -597,6 +606,10 @@ void team::change_team(const std::string& name)
 const std::string& team::save_id() const
 {
 	return info_.save_id;
+}
+
+const std::string& team::current_player() const{
+	return info_.current_player;
 }
 
 void team::set_objectives(const t_string& new_objectives, bool silently)
