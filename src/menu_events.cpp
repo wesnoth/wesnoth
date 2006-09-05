@@ -347,7 +347,7 @@ namespace events{
 			str << "~TC(" << (n+1) << "," << leader->second.team_color() << ")";
 #endif
 			str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' 
-				<< leader->second.description() << COLUMN_SEPARATOR;
+				<< teams_[n].current_player() /* leader->second.description() */ << COLUMN_SEPARATOR;
 
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
