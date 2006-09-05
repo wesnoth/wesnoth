@@ -2,13 +2,13 @@
 # Copyright (C) 2004,2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Isaac Clerencia <isaac@unizar.es>, 2006.
-# David Martínez Moreno <ender@debian.org>, 2004-2006.
+# David Martínez Moreno <ender@debian.org>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-31 12:51+0200\n"
-"PO-Revision-Date: 2006-07-25 09:10+0200\n"
+"PO-Revision-Date: 2006-09-05 13:59+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team:  Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,10 @@ msgid ""
 "welcoming new players.  Please keep friendly fun feeling!  Any questions "
 "email rusty@rustcorp.com.au!"
 msgstr ""
+"¡Hola, traductores! El tutorial está diseñado para ser divertido al "
+"principio, y dar así la bienvenida a los nuevos jugadores. Por favor, "
+"¡procura mantener ese espíritu! Si tienes cualquier pregunta, escribe a "
+"rusty@rustcorp.com.au."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:39
 msgid "Wesnoth Tutorial"
@@ -429,6 +433,9 @@ msgid ""
 msgstr ""
 "Sí, si una unidad no hace nada durante un turno, se curará un poco.\n"
 "Pero antes de enviar a tus guerreros contra el estafermo, deberías saber que "
+"tienen dos tipos de ataque...Sí, si una unidad no hace nada durante un "
+"turno, se curará un poco.\n"
+"Pero antes de enviar a tus guerreros contra el estafermo, deberías saber que "
 "tienen dos tipos de ataque..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:670
@@ -441,7 +448,8 @@ msgid ""
 "find out..."
 msgstr ""
 "¿Y ese cuál es? ¿La espada (5-4) o el arco (3-3)? Supongo que te lo "
-"imaginas..."
+"imaginas...¿Y ese cuál es? ¿La espada (5-4) o el arco (3-3)? Supongo que te "
+"lo imaginas..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:676
 msgid "Left click on an Elvish Fighter"
@@ -461,9 +469,9 @@ msgid ""
 "attack, so the quintain defended with its melee attack (3-5).  The ranged "
 "attack was safer."
 msgstr ""
-"Tu elfo usó una espada (5-4 o 5 de daño, 4 ataques), que es un arma de "
-"ataque de meleé, por tanto el estafermo se defendió con su ataque de meleé "
-"(3-5).  El ataque a distancia era más seguro."
+"Tu elfo usó una espada (5-4, ó 5 de daño, 4 ataques), que es un arma de "
+"ataque de meleé, y por ello el estafermo se defendió con su ataque de meleé "
+"(3-5). El ataque a distancia habría sido más seguro."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:720
 msgid ""
@@ -472,6 +480,10 @@ msgid ""
 "attack was safer.\n"
 "End your turn, then attack again."
 msgstr ""
+"Tu elfo usó una espada (5-4, ó 5 de daño, 4 ataques), que es un arma de "
+"ataque de meleé, y por ello el estafermo se defendió con su ataque de meleé "
+"(3-5). El ataque a distancia habría sido más seguro.\n"
+"Acaba tu turno, y ataca de nuevo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:730
 msgid ""
@@ -479,11 +491,14 @@ msgid ""
 "attack, so the quintain defended with its melee attack (3-5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Tu elfo usó una espada (5-4, ó 5 de daño, 4 ataques), que es un arma de "
+"ataque de meleé, y por ello el estafermo se defendió con su ataque de meleé "
+"(3-5). Deberías decir al otro elfo que use el arco."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:732
 #: data/tutorial/scenarios/1_Tutorial.cfg:780
 msgid "Attack with the other Elf"
-msgstr ""
+msgstr "Ataca con el otro elfo"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:762
 #: data/tutorial/scenarios/1_Tutorial.cfg:778
@@ -492,6 +507,9 @@ msgid ""
 "attacks).  The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
+"Tu elfo ha usado un arco, que es un arma de distancia (3-3, ó 3 de daño, 3 "
+"ataques). El estafermo no puede atacar a distancia, sólo en meleé, así que "
+"no pudo defenderse."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:769
 msgid ""
@@ -500,20 +518,27 @@ msgid ""
 "could not defend itself.\n"
 "End your turn, then attack again."
 msgstr ""
+"Tu elfo ha usado un arco, que es un arma de distancia (3-3, ó 3 de daño, 3 "
+"ataques). El estafermo no puede atacar a distancia, sólo en meleé, así que "
+"no pudo defenderse.\n"
+"Acaba tu turno, y ataca de nuevo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:795
 msgid "Keep attacking, with both elves, until the quintain is finished!"
-msgstr ""
+msgstr "¡Sigue atacando con los elfos hasta que caiga el estafermo!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:803
 msgid "Maybe you should recruit another elf?"
-msgstr ""
+msgstr "¿No deberías reclutar otro elfo?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:808
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
+"Nota:\n"
+"Puedes pulsar con el botón derecho del ratón sobre cualquier unidad para ver "
+"una descripción detallada de ella."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:823
 msgid ""
@@ -521,6 +546,10 @@ msgid ""
 "Remember to pull back wounded units into villages, and recruit more if you "
 "need.  Take special care of units with the highest experience points (XP)."
 msgstr ""
+"Nota:\n"
+"Recuerda que deberías retirar tus unidades heridas a las aldeas, y reclutar "
+"más si lo necesitas. Vigila especialmente las unidades con muchos puntos de "
+"experiencia (PX)."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:840
 msgid ""
@@ -528,6 +557,9 @@ msgid ""
 "These dummies only attack if you are a single tile away.  With care, you "
 "should be able to kill them one at a time."
 msgstr ""
+"Nota:\n"
+"Estos muñecos sólo atacan si estás a una casilla de distancia. Con un poco "
+"de cuidado, deberías ser capaz de acabar con ellos de una sola vez."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:851
 msgid ""
@@ -535,6 +567,10 @@ msgid ""
 "Each village you own can support a single unit for free.  After that, each "
 "unit costs you one gold per turn."
 msgstr ""
+"Nota:\n"
+"Cada aldea que posee puede mantener a una unidad sin coste para ti. Más allá "
+"de ahí, cada unidad adicional cuesta una pieza de oro por turno en concepto "
+"de mantenimiento."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:860
 msgid ""
@@ -543,6 +579,10 @@ msgid ""
 "the right), it will go up a level.  Elvish Fighters have two options, and "
 "you will get to choose which one you want."
 msgstr ""
+"Nota:\n"
+"Cuando una unidad adquiere suficiente experiencia (la barra de experiencia "
+"es la más pequeña de las dos, a la derecha), sube de nivel. Los luchadores "
+"elfos tienen dos opciones, y tendrás que escoger cuál de las dos quieres."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:869
 msgid ""
@@ -963,7 +1003,7 @@ msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:847
 msgid "You've learned well, Konrad! "
-msgstr ""
+msgstr "¡Has aprendido bien, Konrad! "
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:848
 #: data/tutorial/scenarios/2_Tutorial.cfg:850
@@ -974,7 +1014,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:849
 msgid "You've learned well, Li'sar! "
-msgstr ""
+msgstr "¡Has aprendido bien, Li'sar! "
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:851
 #: data/tutorial/scenarios/2_Tutorial.cfg:971
