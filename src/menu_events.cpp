@@ -338,7 +338,7 @@ namespace events{
 			//cause it to be displayed in the correct colour
 			if(leader != units_.end()) {
 				str << IMAGE_PREFIX << leader->second.absolute_image() << "~TC(" << (n+1) << "," << leader->second.team_color() << ")" << COLUMN_SEPARATOR
-					<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << leader->second.description() << COLUMN_SEPARATOR;
+					<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << teams_[n].current_player() /*leader->second.description()*/ << COLUMN_SEPARATOR;
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
 			}
