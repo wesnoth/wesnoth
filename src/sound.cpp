@@ -267,8 +267,10 @@ void stop_music() {
 
 void stop_sound() {
 	if(mix_ok) {
-		for (int i = 0; i < 15; i++)
-			Mix_HaltChannel(i);
+		{
+			for (int i = 0; i < 15; i++)
+				Mix_HaltChannel(i);
+		}
 
 		std::map<std::string,Mix_Chunk*>::iterator i;
 		for(i = sound_cache.begin(); i != sound_cache.end(); ++i)
