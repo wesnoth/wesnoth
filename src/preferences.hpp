@@ -67,6 +67,9 @@ namespace preferences {
 	int sound_volume();
 	void set_sound_volume(int vol);
 
+	int bell_volume();
+	void set_bell_volume(int vol);
+
 	bool music_on();
 	bool set_music(bool ison);
 

@@ -191,13 +191,14 @@ private:
 	const config* get_advanced_pref() const;
 	void set_advanced_menu();
 
-	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_, chat_lines_slider_;
+	// change 
+	gui::slider music_slider_, sound_slider_, bell_slider_, scroll_slider_, gamma_slider_, chat_lines_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 	            show_grid_button_, show_lobby_joins_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 	            show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
 				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_;
-	gui::label music_label_, sound_label_, scroll_label_, gamma_label_, chat_lines_label_;
+	gui::label music_label_, sound_label_, bell_label_, scroll_label_, gamma_label_, chat_lines_label_;
 	unsigned slider_label_width_;
 
 	gui::menu advanced_;
@@ -209,9 +210,10 @@ private:
 	const config& game_cfg_;
 };
 
+//change
 preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
-	  music_slider_(disp.video()), sound_slider_(disp.video()),
+	  music_slider_(disp.video()), sound_slider_(disp.video()), bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()), chat_lines_slider_(disp.video()),
 	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
@@ -234,6 +236,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
 	  chat_timestamp_button_(disp.video(), _("Chat Timestamping"), gui::button::TYPE_CHECK),
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
+	  bell_label_(disp.video(), _("Bell Volume:")),
 	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(), ""),
 	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style), advanced_selection_(-1),
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
@@ -260,6 +263,11 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	music_slider_.set_value(music_volume());
 	music_slider_.set_help_string(_("Change the music volume"));
 
+	// bell volume slider
+	bell_slider_.set_min(0);
+	bell_slider_.set_max(128);
+	bell_slider_.set_value(bell_volume());
+	bell_slider_.set_help_string(_("Change the bell volume"));
 
 	scroll_slider_.set_min(1);
 	scroll_slider_.set_max(100);
@@ -333,6 +341,7 @@ handler_vector preferences_dialog::handler_members()
 	handler_vector h;
 	h.push_back(&music_slider_);
 	h.push_back(&sound_slider_);
+	h.push_back(&bell_slider_); //change
 	h.push_back(&scroll_slider_);
 	h.push_back(&gamma_slider_);
 	h.push_back(&chat_lines_slider_);
@@ -358,6 +367,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&chat_timestamp_button_);
 	h.push_back(&music_label_);
 	h.push_back(&sound_label_);
+	h.push_back(&bell_label_);
 	h.push_back(&scroll_label_);
 	h.push_back(&gamma_label_);
 	h.push_back(&chat_lines_label_);
@@ -388,7 +398,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; turbo_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
 	ypos += item_interline; turn_dialog_button_.set_location(rect.x, ypos);
-	ypos += item_interline; turn_bell_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
 	ypos += item_interline; hotkeys_button_.set_location(rect.x, ypos);
@@ -410,7 +419,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	theme_button_.set_location(rect.x+video_mode_button_.width()+10, ypos);
 
 	// Sound tab
-	slider_label_width_ = maximum<unsigned>(music_label_.width(), sound_label_.width());
+	slider_label_width_ = maximum<unsigned>(maximum<unsigned>(music_label_.width(), sound_label_.width()), bell_label_.width());
 	ypos = rect.y + top_border;
 	sound_button_.set_location(rect.x, ypos);
 
@@ -428,6 +437,17 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	const SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
 	                        rect.w - slider_label_width_ - right_border, 0 };
 	music_slider_.set_location(music_rect);
+
+	// Bell slider
+	ypos += item_interline; 
+	turn_bell_button_.set_location(rect.x, ypos);
+	
+	ypos += item_interline;
+	bell_label_.set_location(rect.x, ypos);
+	const SDL_Rect bell_rect = { rect.x + slider_label_width_, ypos,
+	                        rect.w - slider_label_width_ - right_border, 0 };
+	bell_slider_.set_location(bell_rect);
+
 
         // Multiplayer tab
         ypos = rect.y + top_border;
@@ -494,6 +514,7 @@ void preferences_dialog::process_event()
 			sound_button_.set_check(false);
 	}
 	set_sound_volume(sound_slider_.value());
+	set_bell_volume(bell_slider_.value());   
 
 	if (music_button_.pressed()) {
 		if(!set_music(music_button_.checked()))
@@ -589,7 +610,6 @@ void preferences_dialog::set_selection(int index)
 	turbo_button_.hide(hide_general);
 	show_ai_moves_button_.hide(hide_general);
 	turn_dialog_button_.hide(hide_general);
-	turn_bell_button_.hide(hide_general);
 	hotkeys_button_.hide(hide_general);
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);
@@ -615,6 +635,9 @@ void preferences_dialog::set_selection(int index)
 	sound_button_.hide(hide_sound);
 	sound_label_.hide(hide_sound);
 	sound_slider_.hide(hide_sound);
+	turn_bell_button_.hide(hide_sound);
+	bell_label_.hide(hide_sound);
+	bell_slider_.hide(hide_sound);
 
         const bool hide_multiplayer = tab_ != MULTIPLAYER_TAB;
         chat_lines_label_.hide(hide_multiplayer);

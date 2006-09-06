@@ -198,6 +198,17 @@ void set_sound_volume(int vol)
 	sound::set_sound_volume(sound_volume());
 }
 
+int bell_volume()
+{
+	return lexical_cast_default<int>(prefs["bell_volume"], 100);
+}
+
+void set_bell_volume(int vol)
+{
+	prefs["bell_volume"] = lexical_cast_default<std::string>(vol, "100");
+	sound::set_bell_volume(bell_volume());
+}
+
 bool adjust_gamma()
 {
 	return prefs["adjust_gamma"] == "yes";
@@ -343,7 +354,22 @@ bool turn_bell()
 
 void set_turn_bell(bool ison)
 {
-	prefs["turn_bell"] = (ison ? "yes" : "no");
+	if(!turn_bell() && ison) {
+		prefs["turn_bell"] = "yes";
+		if(!music_on() && !sound_on()) {
+			if(!sound::init_sound()) {
+				prefs["turn_bell"] = "no";
+				return;
+			}
+		}
+	} else if(turn_bell() && !ison) {
+		prefs["turn_bell"] = "no";
+		sound::stop_bell();
+		if(!music_on() && !sound_on())
+			sound::close_sound();
+	}
+	return;
+
 }
 
 const std::string& turn_cmd()
@@ -373,7 +399,7 @@ bool sound_on() {
 bool set_sound(bool ison) {
 	if(!sound_on() && ison) {
 		prefs["sound"] = "yes";
-		if(!music_on()) {
+		if(!music_on() && !turn_bell()) {
 			if(!sound::init_sound()) {
 				prefs["sound"] = "no";
 				return false;
@@ -382,7 +408,7 @@ bool set_sound(bool ison) {
 	} else if(sound_on() && !ison) {
 		prefs["sound"] = "no";
 		sound::stop_sound();
-		if(!music_on())
+		if(!music_on() && !turn_bell())
 			sound::close_sound();
 	}
 	return true;
@@ -395,7 +421,7 @@ bool music_on() {
 bool set_music(bool ison) {
 	if(!music_on() && ison) {
 		prefs["music"] = "yes";
-		if(!sound_on()) {
+		if(!sound_on() && !turn_bell()) {
 			if(!sound::init_sound()) {
 				prefs["music"] = "no";
 				return false;
@@ -405,7 +431,7 @@ bool set_music(bool ison) {
 			sound::play_music();
 	} else if(music_on() && !ison) {
 		prefs["music"] = "no";
-		if(!sound_on())
+		if(!sound_on() && !turn_bell())
 			sound::close_sound();
 		else
 			sound::stop_music();

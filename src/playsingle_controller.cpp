@@ -444,7 +444,7 @@ void playsingle_controller::before_human_turn(bool save)
 	}
 
 	if(preferences::turn_bell()) {
-		sound::play_sound(game_config::sounds::turn_bell);
+		sound::play_bell(game_config::sounds::turn_bell);
 	}
 
 	if(preferences::turn_dialog()) {

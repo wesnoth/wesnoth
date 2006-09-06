@@ -35,6 +35,7 @@ namespace {
 bool mix_ok = false;
 unsigned music_start_time = 0;
 std::map<std::string,Mix_Chunk*> sound_cache;
+std::map<std::string,Mix_Chunk*> bell_cache; // Bell sound use separate channel
 std::map<std::string,Mix_Music*> music_cache;
 
 struct music_track
@@ -220,6 +221,7 @@ bool init_sound() {
 		Mix_AllocateChannels(16);
 		set_sound_volume(preferences::sound_volume());
 		set_music_volume(preferences::music_volume());
+		set_bell_volume(preferences::bell_volume());
 
 		LOG_AUDIO << "Audio initialized.\n";
 
@@ -232,6 +234,7 @@ void close_sound() {
 	int numtimesopened, frequency, channels;
 	Uint16 format;
 	if(mix_ok) {
+		stop_bell();
 		stop_sound();
 		stop_music();
 		mix_ok = false;
@@ -264,12 +267,24 @@ void stop_music() {
 
 void stop_sound() {
 	if(mix_ok) {
-		Mix_HaltChannel(-1);
+		for (int i = 0; i < 15; i++)
+			Mix_HaltChannel(i);
 
 		std::map<std::string,Mix_Chunk*>::iterator i;
 		for(i = sound_cache.begin(); i != sound_cache.end(); ++i)
 			Mix_FreeChunk(i->second);
 		sound_cache.clear();
+	}
+}
+
+void stop_bell() {
+	if(mix_ok) {
+		Mix_HaltChannel(15);
+
+		std::map<std::string,Mix_Chunk*>::iterator i;
+		for(i = bell_cache.begin(); i != bell_cache.end(); ++i)
+			Mix_FreeChunk(i->second);
+		bell_cache.clear();
 	}
 }
 
@@ -426,6 +441,7 @@ void write_music_play_list(config& snapshot)
 
 void play_sound(const std::string& files)
 {
+
 	if(files.empty()) return;
 	if(preferences::sound_on() && mix_ok) {
 		std::string file = pick_one(files);
@@ -455,11 +471,54 @@ void play_sound(const std::string& files)
 		}
 
 		//play on the first available channel
+		//FIXME: in worst case it can play on bell channel(15), nothing happend
+		// only sound can have another volume than others sounds
 		const int res = Mix_PlayChannel(-1, cache, 0);
 		if(res < 0) {
 			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		}
 	}
+}
+
+// Play bell on separate volume than sound
+void play_bell(const std::string& files)
+{
+   if(files.empty()) return;
+	
+   if(preferences::turn_bell() && mix_ok) {
+      std::string file = pick_one(files);
+      // the insertion will fail if there is already an element in the cache
+      std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
+         it = bell_cache.insert(std::make_pair(file, (Mix_Chunk *)0));
+      Mix_Chunk *&cache = it.first->second;
+      if (it.second) {
+         std::string const &filename = get_binary_file_location("sounds", file);         if (!filename.empty()) {
+#ifdef USE_ZIPIOS
+            std::string const &s = read_file(filename);
+            if (!s.empty()) {
+               SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
+               cache = Mix_LoadWAV_RW(ops,0);
+            }
+#else
+            cache = Mix_LoadWAV(filename.c_str());
+#endif
+         }
+
+         if (cache == NULL) {
+            ERR_AUDIO << "Could not load sound file '" << filename << "': "
+               << Mix_GetError() << "\n";
+            return;
+         }
+      }
+
+      //play on the last (bell) channel 
+      const int res = Mix_PlayChannel(15, cache, 0);
+      if(res < 0) {
+         ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
+      }
+
+	
+   }
 }
 
 void set_music_volume(int vol)
@@ -476,8 +535,21 @@ void set_sound_volume(int vol)
 	if(mix_ok && vol >= 0) {
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
-		Mix_Volume(-1, vol);
+		// Bell has separate channel which we can't set up from this
+		for (int i = 0; i < 15; i++){
+			Mix_Volume(i, vol);
+		}
 	}
 }
+
+void set_bell_volume(int vol)
+{
+	if(mix_ok && vol >= 0) {
+		if(vol > MIX_MAX_VOLUME)
+			vol = MIX_MAX_VOLUME;
+		Mix_Volume(15, vol);
+	}
+}
+
 
 }
