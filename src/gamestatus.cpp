@@ -523,7 +523,13 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 		file_stream = istream_file(get_saves_dir() + "/" + name);
 
 	cfg.clear();
+	try{
 	detect_format_and_read(cfg, *file_stream, error_log);
+	} catch (config::error &err)
+	{
+		std::cerr << err.message;
+		throw game::load_game_failed();
+	}
 
 	if(cfg.empty()) {
 		std::cerr << "Could not parse file data into config\n";
