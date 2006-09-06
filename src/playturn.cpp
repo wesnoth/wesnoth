@@ -191,7 +191,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					//if this is an ally of the dropping side and it is not us (choose local player
 					//if you want that) and if it is not the dropping side itself, get this team in as well
 					options.push_back(_("Replace with ") + team->save_id());
-					allies.push_back(team);
+					allies.push_back(&(*team));
 				}
 			}
 
