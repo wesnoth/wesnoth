@@ -146,6 +146,8 @@ unit::unit(const unit& o):
 		healing_animations_(o.healing_animations_),
 		recruit_animations_(o.recruit_animations_),
 		idle_animations_(o.idle_animations_),
+		levelin_animations_(o.levelin_animations_),
+		levelout_animations_(o.levelout_animations_),
 		anim_(o.anim_),
 
 		frame_begin_time(o.frame_begin_time),
@@ -410,6 +412,8 @@ void unit::advance_to(const unit_type* t)
 	healing_animations_ = t->healing_animations_;
 	recruit_animations_ = t->recruit_animations_;
 	idle_animations_ = t->idle_animations_;
+	levelin_animations_ = t->levelin_animations_;
+	levelout_animations_ = t->levelout_animations_;
 	flag_rgb_ = t->flag_rgb();
 
 	backup_state();
@@ -1264,6 +1268,9 @@ void unit::read(const config& cfg)
 			leading_animations_ = ut->leading_animations_;
 			healing_animations_ = ut->healing_animations_;
 			recruit_animations_ = ut->recruit_animations_;
+			idle_animations_ = ut->idle_animations_;
+			levelin_animations_ = ut->levelin_animations_;
+			levelout_animations_ = ut->levelout_animations_;
 			// remove animations from private cfg, since they're not needed there now
 			cfg_.clear_children("defend");
 			cfg_.clear_children("teleport_anim");
@@ -1275,6 +1282,8 @@ void unit::read(const config& cfg)
 			cfg_.clear_children("healing_anim");
 			cfg_.clear_children("recruit_anim");
 			cfg_.clear_children("idle_anim");
+			cfg_.clear_children("levelin_anim");
+			cfg_.clear_children("levelou_anim");
 		} else {
 			const config::child_list& defends = cfg_.get_children("defend");
 			const config::child_list& teleports = cfg_.get_children("teleport_anim");
@@ -1286,73 +1295,101 @@ void unit::read(const config& cfg)
 			const config::child_list& healing_anims = cfg_.get_children("healing_anim");
 			const config::child_list& recruit_anims = cfg_.get_children("recruit_anim");
 			const config::child_list& idle_anims = cfg_.get_children("idle_anim");
+			const config::child_list& levelin_anims = cfg_.get_children("levelin_anim");
+			const config::child_list& levelout_anims = cfg_.get_children("levelout_anim");
 			for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 				defensive_animations_.push_back(defensive_animation(**d));
-			}
-			for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
-				teleport_animations_.push_back(unit_animation(**t));
-			}
-			for(config::child_list::const_iterator extra_anim = extra_anims.begin(); extra_anim != extra_anims.end(); ++extra_anim) {
-				extra_animations_.insert(std::pair<std::string,unit_animation>((**extra_anim)["flag"],unit_animation(**extra_anim)));
-			}
-			for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
-				death_animations_.push_back(death_animation(**death));
-			}
-			for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
-				movement_animations_.push_back(movement_animation(**movement_anim));
-			}
-			for(config::child_list::const_iterator standing_anim = standing_anims.begin(); standing_anim != standing_anims.end(); ++standing_anim) {
-				standing_animations_.push_back(standing_animation(**standing_anim));
-			}
-			for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
-				leading_animations_.push_back(leading_animation(**leading_anim));
-			}
-			for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
-				healing_animations_.push_back(healing_animation(**healing_anim));
-			}
-			for(config::child_list::const_iterator recruit_anim = recruit_anims.begin(); recruit_anim != recruit_anims.end(); ++recruit_anim) {
-				recruit_animations_.push_back(recruit_animation(**recruit_anim));
-			}
-			for(config::child_list::const_iterator idle_anim = idle_anims.begin(); idle_anim != idle_anims.end(); ++idle_anim) {
-				idle_animations_.push_back(idle_animation(**idle_anim));
 			}
 			if(defensive_animations_.empty()) {
 				defensive_animations_.push_back(defensive_animation(unit_frame(absolute_image(),-150,150)));
 				// always have a defensive animation
 			}
+
+			for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
+				teleport_animations_.push_back(unit_animation(**t));
+			}
 			if(teleport_animations_.empty()) {
 				teleport_animations_.push_back(unit_animation(unit_frame(absolute_image(),-20,20)));
 				// always have a teleport animation
+			}
+
+			for(config::child_list::const_iterator extra_anim = extra_anims.begin(); extra_anim != extra_anims.end(); ++extra_anim) {
+				extra_animations_.insert(std::pair<std::string,unit_animation>((**extra_anim)["flag"],unit_animation(**extra_anim)));
+			}
+
+			for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
+				death_animations_.push_back(death_animation(**death));
 			}
 			if(death_animations_.empty()) {
 				death_animations_.push_back(death_animation(unit_frame(absolute_image(),0,10)));
 				// always have a death animation
 			}
+
+			for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
+				movement_animations_.push_back(movement_animation(**movement_anim));
+			}
 			if(movement_animations_.empty()) {
 				movement_animations_.push_back(movement_animation(unit_frame(absolute_image(),0,150)));
 				// always have a movement animation
+			}
+
+			for(config::child_list::const_iterator standing_anim = standing_anims.begin(); standing_anim != standing_anims.end(); ++standing_anim) {
+				standing_animations_.push_back(standing_animation(**standing_anim));
 			}
 			if(standing_animations_.empty()) {
 				standing_animations_.push_back(standing_animation(unit_frame(absolute_image(),0,0)));
 				// always have a standing animation
 			}
+
+			for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
+				leading_animations_.push_back(leading_animation(**leading_anim));
+			}
 			if(leading_animations_.empty()) {
 				leading_animations_.push_back(leading_animation(unit_frame(absolute_image(),0,150)));
 				// always have a leading animation
+			}
+
+			for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
+				healing_animations_.push_back(healing_animation(**healing_anim));
 			}
 			if(healing_animations_.empty()) {
 				healing_animations_.push_back(healing_animation(unit_frame(image_healing(),0,150,
 								"1.0",0,"",image_halo_healing(),0,0)));
 				// always have a healing animation
 			}
+
+			for(config::child_list::const_iterator recruit_anim = recruit_anims.begin(); recruit_anim != recruit_anims.end(); ++recruit_anim) {
+				recruit_animations_.push_back(recruit_animation(**recruit_anim));
+			}
 			if(recruit_animations_.empty()) {
 				recruit_animations_.push_back(recruit_animation(unit_frame(absolute_image(),0,600,"0~1:600")));
 				// always have a recruit animation
+			}
+
+			for(config::child_list::const_iterator idle_anim = idle_anims.begin(); idle_anim != idle_anims.end(); ++idle_anim) {
+				idle_animations_.push_back(idle_animation(**idle_anim));
 			}
 			if(idle_animations_.empty()) {
 				idle_animations_.push_back(idle_animation(unit_frame(absolute_image(),0,1)));
 				// always have a idle animation
 			}
+
+			for(config::child_list::const_iterator levelin_anim = levelin_anims.begin(); levelin_anim != levelin_anims.end(); ++levelin_anim) {
+				levelin_animations_.push_back(levelin_animation(**levelin_anim));
+			}
+			if(levelin_animations_.empty()) {
+				levelout_animations_.push_back(levelout_animation(unit_frame(absolute_image(),0,600,"1.0",display::rgb(255,255,255),"1~0:600")));
+				// always have a levelin animation
+			}
+
+			for(config::child_list::const_iterator levelout_anim = levelout_anims.begin(); levelout_anim != levelout_anims.end(); ++levelout_anim) {
+				levelout_animations_.push_back(levelout_animation(**levelout_anim));
+			}
+			if(levelout_animations_.empty()) {
+				levelout_animations_.push_back(levelout_animation(unit_frame(absolute_image(),0,600,"1.0",display::rgb(255,255,255),"0~1:600")));
+				// always have a levelout animation
+			}
+
 		}
 	} else {
 		// remove animations from private cfg, since they're not needed there now
@@ -1366,6 +1403,8 @@ void unit::read(const config& cfg)
 		cfg_.clear_children("healing_anim");
 		cfg_.clear_children("recruit_anim");
 		cfg_.clear_children("idle_anim");
+		cfg_.clear_children("levelin_anim");
+		cfg_.clear_children("levelout_anim");
 	}
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
@@ -1632,7 +1671,7 @@ void unit::set_leading(const display &disp,const gamemap::location& loc)
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_leveling_in(const display &disp,const gamemap::location& /*loc*/)
+void unit::set_leveling_in(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEVELIN;
 	draw_bars_ = false;
@@ -1640,18 +1679,12 @@ void unit::set_leveling_in(const display &disp,const gamemap::location& /*loc*/)
 		delete anim_;
 		anim_ = NULL;
 	}
-	std::string my_image;
-	my_image = absolute_image();
-	anim_ = new unit_animation();
-	// add a fade in effect
-	anim_->add_frame(0,unit_frame(my_image,0,600,"1.0",display::rgb(255,255,255),"1~0:600"));
-	anim_->add_frame(600);
-
+	anim_ = new levelin_animation(levelingin_animation(disp.get_map().underlying_union_terrain(loc),facing_));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_leveling_out(const display &disp,const gamemap::location& /*loc*/)
+void unit::set_leveling_out(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEVELOUT;
 	draw_bars_ = false;
@@ -1659,13 +1692,7 @@ void unit::set_leveling_out(const display &disp,const gamemap::location& /*loc*/
 		delete anim_;
 		anim_ = NULL;
 	}
-	std::string my_image;
-	my_image = absolute_image();
-	anim_ = new unit_animation();
-	// add a fade out effect
-	anim_->add_frame(0,unit_frame(my_image,0,600,"1.0",display::rgb(255,255,255),"0~1:600"));
-	anim_->add_frame(600);
-
+	anim_ = new levelout_animation(levelingout_animation(disp.get_map().underlying_union_terrain(loc),facing_));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -2908,6 +2935,46 @@ const idle_animation& unit::idling_animation(const std::string terrain,gamemap::
 	std::vector<const idle_animation*> options;
 	int max_val = -1;
 	for(std::vector<idle_animation>::const_iterator i = idle_animations_.begin(); i != idle_animations_.end(); ++i) {
+		int matching = i->matches(terrain,dir);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
+
+const levelin_animation& unit::levelingin_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+{
+	//select one of the matching animations at random
+	std::vector<const levelin_animation*> options;
+	int max_val = -1;
+	for(std::vector<levelin_animation>::const_iterator i = levelin_animations_.begin(); i != levelin_animations_.end(); ++i) {
+		int matching = i->matches(terrain,dir);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
+
+const levelout_animation& unit::levelingout_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+{
+	//select one of the matching animations at random
+	std::vector<const levelout_animation*> options;
+	int max_val = -1;
+	for(std::vector<levelout_animation>::const_iterator i = levelout_animations_.begin(); i != levelout_animations_.end(); ++i) {
 		int matching = i->matches(terrain,dir);
 		if(matching == max_val) {
 			options.push_back(&*i);

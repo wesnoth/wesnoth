@@ -22,6 +22,7 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 #include "color_range.hpp"
+#include "display.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -621,7 +622,8 @@ unit_type::unit_type(const unit_type& o)
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
       standing_animations_(o.standing_animations_),leading_animations_(o.leading_animations_),
       healing_animations_(o.healing_animations_), recruit_animations_(o.recruit_animations_),
-      idle_animations_(o.idle_animations_),
+      idle_animations_(o.idle_animations_), levelin_animations_(o.levelin_animations_),
+      levelout_animations_(o.levelout_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -884,6 +886,24 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(idle_animations_.empty()) {
 		idle_animations_.push_back(idle_animation(unit_frame(image(),0,1)));
 		// always have a idle animation
+	}
+	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
+	const config::child_list& levelin_anims = expanded_cfg.get_children("levelin_anim");
+	for(config::child_list::const_iterator levelin_anim = levelin_anims.begin(); levelin_anim != levelin_anims.end(); ++levelin_anim) {
+		levelin_animations_.push_back(levelin_animation(**levelin_anim));
+	}
+	if(levelin_animations_.empty()) {
+		levelin_animations_.push_back(levelin_animation(unit_frame(image(),0,600,"1.0",display::rgb(255,255,255),"1~0:600")));
+		// always have a levelin animation
+	}
+	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
+	const config::child_list& levelout_anims = expanded_cfg.get_children("levelout_anim");
+	for(config::child_list::const_iterator levelout_anim = levelout_anims.begin(); levelout_anim != levelout_anims.end(); ++levelout_anim) {
+		levelout_animations_.push_back(levelout_animation(**levelout_anim));
+	}
+	if(levelout_animations_.empty()) {
+		levelout_animations_.push_back(levelout_animation(unit_frame(image(),0,600,"1.0",display::rgb(255,255,255),"0~1:600")));
+		// always have a levelout animation
 	}
 	flag_rgb_ = cfg["flag_rgb"];
 	// deprecation messages, only seen when unit is parsed for the first time

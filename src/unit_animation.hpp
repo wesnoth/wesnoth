@@ -150,5 +150,25 @@ class idle_animation:public unit_animation
 	private:
 };
 
+class levelin_animation:public unit_animation
+{
+	public:
+		explicit levelin_animation(const config& cfg):unit_animation(cfg){};
+		explicit levelin_animation(const unit_frame &frame):
+			unit_animation(frame){};
+
+	private:
+};
+
+class levelout_animation:public unit_animation
+{
+	public:
+		explicit levelout_animation(const config& cfg):unit_animation(cfg){};
+		explicit levelout_animation(const unit_frame &frame):
+			unit_animation(frame){};
+
+	private:
+};
+
 
 #endif

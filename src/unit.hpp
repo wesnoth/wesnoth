@@ -249,6 +249,8 @@ class unit
 		const healing_animation& heal_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const recruit_animation& recruiting_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const idle_animation& idling_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+		const levelin_animation& levelingin_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+		const levelout_animation& levelingout_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
@@ -353,6 +355,8 @@ class unit
 		std::vector<healing_animation> healing_animations_;
 		std::vector<recruit_animation> recruit_animations_;
 		std::vector<idle_animation> idle_animations_;
+		std::vector<levelin_animation> levelin_animations_;
+		std::vector<levelout_animation> levelout_animations_;
 		unit_animation *anim_;
 		Uint32 next_idling;
 		int frame_begin_time;
