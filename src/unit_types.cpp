@@ -621,6 +621,7 @@ unit_type::unit_type(const unit_type& o)
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
       standing_animations_(o.standing_animations_),leading_animations_(o.leading_animations_),
       healing_animations_(o.healing_animations_), recruit_animations_(o.recruit_animations_),
+      idle_animations_(o.idle_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -874,6 +875,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(recruit_animations_.empty()) {
 		recruit_animations_.push_back(recruit_animation(unit_frame(image(),0,600,"0~1:600")));
 		// always have a recruit animation
+	}
+	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
+	const config::child_list& idle_anims = expanded_cfg.get_children("idle_anim");
+	for(config::child_list::const_iterator idle_anim = idle_anims.begin(); idle_anim != idle_anims.end(); ++idle_anim) {
+		idle_animations_.push_back(idle_animation(**idle_anim));
+	}
+	if(idle_animations_.empty()) {
+		idle_animations_.push_back(idle_animation(unit_frame(image(),0,1)));
+		// always have a idle animation
 	}
 	flag_rgb_ = cfg["flag_rgb"];
 	// deprecation messages, only seen when unit is parsed for the first time

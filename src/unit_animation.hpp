@@ -140,5 +140,15 @@ class recruit_animation:public unit_animation
 	private:
 };
 
+class idle_animation:public unit_animation
+{
+	public:
+		explicit idle_animation(const config& cfg):unit_animation(cfg){};
+		explicit idle_animation(const unit_frame &frame):
+			unit_animation(frame){};
+
+	private:
+};
+
 
 #endif

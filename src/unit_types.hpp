@@ -270,6 +270,7 @@ private:
 	std::vector<leading_animation> leading_animations_;
 	std::vector<healing_animation> healing_animations_;
 	std::vector<recruit_animation> recruit_animations_;
+	std::vector<idle_animation> idle_animations_;
     std::string flag_rgb_;
 };
 

@@ -871,11 +871,9 @@ void display::draw(bool update,bool force)
 
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
 			unit &u = units_.find(*it)->second;
-			u.refresh();
 			u.redraw_unit(*this, *it);
 		}
 		if (temp_unit_ && invalidated_.find(temp_unit_loc_) != invalidated_.end()) {
-			temp_unit_->refresh();
 			temp_unit_->redraw_unit(*this, temp_unit_loc_);
 		}
 		invalidated_.clear();
@@ -2063,6 +2061,7 @@ void display::invalidate_animations()
 	}
 	unit_map::iterator unit;
 	for(unit=units_.begin() ; unit != units_.end() ; unit++) {
+		unit->second.refresh(*this,unit->first);
 		if (unit->second.get_animation() && !unit->second.get_animation()->does_not_change())
 			invalidate(unit->first);
 	}

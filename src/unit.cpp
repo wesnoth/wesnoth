@@ -145,6 +145,7 @@ unit::unit(const unit& o):
 		leading_animations_(o.leading_animations_),
 		healing_animations_(o.healing_animations_),
 		recruit_animations_(o.recruit_animations_),
+		idle_animations_(o.idle_animations_),
 		anim_(o.anim_),
 
 		frame_begin_time(o.frame_begin_time),
@@ -408,6 +409,7 @@ void unit::advance_to(const unit_type* t)
 	leading_animations_ = t->leading_animations_;
 	healing_animations_ = t->healing_animations_;
 	recruit_animations_ = t->recruit_animations_;
+	idle_animations_ = t->idle_animations_;
 	flag_rgb_ = t->flag_rgb();
 
 	backup_state();
@@ -1272,6 +1274,7 @@ void unit::read(const config& cfg)
 			cfg_.clear_children("leading_anim");
 			cfg_.clear_children("healing_anim");
 			cfg_.clear_children("recruit_anim");
+			cfg_.clear_children("idle_anim");
 		} else {
 			const config::child_list& defends = cfg_.get_children("defend");
 			const config::child_list& teleports = cfg_.get_children("teleport_anim");
@@ -1282,6 +1285,7 @@ void unit::read(const config& cfg)
 			const config::child_list& leading_anims = cfg_.get_children("leading_anim");
 			const config::child_list& healing_anims = cfg_.get_children("healing_anim");
 			const config::child_list& recruit_anims = cfg_.get_children("recruit_anim");
+			const config::child_list& idle_anims = cfg_.get_children("idle_anim");
 			for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 				defensive_animations_.push_back(defensive_animation(**d));
 			}
@@ -1308,6 +1312,9 @@ void unit::read(const config& cfg)
 			}
 			for(config::child_list::const_iterator recruit_anim = recruit_anims.begin(); recruit_anim != recruit_anims.end(); ++recruit_anim) {
 				recruit_animations_.push_back(recruit_animation(**recruit_anim));
+			}
+			for(config::child_list::const_iterator idle_anim = idle_anims.begin(); idle_anim != idle_anims.end(); ++idle_anim) {
+				idle_animations_.push_back(idle_animation(**idle_anim));
 			}
 			if(defensive_animations_.empty()) {
 				defensive_animations_.push_back(defensive_animation(unit_frame(absolute_image(),-150,150)));
@@ -1342,6 +1349,10 @@ void unit::read(const config& cfg)
 				recruit_animations_.push_back(recruit_animation(unit_frame(absolute_image(),0,600,"0~1:600")));
 				// always have a recruit animation
 			}
+			if(idle_animations_.empty()) {
+				idle_animations_.push_back(idle_animation(unit_frame(absolute_image(),0,1)));
+				// always have a idle animation
+			}
 		}
 	} else {
 		// remove animations from private cfg, since they're not needed there now
@@ -1354,6 +1365,7 @@ void unit::read(const config& cfg)
 		cfg_.clear_children("leading_anim");
 		cfg_.clear_children("healing_anim");
 		cfg_.clear_children("recruit_anim");
+		cfg_.clear_children("idle_anim");
 	}
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
@@ -1513,6 +1525,14 @@ const surface unit::still_image() const
 	return unit_image;
 }
 
+void unit::refresh(const display& disp,const gamemap::location& loc) 
+{
+	if(state_ == STATE_IDLING && anim_->animation_finished()) set_standing(disp, loc);
+	if(state_ != STATE_STANDING || SDL_GetTicks() < next_idling) return;
+	set_idling(disp, loc);
+}
+
+
 void unit::set_standing(const display &disp,const gamemap::location& loc, bool with_bars)
 {
 	state_ = STATE_STANDING;
@@ -1526,6 +1546,7 @@ void unit::set_standing(const display &disp,const gamemap::location& loc, bool w
 	anim_->start_animation(anim_->get_first_frame_time(),unit_animation::INFINITE_CYCLES,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
+	next_idling= SDL_GetTicks() +30000 +rand()%10000;
 }
 void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,int swing_num)
 {
@@ -1753,6 +1774,19 @@ void unit::set_walking(const display &disp,const gamemap::location& loc)
 }
 
 
+void unit::set_idling(const display &disp,const gamemap::location& loc)
+{
+	state_ = STATE_IDLING;
+	draw_bars_ = true;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ = new idle_animation(idling_animation(disp.get_map().underlying_union_terrain(loc),facing_));
+	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
+	anim_->update_current_frame();
+}
 
 
 void unit::restart_animation(const display& disp,int start_time) {
@@ -1794,6 +1828,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 
 	std::string image_name;
 	unit_frame current_frame;
+	anim_->update_current_frame();
 	if(anim_->animation_finished()) current_frame = anim_->get_last_frame();
 	else if(anim_->get_first_frame_time() > anim_->get_animation_time()) current_frame = anim_->get_first_frame();
 	else current_frame = anim_->get_current_frame();
@@ -1975,7 +2010,7 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 		over.insert(loc.get_direction(gamemap::location::NORTH));
 	}
 
-	switch (state()) {
+	switch (state_) {
 	case STATE_STANDING:
 		// Standing units don't overlap anything.
 		break;
@@ -2626,6 +2661,7 @@ void unit::set_interrupted_move(const gamemap::location& interrupted_move)
 
 unit::STATE unit::state() const
 {
+	if(state_ == STATE_IDLING) return STATE_STANDING;
 	return state_;
 }
 
@@ -2852,6 +2888,26 @@ const recruit_animation& unit::recruiting_animation(const std::string terrain,ga
 	std::vector<const recruit_animation*> options;
 	int max_val = -1;
 	for(std::vector<recruit_animation>::const_iterator i = recruit_animations_.begin(); i != recruit_animations_.end(); ++i) {
+		int matching = i->matches(terrain,dir);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
+
+const idle_animation& unit::idling_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+{
+	//select one of the matching animations at random
+	std::vector<const idle_animation*> options;
+	int max_val = -1;
+	for(std::vector<idle_animation>::const_iterator i = idle_animations_.begin(); i != idle_animations_.end(); ++i) {
 		int matching = i->matches(terrain,dir);
 		if(matching == max_val) {
 			options.push_back(&*i);

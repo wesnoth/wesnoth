@@ -119,7 +119,7 @@ class unit
 		void new_turn();
 		void end_turn();
 		void new_level();
-		void refresh() {if(anim_ && !refreshing_) anim_->update_current_frame(); }
+		void refresh(const display& disp,const gamemap::location& loc); // called on every draw
 
 		bool take_hit(int damage);
 		void heal(int amount);
@@ -171,6 +171,7 @@ class unit
 		void set_recruited(const display& disp,const gamemap::location& loc);
 		void set_healed(const display& disp,const gamemap::location& loc,int healing);
 		void set_poisoned(const display& disp,const gamemap::location& loc,int damage);
+		void set_idling(const display& disp,const gamemap::location& loc);
 		void restart_animation(const display& disp,int start_time);
 		const unit_animation* get_animation() const {  return anim_;};
 		void set_offset(double offset){offset_ = offset;}
@@ -218,7 +219,7 @@ class unit
 		enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
 		STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
 		STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
-		STATE_RECRUITED, STATE_HEALED, STATE_POISONED};
+		STATE_RECRUITED, STATE_HEALED, STATE_POISONED, STATE_IDLEIN, STATE_IDLING};
 		STATE state() const;
 
 		//the name of the file to display (used in menus
@@ -247,6 +248,7 @@ class unit
 		const leading_animation& lead_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const healing_animation& heal_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const recruit_animation& recruiting_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+		const idle_animation& idling_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
@@ -350,10 +352,12 @@ class unit
 		std::vector<leading_animation> leading_animations_;
 		std::vector<healing_animation> healing_animations_;
 		std::vector<recruit_animation> recruit_animations_;
+		std::vector<idle_animation> idle_animations_;
 		unit_animation *anim_;
-
-
+		Uint32 next_idling;
 		int frame_begin_time;
+
+
 		double offset_;
 		int unit_halo_;
 		int unit_anim_halo_;
