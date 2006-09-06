@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2006-07-14 13:00+0200\n"
-"PO-Revision-Date: 2006-09-04 15:19+0900\n"
+"PO-Revision-Date: 2006-09-06 10:10+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "名前"
 # type: Plain text
 #: man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr "wesnoth - Battle for Wesnoth、ターンベースのファンタジー戦略ゲーム"
+msgstr "wesnoth - Battle for Wesnoth ターン制ファンタジー戦略ゲーム"
 
 # type: SH
 #: man/wesnoth.6:21 man/wesnoth_editor.6:21 man/wesnothd.6:24
@@ -70,7 +70,7 @@ msgstr "説明"
 # type: Plain text
 #: man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr "Battle for B<Wesnoth>はターンベースのファンタジー戦略ゲームである。"
+msgstr "Battle for B<Wesnoth>はターン制のファンタジー戦略ゲームです。"
 
 # type: Plain text
 #: man/wesnoth.6:42
@@ -85,12 +85,12 @@ msgid ""
 "scenarios or campaigns, and share them with others."
 msgstr ""
 "生え抜きの中核の軍隊を使用して、資金と村の資源の管理に注意しながら、全ての敵"
-"のリーダーを倒そう。全てのユニットは固有の強みと弱点を持つため、勝利するため"
-"には、敵の同様の好機を阻みながら、自軍の長所を最大限に引き出せるように配備す"
-"る必要がある。自身の言語でプレイができ、賢いコンピュータを相手に力を試した"
-"り、Wesnothの巨大なオンラインプレイヤーのコミュニティに参加したりすることがで"
-"きる。自分でカスタムユニットや、シナリオやキャンペーンを作成して、それを他の"
-"人達と共有することもできる。"
+"のリーダーを倒しましょう。全てのユニットは固有の強みと弱点を持つため、勝利す"
+"るためには、敵の同様の好機を阻みながら、自軍の長所を最大限に引き出せるように"
+"配備する必要があります。自分の言語でプレイ可能で、賢いコンピュータを相手に力"
+"を試したり、Wesnothの巨大なオンラインプレイヤーのコミュニティに参加したりする"
+"ことができます。自分でカスタムユニットや、シナリオやキャンペーンを作成して、"
+"それを他の人達と共有することもできます。"
 
 # type: SH
 #: man/wesnoth.6:43 man/wesnoth_editor.6:29 man/wesnothd.6:40
@@ -372,7 +372,7 @@ msgid ""
 "side. Available values: \"idle_ai\" and \"sample_ai\"."
 msgstr ""
 "この陣営向けにAIコントローラによって使用される非標準のアルゴリズムを選択す"
-"る。利用可能な値は、 \"idle_ai\" と \"sample_ai\"。"
+"る。設定可能な value は、 \"idle_ai\" と \"sample_ai\"。"
 
 # type: TP
 #: man/wesnoth.6:126
@@ -384,7 +384,7 @@ msgstr "B<--controllerE<lt>numberE<gt>=value>"
 #: man/wesnoth.6:129
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
-msgstr "この陣営の操作者を選択する。利用可能な値は、\"human\" と \"ai\"。"
+msgstr "この陣営の操作者を選択する。設定可能な value は、\"human\" と \"ai\"。"
 
 # type: TP
 #: man/wesnoth.6:129
@@ -447,7 +447,7 @@ msgid ""
 "selects a multiplayer scenario. The default scenario is \"multiplayer_Charge"
 "\"."
 msgstr ""
-"マルチプレイヤーのシナリオを選択する。既定のシナリオは\"multiplayer_Charge"
+"マルチプレイヤーのシナリオを選択する。既定のシナリオは \"multiplayer_Charge"
 "\"。"
 
 # type: TP
@@ -496,7 +496,7 @@ msgstr ""
 #: man/wesnoth.6:163 man/wesnoth_editor.6:63 man/wesnothd.6:132
 #, no-wrap
 msgid "AUTHOR"
-msgstr "作者"
+msgstr "著者"
 
 # type: Plain text
 #: man/wesnoth.6:166
@@ -519,12 +519,13 @@ msgid ""
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "このマニュアルページは Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>によって最"
-"初に書かれた。岡田信人E<lt>okyada@gmail.comE<gt>によって日本語に翻訳された。"
+"初に書かれた。 岡田信人 E<lt>okyada@gmail.comE<gt>によって日本語に翻訳され"
+"た。"
 
 # type: Plain text
 #: man/wesnoth.6:172 man/wesnoth_editor.6:69 man/wesnothd.6:139
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr "公式ホームページ http://www.wesnoth.org/ を訪問せよ。"
+msgstr "公式ホームページ http://www.wesnoth.org/ を訪問して下さい。"
 
 # type: SH
 #: man/wesnoth.6:173 man/wesnoth_editor.6:70 man/wesnothd.6:140
@@ -676,9 +677,9 @@ msgid ""
 msgstr ""
 "David White E<lt>davidnwhite@verizon.netE<gt> によって書かれた。 Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> と ott E<lt>ott@gaon.netE<gt> によっ"
-"て編集された。このマニュアルページは Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>によって最初に書かれた。岡田信人E<lt>okyada@gmail.comE<gt>によって日"
-"本語に翻訳された。"
+"て編集された。 このマニュアルページは Cyril Bouthors E<lt>cyril@bouthors."
+"orgE<gt>によって最初に書かれた。 岡田信人 E<lt>okyada@gmail.comE<gt>によって"
+"日本語に翻訳された。"
 
 # type: Plain text
 #: man/wesnoth_editor.6:77
@@ -742,7 +743,7 @@ msgid ""
 "B<SERVER CONFIG> below for the syntax."
 msgstr ""
 "wesnothd が使用する設定ファイルがどこにあるかを伝える。文法については後述の "
-"B<SERVER CONFIG> の章を参照。"
+"B<サーバー設定> の章を参照。"
 
 # type: TP
 #: man/wesnothd.6:47
@@ -943,7 +944,7 @@ msgstr ""
 #: man/wesnothd.6:108
 msgid "Example: versions_accepted=\"*\" accepts any version string."
 msgstr ""
-"例: versions_accepted=\\\"*\\\" で、どのようなバージョン文字列も受けつける。"
+"例: versions_accepted=\"*\" で、どのようなバージョン文字列も受けつける。"
 
 # type: SS
 #: man/wesnothd.6:109
@@ -1018,9 +1019,9 @@ msgid ""
 msgstr ""
 "David White E<lt>davidnwhite@verizon.netE<gt> によって書かれた。 Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> と ott E<lt>ott@gaon.netE<gt> と "
-"Soliton E<lt>soliton@sonnenkinder.orgE<gt> によって編集された。このマニュアル"
-"ページは Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>によって最初に書かれた。"
-"岡田信人E<lt>okyada@gmail.comE<gt>によって日本語に翻訳された。"
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt> によって編集された。 このマニュア"
+"ルページは Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>によって最初に書かれ"
+"た。 岡田信人 E<lt>okyada@gmail.comE<gt>によって日本語に翻訳された。"
 
 # type: Plain text
 #: man/wesnothd.6:150
