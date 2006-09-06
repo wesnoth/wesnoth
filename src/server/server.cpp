@@ -1168,7 +1168,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		g->remove_player(sock);
 		g->describe_slots();
 
-		if(g->nplayers() == 0) {
+		if( (g->nplayers() == 0) || (needed && (!g->started())) ) {
 
 			//tell all other players the game is over,
 			//because the last player has left
