@@ -69,6 +69,7 @@ public:
 		std::string income;
 		int income_per_village;
 		std::set<std::string> can_recruit;
+		std::vector<std::string> global_recruitment_pattern;
 		std::vector<std::string> recruitment_pattern;
 		std::vector<int> enemies;
 		std::string team_name;

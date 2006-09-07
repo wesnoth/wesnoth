@@ -225,6 +225,10 @@ team::team_info::team_info(const config& cfg)
 		recruitment_pattern.push_back("archer");
 	}
 
+	//keep a copy of the initial recruitment_pattern, since it can be changed
+	//on a per-time-of-day or per-turn basis inside [ai] sections
+	global_recruitment_pattern = recruitment_pattern;
+
 	//additional targets
 	config::const_child_itors tgts;
 	for(tgts = cfg.child_range("target"); tgts.first != tgts.second; ++tgts.first) {
@@ -314,8 +318,9 @@ void team::team_info::write(config& cfg) const
 	cfg["recruit"] = can_recruit_str.str();
 
 	std::stringstream recruit_pattern_str;
-	for(std::vector<std::string>::const_iterator p = recruitment_pattern.begin(); p != recruitment_pattern.end(); ++p) {
-		if(p != recruitment_pattern.begin())
+	std::vector<std::string> rp = global_recruitment_pattern;
+	for(std::vector<std::string>::const_iterator p = rp.begin(); p != rp.end(); ++p) {
+		if(p != rp.begin())
 			recruit_pattern_str << ",";
 
 		recruit_pattern_str << *p;
@@ -453,6 +458,11 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 		aiparams_.append(*i);
 	}
 
+    //get the recruitment pattern from the matching [ai] section, and fall back
+    //to tge global recruitment pattern otherwise
+	info_.recruitment_pattern = utils::split(aiparams_["recruitment_pattern"]);
+	if (info_.recruitment_pattern.empty())
+		info_.recruitment_pattern = info_.global_recruitment_pattern;
 	aggression_ = lexical_cast_default<double>(aiparams_["aggression"],0.5);
 	caution_ = lexical_cast_default<double>(aiparams_["caution"],0.25);
 }
