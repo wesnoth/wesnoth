@@ -631,7 +631,10 @@ void display::scroll_to_leader(unit_map& units, int side)
 	const unit_map::iterator leader = find_leader(units,side);
 
 	if(leader != units_.end()) {
-		const hotkey::basic_handler key_events_handler(this);
+		/* YogiHH: I can't see why we need another key_handler here, therefore
+		i will comment it out
+		const hotkey::basic_handler key_events_handler(gui_);
+		*/
 		scroll_to_tile(leader->first.x,leader->first.y,ONSCREEN);
 	}
 }

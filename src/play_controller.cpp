@@ -361,7 +361,11 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 bool play_controller::do_replay(const bool replaying){
 	bool result = false;
 	if(replaying) {
+		/* YogiHH: I can't see why we need another key_handler here in addition
+		to the one defined in play_controller. Since this is causing problems with
+		double execution of hotkeys i will comment it out
 		const hotkey::basic_handler key_events_handler(gui_);
+		*/
 		LOG_NG << "doing replay " << player_number_ << "\n";
 		try {
 			result = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,

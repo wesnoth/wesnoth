@@ -370,7 +370,11 @@ void playsingle_controller::play_turn(bool save)
 			init_side(player_number_ - 1);
 
 			if (replaying_){
+				/* YogiHH: I can't see why we need another key_handler here in addition
+				to the one defined in play_controller. Since this is causing problems with
+				double execution of hotkeys i will comment it out
 				const hotkey::basic_handler key_events_handler(gui_);
+				*/
 				LOG_NG << "doing replay " << player_number_ << "\n";
 				try {
 					replaying_ = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
