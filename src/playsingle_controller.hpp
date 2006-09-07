@@ -52,8 +52,6 @@ public:
 	virtual void end_unit_turn();
 	virtual void user_command();
 
-	void playsingle_slice();
-
 protected:
 	virtual void play_turn(bool no_save);
 	virtual void play_side(const unsigned int team_index, bool save);
