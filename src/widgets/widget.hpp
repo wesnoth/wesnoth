@@ -97,6 +97,8 @@ private:
 	void volatile_draw();
 	void volatile_undraw();
 
+	void hide_override(bool value = true);
+	
 	CVideo* video_;
 	std::vector< surface_restorer > restorer_;
 	SDL_Rect rect_;
@@ -104,6 +106,7 @@ private:
 	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?
 
 	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;
+	bool hidden_override_;
 	bool enabled_;
 	bool clip_;
 	SDL_Rect clip_rect_;

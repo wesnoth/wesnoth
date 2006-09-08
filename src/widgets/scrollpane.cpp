@@ -59,7 +59,7 @@ void scrollpane::set_location(SDL_Rect const& rect)
 void scrollpane::hide(bool value)
 {
 	for(widget_map::iterator itor = content_.begin(); itor != content_.end(); ++itor) {
-		itor->second.w->hide(value);
+		itor->second.w->hide_override(value);
 	}
 }
 
@@ -116,7 +116,6 @@ void scrollpane::scroll(unsigned int pos)
 
 void scrollpane::update_widget_positions()
 {
-
 	widget_map::iterator itor;
 	std::vector<bool> hidden(content_.size());
 	int i = 0;
