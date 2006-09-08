@@ -24,7 +24,7 @@ namespace gui {
 
 widget::widget(const widget &o)
 	: events::handler(), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
-	  focus_(o.focus_), needs_restore_(o.needs_restore_), state_(o.state_),
+	  focus_(o.focus_), needs_restore_(o.needs_restore_), state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
 	  help_text_(o.help_text_), help_string_(o.help_string_), align_(o.align_)
 {
@@ -32,8 +32,8 @@ widget::widget(const widget &o)
 
 widget::widget(CVideo& video, const bool auto_join)
 	: handler(auto_join), video_(&video), rect_(EmptyRect), focus_(true), needs_restore_(false),
-	  state_(UNINIT), enabled_(true), clip_(false), volatile_(false), help_string_(0),
-	  align_(RIGHT_ALIGN)
+	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false), volatile_(false),
+	  help_string_(0), align_(RIGHT_ALIGN)
 {
 }
 
@@ -144,13 +144,29 @@ bool widget::focus() const
 void widget::hide(bool value)
 {
 	if (value) {
-		if (state_ == DIRTY || state_ == DRAWN)
+		if ((state_ == DIRTY || state_ == DRAWN) && !hidden_override_)
 			bg_restore();
 		state_ = HIDDEN;
 	} else if (state_ == HIDDEN) {
 		state_ = DRAWN;
-		bg_update();
-		set_dirty(true);
+		if (!hidden_override_) {
+			bg_update();
+			set_dirty(true);
+		}
+	}
+}
+
+void widget::hide_override(bool value) {
+	if (hidden_override_ != value) {
+		hidden_override_ = value;
+		if (state_ == DIRTY || state_ == DRAWN) {
+			if (value) {
+				bg_restore();
+			} else {
+				bg_update();
+				set_dirty(true);
+			}
+		}
 	}
 }
 
@@ -163,7 +179,7 @@ void widget::set_clip_rect(const SDL_Rect& rect)
 
 bool widget::hidden() const
 {
-	return (state_ == HIDDEN || state_ == UNINIT
+	return (state_ == HIDDEN || hidden_override_ || state_ == UNINIT
 		|| (clip_ && !rects_overlap(clip_rect_, rect_)));
 }
 
@@ -182,7 +198,7 @@ bool widget::enabled() const
 
 void widget::set_dirty(bool dirty)
 {
-	if (dirty && (volatile_ || state_ != DRAWN) || !dirty && state_ != DIRTY)
+	if (dirty && (volatile_ || hidden_override_ || state_ != DRAWN) || !dirty && state_ != DIRTY)
 		return;
 
 	state_ = dirty ? DIRTY : DRAWN;
@@ -257,7 +273,7 @@ void widget::draw()
 
 void widget::volatile_draw()
 {
-	if (!volatile_ || state_ != DRAWN)
+	if (!volatile_ || state_ != DRAWN || hidden_override_)
 		return;
 	state_ = DIRTY;
 	bg_update();
