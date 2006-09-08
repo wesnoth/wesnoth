@@ -615,7 +615,7 @@ gamemap::TERRAIN terrain_converter::convert_to() const
 //function to generate the map.
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
-						         size_t max_lakes, size_t nvillages, size_t nplayers, bool roads_between_castles,
+						         size_t max_lakes, size_t nvillages, size_t castle_size, size_t nplayers, bool roads_between_castles,
 								 std::map<gamemap::location,std::string>* labels, const config& cfg)
 {
 	log_scope("map generation");
@@ -838,10 +838,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	for(size_t player = 0; player != nplayers; ++player) {
 		LOG_NG << "placing castle for " << player << "\n";
 		log_scope("placing castle");
-		const int min_x = width/3 + 2;
-		const int min_y = height/3 + 2;
-		const int max_x = (width/3)*2 - 3;
-		const int max_y = (height/3)*2 - 3;
+		const int min_x = width/3 + 3;
+		const int min_y = height/3 + 3;
+		const int max_x = (width/3)*2 - 4;
+		const int max_y = (height/3)*2 - 4;
 		const size_t min_distance = atoi((*castle_config)["min_distance"].c_str());
 
 		location best_loc;
@@ -1023,27 +1023,26 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const int y = c->y;
 		const int player = c - castles.begin();
 		terrain[x][y] = '1' + player;
-		terrain[x-1][y] = 'C';
-		terrain[x+1][y] = 'C';
-		terrain[x][y-1] = 'C';
-		terrain[x][y+1] = 'C';
-		terrain[x-1][y-1] = 'C';
-		terrain[x-1][y+1] = 'C';
-		terrain[x+1][y-1] = 'C';
-		terrain[x+1][y+1] = 'C';
+
+		const int castles[13][2] = {
+		  {-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {0, 1}, {-1, 1},
+		  {-2, 1}, {-2, 0}, {-2, -1}, {-1, -2}, {0, -2}, {1, -2}
+		};
+
+		for (size_t i = 0; i < castle_size - 1; i++) {
+		  terrain[x+castles[i][0]][y+castles[i][1]] = 'C';
+		}
 
 		//remove all labels under the castle tiles
 		if(labels != NULL) {
-			labels->erase(location(x-width/3,y-height/3));
-			labels->erase(location(x-1-width/3,y-height/3));
-			labels->erase(location(x+1-width/3,y-height/3));
-			labels->erase(location(x-width/3,y-1-height/3));
-			labels->erase(location(x-width/3,y+1-height/3));
-			labels->erase(location(x-1-width/3,y-1-height/3));
-			labels->erase(location(x-1-width/3,y+1-height/3));
-			labels->erase(location(x+1-width/3,y-1-height/3));
-			labels->erase(location(x+1-width/3,y+1-height/3));
+		  labels->erase(location(x-width/3,y-height/3));
+		  for (size_t i = 0; i < castle_size - 1; i++) {
+		    labels->erase(location(x+castles[i][0]-width/3,
+					   y+castles[i][1]-height/3));
+		  }
+
 		}
+
 	}
 
 	LOG_NG << "placed castles\n";
