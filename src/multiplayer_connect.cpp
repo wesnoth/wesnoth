@@ -95,6 +95,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	combo_colour_.enable(enabled_);
 	slider_gold_.hide(!enabled_);
 	slider_income_.hide(!enabled_);
+	label_gold_.hide(!enabled_);
+	label_income_.hide(!enabled_);
 
 	id_ = ""; // Id is reset, and not imported from loading savegames
 	save_id_ = cfg_["save_id"];
@@ -151,14 +153,20 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_leader_.set_selected(0);
 	} else if(parent_->params_.use_map_settings) {
 		//gold, income, team, and colour are only suggestions unless explicitly locked
-		if(cfg_["gold_lock"] == "yes")
+		if(cfg_["gold_lock"] == "yes") {
 			slider_gold_.enable(false);
-		if(cfg_["income_lock"] == "yes")
+			label_gold_.enable(false);
+		}
+		if(cfg_["income_lock"] == "yes") {
 			slider_income_.enable(false);
-		if(cfg_["team_lock"] == "yes")
+			label_income_.enable(false);
+		}
+		if(cfg_["team_lock"] == "yes") {
 			combo_team_.enable(false);
-		if(cfg_["colour_lock"] == "yes")
+		}
+		if(cfg_["colour_lock"] == "yes") {
 			combo_colour_.enable(false);
+		}
 
 		//set the leader
 		leader_ = cfg_["type"];
@@ -853,8 +861,10 @@ void connect::hide_children(bool hide)
 	faction_title_label_.hide(hide);
 	team_title_label_.hide(hide);
 	colour_title_label_.hide(hide);
-	gold_title_label_.hide(hide);
-	income_title_label_.hide(hide);
+	if (!params_.saved_game) {
+		gold_title_label_.hide(hide);
+		income_title_label_.hide(hide);
+	}
 
 	launch_.hide(hide);
 	cancel_.hide(hide);
@@ -1249,6 +1259,9 @@ void connect::load_game()
 		level_.add_child("era", *era_cfg);
 		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 	}
+	gold_title_label_.hide(params_.saved_game);
+	income_title_label_.hide(params_.saved_game);
+
 	level_["mp_village_gold"] = lexical_cast<std::string>(params_.village_gold);
 	level_["mp_use_map_settings"] = params_.use_map_settings ? "yes" : "no";
 	level_["mp_fog"] = params_.fog_game ? "yes" : "no";
