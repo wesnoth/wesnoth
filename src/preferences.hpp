@@ -56,6 +56,9 @@ namespace preferences {
 	bool turbo();
 	void _set_turbo(bool ison);
 
+	int turbo_speed();
+	void save_turbo_speed(const int speed);
+
 	const std::string& language();
 	void set_language(const std::string& s);
 

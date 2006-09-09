@@ -166,6 +166,16 @@ void _set_turbo(bool ison)
 	prefs["turbo"] = (ison ? "true" : "false");
 }
 
+int turbo_speed()
+{
+	return lexical_cast_default<int>(prefs["turbo_speed"], 1);
+}
+
+void save_turbo_speed(int speed)
+{
+	prefs["turbo_speed"] = lexical_cast_default<std::string>(speed, "1");
+}
+
 const std::string& language()
 {
 	return prefs["locale"];
@@ -238,8 +248,8 @@ void _set_gamma(int gamma)
 
 bool grid()
 {
-	const string_map::const_iterator turbo = prefs.values.find("grid");
-	return turbo != prefs.values.end() && turbo->second == "true";
+	const string_map::const_iterator it = prefs.values.find("grid");
+	return it != prefs.values.end() && it->second == "true";
 }
 
 void _set_grid(bool ison)

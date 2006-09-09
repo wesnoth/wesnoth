@@ -74,7 +74,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
 
-	const int acceleration = disp.turbo() ? 5:1;
+	const int acceleration = disp.turbo_speed();
 
 	gamemap::location src_adjacent[6];
 	get_adjacent_tiles(a, src_adjacent);
@@ -212,7 +212,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	wassert(def != units.end());
 	unit& defender = def->second;
 
-	const int acceleration = disp.turbo() ? 5 : 1;
+	const int acceleration = disp.turbo_speed();
 
 
 	// more damage shown for longer, but 1s at most for this factor
@@ -369,8 +369,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 	if(dead) {
 		unit_display::unit_die(disp,def->first,def->second,&attack);
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc); 	 
-                 att->second.set_standing(disp,a); 	 
+		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
+                 att->second.set_standing(disp,a);
 	}
 	disp.update_display();
 	events::pump();
@@ -505,8 +505,8 @@ bool unit_attack(display& disp, unit_map& units,
 
 	if(dead) {
 		unit_display::unit_die(disp,def->first,def->second,&attack);
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc); 	 
-                 att->second.set_standing(disp,a); 	 
+		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
+                 att->second.set_standing(disp,a);
 	}
 	disp.update_display();
 	events::pump();

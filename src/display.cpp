@@ -85,7 +85,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0),
-	turbo_(false), grid_(false), sidebarScaling_(1.0),
+	turbo_speed_(1), turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL),
@@ -2176,6 +2176,27 @@ bool display::turbo() const
 void display::set_turbo(bool turbo)
 {
 	turbo_ = turbo;
+}
+
+int display::turbo_speed() const
+{
+	if (turbo_ or keys_[SDLK_LSHIFT] or keys_[SDLK_RSHIFT])
+		return turbo_speed_;
+	else
+		return 1;
+}
+
+void display::set_turbo_speed(const int speed)
+{
+#if 0
+	// speed < 2 don't make sense
+	if (speed < 2)
+		return;
+	if (speed > 20)
+		turbo_speed_ = 20;
+	else
+#endif
+		turbo_speed_ = speed;
 }
 
 //Delay routines: use these not SDL_Delay (for --nogui).
