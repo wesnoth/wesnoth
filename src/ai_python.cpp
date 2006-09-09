@@ -507,6 +507,13 @@ static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
     return Py_BuildValue("i",utils::string_bool(unit->unit_->get_state("poisoned")));
 }
 
+static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
+{
+    if (!running_instance->is_unit_valid(unit->unit_))
+        return NULL;
+    return Py_BuildValue("i",utils::string_bool(unit->unit_->get_state("stoned")));
+}
+
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
 	return Py_BuildValue("i",running_instance->is_unit_valid(unit->unit_, false) == true ? 1 : 0);
@@ -538,6 +545,8 @@ static PyGetSetDef unit_getseters[] = {
         "If the unit can still attack.",	NULL},
 	{ "poisoned",		(getter)unit_poisoned,	NULL,
         "If the unit is poisoned.",	NULL },
+	{ "stoned",		(getter)unit_stoned,	NULL,
+        "If the unit is stoned.",	NULL },
 	{ NULL,				NULL,						NULL,	NULL,	NULL }
 };
 
