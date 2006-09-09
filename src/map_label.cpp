@@ -19,7 +19,7 @@
 #include "map_label.hpp"
 
 namespace {
-const size_t max_label_size = 32;
+const size_t max_label_size = 64;
 
 //our definition of map labels being obscured is if the tile is obscured,
 //or the tile below is obscured. This is because in the case where the tile
