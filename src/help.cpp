@@ -1342,9 +1342,9 @@ std::vector<topic> generate_unit_topics(const bool sort_generated)
 	    i != game_info->unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-		if (desc_type == NO_DESCRIPTION) {
+		if (desc_type == NO_DESCRIPTION or type.hide_help())
 			continue;
-		}
+
 		const std::string lang_name = type.language_name();
 		const std::string id = type.id();
 		topic unit_topic(lang_name, std::string("unit_") + id, "");

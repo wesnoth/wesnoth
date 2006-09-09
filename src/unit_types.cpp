@@ -255,7 +255,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			new_specials->add_child(*value.first,*value.second);
 		}
 	}
-	
+
 	if(set_special.empty() == false) {
 		LOG_STREAM(err, config) << "[effect] uses set_special=" << set_special <<", which is now deprecated. Use [set_specials] instead.\n";
 		cfg_.clear_children("specials");
@@ -614,8 +614,8 @@ const std::map<gamemap::TERRAIN,int>& unit_movement_type::defense_mods() const
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      advances_to_(o.advances_to_), experience_needed_(o.experience_needed_),
-      alignment_(o.alignment_),
+      hide_help_(o.hide_help_), advances_to_(o.advances_to_),
+      experience_needed_(o.experience_needed_), alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
@@ -907,6 +907,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	flag_rgb_ = cfg["flag_rgb"];
 	// deprecation messages, only seen when unit is parsed for the first time
+
+	hide_help_= cfg_["hide_help"] == "true" ? true : false;
 }
 
 unit_type::~unit_type()
@@ -1200,6 +1202,10 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
+bool unit_type::hide_help() const
+{
+	return hide_help_;
+}
 
 
 void unit_type::add_advancement(const unit_type &to_unit,int xp)

@@ -31,10 +31,11 @@ Version 1.3-svn:
      future hotkey changes/additions (see bug #6312)
    * when discovering friendly units, the message is now blue
  * WML engine
+   * add hide_help key to prevent some unit to be display in help menu
    * allow_new_game key (default=yes) to prevent [multiplayer] scenarios to
      show up in the multiplayer game creation interface (FR #6397)
    * new [set_specials] tag to allow custom special in effect tags
-   * new remove_specials=<id_list> key to allow to remove specials in effect 
+   * new remove_specials=<id_list> key to allow to remove specials in effect
      tags
    * obsolete set_special= in [effect] tags
    * correct handling of UTF8 filenames under windows
@@ -48,10 +49,10 @@ Version 1.3-svn:
    * units now have levelin animations when they level into this unit
    * units now have levelout animations when they level out of this unit
  * multiplayer game management
-   * client now tells the server if a game ended in victory or defeat 
+   * client now tells the server if a game ended in victory or defeat
    * configurable castle size for random map generator (patch #598, FR #3232)
  * multiplayer scenarios
-   * scenarios can set faction, recruit, leader, and some other initial 
+   * scenarios can set faction, recruit, leader, and some other initial
      settings previously ignored in multiplayer
  * language and i18n:
    * new manpages: Czech, Italian, Slovak.
@@ -89,7 +90,7 @@ Version 1.1.6:
  * campaigns
    * Heir to the Throne
      * added a secret, powerful item to one of the later scenarios
-     * ensured minimum gold of 500 to start campaign climax scenarios (after 
+     * ensured minimum gold of 500 to start campaign climax scenarios (after
        Elven Council)
      * expanded list of units that can obtain the Fire Sword
      * added an option dialog to let you choose who gets the Fire Sword
@@ -99,7 +100,7 @@ Version 1.1.6:
      * fixed Naga position in Hard mode for Tidings Good And Ill
  * multiplayer maps:
    * renamed Smallolof to Amohsad Caldera
-   * revised multiplayer maps: Caves of the Basilisk, Cynsaun Battlefield, 
+   * revised multiplayer maps: Caves of the Basilisk, Cynsaun Battlefield,
      Sulla's Ruins, Hornshark Island, 3p Morituri, Blue Water Province, Castle
      Hopping Isle, Forest of Fear, Amohsad Caldera, Hexcake
  * units

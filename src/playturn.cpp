@@ -187,7 +187,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			//get all allies in as options to transfer control
 			for (std::vector<team>::iterator team = teams_.begin(); team != teams_.end(); team++){
-				if ( (!team->is_enemy(side + 1)) && (!team->is_human()) 
+				if ( (!team->is_enemy(side + 1)) && (!team->is_human())
 					&& (team->current_player() != teams_[side].current_player()) ){
 					//if this is an ally of the dropping side and it is not us (choose local player
 					//if you want that) and if it is not the dropping side itself, get this team in as well

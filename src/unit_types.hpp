@@ -225,6 +225,7 @@ public:
 	const std::vector<unit_race::GENDER>& genders() const;
 
 	const std::string& race() const;
+	bool hide_help() const;
 
 private:
 	void operator=(const unit_type& o);
@@ -246,7 +247,7 @@ private:
 
 	mutable std::string id_;
 
-	bool zoc_;
+	bool zoc_, hide_help_;
 
     std::vector<std::string> advances_to_;
     int experience_needed_;
