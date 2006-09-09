@@ -1987,25 +1987,31 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			}
 
 			const char* msg_id;
+			SDL_Color msg_colour;
 
 			//the message we display is different depending on whether units sighted
 			//were enemies or friends, and whether there is one or more
 			if(seen_units.size() == 1) {
 				if(nfriends == 1) {
 					msg_id = N_("Friendly unit sighted");
+					msg_colour = font::GOOD_COLOUR;
 				} else {
 					msg_id = N_("Enemy unit sighted!");
+					msg_colour = font::BAD_COLOUR;
 				}
 			}
 			else if(nfriends == 0 || nenemies == 0) {
 				if(nfriends > 0) {
 					msg_id = N_("$friends Friendly units sighted");
+					msg_colour = font::GOOD_COLOUR;
 				} else {
 					msg_id = N_("$enemies Enemy units sighted!");
+					msg_colour = font::BAD_COLOUR;
 				}
 			}
 			else {
 				msg_id = N_("Units sighted! ($friends friendly, $enemies enemy)");
+				msg_colour = font::NORMAL_COLOUR;
 			}
 
 			utils::string_map symbols;
@@ -2025,7 +2031,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			}
 			const std::string message = utils::interpolate_variables_into_string(msg.str(), &symbols);
 
-			font::add_floating_label(message,font::SIZE_XLARGE,font::BAD_COLOUR,
+			font::add_floating_label(message,font::SIZE_XLARGE,msg_colour,
 			                         disp->map_area().w/2,disp->map_area().h/3,
 									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
 		}
