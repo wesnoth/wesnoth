@@ -117,6 +117,10 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 		unit_filter_.push_back(**itor);
 	}
 
+	for(itor = cfg.child_range("secondary_unit_filter").first; itor <cfg.child_range("secondary_unit_filter").second;itor++) {
+		secondary_unit_filter_.push_back(**itor);
+	}
+
 	/* warn on deprecated WML */
 	if(cfg.child("sound")) {
 		LOG_STREAM(err, config) << "an animation uses the deprecated [sound] tag, please include sound in the [frame] tag\n";
@@ -146,12 +150,26 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 		}
 		std::vector<config>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); myitor++) {
-			printf("trying\n");
-			myitor->debug();
 			if(!my_unit->matches_filter(*myitor,loc)) return -1;
-			printf("done\n");
 			result++;
 		}
+		if(!secondary_unit_filter_.empty()) {
+			const gamemap::location facing_loc = loc.get_direction(my_unit->facing());
+			unit_map::const_iterator unit;
+			for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; unit++) {
+				if(unit->first == facing_loc) {
+					std::vector<config>::const_iterator second_itor;
+					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); second_itor++) {
+						if(!my_unit->matches_filter(*second_itor,facing_loc)) return -1;
+						result++;
+					}
+
+					break;
+				}
+			}
+			if(unit == disp.get_const_units().end()) return -1;
+		}
+
 	} else if (!unit_filter_.empty()) return -1;
 
 	return result;

@@ -288,6 +288,7 @@ public:
 	const std::vector<team>& get_teams() {return teams_;};
 
 	unit_map& get_units() {return units_;};
+	const unit_map& get_const_units() const {return units_;};
 
 	//compat methods to be dropped after full migration
 	void lock_updates(bool value) {screen_.lock_updates(value); };
