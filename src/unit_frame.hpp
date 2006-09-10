@@ -22,23 +22,43 @@
 #include <string>
 #include <vector>
 
+//
+class progressive_string {
+	public:
+		progressive_string(const std::string& data = "",int duration = 0);
+		int duration() const;
+		const std::string & get_current_element(int time) const;
+	private:
+		std::vector<std::pair<std::string,int> > data_;
+};
+
+class progressive_double {
+	public:
+		progressive_double(const std::string& data = "",int duration = 0);
+		int duration() const;
+		const double get_current_element(int time) const;
+	private:
+		std::vector<std::pair<std::pair<double,double>,int> > data_;
+};
+
+
+
+
 //a class to describe a unit's animation sequence
-extern std::string grr(const char*);
 class unit_frame {
 	public:
 	// constructors
 		unit_frame();
 		explicit unit_frame(const std::string& str, int begin=0,int end=1,
-				const std::string& highlight="1.0",
-				Uint32 blend_color = 0, const std::string& blend_rate = "",
+				const std::string& highlight="1.0",const std::string& offset="",
+				Uint32 blend_color = 0, const std::string& blend_rate = "0",
 				std::string in_halo = "",int halox = 0,int haloy = 0,
 				const std::string & diag ="");
 		explicit unit_frame(const config& cfg);
 
-		int xoffset() const { return xoffset_ ; }
 		std::string image() const { return image_ ;}
 		std::string image_diagonal() const { return image_diagonal_ ; }
-		const std::string halo(int current_time) const;
+		const std::string &halo(int current_time) const;
 		std::string sound() const { return sound_ ; };
 		int halo_x() const { return halo_x_; }
 		int halo_y() const { return halo_y_; }
@@ -47,17 +67,19 @@ class unit_frame {
 		Uint32 blend_with() const { return blend_with_; }
 		double blend_ratio(int current_time) const;
 		fixed_t highlight_ratio(int current_time) const;
+		double offset(int current_time) const;
 	private:
-		int xoffset_;
 		std::string image_;
 		std::string image_diagonal_;
-		std::vector<std::pair<std::string,int> > halo_;
+		progressive_string halo_;
+
 		std::string sound_;
 		int halo_x_, halo_y_;
 		int begin_time_, end_time_;
 		Uint32 blend_with_;
-		std::vector<std::pair<std::pair<double,double>,int> > blend_ratio_;
-		std::vector<std::pair<std::pair<double,double>,int> > highlight_ratio_;
+		progressive_double blend_ratio_;
+		progressive_double highlight_ratio_;
+		progressive_double offset_;
 };
 
 #endif

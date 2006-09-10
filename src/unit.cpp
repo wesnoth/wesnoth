@@ -1354,7 +1354,7 @@ void unit::read(const config& cfg)
 			}
 			if(healing_animations_.empty()) {
 				healing_animations_.push_back(healing_animation(unit_frame(image_healing(),0,150,
-								"1.0",0,"",image_halo_healing(),0,0)));
+								"1.0","",0,"",image_halo_healing(),0,0)));
 				// always have a healing animation
 			}
 
@@ -1378,7 +1378,7 @@ void unit::read(const config& cfg)
 				levelin_animations_.push_back(levelin_animation(**levelin_anim));
 			}
 			if(levelin_animations_.empty()) {
-				levelout_animations_.push_back(levelout_animation(unit_frame(absolute_image(),0,600,"1.0",display::rgb(255,255,255),"1~0:600")));
+				levelout_animations_.push_back(levelout_animation(unit_frame(absolute_image(),0,600,"1.0","",display::rgb(255,255,255),"1~0:600")));
 				// always have a levelin animation
 			}
 
@@ -1386,7 +1386,7 @@ void unit::read(const config& cfg)
 				levelout_animations_.push_back(levelout_animation(**levelout_anim));
 			}
 			if(levelout_animations_.empty()) {
-				levelout_animations_.push_back(levelout_animation(unit_frame(absolute_image(),0,600,"1.0",display::rgb(255,255,255),"0~1:600")));
+				levelout_animations_.push_back(levelout_animation(unit_frame(absolute_image(),0,600,"1.0","",display::rgb(255,255,255),"0~1:600")));
 				// always have a levelout animation
 			}
 
@@ -1609,7 +1609,7 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 	int anim_time = anim_->get_last_frame_time();
 	const std::string my_image = anim_->get_last_frame().image();
 	if(damage) {
-		anim_->add_frame(anim_time,unit_frame(my_image,anim_time,anim_time+100,"1.0",display::rgb(255,0,0),"0.5:50,0.0:50"));
+		anim_->add_frame(anim_time,unit_frame(my_image,anim_time,anim_time+100,"1.0","",display::rgb(255,0,0),"0.5:50,0.0:50"));
 		anim_time+=100;
 	}
 	anim_->add_frame(anim_time);
@@ -1719,7 +1719,7 @@ void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int 
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ = new unit_animation(unit_frame(absolute_image(),0,240,"1.0",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
+	anim_ = new unit_animation(unit_frame(absolute_image(),0,240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
 	anim_->start_animation(anim_->get_first_frame_time(), 1, disp.turbo_speed());
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -1732,7 +1732,7 @@ void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, in
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ = new unit_animation(unit_frame(absolute_image(),0,240,"1.0",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
+	anim_ = new unit_animation(unit_frame(absolute_image(),0,240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
 	anim_->start_animation(anim_->get_first_frame_time(), 1, disp.turbo_speed());
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -1845,8 +1845,6 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	const double xdst = disp.get_location_x(dst);
 	const double ydst = disp.get_location_y(dst);
 
-	const int x = int(offset_*xdst + (1.0-offset_)*xsrc);
-	const int y = int(offset_*ydst + (1.0-offset_)*ysrc);
 
 	if(!anim_) set_standing(disp,hex);
 	const gamemap::TERRAIN terrain = map.get_terrain(hex);
@@ -1861,6 +1859,10 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	else current_frame = anim_->get_current_frame();
 
 	image_name = current_frame.image();
+	double tmp_offset = current_frame.offset(anim_->get_animation_time());
+	if(tmp_offset == -20.0) tmp_offset = offset_;
+	const int x = int(tmp_offset*xdst + (1.0-tmp_offset)*xsrc);
+	const int y = int(tmp_offset*ydst + (1.0-tmp_offset)*ysrc);
 	if(frame_begin_time != current_frame.begin_time()) {
 		frame_begin_time = current_frame.begin_time();
 		if(!current_frame.sound().empty()) {

@@ -865,7 +865,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		healing_animations_.push_back(healing_animation(**healing_anim));
 	}
 	if(healing_animations_.empty()) {
-		healing_animations_.push_back(healing_animation(unit_frame(cfg["image_healing"],0,1,"1.0",0,"",cfg["image_halo_healing"])));
+		healing_animations_.push_back(healing_animation(unit_frame(cfg["image_healing"],0,1,"1.0","",0,"",cfg["image_halo_healing"])));
 		// always have a healing animation
 	}
 
@@ -893,7 +893,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		levelin_animations_.push_back(levelin_animation(**levelin_anim));
 	}
 	if(levelin_animations_.empty()) {
-		levelin_animations_.push_back(levelin_animation(unit_frame(image(),0,600,"1.0",display::rgb(255,255,255),"1~0:600")));
+		levelin_animations_.push_back(levelin_animation(unit_frame(image(),0,600,"1.0","",display::rgb(255,255,255),"1~0:600")));
 		// always have a levelin animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
@@ -902,7 +902,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		levelout_animations_.push_back(levelout_animation(**levelout_anim));
 	}
 	if(levelout_animations_.empty()) {
-		levelout_animations_.push_back(levelout_animation(unit_frame(image(),0,600,"1.0",display::rgb(255,255,255),"0~1:600")));
+		levelout_animations_.push_back(levelout_animation(unit_frame(image(),0,600,"1.0","",display::rgb(255,255,255),"0~1:600")));
 		// always have a levelout animation
 	}
 	flag_rgb_ = cfg["flag_rgb"];
