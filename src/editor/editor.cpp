@@ -69,6 +69,78 @@ namespace {
 
 namespace map_editor {
 
+bool check_data(std::string &data, std::string &filename, bool &from_scenario, config &game_cfg)
+{
+	std::string file_content = data;
+
+	if (valid_mapdata(file_content, game_cfg)) {
+		from_scenario = false;
+		return true;
+	}
+
+	std::string::size_type start, stop;
+	start = file_content.find("map_data=");
+	if (start==std::string::npos)
+		return false;
+	start += 10;
+	stop = file_content.find('\"', start);
+	if (stop==std::string::npos)
+		return false;
+	std::string nfname;
+	std::string newfilename = std::string(file_content, start, stop-start);
+	if (newfilename[0]=='{' and newfilename[newfilename.size()-1]=='}') {
+		newfilename.erase(newfilename.begin());
+		newfilename.erase(--newfilename.end());
+
+		#ifndef USE_ZIPIOS
+		//if the filename begins with a '~', then look
+		//in the user's data directory. If the filename begins with
+		//a '@' then we look in the user's data directory,
+		//but default to the standard data directory if it's not found
+		//there.
+		if(newfilename != "" && (newfilename[0] == '~' || newfilename[0] == '@')) {
+			nfname = newfilename;
+			nfname.erase(nfname.begin(),nfname.begin()+1);
+			nfname = get_user_data_dir() + "/data/" + nfname;
+
+			std::cout << "got relative name '" << newfilename << "' -> '" << nfname << "'\n";
+
+			if(newfilename[0] == '@' && file_exists(nfname) == false && is_directory(nfname) == false) {
+				nfname = "data/" + newfilename.substr(1);
+			}
+		} else
+		#endif
+		if(newfilename.size() >= 2 && newfilename[0] == '.' &&
+			newfilename[1] == '/' ) {
+			//if the filename begins with a "./", then look
+			//in the same directory as the file currrently
+			//being preprocessed
+			nfname = newfilename;
+			nfname.erase(nfname.begin(),nfname.begin()+2);
+			nfname = directory_name(filename) + nfname;
+
+		} else {
+#ifdef USE_ZIPIOS
+		if(newfilename != "" && newfilename[0] == '@') {
+			nfname = newfilename;
+			nfname.erase(nfname.begin(),nfname.begin()+1);
+			nfname = "data/" + nfname;
+		} else
+#endif
+
+				nfname = "data/" + newfilename;
+		}
+
+		data = read_file(nfname);
+		filename = nfname;
+		from_scenario = false;
+	} else {
+		data = newfilename;
+		from_scenario = true;
+	}
+	return true;
+}
+
 // The map_editor object will be recreated when operations that affect
 // the whole map takes place. It may not be the most beautiful solution,
 // but it is the way the least interference with the game system is
@@ -436,10 +508,10 @@ void map_editor::edit_save_as() {
 		}
 	} while (res == 0 && overwrite != 0);
 
-	// Try to save the map, if it fails we reset the filename.
+	// Try to save the map, if it fails we reset the filename
 	if (res == 0) {
 		std::string old_file_name = filename_;
-		set_file_to_save_as(input_name);
+		set_file_to_save_as(input_name, from_scenario_);
 		if(!save_map("", true))
 		{
 			filename_ = old_file_name;
@@ -513,18 +585,13 @@ void map_editor::edit_load_map() {
 			gui::show_dialog(gui_, NULL, "", _("Warning: Illegal characters found in the map name. Please save under a different name."), gui::OK_ONLY);
 		}
 
-		std::string new_map;
-		try {
-			new_map = load_map(fn);
-		}
-		catch (load_map_exception) {
-			return;
-		}
-		if (valid_mapdata(new_map, game_config_)) {
+		std::string new_map = read_file(fn);
+		bool scenario;
+		if (check_data(new_map, fn, scenario, game_config_)) {
 			if (!changed_since_save() || confirm_modification_disposal(gui_)) {
 				num_operations_since_save_ = 0;
 				clear_undo_actions();
-				throw new_map_exception(new_map, fn);
+				throw new_map_exception(new_map, fn, scenario);
 			}
 		}
 		else {
@@ -593,18 +660,13 @@ void map_editor::edit_paste() {
 }
 
 void map_editor::edit_revert() {
-	std::string new_map;
-	try {
-		new_map = load_map(filename_);
-	}
-	catch (load_map_exception) {
-		return;
-	}
-	if (valid_mapdata(new_map, game_config_)) {
+	std::string new_map = read_file(filename_);
+	bool scenario;
+	if (check_data(new_map, filename_, scenario, game_config_)) {
 		map_undo_action action;
 		action.set_map_data(map_.write(), new_map);
 		save_undo_action(action);
-		throw new_map_exception(new_map, filename_);
+		throw new_map_exception(new_map, filename_, scenario);
 	}
 	else {
 		gui::show_dialog(gui_, NULL, "", _("The file does not contain a valid map."), gui::OK_ONLY);
@@ -621,7 +683,7 @@ void map_editor::edit_resize() {
 			map_undo_action action;
 			action.set_map_data(map_.write(), resized_map);
 			save_undo_action(action);
-			throw new_map_exception(resized_map, filename_);
+			throw new_map_exception(resized_map, filename_, from_scenario_);
 		}
 	}
 }
@@ -633,7 +695,7 @@ void map_editor::edit_flip() {
 		map_undo_action action;
 		action.set_map_data(map_.write(), flipped_map);
 		save_undo_action(action);
-		throw new_map_exception(flipped_map, filename_);
+		throw new_map_exception(flipped_map, filename_, from_scenario_);
 	}
 }
 
@@ -794,7 +856,7 @@ void map_editor::undo() {
 		}
 		invalidate_all_and_adjacent(to_invalidate);
 		if (action.map_data_set()) {
-			throw new_map_exception(action.old_map_data(), filename_);
+			throw new_map_exception(action.old_map_data(), filename_, from_scenario_);
 		}
 	}
 }
@@ -828,7 +890,7 @@ void map_editor::redo() {
 		}
 		invalidate_all_and_adjacent(to_invalidate);
 		 if (action.map_data_set()) {
-			throw new_map_exception(action.new_map_data(), filename_);
+			throw new_map_exception(action.new_map_data(), filename_, from_scenario_);
 		}
 	}
 }
@@ -889,8 +951,11 @@ void map_editor::set_abort(const ABORT_MODE abort) {
 	abort_ = abort;
 }
 
-void map_editor::set_file_to_save_as(const std::string filename) {
+void map_editor::set_file_to_save_as(const std::string filename, bool from_scenario) {
+	if (original_filename_.empty())
+		original_filename_ = filename;
 	filename_ = filename;
+	from_scenario_ = from_scenario;
 }
 
 gamemap::location map_editor::get_hex_with_offset(const gamemap::location loc,
@@ -1164,12 +1229,30 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 	}
 
 	try {
-		write_file(filename, map_.write());
+		std::string data;
+		if (from_scenario_) {
+			data = read_file(original_filename_);
+			std::string::size_type start, stop;
+			start = data.find("map_data=");
+			if (start==std::string::npos)
+				return false;
+			start += 10;
+			stop = data.find('\"', start);
+			if (stop==std::string::npos)
+				return false;
+			data.replace(start, stop-start, map_.write());
+		} else {
+			data = map_.write();
+		}
+
+		write_file(filename, data);
 		num_operations_since_save_ = 0;
 		if (display_confirmation) {
 			gui::show_dialog(gui_, NULL, "", _("Map saved."),
 							 gui::OK_ONLY);
 		}
+		if (from_scenario_)
+			original_filename_ = filename;
 	}
 	catch (io_exception& e) {
 		utils::string_map symbols;

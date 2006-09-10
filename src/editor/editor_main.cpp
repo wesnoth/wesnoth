@@ -82,6 +82,7 @@ int main(int argc, char** argv)
 	const image::manager image_manager;
 	std::string filename = "";
 	std::string mapdata;
+	bool from_scenario;
 
 	int choosen_bpp = 0;
 
@@ -263,11 +264,10 @@ int main(int argc, char** argv)
 	font::load_font_config();
 	::init_textdomains(cfg);
 
-	if(mapdata.empty()) {
+	if(mapdata.empty())
 		for(int i = 0; i != 20; ++i) {
 			mapdata += "gggggggggggggggggggg\n";
 		}
-	}
 
 	srand(time(NULL));
 	bool done = false;
@@ -285,7 +285,8 @@ int main(int argc, char** argv)
 	std::cerr << "entering while...\n";
 	unit_map units;
 	events::event_context ec;
-	while (! done) {
+	map_editor::check_data(mapdata, filename, from_scenario, cfg);
+	while (!done) {
 		try {
 			std::cerr << "creating map...\n";
 			gamemap map(cfg, mapdata);
@@ -295,13 +296,14 @@ int main(int argc, char** argv)
 				    *theme_cfg, cfg, dummy_cfg);
 
 			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);
-			editor.set_file_to_save_as(filename);
+			editor.set_file_to_save_as(filename, from_scenario);
 			editor.main_loop();
 			done = true;
 		}
 		catch (map_editor::map_editor::new_map_exception &e) {
 			mapdata = e.new_map;
 			filename = e.new_filename;
+			from_scenario = e.from_scenario;
 		}
 		catch (gamemap::incorrect_format_exception) {
 			std::cerr << "The map is not in a correct format, sorry." << std::endl;

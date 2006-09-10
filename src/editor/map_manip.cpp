@@ -269,5 +269,4 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	return res;
 }
 
-
 }

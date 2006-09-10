@@ -37,6 +37,8 @@
 
 namespace map_editor {
 
+bool check_data(std::string &data, std::string &filename, bool &from_scenario, config &game_cfg);
+
 /// A map editor. Receives SDL events and can execute hotkey commands.
 class map_editor : public events::handler,
 				   public hotkey::command_executor {
@@ -49,7 +51,7 @@ public:
 	void main_loop();
 
 	/// Set the filename that map should be saved as.
-	void set_file_to_save_as(const std::string);
+	void set_file_to_save_as(const std::string, bool from_scenario);
 
 	/// How to abort the map editor.
 	/// DONT_ABORT is set during normal operation.
@@ -136,10 +138,11 @@ public:
 
 	/// Exception thrown when new map is to be loaded.
 	struct new_map_exception {
-		new_map_exception(const std::string &map, const std::string filename="")
-			: new_map(map), new_filename(filename) {}
+		new_map_exception(const std::string &map, const std::string filename="", const bool scenario = false)
+			: new_map(map), new_filename(filename), from_scenario(scenario) {}
 		const std::string new_map;
 		const std::string new_filename;
+		const bool from_scenario;
 	};
 
 private:
@@ -302,7 +305,8 @@ private:
 
 	display &gui_;
 	gamemap &map_;
-	std::string filename_;
+	std::string filename_, original_filename_;
+	bool from_scenario_;
 	ABORT_MODE abort_;
 	// Keep track of the number of operations performed since the last
 	// save. If this is zero when the editor is exited there is no need
