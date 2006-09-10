@@ -1876,13 +1876,13 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 
 		if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
 			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x()*disp.zoom()),
-					y+d+static_cast<int>(current_frame.halo_y()*disp.zoom()),
+			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x(anim_->get_animation_time())*disp.zoom()),
+					y+d+static_cast<int>(current_frame.halo_y(anim_->get_animation_time())*disp.zoom()),
 					current_frame.halo(anim_->get_animation_time()));
 		} else {
 			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x()*disp.zoom()),
-					y+d+static_cast<int>(current_frame.halo_y()*disp.zoom()),
+			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x(anim_->get_animation_time())*disp.zoom()),
+					y+d+static_cast<int>(current_frame.halo_y(anim_->get_animation_time())*disp.zoom()),
 					current_frame.halo(anim_->get_animation_time()),
 					halo::HREVERSE);
 		}

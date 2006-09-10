@@ -42,6 +42,14 @@ class progressive_double {
 };
 
 
+class progressive_int {
+	public:
+		progressive_int(const std::string& data = "",int duration = 0);
+		int duration() const;
+		const int get_current_element(int time) const;
+	private:
+		std::vector<std::pair<std::pair<int,int>,int> > data_;
+};
 
 
 //a class to describe a unit's animation sequence
@@ -52,7 +60,8 @@ class unit_frame {
 		explicit unit_frame(const std::string& str, int begin=0,int end=1,
 				const std::string& highlight="1.0",const std::string& offset="",
 				Uint32 blend_color = 0, const std::string& blend_rate = "0",
-				std::string in_halo = "",int halox = 0,int haloy = 0,
+				const std::string & in_halo = "",
+				const std::string & halox = "",const std::string & haloy = "",
 				const std::string & diag ="");
 		explicit unit_frame(const config& cfg);
 
@@ -60,8 +69,8 @@ class unit_frame {
 		std::string image_diagonal() const { return image_diagonal_ ; }
 		const std::string &halo(int current_time) const;
 		std::string sound() const { return sound_ ; };
-		int halo_x() const { return halo_x_; }
-		int halo_y() const { return halo_y_; }
+		int halo_x(int current_time) const;
+		int halo_y(int current_time) const;
 		int begin_time() const { return begin_time_; }
 		int end_time() const { return end_time_ ; }
 		Uint32 blend_with() const { return blend_with_; }
@@ -74,7 +83,8 @@ class unit_frame {
 		progressive_string halo_;
 
 		std::string sound_;
-		int halo_x_, halo_y_;
+		progressive_int halo_x_;
+		progressive_int halo_y_;
 		int begin_time_, end_time_;
 		Uint32 blend_with_;
 		progressive_double blend_ratio_;

@@ -318,13 +318,13 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			}
 			if(!missile_frame.halo(animation_time).empty()) {
 				if(attack_ori != gamemap::location::SOUTH_WEST && attack_ori != gamemap::location::NORTH_WEST) {
-					missile_halo = halo::add(posx+d+missile_frame.halo_x(),
-							posy+d+missile_frame.halo_y(),
+					missile_halo = halo::add(posx+d+missile_frame.halo_x(animation_time),
+							posy+d+missile_frame.halo_y(animation_time),
 							missile_frame.halo(animation_time),
 							orientation);
 				} else {
-					missile_halo = halo::add(posx+d-missile_frame.halo_x(),
-							posy+d+missile_frame.halo_y(),
+					missile_halo = halo::add(posx+d-missile_frame.halo_x(animation_time),
+							posy+d+missile_frame.halo_y(animation_time),
 							missile_frame.halo(animation_time),
 							orientation);
 				}

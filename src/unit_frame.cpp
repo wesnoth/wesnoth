@@ -121,9 +121,76 @@ int progressive_double::duration() const
 	return total;
 
 }
+
+
+
+progressive_int::progressive_int(const std::string &data, int duration) 
+{
+	const std::vector<std::string> first_split = utils::split(data);
+	const int time_chunk = maximum<int>(duration / (first_split.size()?first_split.size():1),1);
+
+	std::vector<std::string>::const_iterator tmp;
+	std::vector<std::pair<std::string,int> > first_pass;
+	for(tmp=first_split.begin();tmp != first_split.end() ; tmp++) {
+		std::vector<std::string> second_pass = utils::split(*tmp,':');
+		if(second_pass.size() > 1) {
+			first_pass.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
+		} else {
+			first_pass.push_back(std::pair<std::string,int>(second_pass[0],time_chunk));
+		}
+	}
+	std::vector<std::pair<std::string,int> >::const_iterator tmp2;
+	for(tmp2=first_pass.begin();tmp2 != first_pass.end() ; tmp2++) {
+		std::vector<std::string> range = utils::split(tmp2->first,'~');
+		data_.push_back(std::pair<std::pair<int,int>,int> (
+					std::pair<int,int>(
+						atoi(range[0].c_str()),
+						atoi(range.size()>1?range[1].c_str():range[0].c_str())),
+					tmp2->second));
+	}
+
+}
+const int progressive_int::get_current_element(int current_time)const
+{
+	int time = 0;
+	unsigned int sub_halo = 0;
+	if(data_.empty()) return 0;
+	while(time < current_time&& sub_halo < data_.size()) {
+		time += data_[sub_halo].second;
+		sub_halo++;
+
+	}
+	if(sub_halo > 0) {
+		sub_halo--;
+		time -= data_[sub_halo].second;
+	}
+	if(sub_halo >= data_.size()) {
+		sub_halo = data_.size();
+		time = current_time; // never more than max allowed
+	}
+
+	const int first =  data_[sub_halo].first.first;
+	const int second =  data_[sub_halo].first.second;
+
+	return int(( double(current_time - time)/(double)(data_[sub_halo].second))*(second - first)+ first);
+
+}
+int progressive_int::duration() const
+{
+	int total =0;
+	std::vector<std::pair<std::pair<int,int>,int> >::const_iterator cur_halo;
+	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; cur_halo++) {
+		total += cur_halo->second;
+	}
+	return total;
+
+}
+
+
+
 unit_frame::unit_frame() : 
 	 image_(), image_diagonal_(),halo_(), sound_(),
-	halo_x_(0), halo_y_(0), begin_time_(0), end_time_(0),
+	halo_x_(), halo_y_(), begin_time_(0), end_time_(0),
 	blend_with_(0),blend_ratio_(),
 	highlight_ratio_("1.0"),offset_("-20")
 {
@@ -133,10 +200,12 @@ unit_frame::unit_frame() :
 unit_frame::unit_frame(const std::string& str, int begin,int end,
 		const std::string& highlight, const std::string& offset,
 		Uint32 blend_color, const std::string& blend_rate,
-		std::string in_halo, int halox, int haloy,
+		const std::string& in_halo, const std::string& halox, const std::string& haloy,
 		const std::string & diag) :
 	 image_(str),image_diagonal_(diag),
-	halo_(in_halo,end_time_ - begin_time_),halo_x_(halox), halo_y_(haloy),
+	halo_(in_halo,end_time_ - begin_time_),
+	halo_x_(halox,end_time_ - begin_time_),
+	halo_y_(haloy,end_time_ - begin_time_),
 	begin_time_(begin), end_time_(end),
 	blend_with_(blend_color), blend_ratio_(blend_rate,end_time_ - begin_time_),
 	highlight_ratio_(highlight,end_time_ - begin_time_)
@@ -157,12 +226,12 @@ unit_frame::unit_frame(const config& cfg)
 {
 	image_ = cfg["image"];
 	image_diagonal_ = cfg["image_diagonal"];
-	halo_x_ = atoi(cfg["halo_x"].c_str());
-	halo_y_ = atoi(cfg["halo_y"].c_str());
 	sound_ = cfg["sound"];
 	begin_time_ = atoi(cfg["begin"].c_str());
 	end_time_ = atoi(cfg["end"].c_str());
 	halo_ = progressive_string(cfg["halo"],end_time_-begin_time_);
+	halo_x_ = progressive_int(cfg["halo_x"],end_time_ -begin_time_);
+	halo_y_ = progressive_int(cfg["halo_y"],end_time_ -begin_time_);
 	blend_with_= 0;
 	blend_ratio_ = progressive_double(cfg["blend_ratio"],end_time_-begin_time_);
 	highlight_ratio_ = progressive_double(cfg["alpha"].empty()?"1.0":cfg["alpha"],end_time_-begin_time_);
@@ -189,5 +258,15 @@ fixed_t unit_frame::highlight_ratio(int current_time) const
 double unit_frame::offset(int current_time) const 
 {
 	return offset_.get_current_element(current_time - begin_time_);
+}
+
+int unit_frame::halo_x(int current_time) const 
+{
+	return halo_x_.get_current_element(current_time - begin_time_);
+}
+
+int unit_frame::halo_y(int current_time) const 
+{
+	return halo_y_.get_current_element(current_time - begin_time_);
 }
 
