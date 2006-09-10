@@ -154,13 +154,13 @@ int attack_type::movement_used() const
 	return cfg_["movement_used"] == "" ? 100000 : lexical_cast_default<int>(cfg_["movement_used"]);
 }
 
-const attack_animation& attack_type::animation(const std::string &terrain,const fighting_animation::hit_type hit,const gamemap::location::DIRECTION dir,int swing_num) const
+const attack_animation& attack_type::animation(const display& disp, const gamemap::location& loc,const unit* my_unit,const fighting_animation::hit_type hit,int swing_num) const
 {
 	//select one of the matching animations at random
 	std::vector<const attack_animation*>  options;
 	int max_val = -1;
 	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
-		int matching = i->matches(terrain,dir,hit,this,swing_num);
+		int matching = i->matches(disp,loc,my_unit,hit,this,swing_num);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {

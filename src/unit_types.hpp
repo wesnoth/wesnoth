@@ -86,7 +86,7 @@ public:
 	bool special_affects_self(const config& cfg) const;
 
 	config cfg_;
-	const attack_animation& animation(const std::string &terrain,const fighting_animation::hit_type hit,const gamemap::location::DIRECTION dir,int swing_num) const;
+	const attack_animation& animation(const display& disp, const gamemap::location& loc,const unit* my_unit,const fighting_animation::hit_type hit,int swing_num) const;
 private:
 	std::vector<attack_animation> animation_;
 	t_string description_;

@@ -25,6 +25,7 @@
 #include "unit_frame.hpp"
 
 
+class display;
 
 class unit_animation:public animated<unit_frame>
 {
@@ -34,12 +35,11 @@ class unit_animation:public animated<unit_frame>
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
 		explicit unit_animation(const unit_frame &frame);
-		int matches(const std::string &terrain,const gamemap::location::DIRECTION dir) const;
-
-		enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
+		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit) const;
 
 	private:
 		std::vector<std::string> terrain_types;
+		std::vector<config> unit_filter_;
 		std::vector<gamemap::location::DIRECTION> directions;
 };
 
@@ -54,7 +54,7 @@ class fighting_animation:public unit_animation
 		explicit fighting_animation(const config& cfg);
 		explicit fighting_animation(const unit_frame &frame, const std::string &range=""):
 			unit_animation(frame),range(utils::split(range)) {};
-		int matches(const std::string &terrain,gamemap::location::DIRECTION dir,hit_type hit,const attack_type* attack,int swing_num) const;
+		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,hit_type hit,const attack_type* attack,int swing_num) const;
 
 	private:
 		std::vector<hit_type> hits;

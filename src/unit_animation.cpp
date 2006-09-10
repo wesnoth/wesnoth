@@ -22,6 +22,8 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 #include "color_range.hpp"
+#include "unit.hpp"
+#include "display.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -110,6 +112,10 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 		const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
 		directions.push_back(d);
 	}
+	config::const_child_iterator itor;
+	for(itor = cfg.child_range("unit_filter").first; itor <cfg.child_range("unit_filter").second;itor++) {
+		unit_filter_.push_back(**itor);
+	}
 
 	/* warn on deprecated WML */
 	if(cfg.child("sound")) {
@@ -119,24 +125,34 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 }
 
 
-int unit_animation::matches(const std::string &terrain,const gamemap::location::DIRECTION dir) const
+int unit_animation::matches(const display& disp, const gamemap::location& loc,const unit* my_unit) const
 {
 	int result = 0;
 	if(terrain_types.empty()== false) {
-		if (std::find(terrain_types.begin(),terrain_types.end(),terrain)== terrain_types.end()) {
+		if (std::find(terrain_types.begin(),terrain_types.end(),disp.get_map().underlying_union_terrain(loc))== terrain_types.end()) {
 			return -1;
 		} else {
 			result ++;
 		}
 	}
 
-	if(directions.empty()== false) {
-		if (std::find(directions.begin(),directions.end(),dir)== directions.end()) {
-			return -1;
-		} else {
-			result ++;
+	if(my_unit) {
+		if(directions.empty()== false) {
+			if (std::find(directions.begin(),directions.end(),my_unit->facing())== directions.end()) {
+				return -1;
+			} else {
+				result ++;
+			}
 		}
-	}
+		std::vector<config>::const_iterator myitor;
+		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); myitor++) {
+			printf("trying\n");
+			myitor->debug();
+			if(!my_unit->matches_filter(*myitor,loc)) return -1;
+			printf("done\n");
+			result++;
+		}
+	} else if (!unit_filter_.empty()) return -1;
 
 	return result;
 }
@@ -165,9 +181,9 @@ fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg), 
 }
 
 
-int fighting_animation::matches(const std::string &terrain,gamemap::location::DIRECTION dir,hit_type hit,const attack_type* attack, int swing) const
+int fighting_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,hit_type hit,const attack_type* attack, int swing) const
 {
-	int result = unit_animation::matches(terrain,dir);
+	int result = unit_animation::matches(disp,loc,my_unit);
 	if(!attack) {
 		if(damage_type.empty() && special.empty())
 			return result;

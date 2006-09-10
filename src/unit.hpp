@@ -237,20 +237,20 @@ class unit
 		unit_type::ALIGNMENT alignment() const;
 		const std::string& race() const;
 
-		const defensive_animation& defend_animation(const std::string &terrain,
+		const defensive_animation& defend_animation(const display& disp, const gamemap::location& loc,
 				fighting_animation::hit_type hits,const attack_type* attack,int swing_num) const;
-		const unit_animation& teleport_animation() const;
-		const unit_animation* extra_animation(const std::string &terrain,const std::string &flag) const;
-		const death_animation& die_animation(const std::string &terrain,
+		const unit_animation& teleport_animation(const display& disp, const gamemap::location& loc) const;
+		const unit_animation* extra_animation(const display& disp, const gamemap::location& loc,const std::string &flag) const;
+		const death_animation& die_animation(const display& disp, const gamemap::location& loc,
 				fighting_animation::hit_type hits,const attack_type* attack) const;
-		const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-		const standing_animation& stand_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-		const leading_animation& lead_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-		const healing_animation& heal_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-		const recruit_animation& recruiting_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-		const idle_animation& idling_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-		const levelin_animation& levelingin_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-		const levelout_animation& levelingout_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+		const movement_animation& move_animation(const display& disp, const gamemap::location& loc) const;
+		const standing_animation& stand_animation(const display& disp, const gamemap::location& loc) const;
+		const leading_animation& lead_animation(const display& disp, const gamemap::location& loc) const;
+		const healing_animation& heal_animation(const display& disp, const gamemap::location& loc) const;
+		const recruit_animation& recruiting_animation(const display& disp, const gamemap::location& loc) const;
+		const idle_animation& idling_animation(const display& disp, const gamemap::location& loc) const;
+		const levelin_animation& levelingin_animation(const display& disp, const gamemap::location& loc) const;
+		const levelout_animation& levelingout_animation(const display& disp, const gamemap::location& loc) const;
 
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;

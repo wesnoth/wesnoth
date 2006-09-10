@@ -265,7 +265,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			orientation = halo::NORMAL;
 			break;
 	}
-	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
+	const bool vertical_dir = (a.x == b.x) ? true:false;
 
 	defender.set_defending(disp,b,damage,&attack,swing);
 	// min of attacker, defender, missile and -200
@@ -311,7 +311,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 			std::string missile_image= missile_frame.image();
 			const int d = disp.hex_size() / 2;
-			if(dir == unit_animation::VERTICAL) {
+			if(vertical_dir) {
 				missile_image = missile_frame.image();
 			} else {
 				missile_image = missile_frame.image_diagonal();
