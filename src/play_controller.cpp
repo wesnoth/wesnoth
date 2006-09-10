@@ -200,6 +200,10 @@ void play_controller::save_game(){
 	menu_handler_.save_game("",gui::OK_CANCEL);
 }
 
+void play_controller::save_map(){
+	menu_handler_.save_map();
+}
+
 void play_controller::load_game(){
 	menu_handler_.load_game();
 }
@@ -439,6 +443,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_FULLSCREEN:
 	case hotkey::HOTKEY_SCREENSHOT:
 	case hotkey::HOTKEY_ACCELERATED:
+	case hotkey::HOTKEY_SAVE_MAP:
 	case hotkey::HOTKEY_TOGGLE_GRID:
 	case hotkey::HOTKEY_MOUSE_SCROLL:
 	case hotkey::HOTKEY_STATUS_TABLE:

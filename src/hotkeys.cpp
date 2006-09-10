@@ -62,6 +62,7 @@ const struct {
 	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false },
 	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false },
 	{ hotkey::HOTKEY_SAVE_GAME, "save", N_("Save Game"), false },
+	{ hotkey::HOTKEY_SAVE_MAP, "savemap", N_("Save The Map"), false },
 	{ hotkey::HOTKEY_LOAD_GAME, "load", N_("Load Game"), false },
 	{ hotkey::HOTKEY_RECRUIT, "recruit", N_("Recruit"), false },
 	{ hotkey::HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false },
@@ -566,6 +567,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_SAVE_GAME:
 			if(executor)
 				executor->save_game();
+			break;
+		case HOTKEY_SAVE_MAP:
+			if(executor)
+				executor->save_map();
 			break;
 		case HOTKEY_LOAD_GAME:
 			if(executor)

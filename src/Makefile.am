@@ -55,6 +55,7 @@ wesnoth_SOURCES = \
 	dialogs.cpp \
 	display.cpp \
 	events.cpp \
+	filechooser.cpp \
 	floating_textbox.cpp \
 	font.cpp \
 	game.cpp \
@@ -121,6 +122,7 @@ wesnoth_SOURCES = \
 	serialization/parser.cpp \
 	serialization/string_utils.cpp \
 	widgets/button.cpp \
+	widgets/file_menu.cpp \
 	widgets/combo.cpp \
 	widgets/label.cpp \
 	widgets/menu.cpp \

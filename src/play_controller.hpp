@@ -55,6 +55,7 @@ public:
 	virtual void unit_list();
 	virtual void status_table();
 	virtual void save_game();
+	virtual void save_map();
 	virtual void load_game();
 	virtual void preferences();
 	virtual void show_chat_log();

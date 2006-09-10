@@ -218,7 +218,7 @@ namespace events{
 			}
 
 			std::stringstream str;
-	
+
 			str << IMAGE_PREFIX << type->second.image();
 #ifndef LOW_MEM
 			str << "~TC(" << team << "," << type->second.flag_rgb() << ")";
@@ -346,7 +346,7 @@ namespace events{
 #ifndef LOW_MEM
 			str << "~TC(" << (n+1) << "," << leader->second.team_color() << ")";
 #endif
-			str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' 
+			str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm'
 				<< teams_[n].current_player() /* leader->second.description() */ << COLUMN_SEPARATOR;
 
 			} else {
@@ -415,6 +415,40 @@ namespace events{
 			};
 		} else if(res == 2) {
 			throw end_level_exception(QUIT);
+		}
+	}
+
+	void menu_handler::save_map()
+	{
+		std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
+		int res = 0;
+		int overwrite = 1;
+		do {
+			res = dialogs::show_file_chooser_dialog(*gui_, input_name, _("Save the Map As"));
+			if (res == 0) {
+
+				if (file_exists(input_name)) {
+					overwrite = gui::show_dialog(*gui_, NULL, "",
+						_("The map already exists. Do you want to overwrite it?"),
+						gui::YES_NO);
+				}
+				else
+					overwrite = 0;
+			}
+		} while (res == 0 && overwrite != 0);
+
+		// Try to save the map, if it fails we reset the filename.
+		if (res == 0) {
+			try {
+				write_file(input_name, map_.write());
+				gui::show_dialog(*gui_, NULL, "", _("Map saved."),
+								gui::OK_ONLY);
+			} catch (io_exception& e) {
+				utils::string_map symbols;
+				symbols["msg"] = e.what();
+				const std::string msg = vgettext("Could not save the map: $msg",symbols);
+				gui::show_dialog(*gui_, NULL, "", msg, gui::OK_ONLY);
+			}
 		}
 	}
 
