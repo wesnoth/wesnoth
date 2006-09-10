@@ -65,6 +65,7 @@ BPath be_path;
 #include "log.hpp"
 #include "scoped_resource.hpp"
 #include "util.hpp"
+#include "loadscreen.hpp"
 
 #define LOG_FS LOG_STREAM(info, filesystem)
 #define ERR_FS LOG_STREAM(err, filesystem)
