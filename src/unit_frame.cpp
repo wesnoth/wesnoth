@@ -13,6 +13,7 @@
 
 #include <global.hpp>
 #include <unit_frame.hpp>
+#include <display.hpp>
 progressive_string::progressive_string(const std::string & data,int duration)
 {
 		const std::vector<std::string> first_pass = utils::split(data);
@@ -232,7 +233,8 @@ unit_frame::unit_frame(const config& cfg)
 	halo_ = progressive_string(cfg["halo"],end_time_-begin_time_);
 	halo_x_ = progressive_int(cfg["halo_x"],end_time_ -begin_time_);
 	halo_y_ = progressive_int(cfg["halo_y"],end_time_ -begin_time_);
-	blend_with_= 0;
+	std::vector<std::string> tmp_blend=utils::split(cfg["blend_color"]);
+	if(tmp_blend.size() ==3) blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));
 	blend_ratio_ = progressive_double(cfg["blend_ratio"],end_time_-begin_time_);
 	highlight_ratio_ = progressive_double(cfg["alpha"].empty()?"1.0":cfg["alpha"],end_time_-begin_time_);
 	offset_ = progressive_double(cfg["offset"].empty()?"-20":cfg["offset"],end_time_-begin_time_);
