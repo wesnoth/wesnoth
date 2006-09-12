@@ -66,7 +66,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	changed_(false),
 	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL)
 {
-	if(cfg_["allow_player"] != "no" && enabled_) {
+	if(utils::string_bool(cfg_["allow_player"], true) && enabled_) {
 		controller_ = parent_->default_controller_;
 	} else {
 		for(size_t i = CNTR_NETWORK; i != CNTR_LAST; ++i) {
@@ -132,7 +132,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		config::const_child_itors side_units = cfg.child_range("unit");
 		std::string leader_type;
 		for(;side_units.first != side_units.second; ++side_units.first) {
-			if((**side_units.first)["canrecruit"] == "1") {
+			if(utils::string_bool((**side_units.first)["canrecruit"], false)) {
 				leader_type = (**side_units.first)["type"];
 				break;
 			}
@@ -153,18 +153,18 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_leader_.set_selected(0);
 	} else if(parent_->params_.use_map_settings) {
 		//gold, income, team, and colour are only suggestions unless explicitly locked
-		if(cfg_["gold_lock"] == "yes") {
+		if(utils::string_bool(cfg_["gold_lock"], false)) {
 			slider_gold_.enable(false);
 			label_gold_.enable(false);
 		}
-		if(cfg_["income_lock"] == "yes") {
+		if(utils::string_bool(cfg_["income_lock"], false)) {
 			slider_income_.enable(false);
 			label_income_.enable(false);
 		}
-		if(cfg_["team_lock"] == "yes") {
+		if(utils::string_bool(cfg_["team_lock"], false)) {
 			combo_team_.enable(false);
 		}
-		if(cfg_["colour_lock"] == "yes") {
+		if(utils::string_bool(cfg_["colour_lock"], false)) {
 			combo_colour_.enable(false);
 		}
 
@@ -566,6 +566,9 @@ config connect::side::get_config() const
 		trimmed["controller"] = "";
 		trimmed["description"] = "";
 		trimmed["team_name"] = "";
+		trimmed["colour"] = "";
+		trimmed["gold"] = "";
+		trimmed["income"] = "";
 		if(controller_ != CNTR_COMPUTER) {
 			//only override names for computer controlled players
 			trimmed["user_description"] = "";
@@ -672,7 +675,7 @@ void connect::side::resolve_random()
 	if(!enabled_ || parent_->era_sides_.empty())
 		return;
 
-	if((*parent_->era_sides_[faction_])["random_faction"] == "yes") {
+	if(utils::string_bool((*parent_->era_sides_[faction_])["random_faction"], false)) {
 
 		// Builds the list of sides which aren't random
 		std::vector<int> nonrandom_sides;
@@ -1168,7 +1171,7 @@ void connect::lists_init()
 	for(side_list::iterator s = sides_.begin(); s != sides_.end(); ++s) {
 		const int side_num = s - sides_.begin();
 		const int spos = 60 * (side_num-offset);
-		if(s->get_config()["allow_player"] == "no") {
+		if(!utils::string_bool(s->get_config()["allow_player"], true)) {
 			offset++;
 			continue;
 		}
