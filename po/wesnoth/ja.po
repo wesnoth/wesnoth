@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-31 12:50+0200\n"
-"PO-Revision-Date: 2006-09-10 18:40+0900\n"
+"PO-Revision-Date: 2006-09-12 15:13+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -2002,15 +2002,15 @@ msgstr "ナルガン同盟"
 
 #: data/factions/loyalists-aoh.cfg:3 data/factions/loyalists-default.cfg:3
 msgid "Loyalists"
-msgstr "忠誠者"
+msgstr "忠誠軍"
 
 #: data/factions/northerners-aoh.cfg:3 data/factions/northerners-default.cfg:3
 msgid "Northerners"
-msgstr "北国人"
+msgstr "北方部族"
 
 #: data/factions/rebels-aoh.cfg:3 data/factions/rebels-default.cfg:3
 msgid "Rebels"
-msgstr "反逆者"
+msgstr "反乱軍"
 
 #: data/factions/undead-aoh.cfg:3 data/factions/undead-default.cfg:3
 msgid "Undead"
@@ -4531,7 +4531,7 @@ msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map. Recommended setting of 2 gold per village."
 msgstr ""
-"このはっきりと境界づけられた3人プレイ用マップから、ただ一つの派閥のみが勝利を"
+"このはっきりと境界づけられた3人プレイ用マップから、ただ一つの党派のみが勝利を"
 "つかむことができる。 村あたり2ゴールドの設定を推奨。"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
@@ -4695,8 +4695,8 @@ msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "setting of 1 gold per village."
 msgstr ""
-"4勢力がこの水がちな居留地の支配を求めて争う。 村あたり 1ゴールドの設定を推"
-"奨。"
+"4つの党派がこの水がちな居留地の支配を求めて争う。 村あたり 1ゴールドの設定を"
+"推奨。"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
 msgid "4p - Loris River"
@@ -5329,7 +5329,7 @@ msgstr "プレイ"
 
 #: data/themes/macros.cfg:68
 msgid "continous replay"
-msgstr "連続リプレイ"
+msgstr "連続してリプレイ"
 
 #: data/themes/macros.cfg:81
 msgid "Stop"
@@ -5337,7 +5337,7 @@ msgstr "停止"
 
 #: data/themes/macros.cfg:82
 msgid "pause at end of turn"
-msgstr "ターンの最後に一時停止"
+msgstr "ターン終了時に一時停止"
 
 #: data/themes/macros.cfg:95
 msgid "Reset"
@@ -5345,7 +5345,7 @@ msgstr "リセット"
 
 #: data/themes/macros.cfg:96
 msgid "reset to beginning"
-msgstr "開始時に戻る"
+msgstr "始めに戻る"
 
 #: data/themes/macros.cfg:109
 msgid "Next Turn"
@@ -5353,7 +5353,7 @@ msgstr "次のターン"
 
 #: data/themes/macros.cfg:110
 msgid "play turn"
-msgstr "プレイターン"
+msgstr "ターンを再生"
 
 #: data/themes/macros.cfg:123
 msgid "Next Side"
@@ -5361,7 +5361,7 @@ msgstr "次のサイド"
 
 #: data/themes/macros.cfg:124
 msgid "play side turn"
-msgstr "サイドターンをプレイ"
+msgstr "サイドのターンを再生"
 
 #: data/themes/macros.cfg:160
 msgid "Skip animation"
@@ -10933,7 +10933,7 @@ msgstr "この時代にはランダム以外のチームはありません。"
 
 #: src/multiplayer_connect.cpp:701
 msgid "Unable to find a leader type for faction $faction"
-msgstr "派閥 $faction のリーダーのタイプが見つかりません。"
+msgstr "党派 $faction のリーダーのタイプが見つかりません。"
 
 #: src/multiplayer_connect.cpp:710 src/multiplayer_lobby.cpp:460
 #: src/multiplayer_wait.cpp:154
@@ -10950,7 +10950,7 @@ msgstr "プレイヤー"
 
 #: src/multiplayer_connect.cpp:724
 msgid "Faction"
-msgstr "派閥"
+msgstr "党派"
 
 #: src/multiplayer_connect.cpp:726
 msgid "Color"
