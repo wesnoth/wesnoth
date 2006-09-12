@@ -26,6 +26,8 @@
 
 #include <fstream>
 
+#define LOG_AI LOG_STREAM(info, ai)
+
 static python_ai* running_instance;
 bool python_ai::init_ = false;
 PyObject* python_ai::python_error_ = NULL;
@@ -1665,6 +1667,7 @@ static PyMethodDef wesnoth_python_methods[] = {
 
 python_ai::python_ai(ai_interface::info& info) : ai_interface(info), exception(QUIT)
 {
+    LOG_AI << "Running Python instance.\n";
 	running_instance = this;
 	if ( !init_ )
 	{
@@ -1689,12 +1692,12 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info), exception(Q
 }
 
 python_ai::~python_ai()
-	{
-/*	Py_DECREF(&Wesnoth_UnitType);
-	Py_DECREF(&wesnoth_location_type);
-	Py_Finalize();*/
-	running_instance = NULL;
-	}
+{
+    // This is called whenever the AI is destroyed after its turn - the Python
+    // interpreter itself will be auto cleaned up at program exit.
+    LOG_AI << "Closing Python instance.\n";
+    running_instance = NULL;
+}
 
 void python_ai::play_turn()
 {
@@ -1702,45 +1705,47 @@ void python_ai::play_turn()
 
 	std::string script_name = current_team().ai_parameters()["python_script"];
 	std::string script = get_binary_file_location("data", "ais/" + script_name);
-	PyObject* file = PyFile_FromString((char*)script.c_str(),"rt");
-	if (!file) { // exception occured during file opening
-	    std::cerr << "Error opening " << script_name << std::endl;
-	    PyErr_Print();
-	    return;
-	}
 
     PyErr_Clear();
 
-    PyObject* dict = PyDict_New();
-    PyDict_SetItemString(dict, "__builtins__", PyEval_GetBuiltins());
+    PyObject* globals = PyDict_New();
+    PyDict_SetItemString(globals, "__builtins__", PyEval_GetBuiltins());
 
-	// Always execute an import statement including all the current binary
-	// pathes, so the python script can import any other python modules.
-	// e.g. sys.path.extend(['~/.wesnoth/data/ais', '/usr/share/wesnoth/data/ais', ])
-	std::string import_modules("import sys; sys.path.extend([");
-	const std::vector<std::string>& paths = get_binary_paths("data");
-	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
-		import_modules += "'" + *i + "ais', ";
-	}
-	import_modules += "])\n";
-	PyObject* pre = PyRun_String(import_modules.c_str(), Py_file_input, dict, dict);
+    LOG_AI << "Executing Python script \"" << script << "\".\n";
+    // Run the python script. We actually execute a short inline python
+    // script, which sets up the module search path to the current binary
+    // pathes, runs the script with execfile, and then resets the path.
+    std::string python_code;
+    python_code += "import sys\n"
+        "backup = sys.path[:]; sys.path.extend([";
+        const std::vector<std::string>& paths = get_binary_paths("data");
+        std::vector<std::string>::const_iterator i;
+        for (i = paths.begin(); i != paths.end(); ++i) {
+            python_code += "'" + *i + "ais', ";
+    }
+    python_code += "])\n"
+        "try:\n"
+        "    execfile(\"" + script + "\")\n"
+        "finally:\n"
+        "    sys.path = backup\n";
+    PyObject *ret = PyRun_String(python_code.c_str(), Py_file_input,
+        globals, globals);
 
-    // Now execute the actual python AI.
-    PyObject* ret = PyRun_File(PyFile_AsFile(file), script.c_str(), Py_file_input, dict, dict);
-
-    Py_XDECREF(pre);
     Py_XDECREF(ret);
-    Py_DECREF(dict);
-    Py_DECREF(file);
+    Py_DECREF(globals);
 
     if (PyErr_Occurred()) {
         // RuntimeError is the game-won exception, no need to print it
-        if (!PyErr_ExceptionMatches(PyExc_RuntimeError))
+        if (!PyErr_ExceptionMatches(PyExc_RuntimeError)) {
+            LOG_AI << "Python script has crashed.\n";
             PyErr_Print();
+        }
         // Otherwise, re-throw the exception here, so it will get handled
         // properly further up.
-        else
+        else {
+            LOG_AI << "Python script has been interrupted.\n";
             throw exception;
+        }
     }
 }
 
