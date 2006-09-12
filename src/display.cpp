@@ -2180,7 +2180,7 @@ void display::set_turbo(bool turbo)
 
 int display::turbo_speed() const
 {
-	if (turbo_ or keys_[SDLK_LSHIFT] or keys_[SDLK_RSHIFT])
+	if (turbo_ || keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT])
 		return turbo_speed_;
 	else
 		return 1;
