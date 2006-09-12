@@ -159,9 +159,16 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	//if a side has dropped out of the game.
 	if(cfg["side_drop"] != "") {
 		const size_t side = atoi(cfg["side_drop"].c_str())-1;
+		const std::string controller = cfg["controller"];
+
 		if(side >= teams_.size()) {
 			LOG_STREAM(err, network) << "unknown side " << side << " is dropping game\n";
 			throw network::error("");
+		}
+
+		if (controller == "ai"){
+			teams_[side].make_ai();
+			return PROCESS_RESTART_TURN;
 		}
 
 		int action = 0;
@@ -187,10 +194,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			//get all allies in as options to transfer control
 			for (std::vector<team>::iterator team = teams_.begin(); team != teams_.end(); team++){
-				if ( (!team->is_enemy(side + 1)) && (!team->is_human())
-					&& (team->current_player() != teams_[side].current_player()) ){
-					//if this is an ally of the dropping side and it is not us (choose local player
-					//if you want that) and if it is not the dropping side itself, get this team in as well
+				if ( (!team->is_enemy(side + 1)) && (!team->is_human()) && (!team->is_ai()) && (!team->is_empty())
+ 					&& (team->current_player() != teams_[side].current_player()) ){
+ 					//if this is an ally of the dropping side and it is not us (choose local player
+					//if you want that) and not ai or empty and if it is not the dropping side itself,
+					//get this team in as well
 					options.push_back(_("Replace with ") + team->save_id());
 					allies.push_back(&(*team));
 				}
