@@ -203,6 +203,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 		bool save_game_after_scenario = true;
 
+		const set_random_generator generator_setter(&recorder);
+
 		try {
 			// preserve old label eg. replay
 			if (state.label.empty())
