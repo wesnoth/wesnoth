@@ -175,8 +175,7 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 	return result;
 }
 
-fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg),  range(utils::split(cfg["range"])),
-  damage_type(utils::split(cfg["damage_type"])), special(utils::split(cfg["attack_special"]))
+fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg) 
 {
 	std::vector<std::string> hits_str = utils::split(cfg["hits"]);
 	std::vector<std::string>::iterator hit;
@@ -196,18 +195,26 @@ fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg), 
 	for(swing=swing_str.begin() ; swing != swing_str.end() ; swing++) {
 		swing_num.push_back(atoi(swing->c_str()));
 	}
+	std::vector<std::string> damage_str = utils::split(cfg["damage"]);
+	std::vector<std::string>::iterator damage;
+	for(damage=damage_str.begin() ; damage != damage_str.end() ; damage++) {
+		damage_.push_back(atoi(damage->c_str()));
+	}
+	config::const_child_iterator itor;
+	for(itor = cfg.child_range("attack_filter").first; itor <cfg.child_range("attack_filter").second;itor++) {
+		primary_filter.push_back(**itor);
+	}
+	for(itor = cfg.child_range("secondary_attack_filter").first; itor <cfg.child_range("secondary_attack_filter").second;itor++) {
+		secondary_filter.push_back(**itor);
+	}
+
 }
 
 
-int fighting_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,hit_type hit,const attack_type* attack, int swing) const
+int fighting_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,
+		hit_type hit,const attack_type* attack, const attack_type* secondary_attack,int swing,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
-	if(!attack) {
-		if(damage_type.empty() && special.empty())
-			return result;
-		else
-			return -1;
-	}
 	if(hits.empty() == false ) {
 		if (std::find(hits.begin(),hits.end(),hit)== hits.end()) {
 			return -1;
@@ -222,34 +229,29 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 			result ++;
 		}
 	}
-	if(range.empty()== false) {
-		if (std::find(range.begin(),range.end(),attack->range())== range.end()) {
+	if(damage_.empty() == false ) {
+		if (std::find(damage_.begin(),damage_.end(),damage)== damage_.end()) {
 			return -1;
 		} else {
 			result ++;
 		}
 	}
-
-	if(damage_type.empty()== false) {
-		if (std::find(damage_type.begin(),damage_type.end(),attack->type())== damage_type.end()) {
+	if(!attack) {
+		if(!primary_filter.empty())
 			return -1;
-		} else {
-			result ++;
-		}
 	}
-
-	if(special.empty()== false) {
-		bool found = false;
-		std::vector<std::string> at_specials = utils::split(attack->weapon_specials(true));
-		for(std::vector<std::string>::const_iterator sp_it = special.begin(); sp_it != special.end(); ++sp_it) {
-			if (std::find(at_specials.begin(),at_specials.end(),*sp_it) != at_specials.end()) {
-				result ++;
-				found = true;
-			}
-		}
-		if(!found) {
+	std::vector<config>::const_iterator myitor;
+	for(myitor = primary_filter.begin(); myitor != primary_filter.end(); myitor++) {
+		if(!attack->matches_filter(*myitor)) return -1;
+		result++;
+	}
+	if(!secondary_attack) {
+		if(!secondary_filter.empty())
 			return -1;
-		}
+	}
+	for(myitor = secondary_filter.begin(); myitor != secondary_filter.end(); myitor++) {
+		if(!secondary_attack->matches_filter(*myitor)) return -1;
+		result++;
 	}
 	return result;
 }

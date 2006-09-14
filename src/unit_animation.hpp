@@ -53,22 +53,23 @@ class fighting_animation:public unit_animation
 		typedef enum { HIT, MISS, KILL} hit_type;
 
 		explicit fighting_animation(const config& cfg);
-		explicit fighting_animation(const unit_frame &frame, const std::string &range=""):
-			unit_animation(frame),range(utils::split(range)) {};
-		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,hit_type hit,const attack_type* attack,int swing_num) const;
+		explicit fighting_animation(const unit_frame &frame):
+			unit_animation(frame) {};
+		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num,int damage) const;
 
 	private:
+		std::vector<config> primary_filter;
+		std::vector<config> secondary_filter;
 		std::vector<hit_type> hits;
 		std::vector<int> swing_num;
-		std::vector<std::string> range;
-		std::vector<std::string> damage_type, special;
+		std::vector<int> damage_;
 };
 
 class defensive_animation:public fighting_animation
 {
 	public:
 		explicit defensive_animation(const config& cfg):fighting_animation(cfg){};
-		explicit defensive_animation(const unit_frame &frame, const std::string &range=""):fighting_animation(frame,range){};
+		explicit defensive_animation(const unit_frame &frame):fighting_animation(frame){};
 };
 
 
@@ -76,7 +77,7 @@ class death_animation:public fighting_animation
 {
 	public:
 		explicit death_animation(const config& cfg):fighting_animation(cfg){};
-		explicit death_animation(const unit_frame &frame,const std::string &range=""):fighting_animation(frame,range) {};
+		explicit death_animation(const unit_frame &frame):fighting_animation(frame) {};
 	private:
 };
 

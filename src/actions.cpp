@@ -831,7 +831,7 @@ attack::attack(display& gui, const gamemap& map,
 
 			bool dies = unit_display::unit_attack(gui_,units_,attacker_,defender_,
 				            damage_defender_takes,
-							*a_stats_->weapon,
+							*a_stats_->weapon,d_stats_->weapon,
 							update_display_,abs_n_attack_);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
@@ -1034,7 +1034,7 @@ attack::attack(display& gui, const gamemap& map,
 
 			bool dies = unit_display::unit_attack(gui_,units_,defender_,attacker_,
 			               damage_attacker_takes,
-						   *d_stats_->weapon,
+						   *d_stats_->weapon,a_stats_->weapon,
 						   update_display_,abs_n_defend_);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(ran_results == NULL) {

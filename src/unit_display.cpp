@@ -167,7 +167,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	}
 }
 
-void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_type* attack)
+void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_type* attack,const attack_type* secondary_attack)
 {
 	if(disp.update_locked() || disp.fogged(loc.x,loc.y) || preferences::show_combat() == false) {
 		return;
@@ -177,7 +177,7 @@ void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_
 	if(die_sound != "" && die_sound != "null") {
 		sound::play_sound(die_sound);
 	}
-	u.set_dying(disp,loc,attack);
+	u.set_dying(disp,loc,attack,secondary_attack);
 
 
 	while(!u.get_animation()->animation_finished()) {
@@ -196,7 +196,7 @@ namespace {
 
 bool unit_attack_ranged(display& disp, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
-			int damage, const attack_type& attack, bool update_display, int swing)
+			int damage, const attack_type& attack, const attack_type* secondary_attack,bool update_display, int swing)
 
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
@@ -229,7 +229,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 
 	// start leader and attacker animation, wait for attacker animation to end
-	unit_animation missile_animation = attacker.set_attacking(disp,a,damage,attack,swing);
+	unit_animation missile_animation = attacker.set_attacking(disp,a,damage,attack,secondary_attack,swing);
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){
@@ -267,7 +267,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	}
 	const bool vertical_dir = (a.x == b.x) ? true:false;
 
-	defender.set_defending(disp,b,damage,&attack,swing);
+	defender.set_defending(disp,b,damage,&attack,secondary_attack,swing);
 	// min of attacker, defender, missile and -200
 	int start_time = -200;
 	start_time = minimum<int>(start_time,defender.get_animation()->get_first_frame_time());
@@ -389,7 +389,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 bool unit_attack(display& disp, unit_map& units,
                  const gamemap::location& a, const gamemap::location& b, int damage,
-                 const attack_type& attack, bool update_display, int swing)
+                 const attack_type& attack, const attack_type* secondary_attack, 
+		 bool update_display, int swing)
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
 	                  || preferences::show_combat() == false || (!update_display);
@@ -411,18 +412,18 @@ bool unit_attack(display& disp, unit_map& units,
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
 	if(attack.range_type() == attack_type::LONG_RANGE) {
-		return unit_attack_ranged(disp, units, a, b, damage, attack, update_display, swing);
+		return unit_attack_ranged(disp, units, a, b, damage, attack,secondary_attack, update_display, swing);
 	}
 
 	int start_time = 500;
 	int end_time = 0;
 
 
-	attacker.set_attacking(disp,a,damage,attack,swing);
+	attacker.set_attacking(disp,a,damage,attack,secondary_attack,swing);
 	start_time=minimum<int>(start_time,attacker.get_animation()->get_first_frame_time());
 	end_time=attacker.get_animation()->get_last_frame_time();
 
-	defender.set_defending(disp,b,damage,&attack, swing);
+	defender.set_defending(disp,b,damage,&attack, secondary_attack, swing);
 	start_time=minimum<int>(start_time,defender.get_animation()->get_first_frame_time());
 
 
