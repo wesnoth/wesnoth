@@ -174,7 +174,21 @@ namespace events{
 		}
 
 		for(;;) {
-			const int res = gui::show_dialog2(*gui_, NULL, _("Statistics"), "", gui::OK_CANCEL, &items);
+			//add player's name to title of dialog
+			std::stringstream str;
+			str <<  _("Statistics") << " ("; 
+			// Find leader (of viewing player) 's description  
+			for (unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+				if (i->second.side() != (gui_->viewing_team()+1))
+					continue;
+				if (i->second.can_recruit()){
+					str << i->second.description();
+					break;
+				}
+			}
+			str << ")";
+
+			const int res = gui::show_dialog2(*gui_, NULL, str.str(), "", gui::OK_CANCEL, &items);
 			std::string title;
 			std::vector<std::string> items_sub;
 
