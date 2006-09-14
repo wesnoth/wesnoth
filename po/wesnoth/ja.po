@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-31 12:50+0200\n"
-"PO-Revision-Date: 2006-09-12 15:13+0900\n"
+"PO-Revision-Date: 2006-09-14 12:15+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -2219,13 +2219,14 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "各陣営は主塔に一人のリーダーがいる状態で開始します。戦闘の開始時点やその途中"
-"では何度か、自軍に<ref>dst=units text=ユニット</ref>を雇う必要があるでしょ"
-"う。雇うためにはリーダー(「王位継承者」ではKonrad)を<ref>dst=terrain_castle "
-"text=城</ref>の主搭の位置に置く必要があります。そこで、メニューから「雇う」を"
-"選択するか、ヘクスを右クリックして<italic>text=雇う</italic>を選択することで"
-"雇うことができます。ここで、雇うことが可能なユニットと必要金額の一覧を示す雇"
-"用メニューが表示されます。その特性値を見るにはユニットをクリックして、雇うに"
-"はそれから「雇う」ボタンを押して下さい。"
+"では何度か、自軍に<ref>dst=units text=ユニット</ref>を雇用する必要があるで"
+"しょう。雇用するためにはリーダー(「王位継承者」ではKonrad)を"
+"<ref>dst=terrain_castle text=城</ref>の主搭の位置に置く必要があります。そこ"
+"で、メニューから「雇用する」を選択するか、ヘクスを右クリックして<italic>text="
+"雇用する</italic>を選択することで雇用することができます。ここで、雇用すること"
+"が可能なユニットと必要金額の一覧を示す雇用メニューが表示されます。その特性値"
+"を見るにはユニットをクリックして、雇用するにはそれから「雇用する」ボタンを押"
+"して下さい。"
 
 #: data/help.cfg:103
 msgid ""
@@ -2238,10 +2239,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"城ヘクスで右クリックをして「雇う」を選択すると、新しいユニットがそのヘクスに"
-"出現します(主搭の周りの空いたヘクスの場合もあります)。城の空いているヘクスだ"
-"けユニットを雇うことができます。雇うときには所持金より多くのゴールドを消費す"
-"ることはできません。"
+"城ヘクスで右クリックをして「雇用する」を選択すると、新しいユニットがそのヘク"
+"スに出現します(主搭の周りの空いたヘクスの場合もあります)。城の空いているヘク"
+"スだけユニットを雇用することができます。雇用するときには所持金より多くのゴー"
+"ルドを消費することはできません。"
 
 #: data/help.cfg:105
 msgid ""
@@ -2996,8 +2997,8 @@ msgid ""
 msgstr ""
 "ほとんどのユニットは2つの特性を持っていますが、アンデッドは「アンデッド」の特"
 "性のみが割り当てられ、ウーズはどのような特性も得ません。特性とは、少しばかり"
-"ユニットの属性を変化させる修正です。それらは通常はユニットが雇われた時にラン"
-"ダムに割り振られます。"
+"ユニットの属性を変化させる修正です。それらは通常はユニットが雇用された時にラ"
+"ンダムに割り振られます。"
 
 #: data/help.cfg:267
 msgid ""
@@ -3162,8 +3163,8 @@ msgstr ""
 "キャンペーンの間、ある種のユニットは自分自身の意思でプレイヤーの力に加わるこ"
 "とを選択する。これらのユニットは忠義特性をもつとされる。彼等は召還される際に"
 "は支払いが必要だが、維持費は全くかからない。これは長いキャンペーンの間に金の"
-"貯えが不足した時などには、貴重ものとなる。この特性は雇われたユニットには決し"
-"て与えられないため、このようなユニットを解雇したり、愚かな死においやること"
+"貯えが不足した時などには、貴重ものとなる。この特性は雇用されたユニットには決"
+"して与えられないため、このようなユニットを解雇したり、愚かな死においやること"
 "は、とても知恵がないといえる。"
 
 #: data/help.cfg:314
@@ -5542,9 +5543,9 @@ msgid ""
 "for you on their keep so you can recruit there."
 msgstr ""
 "あなたのリーダーは、 スタート地点だけでなく、 城内のどの主塔からも ユニットを"
-"雇ったり召還することができる。 敵から主塔を奪って、 そこから雇ったりもでき"
-"る。 また、 あなたの同盟軍のあるものは、 主塔の場所をあなたのために空けて、 "
-"そこから雇うことができるように してくれるかもしれない。"
+"雇用したり召還することができる。 敵から主塔を奪って、 そこから雇用することも"
+"できる。 また、 あなたの同盟軍のあるものは、 主塔の場所をあなたのために空け"
+"て、 そこから雇用できるように してくれるかもしれない。"
 
 #: data/tips.cfg:20
 msgid ""
@@ -9841,16 +9842,17 @@ msgstr "閉じる"
 
 #: src/actions.cpp:111
 msgid "You don't have a leader to recruit with."
-msgstr "雇うためのリーダーがいません。"
+msgstr "雇用するためのリーダーがいません。"
 
 #: src/actions.cpp:118
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"ユニットを雇ったり 召還するためには、 リーダーが 主塔にいなければなりません。"
+"ユニットを雇用したり 召還したりするためには、 リーダーが 主塔にいなければなり"
+"ません。"
 
 #: src/actions.cpp:137
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "ユニットを雇うための 城タイルの空きがありません。"
+msgstr "ユニットを雇用するための 城タイルの空きがありません。"
 
 #: src/actions.cpp:945 src/actions.cpp:1185
 msgid "poisoned"
@@ -10414,15 +10416,15 @@ msgid ""
 "a location with this terrain."
 msgstr ""
 "この地形は主塔の役割をもつ。すなわち、リーダーがこの地形をもつ地点にいると、"
-"ユニットを雇うことができます。"
+"ユニットを雇用することができます。"
 
 #: src/help.cpp:1429
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
-"この地形は城の役割をもつ。すなわち、この地形をもつ地点でユニットを雇うことが"
-"できます。"
+"この地形は城の役割をもつ。すなわち、この地形をもつ地点でユニットを雇用するこ"
+"とができます。"
 
 #: src/help.cpp:1431
 msgid "This terrain gives healing."
@@ -10642,7 +10644,7 @@ msgstr "雇用できるユニットがいない。"
 
 #: src/menu_events.cpp:585
 msgid "Recruit"
-msgstr "雇う"
+msgstr "雇用する"
 
 #: src/menu_events.cpp:586 src/menu_events.cpp:729
 msgid "Select unit:"
@@ -10650,7 +10652,7 @@ msgstr "ユニットを選択してください:"
 
 #: src/menu_events.cpp:626
 msgid "You don't have enough gold to recruit that unit"
-msgstr "そのユニットを 雇えるだけのお金が ありません。"
+msgstr "そのユニットを雇用できるだけのお金が ありません。"
 
 #: src/menu_events.cpp:681
 msgid "You are separated from your soldiers and may not recall them"
@@ -11349,16 +11351,16 @@ msgstr "ボーナス: "
 
 #: src/playsingle_controller.cpp:315
 msgid "Gold: "
-msgstr "所持金: "
+msgstr "所持金額: "
 
 #: src/playsingle_controller.cpp:320
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr "ゴールドの80%が 次のシナリオに持ち越されます"
+msgstr "所持金額の80%が次のシナリオに持ち越されます"
 
 #: src/playsingle_controller.cpp:321
 msgid "Retained Gold: "
-msgstr "保有金額: "
+msgstr "保持金額: "
 
 #: src/playsingle_controller.cpp:326
 msgid "Victory"
