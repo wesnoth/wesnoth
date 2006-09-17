@@ -186,7 +186,7 @@ int init_joystick()
 	std::cerr << "Initializing joystick...\n";
 
 	if(SDL_InitSubSystem(SDL_INIT_JOYSTICK) >= 0) {
-		if(SDL_JoystickOpen(0) == NULL)
+		if(SDL_JoystickOpen(0) != NULL)
 			return 0;
 	}
 
