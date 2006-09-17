@@ -27,6 +27,7 @@
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "gp2x.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
@@ -108,7 +109,7 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
-	void read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache);
+	void read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache, bool force_valid_cache_);
 	void refresh_game_cfg(bool reset_translations=false);
 
 	void upload_campaign(const std::string& campaign, network::connection sock);
@@ -136,6 +137,7 @@ private:
 
 	bool test_mode_, multiplayer_mode_, no_gui_;
 	bool use_caching_;
+	bool force_valid_cache_;
 	int force_bpp_;
 
 	config game_config_;
@@ -154,8 +156,8 @@ private:
 game_controller::game_controller(int argc, char** argv)
    : argc_(argc), arg_(1), argv_(argv), thread_manager(),
      test_mode_(false), multiplayer_mode_(false),
-     no_gui_(false), use_caching_(true), force_bpp_(-1), disp_(NULL),
-     loaded_game_show_replay_(false)
+     no_gui_(false), use_caching_(true), force_valid_cache_(false), 
+     force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false)
 {
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
@@ -167,6 +169,8 @@ game_controller::game_controller(int argc, char** argv)
 			preferences::set_show_fps(true);
 		} else if(val == "--nocache") {
 			use_caching_ = false;
+		} else if(val == "--validcache") {
+			force_valid_cache_ = true;
 		} else if(val == "--resolution" || val == "-r") {
 			if(arg_+1 != argc_) {
 				++arg_;
@@ -1282,7 +1286,7 @@ void game_controller::show_upload_begging()
 }
 
 //this function reads the game configuration, searching for valid cached copies first
-void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache)
+void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache, bool force_valid_cache_)
 {
 	log_scope("read_game_cfg");
 
@@ -1309,7 +1313,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 				file_tree_checksum dir_checksum;
 
-				if(use_cache) {
+				if(use_cache && !force_valid_cache_) {
 					try {
 						if(file_exists(fname_checksum)) {
 							config checksum_cfg;
@@ -1324,7 +1328,10 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 					}
 				}
 
-				if(use_cache && file_exists(fname) && file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum()) {
+				if(force_valid_cache_)
+					std::cerr << "skipping cache validation (forced)\n";
+
+				if(use_cache && file_exists(fname) && (force_valid_cache_ || file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum())) {
 					std::cerr << "found valid cache at '" << fname << "' using it\n";
 					log_scope("read cache");
 					try {
@@ -1447,7 +1454,7 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 
 			if(!reset_translations) {
 				game_config_.clear();
-				read_game_cfg(defines_map_, game_config_, use_caching_);
+				read_game_cfg(defines_map_, game_config_, use_caching_, force_valid_cache_);
 			} else {
 				game_config_.reset_translation();
 			}
@@ -1572,6 +1579,7 @@ int play_game(int argc, char** argv)
 			<< "                               sets the severity level of the debug domains.\n"
 			<< "                               \"all\" can be used to match any debug domain.\n"
 			<< "  --nocache                    disables caching of game data.\n"
+			<< "  --validcache                 assume that cache is valid (dangerous)\n"
 			<< "  --nosound                    runs the game without sounds and music.\n"
 			<< "  --path                       prints the name of the game data directory and exits.\n"
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
@@ -1834,11 +1842,19 @@ int play_game(int argc, char** argv)
 int main(int argc, char** argv)
 {
 #ifdef OS2 /* required for SDL_GetTicks to work on OS/2 */
-        if ( SDL_Init(SDL_INIT_TIMER) < 0 ) {
-		fprintf(stderr, "Couldn't initialize SDL: %s\n",SDL_GetError());
+        if(SDL_Init(SDL_INIT_TIMER) < 0) {
+		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);
 	}
 #endif
+
+#ifdef GP2X
+	if(gp2x::init_joystick() < 0) {
+		fprintf(stderr, "Couldn't initialize joystick: %s\n", SDL_GetError());
+		return 1;
+	}
+#endif
+
 	try {
 		std::cerr << "Battle for Wesnoth v" << VERSION << "\n";
 		time_t t = time(NULL);

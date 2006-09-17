@@ -16,6 +16,7 @@
 #include "clipboard.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
+#include "gp2x.hpp"
 #include "mouse.hpp"
 #include "preferences_display.hpp"
 #include "sound.hpp"
@@ -285,6 +286,13 @@ void pump()
 
 				break;
 			}
+
+#ifdef GP2X
+			case SDL_JOYBUTTONDOWN:
+			case SDL_JOYBUTTONUP:
+				gp2x::handle_joystick(reinterpret_cast<SDL_JoyButtonEvent *>(&event));
+				break;
+#endif
 
 			case SDL_MOUSEMOTION: {
 				//always make sure a cursor is displayed if the

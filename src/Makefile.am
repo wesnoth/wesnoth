@@ -62,6 +62,7 @@ wesnoth_SOURCES = \
 	game_events.cpp \
 	gamestatus.cpp \
 	generic_event.cpp \
+	gp2x.cpp \
 	halo.cpp \
 	help.cpp \
 	hotkeys.cpp \
@@ -433,6 +434,7 @@ noinst_HEADERS = \
 	playsingle_controller.hpp \
 	generic_event.hpp \
 	sdl_ttf/SDL_ttf.h \
+	gp2x.hpp \
 	wesconfig.h
 
 #############################################################################
