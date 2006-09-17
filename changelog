@@ -33,6 +33,7 @@ Version 1.3-svn:
      future hotkey changes/additions (see bug #6312)
    * when discovering friendly units, the message is now blue
    * show leader name in statistics title (patch #604, FR #6932)
+   * initial support for GP2X controls
  * WML engine
    * add hide_help key to prevent some unit to be display in help menu
    * allow_new_game key (default=yes) to prevent [multiplayer] scenarios to
@@ -72,6 +73,8 @@ Version 1.3-svn:
      Japanese, Slovak.
    * updated manpages: German, Swedish.
    * removed manpages (outdated): Hungarian.
+ * other:
+   * --validcache runtime switch to force assumption that cache is valid
 	
 Version 1.1.7:
  * campaigns
