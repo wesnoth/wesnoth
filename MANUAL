@@ -15,7 +15,7 @@ Right click    Main menu, cancel action
 Middle click   Center on pointer location
 Escape         Exit game, exit menu, cancel message
 ctrl-r         Recruit unit
-ctrl-shift-r   Repeat last recruit
+ctrl-alt-r     Repeat last recruit
 alt-r          Recall unit
 u              Undo last move (only deterministic moves can be undone)
 r              Redo move
@@ -25,7 +25,7 @@ alt-m          Message everyone in the game (in multiplayer)
 n              Cycle through units that have movement left
 N              Cycle through units that have movement left, in reverse order
 space          End unit turn and cycle to next unit that has movement left
-alt-space      End this player's turn
+ctrl-space     End this player's turn
 shift-space    Hold unit position; skip this unit when cycling through units
 ctrl-v         Show enemy moves (where the enemy can move next turn)
 ctrl-b         Show potential enemy moves, if your units were not on the map
@@ -131,9 +131,9 @@ Units have traits which reflect aspects of their character.
 Traits are assigned randomly to units when they are created.
 Most units receive two traits.  The possible traits are as follows:
 
- Strong       does 1 extra damage per strike in melee, and has 2 extra hitpoints
+ Strong       does 1 extra damage per strike in melee, and has 1 extra hitpoint
  Quick        has one extra movement point, but 10% fewer hitpoints
- Resilient    has 7 more hitpoints
+ Resilient    increases hitpoints by 10% and adds 3 hitpoints
  Intelligent  requires 20% less experience to advance a level (not Trolls)
 
 There are also some traits that are not assigned randomly:
@@ -238,12 +238,12 @@ A unit with the 'cures' ability will remove poison from a unit.
 Usually a unit with 'cures' ability has 'heals' as well, but a unit
 will be cured of poison instead of healed.
 
-No unit can be healed by more than one thing at a time: the effects
-are not cumulative.  The most powerful healing method is always
-selected.  For example, a unit standing in a village gains no
-additional benefit from a healer standing next to it if the healer
-does less than 8 hitpoints healing.  A unit standing next to three
-healers will only use the most powerful healer.
+No unit can be healed by more than one thing at a time: the effects are not
+cumulative. (except for 'resting')  The most powerful healing method is always
+selected.  For example, a unit standing in a village gains no additional
+benefit from a healer standing next to it if the healer does less than
+8 hitpoints healing.  A unit standing next to three healers will only use the
+most powerful healer.
 
 For more information see the in-game help.
 
