@@ -23,6 +23,7 @@
 #include "filesystem.hpp"
 #include "menu_events.hpp"
 #include "game_events.hpp"
+#include "game_config.hpp"
 
 #include <fstream>
 
@@ -1586,6 +1587,13 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
     return Py_BuildValue("s", memory[variable].c_str());
 }
 
+PyObject* python_ai::wrapper_get_version(PyObject* /*self*/, PyObject* args)
+{
+    if (!PyArg_ParseTuple(args, "" ))
+        return NULL;
+    return Py_BuildValue("s", game_config::version.c_str());
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
     { "log_message",				python_ai::wrapper_log_message,			METH_VARARGS,
         "Parameters: string\n"
@@ -1654,7 +1662,9 @@ static PyMethodDef wesnoth_python_methods[] = {
         "Returns: value\n"
         "Retrieves a persistent variable 'variable' from the AI, which has "
         "previously been set with set_variable."},
-	{ NULL,						NULL,						0, NULL}
+    { "get_version", python_ai::wrapper_get_version, METH_VARARGS,
+        "Returns a string containing current Wesnoth version"},
+        { NULL, NULL, 0, NULL}
 };
 
 
