@@ -49,6 +49,7 @@ public:
 	static PyObject* wrapper_get_gamestatus(PyObject* self, PyObject* args);
 	static PyObject* wrapper_set_variable(PyObject*, PyObject* args);
 	static PyObject* wrapper_get_variable(PyObject*, PyObject* args);
+	static PyObject* wrapper_get_version(PyObject*, PyObject* args);
 
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
