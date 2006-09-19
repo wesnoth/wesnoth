@@ -1714,6 +1714,12 @@ void python_ai::play_turn()
 	game_events::fire("ai turn");
 
 	std::string script_name = current_team().ai_parameters()["python_script"];
+	if (script_name.substr(script_name.length() - 3) != ".py") {
+	    // Make sure the script ends in .py here - Wesnoth will not execute any
+	    // other files.
+	    std::cerr << "\"" << script_name << "\" is not a valid script name.\n";
+	    return;
+	}
 	std::string script = get_binary_file_location("data", "ais/" + script_name);
 
     PyErr_Clear();

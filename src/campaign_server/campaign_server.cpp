@@ -87,6 +87,25 @@ void find_translations(const config& cfg, config& campaign)
         }
 }
 
+void check_for_python_scripts(config& cfg)
+{
+    // Look through all files, and rename .py files into .py.unchecked, so they
+    // can not be executed.
+    const config::child_list& dirs = cfg.get_children("dir");
+    config::child_list::const_iterator i;
+    for(i = dirs.begin(); i != dirs.end(); ++i) {
+        const config::child_list& files = (**i).get_children("file");
+        config::child_list::const_iterator j;
+        for(j = files.begin(); j != files.end(); ++j) {
+            std::string filename = (**j)["name"].str();
+            if (filename.substr(filename.length() - 3) == ".py") {
+                (**j)["name"] += ".unchecked";
+            }
+        }
+        check_for_python_scripts(**i);
+    }
+}
+
 void campaign_server::run()
 {
 	for(int increment = 0; ; ++increment) {
@@ -168,6 +187,10 @@ void campaign_server::run()
 						config cfg;
 						scoped_istream stream = istream_file((*campaign)["filename"]);
 						read_compressed(cfg, *stream);
+						// Campaigns which have python="allowed" are not checked
+						if ((*campaign)["python"] != "allowed") {
+							check_for_python_scripts(cfg);
+						}
 						network::queue_data(cfg,sock);
 
 						const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
