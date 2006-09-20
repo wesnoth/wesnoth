@@ -48,6 +48,9 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
 //function which returns the size of text if it were to be drawn.
 SDL_Rect text_area(const std::string& text, int size, int style=0);
 
+// Copy string but without tags at the begining 
+std::string del_tags(std::string name);
+
 bool is_format_char(char c);
 
 ///

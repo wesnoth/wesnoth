@@ -30,7 +30,9 @@
 #include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "wesconfig.h"
+#include "util.hpp"
 
+#include <algorithm>
 #include <sstream>
 
 namespace events{
@@ -309,6 +311,10 @@ namespace events{
 		}
 	}
 
+	bool is_player_char(char c){
+		return isalpha(c);
+	}
+
 	void menu_handler::status_table()
 	{
 		std::stringstream heading;
@@ -334,7 +340,7 @@ namespace events{
 		//if the player is under shroud or fog, they don't get to see
 		//details about the other sides, only their own side, allied sides and a ??? is
 		//shown to demonstrate lack of information about the other sides
-		bool fog = false;
+		// But he see all names with in colours 
 		for(size_t n = 0; n != teams_.size(); ++n) {
 			if(teams_[n].is_empty()) {
 				continue;
@@ -342,29 +348,38 @@ namespace events{
 
 			const bool known = viewing_team.knows_about_team(n);
 			const bool enemy = viewing_team.is_enemy(n+1);
-			if(!known) {
-				fog = true;
-				continue;
-			}
-
+			
+			std::stringstream str;	
+			
 			const team_data data = calculate_team_data(teams_[n],n+1,units_);
-
-			std::stringstream str;
-
+		
 			const unit_map::const_iterator leader = team_leader(n+1,units_);
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
 			if(leader != units_.end()) {
+				// Add leader image, if it's used fog then it show only random leader image
+				if (known) {	
+					str << IMAGE_PREFIX << leader->second.absolute_image();
+				}
+				else {
+					str << IMAGE_PREFIX << std::string("random-enemy.png");
+				}
 
-			str << IMAGE_PREFIX << leader->second.absolute_image();
 #ifndef LOW_MEM
-			str << "~TC(" << (n+1) << "," << leader->second.team_color() << ")";
+				str << "~TC(" << (n+1) << "," << leader->second.team_color() << ")";
 #endif
-			str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm'
-				<< teams_[n].current_player() /* leader->second.description() */ << COLUMN_SEPARATOR;
-
+				str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm';
+				// Delete all tags before name				
+				str << font::del_tags(leader->second.description()) << COLUMN_SEPARATOR;
+			
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
+			}
+
+			if(!known) {
+				// We don't spare more info (only name) so let's go on next side ...
+				items.push_back(str.str());
+				continue;
 			}
 
 			if(enemy && viewing_team.uses_fog()) {
@@ -381,10 +396,6 @@ namespace events{
 
 			items.push_back(str.str());
 		}
-
-		if(fog)
-			items.push_back(IMAGE_PREFIX + std::string("random-enemy.png") + COLUMN_SEPARATOR +
-							IMAGE_PREFIX + "random-enemy.png");
 
 		gui::show_dialog2(*gui_,NULL,"","",gui::CLOSE_ONLY,&items,
 						 NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
