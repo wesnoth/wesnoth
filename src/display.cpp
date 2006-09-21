@@ -2068,6 +2068,9 @@ void display::invalidate_animations()
 		if (unit->second.get_animation() && !unit->second.get_animation()->does_not_change())
 			invalidate(unit->first);
 	}
+	if (temp_unit_ ) {
+		temp_unit_->refresh(*this, temp_unit_loc_);
+	}
 
 
 }
