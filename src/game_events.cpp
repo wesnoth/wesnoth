@@ -1201,7 +1201,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					screen->invalidate(loc);
 					screen->draw();
 					events::pump();
-					screen->non_turbo_delay();
+					screen->delay(10);
 				}
 				un->second.set_standing(*screen,un->first);
 			}
@@ -1309,7 +1309,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			//this will redraw the unit, with its new stats
 			screen->draw();
-		
+
 			const std::string duration_str = utils::interpolate_variables_into_string(cfg["duration"], *state_of_game);
 			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
 			message_dialog to_show(*screen,((surface.null())? caption : ""),text);
@@ -1420,7 +1420,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 #ifdef LOW_MEM
 					ss	<< image;
 #else
-					ss	<< image << "~TC(" 
+					ss	<< image << "~TC("
 						<< speaker->second.side() << ","
 						<< speaker->second.team_color() << ")";
 #endif
@@ -1838,7 +1838,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				screen->invalidate(u->first);
 				screen->draw();
 				events::pump();
-				screen->non_turbo_delay();
+				screen->delay(10);
 			}
 			u->second.set_standing(*screen,u->first);
 			screen->invalidate(u->first);
@@ -2209,7 +2209,7 @@ bool pump()
 		return false;
 
 	bool result = false;
-	
+
 	while(events_queue.empty() == false) {
 		queued_event ev = events_queue.front();
 		events_queue.pop_front(); //pop now for exception safety

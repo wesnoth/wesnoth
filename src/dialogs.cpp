@@ -147,7 +147,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 			gui.invalidate(loc);
 			gui.draw();
 			events::pump();
-			gui.non_turbo_delay();
+			gui.delay(10);
 		}
 	}
 
@@ -170,7 +170,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 			gui.invalidate(loc);
 			gui.draw();
 			events::pump();
-			gui.non_turbo_delay();
+			gui.delay(10);
 		}
 		u->second.set_standing(gui,u->first);
 		gui.invalidate(loc);

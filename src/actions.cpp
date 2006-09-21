@@ -164,7 +164,7 @@ std::string recruit_unit(const gamemap& map, int side,
 				disp->invalidate(recruit_location);
 				disp->draw();
 				events::pump();
-				disp->non_turbo_delay();
+				disp->delay(10);
 			}
 			un->second.set_standing(*disp,recruit_location);
 		}
@@ -279,9 +279,9 @@ battle_context::battle_context(const unit_stats &att, const unit_stats &def)
 battle_context::~battle_context()
 {
 delete attacker_stats_;
-delete defender_stats_; 
+delete defender_stats_;
 delete attacker_combatant_;
-delete defender_combatant_; 
+delete defender_combatant_;
 }
 battle_context& battle_context::operator=(const battle_context &other)
 {
@@ -745,11 +745,11 @@ attack::attack(display& gui, const gamemap& map,
 
 	//if the attacker was invisible, she isn't anymore!
 	a_->second.set_state("hides","");
-	
+
 	bc_ = new battle_context(map_, teams_, units_, state_, info_, attacker_, defender_, attack_with_, defend_with_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
-	
+
 	try {
 		fire_event("attack");
 	} catch (attack_end_exception) {
@@ -766,7 +766,7 @@ attack::attack(display& gui, const gamemap& map,
 	n_defends_ = orig_defends_;
 	attackerxp_ = d_->second.level();
 	defenderxp_ = a_->second.level();
-	
+
 	bool defender_strikes_first = (d_stats_->firststrike && ! a_stats_->firststrike);
 	unsigned int rounds = maximum<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
 	int abs_n_attack_ = 0;
@@ -775,7 +775,7 @@ attack::attack(display& gui, const gamemap& map,
 	static const std::string poison_string("poison");
 
 	LOG_NG << "Fight: (" << attacker << ") vs (" << defender << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
-	
+
 	while(n_attacks_ > 0 || n_defends_ > 0) {
 		LOG_NG << "start of attack loop...\n";
 		abs_n_attack_++;
@@ -897,7 +897,7 @@ attack::attack(display& gui, const gamemap& map,
 				a_->second.get_experience(attackerxp_);
 				attackerxp_ = defenderxp_ = 0;
 				gui_.invalidate(a_->first);
-				
+
 				gamemap::location loc = d_->first;
 				gamemap::location attacker_loc = a_->first;
 				std::string undead_variation = d_->second.undead_variation();
@@ -1096,7 +1096,7 @@ attack::attack(display& gui, const gamemap& map,
 				attackerxp_ = defenderxp_ = 0;
 				gui_.invalidate(d_->first);
 				std::string undead_variation = a_->second.undead_variation();
-				
+
 				gamemap::location loc = a_->first;
 				gamemap::location defender_loc = d_->first;
 				const int attacker_side = a_->second.side();
