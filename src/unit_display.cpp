@@ -303,8 +303,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		halo::remove(missile_frame_halo);
 		missile_halo = 0;
 		missile_frame_halo = 0;
-		if(animation_time > missile_animation.get_first_frame_time() && 
-				animation_time < missile_animation.get_last_frame_time() && 
+		if(animation_time > missile_animation.get_first_frame_time() &&
+				animation_time < missile_animation.get_last_frame_time() &&
 				(!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
 			const int posx = int(pos*xdst + (1.0-pos)*xsrc);
 			const int posy = int(pos*ydst + (1.0-pos)*ysrc);
@@ -389,7 +389,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 bool unit_attack(display& disp, unit_map& units,
                  const gamemap::location& a, const gamemap::location& b, int damage,
-                 const attack_type& attack, const attack_type* secondary_attack, 
+                 const attack_type& attack, const attack_type* secondary_attack,
 		 bool update_display, int swing)
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
