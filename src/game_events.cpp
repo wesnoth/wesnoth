@@ -1163,7 +1163,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					screen->invalidate(loc);
 					screen->draw();
 					events::pump();
-					screen->non_turbo_delay();
+					screen->delay(10);
 				}
 				un->second.set_standing(*screen,un->first);
 			}
@@ -1781,7 +1781,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				screen->invalidate(u->first);
 				screen->draw();
 				events::pump();
-				screen->non_turbo_delay();
+				screen->delay(10);
 			}
 			u->second.set_standing(*screen,u->first);
 			screen->invalidate(u->first);
@@ -2152,7 +2152,7 @@ bool pump()
 		return false;
 
 	bool result = false;
-	
+
 	while(events_queue.empty() == false) {
 		queued_event ev = events_queue.front();
 		events_queue.pop_front(); //pop now for exception safety

@@ -164,7 +164,7 @@ std::string recruit_unit(const gamemap& map, int side,
 				disp->invalidate(recruit_location);
 				disp->draw();
 				events::pump();
-				disp->non_turbo_delay();
+				disp->delay(10);
 			}
 			un->second.set_standing(*disp,recruit_location);
 		}

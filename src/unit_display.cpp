@@ -47,7 +47,7 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 			disp.place_temporary_unit(temp_unit, a);
 			disp.draw();
 			events::pump();
-			disp.non_turbo_delay();
+			disp.delay(10);
 		}
 	}
 	if (!disp.fogged(b.x, b.y)) { // teleport
@@ -58,7 +58,7 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 			disp.place_temporary_unit(temp_unit, b);
 			disp.draw();
 			events::pump();
-			disp.non_turbo_delay();
+			disp.delay(10);
 		}
 	}
 	temp_unit.set_standing(disp,b);
@@ -97,7 +97,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		temp_unit.set_offset(pos);
 		disp.draw();
 		events::pump();
-		disp.non_turbo_delay();
+		disp.delay(10);
 
 		mvt_time = SDL_GetTicks() -start_time;
 	}
@@ -185,7 +185,7 @@ void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_
 		disp.invalidate(loc);
 		disp.draw();
 		events::pump();
-		disp.non_turbo_delay();
+		disp.delay(10);
 	}
 	u.set_standing(disp,loc);
 	disp.update_display();
@@ -357,7 +357,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		if(leader_loc.valid() && leader->second.get_animation()->animation_finished() ) {
 		   leader->second.set_standing(disp,leader_loc,true);
 		}
-		disp.non_turbo_delay();
+		disp.delay(10);
 		// we use missile animation because it's the only one not reseted in the middle to go to standing
 		animation_time = missile_animation.get_animation_time();
 		missile_animation.update_current_frame();
@@ -476,7 +476,7 @@ bool unit_attack(display& disp, unit_map& units,
 		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		disp.draw();
 		events::pump();
-		disp.non_turbo_delay();
+		disp.delay(10);
 
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
@@ -513,7 +513,7 @@ bool unit_attack(display& disp, unit_map& units,
 		if(leader_loc.valid() && leader->second.get_animation()->animation_finished() ) {
 		   leader->second.set_standing(disp,leader_loc,true);
 		}
-		disp.non_turbo_delay();
+		disp.delay(10);
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
 
