@@ -1566,7 +1566,7 @@ const surface unit::still_image() const
 
 void unit::refresh(const display& disp,const gamemap::location& loc)
 {
-	if(state_ == STATE_IDLING && anim_->animation_finished()) set_standing(disp, loc);
+	if(state_ == STATE_IDLING && anim_ && anim_->animation_finished()) set_standing(disp, loc);
 	if(anim_) anim_->update_current_frame();
 	if(state_ != STATE_STANDING || SDL_GetTicks() < next_idling) return;
 	set_idling(disp, loc);
@@ -2051,6 +2051,8 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 		}
 		break;
 	}
+	//very early calls, anim not initialized yet
+	if(!anim_) return over;
 	double tmp_offset = anim_->get_current_frame().offset(anim_->get_animation_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
 	// invalidate adj neighbours
