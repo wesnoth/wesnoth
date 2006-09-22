@@ -297,6 +297,7 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 		case NORTH_WEST:
 			return SOUTH_EAST;
 		case NDIRECTIONS:
+		default:
 			return NDIRECTIONS;
 	}
 }

@@ -33,7 +33,8 @@ animated<T,T_void_value>::animated() :
 	does_not_change_(false),
 	real_start_ticks_(0),
 	start_ticks_(0),
-	acceleration_(1)
+	acceleration_(1),
+	start_frame_(0)
 {}
 
 template<typename T,  typename T_void_value>
@@ -44,7 +45,8 @@ animated<T,T_void_value>::animated(const std::string &cfg, const string_initiali
 	does_not_change_(false),
 	real_start_ticks_(0),
 	start_ticks_(0),
-	acceleration_(1)
+	acceleration_(1),
+	start_frame_(0)
 {
 	std::vector<std::string> items = utils::split(cfg);
 
@@ -224,6 +226,7 @@ bool animated<T,T_void_value>::animation_finished() const
 template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_animation_time() const
 {
+	if(!started_) return  starting_frame_time_;
 	if(does_not_change_)
 		return SDL_GetTicks() * acceleration_ - real_start_ticks_ + start_frame_;
 
