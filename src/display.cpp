@@ -2012,6 +2012,12 @@ void display::invalidate(const gamemap::location& loc)
 					invalidate(*i);
 				}
 			}
+			if (temp_unit_  && temp_unit_loc_ == loc ) {
+				std::set<gamemap::location> overlaps = temp_unit_->overlaps(temp_unit_loc_);
+				for (std::set<gamemap::location>::iterator i = overlaps.begin(); i != overlaps.end(); i++) {
+					invalidate(*i);
+				}
+			}
 			// if neighbour has a unit which overlaps us invalidate him
 			gamemap::location adjacent[6];
 			get_adjacent_tiles(loc, adjacent);
@@ -2021,6 +2027,12 @@ void display::invalidate(const gamemap::location& loc)
 					std::set<gamemap::location> overlaps = u->second.overlaps(u->first);
 					if (overlaps.find(loc) != overlaps.end()) {
 						invalidate(u->first);
+					}
+				}
+				if (temp_unit_  && temp_unit_loc_ == adjacent[i] ) {
+					std::set<gamemap::location> overlaps = temp_unit_->overlaps(temp_unit_loc_);
+					if (overlaps.find(loc) != overlaps.end()) {
+						invalidate(temp_unit_loc_);
 					}
 				}
 			}
@@ -2070,6 +2082,8 @@ void display::invalidate_animations()
 	}
 	if (temp_unit_ ) {
 		temp_unit_->refresh(*this, temp_unit_loc_);
+		if (temp_unit_->get_animation() && !temp_unit_->get_animation()->does_not_change())
+			invalidate(temp_unit_loc_);
 	}
 
 
@@ -2086,6 +2100,7 @@ void display::recalculate_minimap()
 	}
 
 	redraw_minimap();
+	// remove unit after invalidating...
 }
 
 void display::redraw_minimap()
@@ -2097,23 +2112,20 @@ void display::place_temporary_unit(unit &u, const gamemap::location& loc)
 {
 	temp_unit_ = &u;
 	temp_unit_loc_ = loc;
-
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(loc, adjacent);
-	for (int i = 0; i < 6; i++) {
-		invalidated_.insert(adjacent[i]);
-	}
+	invalidate(loc);
 }
 
 void display::remove_temporary_unit()
 {
-	temp_unit_ = NULL;
 
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(temp_unit_loc_, adjacent);
+	invalidate(temp_unit_loc_);
 	for (int i = 0; i < 6; i++) {
-		invalidated_.insert(adjacent[i]);
+		invalidate(adjacent[i]);
 	}
+	// remove unit after invalidating...
+	temp_unit_ = NULL;
 }
 
 void display::invalidate_game_status()

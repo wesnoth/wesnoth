@@ -2049,6 +2049,29 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 		for (unsigned int i = 0; i < 6; i++) {
 			over.insert(arr[i]);
 		}
+		break;
+	}
+	double tmp_offset = anim_->get_current_frame().offset(anim_->get_animation_time());
+	if(tmp_offset == -20.0) tmp_offset = offset_;
+	// invalidate adj neighbours
+	if(tmp_offset > 0) {
+		gamemap::location adj_loc = loc.get_direction(facing_);
+		over.insert(adj_loc);
+		gamemap::location arr[6];
+		get_adjacent_tiles(adj_loc, arr);
+		for (unsigned int i = 0; i < 6; i++) {
+			over.insert(arr[i]);
+		}
+	} else if(tmp_offset < 0) {
+		gamemap::location opp_loc = loc.get_direction(loc.get_opposite_dir(facing_));
+		over.insert(opp_loc);
+		gamemap::location arr[6];
+		get_adjacent_tiles(opp_loc, arr);
+		for (unsigned int i = 0; i < 6; i++) {
+			over.insert(arr[i]);
+		}
+	} else {
+	// we stay in our hex, do nothing
 	}
 
 	return over;
