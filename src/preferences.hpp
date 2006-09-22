@@ -59,6 +59,9 @@ namespace preferences {
 	int turbo_speed();
 	void save_turbo_speed(const int speed);
 
+	bool show_lobby_minimaps();
+	void save_show_lobby_minimaps(const bool show);
+
 	const std::string& language();
 	void set_language(const std::string& s);
 
@@ -214,7 +217,7 @@ namespace preferences {
 
 	std::string client_type();
 
-        std::string clock_format();
+	std::string clock_format();
 
 	void set_theme(const std::string& theme);
 	const std::string& theme();

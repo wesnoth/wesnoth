@@ -82,6 +82,7 @@ private:
 	bool double_clicked_;
 	bool ignore_next_doubleclick_;
 	bool last_was_doubleclick_;
+	bool minimaps_;
 };
 
 class lobby : public ui

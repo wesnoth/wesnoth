@@ -48,6 +48,7 @@ display_manager::display_manager(display* d)
 	set_fullscreen(fullscreen());
 	set_gamma(gamma());
 	set_colour_cursors(preferences::get("colour_cursors") == "yes");
+	save_show_lobby_minimaps(preferences::get("lobby_minimaps") == "yes");
 }
 
 display_manager::~display_manager()
@@ -204,8 +205,8 @@ private:
 	// change
 	gui::slider music_slider_, sound_slider_, bell_slider_, scroll_slider_,
 				gamma_slider_, chat_lines_slider_, turbo_slider_;
-	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
-	            show_grid_button_, show_lobby_joins_button_, show_floating_labels_button_, turn_dialog_button_,
+	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, show_grid_button_,
+	            lobby_minimaps_button_, show_lobby_joins_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 	            show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
 				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_;
@@ -232,6 +233,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
+	  lobby_minimaps_button_(disp.video(), _("Show Lobby Minimaps"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button_(disp.video(), _("Show Lobby Joins"), gui::button::TYPE_CHECK),
 	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
@@ -324,6 +326,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
 
+	lobby_minimaps_button_.set_check(show_lobby_minimaps());
+	lobby_minimaps_button_.set_help_string(_("Show minimaps in the multiplayer lobby"));
+
 	show_lobby_joins_button_.set_check(lobby_joins());
 	show_lobby_joins_button_.set_help_string(_("Show messages about players joining the multiplayer lobby"));
 
@@ -370,6 +375,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turbo_button_);
 	h.push_back(&show_ai_moves_button_);
 	h.push_back(&show_grid_button_);
+	h.push_back(&lobby_minimaps_button_);
 	h.push_back(&show_lobby_joins_button_);
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
@@ -485,7 +491,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 								rect.w - slider_label_width_ - right_border, 0 };
 	chat_lines_slider_.set_location(chat_lines_rect);
 	ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
-	ypos += item_interline;	show_lobby_joins_button_.set_location(rect.x, ypos);
+	ypos += item_interline; lobby_minimaps_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_lobby_joins_button_.set_location(rect.x, ypos);
 
 	//Advanced tab
 	ypos = rect.y + top_border;
@@ -507,6 +514,8 @@ void preferences_dialog::process_event()
 		set_show_ai_moves(!show_ai_moves_button_.checked());
 	if (show_grid_button_.pressed())
 		set_grid(show_grid_button_.checked());
+	if (lobby_minimaps_button_.pressed())
+		save_show_lobby_minimaps(lobby_minimaps_button_.checked());
 	if (show_lobby_joins_button_.pressed())
 		set_lobby_joins(show_lobby_joins_button_.checked());
 	if (show_floating_labels_button_.pressed())
@@ -679,6 +688,7 @@ void preferences_dialog::set_selection(int index)
 	chat_lines_label_.hide(hide_multiplayer);
 	chat_lines_slider_.hide(hide_multiplayer);
 	chat_timestamp_button_.hide(hide_multiplayer);
+	lobby_minimaps_button_.hide(hide_multiplayer);
 	show_lobby_joins_button_.hide(hide_multiplayer);
 
 	const bool hide_advanced = tab_ != ADVANCED_TAB;

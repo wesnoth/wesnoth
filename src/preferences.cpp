@@ -48,6 +48,8 @@ bool unit_genders = true;
 
 bool fps = false;
 
+bool lobby_minimaps = true;
+
 std::set<std::string> encountered_units_set;
 std::set<std::string> encountered_terrains_set;
 
@@ -174,6 +176,17 @@ int turbo_speed()
 void save_turbo_speed(int speed)
 {
 	prefs["turbo_speed"] = lexical_cast_default<std::string>(speed, "1");
+}
+
+bool show_lobby_minimaps()
+{
+	return lobby_minimaps;
+}
+
+void save_show_lobby_minimaps(bool show)
+{
+	prefs["lobby_minimaps"] = (show ? "yes" : "no");
+	lobby_minimaps = show;
 }
 
 const std::string& language()

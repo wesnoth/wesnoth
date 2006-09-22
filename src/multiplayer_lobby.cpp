@@ -114,10 +114,11 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	//bg_restore(item_rect);
 	//draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 0, 0, 0, 0.2, video().getSurface());
 
-	// draw mini map
-	video().blit_surface(xpos, ypos, game.mini_map);
-
-	xpos += item_height_ + margin_;
+	//draw minimaps
+	if (minimaps_) {
+		video().blit_surface(xpos, ypos, game.mini_map);
+		xpos += item_height_ + margin_;
+	}
 
 	// draw game name
 	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, game.vacant_slots > 0 ? font::GOOD_COLOUR : game.observers ? font::NORMAL_COLOUR : font::BAD_COLOUR));
@@ -287,6 +288,9 @@ void gamebrowser::handle_event(const SDL_Event& event)
 }
 void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 {
+	//if you change lobby_minimaps setting, content will be update on lobby update
+	minimaps_ = preferences::show_lobby_minimaps();
+
 	games_.clear();
 	config::child_list games = cfg.get_children("game");
 	config::child_iterator game;
@@ -307,7 +311,8 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		if(games_.back().map_data != "") {
 			try {
 				gamemap map(game_config, games_.back().map_data);
-				games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
+				if (minimaps_)
+					games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
 				games_.back().map_info += " - " + lexical_cast_default<std::string, int>(map.x(), "??") + std::string("x") + lexical_cast_default<std::string, int>(map.y(), "??");
 			} catch(gamemap::incorrect_format_exception &e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
