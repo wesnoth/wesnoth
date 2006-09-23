@@ -7,57 +7,62 @@ guiden GettingStarted (http://www.wesnoth.org/wiki/GettingStarted) först.
 
 KONTROLLER
 
-F1		Visa hjälpen för Kampen om Wesnoth
-Piltangenter	Rulla slagfältet
-Vänsterklick	Välj trupp, flytta trupp
-Högerklick	Huvudmenyn, avbryt
-Mittenklick	Centrera skärmen på pekarpositionen
-Escape		Avsluta spelet, stäng menyn, avbryt meddelande
-ctrl-r		Rekrytera trupp
-ctrl-alt-r	Upprepa senaste rekrytering
-alt-r		Återkalla trupp
-u		Ångra senaste förflyttning (om den inte påverkat spelet)
-r		Gör om ångrad förflyttning
-m		Skicka meddelande till annan spelare (i gruppspel)
-M		Skicka meddelande till allierade spelare (i gruppspel)
-alt-m		Skicka meddelande till samtliga i spelet (i gruppspel)
-n		Stega igenom de trupper som kan förflyttas
-N		Stega igenom de trupper som kan förflyttas, i bakvänd
-		ordning
-mellanslag	Avsluta vald trupps drag och gå vidare till nästa trupp
-		som kan förflyttas
-alt-mellanslag	Avsluta aktuell spelares drag
-ctrl-mellanslag	Håll truppens position; truppen hoppas över när trupperna
-		stegas igenom
-ctrl-v		Visa fiendens förflyttning (vart fienden kan nå nästa drag)
-ctrl-b		Visa de förflyttningsmöjligheter som fienden har om det
-		inte finns några andra trupper i vägen
-ctrl-f		Växla mellan helskärm och fönsterläge
-ctrl-a		Växla mellan accelererad och normal spelhastighet
-ctrl-s		Spara spel
-ctrl-o		Öppna sparat spel
+F1		   Visa hjälpen för Kampen om Wesnoth
+Piltangenter	   Rulla slagfältet
+Vänsterklick	   Välj trupp, flytta trupp
+Högerklick	   Huvudmenyn, avbryt
+Mittenklick	   Centrera skärmen på pekarpositionen
+Escape		   Avsluta spelet, stäng menyn, avbryt meddelande
+ctrl-r		   Rekrytera trupp
+ctrl-alt-r	   Upprepa senaste rekrytering
+alt-r		   Återkalla trupp
+u		   Ångra senaste förflyttning (om den inte påverkat 
+		   spelet)
+r		   Gör om ångrad förflyttning
+m		   Skicka meddelande till annan spelare (i gruppspel)
+M		   Skicka meddelande till allierade spelare (i 
+		   gruppspel)
+alt-m		   Skicka meddelande till samtliga i spelet (i 
+		   gruppspel)
+n		   Stega igenom de trupper som kan förflyttas
+N		   Stega igenom de trupper som kan förflyttas, i bakvänd
+		   ordning
+mellanslag	   Avsluta vald trupps drag och gå vidare till nästa 
+		   trupp som kan förflyttas
+ctrl-mellanslag	   Avsluta aktuell spelares drag
+shift-mellanslag   Håll truppens position; truppen hoppas över när 
+		   trupperna stegas igenom
+ctrl-v		   Visa fiendens förflyttning (vart fienden kan nå nästa 
+		   drag)
+ctrl-b		   Visa de förflyttningsmöjligheter som fienden har om 
+		   det inte finns några andra trupper i vägen
+ctrl-f		   Växla mellan helskärm och fönsterläge
+ctrl-a		   Växla mellan accelererad och normal spelhastighet
+ctrl-s		   Spara spel
+ctrl-o		   Öppna sparat spel
 
-/		Sök efter etikett eller trupp
-t		Fortsätt avbruten truppförflyttning
-z		Zooma in
-x		Zooma ut
-c		Återställ till standardzoomning
-ctrl-n		Byt namn på trupp
-1-7		Visa hur långt vald trupp kan nå på givet antal drag
-l		Centrera kartan på ledaren
-d		Visa beskrivningen för vald trupp
-ctrl-g		Sätt på/stäng av rutmönster
-S		Uppdatera slöjan nu
-D		Fördröj slöjuppdateringar
-alt-l		Namnge terrängruta
-ctrl-c		Ta bort etiketter
-alt-s		Visa statustabell
-ctrl-m		Sätt på/stäng av ljudet
-ctrl-j		Visa scenariomål
-s		Visa statistik
-alt-u		Visa trupplista
-alt-c		Visa chatlogg
-:		Kommandoradsläge, se http://www.wesnoth.org/wiki/CommandMode
+/		   Sök efter etikett eller trupp
+t		   Fortsätt avbruten truppförflyttning
+z		   Zooma in
+x		   Zooma ut
+c		   Återställ till standardzoomning
+ctrl-n		   Byt namn på trupp
+1-7		   Visa hur långt vald trupp kan nå på givet antal drag
+l		   Centrera kartan på ledaren
+d		   Visa beskrivningen för vald trupp
+ctrl-g		   Sätt på/stäng av rutmönster
+S		   Uppdatera slöjan nu
+D		   Fördröj slöjuppdateringar
+alt-l		   Namnge terrängruta
+ctrl-c		   Ta bort etiketter
+alt-s		   Visa statustabell
+ctrl-m		   Sätt på/stäng av ljudet
+ctrl-j		   Visa scenariomål
+s		   Visa statistik
+alt-u		   Visa trupplista
+alt-c		   Visa chatlogg
+:		   Kommandoradsläge, se 
+		   http://www.wesnoth.org/wiki/CommandMode
 
 I Mac OS X används Cmd istället för Ctrl och Opt istället för Alt.
 
@@ -246,12 +251,12 @@ En trupp som har förmågan att "bota" upphäver förgiftning i trupper. En
 botande trupp har ofta även förmågan att "hela", men en förgiftad trupp
 botas först från förgiftningen.
 
-Ingen trupp kan läkas av mer än en läkande effekt samtidigt, effekterna är
-alltså inte kumulativa. Det är alltid den mest kraftfulla läkemetoden som
-används. Till exempel får en trupp som befinner sig i en by ingen hjälp av
-en vårdande trupp som står bredvid, om den vårdande truppen läker mindre
-än 8 hälsopoäng. En trupp som står bredvid tre vårdande trupper får bara
-hjälp av den mäktigaste av dem.
+Ingen trupp kan läkas av mer än en läkande effekt samtidigt, effekterna
+är alltså inte kumulativa (förutom vilande). Det är alltid den mest
+kraftfulla läkemetoden som används. Till exempel får en trupp som
+befinner sig i en by ingen hjälp av en vårdande trupp som står bredvid,
+om den vårdande truppen läker mindre än 8 hälsopoäng. En trupp som står
+bredvid tre vårdande trupper får bara hjälp av den mäktigaste av dem.
 
 För mer information om detta, se hjälpen i spelet.
 
