@@ -48,7 +48,7 @@ display_manager::display_manager(display* d)
 	set_fullscreen(fullscreen());
 	set_gamma(gamma());
 	set_colour_cursors(preferences::get("colour_cursors") == "yes");
-	save_show_lobby_minimaps(preferences::get("lobby_minimaps") == "yes");
+	save_show_lobby_minimaps(preferences::get("lobby_minimaps") != "no");
 }
 
 display_manager::~display_manager()

@@ -72,7 +72,6 @@ private:
 	unsigned int item_height_;
 	int margin_;
 	int h_padding_;
-	int v_padding_;
 	int header_height_;
 	size_t selected_;
 	std::pair<size_t, size_t> visible_range_;

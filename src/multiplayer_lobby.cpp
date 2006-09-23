@@ -47,7 +47,7 @@ namespace mp {
 	time_limit_icon_locator_("misc/sand-clock.png"),
 	observer_icon_locator_("misc/eye.png"), map_hashes_(map_hashes),
 	item_height_(100), margin_(5), h_padding_(5),
-	v_padding_(5), header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
+	header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
 	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
 {
 }
@@ -124,15 +124,16 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, game.vacant_slots > 0 ? font::GOOD_COLOUR : game.observers ? font::NORMAL_COLOUR : font::BAD_COLOUR));
 	video().blit_surface(xpos, ypos, name_surf);
 
-	// draw gold icon
-	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));
-	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;
-
-	video().blit_surface(xpos, ypos, gold_icon);
+	ypos = item_rect.y + item_rect.h/2;
 
 	// draw map info
 	const surface map_info_surf(font::get_rendered_text(font::make_text_ellipsis(game.map_info, font::SIZE_NORMAL, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_NORMAL, font::NORMAL_COLOUR));
-	video().blit_surface(xpos, ypos - map_info_surf->h - 4 * v_padding_, map_info_surf);
+	video().blit_surface(xpos, ypos - map_info_surf->h/2, map_info_surf);
+
+	// draw gold icon
+	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));
+	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;
+	video().blit_surface(xpos, ypos, gold_icon);
 
 	xpos += gold_icon->w + h_padding_;
 
@@ -290,6 +291,11 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 {
 	//if you change lobby_minimaps setting, content will be update on lobby update
 	minimaps_ = preferences::show_lobby_minimaps();
+	if (minimaps_) {
+		item_height_ = 100;
+	} else {
+		item_height_ = 75;
+	}
 
 	games_.clear();
 	config::child_list games = cfg.get_children("game");
