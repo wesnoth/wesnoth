@@ -69,7 +69,8 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 
 	LOG_NG << "set gold to '" << ngold << "'\n";
 
-	teams.push_back(team(cfg,ngold));
+	team temp_team(cfg, ngold);
+	teams.push_back(temp_team);
 
 	//update/fix the recall list for this side, by setting the
 	//"side" of each unit in it to be the "side" of the player.

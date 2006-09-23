@@ -312,7 +312,7 @@ namespace events{
 	}
 
 	bool is_player_char(char c){
-		return isalpha(c);
+		return (isalpha(c) != 0);
 	}
 
 	void menu_handler::status_table()
