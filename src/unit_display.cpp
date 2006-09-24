@@ -452,42 +452,34 @@ bool unit_attack(display& disp, unit_map& units,
 	if(leader_loc.valid()) leader->second.restart_animation(disp,start_time);
 
 	int animation_time = start_time;
-	while(animation_time < 0 && !hide) {
-		double pos = 0.0;
-	        if(animation_time < attacker.get_animation()->get_first_frame_time()) {
-			pos = 0.0;
-		} else if( animation_time > 0) {
-			pos = 1.0;
-		} else {
-			pos = 1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time());
-		}
-		attacker.set_offset(pos*0.6);
-		disp.invalidate(b);
-		disp.invalidate(a);
-		if(leader_loc.valid()) disp.invalidate(leader_loc);
-		disp.draw();
-		events::pump();
-		disp.delay(10);
-
-		animation_time = attacker.get_animation()->get_animation_time();
-	}
-	if(damage > 0 && !hide) {
-		sound::play_sound(def->second.get_hit_sound());
-		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
-		disp.invalidate_unit();
-	}
-	if(def->second.take_hit(damage)) {
-		dead = true;
-	}
+	bool played_center = false;
 	while(!hide && (
 		attacker.state() != unit::STATE_STANDING ||
 		defender.state() != unit::STATE_STANDING ||
 		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING))
 	     ){
 
-		const double pos = (1.0-double(animation_time)/double(end_time));
+		double pos = 0.0;
+	        if(animation_time < attacker.get_animation()->get_first_frame_time()) {
+			pos = 0.0;
+		} else if( animation_time > 0) {
+			pos = (1.0-double(animation_time)/double(end_time));
+		} else {
+			pos = 1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time());
+		}
 		if(attacker.state() != unit::STATE_STANDING && pos > 0.0) {
 			attacker.set_offset(pos*0.6);
+		}
+		if(!played_center && animation_time >= 0) {
+			played_center=true;
+			if(damage > 0 && !hide) {
+				sound::play_sound(def->second.get_hit_sound());
+				disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+				disp.invalidate_unit();
+			}
+			if(def->second.take_hit(damage)) {
+				dead = true;
+			}
 		}
 		disp.invalidate(b);
 		disp.invalidate(a);
