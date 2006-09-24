@@ -15,6 +15,7 @@
 
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
@@ -213,9 +214,19 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		switch(action) {
 			case 0:
 				teams_[side].make_ai();
+				{
+				config cfg;
+				cfg.values["side"] = lexical_cast<std::string>(side+1);
+				network::send_data(cfg);
+				}
 				return PROCESS_RESTART_TURN;
 			case 1:
 				teams_[side].make_human();
+				{
+				config cfg;
+				cfg.values["side"] = lexical_cast<std::string>(side+1);
+				network::send_data(cfg);
+				}
 				return PROCESS_RESTART_TURN;
 			default:
 				if (action > 2) {

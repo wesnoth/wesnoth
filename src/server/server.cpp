@@ -980,7 +980,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	//if the owner is banning someone from the game
 	if(g->is_owner(sock) && (data.child("ban") != NULL || data.child("kick") != NULL)) {
 		std::string name;
-		bool ban;
+		bool ban = false;;
 		if (data.child("ban") != NULL) {
 			const config& u = *data.child("ban");
 			name = u["username"];

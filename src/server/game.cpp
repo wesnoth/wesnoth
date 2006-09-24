@@ -358,7 +358,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 	}
 
 	//get the socket of the player that issued the command
-	bool host = false; //we need to save this information before the player is erased 
+	bool host = false; //we need to save this information before the player is erased
 	network::connection sock;
 	bool foundCommandPlayer = false;
 	std::multimap<network::connection, size_t>::iterator oldside;
@@ -459,34 +459,24 @@ const std::string& game::transfer_side_control(const config& cfg)
 	return success;
 }
 
-size_t game::available_slots() const
-{
-	size_t n_sides = level_.get_children("side").size();
-	size_t available_slots = 0;
-	for(int s = 0; s < n_sides; ++s) {
-		if(! sides_taken_[s]) {
-			available_slots++;
-		}
-
-	}
-
-	return available_slots;
-}
-
 bool game::describe_slots()
 {
 	if(description() == NULL)
 		return false;
 
-	const int val = int(available_slots());
+	int available_slots = 0;
 	char buf[50];
 	int num_sides = level_.get_children("side").size();
-	for(config::child_list::const_iterator it = level_.get_children("side").begin(); it != level_.get_children("side").end(); ++it) {
-		if((**it)["allow_player"] == "no") {
+	int i = 0;
+	for(config::child_list::const_iterator it = level_.get_children("side").begin(); it != level_.get_children("side").end(); ++it, ++i) {
+		if((**it)["allow_player"] == "no" or (**it)["no_leader"] == "yes") {
 			num_sides--;
+		} else {
+			if(!sides_taken_[i])
+			available_slots++;
 		}
 	}
-	snprintf(buf,sizeof(buf),"%d/%d",val,num_sides);
+	snprintf(buf,sizeof(buf), "%d/%d", available_slots, num_sides);
 
 	if(buf != (*description())["slots"]) {
 		description()->values["slots"] = buf;
