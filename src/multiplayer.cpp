@@ -308,6 +308,8 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
 			state = ui.get_state();
+			const config* const era_cfg = game_config.find_child("era","id",params.era);
+			game_events::add_events(era_cfg->get_children("event"),"all");
 		}
 	}
 
