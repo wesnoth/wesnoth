@@ -375,7 +375,9 @@ bool play_controller::do_replay(const bool replaying){
 			result = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
 						          player_number_,status_,gamestate_);
 		} catch(replay::error&) {
-			gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
+			//in next version after string freeze add to text ". continue playing?"
+			if(gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_CANCEL))
+				throw;
 
 			result = false;
 		}

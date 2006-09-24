@@ -217,8 +217,14 @@ void replay_controller::play_replay(){
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 		for(; !recorder.at_end() && is_playing_; first_player_ = 1
 			) {
+			try{
 			play_turn();
 			play_slice();
+			}
+			catch (replay::error&) //when user due to error want stop playing
+			{
+				is_playing_ = false;
+			}
 		} //end for loop
 		is_playing_ = false;
 	}
