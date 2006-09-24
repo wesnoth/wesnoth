@@ -522,7 +522,14 @@ config* replay::get_next_action()
 void replay::pre_replay()
 {
 	if ((rng::random() == NULL) && (commands().size() > 0)){
-		set_random(commands()[pos_]);
+		if (at_end())
+		{
+			add_command(true);
+		}
+		else
+		{
+			set_random(commands()[pos_]);
+		}
 	}
 }
 
