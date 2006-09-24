@@ -383,9 +383,9 @@ void unit::advance_to(const unit_type* t)
 	//if unit has specific profile, remember it and have it after advaces
 	bool specific_profile = false;
 	std::string profile;
-	if (type() != NULL)
+	if (!id().empty() && gamedata_ != NULL)
 	{
-		specific_profile = (cfg_["profile"] != type()->cfg_["profile"]);
+		specific_profile = (cfg_["profile"] != type().cfg_["profile"]);
 		if (specific_profile)
 		{
 			profile = cfg_["profile"];
