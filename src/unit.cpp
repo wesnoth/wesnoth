@@ -380,7 +380,22 @@ void unit::advance_to(const unit_type* t)
 	if(t->movement_type().get_parent()) {
 		cfg_ = cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
+	//if unit has specific profile, remember it and have it after advaces
+	bool specific_profile = false;
+	std::string profile;
+	if (type() != NULL)
+	{
+		specific_profile = (cfg_["profile"] != type()->cfg_["profile"]);
+		if (specific_profile)
+		{
+			profile = cfg_["profile"];
+		}
+	}
 	cfg_ = cfg_.merge_with(t->cfg_);
+	if (specific_profile)
+	{
+	cfg_["profile"] = profile; 
+	}
 	cfg_.clear_children("male");
 	cfg_.clear_children("female");
 
