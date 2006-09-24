@@ -178,8 +178,8 @@ namespace events{
 		for(;;) {
 			//add player's name to title of dialog
 			std::stringstream str;
-			str <<  _("Statistics") << " ("; 
-			// Find leader (of viewing player) 's description  
+			str <<  _("Statistics") << " (";
+			// Find leader (of viewing player) 's description
 			for (unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 				if (i->second.side() != (gui_->viewing_team()+1))
 					continue;
@@ -329,9 +329,6 @@ namespace events{
 		sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2).set_numeric_sort(3)
 			  .set_numeric_sort(4).set_numeric_sort(5).set_numeric_sort(6).set_numeric_sort(7);
 
-		if(game_config::debug)
-			heading << COLUMN_SEPARATOR << _("Gold");
-
 		std::vector<std::string> items;
 		items.push_back(heading.str());
 
@@ -340,7 +337,7 @@ namespace events{
 		//if the player is under shroud or fog, they don't get to see
 		//details about the other sides, only their own side, allied sides and a ??? is
 		//shown to demonstrate lack of information about the other sides
-		// But he see all names with in colours 
+		// But he see all names with in colours
 		for(size_t n = 0; n != teams_.size(); ++n) {
 			if(teams_[n].is_empty()) {
 				continue;
@@ -348,17 +345,17 @@ namespace events{
 
 			const bool known = viewing_team.knows_about_team(n);
 			const bool enemy = viewing_team.is_enemy(n+1);
-			
-			std::stringstream str;	
-			
+
+			std::stringstream str;
+
 			const team_data data = calculate_team_data(teams_[n],n+1,units_);
-		
+
 			const unit_map::const_iterator leader = team_leader(n+1,units_);
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
 			if(leader != units_.end()) {
 				// Add leader image, if it's used fog then it show only random leader image
-				if (known) {	
+				if (known or game_config::debug) {
 					str << IMAGE_PREFIX << leader->second.absolute_image();
 				}
 				else {
@@ -369,20 +366,22 @@ namespace events{
 				str << "~TC(" << (n+1) << "," << leader->second.team_color() << ")";
 #endif
 				str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm';
-				// Delete all tags before name				
+				// Delete all tags before name
 				str << font::del_tags(leader->second.description()) << COLUMN_SEPARATOR;
-			
+
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
 			}
 
-			if(!known) {
+			if(!known && !game_config::debug) {
 				// We don't spare more info (only name) so let's go on next side ...
 				items.push_back(str.str());
 				continue;
 			}
 
-			if(enemy && viewing_team.uses_fog()) {
+			if(game_config::debug) {
+				str << data.gold << COLUMN_SEPARATOR;
+			} else if(enemy && viewing_team.uses_fog()) {
 				str << ' ' << COLUMN_SEPARATOR;
 			} else {
 				str << data.gold << COLUMN_SEPARATOR;
@@ -390,9 +389,6 @@ namespace events{
 			str << data.villages << COLUMN_SEPARATOR
 				<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
 				<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << data.net_income;
-
-			if(game_config::debug)
-				str << COLUMN_SEPARATOR << teams_[n].gold();
 
 			items.push_back(str.str());
 		}
@@ -1751,6 +1747,8 @@ namespace events{
 			throw end_level_exception(VICTORY);
 		} else if(cmd == "debug" && network::nconnections() == 0) {
 			game_config::debug = true;
+		} else if(cmd == "nodebug") {
+			game_config::debug = false;
 		} else if(game_config::debug && cmd == "unit") {
 			const unit_map::iterator i = current_unit(mousehandler);
 			if(i != units_.end()) {
