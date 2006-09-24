@@ -355,10 +355,9 @@ namespace events{
 			//cause it to be displayed in the correct colour
 			if(leader != units_.end()) {
 				// Add leader image, if it's used fog then it show only random leader image
-				if (known or game_config::debug) {
+				if (known || game_config::debug) {
 					str << IMAGE_PREFIX << leader->second.absolute_image();
-				}
-				else {
+				} else {
 					str << IMAGE_PREFIX << std::string("random-enemy.png");
 				}
 
