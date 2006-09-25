@@ -216,6 +216,14 @@ void wait::join_game(bool observe)
 		std::string leader_choice;
 		size_t faction_choice = 0;
 
+		//we take the side now so noone will take it while we choose a faction
+		config cfg;
+		cfg["side"] = lexical_cast<std::string>(side_choice + 1);
+		cfg["name"] = preferences::login();
+		cfg["faction"] = "random";
+		cfg["leader"] = "random";
+		network::send_data(cfg);
+
 		if(allow_changes) {
 			events::event_context context;
 
@@ -252,15 +260,15 @@ void wait::join_game(bool observe)
 			leader_choice = leader_selector.get_selected_leader();
 
 			wassert(faction_choice < possible_sides.size());
+
+			config faction;
+			config& change = faction.add_child("change_faction");
+			change["name"] = preferences::login();
+			change["faction"] = lexical_cast<std::string>(faction_choice);
+			change["leader"] = leader_choice;
+			network::send_data(faction);
 		}
 
-		config response;
-		response["side"] = lexical_cast<std::string>(side_choice + 1);
-		response["name"] = preferences::login();
-		response["faction"] = lexical_cast<std::string>(faction_choice);
-		response["leader"] = leader_choice;
-
-		network::send_data(response);
 	}
 
 	generate_menu();
@@ -392,7 +400,7 @@ void wait::generate_menu()
 
 #ifdef LOW_MEM
 			leader_image = utypes.find(leader_type)->second.image();
-#else	
+#else
 			leader_image = utypes.find(leader_type)->second.image() + std::string("~TC(" + sd["side"] + ",") + std::string(utypes.find(leader_type)->second.flag_rgb() + ")");
 #endif
 

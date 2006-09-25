@@ -974,6 +974,16 @@ void connect::process_network_data(const config& data, const network::connection
 		}
 	}
 
+	const config* change_faction = data.child("change_faction");
+	if(change_faction != NULL) {
+		int side_taken = find_player_side(change_faction->get_attribute("name"));
+		if(side_taken != -1) {
+			sides_[side_taken].import_network_user(*change_faction);
+			update_playerlist_state();
+			update_and_send_diff();
+		}
+	}
+
 	if(data.child("observer") != NULL) {
 		const t_string& observer_name = data.child("observer")->get_attribute("name");
 		if(!observer_name.empty()) {
