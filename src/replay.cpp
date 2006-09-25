@@ -726,14 +726,19 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& name = (*child)["name"];
 
 			unit_map::iterator u = units.find(loc);
-
-			if(u->second.unrenamable()) {
+			if(u != units.end()) {
+				if(u->second.unrenamable()) {
+					std::stringstream errbuf;
+					errbuf << "renaming unrenamable unit " << u->second.name() << "\n";
+					replay::throw_error(errbuf.str());
+				}
+				u->second.rename(name);
+			} else {
 				std::stringstream errbuf;
-				errbuf << "renaming unrenamable unit " << u->second.name() << "\n";
+				errbuf << "attempt to rename unit at location: "
+				   << loc << ", where none exists.\n";
 				replay::throw_error(errbuf.str());
 			}
-
-			u->second.rename(name);
 		}
 
 		//if there is an end turn directive
