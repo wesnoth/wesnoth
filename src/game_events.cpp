@@ -530,7 +530,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		check_fogged = utils::interpolate_variables_into_string(check_fogged, *state_of_game);
 		const int xpos = atoi(x.c_str());
 		const int ypos = atoi(y.c_str());
-		screen->scroll_to_tile(xpos,ypos,display::SCROLL,utils::string_bool(check_fogged,true));
+		screen->scroll_to_tile(xpos,ypos,display::SCROLL,utils::string_bool(check_fogged,false));
 	}
 
 	else if(cmd == "scroll_to_unit") {
@@ -539,9 +539,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(game_events::unit_matches_filter(u,cfg))
 				break;
 		}
-
+		std::string check_fogged = cfg["check_fogged"];
+		check_fogged = utils::interpolate_variables_into_string(check_fogged, *state_of_game);
 		if(u != units->end()) {
-			screen->scroll_to_tile(u->first.x,u->first.y);
+			screen->scroll_to_tile(u->first.x,u->first.y,display::SCROLL,utils::string_bool(check_fogged,false));
 		}
 	}
 
