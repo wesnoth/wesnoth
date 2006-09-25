@@ -2357,7 +2357,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	if ((cignore = preferences::get_prefs()->child("ignore"))){
 		for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
 		i != cignore->values.end(); ++i){
-			if(speaker == i->first){
+			if(speaker == i->first || speaker == "whisper: " + i->first){
 				if (i->second == "yes"){
 					ignored = true;
 				}

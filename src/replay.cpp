@@ -696,17 +696,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		} else if((child = cfg->child("speak")) != NULL) {
 			const std::string& team_name = (*child)["team_name"];
+			const std::string& speaker_name = (*child)["description"];
 			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
-				bool is_lobby_join = ((*child)["description"] == "server"
+				bool is_lobby_join = (speaker_name == "server"
 							&& (*child)["message"].value().find("has logged into the lobby") != std::string::npos);
-
-				if(!replayer.is_skipping() && (!is_lobby_join || preferences::lobby_joins())) {
+				bool is_whisper = (speaker_name.find("whisper: ") == 0);
+				if((!replayer.is_skipping() || is_whisper) && (!is_lobby_join || preferences::lobby_joins())) {
 					if(preferences::message_bell()) {
 						sound::play_sound(game_config::sounds::receive_message);
 					}
 
 					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
-					disp.add_chat_message((*child)["description"],side,(*child)["message"],
+					disp.add_chat_message(speaker_name,side,(*child)["message"],
 										  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
 				}
 			}
