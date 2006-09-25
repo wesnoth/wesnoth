@@ -829,7 +829,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	const config::child_list& players = cfg_save.get_children("player");
 
-	for(config::child_list::const_iterator i = cfg_save.get_children("player").begin(); i != cfg_save.get_children("player").end(); ++i) {
+	for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
 		if ((**i)["canrecruit"] == "1"){
 			leader = (**i)["save_id"];
 		}

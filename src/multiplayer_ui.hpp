@@ -177,10 +177,10 @@ private:
 	config& gamelist_;
 
 	gui::label title_;
-	gui::textbox chat_textbox_;
 #ifndef USE_TINY_GUI
 	gui::textbox entry_textbox_;
 #endif
+	gui::textbox chat_textbox_;
 
 	gui::menu users_menu_;
 

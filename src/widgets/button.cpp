@@ -34,9 +34,9 @@ const int vertical_padding = font::SIZE_SMALL / 2;
 
 button::button(CVideo& video, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing, const bool auto_join)
-	: widget(video, auto_join), label_(label),
+	: widget(video, auto_join), type_(type), label_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
-	  button_(true), state_(NORMAL), type_(type), pressed_(false),
+	  button_(true), state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0)
 {
 	if(button_image_name.empty() && type == TYPE_PRESS) {
