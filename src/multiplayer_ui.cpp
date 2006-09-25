@@ -396,8 +396,6 @@ void ui::process_network_data(const config& data, const network::connection /*so
 
 			if (!ignored){
 				sound::play_sound(game_config::sounds::receive_message);
-
-				const config& cwhisper = *data.child("whisper");
 				chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
 				chat_.update_textbox(chat_textbox_);
 			}
