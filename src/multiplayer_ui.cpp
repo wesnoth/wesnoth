@@ -389,11 +389,26 @@ void ui::process_network_data(const config& data, const network::connection /*so
 		}
 
 		if(data.child("whisper")){
-			sound::play_sound(game_config::sounds::receive_message);
-
 			const config& cwhisper = *data.child("whisper");
-			chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
-			chat_.update_textbox(chat_textbox_);
+
+			config* cignore;
+			bool ignored = false;
+			if ((cignore = preferences::get_prefs()->child("ignore"))){
+				for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
+				i != cignore->values.end(); ++i){
+					if(cwhisper["sender"] == i->first){
+						if (i->second == "yes"){
+							ignored = true;
+						}
+					}
+				}
+			}
+
+			if (!ignored){
+				sound::play_sound(game_config::sounds::receive_message);
+				chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
+				chat_.update_textbox(chat_textbox_);
+			}
 		}
 
 		if(data.child("gamelist")) {
