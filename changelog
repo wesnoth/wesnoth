@@ -1,6 +1,6 @@
 Version 1.3-svn:
 * editor
-   * allow map load/write from/to scenario file
+   * allow maps to be loaded from scenario files and written back to them
  * campaigns
    * Heir to the Throne
      * removed Mountain Pass and Valley of Statues from the repository
@@ -10,61 +10,57 @@ Version 1.3-svn:
  * units:
    * balancing changes:
      * decreased cost of the Mudcrawler from 9 to 5
-     * removed Necrophage from random_leader
+     * Necrophage no longer available as a random leader in multiplayer
    * new units
-     * added the Armagedon Drake, it is not used in any mainline eras
-   * unit Art
-     * added a recruit animation to the skeleton
+     * added the Armageddon Drake (not used in any mainline eras)
+   * unit art
+     * added a recruit animation for Skeleton
  * user interface
-   * add an option to hide minimaps in the multiplayer lobby
-   * add save map items in menu to save in game map
-   * add turbo speed setting and change ui according to
-   * turn bell moved to sound tab in prefereces
-   * new slider - bell volume
-   * disable inactive sliders instead of hiding them
-   * sliders can be adjusted with keyboard left and right
+   * added an option to hide minimaps in the multiplayer lobby
+   * added menu items for saving the current map
+   * added turbo speed setting and changed ui accordingly
+   * turn bell moved to sound tab in preferences
+   * new volume slider for the turn bell
+   * disabled inactive sliders instead of hiding them
+   * sliders can be adjusted with keyboard (left and right arrow)
    * sidebar reports related to gold, units, villages and time get greyed out
      during other team's turns
    * improve the tiny gui support (resolution of 320x240 pixels)
-   * when discovering friendly units, the message is now blue
+   * when sighting friendly units, the message is now blue
    * show leader name in statistics title (patch #604, FR #6932)
    * initial support for GP2X controls
-   * show leader's name and colour at status table even that team is fogged (patch #605)
+   * show leader's name and colour at status table even when that team is fogged
+     (patch #605)
  * WML engine
-   * add hide_help key to prevent some unit to be display in help menu
-   * allow_new_game key (default=yes) to prevent [multiplayer] scenarios to
-     show up in the multiplayer game creation interface (FR #6397)
-   * new [set_specials] tag to allow custom special in effect tags
-   * new remove_specials=<id_list> key to allow to remove specials in effect
-     tags
-   * obsolete set_special= in [effect] tags
+   * added a 'hide_help' key that prevents a unit type from being listed in the
+     in-game help
+   * added an 'allow_new_game' key (default=yes) to prevent [multiplayer]
+     scenarios from showing up in the multiplayer game creation interface
+     (FR #6397)
+   * new [set_specials] tag to allow custom specials in [effect] tags
+   * new 'remove_specials' key to allow to removal of specials in [effect] tags
+   * obsolete the 'set_special' key in [effect] tags
    * correct handling of UTF8 filenames under windows
-   * fighting animations can now be filtered on swing number
-   * add progressive paramteters, allow to specify a value that will move
-   * fighting animations can now be filtered by damage done
-   * fighting animations can now be filtered by attack filter on attacker's
-   * fighting animations can now be filtered by attack filter on defender's
-   attack
-   continuously in an animation
-   * alpha blending is our first progressive parameter
-   * new parameter in frames, offset. It allows to specify the position
-   * new parameter in frames blend_color and blend_ratio, to mix a color in
-   the anim
-   relative to the faced hex
-   * units can now have a recruit animation that will be played on unit
-   recruit.
-   * units now have idle animations when they arn't used for some time
-   * units now have levelin animations when they level into this unit
-   * units now have levelout animations when they level out of this unit
    * animations can now use standard unit filters
    * animations can now use standard unit filters on the secondary unit
-   * events can be write also in era config
+   * fighting animations can now be filtered by swing number, damage done and
+     normal attack filters (both attacker and defender)
+   * made some animation parameters progressive (allows a value to be changed
+     gradually to another value over time)
+   * new progressive parameters: 'alpha' (opacity of a frame), 'offset' (the
+     position relative to the faced hex), 'blend_color' and 'blend_ratio' (to
+     mix a given color with the frame)
+   * units can now have a recruit animations that will be played on unit recruit
+   * units now have idle animations, played when they've been idle for some time
+   * units now have leveling up animations
+   * [event]s can now be written also inside [era]s (the [event]s are included
+     in every scenario played using that era)
  * multiplayer game management
    * client now tells the server if a game ended in victory or defeat
    * configurable castle size for random map generator (patch #598, FR #3232)
  * multiplayer scenarios
-   * scenarios can set faction, recruit, leader, and some other initial
-     settings previously ignored in multiplayer
+   * scenarios can set faction, recruit, leader, and some other initial settings
+     previously ignored in multiplayer
  * language and i18n:
    * new manpages: Czech, English (GB), French, Italian, Portuguese (Brazil),
      Japanese, Slovak.
