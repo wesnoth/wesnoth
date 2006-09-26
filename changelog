@@ -2,7 +2,8 @@ Version 1.1.11 (or 1.2.0?):
  * Python AI
    * there is now wesnoth.get_version()
  * WML engine
-   * events can be write also in era config
+   * [event]s can now be written also inside [era]s (the [event]s are included
+     in every scenario played using that era)
  * language and i18n:
    * updated translations: Catalan, Italian, Japanese
    * updated MANUAL: Japanese, Swedish
@@ -34,7 +35,7 @@ Version 1.1.10:
    * now "ai turn" events are fired for all AIs (#6738)
    * recruitment_pattern inside [ai] can now change mid-scenario (#6669)
  * Graphics:
-   * New dwarwen castle
+   * New dwarven castle
  * Python AI
    * there is now unit.stoned
 
@@ -77,7 +78,7 @@ Version 1.1.8:
      * replaced unit "Lord" by "General" (#6132)
    * The South Guard :
      * fixed a few broken image paths
-     * scenario 2 : 
+     * scenario 2 :
        * made the enemy leader water-phobic, so he won't charge fishes
        * moved away a footpad so he won't steal the keep at turn #1
      * Jarek no longer acts loyally (#6408)
@@ -155,7 +156,7 @@ Version 1.1.6:
  * campaigns
    * Heir to the Throne
      * added a secret, powerful item to one of the later scenarios
-     * ensured minimum gold of 500 to start campaign climax scenarios (after 
+     * ensured minimum gold of 500 to start campaign climax scenarios (after
        Elven Council)
      * expanded list of units that can obtain the Fire Sword
      * added an option dialog to let you choose who gets the Fire Sword
@@ -165,7 +166,7 @@ Version 1.1.6:
      * fixed Naga position in Hard mode for Tidings Good And Ill
  * multiplayer maps:
    * renamed Smallolof to Amohsad Caldera
-   * revised multiplayer maps: Caves of the Basilisk, Cynsaun Battlefield, 
+   * revised multiplayer maps: Caves of the Basilisk, Cynsaun Battlefield,
      Sulla's Ruins, Hornshark Island, 3p Morituri, Blue Water Province, Castle
      Hopping Isle, Forest of Fear, Amohsad Caldera, Hexcake
  * units
