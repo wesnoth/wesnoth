@@ -32,6 +32,7 @@ class game
 public:
 	game(const player_map& info);
 
+	void set_owner(network::connection player);
 	bool is_owner(network::connection player) const;
 	bool is_member(network::connection player) const;
 	bool is_needed(network::connection player) const;
@@ -143,6 +144,7 @@ private:
 
 	static int id_num;
 	int id_;
+	network::connection owner_;
 	user_vector players_;
 	user_vector observers_;
 	user_vector muted_observers_;

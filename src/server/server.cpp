@@ -784,6 +784,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		games_.push_back(game(players_));
 		games_.back().level() = *create_game;
 		lobby_players_.remove_player(sock);
+		games_.back().set_owner(sock);
 		games_.back().add_player(sock);
 
 		//store the game data here at the moment

@@ -28,9 +28,14 @@ int game::id_num = 1;
 game::game(const player_map& info) : player_info_(&info), id_(id_num++), sides_taken_(9), side_controllers_(9), started_(false), description_(NULL), end_turn_(0), allow_observers_(true), all_observers_muted_(false)
 {}
 
+void game::set_owner(network::connection player)
+{
+	owner_ = player;
+}
+
 bool game::is_owner(network::connection player) const
 {
-	return (!players_.empty() && player == players_.front());
+	return (player == owner_);
 }
 
 bool game::is_member(network::connection player) const
@@ -40,7 +45,7 @@ bool game::is_member(network::connection player) const
 
 bool game::is_needed(network::connection player) const
 {
-	return (!players_.empty() && player == players_.front());
+	return (!players_.empty() && player == owner_);
 }
 
 bool game::is_observer(network::connection player) const
@@ -187,7 +192,7 @@ bool game::take_side(network::connection player, const config& cfg)
 					sides_taken_[side_index] = true;
 					config new_cfg = cfg;
 					new_cfg["side"] = (**i)["side"];
-					network::queue_data(new_cfg, players_.front());
+					network::queue_data(new_cfg, owner_);
 					return true;
 				}
 			}
@@ -199,7 +204,7 @@ bool game::take_side(network::connection player, const config& cfg)
 	side_controllers_[side_index] = "network";
 	sides_.insert(std::pair<network::connection, size_t>(player, side_index));
 	sides_taken_[side_index] = true;
-	network::queue_data(cfg, players_.front());
+	network::queue_data(cfg, owner_);
 	return true;
 }
 
@@ -258,7 +263,7 @@ void game::update_side_data()
 					side_found = true;
 				}
 				else if((**sd)["controller"] == "human") {
-					sides_.insert(std::pair<network::connection,size_t>(players_.front(),side_index));
+					sides_.insert(std::pair<network::connection,size_t>(owner_,side_index));
 					sides_taken_[side_index] = true;
 					side_found = true;
 					side_controllers_[side_index] = "human";
@@ -427,7 +432,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 	change["player"] = player;
 
 	change["controller"] = "network";
-	network::send_data(response,players_.front());
+	network::send_data(response,owner_);
 
 	change["controller"] = "human";
 	network::queue_data(response, sock_entering);
@@ -656,7 +661,7 @@ void game::remove_player(network::connection player, bool notify_creator)
 
 	bool host = false;
 	if (players_.size() > 0){
-		host = player == players_.front();
+		host = player == owner_;
 	}
 
 	{
@@ -673,6 +678,9 @@ void game::remove_player(network::connection player, bool notify_creator)
 			observers_.erase(itor);
 	}
 
+	if (host)
+		owner_ = players_.front();
+
 	LOG_SERVER << debug_player_info();
 	bool observer = true;
 
@@ -687,7 +695,7 @@ void game::remove_player(network::connection player, bool notify_creator)
 				config drop;
 				drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
 				drop["controller"] = "ai";
-				network::queue_data(drop, players_.front());
+				network::queue_data(drop, owner_);
 				sides_taken_[side] = false;
 				observer = false;
 			}
@@ -702,7 +710,7 @@ void game::remove_player(network::connection player, bool notify_creator)
 			config drop;
 			drop["side_drop"] = lexical_cast<std::string, size_t>(side->second + 1);
 			drop["controller"] = side_controllers_[player];
-			network::queue_data(drop, players_.front());
+			network::queue_data(drop, owner_);
 		}
 		sides_taken_[side->second] = false;
 		observer = false;
