@@ -912,7 +912,6 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				const config& msg = construct_server_message(result,*g);
 				network::send_data(msg,sock);
 			}
-
 			return;
 		}
 	}
