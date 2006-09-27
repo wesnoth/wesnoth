@@ -201,7 +201,10 @@ bool game::take_side(network::connection player, const config& cfg)
 		return false;
 	}
 	// else take the current side
-	side_controllers_[side_index] = "network";
+	if (player == owner_ && started_ && !cfg["controller"].empty())
+		side_controllers_[side_index] = cfg["controller"];
+	else
+		side_controllers_[side_index] = "network";
 	sides_.insert(std::pair<network::connection, size_t>(player, side_index));
 	sides_taken_[side_index] = true;
 	network::queue_data(cfg, owner_);
@@ -314,6 +317,9 @@ void game::update_side_data()
 
 const std::string& game::transfer_side_control(const config& cfg)
 {
+	std::cout << "--- transfer_side_control ---\n";
+	cfg.debug();
+	std::cout << "----------------------\n";
 	const std::string& player = cfg["player"];
 
 	//find the socket for the player that is passed control
@@ -327,18 +333,16 @@ const std::string& game::transfer_side_control(const config& cfg)
 		}
 	}
 
-	if (!found){
-		static const std::string notfound = "Player/Observer not found";
+	static const std::string notfound = "Player/Observer not found";
+	if (!found)
 		return notfound;
-	}
 
 	user_vector::iterator i = find_connection(sock_entering, observers_);
 	user_vector::iterator j = find_connection(sock_entering, players_);
 
-	if (i == observers_.end() && j == players_.end()){
-		static const std::string notfound = "Player/Observer not found";
+	if (i == observers_.end() && j == players_.end())
 		return notfound;
-	}
+
 
 	const std::string& side = cfg["side"];
 	static const std::string invalid = "Invalid side number";
@@ -466,6 +470,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 bool game::describe_slots()
 {
+	std::cout << "***************************\n";
 	if(description() == NULL)
 		return false;
 
@@ -476,9 +481,15 @@ bool game::describe_slots()
 	for(config::child_list::const_iterator it = level_.get_children("side").begin(); it != level_.get_children("side").end(); ++it, ++i) {
 		if((**it)["allow_player"] == "no" or (**it)["no_leader"] == "yes") {
 			num_sides--;
+			std::cout << "side " << i << " not availbe\n";
 		} else {
-			if(!sides_taken_[i])
+			std::cout << "controler " << side_controllers_[i] << std::endl;
+			if(!sides_taken_[i]) {
 			available_slots++;
+			std::cout << "side " << i << " free\n";
+			} else {
+			std::cout << "side " << i << " taken\n";
+			}
 		}
 	}
 	snprintf(buf,sizeof(buf), "%d/%d", available_slots, num_sides);
@@ -490,6 +501,7 @@ bool game::describe_slots()
 	} else {
 		return false;
 	}
+	std::cout << "***************************\n";
 }
 
 bool game::player_is_banned(network::connection sock) const
@@ -678,7 +690,7 @@ void game::remove_player(network::connection player, bool notify_creator)
 			observers_.erase(itor);
 	}
 
-	if (host)
+	if (host && !players_.empty())
 		owner_ = players_.front();
 
 	LOG_SERVER << debug_player_info();
@@ -687,7 +699,7 @@ void game::remove_player(network::connection player, bool notify_creator)
 	//check for ai sides first and drop them, too, if the host left
 	if (host){
 		//can't do this with an iterator, because it doesn't know the side_index
-		for (size_t side = 0; side < side_controllers_.size(); side++){
+		for (size_t side = 0; side < side_controllers_.size(); ++side){
 			//send the host a notification of removal of this side
 			if(notify_creator && players_.empty() == false && side_controllers_[side] == "ai") {
 				std::string msg = "AI side " + lexical_cast<std::string, size_t>(side + 1) + " is transferred to new host";
@@ -704,16 +716,19 @@ void game::remove_player(network::connection player, bool notify_creator)
 
 	//look for all sides the player controlled and drop them
 	std::multimap<network::connection, size_t>::const_iterator side;
-	for (side = sides_.find(player); side != sides_.end(); side++){
+	for (side = sides_.find(player); side != sides_.end(); ++side){
 		//send the host a notification of removal of this side
-		if(notify_creator && players_.empty() == false && side->first == player) {
-			config drop;
-			drop["side_drop"] = lexical_cast<std::string, size_t>(side->second + 1);
-			drop["controller"] = side_controllers_[player];
-			network::queue_data(drop, owner_);
+		if(side->first == player) {
+			if (notify_creator && players_.empty() == false) {
+				config drop;
+				drop["side_drop"] = lexical_cast<std::string, size_t>(side->second + 1);
+				drop["controller"] = side_controllers_[side->second];
+				network::queue_data(drop, owner_);
+			}
+			side_controllers_[side->second] = "null";
+			sides_taken_[side->second] = false;
+			observer = false;
 		}
-		sides_taken_[side->second] = false;
-		observer = false;
 	}
 	if(!observer)
 		sides_.erase(player);

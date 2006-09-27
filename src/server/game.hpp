@@ -32,13 +32,13 @@ class game
 public:
 	game(const player_map& info);
 
-	void set_owner(network::connection player);
-	bool is_owner(network::connection player) const;
-	bool is_member(network::connection player) const;
-	bool is_needed(network::connection player) const;
-	bool is_observer(network::connection player) const;
-	bool is_muted_observer(network::connection player) const;
-	bool is_player(network::connection player) const;
+	void set_owner(const network::connection player);
+	bool is_owner(const network::connection player) const;
+	bool is_member(const network::connection player) const;
+	bool is_needed(const network::connection player) const;
+	bool is_observer(const network::connection player) const;
+	bool is_muted_observer(const network::connection player) const;
+	bool is_player(const network::connection player) const;
 	bool all_observers_muted() const;
 
 	bool observers_can_label() const;

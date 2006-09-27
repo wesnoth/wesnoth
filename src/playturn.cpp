@@ -169,6 +169,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if (controller == "ai"){
 			teams_[side].make_ai();
+
+			config cfg;
+			cfg.values["side"] = lexical_cast<std::string>(side+1);
+			cfg.values["controller"] = "ai";
+			network::send_data(cfg);
 			return PROCESS_RESTART_TURN;
 		}
 
@@ -217,6 +222,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				{
 				config cfg;
 				cfg.values["side"] = lexical_cast<std::string>(side+1);
+				cfg.values["controller"] = "ai";
 				network::send_data(cfg);
 				}
 				return PROCESS_RESTART_TURN;
@@ -225,6 +231,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				{
 				config cfg;
 				cfg.values["side"] = lexical_cast<std::string>(side+1);
+				cfg.values["controller"] = "human";
 				network::send_data(cfg);
 				}
 				return PROCESS_RESTART_TURN;
