@@ -317,6 +317,7 @@ void game::update_side_data()
 
 const std::string& game::transfer_side_control(const config& cfg)
 {
+	bool host_leave = false;
 	const std::string& player = cfg["player"];
 
 	//find the socket for the player that is passed control
@@ -394,6 +395,9 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 		//if a player gives up their last side, make them an observer
 		if (sides_.count(sock) == 1){
+			if (sock == owner_)
+				host_leave = true;
+
 			observers_.push_back(*p);
 			players_.erase(p);
 
@@ -439,7 +443,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 	network::queue_data(response, sock_entering);
 
 	//if the host left and there are ai sides, transfer them to the new host
-	if (host){
+	if (host_leave) {
 		for (unsigned int i = 0; i < side_controllers_.size(); i++){
 			if (side_controllers_[i] == "ai"){
 				change["side"] = lexical_cast<std::string, unsigned int>(i + 1);

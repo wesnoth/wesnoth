@@ -56,16 +56,31 @@ void playmp_controller::speak(){
 void playmp_controller::play_side(const unsigned int team_index, bool save){
 //goto this label if the type of a team (human/ai/networked) has changed mid-turn
 redo_turn:
-	bool player_type_changed_ = false;
+	player_type_changed_ = false;
 	end_turn_ = false;
 
-	if(current_team().is_human() || current_team().is_ai()) {
-		playsingle_controller::play_side(team_index, save);
+	// we can't call playsingle_controller::play_side because
+	// we need to catch exception here
+	if(current_team().is_human()) {
+		LOG_NG << "is human...\n";
+		try{
+			before_human_turn(save);
+			play_human_turn();
+			after_human_turn();
+		} catch(end_turn_exception& end_turn) {
+			if (end_turn.redo == team_index)
+				player_type_changed_ = true;
+		}
+		LOG_NG << "human finished turn...\n";
+	} else if(current_team().is_ai()) {
+		play_ai_turn();
 	} else if(current_team().is_network()) {
-		player_type_changed_ = play_network_turn();
+		play_network_turn();
 	}
 
-	if (player_type_changed_) { goto redo_turn; }
+	if (player_type_changed_) {
+		goto redo_turn;
+	}
 }
 
 void playmp_controller::before_human_turn(bool save){
@@ -181,9 +196,9 @@ void playmp_controller::finish_side_turn(){
 	}
 }
 
-bool playmp_controller::play_network_turn(){
+void playmp_controller::play_network_turn(){
 	if(teams_[player_number_ - 1].is_empty() && team_units(units_,player_number_) == 0) {
-		return false;
+		return;
 	}
 
 	LOG_NG << "is networked...\n";
@@ -214,7 +229,8 @@ bool playmp_controller::play_network_turn(){
 			try{
 				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog_,skip_replay_);
 				if(result == turn_info::PROCESS_RESTART_TURN) {
-					return true;
+					player_type_changed_ = true;
+					return;
 				} else if(result == turn_info::PROCESS_END_TURN) {
 					if (skip_replay_ && replay_last_turn_ <= status_.turn()){
 						skip_replay_ = false;
@@ -236,7 +252,7 @@ bool playmp_controller::play_network_turn(){
 
 	turn_data.replay_error().detach_handler(this);
 	LOG_NG << "finished networked...\n";
-	return false;
+	return;
 }
 
 void playmp_controller::process_oos(const std::string& err_msg){
