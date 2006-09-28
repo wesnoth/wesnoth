@@ -211,7 +211,7 @@ namespace {
 
 std::set<std::string> used_items;
 
-const size_t MaxLoop = 1024;
+const size_t MaxLoop = 65536;
 
 bool events_init() { return screen != NULL; }
 
