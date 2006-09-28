@@ -136,7 +136,8 @@ void game::start_game()
 
 	describe_slots();
 	if(description()) {
-		description()->values["turn"] = describe_turns(1,level()["turns"]);
+		int turn =  lexical_cast_default<int>(level()["turn_at"], 1);
+		description()->values["turn"] = describe_turns(turn, level()["turns"]);
 	}
 
 	allow_observers_ = level_["observer"] != "no";
