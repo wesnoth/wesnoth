@@ -139,7 +139,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 }
 
 
-// Copy string but without tags at the begining 
+// Copy string but without tags at the begining
 std::string del_tags(std::string name){
 	std::stringstream					str;
 	bool									not_colour = true;
@@ -165,7 +165,7 @@ std::string del_tags(std::string name){
 		if (not_name && isalpha(*it)){
 			not_name = false;
 		}
-		
+
 		if (!not_name){
 			str << *it;
 		}
@@ -355,7 +355,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 		if(start_of_line) {
 			line_width = 0;
 			format_string = "";
-			while(ch != end && *ch < (wchar_t)0x100 && is_format_char(*ch)) {
+			while(ch != end && *ch < (wchar_t)0x100 && is_format_char(*ch) && !ch.next_is_end()) {
 				format_string.append(ch.substr().first, ch.substr().second);
 				++ch;
 			}

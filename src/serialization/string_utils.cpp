@@ -437,6 +437,13 @@ wchar_t utf8_iterator::operator*() const
 	return current_char;
 }
 
+bool utf8_iterator::next_is_end()
+{
+	if(current_substr.second == string_end)
+		return true;
+	return false;
+}
+
 const std::pair<std::string::const_iterator, std::string::const_iterator>& utf8_iterator::substr() const
 {
 	return current_substr;
