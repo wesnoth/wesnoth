@@ -453,6 +453,9 @@ bool unit_attack(display& disp, unit_map& units,
 
 	int animation_time = start_time;
 	bool played_center = false;
+	if(def->second.take_hit(damage)) {
+		dead = true;
+	}
 	while(!hide && (
 		attacker.state() != unit::STATE_STANDING ||
 		defender.state() != unit::STATE_STANDING ||
@@ -476,9 +479,6 @@ bool unit_attack(display& disp, unit_map& units,
 				sound::play_sound(def->second.get_hit_sound());
 				disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 				disp.invalidate_unit();
-			}
-			if(def->second.take_hit(damage)) {
-				dead = true;
 			}
 		}
 		disp.invalidate(b);
