@@ -96,6 +96,7 @@ public:
 	bool operator!=(const utf8_iterator& a) const { return ! (*this == a); }
 	utf8_iterator& operator++();
 	wchar_t operator*() const;
+	bool next_is_end();
 	const std::pair<std::string::const_iterator, std::string::const_iterator>& substr() const;
 private:
 	void update();
