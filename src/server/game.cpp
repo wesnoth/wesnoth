@@ -317,9 +317,6 @@ void game::update_side_data()
 
 const std::string& game::transfer_side_control(const config& cfg)
 {
-	std::cout << "--- transfer_side_control ---\n";
-	cfg.debug();
-	std::cout << "----------------------\n";
 	const std::string& player = cfg["player"];
 
 	//find the socket for the player that is passed control
@@ -471,7 +468,6 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 bool game::describe_slots()
 {
-	std::cout << "***************************\n";
 	if(description() == NULL)
 		return false;
 
@@ -480,17 +476,11 @@ bool game::describe_slots()
 	int num_sides = level_.get_children("side").size();
 	int i = 0;
 	for(config::child_list::const_iterator it = level_.get_children("side").begin(); it != level_.get_children("side").end(); ++it, ++i) {
-		if((**it)["allow_player"] == "no" or (**it)["no_leader"] == "yes") {
+		if((**it)["allow_player"] == "no") {
 			num_sides--;
-			std::cout << "side " << i << " not availbe\n";
 		} else {
-			std::cout << "controler " << side_controllers_[i] << std::endl;
-			if(!sides_taken_[i]) {
+			if(!sides_taken_[i])
 			available_slots++;
-			std::cout << "side " << i << " free\n";
-			} else {
-			std::cout << "side " << i << " taken\n";
-			}
 		}
 	}
 	snprintf(buf,sizeof(buf), "%d/%d", available_slots, num_sides);
@@ -502,7 +492,6 @@ bool game::describe_slots()
 	} else {
 		return false;
 	}
-	std::cout << "***************************\n";
 }
 
 bool game::player_is_banned(network::connection sock) const
