@@ -167,6 +167,7 @@ void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 gamestatus::gamestatus(const config& time_cfg, int num_turns) :
                  turn_(1),numTurns_(num_turns)
 {
+	(const_cast<config&>(time_cfg))["turn_at"] = utils::interpolate_variables_into_string(time_cfg["turn_at"],&time_cfg.values);
 	const std::string& turn_at = time_cfg["turn_at"];
 	if(turn_at.empty() == false) {
 		turn_ = atoi(turn_at.c_str());
@@ -1044,7 +1045,3 @@ void game_state::clear_variable(const std::string& varname)
 		vars->clear_children(key);
 	}
 }
-
-
-
-
