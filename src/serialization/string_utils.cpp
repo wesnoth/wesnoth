@@ -220,7 +220,7 @@ private:
 
 };
 
-std::string interpolate_variables_into_string(const std::string &str, const string_map *symbols)
+std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols)
 {
 	string_map_variable_set set(*symbols);
 	return do_interpolation(str, set);
@@ -732,4 +732,3 @@ std::string vgettext(const char *msgid, const utils::string_map& symbols)
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }
-
