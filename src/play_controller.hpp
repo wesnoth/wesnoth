@@ -97,6 +97,8 @@ protected:
 	team& current_team() { return teams_[player_number_-1]; }
 	const team& current_team() const { return teams_[player_number_-1]; }
 
+	int find_human_team_before(const size_t team) const;
+
 	//managers
 	const verification_manager verify_manager_;
 	teams_manager team_manager_;
