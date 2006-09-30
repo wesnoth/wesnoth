@@ -516,6 +516,29 @@ void play_controller::enter_textbox()
 	menu_handler_.get_textbox().close(*gui_);
 }
 
+int play_controller::find_human_team_before(const size_t team_num) const
+{
+	if (team_num > teams_.size())
+		return -2;
+
+	int human_side = -2;
+	for (int i = team_num-2; i > -1; --i) {
+		if (teams_[i].is_human()) {
+			human_side = i;
+			break;
+		}
+	}
+	if (human_side == -2) {
+		for (size_t i = teams_.size()-1; i > team_num-1; --i) {
+			if (teams_[i].is_human()) {
+				human_side = i;
+				break;
+			}
+		}
+	}
+	return human_side+1;
+}
+
 void play_controller::handle_event(const SDL_Event& event)
 {
 	if(gui::in_dialog()) {

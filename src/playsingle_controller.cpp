@@ -417,8 +417,21 @@ redo_turn:
 			play_human_turn();
 			after_human_turn();
 		} catch(end_turn_exception& end_turn) {
-			if (end_turn.redo == team_index)
+			if (end_turn.redo == team_index) {
 				player_type_changed_ = true;
+				// if new controller is not human,
+				// reset gui to prev human one
+				if (!teams_[team_index-1].is_human()) {
+					int t = find_human_team_before(team_index);
+					if (t) {
+						gui_->set_team(t-1);
+						gui_->recalculate_minimap();
+						gui_->invalidate_all();
+						gui_->draw();
+						gui_->update_display();
+					}
+				}
+			}
 		}
 
 		if(game_config::debug)
