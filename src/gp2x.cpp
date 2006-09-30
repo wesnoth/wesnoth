@@ -82,7 +82,7 @@ void movemouse(MouseDirection dir)
 	}
 	if(dir & DOWN) {
 		mouse_position_.y += MOTION_SPEED;
-		mouse_position_.y = minimum<int>(mouse_position_.y, 240);	// FIXME
+		mouse_position_.y = minimum<int>(mouse_position_.y, 240 - 1);	// FIXME
 	}
 	if(dir & LEFT) {
 		mouse_position_.x -= MOTION_SPEED;
@@ -90,7 +90,7 @@ void movemouse(MouseDirection dir)
 	}
 	if(dir & RIGHT) {
 		mouse_position_.x += MOTION_SPEED;
-		mouse_position_.x = minimum<int>(mouse_position_.x, 320); // FIXME
+		mouse_position_.x = minimum<int>(mouse_position_.x, 320 - 1); // FIXME
 	}
 
 	/*
