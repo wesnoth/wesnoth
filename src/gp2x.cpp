@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003-6 by David White <davidnwhite@verizon.net>
+   Copyright (C) 2006 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,10 +14,12 @@
 #ifdef GP2X
 
 #include <iostream>
+#include <unistd.h>	// for chdir() and execl()
 #include "SDL.h"
 
 #include "gp2x.hpp"
 #include "preferences.hpp"
+#include "util.hpp"
 
 namespace gp2x {
 
@@ -65,18 +67,31 @@ struct mousepos {
 	unsigned int y;
 } mouse_position_;
 
+/**
+ * Initialisaed joystick
+ */
+SDL_Joystick *joystick_;
+
 void movemouse(MouseDirection dir)
 {
 	#define MOTION_SPEED (4)
 
-	if(dir & UP)
+	if(dir & UP) {
 		mouse_position_.y -= MOTION_SPEED;
-	if(dir & DOWN)
+		mouse_position_.y = maximum<int>(mouse_position_.y, 0);
+	}
+	if(dir & DOWN) {
 		mouse_position_.y += MOTION_SPEED;
-	if(dir & LEFT)
+		mouse_position_.y = minimum<int>(mouse_position_.y, 240);	// FIXME
+	}
+	if(dir & LEFT) {
 		mouse_position_.x -= MOTION_SPEED;
-	if(dir & RIGHT)
+		mouse_position_.x = maximum<int>(mouse_position_.x, 0);
+	}
+	if(dir & RIGHT) {
 		mouse_position_.x += MOTION_SPEED;
+		mouse_position_.x = minimum<int>(mouse_position_.x, 320); // FIXME
+	}
 
 	/*
 	 * Move mouse cursor and generate MOUSEMOTION event
@@ -109,7 +124,7 @@ void handle_joybutton(int button, bool down)
 			mouseevent.state = SDL_RELEASED;
 		}
 
-		mouseevent.button = button == GP2X_BUTTON_A ? SDL_BUTTON_LEFT : SDL_BUTTON_RIGHT;
+		mouseevent.button = (button == GP2X_BUTTON_A ? SDL_BUTTON_LEFT : SDL_BUTTON_RIGHT);
 		mouseevent.x = mouse_position_.x;
 		mouseevent.y = mouse_position_.y;
 
@@ -186,7 +201,7 @@ int init_joystick()
 	std::cerr << "Initializing joystick...\n";
 
 	if(SDL_InitSubSystem(SDL_INIT_JOYSTICK) >= 0) {
-		if(SDL_JoystickOpen(0) != NULL)
+		if((joystick_ = SDL_JoystickOpen(0)) != NULL)
 			return 0;
 	}
 
@@ -216,6 +231,64 @@ void handle_joystick(SDL_JoyButtonEvent *ev)
 		movemouse(DOWNRIGHT);
 	else
 		handle_joybutton(e.button, down);
+}
+
+// We try to emulate SDL_GetMouseState() here
+Uint8 get_joystick_state(int *x, int *y)
+{
+	Uint8 result = 0;
+
+	if(x)
+		*x = mouse_position_.x;
+	if(y)
+		*y = mouse_position_.y;
+
+	if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_A) == SDL_PRESSED)
+		result |= SDL_BUTTON_LEFT;
+	if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_B) == SDL_PRESSED)
+		result |= SDL_BUTTON_RIGHT;
+
+	return result;
+}
+
+/**
+ * Pushes mouse motion events into the queue when joystick directional
+ * buttons are pressed
+ */
+void makeup_events()
+{
+	static Uint32 last_time;
+	Uint32 time = SDL_GetTicks();
+
+	if(time - last_time >= 50)	{
+		last_time = time;
+
+		if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_LEFT) == SDL_PRESSED)
+			movemouse(LEFT);
+		else if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_RIGHT) == SDL_PRESSED)
+			movemouse(RIGHT);
+		else if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_UP) == SDL_PRESSED)
+			movemouse(UP);
+		else if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_DOWN) == SDL_PRESSED)
+			movemouse(DOWN);
+		else if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_UPLEFT) == SDL_PRESSED)
+			movemouse(UPLEFT);
+		else if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_UPRIGHT) == SDL_PRESSED)
+			movemouse(UPRIGHT);
+		else if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_DOWNLEFT) == SDL_PRESSED)
+			movemouse(DOWNLEFT);
+		else if(SDL_JoystickGetButton(joystick_, GP2X_BUTTON_DOWNRIGHT) == SDL_PRESSED)
+			movemouse(DOWNRIGHT);
+	}
+}
+
+/**
+ * Return to gp2x menu
+ */
+void return_to_menu()
+{
+	chdir("/usr/gp2x");
+	execl("/usr/gp2x/gp2xmenu", "/usr/gp2x/gp2xmenu", 0);
 }
 
 } // namespace gp2x

@@ -254,6 +254,10 @@ void pump()
 	static int last_mouse_down = -1;
 	static int last_click_x = -1, last_click_y = -1;
 
+#ifdef GP2X
+	gp2x::makeup_events();
+#endif
+
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
 

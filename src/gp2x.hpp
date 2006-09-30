@@ -13,8 +13,8 @@
 
 #ifdef GP2X
 
-#ifndef JOYMOUSE_HPP_INCLUDED
-#define JOYMOUSE_HPP_INCLUDED
+#ifndef GP2X_HPP_INCLUDED
+#define GP2X_HPP_INCLUDED
 
 #include "SDL.h"
 
@@ -22,6 +22,9 @@ namespace gp2x {
 
 int init_joystick();
 void handle_joystick(SDL_JoyButtonEvent *);
+void makeup_events();
+Uint8 get_joystick_state(int *x, int *y);
+void return_to_menu();
 
 }
 

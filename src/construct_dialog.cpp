@@ -21,6 +21,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "gettext.hpp"
+#include "gp2x.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
@@ -608,7 +609,11 @@ int dialog::process(dialog_process_info &info)
 {
 
 	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+	int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+
+#ifdef GP2X
+	mouse_flags |= gp2x::get_joystick_state(&mousex, &mousey);
+#endif
 
 	const bool new_right_button = (mouse_flags&SDL_BUTTON_RMASK) != 0;
 	const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;

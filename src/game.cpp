@@ -1849,6 +1849,8 @@ int main(int argc, char** argv)
 #endif
 
 #ifdef GP2X
+	atexit(gp2x::return_to_menu);
+
 	if(gp2x::init_joystick() < 0) {
 		fprintf(stderr, "Couldn't initialize joystick: %s\n", SDL_GetError());
 		return 1;
@@ -1881,9 +1883,15 @@ int main(int argc, char** argv)
 		std::cerr << "caught end_level_exception (quitting)\n";
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
-	} /*catch(...) {
+	} 
+
+#ifdef GP2X
+	// We want this in gp2x so that users don't have to power-cycle
+	// their consoles on unhandled exception
+	catch(...) {
 		std::cerr << "Unhandled exception. Exiting\n";
-	}*/
+	}
+#endif
 
 	return 0;
 }
