@@ -156,7 +156,7 @@ private:
 game_controller::game_controller(int argc, char** argv)
    : argc_(argc), arg_(1), argv_(argv), thread_manager(),
      test_mode_(false), multiplayer_mode_(false),
-     no_gui_(false), use_caching_(true), force_valid_cache_(false), 
+     no_gui_(false), use_caching_(true), force_valid_cache_(false),
      force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false)
 {
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
@@ -879,9 +879,11 @@ void game_controller::download_campaigns()
 
 	try {
 		const network::manager net_manager;
-		const network::connection sock = network::connect(items.front(),lexical_cast_default<int>(items.back(),15003));
+		const network::connection sock = gui::network_connect_dialog(disp(), _("Connecting to Server..."),
+										items.front(), lexical_cast_default<int>(items.back(),15003) );
 		if(!sock) {
 			gui::show_error_message(disp(), _("Could not connect to host."));
+			preferences::set_campaign_server("");
 			return;
 		}
 
@@ -1883,7 +1885,7 @@ int main(int argc, char** argv)
 		std::cerr << "caught end_level_exception (quitting)\n";
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
-	} 
+	}
 
 #ifdef GP2X
 	// We want this in gp2x so that users don't have to power-cycle
