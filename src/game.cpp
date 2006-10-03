@@ -874,7 +874,7 @@ void game_controller::download_campaigns()
 	try {
 		const network::manager net_manager;
 		const network::connection sock = gui::network_connect_dialog(disp(), _("Connecting to Server..."),
-										items.front(), lexical_cast_default<int>(items.back(),15003) );
+										items.front(), lexical_cast_default<int>(items.back(),15004) );
 		if(!sock) {
 			gui::show_error_message(disp(), _("Could not connect to host."));
 			preferences::set_campaign_server("");
