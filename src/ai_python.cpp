@@ -33,6 +33,7 @@ static python_ai* running_instance;
 bool python_ai::init_ = false;
 PyObject* python_ai::python_error_ = NULL;
 
+#define MSG_UNIT "Invalid unit"
 void python_ai::set_error(const char *fmt, ...)
 {
 	char buf[1024];
@@ -435,85 +436,109 @@ bool python_ai::is_unit_valid(const unit* unit, bool do_set_error)
 
 static PyObject* unit_get_name(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	return Py_BuildValue("s",( const char* )unit->unit_->name().c_str());
 }
 
 static PyObject* unit_is_enemy(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	return Py_BuildValue("i",running_instance->current_team().is_enemy(unit->unit_->side()) == true ? 1 : 0);
 }
 
 static PyObject* unit_can_recruit(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	return Py_BuildValue("i",unit->unit_->can_recruit() == true ? 1 : 0);
 }
 
 static PyObject* unit_side(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	return Py_BuildValue("i",unit->unit_->side());
 }
 
 static PyObject* unit_movement_left(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	return Py_BuildValue("i",unit->unit_->movement_left());
 }
 
 static PyObject* unit_can_attack(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	return Py_BuildValue("i",unit->unit_->attacks_left());
 }
 
 static PyObject* unit_hitpoints(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	return Py_BuildValue("i",(int)unit->unit_->hitpoints());
 }
 
 static PyObject* unit_max_hitpoints(wesnoth_unit* unit, void* /*closure*/)
 {
-       if (!running_instance->is_unit_valid(unit->unit_))
-               return NULL;
-       return Py_BuildValue("i",(int)unit->unit_->max_hitpoints());
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
+		return NULL;
+	}
+        return Py_BuildValue("i",(int)unit->unit_->max_hitpoints());
 }
 
 static PyObject* unit_experience(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	return Py_BuildValue("i",(int)unit->unit_->experience());
 }
 
 static PyObject* unit_max_experience(wesnoth_unit* unit, void* /*closure*/)
 {
-       if (!running_instance->is_unit_valid(unit->unit_))
-               return NULL;
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
+		return NULL;
+	}
        return Py_BuildValue("i",(int)unit->unit_->max_experience());
 }
 
 static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
 {
-    if (!running_instance->is_unit_valid(unit->unit_))
-        return NULL;
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
+		return NULL;
+	}
     return Py_BuildValue("i",utils::string_bool(unit->unit_->get_state("poisoned")));
 }
 
 static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
 {
-    if (!running_instance->is_unit_valid(unit->unit_))
-        return NULL;
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
+		return NULL;
+	}
     return Py_BuildValue("i",utils::string_bool(unit->unit_->get_state("stoned")));
 }
 
@@ -557,9 +582,11 @@ static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
 {
 	if ( !PyArg_ParseTuple( args, "" ) )
 		return NULL;
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
-		wassert(unit->unit_->type());
+	}
+	wassert(unit->unit_->type());
 	return wrap_unittype(*unit->unit_->type());
 }
 
@@ -567,8 +594,10 @@ static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
 {
 	if ( !PyArg_ParseTuple( args, "" ) )
 		return NULL;
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	PyObject* list = PyList_New(unit->unit_->attacks().size());
 	for ( size_t attack = 0; attack < unit->unit_->attacks().size(); attack++)
 		PyList_SetItem(list,attack,wrap_attacktype(unit->unit_->attacks()[attack]));
@@ -580,8 +609,10 @@ static PyObject* wrapper_unit_damage_from( wesnoth_unit* unit, PyObject* args )
 	wesnoth_attacktype* attack;
 	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_attacktype_type, &attack ) )
 		return NULL;
-	if (!running_instance->is_unit_valid(unit->unit_))
+	if (!running_instance->is_unit_valid(unit->unit_)){
+		running_instance->set_error(MSG_UNIT);
 		return NULL;
+	}
 	static gamemap::location no_loc;
 	return Py_BuildValue("i",unit->unit_->damage_from(*attack->attack_type_,true,no_loc));
 }
@@ -1283,7 +1314,15 @@ PyObject* python_ai::wrapper_get_location(PyObject* /*self*/, PyObject* args)
 	int x, y;
     if ( !PyArg_ParseTuple( args, "ii", &x, &y ) )
         return NULL;
-
+    if(x < 0 || x >= running_instance->get_info().map.x()){
+	running_instance->set_error("Invalid x value %d", x);
+	return NULL;
+    }
+    if(y < 0 || y >= running_instance->get_info().map.y()){
+	running_instance->set_error("Invalid y value %d", y);
+	return NULL;
+    }
+    
     gamemap::location loc(x,y);
 	return wrap_location(loc);
 }
@@ -1519,6 +1558,10 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 		return NULL;
 	if (!running_instance->is_unit_valid(self->unit_))
 		return NULL;
+	if (weapon < -1 || weapon >= (int) self->unit_->attacks().size()){
+		set_error("Invalid weapon %d", weapon);
+		return NULL;
+	}
 
     info& inf = running_instance->get_info();
 

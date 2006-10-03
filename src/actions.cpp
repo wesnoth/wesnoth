@@ -232,6 +232,12 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	const unit& attacker = units.find(attacker_loc)->second;
 	const unit& defender = units.find(defender_loc)->second;
 
+	// A Python AI can send an invalid weapon and crash Wesnoth
+	// Haven't found a way for the Python API to prevent this 
+	// problem. So instead of segfaulting it sends an assertion
+	// failure.
+	wassert(attacker_weapon< (int)attacker.attacks().size());
+		
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1)
 		attacker_weapon = 0;
 
