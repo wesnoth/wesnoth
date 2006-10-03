@@ -586,8 +586,7 @@ static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
 		running_instance->set_error(MSG_UNIT);
 		return NULL;
 	}
-	wassert(unit->unit_->type());
-	return wrap_unittype(*unit->unit_->type());
+	return wrap_unittype(unit->unit_->type());
 }
 
 static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
