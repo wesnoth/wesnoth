@@ -83,7 +83,7 @@ int message_dialog::show(const gui::dialog::dimension_measurements &dim, msecs m
 void message_dialog::action(gui::dialog_process_info &dp_info)
 {
 	dialog::action(dp_info);
-	if(done() && SDL_GetTicks() < prevent_misclick_until_) {
+	if(done() && SDL_GetTicks() < prevent_misclick_until_ && result() != gui::ESCAPE_DIALOG) {
 		//discard premature results
 		set_result(gui::CONTINUE_DIALOG);
 	}
