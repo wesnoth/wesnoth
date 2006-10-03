@@ -412,7 +412,10 @@ void wait::generate_menu()
 		// Mark parentheses translatable for languages like Japanese
 		if(!leader_name.empty())
 			str << _("(") << leader_name << _(")");
-		str << COLUMN_SEPARATOR << sd["gold"] << ' ' << sgettext("unit^Gold") << COLUMN_SEPARATOR;
+		str << COLUMN_SEPARATOR;
+		// Don't show gold for saved games
+		if(sd["save_id"].empty())
+			str << sd["gold"] << ' ' << sgettext("unit^Gold") << COLUMN_SEPARATOR;
 
 		int income_amt = lexical_cast_default<int>(sd["income"], 0);
 		if(income_amt != 0){
