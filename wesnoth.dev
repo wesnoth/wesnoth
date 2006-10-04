@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=239
+UnitCount=242
 Type=1
 Ver=1
 ObjFiles=
@@ -2000,26 +2000,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit200]
-FileName=src\widgets\file_chooser.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit201]
-FileName=src\widgets\file_chooser.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit202]
 FileName=src\widgets\label.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2029,7 +2009,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit203]
+[Unit201]
 FileName=src\widgets\label.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2039,7 +2019,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit204]
+[Unit202]
 FileName=src\widgets\menu.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2049,7 +2029,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit205]
+[Unit203]
 FileName=src\widgets\menu.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2059,7 +2039,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit206]
+[Unit204]
 FileName=src\widgets\progressbar.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2069,7 +2049,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit207]
+[Unit205]
 FileName=src\widgets\progressbar.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2079,7 +2059,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit208]
+[Unit206]
 FileName=src\widgets\scrollarea.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2089,7 +2069,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit209]
+[Unit207]
 FileName=src\widgets\scrollarea.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2099,7 +2079,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit210]
+[Unit208]
 FileName=src\widgets\scrollbar.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2109,7 +2089,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit211]
+[Unit209]
 FileName=src\widgets\scrollbar.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2119,7 +2099,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit212]
+[Unit210]
 FileName=src\widgets\scrollpane.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2129,7 +2109,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit213]
+[Unit211]
 FileName=src\widgets\scrollpane.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2139,7 +2119,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit214]
+[Unit212]
 FileName=src\widgets\slider.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2149,7 +2129,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit215]
+[Unit213]
 FileName=src\widgets\slider.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2159,7 +2139,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit216]
+[Unit214]
 FileName=src\widgets\textbox.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2169,7 +2149,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit217]
+[Unit215]
 FileName=src\widgets\textbox.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2179,7 +2159,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit218]
+[Unit216]
 FileName=src\widgets\widget.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2189,7 +2169,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit219]
+[Unit217]
 FileName=src\zipios++\xcoll.cpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2199,7 +2179,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit220]
+[Unit218]
 FileName=src\zipios++\xcoll.hpp
 CompileCpp=1
 Folder=Wesnoth
@@ -2209,7 +2189,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit221]
+[Unit219]
 FileName=src\unit_abilities.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -2219,7 +2199,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit222]
+[Unit220]
 FileName=src\loadscreen.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -2229,7 +2209,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit223]
+[Unit221]
 FileName=src\loadscreen.hpp
 CompileCpp=1
 Folder=wesnoth
@@ -2239,7 +2219,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit224]
+[Unit222]
 FileName=src\unit_abilities.hpp
 CompileCpp=1
 Folder=
@@ -2249,8 +2229,28 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit225]
+[Unit223]
 FileName=src\attack_prediction.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit224]
+FileName=src\floating_textbox.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit225]
+FileName=src\floating_textbox.hpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2298,36 +2298,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit227]
-FileName=src\floating_textbox.hpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit228]
-FileName=src\play_controller.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit226]
-FileName=src\floating_textbox.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit229]
 FileName=src\play_controller.hpp
 CompileCpp=1
 Folder=wesnoth
@@ -2337,67 +2307,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit231]
-FileName=src\playmp_controller.hpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit232]
-FileName=src\playsingle_controller.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit233]
-FileName=src\playsingle_controller.hpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit234]
-FileName=src\widgets\menu_style.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit235]
-FileName=src\generic_event.hpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit236]
-FileName=src\generic_event.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit230]
+[Unit228]
 FileName=src\playmp_controller.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -2407,7 +2317,67 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit237]
+[Unit226]
+FileName=src\play_controller.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit229]
+FileName=src\playmp_controller.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit231]
+FileName=src\playsingle_controller.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit232]
+FileName=src\widgets\menu_style.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit233]
+FileName=src\generic_event.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit234]
+FileName=src\generic_event.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit235]
 FileName=src\unit_frame.hpp
 CompileCpp=1
 Folder=wesnoth
@@ -2417,8 +2387,38 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit238]
+[Unit236]
 FileName=src\unit_map.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit230]
+FileName=src\playsingle_controller.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit237]
+FileName=src\unit_map.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit238]
+FileName=src\widgets\file_menu.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2428,7 +2428,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit239]
-FileName=src\unit_map.hpp
+FileName=src\widgets\file_menu.hpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2438,7 +2438,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit240]
-FileName=src\unit_map.cpp
+FileName=src\unit_frame.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2448,7 +2448,17 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit241]
-FileName=src\unit_map.hpp
+FileName=src\construct_dialog.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit242]
+FileName=src\construct_dialog.hpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
