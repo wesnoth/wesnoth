@@ -570,6 +570,7 @@ config connect::side::get_config() const
 		trimmed["colour"] = "";
 		trimmed["gold"] = "";
 		trimmed["income"] = "";
+		trimmed["allow_changes"] = "";
 		if(controller_ != CNTR_COMPUTER) {
 			//only override names for computer controlled players
 			trimmed["user_description"] = "";
