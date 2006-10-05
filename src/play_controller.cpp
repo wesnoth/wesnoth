@@ -288,6 +288,8 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
+	mouse_handler_.set_team(team_index+1);
+
 	if(team_manager_.is_observer()) {
 		gui_->set_team(size_t(team_index));
 	}
@@ -592,14 +594,14 @@ void play_controller::handle_event(const SDL_Event& event)
 					SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {
 			while(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
 						SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0);
-			mouse_handler_.mouse_motion(new_event.motion, player_number_, browse_);
+			mouse_handler_.mouse_motion(new_event.motion, browse_);
 		} else {
-			mouse_handler_.mouse_motion(event.motion, player_number_, browse_);
+			mouse_handler_.mouse_motion(event.motion, browse_);
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 	case SDL_MOUSEBUTTONUP:
-		mouse_handler_.mouse_press(event.button, player_number_, browse_);
+		mouse_handler_.mouse_press(event.button, browse_);
 		if (mouse_handler_.get_undo()){
 			mouse_handler_.set_undo(false);
 			menu_handler_.undo(player_number_, mouse_handler_);

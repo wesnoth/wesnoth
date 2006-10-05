@@ -680,9 +680,13 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 	over_route_ = false;
 }
 
-void mouse_handler::mouse_motion(const SDL_MouseMotionEvent& event, const int player_number, const bool browse)
+void mouse_handler::set_team(const int team_number)
 {
-	team_num_ = player_number;
+	team_num_ = team_number;
+}
+
+void mouse_handler::mouse_motion(const SDL_MouseMotionEvent& event, const bool browse)
+{
 	mouse_motion(event.x,event.y, browse);
 }
 
@@ -795,7 +799,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			if (un->second.side() != team_num_) {
 				//unit under cursor is not on our team, highlight reach
 				unit_movement_resetter move_reset(un->second);
-	
+
 				const bool ignore_zocs = un->second.get_ability_bool("skirmisher",un->first);
 				const bool teleport = un->second.get_ability_bool("teleport",un->first);
 				current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
@@ -811,16 +815,16 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 									visible_units(),teams_,map_);
 
 					const std::set<gamemap::location>* teleports = NULL;
-	
+
 					std::set<gamemap::location> allowed_teleports;
 					if(u.get_ability_bool("teleport",un->first)) {
 						allowed_teleports = vacant_villages(current_team().villages(),units_);
 						teleports = &allowed_teleports;
 						if(current_team().villages().count(un->first))
 							allowed_teleports.insert(un->first);
-	
+
 					}
-	
+
 					paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.x(), map_.y(), teleports);
 					route.move_left = route_turns_to_complete(un->second,map_,route);
 					gui_->set_route(&route);
@@ -925,10 +929,9 @@ const unit_map& mouse_handler::visible_units()
 	return visible_units_;
 }
 
-void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const int player_number, const bool browse)
+void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
 {
 	show_menu_ = false;
-	team_num_ = player_number;
 	mouse_motion(event.x, event.y, browse);
 
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
