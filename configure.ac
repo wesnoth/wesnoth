@@ -638,9 +638,9 @@ fi
 AC_SUBST([FREETYPE_LIBS])
 
 AC_ARG_WITH([zipios],
-	AS_HELP_STRING([--without-zipios], [Do not use zipios++ even if installed]),
+	AS_HELP_STRING([--with-zipios], [Do use zipios++ if installed]),
 	[checkzipios="$withval"],
-	[checkzipios="yes"])
+	[checkzipios="no"])
 
 AC_LANG(C++)
 LIBZIPIOS=
@@ -662,7 +662,7 @@ if test $checkzipios = yes; then
 		AC_MSG_WARN([*** libzipios++ not found - support for ZIP files is disabled])])
 	LIBS="$OLD_LIBS"
 else
-	AC_MSG_NOTICE([skipping check for libzipios++])
+	AC_MSG_NOTICE([skipping check for libzipios++ - use --with-zipios if you want it])
 fi
 AC_SUBST([LIBZIPIOS])
 
