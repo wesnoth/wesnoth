@@ -481,7 +481,7 @@ bool game::describe_slots()
 	int num_sides = level_.get_children("side").size();
 	int i = 0;
 	for(config::child_list::const_iterator it = level_.get_children("side").begin(); it != level_.get_children("side").end(); ++it, ++i) {
-		if((**it)["allow_player"] == "no") {
+		if((**it)["allow_player"] == "no" || (**it)["controller"] == "null") {
 			num_sides--;
 		} else {
 			if(!sides_taken_[i])
