@@ -629,16 +629,18 @@ int dialog::process(dialog_process_info &info)
 		return (use_menu ? menu_->selection() : 0);
 	}
 
-	if(!info.key_down && info.key[SDLK_ESCAPE] && type_ == MESSAGE) {
-		return (ESCAPE_DIALOG);
-	}
-
 	//escape quits from the dialog -- unless it's an "ok" dialog with a menu,
 	//since such dialogs require a selection of some kind.
-	if(!info.key_down && info.key[SDLK_ESCAPE] && (type_ != OK_ONLY || !use_menu)) {
-		return ((type_ == OK_ONLY && use_menu) ? 1 : CLOSE_DIALOG);
+	if(!info.key_down && info.key[SDLK_ESCAPE]) {
+		if(type_ == MESSAGE) {
+			//special return value for escaping game event messages
+			return (ESCAPE_DIALOG);
+		} else if(type_ != OK_ONLY || !use_menu) {
+			return ((type_ == OK_ONLY && use_menu) ? 1 : CLOSE_DIALOG);
+		}
 	}
 
+	//inform preview panes when there is a new menu selection
 	if((menu_->selection() != info.selection) || info.first_time) {
 		info.selection = menu_->selection();
 		int selection = info.selection;
@@ -658,6 +660,7 @@ int dialog::process(dialog_process_info &info)
 	info.first_time = false;
 
 	if(use_menu) {
+		//get any drop-down choice or context-menu click
 		const int selection = menu_->process();
 		if(selection != -1)
 		{
@@ -671,6 +674,7 @@ int dialog::process(dialog_process_info &info)
 	const SDL_Rect menu_rect = menu_->location();
 	if(
 		(
+			//clicking outside of a drop-down or context-menu should close it
 			standard_buttons_.empty() && 
 			(
 				(
@@ -681,6 +685,8 @@ int dialog::process(dialog_process_info &info)
 				)
 			)
 		) || (
+			//any keypress should close a dialog if it has one standard button (or less)
+			//and no menu options.
 			standard_buttons_.size() < 2 && new_key_down && !info.key_down && !use_menu
 		)
 	  )
@@ -692,6 +698,7 @@ int dialog::process(dialog_process_info &info)
 	info.right_button = new_right_button;
 	info.key_down = new_key_down;
 
+	//now handle any button presses
 	for(button_pool_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
 		if(b->first->pressed()) {
 			return b->first->action(info);

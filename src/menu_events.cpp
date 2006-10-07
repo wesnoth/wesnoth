@@ -35,6 +35,45 @@
 #include <algorithm>
 #include <sstream>
 
+namespace {
+
+class statistics_dialog : public gui::dialog
+{
+public:
+	statistics_dialog(display &disp, const std::string& title="");
+	~statistics_dialog();
+protected:
+	void action(gui::dialog_process_info &dp_info);
+private:
+	gui::dialog_button *detail_btn_;
+};
+
+void statistics_dialog::action(gui::dialog_process_info &dp_info)
+{
+	bool has_details = (get_menu().selection() < 5);
+	detail_btn_->enable(has_details);
+	if(dp_info.double_clicked && has_details) {
+		set_result(get_menu().selection());
+	} else if(dp_info.key_down) {
+		set_result(gui::CLOSE_DIALOG);
+	}
+}
+
+statistics_dialog::statistics_dialog(display &disp, const std::string& title)
+		: dialog(disp, title, "", gui::NULL_DIALOG)
+{
+	detail_btn_ = new gui::standard_dialog_button(disp.video(), _("Detail"), 0 , false);
+	add_button(detail_btn_, gui::dialog::BUTTON_EXTRA);
+	add_button(new gui::standard_dialog_button(disp.video(), _("Close"), 1, true),
+				gui::dialog::BUTTON_STANDARD);
+}
+
+statistics_dialog::~statistics_dialog()
+{
+}
+
+} //end anonymous namespace
+
 namespace events{
 
 	class delete_recall_unit : public gui::dialog_button_action
@@ -190,11 +229,15 @@ namespace events{
 			}
 			str << ")";
 
-			const int res = gui::show_dialog2(*gui_, NULL, str.str(), "", gui::OK_CANCEL, &items);
+			statistics_dialog stats_dialog(*gui_, str.str());
+			stats_dialog.set_menu(items);
+			const int res = stats_dialog.show();
 			std::string title;
 			std::vector<std::string> items_sub;
 
 			switch(res) {
+			case gui::CLOSE_DIALOG:
+				return;
 			case 0:
 				items_sub = create_unit_table(stats.recruits,gui_->viewing_team()+1);
 				title = _("Recruits");
@@ -216,7 +259,7 @@ namespace events{
 				title = _("Kills");
 				break;
 			default:
-				return;
+				break;
 			}
 
 			if (items_sub.empty() == false)
