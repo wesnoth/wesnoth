@@ -675,7 +675,7 @@ fi
 AC_SUBST([FREETYPE_LIBS])
 
 AC_ARG_WITH([zipios],
-	AS_HELP_STRING([--with-zipios], [Do not use zipios++ even if installed]),
+	AS_HELP_STRING([--with-zipios], [Do use zipios++ if installed]),
 	[checkzipios="$withval"],
 	[checkzipios="no"])
 
