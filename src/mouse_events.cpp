@@ -678,6 +678,7 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 	undo_ = false;
 	show_menu_ = false;
 	over_route_ = false;
+	team_num_ = 1;
 }
 
 void mouse_handler::set_team(const int team_number)
