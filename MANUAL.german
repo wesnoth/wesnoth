@@ -26,8 +26,8 @@ Steuerung
                       Reihenfolge)
     * Space           Zug der Einheit beenden und nächste Einheit auswählen, die
                       noch bewegt werden kann
-    * Alt-Space       Zug dieses Spielers beenden
-    * Strg-Space      Position der Einheit halten. Einheit in diesem Zug nicht
+    * Strg-Space      Zug dieses Spielers beenden
+    * Alt-Space       Position der Einheit halten. Einheit in diesem Zug nicht
                       mehr durch "n" oder "N" auswählen
     * Strg-v          Mögliche gegnerische Züge anzeigen (bei Beachtung
                       gegenwärtiger ZOCs)
@@ -73,16 +73,13 @@ Diese Sphäre ist:
      Bewegungspunkte aufgebraucht hat.
    * Blau, wenn die Einheit ein Verbündeter ist, den du nicht steuern kannst
 
-Feindliche Einheiten haben keine Sphären auf ihrem Energiebalken (in alten
-Versionen < 0.5.2 war eine schwarze Sphäre auf der Spitze des Energiebalkens
-feindlicher Einheiten)
-
+Feindliche Einheiten haben keine Sphären auf ihrem Energiebalken.
 
 Beschreibung
 
 Das Spiel besteht aus einer Abfolge von Schlachten oder Szenarios. In jedem
 Szenario kämpfen Ihre Truppen gegen die Truppen des Gegners. Jede Seite beginnt
-mit einem Anführer in Ihrem Bergfried.
+mit einem Anführer in Ihrem Burgfried.
 
 
 Gold
@@ -110,8 +107,9 @@ einberufenen Einheiten.
 Ausbilden und Einberufen
 
 Einheiten können zu einem bestimmten Preis ausgebildet werden, solange der
-Anführer im Bergfried steht und noch ein Feld in der Burg frei ist. Das
-Ausbilden geschieht durch Rechtsklick und die Auswahl von »Ausbilden«.
+Anführer im Burgfried steht und noch ein Feld in der Burg frei ist. Das
+Ausbilden geschieht durch Rechtsklick mit der Maus und die Auswahl
+im Untermenü von »Ausbilden«.
 
 Wenn ein Szenario durchgespielt wurde, stehen alle überlebenden Einheiten im
 nächsten Szenario wieder zur Verfügung. Durch Rechtsklick und die Auswahl von
@@ -189,7 +187,7 @@ Treffer und er kann bei jeder Kampfhandlung 4 Mal zuschlagen. Dies wird
 allgemein als 5-4 geschrieben.
 
 Die Wahrscheinlichkeit einer Einheit, getroffen zu werden, ist vom Gelände
-abhängig. Einheiten in Dörfern und Burgen oder Elfen in Wälder, werden
+abhängig. Einheiten in Dörfern und Burgen oder Elfen in Wäldern, werden
 beispielsweise weniger häufig getroffen.
 
 
@@ -224,9 +222,9 @@ regeneriert bis zu 8 Lebenspunkte. Die Heilwirkung nimmt jedoch mit zunehmender
 Anzahl verwundeter Einheiten ab.
 
 »Heilen« verhindert zwar, dass die Einheit weiteren Schaden durch eine
-Vergiftung erleidet, kann diese jedoch nicht heilen. Erst durch die »Kurieren«
-Fertigkeit wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt wird,
-erhält die Einheit in dieser Runde keine Lebenspunkte zurück.
+Vergiftung erleidet, kann diese jedoch nicht heilen. Erst durch die Fertigkeit
+zu »Kurieren« wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt
+wird, erhält die Einheit in dieser Runde keine Lebenspunkte zurück.
 
 
 Erfahrung
@@ -255,10 +253,10 @@ Mehrspieler
 Sie können eine eigene Mehrspielerpartie starten, indem Sie Ihren PC als
 Spielserver benutzen oder sich mit dem Wesnoth-Spielserver verbinden und Ihr
 Spiel dort starten. Falls Sie Ihren PC benutzen, benötigen Mitspieler die
-Möglichkeit sich mit Ihrem Port 15000 zu verbinden. Wenn Sie sich hinter einer
-Firewall befinden, müssen Sie die Einstellungen so ändern, dass eingehende
-Verbindungen auf Port 15000 erlaubt sind, und diese Daten zu dem Rechner, auf dem
-der Server läuft, weitergeleitet werden sollen.
+Möglichkeit sich mit Ihrem TCP-Port 15000 zu verbinden. Wenn Sie sich hinter
+einer Firewall befinden, müssen Sie die Einstellungen so ändern, dass eingehende
+Verbindungen auf Port 15000 erlaubt sind, und diese Daten zu dem Rechner, auf
+dem der Server läuft, weitergeleitet werden sollen.
 
 
 Öffentliche Server:
