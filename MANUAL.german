@@ -1,8 +1,8 @@
 DAS BATTLE FOR WESNOTH HANDBUCH
 
 Wenn Sie ein Neuling in Sachen Battle for Wesnoth sein sollten, könnte
-folgende Einführung (in englischer Sprache) für Sie von Interesse sein:
-http://www.wesnoth.org/wiki/GettingStarted
+folgende Einführung (in Englisch) für Sie von Interesse sein:
+http://www.wesnoth.org/wiki/GettingStarted.
 
 Steuerung
 
@@ -24,12 +24,10 @@ Steuerung
     * n               nächste Einheit mit verbliebenen BP auswählen
     * N               nächste Einheit mit verbliebenen BP auswählen (umgekehrte
                       Reihenfolge)
-    * Leertaste       Zug der Einheit beenden und nächste Einheit 
-auswählen, die
+    * Space           Zug der Einheit beenden und nächste Einheit auswählen, die
                       noch bewegt werden kann
-    * Alt-Leertaste   Zug dieses Spielers beenden
-    * Strg-Leertaste  Position der Einheit halten. Einheit in diesem 
-Zug nicht
+    * Strg-Space      Zug dieses Spielers beenden
+    * Alt-Space       Position der Einheit halten. Einheit in diesem Zug nicht
                       mehr durch "n" oder "N" auswählen
     * Strg-v          Mögliche gegnerische Züge anzeigen (bei Beachtung
                       gegenwärtiger ZOCs)
@@ -73,17 +71,13 @@ Diese Sphäre ist:
      bewegt wurde, aber noch weiter bewegt werden oder angreifen könnte.
    * Rot, bei einer Einheit unter Ihrer Kontrolle, die diese Runde alle ihre
      Bewegungspunkte aufgebraucht hat.
-   * Blau, wenn die Einheit ein Verbündeter ist, den Sie nicht steuern 
-können
+   * Blau, wenn die Einheit ein Verbündeter ist, den du nicht steuern kannst
 
-Feindliche Einheiten haben keine Sphären auf ihrem Energiebalken (in alten
-Versionen < 0.5.2 war eine schwarze Sphäre auf der Spitze des Energiebalkens
-feindlicher Einheiten)
-
+Feindliche Einheiten haben keine Sphären auf ihrem Energiebalken.
 
 Beschreibung
 
-Das Spiel besteht aus einer Abfolge von Schlachten oder Szenarien. In jedem
+Das Spiel besteht aus einer Abfolge von Schlachten oder Szenarios. In jedem
 Szenario kämpfen Ihre Truppen gegen die Truppen des Gegners. Jede Seite beginnt
 mit einem Anführer in Ihrem Burgfried.
 
@@ -114,7 +108,8 @@ Ausbilden und Einberufen
 
 Einheiten können zu einem bestimmten Preis ausgebildet werden, solange der
 Anführer im Burgfried steht und noch ein Feld in der Burg frei ist. Das
-Ausbilden geschieht durch Rechtsklick und die Auswahl von »Ausbilden«.
+Ausbilden geschieht durch Rechtsklick mit der Maus und die Auswahl
+im Untermenü von »Ausbilden«.
 
 Wenn ein Szenario durchgespielt wurde, stehen alle überlebenden Einheiten im
 nächsten Szenario wieder zur Verfügung. Durch Rechtsklick und die Auswahl von
@@ -227,9 +222,9 @@ regeneriert bis zu 8 Lebenspunkte. Die Heilwirkung nimmt jedoch mit zunehmender
 Anzahl verwundeter Einheiten ab.
 
 »Heilen« verhindert zwar, dass die Einheit weiteren Schaden durch eine
-Vergiftung erleidet, kann diese jedoch nicht heilen. Erst durch die »Kurieren«
-Fertigkeit wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt wird,
-erhält die Einheit in dieser Runde keine Lebenspunkte zurück.
+Vergiftung erleidet, kann diese jedoch nicht heilen. Erst durch die Fertigkeit
+zu »Kurieren« wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt
+wird, erhält die Einheit in dieser Runde keine Lebenspunkte zurück.
 
 
 Erfahrung
@@ -258,10 +253,10 @@ Mehrspieler
 Sie können eine eigene Mehrspielerpartie starten, indem Sie Ihren PC als
 Spielserver benutzen oder sich mit dem Wesnoth-Spielserver verbinden und Ihr
 Spiel dort starten. Falls Sie Ihren PC benutzen, benötigen Mitspieler die
-Möglichkeit sich mit Ihrem Port 15000 zu verbinden. Wenn Sie sich hinter einer
-Firewall befinden, müssen Sie die Einstellungen so ändern, dass eingehende
-Verbindungen auf Port 15000 erlaubt sind, und diese Daten zu dem Rechner, auf dem
-der Server läuft, weitergeleitet werden sollen.
+Möglichkeit sich mit Ihrem TCP-Port 15000 zu verbinden. Wenn Sie sich hinter
+einer Firewall befinden, müssen Sie die Einstellungen so ändern, dass eingehende
+Verbindungen auf Port 15000 erlaubt sind, und diese Daten zu dem Rechner, auf
+dem der Server läuft, weitergeleitet werden sollen.
 
 
 Öffentliche Server:
