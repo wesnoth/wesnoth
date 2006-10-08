@@ -1503,7 +1503,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		//implement the consequences of the choice
 		if(options.empty() == false) {
-			wassert(size_t(option_chosen) < menu_items.size());
+			if(size_t(option_chosen) >= menu_items.size()) {
+				std::stringstream errbuf;
+				errbuf << "invalid choice (" << option_chosen
+				       << ") was specified, choice 0 to " << (menu_items.size() - 1)
+				       << " was expected.\n";
+				replay::throw_error(errbuf.str());
+			}
 
 			vconfig::child_list events = option_events[option_chosen];
 			for(vconfig::child_list::const_iterator itor = events.begin();
