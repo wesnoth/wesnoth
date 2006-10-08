@@ -16,10 +16,11 @@
 
 // Remove tags from begining of string (it creates new string, so it's safe to call)
 std::string del_tags(std::string name){
-	std::stringstream					str;
-	bool									colour_def = false;
-	bool									not_name = true;
-	std::string::const_iterator	it;
+	std::stringstream str;
+	bool colour_def = false;
+	bool not_name = true;
+	std::string::const_iterator it;
+
 	for (it = name.begin(); it != name.end(); it++){
 		// On the first analphabet character we stop react on specials characters
 		if (not_name && isalpha(*it)){
@@ -111,5 +112,4 @@ double lexical_cast_default<double, const std::string&>(const std::string& a, do
 		return res;
 	}
 }
-
 
