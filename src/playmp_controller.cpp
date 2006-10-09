@@ -74,7 +74,7 @@ redo_turn:
 				// reset gui to prev human one
 				if (!teams_[team_index-1].is_human()) {
 					int t = find_human_team_before(team_index);
-					if (t) {
+					if (t > 0) {
 						gui_->set_team(t-1);
 						gui_->recalculate_minimap();
 						gui_->invalidate_all();
