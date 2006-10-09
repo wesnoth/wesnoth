@@ -650,9 +650,15 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 		add_rule(rules, tpl);
 	} else {
 		const std::vector<std::string>& rot = utils::split(rotations, ',');
+		int prob = tpl.probability;
+		double p = ((float)prob)/100;
+		double in = 1.0/rot.size(); 
+		prob = (prob >= 100 || prob<0) ? 100 : floor(100*(1.0 - pow(1.0 - p,in)));
 
 		for(size_t angle = 0; angle < rot.size(); angle++) {
 			building_rule rule = rotate_rule(tpl, angle, rot);
+			rule.probability=prob;
+			//correct probability for number of rotations
 			add_rule(rules, rule);
 		}
 	}
