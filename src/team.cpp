@@ -125,9 +125,9 @@ team::team_info::team_info(const config& cfg)
 	std::map<int, color_range>::iterator global_rgb = game_config::team_rgb_range.find(side);
 
 	if(temp_rgb.size()){
-	  team_color_range_[side] = color_range(temp_rgb);
+		team_color_range_[side] = color_range(temp_rgb);
 	}else if(global_rgb != game_config::team_rgb_range.end()){
-	  team_color_range_[side] = global_rgb->second;
+		team_color_range_[side] = global_rgb->second;
 	}
 
 	flag = cfg["flag"];

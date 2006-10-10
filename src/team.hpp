@@ -95,7 +95,7 @@ public:
 		std::string ai_algorithm;
 
 		std::vector<config> ai_params;
-	        config ai_memory_;
+		config ai_memory_;
 
 		int villages_per_scout;
 		double leader_value, village_value;
@@ -109,7 +109,7 @@ public:
 		int colour;
 	};
 
-        static std::map<int, color_range> team_color_range_;
+	static std::map<int, color_range> team_color_range_;
 	team(const config& cfg, int gold=100);
 
 	void write(config& cfg) const;
@@ -191,8 +191,8 @@ public:
 
 	const std::string& ai_algorithm() const;
 	const config& ai_parameters() const;
-        const config& ai_memory() const;
-        void set_ai_memory(const config& ai_mem);
+	const config& ai_memory() const;
+	void set_ai_memory(const config& ai_mem);
 
 	double leader_value() const;
 	double village_value() const;
@@ -233,7 +233,7 @@ public:
 	static const Uint32 get_side_rgb(int side);
 	static const Uint32 get_side_rgb_max(int side);
 	static const Uint32 get_side_rgb_min(int side);
-        static const SDL_Color get_side_colour(int side);
+	static const SDL_Color get_side_colour(int side);
 	static int get_side_colour_index(int side);
 
 	void log_recruitable();
