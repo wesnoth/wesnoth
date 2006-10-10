@@ -396,11 +396,14 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 		//if a player gives up their last side, make them an observer
 		if (sides_.count(sock) == 1){
-			if (sock == owner_)
-				host_leave = true;
-
 			observers_.push_back(*p);
 			players_.erase(p);
+
+			if (sock == owner_) {
+				host_leave = true;
+				if (!players_.empty())
+					owner_ = players_.front();
+			}
 
 			//tell others that the player becomes an observer
 			config cfg_observer = construct_server_message(find_player(sock)->name() + " becomes observer");
@@ -449,8 +452,8 @@ const std::string& game::transfer_side_control(const config& cfg)
 			if (side_controllers_[i] == "ai"){
 				change["side"] = lexical_cast<std::string, unsigned int>(i + 1);
 				change["controller"] = "ai";
-				network::queue_data(response, sock_entering);
-				sides_.insert(std::pair<const network::connection,size_t>(sock_entering, i));
+				network::queue_data(response, owner_);
+				sides_.insert(std::pair<const network::connection,size_t>(owner_, i));
 			}
 		}
 		sides_.erase(sock);
