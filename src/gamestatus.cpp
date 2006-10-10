@@ -459,42 +459,44 @@ void write_player(config_writer &out, const player_info& player)
 
 
 // Deprecated, use other write_game below.
-void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode*/)
+void write_game(const game_state& gamestate, config& cfg/*, WRITE_GAME_MODE mode*/)
 {
 	log_scope("write_game");
-	cfg["label"] = game.label;
+	cfg["label"] = gamestate.label;
 	cfg["version"] = game_config::version;
 
-	cfg["scenario"] = game.scenario;
+	cfg["scenario"] = gamestate.scenario;
 
-	cfg["campaign"] = game.campaign;
+	cfg["campaign"] = gamestate.campaign;
 
-	cfg["campaign_type"] = game.campaign_type;
+	cfg["campaign_type"] = gamestate.campaign_type;
 
-	cfg["difficulty"] = game.difficulty;
+	cfg["difficulty"] = gamestate.difficulty;
 
-	cfg["campaign_define"] = game.campaign_define;
+	cfg["campaign_define"] = gamestate.campaign_define;
 
-	cfg.add_child("variables",game.variables);
+	cfg.add_child("variables",gamestate.variables);
 
-	for(std::map<std::string, player_info>::const_iterator i=game.players.begin();
-	    i!=game.players.end(); ++i) {
+	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
+	    i!=gamestate.players.end(); ++i) {
 		config new_cfg;
 		write_player(i->second, new_cfg);
 		new_cfg["save_id"]=i->first;
 		cfg.add_child("player", new_cfg);
 	}
 
+
 //	if(mode == WRITE_FULL_GAME) {
-		if(game.replay_data.child("replay") == NULL) {
-			cfg.add_child("replay",game.replay_data);
+		if(gamestate.replay_data.child("replay") == NULL) {
+			cfg.add_child("replay",gamestate.replay_data);
 		}
 
-		cfg.add_child("snapshot",game.snapshot);
-		cfg.add_child("replay_start",game.starting_pos);
+		cfg.add_child("snapshot",gamestate.snapshot);
+		cfg.add_child("replay_start",gamestate.starting_pos);
 		cfg.add_child("statistics",statistics::write_stats());
-	}
-//}
+//	}
+
+}
 
 void write_game(config_writer &out, const game_state& game)
 {
@@ -631,7 +633,7 @@ scoped_ostream open_save_game(const std::string &label)
 	}
 }
 
-void finish_save_game(config_writer &out, const game_state& state, const std::string &label)
+void finish_save_game(config_writer &out, const game_state& gamestate, const std::string &label)
 {
 	std::string name = label;
 	std::replace(name.begin(),name.end(),' ','_');
@@ -643,7 +645,7 @@ void finish_save_game(config_writer &out, const game_state& state, const std::st
 		}
 
 		config& summary = save_summary(label);
-		extract_summary_data_from_save(state,summary);
+		extract_summary_data_from_save(gamestate,summary);
 		const int mod_time = static_cast<int>(file_create_time(fname));
 		summary["mod_time"] = str_cast(mod_time);
 		write_save_index();
@@ -653,12 +655,12 @@ void finish_save_game(config_writer &out, const game_state& state, const std::st
 }
 
 //throws game::save_game_failed
-void save_game(const game_state& state)
+void save_game(const game_state& gamestate)
 {
-	scoped_ostream os(open_save_game(state.label));
+	scoped_ostream os(open_save_game(gamestate.label));
 	config_writer out(*os, preferences::compress_saves(), PACKAGE);
-	write_game(out, state);
-	finish_save_game(out, state, state.label);
+	write_game(out, gamestate);
+	finish_save_game(out, gamestate, gamestate.label);
 }
 
 namespace {

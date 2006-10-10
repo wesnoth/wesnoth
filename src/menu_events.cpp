@@ -465,10 +465,9 @@ namespace events{
 				return;
 			}
 
-			config snapshot;
-			write_game_snapshot(snapshot);
+			write_game_snapshot(gamestate_.snapshot);
 			try {
-				recorder.save_game(label, snapshot, gamestate_.starting_pos);
+				recorder.save_game(label, gamestate_);
 				if(dialog_type != gui::NULL_DIALOG) {
 					gui::show_dialog(*gui_,NULL,_("Saved"),_("The game has been saved"), gui::OK_ONLY);
 				}
@@ -517,6 +516,7 @@ namespace events{
 
 	void menu_handler::write_game_snapshot(config& start) const
 	{
+		start.clear();
 		start.values = level_.values;
 
 		start["snapshot"] = "yes";
@@ -573,21 +573,20 @@ namespace events{
 		gui_->labels().write(start);
 	}
 
-	void menu_handler::autosave(const std::string &label, unsigned turn, const config &starting_pos) const
+	void menu_handler::autosave(const std::string &label, unsigned turn) const
 	{
 		if(game_config::disable_autosave)
 			return;
 
 		Uint32 start, end;
 		start = SDL_GetTicks();
-		config snapshot;
 
-		write_game_snapshot(snapshot);
+		write_game_snapshot(gamestate_.snapshot);
 		try {
 			if (label.empty()) {
-				recorder.save_game(_("Auto-Save"), snapshot, starting_pos);
+				recorder.save_game(_("Auto-Save"), gamestate_);
 			} else {
-				recorder.save_game(label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn), snapshot, starting_pos);
+				recorder.save_game(label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn), gamestate_);
 			}
 		} catch(game::save_game_failed&) {
 			gui::show_dialog(*gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
