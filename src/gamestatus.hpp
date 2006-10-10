@@ -162,7 +162,7 @@ std::vector<save_info> get_saves_list(const std::string *dir = NULL);
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
 game_state read_game(const game_data& data, const config* cfg);
-void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode=WRITE_FULL_GAME*/);
+void write_game(const game_state& gamestate, config& cfg/*, WRITE_GAME_MODE mode=WRITE_FULL_GAME*/);
 
 // function returns true iff there is already savegame with that name
 bool save_game_exists(const std::string & name);
@@ -171,7 +171,7 @@ bool save_game_exists(const std::string & name);
 void load_game(const game_data& data, const std::string& name, game_state& state, std::string* error_log);
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log);
 //throws gamestatus::save_game_failed
-void save_game(const game_state& state);
+void save_game(const game_state& gamestate);
 
 //function to delete a save
 void delete_game(const std::string& name);
