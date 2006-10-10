@@ -6,7 +6,7 @@
 
 AC_PREREQ([2.57])
 
-define([WESNOTH_VERSION],[1.1.11])
+define([WESNOTH_VERSION],[1.1.11+svn])
 
 dnl define([DEFAULT_SERVER],[server.wesnoth.org])
 define([DEFAULT_SERVER],[devsrv.wesnoth.org:14999])
