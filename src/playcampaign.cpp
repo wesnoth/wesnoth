@@ -222,14 +222,14 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				state.starting_pos = scenario2;
 				scenario = &scenario2;
 			}
-
-			std::string map_data = (*scenario)["map_data"];
-			if(map_data == "" && (*scenario)["map"] != "") {
+			std::vector<terrain_translation::TERRAIN_NUMBER> map_data = 
+				terrain_translation().get_map((*scenario)["map_data"]);
+			if(map_data.empty() && (*scenario)["map"] != "") {
 				map_data = read_map((*scenario)["map"]);
 			}
-
+			
 			//if the map should be randomly generated
-			if(map_data == "" && (*scenario)["map_generation"] != "") {
+			if(map_data.empty() && (*scenario)["map_generation"] != "") {
 				const cursor::setter cursor_setter(cursor::WAIT);
 				map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
 
@@ -237,7 +237,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				//it will not ask for the map to be generated again on reload
 				static config new_level;
 				new_level = *scenario;
-				new_level.values["map_data"] = map_data;
+				new_level.values["map_data"] = terrain_translation().set_map(map_data);
 				scenario = &new_level;
 
 				state.starting_pos = new_level;

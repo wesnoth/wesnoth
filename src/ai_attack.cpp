@@ -253,13 +253,13 @@ void ai::do_attack_analysis(
 
 struct battle_type {
 	battle_type(const gamemap::location& a, const gamemap::location& d,
-	            gamemap::TERRAIN t)
+	            terrain_translation::TERRAIN_NUMBER t)
 	         : attacker(a),defender(d),terrain(t),weapon(-1)
 	{}
 
 	const gamemap::location attacker;
 	const gamemap::location defender;
-	const gamemap::TERRAIN terrain;
+	const terrain_translation::TERRAIN_NUMBER terrain;
 	int weapon;
 };
 
@@ -615,7 +615,7 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 			continue;
 		}
 
-		const gamemap::TERRAIN terrain = map_[locs[i].x][locs[i].y];
+		const terrain_translation::TERRAIN_NUMBER terrain = map_[locs[i].x][locs[i].y];
 
 		typedef move_map::const_iterator Itor;
 		typedef std::pair<Itor,Itor> Range;

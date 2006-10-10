@@ -1,0 +1,52 @@
+B = broken (compiles but is known not to work properly)
+\ = busy
+T = testing (no compiles warnings but unsure about working)
+V = ready (no compiler warnings and seems to work that is)
+R = ready, works code beautified etc etc
+
+V Index: src/actions.cpp
+V Index: src/ai_attack.cpp
+V Index: src/ai.cpp
+V Index: src/ai_move.cpp
+T Index: src/builder.cpp
+T Index: src/builder.hpp
+B Index: src/cavegen.cpp returns a string for the map instead of vector
+B Index: src/cavegen.hpp
+V Index: src/dialogs.cpp
+V Index: src/display.cpp
+V Index: src/display.hpp
+B Index: src/editor/editor.cpp doesn't compile later
+V Index: src/filesystem.cpp
+V Index: src/filesystem.hpp
+V Index: src/game.cpp
+B Index: src/game_events.cpp
+B Index: src/help.cpp
+V Index: src/image.hpp
+V Index: src/Makefile.am
+B Index: src/map.cpp
+B Index: src/map.hpp
+B Index: src/map_create.cpp
+B Index: src/map_create.hpp
+B Index: src/mapgen.cpp
+V Index: src/minimap.cpp
+V Index: src/multiplayer_create.cpp
+V Index: src/multiplayer_lobby.cpp
+V Index: src/multiplayer_lobby.hpp
+V Index: src/pathfind.cpp  guess unchanged but not 100% sure
+V Index: src/playcampaign.cpp
+V Index: src/play_controller.cpp
+V Index: src/preferences.cpp
+V Index: src/preferences.hpp
+V Index: src/reports.cpp
+\ Index: src/terrain.cpp
+\ Index: src/terrain.hpp
+\ Index: src/terrain_translation.cpp
+\ Index: src/terrain_translation.hpp
+\ Index: src/unit_animation.cpp
+\ Index: src/unit_animation.hpp
+\ Index: src/unit.cpp
+\ Index: src/unit.hpp
+\ Index: src/unit_display.cpp
+\ Index: src/unit_types.cpp
+\ Index: src/unit_types.hpp
+V Index: src/wesconfig.h

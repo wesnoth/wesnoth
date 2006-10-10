@@ -1122,16 +1122,22 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//changing the terrain
 	else if(cmd == "terrain") {
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
-
+		
 		std::string terrain_type = cfg["letter"];
 		wassert(state_of_game != NULL);
 		terrain_type = utils::interpolate_variables_into_string(terrain_type, *state_of_game);
-
+		
+		//At this point terrain_type contains the letter as known in WML
+		//convert to an internal number
+		terrain_translation::TERRAIN_NUMBER terrain = terrain_translation().get_letter(terrain_type);
+			
 		for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
-			preferences::encountered_terrains().insert(terrain_type);
-			if(terrain_type.size() > 0) {
+			preferences::encountered_terrains().insert(terrain);
+			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
 				const bool old_village = game_map->is_village(*loc);
-				const bool new_village = game_map->is_village(terrain_type[0]);
+				//FIXME MdW cleanup
+//				const bool new_village = game_map->is_village(terrain_type[0]); 
+				const bool new_village = game_map->is_village(terrain); 
 
 				if(old_village && !new_village) {
 					int owner = village_owner(*loc, *teams);
@@ -1140,7 +1146,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					}
 				}
 
-				game_map->set_terrain(*loc,terrain_type[0]);
+				game_map->set_terrain(*loc,terrain); 
 			}
 		}
 		rebuild_screen_ = true;
@@ -1151,9 +1157,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
 
 		gamemap mask(*game_map);
-
+		//FIXME MdW cleanup
+//		std::vector<terrain_translation::TERRAIN_NUMBER> map_data = translator.get_terrain_vector(cfg, std::string("mask"), true);
+		std::vector<terrain_translation::TERRAIN_NUMBER> map_data = terrain_translation().get_map(cfg["mask"]);
+ 
 		try {
-			mask.read(cfg["mask"]);
+			mask.read(map_data);
 		} catch(gamemap::incorrect_format_exception&) {
 			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 			return rval;
@@ -1719,13 +1728,15 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "store_locations") {
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
-		std::string terrain = cfg["terrain"];
+		std::string wml_terrain = cfg["terrain"];
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		std::string radius_str = cfg["radius"];
 		wassert(state_of_game != NULL);
 		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
-		terrain = utils::interpolate_variables_into_string(terrain, *state_of_game);
+		wml_terrain = utils::interpolate_variables_into_string(wml_terrain, *state_of_game);
+		//convertert the terrain to a internal vector
+		std::vector<terrain_translation::TERRAIN_NUMBER> terrain = terrain_translation().get_list(wml_terrain);
 		x = utils::interpolate_variables_into_string(x, *state_of_game);
 		y = utils::interpolate_variables_into_string(y, *state_of_game);
 		radius_str = utils::interpolate_variables_into_string(radius_str, *state_of_game);
@@ -1745,7 +1756,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		size_t added = 0;
 		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end() && added != MaxLoop; ++j) {
 			if (terrain.empty() == false) {
-				const gamemap::TERRAIN c = game_map->get_terrain(*j);
+				const terrain_translation::TERRAIN_NUMBER c = game_map->get_terrain(*j); //FIXME MdW test should work
 				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
 					continue;
 			}

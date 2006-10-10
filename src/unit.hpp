@@ -191,10 +191,10 @@ class unit
 
 		void set_hidden(bool state) {hidden_ = state;};
 		bool is_flying() const;
-		int movement_cost(gamemap::TERRAIN terrain, int recurse_count=0) const;
-		int defense_modifier(gamemap::TERRAIN terrain, int recurse_count=0) const;
+		int movement_cost(terrain_translation::TERRAIN_NUMBER terrain, int recurse_count=0) const;
+		int defense_modifier(terrain_translation::TERRAIN_NUMBER terrain, int recurse_count=0) const;
 		int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const;
-//		std::map<gamemap::TERRAIN,int> movement_type() const;
+//		std::map<terrain_type::TERRAIN,int> movement_type() const;
 
 		bool can_advance() const;
 		bool advances() const;
@@ -281,7 +281,7 @@ class unit
 		bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
 		bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 		bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const;
-		int movement_cost_internal(gamemap::TERRAIN terrain, int recurse_count=0) const;
+		int movement_cost_internal(terrain_translation::TERRAIN_NUMBER terrain, int recurse_count=0) const;
 		bool has_ability_by_id(const std::string& ability) const;
 
 		config cfg_;
@@ -318,7 +318,7 @@ class unit
 
 		int movement_;
 		int max_movement_, max_movement_b_;
-		mutable std::map<gamemap::TERRAIN,int> movement_costs_; // movement cost cache
+		mutable std::map<terrain_translation::TERRAIN_NUMBER,int> movement_costs_; // movement cost cache
 		bool hold_position_;
 		bool end_turn_;
 		bool resting_;
@@ -341,8 +341,8 @@ class unit
 		gamemap::location goto_, interrupted_move_;
 		bool flying_;
 
-//		std::map<gamemap::TERRAIN,int> movement_costs_, movement_costs_b_;
-//		std::map<gamemap::TERRAIN,int> defense_mods_, defense_mods_b_;
+//		std::map<terrain_type::TERRAIN,int> movement_costs_, movement_costs_b_;
+//		std::map<terrain_type::TERRAIN,int> defense_mods_, defense_mods_b_;
 
 		string_map modification_descriptions_;
 		// animations

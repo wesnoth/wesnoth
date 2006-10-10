@@ -1812,7 +1812,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	bool should_clear_stack = false;
 	std::vector<gamemap::location>::const_iterator step;
 	for(step = route.begin()+1; step != route.end(); ++step) {
-		const gamemap::TERRAIN terrain = map[step->x][step->y];
+		const terrain_translation::TERRAIN_NUMBER terrain = map[step->x][step->y];
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 

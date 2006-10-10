@@ -209,7 +209,7 @@ namespace preferences {
 	bool compress_saves();
 
 	std::set<std::string> &encountered_units();
-	std::set<std::string> &encountered_terrains();
+	std::set<terrain_translation::TERRAIN_NUMBER> &encountered_terrains();
 
 	enum CACHE_SAVES_METHOD { CACHE_SAVES_ASK, CACHE_SAVES_NEVER, CACHE_SAVES_ALWAYS };
 	CACHE_SAVES_METHOD cache_saves();

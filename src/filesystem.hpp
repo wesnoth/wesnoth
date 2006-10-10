@@ -19,6 +19,8 @@
 #include <string>
 #include <vector>
 
+#include "terrain_translation.hpp"
+
 //an exception object used when an IO error occurs
 struct io_exception : public std::exception {
 	io_exception() {}
@@ -68,7 +70,7 @@ std::ostream *ostream_file(std::string const &fname);
 void write_file(const std::string& fname, const std::string& data);
 std::string read_stdin();
 
-std::string read_map(const std::string& name);
+std::vector<terrain_translation::TERRAIN_NUMBER> read_map(const std::string& name);
 
 //function which returns true iff the given file is a directory
 bool is_directory(const std::string& fname);

@@ -57,11 +57,11 @@ private:
 	void place_passage(const passage& p);
 
 	bool on_board(const gamemap::location& loc) const;
-	void set_terrain(gamemap::location loc, gamemap::TERRAIN t);
+	void set_terrain(gamemap::location loc, terrain_translation::TERRAIN_NUMBER t);
 	void place_castle(const std::string& side, gamemap::location loc);
 
-	gamemap::TERRAIN wall_, clear_, village_, castle_;
-	std::vector<std::vector<gamemap::TERRAIN> > map_;
+	terrain_translation::TERRAIN_NUMBER wall_, clear_, village_, castle_;
+	std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > map_;
 
 	std::map<std::string,size_t> chamber_ids_;
 	std::vector<chamber> chambers_;

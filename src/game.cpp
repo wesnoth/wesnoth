@@ -254,7 +254,10 @@ display& game_controller::disp()
 
 		static unit_map dummy_umap;
 		static config dummy_cfg;
-		static gamemap dummy_map(dummy_cfg, "1");
+		static std::vector<terrain_translation::TERRAIN_NUMBER> dummy_terrain = 
+			std::vector<terrain_translation::TERRAIN_NUMBER>();
+
+		static gamemap dummy_map(dummy_cfg, dummy_terrain);
 		static gamestatus dummy_status(dummy_cfg, 0);
 		static std::vector<team> dummy_teams;
 		disp_.assign(new display(dummy_umap, video_, dummy_map, dummy_status,
@@ -1817,7 +1820,8 @@ int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::SHOW_HELP) {
 			config dummy_help_cfg;
-			gamemap dummy_help_map(dummy_help_cfg, "1");
+			std::vector<terrain_translation::TERRAIN_NUMBER> dummy_terrain;
+			gamemap dummy_help_map(dummy_help_cfg, dummy_terrain);
 			help::help_manager help_manager(&game.game_config(), &game.units_data(), &dummy_help_map);
 			help::show_help(game.disp());
 			continue;

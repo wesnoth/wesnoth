@@ -23,9 +23,14 @@
 #include <cstdlib>
 #include <iostream>
 
-terrain_type::terrain_type() : symbol_image_("void"), letter_(' '),mvt_type_(" "), def_type_(" "),
+
+terrain_type::terrain_type() : symbol_image_("void"),
+			       number_(terrain_translation::VOID_TERRAIN),
+			       mvt_type2_(terrain_translation::VOID_TERRAIN),
+			       def_type2_(terrain_translation::VOID_TERRAIN),
+			       union_type2_(terrain_translation::VOID_TERRAIN),
                                height_adjust_(0), submerge_(0.0),
-                               heals_(false), village_(false), castle_(false), keep_(false)
+                               heals_(false), village_(false), castle_(false), keep_(false) 
 {}
 
 terrain_type::terrain_type(const config& cfg)
@@ -34,6 +39,8 @@ terrain_type::terrain_type(const config& cfg)
 
 	name_ = cfg["name"];
 	id_ = cfg["id"];
+	//FIXME MdW remove obsolete part
+#if 0	
 	const std::string& letter = cfg["char"];
 
 	if(letter == "") {
@@ -41,7 +48,8 @@ terrain_type::terrain_type(const config& cfg)
 	} else {
 		letter_ = letter[0];
 	}
-
+	
+	//FIXME MdW what do the next 4 lines do?? guess nothing, since seems to be overwritten
 	mvt_type_.resize(1);
 	mvt_type_[0] = letter_;
 	def_type_.resize(1);
@@ -65,10 +73,66 @@ terrain_type::terrain_type(const config& cfg)
 	union_type_.erase(std::remove(union_type_.begin(),union_type_.end(),'+'),union_type_.end());
 	std::sort(union_type_.begin(),union_type_.end());
 	union_type_.erase(std::unique(union_type_.begin(),union_type_.end()),union_type_.end());
+#endif	
 
+	number_ = terrain_translation().get_letter(cfg["char"]);
+
+	mvt_type2_.push_back(number_);
+	def_type2_.push_back(number_);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& alias = 
+		terrain_translation().get_list(cfg["aliasof"]);
+	if(!alias.empty()) {
+		mvt_type2_ = alias;
+		def_type2_ = alias;
+	}
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_alias = 
+		terrain_translation().get_list(cfg["mvt_alias"]);
+	if(!mvt_alias.empty()) {
+		mvt_type2_ = mvt_alias;
+	}
+
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_alias = 
+		terrain_translation().get_list(cfg["def_alias"]);
+	if(!def_alias.empty()) {
+		def_type2_ = def_alias;
+	}
+	union_type2_ = mvt_type2_;
+	union_type2_.insert( union_type2_.end(), def_type2_.begin(), def_type2_.end() );
+
+	union_type2_.erase(std::remove(union_type2_.begin(),union_type2_.end(),terrain_translation::MINUS),union_type2_.end());
+	union_type2_.erase(std::remove(union_type2_.begin(),union_type2_.end(),terrain_translation::PLUS),union_type2_.end());
+	std::sort(union_type2_.begin(),union_type2_.end());
+	union_type2_.erase(std::unique(union_type2_.begin(),union_type2_.end()),union_type2_.end());
+
+
+#if 0	
+	number_ = terrain_translation().get_letter(cfg["char"]);
+	
+	def_type2_ = terrain_translation().get_list(cfg["def_alias"]);
+	mvt_type2_ = terrain_translation().get_list(cfg["mvt_alias"]);
+
+	// if the move or defense alias isn't defined use the aliasof
+	if(def_type2_.empty() || mvt_type2_.empty()){
+		union_type2_ = terrain_translation().get_list(cfg["aliasof"]);
+		if(def_type2_.empty()){
+			def_type2_ = union_type2_;
+		}
+		if(mvt_type2_.empty()){
+			mvt_type2_= union_type2_;
+		}
+		union_type2_.clear();
+	}
+
+	//FIXME MdW test the union
+	union_type2_ = mvt_type2_; //+ def_type2_;
+	union_type2_.insert( union_type2_.end(), def_type2_.begin(), def_type2_.end() );
+
+	union_type2_.erase(std::remove(union_type2_.begin(),union_type2_.end(),terrain_translation::MINUS),union_type2_.end());
+	union_type2_.erase(std::remove(union_type2_.begin(),union_type2_.end(),terrain_translation::PLUS),union_type2_.end());
+	union_type2_.erase(std::unique(union_type2_.begin(),union_type2_.end()),union_type2_.end());
+#endif /////
 	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
 	submerge_ = atof(cfg["submerge"].c_str());
-
 	light_modification_ = atoi(cfg["light"].c_str());
 
 	if (cfg["heals"] == "true") {
@@ -97,16 +161,26 @@ const std::string& terrain_type::id() const
 	return id_;
 }
 
-char terrain_type::letter() const
+//FIXME MdW obsolete
+#if 0
+terrain_type::TERRAIN_LETTER terrain_type::letter() const
 {
 	return letter_;
+}
+#endif
+
+terrain_translation::TERRAIN_NUMBER terrain_type::number() const
+{
+	return number_;
 }
 
 bool terrain_type::is_nonnull() const
 {
-	return (letter_ != 0) && (letter_ != ' ');
+	return (number_ != 0) && (number_ != terrain_translation::VOID_TERRAIN );
 }
 
+//FIXME MdW obsolete
+#if 0
 const std::string& terrain_type::mvt_type() const
 {
 	return mvt_type_;
@@ -121,7 +195,22 @@ const std::string& terrain_type::union_type() const
 {
 	return union_type_;
 }
+#endif
 
+const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::mvt_type2() const
+{
+	return mvt_type2_;
+}
+
+const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::def_type2() const
+{
+	return def_type2_;
+}
+
+const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::union_type2() const
+{
+	return union_type2_;
+}
 
 int terrain_type::light_modification() const
 {
@@ -157,18 +246,45 @@ bool terrain_type::is_keep() const
 {
 	return keep_;
 }
+#if 0
+terrain_translation::TERRAIN_NUMBER terrain_type::load_terrain_char_(const config& cfg) const
+{
 
+	const std::string& letter = cfg["char"];
+	//FIXME MdW is an empty letter allowed???
+	if(letter == ""){
+		return translator_.letter_to_number(0);
+	} else {
+		return translator_.letter_to_number(letter[0]);
+	}
+
+}
+
+std::vector<terrain_translation::TERRAIN_NUMBER> terrain_type::load_terrain_alias_(const config& cfg, std::string alias) const
+{
+	const std::string& def_alias = cfg[alias];
+	std::vector<terrain_translation::TERRAIN_NUMBER> result; 
+
+	//NOTE MdW the + and - sign are special but they will converted to a proper sign
+	std::string::const_iterator i = def_alias.begin();
+	for( ; i != def_alias.end(); ++i) {
+		result.push_back(translator_.letter_to_number(*i));
+	}
+
+	return result;
+}
+#endif
 void create_terrain_maps(const std::vector<config*>& cfgs,
-                         std::vector<char>& terrain_list,
-                         std::map<char,terrain_type>& letter_to_terrain,
+                         std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_list,
+                         std::map<terrain_translation::TERRAIN_NUMBER,terrain_type>& letter_to_terrain,
                          std::map<std::string,terrain_type>& str_to_terrain)
 {
 	for(std::vector<config*>::const_iterator i = cfgs.begin();
 	    i != cfgs.end(); ++i) {
-		terrain_type terrain(**i);
-		terrain_list.push_back(terrain.letter());
-		letter_to_terrain.insert(std::pair<char,terrain_type>(
-		                              terrain.letter(),terrain));
+		terrain_type terrain(**i); 
+		terrain_list.push_back(terrain.number()); 
+		letter_to_terrain.insert(std::pair<terrain_translation::TERRAIN_NUMBER,terrain_type>(
+		                              terrain.number(),terrain));
 		str_to_terrain.insert(std::pair<std::string,terrain_type>(
 		                              terrain.id(),terrain));
 	}

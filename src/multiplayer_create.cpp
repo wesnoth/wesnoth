@@ -361,7 +361,9 @@ void create::process_event()
 			const config* const generic_multiplayer = game_config().child("generic_multiplayer");
 			if(generic_multiplayer != NULL) {
 				parameters_.scenario_data = *generic_multiplayer;
-				parameters_.scenario_data["map_data"] = read_map(user_maps_[select-1]);
+				//FIXME MdW we do a double conversion, might be nice to have a direct way
+				//but leave ir for now, eg read_map_raw
+				parameters_.scenario_data["map_data"] = terrain_translation().set_map(read_map(user_maps_[select-1]));
 			}
 
 		} else if(select > user_maps_.size() && select <= maps_menu_.nitems()-1) {
@@ -372,12 +374,13 @@ void create::process_event()
 			if(index < levels.size()) {
 
 				parameters_.scenario_data = *levels[index];
+				std::vector<terrain_translation::TERRAIN_NUMBER> map_data = 
+					terrain_translation().get_map(parameters_.scenario_data["map_data"]);
 
-				t_string& map_data = parameters_.scenario_data["map_data"];
-				if(map_data == "" && parameters_.scenario_data["map"] != "") {
+				if(map_data.empty() && parameters_.scenario_data["map"] != "") {
 					map_data = read_map(parameters_.scenario_data["map"]);
 				}
-
+				
 				//if the map should be randomly generated
 				if(parameters_.scenario_data["map_generation"] != "") {
 					generator_.assign(create_map_generator(parameters_.scenario_data["map_generation"],parameters_.scenario_data.child("generator")));
@@ -419,7 +422,8 @@ void create::process_event()
 		generator_settings_.hide(generator_ == NULL);
 		regenerate_map_.hide(generator_ == NULL);
 
-		const std::string& map_data = parameters_.scenario_data["map_data"];
+		const std::vector<terrain_translation::TERRAIN_NUMBER>& map_data = 
+			terrain_translation().get_map(parameters_.scenario_data["map_data"]);
 
 		std::auto_ptr<gamemap> map(NULL);
 		try {
@@ -531,7 +535,9 @@ void create::hide_children(bool hide)
 	} else {
 		minimap_restorer_.assign(new surface_restorer(&video(), minimap_rect_));
 
-		const std::string& map_data = parameters_.scenario_data["map_data"];
+		const std::vector<terrain_translation::TERRAIN_NUMBER>& map_data = 
+			terrain_translation().get_map(parameters_.scenario_data["map_data"]);
+
 
 		try {
 			gamemap map(game_config(), map_data);

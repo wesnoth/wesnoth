@@ -39,7 +39,7 @@ map_generator* create_map_generator(const std::string& name, const config* cfg)
 
 //function to generate a random map, from a string which describes
 //the generator to use and its arguments
-std::string random_generate_map(const std::string& parms, const config* cfg)
+std::vector<terrain_translation::TERRAIN_NUMBER> random_generate_map(const std::string& parms, const config* cfg)
 {
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator
@@ -47,11 +47,11 @@ std::string random_generate_map(const std::string& parms, const config* cfg)
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
 		ERR_CF << "could not find map generator '" << parameters.front() << "'\n";
-		return std::string();
+		return std::vector<terrain_translation::TERRAIN_NUMBER>();
 	}
 
 	parameters.erase(parameters.begin());
-	return generator.get()->create_map(parameters);
+//	return generator.get()->create_map(parameters); FIXME MdW enable
 }
 
 config random_generate_scenario(const std::string& parms, const config* cfg)

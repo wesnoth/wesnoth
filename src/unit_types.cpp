@@ -395,29 +395,36 @@ const t_string& unit_movement_type::name() const
 		return res;
 }
 
-int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrain,int recurse_count) const
+int unit_movement_type::movement_cost(const gamemap& map,terrain_translation::TERRAIN_NUMBER terrain,int recurse_count) const
 {
 	const int impassable = 10000000;
 
-	const std::map<gamemap::TERRAIN,int>::const_iterator i = moveCosts_.find(terrain);
+	const std::map<terrain_translation::TERRAIN_NUMBER,int>::const_iterator i = moveCosts_.find(terrain);
 	if(i != moveCosts_.end()) {
 		return i->second;
 	}
 
 	//if this is an alias, then select the best of all underlying terrains
-	const std::string& underlying = map.underlying_mvt_terrain(terrain);
-	if(underlying.size() != 1 || underlying[0] != terrain) {
-		bool revert = (underlying[0] == '-'?true:false);
+	//FIXME MdW cleanup
+//	const std::string& underlying = map.underlying_mvt_terrain(terrain);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map.underlying_mvt_terrain2(terrain);
+//	if(underlying.size() != 1 || underlying[0] != terrain) {
+	if(underlying.size() != 1 || underlying.front() != terrain) {
+//		bool revert = (underlying[0] == '-'?true:false);
+		bool revert = (underlying.front() == terrain_translation::MINUS ?true:false);
 		if(recurse_count >= 100) {
 			return impassable;
 		}
 
 		int ret_value = revert?0:impassable;
-		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
-			if(*i == '+') {
+//		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+		for(std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+//			if(*i == '+') {
+			if(*i == terrain_translation::PLUS) {
 				revert = false;
 				continue;
-			} else if(*i == '-') {
+//			} else if(*i == '-') {
+			} else if(*i == terrain_translation::MINUS) {
 				revert = true;
 				continue;
 			}
@@ -429,7 +436,7 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 			}
 		}
 
-		moveCosts_.insert(std::pair<gamemap::TERRAIN,int>(terrain,ret_value));
+		moveCosts_.insert(std::pair<terrain_translation::TERRAIN_NUMBER,int>(terrain,ret_value));
 
 		return ret_value;
 	}
@@ -444,7 +451,8 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 			return impassable;
 		}
 
-		const std::string& id = map.get_terrain_info(underlying[0]).id();
+//		const std::string& id = map.get_terrain_info(underlying[0]).id();
+		const std::string& id = map.get_terrain_info(underlying.front()).id();
 
 		const std::string& val = (*movement_costs)[id];
 
@@ -461,32 +469,32 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 		res = impassable;
 	}
 
-	moveCosts_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
+	moveCosts_.insert(std::pair<terrain_translation::TERRAIN_NUMBER,int>(terrain,res));
 
 	return res;
 }
 
-int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN terrain, int recurse_count) const
+int unit_movement_type::defense_modifier(const gamemap& map,terrain_translation::TERRAIN_NUMBER terrain, int recurse_count) const
 {
-	const std::map<gamemap::TERRAIN,int>::const_iterator i = defenseMods_.find(terrain);
+	const std::map<terrain_translation::TERRAIN_NUMBER,int>::const_iterator i = defenseMods_.find(terrain);
 	if(i != defenseMods_.end()) {
 		return i->second;
 	}
 
 	//if this is an alias, then select the best of all underlying terrains
-	const std::string& underlying = map.underlying_mvt_terrain(terrain);
-	if(underlying.size() != 1 || underlying[0] != terrain) {
-		bool revert = (underlying[0] == '-'?true:false);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map.underlying_mvt_terrain2(terrain);
+	if(underlying.size() != 1 || underlying.front() != terrain) {
+		bool revert = (underlying.front() == terrain_translation::MINUS?true:false);
 		if(recurse_count >= 100) {
 			return 100;
 		}
 
 		int ret_value = revert?0:100;
-		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
-			if(*i == '+') {
+		for(std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+			if(*i == terrain_translation::PLUS) {
 				revert = false;
 				continue;
-			} else if(*i == '-') {
+			} else if(*i == terrain_translation::MINUS) {
 				revert = true;
 				continue;
 			}
@@ -501,7 +509,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN ter
 			}
 		}
 
-		defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,ret_value));
+		defenseMods_.insert(std::pair<terrain_translation::TERRAIN_NUMBER,int>(terrain,ret_value));
 
 		return ret_value;
 	}
@@ -516,7 +524,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN ter
 			return 100;
 		}
 
-		const std::string& id = map.get_terrain_info(underlying[0]).id();
+		const std::string& id = map.get_terrain_info(underlying.front()).id();
 		const std::string& val = (*defense)[id];
 
 		if(val != "") {
@@ -532,7 +540,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN ter
 		res = 50;
 	}
 
-	defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
+	defenseMods_.insert(std::pair<terrain_translation::TERRAIN_NUMBER,int>(terrain,res));
 
 	return res;
 }
@@ -602,11 +610,11 @@ void unit_movement_type::set_parent(const unit_movement_type* parent)
 	parent_ = parent;
 }
 
-const std::map<gamemap::TERRAIN,int>& unit_movement_type::movement_costs() const
+const std::map<terrain_translation::TERRAIN_NUMBER,int>& unit_movement_type::movement_costs() const
 {
 	return moveCosts_;
 }
-const std::map<gamemap::TERRAIN,int>& unit_movement_type::defense_mods() const
+const std::map<terrain_translation::TERRAIN_NUMBER,int>& unit_movement_type::defense_mods() const
 {
 	return defenseMods_;
 }

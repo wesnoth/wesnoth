@@ -1277,15 +1277,23 @@ public:
 			push_header(first_row, _("Movement Cost"));
 
 			table.push_back(first_row);
-			for (std::set<std::string>::const_iterator terrain_it =
-				  preferences::encountered_terrains().begin(),
-				  terrain_end = preferences::encountered_terrains().end();
-				  terrain_it != terrain_end; terrain_it++) {
-				wassert(terrain_it->size() > 0);
-				const gamemap::TERRAIN terrain = (*terrain_it)[0];
-				if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN)
+			//FIXME MdW cleanup
+//			for (std::set<std::string>::const_iterator terrain_it =
+//				  preferences::encountered_terrains().begin(),
+//				  terrain_end = preferences::encountered_terrains().end();
+//				  terrain_it != terrain_end; terrain_it++) {
+			std::set<terrain_translation::TERRAIN_NUMBER>::const_iterator terrain_it =
+				preferences::encountered_terrains().begin();
+
+			for (; terrain_it != preferences::encountered_terrains().end();
+				terrain_it++) {
+//				wassert(terrain_it->size() > 0);
+				const terrain_translation::TERRAIN_NUMBER terrain = *terrain_it;
+				if (terrain == terrain_translation::FOGGED || terrain == terrain_translation::VOID_TERRAIN)
 					continue;
 				const terrain_type& info = map->get_terrain_info(terrain);
+//FIXME MdW enable 
+#if 0
 				if (info.union_type().size() == 1 && info.union_type()[0] == info.letter() && info.is_nonnull()) {
 					std::vector<item> row;
 					const std::string& name = info.name();
@@ -1315,6 +1323,7 @@ public:
 
 					table.push_back(row);
 				}
+#endif				
 			}
 			ss << generate_table(table);
 		}
@@ -1385,15 +1394,18 @@ struct terrain_topic_generator: topic_generator
 	virtual std::string operator()() const {
 		std::stringstream ss;
 		ss << "<img>src='terrain/" << type.symbol_image() << ".png'</img>\n\n";
+//FIXME MdW enable
+#if 0
 		if (type.mvt_type().size() != 1 || type.mvt_type()[0] != type.letter()) {
 			const std::string aliased_terrains = type.mvt_type();
 			std::stringstream alias_ss;
 			for (std::string::const_iterator it = aliased_terrains.begin();
 				  it != aliased_terrains.end(); it++) {
-				const gamemap::TERRAIN t = *it;
+				const terrain_translation::TERRAIN_NUMBER t = *it;
 				const std::string &alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
-					 << escape(std::string("terrain_") + t) << "'</ref>";
+//					 << escape(std::string("terrain_") + t) << "'</ref>"; //FIXME MdW remove
+					 << escape(std::string("terrain_")) << t << "'</ref>"; //FIXME cleanup: escape not reuqired
 				if (it + 2 == aliased_terrains.end())
 					alias_ss << " " << _("or") << " ";
 				else if (it + 1 != aliased_terrains.end())
@@ -1414,10 +1426,11 @@ struct terrain_topic_generator: topic_generator
 			std::stringstream alias_ss;
 			for (std::string::const_iterator it = aliased_terrains.begin();
 				  it != aliased_terrains.end(); it++) {
-				const gamemap::TERRAIN t = *it;
+				const terrain_translation::TERRAIN_NUMBER t = *it;
 				const std::string &alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
-					 << escape(std::string("terrain_") + t) << "'</ref>";
+//					 << escape(std::string("terrain_") + t) << "'</ref>"; //FIXME MdW remove
+					 << escape(std::string("terrain_")) << t << "'</ref>"; //FIXME cleanup: escape not reuqired
 				if (it + 2 == aliased_terrains.end())
 					alias_ss << " " << _("or") << " ";
 				else if (it + 1 != aliased_terrains.end())
@@ -1433,6 +1446,7 @@ struct terrain_topic_generator: topic_generator
 				ss << " " << _("The terrain with the worst modifier is chosen automatically.");
 			ss << "\n\n";
 		}
+#endif		
 		if (type.is_keep())
 			ss << _("This terrain acts as a keep, i.e., you can recruit units when a leader is in a location with this terrain.") << "\n\n";
 		if (type.is_castle())
@@ -1446,30 +1460,34 @@ struct terrain_topic_generator: topic_generator
 std::vector<topic> generate_terrains_topics(const bool sort_generated)
 {
 	std::vector<topic> res;
-	std::vector<gamemap::TERRAIN> show_info_about;
+	std::vector<terrain_translation::TERRAIN_NUMBER> show_info_about;
 	if (game_config::debug) {
 		show_info_about = map->get_terrain_list();
 	}
 	else {
+#if 0 //FIXME MdW enable		
 		for (std::set<std::string>::const_iterator terrain_it =
 				 preferences::encountered_terrains().begin();
 			 terrain_it != preferences::encountered_terrains().end();
 			 terrain_it++) {
 			wassert(terrain_it->size() > 0);
-			const gamemap::TERRAIN terrain = (*terrain_it)[0];
+			const terrain_translation::TERRAIN_NUMBER terrain = (*terrain_it)[0];
 			show_info_about.push_back(terrain);
 		}
+#endif		
 	}
+	// FIXME MdW typecast to char
 	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
-									  (char)gamemap::VOID_TERRAIN), show_info_about.end());
+									  (char)terrain_translation::VOID_TERRAIN), show_info_about.end());//FIXME MdW typecast
 	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
-									  (char)gamemap::FOGGED), show_info_about.end());
-	for (std::vector<gamemap::TERRAIN>::const_iterator terrain_it = show_info_about.begin();
+									  (char)terrain_translation::FOGGED), show_info_about.end());//FIXME MdW typecast
+	for (std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator terrain_it = show_info_about.begin();
 		 terrain_it != show_info_about.end(); terrain_it++) {
 		const terrain_type& info = map->get_terrain_info(*terrain_it);
 		const std::string &name = info.name();
-		topic t(name, std::string("terrain_") + *terrain_it, new terrain_topic_generator(info));
-		res.push_back(t);
+//FIXME MdW make it work again		
+//		topic t(name, std::string("terrain_") + *terrain_it, new terrain_topic_generator(info));
+//		res.push_back(t);
 	}
 	if (sort_generated)
 		std::sort(res.begin(), res.end(), title_less());

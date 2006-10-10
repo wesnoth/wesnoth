@@ -57,7 +57,7 @@ surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 			if(map.on_board(loc)) {
 				const bool shrouded = tm != NULL && tm->shrouded(x,y);
 				const bool fogged = tm != NULL && tm->fogged(x,y) && !shrouded;
-				const gamemap::TERRAIN terrain = shrouded ? gamemap::VOID_TERRAIN : map[x][y];
+				const terrain_translation::TERRAIN_NUMBER terrain = shrouded ? terrain_translation::VOID_TERRAIN : map[x][y];
 				cache_map::iterator i = cache.find(terrain);
 
 				if(i == cache.end()) {

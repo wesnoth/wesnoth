@@ -1,0 +1,26 @@
+This branch tries to improve the terrain system.
+Changes are in the changelog
+TODO contains the points to be done which are tagged in the source
+
+README.FILES contains files modified so far
+
+
+Main TODO list is here
+
+* Make Wesnoth work again it doesn't
+* all users of "map_data" should be checked, busy
+* Blitz map can't be loaded, fails with segfault underlaying terrain problems
+* Terrain transitions are broken, this also hides all villages
+* All terrain seems to have same defence and movement cost as base terrain....
+* The preferences "encountered_terrains" should be converted 
+  also should the help display be able to use this part.
+  The preferences should work now, but not tested
+* Help systems is broken  
+* Load / save is broken
+* Multiplayer is broken, not sure but quite
+* Random map generators are broken, compiles but doesn't work
+* The editor is broken has to be fixed, won't compiler
+* move all things name xx2 back to xx
+  The rename is done to trace down the entire caller tree
+  and find functions which assume the terrain type is a char
+  and thus a string can be used for an array or vector.

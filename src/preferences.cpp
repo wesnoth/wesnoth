@@ -51,7 +51,7 @@ bool fps = false;
 bool lobby_minimaps = true;
 
 std::set<std::string> encountered_units_set;
-std::set<std::string> encountered_terrains_set;
+std::set<terrain_translation::TERRAIN_NUMBER> encountered_terrains_set;
 
 }
 
@@ -76,8 +76,9 @@ manager::manager()
 	v = utils::split(prefs["encountered_units"]);
 	std::copy(v.begin(), v.end(),
 			  std::inserter(encountered_units_set, encountered_units_set.begin()));
-	v = utils::split(prefs["encountered_terrains"]);
-	std::copy(v.begin(), v.end(),
+	std::vector<terrain_translation::TERRAIN_NUMBER> terrain = 
+		terrain_translation().get_list(prefs["encountered_terrains"],1);
+	std::copy(terrain.begin(), terrain.end(), 
 			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
 }
 
@@ -87,10 +88,11 @@ manager::~manager()
 	std::vector<std::string> v;
 	std::copy(encountered_units_set.begin(), encountered_units_set.end(), std::back_inserter(v));
 	prefs["encountered_units"] = utils::join(v);
-	v.clear();
+	std::vector<terrain_translation::TERRAIN_NUMBER> terrain;
 	std::copy(encountered_terrains_set.begin(), encountered_terrains_set.end(),
-			  std::back_inserter(v));
-	prefs["encountered_terrains"] = utils::join(v);
+			  std::back_inserter(terrain));
+	prefs["encountered_units"] = terrain_translation().set_list(terrain, 1);
+
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
 	try {
@@ -930,7 +932,7 @@ std::set<std::string> &encountered_units() {
 	return encountered_units_set;
 }
 
-std::set<std::string> &encountered_terrains() {
+std::set<terrain_translation::TERRAIN_NUMBER> &encountered_terrains() {
 	return encountered_terrains_set;
 }
 
@@ -1022,10 +1024,8 @@ void encounter_recallable_units(game_state& gamestate){
 void encounter_map_terrain(gamemap& map){
 	for (int map_x = 0; map_x < map.x(); map_x++) {
 		for (int map_y = 0; map_y < map.y(); map_y++) {
-			const gamemap::TERRAIN t = map.get_terrain(gamemap::location(map_x, map_y));
-			std::string s;
-			s += t;
-			preferences::encountered_terrains().insert(s);
+			const terrain_translation::TERRAIN_NUMBER t = map.get_terrain(gamemap::location(map_x, map_y));
+			preferences::encountered_terrains().insert(t);
 		}
 	}
 }

@@ -15,6 +15,7 @@
 
 class config;
 #include "tstring.hpp"
+#include "terrain_translation.hpp"
 
 #include <map>
 #include <string>
@@ -23,6 +24,7 @@ class config;
 class terrain_type
 {
 public:
+
 	terrain_type();
 	terrain_type(const config& cfg);
 
@@ -31,12 +33,24 @@ public:
 	const std::string& id() const;
 
 	//the character representing this terrain
-	char letter() const;
+	//this is the old type will be obsoleted
+#if 0	
+	TERRAIN_LETTER letter() const;
 
 	//the underlying type of the terrain
 	const std::string& mvt_type() const;
 	const std::string& def_type() const;
 	const std::string& union_type() const;
+#endif
+	//the number representing this terrain
+	//this is the new type
+	terrain_translation::TERRAIN_NUMBER number() const;
+
+	//FIXME MdW rename the ones below to the name of the ones above and kill the ones above
+	//the underlying type of the terrain
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_type2() const;
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_type2() const;
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& union_type2() const;
 
 	bool is_nonnull() const;
 	int light_modification() const;
@@ -57,11 +71,24 @@ private:
 	//the 'letter' is the letter that represents this
 	//terrain type. The 'type' is a list of the 'underlying types'
 	//of the terrain. This may simply be the same as the letter.
-	char letter_;
+#if 0	
+	TERRAIN_LETTER letter_;
+	//These strings are no longer bound to contain chars
+	//and only kept for backwards compability
 	std::string mvt_type_;
 	std::string def_type_;
 	std::string union_type_;
+#endif
 
+	//the 'number' is the new way
+	//NOTE the aliases stay strings for now
+	//will become space separated list of numbers in the future
+	terrain_translation::TERRAIN_NUMBER number_;
+	//FIXME MdW rename these as soon as the originals are killed
+	std::vector<terrain_translation::TERRAIN_NUMBER> mvt_type2_; 
+	std::vector<terrain_translation::TERRAIN_NUMBER> def_type2_; 
+	std::vector<terrain_translation::TERRAIN_NUMBER> union_type2_; 
+		
 	int height_adjust_;
 
 	double submerge_;
@@ -69,11 +96,20 @@ private:
 	int light_modification_, heals_;
 
 	bool village_, castle_, keep_;
+
+	//FIXME MdW remove
+	// loads the terrain number from the config file
+	// we're the only one who should know what's in the
+	// file. If the terrain system changes we should be
+	// changed, the rest of the world not the old name 
+	// is used since it's the known key
+//	terrain_translation::TERRAIN_NUMBER load_terrain_char_(const config& cfg) const;
+//	std::vector<terrain_translation::TERRAIN_NUMBER> load_terrain_alias_(const config& cfg, std::string alias) const;
 };
 
-void create_terrain_maps(const std::vector<config*>& cfgs,
-                         std::vector<char>& terrain_precedence,
-                         std::map<char,terrain_type>& letter_to_terrain,
-			 std::map<std::string,terrain_type>& str_to_terrain);
 
+void create_terrain_maps(const std::vector<config*>& cfgs,
+                         std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_list,
+                         std::map<terrain_translation::TERRAIN_NUMBER,terrain_type>& letter_to_terrain,
+                         std::map<std::string,terrain_type>& str_to_terrain);
 #endif

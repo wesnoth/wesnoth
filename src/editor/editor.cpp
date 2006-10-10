@@ -47,6 +47,8 @@
 #include <string>
 #include <cmath>
 
+//FIXME MdW editor is broken and not builded, should be fixed
+
 namespace {
 	const int num_players = 9;
 	// Milliseconds to sleep in every iteration of the main loop.

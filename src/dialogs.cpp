@@ -303,9 +303,17 @@ private:
 	const std::vector<save_info>* info_;
 	const std::vector<config*>* summaries_;
 	int index_;
-	std::map<std::string,surface> map_cache_;
+//	std::map<std::string,surface> map_cache_;
+	std::map<std::vector<terrain_translation::TERRAIN_NUMBER>,surface> map_cache_;
+//	bool vector<terrain_translation::TERRAIN_NUMBER>::operator==(const vector<terrain_translation::TERRAIN_NUMBER>& terrain) const;
+//	bool save_preview_pane::operator==(const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain) const;
 };
-
+/*
+bool save_preview_pane::operator==(const std::vector<terrain_translation::TERRAIN_NUMBER>& lvalue, const std::vector<terrain_translation::TERRAIN_NUMBER>& rvalue) const
+{
+	return lvalue == rvalue;
+}
+*/
 void save_preview_pane::draw_contents()
 {
 	if (size_t(index_) >= summaries_->size() || info_->size() != summaries_->size()) {
@@ -350,13 +358,12 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
-
-	std::string map_data = summary["map_data"];
+	std::vector<terrain_translation::TERRAIN_NUMBER> map_data = terrain_translation().get_map(summary["map_data"]);
 	if(map_data.empty()) {
 		const config* const scenario = game_config_->find_child(summary["campaign_type"],"id",summary["scenario"]);
 		if(scenario != NULL && scenario->find_child("side","shroud","yes") == NULL) {
-			map_data = (*scenario)["map_data"];
-			if(map_data.empty() && (*scenario)["map"].empty() == false) {
+			map_data = terrain_translation().get_map((*scenario)["map_data"]);
+			if(map_data.empty() && (*scenario)["map"].empty() == false) { 
 				try {
 					map_data = read_map((*scenario)["map"]);
 				} catch(io_exception& e) {
@@ -364,12 +371,14 @@ void save_preview_pane::draw_contents()
 				}
 			}
 		}
-	}
+	} 
 
 	surface map_surf(NULL);
 
 	if(map_data.empty() == false) {
-		const std::map<std::string,surface>::const_iterator itor = map_cache_.find(map_data);
+//		const std::map<std::string,surface>::const_iterator itor = map_cache_.find(map_data);
+		const std::map<std::vector<terrain_translation::TERRAIN_NUMBER>,surface>::const_iterator itor = map_cache_.find(map_data);
+//		const std::map<std::vector<terrain_translation::TERRAIN_NUMBER>,surface>::const_iterator itor = std::map::find(std::vector<terrain_translation::TERRAIN_NUMBER>, map_data);
 		if(itor != map_cache_.end()) {
 			map_surf = itor->second;
 		} else if(map_ != NULL) {
@@ -383,7 +392,8 @@ void save_preview_pane::draw_contents()
 
 				map_surf = image::getMinimap(minimap_size, minimap_size, *map_);
 				if(map_surf != NULL) {
-					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
+//					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
+					map_cache_.insert(std::pair<std::vector<terrain_translation::TERRAIN_NUMBER>,surface>(map_data,surface(map_surf)));
 				}
 			} catch(gamemap::incorrect_format_exception&) {
 			}
@@ -540,7 +550,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_id_sort(1);
 
-	gamemap map_obj(game_config,"");
+	gamemap map_obj(game_config, std::vector<terrain_translation::TERRAIN_NUMBER>());
 
 	std::vector<gui::preview_pane*> preview_panes;
 	save_preview_pane save_preview(disp.video(),game_config,&map_obj,data,games,summaries);

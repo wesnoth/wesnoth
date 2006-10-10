@@ -570,7 +570,7 @@ void write_file(const std::string& fname, const std::string& data)
 }
 
 
-std::string read_map(const std::string& name)
+std::vector<terrain_translation::TERRAIN_NUMBER> read_map(const std::string& name)
 {
 	std::string res = read_file("data/maps/" + name);
 	if(res == "") {
@@ -581,7 +581,7 @@ std::string read_map(const std::string& name)
 		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
 	}
 
-	return res;
+	return terrain_translation().get_map(res);
 }
 
 namespace {

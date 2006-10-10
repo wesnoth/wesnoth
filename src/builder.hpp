@@ -77,7 +77,7 @@ public:
 	 *              to the parameters, or NULL if there is none.
 	 */
 	const imagelist *get_terrain_at(const gamemap::location &loc,
-			const std::string &tod, ADJACENT_TERRAIN_TYPE terrain_type) const;
+			const std::string &tod, ADJACENT_TERRAIN_TYPE const terrain_type) const;
 
 	/** Updates the animation at a given tile. returns true if something has
 	 * changed, and must be redrawn.
@@ -209,7 +209,7 @@ public:
 		terrain_constraint(gamemap::location loc) : loc(loc) {};
 
 		gamemap::location loc;
-		std::string terrain_types;
+		std::vector<terrain_translation::TERRAIN_NUMBER> terrain_types;
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
 		std::vector<std::string> has_flag;
@@ -285,7 +285,7 @@ public:
 		 * The 6 adjacent terrains of this tile, and the terrain on
 		 * this tile.
 		 */
-		gamemap::TERRAIN adjacents[7];
+		terrain_translation::TERRAIN_NUMBER adjacents[7];
 
 	};
 
@@ -542,7 +542,7 @@ private:
 	 *                    describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
-			const gamemap::location &loc, const std::string& type,
+			const gamemap::location &loc, const std::vector<terrain_translation::TERRAIN_NUMBER>& type,
 			const config& global_images);
 
 	/**
@@ -567,14 +567,14 @@ private:
 	 * Parses a map string (the map= element of a [terrain_graphics] rule,
 	 * and adds constraints from this map to a building_rule.
 	 *
-	 * @param mapstring The map string to parse
+	 * @param mapstring The map vector to parse
 	 * @param br        The building rule into which to add the extracted
 	 *                  constraints
 	 * @param anchors   A map where to put "anchors" extracted from the map.
 	 * @param global_images A config object representing the images defined
 	 *                  as direct children of the [terrain_graphics] rule.
 	 */
-	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
+	void parse_mapstring(const std::vector<terrain_translation::TERRAIN_NUMBER> &mapstring, struct building_rule &br,
 			     anchormap& anchors, const config& global_images);
 
 	/**
@@ -608,15 +608,15 @@ private:
 	/**
 	 * Checks whether a terrain letter matches a given list of terrain letters
 	 *
-	 * @param letter   The letter to check
-	 * @param terrains The terrain list agains which to check the terrain
-	 *                 letter. May contain the metacharacter '*' meaning
-	 *                 "all terrains" or the character "!" meaning "all
+	 * @param letter   The terrain to check
+	 * @param terrains The terrain list agains which to check the terrain. 
+	 *                 May contain the metacharacter '*' STAR meaning
+	 *                 "all terrains" or the character '!' NOT meaning "all
 	 *                 terrains except those present in the list."
 	 *
 	 * @return returns true if "letter" matches the list, false if it does not.
 	 */
-	bool terrain_matches(gamemap::TERRAIN letter, const std::string &terrains);
+	bool terrain_matches(terrain_translation::TERRAIN_NUMBER letter, const std::vector<terrain_translation::TERRAIN_NUMBER> &terrains); 
 
 	/**
 	 * Checks whether a rule matches a given location in the map.

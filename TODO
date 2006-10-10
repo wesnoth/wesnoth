@@ -1,0 +1,59 @@
+src/builder.cpp:598://FIXME MdW this is a total rewrite not sure whether is really works
+src/builder.cpp:1095:					//FIXME MdW the previous code set the value to an empty
+src/game_events.cpp:1136:			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
+src/game_events.cpp:1138:				//FIXME MdW cleanup
+src/game_events.cpp:1160:		//FIXME MdW cleanup
+src/game_events.cpp:1753:				const terrain_translation::TERRAIN_NUMBER c = game_map->get_terrain(*j); //FIXME MdW test should work
+src/help.cpp:1280:			//FIXME MdW cleanup
+src/help.cpp:1295://FIXME MdW enable 
+src/help.cpp:1397://FIXME MdW enable
+src/help.cpp:1407://					 << escape(std::string("terrain_") + t) << "'</ref>"; //FIXME MdW remove
+src/help.cpp:1432://					 << escape(std::string("terrain_") + t) << "'</ref>"; //FIXME MdW remove
+src/help.cpp:1468:#if 0 //FIXME MdW enable		
+src/help.cpp:1479:	// FIXME MdW typecast to char
+src/help.cpp:1481:									  (char)terrain_translation::VOID_TERRAIN), show_info_about.end());//FIXME MdW typecast
+src/help.cpp:1483:									  (char)terrain_translation::FOGGED), show_info_about.end());//FIXME MdW typecast
+src/help.cpp:1488://FIXME MdW make it work again		
+src/map.cpp:82://FIXME MdW rename the ones below to the name of the ones above and kill the ones above
+src/map.cpp:96:		//FIXME MdW debug hack use the one below once the error is found
+src/map.cpp:181:	if(str == "n") { //FIXME MdW case??
+src/map.cpp:410://FIXME MdW the entire routine should be cleaned up
+src/map.cpp:502:#if 0	 //FIXME MdW remove enable
+src/map.cpp:556:				//FIXME MdW cleanup
+src/map.cpp:684:#if 1 //FIXME MdW remove the if
+src/map.cpp:696://FIXME MdW enable				
+src/map_create.cpp:54://	return generator.get()->create_map(parameters); FIXME MdW enable
+src/mapgen.cpp:342:	mutable std::map<char,double> cache_; //FIXME MdW are we allowed to be char
+src/mapgen.cpp:362:	const char c = map_[loc.x][loc.y]; //FIXME MdW are we allowed to be char
+src/mapgen.cpp:363:	const std::map<char,double>::const_iterator itor = cache_.find(c); //FIXME MdW are we allowed to be char
+src/mapgen.cpp:368:	static std::string terrain(1,'x'); //FIXME MdW are we allowed to be char x is special char reserved for UMC
+src/mapgen.cpp:377:	cache_.insert(std::pair<char,double>(c,res)); //FIXME MdW are we allowed to be char
+src/mapgen.cpp:558://FIXME MdW g = grass
+src/mapgen.cpp:636:	const char grassland = flatland[0]; //FIXME MdW are we allowed to be char
+src/mapgen.cpp:1027:		terrain[x][y] = '1' + player; //FIXME MdW keep 1 or not??
+src/mapgen.cpp:1106://FIXME MdW use gamemap constants
+src/mapgen.cpp:1135://FIXME MdW enable
+src/map.hpp:45:	//FIXME MdW rename the ones below to the name of the ones above and kill the ones above
+src/map.hpp:109:	//FIXME MdW rename the ones below to the name of the ones above and kill the ones above
+src/map.hpp:136://	void read(const std::string& data); //FIXME MdW cleanup
+src/map.hpp:213:	//The terrain string with TERRAIN_NUMBER should be make FIXME MdW
+src/multiplayer_create.cpp:364:				//FIXME MdW we do a double conversion, might be nice to have a direct way
+src/terrain.cpp:42:	//FIXME MdW remove obsolete part
+src/terrain.cpp:52:	//FIXME MdW what do the next 4 lines do?? guess nothing, since seems to be overwritten
+src/terrain.cpp:126:	//FIXME MdW test the union
+src/terrain.cpp:164://FIXME MdW obsolete
+src/terrain.cpp:182://FIXME MdW obsolete
+src/terrain.cpp:254:	//FIXME MdW is an empty letter allowed???
+src/terrain.hpp:49:	//FIXME MdW rename the ones below to the name of the ones above and kill the ones above
+src/terrain.hpp:87:	//FIXME MdW rename these as soon as the originals are killed
+src/terrain.hpp:100:	//FIXME MdW remove
+src/terrain_translation.cpp:67:	//FIXME MdW is an empty letter allowed???
+src/terrain_translation.cpp:106://FIXME MdW make a generic function which gets a string, since only the vconfig is different
+src/terrain_translation.cpp:220:	//FIXME MdW remove assigment, only used as debug aid
+src/terrain_translation.hpp:15://FIXME MdW is Makefile.am good modified
+src/unit_animation.cpp:101://FIXME MdW not sure what the terrain string is but guess 
+src/unit_animation.cpp:148:		//FIXME MdW enable change to underlying_union_terrain2 doesn't work
+src/unit.cpp:2147:	//FIXME MdW cleanup
+src/unit.cpp:2150:	if(underlying.size() == 0) { //FIXME MdW debug hack
+src/unit.cpp:2234:	//FIXME MdW cleanup
+src/unit_types.cpp:408:	//FIXME MdW cleanup
