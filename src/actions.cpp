@@ -1706,11 +1706,16 @@ bool clear_shroud_unit(const gamemap& map,
 		if(sighted != units.end() &&
 		  (sighted->second.invisible(*it,units,teams) == false
 		  || teams[team].is_enemy(sighted->second.side()) == false)) {
-			if(seen_units == NULL || known_units == NULL) {
-				static const std::string sighted("sighted");
-				game_events::raise(sighted,*it,loc);
-			} else if(known_units->count(*it) == 0 && !utils::string_bool(sighted->second.get_state("stoned"))) {
-				seen_units->insert(*it);
+			if(!(seen_units == NULL || known_units == NULL) && known_units->count(*it) == 0) {
+				if (!utils::string_bool(sighted->second.get_state("stoned")))
+				{
+					seen_units->insert(*it);
+				}
+				if ( teams[team].uses_shroud() || teams[team].uses_fog())
+				{
+					static const std::string sighted("sighted");
+					game_events::raise(sighted,*it,loc);
+				}
 			}
 		}
 	}
