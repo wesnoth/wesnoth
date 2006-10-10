@@ -441,7 +441,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 	change["player"] = player;
 
 	change["controller"] = "network";
-	network::send_data(response,owner_);
+	network::send_data(response, owner_);
 
 	change["controller"] = "human";
 	network::queue_data(response, sock_entering);

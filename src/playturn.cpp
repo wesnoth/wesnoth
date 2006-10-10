@@ -243,8 +243,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						teams_[side].make_network();
 						change_side_controller(cfg["side_drop"], observers[index], false /*not our own side*/);
 					} else if (index < options.size() - 1) {
-						allies[index - observers.size()]->make_network();
-						change_side_controller(cfg["side_drop"], allies[index - observers.size()]->save_id(), false /*not our own side*/);
+						size_t i = index - observers.size();
+						allies[i]->make_network();
+						change_side_controller(cfg["side_drop"], allies[i]->save_id(), false /*not our own side*/);
 					} else {
 						teams_[side].make_ai();
 					}

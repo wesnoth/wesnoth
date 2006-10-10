@@ -134,20 +134,17 @@ namespace gui{
 				if(teams[n].is_empty()) {
 					continue;
 				}
-				const unit_map::const_iterator leader = team_leader(n+1,units);
-				if(leader != units.end()) {
-					const std::string& name = teams[n].name(); //leader->second.description();
-					if( name.size() >= semiword.size() &&
-							std::equal(semiword.begin(),semiword.end(),name.begin(),chars_equal_insensitive)) {
-						if(matches.empty()) {
-							best_match = name;
-						} else {
-							int j= 0;;
-							while(best_match[j] == name[j]) j++;
-							best_match.erase(best_match.begin()+j,best_match.end());
-						}
-						matches.push_back(name);
+				const std::string& name = teams[n].save_id();
+				if( name.size() >= semiword.size() &&
+						std::equal(semiword.begin(),semiword.end(),name.begin(),chars_equal_insensitive)) {
+					if(matches.empty()) {
+						best_match = name;
+					} else {
+						int j= 0;;
+						while(best_match[j] == name[j]) j++;
+						best_match.erase(best_match.begin()+j,best_match.end());
 					}
+					matches.push_back(name);
 				}
 			}
 
