@@ -99,8 +99,10 @@ terrain_type::terrain_type(const config& cfg)
 	union_type2_ = mvt_type2_;
 	union_type2_.insert( union_type2_.end(), def_type2_.begin(), def_type2_.end() );
 
+	// remove + and -
 	union_type2_.erase(std::remove(union_type2_.begin(),union_type2_.end(),terrain_translation::MINUS),union_type2_.end());
 	union_type2_.erase(std::remove(union_type2_.begin(),union_type2_.end(),terrain_translation::PLUS),union_type2_.end());
+	// remove doubles
 	std::sort(union_type2_.begin(),union_type2_.end());
 	union_type2_.erase(std::unique(union_type2_.begin(),union_type2_.end()),union_type2_.end());
 

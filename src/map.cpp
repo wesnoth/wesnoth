@@ -88,12 +88,6 @@ const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_mvt_
 		res.push_back(terrain);
 		return res;
 	} else {
-		static std::vector<terrain_translation::TERRAIN_NUMBER> res = i->second.mvt_type2();
-		if(res.empty()){ 
-			LOG_G << "dummy\n";
-		}
-		return res;
-		//FIXME MdW debug hack use the one below once the error is found
 		return i->second.mvt_type2();
 	}
 }
@@ -171,7 +165,7 @@ bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*
 
 void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 {
-	std::string loc_terrain;
+	std::string loc_terrain; //FIXME MdW tag
 	loc_terrain += get_terrain(loc);
 	cfg["terrain"] = loc_terrain;
 }

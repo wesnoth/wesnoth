@@ -2233,25 +2233,20 @@ int unit::defense_modifier(terrain_translation::TERRAIN_NUMBER terrain, int recu
 
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
-	//FIXME MdW cleanup
-//	const std::string& underlying = map_->underlying_mvt_terrain(terrain);
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_mvt_terrain2(terrain);
-//	if(underlying.size() != 1 || underlying[0] != terrain) {
+	wassert(underlying.size() > 0);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
-//		bool revert = (underlying[0] == '-'?true:false);
 		bool revert = (underlying.front() == terrain_translation::MINUS ?true:false);
 		if(recurse_count >= 100) {
 			return 100;
 		}
 
 		int ret_value = revert?0:100;
-//		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
-		for(std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
-//			if(*i == '+') {
+		std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = underlying.begin();
+		for(; i != underlying.end(); ++i) {
 			if(*i == terrain_translation::PLUS) {
 				revert = false;
 				continue;
-//			} else if(*i == '-') {
 			} else if(*i == terrain_translation::MINUS) {
 				revert = true;
 				continue;
@@ -2282,7 +2277,6 @@ int unit::defense_modifier(terrain_translation::TERRAIN_NUMBER terrain, int recu
 			return 100;
 		}
 
-//		const std::string& id = map_->get_terrain_info(underlying[0]).id();
 		const std::string& id = map_->get_terrain_info(underlying.front()).id();
 		const std::string& val = (*defense)[id];
 
