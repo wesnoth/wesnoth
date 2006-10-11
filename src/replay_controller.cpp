@@ -253,21 +253,27 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 		return;
 	}
 
-	play_controller::init_side(team_index, true);
+	try{
+		play_controller::init_side(team_index, true);
 
-	//if a side is dead, don't do their turn
-	if(!current_team().is_empty() && team_units(units_,player_number_) > 0) {
+		//if a side is dead, don't do their turn
+		if(!current_team().is_empty() && team_units(units_,player_number_) > 0) {
 
-		do_replay(true);
+			do_replay(true);
 
-		finish_side_turn();
+			finish_side_turn();
 
-		for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-			if(uit->second.side() != (size_t)player_number_){
-				//this is necessary for replays in order to show possible movements
-				uit->second.new_turn();
+			for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
+				if(uit->second.side() != (size_t)player_number_){
+					//this is necessary for replays in order to show possible movements
+					uit->second.new_turn();
+				}
 			}
 		}
+	}
+	catch (replay::error&) //if replay throws an error, we don't want to get thrown out completely
+	{
+		is_playing_ = false;
 	}
 
 	player_number_++;
