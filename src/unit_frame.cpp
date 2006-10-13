@@ -198,12 +198,12 @@ unit_frame::unit_frame() :
 }
 
 
-unit_frame::unit_frame(const std::string& str, int begin,int end,
+unit_frame::unit_frame(const image::locator& image, int begin,int end,
 		const std::string& highlight, const std::string& offset,
 		Uint32 blend_color, const std::string& blend_rate,
 		const std::string& in_halo, const std::string& halox, const std::string& haloy,
-		const std::string & diag) :
-	 image_(str),image_diagonal_(diag),
+		const image::locator & diag) :
+	 image_(image),image_diagonal_(diag),
 	halo_(in_halo,end_time_ - begin_time_),
 	halo_x_(halox,end_time_ - begin_time_),
 	halo_y_(haloy,end_time_ - begin_time_),
@@ -225,8 +225,8 @@ unit_frame::unit_frame(const std::string& str, int begin,int end,
 
 unit_frame::unit_frame(const config& cfg)
 {
-	image_ = cfg["image"];
-	image_diagonal_ = cfg["image_diagonal"];
+	image_ = image::locator(cfg["image"]);
+	image_diagonal_ = image::locator(cfg["image_diagonal"]);
 	sound_ = cfg["sound"];
 	begin_time_ = atoi(cfg["begin"].c_str());
 	end_time_ = atoi(cfg["end"].c_str());

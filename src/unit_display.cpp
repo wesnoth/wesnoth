@@ -308,7 +308,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			const int posx = int(pos*xdst + (1.0-pos)*xsrc);
 			const int posy = int(pos*ydst + (1.0-pos)*ysrc);
 
-			std::string missile_image= missile_frame.image();
+			image::locator missile_image= missile_frame.image();
 			const int d = disp.hex_size() / 2;
 			if(vertical_dir) {
 				missile_image = missile_frame.image();
@@ -330,7 +330,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			}
 			missile_frame_halo = halo::add(posx+d,
 					posy+d,
-					missile_image,
+					missile_image.get_filename(),
 					orientation);
 
 		}

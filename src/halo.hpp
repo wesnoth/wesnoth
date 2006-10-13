@@ -16,6 +16,7 @@
 
 class display;
 #include "animated.hpp"
+#include "image.hpp"
 
 #include <string>
 

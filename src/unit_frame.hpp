@@ -17,6 +17,7 @@
 #include "map.hpp"
 #include "config.hpp"
 #include "util.hpp"
+#include "image.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <string>
@@ -57,16 +58,16 @@ class unit_frame {
 	public:
 	// constructors
 		unit_frame();
-		explicit unit_frame(const std::string& str, int begin=0,int end=1,
+		explicit unit_frame(const image::locator& image, int begin=0,int end=1,
 				const std::string& highlight="1.0",const std::string& offset="",
 				Uint32 blend_color = 0, const std::string& blend_rate = "0",
 				const std::string & in_halo = "",
 				const std::string & halox = "",const std::string & haloy = "",
-				const std::string & diag ="");
+				const image::locator & diag ="");
 		explicit unit_frame(const config& cfg);
 
-		std::string image() const { return image_ ;}
-		std::string image_diagonal() const { return image_diagonal_ ; }
+		image::locator image() const { return image_ ;}
+		image::locator image_diagonal() const { return image_diagonal_ ; }
 		const std::string &halo(int current_time) const;
 		std::string sound() const { return sound_ ; };
 		int halo_x(int current_time) const;
@@ -78,8 +79,8 @@ class unit_frame {
 		fixed_t highlight_ratio(int current_time) const;
 		double offset(int current_time) const;
 	private:
-		std::string image_;
-		std::string image_diagonal_;
+		image::locator image_;
+		image::locator image_diagonal_;
 		progressive_string halo_;
 
 		std::string sound_;

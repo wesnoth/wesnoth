@@ -1623,7 +1623,7 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 
 	// add a blink on damage effect
 	int anim_time = anim_->get_last_frame_time();
-	const std::string my_image = anim_->get_last_frame().image();
+	const image::locator my_image = anim_->get_last_frame().image();
 	if(damage) {
 		anim_->add_frame(anim_time,unit_frame(my_image,anim_time,anim_time+100,"1.0","",display::rgb(255,0,0),"0.5:50,0.0:50"));
 		anim_time+=100;
@@ -1777,7 +1777,7 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 		anim_ = NULL;
 	}
 	anim_ =  new death_animation(die_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack));
-	std::string tmp_image = anim_->get_last_frame().image();
+	image::locator tmp_image = anim_->get_last_frame().image();
 	int anim_time =anim_->get_last_frame_time();
 	anim_->add_frame(0,unit_frame(tmp_image,anim_time,anim_time+600,"1~0:600"));
 	anim_->add_frame(anim_time+600);
@@ -1867,13 +1867,13 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	const double submerge = is_flying() ? 0.0 : map.get_terrain_info(terrain).unit_submerge() * disp.zoom();
 	const int height_adjust = is_flying() ? 0 : int(map.get_terrain_info(terrain).unit_height_adjust() * disp.zoom());
 
-	std::string image_name;
 	unit_frame current_frame;
 	if(anim_->animation_finished()) current_frame = anim_->get_last_frame();
 	else if(anim_->get_first_frame_time() > anim_->get_animation_time()) current_frame = anim_->get_first_frame();
 	else current_frame = anim_->get_current_frame();
 
-	image_name = current_frame.image();
+	image::locator loc;
+	loc = current_frame.image();
 	double tmp_offset = current_frame.offset(anim_->get_animation_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
 	const int x = int(tmp_offset*xdst + (1.0-tmp_offset)*xsrc);
@@ -1902,20 +1902,9 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 					halo::HREVERSE);
 		}
 	}
-	if(image_name.empty()) {
-		image_name = absolute_image();
+	if(loc.is_void()) {
+		loc = absolute_image();
 	}
-	image::locator  loc;
-
-#ifdef LOW_MEM
-	loc = image::locator(image_name);
-#else
-	if(flag_rgb().size()){
-		loc = image::locator(image_name,team_rgb_range(),flag_rgb());
-	}else{
-		loc = image::locator(image_name);
-	}
-#endif
 
 	surface image(image::get_image(loc,
 				utils::string_bool(get_state("stoned"))?image::GREYED : image::UNSCALED,image::ADJUST_COLOUR,
@@ -1923,6 +1912,11 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	if(image ==NULL) {
 		image = still_image();
 	}
+#ifndef LOW_MEM
+	if(flag_rgb().size()){
+		image = recolor_image(image,team_rgb_range(),flag_rgb());
+	}
+#endif
 	if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
 		image.assign(image::reverse_image(image));
 	}
