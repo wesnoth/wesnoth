@@ -68,7 +68,7 @@ public:
 	void set_gui(display* gui) { gui_ = gui; }
 
 	void objectives(const unsigned int team_num);
-	void show_statistics();
+	void show_statistics(const unsigned int team_num);
 	void unit_list();
 	void status_table();
 	void save_game(const std::string& message, gui::DIALOG_TYPE dialog_type);

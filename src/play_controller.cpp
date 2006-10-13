@@ -185,7 +185,7 @@ void play_controller::objectives(){
 }
 
 void play_controller::show_statistics(){
-	menu_handler_.show_statistics();
+	menu_handler_.show_statistics(gui_->viewing_team()+1);
 }
 
 void play_controller::unit_list(){
