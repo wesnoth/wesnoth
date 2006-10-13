@@ -2154,7 +2154,7 @@ int unit::defense_modifier(gamemap::TERRAIN terrain, int recurse_count) const
 
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
-	const std::string& underlying = map_->underlying_mvt_terrain(terrain);
+	const std::string& underlying = map_->underlying_def_terrain(terrain);
 	if(underlying.size() != 1 || underlying[0] != terrain) {
 		bool revert = (underlying[0] == '-'?true:false);
 		if(recurse_count >= 100) {
@@ -2174,9 +2174,6 @@ int unit::defense_modifier(gamemap::TERRAIN terrain, int recurse_count) const
 			if(value < ret_value && !revert) {
 				ret_value = value;
 			} else if(value > ret_value && revert) {
-				ret_value = value;
-			}
-			if(value < ret_value) {
 				ret_value = value;
 			}
 		}
