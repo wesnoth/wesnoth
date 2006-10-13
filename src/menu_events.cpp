@@ -153,9 +153,9 @@ namespace events{
 		teams_[team_num - 1].reset_objectives_changed();
 	}
 
-	void menu_handler::show_statistics()
+	void menu_handler::show_statistics(const unsigned int team_num)
 	{
-		const statistics::stats& stats = statistics::calculate_stats(0,gui_->viewing_team()+1);
+		const statistics::stats& stats = statistics::calculate_stats(0, team_num);
 		std::vector<std::string> items;
 
 		{

@@ -50,6 +50,7 @@ public:
 
 	//event handlers
 	virtual void preferences();
+	virtual void show_statistics();
 	void play_replay();
 	void reset_replay();
 	void stop_replay();
