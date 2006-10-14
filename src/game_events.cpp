@@ -872,6 +872,21 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			var = buf;
 		}
 
+		const std::string& divide = cfg["divide"];
+		if(divide.empty() == false) {
+			int value = int(atof(var.c_str()));
+			double divider = atof(divide.c_str());
+			if (divider == 0) {
+				ERR_NG << "division by zero on variable " << name << "\n";
+				return rval;
+			} else {
+				value = int(double(value) / divider);
+				char buf[50];
+				snprintf(buf,sizeof(buf),"%d",value);
+				var = buf;
+			}
+		}
+
 		// random generation works as follows:
 		// random=[comma delimited list]
 		// Each element in the list will be considered a separate choice,
