@@ -1052,7 +1052,18 @@ void game_controller::download_campaigns()
 
 		clear_binary_paths_cache();
 
-		gui::show_dialog(disp(),NULL,_("Add-on Installed"),_("The add-on has been installed."),gui::OK_ONLY);
+		std::string warning = "";
+		std::vector<config *> scripts = find_scripts(cfg, ".unchecked");
+		if (!scripts.empty()) {
+			warning += "\nUnchecked script files found:";
+			std::vector<config *>::iterator i;
+			for (i = scripts.begin(); i != scripts.end(); ++i) {
+				warning += "\n" + (**i)["name"];
+			}
+		}
+
+		gui::show_dialog(disp(),NULL,_("Add-on Installed"),_("The add-on has been installed.") +
+		    warning,gui::OK_ONLY);
 	} catch(config::error&) {
 		gui::show_error_message(disp(), _("Network communication error."));
 	} catch(network::error&) {
