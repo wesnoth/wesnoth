@@ -808,6 +808,9 @@ bool game_controller::new_campaign()
 		defines_map_.clear();
 		defines_map_[difficulties[res]] = preproc_define();
 	}
+#ifdef HAVE_PYTHON
+	defines_map_["PYTHON"] = preproc_define();
+#endif
 
 	state_.campaign_define = campaign["define"];
 
@@ -1287,7 +1290,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 {
 	log_scope("read_game_cfg");
 
-	if(defines.size() < 4) {
+	if(defines.size() < 5) {
 		bool is_valid = true;
 		std::stringstream str;
 		str << "-v" << game_config::version;
