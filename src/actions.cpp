@@ -1427,29 +1427,24 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		if (update_display){
 			// This is all the pretty stuff.
-			bool start_time_set = false;
-			int start_time = 0;
+			int start_time = INT_MAX;
 			disp.scroll_to_tile(i->first.x, i->first.y, display::ONSCREEN);
 			disp.select_hex(i->first);
 
 			for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
 				(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(i->first));
 				(*heal_anim_it)->second.set_healing(disp,(*heal_anim_it)->first);
-				if(start_time_set) {
-					start_time = minimum<int>(start_time,(*heal_anim_it)->second.get_animation()->get_first_frame_time());
-				} else {
-					start_time = (*heal_anim_it)->second.get_animation()->get_first_frame_time();
-				}
+				start_time = (*heal_anim_it)->second.get_animation()->get_begin_time();
 			}
 			if (healing < 0) {
 				i->second.set_poisoned(disp,i->first, -healing);
-				start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
+				start_time = minimum<int>(start_time, i->second.get_animation()->get_begin_time());
 				// FIXME
 				sound::play_sound("poison.ogg");
 				disp.float_label(i->first, lexical_cast<std::string>(-healing), 255,0,0);
 			} else {
 				i->second.set_healed(disp,i->first, healing);
-				start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
+				start_time = minimum<int>(start_time, i->second.get_animation()->get_begin_time());
 				sound::play_sound("heal.wav");
 				disp.float_label(i->first, lexical_cast<std::string>(healing), 0,255,0);
 			}

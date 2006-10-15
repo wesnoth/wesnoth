@@ -56,6 +56,10 @@ const std::string& progressive_string::get_current_element( int current_time)con
 	return data_[sub_halo].first;
 }
 
+bool progressive_string::does_not_change() const
+{
+	return data_.size() <= 1;
+}
 
 
 progressive_double::progressive_double(const std::string &data, int duration) 
@@ -124,6 +128,11 @@ int progressive_double::duration() const
 }
 
 
+bool progressive_double::does_not_change() const
+{
+return data_.empty() ||
+	( data_.size() == 1 && data_[0].first.first == data_[0].first.second);
+}
 
 progressive_int::progressive_int(const std::string &data, int duration) 
 {
@@ -187,38 +196,43 @@ int progressive_int::duration() const
 
 }
 
+bool progressive_int::does_not_change() const
+{
+return data_.empty() ||
+	( data_.size() == 1 && data_[0].first.first == data_[0].first.second);
+}
+
 
 
 unit_frame::unit_frame() : 
 	 image_(), image_diagonal_(),halo_(), sound_(),
-	halo_x_(), halo_y_(), begin_time_(0), end_time_(0),
+	halo_x_(), halo_y_(), duration_(0),
 	blend_with_(0),blend_ratio_(),
 	highlight_ratio_("1.0"),offset_("-20")
 {
 }
 
 
-unit_frame::unit_frame(const image::locator& image, int begin,int end,
+unit_frame::unit_frame(const image::locator& image, int duration,
 		const std::string& highlight, const std::string& offset,
 		Uint32 blend_color, const std::string& blend_rate,
 		const std::string& in_halo, const std::string& halox, const std::string& haloy,
 		const image::locator & diag) :
 	 image_(image),image_diagonal_(diag),
-	halo_(in_halo,end_time_ - begin_time_),
-	halo_x_(halox,end_time_ - begin_time_),
-	halo_y_(haloy,end_time_ - begin_time_),
-	begin_time_(begin), end_time_(end),
-	blend_with_(blend_color), blend_ratio_(blend_rate,end_time_ - begin_time_),
-	highlight_ratio_(highlight,end_time_ - begin_time_)
+	halo_(in_halo,duration),
+	halo_x_(halox,duration),
+	halo_y_(haloy,duration),
+	duration_(duration), 
+	blend_with_(blend_color), blend_ratio_(blend_rate,duration),
+	highlight_ratio_(highlight,duration)
 {
 	// let's decide of duration ourselves
-	if(offset.empty()) offset_=progressive_double("-20",end_time_-begin_time_);
-	else offset_=progressive_double(offset,end_time_-begin_time_);
-	end_time_ = end;
-	end_time_ = maximum<int>(end_time_,begin + highlight_ratio_.duration());
-	end_time_ = maximum<int>(end_time_,begin + blend_ratio_.duration());
-	end_time_ = maximum<int>(end_time_,begin + halo_.duration());
-	end_time_ = maximum<int>(end_time_,begin + offset_.duration());
+	if(offset.empty()) offset_=progressive_double("-20",duration);
+	else offset_=progressive_double(offset,duration);
+	duration_ = maximum<int>(duration_, highlight_ratio_.duration());
+	duration_ = maximum<int>(duration_, blend_ratio_.duration());
+	duration_ = maximum<int>(duration_, halo_.duration());
+	duration_ = maximum<int>(duration_, offset_.duration());
 }
 
 
@@ -228,47 +242,59 @@ unit_frame::unit_frame(const config& cfg)
 	image_ = image::locator(cfg["image"]);
 	image_diagonal_ = image::locator(cfg["image_diagonal"]);
 	sound_ = cfg["sound"];
-	begin_time_ = atoi(cfg["begin"].c_str());
-	end_time_ = atoi(cfg["end"].c_str());
-	halo_ = progressive_string(cfg["halo"],end_time_-begin_time_);
-	halo_x_ = progressive_int(cfg["halo_x"],end_time_ -begin_time_);
-	halo_y_ = progressive_int(cfg["halo_y"],end_time_ -begin_time_);
+	if(!cfg["duration"].empty()) {
+		duration_ = atoi(cfg["duration"].c_str());
+	} else {
+		duration_ = atoi(cfg["end"].c_str()) - atoi(cfg["begin"].c_str());
+	}
+	halo_ = progressive_string(cfg["halo"],duration_);
+	halo_x_ = progressive_int(cfg["halo_x"],duration_);
+	halo_y_ = progressive_int(cfg["halo_y"],duration_);
 	std::vector<std::string> tmp_blend=utils::split(cfg["blend_color"]);
 	if(tmp_blend.size() ==3) blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));
-	blend_ratio_ = progressive_double(cfg["blend_ratio"],end_time_-begin_time_);
-	highlight_ratio_ = progressive_double(cfg["alpha"].empty()?"1.0":cfg["alpha"],end_time_-begin_time_);
-	offset_ = progressive_double(cfg["offset"].empty()?"-20":cfg["offset"],end_time_-begin_time_);
+	blend_ratio_ = progressive_double(cfg["blend_ratio"],duration_);
+	highlight_ratio_ = progressive_double(cfg["alpha"].empty()?"1.0":cfg["alpha"],duration_);
+	offset_ = progressive_double(cfg["offset"].empty()?"-20":cfg["offset"],duration_);
 
 }
 
 		
 const std::string &unit_frame::halo(int current_time) const 
 {
-	return halo_.get_current_element(current_time - begin_time_);
+	return halo_.get_current_element(current_time);
 }
 
 double unit_frame::blend_ratio(int current_time) const 
 {
-	return blend_ratio_.get_current_element(current_time - begin_time_);
+	return blend_ratio_.get_current_element(current_time);
 }
 
 fixed_t unit_frame::highlight_ratio(int current_time) const 
 {
-	return ftofxp(highlight_ratio_.get_current_element(current_time - begin_time_));
+	return ftofxp(highlight_ratio_.get_current_element(current_time));
 }
 
 double unit_frame::offset(int current_time) const 
 {
-	return offset_.get_current_element(current_time - begin_time_);
+	return offset_.get_current_element(current_time);
 }
 
 int unit_frame::halo_x(int current_time) const 
 {
-	return halo_x_.get_current_element(current_time - begin_time_);
+	return halo_x_.get_current_element(current_time);
 }
 
 int unit_frame::halo_y(int current_time) const 
 {
-	return halo_y_.get_current_element(current_time - begin_time_);
+	return halo_y_.get_current_element(current_time);
 }
 
+bool unit_frame::does_not_change() const
+{
+	return halo_.does_not_change() &&
+		halo_x_.does_not_change() &&
+		halo_y_.does_not_change() &&
+		blend_ratio_.does_not_change() &&
+		highlight_ratio_.does_not_change() &&
+		offset_.does_not_change();
+}

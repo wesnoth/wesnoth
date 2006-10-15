@@ -1,5 +1,5 @@
 Version 1.3-svn:
-* editor
+ * editor
    * allow maps to be loaded from scenario files and written back to them
  * campaigns
    * Heir to the Throne
@@ -60,6 +60,8 @@ Version 1.3-svn:
    * [event]s can now be written also inside [era]s (the [event]s are included
      in every scenario played using that era)
    * new operation for set_variable : divide
+   * Animations now use duration= tag instead of begin= and end= (backward
+   compatible)
  * multiplayer game management
    * client now tells the server if a game ended in victory or defeat
    * configurable castle size for random map generator (patch #598, FR #3232)

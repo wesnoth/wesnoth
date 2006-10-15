@@ -46,7 +46,7 @@ enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
 ///centered on (x,y)
 ///returns the handle to the halo object
 ///0 is the invalid handle
-int add(int x, int y, const std::string& image, ORIENTATION orientation=NORMAL, int lifetime_cycles=-1);
+int add(int x, int y, const std::string& image, ORIENTATION orientation=NORMAL, bool infinite=true);
 
 ///function to set the position of an existing haloing
 ///effect, according to its handle

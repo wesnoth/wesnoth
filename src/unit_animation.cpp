@@ -90,22 +90,23 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 	return expanded_animations;
 }
 
-unit_animation::unit_animation(const unit_frame & frame )
+unit_animation::unit_animation(int start_time,const unit_frame & frame ):animated<unit_frame>(start_time)
 {
-	add_frame(0,frame);
-	if(frame.end_time() != frame.begin_time()) add_frame(frame.end_time());
-	
+	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string ):terrain_types(utils::split(cfg["terrain"])){
 	config::const_child_itors range = cfg.child_range(frame_string);
-
-	int last_end = INT_MIN;
-	for(; range.first != range.second; ++range.first) {
-		add_frame(atoi((**range.first)["begin"].c_str()), unit_frame(**range.first));
-		last_end = maximum<int>(atoi((**range.first)["end"].c_str()), last_end);
+	if(cfg["start_time"].empty() &&range.first != range.second) {
+		starting_frame_time_ = atoi((**range.first)["begin"].c_str());
+	} else {
+		starting_frame_time_ = atoi(cfg["start_time"].c_str());
 	}
-	add_frame(last_end);
+
+	for(; range.first != range.second; ++range.first) {
+		unit_frame tmp_frame(**range.first);
+		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
+	}
 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {

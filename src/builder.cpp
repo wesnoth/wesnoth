@@ -189,16 +189,16 @@ bool terrain_builder::update_animation(const gamemap::location &loc)
 
 	imagelist::iterator itor = bg.begin();
 	for(; itor != bg.end(); ++itor) {
-		itor->update_current_frame();
-		if(itor->frame_changed())
+		if(itor->need_update())
 			changed = true;
+		itor->update_last_draw_time();
 	}
 
 	itor = fg.begin();
 	for(; itor != fg.end(); ++itor) {
-		itor->update_current_frame();
-		if(itor->frame_changed())
+		if(itor->need_update())
 			changed = true;
+		itor->update_last_draw_time();
 	}
 
 	return changed;
@@ -215,7 +215,7 @@ void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 		const std::string filename =
 			map_.get_terrain_info(map_.get_terrain(loc)).symbol_image();
 		animated<image::locator> img_loc("terrain/" + filename + ".png");
-		img_loc.start_animation(0, animated<image::locator>::INFINITE_CYCLES);
+		img_loc.start_animation(0, true);
 		btile.images_background.push_back(img_loc);
 	}
 }
@@ -280,12 +280,12 @@ bool terrain_builder::start_animation(building_rule &rule)
 					initializer = locator_string_initializer(constraint->second.loc);
 				}
 
-				animated<image::locator> th(variant->second.image_string,
+				animated<image::locator> th(variant->second.image_string,0,
 						initializer);
 
 				variant->second.image = th;
-				variant->second.image.start_animation(0, animated<image::locator>::INFINITE_CYCLES);
-				variant->second.image.update_current_frame();
+				variant->second.image.start_animation(0, true);
+				variant->second.image.update_last_draw_time();
 			}
 		}
 	}

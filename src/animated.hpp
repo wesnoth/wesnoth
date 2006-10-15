@@ -15,7 +15,7 @@
 #define ANIMATED_IMAGE_H_INCLUDED
 
 #include <string>
-#include <vector>
+#include <map>
 
 template<typename T>
 class void_value
@@ -35,7 +35,7 @@ public:
 		virtual ~string_initializer(){};
 	};
 
-	animated();
+	animated(int start_time=0);
 	virtual ~animated(){};
 
 	//if T can be constructed from a string, you may use this constructor
@@ -43,78 +43,69 @@ public:
 	//if T cannot, you may provide a custom (subclassed) string_initializer
 	//to do the job
 
-	animated(const std::string &cfg, const string_initializer& init=string_initializer());
+	animated(const std::string &cfg, int start_time = 0, const string_initializer& init=string_initializer());
 
-	// Adds a void frame at the end
-	void add_frame();
-	// Adds a void frame
-	void add_frame(int start);
 
 	// Adds a frame
-	void add_frame(int start, const T& value);
+	void add_frame(int duration, const T& value,bool force_change =false);
 
 	//Starts an animation cycle. The first frame of the animation to start
 	//may be set to any value
-	enum { INFINITE_CYCLES = -1 };
-	void start_animation(int start_time=0, int cycles=1, int acceleration=1);
+	void start_animation(int start_time=0, bool cycles=false, double acceleration=1);
 
-	int get_first_frame_time() const;
-	int get_last_frame_time() const;
+	int get_begin_time() const;
+	int get_end_time() const;
 
 	//inlined for performance
-	void update_current_frame();
-	bool frame_changed() const;
+	void update_last_draw_time();
+	bool need_update() const;
 
 	//True if the current animation was finished
 	bool animation_finished() const;
+	bool animation_would_finish() const;
 	int get_animation_time() const;
-	int get_cycle_time() const;
 	const T& get_current_frame() const;
+	const int get_current_frame_begin_time() const;
+	const int get_current_frame_end_time() const;
+	const int get_current_frame_duration() const;
+	const int get_current_frame_time() const;
 	const T& get_first_frame() const;
 	const T& get_last_frame() const;
 	int get_frames_count() const;
 	const bool does_not_change() const {return does_not_change_;}
 
-
+protected:
+	int starting_frame_time_;
 
 private:
 	struct frame
 	{
-		frame(int milliseconds) :
-			milliseconds(milliseconds), has_value(false)
-		{};
 
-		frame(int milliseconds, const T& value) :
-			milliseconds(milliseconds), has_value(true), value(value)
+		frame(int duration , const T& value) :
+			duration_(duration),value_(value)
+		{};
+		frame():
+			duration_(0),value_(void_value_)
 		{};
 
 		// Represents the timestamp of the frame start
-		int milliseconds;
-		bool has_value;
-		T value;
+		int duration_;
+		T value_;
 	};
 
 	static const T void_value_;
 
-	int starting_frame_time_;
-	int ending_frame_time_;
-
-	bool started_;
-	bool no_current_frame_;
 	bool does_not_change_;	// optimization for 1-frame permanent animations
+	bool started_;
+	std::map<int,frame> frames_;
 
-	int real_start_ticks_;
-	int start_ticks_;
-	int current_cycle_;
-	int current_time_;
-	int cycles_;
-	int acceleration_;
-	bool frame_changed_;
-	int start_frame_;
-	int duration_;
-	typename std::vector<frame>::size_type current_frame_;
+	//these are only valid when anim is started
+	int start_tick_; // time at which we started
+	bool cycles_;
+	double acceleration_;
+	int last_update_tick_;
+	int current_frame_key_;
 
-	std::vector<frame> frames_;
 };
 
 #endif

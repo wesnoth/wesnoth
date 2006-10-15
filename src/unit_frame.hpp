@@ -29,6 +29,7 @@ class progressive_string {
 		progressive_string(const std::string& data = "",int duration = 0);
 		int duration() const;
 		const std::string & get_current_element(int time) const;
+		bool does_not_change() const;
 	private:
 		std::vector<std::pair<std::string,int> > data_;
 };
@@ -38,6 +39,7 @@ class progressive_double {
 		progressive_double(const std::string& data = "",int duration = 0);
 		int duration() const;
 		const double get_current_element(int time) const;
+		bool does_not_change() const;
 	private:
 		std::vector<std::pair<std::pair<double,double>,int> > data_;
 };
@@ -48,6 +50,7 @@ class progressive_int {
 		progressive_int(const std::string& data = "",int duration = 0);
 		int duration() const;
 		const int get_current_element(int time) const;
+		bool does_not_change() const;
 	private:
 		std::vector<std::pair<std::pair<int,int>,int> > data_;
 };
@@ -58,7 +61,7 @@ class unit_frame {
 	public:
 	// constructors
 		unit_frame();
-		explicit unit_frame(const image::locator& image, int begin=0,int end=1,
+		explicit unit_frame(const image::locator& image, int duration=0,
 				const std::string& highlight="1.0",const std::string& offset="",
 				Uint32 blend_color = 0, const std::string& blend_rate = "0",
 				const std::string & in_halo = "",
@@ -72,12 +75,12 @@ class unit_frame {
 		std::string sound() const { return sound_ ; };
 		int halo_x(int current_time) const;
 		int halo_y(int current_time) const;
-		int begin_time() const { return begin_time_; }
-		int end_time() const { return end_time_ ; }
+		int duration() const { return duration_; }
 		Uint32 blend_with() const { return blend_with_; }
 		double blend_ratio(int current_time) const;
 		fixed_t highlight_ratio(int current_time) const;
 		double offset(int current_time) const;
+		bool does_not_change() const;
 	private:
 		image::locator image_;
 		image::locator image_diagonal_;
@@ -86,7 +89,7 @@ class unit_frame {
 		std::string sound_;
 		progressive_int halo_x_;
 		progressive_int halo_y_;
-		int begin_time_, end_time_;
+		int duration_;
 		Uint32 blend_with_;
 		progressive_double blend_ratio_;
 		progressive_double highlight_ratio_;

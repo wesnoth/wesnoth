@@ -10,47 +10,45 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-*/
+   */
 
 #include "global.hpp"
 
-//#include <string>
-//#include <vector>
 #include "SDL.h"
 #include "animated.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 
+
+
 template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
 
 template<typename T, typename T_void_value>
-animated<T,T_void_value>::animated() :
-	starting_frame_time_(INT_MAX),
-	ending_frame_time_(INT_MIN),
+animated<T,T_void_value>::animated(int start_time) :
+	starting_frame_time_(start_time),
+	does_not_change_(true),
 	started_(false),
-	no_current_frame_(true),
-	does_not_change_(false),
-	real_start_ticks_(0),
-	start_ticks_(0),
+	start_tick_(0),
+	cycles_(false),
 	acceleration_(1),
-	start_frame_(0)
-{}
+	last_update_tick_(0),
+	current_frame_key_(start_time)
+{
+}
 
 template<typename T,  typename T_void_value>
-animated<T,T_void_value>::animated(const std::string &cfg, const string_initializer& init):
-	starting_frame_time_(INT_MAX),
+animated<T,T_void_value>::animated(const std::string &cfg,int start_time, const string_initializer& init):
+	starting_frame_time_(start_time),
+	does_not_change_(true),
 	started_(false),
-	no_current_frame_(true),
-	does_not_change_(false),
-	real_start_ticks_(0),
-	start_ticks_(0),
+	start_tick_(0),
+	cycles_(false),
 	acceleration_(1),
-	start_frame_(0)
+	last_update_tick_(0),
+	current_frame_key_(start_time)
 {
 	std::vector<std::string> items = utils::split(cfg);
-
-	int current_time = 0;
 
 	std::vector<std::string>::const_iterator itor = items.begin();
 	for(; itor != items.end(); ++itor) {
@@ -66,159 +64,110 @@ animated<T,T_void_value>::animated(const std::string &cfg, const string_initiali
 			time = 100;
 		}
 
-		frames_.push_back(frame(current_time, init(str)));
-		current_time += time;
+		add_frame(time,init(str),false);
 	}
-
-	starting_frame_time_ = 0;
-	ending_frame_time_ = current_time;
 }
 
 
+
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::add_frame()
+void animated<T,T_void_value>::add_frame(int duration, const T& value,bool force_change)
 {
-	ending_frame_time_++;
-	frames_.push_back(frame(ending_frame_time_));
+	if(frames_.empty() ) {
+		frames_[starting_frame_time_] =
+			frame(duration,value);
+		does_not_change_=!force_change;
+		return;
+	}
+	typename std::map<int,frame>::const_reverse_iterator last_frame = frames_.rbegin();
+	does_not_change_=false;
+	frames_[last_frame->first +last_frame->second.duration_] =
+		frame(duration,value);
 }
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::add_frame(int start)
-{
-	frames_.push_back(frame(start));
-	starting_frame_time_ = minimum<int>(starting_frame_time_, start);
-	ending_frame_time_ = maximum<int>(ending_frame_time_, start);
-}
-
-template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::add_frame(int start, const T& value)
-{
-	frames_.push_back(frame(start, value));
-	starting_frame_time_ = minimum<int>(starting_frame_time_, start);
-	ending_frame_time_ = maximum<int>(ending_frame_time_, start);
-}
-
-template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::start_animation(int start_frame, int cycles, int acceleration)
+void animated<T,T_void_value>::start_animation(int start_time, bool cycles, double acceleration)
 {
 	started_ = true;
-	start_frame_ = start_frame;
-	start_ticks_ = real_start_ticks_ = current_time_ = SDL_GetTicks() * acceleration;
+	last_update_tick_ = SDL_GetTicks();
+	start_tick_ =  last_update_tick_ + ( starting_frame_time_ - start_time);
 	cycles_ = cycles;
-	current_cycle_ = 0;
 	acceleration_ = acceleration;
-	// current_frame_ = frames_.begin();
-	current_frame_ = 0;
-	no_current_frame_ = false;
-
-	if (ending_frame_time_ >= start_frame_) {
-		duration_ = ending_frame_time_ - start_frame_;
-	} else {
-		duration_ = 0;
-	}
-	frame_changed_ = true;
+	if(acceleration_ <=0) acceleration_ = 1;
+	current_frame_key_= frames_.begin()->first;
+	update_last_draw_time();
 }
 
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::update_current_frame()
+void animated<T,T_void_value>::update_last_draw_time()
 {
-	// std::cerr << "--- updating frame ---\n";
+	last_update_tick_ = SDL_GetTicks();
 	if(does_not_change_)
 		return;
 
-	frame_changed_ = false;
-	// Always update current_time_, for the animation_time functions to work.
-	current_time_ = SDL_GetTicks() * acceleration_;
-	if(!started_)
+	// Always update last_update_tick_, for the animation_time functions to work.
+	if(!started_) {
 		return;
+	}
 
 	if(frames_.empty()) {
-		no_current_frame_ = true;
 		does_not_change_ = true;
 		return;
 	}
-
-	if(frames_.size() == 1 && cycles_ == INFINITE_CYCLES) {
-		does_not_change_ = true;
-		frame_changed_ = false;
+	if(cycles_) {
+		while(get_animation_time() > get_end_time()){  // cut extra time
+			start_tick_ +=get_end_time()/acceleration_;
+			current_frame_key_ =starting_frame_time_;
+		}
 	}
-
-	if (duration_ > 0) {
-		// Ticks is the actual time since animation started.
-		int ticks = current_time_ - start_ticks_;
-
-		// Handles cycle overflow
-		if(ticks > duration_) {
-			int ncycles = ticks/duration_;
-			current_cycle_ = minimum<int>(cycles_, current_cycle_ + ncycles);
-			start_ticks_ += ncycles * duration_;
-			ticks -= ncycles * duration_;
-			// current_frame_ = frames_.begin();
-			current_frame_ = 0;
-			frame_changed_ = true;
-		}
-		// Checks if the animation is finished
-		if(cycles_ != INFINITE_CYCLES && current_cycle_ >= cycles_) {
-			// If the animation is finished, the current frame is the last
-			// one
-			current_frame_ = frames_.size() - 1;
-			frame_changed_ = true;
-			// std::cerr << "Animation finished\n";
-			no_current_frame_ = false;
-			started_ = false;
-			return;
-		}
-
-		if(ticks < (frames_[current_frame_].milliseconds - start_frame_)) {
-			// std::cerr << "Animation not yet started\n";
-			frame_changed_ = true;
-			no_current_frame_ = true;
-			return;
-		}
-
-		// Looks for the current frame
-		typename std::vector<frame>::size_type i = current_frame_ + 1;
-		for(; i != frames_.size(); ++i) {
-			if(ticks < (frames_[i].milliseconds - start_frame_))
-				break;
-			current_frame_ = i;
-			frame_changed_ = true;
-			// std::cerr << "Skipping to next frame\n";
-		}
-		no_current_frame_ = false;
-
-	} else {
-		// If the duration is void, the animation is automatically finished.
-		// current_cycle_ = cycles_;
-		if(cycles_ != -1) {
-			started_ = false;
-		} else {
-
-		does_not_change_ = true;
-		}
-		frame_changed_ = false;
-		// current_frame_ = frames_.size() - 1;
-		// frame_changed_ = false;
-		// std::cerr << "Returning last frame\n";
-		no_current_frame_ = false;
+	typename std::map<int,frame>::iterator current_frame = frames_.find(current_frame_key_);
+	while(get_current_frame_end_time() < get_animation_time() &&  // catch up
+			get_current_frame_end_time() < get_end_time()) {// don't go after the end
+		current_frame++;
+		current_frame_key_ = current_frame->first;
 	}
-
 }
 
 template<typename T,  typename T_void_value>
-bool animated<T,T_void_value>::frame_changed() const
+bool animated<T,T_void_value>::need_update() const
 {
-	return frame_changed_;
+	if(does_not_change_) {
+		return false;
+	}
+	if(frames_.empty()) {
+		return false;
+	}
+	if(!started_) {
+		return false;
+	}
+	if(SDL_GetTicks() >  (unsigned int)(get_current_frame_end_time()/acceleration_+start_tick_)){
+		return true;
+	}
+	return false;
 }
 
+template<typename T,  typename T_void_value>
+bool animated<T,T_void_value>::animation_would_finish() const
+{
+	if(frames_.empty())
+		return true;
+	if(!started_)
+		return true;
+	if(!cycles_ && (SDL_GetTicks() >  (unsigned int)(get_end_time()/acceleration_+start_tick_)))
+		return true;
+
+	return false;
+}
 template<typename T,  typename T_void_value>
 bool animated<T,T_void_value>::animation_finished() const
 {
+	if(frames_.empty())
+		return true;
 	if(!started_)
 		return true;
-	//if(current_cycle_ == cycles_)
-	//	return true;
+	if(!cycles_ && (get_animation_time() >  get_end_time()))
+		return true;
 
 	return false;
 }
@@ -226,50 +175,66 @@ bool animated<T,T_void_value>::animation_finished() const
 template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_animation_time() const
 {
-	if(!started_) return  starting_frame_time_;
-	if(does_not_change_)
-		return SDL_GetTicks() * acceleration_ - real_start_ticks_ + start_frame_;
+	if(!started_  ) return starting_frame_time_;
 
-	return current_time_ - real_start_ticks_ + start_frame_;
-}
-
-template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_cycle_time() const
-{
-	return current_time_ - start_ticks_ + start_frame_;
+	return ((double)(last_update_tick_ - start_tick_)*acceleration_)+starting_frame_time_;
 }
 
 template<typename T,  typename T_void_value>
 const T& animated<T,T_void_value>::get_current_frame() const
 {
-	if(no_current_frame_ == true)
+	if(frames_.empty() )
 		return void_value_;
-	const frame& cur = frames_[current_frame_];
-	if(!cur.has_value)
-		return void_value_;
-	return cur.value;
+	return frames_.find(current_frame_key_)->second.value_;
+}
+
+template<typename T,  typename T_void_value>
+const int animated<T,T_void_value>::get_current_frame_begin_time() const
+{
+	if(frames_.empty() )
+		return starting_frame_time_;
+	return frames_.find(current_frame_key_)->first;
+}
+
+template<typename T,  typename T_void_value>
+const int animated<T,T_void_value>::get_current_frame_end_time() const
+{
+	if(frames_.empty() )
+		return starting_frame_time_;
+	return get_current_frame_begin_time() +get_current_frame_duration();
+}
+
+template<typename T,  typename T_void_value>
+const int animated<T,T_void_value>::get_current_frame_duration() const
+{
+	if(frames_.empty() )
+		return 0;
+	return frames_.find(current_frame_key_)->second.duration_;
+}
+
+template<typename T,  typename T_void_value>
+const int animated<T,T_void_value>::get_current_frame_time() const
+{
+	if(frames_.empty() )
+		return 0;
+	return maximum<int>(get_current_frame_begin_time(),get_animation_time() - get_current_frame_begin_time());
 }
 
 template<typename T,  typename T_void_value>
 const T& animated<T,T_void_value>::get_first_frame() const
 {
-	typename std::vector<frame>::const_iterator frame_;
-	for(frame_ = frames_.begin() ; frame_ != frames_.end(); frame_++ ) {
-		if(frame_->has_value)
-			return frame_->value;
-	}
-	return void_value_;
+	if(frames_.empty() )
+		return void_value_;
+	return frames_.begin()->second.value_;
 }
 
 template<typename T,  typename T_void_value>
 const T& animated<T,T_void_value>::get_last_frame() const
 {
-	typename std::vector<frame>::const_reverse_iterator frame_;
-	for(frame_ = frames_.rbegin() ; frame_ != frames_.rend(); frame_++ ) {
-		if(frame_->has_value)
-			return frame_->value;
-	}
-	return void_value_;
+	if(frames_.empty() )
+		return void_value_;
+	typename std::map<int,frame>::const_reverse_iterator last_frame = frames_.rbegin();
+	return last_frame->second.value_;
 }
 
 template<typename T, typename T_void_value>
@@ -279,23 +244,19 @@ int animated<T,T_void_value>::get_frames_count() const
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_first_frame_time() const
+int animated<T,T_void_value>::get_begin_time() const
 {
-	if (starting_frame_time_ != INT_MAX && starting_frame_time_ != INT_MIN)
-		return starting_frame_time_;
-
-	return 0;
+	return starting_frame_time_;
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_last_frame_time() const
+int animated<T,T_void_value>::get_end_time() const
 {
-	if (ending_frame_time_ != INT_MAX && ending_frame_time_ != INT_MIN)
-		return ending_frame_time_;
-
-	return 0;
+	if(frames_.empty())
+		return starting_frame_time_;
+	typename std::map<int,frame>::const_reverse_iterator last_frame = frames_.rbegin();
+	return (last_frame->first +last_frame->second.duration_);
 }
-
 
 // Force compilation of the following template instantiations
 
