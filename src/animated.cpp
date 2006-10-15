@@ -38,7 +38,7 @@ animated<T,T_void_value>::animated(int start_time) :
 }
 
 template<typename T,  typename T_void_value>
-animated<T,T_void_value>::animated(const std::string &cfg,int start_time, const string_initializer& init):
+animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &cfg, int start_time, bool force_change ):
 	starting_frame_time_(start_time),
 	does_not_change_(true),
 	started_(false),
@@ -48,23 +48,11 @@ animated<T,T_void_value>::animated(const std::string &cfg,int start_time, const 
 	last_update_tick_(0),
 	current_frame_key_(start_time)
 {
-	std::vector<std::string> items = utils::split(cfg);
 
-	std::vector<std::string>::const_iterator itor = items.begin();
-	for(; itor != items.end(); ++itor) {
-		const std::vector<std::string>& items = utils::split(*itor, ':');
-		std::string str;
-		int time;
+	typename std::vector< std::pair<int,T> >::const_iterator itor = cfg.begin();
+	for(; itor != cfg.end(); ++itor) {
 
-		if(items.size() > 1) {
-			str = items.front();
-			time = atoi(items.back().c_str());
-		} else {
-			str = *itor;
-			time = 100;
-		}
-
-		add_frame(time,init(str),false);
+		add_frame(itor->first,itor->second,force_change);
 	}
 }
 

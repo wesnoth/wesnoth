@@ -16,6 +16,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 
 template<typename T>
 class void_value
@@ -28,22 +29,14 @@ template<typename T, typename T_void_value=void_value<T> >
 class animated
 {
 public:
-	class string_initializer
-	{
-	public:
-		virtual T operator()(const std::string& s) const { return T(s); }
-		virtual ~string_initializer(){};
-	};
 
 	animated(int start_time=0);
 	virtual ~animated(){};
 
-	//if T can be constructed from a string, you may use this constructor
-	// animated(const std::string& cfg);
-	//if T cannot, you may provide a custom (subclassed) string_initializer
-	//to do the job
 
-	animated(const std::string &cfg, int start_time = 0, const string_initializer& init=string_initializer());
+	typedef  std::pair<int,T> frame_description;
+	typedef  std::vector<frame_description> anim_description;
+	animated(const std::vector<frame_description> &cfg, int start_time = 0,bool force_change =false);
 
 
 	// Adds a frame

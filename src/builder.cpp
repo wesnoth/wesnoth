@@ -25,30 +25,6 @@
 
 #define ERR_NG LOG_STREAM(err, engine)
 
-namespace {
-
-class locator_string_initializer : public animated<image::locator>::string_initializer
-{
-public:
-	locator_string_initializer() : no_loc_(true) {}
-	locator_string_initializer(const gamemap::location& loc): no_loc_(false), loc_(loc)  {}
-	image::locator operator()(const std::string &s) const;
-
-private:
-	bool no_loc_;
-	gamemap::location loc_;
-};
-
-image::locator locator_string_initializer::operator()(const std::string &s) const
-{
-	if(no_loc_) {
-		return image::locator("terrain/" + s + ".png");
-	} else {
-		return image::locator("terrain/" + s + ".png", loc_);
-	}
-}
-
-}
 
 const int terrain_builder::rule_image::TILEWIDTH = 72;
 const int terrain_builder::rule_image::UNITPOS = 36 + 18;
@@ -214,7 +190,8 @@ void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 		btile.images_background.clear();
 		const std::string filename =
 			map_.get_terrain_info(map_.get_terrain(loc)).symbol_image();
-		animated<image::locator> img_loc("terrain/" + filename + ".png");
+		animated<image::locator> img_loc;
+		img_loc.add_frame(100,image::locator("terrain/" + filename + ".png"));
 		img_loc.start_animation(0, true);
 		btile.images_background.push_back(img_loc);
 	}
@@ -274,14 +251,30 @@ bool terrain_builder::start_animation(building_rule &rule)
 
 			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
 
-				locator_string_initializer initializer;
+				animated<image::locator>::anim_description image_vector;
+				std::vector<std::string> items = utils::split(variant->second.image_string);
+				std::vector<std::string>::const_iterator itor = items.begin();
+				for(; itor != items.end(); ++itor) {
+					const std::vector<std::string>& items = utils::split(*itor, ':');
+					std::string str;
+					int time;
 
-				if(image->global_image) {
-					initializer = locator_string_initializer(constraint->second.loc);
+					if(items.size() > 1) {
+						str = items.front();
+						time = atoi(items.back().c_str());
+					} else {
+						str = *itor;
+						time = 100;
+					}
+					if(image->global_image) {
+						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str + ".png",constraint->second.loc)));
+					} else {
+						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str + ".png")));
+					}
+
 				}
 
-				animated<image::locator> th(variant->second.image_string,0,
-						initializer);
+				animated<image::locator> th(image_vector);
 
 				variant->second.image = th;
 				variant->second.image.start_animation(0, true);
