@@ -835,11 +835,15 @@ attack::attack(display& gui, const gamemap& map,
 				}
 			}
 
-			bool dies = unit_display::unit_attack(gui_,units_,attacker_,defender_,
-				            damage_defender_takes,
-							*a_stats_->weapon,d_stats_->weapon,
-							update_display_,abs_n_attack_);
+			unit_display::unit_attack(gui_,units_,attacker_,defender_,
+					damage_defender_takes,
+					*a_stats_->weapon,d_stats_->weapon,
+					update_display_,abs_n_attack_);
+			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
+			if(dies) {
+				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon);
+			}
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES, attacker_damage_);
 
@@ -1038,11 +1042,15 @@ attack::attack(display& gui, const gamemap& map,
 				}
 			}
 
-			bool dies = unit_display::unit_attack(gui_,units_,defender_,attacker_,
-			               damage_attacker_takes,
-						   *d_stats_->weapon,a_stats_->weapon,
-						   update_display_,abs_n_defend_);
+			unit_display::unit_attack(gui_,units_,defender_,attacker_,
+					damage_attacker_takes,
+					*d_stats_->weapon,a_stats_->weapon,
+					update_display_,abs_n_defend_);
+			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
+			if(dies) {
+				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon);
+			}
 			if(ran_results == NULL) {
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");

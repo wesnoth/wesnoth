@@ -186,14 +186,11 @@ void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_
 		events::pump();
 		disp.delay(10);
 	}
-	u.set_standing(disp,loc);
-	disp.update_display();
-	events::pump();
 }
 
 namespace {
 
-bool unit_attack_ranged(display& disp, unit_map& units,
+void unit_attack_ranged(display& disp, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
 			int damage, const attack_type& attack, const attack_type* secondary_attack,bool update_display, int swing)
 
@@ -223,7 +220,6 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(b,update_tiles);
 
-	bool dead = false;
 
 
 
@@ -363,26 +359,16 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	missile_halo = 0;
 	halo::remove(missile_frame_halo);
 	missile_frame_halo = 0;
-	if(def->second.take_hit(damage)) {
-		dead = true;
-	}
 
-
-	if(dead) {
-		unit_display::unit_die(disp,def->first,def->second,&attack);
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
-                 att->second.set_standing(disp,a);
-	}
-	disp.update_display();
-	events::pump();
-
-	return dead;
+	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
+	att->second.set_standing(disp,a);
+	def->second.set_standing(disp,b);
 
 }
 
 } //end anon namespace
 
-bool unit_attack(display& disp, unit_map& units,
+void unit_attack(display& disp, unit_map& units,
                  const gamemap::location& a, const gamemap::location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
 		 bool update_display, int swing)
@@ -437,11 +423,6 @@ bool unit_attack(display& disp, unit_map& units,
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(b,update_tiles);
 
-	bool dead = false;
-
-
-
-
 
 	attacker.restart_animation(disp,start_time);
 	defender.restart_animation(disp,start_time);
@@ -449,9 +430,6 @@ bool unit_attack(display& disp, unit_map& units,
 
 	int animation_time = start_time;
 	bool played_center = false;
-	if(def->second.take_hit(damage)) {
-		dead = true;
-	}
 	while(!hide && (
 		attacker.state() != unit::STATE_STANDING ||
 		defender.state() != unit::STATE_STANDING ||
@@ -496,16 +474,11 @@ bool unit_attack(display& disp, unit_map& units,
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
 
+	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
+	att->second.set_standing(disp,a);
+	def->second.set_standing(disp,b);
 
-	if(dead) {
-		unit_display::unit_die(disp,def->first,def->second,&attack);
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
-                 att->second.set_standing(disp,a);
-	}
-	disp.update_display();
-	events::pump();
 
-	return dead;
 
 }
 } // end unit display namespace

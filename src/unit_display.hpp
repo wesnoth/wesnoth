@@ -37,7 +37,7 @@ void unit_die(display& disp, const gamemap::location& loc, unit& u, const attack
 ///displayed if the unit dies.
 ///true is returned if the defending unit is dead, and should be removed from the
 ///playing field.
-bool unit_attack(display& disp, unit_map& units,
+void unit_attack(display& disp, unit_map& units,
                  const gamemap::location& a, const gamemap::location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
 		 bool update_display, int swing);
