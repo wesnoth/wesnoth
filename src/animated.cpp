@@ -117,7 +117,7 @@ void animated<T,T_void_value>::update_last_draw_time()
 	}
 	if(cycles_) {
 		while(get_animation_time() > get_end_time()){  // cut extra time
-			start_tick_ +=get_end_time()/acceleration_;
+			start_tick_ +=(int)(get_end_time()/acceleration_);
 			current_frame_key_ =starting_frame_time_;
 		}
 	}
@@ -177,7 +177,7 @@ int animated<T,T_void_value>::get_animation_time() const
 {
 	if(!started_  ) return starting_frame_time_;
 
-	return ((double)(last_update_tick_ - start_tick_)*acceleration_)+starting_frame_time_;
+	return (int)(((double)(last_update_tick_ - start_tick_)*acceleration_)+starting_frame_time_);
 }
 
 template<typename T,  typename T_void_value>

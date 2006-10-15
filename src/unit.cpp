@@ -1852,8 +1852,6 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	else if(anim_->get_begin_time() > anim_->get_animation_time()) current_frame = anim_->get_first_frame();
 	else current_frame = anim_->get_current_frame();
 
-	image::locator loc;
-	loc = current_frame.image();
 	double tmp_offset = current_frame.offset(anim_->get_current_frame_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
 	const int x = int(tmp_offset*xdst + (1.0-tmp_offset)*xsrc);
@@ -1882,6 +1880,8 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 					halo::HREVERSE);
 		}
 	}
+	image::locator loc;
+	loc = current_frame.image();
 	if(loc.is_void()) {
 		loc = absolute_image();
 	}
