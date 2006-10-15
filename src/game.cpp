@@ -993,8 +993,14 @@ void game_controller::download_campaigns()
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
-		const int index = gui::show_dialog2(disp(),NULL,_("Get Add-ons"),_("Choose the add-on to download."),gui::OK_CANCEL,&options,
-			NULL, "", NULL, 256, NULL, NULL, -1, -1, NULL, NULL, "", &sorter);
+		gui::dialog addon_dialog(disp(), _("Get Add-ons"), _("Choose the add-on to download."),
+			gui::OK_CANCEL);
+		gui::menu::style addon_style(gui::menu::default_style);
+		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
+		gui::menu *addon_menu = new gui::menu(disp().video(), options, false, -1,
+			gui::dialog::max_menu_width, &sorter, &addon_style, false);
+		addon_dialog.set_menu(addon_menu);
+		const int index = addon_dialog.show();
 		if(index < 0) {
 			return;
 		}

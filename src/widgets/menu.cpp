@@ -671,7 +671,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		const std::string str = *it;
 		if (!str.empty() && str[0] == IMAGE_PREFIX) {
 			const std::string image_name(str.begin()+1,str.end());
-			surface const img = image::get_image(image_name,image::UNSCALED);
+			surface const img = get_item_image(image_name);
 			if(img != NULL) {
 				res.w += img->w;
 				res.h = maximum<int>(img->h, res.h);
@@ -805,7 +805,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 			str = *it;
 			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
-				const surface img = image::get_image(image_name,image::UNSCALED);
+				const surface img = style_->get_item_image(image_name);
 				const int remaining_width = max_width_ < 0 ? area.w :
 				minimum<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
 				if(img != NULL && img->w <= remaining_width

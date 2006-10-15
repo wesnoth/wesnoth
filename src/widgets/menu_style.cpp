@@ -54,7 +54,8 @@ menu *empty_menu = NULL;
 menu::style::style() : font_size_(font::SIZE_NORMAL),
 		cell_padding_(font::SIZE_NORMAL * 3/5), thickness_(0),
 		normal_rgb_(0x000000), selected_rgb_(0x000099), heading_rgb_(0x333333),
-		normal_alpha_(0.2),  selected_alpha_(0.6), heading_alpha_(0.3)
+		normal_alpha_(0.2),  selected_alpha_(0.6), heading_alpha_(0.3),
+		max_img_w_(-1), max_img_h_(-1)
 {}
 
 menu::style::~style()
@@ -73,6 +74,31 @@ size_t menu::style::get_font_size() const { return font_size_; }
 size_t menu::style::get_cell_padding() const { return cell_padding_; }
 size_t menu::style::get_thickness() const { return thickness_; }
 
+void menu::style::scale_images(int max_width, int max_height)
+{
+	max_img_w_ = max_width;
+	max_img_h_ = max_height;
+}
+
+surface menu::style::get_item_image(const image::locator& img_loc) const
+{
+	surface surf = image::get_image(img_loc, image::UNSCALED);
+	if(!surf.null())
+	{
+		int scale = 100;
+		if(max_img_w_ > 0 && surf->w > max_img_w_) {
+			scale = (max_img_w_ * 100) / surf->w;
+		}
+		if(max_img_h_ > 0 && surf->h > max_img_h_) {
+			scale = minimum<int>(scale, ((max_img_h_ * 100) / surf->h));
+		}
+		if(scale != 100)
+		{
+			return scale_surface(surf, (scale * surf->w)/100, (scale * surf->h)/100);
+		}
+	}
+	return surf;
+}
 
 bool menu::imgsel_style::load_image(const std::string &img_sub)
 {

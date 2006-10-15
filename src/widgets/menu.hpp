@@ -20,6 +20,7 @@
 #include <vector>
 
 
+#include "../image.hpp"
 #include "../events.hpp"
 #include "../sdl_utils.hpp"
 
@@ -48,7 +49,9 @@ public:
 		virtual SDL_Rect item_size(const std::string& item) const;
 		virtual void draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+		void scale_images(int max_width, int max_height);
 
+		surface get_item_image(const image::locator &i_locator) const;
 		size_t get_font_size() const;
 		size_t get_cell_padding() const;
 		size_t get_thickness() const;
@@ -60,6 +63,7 @@ public:
 
 		int normal_rgb_, selected_rgb_, heading_rgb_;
 		double normal_alpha_, selected_alpha_, heading_alpha_;
+		int max_img_w_, max_img_h_;
 	};
 
 	//image-border selction style
