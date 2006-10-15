@@ -995,7 +995,7 @@ void game_controller::download_campaigns()
 
 		gui::dialog addon_dialog(disp(), _("Get Add-ons"), _("Choose the add-on to download."),
 			gui::OK_CANCEL);
-		gui::menu::style addon_style(gui::menu::default_style);
+		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
 		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
 		gui::menu *addon_menu = new gui::menu(disp().video(), options, false, -1,
 			gui::dialog::max_menu_width, &sorter, &addon_style, false);
