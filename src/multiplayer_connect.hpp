@@ -169,9 +169,6 @@ private:
 	void load_game();
 	void lists_init();
 
-	//convenience function
-	config* get_snapshot();
-
 	// Updates the level_ variable to reflect the sides in the sides_ vector
 	void update_level();
 

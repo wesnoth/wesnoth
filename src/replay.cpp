@@ -212,7 +212,6 @@ void replay::save_game(const std::string& label, const game_state& gamestate, bo
 	log_scope("replay::save_game");
 	saveInfo_.snapshot = gamestate.snapshot;
 	saveInfo_.starting_pos = gamestate.starting_pos;
-	saveInfo_.variables = gamestate.variables;
 
 	if(include_replay) {
 		saveInfo_.replay_data = cfg_;

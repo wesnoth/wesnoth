@@ -67,9 +67,26 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	config starting_pos;
 
 	recorder.set_save_info(gamestate);
+	if (gamestate.snapshot.child("side") != NULL){
+		gamestate = read_game(units_data, &gamestate.snapshot);
+	}
 
-	starting_pos = gamestate.starting_pos;
-	scenario = &starting_pos;
+	//see if we load the scenario from the scenario data -- if there is
+	//no snapshot data available from a save, or if the user has selected
+	//to view the replay from scratch
+	if(!recorder.at_end()) {
+		//if the starting state is specified, then use that,
+		//otherwise get the scenario data and start from there.
+		if(gamestate.starting_pos.empty() == false) {
+			LOG_G << "loading starting position...\n";
+			starting_pos = gamestate.starting_pos;
+			scenario = &starting_pos;
+		} else {
+			LOG_G << "loading scenario: '" << gamestate.scenario << "'\n";
+			scenario = game_config.find_child(type,"id",gamestate.scenario);
+			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
+		}
+	}
 
 	controller_map controllers;
 
@@ -125,11 +142,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	recorder.set_save_info(gamestate);
 
 	//see if we load the scenario from the scenario data -- if there is
-	//no snapshot data available from a save
+	//no snapshot data available from a save, or if the user has selected
+	//to view the replay from scratch
 	if(gamestate.snapshot.child("side") == NULL || !recorder.at_end()) {
-		//if the gamestate already contains a starting_pos, then
-		//we are starting a fresh multiplayer game. Otherwise this is the start
-		//of a campaign scenario.
+		//if the starting state is specified, then use that,
+		//otherwise get the scenario data and start from there.
 		if(gamestate.starting_pos.empty() == false) {
 			LOG_G << "loading starting position...\n";
 			starting_pos = gamestate.starting_pos;
@@ -137,16 +154,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		} else {
 			LOG_G << "loading scenario: '" << gamestate.scenario << "'\n";
 			scenario = game_config.find_child(type,"id",gamestate.scenario);
-			starting_pos = *scenario;
-			gamestate.starting_pos = *scenario;
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
-		//This game was started from a savegame
 		LOG_G << "loading snapshot...\n";
 		//load from a save-snapshot.
-		starting_pos = gamestate.starting_pos;
-		scenario = &gamestate.snapshot;
+		starting_pos = gamestate.snapshot;
+		scenario = &starting_pos;
+		gamestate = read_game(units_data, &gamestate.snapshot);
 	}
 
 	controller_map controllers;
