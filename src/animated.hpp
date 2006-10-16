@@ -44,7 +44,7 @@ public:
 
 	//Starts an animation cycle. The first frame of the animation to start
 	//may be set to any value
-	void start_animation(int start_time=0, bool cycles=false, double acceleration=1);
+	void start_animation(int start_time, bool cycles=false, double acceleration=1);
 
 	int get_begin_time() const;
 	int get_end_time() const;
