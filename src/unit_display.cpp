@@ -393,7 +393,8 @@ void unit_attack(display& disp, unit_map& units,
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
 	if(attack.range_type() == attack_type::LONG_RANGE) {
-		return unit_attack_ranged(disp, units, a, b, damage, attack,secondary_attack, update_display, swing);
+		unit_attack_ranged(disp, units, a, b, damage, attack,secondary_attack, update_display, swing);
+		return;
 	}
 
 	int start_time = 500;

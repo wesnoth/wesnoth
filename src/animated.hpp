@@ -67,6 +67,8 @@ public:
 	int get_frames_count() const;
 	const bool does_not_change() const {return does_not_change_;}
 
+	static const T void_value_; //MSVC: the frame constructor below requires this to be public
+
 protected:
 	int starting_frame_time_;
 
@@ -85,8 +87,6 @@ private:
 		int duration_;
 		T value_;
 	};
-
-	static const T void_value_;
 
 	bool does_not_change_;	// optimization for 1-frame permanent animations
 	bool started_;

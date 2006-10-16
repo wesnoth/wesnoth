@@ -67,7 +67,7 @@ void animated<T,T_void_value>::add_frame(int duration, const T& value,bool force
 		does_not_change_=!force_change;
 		return;
 	}
-	typename std::map<int,frame>::const_reverse_iterator last_frame = frames_.rbegin();
+	typename std::map<int,frame>::reverse_iterator last_frame = frames_.rbegin();
 	does_not_change_=false;
 	frames_[last_frame->first +last_frame->second.duration_] =
 		frame(duration,value);
