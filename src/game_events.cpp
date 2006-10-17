@@ -843,9 +843,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(random.empty() == false) {
 			std::string random_value, word;
 			std::vector<std::string> words;
-			std::vector<std::pair<size_t,size_t> > ranges;
+			std::vector<std::pair<long,long> > ranges;
 			int num_choices = 0;
-			std::string::size_type pos = 0, pos2 = std::string::npos, tmp;
+			std::string::size_type pos = 0, pos2 = std::string::npos;
 			std::stringstream ss(std::stringstream::in|std::stringstream::out);
 			while (pos2 != random.length()) {
 				pos = pos2+1;
@@ -856,7 +856,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				word = random.substr(pos, pos2-pos);
 				words.push_back(word);
-				tmp = word.find("..");
+				std::string::size_type tmp = word.find("..");
 
 
 				if (tmp == std::string::npos) {
@@ -870,7 +870,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					const std::string second = word.substr(tmp+2,
 							random.length());
 
-					size_t low, high;
+					long low, high;
 					ss << first + " " + second;
 					ss >> low;
 					ss >> high;
@@ -881,13 +881,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						low = high;
 						high = tmp;
 					}
-					ranges.push_back(std::pair<int, int>(low,high));
+					ranges.push_back(std::pair<long, long>(low,high));
 					num_choices += (high - low) + 1;
 				}
 			}
 
 			size_t choice = get_random() % num_choices;
-			tmp = 0;
+			long tmp = 0;
 			for(size_t i = 0; i < ranges.size(); i++) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
 				if (tmp > choice) {
