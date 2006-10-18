@@ -1810,9 +1810,7 @@ int play_game(int argc, char** argv)
 			about::show_about(game.disp());
 			continue;
 		} else if(res == gui::SHOW_HELP) {
-			config dummy_help_cfg;
-			gamemap dummy_help_map(dummy_help_cfg, "1");
-			help::help_manager help_manager(&game.game_config(), &game.units_data(), &dummy_help_map);
+			help::help_manager help_manager(&game.game_config(), &game.units_data(), NULL);
 			help::show_help(game.disp());
 			continue;
 		} else if(res == gui::GET_ADDONS) {
