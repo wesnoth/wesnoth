@@ -191,6 +191,8 @@ class unit
 
 		void set_hidden(bool state) {hidden_ = state;};
 		bool is_flying() const;
+		bool is_fearless() const { return is_fearless_; }
+		bool is_healthy() const { return is_healthy_; }
 		int movement_cost(gamemap::TERRAIN terrain, int recurse_count=0) const;
 		int defense_modifier(gamemap::TERRAIN terrain, int recurse_count=0) const;
 		int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const;
@@ -339,7 +341,7 @@ class unit
 		t_string traits_description_;
 		int unit_value_;
 		gamemap::location goto_, interrupted_move_;
-		bool flying_;
+		bool flying_, is_fearless_, is_healthy_;
 
 //		std::map<gamemap::TERRAIN,int> movement_costs_, movement_costs_b_;
 //		std::map<gamemap::TERRAIN,int> defense_mods_, defense_mods_b_;

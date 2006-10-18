@@ -556,7 +556,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		int damage_multiplier = 100;
 
 		// Time of day bonus.
-		damage_multiplier += combat_modifier(status, units, u_loc, u.alignment(), map);
+		damage_multiplier += combat_modifier(status, units, u_loc, u.alignment(), u.is_fearless(), map);
 
 		// Leadership bonus.
 		int leader_bonus = 0;
@@ -1384,6 +1384,9 @@ void calculate_healing(display& disp, const gamemap& map,
 			}
 			if(i->second.resting()) {
 				healing += game_config::rest_heal_amount;
+				if(i->second.is_healthy()) {
+					healing += game_config::rest_heal_amount;
+				}
 			}
 		}
 		if(utils::string_bool(i->second.get_state("poisoned"))) {
@@ -1630,6 +1633,7 @@ int combat_modifier(const gamestatus& status,
 			const unit_map& units,
 			const gamemap::location& loc,
 			 unit_type::ALIGNMENT alignment,
+			 bool is_fearless,
 			const gamemap& map)
 {
 	const time_of_day& tod = timeofday_at(status,units,loc,map);
@@ -1640,6 +1644,8 @@ int combat_modifier(const gamestatus& status,
 		bonus = 0;
 	else if(alignment == unit_type::CHAOTIC)
 		bonus = -bonus;
+	if(is_fearless)
+		bonus = maximum<int>(bonus, 0);
 
 	return bonus;
 }

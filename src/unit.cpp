@@ -133,6 +133,8 @@ unit::unit(const unit& o):
 		goto_(o.goto_),
 		interrupted_move_(o.interrupted_move_),
 		flying_(o.flying_),
+		is_fearless_(o.is_fearless_),
+		is_healthy_(o.is_healthy_),
 
 		modification_descriptions_(o.modification_descriptions_),
 
@@ -3038,9 +3040,13 @@ void unit::apply_modifications()
 	traits_description_ = "";
 
 	std::vector< t_string > traits;
+	is_fearless_ = false;
+	is_healthy_ = false;
 	config::child_list const &mods = modifications_.get_children("trait");
 	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
 		t_string const &name = (**j)["name"];
+		is_fearless_ = is_fearless_ || (**j)["id"] == "fearless";
+		is_healthy_ = is_healthy_ || (**j)["id"] == "healthy";
 		if (!name.empty())
 			traits.push_back(name);
 	}

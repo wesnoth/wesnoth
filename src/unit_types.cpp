@@ -696,6 +696,18 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		genders_.push_back(unit_race::MALE);
 	}
 
+	const std::string& align = cfg_["alignment"];
+	if(align == "lawful")
+		alignment_ = LAWFUL;
+	else if(align == "chaotic")
+		alignment_ = CHAOTIC;
+	else if(align == "neutral")
+		alignment_ = NEUTRAL;
+	else {
+		LOG_STREAM(err, config) << "Invalid alignment found for " << id() << ": '" << align << "'\n";
+		alignment_ = NEUTRAL;
+	}
+
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
@@ -703,12 +715,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			if(race_->uses_global_traits() == false) {
 				possibleTraits_.clear();
 			}
-
 			if(utils::string_bool(cfg["ignore_race_traits"])) {
 				possibleTraits_.clear();
 			} else {
 				const config::child_list& traits = race_->additional_traits();
-				possibleTraits_.insert(possibleTraits_.end(),traits.begin(),traits.end());
+				for(config::const_child_iterator i=traits.begin(); i != traits.end(); ++i)
+				{
+					if(alignment_ != NEUTRAL || ((**i)["id"]) != "fearless")
+						possibleTraits_.push_back(*i);
+				}
 			}
 		}
 	} else {
@@ -731,18 +746,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				}
 			}
 		}
-	}
-
-	const std::string& align = cfg_["alignment"];
-	if(align == "lawful")
-		alignment_ = LAWFUL;
-	else if(align == "chaotic")
-		alignment_ = CHAOTIC;
-	else if(align == "neutral")
-		alignment_ = NEUTRAL;
-	else {
-		LOG_STREAM(err, config) << "Invalid alignment found for " << id() << ": '" << align << "'\n";
-		alignment_ = NEUTRAL;
 	}
 
 	if(cfg_["zoc"] == "") {

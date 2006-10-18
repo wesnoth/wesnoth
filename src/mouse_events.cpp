@@ -314,7 +314,7 @@ namespace{
 			}
 
 			// Time of day modifier.
-			int tod_modifier = combat_modifier(status_, units_, u_loc, u.alignment(), map_);
+			int tod_modifier = combat_modifier(status_, units_, u_loc, u.alignment(), u.is_fearless(), map_);
 			if(tod_modifier != 0) {
 				left_strings.push_back(_("Time of day"));
 				str.str("");
