@@ -1001,6 +1001,10 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				replay::throw_error(errbuf.str());
 			}
 
+			if(def_weapon_num >= (int)tgt->second.attacks().size()) {
+				replay::throw_error("illegal defender weapon type in attack\n");
+			}
+
 			attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !replayer.is_skipping());
 
 			u = units.find(src);
