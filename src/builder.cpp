@@ -248,7 +248,7 @@ bool terrain_builder::rule_valid(const building_rule &rule)
 
 			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
 				std::string s = variant->second.image_string;
-				s = s.substr(0, s.find_first_of(",:"));
+				s = s.substr(0, s.find_first_of(",:")); // FIXME MdW DEBUG here
 
 				if(!image::exists("terrain/" + s + ".png"))
 					return false;
@@ -596,6 +596,8 @@ Starting empty lines are discarded.
       + The column-number is increased by one.
 */
 //FIXME MdW this is a total rewrite not sure whether is really works
+//has a lot of debug code which should be removed
+//
 	int x = 0;
 	int y = 0;
 	int lineno = 0;
@@ -609,6 +611,9 @@ Starting empty lines are discarded.
 	std::vector<terrain_translation::TERRAIN_NUMBER> rule;
 
 	// eat leading blank lines
+#if 0	 
+	std::cerr << "loading map: '" << terrain_translation().set_map(mapstring) << "'\n";
+#endif	
 	while(*map == terrain_translation::VOID_TERRAIN || *map == terrain_translation::EOL){
 		// start keep trac of the last beginning of the line
 		if(*map == terrain_translation::EOL){
@@ -623,15 +628,19 @@ Starting empty lines are discarded.
 	map = start;
 	lineno = (*map == terrain_translation::VOID_TERRAIN)?1:0;
 	x = lineno; //odd lines set the odd X (true???)
+
+	// we're at the start of a line, if odd skip the first 2 items
+	// but make sure we didn't get some half backed data
+	if(lineno == 1) {
+		++map;
+		wassert(map != mapstring.end());
+		++map;
+	} else {
+		int debug_dummy = 4;
+	}
+
 	// parse the map
 	for(;map != mapstring.end();){
-		// we're at the start of a line, if odd skip the first 2 items
-		// but make sure we didn't get some half backed data
-		if(lineno % 2 == 1) {//map += 2;
-			++map;
-			wassert(map != mapstring.end());
-			++map;
-		}
 
 		// we should try to get a maximum of 4 items but are not allowed
 		// to get either an EOL or go beyond the vector
@@ -650,6 +659,10 @@ Starting empty lines are discarded.
 				++map;
 			}
 		}
+#if 0		
+		std::cerr << "got rule: '" << terrain_translation().set_map(rule) << "' at " 
+			<< x << "," << y << "\n";
+#endif			
 		// we the rule evaluate
 		// first try to get the rule as a number, do the comparsion later
 		int anchor = terrain_translation().list_to_int(rule);
@@ -659,6 +672,20 @@ Starting empty lines are discarded.
 		} else if(anchor != -1) {
 			anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, y)));
 		} else {
+#if 0			
+			if(rule.back() == (terrain_translation::VOID_TERRAIN)) {
+#endif				
+			while(rule.back() == (terrain_translation::VOID_TERRAIN)) {
+				rule.erase(rule.end() - 1);
+			}
+#if 0
+				std::cerr << "stripped trailing spaces, new rule :'" << terrain_translation().set_map(rule) << "'\n";
+			}
+#endif				
+			// a rule with only spaces is invalid and results in an empty rule
+			wassert(!rule.empty());
+
+			// add the rule
 			const gamemap::location loc(x, y);
 			add_constraints(br.constraints, loc, rule, global_images);
 		}
@@ -675,7 +702,15 @@ Starting empty lines are discarded.
 				x = 0;
 				// go to the next position in the map
 				++map;
+//				wassert(map != mapstring.end());
+//				++map;
 			} else {
+				// eat EOL and 2 leading spaces
+				++map;
+				wassert(map != mapstring.end());
+				++map;
+				wassert(map != mapstring.end());
+				++map;
 				x = 1;
 			}
 
@@ -805,7 +840,8 @@ void terrain_builder::parse_config(const config &cfg)
 
 	}
 
-#if 0
+// debug output for the terrain rules	
+#if 1
 	std::cerr << "Built terrain rules: \n";
 
 	building_ruleset::const_iterator rule;
@@ -814,8 +850,9 @@ void terrain_builder::parse_config(const config &cfg)
 		for(constraint_set::const_iterator constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
+			// FIXME MdW should be set_list
 			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc
-			          << "), terrain types = " << constraint->second.terrain_types << "\n";
+			          << "), terrain types = '" << terrain_translation().set_map(constraint->second.terrain_types) << "'\n";
 
 			std::vector<std::string>::const_iterator flag;
 
@@ -843,7 +880,7 @@ bool terrain_builder::terrain_matches(terrain_translation::TERRAIN_NUMBER letter
 	for(itor = terrains.begin(); itor != terrains.end(); ++itor) {
 		if(*itor == terrain_translation::STAR)
 			return true;
-		if(*itor == terrain_translation::NOT){
+		if(*itor == terrain_translation::NOT) {
 			negative = true;
 			continue;
 		}
@@ -1019,6 +1056,7 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 
 void terrain_builder::build_terrains()
 {
+
 	log_scope("terrain_builder::build_terrains");
 
 	//builds the terrain_by_type_ cache
@@ -1103,6 +1141,7 @@ void terrain_builder::build_terrains()
 					//so assert for now
 //					wassert(false);
 					adjacent_types[i] = std::vector<terrain_translation::TERRAIN_NUMBER>();
+					adjacent_types[i].push_back(0); // required?
 				}
 			}
 
@@ -1158,4 +1197,30 @@ void terrain_builder::build_terrains()
 
 		rule_index++;
 	}
+#if 0
+
+	std::cerr << "Tile map: \n";
+	
+//	const terrain_builder::tilemap::const_iterator itor = tile_map_.begin()
+//	for(; itor != tile_map_.end(); ++itor) {
+//
+//
+//	}
+		
+	for(int x = -1; x <= map_.x(); ++x) {
+		for(int y = -1; y <= map_.y(); ++y) {
+			std::cerr << ">> Location " << x << "," << y << "\n";
+
+			const gamemap::location loc(x,y);
+			const tile t = tile_map_[loc];
+
+			std::cerr << ">> Foreground images \n";
+			
+
+
+
+		}
+	}
+
+#endif
 }

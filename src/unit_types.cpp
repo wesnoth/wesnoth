@@ -482,7 +482,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,terrain_translation:
 	}
 
 	//if this is an alias, then select the best of all underlying terrains
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map.underlying_mvt_terrain2(terrain);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map.underlying_def_terrain2(terrain);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == terrain_translation::MINUS?true:false);
 		if(recurse_count >= 100) {
@@ -502,9 +502,6 @@ int unit_movement_type::defense_modifier(const gamemap& map,terrain_translation:
 			if(value < ret_value && !revert) {
 				ret_value = value;
 			} else if(value > ret_value && revert) {
-				ret_value = value;
-			}
-			if(value < ret_value) {
 				ret_value = value;
 			}
 		}

@@ -2233,7 +2233,7 @@ int unit::defense_modifier(terrain_translation::TERRAIN_NUMBER terrain, int recu
 
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_mvt_terrain2(terrain);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_def_terrain2(terrain);
 	wassert(underlying.size() > 0);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == terrain_translation::MINUS ?true:false);
@@ -2255,9 +2255,6 @@ int unit::defense_modifier(terrain_translation::TERRAIN_NUMBER terrain, int recu
 			if(value < ret_value && !revert) {
 				ret_value = value;
 			} else if(value > ret_value && revert) {
-				ret_value = value;
-			}
-			if(value < ret_value) {
 				ret_value = value;
 			}
 		}
