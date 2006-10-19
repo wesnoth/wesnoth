@@ -339,7 +339,7 @@ public:
 	void set_diagnostic(const std::string& msg);
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
-	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type);
+	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type, bool bell);
 	void clear_chat_messages();
 
 	//function to draw the image of a unit at a certain location
