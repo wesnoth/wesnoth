@@ -1030,7 +1030,7 @@ size_t menu::get_item_height(int) const
 
 void menu::process_help_string(int mousex, int mousey)
 {
-	const std::pair<int,int> loc = hit_cell(mousex,mousey);
+	const std::pair<int,int> loc(hit(mousex,mousey), hit_column(mousex));
 	if(loc == cur_help_) {
 		return;
 	} else if(loc.first == -1) {
@@ -1041,7 +1041,6 @@ void menu::process_help_string(int mousex, int mousey)
 			video().clear_help_string(help_string_);
 			help_string_ = -1;
 		}
-
 		if(size_t(loc.first) < items_.size()) {
 			const std::vector<std::string>& row = items_[loc.first].help;
 			if(size_t(loc.second) < row.size()) {
