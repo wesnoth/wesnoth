@@ -35,7 +35,7 @@ display* disp = NULL;
 class effect
 {
 public:
-	effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime);
+	effect(int xpos, int ypos, const animated<std::string>::anim_description& img, ORIENTATION orientation,bool infinite);
 
 	void set_location(int x, int y);
 
@@ -66,7 +66,7 @@ int halo_id = 1;
 bool hide_halo = false;
 
 
-effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime)
+effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img, ORIENTATION orientation,bool infinite)
 : images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),
   origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
 {
@@ -75,10 +75,10 @@ effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientati
 
 	set_location(xpos,ypos);
 
-	images_.start_animation(0, lifetime);
+	images_.start_animation(0,infinite);
 
 	if(!images_.animation_finished()) {
-		images_.update_current_frame();
+		images_.update_last_draw_time();
 	}
 
 	current_image_ = "";
@@ -131,7 +131,7 @@ void effect::render()
 		return;
 	}
 
-	images_.update_current_frame();
+	images_.update_last_draw_time();
 	const std::string& img = current_image();
 	if(surf_ == NULL || zoom_ != disp->zoom() || current_image_ != img) {
 		current_image_ = img;
@@ -218,10 +218,28 @@ halo_hider::~halo_hider()
 	unrender();
 }
 
-int add(int x, int y, const std::string& image, ORIENTATION orientation, int lifetime_cycles)
+int add(int x, int y, const std::string& image, ORIENTATION orientation, bool infinite)
 {
 	const int id = halo_id++;
-	haloes.insert(std::pair<int,effect>(id,effect(x,y,image,orientation,lifetime_cycles)));
+	animated<std::string>::anim_description image_vector;
+	std::vector<std::string> items = utils::split(image);
+	std::vector<std::string>::const_iterator itor = items.begin();
+	for(; itor != items.end(); ++itor) {
+		const std::vector<std::string>& items = utils::split(*itor, ':');
+		std::string str;
+		int time;
+
+		if(items.size() > 1) {
+			str = items.front();
+			time = atoi(items.back().c_str());
+		} else {
+			str = *itor;
+			time = 100;
+		}
+		image_vector.push_back(animated<std::string>::frame_description(time,std::string(str)));
+
+	}
+	haloes.insert(std::pair<int,effect>(id,effect(x,y,image_vector,orientation,infinite)));
 	return id;
 }
 

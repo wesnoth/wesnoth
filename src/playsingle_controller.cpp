@@ -423,7 +423,7 @@ redo_turn:
 				// reset gui to prev human one
 				if (!teams_[team_index-1].is_human()) {
 					int t = find_human_team_before(team_index);
-					if (t) {
+					if (t > 0) {
 						gui_->set_team(t-1);
 						gui_->recalculate_minimap();
 						gui_->invalidate_all();
@@ -457,7 +457,7 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->update_display();
 
 	if (save) {
-		menu_handler_.autosave(gamestate_.label, status_.turn(), gamestate_.starting_pos);
+		menu_handler_.autosave(gamestate_.label, status_.turn());
 	}
 
 	if(preferences::turn_bell()) {

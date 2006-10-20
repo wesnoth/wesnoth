@@ -186,14 +186,11 @@ void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_
 		events::pump();
 		disp.delay(10);
 	}
-	u.set_standing(disp,loc);
-	disp.update_display();
-	events::pump();
 }
 
 namespace {
 
-bool unit_attack_ranged(display& disp, unit_map& units,
+void unit_attack_ranged(display& disp, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
 			int damage, const attack_type& attack, const attack_type* secondary_attack,bool update_display, int swing)
 
@@ -223,7 +220,6 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(b,update_tiles);
 
-	bool dead = false;
 
 
 
@@ -269,10 +265,10 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	defender.set_defending(disp,b,damage,&attack,secondary_attack,swing);
 	// min of attacker, defender, missile and -200
 	int start_time = -200;
-	start_time = minimum<int>(start_time,defender.get_animation()->get_first_frame_time());
-	start_time = minimum<int>(start_time,missile_animation.get_first_frame_time());
-	start_time = minimum<int>(start_time,attacker.get_animation()->get_first_frame_time());
-	missile_animation.start_animation(start_time,1,acceleration);
+	start_time = minimum<int>(start_time,defender.get_animation()->get_begin_time());
+	start_time = minimum<int>(start_time,missile_animation.get_begin_time());
+	start_time = minimum<int>(start_time,attacker.get_animation()->get_begin_time());
+	missile_animation.start_animation(start_time,false,acceleration);
 	defender.restart_animation(disp,start_time);
 	attacker.restart_animation(disp,start_time);
 	animation_time = defender.get_animation()->get_animation_time();
@@ -286,14 +282,10 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING))
 	     ){
 		const unit_frame& missile_frame = missile_animation.get_current_frame();
-/*		double pos = missile_frame.offset(missile_animation.get_animation_time());
-		if(pos!=-20.0) pos = animation_time < missile_animation.get_first_frame_time()?1.0:
-			double(animation_time)/double(missile_animation.get_first_frame_time());
-		else pos= 1.0-pos;*/
-		double pos = missile_frame.offset(animation_time);
+		double pos = missile_frame.offset(missile_animation.get_current_frame_time());
 		if(pos == -20.0) {
-			pos = double(animation_time -missile_animation.get_first_frame_time())/
-				double(missile_animation.get_last_frame_time()-missile_animation.get_first_frame_time());
+			pos = double(animation_time -missile_animation.get_begin_time())/
+				double(missile_animation.get_end_time()-missile_animation.get_begin_time());
 		}
 		disp.invalidate(b);
 		disp.invalidate(a);
@@ -302,35 +294,35 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		halo::remove(missile_frame_halo);
 		missile_halo = 0;
 		missile_frame_halo = 0;
-		if(animation_time > missile_animation.get_first_frame_time() &&
-				animation_time < missile_animation.get_last_frame_time() &&
+		if(animation_time > missile_animation.get_begin_time() &&
+				animation_time < missile_animation.get_end_time() &&
 				(!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
 			const int posx = int(pos*xdst + (1.0-pos)*xsrc);
 			const int posy = int(pos*ydst + (1.0-pos)*ysrc);
 
-			std::string missile_image= missile_frame.image();
+			image::locator missile_image= missile_frame.image();
 			const int d = disp.hex_size() / 2;
 			if(vertical_dir) {
 				missile_image = missile_frame.image();
 			} else {
 				missile_image = missile_frame.image_diagonal();
 			}
-			if(!missile_frame.halo(animation_time).empty()) {
+			if(!missile_frame.halo(missile_animation.get_current_frame_time()).empty()) {
 				if(attack_ori != gamemap::location::SOUTH_WEST && attack_ori != gamemap::location::NORTH_WEST) {
-					missile_halo = halo::add(posx+d+missile_frame.halo_x(animation_time),
-							posy+d+missile_frame.halo_y(animation_time),
-							missile_frame.halo(animation_time),
+					missile_halo = halo::add(posx+d+missile_frame.halo_x(missile_animation.get_current_frame_time()),
+							posy+d+missile_frame.halo_y(missile_animation.get_current_frame_time()),
+							missile_frame.halo(missile_animation.get_current_frame_time()),
 							orientation);
 				} else {
-					missile_halo = halo::add(posx+d-missile_frame.halo_x(animation_time),
-							posy+d+missile_frame.halo_y(animation_time),
-							missile_frame.halo(animation_time),
+					missile_halo = halo::add(posx+d-missile_frame.halo_x(missile_animation.get_current_frame_time()),
+							posy+d+missile_frame.halo_y(missile_animation.get_current_frame_time()),
+							missile_frame.halo(missile_animation.get_current_frame_time()),
 							orientation);
 				}
 			}
 			missile_frame_halo = halo::add(posx+d,
 					posy+d,
-					missile_image,
+					missile_image.get_filename(),
 					orientation);
 
 		}
@@ -351,10 +343,10 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		if(leader_loc.valid() && leader->second.get_animation()->animation_finished() ) {
 			leader->second.set_standing(disp,leader_loc,true);
 		}
+		missile_animation.update_last_draw_time();
 		disp.delay(10);
 		// we use missile animation because it's the only one not reseted in the middle to go to standing
 		animation_time = missile_animation.get_animation_time();
-		missile_animation.update_current_frame();
 	}
 	// make sure get hit sound is always played and labels always displayed
 	if(damage > 0 && !hide  && !sound_played) {
@@ -367,26 +359,16 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	missile_halo = 0;
 	halo::remove(missile_frame_halo);
 	missile_frame_halo = 0;
-	if(def->second.take_hit(damage)) {
-		dead = true;
-	}
 
-
-	if(dead) {
-		unit_display::unit_die(disp,def->first,def->second,&attack);
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
-                 att->second.set_standing(disp,a);
-	}
-	disp.update_display();
-	events::pump();
-
-	return dead;
+	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
+	att->second.set_standing(disp,a);
+	def->second.set_standing(disp,b);
 
 }
 
 } //end anon namespace
 
-bool unit_attack(display& disp, unit_map& units,
+void unit_attack(display& disp, unit_map& units,
                  const gamemap::location& a, const gamemap::location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
 		 bool update_display, int swing)
@@ -411,7 +393,8 @@ bool unit_attack(display& disp, unit_map& units,
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
 	if(attack.range_type() == attack_type::LONG_RANGE) {
-		return unit_attack_ranged(disp, units, a, b, damage, attack,secondary_attack, update_display, swing);
+		unit_attack_ranged(disp, units, a, b, damage, attack,secondary_attack, update_display, swing);
+		return;
 	}
 
 	int start_time = 500;
@@ -419,11 +402,11 @@ bool unit_attack(display& disp, unit_map& units,
 
 
 	attacker.set_attacking(disp,a,damage,attack,secondary_attack,swing);
-	start_time=minimum<int>(start_time,attacker.get_animation()->get_first_frame_time());
-	end_time=attacker.get_animation()->get_last_frame_time();
+	start_time=minimum<int>(start_time,attacker.get_animation()->get_begin_time());
+	end_time=attacker.get_animation()->get_end_time();
 
 	defender.set_defending(disp,b,damage,&attack, secondary_attack, swing);
-	start_time=minimum<int>(start_time,defender.get_animation()->get_first_frame_time());
+	start_time=minimum<int>(start_time,defender.get_animation()->get_begin_time());
 
 
 	const gamemap::location leader_loc = under_leadership(units,a);
@@ -434,17 +417,12 @@ bool unit_attack(display& disp, unit_map& units,
 		wassert(leader != units.end());
 		leader->second.set_facing(leader_loc.get_relative_dir(a));
 		leader->second.set_leading(disp,leader_loc);
-		start_time=minimum<int>(start_time,leader->second.get_animation()->get_first_frame_time());
+		start_time=minimum<int>(start_time,leader->second.get_animation()->get_begin_time());
 	}
 
 
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(b,update_tiles);
-
-	bool dead = false;
-
-
-
 
 
 	attacker.restart_animation(disp,start_time);
@@ -453,9 +431,6 @@ bool unit_attack(display& disp, unit_map& units,
 
 	int animation_time = start_time;
 	bool played_center = false;
-	if(def->second.take_hit(damage)) {
-		dead = true;
-	}
 	while(!hide && (
 		attacker.state() != unit::STATE_STANDING ||
 		defender.state() != unit::STATE_STANDING ||
@@ -463,12 +438,12 @@ bool unit_attack(display& disp, unit_map& units,
 	     ){
 
 		double pos = 0.0;
-	        if(animation_time < attacker.get_animation()->get_first_frame_time()) {
+	        if(animation_time < attacker.get_animation()->get_begin_time()) {
 			pos = 0.0;
 		} else if( animation_time > 0) {
 			pos = (1.0-double(animation_time)/double(end_time));
 		} else {
-			pos = 1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time());
+			pos = 1.0 - double(animation_time)/double(attacker.get_animation()->get_begin_time());
 		}
 		if(attacker.state() != unit::STATE_STANDING && pos > 0.0) {
 			attacker.set_offset(pos*0.6);
@@ -500,16 +475,11 @@ bool unit_attack(display& disp, unit_map& units,
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
 
+	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
+	att->second.set_standing(disp,a);
+	def->second.set_standing(disp,b);
 
-	if(dead) {
-		unit_display::unit_die(disp,def->first,def->second,&attack);
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
-                 att->second.set_standing(disp,a);
-	}
-	disp.update_display();
-	events::pump();
 
-	return dead;
 
 }
 } // end unit display namespace

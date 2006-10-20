@@ -817,6 +817,9 @@ bool game_controller::new_campaign()
 		defines_map_.clear();
 		defines_map_[difficulties[res]] = preproc_define();
 	}
+#ifdef HAVE_PYTHON
+	defines_map_["PYTHON"] = preproc_define();
+#endif
 
 	state_.campaign_define = campaign["define"];
 
@@ -993,8 +996,14 @@ void game_controller::download_campaigns()
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
-		const int index = gui::show_dialog2(disp(),NULL,_("Get Add-ons"),_("Choose the add-on to download."),gui::OK_CANCEL,&options,
-			NULL, "", NULL, 256, NULL, NULL, -1, -1, NULL, NULL, "", &sorter);
+		gui::dialog addon_dialog(disp(), _("Get Add-ons"), _("Choose the add-on to download."),
+			gui::OK_CANCEL);
+		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
+		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
+		gui::menu *addon_menu = new gui::menu(disp().video(), options, false, -1,
+			gui::dialog::max_menu_width, &sorter, &addon_style, false);
+		addon_dialog.set_menu(addon_menu);
+		const int index = addon_dialog.show();
 		if(index < 0) {
 			return;
 		}
@@ -1052,7 +1061,18 @@ void game_controller::download_campaigns()
 
 		clear_binary_paths_cache();
 
-		gui::show_dialog(disp(),NULL,_("Add-on Installed"),_("The add-on has been installed."),gui::OK_ONLY);
+		std::string warning = "";
+		std::vector<config *> scripts = find_scripts(cfg, ".unchecked");
+		if (!scripts.empty()) {
+			warning += "\nUnchecked script files found:";
+			std::vector<config *>::iterator i;
+			for (i = scripts.begin(); i != scripts.end(); ++i) {
+				warning += "\n" + (**i)["name"];
+			}
+		}
+
+		gui::show_dialog(disp(),NULL,_("Add-on Installed"),_("The add-on has been installed.") +
+		    warning,gui::OK_ONLY);
 	} catch(config::error&) {
 		gui::show_error_message(disp(), _("Network communication error."));
 	} catch(network::error&) {
@@ -1295,7 +1315,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 {
 	log_scope("read_game_cfg");
 
-	if(defines.size() < 4) {
+	if(defines.size() < 5) {
 		bool is_valid = true;
 		std::stringstream str;
 		str << "-v" << game_config::version;
@@ -1819,10 +1839,7 @@ int play_game(int argc, char** argv)
 			about::show_about(game.disp());
 			continue;
 		} else if(res == gui::SHOW_HELP) {
-			config dummy_help_cfg;
-			std::vector<terrain_translation::TERRAIN_NUMBER> dummy_terrain;
-			gamemap dummy_help_map(dummy_help_cfg, dummy_terrain);
-			help::help_manager help_manager(&game.game_config(), &game.units_data(), &dummy_help_map);
+			help::help_manager help_manager(&game.game_config(), &game.units_data(), NULL);
 			help::show_help(game.disp());
 			continue;
 		} else if(res == gui::GET_ADDONS) {

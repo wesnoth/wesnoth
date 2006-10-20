@@ -50,7 +50,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 		animation_.push_back(attack_animation(cfg));
 	}
 	if(animation_.empty()) {
-		animation_.push_back(attack_animation(unit_frame(image_fighting,-200,100)));
+		animation_.push_back(attack_animation(-200,unit_frame(image_fighting,300)));
 	}
 	assert(!animation_.empty());
 
@@ -701,6 +701,18 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		genders_.push_back(unit_race::MALE);
 	}
 
+	const std::string& align = cfg_["alignment"];
+	if(align == "lawful")
+		alignment_ = LAWFUL;
+	else if(align == "chaotic")
+		alignment_ = CHAOTIC;
+	else if(align == "neutral")
+		alignment_ = NEUTRAL;
+	else {
+		LOG_STREAM(err, config) << "Invalid alignment found for " << id() << ": '" << align << "'\n";
+		alignment_ = NEUTRAL;
+	}
+
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
@@ -708,12 +720,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			if(race_->uses_global_traits() == false) {
 				possibleTraits_.clear();
 			}
-
 			if(utils::string_bool(cfg["ignore_race_traits"])) {
 				possibleTraits_.clear();
 			} else {
 				const config::child_list& traits = race_->additional_traits();
-				possibleTraits_.insert(possibleTraits_.end(),traits.begin(),traits.end());
+				for(config::const_child_iterator i=traits.begin(); i != traits.end(); ++i)
+				{
+					if(alignment_ != NEUTRAL || ((**i)["id"]) != "fearless")
+						possibleTraits_.push_back(*i);
+				}
 			}
 		}
 	} else {
@@ -736,18 +751,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				}
 			}
 		}
-	}
-
-	const std::string& align = cfg_["alignment"];
-	if(align == "lawful")
-		alignment_ = LAWFUL;
-	else if(align == "chaotic")
-		alignment_ = CHAOTIC;
-	else if(align == "neutral")
-		alignment_ = NEUTRAL;
-	else {
-		LOG_STREAM(err, config) << "Invalid alignment found for " << id() << ": '" << align << "'\n";
-		alignment_ = NEUTRAL;
 	}
 
 	if(cfg_["zoc"] == "") {
@@ -785,7 +788,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		defensive_animations_.push_back(defensive_animation(**d));
 	}
 	if(defensive_animations_.empty()) {
-		defensive_animations_.push_back(defensive_animation(unit_frame(image(),-150,150)));
+		defensive_animations_.push_back(defensive_animation(-150,unit_frame(image(),300)));
 		// always have a defensive animation
 	}
 
@@ -797,7 +800,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		teleport_animations_.push_back(unit_animation(**t));
 	}
 	if(teleport_animations_.empty()) {
-		teleport_animations_.push_back(unit_animation(unit_frame(image(),-20,20)));
+		teleport_animations_.push_back(unit_animation(-20,unit_frame(image(),40)));
 		// always have a defensive animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
@@ -814,7 +817,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		death_animations_.push_back(death_animation(**death));
 	}
 	if(death_animations_.empty()) {
-		death_animations_.push_back(death_animation(unit_frame(image(),0,10)));
+		death_animations_.push_back(death_animation(0,unit_frame(image(),10)));
 		// always have a defensive animation
 	}
 
@@ -824,7 +827,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		movement_animations_.push_back(movement_animation(**movement_anim));
 	}
 	if(movement_animations_.empty()) {
-		movement_animations_.push_back(movement_animation(unit_frame(image(),0,150)));
+		movement_animations_.push_back(movement_animation(0,unit_frame(image(),150)));
 		// always have a movement animation
 	}
 
@@ -834,7 +837,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		standing_animations_.push_back(standing_animation(**standing_anim));
 	}
 	if(standing_animations_.empty()) {
-		standing_animations_.push_back(standing_animation(unit_frame(image(),0,1)));
+		standing_animations_.push_back(standing_animation(0,unit_frame(image(),0)));
 		// always have a standing animation
 	}
 
@@ -844,7 +847,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		leading_animations_.push_back(leading_animation(**leading_anim));
 	}
 	if(leading_animations_.empty()) {
-		leading_animations_.push_back(leading_animation(unit_frame(image(),0,150)));
+		leading_animations_.push_back(leading_animation(0,unit_frame(image(),150)));
 		// always have a leading animation
 	}
 
@@ -854,7 +857,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		healing_animations_.push_back(healing_animation(**healing_anim));
 	}
 	if(healing_animations_.empty()) {
-		healing_animations_.push_back(healing_animation(unit_frame(cfg["image_healing"],0,1,"1.0","",0,"",cfg["image_halo_healing"])));
+		healing_animations_.push_back(healing_animation(0,unit_frame(image::locator(cfg["image_healing"]),1,"1.0","",0,"",cfg["image_halo_healing"])));
 		// always have a healing animation
 	}
 
@@ -864,7 +867,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		recruit_animations_.push_back(recruit_animation(**recruit_anim));
 	}
 	if(recruit_animations_.empty()) {
-		recruit_animations_.push_back(recruit_animation(unit_frame(image(),0,600,"0~1:600")));
+		recruit_animations_.push_back(recruit_animation(0,unit_frame(image(),600,"0~1:600")));
 		// always have a recruit animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
@@ -873,7 +876,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		idle_animations_.push_back(idle_animation(**idle_anim));
 	}
 	if(idle_animations_.empty()) {
-		idle_animations_.push_back(idle_animation(unit_frame(image(),0,1)));
+		idle_animations_.push_back(idle_animation(0,unit_frame(image(),1)));
 		// always have a idle animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
@@ -882,7 +885,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		levelin_animations_.push_back(levelin_animation(**levelin_anim));
 	}
 	if(levelin_animations_.empty()) {
-		levelin_animations_.push_back(levelin_animation(unit_frame(image(),0,600,"1.0","",display::rgb(255,255,255),"1~0:600")));
+		levelin_animations_.push_back(levelin_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"1~0:600")));
 		// always have a levelin animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
@@ -891,7 +894,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		levelout_animations_.push_back(levelout_animation(**levelout_anim));
 	}
 	if(levelout_animations_.empty()) {
-		levelout_animations_.push_back(levelout_animation(unit_frame(image(),0,600,"1.0","",display::rgb(255,255,255),"0~1:600")));
+		levelout_animations_.push_back(levelout_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"0~1:600")));
 		// always have a levelout animation
 	}
 	flag_rgb_ = cfg["flag_rgb"];

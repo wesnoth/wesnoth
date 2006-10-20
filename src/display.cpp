@@ -120,29 +120,26 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		animated<image::locator> temp_anim;
 
 		std::vector<std::string> items = utils::split(flag);
-		int current_time = 0;
 		std::vector<std::string>::const_iterator itor = items.begin();
 		for(; itor != items.end(); ++itor) {
-		  const std::vector<std::string>& items = utils::split(*itor, ':');
-		  std::string str;
-		  int time;
+			const std::vector<std::string>& items = utils::split(*itor, ':');
+			std::string str;
+			int time;
 
-		  if(items.size() > 1) {
-			str = items.front();
-			time = atoi(items.back().c_str());
-		  } else {
-		    str = *itor;
-		    time = 100;
-		  }
+			if(items.size() > 1) {
+				str = items.front();
+				time = atoi(items.back().c_str());
+			} else {
+				str = *itor;
+				time = 100;
+			}
 
-		  image::locator flag_image(str, new_rgb, old_rgb);
-		  temp_anim.add_frame(current_time, flag_image);
-		  current_time += time;
+			image::locator flag_image(str, new_rgb, old_rgb);
+			temp_anim.add_frame(time, flag_image);
 		}
-		temp_anim.add_frame(current_time);
 		flags_.push_back(temp_anim);
 
-		flags_.back().start_animation(rand()%flags_.back().get_frames_count(), animated<image::locator>::INFINITE_CYCLES);
+		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
 	}
 
 	//clear the screen contents
@@ -869,6 +866,9 @@ void display::draw(bool update,bool force)
 				unit_invals.insert(*it);
 			}
 			draw_tile(*it, clip_rect);
+			if(map_.is_village(*it) && player_teams::village_owner(*it) != -1) {
+				flags_[player_teams::village_owner(*it)].update_last_draw_time();
+			}
 
 		}
 
@@ -2060,8 +2060,7 @@ void display::invalidate_animations()
 	get_visible_hex_bounds(topleft, bottomright);
 
 	for(size_t i = 0; i < flags_.size(); ++i) {
-		flags_[i].update_current_frame();
-		if(flags_[i].frame_changed()) {
+		if(flags_[i].need_update()) {
 			animate_flags = true;
 		}
 	}
@@ -2076,14 +2075,14 @@ void display::invalidate_animations()
 	}
 	unit_map::iterator unit;
 	for(unit=units_.begin() ; unit != units_.end() ; unit++) {
-		unit->second.refresh(*this,unit->first);
-		if (unit->second.get_animation() && !unit->second.get_animation()->does_not_change())
+		if (unit->second.get_animation() && unit->second.get_animation()->need_update())
 			invalidate(unit->first);
+		unit->second.refresh(*this,unit->first);
 	}
 	if (temp_unit_ ) {
-		temp_unit_->refresh(*this, temp_unit_loc_);
-		if (temp_unit_->get_animation() && !temp_unit_->get_animation()->does_not_change())
+		if (temp_unit_->get_animation() && temp_unit_->get_animation()->need_update())
 			invalidate(temp_unit_loc_);
+		temp_unit_->refresh(*this, temp_unit_loc_);
 	}
 
 

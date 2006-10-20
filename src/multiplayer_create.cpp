@@ -27,6 +27,7 @@
 #include "preferences.hpp"
 #include "video.hpp"
 #include "serialization/string_utils.hpp"
+#include "wml_separators.hpp"
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};
@@ -80,19 +81,25 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	//build the list of scenarios to play
 
 	//add the 'load game' option
-	map_options_.push_back(_("Load Game") + std::string("..."));
+	std::string help_sep = " ";
+	help_sep[0] = HELP_STRING_SEPARATOR;
+	std::string menu_help_str = help_sep + _("Load a multiplayer saved game");
+	map_options_.push_back(_("Load Game") + std::string("...") + menu_help_str);
 
 	//user maps
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
-
-	for(unsigned int i = 0; i < user_maps_.size(); i++)
-		map_options_.push_back(user_maps_[i]);
+	for(unsigned int i = 0; i < user_maps_.size(); i++) {
+		menu_help_str = help_sep + user_maps_[i];
+		map_options_.push_back(user_maps_[i] + menu_help_str);
+	}
 
 	//standard maps
 	const config::child_list& levels = cfg.get_children("multiplayer");
 	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j){
-		if (utils::string_bool((**j)["allow_new_game"],true))
-			map_options_.push_back((**j)["name"]);
+		if (utils::string_bool((**j)["allow_new_game"],true)) {
+			menu_help_str = help_sep + ((**j)["name"]);
+			map_options_.push_back(((**j)["name"]) + menu_help_str);
+		}
 	}
 
 	//create the scenarios menu

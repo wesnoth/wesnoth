@@ -34,7 +34,7 @@ class unit_animation:public animated<unit_frame>
 
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
-		explicit unit_animation(const unit_frame &frame);
+		explicit unit_animation(int start_time,const unit_frame &frame);
 		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit) const;
 
 	private:
@@ -53,8 +53,8 @@ class fighting_animation:public unit_animation
 		typedef enum { HIT, MISS, KILL} hit_type;
 
 		explicit fighting_animation(const config& cfg);
-		explicit fighting_animation(const unit_frame &frame):
-			unit_animation(frame) {};
+		explicit fighting_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame) {};
 		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num,int damage) const;
 
 	private:
@@ -69,7 +69,7 @@ class defensive_animation:public fighting_animation
 {
 	public:
 		explicit defensive_animation(const config& cfg):fighting_animation(cfg){};
-		explicit defensive_animation(const unit_frame &frame):fighting_animation(frame){};
+		explicit defensive_animation(int start_time,const unit_frame &frame):fighting_animation(start_time,frame){};
 };
 
 
@@ -77,7 +77,7 @@ class death_animation:public fighting_animation
 {
 	public:
 		explicit death_animation(const config& cfg):fighting_animation(cfg){};
-		explicit death_animation(const unit_frame &frame):fighting_animation(frame) {};
+		explicit death_animation(int start_time,const unit_frame &frame):fighting_animation(start_time,frame) {};
 	private:
 };
 
@@ -85,7 +85,7 @@ class attack_animation: public fighting_animation
 {
 	public:
 		explicit attack_animation(const config& cfg):fighting_animation(cfg),missile_anim(cfg,"missile_frame"){};
-		explicit attack_animation(const unit_frame &frame):fighting_animation(frame) {};
+		explicit attack_animation(int start_time,const unit_frame &frame):fighting_animation(start_time,frame) {};
 		const unit_animation &get_missile_anim() {return missile_anim;}
 	private:
 		unit_animation missile_anim;
@@ -96,8 +96,8 @@ class movement_animation:public unit_animation
 {
 	public:
 		explicit movement_animation(const config& cfg):unit_animation(cfg){};
-		explicit movement_animation(const unit_frame &frame):
-			unit_animation(frame){};
+		explicit movement_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
 
 	private:
 };
@@ -106,8 +106,8 @@ class standing_animation:public unit_animation
 {
 	public:
 		explicit standing_animation(const config& cfg):unit_animation(cfg){};
-		explicit standing_animation(const unit_frame &frame):
-			unit_animation(frame){};
+		explicit standing_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
 
 	private:
 };
@@ -116,8 +116,8 @@ class leading_animation:public unit_animation
 {
 	public:
 		explicit leading_animation(const config& cfg):unit_animation(cfg){};
-		explicit leading_animation(const unit_frame &frame):
-			unit_animation(frame){};
+		explicit leading_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
 
 	private:
 };
@@ -126,8 +126,8 @@ class healing_animation:public unit_animation
 {
 	public:
 		explicit healing_animation(const config& cfg):unit_animation(cfg){};
-		explicit healing_animation(const unit_frame &frame):
-			unit_animation(frame){};
+		explicit healing_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
 
 	private:
 };
@@ -136,8 +136,8 @@ class recruit_animation:public unit_animation
 {
 	public:
 		explicit recruit_animation(const config& cfg):unit_animation(cfg){};
-		explicit recruit_animation(const unit_frame &frame):
-			unit_animation(frame){};
+		explicit recruit_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
 
 	private:
 };
@@ -146,8 +146,8 @@ class idle_animation:public unit_animation
 {
 	public:
 		explicit idle_animation(const config& cfg):unit_animation(cfg){};
-		explicit idle_animation(const unit_frame &frame):
-			unit_animation(frame){};
+		explicit idle_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
 
 	private:
 };
@@ -156,8 +156,8 @@ class levelin_animation:public unit_animation
 {
 	public:
 		explicit levelin_animation(const config& cfg):unit_animation(cfg){};
-		explicit levelin_animation(const unit_frame &frame):
-			unit_animation(frame){};
+		explicit levelin_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
 
 	private:
 };
@@ -166,8 +166,8 @@ class levelout_animation:public unit_animation
 {
 	public:
 		explicit levelout_animation(const config& cfg):unit_animation(cfg){};
-		explicit levelout_animation(const unit_frame &frame):
-			unit_animation(frame){};
+		explicit levelout_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
 
 	private:
 };

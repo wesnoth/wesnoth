@@ -209,12 +209,12 @@ bool replay::is_skipping() const
 	return skip_;
 }
 
-void replay::save_game(const std::string& label, const config& snapshot,
-                       const config& starting_pos, bool include_replay)
+void replay::save_game(const std::string& label, const game_state& gamestate, bool include_replay)
 {
 	log_scope("replay::save_game");
-	saveInfo_.snapshot = snapshot;
-	saveInfo_.starting_pos = starting_pos;
+	saveInfo_.snapshot = gamestate.snapshot;
+	saveInfo_.starting_pos = gamestate.starting_pos;
+	saveInfo_.variables = gamestate.variables;
 
 	if(include_replay) {
 		saveInfo_.replay_data = cfg_;
@@ -1005,6 +1005,10 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				std::stringstream errbuf;
 				errbuf << "unfound defender for attack: " << src << " -> " << dst << '\n';
 				replay::throw_error(errbuf.str());
+			}
+
+			if(def_weapon_num >= (int)tgt->second.attacks().size()) {
+				replay::throw_error("illegal defender weapon type in attack\n");
 			}
 
 			attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !replayer.is_skipping());

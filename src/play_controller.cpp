@@ -186,7 +186,7 @@ void play_controller::objectives(){
 }
 
 void play_controller::show_statistics(){
-	menu_handler_.show_statistics();
+	menu_handler_.show_statistics(gui_->viewing_team()+1);
 }
 
 void play_controller::unit_list(){
@@ -310,10 +310,10 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 				recorder.add_event("turn 1");
 				recorder.add_event("new turn");
 				recorder.add_event("side turn");
+				game_events::fire("turn 1");
+				game_events::fire("new turn");
+				game_events::fire("side turn");
 			}
-			game_events::fire("turn 1");
-			game_events::fire("new turn");
-			game_events::fire("side turn");
 		}
 		first_turn_ = false;
 	} else
@@ -322,8 +322,8 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 		if(!current_team.is_network()) {
 			if(!is_replay) {
 				recorder.add_event("side turn");
+				game_events::fire("side turn");
 			}
-			game_events::fire("side turn");
 		}
 	}
 

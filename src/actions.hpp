@@ -261,6 +261,7 @@ int combat_modifier(const gamestatus& status,
 			const unit_map& units,
 			const gamemap::location& loc,
 			unit_type::ALIGNMENT alignment,
+			bool is_fearless,
 			const gamemap& map);
 
 //structure which records information to be able to undo a movement

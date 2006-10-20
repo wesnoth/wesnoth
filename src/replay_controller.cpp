@@ -84,6 +84,7 @@ void replay_controller::init(){
 
 	fire_prestart(true);
 	init_gui();
+	statistics::fresh_stats();
 
 	LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
@@ -103,6 +104,7 @@ void replay_controller::init_gui(){
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		t->set_fog(false);
 		t->set_shroud(false);
+		t->reset_objectives_changed();
 	}
 }
 
@@ -153,6 +155,7 @@ void replay_controller::reset_replay(){
 	status_ = status_start_;
 	gamestate_ = gamestate_start_;
 	teams_ = team_manager_.clone(teams_start_);
+	statistics::fresh_stats();
 	if (events_manager_ != NULL){
 		delete events_manager_;
 		events_manager_ = new game_events::manager(level_,*gui_,map_,units_,teams_,
@@ -253,21 +256,31 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 		return;
 	}
 
-	play_controller::init_side(team_index, true);
+	try{
+		play_controller::init_side(team_index, true);
 
-	//if a side is dead, don't do their turn
-	if(!current_team().is_empty() && team_units(units_,player_number_) > 0) {
+		//if a side is dead, don't do their turn
+		if(!current_team().is_empty() && team_units(units_,player_number_) > 0) {
 
-		do_replay(true);
+			do_replay(true);
 
-		finish_side_turn();
+			finish_side_turn();
 
-		for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-			if(uit->second.side() != (size_t)player_number_){
-				//this is necessary for replays in order to show possible movements
-				uit->second.new_turn();
+			for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
+				if(uit->second.side() != (size_t)player_number_){
+					//this is necessary for replays in order to show possible movements
+					uit->second.new_turn();
+				}
 			}
 		}
+	}
+	catch (replay::error&) //if replay throws an error, we don't want to get thrown out completely
+	{
+		is_playing_ = false;
+	}
+	catch(end_level_exception& e){ 
+		//VICTORY/DEFEAT end_level_exception shall not return to title screen
+		if ((e.result != VICTORY) && (e.result != DEFEAT)) { throw e; }
 	}
 
 	player_number_++;
@@ -307,6 +320,10 @@ void replay_controller::preferences(){
 	play_controller::preferences();
 	init_replay_display();
 	update_gui();
+}
+
+void replay_controller::show_statistics(){
+	menu_handler_.show_statistics(gui_->playing_team()+1);
 }
 
 bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const

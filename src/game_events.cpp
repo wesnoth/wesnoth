@@ -872,6 +872,21 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			var = buf;
 		}
 
+		const std::string& divide = cfg["divide"];
+		if(divide.empty() == false) {
+			int value = int(atof(var.c_str()));
+			double divider = atof(divide.c_str());
+			if (divider == 0) {
+				ERR_NG << "division by zero on variable " << name << "\n";
+				return rval;
+			} else {
+				value = int(double(value) / divider);
+				char buf[50];
+				snprintf(buf,sizeof(buf),"%d",value);
+				var = buf;
+			}
+		}
+
 		// random generation works as follows:
 		// random=[comma delimited list]
 		// Each element in the list will be considered a separate choice,
@@ -881,9 +896,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(random.empty() == false) {
 			std::string random_value, word;
 			std::vector<std::string> words;
-			std::vector<std::pair<size_t,size_t> > ranges;
+			std::vector<std::pair<long,long> > ranges;
 			int num_choices = 0;
-			std::string::size_type pos = 0, pos2 = std::string::npos, tmp;
+			std::string::size_type pos = 0, pos2 = std::string::npos;
 			std::stringstream ss(std::stringstream::in|std::stringstream::out);
 			while (pos2 != random.length()) {
 				pos = pos2+1;
@@ -894,7 +909,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				word = random.substr(pos, pos2-pos);
 				words.push_back(word);
-				tmp = word.find("..");
+				std::string::size_type tmp = word.find("..");
 
 
 				if (tmp == std::string::npos) {
@@ -908,7 +923,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					const std::string second = word.substr(tmp+2,
 							random.length());
 
-					size_t low, high;
+					long low, high;
 					ss << first + " " + second;
 					ss >> low;
 					ss >> high;
@@ -919,13 +934,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						low = high;
 						high = tmp;
 					}
-					ranges.push_back(std::pair<int, int>(low,high));
+					ranges.push_back(std::pair<long, long>(low,high));
 					num_choices += (high - low) + 1;
 				}
 			}
 
 			size_t choice = get_random() % num_choices;
-			tmp = 0;
+			long tmp = 0;
 			for(size_t i = 0; i < ranges.size(); i++) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
 				if (tmp > choice) {

@@ -556,7 +556,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		int damage_multiplier = 100;
 
 		// Time of day bonus.
-		damage_multiplier += combat_modifier(status, units, u_loc, u.alignment(), map);
+		damage_multiplier += combat_modifier(status, units, u_loc, u.alignment(), u.is_fearless(), map);
 
 		// Leadership bonus.
 		int leader_bonus = 0;
@@ -835,11 +835,15 @@ attack::attack(display& gui, const gamemap& map,
 				}
 			}
 
-			bool dies = unit_display::unit_attack(gui_,units_,attacker_,defender_,
-				            damage_defender_takes,
-							*a_stats_->weapon,d_stats_->weapon,
-							update_display_,abs_n_attack_);
+			unit_display::unit_attack(gui_,units_,attacker_,defender_,
+					damage_defender_takes,
+					*a_stats_->weapon,d_stats_->weapon,
+					update_display_,abs_n_attack_);
+			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
+			if(dies) {
+				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon);
+			}
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES, attacker_damage_);
 
@@ -1038,11 +1042,15 @@ attack::attack(display& gui, const gamemap& map,
 				}
 			}
 
-			bool dies = unit_display::unit_attack(gui_,units_,defender_,attacker_,
-			               damage_attacker_takes,
-						   *d_stats_->weapon,a_stats_->weapon,
-						   update_display_,abs_n_defend_);
+			unit_display::unit_attack(gui_,units_,defender_,attacker_,
+					damage_attacker_takes,
+					*d_stats_->weapon,a_stats_->weapon,
+					update_display_,abs_n_defend_);
+			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
+			if(dies) {
+				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon);
+			}
 			if(ran_results == NULL) {
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
@@ -1376,6 +1384,9 @@ void calculate_healing(display& disp, const gamemap& map,
 			}
 			if(i->second.resting()) {
 				healing += game_config::rest_heal_amount;
+				if(i->second.is_healthy()) {
+					healing += game_config::rest_heal_amount;
+				}
 			}
 		}
 		if(utils::string_bool(i->second.get_state("poisoned"))) {
@@ -1427,29 +1438,24 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		if (update_display){
 			// This is all the pretty stuff.
-			bool start_time_set = false;
-			int start_time = 0;
+			int start_time = INT_MAX;
 			disp.scroll_to_tile(i->first.x, i->first.y, display::ONSCREEN);
 			disp.select_hex(i->first);
 
 			for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
 				(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(i->first));
 				(*heal_anim_it)->second.set_healing(disp,(*heal_anim_it)->first);
-				if(start_time_set) {
-					start_time = minimum<int>(start_time,(*heal_anim_it)->second.get_animation()->get_first_frame_time());
-				} else {
-					start_time = (*heal_anim_it)->second.get_animation()->get_first_frame_time();
-				}
+				start_time = (*heal_anim_it)->second.get_animation()->get_begin_time();
 			}
 			if (healing < 0) {
 				i->second.set_poisoned(disp,i->first, -healing);
-				start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
+				start_time = minimum<int>(start_time, i->second.get_animation()->get_begin_time());
 				// FIXME
 				sound::play_sound("poison.ogg");
 				disp.float_label(i->first, lexical_cast<std::string>(-healing), 255,0,0);
 			} else {
 				i->second.set_healed(disp,i->first, healing);
-				start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
+				start_time = minimum<int>(start_time, i->second.get_animation()->get_begin_time());
 				sound::play_sound("heal.wav");
 				disp.float_label(i->first, lexical_cast<std::string>(healing), 0,255,0);
 			}
@@ -1627,6 +1633,7 @@ int combat_modifier(const gamestatus& status,
 			const unit_map& units,
 			const gamemap::location& loc,
 			 unit_type::ALIGNMENT alignment,
+			 bool is_fearless,
 			const gamemap& map)
 {
 	const time_of_day& tod = timeofday_at(status,units,loc,map);
@@ -1637,6 +1644,8 @@ int combat_modifier(const gamestatus& status,
 		bonus = 0;
 	else if(alignment == unit_type::CHAOTIC)
 		bonus = -bonus;
+	if(is_fearless)
+		bonus = maximum<int>(bonus, 0);
 
 	return bonus;
 }
