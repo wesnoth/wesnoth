@@ -430,43 +430,42 @@ void write_player(const player_info& player, config& cfg)
 	cfg["can_recruit"] = can_recruit_str;
 }
 
-void write_game(const game_state& gamestate, config& cfg/*, WRITE_GAME_MODE mode*/)
+void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode*/)
 {
 	log_scope("write_game");
-	cfg["label"] = gamestate.label;
+	cfg["label"] = game.label;
 	cfg["version"] = game_config::version;
 
-	cfg["scenario"] = gamestate.scenario;
+	cfg["scenario"] = game.scenario;
 
-	cfg["campaign"] = gamestate.campaign;
+	cfg["campaign"] = game.campaign;
 
-	cfg["campaign_type"] = gamestate.campaign_type;
+	cfg["campaign_type"] = game.campaign_type;
 
-	cfg["difficulty"] = gamestate.difficulty;
+	cfg["difficulty"] = game.difficulty;
 
-	cfg["campaign_define"] = gamestate.campaign_define;
+	cfg["campaign_define"] = game.campaign_define;
 
-	cfg.add_child("variables",gamestate.variables);
+	cfg.add_child("variables",game.variables);
 
-	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
-	    i!=gamestate.players.end(); ++i) {
+	for(std::map<std::string, player_info>::const_iterator i=game.players.begin();
+	    i!=game.players.end(); ++i) {
 		config new_cfg;
 		write_player(i->second, new_cfg);
 		new_cfg["save_id"]=i->first;
 		cfg.add_child("player", new_cfg);
 	}
 
-	
-	//if(mode == WRITE_FULL_GAME) {
-		if(gamestate.replay_data.child("replay") == NULL) {
-			cfg.add_child("replay",gamestate.replay_data);
+//	if(mode == WRITE_FULL_GAME) {
+		if(game.replay_data.child("replay") == NULL) {
+			cfg.add_child("replay",game.replay_data);
 		}
 
-		cfg.add_child("snapshot",gamestate.snapshot);
-		cfg.add_child("replay_start",gamestate.starting_pos);
+		cfg.add_child("snapshot",game.snapshot);
+		cfg.add_child("replay_start",game.starting_pos);
 		cfg.add_child("statistics",statistics::write_stats());
-	//}
-}
+	}
+//}
 
 //a structure for comparing to save_info objects based on their modified time.
 //if the times are equal, will order based on the name
@@ -559,16 +558,16 @@ void load_game_summary(const std::string& name, config& cfg_summary, std::string
 }
 
 //throws game::save_game_failed
-void save_game(const game_state& gamestate)
+void save_game(const game_state& state)
 {
 	log_scope("save_game");
 
-	std::string name = gamestate.label;
+	std::string name = state.label;
 	replace_space2underbar(name);
 
 	config cfg;
 	try {
-		write_game(gamestate,cfg);
+		write_game(state,cfg);
 
 		const std::string fname = get_saves_dir() + "/" + name;
 		{
@@ -579,8 +578,8 @@ void save_game(const game_state& gamestate)
 			}
 		}
 
-		config& summary = save_summary(gamestate.label);
-		extract_summary_data_from_save(gamestate,summary);
+		config& summary = save_summary(state.label);
+		extract_summary_data_from_save(state,summary);
 		const int mod_time = static_cast<int>(file_create_time(fname));
 		summary["mod_time"] = str_cast(mod_time);
 
