@@ -751,7 +751,7 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	//The number of human-controlled sides is important to know to let the server decide,
 	//how many players can join this game
 	int human_sides = 0;
-	const config::child_list cfg_sides = get_snapshot()->get_children("side");
+	const config::child_list cfg_sides = level_.get_children("side");
 	for (config::child_list::const_iterator side = cfg_sides.begin(); side != cfg_sides.end(); side++){
 		if ((**side)["controller"] == "human"){
 			human_sides++;
@@ -845,7 +845,7 @@ void connect::start_game()
 	update_and_send_diff();
 
 	// Build the gamestate object after updating the level
-	level_to_gamestate(level_, state_, params_.saved_game);
+	level_to_gamestate(level_, state_);
 
 	config cfg;
 	cfg.add_child("start_game");
@@ -1126,7 +1126,7 @@ void connect::lists_init()
     ai_algorithms_ = get_available_ais();
 
 	//Factions
-	const config::child_itors sides = get_snapshot()->child_range("side");
+	const config::child_itors sides = level_.child_range("side");
 
 	//Teams
 	config::child_iterator sd;
@@ -1232,14 +1232,18 @@ void connect::load_game()
 			}
 		}
 
-		level_.add_child("snapshot") = state_.snapshot;
+		level_ = state_.snapshot;
 
 		// Adds the replay data, and the replay start, to the level, so
 		// clients can receive it.
 
-		level_.add_child("replay") = state_.replay_data;
-		if(!state_.starting_pos.empty())
-			level_.add_child("replay_start") = state_.starting_pos;
+		//TO-DO: this should be done only if the player has selected for the replay to be viewed
+		if(false) {
+			level_.add_child("replay") = state_.replay_data;
+			if(!state_.starting_pos.empty())
+				level_.add_child("replay_start") = state_.starting_pos;
+		}
+
 		level_.add_child("statistics") = statistics::write_stats();
 
 	} else {
@@ -1286,21 +1290,6 @@ void connect::load_game()
 		level_["objectives"] = t_string(N_("Victory:\n\
 @Defeat enemy leader(s)"), "wesnoth");
 	}
-}
-
-config* connect::get_snapshot(){
-	config* cfg_snapshot = NULL;
-
-	if (level_.child("snapshot") != NULL){
-		//savegame
-		cfg_snapshot = level_.child("snapshot");
-	}
-	else{
-		//fresh game, no snapshot available
-		cfg_snapshot = &level_;
-	}
-
-	return cfg_snapshot;
 }
 
 void connect::update_level()

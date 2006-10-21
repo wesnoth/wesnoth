@@ -54,10 +54,10 @@ typedef std::map<std::string, player_controller> controller_map;
 
 }
 
-void play_replay(display& disp, game_state& gamestate, const config& game_config,
+void play_replay(display& disp, game_state& state, const config& game_config,
 		const game_data& units_data, CVideo& video)
 {
-	std::string type = gamestate.campaign_type;
+	std::string type = state.campaign_type;
 	if(type.empty())
 		type = "scenario";
 
@@ -66,25 +66,42 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	//'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
-	recorder.set_save_info(gamestate);
+	recorder.set_save_info(state);
+	if (state.snapshot.child("side") != NULL){
+		state = read_game(units_data, &state.snapshot);
+	}
 
-	starting_pos = gamestate.starting_pos;
-	scenario = &starting_pos;
+	//see if we load the scenario from the scenario data -- if there is
+	//no snapshot data available from a save, or if the user has selected
+	//to view the replay from scratch
+	if(!recorder.at_end()) {
+		//if the starting state is specified, then use that,
+		//otherwise get the scenario data and start from there.
+		if(state.starting_pos.empty() == false) {
+			LOG_G << "loading starting position...\n";
+			starting_pos = state.starting_pos;
+			scenario = &starting_pos;
+		} else {
+			LOG_G << "loading scenario: '" << state.scenario << "'\n";
+			scenario = game_config.find_child(type,"id",state.scenario);
+			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
+		}
+	}
 
 	controller_map controllers;
 
-	const std::string current_scenario = gamestate.scenario;
+	const std::string current_scenario = state.scenario;
 
 	try {
 		// preserve old label eg. replay
-		if (gamestate.label.empty())
-			gamestate.label = (*scenario)["name"];
+		if (state.label.empty())
+			state.label = (*scenario)["name"];
 
-		play_replay_level(units_data,game_config,scenario,video,gamestate);
+		play_replay_level(units_data,game_config,scenario,video,state);
 
-		gamestate.snapshot = config();
+		state.snapshot = config();
 		recorder.clear();
-		gamestate.replay_data.clear();
+		state.replay_data.clear();
 
 	} catch(game::load_game_failed& e) {
 		gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
@@ -108,12 +125,12 @@ void clean_autosaves(const std::string &label)
 	}
 }
 
-LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
+LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_config,
 		const game_data& units_data, CVideo& video,
 		upload_log &log,
 		io_type_t io_type, bool skip_replay)
 {
-	std::string type = gamestate.campaign_type;
+	std::string type = state.campaign_type;
 	if(type.empty())
 		type = "scenario";
 
@@ -122,31 +139,29 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	//'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
-	recorder.set_save_info(gamestate);
+	recorder.set_save_info(state);
 
 	//see if we load the scenario from the scenario data -- if there is
-	//no snapshot data available from a save
-	if(gamestate.snapshot.child("side") == NULL || !recorder.at_end()) {
-		//if the gamestate already contains a starting_pos, then
-		//we are starting a fresh multiplayer game. Otherwise this is the start
-		//of a campaign scenario.
-		if(gamestate.starting_pos.empty() == false) {
+	//no snapshot data available from a save, or if the user has selected
+	//to view the replay from scratch
+	if(state.snapshot.child("side") == NULL || !recorder.at_end()) {
+		//if the starting state is specified, then use that,
+		//otherwise get the scenario data and start from there.
+		if(state.starting_pos.empty() == false) {
 			LOG_G << "loading starting position...\n";
-			starting_pos = gamestate.starting_pos;
+			starting_pos = state.starting_pos;
 			scenario = &starting_pos;
 		} else {
-			LOG_G << "loading scenario: '" << gamestate.scenario << "'\n";
-			scenario = game_config.find_child(type,"id",gamestate.scenario);
-			starting_pos = *scenario;
-			gamestate.starting_pos = *scenario;
+			LOG_G << "loading scenario: '" << state.scenario << "'\n";
+			scenario = game_config.find_child(type,"id",state.scenario);
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
-		//This game was started from a savegame
 		LOG_G << "loading snapshot...\n";
 		//load from a save-snapshot.
-		starting_pos = gamestate.starting_pos;
-		scenario = &gamestate.snapshot;
+		starting_pos = state.snapshot;
+		scenario = &starting_pos;
+		state = read_game(units_data, &state.snapshot);
 	}
 
 	controller_map controllers;
@@ -184,7 +199,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		}
 
 		const config::child_list& story = scenario->get_children("story");
-		const std::string current_scenario = gamestate.scenario;
+		const std::string current_scenario = state.scenario;
 
 		bool save_game_after_scenario = true;
 
@@ -192,8 +207,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		try {
 			// preserve old label eg. replay
-			if (gamestate.label.empty())
-				gamestate.label = (*scenario)["name"];
+			if (state.label.empty())
+				state.label = (*scenario)["name"];
 
 			//if the entire scenario should be randomly generated
 			if((*scenario)["scenario_generation"] != "") {
@@ -204,7 +219,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
 				//level_ = scenario;
 
-				gamestate.starting_pos = scenario2;
+				state.starting_pos = scenario2;
 				scenario = &scenario2;
 			}
 
@@ -225,25 +240,26 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				new_level.values["map_data"] = map_data;
 				scenario = &new_level;
 
-				gamestate.starting_pos = new_level;
+				state.starting_pos = new_level;
 				LOG_G << "generated map\n";
 			}
 
 			sound::play_no_music();
 
+			//LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story,log, skip_replay);
 			LEVEL_RESULT res;
 			switch (io_type){
 			case IO_NONE:
-				res = playsingle_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);
+				res = playsingle_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);
+				res = playmp_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
 				break;
 			}
 
 
-			gamestate.snapshot = config();
+			state.snapshot = config();
 			if (res == DEFEAT) {
 				// tell all clients that the campaign won't continue
 				if(io_type == IO_SERVER) {
@@ -263,10 +279,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			}
 			//ask to save a replay of the game
 			if(res == VICTORY || res == DEFEAT) {
-				const std::string orig_scenario = gamestate.scenario;
-				gamestate.scenario = current_scenario;
+				const std::string orig_scenario = state.scenario;
+				state.scenario = current_scenario;
 
-				std::string label = gamestate.label + _(" replay");
+				std::string label = state.label + _(" replay");
 
 				bool retry = true;
 
@@ -281,7 +297,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 						try {
 							config snapshot;
 
-							recorder.save_game(label, gamestate);
+							recorder.save_game(label, snapshot, state.starting_pos);
 						} catch(game::save_game_failed&) {
 							gui::show_error_message(disp, _("The replay could not be saved"));
 							retry = true;
@@ -289,11 +305,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					}
 				}
 
-				gamestate.scenario = orig_scenario;
+				state.scenario = orig_scenario;
 			}
 
 			recorder.clear();
-			gamestate.replay_data.clear();
+			state.replay_data.clear();
 
 			//continue without saving is like a victory, but the
 			//save game dialog isn't displayed
@@ -315,8 +331,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		}
 
 		//if the scenario hasn't been set in-level, set it now.
-		if(gamestate.scenario == current_scenario)
-			gamestate.scenario = (*scenario)["next_scenario"];
+		if(state.scenario == current_scenario)
+			state.scenario = (*scenario)["next_scenario"];
 
 		if(io_type == IO_CLIENT) {
 			config cfg;
@@ -332,16 +348,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			if(cfg.child("next_scenario")) {
 				starting_pos = (*cfg.child("next_scenario"));
 				scenario = &starting_pos;
-				gamestate = read_game(units_data, scenario);
+				state = read_game(units_data, scenario);
 			} else if(scenario->child("end_scenarios")) {
 				scenario = NULL;
-				gamestate.scenario = "null";
+				state.scenario = "null";
 			} else {
 				return QUIT;
 			}
 
 		} else {
-			scenario = game_config.find_child(type,"id",gamestate.scenario);
+			scenario = game_config.find_child(type,"id",state.scenario);
 
 			if(io_type == IO_SERVER && scenario != NULL) {
 				starting_pos = *scenario;
@@ -371,7 +387,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// Adds player information, and other state
 				// information, to the configuration object
 				wassert(cfg.child("next_scenario") != NULL);
-				write_game(gamestate, *cfg.child("next_scenario")/*, WRITE_SNAPSHOT_ONLY*/);
+				write_game(state, *cfg.child("next_scenario")/*, WRITE_SNAPSHOT_ONLY*/);
 				network::send_data(cfg);
 
 			} else if(io_type == IO_SERVER && scenario == NULL) {
@@ -383,12 +399,12 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		if(scenario != NULL) {
 			// update the label
-			std::string oldlabel = gamestate.label;
-			gamestate.label = (*scenario)["name"];
+			std::string oldlabel = state.label;
+			state.label = (*scenario)["name"];
 
 			//if this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
-				gamestate.starting_pos = config();
+				state.starting_pos = config();
 
 				bool retry = true;
 
@@ -398,12 +414,12 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					const int should_save = dialogs::get_save_name(disp,
 						_("Do you want to save your game? (Also erases Auto-Save files)"),
 						_("Name:"),
-						&gamestate.label);
+						&state.label);
 
 
 					if(should_save == 0) {
 						try {
-							save_game(gamestate);
+							save_game(state);
 							if (!oldlabel.empty())
 								clean_autosaves(oldlabel);
 						} catch(game::save_game_failed&) {
@@ -416,14 +432,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			//update the replay start
 			//FIXME: this should only be done if the scenario was not tweaked.
-			gamestate.starting_pos = *scenario;
+			state.starting_pos = *scenario;
 		}
 
-		recorder.set_save_info(gamestate);
+		recorder.set_save_info(state);
 	}
 
-	if (!gamestate.scenario.empty() && gamestate.scenario != "null") {
-		gui::show_error_message(disp, _("Unknown scenario: '") + gamestate.scenario + '\'');
+	if (!state.scenario.empty() && state.scenario != "null") {
+		gui::show_error_message(disp, _("Unknown scenario: '") + state.scenario + '\'');
 		return QUIT;
 	}
 

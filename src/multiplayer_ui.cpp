@@ -41,38 +41,30 @@ void check_response(network::connection res, const config& data)
 	}
 }
 
-void level_to_gamestate(config& level, game_state& state, bool saved_game)
+void level_to_gamestate(config& level, game_state& state)
 {
+	//any replay data is only temporary and should be removed from
+	//the level data in case we want to save the game later
 	config * const replay_data = level.child("replay");
 	config replay_data_store;
 	if(replay_data != NULL) {
 		replay_data_store = *replay_data;
 		LOG_NW << "setting replay\n";
-		state.replay_data = *replay_data;
 		recorder = replay(replay_data_store);
 		if(!recorder.empty()) {
 			recorder.set_skip(false);
-			recorder.set_to_end();
 		}
+
+		level.clear_children("replay");
 	}
 
 	//adds the starting pos to the level
-	if(level.child("replay_start") == NULL){
-		level.add_child("replay_start", level);
-	}
-	state.starting_pos = *(level.child("replay_start"));
+	if(level.child("replay_start") == NULL)
+		level.add_child("replay_start") = level;
 
 	level["campaign_type"] = "multiplayer";
 	state.campaign_type = "multiplayer";
-	state.scenario = level["id"];
-	if (saved_game){
-		state.snapshot = *(level.child("snapshot"));
-
-		const config* const vars = level.child("variables");
-		if(vars != NULL) {
-			state.variables = *vars;
-		}
-	}
+	state.snapshot = level;
 
 }
 
