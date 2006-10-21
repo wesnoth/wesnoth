@@ -165,9 +165,13 @@ bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*
 
 void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 {
-	std::string loc_terrain; //FIXME MdW tag
+/*
+	std::string loc_terrain; //FIXME MdW cleanup
 	loc_terrain += get_terrain(loc);
 	cfg["terrain"] = loc_terrain;
+*/	
+	terrain_translation::TERRAIN_NUMBER loc_terrain = get_terrain(loc); 
+	cfg["terrain"] = terrain_translation().set_letter(loc_terrain);
 }
 
 gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
@@ -465,6 +469,15 @@ void gamemap::read(const std::vector<terrain_translation::TERRAIN_NUMBER>& data)
 	}
 
 	LOG_G << "loaded map: " << this->x() << ',' << ysize << '\n';
+	std::cerr << "loaded map: " << this->x() << ',' << ysize << '\n'; //FIXME MdW remove debug
+
+	for(unsigned x = 0; x < this->x(); ++x) {
+		for(unsigned y = 0; y < ysize; ++y) {
+			std::cerr << tiles_[x][y] << ",";
+
+		}
+		std::cerr << "\n";
+	}
 }
 
 std::string gamemap::write() const
@@ -481,7 +494,7 @@ std::string gamemap::write() const
 			if(n < STARTING_POSITIONS) {
 				str << n;
 			} else {
-				str << tiles_[i][j];
+				str << tiles_[i][j]; //FIXME MdW TAG
 			}
 		}
 
@@ -493,7 +506,7 @@ std::string gamemap::write() const
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos, const int ypos)
 {
-#if 0	 //FIXME MdW remove enable
+#if 1	 //FIXME MdW remove enable
 	const config::child_list& rules = rules_cfg.get_children("rule");
 
 	const int xstart = maximum<int>(0, -xpos);
@@ -521,23 +534,35 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 				static const std::string src_key = "old", src_not_key = "old_not",
 				                         dst_key = "new", dst_not_key = "new_not";
 				const config& cfg = **rule;
-				const std::string& src = cfg[src_key];
-				if(src != "" && std::find(src.begin(),src.end(),current) == src.end()) {
+//				const std::string& src = cfg[src_key];
+				const std::vector<terrain_translation::TERRAIN_NUMBER>& src = 
+					terrain_translation().get_list(cfg[src_key]);
+//				if(src != "" && std::find(src.begin(),src.end(),current) == src.end()) {
+				if(!src.empty() && std::find(src.begin(),src.end(),current) == src.end()) {
 					continue;
 				}
 
-				const std::string& src_not = cfg[src_not_key];
-				if(src_not != "" && std::find(src_not.begin(),src_not.end(),current) != src_not.end()) {
+//				const std::string& src_not = cfg[src_not_key];
+//				if(src_not != "" && std::find(src_not.begin(),src_not.end(),current) != src_not.end()) {
+				const std::vector<terrain_translation::TERRAIN_NUMBER>& src_not = 
+					terrain_translation().get_list(cfg[src_not_key]);
+				if(!src_not.empty() && std::find(src_not.begin(),src_not.end(),current) != src_not.end()) {
 					continue;
 				}
 
-				const std::string& dst = cfg[dst_key];
-				if(dst != "" && std::find(dst.begin(),dst.end(),t) == dst.end()) {
+//				const std::string& dst = cfg[dst_key];
+//				if(dst != "" && std::find(dst.begin(),dst.end(),t) == dst.end()) {
+				const std::vector<terrain_translation::TERRAIN_NUMBER>& dst = 
+					terrain_translation().get_list(cfg[dst_key]);
+				if(!dst.empty() && std::find(dst.begin(),dst.end(),t) == dst.end()) {
 					continue;
 				}
 
-				const std::string& dst_not = cfg[dst_not_key];
-				if(dst_not != "" && std::find(dst_not.begin(),dst_not.end(),t) != dst_not.end()) {
+//				const std::string& dst_not = cfg[dst_not_key];
+//				if(dst_not != "" && std::find(dst_not.begin(),dst_not.end(),t) != dst_not.end()) {
+				const std::vector<terrain_translation::TERRAIN_NUMBER>& dst_not = 
+					terrain_translation().get_list(cfg[dst_not_key]);
+				if(!dst_not.empty() && std::find(dst_not.begin(),dst_not.end(),t) != dst_not.end()) {
 					continue;
 				}
 
@@ -676,29 +701,53 @@ const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) cons
 bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, const gamestatus& game_status, const unit_map& units,bool flat_tod) const
 {
 #if 1 //FIXME MdW remove the if
+//	const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain = terrain_translation().get_list(cfg["terrain"]);
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain = terrain_translation().get_list(cfg["terrain"]);
 	const std::string& tod_type = cfg["time_of_day"];
 	const std::string& tod_id = cfg["time_of_day_id"];
 	// Any of these may be a CSV
 	std::vector<terrain_translation::TERRAIN_NUMBER> terrain_letter;
 	terrain_letter.push_back(get_terrain_info(loc).number());
+
+	// FIXME MdW rewrote the old routine, but haven't looked at what it should do
 	if(!terrain.empty()) {
 		if(terrain != terrain_letter) {
 			if(std::find(terrain.begin(),terrain.end(),terrain_translation::COMMA) != terrain.end() &&
 				std::search(terrain.begin(),terrain.end(),
 				terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
+				
+				const std::vector<terrain_translation::TERRAIN_NUMBER>& vals = 
+					terrain_translation().get_list(cfg["terrain"], 1);
+
+				if(std::find(vals.begin(),vals.end(),terrain_letter.front()) == vals.end()) {
+					return false;
+				}
+			}
+		} else {
+			return false;
+		}
+	}
+		
+	
+#if 0	
+	if(!terrain.empty()) {
+		// if terrain front != letter
+		if(terrain != terrain_letter) {
+			if(std::find(terrain.begin(),terrain.end(),terrain_translation::COMMA) != terrain.end() &&
+				std::search(terrain.begin(),terrain.end(),
+				terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
 //FIXME MdW enable				
-//				const std::vector<std::string>& vals = utils::split(terrain);
-//				if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
-//					return false;
-//				}
+				const std::vector<std::string>& vals = utils::split(terrain);
+				if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
+					return false;
+				}
 
 			} else {
 				return false;
 			}
 		}
 	}
-
+#endif
 	static config const dummy_cfg;
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {

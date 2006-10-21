@@ -225,7 +225,7 @@ bool terrain_builder::rule_valid(const building_rule &rule)
 
 			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
 				std::string s = variant->second.image_string;
-				s = s.substr(0, s.find_first_of(",:")); // FIXME MdW DEBUG here
+				s = s.substr(0, s.find_first_of(",:")); // FIXME MdW DEBUG here (seems oke now)
 
 				if(!image::exists("terrain/" + s + ".png"))
 					return false;
@@ -834,7 +834,7 @@ void terrain_builder::parse_config(const config &cfg)
 	}
 
 // debug output for the terrain rules	
-#if 1
+#if 0
 	std::cerr << "Built terrain rules: \n";
 
 	building_ruleset::const_iterator rule;

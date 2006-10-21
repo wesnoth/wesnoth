@@ -1344,12 +1344,12 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 
 	std::vector<surface>::const_iterator itor;
 	for(itor = images.begin(); itor != images.end(); ++itor) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };  //FIXME MdW debug
 		SDL_BlitSurface(*itor,NULL,dst,&dstrect);
 	}
 }
 
-void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
+void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect) //FIXME MdW debug
 {
 	reach_map::iterator reach = reach_map_.end();
 
@@ -1372,7 +1372,9 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	terrain_translation::TERRAIN_NUMBER terrain = terrain_translation::VOID_TERRAIN;
 
 	if(!is_shrouded) {
-		terrain = map_.get_terrain(loc);
+		terrain = map_.get_terrain(loc); //FIXME MdW debug this one seems to be happy to turn the entire world into grass :-(
+		// br y == 2 && x == 1 for forrest
+		// br y == 0 && x == 0 for village
 	}
 
 	image::TYPE image_type = image::SCALED;
@@ -1680,14 +1682,18 @@ const std::string& get_angle_direction(size_t n)
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
-std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
+std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc) //FIXME MdW TAG
 {
 	std::vector<std::string> res;
 
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
-	int tiles[6];
-	static const int terrain_types[] = { terrain_translation::FOGGED, terrain_translation::VOID_TERRAIN, 0 };
+	//FIXME MdW cleanup but why was this coded like it was WHY and INT instead of CHAR????
+//	int tiles[6];
+//	static const int terrain_types[] = { terrain_translation::FOGGED, terrain_translation::VOID_TERRAIN, 0 };
+	terrain_translation::TERRAIN_NUMBER tiles[6];
+	static const terrain_translation::TERRAIN_NUMBER terrain_types[] = 
+		{ terrain_translation::FOGGED, terrain_translation::VOID_TERRAIN, 0 };
 
 	for(int i = 0; i != 6; ++i) {
 		if(shrouded(adjacent[i].x,adjacent[i].y)) {
@@ -1695,12 +1701,13 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 		} else if(!fogged(loc.x,loc.y) && fogged(adjacent[i].x,adjacent[i].y)) {
 			tiles[i] = terrain_translation::FOGGED;
 		} else {
-			tiles[i] = 0;
+			tiles[i] = 0; //FIXME MdW we should define an invalid terrain (prob. 0)
 		}
 	}
 
 
-	for(const int * terrain = terrain_types; *terrain != 0; terrain ++) {
+//	for(const int * terrain = terrain_types; *terrain != 0; terrain ++) {
+	for(const terrain_translation::TERRAIN_NUMBER * terrain = terrain_types; *terrain != 0; terrain ++) {
 		//find somewhere that doesn't have overlap to use as a starting point
 		int start;
 		for(start = 0; start != 6; ++start) {
