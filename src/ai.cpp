@@ -1506,7 +1506,7 @@ void ai::analyze_potential_recruit_combat()
 			}
 
 			weighting += j->second.cost();
-			score += compare_unit_types(info->second,gameinfo_.unit_types.find(j->second.id())->second)*j->second.cost();
+			score += compare_unit_types(info->second,j->second.type()*j->second.cost();
 		}
 
 		if(weighting != 0) {
