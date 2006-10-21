@@ -176,7 +176,7 @@ void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 
 gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
 {
-	if(str == "n") { //FIXME MdW case??
+	if(str == "n") {
 		return NORTH;
 	} else if(str == "ne") {
 		return NORTH_EAST;
@@ -709,7 +709,27 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 	std::vector<terrain_translation::TERRAIN_NUMBER> terrain_letter;
 	terrain_letter.push_back(get_terrain_info(loc).number());
 
-	// FIXME MdW rewrote the old routine, but haven't looked at what it should do
+		
+	
+#if 0	
+	if(!terrain.empty()) {
+		// if terrain front != letter
+		if(terrain != terrain_letter) {
+			if(std::find(terrain.begin(),terrain.end(),terrain_translation::COMMA) != terrain.end() &&
+				std::search(terrain.begin(),terrain.end(),
+				terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
+				const std::vector<std::string>& vals = utils::split(terrain);
+				if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
+					return false;
+				}
+
+			} else {
+				return false;
+			}
+		}
+	}
+#endif
+	// FIXME MdW rewrote the old part, but haven't looked at what it should do
 	if(!terrain.empty()) {
 		if(terrain != terrain_letter) {
 			if(std::find(terrain.begin(),terrain.end(),terrain_translation::COMMA) != terrain.end() &&
@@ -727,27 +747,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 			return false;
 		}
 	}
-		
 	
-#if 0	
-	if(!terrain.empty()) {
-		// if terrain front != letter
-		if(terrain != terrain_letter) {
-			if(std::find(terrain.begin(),terrain.end(),terrain_translation::COMMA) != terrain.end() &&
-				std::search(terrain.begin(),terrain.end(),
-				terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
-//FIXME MdW enable				
-				const std::vector<std::string>& vals = utils::split(terrain);
-				if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
-					return false;
-				}
-
-			} else {
-				return false;
-			}
-		}
-	}
-#endif
 	static config const dummy_cfg;
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {

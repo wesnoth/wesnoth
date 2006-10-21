@@ -15,15 +15,13 @@ src/game_events.cpp:1774:				const terrain_translation::TERRAIN_NUMBER c = game_
 src/help.cpp:1458:		//FIXME MdW the changes here seem to compile but they have to 
 src/map.cpp:82://FIXME MdW rename the ones below to the name of the ones above and kill the ones above
 src/map.cpp:169:	std::string loc_terrain; //FIXME MdW cleanup
-src/map.cpp:179:	if(str == "n") { //FIXME MdW case??
 src/map.cpp:408://FIXME MdW the entire routine should be cleaned up
 src/map.cpp:472:	std::cerr << "loaded map: " << this->x() << ',' << ysize << '\n'; //FIXME MdW remove debug
 src/map.cpp:497:				str << tiles_[i][j]; //FIXME MdW TAG
 src/map.cpp:509:#if 1	 //FIXME MdW remove enable
 src/map.cpp:575:				//FIXME MdW cleanup
 src/map.cpp:703:#if 1 //FIXME MdW remove the if
-src/map.cpp:712:	// FIXME MdW rewrote the old routine, but haven't looked at what it should do
-src/map.cpp:739://FIXME MdW enable				
+src/map.cpp:732:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
 src/map_create.cpp:54://	return generator.get()->create_map(parameters); FIXME MdW enable
 src/mapgen.cpp:342:	mutable std::map<char,double> cache_; //FIXME MdW are we allowed to be char
 src/mapgen.cpp:362:	const char c = map_[loc.x][loc.y]; //FIXME MdW are we allowed to be char

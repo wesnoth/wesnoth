@@ -124,8 +124,8 @@ private:
 	
 	std::string vector_to_string_(const std::vector<TERRAIN_NUMBER>& map_data, const int separated) const;
 
-	TERRAIN_LETTER letter_to_number_(const TERRAIN_NUMBER terrain) const;
-	TERRAIN_NUMBER number_to_letter_(const TERRAIN_LETTER terrain) const; 
+	TERRAIN_LETTER number_to_letter_(const TERRAIN_NUMBER terrain) const;
+	TERRAIN_NUMBER letter_to_number_(const TERRAIN_LETTER terrain) const; 
 
 
 };

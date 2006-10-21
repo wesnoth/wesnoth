@@ -21,7 +21,7 @@
 #include "serialization/string_utils.hpp"
 #include "wassert.hpp"
 
-#define SHIFT 0
+#define SHIFT 8
 
 const terrain_translation::TERRAIN_NUMBER terrain_translation::VOID_TERRAIN = ' ' << SHIFT;
 const terrain_translation::TERRAIN_NUMBER terrain_translation::FOGGED = '~' << SHIFT;
@@ -48,13 +48,13 @@ const terrain_translation::TERRAIN_NUMBER terrain_translation::COMMA = ',' << SH
 terrain_translation::terrain_translation() {}
 terrain_translation::~terrain_translation(){}
 
-terrain_translation::TERRAIN_LETTER terrain_translation::letter_to_number_(const terrain_translation::TERRAIN_NUMBER terrain) const
+terrain_translation::TERRAIN_LETTER terrain_translation::number_to_letter_(const terrain_translation::TERRAIN_NUMBER terrain) const
 {
 	TERRAIN_NUMBER tmp = terrain >> SHIFT;
 	return (TERRAIN_LETTER)(tmp);
 }
 
-terrain_translation::TERRAIN_NUMBER terrain_translation::number_to_letter_(const terrain_translation::TERRAIN_LETTER terrain) const
+terrain_translation::TERRAIN_NUMBER terrain_translation::letter_to_number_(const terrain_translation::TERRAIN_LETTER terrain) const
 {
 	TERRAIN_NUMBER result = (TERRAIN_NUMBER) terrain;
 	result = result << SHIFT;
