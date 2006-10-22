@@ -225,7 +225,7 @@ bool terrain_builder::rule_valid(const building_rule &rule)
 
 			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
 				std::string s = variant->second.image_string;
-				s = s.substr(0, s.find_first_of(",:")); // FIXME MdW DEBUG here (seems oke now)
+				s = s.substr(0, s.find_first_of(",:"));
 
 				if(!image::exists("terrain/" + s + ".png"))
 					return false;
@@ -628,8 +628,6 @@ Starting empty lines are discarded.
 		++map;
 		wassert(map != mapstring.end());
 		++map;
-	} else {
-		int debug_dummy = 4;
 	}
 
 	// parse the map
@@ -843,9 +841,8 @@ void terrain_builder::parse_config(const config &cfg)
 		for(constraint_set::const_iterator constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
-			// FIXME MdW should be set_list
 			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc
-			          << "), terrain types = '" << terrain_translation().set_map(constraint->second.terrain_types) << "'\n";
+			          << "), terrain types = '" << terrain_translation().set_list(constraint->second.terrain_types) << "'\n";
 
 			std::vector<std::string>::const_iterator flag;
 
@@ -1057,6 +1054,13 @@ void terrain_builder::build_terrains()
 		for(int y = -1; y <= map_.y(); ++y) {
 			const gamemap::location loc(x,y);
 			const terrain_translation::TERRAIN_NUMBER t = map_.get_terrain(loc);
+
+			//FIXME MdW debug
+			if((x > -1)&&(x < map_.x())) {
+				if((y > -1)&&(y < map_.y())) {
+					wassert(t != 0);
+				}
+			}
 
 			terrain_by_type_[t].push_back(loc);
 

@@ -34,19 +34,14 @@ public:
 
 	//the character representing this terrain
 	//this is the old type will be obsoleted
-#if 0	
-	TERRAIN_LETTER letter() const;
-
-	//the underlying type of the terrain
-	const std::string& mvt_type() const;
-	const std::string& def_type() const;
-	const std::string& union_type() const;
-#endif
+	//FIXME MdW maybe reinstall the letter later again after debugging everything
+//	TERRAIN_LETTER letter() const;
+//	
 	//the number representing this terrain
 	//this is the new type
 	terrain_translation::TERRAIN_NUMBER number() const;
 
-	//FIXME MdW rename the ones below to the name of the ones above and kill the ones above
+	//FIXME MdW rename the ones below by removing the 2 from the name
 	//the underlying type of the terrain
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_type2() const;
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_type2() const;
@@ -68,23 +63,12 @@ private:
 	std::string id_;
 	t_string name_;
 
-	//the 'letter' is the letter that represents this
+	//the 'number' is the number that represents this
 	//terrain type. The 'type' is a list of the 'underlying types'
-	//of the terrain. This may simply be the same as the letter.
-#if 0	
-	TERRAIN_LETTER letter_;
-	//These strings are no longer bound to contain chars
-	//and only kept for backwards compability
-	std::string mvt_type_;
-	std::string def_type_;
-	std::string union_type_;
-#endif
-
-	//the 'number' is the new way
-	//NOTE the aliases stay strings for now
-	//will become space separated list of numbers in the future
+	//of the terrain. This may simply be the same as the number.
+	//This is the internal number used, WML still used characters
 	terrain_translation::TERRAIN_NUMBER number_;
-	//FIXME MdW rename these as soon as the originals are killed
+	//FIXME MdW rename without the 2
 	std::vector<terrain_translation::TERRAIN_NUMBER> mvt_type2_; 
 	std::vector<terrain_translation::TERRAIN_NUMBER> def_type2_; 
 	std::vector<terrain_translation::TERRAIN_NUMBER> union_type2_; 
@@ -97,14 +81,6 @@ private:
 
 	bool village_, castle_, keep_;
 
-	//FIXME MdW remove
-	// loads the terrain number from the config file
-	// we're the only one who should know what's in the
-	// file. If the terrain system changes we should be
-	// changed, the rest of the world not the old name 
-	// is used since it's the known key
-//	terrain_translation::TERRAIN_NUMBER load_terrain_char_(const config& cfg) const;
-//	std::vector<terrain_translation::TERRAIN_NUMBER> load_terrain_alias_(const config& cfg, std::string alias) const;
 };
 
 

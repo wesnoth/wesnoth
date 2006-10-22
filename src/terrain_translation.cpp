@@ -17,47 +17,77 @@
 #include "log.hpp"
 #include "util.hpp"
 #include "terrain_translation.hpp"
-//include "variable.hpp"
 #include "serialization/string_utils.hpp"
 #include "wassert.hpp"
 
-#define SHIFT 8
+#define SHIFT 0
+#define SET_TERRAIN_CONSTANT(x,y) \
+	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y)
 
-const terrain_translation::TERRAIN_NUMBER terrain_translation::VOID_TERRAIN = ' ' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::FOGGED = '~' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::KEEP = 'K' << SHIFT;
+//	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y << SHIFT)
 
-const terrain_translation::TERRAIN_NUMBER terrain_translation::CASTLE = 'C' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::SHALLOW_WATER = 'c' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::DEEP_WATER = 's' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::GRASS_LAND = 'g' << SHIFT;
+SET_TERRAIN_CONSTANT(VOID_TERRAIN, ' ');
+SET_TERRAIN_CONSTANT(FOGGED, '~');
+SET_TERRAIN_CONSTANT(KEEP, 'K');
 
-const terrain_translation::TERRAIN_NUMBER terrain_translation::CAVE_WALL = 'W' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::CAVE = 'u' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::UNDERGROUND_VILLAGE = 'D' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::DWARVEN_CASTLE = 'o' << SHIFT;
+SET_TERRAIN_CONSTANT(CASTLE, 'C');
+SET_TERRAIN_CONSTANT(SHALLOW_WATER, 'c');
+SET_TERRAIN_CONSTANT(DEEP_WATER, 's');
+SET_TERRAIN_CONSTANT(GRASS_LAND, 'g');
 
-const terrain_translation::TERRAIN_NUMBER terrain_translation::PLUS = '+' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::MINUS = '-' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::STAR = '*' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::NOT = '!' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::EOL = 7 << SHIFT; // char 7 is the bell so no EOL
-const terrain_translation::TERRAIN_NUMBER terrain_translation::DOT = '.' << SHIFT;
-const terrain_translation::TERRAIN_NUMBER terrain_translation::COMMA = ',' << SHIFT;
+SET_TERRAIN_CONSTANT(CAVE_WALL, 'W');
+SET_TERRAIN_CONSTANT(CAVE, 'u');
+SET_TERRAIN_CONSTANT(UNDERGROUND_VILLAGE, 'D');
+SET_TERRAIN_CONSTANT(DWARVEN_CASTLE, 'o');
+
+SET_TERRAIN_CONSTANT(PLUS, '+');
+SET_TERRAIN_CONSTANT(MINUS, '-');
+SET_TERRAIN_CONSTANT(STAR, '*');
+SET_TERRAIN_CONSTANT(NOT, '!');
+SET_TERRAIN_CONSTANT(EOL, 7);
+SET_TERRAIN_CONSTANT(DOT, '.');
+SET_TERRAIN_CONSTANT(COMMA, ',');
+/*
+const terrain_translation::TERRAIN_NUMBER terrain_translation::VOID_TERRAIN = ' ' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::FOGGED = '~' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::KEEP = 'K' ;
+
+const terrain_translation::TERRAIN_NUMBER terrain_translation::CASTLE = 'C' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::SHALLOW_WATER = 'c' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::DEEP_WATER = 's' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::GRASS_LAND = 'g' ;
+
+const terrain_translation::TERRAIN_NUMBER terrain_translation::CAVE_WALL = 'W' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::CAVE = 'u' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::UNDERGROUND_VILLAGE = 'D' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::DWARVEN_CASTLE = 'o' ;
+
+const terrain_translation::TERRAIN_NUMBER terrain_translation::PLUS = '+' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::MINUS = '-' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::STAR = '*' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::NOT = '!' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::EOL = 7 ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::DOT = '.' ;
+const terrain_translation::TERRAIN_NUMBER terrain_translation::COMMA = ',' ;
+*/
 
 terrain_translation::terrain_translation() {}
 terrain_translation::~terrain_translation(){}
 
 terrain_translation::TERRAIN_LETTER terrain_translation::number_to_letter_(const terrain_translation::TERRAIN_NUMBER terrain) const
 {
-	TERRAIN_NUMBER tmp = terrain >> SHIFT;
+	return terrain; //FIXME MdW debug
+
+	TERRAIN_NUMBER tmp = (terrain >> SHIFT);
 	return (TERRAIN_LETTER)(tmp);
 }
 
 terrain_translation::TERRAIN_NUMBER terrain_translation::letter_to_number_(const terrain_translation::TERRAIN_LETTER terrain) const
 {
+	return terrain; //FIXME MdW debug
+
 	TERRAIN_NUMBER result = (TERRAIN_NUMBER) terrain;
-	result = result << SHIFT;
+	result = (result << SHIFT);
 	return result;
 }
 
@@ -71,11 +101,10 @@ int terrain_translation::list_to_int(const std::vector<terrain_translation::TERR
 	}
 
 	if(data.find_first_of("0123456789") != std::string::npos) {
-                 return atoi(data.c_str());
+		return atoi(data.c_str());
 	} else {
 		return -1;
 	}
-              
 }
 
 int terrain_translation::letter_to_start_location(const terrain_translation::TERRAIN_NUMBER number) const
@@ -109,36 +138,21 @@ std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > terrain_translati
 
 	return res;
 }
-/*
-std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::string_to_vector(const std::string map_data) const
-{
-	const std::string& data = map_data;
-	return terrain_translation::string_to_vector_(data, false);
 
-}
-*/
-
-
-
-//NEW will stay
 terrain_translation::TERRAIN_NUMBER terrain_translation::get_letter(const std::string& letter) const
 {
 	wassert(! letter.empty());
 	return letter_to_number_(letter[0]);
 }
 
-//NEW will stay
 std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::get_list(const std::string& list, const int separated) const
 {
 	return string_to_vector_(list, false, separated);
 }
 
-//NEW will stay
 std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::get_map(const std::string& map) const
 {
-	//FIXME MdW remove assigment, only used as debug aid
-	std::vector<terrain_translation::TERRAIN_NUMBER> result = string_to_vector_(map, true, 0);
-	return result;
+	return string_to_vector_(map, true, 0);
 }
 
 std::string terrain_translation::set_map(const std::vector<terrain_translation::TERRAIN_NUMBER>& map) const
@@ -154,7 +168,6 @@ std::string terrain_translation::set_letter(const terrain_translation::TERRAIN_N
 	return res;
 }
 
-//USED private
 std::string terrain_translation::vector_to_string_(const std::vector<terrain_translation::TERRAIN_NUMBER>& map_data, const int separated) const
 {
 	std::string result; 
@@ -180,7 +193,6 @@ std::string terrain_translation::vector_to_string_(const std::vector<terrain_tra
 	return result;
 }
 
-//USED private
 std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::string_to_vector_(const std::string& data, const bool convert_eol, const int separated) const
 {
 	bool last_eol = false;
@@ -207,33 +219,8 @@ std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::string_to_
 			result.push_back(letter_to_number_(*itor));
 		}
 	}
-#if 0		
-		if(convert_eol){
-			if(*itor == '\n' || *itor == '\r'){
-				// end of line marker found
-				if(last_eol == false){
-					// last wasn't eol then add us
-					result.push_back(EOL);
-				}
-				//else we're ignored
-			}else{
-				last_eol = false;
-				result.push_back(letter_to_number(*itor));
-			}
-		} else {
-			// no EOL conversion just pushback
-			result.push_back(letter_to_number(*itor));
-		}
-	}
-#endif
-	//note 2 exit path for debugging aids
-	if(result.empty()) {
-		return result;
-	} else {
-		return result;
-	}
-		
 
+	return result;
 }
 
 std::string terrain_translation::set_list(const std::vector<terrain_translation::TERRAIN_NUMBER>& list, const int separated) const

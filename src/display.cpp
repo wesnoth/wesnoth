@@ -1344,12 +1344,12 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 
 	std::vector<surface>::const_iterator itor;
 	for(itor = images.begin(); itor != images.end(); ++itor) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };  //FIXME MdW debug
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 		SDL_BlitSurface(*itor,NULL,dst,&dstrect);
 	}
 }
 
-void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect) //FIXME MdW debug
+void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 {
 	reach_map::iterator reach = reach_map_.end();
 
@@ -1372,9 +1372,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	terrain_translation::TERRAIN_NUMBER terrain = terrain_translation::VOID_TERRAIN;
 
 	if(!is_shrouded) {
-		terrain = map_.get_terrain(loc); //FIXME MdW debug this one seems to be happy to turn the entire world into grass :-(
-		// br y == 2 && x == 1 for forrest
-		// br y == 0 && x == 0 for village
+		terrain = map_.get_terrain(loc);
 	}
 
 	image::TYPE image_type = image::SCALED;
@@ -1682,7 +1680,7 @@ const std::string& get_angle_direction(size_t n)
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
-std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc) //FIXME MdW TAG
+std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
 {
 	std::vector<std::string> res;
 

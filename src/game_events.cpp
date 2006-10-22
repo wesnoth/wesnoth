@@ -1150,8 +1150,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			preferences::encountered_terrains().insert(terrain);
 			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
 				const bool old_village = game_map->is_village(*loc);
-				//FIXME MdW cleanup
-//				const bool new_village = game_map->is_village(terrain_type[0]); 
 				const bool new_village = game_map->is_village(terrain); 
 
 				if(old_village && !new_village) {
@@ -1172,8 +1170,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
 
 		gamemap mask(*game_map);
-		//FIXME MdW cleanup
-//		std::vector<terrain_translation::TERRAIN_NUMBER> map_data = translator.get_terrain_vector(cfg, std::string("mask"), true);
 		std::vector<terrain_translation::TERRAIN_NUMBER> map_data = terrain_translation().get_map(cfg["mask"]);
  
 		try {

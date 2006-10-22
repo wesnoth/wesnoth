@@ -37,12 +37,8 @@ public:
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
 	//is simply an alias, the underlying terrain name is the name of the
 	//terrain that it's aliased to
-#if 0	
-	const std::string& underlying_mvt_terrain(terrain_translation::TERRAIN_NUMBER terrain) const;
-	const std::string& underlying_def_terrain(terrain_translation::TERRAIN_NUMBER terrain) const;
-	const std::string& underlying_union_terrain(terrain_translation::TERRAIN_NUMBER terrain) const;
-#endif
-	//FIXME MdW rename the ones below to the name of the ones above and kill the ones above
+
+	//FIXME MdW rename the ones without the 2 in the name
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_mvt_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_def_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_union_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
@@ -98,21 +94,13 @@ public:
 	private:
 		void init(const std::string &x, const std::string &y);
 	};
-#if 0
-	const std::string& underlying_mvt_terrain(const location& loc) const
-	{ return underlying_mvt_terrain(get_terrain(loc)); }
-	const std::string& underlying_def_terrain(const location& loc) const
-	{ return underlying_def_terrain(get_terrain(loc)); }
-	const std::string& underlying_union_terrain(const location& loc) const
-	{ return underlying_union_terrain(get_terrain(loc)); }
-#endif	
-	//FIXME MdW rename the ones below to the name of the ones above and kill the ones above
+	//FIXME MdW rename the ones below to remove the 2 from the name
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_mvt_terrain2(const location& loc) const
-	{ return underlying_mvt_terrain2(get_terrain(loc)); }
+		{ return underlying_mvt_terrain2(get_terrain(loc)); }
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_def_terrain2(const location& loc) const
-	{ return underlying_def_terrain2(get_terrain(loc)); }
+		{ return underlying_def_terrain2(get_terrain(loc)); }
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_union_terrain2(const location& loc) const
-	{ return underlying_union_terrain2(get_terrain(loc)); }
+		{ return underlying_union_terrain2(get_terrain(loc)); }
 
 	bool is_village(terrain_translation::TERRAIN_NUMBER terrain) const;
 	int gives_healing(terrain_translation::TERRAIN_NUMBER terrain) const;
@@ -131,13 +119,10 @@ public:
 	//data should be a series of lines, with each character representing
 	//one hex on the map. Starting locations are represented by numbers,
 	//and will be of type keep.
-//	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
 	gamemap(const config& terrain_cfg, const std::vector<terrain_translation::TERRAIN_NUMBER>& data); //throw(incorrect_format_exception)
-//	void read(const std::string& data); //FIXME MdW cleanup
 	void read(const std::vector<terrain_translation::TERRAIN_NUMBER>& data);
 
 	std::string write() const;
-//	std::vector<terrain_translation::TERRAIN_NUMBER> write() const;
 
 	//overlays another map onto this one at the given position.
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
