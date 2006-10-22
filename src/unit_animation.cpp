@@ -96,11 +96,8 @@ unit_animation::unit_animation(int start_time,const unit_frame & frame ):animate
 }
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string )
-//FIXME MdW not sure what the terrain string is but guess 
-//normal string due to documentation so use default 
-//translation for now
-:terrain_types(terrain_translation().get_terrain_vector_splitted(cfg, std::string("terrain")))
-/*terrain_types(utils::split(cfg["terrain"]))*/{
+:terrain_types(terrain_translation().get_splitted_list(cfg["terrain"]))
+{
 	
 	config::const_child_itors range = cfg.child_range(frame_string);
 	if(cfg["start_time"].empty() &&range.first != range.second) {
@@ -140,19 +137,11 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 {
 	int result = 0;
 	if(terrain_types.empty()== false) {
-		if (find(terrain_types.begin(),terrain_types.end(),disp.get_map().underlying_union_terrain2(loc))== terrain_types.end()) {
-//		if (terrain_types.find(disp.get_map().underlying_union_terrain2(loc)) == terrain_types.end()) {
+		if (std::find(terrain_types.begin(),terrain_types.end(),disp.get_map().underlying_union_terrain2(loc))== terrain_types.end()) {
 			return -1;
 		} else {
 			result ++;
 		} 
-		//FIXME MdW enable change to underlying_union_terrain2 doesn't work
-		/*
-		if (std::find(terrain_types.begin(),terrain_types.end(),disp.get_map().underlying_union_terrain(loc))== terrain_types.end()) {
-			return -1;
-		} else {
-			result ++;
-		} */
 	}
 
 	if(my_unit) {

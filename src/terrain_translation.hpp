@@ -95,6 +95,8 @@ public:
 	//converts a string to a vector of TERRAIN_NUMBER it expects the input to be a map and  converts it accordingly
 	std::vector<TERRAIN_NUMBER> get_map(const std::string& map) const;
 
+	//used in unit animation
+	std::vector<std::vector<TERRAIN_NUMBER> > get_splitted_list(const std::string& list) const;
 	
 	//expects a vector of TERRAIN_NUMBER and converts it to s number -1 upon failure
 	int list_to_int(const std::vector<TERRAIN_NUMBER> number)const;
@@ -108,8 +110,6 @@ public:
 	//converts a list to a string
 	std::string set_list(const std::vector<TERRAIN_NUMBER>& list, const int separated=0) const;
 	
-	//used in unit animation FIXME should probebly also be re-written at some point
-	std::vector<std::vector<TERRAIN_NUMBER> > get_terrain_vector_splitted(const config& cfg, const std::string tag) const;
 
 	int letter_to_start_location(const TERRAIN_NUMBER number) const;
 

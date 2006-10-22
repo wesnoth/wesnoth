@@ -20,7 +20,15 @@
 #include "serialization/string_utils.hpp"
 #include "wassert.hpp"
 
-#define SHIFT 0
+//FIXME MdW for some strange reason only shift 8 and 16 seem to 
+//work. Even 0 which doesn't do anything fails. It seems there
+//a bug lurking. With the "wrong" values the terrain transition
+//fails. With the 8 and 16 at least 1 transition fails, to be 
+//seen in the tutorial at 9,1. This also fails with shift 0.
+//The shift was orignal intended to make sure the first byte
+//of the terrain is empty so callers who would access a byte
+//would find a 0 byte.
+#define SHIFT 8
 #define SET_TERRAIN_CONSTANT(x,y) \
 	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y)
 
@@ -117,10 +125,11 @@ int terrain_translation::letter_to_start_location(const terrain_translation::TER
 	}
 }
  
-std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > terrain_translation::get_terrain_vector_splitted(const config& cfg, const std::string tag) const
+std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > terrain_translation::get_splitted_list(const std::string& list) const
 {
+
 	//for now use the standard splitter
-	const std::vector<std::string> data = utils::split(cfg[tag]);
+	const std::vector<std::string> data = utils::split(list);
 	std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > res;
 	std::vector<terrain_translation::TERRAIN_NUMBER> inner_res;
 	std::vector<std::string>::const_iterator iter = data.begin();
@@ -134,7 +143,6 @@ std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > terrain_translati
 		res.push_back(inner_res);
 		inner_res.clear();
 	}
-
 
 	return res;
 }
