@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-31 12:50+0200\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
-"Last-Translator: Matej Repinc <mrepinc@gmail.com>\n"
+"Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2157,7 +2157,7 @@ msgstr ""
 
 #: data/help.cfg:100
 msgid "Recruiting and Recalling"
-msgstr "Novačenje in priklic enot"
+msgstr "Vpoklic in priklic enot"
 
 #: data/help.cfg:101
 msgid ""
@@ -2172,14 +2172,14 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "Vsaka stran začne z enim voditeljem v svoji trdnjavi. Na začetku in "
-"dostikrat med bojem, boste morali novačiti <ref>dst=units text=enote</ref> v "
-"svojo vojsko. Za začetek mora biti vodja (Konrad v kampanji "
+"dostikrat med bojem, boste morali vpoklicaiti <ref>dst=units text=enote</"
+"ref> v svojo vojsko. Za začetek mora biti vodja (Konrad v kampanji "
 "Prestolonaslednik) v trdnjavi <ref>dst=terrain_castle text=gradu</ref>. "
-"Potem lahko novačite, tako da izberete Novači iz menija ali pa z desnim "
-"klikom na željeno ploščo in izbiro <italic>text=Novači</italic>. Prikazal se "
-"bo zaslon s seznamom enot na voljo za novačenje, skupaj z njihovo ceno v "
-"zlatu. S klikom na enoto se bodo na levi prikazale njene statistike, s "
-"pritiskom na gumb Novači pa jo boste pojedli."
+"Potem lahko vpoklicujete, tako da izberete Vpokliči iz menija ali pa z "
+"desnim klikom na željeno ploščo in izbiro <italic>text=Vpokliči</italic>. "
+"Prikazal se bo zaslon s seznamom enot na voljo za vpoklic, skupaj z njihovo "
+"ceno v zlatu. S klikom na enoto se bodo na levi prikazale njene statistike, "
+"s pritiskom na gumb Vpokliči pa jo boste pojedli."
 
 #: data/help.cfg:103
 msgid ""
@@ -2192,11 +2192,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Če ste enoto novačili preko pojavnega menija, se bo ta pojavila na tisti "
+"Če ste enoto vpoklicali preko pojavnega menija, se bo ta pojavila na tisti "
 "plošči, kjer ste desno-kliknili. Drugače se bo pojavila v poljubnem prosti "
-"plošči zraven trdnjave. Novačite lahko samo toliko enot, kolikor je prostih "
-"plošč v gradu (okoli trdnjave) in porabite lahko samo toliko zlata, kolikor "
-"ga imate."
+"plošči zraven trdnjave. Vpokličete lahko samo toliko enot, kolikor je "
+"prostih plošč v gradu (okoli trdnjave) in porabite lahko samo toliko zlata, "
+"kolikor ga imate."
 
 #: data/help.cfg:105
 msgid ""
@@ -2234,8 +2234,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ne pozabite da enote ne stanejo le toliko zlata kolikor ga je potrebno za "
-"njihovo novačenje ali priklic, ampak potrebujejo tudi plače. Poglejte si "
+"Ne pozabite, da enote ne stanejo le toliko zlata kolikor ga je potrebno za "
+"njihov vpoklic ali priklic, ampak potrebujejo tudi plače. Poglejte si "
 "<ref>dst=income_and_upkeep text='Prihodki in Plače'</ref>."
 
 #: data/help.cfg:114
@@ -5036,70 +5036,59 @@ msgstr "Konec"
 
 #: data/themes/dfool.cfg:218
 msgid "MP"
-msgstr ""
+msgstr "MP"
 
 #: data/themes/macros.cfg:13
-#, fuzzy
 msgid "time left"
-msgstr "Časovna omejitev"
+msgstr "preostali čas"
 
 #: data/themes/macros.cfg:52
-#, fuzzy
 msgid "Replay"
-msgstr "vnovično predvajanje"
+msgstr "Vnovično predvajanje"
 
 #: data/themes/macros.cfg:67
-#, fuzzy
 msgid "Play"
-msgstr "Igralci: "
+msgstr "Igraj "
 
 #: data/themes/macros.cfg:68
-#, fuzzy
 msgid "continous replay"
-msgstr "vnovično predvajanje"
+msgstr "neprestano vnovično predvajanje"
 
 #: data/themes/macros.cfg:81
-#, fuzzy
 msgid "Stop"
-msgstr "Močan"
+msgstr "Ustavi"
 
 #: data/themes/macros.cfg:82
 msgid "pause at end of turn"
-msgstr ""
+msgstr "pavza ob koncu poteze"
 
 #: data/themes/macros.cfg:95
-#, fuzzy
 msgid "Reset"
-msgstr "Puščava"
+msgstr "Ponastavi"
 
 #: data/themes/macros.cfg:96
 msgid "reset to beginning"
-msgstr ""
+msgstr "ponastavi na začetek"
 
 #: data/themes/macros.cfg:109
-#, fuzzy
 msgid "Next Turn"
-msgstr "Poteza"
+msgstr "Naslednja poteza"
 
 #: data/themes/macros.cfg:110
-#, fuzzy
 msgid "play turn"
-msgstr "na potezo"
+msgstr "igraj potezo"
 
 #: data/themes/macros.cfg:123
-#, fuzzy
 msgid "Next Side"
-msgstr "Naslednji"
+msgstr "Naslednja stran"
 
 #: data/themes/macros.cfg:124
-#, fuzzy
 msgid "play side turn"
-msgstr "na potezo"
+msgstr "igraj potezo strani"
 
 #: data/themes/macros.cfg:160
-#, fuzzy
 msgid "Skip animation"
-msgstr "Slovaški prevod"
+msgstr "Preskoči animacije"
 
 #: data/tips.cfg:1
 msgid ""
@@ -5277,9 +5266,10 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Vaš voditelj lahko novači in priklicuje enote iz poljubne trdnjave, ne samo "
-"iz tiste kjer začne igro. Lahko zavzamete sovražno trdnjavo in novačite od "
-"tam. Poleg tega vam bo mogoče kak zaveznik (začasno) odstopil svojo."
+"Vaš voditelj lahko vpoklicuje in priklicuje enote iz poljubne trdnjave, ne "
+"samo iz tiste kjer začne igro. Zavzamete lahko sovražno trdnjavo in "
+"vpoklicujete od tam. Poleg tega vam bo mogoče kak zaveznik (začasno) "
+"odstopil svojo."
 
 #: data/tips.cfg:20
 msgid ""
@@ -5382,6 +5372,10 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Enote lahko napredujejo po najvišjem nivoju (AMLA), kar jim ponavadi zviša "
+"maksimum HP za 3. Ta napredovanja je z vsakim novim vedno težje doseči. Zato "
+"se ponavadi bolj splača poskusiti pridobiti napredovanje za kako enoto "
+"nižjega nivoja."
 
 #: data/tips.cfg:34
 msgid ""
@@ -5389,12 +5383,17 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"Na kartah kjer je megla ali koprena imajo enote omejen razgled. Kako daleč "
+"vidijo je odvisno od njihovega dosega pri premikanju. Ne pozabite na to, ko "
+"boste izbirali izvidnike."
 
 #: data/tips.cfg:35
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Na igralnem zaslonu ima skoraj vsaka ikona in beseda svoj zaslonski namig. "
+"Nanjo pokažite z miško in prikazala se bo razlaga ali opis."
 
 #: data/tips.cfg:37
 msgid ""
@@ -5402,6 +5401,9 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"Projektu Wesnoth lahko anonimno pošiljate povzetke vaših iger (gumb z "
+"ovojnico). Ti podatki so za razvijalce kritični, saj lahko tako lažje "
+"uravnotežijo kampanje."
 
 #: data/traits.cfg:6
 msgid "loyal"
@@ -5452,6 +5454,8 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Lutke se uporabljajo pri vadbi mečevanja in alk. Zelo bi bilo nenavadno, če "
+"bi vas katera napadla."
 
 #: data/tutorial/units/Quintain.cfg:20
 msgid "flail"
@@ -5498,6 +5502,8 @@ msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Transportne galeje so dobro oborožene ladje, ki prevažajo enote. Če dosežejo "
+"obalo, jih lahko nemudoma izkrcajo."
 
 #: data/units/Drake_Blademaster.cfg:3
 msgid "Drake Blademaster"
@@ -5511,7 +5517,7 @@ msgstr ""
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
-msgstr ""
+msgstr "Drak požigalec"
 
 #: data/units/Drake_Burner.cfg:18
 msgid ""
@@ -5523,7 +5529,7 @@ msgstr ""
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
-msgstr ""
+msgstr "Drak udarnik"
 
 #: data/units/Drake_Clasher.cfg:20
 msgid ""
@@ -5582,7 +5588,7 @@ msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Ognjesrčni drak"
 
 #: data/units/Drake_Flameheart.cfg:27
 msgid ""
@@ -5609,7 +5615,7 @@ msgstr ""
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "Drak gladiator"
 
 #: data/units/Drake_Gladiator.cfg:18
 msgid ""
@@ -5623,7 +5629,7 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
-msgstr ""
+msgstr "Drak jadralec"
 
 #: data/units/Drake_Glider.cfg:21
 msgid ""
@@ -5646,7 +5652,7 @@ msgstr "trk"
 
 #: data/units/Drake_Hurricane.cfg:3
 msgid "Hurricane Drake"
-msgstr ""
+msgstr "Hurikanski drak"
 
 #: data/units/Drake_Hurricane.cfg:30
 msgid ""
@@ -5659,7 +5665,7 @@ msgstr ""
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
-msgstr ""
+msgstr "Peklenski drak"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -5672,7 +5678,7 @@ msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
-msgstr ""
+msgstr "Nebesni drak"
 
 #: data/units/Drake_Sky.cfg:29
 msgid ""
@@ -7280,7 +7286,7 @@ msgstr "brizg vode"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Povodna pripravnica"
 
 #: data/units/Mermaid_Initiate.cfg:23
 msgid ""
@@ -7296,7 +7302,7 @@ msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "Povodna svečenica"
 
 #: data/units/Mermaid_Priestess.cfg:25
 msgid ""
@@ -7313,7 +7319,7 @@ msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Mermaid Siren"
-msgstr ""
+msgstr "Povodna sirena"
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -7368,7 +7374,7 @@ msgstr "trizob"
 
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "Povodni hoplit"
 
 #: data/units/Merman_Hoplite.cfg:21
 msgid ""
@@ -7382,7 +7388,7 @@ msgstr ""
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
-msgstr ""
+msgstr "Povodni lovec"
 
 #: data/units/Merman_Hunter.cfg:18
 msgid ""
@@ -7885,7 +7891,7 @@ msgstr ""
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
-msgstr "Saurijski Izogibalec"
+msgstr "Saurijski izogibalec"
 
 #: data/units/Saurian_Skirmisher.cfg:21
 msgid ""
@@ -8486,16 +8492,16 @@ msgstr "Zapri"
 
 #: src/actions.cpp:111
 msgid "You don't have a leader to recruit with."
-msgstr "Nimate voditelja, s katerim bi lahko novačili."
+msgstr "Nimate voditelja, s katerim bi lahko vpoklicovali."
 
 #: src/actions.cpp:118
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Če hočete novačiti ali priklicati enote, mora biti vaš voditelj v trdnjavi."
+"Če hočete vpoklicati ali priklicati enote, mora biti vaš voditelj v trdnjavi."
 
 #: src/actions.cpp:137
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "Na voljo ni nič prostih gradov, kjer bi lahko novačili."
+msgstr "Na voljo ni prostih gradov, kjer bi lahko vpoklicovali."
 
 #: src/actions.cpp:945 src/actions.cpp:1185
 msgid "poisoned"
@@ -8895,6 +8901,7 @@ msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
+"Izbrano prijavno ime je predolgo, prosimo uporabite ime krajše od 18 znakov,"
 
 #: src/game.cpp:1210 src/playcampaign.cpp:107 src/playcampaign.cpp:321
 msgid "The game could not be loaded: "
@@ -8922,7 +8929,7 @@ msgstr "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 
 #: src/game.cpp:1399
 msgid "ERROR DETAILS:"
-msgstr "PODROBNA NAPAKA:"
+msgstr "PODROBNOSTI NAPAKE:"
 
 #: src/game.cpp:1413
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -8941,13 +8948,12 @@ msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
 #: src/game.cpp:1719
-#, fuzzy
 msgid "Loading game configuration."
-msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
+msgstr "Nalaganje nastavitev."
 
 #: src/game.cpp:1725
 msgid "Re-initialize fonts for the current language."
-msgstr ""
+msgstr "Ponastavi pisave za trenutni jezik."
 
 #: src/game.cpp:1741
 msgid "Loading title screen."
@@ -9153,7 +9159,7 @@ msgstr "njega"
 
 #: src/menu_events.cpp:122 src/menu_events.cpp:184
 msgid "Recruits"
-msgstr "Novaki"
+msgstr "Vpoklicane enote"
 
 #: src/menu_events.cpp:128 src/menu_events.cpp:188
 msgid "Recalls"
@@ -9281,11 +9287,11 @@ msgstr "Zlata"
 
 #: src/menu_events.cpp:574
 msgid "You have no units available to recruit."
-msgstr "Nikogar ne morete novačiti."
+msgstr "Nikogar ne morete vpoklicati."
 
 #: src/menu_events.cpp:585
 msgid "Recruit"
-msgstr "Novači"
+msgstr "Vpokliči"
 
 #: src/menu_events.cpp:586 src/menu_events.cpp:729
 msgid "Select unit:"
@@ -9293,7 +9299,7 @@ msgstr "Izberite enoto:"
 
 #: src/menu_events.cpp:626
 msgid "You don't have enough gold to recruit that unit"
-msgstr "Za novačenje te enote nimate dovolj zlata"
+msgstr "Za vpoklic te enote nimate dovolj zlata"
 
 #: src/menu_events.cpp:681
 msgid "You are separated from your soldiers and may not recall them"
@@ -9876,9 +9882,10 @@ msgstr "Neveljavna barva"
 msgid "Leader: "
 msgstr "Vodja: "
 
+# preveri
 #: src/multiplayer_wait.cpp:118
 msgid "Recruits: "
-msgstr "Novaki: "
+msgstr "Vpoklicane enote: "
 
 #: src/multiplayer_wait.cpp:157
 msgid "Waiting for game to start..."
@@ -10334,33 +10341,3 @@ msgstr "Rezultate si lahko ogledate na:"
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Pomagajte nam izboljšati Wesnoth!"
-
-#~ msgid "+Core Developers"
-#~ msgstr "+Poglavitni razvijalci"
-
-#~ msgid "+  Main Developer"
-#~ msgstr "+  Glavni razvijalec"
-
-#~ msgid "+  Artwork and graphics designer"
-#~ msgstr "+  Glavni grafični oblikovalec"
-
-#~ msgid "Import Saved Games"
-#~ msgstr "Uvozi shranjene položaje"
-
-#~ msgid ""
-#~ "Your saves directory contains some files from an old version of Battle "
-#~ "for Wesnoth. Would you like to update these to the latest version? This "
-#~ "may take some time."
-#~ msgstr ""
-#~ "Vaša mapa s shranjenimi položaji vsebuje nekaj datotek iz starejše "
-#~ "različice Battle for Wesnoth. Ali jih želite posodobiti za trenutno "
-#~ "različico? To lahko traja."
-
-#~ msgid ""
-#~ "Your saves directory contains some files that don't appear to have been "
-#~ "generated by this version of Battle for Wesnoth. Would you like to "
-#~ "register these files with the game?"
-#~ msgstr ""
-#~ "Vaša mapa s shranjenimi položaji vsebuje nekaj datotek, ki niso bile "
-#~ "ustvarjene s to različico Battle for Wesnoth. Ali jih želite vpisati kot "
-#~ "del te različice?"
