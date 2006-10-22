@@ -809,9 +809,11 @@ void ai::do_move()
 
 	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"]);
 
-	unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader != units_.end() && passive_leader) {
-		remove_unit_from_moves(leader->first,srcdst,dstsrc);
+	if (passive_leader) { 
+		unit_map::iterator leader = find_leader(units_,team_num_); 
+		if(leader != units_.end()) { 
+			remove_unit_from_moves(leader->first,srcdst,dstsrc); 
+		}
 	}
 
 	//execute gotos - first collect gotos in a list
@@ -864,7 +866,7 @@ void ai::do_move()
 	LOG_AI << "get villages phase\n";
 
 	// Iterator could be invalidated by combat analysis or move_leader_to_goals.
-	leader = find_leader(units_,team_num_);
+	unit_map::iterator leader = find_leader(units_,team_num_);
 
 	LOG_AI << "villages...\n";
 	const bool got_village = get_villages(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
