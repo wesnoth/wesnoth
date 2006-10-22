@@ -680,13 +680,19 @@ std::vector<std::string> play_controller::expand_menu(std::vector<std::string>& 
 			// Make sure list doesn't get too long: keep top two,
 			// midpoint and bottom.
 			if (newitems.size() > 5) {
-				std::vector<std::string> subitems;
+				std::vector<std::string> subitems, subsavenames(i, "");
 				subitems.push_back(newitems[0]);
 				subitems.push_back(newitems[1]);
 				subitems.push_back(newitems[newitems.size() / 3]);
 				subitems.push_back(newitems[newitems.size() * 2 / 3]);
 				subitems.push_back(newitems.back());
+				subsavenames.push_back(savenames[i]);
+				subsavenames.push_back(savenames[i+1]);
+				subsavenames.push_back(savenames[i+newitems.size() / 3]);
+				subsavenames.push_back(savenames[i+newitems.size() * 2 / 3]);
+				subsavenames.push_back(savenames.back());
 				newitems = subitems;
+				savenames = subsavenames;
 			}
 
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
