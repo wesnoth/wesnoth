@@ -393,7 +393,7 @@ std::string gamemap::write() const
 			if(n < STARTING_POSITIONS) {
 				str << n;
 			} else {
-				str << tiles_[i][j];
+				str << terrain_translation().set_letter(tiles_[i][j]);
 			}
 		}
 
