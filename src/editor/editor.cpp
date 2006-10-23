@@ -88,9 +88,9 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 		return false;
 	std::string nfname;
 	std::string newfilename = std::string(file_content, start, stop-start);
-	if (newfilename[0]=='{' and newfilename[newfilename.size()-1]=='}') {
+	if (newfilename[0]=='{' && newfilename[newfilename.size()-1]=='}') {
 		newfilename.erase(newfilename.begin());
-		newfilename.erase(--newfilename.end());
+		newfilename.erase(newfilename.end() - 1);
 
 		#ifndef USE_ZIPIOS
 		//if the filename begins with a '~', then look
