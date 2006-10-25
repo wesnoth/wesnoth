@@ -1000,7 +1000,7 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 		return INT_MAX;
 	if(types.front() == terrain_translation::NOT)
 		return INT_MAX;
-	if(std::find(types.begin(), types.end(), terrain_translation::STAR) == types.end())
+	if(std::find(types.begin(), types.end(), terrain_translation::STAR) != types.end())
 		return INT_MAX;
 
 	gamemap::location adj[6];
@@ -1133,12 +1133,7 @@ void terrain_builder::build_terrains()
 				if(cons != rule->second.constraints.end()) {
 					adjacent_types[i] = cons->second.terrain_types;
 				} else {
-					//FIXME MdW the previous code set the value to an empty
-					//string, not sure whether this part is a valid code part
-					//so assert for now
-//					wassert(false);
-					adjacent_types[i] = std::vector<terrain_translation::TERRAIN_NUMBER>();
-					adjacent_types[i].push_back(0); // required?
+					adjacent_types[i] = terrain_translation().get_list("");
 				}
 			}
 
