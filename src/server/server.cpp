@@ -912,6 +912,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				const config& msg = construct_server_message(result,*g);
 				network::send_data(msg,sock);
 			}
+			g->describe_slots();
+			lobby_players_.send_data(sync_initial_response());
 			return;
 		}
 	}
