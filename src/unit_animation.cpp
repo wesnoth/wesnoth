@@ -95,7 +95,8 @@ unit_animation::unit_animation(int start_time,const unit_frame & frame ):animate
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
 
-unit_animation::unit_animation(const config& cfg,const std::string frame_string ):terrain_types(utils::split(cfg["terrain"])){
+unit_animation::unit_animation(const config& cfg,const std::string frame_string ):terrain_types(utils::split(cfg["terrain"]))
+{
 	config::const_child_itors range = cfg.child_range(frame_string);
 	if(cfg["start_time"].empty() &&range.first != range.second) {
 		starting_frame_time_ = atoi((**range.first)["begin"].c_str());
@@ -121,6 +122,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	for(itor = cfg.child_range("secondary_unit_filter").first; itor <cfg.child_range("secondary_unit_filter").second;itor++) {
 		secondary_unit_filter_.push_back(**itor);
 	}
+	frequency_ = atoi(cfg["frequency"].c_str());	
 
 	/* warn on deprecated WML */
 	if(cfg.child("sound")) {
@@ -172,6 +174,9 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 		}
 
 	} else if (!unit_filter_.empty()) return -1;
+	if(frequency_ && !(rand()%frequency_)) return -1;
+
+	
 
 	return result;
 }
