@@ -199,6 +199,31 @@ void set_language(const std::string& s)
 	prefs["locale"] = s;
 }
 
+unsigned int sample_rate()
+{
+	return lexical_cast_default<unsigned int>(prefs["sample_rate"], 44100);
+}
+
+void save_sample_rate(const unsigned int rate)
+{
+	prefs["sample_rate"] = lexical_cast_default<std::string>(rate, "44100");
+
+	//if audio is open we have to re set sample rate by stop an restart
+	bool sound = sound_on();
+	bool bell = turn_bell();
+	bool music = music_on();
+	if (sound || bell || music) {
+		sound::close_sound();
+		sound::init_sound();
+		if (!sound)
+			sound::stop_sound();
+		if (!bell)
+			sound::stop_bell();
+		if (!music)
+			sound::stop_music();
+	}
+}
+
 int music_volume()
 {
 	return lexical_cast_default<int>(prefs["music_volume"], 100);
