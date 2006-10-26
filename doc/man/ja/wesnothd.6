@@ -2,13 +2,16 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
+.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
+.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
 .
 .\"*******************************************************************
 .\"
@@ -19,28 +22,24 @@
 .
 .SH 名前
 .
-wesnothd \- Battle for \fBWesnoth\fP 
-マルチプレイヤー・ネットワーク・デーモン
+wesnothd \- Battle for \fBWesnoth\fP マルチプレイヤー・ネットワーク・デーモン
 .
 .SH 書式
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP 
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
 \fInumber\fP\|]
 .
 .SH 説明
 .
-Battle for Wesnoth 
-のマルチプレイヤーゲームを管理する。wesnoth 
-クライアントやソケットを通して、サーバがどのようなコマンドを受けつけるかについては 
+Battle for Wesnoth のマルチプレイヤーゲームを管理する。wesnoth
+クライアントやソケットを通して、サーバがどのようなコマンドを受けつけるかについては
 http://www.wesnoth.org/wiki/ServerAdministration を参照。
 .
 .SH オプション
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ path\fP
-wesnothd 
-が使用する設定ファイルがどこにあるかを伝える。文法については後述の 
-\fBサーバー設定\fP の章を参照。
+wesnothd が使用する設定ファイルがどこにあるかを伝える。文法については後述の \fBサーバー設定\fP の章を参照。
 .TP 
 \fB\-d,\ \-\-daemon\fP
 wesnothd をデーモンとして実行する。
@@ -49,13 +48,10 @@ wesnothd をデーモンとして実行する。
 コマンドラインオプションで何が行えるかを表示する。
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
-指定ポートにサーバをバインドする。 
-もしポートが指定されないなら、 
-15000番ポートが使用される。
+指定ポートにサーバをバインドする。 もしポートが指定されないなら、 15000番ポートが使用される。
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ number\fP
-ネットワークI/O用の作業スレッドの数を n 
-に設定する。(デフォルト: 5、最大: 30)
+ネットワークI/O用の作業スレッドの数を n に設定する。(デフォルト: 5、最大: 30)
 .TP 
 \fB\-V,\ \-\-version\fP
 バージョン番号を表示して、終了する。
@@ -83,11 +79,8 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 同じ IP から許可される接続数。
 .TP 
 \fBdisallow_names\fP
-サーバによって受けつけられない名前やニックネーム。 
-`*' と `\ ' 
-からなるワイルドカードのパターンに対応。詳細は 
-\fBglob\fP(7) を参照。(何も指定されなければ、)既定の値は 
-`server,ai,player,network,human,admin,computer'。
+サーバによって受けつけられない名前やニックネーム。 `*' と `?' からなるワイルドカードのパターンに対応。詳細は \fBglob\fP(7)
+を参照。(何も指定されなければ、)既定の値は `server,ai,player,network,human,admin,computer'。
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP の時間内に許可されるメッセージ数
@@ -99,21 +92,17 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 本日のメッセージ。
 .TP 
 \fBpasswd\fP
-管理者権限の獲得に用いられるパスワード。 通常は 
-"admin" で始まる。
+管理者権限の獲得に用いられるパスワード。 通常は "admin" で始まる。
 .TP 
 \fBversions_accepted\fP
-カンマで区切られた、サーバに受けつけられるバージョン文字列のリスト。 
-`*' と `\ ' からなるワイルドカードのパターンに対応。
+カンマで区切られた、サーバに受けつけられるバージョン文字列のリスト。 `*' と `?' からなるワイルドカードのパターンに対応。
 .br
-例: versions_accepted="*" 
-で、どのようなバージョン文字列も受けつける。
+例: versions_accepted="*" で、どのようなバージョン文字列も受けつける。
 .
 .SS グローバルタグ:
 .
 .P
-\fB[redirect]\fP 
-クライアントのバージョンでリダイレクトするサーバを指定するためのタグ。
+\fB[redirect]\fP クライアントのバージョンでリダイレクトするサーバを指定するためのタグ。
 .RS
 .TP 
 \fBhost\fP
@@ -123,22 +112,19 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 接続するポート。
 .TP 
 \fBversion\fP
-カンマで区切られた、リダイレクトするバージョンのリスト。ワイルドカードのパターンに関しては、 
-\fBversions_accepted\fP と同様に振る舞う。
+カンマで区切られた、リダイレクトするバージョンのリスト。ワイルドカードのパターンに関しては、 \fBversions_accepted\fP
+と同様に振る舞う。
 .RE
 .P
-\fB[proxy]\fP 
-プロキシーとして振る舞い、接続クライアントのリクエストを指定したサーバへと転送するよう指定するよう、サーバに伝えるタグ。 
+\fB[proxy]\fP プロキシーとして振る舞い、接続クライアントのリクエストを指定したサーバへと転送するよう指定するよう、サーバに伝えるタグ。
 [redirect] と同じキーを受けつける。
 .
 .SH 著者
 .
-David White <davidnwhite@verizon.net> によって書かれた。 
-Nils Kneuper <crazy\-ivanovic@gmx.net> と ott <ott@gaon.net> 
-と Soliton <soliton@sonnenkinder.org> 
-によって編集された。 このマニュアルページは Cyril 
-Bouthors <cyril@bouthors.org>によって最初に書かれた。 
-岡田信人 
+David White <davidnwhite@verizon.net> によって書かれた。 Nils Kneuper
+<crazy\-ivanovic@gmx.net> と ott <ott@gaon.net> と Soliton
+<soliton@sonnenkinder.org> によって編集された。 このマニュアルページは Cyril Bouthors
+<cyril@bouthors.org>によって最初に書かれた。 岡田信人
 <okyada@gmail.com>によって日本語に翻訳された。
 .br
 公式ホームページ http://www.wesnoth.org/ を訪問して下さい。
@@ -147,8 +133,8 @@ Bouthors <cyril@bouthors.org>によって最初に書かれた。
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-This is Free Software; this software is licensed under the GPL version 2, as 
-published by the Free Software Foundation.  There is NO warranty; not even 
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
 for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .
 .SH 関連項目

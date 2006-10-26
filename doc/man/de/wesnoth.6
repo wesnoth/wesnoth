@@ -2,13 +2,16 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
+.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
+.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
 .
 .\"*******************************************************************
 .\"
@@ -26,11 +29,11 @@ wesnoth \- Battle for Wesnoth, ein rundenbasiertes Strategiespiel
 .
 .SH BESCHREIBUNG
 .
-Battle for \fBWesnoth\fP ist ein rundenbasiertes Strategiespiel in einem 
+Battle for \fBWesnoth\fP ist ein rundenbasiertes Strategiespiel in einem
 Fantasy\-Szenario.
 
-Schlüpfen Sie in die Rolle eines Herrführers und führen Sie Ihre Armee 
-zum Sieg.  Wählen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen 
+Schlüpfen Sie in die Rolle eines Herrführers und führen Sie Ihre Armee zum
+Sieg.  Wählen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen
 Fertigkeiten, Waffen und Sprüchen aus und zerschmettern Sie Ihre Gegner.
 .
 .SH KOMMANDOZEILENOPTIONEN
@@ -40,16 +43,16 @@ Fertigkeiten, Waffen und Sprüchen aus und zerschmettern Sie Ihre Gegner.
 Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: \-\-bpp 32
 .TP 
 \fB\-\-compress\fP\fI\ <entpackte_datei<gt>\fP\fB\ \fP\fI<komprimierte_datei<gt>\fP
-Wandelt eine normale WML\-Textdatei (entpackte_datei) in einen als 
+Wandelt eine normale WML\-Textdatei (entpackte_datei) in einen als
 WML\-Binärdatei komprimierten Spielstand (komprimierte_datei) um.
 .TP 
 \fB\-d\fP, \fB\-\-debug\fP
-Zeigt Entwicklerinformationen im Spiel an und erlaubt zusätzliche Kommandos 
-in der spieleigenen Befehlszeile (siehe dazu die Wiki\-Seite: 
+Zeigt Entwicklerinformationen im Spiel an und erlaubt zusätzliche Kommandos
+in der spieleigenen Befehlszeile (siehe dazu die Wiki\-Seite:
 http://www.wesnoth.org/).
 .TP 
 \fB\-\-decompress\fP\fI\ <komprimierte_datei<gt>\fP\fB\ \fP\fI<entpackte_datei<gt>\fP
-Wandelt einen als WML\-Binärdatei komprimierten Spielstand 
+Wandelt einen als WML\-Binärdatei komprimierten Spielstand
 (komprimierte_datei)  in eine normale WML\-Textdatei (entpackte_datei) um.
 .TP 
 \fB\-f\fP, \fB\-\-fullscreen\fP
@@ -62,17 +65,17 @@ Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
 \fB\-\-load\fP\fI\ Spielstand\fP
-Lädt die Datei `Spielstand' aus dem Standardverzeichnis für gespeicherte 
+Lädt die Datei `Spielstand' aus dem Standardverzeichnis für gespeicherte
 Spiele.
 .TP 
 \fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche 
-Meldungen auszugeben.  \fB\-\-log\-info\fP zeigt alle Meldungen, \fB\-\-log\-warning\fP 
+Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche
+Meldungen auszugeben.  \fB\-\-log\-info\fP zeigt alle Meldungen, \fB\-\-log\-warning\fP
 zeigt nur Warnungen und Fehler und \fB\-\-log\-error\fP nur Fehler.
 .TP 
 \fB\-\-multiplayer\fP
-Startet das Spiel im Mehrspieler\-Modus. Es gibt noch zusätzliche Optionen 
-die zusammen mit \fB\-\-multiplayer\fP verwendet werden können. Diese werden 
+Startet das Spiel im Mehrspieler\-Modus. Es gibt noch zusätzliche Optionen
+die zusammen mit \fB\-\-multiplayer\fP verwendet werden können. Diese werden
 weiter unten näher erklärt.
 .TP 
 \fB\-\-nocache\fP
@@ -85,7 +88,7 @@ Deaktiviert jegliche Soundeffekte im Spiel.
 Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet.
 .TP 
 \fB\-r\fP, \fB\-\-resolution\fP\ \fIXxY\fP
-Ermöglicht es, die Auflösung zu bestimmen, in der das Spiel gestartet 
+Ermöglicht es, die Auflösung zu bestimmen, in der das Spiel gestartet
 wird. Beispiel: \-r 800x600
 .TP 
 \fB\-t\fP, \fB\-\-test\fP
@@ -98,74 +101,74 @@ Zeigt die Versionsnummer an und beendet das Programm.
 Startet das Programm im Fenstermodus.
 .TP 
 \fB\-\-no\-delay\fP
-Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum ausführen 
-grafischer Leistungsvergleiche verwendet. Diese Option ist standardmässig 
-aktiviert, wenn die Option \-\-nogui gesetzt ist.
+Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum ausführen grafischer
+Leistungsvergleiche verwendet. Diese Option ist standardmässig aktiviert,
+wenn die Option \-\-nogui gesetzt ist.
 .TP 
 \fB\-\-exit\-at\-end\fP
-Beendet das Spiel am Ende eines Szenarios ohne die Sieg/Niederlage 
-Übersicht anzuzeigen, da der Benutzer hier »Ok« auswählen müsste, damit 
-das Spiel fortgesetzt wird. Dies wird ebenfalls bei geskripteten 
-Leistungsvergleichen verwendet.
+Beendet das Spiel am Ende eines Szenarios ohne die Sieg/Niederlage Übersicht
+anzuzeigen, da der Benutzer hier »Ok« auswählen müsste, damit das Spiel
+fortgesetzt wird. Dies wird ebenfalls bei geskripteten Leistungsvergleichen
+verwendet.
 .
 .SH "Zusätzliche Optionen für \-\-multiplayer"
 .
-Die seitenspezifischen Einstellungen sind mit <NUMMER> 
-markiert. <NUMMER> muss dabei durch die Nummer der jeweiligen Seite 
-ersetzt werden. Meistens ist diese Nummer 1 oder 2, doch hängt es 
-letztendlich von der Anzahl der möglichen Spieler in dem gewählten 
-Szenario ab.
+Die seitenspezifischen Einstellungen sind mit <NUMMER>
+markiert. <NUMMER> muss dabei durch die Nummer der jeweiligen Seite
+ersetzt werden. Meistens ist diese Nummer 1 oder 2, doch hängt es
+letztendlich von der Anzahl der möglichen Spieler in dem gewählten Szenario
+ab.
 .TP 
 \fB\-\-algorithm<NUMMER>=WERT\fP
-Legt einen anderen als den Standardalgorithmus für die KI der gewählten 
+Legt einen anderen als den Standardalgorithmus für die KI der gewählten
 Seite fest. Mögliche Werte sind "idle_ai" oder "sample_ai".
 .TP  
 \fB\-\-controller<NUMMER>=WERT\fP
-Bestimmt, wer die gewählte Seite kontrolliert. Mögliche Werte sind "human" 
+Bestimmt, wer die gewählte Seite kontrolliert. Mögliche Werte sind "human"
 für einen Menschen oder "ai" für einen KI\-Spieler.
 .TP  
 \fB\-\-era=WERT\fP
-Bestimmt, welche Ära für diese Partie genutzt werden soll. Die Ära wird 
-per "id" bestimmt. Eine genaue Beschreibung der Rassen und Epochen ist in 
-der Datei data/multiplayer.cfg zu finden.
+Bestimmt, welche Ära für diese Partie genutzt werden soll. Die Ära wird per
+"id" bestimmt. Eine genaue Beschreibung der Rassen und Epochen ist in der
+Datei data/multiplayer.cfg zu finden.
 .TP 
 \fB\-\-nogui\fP
-Das Spiel startet ohne grafische Oberfläche. Muss vor \fB\-\-multiplayer\fP in 
+Das Spiel startet ohne grafische Oberfläche. Muss vor \fB\-\-multiplayer\fP in
 der Befehlszeile angegeben werden.
 .TP 
 \fB\-\-parm<NUMMER>=NAME:WERT\fP
-Gibt zusätzliche Parameter für diese Seite an. Die möglichen Parameter 
-hängen davon ab, welche Optionen für \fB\-\-controller\fP und \fB\-\-algorithm\fP 
-verwendet werden. Diese Einstellung ist nur interessant, wenn Sie Ihre 
-eigene KI entwickeln wollen. (bisher ist noch keine vollständige 
+Gibt zusätzliche Parameter für diese Seite an. Die möglichen Parameter
+hängen davon ab, welche Optionen für \fB\-\-controller\fP und \fB\-\-algorithm\fP
+verwendet werden. Diese Einstellung ist nur interessant, wenn Sie Ihre
+eigene KI entwickeln wollen. (bisher ist noch keine vollständige
 Dokumentation verfügbar)
 .TP 
 \fB\-\-scenario=WERT\fP
-Bestimmt das Szenario, das geladen werden soll. Standard ist 
+Bestimmt das Szenario, das geladen werden soll. Standard ist
 "multiplayer_Charge".
 .TP 
 \fB\-\-side<NUMMER>=WERT\fP
-Bestimmt die Rasse für die festgelegte Seite in Abhängigkeit von der 
-gewählten Ära. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung 
+Bestimmt die Rasse für die festgelegte Seite in Abhängigkeit von der
+gewählten Ära. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung
 der Rassen und Epochen ist in der Datei data/multiplayer.cfg zu finden.
 .TP 
 \fB\-\-turns=WERT\fP
 Bestimmt die Anzahl der Runden. Standard ist "50".
 .TP 
 Beispielbefehl zum Testen einer eigenen KI:
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai 
+wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
 \-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
 .
 .SH AUTOR
 .
 Geschrieben von David White <davidnwhite@verizon.net>.
 .br
-Bearbeitet von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott 
-<ott@gaon.net> und Soliton <soliton@sonnenkinder.org>.  
-Übersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de> und Nils 
+Bearbeitet von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> und Soliton <soliton@sonnenkinder.org>. 
+Übersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de> und Nils
 Kneuper <crazy\-ivanovic@gmx.net>.
 .br
-Diese Beschreibung stammt im Original von Cyril Bouthors 
+Diese Beschreibung stammt im Original von Cyril Bouthors
 <cyril@bouthors.org>.
 .br
 Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
@@ -174,18 +177,17 @@ Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
-GNU General Public License, wie von der Free Software Foundation 
-veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 
-2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.  Die 
-Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen 
-von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
-implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
-BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.  Sie 
-sollten eine Kopie der GNU General Public License zusammen mit diesem 
-Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software 
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110\-1301, 
-USA.
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+GNU General Public License, wie von der Free Software Foundation
+veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2
+der Lizenz oder (nach Ihrer Option) jeder späteren Version.  Die
+Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
+Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN
+ZWECK. Details finden Sie in der GNU General Public License.  Sie sollten
+eine Kopie der GNU General Public License zusammen mit diesem Programm
+erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110\-1301, USA.
 .
 .SH ANDERE
 .

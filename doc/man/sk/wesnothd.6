@@ -2,13 +2,16 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
+.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
+.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
 .
 .\"*******************************************************************
 .\"
@@ -23,20 +26,20 @@ wesnothd \- Démon na sie»ovú hru Bitky o \fBWesnoth\fP
 .
 .SH ZHRNUTIE
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP 
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
 \fIèíslo\fP\|]
 .
 .SH POPIS
 .
-Riadi sie»ové hry Bitky o Wesnoth. Na stránke 
-http://www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, 
-ktoré server príjíma cez klienta alebo socket.
+Riadi sie»ové hry Bitky o Wesnoth. Na stránke
+http://www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, ktoré
+server príjíma cez klienta alebo socket.
 .
 .SH MO®NOSTI
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ cesta\fP
-povie wesnothd, kde má hµada» konfiguraèný súbor. Syntax, viï sekciu  
+povie wesnothd, kde má hµada» konfiguraèný súbor. Syntax, viï sekciu 
 \fBKONFIGURÁCIA SERVERA\fP ni¾¹ie.
 .TP 
 \fB\-d,\ \-\-daemon\fP
@@ -46,12 +49,12 @@ spustí wesnothd ako démona.
 povie, èo robia jednotlivé mo¾nosti príkazového riadku.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
-zavesí server na daný port. Ak nie je daný port, pou¾ije sa port èíslo 
+zavesí server na daný port. Ak nie je daný port, pou¾ije sa port èíslo
 15000.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ èíslo\fP
-nastaví èíslo pracovných vlákien pre sie»ové I/O (¹tandardne: 5, 
-maximum: 30).
+nastaví èíslo pracovných vlákien pre sie»ové I/O (¹tandardne: 5, maximum:
+30).
 .TP 
 \fB\-V,\ \-\-version\fP
 vypí¹e èíslo verzie a skonèí.
@@ -79,9 +82,9 @@ kµúè="\fIhodnota\fP,\fIhodnota\fP,..."
 Poèet povolených spojení z rovnakej IP adresy.
 .TP 
 \fBdisallow_names\fP
-Mená/prezývky, ktoré server neprijíma. Podporujú sa ¾olíkové znaky 
-"*" a "?". Ïal¹ie podrobnosti viï \fBglob\fP(7). ©tandardné hodnoty (ak sa 
-niè nezadá) sú: "server,ai,player,network,human,admin,computer".
+Mená/prezývky, ktoré server neprijíma. Podporujú sa ¾olíkové znaky "*" a
+"?". Ïal¹ie podrobnosti viï \fBglob\fP(7). ©tandardné hodnoty (ak sa niè
+nezadá) sú: "server,ai,player,network,human,admin,computer".
 .TP 
 \fBmax_messages\fP
 Poèet povolených správ za \fBmessages_time_period\fP.
@@ -93,20 +96,20 @@ Poèet povolených správ za \fBmessages_time_period\fP.
 Správa dòa.
 .TP 
 \fBpasswd\fP
-Heslo pou¾ívané na získanie administrátorských práv. Zvyèajne 
-zaèína na "admin ".
+Heslo pou¾ívané na získanie administrátorských práv. Zvyèajne zaèína na
+"admin ".
 .TP 
 \fBversions_accepted\fP
-Èiarkami oddelený zoznam verzií, ktoré má server prijíma». Podporujú 
-sa ¾olíkové znaky "*" a "?".
+Èiarkami oddelený zoznam verzií, ktoré má server prijíma». Podporujú sa
+¾olíkové znaky "*" a "?".
 .br
 Napríklad: versions_accepted="*" prijme hocijakú verziu.
 .
 .SS "Globálne znaèky:"
 .
 .P
-\fB[redirect]\fP Znaèka urèujúca server, na ktorý sa presmerujú niektoré 
-vezie klientov.
+\fB[redirect]\fP Znaèka urèujúca server, na ktorý sa presmerujú niektoré vezie
+klientov.
 .RS
 .TP 
 \fBhost\fP
@@ -116,20 +119,20 @@ Adresa servera, kam sa presmerujú.
 Port, na ktorý sa majú pripoji».
 .TP 
 \fBversion\fP
-Èiarkami oddelený zoznam verzií, ktoré sa majú presmerova». Podporuje 
+Èiarkami oddelený zoznam verzií, ktoré sa majú presmerova». Podporuje
 ¾olíkové znaky rovnako ako  \fBversions_accepted\fP.
 .RE
 .P
-\fB[proxy]\fP Znaèka, ktorá povie serveru, aby sa správal ako proxy a 
-preposielal po¾iadavky pripojených klientov na daný server. Podporuje 
+\fB[proxy]\fP Znaèka, ktorá povie serveru, aby sa správal ako proxy a
+preposielal po¾iadavky pripojených klientov na daný server. Podporuje
 rovnaké kµúèe ako [redirect].
 .
 .SH AUTOR
 .
-Napísal David White <davidnwhite@verizon.net>. Editovali Nils 
-Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> a 
-Soliton <soliton@sonnenkinder.org>.  Túto manuálovú stránku 
-pôvodne napísal Cyril Bouthors <cyril@bouthors.org>.
+Napísal David White <davidnwhite@verizon.net>. Editovali Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> a
+Soliton <soliton@sonnenkinder.org>.  Túto manuálovú stránku pôvodne
+napísal Cyril Bouthors <cyril@bouthors.org>.
 .br
 Nav¹tívte oficiálnu stránku: http://www.wesnoth.org/
 .
@@ -137,10 +140,10 @@ Nav¹tívte oficiálnu stránku: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-Toto je slobodný softvér; tento softvér je zverejnená pod V¹eobecnou 
-verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného 
-softvéru (Free Software Foundation). Nie je naò ®IADNA záruka; dokonca 
-ani PREDATE¥NOSTI èi VHODNOSTI NA DANÝ ÚÈEL.
+Toto je slobodný softvér; tento softvér je zverejnená pod V¹eobecnou
+verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného
+softvéru (Free Software Foundation). Nie je naò ®IADNA záruka; dokonca ani
+PREDATE¥NOSTI èi VHODNOSTI NA DANÝ ÚÈEL.
 .
 .SH "VIÏ AJ"
 .
