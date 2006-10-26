@@ -176,6 +176,11 @@ void set_language(const std::string& s)
 	prefs["locale"] = s;
 }
 
+unsigned int sample_rate()
+{
+	return lexical_cast_default<unsigned int>(prefs["sample_rate"], 22050);
+}
+
 int music_volume()
 {
 	return lexical_cast_default<int>(prefs["music_volume"], 100);
