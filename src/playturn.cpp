@@ -159,20 +159,24 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	//if a side has dropped out of the game.
 	if(cfg["side_drop"] != "") {
-		const size_t side = atoi(cfg["side_drop"].c_str())-1;
 		const std::string controller = cfg["controller"];
+		const std::string side_str = cfg["side_drop"];
+		const size_t side = atoi(side_str.c_str());
+		const size_t side_index = side-1;
 
-		if(side >= teams_.size()) {
-			LOG_STREAM(err, network) << "unknown side " << side << " is dropping game\n";
+		if(side_index >= teams_.size()) {
+			LOG_STREAM(err, network) << "unknown side " << side_index << " is dropping game\n";
 			throw network::error("");
 		}
 
 		if (controller == "ai"){
-			teams_[side].make_ai();
+			teams_[side_index].make_ai();
+			teams_[side_index].set_current_player("ai"+side_str);
 
 			config cfg;
-			cfg.values["side"] = lexical_cast<std::string>(side+1);
+			cfg.values["side"] = side_str;
 			cfg.values["controller"] = "ai";
+			cfg.values["name"] = "ai"+side_str;
 			network::send_data(cfg);
 			return PROCESS_RESTART_TURN;
 		}
@@ -186,7 +190,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//see if the side still has a leader alive. If they have
 		//no leader, we assume they just want to be replaced by
 		//the AI.
-		const unit_map::const_iterator leader = find_leader(units_,side+1);
+		const unit_map::const_iterator leader = find_leader(units_,side);
 		if(leader != units_.end()) {
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
@@ -200,8 +204,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			//get all allies in as options to transfer control
 			for (std::vector<team>::iterator team = teams_.begin(); team != teams_.end(); team++){
-				if ( (!team->is_enemy(side + 1)) && (!team->is_human()) && (!team->is_ai()) && (!team->is_empty())
- 					&& (team->current_player() != teams_[side].current_player()) ){
+				if ( (!team->is_enemy(side)) && (!team->is_human()) && (!team->is_ai()) && (!team->is_empty())
+ 					&& (team->current_player() != teams_[side_index].current_player()) ){
  					//if this is an ally of the dropping side and it is not us (choose local player
 					//if you want that) and not ai or empty and if it is not the dropping side itself,
 					//get this team in as well
@@ -219,20 +223,24 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//an AI.
 		switch(action) {
 			case 0:
-				teams_[side].make_ai();
+				teams_[side_index].make_ai();
+				teams_[side_index].set_current_player("ai"+side_str);
 				{
 				config cfg;
-				cfg.values["side"] = lexical_cast<std::string>(side+1);
+				cfg.values["side"] = side_str;
 				cfg.values["controller"] = "ai";
+				cfg.values["name"] = "ai"+side_str;
 				network::send_data(cfg);
 				}
 				return PROCESS_RESTART_TURN;
 			case 1:
-				teams_[side].make_human();
+				teams_[side_index].make_human();
+				teams_[side_index].set_current_player("human"+side_str);
 				{
 				config cfg;
-				cfg.values["side"] = lexical_cast<std::string>(side+1);
+				cfg.values["side"] = side_str;
 				cfg.values["controller"] = "human";
+				cfg.values["name"] = "human"+side_str;
 				network::send_data(cfg);
 				}
 				return PROCESS_RESTART_TURN;
@@ -240,14 +248,22 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				if (action > 2) {
 					const size_t index = static_cast<size_t>(action - 3);
 					if (index < observers.size()) {
-						teams_[side].make_network();
-						change_side_controller(cfg["side_drop"], observers[index], false /*not our own side*/);
+						teams_[side_index].make_network();
+						change_side_controller(side_str, observers[index], false /*not our own side*/);
 					} else if (index < options.size() - 1) {
 						size_t i = index - observers.size();
 						allies[i]->make_network();
-						change_side_controller(cfg["side_drop"], allies[i]->save_id(), false /*not our own side*/);
+						change_side_controller(side_str, allies[i]->save_id(), false /*not our own side*/);
 					} else {
-						teams_[side].make_ai();
+						teams_[side_index].make_ai();
+						teams_[side_index].set_current_player("ai"+side_str);
+						{
+						config cfg;
+						cfg.values["side"] = side_str;
+						cfg.values["controller"] = "ai";
+						cfg.values["name"] = "ai"+side_str;
+						network::send_data(cfg);
+						}
 					}
 					return PROCESS_RESTART_TURN;
 				}

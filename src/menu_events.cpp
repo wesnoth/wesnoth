@@ -409,7 +409,7 @@ namespace events{
 #endif
 				str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm';
 				// Delete all tags before name
-				str << font::del_tags(leader->second.description()) << COLUMN_SEPARATOR;
+				str << font::del_tags(teams_[n].current_player()) << COLUMN_SEPARATOR;
 
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;

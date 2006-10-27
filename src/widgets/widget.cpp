@@ -1,5 +1,5 @@
-/* $Id$ */
-/*
+/* $Id$
+
    Copyright (C) 2003-5 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
