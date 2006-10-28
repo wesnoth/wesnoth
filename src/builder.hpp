@@ -705,7 +705,7 @@ private:
 	/**
 	 * Shorthand typedef for a map associating a list of locations to a terrain type.
 	 */
-	typedef std::map<unsigned char, std::vector<gamemap::location> > terrain_by_type_map;
+	typedef std::map<terrain_translation::TERRAIN_NUMBER, std::vector<gamemap::location> > terrain_by_type_map;
 
 	/**
 	 * A map representing all locations whose terrain is of a given type.

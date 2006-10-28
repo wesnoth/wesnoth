@@ -20,19 +20,27 @@
 #include "serialization/string_utils.hpp"
 #include "wassert.hpp"
 
-//FIXME MdW for some strange reason only shift 8 and 16 seem to 
-//work. Even 0 which doesn't do anything fails. It seems there
-//a bug lurking. With the "wrong" values the terrain transition
-//fails. With the 8 and 16 at least 1 transition fails, to be 
-//seen in the tutorial at 9,1. This also fails with shift 0.
-//The shift was orignal intended to make sure the first byte
-//of the terrain is empty so callers who would access a byte
-//would find a 0 byte.
-#define SHIFT 8
+//FIXME MdW remove the shift
+// This shift is a dummy, since I've only terrains in the 0 - 127 range
+// things work too often too good :(. With the shift I shift the terrains
+// in different ranges. This is only for debugging.
+// Tested and working shifts 0, 3 - 8, 10, 15 - 17, 20
+// 24 aborts with out of memory :(
+// memory usage statistics starting the tutorial
+// NOTE, samples just from one run so not really reliable
+// but the problem becomes clear. When using high terrain numbers the
+// memory usage becomes unacceptable
+//            VIRT   RES  SHR
+// shoft 0    53220  40m  18m
+// shift 5    53336  40m  18m
+// shift 10   53632  40m  18m
+// shift 15   66772  53m  18m
+// shift 16   77960  64m  18m 
+// shift 17   100m   88m  18m
+// shift 20   436m   302m 18m
+#define SHIFT 17
 #define SET_TERRAIN_CONSTANT(x,y) \
-	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y)
-
-//	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y << SHIFT)
+	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y << SHIFT)
 
 SET_TERRAIN_CONSTANT(VOID_TERRAIN, ' ');
 SET_TERRAIN_CONSTANT(FOGGED, '~');
@@ -84,16 +92,12 @@ terrain_translation::~terrain_translation(){}
 
 terrain_translation::TERRAIN_LETTER terrain_translation::number_to_letter_(const terrain_translation::TERRAIN_NUMBER terrain) const
 {
-	return terrain; //FIXME MdW debug
-
 	TERRAIN_NUMBER tmp = (terrain >> SHIFT);
 	return (TERRAIN_LETTER)(tmp);
 }
 
 terrain_translation::TERRAIN_NUMBER terrain_translation::letter_to_number_(const terrain_translation::TERRAIN_LETTER terrain) const
 {
-	return terrain; //FIXME MdW debug
-
 	TERRAIN_NUMBER result = (TERRAIN_NUMBER) terrain;
 	result = (result << SHIFT);
 	return result;
