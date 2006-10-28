@@ -218,15 +218,8 @@ namespace events{
 			//add player's name to title of dialog
 			std::stringstream str;
 			str <<  _("Statistics") << " (";
-			// Find leader (of viewing player) 's description
-			for (unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-				if (i->second.side() != (gui_->viewing_team()+1))
-					continue;
-				if (i->second.can_recruit()){
-					str << i->second.description();
-					break;
-				}
-			}
+			// Current Player name
+			str << teams_[gui_->viewing_team()].current_player();
 			str << ")";
 
 			statistics_dialog stats_dialog(*gui_, str.str());

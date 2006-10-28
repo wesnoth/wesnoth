@@ -312,7 +312,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	{
 		const std::vector<Uint32>& old_rgb = u->second.team_rgb_range();
 		color_range new_rgb = team::get_side_color_range(u->second.side());
-		
+
 	    return report("",image::locator(u->second.absolute_image(), new_rgb, old_rgb),"");
 	}
 	case UNIT_PROFILE:
@@ -450,8 +450,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const std::vector<std::string> items = utils::split(flag);
 		const std::vector<std::string> sub_items = utils::split(items[0], ':');
 		image::locator flag_image(sub_items[0], new_rgb, old_rgb);
-		u = find_leader(units,playing_side);
-		return report("",flag_image,u != units.end() ? u->second.description() : "");
+		return report("",flag_image,teams[playing_side-1].current_player());
 	}
 
 	case OBSERVERS: {
@@ -494,7 +493,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			sec = current_team.countdown_time() / 1000;
 
 			str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP);
-			
+
 			if(sec < 60)
 				str << "<200,0,0>";
 			else if(sec < 120)

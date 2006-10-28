@@ -209,12 +209,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
  					//if this is an ally of the dropping side and it is not us (choose local player
 					//if you want that) and not ai or empty and if it is not the dropping side itself,
 					//get this team in as well
-					options.push_back(_("Replace with ") + team->save_id());
+					options.push_back(_("Replace with ") + team->current_player());
 					allies.push_back(&(*team));
 				}
 			}
 
-			const std::string msg = leader->second.description() + " " + _("has left the game. What do you want to do?");
+			const std::string msg = teams_[side_index].current_player() + " " + _("has left the game. What do you want to do?");
 			action = gui::show_dialog2(gui_,NULL,"",msg,gui::OK_ONLY,&options);
 		}
 

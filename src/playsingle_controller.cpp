@@ -299,7 +299,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 							report << "\n";
 						}
 
-						report << font::BOLD_TEXT << i->save_id() << "\n";
+						report << font::BOLD_TEXT << i->current_player() << "\n";
 					}
 
 					report << _("Remaining gold: ")
