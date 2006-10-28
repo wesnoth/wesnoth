@@ -1,6 +1,5 @@
-src/builder.cpp:591://FIXME MdW this is a total rewrite not sure whether is really works
-src/builder.cpp:1058:			//FIXME MdW debug
-src/builder.cpp:1136:					//FIXME MdW the previous code set the value to an empty
+src/builder.cpp:27://FIXME MdW this file is filled with debug output and should be cleaned
+src/builder.cpp:593://FIXME MdW this is a total rewrite not sure whether is really works
 src/display.cpp:1689:	//FIXME MdW cleanup but why was this coded like it was WHY and INT instead of CHAR????
 src/display.cpp:1702:			tiles[i] = 0; //FIXME MdW we should define an invalid terrain (prob. 0)
 src/game_events.cpp:1151:			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
@@ -28,7 +27,5 @@ src/multiplayer_create.cpp:371:				//FIXME MdW we do a double conversion, might 
 src/terrain.hpp:37:	//FIXME MdW maybe reinstall the letter later again after debugging everything
 src/terrain.hpp:44:	//FIXME MdW rename the ones below by removing the 2 from the name
 src/terrain.hpp:71:	//FIXME MdW rename without the 2
-src/terrain_translation.cpp:23://FIXME MdW for some strange reason only shift 8 and 16 seem to 
-src/terrain_translation.cpp:87:	return terrain; //FIXME MdW debug
-src/terrain_translation.cpp:95:	return terrain; //FIXME MdW debug
+src/terrain_translation.cpp:23://FIXME MdW remove the shift
 src/terrain_translation.hpp:15://FIXME MdW is Makefile.am good modified
