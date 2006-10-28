@@ -1,4 +1,13 @@
 Version 1.1.11+svn:
+ * user interface
+   * fix allow to move other player's (bug #6451)
+ * sound
+   * add sample_rate option (read only) to solve cracking sound
+     on some sound card (Intel HDA, cmipci, ...) (bug #7507)
+ * multiplayer
+   * fix green game bugs
+   * fix new host doesn't get control when original host left (bug #7351)
+   * fix crash when tranfering a side (bug #7346, bug #7455)
  * language and i18n:
    * new manpages: Dutch
    * updated translations: Esperanto, French, German, Italian, Norwegian,
@@ -14,6 +23,15 @@ Version 1.1.11+svn:
     * fixed the terrain defense alias to be used properly
 
 Version 1.1.11:
+ * multiplayer
+   * fix no vacant slots in MP lobby for reloaded game (bug #7286)
+   * fix transfering control (bug #6577, bug #7046)
+   * fix Computer vs. Computer odd side effects (bug #7156)
+ * user interface
+   * fix wrong turn number in multiplayer lobby with re-loaded game (bug #7229)
+   * fix graphical glitches when sending a single '*' message (bug #7197)
+   * fix blue orbs when given control of another side (bug #6352)
+   * fix program freezed when campaign server is unreachable (#bug #6291)
  * Python AI
    * there is now wesnoth.get_version()
  * WML engine
@@ -65,7 +83,7 @@ Version 1.1.9:
    * Two Brothers
      * fixed showing the objective "kill the mage to get the key" if you
        already obtained the key (#6704)
-* multiplayer maps:
+ * multiplayer maps:
    * revised multiplayer maps: Sablestone Delta, Den of Onis
  * language and i18n:
    * updated translations: Dutch, Esperanto, Finnish, French, German, Italian,
