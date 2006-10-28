@@ -20,6 +20,8 @@ Version 1.3-svn:
    * unit art
      * added a recruit animation for Skeleton
  * user interface
+   * use "Save Replay" instead of "Save Game" when asking to save a replay (bug #7256)
+   * fix ennemi Gold show twice in debug mode in status table (bug #6895)
    * added an option to hide minimaps in the multiplayer lobby
    * added menu items for saving the current map
    * added turbo speed setting and changed ui accordingly
@@ -38,7 +40,7 @@ Version 1.3-svn:
  * WML engine
    * fixed terrain probabilities for terrains defined with rotations (bug #7274)
    * added a 'hide_help' key that prevents a unit type from being listed in the
-     in-game help
+     in-game help (bug #5701)
    * added an 'allow_new_game' key (default=yes) to prevent [multiplayer]
      scenarios from showing up in the multiplayer game creation interface
      (FR #6397)
