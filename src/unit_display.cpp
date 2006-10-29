@@ -92,7 +92,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		const gamemap::location& ref_loc =pos<0.5?a:b;
 		if(pos >= 0.5) pos = pos -1;
 		temp_unit.set_walking(disp,ref_loc);
-		disp.place_temporary_unit(temp_unit,ref_loc); 
+		disp.place_temporary_unit(temp_unit,ref_loc);
 		temp_unit.set_offset(pos);
 		disp.draw();
 		events::pump();
@@ -166,25 +166,41 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	}
 }
 
-void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_type* attack,const attack_type* secondary_attack)
+void unit_die(display& disp,const gamemap::location& loc, unit& loser,
+const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 {
 	if(disp.update_locked() || disp.fogged(loc.x,loc.y) || preferences::show_combat() == false) {
 		return;
 	}
+		const std::string& die_sound = loser.die_sound();
+		if(die_sound != "" && die_sound != "null") {
+			sound::play_sound(die_sound);
+		}
 
-	const std::string& die_sound = u.die_sound();
-	if(die_sound != "" && die_sound != "null") {
-		sound::play_sound(die_sound);
+		loser.set_dying(disp,loc,attack,secondary_attack);
+	if(winner == NULL) { //test to see if there is no victor.
+
+		while(!loser.get_animation()->animation_finished()) {
+
+			disp.invalidate(loc);
+			disp.draw();
+			events::pump();
+			disp.delay(10);
+		}
+	return;
 	}
-	u.set_dying(disp,loc,attack,secondary_attack);
+	winner->set_victorious(disp,loc);
+	int start_time = minimum<int>(loser.get_animation()->get_begin_time(),winner->get_animation()->get_begin_time());
 
+	winner->restart_animation(disp,start_time);
+	loser.restart_animation(disp,start_time);
 
-	while(!u.get_animation()->animation_finished()) {
+	while((!loser.get_animation()->animation_finished()) || ((!winner->get_animation()->animation_finished()))) {
 
-		disp.invalidate(loc);
-		disp.draw();
-		events::pump();
-		disp.delay(10);
+			disp.invalidate(loc);
+			disp.draw();
+			events::pump();
+			disp.delay(10);
 	}
 }
 

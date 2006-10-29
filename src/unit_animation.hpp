@@ -133,6 +133,16 @@ class healing_animation:public unit_animation
 	private:
 };
 
+class victory_animation:public unit_animation
+{
+	public:
+		explicit victory_animation(const config& cfg):unit_animation(cfg){};
+		explicit victory_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
+
+	private:
+};
+
 class recruit_animation:public unit_animation
 {
 	public:

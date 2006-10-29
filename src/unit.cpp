@@ -146,6 +146,7 @@ unit::unit(const unit& o):
 		standing_animations_(o.standing_animations_),
 		leading_animations_(o.leading_animations_),
 		healing_animations_(o.healing_animations_),
+		victory_animations_(o.victory_animations_),
 		recruit_animations_(o.recruit_animations_),
 		idle_animations_(o.idle_animations_),
 		levelin_animations_(o.levelin_animations_),
@@ -395,7 +396,7 @@ void unit::advance_to(const unit_type* t)
 	cfg_ = cfg_.merge_with(t->cfg_);
 	if (specific_profile)
 	{
-	cfg_["profile"] = profile; 
+	cfg_["profile"] = profile;
 	}
 	cfg_.clear_children("male");
 	cfg_.clear_children("female");
@@ -427,6 +428,7 @@ void unit::advance_to(const unit_type* t)
 	standing_animations_ = t->standing_animations_;
 	leading_animations_ = t->leading_animations_;
 	healing_animations_ = t->healing_animations_;
+	victory_animations_ = t->victory_animations_;
 	recruit_animations_ = t->recruit_animations_;
 	idle_animations_ = t->idle_animations_;
 	levelin_animations_ = t->levelin_animations_;
@@ -1284,6 +1286,7 @@ void unit::read(const config& cfg)
 			standing_animations_ = ut->standing_animations_;
 			leading_animations_ = ut->leading_animations_;
 			healing_animations_ = ut->healing_animations_;
+			victory_animations_ = ut->victory_animations_;
 			recruit_animations_ = ut->recruit_animations_;
 			idle_animations_ = ut->idle_animations_;
 			levelin_animations_ = ut->levelin_animations_;
@@ -1297,6 +1300,7 @@ void unit::read(const config& cfg)
 			cfg_.clear_children("standing_anim");
 			cfg_.clear_children("leading_anim");
 			cfg_.clear_children("healing_anim");
+			cfg_.clear_children("victory_anim");
 			cfg_.clear_children("recruit_anim");
 			cfg_.clear_children("idle_anim");
 			cfg_.clear_children("levelin_anim");
@@ -1310,6 +1314,7 @@ void unit::read(const config& cfg)
 			const config::child_list& standing_anims = cfg_.get_children("standing_anim");
 			const config::child_list& leading_anims = cfg_.get_children("leading_anim");
 			const config::child_list& healing_anims = cfg_.get_children("healing_anim");
+			const config::child_list& victory_anims = cfg_.get_children("victory_anim");
 			const config::child_list& recruit_anims = cfg_.get_children("recruit_anim");
 			const config::child_list& idle_anims = cfg_.get_children("idle_anim");
 			const config::child_list& levelin_anims = cfg_.get_children("levelin_anim");
@@ -1364,6 +1369,14 @@ void unit::read(const config& cfg)
 			if(leading_animations_.empty()) {
 				leading_animations_.push_back(leading_animation(0,unit_frame(absolute_image(),150)));
 				// always have a leading animation
+			}
+
+			for(config::child_list::const_iterator victory_anim = victory_anims.begin(); victory_anim != victory_anims.end(); ++victory_anim) {
+				victory_animations_.push_back(victory_animation(**victory_anim));
+			}
+			if(victory_animations_.empty()) {
+				victory_animations_.push_back(victory_animation(0,unit_frame(absolute_image(),150)));
+							// always have a victory animation
 			}
 
 			for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
@@ -1781,6 +1794,18 @@ void unit::set_healing(const display &disp,const gamemap::location& loc)
 		anim_ = NULL;
 	}
 	anim_ = new healing_animation(heal_animation(disp,loc));
+	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
+	frame_begin_time = anim_->get_begin_time() -1;
+}
+void unit::set_victorious(const display &disp,const gamemap::location& loc)
+{
+	state_ = STATE_VICTORIOUS;
+	draw_bars_ = false;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ = new victory_animation(victorious_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
 }
@@ -2924,6 +2949,26 @@ const leading_animation& unit::lead_animation(const display& disp, const gamemap
 	return *options[rand()%options.size()];
 }
 
+
+const victory_animation& unit::victorious_animation(const display& disp, const gamemap::location& loc) const
+{
+	//select one of the matching animations at random
+	std::vector<const victory_animation*> options;
+	int max_val = -1;
+	for(std::vector<victory_animation>::const_iterator i = victory_animations_.begin(); i != victory_animations_.end(); ++i) {
+		int matching = i->matches(disp,loc,this);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
 
 const healing_animation& unit::heal_animation(const display& disp, const gamemap::location& loc) const
 {

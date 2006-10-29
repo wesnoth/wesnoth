@@ -619,7 +619,9 @@ unit_type::unit_type(const unit_type& o)
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
       standing_animations_(o.standing_animations_),leading_animations_(o.leading_animations_),
-      healing_animations_(o.healing_animations_), recruit_animations_(o.recruit_animations_),
+      healing_animations_(o.healing_animations_),
+      victory_animations_(o.victory_animations_),
+      recruit_animations_(o.recruit_animations_),
       idle_animations_(o.idle_animations_), levelin_animations_(o.levelin_animations_),
       levelout_animations_(o.levelout_animations_),
       flag_rgb_(o.flag_rgb_)
@@ -870,6 +872,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(idle_animations_.empty()) {
 		idle_animations_.push_back(idle_animation(0,unit_frame(image(),1)));
 		// always have a idle animation
+	}
+	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");
+	const config::child_list& victory_anims = expanded_cfg.get_children("victory_anim");
+	for(config::child_list::const_iterator victory_anim = victory_anims.begin(); victory_anim != victory_anims.end(); ++victory_anim) {
+		victory_animations_.push_back(victory_animation(**victory_anim));
+	}
+	if(victory_animations_.empty()) {
+		victory_animations_.push_back(victory_animation(0,unit_frame(image(),1)));
+		// always have a victory animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
 	const config::child_list& levelin_anims = expanded_cfg.get_children("levelin_anim");
