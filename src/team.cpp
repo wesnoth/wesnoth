@@ -963,7 +963,7 @@ const color_range team::get_side_color_range(int side){
     return(gp->second);
   }
 
-  return(color_range(0x00FF0000,0x00FFFFFF,0x00000000));
+  return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
 }
 
 const Uint32 team::get_side_rgb(int side){
@@ -980,7 +980,7 @@ const Uint32 team::get_side_rgb_min(int side){
 
 const SDL_Color team::get_side_colour(int side)
 {
-	Uint32 rgb=get_side_rgb(side);
+	Uint32 rgb=get_side_color_range(side).rep();
 	SDL_Color color={ (0x00FF0000 & rgb)>>16,
 				       (0x0000FF00 & rgb)>>8,
 				       (0x000000FF & rgb),
