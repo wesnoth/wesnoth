@@ -92,8 +92,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		const gamemap::location& ref_loc =pos<0.5?a:b;
 		if(pos >= 0.5) pos = pos -1;
 		temp_unit.set_walking(disp,ref_loc);
-		disp.place_temporary_unit(temp_unit,ref_loc);
 		temp_unit.set_offset(pos);
+		disp.place_temporary_unit(temp_unit,ref_loc);
 		disp.draw();
 		events::pump();
 		disp.delay(10);
