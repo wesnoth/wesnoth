@@ -216,7 +216,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			//if the map should be randomly generated
 			if(map_data.empty() && (*scenario)["map_generation"] != "") {
 				const cursor::setter cursor_setter(cursor::WAIT);
-				map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
+				map_data = terrain_translation().get_map(
+					random_generate_map((*scenario)["map_generation"],scenario->child("generator")));
 
 				//since we've had to generate the map, make sure that when we save the game,
 				//it will not ask for the map to be generated again on reload

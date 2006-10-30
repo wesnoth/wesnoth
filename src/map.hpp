@@ -39,9 +39,12 @@ public:
 	//terrain that it's aliased to
 
 	//FIXME MdW rename the ones without the 2 in the name
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_mvt_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_def_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_union_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& 
+		underlying_mvt_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& 
+		underlying_def_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& 
+		underlying_union_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
 
 	//exception thrown if the map file is not in the correct format.
 	struct incorrect_format_exception {

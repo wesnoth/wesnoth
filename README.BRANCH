@@ -19,7 +19,10 @@ Main TODO list is here
 * Help systems is broken DONE BUT NOT TESTED
 * Load / save is DONE BUT NOT TESTED
 * Multiplayer is broken, not sure but quite
-* Random map generators are broken, compiles but doesn't work
+* Random map generators are broken, compiles but doesn't work,
+  FIXED BUT NOT TESTED, NOTE the code looks ugly with the calls
+  to terrain_translation, this needs to be fixed after the 
+  final conversion
 * The editor is broken has to be fixed, won't compiler
 * move all things name xx2 back to xx
   The rename is done to trace down the entire caller tree

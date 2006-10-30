@@ -69,9 +69,9 @@ private:
 	//This is the internal number used, WML still used characters
 	terrain_translation::TERRAIN_NUMBER number_;
 	//FIXME MdW rename without the 2
-	std::vector<terrain_translation::TERRAIN_NUMBER> mvt_type2_; 
-	std::vector<terrain_translation::TERRAIN_NUMBER> def_type2_; 
-	std::vector<terrain_translation::TERRAIN_NUMBER> union_type2_; 
+	std::vector<terrain_translation::TERRAIN_NUMBER> mvt_type2_;
+	std::vector<terrain_translation::TERRAIN_NUMBER> def_type2_;
+	std::vector<terrain_translation::TERRAIN_NUMBER> union_type2_;
 		
 	int height_adjust_;
 

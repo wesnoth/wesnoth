@@ -38,7 +38,7 @@
 // shift 16   77960  64m  18m 
 // shift 17   100m   88m  18m
 // shift 20   436m   302m 18m
-#define SHIFT 17
+#define SHIFT 0 //FIXME MdW make higher shifts work
 #define SET_TERRAIN_CONSTANT(x,y) \
 	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y << SHIFT)
 
@@ -50,6 +50,9 @@ SET_TERRAIN_CONSTANT(CASTLE, 'C');
 SET_TERRAIN_CONSTANT(SHALLOW_WATER, 'c');
 SET_TERRAIN_CONSTANT(DEEP_WATER, 's');
 SET_TERRAIN_CONSTANT(GRASS_LAND, 'g');
+SET_TERRAIN_CONSTANT(FOREST, 'f');
+SET_TERRAIN_CONSTANT(MOUNTAIN, 'm');
+SET_TERRAIN_CONSTANT(HILL, 'h');
 
 SET_TERRAIN_CONSTANT(CAVE_WALL, 'W');
 SET_TERRAIN_CONSTANT(CAVE, 'u');
@@ -63,6 +66,7 @@ SET_TERRAIN_CONSTANT(NOT, '!');
 SET_TERRAIN_CONSTANT(EOL, 7);
 SET_TERRAIN_CONSTANT(DOT, '.');
 SET_TERRAIN_CONSTANT(COMMA, ',');
+SET_TERRAIN_CONSTANT(NONE_TERRAIN, 0); // undefined terrain
 /*
 const terrain_translation::TERRAIN_NUMBER terrain_translation::VOID_TERRAIN = ' ' ;
 const terrain_translation::TERRAIN_NUMBER terrain_translation::FOGGED = '~' ;
@@ -155,6 +159,11 @@ terrain_translation::TERRAIN_NUMBER terrain_translation::get_letter(const std::s
 {
 	wassert(! letter.empty());
 	return letter_to_number_(letter[0]);
+}
+	
+terrain_translation::TERRAIN_NUMBER terrain_translation::get_start_location(int player) const
+{
+	return get_letter(std::string(1, '1' + player));
 }
 
 std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::get_list(const std::string& list, const int separated) const

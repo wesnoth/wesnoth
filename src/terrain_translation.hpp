@@ -60,6 +60,9 @@ public:
 	static const TERRAIN_NUMBER SHALLOW_WATER;
 	static const TERRAIN_NUMBER DEEP_WATER;
 	static const TERRAIN_NUMBER GRASS_LAND;
+	static const TERRAIN_NUMBER FOREST;
+	static const TERRAIN_NUMBER MOUNTAIN;
+	static const TERRAIN_NUMBER HILL;
 	// used in cavegen
 	static const TERRAIN_NUMBER CAVE_WALL;
 	static const TERRAIN_NUMBER CAVE;
@@ -73,6 +76,7 @@ public:
 	static const TERRAIN_NUMBER EOL; //end of line will be translated to a bell character
 	static const TERRAIN_NUMBER DOT;
 	static const TERRAIN_NUMBER COMMA;
+	static const TERRAIN_NUMBER NONE_TERRAIN;
 
 	terrain_translation();
 	~terrain_translation();
@@ -81,6 +85,8 @@ public:
 	//converts a string to a TERRAIN_NUMBER it expects the input to be a string of 1 item
 	//to convert
 	TERRAIN_NUMBER get_letter(const std::string& letter) const;
+	//gets the internal number for a start location
+	TERRAIN_NUMBER get_start_location(int player) const;
 	
 	
 	//converts a string to a vector of TERRAIN_NUMBER it expects the input to be a continues string of items
@@ -110,7 +116,6 @@ public:
 	//converts a list to a string
 	std::string set_list(const std::vector<TERRAIN_NUMBER>& list, const int separated=0) const;
 	
-
 	int letter_to_start_location(const TERRAIN_NUMBER number) const;
 
 private:

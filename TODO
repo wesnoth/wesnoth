@@ -9,23 +9,15 @@ src/map.cpp:43://FIXME MdW rename the ones below so the 2 in the name is gone
 src/map.cpp:306://FIXME MdW the entire routine should be cleaned up
 src/map.cpp:371:	//FIXME MdW remove debug
 src/map.cpp:599:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
-src/map_create.cpp:54://	return generator.get()->create_map(parameters); FIXME MdW enable
-src/mapgen.cpp:342:	mutable std::map<char,double> cache_; //FIXME MdW are we allowed to be char
-src/mapgen.cpp:362:	const char c = map_[loc.x][loc.y]; //FIXME MdW are we allowed to be char
-src/mapgen.cpp:363:	const std::map<char,double>::const_iterator itor = cache_.find(c); //FIXME MdW are we allowed to be char
-src/mapgen.cpp:368:	static std::string terrain(1,'x'); //FIXME MdW are we allowed to be char x is special char reserved for UMC
-src/mapgen.cpp:377:	cache_.insert(std::pair<char,double>(c,res)); //FIXME MdW are we allowed to be char
-src/mapgen.cpp:558://FIXME MdW g = grass
-src/mapgen.cpp:636:	const char grassland = flatland[0]; //FIXME MdW are we allowed to be char
-src/mapgen.cpp:1027:		terrain[x][y] = '1' + player; //FIXME MdW keep 1 or not??
-src/mapgen.cpp:1106://FIXME MdW use gamemap constants
-src/mapgen.cpp:1135://FIXME MdW enable
+src/mapgen.cpp:315:			res << terrain_translation().set_letter(terrain[x][y]); //FIXME MdW, should this be done by the map converter??
+src/mapgen.cpp:368://FIXME MdW test this modification	
 src/map.hpp:41:	//FIXME MdW rename the ones without the 2 in the name
-src/map.hpp:97:	//FIXME MdW rename the ones below to remove the 2 from the name
-src/map.hpp:198:	//The terrain string with TERRAIN_NUMBER should be make FIXME MdW
+src/map.hpp:100:	//FIXME MdW rename the ones below to remove the 2 from the name
+src/map.hpp:201:	//The terrain string with TERRAIN_NUMBER should be make FIXME MdW
 src/multiplayer_create.cpp:371:				//FIXME MdW we do a double conversion, might be nice to have a direct way
 src/terrain.hpp:37:	//FIXME MdW maybe reinstall the letter later again after debugging everything
 src/terrain.hpp:44:	//FIXME MdW rename the ones below by removing the 2 from the name
 src/terrain.hpp:71:	//FIXME MdW rename without the 2
 src/terrain_translation.cpp:23://FIXME MdW remove the shift
+src/terrain_translation.cpp:41:#define SHIFT 0 //FIXME MdW make higher shifts work
 src/terrain_translation.hpp:15://FIXME MdW is Makefile.am good modified
