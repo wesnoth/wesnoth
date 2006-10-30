@@ -519,7 +519,6 @@ void server::run()
 
 void server::process_data(const network::connection sock, config& data, config& gamelist)
 {
-	//std::cerr << "in server::process_data...\n";
 	if(proxy::is_proxy(sock)) {
 		proxy::received_data(sock,data);
 	}

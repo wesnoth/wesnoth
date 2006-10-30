@@ -461,6 +461,7 @@ config connect::side::get_config() const
 	}
 	res["controller"] = controller_names[controller_];
 	res["description"] = id_;
+	res["current_player"] = id_;
 
 	if (id_.empty()) {
 		char const *description;
@@ -479,19 +480,19 @@ config connect::side::get_config() const
 				res["save_id"] = "ai" + res["side"].str();
 			}
 			{
-                config *ai = res.child("ai");
-                if (!ai) ai = &res.add_child("ai");
-#ifdef HAVE_PYTHON
-                if (ai_algorithm_.substr(ai_algorithm_.length() - 3) == ".py") {
-                    (*ai)["ai_algorithm"] = "python_ai";
-                    (*ai)["python_script"] = ai_algorithm_;
-                }
-                else
-#endif
-                {
-                    if (ai_algorithm_ != "default")
-                        (*ai)["ai_algorithm"] = ai_algorithm_;
-                }
+				config *ai = res.child("ai");
+				if (!ai) ai = &res.add_child("ai");
+				#ifdef HAVE_PYTHON
+				if (ai_algorithm_.substr(ai_algorithm_.length() - 3) == ".py") {
+					(*ai)["ai_algorithm"] = "python_ai";
+					(*ai)["python_script"] = ai_algorithm_;
+				}
+				else
+				#endif
+				{
+					if (ai_algorithm_ != "default")
+						(*ai)["ai_algorithm"] = ai_algorithm_;
+				}
 			}
 			description = N_("Computer player");
 			break;

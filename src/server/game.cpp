@@ -210,8 +210,14 @@ bool game::take_side(network::connection player, const config& cfg)
 			config& change = fake.add_child("change_controller");
 			change["side"] = side;
 			change["player"] = cfg["name"];
-			change["controller"] = cfg["controller"];
+			change["controller"] = "network";
 			send_data(fake, owner_); //send change to all except owner
+
+			//upade level so observer who join display the good player name
+			config::child_itors it = level_.child_range("side");
+			it.first += side_index;
+			wassert(it.first != it.second);
+			(**it.first)["current_player"] = cfg["name"];
 
 			side_controllers_[side_index] = cfg["controller"];
 		} else {
@@ -459,6 +465,12 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 	change["controller"] = "human";
 	network::queue_data(response, sock_entering);
+
+	//upade level so observer who join display the good player name
+	config::child_itors it = level_.child_range("side");
+	it.first += side_index;
+	wassert(it.first != it.second);
+	(**it.first)["current_player"] = player;
 
 	//if the host left and there are ai sides, transfer them to the new host
 	if (host_leave) {
