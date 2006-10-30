@@ -131,7 +131,8 @@ void game::start_game()
 	//take control of any sides if they happen to have the same name as one of the descriptions
 	config::child_itors sides = level_.child_range("side");
 	for(; sides.first != sides.second; ++sides.first) {
-		(**sides.first)["controller"] = "human";
+		if ((**sides.first)["controller"] != "null")
+			(**sides.first)["controller"] = "human";
 	}
 
 	describe_slots();
