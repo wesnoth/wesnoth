@@ -1736,7 +1736,7 @@ namespace events{
 			cfg.add_child(cmd);
 
 			network::send_data(cfg);
-		} else if(cmd == "control") {
+		} else if(cmd == "control" && network::nconnections() != 0) {
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			if(j != data.end()) {
 				const std::string side(data.begin(),j);

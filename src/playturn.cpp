@@ -173,11 +173,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			teams_[side_index].make_ai();
 			teams_[side_index].set_current_player("ai"+side_str);
 
-			config cfg;
-			cfg.values["side"] = side_str;
-			cfg.values["controller"] = "ai";
-			cfg.values["name"] = "ai"+side_str;
-			network::send_data(cfg);
+			take_side(side_str, "ai");
+
 			return PROCESS_RESTART_TURN;
 		}
 
@@ -225,24 +222,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			case 0:
 				teams_[side_index].make_ai();
 				teams_[side_index].set_current_player("ai"+side_str);
-				{
-				config cfg;
-				cfg.values["side"] = side_str;
-				cfg.values["controller"] = "ai";
-				cfg.values["name"] = "ai"+side_str;
-				network::send_data(cfg);
-				}
+				take_side(side_str, "ai");
 				return PROCESS_RESTART_TURN;
 			case 1:
 				teams_[side_index].make_human();
 				teams_[side_index].set_current_player("human"+side_str);
-				{
-				config cfg;
-				cfg.values["side"] = side_str;
-				cfg.values["controller"] = "human";
-				cfg.values["name"] = "human"+side_str;
-				network::send_data(cfg);
-				}
+
+				take_side(side_str, "human");
+
 				return PROCESS_RESTART_TURN;
 			default:
 				if (action > 2) {
@@ -257,13 +244,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					} else {
 						teams_[side_index].make_ai();
 						teams_[side_index].set_current_player("ai"+side_str);
-						{
-						config cfg;
-						cfg.values["side"] = side_str;
-						cfg.values["controller"] = "ai";
-						cfg.values["name"] = "ai"+side_str;
-						network::send_data(cfg);
-						}
+
+						take_side(side_str, "ai");
 					}
 					return PROCESS_RESTART_TURN;
 				}
@@ -286,5 +268,14 @@ void turn_info::change_side_controller(const std::string& side, const std::strin
 		change["own_side"] = "yes";
 	}
 
+	network::send_data(cfg);
+}
+
+void turn_info::take_side(const std::string& side, const std::string& controller)
+{
+	config cfg;
+	cfg.values["side"] = side;
+	cfg.values["controller"] = controller;
+	cfg.values["name"] = controller+side;
 	network::send_data(cfg);
 }
