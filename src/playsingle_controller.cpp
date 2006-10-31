@@ -299,7 +299,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 							report << "\n";
 						}
 
-						report << font::BOLD_TEXT << i->save_id() << "\n";
+						report << font::BOLD_TEXT << i->current_player() << "\n";
 					}
 
 					report << _("Remaining gold: ")
@@ -457,7 +457,7 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->update_display();
 
 	if (save) {
-		menu_handler_.autosave(gamestate_.label, status_.turn());
+		menu_handler_.autosave(gamestate_.label, status_.turn(), gamestate_.starting_pos);
 	}
 
 	if(preferences::turn_bell()) {

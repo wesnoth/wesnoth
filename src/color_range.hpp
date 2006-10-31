@@ -24,28 +24,32 @@ std::vector<Uint32> string2rgb(std::string s);
 class color_range
 {
 public:
-  color_range(Uint32 mid = 0x00808080 , Uint32 max = 0x00FFFFFF, Uint32 min = 0x00000000):mid_(mid),max_(max),min_(min){};
+  color_range(Uint32 mid , Uint32 max , Uint32 min , Uint32 rep):mid_(mid),max_(max),min_(min),rep_(rep){};
   color_range(const std::vector<Uint32>& v)
-  {
+  { 
     mid_ = v.size() ? v[0] : 0x00808080;
-    max_ = v.size() ? v[1] : 0x00FFFFFF;
-    min_ = v.size() ? v[2] : 0x00000000;
+    max_ = v.size() > 1 ? v[1] : 0x00FFFFFF;
+    min_ = v.size() > 2 ? v[2] : 0x00000000;
+    rep_ = v.size() > 3 ? v[3] : mid_;
   };
+  color_range(){color_range(0x00808080,0x00FFFFFF,0x00000000,0x00808080);};
   Uint32 mid() const{return(mid_);};
   Uint32 max() const{return(max_);};
   Uint32 min() const{return(min_);};
+  Uint32 rep() const{return(rep_);};
   bool operator<(const color_range& b) const
   {
     if(mid_ != b.mid()) return(mid_ < b.mid());
     if(max_ != b.max()) return(max_ < b.max());
-    return(min_ < b.min());
+    if(min_ != b.min()) return(min_ < b.min());
+    return(rep_ < b.rep());
   }
   bool operator==(const color_range& b) const
   {
-    return(mid_ == b.mid() && max_ == b.max() && min_ == b.min());
+    return(mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep());
   }
 private:
-  Uint32 mid_ , max_ , min_;
+  Uint32 mid_ , max_ , min_ , rep_;
 };
 
 #endif

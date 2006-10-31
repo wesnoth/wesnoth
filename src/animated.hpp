@@ -76,21 +76,22 @@ private:
 	struct frame
 	{
 
-		frame(int duration , const T& value) :
-			duration_(duration),value_(value)
+		frame(int duration , const T& value,int start_time) :
+			duration_(duration),value_(value),start_time_(start_time)
 		{};
 		frame():
-			duration_(0),value_(void_value_)
+			duration_(0),value_(void_value_),start_time_(0)
 		{};
 
 		// Represents the timestamp of the frame start
 		int duration_;
 		T value_;
+		int start_time_;
 	};
 
 	bool does_not_change_;	// optimization for 1-frame permanent animations
 	bool started_;
-	std::map<int,frame> frames_;
+	std::vector<frame> frames_;
 
 	//these are only valid when anim is started
 	int start_tick_; // time at which we started

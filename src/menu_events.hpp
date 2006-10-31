@@ -109,7 +109,7 @@ public:
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
-	void autosave(const std::string &label, unsigned turn) const;
+	void autosave(const std::string &label, unsigned turn, const config &starting_pos) const;
 
 protected:
 	void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE);
@@ -121,7 +121,7 @@ private:
 	void write_game_snapshot(config& start) const;
 	bool has_friends() const;
 	bool clear_shroud(const unsigned int team_num);
-	void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
+	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 
 	display* gui_;
 	unit_map& units_;

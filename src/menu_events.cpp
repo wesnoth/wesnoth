@@ -218,15 +218,8 @@ namespace events{
 			//add player's name to title of dialog
 			std::stringstream str;
 			str <<  _("Statistics") << " (";
-			// Find leader (of viewing player) 's description
-			for (unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-				if (i->second.side() != (gui_->viewing_team()+1))
-					continue;
-				if (i->second.can_recruit()){
-					str << i->second.description();
-					break;
-				}
-			}
+			// Current Player name
+			str << teams_[gui_->viewing_team()].current_player();
 			str << ")";
 
 			statistics_dialog stats_dialog(*gui_, str.str());
@@ -409,7 +402,7 @@ namespace events{
 #endif
 				str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm';
 				// Delete all tags before name
-				str << font::del_tags(leader->second.description()) << COLUMN_SEPARATOR;
+				str << font::del_tags(teams_[n].current_player()) << COLUMN_SEPARATOR;
 
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
@@ -465,9 +458,10 @@ namespace events{
 				return;
 			}
 
-			write_game_snapshot(gamestate_.snapshot);
+			config snapshot;
+			write_game_snapshot(snapshot);
 			try {
-				recorder.save_game(label, gamestate_);
+				recorder.save_game(label, snapshot, gamestate_.starting_pos);
 				if(dialog_type != gui::NULL_DIALOG) {
 					gui::show_dialog(*gui_,NULL,_("Saved"),_("The game has been saved"), gui::OK_ONLY);
 				}
@@ -516,7 +510,6 @@ namespace events{
 
 	void menu_handler::write_game_snapshot(config& start) const
 	{
-		start.clear();
 		start.values = level_.values;
 
 		start["snapshot"] = "yes";
@@ -573,20 +566,21 @@ namespace events{
 		gui_->labels().write(start);
 	}
 
-	void menu_handler::autosave(const std::string &label, unsigned turn) const
+	void menu_handler::autosave(const std::string &label, unsigned turn, const config &starting_pos) const
 	{
 		if(game_config::disable_autosave)
 			return;
 
 		Uint32 start, end;
 		start = SDL_GetTicks();
+		config snapshot;
 
-		write_game_snapshot(gamestate_.snapshot);
+		write_game_snapshot(snapshot);
 		try {
 			if (label.empty()) {
-				recorder.save_game(_("Auto-Save"), gamestate_);
+				recorder.save_game(_("Auto-Save"), snapshot, starting_pos);
 			} else {
-				recorder.save_game(label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn), gamestate_);
+				recorder.save_game(label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn), snapshot, starting_pos);
 			}
 		} catch(game::save_game_failed&) {
 			gui::show_dialog(*gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
@@ -1742,7 +1736,7 @@ namespace events{
 			cfg.add_child(cmd);
 
 			network::send_data(cfg);
-		} else if(cmd == "control") {
+		} else if(cmd == "control" && network::nconnections() != 0) {
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			if(j != data.end()) {
 				const std::string side(data.begin(),j);

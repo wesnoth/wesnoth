@@ -42,6 +42,7 @@ class unit_animation:public animated<unit_frame>
 		std::vector<config> unit_filter_;
 		std::vector<config> secondary_unit_filter_;
 		std::vector<gamemap::location::DIRECTION> directions;
+		int frequency_;
 };
 
 class attack_type;
@@ -127,6 +128,16 @@ class healing_animation:public unit_animation
 	public:
 		explicit healing_animation(const config& cfg):unit_animation(cfg){};
 		explicit healing_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
+
+	private:
+};
+
+class victory_animation:public unit_animation
+{
+	public:
+		explicit victory_animation(const config& cfg):unit_animation(cfg){};
+		explicit victory_animation(int start_time,const unit_frame &frame):
 			unit_animation(start_time,frame){};
 
 	private:

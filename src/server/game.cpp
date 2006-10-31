@@ -131,7 +131,8 @@ void game::start_game()
 	//take control of any sides if they happen to have the same name as one of the descriptions
 	config::child_itors sides = level_.child_range("side");
 	for(; sides.first != sides.second; ++sides.first) {
-		(**sides.first)["controller"] = "human";
+		if ((**sides.first)["controller"] != "null")
+			(**sides.first)["controller"] = "human";
 	}
 
 	describe_slots();
@@ -156,7 +157,7 @@ bool game::take_side(network::connection player, const config& cfg)
 {
 	wassert(is_member(player));
 
-	// verify that side is a side id
+	//verify that side is a side id
 	const std::string& side = cfg["side"];
 	size_t side_num;
 	try {
@@ -176,7 +177,7 @@ bool game::take_side(network::connection player, const config& cfg)
 		const config::child_list& sides = level_.get_children("side");
 		for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
 			if((**i)["controller"] == "network") {
-				// don't allow players to take sides in games with invalid side numbers
+				//don't allow players to take sides in games with invalid side numbers
 				try {
 					side_num = lexical_cast<size_t, std::string>((**i)["side"]);
 					if(side_num < 1 || side_num > 9)
@@ -185,7 +186,7 @@ bool game::take_side(network::connection player, const config& cfg)
 				catch(bad_lexical_cast&) {
 					return false;
 				}
-				// check if the side is taken if not take it
+				//check if the side is taken if not take it
 				side_index = static_cast<size_t>(side_num - 1);
 				if(!sides_taken_[side_index]) {
 					side_controllers_[side_index] = "network";
@@ -198,18 +199,37 @@ bool game::take_side(network::connection player, const config& cfg)
 				}
 			}
 		}
-		// if we get here we couldn't find a side to take
+		//if we get here we couldn't find a side to take
 		return false;
+	} else { //else take the current side
+		//if the owner have transfer side to an ai or an human in game
+		//fake a "change_controller" command so other player update controler name
+		//and set controler to the type owner have set
+		if (player == owner_ && started_ && !cfg["controller"].empty()) {
+			config fake;
+			config& change = fake.add_child("change_controller");
+			change["side"] = side;
+			change["player"] = cfg["name"];
+			change["controller"] = "network";
+			send_data(fake, owner_); //send change to all except owner
+
+			//upade level so observer who join display the good player name
+			config::child_itors it = level_.child_range("side");
+			it.first += side_index;
+			wassert(it.first != it.second);
+			(**it.first)["current_player"] = cfg["name"];
+
+			side_controllers_[side_index] = cfg["controller"];
+		} else {
+			side_controllers_[side_index] = "network";
+		}
+		sides_.insert(std::pair<network::connection, size_t>(player, side_index));
+		sides_taken_[side_index] = true;
+		network::queue_data(cfg, owner_);
+		return true;
 	}
-	// else take the current side
-	if (player == owner_ && started_ && !cfg["controller"].empty())
-		side_controllers_[side_index] = cfg["controller"];
-	else
-		side_controllers_[side_index] = "network";
-	sides_.insert(std::pair<network::connection, size_t>(player, side_index));
-	sides_taken_[side_index] = true;
-	network::queue_data(cfg, owner_);
-	return true;
+
+	return false;
 }
 
 void game::update_side_data()
@@ -445,6 +465,12 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 	change["controller"] = "human";
 	network::queue_data(response, sock_entering);
+
+	//upade level so observer who join display the good player name
+	config::child_itors it = level_.child_range("side");
+	it.first += side_index;
+	wassert(it.first != it.second);
+	(**it.first)["current_player"] = player;
 
 	//if the host left and there are ai sides, transfer them to the new host
 	if (host_leave) {

@@ -62,15 +62,12 @@ template<typename T,  typename T_void_value>
 void animated<T,T_void_value>::add_frame(int duration, const T& value,bool force_change)
 {
 	if(frames_.empty() ) {
-		frames_[starting_frame_time_] =
-			frame(duration,value);
 		does_not_change_=!force_change;
-		return;
+		frames_.push_back( frame(duration,value,starting_frame_time_));
+	} else {
+		does_not_change_=false;
+		frames_.push_back( frame(duration,value,frames_.back().start_time_+frames_.back().duration_));
 	}
-	typename std::map<int,frame>::reverse_iterator last_frame = frames_.rbegin();
-	does_not_change_=false;
-	frames_[last_frame->first +last_frame->second.duration_] =
-		frame(duration,value);
 }
 
 template<typename T,  typename T_void_value>
@@ -82,7 +79,7 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 	cycles_ = cycles;
 	acceleration_ = acceleration;
 	if(acceleration_ <=0) acceleration_ = 1;
-	current_frame_key_= frames_.begin()->first;
+	current_frame_key_= 0;
 	update_last_draw_time();
 }
 
@@ -109,11 +106,9 @@ void animated<T,T_void_value>::update_last_draw_time()
 			current_frame_key_ =starting_frame_time_;
 		}
 	}
-	typename std::map<int,frame>::iterator current_frame = frames_.find(current_frame_key_);
 	while(get_current_frame_end_time() < get_animation_time() &&  // catch up
 			get_current_frame_end_time() < get_end_time()) {// don't go after the end
-		current_frame++;
-		current_frame_key_ = current_frame->first;
+		current_frame_key_++;
 	}
 }
 
@@ -173,7 +168,7 @@ const T& animated<T,T_void_value>::get_current_frame() const
 {
 	if(frames_.empty() )
 		return void_value_;
-	return frames_.find(current_frame_key_)->second.value_;
+	return frames_[current_frame_key_].value_;
 }
 
 template<typename T,  typename T_void_value>
@@ -181,7 +176,7 @@ const int animated<T,T_void_value>::get_current_frame_begin_time() const
 {
 	if(frames_.empty() )
 		return starting_frame_time_;
-	return frames_.find(current_frame_key_)->first;
+	return frames_[current_frame_key_].start_time_;
 }
 
 template<typename T,  typename T_void_value>
@@ -197,7 +192,7 @@ const int animated<T,T_void_value>::get_current_frame_duration() const
 {
 	if(frames_.empty() )
 		return 0;
-	return frames_.find(current_frame_key_)->second.duration_;
+	return frames_[current_frame_key_].duration_;
 }
 
 template<typename T,  typename T_void_value>
@@ -213,7 +208,7 @@ const T& animated<T,T_void_value>::get_first_frame() const
 {
 	if(frames_.empty() )
 		return void_value_;
-	return frames_.begin()->second.value_;
+	return frames_[0].value_;
 }
 
 template<typename T,  typename T_void_value>
@@ -221,8 +216,7 @@ const T& animated<T,T_void_value>::get_last_frame() const
 {
 	if(frames_.empty() )
 		return void_value_;
-	typename std::map<int,frame>::const_reverse_iterator last_frame = frames_.rbegin();
-	return last_frame->second.value_;
+	return frames_.back().value_;
 }
 
 template<typename T, typename T_void_value>
@@ -242,8 +236,7 @@ int animated<T,T_void_value>::get_end_time() const
 {
 	if(frames_.empty())
 		return starting_frame_time_;
-	typename std::map<int,frame>::const_reverse_iterator last_frame = frames_.rbegin();
-	return (last_frame->first +last_frame->second.duration_);
+	return frames_.back().start_time_ + frames_.back().duration_;
 }
 
 // Force compilation of the following template instantiations

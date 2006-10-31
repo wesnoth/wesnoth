@@ -170,6 +170,7 @@ class unit
 		const unit_animation & set_attacking( const display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num);
 		void set_recruited(const display& disp,const gamemap::location& loc);
 		void set_healed(const display& disp,const gamemap::location& loc,int healing);
+		void set_victorious(const display &disp,const gamemap::location& loc);
 		void set_poisoned(const display& disp,const gamemap::location& loc,int damage);
 		void set_idling(const display& disp,const gamemap::location& loc);
 		void restart_animation(const display& disp,int start_time);
@@ -221,7 +222,7 @@ class unit
 		enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
 		STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
 		STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
-		STATE_RECRUITED, STATE_HEALED, STATE_POISONED, STATE_IDLEIN, STATE_IDLING};
+		STATE_RECRUITED, STATE_HEALED, STATE_POISONED, STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
 		STATE state() const;
 
 		//the name of the file to display (used in menus
@@ -250,6 +251,7 @@ class unit
 		const standing_animation& stand_animation(const display& disp, const gamemap::location& loc) const;
 		const leading_animation& lead_animation(const display& disp, const gamemap::location& loc) const;
 		const healing_animation& heal_animation(const display& disp, const gamemap::location& loc) const;
+		const victory_animation& victorious_animation(const display& disp, const gamemap::location& loc) const;
 		const recruit_animation& recruiting_animation(const display& disp, const gamemap::location& loc) const;
 		const idle_animation& idling_animation(const display& disp, const gamemap::location& loc) const;
 		const levelin_animation& levelingin_animation(const display& disp, const gamemap::location& loc) const;
@@ -356,6 +358,7 @@ class unit
 		std::vector<standing_animation> standing_animations_;
 		std::vector<leading_animation> leading_animations_;
 		std::vector<healing_animation> healing_animations_;
+		std::vector<victory_animation> victory_animations_;
 		std::vector<recruit_animation> recruit_animations_;
 		std::vector<idle_animation> idle_animations_;
 		std::vector<levelin_animation> levelin_animations_;

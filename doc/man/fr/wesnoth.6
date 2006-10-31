@@ -2,13 +2,16 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
+.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
+.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
 .
 .\"*******************************************************************
 .\"
@@ -18,7 +21,7 @@
 .TH WESNOTH 6 2006 wesnoth "La bataille pour Wesnoth"
 .
 .SH NOM
-wesnoth \- La bataille pour Wesnoth, un jeu fantasy de stratégie tour par 
+wesnoth \- La bataille pour Wesnoth, un jeu fantasy de stratégie tour par
 tour
 .
 .SH SYNOPSIS
@@ -27,18 +30,18 @@ tour
 .
 .SH DESCRIPTION
 .
-La bataille pour \fBWesnoth\fP est un jeu de stratégie tour par tour dans un 
+La bataille pour \fBWesnoth\fP est un jeu de stratégie tour par tour dans un
 univers de fantasy.
 
-Venez à bout de tous les chefs ennemis en utilisant les unités adéquates 
-et en gérant de façon au mieux votre or et vos villages. Chaque unité a 
-ses forces et ses faiblesses\ ; pour gagner, déployez vos troupes de façon 
-optimales tout en empêchant vos ennemis de faire de même. Toutes les 
-unités gagnent de l'expérience et acquièrent de nouvelles compétences, 
-devenant plus puissantes. Jouez dans votre langue favorite, testez votre 
-habileté contre l'ordinateur, ou rejoignez la grande communauté des 
-joueurs en ligne de Wesnoth. Créez vos propres unités, vos scénarios ou 
-vos campagnes et partagez les avec d'autres.
+Venez à bout de tous les chefs ennemis en utilisant les unités adéquates et
+en gérant de façon au mieux votre or et vos villages. Chaque unité a ses
+forces et ses faiblesses\ ; pour gagner, déployez vos troupes de façon
+optimales tout en empêchant vos ennemis de faire de même. Toutes les unités
+gagnent de l'expérience et acquièrent de nouvelles compétences, devenant
+plus puissantes. Jouez dans votre langue favorite, testez votre habileté
+contre l'ordinateur, ou rejoignez la grande communauté des joueurs en ligne
+de Wesnoth. Créez vos propres unités, vos scénarios ou vos campagnes et
+partagez les avec d'autres.
 .
 .SH OPTIONS
 .
@@ -47,41 +50,41 @@ vos campagnes et partagez les avec d'autres.
 définit la valeur bits par pixel (couleurs). Exemple: \-\-bpp 32
 .TP 
 \fB\-\-compress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
-compresse une sauvegarde au format text WML (fichier en entrée) en format 
+compresse une sauvegarde au format text WML (fichier en entrée) en format
 binaire WML (fichier en sortie).
 .TP 
 \fB\-d\fP, \fB\-\-debug\fP
-affiche des informations supplémentaires de débuggage et permet d'utiliser 
-des options en ligne de commande dans le jeu (voir Wiki\ : 
+affiche des informations supplémentaires de débuggage et permet d'utiliser
+des options en ligne de commande dans le jeu (voir Wiki\ :
 http://www.wesnoth.org/ pour plus d'informations sur la ligne de commande).
 .TP 
 \fB\-\-decompress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
-décompresse une sauvegarde  au format binaire WML (fichier en entrée) en 
+décompresse une sauvegarde  au format binaire WML (fichier en entrée) en
 format texte WML (fichier en sortie).
 .TP 
 \fB\-f\fP, \fB\-\-fullscreen\fP
 Lancer le jeu en plein écran.
 .TP 
 \fB\-\-fps\fP
-affiche le nombre actuel d'images par seconde du jeu, dans un angle de 
+affiche le nombre actuel d'images par seconde du jeu, dans un angle de
 l'écran.
 .TP 
 \fB\-h\fP, \fB\-\-help\fP
-affiche un résumé des options de ligne de commande sur la sortie standard 
-et quitte le programme.
+affiche un résumé des options de ligne de commande sur la sortie standard et
+quitte le programme.
 .TP 
 \fB\-\-load\fP\fI\ savegame\fP
-charge le fichier de sauvegarde partir du répertoire de sauvegarde par 
+charge le fichier de sauvegarde partir du répertoire de sauvegarde par
 défaut.
 .TP 
 \fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-définit le niveau d'alerte du débuggeur. "all" permet de suivre tous les 
-niveaux. \fB\-\-log\-info\fP affiche tous les messages, \fB\-\-log\-warning\fP n'affiche 
-que les avertissements et les erreurs et \fB\-\-log\-error\fP n'affiche que les 
+définit le niveau d'alerte du débuggeur. "all" permet de suivre tous les
+niveaux. \fB\-\-log\-info\fP affiche tous les messages, \fB\-\-log\-warning\fP n'affiche
+que les avertissements et les erreurs et \fB\-\-log\-error\fP n'affiche que les
 erreurs.
 .TP 
 \fB\-\-multiplayer\fP
-lance un jeu multijoueurs. Des options supplémentaires peuvent être 
+lance un jeu multijoueurs. Des options supplémentaires peuvent être
 utilisées avec \fB\-\-multiplayer\fP\ : voir ci\-dessous.
 .TP 
 \fB\-\-nocache\fP
@@ -106,63 +109,63 @@ affiche le numéro de version et quitte le programme.
 lance le jeu dans une fenêtre séparée.
 .TP 
 \fB\-\-no\-delay\fP
-lance le jeu sans possibilité de suivi des performances 
+lance le jeu sans possibilité de suivi des performances
 graphiques. Automatique avec \-nogui.
 .TP 
 \fB\-\-exit\-at\-end\fP
-quitte le programme à la fin du scénario, sans afficher le message 
-victoire/défaite qui nécessite un click sur OK de la part du 
+quitte le programme à la fin du scénario, sans afficher le message
+victoire/défaite qui nécessite un click sur OK de la part du
 joueur. Utilisable pour permettre une mesure par script des performances.
 .
 .SH "Options pour \-\-multiplayer"
 .
-Les options spécifiques au mode multijoueur sont marquées d'un 
-<number>. <number> doit être remplacé par le nombre de 
-joueurs. Il s'agit souvent de 1 ou de 2 mais cela dépend du nombre de 
+Les options spécifiques au mode multijoueur sont marquées d'un
+<number>. <number> doit être remplacé par le nombre de
+joueurs. Il s'agit souvent de 1 ou de 2 mais cela dépend du nombre de
 joueurs possibles pour le scénario choisi.
 .TP 
 \fB\-\-algorithm<number>=value\fP
-Sélectionne un algorithme utilisé par l'IA de cette faction. Valeurs 
+Sélectionne un algorithme utilisé par l'IA de cette faction. Valeurs
 possible\ :  "idle_ai" et "sample_ai".
 .TP  
 \fB\-\-controller<number>=value\fP
-Sélectionne le type de joueur de ce camp. Valeurs possibles\ : "human" and 
-"ai". 
+Sélectionne le type de joueur de ce camp. Valeurs possibles\ : "human" and
+"ai".
 .TP  
 \fB\-\-era=value\fP
-utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère 
-"Default". Cette ère est sélectionnée par un identifiant. Les ères sont 
+utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère
+"Default". Cette ère est sélectionnée par un identifiant. Les ères sont
 décrites dans le fichier data/multiplayer.cfg.
 .TP 
 \fB\-\-nogui\fP
 lance le jeu sans IHM. Doit apparaître avant \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-parm<number>=name:value\fP
-ajoute des paramètres spécifiques à ce camp. Ces paramètres dépendent 
-des options utilisées avec \fB\-\-controller\fP et \fB\-\-algorithm\fP. Ne devrait 
-être utile qu'aux personnees expérimentant leur propre IA (non encore 
-totalement documenté).
+ajoute des paramètres spécifiques à ce camp. Ces paramètres dépendent des
+options utilisées avec \fB\-\-controller\fP et \fB\-\-algorithm\fP. Ne devrait être
+utile qu'aux personnees expérimentant leur propre IA (non encore totalement
+documenté).
 .TP 
 \fB\-\-scenario=value\fP
-sélectionne un scénario multijoueur. Le scénario par défaut est\ : 
+sélectionne un scénario multijoueur. Le scénario par défaut est\ :
 "multiplayer_Charge".
 .TP 
 \fB\-\-side<number>=value\fP
-permet de sélectionner un camp. Ce camp est choisi par identifiant. Les 
+permet de sélectionner un camp. Ce camp est choisi par identifiant. Les
 camps sont décris dans le fichier data/multiplayer.cfg.
 .TP 
 \fB\-\-turns=value\fP
 défini le nombre de tours du scénario. Valeur par défaut\ : "50".
 .TP 
 Exemple pour tester votre propre IA\ : 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai 
+wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
 \-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
 .
 .SH AUTEUR
 .
 Écrit par David White <davidnwhite@verizon.net>.
 .br
-Edité par Nils Kneuper <crazy\-ivanovic@gmx.net>, ott 
+Edité par Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
 <ott@gaon.net> et Soliton <soliton@sonnenkinder.org>.
 .br
 Ce manuel a été écrit par Cyril Bouthors <cyril@bouthors.org>.
@@ -173,10 +176,9 @@ Rendez vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-C'est un logiciel libre\ ; ce logiciel est sous la licence GPM version 2, 
-comme définie par la Free Software Foundation. Il n'offre AUCUNE 
-GARANTIE\ ; il n'est pas commercialisable et ne s'adapte pas à un but 
-particulier. 
+C'est un logiciel libre\ ; ce logiciel est sous la licence GPM version 2,
+comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE\ ;
+il n'est pas commercialisable et ne s'adapte pas à un but particulier.
 .
 .SH "VOIR AUSSI"
 .

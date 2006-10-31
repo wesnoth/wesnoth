@@ -211,7 +211,7 @@ bool init_sound() {
 			return false;
 
 	if(!mix_ok) {
-		if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,buf_size) == -1) {
+		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, buf_size) == -1) {
 			mix_ok = false;
 			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << "\n";
 			return false;
@@ -378,8 +378,8 @@ void play_music_repeatedly(const std::string &name)
 void play_music_config(const config &music)
 {
 	struct music_track track(music["name"],
-							 music["ms_before"],
-							 music["ms_after"]);
+				 			 music["ms_before"],
+				 			 music["ms_after"]);
 
 	// If they say play once, we don't alter playlist.
 	if (utils::string_bool(music["play_once"])) {
@@ -485,42 +485,42 @@ void play_sound(const std::string& files)
 // Play bell on separate volume than sound
 void play_bell(const std::string& files)
 {
-   if(files.empty()) return;
-	
-   if(preferences::turn_bell() && mix_ok) {
-      std::string file = pick_one(files);
-      // the insertion will fail if there is already an element in the cache
-      std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
-         it = bell_cache.insert(std::make_pair(file, (Mix_Chunk *)0));
-      Mix_Chunk *&cache = it.first->second;
-      if (it.second) {
-         std::string const &filename = get_binary_file_location("sounds", file);         if (!filename.empty()) {
-#ifdef USE_ZIPIOS
-            std::string const &s = read_file(filename);
-            if (!s.empty()) {
-               SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
-               cache = Mix_LoadWAV_RW(ops,0);
-            }
-#else
-            cache = Mix_LoadWAV(filename.c_str());
-#endif
-         }
+	if(files.empty()) return;
 
-         if (cache == NULL) {
-            ERR_AUDIO << "Could not load sound file '" << filename << "': "
-               << Mix_GetError() << "\n";
-            return;
-         }
-      }
+	if(preferences::turn_bell() && mix_ok) {
+		std::string file = pick_one(files);
+		// the insertion will fail if there is already an element in the cache
+		std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
+			it = bell_cache.insert(std::make_pair(file, (Mix_Chunk *)0));
+		Mix_Chunk *&cache = it.first->second;
+		if (it.second) {
+			std::string const &filename = get_binary_file_location("sounds", file);
+			if (!filename.empty()) {
+	#ifdef USE_ZIPIOS
+				std::string const &s = read_file(filename);
+				if (!s.empty()) {
+					SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
+					cache = Mix_LoadWAV_RW(ops,0);
+				}
+	#else
+				cache = Mix_LoadWAV(filename.c_str());
+	#endif
+			}
 
-      //play on the last (bell) channel 
-      const int res = Mix_PlayChannel(15, cache, 0);
-      if(res < 0) {
-         ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
-      }
+			if (cache == NULL) {
+				ERR_AUDIO << "Could not load sound file '" << filename << "': "
+				<< Mix_GetError() << "\n";
+				return;
+			}
+		}
 
-	
-   }
+		//play on the last (bell) channel
+		const int res = Mix_PlayChannel(15, cache, 0);
+		if(res < 0) {
+			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
+		}
+
+	}
 }
 
 void set_music_volume(int vol)

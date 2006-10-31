@@ -233,11 +233,11 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	const unit& defender = units.find(defender_loc)->second;
 
 	// A Python AI can send an invalid weapon and crash Wesnoth
-	// Haven't found a way for the Python API to prevent this 
+	// Haven't found a way for the Python API to prevent this
 	// problem. So instead of segfaulting it sends an assertion
 	// failure.
 	wassert(attacker_weapon< (int)attacker.attacks().size());
-		
+
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1)
 		attacker_weapon = 0;
 
@@ -842,7 +842,7 @@ attack::attack(display& gui, const gamemap& map,
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			if(dies) {
-				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon);
+				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
 			}
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES, attacker_damage_);
@@ -1049,7 +1049,7 @@ attack::attack(display& gui, const gamemap& map,
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(dies) {
-				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon);
+				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
 			}
 			if(ran_results == NULL) {
 				config cfg;

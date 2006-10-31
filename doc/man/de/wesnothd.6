@@ -2,13 +2,16 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
+.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
+.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
 .
 .\"*******************************************************************
 .\"
@@ -23,20 +26,20 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .
 .SH ZUSAMMENFASSUNG
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP \fIPort\fP\|] [\|\fB\-t\fP 
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP \fIPort\fP\|] [\|\fB\-t\fP
 \fINummer\fP\|]
 .
 .SH BESCHREIBUNG
 .
-Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe auf 
-http://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der 
+Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe auf
+http://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der
 Server von Wesnoth oder über den Socket entgegen nimmt.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ Pfad\fP
-sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im 
+sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im
 Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für den genauen Syntax.
 .TP 
 \fB\-d,\ \-\-daemon\fP
@@ -46,7 +49,7 @@ started wesnothd als Dämon.
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ Port\fP
-bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist, 
+bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port 15000 genommen.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ WERT\fP
@@ -78,9 +81,9 @@ Schlüssel="\fIWert\fP,\fIWert\fP,..."
 Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse.
 .TP 
 \fBdisallow_names\fP
-Namen/Spitznamen die der Server nicht akzeptiert. '*' und '?' sind als 
-Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte 
-(wenn sonst nichts angegeben wurde) sind: 
+Namen/Spitznamen die der Server nicht akzeptiert. '*' und '?' sind als
+Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
+(wenn sonst nichts angegeben wurde) sind:
 \&'server,ai,player,network,human,admin,computer'.
 .TP 
 \fBmax_messages\fP
@@ -93,11 +96,11 @@ Der Zeitraum (in Sekunden) in dem "message flooding" erkannt wird.
 Die "Nachricht des Tages".
 .TP 
 \fBpasswd\fP
-Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt 
+Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt
 per Konvention mit "admin ".
 .TP 
 \fBversions_accepted\fP
-Eine durch Komma getrennte Liste der Programmversionen, die der Server 
+Eine durch Komma getrennte Liste der Programmversionen, die der Server
 zulässt. `*' und `?' sind erlaubt.
 .br
 Beispiel: versions_accepted="*" akzeptiert alle Versionen.
@@ -105,7 +108,7 @@ Beispiel: versions_accepted="*" akzeptiert alle Versionen.
 .SS "Globale Elemente:"
 .
 .P
-\fB[redirect]\fP Ein Element um bestimmte Programmversionen anzugeben, die auf 
+\fB[redirect]\fP Ein Element um bestimmte Programmversionen anzugeben, die auf
 einen anderen Server umgeleitet werden sollen.
 .RS
 .TP 
@@ -116,24 +119,24 @@ Die Adresse des Rechners, zu dem umgeleitet wird.
 Der dabei zu verwendende Port.
 .TP 
 \fBversion\fP
-Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden 
-sollen. Verhält sich  in Bezug auf Wildcards genauso wie 
+Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden
+sollen. Verhält sich  in Bezug auf Wildcards genauso wie
 \fBversions_accepted\fP.
 .RE
 .P
-\fB[proxy]\fP Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein 
-Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an 
-den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie 
+\fB[proxy]\fP Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein
+Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an
+den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
 bei [redirect] akzeptiert.
 .
 .SH AUTOR
 .
-Geschrieben von David White <davidnwhite@verizon.net>.  Bearbeitet 
-von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott 
-<ott@gaon.net>und Soliton  <soliton@sonnenkinder.org>.  
-Übersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de>, Nils 
-Kneuper <crazy\-ivanovic@gmx.net>und Soliton 
-<soliton@sonnenkinder.org>.  Diese Beschreibung stammt im Original 
+Geschrieben von David White <davidnwhite@verizon.net>.  Bearbeitet
+von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net>und Soliton  <soliton@sonnenkinder.org>. 
+Übersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de>, Nils
+Kneuper <crazy\-ivanovic@gmx.net>und Soliton
+<soliton@sonnenkinder.org>.  Diese Beschreibung stammt im Original
 von Cyril Bouthors <cyril@bouthors.org>.
 .br
 Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
@@ -142,18 +145,17 @@ Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
-GNU General Public License, wie von der Free Software Foundation 
-veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 
-2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.  Die 
-Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen 
-von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
-implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
-BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.  Sie 
-sollten eine Kopie der GNU General Public License zusammen mit diesem 
-Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software 
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110\-1301, 
-USA.
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+GNU General Public License, wie von der Free Software Foundation
+veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2
+der Lizenz oder (nach Ihrer Option) jeder späteren Version.  Die
+Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
+Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN
+ZWECK. Details finden Sie in der GNU General Public License.  Sie sollten
+eine Kopie der GNU General Public License zusammen mit diesem Programm
+erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110\-1301, USA.
 .
 .SH ANDERE
 .

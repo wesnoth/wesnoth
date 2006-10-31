@@ -278,7 +278,7 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 	{
 		is_playing_ = false;
 	}
-	catch(end_level_exception& e){ 
+	catch(end_level_exception& e){
 		//VICTORY/DEFEAT end_level_exception shall not return to title screen
 		if ((e.result != VICTORY) && (e.result != DEFEAT)) { throw e; }
 	}

@@ -34,11 +34,14 @@ Version 1.3-svn:
    * The South Guard
      * Proven by the Sword: tell Deoran to go to Westin if the citadel is
       secured (fixes #7360)
+ * graphics
+   * fixed terrain selection probabilites (patch #617)
  * multiplayer maps:
    * new multiplayer maps: The Manzivan Traps
  * units:
    * balancing changes:
      * decreased cost of the Mudcrawler from 9 to 5
+     * Dark Adepts no longer get the 'strong' trait
    * new traits
      * healthy (+3HP, +4 rest healing), fearless (ignore unfavorable ToD)
    * new units
@@ -46,6 +49,8 @@ Version 1.3-svn:
    * unit art
      * added a recruit animation for Skeleton
  * user interface
+   * use "Save Replay" instead of "Save Game" when asking to save a replay (bug #7256)
+   * fix ennemi Gold show twice in debug mode in status table (bug #6895)
    * added an option to hide minimaps in the multiplayer lobby
    * added menu items for saving the current map
    * added turbo speed setting and changed ui accordingly
@@ -62,9 +67,10 @@ Version 1.3-svn:
    * show leader's name and colour at status table even when that team is fogged
      (patch #605)
  * WML engine
+   * added fourth color in team_rgb definitions for representative color in minimap
    * fixed terrain probabilities for terrains defined with rotations (bug #7274)
    * added a 'hide_help' key that prevents a unit type from being listed in the
-     in-game help
+     in-game help (bug #5701)
    * added an 'allow_new_game' key (default=yes) to prevent [multiplayer]
      scenarios from showing up in the multiplayer game creation interface
      (FR #6397)
@@ -84,10 +90,12 @@ Version 1.3-svn:
    * units can now have a recruit animations that will be played on unit recruit
    * units now have idle animations, played when they've been idle for some time
    * units now have leveling up animations
+   * units can now have victory animations,  usable with the WML tag 'victory_anim' 
    * [event]s can now be written also inside [era]s (the [event]s are included
      in every scenario played using that era)
    * new operation for set_variable : divide
    * Animations now use duration= tag instead of begin= and end= (backward
+   * Animations now have a frequency= filter to allow to tweak realtive rarety
    compatible)
    * [message]s now use the duration= tag instead of [delay]ing afterwards
  * multiplayer game management
@@ -97,8 +105,8 @@ Version 1.3-svn:
    * scenarios can set faction, recruit, leader, and some other initial settings
      previously ignored in multiplayer
  * language and i18n:
-   * new manpages: Czech, English (GB), French, Italian, Portuguese (Brazil),
-     Japanese, Slovak.
+   * new manpages: Czech, Dutch, English (GB), French, Italian,
+     Portuguese (Brazil), Japanese, Slovak.
    * updated manpages: German, Swedish.
    * removed manpages (outdated): Hungarian.
  * other:

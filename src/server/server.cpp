@@ -519,7 +519,6 @@ void server::run()
 
 void server::process_data(const network::connection sock, config& data, config& gamelist)
 {
-	//std::cerr << "in server::process_data...\n";
 	if(proxy::is_proxy(sock)) {
 		proxy::received_data(sock,data);
 	}
@@ -912,6 +911,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				const config& msg = construct_server_message(result,*g);
 				network::send_data(msg,sock);
 			}
+			g->describe_slots();
+			lobby_players_.send_data(sync_initial_response());
 			return;
 		}
 	}
