@@ -206,15 +206,16 @@ bool game::take_side(network::connection player, const config& cfg)
 	if (player == owner_ && started_ && !cfg["controller"].empty()) {
 		//if the owner have transfer side to an ai or an human in game
 		//fake a "change_controller" command so other player update controller name
-		//and set controller to the type owner have set
 		config fake;
 		config& change = fake.add_child("change_controller");
 		change["side"] = side;
 		change["player"] = cfg["name"];
 		change["controller"] = "network";
 		send_data(fake, owner_); //send change to all except owner
+		//send a server message displaying new controller name
+		send_data(construct_server_message(cfg["name"] + " takes control of side " + side));
 
-		//update level so observer who join display the good player name
+		//update level_ so observer who join display the good player name
 		config::child_itors it = level_.child_range("side");
 		it.first += side_index;
 		wassert(it.first != it.second);
@@ -717,12 +718,12 @@ void game::remove_player(network::connection player, bool notify_creator)
 
 	//check for ai sides first and drop them, too, if the host left
 	if (host){
+		bool ai_transfer = false;
 		//can't do this with an iterator, because it doesn't know the side_index
 		for (size_t side = 0; side < side_controllers_.size(); ++side){
 			//send the host a notification of removal of this side
 			if(notify_creator && players_.empty() == false && side_controllers_[side] == "ai") {
-				std::string msg = "AI side " + lexical_cast<std::string, size_t>(side + 1) + " is transferred to new host";
-				send_data(construct_server_message(msg));
+				ai_transfer = true;
 				config drop;
 				drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
 				drop["controller"] = "ai";
@@ -730,6 +731,10 @@ void game::remove_player(network::connection player, bool notify_creator)
 				sides_taken_[side] = false;
 				observer = false;
 			}
+		}
+		if (ai_transfer) {
+			std::string msg = "AI transferred to new host";
+			send_data(construct_server_message(msg));
 		}
 	}
 
