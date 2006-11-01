@@ -196,7 +196,7 @@ void wait::join_game(bool observe)
 		int side_choice = 0;
 		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
 			if((**s)["controller"] == "network" && (**s)["description"].empty()) {
-				if((**s)["save_id"] == preferences::login()) {
+				if((**s)["save_id"] == preferences::login() || (**s)["current_player"] == preferences::login()) {
 					side_choice = s - sides_list.begin();
 				}
 			}

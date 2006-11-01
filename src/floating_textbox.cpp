@@ -134,7 +134,7 @@ namespace gui{
 				if(teams[n].is_empty()) {
 					continue;
 				}
-				const std::string& name = teams[n].save_id();
+				const std::string& name = teams[n].current_player();
 				if( name.size() >= semiword.size() &&
 						std::equal(semiword.begin(),semiword.end(),name.begin(),chars_equal_insensitive)) {
 					if(matches.empty()) {
