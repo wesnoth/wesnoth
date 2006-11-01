@@ -38,6 +38,7 @@ public:
 		std::string status;
 		std::string time_limit;
 		size_t vacant_slots;
+		bool started;
 		bool fog;
 		bool shroud;
 		bool observers;
@@ -54,7 +55,8 @@ public:
 	void draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 	SDL_Rect get_item_rect(size_t index) const;
 	bool empty() const { return games_.empty(); }
-	bool selection_is_joinable() const { return empty() ? false : games_[selected_].vacant_slots > 0; }
+	bool selection_is_joinable() const
+	{ return empty() ? false : (games_[selected_].vacant_slots > 0 && !games_[selected_].started); }
 	bool selection_is_observable() const { return empty() ? false : games_[selected_].observers; }
 	bool selected() const { return double_clicked_ && !empty(); }
 	int selection() const { return selected_; }
