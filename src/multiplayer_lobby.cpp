@@ -120,8 +120,24 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		xpos += item_height_ + margin_;
 	}
 
-	// draw game name
-	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, game.vacant_slots > 0 ? font::GOOD_COLOUR : game.observers ? font::NORMAL_COLOUR : font::BAD_COLOUR));
+	//set font color
+	SDL_Color font_color;
+	if (game.vacant_slots > 0) {
+		if (!game.started) {
+			font_color = font::GOOD_COLOUR;
+		} else {
+			font_color = font::YELLOW_COLOUR;
+		}
+	} else {
+		if (game.observers) {
+			font_color = font::NORMAL_COLOUR;
+		} else {
+			font_color = font::BAD_COLOUR;
+		}
+	}
+
+	//draw game name
+	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, font_color));
 	video().blit_surface(xpos, ypos, name_surf);
 
 	ypos = item_rect.y + item_rect.h/2;
@@ -180,7 +196,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 	xpos += vision_icon->w + h_padding_;
 
-	const surface status_text(font::get_rendered_text(game.status, font::SIZE_NORMAL, game.vacant_slots > 0 ? font::GOOD_COLOUR : font::NORMAL_COLOUR));
+	const surface status_text(font::get_rendered_text(game.status, font::SIZE_NORMAL, font_color));
 	const surface vision_text(font::get_rendered_text(font::make_text_ellipsis(game.vision, font::SIZE_NORMAL, maximum<int>((item_rect.x + item_rect.w - margin_ - status_text->w - 2 * h_padding_) - xpos, 0)),font::SIZE_NORMAL, font::NORMAL_COLOUR));
 	// draw vision text
 	video().blit_surface(xpos, ypos, vision_text);
@@ -353,10 +369,14 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		const std::string& turn = (**game)["turn"];
 		const std::string& slots = (**game)["slots"];
 		games_.back().vacant_slots = lexical_cast_default<size_t>(slots, 0);
-		if(turn != "")
+		if(turn != "") {
+			games_.back().started = true;
 			games_.back().status = _("Turn") + (" " + turn);
-		else if(slots != "")
-			games_.back().status = std::string(ngettext(_("Vacant Slot:"), _("Vacant Slots:"), games_.back().vacant_slots)) + " " + slots;
+		} else {
+			games_.back().started = false;
+			if(slots != "")
+				games_.back().status = std::string(ngettext(_("Vacant Slot:"), _("Vacant Slots:"), games_.back().vacant_slots)) + " " + slots;
+		}
 
 		if((**game)["mp_use_map_settings"] == "yes") {
 			games_.back().gold = _("Use map settings");
