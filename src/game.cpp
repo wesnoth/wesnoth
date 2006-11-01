@@ -1904,8 +1904,11 @@ int main(int argc, char** argv)
 		//just means the game should quit
 	} catch(end_level_exception&) {
 		std::cerr << "caught end_level_exception (quitting)\n";
-	} catch(std::bad_alloc&) {
-		std::cerr << "Ran out of memory. Aborted.\n";
+//FIXME MdW this catch is disabled in order to trace memory overflows. 
+// When catched the game ends normally and I want gdb to catch it for
+// a backtrace
+//	} catch(std::bad_alloc&) {
+//		std::cerr << "Ran out of memory. Aborted.\n";
 	}
 
 #ifdef GP2X

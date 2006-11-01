@@ -26,9 +26,9 @@
 
 terrain_type::terrain_type() : symbol_image_("void"),
 			       number_(terrain_translation::VOID_TERRAIN),
-			       mvt_type2_(terrain_translation::VOID_TERRAIN),
-			       def_type2_(terrain_translation::VOID_TERRAIN),
-			       union_type2_(terrain_translation::VOID_TERRAIN),
+			       mvt_type2_(1, terrain_translation::VOID_TERRAIN),
+			       def_type2_(1, terrain_translation::VOID_TERRAIN),
+			       union_type2_(1, terrain_translation::VOID_TERRAIN),
                                height_adjust_(0), submerge_(0.0),
                                heals_(false), village_(false), castle_(false), keep_(false) 
 {}

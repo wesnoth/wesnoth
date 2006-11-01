@@ -28,5 +28,3 @@ Main TODO list is here
   The rename is done to trace down the entire caller tree
   and find functions which assume the terrain type is a char
   and thus a string can be used for an array or vector.
-* Memory consumption is HUGE with higher shifts, 24 even results
-  with running out of memory with 512 MB ram + 512 MB swap

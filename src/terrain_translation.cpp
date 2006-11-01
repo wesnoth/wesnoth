@@ -38,7 +38,8 @@
 // shift 16   77960  64m  18m 
 // shift 17   100m   88m  18m
 // shift 20   436m   302m 18m
-#define SHIFT 0 //FIXME MdW make higher shifts work
+// After the fix tested 24, 25 both work and the memory consumption of 25 is normal
+#define SHIFT 25
 #define SET_TERRAIN_CONSTANT(x,y) \
 	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y << SHIFT)
 
