@@ -199,11 +199,13 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-//splits a string into three parts.  The part before the first '(', the part between the
+//splits a string into an odd number of parts.  The part before the first '(', the part between the
 //first '(' and the matching right ')', etc ... and the remainder of the string.  Note that this
 //will find the first matching char in the left string and match against the corresponding 
 //char in the right string.  A correctly processed string should return with an odd number of elements to the vector.
-//Empty elements are never removed as they are placeholders.
+//Empty elements are never removed as they are placeholders. 
+//parenthetical_split("a(b)c{d}e(f{g})h","({",")}") should return a vector of
+// <"a","b","c","d","e","f{g}","h">
 std::vector< std::string > paranthetical_plit(std::string const &val, std::string const &left, std::string const &right,int flags)
 {
 	std::vector< std::string > res;
@@ -217,7 +219,6 @@ std::vector< std::string > paranthetical_plit(std::string const &val, std::strin
 		return res;
 	}
 
-	//fixme
 	while (i2 != val.end()) {
 		for(size_t i=0; i < left.size(); i++){
 			if (*i2 == left[i]){
@@ -267,6 +268,7 @@ std::vector< std::string > paranthetical_plit(std::string const &val, std::strin
 
 	return res;
 }
+
 class string_map_variable_set : public variable_set
 {
 public:
