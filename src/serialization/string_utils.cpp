@@ -199,6 +199,74 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
+//splits a string into three parts.  The part before the first '(', the part between the
+//first '(' and the matching right ')', etc ... and the remainder of the string.  Note that this
+//will find the first matching char in the left string and match against the corresponding 
+//char in the right string.  A correctly processed string should return with an odd number of elements to the vector.
+//Empty elements are never removed as they are placeholders.
+std::vector< std::string > paranthetical_plit(std::string const &val, std::string const &left, std::string const &right,int flags)
+{
+	std::vector< std::string > res;
+	std::vector<char> part;
+
+	std::string::const_iterator i1 = val.begin();
+	std::string::const_iterator i2 = val.begin();
+	
+	if(left.size()!=right.size()){
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
+		return res;
+	}
+
+	//fixme
+	while (i2 != val.end()) {
+		for(size_t i=0; i < left.size(); i++){
+			if (*i2 == left[i]){
+				if (part.size()==0){
+					std::string new_val(i1, i2);
+					if (flags & STRIP_SPACES)
+						strip(new_val);
+					res.push_back(new_val);
+					++i2;
+					if (flags & STRIP_SPACES) {
+						while (i2 != val.end() && *i2 == ' ')
+						++i2;
+					}
+					i1=i2;
+				}				
+				part.push_back(right[i]);
+				i=left.size();
+			}
+		}
+		if(*i2 == part.back()){
+			part.pop_back();
+			if(part.size() == 0){
+				std::string new_val(i1, i2);
+				if (flags & STRIP_SPACES)
+					strip(new_val);
+				res.push_back(new_val);
+				++i2;
+				if (flags & STRIP_SPACES) {
+					while (i2 != val.end() && *i2 == ' ')
+					++i2;
+				}
+				i1=i2;
+			}
+		}
+		++i2;	
+	}
+
+	std::string new_val(i1, i2);
+	if (flags & STRIP_SPACES)
+		strip(new_val);
+	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+		res.push_back(new_val);
+
+	if(part.size()){
+			ERR_GENERAL << "Mismatched paranthesis:\n"<<val<<"\n";;
+	}
+
+	return res;
+}
 class string_map_variable_set : public variable_set
 {
 public:
