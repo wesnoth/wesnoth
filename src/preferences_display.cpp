@@ -433,8 +433,9 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
         // Multiplayer tab
         ypos = rect.y + top_border;
         chat_lines_label_.set_location(rect.x, ypos);
-        SDL_Rect chat_lines_rect = { rect.x + slider_label_width_, ypos,
-                                     rect.w - slider_label_width_ - right_border, 0 };
+        ypos += 20;
+        SDL_Rect chat_lines_rect = { rect.x + 25, ypos,
+                                     rect.w - 25 - right_border, 0 };
         chat_lines_slider_.set_location(chat_lines_rect);
         ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
 	ypos += item_interline;	show_lobby_joins_button_.set_location(rect.x, ypos);
