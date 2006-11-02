@@ -1,10 +1,12 @@
 Version 1.1.11+svn:
  * user interface
+   * display started game with vacant slot with yellow font
    * fix allow to move other player's (bug #6451)
  * sound
    * add sample_rate option (read only) to solve cracking sound
      on some sound card (Intel HDA, cmipci, ...) (bug #7507)
  * multiplayer
+   * send a server message each time side controller change (fr #7358)
    * fix green game bugs
    * fix new host doesn't get control when original host left (bug #7351)
    * fix crash when tranfering a side (bug #7346, bug #7455)
