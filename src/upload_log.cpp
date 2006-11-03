@@ -129,6 +129,9 @@ upload_log::~upload_log()
 	if (game_finished(game_))
 		config_.add_child("game", *game_);
 
+	if (game_)
+		delete game_;
+
 	if (enabled_ && !config_.empty() && !game_config::debug) {
 		config_["version"] = VERSION;
 		config_["format_version"] = "1";
@@ -175,6 +178,9 @@ void upload_log::start(game_state &state, const team &team,
 	if (game_finished(game_))
 		config_.add_child("game", *game_);
 
+
+	if (game_)
+		delete game_;
 	game_ = new config();
 	(*game_)["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
 	(*game_)["campaign"] = state.campaign_define;
