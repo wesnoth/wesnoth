@@ -89,7 +89,7 @@ private:
 
 class dialog_button : public button {
 public:
-	dialog_button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS, 
+	dialog_button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
 		int simple_result=CONTINUE_DIALOG, dialog_button_action *handler=NULL)
 		: button(video,label,type,"",DEFAULT_SPACE,false), simple_result_(simple_result),
 		parent_(NULL), handler_(handler)

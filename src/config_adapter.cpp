@@ -190,6 +190,7 @@ int get_first_human_team(const config::child_list::const_iterator& cfg, const co
 	return result;
 }
 
+//return NULL if theme is not found
 const config* get_theme(const config& game_config, std::string theme_name){
 	const config* theme_cfg = NULL;
 	if(theme_name != "") {
@@ -199,9 +200,7 @@ const config* get_theme(const config& game_config, std::string theme_name){
 	if(theme_cfg == NULL) {
 		theme_cfg = game_config.find_child("theme","name",preferences::theme());
 	}
-	if (theme_cfg == NULL){
-		theme_cfg = new config();
-	}
+
 	return theme_cfg;
 }
 

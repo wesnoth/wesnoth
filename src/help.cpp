@@ -861,7 +861,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		}
 
 		std::vector<topic> generated_topics =
-		  generate_topics(sort_generated,(*section_cfg)["generator"]);
+		generate_topics(sort_generated,(*section_cfg)["generator"]);
 
 		if (sort_topics) {
 		  	std::sort(topics.begin(),topics.end(), title_less());

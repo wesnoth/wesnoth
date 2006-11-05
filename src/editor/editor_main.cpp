@@ -312,5 +312,8 @@ int main(int argc, char** argv)
 			return 0;
 		}
 	}
+
+	filesystem_close();
+
 	return 0;
 }

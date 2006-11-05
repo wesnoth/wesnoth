@@ -151,7 +151,7 @@ unit::unit(const unit& o):
 		idle_animations_(o.idle_animations_),
 		levelin_animations_(o.levelin_animations_),
 		levelout_animations_(o.levelout_animations_),
-		anim_(o.anim_),
+		anim_(NULL),
 
 		frame_begin_time(o.frame_begin_time),
 		offset_(o.offset_),
@@ -169,7 +169,6 @@ unit::unit(const unit& o):
 		gamestatus_(o.gamestatus_),
 		teams_(o.teams_)
 {
-	anim_ = NULL;
 	unit_halo_ = 0;
 	unit_anim_halo_ = 0;
 }
@@ -293,9 +292,9 @@ unit::~unit()
 	if(unit_anim_halo_) {
 		halo::remove(unit_anim_halo_);
 	}
-	if(anim_) {
-		delete anim_;
-	}
+
+	delete anim_;
+
 }
 
 
@@ -1610,10 +1609,8 @@ void unit::set_standing(const display &disp,const gamemap::location& loc, bool w
 	state_ = STATE_STANDING;
 	draw_bars_ = with_bars;
 	offset_=0;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
 	anim_ = new standing_animation(stand_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(),true,disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1623,10 +1620,9 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 {
 	state_ =  STATE_DEFENDING;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	fighting_animation::hit_type hit_type;
 	if(damage >= hitpoints()) {
 		hit_type = fighting_animation::KILL;
@@ -1650,10 +1646,9 @@ void unit::set_extra_anim(const display &disp,const gamemap::location& loc, std:
 {
 	state_ =  STATE_EXTRA;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	if(!extra_animation(disp,loc,flag)) {
 		set_standing(disp,loc);
 		return;
@@ -1667,10 +1662,9 @@ const unit_animation & unit::set_attacking(const display &disp,const gamemap::lo
 {
 	state_ =  STATE_ATTACKING;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	fighting_animation::hit_type hit_type;
 	if(damage >= hitpoints()) {
 		hit_type = fighting_animation::KILL;
@@ -1688,10 +1682,9 @@ void unit::set_leading(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEADING;
 	draw_bars_ = true;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new leading_animation(lead_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1700,10 +1693,9 @@ void unit::set_leveling_in(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEVELIN;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new levelin_animation(levelingin_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1712,10 +1704,9 @@ void unit::set_leveling_out(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEVELOUT;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new levelout_animation(levelingout_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1724,10 +1715,9 @@ void unit::set_recruited(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_RECRUITED;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new recruit_animation(recruiting_animation(disp,loc));
 	// add a fade in effect
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
@@ -1737,10 +1727,9 @@ void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int 
 {
 	state_ = STATE_HEALED;
 	draw_bars_ = true;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new unit_animation(0,unit_frame(absolute_image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1749,10 +1738,9 @@ void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, in
 {
 	state_ = STATE_POISONED;
 	draw_bars_ = true;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new unit_animation(0,unit_frame(absolute_image(),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1762,10 +1750,9 @@ void unit::set_teleporting(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_TELEPORT;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ =  new unit_animation(teleport_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(),false,disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1775,10 +1762,9 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 {
 	state_ = STATE_DYING;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ =  new death_animation(die_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack));
 	image::locator tmp_image = anim_->get_last_frame().image();
 	anim_->add_frame(600,unit_frame(tmp_image,600,"1~0:600"));
@@ -1789,10 +1775,9 @@ void unit::set_healing(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_HEALING;
 	draw_bars_ = true;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new healing_animation(heal_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1801,10 +1786,9 @@ void unit::set_victorious(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_VICTORIOUS;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new victory_animation(victorious_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1818,10 +1802,9 @@ void unit::set_walking(const display &disp,const gamemap::location& loc)
 	}
 	state_ = STATE_WALKING;
 	draw_bars_ = false;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new movement_animation(move_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1832,10 +1815,9 @@ void unit::set_idling(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_IDLING;
 	draw_bars_ = true;
-	if(anim_) {
-		delete anim_;
-		anim_ = NULL;
-	}
+
+	delete anim_;
+
 	anim_ = new idle_animation(idling_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -1947,8 +1929,6 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		blend_with = disp.rgb(0,255,0);
 		blend_ratio = 0.25;
 	}
-
-
 
 
 	surface ellipse_front(NULL);

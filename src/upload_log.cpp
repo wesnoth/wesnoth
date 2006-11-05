@@ -178,9 +178,9 @@ void upload_log::start(game_state &state, const team &team,
 	if (game_finished(game_))
 		config_.add_child("game", *game_);
 
-
-	if (game_)
-		delete game_;
+	//start could be call more than one
+	//so delete game_ to prevent memory leak
+	delete game_;
 	game_ = new config();
 	(*game_)["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
 	(*game_)["campaign"] = state.campaign_define;

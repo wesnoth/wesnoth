@@ -104,7 +104,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 				const DIALOG_TYPE type, const std::string& dialog_style,
 				const std::string& help_topic) : disp_(disp), image_(NULL),
 				title_(title), style_(dialog_style), message_(NULL),
-				type_(type), menu_(NULL), 
+				type_(type), menu_(NULL),
 				help_button_(disp, help_topic),  text_widget_(NULL),
 				action_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
 {
@@ -229,6 +229,7 @@ menu& dialog::get_menu() const
 	if(menu_ == NULL)
 	{
 		if(empty_menu == NULL) {
+			//FIXME create a small mem leak
 			empty_menu = new gui::menu(disp_.video(),empty_string_vector,false,-1,-1,NULL,&menu::simple_style);
 			empty_menu->leave();
 		}
@@ -675,7 +676,7 @@ int dialog::process(dialog_process_info &info)
 	if(
 		(
 			//clicking outside of a drop-down or context-menu should close it
-			standard_buttons_.empty() && 
+			standard_buttons_.empty() &&
 			(
 				(
 					new_left_button && !info.left_button &&
@@ -763,7 +764,7 @@ int standard_dialog_button::action(dialog_process_info &/*info*/) {
 }
 
 
-dialog::help_button::help_button(display& disp, const std::string &help_topic) 
+dialog::help_button::help_button(display& disp, const std::string &help_topic)
 	: dialog_button(disp.video(), _("Help")), disp_(disp), topic_(help_topic)
 {}
 

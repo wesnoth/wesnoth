@@ -2233,7 +2233,7 @@ void display::set_grid(bool grid)
 
 // timestring() returns the current date as a string.
 // Uses preferences::clock_format() for formatting.
-char *timestring ( void )
+std::string timestring ( void )
 {
     #define TIME_SIZE 10
 
@@ -2243,7 +2243,10 @@ char *timestring ( void )
     char *tstring;
     tstring = new char[TIME_SIZE];
     strftime(tstring,TIME_SIZE,preferences::clock_format().c_str(),lt);
-    return tstring;
+
+    std::string time_string(tstring, TIME_SIZE);
+    delete[] tstring;
+    return time_string;
     #undef TIME_SIZE
 }
 

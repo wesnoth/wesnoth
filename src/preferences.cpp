@@ -787,8 +787,8 @@ std::string clock_format()
 	if(prefs["clock_format"].size())
 		return prefs["clock_format"];
 	else
-	  prefs["clock_format"]="%H:%M:%S";
-		return "%H:%M:%S";
+		prefs["clock_format"]="%H:%M:%S";
+	return "%H:%M:%S";
 }
 
 const std::string& theme()

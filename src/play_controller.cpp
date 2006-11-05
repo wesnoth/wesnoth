@@ -93,7 +93,10 @@ void play_controller::init(CVideo& video){
 	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
-	gui_ = new display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
+	if (theme_cfg)
+		gui_ = new display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
+	else
+		gui_ = new display(units_,video,map_,status_,teams_,config(), game_config_, level_);
 	mouse_handler_.set_gui(gui_);
 	menu_handler_.set_gui(gui_);
 	theme::set_known_themes(&game_config_);

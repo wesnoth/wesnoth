@@ -1771,7 +1771,7 @@ int play_game(int argc, char** argv)
 
 	loadscreen::global_loadscreen->set_progress(100, _("Loading title screen."));
 	delete loadscreen::global_loadscreen;
-	loadscreen::global_loadscreen = 0;
+	loadscreen::global_loadscreen = NULL;
 
 	for(;;) {
 		//make sure the game config is always set to how it should be at the title screen
@@ -1912,6 +1912,8 @@ int main(int argc, char** argv)
 		std::cerr << "Unhandled exception. Exiting\n";
 	}
 #endif
+
+	filesystem_close();
 
 	return 0;
 }

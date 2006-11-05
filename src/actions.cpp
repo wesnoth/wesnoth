@@ -715,9 +715,7 @@ void attack::refresh_bc()
 
 attack::~attack()
 {
-	if(bc_) {
-		delete bc_;
-	}
+	delete bc_;
 }
 
 attack::attack(display& gui, const gamemap& map,
