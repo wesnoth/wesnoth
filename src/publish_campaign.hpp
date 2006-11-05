@@ -28,5 +28,6 @@ void unarchive_campaign(const class config& cfg);
 
 bool campaign_name_legal(const std::string& name);
 bool check_names_legal(const config& dir);
+std::vector<config *> find_scripts(const config &cfg, std::string extension);
 
 #endif

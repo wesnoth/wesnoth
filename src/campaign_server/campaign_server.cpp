@@ -87,23 +87,41 @@ void find_translations(const config& cfg, config& campaign)
         }
 }
 
-void check_for_python_scripts(config& cfg)
+// Given an uploaded campaign, rename all .py files to .py.unchecked, unless
+// the contents are the same as a .py file in an existing campaign.
+// This means, a .py.unchecked file can be approved by simply renaming it
+// on the CS, and it will remain approved as long as it is not changed (but
+// it can be moved/renamed). If the .py file changes, it needs to be approved
+// again.
+std::string check_python_scripts(config &data, std::string filename)
 {
-    // Look through all files, and rename .py files into .py.unchecked, so they
-    // can not be executed.
-    const config::child_list& dirs = cfg.get_children("dir");
-    config::child_list::const_iterator i;
-    for(i = dirs.begin(); i != dirs.end(); ++i) {
-        const config::child_list& files = (**i).get_children("file");
-        config::child_list::const_iterator j;
-        for(j = files.begin(); j != files.end(); ++j) {
-            std::string filename = (**j)["name"].str();
-            if (filename.substr(filename.length() - 3) == ".py") {
-                (**j)["name"] += ".unchecked";
-            }
-        }
-        check_for_python_scripts(**i);
-    }
+	std::vector<config *> python_scripts = find_scripts(data, ".py");
+	if (!python_scripts.empty()) {
+		// Campaign contains python scripts.
+		config old_campaign;
+		scoped_istream stream = istream_file(filename);
+		read_compressed(old_campaign, *stream);
+		std::vector<config *> old_scripts = find_scripts(old_campaign, ".py");
+		std::string script_names = "";
+		std::vector<config *>::iterator i, j;
+		// Go through all newly uploaded python scripts.
+		for (i = python_scripts.begin(); i != python_scripts.end(); ++i) {
+			bool already = false;
+			// Compare to existing, approved scripts.
+			for (j = old_scripts.begin(); j != old_scripts.end(); ++j) {
+				if ((**i)["contents"] != (**j)["contents"]) continue;
+				already = true;
+				break;
+			}
+			if (!already) {
+				script_names += "\n" + (**i)["name"];
+				(**i)["name"] += ".unchecked";
+			}
+		}
+		if (script_names != "")
+			return "\nScripts awaiting approval:\n" + script_names;
+	}
+	return "";
 }
 
 void campaign_server::run()
@@ -187,10 +205,6 @@ void campaign_server::run()
 						config cfg;
 						scoped_istream stream = istream_file((*campaign)["filename"]);
 						read_compressed(cfg, *stream);
-						// Campaigns which have python="allowed" are not checked
-						if ((*campaign)["python"] != "allowed") {
-							check_for_python_scripts(cfg);
-						}
 						network::queue_data(cfg,sock);
 
 						const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
@@ -211,6 +225,7 @@ void campaign_server::run()
 					} else if(check_names_legal(*data) == false) {
 						network::send_data(construct_error("The add-on contains an illegal file or directory name."),sock);
 					} else {
+						std::string message = "Add-on accepted.";
 						if(campaign == NULL) {
 							campaign = &campaigns().add_child("campaign");
 						}
@@ -240,16 +255,19 @@ void campaign_server::run()
 						(*data)["icon"] = (*campaign)["icon"];
 						(*campaign).clear_children("translation");
 						find_translations(*data, *campaign);
-						{
-							scoped_ostream campaign_file = ostream_file(filename);
-							write_compressed(*campaign_file, *data);
+
+						// Campaigns which have python="allowed" are not checked
+						if ((*campaign)["python"] != "allowed") {
+							message += check_python_scripts(*data, filename);
 						}
+						scoped_ostream campaign_file = ostream_file(filename);
+						write_compressed(*campaign_file, *data);
+
 						(*campaign)["size"] = lexical_cast<std::string>(
 							file_size(filename));
-
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
-						network::send_data(construct_message("Add-on accepted."),sock);
+						network::send_data(construct_message(message),sock);
 					}
 				} else if(const config* erase = data.child("delete")) {
 					config* const campaign = campaigns().find_child("campaign","name",(*erase)["name"]);
