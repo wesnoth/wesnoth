@@ -23,6 +23,7 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "wesconfig.h"
+#include "serialization/string_utils.hpp"
 
 #include "SDL_image.h"
 
@@ -139,19 +140,23 @@ void locator::parse_arguments()
 		return;
 	}
 	size_t markup_field = fn.find('~');
-	while(markup_field != std::string::npos) {
-		size_t open_field = fn.find('(',markup_field);
-		size_t close_field = fn.find(')',markup_field);
-		if(open_field == std::string::npos || close_field == std::string::npos) {
-			return;
+	std::string left_par="(";
+	std::string right_par=")";
+	if(markup_field != std::string::npos) {
+		std::string markup_string = fn.substr(markup_field+1, fn.size() - markup_field );
+		fn = fn.substr(0,markup_field);
+		std::vector<std::string> farg = utils::paranthetical_split(markup_string,left_par,right_par);
+		std::vector<std::string>::const_iterator i = farg.begin();
+		while(i!=farg.end()){		
+			std::string function=*i++;
+			if(i==farg.end()){
+				return;
+			}	
+			std::string field = *i++;
+			if(function == "TC") {
+				get_tc_info(field);
+			}
 		}
-		std::string field = fn.substr(open_field+1,close_field-open_field-1);
-		std::string function = fn.substr(markup_field+1,open_field-markup_field-1);
-		fn = fn.substr(0,markup_field) + fn.substr(close_field+1);
-		if(function == "TC") {
-			get_tc_info(field);
-		}
-		markup_field = fn.find('~');
 	}
 }
 

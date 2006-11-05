@@ -206,7 +206,7 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 //Empty elements are never removed as they are placeholders. 
 //parenthetical_split("a(b)c{d}e(f{g})h","({",")}") should return a vector of
 // <"a","b","c","d","e","f{g}","h">
-std::vector< std::string > paranthetical_plit(std::string const &val, std::string const &left, std::string const &right,int flags)
+std::vector< std::string > paranthetical_split(std::string const &val, std::string const &left, std::string const &right,int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
@@ -214,31 +214,16 @@ std::vector< std::string > paranthetical_plit(std::string const &val, std::strin
 	std::string::const_iterator i1 = val.begin();
 	std::string::const_iterator i2 = val.begin();
 	
+	std::string lp=left;
+	std::string rp=right;
+	
 	if(left.size()!=right.size()){
 		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
 		return res;
 	}
 
 	while (i2 != val.end()) {
-		for(size_t i=0; i < left.size(); i++){
-			if (*i2 == left[i]){
-				if (part.size()==0){
-					std::string new_val(i1, i2);
-					if (flags & STRIP_SPACES)
-						strip(new_val);
-					res.push_back(new_val);
-					++i2;
-					if (flags & STRIP_SPACES) {
-						while (i2 != val.end() && *i2 == ' ')
-						++i2;
-					}
-					i1=i2;
-				}				
-				part.push_back(right[i]);
-				i=left.size();
-			}
-		}
-		if(*i2 == part.back()){
+		if(part.size() && *i2 == part.back()){
 			part.pop_back();
 			if(part.size() == 0){
 				std::string new_val(i1, i2);
@@ -246,14 +231,30 @@ std::vector< std::string > paranthetical_plit(std::string const &val, std::strin
 					strip(new_val);
 				res.push_back(new_val);
 				++i2;
-				if (flags & STRIP_SPACES) {
-					while (i2 != val.end() && *i2 == ' ')
-					++i2;
-				}
 				i1=i2;
+			}else{
+				++i2;
 			}
-		}
-		++i2;	
+			break;
+		}		
+		for(size_t i=0; i < lp.size(); i++){
+			if (*i2 == lp[i]){
+				if (part.size()==0){
+					std::string new_val(i1, i2);
+					if (flags & STRIP_SPACES)
+						strip(new_val);
+					res.push_back(new_val);
+					++i2;
+					i1=i2;
+				}else{
+					++i2;
+				}			
+				part.push_back(rp[i]);
+				break;
+			}else{
+				++i2;
+			}
+		}	
 	}
 
 	std::string new_val(i1, i2);

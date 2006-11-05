@@ -162,17 +162,17 @@ namespace game_config
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];
 
-		const config::child_list& team_colors = v.get_children("team_color");
+		const config::child_list& team_colors = v.get_children("color_range");
 		for(config::child_list::const_iterator teamC = team_colors.begin(); teamC != team_colors.end(); ++teamC) {
-		    if(!(**teamC)["side"].empty() && !(**teamC)["team_rgb"].empty()){
-		    int side = atoi((**teamC)["side"].c_str());
+		    if(!(**teamC)["id"].empty() && !(**teamC)["team_rgb"].empty()){
+		    int side = atoi((**teamC)["id"].c_str());
 		    std::vector<Uint32> temp = string2rgb((**teamC)["team_rgb"]);
 		    team_rgb_range[side] = color_range(temp);
 		    team_rgb_name[side] = (**teamC)["name"];
 		  }
 		}
 		
-		const config* rgbv = v.child("team_colors");
+		const config* rgbv = v.child("color_palette");
 		if(rgbv) {
 			for(string_map::const_iterator rgb_it = rgbv->values.begin(); rgb_it != rgbv->values.end(); ++rgb_it) {
 				try {
