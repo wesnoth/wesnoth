@@ -52,7 +52,7 @@ static PyObject* wrapper_unittype_resistance_against(wesnoth_unittype* type, PyO
 
 static PyObject* wrapper_unittype_get_name(wesnoth_unittype* unit, void* /*closure*/)
 {
-	return Py_BuildValue("s",( const char* )unit->unit_type_->language_name().c_str());
+	return Py_BuildValue("s",( const char* )unit->unit_type_->id().c_str());
 }
 
 #define ut_get( x ) \
