@@ -84,10 +84,12 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	const int total_mvt_time = 150 * temp_unit.movement_cost(dst_terrain)/acceleration;
 	const unsigned int start_time = SDL_GetTicks();
-	int mvt_time = SDL_GetTicks() -start_time;
+	int mvt_time = 1;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
 
-	while(mvt_time < total_mvt_time) {
+	while(mvt_time < total_mvt_time-1) { // one draw in each hex at least
+		mvt_time = SDL_GetTicks() -start_time;
+		if(mvt_time >=total_mvt_time) mvt_time = total_mvt_time -1;
 		double pos =double(mvt_time)/total_mvt_time;
 		const gamemap::location& ref_loc =pos<0.5?a:b;
 		if(pos >= 0.5) pos = pos -1;
@@ -98,7 +100,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		events::pump();
 		disp.delay(10);
 
-		mvt_time = SDL_GetTicks() -start_time;
 	}
 }
 
@@ -135,15 +136,9 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 
 		disp.remove_footstep(path[i]);
 
-		bool invisible;
-
-		if(temp_unit.side() == 0) {
-			invisible = false;
-		} else {
-			invisible = teams[temp_unit.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
+		bool invisible = teams[temp_unit.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
 				temp_unit.invisible(path[i],units,teams) &&
 				temp_unit.invisible(path[i+1],units,teams);
-		}
 
 		if(!invisible) {
 			if( !tiles_adjacent(path[i], path[i+1])) {
@@ -153,9 +148,18 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 			}
 			previous_visible = true;
 		} else if(previous_visible) {
+			gamemap::location arr[6];
 			disp.invalidate(path[i]);
+			get_adjacent_tiles(path[i], arr);
+			for (unsigned int i = 0; i < 6; i++) {
+				disp.invalidate(arr[i]);
+			}
 			disp.draw();
+			previous_visible = false;
+		} else {
+			previous_visible = false;
 		}
+
 	}
 	disp.remove_temporary_unit();
 	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
