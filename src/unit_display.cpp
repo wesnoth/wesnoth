@@ -88,6 +88,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
 
 	while(mvt_time < total_mvt_time-1) { // one draw in each hex at least
+		disp.delay(10);
 		mvt_time = SDL_GetTicks() -start_time;
 		if(mvt_time >=total_mvt_time) mvt_time = total_mvt_time -1;
 		double pos =double(mvt_time)/total_mvt_time;
@@ -98,7 +99,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		disp.place_temporary_unit(temp_unit,ref_loc);
 		disp.draw();
 		events::pump();
-		disp.delay(10);
 
 	}
 }
