@@ -100,6 +100,7 @@ public:
 
 		location get_direction(DIRECTION d) const;
 		DIRECTION get_relative_dir(location loc) const;
+		DIRECTION get_opposite_dir(DIRECTION d) const;
 
 		static location null_location;
 	private:

@@ -2020,6 +2020,12 @@ void display::invalidate(const gamemap::location& loc)
 					invalidate(*i);
 				}
 			}
+			if (temp_unit_  && temp_unit_loc_ == loc ) {
+				std::set<gamemap::location> overlaps = temp_unit_->overlaps(temp_unit_loc_);
+				for (std::set<gamemap::location>::iterator i = overlaps.begin(); i != overlaps.end(); i++) {
+					invalidate(*i);
+				}
+			}
 			// if neighbour has a unit which overlaps us invalidate him
 			gamemap::location adjacent[6];
 			get_adjacent_tiles(loc, adjacent);
@@ -2029,6 +2035,12 @@ void display::invalidate(const gamemap::location& loc)
 					std::set<gamemap::location> overlaps = u->second.overlaps(u->first);
 					if (overlaps.find(loc) != overlaps.end()) {
 						invalidate(u->first);
+					}
+				}
+				if (temp_unit_  && temp_unit_loc_ == adjacent[i] ) {
+					std::set<gamemap::location> overlaps = temp_unit_->overlaps(temp_unit_loc_);
+					if (overlaps.find(loc) != overlaps.end()) {
+						invalidate(temp_unit_loc_);
 					}
 				}
 			}

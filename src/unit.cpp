@@ -2016,15 +2016,34 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 	}
 
 	switch (state()) {
-	case STATE_STANDING:
-		// Standing units don't overlap anything.
-		break;
-	default:
+		case STATE_STANDING:
+			// Standing units don't overlap anything.
+			break;
+		default:
+			gamemap::location arr[6];
+			get_adjacent_tiles(loc, arr);
+			for (unsigned int i = 0; i < 6; i++) {
+				over.insert(arr[i]);
+			}
+	}
+	if(offset_ > 0) {
+		gamemap::location adj_loc = loc.get_direction(facing_);
+		over.insert(adj_loc);
 		gamemap::location arr[6];
-		get_adjacent_tiles(loc, arr);
+		get_adjacent_tiles(adj_loc, arr);
 		for (unsigned int i = 0; i < 6; i++) {
 			over.insert(arr[i]);
 		}
+	} else if(offset_ < 0) {
+		gamemap::location opp_loc = loc.get_direction(loc.get_opposite_dir(facing_));
+		over.insert(opp_loc);
+		gamemap::location arr[6];
+		get_adjacent_tiles(opp_loc, arr);
+		for (unsigned int i = 0; i < 6; i++) {
+			over.insert(arr[i]);
+		}
+	} else {
+	// we stay in our hex, do nothing
 	}
 
 	return over;

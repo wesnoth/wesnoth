@@ -84,22 +84,23 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	const int total_mvt_time = 150 * temp_unit.movement_cost(dst_terrain)/acceleration;
 	const unsigned int start_time = SDL_GetTicks();
-	int mvt_time = SDL_GetTicks() -start_time;
+	int mvt_time = 1;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
 
-	while(mvt_time < total_mvt_time) {
+	while(mvt_time < total_mvt_time-1) {
+		disp.delay(10);
+		mvt_time = SDL_GetTicks() -start_time;
+		if(mvt_time >=total_mvt_time) mvt_time = total_mvt_time -1;
 		double pos =double(mvt_time)/total_mvt_time;
 		const gamemap::location& ref_loc =pos<0.5?a:b;
 		if(pos >= 0.5) pos = pos -1;
 		temp_unit.set_walking(disp,ref_loc);
-		disp.invalidate(ref_loc);
-		disp.place_temporary_unit(temp_unit,ref_loc);
 		temp_unit.set_offset(pos);
+		disp.place_temporary_unit(temp_unit,ref_loc);
+		disp.invalidate(ref_loc);
 		disp.draw();
 		events::pump();
-		disp.delay(10);
 
-		mvt_time = SDL_GetTicks() -start_time;
 	}
 }
 
