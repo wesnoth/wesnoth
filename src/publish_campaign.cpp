@@ -71,25 +71,27 @@ std::vector<std::string> available_campaigns()
 // Return a vector of detected scripts.
 std::vector<config *> find_scripts(const config &cfg, std::string extension)
 {
-    std::vector<config *> python_scripts;
-    const config::child_list& dirs = cfg.get_children("dir");
-    config::child_list::const_iterator i;
-    for(i = dirs.begin(); i != dirs.end(); ++i) {
-        const config::child_list& files = (**i).get_children("file");
-        config::child_list::const_iterator j;
-        for(j = files.begin(); j != files.end(); ++j) {
-            std::string filename = (**j)["name"].str();
-            if (filename.substr(filename.length() - extension.length()) ==
-                extension) {
-                python_scripts.push_back(*j);
-            }
-        }
-        // Recursively look for files in sub directories.
-        std::vector<config *> childs = find_scripts(**i, extension);
-        python_scripts.insert(python_scripts.end(),
-            childs.begin(), childs.end());
-    }
-    return python_scripts;
+	std::vector<config *> python_scripts;
+	const config::child_list& dirs = cfg.get_children("dir");
+	config::child_list::const_iterator i;
+	for(i = dirs.begin(); i != dirs.end(); ++i) {
+		const config::child_list& files = (**i).get_children("file");
+		config::child_list::const_iterator j;
+		for(j = files.begin(); j != files.end(); ++j) {
+			std::string filename = (**j)["name"].str();
+			if (filename.length() > extension.length()) {
+				if (filename.substr(filename.length() - extension.length()) ==
+					extension) {
+					python_scripts.push_back(*j);
+				}
+			}
+		}
+		// Recursively look for files in sub directories.
+		std::vector<config *> childs = find_scripts(**i, extension);
+		python_scripts.insert(python_scripts.end(),
+			childs.begin(), childs.end());
+	}
+	return python_scripts;
 }
 
 namespace {
