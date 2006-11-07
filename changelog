@@ -6,11 +6,20 @@ Version 1.1.12:
  * sound
    * add sample_rate option (read only) to solve cracking sound
      on some sound card (Intel HDA, cmipci, ...) (bug #7507)
+ * graphics
+   * new portraits: Human Bowman
+   * unit animations: Elven Hero's melee attack, Dragonguard, Saurian mages,
+     Young Ogres, Troll Warrior, Troll Rocklobber
+   * team color: Trolls, Woses, Orcish Assassin, Thief, Rogue and other
+     outlaws
+   * new/modified attack icons: dark magic, drake, javelins, ...
+   * other: new sceptre
  * multiplayer
    * send a server message each time side controller change (fr #7358)
-   * fix green game bugs
-   * fix new host doesn't get control when original host left (bug #7351)
-   * fix crash when transfering a side (bug #7346, bug #7455)
+   * fixed green game bugs
+   * fixed new host doesn't get control when original host left (bug #7351)
+   * fixed crash when transfering a side (bug #7346, bug #7455)
+   * fixed message bell sounding even on ignored messages (bug #7378)
  * language and i18n:
    * new manpages: Dutch
    * updated translations: Esperanto, French, German, Italian, Norwegian,
@@ -22,6 +31,11 @@ Version 1.1.12:
       Crossing, Isar's Cross, Paths of Daggers
  * engine changes
     * fixed the terrain defense alias to be used properly
+    * fixed aggression calculations (bug #7432)
+ * misc bugfixes
+   * fixed malfunctioned sighted event during shroud (bug #4398)
+   * fixed stats in replay counted not from 0 (bug #7245)
+   * fixed replay end showing scenario objectives (bug #6937)
 
 Version 1.1.11:
  * multiplayer
