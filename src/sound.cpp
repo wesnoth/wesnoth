@@ -229,9 +229,7 @@ bool init_sound() {
 //but this seems to cause crashes on other systems...
 #ifdef WIN32
 	const size_t buf_size = 4096;
-#endif
-
-#ifdef GP2X
+#elif GP2X
 	const size_t buf_size = 512;
 #else
 	const size_t buf_size = 1024;
