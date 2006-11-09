@@ -46,7 +46,7 @@ void play_no_music();
 void play_music();
 
 // Play sound, or random one of comma-separated sounds.
-void play_sound(const std::string& files);
+void play_sound(const std::string& files, int channel = -1);
 
 // Play sound, or random one of comma-separated sounds in bell channel
 void play_bell(const std::string& files);

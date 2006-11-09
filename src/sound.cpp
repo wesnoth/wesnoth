@@ -34,9 +34,20 @@
 namespace {
 bool mix_ok = false;
 unsigned music_start_time = 0;
+
+// Max number of sound chunks that we want to cache
+// Keep this above number of available channels to avoid busy-looping
+#ifdef LOW_MEM
+unsigned max_cached_chunks = 64;
+#else
+unsigned max_cached_chunks = 256;
+#endif
+
 std::map<std::string,Mix_Chunk*> sound_cache;
-std::map<std::string,Mix_Chunk*> bell_cache; // Bell sound use separate channel
-std::map<std::string,Mix_Music*> music_cache;
+std::map<std::string,Mix_Music*> music_cache; 
+
+// Channel-chunk mapping let us know, if can safely free a given chunk
+std::vector<Mix_Chunk*> channel_chunks;
 
 struct music_track
 {
@@ -171,6 +182,11 @@ std::string pick_one(const std::string &files)
 	if (names.size() == 1)
 		return names[0];
 
+#ifdef LOW_MEM
+	// We're memory constrained, so we shouldn't cache too many chunks
+	return names[0];
+#endif
+
 	// We avoid returning same choice twice if we can avoid it.
 	static std::map<std::string,unsigned int> prev_choices;
 	unsigned int choice;
@@ -187,12 +203,22 @@ std::string pick_one(const std::string &files)
 
 	return names[choice];
 }
-};
+
+// Removes channel-chunk mapping
+void channel_finished_hook(int channel)
+{
+	channel_chunks[channel] = 0;
+}
+
+} // end of anonymous namespace
+
 
 namespace sound {
+
 manager::manager()
 {
 }
+
 manager::~manager()
 {
 	close_sound();
@@ -203,9 +229,16 @@ bool init_sound() {
 //but this seems to cause crashes on other systems...
 #ifdef WIN32
 	const size_t buf_size = 4096;
+#endif
+
+#ifdef GP2X
+	const size_t buf_size = 512;
 #else
 	const size_t buf_size = 1024;
 #endif
+
+	const size_t n_of_channels = 16;
+
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
 			return false;
@@ -218,10 +251,13 @@ bool init_sound() {
 		}
 
 		mix_ok = true;
-		Mix_AllocateChannels(16);
+		Mix_AllocateChannels(n_of_channels);
+		channel_chunks.resize(n_of_channels, 0);
 		set_sound_volume(preferences::sound_volume());
 		set_music_volume(preferences::music_volume());
 		set_bell_volume(preferences::bell_volume());
+
+		Mix_ChannelFinished(channel_finished_hook);
 
 		LOG_AUDIO << "Audio initialized.\n";
 
@@ -280,14 +316,8 @@ void stop_sound() {
 }
 
 void stop_bell() {
-	if(mix_ok) {
+	if(mix_ok)
 		Mix_HaltChannel(15);
-
-		std::map<std::string,Mix_Chunk*>::iterator i;
-		for(i = bell_cache.begin(); i != bell_cache.end(); ++i)
-			Mix_FreeChunk(i->second);
-		bell_cache.clear();
-	}
 }
 
 void think_about_music(void)
@@ -441,16 +471,45 @@ void write_music_play_list(config& snapshot)
 	}
 }
 
-void play_sound(const std::string& files)
+void play_sound(const std::string& files, int channel)
 {
-
 	if(files.empty()) return;
+
 	if(preferences::sound_on() && mix_ok) {
 		std::string file = pick_one(files);
+
+		// remove a random chunk from cache if it's full
+		if(sound_cache.size() == max_cached_chunks) {
+			std::map<std::string,Mix_Chunk*>::iterator i;
+
+			while(1) {
+				// pick a random chunk that we have cached
+				unsigned chunk = rand() % sound_cache.size();
+				i = sound_cache.begin();
+
+				while(chunk) {
+					++i;
+					--chunk;
+				}
+
+				Mix_Chunk *c = (*i).second;
+
+				// if it's being played - try again
+				if(find(channel_chunks.begin(), channel_chunks.end(), c) != channel_chunks.end())
+					continue;
+
+				Mix_FreeChunk(c);
+				sound_cache.erase(i);
+				break;
+			}
+		}
+
 		// the insertion will fail if there is already an element in the cache
 		std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
 			it = sound_cache.insert(std::make_pair(file, (Mix_Chunk *)0));
+
 		Mix_Chunk *&cache = it.first->second;
+
 		if (it.second) {
 			std::string const &filename = get_binary_file_location("sounds", file);
 			if (!filename.empty()) {
@@ -475,10 +534,13 @@ void play_sound(const std::string& files)
 		//play on the first available channel
 		//FIXME: in worst case it can play on bell channel(15), nothing happend
 		// only sound can have another volume than others sounds
-		const int res = Mix_PlayChannel(-1, cache, 0);
+		const int res = Mix_PlayChannel(channel, cache, 0);
+		channel_chunks[res] = cache;
 		if(res < 0) {
+			channel_chunks[res] = 0;
 			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		}
+
 	}
 }
 
@@ -487,40 +549,8 @@ void play_bell(const std::string& files)
 {
 	if(files.empty()) return;
 
-	if(preferences::turn_bell() && mix_ok) {
-		std::string file = pick_one(files);
-		// the insertion will fail if there is already an element in the cache
-		std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
-			it = bell_cache.insert(std::make_pair(file, (Mix_Chunk *)0));
-		Mix_Chunk *&cache = it.first->second;
-		if (it.second) {
-			std::string const &filename = get_binary_file_location("sounds", file);
-			if (!filename.empty()) {
-	#ifdef USE_ZIPIOS
-				std::string const &s = read_file(filename);
-				if (!s.empty()) {
-					SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
-					cache = Mix_LoadWAV_RW(ops,0);
-				}
-	#else
-				cache = Mix_LoadWAV(filename.c_str());
-	#endif
-			}
-
-			if (cache == NULL) {
-				ERR_AUDIO << "Could not load sound file '" << filename << "': "
-				<< Mix_GetError() << "\n";
-				return;
-			}
-		}
-
-		//play on the last (bell) channel
-		const int res = Mix_PlayChannel(15, cache, 0);
-		if(res < 0) {
-			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
-		}
-
-	}
+	if(preferences::turn_bell() && mix_ok)
+		play_sound(files, 15);
 }
 
 void set_music_volume(int vol)
@@ -537,6 +567,7 @@ void set_sound_volume(int vol)
 	if(mix_ok && vol >= 0) {
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
+
 		// Bell has separate channel which we can't set up from this
 		for (int i = 0; i < 15; i++){
 			Mix_Volume(i, vol);
@@ -553,5 +584,4 @@ void set_bell_volume(int vol)
 	}
 }
 
-
-}
+} // end of sound namespace
