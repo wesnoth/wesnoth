@@ -229,7 +229,6 @@ menu& dialog::get_menu() const
 	if(menu_ == NULL)
 	{
 		if(empty_menu == NULL) {
-			//FIXME create a small mem leak
 			empty_menu = new gui::menu(disp_.video(),empty_string_vector,false,-1,-1,NULL,&menu::simple_style);
 			empty_menu->leave();
 		}
