@@ -493,7 +493,7 @@ void play_sound(const std::string& files, int channel)
 				Mix_Chunk *c = (*i).second;
 
 				// if it's being played - try again
-				if(find(channel_chunks.begin(), channel_chunks.end(), c) != channel_chunks.end())
+				if(std::find(channel_chunks.begin(), channel_chunks.end(), c) != channel_chunks.end())
 					continue;
 
 				Mix_FreeChunk(c);
