@@ -239,15 +239,15 @@ void playmp_controller::play_network_turn(){
 		}
 
 		if(have_data) {
+			if (skip_replay_ && replay_last_turn_ <= status_.turn()){
+					skip_replay_ = false;
+			}
 			try{
 				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog_,skip_replay_);
 				if(result == turn_info::PROCESS_RESTART_TURN) {
 					player_type_changed_ = true;
 					return;
 				} else if(result == turn_info::PROCESS_END_TURN) {
-					if (skip_replay_ && replay_last_turn_ <= status_.turn()){
-						skip_replay_ = false;
-					}
 					break;
 				}
 			}
