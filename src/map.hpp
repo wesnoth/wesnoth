@@ -122,8 +122,8 @@ public:
 	//data should be a series of lines, with each character representing
 	//one hex on the map. Starting locations are represented by numbers,
 	//and will be of type keep.
-	gamemap(const config& terrain_cfg, const std::vector<terrain_translation::TERRAIN_NUMBER>& data); //throw(incorrect_format_exception)
-	void read(const std::vector<terrain_translation::TERRAIN_NUMBER>& data);
+	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
+	void read(const std::string& data);
 
 	std::string write() const;
 

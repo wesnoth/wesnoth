@@ -310,7 +310,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		} else {
 			games_.back().map_info = _("Unknown era");
 		}
-		games_.back().map_data = terrain_translation().get_map((**game)["map_data"]);
+		games_.back().map_data = (**game)["map_data"];
 		if(games_.back().map_data.empty()) {
 			games_.back().map_data = read_map((**game)["map"]);
 		}

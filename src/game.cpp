@@ -254,10 +254,7 @@ display& game_controller::disp()
 
 		static unit_map dummy_umap;
 		static config dummy_cfg;
-		static std::vector<terrain_translation::TERRAIN_NUMBER> dummy_terrain = 
-			std::vector<terrain_translation::TERRAIN_NUMBER>();
-
-		static gamemap dummy_map(dummy_cfg, dummy_terrain);
+		static gamemap dummy_map(dummy_cfg, "1");
 		static gamestatus dummy_status(dummy_cfg, 0);
 		static std::vector<team> dummy_teams;
 		disp_.assign(new display(dummy_umap, video_, dummy_map, dummy_status,

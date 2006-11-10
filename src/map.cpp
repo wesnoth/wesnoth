@@ -294,9 +294,9 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 	}
 }
 
-gamemap::gamemap(const config& cfg, const std::vector<terrain_translation::TERRAIN_NUMBER>& data) : tiles_(1)
+gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 {
-	LOG_G << "loading map: '" << terrain_translation().set_map(data) << "'\n";
+	LOG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain"); 
 	create_terrain_maps(terrains,terrainList_,letterToTerrain_,terrain_);
 
@@ -304,20 +304,21 @@ gamemap::gamemap(const config& cfg, const std::vector<terrain_translation::TERRA
 }
 
 //FIXME MdW the entire routine should be cleaned up
-void gamemap::read(const std::vector<terrain_translation::TERRAIN_NUMBER>& data)
+void gamemap::read(const std::string& data)
 {
 	tiles_.clear();
 	villages_.clear();
 	std::fill(startingPositions_,startingPositions_+sizeof(startingPositions_)/sizeof(*startingPositions_),location());
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& map_data = terrain_translation().get_map(data);
 
 	//ignore leading newlines
-	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = data.begin();
-	while(i != data.end() && *i == terrain_translation::EOL) {
+	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = map_data.begin();
+	while(i != map_data.end() && *i == terrain_translation::EOL) {
 		++i;
 	}
 
 	size_t x = 0, y = 0;
-	for(; i != data.end(); ++i) {
+	for(; i != map_data.end(); ++i) {
 		terrain_translation::TERRAIN_NUMBER c = *i;
 		if(c == terrain_translation::EOL) {
 			x = 0;
@@ -333,15 +334,6 @@ void gamemap::read(const std::vector<terrain_translation::TERRAIN_NUMBER>& data)
 					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 				}
 			} 
-/*			if(letterToTerrain_.count(c) == 0) {
-				if(isdigit(*i)) {
-					startingPositions_[c - '0'] = location(x,y);
-					c = terrain_translation::KEEP;
-				} else {
-					ERR_CF << "Illegal character in map: (" << int(c) << ") '" << c << "'\n";
-					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
-				}
-			} */
 
 			if(is_village(c)) {
 				villages_.push_back(location(int(x),int(y)));

@@ -1170,7 +1170,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
 
 		gamemap mask(*game_map);
-		std::vector<terrain_translation::TERRAIN_NUMBER> map_data = terrain_translation().get_map(cfg["mask"]);
+		std::string map_data = cfg["mask"];
  
 		try {
 			mask.read(map_data);

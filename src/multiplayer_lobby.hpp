@@ -29,7 +29,8 @@ class gamebrowser : public gui::menu {
 public:
 	struct game_item {
 		surface mini_map;
-		std::vector<terrain_translation::TERRAIN_NUMBER> map_data;
+//		std::vector<terrain_translation::TERRAIN_NUMBER> map_data;
+		std::string map_data;
 		std::string name;
 		std::string map_info;
 		std::string gold;
