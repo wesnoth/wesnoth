@@ -133,6 +133,7 @@ void add_license(config &data)
 
 	// Don't add if it already exists.
 	if (dir->find_child("file", "name", "COPYING.txt")) return;
+	if (dir->find_child("file", "name", "COPYING")) return;
 
 	// Copy over COPYING.txt
 	std::string contents = read_file("data/COPYING.txt");
