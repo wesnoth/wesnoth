@@ -1,9 +1,36 @@
 # vi: syntax=python
 import glob
 
-sources = glob.glob("src/*.cpp") + glob.glob("src/widgets/*.cpp") +\
-     glob.glob("src/serialization/*.cpp") +  glob.glob("src/sdl_ttf/*.c")
+sources = glob.glob("src/*.cpp") +\
+          glob.glob("src/widgets/*.cpp") +\
+          glob.glob("src/serialization/*.cpp") +\
+          glob.glob("src/sdl_ttf/*.c")
 sources.remove("src/loadscreen_empty.cpp")
+
+def parse_automake(filename, variable):
+    """Crude helper function to parse an automake file."""
+    sources = []
+    am = file(filename).read()
+    x = am.find(variable)
+    while 1:
+        done = False
+        while am[x] != '\\':
+            if am[x] == '\n':
+                done = True
+                break
+            x += 1
+        if done: break
+        x += 1
+        while am[x].isspace(): x += 1
+        name = ""
+        while not am[x].isspace():
+            name += am[x]
+            x += 1
+        sources.append("src/" + name)
+    return sources
+
+# read editor sources from automake file
+editor_sources = parse_automake("src/Makefile.am", "wesnoth_editor_SOURCES")
 
 env = Environment()
 
@@ -15,8 +42,7 @@ env["CXX"] = "i586-mingw32msvc-g++"
 # This is where I put the dependency headers
 env.Append(CPPPATH = ["../win-deps/include"])
 
-# This is where I put the python headers. Also linux headers work, so you
-# may put here "/usr/include/python24" for a typical linux distribution.
+# This is where I put the python headers.
 env.Append(CPPPATH = ["../win-deps/include/python24"])
 
 # This is where I put the dependency libs
@@ -27,15 +53,16 @@ env.Append(CCFLAGS = ["-O2", "-mthreads", "-DHAVE_PYTHON"])
 env.Append(LINKFLAGS = ["-s", "-mwindows", "-lmingwthrd"])
 env.Append(CPPPATH = ["src", "src/widgets"])
 env.Append(LIBS = ["mingw32", "SDLmain", "SDL", "SDL_net", "SDL_mixer", "SDL_image",
-     "intl", "wsock32", "freetype", "python24"])
+                   "intl", "wsock32", "freetype", "python24"])
 
 # Scons stuff
-env.BuildDir("../build", "src")
+env.BuildDir("../build-1.2", "src")
 env.SConsignFile("sconsign")
 
 # Windows stuff
 env["PROGSUFFIX"] = ".exe"
 
 # Compile it!
-env.Program("wesnoth", ["../build/" + x[4:] for x in sources])
+env.Program("wesnoth", ["../build-1.2/" + x[4:] for x in sources])
+env.Program("wesnoth_editor", ["../build-1.2/" + x[4:] for x in editor_sources])
 
