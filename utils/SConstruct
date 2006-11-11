@@ -30,7 +30,10 @@ def parse_automake(filename, variable):
     return sources
 
 # read editor sources from automake file
-editor_sources = parse_automake("src/Makefile.am", "wesnoth_editor_SOURCES")
+editor_sources = parse_automake("src/Makefile.am", "libwesnoth_core_a_SOURCES")
+editor_sources += parse_automake("src/Makefile.am", "wesnoth_editor_SOURCES")
+# there shouldn't be doubles, but well, let's remove them :)
+editor_sources = list(set(editor_sources))
 
 env = Environment()
 
@@ -49,7 +52,7 @@ env.Append(CPPPATH = ["../win-deps/include/python24"])
 env.Append(LIBPATH = ["../win-deps/lib"])
 
 # Compilation settings
-env.Append(CCFLAGS = ["-O2", "-mthreads", "-DHAVE_PYTHON"])
+env.Append(CCFLAGS = ["-mthreads", "-DHAVE_PYTHON"])
 env.Append(LINKFLAGS = ["-s", "-mwindows", "-lmingwthrd"])
 env.Append(CPPPATH = ["src", "src/widgets"])
 env.Append(LIBS = ["mingw32", "SDLmain", "SDL", "SDL_net", "SDL_mixer", "SDL_image",
