@@ -30,7 +30,10 @@ def parse_automake(filename, variable):
     return sources
 
 # read editor sources from automake file
-editor_sources = parse_automake("src/Makefile.am", "wesnoth_editor_SOURCES")
+editor_sources = parse_automake("src/Makefile.am", "libwesnoth_core_a_SOURCES")
+editor_sources += parse_automake("src/Makefile.am", "wesnoth_editor_SOURCES")
+# there shouldn't be doubles, but well, let's remove them :)
+editor_sources = list(set(editor_sources))
 
 env = Environment()
 
