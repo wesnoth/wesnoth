@@ -124,6 +124,24 @@ std::string check_python_scripts(config &data, std::string filename)
 	return "";
 }
 
+// Add a file COPYING.txt with the GPL to an uploaded campaign.
+void add_license(config &data)
+{
+	config *dir = data.find_child("dir", "name", data["campaign_name"]);
+	// No top-level directory? Hm..
+	if (!dir) return;
+
+	// Don't add if it already exists.
+	if (dir->find_child("file", "name", "COPYING.txt")) return;
+	if (dir->find_child("file", "name", "COPYING")) return;
+
+	// Copy over COPYING.txt
+	std::string contents = read_file("data/COPYING.txt");
+	config &copying = dir->add_child("file");
+	copying["name"] = "COPYING.txt";
+	copying["contents"] = contents;
+}
+
 void campaign_server::run()
 {
 	for(int increment = 0; ; ++increment) {
@@ -205,6 +223,7 @@ void campaign_server::run()
 						config cfg;
 						scoped_istream stream = istream_file((*campaign)["filename"]);
 						read_compressed(cfg, *stream);
+						add_license(cfg);
 						network::queue_data(cfg,sock);
 
 						const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
