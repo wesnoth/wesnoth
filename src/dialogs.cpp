@@ -75,7 +75,7 @@ void advance_unit(const game_data& info,
 #ifdef LOW_MEM
 		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + type.language_name());
 #else
-		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + "~TC(" + lexical_cast_default<std::string>(u->second.side()) + "," + type.team_color() + ")" + COLUMN_SEPARATOR + type.language_name());
+		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->second.image_mods() + COLUMN_SEPARATOR + type.language_name());
 #endif
 		preferences::encountered_units().insert(*op);
 	}
@@ -92,7 +92,7 @@ void advance_unit(const game_data& info,
 #ifdef LOW_MEM
 		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + (**mod)["description"].str());
 #else
-		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + "~TC(" + lexical_cast_default<std::string>(u->second.side()) + "," + type.team_color() + ")" + COLUMN_SEPARATOR + (**mod)["description"].str());
+		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->second.image_mods() + COLUMN_SEPARATOR + (**mod)["description"].str());
 #endif
 		}
 	}
@@ -339,7 +339,7 @@ void save_preview_pane::draw_contents()
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->second.image(),image::UNSCALED));
 #else
-		const surface image(image::get_image(leader->second.image() + "~TC(1," + leader->second.flag_rgb() + ")",image::UNSCALED));
+		const surface image(image::get_image(leader->second.image() + "~TC(" + leader->second.flag_rgb() + ">1)",image::UNSCALED));
 #endif
 
 		if(image != NULL) {

@@ -1579,11 +1579,13 @@ const surface unit::still_image() const
 {
 	image::locator  loc;
 
+
 #ifdef LOW_MEM
 	loc = image::locator(absolute_image());
 #else
-	if(flag_rgb().size()){
-		loc = image::locator(absolute_image(),team_rgb_range(),flag_rgb());
+	std::string mods=image_mods();
+	if(mods.size()){
+		loc = image::locator(absolute_image(),mods);
 	} else {
 		loc = image::locator(absolute_image());
 	}
@@ -1897,18 +1899,25 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	if(loc.is_void()) {
 		loc = absolute_image();
 	}
+#ifndef LOW_MEM
+	std::string mod=image_mods();	
+	if(mod.size()){
+		loc = image::locator(loc,mod);
+	}
+#endif
 
 	surface image(image::get_image(loc,
 				utils::string_bool(get_state("stoned"))?image::GREYED : image::UNSCALED,image::ADJUST_COLOUR,
+#ifndef LOW_MEM
+				true));
+#else
 				state_ == STATE_STANDING?true:false));
+#endif
+
 	if(image == NULL) {
 		image = still_image();
 	}
-#ifndef LOW_MEM
-	if(flag_rgb().size()){
-		image = recolor_image(image,team_rgb_range(),flag_rgb());
-	}
-#endif
+
 	if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
 		image.assign(image::reverse_image(image));
 	}
@@ -1946,10 +1955,13 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		if(ellipse.empty()){
 			ellipse="misc/ellipse";
 		}
-		snprintf(buf,sizeof(buf),"%s-%stop.png",ellipse.c_str(),selected);
-		ellipse_back.assign(image::get_image(image::locator(buf,team_rgb_range(),temp_rgb)));
-		snprintf(buf,sizeof(buf),"%s-%sbottom.png",ellipse.c_str(),selected);
-		ellipse_front.assign(image::get_image(image::locator(buf,team_rgb_range(),temp_rgb)));
+		
+		std::string tc=team::get_side_colour_index(side_);
+
+		snprintf(buf,sizeof(buf),"%s-%stop.png~TC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
+		ellipse_back.assign(image::get_image(image::locator(buf)));
+		snprintf(buf,sizeof(buf),"%s-%sbottom.png~TC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
+		ellipse_front.assign(image::get_image(image::locator(buf)));
 	}
 
 	disp.draw_unit(x, y -height_adjust, image, false, highlight_ratio,
@@ -3116,23 +3128,6 @@ bool unit::invisible(const gamemap::location& loc,
 	return false;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int team_units(const unit_map& units, unsigned int side)
 {
 	int res = 0;
@@ -3252,4 +3247,13 @@ temporary_unit_placer::~temporary_unit_placer()
 	if(temp_) {
 		m_.add(temp_);
 	}
+}
+
+std::string unit::image_mods() const{
+	std::stringstream modifier;
+	if(flag_rgb_.size()){
+		modifier << "~TC("<< flag_rgb_ << ">" << team::get_side_colour_index(side()) << ")";
+	}
+	
+	return modifier.str();
 }

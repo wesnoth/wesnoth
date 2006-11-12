@@ -20,7 +20,7 @@
 
 //convert comma separated string into rgb values
 std::vector<Uint32> string2rgb(std::string s);
-
+  
 class color_range
 {
 public:
@@ -51,5 +51,6 @@ public:
 private:
   Uint32 mid_ , max_ , min_ , rep_;
 };
+std::vector<Uint32> palette(color_range cr); //return color palette from color range
 
 #endif

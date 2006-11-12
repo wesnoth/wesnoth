@@ -120,19 +120,7 @@ void locator::init_index()
 		index_ = i->second;
 	}
 }
-void locator::get_tc_info(const std::string& field)
-{
-	// field should be of the format "team,team_color_id"
-	size_t comma = field.find(',');
-	if(comma == std::string::npos) {
-		return;
-	}
-	int team_n = lexical_cast_default<int>(field.substr(0,comma));
-	std::string color_id = field.substr(comma+1);
-	val_.new_color = team::get_side_color_range(team_n);
-	val_.swap_colors = game_config::tc_info(color_id);
-	val_.type_ = SUB_FILE;
-}
+
 void locator::parse_arguments()
 {
 	std::string& fn = val_.filename_;
@@ -140,23 +128,11 @@ void locator::parse_arguments()
 		return;
 	}
 	size_t markup_field = fn.find('~');
-	std::string left_par="(";
-	std::string right_par=")";
+ 
 	if(markup_field != std::string::npos) {
-		std::string markup_string = fn.substr(markup_field+1, fn.size() - markup_field );
+		val_.type_ = SUB_FILE;
+		val_.modifications_ = fn.substr(markup_field, fn.size() - markup_field);
 		fn = fn.substr(0,markup_field);
-		std::vector<std::string> farg = utils::paranthetical_split(markup_string,left_par,right_par);
-		std::vector<std::string>::const_iterator i = farg.begin();
-		while(i!=farg.end()){		
-			std::string function=*i++;
-			if(i==farg.end()){
-				return;
-			}	
-			std::string field = *i++;
-			if(function == "TC") {
-				get_tc_info(field);
-			}
-		}
 	}
 }
 
@@ -165,9 +141,15 @@ locator::locator() :
 {
 }
 
-locator::locator(const locator &a):
-	index_(a.index_), val_(a.val_)
+locator::locator(const locator &a, const std::string& mods):
+	 val_(a.val_)
 {
+	if(mods.size()){
+			val_.modifications_ += mods;
+			val_.type_=SUB_FILE;
+			init_index();
+	}
+	else index_=a.index_;
 }
 
 locator::locator(const char *filename) :
@@ -184,20 +166,20 @@ locator::locator(const std::string &filename) :
 	init_index();
 }
 
-locator::locator(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
-	val_(filename, new_rgb, swap_rgb)
+locator::locator(const char *filename, const std::string& modifications) :
+	val_(filename, modifications)
 {
 	init_index();
 }
 
-locator::locator(const std::string &filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
-	val_(filename, new_rgb, swap_rgb)
+locator::locator(const std::string &filename, const std::string& modifications) :
+	val_(filename, modifications)
 {
 	init_index();
 }
 
-locator::locator(const std::string &filename, const gamemap::location &loc, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
-	val_(filename, loc, new_rgb, swap_rgb)
+locator::locator(const std::string &filename, const gamemap::location &loc, const std::string& modifications) :
+	val_(filename, loc, modifications)
 {
 	init_index();
 }
@@ -212,7 +194,7 @@ locator& locator::operator=(const locator &a)
 
 locator::value::value(const locator::value& a) :
   type_(a.type_), filename_(a.filename_), loc_(a.loc_),
-  new_color(a.new_color), swap_colors(a.swap_colors)
+  modifications_(a.modifications_)
 {
 }
 
@@ -226,8 +208,8 @@ locator::value::value(const char *filename) :
 }
 
 
-locator::value::value(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
-  type_(SUB_FILE), filename_(filename), new_color(new_rgb), swap_colors(swap_rgb)
+locator::value::value(const char *filename, const std::string& modifications) :
+  type_(SUB_FILE), filename_(filename), modifications_(modifications)
 {
 }
 
@@ -236,13 +218,13 @@ locator::value::value(const std::string& filename) :
 {
 }
 
-locator::value::value(const std::string& filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
-  type_(SUB_FILE), filename_(filename), new_color(new_rgb), swap_colors(swap_rgb)
+locator::value::value(const std::string& filename, const std::string& modifications) :
+  type_(SUB_FILE), filename_(filename), modifications_(modifications)
 {
 }
 
-locator::value::value(const std::string& filename, const gamemap::location& loc, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
-  type_(SUB_FILE), filename_(filename), loc_(loc), new_color(new_rgb), swap_colors(swap_rgb)
+locator::value::value(const std::string& filename, const gamemap::location& loc, const std::string& modifications) :
+  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications)
 {
 }
 
@@ -253,7 +235,7 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-	  return filename_ == a.filename_ && loc_ == a.loc_ && new_color == a.new_color; //note not checking swap_colors purposely
+	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_; 
 	} else {
 		return false;
 	}
@@ -270,7 +252,7 @@ bool locator::value::operator<(const value& a) const
 			return filename_ < a.filename_;
 		if(loc_ != a.loc_)
 		        return loc_ < a.loc_;
-		return(new_color < a.new_color);
+		return(modifications_ < a.modifications_);
 	} else {
 		return false;
 	}
@@ -334,10 +316,38 @@ surface locator::load_image_sub_file() const
 	  surf=mask_surface(tmp, mask);
 	}
 
-	if(val_.swap_colors.size()){
-	  surf=recolor_image(surf,get_new_color(),get_swap_colors());
+	if(val_.modifications_.size()){
+		std::map<Uint32, Uint32> recolor_map;
+		std::vector<std::string> modlist = utils::split(val_.modifications_,'~');
+		for(std::vector<std::string>::const_iterator i=modlist.begin();
+			i!= modlist.end();i++){
+			std::vector<std::string> tmpmod = utils::paranthetical_split(*i);
+			std::vector<std::string>::const_iterator j=tmpmod.begin();
+			while(j!= tmpmod.end()){
+				std::string function=*j++;
+				if(j==tmpmod.end()){
+					if(function.size()){
+						ERR_DP << "error parsing image modifications: " 
+							<< val_.modifications_<< "\n";
+					}
+					break;
+				}
+				std::string field = *j++;
+				if("TC" == function){
+					std::vector<std::string> recolor=utils::split(field,'>');
+					if(recolor.size()>1){
+						color_range new_color = game_config::team_rgb_range.find(recolor[1])->second;
+						std::vector<Uint32> old_color = game_config::tc_info(recolor[0]);
+						std::map<Uint32, Uint32> tmp_map = recolor_range(new_color,old_color);
+						for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){	
+							recolor_map[tmp->first] = tmp->second;
+						}	 
+					}
+				}									
+			} 			
+		}
+		surf = recolor_image(surf,recolor_map);
 	}
-
 	return surf;
 }
 
@@ -715,7 +725,7 @@ locator get_alternative(const image::locator &i_locator, const std::string &alt,
 		res = locator(alternative);
 		break;
 	case locator::SUB_FILE:
-		res = locator(alternative, i_locator.get_loc(), i_locator.get_new_color(), i_locator.get_swap_colors());
+		res = locator(alternative, i_locator.get_loc(), i_locator.get_modifications());
 		break;
 	default:
 		wassert(false);

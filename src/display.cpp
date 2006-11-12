@@ -103,13 +103,13 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	flags_.reserve(teams_.size());
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		std::string flag;
-		color_range new_rgb;
-		std::vector<Uint32> old_rgb;
+		std::string new_rgb;
+		std::string old_rgb;
 
 		if(teams_[i].flag().empty()) {
 			flag = game_config::flag_image;
 			old_rgb = game_config::flag_rgb;
-			new_rgb = team::get_side_color_range(i+1);
+			new_rgb = team::get_side_colour_index(i+1);
 		} else {
 			flag = teams_[i].flag();
 		}
@@ -133,8 +133,9 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 				str = *itor;
 				time = 100;
 			}
-
-			image::locator flag_image(str, new_rgb, old_rgb);
+			std::stringstream temp;
+			temp << str << "~TC(" << old_rgb << ">"<< new_rgb << ")";
+			image::locator flag_image(temp.str());
 			temp_anim.add_frame(time, flag_image);
 		}
 		flags_.push_back(temp_anim);
@@ -1043,7 +1044,7 @@ void display::draw_report(reports::TYPE report_num)
 		reports::report report = reports::generate_report(report_num,map_,
 				units_, teams_,
 		      teams_[viewing_team()],
-				currentTeam_+1,activeTeam_+1,
+				size_t(currentTeam_+1),size_t(activeTeam_+1),
 				selectedHex_,mouseoverHex_,status_,observers_);
 
 		SDL_Rect& rect = reportRects_[report_num];

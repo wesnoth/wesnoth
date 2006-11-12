@@ -1090,14 +1090,14 @@ public:
 #ifdef LOW_MEM
 		ss << "<img>src='" << male_type.image() << "'</img> ";
 #else
-		ss << "<img>src='" << male_type.image() << "~TC(1," << male_type.flag_rgb() << ")" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~TC(" << male_type.flag_rgb() << ">1)" << "'</img> ";
 #endif
 
 		if (&female_type != &male_type)
 #ifdef LOW_MEM
 			ss << "<img>src='" << female_type.image() << "'</img> ";
 #else
-			ss << "<img>src='" << female_type.image() << "~TC(1," << female_type.flag_rgb() << ")" << "'</img> ";
+			ss << "<img>src='" << female_type.image() << "~TC(" << female_type.flag_rgb() << ">1)" << "'</img> ";
 #endif
 
 

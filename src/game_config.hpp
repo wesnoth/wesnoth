@@ -46,14 +46,14 @@ namespace game_config
 	  terrain_mask_image, observer_image, download_campaign_image,
 	  checked_menu_image, unchecked_menu_image, level_image,ellipsis_image;
 
-  extern std::vector<Uint32> flag_rgb;
+  	extern std::string flag_rgb;
 
 	extern std::vector<std::string> foot_left_nw,foot_left_n,foot_right_nw,foot_right_n;
 
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_y, title_tip_width, title_tip_padding;
 
-        extern std::map<int, color_range> team_rgb_range;
-        extern std::map<int, std::string > team_rgb_name;
+     extern std::map<std::string, color_range> team_rgb_range;
+     extern std::map<std::string, std::string> team_rgb_name;
 	
 	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 	namespace sounds {

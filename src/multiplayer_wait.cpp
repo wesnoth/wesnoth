@@ -93,7 +93,7 @@ void wait::leader_preview_pane::draw_contents()
 #ifdef LOW_MEM
 			image = utypes.find(leader)->second.image();
 #else
-			image = utypes.find(leader)->second.image() + "~TC(1," + utypes.find(leader)->second.flag_rgb() + ")";
+			image = utypes.find(leader)->second.image() + "~TC(" + utypes.find(leader)->second.flag_rgb() + ">1)";
 #endif
 
 		}
@@ -400,8 +400,8 @@ void wait::generate_menu()
 
 #ifdef LOW_MEM
 			leader_image = utypes.find(leader_type)->second.image();
-#else
-			leader_image = utypes.find(leader_type)->second.image() + std::string("~TC(" + sd["side"] + ",") + std::string(utypes.find(leader_type)->second.flag_rgb() + ")");
+#else 
+			leader_image = utypes.find(leader_type)->second.image() + std::string("~TC(") + std::string(utypes.find(leader_type)->second.flag_rgb() + ">" + sd["side"] + ")");
 #endif
 
 		} else {

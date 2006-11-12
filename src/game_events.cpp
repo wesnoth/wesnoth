@@ -1436,9 +1436,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 #ifdef LOW_MEM
 					ss	<< image;
 #else
-					ss	<< image << "~TC("
-						<< speaker->second.side() << ","
-						<< speaker->second.team_color() << ")";
+					ss	<< image << speaker->second.image_mods();
 #endif
 
 					image = ss.str();

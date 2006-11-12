@@ -14,12 +14,15 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "log.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
 
 #include <cstdlib>
+#include <sstream>
+#define LOG_NG LOG_STREAM(info, engine)
 
 namespace game_config
 {
@@ -53,7 +56,7 @@ namespace game_config
 	std::string enemy_ball_image = "misc/ball-enemy.png";
 	std::string ally_ball_image = "misc/ball-ally.png";
 	std::string flag_image = "terrain/flag-1.png:150,terrain/flag-2.png:150";
-  std::vector<Uint32> flag_rgb;
+  	std::string flag_rgb;
 
 	std::string dot_image = "misc/dot.png";
 	std::string cross_image = "misc/cross.png";
@@ -70,8 +73,8 @@ namespace game_config
 	std::string level_image;
 	std::string ellipsis_image;
 
-        std::map<int, color_range > team_rgb_range;
-        std::map<int, std::string > team_rgb_name;
+     std::map<std::string, color_range > team_rgb_range;
+     std::map<std::string, std::string > team_rgb_name;
 	
 	std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 	
@@ -164,32 +167,51 @@ namespace game_config
 
 		const config::child_list& team_colors = v.get_children("color_range");
 		for(config::child_list::const_iterator teamC = team_colors.begin(); teamC != team_colors.end(); ++teamC) {
-		    if(!(**teamC)["id"].empty() && !(**teamC)["team_rgb"].empty()){
-		    int side = atoi((**teamC)["id"].c_str());
-		    std::vector<Uint32> temp = string2rgb((**teamC)["team_rgb"]);
-		    team_rgb_range[side] = color_range(temp);
-		    team_rgb_name[side] = (**teamC)["name"];
-		  }
+			if(!(**teamC)["id"].empty() && !(**teamC)["rgb"].empty()){
+		    		std::string id = (**teamC)["id"];
+		    		std::vector<Uint32> temp = string2rgb((**teamC)["rgb"]);
+		    		team_rgb_range[id] = color_range(temp);
+		    		team_rgb_name[id] = (**teamC)["name"];
+				//generate palette of same name;
+				std::vector<Uint32> tp = palette(team_rgb_range[id]);
+				if(tp.size()){
+					team_rgb_colors[id]=tp;
+					//if this is being used, output log of palette for artists use.
+					LOG_NG << "color palette creation:\n";					
+					std::stringstream str;
+					str << id <<" = ";
+					for(std::vector<Uint32>::const_iterator r=tp.begin();r!=tp.end();r++){
+						int red = ((*r) & 0x00FF0000)>>16;
+						int green = ((*r) & 0x0000FF00)>>8;		
+						int blue = ((*r) & 0x000000FF);
+						if(r!=tp.begin()) {
+							str<<",";
+						}
+						str << red << "," << green << "," << blue;
+					}
+					LOG_NG << str.str() <<"\n";
+				}
+			}
 		}
 		
 		const config* rgbv = v.child("color_palette");
 		if(rgbv) {
 			for(string_map::const_iterator rgb_it = rgbv->values.begin(); rgb_it != rgbv->values.end(); ++rgb_it) {
 				try {
-					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));
+//					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));  
+//should new colors overwrite old colors?
+					team_rgb_colors[rgb_it->first]=string2rgb(rgb_it->second);
 				} catch(bad_lexical_cast&) {
 					//throw config::error(_("Invalid team color: ") + rgb_it->second);
 				}
 			}
 		}
-		flag_rgb = tc_info(v["flag_rgb"]);
+		flag_rgb = v["flag_rgb"];
 		if( !flag_rgb.size()){
-		  //set green as old_flag_color
-		  for(int i=255;i>0;i--){
-		    flag_rgb.push_back((Uint32)(i<<8));
-		  }
+			flag_rgb="green";
 		}
 	}
+	
 	const std::vector<Uint32>& tc_info(const std::string& name)
 	{
 		std::map<std::string, std::vector<Uint32> >::const_iterator i = team_rgb_colors.find(name);

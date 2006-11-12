@@ -76,7 +76,7 @@ void report::add_image(const std::string& image, const std::string& tooltip) {
 
 report generate_report(TYPE type, const gamemap& map, unit_map& units,
                        const std::vector<team>& teams, const team& current_team,
-                       int current_side, int playing_side,
+                       unsigned int current_side, unsigned int playing_side,
                        const gamemap::location& loc, const gamemap::location& mouseover,
                        const gamestatus& status, const std::set<std::string>& observers)
 {
@@ -310,10 +310,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UNIT_IMAGE:
 	{
-		const std::vector<Uint32>& old_rgb = u->second.team_rgb_range();
-		color_range new_rgb = team::get_side_color_range(u->second.side());
-
-	    return report("",image::locator(u->second.absolute_image(), new_rgb, old_rgb),"");
+//		const std::vector<Uint32>& old_rgb = u->second.team_rgb_range();
+//		color_range new_rgb = team::get_side_color_range(u->second.side());	
+	    return report("",image::locator(u->second.absolute_image(),u->second.image_mods()),"");
 	}
 	case UNIT_PROFILE:
 		return report("",u->second.profile(),"");
@@ -379,7 +378,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const std::string& underlying = map.underlying_union_terrain(terrain);
 
 		if(map.is_village(mouseover)) {
-			const int owner = village_owner(mouseover,teams)+1;
+			const unsigned int owner = village_owner(mouseover,teams)+1;
 			if(owner == 0 || current_team.fogged(mouseover.x,mouseover.y)) {
 				str << _("Village");
 			} else if(owner == current_side) {
@@ -434,22 +433,24 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case SIDE_PLAYING: {
 
 		std::string flag;
-		color_range new_rgb;
-		std::vector<Uint32> old_rgb;
+		std::string new_rgb;
+		std::string old_rgb;
+		std::string mods;
 
 		if(current_team.flag().empty()) {
 			flag = game_config::flag_image;
 			old_rgb = game_config::flag_rgb;
-			new_rgb = team::get_side_color_range(playing_side);
+			new_rgb = team::get_side_colour_index(playing_side);
+			mods = "~TC(" + old_rgb + ">" + new_rgb + ")";
 		} else {
 			flag = current_team.flag();
 		}
 
-
 		// remove animation stuff we don't care about
 		const std::vector<std::string> items = utils::split(flag);
 		const std::vector<std::string> sub_items = utils::split(items[0], ':');
-		image::locator flag_image(sub_items[0], new_rgb, old_rgb);
+
+		image::locator flag_image(sub_items[0],mods);
 		return report("",flag_image,teams[playing_side-1].current_player());
 	}
 
