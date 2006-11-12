@@ -33,6 +33,7 @@
 #include "intro.hpp"
 #include "language.hpp"
 #include "loadscreen.hpp"
+#include "widgets/menu.hpp"
 #include "multiplayer.hpp"
 #include "network.hpp"
 #include "playcampaign.hpp"
@@ -1912,7 +1913,7 @@ int main(int argc, char** argv)
 		std::cerr << "Unhandled exception. Exiting\n";
 	}
 #endif
-
+	delete gui::empty_menu;
 	filesystem_close();
 
 	return 0;
