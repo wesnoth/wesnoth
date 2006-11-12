@@ -145,8 +145,9 @@ endif
 
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
 wesnoth-deps.dot:
-	PERL5LIB=$(top_srcdir) graph-includes -verbose --class wesnoth --group 1-1 \
+	PERL5LIB=$(top_srcdir) graph-includes -verbose --class wesnoth --consolidate 1-1 \
 	  -sysI /usr/include/c++/4.0 -sysI /usr/include -sysI /usr/include/SDL \
-	  --prefixstrip $(top_srcdir)/src/ -I $(top_srcdir)/src  $(top_srcdir)/src > $@
+	  --prefixstrip $(top_srcdir)/src/ -I $(top_srcdir)/src  $(top_srcdir)/src > $@ || \
+		( rm $@; false )
 %.ps: %.dot
 	dot -Tps $< > $@
