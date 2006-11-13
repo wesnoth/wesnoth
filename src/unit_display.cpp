@@ -163,6 +163,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	}
 	disp.remove_temporary_unit();
 	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
+	u.set_standing(disp,path[path.size()-1]);
 
 	//make sure the entire path is cleaned properly
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
