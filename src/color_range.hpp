@@ -14,19 +14,20 @@
 #define COLOR_RANGE_H_INCLUDED
 
 #include "global.hpp"
-
+#include <map>
 #include <vector>
+
 #include "SDL_types.h"
 
 //convert comma separated string into rgb values
 std::vector<Uint32> string2rgb(std::string s);
-  
+
 class color_range
 {
 public:
   color_range(Uint32 mid , Uint32 max , Uint32 min , Uint32 rep):mid_(mid),max_(max),min_(min),rep_(rep){};
   color_range(const std::vector<Uint32>& v)
-  { 
+  {
     mid_ = v.size() ? v[0] : 0x00808080;
     max_ = v.size() > 1 ? v[1] : 0x00FFFFFF;
     min_ = v.size() > 2 ? v[2] : 0x00000000;
@@ -51,6 +52,7 @@ public:
 private:
   Uint32 mid_ , max_ , min_ , rep_;
 };
-std::vector<Uint32> palette(color_range cr); //return color palette from color range
 
+std::vector<Uint32> palette(color_range cr); //return color palette from color range
+std::map<Uint32, Uint32> recolor_range(const color_range& new_rgb, const std::vector<Uint32>& old_rgb);
 #endif
