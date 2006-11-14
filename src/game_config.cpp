@@ -165,6 +165,15 @@ namespace game_config
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];
 
+		add_color_info(v);
+		
+		flag_rgb = v["flag_rgb"];
+		if( !flag_rgb.size()){
+			flag_rgb="green";
+		}
+	}
+	
+	const void add_color_info(const config& v){
 		const config::child_list& team_colors = v.get_children("color_range");
 		for(config::child_list::const_iterator teamC = team_colors.begin(); teamC != team_colors.end(); ++teamC) {
 			if(!(**teamC)["id"].empty() && !(**teamC)["rgb"].empty()){
@@ -192,11 +201,11 @@ namespace game_config
 					LOG_NG << str.str() <<"\n";
 				}
 			}
-		}
-		
-		const config* rgbv = v.child("color_palette");
-		if(rgbv) {
-			for(string_map::const_iterator rgb_it = rgbv->values.begin(); rgb_it != rgbv->values.end(); ++rgb_it) {
+		}		
+
+		const config::child_list& colors = v.get_children("color_palette");
+		for(config::child_list::const_iterator cp = colors.begin(); cp != colors.end(); ++cp) {
+			for(string_map::const_iterator rgb_it = (*cp)->values.begin(); rgb_it != (*cp)->values.end(); ++rgb_it) {
 				try {
 //					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));  
 //should new colors overwrite old colors?
@@ -205,10 +214,6 @@ namespace game_config
 					//throw config::error(_("Invalid team color: ") + rgb_it->second);
 				}
 			}
-		}
-		flag_rgb = v["flag_rgb"];
-		if( !flag_rgb.size()){
-			flag_rgb="green";
 		}
 	}
 	

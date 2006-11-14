@@ -42,6 +42,8 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	skip_replay_ = skip_replay;
 	browse_ = false;
 
+	game_config::add_color_info(level);
+
 	init(video);
 }
 

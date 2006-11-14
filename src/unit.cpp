@@ -97,6 +97,7 @@ unit::unit(const unit& o):
 		level_(o.level_),
 		alignment_(o.alignment_),
 		flag_rgb_(o.flag_rgb_),
+		image_mods_(o.image_mods_),
 
 		unrenamable_(o.unrenamable_),
 		side_(o.side_),
@@ -190,6 +191,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	if(race_->not_living()) {
 		set_state("not_living","yes");
 	}
+	game_config::add_color_info(cfg);
 }
 
 unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
@@ -2672,6 +2674,20 @@ void unit::add_modification(const std::string& type, const config& mod,
 			if (ap) {
 				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
 			}
+		}else if (apply_to == "image_mod") {
+			LOG_UT << "applying image_mod \n";
+			std::string mod = (**i.first)["replace"];			
+			if (!mod.empty()){
+				image_mods_ = mod;
+			}
+			LOG_UT << "applying image_mod \n";
+			mod = (**i.first)["add"];
+			if (mod.empty()){
+				image_mods_ += mod;
+			}			
+			
+			game_config::add_color_info(**i.first);
+			LOG_UT << "applying image_mod \n";
 		}
 
 		if(!description.empty())
@@ -3255,6 +3271,8 @@ std::string unit::image_mods() const{
 	if(flag_rgb_.size()){
 		modifier << "~TC("<< flag_rgb_ << ">" << team::get_side_colour_index(side()) << ")";
 	}
-	
+	if(image_mods_.size()){
+		modifier << "~" << image_mods_;
+	}
 	return modifier.str();
 }

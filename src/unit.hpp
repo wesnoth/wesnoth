@@ -312,7 +312,8 @@ class unit
 		int level_;
 		unit_type::ALIGNMENT alignment_;
 		std::string flag_rgb_;
-
+		std::string image_mods_;
+		
 		bool unrenamable_;
 		unsigned int side_;
 		unit_race::GENDER gender_;

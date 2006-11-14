@@ -61,6 +61,8 @@ namespace game_config
 	}
 	
         void load_config(const config* cfg);
+        
+     const void add_color_info(const config& v);
 	const std::vector<Uint32>& tc_info(const std::string& name);
 }
 

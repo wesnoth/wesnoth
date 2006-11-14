@@ -901,6 +901,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		// always have a levelout animation
 	}
 	flag_rgb_ = cfg["flag_rgb"];
+	game_config::add_color_info(cfg);
 	// deprecation messages, only seen when unit is parsed for the first time
 
 	hide_help_= cfg_["hide_help"] == "true" ? true : false;
