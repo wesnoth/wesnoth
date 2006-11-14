@@ -336,11 +336,14 @@ surface locator::load_image_sub_file() const
 				if("TC" == function){
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
-						color_range new_color = game_config::team_rgb_range.find(recolor[1])->second;
-						std::vector<Uint32> old_color = game_config::tc_info(recolor[0]);
-						std::map<Uint32, Uint32> tmp_map = recolor_range(new_color,old_color);
-						for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){	
-							recolor_map[tmp->first] = tmp->second;
+						std::map<std::string, color_range>::const_iterator nc = game_config::team_rgb_range.find(recolor[1]);
+						if(nc != game_config::team_rgb_range.end()){
+							color_range new_color = nc->second;
+							std::vector<Uint32> old_color = game_config::tc_info(recolor[0]);
+							std::map<Uint32, Uint32> tmp_map = recolor_range(new_color,old_color);
+							for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){	
+								recolor_map[tmp->first] = tmp->second;
+							}
 						}	 
 					}
 				}									
