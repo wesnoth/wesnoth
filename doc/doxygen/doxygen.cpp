@@ -284,7 +284,7 @@ the text will also be registered as a tooltip.
 \page get_involved Get Involved
 
 Apart from development, there are
-<a href="http://www.wesnoth.org/faq.htm">other ways to contribute</a>
+<a href="http://www.wesnoth.org/wiki/FAQ">other ways to contribute</a>
 to the project.
 
 Before you can join the development team, your work needs to be
@@ -305,13 +305,13 @@ explain on the
 <a href="http://www.wesnoth.org/forum/">forum</a>
 what you wish to do before doing any actual development.
 Do make sure you have read the projects
-<a href="http://wesnoth.slack.it/?CodingStandards">coding standards</a>.
+<a href="http://www.wesnoth.org/wiki/CodingStandards">coding standards</a>.
 When adding new features, keep in mind the project philosophy,
 which is that of
-<a href="http://wesnoth.slack.it/?WesnothPhilosophy">KISS</a>.
+<a href="http://www.wesnoth.org/wiki/WesnothPhilosophy">KISS</a>.
 
 Other than at the forum, developers may also hang out in
-IRC #wesnoth at irc.freenode.net
+IRC #wesnoth-dev at irc.freenode.net
 
 */
 

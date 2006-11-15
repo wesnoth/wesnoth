@@ -72,7 +72,9 @@ std::string get_colour_string(int id)
 {
 	std::string prefix("\033[3 m");
 	prefix[3] = lexical_cast<char, int>(id + 1);
-	std::map<int, std::string>::iterator name = game_config::team_rgb_name.find(id+1);
+	std::stringstream side_id;
+	side_id << (id + 1);
+	std::map<std::string, std::string>::iterator name = game_config::team_rgb_name.find(side_id.str());
 	if(name != game_config::team_rgb_name.end()){
 	  return prefix + _(name->second.c_str());
 	}else{

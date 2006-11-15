@@ -907,6 +907,11 @@ static void run(unsigned specific_battle)
 #else
 	printf("Total combats: %i\n", NUM_UNITS*(NUM_UNITS-1)*(NUM_UNITS-2));
 #endif
+
+	for (i = 0; i < NUM_UNITS; i++) {
+		delete u[i];
+	}
+
 	exit(0);
 }
 
@@ -1011,6 +1016,11 @@ int main(int argc, char *argv[])
 	def->print("Defender", 0);
 	for (i = 0; att[i]; i++)
 		att[i]->print("Attacker", 0);
+
+	delete def;
+	for (i = 0; att[i]; i++)
+		delete att[i];
+
 	return 0;
 }
 #endif // Standalone program

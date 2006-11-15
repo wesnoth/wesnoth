@@ -594,8 +594,9 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	return result;
 }
 
+
 theme::object& theme::add_object(const config& cfg){
-	theme::object& result = *(new theme::object());
+	static theme::object result;
 
 	const config* const main_map_cfg = cfg.child("main_map");
 	if(main_map_cfg != NULL) {

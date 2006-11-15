@@ -136,7 +136,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	if(const config* change= cfg.child("change_controller")) {
-		const int side = lexical_cast_default<int>((*change)["side"],1);
+		//don't use lexical_cast_default it's "safer" to end on error
+		const int side = lexical_cast<int>((*change)["side"]);
 		const size_t index = static_cast<size_t>(side-1);
 
 		const std::string& controller = (*change)["controller"];
@@ -144,6 +145,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if(index < teams_.size()) {
 			teams_[index].set_current_player(player);
+			const unit_map::iterator leader = find_leader(units_, side);
+			if(leader != units_.end())
+				leader->second.rename(player);
+
 			if ( (controller == "human") && (!teams_[index].is_human()) ) {
 				teams_[index].make_human();
 				gui_.set_team(index);
@@ -169,9 +174,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			throw network::error("");
 		}
 
+		const unit_map::iterator leader = find_leader(units_,side);
+		const bool have_leader = (leader != units_.end());
+
 		if (controller == "ai"){
 			teams_[side_index].make_ai();
 			teams_[side_index].set_current_player("ai"+side_str);
+			if(have_leader)
+				leader->second.rename("ai"+side_str);
 
 			take_side(side_str, "ai");
 
@@ -187,8 +197,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//see if the side still has a leader alive. If they have
 		//no leader, we assume they just want to be replaced by
 		//the AI.
-		const unit_map::const_iterator leader = find_leader(units_,side);
-		if(leader != units_.end()) {
+		if(have_leader) {
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
 			options.push_back(_("Abort game"));
@@ -222,11 +231,18 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			case 0:
 				teams_[side_index].make_ai();
 				teams_[side_index].set_current_player("ai"+side_str);
+				if(have_leader)
+					leader->second.rename("ai"+side_str);
+
 				take_side(side_str, "ai");
+
 				return PROCESS_RESTART_TURN;
+
+			//we don't have to test have_leader as action > 0 mean have_leader == true
 			case 1:
 				teams_[side_index].make_human();
 				teams_[side_index].set_current_player("human"+side_str);
+				leader->second.rename("human"+side_str);
 
 				take_side(side_str, "human");
 
@@ -244,6 +260,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					} else {
 						teams_[side_index].make_ai();
 						teams_[side_index].set_current_player("ai"+side_str);
+						leader->second.rename("ai"+side_str);
 
 						take_side(side_str, "ai");
 					}

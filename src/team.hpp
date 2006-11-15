@@ -106,7 +106,7 @@ public:
 
 		std::string music;
 
-		int colour;
+		std::string colour;
 	};
 
 	static std::map<int, color_range> team_color_range_;
@@ -224,7 +224,7 @@ public:
 
 	const std::string& music() const;
 
-	int map_colour_to() const;
+	std::string map_colour_to() const;
 
 	static int nteams();
 
@@ -234,7 +234,7 @@ public:
 	static const Uint32 get_side_rgb_max(int side);
 	static const Uint32 get_side_rgb_min(int side);
 	static const SDL_Color get_side_colour(int side);
-	static int get_side_colour_index(int side);
+	static std::string get_side_colour_index(int side);
 
 	void log_recruitable();
 

@@ -111,10 +111,13 @@ void replay_controller::init_gui(){
 void replay_controller::init_replay_display(){
 	LOG_NG << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
-	const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
-	if (NULL != replay_theme_cfg)
-	    gui_->get_theme().modify(replay_theme_cfg);
-	gui_->invalidate_theme();
+	if (theme_cfg) {
+		const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
+		if (NULL != replay_theme_cfg)
+	    	gui_->get_theme().modify(replay_theme_cfg);
+		gui_->invalidate_theme();
+	}
+
 	LOG_NG << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 

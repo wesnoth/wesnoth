@@ -275,6 +275,7 @@ class unit
 			const unit_map& units,const std::vector<team>& teams) const;
 
 		unit_race::GENDER generate_gender(const unit_type& type, bool gen);
+		std::string image_mods() const;
 
 	private:
 
@@ -311,7 +312,8 @@ class unit
 		int level_;
 		unit_type::ALIGNMENT alignment_;
 		std::string flag_rgb_;
-
+		std::string image_mods_;
+		
 		bool unrenamable_;
 		unsigned int side_;
 		unit_race::GENDER gender_;

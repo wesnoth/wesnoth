@@ -89,7 +89,7 @@ namespace reports {
 
 	report generate_report(TYPE type, const gamemap& map, unit_map& units,
 	                       const std::vector<team>& teams, const team& current_team,
-	                       int current_side, int active_side,
+	                       unsigned int current_side, int unsigned active_side,
 	                       const gamemap::location& loc, const gamemap::location& mouseover,
 	                       const gamestatus& status, const std::set<std::string>& observers);
 	// Set what will be shown for the report with type

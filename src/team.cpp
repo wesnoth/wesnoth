@@ -115,14 +115,12 @@ team::team_info::team_info(const config& cfg)
 	else
 		action_bonus_count = atoi(bonus.c_str());
 
-	colour = lexical_cast_default<int>(cfg["colour"],-1);
-	if(colour == -1)
-		colour = lexical_cast_default<int>(cfg["side"],-1);
+	colour = cfg["colour"].size()?cfg["colour"]:cfg["side"];
 
 	int side = atoi(cfg["side"].c_str());
 
 	std::vector<Uint32> temp_rgb = string2rgb(cfg["team_rgb"]);
-	std::map<int, color_range>::iterator global_rgb = game_config::team_rgb_range.find(side);
+	std::map<std::string, color_range>::iterator global_rgb = game_config::team_rgb_range.find(cfg["side"]);
 
 	if(temp_rgb.size()){
 		team_color_range_[side] = color_range(temp_rgb);
@@ -779,7 +777,7 @@ const std::string& team::music() const
 	return info_.music;
 }
 
-int team::map_colour_to() const
+std::string team::map_colour_to() const
 {
 	return info_.colour;
 }
@@ -953,13 +951,10 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 std::map<int, color_range> team::team_color_range_;
 
 const color_range team::get_side_color_range(int side){
-  size_t index = size_t(get_side_colour_index(side));
-  std::map<int, color_range>::iterator p=team_color_range_.find(index);
-  std::map<int, color_range>::iterator gp=game_config::team_rgb_range.find(index);
+  std::string index = get_side_colour_index(side);
+  std::map<std::string, color_range>::iterator gp=game_config::team_rgb_range.find(index);
 
-  if(p != team_color_range_.end()){
-    return(p->second);
-  }else if(gp != game_config::team_rgb_range.end()){
+  if(gp != game_config::team_rgb_range.end()){
     return(gp->second);
   }
 
@@ -988,17 +983,19 @@ const SDL_Color team::get_side_colour(int side)
 	return color;
 }
 
-int team::get_side_colour_index(int side)
+std::string team::get_side_colour_index(int side)
 {
 	size_t index = size_t(side-1);
+
 	if(teams != NULL && index < teams->size()) {
-		const int side_map = (*teams)[index].map_colour_to();
-		if(side_map >= 1) {
+		const std::string side_map = (*teams)[index].map_colour_to();
+		if(side_map.size()) {
 			return side_map;
 		}
-	}
-
-	return side;
+	}	
+	std::stringstream id;
+	id<<side;
+	return id.str();
 }
 
 void team::log_recruitable(){

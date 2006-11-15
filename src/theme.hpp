@@ -179,8 +179,8 @@ private:
 	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
 
 	static std::map<std::string, config> known_themes;
-        std::string cur_theme;
-        config cfg_;
+	std::string cur_theme;
+	config cfg_;
 	std::vector<panel> panels_;
 	std::vector<label> labels_;
 	std::vector<menu> menus_;

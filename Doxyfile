@@ -372,7 +372,7 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories
 # with spaces.
 
-INPUT                  = src src/widgets doc/doxygen/doxygen.cpp
+INPUT                  = src src/campaign_server src/editor src/serialization src/server src/sdl_ttf src/tools src/widgets src/zipios++ doc/doxygen/doxygen.cpp
 
 # If the value of the INPUT tag contains directories, you can use the
 # FILE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp 
@@ -430,7 +430,7 @@ EXAMPLE_RECURSIVE      = NO
 # directories that contain image that are included in the documentation (see
 # the \image command).
 
-IMAGE_PATH             = images
+IMAGE_PATH             = images data/campaigns/Heir_To_The_Throne/images/units
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program 

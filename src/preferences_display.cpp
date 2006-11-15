@@ -253,7 +253,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  bell_label_(disp.video(), _("Bell Volume:")), scroll_label_(disp.video(), _("Scroll Speed:")),
 	  gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(),  ""),
-	  turbo_slider_label_(disp.video(), _("Speed: ")),
+	  turbo_slider_label_(disp.video(), "",font::SIZE_SMALL ),
 	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style), advanced_selection_(-1),
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
@@ -409,6 +409,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 
 	const int right_border = font::relative_size(10);
+	const int horizontal_padding = 25;
 #if USE_TINY_GUI
 	const int top_border = 14;
 	const int short_interline = 20;
@@ -423,13 +424,13 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	int ypos = rect.y + top_border;
 	scroll_label_.set_location(rect.x, ypos);
 	SDL_Rect scroll_rect = { rect.x + scroll_label_.width(), ypos,
-	                         rect.w - scroll_label_.width() - right_border, 0 };
+							rect.w - scroll_label_.width() - right_border, 0 };
 	scroll_slider_.set_location(scroll_rect);
 	ypos += item_interline; turbo_button_.set_location(rect.x, ypos);
-	ypos += short_interline; turbo_slider_label_.set_location(rect.x + 50, ypos);
+	ypos += short_interline; turbo_slider_label_.set_location(rect.x + horizontal_padding, ypos);
 	ypos += short_interline;
-	SDL_Rect turbo_rect = { rect.x + 50, ypos,
-	                        rect.w - 50 - right_border, 0 };
+	SDL_Rect turbo_rect = { rect.x + horizontal_padding, ypos,
+							rect.w - horizontal_padding - right_border, 0 };
 	turbo_slider_.set_location(turbo_rect);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
 	ypos += item_interline; turn_dialog_button_.set_location(rect.x, ypos);
@@ -443,7 +444,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline;
 	gamma_label_.set_location(rect.x, ypos);
 	SDL_Rect gamma_rect = { rect.x + gamma_label_.width(), ypos,
-	                        rect.w - gamma_label_.width() - right_border, 0 };
+							rect.w - gamma_label_.width() - right_border, 0 };
 	gamma_slider_.set_location(gamma_rect);
 	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
@@ -461,7 +462,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline;
 	sound_label_.set_location(rect.x, ypos);
 	const SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
-	                        rect.w - slider_label_width_ - right_border, 0 };
+								rect.w - slider_label_width_ - right_border, 0 };
 	sound_slider_.set_location(sound_rect);
 
 	ypos += item_interline;
@@ -470,7 +471,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline;
 	music_label_.set_location(rect.x, ypos);
 	const SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
-	                        rect.w - slider_label_width_ - right_border, 0 };
+								rect.w - slider_label_width_ - right_border, 0 };
 	music_slider_.set_location(music_rect);
 
 	// Bell slider
@@ -480,15 +481,16 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline;
 	bell_label_.set_location(rect.x, ypos);
 	const SDL_Rect bell_rect = { rect.x + slider_label_width_, ypos,
-	                        rect.w - slider_label_width_ - right_border, 0 };
+								rect.w - slider_label_width_ - right_border, 0 };
 	bell_slider_.set_location(bell_rect);
 
 
 	// Multiplayer tab
 	ypos = rect.y + top_border;
 	chat_lines_label_.set_location(rect.x, ypos);
-	SDL_Rect chat_lines_rect = { rect.x + slider_label_width_, ypos,
-								rect.w - slider_label_width_ - right_border, 0 };
+	ypos += short_interline;
+	SDL_Rect chat_lines_rect = { rect.x + horizontal_padding, ypos,
+								rect.w - horizontal_padding - right_border, 0 };
 	chat_lines_slider_.set_location(chat_lines_rect);
 	ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
 	ypos += item_interline; lobby_minimaps_button_.set_location(rect.x, ypos);
@@ -523,11 +525,11 @@ void preferences_dialog::process_event()
 	if (video_mode_button_.pressed())
 		throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
 	if (theme_button_.pressed())
-	        show_theme_dialog(disp_);
+		show_theme_dialog(disp_);
 	if (fullscreen_button_.pressed())
 		throw video_mode_change_exception(fullscreen_button_.checked()
-		                                  ? video_mode_change_exception::MAKE_FULLSCREEN
-		                                  : video_mode_change_exception::MAKE_WINDOWED);
+										? video_mode_change_exception::MAKE_FULLSCREEN
+										: video_mode_change_exception::MAKE_WINDOWED);
 	if (turn_bell_button_.pressed())
 		set_turn_bell(turn_bell_button_.checked());
 	if (turn_dialog_button_.pressed())
@@ -563,8 +565,8 @@ void preferences_dialog::process_event()
 	if (flip_time_button_.pressed())
 		set_flip_time(flip_time_button_.checked());
 
-        if (chat_timestamp_button_.pressed())
-                set_chat_timestamp(chat_timestamp_button_.checked());
+		if (chat_timestamp_button_.pressed())
+			set_chat_timestamp(chat_timestamp_button_.checked());
 
 	set_scroll_speed(scroll_slider_.value());
 	set_gamma(gamma_slider_.value());

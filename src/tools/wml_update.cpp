@@ -172,7 +172,6 @@ void list_directory(const std::string& directory,
 }
 
 
-
 struct Level {
 	Level(const std::string& itag,Level* p) {tag=itag;parent=p;is_tag=false;};
 	~Level() {for(child_list::iterator i = data.begin(); i != data.end(); ++i) {delete *i;}};
@@ -277,11 +276,6 @@ struct Level {
 	child_list data;
 	Level* parent;
 };
-
-
-
-
-
 
 
 

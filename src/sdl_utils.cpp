@@ -469,95 +469,43 @@ surface darken_image(surface const &surf)
 	return create_optimized_surface(nsurf);
 }
 
-surface recolor_image(surface surf, const color_range& new_rgb, const std::vector<Uint32>& old_rgb)
-{
-  // function to replace vectors of colors with new color-range
-  // parallel input vectors chosen to prevent need to include SDL structures
-  // elsewhere in code or create new rgb structure.  It might be better to
-  // just pass a vector of SDL colors instead...
+surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb){
+	if(map_rgb.size()){
+		if(surf == NULL)
+    		return NULL;
 
-  if(old_rgb.size()){
-    Uint16 new_red  = (new_rgb.mid() & 0x00FF0000)>>16;
-    Uint16 new_green= (new_rgb.mid() & 0x0000FF00)>>8;
-    Uint16 new_blue = (new_rgb.mid() & 0x000000FF);
-    Uint16 max_red  = (new_rgb.max() & 0x00FF0000)>>16;
-    Uint16 max_green= (new_rgb.max() & 0x0000FF00)>>8 ;
-    Uint16 max_blue = (new_rgb.max() & 0x000000FF)    ;
-    Uint16 min_red  = (new_rgb.min() & 0x00FF0000)>>16;
-    Uint16 min_green= (new_rgb.min() & 0x0000FF00)>>8 ;
-    Uint16 min_blue = (new_rgb.min() & 0x000000FF)    ;
+	     surface nsurf(make_neutral_surface(surf));
+	     if(nsurf == NULL) {
+			std::cerr << "failed to make neutral surface\n";
+		  	return NULL;
+	     }
 
-    if(surf == NULL)
-      return NULL;
+	  	surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*surf->h;
 
-        surface nsurf(make_neutral_surface(surf));
-        if(nsurf == NULL) {
-	  std::cerr << "failed to make neutral surface\n";
-	  return NULL;
-        }
+		while(beg != end) {
+     		Uint8 red, green, blue, alpha;
+          	SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
-	Uint16 reference_avg=0;
-	//map first color in vector to exact new color
-	Uint32 temp_rgb=old_rgb[0];
-	int old_r=(temp_rgb & 0X00FF0000)>>16;
-	int old_g=(temp_rgb & 0X0000FF00)>>8;
-	int old_b=(temp_rgb & 0X000000FF);
-	reference_avg = (Uint16)(((Uint16) old_r + (Uint16)old_g + (Uint16)old_b)
-			   / 3);
-
-	{
-	  for(std::vector<Uint32>::const_iterator temp_rgb = old_rgb.begin();
-	      temp_rgb!=old_rgb.end();temp_rgb++)
-	    {
-	      int old_r=((*temp_rgb) & 0X00FF0000)>>16;
-	      int old_g=((*temp_rgb) & 0X0000FF00)>>8;
-	      int old_b=((*temp_rgb) & 0X000000FF);
-
-	      //	    std::cout<<"recolor:"<<old_r<<","<<old_g<<","<<old_b<<"\n";
-	      surface_lock lock(nsurf);
-	      Uint32* beg = lock.pixels();
-	      Uint32* end = beg + nsurf->w*surf->h;
-
-	      //const Uint16 old_grey = (Uint16)((77*(Uint16) old_r +
-	      //                                  150*(Uint16)old_g +
-	      //                                  29*(Uint16)old_b) / 256);
-
-	      const Uint16 old_avg = (Uint16)(((Uint16) old_r +
-						(Uint16) old_g +
-						(Uint16) old_b) / 3);
-	      //calculate new color
-	      Uint8 new_r, new_g, new_b;
-
-	      if(reference_avg && old_avg <= reference_avg){
-		float old_rat = ((float)old_avg)/reference_avg;
-		new_r=(Uint8)( old_rat * new_red   + (1 - old_rat) * min_red);
-		new_g=(Uint8)( old_rat * new_green + (1 - old_rat) * min_green);
-		new_b=(Uint8)( old_rat * new_blue  + (1 - old_rat) * min_blue);
-	      }else if(255 - reference_avg){
-		float old_rat = ((float) 255 - old_avg) / (255 - reference_avg);
-		new_r=(Uint8)( old_rat * new_red   + (1 - old_rat) * max_red);
-		new_g=(Uint8)( old_rat * new_green + (1 - old_rat) * max_green);
-		new_b=(Uint8)( old_rat * new_blue  + (1 - old_rat) * max_blue);
-	      }else{
-		      new_r=0; new_g=0; new_b=0; //supress warning
-		      wassert(false);
-		//should never get here
-		//would imply old_avg > reference_avg = 255
-	      }
-
-	      while(beg != end) {
-                        Uint8 red, green, blue, alpha;
-                        SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
-                        if(red==old_r && green==old_g && blue==old_b){
-                          *beg = SDL_MapRGBA(nsurf->format,new_r,new_g,new_b,alpha);
-                        }
-                        ++beg;
-	      }
-	    }
-	}
-        return create_optimized_surface(nsurf);
-  }
-      return NULL;
+			if(alpha){//don't recolor invisible pixels.
+	          	Uint32 oldrgb = (red<<16) + (green<<8) + (blue);
+				for(std::map<Uint32, Uint32>::const_iterator i=map_rgb.begin(); i!= map_rgb.end(); i++){
+					if(oldrgb==i->first){
+						Uint32 new_rgb = i->second;
+						Uint8 new_r = (new_rgb & 0x00FF0000)>>16;
+    						Uint8 new_g = (new_rgb & 0x0000FF00)>>8;
+    						Uint8 new_b = (new_rgb & 0x000000FF);
+			        		*beg = SDL_MapRGBA(nsurf->format,new_r,new_g,new_b,alpha);
+			     	   	break; //no double replacements.
+					}
+				}
+			}
+     		++beg;
+		}
+		return create_optimized_surface(nsurf);
+  	}
+	return surf;
 }
 
 surface brighten_image(surface const &surf, fixed_t amount)

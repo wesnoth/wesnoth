@@ -47,7 +47,6 @@ namespace image {
 		// Called by each constructor after actual construction to
 		// initialize the index_ field
 		void init_index();
-		void get_tc_info(const std::string& field);
 		void parse_arguments();
 	public:
 		enum type { NONE, FILE, SUB_FILE };
@@ -56,10 +55,10 @@ namespace image {
 			value();
 			value(const value &a);
 			value(const char *filename);
-			value(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
+			value(const char *filename, const std::string& modifications);
 			value(const std::string& filename);
-		        value(const std::string& filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
-			value(const std::string& filename, const gamemap::location& loc, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
+  		     value(const std::string& filename, const std::string& modifications);
+			value(const std::string& filename, const gamemap::location& loc, const std::string& modifications);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
@@ -67,8 +66,7 @@ namespace image {
 			type type_;
 			std::string filename_;
 			gamemap::location loc_;
-		        color_range new_color;
-			std::vector<Uint32> swap_colors;
+			std::string modifications_;
 		};
 
 		// Constructing locators is somewhat slow, accessing image
@@ -76,12 +74,12 @@ namespace image {
 		// should store locators, and not strings to construct locators
 		// (the second will work, of course, but will be slower)
 	        locator();
-		locator(const locator &a);
+		locator(const locator &a, const std::string &mods ="");
 		locator(const char *filename);
-		locator(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
+		locator(const char *filename, const std::string& modifications);
 		locator(const std::string& filename);
-		locator(const std::string& filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
-		locator(const std::string& filename, const gamemap::location& loc, const color_range& new_rgb = std::vector<Uint32>(), const std::vector<Uint32>& swap_rgb = std::vector<Uint32>());
+		locator(const std::string& filename, const std::string& modifications);
+		locator(const std::string& filename, const gamemap::location& loc, const std::string& modifications="");
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }
@@ -90,8 +88,7 @@ namespace image {
 
 		const std::string &get_filename() const { return val_.filename_; }
 		const gamemap::location& get_loc() const { return val_.loc_ ; }
-		const color_range& get_new_color() const { return val_.new_color ; }
-		const std::vector<Uint32>& get_swap_colors() const { return val_.swap_colors ; }
+		const std::string& get_modifications() const {return val_.modifications_;}
 		const type get_type() const { return val_.type_; };
 		// const int get_index() const { return index_; };
 

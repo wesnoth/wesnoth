@@ -109,7 +109,7 @@ bool filesystem_init()
 #ifdef USE_ZIPIOS
 	if (the_collection != NULL) {
 		// this is a re-read, cleanup first !
-		free (the_collection);
+		delete the_collection;
 	}
 
 	the_collection = new xzipios::XCColl;
@@ -130,6 +130,13 @@ bool filesystem_init()
 	}
 #endif
 	return true;
+}
+
+void filesystem_close()
+{
+	#ifdef USE_ZIPIOS
+	delete the_collection;
+	#endif
 }
 
 namespace {
