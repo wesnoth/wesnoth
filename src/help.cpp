@@ -1287,7 +1287,7 @@ public:
 					continue;
 				const terrain_type& info = map->get_terrain_info(terrain);
 
-				if (info.union_type2().size() == 1 && info.union_type2()[0] == info.number() && info.is_nonnull()) {
+				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 					std::vector<item> row;
 					const std::string& name = info.name();
 					const std::string id = info.id();
@@ -1385,8 +1385,8 @@ struct terrain_topic_generator: topic_generator
 	virtual std::string operator()() const {
 		std::stringstream ss;
 		ss << "<img>src='terrain/" << type.symbol_image() << ".png'</img>\n\n";
-		if (type.mvt_type2().size() != 1 || type.mvt_type2()[0] != type.number()) {
-			const std::vector<terrain_translation::TERRAIN_NUMBER> aliased_terrains = type.mvt_type2();
+		if (type.mvt_type().size() != 1 || type.mvt_type()[0] != type.number()) {
+			const std::vector<terrain_translation::TERRAIN_NUMBER> aliased_terrains = type.mvt_type();
 			std::stringstream alias_ss;
 			for (std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator it = aliased_terrains.begin();
 				  it != aliased_terrains.end(); it++) {
@@ -1411,8 +1411,8 @@ struct terrain_topic_generator: topic_generator
 				ss << " " << _("The terrain with the worst modifier is chosen automatically.");
 			ss << "\n\n";
 		}
-		if (type.def_type2().size() != 1 || type.def_type2()[0] != type.number()) {
-			const std::vector<terrain_translation::TERRAIN_NUMBER> aliased_terrains = type.def_type2();
+		if (type.def_type().size() != 1 || type.def_type()[0] != type.number()) {
+			const std::vector<terrain_translation::TERRAIN_NUMBER> aliased_terrains = type.def_type();
 			std::stringstream alias_ss;
 			for (std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator it = aliased_terrains.begin();
 				  it != aliased_terrains.end(); it++) {

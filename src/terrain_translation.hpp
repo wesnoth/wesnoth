@@ -95,9 +95,6 @@ namespace terrain_translation {
 	//expects a vector of TERRAIN_NUMBER and converts it to s number -1 upon failure
 	int list_to_int(const std::vector<TERRAIN_NUMBER> number);
 
-	//used in unit animation
-	std::vector<std::vector<TERRAIN_NUMBER> > get_splitted_list(const std::string& list);
-
 };
 
 #endif

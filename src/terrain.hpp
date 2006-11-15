@@ -41,11 +41,10 @@ public:
 	//this is the new type
 	terrain_translation::TERRAIN_NUMBER number() const;
 
-	//FIXME MdW rename the ones below by removing the 2 from the name
 	//the underlying type of the terrain
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_type2() const;
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_type2() const;
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& union_type2() const;
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_type() const;
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_type() const;
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& union_type() const;
 
 	bool is_nonnull() const;
 	int light_modification() const;
@@ -68,10 +67,9 @@ private:
 	//of the terrain. This may simply be the same as the number.
 	//This is the internal number used, WML still used characters
 	terrain_translation::TERRAIN_NUMBER number_;
-	//FIXME MdW rename without the 2
-	std::vector<terrain_translation::TERRAIN_NUMBER> mvt_type2_;
-	std::vector<terrain_translation::TERRAIN_NUMBER> def_type2_;
-	std::vector<terrain_translation::TERRAIN_NUMBER> union_type2_;
+	std::vector<terrain_translation::TERRAIN_NUMBER> mvt_type_;
+	std::vector<terrain_translation::TERRAIN_NUMBER> def_type_;
+	std::vector<terrain_translation::TERRAIN_NUMBER> union_type_;
 		
 	int height_adjust_;
 

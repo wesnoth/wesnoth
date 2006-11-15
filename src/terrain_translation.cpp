@@ -251,26 +251,4 @@ int list_to_int(const std::vector<TERRAIN_NUMBER> number)
 	}
 }
 
-std::vector<std::vector<TERRAIN_NUMBER> > get_splitted_list(const std::string& list)
-{
-
-	//for now use the standard splitter
-	const std::vector<std::string> data = utils::split(list);
-	std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > res;
-	std::vector<terrain_translation::TERRAIN_NUMBER> inner_res;
-	std::vector<std::string>::const_iterator iter = data.begin();
-
-	// convert the string version to the TERRAIN_NUMBER version
-	for(; iter != data.end(); ++iter){
-		std::string::const_iterator inner_iter = iter->begin();
-		for(; inner_iter != iter->begin(); ++inner_iter){
-			inner_res.push_back(letter_to_number_(*inner_iter));
-		}
-		res.push_back(inner_res);
-		inner_res.clear();
-	}
-
-	return res;
-}
-
 }

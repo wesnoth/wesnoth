@@ -40,8 +40,7 @@ std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 
 gamemap::location gamemap::location::null_location;
 
-//FIXME MdW rename the ones below so the 2 in the name is gone
-const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_mvt_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const
+const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_mvt_terrain(terrain_translation::TERRAIN_NUMBER terrain) const
 {
 	const std::map<terrain_translation::TERRAIN_NUMBER,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
 	if(i == letterToTerrain_.end()) {
@@ -49,11 +48,11 @@ const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_mvt_
 		res.push_back(terrain);
 		return res;
 	} else {
-		return i->second.mvt_type2();
+		return i->second.mvt_type();
 	}
 }
 
-const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_def_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const
+const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_def_terrain(terrain_translation::TERRAIN_NUMBER terrain) const
 {
 	const std::map<terrain_translation::TERRAIN_NUMBER,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
 	if(i == letterToTerrain_.end()) {
@@ -61,11 +60,11 @@ const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_def_
 		res.push_back(terrain);
 		return res;
 	} else {
-		return i->second.def_type2();
+		return i->second.def_type();
 	} 
 }
 
-const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_union_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const
+const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_union_terrain(terrain_translation::TERRAIN_NUMBER terrain) const
 {
 	const std::map<terrain_translation::TERRAIN_NUMBER,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
 	if(i == letterToTerrain_.end()) {
@@ -73,7 +72,7 @@ const std::vector<terrain_translation::TERRAIN_NUMBER>& gamemap::underlying_unio
 		res.push_back(terrain);
 		return res;
 	} else {
-		return i->second.union_type2();
+		return i->second.union_type();
 	}
 }
 	

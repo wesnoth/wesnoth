@@ -375,7 +375,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			break;
 
 		const terrain_translation::TERRAIN_NUMBER terrain = map.get_terrain(mouseover);
-		const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map.underlying_union_terrain2(terrain);
+		const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map.underlying_union_terrain(terrain);
 
 		if(map.is_village(mouseover)) {
 			const unsigned int owner = village_owner(mouseover,teams)+1;

@@ -37,14 +37,12 @@ public:
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
 	//is simply an alias, the underlying terrain name is the name of the
 	//terrain that it's aliased to
-
-	//FIXME MdW rename the ones without the 2 in the name
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& 
-		underlying_mvt_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
+		underlying_mvt_terrain(terrain_translation::TERRAIN_NUMBER terrain) const;
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& 
-		underlying_def_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
+		underlying_def_terrain(terrain_translation::TERRAIN_NUMBER terrain) const;
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& 
-		underlying_union_terrain2(terrain_translation::TERRAIN_NUMBER terrain) const;
+		underlying_union_terrain(terrain_translation::TERRAIN_NUMBER terrain) const;
 
 	//exception thrown if the map file is not in the correct format.
 	struct incorrect_format_exception {
@@ -97,13 +95,12 @@ public:
 	private:
 		void init(const std::string &x, const std::string &y);
 	};
-	//FIXME MdW rename the ones below to remove the 2 from the name
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_mvt_terrain2(const location& loc) const
-		{ return underlying_mvt_terrain2(get_terrain(loc)); }
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_def_terrain2(const location& loc) const
-		{ return underlying_def_terrain2(get_terrain(loc)); }
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_union_terrain2(const location& loc) const
-		{ return underlying_union_terrain2(get_terrain(loc)); }
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_mvt_terrain(const location& loc) const
+		{ return underlying_mvt_terrain(get_terrain(loc)); }
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_def_terrain(const location& loc) const
+		{ return underlying_def_terrain(get_terrain(loc)); }
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying_union_terrain(const location& loc) const
+		{ return underlying_union_terrain(get_terrain(loc)); }
 
 	bool is_village(terrain_translation::TERRAIN_NUMBER terrain) const;
 	int gives_healing(terrain_translation::TERRAIN_NUMBER terrain) const;

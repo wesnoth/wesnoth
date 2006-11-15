@@ -2146,10 +2146,10 @@ int unit::movement_cost_internal(terrain_translation::TERRAIN_NUMBER terrain, in
 
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_mvt_terrain2(terrain);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_mvt_terrain(terrain);
 	
 	wassert(!underlying.empty());
-	if(underlying.size() != 1 || underlying.front() != terrain) { // We fail here but first test underlying_mvt_terrain2
+	if(underlying.size() != 1 || underlying.front() != terrain) { // We fail here but first test underlying_mvt_terrain
 		bool revert = (underlying.front() == terrain_translation::MINUS ?true:false);
 		if(recurse_count >= 100) {
 			return impassable;
@@ -2226,7 +2226,7 @@ int unit::defense_modifier(terrain_translation::TERRAIN_NUMBER terrain, int recu
 
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_def_terrain2(terrain);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_def_terrain(terrain);
 	wassert(underlying.size() > 0);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == terrain_translation::MINUS ?true:false);

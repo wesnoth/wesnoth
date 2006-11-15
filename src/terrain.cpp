@@ -26,9 +26,9 @@
 
 terrain_type::terrain_type() : symbol_image_("void"),
 			       number_(terrain_translation::VOID_TERRAIN),
-			       mvt_type2_(1, terrain_translation::VOID_TERRAIN),
-			       def_type2_(1, terrain_translation::VOID_TERRAIN),
-			       union_type2_(1, terrain_translation::VOID_TERRAIN),
+			       mvt_type_(1, terrain_translation::VOID_TERRAIN),
+			       def_type_(1, terrain_translation::VOID_TERRAIN),
+			       union_type_(1, terrain_translation::VOID_TERRAIN),
                                height_adjust_(0), submerge_(0.0),
                                heals_(false), village_(false), castle_(false), keep_(false) 
 {}
@@ -42,34 +42,37 @@ terrain_type::terrain_type(const config& cfg)
 
 	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
 
-	mvt_type2_.push_back(number_);
-	def_type2_.push_back(number_);
+	mvt_type_.push_back(number_);
+	def_type_.push_back(number_);
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& alias = 
 		terrain_translation::read_list(cfg["aliasof"]);
 	if(!alias.empty()) {
-		mvt_type2_ = alias;
-		def_type2_ = alias;
+		mvt_type_ = alias;
+		def_type_ = alias;
 	}
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_alias = 
 		terrain_translation::read_list(cfg["mvt_alias"]);
 	if(!mvt_alias.empty()) {
-		mvt_type2_ = mvt_alias;
+		mvt_type_ = mvt_alias;
 	}
 
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_alias = 
 		terrain_translation::read_list(cfg["def_alias"]);
 	if(!def_alias.empty()) {
-		def_type2_ = def_alias;
+		def_type_ = def_alias;
 	}
-	union_type2_ = mvt_type2_;
-	union_type2_.insert( union_type2_.end(), def_type2_.begin(), def_type2_.end() );
+	union_type_ = mvt_type_;
+	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
 
 	// remove + and -
-	union_type2_.erase(std::remove(union_type2_.begin(),union_type2_.end(),terrain_translation::MINUS),union_type2_.end());
-	union_type2_.erase(std::remove(union_type2_.begin(),union_type2_.end(),terrain_translation::PLUS),union_type2_.end());
+	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(), 
+				terrain_translation::MINUS), union_type_.end());
+
+	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
+				terrain_translation::PLUS), union_type_.end());
 	// remove doubles
-	std::sort(union_type2_.begin(),union_type2_.end());
-	union_type2_.erase(std::unique(union_type2_.begin(),union_type2_.end()),union_type2_.end());
+	std::sort(union_type_.begin(),union_type_.end());
+	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
 
 	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
 	submerge_ = atof(cfg["submerge"].c_str());
@@ -111,19 +114,19 @@ bool terrain_type::is_nonnull() const
 	return (number_ != 0) && (number_ != terrain_translation::VOID_TERRAIN );
 }
 
-const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::mvt_type2() const
+const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::mvt_type() const
 {
-	return mvt_type2_;
+	return mvt_type_;
 }
 
-const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::def_type2() const
+const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::def_type() const
 {
-	return def_type2_;
+	return def_type_;
 }
 
-const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::union_type2() const
+const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::union_type() const
 {
-	return union_type2_;
+	return union_type_;
 }
 
 int terrain_type::light_modification() const
