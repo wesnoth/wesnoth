@@ -574,7 +574,7 @@ private:
 	 * @param global_images A config object representing the images defined
 	 *                  as direct children of the [terrain_graphics] rule.
 	 */
-	void parse_mapstring(const std::vector<terrain_translation::TERRAIN_NUMBER> &mapstring, struct building_rule &br,
+	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
 			     anchormap& anchors, const config& global_images);
 
 	/**

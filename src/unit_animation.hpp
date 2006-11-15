@@ -38,6 +38,10 @@ class unit_animation:public animated<unit_frame>
 		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit) const;
 
 	private:
+		//FIXME MdW, this type might get a rewrite to be a simple vector
+		// have to test whether it work, but isn't used in mainline atm
+		// so changing the sematics is allowed, still want to avoid it
+		// if possible
 		std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > terrain_types;
 		std::vector<config> unit_filter_;
 		std::vector<config> secondary_unit_filter_;

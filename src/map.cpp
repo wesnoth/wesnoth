@@ -127,7 +127,7 @@ bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*
 void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 {
 	terrain_translation::TERRAIN_NUMBER loc_terrain = get_terrain(loc); 
-	cfg["terrain"] = terrain_translation().set_letter(loc_terrain);
+	cfg["terrain"] = terrain_translation::write_letter(loc_terrain);
 }
 
 gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
@@ -309,7 +309,7 @@ void gamemap::read(const std::string& data)
 	tiles_.clear();
 	villages_.clear();
 	std::fill(startingPositions_,startingPositions_+sizeof(startingPositions_)/sizeof(*startingPositions_),location());
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& map_data = terrain_translation().get_map(data);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& map_data = terrain_translation::read_map(data);
 
 	//ignore leading newlines
 	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = map_data.begin();
@@ -325,12 +325,12 @@ void gamemap::read(const std::string& data)
 			++y;
 		} else {
 			if(letterToTerrain_.count(c) == 0) {
-				int start_location = terrain_translation().letter_to_start_location(c);
+				int start_location = terrain_translation::letter_to_start_location(c); //FIXME MdW this function should remove
 				if(start_location != -1) {
 					startingPositions_[start_location] = location(x,y);
 					c = terrain_translation::KEEP;
 				} else {
-					ERR_CF << "Illegal character in map: (" << terrain_translation().set_letter(c) << ") '" << c << "'\n"; 
+					ERR_CF << "Illegal character in map: (" << terrain_translation::write_letter(c) << ") '" << c << "'\n"; 
 					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 				}
 			} 
@@ -384,8 +384,10 @@ std::string gamemap::write() const
 
 			if(n < STARTING_POSITIONS) {
 				str << n;
+				//FIXME MdW tag here we should call the write_starting_position(n, tiles_[i][j]);
+				//which has to be written
 			} else {
-				str << terrain_translation().set_letter(tiles_[i][j]);
+				str << terrain_translation::write_letter(tiles_[i][j]);
 			}
 		}
 
@@ -425,25 +427,25 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 				                         dst_key = "new", dst_not_key = "new_not";
 				const config& cfg = **rule;
 				const std::vector<terrain_translation::TERRAIN_NUMBER>& src = 
-					terrain_translation().get_list(cfg[src_key]);
+					terrain_translation::read_list(cfg[src_key]);
 				if(!src.empty() && std::find(src.begin(),src.end(),current) == src.end()) {
 					continue;
 				}
 
 				const std::vector<terrain_translation::TERRAIN_NUMBER>& src_not = 
-					terrain_translation().get_list(cfg[src_not_key]);
+					terrain_translation::read_list(cfg[src_not_key]);
 				if(!src_not.empty() && std::find(src_not.begin(),src_not.end(),current) != src_not.end()) {
 					continue;
 				}
 
 				const std::vector<terrain_translation::TERRAIN_NUMBER>& dst = 
-					terrain_translation().get_list(cfg[dst_key]);
+					terrain_translation::read_list(cfg[dst_key]);
 				if(!dst.empty() && std::find(dst.begin(),dst.end(),t) == dst.end()) {
 					continue;
 				}
 
 				const std::vector<terrain_translation::TERRAIN_NUMBER>& dst_not = 
-					terrain_translation().get_list(cfg[dst_not_key]);
+					terrain_translation::read_list(cfg[dst_not_key]);
 				if(!dst_not.empty() && std::find(dst_not.begin(),dst_not.end(),t) != dst_not.end()) {
 					continue;
 				}
@@ -455,10 +457,10 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 			if(rule != rules.end()) {
 				const config& cfg = **rule;
 				const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain = 
-					terrain_translation().get_list(cfg["terrain"]);
+					terrain_translation::read_list(cfg["terrain"]);
 
 				if(! terrain.empty()) {
-					set_terrain(location(x2,y2),terrain[0]);
+					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
 				} else if(cfg["use_old"] != "yes") {
 					set_terrain(location(x2,y2),t);
 				}
@@ -581,7 +583,7 @@ const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) cons
 }
 bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, const gamestatus& game_status, const unit_map& units,bool flat_tod) const
 {
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain = terrain_translation().get_list(cfg["terrain"]);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain = terrain_translation::read_list(cfg["terrain"]);
 	const std::string& tod_type = cfg["time_of_day"];
 	const std::string& tod_id = cfg["time_of_day_id"];
 	// Any of these may be a CSV
@@ -597,7 +599,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 				terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
 				
 				const std::vector<terrain_translation::TERRAIN_NUMBER>& vals = 
-					terrain_translation().get_list(cfg["terrain"], 1);
+					terrain_translation::read_list(cfg["terrain"], 1);
 
 				if(std::find(vals.begin(),vals.end(),terrain_letter.front()) == vals.end()) {
 					return false;

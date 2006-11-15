@@ -1,6 +1,11 @@
 src/builder.cpp:27://FIXME MdW this file is filled with debug output and should be cleaned
 src/builder.cpp:593://FIXME MdW this is a total rewrite not sure whether is really works
-src/cavegen.cpp:112:			out << terrain_translation().set_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
+src/builder.cpp:871:	//FIXME MdW remove debug code from this function
+src/builder.cpp:905:	//FIXME MdW remove debug code from this function
+src/builder.cpp:1020://FIXME MdW keep or remove this part, at least disable	
+src/builder.cpp:1073:	//FIXME MdW remove debug code from this function
+src/builder.cpp:1146:	//FIXME MdW remove debug code
+src/cavegen.cpp:112:			out << terrain_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
 src/display.cpp:1689:	//FIXME MdW cleanup but why was this coded like it was WHY and INT instead of CHAR????
 src/display.cpp:1702:			tiles[i] = 0; //FIXME MdW we should define an invalid terrain (prob. 0)
 src/game.cpp:1904://FIXME MdW this catch is disabled in order to trace memory overflows. 
@@ -9,15 +14,22 @@ src/game_events.cpp:1770:				const terrain_translation::TERRAIN_NUMBER c = game_
 src/help.cpp:1458:		//FIXME MdW the changes here seem to compile but they have to 
 src/map.cpp:43://FIXME MdW rename the ones below so the 2 in the name is gone
 src/map.cpp:306://FIXME MdW the entire routine should be cleaned up
+src/map.cpp:328:				int start_location = terrain_translation::letter_to_start_location(c); //FIXME MdW this function should remove
 src/map.cpp:363:	//FIXME MdW remove debug
-src/map.cpp:591:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
-src/mapgen.cpp:315:			res << terrain_translation().set_letter(terrain[x][y]); //FIXME MdW, should this be done by the map converter??
+src/map.cpp:387:				//FIXME MdW tag here we should call the write_starting_position(n, tiles_[i][j]);
+src/map.cpp:463:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
+src/map.cpp:593:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
+src/mapgen.cpp:315:			res << terrain_translation::write_letter(terrain[x][y]); //FIXME MdW, should this be done by the map converter??
 src/mapgen.cpp:368://FIXME MdW test this modification	
+src/mapgen.cpp:1039:		terrain[x][y] = terrain_translation::get_start_location(player); //FIXME MdW this is function is ugly rewrite
 src/map.hpp:41:	//FIXME MdW rename the ones without the 2 in the name
 src/map.hpp:100:	//FIXME MdW rename the ones below to remove the 2 from the name
 src/map.hpp:201:	//The terrain string with TERRAIN_NUMBER should be make FIXME MdW
+src/terrain.cpp:43:	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
 src/terrain.hpp:37:	//FIXME MdW maybe reinstall the letter later again after debugging everything
 src/terrain.hpp:44:	//FIXME MdW rename the ones below by removing the 2 from the name
 src/terrain.hpp:71:	//FIXME MdW rename without the 2
-src/terrain_translation.cpp:23://FIXME MdW remove the shift
-src/terrain_translation.hpp:15://FIXME MdW is Makefile.am good modified
+src/terrain_translation.cpp:25://FIXME MdW remove the shift
+src/terrain_translation.hpp:14://FIXME MdW is Makefile.am good modified
+src/terrain_translation.hpp:90:	//FIXME MdW this function needs to be modified later on
+src/unit_animation.hpp:41:		//FIXME MdW, this type might get a rewrite to be a simple vector

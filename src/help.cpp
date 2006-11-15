@@ -1394,7 +1394,7 @@ struct terrain_topic_generator: topic_generator
 				const std::string &alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
 					 << escape(std::string("terrain_")) 
-					 << escape(terrain_translation().set_letter(t))
+					 << escape(terrain_translation::write_letter(t))
 					 << "'</ref>";
 				if (it + 2 == aliased_terrains.end())
 					alias_ss << " " << _("or") << " ";
@@ -1420,7 +1420,7 @@ struct terrain_topic_generator: topic_generator
 				const std::string &alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
 					 << escape(std::string("terrain_")) 
-					 << escape(terrain_translation().set_letter(t))
+					 << escape(terrain_translation::write_letter(t))
 					 << "'</ref>"; 
 				if (it + 2 == aliased_terrains.end())
 					alias_ss << " " << _("or") << " ";
@@ -1474,7 +1474,7 @@ std::vector<topic> generate_terrains_topics(const bool sort_generated)
 		 terrain_it != show_info_about.end(); terrain_it++) {
 		const terrain_type& info = map->get_terrain_info(*terrain_it);
 		const std::string &name = info.name();
-		topic t(name, std::string("terrain_") + terrain_translation().set_letter(*terrain_it), new terrain_topic_generator(info));
+		topic t(name, std::string("terrain_") + terrain_translation::write_letter(*terrain_it), new terrain_topic_generator(info));
 		res.push_back(t);
 	}
 	if (sort_generated)

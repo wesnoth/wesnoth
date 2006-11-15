@@ -96,7 +96,7 @@ unit_animation::unit_animation(int start_time,const unit_frame & frame ):animate
 }
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string )
-:terrain_types(terrain_translation().get_splitted_list(cfg["terrain"]))
+:terrain_types(terrain_translation::get_splitted_list(cfg["terrain"]))
 {
 	config::const_child_itors range = cfg.child_range(frame_string);
 	if(cfg["start_time"].empty() &&range.first != range.second) {

@@ -1,4 +1,4 @@
-/* $Id: boilerplate-header.cpp 8092 2005-09-02 16:10:12Z ott $ */
+/* $Id$ */
 /*
    Copyright (C) 2006 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -20,6 +20,8 @@
 #include "serialization/string_utils.hpp"
 #include "wassert.hpp"
 
+namespace terrain_translation {
+
 //FIXME MdW remove the shift
 // This shift is a dummy, since I've only terrains in the 0 - 127 range
 // things work too often too good :(. With the shift I shift the terrains
@@ -39,10 +41,10 @@
 // shift 17   100m   88m  18m
 // shift 20   436m   302m 18m
 // After the fix tested 24, 25 both work and the memory consumption of 25 is normal
+
 #define SHIFT 25
 #define SET_TERRAIN_CONSTANT(x,y) \
-	const terrain_translation::TERRAIN_NUMBER terrain_translation::x = (y << SHIFT)
-
+	const TERRAIN_NUMBER x = (y << SHIFT)
 SET_TERRAIN_CONSTANT(VOID_TERRAIN, ' ');
 SET_TERRAIN_CONSTANT(FOGGED, '~');
 SET_TERRAIN_CONSTANT(KEEP, 'K');
@@ -68,6 +70,7 @@ SET_TERRAIN_CONSTANT(EOL, 7);
 SET_TERRAIN_CONSTANT(DOT, '.');
 SET_TERRAIN_CONSTANT(COMMA, ',');
 SET_TERRAIN_CONSTANT(NONE_TERRAIN, 0); // undefined terrain
+
 /*
 const terrain_translation::TERRAIN_NUMBER terrain_translation::VOID_TERRAIN = ' ' ;
 const terrain_translation::TERRAIN_NUMBER terrain_translation::FOGGED = '~' ;
@@ -91,98 +94,30 @@ const terrain_translation::TERRAIN_NUMBER terrain_translation::EOL = 7 ;
 const terrain_translation::TERRAIN_NUMBER terrain_translation::DOT = '.' ;
 const terrain_translation::TERRAIN_NUMBER terrain_translation::COMMA = ',' ;
 */
+/***************************************************************************************/
+// forward declaration of internal functions
 
-terrain_translation::terrain_translation() {}
-terrain_translation::~terrain_translation(){}
+	// This function can convert EOL's and converts them to EOL 
+	// which doesn't need to be and EOL char
+	// this will convert UNIX, Mac and Windows end of line types
+	// this due to the fact they all have a different idea of EOL
+	// Note this also eats all blank lines so the sequence "\n\n\n" will become just 1 EOL
+	std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& map_data, const bool convert_eol, const int separated);
+	
+	std::string vector_to_string_(const std::vector<TERRAIN_NUMBER>& map_data, const int separated);
 
-terrain_translation::TERRAIN_LETTER terrain_translation::number_to_letter_(const terrain_translation::TERRAIN_NUMBER terrain) const
-{
-	TERRAIN_NUMBER tmp = (terrain >> SHIFT);
-	return (TERRAIN_LETTER)(tmp);
-}
+	TERRAIN_LETTER number_to_letter_(const TERRAIN_NUMBER terrain);
+	TERRAIN_NUMBER letter_to_number_(const TERRAIN_LETTER terrain); 
 
-terrain_translation::TERRAIN_NUMBER terrain_translation::letter_to_number_(const terrain_translation::TERRAIN_LETTER terrain) const
-{
-	TERRAIN_NUMBER result = (TERRAIN_NUMBER) terrain;
-	result = (result << SHIFT);
-	return result;
-}
+/***************************************************************************************/	
 
-int terrain_translation::list_to_int(const std::vector<terrain_translation::TERRAIN_NUMBER> number)const
-{
-	std::string data = "";
-	std::vector<TERRAIN_NUMBER>::const_iterator itor = number.begin();
-
-	for(; itor != number.end(); ++itor){
-		data += number_to_letter_(*itor);
-	}
-
-	if(data.find_first_of("0123456789") != std::string::npos) {
-		return atoi(data.c_str());
-	} else {
-		return -1;
-	}
-}
-
-int terrain_translation::letter_to_start_location(const terrain_translation::TERRAIN_NUMBER number) const
-{
-	const TERRAIN_LETTER letter = number_to_letter_(number);
-	if(letter >= '0' && letter <= '9'){
-		return letter - '0';
-	} else {
-		return -1;
-	}
-}
- 
-std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > terrain_translation::get_splitted_list(const std::string& list) const
-{
-
-	//for now use the standard splitter
-	const std::vector<std::string> data = utils::split(list);
-	std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > res;
-	std::vector<terrain_translation::TERRAIN_NUMBER> inner_res;
-	std::vector<std::string>::const_iterator iter = data.begin();
-
-	// convert the string version to the TERRAIN_NUMBER version
-	for(; iter != data.end(); ++iter){
-		std::string::const_iterator inner_iter = iter->begin();
-		for(; inner_iter != iter->begin(); ++inner_iter){
-			inner_res.push_back(letter_to_number_(*inner_iter));
-		}
-		res.push_back(inner_res);
-		inner_res.clear();
-	}
-
-	return res;
-}
-
-terrain_translation::TERRAIN_NUMBER terrain_translation::get_letter(const std::string& letter) const
+TERRAIN_NUMBER read_letter(const std::string& letter)
 {
 	wassert(! letter.empty());
 	return letter_to_number_(letter[0]);
 }
-	
-terrain_translation::TERRAIN_NUMBER terrain_translation::get_start_location(int player) const
-{
-	return get_letter(std::string(1, '1' + player));
-}
 
-std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::get_list(const std::string& list, const int separated) const
-{
-	return string_to_vector_(list, false, separated);
-}
-
-std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::get_map(const std::string& map) const
-{
-	return string_to_vector_(map, true, 0);
-}
-
-std::string terrain_translation::set_map(const std::vector<terrain_translation::TERRAIN_NUMBER>& map) const
-{
-	return vector_to_string_(map, 0);
-}
-	
-std::string terrain_translation::set_letter(const terrain_translation::TERRAIN_NUMBER& letter) const
+std::string write_letter(const TERRAIN_NUMBER& letter)
 {
 	// cheap hack reserve space to 1 char and put it in the string
 	std::string res = "a";
@@ -190,7 +125,31 @@ std::string terrain_translation::set_letter(const terrain_translation::TERRAIN_N
 	return res;
 }
 
-std::string terrain_translation::vector_to_string_(const std::vector<terrain_translation::TERRAIN_NUMBER>& map_data, const int separated) const
+std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated)
+{
+	return string_to_vector_(list, false, separated);
+}
+
+std::string write_list(const std::vector<TERRAIN_NUMBER>& list, const int separated)
+{
+	return vector_to_string_(list, separated);
+}
+
+std::vector<TERRAIN_NUMBER> read_map(const std::string& map)
+{
+	return string_to_vector_(map, true, 0);
+}
+
+std::string write_map(const std::vector<TERRAIN_NUMBER>& map)
+{
+	return vector_to_string_(map, 0);
+}
+
+
+/***************************************************************************************/	
+//internal
+
+std::string vector_to_string_(const std::vector<TERRAIN_NUMBER>& map_data, const int separated)
 {
 	std::string result; 
 
@@ -215,7 +174,7 @@ std::string terrain_translation::vector_to_string_(const std::vector<terrain_tra
 	return result;
 }
 
-std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::string_to_vector_(const std::string& data, const bool convert_eol, const int separated) const
+std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data, const bool convert_eol, const int separated)
 {
 	bool last_eol = false;
 	std::vector<TERRAIN_NUMBER> result = std::vector<TERRAIN_NUMBER>(); 
@@ -245,7 +204,73 @@ std::vector<terrain_translation::TERRAIN_NUMBER> terrain_translation::string_to_
 	return result;
 }
 
-std::string terrain_translation::set_list(const std::vector<terrain_translation::TERRAIN_NUMBER>& list, const int separated) const
+TERRAIN_LETTER number_to_letter_(const TERRAIN_NUMBER terrain)
 {
-	return vector_to_string_(list, separated);
+	TERRAIN_NUMBER tmp = (terrain >> SHIFT);
+	return (TERRAIN_LETTER)(tmp);
+}
+
+TERRAIN_NUMBER letter_to_number_(const TERRAIN_LETTER terrain)
+{
+	TERRAIN_NUMBER result = (TERRAIN_NUMBER) terrain;
+	result = (result << SHIFT);
+	return result;
+}
+
+/***************************************************************************************/	
+// These will probably become obsolete
+
+int letter_to_start_location(const TERRAIN_NUMBER number)
+{
+	const TERRAIN_LETTER letter = number_to_letter_(number);
+	if(letter >= '0' && letter <= '9'){
+		return letter - '0';
+	} else {
+		return -1;
+	}
+}
+
+TERRAIN_NUMBER get_start_location(int player)
+{
+	return read_letter(std::string(1, '1' + player));
+}
+
+int list_to_int(const std::vector<TERRAIN_NUMBER> number)
+{	
+	std::string data = "";
+	std::vector<TERRAIN_NUMBER>::const_iterator itor = number.begin();
+
+	for(; itor != number.end(); ++itor){
+		data += number_to_letter_(*itor);
+	}
+
+	if(data.find_first_of("0123456789") != std::string::npos) {
+		return atoi(data.c_str());
+	} else {
+		return -1;
+	}
+}
+
+std::vector<std::vector<TERRAIN_NUMBER> > get_splitted_list(const std::string& list)
+{
+
+	//for now use the standard splitter
+	const std::vector<std::string> data = utils::split(list);
+	std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > res;
+	std::vector<terrain_translation::TERRAIN_NUMBER> inner_res;
+	std::vector<std::string>::const_iterator iter = data.begin();
+
+	// convert the string version to the TERRAIN_NUMBER version
+	for(; iter != data.end(); ++iter){
+		std::string::const_iterator inner_iter = iter->begin();
+		for(; inner_iter != iter->begin(); ++inner_iter){
+			inner_res.push_back(letter_to_number_(*inner_iter));
+		}
+		res.push_back(inner_res);
+		inner_res.clear();
+	}
+
+	return res;
+}
+
 }

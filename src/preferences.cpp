@@ -77,7 +77,7 @@ manager::manager()
 	std::copy(v.begin(), v.end(),
 			  std::inserter(encountered_units_set, encountered_units_set.begin()));
 	std::vector<terrain_translation::TERRAIN_NUMBER> terrain = 
-		terrain_translation().get_list(prefs["encountered_terrains"],1);
+		terrain_translation::read_list(prefs["encountered_terrains"],1);
 	std::copy(terrain.begin(), terrain.end(), 
 			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
 }
@@ -91,7 +91,7 @@ manager::~manager()
 	std::vector<terrain_translation::TERRAIN_NUMBER> terrain;
 	std::copy(encountered_terrains_set.begin(), encountered_terrains_set.end(),
 			  std::back_inserter(terrain));
-	prefs["encountered_units"] = terrain_translation().set_list(terrain, 1);
+	prefs["encountered_units"] = terrain_translation::write_list(terrain, 1);
 
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();

@@ -109,7 +109,7 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 	std::stringstream out;
 	for(size_t y = 0; y != height_; ++y) {
 		for(size_t x = 0; x != width_; ++x) {
-			out << terrain_translation().set_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
+			out << terrain_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
 		}
 
 		out << "\n";
@@ -361,7 +361,7 @@ void cave_map_generator::set_terrain(gamemap::location loc, terrain_translation:
 void cave_map_generator::place_castle(const std::string& side, gamemap::location loc)
 {
 	if(side != "") {
-		set_terrain(loc, terrain_translation().get_letter(side));
+		set_terrain(loc, terrain_translation::read_letter(side));
 	}
 
 	gamemap::location adj[6];

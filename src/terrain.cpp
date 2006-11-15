@@ -40,24 +40,24 @@ terrain_type::terrain_type(const config& cfg)
 	name_ = cfg["name"];
 	id_ = cfg["id"];
 
-	number_ = terrain_translation().get_letter(cfg["char"]);
+	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
 
 	mvt_type2_.push_back(number_);
 	def_type2_.push_back(number_);
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& alias = 
-		terrain_translation().get_list(cfg["aliasof"]);
+		terrain_translation::read_list(cfg["aliasof"]);
 	if(!alias.empty()) {
 		mvt_type2_ = alias;
 		def_type2_ = alias;
 	}
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_alias = 
-		terrain_translation().get_list(cfg["mvt_alias"]);
+		terrain_translation::read_list(cfg["mvt_alias"]);
 	if(!mvt_alias.empty()) {
 		mvt_type2_ = mvt_alias;
 	}
 
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_alias = 
-		terrain_translation().get_list(cfg["def_alias"]);
+		terrain_translation::read_list(cfg["def_alias"]);
 	if(!def_alias.empty()) {
 		def_type2_ = def_alias;
 	}
