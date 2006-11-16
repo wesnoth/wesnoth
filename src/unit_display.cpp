@@ -461,10 +461,10 @@ void unit_attack(display& disp, unit_map& units,
 		double pos = 0.0;
 	        if(animation_time < attacker.get_animation()->get_begin_time()) {
 			pos = 0.0;
-		} else if( animation_time > 0) {
-			pos = (1.0-double(animation_time)/double(end_time));
+		} else if( animation_time > 0 && end_time > 0) {
+			pos = 1.0-double(animation_time)/double(end_time);
 		} else {
-			pos = 1.0 - double(animation_time)/double(attacker.get_animation()->get_begin_time());
+			pos = 1.0 - double(animation_time)/double(minimum<int>(attacker.get_animation()->get_begin_time(),-150));
 		}
 		if(attacker.state() != unit::STATE_STANDING && pos > 0.0) {
 			attacker.set_offset(pos*0.6);
