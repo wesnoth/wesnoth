@@ -45,44 +45,6 @@ struct time_of_day
 	int red, green, blue;
 };
 
-//class which contains the global status of the game -- namely
-//the current turn, the number of turns, and the time of day.
-class gamestatus
-{
-public:
-	gamestatus(const config& time_cfg, int num_turns);
-	void write(config& cfg) const;
-
-	time_of_day get_time_of_day() const;
-	time_of_day get_previous_time_of_day() const;
-	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc) const;
-	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
-	size_t turn() const;
-	int number_of_turns() const;
-	void modify_turns(const std::string& mod);
-	void add_turns(int num);
-
-	//function to move to the next turn. Returns true iff time
-	//has expired.
-	bool next_turn();
-
-private:
-	time_of_day get_time_of_day_turn(int nturn) const;
-
-	std::vector<time_of_day> times_;
-
-	struct area_time_of_day {
-		std::string xsrc, ysrc;
-		std::vector<time_of_day> times;
-		std::set<gamemap::location> hexes;
-	};
-
-	std::vector<area_time_of_day> areas_;
-
-	size_t turn_;
-	int numTurns_;
-};
-
 /** Information on a particular player of the game. */
 struct player_info
 {
@@ -94,9 +56,6 @@ struct player_info
 	std::set<std::string> can_recruit; /** < units the player has the ability to recruit */
 };
 
-//object which holds all the data needed to start a scenario.
-//i.e. this is the object serialized to disk when saving/loading a game.
-//is also the object which needs to be created to start a new game
 struct game_state : public variable_set
 {
 	game_state() : difficulty("NORMAL") {}
@@ -147,6 +106,48 @@ private:
 	void get_variable_internal(const std::string& key, config& cfg,
 			t_string** varout, config** cfgout);
 };
+
+//class which contains the global status of the game -- namely
+//the current turn, the number of turns, and the time of day.
+class gamestatus
+{
+public:
+        gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g = 0);
+	void write(config& cfg) const;
+
+	time_of_day get_time_of_day() const;
+	time_of_day get_previous_time_of_day() const;
+	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc) const;
+	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
+	size_t turn() const;
+	int number_of_turns() const;
+	void modify_turns(const std::string& mod);
+	void add_turns(int num);
+
+	//function to move to the next turn. Returns true iff time
+	//has expired.
+	bool next_turn();
+
+private:
+	time_of_day get_time_of_day_turn(int nturn) const;
+
+	std::vector<time_of_day> times_;
+
+	struct area_time_of_day {
+		std::string xsrc, ysrc;
+		std::vector<time_of_day> times;
+		std::set<gamemap::location> hexes;
+	};
+
+	std::vector<area_time_of_day> areas_;
+
+	size_t turn_;
+	int numTurns_;
+};
+
+//object which holds all the data needed to start a scenario.
+//i.e. this is the object serialized to disk when saving/loading a game.
+//is also the object which needs to be created to start a new game
 
 struct save_info {
 	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
