@@ -400,7 +400,7 @@ void wait::generate_menu()
 
 #ifdef LOW_MEM
 			leader_image = utypes.find(leader_type)->second.image();
-#else 
+#else
 			leader_image = utypes.find(leader_type)->second.image() + std::string("~TC(") + std::string(utypes.find(leader_type)->second.flag_rgb() + ">" + sd["side"] + ")");
 #endif
 
