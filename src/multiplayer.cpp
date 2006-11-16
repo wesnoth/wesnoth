@@ -215,7 +215,8 @@ server_type open_connection(display& disp, const std::string& original_host)
 		}
 	} while(!(data.child("join_lobby") || data.child("join_game")));
 
-	preferences::set_network_host(h);
+	if (h != preferences::official_network_host())
+		preferences::set_network_host(h);
 
 	if (data.child("join_lobby")) {
 		return WESNOTHD_SERVER;
