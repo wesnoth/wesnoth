@@ -62,16 +62,20 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_income_(parent.video()),
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOUR),
-	enabled_(!parent_->params_.saved_game),
-	changed_(false),
+	allow_player_(utils::string_bool(cfg_["allow_player"], true)),
+	enabled_(!parent_->params_.saved_game), changed_(false),
 	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL)
 {
-	if(utils::string_bool(cfg_["allow_player"], true) && enabled_) {
+	if(allow_player_ && enabled_) {
 		controller_ = parent_->default_controller_;
 	} else {
-		for(size_t i = CNTR_NETWORK; i != CNTR_LAST; ++i) {
+		size_t i = CNTR_NETWORK;
+		//if player isn't allowed, network controller doesn't make sense
+		if (!allow_player_)
+			++i;
+		for(; i != CNTR_LAST; ++i) {
 			if(cfg_["controller"] == controller_names[i]) {
-				controller_ = (mp::controller)i;
+				controller_ = static_cast<mp::controller>(i);
 				break;
 			}
 		}
@@ -248,7 +252,8 @@ connect::side::side(const side& a) :
 	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
 	slider_gold_(a.slider_gold_), slider_income_(a.slider_income_),
 	label_gold_(a.label_gold_), label_income_(a.label_income_),
-	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
+	allow_player_(a.allow_player_), enabled_(a.enabled_),
+	changed_(a.changed_), llm_(a.llm_)
 {
 	llm_.set_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
 }
@@ -366,7 +371,12 @@ bool connect::side::changed()
 
 bool connect::side::available() const
 {
-	return controller_ == CNTR_NETWORK && id_.empty();
+	return allow_player_ && controller_ == CNTR_NETWORK && id_.empty();
+}
+
+bool connect::side::allow_player() const
+{
+	return allow_player_;
 }
 
 void connect::side::update_controller_ui()
@@ -774,13 +784,21 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 		throw config::error(_("The scenario is invalid because it has no sides."));
 	}
 
-	int side_choice = 0;
+	//take the first available side or available side with id == login
+	int side_choice = -1;
 	for(side_list::const_iterator s = sides_.begin(); s != sides_.end(); ++s) {
-		if(s->get_save_id() == preferences::login()) {
-			side_choice = s - sides_.begin();
+		if (s->allow_player()) {
+			if (side_choice == -1)
+				side_choice = s - sides_.begin();
+			if(s->get_save_id() == preferences::login()) {
+				side_choice = s - sides_.begin();
+				break;
+			}
 		}
 	}
-	sides_[side_choice].set_id(preferences::login());
+
+	if (side_choice != -1)
+		sides_[side_choice].set_id(preferences::login());
 
 	update_playerlist_state();
 
