@@ -49,7 +49,7 @@ bool notspace(char c);
 // STRIP_SPACES : strips leading and trailing blank spaces
 enum { REMOVE_EMPTY = 0x01, STRIP_SPACES = 0x02 };
 std::vector< std::string > split(std::string const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
-std::vector< std::string > paranthetical_split(std::string const &val, std::string const &left="(", std::string const &right=")",int flags = STRIP_SPACES);
+std::vector< std::string > paranthetical_split(std::string const &val, const char separator = 0 , std::string const &left="(", std::string const &right=")",int flags = STRIP_SPACES);
 std::string join(std::vector< std::string > const &v, char c = ',');
 std::vector< std::string > quoted_split(std::string const &val, char c= ',',
                                         int flags = REMOVE_EMPTY | STRIP_SPACES, char quote = '\\');
