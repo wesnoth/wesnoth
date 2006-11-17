@@ -441,7 +441,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			flag = game_config::flag_image;
 			old_rgb = game_config::flag_rgb;
 			new_rgb = team::get_side_colour_index(playing_side);
-			mods = "~TC(" + old_rgb + ">" + new_rgb + ")";
+			mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 		} else {
 			flag = current_team.flag();
 		}

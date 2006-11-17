@@ -273,7 +273,7 @@ namespace events{
 
 			str << IMAGE_PREFIX << type->second.image();
 #ifndef LOW_MEM
-			str << "~TC(" << type->second.flag_rgb() << ">" << team << ")";
+			str << "~RC(" << type->second.flag_rgb() << ">" << team << ")";
 #endif
 			str << COLUMN_SEPARATOR	<< type->second.language_name() << COLUMN_SEPARATOR << i->second << "\n";
 			table.push_back(str.str());
@@ -398,7 +398,7 @@ namespace events{
 				}
 
 #ifndef LOW_MEM
-				str << "~TC(" << leader->second.team_color() << ">" << team::get_side_colour_index(n+1) << ")";
+				str << "~RC(" << leader->second.team_color() << ">" << team::get_side_colour_index(n+1) << ")";
 #endif
 				str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm';
 				// Delete all tags before name
@@ -667,7 +667,7 @@ namespace events{
 			std::stringstream description;
 			description << font::IMAGE << type.image();
 #ifndef LOW_MEM
-			description << "~TC(" << type.flag_rgb() << ">" << team::get_side_colour_index(team_num) << ")";
+			description << "~RC(" << type.flag_rgb() << ">" << team::get_side_colour_index(team_num) << ")";
 #endif
 			description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type.language_name() << "\n"
 					<< prefix << type.cost() << " " << sgettext("unit^Gold");
@@ -808,7 +808,7 @@ namespace events{
 
 				option << IMAGE_PREFIX << u->absolute_image();
 #ifndef LOW_MEM
-				option << "~TC("  << u->team_color() << ">" << team::get_side_colour_index(team_num) << ")";
+				option << "~RC("  << u->team_color() << ">" << team::get_side_colour_index(team_num) << ")";
 #endif
 				option << COLUMN_SEPARATOR
 					<< u->language_name() << COLUMN_SEPARATOR

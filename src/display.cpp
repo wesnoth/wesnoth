@@ -134,7 +134,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 				time = 100;
 			}
 			std::stringstream temp;
-			temp << str << "~TC(" << old_rgb << ">"<< new_rgb << ")";
+			temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
 			image::locator flag_image(temp.str());
 			temp_anim.add_frame(time, flag_image);
 		}

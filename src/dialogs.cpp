@@ -339,7 +339,7 @@ void save_preview_pane::draw_contents()
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->second.image(),image::UNSCALED));
 #else
-		const surface image(image::get_image(leader->second.image() + "~TC(" + leader->second.flag_rgb() + ">1)",image::UNSCALED));
+		const surface image(image::get_image(leader->second.image() + "~RC(" + leader->second.flag_rgb() + ">1)",image::UNSCALED));
 #endif
 
 		if(image != NULL) {

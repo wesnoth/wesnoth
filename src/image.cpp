@@ -318,7 +318,7 @@ surface locator::load_image_sub_file() const
 
 	if(val_.modifications_.size()){
 		std::map<Uint32, Uint32> recolor_map;
-		std::vector<std::string> modlist = utils::split(val_.modifications_,'~');
+		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
 		for(std::vector<std::string>::const_iterator i=modlist.begin();
 			i!= modlist.end();i++){
 			std::vector<std::string> tmpmod = utils::paranthetical_split(*i);
@@ -333,7 +333,21 @@ surface locator::load_image_sub_file() const
 					break;
 				}
 				std::string field = *j++;
-				if("TC" == function){
+				if("TC" == function){//deprecated team coloring syntax
+					//replace with proper RC syntax
+					std::string::size_type pos = 0;
+					pos = field.find(',');
+					if (pos == std::string::npos)
+						break;
+					std::string f1,f2;
+					f1 = field.substr(0,pos);
+					f2 = field.substr(pos,field.size()-pos-1);
+					if(game_config::tc_info(f2).size()){
+						function="RC";
+						field= f2 + ">" + f1;
+					}						
+				}
+				if("RC" == function){
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
 						std::map<std::string, color_range>::const_iterator nc = game_config::team_rgb_range.find(recolor[1]);

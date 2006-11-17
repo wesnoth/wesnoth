@@ -1961,9 +1961,9 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		
 		std::string tc=team::get_side_colour_index(side_);
 
-		snprintf(buf,sizeof(buf),"%s-%stop.png~TC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
+		snprintf(buf,sizeof(buf),"%s-%stop.png~RC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
 		ellipse_back.assign(image::get_image(image::locator(buf)));
-		snprintf(buf,sizeof(buf),"%s-%sbottom.png~TC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
+		snprintf(buf,sizeof(buf),"%s-%sbottom.png~RC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
 		ellipse_front.assign(image::get_image(image::locator(buf)));
 	}
 
@@ -2682,7 +2682,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 			}
 			LOG_UT << "applying image_mod \n";
 			mod = (**i.first)["add"];
-			if (mod.empty()){
+			if (!mod.empty()){
 				image_mods_ += mod;
 			}			
 			
@@ -3269,7 +3269,7 @@ temporary_unit_placer::~temporary_unit_placer()
 std::string unit::image_mods() const{
 	std::stringstream modifier;
 	if(flag_rgb_.size()){
-		modifier << "~TC("<< flag_rgb_ << ">" << team::get_side_colour_index(side()) << ")";
+		modifier << "~RC("<< flag_rgb_ << ">" << team::get_side_colour_index(side()) << ")";
 	}
 	if(image_mods_.size()){
 		modifier << "~" << image_mods_;

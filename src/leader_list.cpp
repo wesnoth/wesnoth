@@ -101,7 +101,7 @@ void leader_list_manager::populate_combo(int selected_index) {
 #ifdef LOW_MEM
 			leader_strings.push_back(IMAGE_PREFIX + image + COLUMN_SEPARATOR + name);
 #else
-			leader_strings.push_back(IMAGE_PREFIX + image + std::string("~TC(" + utypes.find(*itor)->second.flag_rgb() + ">1)") + COLUMN_SEPARATOR + name);
+			leader_strings.push_back(IMAGE_PREFIX + image + std::string("~RC(" + utypes.find(*itor)->second.flag_rgb() + ">1)") + COLUMN_SEPARATOR + name);
 #endif
 		} else {
 			if(*itor == "random") {
