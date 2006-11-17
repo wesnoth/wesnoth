@@ -341,7 +341,7 @@ surface locator::load_image_sub_file() const
 						break;
 					std::string f1,f2;
 					f1 = field.substr(0,pos);
-					f2 = field.substr(pos,field.size()-pos-1);
+					f2 = field.substr(pos+1);
 					if(game_config::tc_info(f2).size()){
 						function="RC";
 						field= f2 + ">" + f1;
