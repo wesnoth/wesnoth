@@ -62,9 +62,6 @@ std::string &strip(std::string &str);
 bool has_value(std::string const &values, std::string const &val);
 bool string_bool(const std::string& str,bool def=false);
 
-//converts an integer to a string
-std::string itoa(const int value);
-
 /*	checks the username is valid (all alpha-numeric or space (but no space at ends))
 	does not check length, disallow-list, or already in use */
 bool isvalid_username(const std::string &login);

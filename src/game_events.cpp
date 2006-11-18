@@ -895,7 +895,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				return rval;
 			} else {
 				value %= divider;
-				var = utils::itoa(value);
+				var = str_cast(value);
 			}
 		}
 
