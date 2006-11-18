@@ -1,5 +1,4 @@
 /* $Id$ */
-/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -884,6 +883,19 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				char buf[50];
 				snprintf(buf,sizeof(buf),"%d",value);
 				var = buf;
+			}
+		}
+
+		const std::string& modulo = cfg["modulo"];
+		if(modulo.empty() == false) {
+			int value = atoi(var.c_str());
+			int divider = atoi(modulo.c_str());
+			if (divider == 0) {
+				ERR_NG << "division by zero on variable " << name << "\n";
+				return rval;
+			} else {
+				value %= divider;
+				var = utils::itoa(value);
 			}
 		}
 
