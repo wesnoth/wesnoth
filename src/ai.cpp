@@ -485,6 +485,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 
 	up->first = to;
 	info_.units.add(up);
+	up->second.set_standing(info_.disp,up->first);
 	if(info_.map.is_village(to)) {
 		// if a new village is captured, disallow any future movement
 		if (!info_.teams[info_.team_num-1].owns_village(to))

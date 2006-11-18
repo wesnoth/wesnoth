@@ -961,6 +961,7 @@ namespace events{
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
 			units_.add(up);
+			up->second.set_standing(*gui_,up->first);
 			gui_->invalidate(route.back());
 			gui_->draw();
 		}
@@ -1084,6 +1085,7 @@ namespace events{
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
 			units_.add(up);
+			up->second.set_standing(*gui_,up->first);
 
 			if(map_.is_village(route.back())) {
 				get_village(route.back(),teams_,up->second.side()-1,units_);

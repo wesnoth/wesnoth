@@ -1925,6 +1925,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	p->first = steps.back();
 	units.add(p);
 	ui = units.find(p->first);
+	ui->second.set_standing(*disp,ui->first);
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate(steps.back());

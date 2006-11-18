@@ -24,6 +24,8 @@
 #include "color_range.hpp"
 #include "unit.hpp"
 #include "display.hpp"
+#include "pathutils.hpp"
+
 
 #include <algorithm>
 #include <cstdlib>
@@ -124,6 +126,10 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	}
 	frequency_ = atoi(cfg["frequency"].c_str());	
 
+	for(itor = cfg.child_range("neighbour_unit_filter").first; itor <cfg.child_range("neighbour_unit_filter").second;itor++) {
+		neighbour_unit_filter_.push_back(**itor);
+	}
+
 	/* warn on deprecated WML */
 	if(cfg.child("sound")) {
 		LOG_STREAM(err, config) << "an animation uses the deprecated [sound] tag, please include sound in the [frame] tag\n";
@@ -163,7 +169,7 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 				if(unit->first == facing_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); second_itor++) {
-						if(!my_unit->matches_filter(*second_itor,facing_loc)) return -1;
+						if(!unit->second.matches_filter(*second_itor,facing_loc)) return -1;
 						result++;
 					}
 
@@ -171,6 +177,26 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 				}
 			}
 			if(unit == disp.get_const_units().end()) return -1;
+		}
+		if(!neighbour_unit_filter_.empty()) {
+			gamemap::location neighbour_loc[6] ;
+			get_adjacent_tiles(loc,neighbour_loc);
+			unit_map::const_iterator unit;
+			std::vector<config>::const_iterator second_itor;
+			for(second_itor = neighbour_unit_filter_.begin(); second_itor != neighbour_unit_filter_.end(); second_itor++) {
+				bool found = false;
+				for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; unit++) {
+					for(int dir =0; dir < 6 ;dir++) {
+						if(unit->first == neighbour_loc[dir]) {
+							if(unit->second.matches_filter(*second_itor,neighbour_loc[dir])) {
+								result++;
+								found=true;
+							}
+						}
+					}
+				}
+				if(!found) return -1;
+			}
 		}
 
 	} else if (!unit_filter_.empty()) return -1;
