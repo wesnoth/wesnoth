@@ -153,6 +153,8 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	units.add(new std::pair<gamemap::location,unit>(recruit_location,new_unit));
 
+	LOG_NG << "firing prerecruit event\n";
+	game_events::fire("prerecruit",recruit_location);
 	if(show) {
 	    unit_map::iterator un = disp->get_units().find(recruit_location);
 	    if( un !=disp->get_units().end()) {

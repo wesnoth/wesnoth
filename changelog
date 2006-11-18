@@ -41,6 +41,7 @@ Version 1.3-svn:
    * show leader's name and colour at status table even when that team is fogged
      (patch #605)
  * WML engine
+   * added prerecruit event that takes place after the unit is created but before it is displayed.
    * added ability to define color ranges and palettes in scenario, units, and unit modification effects.  Added ability to add image modifications in a unit modification [effect] tag
    * overhaul of team coloring engine.  Now possible to apply multiple TC to an image.
    * added fourth color in team_rgb definitions for representative color in minimap
