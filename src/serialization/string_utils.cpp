@@ -387,6 +387,13 @@ bool string_bool(const std::string& str,bool def)
 	return def;
 }
 
+std::string itoa(const int value){
+	char buf[50];
+
+	snprintf(buf, sizeof(buf), "%d", value);
+	return buf;
+}
+
 bool isvalid_username(const std::string& username)
 {
 	//check the username is valid (all alpha-numeric or space (but no space at ends))
