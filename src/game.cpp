@@ -76,6 +76,7 @@ class game_controller
 {
 public:
 	game_controller(int argc, char** argv);
+	~game_controller();
 
 	display& disp();
 
@@ -1570,6 +1571,11 @@ void game_controller::play_replay()
 	}
 }
 
+game_controller::~game_controller()
+{
+	delete gui::empty_menu;
+}
+
 int play_game(int argc, char** argv)
 {
 	const int start_ticks = SDL_GetTicks();
@@ -1913,7 +1919,6 @@ int main(int argc, char** argv)
 		std::cerr << "Unhandled exception. Exiting\n";
 	}
 #endif
-	delete gui::empty_menu;
 	filesystem_close();
 
 	return 0;
