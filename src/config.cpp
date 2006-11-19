@@ -570,6 +570,34 @@ config config::merge_with(const config& c) const
 	return n;
 }
 
+bool config::matches(const config &filter) const
+{
+	// first match values. all values should match
+	for(string_map::const_iterator j = filter.values.begin(); j != filter.values.end(); ++j) {
+		if(!this->values.count(j->first)) return false; 
+		if(this->values.find(j->first)->second != j->second) return false;
+
+	}
+	
+	//now, match the kids
+	for(all_children_iterator i = filter.ordered_begin(); i != filter.ordered_end(); ++i) {
+		if(*(*i).first == "not") continue;
+		child_list interesting_children = get_children(*(*i).first);
+		bool found = false;
+		for(child_list::iterator j = interesting_children.begin(); j != interesting_children.end(); ++j) {
+			if((*j)->matches(*(*i).second)) {
+				found = true;
+			}
+		}
+		if(!found) return false;
+	}
+	child_list negative_children = filter.get_children("not");
+	for(child_list::iterator j = negative_children.begin() ; j != negative_children.end() ; j++) {
+		if(matches(**j)) return false;
+	}
+	return true;
+}
+
 void config::prune() {
 	string_map::iterator val = values.begin();
 	while(val != values.end()) {
