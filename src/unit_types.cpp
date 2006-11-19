@@ -619,11 +619,10 @@ unit_type::unit_type(const unit_type& o)
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
       standing_animations_(o.standing_animations_),leading_animations_(o.leading_animations_),
-      healing_animations_(o.healing_animations_),
-      victory_animations_(o.victory_animations_),
-      recruit_animations_(o.recruit_animations_),
-      idle_animations_(o.idle_animations_), levelin_animations_(o.levelin_animations_),
-      levelout_animations_(o.levelout_animations_),
+      healing_animations_(o.healing_animations_), victory_animations_(o.victory_animations_),
+      recruit_animations_(o.recruit_animations_), idle_animations_(o.idle_animations_),
+      levelin_animations_(o.levelin_animations_), levelout_animations_(o.levelout_animations_),
+      healed_animations_(o.healed_animations_), poison_animations_(o.poison_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -899,6 +898,24 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(levelout_animations_.empty()) {
 		levelout_animations_.push_back(levelout_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"0~1:600")));
 		// always have a levelout animation
+	}
+	expanded_cfg = unit_animation::prepare_animation(cfg,"healed_anim");
+	const config::child_list& healed_anims = expanded_cfg.get_children("healed_anim");
+	for(config::child_list::const_iterator healed_anim = healed_anims.begin(); healed_anim != healed_anims.end(); ++healed_anim) {
+		healed_animations_.push_back(healed_animation(**healed_anim));
+	}
+	if(healed_animations_.empty()) {
+		healed_animations_.push_back(healed_animation(0,unit_frame(image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30")));
+		// always have a healed animation
+	}
+	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
+	const config::child_list& poison_anims = expanded_cfg.get_children("poison_anim");
+	for(config::child_list::const_iterator poison_anim = poison_anims.begin(); poison_anim != poison_anims.end(); ++poison_anim) {
+		poison_animations_.push_back(poison_animation(**poison_anim));
+	}
+	if(poison_animations_.empty()) {
+		poison_animations_.push_back(poison_animation(0,unit_frame(image(),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30")));
+		// always have a poison animation
 	}
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);

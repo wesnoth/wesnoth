@@ -184,5 +184,29 @@ class levelout_animation:public unit_animation
 	private:
 };
 
+class poison_animation:public unit_animation
+{
+	public:
+		explicit poison_animation(const config& cfg);
+		explicit poison_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
+		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
+
+	private:
+		std::vector<int> damage_;
+};
+
+class healed_animation:public unit_animation
+{
+	public:
+		explicit healed_animation(const config& cfg);
+		explicit healed_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
+		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,int healing) const;
+
+	private:
+		std::vector<int> healing_;
+};
+
 
 #endif

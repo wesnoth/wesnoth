@@ -70,6 +70,9 @@ Version 1.3-svn:
    * units now have idle animations, played when they've been idle for some time
    * units now have leveling up animations
    * units can now have victory animations,  usable with the WML tag 'victory_anim' 
+   * units can now have healed animations,  used when they get healed
+   * units can now have poison animations,  used when they suffer poison
+   damage
    * [event]s can now be written also inside [era]s (the [event]s are included
      in every scenario played using that era)
    * new operations for set_variable : divide and modulo

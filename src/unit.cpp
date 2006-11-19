@@ -152,6 +152,8 @@ unit::unit(const unit& o):
 		idle_animations_(o.idle_animations_),
 		levelin_animations_(o.levelin_animations_),
 		levelout_animations_(o.levelout_animations_),
+		healed_animations_(o.healed_animations_),
+		poison_animations_(o.poison_animations_),
 		anim_(NULL),
 
 		frame_begin_time(o.frame_begin_time),
@@ -434,6 +436,8 @@ void unit::advance_to(const unit_type* t)
 	idle_animations_ = t->idle_animations_;
 	levelin_animations_ = t->levelin_animations_;
 	levelout_animations_ = t->levelout_animations_;
+	healed_animations_ = t->healed_animations_;
+	poison_animations_ = t->poison_animations_;
 	flag_rgb_ = t->flag_rgb();
 
 	backup_state();
@@ -1299,6 +1303,8 @@ void unit::read(const config& cfg)
 			idle_animations_ = ut->idle_animations_;
 			levelin_animations_ = ut->levelin_animations_;
 			levelout_animations_ = ut->levelout_animations_;
+			healed_animations_ = ut->healed_animations_;
+			poison_animations_ = ut->poison_animations_;
 			// remove animations from private cfg, since they're not needed there now
 			cfg_.clear_children("defend");
 			cfg_.clear_children("teleport_anim");
@@ -1312,7 +1318,9 @@ void unit::read(const config& cfg)
 			cfg_.clear_children("recruit_anim");
 			cfg_.clear_children("idle_anim");
 			cfg_.clear_children("levelin_anim");
-			cfg_.clear_children("levelou_anim");
+			cfg_.clear_children("levelout_anim");
+			cfg_.clear_children("healed_anim");
+			cfg_.clear_children("poison_anim");
 		} else {
 			const config::child_list& defends = cfg_.get_children("defend");
 			const config::child_list& teleports = cfg_.get_children("teleport_anim");
@@ -1327,6 +1335,8 @@ void unit::read(const config& cfg)
 			const config::child_list& idle_anims = cfg_.get_children("idle_anim");
 			const config::child_list& levelin_anims = cfg_.get_children("levelin_anim");
 			const config::child_list& levelout_anims = cfg_.get_children("levelout_anim");
+			const config::child_list& healed_anims = cfg_.get_children("healed_anim");
+			const config::child_list& poison_anims = cfg_.get_children("poison_anim");
 			for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 				defensive_animations_.push_back(defensive_animation(**d));
 			}
@@ -1416,7 +1426,7 @@ void unit::read(const config& cfg)
 				levelin_animations_.push_back(levelin_animation(**levelin_anim));
 			}
 			if(levelin_animations_.empty()) {
-				levelout_animations_.push_back(levelout_animation(0,unit_frame(absolute_image(),600,"1.0","",display::rgb(255,255,255),"1~0:600")));
+				levelin_animations_.push_back(levelin_animation(0,unit_frame(absolute_image(),600,"1.0","",display::rgb(255,255,255),"1~0:600")));
 				// always have a levelin animation
 			}
 
@@ -1426,6 +1436,22 @@ void unit::read(const config& cfg)
 			if(levelout_animations_.empty()) {
 				levelout_animations_.push_back(levelout_animation(0,unit_frame(absolute_image(),600,"1.0","",display::rgb(255,255,255),"0~1:600")));
 				// always have a levelout animation
+			}
+
+			for(config::child_list::const_iterator healed_anim = healed_anims.begin(); healed_anim != healed_anims.end(); ++healed_anim) {
+				healed_animations_.push_back(healed_animation(**healed_anim));
+			}
+			if(healed_animations_.empty()) {
+				healed_animations_.push_back(healed_animation(0,unit_frame(absolute_image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30")));
+				// always have a healed animation
+			}
+
+			for(config::child_list::const_iterator poison_anim = poison_anims.begin(); poison_anim != poison_anims.end(); ++poison_anim) {
+				poison_animations_.push_back(poison_animation(**poison_anim));
+			}
+			if(poison_animations_.empty()) {
+				poison_animations_.push_back(poison_animation(0,unit_frame(absolute_image(),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30")));
+				// always have a healed animation
 			}
 
 		}
@@ -1439,10 +1465,13 @@ void unit::read(const config& cfg)
 		cfg_.clear_children("standing_anim");
 		cfg_.clear_children("leading_anim");
 		cfg_.clear_children("healing_anim");
+		cfg_.clear_children("victory_anim");
 		cfg_.clear_children("recruit_anim");
 		cfg_.clear_children("idle_anim");
 		cfg_.clear_children("levelin_anim");
 		cfg_.clear_children("levelout_anim");
+		cfg_.clear_children("healed_anim");
+		cfg_.clear_children("poison_anim");
 	}
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
@@ -1735,25 +1764,25 @@ void unit::set_recruited(const display &disp,const gamemap::location& loc)
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
 }
-void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int /*healing*/)
+void unit::set_healed(const display &disp,const gamemap::location& loc, int healing)
 {
 	state_ = STATE_HEALED;
 	draw_bars_ = true;
 
 	delete anim_;
 
-	anim_ = new unit_animation(0,unit_frame(absolute_image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
+	anim_ = new healed_animation(get_healed_animation(disp,loc,healing));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
 }
-void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, int /*damage*/)
+void unit::set_poisoned(const display &disp,const gamemap::location& loc, int damage)
 {
 	state_ = STATE_POISONED;
 	draw_bars_ = true;
 
 	delete anim_;
 
-	anim_ = new unit_animation(0,unit_frame(absolute_image(),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"));
+	anim_ = new poison_animation(poisoned_animation(disp,loc,damage));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
 }
@@ -3086,6 +3115,45 @@ const levelout_animation& unit::levelingout_animation(const display& disp, const
 	return *options[rand()%options.size()];
 }
 
+const healed_animation& unit::get_healed_animation(const display& disp, const gamemap::location& loc,int healing) const
+{
+	//select one of the matching animations at random
+	std::vector<const healed_animation*> options;
+	int max_val = -1;
+	for(std::vector<healed_animation>::const_iterator i = healed_animations_.begin(); i != healed_animations_.end(); ++i) {
+		int matching = i->matches(disp,loc,this,healing);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
+
+const poison_animation& unit::poisoned_animation(const display& disp, const gamemap::location& loc,int damage) const
+{
+	//select one of the matching animations at random
+	std::vector<const poison_animation*> options;
+	int max_val = -1;
+	for(std::vector<poison_animation>::const_iterator i = poison_animations_.begin(); i != poison_animations_.end(); ++i) {
+		int matching = i->matches(disp,loc,this,damage);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
 void unit::apply_modifications()
 {
 	log_scope("apply mods");

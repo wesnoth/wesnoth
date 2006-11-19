@@ -289,3 +289,46 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 }
 
 
+int poison_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
+{
+	int result = unit_animation::matches(disp,loc,my_unit);
+	if(damage_.empty() == false ) {
+		if (std::find(damage_.begin(),damage_.end(),damage)== damage_.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
+	}
+	return result;
+}
+
+int healed_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int healing) const
+{
+	int result = unit_animation::matches(disp,loc,my_unit);
+	if(healing_.empty() == false ) {
+		if (std::find(healing_.begin(),healing_.end(),healing)== healing_.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
+	}
+	return result;
+}
+
+poison_animation::poison_animation(const config& cfg) :unit_animation(cfg) 
+{
+	std::vector<std::string> damage_str = utils::split(cfg["damage"]);
+	std::vector<std::string>::iterator damage;
+	for(damage=damage_str.begin() ; damage != damage_str.end() ; damage++) {
+		damage_.push_back(atoi(damage->c_str()));
+	}
+}
+
+healed_animation::healed_animation(const config& cfg) :unit_animation(cfg) 
+{
+	std::vector<std::string> damage_str = utils::split(cfg["healing"]);
+	std::vector<std::string>::iterator damage;
+	for(damage=damage_str.begin() ; damage != damage_str.end() ; damage++) {
+		healing_.push_back(atoi(damage->c_str()));
+	}
+}
