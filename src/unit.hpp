@@ -253,7 +253,7 @@ class unit
 		const healing_animation& heal_animation(const display& disp, const gamemap::location& loc) const;
 		const victory_animation& victorious_animation(const display& disp, const gamemap::location& loc) const;
 		const recruit_animation& recruiting_animation(const display& disp, const gamemap::location& loc) const;
-		const idle_animation& idling_animation(const display& disp, const gamemap::location& loc) const;
+		const idle_animation* idling_animation(const display& disp, const gamemap::location& loc) const;
 		const levelin_animation& levelingin_animation(const display& disp, const gamemap::location& loc) const;
 		const levelout_animation& levelingout_animation(const display& disp, const gamemap::location& loc) const;
 		const healed_animation& get_healed_animation(const display& disp, const gamemap::location& loc,int healing) const;

@@ -1417,10 +1417,7 @@ void unit::read(const config& cfg)
 			for(config::child_list::const_iterator idle_anim = idle_anims.begin(); idle_anim != idle_anims.end(); ++idle_anim) {
 				idle_animations_.push_back(idle_animation(**idle_anim));
 			}
-			if(idle_animations_.empty()) {
-				idle_animations_.push_back(idle_animation(0,unit_frame(absolute_image(),1)));
-				// always have a idle animation
-			}
+			// idle animations can be empty
 
 			for(config::child_list::const_iterator levelin_anim = levelin_anims.begin(); levelin_anim != levelin_anims.end(); ++levelin_anim) {
 				levelin_animations_.push_back(levelin_animation(**levelin_anim));
@@ -1859,7 +1856,9 @@ void unit::set_idling(const display &disp,const gamemap::location& loc)
 
 	delete anim_;
 
-	anim_ = new idle_animation(idling_animation(disp,loc));
+	const idle_animation * tmp = idling_animation(disp,loc);
+	if(!tmp) {set_standing(disp,loc) ; return; }
+	anim_ = new idle_animation(*tmp);
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
 }
@@ -3055,7 +3054,7 @@ const recruit_animation& unit::recruiting_animation(const display& disp, const g
 	return *options[rand()%options.size()];
 }
 
-const idle_animation& unit::idling_animation(const display& disp, const gamemap::location& loc) const
+const idle_animation* unit::idling_animation(const display& disp, const gamemap::location& loc) const
 {
 	//select one of the matching animations at random
 	std::vector<const idle_animation*> options;
@@ -3071,8 +3070,8 @@ const idle_animation& unit::idling_animation(const display& disp, const gamemap:
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
 const levelin_animation& unit::levelingin_animation(const display& disp, const gamemap::location& loc) const
