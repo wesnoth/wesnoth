@@ -340,7 +340,10 @@ surface locator::load_image_sub_file() const
 					if (pos == std::string::npos)
 						break;
 					std::string f1,f2;
-					f1 = field.substr(0,pos);
+					int side_n = lexical_cast_default<int>(field.substr(0,pos),-1);
+					if (side_n < 0)
+						break;
+					f1 = team::get_side_colour_index(side_n);
 					f2 = field.substr(pos+1);
 					if(game_config::tc_info(f2).size()){
 						function="RC";
