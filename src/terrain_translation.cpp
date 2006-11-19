@@ -22,29 +22,8 @@
 
 namespace terrain_translation {
 
-//FIXME MdW remove the shift
-// This shift is a dummy, since I've only terrains in the 0 - 127 range
-// things work too often too good :(. With the shift I shift the terrains
-// in different ranges. This is only for debugging.
-// Tested and working shifts 0, 3 - 8, 10, 15 - 17, 20
-// 24 aborts with out of memory :(
-// memory usage statistics starting the tutorial
-// NOTE, samples just from one run so not really reliable
-// but the problem becomes clear. When using high terrain numbers the
-// memory usage becomes unacceptable
-//            VIRT   RES  SHR
-// shoft 0    53220  40m  18m
-// shift 5    53336  40m  18m
-// shift 10   53632  40m  18m
-// shift 15   66772  53m  18m
-// shift 16   77960  64m  18m 
-// shift 17   100m   88m  18m
-// shift 20   436m   302m 18m
-// After the fix tested 24, 25 both work and the memory consumption of 25 is normal
-
-#define SHIFT 25
 #define SET_TERRAIN_CONSTANT(x,y) \
-	const TERRAIN_NUMBER x = (y << SHIFT)
+	const TERRAIN_NUMBER x = (y)
 SET_TERRAIN_CONSTANT(VOID_TERRAIN, ' ');
 SET_TERRAIN_CONSTANT(FOGGED, '~');
 SET_TERRAIN_CONSTANT(KEEP, 'K');
@@ -206,14 +185,14 @@ std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data, const boo
 
 TERRAIN_LETTER number_to_letter_(const TERRAIN_NUMBER terrain)
 {
-	TERRAIN_NUMBER tmp = (terrain >> SHIFT);
+	TERRAIN_NUMBER tmp = (terrain);
 	return (TERRAIN_LETTER)(tmp);
 }
 
 TERRAIN_NUMBER letter_to_number_(const TERRAIN_LETTER terrain)
 {
 	TERRAIN_NUMBER result = (TERRAIN_NUMBER) terrain;
-	result = (result << SHIFT);
+	result = (result);
 	return result;
 }
 

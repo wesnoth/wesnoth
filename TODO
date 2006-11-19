@@ -24,6 +24,4 @@ src/mapgen.cpp:1039:		terrain[x][y] = terrain_translation::get_start_location(pl
 src/map.hpp:198:	//The terrain string with TERRAIN_NUMBER should be make FIXME MdW
 src/terrain.cpp:43:	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
 src/terrain.hpp:37:	//FIXME MdW maybe reinstall the letter later again after debugging everything
-src/terrain_translation.cpp:25://FIXME MdW remove the shift
-src/terrain_translation.hpp:14://FIXME MdW is Makefile.am good modified
-src/terrain_translation.hpp:90:	//FIXME MdW this function needs to be modified later on
+src/terrain_translation.hpp:86:	//FIXME MdW this function needs to be modified later on

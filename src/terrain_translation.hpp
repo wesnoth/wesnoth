@@ -11,14 +11,10 @@
    See the COPYING file for more details.
 */
 
-//FIXME MdW is Makefile.am good modified
-//do I need to change the $Id line??
-
 #ifndef TERRAIN_TRANSLATION_H_INCLUDED
 #define TERRAIN_TRANSLATION_H_INCLUDED
 
-class config;
-
+#include <SDL_types.h> //used for Uint32 definition
 #include <string>
 #include <vector>
 
@@ -28,7 +24,7 @@ namespace terrain_translation {
 
 	//The new definition of terrain
 	typedef char TERRAIN_LETTER;
-	typedef unsigned long TERRAIN_NUMBER;
+	typedef Uint32 TERRAIN_NUMBER;
 
 	//some types of terrain which must be known, and can't just be loaded
 	//in dynamically because they're special. It's asserted that there will
