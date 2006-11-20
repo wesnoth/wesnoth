@@ -912,9 +912,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			if(!replayer.is_skipping()) {
-				u->second.set_hidden(true);
 				unit_display::move_unit(disp,map,rt->second.steps,u->second,units,teams);
-				u->second.set_hidden(false);
 			}
 			else{
 				//unit location needs to be updated

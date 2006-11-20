@@ -187,6 +187,7 @@ class unit
 		int upkeep() const;
 
 		void set_hidden(bool state) {hidden_ = state;};
+		bool get_hidden() { return hidden_; };
 		bool is_flying() const;
 		int movement_cost(gamemap::TERRAIN terrain, int recurse_count=0) const;
 		int defense_modifier(gamemap::TERRAIN terrain, int recurse_count=0) const;

@@ -1801,7 +1801,10 @@ void unit::restart_animation(const display& disp,int start_time) {
 void unit::redraw_unit(display& disp,gamemap::location hex)
 {
 	const gamemap & map = disp.get_map();
-	if(hidden_) {
+	if(hidden_ || 
+	disp.fogged(hex.x,hex.y) ||
+	(invisible(hex,disp.get_units(),disp.get_teams()) &&
+			disp.get_teams()[disp.viewing_team()].is_enemy(side())) ){
 		if(unit_halo_) halo::remove(unit_halo_);
 		unit_halo_ = 0;
 		if(unit_anim_halo_) halo::remove(unit_anim_halo_);
@@ -1809,11 +1812,6 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		return;
 	}
 	if(refreshing_) return;
-	if(disp.fogged(hex.x,hex.y)) { return;}
-	if(invisible(hex,disp.get_units(),disp.get_teams()) &&
-			disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-		return;
-	}
 	refreshing_ = true;
 	const gamemap::location dst= hex.get_direction(facing());
 	const double xsrc = disp.get_location_x(hex);

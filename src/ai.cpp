@@ -473,7 +473,14 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
 
 				up = info_.units.extract(u_it->first);
+				bool hidden = up->second.get_hidden();
+				up->second.set_hidden(true);
+				info_.units.add(up);
+				info_.disp.invalidate(up->first);
+				info_.disp.draw();
+				up = info_.units.extract(u_it->first);
 				unit_display::move_unit(info_.disp,info_.map,steps,up->second,info_.units,info_.teams);
+				up->second.set_hidden(hidden);
 			}
 		}
 	}

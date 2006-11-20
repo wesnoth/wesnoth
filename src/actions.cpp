@@ -1950,10 +1950,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	//remove it until the move is done, so that while the unit is moving status etc will
 	//still display the correct number of units.
 	if(disp != NULL) {
-		ui->second.set_hidden(true);
-		disp->invalidate(ui->first);
 		unit_display::move_unit(*disp,map,steps,ui->second,units,teams);
-		ui->second.set_hidden(false);
 	}
 
 	ui->second.set_movement(moves_left);
