@@ -191,6 +191,7 @@ class unit
 		int upkeep() const;
 
 		void set_hidden(bool state) {hidden_ = state;};
+		bool get_hidden() { return hidden_; };
 		bool is_flying() const;
 		bool is_fearless() const { return is_fearless_; }
 		bool is_healthy() const { return is_healthy_; }

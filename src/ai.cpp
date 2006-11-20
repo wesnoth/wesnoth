@@ -419,7 +419,6 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport,current_team());
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
-	std::pair<gamemap::location,unit> *up = NULL;
 
 	if(p_it != possible_moves.end()) {
 		paths& p = p_it->second;
@@ -473,19 +472,17 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 
 				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
 
-				up = info_.units.extract(u_it->first);
+				unit_map::iterator up = info_.units.find(u_it->first);
 				unit_display::move_unit(info_.disp,info_.map,steps,up->second,info_.units,info_.teams);
 			}
 		}
 	}
 
-	if (!up) {
-		up = info_.units.extract(u_it->first);
-	}
+	std::pair<gamemap::location,unit> *p = info_.units.extract(u_it->first);
 
-	up->first = to;
-	info_.units.add(up);
-	up->second.set_standing(info_.disp,up->first);
+	p->first = to;
+	info_.units.add(p);
+	p->second.set_standing(info_.disp,p->first);
 	if(info_.map.is_village(to)) {
 		// if a new village is captured, disallow any future movement
 		if (!info_.teams[info_.team_num-1].owns_village(to))

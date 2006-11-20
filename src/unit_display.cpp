@@ -127,8 +127,10 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	wassert(!path.empty());
 
 	bool previous_visible = false;
+	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
 	unit temp_unit = u;
+	u.set_hidden(true);
 	temp_unit.set_hidden(false);
 
 	for(size_t i = 0; i+1 < path.size(); ++i) {
@@ -169,6 +171,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
 		disp.invalidate(*it);
 	}
+	u.set_hidden(was_hidden);
 }
 
 void unit_die(display& disp,const gamemap::location& loc, unit& loser,
