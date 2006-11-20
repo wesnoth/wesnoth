@@ -124,6 +124,29 @@ std::string check_python_scripts(config &data, std::string filename)
 	return "";
 }
 
+// Go through all .py.unchecked files in the given campaign, and rename them to
+// .py. This is the opposite to check_python_scripts(), and while the latter is
+// done on campaign upload, this function is called for the validate_scripts
+// command.
+std::string validate_all_python_scripts(config &data)
+{
+	std::vector<config *> python_scripts = find_scripts(data, ".py.unchecked");
+	if (!python_scripts.empty()) {
+		// Campaign contains unchecked python scripts.
+		std::string script_names = "";
+		std::vector<config *>::iterator i;
+		// Go through all unchecked python scripts.
+		for (i = python_scripts.begin(); i != python_scripts.end(); ++i) {
+			std::string name = (**i)["name"];
+			name.resize(name.length() - 10);
+			(**i)["name"] = name;
+			script_names += "\n" + name;
+		}
+		return script_names;
+	}
+	return "";
+}
+
 // Add a file COPYING.txt with the GPL to an uploaded campaign.
 void add_license(config &data)
 {
@@ -323,6 +346,34 @@ void campaign_server::run()
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
 						network::send_data(construct_message("Passphrase changed."),sock);
+					}
+				} else if(const config* cvalidate = data.child("validate_scripts")) {
+					config* campaign = campaigns().find_child("campaign","name",(*cvalidate)["name"]);
+					if(campaign == NULL) {
+						network::send_data(construct_error(
+							"No add-on with that name exists."),sock);
+					} else if(campaigns()["master_password"] == "") {
+						network::send_data(construct_error(
+							"Sever does not allow scripts."),sock);
+					} else if (campaigns()["master_password"] != (*cvalidate)["master_password"]) {
+						network::send_data(construct_error(
+							"Password was incorrect."),sock);
+					} else {
+						// Read the campaign from disk.
+						config campaign_file;
+						scoped_istream stream = istream_file((*campaign)["filename"]);
+						read_compressed(campaign_file, *stream);
+						std::string scripts = validate_all_python_scripts(campaign_file);
+						if (!scripts.empty()) {
+							// Write the campaign with changed filenames back to disk
+							scoped_ostream ostream = ostream_file((*campaign)["filename"]);
+							write_compressed(*ostream, campaign_file);
+
+							network::send_data(construct_message("The following scripts have been validated: " +
+								scripts), sock);
+						} else {
+							network::send_data(construct_message("No unchecked scripts found!"), sock);
+						}
 					}
 				}
 			}
