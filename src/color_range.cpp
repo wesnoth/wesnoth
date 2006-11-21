@@ -85,9 +85,19 @@ std::vector<Uint32> string2rgb(std::string s){
 	std::vector<Uint32> out;
 	std::vector<std::string> rgb_vec = utils::split(s);
 
+	//reserve two extra slots to prevent iterator invalidation
+	for(int alloc_tries = 0; rgb_vec.capacity() < rgb_vec.size() + 2; ++alloc_tries)
+	{
+		if(alloc_tries > 99)
+		{
+			throw std::bad_alloc();
+		}
+		rgb_vec.reserve(rgb_vec.size() + 2);
+	}
 
 	std::vector<std::string>::iterator c=rgb_vec.begin();
-	while(c!=rgb_vec.end()){
+	while(c!=rgb_vec.end())
+	{
 		Uint32 rgb_hex;
 		if(c->length() != 6)
 		{
