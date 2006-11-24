@@ -1667,7 +1667,7 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 		if(map.on_board(adj[i]) || map.on_board(loc)) {
 			const bool res = tm.clear_shroud(adj[i].x,adj[i].y) ||
 								tm.clear_fog(adj[i].x,adj[i].y);
-
+			
 			if(res && cleared != NULL) {
 				cleared->push_back(adj[i]);
 			}
@@ -1708,6 +1708,9 @@ bool clear_shroud_unit(const gamemap& map,
 	//clear the location the unit is at
 	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
 
+	//remove all redundant location, if on this location is unit, sighed event is called twice
+	unique(cleared_locations.begin(),cleared_locations.end());
+
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
 
@@ -1722,8 +1725,8 @@ bool clear_shroud_unit(const gamemap& map,
 				}
 				if ( teams[team].uses_shroud() || teams[team].uses_fog())
 				{
-					static const std::string sighted("sighted");
-					game_events::raise(sighted,*it,loc);
+					static const std::string sighted_str("sighted");
+					game_events::fire(sighted_str,*it,loc);
 				}
 			}
 		}
