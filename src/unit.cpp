@@ -32,6 +32,7 @@
 #include "actions.hpp"
 #include "game_events.hpp"
 #include "sound.hpp"
+#include "sdl_utils.hpp"
 
 #include <ctime>
 #include <algorithm>
@@ -1949,7 +1950,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 #endif
 
 	surface image(image::get_image(loc,
-				utils::string_bool(get_state("stoned"))?image::GREYED : image::UNSCALED,image::ADJUST_COLOUR,
+				image::UNSCALED,image::ADJUST_COLOUR,
 #ifndef LOW_MEM
 				true));
 #else
@@ -1958,6 +1959,9 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 
 	if(image == NULL) {
 		image = still_image();
+	}
+	if(utils::string_bool(get_state("stoned"))) {
+		image = greyscale_image(image);
 	}
 
 	if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
