@@ -879,8 +879,9 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod) const
+bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bool use_flat_tod) const
 {
+	config cfg = orig_cfg;
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
 	const std::string& type = cfg["type"];
@@ -927,6 +928,7 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 		} else {
 			return false;
 		}
+		cfg.values.erase("type");
 	}
 
 	if(ability.empty() == false && has_ability_by_id(ability) == false) {
@@ -945,6 +947,7 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 		} else {
 			return false;
 		}
+		cfg.values.erase("ability");
 	}
 
 
@@ -962,6 +965,7 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 		} else {
 			return false;
 		}
+		cfg.values.erase("side");
 	  }
 
 	if(weapon.empty() == false) {
@@ -976,6 +980,7 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 
 		if(!has_weapon)
 			return false;
+		cfg.values.erase("has_weapon");
 	}
 
 
@@ -995,6 +1000,7 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 	// unit only => not filtered
 	config unit_cfg;
 	write(unit_cfg);
+	cfg.prune();
 	for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
 		if(!unit_cfg.values.count(j->first)) continue;
 		if(j->first == "x") continue;
