@@ -23,6 +23,7 @@ void get_campaign_info(const std::string& campaign_name, class config& cfg);
 void set_campaign_info(const std::string& campaign_name, const class config& cfg);
 
 std::vector<std::string> available_campaigns();
+std::vector<std::string> installed_campaigns();
 void archive_campaign(const std::string& campaign_name, class config& cfg);
 void unarchive_campaign(const class config& cfg);
 
