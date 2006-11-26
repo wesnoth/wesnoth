@@ -280,11 +280,15 @@ void campaign_server::run()
 						(*campaign)["description"] = (*upload)["description"];
 						(*campaign)["version"] = (*upload)["version"];
 						(*campaign)["icon"] = (*upload)["icon"];
+						(*campaign)["dependencies"] = (*upload)["dependencies"];
 
 						if((*campaign)["downloads"].empty()) {
 							(*campaign)["downloads"] = "0";
 						}
 						(*campaign)["timestamp"] = lexical_cast<std::string>(time(NULL));
+
+						const int uploads = lexical_cast_default<int>((*campaign)["uploads"],0) + 1;
+						(*campaign)["uploads"] = lexical_cast<std::string>(uploads);
 
 						std::string filename = (*campaign)["filename"];
 						(*data)["title"] = (*campaign)["title"];
