@@ -14,9 +14,22 @@
 #ifndef TERRAIN_TRANSLATION_H_INCLUDED
 #define TERRAIN_TRANSLATION_H_INCLUDED
 
+//NOTE due to backwards compability some items are done in a
+// not so nice way. This will be corrected in a later version
+// after either 1.4 or 2.0. These items are marked with
+// FIXME: remove
+// Also the the next definition is used for the compatible
+// mode. Disabling this define should make wesnoth run in
+// non compatible mode. Using defines is not the most 
+// beautiful way to do things but this way both versions of
+// the code can be made. The callers should be fixed after
+// the undefing
+#define TERRAIN_TRANSLATION_COMPATIBLE
+
 #include <SDL_types.h> //used for Uint32 definition
 #include <string>
 #include <vector>
+#include <map>
 
 #include "variable.hpp"
 
@@ -56,41 +69,138 @@ namespace terrain_translation {
 	extern const TERRAIN_NUMBER COMMA;
 	extern const TERRAIN_NUMBER NONE_TERRAIN;
 
-	//converts a string to a TERRAIN_NUMBER it expects the input to be a string of 1 item
-	//to convert
-	TERRAIN_NUMBER read_letter(const std::string& letter);
-	//converts a letter to a string
+    //exception thrown if there's an error with the terrain
+	//FIXME MdW we throw nobody catches...
+	struct error {
+		error(const std::string& msg) : message(msg) {}
+		std::string message;
+	};
+
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE
+	//the terrain format lets the terrain functions know what to expect
+	// TFORMAT_LETTER the string is a terrain letter (single char)
+	// TFORMAT_STRING the string is a terrain string (multiple chars)
+	// TFORMAT_AUTO   uses map_format_ to determine the type
+	enum { TFORMAT_LETTER = 1, TFORMAT_STRING = 2, TFORMAT_AUTO = 3 };
+	
+#endif
+	
+	struct coordinate {
+		int x; 
+		int y;
+	};
+
+	/** Reads a single terrain from a string
+	 * FIXME: remove tformat
+	 *
+	 * @param letter	The string which should contain 1 letter
+	 * @param tformat	The format to read
+	 *
+	 * @return			A single terrain letter
+	 */
+	TERRAIN_NUMBER read_letter(const std::string& letter, const int tformat = TFORMAT_AUTO);
+	
+	/** Writes a single letter to a string
+	 * The writers only support the new format
+	 *
+	 * @param letter	The letter to convert to a string
+	 *
+	 * @return			A string containing the letter
+	 */
 	std::string write_letter(const TERRAIN_NUMBER& letter);
 	
-	//converts a string to a vector of TERRAIN_NUMBER it expects the input to be a continues string of items
-	//to convert
-	//separated, is the list separated by a,
-	// 0 = no
-	// 1 = yes
-	// 2 = auto, might be required for the future, make this value the default
-	//     This conversion is not implanted, since it's unkown whether it's required
-	std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated=0);
+	/** Reads a list of terrain from a string, when reading the 
+	 * old format the comma separator is optional the new format
+	 * only reads with a separator and ignores
+	 * FIXME: remove separated and tformat
+	 *
+	 * @param list		A string with one or more terrain letters
+	 * @param separated	The old terrain format is optional separated by a comma
+	 *  				the new format is always separated by a comma and
+	 *  				ignores this parameter. Possible values:
+	 *						0 = no
+	 *						1 = yes
+	 * @param format	The format to read.
+	 *
+	 * @returns			A vector which contains the string
+	 */
+	std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated = 0, const int tformat = TFORMAT_AUTO);
 
-	//converts a list to a string
-	std::string write_list(const std::vector<TERRAIN_NUMBER>& list, const int separated=0);
+	/** Writes a list of terrains to a string, only writes the new format.
+	 * FIXME MdW: remove separated before merging, this is only available for the transition phase.
+	 *
+	 * @param list		A vector with one or more terrain letters
+	 *
+	 * @returns			A string with the terrain numbers, comma separated and 
+	 * 					a space behind the comma's. Not padded.
+	 */
+	std::string write_list(const std::vector<TERRAIN_NUMBER>& list, const int separated = 0);
 
-	//converts a string to a vector of TERRAIN_NUMBER it expects the input to be a map and  converts it accordingly
-	std::vector<TERRAIN_NUMBER> read_map(const std::string& map);
+	/** Reads a gamemap string into a vector
+	 *
+	 * @param map		A string containing the gamemap, the following rules 
+	 * 					are stated for a gamemap:
+	 * 					* The map is square
+	 * 					* The map can be prefixed with one or more empty lines,
+	 * 					  these lines are ignored
+	 * 					* The map can be postfixed with one or more empty lines,
+	 * 					  these lines are ignored
+	 * 					* Every end of line can be followed by one or more empty
+	 * 					  lines, these lines are ignored. NOTE it's deapriciated
+	 * 					  to use this feature.
+	 * 					* Terrain strings are separated by comma's or an end of line
+	 * 					  symbol, for the last terrain string in the row. For 
+	 * 					  readability it's allowed to pad strings with either spaces
+	 * 					  or tab, however the tab is deapriciated.
+	 * 					* A terrain string contains either a terrain or a terrain and
+	 * 					  starting loction. The followin format is used
+	 * 					  [S ]T
+	 * 					  S = starting location a positive non-zero number
+	 * 					  T = terrain string 2 - 4 characters
+	 * @param starting_positions This parameter will be filled with the starting
+	 * 					locations found. Starting locations can only occur once 
+	 * 					if multiple definitions occur of the same position only
+	 * 					the last is stored. The returned value is a map:
+	 * 					* first		the starting locations
+	 * 					* second	a coordinate structure where the location was found
+	 *
+	 * @returns			A 2D vector with the terrains found the vector data is stored
+	 * 					like result[x][y] where x the column number is and y the row number.
+	 */
+	std::vector<std::vector<TERRAIN_NUMBER> > read_game_map(const std::string& map, 
+			std::map<int, coordinate>& starting_positions);
 
-	//converts an map to a string
-	std::string write_map(const std::vector<TERRAIN_NUMBER>& map);
+	/** Write a gamemap in to a vector string
+	 *
+	 * @param map		A terrain vector, as returned from read_game_map
+	 * @param starting_positions A starting positions map, as returned from read_game_map
+	 *
+	 * @returns			A terrain string which can be read with read_game_map.
+	 * 					For readability the map is padded to groups of 7 chars
+	 * 					followed by a comma and space
+	 */
+	std::string write_game_map(const std::vector<std::vector<TERRAIN_NUMBER> >& map, 
+			 std::map<int, coordinate> starting_positions);
 
+
+	//read a string and convert it to a map
+	//upon error is throws an incorrect_format_exception
+	std::vector<std::vector<TERRAIN_NUMBER> > read_builder_map(const std::string& map); 
+	
 /***************************************************************************************/
 // These will probably become obsolete
-	//gets the internal number for a start location
-	//FIXME MdW this function needs to be modified later on
-	TERRAIN_NUMBER get_start_location(int player);
 	
-	int letter_to_start_location(const TERRAIN_NUMBER number);
-
 	//expects a vector of TERRAIN_NUMBER and converts it to s number -1 upon failure
 	int list_to_int(const std::vector<TERRAIN_NUMBER> number);
 
-};
+	//converts a string to a vector of TERRAIN_NUMBER it expects the input to be a map and  converts it accordingly
+	//FIXME MdW remove this on will be obsolete
+	std::vector<TERRAIN_NUMBER> read_map(const std::string& map);
 
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
+	// The terrain letter is an old letter and will be converted with get_letter
+	void add_translation(const std::string& letter, const TERRAIN_NUMBER number);
+#endif	
+
+};
 #endif

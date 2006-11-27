@@ -1,10 +1,11 @@
 src/builder.cpp:27://FIXME MdW this file is filled with debug output and should be cleaned
 src/builder.cpp:593://FIXME MdW this is a total rewrite not sure whether is really works
-src/builder.cpp:865:	//FIXME MdW remove debug code from this function
-src/builder.cpp:899:	//FIXME MdW remove debug code from this function
-src/builder.cpp:1014://FIXME MdW keep or remove this part, at least disable	
-src/builder.cpp:1067:	//FIXME MdW remove debug code from this function
-src/builder.cpp:1140:	//FIXME MdW remove debug code
+src/builder.cpp:607:	//FIXME MdW rewrite
+src/builder.cpp:868:	//FIXME MdW remove debug code from this function
+src/builder.cpp:902:	//FIXME MdW remove debug code from this function
+src/builder.cpp:1017://FIXME MdW keep or remove this part, at least disable	
+src/builder.cpp:1070:	//FIXME MdW remove debug code from this function
+src/builder.cpp:1143:	//FIXME MdW remove debug code
 src/cavegen.cpp:112:			out << terrain_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
 src/display.cpp:1690:	//FIXME MdW cleanup but why was this coded like it was WHY and INT instead of CHAR????
 src/display.cpp:1703:			tiles[i] = 0; //FIXME MdW we should define an invalid terrain (prob. 0)
@@ -13,15 +14,26 @@ src/game_events.cpp:1151:			if(terrain_type.size() > 0) { //FIXME MdW we need a 
 src/game_events.cpp:1768:				const terrain_translation::TERRAIN_NUMBER c = game_map->get_terrain(*j); //FIXME MdW test should work
 src/help.cpp:1458:		//FIXME MdW the changes here seem to compile but they have to 
 src/map.cpp:305://FIXME MdW the entire routine should be cleaned up
-src/map.cpp:327:				int start_location = terrain_translation::letter_to_start_location(c); //FIXME MdW this function should remove
+src/map.cpp:316:		// FIXME MdW think about this part
 src/map.cpp:362:	//FIXME MdW remove debug
-src/map.cpp:386:				//FIXME MdW tag here we should call the write_starting_position(n, tiles_[i][j]);
-src/map.cpp:462:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
-src/map.cpp:592:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
-src/mapgen.cpp:315:			res << terrain_translation::write_letter(terrain[x][y]); //FIXME MdW, should this be done by the map converter??
-src/mapgen.cpp:368://FIXME MdW test this modification	
-src/mapgen.cpp:1039:		terrain[x][y] = terrain_translation::get_start_location(player); //FIXME MdW this is function is ugly rewrite
+src/map.cpp:454:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
+src/map.cpp:584:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
+src/mapgen.cpp:378://FIXME MdW test this modification	
 src/map.hpp:198:	//The terrain string with TERRAIN_NUMBER should be make FIXME MdW
 src/terrain.cpp:43:	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
+src/terrain.cpp:51:	//FIXME MdW this temp hack should be removed
 src/terrain.hpp:37:	//FIXME MdW maybe reinstall the letter later again after debugging everything
-src/terrain_translation.hpp:86:	//FIXME MdW this function needs to be modified later on
+src/terrain_translation.cpp:111:	static int map_format_ = 1; //FIXME MdW this should be initialized to 0
+src/terrain_translation.cpp:174:	//FIXME MdW this should be the new way but since the new 
+src/terrain_translation.cpp:267:		//FIXME MdW remove the debug code
+src/terrain_translation.cpp:307:	//FIXME MdW remove debug code
+src/terrain_translation.cpp:414:	//FIXME MdW there should be tested how slow this
+src/terrain_translation.cpp:467:	//FIXME MdW commented lines should be enabled, the others disabled
+src/terrain_translation.cpp:579://FIXME MdW this code is obsolete as soon as the terrain map is converted
+src/terrain_translation.cpp:650://FIXME MdW this code is ready and tested only the map format needs to be documentated
+src/terrain_translation.cpp:691:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
+src/terrain_translation.cpp:736:		//FIXME MdW remove the debug code
+src/terrain_translation.cpp:751:	//FIXME MdW remove debug code
+src/terrain_translation.hpp:73:	//FIXME MdW we throw nobody catches...
+src/terrain_translation.hpp:130:	 * FIXME MdW: remove separated before merging, this is only available for the transition phase.
+src/terrain_translation.hpp:197:	//FIXME MdW remove this on will be obsolete

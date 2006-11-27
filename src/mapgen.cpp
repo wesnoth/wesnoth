@@ -298,10 +298,9 @@ location random_point_at_side(size_t width, size_t height)
 }
 
 //function which, given the map will output it in a valid format.
-std::string output_map(const terrain_map& terrain)
+std::string output_map(const terrain_map& terrain, 
+		std::map<int, terrain_translation::coordinate> starting_positions)
 {
-	std::stringstream res;
-
 	//remember that we only want the middle 1/9th of the map. All other
 	//segments of the map are there only to give the important middle part
 	//some context.
@@ -310,15 +309,26 @@ std::string output_map(const terrain_map& terrain)
 	const size_t begin_y = terrain.front().size()/3;
 	const size_t end_y = begin_y*2;
 
+	terrain_map map;
+	map.resize(end_x - begin_x);
 	for(size_t y = begin_y; y != end_y; ++y) {
 		for(size_t x = begin_x; x != end_x; ++x) {
-			res << terrain_translation::write_letter(terrain[x][y]); //FIXME MdW, should this be done by the map converter??
+			if((y - begin_y) == 0){
+				map[x - begin_x].resize(end_y - begin_y);
+			}
+			map[x - begin_x][y - begin_y] = terrain[x][y];
 		}
-
-		res << "\n";
 	}
 
-	return res.str();
+	// Since the map has been resize the starting 
+	// locations also need to be fixed
+	std::map<int, terrain_translation::coordinate>::iterator itor = starting_positions.begin();
+	for(; itor != starting_positions.end(); ++itor) {
+		itor->second.x -= begin_x;
+		itor->second.y -= begin_y;
+	}
+
+	return terrain_translation::write_game_map(map, starting_positions);
 }
 
 //an object that will calculate the cost of building a road over terrain
@@ -1028,6 +1038,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 
 	//now that road drawing is done, we can plonk down the castles.
+	std::map<int, terrain_translation::coordinate> starting_positions;
 	for(std::vector<location>::const_iterator c = castles.begin(); c != castles.end(); ++c) {
 		if(c->valid() == false) {
 			continue;
@@ -1035,9 +1046,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 		const int x = c->x;
 		const int y = c->y;
-		const int player = c - castles.begin();
-		terrain[x][y] = terrain_translation::get_start_location(player); //FIXME MdW this is function is ugly rewrite
-
+		const int player = c - castles.begin() + 1;
+		const struct terrain_translation::coordinate coord = {x, y};
+		starting_positions.insert(std::pair<int, terrain_translation::coordinate>(player, coord));
+		
 		const int castles[13][2] = {
 		  {-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {0, 1}, {-1, 1},
 		  {-2, 1}, {-2, 0}, {-2, -1}, {-1, -2}, {0, -2}, {1, -2}
@@ -1191,7 +1203,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 
-	return output_map(terrain);
+	return output_map(terrain, starting_positions);
 }
 
 namespace {

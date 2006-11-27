@@ -41,6 +41,28 @@ terrain_type::terrain_type(const config& cfg)
 	id_ = cfg["id"];
 
 	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
+/*	
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE
+	// load the old char and the new string part
+	std::string terrain_char = cfg["char"];
+	std::string terrain_string = cfg["string"];
+
+	//this hack makes sure the string is defined, ugly but works
+	//FIXME MdW this temp hack should be removed
+	if(terrain_string == "") {
+		terrain_string = "_ _" + terrain_char;
+	}
+	
+	number_ = terrain_translation::read_letter(terrain_string, terrain_translation::TFORMAT_STRING);
+	//if both a char and a string are defined load it in the translation 
+	//table. This to maintain backwards compability
+	if(terrain_char != "") {
+		terrain_translation::add_translation(terrain_char, number_);
+	}
+#else
+	number_ = terrain_translation::read_letter(terrain_string, TFORMAT_STRING);
+#endif
+*/
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);

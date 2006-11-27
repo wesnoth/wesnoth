@@ -603,7 +603,10 @@ Starting empty lines are discarded.
 	//if there is an empty map leave directly
 	if(mapstring.empty()) return;
 
-	std::vector<terrain_translation::TERRAIN_NUMBER> map = terrain_translation::read_map(mapstring); 
+	std::vector<terrain_translation::TERRAIN_NUMBER> map = terrain_translation::read_map(mapstring);
+	//FIXME MdW rewrite
+//	std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > map_new = 
+//		terrain_translation::read_builer_map(mapstring);
 	
 	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator itor = map.begin();
 	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator start = map.begin();

@@ -308,55 +308,55 @@ void gamemap::read(const std::string& data)
 	tiles_.clear();
 	villages_.clear();
 	std::fill(startingPositions_,startingPositions_+sizeof(startingPositions_)/sizeof(*startingPositions_),location());
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& map_data = terrain_translation::read_map(data);
+	std::map<int, terrain_translation::coordinate> starting_positions;
 
-	//ignore leading newlines
-	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = map_data.begin();
-	while(i != map_data.end() && *i == terrain_translation::EOL) {
-		++i;
+	try {
+		tiles_ = terrain_translation::read_game_map(data, starting_positions);
+	} catch(terrain_translation::error& e) {
+		// FIXME MdW think about this part
+		// for now we just convert the error and throw it to our callers
+		// might not be the best way but keep it for now
+		throw incorrect_format_exception(e.message.c_str());
 	}
 
-	size_t x = 0, y = 0;
-	for(; i != map_data.end(); ++i) {
-		terrain_translation::TERRAIN_NUMBER c = *i;
-		if(c == terrain_translation::EOL) {
-			x = 0;
-			++y;
-		} else {
-			if(letterToTerrain_.count(c) == 0) {
-				int start_location = terrain_translation::letter_to_start_location(c); //FIXME MdW this function should remove
-				if(start_location != -1) {
-					startingPositions_[start_location] = location(x,y);
-					c = terrain_translation::KEEP;
-				} else {
-					ERR_CF << "Illegal character in map: (" << terrain_translation::write_letter(c) << ") '" << c << "'\n"; 
-					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
-				}
+	//convert the starting positions to the array
+	std::map<int, terrain_translation::coordinate>::const_iterator itor = 
+		starting_positions.begin();
+
+	for(; itor != starting_positions.end(); ++itor) {
+
+		// check for valid position, the first valid position is
+		// 1 so the offset 0 in the array is never used
+		if(itor->first < 1 || itor->first >= STARTING_POSITIONS) { 
+			ERR_CF << "Starting position " << itor->first << " out of range\n"; 
+			throw incorrect_format_exception("Illegal starting position found in map. The scenario cannot be loaded.");
+		}
+
+		// add to the starting position array
+		startingPositions_[itor->first] = location(itor->second.x, itor->second.y);
+	}
+	
+	// post processing on the map
+	const int width = tiles_.size();
+	const int height = tiles_[0].size();
+	for(int x = 0; x < width; ++x) {
+		for(int y = 0; y < height; ++y) {
+			
+			// is the terrain valid? 
+			if(letterToTerrain_.count(tiles_[x][y]) == 0) {
+				ERR_CF << "Illegal character in map: (" << terrain_translation::write_letter(tiles_[x][y]) 
+					<< ") '" << tiles_[x][y] << "'\n"; 
+				throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 			} 
-
-			if(is_village(c)) {
-				villages_.push_back(location(int(x),int(y)));
+			
+			// is it a village
+			if(is_village(tiles_[x][y])) {
+				villages_.push_back(location(x, y));
 			}
-
-			if(x >= tiles_.size()) {
-				tiles_.resize(x+1);
-			}
-
-			tiles_[x].push_back(c);
-
-			++x;
 		}
 	}
-
+	
 	unsigned ysize = this->y();
-	for(size_t n = 0; n != tiles_.size(); ++n) { // tiles_.size() is not constant
-		if (tiles_[n].size() != ysize) {
-			ERR_CF << "Map is not rectangular!\n";
-			tiles_.erase(tiles_.begin()+n);
-			--n;
-		}
-	}
-
 	LOG_G << "loaded map: " << this->x() << ',' << ysize << '\n';
 
 	//FIXME MdW remove debug
@@ -372,28 +372,20 @@ void gamemap::read(const std::string& data)
 
 std::string gamemap::write() const
 {
-	std::stringstream str;
-	for(int j = 0; j != y(); ++j) {
-		for(int i = 0; i != x(); ++i) {
-			int n;
-			for(n = 0; n != STARTING_POSITIONS; ++n) {
-				if(startingPositions_[n] == location(i,j))
-					break;
-			}
+	std::map<int, terrain_translation::coordinate> starting_positions;
 
-			if(n < STARTING_POSITIONS) {
-				str << n;
-				//FIXME MdW tag here we should call the write_starting_position(n, tiles_[i][j]);
-				//which has to be written
-			} else {
-				str << terrain_translation::write_letter(tiles_[i][j]);
-			}
+	// convert the starting positions to a map
+	for(int i = 0; i < STARTING_POSITIONS; ++i) {
+    	if(on_board(startingPositions_[i])) {
+			const struct terrain_translation::coordinate position = 
+				{startingPositions_[i].x, startingPositions_[i].y};
+			
+			 starting_positions.insert(std::pair<int, terrain_translation::coordinate>(i, position));
 		}
-
-		str << "\n";
 	}
-
-	return str.str();
+	
+	// let the low level convertor do the conversion
+	return terrain_translation::write_game_map(tiles_, starting_positions);
 }
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos, const int ypos)
