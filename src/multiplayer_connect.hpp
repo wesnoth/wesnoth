@@ -58,8 +58,12 @@ public:
 		// the "type=" defining the leader type, else it does not.
 		config get_config() const;
 
-		// Returns true if this side is waiting for a network player.
+		// Returns true if this side is waiting for a network player
+		// and players allowed
 		bool available() const;
+
+		//return true if players are allowed to take this side
+		bool allow_player() const;
 
 		// Sets the controller of a side.
 		void set_controller(mp::controller controller);
@@ -126,6 +130,7 @@ public:
 		gui::label label_gold_;
 		gui::label label_income_;
 
+		bool allow_player_;
 		bool enabled_;
 		bool changed_;
 		leader_list_manager llm_;

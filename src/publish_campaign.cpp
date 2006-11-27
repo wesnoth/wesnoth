@@ -68,6 +68,24 @@ std::vector<std::string> available_campaigns()
 	return res;
 }
 
+/// Return the names of all installed campaigns.
+std::vector<std::string> installed_campaigns()
+{
+	std::vector<std::string> res;
+
+	std::vector<std::string> files, dirs;
+	get_files_in_dir(campaign_dir(),&files,&dirs);
+
+	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
+		const std::string cfg_file = *i + ".cfg";
+		if(std::find(files.begin(),files.end(),cfg_file) != files.end()) {
+			res.push_back(*i);
+		}
+	}
+
+	return res;
+}
+
 // Return a vector of detected scripts.
 std::vector<config *> find_scripts(const config &cfg, std::string extension)
 {

@@ -125,6 +125,8 @@ public:
 
 	config merge_with(const config& c) const;
 
+	bool matches(const config &filter) const;
+
 	//removes keys with empty values
 	void prune();
 

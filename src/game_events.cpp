@@ -1,5 +1,4 @@
 /* $Id$ */
-/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -887,6 +886,19 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
+		const std::string& modulo = cfg["modulo"];
+		if(modulo.empty() == false) {
+			int value = atoi(var.c_str());
+			int divider = atoi(modulo.c_str());
+			if (divider == 0) {
+				ERR_NG << "division by zero on variable " << name << "\n";
+				return rval;
+			} else {
+				value %= divider;
+				var = str_cast(value);
+			}
+		}
+
 		// random generation works as follows:
 		// random=[comma delimited list]
 		// Each element in the list will be considered a separate choice,
@@ -940,7 +952,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			size_t choice = get_random() % num_choices;
-			long tmp = 0;
+			unsigned long tmp = 0;
 			for(size_t i = 0; i < ranges.size(); i++) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
 				if (tmp > choice) {

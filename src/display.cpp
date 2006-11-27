@@ -134,7 +134,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 				time = 100;
 			}
 			std::stringstream temp;
-			temp << str << "~TC(" << old_rgb << ">"<< new_rgb << ")";
+			temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
 			image::locator flag_image(temp.str());
 			temp_anim.add_frame(time, flag_image);
 		}
@@ -1386,15 +1386,6 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		mask = tod_at.image_mask;
 	}
 
-	//find if this tile should be darkened or bightened (reach of a unit)
-	if (!reach_map_.empty()) {
-		reach = reach_map_.find(loc);
-		if (reach == reach_map_.end()) {
-			image_type = image::DARKENED;
-		} else {
-			image_type = image::UNMASKED;
-		}
-	}
 	unit_map::iterator un = find_visible_unit(units_, loc, map_,
 											  teams_,teams_[currentTeam_]);
 
@@ -1480,6 +1471,17 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		if(img != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(img,NULL,dst,&dstrect);
+		}
+	}
+	//find if this tile should be darkened or bightened (reach of a unit)
+	if (!reach_map_.empty()) {
+		reach = reach_map_.find(loc);
+		if (reach == reach_map_.end()) {
+			const surface img(image::get_image("terrain/darken.png",image::UNMASKED,image::NO_ADJUST_COLOUR));
+			if(img != NULL) {
+				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+				SDL_BlitSurface(img,NULL,dst,&dstrect);
+			}
 		}
 	}
 

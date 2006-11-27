@@ -199,14 +199,19 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-//splits a string into an odd number of parts.  The part before the first '(', the part between the
-//first '(' and the matching right ')', etc ... and the remainder of the string.  Note that this
+//splits a function based either on a separator where text within paranthesis is protected from splitting,
+//note that one can use the same character for both the left and right paranthesis
+//or if the separator == 0 it splits a string into an odd number of parts:  
+//The part before the first '(', the part between the first '(' and the matching right ')',
+// etc ... and the remainder of the string.  Note that this
 //will find the first matching char in the left string and match against the corresponding 
-//char in the right string.  A correctly processed string should return with an odd number of elements to the vector.
-//Empty elements are never removed as they are placeholders. 
-//parenthetical_split("a(b)c{d}e(f{g})h","({",")}") should return a vector of
-// <"a","b","c","d","e","f{g}","h">
-std::vector< std::string > paranthetical_split(std::string const &val, std::string const &left, std::string const &right,int flags)
+//char in the right string.  In this mode, a correctly processed string should return with 
+//an odd number of elements to the vector and an empty elements are never removed as they are placeholders. 
+//hence REMOVE EMPTY only works for the separator split
+//parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return a vector of
+// <"a","b","c","d","e","f{g}","h"> 
+
+std::vector< std::string > paranthetical_split(std::string const &val, const char separator, std::string const &left, std::string const &right,int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
@@ -223,9 +228,23 @@ std::vector< std::string > paranthetical_split(std::string const &val, std::stri
 	}
 
 	while (i2 != val.end()) {
+		if(separator && *i2 == separator){
+			std::string new_val(i1, i2);
+			if (flags & STRIP_SPACES)
+				strip(new_val);
+			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+				res.push_back(new_val);
+			++i2;
+			if (flags & STRIP_SPACES) {
+				while (i2 != val.end() && *i2 == ' ')
+					++i2;
+			}
+			i1=i2;
+			continue;
+		}
 		if(part.size() && *i2 == part.back()){
 			part.pop_back();
-			if(part.size() == 0){
+			if(!separator && part.size() == 0){
 				std::string new_val(i1, i2);
 				if (flags & STRIP_SPACES)
 					strip(new_val);
@@ -235,11 +254,12 @@ std::vector< std::string > paranthetical_split(std::string const &val, std::stri
 			}else{
 				++i2;
 			}
-			break;
+			continue;
 		}		
+		bool found=false;
 		for(size_t i=0; i < lp.size(); i++){
 			if (*i2 == lp[i]){
-				if (part.size()==0){
+				if (!separator && part.size()==0){
 					std::string new_val(i1, i2);
 					if (flags & STRIP_SPACES)
 						strip(new_val);
@@ -250,10 +270,12 @@ std::vector< std::string > paranthetical_split(std::string const &val, std::stri
 					++i2;
 				}			
 				part.push_back(rp[i]);
+				found=true;
 				break;
-			}else{
-				++i2;
 			}
+		}	
+		if(!found){
+				++i2;
 		}	
 	}
 

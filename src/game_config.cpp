@@ -179,12 +179,12 @@ namespace game_config
 			if(!(**teamC)["id"].empty() && !(**teamC)["rgb"].empty()){
 		    		std::string id = (**teamC)["id"];
 		    		std::vector<Uint32> temp = string2rgb((**teamC)["rgb"]);
-		    		team_rgb_range[id] = color_range(temp);
+		    		team_rgb_range.insert(std::make_pair(id,color_range(temp)));
 		    		team_rgb_name[id] = (**teamC)["name"];
 				//generate palette of same name;
 				std::vector<Uint32> tp = palette(team_rgb_range[id]);
 				if(tp.size()){
-					team_rgb_colors[id]=tp;
+					team_rgb_colors.insert(std::make_pair(id,tp));
 					//if this is being used, output log of palette for artists use.
 					LOG_NG << "color palette creation:\n";					
 					std::stringstream str;
@@ -207,9 +207,7 @@ namespace game_config
 		for(config::child_list::const_iterator cp = colors.begin(); cp != colors.end(); ++cp) {
 			for(string_map::const_iterator rgb_it = (*cp)->values.begin(); rgb_it != (*cp)->values.end(); ++rgb_it) {
 				try {
-//					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));  
-//should new colors overwrite old colors?
-					team_rgb_colors[rgb_it->first]=string2rgb(rgb_it->second);
+					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));  
 				} catch(bad_lexical_cast&) {
 					//throw config::error(_("Invalid team color: ") + rgb_it->second);
 				}

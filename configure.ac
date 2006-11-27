@@ -778,7 +778,7 @@ OLD_LIBS=$LIBS
 
 CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
 CFLAGS="$CFLAGS $SDL_CFLAGS"
-LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS"
+LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS -lz"
 
 ac_link="$LDPREFIX $ac_link"
 AC_RUN_IFELSE([AC_LANG_SOURCE([
@@ -791,7 +791,7 @@ int main(int argc, char **argv)
 
 	src = SDL_RWFromFile("images/units/human-magi/mage.png", "rb");
 	if (src == NULL)
-		exit(0);
+		exit(2);
 	exit(!IMG_isPNG(src));
 }
 	])],

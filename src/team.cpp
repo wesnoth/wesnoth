@@ -119,10 +119,11 @@ team::team_info::team_info(const config& cfg)
 
 	int side = atoi(cfg["side"].c_str());
 
-	std::vector<Uint32> temp_rgb = string2rgb(cfg["team_rgb"]);
+	const std::string temp_rgb_str = cfg["team_rgb"];
 	std::map<std::string, color_range>::iterator global_rgb = game_config::team_rgb_range.find(cfg["side"]);
 
-	if(temp_rgb.size()){
+	if(!temp_rgb_str.empty()){
+		std::vector<Uint32> temp_rgb = string2rgb(temp_rgb_str);
 		team_color_range_[side] = color_range(temp_rgb);
 	}else if(global_rgb != game_config::team_rgb_range.end()){
 		team_color_range_[side] = global_rgb->second;

@@ -28,7 +28,6 @@
 /// - unscaled: no modifications have been done on the image.
 /// - scaled: images are scaled to the size of a tile
 /// - unmasked: images are scaled, but have no time of day masking applied to them
-/// - greyed: images are scaled and in greyscale
 /// - brightened: images are scaled and brighter than normal.
 namespace image {
 	template<typename T>
@@ -174,7 +173,7 @@ namespace image {
 
 	// unscaled : image will be drawn "as is" without changing size, even in case of redraw
 	// scaled : image will be scaled to fit into a hex, taking zoom into account
-	enum TYPE { UNSCALED, SCALED, UNMASKED, GREYED, DARKENED, BRIGHTENED, SEMI_BRIGHTENED };
+	enum TYPE { UNSCALED, SCALED, UNMASKED,  BRIGHTENED, SEMI_BRIGHTENED };
 
 	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR };
 

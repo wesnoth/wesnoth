@@ -76,6 +76,7 @@ class game_controller
 {
 public:
 	game_controller(int argc, char** argv);
+	~game_controller();
 
 	display& disp();
 
@@ -1016,6 +1017,31 @@ void game_controller::download_campaigns()
 			return;
 		}
 
+		// Get all dependencies of the campaign selected for download.
+		const config *selected_campaign = campaigns_cfg->find_child("campaign", "name", campaigns[index]);
+		std::vector<std::string> dependencies = utils::split((*selected_campaign)["dependencies"]);
+		if (!dependencies.empty()) {
+			// Get all dependencies which are not already installed.
+			// TODO: Somehow determine if the version is outdated.
+			const std::vector<std::string>& installed = installed_campaigns();
+			std::vector<std::string>::iterator i;
+			std::string missing = "";
+			for (i = dependencies.begin(); i != dependencies.end(); i++) {
+				if (std::find(installed.begin(), installed.end(), *i) == installed.end()) {
+					missing += "\n" + *i;
+				}
+			}
+			// If there are any, display a message.
+			// TODO: Somehow offer to automatically download the missing dependencies.
+			if (!missing.empty()) {
+				if (gui::show_dialog(disp(), NULL, _("Dependencies"),
+					std::string(_("This add-on requires the following additional dependencies:")) +
+					"\n" + missing +
+					"\n" + _("Do you still want to download it?"), gui::OK_CANCEL))
+					return;
+			}
+		}
+
 		config request;
 		request.add_child("request_campaign")["name"] = campaigns[index];
 		network::send_data(request,sock);
@@ -1570,6 +1596,11 @@ void game_controller::play_replay()
 	}
 }
 
+game_controller::~game_controller()
+{
+	delete gui::empty_menu;
+}
+
 int play_game(int argc, char** argv)
 {
 	const int start_ticks = SDL_GetTicks();
@@ -1916,7 +1947,6 @@ int main(int argc, char** argv)
 		std::cerr << "Unhandled exception. Exiting\n";
 	}
 #endif
-	delete gui::empty_menu;
 	filesystem_close();
 
 	return 0;

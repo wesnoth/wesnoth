@@ -275,6 +275,8 @@ private:
 	std::vector<idle_animation> idle_animations_;
 	std::vector<levelin_animation> levelin_animations_;
 	std::vector<levelout_animation> levelout_animations_;
+	std::vector<healed_animation> healed_animations_;
+	std::vector<poison_animation> poison_animations_;
     std::string flag_rgb_;
 };
 

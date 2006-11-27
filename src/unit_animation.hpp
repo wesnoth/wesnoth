@@ -41,6 +41,7 @@ class unit_animation:public animated<unit_frame>
 		std::vector<terrain_translation::TERRAIN_NUMBER> terrain_types_;
 		std::vector<config> unit_filter_;
 		std::vector<config> secondary_unit_filter_;
+		std::vector<config> neighbour_unit_filter_;
 		std::vector<gamemap::location::DIRECTION> directions;
 		int frequency_;
 };
@@ -181,6 +182,30 @@ class levelout_animation:public unit_animation
 			unit_animation(start_time,frame){};
 
 	private:
+};
+
+class poison_animation:public unit_animation
+{
+	public:
+		explicit poison_animation(const config& cfg);
+		explicit poison_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
+		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
+
+	private:
+		std::vector<int> damage_;
+};
+
+class healed_animation:public unit_animation
+{
+	public:
+		explicit healed_animation(const config& cfg);
+		explicit healed_animation(int start_time,const unit_frame &frame):
+			unit_animation(start_time,frame){};
+		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,int healing) const;
+
+	private:
+		std::vector<int> healing_;
 };
 
 

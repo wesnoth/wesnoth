@@ -127,8 +127,10 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	wassert(!path.empty());
 
 	bool previous_visible = false;
+	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
 	unit temp_unit = u;
+	u.set_hidden(true);
 	temp_unit.set_hidden(false);
 
 	for(size_t i = 0; i+1 < path.size(); ++i) {
@@ -169,6 +171,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
 		disp.invalidate(*it);
 	}
+	u.set_hidden(was_hidden);
 }
 
 void unit_die(display& disp,const gamemap::location& loc, unit& loser,
@@ -297,10 +300,10 @@ void unit_attack_ranged(display& disp, unit_map& units,
 	int missile_frame_halo =0;
 	int missile_halo =0;
 	while(!hide && (
-		attacker.state() != unit::STATE_STANDING ||
-		defender.state() != unit::STATE_STANDING ||
+		!attacker.get_animation()->animation_finished() ||
+		!defender.get_animation()->animation_finished() ||
 		!missile_animation.animation_finished()  ||
-		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING))
+		(leader_loc.valid() && !leader->second.get_animation()->animation_finished()))
 	     ){
 		const unit_frame& missile_frame = missile_animation.get_current_frame();
 		double pos = missile_frame.offset(missile_animation.get_current_frame_time());
@@ -355,15 +358,6 @@ void unit_attack_ranged(display& disp, unit_map& units,
 		}
 		disp.draw();
 		events::pump();
-		if(attacker.get_animation()->animation_finished()) {
-			attacker.set_standing(disp,a,false);
-		}
-		if(defender.get_animation()->animation_finished()) {
-			defender.set_standing(disp,b,false);
-		}
-		if(leader_loc.valid() && leader->second.get_animation()->animation_finished() ) {
-			leader->second.set_standing(disp,leader_loc,true);
-		}
 		missile_animation.update_last_draw_time();
 		disp.delay(10);
 		// we use missile animation because it's the only one not reseted in the middle to go to standing
@@ -453,18 +447,18 @@ void unit_attack(display& disp, unit_map& units,
 	int animation_time = start_time;
 	bool played_center = false;
 	while(!hide && (
-		attacker.state() != unit::STATE_STANDING ||
-		defender.state() != unit::STATE_STANDING ||
-		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING))
+		!attacker.get_animation()->animation_finished()  ||
+		!defender.get_animation()->animation_finished()  ||
+		(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ))
 	     ){
 
 		double pos = 0.0;
 	        if(animation_time < attacker.get_animation()->get_begin_time()) {
 			pos = 0.0;
-		} else if( animation_time > 0) {
-			pos = (1.0-double(animation_time)/double(end_time));
+		} else if( animation_time > 0 && end_time > 0) {
+			pos = 1.0-double(animation_time)/double(end_time);
 		} else {
-			pos = 1.0 - double(animation_time)/double(attacker.get_animation()->get_begin_time());
+			pos = 1.0 - double(animation_time)/double(minimum<int>(attacker.get_animation()->get_begin_time(),-150));
 		}
 		if(attacker.state() != unit::STATE_STANDING && pos > 0.0) {
 			attacker.set_offset(pos*0.6);
@@ -483,14 +477,7 @@ void unit_attack(display& disp, unit_map& units,
 		disp.draw();
 		events::pump();
 		if(attacker.get_animation()->animation_finished()) {
-		   attacker.set_standing(disp,a,false);
 		   attacker.set_offset(0.0);
-		}
-		if(defender.get_animation()->animation_finished()) {
-		   defender.set_standing(disp,b,false);
-		}
-		if(leader_loc.valid() && leader->second.get_animation()->animation_finished() ) {
-		   leader->second.set_standing(disp,leader_loc,true);
 		}
 		disp.delay(10);
 		animation_time = attacker.get_animation()->get_animation_time();

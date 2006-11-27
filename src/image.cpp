@@ -40,8 +40,8 @@ typedef std::pair<image::locator::value, int> locator_finder_pair;
 locator_finder_t locator_finder;
 
 // Definition of all image maps
-image::image_cache images_,scaled_images_,unmasked_images_,greyed_images_;
-image::image_cache brightened_images_,semi_brightened_images_,darkened_images_;
+image::image_cache images_,scaled_images_,unmasked_images_;
+image::image_cache brightened_images_,semi_brightened_images_;
 
 image::locator_cache alternative_images_;
 
@@ -88,8 +88,6 @@ void flush_cache()
 	reset_cache(images_);
 	reset_cache(scaled_images_);
 	reset_cache(unmasked_images_);
-	reset_cache(greyed_images_);
-	reset_cache(darkened_images_);
 	reset_cache(brightened_images_);
 	reset_cache(semi_brightened_images_);
 	reset_cache(alternative_images_);
@@ -110,8 +108,6 @@ void locator::init_index()
 		images_.push_back(cache_item<surface>());
 		scaled_images_.push_back(cache_item<surface>());
 		unmasked_images_.push_back(cache_item<surface>());
-		greyed_images_.push_back(cache_item<surface>());
-		darkened_images_.push_back(cache_item<surface>());
 		brightened_images_.push_back(cache_item<surface>());
 		semi_brightened_images_.push_back(cache_item<surface>());
 
@@ -318,7 +314,7 @@ surface locator::load_image_sub_file() const
 
 	if(val_.modifications_.size()){
 		std::map<Uint32, Uint32> recolor_map;
-		std::vector<std::string> modlist = utils::split(val_.modifications_,'~');
+		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
 		for(std::vector<std::string>::const_iterator i=modlist.begin();
 			i!= modlist.end();i++){
 			std::vector<std::string> tmpmod = utils::paranthetical_split(*i);
@@ -333,7 +329,24 @@ surface locator::load_image_sub_file() const
 					break;
 				}
 				std::string field = *j++;
-				if("TC" == function){
+				if("TC" == function){//deprecated team coloring syntax
+					//replace with proper RC syntax
+					std::string::size_type pos = 0;
+					pos = field.find(',');
+					if (pos == std::string::npos)
+						break;
+					std::string f1,f2;
+					int side_n = lexical_cast_default<int>(field.substr(0,pos),-1);
+					if (side_n < 0)
+						break;
+					f1 = team::get_side_colour_index(side_n);
+					f2 = field.substr(pos+1);
+					if(game_config::tc_info(f2).size()){
+						function="RC";
+						field= f2 + ">" + f1;
+					}						
+				}
+				if("RC" == function){
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
 						std::map<std::string, color_range>::const_iterator nc = game_config::team_rgb_range.find(recolor[1]);
@@ -471,8 +484,6 @@ void set_colour_adjustment(int r, int g, int b)
 		green_adjust = g;
 		blue_adjust = b;
 		reset_cache(scaled_images_);
-		reset_cache(greyed_images_);
-		reset_cache(darkened_images_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(alternative_images_);
@@ -502,8 +513,6 @@ void set_image_mask(const std::string& image)
 	if(image_mask != image) {
 		image_mask = image;
 		reset_cache(scaled_images_);
-		reset_cache(greyed_images_);
-		reset_cache(darkened_images_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(alternative_images_);
@@ -517,8 +526,6 @@ void set_zoom(int amount)
 	if(amount != zoom) {
 		zoom = amount;
 		reset_cache(scaled_images_);
-		reset_cache(greyed_images_);
-		reset_cache(darkened_images_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(unmasked_images_);
@@ -567,19 +574,6 @@ surface get_scaled(const locator i_locator, COLOUR_ADJUSTMENT adj)
 	return res;
 }
 
-surface get_greyed(const locator i_locator, COLOUR_ADJUSTMENT adj)
-{
-	surface image(get_image(i_locator, SCALED, adj));
-
-	return surface(greyscale_image(image));
-}
-
-surface get_darkened(const locator i_locator, COLOUR_ADJUSTMENT adj)
-{
-	surface image(get_image(i_locator, SCALED, adj));
-
-	return surface(darken_image(image));
-}
 
 surface get_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
@@ -610,12 +604,6 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 		break;
 	case UNMASKED:
 		imap = &unmasked_images_;
-		break;
-	case GREYED:
-		imap = &greyed_images_;
-		break;
-	case DARKENED:
-		imap = &darkened_images_;
 		break;
 	case BRIGHTENED:
 		imap = &brightened_images_;
@@ -649,12 +637,6 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 			break;
 		case UNMASKED:
 			res = get_unmasked(i_locator);
-			break;
-		case GREYED:
-			res = get_greyed(i_locator, adj);
-			break;
-		case DARKENED:
-			res = get_darkened(i_locator, adj);
 			break;
 		case BRIGHTENED:
 			res = get_brightened(i_locator, adj);
