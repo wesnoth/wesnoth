@@ -17,7 +17,6 @@ src/map.cpp:455:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is
 src/map.cpp:585:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
 src/mapgen.cpp:378://FIXME MdW test this modification	
 src/map.hpp:198:	//The terrain string with TERRAIN_NUMBER should be make FIXME MdW
-src/preferences.cpp:79:	std::vector<terrain_translation::TERRAIN_NUMBER> terrain;// = FIXME MdW enable
 src/terrain.cpp:21:#include "wassert.hpp" // FIXME MdW only used for the terrain initalization
 src/terrain.cpp:45:	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
 src/terrain.cpp:54:	//FIXME MdW this temp hack should be removed

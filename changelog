@@ -1,7 +1,7 @@
 Version 1.3-terrain-branch: also read README.BRANCH
 * Changed TERRAIN to TERRAIN_LETTER and TERRAIN_NUMBER
  * TERRAIN_LETTER is a char fully compatible with the previous type
- * TERRAIN_NUMBER is a unsigned long the new type
+ * TERRAIN_NUMBER is the new type
 * Moved the TERRAIN to terrain_translation since terrain_type needs this info
   but can't load map.hpp due dependancies and terrain_translaion is the
   highest level now
@@ -26,6 +26,8 @@ Version 1.3-terrain-branch: also read README.BRANCH
 
 * WML
  * unit animation terrain filter works properly again
+ * the encountered terrains are now written in a new format
+   this means the user has to rediscover all available terrains
 
 
 Version 1.3-svn:
