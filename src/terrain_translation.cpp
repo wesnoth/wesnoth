@@ -123,12 +123,18 @@ SET_TERRAIN_CONSTANT(CAVE, 'u');
 SET_TERRAIN_CONSTANT(UNDERGROUND_VILLAGE, 'D');
 SET_TERRAIN_CONSTANT(DWARVEN_CASTLE, 'o');
 
-SET_TERRAIN_CONSTANT(PLUS, '+');
+//these two become new after alias conversion
+SET_TERRAIN_CONSTANT(PLUS, '+'); 
 SET_TERRAIN_CONSTANT(MINUS, '-');
+// THIS one only used in terrain builder? if yes rename to TB_STAR otherwise add TB_STAR
+// FIXME MdW anchors with a star in terrain builder will fail
 SET_TERRAIN_CONSTANT(STAR, '*');
+//if only used in terrain match code it can move here since 
+//we will contain terrain match code
 SET_TERRAIN_CONSTANT_NEW(NOT, "!");
-SET_TERRAIN_CONSTANT(EOL, 7);
-SET_TERRAIN_CONSTANT(DOT, '.');
+SET_TERRAIN_CONSTANT(EOL, 7); //obsolete??
+// THIS one only used in terrain builder? if yes rename to TB_DOT otherwise add TB_DOT
+SET_TERRAIN_CONSTANT(DOT, '.'); 
 SET_TERRAIN_CONSTANT(COMMA, ',');
 SET_TERRAIN_CONSTANT(NONE_TERRAIN, 0); // undefined terrain
 
@@ -590,7 +596,7 @@ std::string number_to_string_(TERRAIN_NUMBER terrain, const int start_position)
 	std::string result;
 
 	unsigned char letter[4];
-	letter[0] = ((terrain & 0xFF000000) >> 24);
+	letter[0] = ((terrain & 0xFF000000) >> 24); //FIXME MdW might need an UL behind the masks !!!
 	letter[1] = ((terrain & 0x00FF0000) >> 16);
 	letter[2] = ((terrain & 0x0000FF00) >> 8);
 	letter[3] = (terrain & 0x000000FF);
@@ -649,6 +655,88 @@ std::string write_game_map(const std::vector<std::vector<TERRAIN_NUMBER> >& map,
 	return str.str();
 
 }
+
+//FIXME MdW, there are some optimizations which can be done here
+//but look at that later
+bool terrain_matches(const TERRAIN_NUMBER src, const TERRAIN_NUMBER dest)
+{
+	const std::vector<TERRAIN_NUMBER> dest_list(1, dest);
+	return terrain_matches(src, dest_list);
+
+}
+	 
+//FIXME MdW needs a forward declaration
+TERRAIN_NUMBER get_mask_(TERRAIN_NUMBER terrain)
+{
+	const TERRAIN_NUMBER result_mask[5] = 
+		{0x00000000, 0xFF000000, 0xFFFF0000, 0xFFFFFF00, 0xFFFFFFFF}; //not yet sure about the values of these masks
+//		{0xFFFFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x000000FF, 0x00000000}; //not yet sure about the values of these masks
+
+	const TERRAIN_NUMBER wildcard_mask[4] = 
+		{0x2A000000, 0x002A0000, 0x00002A00,0x0000002A};
+
+	// match the first position of the * and
+	// return the appropriate result mask
+	for(int i = 0; i < 4; ++i) {
+		if((terrain & wildcard_mask[i]) == wildcard_mask[i]) {
+			return result_mask[i];
+		}
+	}
+
+	// no match return default mask
+	return result_mask[4];
+
+}
+
+//FIXME MdW, there are some optimizations which can be done here
+//but look at that later
+bool terrain_matches(const TERRAIN_NUMBER src, const std::vector<TERRAIN_NUMBER>& dest)
+{
+
+	std::cerr << "Terrain matching src = " << write_letter(src) << " dest = " << write_list(dest) << "\n";
+	if(dest.empty()) {
+		std::cerr << ">> Empty result, no match\n";
+		return false;
+	}
+	
+	const TERRAIN_NUMBER src_mask = get_mask_(src);
+	const TERRAIN_NUMBER masked_src = (src & src_mask);
+			
+	std::vector<TERRAIN_NUMBER>::const_iterator itor = dest.begin();
+
+	// try to match the terrains if matched jump out of the loop.
+	for(; itor != dest.end(); ++itor) {
+		std::cerr << ">> Testing dest " << write_letter(*itor) << "\n";
+		// full match 
+		if(src == *itor) {
+			std::cerr << ">>>> Full match\n";
+			return true;
+		}
+		
+		// test on wildcards
+		const TERRAIN_NUMBER dest_mask = get_mask_(*itor);
+		const TERRAIN_NUMBER masked_dest = (*itor & dest_mask);
+
+		// does the source wildcard match
+		if((*itor &~ src_mask) == masked_src) {
+			std::cerr << ">>>> Source wildcard matched\n";
+			return true;
+		}
+		
+		// does the destination wildcard match
+		if((src &~ dest_mask) == masked_dest) {
+			std::cerr << ">>>> Destination wildcard matched\n";
+			return true;
+		}
+	}
+
+	// no match
+	std::cerr << ">> No match found\n";
+	return false;
+
+
+}
+
 /***************************************************************************************/	
 
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 

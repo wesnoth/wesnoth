@@ -189,6 +189,15 @@ namespace terrain_translation {
 
 	// fixme maybe we should assume 
 	TERRAIN_NUMBER builder_get_number(TERRAIN_NUMBER terrain);
+
+	/** Tests whether a certain terrain matches another terrain
+	 *
+	 */
+	bool terrain_matches(const TERRAIN_NUMBER src, const TERRAIN_NUMBER dest);
+	 
+	/** Tests whether a certain terrain matches a list of terrains 
+	 */
+	bool terrain_matches(const TERRAIN_NUMBER src, const std::vector<TERRAIN_NUMBER>& dest);
 	
 /***************************************************************************************/
 	

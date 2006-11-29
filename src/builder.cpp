@@ -25,8 +25,8 @@
 
 #define ERR_NG LOG_STREAM(err, engine)
 //FIXME MdW this file is filled with debug output and should be cleaned
-#define DEBUG_NG LOG_STREAM(info, engine) 
-//define DEBUG_NG LOG_STREAM(err, engine) 
+//define DEBUG_NG LOG_STREAM(info, engine) 
+#define DEBUG_NG LOG_STREAM(err, engine) 
 
 const int terrain_builder::rule_image::TILEWIDTH = 72;
 const int terrain_builder::rule_image::UNITPOS = 36 + 18;
@@ -597,9 +597,8 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 			const terrain_translation::TERRAIN_NUMBER terrain = map[y_off][x_off];
 			const int  anchor = terrain_translation::builder_get_number(terrain);
 
-			std::cerr << "x = " << x << " y = " << y << " lineno = " << lineno
-				<< " terrain = " << terrain << " anchor = " << anchor << "\n";
-				
+//			std::cerr << "x = " << x << " y = " << y << " lineno = " << lineno
+//				<< " terrain = " << terrain << " anchor = " << anchor << "\n";
 				
 			if(terrain == terrain_translation::DOT) { 
 				// Dots are simple placeholders, which do not
@@ -777,15 +776,19 @@ void terrain_builder::parse_config(const config &cfg)
 
 }
 
-bool terrain_builder::terrain_matches(terrain_translation::TERRAIN_NUMBER letter, const std::vector<terrain_translation::TERRAIN_NUMBER> &terrains)
+bool terrain_builder::terrain_matches(terrain_translation::TERRAIN_NUMBER letter, 
+		const std::vector<terrain_translation::TERRAIN_NUMBER> &terrains)
 {
 	bool negative = false;
 	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator itor;
 
 	//FIXME MdW remove debug code from this function
-	DEBUG_NG << "Terrain matches:\n";
-	DEBUG_NG << ">> terrain = '" << terrain_translation::write_letter(letter) << "'\n";
-	DEBUG_NG << ">> match list = '" << terrain_translation::write_list(terrains) << "'\n";
+//	DEBUG_NG << "Terrain matches:\n";
+//	DEBUG_NG << ">> terrain = '" << terrain_translation::write_letter(letter) << "'\n";
+//	DEBUG_NG << ">> match list = '" << terrain_translation::write_list(terrains) << "'\n";
+	std::cerr << "Terrain matches:\n";
+	std::cerr << ">> terrain = '" << terrain_translation::write_letter(letter) << "'\n";
+	std::cerr << ">> match list = '" << terrain_translation::write_list(terrains) << "'\n";
 
 	if(terrains.empty()) {
 		DEBUG_NG << ">> true, empty list\n";
@@ -793,24 +796,30 @@ bool terrain_builder::terrain_matches(terrain_translation::TERRAIN_NUMBER letter
 	}
 	for(itor = terrains.begin(); itor != terrains.end(); ++itor) {
 		if(*itor == terrain_translation::STAR) {
-			DEBUG_NG << ">> true, STAR char found\n";
+//			DEBUG_NG << ">> true, STAR char found\n";
+			std::cerr << ">> true, STAR char found\n";
 			return true;
 		}
 		if(*itor == terrain_translation::NOT) {
-			DEBUG_NG << ">> NOT char found\n";
+//			DEBUG_NG << ">> NOT char found\n";
+			std::cerr << ">> NOT char found\n";
 			negative = true;
 			continue;
 		}
-		if(*itor == letter)
+//		if(*itor == letter) {
+		if(terrain_translation::terrain_matches(*itor, letter)) {
 			break;
+		}
 	}
 
 	if(itor == terrains.end()) {
-		DEBUG_NG << ">> " << negative << ", itor at end()\n";
+//		DEBUG_NG << ">> " << negative << ", itor at end()\n";
+		std::cerr << ">> " << negative << ", itor at end()\n";
 		return negative;
 	}
 
-	DEBUG_NG << !negative << ">> itor in string\n";
+//	DEBUG_NG << !negative << ">> itor in string\n";
+	std::cerr << !negative << ">> itor in string\n";
 	return !negative;
 }
 
@@ -1042,10 +1051,12 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 			itor != types.end(); ++itor) {
 		if(border) {
 			constraint_size += terrain_by_type_border_[*itor].size();
-			DEBUG_NG << ">>>> border found size = " << constraint_size << "\n;";
+			DEBUG_NG << ">>>> terrain " << terrain_translation::write_letter(*itor) 
+				<< "(" << *itor <<") border found size = " << constraint_size << "\n;";
 		} else {
 			constraint_size += terrain_by_type_[*itor].size();
-			DEBUG_NG << ">>>> no border found size = " << constraint_size << "\n;";
+			DEBUG_NG << ">>>> terrain " << terrain_translation::write_letter(*itor) 
+				<< "(" << *itor <<") no border found size = " << constraint_size << "\n;";
 		}
 	}
 
@@ -1067,6 +1078,9 @@ void terrain_builder::build_terrains()
 			const terrain_translation::TERRAIN_NUMBER t = map_.get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
+	
+			DEBUG_NG << ">>>> terrain = " << t << " location = " 
+				<< x <<"," << y << "\n";
 
 			gamemap::location adj[6];
 			int i;
@@ -1082,6 +1096,9 @@ void terrain_builder::build_terrains()
 				//determines if this tile is a border tile
 				if(map_.get_terrain(adj[i]) != t)
 					border = true;
+
+				DEBUG_NG << ">>>>>> adjacent[ " << i << "] = " << map_.get_terrain(adj[i]) 
+					<< " border = " << border << "\n";
 			}
 			if(border)
 				terrain_by_type_border_[t].push_back(loc);
