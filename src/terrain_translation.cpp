@@ -123,9 +123,8 @@ SET_TERRAIN_CONSTANT(CAVE, 'u');
 SET_TERRAIN_CONSTANT(UNDERGROUND_VILLAGE, 'D');
 SET_TERRAIN_CONSTANT(DWARVEN_CASTLE, 'o');
 
-//these two become new after alias conversion
-SET_TERRAIN_CONSTANT(PLUS, '+'); 
-SET_TERRAIN_CONSTANT(MINUS, '-');
+SET_TERRAIN_CONSTANT_NEW(PLUS, "+"); 
+SET_TERRAIN_CONSTANT_NEW(MINUS, "-");
 // THIS one only used in terrain builder? if yes rename to TB_STAR otherwise add TB_STAR
 // FIXME MdW anchors with a star in terrain builder will fail
 SET_TERRAIN_CONSTANT(STAR, '*');

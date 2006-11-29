@@ -64,26 +64,26 @@ terrain_type::terrain_type(const config& cfg)
 		terrain_translation::add_translation(terrain_char, number_);
 	}
 #else
-	number_ = terrain_translation::read_letter(terrain_string, TFORMAT_STRING);
+	number_ = terrain_translation::read_letter(terrain_string);
 #endif
 
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& alias = 
-		terrain_translation::read_list(cfg["aliasof"]); //FIXME MdW the aliasses should also be converted to new format
+		terrain_translation::read_list(cfg["aliasof"], -1, terrain_translation::TFORMAT_STRING);
 	if(!alias.empty()) {
 		mvt_type_ = alias;
 		def_type_ = alias;
 	}
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_alias = 
-		terrain_translation::read_list(cfg["mvt_alias"]);
+		terrain_translation::read_list(cfg["mvt_alias"], -1, terrain_translation::TFORMAT_STRING);
 	if(!mvt_alias.empty()) {
 		mvt_type_ = mvt_alias;
 	}
 
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_alias = 
-		terrain_translation::read_list(cfg["def_alias"]);
+		terrain_translation::read_list(cfg["def_alias"], -1, terrain_translation::TFORMAT_STRING);
 	if(!def_alias.empty()) {
 		def_type_ = def_alias;
 	}
