@@ -18,6 +18,7 @@
 #include "util.hpp"
 #include "terrain.hpp"
 #include "serialization/string_utils.hpp"
+#include "wassert.hpp" // FIXME MdW only used for the terrain initalization
 
 #include <algorithm>
 #include <cstdlib>
@@ -40,8 +41,10 @@ terrain_type::terrain_type(const config& cfg)
 	name_ = cfg["name"];
 	id_ = cfg["id"];
 
+#if 0	
 	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
-/*	
+#endif	
+	
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	// load the old char and the new string part
 	std::string terrain_char = cfg["char"];
@@ -49,9 +52,10 @@ terrain_type::terrain_type(const config& cfg)
 
 	//this hack makes sure the string is defined, ugly but works
 	//FIXME MdW this temp hack should be removed
-	if(terrain_string == "") {
-		terrain_string = "_ _" + terrain_char;
-	}
+//	if(terrain_string == "") {
+//		terrain_string = "_ _" + terrain_char;
+//	}
+	wassert(terrain_string != "");
 	
 	number_ = terrain_translation::read_letter(terrain_string, terrain_translation::TFORMAT_STRING);
 	//if both a char and a string are defined load it in the translation 
@@ -62,12 +66,12 @@ terrain_type::terrain_type(const config& cfg)
 #else
 	number_ = terrain_translation::read_letter(terrain_string, TFORMAT_STRING);
 #endif
-*/
+
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
 	const std::vector<terrain_translation::TERRAIN_NUMBER>& alias = 
-		terrain_translation::read_list(cfg["aliasof"]);
+		terrain_translation::read_list(cfg["aliasof"]); //FIXME MdW the aliasses should also be converted to new format
 	if(!alias.empty()) {
 		mvt_type_ = alias;
 		def_type_ = alias;

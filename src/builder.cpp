@@ -551,7 +551,13 @@ void terrain_builder::add_constraints(
 
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints, const gamemap::location& loc, const config& cfg, const config& global_images)
 {
-	add_constraints(constraints, loc, terrain_translation::read_list(cfg["type"]), global_images);
+	const std::vector<terrain_translation::TERRAIN_NUMBER> debug = 
+		terrain_translation::read_list(cfg["type"], -1, terrain_translation::TFORMAT_STRING );
+	std::cerr << "terrains = " << terrain_translation::write_list(debug) 
+		<< " value = " << debug[0] << "\n";
+	//Veg = 0x56656700 
+	
+	add_constraints(constraints, loc, terrain_translation::read_list(cfg["type"], -1, terrain_translation::TFORMAT_STRING ), global_images);
 
 	terrain_constraint& constraint = constraints[loc];
 
@@ -594,7 +600,8 @@ Starting empty lines are discarded.
 //has a lot of debug code which should be removed
 //the entire code looks horrible but it will need another rewrite to the
 //new system so leave this mess as is.
-//
+
+#if 0	
 	int x = 0;
 	int y = 0;
 	int lineno = 0;
@@ -656,7 +663,7 @@ Starting empty lines are discarded.
 				++itor;
 			}
 		}
-#if 0		
+#if 0
 		std::cerr << "got rule: '" << terrain_translation::set_map(rule) << "' at " 
 			<< x << "," << y << "\n";
 #endif			
@@ -714,6 +721,78 @@ Starting empty lines are discarded.
 			++lineno;
 		}
 	}
+#endif
+
+	//FIXME MdW this entire part is rewritten, untested and needs cleaning up and right idention
+	typedef std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > builder_map;
+	
+	const builder_map map = terrain_translation::read_builder_map(mapstring);
+	
+	// if there is an empty map leave directly
+	// determine after conversion, since a non empty
+	// string can return an empty map
+	if(map.empty()) {
+		return;
+	}
+	bool skip = (map[0][0] == terrain_translation::NONE_TERRAIN); //FIXME MdW remove the skip if no longer needed
+	int lineno = skip ? 1 : 0;
+	int x = lineno;
+	int y = 0;
+	
+//	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator y_itor = map.begin();
+//	builder_map::const_iterator y_itor = map.begin();
+	
+//	for(;y_itor != map.end(); ++y_itor) {
+	for(size_t y_off = 0; y_off < map.size(); ++y_off) {
+
+//		builder_map::const_iterator x_itor = map[y].begin();
+
+//		for(; x_itor != map[y].end(); ++x_itor) {
+		
+		for(size_t x_off = x; x_off < map[y_off].size(); ++x_off) {
+//			if(skip) {
+//				skip = false;
+//			} else {
+				const terrain_translation::TERRAIN_NUMBER terrain = map[y_off][x_off];
+				const int  anchor = terrain_translation::builder_get_number(terrain);
+
+				std::cerr << "x = " << x << " y = " << y << " lineno = " << lineno
+					<< " terrain = " << terrain << " anchor = " << anchor << "\n";
+				
+				
+				if(terrain == terrain_translation::DOT) { 
+					// Dots are simple placeholders, which do not
+					// represent actual terrains.
+				} else if (anchor != 0 ) {
+					anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, y)));
+				} else {
+					// we have a rule, we filter for validity here
+					// for now only one valid value but might change
+					// in the future
+					wassert(terrain == terrain_translation::STAR);
+
+					const gamemap::location loc(x, y);
+					//add_constrain wants a terrain vector, this might change in the 
+					//future or an other function which does this trick but keep it for now
+					const std::vector<terrain_translation::TERRAIN_NUMBER> types(1, terrain);
+
+					add_constraints(br.constraints, loc, types, global_images);
+				}
+			x += 2;
+			}
+//		}
+
+		if(lineno % 2 == 1) {
+			++y;
+			x = 0;
+//			skip = true;
+		} else {
+			x = 1;
+		}
+
+		++lineno;
+	}
+	
 }
 
 void terrain_builder::add_rule(building_ruleset& rules, building_rule &rule)
@@ -832,7 +911,7 @@ void terrain_builder::parse_config(const config &cfg)
 	}
 
 // debug output for the terrain rules	
-#if 0 
+#if 1 
 	std::cerr << "Built terrain rules: \n";
 
 	building_ruleset::const_iterator rule;

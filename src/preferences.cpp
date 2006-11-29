@@ -76,8 +76,8 @@ manager::manager()
 	v = utils::split(prefs["encountered_units"]);
 	std::copy(v.begin(), v.end(),
 			  std::inserter(encountered_units_set, encountered_units_set.begin()));
-	std::vector<terrain_translation::TERRAIN_NUMBER> terrain = 
-		terrain_translation::read_list(prefs["encountered_terrains"],1);
+	std::vector<terrain_translation::TERRAIN_NUMBER> terrain;// = FIXME MdW enable
+//		terrain_translation::read_list(prefs["encountered_terrains"],1);
 	std::copy(terrain.begin(), terrain.end(), 
 			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
 }

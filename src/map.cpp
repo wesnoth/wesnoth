@@ -355,7 +355,8 @@ void gamemap::read(const std::string& data)
 			}
 		}
 	}
-	
+
+#if 0	
 	unsigned ysize = this->y();
 	LOG_G << "loaded map: " << this->x() << ',' << ysize << '\n';
 
@@ -368,6 +369,7 @@ void gamemap::read(const std::string& data)
 		}
 		std::cerr << "\n";
 	}
+#endif	
 }
 
 std::string gamemap::write() const
