@@ -122,15 +122,15 @@ void terrain_palette::scroll_bottom() {
 	}
 }
 
-gamemap::TERRAIN terrain_palette::selected_fg_terrain() const {
+terrain_translation::TERRAIN_NUMBER terrain_palette::selected_fg_terrain() const {
 	return selected_fg_terrain_;
 }
 
-gamemap::TERRAIN terrain_palette::selected_bg_terrain() const {
+terrain_translation::TERRAIN_NUMBER terrain_palette::selected_bg_terrain() const {
 	return selected_bg_terrain_;
 }
 
-void terrain_palette::select_fg_terrain(gamemap::TERRAIN terrain) {
+void terrain_palette::select_fg_terrain(terrain_translation::TERRAIN_NUMBER terrain) {
 	if (selected_fg_terrain_ != terrain) {
 		set_dirty();
 		selected_fg_terrain_ = terrain;
@@ -138,7 +138,7 @@ void terrain_palette::select_fg_terrain(gamemap::TERRAIN terrain) {
 	}
 }
 
-void terrain_palette::select_bg_terrain(gamemap::TERRAIN terrain) {
+void terrain_palette::select_bg_terrain(terrain_translation::TERRAIN_NUMBER terrain) {
 	if (selected_bg_terrain_ != terrain) {
 		set_dirty();
 		selected_bg_terrain_ = terrain;
@@ -154,14 +154,14 @@ void terrain_palette::update_selected_terrains(void) {
 	update_report();
 }
 
-std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
+std::string terrain_palette::get_terrain_string(const terrain_translation::TERRAIN_NUMBER t) {
 	std::stringstream str;
 	const std::string& name = map_.get_terrain_info(t).name();
-	const std::string& underlying = map_.underlying_union_terrain(t);
+	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_.underlying_union_terrain(t);
 	str << name;
 	if(underlying.size() != 1 || underlying[0] != t) {
 		str << " (";
-		for(std::string::const_iterator i = underlying.begin();
+		for(std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = underlying.begin();
 			i != underlying.end(); ++i) {
 
 			str << map_.get_terrain_info(*i).name();
@@ -259,7 +259,7 @@ void terrain_palette::draw(bool force) {
 	const SDL_Rect &loc = location();
 	int y = terrain_start_;
 	for(unsigned int counter = starting; counter < ending; counter++){
-		const gamemap::TERRAIN terrain = terrains_[counter];
+		const terrain_translation::TERRAIN_NUMBER terrain = terrains_[counter];
 		const std::string filename = "terrain/" + map_.get_terrain_info(terrain).symbol_image() + ".png";
 		surface image(image::get_image(filename, image::UNSCALED));
 		if(image == NULL) {

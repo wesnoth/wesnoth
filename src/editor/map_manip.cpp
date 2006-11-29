@@ -32,11 +32,11 @@ namespace {
 	void grow_and_pad(const gamemap &map, std::vector<std::string> &lines,
 					  bool grow_height) {
 		int i, j;
-		std::vector<gamemap::TERRAIN> terrains;
-		gamemap::TERRAIN chosen_terrain;
+		std::vector<terrain_translation::TERRAIN_NUMBER> terrains;
+		terrain_translation::TERRAIN_NUMBER chosen_terrain;
 		if (grow_height) {
 			lines.push_back(std::string(lines[0].size(),
-										gamemap::FOREST));
+										terrain_translation::FOREST));
 			// Shift terrain on odd numbered columns one step downwards.
 			for (i = 0; (unsigned)i < lines[0].size(); i += 2) {
 				for (j = lines.size() - 2; j >= 0; j--) {
@@ -75,7 +75,7 @@ namespace {
 					}
 				}
 				if (map.is_village(chosen_terrain)) {
-					chosen_terrain = gamemap::FOREST;
+					chosen_terrain = terrain_translation::FOREST;
 				}
 				if (is_even(i)) {
 					lines[0][i] = chosen_terrain;
@@ -105,7 +105,7 @@ namespace {
 				chosen_terrain = map.is_village(terrains[0])
 					? terrains[1] : terrains[0];
 				chosen_terrain = map.is_village(chosen_terrain)
-					? gamemap::FOREST : chosen_terrain;
+					? terrain_translation::FOREST : chosen_terrain;
 				lines[i].resize(lines[i].length() + 1, chosen_terrain);
 			}
 		}
@@ -145,8 +145,8 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 
 
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
-				const gamemap::TERRAIN fill_with, terrain_log *log) {
-	gamemap::TERRAIN terrain_to_fill = map.get_terrain(start_loc);
+				const terrain_translation::TERRAIN_NUMBER fill_with, terrain_log *log) {
+	terrain_translation::TERRAIN_NUMBER terrain_to_fill = map.get_terrain(start_loc);
 	if (fill_with == terrain_to_fill) {
 		return;
 	}
@@ -163,7 +163,7 @@ void flood_fill(gamemap &map, const gamemap::location &start_loc,
 
 std::set<gamemap::location>
 get_component(const gamemap &map, const gamemap::location &start_loc) {
-	gamemap::TERRAIN terrain_to_fill = map.get_terrain(start_loc);
+	terrain_translation::TERRAIN_NUMBER terrain_to_fill = map.get_terrain(start_loc);
 	std::set<gamemap::location> to_fill;
 	std::set<gamemap::location> filled;
 	std::set<gamemap::location>::iterator it;
@@ -191,7 +191,7 @@ get_component(const gamemap &map, const gamemap::location &start_loc) {
 }
 
 std::string resize_map(const gamemap &map, const unsigned new_w,
-					   const unsigned new_h, const gamemap::TERRAIN fill_with) {
+					   const unsigned new_h, const terrain_translation::TERRAIN_NUMBER fill_with) {
 	std::string str_map = map.write();
 	std::vector<std::string> lines = utils::split(str_map, '\n');
 	bool map_changed = false;
