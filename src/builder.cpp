@@ -551,13 +551,9 @@ void terrain_builder::add_constraints(
 
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints, const gamemap::location& loc, const config& cfg, const config& global_images)
 {
-	const std::vector<terrain_translation::TERRAIN_NUMBER> debug = 
-		terrain_translation::read_list(cfg["type"], -1, terrain_translation::TFORMAT_STRING );
-	std::cerr << "terrains = " << terrain_translation::write_list(debug) 
-		<< " value = " << debug[0] << "\n";
-	//Veg = 0x56656700 
-	
-	add_constraints(constraints, loc, terrain_translation::read_list(cfg["type"], -1, terrain_translation::TFORMAT_STRING ), global_images);
+	add_constraints(constraints, loc, 
+			terrain_translation::read_list(cfg["type"], -1, terrain_translation::TFORMAT_STRING ), 
+			global_images);
 
 	terrain_constraint& constraint = constraints[loc];
 
@@ -580,153 +576,9 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 		struct building_rule &br, anchormap& anchors,
 		const config& global_images)
 {
-/* Copied from http://www.anathas.org/ayin/wesnoth/doc/terrain_graphics_wml
-Map strings are stings, generally multi-line, which are parsed the following way:
 
-Starting empty lines are discarded.
-  * If the first non-empty line starts with a space, it is given the line number
-    "1". Else, it is given the line-number "0"
-  * If the line is odd-numbered, its first 2 characters are discarded
-  * The rest of the line is split into 4-character chunks (or smaller if less
-    characters are left in the current line.)
-    * For each of those 4-character chunks:
-      + If the chunk consists in a dot, it is ignored.
-      + If the chunk consists a combination of any characters except digits, a new
-        rule is created.
-      + If the chunk consists in digits, a new anchor_ is created (see below.)
-      + The column-number is increased by one.
-*/
-//FIXME MdW this is a total rewrite not sure whether is really works
-//has a lot of debug code which should be removed
-//the entire code looks horrible but it will need another rewrite to the
-//new system so leave this mess as is.
-
-#if 0	
-	int x = 0;
-	int y = 0;
-	int lineno = 0;
-	int i;
-
-	//if there is an empty map leave directly
-	if(mapstring.empty()) return;
-
-	std::vector<terrain_translation::TERRAIN_NUMBER> map = terrain_translation::read_map(mapstring);
-	//FIXME MdW rewrite
-//	std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > map_new = 
-//		terrain_translation::read_builer_map(mapstring);
-	
-	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator itor = map.begin();
-	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator start = map.begin();
-	std::vector<terrain_translation::TERRAIN_NUMBER> rule;
-
-	// eat leading blank lines
-	while(*itor == terrain_translation::VOID_TERRAIN || *itor == terrain_translation::EOL){
-		// start keep trac of the last beginning of the line
-		if(*itor == terrain_translation::EOL){
-			start = ++itor;
-		} else { 
-			++itor;
-		}
-		// when at the end of the map we have empty map data leave
-		if(itor == map.end()) return;
-	}
-	
-	itor = start;
-	lineno = (*itor == terrain_translation::VOID_TERRAIN)?1:0;
-	x = lineno; //odd lines set the odd X (true???)
-
-	// we're at the start of a line, if odd skip the first 2 items
-	// but make sure we didn't get some half backed data
-	if(lineno == 1) {
-		++itor;
-		wassert(itor != map.end());
-		++itor;
-	}
-
-	// parse the map
-	for(;itor != map.end();){
-
-		// we should try to get a maximum of 4 items but are not allowed
-		// to get either an EOL or go beyond the vector
-		rule.clear();
-		i = 0;
-		while(i < 4){
-			if(itor == map.end()){
-				i = 4;
-			} else if(*itor == terrain_translation::EOL ){
-				i = 4;
-				//note the map is increased later in case of
-				//an EOL
-			} else {
-				rule.push_back(*itor);
-				++i;
-				++itor;
-			}
-		}
-#if 0
-		std::cerr << "got rule: '" << terrain_translation::set_map(rule) << "' at " 
-			<< x << "," << y << "\n";
-#endif			
-		// we the rule evaluate
-		// first try to get the rule as a number, do the comparsion later
-		int anchor = terrain_translation::list_to_int(rule);
-		if(rule.front() == (terrain_translation::DOT)) { 
-			// Dots are simple placeholders, which do not
-			// represent actual terrains.
-		} else if(anchor != -1) {
-			anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, y)));
-		} else {
-#if 0			
-			if(rule.back() == (terrain_translation::VOID_TERRAIN)) {
-#endif				
-			while(rule.back() == (terrain_translation::VOID_TERRAIN)) {
-				rule.erase(rule.end() - 1);
-			}
-#if 0
-				std::cerr << "stripped trailing spaces, new rule :'" << terrain_translation::set_map(rule) << "'\n";
-			}
-#endif				
-			// a rule with only spaces is invalid and results in an empty rule
-			wassert(!rule.empty());
-
-			// add the rule
-			const gamemap::location loc(x, y);
-			add_constraints(br.constraints, loc, rule, global_images);
-		}
-
-		// if at the end break out of the loop
-		if(itor == map.end()) break;
-		
-		//set next line value
-		x += 2;
-		if(*itor == terrain_translation::EOL){
-			if(lineno % 2 == 1){
-				//add the end of an odd line, go to new even line
-				++y;
-				x = 0;
-				// go to the next position in the map
-				++itor;
-//				wassert(map != mapstring.end());
-//				++map;
-			} else {
-				// eat EOL and 2 leading spaces
-				++itor;
-				wassert(itor != map.end());
-				++itor;
-				wassert(itor != map.end());
-				++itor;
-				x = 1;
-			}
-
-			++lineno;
-		}
-	}
-#endif
-
-	//FIXME MdW this entire part is rewritten, untested and needs cleaning up and right idention
-	typedef std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > builder_map;
-	
-	const builder_map map = terrain_translation::read_builder_map(mapstring);
+	const std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> > map = 
+		terrain_translation::read_builder_map(mapstring);
 	
 	// if there is an empty map leave directly
 	// determine after conversion, since a non empty
@@ -734,62 +586,48 @@ Starting empty lines are discarded.
 	if(map.empty()) {
 		return;
 	}
-	bool skip = (map[0][0] == terrain_translation::NONE_TERRAIN); //FIXME MdW remove the skip if no longer needed
-	int lineno = skip ? 1 : 0;
+
+	int lineno = (map[0][0] == terrain_translation::NONE_TERRAIN) ? 1 : 0;
 	int x = lineno;
 	int y = 0;
 	
-//	std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator y_itor = map.begin();
-//	builder_map::const_iterator y_itor = map.begin();
-	
-//	for(;y_itor != map.end(); ++y_itor) {
 	for(size_t y_off = 0; y_off < map.size(); ++y_off) {
-
-//		builder_map::const_iterator x_itor = map[y].begin();
-
-//		for(; x_itor != map[y].end(); ++x_itor) {
-		
 		for(size_t x_off = x; x_off < map[y_off].size(); ++x_off) {
-//			if(skip) {
-//				skip = false;
-//			} else {
-				const terrain_translation::TERRAIN_NUMBER terrain = map[y_off][x_off];
-				const int  anchor = terrain_translation::builder_get_number(terrain);
 
-				std::cerr << "x = " << x << " y = " << y << " lineno = " << lineno
-					<< " terrain = " << terrain << " anchor = " << anchor << "\n";
+			const terrain_translation::TERRAIN_NUMBER terrain = map[y_off][x_off];
+			const int  anchor = terrain_translation::builder_get_number(terrain);
+
+			std::cerr << "x = " << x << " y = " << y << " lineno = " << lineno
+				<< " terrain = " << terrain << " anchor = " << anchor << "\n";
 				
 				
-				if(terrain == terrain_translation::DOT) { 
-					// Dots are simple placeholders, which do not
-					// represent actual terrains.
-				} else if (anchor != 0 ) {
-					anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, y)));
-				} else {
-					// we have a rule, we filter for validity here
-					// for now only one valid value but might change
-					// in the future
-					wassert(terrain == terrain_translation::STAR);
+			if(terrain == terrain_translation::DOT) { 
+				// Dots are simple placeholders, which do not
+				// represent actual terrains.
+			} else if (anchor != 0 ) {
+				anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, y)));
+			} else {
+				// we have a rule, we filter for validity here
+				// for now only one valid value but might change
+				// in the future
+				wassert(terrain == terrain_translation::STAR);
 
-					const gamemap::location loc(x, y);
-					//add_constrain wants a terrain vector, this might change in the 
-					//future or an other function which does this trick but keep it for now
-					const std::vector<terrain_translation::TERRAIN_NUMBER> types(1, terrain);
+				const gamemap::location loc(x, y);
+				//add_constrain wants a terrain vector, this might change in the 
+				//future or an other function which does this trick but keep it for now
+				const std::vector<terrain_translation::TERRAIN_NUMBER> types(1, terrain);
 
-					add_constraints(br.constraints, loc, types, global_images);
-				}
-			x += 2;
+				add_constraints(br.constraints, loc, types, global_images);
 			}
-//		}
+		x += 2;
+		}
 
 		if(lineno % 2 == 1) {
 			++y;
 			x = 0;
-//			skip = true;
 		} else {
 			x = 1;
 		}
-
 		++lineno;
 	}
 	

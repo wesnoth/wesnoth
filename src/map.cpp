@@ -302,7 +302,6 @@ gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 	read(data);
 }
 
-//FIXME MdW the entire routine should be cleaned up
 void gamemap::read(const std::string& data)
 {
 	tiles_.clear();

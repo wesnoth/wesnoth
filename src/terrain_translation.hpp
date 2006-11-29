@@ -87,8 +87,8 @@ namespace terrain_translation {
 #endif
 	
 	struct coordinate {
-		int x; 
-		int y;
+		size_t x; 
+		size_t y;
 	};
 
 	/** Reads a single terrain from a string
@@ -191,15 +191,6 @@ namespace terrain_translation {
 	TERRAIN_NUMBER builder_get_number(TERRAIN_NUMBER terrain);
 	
 /***************************************************************************************/
-// These will probably become obsolete
-#if 0	
-	//expects a vector of TERRAIN_NUMBER and converts it to s number -1 upon failure
-	int list_to_int(const std::vector<TERRAIN_NUMBER> number);
-
-	//converts a string to a vector of TERRAIN_NUMBER it expects the input to be a map and  converts it accordingly
-	//FIXME MdW remove this on will be obsolete
-	std::vector<TERRAIN_NUMBER> read_map(const std::string& map);
-#endif
 	
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 	// The terrain letter is an old letter and will be converted with get_letter

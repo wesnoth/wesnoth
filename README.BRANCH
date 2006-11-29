@@ -7,21 +7,23 @@ README.FILES contains files modified so far
 
 Main TODO list is here
 
+* The editor is broken has to be fixed, won't compiler
+
+* The preferences "encountered_terrains" should be 
+  loaded from a new variable and discard the old list
+
+* split the builder specific terrain letters
+
+* Make * sytanx work in builder rules
+
+* convert the aliases to read the new list
+
 * Make Wesnoth work again it doesn't
 * all users of "map_data" should be checked, busy
-* Blitz map can't be loaded, fails with segfault underlaying terrain problems FIXED
-* Terrain transitions are broken, this also hides all villages
-  TESTING, it seems to be totally fixed
-* The preferences "encountered_terrains" should be converted 
-  also should the help display be able to use this part.
-  The preferences should work now, but not tested
-  DONE BUT NOT TESTED
 * Help systems is broken DONE BUT NOT TESTED
 * Load / save is DONE BUT NOT TESTED
-* Multiplayer is broken, not sure but quite
 * Random map generators are broken, compiles but doesn't work,
   FIXED BUT NOT TESTED, NOTE the code looks ugly with the calls
   to terrain_translation, this needs to be fixed after the 
   final conversion
 * cavegen works again, can be tested with Httt scepter of fire  
-* The editor is broken has to be fixed, won't compiler

@@ -30,20 +30,21 @@ namespace terrain_translation {
 /***************************************************************************************/
 // forward declaration of internal functions
 
+	
+	// This is the new convertor converts a single line
+	// and only acceptes the new terrain string format
+	std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data);
+	
+	std::string vector_to_string_(const std::vector<TERRAIN_NUMBER>& map_data);
+
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
+
 	// This function can convert EOL's and converts them to EOL 
 	// which doesn't need to be and EOL char
 	// this will convert UNIX, Mac and Windows end of line types
 	// this due to the fact they all have a different idea of EOL
 	// Note this also eats all blank lines so the sequence "\n\n\n" will become just 1 EOL
 	std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& map_data, const bool convert_eol, const int separated);
-	
-	// This is the new convertor converts a single line
-	// and only acceptes the new terrain string format
-	std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data);
-	
-	std::string vector_to_string_(const std::vector<TERRAIN_NUMBER>& map_data, const int separated);
-
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 
 	// When the terrain is loaded it sends all letter, string combinations
 	// to add_translation. This way the translation table is build.
@@ -62,7 +63,6 @@ namespace terrain_translation {
 	static int map_format_ = 1; //FIXME MdW this should be initialized to 0
 
 	//old low level converters
-//	TERRAIN_LETTER number_to_letter_(const TERRAIN_NUMBER terrain);
 	TERRAIN_NUMBER letter_to_number_(const TERRAIN_LETTER terrain); 
 
 	// reads old terrain graphics map (will be obsoleted before release)
@@ -180,25 +180,13 @@ TERRAIN_NUMBER read_letter(const std::string& letter, const int tformat)
 #endif
 }
 
-//STATUS - testing old code needs to be removed before testing
+//STATUS - testing
 std::string write_letter(const TERRAIN_NUMBER& letter)
 {
-	
-	// cheap hack reserve space to 1 char and put it in the string
-#if 0	 
-	std::string res = "a";
-	res[0] = number_to_letter_(letter);
-	return res;
-#endif
-
-	//FIXME MdW this should be the new way but since the new 
-	//multi-letters are not there yet, it can't be used
-	//hence below the old routine
 	return number_to_string_(letter);
-	
 }
 
-//STATUS - busy converting
+//STATUS - testing
 std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated, const int tformat)
 {
 
@@ -218,18 +206,19 @@ std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separat
 
 }
 
-//STATUS - under investigation
+//STATUS - testing (separated needs to be removed)
 std::string write_list(const std::vector<TERRAIN_NUMBER>& list, const int separated)
 {
-	return vector_to_string_(list, separated);
+	return vector_to_string_(list);
 }
 
-//STATUS - none
+//STATUS - testing
 std::vector<std::vector<TERRAIN_NUMBER> > read_builder_map(const std::string& map)
 {
 
 	size_t offset = 0;
-	std::vector<std::vector<TERRAIN_NUMBER> > result;
+	std::vector<std::vector<TERRAIN_NUMBER> > result(1);//FIXME MdW find a way to initialize and empty vector
+	result.clear();
 
 	// skip the leading newlines
 	while(offset < map.length() && utils::isnewline(map[offset])) {
@@ -247,19 +236,16 @@ std::vector<std::vector<TERRAIN_NUMBER> > read_builder_map(const std::string& ma
 
 		// get a terrain chunk
 		const std::string separators = ",\n\r";
-		const int pos_separator = map.find_first_of(separators, offset);
-//		const std::string terrain = map.substr(offset, pos_separator - offset - 1);
+		const size_t pos_separator = map.find_first_of(separators, offset);
 
 		std::string terrain = "";
 		// make sure we didn't hit and empty chunk
 		// which is allowed
 		if(pos_separator != offset) {
-			terrain = map.substr(offset, pos_separator - offset); //FIXME MdW removed -1 also look at read_game_map
+			terrain = map.substr(offset, pos_separator - offset);
 		}
 
-//		if(pos_separator != offset || map[pos_separator] == ',') {
 		// process the chunk
-//		int starting_position = -1; 
 		const TERRAIN_NUMBER tile = string_to_builder_number_(terrain);
 
 		// make space for the new item
@@ -361,7 +347,7 @@ TERRAIN_NUMBER string_to_builder_number_(std::string terrain)
 		
 }
 	
-//STATUS - ready only compile tested
+//STATUS - testing
 std::vector<std::vector<TERRAIN_NUMBER> > read_game_map(const std::string& map, 
 	std::map<int, coordinate>& starting_positions)
 {
@@ -398,7 +384,7 @@ std::vector<std::vector<TERRAIN_NUMBER> > read_game_map(const std::string& map,
 		// get a terrain chunk
 		const std::string separators = ",\n\r";
 		const int pos_separator = map.find_first_of(separators, offset);
-		const std::string terrain = map.substr(offset, pos_separator - offset /*- 1*/);
+		const std::string terrain = map.substr(offset, pos_separator - offset);
 
 		// process the chunk
 		int starting_position = -1; 
@@ -464,11 +450,6 @@ std::vector<std::vector<TERRAIN_NUMBER> > read_game_map(const std::string& map,
 			offset = pos_separator + 1;
 		}
 
-		// the pos seems to wrap to 0 sometimes if it does reset to end of map
-//		if(offset == 0) {
-//			offset = map.length();	
-//		} FIXME MdW remove consern is invalid an error somewhere else
-
 	}
 
 	if(x != 0 && (x + 1) != width) {
@@ -501,7 +482,7 @@ std::vector<std::vector<TERRAIN_NUMBER> > read_game_map(const std::string& map,
 //internal
 
 //STATUS - rewritten (untested separated is obsolete)
-std::string vector_to_string_(const std::vector<TERRAIN_NUMBER>& map_data, const int separated)
+std::string vector_to_string_(const std::vector<TERRAIN_NUMBER>& map_data)
 {
 	std::stringstream result; 
 
@@ -514,61 +495,10 @@ std::string vector_to_string_(const std::vector<TERRAIN_NUMBER>& map_data, const
 		}
 	}
 
-
-/*	
-	std::vector<TERRAIN_NUMBER>::const_iterator itor = map_data.begin();
-	for( ; itor != map_data.end(); ++itor) {
-		if(*itor == EOL){
-			result.push_back('\n');
-		} else {
-			result.push_back(number_to_letter_(*itor));
-		}
-		// all get a separtor if requested
-		if(separated == 1){
-			 result.push_back(',');
-		}
-	}
-	
-	//remove the last separator
-	if(! result.empty() &&  separated == 1){
-		result.erase(result.end() - 1);
-	}
-*/	
 	return result.str();
 }
 
-//STATUS - remains for backward compability (should be moved into ifdef part)
-std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data, const bool convert_eol, const int separated)
-{
-	bool last_eol = false;
-	std::vector<TERRAIN_NUMBER> result = std::vector<TERRAIN_NUMBER>(); 
-
-	std::string::const_iterator itor = data.begin();
-	for( ; itor != data.end(); ++itor) {
-		
-		if(separated == 1 && *itor == ',') {
-			//ignore the character
-			last_eol = false;
-			
-		} else if ((convert_eol) && (*itor == '\n' || *itor == '\r')) {
-			// end of line marker found
-			if(last_eol == false){
-				// last wasn't eol then add us
-				result.push_back(EOL);
-			}
-			last_eol = true;
-			
-		} else {
-			// normal just add
-			last_eol = false;
-			result.push_back(letter_to_number_(*itor));
-		}
-	}
-
-	return result;
-}
-
-//STATUS - busy
+//STATUS - testing
 std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data)
 {
 	// handle an empty string
@@ -576,7 +506,6 @@ std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data)
 	result.clear();
 	if(data.empty()) {
 		WRN_G << "Empty list found\n"; //or info??
-		ERR_G << "Empty list found\n"; // debug
 		return result;
 	}
 		
@@ -585,8 +514,8 @@ std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data)
 
 		// get a terrain chunk
 		const std::string separators = ",";
-		const int pos_separator = data.find_first_of(separators, offset);
-		const std::string terrain = data.substr(offset, pos_separator - offset /*- 1*/);
+		const size_t pos_separator = data.find_first_of(separators, offset);
+		const std::string terrain = data.substr(offset, pos_separator - offset);
 
 		// process the chunk
 		const TERRAIN_NUMBER tile = string_to_number_(terrain);
@@ -635,16 +564,7 @@ TERRAIN_NUMBER string_to_number_(std::string terrain, int& start_position)
 	//FIXME MdW there should be tested how slow this
 	//method is, not sure it's the fastest possible
 	//solution.
-/*	
-	size_t c = terrain.length() - 1;
-	int shift = 24;
-	while(c != 0) {
-		result = result + (terrain[c] << shift);
-		shift -= 8;
-		--c;
-		}
-*/
-	for(int i = 0; i < 4; ++i) {
+	for(size_t i = 0; i < 4; ++i) {
 		unsigned char c;
 		if(i < terrain.length()) {
 			c = terrain[i];
@@ -683,27 +603,9 @@ std::string number_to_string_(TERRAIN_NUMBER terrain, const int start_position)
 		}
 	}
 
-/*	
-	for(int i = 0; i < 3; ++i) {
-		//this will result in an overflow and the high bits will
-		//drop off
-		letter = terrain;
-
-
-		//filter the null chars
-		if(letter != 0) {
-			result.insert(0, 1, letter);
-		} else {
-			result.insert(0, 1, ' '); // the padding 
-		}
-		//move the next number in the lower part of the number
-//		terrain = (terrain >> 8);
-	}
-*/
 	//insert the start position
 	if(start_position > 0) {
 		std::string start(str_cast(start_position));
-//		start = utils::itoa(start_position);
 		if(start.size() == 2) {
 			// pad to 7 chars
 			result += ' ';
@@ -713,12 +615,10 @@ std::string number_to_string_(TERRAIN_NUMBER terrain, const int start_position)
 	return result;
 }
 
-//STATUS - ready needs modification once the new system is really used
+//STATUS - testing
 std::string write_game_map(const std::vector<std::vector<TERRAIN_NUMBER> >& map,
 	 std::map<int, coordinate> starting_positions)
 {
-
-	//FIXME MdW commented lines should be enabled, the others disabled
 	std::stringstream str;
 	for(size_t y = 0; y < map[0].size(); ++y) {
 		for(size_t x = 0; x < map.size(); ++x) {
@@ -727,11 +627,9 @@ std::string write_game_map(const std::vector<std::vector<TERRAIN_NUMBER> >& map,
 			// be added to the terrain. After it's found it can't be found
 			// again so the location is removed from the map.
 			std::map<int, coordinate>::iterator itor = starting_positions.begin();
-//			TERRAIN_LETTER starting_position = NONE_TERRAIN; //disable
 			int starting_position = -1;
 			for(; itor != starting_positions.end(); ++itor) {
 				if(itor->second.x == x && itor->second.y == y) {
-//					starting_position = itor->first + '0'; //disable
 					starting_position = itor->first;
 					starting_positions.erase(itor);
 					break;
@@ -743,12 +641,6 @@ std::string write_game_map(const std::vector<std::vector<TERRAIN_NUMBER> >& map,
 				str << ", ";
 			}
 			str << number_to_string_(map[x][y], starting_position);
-
-//			if(starting_position != NONE_TERRAIN) { //disable entire if statement
-//				str << starting_position;
-//			} else {
-//				str << write_letter(map[x][y]);
-//			}
 		}
 
 		str << "\n";
@@ -758,40 +650,40 @@ std::string write_game_map(const std::vector<std::vector<TERRAIN_NUMBER> >& map,
 
 }
 /***************************************************************************************/	
-// These will probably become obsolete
-#if 0
-int list_to_int(const std::vector<TERRAIN_NUMBER> number)
-{	
-	std::string data = "";
-	std::vector<TERRAIN_NUMBER>::const_iterator itor = number.begin();
-
-	for(; itor != number.end(); ++itor){
-		data += number_to_letter_(*itor);
-	}
-
-	if(data.find_first_of("0123456789") != std::string::npos) {
-		return atoi(data.c_str());
-	} else {
-		return -1;
-	}
-}
-
-std::vector<TERRAIN_NUMBER> read_map(const std::string& map)
-{
-	return string_to_vector_(map, true, 0);
-}
-#endif
 
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-#if 0
-TERRAIN_LETTER number_to_letter_(const TERRAIN_NUMBER terrain)
+
+//STATUS - remains for backward compability
+std::vector<TERRAIN_NUMBER> string_to_vector_(const std::string& data, const bool convert_eol, const int separated)
 {
-	// FIXME MdW this one should be obsoleted soon
-	
-	TERRAIN_NUMBER tmp = (terrain);
-	return (TERRAIN_LETTER)(tmp);
+	bool last_eol = false;
+	std::vector<TERRAIN_NUMBER> result = std::vector<TERRAIN_NUMBER>(); 
+
+	std::string::const_iterator itor = data.begin();
+	for( ; itor != data.end(); ++itor) {
+		
+		if(separated == 1 && *itor == ',') {
+			//ignore the character
+			last_eol = false;
+			
+		} else if ((convert_eol) && (*itor == '\n' || *itor == '\r')) {
+			// end of line marker found
+			if(last_eol == false){
+				// last wasn't eol then add us
+				result.push_back(EOL);
+			}
+			last_eol = true;
+			
+		} else {
+			// normal just add
+			last_eol = false;
+			result.push_back(letter_to_number_(*itor));
+		}
+	}
+
+	return result;
 }
-#endif
+
 TERRAIN_NUMBER letter_to_number_(const TERRAIN_LETTER terrain)
 {
 	std::map<TERRAIN_LETTER, TERRAIN_NUMBER>::const_iterator itor = lookup_table_.find(terrain);
@@ -802,20 +694,7 @@ TERRAIN_NUMBER letter_to_number_(const TERRAIN_LETTER terrain)
 	}
 
 	return itor->second;
-
-#if 0
-	TERRAIN_NUMBER result = (TERRAIN_NUMBER) terrain;
-	result = (result);
-	return result;
-#endif	
 }
-
-#if 0
-std::string write_map(const std::vector<TERRAIN_NUMBER>& map)
-{
-	return vector_to_string_(map, 0);
-}
-#endif
 
 // The terrain letter is an old letter and will be converted with get_letter
 void add_translation(const std::string& letter, const TERRAIN_NUMBER number)
