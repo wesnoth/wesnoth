@@ -507,7 +507,7 @@ gamemap::location place_village(const std::vector<std::vector<terrain_translatio
 
 				const terrain_translation::TERRAIN_NUMBER t = map[adj[n].x][adj[n].y];
 				const std::vector<terrain_translation::TERRAIN_NUMBER>& adjacent_liked = 
-					terrain_translation::read_list((*child)["adjacent_liked"]);
+					terrain_translation::read_list((*child)["adjacent_liked"], 0, terrain_translation::TFORMAT_AUTO);
 				rating += std::count(adjacent_liked.begin(),adjacent_liked.end(),t);
 			}
 
@@ -577,7 +577,7 @@ terrain_height_mapper::terrain_height_mapper(const config& cfg) :
 {
 	const std::string& terrain = cfg["terrain"];
 	if(terrain != "") {
-		to = terrain_translation::read_letter(terrain);
+		to = terrain_translation::read_letter(terrain, terrain_translation::TFORMAT_AUTO);
 	}
 }
 
@@ -607,7 +607,7 @@ private:
 
 terrain_converter::terrain_converter(const config& cfg) : min_temp(-1), 
 	  max_temp(-1), min_height(-1), max_height(-1), 
-	  from(terrain_translation::read_list(cfg["from"])), 
+	  from(terrain_translation::read_list(cfg["from"],0 , terrain_translation::TFORMAT_AUTO)), 
 	  to(terrain_translation::NONE_TERRAIN)
 {
 	min_temp = lexical_cast_default<int>(cfg["min_temperature"],-100000);
@@ -617,7 +617,7 @@ terrain_converter::terrain_converter(const config& cfg) : min_temp(-1),
 
 	const std::string& to_str = cfg["to"];
 	if(to_str != "") {
-		to = terrain_translation::read_letter(to_str);
+		to = terrain_translation::read_letter(to_str, terrain_translation::TFORMAT_AUTO);
 	}
 }
 
@@ -653,7 +653,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		flatland = terrain_translation::write_letter(terrain_translation::GRASS_LAND);
 	} 
 
-	const terrain_translation::TERRAIN_NUMBER grassland = terrain_translation::read_letter(flatland);
+	const terrain_translation::TERRAIN_NUMBER grassland = 
+		terrain_translation::read_letter(flatland, terrain_translation::TFORMAT_AUTO);
 
 	//we want to generate a map that is 9 times bigger than the
 	//actual size desired. Only the middle part of the map will be
@@ -847,7 +848,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	//castle configuration tag contains a 'valid_terrain' attribute which is a list of
 	//terrains that the castle may appear on.
-	const std::vector<terrain_translation::TERRAIN_NUMBER> list = terrain_translation::read_list((*castle_config)["valid_terrain"]);
+	const std::vector<terrain_translation::TERRAIN_NUMBER> list = 
+		terrain_translation::read_list((*castle_config)["valid_terrain"],0 , terrain_translation::TFORMAT_AUTO);
 	const is_valid_terrain terrain_tester(terrain, list);
 
 	//attempt to place castles at random. Once we have placed castles, we run a sanity
@@ -1010,7 +1012,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					if(direction != -1) {
 						const std::vector<std::string> items = utils::split(convert_to_bridge);
 						if(size_t(direction) < items.size() && items[direction].empty() == false) {
-							terrain[x][y] = terrain_translation::read_letter(items[direction]);
+							terrain[x][y] = terrain_translation::read_letter(items[direction], terrain_translation::TFORMAT_AUTO);
 						}
 
 						continue;
@@ -1022,7 +1024,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				//just a plain terrain substitution for a road
 				const std::string& convert_to = (*child)["convert_to"];
 				if(convert_to.empty() == false) {
-					const terrain_translation::TERRAIN_NUMBER letter = terrain_translation::read_letter(convert_to);
+					const terrain_translation::TERRAIN_NUMBER letter = terrain_translation::read_letter(convert_to, terrain_translation::TFORMAT_AUTO);
 					if(labels != NULL && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
 						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
 						name_count = 0;
@@ -1117,7 +1119,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					if(child != NULL) {
 						const std::string& convert_to = (*child)["convert_to"];
 						if(convert_to != "") {
-							terrain[res.x][res.y] = terrain_translation::read_letter(convert_to);
+							terrain[res.x][res.y] = terrain_translation::read_letter(convert_to, terrain_translation::TFORMAT_AUTO);
 							villages.insert(res);
 
 							if(labels != NULL && naming_cfg.empty() == false) {

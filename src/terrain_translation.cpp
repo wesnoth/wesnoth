@@ -127,13 +127,13 @@ SET_TERRAIN_CONSTANT_NEW(PLUS, "+");
 SET_TERRAIN_CONSTANT_NEW(MINUS, "-");
 // THIS one only used in terrain builder? if yes rename to TB_STAR otherwise add TB_STAR
 // FIXME MdW anchors with a star in terrain builder will fail
-SET_TERRAIN_CONSTANT(STAR, '*');
+SET_TERRAIN_CONSTANT(TB_STAR, '*');
 //if only used in terrain match code it can move here since 
 //we will contain terrain match code
 SET_TERRAIN_CONSTANT_NEW(NOT, "!");
-SET_TERRAIN_CONSTANT(EOL, 7); //obsolete??
+SET_TERRAIN_CONSTANT(EOL, 7); //obsolete?? (seems to be only used internally)
 // THIS one only used in terrain builder? if yes rename to TB_DOT otherwise add TB_DOT
-SET_TERRAIN_CONSTANT(DOT, '.'); 
+SET_TERRAIN_CONSTANT(TB_DOT, '.'); 
 SET_TERRAIN_CONSTANT(COMMA, ',');
 SET_TERRAIN_CONSTANT(NONE_TERRAIN, 0); // undefined terrain
 
@@ -211,8 +211,8 @@ std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separat
 
 }
 
-//STATUS - testing (separated needs to be removed)
-std::string write_list(const std::vector<TERRAIN_NUMBER>& list, const int separated)
+//STATUS - testing
+std::string write_list(const std::vector<TERRAIN_NUMBER>& list)
 {
 	return vector_to_string_(list);
 }

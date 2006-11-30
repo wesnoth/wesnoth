@@ -361,7 +361,7 @@ void cave_map_generator::set_terrain(gamemap::location loc, terrain_translation:
 void cave_map_generator::place_castle(const std::string& side, gamemap::location loc)
 {
 	if(side != "") {
-		set_terrain(loc, terrain_translation::read_letter(side));
+		set_terrain(loc, terrain_translation::read_letter(side, terrain_translation::TFORMAT_AUTO));
 	}
 
 	gamemap::location adj[6];

@@ -62,10 +62,10 @@ namespace terrain_translation {
 
 	extern const TERRAIN_NUMBER PLUS;
 	extern const TERRAIN_NUMBER MINUS;
-	extern const TERRAIN_NUMBER STAR;
+	extern const TERRAIN_NUMBER TB_STAR;
 	extern const TERRAIN_NUMBER NOT;
-	extern const TERRAIN_NUMBER EOL;
-	extern const TERRAIN_NUMBER DOT;
+//	extern const TERRAIN_NUMBER EOL;
+	extern const TERRAIN_NUMBER TB_DOT;
 	extern const TERRAIN_NUMBER COMMA;
 	extern const TERRAIN_NUMBER NONE_TERRAIN;
 
@@ -99,7 +99,7 @@ namespace terrain_translation {
 	 *
 	 * @return			A single terrain letter
 	 */
-	TERRAIN_NUMBER read_letter(const std::string& letter, const int tformat = TFORMAT_AUTO);
+	TERRAIN_NUMBER read_letter(const std::string& letter, const int tformat);
 	
 	/** Writes a single letter to a string
 	 * The writers only support the new format
@@ -125,17 +125,17 @@ namespace terrain_translation {
 	 *
 	 * @returns			A vector which contains the string
 	 */
-	std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated = 0, const int tformat = TFORMAT_AUTO);
+//	std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated = 0, const int tformat);
+	std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated, const int tformat);
 
 	/** Writes a list of terrains to a string, only writes the new format.
-	 * FIXME MdW: remove separated before merging, this is only available for the transition phase.
 	 *
 	 * @param list		A vector with one or more terrain letters
 	 *
 	 * @returns			A string with the terrain numbers, comma separated and 
 	 * 					a space behind the comma's. Not padded.
 	 */
-	std::string write_list(const std::vector<TERRAIN_NUMBER>& list, const int separated = 0);
+	std::string write_list(const std::vector<TERRAIN_NUMBER>& list);
 
 	/** Reads a gamemap string into a vector
 	 *

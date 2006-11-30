@@ -1156,7 +1156,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		
 		//At this point terrain_type contains the letter as known in WML
 		//convert to an internal number
-		terrain_translation::TERRAIN_NUMBER terrain = terrain_translation::read_letter(terrain_type);
+		terrain_translation::TERRAIN_NUMBER terrain = terrain_translation::read_letter(terrain_type, terrain_translation::TFORMAT_AUTO);
 			
 		for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
 			preferences::encountered_terrains().insert(terrain);
@@ -1757,7 +1757,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
 		wml_terrain = utils::interpolate_variables_into_string(wml_terrain, *state_of_game);
 		//convertert the terrain to a internal vector
-		std::vector<terrain_translation::TERRAIN_NUMBER> terrain = terrain_translation::read_list(wml_terrain);
+		std::vector<terrain_translation::TERRAIN_NUMBER> terrain = 
+			terrain_translation::read_list(wml_terrain, 0, terrain_translation::TFORMAT_AUTO);
+
 		x = utils::interpolate_variables_into_string(x, *state_of_game);
 		y = utils::interpolate_variables_into_string(y, *state_of_game);
 		radius_str = utils::interpolate_variables_into_string(radius_str, *state_of_game);
