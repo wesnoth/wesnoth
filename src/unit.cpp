@@ -882,6 +882,8 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bool use_flat_tod) const
 {
+	const config *alternate = orig_cfg.child("filter");
+	if (alternate) return matches_filter(*alternate, loc, use_flat_tod);
 	config cfg = orig_cfg;
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
