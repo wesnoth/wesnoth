@@ -12,9 +12,13 @@ Version 1.3-svn:
    * fixed terrain selection probabilites (patch #617)
    * stoned units do not use a separate cache
    * no more "darkened" cache. we now overlay terrain/darken.png
-   * new lava transitions, and special transitions between lava, chasm, and dwarvish castle
    * star shaped "ellipses" for leaders and hero units
-   * various minor terrain and item improvements
+   * item graphic improvements including animate-able campfire.
+   * terrain
+      * new chasm-like lava transitions
+      * special transitions between lava, chasm, and dwarvish castle
+      * modified cave-wall graphics that avoid the glitches with chasms to the north.
+      * minor terrain improvements in grassland, savannah, and sand.
  * multiplayer maps:
    * new multiplayer maps: The Manzivan Traps
  * units:
