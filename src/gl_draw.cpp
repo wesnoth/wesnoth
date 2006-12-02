@@ -6,7 +6,7 @@
 
 namespace {
 
-const size_t SurfaceCacheSize = 503;
+const size_t SurfaceCacheSize = 97;
 
 SDL_Surface* surfaceCache[SurfaceCacheSize];
 GLuint textureCache[SurfaceCacheSize];
@@ -31,9 +31,9 @@ void load_surface(SDL_Surface* surf)
 	}
 
 	++cacheMisses;
-	if((cacheMisses%100) == 0) {
-		std::cerr << cacheHits << "/" << cacheMisses << "\n";
-	}
+	//if((cacheMisses%100) == 0) {
+	//	std::cerr << cacheHits << "/" << cacheMisses << "\n";
+	//}
 
 	if(surfaceCache[index] != NULL) {
 		SDL_FreeSurface(surfaceCache[index]);
