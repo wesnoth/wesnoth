@@ -28,7 +28,7 @@ bool npot_allowed()
 
 	// OpenGL >= 2.0 drivers must support NPOT textures
 	bool version_2 = (version[0] >= '2');
-	npot = !version_2;
+	npot = version_2;
 	// directly test for NPOT extension
 	if (std::strstr(supported, "GL_ARB_texture_non_power_of_two")) npot = true;
 
