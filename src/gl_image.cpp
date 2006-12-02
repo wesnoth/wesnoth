@@ -4,7 +4,32 @@
 
 namespace gl {
 
-image::image() : id_(0), width_(0), height_(0)
+namespace {
+
+bool npot_allowed()
+{
+	return false;
+}
+
+bool is_pot(unsigned int num)
+{
+	return (num&(num-1)) == 0;
+}
+
+unsigned int next_pot(unsigned int num)
+{
+	unsigned int res = 1;
+	while(res < num) {
+		res <<= 1;
+	}
+
+	return res;
+}
+		
+}
+
+image::image() : id_(0), width_(0), height_(0),
+				 top_(0), bot_(0), left_(0), right_(0)
 {}
 
 image::~image()
@@ -16,30 +41,81 @@ void image::release()
 {
 	if(id_) {
 		glDeleteTextures(1,&id_);
+		id_ = 0;
 	}
 }
 
-image::image(surface surf) : id_(0), width_(0), height_(0)
+image::image(SDL_Surface* surf) : id_(0), width_(0), height_(0),
+								  top_(0), bot_(0), left_(0), right_(0)
 {
 	set(surf);
 }
 
-void image::set(surface surf)
+void image::set(SDL_Surface* surf)
 {
-	release();
-
 	width_ = surf->w;
 	height_ = surf->h;
 
-	glGenTextures(1,&id_);
+	if(!id_) {
+		glGenTextures(1,&id_);
+	}
+
 	assert(surf->format->BitsPerPixel == 32);
 
 	glBindTexture(GL_TEXTURE_2D,id_);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glTexImage2D(GL_TEXTURE_2D,0,4,surf->w,surf->h,0,GL_RGBA,
-	             GL_UNSIGNED_BYTE,surf->pixels);
+	if(npot_allowed() || surf->w == surf->h && is_pot(surf->w)) {
+		top_ = left_ = 0.0;
+		bot_ = right_ = 1.0;
+		glTexImage2D(GL_TEXTURE_2D,0,4,surf->w,surf->h,0,GL_RGBA,
+		             GL_UNSIGNED_BYTE,surf->pixels);
+	} else {
+		const unsigned int dim = next_pot(std::max(surf->w,surf->h));
+		if(dim > 1024) {
+			return;
+		}
+		std::vector<unsigned char> v(dim*dim*4);
+		for(unsigned int y = 0; y != surf->h; ++y) {
+			const unsigned char* src =
+			  reinterpret_cast<unsigned char*>(surf->pixels) +
+			  y*surf->w*4;
+			unsigned char* dst = &v[y*dim*4];
+			memcpy(dst,src,4*surf->w);
+		}
+
+		glTexImage2D(GL_TEXTURE_2D,0,4,dim,dim,0,GL_RGBA,
+		             GL_UNSIGNED_BYTE,&v[0]);
+		top_ = left_ = 0.0;
+		right_ = static_cast<GLfloat>(surf->w)/
+		         static_cast<GLfloat>(dim);
+		bot_ = static_cast<GLfloat>(surf->h)/
+		       static_cast<GLfloat>(dim);
+	}
+}
+
+void image::draw(int x, int y, unsigned int w, unsigned int h,
+                 GLfloat red, GLfloat green,
+				 GLfloat blue,GLfloat alpha) const
+{
+	if(!id_) {
+		return;
+	}
+
+	glBindTexture(GL_TEXTURE_2D,id_);
+
+	glBegin(GL_QUADS);
+	glColor4f(red,green,blue,alpha);
+	glTexCoord2f(left_,top_);
+	glVertex3i(x,y,0);
+	glTexCoord2f(right_,top_);
+	glVertex3i(x+w,y,0);
+	glTexCoord2f(right_,bot_);
+	glVertex3i(x+w,y+h,0);
+	glTexCoord2f(left_,bot_);
+	glVertex3i(x,y+h,0);
+	glEnd();
 }
 
 void image::draw(int x, int y, image::ORIENTATION orient,
@@ -59,8 +135,11 @@ void image::draw(int x, int y, unsigned int w, unsigned int h,
 
 	glBindTexture(GL_TEXTURE_2D,id_);
 
-	const GLfloat left = orient == NORMAL_ORIENTATION ? 0.0 : 1.0;
-	const GLfloat right = 1.0 - left;
+	GLfloat left = left_;
+	GLfloat right = right_;
+	if(orient == REVERSE_ORIENTATION) {
+		std::swap(left,right);
+	}
 
 	glBegin(GL_QUADS);
 
@@ -81,13 +160,13 @@ void image::draw(int x, int y, unsigned int w, unsigned int h,
 		break;
 	}
 
-	glTexCoord2f(left,0.0);
+	glTexCoord2f(left,top_);
 	glVertex3i(x,y,0);
-	glTexCoord2f(right,0.0);
+	glTexCoord2f(right,top_);
 	glVertex3i(x+w,y,0);
-	glTexCoord2f(right,1.0);
+	glTexCoord2f(right,bot_);
 	glVertex3i(x+w,y+h,0);
-	glTexCoord2f(left,1.0);
+	glTexCoord2f(left,bot_);
 	glVertex3i(x,y+h,0);
 	glEnd();
 
@@ -104,13 +183,13 @@ void image::draw(int x, int y, unsigned int w, unsigned int h,
 		}
 
 		glBegin(GL_QUADS);
-		glTexCoord2f(left,0.0);
+		glTexCoord2f(left,top_);
 		glVertex3i(x,y,0);
-		glTexCoord2f(right,0.0);
+		glTexCoord2f(right,top_);
 		glVertex3i(x+w,y,0);
-		glTexCoord2f(right,1.0);
+		glTexCoord2f(right,bot_);
 		glVertex3i(x+w,y+h,0);
-		glTexCoord2f(left,1.0);
+		glTexCoord2f(left,bot_);
 		glVertex3i(x,y+h,0);
 		glEnd();
 

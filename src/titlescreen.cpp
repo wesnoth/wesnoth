@@ -79,7 +79,8 @@ void fade_logo(display& screen, int xpos, int ypos,
 		last_button = new_button;
 
 		gl::prepare_frame();
-		gl::draw_surface(title_screen,0,0);
+		const SDL_Rect& screen_area = screen.screen_area();
+		gl::draw_surface(title_screen,0,0,screen_area.w,screen_area.h);
 		gl::draw_surface(logo.get(),xpos,ypos,1.0,1.0,1.0,fade);
 		gl::flip();
 		screen.delay(10);
@@ -205,9 +206,8 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	const font::floating_label_context label_manager;
 
 	// Display Wesnoth logo
-	surface const title_surface(scale_surface(
-		image::get_image(game_config::game_title,image::UNSCALED),
-		screen.x(), screen.y()));
+	surface const title_surface(
+		image::get_image(game_config::game_title,image::UNSCALED));
 	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
 
 	screen.video().modeChanged(); // resets modeChanged value
@@ -310,7 +310,9 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	for(;;) {
 		gl::prepare_frame();
 		
-		gl::draw_surface(title_surface.get(),0,0);
+		const SDL_Rect& screen_area = screen.screen_area();
+		gl::draw_surface(title_surface.get(),0,0,
+		                 screen_area.w,screen_area.h);
 		gl::draw_surface(logo.get(),logo_x,logo_y);
 
 		draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen.video(),&style);

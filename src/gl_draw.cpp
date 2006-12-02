@@ -1,4 +1,5 @@
 #include "gl_draw.hpp"
+#include "gl_image.hpp"
 #include <GL/gl.h>
 #include <SDL.h>
 #include <algorithm>
@@ -10,15 +11,14 @@ namespace {
 const size_t SurfaceCacheSize = 97;
 
 SDL_Surface* surfaceCache[SurfaceCacheSize];
-GLuint textureCache[SurfaceCacheSize];
+gl::image textureCache[SurfaceCacheSize];
 bool surfaceCacheInit = false;
 int cacheHits = 0, cacheMisses = 0;
 
-void load_surface(SDL_Surface* surf)
+const gl::image& load_surface(SDL_Surface* surf)
 {
 	if(surfaceCacheInit == false) {
 		surfaceCacheInit = true;
-		glGenTextures(SurfaceCacheSize,textureCache);
 		SDL_Surface* nullSurf= NULL;
 		std::fill(surfaceCache,surfaceCache+SurfaceCacheSize,nullSurf);
 	}
@@ -27,8 +27,7 @@ void load_surface(SDL_Surface* surf)
 	         reinterpret_cast<size_t>(surf)%SurfaceCacheSize;
 	if(surfaceCache[index] == surf) {
 		++cacheHits;
-		glBindTexture(GL_TEXTURE_2D,textureCache[index]);
-		return;
+		return textureCache[index];
 	}
 
 	++cacheMisses;
@@ -42,15 +41,8 @@ void load_surface(SDL_Surface* surf)
 
 	surfaceCache[index] = surf;
 	++surf->refcount;
-
-	glBindTexture(GL_TEXTURE_2D,textureCache[index]);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	assert(surf->format->BitsPerPixel == 32);
-	glTexImage2D(GL_TEXTURE_2D,0,4,surf->w,surf->h,0,GL_RGBA,
-	             GL_UNSIGNED_BYTE,surf->pixels);
-	glBindTexture(GL_TEXTURE_2D,textureCache[index]);
+	textureCache[index].set(surf);
+	return textureCache[index];
 }
 		
 }
@@ -101,36 +93,14 @@ void rect(const SDL_Rect& r, GLubyte red, GLubyte green, GLubyte blue,
 void draw_surface(SDL_Surface* surf, int x, int y,
               GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-	load_surface(surf);
-
-	glColor4f(red,green,blue,alpha);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0.0,0.0);
-	glVertex3i(x,y,0);
-	glTexCoord2f(1.0,0.0);
-	glVertex3i(x+surf->w,y,0);
-	glTexCoord2f(1.0,1.0);
-	glVertex3i(x+surf->w,y+surf->h,0);
-	glTexCoord2f(0.0,1.0);
-	glVertex3i(x,y+surf->h,0);
-	glEnd();
+	const gl::image& img = load_surface(surf);
+	img.draw(x,y,surf->w,surf->h,red,green,blue,alpha);
 }
 
 void draw_surface(SDL_Surface* surf, int x, int y, int w, int h)
 {
-	load_surface(surf);
-
-	glColor4f(1.0,1.0,1.0,1.0);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0.0,0.0);
-	glVertex3i(x,y,0);
-	glTexCoord2f(1.0,0.0);
-	glVertex3i(x+w,y,0);
-	glTexCoord2f(1.0,1.0);
-	glVertex3i(x+w,y+h,0);
-	glTexCoord2f(0.0,1.0);
-	glVertex3i(x,y+h,0);
-	glEnd();
+	const gl::image& img = load_surface(surf);
+	img.draw(x,y,w,h,1.0,1.0,1.0,1.0);
 }
 		
 }
