@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <algorithm>
 #include <iostream>
+#include "wassert.hpp"
 
 namespace {
 
