@@ -697,19 +697,37 @@ bool terrain_matches(const TERRAIN_NUMBER src, const std::vector<TERRAIN_NUMBER>
 		std::cerr << ">> Empty result, no match\n";
 		return false;
 	}
+
+	const TERRAIN_NUMBER star = string_to_number_("*");
+	const TERRAIN_NUMBER inverse = string_to_number_("!");
 	
 	const TERRAIN_NUMBER src_mask = get_mask_(src);
 	const TERRAIN_NUMBER masked_src = (src & src_mask);
-			
+	
+	bool result = true;
 	std::vector<TERRAIN_NUMBER>::const_iterator itor = dest.begin();
 
 	// try to match the terrains if matched jump out of the loop.
 	for(; itor != dest.end(); ++itor) {
 		std::cerr << ">> Testing dest " << write_letter(*itor) << "\n";
+
+		// match wildcard 
+		if(*itor == star) {
+			std::cerr << ">>>> wildcard match\n";
+			return result;
+		}
+
+		// match inverse symbol
+		if(*itor == inverse) {
+			std::cerr << ">>>> inverse symbol matched\n";
+			result = !result;
+			continue;
+		}
+
 		// full match 
 		if(src == *itor) {
 			std::cerr << ">>>> Full match\n";
-			return true;
+			return result;
 		}
 		
 		// test on wildcards
@@ -717,21 +735,23 @@ bool terrain_matches(const TERRAIN_NUMBER src, const std::vector<TERRAIN_NUMBER>
 		const TERRAIN_NUMBER masked_dest = (*itor & dest_mask);
 
 		// does the source wildcard match
-		if((*itor &~ src_mask) == masked_src) {
+//		if((*itor &~ src_mask) == masked_src) {
+		if((*itor & src_mask) == masked_src) {
 			std::cerr << ">>>> Source wildcard matched\n";
-			return true;
+			return result;
 		}
 		
 		// does the destination wildcard match
-		if((src &~ dest_mask) == masked_dest) {
+//		if((src &~ dest_mask) == masked_dest) {
+		if((src & dest_mask) == masked_dest) {
 			std::cerr << ">>>> Destination wildcard matched\n";
-			return true;
+			return result;
 		}
 	}
 
-	// no match
+	// no match, return the inverse of the result
 	std::cerr << ">> No match found\n";
-	return false;
+	return !result;
 
 
 }
@@ -1012,5 +1032,31 @@ std::vector<std::vector<TERRAIN_NUMBER> > read_game_map_old(const std::string& m
 }
 
 #endif	
+} //namespace
 
+#if 0
+// small helper rule to test the matching rules
+// building rule
+// make terrain_translation.o &&  g++ terrain_translation.o libwesnoth-core.a -lSDL -o terrain_translation
+int main(int argc, char** argv)
+{
+	if(argc > 1) {
+	
+		if(std::string(argv[1]) == "match" && argc == 4) {
+			terrain_translation::TERRAIN_NUMBER src = 
+				terrain_translation::read_letter(std::string(argv[2]), terrain_translation::TFORMAT_STRING);
+			
+			std::vector<terrain_translation::TERRAIN_NUMBER> dest = 
+				terrain_translation::read_list(std::string(argv[3]), -1, terrain_translation::TFORMAT_STRING);
+
+			if(terrain_translation::terrain_matches(src, dest)) {
+				std::cout << "Match\n" ;
+			} else {
+				std::cout << "No match\n";
+			}
+		}
+	}
 }
+
+#endif
+
