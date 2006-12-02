@@ -13,11 +13,15 @@
 
 #include "global.hpp"
 
+#include <GL/gl.h>
+#include <GL/glu.h>
+
 #include <stdio.h>
 #include <iostream>
 #include <vector>
 
 #include "font.hpp"
+#include "gl_draw.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "video.hpp"
@@ -128,71 +132,10 @@ SDL_Rect screen_area()
 
 void update_rect(size_t x, size_t y, size_t w, size_t h)
 {
-	const SDL_Rect rect = {x,y,w,h};
-	update_rect(rect);
 }
 
 void update_rect(const SDL_Rect& rect_value)
 {
-	if(update_all)
-		return;
-
-	SDL_Rect rect = rect_value;
-
-	surface const fb = SDL_GetVideoSurface();
-	if(fb != NULL) {
-		if(rect.x < 0) {
-			if(rect.x*-1 >= int(rect.w))
-				return;
-
-			rect.w += rect.x;
-			rect.x = 0;
-		}
-
-		if(rect.y < 0) {
-			if(rect.y*-1 >= int(rect.h))
-				return;
-
-			rect.h += rect.y;
-			rect.y = 0;
-		}
-
-		if(rect.x + rect.w > fb->w) {
-			rect.w = fb->w - rect.x;
-		}
-
-		if(rect.y + rect.h > fb->h) {
-			rect.h = fb->h - rect.y;
-		}
-
-		if(rect.x >= fb->w) {
-			return;
-		}
-
-		if(rect.y >= fb->h) {
-			return;
-		}
-	}
-
-	for(std::vector<SDL_Rect>::iterator i = update_rects.begin();
-	    i != update_rects.end(); ++i) {
-		if(rect_contains(*i,rect)) {
-			return;
-		}
-
-		if(rect_contains(rect,*i)) {
-			*i = rect;
-			for(++i; i != update_rects.end(); ++i) {
-				if(rect_contains(rect,*i)) {
-					i->w = 0;
-				}
-			}
-
-			return;
-		}
-	}
-
-	update_rects.push_back(rect);
 }
 
 void update_whole_screen()
@@ -234,15 +177,7 @@ CVideo::~CVideo()
 
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
-	const surface target(getSurface());
-	SDL_Rect dst = {x,y,0,0};
-
-	if(clip_rect != NULL) {
-		const clip_rect_setter clip_setter(target,*clip_rect);
-		SDL_BlitSurface(surf,srcrect,target,&dst);
-	} else {
-		SDL_BlitSurface(surf,srcrect,target,&dst);
-	}
+	gl::draw_surface(surf.get(),x,y);
 }
 
 void CVideo::make_fake()
@@ -269,7 +204,27 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		return 0;
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
-	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
+	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags|SDL_OPENGL );
+
+	glFrontFace(GL_CW);
+	//glEnable(GL_CULL_FACE);
+	//glEnable(GL_LIGHT0);
+	//glLightfv(GL_LIGHT0,GL_AMBIENT,ambient_light);
+	//glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse_light);
+	glDepthFunc(GL_LEQUAL);
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_ALPHA_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+	glAlphaFunc(GL_GREATER,0.02);
+
+	glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
+	glPixelStorei(GL_UNPACK_ALIGNMENT,1);
+	
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 
 	if( frameBuffer != NULL ) {
 		image::set_pixel_format(frameBuffer->format);
@@ -331,23 +286,7 @@ void CVideo::flip()
 	if(fake_screen)
 		return;
 
-	if(update_all) {
-		::SDL_Flip(frameBuffer);
-	} else if(update_rects.empty() == false) {
-		size_t sum = 0;
-		for(size_t n = 0; n != update_rects.size(); ++n) {
-			sum += update_rects[n].w*update_rects[n].h;
-		}
-
-		const size_t redraw_whole_screen_threshold = 80;
-		if(sum > ((getx()*gety())*redraw_whole_screen_threshold)/100) {
-			::SDL_Flip(frameBuffer);
-		} else {
-			SDL_UpdateRects(frameBuffer,update_rects.size(),&update_rects[0]);
-		}
-	}
-
-	clear_updates();
+	gl::flip();
 }
 
 void CVideo::lock_updates(bool value)

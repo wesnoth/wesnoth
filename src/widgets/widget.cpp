@@ -256,7 +256,7 @@ void widget::set_volatile(bool val)
 
 void widget::draw()
 {
-	if (hidden() || !dirty())
+	if (hidden())
 		return;
 
 	bg_restore();

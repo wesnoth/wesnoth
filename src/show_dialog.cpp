@@ -20,6 +20,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "gettext.hpp"
+#include "gl_draw.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
@@ -140,8 +141,6 @@ void draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::str
 		video.blit_surface(x+w,y,right_image);
 	}
 
-	update_rect(x-left->w,y-top->h,w+left->w+right->w,h+top->h+bot->h);
-
 	const surface top_left(image::get_image("misc/" + *dialog_style + "-border-topleft.png",image::UNSCALED));
 	const surface bot_left(image::get_image("misc/" + *dialog_style + "-border-botleft.png",image::UNSCALED));
 	const surface top_right(image::get_image("misc/" + *dialog_style + "-border-topright.png",image::UNSCALED));
@@ -193,17 +192,7 @@ void draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std
 		h = screen_bounds.h - y;
 	}
 
-	for(int i = 0; i < w; i += bg->w) {
-		for(int j = 0; j < h; j += bg->h) {
-			SDL_Rect src = {0,0,0,0};
-			src.w = minimum(w - i,bg->w);
-			src.h = minimum(h - j,bg->h);
-			SDL_Rect dst = src;
-			dst.x = x + i;
-			dst.y = y + j;
-			SDL_BlitSurface(bg,&src,video.getSurface(),&dst);
-		}
-	}
+	gl::draw_surface(bg,x,y,w,h);
 }
 
 SDL_Rect draw_dialog_title(int x, int y, CVideo* video, const std::string& text)

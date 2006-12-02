@@ -32,7 +32,6 @@
 #include "actions.hpp"
 #include "game_events.hpp"
 #include "sound.hpp"
-#include "sdl_utils.hpp"
 
 #include <ctime>
 #include <algorithm>
@@ -880,11 +879,8 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bool use_flat_tod) const
+bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod) const
 {
-	const config *alternate = orig_cfg.child("filter");
-	if (alternate) return matches_filter(*alternate, loc, use_flat_tod);
-	config cfg = orig_cfg;
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
 	const std::string& type = cfg["type"];
@@ -931,7 +927,6 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 		} else {
 			return false;
 		}
-		cfg.values.erase("type");
 	}
 
 	if(ability.empty() == false && has_ability_by_id(ability) == false) {
@@ -950,7 +945,6 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 		} else {
 			return false;
 		}
-		cfg.values.erase("ability");
 	}
 
 
@@ -968,7 +962,6 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 		} else {
 			return false;
 		}
-		cfg.values.erase("side");
 	  }
 
 	if(weapon.empty() == false) {
@@ -983,7 +976,6 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 
 		if(!has_weapon)
 			return false;
-		cfg.values.erase("has_weapon");
 	}
 
 
@@ -1003,7 +995,6 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 	// unit only => not filtered
 	config unit_cfg;
 	write(unit_cfg);
-	cfg.prune();
 	for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
 		if(!unit_cfg.values.count(j->first)) continue;
 		if(j->first == "x") continue;
@@ -1952,7 +1943,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 #endif
 
 	surface image(image::get_image(loc,
-				image::UNSCALED,image::ADJUST_COLOUR,
+				utils::string_bool(get_state("stoned"))?image::GREYED : image::UNSCALED,image::ADJUST_COLOUR,
 #ifndef LOW_MEM
 				true));
 #else
@@ -1961,9 +1952,6 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 
 	if(image == NULL) {
 		image = still_image();
-	}
-	if(utils::string_bool(get_state("stoned"))) {
-		image = greyscale_image(image);
 	}
 
 	if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {

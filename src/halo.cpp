@@ -14,6 +14,8 @@
 #include "global.hpp"
 
 #include "display.hpp"
+#include "gl_image.hpp"
+#include "gl_image_cache.hpp"
 #include "halo.hpp"
 #include "image.hpp"
 #include "preferences.hpp"
@@ -68,7 +70,7 @@ bool hide_halo = false;
 
 effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img, ORIENTATION orientation,bool infinite)
 : images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),
-  origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
+  origzoom_(disp->zoom()), zoom_(disp->zoom()), rect_(empty_rect)
 {
 	wassert(disp != NULL);
 	// std::cerr << "Constructing halo sequence from image " << img << "\n";
@@ -108,21 +110,6 @@ const std::string& effect::current_image()
 
 void effect::rezoom()
 {
-	zoom_ = disp->zoom();
-	x_ = int((origx_*zoom_)/origzoom_);
-	y_ = int((origy_*zoom_)/origzoom_);
-
-	surf_.assign(image::get_image(current_image_,image::UNSCALED));
-	if(surf_ != NULL && (orientation_ == HREVERSE || orientation_ == HVREVERSE)) {
-		surf_.assign(image::reverse_image(surf_));
-	}
-	if(surf_ != NULL && (orientation_ == VREVERSE || orientation_ == HVREVERSE)) {
-		surf_.assign(flop_surface(surf_));
-	}
-
-	if(surf_ != NULL && zoom_ != 1.0) {
-		surf_.assign(scale_surface(surf_,int(surf_->w*zoom_),int(surf_->h*zoom_)));
-	}
 }
 
 void effect::render()
@@ -132,24 +119,18 @@ void effect::render()
 	}
 
 	images_.update_last_draw_time();
-	const std::string& img = current_image();
-	if(surf_ == NULL || zoom_ != disp->zoom() || current_image_ != img) {
-		current_image_ = img;
-		rezoom();
-	}
+	const std::string& img_name = current_image();
 
-	if(surf_ == NULL) {
-		return;
-	}
+	const gl::image& img = gl::get_image(img_name);
 
 	const gamemap::location zero_loc(0,0);
 	const int screenx = disp->get_location_x(zero_loc);
 	const int screeny = disp->get_location_y(zero_loc);
 
-	const int xpos = x_ + screenx - surf_->w/2;
-	const int ypos = y_ + screeny - surf_->h/2;
+	const int xpos = x_ + screenx - img.width()/2;
+	const int ypos = y_ + screeny - img.height()/2;
 
-	SDL_Rect rect = {xpos,ypos,surf_->w,surf_->h};
+	SDL_Rect rect = {xpos,ypos,img.width(),img.height()};
 	rect_ = rect;
 	SDL_Rect clip_rect = disp->map_area();
 	if(rects_overlap(rect,clip_rect) == false) {
@@ -157,35 +138,11 @@ void effect::render()
 		return;
 	}
 
-	surface const screen = disp->video().getSurface();
-
-	const clip_rect_setter clip_setter(screen,clip_rect);
-	if(buffer_ == NULL || buffer_->w != rect.w || buffer_->h != rect.h) {
-		SDL_Rect rect = rect_;
-		buffer_.assign(get_surface_portion(screen,rect));
-	} else {
-		SDL_Rect rect = rect_;
-		SDL_BlitSurface(screen,&rect,buffer_,NULL);
-	}
-
-	SDL_BlitSurface(surf_,NULL,screen,&rect);
-
-	update_rect(rect_);
+	img.draw(xpos,ypos);
 }
 
 void effect::unrender()
 {
-	if(buffer_ == NULL) {
-		return;
-	}
-
-	surface const screen = disp->video().getSurface();
-
-	SDL_Rect clip_rect = disp->map_area();
-	const clip_rect_setter clip_setter(screen,clip_rect);
-	SDL_Rect rect = rect_;
-	SDL_BlitSurface(buffer_,NULL,screen,&rect);
-	update_rect(rect_);
 }
 
 bool effect::expired() const

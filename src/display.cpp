@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
+#include "animated.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
@@ -22,6 +23,9 @@
 #include "game_config.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "gl_draw.hpp"
+#include "gl_image.hpp"
+#include "gl_image_cache.hpp"
 #include "halo.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
@@ -142,11 +146,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 
 		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
 	}
-
-	//clear the screen contents
-	surface const disp(screen_.getSurface());
-	SDL_Rect area = screen_area();
-	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 }
 
 display::~display()
@@ -720,84 +719,31 @@ void display::flip()
 	cursor::draw(frameBuffer);
 
 	video().flip();
-
-	cursor::undraw(frameBuffer);
-	events::raise_volatile_undraw_event();
-	font::undraw_floating_labels(frameBuffer);
-	halo::unrender();
 }
 
 namespace {
 
 void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
 {
-	//log_scope("draw panel");
-	surface surf(image::get_image(panel.image(),image::UNSCALED));
-
+	const gl::image& img = gl::get_image(panel.image());
 	const SDL_Rect screen = screen_area();
 	SDL_Rect& loc = panel.location(screen);
-	if(!surf.null()) {
-		if(surf->w != loc.w || surf->h != loc.h) {
-			surf.assign(scale_surface(surf,loc.w,loc.h));
-		}
-
-		video.blit_surface(loc.x,loc.y,surf);
-		update_rect(loc);
-	}
-
-	static bool first_time = true;
-	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
-		if(rects_overlap(b->location(),loc)) {
-			b->set_dirty(true);
-			if (first_time){
-				//FixMe
-				//YogiHH: This is only made to have the buttons store their background information,
-				//otherwise the background will appear completely black. It would more
-				//straightforward to call bg_update, but that is not public and there seems to be
-				//no other way atm to call it. I will check if bg_update can be made public.
-				b->hide(true);
-				b->hide(false);
-			}
-		}
-	}
+	img.draw(loc.x,loc.y,loc.w,loc.h);
 }
 
 void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
-
-        std::stringstream temp;
-	Uint32 RGB=label.font_rgb();
-        int red = (RGB & 0x00FF0000)>>16;
-        int green = (RGB & 0x0000FF00)>>8;
-        int blue = (RGB & 0x000000FF);
-
-        std::string c_start="<";
-        std::string c_sep=",";
-        std::string c_end=">";
-        std::stringstream color;
-        color<< c_start << red << c_sep << green << c_sep << blue << c_end;
-        std::string text = label.text();
-
-        if(label.font_rgb_set()) {
-		color<<text;
-		text = color.str();
-        }
+	const std::string& text = label.full_text();
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(screen_area());
 
 	if(icon.empty() == false) {
-		surface surf(image::get_image(icon,image::UNSCALED));
-		if(!surf.null()) {
-			if(surf->w > loc.w || surf->h > loc.h) {
-				surf.assign(scale_surface(surf,loc.w,loc.h));
-			}
-
-			SDL_BlitSurface(surf,NULL,target,&loc);
-		}
+		const gl::image& img = gl::get_image(icon);
+		img.draw(loc.x,loc.y,loc.w,loc.h);
 
 		if(text.empty() == false) {
-			tooltips::add_tooltip(loc,text);
+			//tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
 		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
@@ -811,32 +757,15 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {
+	invalidate_all();
+
+	gl::prepare_frame();
+
 	bool changed = false;
 	//log_scope("Drawing");
 	invalidate_animations();
 
-	if(!panelsDrawn_) {
-		surface const screen(screen_.getSurface());
-
-		const std::vector<theme::panel>& panels = theme_.panels();
-		for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-			draw_panel(video(),*p,buttons_);
-		}
-
-		const std::vector<theme::label>& labels = theme_.labels();
-		for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-			draw_label(video(),screen,*i);
-		}
-
-		create_buttons();
-
-		//invalidate the reports so they are redrawn
-		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
-		invalidateGameStatus_ = true;
-		panelsDrawn_ = true;
-
-		changed = true;
-	}
+	surface const screen(screen_.getSurface());
 
 	if(invalidateAll_ && !map_.empty()) {
 		gamemap::location topleft;
@@ -882,6 +811,29 @@ void display::draw(bool update,bool force)
 		}
 		invalidated_.clear();
 	}
+
+	const std::vector<theme::panel>& panels = theme_.panels();
+	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
+		draw_panel(video(),*p,buttons_);
+	}
+
+	const std::vector<theme::label>& labels = theme_.labels();
+	for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
+		draw_label(video(),screen,*i);
+	}
+
+	if(!panelsDrawn_) {
+		create_buttons();
+	}
+
+	events::raise_draw_event();
+
+	//invalidate the reports so they are redrawn
+	std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
+	invalidateGameStatus_ = true;
+	panelsDrawn_ = true;
+
+	changed = true;
 
 	if(redrawMinimap_) {
 		redrawMinimap_ = false;
@@ -959,6 +911,9 @@ void display::draw_sidebar()
 		return;
 	}
 
+	invalidateUnit_ = true;
+	invalidateGameStatus_ = true;
+
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
 		//otherwise we display the unit that is selected
@@ -1001,6 +956,8 @@ void display::draw_game_status()
 
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
+	gl::draw_surface(img,rect.x,rect.y,rect.w,rect.h);
+	return;
 	SDL_Rect visible_area = get_non_transperant_portion(img);
 	SDL_Rect target = rect;
 	if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
@@ -1022,13 +979,9 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 			target.h = visible_area.h;
 		}
 
-		SDL_BlitSurface(img,&visible_area,screen_.getSurface(),&target);
+		gl::draw_surface(img,target.x,target.y);
 	} else {
-		if(img->w != rect.w || img->h != rect.h) {
-			img.assign(scale_surface(img,rect.w,rect.h));
-		}
-
-		SDL_BlitSurface(img,NULL,screen_.getSurface(),&target);
+		gl::draw_surface(img,target.x,target.y,rect.w,rect.h);
 	}
 }
 
@@ -1051,33 +1004,16 @@ void display::draw_report(reports::TYPE report_num)
 		const SDL_Rect& new_rect = item->location(screen_area());
 
 		//report and its location is unchanged since last time. Do nothing.
-		if(rect == new_rect && reports_[report_num] == report) {
-			return;
-		}
+//		if(rect == new_rect && reports_[report_num] == report) {
+//			return;
+//		}
 
 		reports_[report_num] = report;
 
 		surface& surf = reportSurfaces_[report_num];
 
 		if(surf != NULL) {
-			SDL_BlitSurface(surf,NULL,screen_.getSurface(),&rect);
-			update_rect(rect);
-		}
-		//if the rectangle has just changed, assign the surface to it
-		if(new_rect != rect || surf == NULL) {
-			surf.assign(NULL);
-			rect = new_rect;
-
-			//if the rectangle is present, and we are blitting text, then
-			//we need to backup the surface. (Images generally won't need backing
-			//up unless they are transperant, but that is done later)
-			if(rect.w > 0 && rect.h > 0) {
-				surf.assign(get_surface_portion(screen_.getSurface(),rect));
-				if(reportSurfaces_[report_num] == NULL) {
-					ERR_DP << "Could not backup background for report!\n";
-				}
-			}
-
+			gl::draw_surface(surf,rect.x,rect.y);
 			update_rect(rect);
 		}
 
@@ -1227,7 +1163,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	clip_rect_setter clip_setter(video().getSurface(),minimap_location);
 
 	SDL_Rect loc = minimap_location;
-	SDL_BlitSurface(surf,NULL,video().getSurface(),&loc);
+	gl::draw_surface(surf,loc.x,loc.y);
 
 	int map_w = map_.x(), map_h = map_.y();
 
@@ -1240,11 +1176,10 @@ void display::draw_minimap(int x, int y, int w, int h)
 
 		const int side = u->second.side();
 		const SDL_Color col = team::get_side_colour(side);
-		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		SDL_Rect rect = { x + (u->first.x * w) / map_w,
 		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_h,
 		                  w / map_w, h / map_h };
-		SDL_FillRect(video().getSurface(),&rect,mapped_col);
+		gl::rect(rect,col.r,col.g,col.b);
 	}
 
 	const double xscaling = double(surf->w) / map_w;
@@ -1256,12 +1191,10 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const int wbox = static_cast<int>(xscaling*map_area().w/(zoom_*0.75) - xscaling) + 3;
 	const int hbox = static_cast<int>(yscaling*map_area().h/zoom_ - yscaling) + 3;
 
-	const Uint32 boxcolour = SDL_MapRGB(surf->format,0xFF,0xFF,0xFF);
 	const surface screen(screen_.getSurface());
 
-	draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
-
-	update_rect(minimap_location);
+	const SDL_Rect area = {x+xbox,y+ybox,wbox,hbox};
+	gl::rect(area,0xFF,0xFF,0xFF,0x33);
 }
 
 
@@ -1317,9 +1250,8 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};
-		const Uint32 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		const Uint8 r_alpha = minimum<unsigned>(unsigned(fxpmult(alpha,255)),255);
-		fill_rect_alpha(filled_area,colour,r_alpha,video().getSurface());
+		gl::rect(filled_area,col.r,col.g,col.b,r_alpha);
 	}
 }
 
@@ -1337,17 +1269,7 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 		return;
 	}
 
-	surface const dst(screen_.getSurface());
-
-	clip_rect_setter set_clip_rect(dst,clip_rect);
-
-	const std::vector<surface>& images = get_terrain_images(x,y,image_type,type);
-
-	std::vector<surface>::const_iterator itor;
-	for(itor = images.begin(); itor != images.end(); ++itor) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(*itor,NULL,dst,&dstrect);
-	}
+	draw_terrain_images(x,y,image_type,type,xpos,ypos);
 }
 
 void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
@@ -1386,6 +1308,15 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		mask = tod_at.image_mask;
 	}
 
+	//find if this tile should be darkened or bightened (reach of a unit)
+	if (!reach_map_.empty()) {
+		reach = reach_map_.find(loc);
+		if (reach == reach_map_.end()) {
+			image_type = image::DARKENED;
+		} else {
+			image_type = image::UNMASKED;
+		}
+	}
 	unit_map::iterator un = find_visible_unit(units_, loc, map_,
 											  teams_,teams_[currentTeam_]);
 
@@ -1403,7 +1334,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		surface flag(get_flag(terrain,loc.x,loc.y));
 		if(flag != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(flag,NULL,dst,&dstrect);
+			gl::draw_surface(flag,dstrect.x,dstrect.y);
 		}
 
 		typedef overlay_map::const_iterator Itor;
@@ -1413,25 +1344,15 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 			surface overlay_surface(image::get_image(overlays.first->second.image,image_type));
 
-			//note that dstrect can be changed by SDL_BlitSurface and so a
-			//new instance should be initialized to pass to each call to
-			//SDL_BlitSurface
 			if(overlay_surface != NULL) {
-				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-				SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
+				gl::draw_surface(overlay_surface,xpos,ypos);
 			}
 		}
 	} else {
 		//FIXME: shouldn't void.png and fog.png be in the program configuration?
-		surface surface(image::get_image("terrain/void.png"));
-
-		if(surface == NULL) {
-			ERR_DP << "Could not get void surface!\n";
-			return;
-		}
-
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(surface,NULL,dst,&dstrect);
+		static const std::string void_str = "terrain/void.png";
+		const gl::image& void_img = gl::get_image(void_str);
+		void_img.draw(xpos,ypos,hex_size(),hex_size());
 	}
 
 	draw_footstep(loc,xpos,ypos);
@@ -1444,8 +1365,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	if(fogged(loc.x,loc.y) && shrouded(loc.x,loc.y) == false) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(fog_surface,NULL,dst,&dstrect);
+			gl::draw_surface(fog_surface,xpos,ypos);
 		}
 	}
 
@@ -1458,39 +1378,23 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	//draw the time-of-day mask on top of the hex
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 		if(tod_hex_mask1 != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(tod_hex_mask1,NULL,dst,&dstrect);
+			gl::draw_surface(tod_hex_mask1,xpos,ypos);
 		}
 
 		if(tod_hex_mask2 != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(tod_hex_mask2,NULL,dst,&dstrect);
+			gl::draw_surface(tod_hex_mask2,xpos,ypos);
 		}
 	} else if(mask != "") {
 		const surface img(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
 		if(img != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(img,NULL,dst,&dstrect);
-		}
-	}
-	//find if this tile should be darkened or bightened (reach of a unit)
-	if (!reach_map_.empty()) {
-		reach = reach_map_.find(loc);
-		if (reach == reach_map_.end()) {
-			const surface img(image::get_image("terrain/darken.png",image::UNMASKED,image::NO_ADJUST_COLOUR));
-			if(img != NULL) {
-				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-				SDL_BlitSurface(img,NULL,dst,&dstrect);
-			}
+			gl::draw_surface(img,xpos,ypos);
 		}
 	}
 
 	if(grid_) {
-		surface grid_surface(image::get_image("terrain/grid.png"));
-		if(grid_surface != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(grid_surface,NULL,dst,&dstrect);
-		}
+		static const std::string grid_src = "terrain/grid.png";
+		const gl::image& grid_img = gl::get_image(grid_src);
+		grid_img.draw(xpos,ypos,hex_size(),hex_size());
 	}
 
 	if(game_config::debug && debugHighlights_.count(loc)) {
@@ -1754,32 +1658,27 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	return res;
 }
 
-std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
+void display::draw_terrain_images(int x, int y, image::TYPE image_type,
+                                  ADJACENT_TERRAIN_TYPE terrain_type,
+								  int xpos, int ypos)
 {
-	std::vector<surface> res;
 	gamemap::location loc(x,y);
 
 	if(terrain_type == ADJACENT_FOGSHROUD) {
-		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(gamemap::location(x,y));
+		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(loc);
 
 		if(!fog_shroud.empty()) {
 			for(std::vector<std::string>::const_iterator it = fog_shroud.begin(); it != fog_shroud.end(); ++it) {
-				image::locator image(*it);
-				// image.filename = "terrain/" + *it;
-
-				const surface surface(image::get_image(image, image_type));
-				if (!surface.null()) {
-					res.push_back(surface);
-				}
+				const gl::image& img = gl::get_image(*it);
+				img.draw(xpos,ypos,hex_size(),hex_size());
 			}
 
 		}
 
-		return res;
+		return ;
 	}
 
 	const time_of_day& tod = status_.get_time_of_day();
-	// const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
 
 	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
 	      (terrain_type == ADJACENT_FOREGROUND ?
@@ -1789,18 +1688,13 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 
 	if(terrains != NULL) {
 		for(std::vector<animated<image::locator> >::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
-			// it->update_current_frame();
 			image::locator image = it->get_current_frame();
-			// image.filename = "terrain/" + image.filename;
 
-			const surface surface(image::get_image(image, image_type));
-			if (!surface.null()) {
-				res.push_back(surface);
-			}
+			const gl::image& img = gl::get_image(image);
+			img.draw(xpos,ypos,hex_size(),hex_size(),
+			         gl::image::NORMAL_ORIENTATION,image_type,&tod);
 		}
 	}
-
-	return res;
 }
 
 surface display::get_flag(gamemap::TERRAIN terrain, int x, int y)
@@ -2047,7 +1941,6 @@ void display::invalidate_all()
 {
 	invalidateAll_ = true;
 	invalidated_.clear();
-	update_rect(map_area());
 }
 
 void display::invalidate_unit()
@@ -2057,6 +1950,8 @@ void display::invalidate_unit()
 
 void display::invalidate_animations()
 {
+	new_animation_frame();
+
 	bool animate_flags = false;
 	gamemap::location topleft;
 	gamemap::location bottomright;

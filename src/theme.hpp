@@ -81,12 +81,16 @@ public:
 
 		size_t font_size() const;
 		Uint32 font_rgb() const;
-	        bool font_rgb_set() const;
+	    bool font_rgb_set() const;
+
+		const std::string& full_text() const;
 	private:
 		std::string text_, icon_;
 		size_t font_;
-	        bool font_rgb_set_;
+	    bool font_rgb_set_;
 		Uint32 font_rgb_;
+
+		mutable std::string full_text_;
 	};
 
 	class status_item : public object

@@ -13,6 +13,7 @@
 #include "loadscreen.hpp"
 
 #include "font.hpp"
+#include "gl_draw.hpp"
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
@@ -57,7 +58,7 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	surface const gdis = screen_.getSurface();
 	SDL_Rect area;
 	/* Draw logo if it was succesfully loaded. */
-	if (logo_surface_ && !logo_drawn_) {
+	if (logo_surface_) {
 		area.x = (screen_.getx () - logo_surface_->w) / 2;
 		area.y = ((scry - logo_surface_->h) / 2) - pbh;
 		area.w = logo_surface_->w;
@@ -65,13 +66,12 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 		/* Check if we have enough pixels to display it. */
 		if (area.x > 0 && area.y > 0) {
 			pby_offset_ = (pbh + area.h)/2;
-			SDL_BlitSurface (logo_surface_, 0, gdis, &area);
+			gl::draw_surface(logo_surface_,area.x,area.y);
 		}
 		else {
 			std::cerr << "loadscreen: Logo image is too big." << std::endl;
 		}
 		logo_drawn_ = true;
-		SDL_UpdateRect(gdis, area.x, area.y, area.w, area.h);
 	}
 	int pbx = (scrx - pbw)/2; /* Horizontal location. */
 	int pby = (scry - pbh)/2 + pby_offset_; /* Vertical location. */
@@ -79,32 +79,32 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	/* Draw top border. */
 	area.x = pbx; area.y = pby;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
-	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	gl::rect(area,bcr,bcg,bcb);
 	/* Draw bottom border. */
 	area.x = pbx; area.y = pby + pbh + bw + 2*bispw;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
-	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	gl::rect(area,bcr,bcg,bcb);
 	/* Draw left border. */
 	area.x = pbx; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
-	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	gl::rect(area,bcr,bcg,bcb);
 	/* Draw right border. */
 	area.x = pbx + pbw + bw + 2*bispw; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
-	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	gl::rect(area,bcr,bcg,bcb);
 	/* Draw the finished bar area. */
 	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
 	area.w = (prcnt_ * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.h = pbh;
-	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,fcr,fcg,fcb));
+	gl::rect(area,fcr,fcg,fcb);
 	/* Draw the leftover bar area. */
 	area.x = pbx + bw + bispw + (prcnt_ * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.y = pby + bw + bispw;
 	area.w = ((MAX_PERCENTAGE - prcnt_) * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.h = pbh;
-	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,lcr,lcg,lcb));
+	gl::rect(area,lcr,lcg,lcb);
 	/* Clear the last text and draw new if text is provided. */
-	if(text.length() > 0 && commit)
+	if(text.length() > 0)
 	{
 		SDL_Rect oldarea = textarea_;
-		SDL_FillRect(gdis,&textarea_,SDL_MapRGB(gdis->format,0,0,0));
+		gl::rect(textarea_,0,0,0);
 		textarea_ = font::line_size(text, font::SIZE_NORMAL);
 		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
 		textarea_.y = pby + pbh + 4*(bw + bispw);
@@ -113,31 +113,17 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 		oldarea.y = minimum<int>(textarea_.y, oldarea.y);
 		oldarea.w = maximum<int>(textarea_.w, oldarea.w);
 		oldarea.h = maximum<int>(textarea_.h, oldarea.h);
-		SDL_UpdateRect(gdis, oldarea.x, oldarea.y, oldarea.w, oldarea.h);
-	}
-	/* Update the rectangle if needed */
-	if(commit)
-	{
-		SDL_UpdateRect(gdis, pbx, pby, pbw + 2*(bw + bispw), pbh + 2*(bw + bispw));
 	}
 }
 
 void loadscreen::increment_progress(const int percentage, const std::string &text, const bool commit) {
+	gl::prepare_frame();
 	set_progress(prcnt_ + percentage, text, commit);
+	gl::flip();
 }
 
 void loadscreen::clear_screen(const bool commit)
 {
-	int scrx = screen_.getx(); /* Screen width. */
-	int scry = screen_.gety(); /* Screen height. */
-	SDL_Rect area = {0, 0, scrx, scry}; /* Screen area. */
-	surface const disp(screen_.getSurface()); /* Screen surface. */
-	/* Make everything black. */
-	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
-	if(commit)
-	{
-		SDL_Flip(disp); /* Flip the double buffering. */
-	}
 }
 
 loadscreen *loadscreen::global_loadscreen = 0;
@@ -164,7 +150,7 @@ void increment_filesystem_progress () {
 		//std::cerr << "Calls " << num;
 		if(oldpct != newpct) {
 			//std::cerr << " percent " << newpct;
-			loadscreen::global_loadscreen->increment_progress(newpct - oldpct);
+			loadscreen::global_loadscreen->increment_progress(newpct - oldpct, _("Verifying cache."));
 		}
 		//std::cerr << std::endl;
 	}
@@ -183,7 +169,7 @@ void increment_binary_wml_progress () {
 		//std::cerr << "Calls " << num;
 		if(oldpct != newpct) {
 			//std::cerr << " percent " << newpct;
-			loadscreen::global_loadscreen->increment_progress(newpct - oldpct);
+			loadscreen::global_loadscreen->increment_progress(newpct - oldpct,_("Reading cache."));
 		}
 		//std::cerr << std::endl;
 	}
@@ -202,7 +188,7 @@ void increment_set_config_progress () {
 		//std::cerr << "Calls " << num;
 		if(oldpct != newpct) {
 			//std::cerr << " percent " << newpct;
-			loadscreen::global_loadscreen->increment_progress(newpct - oldpct);
+			loadscreen::global_loadscreen->increment_progress(newpct - oldpct, _("Reading unit files."));
 		}
 		//std::cerr << std::endl;
 	}
@@ -221,7 +207,7 @@ void increment_parser_progress () {
 		//std::cerr << "Calls " << loadscreen::global_loadscreen->parser_counter;
 		if(oldpct != newpct) {
 		//	std::cerr << " percent " << newpct;
-			loadscreen::global_loadscreen->increment_progress(newpct - oldpct);
+			loadscreen::global_loadscreen->increment_progress(newpct - oldpct, _("Reading files and creating cache."));
 		}
 		//std::cerr << std::endl;
 	}

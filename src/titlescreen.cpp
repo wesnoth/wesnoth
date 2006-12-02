@@ -19,6 +19,7 @@
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
+#include "gl_draw.hpp"
 #include "hotkeys.hpp"
 #include "key.hpp"
 #include "gettext.hpp"
@@ -40,22 +41,27 @@
 
 namespace {
 
-bool fade_logo(display& screen, int xpos, int ypos)
+void fade_logo(display& screen, int xpos, int ypos,
+               surface logo, surface title_screen)
 {
-	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
 	if(logo == NULL) {
 		ERR_DP << "Could not find game logo\n";
-		return true;
+		return;
 	}
 
 	surface const fb = screen.video().getSurface();
 
 	if(fb == NULL || xpos < 0 || ypos < 0 || xpos + logo->w > fb->w || ypos + logo->h > fb->h) {
-		return true;
+		return;
 	}
 
 	//only once, when the game is first started, the logo fades in
 	static bool faded_in = false;
+	if(faded_in) {
+		return;
+	}
+
+	faded_in = true;
 
 	CKey key;
 	bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
@@ -64,40 +70,22 @@ bool fade_logo(display& screen, int xpos, int ypos)
 
 	LOG_DP << "logo size: " << logo->w << "," << logo->h << "\n";
 
-	for(int x = 0; x != logo->w; ++x) {
-		SDL_Rect srcrect = {x,0,1,logo->h};
-		SDL_Rect dstrect = {xpos+x,ypos,1,logo->h};
-
-		SDL_BlitSurface(logo,&srcrect,fb,&dstrect);
-
-		update_rect(dstrect);
-
-		if(!faded_in && (x%5) == 0) {
-
-			const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE] || key[SDLK_RETURN];
-			if(new_button && !last_button) {
-				faded_in = true;
-			}
-
-			last_button = new_button;
-
-			screen.update_display();
-
-			screen.delay(10);
-
-			events::pump();
-			if(screen.video().modeChanged()) {
-				faded_in = true;
-				return false;
-			}
+	for(float fade = 0.0; fade < 1.0; fade += 0.02) {
+		const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE] || key[SDLK_RETURN];
+		if(new_button && !last_button) {
+			fade = 1.0;
 		}
 
+		last_button = new_button;
+
+		gl::prepare_frame();
+		gl::draw_surface(title_screen,0,0);
+		gl::draw_surface(logo.get(),xpos,ypos,1.0,1.0,1.0,fade);
+		gl::flip();
+		screen.delay(10);
 	}
 
 	LOG_DP << "logo faded in\n";
-
-	faded_in = true;
-	return true;
 }
 
 const std::string& get_tip_of_day(const config& tips,int* ntip)
@@ -220,18 +208,13 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	surface const title_surface(scale_surface(
 		image::get_image(game_config::game_title,image::UNSCALED),
 		screen.x(), screen.y()));
+	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
+
 	screen.video().modeChanged(); // resets modeChanged value
 	int logo_x = game_config::title_logo_x * screen.x() / 1024,
 	    logo_y = game_config::title_logo_y * screen.y() / 768;
-	do {
-		if (title_surface.null()) {
-			ERR_DP << "Could not find title image\n";
-		} else {
-			screen.video().blit_surface(0, 0, title_surface);
-			update_rect(screen_area());
-			LOG_DP << "displayed title image\n";
-		}
-	} while (!fade_logo(screen, logo_x, logo_y));
+
+	fade_logo(screen, logo_x, logo_y, logo, title_surface);
 	LOG_DP << "faded logo\n";
 
 	const std::string& version_str = _("Version") + std::string(" ") +
@@ -241,12 +224,6 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 						      font::SIZE_TINY,
 	                                    font::NORMAL_COLOUR,version_str,0,0);
 	const size_t versiony = screen.y() - version_area.h;
-
-	if(versiony < size_t(screen.y())) {
-		font::draw_text(&screen.video(),screen.screen_area(),
-				font::SIZE_TINY,
-				font::NORMAL_COLOUR,version_str,0,versiony);
-	}
 
 	LOG_DP << "drew version number\n";
 
@@ -296,7 +273,6 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
 
     const std::string style = "mainmenu";
-	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen.video(),&style);
 
 	for(b = 0; b != nbuttons; ++b) {
 		buttons[b].set_width(max_width);
@@ -315,17 +291,13 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		tips_of_day = get_tips_of_day();
 	}
 
-
 	surface_restorer tip_of_day_restorer;
-
-	draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
 #ifndef USE_TINY_GUI
 	const int pad = game_config::title_tip_padding;
 	beg_button.set_location(screen.x() - pad - beg_button.location().w,
 		screen.y() - pad - beg_button.location().h);
 #endif
-	events::raise_draw_event();
 
 	LOG_DP << "drew buttons dialog\n";
 
@@ -333,11 +305,21 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	bool last_escape = key[SDLK_ESCAPE] != 0;
 
-	update_whole_screen();
-
 	LOG_DP << "entering interactive loop...\n";
 
 	for(;;) {
+		gl::prepare_frame();
+		
+		gl::draw_surface(title_surface.get(),0,0);
+		gl::draw_surface(logo.get(),logo_x,logo_y);
+
+		draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen.video(),&style);
+
+		font::draw_text(&screen.video(),screen.screen_area(),
+				font::SIZE_TINY,
+				font::NORMAL_COLOUR,version_str,0,versiony);
+		draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
+		
 		for(size_t b = 0; b != buttons.size(); ++b) {
 			if(buttons[b].pressed()) {
 				return TITLE_RESULT(b);
@@ -348,8 +330,6 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 			if(ntip != NULL) {
 				*ntip = *ntip + 1;
 			}
-
-            draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 		}
 
 		if(help_tip_button.pressed()) {
@@ -364,7 +344,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		screen.flip();
+		gl::flip();
 
 		if(!last_escape && key[SDLK_ESCAPE])
 			return QUIT_GAME;

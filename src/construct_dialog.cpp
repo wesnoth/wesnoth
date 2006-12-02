@@ -21,6 +21,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "gettext.hpp"
+#include "gl_draw.hpp"
 #include "gp2x.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
@@ -280,6 +281,7 @@ int dialog::show(const dimension_measurements &dim)
 
 void dialog::draw_contents(const dimension_measurements &dim)
 {
+	gl::prepare_frame();
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
 			preview_pane *pane = *i;
@@ -291,9 +293,7 @@ void dialog::draw_contents(const dimension_measurements &dim)
 		}
 	}
 	events::raise_draw_event(); //draw widgets
-
-	disp_.flip();
-	disp_.invalidate_all();
+	gl::flip();
 }
 
 void dialog::draw_frame(const dimension_measurements &dim)
@@ -359,7 +359,7 @@ void dialog::update_widget_positions(const dimension_measurements &dim)
 
 void dialog::refresh()
 {
-	disp_.flip();
+	gl::flip();
 	disp_.delay(10);
 }
 

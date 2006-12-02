@@ -13,7 +13,7 @@
 #ifndef SDL_UTILS_INCLUDED
 #define SDL_UTILS_INCLUDED
 
-#include "scoped_resource.hpp"
+#include "surface.hpp"
 #include "util.hpp"
 #include "color_range.hpp"
 
@@ -45,63 +45,6 @@ bool point_in_rect(int x, int y, const SDL_Rect& rect);
 bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
 SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
 
-struct surface
-{
-private:
-	static void sdl_add_ref(SDL_Surface *surf)
-	{
-		if (surf != NULL)
-			++surf->refcount;
-	}
-
-	struct free_sdl_surface {
-		void operator()(SDL_Surface *surf) const
-		{
-			if (surf != NULL)
-				 SDL_FreeSurface(surf);
-		}
-	};
-
-	typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
-public:
-	surface() : surface_(NULL)
-	{}
-
-	surface(SDL_Surface *surf) : surface_(surf)
-	{}
-
-	surface(const surface& o) : surface_(o.surface_.get())
-	{
-		sdl_add_ref(surface_.get());
-	}
-
-	void assign(const surface& o)
-	{
-		SDL_Surface *surf = o.surface_.get();
-		sdl_add_ref(surf); // need to be done before assign to avoid corruption on "a=a;"
-		surface_.assign(surf);
-	}
-
-	surface& operator=(const surface& o)
-	{
-		assign(o);
-		return *this;
-	}
-
-	operator SDL_Surface*() const { return surface_.get(); }
-
-	SDL_Surface* get() const { return surface_.get(); }
-
-	SDL_Surface* operator->() const { return surface_.get(); }
-
-	void assign(SDL_Surface* surf) { surface_.assign(surf); }
-
-	bool null() const { return surface_.get() == NULL; }
-
-private:
-	scoped_sdl_surface surface_;
-};
-
 bool operator<(const surface& a, const surface& b);
 
 surface make_neutral_surface(surface const &surf);
@@ -125,7 +68,7 @@ surface flip_surface(surface const &surf);
 surface flop_surface(surface const &surf);
 surface create_compatible_surface(surface const &surf, int width = -1, int height = -1);
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target);
+void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha);
 
 SDL_Rect get_non_transperant_portion(surface const &surf);
 
@@ -204,12 +147,10 @@ struct surface_restorer
 	void update();
 	void cancel();
 
-	const SDL_Rect& area() const { return rect_; }
+	const SDL_Rect& area() const { static SDL_Rect rect = {0,0,0,0}; return rect; }
 
 private:
 	class CVideo* target_;
-	SDL_Rect rect_;
-	surface surface_;
 };
 
 struct clip_rect_setter

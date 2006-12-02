@@ -444,6 +444,35 @@ bool theme::label::font_rgb_set() const
 	return font_rgb_set_;
 }
 
+namespace {
+	const std::string ColStart = "<";
+	const std::string ColSep = ",";
+	const std::string ColEnd = ">";
+}
+
+const std::string& theme::label::full_text() const
+{
+	if(full_text_.empty()) {
+		Uint32 rgb = font_rgb();
+		const int red = (rgb & 0x00FF0000) >> 16;
+		const int green = (rgb & 0x0000FF00) >> 8;
+		const int blue = (rgb & 0x000000FF);
+
+		std::stringstream color;
+		color << ColStart << red << ColSep << green << ColSep
+		      << blue << ColEnd;
+
+		full_text_ = text();
+
+		if(font_rgb_set()) {
+			color << full_text_;
+			full_text_ = color.str();
+		}
+	}
+
+	return full_text_;
+}
+
 theme::status_item::status_item(const config& cfg)
         : object(cfg),
 		  prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str()),

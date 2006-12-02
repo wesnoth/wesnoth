@@ -16,6 +16,7 @@
 #include "widgets/textbox.hpp"
 #include "clipboard.hpp"
 #include "font.hpp"
+#include "gl_draw.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
@@ -173,7 +174,7 @@ void textbox::draw_contents()
 				const clip_rect_setter clipper(surf, loc);
 
 				Uint32 colour = SDL_MapRGB(surf->format, 0, 0, 160);
-				fill_rect_alpha(rect, colour, 140, surf);
+				gl::rect(rect, 0, 0, 160, 140);
 
 				starty += int(line_height_);
 				startx = 0;

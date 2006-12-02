@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "gl_draw.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
@@ -81,7 +82,7 @@ namespace {
 
 		if(first_time) {
 			first_time = false;
-			surface surf(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+			surface surf(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,0xFF,0xFF00,0xFF0000,0xFF000000));
 			format = *surf->format;
 			format.palette = NULL;
 		}
@@ -111,6 +112,8 @@ surface create_optimized_surface(surface const &surf)
 {
 	if(surf == NULL)
 		return NULL;
+
+	return make_neutral_surface(surf);
 
 	surface const result = display_format_alpha(surf);
 	if(result == surf) {
@@ -888,26 +891,6 @@ surface create_compatible_surface(surface const &surf, int width, int height)
 		                        surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
 }
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target)
-{
-	if(alpha == SDL_ALPHA_OPAQUE) {
-		SDL_FillRect(target,&rect,colour);
-		return;
-	} else if(alpha == SDL_ALPHA_TRANSPARENT) {
-		return;
-	}
-
-	surface tmp(create_compatible_surface(target,rect.w,rect.h));
-	if(tmp == NULL) {
-		return;
-	}
-
-	SDL_Rect r = {0,0,rect.w,rect.h};
-	SDL_FillRect(tmp,&r,colour);
-	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
-	SDL_BlitSurface(tmp,NULL,target,&rect);
-}
-
 surface get_surface_portion(surface const &src, SDL_Rect &area)
 {
 	if(area.x >= src->w || area.y >= src->h) {
@@ -1070,55 +1053,33 @@ void pixel_data::read(const config& cfg) {
 		b = atoi(blue.c_str());
 }
 
-surface_restorer::surface_restorer() : target_(NULL), rect_(empty_rect), surface_(NULL)
+surface_restorer::surface_restorer() : target_(NULL)
 {
 }
 
 surface_restorer::surface_restorer(CVideo* target, const SDL_Rect& rect)
-: target_(target), rect_(rect), surface_(NULL)
+: target_(target)
 {
-	update();
 }
 
 surface_restorer::~surface_restorer()
 {
-	restore();
 }
 
 void surface_restorer::restore(SDL_Rect const &dst) const
 {
-	if (surface_.null())
-		return;
-	SDL_Rect dst2 = intersect_rects(dst, rect_);
-	if (dst2.w == 0 || dst2.h == 0)
-		return;
-	SDL_Rect src = dst2;
-	src.x -= rect_.x;
-	src.y -= rect_.y;
-	SDL_BlitSurface(surface_, &src, target_->getSurface(), &dst2);
-	update_rect(dst2);
 }
 
 void surface_restorer::restore() const
 {
-	if (surface_.null())
-		return;
-	SDL_Rect dst = rect_;
-	SDL_BlitSurface(surface_, NULL, target_->getSurface(), &dst);
-	update_rect(rect_);
 }
 
 void surface_restorer::update()
 {
-	if(rect_.w == 0 || rect_.h == 0)
-		surface_.assign(NULL);
-	else
-		surface_.assign(::get_surface_portion(target_->getSurface(),rect_));
 }
 
 void surface_restorer::cancel()
 {
-	surface_.assign(NULL);
 }
 
 void draw_rectangle(int x, int y, int w, int h, Uint32 colour,surface target)
@@ -1141,5 +1102,5 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 {
 
 	SDL_Rect rect = {x,y,w,h};
-	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
+	gl::rect(rect,r,g,b,Uint8(alpha*255));
 }

@@ -19,6 +19,7 @@
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "gl_draw.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
@@ -497,6 +498,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 		font_style_setter const style_setter(ttfont, style_);
 
 		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), color_));
+		s = make_neutral_surface(s);
 		if(!s.null())
 			surfs_.push_back(s);
 	}
@@ -727,12 +729,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		dest.h = area.y + area.h - dest.y;
 	}
 
-	if(gui_surface != NULL) {
-		SDL_Rect src = dest;
-		src.x = 0;
-		src.y = 0;
-		SDL_BlitSurface(surface,&src,gui_surface,&dest);
-	}
+	gl::draw_surface(surface,dest.x,dest.y);
 
 	if(use_tooltips) {
 		tooltips::add_tooltip(dest,text);
@@ -972,42 +969,17 @@ void floating_label::draw(surface screen)
 	}
 
 	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
-	const clip_rect_setter clip_setter(screen,clip_rect_);
-	SDL_BlitSurface(screen,&rect,buf_,NULL);
-	SDL_BlitSurface(surf_,NULL,screen,&rect);
+	gl::draw_surface(surf_,rect.x,rect.y);
 
 	if(foreground_ != NULL) {
 		SDL_Rect rect = {xpos(surf_->w)+border_,int(ypos_)+border_,foreground_->w,foreground_->h};
-		SDL_BlitSurface(foreground_,NULL,screen,&rect);
+		gl::draw_surface(foreground_,rect.x,rect.y);
 	}
-
-	update_rect(rect);
 }
 
 void floating_label::undraw(surface screen)
 {
-	if(screen == NULL || buf_ == NULL) {
-		return;
-	}
-
-	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
-	const clip_rect_setter clip_setter(screen,clip_rect_);
-	SDL_BlitSurface(buf_,NULL,screen,&rect);
-
-	update_rect(rect);
-
-	move(xmove_,ymove_);
-	if(lifetime_ > 0) {
-		--lifetime_;
-		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0)) {
-			if (!surf_.null()) {
-				surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_));
-			}
-			if (!foreground_.null()) {
-				foreground_.assign(adjust_surface_alpha_add(foreground_,alpha_change_));
-			}
-		}
-	}
+	return;
 }
 
 bool floating_label::expired() const { return lifetime_ == 0; }
