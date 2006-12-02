@@ -92,6 +92,28 @@ fi
 
 AM_CONDITIONAL([TINYGUI], [test "x$tinygui" = "xyes"])
 
+AC_ARG_ENABLE([optipng],
+	AS_HELP_STRING([--enable-optipng],
+	[run optipng png compression before installing graphics]),
+	[optipng=$enableval],
+	[optipng=no])
+
+AM_CONDITIONAL([OPTIPNG], [test "x$optipng" = "xyes"])
+
+if test "x$optipng" = "xyes"
+then
+	echo "****************************************"
+	echo "*** optipng support enabled          ***"
+	echo "*** please keep in mind that optipng ***"
+	echo "*** - may take a long time to run    ***"
+	echo "*** - makes graphics unusable for    ***"
+	echo "***   artists to work on.            ***"
+	echo "***                                  ***"
+	echo "*** It is intented to optimize the   ***"
+	echo "*** file size for packaging.         ***"
+	echo "****************************************"
+fi
+
 AC_ARG_ENABLE([lowmem],
               AS_HELP_STRING([--enable-lowmem], [reduce memory usage by removing extra functionality]),
 	      [lowmem=$enableval],

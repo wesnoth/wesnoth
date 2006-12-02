@@ -880,17 +880,19 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bool use_flat_tod) const
+bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod) const
 {
-	const config *alternate = orig_cfg.child("filter");
-	if (alternate) return matches_filter(*alternate, loc, use_flat_tod);
-	config cfg = orig_cfg;
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
 	const std::string& type = cfg["type"];
 	const std::string& ability = cfg["ability"];
 	const std::string& side = cfg["side"];
 	const std::string& weapon = cfg["has_weapon"];
+	const std::string& role = cfg["role"];
+	const std::string& race = cfg["race"];
+	const std::string& gender = cfg["gender"];
+	const std::string& canrecruit = cfg["canrecruit"];
+	const std::string& level = cfg["level"];
 
 	if(description.empty() == false && description != this->underlying_description()) {
 		return false;
@@ -931,7 +933,6 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 		} else {
 			return false;
 		}
-		cfg.values.erase("type");
 	}
 
 	if(ability.empty() == false && has_ability_by_id(ability) == false) {
@@ -950,10 +951,18 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 		} else {
 			return false;
 		}
-		cfg.values.erase("ability");
 	}
 
+	if(race.empty() == false && race_->name() != race) {
+		return false;
+	}
 
+	if(gender.empty() == false) {
+		const unit_race::GENDER gender_type = gender == "female" ? unit_race::FEMALE : unit_race::MALE;
+		if(gender_type != this->gender()) {
+			return false;
+		}
+	}
 
 	if(side.empty() == false && this->side() != (unsigned)atoi(side.c_str()))
 	  {
@@ -968,7 +977,6 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 		} else {
 			return false;
 		}
-		cfg.values.erase("side");
 	  }
 
 	if(weapon.empty() == false) {
@@ -983,10 +991,18 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 
 		if(!has_weapon)
 			return false;
-		cfg.values.erase("has_weapon");
 	}
 
+	if(role.empty() == false && role_ != role) {
+		return false;
+	}
 
+	if (canrecruit.empty() == false && (canrecruit == "1") != can_recruit())
+		return false;
+
+	if(level.empty() == false && level_ != lexical_cast_default<int>(level,-1)) {
+		return false;
+	}
 
 	//if there are [not] tags below this tag, it means that the filter
 	//should not match if what is in the [not] tag does match
@@ -1003,31 +1019,11 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 	// unit only => not filtered
 	config unit_cfg;
 	write(unit_cfg);
-	cfg.prune();
-	for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
-		if(!unit_cfg.values.count(j->first)) continue;
-		if(j->first == "x") continue;
-		if(j->first == "y") continue;
-		if(unit_cfg.values.find(j->first)->second != j->second) return false;
-
-	}
+	config::const_child_itors my_range = cfg.child_range("wml_filter");
 	//now, match the kids, WML based
-	for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
-		if(*(*i).first == "not") continue;
-		config::child_list interesting_children = unit_cfg.get_children(*(*i).first);
-		bool found = false;
-		if(interesting_children.empty()) continue;
-		for(config::child_list::iterator j = interesting_children.begin(); j != interesting_children.end(); ++j) {
-			if((*j)->matches(*(*i).second)) {
-				found = true;
-			}
-		}
-		if(!found) return false;
+	for(config::const_child_iterator i = my_range.first; i != my_range.second; ++i) {
+		if(!unit_cfg.matches(**i)) return false;
 	}
-	/*child_list negative_children = cfg.get_children("not");
-	for(child_list::iterator j = negative_children.begin() ; j != negative_children.end() ; j++) {
-		if(matches(**j)) return false;
-	}*/
 	return true;
 }
 void unit::add_overlay(const std::string& overlay)
