@@ -62,6 +62,9 @@ wesnoth_SOURCES = \
 	game_events.cpp \
 	gamestatus.cpp \
 	generic_event.cpp \
+	gl_draw.cpp \
+	gl_image_cache.cpp \
+	gl_image.cpp \
 	gp2x.cpp \
 	halo.cpp \
 	help.cpp \
@@ -137,7 +140,7 @@ wesnoth_SOURCES = \
 	widgets/widget.cpp \
 	sdl_ttf/SDL_ttf.c
 
-wesnoth_LDADD = $(THELIBS)
+wesnoth_LDADD = $(THELIBS) -lGL
 wesnoth_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
