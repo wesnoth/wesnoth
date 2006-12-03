@@ -208,7 +208,7 @@ void widget::set_dirty(bool dirty)
 
 bool widget::dirty() const
 {
-	return state_ == DIRTY;
+	return true;
 }
 
 void widget::bg_update()

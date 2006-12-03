@@ -260,19 +260,18 @@ int dialog::show(const dimension_measurements &dim)
 	hotkey::basic_handler help_dispatcher(&disp_,&helper);
 
 	//draw
-	draw_frame(dim);
 	update_widget_positions(dim);
-	draw_contents(dim);
 
 	//process
 	dialog_process_info dp_info;
 	do
 	{
+		gl::prepare_frame();
+		draw_frame(dim);
+		draw_contents(dim);
 		events::pump();
 		set_result(process(dp_info));
-		if(!done()) {
-			refresh();
-		}
+		refresh();
 		action(dp_info);
 	} while(!done());
 
@@ -281,7 +280,6 @@ int dialog::show(const dimension_measurements &dim)
 
 void dialog::draw_contents(const dimension_measurements &dim)
 {
-	gl::prepare_frame();
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
 			preview_pane *pane = *i;
@@ -293,7 +291,6 @@ void dialog::draw_contents(const dimension_measurements &dim)
 		}
 	}
 	events::raise_draw_event(); //draw widgets
-	gl::flip();
 }
 
 void dialog::draw_frame(const dimension_measurements &dim)

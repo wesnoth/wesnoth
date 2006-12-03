@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "gl_draw.hpp"
 #include "dialogs.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
@@ -346,7 +347,7 @@ void save_preview_pane::draw_contents()
 			SDL_Rect image_rect = {area.x,area.y,image->w,image->h};
 			ypos += image_rect.h + save_preview_border;
 
-			SDL_BlitSurface(image,NULL,screen,&image_rect);
+			gl::draw_surface(image,image_rect.x,image_rect.y);
 		}
 	}
 
@@ -393,7 +394,7 @@ void save_preview_pane::draw_contents()
 	if(map_surf != NULL) {
 		SDL_Rect map_rect = {area.x + area.w - map_surf->w,area.y,map_surf->w,map_surf->h};
 		ypos = maximum<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
-		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
+		gl::draw_surface(map_surf,map_rect.x,map_rect.y);
 	}
 
 	char* old_locale= setlocale(LC_TIME, get_locale().localename.c_str());
