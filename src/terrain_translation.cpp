@@ -484,10 +484,16 @@ t_letter string_to_number_(std::string str, int& start_position)
 
 std::string number_to_string_(t_letter terrain, const int start_position)
 {
-	std::string result;
+	std::string result = std::string();
 
+	//insert the start position
+	if(start_position > 0) {
+		result = str_cast(start_position) + " ";
+	}
+	
+	//insert the terrain letter
 	unsigned char letter[4];
-	letter[0] = ((terrain & 0xFF000000) >> 24); //FIXME MdW might need an UL behind the masks !!!
+	letter[0] = ((terrain & 0xFF000000) >> 24);
 	letter[1] = ((terrain & 0x00FF0000) >> 16);
 	letter[2] = ((terrain & 0x0000FF00) >> 8);
 	letter[3] = (terrain & 0x000000FF);
@@ -496,18 +502,14 @@ std::string number_to_string_(t_letter terrain, const int start_position)
 		if(letter[i] != 0) {
 			result.push_back(letter[i]);
 		} else {
-			result.push_back(' ');
+			// no letter, means no more letters at all
+			// so leave the loop
+			break;
 		}
 	}
 
-	//insert the start position
-	if(start_position > 0) {
-		std::string start(str_cast(start_position));
-		if(start.size() == 2) {
-			// pad to 7 chars
-			result += ' ';
-		}
-	}
+	// make sure the string gets the proper size
+	result.resize(7, ' ');
 	
 	return result;
 }
