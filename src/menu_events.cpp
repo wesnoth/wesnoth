@@ -1781,6 +1781,15 @@ namespace events{
 			game_config::debug = true;
 		} else if(cmd == "nodebug") {
 			game_config::debug = false;
+		} else if(game_config::debug && cmd == "set_var") {
+				const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
+				if(j != data.end()) {
+					const std::string name(data.begin(),j);
+					const std::string value(j+1,data.end());
+					gamestate_.set_variable(name,value);
+				}
+		} else if(game_config::debug && cmd == "show_var") {
+			gui::show_dialog(*gui_,NULL,"",gamestate_.get_variable(data),gui::MESSAGE);
 		} else if(game_config::debug && cmd == "unit") {
 			const unit_map::iterator i = current_unit(mousehandler);
 			if(i != units_.end()) {
