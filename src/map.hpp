@@ -185,6 +185,12 @@ public:
 	//to make tiles at the border update correctly when drawing
 	//other tiles.
 	void remove_from_border_cache(const location &loc);
+
+	//the size of the starting positions array
+	//the positions themselves are numbered from
+	//1. Thus max_starting positions is
+	//STARTING_POSITIONS - 1
+	enum { STARTING_POSITIONS = 10 };
 private:
 	int num_starting_positions() const;
 
@@ -195,7 +201,6 @@ private:
 	t_translation::t_map tiles_;
 	std::vector<location> villages_;
 
-	enum { STARTING_POSITIONS = 10 };
 	location startingPositions_[STARTING_POSITIONS];
 
 	mutable std::map<location, t_translation::t_letter> borderCache_;
