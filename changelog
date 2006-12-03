@@ -1,35 +1,21 @@
 Version 1.3-terrain-branch: also read README.BRANCH
-* Changed TERRAIN to TERRAIN_LETTER and TERRAIN_NUMBER
- * TERRAIN_LETTER is a char fully compatible with the previous type
- * TERRAIN_NUMBER is the new type
-* Moved the TERRAIN to terrain_translation since terrain_type needs this info
-  but can't load map.hpp due dependancies and terrain_translaion is the
-  highest level now
-* Started to convert all users to use the TERRAIN_NUMBER and remove
-  the assumption the type is a char. Notable offenders
-  * terrain_type
-  * mapgen (also had letters hard coded eg g=grass)
-  * cavegen (also had letters hard coded)
-  * help
-* Created terrain_translation class
- * map.hpp no longer includes terrain.hpp but terrain_translation.hpp (which
-   include terrain.hpp)
- * terrain converted seems oke
- * builder mostly done but has some UGLY hacks, doesn't work either	<<<<
- * map started								<<<<
- * dicovered terrain in preferences not started				<<<<
- * loading / saving a game not started					<<<<
- * help not started							<<<<
- * mapgen not started							<<<<
- * cavegen not started							<<<<
- * editor not started							<<<<
 
+* Terrain
+ * Added support for new multi-letter system.
+ * Terrain of the starting position can be changed in the map.
+ * New definition for the maps in terrain-graphics.
+ * Added wildcard matching support.
+* Editor
+ * Upon entering a new starting position the underlaying terrain 
+   remains unchanged.
 * WML
- * unit animation terrain filter works properly again
- * unit animation terrain filter now supports wildcard matching
- * the encountered terrains are now written in a new format
-   this means the user has to rediscover all available terrains
-
+ * unit animation terrain filter works properly again.
+ * unit animation terrain filter now supports wildcard matching.
+ * the encountered terrains are now written in a new format.
+   this means the user has to rediscover all available terrains.
+* Various other changes
+   * various code cleanups, mostly to support the new terrain system
+     and no longer makes assumptions about the internal format.
 
 Version 1.3-svn:
  * editor
