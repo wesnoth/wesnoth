@@ -278,7 +278,7 @@ public:
 
 	//functions used in the editor.
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
-	terrain_translation::TERRAIN_NUMBER get_terrain_on(int palx, int paly, int x, int y);
+	t_translation::t_letter get_terrain_on(int palx, int paly, int x, int y);
 
 	//set_team sets the team controlled by the player using the computer,
 	//and it is this team whose data is displayed in the game status.
@@ -404,7 +404,7 @@ private:
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
 	//this surface must be freed by the caller
-	surface get_flag(terrain_translation::TERRAIN_NUMBER, int x, int y);
+	surface get_flag(t_translation::t_letter, int x, int y);
 
 	//this surface must be freed by the caller
 	surface get_minimap(int w, int h);

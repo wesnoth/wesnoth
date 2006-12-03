@@ -304,15 +304,8 @@ private:
 	const std::vector<config*>* summaries_;
 	int index_;
 	std::map<std::string,surface> map_cache_;
-//	bool vector<terrain_translation::TERRAIN_NUMBER>::operator==(const vector<terrain_translation::TERRAIN_NUMBER>& terrain) const;
-//	bool save_preview_pane::operator==(const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain) const;
 };
-/*
-bool save_preview_pane::operator==(const std::vector<terrain_translation::TERRAIN_NUMBER>& lvalue, const std::vector<terrain_translation::TERRAIN_NUMBER>& rvalue) const
-{
-	return lvalue == rvalue;
-}
-*/
+
 void save_preview_pane::draw_contents()
 {
 	if (size_t(index_) >= summaries_->size() || info_->size() != summaries_->size()) {

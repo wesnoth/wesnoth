@@ -26,10 +26,10 @@
 
 
 terrain_type::terrain_type() : symbol_image_("void"),
-			       number_(terrain_translation::VOID_TERRAIN),
-			       mvt_type_(1, terrain_translation::VOID_TERRAIN),
-			       def_type_(1, terrain_translation::VOID_TERRAIN),
-			       union_type_(1, terrain_translation::VOID_TERRAIN),
+			       number_(t_translation::VOID_TERRAIN),
+			       mvt_type_(1, t_translation::VOID_TERRAIN),
+			       def_type_(1, t_translation::VOID_TERRAIN),
+			       union_type_(1, t_translation::VOID_TERRAIN),
                                height_adjust_(0), submerge_(0.0),
                                heals_(false), village_(false), castle_(false), keep_(false) 
 {}
@@ -41,49 +41,40 @@ terrain_type::terrain_type(const config& cfg)
 	name_ = cfg["name"];
 	id_ = cfg["id"];
 
-#if 0	
-	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
-#endif	
-	
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	// load the old char and the new string part
 	std::string terrain_char = cfg["char"];
 	std::string terrain_string = cfg["string"];
 
-	//this hack makes sure the string is defined, ugly but works
-	//FIXME MdW this temp hack should be removed
-//	if(terrain_string == "") {
-//		terrain_string = "_ _" + terrain_char;
-//	}
 	wassert(terrain_string != "");
-	
-	number_ = terrain_translation::read_letter(terrain_string, terrain_translation::TFORMAT_STRING);
+	number_ = t_translation::read_letter(terrain_string, t_translation::T_FORMAT_STRING);
 	//if both a char and a string are defined load it in the translation 
 	//table. This to maintain backwards compability
 	if(terrain_char != "") {
-		terrain_translation::add_translation(terrain_char, number_);
+		t_translation::add_translation(terrain_char, number_);
 	}
 #else
-	number_ = terrain_translation::read_letter(terrain_string);
+	number_ = t_translation::read_letter(terrain_string);
 #endif
 
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& alias = 
-		terrain_translation::read_list(cfg["aliasof"], -1, terrain_translation::TFORMAT_STRING);
+	const t_translation::t_list& alias = 
+		t_translation::read_list(cfg["aliasof"], -1, t_translation::T_FORMAT_STRING);
 	if(!alias.empty()) {
 		mvt_type_ = alias;
 		def_type_ = alias;
 	}
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_alias = 
-		terrain_translation::read_list(cfg["mvt_alias"], -1, terrain_translation::TFORMAT_STRING);
+
+	const t_translation::t_list& mvt_alias = 
+		t_translation::read_list(cfg["mvt_alias"], -1, t_translation::T_FORMAT_STRING);
 	if(!mvt_alias.empty()) {
 		mvt_type_ = mvt_alias;
 	}
 
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_alias = 
-		terrain_translation::read_list(cfg["def_alias"], -1, terrain_translation::TFORMAT_STRING);
+	const t_translation::t_list& def_alias = 
+		t_translation::read_list(cfg["def_alias"], -1, t_translation::T_FORMAT_STRING);
 	if(!def_alias.empty()) {
 		def_type_ = def_alias;
 	}
@@ -92,10 +83,11 @@ terrain_type::terrain_type(const config& cfg)
 
 	// remove + and -
 	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(), 
-				terrain_translation::MINUS), union_type_.end());
+				t_translation::MINUS), union_type_.end());
 
 	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				terrain_translation::PLUS), union_type_.end());
+				t_translation::PLUS), union_type_.end());
+
 	// remove doubles
 	std::sort(union_type_.begin(),union_type_.end());
 	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
@@ -130,27 +122,27 @@ const std::string& terrain_type::id() const
 	return id_;
 }
 
-terrain_translation::TERRAIN_NUMBER terrain_type::number() const
+t_translation::t_letter terrain_type::number() const
 {
 	return number_;
 }
 
 bool terrain_type::is_nonnull() const
 {
-	return (number_ != 0) && (number_ != terrain_translation::VOID_TERRAIN );
+	return (number_ != 0) && (number_ != t_translation::VOID_TERRAIN );
 }
 
-const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::mvt_type() const
+const t_translation::t_list& terrain_type::mvt_type() const
 {
 	return mvt_type_;
 }
 
-const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::def_type() const
+const t_translation::t_list& terrain_type::def_type() const
 {
 	return def_type_;
 }
 
-const std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_type::union_type() const
+const t_translation::t_list& terrain_type::union_type() const
 {
 	return union_type_;
 }
@@ -191,16 +183,17 @@ bool terrain_type::is_keep() const
 }
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
-                         std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_list,
-                         std::map<terrain_translation::TERRAIN_NUMBER,terrain_type>& letter_to_terrain,
-                         std::map<std::string,terrain_type>& str_to_terrain)
+                         t_translation::t_list& terrain_list,
+                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain,
+                         std::map<std::string, terrain_type>& str_to_terrain)
 {
 	for(std::vector<config*>::const_iterator i = cfgs.begin();
 	    i != cfgs.end(); ++i) {
 		terrain_type terrain(**i); 
 		terrain_list.push_back(terrain.number()); 
-		letter_to_terrain.insert(std::pair<terrain_translation::TERRAIN_NUMBER,terrain_type>(
+		letter_to_terrain.insert(std::pair<t_translation::t_letter, terrain_type>(
 		                              terrain.number(),terrain));
+
 		str_to_terrain.insert(std::pair<std::string,terrain_type>(
 		                              terrain.id(),terrain));
 	}

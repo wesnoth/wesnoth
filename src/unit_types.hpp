@@ -114,8 +114,8 @@ public:
 	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
 
 	const t_string& name() const;
-	int movement_cost(const gamemap& map, terrain_translation::TERRAIN_NUMBER terrain, int recurse_count=0) const;
-	int defense_modifier(const gamemap& map, terrain_translation::TERRAIN_NUMBER terrain, int recurse_count=0) const;
+	int movement_cost(const gamemap& map, t_translation::t_letter terrain, int recurse_count=0) const;
+	int defense_modifier(const gamemap& map, t_translation::t_letter terrain, int recurse_count=0) const;
 	int damage_against(const attack_type& attack) const;
 	int resistance_against(const attack_type& attack) const;
 
@@ -124,16 +124,16 @@ public:
 	void set_parent(const unit_movement_type* parent);
 
 	bool is_flying() const;
-	const std::map<terrain_translation::TERRAIN_NUMBER,int>& movement_costs() const;
-	const std::map<terrain_translation::TERRAIN_NUMBER,int>& defense_mods() const;
+	const std::map<t_translation::t_letter, int>& movement_costs() const;
+	const std::map<t_translation::t_letter, int>& defense_mods() const;
 
 	const config& get_cfg() const;
 	const unit_movement_type* get_parent() const;
 private:
 	const config cfg_;
 
-	mutable std::map<terrain_translation::TERRAIN_NUMBER,int> moveCosts_;
-	mutable std::map<terrain_translation::TERRAIN_NUMBER,int> defenseMods_;
+	mutable std::map<t_translation::t_letter, int> moveCosts_;
+	mutable std::map<t_translation::t_letter, int> defenseMods_;
 
 	const unit_movement_type* parent_;
 };

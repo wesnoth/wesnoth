@@ -4,10 +4,7 @@ TODO contains the points to be done which are tagged in the source
 
 README.FILES contains files modified so far
 
-
 Main TODO list is here
-
-* split the builder specific terrain letters
 
 * Make * sytanx work in builder rules
   started this but is tricker than expected
@@ -22,12 +19,7 @@ Main TODO list is here
 * convert the aliases to read the new list
   conversion done but not fully tested yet
 
-* Make Wesnoth work again it doesn't
-* all users of "map_data" should be checked, busy
-* Help systems is broken DONE BUT NOT TESTED
-* Load / save is DONE BUT NOT TESTED
-* Random map generators are broken, compiles but doesn't work,
-  FIXED BUT NOT TESTED, NOTE the code looks ugly with the calls
-  to terrain_translation, this needs to be fixed after the 
-  final conversion
-* cavegen works again, can be tested with Httt scepter of fire  
+* terrain.cfg and terrain-graphics.cfg need to be translated
+  to the new system
+
+* test everything

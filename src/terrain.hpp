@@ -33,18 +33,12 @@ public:
 	const std::string& id() const;
 
 	//the character representing this terrain
-	//this is the old type will be obsoleted
-	//FIXME MdW maybe reinstall the letter later again after debugging everything
-//	TERRAIN_LETTER letter() const;
-//	
-	//the number representing this terrain
-	//this is the new type
-	terrain_translation::TERRAIN_NUMBER number() const;
+	t_translation::t_letter number() const;
 
 	//the underlying type of the terrain
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& mvt_type() const;
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& def_type() const;
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& union_type() const;
+	const t_translation::t_list& mvt_type() const;
+	const t_translation::t_list& def_type() const;
+	const t_translation::t_list& union_type() const;
 
 	bool is_nonnull() const;
 	int light_modification() const;
@@ -66,10 +60,10 @@ private:
 	//terrain type. The 'type' is a list of the 'underlying types'
 	//of the terrain. This may simply be the same as the number.
 	//This is the internal number used, WML still used characters
-	terrain_translation::TERRAIN_NUMBER number_;
-	std::vector<terrain_translation::TERRAIN_NUMBER> mvt_type_;
-	std::vector<terrain_translation::TERRAIN_NUMBER> def_type_;
-	std::vector<terrain_translation::TERRAIN_NUMBER> union_type_;
+	t_translation::t_letter number_;
+	t_translation::t_list mvt_type_;
+	t_translation::t_list def_type_;
+	t_translation::t_list union_type_;
 		
 	int height_adjust_;
 
@@ -83,7 +77,7 @@ private:
 
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
-                         std::vector<terrain_translation::TERRAIN_NUMBER>& terrain_list,
-                         std::map<terrain_translation::TERRAIN_NUMBER,terrain_type>& letter_to_terrain,
-                         std::map<std::string,terrain_type>& str_to_terrain);
+                         t_translation::t_list& terrain_list,
+                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain,
+                         std::map<std::string, terrain_type>& str_to_terrain);
 #endif

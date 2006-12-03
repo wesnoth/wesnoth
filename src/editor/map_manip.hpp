@@ -27,14 +27,14 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 										 const gamemap::location& a,
 										 const unsigned int radius);
 
-typedef std::vector<std::pair<gamemap::location, terrain_translation::TERRAIN_NUMBER> > terrain_log;
+typedef std::vector<std::pair<gamemap::location, t_translation::t_letter> > terrain_log;
 
 /// Flood fill the map with the terrain fill_with starting from the
 /// location start_loc. If log is non-null it will contain the positions
 /// of the changed tiles and the terrains they had before the filling
 /// started.
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
-				const terrain_translation::TERRAIN_NUMBER fill_with, terrain_log *log = NULL);
+		const t_translation::t_letter fill_with, terrain_log *log = NULL);
 
 /// Return the area that would be flood filled if a flood fill was
 /// requested.
@@ -48,7 +48,7 @@ get_component(const gamemap &map, const gamemap::location &start_loc);
 /// new map area appeard at the bottom and/or the right and is filled
 /// with the terrain fill_with.
 std::string resize_map(const gamemap &map, const unsigned new_w,
-					   const unsigned new_h, const terrain_translation::TERRAIN_NUMBER fill_with);
+   const unsigned new_h, const t_translation::t_letter fill_with);
 
 enum FLIP_AXIS {NO_FLIP, FLIP_X, FLIP_Y};
 /// Return the string representation of the map after it has been

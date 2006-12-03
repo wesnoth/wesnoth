@@ -374,8 +374,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(!map.on_board(mouseover) || current_team.shrouded(mouseover.x,mouseover.y))
 			break;
 
-		const terrain_translation::TERRAIN_NUMBER terrain = map.get_terrain(mouseover);
-		const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map.underlying_union_terrain(terrain);
+		const t_translation::t_letter terrain = map.get_terrain(mouseover);
+		const t_translation::t_list& underlying = map.underlying_union_terrain(terrain);
 
 		if(map.is_village(mouseover)) {
 			const unsigned int owner = village_owner(mouseover,teams)+1;
@@ -397,8 +397,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(underlying.size() != 1 || underlying.front() != terrain) {
 			str << "(";
 
-//			for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
-			for(std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+			for(t_translation::t_list::const_iterator i = 
+					underlying.begin(); i != underlying.end(); ++i) {
+
 			str << map.get_terrain_info(*i).name();
 				if(i+1 != underlying.end()) {
 					str << ",";
@@ -418,7 +419,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(u == units.end() || current_team.shrouded(mouseover.x,mouseover.y))
 			break;
 
-		const terrain_translation::TERRAIN_NUMBER terrain = map[mouseover.x][mouseover.y];
+		const t_translation::t_letter terrain = map[mouseover.x][mouseover.y];
 
 		const int move_cost = u->second.movement_cost(terrain);
 		const int defense = 100 - u->second.defense_modifier(terrain);

@@ -22,12 +22,10 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-cave_map_generator::cave_map_generator(const config* cfg) : wall_(terrain_translation::CAVE_WALL), 
-							    clear_(terrain_translation::CAVE), 
-							    village_(terrain_translation::UNDERGROUND_VILLAGE), 
-							    castle_(terrain_translation::DWARVEN_CASTLE),
-                                                            cfg_(cfg), width_(50), height_(50), village_density_(0),
-							    flipx_(false), flipy_(false)
+cave_map_generator::cave_map_generator(const config* cfg) : wall_(t_translation::CAVE_WALL), 
+	clear_(t_translation::CAVE), village_(t_translation::UNDERGROUND_VILLAGE), 
+    castle_(t_translation::DWARVEN_CASTLE), cfg_(cfg), width_(50), height_(50), 
+	village_density_(0), flipx_(false), flipy_(false)
 {
 	if(cfg_ == NULL) {
 		static const config default_cfg;
@@ -81,7 +79,7 @@ std::string cave_map_generator::create_map(const std::vector<std::string>& args)
 
 config cave_map_generator::create_scenario(const std::vector<std::string>& /*args*/)
 {
-	map_ = std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> >(width_,std::vector<terrain_translation::TERRAIN_NUMBER>(height_,wall_));
+	map_ = t_translation::t_map(width_, t_translation::t_list(height_, wall_));
 	chambers_.clear();
 	passages_.clear();
 
@@ -109,7 +107,7 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 	std::stringstream out;
 	for(size_t y = 0; y != height_; ++y) {
 		for(size_t x = 0; x != width_; ++x) {
-			out << terrain_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
+			out << t_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
 		}
 
 		out << "\n";
@@ -282,14 +280,15 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 
 struct passage_path_calculator : cost_calculator
 {
-	passage_path_calculator(const std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> >& mapdata, terrain_translation::TERRAIN_NUMBER wall, double laziness, size_t windiness)
-		        : map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
+	passage_path_calculator(const t_translation::t_map& mapdata, 
+	t_translation::t_letter wall, double laziness, size_t windiness): 
+		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
 
 	virtual double cost(const gamemap::location& src,const gamemap::location& loc, const double so_far, const bool is_dest) const;
 private:
-	const std::vector<std::vector<terrain_translation::TERRAIN_NUMBER> >& map_;
-	terrain_translation::TERRAIN_NUMBER wall_;
+	const t_translation::t_map& map_;
+	t_translation::t_letter wall_;
 	double laziness_;
 	size_t windiness_;
 };
@@ -344,14 +343,14 @@ bool cave_map_generator::on_board(const gamemap::location& loc) const
 	return loc.x >= 0 && loc.y >= 0 && loc.x < (long)width_ && loc.y < (long)height_;
 }
 
-void cave_map_generator::set_terrain(gamemap::location loc, terrain_translation::TERRAIN_NUMBER t)
+void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_letter t)
 {
 	if(on_board(loc)) {
 		if(t == clear_ && (rand()%1000) < (long)village_density_) {
 			t = village_;
 		}
 
-		terrain_translation::TERRAIN_NUMBER& c = map_[loc.x][loc.y];
+		t_translation::t_letter& c = map_[loc.x][loc.y];
 		if(c == clear_ || c == wall_ || c == village_) {
 			c = t;
 		}
@@ -361,7 +360,7 @@ void cave_map_generator::set_terrain(gamemap::location loc, terrain_translation:
 void cave_map_generator::place_castle(const std::string& side, gamemap::location loc)
 {
 	if(side != "") {
-		set_terrain(loc, terrain_translation::read_letter(side, terrain_translation::TFORMAT_AUTO));
+		set_terrain(loc, t_translation::read_letter(side, t_translation::T_FORMAT_AUTO));
 	}
 
 	gamemap::location adj[6];

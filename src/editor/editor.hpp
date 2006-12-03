@@ -196,7 +196,7 @@ private:
 
 	/// Draw terrain at a location. The operation is saved in the undo
 	/// stack. Update the map to reflect the change.
-	void draw_terrain(const terrain_translation::TERRAIN_NUMBER terrain,
+	void draw_terrain(const t_translation::t_letter terrain,
 					  const gamemap::location hex);
 
 
@@ -285,7 +285,7 @@ private:
 
 	/// Draw the terrain on the hexes the mouse is over, taking account
 	/// for brush size.
-	void draw_on_mouseover_hexes(const terrain_translation::TERRAIN_NUMBER t);
+	void draw_on_mouseover_hexes(const t_translation::t_letter t);
 
 	// Load the tooltips for each button
 	void load_tooltips(void);
@@ -295,11 +295,11 @@ private:
 	/// where to put the pasted hex when calculating from the one
 	/// selected when the paste takes place.
 	struct clipboard_item {
-		clipboard_item(int xo, int yo, terrain_translation::TERRAIN_NUMBER t, int start_side) :
+		clipboard_item(int xo, int yo, t_translation::t_letter t, int start_side) :
 			x_offset(xo), y_offset(yo), terrain(t),
 			starting_side(start_side){}
 		int x_offset, y_offset;
-		terrain_translation::TERRAIN_NUMBER terrain;
+		t_translation::t_letter terrain;
 		int starting_side;
 	};
 
@@ -345,7 +345,7 @@ private:
 	static config hotkeys_;
 	static bool first_time_created_;
 	static LEFT_BUTTON_FUNC l_button_func_;
-	static terrain_translation::TERRAIN_NUMBER old_fg_terrain_, old_bg_terrain_;
+	static t_translation::t_letter old_fg_terrain_, old_bg_terrain_;
 	static int old_brush_size_;
 	bool all_hexes_selected_;
 

@@ -209,7 +209,7 @@ public:
 		terrain_constraint(gamemap::location loc) : loc(loc) {};
 
 		gamemap::location loc;
-		std::vector<terrain_translation::TERRAIN_NUMBER> terrain_types;
+		t_translation::t_list terrain_types;
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
 		std::vector<std::string> has_flag;
@@ -285,7 +285,7 @@ public:
 		 * The 6 adjacent terrains of this tile, and the terrain on
 		 * this tile.
 		 */
-		terrain_translation::TERRAIN_NUMBER adjacents[7];
+		t_translation::t_letter adjacents[7];
 
 	};
 
@@ -542,7 +542,7 @@ private:
 	 *                    describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
-			const gamemap::location &loc, const std::vector<terrain_translation::TERRAIN_NUMBER>& type,
+			const gamemap::location &loc, const t_translation::t_list& type,
 			const config& global_images);
 
 	/**
@@ -616,7 +616,7 @@ private:
 	 *
 	 * @return returns true if "letter" matches the list, false if it does not.
 	 */
-	bool terrain_matches(terrain_translation::TERRAIN_NUMBER letter, const std::vector<terrain_translation::TERRAIN_NUMBER> &terrains); 
+	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list &terrains); 
 
 	/**
 	 * Checks whether a rule matches a given location in the map.
@@ -705,7 +705,7 @@ private:
 	/**
 	 * Shorthand typedef for a map associating a list of locations to a terrain type.
 	 */
-	typedef std::map<terrain_translation::TERRAIN_NUMBER, std::vector<gamemap::location> > terrain_by_type_map;
+	typedef std::map<t_translation::t_letter, std::vector<gamemap::location> > terrain_by_type_map;
 
 	/**
 	 * A map representing all locations whose terrain is of a given type.

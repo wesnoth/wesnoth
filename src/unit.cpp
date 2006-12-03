@@ -1900,7 +1900,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 
 
 	if(!anim_) set_standing(disp,hex);
-	const terrain_translation::TERRAIN_NUMBER terrain = map.get_terrain(hex);
+	const t_translation::t_letter terrain = map.get_terrain(hex);
 	const double submerge = is_flying() ? 0.0 : map.get_terrain_info(terrain).unit_submerge() * disp.zoom();
 	const int height_adjust = is_flying() ? 0 : int(map.get_terrain_info(terrain).unit_height_adjust() * disp.zoom());
 
@@ -2178,34 +2178,36 @@ bool unit::is_flying() const
 	return flying_;
 }
 
-int unit::movement_cost_internal(terrain_translation::TERRAIN_NUMBER terrain, int recurse_count) const
+int unit::movement_cost_internal(t_translation::t_letter terrain, int recurse_count) const
 {
 	const int impassable = 10000000;
 
-	const std::map<terrain_translation::TERRAIN_NUMBER,int>::const_iterator i = movement_costs_.find(terrain);
+	const std::map<t_translation::t_letter,int>::const_iterator i = 
+		movement_costs_.find(terrain);
+
 	if(i != movement_costs_.end()) {
 		return i->second;
 	}
 
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_mvt_terrain(terrain);
+	const t_translation::t_list& underlying = map_->underlying_mvt_terrain(terrain);
 	
 	wassert(!underlying.empty());
 	if(underlying.size() != 1 || underlying.front() != terrain) { // We fail here but first test underlying_mvt_terrain
-		bool revert = (underlying.front() == terrain_translation::MINUS ?true:false);
+		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
 		if(recurse_count >= 100) {
 			return impassable;
 		}
 
 		int ret_value = revert?0:impassable;
-		for(std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = underlying.begin(); 
+		for(t_translation::t_list::const_iterator i = underlying.begin(); 
 				i != underlying.end(); ++i) {
 
-			if(*i == terrain_translation::PLUS) {
+			if(*i == t_translation::PLUS) {
 				revert = false;
 				continue;
-			} else if(*i == terrain_translation::MINUS) {
+			} else if(*i == t_translation::MINUS) {
 				revert = true;
 				continue;
 			}
@@ -2217,7 +2219,7 @@ int unit::movement_cost_internal(terrain_translation::TERRAIN_NUMBER terrain, in
 			}
 		}
 
-		movement_costs_.insert(std::pair<terrain_translation::TERRAIN_NUMBER,int>(terrain,ret_value));
+		movement_costs_.insert(std::pair<t_translation::t_letter, int>(terrain, ret_value));
 
 		return ret_value;
 	}
@@ -2247,11 +2249,11 @@ int unit::movement_cost_internal(terrain_translation::TERRAIN_NUMBER terrain, in
 		res = impassable;
 	}
 
-	movement_costs_.insert(std::pair<terrain_translation::TERRAIN_NUMBER,int>(terrain,res));
+	movement_costs_.insert(std::pair<t_translation::t_letter, int>(terrain,res));
 	return res;
 }
 
-int unit::movement_cost(terrain_translation::TERRAIN_NUMBER terrain, int recurse_count) const
+int unit::movement_cost(t_translation::t_letter terrain, int recurse_count) const
 {
 	int res = movement_cost_internal(terrain,recurse_count);
 	if(utils::string_bool(get_state("slowed"))) {
@@ -2260,7 +2262,7 @@ int unit::movement_cost(terrain_translation::TERRAIN_NUMBER terrain, int recurse
 	return res;
 }
 
-int unit::defense_modifier(terrain_translation::TERRAIN_NUMBER terrain, int recurse_count) const
+int unit::defense_modifier(t_translation::t_letter terrain, int recurse_count) const
 {
 //	const std::map<terrain_type::TERRAIN,int>::const_iterator i = defense_mods_.find(terrain);
 //	if(i != defense_mods_.end()) {
@@ -2269,21 +2271,21 @@ int unit::defense_modifier(terrain_translation::TERRAIN_NUMBER terrain, int recu
 
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
-	const std::vector<terrain_translation::TERRAIN_NUMBER>& underlying = map_->underlying_def_terrain(terrain);
+	const t_translation::t_list& underlying = map_->underlying_def_terrain(terrain);
 	wassert(underlying.size() > 0);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
-		bool revert = (underlying.front() == terrain_translation::MINUS ?true:false);
+		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
 		if(recurse_count >= 100) {
 			return 100;
 		}
 
 		int ret_value = revert?0:100;
-		std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator i = underlying.begin();
+		t_translation::t_list::const_iterator i = underlying.begin();
 		for(; i != underlying.end(); ++i) {
-			if(*i == terrain_translation::PLUS) {
+			if(*i == t_translation::PLUS) {
 				revert = false;
 				continue;
-			} else if(*i == terrain_translation::MINUS) {
+			} else if(*i == t_translation::MINUS) {
 				revert = true;
 				continue;
 			}

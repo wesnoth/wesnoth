@@ -33,41 +33,39 @@
 
 #include "variable.hpp"
 
-namespace terrain_translation {
+namespace t_translation {
 
-	//The new definition of terrain
-	typedef char TERRAIN_LETTER;
-	typedef Uint32 TERRAIN_NUMBER;
+	//The definitions for a terrain
+	typedef Uint32 t_letter;
+	typedef std::vector<t_letter> t_list;
+	typedef std::vector<std::vector<t_letter> > t_map;
 
 	//some types of terrain which must be known, and can't just be loaded
 	//in dynamically because they're special. It's asserted that there will
 	//be corresponding entries for these types of terrain in the terrain
 	//configuration file.
-	extern const TERRAIN_NUMBER VOID_TERRAIN;
-	extern const TERRAIN_NUMBER FOGGED;
-	extern const TERRAIN_NUMBER KEEP;
+	extern const t_letter VOID_TERRAIN;
+	extern const t_letter FOGGED;
+	extern const t_letter KEEP;
 
-	extern const TERRAIN_NUMBER CASTLE;
-	extern const TERRAIN_NUMBER SHALLOW_WATER;
-	extern const TERRAIN_NUMBER DEEP_WATER;
-	extern const TERRAIN_NUMBER GRASS_LAND;
-	extern const TERRAIN_NUMBER FOREST;
-	extern const TERRAIN_NUMBER MOUNTAIN;
-	extern const TERRAIN_NUMBER HILL;
+	extern const t_letter CASTLE;
+	extern const t_letter SHALLOW_WATER;
+	extern const t_letter DEEP_WATER;
+	extern const t_letter GRASS_LAND;
+	extern const t_letter FOREST;
+	extern const t_letter MOUNTAIN;
+	extern const t_letter HILL;
 
-	extern const TERRAIN_NUMBER CAVE_WALL;
-	extern const TERRAIN_NUMBER CAVE;
-	extern const TERRAIN_NUMBER UNDERGROUND_VILLAGE;
-	extern const TERRAIN_NUMBER DWARVEN_CASTLE;
+	extern const t_letter CAVE_WALL;
+	extern const t_letter CAVE;
+	extern const t_letter UNDERGROUND_VILLAGE;
+	extern const t_letter DWARVEN_CASTLE;
 
-	extern const TERRAIN_NUMBER PLUS;
-	extern const TERRAIN_NUMBER MINUS;
-	extern const TERRAIN_NUMBER TB_STAR;
-	extern const TERRAIN_NUMBER NOT;
-//	extern const TERRAIN_NUMBER EOL;
-	extern const TERRAIN_NUMBER TB_DOT;
-	extern const TERRAIN_NUMBER COMMA;
-	extern const TERRAIN_NUMBER NONE_TERRAIN;
+	extern const t_letter PLUS; 	// +
+	extern const t_letter MINUS; 	// -
+	extern const t_letter NOT;		// FIXME MdW remove once no longer used in the builder
+	extern const t_letter COMMA;	// ,
+	const t_letter NONE_TERRAIN = 0;
 
     //exception thrown if there's an error with the terrain
 	//FIXME MdW we throw nobody catches...
@@ -75,58 +73,51 @@ namespace terrain_translation {
 		error(const std::string& msg) : message(msg) {}
 		std::string message;
 	};
-
 		
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	//the terrain format lets the terrain functions know what to expect
-	// TFORMAT_LETTER the string is a terrain letter (single char)
-	// TFORMAT_STRING the string is a terrain string (multiple chars)
-	// TFORMAT_AUTO   uses map_format_ to determine the type
-	enum { TFORMAT_LETTER = 1, TFORMAT_STRING = 2, TFORMAT_AUTO = 3 };
+	// T_FORMAT_LETTER the string is a terrain letter (single char)
+	// T_FORMAT_STRING the string is a terrain string (multiple chars)
+	// T_FORMAT_AUTO   uses map_format_ to determine the type
+	enum { T_FORMAT_LETTER = 1, T_FORMAT_STRING = 2, T_FORMAT_AUTO = 3 };
 	
 #endif
 	
-	struct coordinate {
-		size_t x; 
-		size_t y;
-	};
-
 	/** Reads a single terrain from a string
-	 * FIXME: remove tformat
+	 * FIXME: remove t_format
 	 *
-	 * @param letter	The string which should contain 1 letter
-	 * @param tformat	The format to read
+	 * @param str		The string which should contain 1 letter
+	 * @param t_format	The format to read
 	 *
 	 * @return			A single terrain letter
 	 */
-	TERRAIN_NUMBER read_letter(const std::string& letter, const int tformat);
+	t_letter read_letter(const std::string& str, const int t_format);
 	
-	/** Writes a single letter to a string
+	/** Writes a single letter to a string.
 	 * The writers only support the new format
 	 *
 	 * @param letter	The letter to convert to a string
 	 *
 	 * @return			A string containing the letter
 	 */
-	std::string write_letter(const TERRAIN_NUMBER& letter);
+	std::string write_letter(const t_letter& letter);
 	
 	/** Reads a list of terrain from a string, when reading the 
 	 * old format the comma separator is optional the new format
 	 * only reads with a separator and ignores
-	 * FIXME: remove separated and tformat
+	 * FIXME: remove separated and t_format
 	 *
-	 * @param list		A string with one or more terrain letters
+	 * @param str		A string with one or more terrain letters
 	 * @param separated	The old terrain format is optional separated by a comma
 	 *  				the new format is always separated by a comma and
 	 *  				ignores this parameter. Possible values:
 	 *						0 = no
 	 *						1 = yes
-	 * @param format	The format to read.
+	 * @param t_format	The format to read.
 	 *
-	 * @returns			A vector which contains the string
+	 * @returns			A vector which contains the letters found in the string
 	 */
-//	std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated = 0, const int tformat);
-	std::vector<TERRAIN_NUMBER> read_list(const std::string& list, const int separated, const int tformat);
+	 t_list read_list(const std::string& str, const int separated, const int t_format);
 
 	/** Writes a list of terrains to a string, only writes the new format.
 	 *
@@ -135,11 +126,19 @@ namespace terrain_translation {
 	 * @returns			A string with the terrain numbers, comma separated and 
 	 * 					a space behind the comma's. Not padded.
 	 */
-	std::string write_list(const std::vector<TERRAIN_NUMBER>& list);
+	std::string write_list(const t_list& list);
 
-	/** Reads a gamemap string into a vector
+	/** Contains an x and c coordinate used for starting positions
+	 * in maps
+	 */
+	struct coordinate {
+		size_t x; 
+		size_t y;
+	};
+
+	/** Reads a gamemap string into a 2D vector
 	 *
-	 * @param map		A string containing the gamemap, the following rules 
+	 * @param str		A string containing the gamemap, the following rules 
 	 * 					are stated for a gamemap:
 	 * 					* The map is square
 	 * 					* The map can be prefixed with one or more empty lines,
@@ -168,8 +167,7 @@ namespace terrain_translation {
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 * 					like result[x][y] where x the column number is and y the row number.
 	 */
-	std::vector<std::vector<TERRAIN_NUMBER> > read_game_map(const std::string& map, 
-			std::map<int, coordinate>& starting_positions);
+	t_map read_game_map(const std::string& str, std::map<int, coordinate>& starting_positions);
 
 	/** Write a gamemap in to a vector string
 	 *
@@ -180,30 +178,62 @@ namespace terrain_translation {
 	 * 					For readability the map is padded to groups of 7 chars
 	 * 					followed by a comma and space
 	 */
-	std::string write_game_map(const std::vector<std::vector<TERRAIN_NUMBER> >& map, 
-			 std::map<int, coordinate> starting_positions);
+	std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions);
 
-	//read a string and convert it to a map
-	//upon error is throws an incorrect_format_exception
-	std::vector<std::vector<TERRAIN_NUMBER> > read_builder_map(const std::string& map); 
-
-	// fixme maybe we should assume 
-	TERRAIN_NUMBER builder_get_number(TERRAIN_NUMBER terrain);
-
-	/** Tests whether a certain terrain matches another terrain
+	/** Tests whether a certain terrain matches a list of terrains the terrains can 
+	 *  use wildcard matching with *. It also has an inversion function. When a ! 
+	 *  is found the result of the match is inverted. The matching stops at the 
+	 *  first match (regardless of the ! found) the data is match from start to end.
 	 *
+	 *  Example: 
+	 *  W*, Ww 		does match and returns true
+	 *  W*, {!, Ww}	does match and returns false (due to the !)
+	 *  Ww, WW		doesn't match and return false
+	 *
+	 *  @param src	the value to match (may also contain the wildcard)
+	 *  @param dest the list of values to match against
+	 *
+	 *  @returns	the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const TERRAIN_NUMBER src, const TERRAIN_NUMBER dest);
-	 
-	/** Tests whether a certain terrain matches a list of terrains 
+	bool terrain_matches(const t_letter src, const t_list& dest);
+
+	/** Tests whether a certain terrain matches another terrain,
+	 *  for matching rules see above.
+	 *
+	 *  @param src	the value to match (may also contain the wildcard)
+	 *  @param dest the value to match against
+	 *
+	 *  @returns	the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const TERRAIN_NUMBER src, const std::vector<TERRAIN_NUMBER>& dest);
+	bool terrain_matches(const t_letter src, const t_letter dest);
+
+	/** Reads a builder map, a builder map differs much from a normal map hence
+	 * the different functions
+	 *
+	 * @param str		The map data, the exact rules are not stated yet since still 
+	 * 					in development
+	 *
+	 * @returns			A 2D vector with the data found the vector data is stored
+	 * 					like result[y][x] where x the column number is and y the row number.
+	 */
+	t_map read_builder_map(const std::string& str); 
+
+	/** Translates a terrain number to the map number, since
+	 * there are some differences between the two
+	 */
+	t_letter cast_to_builder_number(t_letter terrain); 
+	
+	// these terrain letters are in the builder
+	// format, so not usable in other parts of
+	// the engine
+	const t_letter TB_STAR = '*';
+	const t_letter TB_DOT = '.';
 	
 /***************************************************************************************/
 	
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 	// The terrain letter is an old letter and will be converted with get_letter
-	void add_translation(const std::string& letter, const TERRAIN_NUMBER number);
+	void add_translation(const std::string& letter, const t_letter number);
 #endif	
 
 };

@@ -1277,13 +1277,13 @@ public:
 			push_header(first_row, _("Movement Cost"));
 
 			table.push_back(first_row);
-			std::set<terrain_translation::TERRAIN_NUMBER>::const_iterator terrain_it =
+			std::set<t_translation::t_letter>::const_iterator terrain_it =
 				preferences::encountered_terrains().begin();
 
 			for (; terrain_it != preferences::encountered_terrains().end();
 				terrain_it++) {
-				const terrain_translation::TERRAIN_NUMBER terrain = *terrain_it;
-				if (terrain == terrain_translation::FOGGED || terrain == terrain_translation::VOID_TERRAIN)
+				const t_translation::t_letter terrain = *terrain_it;
+				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN)
 					continue;
 				const terrain_type& info = map->get_terrain_info(terrain);
 
@@ -1386,15 +1386,15 @@ struct terrain_topic_generator: topic_generator
 		std::stringstream ss;
 		ss << "<img>src='terrain/" << type.symbol_image() << ".png'</img>\n\n";
 		if (type.mvt_type().size() != 1 || type.mvt_type()[0] != type.number()) {
-			const std::vector<terrain_translation::TERRAIN_NUMBER> aliased_terrains = type.mvt_type();
+			const t_translation::t_list aliased_terrains = type.mvt_type();
 			std::stringstream alias_ss;
-			for (std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator it = aliased_terrains.begin();
+			for (t_translation::t_list::const_iterator it = aliased_terrains.begin();
 				  it != aliased_terrains.end(); it++) {
-				const terrain_translation::TERRAIN_NUMBER t = *it;
+				const t_translation::t_letter t = *it;
 				const std::string &alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
 					 << escape(std::string("terrain_")) 
-					 << escape(terrain_translation::write_letter(t))
+					 << escape(t_translation::write_letter(t))
 					 << "'</ref>";
 				if (it + 2 == aliased_terrains.end())
 					alias_ss << " " << _("or") << " ";
@@ -1412,15 +1412,16 @@ struct terrain_topic_generator: topic_generator
 			ss << "\n\n";
 		}
 		if (type.def_type().size() != 1 || type.def_type()[0] != type.number()) {
-			const std::vector<terrain_translation::TERRAIN_NUMBER> aliased_terrains = type.def_type();
+			const t_translation::t_list aliased_terrains = type.def_type();
 			std::stringstream alias_ss;
-			for (std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator it = aliased_terrains.begin();
+			for (t_translation::t_list::const_iterator it = aliased_terrains.begin();
 				  it != aliased_terrains.end(); it++) {
-				const terrain_translation::TERRAIN_NUMBER t = *it;
+
+				const t_translation::t_letter t = *it;
 				const std::string &alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
 					 << escape(std::string("terrain_")) 
-					 << escape(terrain_translation::write_letter(t))
+					 << escape(t_translation::write_letter(t))
 					 << "'</ref>"; 
 				if (it + 2 == aliased_terrains.end())
 					alias_ss << " " << _("or") << " ";
@@ -1450,14 +1451,14 @@ struct terrain_topic_generator: topic_generator
 std::vector<topic> generate_terrains_topics(const bool sort_generated)
 {
 	std::vector<topic> res;
-	std::vector<terrain_translation::TERRAIN_NUMBER> show_info_about;
+	t_translation::t_list show_info_about;
 	if (game_config::debug) {
 		show_info_about = map->get_terrain_list();
 	}
 	else {
 		//FIXME MdW the changes here seem to compile but they have to 
 		//be tested whether they really work
-		for (std::set<terrain_translation::TERRAIN_NUMBER>::const_iterator terrain_it =
+		for (std::set<t_translation::t_letter>::const_iterator terrain_it =
 				 preferences::encountered_terrains().begin();
 			 terrain_it != preferences::encountered_terrains().end();
 			 terrain_it++) {
@@ -1465,16 +1466,18 @@ std::vector<topic> generate_terrains_topics(const bool sort_generated)
 		}
 	}
 	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
-		  terrain_translation::VOID_TERRAIN), show_info_about.end());
+		  t_translation::VOID_TERRAIN), show_info_about.end());
 	
 	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
-		  terrain_translation::FOGGED), show_info_about.end());
+		  t_translation::FOGGED), show_info_about.end());
 
-	for (std::vector<terrain_translation::TERRAIN_NUMBER>::const_iterator terrain_it = show_info_about.begin();
+	for (t_translation::t_list::const_iterator terrain_it = show_info_about.begin();
 		 terrain_it != show_info_about.end(); terrain_it++) {
+
 		const terrain_type& info = map->get_terrain_info(*terrain_it);
 		const std::string &name = info.name();
-		topic t(name, std::string("terrain_") + terrain_translation::write_letter(*terrain_it), new terrain_topic_generator(info));
+		topic t(name, std::string("terrain_") + t_translation::write_letter(*terrain_it), 
+				new terrain_topic_generator(info));
 		res.push_back(t);
 	}
 	if (sort_generated)

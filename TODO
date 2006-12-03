@@ -1,39 +1,33 @@
 src/builder.cpp:27://FIXME MdW this file is filled with debug output and should be cleaned
-src/builder.cpp:785:	//FIXME MdW remove debug code from this function
-src/builder.cpp:819:	//FIXME MdW remove debug code from this function
-src/builder.cpp:934://FIXME MdW keep or remove this part, at least disable	
-src/builder.cpp:987:	//FIXME MdW remove debug code from this function
-src/builder.cpp:1060:	//FIXME MdW remove debug code
-src/cavegen.cpp:112:			out << terrain_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
-src/display.cpp:1692:	//FIXME MdW cleanup but why was this coded like it was WHY and INT instead of CHAR????
-src/display.cpp:1705:			tiles[i] = 0; //FIXME MdW we should define an invalid terrain (prob. 0)
+src/builder.cpp:781:	//FIXME MdW remove debug code from this function
+src/builder.cpp:821:	//FIXME MdW remove debug code from this function
+src/builder.cpp:936://FIXME MdW keep or remove this part, at least disable	
+src/builder.cpp:989:	//FIXME MdW remove debug code from this function
+src/builder.cpp:1063:	//FIXME MdW remove debug code
+src/cavegen.cpp:110:			out << t_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
+src/display.cpp:1694:	// FIXME MdW might be nice to rewrite as a vector
 src/game.cpp:1936://FIXME MdW this catch is disabled in order to trace memory overflows. 
-src/game_events.cpp:1163:			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
-src/game_events.cpp:1780:				const terrain_translation::TERRAIN_NUMBER c = game_map->get_terrain(*j); //FIXME MdW test should work
-src/help.cpp:1458:		//FIXME MdW the changes here seem to compile but they have to 
-src/map.cpp:315:		// FIXME MdW think about this part
-src/map.cpp:362:	//FIXME MdW remove debug
-src/map.cpp:455:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
-src/map.cpp:585:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
-src/mapgen.cpp:378://FIXME MdW test this modification	
-src/map.hpp:198:	//The terrain string with TERRAIN_NUMBER should be make FIXME MdW
+src/game_events.cpp:1164:			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
+src/game_events.cpp:1783:				const t_translation::t_letter c = game_map->get_terrain(*j); //FIXME MdW test should work
+src/help.cpp:1459:		//FIXME MdW the changes here seem to compile but they have to 
+src/map.cpp:317:		// FIXME MdW think about this part
+src/map.cpp:364:	//FIXME MdW remove debug
+src/map.cpp:461:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
+src/map.cpp:597:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
+src/mapgen.cpp:380://FIXME MdW test this modification	
+src/preferences.cpp:79:	t_translation::t_list terrain; //FIXME MdW geen =
 src/terrain.cpp:21:#include "wassert.hpp" // FIXME MdW only used for the terrain initalization
-src/terrain.cpp:45:	number_ = terrain_translation::read_letter(cfg["char"]); // FIXME MdW tag should read old format
-src/terrain.cpp:54:	//FIXME MdW this temp hack should be removed
-src/terrain.cpp:74:		terrain_translation::read_list(cfg["aliasof"]); //FIXME MdW the aliasses should also be converted to new format
-src/terrain.hpp:37:	//FIXME MdW maybe reinstall the letter later again after debugging everything
-src/terrain_translation.cpp:63:	static int map_format_ = 1; //FIXME MdW this should be initialized to 0
-src/terrain_translation.cpp:220:	std::vector<std::vector<TERRAIN_NUMBER> > result(1);//FIXME MdW find a way to initialize and empty vector
-src/terrain_translation.cpp:262:		//FIXME MdW remove the debug code
-src/terrain_translation.cpp:295:	//FIXME MdW remove debug code
-src/terrain_translation.cpp:418:		//FIXME MdW remove the debug code
-src/terrain_translation.cpp:460:	//FIXME MdW remove debug code
-src/terrain_translation.cpp:505:	std::vector<TERRAIN_NUMBER> result(1); //FIXME MdW find a way to initialize and empty vector
-src/terrain_translation.cpp:564:	//FIXME MdW there should be tested how slow this
-src/terrain_translation.cpp:731://FIXME MdW this code is obsolete as soon as the terrain map is converted
-src/terrain_translation.cpp:804://FIXME MdW this code is ready and tested only the map format needs to be documentated
-src/terrain_translation.cpp:845:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
-src/terrain_translation.cpp:890:		//FIXME MdW remove the debug code
-src/terrain_translation.cpp:908:	//FIXME MdW remove debug code
-src/terrain_translation.hpp:73:	//FIXME MdW we throw nobody catches...
-src/terrain_translation.hpp:131:	 * FIXME MdW: remove separated before merging, this is only available for the transition phase.
+src/terrain_translation.cpp:197:	t_map result(1);//FIXME MdW find a way to initialize and empty vector
+src/terrain_translation.cpp:253:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
+src/terrain_translation.cpp:406:	t_list result(1); //FIXME MdW find a way to initialize and empty vector
+src/terrain_translation.cpp:463:	//FIXME MdW there should be tested how slow this
+src/terrain_translation.cpp:490:	letter[0] = ((terrain & 0xFF000000) >> 24); //FIXME MdW might need an UL behind the masks !!!
+src/terrain_translation.cpp:547://FIXME MdW, there are some optimizations which can be done here
+src/terrain_translation.cpp:558:	//FIXME MdW add documentation
+src/terrain_translation.cpp:578://FIXME MdW, there are some optimizations which can be done here
+src/terrain_translation.cpp:580:// FIXME MdW remove debug code
+src/terrain_translation.cpp:718:	TERRAIN_LETTER terrain = str[0];  //FIXME MdW rename terrain to letter 
+src/terrain_translation.cpp:730://FIXME MdW this code is ready and tested only the map format needs to be documentated
+src/terrain_translation.cpp:770:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
+src/terrain_translation.hpp:66:	extern const t_letter NOT;		// FIXME MdW remove once no longer used in the builder
+src/terrain_translation.hpp:71:	//FIXME MdW we throw nobody catches...
