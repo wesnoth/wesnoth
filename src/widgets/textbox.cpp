@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "gl_draw.hpp"
 #include "widgets/textbox.hpp"
 #include "clipboard.hpp"
 #include "font.hpp"
@@ -126,8 +127,7 @@ void textbox::draw_cursor(int pos, CVideo &video) const
 {
 	if(show_cursor_ && editable_) {
 		SDL_Rect rect = {location().x + pos, location().y, 1, location().h };
-		surface const frame_buffer = video.getSurface();
-		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
+		gl::rect(rect,255,255,255);
 	}
 }
 
@@ -181,12 +181,10 @@ void textbox::draw_contents()
 			}
 		}
 
-		SDL_BlitSurface(text_image_, &src, surf, &dest);
+		gl::draw_surface(text_image_,dest.x,dest.y);
 	}
 
 	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), video());
-
-	update_rect(loc);
 }
 
 void textbox::process()
