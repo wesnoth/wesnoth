@@ -718,6 +718,7 @@ void map_editor::edit_select_all() {
 void map_editor::edit_draw() {
 	left_button_func_changed(DRAW);
 }
+
 void map_editor::edit_refresh() {
 	image::flush_cache();
 	redraw_everything();
@@ -933,14 +934,11 @@ bool map_editor::changed_since_save() const {
 void map_editor::set_starting_position(const int player, const gamemap::location loc) {
 	if(map_.on_board(loc)) {
 		map_undo_action action;
-		action.add_terrain(map_.get_terrain(selected_hex_), t_translation::KEEP,
-				selected_hex_);
 		
-		map_.set_terrain(selected_hex_, t_translation::KEEP);
-		terrain_changed(selected_hex_, action);
 		action.add_starting_location(player, player, map_.starting_position(player), loc);
 		map_.set_starting_position(player, loc);
 		save_undo_action(action);
+		recalculate_starting_pos_labels();
 	}
 	else {
 		gui::show_dialog(gui_, NULL, "",
@@ -1108,24 +1106,25 @@ void map_editor::draw_terrain(const t_translation::t_letter terrain,
 	const t_translation::t_letter current_terrain = map_.get_terrain(hex);
 	map_undo_action undo_action;
 	undo_action.add_terrain(current_terrain, terrain, hex);
+	terrain_changed(hex, undo_action);
 	map_.set_terrain(hex, terrain);
 	gui_.rebuild_terrain(hex);
-	terrain_changed(hex, undo_action);
 	save_undo_action(undo_action);
 }
 
-void map_editor::terrain_changed(const gamemap::location &hex, map_undo_action &undo_action) {
-	std::vector<gamemap::location> v;
-	v.push_back(hex);
+void map_editor::terrain_changed(const gamemap::location &hex, map_undo_action &undo_action) 
+{
+	std::vector<gamemap::location> v(1, hex);
 	terrain_changed(v, undo_action);
 }
 
 void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes,
-								 map_undo_action &undo_action) {
+								 map_undo_action &undo_action) 
+{
 	for (std::vector<gamemap::location>::const_iterator it = hexes.begin();
 		 it != hexes.end(); it++) {
 		const int start_side = starting_side_at(map_, *it);
-		if (start_side != -1 && map_.get_terrain(*it) != t_translation::KEEP) {
+		if (start_side != -1) {
 			// A terrain which had a starting position has changed, save
 			// this position in the undo_action and unset it.
 			map_.set_starting_position(start_side, gamemap::location());

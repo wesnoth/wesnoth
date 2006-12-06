@@ -46,7 +46,6 @@ namespace t_translation {
 	//configuration file.
 	extern const t_letter VOID_TERRAIN;
 	extern const t_letter FOGGED;
-	extern const t_letter KEEP;
 
 	extern const t_letter CASTLE;
 	extern const t_letter SHALLOW_WATER;

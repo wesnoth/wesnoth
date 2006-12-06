@@ -375,7 +375,7 @@ void gamemap::read(const std::string& data)
 
 std::string gamemap::write() const
 {
-	std::map<int, t_translation::coordinate> starting_positions;
+	std::map<int, t_translation::coordinate> starting_positions = std::map<int, t_translation::coordinate>();
 
 	// convert the starting positions to a map
 	for(int i = 0; i < STARTING_POSITIONS; ++i) {
