@@ -46,7 +46,8 @@ const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_le
 		letterToTerrain_.find(terrain);
 
 	if(i == letterToTerrain_.end()) {
-		static t_translation::t_list result(1, terrain);		
+		static t_translation::t_list result(1);
+		result[0] = terrain;
 		return result;
 	} else {
 		return i->second.mvt_type();
@@ -59,7 +60,8 @@ const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_le
 		letterToTerrain_.find(terrain);
 
 	if(i == letterToTerrain_.end()) {
-		static t_translation::t_list result(1, terrain);		
+		static t_translation::t_list result(1);
+		result[0] = terrain;
 		return result;
 	} else {
 		return i->second.def_type();
@@ -72,7 +74,8 @@ const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_
 		letterToTerrain_.find(terrain);
 	
 	if(i == letterToTerrain_.end()) {
-		static t_translation::t_list result(1, terrain);		
+		static t_translation::t_list result(1);
+		result[0] = terrain;
 		return result;
 	} else {
 		return i->second.union_type();
