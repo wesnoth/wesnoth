@@ -29,23 +29,25 @@ files.each { | file|
 	file = file[2,file.length]
 	puts "\n* processing #{file}\n"
 
-	old = "/home/isaac/devel/wesnoth/last/#{file}";
-	if checkOld and File.exists?(old) and sha1sum(file) == sha1sum(old)
-		puts "  * no change since last release\n";
-		next;
-	end
-	output = `nice -n 19 pngrewrite "#{file}" "#{file}.new"`;
-	File.exists?("#{file}.new") or next;
+#	old = "/home/isaac/devel/wesnoth/last/#{file}";
+#	if checkOld and File.exists?(old) and sha1sum(file) == sha1sum(old)
+#		puts "  * no change since last release\n";
+#		next;
+#	end
+	output = `nice -n 19 convert -strip "#{file}" "#{file}.stripped.png"`;
+	output = `nice -n 19 pngcrush -brute -q "#{file}.stripped.png" "#{file}.new.png"`;
+	output = `rm "#{file}.stripped.png"`
+	File.exists?("#{file}.new.png") or next;
 	oldSize = File.size(file)
-	newSize = File.size("#{file}.new")
+	newSize = File.size("#{file}.new.png")
 	if newSize < oldSize
 		savedBytes = oldSize - newSize;
 		totalSavedBytes = totalSavedBytes + savedBytes
 		totalSavedFiles = totalSavedFiles.succ
-		output = `mv "#{file}.new" -v "#{file}"`
-		puts ", $output,\nsaved: #{savedBytes} bytes, total saved: #{totalSavedBytes/1024} KB"
+		output = `mv "#{file}.new.png" -v "#{file}"`
+		puts ",\nsaved: #{savedBytes} bytes, total saved: #{totalSavedBytes/1024} KB"
 	else
-		File.unlink("#{file}.new");
+		File.unlink("#{file}.new.png");
 	end
 }
 
