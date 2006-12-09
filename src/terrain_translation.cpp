@@ -93,38 +93,37 @@ namespace t_translation {
 
 /***************************************************************************************/	
 
-#define SET_TERRAIN_CONSTANT(x,y) \
-	const t_letter x = (y)
+const t_letter VOID_TERRAIN = string_to_number_("_s");
+const t_letter FOGGED = string_to_number_("_f");
 
-#define SET_TERRAIN_CONSTANT_NEW(x, y) \
-	const t_letter x = string_to_number_(y)
+const t_letter CASTLE = string_to_number_("Ch");
+const t_letter SHALLOW_WATER = string_to_number_("Ww");
+const t_letter DEEP_WATER = string_to_number_("Wo");
+const t_letter GRASS_LAND = string_to_number_("Gg");
+const t_letter FOREST = string_to_number_("Ff");
+const t_letter MOUNTAIN = string_to_number_("Mm");
+const t_letter HILL = string_to_number_("Hh");
 
-SET_TERRAIN_CONSTANT(VOID_TERRAIN, ' '); // to be translated
-SET_TERRAIN_CONSTANT(FOGGED, '~'); // to be translated
+const t_letter CAVE_WALL = string_to_number_("Xu");
+const t_letter CAVE = string_to_number_("Uu");
+const t_letter UNDERGROUND_VILLAGE = string_to_number_("Vu");
+const t_letter DWARVEN_CASTLE = string_to_number_("Cud");
 
-SET_TERRAIN_CONSTANT_NEW(CASTLE, "Ch");
-SET_TERRAIN_CONSTANT_NEW(SHALLOW_WATER, "Ww");
-SET_TERRAIN_CONSTANT(DEEP_WATER, 's'); //to be translated
-SET_TERRAIN_CONSTANT_NEW(GRASS_LAND, "Gg");
-SET_TERRAIN_CONSTANT_NEW(FOREST, "Ff");
-SET_TERRAIN_CONSTANT(MOUNTAIN, 'm'); //to be translated
-SET_TERRAIN_CONSTANT(HILL, 'h'); //to be translated
-
-SET_TERRAIN_CONSTANT(CAVE_WALL, 'W'); //to be translated
-SET_TERRAIN_CONSTANT(CAVE, 'u'); //to be translated
-SET_TERRAIN_CONSTANT(UNDERGROUND_VILLAGE, 'D'); //to be translated
-SET_TERRAIN_CONSTANT(DWARVEN_CASTLE, 'o'); //to be translated
-
-SET_TERRAIN_CONSTANT_NEW(PLUS, "+");
-SET_TERRAIN_CONSTANT_NEW(MINUS, "-");
+const t_letter PLUS = string_to_number_("+");
+const t_letter MINUS = string_to_number_("-");
 //if only used in terrain match code it can move here since 
 //we will contain terrain match code
-SET_TERRAIN_CONSTANT_NEW(NOT, "!");
-SET_TERRAIN_CONSTANT(COMMA, ','); //to be translated?
+const t_letter NOT = string_to_number_("!");
 
-	// the shift used for the builder (needs more comment)
-	const int BUILDER_SHIFT = 8;
-	
+const t_letter COMMA = ','; //to be translated? or obsoleted
+
+
+// the shift used for the builder (needs more comment)
+const int BUILDER_SHIFT = 8;
+
+// constant for no wildcard, might get the other positions if needed
+enum{ WILDCARD_NONE = 0xFFFFFFFF };
+
 /***************************************************************************************/	
 
 t_letter read_letter(const std::string& str, const int t_format)
@@ -555,7 +554,7 @@ t_letter get_mask_(t_letter terrain)
 {
 	//FIXME MdW add documentation
 	const t_letter result_mask[5] = 
-		{0x00000000, 0xFF000000, 0xFFFF0000, 0xFFFFFF00, 0xFFFFFFFF};
+		{0x00000000, 0xFF000000, 0xFFFF0000, 0xFFFFFF00, WILDCARD_NONE };
 
 	// mask to find the '*' is hexcode 2A
 	const t_letter wildcard_mask[4] = 
@@ -653,7 +652,7 @@ bool has_wildcard(const t_list& list)
 	// test all items for a wildcard 
 	t_list::const_iterator itor = list.begin();
 	for(; itor != list.end(); ++itor) {
-		if(get_mask_(*itor) == 0xFFFFFFFF) {
+		if(get_mask_(*itor) != WILDCARD_NONE) {
 			return true;
 		}
 	}
@@ -670,7 +669,7 @@ bool has_wildcard(const t_list& list)
 t_list string_to_vector_(const std::string& data, const bool convert_eol, const int separated)
 {
 	// only used here so define here
-	SET_TERRAIN_CONSTANT(EOL, 7);
+	const t_letter EOL = 7;
 	bool last_eol = false;
 	t_list result = t_list(); 
 
