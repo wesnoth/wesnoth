@@ -205,6 +205,23 @@ namespace t_translation {
 	 *  @returns	the result of the match (depending on the !'s)
 	 */
 	bool terrain_matches(const t_letter src, const t_letter dest);
+	
+	/** Tests wither a terrain contains a wildcard
+	 *
+	 *  @param		the letter to test for a wildcard
+	 *
+	 *  @returns	true if wildcard found else false
+	 */
+	bool has_wildcard(const t_letter letter);
+
+	/** Tests wither a terrain list contains at least
+	 *  one item with a wildcard
+	 *
+	 *  @param		the list to test for a wildcard
+	 *
+	 *  @returns	true if wildcard found else false
+	 */
+	bool has_wildcard(const t_list& list);
 
 	/** Reads a builder map, a builder map differs much from a normal map hence
 	 * the different functions

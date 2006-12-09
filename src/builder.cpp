@@ -747,7 +747,7 @@ void terrain_builder::parse_config(const config &cfg)
 	}
 
 // debug output for the terrain rules	
-#if 1 
+#if 0 
 	std::cerr << "Built terrain rules: \n";
 
 	building_ruleset::const_iterator rule;
@@ -934,7 +934,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 	}
 
 //FIXME MdW keep or remove this part, at least disable	
-#if 1
+#if 0
 
 	DEBUG_NG << "Appy rule at " << loc.x << "," << loc.y << "\n";
 	DEBUG_NG << ">> terrain = '" << t_translation::write_letter(map_.get_terrain(loc)) << "'\n";
@@ -999,7 +999,14 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 		return INT_MAX;
 	}
 	if(std::find(types.begin(), types.end(), t_translation::TB_STAR) != types.end()) {
-		DEBUG_NG << ">> STAR not found\n";
+		DEBUG_NG << ">> STAR found\n";
+		return INT_MAX;
+	}
+	// as soon as the list has 1 wildcard we bail out
+	// it might be better to try some more testing
+	// before bailing out.
+	if(t_translation::has_wildcard(types)) {
+		DEBUG_NG << ">> wildcard found\n";
 		return INT_MAX;
 	}
 

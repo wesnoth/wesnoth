@@ -642,6 +642,30 @@ bool terrain_matches(const t_letter src, const t_list& dest)
 	return !result;
 }
 
+bool has_wildcard(const t_letter letter) 
+{
+	return has_wildcard(t_list(1, letter));
+}
+
+bool has_wildcard(const t_list& list)
+{
+	if(list.empty()) {
+		return false;
+	}
+	
+	// test all items for a wildcard 
+	t_list::const_iterator itor = list.begin();
+	for(; itor != list.end(); ++itor) {
+		if(get_mask_(*itor) == 0xFFFFFFFF) {
+			return true;
+		}
+	}
+
+	// no wildcard found
+	return false;
+}
+
+
 /***************************************************************************************/	
 
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
