@@ -25,8 +25,8 @@
 
 namespace map_editor {
 
-bool is_invalid_terrain(char c) {
-	return c == ' ' || c == '~';
+bool is_invalid_terrain(t_translation::t_letter c) {
+	return (c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
