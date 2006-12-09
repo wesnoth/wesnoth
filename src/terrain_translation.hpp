@@ -39,7 +39,24 @@ namespace t_translation {
 	typedef Uint32 t_letter;
 	typedef std::vector<t_letter> t_list;
 	typedef std::vector<std::vector<t_letter> > t_map;
+/*
+* This structure might increase the speed of the terrain matching code
+* it's intended for the builder it matches terrains often and might
+* benefit from this cached structure. Therefore it only needs a reader.
+* Disabled for now, first want to have the code up and running before 
+* attempting to optimize. Also the terrain graphics have quite some
+* glitches atm not sure what's the cause, bugs in C++ or WML.
+	struct t_match{
+		t_match(const std::string& str);
+		~t_match();
 
+		t_list terrain;	
+		t_list mask;
+		t_list masked_terrain;
+		bool has_wildcard;
+	};
+	bool terrain_matches(const t_letter src, const t_match& dest);
+*/
 	//some types of terrain which must be known, and can't just be loaded
 	//in dynamically because they're special. It's asserted that there will
 	//be corresponding entries for these types of terrain in the terrain
@@ -244,6 +261,8 @@ namespace t_translation {
 	// the engine
 	const t_letter TB_STAR = '*';
 	const t_letter TB_DOT = '.';
+
+		
 	
 /***************************************************************************************/
 	

@@ -125,6 +125,28 @@ const int BUILDER_SHIFT = 8;
 enum{ WILDCARD_NONE = 0xFFFFFFFF };
 
 /***************************************************************************************/	
+/*
+t_match::t_match(const std::string& str)
+{
+	terrain = read_list(str, -1, T_FORMAT_STRING);
+
+	if(str.empty()) {
+		return;
+	}
+
+	mask.resize(terrain.size());
+	masked_terrain.resize(terrain.size());
+
+	for(size_t i = 0; i < terrain.size(); ++i) {
+		mask[i] = get_mask_(terrain[i]);
+		masked_terrain[i] = (terrain[i] & mask[i]);
+
+		if(mask[i] != WILDCARD_NONE) {
+			has_wildcard = true;
+		}
+	}
+}
+*/
 
 t_letter read_letter(const std::string& str, const int t_format)
 {
