@@ -193,8 +193,7 @@ t_map read_builder_map(const std::string& str)
 {
 
 	size_t offset = 0;
-	t_map result(1);//FIXME MdW find a way to initialize and empty vector
-	result.clear();
+	t_map result = t_map();
 
 	// skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
@@ -402,8 +401,8 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 t_list string_to_vector_(const std::string& str)
 {
 	// handle an empty string
-	t_list result(1); //FIXME MdW find a way to initialize and empty vector
-	result.clear();
+	t_list result = t_list();
+
 	if(str.empty()) {
 		WRN_G << "Empty list found\n"; //or info??
 		return result;
@@ -549,9 +548,7 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 //but look at that later
 bool terrain_matches(const t_letter src, const t_letter dest)
 {
-	const t_list list(1, dest);
-	return terrain_matches(src, list);
-
+	return terrain_matches(src, t_list(1, dest));
 }
 	 
 t_letter get_mask_(t_letter terrain)

@@ -1011,7 +1011,6 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 	}
 
 	gamemap::location adj[6];
-	int i;
 	get_adjacent_tiles(constraint.loc, adj);
 
 	border = false;
@@ -1019,7 +1018,7 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 	//if the current constraint only applies to a non-isolated tile,
 	//the "border" flag can be set.
 	DEBUG_NG << ">> start to get the constraint info\n";
-	for(i = 0; i < 6; ++i) {
+	for(int i = 0; i < 6; ++i) {
 		DEBUG_NG << ">>>> run " << i << " of 6\n";
 		if(rule.constraints.find(adj[i]) != rule.constraints.end()) {
 			const t_translation::t_list& atypes = 
