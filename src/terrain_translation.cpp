@@ -580,12 +580,15 @@ t_letter get_mask_(t_letter terrain)
 
 	// mask to find the '*' is hexcode 2A
 	const t_letter wildcard_mask[4] = 
+		{0xFF000000, 0x00FF0000, 0x0000FF00,0x000000FF};
+
+	const t_letter wildcard[4] = 
 		{0x2A000000, 0x002A0000, 0x00002A00,0x0000002A};
 
 	// match the first position of the * and
 	// return the appropriate result mask
 	for(int i = 0; i < 4; ++i) {
-		if((terrain & wildcard_mask[i]) == wildcard_mask[i]) {
+		if((terrain & wildcard_mask[i]) == wildcard[i]) {
 			return result_mask[i];
 		}
 	}
@@ -600,9 +603,19 @@ t_letter get_mask_(t_letter terrain)
 bool terrain_matches(const t_letter src, const t_list& dest)
 {
 
-//	std::cerr << "Terrain matching src = " << write_letter(src) << " dest = " << write_list(dest) << "\n";
+	bool debug = false;
+/*	
+	const t_letter ocean = string_to_number_("Wo");
+	const t_letter coast = string_to_number_("Ww");
+
+	debug = (src == ocean || src == coast);
+	if(! debug) debug = (std::find(dest.begin(), dest.end(), ocean) != dest.end());
+	if(! debug) debug = (std::find(dest.begin(), dest.end(), coast) != dest.end());
+*/	
+	if(debug) std::cerr << "Terrain matching src = " << write_letter(src) << " dest = " << write_list(dest) << "\n";
 	if(dest.empty()) {
-//		std::cerr << ">> Empty result, no match\n";
+		if(debug)
+			std::cerr << ">> - Empty result, no match\n";
 		return false;
 	}
 
@@ -611,52 +624,58 @@ bool terrain_matches(const t_letter src, const t_list& dest)
 	
 	const t_letter src_mask = get_mask_(src);
 	const t_letter masked_src = (src & src_mask);
+
+	if(debug) std::cerr << ">> src_mask = 0x" << std::hex << src_mask
+		<< " masked_src = 0x" << std::hex << masked_src << "\n";
 	
 	bool result = true;
 	t_list::const_iterator itor = dest.begin();
 
 	// try to match the terrains if matched jump out of the loop.
 	for(; itor != dest.end(); ++itor) {
-//		std::cerr << ">> Testing dest " << write_letter(*itor) << "\n";
+		if(debug) std::cerr << ">> Testing dest " << write_letter(*itor) << "\n";
 
 		// match wildcard 
 		if(*itor == star) {
-//			std::cerr << ">>>> wildcard match\n";
+			if(debug) std::cerr << ">>>> + wildcard match\n";
 			return result;
 		}
 
 		// match inverse symbol
 		if(*itor == inverse) {
-//			std::cerr << ">>>> inverse symbol matched\n";
+			if(debug) std::cerr << ">>>> inverse symbol matched\n";
 			result = !result;
 			continue;
 		}
 
 		// full match 
 		if(src == *itor) {
-//			std::cerr << ">>>> Full match\n";
+			if(debug) std::cerr << ">>>> + Full match\n";
 			return result;
 		}
 		
 		// test on wildcards
 		const t_letter dest_mask = get_mask_(*itor);
 		const t_letter masked_dest = (*itor & dest_mask);
+		
+		if(debug) std::cerr << ">> dest_mask = 0x" << std::hex << dest_mask
+			<< " masked_dest = 0x" << std::hex << masked_dest << "\n";
 
 		// does the source wildcard match
 		if((*itor & src_mask) == masked_src) {
-//			std::cerr << ">>>> Source wildcard matched\n";
+			if(debug) std::cerr << ">>>> + Source wildcard matched\n";
 			return result;
 		}
 		
 		// does the destination wildcard match
 		if((src & dest_mask) == masked_dest) {
-//			std::cerr << ">>>> Destination wildcard matched\n";
+			if(debug) std::cerr << ">>>> + Destination wildcard matched\n";
 			return result;
 		}
 	}
 
 	// no match, return the inverse of the result
-//	std::cerr << ">> No match found\n";
+	if(debug) std::cerr << ">> - No match found\n";
 	return !result;
 }
 
