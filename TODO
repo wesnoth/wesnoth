@@ -3,31 +3,28 @@ src/builder.cpp:781:	//FIXME MdW remove debug code from this function
 src/builder.cpp:821:	//FIXME MdW remove debug code from this function
 src/builder.cpp:936://FIXME MdW keep or remove this part, at least disable	
 src/builder.cpp:989:	//FIXME MdW remove debug code from this function
-src/builder.cpp:1063:	//FIXME MdW remove debug code
+src/builder.cpp:1069:	//FIXME MdW remove debug code
 src/cavegen.cpp:110:			out << t_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
 src/display.cpp:1694:	// FIXME MdW might be nice to rewrite as a vector
 src/game.cpp:1936://FIXME MdW this catch is disabled in order to trace memory overflows. 
 src/game_events.cpp:1164:			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
 src/game_events.cpp:1783:				const t_translation::t_letter c = game_map->get_terrain(*j); //FIXME MdW test should work
 src/help.cpp:1459:		//FIXME MdW the changes here seem to compile but they have to 
-src/map.cpp:317:		// FIXME MdW think about this part
-src/map.cpp:364:	//FIXME MdW remove debug
-src/map.cpp:461:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
-src/map.cpp:597:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
+src/map.cpp:320:		// FIXME MdW think about this part
+src/map.cpp:367:	//FIXME MdW remove debug
+src/map.cpp:464:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
+src/map.cpp:600:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
 src/mapgen.cpp:380://FIXME MdW test this modification	
 src/preferences.cpp:79:	t_translation::t_list terrain; //FIXME MdW geen =
 src/terrain.cpp:21:#include "wassert.hpp" // FIXME MdW only used for the terrain initalization
-src/terrain_translation.cpp:197:	t_map result(1);//FIXME MdW find a way to initialize and empty vector
-src/terrain_translation.cpp:253:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
-src/terrain_translation.cpp:406:	t_list result(1); //FIXME MdW find a way to initialize and empty vector
-src/terrain_translation.cpp:463:	//FIXME MdW there should be tested how slow this
-src/terrain_translation.cpp:490:	letter[0] = ((terrain & 0xFF000000) >> 24); //FIXME MdW might need an UL behind the masks !!!
-src/terrain_translation.cpp:547://FIXME MdW, there are some optimizations which can be done here
-src/terrain_translation.cpp:558:	//FIXME MdW add documentation
-src/terrain_translation.cpp:578://FIXME MdW, there are some optimizations which can be done here
-src/terrain_translation.cpp:580:// FIXME MdW remove debug code
-src/terrain_translation.cpp:718:	TERRAIN_LETTER terrain = str[0];  //FIXME MdW rename terrain to letter 
-src/terrain_translation.cpp:730://FIXME MdW this code is ready and tested only the map format needs to be documentated
-src/terrain_translation.cpp:770:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
-src/terrain_translation.hpp:66:	extern const t_letter NOT;		// FIXME MdW remove once no longer used in the builder
-src/terrain_translation.hpp:71:	//FIXME MdW we throw nobody catches...
+src/terrain_translation.cpp:272:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
+src/terrain_translation.cpp:482:	//FIXME MdW there should be tested how slow this
+src/terrain_translation.cpp:568://FIXME MdW, there are some optimizations which can be done here
+src/terrain_translation.cpp:577:	//FIXME MdW add documentation
+src/terrain_translation.cpp:597://FIXME MdW, there are some optimizations which can be done here
+src/terrain_translation.cpp:599:// FIXME MdW remove debug code
+src/terrain_translation.cpp:761:	TERRAIN_LETTER terrain = str[0];  //FIXME MdW rename terrain to letter 
+src/terrain_translation.cpp:773://FIXME MdW this code is ready and tested only the map format needs to be documentated
+src/terrain_translation.cpp:813:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
+src/terrain_translation.hpp:82:	extern const t_letter NOT;		// FIXME MdW remove once no longer used in the builder
+src/terrain_translation.hpp:87:	//FIXME MdW we throw nobody catches...
