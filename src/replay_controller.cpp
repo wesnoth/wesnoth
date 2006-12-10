@@ -161,8 +161,8 @@ void replay_controller::reset_replay(){
 	statistics::fresh_stats();
 	if (events_manager_ != NULL){
 		delete events_manager_;
-		events_manager_ = new game_events::manager(level_,*gui_,map_,units_,teams_,
-											gamestate_,status_,gameinfo_);
+		events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_, 
+								units_,teams_, gamestate_,status_,gameinfo_);
 	}
 	fire_prestart(true);
 	fire_start(!loading_game_);

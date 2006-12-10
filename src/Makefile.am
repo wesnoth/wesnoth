@@ -104,6 +104,7 @@ wesnoth_SOURCES = \
 	sdl_utils.cpp \
 	show_dialog.cpp \
 	sound.cpp \
+	soundsource.cpp \
 	statistics.cpp \
 	team.cpp \
 	theme.cpp \
@@ -200,6 +201,7 @@ wesnoth_editor_SOURCES = \
 	sdl_utils.cpp \
 	show_dialog.cpp \
 	sound.cpp \
+	soundsource.cpp \
 	statistics.cpp \
 	team.cpp \
 	theme.cpp \
@@ -372,6 +374,7 @@ noinst_HEADERS = \
 	multiplayer_lobby.hpp \
 	scoped_resource.hpp \
 	sound.hpp \
+	soundsource.hpp \
 	pathfind.hpp \
 	reports.hpp \
 	map_label.hpp \

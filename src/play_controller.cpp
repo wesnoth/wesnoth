@@ -52,6 +52,7 @@ play_controller::~play_controller(){
 	delete prefs_disp_manager_;
 	delete tooltips_manager_;
 	delete events_manager_;
+	delete soundsources_manager_;
 	delete gui_;
 }
 
@@ -116,11 +117,12 @@ void play_controller::init_managers(){
 	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
 	prefs_disp_manager_ = new preferences::display_manager(gui_);
 	tooltips_manager_ = new tooltips::manager(gui_->video());
+	soundsources_manager_ = new soundsource::manager(*gui_);
 
 	//this *needs* to be created before the show_intro and show_map_scene
 	//as that functions use the manager state_of_game
-	events_manager_ = new game_events::manager(level_,*gui_,map_,units_,teams_,
-	                                    gamestate_,status_,gameinfo_);
+	events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_, 
+                                                   units_,teams_, gamestate_,status_,gameinfo_);
 
 	halo_manager_ = new halo::manager(*gui_);
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
@@ -633,6 +635,7 @@ void play_controller::play_slice()
 	events::raise_process_event();
 
 	events::raise_draw_event();
+	soundsources_manager_->update();
 
 	const theme::menu* const m = gui_->menu_pressed();
 	if(m != NULL) {

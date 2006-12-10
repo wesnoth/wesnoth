@@ -25,6 +25,7 @@
 #include "replay.hpp"
 #include "SDL_timer.h"
 #include "sound.hpp"
+#include "soundsource.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
@@ -48,6 +49,7 @@
 namespace {
 
 display* screen = NULL;
+soundsource::manager* soundsources = NULL;
 gamemap* game_map = NULL;
 unit_map* units = NULL;
 std::vector<team>* teams = NULL;
@@ -1139,10 +1141,46 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		wassert(state_of_game != NULL);
 		img = utils::interpolate_variables_into_string(img, *state_of_game);
 		halo = utils::interpolate_variables_into_string(halo, *state_of_game);
+
 		if(!img.empty() || !halo.empty()) {
 			screen->add_overlay(loc,img,halo);
 			screen->invalidate(loc);
 			screen->draw();
+		}
+	}
+
+	else if(cmd == "sound_source") {
+		std::string sounds = cfg["sounds"];
+		std::string name = cfg["name"];
+		std::string delay = cfg["delay"];
+		std::string chance = cfg["chance"];
+		std::string play_fogged = cfg["check_fogged"];
+		std::string x = cfg["x"];
+		std::string y = cfg["y"];
+
+		wassert(state_of_game != NULL);
+
+		sounds = utils::interpolate_variables_into_string(sounds, *state_of_game);
+		delay = utils::interpolate_variables_into_string(delay, *state_of_game);
+		chance = utils::interpolate_variables_into_string(chance, *state_of_game);
+		x = utils::interpolate_variables_into_string(x, *state_of_game);
+		y = utils::interpolate_variables_into_string(y, *state_of_game);
+
+		if(!sounds.empty() && !delay.empty() && !chance.empty() && !x.empty() && !y.empty()) {
+			const std::vector<std::string>& v = utils::split(sounds);
+			const std::vector<std::string>& vx = utils::split(x);
+			const std::vector<std::string>& vy = utils::split(y);
+
+			if(play_fogged.empty())
+				soundsources->add(name, v, lexical_cast<int>(delay), lexical_cast<int>(chance));
+			else
+				soundsources->add(name, v, lexical_cast<int>(delay), 
+						lexical_cast<int>(chance), utils::string_bool(play_fogged));
+
+			for(unsigned int i = 0; i < minimum(vx.size(), vy.size()); ++i) {
+				gamemap::location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
+				soundsources->add_location(name, loc);
+			}
 		}
 	}
 
@@ -2118,6 +2156,7 @@ config::child_list unit_wml_configs;
 std::set<std::string> unit_wml_ids;
 
 manager::manager(const config& cfg, display& gui_, gamemap& map_,
+		 soundsource::manager& sndsources_,
                  unit_map& units_,
                  std::vector<team>& teams_,
                  game_state& state_of_game_, gamestatus& status,
@@ -2138,6 +2177,7 @@ manager::manager(const config& cfg, display& gui_, gamemap& map_,
 
 	teams = &teams_;
 	screen = &gui_;
+	soundsources = &sndsources_;
 	game_map = &map_;
 	units = &units_;
 	state_of_game = &state_of_game_;
