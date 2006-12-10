@@ -31,7 +31,7 @@ wesnothd \- Démon pour jeu réseau multijoueur de la Bataille pour \fBWesnoth\fP
 .
 .SH DESCRIPTION
 .
-Gère les jeux multijoueur de la Bataille pour Wesnoth. Voir les commandes
+Gère les jeux multijoueurs de la Bataille pour Wesnoth. Voir les commandes
 que le serveur accepte par socket ou via le client wesnoth sur
 http://www.wesnoth.org/wiki/ServerAdministration.
 .
@@ -43,7 +43,7 @@ indique le fichier de configuration à utiliser par wesnothd. Voir la syntaxe
 ci\-dessous dans la section \fBSERVER CONFIG\fP.
 .TP 
 \fB\-d,\ \-\-daemon\fP
-éxecute wesnothd en tant que démon.
+exécute wesnothd en tant que démon.
 .TP 
 \fB\-h,\ \-\-help\fP
 aide sur les options de la ligne de commande.
@@ -82,12 +82,12 @@ Nombre maximum de connexions ayant la même adresse IP.
 .TP 
 \fBdisallow_names\fP
 Noms/surnoms non acceptés par le serveur. Les caractères génériques `*' et
-`?' sont acceptés. Voir  \fBglob\fP(7) pour plus d'informations. Les valeurs
-par défaut (utilisées si rien n'est précisé) sont\ :
+`?' sont acceptés. Voir \fBglob\fP(7) pour plus d'informations. Les valeurs par
+défaut (utilisées si rien n'est précisé) sont\ :
 `server,ai,player,network,human,admin,computer'
 .TP 
 \fBmax_messages\fP
-Le nombre maximum de message parmi en \fBmessages_time_period\fP.
+Le nombre maximum de messages permis en \fBmessages_time_period\fP.
 .TP 
 \fBmessages_time_period\fP
 Période, en secondes, après laquelle un échec système est détecté.
@@ -100,7 +100,7 @@ Mot de passe des habilitations de l'administrateur. Commence souvent par
 "admin ".
 .TP 
 \fBversions_accepted\fP
-Liste séparée par des virgules des versions acceptées par le serveur. Les
+Liste des versions acceptées par le serveur, séparées par des virgules. Les
 caractères génériques `*' et `?' sont acceptés.
 .br
 Exemple\ : versions_accepted="*" autorise tout type de version.
@@ -119,18 +119,18 @@ Adresse du serveur de redirection.
 Port de connexion.
 .TP 
 \fBversion\fP
-Liste séparées par des virgules des versions redirigées. Même syntaxe que
+Liste des versions redirigées, séparées par des virgules. Même syntaxe que
 pour \fBversions_accepted\fP pour les caractères génériques.
 .RE
 .P
 \fB[proxy]\fP Balise pour demander au serveur de se comporter comme un proxy et
-rediriger les requêtes des clients vers le serveur spécifié.  Accepte les
+de rediriger les requêtes des clients vers le serveur spécifié. Accepte les
 mêmes clés que [redirect].
 .
 .SH AUTEUR
 .
 Écrit par David White <davidnwhite@verizon.net>. Édité par Nils
-Kneuper <crazy\-ivanovic@gmx.net> et ott <ott@gaon.net>.  Ce
+Kneuper <crazy\-ivanovic@gmx.net> et ott <ott@gaon.net>. Ce
 manuel a été écrit par Cyril Bouthors <cyril@bouthors.org>.
 .br
 Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
@@ -139,9 +139,10 @@ Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-C'est un logiciel libre\ ; ce logiciel est sous la licence GPM version 2,
-comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE\ ;
-il n'est pas commercialisable et ne s'adapte pas à un but particulier.
+Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
+comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y
+compris\ en ce qui concerne la COMMERCIABILITÉ et la CONFORMITÉ À UNE
+UTILISATION PARTICULIÈRE.
 .
 .SH "VOIR AUSSI"
 .

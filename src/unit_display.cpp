@@ -203,7 +203,7 @@ const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 	winner->restart_animation(disp,start_time);
 	loser.restart_animation(disp,start_time);
 
-	while((!loser.get_animation()->animation_finished()) || ((!winner->get_animation()->animation_finished()))) {
+	while((!loser.get_animation()->animation_would_finish()) || ((!winner->get_animation()->animation_would_finish()))) {
 
 			disp.invalidate(loc);
 			disp.draw();
@@ -300,8 +300,8 @@ void unit_attack_ranged(display& disp, unit_map& units,
 	int missile_frame_halo =0;
 	int missile_halo =0;
 	while(!hide && (
-		!attacker.get_animation()->animation_finished() ||
-		!defender.get_animation()->animation_finished() ||
+		!attacker.get_animation()->animation_would_finish() ||
+		!defender.get_animation()->animation_would_finish() ||
 		!missile_animation.animation_finished()  ||
 		(leader_loc.valid() && !leader->second.get_animation()->animation_finished()))
 	     ){
@@ -447,9 +447,9 @@ void unit_attack(display& disp, unit_map& units,
 	int animation_time = start_time;
 	bool played_center = false;
 	while(!hide && (
-		!attacker.get_animation()->animation_finished()  ||
-		!defender.get_animation()->animation_finished()  ||
-		(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ))
+		!attacker.get_animation()->animation_would_finish()  ||
+		!defender.get_animation()->animation_would_finish()  ||
+		(leader_loc.valid() && !leader->second.get_animation()->animation_would_finish() ))
 	     ){
 
 		double pos = 0.0;

@@ -34,51 +34,51 @@ La bataille pour \fBWesnoth\fP est un jeu de stratégie tour par tour dans un
 univers de fantasy.
 
 Venez à bout de tous les chefs ennemis en utilisant les unités adéquates et
-en gérant de façon au mieux votre or et vos villages. Chaque unité a ses
-forces et ses faiblesses\ ; pour gagner, déployez vos troupes de façon
-optimales tout en empêchant vos ennemis de faire de même. Toutes les unités
-gagnent de l'expérience et acquièrent de nouvelles compétences, devenant
-plus puissantes. Jouez dans votre langue favorite, testez votre habileté
-contre l'ordinateur, ou rejoignez la grande communauté des joueurs en ligne
-de Wesnoth. Créez vos propres unités, vos scénarios ou vos campagnes et
+en gérant au mieux votre or et vos villages. Chaque unité a ses forces et
+ses faiblesses\ ; pour gagner, déployez vos troupes de façon optimales tout
+en empêchant vos ennemis de faire de même. Toutes les unités gagnent de
+l'expérience et acquièrent de nouvelles compétences, devenant plus
+puissantes. Jouez dans votre langue favorite, testez votre habileté contre
+l'ordinateur, ou rejoignez la grande communauté des joueurs en ligne de
+Wesnoth. Créez vos propres unités, vos scénarios ou vos campagnes et
 partagez\-les avec d'autres.
 .
 .SH OPTIONS
 .
 .TP 
 \fB\-\-bpp\fP\fI\ number\fP
-définit la valeur bits par pixel (couleurs). Exemple\ : \-\-bpp 32
+définit la valeur de bits par pixel (couleurs). Exemple\ : \-\-bpp 32
 .TP 
 \fB\-\-compress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
-compresse une sauvegarde au format text WML (fichier en entrée) en format
+compresse une sauvegarde au format texte WML (fichier en entrée) en format
 binaire WML (fichier en sortie).
 .TP 
 \fB\-d\fP, \fB\-\-debug\fP
-affiche des informations supplémentaires de débuggage et permet d'utiliser
+affiche des informations supplémentaires de débogage et permet d'utiliser
 des options en ligne de commande dans le jeu (voir Wiki\ :
 http://www.wesnoth.org/ pour plus d'informations sur la ligne de commande).
 .TP 
 \fB\-\-decompress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
-décompresse une sauvegarde  au format binaire WML (fichier en entrée) en
+décompresse une sauvegarde au format binaire WML (fichier en entrée) en
 format texte WML (fichier en sortie).
 .TP 
 \fB\-f\fP, \fB\-\-fullscreen\fP
-Lancer le jeu en plein écran.
+Lance le jeu en mode plein écran.
 .TP 
 \fB\-\-fps\fP
-affiche le nombre actuel d'images par seconde du jeu, dans un angle de
-l'écran.
+affiche, dans un angle de l'écran, le nombre actuel d'images par seconde du
+jeu.
 .TP 
 \fB\-h\fP, \fB\-\-help\fP
 affiche un résumé des options de ligne de commande sur la sortie standard et
 quitte le programme.
 .TP 
 \fB\-\-load\fP\fI\ savegame\fP
-charge le fichier de sauvegarde partir du répertoire de sauvegarde par
+charge le fichier de sauvegarde à partir du répertoire de sauvegarde par
 défaut.
 .TP 
 \fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-définit le niveau d'alerte du débuggeur. "all" permet de suivre tous les
+définit le niveau d'alerte du débogueur. "all" permet de suivre tous les
 niveaux. \fB\-\-log\-info\fP affiche tous les messages, \fB\-\-log\-warning\fP n'affiche
 que les avertissements et les erreurs et \fB\-\-log\-error\fP n'affiche que les
 erreurs.
@@ -109,8 +109,8 @@ affiche le numéro de version et quitte le programme.
 lance le jeu dans une fenêtre séparée.
 .TP 
 \fB\-\-no\-delay\fP
-lance le jeu sans possibilité de suivi des performances
-graphiques. Automatique avec \-nogui.
+lance le jeu sans délai pour la mesure des performances
+graphiques. Automatique avec \-\-nogui.
 .TP 
 \fB\-\-exit\-at\-end\fP
 quitte le programme à la fin du scénario, sans afficher le message
@@ -121,12 +121,12 @@ joueur. Utilisable pour permettre une mesure par script des performances.
 .
 Les options spécifiques au mode multijoueur sont marquées d'un
 <number>. <number> doit être remplacé par le nombre de
-joueurs. Il s'agit souvent de 1 ou de 2 mais cela dépend du nombre de
-joueurs possibles pour le scénario choisi.
+joueurs. Il s'agit souvent de 1 ou de 2 mais cela dépend du nombre possible
+de joueurs pour le scénario choisi.
 .TP 
 \fB\-\-algorithm<number>=value\fP
 Sélectionne un algorithme utilisé par l'IA de cette faction. Valeurs
-possible\ :  "idle_ai" et "sample_ai".
+possibles\ : "idle_ai" et "sample_ai".
 .TP  
 \fB\-\-controller<number>=value\fP
 Sélectionne le type de joueur de ce camp. Valeurs possibles\ : "human" and
@@ -138,12 +138,13 @@ utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère
 décrites dans le fichier data/multiplayer.cfg.
 .TP 
 \fB\-\-nogui\fP
-lance le jeu sans IHM. Doit apparaître avant \fB\-\-multiplayer\fP.
+lance le jeu sans interface graphique. Doit apparaître avant
+\fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-parm<number>=name:value\fP
 ajoute des paramètres spécifiques à ce camp. Ces paramètres dépendent des
 options utilisées avec \fB\-\-controller\fP et \fB\-\-algorithm\fP. Ne devrait être
-utile qu'aux personnees expérimentant leur propre IA (non encore totalement
+utile qu'aux personnes expérimentant leur propre IA (non encore totalement
 documenté).
 .TP 
 \fB\-\-scenario=value\fP
@@ -152,7 +153,7 @@ sélectionne un scénario multijoueur. Le scénario par défaut est\ :
 .TP 
 \fB\-\-side<number>=value\fP
 permet de sélectionner un camp. Ce camp est choisi par identifiant. Les
-camps sont décris dans le fichier data/multiplayer.cfg.
+camps sont décrits dans le fichier data/multiplayer.cfg.
 .TP 
 \fB\-\-turns=value\fP
 défini le nombre de tours du scénario. Valeur par défaut\ : "50".
@@ -165,7 +166,7 @@ wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
 .
 Écrit par David White <davidnwhite@verizon.net>.
 .br
-Edité par Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+Édité par Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
 <ott@gaon.net> et Soliton <soliton@sonnenkinder.org>.
 .br
 Ce manuel a été écrit par Cyril Bouthors <cyril@bouthors.org>.
@@ -176,9 +177,10 @@ Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-C'est un logiciel libre\ ; ce logiciel est sous la licence GPM version 2,
-comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE\ ;
-il n'est pas commercialisable et ne s'adapte pas à un but particulier.
+Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
+comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y
+compris\ en ce qui concerne la COMMERCIABILITÉ et la CONFORMITÉ À UNE
+UTILISATION PARTICULIÈRE.
 .
 .SH "VOIR AUSSI"
 .

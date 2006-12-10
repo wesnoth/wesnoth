@@ -11,6 +11,16 @@
 # but WITHOUT ANY WARRANTY.
 #
 # See the COPYING file for more details.
+# 
+# Scipt to strip ICC profiles from all png images and to compress them
+# afterwards via optipng
+# 
+# Requirements: ruby, imagemagick, optipng
+# HowToUse: start the script from the wesnoth maindir
+# 'svn ci' to commit the stuff
+# enter a commit message
+# enjoy ICC-profile clean and size-optimised png images
+#
 
 require 'md5'
 
@@ -35,7 +45,8 @@ files.each { | file|
 #		next;
 #	end
 	output = `nice -n 19 convert -strip "#{file}" "#{file}.stripped.png"`;
-	output = `nice -n 19 pngcrush -brute -q "#{file}.stripped.png" "#{file}.new.png"`;
+#	output = `nice -n 19 pngcrush -brute -q "#{file}.stripped.png" "#{file}.new.png"`;
+	output = `nice -n 19 optipng -q -o5 -nb -nc -np "#{file}.stripped.png" -out "#{file}.new.png"`;
 	output = `rm "#{file}.stripped.png"`
 	File.exists?("#{file}.new.png") or next;
 	oldSize = File.size(file)
