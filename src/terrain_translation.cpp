@@ -22,6 +22,11 @@
 
 #include <iostream>
 
+//define TEST_TIMING
+#ifdef TEST_TIMING
+#include <time.h> // needed for timing debugging
+#endif
+
 #define ERR_G  LOG_STREAM(err, general)
 #define WRN_G  LOG_STREAM(warn, general)
 
@@ -68,6 +73,11 @@ namespace t_translation {
 
 	// reads old maps
 	t_map read_game_map_old(const std::string& map,std::map<int, coordinate>& starting_positions); 
+
+	//this one is used privately only for error messages used in string_to_number_ 
+	//so we can't use this function to convert us. So we do the conversion here 
+	//manually not the niced solution but good enough for a tempory solution
+	const t_letter KEEP = ((t_letter)'_' << 24) + ((t_letter)'K' << 18);
 
 #endif
 
@@ -318,6 +328,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	// process the data, polls for the format
 	if(str.find(',') == std::string::npos) {
 		//old format
+		std::cerr << "Using this map format is deappricated\n";
 		map_format_ = 1;
 		return read_game_map_old(str, starting_positions);
 	}
@@ -325,7 +336,11 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	// at this point we're the new format
 	map_format_ = 2;
 #endif
-
+	
+#ifdef TEST_TIMING
+	const clock_t start = clock();
+#endif	
+	
 	size_t offset = 0;
 	size_t x = 0, y = 0, width = 0;
 	t_map result;
@@ -371,7 +386,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 			result.resize(x + 1);
 		}
 		if(result[x].size() <= y) {
-			result[x].resize(y + 1);
+			result[x].resize(y + 1); // 1 normal 256 for testing
 		}
 		
 		// add the resulting terrain number,
@@ -411,6 +426,11 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		ERR_G << "Map not a rectangle error occured at the end\n"; 
 		throw error("Map not a rectangle.");
 	}
+	
+#ifdef TEST_TIMING
+	const clock_t end = clock();
+	std::cout << "O0\t" << width << "\t" << y << "\t" << end - start  << "\t" << (float)(end - start)/CLOCKS_PER_SEC <<"\n";
+#endif
 
 	return result;
 }
@@ -497,6 +517,12 @@ t_letter string_to_number_(std::string str, int& start_position)
 		// add the result
 		result += c;
 	}
+
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
+	if(result == KEEP) { 
+		std::cerr << "Using _K for a keep is deappricated\n";
+	}
+#endif	
 	
 	return result;
 }
@@ -910,6 +936,40 @@ int main(int argc, char** argv)
 			} else {
 				std::cout << "No match\n";
 			}
+		} else if (std::string(argv[1]) == "map_speed" && argc == 4) {
+			// TEST_TIMING has to be defined 
+			// the performance gain on a 1000x1000 map with an increase of 
+			// 256 items instead of 1 for y is on a single test
+			// O0 5.12 vs. 4.14 on a single test
+			// O2 2.97 vs. 2.87 on a single test
+			// so there is a gain but not big especially not on 
+			// default compilation
+
+			// get and validate the parameters
+			const int width = lexical_cast_default(argv[2], -1);
+			const int height = lexical_cast_default(argv[3], -1);
+
+			if(width == -1 || height == -1) {
+				std::cerr << "Invalid map size " << width << "," << height << "\n";
+				return -1;
+			}
+
+			// create the map
+			t_translation::t_map map = t_translation::t_map(width);//, t_translation::GRASS_LAND);
+
+			for(int i = 0; i < width; ++i) {
+				map[i].resize(height, t_translation::GRASS_LAND);
+			}
+				
+			// turn the map into a string
+			std::map<int, t_translation::coordinate> starting_positions = std::map<int, t_translation::coordinate>();
+			const std::string map_str = t_translation::write_game_map(map, starting_positions);
+
+			// now call the map conversion routine. Note the memory of
+			// map is not freed it might leave a nice memory hole for
+			// the convertor to use.
+			t_translation::t_map converted_map = t_translation::read_game_map(map_str, starting_positions);
+					
 		}
 	}
 }
