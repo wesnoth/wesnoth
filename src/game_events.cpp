@@ -1151,7 +1151,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "sound_source") {
 		std::string sounds = cfg["sounds"];
-		std::string name = cfg["name"];
+		std::string id = cfg["id"];
 		std::string delay = cfg["delay"];
 		std::string chance = cfg["chance"];
 		std::string play_fogged = cfg["check_fogged"];
@@ -1172,14 +1172,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const std::vector<std::string>& vy = utils::split(y);
 
 			if(play_fogged.empty())
-				soundsources->add(name, v, lexical_cast<int>(delay), lexical_cast<int>(chance));
+				soundsources->add(id, v, lexical_cast<int>(delay), lexical_cast<int>(chance));
 			else
-				soundsources->add(name, v, lexical_cast<int>(delay), 
+				soundsources->add(id, v, lexical_cast<int>(delay), 
 						lexical_cast<int>(chance), utils::string_bool(play_fogged));
 
 			for(unsigned int i = 0; i < minimum(vx.size(), vy.size()); ++i) {
 				gamemap::location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
-				soundsources->add_location(name, loc);
+				soundsources->add_location(id, loc);
 			}
 		}
 	}
