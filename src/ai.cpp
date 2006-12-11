@@ -478,6 +478,12 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 				info_.units.add(up);
 				info_.disp.invalidate(up->first);
 				info_.disp.draw();
+				u_it = info_.units.find(up->first); //get a new iterator, since it was invalidated
+				if(u_it == info_.units.end()) {
+					LOG_STREAM(err, ai) << "Could not find unit at " << up->first << '\n';
+					wassert(false);
+					return location();
+				}
 				up = info_.units.extract(u_it->first);
 				unit_display::move_unit(info_.disp,info_.map,steps,up->second,info_.units,info_.teams);
 				up->second.set_hidden(hidden);
