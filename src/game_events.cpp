@@ -1166,7 +1166,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		x = utils::interpolate_variables_into_string(x, *state_of_game);
 		y = utils::interpolate_variables_into_string(y, *state_of_game);
 
-		if(!sounds.empty() && !delay.empty() && !chance.empty() && !x.empty() && !y.empty()) {
+		if(!sounds.empty() && !delay.empty() && !chance.empty()) {
 			const std::vector<std::string>& v = utils::split(sounds);
 			const std::vector<std::string>& vx = utils::split(x);
 			const std::vector<std::string>& vy = utils::split(y);

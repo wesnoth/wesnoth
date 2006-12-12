@@ -87,13 +87,18 @@ void manager::soundsource::update(unsigned int time, const display &disp)
 	if(time - _last_played < _min_delay)
 		return;
 
+	_last_played = time;
 	unsigned int i = rand() % 100 + 1;
 
-	if(i < _chance) {
-		SDL_Rect area = disp.map_area();
+	if(i <= _chance) {
+		// If no locations have been specified, treat the source as if 
+		// it was present everywhere on the map
+		if(_locations.size() == 0) {
+			sound::play_sound(_files[rand() % _files.size()]);
+			return;
+		}
 
-		// Avoid playing many sources which are close to each other when they become visible?
-		_last_played = time;
+		SDL_Rect area = disp.map_area();
 
 		for(std::list<gamemap::location>::iterator i =  _locations.begin(); i != _locations.end(); ++i) {
 			int locx = disp.get_location_x(*i);
@@ -107,7 +112,6 @@ void manager::soundsource::update(unsigned int time, const display &disp)
 				break;
 			}
 		}
-
 	}
 }
 
