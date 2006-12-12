@@ -1062,7 +1062,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 					//if shroud or fog is active, rememember nits a and after attack check if someone isn`t seen
 					std::set<gamemap::location> known_units;
 
-					if (check_shroud){
+					if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
 						 for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 				       if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
 				         known_units.insert(u->first);
@@ -1080,8 +1080,9 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 					}
 					else //attack == true
 					{
-						if (check_shroud){
-							if (clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)){
+						if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
+							//check if some new part of map discovered or is active delay shroud updates, which need special care
+							if (clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
 								clear_undo_stack();
 								//some new part of map discovered
 								for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {

@@ -1840,7 +1840,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
 		(team.uses_shroud() || team.uses_fog());
 
-	//if we use shroud/fog of war, count out the units we can currently see
 	std::set<gamemap::location> known_units;
 	if(check_shroud) {
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
@@ -1876,8 +1875,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		}
 
 		//if we use fog or shroud, see if we have sighted an enemy unit, in
-		//which case we should stop immediately.
-		if(check_shroud) {
+		//which case we should stop immediately. Cannot use check shroud,
+		//because also need check if delay shroud is on.
+		if(should_clear_shroud && (team.uses_shroud() || team.uses_fog())) {
 			if(units.count(*step) == 0 && !map.is_village(*step)) {
 				LOG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
@@ -1887,10 +1887,16 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				//we have to swap out any unit that is already in the hex, so we can put our
 				//unit there, then we'll swap back at the end.
 				const temporary_unit_placer unit_placer(units,*step,ui->second);
-
-				should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
-				                                        ui->second.side()-1,&known_units,&seen_units);
-
+				if( team.auto_shroud_updates())
+        {
+					should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
+					    ui->second.side()-1,&known_units,&seen_units);
+				}
+				else
+				{
+					clear_shroud_unit(map,status,gamedata,units,*step,teams,
+							ui->second.side()-1,&known_units,&seen_units);
+				}
 				if(should_clear_stack) {
 					disp->invalidate_all();
 				}
