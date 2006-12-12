@@ -194,25 +194,24 @@ std::set<gamemap::location> get_component(const gamemap &map,
 std::string resize_map(const gamemap &map, const unsigned new_w,
 	const unsigned new_h, const t_translation::t_letter fill_with) 
 {
-	std::string str_map = map.write();
-	std::vector<std::string> lines = utils::split(str_map, '\n');
+	std::map<int, t_translation::coordinate> starting_positions;
+	t_translation::t_map map_ = t_translation::read_game_map(map.write(), starting_positions);	
 	bool map_changed = false;
 	const unsigned old_w = (unsigned)map.x();
 	const unsigned old_h = (unsigned)map.y();
-	if (old_h != new_h) {
-		const std::string one_row(old_w, fill_with);
-		lines.resize(new_h, one_row);
+	if (old_w != new_w) {
+		const t_translation::t_list one_row(old_h, fill_with);		
+		map_.resize(new_w, one_row);
 		map_changed = true;
 	}
-	if (new_w != old_w) {
-		for (std::vector<std::string>::iterator it = lines.begin();
-			 it != lines.end(); it++) {
-			(*it).resize(new_w, fill_with);
+	if(new_h != old_h) {
+		for(size_t i = 0; i < map_.size(); ++i) {
+			map_[i].resize(new_h, fill_with);
 		}
 		map_changed = true;
 	}
 	if (map_changed) {
-		return utils::join(lines, '\n');
+		return  write_game_map(map_, starting_positions);	
 	}
 	else {
 		return "";
