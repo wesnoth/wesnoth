@@ -1925,7 +1925,11 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		ellipse_front.assign(image::get_image(image::locator(buf,team_rgb_range(),temp_rgb)));
 	}
 
-	disp.draw_unit(x, y -height_adjust, image, false, highlight_ratio,
+	
+	
+	int tmp_x = x +(disp.hex_size() - image.get()->w)/2;
+	int tmp_y = y +(disp.hex_size() - image.get()->h)/2;
+	disp.draw_unit(tmp_x, tmp_y -height_adjust, image, false, highlight_ratio,
 			blend_with, blend_ratio, submerge,ellipse_back,ellipse_front);
 	if(!unit_halo_ && !image_halo().empty()) {
 		unit_halo_ = halo::add(0,0,image_halo());
