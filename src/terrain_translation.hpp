@@ -39,24 +39,7 @@ namespace t_translation {
 	typedef Uint32 t_letter;
 	typedef std::vector<t_letter> t_list;
 	typedef std::vector<std::vector<t_letter> > t_map;
-/*
-* This structure might increase the speed of the terrain matching code
-* it's intended for the builder it matches terrains often and might
-* benefit from this cached structure. Therefore it only needs a reader.
-* Disabled for now, first want to have the code up and running before 
-* attempting to optimize. Also the terrain graphics have quite some
-* glitches atm not sure what's the cause, bugs in C++ or WML.
-	struct t_match{
-		t_match(const std::string& str);
-		~t_match();
 
-		t_list terrain;	
-		t_list mask;
-		t_list masked_terrain;
-		bool has_wildcard;
-	};
-	bool terrain_matches(const t_letter src, const t_match& dest);
-*/
 	//some types of terrain which must be known, and can't just be loaded
 	//in dynamically because they're special. It's asserted that there will
 	//be corresponding entries for these types of terrain in the terrain
@@ -81,6 +64,7 @@ namespace t_translation {
 	extern const t_letter MINUS; 	// -
 	extern const t_letter NOT;		// FIXME MdW remove once no longer used in the builder
 	extern const t_letter COMMA;	// ,
+	extern const t_letter STAR; 	// *
 	const t_letter NONE_TERRAIN = 0;
 
     //exception thrown if there's an error with the terrain
@@ -196,6 +180,18 @@ namespace t_translation {
 	 */
 	std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions);
 
+	struct t_match{
+		t_match(){};
+		t_match(const std::string& str);
+		~t_match(){};
+
+		t_list terrain;	
+		t_list mask;
+		t_list masked_terrain;
+		bool has_wildcard;
+	};
+	bool terrain_matches(const t_letter src, const t_match& dest);
+
 	/** Tests whether a certain terrain matches a list of terrains the terrains can 
 	 *  use wildcard matching with *. It also has an inversion function. When a ! 
 	 *  is found the result of the match is inverted. The matching stops at the 
@@ -256,13 +252,11 @@ namespace t_translation {
 	 */
 	t_letter cast_to_builder_number(t_letter terrain); 
 	
-	// these terrain letters are in the builder
-	// format, so not usable in other parts of
-	// the engine
+	// these terrain letters are in the builder format, so not usable in other 
+	// parts of the engine
+	// FIXME MdW builder.cpp uses TB_STAR in a not so clean way
 	const t_letter TB_STAR = '*';
 	const t_letter TB_DOT = '.';
-
-		
 	
 /***************************************************************************************/
 	

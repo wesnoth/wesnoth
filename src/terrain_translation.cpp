@@ -127,6 +127,7 @@ const t_letter NOT = string_to_number_("!");
 
 const t_letter COMMA = ','; //to be translated? or obsoleted
 
+const t_letter STAR = string_to_number_("*");
 
 // the shift used for the builder (needs more comment)
 const int BUILDER_SHIFT = 8;
@@ -135,28 +136,6 @@ const int BUILDER_SHIFT = 8;
 enum{ WILDCARD_NONE = 0xFFFFFFFF };
 
 /***************************************************************************************/	
-/*
-t_match::t_match(const std::string& str)
-{
-	terrain = read_list(str, -1, T_FORMAT_STRING);
-
-	if(str.empty()) {
-		return;
-	}
-
-	mask.resize(terrain.size());
-	masked_terrain.resize(terrain.size());
-
-	for(size_t i = 0; i < terrain.size(); ++i) {
-		mask[i] = get_mask_(terrain[i]);
-		masked_terrain[i] = (terrain[i] & mask[i]);
-
-		if(mask[i] != WILDCARD_NONE) {
-			has_wildcard = true;
-		}
-	}
-}
-*/
 
 t_letter read_letter(const std::string& str, const int t_format)
 {
@@ -498,10 +477,6 @@ t_letter string_to_number_(std::string str, int& start_position)
 	//the conversion to int puts the first char in the 
 	//highest part of the number, this will make the 
 	//wildcard matching later on a bit easier.
-	//
-	//FIXME MdW there should be tested how slow this
-	//method is, not sure it's the fastest possible
-	//solution.
 	for(size_t i = 0; i < 4; ++i) {
 		unsigned char c;
 		if(i < str.length()) {
@@ -517,12 +492,11 @@ t_letter string_to_number_(std::string str, int& start_position)
 		// add the result
 		result += c;
 	}
-
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-	if(result == KEEP) { 
+	if(result == KEEP) {
 		std::cerr << "Using _K for a keep is deappricated\n";
 	}
-#endif	
+#endif
 	
 	return result;
 }
@@ -600,27 +574,15 @@ bool terrain_matches(const t_letter src, const t_letter dest)
 	 
 t_letter get_mask_(t_letter terrain)
 {
-	//FIXME MdW add documentation
-	const t_letter result_mask[5] = 
-		{0x00000000, 0xFF000000, 0xFFFF0000, 0xFFFFFF00, WILDCARD_NONE };
+	// test for the star 0x2A in every postion and return the
+	// appropriate mask
+	if((terrain & 0xFF000000) == 0x2A000000) return 0x00000000;
+	if((terrain & 0x00FF0000) == 0x002A0000) return 0xFF000000;
+	if((terrain & 0x0000FF00) == 0x00002A00) return 0xFFFF0000;
+	if((terrain & 0x000000FF) == 0x0000002A) return 0xFFFFFF00;
 
-	// mask to find the '*' is hexcode 2A
-	const t_letter wildcard_mask[4] = 
-		{0xFF000000, 0x00FF0000, 0x0000FF00,0x000000FF};
-
-	const t_letter wildcard[4] = 
-		{0x2A000000, 0x002A0000, 0x00002A00,0x0000002A};
-
-	// match the first position of the * and
-	// return the appropriate result mask
-	for(int i = 0; i < 4; ++i) {
-		if((terrain & wildcard_mask[i]) == wildcard[i]) {
-			return result_mask[i];
-		}
-	}
-
-	// no match return default mask
-	return result_mask[4];
+	// no star found return the default
+	return WILDCARD_NONE;
 }
 
 //FIXME MdW, there are some optimizations which can be done here
@@ -640,8 +602,7 @@ bool terrain_matches(const t_letter src, const t_list& dest)
 */	
 	if(debug) std::cerr << "Terrain matching src = " << write_letter(src) << " dest = " << write_list(dest) << "\n";
 	if(dest.empty()) {
-		if(debug)
-			std::cerr << ">> - Empty result, no match\n";
+		if(debug) std::cerr << ">> - Empty result, no match\n";
 		return false;
 	}
 
@@ -702,6 +663,68 @@ bool terrain_matches(const t_letter src, const t_list& dest)
 
 	// no match, return the inverse of the result
 	if(debug) std::cerr << ">> - No match found\n";
+	return !result;
+}
+
+t_match::t_match(const std::string& str):
+	terrain(t_translation::read_list(str, -1, t_translation::T_FORMAT_STRING)) 
+{
+	mask.resize(terrain.size());
+	masked_terrain.resize(terrain.size());
+	has_wildcard = t_translation::has_wildcard(terrain);
+
+	for(size_t i = 0; i < terrain.size(); i++) {
+		mask[i] = t_translation::get_mask_(terrain[i]);
+		masked_terrain[i] = mask[i] & terrain[i];
+	}
+}
+
+bool terrain_matches(const t_letter src, const t_match& dest)
+{
+	if(dest.terrain.empty()) {
+		return false;
+	}
+
+	const t_letter star = STAR;
+	const t_letter inverse = NOT;
+
+	const t_letter src_mask = get_mask_(src);
+	const t_letter masked_src = (src & src_mask);
+	const bool src_has_wildcard = has_wildcard(src);
+
+	bool result = true;
+
+	// try to match the terrains if matched jump out of the loop.
+	for(size_t i = 0; i < dest.terrain.size(); ++i) {
+
+		// match wildcard 
+		if(dest.terrain[i] == star) {
+			return result;
+		}
+
+		// match inverse symbol
+		if(dest.terrain[i] == inverse) {
+			result = !result;
+			continue;
+		}
+
+		// full match 
+		if(dest.terrain[i] == src) {
+			return result;
+		}
+		
+		// does the source wildcard match
+		if(src_has_wildcard && (dest.terrain[i] & src_mask) == masked_src) {
+			return result;
+		}
+		
+		// does the destination wildcard match
+		if(dest.has_wildcard && (src & dest.mask[i]) == dest.masked_terrain[i]) {
+			return result;
+		}
+	}
+
+	// no match, return the inverse of the result
 	return !result;
 }
 

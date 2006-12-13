@@ -209,11 +209,10 @@ public:
 		terrain_constraint(gamemap::location loc) : loc(loc) {};
 
 		gamemap::location loc;
-		t_translation::t_list terrain_types;
+		t_translation::t_match terrain_types_match;
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
 		std::vector<std::string> has_flag;
-
 		rule_imagelist images;
 	};
 
@@ -542,7 +541,7 @@ private:
 	 *                    describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
-			const gamemap::location &loc, const t_translation::t_list& type,
+			const gamemap::location &loc, const t_translation::t_match& type,
 			const config& global_images);
 
 	/**
@@ -614,7 +613,7 @@ private:
 	 *                 "all terrains" or the character '!' NOT meaning "all
 	 *                 terrains except those present in the list."
 	 *
-	 * @return returns true if "letter" matches the list, false if it does not.
+	 * @return returns true if "letter" matches the list, false if it does not and empty list matches.
 	 */
 	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list &terrains); 
 
