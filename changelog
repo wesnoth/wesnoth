@@ -13,8 +13,11 @@ Version 1.1.13+svn:
    * new better looking hexgrid
    * new special transition between chasm and dwarvish castle
    * new lava transitions (looks like completely new lava)
+   * fixed glitches with impassable moutains at the edges of maps
    * resolved all glitches with cave walls
  * language and i18n:
+   * switch back to non utf8 locale definition to fix some problems,
+     --enable-dummy-locales should work again
    * updated man-pages: French, German
    * updated translations: Czech, Esperanto, French, Italian, Russian
  * multiplayer maps:
