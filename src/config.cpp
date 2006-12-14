@@ -580,20 +580,20 @@ bool config::matches(const config &filter) const
 	}
 	
 	//now, match the kids
-	for(all_children_iterator i = filter.ordered_begin(); i != filter.ordered_end(); ++i) {
-		if(*(*i).first == "not") continue;
-		child_list interesting_children = get_children(*(*i).first);
+	for(all_children_iterator i2 = filter.ordered_begin(); i2 != filter.ordered_end(); ++i2) {
+		if(*(*i2).first == "not") continue;
+		child_list interesting_children = get_children(*(*i2).first);
 		bool found = false;
-		for(child_list::iterator j = interesting_children.begin(); j != interesting_children.end(); ++j) {
-			if((*j)->matches(*(*i).second)) {
+		for(child_list::iterator j2 = interesting_children.begin(); j2 != interesting_children.end(); ++j2) {
+			if((*j2)->matches(*(*i2).second)) {
 				found = true;
 			}
 		}
 		if(!found) return false;
 	}
 	child_list negative_children = filter.get_children("not");
-	for(child_list::iterator j = negative_children.begin() ; j != negative_children.end() ; j++) {
-		if(matches(**j)) return false;
+	for(child_list::iterator j3 = negative_children.begin() ; j3 != negative_children.end() ; j3++) {
+		if(matches(**j3)) return false;
 	}
 	return true;
 }

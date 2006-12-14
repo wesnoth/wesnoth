@@ -1709,7 +1709,7 @@ bool clear_shroud_unit(const gamemap& map,
 	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
 
 	//remove all redundant location, if on this location is unit, sighed event is called twice
-	unique(cleared_locations.begin(),cleared_locations.end());
+	std::unique(cleared_locations.begin(),cleared_locations.end());
 
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
