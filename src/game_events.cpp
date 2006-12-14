@@ -1304,8 +1304,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				if(game_events::unit_matches_filter(*u, cfg,gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
-					recruit_unit(*game_map,index+1,*units,*u,loc,utils::string_bool(cfg["show"],true) ? NULL : screen,false,true);
-					avail.erase(u);
+					unit to_recruit(*u);
+					avail.erase(u); //erase before recruiting, since recruiting can fire more events
+					recruit_unit(*game_map,index+1,*units,to_recruit,loc,utils::string_bool(cfg["show"],true) ? NULL : screen,false,true);
 					unit_recalled = true;
 					break;
 				}
