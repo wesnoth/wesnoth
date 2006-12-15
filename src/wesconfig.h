@@ -4,7 +4,7 @@
 #ifdef HAVE_CONFIG_H
 # include "config.h"
 #else
-# define VERSION "1.1.13"
+# define VERSION "1.1.14"
 # define WESNOTH_DEFAULT_SERVER "devsrv.wesnoth.org:14999"
 # define PACKAGE "wesnoth"
 # ifndef LOCALEDIR
