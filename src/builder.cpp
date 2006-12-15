@@ -205,7 +205,7 @@ void terrain_builder::rebuild_all()
 	build_terrains();
 }
 
-bool terrain_builder::rule_valid(const building_rule &rule)
+bool terrain_builder::rule_valid(const building_rule &rule) const
 {
 	//if the rule has no constraints, it is invalid
 	if(rule.constraints.empty())
@@ -637,7 +637,7 @@ void terrain_builder::add_rule(building_ruleset& rules, building_rule &rule)
 
 }
 
-void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& tpl, const std::string &rotations)
+void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& tpl, const std::string &rotations) 
 {
 	if(rotations.empty()) {
 		// Adds the parsed built terrain to the list
@@ -773,14 +773,21 @@ void terrain_builder::parse_config(const config &cfg)
 }
 
 bool terrain_builder::terrain_matches(t_translation::t_letter letter, 
-		const t_translation::t_list& terrains)
+		const t_translation::t_list& terrains) const
 {
 	// we return true on an empty list terrain_matches returns false on an empty list
 	return terrains.empty()? true : t_translation::terrain_matches(letter, terrains);
 }
 
+bool terrain_builder::terrain_matches(t_translation::t_letter letter, 
+		const t_translation::t_match& terrain) const
+{
+	// we return true on an empty list terrain_matches returns false on an empty list
+	return terrain.terrain.empty()? true : t_translation::terrain_matches(letter, terrain);
+}
+
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, 
-		const gamemap::location &loc, int rule_index, bool check_loc)
+		const gamemap::location &loc, const int rule_index, const bool check_loc) const
 {
 	if(rule.location_constraints.valid() && rule.location_constraints != loc) {
 		return false;
@@ -798,7 +805,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 				return false;
 			}
 
-			if(!t_translation::terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types_match)) {
+			if(!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types_match)) {
 				return false;
 			}
 		}

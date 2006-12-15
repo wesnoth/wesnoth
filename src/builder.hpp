@@ -389,7 +389,7 @@ private:
 	 *
 	 * @return true if the rule is valid, false if it is not.
 	 */
-	bool rule_valid(const building_rule &rule);
+	bool rule_valid(const building_rule &rule) const;
 
 	/**
 	 * Starts the animation on a rule.
@@ -615,7 +615,18 @@ private:
 	 *
 	 * @return returns true if "letter" matches the list, false if it does not and empty list matches.
 	 */
-	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list &terrains); 
+	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list &terrains) const; 
+
+	/**
+	 * Checks whether a terrain letter matches a given list of terrain letters
+	 *
+	 * @param letter   The terrain to check
+	 * @param terrain  The terrain match structure which to check the terrain.
+	 *                 See previous definition for more details.
+	 *
+	 * @return returns true if "letter" matches the list, false if it does not and empty list matches.
+	 */
+	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_match &terrain) const; 
 
 	/**
 	 * Checks whether a rule matches a given location in the map.
@@ -634,7 +645,7 @@ private:
 	 *                  checked.
 	 */
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc,
-			int rule_index, bool check_loc);
+			const int rule_index, const bool check_loc) const;
 
 	/**
 	 * Applies a rule at a given location: applies the result of a matching
