@@ -22,6 +22,7 @@ public:
 	unsigned int height() const { return height_; }
 
 	enum ORIENTATION { NORMAL_ORIENTATION, REVERSE_ORIENTATION };
+	enum VFLIP { RIGHT_SIDE_UP, UPSIDE_DOWN };
 
 	void draw(int x, int y, unsigned int w, unsigned int h,
 	          GLfloat red, GLfloat green,
@@ -32,7 +33,8 @@ public:
 	void draw(int x, int y, unsigned int w, unsigned int h,
 	          ORIENTATION o=NORMAL_ORIENTATION,
 			  ::image::TYPE type=::image::SCALED,
-			  const time_of_day* tod=0) const;
+			  const time_of_day* tod=0,
+			  VFLIP vflip=RIGHT_SIDE_UP) const;
 private:
 	void release();
 

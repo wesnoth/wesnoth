@@ -164,7 +164,8 @@ void image::draw(int x, int y, image::ORIENTATION orient,
 
 void image::draw(int x, int y, unsigned int w, unsigned int h,
                  image::ORIENTATION orient, ::image::TYPE type,
-                 const time_of_day* tod) const
+                 const time_of_day* tod,
+				 image::VFLIP vflip) const
 {
 	if(!id_) {
 		return;
@@ -174,8 +175,14 @@ void image::draw(int x, int y, unsigned int w, unsigned int h,
 
 	GLfloat left = left_;
 	GLfloat right = right_;
+	GLfloat top = top_;
+	GLfloat bot = bot_;
 	if(orient == REVERSE_ORIENTATION) {
 		std::swap(left,right);
+	}
+
+	if(vflip == UPSIDE_DOWN) {
+		std::swap(top,bot);
 	}
 
 	glBegin(GL_QUADS);
@@ -197,13 +204,13 @@ void image::draw(int x, int y, unsigned int w, unsigned int h,
 		break;
 	}
 
-	glTexCoord2f(left,top_);
+	glTexCoord2f(left,top);
 	glVertex3i(x,y,0);
-	glTexCoord2f(right,top_);
+	glTexCoord2f(right,top);
 	glVertex3i(x+w,y,0);
-	glTexCoord2f(right,bot_);
+	glTexCoord2f(right,bot);
 	glVertex3i(x+w,y+h,0);
-	glTexCoord2f(left,bot_);
+	glTexCoord2f(left,bot);
 	glVertex3i(x,y+h,0);
 	glEnd();
 
@@ -220,13 +227,13 @@ void image::draw(int x, int y, unsigned int w, unsigned int h,
 		}
 
 		glBegin(GL_QUADS);
-		glTexCoord2f(left,top_);
+		glTexCoord2f(left,top);
 		glVertex3i(x,y,0);
-		glTexCoord2f(right,top_);
+		glTexCoord2f(right,top);
 		glVertex3i(x+w,y,0);
-		glTexCoord2f(right,bot_);
+		glTexCoord2f(right,bot);
 		glVertex3i(x+w,y+h,0);
-		glTexCoord2f(left,bot_);
+		glTexCoord2f(left,bot);
 		glVertex3i(x,y+h,0);
 		glEnd();
 
