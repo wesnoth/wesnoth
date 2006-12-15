@@ -27,7 +27,7 @@
 
 #define ERR_CF LOG_STREAM(err, config)
 
-config::config(const config& cfg)
+config::config(const config& cfg):variable_set()
 {
 	append(cfg);
 }
@@ -648,6 +648,60 @@ void config::debug() const{
 	}
 	i--;
 }
+
+const t_string& config::get_variable_const(const std::string& key)
+{
+	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
+			size_t MaxLoop= 1024;
+	if(itor != key.end()) {
+		std::string element(key.begin(),itor);
+		std::string sub_key(itor+1,key.end());
+
+		size_t index = 0;
+		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
+		const bool explicit_index = index_start != element.end();
+
+		if(explicit_index) {
+			const std::string::iterator index_end = std::find(index_start,element.end(),']');
+			const std::string index_str(index_start+1,index_end);
+			index = size_t(atoi(index_str.c_str()));
+			if(index > MaxLoop) {
+				index = MaxLoop;
+			}
+
+			element = std::string(element.begin(),index_start);
+		}
+
+		const config::child_list& items = get_children(element);
+
+		//special case -- '.length' on an array returns the size of the array
+		if(explicit_index == false && sub_key == "length") {
+			static t_string zero_str = "0";
+			if(items.empty()) {
+					return zero_str;
+			} else {
+				int size = minimum<int>(MaxLoop,int(items.size()));
+				(*items.back())["__length"] = lexical_cast<std::string>(size);
+
+				return (*items.back())["__length"];
+			}
+		}
+
+		while(get_children(element).size() <= index) {
+			add_child(element);
+		}
+		return (*get_children(element)[index]).get_variable_const(sub_key);
+	} else {
+		if(values.find(key) != values.end()){
+			return values.find(key)->second;
+		}else {
+			static t_string empty = "";
+			return empty;
+		}
+	}
+}
+
+
 
 std::string config::hash() const
 {
