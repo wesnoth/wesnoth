@@ -405,6 +405,7 @@ namespace {
 					LOG_CS << "fatal network error\n";
 					break;
 				} else {
+					LOG_CS <<"net error (could be normal) "<<e.message<<" " << network::ip_address(e.socket) << "\n";
 					e.disconnect();
 				}
 			} catch(config::error& e) {
