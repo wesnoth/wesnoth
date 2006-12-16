@@ -25,7 +25,11 @@ namespace {
 
 const std::string& campaign_dir()
 {
+	#ifdef __amigaos4__
+	static const std::string res = "data/campaigns";
+	#else
 	static const std::string res = get_user_data_dir() + "/data/campaigns";
+	#endif
 	return res;
 }
 
@@ -193,7 +197,12 @@ void unarchive_file(const std::string& path, const config& cfg)
 
 void unarchive_dir(const std::string& path, const config& cfg)
 {
-	const std::string dir = path + '/' + cfg["name"].str();
+	std::string dir;
+	if (cfg["name"].empty())
+		dir = path;
+	else
+		dir = path + '/' + cfg["name"].str();
+
 	make_directory(dir);
 
 	const config::child_list& dirs = cfg.get_children("dir");
