@@ -32,7 +32,6 @@ namespace {
 	{
 		config cfg;
 		cfg.add_child("message")["message"] = msg;
-		LOG_CS << "MESSAGE: "<<msg<<"\n";
 		return cfg;
 	}
 
@@ -68,7 +67,7 @@ namespace {
 	}
 
 	campaign_server::campaign_server(const std::string& cfgfile)
-		: file_(cfgfile), net_manager_(10), server_manager_(load_config())
+		: file_(cfgfile), net_manager_(5), server_manager_(load_config())
 	{
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
@@ -187,7 +186,7 @@ namespace {
 				config data;
 				while((sock = network::receive_data(data)) != network::null_connection) {
 					if(const config* req = data.child("request_campaign_list")) {
-						LOG_CS << "sending campaign list to " << network::ip_address(sock);
+						LOG_CS << "sending campaign list to " << network::ip_address(sock) << "\n";
 						time_t epoch = time(NULL);
 						config campaign_list;
 						(campaign_list)["timestamp"] = lexical_cast<std::string>(epoch);
@@ -241,9 +240,8 @@ namespace {
 						config response;
 						response.add_child("campaigns",campaign_list);
 						network::send_data(response,sock);
-						LOG_CS << " Done\n";
 					} else if(const config* req = data.child("request_campaign")) {
-						LOG_CS << "sending campaign " << (*req)["name"] << " to " << network::ip_address(sock);
+						LOG_CS << "sending campaign " << (*req)["name"] << " to " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 						if(campaign == NULL) {
 							network::send_data(construct_error("Add-on not found."),sock);
@@ -257,29 +255,24 @@ namespace {
 
 							const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
 							(*campaign)["downloads"] = lexical_cast<std::string>(downloads);
-							LOG_CS << " Done\n";
 						}
 
 					} else if(data.child("request_terms") != NULL) {
-						LOG_CS << "sending terms " << network::ip_address(sock);
+						LOG_CS << "sending terms " << network::ip_address(sock) << "\n";
 						network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."),sock);
 						LOG_CS << " Done\n";
 					} else if(config* upload = data.child("upload")) {
-						LOG_CS << "uploading campaign " << network::ip_address(sock);
+						LOG_CS << "uploading campaign " << network::ip_address(sock) << "\n";
 						config* data = upload->child("data");
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 						if(data == NULL) {
 							network::send_data(construct_error("No add-on data was supplied."),sock);
-							LOG_CS << " Done2\n";
 						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 							network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."),sock);
-							LOG_CS << " Done3\n";
 						} else if(campaign_name_legal((*upload)["name"]) == false) {
 							network::send_data(construct_error("The name of the add-on is invalid"),sock);
-							LOG_CS << " Done4\n";
 						} else if(check_names_legal(*data) == false) {
 							network::send_data(construct_error("The add-on contains an illegal file or directory name."),sock);
-							LOG_CS << " Done5\n";
 						} else {
 							std::string message = "Add-on accepted.";
 							if(campaign == NULL) {
@@ -328,20 +321,17 @@ namespace {
 							scoped_ostream cfgfile = ostream_file(file_);
 							write(*cfgfile, cfg_);
 							network::send_data(construct_message(message),sock);
-							LOG_CS << " Done\n";
 						}
 					} else if(const config* erase = data.child("delete")) {
-						LOG_CS << "deleting campaign " << network::ip_address(sock);
+						LOG_CS << "deleting campaign " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*erase)["name"]);
 						if(campaign == NULL) {
 							network::send_data(construct_error("The add-on does not exist."),sock);
-							LOG_CS << " Done\n";
 							continue;
 						}
 
 						if((*campaign)["passphrase"] != (*erase)["passphrase"]) {
 							network::send_data(construct_error("The passphrase is incorrect."),sock);
-							LOG_CS << " Done2n";
 							continue;
 						}
 
@@ -355,7 +345,6 @@ namespace {
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
 						network::send_data(construct_message("Add-on deleted."),sock);
-						LOG_CS << " Done3";
 					} else if(const config* cpass = data.child("change_passphrase")) {
 						config* campaign = campaigns().find_child("campaign","name",(*cpass)["name"]);
 						if(campaign == NULL) {
@@ -405,7 +394,7 @@ namespace {
 					LOG_CS << "fatal network error\n";
 					break;
 				} else {
-					LOG_CS <<"net error (could be normal) "<<e.message<<" " << network::ip_address(e.socket) << "\n";
+					LOG_CS <<"client disconnect : "<<e.message<<" " << network::ip_address(e.socket) << "\n";
 					e.disconnect();
 				}
 			} catch(config::error& e) {
