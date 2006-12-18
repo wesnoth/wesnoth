@@ -124,7 +124,7 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 #ifdef __BEOS__
 	while(upto < size && timeout > 0) {
 #else
-	while(upto < size) {
+	while(true) {
 #endif
 		{
 			// check if the socket is still locked
@@ -134,58 +134,61 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		}
 		const int res = SDLNet_TCP_Send(sock, &buf[upto], static_cast<int>(size - upto));
 
-		if(res <= 0) {
+		if(res == static_cast<int>(size - upto)) {
+			return SOCKET_READY;
+		}
 #if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)
-			if(errno == EAGAIN)
+		if(errno == EAGAIN)
 #elif defined(EWOULDBLOCK)
-			if(errno == EWOULDBLOCK)
+		if(errno == EWOULDBLOCK)
 #endif
+		{
+			// update how far we are
+			upto += static_cast<size_t>(res);
 			{
+				const threading::lock lock(*global_mutex);
+				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
+			}
 
 #ifdef USE_POLL
-				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT, 0 };
-				int poll_res;
-				do {
-					poll_res = poll(&fd, 1, 15000);
-				} while(poll_res == -1 && errno == EINTR);
+			struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT, 0 };
+			int poll_res;
+			do {
+				poll_res = poll(&fd, 1, 15000);
+			} while(poll_res == -1 && errno == EINTR);
 
-				if(poll_res > 0)
-					continue;
+			if(poll_res > 0)
+				continue;
 #elif defined(USE_SELECT) && !defined(__BEOS__)
-				fd_set writefds;
-				FD_ZERO(&writefds);
-				FD_SET(((_TCPsocket*)sock)->channel, &writefds);
-				int retval;
-				struct timeval tv;
-				tv.tv_sec = 15;
-				tv.tv_usec = 0;
+			fd_set writefds;
+			FD_ZERO(&writefds);
+			FD_SET(((_TCPsocket*)sock)->channel, &writefds);
+			int retval;
+			struct timeval tv;
+			tv.tv_sec = 15;
+			tv.tv_usec = 0;
 
-				do {
-					retval = select(((_TCPsocket*)sock)->channel + 1, NULL, &writefds, NULL, &tv);
-				} while(retval == -1 && errno == EINTR);
+			do {
+				retval = select(((_TCPsocket*)sock)->channel + 1, NULL, &writefds, NULL, &tv);
+			} while(retval == -1 && errno == EINTR);
 
-				if(retval > 0)
-					continue;
+			if(retval > 0)
+				continue;
 #elif defined(__BEOS__)
+			if(res > 0) {
+				// some data was sent, reset timeout
+				timeout = 15000;
+			} else {
 				// sleep for 100 milliseconds
 				SDL_Delay(100);
 				timeout -= 100;
-				continue;
-#endif
 			}
-
-			return SOCKET_ERRORED;
-		}
-#ifdef __BEOS__
-		timeout = 15000;
+			continue;
 #endif
-		upto += static_cast<size_t>(res);
-		{
-			const threading::lock lock(*global_mutex);
-			transfer_stats[sock].first.transfer(static_cast<size_t>(res));
 		}
+
+		return SOCKET_ERRORED;
 	}
-	return SOCKET_READY;
 }
 
 SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
