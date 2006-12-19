@@ -34,7 +34,7 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 	prcnt_(percent)
 {
 	std::string path = get_binary_file_location("images","misc/logo.png");
-	logo_surface_ = IMG_Load(path.c_str());
+    logo_surface_ = IMG_Load(path.c_str());
 		if (!logo_surface_) {
 			std::cerr << "loadscreen: Failed to load the logo: " << path << std::endl;
 		}
@@ -58,20 +58,28 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	surface const gdis = screen_.getSurface();
 	SDL_Rect area;
 	/* Draw logo if it was succesfully loaded. */
-	if (logo_surface_) {
-		area.x = (screen_.getx () - logo_surface_->w) / 2;
-		area.y = ((scry - logo_surface_->h) / 2) - pbh;
-		area.w = logo_surface_->w;
-		area.h = logo_surface_->h;
-		/* Check if we have enough pixels to display it. */
-		if (area.x > 0 && area.y > 0) {
-			pby_offset_ = (pbh + area.h)/2;
-			gl::draw_surface(logo_surface_,area.x,area.y);
-		}
-		else {
-			std::cerr << "loadscreen: Logo image is too big." << std::endl;
-		}
-		logo_drawn_ = true;
+	if(! logo_drawn_) {
+        SDL_Rect clr;
+        clr.x=0;
+        clr.y=0;
+        clr.w=screen_.getx();
+        clr.h=screen_.gety();
+        gl::rect(clr,0,0,0);
+        if (logo_surface_) {
+            area.x = (screen_.getx () - logo_surface_->w) / 2;
+            area.y = ((scry - logo_surface_->h) / 2) - pbh;
+            area.w = logo_surface_->w;
+            area.h = logo_surface_->h;
+            /* Check if we have enough pixels to display it. */
+            if (area.x > 0 && area.y > 0) {
+                pby_offset_ = (pbh + area.h)/2;
+                gl::draw_surface(logo_surface_,area.x,area.y);
+            }
+            else {
+                std::cerr << "loadscreen: Logo image is too big." << std::endl;
+            }
+        }
+           logo_drawn_ = true;
 	}
 	int pbx = (scrx - pbw)/2; /* Horizontal location. */
 	int pby = (scry - pbh)/2 + pby_offset_; /* Vertical location. */
