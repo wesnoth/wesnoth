@@ -50,6 +50,7 @@ struct player_info
 {
 	player_info():gold(-1) {}
 
+	std::string name; /** < to sore the current_player name */
 	int gold; /** < amount of gold the player has saved */
 	std::vector<unit> available_units; /** < units the player may recall */
 

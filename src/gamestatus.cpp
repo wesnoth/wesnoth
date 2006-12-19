@@ -302,6 +302,8 @@ player_info read_player(const game_data& data, const config* cfg)
 {
 	player_info res;
 
+	res.name = (*cfg)["name"];
+
 	res.gold = atoi((*cfg)["gold"].c_str());
 
 	const config::child_list& units = cfg->get_children("unit");
@@ -408,6 +410,8 @@ game_state read_game(const game_data& data, const config* cfg)
 
 void write_player(const player_info& player, config& cfg)
 {
+	cfg["name"] = player.name;
+
 	char buf[50];
 	snprintf(buf,sizeof(buf),"%d",player.gold);
 

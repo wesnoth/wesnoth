@@ -248,7 +248,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			}
 
 			const bool has_next_scenario = !gamestate_.scenario.empty() &&
-			                               gamestate_.scenario != "null";
+											gamestate_.scenario != "null";
+
+			//save current_player name to reuse it when setting next_scenario side info
+			for (std::vector<team>::iterator i = teams_.begin(); i != teams_.end(); ++i) {
+				player_info *player=gamestate_.get_player(i->save_id());
+				if (player)
+					player->name = i->current_player();
+			}
 
 			//add all the units that survived the scenario
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
