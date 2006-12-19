@@ -240,7 +240,7 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	// failure.
 	wassert(attacker_weapon< (int)attacker.attacks().size());
 
-	if (attacker_weapon == -1 && attacker.attacks().size() == 1)
+	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
@@ -255,17 +255,22 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 
 	// If those didn't have to generate statistics, do so now.
 	if (!attacker_stats_) {
-		const attack_type *def = NULL;
+		const attack_type *adef = NULL;
+		const attack_type *ddef = NULL;
+		if (attacker_weapon >= 0) {
+			wassert(attacker_weapon < (int)attacker.attacks().size());
+			adef = &attacker.attacks()[attacker_weapon];
+		}
 		if (defender_weapon >= 0) {
 			wassert(defender_weapon < (int)defender.attacks().size());
-			def = &defender.attacks()[defender_weapon];
+			ddef = &defender.attacks()[defender_weapon];
 		}
 		wassert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
 		attacker_stats_ = new unit_stats(attacker, attacker_loc, attacker_weapon,
-										 true, defender, defender_loc, def,
+										 true, defender, defender_loc, ddef,
 										units, teams, status, map, gamedata);
 		defender_stats_ = new unit_stats(defender, defender_loc, defender_weapon, false,
-										 attacker, attacker_loc, &attacker.attacks()[attacker_weapon],
+										 attacker, attacker_loc, adef,
 										 units, teams, status, map, gamedata);
 	}
 }
@@ -375,11 +380,12 @@ unsigned battle_context::choose_attacker_weapon(const unit &attacker, const unit
 	unsigned int i;
 	for (i = 0; i < attacker.attacks().size(); i++) {
 		const attack_type &att = attacker.attacks()[i];
-		if (att.defense_weight() > 0) {
+		if (att.attack_weight() > 0) {
 			choices.push_back(i);
 		}
 	}
-	wassert(choices.size() > 0);
+	if (choices.size() == 0)
+		return -1;
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], map, teams, units,
 												  status, gamedata, attacker_loc, defender_loc, prev_def);
@@ -741,6 +747,13 @@ attack::attack(display& gui, const gamemap& map,
 	d_ = units_.find(defender);
 
 	if(a_ == units_.end() || d_ == units_.end()) {
+		return;
+	}
+
+	// no attack weapon => stop here and don't attack
+	if (attack_with < 0) {
+		a_->second.set_attacks(a_->second.attacks_left()-1);
+		a_->second.set_movement(-1);
 		return;
 	}
 
