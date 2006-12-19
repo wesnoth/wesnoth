@@ -16,6 +16,7 @@
 #include "widgets/slider.hpp"
 #include "font.hpp"
 #include "image.hpp"
+#include "gl_draw.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -138,11 +139,10 @@ void slider::draw_contents()
 	surface const screen = video().getSurface();
 
 	SDL_Rect line_rect = { loc.x + image->w / 2, loc.y + loc.h / 2, loc.w - image->w, 1 };
-	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format,
-		line_colour.r, line_colour.g, line_colour.b));
+	gl::rect(line_rect,line_colour.r,line_colour.g,line_colour.b);
 
 	SDL_Rect const &slider = slider_area();
-	video().blit_surface(slider.x, slider.y, image);
+	gl::draw_surface(image,slider.x,slider.y);
 }
 
 void slider::set_slider_position(int x)
@@ -182,9 +182,9 @@ void slider::handle_event(const SDL_Event& event)
 {
 	if (hidden() || !enabled())
 		return;
-	
+
 	STATE start_state = state_;
-	
+
 	switch(event.type) {
 	case SDL_MOUSEBUTTONUP:
 		state_ = NORMAL;
