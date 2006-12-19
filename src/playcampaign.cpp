@@ -170,7 +170,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		const config::child_list& sides_list = scenario->get_children("side");
 		for(config::child_list::const_iterator side = sides_list.begin();
 				side != sides_list.end(); ++side) {
-			std::string id = (**side)["current_player"];
+			std::string id = (**side)["save_id"];
 			if(id.empty())
 				continue;
 			controllers[id] = player_controller((**side)["controller"],
@@ -367,15 +367,22 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				const config::child_list& sides_list = starting_pos.get_children("side");
 				for(config::child_list::const_iterator side = sides_list.begin();
 						side != sides_list.end(); ++side) {
-
-					std::string id = (**side)["current_player"];
+					std::string id = (**side)["save_id"];
 					if(id.empty()) {
 						continue;
 					}
 
+					/*Upadate side info to match current_player info to
+					  allow it taking the side in next scenario and to be
+					  set in the players list on side server */
 					controller_map::const_iterator ctr = controllers.find(id);
 					if(ctr != controllers.end()) {
-						(**side)["description"] = ctr->second.description;
+						player_info *player = state.get_player(id);
+						if (player) {
+							(**side)["current_player"] = player->name;
+							//TODO : remove (see TODO line 276 in server/game.cpp)
+							(**side)["user_description"] = player->name;
+						}
 						(**side)["controller"] = ctr->second.controller;
 					}
 				}
