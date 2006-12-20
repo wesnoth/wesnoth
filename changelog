@@ -7,13 +7,17 @@ Version 1.1.14+svn:
      * new ice transition
      * modified swamp color
    * units:
-     * new teamcolored baseframes: grand marshal, human assassin, sergeant
+     * new team-colored base-frames: grand marshal, human assassin, sergeant
    * misc:
      * new icons for preferences
  * multiplayer maps:
    * revised maps: Blitz, Den of Onis, Meteor Lake, Lagoon
  * multiplayer
    * fixed passing controller in mp campaign (bug #7936)
+   * added help strings so that long map names can be read from the MP Create
+     screen
+   * used small bold text for "Load Game..." item
+   * support added for allow_new_game=no (for MP Campaigns)
  * misc:
    * fixed the AI usage of attack_weight (bug #7953)
 
@@ -38,7 +42,7 @@ Version 1.1.14:
      * new teamcolored baseframes: Halberdier, Heavy Infanfantry, Pikeman, 
        Shocktrooper, Siegetrooper
      * new baseframe: Yeti
-     * some new skulls for skelleton units
+     * some new skulls for skeleton units
    * misc:
      * new attack icon for wooden sword
      * new dwarven gate
@@ -55,7 +59,7 @@ Version 1.1.14:
       Sablestone Delta, Sulla's Ruins
  * misc:
    * fixed a crash in the recall event_handler
-   * fixed game crashes durin AI turn (#7988)
+   * fixed game crashes during AI turn (#7988)
    * fixed graphic glitch with large units
    * fixed sighted event with delay shroud during move&attack and also only
      move
