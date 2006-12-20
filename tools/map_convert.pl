@@ -18,15 +18,15 @@ if(! -r "$terrain_file"){ die "can not read terrain file: $terrain_file\n";}
 if(! -r "$map_file"){ die "can not read map file: $map_file\n";}
 if(-e "$new_map_file"){ die "New map file already exists: $new_map_file\n";}
 
-$conversion{1}='1_K';
-$conversion{2}='2_K';
-$conversion{3}='3_K';
-$conversion{4}='4_K';
-$conversion{5}='5_K';
-$conversion{6}='6_K';
-$conversion{7}='7_K';
-$conversion{8}='8_K';
-$conversion{9}='9_K';
+$conversion{1}='1 _K';
+$conversion{2}='2 _K';
+$conversion{3}='3 _K';
+$conversion{4}='4 _K';
+$conversion{5}='5 _K';
+$conversion{6}='6 _K';
+$conversion{7}='7 _K';
+$conversion{8}='8 _K';
+$conversion{9}='9 _K';
 
 #parse terrain_file
 open(TERRAIN, "<$terrain_file");
