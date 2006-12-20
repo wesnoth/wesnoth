@@ -251,7 +251,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 											gamestate_.scenario != "null";
 
 			//save current_player name to reuse it when setting next_scenario side info
-			for (std::vector<team>::iterator i = teams_.begin(); i != teams_.end(); ++i) {
+			std::vector<team>::iterator i;
+			for (i = teams_.begin(); i != teams_.end(); ++i) {
 				player_info *player=gamestate_.get_player(i->save_id());
 				if (player)
 					player->name = i->current_player();
@@ -271,7 +272,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			//'continue' is like a victory, except it doesn't announce victory,
 			//and the player retains 100% of gold.
 			if(end_level.result == LEVEL_CONTINUE || end_level.result == LEVEL_CONTINUE_NO_SAVE) {
-				for(std::vector<team>::iterator i=teams_.begin(); i!=teams_.end(); ++i) {
+				for(i=teams_.begin(); i!=teams_.end(); ++i) {
 					player_info *player=gamestate_.get_player(i->save_id());
 					if(player) {
 						player->gold = i->gold();
@@ -284,7 +285,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 			std::stringstream report;
 
-			for(std::vector<team>::iterator i=teams_.begin(); i!=teams_.end(); ++i) {
+			for(i=teams_.begin(); i!=teams_.end(); ++i) {
 				if (!i->is_persistent())
 					continue;
 
