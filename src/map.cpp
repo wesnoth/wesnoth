@@ -359,21 +359,6 @@ void gamemap::read(const std::string& data)
 			}
 		}
 	}
-
-#if 0	
-	unsigned ysize = this->y();
-	LOG_G << "loaded map: " << this->x() << ',' << ysize << '\n';
-
-	//FIXME MdW remove debug
-	std::cerr << "loaded map: " << this->x() << ',' << ysize << '\n';
-	for(unsigned x = 0; x < this->x(); ++x) {
-		for(unsigned y = 0; y < ysize; ++y) {
-			std::cerr << tiles_[x][y] << ",";
-
-		}
-		std::cerr << "\n";
-	}
-#endif	
 }
 
 std::string gamemap::write() const
@@ -526,7 +511,6 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 	}
 
 	borderCache_.insert(std::pair<location, t_translation::t_letter>(loc,used_terrain));
-
 	return used_terrain;
 }
 
@@ -551,7 +535,8 @@ int gamemap::num_valid_starting_positions() const
 
 int gamemap::num_starting_positions() const
 {
-	return sizeof(startingPositions_)/sizeof(*startingPositions_);
+	return sizeof(startingPositions_)/sizeof(*startingPositions_); //FIXME MdW this one already has the number of starting positions
+																   // wonder whether it has any users
 }
 
 int gamemap::is_starting_position(const gamemap::location& loc) const
@@ -596,11 +581,17 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 	const std::string& tod_id = cfg["time_of_day_id"];
 	// Any of these may be a CSV
 	t_translation::t_list terrain_letter(1, get_terrain_info(loc).number());
+
 	
 	// FIXME MdW rewrote the old part, but haven't looked at what it should do
 	// but some documentation would be nice, not sure whether this function 
 	// still works after the latest modifications
 	if(!terrain.empty()) {
+		// just see who calls us an with which data...
+		std::cerr << ">> gamemap::terrain_matches_filter: terrain = " 
+			<< t_translation::write_list(terrain) << " terrain_letter = "
+			<< t_translation::write_list(terrain_letter) << "\n";
+
 		if(terrain != terrain_letter) {
 			if(std::find(terrain.begin(),terrain.end(),t_translation::COMMA) != terrain.end() &&
 				std::search(terrain.begin(),terrain.end(),
