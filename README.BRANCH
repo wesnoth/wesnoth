@@ -6,10 +6,7 @@ README.FILES contains files modified so far
 
 Main TODO list is here
 
-* Make * sytanx work in builder rules
-  started this but is tricker than expected
-  Seems to work the tricky part constrain_size
-  is ignored, doesn't include terrains with wildcards
+* Convert the random maps to only use the new letter system
 
 * Convert all users to the new terrain system
   Done still needs more testing
@@ -26,10 +23,20 @@ Main TODO list is here
 
 * editor resizing seems to fail FIXED flipping not
   but I want to give the editor a bug overhaul so I'm
-  not going to do these things now.
+  not going to do these things now. Flipping is also
+  fixed but the code is not too clean.
+  Random maps fail but that code is scheduled for some changes
+  anyways. I think these changes will fix this problem
+
+* The new map reader fails if a map has no EOL symbol inside
+  found while testing Weshack.
 
 * _K should be also be hidden in the editor
 
 * The new keeps need a better image in the editor
 
 * test everything
+
+* Convert all campaigns
+
+* Convert all multiplayer maps

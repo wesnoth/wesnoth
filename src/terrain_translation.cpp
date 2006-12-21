@@ -236,6 +236,10 @@ std::string write_list(const t_list& list)
 	return result.str();
 }
 
+//FIXME MdW we fail on a map with 1 line
+//also check builder map for this problem
+//only tested the new format and it end in an infinite loop
+//test code in Weshack
 t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_positions)
 {
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 

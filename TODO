@@ -2,24 +2,20 @@ src/builder.cpp:608:								//FIXME MdW this conversion is rather ugly
 src/builder.cpp:613:						// FIXME MdW add error msg
 src/cavegen.cpp:110:			out << t_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
 src/display.cpp:1694:	// FIXME MdW might be nice to rewrite as a vector
-src/game.cpp:1936://FIXME MdW this catch is disabled in order to trace memory overflows. 
 src/game_events.cpp:1164:			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
 src/game_events.cpp:1783:				const t_translation::t_letter c = game_map->get_terrain(*j); //FIXME MdW test should work
 src/help.cpp:1459:		//FIXME MdW the changes here seem to compile but they have to 
 src/map.cpp:320:		// FIXME MdW think about this part
-src/map.cpp:367:	//FIXME MdW remove debug
-src/map.cpp:464:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
-src/map.cpp:600:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
+src/map.cpp:449:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
+src/map.cpp:538:	return sizeof(startingPositions_)/sizeof(*startingPositions_); //FIXME MdW this one already has the number of starting positions
+src/map.cpp:586:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
 src/mapgen.cpp:380://FIXME MdW test this modification	
 src/preferences.cpp:79:	t_translation::t_list terrain; //FIXME MdW geen =
 src/terrain.cpp:21:#include "wassert.hpp" // FIXME MdW only used for the terrain initalization
-src/terrain_translation.cpp:261:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
-src/terrain_translation.cpp:568://FIXME MdW, there are some optimizations which can be done here
-src/terrain_translation.cpp:588://FIXME MdW, there are some optimizations which can be done here
-src/terrain_translation.cpp:590:// FIXME MdW remove debug code
-src/terrain_translation.cpp:829:	TERRAIN_LETTER terrain = str[0];  //FIXME MdW rename terrain to letter 
-src/terrain_translation.cpp:841://FIXME MdW this code is ready and tested only the map format needs to be documentated
-src/terrain_translation.cpp:881:			//skip the following newlines FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
-src/terrain_translation.hpp:65:	extern const t_letter NOT;		// FIXME MdW remove once no longer used in the builder
-src/terrain_translation.hpp:71:	//FIXME MdW we throw nobody catches...
-src/terrain_translation.hpp:257:	// FIXME MdW builder.cpp uses TB_STAR in a not so clean way
+src/terrain_translation.cpp:181://	throw error("empty strings not allowed in read_letter"); FIXME MdW evaluate this it aborts the editor
+src/terrain_translation.cpp:239://FIXME MdW we fail on a map with 1 line
+src/terrain_translation.cpp:581:			//FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
+src/terrain_translation.cpp:607:	// FIXME MdW this initial table should be obsolete right now so remove it
+src/terrain_translation.hpp:100:	extern const t_letter NOT;		// FIXME MdW remove once no longer used in the builder
+src/terrain_translation.hpp:101:	extern const t_letter COMMA;	// , FIXME MdW this one is also need extra things
+src/terrain_translation.hpp:279:	// FIXME MdW builder.cpp uses TB_STAR in a not so clean way
