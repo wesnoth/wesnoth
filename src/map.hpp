@@ -191,6 +191,10 @@ public:
 	//1. Thus max_starting positions is
 	//STARTING_POSITIONS - 1
 	enum { STARTING_POSITIONS = 10 };
+protected:
+	t_translation::t_map tiles_;
+	location startingPositions_[STARTING_POSITIONS];
+	
 private:
 	int num_starting_positions() const;
 
@@ -198,10 +202,8 @@ private:
 	std::map<t_translation::t_letter, terrain_type> letterToTerrain_;
 	std::map<std::string,terrain_type> terrain_; 
 	
-	t_translation::t_map tiles_;
 	std::vector<location> villages_;
 
-	location startingPositions_[STARTING_POSITIONS];
 
 	mutable std::map<location, t_translation::t_letter> borderCache_;
 	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;

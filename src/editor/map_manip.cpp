@@ -22,6 +22,97 @@
 #include <algorithm>
 #include <set>
 
+std::string editormap::resize(const size_t width, const size_t height, const t_translation::t_letter filler)
+{
+	const unsigned old_w = static_cast<unsigned>(x());
+	const unsigned old_h = static_cast<unsigned>(y());
+
+	if(old_w == width && old_h == height) {
+		return "";
+	}
+	
+	if (old_w != width) {
+		const t_translation::t_list one_row(old_h, filler);		
+		tiles_.resize(width, one_row);
+	}
+
+	if(height != old_h) {
+		for(size_t i = 0; i < tiles_.size(); ++i) {
+			tiles_[i].resize(height, filler);
+		}
+	}
+
+	return write();
+}
+
+std::string editormap::flip(const map_editor::FLIP_AXIS axis)
+{
+	if(axis !=  map_editor::FLIP_X && axis != map_editor::FLIP_Y) {
+		return "";
+	}
+
+	if(axis == map_editor::FLIP_X) {
+		// due to the hexes we need some mirror tricks when mirroring over the
+		// X axis. We resize the map and fill it. The odd columns will be extended
+		// with the data in row 0 the even columns are extended with the data in
+		// the last row
+		const size_t middle = (tiles_[0].size() / 2); // the middle if reached we flipped all
+		const size_t end = tiles_[0].size() - 1; // the last row _before_ resizing
+		for(size_t x = 0; x < tiles_.size(); ++x) {
+			if(x % 2) {
+				// odd lines
+				tiles_[x].resize(tiles_[x].size() + 1, tiles_[x][0]);
+				
+				for(size_t y1 = 0, y2 = end; y1 < middle; ++y1, --y2) {
+					swap_starting_position(x, y1, x, y2);
+					std::swap(tiles_[x][y1], tiles_[x][y2]);
+				}
+			} else {
+				// even lines
+				tiles_[x].resize(tiles_[x].size() + 1, tiles_[x][end]);
+				
+				for(size_t y1 = 0, y2 = end + 1; y1 < middle; ++y1, --y2) {
+					swap_starting_position(x, y1, x, y2);
+					std::swap(tiles_[x][y1], tiles_[x][y2]);
+				}
+
+			}
+		}
+	} else { // FLIP_Y
+		// flipping on the Y axis requires no resize so the code
+		// is much simpeler
+		const size_t middle = (tiles_.size() / 2);
+		const size_t end = tiles_.size() - 1;
+		for(size_t y = 0; y < tiles_[0].size(); ++y) {
+			for(size_t x1 = 0, x2 = end; x1 < middle; ++x1, --x2) {
+				swap_starting_position(x1, y, x2, y);
+				std::swap(tiles_[x1][y], tiles_[x2][y]);
+			}
+		}
+	}
+
+	return write();
+}
+
+void editormap::set_starting_position(const int pos, const location loc) {
+	startingPositions_[pos] = loc;
+}
+
+void editormap::swap_starting_position(const size_t x1, const size_t y1,
+										const size_t x2, const size_t y2)
+{
+	const int pos1 = is_starting_position(location(x1, y1));
+	const int pos2 = is_starting_position(location(x2, y2));
+
+	if(pos1 != -1) {
+		set_starting_position(pos1 + 1, location(x2, y2));
+	}
+	
+	if(pos2 != -1) {
+		set_starting_position(pos2 + 1, location(x1, y1));
+	}
+}
+
 namespace {
 
 	// Grow the map, represented by lines, one step. If grow_height is
@@ -191,67 +282,15 @@ std::set<gamemap::location> get_component(const gamemap &map,
 	return filled;
 }
 
-std::string resize_map(const gamemap &map, const unsigned new_w,
+std::string resize_map(editormap &map, const unsigned new_w,
 	const unsigned new_h, const t_translation::t_letter fill_with) 
 {
-	std::map<int, t_translation::coordinate> starting_positions;
-	t_translation::t_map map_ = t_translation::read_game_map(map.write(), starting_positions);	
-	bool map_changed = false;
-	const unsigned old_w = (unsigned)map.x();
-	const unsigned old_h = (unsigned)map.y();
-	if (old_w != new_w) {
-		const t_translation::t_list one_row(old_h, fill_with);		
-		map_.resize(new_w, one_row);
-		map_changed = true;
-	}
-	if(new_h != old_h) {
-		for(size_t i = 0; i < map_.size(); ++i) {
-			map_[i].resize(new_h, fill_with);
-		}
-		map_changed = true;
-	}
-	if (map_changed) {
-		return  write_game_map(map_, starting_positions);	
-	}
-	else {
-		return "";
-	}
+	return map.resize(new_w, new_h, fill_with);
 }
 
 
-std::string flip_map(const gamemap &map, const FLIP_AXIS axis) {
-	const std::string str_map = map.write();
-	if (str_map == "") {
-		return str_map;
-	}
-	std::vector<std::string> lines = utils::split(str_map, '\n');
-	std::vector<std::string> new_lines;
-	if (axis == FLIP_Y) {
-		if (is_even(lines[0].size())) {
-			grow_and_pad(map, lines, false);
-		}
-		new_lines.resize(lines.size());
-		std::vector<std::string>::iterator new_line_it = new_lines.begin();
-		for (std::vector<std::string>::const_iterator it = lines.begin();
-			 it != lines.end(); it++) {
-			for (std::string::const_reverse_iterator sit = (*it).rbegin();
-				 sit != (*it).rend(); sit++) {
-				push_back(*new_line_it,*sit);
-			}
-			new_line_it++;
-		}
-	}
-	else if (axis == FLIP_X) {
-		std::vector<std::string>::reverse_iterator it;
-		for (it = lines.rbegin(); it != lines.rend(); it++) {
-			new_lines.push_back(*it);
-		}
-		grow_and_pad(map, new_lines, true);
-	}
-	else {
-		new_lines = lines;
-	}
-	return utils::join(new_lines, '\n');
+std::string flip_map(editormap &map, const FLIP_AXIS axis) {
+	return map.flip(axis);
 }
 
 bool valid_mapdata(const std::string &data, const config &cfg) {
@@ -270,4 +309,13 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	return res;
 }
 
+std::string new_map(const size_t width, const size_t height, const t_translation::t_letter filler)
+{
+	const t_translation::t_list column(height, filler);
+	const t_translation::t_map map(width, column);
+
+	return t_translation::write_game_map(map);
+	
 }
+
+} // namespace

@@ -19,6 +19,7 @@
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
 #include "editor_undo.hpp"
+#include "map_manip.hpp"
 
 #include "../display.hpp"
 #include "../events.hpp"
@@ -43,7 +44,7 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 class map_editor : public events::handler,
 				   public hotkey::command_executor {
 public:
-	map_editor(display &gui, gamemap &map, config &theme, config &game_config);
+	map_editor(display &gui, editormap &map, config &theme, config &game_config);
 	virtual ~map_editor();
 
 	/// Enter the main loop. The loop runs until set_abort() is called
@@ -304,7 +305,7 @@ private:
 	};
 
 	display &gui_;
-	gamemap &map_;
+	editormap &map_;
 	std::string filename_, original_filename_;
 	bool from_scenario_;
 	ABORT_MODE abort_;

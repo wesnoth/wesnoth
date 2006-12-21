@@ -160,7 +160,7 @@ t_translation::t_letter map_editor::old_fg_terrain_;
 t_translation::t_letter map_editor::old_bg_terrain_;
 int map_editor::old_brush_size_;
 
-map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_config)
+map_editor::map_editor(display &gui, editormap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  theme_(theme), game_config_(game_config), map_dirty_(false), l_button_palette_dirty_(true),
 	  everything_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
@@ -471,7 +471,7 @@ void map_editor::change_language() {
 	hotkey::load_descriptions();
 
 	// To reload the terrain names, we need to reload the configuration file
-	gamemap new_map(game_config_, map_.write());
+	editormap new_map(game_config_, map_.write());
 	map_ = new_map;
 
 	// Update the selected terrain strings
