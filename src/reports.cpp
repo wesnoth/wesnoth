@@ -395,7 +395,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 //		if(underlying.size() != 1 || underlying[0] != terrain) {
 		if(underlying.size() != 1 || underlying.front() != terrain) {
-			str << "(";
+			str << " (";
 
 			for(t_translation::t_list::const_iterator i = 
 					underlying.begin(); i != underlying.end(); ++i) {
