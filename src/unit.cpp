@@ -33,6 +33,7 @@
 #include "game_events.hpp"
 #include "sound.hpp"
 #include "sdl_utils.hpp"
+#include "variable.hpp"
 
 #include <ctime>
 #include <algorithm>
@@ -880,8 +881,13 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod) const
+bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bool use_flat_tod) const
 {
+	vconfig tmp_vconf(&orig_cfg);
+	config tmp_unit;
+	write(tmp_unit);
+	tmp_vconf.add_local_var("_filtered_unit",tmp_unit);
+	config cfg = tmp_vconf.get_parsed_config();
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
 	const std::string& type = cfg["type"];

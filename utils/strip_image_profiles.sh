@@ -13,14 +13,14 @@
 #
 # Scipt to strip ICC profiles from all png files within Wesnoth
 #
-# Requirements: bash, imagemagick
+# Requirements: bash, imagemagick, optipng
 # HowToUse: start the script from the wesnoth maindir
 # make sure that the correct files are about to be commited
 # enter a commit message
 # enjoy ICC profile clean png images
 
 find . -name '*.png' -exec grep -li profil {} \; > images_to_convert
-for i in `cat images_to_convert`; do convert -strip $i $i; done
+for i in `cat images_to_convert`; do convert -strip $i $i;  optipng -q -o5 -nb -nc -np $i; done
 svn ci
 rm images_to_convert
 

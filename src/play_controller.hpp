@@ -29,6 +29,7 @@
 #include "mouse_events.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "soundsource.hpp"
 #include "statistics.hpp"
 #include "team.hpp"
 #include "tooltips.hpp"
@@ -111,6 +112,7 @@ protected:
 	help::help_manager help_manager_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
+	soundsource::manager* soundsources_manager_;
 
 	//other objects
 	display* gui_;

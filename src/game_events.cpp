@@ -25,6 +25,7 @@
 #include "replay.hpp"
 #include "SDL_timer.h"
 #include "sound.hpp"
+#include "soundsource.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
@@ -48,6 +49,7 @@
 namespace {
 
 display* screen = NULL;
+soundsource::manager* soundsources = NULL;
 gamemap* game_map = NULL;
 unit_map* units = NULL;
 std::vector<team>* teams = NULL;
@@ -276,6 +278,9 @@ public:
 
 	bool& rebuild_screen() {return rebuild_screen_;}
 
+	void add_event_var(const unit* primary_unit, const unit* secondary_unit=NULL);
+	void rem_event_var();
+
 private:
 	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated);
 
@@ -285,6 +290,26 @@ private:
 	bool rebuild_screen_;
 	vconfig cfg_;
 };
+
+void event_handler::add_event_var(const unit* primary_unit, const unit* secondary_unit)
+{
+	if(primary_unit) {
+		config tmp_cfg;
+		primary_unit->write(tmp_cfg);
+		cfg_.add_local_var("_primary_unit",tmp_cfg);
+	}
+	if(secondary_unit) {
+		config tmp_cfg;
+		secondary_unit->write(tmp_cfg);
+		cfg_.add_local_var("_secondary_unit",tmp_cfg);
+	}
+
+}
+void event_handler::rem_event_var()
+{
+	cfg_.rem_local_var("_primary_unit");
+	cfg_.rem_local_var("_secondary_unit");
+}
 
 gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
 {
@@ -1139,10 +1164,46 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		wassert(state_of_game != NULL);
 		img = utils::interpolate_variables_into_string(img, *state_of_game);
 		halo = utils::interpolate_variables_into_string(halo, *state_of_game);
+
 		if(!img.empty() || !halo.empty()) {
 			screen->add_overlay(loc,img,halo);
 			screen->invalidate(loc);
 			screen->draw();
+		}
+	}
+
+	else if(cmd == "sound_source") {
+		std::string sounds = cfg["sounds"];
+		std::string id = cfg["id"];
+		std::string delay = cfg["delay"];
+		std::string chance = cfg["chance"];
+		std::string play_fogged = cfg["check_fogged"];
+		std::string x = cfg["x"];
+		std::string y = cfg["y"];
+
+		wassert(state_of_game != NULL);
+
+		sounds = utils::interpolate_variables_into_string(sounds, *state_of_game);
+		delay = utils::interpolate_variables_into_string(delay, *state_of_game);
+		chance = utils::interpolate_variables_into_string(chance, *state_of_game);
+		x = utils::interpolate_variables_into_string(x, *state_of_game);
+		y = utils::interpolate_variables_into_string(y, *state_of_game);
+
+		if(!sounds.empty() && !delay.empty() && !chance.empty()) {
+			const std::vector<std::string>& v = utils::split(sounds);
+			const std::vector<std::string>& vx = utils::split(x);
+			const std::vector<std::string>& vy = utils::split(y);
+
+			if(play_fogged.empty())
+				soundsources->add(id, v, lexical_cast<int>(delay), lexical_cast<int>(chance));
+			else
+				soundsources->add(id, v, lexical_cast<int>(delay), 
+						lexical_cast<int>(chance), utils::string_bool(play_fogged));
+
+			for(unsigned int i = 0; i < minimum(vx.size(), vy.size()); ++i) {
+				gamemap::location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
+				soundsources->add_location(id, loc);
+			}
 		}
 	}
 
@@ -1272,8 +1333,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				if(game_events::unit_matches_filter(*u, cfg,gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
-					recruit_unit(*game_map,index+1,*units,*u,loc,utils::string_bool(cfg["show"],true) ? NULL : screen,false,true);
-					avail.erase(u);
+					unit to_recruit(*u);
+					avail.erase(u); //erase before recruiting, since recruiting can fire more events
+					recruit_unit(*game_map,index+1,*units,to_recruit,loc,utils::string_bool(cfg["show"],true) ? NULL : screen,false,true);
 					unit_recalled = true;
 					break;
 				}
@@ -2009,13 +2071,24 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
+	unit* tmp_unit1 = NULL;
+	unit* tmp_unit2 = NULL;
+	if(unit1!= units->end()) {
+		tmp_unit1 = &(unit1->second);
+	}
+	if(unit2!= units->end()) {
+		tmp_unit2 = &(unit2->second);
+	}
+	handler.add_event_var(tmp_unit1,tmp_unit2);
+
 
 	const vconfig::child_list first_filters = handler.first_arg_filters();
 	vconfig::child_list::const_iterator ffi;
 	for(ffi = first_filters.begin();
-	    ffi != first_filters.end(); ++ffi) {
+			ffi != first_filters.end(); ++ffi) {
 
 		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,*ffi)) {
+			handler.rem_event_var();
 			return false;
 		}
 	}
@@ -2023,33 +2096,36 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	const vconfig::child_list first_special_filters = handler.first_special_filters();
 	special_matches = first_special_filters.size() ? false : true;
 	for(ffi = first_special_filters.begin();
-	    ffi != first_special_filters.end(); ++ffi) {
+			ffi != first_special_filters.end(); ++ffi) {
 
 		if(unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"),*ffi)) {
 			special_matches = true;
 		}
 	}
 	if(!special_matches) {
+		handler.rem_event_var();
 		return false;
 	}
 
 	const vconfig::child_list second_filters = handler.second_arg_filters();
 	for(vconfig::child_list::const_iterator sfi = second_filters.begin();
-	    sfi != second_filters.end(); ++sfi) {
+			sfi != second_filters.end(); ++sfi) {
 		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,*sfi)) {
+			handler.rem_event_var();
 			return false;
 		}
 	}
 	const vconfig::child_list second_special_filters = handler.second_special_filters();
 	special_matches = second_special_filters.size() ? false : true;
 	for(ffi = second_special_filters.begin();
-	    ffi != second_special_filters.end(); ++ffi) {
+			ffi != second_special_filters.end(); ++ffi) {
 
 		if(unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"),*ffi)) {
 			special_matches = true;
 		}
 	}
 	if(!special_matches) {
+		handler.rem_event_var();
 		return false;
 	}
 
@@ -2067,6 +2143,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		handler.disable();
 	}
 
+	handler.rem_event_var();
 	return res;
 }
 
@@ -2128,6 +2205,7 @@ config::child_list unit_wml_configs;
 std::set<std::string> unit_wml_ids;
 
 manager::manager(const config& cfg, display& gui_, gamemap& map_,
+		 soundsource::manager& sndsources_,
                  unit_map& units_,
                  std::vector<team>& teams_,
                  game_state& state_of_game_, gamestatus& status,
@@ -2148,6 +2226,7 @@ manager::manager(const config& cfg, display& gui_, gamemap& map_,
 
 	teams = &teams_;
 	screen = &gui_;
+	soundsources = &sndsources_;
 	game_map = &map_;
 	units = &units_;
 	state_of_game = &state_of_game_;

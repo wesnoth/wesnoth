@@ -270,9 +270,12 @@ void game::update_side_data()
 			}
 			side_index = static_cast<size_t>(side_num - 1);
 
-			if (! sides_taken_[side_index]){
+			if (!sides_taken_[side_index]){
 				if((**sd)["controller"] == "network") {
 					side_controllers_[side_index] = "network";
+					/*TODO : change the next line (and all related code :o) to :
+					  if((**sd)["curent_player"] == info->second.name()) {
+					  I won't make it before 1.2 is out in case of regression */
 					if((**sd)["user_description"] == info->second.name()) {
 						sides_.insert(std::pair<network::connection, size_t>(*player, side_index));
 						sides_taken_[side_index] = true;

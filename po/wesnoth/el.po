@@ -150,8 +150,8 @@ msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-31 12:50+0200\n"
-"PO-Revision-Date: 2005-09-17 00:07+0300\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2006-12-15 16:18+0200\n"
+"Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -160,9 +160,8 @@ msgstr ""
 "X-Generator: KBabel 1.0.2\n"
 
 #: data/abilities.cfg:8
-#, fuzzy
 msgid "heals +4"
-msgstr "γιατρεύει"
+msgstr "γιατρεύει +4"
 
 #: data/abilities.cfg:13
 msgid ""
@@ -177,9 +176,8 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:27
-#, fuzzy
 msgid "heals +8"
-msgstr "γιατρεύει"
+msgstr "γιατρεύει +8"
 
 #: data/abilities.cfg:32
 msgid ""
@@ -220,14 +218,11 @@ msgid "steadfast"
 msgstr "απτόητος"
 
 #: data/abilities.cfg:76
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"απτόητος\n"
-"η  αντοχή τής μονάδας αυτής διπλασιάζεται μέχρι 50%  σέ άμυνα"
 
 #: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
 #: data/abilities.cfg:183 data/abilities.cfg:239
@@ -252,15 +247,11 @@ msgid "skirmisher"
 msgstr "ακροβολιστής"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"ακροβολιστής\n"
-"η μονάδα αυτή μπορεί νά προσπεράειγρήγορα  τούς εχθρούς καί αγνοεί τις  "
-"Ζώνες Ελέγχου"
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -286,6 +277,9 @@ msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
+"Τηλεμεταφορά:\n"
+"Αυτή η μονάδα μπορεί να τηλεμεταφερθεί ανάμεσα σε δύο φιλικά χωριά "
+"χρησιμοποιώντας μία από τις κινήσεις της."
 
 #: data/abilities.cfg:336 data/abilities.cfg:337
 msgid "ambush"
@@ -329,12 +323,10 @@ msgstr ""
 "μονάδες δίπλα από αυτή τη μονάδα."
 
 #: data/abilities.cfg:378 data/abilities.cfg:383
-#, fuzzy
 msgid "submerge"
-msgstr "ραβδί"
+msgstr ""
 
 #: data/abilities.cfg:382 data/abilities.cfg:387
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -343,18 +335,10 @@ msgid ""
 "for any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
-"Ενέδρα:\n"
-"Αυτή η μονάδα μπορεί να κρυφτεί σε δάσος και να μείνει αθέατη από τους "
-"εχθρούς της.\n"
-"\n"
-"Οι εχθρικές μονάδες δε μπορούν να δουν ούτε να επιτεθούν αυτή τη μονάδα όταν "
-"είναι σε δάσος εκτός αν η μονάδα επιτεθεί όπου εμφανίζεται ή αν υπάρχουν "
-"εχθρικές μονάδες δίπλα από αυτή τη μονάδα."
 
 #: data/abilities.cfg:405
-#, fuzzy
 msgid "berserk"
-msgstr "Παρατηρητές"
+msgstr ""
 
 #: data/abilities.cfg:407
 msgid ""
@@ -388,9 +372,8 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:443
-#, fuzzy
 msgid "slows"
-msgstr "επιβραδυμένος"
+msgstr "επιβραδύνει"
 
 #: data/abilities.cfg:445
 msgid ""
@@ -399,11 +382,14 @@ msgid ""
 "caused by attacks and slowed units move at half the normal speed (rounded "
 "up)."
 msgstr ""
+"Επιβραδύνει:\n"
+"Αυτή η επίθεση επιβραδύνει τον στόχο μέχρι να τελειώσει τον γύρο του. Η "
+"επιβράδυνση μειώνει την ζημιά που θα προκληθεί και οι επιβραδυμένες  μονάδες "
+"κινούνται στο μισό της κανονικής τους κίνησής της (στρογγυλοποιημένη)."
 
 #: data/abilities.cfg:451
-#, fuzzy
 msgid "stones"
-msgstr "πέτρα"
+msgstr "πέτρες"
 
 #: data/abilities.cfg:453
 msgid ""
@@ -411,6 +397,9 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"Πέτρωμα:\n"
+"Αυτή η επίθεση μετατρέπει τον στόχο σε πέτρα. Οι μονάδες που γίνονται πέτρα "
+"δεν μπορούν να κουνηθούν ή να επιτεθούν."
 
 #: data/abilities.cfg:460
 msgid "marksman"
@@ -431,6 +420,8 @@ msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
+"Μαγική:\n"
+"Αυτή η επίθεση έχει πάντα 70% πιθανότητες να είναι εύστοχη."
 
 #: data/abilities.cfg:482
 msgid "swarm"
@@ -447,7 +438,7 @@ msgstr ""
 
 #: data/abilities.cfg:491
 msgid "charge"
-msgstr ""
+msgstr "έφοδος"
 
 #: data/abilities.cfg:493
 msgid ""
@@ -455,11 +446,13 @@ msgid ""
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
+"Έφοδος:\n"
+"Αυτή η επίθεση κάνει διπλάσια ζημιά στον στόχο. Επίσης, προκαλεί στην μονάδα "
+"να δέχεται διπλάσια ζημιά από την αντεπίθεση του στόχου."
 
 #: data/abilities.cfg:503
-#, fuzzy
 msgid "drains"
-msgstr "ρούφηγμα ζωής"
+msgstr ""
 
 #: data/abilities.cfg:505
 msgid ""
@@ -469,15 +462,17 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:511
-#, fuzzy
 msgid "firststrike"
-msgstr "χτυπήματα"
+msgstr "Πρώτο χτύπημα"
 
 #: data/abilities.cfg:513
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Πρώτο χτύπημα:\n"
+"Αυτή η μονάδα πάντα χτυπάει πρώτη μ'αυτήν την επίθεση, ακόμα και όταν "
+"αμύνεται."
 
 #: data/abilities.cfg:520
 msgid "poison"
@@ -489,231 +484,191 @@ msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
+"Δηλητήριο:\n"
+"Αυτή η επίθεση δηλητηριάζει τον στόχο. Οι δηλητηριασμένες μονάδες χάνουν 8 "
+"ΒΥ κάθε γύρο μέχρι να θεραπευτούνε ή έχουν 1 ΒΥ."
 
 #: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
 #: data/campaigns/Heir_To_The_Throne.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
-msgstr "+ Σχεδιαστές γραφικών καί εικόνων"
+msgstr "Σχεδιαστές γραφικών καί εικόνων"
 
 #: data/about.cfg:54
-#, fuzzy
 msgid "Music"
-msgstr "+Μουσική"
+msgstr "Μουσική"
 
 #: data/about.cfg:65
-#, fuzzy
 msgid "Scenario Designers"
-msgstr "+Σχεδιαστές σεναρίων"
+msgstr "Σχεδιαστές σεναρίων"
 
 #: data/about.cfg:82
-#, fuzzy
 msgid "Multiplayer Developers"
-msgstr "+Χάρτες γιά πολλούς παίχτες"
+msgstr "Προγραμματιστές Δικτυακών Παιχνιδιών"
 
 #: data/about.cfg:92
-#, fuzzy
 msgid "Multiplayer Maps"
-msgstr "+Χάρτες γιά πολλούς παίχτες"
+msgstr "Χάρτες Πολλών Παικτών"
 
 #: data/about.cfg:102
-#, fuzzy
 msgid "Packagers"
-msgstr "+Πακετάρισμα "
+msgstr ""
 
 #: data/about.cfg:117 data/campaigns/The_South_Guard.cfg:39
 #: data/campaigns/Two_Brothers.cfg:36
 #: data/campaigns/Under_the_Burning_Suns.cfg:47
-#, fuzzy
 msgid "Miscellaneous"
-msgstr "+Λοιπά "
+msgstr ""
 
 #: data/about.cfg:126
-#, fuzzy
 msgid "Internationalization Managers"
-msgstr "+Διαχειριστές Μεταφράσεων καί πολυγλωσικού περιβάλλοντος"
+msgstr ""
 
 #: data/about.cfg:137
-#, fuzzy
 msgid "Afrikaans Translation"
-msgstr "+Μετάφραση Αφρικάανς(Ν. Αφρική)"
+msgstr "Αφρικάνικη Μετάφραση"
 
 #: data/about.cfg:147
-#, fuzzy
 msgid "Basque Translation"
-msgstr "+Βασκική Μετάφραση"
+msgstr "Βασκική Μετάφραση"
 
 #: data/about.cfg:156
-#, fuzzy
 msgid "Bulgarian Translation"
-msgstr "+Βουλγαρική Μετάφραση"
+msgstr "Βουλγαρική Μετάφραση"
 
 #: data/about.cfg:164
-#, fuzzy
 msgid "Catalan Translation"
-msgstr "+Καταλανική Μετάφραση"
+msgstr "Καταλανική Μετάφραση"
 
 #: data/about.cfg:180
-#, fuzzy
 msgid "Chinese Translation"
-msgstr "+Κινέζικη Μετάφραση"
+msgstr "Κινέζικη Μετάφραση"
 
 #: data/about.cfg:187
-#, fuzzy
 msgid "Czech Translation"
-msgstr "+Τσέχικη Μετάφραση"
+msgstr "Τσέχικη Μετάφραση"
 
 #: data/about.cfg:206
-#, fuzzy
 msgid "Danish Translation"
-msgstr "+Δανική Μετάφραση"
+msgstr "Δανική Μετάφραση"
 
 #: data/about.cfg:217
-#, fuzzy
 msgid "Dutch Translation"
-msgstr "+Ολλανδική Μετάφραση"
+msgstr "Ολλανδική Μετάφραση"
 
 #: data/about.cfg:235
-#, fuzzy
 msgid "English (GB) Translation"
-msgstr "+Αγγλική(Ηνωμένο Βασίλειο) Μετάφραση"
+msgstr "Αγγλική(Ηνωμένο Βασίλειο) Μετάφραση"
 
 #: data/about.cfg:243
-#, fuzzy
 msgid "Esperanto Translation"
-msgstr "+Γερμανική Μετάφραση"
+msgstr ""
 
 #: data/about.cfg:253
-#, fuzzy
 msgid "Estonian Translation"
-msgstr "+Εσθονική Μετάφραση"
+msgstr "Εσθονική Μετάφραση"
 
 #: data/about.cfg:260
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "+Φινλανδική Μετάφραση"
+msgstr "Φινλανδική Μετάφραση"
 
 #: data/about.cfg:267
-#, fuzzy
 msgid "Finnish Translation"
-msgstr "+Φινλανδική Μετάφραση"
+msgstr "Φινλανδική Μετάφραση"
 
 #: data/about.cfg:279
-#, fuzzy
 msgid "French Translation"
-msgstr "+Γαλλική Μετάφραση"
+msgstr "Γαλλική Μετάφραση"
 
 #: data/about.cfg:307
-#, fuzzy
 msgid "German Translation"
-msgstr "+Γερμανική Μετάφραση"
+msgstr "Γερμανική Μετάφραση"
 
 #: data/about.cfg:325
-#, fuzzy
 msgid "Greek Translation"
-msgstr "+Ελληνική Μετάφραση"
+msgstr "Ελληνική Μετάφραση"
 
 #: data/about.cfg:335
-#, fuzzy
 msgid "Hebrew Translation"
-msgstr "+Ελληνική Μετάφραση"
+msgstr "Εβραϊκή Μετάφραση"
 
 #: data/about.cfg:343
-#, fuzzy
 msgid "Hungarian Translation"
-msgstr "+Ουγγρική Μετάφραση"
+msgstr "Ουγγρική Μετάφραση"
 
 #: data/about.cfg:360
-#, fuzzy
 msgid "Indonesian Translation"
-msgstr "+Εσθονική Μετάφραση"
+msgstr "Ινδοσησιακή Μετάφραση"
 
 #: data/about.cfg:367
-#, fuzzy
 msgid "Italian Translation"
-msgstr "+Ιταλική Μετάφραση"
+msgstr "Ιταλική Μετάφραση"
 
 #: data/about.cfg:382
-#, fuzzy
 msgid "Japanese Translation"
-msgstr "+Γιαπωνέζικη Μετάφραση"
+msgstr "Γιαπωνέζικη Μετάφραση"
 
 #: data/about.cfg:394
-#, fuzzy
 msgid "Korean Translation"
-msgstr "+Νορβηγική Μετάφραση"
+msgstr "Κορεάτικη Μετάφραση"
 
 #: data/about.cfg:401
-#, fuzzy
 msgid "Latin Translation"
-msgstr "+Λατινική Μετάφραση"
+msgstr "Λατινική Μετάφραση"
 
 #: data/about.cfg:408
-#, fuzzy
 msgid "Norwegian Translation"
-msgstr "+Νορβηγική Μετάφραση"
+msgstr "Νορβηγική Μετάφραση"
 
 #: data/about.cfg:419
-#, fuzzy
 msgid "Polish Translation"
-msgstr "+Πολωνική Μετάφραση"
+msgstr "Πολωνική Μετάφραση"
 
 #: data/about.cfg:436
-#, fuzzy
 msgid "Portuguese Translation"
-msgstr "+Πορτογαλλική Μετάφραση (Βραζιλιάνικα)"
+msgstr "Πορτογαλλική Μετάφραση"
 
 #: data/about.cfg:443
-#, fuzzy
 msgid "Portuguese (Brazil) Translation"
-msgstr "+Πορτογαλλική Μετάφραση (Βραζιλιάνικα)"
+msgstr "Πορτογαλλική Μετάφραση (Βραζιλιάνικα)"
 
 #: data/about.cfg:459
-#, fuzzy
 msgid "Russian Translation"
-msgstr "+Ρώσικη Μετάφραση"
+msgstr "Ρώσικη Μετάφραση"
 
 #: data/about.cfg:472
-#, fuzzy
 msgid "Serbian Translation"
-msgstr "+Σερβική Μετάφραση"
+msgstr "Σερβική Μετάφραση"
 
 #: data/about.cfg:481
-#, fuzzy
 msgid "Slovak Translation"
-msgstr "+Σλοβακική Μετάφραση"
+msgstr "Σλοβακική Μετάφραση"
 
 #: data/about.cfg:490
-#, fuzzy
 msgid "Slovenian Translation"
-msgstr "+Σλοβενική Μετάφραση"
+msgstr "Σλοβενική Μετάφραση"
 
 #: data/about.cfg:498
-#, fuzzy
 msgid "Spanish Translation"
-msgstr "+Ισπανική Μετάφραση"
+msgstr "Ισπανική Μετάφραση"
 
 #: data/about.cfg:511
-#, fuzzy
 msgid "Swedish Translation"
-msgstr "+Σουηδική Μετάφραση"
+msgstr "Σουηδική Μετάφραση"
 
 #: data/about.cfg:524
-#, fuzzy
 msgid "Turkish Translation"
-msgstr "+Τουρκική Μετάφραση"
+msgstr "Τουρκική Μετάφραση"
 
 #: data/about.cfg:535 data/help.cfg:252
 msgid "Contributors"
 msgstr " Συντελεστές"
 
 #: data/about.cfg:553
-#, fuzzy
 msgid "Bots"
-msgstr "+Μπότς(Bots)"
+msgstr ""
 
 #: data/amla.cfg:9
 msgid ", MAX XP +25%"
@@ -732,25 +687,19 @@ msgstr "Πλήρης γιατρειά"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Εκστρατεία"
+msgstr "Σχεδιαστής Εκστρατείων"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
 msgstr "Εφιππος Αρχοντας"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:16
-#, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
 "enemies, and their morning star crushes those who are left."
 msgstr ""
-"Οι σπουδαιότεροι από τους άρχοντες της πεδιάδας, αυτοί οι έφιπποι άρχοντες "
-"είανι αρχηγοί της φυλής τους καί σεβαστοί από όλους, φίλους καί εχθρούς. Τό "
-"σπαθί τους μπορεί να σκοτώσει τους περισσότερους εχθρούς, καί η αγκυλωτή "
-"σφύρα τους τούς υπόλοιπους. "
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:19
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:27
@@ -974,17 +923,12 @@ msgid "Mounted Fighter"
 msgstr "Εφιππος αγωνιστής "
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:24
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
 "commanding their comrades, and they are the ones that become captains of the "
 "armies of the Clans."
 msgstr ""
-"Οι ευγενείς των ανθρώπων της πεδιάδας έχουν εκπαιδευτεί μέ τους υπόλοιπους "
-"ιππείς γιά να γίνουν μεγάλοι πολεμιστές. Επίσης έχουν εκπαιδευτεί στήν "
-"ηγεσία των συντρόφων τους καί είναι αυτοί πού θά γίνουν οι λοχαγοί των "
-"σταρτών των φατρίων."
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
@@ -1005,9 +949,8 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:27
 #: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
 #: data/units/Orcish_Warlord.cfg:22 data/units/Orcish_Warrior.cfg:21
-#, fuzzy
 msgid "greatsword"
-msgstr "σπαθί"
+msgstr "μέγαξίφος"
 
 #: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -1067,9 +1010,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Duelist.cfg:69
 #: data/units/Human_Loyalist_Fencer.cfg:124
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:28
-#, fuzzy
 msgid "sabre"
-msgstr "ραβδί"
+msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:229
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:278
@@ -1258,7 +1200,7 @@ msgstr "κρύο"
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:186
 msgid "Commander"
-msgstr ""
+msgstr "Διοικητής"
 
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:26
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:209
@@ -1296,7 +1238,7 @@ msgstr "τόξο"
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:97
 msgid "female^Dark Queen"
-msgstr ""
+msgstr "Σκοτεινή Βασίλισσα"
 
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:18
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:112
@@ -1313,7 +1255,7 @@ msgstr "σκήπτρο"
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:3
 #: data/tutorial/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
-msgstr ""
+msgstr "Γέρος Μάγος"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:22
 #: data/tutorial/units/Elder_Mage.cfg:29
@@ -1347,7 +1289,7 @@ msgstr "ραβδί"
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:100
 #: data/tutorial/units/Elder_Mage.cfg:107
 msgid "lightning"
-msgstr ""
+msgstr "ατραπή"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -1370,7 +1312,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
-msgstr "κυρά των Ξωτικών"
+msgstr "Κυρά των Ξωτικών"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:18
 msgid ""
@@ -1477,7 +1419,7 @@ msgstr "Κοιμώμενος Γρυπαετός"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:16
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr ""
+msgstr "Σσσσ! Ο Γρυπαετός κυμάται! Καλύτερα να μην τον ξυπνήσουμε!"
 
 #: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:3
 msgid "Youth"
@@ -1555,7 +1497,7 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr ""
+msgstr "Ταπεινός Πολεμιστής"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:21
 msgid ""
@@ -1566,7 +1508,7 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Ευγενής Άρχοντας"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
@@ -1580,7 +1522,7 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:3
 msgid "female^Outlaw Princess"
-msgstr "Πριγκήπισσα των παρανόμων"
+msgstr "Πριγκήπισσα των Παρανόμων"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:22
 msgid ""
@@ -1623,7 +1565,7 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:3
 msgid "female^Vampire Lady"
-msgstr " Θηλυκή βρυκόλακας"
+msgstr "Κυρά των Βρυκολάκων"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:18
 msgid ""
@@ -1641,7 +1583,7 @@ msgstr "ματωμένο φιλί"
 #: data/units/Saurian_Augur.cfg:64 data/units/Saurian_Oracle.cfg:63
 #: data/units/Saurian_Soothsayer.cfg:64
 msgid "curse"
-msgstr ""
+msgstr "κατάρα"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:3
 msgid "Warrior King"
@@ -1664,9 +1606,8 @@ msgid "mace"
 msgstr "σφύρα"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-#, fuzzy
 msgid "Wose Sapling"
-msgstr "Ίαση(Γιατρειά)"
+msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:25
 msgid ""
@@ -1688,9 +1629,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:29
 #: data/units/Wose.cfg:29 data/units/Wose_Ancient.cfg:28
 #: data/units/Wose_Elder.cfg:27
-#, fuzzy
 msgid "crush"
-msgstr "Στρατολογήσατε"
+msgstr "συντριβή"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:3
 msgid "Demilich"
@@ -1720,9 +1660,8 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:160
-#, fuzzy
 msgid "female^Arch Mage"
-msgstr "Μεγάλη Μάγισσα "
+msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:26
 msgid ""
@@ -1791,7 +1730,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:4
 #: data/units/Human_Mage_Red.cfg:171
 msgid "female^Red Mage"
-msgstr "θηλυκός κόκκινος μάγος"
+msgstr "Κόκκινη Μάγισσα"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:26
 msgid ""
@@ -1828,9 +1767,8 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:4
 #: data/units/Human_Mage_Silver.cfg:192
-#, fuzzy
 msgid "female^Silver Mage"
-msgstr "θηλυκός Λευκός Μάγος "
+msgstr "Ασημένια Μάγισσα"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:33
 msgid ""
@@ -1914,12 +1852,18 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
+"Οι νομοταγής μονάδες πολεμούν καλύτερα την μέρα, και χειρότερα την νύχτα.\n"
+"\n"
+"Μέρα +25% Ζημιά\n"
+"Νύχτα: -25% Ζημιά"
 
 #: data/english.cfg:10
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"Οι ουδέτερες μονάδες δεν εππηρεάζονται από την μέρα και την νύχτα, "
+"πολεμώντας το ίδιο και στις δύο περιπτώσεις."
 
 #: data/english.cfg:14
 msgid ""
@@ -1928,6 +1872,10 @@ msgid ""
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
+"Οι χαοτικές μονάδες πολεμούν καλύτερα την νύχτα, και χειρότερα την ημέρα.\n"
+"\n"
+"Μέρα: -25% Ζημιά\n"
+"Νύχτα: +25% Ζημιά"
 
 #: data/english.cfg:17
 msgid "Elves"
@@ -1942,9 +1890,8 @@ msgid "Orcs"
 msgstr "ορκ"
 
 #: data/english.cfg:20
-#, fuzzy
 msgid "race^Undead"
-msgstr "Ζωντανοί-Νεκροί"
+msgstr "φυλή^Ζωντανοί-Νεκροί"
 
 #: data/english.cfg:23
 msgid "$name's Bridge,$name's Crossing"
@@ -2052,9 +1999,8 @@ msgid "Show Combat"
 msgstr "Δείξε τη Μάχη"
 
 #: data/game.cfg:51
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "Ίαση(Γιατρειά)"
+msgstr ""
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -2085,9 +2031,8 @@ msgid "Terrains"
 msgstr "Εδάφη"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Ευγενής Διοικητής"
+msgstr "Διαταγές"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -2164,18 +2109,12 @@ msgstr ""
 "<italic>text='Εύκολο'</italic>."
 
 #: data/help.cfg:85
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
 "will be shown explaining each item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"Όταν παίζεις, έχε υπόψη όι αν πάς τό ποντίκι πάνω από αρκετά αντικείμενα στό "
-"παιχνίδι, όπως την πληροφορία πού φαίνεται στά κουτάκια κατάστασης, θά δείς "
-"μιά σύντομη περιγραφή πού περιγράφει αυτό τό αντικείμενο. Αυτό είναι "
-"ιδιαίτερα χρήσιμο όταν συναντάς νέες <ref>dst=abilities text=ικανότητες</"
-"ref> γιά πρώτη φορά.  "
 
 #: data/help.cfg:90
 msgid "About the Game"
@@ -2295,6 +2234,8 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"Στην κορυφή της μπάρας ενέργειας βρίσκεται σε κάθε δικιά σας μονάδα μία "
+"σφαίρα. Για τις μονάδες που ελένχετε, η σφαίρα είναι:"
 
 #: data/help.cfg:116
 msgid "green if it hasn't moved this turn,"
@@ -2313,10 +2254,12 @@ msgstr ""
 #: data/help.cfg:119
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr ""
+"Η σφαίρα είναι μπλε αν η μονάδα είναι συμμαχική που δεν ελένχεται από εσάς."
 
 #: data/help.cfg:120
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr ""
+"Οι εχθρικές μονάδες δεν έχουν σφαίρα πάνω από την μπάρα ενέργειάς τους."
 
 #: data/help.cfg:125
 msgid "Hitpoints and Experience"
@@ -2363,7 +2306,6 @@ msgid "Movement"
 msgstr "Κίνηση"
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -2378,16 +2320,6 @@ msgid ""
 "a move in a village you don't already own will also use up a unit's "
 "movement, but will still allow it to attack."
 msgstr ""
-" Η κίνηση στή Μάχη γιά τό Γουέσνοθ είναι απλή. Κλικάρεις τη μονάδα πού θές "
-"να κινήσεις γιά να την επιλέξεις, καί μετά κλικάρισε στό εξαγωνάκι στό οποίο "
-"θές νά τό πάς. Οταν επιλεχθεί μιά μονάδα, φωτίζεται η περιοχή του χάρτη σέ "
-"εξαγωνάκια της οποίας μπορεί νά κινηθεί καί όλα τά άλλα εξαγωνάκια τού χάρτη "
-"αποφωτίζονται. Αν πάς τό ποντίκι πάνω από ένα εξαγωνάκι πού είναι φωτισμένο "
-"δείχνει την αμυντική αξιολόγηση πού θά είχε η μονάδα αν την πήγαινες σέ αυτό "
-"τό εξαγωνάκι. Αν πάς τό ποντίκι πάνω από ένα αποφωτισμένο εξαγωνάκι θά "
-"δείξει τόν αριθμό κινήσεων πού χρειάζεται αυτή η μονάδα γιά νά φτάσει εκεί "
-"καί κλικάροντας θά κάνει τήν μονάδα να κινηθεί πρός αυτό τό εξαγωνάκι από "
-"τόν γρηγορότερο δρόμο γιά αυτόν καί τούς επόμενους γύρους."
 
 #: data/help.cfg:139
 msgid ""
@@ -2656,19 +2588,12 @@ msgid "Time of Day"
 msgstr "Ωρα της ημέρας"
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"Η ώρα της ημέρας επηρρεάζει την ζημιά ορισμένων μονάδων ως εξής:\n"
-"  Νομοταγείς μονάδες προκαλούν +25% περισσότερη ζημιά την ημέρα καί -25% "
-"λιγώτερη ζημιά τό βράδυ\n"
-"  Χαοτικές μονάδες προκαλούν -25% περισσότερη ζημιά την ημέρα καί +25% "
-"λιγώτερη ζημιά τό βράδυ\n"
-"  Ουδέτερες μονάδες δέν επηρρεάζονται από την ώρα της ημέρας."
 
 #: data/help.cfg:195
 msgid ""
@@ -2753,7 +2678,6 @@ msgstr ""
 "μονάδες."
 
 #: data/help.cfg:214
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2772,19 +2696,6 @@ msgid ""
 "actually heal with AMLA effects. Most units just gain the bonus to the "
 "Maximum HP."
 msgstr ""
-"\n"
-"\n"
-" Ενώ οι περισσότερες μονάδες έχουν τρία επίπεδα εξέλιξης, αυτό δέν ισχύει "
-"γιά όλες. Ορισμένες μονάδες (όπως <ref>dst=unit_Mage text=Μάγοι</ref>) ,"
-"μπορεί να έχουν τέσσερα. Μόλις μιά μονάδα φτάσει στό ανώτατο επίπεδο, μπορεί "
-"νά έχει διαθέσιμη Μετά Μέγιστο Επίπεδο Εξέλιξη(ΜΜΕΕ).\n"
-" Η ΜΜΕΕ θά μετατρέψει τη μονάδα κάθε φορά πού η μονάδα επιτυγχάνει τόν στόχο "
-"εμπειρίας, αλλά η μονάδα θά παραμείνει στό ίδιο επίπεδο. Τό τυπικό "
-"αποτέλεσμα της ΜΜΕΕ είναι η αύξηση των μέγιστων βαθμών υγείας της μονάδας HP "
-"κατά 3 γιά κάθε 100 βαθμούς εμπειρίας πού κερδίζει η μονάδα. Σημειωτέον ότι "
-"μόνο ένας μικρός αριθμός μονάδων όπως ο Νεκροφάγος θά γιατρευτεί από τα "
-"αποτελέσματα της ΜΜΕΕ. Οι περισσότερες μονάδες απλώς κερδίζουν τό μπόνους "
-"γιά τους μέγιστους βαθμούς υγείας."
 
 #: data/help.cfg:219
 msgid "Healing"
@@ -2836,34 +2747,20 @@ msgstr ""
 "(όπως οι τρόλ) αυτόματα θεραπεύονται κατά 8 βαθμούς υγείας(HP) σέ κάθε γύρο."
 
 #: data/help.cfg:225
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
 "ability will heal each allied adjacent unit, usually 4 or 8HP per turn, or "
 "prevent Poison from causing that unit damage."
 msgstr ""
-"\n"
-" Μονάδες πού θεραπεύουν: Μονάδες μέ την ικανότητα <ref>dst=ability_heals "
-"text=θεραπευτής</ref>  θά θεραπεύουν κατά μέχρι 8 βαθμούς υγείας(HP) ανά "
-"γύρο, καθώς επίσης καί να εμποδίσουν τό δηλητήριο νά κάνει ζημιά. Μόνο οι "
-"μονάδες πού είναι σε διπλανά εξάγωνα καί πολεμούν στήν ίδια πλευρά με την "
-"μονάδα πού θεραπεύει καί μόνο μέχρι 4 βαθμούς υγείας(HP) ανά γύρο."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
 "will cure Poison in all allied adjacent units (in preference to healing, if "
 "it has that ability as well)."
 msgstr ""
-"\n"
-" Μονάδες πού θεραπεύουν: Μονάδες μέ την ικανότητα <ref>dst=ability_heals "
-"text=θεραπευτής</ref>  θά θεραπεύουν κατά μέχρι 8 βαθμούς υγείας(HP) ανά "
-"γύρο, καθώς επίσης καί να εμποδίσουν τό δηλητήριο νά κάνει ζημιά. Μόνο οι "
-"μονάδες πού είναι σε διπλανά εξάγωνα καί πολεμούν στήν ίδια πλευρά με την "
-"μονάδα πού θεραπεύει καί μόνο μέχρι 4 βαθμούς υγείας(HP) ανά γύρο."
 
 #: data/help.cfg:228
 msgid ""
@@ -2966,7 +2863,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:269
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2974,12 +2870,6 @@ msgid ""
 "text=Dextrous</ref>, <ref>dst=traits_loyal text=Loyal</ref>, and "
 "<ref>dst=traits_undead text=Undead</ref>."
 msgstr ""
-"\n"
-"\n"
-"Αλλα χαρακτηριστικά πού μπορούν να δοθούν σέ μονάδες είναι "
-"<ref>dst=traits_loyal text=Πιστός</ref>, <ref>dst=traits_undead "
-"text=Ζωντανός-Νεκρός</ref>,  καί  <ref>dst=traits_dextrous text=Επιδέξιος</"
-"ref>. "
 
 #: data/help.cfg:274
 msgid "Intelligent"
@@ -3044,9 +2934,8 @@ msgid "Resilient"
 msgstr "ανθεκτικός"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Οι ανθεκτικές μονάδες έχουν 7 βαθμούς υγείας παραπάνω από τό κανονικό "
+msgstr ""
 
 #: data/help.cfg:293
 msgid ""
@@ -3072,13 +2961,10 @@ msgid "Strong"
 msgstr "δυνατός"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
-"Οι δυνατές μονάδες κάνουν 1 περισότερη ζημιά γιά κάθε επιτυχημένο χτύπημα σέ "
-"μάχη σώμα μέ σώμα καί έχουν 2 περισσότερους βαθμούς υγείας."
 
 #: data/help.cfg:301
 msgid ""
@@ -3134,9 +3020,8 @@ msgstr ""
 "θάνατο."
 
 #: data/help.cfg:314
-#, fuzzy
 msgid "trait^Undead"
-msgstr "Ζωντανοί-Νεκροί"
+msgstr ""
 
 #: data/help.cfg:315
 msgid "Undead units are immune to poison."
@@ -3164,12 +3049,9 @@ msgid "Dextrous"
 msgstr "Επιδέξιος"
 
 #: data/help.cfg:323
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
-"Οι επιδέξιες μονάδες κάνουν επιπλέον 1 βαθμό ζημιάς μέ κάθε επιτυχημένο "
-"βέλος. "
 
 #: data/help.cfg:325
 msgid ""
@@ -3228,7 +3110,6 @@ msgid "Forest"
 msgstr "Δάσος"
 
 #: data/help.cfg:353
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3244,20 +3125,6 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
-"Τά δάση αντιπροσωπεύουν δασώδη έκταση με σημαντική βλάστηση, αρκετή γιά να "
-"εμποδίζει τήν διέλευση. Αν καί επιβραδύνουν σχεδόν όλους, τά δάση προσφέρουν "
-"καλύτερη άμυνα στίς περισσότερες μονάδες από τόν ανοιχτό χώρο. Τό ιππικό "
-"έχει τόσο πολύ πρόβλημα να κινηθεί στά δάση, ώστε οποιδήποτε πλεονέκτημα από "
-"τό ότι δέν φαίνονται, ακυρώνεται. Τά ξωτικά είναι εξαίρεση στόν γενικό "
-"κανόνα γιά τά δάση. Οχι μόνο έχουν πλήρη κινητικότητα στά δάση, αλλά επίσης "
-"καί σημαντικό αμυντικό μπόνους. Οι νάνοι είναι άλλη μιά εξαίρεση στόν κανόνα "
-"γιατί αν καί μπορούν να προχωρήσουν μέσα στό δάσος χωρίς σημαντική "
-"επιβράδυνση, η μή εξοικείωσή τους με τό έδαφος τούς κάνει νά μήν έχουν "
-"αμυντικό μπόνους.\n"
-"\n"
-"Οι περισσότερες μονάδες έχουν 50% άμυνα στά δάση, αλλά τό ιππικό μόνο 40%. "
-"Τά ξωτικά από την άλλη έχουν 60 μέ 70% άμυνα, ακόμα καί γιά τις έφφιπες "
-"μονάδες τους. Οι νάνοι έχουν γενικά μόνο 30% άμυνα στά δάση. "
 
 #: data/help.cfg:359 data/terrain.cfg:318
 msgid "Hills"
@@ -3499,9 +3366,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "φωτίζει"
+msgstr ""
 
 #: data/help.cfg:482
 msgid ""
@@ -3580,24 +3446,18 @@ msgid "Chasm"
 msgstr ""
 
 #: data/help.cfg:518
-#, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 msgstr ""
-"Ενα φαράγγι είναι ένα βαθούλωμα στό έδαφος πού οδηγεί σέ άγνωστα βάθη. Τά "
-"φαράγγια διακρίνονται γιά τά τείχη τους πού χρειάζονται ημέρες γιά να "
-"περαστούν. Οσον αφορά τό παιχνίδι, μόνο μονάδες πού μπορούν να πετάξουν πάνω "
-"από φαράγγια μπορούν να περάσουν αυτό τό έδαφος. "
 
 #: data/help.cfg:523 data/terrain.cfg:436
 msgid "Lava"
 msgstr "Λάβα"
 
 #: data/help.cfg:525
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -3605,9 +3465,6 @@ msgid ""
 "illuminating the area immediately above it. This provides an attack bonus "
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
-"Οι κίνδυνοι πού υπάρχουν στό περπάτημα πάνω στή λάβα είναι προφανείς. Αυτό "
-"τό έδαφος μπορεί να περαστεί μόνο από τις μονάδες πού μπορούν να πετάξουν "
-"πάνω από αυτό. "
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
@@ -3660,27 +3517,32 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:553
-#, fuzzy
 msgid "General commands"
-msgstr "Στρατηγός"
+msgstr "Γενικές διαταγές"
 
 #: data/help.cfg:555
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Έξοδος από το σενάριο (χωρίς προειδοποίηση)."
 
 #: data/help.cfg:558
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Αποθήκευση παιχνιδιού (χωρίς προειδοποίηση)."
 
 #: data/help.cfg:561
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Αποθήκευση παιχνιδιού και έξοδος από το σενάριο (χωρίς προειδοποίηση)."
 
 #: data/help.cfg:564
 msgid ""
@@ -3702,9 +3564,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:575
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "+Χάρτες γιά πολλούς παίχτες"
+msgstr ""
 
 #: data/help.cfg:577
 msgid ""
@@ -3753,6 +3614,8 @@ msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Καθαρισμός μηνυμάτων συζήτησης."
 
 #: data/items.cfg:264
 msgid ""
@@ -3762,7 +3625,7 @@ msgstr ""
 
 #: data/items.cfg:268
 msgid "A swift victory"
-msgstr ""
+msgstr "Μια γρήγορη νίκη"
 
 #: data/items.cfg:276
 msgid ""
@@ -3891,9 +3754,8 @@ msgid "storm trident"
 msgstr "τρίαινα θύελλας"
 
 #: data/items.cfg:740
-#, fuzzy
 msgid "Zap"
-msgstr " Ζάπ"
+msgstr ""
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -3934,12 +3796,9 @@ msgstr "Γρήγορο παιχνίδι γιά 2 παίχτες"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
-#, fuzzy
 msgid ""
 "A duel map for super fast play. Recommended setting of 2 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:19
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:43
@@ -3963,7 +3822,7 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:50
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:78
 msgid "teamname^North"
-msgstr ""
+msgstr "σύμμαχος^Βόρειος"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:27
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:51
@@ -3981,11 +3840,11 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:39
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:47
 msgid "teamname^South"
-msgstr ""
+msgstr "σύμμαχος^Νότιος"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
-msgstr ""
+msgstr "2π - Οι σπηλιές του Βασιλίσκου"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
@@ -4126,7 +3985,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
-msgstr ""
+msgstr "2π - Έφοδος"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
@@ -4154,13 +4013,10 @@ msgid "2p - Hamlets"
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Recommended setting of 2 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
@@ -4174,16 +4030,13 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
-msgstr ""
+msgstr "2π - Η Λίμνη του Μετεωρίτη"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended setting of 2 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:15
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:15
@@ -4197,7 +4050,7 @@ msgstr ""
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:36
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:22
 msgid "teamname^West"
-msgstr ""
+msgstr "σύμμαχος^Δυτικός"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:23
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:23
@@ -4210,7 +4063,7 @@ msgstr ""
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:22
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:29
 msgid "teamname^East"
-msgstr ""
+msgstr "σύμμαχος^Ανατολικός"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
@@ -4234,7 +4087,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
-msgstr ""
+msgstr "2π - Τα Συντρίμια του Σούλλα"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
 msgid ""
@@ -4247,7 +4100,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:38
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:39
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Το άγαλμα του Σούλλα"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4290,7 +4143,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:336
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:613
 msgid "Yes!"
-msgstr ""
+msgstr "Ναι!"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:358
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:635
@@ -4311,7 +4164,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
-msgstr ""
+msgstr "3π - Το νησί των Χοράτιι"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
 msgid ""
@@ -4324,30 +4177,24 @@ msgid "3p - Morituri"
 msgstr ""
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map. Recommended setting of 2 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
 msgstr "Γρήγορο παιχνίδι γιά 3 παίχτες "
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "4π - Επαρχία Γαλάζιου Νερού"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
 msgid ""
@@ -4372,7 +4219,7 @@ msgstr ""
 #: data/scenarios/multiplayer/8p_Morituri.cfg:48
 #: data/scenarios/multiplayer/8p_Morituri.cfg:55
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "σύμμαχος^Ομάδα 1"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:22
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:29
@@ -4389,7 +4236,7 @@ msgstr ""
 #: data/scenarios/multiplayer/8p_Morituri.cfg:34
 #: data/scenarios/multiplayer/8p_Morituri.cfg:62
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "σύμμαχος^Ομάδα 2"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:9
 msgid "4p - Castle Hopping Isle"
@@ -4406,11 +4253,8 @@ msgid "4p - Clash"
 msgstr "Σύγκρουση γιά 4 παίχτες "
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs 2. Recommended setting of 2 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
@@ -4434,7 +4278,7 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:43
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:71
 msgid "teamname^South-West"
-msgstr ""
+msgstr "σύμμαχος^Νοτιοδυτικός"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:23
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:31
@@ -4445,11 +4289,11 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:27
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:41
 msgid "teamname^North-East"
-msgstr ""
+msgstr "σύμμαχος^Βορειοανατολικός"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
-msgstr ""
+msgstr "4π - Ο βασιλιάς του Λόφου"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
 msgid ""
@@ -4467,31 +4311,28 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:57
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:64
 msgid "teamname^South-East"
-msgstr ""
+msgstr "σύμμαχος^Νότιοανατολικός"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:36
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:21
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:42
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:17
 msgid "teamname^North-West"
-msgstr ""
+msgstr "σύμμαχος^Βορειοδυτικός"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "setting of 1 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
 msgid "4p - Loris River"
-msgstr ""
+msgstr "4π - Ποταμός Λόρις"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
 msgid ""
@@ -4504,17 +4345,14 @@ msgid "4p - Morituri"
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
-msgstr ""
+msgstr "4π - Το Μονοπάτι των Στιλέτων"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
 msgid ""
@@ -4547,7 +4385,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
-msgstr ""
+msgstr "5π - Το Δάσος του Φόβου"
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
@@ -4582,7 +4420,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "2 εναντίων 2 ή 3 εναντίων 3 ομάδων παιχνίδι."
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
@@ -4601,13 +4439,10 @@ msgid "8p - Morituri"
 msgstr ""
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish. Recommended setting of 2 gold per village."
 msgstr ""
-"Ενας χάρτης μονομαχίας γιά δύο παίχτες καί πολύ γρήγορο παιχνίδι. "
-"Συνιστώμενη ρύθμιση 2 χρυσά ανά χωριό  "
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
@@ -4624,7 +4459,7 @@ msgstr ""
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
 msgid "Random map"
-msgstr ""
+msgstr "Τυχαίος χάρτης"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:4
 msgid ""
@@ -4635,7 +4470,7 @@ msgstr ""
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
-msgstr ""
+msgstr "Τυχαίος χάρτης (Έρημος)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:5
 msgid ""
@@ -4647,7 +4482,7 @@ msgstr ""
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:9
 msgid "Random map (Marsh)"
-msgstr ""
+msgstr "Τυχαίος χάρτης (Άνοιξη)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:5
 msgid ""
@@ -4659,7 +4494,7 @@ msgstr ""
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:9
 msgid "Random map (Winter)"
-msgstr ""
+msgstr "Τυχαίος χάρτης (Χειμώνας)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:5
 msgid ""
@@ -4700,11 +4535,11 @@ msgstr ""
 
 #: data/schedules.cfg:81 data/schedules.cfg:89
 msgid "Underground"
-msgstr ""
+msgstr "Υπόγεια"
 
 #: data/schedules.cfg:98 data/schedules.cfg:109
 msgid "Deep Underground"
-msgstr ""
+msgstr "Βαθιά Υπόγεια"
 
 #: data/special-notes.cfg:2
 msgid ""
@@ -4742,18 +4577,10 @@ msgid ""
 msgstr ""
 
 #: data/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Σάν αρχηγοί των στρατών τους, οι Στρατηγοί είναι υπεύθυνοι γιά την προστασία "
-"μεγάλων η σημαντικών περιοχών στά βασίλεια στά οποία έχουν δηλώσει πίστη. Η "
-"εκαπίδευση καί εμπειρία τους αρκεί γιά να εκτελέσουν αυτές τίς εντολές.\n"
-"\n"
-"Ειδικές Σημειώσεις: Η ηγετική ικανότητα ενός Στρατηγού επιτρέπει σέ φιλικές "
-"μονάδες δίπλα του νά κάνουν περισσότερη ζημιάστή μάχη, άν καί αυτό ισχύει "
-"μόνο γιά μονάδες κατώτερου επιπέδου."
 
 #: data/special-notes.cfg:23
 msgid ""
@@ -4832,16 +4659,10 @@ msgid ""
 msgstr ""
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Ειδικές Σημειώσεις: Η έφιππη επίθεση μέ κοντάρι του ιππότη διπλασιάζει τόσο "
-"την ζημιά πού κάνει, όσο καί αυτή πού δέχεται. Αυτό δέν επηρρεάζει την "
-"αμυντική του ανταπόδωση των χτυπημάτων."
 
 #: data/special-notes.cfg:68
 msgid ""
@@ -4882,9 +4703,8 @@ msgid "Orange"
 msgstr "Πορτοκαλί"
 
 #: data/team-colors.cfg:34
-#, fuzzy
 msgid "Black"
-msgstr "< Πίσω"
+msgstr "Μαύρο"
 
 #: data/team-colors.cfg:40
 msgid "White"
@@ -4895,9 +4715,8 @@ msgid "Brown"
 msgstr "Καφέ"
 
 #: data/team-colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "Ομάδα"
+msgstr ""
 
 #: data/terrain.cfg:11 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:361
@@ -4908,7 +4727,7 @@ msgstr "Καλυμμένος Χάρτης"
 #: data/terrain.cfg:18 data/themes/macros.cfg:148
 #: src/multiplayer_lobby.cpp:357
 msgid "Fog"
-msgstr ""
+msgstr "Ομίχλη"
 
 #: data/terrain.cfg:121
 msgid "Dirt"
@@ -4916,39 +4735,35 @@ msgstr "Χώμα"
 
 #: data/terrain.cfg:210
 msgid "Oasis"
-msgstr ""
+msgstr "Όαση"
 
 #: data/terrain.cfg:325
-#, fuzzy
 msgid "Dunes"
-msgstr "Σούρουπο"
+msgstr ""
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
-msgstr ""
+msgstr "Χιονισμένοι Λόφοι"
 
 #: data/terrain.cfg:381
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Τροπικό δάσος"
 
 #: data/terrain.cfg:389
 msgid "Snow Forest"
-msgstr ""
+msgstr "Χιονισμένο Δάσος"
 
 #: data/terrain.cfg:405
-#, fuzzy
 msgid "Cave Lit"
-msgstr "Σπηλιά"
+msgstr ""
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Βουνά"
+msgstr "Αδιάβατα Βουνά"
 
 #: data/terrain.cfg:445
-#, fuzzy
 msgid "Great Tree"
-msgstr "Μέγας Τρόλ "
+msgstr "Μέγα Δέντρο"
 
 #: data/terrain.cfg:464
 msgid "Encampment"
@@ -5050,60 +4865,52 @@ msgid "time left"
 msgstr ""
 
 #: data/themes/macros.cfg:52
-#, fuzzy
 msgid "Replay"
-msgstr "Δείτε το  replay"
+msgstr "Επανάληψη"
 
 #: data/themes/macros.cfg:67
-#, fuzzy
 msgid "Play"
-msgstr "Παίκτες:"
+msgstr "Εκκίνηση"
 
 #: data/themes/macros.cfg:68
-#, fuzzy
 msgid "continous replay"
-msgstr "Δείτε το  replay"
+msgstr ""
 
 #: data/themes/macros.cfg:81
-#, fuzzy
 msgid "Stop"
-msgstr "δυνατός"
+msgstr "Σταμάτημα"
 
 #: data/themes/macros.cfg:82
 msgid "pause at end of turn"
 msgstr ""
 
 #: data/themes/macros.cfg:95
-#, fuzzy
 msgid "Reset"
-msgstr "Ερημος"
+msgstr "Επανεκκίνηση"
 
 #: data/themes/macros.cfg:96
 msgid "reset to beginning"
 msgstr ""
 
 #: data/themes/macros.cfg:109
-#, fuzzy
 msgid "Next Turn"
-msgstr "Γύρος"
+msgstr "Επόμενος Γύρος"
 
 #: data/themes/macros.cfg:110
 msgid "play turn"
 msgstr ""
 
 #: data/themes/macros.cfg:123
-#, fuzzy
 msgid "Next Side"
-msgstr "Παρακάτω"
+msgstr ""
 
 #: data/themes/macros.cfg:124
 msgid "play side turn"
 msgstr ""
 
 #: data/themes/macros.cfg:160
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Σλοβακική Μετάφραση"
+msgstr "Προσπέρασε την κίνηση"
 
 #: data/tips.cfg:1
 msgid ""
@@ -5139,19 +4946,12 @@ msgid ""
 msgstr ""
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
 msgstr ""
-"Αυτή η μονάδα έχει δηλητηριαστεί. Θά χάνει 8 βαθμούς υγείας κάθε γύρο μέχρι "
-"να βρεί θεραπεία γιά τό δηλητήριο σέ ένα χωριό η από μιά φιλική μονάδα μέ "
-"την ιδιότητα του θεραπευτή. \n"
-" \n"
-" Οι μονάδες δέν μπορούν να σκοτωθούν μόνο από δηλητήριο. Τό δηλητήριο δέν θά "
-"μειώσει τούς βαθμούς υγείας κάτω από 1 βαθμό υγείας."
 
 #: data/tips.cfg:6
 msgid ""
@@ -5169,18 +4969,12 @@ msgid ""
 msgstr ""
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
 "chance to hit both when attacking and defending. Marksman attacks have at "
 "least 60% chance to hit when attacking."
 msgstr ""
-"Η πιθανότητα να χτυπήσεις μιά μονάδα εξαρτάται από τό πόσο καλά η μονάδα "
-"αυτή μπορεί νά αμυνθεί στό έδαφος πού στέκεται. Ομως οι μαγικές επιθέσεις "
-"έχουν πιθανότητα επιρτυχίας 70% τόσο όταν επιτίθενται, όσο καί όταν "
-"αμύνονται καί οι επιθέσεις από τοξότες ακριβείας έχουν πιθανότητα επιτυχίας "
-"τουλάχιστο 60% όταν επιτίθενται. "
 
 #: data/tips.cfg:9
 msgid ""
@@ -5190,14 +4984,10 @@ msgstr ""
 "τους."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"Οι μονάδες πού ούτε κινούνται ούτε επιτίθενται κατά τη διαρκεια του γύρου "
-"τους, αναπαύοντια καί ανακτούν 2 πόντους υγείας στήν αρχή του επόμενου γύρου "
-"τους."
 
 #: data/tips.cfg:11
 msgid ""
@@ -5256,26 +5046,17 @@ msgstr ""
 "μονάδες."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"Μήν φοβάσαι νά υποχωρήσεις καί να ανασυνταχθείς, συχνά αυτό είναι τό κλειδί "
-"γιά την νίκη."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
-"Στίς περισσότερες εκστρατείες έχει μπόνους χρυσού αν τερματίσεις νωρίτερα, "
-"ανάλογα με τον αριθμό χωριών στόν χάρτη καί τόν αριθμό των γύρων πρίν τό "
-"τέλος πού έμειναν όταν τελειωσες. Πάντα θά πάρεις με αυτό τόν τρόπο "
-"περισότερο χρυσάφι από ότι αν καταλαμβάνεις χωριά καί περιμένεις να "
-"τελειώσουν οι γύροι."
 
 #: data/tips.cfg:19
 msgid ""
@@ -5291,13 +5072,10 @@ msgstr ""
 "δικό τους κάστρο, ώστε να μπορείς να στρατολογήσεις από εκεί. "
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
-"Οι σκελετοί είναι ανθεκτικοί σέ επιθέσεις τυπήματος καί κοψίματος, αλλά "
-"ευάλωτοι σέ επιθέσεις κρούσης, φωτιάς καί ιερές επιθέσεις. "
 
 #: data/tips.cfg:21
 msgid ""
@@ -5360,14 +5138,10 @@ msgstr ""
 "μάχες γιά σας χωρίς να χρειαστεί νά επιτεθούν οι ίδιοι σέ κανέναν."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"Η επίθεση 'επιβράδυνσης' επιβραδύνει τίς εχθρικές μονάδες, αλλά επίσης τους "
-"δίνει μιά επίθεση λιγώτερη από ότι θά είχαν κανονικά. Ειναι συνεπώς πολύ "
-"αποτελεσματική εναντίον μονάδων μέ μικρό αριθμό ισχυρών επιθέσεων."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5454,14 +5228,12 @@ msgid "resilient"
 msgstr "ανθεκτικός"
 
 #: data/tutorial/units/Fighteress.cfg:3
-#, fuzzy
 msgid "female^Fighter"
-msgstr "θηλυκός κόκκινος μάγος"
+msgstr "Πολεμήστρια"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Βουνά"
+msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
@@ -5470,36 +5242,28 @@ msgid ""
 msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "ουρά"
+msgstr ""
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
 msgstr "Γαλέρα"
 
 #: data/units/Boat_Galleon.cfg:19
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
 "The galleon is perfect for this purpose: it's fast and resilient, but not "
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
-"Ακόμα καί όσοι ζούν στό σπίτι τους θά χρειαστούν κάποτε κάποιο είδος "
-"θαλάσσιου μεταφορικού μέσου,ακόμα καί αν τό μόνο πού θέλουν είναι να πάνε "
-"γιά ψάρεμα η νά ανταλλάξουν είδη. Η γαλέρα είναι τέλειαγιά το σκοπό αυτό: "
-"Είαι γρήγορη καί ανθεκτική, αλλά όχι έτοιμη γιά μάχη, καί μπορεί να "
-"προσαρμοστεί σέ πολλές διαφορετικές δουλειές."
 
 #: data/units/Boat_Galleon.cfg:21
 msgid "dummy"
 msgstr ""
 
 #: data/units/Boat_Pirate_Galleon.cfg:3
-#, fuzzy
 msgid "Pirate Galleon"
-msgstr "Γαλέρα Μεταφοράς"
+msgstr "Πειρατικό Γαλιόνι"
 
 #: data/units/Boat_Pirate_Galleon.cfg:17
 msgid ""
@@ -5511,7 +5275,7 @@ msgstr ""
 #: data/units/Boat_Pirate_Galleon.cfg:19
 #: data/units/Boat_Transport_Galleon.cfg:19
 msgid "ballista"
-msgstr ""
+msgstr "βαλλίστρα"
 
 #: data/units/Boat_Transport_Galleon.cfg:3
 msgid "Transport Galleon"
@@ -5555,9 +5319,8 @@ msgstr ""
 "μεγάλα νύχια, τους καθιστά έναν επικίνδυνο εχθρό στή μάχη. "
 
 #: data/units/Drake_Clasher.cfg:3
-#, fuzzy
 msgid "Drake Clasher"
-msgstr "Δρακοειδές Μάστορας του Σπαθιού"
+msgstr ""
 
 #: data/units/Drake_Clasher.cfg:20
 msgid ""
@@ -5578,9 +5341,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
-#, fuzzy
 msgid "Drake Enforcer"
-msgstr "Δρακοειδές Καυστήρας"
+msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:20
 msgid ""
@@ -5616,12 +5378,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:3
-#, fuzzy
 msgid "Drake Flameheart"
-msgstr "Δρακοειδές πολεμιστής"
+msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:27
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5630,21 +5390,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Σάν αρχηγοί των στρατών τους, οι Στρατηγοί είναι υπεύθυνοι γιά την προστασία "
-"μεγάλων η σημαντικών περιοχών στά βασίλεια στά οποία έχουν δηλώσει πίστη. Η "
-"εκαπίδευση καί εμπειρία τους αρκεί γιά να εκτελέσουν αυτές τίς εντολές.\n"
-"\n"
-"Ειδικές Σημειώσεις: Η ηγετική ικανότητα ενός Στρατηγού επιτρέπει σέ φιλικές "
-"μονάδες δίπλα του νά κάνουν περισσότερη ζημιάστή μάχη, άν καί αυτό ισχύει "
-"μόνο γιά μονάδες κατώτερου επιπέδου."
 
 #: data/units/Drake_Flare.cfg:3
-#, fuzzy
 msgid "Drake Flare"
-msgstr "Δρακοειδές Καυστήρας"
+msgstr ""
 
 #: data/units/Drake_Flare.cfg:26
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5652,18 +5403,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Σάν αρχηγοί των στρατών τους, οι Στρατηγοί είναι υπεύθυνοι γιά την προστασία "
-"μεγάλων η σημαντικών περιοχών στά βασίλεια στά οποία έχουν δηλώσει πίστη. Η "
-"εκαπίδευση καί εμπειρία τους αρκεί γιά να εκτελέσουν αυτές τίς εντολές.\n"
-"\n"
-"Ειδικές Σημειώσεις: Η ηγετική ικανότητα ενός Στρατηγού επιτρέπει σέ φιλικές "
-"μονάδες δίπλα του νά κάνουν περισσότερη ζημιάστή μάχη, άν καί αυτό ισχύει "
-"μόνο γιά μονάδες κατώτερου επιπέδου."
 
 #: data/units/Drake_Gladiator.cfg:3
-#, fuzzy
 msgid "Drake Gladiator"
-msgstr "Δρακοειδές Μάστορας του Σπαθιού"
+msgstr ""
 
 #: data/units/Drake_Gladiator.cfg:18
 msgid ""
@@ -5676,9 +5419,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:3
-#, fuzzy
 msgid "Drake Glider"
-msgstr "Δρακοειδές πολεμιστής"
+msgstr ""
 
 #: data/units/Drake_Glider.cfg:21
 msgid ""
@@ -5700,9 +5442,8 @@ msgid "slam"
 msgstr ""
 
 #: data/units/Drake_Hurricane.cfg:3
-#, fuzzy
 msgid "Hurricane Drake"
-msgstr "Δρακοειδές της φωτιάς"
+msgstr ""
 
 #: data/units/Drake_Hurricane.cfg:30
 msgid ""
@@ -5714,9 +5455,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Inferno.cfg:3
-#, fuzzy
 msgid "Inferno Drake"
-msgstr "Δρακοειδές της φωτιάς"
+msgstr ""
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -5728,9 +5468,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
-#, fuzzy
 msgid "Sky Drake"
-msgstr "Δρακοειδή"
+msgstr ""
 
 #: data/units/Drake_Sky.cfg:29
 msgid ""
@@ -5745,9 +5484,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Slasher.cfg:3
-#, fuzzy
 msgid "Drake Slasher"
-msgstr "Δρακοειδές Μάστορας του Σπαθιού"
+msgstr ""
 
 #: data/units/Drake_Slasher.cfg:20
 msgid ""
@@ -5768,9 +5506,8 @@ msgid "halberd"
 msgstr "λογχοπέλεκυς"
 
 #: data/units/Drake_Warden.cfg:3
-#, fuzzy
 msgid "Drake Warden"
-msgstr "Δρακοειδές Καυστήρας"
+msgstr ""
 
 #: data/units/Drake_Warden.cfg:21
 msgid ""
@@ -5783,9 +5520,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Warrior.cfg:3
-#, fuzzy
 msgid "Drake Warrior"
-msgstr "Θαλασσάνθρωπος Πολεμιστής"
+msgstr ""
 
 #: data/units/Drake_Warrior.cfg:17
 msgid ""
@@ -5839,14 +5575,12 @@ msgid "dagger"
 msgstr "στιλέτο"
 
 #: data/units/Dwarvish_Dragonguard.cfg:69
-#, fuzzy
 msgid "dragonstaff"
-msgstr "ραβδί"
+msgstr ""
 
 #: data/units/Dwarvish_Fighter.cfg:3
-#, fuzzy
 msgid "Dwarvish Fighter"
-msgstr "Δρακοειδές πολεμιστής"
+msgstr ""
 
 #: data/units/Dwarvish_Fighter.cfg:21
 msgid ""
@@ -5869,9 +5603,8 @@ msgid "hammer"
 msgstr "σφυρί"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
-#, fuzzy
 msgid "Dwarvish Guardsman"
-msgstr "τοξότης ακριβείας των ξωτικών"
+msgstr ""
 
 #: data/units/Dwarvish_Guardsman.cfg:20
 msgid ""
@@ -5883,9 +5616,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:3
-#, fuzzy
 msgid "Dwarvish Lord"
-msgstr "Αρχοντας των Ξωτικών"
+msgstr "Αφέντης των Νάνων"
 
 #: data/units/Dwarvish_Lord.cfg:18
 msgid ""
@@ -5905,9 +5637,8 @@ msgid "hatchet"
 msgstr "μικρό τσεκούρι"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
-#, fuzzy
 msgid "Dwarvish Runemaster"
-msgstr "Κάστρο των Νάνων"
+msgstr ""
 
 #: data/units/Dwarvish_Runemaster.cfg:17
 msgid ""
@@ -5918,9 +5649,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Dwarvish_Runemaster.cfg:21
-#, fuzzy
 msgid "runic hammer"
-msgstr "σφυρί"
+msgstr ""
 
 #: data/units/Dwarvish_Runemaster.cfg:68
 msgid "Lightning bolt"
@@ -6029,7 +5759,7 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:201
 msgid "female^Elvish Archer"
-msgstr "Ξωτικό-Τοξότρια"
+msgstr "Ξωτικότοξότρια"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
@@ -6052,15 +5782,13 @@ msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:217
 msgid "female^Elvish Avenger"
-msgstr "Ξωτικό-Εκδικήτρια"
+msgstr "Ξωτικόεκδικήτρια"
 
 #: data/units/Elvish_Captain.cfg:3
-#, fuzzy
 msgid "Elvish Captain"
-msgstr "τοξότης ακριβείας των ξωτικών"
+msgstr "Ξωτικοκαπετάνιος"
 
 #: data/units/Elvish_Captain.cfg:27
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. This is quite at odds with "
@@ -6071,19 +5799,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Ο βαθμός του Αρχιστράτηγου είναι από τους πιό σεβαστούς στούς στρατούς της "
-"ανθρωπότητας καί όσοι φέρουν αυτόν τόν τίτλο έχουν επιζήσει από πολλά "
-"βαπτίσματα πυρός, αποδεικνύοντας έτσι την ευκολία τους στίς τακτικές καί την "
-"ιδιαίτερη ικανότητά τους στή μάχη σώμα μέ σώμα.\n"
-"\n"
-" Ειδικές Σημειώσεις: Η ηγετική ικανότητα του Αρχιστράτηγου επιτρέπει σέ "
-"φιλικές μονάδες δίπλα του να κάνουν μεγαλύτερη ζημιά στή μάχη, αν καίκ αυτό "
-"ισχύει μόνο γιά μονάδες χαμηλώτερου επιπέδου."
 
 #: data/units/Elvish_Champion.cfg:3
-#, fuzzy
 msgid "Elvish Champion"
-msgstr "τοξότης ακριβείας των ξωτικών"
+msgstr "Ξωτικοήρωας"
 
 #: data/units/Elvish_Champion.cfg:18
 msgid ""
@@ -6096,9 +5815,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Druid.cfg:3
-#, fuzzy
 msgid "female^Elvish Druid"
-msgstr "κυρά των Ξωτικών"
+msgstr "Ξωτικοδρουίδης"
 
 #: data/units/Elvish_Druid.cfg:20
 msgid ""
@@ -6121,9 +5839,8 @@ msgid "thorns"
 msgstr "αγκάθια"
 
 #: data/units/Elvish_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Elvish Enchantress"
-msgstr "Μάγισσα των Ξωτικών"
+msgstr ""
 
 #: data/units/Elvish_Enchantress.cfg:18
 msgid ""
@@ -6136,14 +5853,12 @@ msgstr ""
 
 #: data/units/Elvish_Enchantress.cfg:91 data/units/Elvish_Shaman.cfg:55
 #: data/units/Elvish_Sorceress.cfg:91
-#, fuzzy
 msgid "entangle"
-msgstr "πλοκάμι"
+msgstr ""
 
 #: data/units/Elvish_Fighter.cfg:3
-#, fuzzy
 msgid "Elvish Fighter"
-msgstr "Ξωτικό-Καβαλάρης"
+msgstr "Ξωτικοπολεμιστής"
 
 #: data/units/Elvish_Fighter.cfg:19
 msgid ""
@@ -6154,9 +5869,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Hero.cfg:3
-#, fuzzy
 msgid "Elvish Hero"
-msgstr "Ξωτικό-Καβαλάρης"
+msgstr "Ξωτικοήρωας"
 
 #: data/units/Elvish_Hero.cfg:18
 msgid ""
@@ -6170,7 +5884,6 @@ msgid "Elvish Marksman"
 msgstr "τοξότης ακριβείας των ξωτικών"
 
 #: data/units/Elvish_Marksman.cfg:23
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -6182,18 +5895,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ενα από τά πράγματα που συμβάλλουν στήν ικανότητά τος μέ τό τόξο είναι η "
-"ιδιαίτερα καλή όραση των ξωτικών. Ενα ξωτικό πού έχει εξασκηθεί στήν "
-"τοξοβολία μπορεί να χτυπήσει στόχους πού ένας άνθρωπος δέν θά έβλεπε κάν, "
-"ακόμα καί τη νύχτα, καί μπορεί νά ρίξει καί δεύτερο βέλος μόλις φύγει τό "
-"πρώτο.\n"
-" \n"
-"Αυτή η εξαιρετική ικανότητα δέν έρχεται χωρίς κάποιο κόστος, μιά έλειψη "
-"δηλαδή εξάσκησης στό σπαθί.\n"
-"\n"
-" Εδικές σημειώσεις: Η δεινή σκοπευτική τους ικανότητα δίνει σέ αυτά τά "
-"ξωτικά μιά υψηλή πιθανότητα να χτυπήσουν τόν εχθρό, αλλά μόνο όταν "
-"επιτίθενται. "
 
 #: data/units/Elvish_Marksman.cfg:114 data/units/Elvish_Sharpshooter.cfg:113
 msgid "longbow"
@@ -6201,14 +5902,13 @@ msgstr "μακρύ τόξο"
 
 #: data/units/Elvish_Marksman.cfg:207
 msgid "female^Elvish Marksman"
-msgstr "τοξότρια ακριβείας των ξωτικών"
+msgstr "Τοξότρια Ακριβείας των Ξωτικών"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
 msgstr "Στρατάρχης των Ξωτικών "
 
 #: data/units/Elvish_Marshal.cfg:28
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6219,17 +5919,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Η μακροζωία καί φυσική εξυπνάδα των ξωτικών τούς δίνει ένα μεγάλο "
-"πλεονέκτημα γιά στρατιωτικά θέματα, αρκετό να αντισταθμίσει την φυσική τους "
-"απέχθεια γιά τέτοια πράγματα. Τά ξωτικά θυμούνται πολύ πιό καθαρά από τους "
-"ανθρώπους καί συχνά μπορούν να διαισθανθούν αυτά πού άλλοι πρέπει να "
-"εξασκηθούν γιά να μπορούν να κάνουν. Γιά τις λίγες φορές πού ένα ξωτικό "
-"μπαίνει στή λογική του πολέμου, η στρατηγική πού εκπονεί, είναι η δουλειά "
-"ενός εξπέρ.\n"
-"\n"
-"Ειδικές σημειώσεις: Η ηγεσία του Στρατάρχη επιτρέπει σέ φιλικές μονάδες νά "
-"κάνουν περισσότερη ζημιά στή μάχη, αν καί αυτό αφορά μόνο μονάδες "
-"χαμηλώτερου επιπέδου."
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -6262,7 +5951,6 @@ msgid "Elvish Ranger"
 msgstr "ξωτικό-ρέιντζερ"
 
 #: data/units/Elvish_Ranger.cfg:21
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -6272,26 +5960,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ενας άνθρωπος μπορεί να περάσει χρόνια στό δάσος καί ποτέ νά μη διώξει τό "
-"αίσθημα ότι είναι απλά φιλοξενούμενος εκίε καί όχι μέρος του. Μέ τά ξωτικά, "
-"αυτό είναι ανάποδα. Οποιδήποτε ξωτικό μελετάει τά δάσηε γίνεται δίκαια εξπέρ "
-"καί σέ συνδυασμό με μιά σημαντική ικανότητα σέ τοξοβολία καί ξιφομαχία, τό "
-"αποτέλεσμα είναι ένα ισχυρό εργαλείο πολέμου.\n"
-"\n"
-"Ειδικές σημειώσεις: Η ικανότητα των ρέιντζερ σάν άνθρωποι τού δάσους τούς "
-"κάνει αόρατους στό δάσος στόν εχθρό, εκτός άν είναι δίπλα του, ή έχουν "
-"εμφανιστεί κάνοντας επίθεση. "
 
 #: data/units/Elvish_Ranger.cfg:214
 msgid "female^Elvish Ranger"
-msgstr "Θηλυκό ξωτικό-ρέιντζερ"
+msgstr "ξωτικόρέιντζερ"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
 msgstr "Ξωτικό-Καβαλάρης"
 
 #: data/units/Elvish_Rider.cfg:22
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -6301,14 +5979,6 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
-"Οι καλοί καβαλλάρηδες των ξωτικών μπορούν να κινούνται μέσα από δάση μέ "
-"ταχύτητες πού θά ισοδυναμούσαν με αυτοκτονία γιά κάθε άνθρωπο. Αν καί αυτό "
-"σίγουρα αφφήνει τούς ανθρώπους μέ τό στόμα ανοιχτό, υπάρχουν ερωτήματα γιά "
-"τό είδος των αλόγων, γιατί οι άθλοι πού πετυχαίνουν φαίνονται σχεδόν "
-"υπερφυσικοί.\n"
-"\n"
-"Ο συνδυασμός απίστευτης κινητικότητας καί δύναμης στή μάχη είναι ένα από τά "
-"μεγαλύτερα όπλα τών ξωτικών στή μάχη. "
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
@@ -6332,7 +6002,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
-msgstr "Ιέρεια των ξωτικών "
+msgstr "Ιέρεια των Ξωτικών "
 
 #: data/units/Elvish_Shaman.cfg:23
 msgid ""
@@ -6364,7 +6034,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:216
 msgid "female^Elvish Sharpshooter"
-msgstr "Θηλυκό ξωτικό-ελεύθερος σκοπευτής"
+msgstr "Ξωτικιά-Ελεύθερος Σκοπευτής"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
@@ -6404,7 +6074,6 @@ msgid "female^Elvish Sylph"
 msgstr "Ξωτικιά Συλφίδα"
 
 #: data/units/Elvish_Sylph.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
@@ -6412,10 +6081,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι ξωτικίές συλφίδες(λυγερές) είναι γόνοι ομορφιάς στό θνητό πεδίο. Εχοντας "
-"αναπτύξει πλήρως την νεραιδένια πλευρά τους, μετασχηματίζονται σέ πλάσματα "
-"καί των δύο κόσμων, ικανά να χρησιμοποιήσουν ισχυρή μαγική δύναμη εναντίον "
-"των εχθρών τους. "
 
 #: data/units/Elvish_Sylph.cfg:54
 msgid "gossamer"
@@ -6426,7 +6091,6 @@ msgid "Direwolf Rider"
 msgstr "Ιππέας Μεγάλου Λύκου "
 
 #: data/units/Goblin_Direwolf_Rider.cfg:22
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6441,21 +6105,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι Μεγάλοι λύκοι διαφέρουν από τους υπόλοιπους μόνο στό μέγεθος καί χρώμα. "
-"Τυπικά είναι ψηλότεροι από ένα άλογο στόν ώμο καί έχουν ανάλογη όρεξη. Μόνο "
-"ένας τρελλός θά τους συναντούσε με τη θέλησή του. Οι καλικάντζαροι, μέ "
-"μεγάλες θυσίες κατάφεραν να τους εξημερώσουν, αν μπορεί να λεχθεί κάτι "
-"τέτοιο.\n"
-"\n"
-" Τά νύχια ενός λύκου δέν θεωρούνται σάν τά πιό επικίνδυνα όπλα τους, αλλά "
-"γιά ένα τόσο μεγάλο κτήνος, είναι μακρύτερα καί πιό χοντρά από σιδερένια "
-"καρφιά. Οι καβαλλάρηδές τους χύνουν ένα δηλητήριο, σάν καί αυτό πού "
-"χρησιμοποιούν οι όρκ-δολοφόνοι στά μπροστινά δόντια τους, κάνοντας έτσι ένα "
-"δάγκωμα από αυτά τά κτήνη φονικό όπλο.\n"
-"\n"
-" Ειδικές σημειώσεις: Αν τά δόντια του μεγάλου λύκου δαγκώσουν μιά μονάδα, "
-"αυτή έχει δηλητηριαστεί καί τά θύματα της δηλητηρίασης θά χάνουν συνέχεια "
-"βαθμούς υγείας μέχρι να γιατρευτούν σέ ένα χωριό η από έναν θεραπευτή."
 
 #: data/units/Goblin_Direwolf_Rider.cfg:33 data/units/Goblin_Knight.cfg:33
 #: data/units/Goblin_Wolf_Rider.cfg:34 data/units/Monster_Cave_Spider.cfg:34
@@ -6508,7 +6157,6 @@ msgid "Goblin Pillager"
 msgstr "Καλικάντζαρος λεηλατητής"
 
 #: data/units/Goblin_Pillager.cfg:20
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -6517,15 +6165,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Ορισμένοι καλικάντζαροι εκπαιδεύουν τούς λύκους τους να ξεπεράσουν τόν φόβο "
-"τους γιά τη φωτιά. Στίς επιδρομές, αυτοί οι καλικάντζαροι έχουν ρόλο "
-"υποστήριξης. Καίνε τά σπίτια καί σπαρτά των εχθρών τους καί επίσης κουβαλούν "
-"δίχτυα γιά να σπέρνουν την καταστροφή σε αυτούς πού προσπαθούν να οργανώσουν "
-"άμυνα η αντίποινα.\n"
-"\n"
-"Ειδικές σημειώσεις: Εχθροί πού πιάνονται στό δίχτυ επιβραδύνονται στίς "
-"κινήσεις τους καί ο αριθμός χτυπημάτων πού μπορούν να καταφέρουν κατά των "
-"αντιπάλων τους στή μάχη μειώνεται κατά ένα. "
 
 #: data/units/Goblin_Pillager.cfg:34
 msgid "torch"
@@ -6537,12 +6176,10 @@ msgid "net"
 msgstr "δίχτυ"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Καλικάντζαρος παλουκωτής"
+msgstr ""
 
 #: data/units/Goblin_Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6551,15 +6188,7 @@ msgid ""
 "arms to fight harder and longer before they die.\n"
 "\n"
 "Special Notes:"
-msgstr ""
-" Ο βαθμός του Αρχιστράτηγου είναι από τους πιό σεβαστούς στούς στρατούς της "
-"ανθρωπότητας καί όσοι φέρουν αυτόν τόν τίτλο έχουν επιζήσει από πολλά "
-"βαπτίσματα πυρός, αποδεικνύοντας έτσι την ευκολία τους στίς τακτικές καί την "
-"ιδιαίτερη ικανότητά τους στή μάχη σώμα μέ σώμα.\n"
-"\n"
-" Ειδικές Σημειώσεις: Η ηγετική ικανότητα του Αρχιστράτηγου επιτρέπει σέ "
-"φιλικές μονάδες δίπλα του να κάνουν μεγαλύτερη ζημιά στή μάχη, αν καίκ αυτό "
-"ισχύει μόνο γιά μονάδες χαμηλώτερου επιπέδου."
+msgstr " "
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6676,12 +6305,11 @@ msgstr ""
 #: data/units/Human_Horse_Grand_Knight.cfg:21
 #: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
 #: data/units/Human_Horseman.cfg:21
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Ειδικά "
+msgstr ""
 
 #: data/units/Human_Horse_Grand_Knight.cfg:72
 #: data/units/Human_Horse_Knight.cfg:71 data/units/Human_Horse_Lancer.cfg:24
@@ -6737,7 +6365,6 @@ msgid "Paladin"
 msgstr "Παλατιανός"
 
 #: data/units/Human_Horse_Paladin.cfg:22
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
@@ -6748,12 +6375,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ιππότες με τη μέγιστη αρετή, οι παλατιανοί έχουν ορκιστεί σέ μοναστικά "
-"τάγματα, θέτοντας την δύναμή τους στήν υπηρεσία του Καλού. Αν καί δέν είναι "
-"τό ίδιο επιβλητικός στή μάχη όσο ένας μεγάλος ιππότης, ο Παλατιανός είναι  "
-"μιά ισχυρή δύναμη στή μάχη καί η αγνότητά τους τους προσφέρει άλλα δώρα. "
-"Ενας παλατιανός είναι φόβητρο γιά αυτούς πού δέν είναι από αυτό τόν κόσμο "
-"καί έχει εκπαιδευτεί να θεραπεύει τς πληγές των συντρόφων του."
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:173
 #: data/units/Human_Mage_of_Light.cfg:133 data/units/Mermaid_Diviner.cfg:114
@@ -6798,9 +6419,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Loyalist_Cavalier.cfg:3
-#, fuzzy
 msgid "Cavalier"
-msgstr "Σπηλιά"
+msgstr ""
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
 msgid ""
@@ -6859,9 +6479,8 @@ msgstr ""
 "τους τους καθιστά πολύτιμους στό πεδίο της μάχης  "
 
 #: data/units/Human_Loyalist_Duelist.cfg:3
-#, fuzzy
 msgid "Duelist"
-msgstr "Ερημος"
+msgstr ""
 
 #: data/units/Human_Loyalist_Duelist.cfg:20
 msgid ""
@@ -6886,7 +6505,6 @@ msgid "Fencer"
 msgstr "Ξιφομάχος "
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -6901,28 +6519,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι ξιφομάχοι ανήκουν σε μιά σχολή πού θεωρεί την πανοπλία πού κουβαλούν οι "
-"περισσότεροι στρατιώτες στή μάχη τόν χειρότερό τους εχθρό. Αν καί η πανοπλία "
-"θά μαλακώσει ένα χτύπημα, η αποφυγή του χτυπήματος αναιρεί εντελώς τυχόν "
-"επιπτώσεις του. Τό νά είσαι ικανός με αξιοπιστία να αποφεύγεις οποιαδήποτε "
-"επιθετική κίνηση είναι μιά πολυτέλεια πού τήν έχουν μόνο ΄όσοι έχουν καλή "
-"φυσική κατάσταση καί επιπλέον άνταν μιά σκληρή εκπαίδευση.\n"
-"\n"
-" Οπλισμένοι μόνο μέ μαχαίρι καί ξίφος, οι ξιφομάχοι είναι γρήγοροι στά πόδια "
-"καί χρήσιμοι σέ πολλές καταστάσεις όπου οι συνάδελφοί τους με τις πανοπλίες "
-"μειονεκτούν. Ευχαριστιούνται να περνάνε γύρω γύρω από στρατεύματα όπως τό "
-"βαρύ πεζικό, κοροιδεύοντας τό αντίτιμο πού αυτοί πληρώνουν γιά την πλήρη "
-"πανοπλία τους.\n"
-"\n"
-"Ειδικές σημειώσεις: Η ικανότητά τους σάν ακροβολιστές επιτρέπει στούς "
-"ξιφομάχους νά περάσουν γρήγορα από τους εχθρούς, αγνοώντας τις ζώνες ελέγχου."
 
 #: data/units/Human_Loyalist_General.cfg:3
 msgid "General"
 msgstr "Στρατηγός"
 
 #: data/units/Human_Loyalist_General.cfg:30
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -6930,20 +6532,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Σάν αρχηγοί των στρατών τους, οι Στρατηγοί είναι υπεύθυνοι γιά την προστασία "
-"μεγάλων η σημαντικών περιοχών στά βασίλεια στά οποία έχουν δηλώσει πίστη. Η "
-"εκαπίδευση καί εμπειρία τους αρκεί γιά να εκτελέσουν αυτές τίς εντολές.\n"
-"\n"
-"Ειδικές Σημειώσεις: Η ηγετική ικανότητα ενός Στρατηγού επιτρέπει σέ φιλικές "
-"μονάδες δίπλα του νά κάνουν περισσότερη ζημιάστή μάχη, άν καί αυτό ισχύει "
-"μόνο γιά μονάδες κατώτερου επιπέδου."
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Αρχιστράτηγος "
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:26
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -6952,21 +6546,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Ο βαθμός του Αρχιστράτηγου είναι από τους πιό σεβαστούς στούς στρατούς της "
-"ανθρωπότητας καί όσοι φέρουν αυτόν τόν τίτλο έχουν επιζήσει από πολλά "
-"βαπτίσματα πυρός, αποδεικνύοντας έτσι την ευκολία τους στίς τακτικές καί την "
-"ιδιαίτερη ικανότητά τους στή μάχη σώμα μέ σώμα.\n"
-"\n"
-" Ειδικές Σημειώσεις: Η ηγετική ικανότητα του Αρχιστράτηγου επιτρέπει σέ "
-"φιλικές μονάδες δίπλα του να κάνουν μεγαλύτερη ζημιά στή μάχη, αν καίκ αυτό "
-"ισχύει μόνο γιά μονάδες χαμηλώτερου επιπέδου."
 
 #: data/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Αλαβαρδοφόρος"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:22
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -6983,23 +6568,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Η αλαβάρδα(μακρύ δόρυ μέ πέλεκυ) είναι ένα δύσκολο καί βαρύ όπλο στή χρήση, "
-"αλλά ισχυρό στά χέρια ενός εξπέρ στό όπλο αυτό. Είναι πολύ πιό ευέλικτο από "
-"τη λόγχη, από την οποία προέρχεται. Οπως κάθε αλαβαρδοφόρος μπορεί να σας "
-"πεί, τό όπλο έχει 4 κύρια μέρη γιά χτύπημα, δύο περισσότερα από μιά λόγχη η "
-"ένα δίλογχο: Την ακμή, τήν λεπίδα, τήν ακίδα στή βάση καί τό εσωτερικό μέρος "
-"της λεπίδας πού μπορεί να χρησιμοποιηθεί σέ μιά κίνηση τραβώντας πρός τά "
-"πίσω πρός τόν χρήστη της. Ολα αυτά συνηγορούν γιά ένα όπλο μέ πολές χρήσεις "
-"σέ μάχη σώμα μέ σώμα, ιδίως εναντίον ιππικού.\n"
-"\n"
-" Ομως, μιά αλαβάρδα είναι σημαντικά πιό ακριβή από μιά λόγχη καί στά χέρια "
-"ενός άπειρου, πολύ λιγώτερο αποτελεσματική. Στούς στατούς του Γουέσνοθ "
-"συνηθίζεται να δίνονται τέτοια όπλα μόνο σέ βετεράνους σαρισσοφόρους, πού "
-"έχουν αποδείξει ότι έχουν τήν ικανότητα να τις χρησιμοποιήσουν σωστά στό "
-"πεδίο της μάχης.\n"
-"\n"
-"Ειδικές Σημειώσεις: Τό μήκος του όπλου τους επιτρέπει στούς αλαβαρδοφόρους "
-"να χτυπήσουν πρώτοι, ακόμα καί όταν αμύνονται, σέ μάχη σώμα μέ σώμα."
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -7060,7 +6628,6 @@ msgid "Javelineer"
 msgstr "Ακοντιστής"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:20
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -7072,42 +6639,22 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Οι λογχοφόροι σχεδόν πάντα εξοπλίζουν τους εαυτούς τους με μερικά ακόντια, "
-"γιά να τα πετάξουν στούς εχθρούς από μακρυά. Σε μερικούς αυτό αρέσει "
-"ιδιαίτερα, καί βρίσκουν ότι έχουν φυσικό ταλέντο στή χρήση αυτή. Οι "
-"ακοντιστές είναι χρήσιμοι γιά κάθε στρατό, καθώς είναι ικανοί να προσθέσουν "
-"στίς ικανότητές τους σέ μάχη σώμα με σώμα την ικανότητα να αντιμετωπίζουν "
-"εχθρούς σέ απόσταση. Μπορούν να πετούν ακόντια στίς εχθρικές γραμμές από "
-"απόσταση, συχνά χωρίς ανταπόδωση καί παρόλα αυτά μπορούν να υπέρασπιστούν "
-"τόν εαυτό τους καλά σέ μάχη σώμα μέ σώμα.\n"
-"\n"
-"Ειδικές σημειώσεις: Τό μήκος του όπλου τους επιτρέπει σέ έναν ακοντιστή να "
-"χτυπήσει πρώτος σέ μάχη σώμα με σώμα, ακόμα καί σέ άμυνα."
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
 msgstr "Υπολοχαγός"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:25
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Σάν αρχηγοί των στρατών τους, οι Στρατηγοί είναι υπεύθυνοι γιά την προστασία "
-"μεγάλων η σημαντικών περιοχών στά βασίλεια στά οποία έχουν δηλώσει πίστη. Η "
-"εκαπίδευση καί εμπειρία τους αρκεί γιά να εκτελέσουν αυτές τίς εντολές.\n"
-"\n"
-"Ειδικές Σημειώσεις: Η ηγετική ικανότητα ενός Στρατηγού επιτρέπει σέ φιλικές "
-"μονάδες δίπλα του νά κάνουν περισσότερη ζημιάστή μάχη, άν καί αυτό ισχύει "
-"μόνο γιά μονάδες κατώτερου επιπέδου."
 
 #: data/units/Human_Loyalist_Longbowman.cfg:3
-#, fuzzy
 msgid "Longbowman"
-msgstr "μακρύ τόξο"
+msgstr ""
 
 #: data/units/Human_Loyalist_Longbowman.cfg:19
 msgid ""
@@ -7119,9 +6666,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Loyalist_Master_Bowman.cfg:3
-#, fuzzy
 msgid "Master Bowman"
-msgstr "Τοξότης"
+msgstr ""
 
 #: data/units/Human_Loyalist_Master_Bowman.cfg:19
 msgid ""
@@ -7157,9 +6703,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Loyalist_Pikeman.cfg:3
-#, fuzzy
 msgid "Pikeman"
-msgstr "Θαλασσάνθρωπος"
+msgstr ""
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
 msgid ""
@@ -7218,7 +6763,7 @@ msgstr ""
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:3
 msgid "Shock Trooper"
-msgstr ""
+msgstr "Μονάδα Κρούσης"
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:14
 msgid ""
@@ -7237,7 +6782,6 @@ msgid "Spearman"
 msgstr "Λογχοφόρος"
 
 #: data/units/Human_Loyalist_Spearman.cfg:20
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -7247,19 +6791,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Τα σπαθιά είναι γιά πολλούς μιά ακριβή πολυτέλεια, καί μιά πού οι χωρικοί "
-"δέν μπορούν να αντέξουν. Οι λόγχες είναι πολύ ευκολότερες να κατασκευαστούν "
-"καί τα καταφέρνουν καλά ακόμα καί χωρίς την κορυφή, αν καί οι περισσότεροι "
-"μπορούν νά έχουν μία. Ντυμένοι σέ πέτσινη στολή, καί συχνά ενισχυσμένοι με "
-"μερικούς ακοντιστές, οι λογχοφόροι είναι ο κρομός στούς περισσότερους "
-"στρατούς, καί συχνά στέλνονται στήν πρώτη γραμμή μέ μόνο βασική εκπαίδευση. "
-"Ειδικές σημειώσεις: Τό μήκος του όπλου τους επιτρέπει στόν λογχοφόρο να "
-"χτυπήσει πρώτος σέ μάχη σώμα μέ σώμα, ακόμα καί σέ άμυνα."
 
 #: data/units/Human_Loyalist_Swordsman.cfg:3
-#, fuzzy
 msgid "Swordsman"
-msgstr "ιππέας"
+msgstr ""
 
 #: data/units/Human_Loyalist_Swordsman.cfg:17
 msgid ""
@@ -7306,14 +6841,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Mage.cfg:173
-#, fuzzy
 msgid "female^Mage"
-msgstr "θηλυκός κόκκινος μάγος"
+msgstr "Μάγισσα"
 
 #: data/units/Human_Mage_Arch.cfg:3
-#, fuzzy
 msgid "Arch Mage"
-msgstr "Μεγάλος Μάγος"
+msgstr ""
 
 #: data/units/Human_Mage_Arch.cfg:20
 msgid ""
@@ -7338,7 +6871,6 @@ msgid "Great Mage"
 msgstr "Μεγάλος Μάγος"
 
 #: data/units/Human_Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -7354,27 +6886,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οποιοσδήποτε έχει φτάσει ακόμα καί νά είναι υποψήφιος γιά τόν τίτλο του "
-"Μεγάλου Μάγου είναι ήδη ένας θρύλος στήν εποχή του καί οι τελάληδες έχουν "
-"μάθει διά της βίας νά είναι προσεχτικοί στήν χρήση τού τίτλου. Η υποψηφιόητα "
-"γιά τόν τίτλο ορίζεται προσεκτικά από ένα συμβούλιο των καλύτεων μάγων της "
-"εποχής, καί η απονομή τού τίτλου μόνο μέ πλειοψηφία ψήφων. Ανεξάρτητα από "
-"αυτό, οποιοσδήποτε είναι σοβαρός υποψήφιος γιά αυτή την τιμή είναι ήδη "
-"αναμφίβολα ένας μεγάλος ειδικός στήν τέχνη του καί έχει ξεπεράσει σε "
-"ικανότητα σχεδόν όλους τους συναδέλφους του.\n"
-"\n"
-"Αν καί σε καμμία περίπτωση δέν είναι πολεμιστές, η εφαρμογή της τέχνης τους "
-"στή μάχη είναι κάτι πού συχνά προξενεί τό θαυμασμό στούς άλλους στρατιώτες.\n"
-"\n"
-"Ειδικές Σημειώσεις: οι μπάλλες φωτιάς του Μεγάλου Μάγου είναι μαγικές, καί "
-"πάντα έχουν μιά υψηλή πιθανότητα να χτυπήσουν τόν αντίπαλο."
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Κόκκινος Μάγος"
 
 #: data/units/Human_Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -7391,20 +6908,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Μόλις τερματίσει επιτυχώς την εκπαίδευσή του, αφαιρείται από τόν μάγο η μπλέ "
-"ρόμπα του μαθητευόμενου καί του δίνεται η κόκκινη ρόμπα του μαίτρ. Η σημασία "
-"αυτής της αλλαγής συχνά δέν κατανοείται από τόν απλό λαό πού αναφέρεται "
-"στούς Μαίτρ της Μαγείας σάν Κόκκινους Μάγους. Παρομοίως, ο συμβολισμός της "
-"αλλαγής στά χρώματα συχνά συγχέεται με την ικανότητα του μάγου νά παράγει "
-"φωτιά από φαινομενικά αέρα, ένα τρύκ πού αν καί αναμφίβολα χρήσιμο, "
-"θεωρείται μόνο μιά απλή εφαρμογή της γνώσεης πού μέ κόπο έχει συλλέξει.\n"
-" \n"
-" Αν καί φυσικά αδύναμος καί ανεκπαίδευτος σάν  πολεμιστής, ένας κόκκινος "
-"Μάγος έχει έναν αριθμό άσσων στό μανίκι του, συμπεριλαμβανομένων των κόλπων "
-"μέ τη φωτιά πού είναι καί υπεύθυνα γιά τό κοινό του όνομα.\n"
-"\n"
-" Ειδικές Σημειώσεις: οι μπάλλες φωτιάς του κόκκινου μάγου είναι μαγικές, καί "
-"πάντα έχουν μιά υψηλή πιθανότητα να χτυπήσουν τόν αντίπαλο. "
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
@@ -7441,7 +6944,6 @@ msgid "White Mage"
 msgstr "Λευκός Μάγος "
 
 #: data/units/Human_Mage_White.cfg:22
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -7456,36 +6958,19 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ορισμένοι Μάγοι, καθώς μαθαίνουν γιά τον κόσμο γύρω τους και μαθαίνουν την "
-"αλήθεια γιά τον πόνο στόν οποίο ζεί η ανθρωπότητα πολύ συχνά, ανακαλύπτουν "
-"ότι δέν μπορούν να αφιερωθούν αποκλειστικά σέ μιά ζωή από μελέτη. Αυτοί οι "
-"άντρες καί γυναίκες εγκαταλείπουν τη ζωή του μάγου καί κατατάσσονται σέ "
-"τάγματα μοναχών, αφιερώνοντας τις ικανότητές τους στό κοινό καλό. Μετά την "
-"χειροτόνησή τους συχνά ταξιδεύουν σ΄εόλο τόν κόσμο, πολεμώντας την αρρώστεια "
-"καί τους τραυματισμούς. Αν καί δέν έχουν εκπαιδευτεί γιά μάχη, υπάρχει ένας "
-"εχθρός εναντίον του οποίου αποτελούν έναν ισχυρό σύμμαχο. Αν χρειαστεί "
-"μπορούν να καλέσουν της δυνάμεις του Φωτός γιά να εξαφανίσουν αυτούς πού δέν "
-"είναι από αυτόν τόν κόσμο(Ζωντανοί-Νεκροί) από την γή των θνητών.  Ειδικές "
-"Σημειώσεις: Τό φώς πού εκπέμπει ένας λευκός Μάγος είναι από τη φύση του "
-"μαγικό, καί έχει μεγάλη πιθανότητα να χτυπήσει τόν εχθρό. Αυτό τό φώς κάνει "
-"τρομερή ζημιά στούς ζωνανούς νεκρούς καί μπορεί να κάνει ζημιά ακόμα καί σέ "
-"ζωντανά πλάσματα. Οι λευκοί μάγοι είναι ικανοί να γιατρεύουν τις μονάδες "
-"γύρω τους καί να τούς θεραπεύουν από δηλητήρια. "
 
 #: data/units/Human_Mage_White.cfg:172 data/units/Human_Mage_of_Light.cfg:132
 #: data/units/Mermaid_Diviner.cfg:113 data/units/Mermaid_Priestess.cfg:80
-#, fuzzy
 msgid "lightbeam"
-msgstr "Πολεμιστής"
+msgstr ""
 
 #: data/units/Human_Mage_White.cfg:234
 msgid "female^White Mage"
-msgstr "θηλυκός Λευκός Μάγος "
+msgstr "Λευκή Μάγισσα"
 
 #: data/units/Human_Mage_of_Light.cfg:3
-#, fuzzy
 msgid "Mage of Light"
-msgstr "Συμμαχία του Φωτός"
+msgstr "Μάγος του Φωτός"
 
 #: data/units/Human_Mage_of_Light.cfg:24
 msgid ""
@@ -7501,9 +6986,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Mage_of_Light.cfg:194
-#, fuzzy
 msgid "female^Mage of Light"
-msgstr "Συμμαχία του Φωτός"
+msgstr "Μάγισσα του Φωτός"
 
 #: data/units/Human_Outlaw.cfg:3
 msgid "Outlaw"
@@ -7521,13 +7005,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Outlaw.cfg:114
-#, fuzzy
 msgid "female^Outlaw"
-msgstr "Βασίλισσα των Παρανόμων"
+msgstr ""
 
 #: data/units/Human_Outlaw_Assassin.cfg:3
 msgid "Assassin"
-msgstr ""
+msgstr "Δολοφόνος"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
 msgid ""
@@ -7547,9 +7030,8 @@ msgid "knife"
 msgstr "μαχαίρι"
 
 #: data/units/Human_Outlaw_Assassin.cfg:207
-#, fuzzy
 msgid "female^Assassin"
-msgstr "Θηλυκή Νάγκα"
+msgstr "Δολοφόνος"
 
 #: data/units/Human_Outlaw_Bandit.cfg:3
 msgid "Bandit"
@@ -7585,28 +7067,23 @@ msgstr "ρόπαλο"
 
 #: data/units/Human_Outlaw_Footpad.cfg:134
 msgid "female^Footpad"
-msgstr "γοργοπόδαρη"
+msgstr "Γοργοπόδαρη"
 
 #: data/units/Human_Outlaw_Poacher.cfg:3
 msgid "Poacher"
 msgstr "λαθροκυνηγός"
 
 #: data/units/Human_Outlaw_Poacher.cfg:18
-#, fuzzy
 msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
-"Οι παγιδευτές συνήθως προμηθεύουν φαγητό στούς ληστές καί παράνομους. Η "
-"εμπιερά τους από το κυνήγι τους κάνει ιδιαίτερα πολύτιμους τη νύχτα καί σέ "
-"δάση καί βάλτους."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
 msgstr "Κατεργάρης"
 
 #: data/units/Human_Outlaw_Rogue.cfg:19
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -7617,27 +7094,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι αρχηγοί κάθε ομάδες κλεφτών κερδίζουν τή θέση τους λόγω ικανότητας. Αυτοί "
-"οι κατεργάρηδες έχουν περάσει πολλές ανήσυχες στιγμές ρίχνωντας μικρά "
-"μαχαίρια μέσα στόν κόσμο καί αποφεύγοντας αυτούς πού τους κηνυγάνε, ένα σέτ "
-"ικανοτήτων πού είναι δύσκολο νά βρεθεί. Τεχνίτες στό μαχαίρι, μπορούν να "
-"πετάνε μαχαίρι μέ μεγάλη ακρίβεια, καί οι πολλές ώρες πού έχουν περάσει μέσα "
-"στή νύχτα τους κάνουν νά πολεμάνε πιό άνετα στό σκοτάδι.\n"
-"\n"
-" Ειδικές Σημειώσεις: όταν μιά μονάδα στήν ίδια πλευρά με τόν καταργάρη "
-"απασχολεί έναν εχθρό, ο κατεργάρης μπορεί νά χτυπήσει πισώπλατα, προκαλώντας "
-"διπλή ζημιά, πηγαίνοντας πίσω από τόν εχθρό."
 
 #: data/units/Human_Outlaw_Rogue.cfg:123
 msgid "female^Rogue"
-msgstr "κατεργάρα"
+msgstr "Κατεργάρα"
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
 msgstr " Κλέφτης"
 
 #: data/units/Human_Outlaw_Thief.cfg:20
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -7649,17 +7115,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Γιά όσο καιρό μπορεί κανείς να θυμηθεί, τά μέλη διαφόρων συμμοριών κλεφτών "
-"πού εμφανίζονται σέ κάθε μεγάλη πόλη έχουν την περίεργη συνήθεια να "
-"ξεβγάζουν τά μαλλιά τους μέ λεμόνι, μέχρι να αποκτήσουν ένα χλωμό μπλέ "
-"χρώμα. Είναι ένα πολύ τολμηρό βήμα, μιάς καί η δουλειά τους συχνά "
-"αποτελείται από όχι ακριβώς νόμιμες επιχειρήσεις. Οι κλέφτες έχουν πολλές "
-"ικανότητες καί από ανάγκη είναι τόσο γρήγοροι στά πόδια καί καλοί μέ τά "
-"μαχαίρια. Χρησιμοποιούν ανέντιμες τακτικές στή μάχη χωρίς πρόβλημα, μιάς καί "
-"δέν βλέπουν τό νόημα μιάς έντιμης μάχης. Ειδικές σημειώσεις: Οταν μιά μοναδα "
-"στήν ίδια πλευρά με τόν κλέφτη απασχολεί τόν εχθρό, ο κλέφτης μπορεί να "
-"χτυπήσει πισώπλατα, κάνοντας έτσι διπλή ζημιά, πηγαίνοντας πίσω από τόν "
-"εχθρό."
 
 #: data/units/Human_Outlaw_Thief.cfg:193
 msgid "female^Thief"
@@ -7712,9 +7167,8 @@ msgid "pitchfork"
 msgstr "δικράνι"
 
 #: data/units/Mermaid_Diviner.cfg:3
-#, fuzzy
 msgid "female^Mermaid Diviner"
-msgstr "Ξωτικό-Εκδικήτρια"
+msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:27
 msgid ""
@@ -7728,12 +7182,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Mermaid Enchantress"
-msgstr "Πριγκήπισσα"
+msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -7744,15 +7196,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Οπως καί τά ξωτικά, οι σειρήνες έχουν μιά δυνατή καί φυσική ικανότητα γιά "
-"μαγεία, άν καί η δική τους είναι σημαντικά διαφορετική. Όσες κατέχουν αυτή "
-"την τέχνη θεωρούνται εξέχονα πρόσωπα καί η τέχνη τους χρησιμοποιείται γιά  "
-"πολλαπλές δουλειές, πολλές από τις οποίες οι άνθρωποι δέν μπορούν ούτε να "
-"ονειρευτούν. Η προφανής πολεμική χρήση απαγορεύεται εναντίον της φυλής τους "
-"- αυτή η δύναμη είναι ένα μεγάλο μέρος από αυτό πού προστατεύει τό λαό τους "
-"από τά τέρατα πού βγάινουν από την άβυσσο. Ειδικές σημειώσεις: Οι πίδακες "
-"νερού πού πετάνες οι σειρήνες είναι μαγικής υφής καί έχουν πάντα μεγάλη "
-"πιθανότητα να πετύχουν τους αντιπάλους τους. "
 
 #: data/units/Mermaid_Enchantress.cfg:70 data/units/Mermaid_Initiate.cfg:73
 #: data/units/Mermaid_Siren.cfg:73
@@ -7760,12 +7203,10 @@ msgid "water spray"
 msgstr "πίδακες νερού  "
 
 #: data/units/Mermaid_Initiate.cfg:3
-#, fuzzy
 msgid "female^Mermaid Initiate"
-msgstr "θηλυκός κόκκινος μάγος"
+msgstr ""
 
 #: data/units/Mermaid_Initiate.cfg:23
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -7776,23 +7217,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Οπως καί τά ξωτικά, οι σειρήνες έχουν μιά δυνατή καί φυσική ικανότητα γιά "
-"μαγεία, άν καί η δική τους είναι σημαντικά διαφορετική. Όσες κατέχουν αυτή "
-"την τέχνη θεωρούνται εξέχονα πρόσωπα καί η τέχνη τους χρησιμοποιείται γιά  "
-"πολλαπλές δουλειές, πολλές από τις οποίες οι άνθρωποι δέν μπορούν ούτε να "
-"ονειρευτούν. Η προφανής πολεμική χρήση απαγορεύεται εναντίον της φυλής τους "
-"- αυτή η δύναμη είναι ένα μεγάλο μέρος από αυτό πού προστατεύει τό λαό τους "
-"από τά τέρατα πού βγάινουν από την άβυσσο. Ειδικές σημειώσεις: Οι πίδακες "
-"νερού πού πετάνες οι σειρήνες είναι μαγικής υφής καί έχουν πάντα μεγάλη "
-"πιθανότητα να πετύχουν τους αντιπάλους τους. "
 
 #: data/units/Mermaid_Priestess.cfg:3
-#, fuzzy
 msgid "female^Mermaid Priestess"
-msgstr "Πριγκήπισσα"
+msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:25
-#, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -7804,26 +7234,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ορισμένοι Μάγοι, καθώς μαθαίνουν γιά τον κόσμο γύρω τους και μαθαίνουν την "
-"αλήθεια γιά τον πόνο στόν οποίο ζεί η ανθρωπότητα πολύ συχνά, ανακαλύπτουν "
-"ότι δέν μπορούν να αφιερωθούν αποκλειστικά σέ μιά ζωή από μελέτη. Αυτοί οι "
-"άντρες καί γυναίκες εγκαταλείπουν τη ζωή του μάγου καί κατατάσσονται σέ "
-"τάγματα μοναχών, αφιερώνοντας τις ικανότητές τους στό κοινό καλό. Μετά την "
-"χειροτόνησή τους συχνά ταξιδεύουν σ΄εόλο τόν κόσμο, πολεμώντας την αρρώστεια "
-"καί τους τραυματισμούς. Αν καί δέν έχουν εκπαιδευτεί γιά μάχη, υπάρχει ένας "
-"εχθρός εναντίον του οποίου αποτελούν έναν ισχυρό σύμμαχο. Αν χρειαστεί "
-"μπορούν να καλέσουν της δυνάμεις του Φωτός γιά να εξαφανίσουν αυτούς πού δέν "
-"είναι από αυτόν τόν κόσμο(Ζωντανοί-Νεκροί) από την γή των θνητών.  Ειδικές "
-"Σημειώσεις: Τό φώς πού εκπέμπει ένας λευκός Μάγος είναι από τη φύση του "
-"μαγικό, καί έχει μεγάλη πιθανότητα να χτυπήσει τόν εχθρό. Αυτό τό φώς κάνει "
-"τρομερή ζημιά στούς ζωνανούς νεκρούς καί μπορεί να κάνει ζημιά ακόμα καί σέ "
-"ζωντανά πλάσματα. Οι λευκοί μάγοι είναι ικανοί να γιατρεύουν τις μονάδες "
-"γύρω τους καί να τούς θεραπεύουν από δηλητήρια. "
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "Θαλασσάνθωπος Λογχοφόρος"
+msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -7846,12 +7260,10 @@ msgid "naia touch"
 msgstr "Αγγιγμα της Ναιάδας "
 
 #: data/units/Merman_Entangler.cfg:3
-#, fuzzy
 msgid "Merman Entangler"
-msgstr "Θαλασσάνθρωπος δικτυάς "
+msgstr ""
 
 #: data/units/Merman_Entangler.cfg:20
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -7861,15 +7273,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Ορισμένοι καλικάντζαροι εκπαιδεύουν τούς λύκους τους να ξεπεράσουν τόν φόβο "
-"τους γιά τη φωτιά. Στίς επιδρομές, αυτοί οι καλικάντζαροι έχουν ρόλο "
-"υποστήριξης. Καίνε τά σπίτια καί σπαρτά των εχθρών τους καί επίσης κουβαλούν "
-"δίχτυα γιά να σπέρνουν την καταστροφή σε αυτούς πού προσπαθούν να οργανώσουν "
-"άμυνα η αντίποινα.\n"
-"\n"
-"Ειδικές σημειώσεις: Εχθροί πού πιάνονται στό δίχτυ επιβραδύνονται στίς "
-"κινήσεις τους καί ο αριθμός χτυπημάτων πού μπορούν να καταφέρουν κατά των "
-"αντιπάλων τους στή μάχη μειώνεται κατά ένα. "
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -7888,9 +7291,8 @@ msgid "trident"
 msgstr "τρίαινα"
 
 #: data/units/Merman_Hoplite.cfg:3
-#, fuzzy
 msgid "Merman Hoplite"
-msgstr "Θαλασσάνθωπος πολεμιστής"
+msgstr ""
 
 #: data/units/Merman_Hoplite.cfg:21
 msgid ""
@@ -7903,9 +7305,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Hunter.cfg:3
-#, fuzzy
 msgid "Merman Hunter"
-msgstr "Θαλασσάνθωπος πολεμιστής"
+msgstr ""
 
 #: data/units/Merman_Hunter.cfg:18
 msgid ""
@@ -7916,9 +7317,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Javelineer.cfg:3
-#, fuzzy
 msgid "Merman Javelineer"
-msgstr "Ακοντιστής"
+msgstr ""
 
 #: data/units/Merman_Javelineer.cfg:18
 msgid ""
@@ -8056,15 +7456,12 @@ msgid "Giant Scorpion"
 msgstr "Γιγάντιος Σκορπιός"
 
 #: data/units/Monster_Giant_Scorpion.cfg:20
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Ενας κανονικός σκορπιός είναι ήδη αρκετά επικίνδυνος-ένας στό μέγεθος "
-"ανθρώπου δέν χρειάζεται επεξήγηση."
 
 #: data/units/Monster_Giant_Scorpion.cfg:24
 msgid "sting"
@@ -8183,7 +7580,7 @@ msgstr "Πολεμιστής Ναγκίνι"
 
 #: data/units/Ogre.cfg:3
 msgid "Ogre"
-msgstr ""
+msgstr "Όγκρε"
 
 #: data/units/Ogre.cfg:17
 msgid ""
@@ -8199,7 +7596,7 @@ msgstr "μπαλτάς"
 
 #: data/units/Ogre_Young.cfg:3
 msgid "Young Ogre"
-msgstr ""
+msgstr "Νεαρός Όγκρε"
 
 #: data/units/Ogre_Young.cfg:17
 msgid ""
@@ -8209,9 +7606,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Archer.cfg:3
-#, fuzzy
 msgid "Orcish Archer"
-msgstr "ξωτικό-τοξότης "
+msgstr "Τοξότης των Ορκ"
 
 #: data/units/Orcish_Archer.cfg:18
 msgid ""
@@ -8222,9 +7618,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:3
-#, fuzzy
 msgid "Orcish Assassin"
-msgstr "Πολεμιστής όρκ"
+msgstr "Δολοφόνος Ορκ"
 
 #: data/units/Orcish_Assassin.cfg:19
 msgid ""
@@ -8239,12 +7634,11 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:69 data/units/Orcish_Slayer.cfg:89
 msgid "throwing knives"
-msgstr ""
+msgstr "ιπτάμενα στιλέτα"
 
 #: data/units/Orcish_Crossbowman.cfg:3
-#, fuzzy
 msgid "Orcish Crossbowman"
-msgstr "βαλλίστρα"
+msgstr ""
 
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
@@ -8259,9 +7653,8 @@ msgid "short sword"
 msgstr "κοντό σπαθί"
 
 #: data/units/Orcish_Grunt.cfg:3
-#, fuzzy
 msgid "Orcish Grunt"
-msgstr "Πολέμαρχος Ορκ"
+msgstr ""
 
 #: data/units/Orcish_Grunt.cfg:18
 msgid ""
@@ -8272,7 +7665,7 @@ msgstr ""
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr ""
+msgstr "Αρχηγός των Ορκ"
 
 #: data/units/Orcish_Leader.cfg:20
 msgid ""
@@ -8301,9 +7694,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:3
-#, fuzzy
 msgid "Orcish Slayer"
-msgstr "Πολέμαρχος Ορκ"
+msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:19
 msgid ""
@@ -8317,9 +7709,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Slurbow.cfg:3
-#, fuzzy
 msgid "Orcish Slurbow"
-msgstr "Πολέμαρχος Ορκ"
+msgstr ""
 
 #: data/units/Orcish_Slurbow.cfg:18
 msgid ""
@@ -8379,7 +7770,6 @@ msgid "Saurian Ambusher"
 msgstr "Σαυράνθρωπος  Ενέδρας"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8389,20 +7779,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι Σαυράνθρωποι Ενέδρας έχουν ιδιαίτερη ικανότητα στή χρήση του δόρατος. "
-"Παρά τήν ληθαργική κληρονομιά τους καί τό κρύο αίμα τους καί την σχετική "
-"τους ευπάθειας, εκτιμούνται ιδιαίτερα, γιατί μπορούν να κινούνται μέσα από "
-"δύσκολο έδαφος καί γύρω από αντιπάλους. Οι ακροβολιστές Σαυράνθρωποι έχουν "
-"τήν δύναμη νά εκμεταλλευτούν πλήρως αυτό τό γεγονός. Οι καλύτεροι "
-"Σαυράνθρωποι Ενέδρας ξελίσσονται σέ Σαυράνθρωπους Πλευρίτες."
 
 #: data/units/Saurian_Augur.cfg:3
-#, fuzzy
 msgid "Saurian Augur"
-msgstr "Σαυράνθρωπος  Ενέδρας"
+msgstr ""
 
 #: data/units/Saurian_Augur.cfg:22
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -8411,17 +7793,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Παρά την ληθαργική κληρονομιά τους κρύου αίματος, καί την σχετική αδυναμία "
-"τους, οι Σαυράνθρωποι-Μάγοι εκτιμούνται σάν θεραπευτές γιατί μπορούν να "
-"φροντίσουν τους συμμάχους τους ανεξάρτητα από έδαφος η αντιπάλους. Εκτός από "
-"τις θεραπευτικές τους ικανότητες έχουν καί γνώσεις μαύρης μαγείας "
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
 msgstr "Σαυράνθρωπος Πλευρίτης"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8431,19 +7808,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι Σαυράνθρωποι Πλευρίτες έχουν ιδιαίτερη ικανότητα στή χρήση του δόρατος. "
-"Παρά τήν ληθαργική κληρονομιά τους καί τό κρύο αίμα τους καί την σχετική "
-"τους ευπάθειας, εκτιμούνται ιδιαίτερα, γιατί μπορούν να κινούνται μέσα από "
-"δύσκολο έδαφος καί γύρω από αντιπάλους. Οι  Σαυράνθρωποι Πλευρίτες έχουν τήν "
-"δύναμη νά εκμεταλλευτούν πλήρως αυτό τό γεγονός. "
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr " Σαυράνθρωπος-Μάγος"
+msgstr ""
 
 #: data/units/Saurian_Oracle.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -8452,17 +7822,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι Σαυράνθρωποι παγορίχτες την κοπάνησαν από επιπλέον εκπαίδευση σέ ιατρική "
-"γιά να συγκεντρώσουν τις ικανότητές τους στίς σκοτεινές τέχνες. Αν καί "
-"εύθραυστοι, μπορούν να καλέσουν την μαγική δύναμη του κρύου του βορρά καί "
-"συνεχίζουν νά έχουν την βασική τους θεραπευτική ικανότητα."
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr " Ακροβολιστής Σαυράνθρωπος"
 
 #: data/units/Saurian_Skirmisher.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8471,19 +7836,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι Ακροβολιστές Σαυράνθρωποι έχουν ιδιαίερη ικανότητα στή χρήση του δόρατος. "
-"Παρά τήν ληθαργική κληρονομιά τους καί τό κρύο αίμα τους καί την σχετική "
-"τους ευπάθειας, εκτιμούνται ιδιαίτερα, γιατί μπορούν να κινούνται μέσα από "
-"δύσκολο έδαφος καί γύρω από αντιπάλους. Οι ακροβολιστές Σαυράνθρωποι έχουν "
-"τήν δύναμη νά εκμεταλλευτούν πλήρως αυτό τό γεγονός. Οι καλύτεροι "
-"ακροβολιστές Σαυράνθρωποι εξελίσσονται σέ Σαυράνθρωπους Ενέδρας "
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Σαυράνθρωπος-Μάντης"
 
 #: data/units/Saurian_Soothsayer.cfg:22
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -8491,16 +7849,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι Σαυράνθρωποι-Μάντες  εκτιμούνται σάν θεραπευτές γιατί μπορούν να "
-"φροντίσουν τους συμμάχους τους ανεξάρτητα από έδαφος η αντιπάλους. Εκτός από "
-"τις θεραπευτικές τους ικανότητες έχουν καί γνώσεις μαύρης μαγείας "
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
 msgstr "Τρόλ"
 
 #: data/units/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have been a mote to trouble the thoughts of humanity and dwarf-kind, "
 "who remain baffled at the origins of these creatures, and perhaps more "
@@ -8512,21 +7866,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Οι Τρόλ υπήρξαν ένας εφιάλτης γιά τους ανθρώπους καί νάνους, πού παραμένουν "
-"προβληματισμένοι σχετικά με τήν καταγωγή αυτών των πλασμάτων καί ίσως πιό "
-"σημαντικό, την αφύσικη δύναμη καί ενέργειά τους. Ενας ενήλικας Τρόλ είναι "
-"πολύ ψηλότερος από άνθρωπο καί ακόμα καί άοπλος θά ήταν μεγάλη απειλή σέ "
-"μάχη. Τά μεγάλα μπαστούνια πού προτιμούνται στή μάχη χρησιμοποιούνται σάν "
-"επέκταση του χεριού τους γιά τόν ίδιο σκοπό, δηλαδή την υποταγή των θυμάτων "
-"τους. Ειδικές σημειώσεις: Οι Τρόλ έχουν την ικανότητα της αναγέννησης, πού "
-"τους γιατρεύει, ακριβώς σάν να ήταν πάντα σέ ένα χωριό."
 
 #: data/units/Troll_Great.cfg:3
 msgid "Great Troll"
 msgstr "Μέγας Τρόλ "
 
 #: data/units/Troll_Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -8536,21 +7881,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οταν ένας τρόλ, προκισμένος με υπερβολική δύναμη ζωής την ταιριάζει με "
-"ηλικία καί σοφία, γίνεται κάτι ασυνήθιστο, ένα κτήνος πού τό θυμούνται "
-"γενιές. Τά κατορθώματά τους σέ δύναμη καί εξυπνάδα είναι η πηγή των "
-"περισσότερων ιστοριών γιά τούς Τρόλ καί τό να βλέπεις αυτές τις ιστορίες "
-"στήν πράξη δέν υποβαθμίζει το μεγαλείο τους.\n"
-"\n"
-"Ειδικές σημειώσεις: Οι Τρόλ έχουν την ικανότητα της αναγέννησης, πού τους "
-"γιατρεύει, ακριβώς σάν να ήταν πάντα σέ ένα χωριό."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Ήρωας Τρόλ"
 
 #: data/units/Troll_Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an undue share of the strength and vitality that "
 "characterizes their race. In a society where might makes right, those of "
@@ -8558,18 +7894,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ορισμένοι Τρόλ γεννιούνται μέ παραπανίσια δύναμη καί ενεργητικότητα από αυτή "
-"πού χαρακτηρίζει τη φυλή τους. Σε μιά κοινωνία πού κυριαρχεί η δύναμη, η "
-"φυλή τους τους θαυμάζει σάν ήρωες. Ειδικές σημειώσεις: Οι Τρόλ έχουν την "
-"ικανότητα της αναγέννησης, πού τους γιατρεύει, ακριβώς σάν να ήταν πάντα σέ "
-"ένα χωριό. "
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Πετροβολητής Τρόλ"
 
 #: data/units/Troll_Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -8580,22 +7910,12 @@ msgid ""
 "Special Notes: though unwieldy, a stone thrown by one of these monsters is "
 "much more deadly than any arrow, if it manages to hit."
 msgstr ""
-" Η σκέψη της ρίψης πέτρινων όγκων στή μάχη σίγουρα είχε περάσει από τό μυαλό "
-"πολλών τρόλ καί μερικοί τό υιοθέτησαν σάν προτιμητέο όπλο. Επειδή τόσο "
-"μεγάλες πέτρες είναι δύσκολο νά βρεθούν, οι πετροβολητές τις κουβαλούν σέ "
-"μεγάλους σάκκους στίς πλάτες τους. Τό ίδιο δέρμα από τό οποίο φτιάχνονται "
-"αυτοί οι σάκκοι, μπορεί εύκολα να χρησιμοποιηθεί σάν πρωτόγονη σφεντόνα. "
-"Ειδικές σημειώσεις: Ενας ογκόλιθος πού ρίχνει ένα από αυτά τά τέρατα είναι "
-"πολύ φονικότερο από βέλος, αν φυσικά βρεί τό στόχο του.  Οι Τρόλ έχουν την "
-"ικανότητα της αναγέννησης, πού τους γιατρεύει, ακριβώς σάν να ήταν πάντα σέ "
-"ένα χωριό. "
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Πολεμιστής Τρόλ "
 
 #: data/units/Troll_Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -8608,23 +7928,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι Τρόλ τυπικά ούτε χρειάζονται ούτε προτιμούν να χρησιμοποιηούν σωστά όπλα "
-"στή μάχη, μιάς καί μεγάλα ξύλα καί πέτρες τους εξυπηρετούν τό ίδιο. Όμως σέ "
-"αρκετές περιπτώσεις οι Τρόλ έχουν παρατηρηθεί να φορούν πανοπλία καί νά "
-"κρατούν μεταλλικά σφυριά. Πιστεύεται ότι οι παραγωγοί καί η πηγή αυτού του "
-"εξοπλισμού είναι οι σύμμαχοί τους, οι όρκ, δεδομένου ότι ερευνητικές "
-"αποστολές σέ αρκετές αδειασμένες με τη βία τρύπρε των Τρόλ δέν βρήκαν καμμία "
-"ένδειξη κάποιου είδους μεταλλουργίας. Με δεδομένο τό πόσο επικίνδυνος είναι "
-"ένας Τρόλ στή μάχη, η ιδέα ενός πλήρως εξοπλισμένου Τρόλ είναι σίγουρα "
-"ενοχλητική.Ειδικές σημειώσεις: Οι Τρόλ έχουν την ικανότητα της αναγέννησης, "
-"πού τους γιατρεύει, ακριβώς σάν να ήταν πάντα σέ ένα χωριό. "
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Μικρός Τρόλ "
 
 #: data/units/Troll_Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -8634,17 +7943,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Τό νά περιγράφει κανείς έναν τρόλ σάν μικρό είναι ήδη σχήμα οξύμωρο, μιάς "
-"καί τά σώματά τους είναι ήδη πολύ πιό σκληρά από ενός ενήλικα ανθρώπου. "
-"Είναι ατσούμπαλοι καί δέν μπορούν ακόμα να βαδίσουν σωστά, καί έτσι "
-"αναγκάζονται να χοροπηδούν στά τέσσερα, αλλά όσο καί να τους εμποδίζει αυτό, "
-"εξισσοροπείται από την κτηνώδη δύναμη της φυλής τους.  Ειδικές σημειώσεις: "
-"Οι Τρόλ έχουν την ικανότητα της αναγέννησης, πού τους γιατρεύει, ακριβώς σάν "
-"να ήταν πάντα σέ ένα χωριό. "
 
 #: data/units/Undead_Bat_Blood.cfg:3
 msgid "Blood Bat"
-msgstr ""
+msgstr "Νυχτερίδα Αίματος"
 
 #: data/units/Undead_Bat_Blood.cfg:19
 msgid ""
@@ -8670,9 +7972,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
-#, fuzzy
 msgid "Ghoul"
-msgstr "Χρυσά"
+msgstr ""
 
 #: data/units/Undead_Corpse_Ghoul.cfg:21
 msgid ""
@@ -8694,7 +7995,6 @@ msgid "Necrophage"
 msgstr "Νεκροφάγος"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -8703,30 +8003,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Εχοντας κορακιάσει από μιά ανίερη πείνα γιά νεκρή σάρκα, οι νεκροφάγοι "
-"επιτίθενται σ'αυτό πού ευελπιστούν ότι θά γίνει τό φαγητό τους με κτηνώδη "
-"μανία. Οταν ικανοποιηθούν μέ τή σάρκα των θυμάτων τους, απλά εξαφανίζουν όλη "
-"τη ζημιά πού υπέστησαν σάν μόλις νά είχαν ανακληθεί, γιά νά ξαναρχίσουν τήν "
-"έρευνά τους γιά σάρκα.\n"
-"\n"
-"Ειδικές σημειώσεις. Τά σαγόνια του νεκροφάγου καλύπτονται από δηλητήριο καί "
-"τά θύματα αυτού του δηλητήριου θά έχουν συνέχεια ζημιά μέχρι να γιατρευτούν "
-"σέ ένα χωριό η πόλη ή από έναν θεραπευτή."
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
 msgstr "Αψυχος"
 
 #: data/units/Undead_Corpse_Soulless.cfg:20
-#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Αυτά τά κινούμενα κουφάρια έχουν γίνει δυνατά από την μεγάλη εμπειρία τους "
-"πολεμώντας τους ζωντανούς."
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
@@ -8743,7 +8031,7 @@ msgstr ""
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
-msgstr ""
+msgstr "Αρχαίος Σκοτεινός Μάγος"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:19
 msgid ""
@@ -8755,9 +8043,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
-#, fuzzy
 msgid "Dark Adept"
-msgstr "Σκοτεινό Πνεύμα"
+msgstr ""
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:22
 msgid ""
@@ -8776,14 +8063,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:26
-#, fuzzy
 msgid "shadow wave"
-msgstr "σπρώξιμο"
+msgstr ""
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:170
-#, fuzzy
 msgid "female^Dark Adept"
-msgstr " Θηλυκή βρυκόλακας"
+msgstr ""
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
@@ -8806,7 +8091,7 @@ msgstr ""
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
-msgstr ""
+msgstr "Σκοτεινός Μάγος"
 
 #: data/units/Undead_Necro_Lich.cfg:21
 msgid ""
@@ -8840,14 +8125,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:25
-#, fuzzy
 msgid "plague staff"
-msgstr "πανούκλα"
+msgstr ""
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
-#, fuzzy
 msgid "Bone Shooter"
-msgstr "Τοξότης Ψυχών"
+msgstr ""
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:17
 msgid ""
@@ -8866,7 +8149,6 @@ msgid "Death Knight"
 msgstr "Ιππότης Θανάτου"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:26
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
@@ -8875,17 +8157,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ιστορίες ακούγονται γιά τους ισχυρότερους πολεμιστές καί στρατηγούς, πού, "
-"καταραμένοι από τό μίσος καί την αίσθηση της προδοσίας επιστρέφουν στόν "
-"κόσμο αυτό σαν Ιππότες Θανάτου. Εχοντας τά ίδια όπλα όπως καί πρίν, οδηγούν "
-"τόυς Ζωντανούς-Νεκρούς στήν αποστολή τους γιά εκδίκηση. "
 
 #: data/units/Undead_Skele_Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Θανατολεπίδας"
 
 #: data/units/Undead_Skele_Deathblade.cfg:19
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
@@ -8895,17 +8172,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Στή ζωή, τά εκτρώματα γνωστά σάν 'θανατολεπίδες' ήταν πολύ καλοί στή μάχη, "
-"στρατιώτες πού ήταν τόσο σβέλτοι όσο καί καί θανατηφόροι. Οι νέοι τους "
-"αφέντες τό αναγνωρίζουν καί προσπαθούν να το εκμεταλλευτούν εξοπλίζοντάς "
-"τους ανάλογα με τις ικανότητες πού κάποτε είχαν. Αν καί εύθραυστα, αυτά τά "
-"τέρατα είναι πολύ πιό γρήγορα από τά υπόλοιπα του είδους τους, τόσο στά "
-"πόδια τους, όσο καί με τις λεπίδες τους. "
 
 #: data/units/Undead_Skele_Draug.cfg:3
-#, fuzzy
 msgid "Draug"
-msgstr "δραγώνος"
+msgstr ""
 
 #: data/units/Undead_Skele_Draug.cfg:19
 msgid ""
@@ -8924,7 +8194,6 @@ msgid "Revenant"
 msgstr "Επανερχόμενος"
 
 #: data/units/Undead_Skele_Revenant.cfg:18
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -8935,20 +8204,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Αυτά τά πλάσματα πού λέγονται Επανερχόμενοι, στά οποία έχει δωθεί ψεύτικη "
-"ζωή γιά να ξαναπολεμήσουν ήταν σαφώς σπουδαίοι πολεμιστές στόν καιρό τους, "
-"άν καί η μνήμη αυτής της εποχής έχει διαγραφεί πρό πολλού. Ακόμα καί οι "
-"μαύροι μάγοι πού τούς ανέστησαν μπορούν μόνο νά κάνουν υποθέσει γιά τό "
-"παρελθόν τους. Πέρα από τέτοια ερωτήματα, ο Επανερχόμενος είναι ένα ισχυρό "
-"εργαλείο στή μάχη: Ενας ατρόμητος πολεμιστής πού δέν αισθάνεται πόνο, καί θά "
-"πολεμήσει μέχρι τέλος."
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
 msgstr "Τοξότης Ψυχών"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:19
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -8958,12 +8219,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Οι ισχυρότεροι από τους ζωντανούς νεκρούς τοξότες πάντα καταλήγουν νά είναι "
-"αυτοί πού ήταν τοξότες στήν προηγούμενη ζωή τους. Περιπλανώνται στά πεδία "
-"των μαχών, οδηγούμενοι από την σβησμένη μνήμη της προηγούμενης ικανότητάς "
-"τους, χωρίς ούτε νά ξέρουν ούτε να νοιάζονται γιά τό σκοπό η τούς εχθρούς. "
-"Τούς οδηγεί μόνο η κακία πού γεννιέται από την αγωνία της άδειας καί "
-"ασυνάρτητης ύπαρξής τους."
 
 #: data/units/Undead_Skeleton.cfg:3
 msgid "Skeleton"
@@ -8984,7 +8239,6 @@ msgid "Skeleton Archer"
 msgstr "Σκελετός-Τοξότης"
 
 #: data/units/Undead_Skeleton_Archer.cfg:18
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -8994,11 +8248,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ενας σκελετός-τοξότης είναι λίγο διαφορετικός από τούς σκελετούς πού συχνά "
-"τόν συνοδεύουν -είναι αμαρτία πρός τη φύση ένας πολεμιστής πού σηκώνεται από "
-"τους νεκρούς γιά να ξαναπολεμήσει. Στά χέρια του αφέντη τους, αυτοί οι "
-"στρατιώτες θά κάνουν οτιδήποτε γιά να εκπληρώσουν τις αποστολές πού τους "
-"ανατέθηκαν, μιάς καί ο θάνατος δέν φοβίζει αυτούς πού είναι ήδη νεκροί."
 
 #: data/units/Undead_Spirit_Ghost.cfg:3
 msgid "Ghost"
@@ -9058,7 +8307,6 @@ msgid "Spectre"
 msgstr "Τελώνειο"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9070,15 +8318,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-" Επονομαζόμενα καί άδειοι άνθρωποι, τά τελώνεια είναι τό δεξί χέρι του "
-"αφέντη τους. Αυτά τά εκτρώματα δίκαια σπέρνουν τόν τρόμο στούς ζωντανούς καί "
-"κρατούν άγρυπνο μάτι στήν περιοχή του αφέντη τους. Η δημιουργία ενός από "
-"αυτά είναι δύσκολο έργο καί ο πραγματικός κίνδυνος αν συναντήσει κανείς ένα "
-"είναι ότι πιθανότατα είναι μόνο ο προπομπός μιάς πολύ πιό επικίνδυνης "
-"δύναμης πού θά ακολουθήσει. Είδικές Σημειώσεις: Ενα χτύπημα από τό σπαθί "
-"τους ρουφάει τη ζωή από τό θύμα γιά να ανανεώσει τό τελώνειο. Τα τελώνεια "
-"έχουν πολύ ασυνήθιστες αντιστάσεις στίς επιθέσεις καί κινούνται ιδιαίτερα "
-"αργά πάνω από νερό."
 
 #: data/units/Undead_Spirit_Spectre.cfg:45
 #: data/units/Undead_Spirit_Wraith.cfg:22
@@ -9090,7 +8329,6 @@ msgid "Wraith"
 msgstr "Στοιχειό "
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
-#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -9104,21 +8342,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Αυτές οι βασανισμένες μορφές από ότι κάποτε ήταν πολεμιστές είναι από τά πιό "
-"τρομακτικά πλάσματα πού μπορεί να δημιουργήσει ένας νεκρομάντης, μιάς καί "
-"ένα σπαθί θά τά διαπεράσει, σάν να περνούσε αέρα. Αυτό πού τροφοδοτεί τόν "
-"φόβο γι' αυτά τά πλάσματ είναι η σκέψη ότι αυτά τά τέρατα είναι ανίκητα, μιά "
-"ιδέα πού είναι μακριά από την πραγματικότητα. Γιά τό λόγο αυτό βρέθηκε "
-"τρόπος μέ τόν οποίο οι φαντασιώσεις πού οδηγούν αυτά τά πλάσματα μπορούν να "
-"ανανεώνονται από τό ίδιο πράγμα πού τά απειλεί. Ειδικές σημειώσεις: Ενα "
-"χτύπημα από τό σπαθί τους ρουφάει ζωή από τό θύμα γιά να ανανεώσει τό "
-"στοιχειό. Τά στοιχειά έχουν πολύ ασυνήθιστες αντιστάσεις στά χτυπήματα καί "
-"κινούνται αρκετά αργά πάνω από νερό."
 
 #: data/units/Wose.cfg:3
-#, fuzzy
 msgid "Wose"
-msgstr "Κλείσιμο"
+msgstr ""
 
 #: data/units/Wose.cfg:20
 msgid ""
@@ -9187,11 +8414,11 @@ msgstr "+Διαχειριστές γενικών καθηκόντων"
 #: src/about.cpp:77 src/about.cpp:107 src/multiplayer_connect.cpp:343
 #: src/multiplayer_connect.cpp:435 src/multiplayer_wait.cpp:413
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: src/about.cpp:84 src/about.cpp:114
 msgid "+  "
-msgstr ""
+msgstr "+"
 
 #: src/about.cpp:212 src/help.cpp:2768
 msgid "Close"
@@ -9221,7 +8448,7 @@ msgstr "επιβραδυμένος"
 
 #: src/actions.cpp:964 src/actions.cpp:1205
 msgid "stone"
-msgstr ""
+msgstr "πέτρα"
 
 #: src/actions.cpp:2003
 msgid "Ambushed!"
@@ -9305,7 +8532,7 @@ msgstr "Εκμάθηση"
 
 #: src/dialogs.cpp:409
 msgid "replay"
-msgstr ""
+msgstr "επανάληψη"
 
 #: src/dialogs.cpp:411 src/menu_events.cpp:375 src/multiplayer_lobby.cpp:345
 msgid "Turn"
@@ -9341,17 +8568,19 @@ msgstr ""
 
 #: src/dialogs.cpp:478
 msgid "No Saved Games"
-msgstr ""
+msgstr "Δεν υπάρχουν αποθηκευμένα παιχνίδια"
 
 #: src/dialogs.cpp:479
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
+"Δεν υπάρχουν αποθηκευμένα παιχνίδια για φόρτωση.\n"
+"(Τα παιχνίδια αποθηκεύονται αυτόματα όταν ολοκληρώνεται ένα σενάριο)"
 
 #: src/dialogs.cpp:493
 msgid "Delete Save"
-msgstr "σβήσεις αυτό τό φυλαγμένο παιχνίδι"
+msgstr "Σβήσιμο Αποθήκευσης"
 
 #: src/dialogs.cpp:501
 msgid "Date"
@@ -9397,7 +8626,7 @@ msgstr "Κινήσεις: "
 
 #: src/display.cpp:531
 msgid "Screenshot"
-msgstr ""
+msgstr "Φωτογραφία"
 
 #: src/game.cpp:398 src/game.cpp:1256
 msgid "The Battle for Wesnoth"
@@ -9454,11 +8683,8 @@ msgid "Connect to Server"
 msgstr "Συνδεθείτε με έναν Εξυπηρέτη"
 
 #: src/game.cpp:860
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
-"Τώρα θά συνδεθείτε με έναν εξυπηρέτη εκστρατειών γιά να κατεβάσετε "
-"εκστρατείες"
+msgstr "Θα συνδεθείτε με έναν εξυπηρετητή για να κατεβάσετε τις επεκτάσεις."
 
 #: src/game.cpp:861
 msgid "Server: "
@@ -9470,7 +8696,7 @@ msgstr "Η σύνδεση με τον απομακρυσμένο Η/Υ απέτ�
 
 #: src/game.cpp:886
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Ζητείται η λίστα των επεκτάσεων"
 
 #: src/game.cpp:899
 msgid "Error communicating with the server."
@@ -9493,48 +8719,41 @@ msgid "Size"
 msgstr "Μέγεθος"
 
 #: src/game.cpp:970
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Δημοσίευσε Εκστρατεία"
+msgstr "Δημοσιεύετε η επέκταση:"
 
 #: src/game.cpp:974
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Διέγραψε Εκστρατεία"
+msgstr "Διέγραψε επέκταση:"
 
 #: src/game.cpp:978
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr ""
-"Δεν υπάρχουν διαθέσιμες εκστρατείες γιά κατέβασμα από αυτόν τόν εξυπηρέτη"
+"Δεν υπάχρουν διαθέσιμες επεκτάσεις για κατέβασμα απ'αυτόν τον εξυπηρετητή."
 
 #: src/game.cpp:985
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Επέλεξε την εκστρατεία πού θές να κατεβάσεις"
+msgstr "Επέλεξε την επέκταση πού θές να κατεβάσεις."
 
 #: src/game.cpp:985
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Λήψη Επεκτάσεων"
 
 #: src/game.cpp:1005
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Κατεβάζω την εκστρατεία..."
+msgstr "Μεταφόρτωση επέκτασης..."
 
 #: src/game.cpp:1029
 msgid "Cannot rescan the filesystem"
 msgstr "Δέν μπορώ να ξανασκανάρω τό σύστημα αρχείων"
 
 #: src/game.cpp:1044
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Εκστρατεία εγκαταστάθηκε"
+msgstr "Η επέκταση εγκαταστάθηκε"
 
 #: src/game.cpp:1044
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "Η εκστρατεία έχει εγκατασταθεί"
+msgstr "Η επέκταση εκγαταστάθηκε."
 
 #: src/game.cpp:1046
 msgid "Network communication error."
@@ -9565,9 +8784,8 @@ msgid "Terms"
 msgstr "Οροι"
 
 #: src/game.cpp:1099
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Κατεβάζω την εκστρατεία..."
+msgstr "Στέλνετε η επέκταση"
 
 #: src/game.cpp:1106 src/game.cpp:1131 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -9671,9 +8889,8 @@ msgid "Battle for Wesnoth"
 msgstr "Η Μάχη για το Wesnoth"
 
 #: src/game.cpp:1719
-#, fuzzy
 msgid "Loading game configuration."
-msgstr "Σφάλμα κατά τη φόρτωση αρχείων διάρθρωσης"
+msgstr ""
 
 #: src/game.cpp:1725
 msgid "Re-initialize fonts for the current language."
@@ -9681,7 +8898,7 @@ msgstr ""
 
 #: src/game.cpp:1741
 msgid "Loading title screen."
-msgstr ""
+msgstr "Φορτώνεται το κεντρικό μενού"
 
 #: src/game_events.cpp:736
 msgid "Victory:"
@@ -9704,9 +8921,8 @@ msgid "Abilities: "
 msgstr "Ικανότητες: "
 
 #: src/help.cpp:1154
-#, fuzzy
 msgid "Cost: "
-msgstr "Κινήσεις: "
+msgstr "Κόστος:"
 
 #: src/help.cpp:1155
 msgid "Alignment: "
@@ -9761,9 +8977,8 @@ msgid "Defense"
 msgstr "Άμυνα"
 
 #: src/help.cpp:1267
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Κίνηση"
+msgstr "Κόστος κίνησης"
 
 #: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
@@ -9778,38 +8993,30 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Επιλέγεται αυτόματα τό έδαφος με τον καλύτερο συντελεστή. "
 
 #: src/help.cpp:1399 src/help.cpp:1423
-#, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
-msgstr "Επιλέγεται αυτόματα τό έδαφος με τον καλύτερο συντελεστή. "
+msgstr ""
 
 #: src/help.cpp:1419
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr ""
 
 #: src/help.cpp:1427
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
 msgstr ""
-"Αυτό τό έδαφος λειτουργεί σάν στρατόπεδο, δηλαδή μπορείς να στρατολογήσεις "
-"μονάδες όταν ο ηγέτης είναι σέ μιά τοποθεσία μέσα σέ αυτό τό έδαφος."
 
 #: src/help.cpp:1429
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
-"Αυτό τό έδαφος λειτουργεί σάν κάστρο, δηλαδή μπορείς να στρατολογήσεις "
-"μονάδες σέ μιά τοποθεσία αυτού τού εδάφους."
 
 #: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr "Αυτό τό έδαφος θεραπεύει "
 
 #: src/help.cpp:2289
-#, fuzzy
 msgid " < Back"
 msgstr "< Πίσω"
 
@@ -9823,7 +9030,7 @@ msgstr ""
 
 #: src/help.cpp:2771
 msgid "The Battle for Wesnoth Help"
-msgstr ""
+msgstr "Η Μάχη για το Γουέσνοθ Βοήθεια"
 
 #: src/help.cpp:2819
 msgid "Parse error when parsing help text: "
@@ -9839,31 +9046,31 @@ msgstr "Προσπεράστε"
 
 #: src/intro.cpp:335
 msgid "The End"
-msgstr ""
+msgstr "Τέλος"
 
 #: src/language.cpp:103
 msgid "System default language"
-msgstr ""
+msgstr "Φόρτωση προκαθορισμένης γλώσσας"
 
 #: src/leader_list.cpp:136 src/leader_list.cpp:142
 msgid "?"
-msgstr ""
+msgstr ";"
 
 #: src/loadscreen.cpp:153
 msgid "Verifying cache."
-msgstr ""
+msgstr "Αναλυση μνήμης."
 
 #: src/loadscreen.cpp:172
 msgid "Reading cache."
-msgstr ""
+msgstr "Φορτώνεται η μνήμη"
 
 #: src/loadscreen.cpp:191
 msgid "Reading unit files."
-msgstr ""
+msgstr "Φορτώνονται αρχεία μονάδων"
 
 #: src/loadscreen.cpp:210
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "Διαβάζονται αρχεία και δημιουργήται μνήμη."
 
 #: src/menu_events.cpp:59
 msgid ""
@@ -9989,11 +9196,12 @@ msgstr "Η αποθήκευση του παιχνιδιού ήταν αδύνα�
 #: src/menu_events.cpp:478 src/menu_events.cpp:480 src/play_controller.cpp:635
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
-msgstr ""
+msgstr "Αυτόματη-Αποθήκευση"
 
 #: src/menu_events.cpp:483
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
+"Δεν έγινε αυτόματη αποθήκευση. Παρακαλούμε κάντε την αποθήκευση χειροκίνητα."
 
 #: src/menu_events.cpp:507
 msgid "Chat Log"
@@ -10033,13 +9241,12 @@ msgstr ""
 "Εχεις χωριστεί από τού στρατιώτες σου καί δέν μπορείς να τους ανακαλέσεις"
 
 #: src/menu_events.cpp:683
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Δεν υπάρχουν μονάδες γιά ανάκληση (Πρέπει νά έχεις βετεράνους πού επέζησαν "
-"από προηγούμενα σενάρια)"
+"Δεν υπάρχουν μονάδες γιά ανάκληση\n"
+" (Πρέπει νά έχεις βετεράνους πού επέζησαν από προηγούμενα σενάρια)"
 
 #: src/menu_events.cpp:690
 msgid "Level"
@@ -10068,7 +9275,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1118
 msgid "Rename Unit"
-msgstr ""
+msgstr "Μετονομασία Μονάδας"
 
 #: src/menu_events.cpp:1202
 msgid "Place Label"
@@ -10125,16 +9332,15 @@ msgstr ""
 
 #: src/menu_events.cpp:1414
 msgid "Unknown command"
-msgstr ""
+msgstr "Άγνωστη ενέργεια"
 
 #: src/menu_events.cpp:1431
 msgid "Added to ignore list: "
 msgstr ""
 
 #: src/menu_events.cpp:1433 src/menu_events.cpp:1443
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Ακυρη Επιλογή Εποχής"
+msgstr "Μη έγκυρο όνομα:"
 
 #: src/menu_events.cpp:1441 src/menu_events.cpp:1467
 msgid "Removed from ignore list: "
@@ -10142,7 +9348,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1472
 msgid "Unknown command: "
-msgstr ""
+msgstr "Άγνωστη ενέργεια:"
 
 #: src/menu_events.cpp:1573
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -10162,42 +9368,35 @@ msgstr "Αμυνόμενος"
 
 #: src/mouse_events.cpp:209
 msgid "Expected Battle Result (hp)"
-msgstr ""
+msgstr "Προβλεπόμενο αποτέλεσμα (βυ)"
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
-msgstr "Αντιστάσεις"
+msgstr "αντοχή εναντίων"
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "αδυναμία επιτιθέμενου εναντίον"
+msgstr "ευαίσθητος εναντίων"
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid "Slowed"
 msgstr "επιβραδυμένος"
 
 #: src/mouse_events.cpp:319
-#, fuzzy
 msgid "Time of day"
-msgstr "Ωρα της ημέρας"
+msgstr "Ώρα"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
-msgstr "ηγεσία"
+msgstr "Ηγεσία"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
-msgstr "συνολική ζημιά"
+msgstr "Συνολική Ζημιά"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Επιλέξτε όπλο:"
+msgstr ""
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
@@ -10213,7 +9412,7 @@ msgstr "εναντίων"
 
 #: src/mouse_events.cpp:1274
 msgid "Attack Enemy"
-msgstr ""
+msgstr "Επίθεση σε εχθρό"
 
 #: src/mouse_events.cpp:1275
 msgid "Choose weapon:"
@@ -10232,9 +9431,8 @@ msgid "Connecting to Server..."
 msgstr "Συνδεθείτε με έναν Εξυπηρετητή"
 
 #: src/multiplayer.cpp:136
-#, fuzzy
 msgid "Reading from Server..."
-msgstr "Συνδεθείτε με έναν Εξυπηρετητή"
+msgstr ""
 
 #: src/multiplayer.cpp:145
 msgid ""
@@ -10248,7 +9446,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:189
 msgid "You must log in to this server"
-msgstr ""
+msgstr "Πρέπει να εισέλθετε στο εξυπηρετητή"
 
 #: src/multiplayer.cpp:369 src/multiplayer.cpp:384
 #: src/multiplayer_wait.cpp:188
@@ -10258,7 +9456,7 @@ msgstr ""
 #: src/multiplayer.cpp:370 src/multiplayer.cpp:385
 #: src/multiplayer_wait.cpp:217
 msgid "Era not available"
-msgstr ""
+msgstr "Η περιοχή δεν είναι διαθέσιμη"
 
 #: src/multiplayer.cpp:371 src/multiplayer.cpp:386
 #: src/multiplayer_wait.cpp:222
@@ -10268,7 +9466,7 @@ msgstr ""
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:345
 #: src/multiplayer_connect.cpp:437
 msgid "Normal"
-msgstr ""
+msgstr "Κανονικό"
 
 #: src/multiplayer_connect.cpp:341 src/multiplayer_connect.cpp:433
 #: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2615
@@ -10281,9 +9479,8 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:411
-#, fuzzy
 msgid "Default AI"
-msgstr "Προκαθροισμένη ρύθμιση"
+msgstr "Προκαθροισμένη ΤΝ"
 
 #: src/multiplayer_connect.cpp:462
 msgid "(Vacant slot)"
@@ -10291,11 +9488,11 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:468
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Ανώνυμος παίκτης"
 
 #: src/multiplayer_connect.cpp:489
 msgid "Computer player"
-msgstr ""
+msgstr "Υπολογιστής"
 
 #: src/multiplayer_connect.cpp:492
 msgid "(Empty slot)"
@@ -10332,11 +9529,11 @@ msgstr "Χρώμα"
 
 #: src/multiplayer_connect.cpp:730
 msgid "Computer vs Computer"
-msgstr ""
+msgstr "Υπολογιστής εναντίων Υπολογιστή"
 
 #: src/multiplayer_connect.cpp:731
 msgid "I'm Ready"
-msgstr ""
+msgstr "Είμαι έτοιμος"
 
 #: src/multiplayer_connect.cpp:732 src/multiplayer_create.cpp:69
 #: src/multiplayer_wait.cpp:156
@@ -10349,19 +9546,19 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1106
 msgid "Network Player"
-msgstr ""
+msgstr "Διαδικτυακός παίχτης"
 
 #: src/multiplayer_connect.cpp:1107
 msgid "Local Player"
-msgstr ""
+msgstr "Παίκτης"
 
 #: src/multiplayer_connect.cpp:1108
 msgid "Computer Player"
-msgstr ""
+msgstr "Υπολογιστής"
 
 #: src/multiplayer_connect.cpp:1109
 msgid "Empty"
-msgstr ""
+msgstr "Κενό"
 
 #: src/multiplayer_connect.cpp:1209
 msgid "This is not a multiplayer save"
@@ -10376,6 +9573,8 @@ msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
+"Νίκη:\n"
+"@Νίκησε του αντίπαλους αρχηγούς"
 
 #: src/multiplayer_connect.cpp:1313
 msgid "Waiting for players to join..."
@@ -10387,7 +9586,7 @@ msgstr "Δημιουργία Παιχνιδιού"
 
 #: src/multiplayer_create.cpp:48
 msgid "Time limit"
-msgstr ""
+msgstr "Όριο χρόνου"
 
 #: src/multiplayer_create.cpp:61
 msgid "Name of game:"
@@ -10427,13 +9626,12 @@ msgid "Settings..."
 msgstr "Ρυθμίσεις..."
 
 #: src/multiplayer_create.cpp:106
-#, fuzzy
 msgid "The maximum number of turns the game can last"
-msgstr "Ο μέγιστος αριθμός γύρων πού δέχεται τό παιχνίδι"
+msgstr "Ο μέγιστος αριθμός γύρων πού μπορεί να διαρκέσει τό παιχνίδι"
 
 #: src/multiplayer_create.cpp:109
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Ενεργοποιεί το όριο χρόνου από τον χρήστη"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
@@ -10518,24 +9716,20 @@ msgid "Unlimited Turns"
 msgstr "Απεριόριστοι γύροι"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Μυηόμενος"
+msgstr ""
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Γύροι: "
+msgstr "Πριμ Γύρου:"
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Εξυπηρέτης: "
+msgstr ""
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Ενέργειες"
+msgstr ""
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -10563,29 +9757,27 @@ msgstr "κατάσταση"
 
 #: src/multiplayer_lobby.cpp:104
 msgid "--no games open--"
-msgstr ""
+msgstr "--δεν υπάρχουν ανοιχτά παιχνίδια--"
 
 #: src/multiplayer_lobby.cpp:297 src/multiplayer_lobby.cpp:300
 msgid "Unknown era"
-msgstr ""
+msgstr "Άγνωστη περιοχή"
 
 #: src/multiplayer_lobby.cpp:322 src/multiplayer_lobby.cpp:338
 msgid "Unknown scenario"
-msgstr ""
+msgstr "Άγνωστο σενάριο"
 
 #: src/multiplayer_lobby.cpp:334
 msgid "Remote scenario"
+msgstr "Απομακρυσμένο σενάριο"
+
+#: src/multiplayer_lobby.cpp:347
+msgid "Vacant Slot:"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:347
-#, fuzzy
-msgid "Vacant Slot:"
-msgstr "Κενή Θέση"
-
-#: src/multiplayer_lobby.cpp:347
-#, fuzzy
 msgid "Vacant Slots:"
-msgstr "Κενές Θέσεις"
+msgstr ""
 
 #: src/multiplayer_lobby.cpp:371
 msgid "none"
@@ -10596,14 +9788,12 @@ msgid "Observe Game"
 msgstr "Παρακολούθησε τό παιχνίδι"
 
 #: src/multiplayer_lobby.cpp:465
-#, fuzzy
 msgid "Quick Replays"
-msgstr "Δείτε το  replay"
+msgstr "Γρήγορες Επαναλήψεις"
 
 #: src/multiplayer_lobby.cpp:466
-#, fuzzy
 msgid "Preferences"
-msgstr "Πριγκήπισσα"
+msgstr "Επιλογές"
 
 #: src/multiplayer_lobby.cpp:467
 msgid "Quit"
@@ -10614,9 +9804,8 @@ msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
-msgstr "Μή έγκυρο χρώμα"
+msgstr ""
 
 #: src/multiplayer_wait.cpp:116
 msgid "Leader: "
@@ -10656,13 +9845,12 @@ msgstr ""
 
 #: src/play_controller.cpp:371 src/playsingle_controller.cpp:337
 #: src/playsingle_controller.cpp:379
-#, fuzzy
 msgid "The file you have tried to load is corrupt"
-msgstr "Τό αρχείο πού προσπαθείσατε να φορτώσετε είναι διαβρωμένο"
+msgstr ""
 
 #: src/play_controller.cpp:639
 msgid "Back to start"
-msgstr ""
+msgstr "Πίσω στην αρχή"
 
 #: src/play_controller.cpp:641
 msgid "Back to turn "
@@ -10674,7 +9862,7 @@ msgstr "Ηττα"
 
 #: src/playcampaign.cpp:270
 msgid "You have been defeated!"
-msgstr ""
+msgstr "Ηττηθήκατε!"
 
 #: src/playcampaign.cpp:283
 msgid " replay"
@@ -10686,16 +9874,17 @@ msgstr "Θέλετε να αποθηκεύσετε ένα replay αυτού το
 
 #: src/playcampaign.cpp:340
 msgid "Downloading next level..."
-msgstr ""
+msgstr "Κατεβαίνει το επόμενο επίπεδο..."
 
 #: src/playcampaign.cpp:413
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Θέλετε να αποθηκεύσετε το παιχνίδι σας;"
+msgstr ""
+"Θέλετε να αποθηκεύσετε το παιχνίδι σας; (Θα σβησθούν οι Αυτόματες-"
+"Αποθηκεύσεις)"
 
 #: src/playcampaign.cpp:440
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Άγνωστο σενάριο:'"
 
 #: src/playmp_controller.cpp:245
 msgid ""
@@ -10721,16 +9910,15 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:310
 msgid "per turn"
-msgstr ""
+msgstr "κάθε γύρο"
 
 #: src/playsingle_controller.cpp:311
 msgid "Turns finished early: "
 msgstr ""
 
 #: src/playsingle_controller.cpp:313
-#, fuzzy
 msgid "Bonus: "
-msgstr "Γύροι: "
+msgstr "Πριμ:"
 
 #: src/playsingle_controller.cpp:315
 msgid "Gold: "
@@ -10742,9 +9930,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr ""
 
 #: src/playsingle_controller.cpp:321
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Χρυσάφι Χωριού: "
+msgstr ""
 
 #: src/playsingle_controller.cpp:326
 msgid "Victory"
@@ -10759,13 +9946,10 @@ msgid "Scenario Report"
 msgstr "Αναφορά σεναρίου"
 
 #: src/playsingle_controller.cpp:348
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Η σύνδεσή σας με το δίκτυο διακόπηκε και το παιχνίδι δε μπορεί να "
-"συνεχιστεί. Θέλετε να αποθηκεύσετε το παιχνίδι;"
 
 #: src/playsingle_controller.cpp:451
 msgid "It is now your turn"
@@ -10802,16 +9986,14 @@ msgid "invisible: "
 msgstr " αόρατος"
 
 #: src/reports.cpp:135
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr ""
-"Αυτή η μονάδα έχει πετρώσει. Δέν μπορεί ούτε να κινηθεί ούτε να επιτεθεί "
 
 #: src/reports.cpp:135
 msgid "slowed: "
-msgstr ""
+msgstr "επιβραδυμένος:"
 
 #: src/reports.cpp:140
 msgid ""
@@ -10842,12 +10024,11 @@ msgstr "ζημιά"
 
 #: src/reports.cpp:265
 msgid "weapon range: "
-msgstr ""
+msgstr "εμβέλεια όπλου:"
 
 #: src/reports.cpp:266
-#, fuzzy
 msgid "damage type: "
-msgstr "ζημιά"
+msgstr "τύπος ζημιάς:"
 
 #: src/reports.cpp:328
 msgid "Lawful units: "
@@ -10954,9 +10135,8 @@ msgid "TitleScreen button^Load"
 msgstr "Φόρτωση"
 
 #: src/titlescreen.cpp:258
-#, fuzzy
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Φόρτωση"
+msgstr ""
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
@@ -10996,7 +10176,7 @@ msgstr "Φόρτωσε ένα παιχνίδι ενός παίχτη"
 
 #: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Λήψη χειροποίητων εκστρατειών, περιοχών, ή χαρτών"
 
 #: src/titlescreen.cpp:268
 msgid "Change the language"
@@ -11020,15 +10200,15 @@ msgstr "Περισσότερα"
 
 #: src/titlescreen.cpp:304
 msgid "Help"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: src/titlescreen.cpp:307
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Βοηθήστε μας στέλνοντάς μας πληροφορίες"
 
 #: src/unit.cpp:2465 src/unit.cpp:2620
 msgid "; "
-msgstr ""
+msgstr ";"
 
 #: src/unit.cpp:2547
 msgid "XP to advance"
@@ -11056,7 +10236,7 @@ msgstr "ουδέτερος "
 
 #: src/upload_log.cpp:278
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 
 #: src/upload_log.cpp:283
 msgid ""
@@ -11065,18 +10245,22 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Το Γουέσνοθ στηρίζεται σε εθελοντές όπως εσύ για ανάδραση, ειδικά σε "
+"αρχάριους και καινούργιους παίκτες. Το Γουέσνοθ κρατάει περιλήψεις των "
+"παιχνιδιών σας: μπορείτε να μας βοηθήσετε να βελτιώσουμε το παιχνίδι με το "
+"να επιτρέψετε να σταλθούν οι περιλήψεις (ανώνυμα) στο wesnoth.org\n"
 
 #: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "Οι περιλήψεις αποθηκεύονται εδώ:"
 
 #: src/upload_log.cpp:286
 msgid "You can view the results at:"
-msgstr ""
+msgstr "Μπορείτε να δείτε τα αποτελέσματα εδώ:"
 
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Βοηθήστε μας να κάνουμε το Γουέσνοθ καλύτερο για εσάς!"
 
 #~ msgid "+Core Developers"
 #~ msgstr "+Πυρήνας Προγραμματιστών"

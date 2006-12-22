@@ -240,7 +240,7 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	// failure.
 	wassert(attacker_weapon< (int)attacker.attacks().size());
 
-	if (attacker_weapon == -1 && attacker.attacks().size() == 1)
+	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
@@ -255,17 +255,22 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 
 	// If those didn't have to generate statistics, do so now.
 	if (!attacker_stats_) {
-		const attack_type *def = NULL;
+		const attack_type *adef = NULL;
+		const attack_type *ddef = NULL;
+		if (attacker_weapon >= 0) {
+			wassert(attacker_weapon < (int)attacker.attacks().size());
+			adef = &attacker.attacks()[attacker_weapon];
+		}
 		if (defender_weapon >= 0) {
 			wassert(defender_weapon < (int)defender.attacks().size());
-			def = &defender.attacks()[defender_weapon];
+			ddef = &defender.attacks()[defender_weapon];
 		}
 		wassert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
 		attacker_stats_ = new unit_stats(attacker, attacker_loc, attacker_weapon,
-										 true, defender, defender_loc, def,
+										 true, defender, defender_loc, ddef,
 										units, teams, status, map, gamedata);
 		defender_stats_ = new unit_stats(defender, defender_loc, defender_weapon, false,
-										 attacker, attacker_loc, &attacker.attacks()[attacker_weapon],
+										 attacker, attacker_loc, adef,
 										 units, teams, status, map, gamedata);
 	}
 }
@@ -375,11 +380,12 @@ unsigned battle_context::choose_attacker_weapon(const unit &attacker, const unit
 	unsigned int i;
 	for (i = 0; i < attacker.attacks().size(); i++) {
 		const attack_type &att = attacker.attacks()[i];
-		if (att.defense_weight() > 0) {
+		if (att.attack_weight() > 0) {
 			choices.push_back(i);
 		}
 	}
-	wassert(choices.size() > 0);
+	if (choices.size() == 0)
+		return -1;
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], map, teams, units,
 												  status, gamedata, attacker_loc, defender_loc, prev_def);
@@ -741,6 +747,13 @@ attack::attack(display& gui, const gamemap& map,
 	d_ = units_.find(defender);
 
 	if(a_ == units_.end() || d_ == units_.end()) {
+		return;
+	}
+
+	// no attack weapon => stop here and don't attack
+	if (attack_with < 0) {
+		a_->second.set_attacks(a_->second.attacks_left()-1);
+		a_->second.set_movement(-1);
 		return;
 	}
 
@@ -1709,7 +1722,7 @@ bool clear_shroud_unit(const gamemap& map,
 	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
 
 	//remove all redundant location, if on this location is unit, sighed event is called twice
-	unique(cleared_locations.begin(),cleared_locations.end());
+	std::unique(cleared_locations.begin(),cleared_locations.end());
 
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
@@ -1805,7 +1818,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
 		(team.uses_shroud() || team.uses_fog());
 
-	//if we use shroud/fog of war, count out the units we can currently see
 	std::set<gamemap::location> known_units;
 	if(check_shroud) {
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
@@ -1841,8 +1853,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		}
 
 		//if we use fog or shroud, see if we have sighted an enemy unit, in
-		//which case we should stop immediately.
-		if(check_shroud) {
+		//which case we should stop immediately. Cannot use check shroud,
+		//because also need check if delay shroud is on.
+		if(should_clear_shroud && (team.uses_shroud() || team.uses_fog())) {
 			if(units.count(*step) == 0 && !map.is_village(*step)) {
 				LOG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
@@ -1852,10 +1865,16 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				//we have to swap out any unit that is already in the hex, so we can put our
 				//unit there, then we'll swap back at the end.
 				const temporary_unit_placer unit_placer(units,*step,ui->second);
-
-				should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
-				                                        ui->second.side()-1,&known_units,&seen_units);
-
+				if( team.auto_shroud_updates())
+        {
+					should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
+					    ui->second.side()-1,&known_units,&seen_units);
+				}
+				else
+				{
+					clear_shroud_unit(map,status,gamedata,units,*step,teams,
+							ui->second.side()-1,&known_units,&seen_units);
+				}
 				if(should_clear_stack) {
 					disp->invalidate_all();
 				}

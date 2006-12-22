@@ -19,6 +19,7 @@ class display;
 
 #include "gamestatus.hpp"
 #include "map.hpp"
+#include "soundsource.hpp"
 #include "team.hpp"
 #include "unit.hpp"
 #include "variable.hpp"
@@ -47,7 +48,7 @@ struct manager {
 	//note that references will be maintained, and must remain valid
 	//for the life of the object.
 	manager(const config& scenario_cfg, display& disp, gamemap& map,
-			unit_map& units, std::vector<team>& teams,
+			soundsource::manager& sndsources, unit_map& units, std::vector<team>& teams,
 			game_state& state_of_game, gamestatus& status, const game_data& data);
 	~manager();
 
