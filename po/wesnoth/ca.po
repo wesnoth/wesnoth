@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-31 12:50+0200\n"
-"PO-Revision-Date: 2006-12-22 18:47+0100\n"
+"PO-Revision-Date: 2006-12-22 20:35+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,6 @@ msgid "heals +4"
 msgstr "guareix +4"
 
 #: data/abilities.cfg:13
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -37,13 +36,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guareix:\n"
+"Guareix +4:\n"
 "Permet a la unitat guareix unitats amigues adjacents al principi de cada "
 "torn.\n"
 "\n"
-"Cada unitat pot recuperar fins a 4 punts de vida per torn.\n"
-"Un guaridor pot sanar fins a 8 punts de vida per torn, repartits per a totes "
-"les unitats que cuida.\n"
+"Cada unitat pot recuperar fins a 4 punts de vida per torn, o bé veure aturat "
+"l'efecte d'un enverinament.\n"
 "Una unitat enverinada no pot ser curada del seu verí per un guaridor, i "
 "haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de cura."
 
@@ -52,7 +50,6 @@ msgid "heals +8"
 msgstr "guareix +8"
 
 #: data/abilities.cfg:32
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -63,13 +60,14 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guareix:\n"
+"Guareix +8:\n"
+"Aquesta unitat combina herbes medicinals amb màgia per tal de guarir les "
+"unitats més ràpidament del que seria possible al camp de batalla.\n"
 "Permet a la unitat guareix unitats amigues adjacents al principi de cada "
 "torn.\n"
 "\n"
-"Cada unitat pot recuperar fins a 4 punts de vida per torn.\n"
-"Un guaridor pot sanar fins a 8 punts de vida per torn, repartits per a totes "
-"les unitats que cuida.\n"
+"Cada unitat pot recuperar fins a 8 punts de vida per torn, o bé veure aturat "
+"l'efecte d'un enverinament.\n"
 "Una unitat enverinada no pot ser curada del seu verí per un guaridor, i "
 "haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de cura."
 
@@ -83,6 +81,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Cura:\n"
+"Un curador pot curar unitats enverinades, encara que aquestes no rebran cap "
+"guariment addicional durant el torn en que es recuperi del verí."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -140,7 +141,6 @@ msgid "skirmisher"
 msgstr "esquiva"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -296,7 +296,6 @@ msgid "slows"
 msgstr "alenteix"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -305,7 +304,7 @@ msgid ""
 msgstr ""
 "Alentir:\n"
 "Aquest atac alenteix l'objectiu. Això redueix a la meitat el mal que causen "
-"els seus atacs i les unitat alentides es mouen a la meitat de la seva "
+"els seus atacs, i les unitat alentides es mouen a la meitat de la seva "
 "velocitat normal (arrodonint cap amunt)."
 
 #: data/abilities.cfg:451
@@ -416,7 +415,7 @@ msgid ""
 msgstr ""
 "Verí:\n"
 "Aquest atac enverina el seu blanc. Les unitats enverinades perden 8 punts de "
-"vida cada torn fins que son curades o bé arriben a un punt de vida."
+"vida cada torn fins que son curades o bé arriben a només 1 punt de vida."
 
 #: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
 #: data/campaigns/Heir_To_The_Throne.cfg:33
@@ -2938,7 +2937,6 @@ msgstr ""
 "cada torn."
 
 #: data/help.cfg:225
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2947,12 +2945,11 @@ msgid ""
 msgstr ""
 "\n"
 "Unitats guaridores: les unitats amb l'habilitat <ref>dst=ability_heals "
-"text=guareix</ref>, poden curar 4 punts de vida a totes les unitats amigues "
-"adjacents, amb un màxim de 8 punts de vida en total per torn. També poden "
-"prevenir que el verí faci mal."
+"text=guareix</ref>, poden curar a totes les unitats amigues adjacents, "
+"normalment entre 4 i 8 punts de vida per torn. També poden prevenir que el "
+"verí faci mal."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2961,13 +2958,11 @@ msgid ""
 msgstr ""
 "\n"
 "Unitats curadores: les unitats amb l'habilitat de <ref>dst=ability_cures "
-"text=cura</ref> poden guarir fins a 18 punts de vida per torn, així com "
-"curar el verí. Només seran guarides o curades aquelles unitats que siguin "
-"adjacents i del mateix bàndol que la unitat sanadora, i només fins a un "
-"màxim de 8 punts de vida per torn."
+"text=cura</ref> poden curar dels efectes del verí a totes les unitats "
+"amigues adjacents (amb prioritat sobre guarir, si és que també posseeixen "
+"aquesta habilitat)."
 
 #: data/help.cfg:228
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2979,8 +2974,9 @@ msgstr ""
 "\n"
 "El repòs es pot combinar amb altres mètodes per curar, però no passa el "
 "mateix amb els llogarets, la regeneració o les unitats guaridores i "
-"curadores. Per acabar, recordeu que les unitats recuperen tota la seva vida "
-"entre els escenaris d'una campanya."
+"curadores: en aquests casos es triarà la millor opció. Per acabar, recordeu "
+"que les unitats recuperen tota la seva vida entre els escenaris d'una "
+"campanya."
 
 #: data/help.cfg:233
 msgid "Income and Upkeep"
@@ -3069,7 +3065,6 @@ msgid "Wrap Up"
 msgstr "Per concloure"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -4695,7 +4690,7 @@ msgstr "Nord-oest"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
-msgstr "Llacuna"
+msgstr "4j - Llacuna"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 msgid ""
@@ -4834,7 +4829,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
-msgstr "9p - Merkwuerdigliebe"
+msgstr "9j - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
 msgid ""
@@ -10564,6 +10559,8 @@ msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
+"Heu triat un nom d'usuari massa llarg, si us plau empreu-ne un amb menys de "
+"18 caràcters."
 
 #: src/game.cpp:1210 src/playcampaign.cpp:107 src/playcampaign.cpp:321
 msgid "The game could not be loaded: "
