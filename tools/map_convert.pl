@@ -5,18 +5,24 @@ sub printUsage(){
     print "map_convert.pl terrain.cfg map_file.cfg new_map_file.cfg\n";
 }
 
-if($#ARGV <2){
+if($#ARGV <1 ||$#ARGV>2){
     printUsage();
-    exit
+    exit;
 }
 
 $terrain_file=shift(@ARGV);
 $map_file=shift(@ARGV);
-$new_map_file=shift(@ARGV);
+if($#ARGV < 0){
+    $new_map_file=$map_file;
+    $backup=$map_file.".bak";
+    system("cp $map_file $backup") && die "could not create backup file: $backup\n";
+}else{
+    $new_map_file=shift(@ARGV);
+    if(-e "$new_map_file"){ die "New map file already exists: $new_map_file\n";}
+}
 
 if(! -r "$terrain_file"){ die "can not read terrain file: $terrain_file\n";}
 if(! -r "$map_file"){ die "can not read map file: $map_file\n";}
-if(-e "$new_map_file"){ die "New map file already exists: $new_map_file\n";}
 
 $conversion{1}='1 _K';
 $conversion{2}='2 _K';
