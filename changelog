@@ -1,17 +1,22 @@
-Version 1.1.14+svn:
- * language and i18n:
-   * new man pages: Russian
-   * updated translations: Catalan, Dutch, French, German, Greek, Italian,
-     Norwegian, Russian, Slovenian
-   * updated DejaVuSans font to 2.13
+Version 1.2:
+ * campaigns:
+   * Under the Burning Suns:
+     * changed some maps to fix glitches
  * graphics:
    * terrain:
      * new ice transition
      * modified swamp color
    * units:
      * new team-colored base-frames: grand marshal, human assassin, sergeant
+     * halos for elvish shaman line attacks
    * misc:
      * new icons for preferences
+     * updated hex grid
+ * language and i18n:
+   * new man pages: Russian
+   * updated translations: Catalan, Dutch, French, German, Greek, Italian,
+     Norwegian, Russian, Slovenian
+   * updated DejaVuSans font to 2.13
  * multiplayer maps:
    * revised maps: Blitz, Charge, Den of Onis, Hornshark Island, 4p Morituri,
      Meteor Lake, Lagoon
@@ -24,6 +29,7 @@ Version 1.1.14+svn:
  * misc:
    * fixed the AI usage of attack_weight (bug #7953)
    * the displayed terrain now has a space before the opening bracket
+   * fixed crash when image is missing (patch #647, thanks to pauli)
 
 Version 1.1.14:
  * campaigns:
