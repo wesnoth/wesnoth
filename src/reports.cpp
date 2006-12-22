@@ -394,7 +394,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		}
 
 		if(underlying.size() != 1 || underlying[0] != terrain) {
-			str << "(";
+			str << " (";
 
 			for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
 			str << map.get_terrain_info(*i).name();
