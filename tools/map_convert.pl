@@ -86,22 +86,39 @@ close(TERRAIN);
 
 $width=$max_len+2;
 open(MAP, "<$map_file");
-@map=();
+@mfile=();
+$map_only=1;
 while($line=<MAP>){
+    push(@mfile,$line);
     if($line=~/map_data/){
+	$map_only=0;
+    }
+}
+
+@map=();
+close(MAP);
+
+while($#mfile){
+    $line=shift(@mfile);
+    if($map_only || $line=~/map_data/){
 	$cont=1;
 #read map assumes map is more than 1 line long.
-	 ($dummy,$line)=split('"',$line);
-	 if(length($line)){push(@map,$line)};
+	if(!$map_only){
+	    ($dummy,$line)=split('"',$line);
+	}
+	if((defined($line)) && (length($line))){push(@map,$line)};
 #	 print "$line\n";
-	 while(($cont) && ($line=<MAP>)){
+	 while(($cont) && ($#mfile)){
+	     $line=shift(@mfile);
 	     if($line=~/\"/){$cont=0;} 
 	     ($line,$dummy)=split('"',$line);
 	     if(length($line)){push(@map,$line)};
 	 }
 
-	$line="map_data=\"\n";
-	push(@newfile,$line);
+	if(! $map_only){ 
+	    $line="map_data=\"\n";
+	    push(@newfile,$line);
+	}
 	 foreach(@map){
 	     if($_=~/,/){die "map file appears to be converted already\n";}
 	     $line='';
@@ -115,7 +132,7 @@ while($line=<MAP>){
 		 if(defined($conversion{$char})){
 		     $hex=sprintf($format,$conversion{$char});
 		 }else{
-		     die "error, unrecognized map character";
+		     die "error, unrecognized map character: $char";
 #		     $hex=sprintf($format,$char);
 		 }
 		 $line.=$hex;
@@ -125,14 +142,16 @@ while($line=<MAP>){
 	     push(@newfile,$line);
 #	     print "$line\n";
 	 }
-	$line="\"\n";
+	if($map_only){
+	    $line="\n";
+	}else{
+	    $line="\"\n";
+	}
 	push(@newfile,$line);
     }else{
 	push(@newfile,$line);
     }
 }
-
-close(MAP);
 
 open(NEWMAP,">$new_map_file");
 foreach(@newfile){
