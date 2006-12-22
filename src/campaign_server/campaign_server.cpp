@@ -46,7 +46,7 @@ namespace {
 	class campaign_server
 	{
 		public:
-			explicit campaign_server(const std::string& cfgfile);
+			explicit campaign_server(const std::string& cfgfile,unsigned int nthread = 10);
 			void run();
 		private:
 			int load_config(); // return the server port
@@ -66,8 +66,8 @@ namespace {
 		return lexical_cast_default<int>(cfg_["port"], 15003);
 	}
 
-	campaign_server::campaign_server(const std::string& cfgfile)
-		: file_(cfgfile), net_manager_(5), server_manager_(load_config())
+	campaign_server::campaign_server(const std::string& cfgfile,unsigned int nthread)
+		: file_(cfgfile), net_manager_(nthread), server_manager_(load_config())
 	{
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
@@ -407,11 +407,16 @@ namespace {
 
 }
 
-int main(int, char**)
+int main(int argc, char**argv)
 {
 	lg::timestamps(true);
 	try {
-		campaign_server("server.cfg").run();
+		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
+		if(argc >= 2 && atoi(argv[1])){
+			campaign_server("server.cfg",atoi(argv[1])).run();
+		}else {
+			campaign_server("server.cfg").run();
+		}
 	} catch(config::error& e) {
 		std::cerr << "Could not parse config file\n";
 	} catch(io_exception& e) {

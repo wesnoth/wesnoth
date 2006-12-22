@@ -57,6 +57,10 @@ Version 1.3-svn:
      * increased the HP of the Sentinel from 56 to 68
      * decreased cost of the Mudcrawler from 9 to 5
      * Dark Adepts no longer get the 'strong' trait
+     * decreased the HP of the Shadow from 26 to 24
+     * added the skirmisher ability to the Shadow line
+     * increased the HP of the Goblin Rouser from 26 to 31
+     * increased the melee damage of the Goblin Rouser from 5-3 to 6-3
    * adapted WML to use [if] statements to differentiate hit and miss frames
    * new traits
      * healthy (+3HP, +4 rest healing), fearless (ignore unfavorable ToD)
@@ -140,13 +144,15 @@ Version 1.3-svn:
      previously ignored in multiplayer
  * language and i18n:
    * new manpages: Czech, Dutch, English (GB), French, Italian,
-     Portuguese (Brazil), Japanese, Slovak.
+     Portuguese (Brazil), Japanese, Russian, Slovak.
    * updated manpages: German, Swedish.
    * removed manpages (outdated): Hungarian.
  * other:
    * --validcache runtime switch to force assumption that cache is valid
    * add two new debug command set_var and show_var to check variables within
    the game easily
+ * Campaignd
+   * first argument is number of threads to use, defaults to 5
  * Python AI
    * Added various input validations
    * Set Python errors upon error
