@@ -923,6 +923,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			std::pair<gamemap::location,unit> *up = units.extract(u->first);
 			up->first = dst;
 			units.add(up);
+			if (up->first == up->second.get_goto())
+			{
+				//if unit has arrived to destination, goto variable is cleaned
+				up->second.set_goto(gamemap::location());
+			}
 			u = units.find(dst);
 			check_checksums(disp,units,*cfg);
 			// Get side now, in case game events change the unit.
