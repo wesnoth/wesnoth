@@ -231,6 +231,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false), state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
 {
+	goto_ = gamemap::location();
 	side_ = side;
 	movement_ = 0;
 	attacks_left_ = 0;
@@ -263,6 +264,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
            gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
 	   gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
 {
+	goto_ = gamemap::location();
 	side_ = side;
 	movement_ = 0;
 	attacks_left_ = 0;
