@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:32+0200\n"
+"POT-Creation-Date: 2006-12-26 20:21+0100\n"
 "PO-Revision-Date: 2006-07-02 14:39+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -59,12 +59,12 @@ msgid "Map creation failed."
 msgstr "A pályakészítés sikertelen"
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:749
+#: src/preferences_display.cpp:750
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:77 src/preferences_display.cpp:651
+#: src/hotkeys.cpp:77 src/preferences_display.cpp:652
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -391,11 +391,11 @@ msgstr "Felhasználói parancs megadása"
 msgid "Change the language"
 msgstr "Nyelv megváltoztatása"
 
-#: src/hotkeys.cpp:466 src/hotkeys.cpp:672
+#: src/hotkeys.cpp:466 src/hotkeys.cpp:691
 msgid "Do you really want to quit?"
 msgstr "Biztos ki akarsz lépni?"
 
-#: src/hotkeys.cpp:466 src/hotkeys.cpp:672
+#: src/hotkeys.cpp:466 src/hotkeys.cpp:691
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -443,7 +443,7 @@ msgstr "Szárazföld"
 msgid "Island"
 msgstr "Sziget"
 
-#: src/preferences.cpp:297
+#: src/preferences.cpp:302
 msgid "player"
 msgstr "játékos"
 
@@ -628,85 +628,85 @@ msgstr "Speciális megjelenítési hatások használata (lassíthat)"
 msgid "View and configure keyboard shortcuts"
 msgstr "A gyorsbillentyűk megtekintése és beállítása"
 
-#: src/preferences_display.cpp:517
+#: src/preferences_display.cpp:518
 msgid "Chat Lines: "
 msgstr "Csevegés sorai: "
 
-#: src/preferences_display.cpp:569
+#: src/preferences_display.cpp:570
 msgid "yes"
 msgstr "igen"
 
-#: src/preferences_display.cpp:571
+#: src/preferences_display.cpp:572
 msgid "no"
 msgstr "nem"
 
-#: src/preferences_display.cpp:639
+#: src/preferences_display.cpp:640
 msgid "Prefs section^General"
 msgstr "Általános"
 
-#: src/preferences_display.cpp:640
+#: src/preferences_display.cpp:641
 msgid "Prefs section^Display"
 msgstr "Képernyő"
 
-#: src/preferences_display.cpp:641
+#: src/preferences_display.cpp:642
 msgid "Prefs section^Sound"
 msgstr "Hang"
 
-#: src/preferences_display.cpp:642
+#: src/preferences_display.cpp:643
 msgid "Prefs section^Multiplayer"
 msgstr "Többjátékos"
 
-#: src/preferences_display.cpp:643
+#: src/preferences_display.cpp:644
 msgid "Advanced section^Advanced"
 msgstr "Haladó"
 
-#: src/preferences_display.cpp:692
+#: src/preferences_display.cpp:693
 msgid "There are no alternative video modes available"
 msgstr "Nincsennek más megjelenítési módok"
 
-#: src/preferences_display.cpp:721
+#: src/preferences_display.cpp:722
 msgid "Choose Resolution"
 msgstr "Felbontás kiválasztása"
 
-#: src/preferences_display.cpp:754
+#: src/preferences_display.cpp:755
 msgid "Hotkey Settings"
 msgstr "Gyorsbillentyűk beállításai"
 
-#: src/preferences_display.cpp:758 src/preferences_display.cpp:811
+#: src/preferences_display.cpp:759 src/preferences_display.cpp:812
 msgid "Press desired Hotkey"
 msgstr "Nyomd le a kívánt gyorsbillentyűt"
 
-#: src/preferences_display.cpp:776
+#: src/preferences_display.cpp:777
 msgid "Action"
 msgstr "Cselekvés"
 
-#: src/preferences_display.cpp:776
+#: src/preferences_display.cpp:777
 msgid "Binding"
 msgstr "Összekötés"
 
-#: src/preferences_display.cpp:788
+#: src/preferences_display.cpp:789
 msgid "Change Hotkey"
 msgstr "Gyorsbillentyű megváltoztatása"
 
-#: src/preferences_display.cpp:791
+#: src/preferences_display.cpp:792
 msgid "Save Hotkeys"
 msgstr "Gyorsbillentyűk mentése"
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "This Hotkey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van."
 
-#: src/preferences_display.cpp:871
+#: src/preferences_display.cpp:872
 msgid "Saved Theme Preference: "
 msgstr "Elmentett téma beállításai: "
 
-#: src/preferences_display.cpp:877
+#: src/preferences_display.cpp:878
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Az új téma beállításai a következő új vagy betöltött játék indításakor "
 "fognak életbe lépni."
 
-#: src/preferences_display.cpp:881
+#: src/preferences_display.cpp:882
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 "Nincsenek ismert témák. Próbáld meg egy létező játékból megváltoztatni!"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:32+0200\n"
+"POT-Creation-Date: 2006-12-26 20:21+0100\n"
 "PO-Revision-Date: 2006-06-28 17:44+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -58,12 +58,12 @@ msgid "Map creation failed."
 msgstr "La creació del mapa ha fallat."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:749
+#: src/preferences_display.cpp:750
 msgid "Close Window"
 msgstr "Tanca"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:77 src/preferences_display.cpp:651
+#: src/hotkeys.cpp:77 src/preferences_display.cpp:652
 msgid "Preferences"
 msgstr "Preferències"
 
@@ -390,11 +390,11 @@ msgstr "Introdueix una comanda"
 msgid "Change the language"
 msgstr "Canvia l'idioma"
 
-#: src/hotkeys.cpp:466 src/hotkeys.cpp:672
+#: src/hotkeys.cpp:466 src/hotkeys.cpp:691
 msgid "Do you really want to quit?"
 msgstr "Segur que voleu sortir?"
 
-#: src/hotkeys.cpp:466 src/hotkeys.cpp:672
+#: src/hotkeys.cpp:466 src/hotkeys.cpp:691
 msgid "Quit"
 msgstr "Surt"
 
@@ -442,7 +442,7 @@ msgstr "Interior"
 msgid "Island"
 msgstr "Illa"
 
-#: src/preferences.cpp:297
+#: src/preferences.cpp:302
 msgid "player"
 msgstr "jugador"
 
@@ -622,85 +622,85 @@ msgstr "Activa efectes gràfics especials (pot ser lent)"
 msgid "View and configure keyboard shortcuts"
 msgstr "Configura les dreceres del teclat"
 
-#: src/preferences_display.cpp:517
+#: src/preferences_display.cpp:518
 msgid "Chat Lines: "
 msgstr "Línies de xat: "
 
-#: src/preferences_display.cpp:569
+#: src/preferences_display.cpp:570
 msgid "yes"
 msgstr "Sí"
 
-#: src/preferences_display.cpp:571
+#: src/preferences_display.cpp:572
 msgid "no"
 msgstr "No"
 
-#: src/preferences_display.cpp:639
+#: src/preferences_display.cpp:640
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/preferences_display.cpp:640
+#: src/preferences_display.cpp:641
 msgid "Prefs section^Display"
 msgstr "Visualització"
 
-#: src/preferences_display.cpp:641
+#: src/preferences_display.cpp:642
 msgid "Prefs section^Sound"
 msgstr "So"
 
-#: src/preferences_display.cpp:642
+#: src/preferences_display.cpp:643
 msgid "Prefs section^Multiplayer"
 msgstr "Multijugador"
 
-#: src/preferences_display.cpp:643
+#: src/preferences_display.cpp:644
 msgid "Advanced section^Advanced"
 msgstr "Avançat"
 
-#: src/preferences_display.cpp:692
+#: src/preferences_display.cpp:693
 msgid "There are no alternative video modes available"
 msgstr "No hi ha modes de vídeo alternatius disponibles"
 
-#: src/preferences_display.cpp:721
+#: src/preferences_display.cpp:722
 msgid "Choose Resolution"
 msgstr "Tria la resolució"
 
-#: src/preferences_display.cpp:754
+#: src/preferences_display.cpp:755
 msgid "Hotkey Settings"
 msgstr "Dreceres de teclat"
 
-#: src/preferences_display.cpp:758 src/preferences_display.cpp:811
+#: src/preferences_display.cpp:759 src/preferences_display.cpp:812
 msgid "Press desired Hotkey"
 msgstr "Prem la tecla dessitjada"
 
-#: src/preferences_display.cpp:776
+#: src/preferences_display.cpp:777
 msgid "Action"
 msgstr "Acció"
 
-#: src/preferences_display.cpp:776
+#: src/preferences_display.cpp:777
 msgid "Binding"
 msgstr "Drecera"
 
-#: src/preferences_display.cpp:788
+#: src/preferences_display.cpp:789
 msgid "Change Hotkey"
 msgstr "Canvia la tecla"
 
-#: src/preferences_display.cpp:791
+#: src/preferences_display.cpp:792
 msgid "Save Hotkeys"
 msgstr "Desa les dreceres"
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "This Hotkey is already in use."
 msgstr "Aquesta tecla ja està en ús."
 
-#: src/preferences_display.cpp:871
+#: src/preferences_display.cpp:872
 msgid "Saved Theme Preference: "
 msgstr "Tema actual: "
 
-#: src/preferences_display.cpp:877
+#: src/preferences_display.cpp:878
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "El canvi de tema es farà efectiu en tornar a carregar o en la propera "
 "partida."
 
-#: src/preferences_display.cpp:881
+#: src/preferences_display.cpp:882
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 "No hi ha temes disponibles. Intenteu canviar el tema des d'una partida "
