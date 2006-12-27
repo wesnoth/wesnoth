@@ -538,6 +538,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string side = cfg["side"];
 		std::string income = cfg["income"];
 		std::string team_name = cfg["team_name"];
+		std::string user_team_name = cfg["user_team_name"];
 		std::string gold = cfg["gold"];
 		wassert(state_of_game != NULL);
 		side = utils::interpolate_variables_into_string(side, *state_of_game);
@@ -551,7 +552,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			std::cerr << "modifying team: " << team_index << "\n";
 			if(!team_name.empty()) {
 				std::cerr << "change team to team_name '" << team_name << "'\n";
-				(*teams)[team_index].change_team(team_name);
+				(*teams)[team_index].change_team(team_name,
+												 user_team_name);
 			}
 
 			if(!income.empty()) {

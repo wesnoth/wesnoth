@@ -94,8 +94,13 @@ team::team_info::team_info(const config& cfg)
 	income = cfg["income"];
 	name = cfg["name"];
 	team_name = cfg["team_name"];
+	user_team_name = cfg["user_team_name"];
 	if(team_name.empty()) {
 		team_name = cfg["side"];
+	}
+	
+	if(user_team_name.empty()) {
+		user_team_name = team_name;
 	}
 
 	save_id = cfg["save_id"];
@@ -261,6 +266,7 @@ void team::team_info::write(config& cfg) const
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
+	cfg["user_team_name"] = team_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
@@ -601,9 +607,23 @@ const std::string& team::team_name() const
 	return info_.team_name;
 }
 
-void team::change_team(const std::string& name)
+const std::string& team::user_team_name() const
+{
+	return info_.user_team_name;
+}
+
+void team::change_team(const std::string& name,
+					   const std::string& user_name)
 {
 	info_.team_name = name;
+	if (!user_name.empty())
+	{
+		info_.user_team_name = user_name;
+	}
+	else
+	{
+		info_.user_team_name = name;
+	}
 
 	//reset the cache of allies for all teams
 	if(teams != NULL) {

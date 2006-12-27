@@ -3091,13 +3091,8 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 
 std::string get_team_name(unsigned int side, const unit_map& units)
 {
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.can_recruit() && i->second.side() == side) {
-			return i->second.description();
-		}
-	}
-
-	return "-";
+	wassert(false); // deprecated code
+	return team_name(side, units);
 }
 
 temporary_unit_placer::temporary_unit_placer(unit_map& m, const gamemap::location& loc, const unit& u)

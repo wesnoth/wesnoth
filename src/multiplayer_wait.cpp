@@ -425,7 +425,7 @@ void wait::generate_menu()
 			str << sd["income"] << _(")");
 		}
 
-		str	<< COLUMN_SEPARATOR << sd["team_name"];
+		str	<< COLUMN_SEPARATOR << sd["user_team_name"];
 		str << COLUMN_SEPARATOR << get_colour_string(lexical_cast_default<int>(sd["colour"], 0) - 1);
 		details.push_back(str.str());
 	}
