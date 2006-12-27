@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:32+0200\n"
+"POT-Creation-Date: 2006-12-27 19:39+0100\n"
 "PO-Revision-Date: 2005-05-07 12:50+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
@@ -17,139 +17,127 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/themes/editor.cfg:461
-msgid "File"
-msgstr "Fail"
-
-#: data/themes/editor.cfg:470
-msgid "Edit"
-msgstr "Redigeeri"
-
-#: data/themes/editor.cfg:477
-msgid "Settings"
-msgstr ""
-
-#: src/editor/editor.cpp:163
+#: src/editor/editor.cpp:235
 msgid "Draw tiles"
 msgstr ""
 
-#: src/editor/editor.cpp:165
+#: src/editor/editor.cpp:237
 #, fuzzy
 msgid "Fill"
 msgstr "Fail"
 
-#: src/editor/editor.cpp:167
+#: src/editor/editor.cpp:239
 msgid "Set player's starting position"
 msgstr ""
 
-#: src/editor/editor.cpp:169
+#: src/editor/editor.cpp:241
 msgid "Zoom in"
 msgstr ""
 
-#: src/editor/editor.cpp:171
+#: src/editor/editor.cpp:243
 msgid "Zoom out"
 msgstr ""
 
-#: src/editor/editor.cpp:173
+#: src/editor/editor.cpp:245
 msgid "Undo"
 msgstr ""
 
-#: src/editor/editor.cpp:175
+#: src/editor/editor.cpp:247
 msgid "Redo"
 msgstr ""
 
-#: src/editor/editor.cpp:177
+#: src/editor/editor.cpp:249
 msgid "Zoom to default view"
 msgstr ""
 
-#: src/editor/editor.cpp:179
+#: src/editor/editor.cpp:251
 msgid "Toggle grid"
 msgstr ""
 
-#: src/editor/editor.cpp:181
+#: src/editor/editor.cpp:253
 #, fuzzy
 msgid "Resize the map"
 msgstr "Muuda kaardi mõõtmeid"
 
-#: src/editor/editor.cpp:183
+#: src/editor/editor.cpp:255
 msgid "Flip map"
 msgstr ""
 
-#: src/editor/editor.cpp:381
+#: src/editor/editor.cpp:453
 msgid "Language"
 msgstr "Keel"
 
-#: src/editor/editor.cpp:382
+#: src/editor/editor.cpp:454
 msgid "Choose your preferred language:"
 msgstr "Vali endale sobiv keel:"
 
-#: src/editor/editor.cpp:396 src/editor/editor_main.cpp:252
+#: src/editor/editor.cpp:468 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr ""
 
-#: src/editor/editor.cpp:420
+#: src/editor/editor.cpp:492
 msgid "Save the Map As"
 msgstr "Salvesta kaart kui"
 
-#: src/editor/editor.cpp:431
+#: src/editor/editor.cpp:503
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kaart on juba olemas. Kas sa tahad selle üle kirjutada?"
 
-#: src/editor/editor.cpp:454 src/editor/editor.cpp:1248
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
 msgid "Player"
 msgstr "Mängija"
 
-#: src/editor/editor.cpp:457
+#: src/editor/editor.cpp:529
 msgid "Which Player?"
 msgstr "Milline mängija?"
 
-#: src/editor/editor.cpp:458
+#: src/editor/editor.cpp:530
 msgid "Which player should start here?"
 msgstr "Milline mängija siit alustama peaks?"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:581
 msgid "Choose a Map to Load"
 msgstr "Vali milline kaart laadida"
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:585
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:598 src/editor/editor.cpp:672
 msgid "The file does not contain a valid map."
 msgstr "Fail ei sisalda korralikku kaarti."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:734
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' ei ole olemas või seda ei õnnestu failina lugeda."
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:746
 msgid "Load failed: "
 msgstr "Laadimine ebaõnnestus:"
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:946
 msgid "You must have a hex selected on the board."
 msgstr "Sul peab olema kaardil mõni väli valitud."
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1198
 msgid "Quit Editor"
 msgstr "Välju redaktorist"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1203
 msgid "Do you want to save the map before quitting?"
 msgstr "Kas sa tahad kaardi enne väljumist salvestada?"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1251
 msgid "Map saved."
 msgstr "Kaart salvestatud"
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1260
 msgid "Could not save the map: $msg"
 msgstr "Ei saa kaarti salvestada: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1275
 msgid "Error: Illegal character in filename."
 msgstr ""
 
@@ -160,6 +148,12 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "File"
+#~ msgstr "Fail"
+
+#~ msgid "Edit"
+#~ msgstr "Redigeeri"
 
 #, fuzzy
 #~ msgid "Player "

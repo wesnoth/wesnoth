@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:32+0200\n"
+"POT-Creation-Date: 2006-12-27 19:39+0100\n"
 "PO-Revision-Date: 2005-12-13 09:42+0100\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -19,137 +19,125 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.10\n"
 
-#: data/themes/editor.cfg:461
-msgid "File"
-msgstr "Soubor"
-
-#: data/themes/editor.cfg:470
-msgid "Edit"
-msgstr "Úpravy"
-
-#: data/themes/editor.cfg:477
-msgid "Settings"
-msgstr "Nastavení"
-
-#: src/editor/editor.cpp:163
+#: src/editor/editor.cpp:235
 msgid "Draw tiles"
 msgstr "Kresli políčka"
 
-#: src/editor/editor.cpp:165
+#: src/editor/editor.cpp:237
 msgid "Fill"
 msgstr "Vyplň"
 
-#: src/editor/editor.cpp:167
+#: src/editor/editor.cpp:239
 msgid "Set player's starting position"
 msgstr "Urči hráčovu startovní pozici"
 
-#: src/editor/editor.cpp:169
+#: src/editor/editor.cpp:241
 msgid "Zoom in"
 msgstr "Přibliž pohled"
 
-#: src/editor/editor.cpp:171
+#: src/editor/editor.cpp:243
 msgid "Zoom out"
 msgstr "Oddal pohled"
 
-#: src/editor/editor.cpp:173
+#: src/editor/editor.cpp:245
 msgid "Undo"
 msgstr "Zpátky"
 
-#: src/editor/editor.cpp:175
+#: src/editor/editor.cpp:247
 msgid "Redo"
 msgstr "Vrať"
 
-#: src/editor/editor.cpp:177
+#: src/editor/editor.cpp:249
 msgid "Zoom to default view"
 msgstr "Přibliž/oddal na implicitní pohled"
 
-#: src/editor/editor.cpp:179
+#: src/editor/editor.cpp:251
 msgid "Toggle grid"
 msgstr "Přepni mřížku"
 
-#: src/editor/editor.cpp:181
+#: src/editor/editor.cpp:253
 msgid "Resize the map"
 msgstr "Změň velikost mapy"
 
-#: src/editor/editor.cpp:183
+#: src/editor/editor.cpp:255
 msgid "Flip map"
 msgstr "Obrať mapu"
 
-#: src/editor/editor.cpp:381
+#: src/editor/editor.cpp:453
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/editor/editor.cpp:382
+#: src/editor/editor.cpp:454
 msgid "Choose your preferred language:"
 msgstr "Vyber si preferovaný jazyk:"
 
-#: src/editor/editor.cpp:396 src/editor/editor_main.cpp:252
+#: src/editor/editor.cpp:468 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Editor hry Bitva o Wesnoth"
 
-#: src/editor/editor.cpp:420
+#: src/editor/editor.cpp:492
 msgid "Save the Map As"
 msgstr "Ulož mapu jako"
 
-#: src/editor/editor.cpp:431
+#: src/editor/editor.cpp:503
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Mapa už existuje. Chceš ji přepsat?"
 
-#: src/editor/editor.cpp:454 src/editor/editor.cpp:1248
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
 msgid "Player"
 msgstr "Hráč"
 
-#: src/editor/editor.cpp:457
+#: src/editor/editor.cpp:529
 msgid "Which Player?"
 msgstr "Který hráč?"
 
-#: src/editor/editor.cpp:458
+#: src/editor/editor.cpp:530
 msgid "Which player should start here?"
 msgstr "Který hráč by zde měl začínat?"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:581
 msgid "Choose a Map to Load"
 msgstr "Vyber si uloženou pozici"
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:585
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr "Upozornění: Nedovolený znak v názvu mapy. Ulož pod jiným názvem."
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:598 src/editor/editor.cpp:672
 msgid "The file does not contain a valid map."
 msgstr "Soubor neobsahuje platnou mapu."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:734
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "„$filename“ neexistuje nebo ho nelze přečíst jako soubor."
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:746
 msgid "Load failed: "
 msgstr "Načtení se nezdařilo: "
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:946
 msgid "You must have a hex selected on the board."
 msgstr "Musíš vybrat nějaký šestiúhelník na hrací ploše."
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1198
 msgid "Quit Editor"
 msgstr "Ukončení editoru"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1203
 msgid "Do you want to save the map before quitting?"
 msgstr "Chceš mapu před ukončením uložit?"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1251
 msgid "Map saved."
 msgstr "Mapa byla uložena."
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1260
 msgid "Could not save the map: $msg"
 msgstr "Nepodařilo se uložit mapu: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1275
 msgid "Error: Illegal character in filename."
 msgstr "Chyba: nedovolený znak v názvu souboru"
 
@@ -160,6 +148,15 @@ msgstr "Popředí"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "Pozadí"
+
+#~ msgid "File"
+#~ msgstr "Soubor"
+
+#~ msgid "Edit"
+#~ msgstr "Úpravy"
+
+#~ msgid "Settings"
+#~ msgstr "Nastavení"
 
 #~ msgid "Player "
 #~ msgstr "Hráč"

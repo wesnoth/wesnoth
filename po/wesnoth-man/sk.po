@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2006-07-14 13:00+0200\n"
+"POT-Creation-Date: 2006-12-27 19:45+0100\n"
 "PO-Revision-Date: 2006-08-26 00:21+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -17,64 +17,67 @@ msgstr ""
 "X-Poedit-Country: SLOVAKIA\n"
 
 # type: TH
-#: man/wesnoth.6:16
+#: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "WESNOTH"
 msgstr "WESNOTH"
 
 # type: TH
-#: man/wesnoth.6:16 man/wesnothd.6:16
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2006"
 msgstr "2006"
 
 # type: TH
-#: man/wesnoth.6:16
+#: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "wesnoth"
 msgstr "wesnoth"
 
 # type: TH
-#: man/wesnoth.6:16
+#: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
 
 # type: SH
-#: man/wesnoth.6:18 man/wesnoth_editor.6:18 man/wesnothd.6:18
+#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
+#: ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
 msgstr "NÁZOV"
 
 # type: Plain text
-#: man/wesnoth.6:20
+#: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr "wesnoth - Bitka o Wesnoth, ťahová strategická fantasy hra"
 
 # type: SH
-#: man/wesnoth.6:21 man/wesnoth_editor.6:21 man/wesnothd.6:24
+#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
+#: ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
 msgstr "ZHRNUTIE"
 
 # type: Plain text
-#: man/wesnoth.6:26
+#: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 msgstr "B<wesnoth> [I<MOŽNOSTI>] [I<CESTA_K_DÁTAM>]"
 
 # type: SH
-#: man/wesnoth.6:27 man/wesnoth_editor.6:24 man/wesnothd.6:35
+#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
+#: ../../doc/man/wesnothd.6:35
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "POPIS"
 
 # type: Plain text
-#: man/wesnoth.6:32
+#: ../../doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
 msgstr "Bitka o B<Wesnoth> je ťahová strategická fantasy hra."
 
 # type: Plain text
-#: man/wesnoth.6:42
+#: ../../doc/man/wesnoth.6:42
 msgid ""
 "Defeat all enemy leaders using a well-chosen cadre of troops, taking care to "
 "manage your resources of gold and villages. All units have their own "
@@ -96,30 +99,31 @@ msgstr ""
 "hráčmi."
 
 # type: SH
-#: man/wesnoth.6:43 man/wesnoth_editor.6:29 man/wesnothd.6:40
+#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:29
+#: ../../doc/man/wesnothd.6:40
 #, no-wrap
 msgid "OPTIONS"
 msgstr "MOŽNOSTI"
 
 # type: TP
-#: man/wesnoth.6:45
+#: ../../doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--bpp>I<\\ number>"
 msgstr "B<--bpp>I<\\ číslo>"
 
 # type: Plain text
-#: man/wesnoth.6:48 man/wesnoth_editor.6:54
+#: ../../doc/man/wesnoth.6:48 ../../doc/man/wesnoth_editor.6:54
 msgid "sets BitsPerPixel value. Example: --bpp 32"
 msgstr "nastaví počet bitov na obrazový bod. Napríklad: --bpp 32"
 
 # type: TP
-#: man/wesnoth.6:48
+#: ../../doc/man/wesnoth.6:48
 #, no-wrap
 msgid "B<--compress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
 msgstr "B<--compress>I<\\ E<lt>vstupný_súborE<gt>>B<\\ >I<E<lt>výstupný_súborE<gt>>"
 
 # type: Plain text
-#: man/wesnoth.6:51
+#: ../../doc/man/wesnoth.6:51
 msgid ""
 "compresses a savefile (infile) that is in text WML format into binary WML "
 "format (outfile)."
@@ -128,13 +132,13 @@ msgstr ""
 "formátu WML (výstupný súbor)."
 
 # type: TP
-#: man/wesnoth.6:51
+#: ../../doc/man/wesnoth.6:51
 #, no-wrap
 msgid "B<-d>, B<--debug>"
 msgstr "B<-d>, B<--debug>"
 
 # type: Plain text
-#: man/wesnoth.6:56
+#: ../../doc/man/wesnoth.6:56
 msgid ""
 "shows extra debugging information and enables additional command mode "
 "options in-game (see the Wiki at http://www.wesnoth.org/ for more "
@@ -145,13 +149,13 @@ msgstr ""
 "wesnoth.org/)."
 
 # type: TP
-#: man/wesnoth.6:56
+#: ../../doc/man/wesnoth.6:56
 #, no-wrap
 msgid "B<--decompress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
 msgstr "B<--decompress>I<\\ E<lt>vstupný_súborE<gt>>B<\\ >I<E<lt>výstupný_súborE<gt>>"
 
 # type: Plain text
-#: man/wesnoth.6:60
+#: ../../doc/man/wesnoth.6:60
 msgid ""
 "decompresses a savefile (infile) that is in binary WML format into text WML "
 "format (outfile)."
@@ -160,24 +164,24 @@ msgstr ""
 "formátu WML (výstupný súbor)."
 
 # type: TP
-#: man/wesnoth.6:60
+#: ../../doc/man/wesnoth.6:60
 #, no-wrap
 msgid "B<-f>, B<--fullscreen>"
 msgstr "B<-f>, B<--fullscreen>"
 
 # type: Plain text
-#: man/wesnoth.6:63
+#: ../../doc/man/wesnoth.6:63
 msgid "runs the game in full screen mode."
 msgstr "spustí hru na ploche celej obrazovky."
 
 # type: TP
-#: man/wesnoth.6:63
+#: ../../doc/man/wesnoth.6:63
 #, no-wrap
 msgid "B<--fps>"
 msgstr "B<--fps>"
 
 # type: Plain text
-#: man/wesnoth.6:67
+#: ../../doc/man/wesnoth.6:67
 msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
@@ -185,38 +189,38 @@ msgstr ""
 "zobrazí momentálnu rýchlosť hry, počet snímok za sekundu, v rohu obrazovky."
 
 # type: TP
-#: man/wesnoth.6:67
+#: ../../doc/man/wesnoth.6:67
 #, no-wrap
 msgid "B<-h>, B<--help>"
 msgstr "B<-h>, B<--help>"
 
 # type: Plain text
-#: man/wesnoth.6:70
+#: ../../doc/man/wesnoth.6:70
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr ""
 "vypíše súhrn možností príkazového riadku do štandardného výstupu, a skončí."
 
 # type: TP
-#: man/wesnoth.6:70
+#: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--load>I<\\ savegame>"
 msgstr "B<--load>I<\\ uložená_hra>"
 
 # type: Plain text
-#: man/wesnoth.6:73
+#: ../../doc/man/wesnoth.6:73
 msgid "loads the file savegame from the standard save game directory."
 msgstr ""
 "načíta uloženú hru z daného súboru v štandardnom adresári uložených hier"
 
 # type: TP
-#: man/wesnoth.6:73
+#: ../../doc/man/wesnoth.6:73
 #, no-wrap
 msgid "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
 msgstr "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
 
 # type: Plain text
-#: man/wesnoth.6:83
+#: ../../doc/man/wesnoth.6:83
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain.  B<--log-info> shows all messages, B<--log-warning> only "
@@ -227,13 +231,13 @@ msgstr ""
 "varovania a chyby, a B<--log-error> iba chyby."
 
 # type: TP
-#: man/wesnoth.6:83
+#: ../../doc/man/wesnoth.6:83
 #, no-wrap
 msgid "B<--multiplayer>"
 msgstr "B<--multiplayer>"
 
 # type: Plain text
-#: man/wesnoth.6:89
+#: ../../doc/man/wesnoth.6:89
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
@@ -242,90 +246,90 @@ msgstr ""
 "B<--multiplayer> sú vysvetlené nižšie."
 
 # type: TP
-#: man/wesnoth.6:89
+#: ../../doc/man/wesnoth.6:89
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
-#: man/wesnoth.6:92
+#: ../../doc/man/wesnoth.6:92
 msgid "disables caching of game data."
 msgstr "vypne ukladanie herných dát do cache."
 
 # type: TP
-#: man/wesnoth.6:92
+#: ../../doc/man/wesnoth.6:92
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 # type: Plain text
-#: man/wesnoth.6:95
+#: ../../doc/man/wesnoth.6:95
 msgid "runs the game without sounds and music."
 msgstr "spustí hru bez zvukov a hudby."
 
 # type: TP
-#: man/wesnoth.6:95 man/wesnoth_editor.6:43
+#: ../../doc/man/wesnoth.6:95 ../../doc/man/wesnoth_editor.6:43
 #, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
 # type: Plain text
-#: man/wesnoth.6:98 man/wesnoth_editor.6:46
+#: ../../doc/man/wesnoth.6:98 ../../doc/man/wesnoth_editor.6:46
 msgid "prints the name of the game data directory and exits."
 msgstr "vypíše názov dátového adresára hry a skončí."
 
 # type: TP
-#: man/wesnoth.6:98
+#: ../../doc/man/wesnoth.6:98
 #, no-wrap
 msgid "B<-r>, B<--resolution>\\ I<XxY>"
 msgstr "B<-r>, B<--resolution>\\ I<XxY>"
 
 # type: Plain text
-#: man/wesnoth.6:101
+#: ../../doc/man/wesnoth.6:101
 msgid "sets the screen resolution. Example: -r 800x600"
 msgstr "nastaví rozlíšenie obrazovky. Napríklad: -r 800x600"
 
 # type: TP
-#: man/wesnoth.6:101
+#: ../../doc/man/wesnoth.6:101
 #, no-wrap
 msgid "B<-t>, B<--test>"
 msgstr "B<-t>, B<--test>"
 
 # type: Plain text
-#: man/wesnoth.6:104
+#: ../../doc/man/wesnoth.6:104
 msgid "runs the game in a small test scenario."
 msgstr "spustí hru s malou testovacou scénou."
 
 # type: TP
-#: man/wesnoth.6:104
+#: ../../doc/man/wesnoth.6:104
 #, no-wrap
 msgid "B<-v>, B<--version>"
 msgstr "B<-v>, B<--version>"
 
 # type: Plain text
-#: man/wesnoth.6:107
+#: ../../doc/man/wesnoth.6:107
 msgid "shows the version number and exits."
 msgstr "zobrazí číslo verzie a skončí."
 
 # type: TP
-#: man/wesnoth.6:107
+#: ../../doc/man/wesnoth.6:107
 #, no-wrap
 msgid "B<-w>, B<--windowed>"
 msgstr "B<-w>, B<--windowed>"
 
 # type: Plain text
-#: man/wesnoth.6:110
+#: ../../doc/man/wesnoth.6:110
 msgid "runs the game in windowed mode."
 msgstr "spustí hru v grafickom okne."
 
 # type: TP
-#: man/wesnoth.6:110
+#: ../../doc/man/wesnoth.6:110
 #, no-wrap
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
-#: man/wesnoth.6:113
+#: ../../doc/man/wesnoth.6:113
 msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by --nogui."
@@ -334,13 +338,13 @@ msgstr ""
 "automatické pri --nogui."
 
 # type: TP
-#: man/wesnoth.6:113
+#: ../../doc/man/wesnoth.6:113
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
-#: man/wesnoth.6:116
+#: ../../doc/man/wesnoth.6:116
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -351,13 +355,13 @@ msgstr ""
 "používa na automatizované meranie rýchlosti."
 
 # type: SH
-#: man/wesnoth.6:117
+#: ../../doc/man/wesnoth.6:117
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Možnosti pre --multiplayer"
 
 # type: Plain text
-#: man/wesnoth.6:122
+#: ../../doc/man/wesnoth.6:122
 msgid ""
 "The side-specific multiplayer options are marked with E<lt>numberE<gt>. "
 "E<lt>numberE<gt> has to be replaced by a side number. It usually is 1 or 2 "
@@ -368,13 +372,13 @@ msgstr ""
 "Zvyčajne je to 1 alebo 2, ale záleží to na možnom počte hráčov v danej scéne."
 
 # type: TP
-#: man/wesnoth.6:122
+#: ../../doc/man/wesnoth.6:122
 #, no-wrap
 msgid "B<--algorithmE<lt>numberE<gt>=value>"
 msgstr "B<--algorithmE<lt>čísloE<gt>=hodnota>"
 
 # type: Plain text
-#: man/wesnoth.6:126
+#: ../../doc/man/wesnoth.6:126
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: \"idle_ai\" and \"sample_ai\"."
@@ -383,13 +387,13 @@ msgstr ""
 "\"idle_ai\" a \"sample_ai\"."
 
 # type: TP
-#: man/wesnoth.6:126
+#: ../../doc/man/wesnoth.6:126
 #, no-wrap
 msgid "B<--controllerE<lt>numberE<gt>=value>"
 msgstr "B<--controllerE<lt>čísloE<gt>=hodnota>"
 
 # type: Plain text
-#: man/wesnoth.6:129
+#: ../../doc/man/wesnoth.6:129
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
 msgstr ""
@@ -397,13 +401,13 @@ msgstr ""
 "\" (počítač)."
 
 # type: TP
-#: man/wesnoth.6:129
+#: ../../doc/man/wesnoth.6:129
 #, no-wrap
 msgid "B<--era=value>"
 msgstr "B<--era=hodnota>"
 
 # type: Plain text
-#: man/wesnoth.6:134
+#: ../../doc/man/wesnoth.6:134
 msgid ""
 "use this option to play in the selected era instead of the \"Default\" era. "
 "The era is chosen by an id. Eras are described in the data/multiplayer.cfg "
@@ -413,13 +417,13 @@ msgstr ""
 "id. Éry sú definované v súbore data/multiplayer.cfg."
 
 # type: TP
-#: man/wesnoth.6:134
+#: ../../doc/man/wesnoth.6:134
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: man/wesnoth.6:139
+#: ../../doc/man/wesnoth.6:139
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -428,13 +432,13 @@ msgstr ""
 "multiplayer>, ak má správne fungovať."
 
 # type: TP
-#: man/wesnoth.6:139
+#: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<--parmE<lt>numberE<gt>=name:value>"
 msgstr "B<--parmE<lt>čísloE<gt>=názov:hodnota>"
 
 # type: Plain text
-#: man/wesnoth.6:148
+#: ../../doc/man/wesnoth.6:148
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm.> It should only be "
@@ -446,13 +450,13 @@ msgstr ""
 "zdokumentované)"
 
 # type: TP
-#: man/wesnoth.6:148
+#: ../../doc/man/wesnoth.6:148
 #, no-wrap
 msgid "B<--scenario=value>"
 msgstr "B<--scenario=hodnota>"
 
 # type: Plain text
-#: man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:151
 msgid ""
 "selects a multiplayer scenario. The default scenario is \"multiplayer_Charge"
 "\"."
@@ -461,13 +465,13 @@ msgstr ""
 "\"."
 
 # type: TP
-#: man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:151
 #, no-wrap
 msgid "B<--sideE<lt>numberE<gt>=value>"
 msgstr "B<--sideE<lt>čísloE<gt>=hodnota>"
 
 # type: Plain text
-#: man/wesnoth.6:156
+#: ../../doc/man/wesnoth.6:156
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -476,25 +480,25 @@ msgstr ""
 "Frakcie sú popísané v súbore data/multiplayer.cfg."
 
 # type: TP
-#: man/wesnoth.6:156
+#: ../../doc/man/wesnoth.6:156
 #, no-wrap
 msgid "B<--turns=value>"
 msgstr "B<--turns=hodnota>"
 
 # type: Plain text
-#: man/wesnoth.6:159
+#: ../../doc/man/wesnoth.6:159
 msgid ""
 "sets the number of turns for the chosen scenario. The default is \"50\"."
 msgstr "nastaví počet ťahov pre danú scénu. Štandardná hodnota je \"50\"."
 
 # type: TP
-#: man/wesnoth.6:159
-#, no-wrap
-msgid "Example to test your own AI: "
+#: ../../doc/man/wesnoth.6:159
+#, fuzzy, no-wrap
+msgid "Example to test your own AI:  "
 msgstr "Príklad ako otestovať vlastnú umelú inteligenciu:"
 
 # type: Plain text
-#: man/wesnoth.6:162
+#: ../../doc/man/wesnoth.6:162
 msgid ""
 "wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
 "parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
@@ -503,18 +507,19 @@ msgstr ""
 "parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
 
 # type: SH
-#: man/wesnoth.6:163 man/wesnoth_editor.6:63 man/wesnothd.6:132
+#: ../../doc/man/wesnoth.6:163 ../../doc/man/wesnoth_editor.6:63
+#: ../../doc/man/wesnothd.6:132
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
 
 # type: Plain text
-#: man/wesnoth.6:166
+#: ../../doc/man/wesnoth.6:166
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Napísal David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
-#: man/wesnoth.6:168
+#: ../../doc/man/wesnoth.6:168
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
@@ -523,7 +528,7 @@ msgstr ""
 "netE<gt> a Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 
 # type: Plain text
-#: man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:170
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -532,24 +537,28 @@ msgstr ""
 "orgE<gt>."
 
 # type: Plain text
-#: man/wesnoth.6:172 man/wesnoth_editor.6:69 man/wesnothd.6:139
+#: ../../doc/man/wesnoth.6:172 ../../doc/man/wesnoth_editor.6:69
+#: ../../doc/man/wesnothd.6:139
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Navštívte oficiálnu stránku: http://www.wesnoth.org/"
 
 # type: SH
-#: man/wesnoth.6:173 man/wesnoth_editor.6:70 man/wesnothd.6:140
+#: ../../doc/man/wesnoth.6:173 ../../doc/man/wesnoth_editor.6:70
+#: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
-#: man/wesnoth.6:176 man/wesnoth_editor.6:72 man/wesnothd.6:143
+#: ../../doc/man/wesnoth.6:176 ../../doc/man/wesnoth_editor.6:72
+#: ../../doc/man/wesnothd.6:143
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: man/wesnoth.6:179 man/wesnoth_editor.6:75 man/wesnothd.6:146
+#: ../../doc/man/wesnoth.6:179 ../../doc/man/wesnoth_editor.6:75
+#: ../../doc/man/wesnothd.6:146
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -561,124 +570,125 @@ msgstr ""
 "PREDATEĽNOSTI či VHODNOSTI NA DANÝ ÚČEL."
 
 # type: SH
-#: man/wesnoth.6:180 man/wesnoth_editor.6:76 man/wesnothd.6:147
+#: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:76
+#: ../../doc/man/wesnothd.6:147
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VIĎ AJ"
 
 # type: Plain text
-#: man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:183
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
 
 # type: TH
-#: man/wesnoth_editor.6:16
+#: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "WESNOTH_EDITOR"
 msgstr "WESNOTH_EDITOR"
 
 # type: TH
-#: man/wesnoth_editor.6:16
+#: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "June 2005"
 msgstr "Jún 2005"
 
 # type: TH
-#: man/wesnoth_editor.6:16
+#: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "wesnoth_editor"
 msgstr "wesnoth_editor"
 
 # type: Plain text
-#: man/wesnoth_editor.6:16 man/wesnoth_editor.6:20
+#: ../../doc/man/wesnoth_editor.6:16 ../../doc/man/wesnoth_editor.6:20
 #, no-wrap
 msgid "Battle for Wesnoth map editor"
 msgstr "Editor máp pre Bitku o Wesnoth"
 
 # type: Plain text
-#: man/wesnoth_editor.6:23
+#: ../../doc/man/wesnoth_editor.6:23
 msgid "B<wesnoth_editor>"
 msgstr "B<wesnoth_editor>"
 
 # type: Plain text
-#: man/wesnoth_editor.6:28
+#: ../../doc/man/wesnoth_editor.6:28
 msgid "Battle for B<Wesnoth> map editor."
 msgstr "Editor máp pre Bitku o B<Wesnoth>."
 
 # type: TP
-#: man/wesnoth_editor.6:31
+#: ../../doc/man/wesnoth_editor.6:31
 #, no-wrap
 msgid "B<--datadir>"
 msgstr "B<--datadir>"
 
 # type: Plain text
-#: man/wesnoth_editor.6:34
+#: ../../doc/man/wesnoth_editor.6:34
 msgid "selects the data directory to use."
 msgstr "nastaví dátový adresár, ktorý sa má použiť."
 
 # type: TP
-#: man/wesnoth_editor.6:35
+#: ../../doc/man/wesnoth_editor.6:35
 #, no-wrap
 msgid "B<-f>,B<\\ --fullscreen>"
 msgstr "B<-f>,B<\\ --fullscreen>"
 
 # type: Plain text
-#: man/wesnoth_editor.6:38
+#: ../../doc/man/wesnoth_editor.6:38
 msgid "runs the editor in full screen mode."
 msgstr "spustí editor na ploche celej obrazovky."
 
 # type: TP
-#: man/wesnoth_editor.6:39
+#: ../../doc/man/wesnoth_editor.6:39
 #, no-wrap
 msgid "B<-h>,B<\\ --help>"
 msgstr "B<-h>,B<\\ --help>"
 
 # type: Plain text
-#: man/wesnoth_editor.6:42 man/wesnothd.6:53
+#: ../../doc/man/wesnoth_editor.6:42 ../../doc/man/wesnothd.6:53
 msgid "tells you what the command line options do."
 msgstr "povie, čo robia jednotlivé možnosti príkazového riadku."
 
 # type: TP
-#: man/wesnoth_editor.6:47
+#: ../../doc/man/wesnoth_editor.6:47
 #, no-wrap
 msgid "B<-r>,B<\\ --resolution>"
 msgstr "B<-r>,B<\\ --resolution>"
 
 # type: Plain text
-#: man/wesnoth_editor.6:50
+#: ../../doc/man/wesnoth_editor.6:50
 msgid "sets screen resolution. Example: -r 800x600"
 msgstr "nastaví rozlíšenie obrazovky. Napríklad: -r 800x600"
 
 # type: TP
-#: man/wesnoth_editor.6:51
+#: ../../doc/man/wesnoth_editor.6:51
 #, no-wrap
 msgid "B<--bpp>"
 msgstr "B<--bpp>"
 
 # type: TP
-#: man/wesnoth_editor.6:55
+#: ../../doc/man/wesnoth_editor.6:55
 #, no-wrap
 msgid "B<-v>,B<\\ --version>"
 msgstr "B<-v>,B<\\ --version>"
 
 # type: Plain text
-#: man/wesnoth_editor.6:58
+#: ../../doc/man/wesnoth_editor.6:58
 msgid "prints version number and exits."
 msgstr "vypíše číslo verzie a skončí."
 
 # type: TP
-#: man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth_editor.6:59
 #, no-wrap
 msgid "B<-w>,B<\\ --windowed>"
 msgstr "B<-w>,B<\\ --windowed>"
 
 # type: Plain text
-#: man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth_editor.6:62
 msgid "runs the editor in windowed mode."
 msgstr "spustí editor v grafickom okne."
 
 # type: Plain text
-#: man/wesnoth_editor.6:67
+#: ../../doc/man/wesnoth_editor.6:67
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott E<lt>ott@gaon.netE<gt>.  "
@@ -691,35 +701,35 @@ msgstr ""
 "orgE<gt>."
 
 # type: Plain text
-#: man/wesnoth_editor.6:77
+#: ../../doc/man/wesnoth_editor.6:77
 msgid "wesnoth(6), wesnothd(6)"
 msgstr "wesnoth(6), wesnothd(6)"
 
 # type: TH
-#: man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "WESNOTHD"
 msgstr "WESNOTHD"
 
 # type: TH
-#: man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "wesnothd"
 msgstr "wesnothd"
 
 # type: TH
-#: man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
 msgstr "Démon na sieťovú hru Bitky o Wesnoth"
 
 # type: Plain text
-#: man/wesnothd.6:23
+#: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
 msgstr "wesnothd - Démon na sieťovú hru Bitky o B<Wesnoth>"
 
 # type: Plain text
-#: man/wesnothd.6:34
+#: ../../doc/man/wesnothd.6:34
 msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|]"
@@ -728,7 +738,7 @@ msgstr ""
 "B<-t> I<číslo>\\|]"
 
 # type: Plain text
-#: man/wesnothd.6:39
+#: ../../doc/man/wesnothd.6:39
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -739,13 +749,13 @@ msgstr ""
 "alebo socket."
 
 # type: TP
-#: man/wesnothd.6:42
+#: ../../doc/man/wesnothd.6:42
 #, no-wrap
 msgid "B<-c,\\ --config>I<\\ path>"
 msgstr "B<-c,\\ --config>I<\\ cesta>"
 
 # type: Plain text
-#: man/wesnothd.6:47
+#: ../../doc/man/wesnothd.6:47
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax."
@@ -754,30 +764,30 @@ msgstr ""
 "B<KONFIGURÁCIA SERVERA> nižšie."
 
 # type: TP
-#: man/wesnothd.6:47
+#: ../../doc/man/wesnothd.6:47
 #, no-wrap
 msgid "B<-d,\\ --daemon>"
 msgstr "B<-d,\\ --daemon>"
 
 # type: Plain text
-#: man/wesnothd.6:50
+#: ../../doc/man/wesnothd.6:50
 msgid "runs wesnothd as a daemon."
 msgstr "spustí wesnothd ako démona."
 
 # type: TP
-#: man/wesnothd.6:50
+#: ../../doc/man/wesnothd.6:50
 #, no-wrap
 msgid "B<-h,\\ --help>"
 msgstr "B<-h,\\ --help>"
 
 # type: TP
-#: man/wesnothd.6:53
+#: ../../doc/man/wesnothd.6:53
 #, no-wrap
 msgid "B<-p,\\ --port>I<\\ port>"
 msgstr "B<-p,\\ --port>I<\\ port>"
 
 # type: Plain text
-#: man/wesnothd.6:57
+#: ../../doc/man/wesnothd.6:57
 msgid ""
 "binds the server to the specified port. If no port is specified, port 15000 "
 "will be used."
@@ -785,13 +795,13 @@ msgstr ""
 "zavesí server na daný port. Ak nie je daný port, použije sa port číslo 15000."
 
 # type: TP
-#: man/wesnothd.6:57
+#: ../../doc/man/wesnothd.6:57
 #, no-wrap
 msgid "B<-t,\\ --threads>I<\\ number>"
 msgstr "B<-t,\\ --threads>I<\\ číslo>"
 
 # type: Plain text
-#: man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:60
 msgid ""
 "sets the number of worker threads for network I/O to n (default: 5, max: 30)."
 msgstr ""
@@ -799,84 +809,84 @@ msgstr ""
 "30)."
 
 # type: TP
-#: man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:60
 #, no-wrap
 msgid "B<-V,\\ --version>"
 msgstr "B<-V,\\ --version>"
 
 # type: Plain text
-#: man/wesnothd.6:63
+#: ../../doc/man/wesnothd.6:63
 msgid "shows version number and exits."
 msgstr "vypíše číslo verzie a skončí."
 
 # type: TP
-#: man/wesnothd.6:63
+#: ../../doc/man/wesnothd.6:63
 #, no-wrap
 msgid "B<-v,\\ --verbose>"
 msgstr "B<-v,\\ --verbose>"
 
 # type: Plain text
-#: man/wesnothd.6:66
+#: ../../doc/man/wesnothd.6:66
 msgid "turns on more verbose logging."
 msgstr "zapne ukecanejšie zaznamenávanie."
 
 # type: SH
-#: man/wesnothd.6:67
+#: ../../doc/man/wesnothd.6:67
 #, no-wrap
 msgid "SERVER CONFIG"
 msgstr "KONFIGURÁCIA SERVERA"
 
 # type: SS
-#: man/wesnothd.6:69
+#: ../../doc/man/wesnothd.6:69
 #, no-wrap
 msgid "The general syntax is:"
 msgstr "Všeobecná syntax je:"
 
 # type: Plain text
-#: man/wesnothd.6:73
+#: ../../doc/man/wesnothd.6:73
 msgid "[I<tag>]"
 msgstr "[I<značka>]"
 
 # type: Plain text
-#: man/wesnothd.6:75
+#: ../../doc/man/wesnothd.6:75
 msgid "key=\"I<value>\""
 msgstr "kľúč=\"I<hodnota>\""
 
 # type: Plain text
-#: man/wesnothd.6:77
+#: ../../doc/man/wesnothd.6:77
 msgid "key=\"I<value>,I<value>,...\""
 msgstr "kľúč=\"I<hodnota>,I<hodnota>,...\""
 
 # type: Plain text
-#: man/wesnothd.6:79
+#: ../../doc/man/wesnothd.6:79
 msgid "[/I<tag>]"
 msgstr "[/I<značka>]"
 
 # type: SS
-#: man/wesnothd.6:80
+#: ../../doc/man/wesnothd.6:80
 #, no-wrap
 msgid "Global keys:"
 msgstr "Globálne kľúče:"
 
 # type: TP
-#: man/wesnothd.6:82
+#: ../../doc/man/wesnothd.6:82
 #, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
 # type: Plain text
-#: man/wesnothd.6:85
+#: ../../doc/man/wesnothd.6:85
 msgid "The number of allowed connections from the same IP."
 msgstr "Počet povolených spojení z rovnakej IP adresy."
 
 # type: TP
-#: man/wesnothd.6:85
+#: ../../doc/man/wesnothd.6:85
 #, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
 # type: Plain text
-#: man/wesnothd.6:91
+#: ../../doc/man/wesnothd.6:91
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -888,46 +898,46 @@ msgstr ""
 "nezadá) sú: \"server,ai,player,network,human,admin,computer\"."
 
 # type: TP
-#: man/wesnothd.6:91
+#: ../../doc/man/wesnothd.6:91
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
 # type: Plain text
-#: man/wesnothd.6:94
+#: ../../doc/man/wesnothd.6:94
 msgid "The number of allowed messages in B<messages_time_period>."
 msgstr "Počet povolených správ za B<messages_time_period>."
 
 # type: TP
-#: man/wesnothd.6:94
+#: ../../doc/man/wesnothd.6:94
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
 # type: Plain text
-#: man/wesnothd.6:97
+#: ../../doc/man/wesnothd.6:97
 msgid "The time period (in seconds) message flooding is detected in."
 msgstr "Časové obdobie (v sekundách), v ktorom sa meria zasypávanie správami."
 
 # type: TP
-#: man/wesnothd.6:97
+#: ../../doc/man/wesnothd.6:97
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
 # type: Plain text
-#: man/wesnothd.6:100
+#: ../../doc/man/wesnothd.6:100
 msgid "The message of the day."
 msgstr "Správa dňa."
 
 # type: TP
-#: man/wesnothd.6:100
+#: ../../doc/man/wesnothd.6:100
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
 # type: Plain text
-#: man/wesnothd.6:103
+#: ../../doc/man/wesnothd.6:103
 msgid ""
 "The password used to gain admin privileges. Usually it starts with \"admin "
 "\"."
@@ -936,13 +946,13 @@ msgstr ""
 "\"admin \"."
 
 # type: TP
-#: man/wesnothd.6:103
+#: ../../doc/man/wesnothd.6:103
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 # type: Plain text
-#: man/wesnothd.6:106
+#: ../../doc/man/wesnothd.6:106
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported."
@@ -951,18 +961,18 @@ msgstr ""
 "žolíkové znaky \"*\" a \"?\"."
 
 # type: Plain text
-#: man/wesnothd.6:108
+#: ../../doc/man/wesnothd.6:108
 msgid "Example: versions_accepted=\"*\" accepts any version string."
 msgstr "Napríklad: versions_accepted=\"*\" prijme hocijakú verziu."
 
 # type: SS
-#: man/wesnothd.6:109
+#: ../../doc/man/wesnothd.6:109
 #, no-wrap
 msgid "Global tags:"
 msgstr "Globálne značky:"
 
 # type: Plain text
-#: man/wesnothd.6:114
+#: ../../doc/man/wesnothd.6:114
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
@@ -971,35 +981,35 @@ msgstr ""
 "klientov."
 
 # type: TP
-#: man/wesnothd.6:115
+#: ../../doc/man/wesnothd.6:115
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 # type: Plain text
-#: man/wesnothd.6:118
+#: ../../doc/man/wesnothd.6:118
 msgid "The address of the server to redirect to."
 msgstr "Adresa servera, kam sa presmerujú."
 
 # type: TP
-#: man/wesnothd.6:118
+#: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 # type: Plain text
-#: man/wesnothd.6:121
+#: ../../doc/man/wesnothd.6:121
 msgid "The port to connect to."
 msgstr "Port, na ktorý sa majú pripojiť."
 
 # type: TP
-#: man/wesnothd.6:121
+#: ../../doc/man/wesnothd.6:121
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 # type: Plain text
-#: man/wesnothd.6:126
+#: ../../doc/man/wesnothd.6:126
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -1008,7 +1018,7 @@ msgstr ""
 "žolíkové znaky rovnako ako  B<versions_accepted>."
 
 # type: Plain text
-#: man/wesnothd.6:131
+#: ../../doc/man/wesnothd.6:131
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1019,7 +1029,7 @@ msgstr ""
 "rovnaké kľúče ako [redirect]."
 
 # type: Plain text
-#: man/wesnothd.6:137
+#: ../../doc/man/wesnothd.6:137
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
@@ -1032,6 +1042,6 @@ msgstr ""
 "napísal Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
-#: man/wesnothd.6:150
+#: ../../doc/man/wesnothd.6:150
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"

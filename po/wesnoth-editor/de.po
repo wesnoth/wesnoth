@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:32+0200\n"
+"POT-Creation-Date: 2006-12-27 19:39+0100\n"
 "PO-Revision-Date: 2006-06-22 02:00-0500\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -14,99 +14,87 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: data/themes/editor.cfg:461
-msgid "File"
-msgstr "Datei"
-
-#: data/themes/editor.cfg:470
-msgid "Edit"
-msgstr "Bearbeiten"
-
-#: data/themes/editor.cfg:477
-msgid "Settings"
-msgstr "Einstellungen"
-
-#: src/editor/editor.cpp:163
+#: src/editor/editor.cpp:235
 msgid "Draw tiles"
 msgstr "Felder zeichnen"
 
-#: src/editor/editor.cpp:165
+#: src/editor/editor.cpp:237
 msgid "Fill"
 msgstr "Ausfüllen"
 
-#: src/editor/editor.cpp:167
+#: src/editor/editor.cpp:239
 msgid "Set player's starting position"
 msgstr "Startpositionen der Spieler festlegen"
 
-#: src/editor/editor.cpp:169
+#: src/editor/editor.cpp:241
 msgid "Zoom in"
 msgstr "Hereinzoomen"
 
-#: src/editor/editor.cpp:171
+#: src/editor/editor.cpp:243
 msgid "Zoom out"
 msgstr "Herauszoomen"
 
-#: src/editor/editor.cpp:173
+#: src/editor/editor.cpp:245
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/editor/editor.cpp:175
+#: src/editor/editor.cpp:247
 msgid "Redo"
 msgstr "Wiederherstellen"
 
-#: src/editor/editor.cpp:177
+#: src/editor/editor.cpp:249
 msgid "Zoom to default view"
 msgstr "Standardansicht wiederherstellen"
 
-#: src/editor/editor.cpp:179
+#: src/editor/editor.cpp:251
 msgid "Toggle grid"
 msgstr "Gitternetz einblenden"
 
-#: src/editor/editor.cpp:181
+#: src/editor/editor.cpp:253
 msgid "Resize the map"
 msgstr "Kartengröße anpassen"
 
-#: src/editor/editor.cpp:183
+#: src/editor/editor.cpp:255
 msgid "Flip map"
 msgstr "Karte spiegeln"
 
-#: src/editor/editor.cpp:381
+#: src/editor/editor.cpp:453
 msgid "Language"
 msgstr "Sprache"
 
-#: src/editor/editor.cpp:382
+#: src/editor/editor.cpp:454
 msgid "Choose your preferred language:"
 msgstr "Wählt die gewünschte Sprache:"
 
-#: src/editor/editor.cpp:396 src/editor/editor_main.cpp:252
+#: src/editor/editor.cpp:468 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Battle for Wesnoth Karteneditor"
 
-#: src/editor/editor.cpp:420
+#: src/editor/editor.cpp:492
 msgid "Save the Map As"
 msgstr "Karte speichern unter"
 
-#: src/editor/editor.cpp:431
+#: src/editor/editor.cpp:503
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Diese Karte existiert schon. Soll sie überschrieben werden?"
 
-#: src/editor/editor.cpp:454 src/editor/editor.cpp:1248
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
 msgid "Player"
 msgstr "Spieler"
 
-#: src/editor/editor.cpp:457
+#: src/editor/editor.cpp:529
 msgid "Which Player?"
 msgstr "Welcher Spieler?"
 
-#: src/editor/editor.cpp:458
+#: src/editor/editor.cpp:530
 msgid "Which player should start here?"
 msgstr "Welcher Spieler soll anfangen?"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:581
 msgid "Choose a Map to Load"
 msgstr "Wählt eine Karte aus, die Ihr laden wollt."
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:585
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -114,41 +102,41 @@ msgstr ""
 "Warnung: Ein ungültiges Zeichen wurde im Namen der Karte gefunden. Ihr müsst "
 "sie unter einem anderen Namen abspeichern."
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:598 src/editor/editor.cpp:672
 msgid "The file does not contain a valid map."
 msgstr "Diese Datei enthält keine Karte oder sie ist beschädigt."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:734
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr ""
 "Die Datei »$filename« existiert nicht, Ihr seid nicht berechtigt sie zu "
 "lesen oder sie kann nicht gelesen werden."
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:746
 msgid "Load failed: "
 msgstr "Laden ist leider fehlgeschlagen"
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:946
 msgid "You must have a hex selected on the board."
 msgstr "Ihr müsst ein Hexfeld auf der Karte ausgewählt haben."
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1198
 msgid "Quit Editor"
 msgstr "Editor beenden"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1203
 msgid "Do you want to save the map before quitting?"
 msgstr "Soll die Karte vor dem Beenden gespeichert werden?"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1251
 msgid "Map saved."
 msgstr "Karte gespeichert."
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1260
 msgid "Could not save the map: $msg"
 msgstr "Die Karte konnte leider nicht gespeichert werden: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1275
 msgid "Error: Illegal character in filename."
 msgstr "Fehler: Ungültiges Zeichen im Dateinamen"
 
@@ -159,6 +147,15 @@ msgstr "VG"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "HG"
+
+#~ msgid "File"
+#~ msgstr "Datei"
+
+#~ msgid "Edit"
+#~ msgstr "Bearbeiten"
+
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
 
 #~ msgid "Player "
 #~ msgstr "Spieler"
