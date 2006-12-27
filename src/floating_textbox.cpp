@@ -127,7 +127,7 @@ namespace gui{
 				semiword.assign(text,last_space+1,text.size());
 			}
 
-			std::vector<std::string> matches;
+			std::set<std::string> 		matches;
 			std::string best_match = semiword;
 
 			for(size_t n = 0; n != teams.size(); ++n) {
@@ -140,28 +140,32 @@ namespace gui{
 					if(matches.empty()) {
 						best_match = name;
 					} else {
+						// Testing if this name already isn't in set
+						//   Because some players can control more sides
+						if (matches.count(name) >= 1){
+							continue;
+						}
 						int j= 0;;
 						while(best_match[j] == name[j]) j++;
 						best_match.erase(best_match.begin()+j,best_match.end());
 					}
-					matches.push_back(name);
+					matches.insert(name);
 				}
 			}
-
-			if(matches.empty()) {
-				const std::set<std::string>& observers = gui.observers();
-				for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
-					if( i->size() >= semiword.size() &&
-							std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
-						if(matches.empty()) {
-							best_match = *i;
-						} else {
-							int j = 0;
-							while(toupper(best_match[j]) == toupper((*i)[j])) j++;
-							best_match.erase(best_match.begin()+j,best_match.end());
-						}
-						matches.push_back(*i);
+			
+			// Searching in observers list
+			const std::set<std::string>& observers = gui.observers();
+			for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
+				if( i->size() >= semiword.size() &&
+						std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
+					if(matches.empty()) {
+						best_match = *i;
+					} else {
+						int j = 0;
+						while(toupper(best_match[j]) == toupper((*i)[j])) j++;
+						best_match.erase(best_match.begin()+j,best_match.end());
 					}
+					matches.insert(*i);
 				}
 			}
 
@@ -172,7 +176,7 @@ namespace gui{
 					text.append(add);
 				} else {
 					std::string completion_list;
-					std::vector<std::string>::iterator it;
+					std::set<std::string>::iterator it;
 					for(it =matches.begin();it!=matches.end();it++) {
 						completion_list += " ";
 						completion_list += *it;
