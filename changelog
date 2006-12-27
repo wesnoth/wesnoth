@@ -1,6 +1,6 @@
 Version 1.3-svn:
- * editor
-   * allow maps to be loaded from scenario files and written back to them
+ * Campaignd
+   * first argument is number of threads to use, defaults to 5
  * campaigns
    * Heir to the Throne
      * removed Mountain Pass and Valley of Statues from the repository
@@ -8,6 +8,8 @@ Version 1.3-svn:
    * The South Guard
      * Proven by the Sword: tell Deoran to go to Westin if the citadel is
       secured (fixes #7360)
+ * editor
+   * allow maps to be loaded from scenario files and written back to them
  * graphics
    * fixed terrain selection probabilites (patch #617)
    * stoned units do not use a separate cache
@@ -15,13 +17,26 @@ Version 1.3-svn:
    * star shaped "ellipses" for leaders and hero units
    * item graphic improvements including animate-able campfire.
    * terrain
-      * new chasm-like lava transitions
-      * special transitions between lava, chasm, and dwarvish castle
-      * modified cave-wall graphics that avoid the glitches with chasms to the north.
-      * minor terrain improvements in grassland, savannah, and sand.
-      * added peaks to the impassable mountains
- * multiplayer maps:
-   * new multiplayer maps: The Manzivan Traps
+     * added peaks to the impassable mountains
+   * unit art
+     * added a recruit animation for Skeleton
+ * language and i18n:
+   * new/updated man pages:
+   * updated translations: Italian
+ * multiplayer
+   * game management
+     * client now tells the server if a game ended in victory or defeat
+     * configurable castle size for random map generator (patch #598, FR #3232)
+   * scenarios
+     * scenarios can set faction, recruit, leader, and some other initial settings
+       previously ignored in multiplayer
+   * maps:
+     * new multiplayer maps: The Manzivan Traps
+     * revised maps: Blitz
+ * Python AI
+   * Added various input validations
+   * Set Python errors upon error
+   * added support for optipng optimization in the compilation process
  * units:
    * balancing changes:
      * increased the HP of the Longbowman from 45 to 51
@@ -42,11 +57,6 @@ Version 1.3-svn:
      * healthy (+3HP, +4 rest healing), fearless (ignore unfavorable ToD)
    * new units
      * added the Armageddon Drake (not used in any mainline eras)
-   * unit art
-     * all new wose graphics
-     * new mainline troll graphics
-     * various animations and many unit improvements
-     * added a recruit animation for Skeleton
  * user interface
    * use "Save Replay" instead of "Save Game" when asking to save a replay (bug #7256)
    * fix enemy Gold show twice in debug mode in status table (bug #6895)
@@ -112,27 +122,305 @@ Version 1.3-svn:
    * the filtered unit can be accessed in SUF using $_filtered_unit
    * the primary unit can be accessed in filter using $_primary_unit
    * the secondary unit can be accessed in filter using $_secondary_unit
- * multiplayer game management
-   * client now tells the server if a game ended in victory or defeat
-   * configurable castle size for random map generator (patch #598, FR #3232)
- * multiplayer scenarios
-   * scenarios can set faction, recruit, leader, and some other initial settings
-     previously ignored in multiplayer
- * language and i18n:
-   * new manpages: Czech, Dutch, English (GB), French, Italian,
-     Portuguese (Brazil), Japanese, Russian, Slovak.
-   * updated manpages: German, Swedish.
-   * removed manpages (outdated): Hungarian.
- * other:
+ * misc:
    * --validcache runtime switch to force assumption that cache is valid
    * add two new debug command set_var and show_var to check variables within
-   the game easily
- * Campaignd
-   * first argument is number of threads to use, defaults to 5
+     the game easily
+
+Version 1.2:
+ * campaigns:
+   * Two Brothers:
+     * updated portraits for Arne nad Bjarn
+   * Under the Burning Suns:
+     * changed some maps to fix glitches
+     * fixed some image paths
+     * new naga hunter portrait from Ranger M
+     * uses the new lava transitions
+ * graphics:
+   * terrain:
+     * new ice transition
+     * modified swamp color
+   * units:
+     * new team-colored base-frames: grand marshal, human assassin, sergeant
+     * halos for elvish shaman line attacks
+     * new lightning bolt for Delfador
+     * new fireball attack
+     * new attack icons for wose crush and troll hammer
+   * misc:
+     * new icons for preferences
+     * updated hex grid
+ * language and i18n:
+   * new man pages: Russian
+   * updated translations: Catalan, Dutch, French, German, Greek, Italian,
+     Norwegian, Russian, Slovenian
+   * updated DejaVuSans font to 2.13
+ * multiplayer maps:
+   * revised maps: Blitz, Charge, Den of Onis, Hornshark Island, 4p Morituri,
+     Meteor Lake, Lagoon
+ * multiplayer
+   * fixed some automove bugs (bug #7494 and bug #7251)
+   * fixed passing controller in mp campaign (bug #7936)
+   * added help strings so that long map names can be read from the MP Create
+     screen
+   * used small bold text for "Load Game..." item
+   * support added for allow_new_game=no (for MP Campaigns)
+ * misc:
+   * fixed the AI usage of attack_weight (bug #7953)
+   * the displayed terrain now has a space before the opening bracket
+   * fixed a crash when image is missing (patch #647, thanks to pauli)
+   * fixed a crash when attacking a sea serpent (bug #8075) (patch #648)
+
+Version 1.1.14:
+ * campaigns:
+   * Eastern Invasion:
+     * added a starting position for the seventh enemy (bug #7918)
+   * Heir to the Throne:
+     * fixed the signpost image in the narration (patch #638)
+   * The Rise of Wesnoth:
+     * fixed bad glitches in the map Rise of Wesnoth
+   * The South Guard:
+     * made it possible to finish "Into the Depths" even without enough gold
+       to pay the trolls
+ * graphics:
+   * terrain:
+     * new special transition between chasm and dwarvish castle
+     * new lava transitions (looks like completely new lava)
+     * fixed glitches with impassable moutains at the edges of maps
+     * resolved all glitches with cave walls
+   * units:
+     * new teamcolored baseframes: Halberdier, Heavy Infanfantry, Pikeman, 
+       Shocktrooper, Siegetrooper
+     * new baseframe: Yeti
+     * some new skulls for skeleton units
+   * misc:
+     * new attack icon for wooden sword
+     * new dwarven gate
+     * new portrait for Asheviere
+     * new, better looking hexgrid
+ * language and i18n:
+   * switch back to non utf8 locale definition to fix some problems,
+     --enable-dummy-locales should work again
+   * updated man-pages: French, German
+   * updated translations: Czech, Esperanto, French, Greek, Italian, Russian
+ * multiplayer maps:
+    * revised multiplayer maps: 3p Morituri, 4p Morituri, Blue Water Province, 
+      Den of Onis, Hexcake, Isar's Cross, Merkwuerdigliebe, Meteor Lake, 
+      Sablestone Delta, Sulla's Ruins
+ * misc:
+   * fixed a crash in the recall event_handler
+   * fixed game crashes during AI turn (#7988)
+   * fixed graphic glitch with large units
+   * fixed sighted event with delay shroud during move&attack and also only
+     move
+   * add script to strip ICC profiles from images
+   * modified wesnoth-pngcrush to use optipng instead of pngrewrite (a lot
+     slower than the old script but good compression results)
+
+Version 1.1.13:
+ * graphics
+   * updated races to support team color: elves, goblins, lizards, ogres, orcs,
+     trolls, woses, many dwarves, many humans, many undead, and galleons
+   * new baseframes: elvish shaman line, troll whelp line, wose line, galleons,
+     ogres, many other units
+   * new or improved death, attack, and defence animations for various units
+   * new attack icon: ballista
+   * terrain
+      * various minor terrain and item improvements
+      * resolved the worst glitch between chasm and cave-walls.
+   * additional star-shaped ellipses for designating special units.
+ * language and i18n:
+   * updated manpages: French
+   * updated manual: Italian
+   * updated translations: Czech, Esperanto, French, German, Italian
+   * updated DejaVuSans font to 2.12
+   * reworked language files
+   * added descriptions to the weapons of some campaign units to make sure they
+     are correctly translated
+ * multiplayer maps:
+    * revised multiplayer maps: Charge, Hamlets, Hornshark Island, Silverhead 
+      Crossing, Sulla's Ruins, 3p Morituri
+ * misc bugfixes:
+   * several minor bugs
+   * other bugs people did forget to mention that they were fixed
+   * unit frames are now centered instead of aligned on upper left corner
+
+Version 1.1.12:
+ * user interface
+   * move chat line slider bottom (Multiplayer options)
+   * display started game with vacant slot with yellow font
+   * fix allow to move other player's (bug #6451)
+ * sound
+   * add sample_rate option (read only) to solve cracking sound
+     on some sound card (Intel HDA, cmipci, ...) (bug #7507)
+ * graphics
+   * new portraits: Human Bowman
+   * unit animations: Elven Hero's melee attack, Dragonguard, Saurian mages,
+     Young Ogres, Troll Warrior, Troll Rocklobber
+   * team color: Trolls, Woses, Orcish Assassin, Thief, Rogue and other
+     outlaws
+   * new/modified attack icons: dark magic, drake, javelins, ...
+   * other: new sceptre
+ * multiplayer
+   * send a server message each time side controller change (fr #7358)
+   * fixed green game bugs
+   * fixed new host doesn't get control when original host left (bug #7351)
+   * fixed crash when transfering a side (bug #7346, bug #7455)
+   * fixed message bell sounding even on ignored messages (bug #7378)
+ * language and i18n:
+   * new manpages: Dutch
+   * updated translations: Esperanto, French, German, Greek, Italian, Norwegian,
+     Japanese, Polish, Slovenian, Turkish, Valencian
+   * updated MANUAL: Czech, German
+   * updated DejaVuSans font to 2.11
+ * multiplayer maps:
+    * revised multiplayer maps: Hamlets, Meteor Lake, Sulla's Ruins, Silverhead
+      Crossing, Isar's Cross, Paths of Daggers
+ * engine changes
+    * fixed the terrain defense alias to be used properly
+    * fixed aggression calculations (bug #7432)
+ * misc bugfixes
+   * fixed malfunctioned sighted event during shroud (bug #4398)
+   * fixed stats in replay counted not from 0 (bug #7245)
+   * fixed replay end showing scenario objectives (bug #6937)
+
+Version 1.1.11:
+ * multiplayer
+   * fix no vacant slots in MP lobby for reloaded game (bug #7286)
+   * fix transfering control (bug #6577, bug #7046)
+   * fix Computer vs. Computer odd side effects (bug #7156)
+ * user interface
+   * fix wrong turn number in multiplayer lobby with re-loaded game (bug #7229)
+   * fix graphical glitches when sending a single '*' message (bug #7197)
+   * fix blue orbs when given control of another side (bug #6352)
+   * fix program freezed when campaign server is unreachable (#bug #6291)
  * Python AI
-   * Added various input validations
-   * Set Python errors upon error
-   * added support for optipng optimization in the compilation process
+   * there is now wesnoth.get_version()
+ * WML engine
+   * [event]s can now be written also inside [era]s (the [event]s are included
+     in every scenario played using that era)
+   * complex missiles frames are now in macros
+ * language and i18n:
+   * updated translations: Bulgarian, Catalan, Dutch, French, German, Italian,
+     Japanese, Russian, Spanish, Swedish
+   * updated MANUAL: Japanese, Swedish
+
+Version 1.1.10:
+ * campaigns:
+   * Heir to the Throne
+     * made it a lot harder to kill Li'sar in Ford of Abez by giving her
+       reinforcements more often
+   * The South Guard
+     * Animation for Deoran's Mace attack (from special AMLA)
+ * language and i18n:
+    * new translations: Valencia
+    * updated translations: Czech, English (British), Finnish, German, Italian,
+      Japanese, Polish, Portuguese (Brazil), Slovak, Serbian, Swedish
+    * new or updated man pages: Czech, English (British), French, German,
+      Italian, Japanese, Portuguese (Brazil), Slovak, Swedish
+    * removed (outdated) man pages: Hungarian
+    * updated MANUAL: Swedish
+ * multiplayer maps:
+   * revised multiplayer maps: Den of Onis, Hamlets, Meteor Lake, Sablestone
+     Delta, Island of the Horatii, Castle Hopping Isle, Siege Castles, King of
+     the Hill, Loris River, Forest of Fear, Waterloo Sunset, Merkwuerdigliebe
+   * fixed the leader lists in Wesbowl to match current factions
+ * multiplayer
+   * scenarios can set faction, recruit, leader, and some other initial settings
+     previously ignored in multiplayer
+ * WML engine
+   * now "ai turn" events are fired for all AIs (#6738)
+   * recruitment_pattern inside [ai] can now change mid-scenario (#6669)
+ * Graphics:
+   * New dwarven castle
+   * New Swamp overlay tiles
+ * Python AI
+   * there is now unit.stoned
+
+Version 1.1.9:
+ * campaigns
+   * Heir to the Throne
+     * fixed gold typo in Dwarven Doors (#6481)
+     * Isle of the Damned: removed merman recall on HARD
+   * Two Brothers
+     * fixed showing the objective "kill the mage to get the key" if you
+       already obtained the key (#6704)
+ * multiplayer maps:
+   * revised multiplayer maps: Sablestone Delta, Den of Onis
+ * language and i18n:
+   * updated translations: Dutch, Esperanto, Finnish, French, German, Italian,
+     Japanese, Norwegian, Polish, Russian, Serbian, Slovak, Slovenian, Spanish
+   * new manual: Japanese
+   * updated manual: Portuguese (Brazil)
+ * units:
+   * balancing changes:
+     * removed Necrophage from random_leader
+   * added profile key to female thief to prevent use of male image
+ * user interface
+   * changed the hotkey for 'end turn' from 'alt+space' to 'ctrl/cmd+space'
+     because it interferes with several common window managers
+   * changed the hotkey for 'repeat recruit' from 'ctrl+shift+r' to
+     'ctrl+alt+r' since shift toggles accelerated mode and produced an
+     animation glitch with this hotkey; this needs to be considered for
+     future hotkey changes/additions (see bug #6312)
+ * misc
+   * fixed --with-desktopdir and --with-icondir, it still needs --with-kde or
+     --with-gnome (#6499)
+   * correct handling of UTF8 filenames under windows
+   * multiplayer game management: client now tells the server if it ended in
+     victory or defeat
+
+Version 1.1.8:
+ * campaigns
+   * Eastern Invasion:
+     * replaced unit "Lord" by "General" (#6132)
+   * The South Guard :
+     * fixed a few broken image paths
+     * scenario 2 :
+       * made the enemy leader water-phobic, so he won't charge fishes
+       * moved away a footpad so he won't steal the keep at turn #1
+     * Jarek no longer acts loyally (#6408)
+   * Heir to the Throne
+     * fixed fire sword that can't be picked up (#6234)
+     * increased income for Snow Plains enemy
+     * removed obsolete maps
+     * Dwarven Doors balancing tweak: AI gets more income, less gold
+     * Home of the North Elves: only need to resist one turn, not all turns
+   * Under the Burning Suns:
+     * scenario 3: Undead leaders can't move on "very hard" difficulty
+   * The Rise of Wesnoth
+     * fixed several more portrait issues
+     * standardized "speaker" usage in messages
+     * removed recall of knights in underground scenarios
+     * added hero icon to Lt Aethyr in Clearwater Port
+     * fixed missing galleon images
+     * fixed missing story image in Rough Landing
+     * fixed missing music in the last scenario
+ * graphics
+   * new attack icons: Dragonstaff, Drake Flaming Claws, Faerie Fire, Human
+     Fist, Scimitar, Whip
+ * language and i18n:
+   * updated translations: British English, Catalan, Czech, Dutch, Esperanto,
+     Finnish, French, German, Hungarian, Italian, Japanese, Latin, Norwegian,
+     Polish, Portuguese (Brazil), Russian, Slovak, Slovenian, Spanish, Swedish
+   * updated man pages: Swedish, German
+   * updated manual: Italian
+ * multiplayer maps:
+   * revised multiplayer maps: Amohsad Caldera, Blitz, Caves of the Basilisk,
+     Charge, Den of Onis, Hamlets, Hornshark Island, 4p Moritori,
+     Merkwuerdigliebe, Sablestone Delta, Silverhead Crossing
+ * music & sound
+   * new or improved sounds: elf hit, yeti hit & die, magic missiles, poison,
+     stoned, gryphon hit & die & shriek, orc hit & die, small orc hit & die
+ * engine changes
+   * added support for proper healing animations
+   * team colouring now applied correctly everywhere, such as in recruit dialogs
+   * new (optional) image path syntax to allow team colouring of images
+     anywhere, for example in campaign icons
+ * AmigaOS4 support (patch #564)
+ * user interface
+   * disable inactive sliders instead of hiding them
+   * sliders can be adjusted with keyboard left and right
+   * improved the parsing speed of the help dialog
 
 Version 1.1.7:
  * campaigns
