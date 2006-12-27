@@ -531,6 +531,7 @@ config connect::side::get_config() const
 		}
 		// res["team"] = lexical_cast<std::string>(team_);
 		res["team_name"] = parent_->team_names_[team_];
+		res["user_team_name"] = parent_->user_team_names_[team_];
 		res["colour"] = lexical_cast<std::string>(colour_ + 1);
 		res["gold"] = lexical_cast<std::string>(gold_);
 		res["income"] = lexical_cast<std::string>(income_);
@@ -577,6 +578,7 @@ config connect::side::get_config() const
 		trimmed["controller"] = "";
 		trimmed["description"] = "";
 		trimmed["team_name"] = "";
+		trimmed["user_team_name"] = "";
 		trimmed["colour"] = "";
 		trimmed["gold"] = "";
 		trimmed["income"] = "";
@@ -1153,14 +1155,21 @@ void connect::lists_init()
 		for(sd = sides.first; sd != sides.second; ++sd) {
 			const int side_num = sd - sides.first + 1;
 			t_string& team_name = (**sd)["team_name"];
+			t_string& user_team_name = (**sd)["user_team_name"];
 
 			if(team_name.empty())
 				team_name = lexical_cast<std::string>(side_num);
 
+			if(user_team_name.empty())
+			{
+				user_team_name = team_name;
+			}
+			
 			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), team_names_.end(), team_name);
 			if(itor == team_names_.end()) {
 				team_names_.push_back(team_name);
-				player_teams_.push_back(team_name.str());
+				user_team_names_.push_back(user_team_name);
+				player_teams_.push_back(user_team_name.str());
 			}
 		}
 	} else {
@@ -1171,16 +1180,18 @@ void connect::lists_init()
 
 			if(team_name.empty())
 				team_name = side_num;
-
+			
 			std::vector<std::string>::const_iterator itor = std::find(team_names.begin(), team_names.end(), team_name);
 			if(itor == team_names.end()) {
 				team_names.push_back(team_name);
+				user_team_names_.push_back(team_name);
 				team_name = lexical_cast<std::string>(team_names.size());
 			} else {
 				team_name = lexical_cast<std::string>(itor - team_names.begin() + 1);
 			}
 
 			team_names_.push_back(side_num);
+			user_team_names_.push_back(side_num);
 			player_teams_.push_back(team_prefix_ + side_num);
 		}
 	}
