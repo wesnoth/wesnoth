@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-26 20:21+0100\n"
+"POT-Creation-Date: 2006-12-27 19:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2424,7 +2424,7 @@ msgstr ""
 #: data/help.cfg:247
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
+"Basic Strategy, or familiarize yourself with <ref>dst=traits text=Traits</"
 "ref> and <ref>dst=abilities text=Abilities</ref>, but you now know "
 "everything you need to know to play the Heir to the Throne campaign. Have "
 "fun, and good luck!"
@@ -2576,7 +2576,7 @@ msgid ""
 "\n"
 "Undead units generally have 'Undead' as their only trait. Since Undead units "
 "are the bodies of the dead, risen to fight again, poison has no effect upon "
-"them. This can make them invaluable in dealing with foes who use poison in "
+"them. This can make them invaluable in dealing with foes that use poison in "
 "conjunction with their attacks."
 msgstr ""
 
@@ -2877,7 +2877,7 @@ msgstr ""
 #: data/help.cfg:509
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
-"units, even cavalry, have any easy time navigating villages, and most units "
+"units, even cavalry, have an easy time navigating villages, and most units "
 "gain a defensive bonus from being stationed in a village. Villages allow "
 "units the resources to clean and tend to their wounds, which allows any unit "
 "stationed therein to heal eight hitpoints each turn, or to be cured of "
@@ -3351,7 +3351,7 @@ msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
 "the foul creatures, many of his fellows were killed, but he fought "
-"valiantly, slaying many a foe. But alas! The foul Basilik turned him to "
+"valiantly, slaying many a foe. But alas! The foul Basilisk turned him to "
 "stone even as he slew the last orc. Now all that is left is a stark reminder "
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
@@ -3378,11 +3378,11 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:150
 msgid ""
-"This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
-"fabulous treasure that had been lost in these watery caves- a spear whose "
-"head was said to have been fashioned from the tooth of Chak'kso Ney'yks, an "
-"Elder Basilisk slain long ago by the Elvish hero, Eloralduil. According to "
-"the legend, the weapon rested somewhere on the bottom of this very lake "
+"This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
+"treasure that had been lost in these watery caves- a spear whose head was "
+"said to have been fashioned from the tooth of Chak'kso Ney'yks, an Elder "
+"Basilisk slain long ago by the Elvish hero, Eloralduil. According to the "
+"legend, the weapon rested somewhere on the bottom of this very lake "
 "(Ruaskkolin Lake, named for a well-known Sea Serpent who made it his home). "
 "Having prepared himself for battle with the Serpent, Rilhon met with two "
 "rather large surprises. The first was the petrified form of Ruaskkolin the "
@@ -3874,7 +3874,7 @@ msgstr ""
 msgid ""
 "A very small 3v3v3map.  A 60sec timer is recommended due to the large number "
 "of players.  The teams are players 159 v 267 v 348 (north v southeast v "
-"southwest).  There are very few vilages per player, so 3gpv is also "
+"southwest).  There are very few villages per player, so 3gpv is also "
 "recommended."
 msgstr ""
 
@@ -4644,7 +4644,7 @@ msgstr ""
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them to "
-"avoid it being sunk from overloading..."
+"avoid being sunk from overloading..."
 msgstr ""
 
 #: data/units/Boat_Pirate_Galleon.cfg:19
@@ -7847,13 +7847,13 @@ msgstr ""
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 
-#: src/game.cpp:668 src/multiplayer_connect.cpp:1261
+#: src/game.cpp:668 src/multiplayer_connect.cpp:1272
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1246
+#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1257
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
@@ -8105,11 +8105,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:746
+#: src/game_events.cpp:748
 msgid "Victory:"
 msgstr ""
 
-#: src/game_events.cpp:750
+#: src/game_events.cpp:752
 msgid "Defeat:"
 msgstr ""
 
@@ -8354,7 +8354,7 @@ msgid "Leader"
 msgstr ""
 
 #: src/menu_events.cpp:298 src/menu_events.cpp:309
-#: src/multiplayer_connect.cpp:751
+#: src/multiplayer_connect.cpp:753
 msgid "Gold"
 msgstr ""
 
@@ -8366,7 +8366,7 @@ msgstr ""
 msgid "Upkeep"
 msgstr ""
 
-#: src/menu_events.cpp:302 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:302 src/multiplayer_connect.cpp:754
 #: src/multiplayer_wait.cpp:422
 msgid "Income"
 msgstr ""
@@ -8695,83 +8695,83 @@ msgstr ""
 msgid "(Empty slot)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:703
+#: src/multiplayer_connect.cpp:705
 msgid "No non-random sides in the current era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:725
+#: src/multiplayer_connect.cpp:727
 msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:734 src/multiplayer_lobby.cpp:480
+#: src/multiplayer_connect.cpp:736 src/multiplayer_lobby.cpp:480
 #: src/multiplayer_wait.cpp:154
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:740 src/multiplayer_connect.cpp:749
+#: src/multiplayer_connect.cpp:742 src/multiplayer_connect.cpp:751
 msgid "Team"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:747
+#: src/multiplayer_connect.cpp:749
 msgid "Player/Type"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:748
+#: src/multiplayer_connect.cpp:750
 msgid "Faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:750
+#: src/multiplayer_connect.cpp:752
 msgid "Color"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:754
+#: src/multiplayer_connect.cpp:756
 msgid "Computer vs Computer"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:755
+#: src/multiplayer_connect.cpp:757
 msgid "I'm Ready"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:70
+#: src/multiplayer_connect.cpp:758 src/multiplayer_create.cpp:70
 #: src/multiplayer_wait.cpp:156
 msgid "Cancel"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:784
+#: src/multiplayer_connect.cpp:786
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1150
+#: src/multiplayer_connect.cpp:1152
 msgid "Network Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1151
+#: src/multiplayer_connect.cpp:1153
 msgid "Local Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1152
+#: src/multiplayer_connect.cpp:1154
 msgid "Computer Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1153
+#: src/multiplayer_connect.cpp:1155
 msgid "Empty"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1253
+#: src/multiplayer_connect.cpp:1264
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1303
+#: src/multiplayer_connect.cpp:1314
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1324
+#: src/multiplayer_connect.cpp:1335
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1360
+#: src/multiplayer_connect.cpp:1371
 msgid "Waiting for players to join..."
 msgstr ""
 
