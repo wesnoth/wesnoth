@@ -31,6 +31,7 @@ bool npot_allowed()
 	npot = version_2;
 	// directly test for NPOT extension
 	if (std::strstr(supported, "GL_ARB_texture_non_power_of_two")) npot = true;
+	if (std::strstr(supported, "GL_EXT_texture_rectangle")) npot = true;
 
 	if (npot) {
 		// Use some heuristic to make sure it is HW accelerated. Might need some
@@ -40,7 +41,7 @@ bool npot_allowed()
 				!std::strstr(supported, "NV_vertex_program3"))
 					npot = false;
 			else if (std::strstr(vendor, "ATI Technologies"))
-				if (!std::strstr(supported, "GL_ARB_texture_non_power_of_two"))
+				if (!std::strstr(supported, "GL_ARB_texture_non_power_of_two") && !std::strstr(supported, "GL_EXT_texture_rectangle"))
 					npot = false;
 		}
 	}
