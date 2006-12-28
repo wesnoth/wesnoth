@@ -92,7 +92,7 @@ namespace t_translation {
 
 	/**
 	 * converts a terrain string to a number
-	 * @param terrain 			the terrain with an optional number
+	 * @param str 				the terrain string with an optional number
 	 * 
 	 * @param start_position	returns the start_position, the caller should set it on -1
 	 * 					    	and it's only changed it there is a starting position found
@@ -108,10 +108,13 @@ namespace t_translation {
 	 * @param terrain				the terrain number to convert
 	 * @param starting_position		the starting position, if smaller than 0 it's
 	 * 								ignored else it's written
-	 * @returnn						the converted string, if no starting position 
+	 * @param min_size				padds the results with spaces if required untill the 
+	 * 								result has a length of min_size
+	 * @return						the converted string, if no starting position 
 	 * 								given it's padded to 4 chars else padded to 7 chars
 	 */
 	std::string number_to_string_(t_letter terrain, const int start_position = -1);
+	std::string number_to_string_(t_letter terrain, const int start_position, const int min_size);
 
 	/**
 	 * converts a terrain string to a letter for the builder the translation 
@@ -377,7 +380,7 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 			if(x != 0) {
 				str << ", ";
 			}
-			str << number_to_string_(map[x][y], starting_position);
+			str << number_to_string_(map[x][y], starting_position, 7);
 		}
 
 		str << "\n";
@@ -902,9 +905,16 @@ std::string number_to_string_(t_letter terrain, const int start_position)
 		}
 	}
 
-	// make sure the string gets the proper size
-	result.resize(7, ' ');
-	
+	return result;
+}
+
+std::string number_to_string_(t_letter terrain, const int start_position, const int min_size)
+{
+	std::string result = number_to_string_(terrain, start_position);
+	if(result.size() < min_size) {
+		result.resize(min_size);
+	}
+
 	return result;
 }
 

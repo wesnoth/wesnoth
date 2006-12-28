@@ -377,11 +377,7 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc, 
 		return itor->second*windiness;
 	}
 
-//FIXME MdW test this modification	
-//	static std::string terrain(1,'x'); 
-//	terrain[0] = c;
 	static std::string terrain = t_translation::write_letter(c);
-
 	const config* const child = cfg_.find_child("road_cost","terrain",terrain);
 	double res = getNoPathValue();
 	if(child != NULL) {
@@ -495,7 +491,7 @@ gamemap::location place_village(const t_translation::t_map& map,
 			continue;
 		}
 
-		const std::string str(1,map[i->x][i->y]);
+		const std::string str = t_translation::write_letter(map[i->x][i->y]);
 		const config* const child = cfg.find_child("village","terrain",str);
 		if(child != NULL) {
 			size_t rating = atoi((*child)["rating"].c_str());
@@ -509,7 +505,7 @@ gamemap::location place_village(const t_translation::t_map& map,
 				const t_translation::t_letter t = map[adj[n].x][adj[n].y];
 				const t_translation::t_list& adjacent_liked = 
 					t_translation::read_list((*child)["adjacent_liked"], 
-							0, t_translation::T_FORMAT_AUTO);
+							0, t_translation::T_FORMAT_STRING);
 
 				rating += std::count(adjacent_liked.begin(),adjacent_liked.end(),t);
 			}
@@ -580,7 +576,7 @@ terrain_height_mapper::terrain_height_mapper(const config& cfg) :
 {
 	const std::string& terrain = cfg["terrain"];
 	if(terrain != "") {
-		to = t_translation::read_letter(terrain, t_translation::T_FORMAT_AUTO);
+		to = t_translation::read_letter(terrain, t_translation::T_FORMAT_STRING);
 	}
 }
 
@@ -610,7 +606,7 @@ private:
 
 terrain_converter::terrain_converter(const config& cfg) : min_temp(-1), 
 	  max_temp(-1), min_height(-1), max_height(-1), 
-	  from(t_translation::read_list(cfg["from"],0 , t_translation::T_FORMAT_AUTO)), 
+	  from(t_translation::read_list(cfg["from"],0 , t_translation::T_FORMAT_STRING)), 
 	  to(t_translation::NONE_TERRAIN)
 {
 	min_temp = lexical_cast_default<int>(cfg["min_temperature"],-100000);
@@ -620,7 +616,7 @@ terrain_converter::terrain_converter(const config& cfg) : min_temp(-1),
 
 	const std::string& to_str = cfg["to"];
 	if(to_str != "") {
-		to = t_translation::read_letter(to_str, t_translation::T_FORMAT_AUTO);
+		to = t_translation::read_letter(to_str, t_translation::T_FORMAT_STRING);
 	}
 }
 
@@ -658,7 +654,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	} 
 
 	const t_translation::t_letter grassland = 
-		t_translation::read_letter(flatland, t_translation::T_FORMAT_AUTO);
+		t_translation::read_letter(flatland, t_translation::T_FORMAT_STRING);
 
 	//we want to generate a map that is 9 times bigger than the
 	//actual size desired. Only the middle part of the map will be
@@ -854,7 +850,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//terrains that the castle may appear on.
 	const t_translation::t_list list = 
 		t_translation::read_list((*castle_config)["valid_terrain"],
-				0, t_translation::T_FORMAT_AUTO);
+				0, t_translation::T_FORMAT_STRING);
 
 	const is_valid_terrain terrain_tester(terrain, list);
 
@@ -1019,7 +1015,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						const std::vector<std::string> items = utils::split(convert_to_bridge);
 						if(size_t(direction) < items.size() && items[direction].empty() == false) {
 							terrain[x][y] = t_translation::read_letter(items[direction], 
-									t_translation::T_FORMAT_AUTO);
+									t_translation::T_FORMAT_STRING);
 						}
 
 						continue;
@@ -1032,7 +1028,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				const std::string& convert_to = (*child)["convert_to"];
 				if(convert_to.empty() == false) {
 					const t_translation::t_letter letter = 
-						t_translation::read_letter(convert_to, t_translation::T_FORMAT_AUTO);
+						t_translation::read_letter(convert_to, t_translation::T_FORMAT_STRING);
 					if(labels != NULL && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
 						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
 						name_count = 0;
@@ -1059,6 +1055,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const int player = c - castles.begin() + 1;
 		const struct t_translation::coordinate coord = {x, y};
 		starting_positions.insert(std::pair<int, t_translation::coordinate>(player, coord));
+		terrain[x][y] = t_translation::HUMAN_KEEP;
 		
 		const int castles[13][2] = {
 		  {-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {0, 1}, {-1, 1},
@@ -1128,7 +1125,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						const std::string& convert_to = (*child)["convert_to"];
 						if(convert_to != "") {
 							terrain[res.x][res.y] = t_translation::read_letter(convert_to, 
-									t_translation::T_FORMAT_AUTO);
+									t_translation::T_FORMAT_STRING);
 
 							villages.insert(res);
 
