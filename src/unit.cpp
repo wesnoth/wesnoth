@@ -3189,11 +3189,17 @@ void unit::apply_modifications()
 	is_healthy_ = false;
 	config::child_list const &mods = modifications_.get_children("trait");
 	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
-		t_string const &name = (**j)["name"];
 		is_fearless_ = is_fearless_ || (**j)["id"] == "fearless";
 		is_healthy_ = is_healthy_ || (**j)["id"] == "healthy";
-		if (!name.empty())
-			traits.push_back(name);
+		const std::string gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
+		t_string const &gender_specific_name = (**j)[gender_string];
+		if (!gender_specific_name.empty()) {
+			traits.push_back(gender_specific_name);
+		} else {
+			t_string const &name = (**j)["name"];
+			if (!name.empty())
+				traits.push_back(name);
+		}
 	}
 
 	std::vector< t_string >::iterator k = traits.begin(), k_end = traits.end();
