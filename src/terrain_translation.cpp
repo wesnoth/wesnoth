@@ -239,10 +239,6 @@ std::string write_list(const t_list& list)
 	return result.str();
 }
 
-//FIXME MdW we fail on a map with 1 line
-//also check builder map for this problem
-//only tested the new format and it end in an infinite loop
-//test code in Weshack
 t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_positions)
 {
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
@@ -318,14 +314,14 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		result[x][y] = tile;
 
 		//evaluate the separator
-		if(utils::isnewline(str[pos_separator])) {
+		if(utils::isnewline(str[pos_separator]) || pos_separator == std::string::npos) {
 			// the first line we set the with the other lines we check the width
-			if(y == 0 ) { 
+			if(y == 0) { 
 				// x contains the offset in the map
 				width = x + 1;
 			} else {
 				if((x + 1) != width ) {
-					ERR_G << "Map not a rectangle error occured at line offset " << y << " position offset " << x << "\n"; 
+					ERR_G << "Map not a rectangle error occured at line offset " << y << " position offset " << x << "\n";
 					throw error("Map not a rectangle.");
 				}
 			}
@@ -334,12 +330,19 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 			++y;
 			x = 0;
 			
-			offset =  pos_separator + 1;
-			//skip the following newlines 
-			//FIXME this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
-			while(offset < str.length() && utils::isnewline(str[offset])) {
-				++offset;
-			}
+			// avoid in infinite loop if the last line ends without an EOL
+			if(pos_separator == std::string::npos) {
+				offset = str.length();
+
+			} else {
+			
+				offset =  pos_separator + 1;
+				//skip the following newlines 
+				//FIXME this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
+				while(offset < str.length() && utils::isnewline(str[offset])) {
+					++offset;
+				}
+			} 
 
 		} else {
 			++x;
