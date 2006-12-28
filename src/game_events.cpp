@@ -1731,7 +1731,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 	}
-
+	
 	else if(cmd == "unstore_unit") {
 		wassert(state_of_game != NULL);
 		const config& var = state_of_game->get_variable_cfg(

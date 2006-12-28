@@ -309,6 +309,34 @@ void _set_lobby_joins(bool show)
 		prefs["lobby_joins"] = "no";
 }
 
+bool sort_list()
+{
+	return prefs["sort_list"] != "no";
+}
+
+
+void _set_sort_list(bool sort)
+{
+	if(sort)
+		prefs["sort_list"] = "yes";
+	else
+		prefs["sort_list"] = "no";
+}
+
+bool iconize_list()
+{
+	return prefs["iconize_list"] != "no";
+}
+
+
+void _set_iconize_list(bool sort)
+{
+	if(sort)
+		prefs["iconize_list"] = "yes";
+	else
+		prefs["iconize_list"] = "no";
+}
+
 const std::string& official_network_host()
 {
 	static const std::string host = WESNOTH_DEFAULT_SERVER;

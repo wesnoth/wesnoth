@@ -2388,11 +2388,11 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 {
 	config* cignore;
 	bool ignored = false;
-	if ((cignore = preferences::get_prefs()->child("ignore"))){
+	if ((cignore = preferences::get_prefs()->child("relationship"))){
 		for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
 		i != cignore->values.end(); ++i){
 			 if(speaker == i->first || speaker == "whisper: " + i->first){
-				if (i->second == "yes"){
+				if (i->second == "ignored"){
 					ignored = true;
 				}
 			}

@@ -168,6 +168,16 @@ void set_lobby_joins(bool ison)
 	_set_lobby_joins(ison);
 }
 
+void set_sort_list(bool ison)
+{
+	_set_sort_list(ison);
+}
+
+void set_iconize_list(bool ison)
+{
+	_set_iconize_list(ison);
+}
+
 void set_colour_cursors(bool value)
 {
 	_set_colour_cursors(value);
@@ -206,7 +216,7 @@ private:
 	gui::slider music_slider_, sound_slider_, bell_slider_, scroll_slider_,
 				gamma_slider_, chat_lines_slider_, turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, show_grid_button_,
-	            lobby_minimaps_button_, show_lobby_joins_button_, show_floating_labels_button_, turn_dialog_button_,
+	            lobby_minimaps_button_, show_lobby_joins_button_, sort_list_by_group_button_, iconize_list_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 	            show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
 				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_;
@@ -234,7 +244,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
 	  lobby_minimaps_button_(disp.video(), _("Show Lobby Minimaps"), gui::button::TYPE_CHECK),
-	  show_lobby_joins_button_(disp.video(), _("Show Lobby Joins"), gui::button::TYPE_CHECK),
+	  show_lobby_joins_button_(disp.video(), _("Show Lobby Joins Of Friends"), gui::button::TYPE_CHECK),
+	  sort_list_by_group_button_(disp.video(), _("Sort Lobby List"), gui::button::TYPE_CHECK),
+	  iconize_list_button_(disp.video(), _("Iconize Lobby List"), gui::button::TYPE_CHECK),
 	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
@@ -328,9 +340,15 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	lobby_minimaps_button_.set_check(show_lobby_minimaps());
 	lobby_minimaps_button_.set_help_string(_("Show minimaps in the multiplayer lobby"));
+	
+	sort_list_by_group_button_.set_check(sort_list());
+	sort_list_by_group_button_.set_help_string(_("Sort the player list in the lobby by player groups"));
 
+	iconize_list_button_.set_check(iconize_list());
+	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby."));
+	
 	show_lobby_joins_button_.set_check(lobby_joins());
-	show_lobby_joins_button_.set_help_string(_("Show messages about players joining the multiplayer lobby"));
+	show_lobby_joins_button_.set_help_string(_("Show messages about your friends joining the multiplayer lobby"));
 
 	show_floating_labels_button_.set_check(show_floating_labels());
 	show_floating_labels_button_.set_help_string(_("Show text above a unit when it is hit to display damage inflicted"));
@@ -376,6 +394,8 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&show_ai_moves_button_);
 	h.push_back(&show_grid_button_);
 	h.push_back(&lobby_minimaps_button_);
+	h.push_back(&sort_list_by_group_button_);
+	h.push_back(&iconize_list_button_);
 	h.push_back(&show_lobby_joins_button_);
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
@@ -495,6 +515,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
 	ypos += item_interline; lobby_minimaps_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_lobby_joins_button_.set_location(rect.x, ypos);
+	ypos += item_interline; sort_list_by_group_button_.set_location(rect.x, ypos);
+	ypos += item_interline; iconize_list_button_.set_location(rect.x, ypos);
 
 	//Advanced tab
 	ypos = rect.y + top_border;
@@ -520,6 +542,10 @@ void preferences_dialog::process_event()
 		save_show_lobby_minimaps(lobby_minimaps_button_.checked());
 	if (show_lobby_joins_button_.pressed())
 		set_lobby_joins(show_lobby_joins_button_.checked());
+    if (sort_list_by_group_button_.pressed())
+		set_sort_list(sort_list_by_group_button_.checked());
+    if (iconize_list_button_.pressed())
+		set_iconize_list(iconize_list_button_.checked());
 	if (show_floating_labels_button_.pressed())
 		set_show_floating_labels(show_floating_labels_button_.checked());
 	if (video_mode_button_.pressed())
@@ -691,6 +717,8 @@ void preferences_dialog::set_selection(int index)
 	chat_lines_slider_.hide(hide_multiplayer);
 	chat_timestamp_button_.hide(hide_multiplayer);
 	lobby_minimaps_button_.hide(hide_multiplayer);
+	sort_list_by_group_button_.hide(hide_multiplayer);
+	iconize_list_button_.hide(hide_multiplayer);
 	show_lobby_joins_button_.hide(hide_multiplayer);
 
 	const bool hide_advanced = tab_ != ADVANCED_TAB;
