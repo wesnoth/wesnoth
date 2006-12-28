@@ -8,7 +8,7 @@ src/help.cpp:1459:		//FIXME MdW the changes here seem to compile but they have t
 src/map.cpp:320:		// FIXME MdW think about this part
 src/map.cpp:449:					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
 src/map.cpp:538:	return sizeof(startingPositions_)/sizeof(*startingPositions_); //FIXME MdW this one already has the number of starting positions
-src/map.cpp:586:	// FIXME MdW rewrote the old part, but haven't looked at what it should do
+src/map.cpp:614:		//FIXME MdW this codepath is untested
 src/preferences.cpp:79:	t_translation::t_list terrain; //FIXME MdW geen =
 src/terrain.cpp:21:#include "wassert.hpp" // FIXME MdW only used for the terrain initalization
 src/terrain_translation.cpp:184://	throw error("empty strings not allowed in read_letter"); FIXME MdW evaluate this it aborts the editor

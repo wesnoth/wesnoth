@@ -303,6 +303,8 @@ namespace t_translation {
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 	// The terrain letter is an old letter and will be converted with get_letter
 	void add_translation(const std::string& letter, const t_letter number);
+
+	std::string get_old_letter(const t_letter number);
 #endif	
 
 };

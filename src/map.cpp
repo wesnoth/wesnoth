@@ -574,41 +574,59 @@ const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) cons
 bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, 
 		const gamestatus& game_status, const unit_map& units,bool flat_tod) const
 {
-	const t_translation::t_list& terrain = 
-		t_translation::read_list(cfg["terrain"], 0, t_translation::T_FORMAT_AUTO);
+	/* *
+	 * The abilities use a comma separated list of terrains, this code has been
+	 * used and also needs to be backwards compatible. This should happen 
+	 * independant of the map so added this hack. Obiously it needs to be removed
+	 * as soon as possible.
+	 */
+	const int terrain_format = lexical_cast_default(cfg["terrain_format"], -1);
 
-	const std::string& tod_type = cfg["time_of_day"];
-	const std::string& tod_id = cfg["time_of_day_id"];
-	// Any of these may be a CSV
-	t_translation::t_list terrain_letter(1, get_terrain_info(loc).number());
+/*  enable when the hack is no longer used	
+	if(terrain_format != -1) {
+		std::cerr << "key terrain_format in filter_location is obsolete old format no longer supported";
+	}
+*/	
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE
+	if(terrain_format == 0 || terrain_format == -1) {
+		std::cerr << "Warning deappreciated terrain format in filter_location \n";
 
-	
-	// FIXME MdW rewrote the old part, but haven't looked at what it should do
-	// but some documentation would be nice, not sure whether this function 
-	// still works after the latest modifications
-	if(!terrain.empty()) {
-		// just see who calls us an with which data...
-		std::cerr << ">> gamemap::terrain_matches_filter: terrain = " 
-			<< t_translation::write_list(terrain) << " terrain_letter = "
-			<< t_translation::write_list(terrain_letter) << "\n";
-
-		if(terrain != terrain_letter) {
-			if(std::find(terrain.begin(),terrain.end(),t_translation::COMMA) != terrain.end() &&
-				std::search(terrain.begin(),terrain.end(),
-				terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
-				
-				const t_translation::t_list& vals = 
-					t_translation::read_list(cfg["terrain"], 1, t_translation::T_FORMAT_AUTO);
-
-				if(std::find(vals.begin(),vals.end(),terrain_letter.front()) == vals.end()) {
+		const std::string& terrain = cfg["terrain"];
+		// Any of these may be a CSV
+		std::string terrain_letter;
+		terrain_letter += t_translation::get_old_letter(get_terrain_info(loc).number());
+		if(!terrain.empty() && !terrain_letter.empty()) {
+			if(terrain != terrain_letter) {
+				if(std::find(terrain.begin(),terrain.end(),',') != terrain.end() &&
+					std::search(terrain.begin(),terrain.end(),
+					terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
+					const std::vector<std::string>& vals = utils::split(terrain);
+					if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
+						return false;
+					}
+				} else {
 					return false;
 				}
 			}
-		} else {
-			return false;
 		}
+	} else {
+#endif
+		//FIXME MdW this codepath is untested
+		const t_translation::t_list& terrain = 
+			t_translation::read_list(cfg["terrain"], 0, t_translation::T_FORMAT_STRING);
+		if(! terrain.empty()) {
+
+			const t_translation::t_letter letter = get_terrain_info(loc).number();
+			if(! t_translation::terrain_matches(letter, terrain)) {
+					return false;
+			}
+		}
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	}
+#endif
 	
+	const std::string& tod_type = cfg["time_of_day"];
+	const std::string& tod_id = cfg["time_of_day_id"];
 	static config const dummy_cfg;
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {

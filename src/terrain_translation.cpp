@@ -635,6 +635,18 @@ void add_translation(const std::string& str, const t_letter number)
 		index->second = number;
 	}
 }
+
+std::string get_old_letter(const t_letter number) 
+{
+	std::map<TERRAIN_LETTER, t_letter>::iterator itor = lookup_table_.begin();
+
+	for(; itor !=  lookup_table_.end(); ++itor) {
+		if(itor->second == number) return std::string(1, itor->first);
+	}
+
+	return "";
+	
+}
 #endif
 
 /***************************************************************************************/	
