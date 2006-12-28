@@ -1090,10 +1090,11 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 											//check if unit is not known
 											if (known_units.find(u->first)==known_units.end())
 											{
-												game_events::fire("sighted",u->first,attack_from);
+												game_events::raise("sighted",u->first,attack_from);
 											}
 									 }
 								}
+								game_events::pump();
 								return;
 							}
 						}

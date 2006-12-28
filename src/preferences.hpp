@@ -96,6 +96,12 @@ namespace preferences {
 
 	bool lobby_joins();
 	void _set_lobby_joins(bool show);
+	
+	bool sort_list();
+	void _set_sort_list(bool show);
+	
+	bool iconize_list();
+	void _set_iconize_list(bool show);
 
 	const std::string& official_network_host();
 

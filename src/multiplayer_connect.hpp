@@ -221,6 +221,7 @@ private:
 
 	// team_name list and "Team" prefix
 	std::vector<std::string> team_names_;
+	std::vector<std::string> user_team_names_;
 	const std::string team_prefix_;
 
 	side_list sides_;

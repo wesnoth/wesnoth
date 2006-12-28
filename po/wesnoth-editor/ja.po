@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:32+0200\n"
+"POT-Creation-Date: 2006-12-27 19:39+0100\n"
 "PO-Revision-Date: 2006-08-07 12:27+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: none\n"
@@ -19,137 +19,125 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.9\n"
 
-#: data/themes/editor.cfg:461
-msgid "File"
-msgstr "ファイル"
-
-#: data/themes/editor.cfg:470
-msgid "Edit"
-msgstr "編集"
-
-#: data/themes/editor.cfg:477
-msgid "Settings"
-msgstr "設定"
-
-#: src/editor/editor.cpp:163
+#: src/editor/editor.cpp:235
 msgid "Draw tiles"
 msgstr "タイル描画"
 
-#: src/editor/editor.cpp:165
+#: src/editor/editor.cpp:237
 msgid "Fill"
 msgstr "塗りつぶし"
 
-#: src/editor/editor.cpp:167
+#: src/editor/editor.cpp:239
 msgid "Set player's starting position"
 msgstr "プレイヤーの開始位置を設定"
 
-#: src/editor/editor.cpp:169
+#: src/editor/editor.cpp:241
 msgid "Zoom in"
 msgstr "ズーム・イン"
 
-#: src/editor/editor.cpp:171
+#: src/editor/editor.cpp:243
 msgid "Zoom out"
 msgstr "ズーム・アウト"
 
-#: src/editor/editor.cpp:173
+#: src/editor/editor.cpp:245
 msgid "Undo"
 msgstr "やり直す"
 
-#: src/editor/editor.cpp:175
+#: src/editor/editor.cpp:247
 msgid "Redo"
 msgstr "元に戻す"
 
-#: src/editor/editor.cpp:177
+#: src/editor/editor.cpp:249
 msgid "Zoom to default view"
 msgstr "初期視点にズーム"
 
-#: src/editor/editor.cpp:179
+#: src/editor/editor.cpp:251
 msgid "Toggle grid"
 msgstr "グリッド切替"
 
-#: src/editor/editor.cpp:181
+#: src/editor/editor.cpp:253
 msgid "Resize the map"
 msgstr "マップサイズ変更"
 
-#: src/editor/editor.cpp:183
+#: src/editor/editor.cpp:255
 msgid "Flip map"
 msgstr "マップを反転する"
 
-#: src/editor/editor.cpp:381
+#: src/editor/editor.cpp:453
 msgid "Language"
 msgstr "言語"
 
-#: src/editor/editor.cpp:382
+#: src/editor/editor.cpp:454
 msgid "Choose your preferred language:"
 msgstr "お好みの言語を選んで下さい:"
 
-#: src/editor/editor.cpp:396 src/editor/editor_main.cpp:252
+#: src/editor/editor.cpp:468 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Battle for Wesnoth マップエディタ"
 
-#: src/editor/editor.cpp:420
+#: src/editor/editor.cpp:492
 msgid "Save the Map As"
 msgstr "マップに名前を付けて保存"
 
-#: src/editor/editor.cpp:431
+#: src/editor/editor.cpp:503
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "マップはすでに存在します。 上書きしますか？"
 
-#: src/editor/editor.cpp:454 src/editor/editor.cpp:1248
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
 msgid "Player"
 msgstr "プレイヤー"
 
-#: src/editor/editor.cpp:457
+#: src/editor/editor.cpp:529
 msgid "Which Player?"
 msgstr "どのプレイヤー？"
 
-#: src/editor/editor.cpp:458
+#: src/editor/editor.cpp:530
 msgid "Which player should start here?"
 msgstr "どのプレイヤーがここからスタートしますか？"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:581
 msgid "Choose a Map to Load"
 msgstr "読み込むマップを選択"
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:585
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr "警告: マップ名に不正な文字が見つかりました。別な名前で保存して下さい。"
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:598 src/editor/editor.cpp:672
 msgid "The file does not contain a valid map."
 msgstr "そのファイルには有効なマップがありません。"
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:734
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename'は存在しないか、 読むことができません。"
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:746
 msgid "Load failed: "
 msgstr "読み込み失敗: "
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:946
 msgid "You must have a hex selected on the board."
 msgstr "ボード上のヘクスを 選択して下さい。"
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1198
 msgid "Quit Editor"
 msgstr "エディタを終了"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1203
 msgid "Do you want to save the map before quitting?"
 msgstr "終了前にマップを保存しますか？"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1251
 msgid "Map saved."
 msgstr "マップを保存しました。"
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1260
 msgid "Could not save the map: $msg"
 msgstr "マップを保存できませんでした: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1275
 msgid "Error: Illegal character in filename."
 msgstr "エラー: ファイル名に不正な文字"
 
@@ -160,3 +148,12 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "File"
+#~ msgstr "ファイル"
+
+#~ msgid "Edit"
+#~ msgstr "編集"
+
+#~ msgid "Settings"
+#~ msgstr "設定"

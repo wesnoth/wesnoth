@@ -371,11 +371,11 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			const config& msg = *data.child("message");
 			config* cignore;
 			bool ignored = false;
-			if ((cignore = preferences::get_prefs()->child("ignore"))){
+			if ((cignore = preferences::get_prefs()->child("relationship"))){
 				for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
 				i != cignore->values.end(); ++i){
 					if(msg["sender"] == i->first){
-						if (i->second == "yes"){
+						if (i->second == "ignored"){
 							ignored = true;
 						}
 					}
@@ -395,11 +395,11 @@ void ui::process_network_data(const config& data, const network::connection /*so
 
 			config* cignore;
 			bool ignored = false;
-			if ((cignore = preferences::get_prefs()->child("ignore"))){
+			if ((cignore = preferences::get_prefs()->child("relationship"))){
 				for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
 				i != cignore->values.end(); ++i){
 					if(cwhisper["sender"] == i->first){
-						if (i->second == "yes"){
+						if (i->second == "ignored"){
 							ignored = true;
 						}
 					}
@@ -471,18 +471,95 @@ void ui::layout_children(const SDL_Rect& /*rect*/)
 }
 
 void ui::gamelist_updated(bool silent)
-{
-	std::vector<std::string> user_strings;
+{ 
+   	std::vector<std::string> user_strings;
 	config::child_list users = gamelist_.get_children("user");
 	config::child_iterator user;
+	
+    //if we have not already got the relationship child it will
+    //cause the game to crash if we don't create it.
+    if (!preferences::get_prefs()->child("relationship")){
+		preferences::get_prefs()->add_child("relationship");
+	}
+	config* cignore;
+	cignore = preferences::get_prefs()->child("relationship");
+	
+	char const COLUMN_SEPARATOR = '=', IMAGE_PREFIX = '&';
+	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
+	char const sep1 = COLUMN_SEPARATOR;
+	
+    if(preferences::sort_list()) {
+	
+	for (user = users.begin(); user != users.end(); ++user) {
+        std::string ig = std::string((**user)["name"]);
+	    if((*cignore)[ig] == "friend") {
+	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
+			std::string suffix = "";
+			if(!(**user)["location"].empty()) {
+				suffix = std::string(" (") + (**user)["location"] + std::string(")");
+			}
+			if(preferences::iconize_list()) {
+			    user_strings.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+            } else {
+			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+            }
+        }
+	}
+	
+    for (user = users.begin(); user != users.end(); ++user) {
+        std::string ig = std::string((**user)["name"]);
+	    if((*cignore)[ig] != "ignored" && (*cignore)[ig] != "friend") {
+	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
+			std::string suffix = "";
+			if(!(**user)["location"].empty()) {
+				suffix = std::string(" (") + (**user)["location"] + std::string(")");
+			}
+			if(preferences::iconize_list()) {
+			    user_strings.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+            } else {
+			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+            }
+        }
+	}
+	
+	for (user = users.begin(); user != users.end(); ++user) {
+       std::string ig = std::string((**user)["name"]);
+	    if((*cignore)[ig] == "ignored") {
+	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
+			std::string suffix = "";
+			if(!(**user)["location"].empty()) {
+				suffix = std::string(" (") + (**user)["location"] + std::string(")");
+			}
+			if(preferences::iconize_list()) {
+			    user_strings.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+            } else {
+			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+            }
+        }
+   	}
+    } else {
+	
 	for (user = users.begin(); user != users.end(); ++user) {
 		const std::string prefix = (**user)["available"] == "no" ? "#" : "";
 		std::string suffix = "";
 		if(!(**user)["location"].empty()) {
 			suffix = std::string(" (") + (**user)["location"] + std::string(")");
 		}
-		user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-	}
+		if(preferences::iconize_list()) {
+			std::string ig = std::string((**user)["name"]);
+		    if((*cignore)[ig] == "ignored") {
+	            user_strings.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+	        } else if ((*cignore)[ig] == "friend") {
+	            user_strings.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+	        } else {
+	             user_strings.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+	        }
+		} else {
+            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+        }
+    }
+    }
+   	
 	set_user_list(user_strings, silent);
 }
 

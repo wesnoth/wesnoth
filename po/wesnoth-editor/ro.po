@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:32+0200\n"
+"POT-Creation-Date: 2006-12-27 19:39+0100\n"
 "PO-Revision-Date: 2006-04-10 20:11+0100\n"
 "Last-Translator: Dex Stewart\n"
 "Language-Team: none\n"
@@ -16,100 +16,88 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/themes/editor.cfg:461
-msgid "File"
-msgstr "Fisier"
-
-#: data/themes/editor.cfg:470
-msgid "Edit"
-msgstr "Edit"
-
-#: data/themes/editor.cfg:477
-msgid "Settings"
-msgstr "Optiuni"
-
-#: src/editor/editor.cpp:163
+#: src/editor/editor.cpp:235
 #, fuzzy
 msgid "Draw tiles"
 msgstr "Deseneaza hexagoane"
 
-#: src/editor/editor.cpp:165
+#: src/editor/editor.cpp:237
 msgid "Fill"
 msgstr "Umple"
 
-#: src/editor/editor.cpp:167
+#: src/editor/editor.cpp:239
 msgid "Set player's starting position"
 msgstr "Alege pozitia de inceput a jucatorului"
 
-#: src/editor/editor.cpp:169
+#: src/editor/editor.cpp:241
 msgid "Zoom in"
 msgstr "Lupa - mai aproape"
 
-#: src/editor/editor.cpp:171
+#: src/editor/editor.cpp:243
 msgid "Zoom out"
 msgstr "Lupa - mai departe"
 
-#: src/editor/editor.cpp:173
+#: src/editor/editor.cpp:245
 msgid "Undo"
 msgstr "Undo"
 
-#: src/editor/editor.cpp:175
+#: src/editor/editor.cpp:247
 msgid "Redo"
 msgstr "Repeta"
 
-#: src/editor/editor.cpp:177
+#: src/editor/editor.cpp:249
 msgid "Zoom to default view"
 msgstr "Lupa - setare standard"
 
-#: src/editor/editor.cpp:179
+#: src/editor/editor.cpp:251
 msgid "Toggle grid"
 msgstr "(Dez)Activeaza marginile hexagoanelor"
 
-#: src/editor/editor.cpp:181
+#: src/editor/editor.cpp:253
 msgid "Resize the map"
 msgstr "Modifica marimea hartii"
 
-#: src/editor/editor.cpp:183
+#: src/editor/editor.cpp:255
 msgid "Flip map"
 msgstr "Intoarce harta"
 
-#: src/editor/editor.cpp:381
+#: src/editor/editor.cpp:453
 msgid "Language"
 msgstr "Limba"
 
-#: src/editor/editor.cpp:382
+#: src/editor/editor.cpp:454
 msgid "Choose your preferred language:"
 msgstr "Alegeti limba preferata"
 
-#: src/editor/editor.cpp:396 src/editor/editor_main.cpp:252
+#: src/editor/editor.cpp:468 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Editor de harti pentru Battle for Wesnoth"
 
-#: src/editor/editor.cpp:420
+#: src/editor/editor.cpp:492
 msgid "Save the Map As"
 msgstr "Salveaza ca"
 
-#: src/editor/editor.cpp:431
+#: src/editor/editor.cpp:503
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Aceasta harta exista deja. Doriti sa suprascrieti?"
 
-#: src/editor/editor.cpp:454 src/editor/editor.cpp:1248
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
 msgid "Player"
 msgstr "Jucator"
 
-#: src/editor/editor.cpp:457
+#: src/editor/editor.cpp:529
 msgid "Which Player?"
 msgstr "Care jucator?"
 
-#: src/editor/editor.cpp:458
+#: src/editor/editor.cpp:530
 msgid "Which player should start here?"
 msgstr "Care jucator incepe aici?"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:581
 msgid "Choose a Map to Load"
 msgstr "Alegeti o harta de incarcat"
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:585
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -117,39 +105,39 @@ msgstr ""
 "Atnetie: Am gasit caractere in numele hartii pe care nu le pot folosi. "
 "Salvati sub alt nume."
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:598 src/editor/editor.cpp:672
 msgid "The file does not contain a valid map."
 msgstr "Acest fisier nu este o harta valida."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:734
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' nu exista sau nu poate fi citit ca fisier."
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:746
 msgid "Load failed: "
 msgstr "Nu am putut incarca:"
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:946
 msgid "You must have a hex selected on the board."
 msgstr "Trebuie sa selectati un hexagon."
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1198
 msgid "Quit Editor"
 msgstr "Iesiti din editor"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1203
 msgid "Do you want to save the map before quitting?"
 msgstr "Vreti sa salvati harta inainte sa iesiti?"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1251
 msgid "Map saved."
 msgstr "Harta salvata."
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1260
 msgid "Could not save the map: $msg"
 msgstr "Nu am putut salva harta: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1275
 msgid "Error: Illegal character in filename."
 msgstr "Eroare: Caracter nevalabil in numele fisierului."
 
@@ -162,6 +150,15 @@ msgstr "FG"
 #, fuzzy
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "File"
+#~ msgstr "Fisier"
+
+#~ msgid "Edit"
+#~ msgstr "Edit"
+
+#~ msgid "Settings"
+#~ msgstr "Optiuni"
 
 #~ msgid "Player "
 #~ msgstr "Jucator"

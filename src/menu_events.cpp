@@ -1441,17 +1441,18 @@ namespace events{
 		static const std::string query = "/query";
 		static const std::string whisper = "/whisper";
 		static const std::string whisper2 = "/msg";
-		static const std::string ignore = "/ignore";
+		static const std::string list = "/list";
 		static const std::string help = "/help";
 		static const std::string emote = "/emote";
 		static const std::string emote2 = "/me";
 
-		static const std::string add = "add";
+		static const std::string addignore = "addignore";
+		static const std::string addfriend = "addfriend";
 		static const std::string remove = "remove";
-		static const std::string list = "list";
+		static const std::string display = "display";
 		static const std::string clear = "clear";
 
-		static const std::string help_chat_help = _("Commands: whisper ignore emote. Type /help [command] for more help.");
+		static const std::string help_chat_help = _("Commands: whisper list emote. Type /help [command] for more help.");
 
 		bool is_command = (message.at(0) == '/');
 		unsigned int argc = 0;
@@ -1503,21 +1504,23 @@ namespace events{
 			if (have_command) {
 				if (command == "whisper" || command == "msg") {
 					add_chat_message("help",0,_("Sends private message. You can't send messages to players that control any side in game. Usage: /whisper [nick] [message]"));
-				} else if (command == "ignore") {
+				} else if (command == "list") {
 					if (have_subcommand) {
-						if (subcommand == "add"){
-							add_chat_message("help",0,_("Add player to your ignore list. Usage: /ignore add [argument]"));
+						if (subcommand == "addfriend"){
+							add_chat_message("help",0,_("Add player to your friends list. Usage: /list addfriend [argument]"));
+						} else if (subcommand == "addignore"){
+							add_chat_message("help",0,_("Add player to your ignore list. Usage: /list ignore [argument]"));
 						} else if (subcommand == "remove") {
-							add_chat_message("help",0,_("Remove player from your ignore list. Usage: /ignore remove [argument]"));
+							add_chat_message("help",0,_("Remove player from your ignore or friends list. Usage: /list remove [argument]"));
 						} else if (subcommand == "clear") {
-							add_chat_message("help",0,_("Clear your ignore list. Usage: /ignore clear"));
-						} else if (subcommand == "list") {
-							add_chat_message("help",0,_("Show your ignore list. Usage: /ignore list"));
+							add_chat_message("help",0,_("Clear your ignore and friends list. Usage: /list clear"));
+						} else if (subcommand == "display") {
+							add_chat_message("help",0,_("Show your ignore and friends list. Usage: /list display"));
 						} else {
 							add_chat_message("help",0,_("Unknown subcommand"));
 						}
 					} else {
-						add_chat_message("help",0,_("Ignore messages from players on this list. Usage: /ignore [subcommand] [argument](optional) Subcommands: add remove list clear. Type /help ignore [subcommand] for more info."));
+						add_chat_message("help",0,_("Ignore messages from players on the ignore list and highlight players on the friends list. Usage: /list [subcommand] [argument](optional) Subcommands: addfriend addignore remove display clear. Type /help list [subcommand] for more info."));
 					}
 				} else if (command == "emote" || command == "me") {
 					add_chat_message("help",0,_("Send an emotion or personal action in chat. Usage: /emote [message]"));
@@ -1527,60 +1530,89 @@ namespace events{
 			} else {
 				add_chat_message("help",0,help_chat_help);
 			}
-		} else if (message.size() > ignore.size() && std::equal(ignore.begin(),ignore.end(), message.begin())) {
+		} else if (message.size() > list.size() && std::equal(list.begin(),list.end(), message.begin())) {
 
 			config* cignore;
 
-			if (arg1 == add){
-				if (!preferences::get_prefs()->child("ignore")){
-					preferences::get_prefs()->add_child("ignore");
+			if (arg1 == addignore){
+				if (!preferences::get_prefs()->child("relationship")){
+					preferences::get_prefs()->add_child("relationship");
 				}
-				cignore = preferences::get_prefs()->child("ignore");
+				cignore = preferences::get_prefs()->child("relationship");
 				if(utils::isvalid_username(arg2))
 				{
-					(*cignore)[arg2] = "yes";
+					(*cignore)[arg2] = "ignored";
 					add_chat_message("ignores list",0, _("Added to ignore list: ")+arg2,display::MESSAGE_PRIVATE);
 				} else {
 					add_chat_message("ignores list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
 				}
 
+			} else if (arg1 == addfriend){
+				if (!preferences::get_prefs()->child("relationship")){
+					preferences::get_prefs()->add_child("relationship");
+				}
+				cignore = preferences::get_prefs()->child("relationship");
+				if(utils::isvalid_username(arg2))
+				{
+					(*cignore)[arg2] = "friend";
+					add_chat_message("friends list",0, _("Added to friends list: ")+arg2,display::MESSAGE_PRIVATE);
+				} else {
+					add_chat_message("friends list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
+				}
+
 			} else if (arg1 == remove){
-				if ((cignore = preferences::get_prefs()->child("ignore"))){
+				if ((cignore = preferences::get_prefs()->child("relationship"))){
 					if(utils::isvalid_username(arg2))
 					{
 						(*cignore)[arg2] = "no";
-						add_chat_message("ignores list",0, _("Removed from ignore list: ")+arg2,display::MESSAGE_PRIVATE);
+						add_chat_message("list",0, _("Removed from list: ")+arg2,display::MESSAGE_PRIVATE);
 					} else {
-						add_chat_message("ignores list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
+						add_chat_message("list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
 					}
 				}
-			} else if (arg1 == list){
-				std::string text;
-				if ((cignore = preferences::get_prefs()->child("ignore"))){
+			} else if (arg1 == display){
+				std::string text_ignore;
+				std::string text_friend;
+				if ((cignore = preferences::get_prefs()->child("relationship"))){
 					for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
 							i != cignore->values.end(); ++i){
-						if (i->second == "yes"){
-							text+=i->first+",";
+						if (i->second == "ignored"){
+							text_ignore+=i->first+",";
+						}
+						if (i->second == "friend"){
+							text_friend+=i->first+",";
 						}
 					}
-					if(!text.empty()){
-						text.erase(text.length()-1,1);
+					if(!text_ignore.empty()){
+						text_ignore.erase(text_ignore.length()-1,1);
+						add_chat_message("ignores list",0, text_ignore,display::MESSAGE_PRIVATE);
+					}
+					if(!text_friend.empty()){
+						text_friend.erase(text_friend.length()-1,1);
+						add_chat_message("friends list",0, text_friend,display::MESSAGE_PRIVATE);
+					}
+					if (text_friend.empty() && text_ignore.empty()) {
+						add_chat_message("list",0, _("There are no players on your friends or ignore list."));
 					}
 				}
-				add_chat_message("ignores list",0, text,display::MESSAGE_PRIVATE);
 			} else if (arg1 == clear){
 
-				if ((cignore = preferences::get_prefs()->child("ignore"))){
+				if ((cignore = preferences::get_prefs()->child("relationship"))){
 					string_map::iterator nick;
 					for(nick= cignore->values.begin() ; nick!= cignore->values.end(); nick++) {
 						if((*cignore)[nick->first] != "no") {
+                            if((*cignore)[nick->first] == "ignored") {
+							    add_chat_message("ignore list",0, _("Removed from ignore list: ")+nick->first,display::MESSAGE_PRIVATE);
+						    }
+                            if((*cignore)[nick->first] == "friend") {
+							    add_chat_message("friend list",0, _("Removed from friends list: ")+nick->first,display::MESSAGE_PRIVATE);
+						    }
 							(*cignore)[nick->first] = "no";
-							add_chat_message("ignores list",0, _("Removed from ignore list: ")+nick->first,display::MESSAGE_PRIVATE);
 						}
 					}
 				}
 			} else {
-				add_chat_message("ignores list",0,_("Unknown command: ")+arg1,display::MESSAGE_PRIVATE);
+				add_chat_message("list",0,_("Unknown command: ")+arg1,display::MESSAGE_PRIVATE);
 			}
 		} else if ((cmd == emote || cmd == emote2) && argc > 0) {
 			//emote message

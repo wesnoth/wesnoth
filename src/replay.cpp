@@ -710,10 +710,22 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 					if(preferences::message_bell()) {
 						sound::play_sound(game_config::sounds::receive_message);
 					}
-
-					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
-					disp.add_chat_message(speaker_name,side,(*child)["message"],
-										  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
+    				std::string str = (*child)["message"];
+    				std::string buf;
+    				std::stringstream ss(str);
+    				ss >> buf;
+    
+    				if (!preferences::get_prefs()->child("relationship")){
+						preferences::get_prefs()->add_child("relationship");
+					}
+					config* cignore;
+					cignore = preferences::get_prefs()->child("relationship");
+	
+					if ((*cignore)[buf] == "friend") {
+						const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
+						disp.add_chat_message(speaker_name,side,(*child)["message"],
+											  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
+					}
 				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {
@@ -932,6 +944,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			std::pair<gamemap::location,unit> *up = units.extract(u->first);
 			up->first = dst;
 			units.add(up);
+			if (up->first == up->second.get_goto()) 
+			{ 
+				//if unit has arrived to destination, goto variable is cleaned 
+				up->second.set_goto(gamemap::location()); 
+			} 
 			up->second.set_standing(disp,up->first);
 			u = units.find(dst);
 			check_checksums(disp,units,*cfg);

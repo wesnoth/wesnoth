@@ -73,6 +73,7 @@ public:
 		std::vector<std::string> recruitment_pattern;
 		std::vector<int> enemies;
 		std::string team_name;
+		std::string user_team_name;
 		std::string save_id;
 		std::string current_player;
 		std::string countdown_time;
@@ -185,7 +186,9 @@ public:
 	void make_ai();
 
 	const std::string& team_name() const;
-	void change_team(const std::string& name);
+	const std::string& user_team_name() const;
+	void change_team(const std::string& name,
+					 const std::string& user_name);
 
 	const std::string& flag() const;
 
