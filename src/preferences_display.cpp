@@ -750,15 +750,31 @@ bool show_video_mode_dialog(display& disp)
 	SDL_PixelFormat format = *video.getSurface()->format;
 	format.BitsPerPixel = video.getBpp();
 
-	const SDL_Rect* const * const modes = SDL_ListModes(&format,FULL_SCREEN);
+	const SDL_Rect* const * modes = SDL_ListModes(&format,FULL_SCREEN);
 
-	//the SDL documentation says that a return value of -1 if no dimension
-	//is available.
-	if(modes == reinterpret_cast<SDL_Rect**>(-1) || modes == NULL) {
-		if(modes != NULL)
-			std::cerr << "Can support any video mode\n";
-		else
-			std::cerr << "No modes supported\n";
+	//the SDL documentation says that a return value of -1 if all dimensions
+	//are supported/possible.
+	if(modes == reinterpret_cast<SDL_Rect**>(-1)) {
+		std::cerr << "Can support any video mode\n";
+		// SDL says that all modes are possible so it's OK to use a
+		// hardcoded list here.
+		static const SDL_Rect scr_modes[] = {
+			{ 0, 0, 800, 600 },
+			{ 0, 0, 1024, 768 },
+			{ 0, 0, 1280, 960 },
+			{ 0, 0, 1280, 1024 },
+		};
+		static const SDL_Rect * const scr_modes_list[] = {
+			&scr_modes[0],
+			&scr_modes[1],
+			&scr_modes[2],
+			&scr_modes[3],
+			NULL
+		};
+
+		modes = scr_modes_list;
+	} else if(modes == NULL) {
+		std::cerr << "No modes supported\n";
 		gui::show_dialog(disp,NULL,"",_("There are no alternative video modes available"));
 		return false;
 	}
