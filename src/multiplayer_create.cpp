@@ -64,6 +64,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK),
+	random_start_time_(disp.video(), _("Random start time"), gui::button::TYPE_CHECK),
 	fog_game_(disp.video(), _("Fog Of War"), gui::button::TYPE_CHECK),
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
@@ -159,6 +160,9 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	use_map_settings_.set_check(preferences::use_map_settings());
 	use_map_settings_.set_help_string(_("Use scenario specific settings"));
 
+	random_start_time_.set_check(preferences::random_start_time());
+	random_start_time_.set_help_string(_("Randomize time of day in begin"));
+
 	fog_game_.set_check(preferences::fog());
 	fog_game_.set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
 
@@ -210,6 +214,7 @@ create::~create()
 	//Save values for next game
 	preferences::set_allow_observers(parameters_.allow_observers);
 	preferences::set_use_map_settings(parameters_.use_map_settings);
+	preferences::set_random_start_time(parameters_.random_start_time);
 	preferences::set_fog(parameters_.fog_game);
 	preferences::set_shroud(parameters_.shroud_game);
 	preferences::set_turns(parameters_.num_turns);
@@ -259,6 +264,7 @@ create::parameters& create::get_parameters()
 	parameters_.village_gold = village_gold_slider_.value();
 	parameters_.xp_modifier = xp_modifier_slider_.value();
 	parameters_.use_map_settings = use_map_settings_.checked();
+	parameters_.random_start_time = random_start_time_.checked();
 	parameters_.fog_game = fog_game_.checked();
 	parameters_.shroud_game = shroud_game_.checked();
 	parameters_.allow_observers = observers_game_.checked();
@@ -494,6 +500,7 @@ void create::process_event()
 			} catch(bad_lexical_cast&) {
 				xp_modifier_slider_.set_value(preferences::xp_modifier());
 			}
+			random_start_time_.set_check(::gamestatus::is_start_ToD(parameters_.scenario_data["random_start_time"]));
 		}
 	}
 }
@@ -527,6 +534,7 @@ void create::hide_children(bool hide)
 	map_label_.hide(hide);
 
 	use_map_settings_.hide(hide);
+	random_start_time_.hide(hide);
 	fog_game_.hide(hide);
 	shroud_game_.hide(hide);
 	observers_game_.hide(hide);
@@ -589,7 +597,11 @@ void create::layout_children(const SDL_Rect& rect)
 	int ypos_columntop = ypos;
 
 	// First column: minimap & random map options
-	const int minimap_width = 200;
+	std::pair<int,int> resolution = preferences::resolution();
+	
+	const int resolution_for_small_minimap = 880;
+	
+	const int minimap_width = resolution.first > resolution_for_small_minimap ? 200 : 130;
 
 	SDL_Rect mmrect = { xpos, ypos, minimap_width, minimap_width };
 	minimap_rect_ = mmrect;
@@ -650,6 +662,7 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += xp_modifier_slider_.height() + border_size;
 
 	use_map_settings_.set_location(xpos, ypos);
+	random_start_time_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += use_map_settings_.height() + border_size;
 
 	countdown_init_time_label_.set_location(xpos, ypos);
@@ -760,7 +773,9 @@ void create::layout_children(const SDL_Rect& rect)
 	
 	use_map_settings_.set_location(xpos, ypos);
 	ypos += use_map_settings_.height() + border_size;
-
+	random_start_time_.set_location(xpos, ypos);
+	ypos += random_start_time_.height() + border_size;
+	
 #ifdef MP_VISION_OPTIONAL
 	vision_combo_.set_location(xpos, ypos);
 	ypos += vision_combo_.height() + border_size;

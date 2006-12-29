@@ -139,6 +139,9 @@ namespace preferences {
 	bool use_map_settings();
 	void set_use_map_settings(bool value);
 
+	bool random_start_time();
+	void set_random_start_time(bool value);
+
 	bool fog();
 	void set_fog(bool value);
 

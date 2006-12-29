@@ -40,7 +40,7 @@ public:
 			mp_countdown_turn_bonus=0;
 			mp_countdown_reservoir_time=0;
 			mp_countdown_action_bonus=0;
-			use_map_settings = fog_game = shroud_game = allow_observers = share_view = share_maps = false;
+			use_map_settings = random_start_time = fog_game = shroud_game = allow_observers = share_view = share_maps = false;
 
 			scenario_data.clear();
 		}
@@ -59,6 +59,7 @@ public:
 		int mp_countdown_action_bonus;
 		bool mp_countdown;
 		bool use_map_settings;
+		bool random_start_time;
 		bool fog_game;
 		bool shroud_game;
 		bool allow_observers;
@@ -117,6 +118,7 @@ private:
 	gui::label map_label_;
 
 	gui::button use_map_settings_;
+	gui::button random_start_time_;
 	gui::button fog_game_;
 	gui::button shroud_game_;
 	gui::button observers_game_;

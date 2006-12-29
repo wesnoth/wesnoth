@@ -550,6 +550,17 @@ void set_use_map_settings(bool value)
 	prefs["mp_use_map_settings"] = value ? "yes" : "no";
 }
 
+bool random_start_time()
+{
+	return prefs["mp_random_start_time"] != "no";
+}
+
+void set_random_start_time(bool value)
+{
+	prefs["mp_random_Start_time"] = value ? "yes" : "no";
+}
+
+
 bool fog()
 {
 	return prefs["mp_fog"] == "yes";
