@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-12-27 19:28+0100\n"
-"PO-Revision-Date: 2006-12-27 20:22+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2006-12-29 13:42+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -421,7 +421,6 @@ msgid "poison"
 msgstr "vergiften"
 
 #: data/abilities.cfg:532
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -446,7 +445,7 @@ msgstr "Musik"
 
 #: data/about.cfg:72
 msgid "Sound effects"
-msgstr ""
+msgstr "Soundeffekte"
 
 #: data/about.cfg:81
 msgid "Scenario Designers"
@@ -611,9 +610,8 @@ msgid "Turkish Translation"
 msgstr "Türkische Übersetzung"
 
 #: data/about.cfg:560
-#, fuzzy
 msgid "Valencian Translation"
-msgstr "Slowenische Übersetzung"
+msgstr " Valencianische Übersetzung"
 
 #: data/about.cfg:567 data/help.cfg:252
 msgid "Contributors"
@@ -3162,7 +3160,6 @@ msgid "Wrap Up"
 msgstr "Fazit"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3339,11 +3336,13 @@ msgstr ""
 
 #: data/help.cfg:306
 msgid "Fearless"
-msgstr ""
+msgstr "Furchtlos"
 
 #: data/help.cfg:307
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
+"Weder Licht noch Dunkelheit können die Furcht in die Herzen dieser Recken "
+"tragen."
 
 #: data/help.cfg:312
 msgid "Loyal"
@@ -3385,14 +3384,14 @@ msgid "trait^Undead"
 msgstr "Untot"
 
 #: data/help.cfg:321
-#, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
-msgstr "Untote Einheiten sind immun gegen Gift."
+msgstr ""
+"Untote Einheiten sind immun gegen Gift. Lebensentzug und untote Plage haben "
+"ebenfalls keinen Einfluss auf sie."
 
 #: data/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3403,9 +3402,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Untote Einheiten haben für gewöhnlich »Untot« als einzige Charakteristika. "
-"Da untote Einheiten die Körper von Toten sind, die wiedererweckt wurden, um "
-"ein weiteres Mal zu kämpfen, sind sie immun gegen Gift. Dies macht sie sehr "
+"Untote Einheiten haben für gewöhnlich »Untot« als einzige Charakteristik. Da "
+"untote Einheiten die Körper von Toten sind, die wiedererweckt wurden, um ein "
+"weiteres Mal zu kämpfen, sind sie immun gegen Gift. Dies macht sie sehr "
 "wertvoll im Kampf gegen Feinde, die mit vergifteten Waffen angreifen."
 
 #: data/help.cfg:328
@@ -3438,13 +3437,16 @@ msgstr ""
 
 #: data/help.cfg:336
 msgid "Healthy"
-msgstr ""
+msgstr "Vital"
 
 #: data/help.cfg:337
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and "
 "recover more quickly when resting."
 msgstr ""
+"Gerühmt für ihre Vitalität sind die Zwerge, doch gibt es auch unter ihnen "
+"besonders robuste Exemplare, die sich wesentlich nach einer kurzen Rast "
+"schneller von ihren Verletzungen erholen."
 
 #: data/help.cfg:343 data/terrain.cfg:131
 msgid "Grassland"
@@ -3489,7 +3491,6 @@ msgid "Forest"
 msgstr "Wald"
 
 #: data/help.cfg:368
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3523,7 +3524,8 @@ msgstr ""
 "sind, erhalten 60 bis 70% Verteidigung.\n"
 "Zwerge verfügen generell nur über 30% Verteidigung in Wäldern.\n"
 "Fußtruppen der übrigen Rassen erhalten 50% Verteidigung in allen "
-"Waldfeldern, wohingegen ihre Kavallerie auf 40% begrenzt ist."
+"Waldfeldern, wohingegen ihre Kavallerie auf 40% begrenzt ist.\n"
+"\n"
 
 #: data/help.cfg:373 data/terrain.cfg:318
 msgid "Hills"
@@ -3689,7 +3691,6 @@ msgid "Castle"
 msgstr "Burg"
 
 #: data/help.cfg:448
-#, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -3709,7 +3710,8 @@ msgstr ""
 "können leicht Gegner diesen Platz einnehmen und den selben "
 "Verteidigungsbonus erhalten.\n"
 "\n"
-"Die meisten Einheiten haben 60% Verteidigung auf Burgfeldern."
+"Die meisten Einheiten haben 60% Verteidigung auf Burgfeldern.\n"
+"\n"
 
 #: data/help.cfg:453 data/terrain.cfg:89
 msgid "Sand"
@@ -3867,7 +3869,6 @@ msgid "Village"
 msgstr "Dorf"
 
 #: data/help.cfg:526
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -3889,7 +3890,8 @@ msgstr ""
 "der Wirkung eines Gifts kuriert werden.\n"
 "\n"
 "Die meisten Einheiten haben 50 bis 60% Verteidigung in Dörfern, Kavallerie "
-"hat nur 40%."
+"hat nur 40%.\n"
+"\n"
 
 #: data/help.cfg:531 data/terrain.cfg:429
 msgid "Chasm"
@@ -3995,47 +3997,46 @@ msgid "General commands"
 msgstr "Generelle Kommandos"
 
 #: data/help.cfg:577
-#, fuzzy
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Beendet das Szenario (ohne Rückfrage)."
+"Beendet das Szenario (ohne Rückfrage).\n"
+"\n"
 
 #: data/help.cfg:580
-#, fuzzy
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Speichert das Spiel (ohne Rückfrage)."
+"Speichert das Spiel (ohne Rückfrage).\n"
+"\n"
 
 #: data/help.cfg:583
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Speichert das Spiel und beendet das Szenario (ohne Rückfrage)."
+"Speichert das Spiel und beendet das Szenario (ohne Rückfrage).\n"
+"\n"
 
 #: data/help.cfg:586
-#, fuzzy
 msgid ""
 "\n"
 "Redraw the screen.\n"
 "\n"
 msgstr ""
 "\n"
-"Zeichnet den Inhalt des Bildschirms neu."
+"Zeichnet den Inhalt des Bildschirms neu.\n"
+"\n"
 
 #: data/help.cfg:589
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -4044,21 +4045,18 @@ msgid ""
 msgstr ""
 "\n"
 "Schaltet den Debugmodus an (funktioniert nicht im Mehrspielermodus). Der "
-"Debugmodus wird abgeschaltet, sobald das Spiel beendet wird."
+"Debugmodus wird abgeschaltet, sobald das Spiel beendet wird.\n"
+"\n"
 
 #: data/help.cfg:590
-#, fuzzy
 msgid "Bring up theme selection menu."
-msgstr ""
-"\n"
-"Zeigt das Grafikthemen Auswahlmenü an."
+msgstr "Zeigt das Grafikthemen Auswahlmenü an."
 
 #: data/help.cfg:595
 msgid "Multiplayer commands"
 msgstr "Mehrspieler Kommandos"
 
 #: data/help.cfg:599
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -4070,20 +4068,20 @@ msgstr ""
 "Wechselt die Kontrolle einer Fraktion zwischen KI und einem normalen Spieler "
 "hin und her. Der Spieler, der die zu ändernde Seite kontrolliert, muss "
 "dieses Kommando ausführen. Wenn keine Seite angegeben wird, wird »1« als "
-"Wert verwendet."
+"Wert verwendet.\n"
+"\n"
 
 #: data/help.cfg:602
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Redefreiheit für alle Beobachter aus- und einschalten."
+"Redefreiheit für alle Beobachter aus- und einschalten.\n"
+"\n"
 
 #: data/help.cfg:605
-#, fuzzy
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -4093,10 +4091,10 @@ msgstr ""
 "\n"
 "Entzieht einem bestimmten Beobachter Redefreiheit. Wenn kein Benutzername "
 "angegeben wird, wird eine Liste aller Beobachter angezeigt, denen die "
-"Redefreiheit entzogen wurde."
+"Redefreiheit entzogen wurde.\n"
+"\n"
 
 #: data/help.cfg:608
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -4107,10 +4105,10 @@ msgstr ""
 "\n"
 "Wirft einen Spieler im Mehrspielermodus aus dem Spiel. Es ist diesem Spieler "
 "jedoch möglich, erneut dem Spiel beizutreten. Sollte verwendet werden, wenn "
-"jemand Verbindungsprobleme hat oder andere Schwierigkeiten auftreten."
+"jemand Verbindungsprobleme hat oder andere Schwierigkeiten auftreten.\n"
+"\n"
 
 #: data/help.cfg:611
-#, fuzzy
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -4119,10 +4117,10 @@ msgid ""
 msgstr ""
 "\n"
 "Kickt und verbannt einen Spieler sowie dessen verwendete IP-Adresse aus dem "
-"Mehrspielermodus."
+"Mehrspielermodus.\n"
+"\n"
 
 #: data/help.cfg:614
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4131,7 +4129,8 @@ msgid ""
 msgstr ""
 "\n"
 "Übergibt die Kontrolle einer Fraktion (hier die Nummer der Fraktion "
-"eingeben) an Spieler (hier den Namen des Spielers/Beobachters eingeben)."
+"eingeben) an Spieler (hier den Namen des Spielers/Beobachters eingeben).\n"
+"\n"
 
 #: data/help.cfg:615
 msgid ""
@@ -4538,7 +4537,6 @@ msgstr ""
 "(Niedergeschrieben von Agon dem Kaltherzigen)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:130
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4594,7 +4592,6 @@ msgstr ""
 "(Niedergeschrieben von Ignatius von Schmottke)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:150
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -4787,13 +4784,12 @@ msgstr ""
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "Status"
+msgstr "Statue"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Dies ist eine, aus Stein gefertigte, Skulptur."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
@@ -4813,7 +4809,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:66
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Statue der Sulla"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:68
 msgid ""
@@ -4826,35 +4822,35 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:71
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Statue des Lhun-dup"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Ein aus Stein gemeißeltes Abbild von Lhun-dup, Diener von Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:75
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Statue des Ri-nzen"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:76
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Ein aus Stein gemeißeltes Abbild von Ri-nzen, Diener von Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:79
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Statue des Ten-zin"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:80
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Ein aus Stein gemeißeltes Abbild von Ten-zin, Diener von Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:83
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Statue des Lo-bsang"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:84
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Ein aus Stein gemeißeltes Abbild von Lo-bsang, Diener von Sulla."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -5058,7 +5054,6 @@ msgid "4p - Clash"
 msgstr "4S - Zusammenstoß"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs. 2. Recommended setting of 2 gold per village."
 msgstr ""
 "Eine kleine Karte für 2 gegen 2 Spiele.\n"
@@ -5069,7 +5064,6 @@ msgid "4p - Isar's Cross"
 msgstr "4S - Isars Kreuz"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map.  Close quarters fighting means the successful "
 "rotation of units and planning of moves is important.  Teams set for players "
@@ -5111,7 +5105,6 @@ msgid "4p - King of the Hill"
 msgstr "4S - König des Hügels"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages. "
@@ -5157,7 +5150,6 @@ msgid "4p - Loris River"
 msgstr "4S - Der Lorisfluss"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages. Recommended setting "
@@ -5184,7 +5176,6 @@ msgid "4p - Paths of Daggers"
 msgstr "4S - Pfad der Dolche"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement.  Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA.  "
@@ -5200,7 +5191,6 @@ msgid "4p - Siege Castles"
 msgstr "4S - Belagerte Burgen"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages. "
@@ -5281,19 +5271,19 @@ msgid "6p - The Manzivan Traps"
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
+#, fuzzy
 msgid ""
 "A 40X20 3 vs. 3 map.  The Mazivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended.  Teams set for players 145 vs. 236 (east vs west).  Designed for "
 "100 starting gold, has 33 villages."
-msgstr ""
+msgstr "Eine 40x20 Felder große Karte für 3 gegen 3 Spieler."
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
 msgstr "6S - Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3 vs. 3 map.  Flexible coordination of your alliance is required to "
 "avoid being outnumbered.  Teams set for players 145 vs. 236 (north vs. "
@@ -5326,7 +5316,6 @@ msgid "9p - Merkwuerdigliebe"
 msgstr "9S - Merkwürdige Liebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
-#, fuzzy
 msgid ""
 "A very small 3 vs. 3 vs. 3 map.  A 60sec timer is recommended due to the "
 "large number of players.  The teams are players 159 vs. 267 vs. 348 (north "
@@ -6261,20 +6250,19 @@ msgstr "robust"
 
 #: data/traits.cfg:94
 msgid "healthy"
-msgstr ""
+msgstr "vital"
 
 #: data/traits.cfg:95
 msgid "Heals faster if resting"
-msgstr ""
+msgstr "Erhöhte Regeneration beim Rasten"
 
 #: data/traits.cfg:106
-#, fuzzy
 msgid "fearless"
-msgstr "Prinzessin"
+msgstr "furchtlos"
 
 #: data/traits.cfg:107
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "Tag/Nacht haben keinen Einfluß"
 
 #: data/tutorial/units/Fighteress.cfg:3
 msgid "female^Fighter"
@@ -6838,9 +6826,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:81
 #: data/units/Human_Loyalist_Javelineer.cfg:82
 #: data/units/Human_Loyalist_Spearman.cfg:202
-#, fuzzy
 msgid "javelin"
-msgstr "Speerwerfer"
+msgstr "Wurfspeer"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -7892,7 +7879,6 @@ msgid "Cavalier"
 msgstr "Kürassier"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
@@ -8002,7 +7988,6 @@ msgid "Fencer"
 msgstr "Duellant"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -8377,7 +8362,6 @@ msgid "Shock Trooper"
 msgstr "Schreckenskrieger"
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:15
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and half of their use in "
 "war is simply a matter of intimidation. The only men who can enter their "
@@ -8768,7 +8752,6 @@ msgid "Assassin"
 msgstr "Attentäter"
 
 #: data/units/Human_Outlaw_Assassin.cfg:21
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -10403,7 +10386,6 @@ msgid "Chocobone"
 msgstr "Knochenreiter"
 
 #: data/units/Undead_Skele_Chocobone.cfg:21
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -10415,10 +10397,7 @@ msgstr ""
 "von einer inzwischen verlorenen Kultur als Lastentiere genutzt wurden. "
 "Knochenreiter sind schneller als die meisten anderen berittenen Einheiten.\n"
 "\n"
-"Anmerkung: Der Speerangriff des Knochenreiters ist mit der Waffenfähigkeit "
-"»Ansturm« versehen. Hierdurch wird zwar der Schaden, den der Knochenreiter "
-"verursacht, verdoppelt, jedoch verursacht auch sein Gegner doppelten "
-"Schaden. Im Verteidigungsfall wird diese Fähigkeit nicht aktiviert."
+"Anmerkung:"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
@@ -11181,13 +11160,12 @@ msgid "Get Add-ons"
 msgstr "Erweiterungen holen"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Dependencies"
-msgstr "Einstellungen"
+msgstr "Abhängigkeiten"
 
 #: src/game.cpp:1038
 msgid "This add-on requires the following additional dependencies:"
-msgstr ""
+msgstr "Diese Erweiterung benötigt die folgenden Abhängigkeiten:"
 
 #: src/game.cpp:1040
 #, fuzzy
@@ -11533,9 +11511,8 @@ msgid "Reading files and creating cache."
 msgstr "Lesen der Daten und erstellen des Caches."
 
 #: src/menu_events.cpp:65
-#, fuzzy
 msgid "Detail"
-msgstr "Schwanz"
+msgstr "Detail"
 
 #: src/menu_events.cpp:100
 msgid ""
@@ -11664,22 +11641,20 @@ msgid "The game could not be saved"
 msgstr "Der Spielstand konnte nicht gespeichert werden"
 
 #: src/menu_events.cpp:483
-#, fuzzy
 msgid "Save the Map As"
-msgstr "Karten teilen"
+msgstr "Karte speichern unter"
 
 #: src/menu_events.cpp:488
-#, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
+msgstr "Die Karte existiert bereits. Möchtet Ihr ihn überschreiben?"
 
 #: src/menu_events.cpp:500
 msgid "Map saved."
-msgstr ""
+msgstr "Karte gespeichert."
 
 #: src/menu_events.cpp:505
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Die Karte konnte nicht gespeichert werden: $msg"
 
 #: src/menu_events.cpp:581 src/menu_events.cpp:583 src/play_controller.cpp:700
 #: src/playcampaign.cpp:118
@@ -12399,7 +12374,7 @@ msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
 #: src/playcampaign.cpp:295
 #, fuzzy
 msgid "Save Replay"
-msgstr "Wiederholung anzeigen"
+msgstr "Wiederholung speichern"
 
 #: src/playcampaign.cpp:302
 #, fuzzy
