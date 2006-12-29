@@ -185,7 +185,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			}
 		}
 
-		bool save = false;
+		//avoid autosaving after loading but still allow the 
+		//first turn to have an autosave. 
+		bool save = !loading_game_;
 		for(; ; first_player_ = 1) {
 			play_turn(save);
 			save = true;
