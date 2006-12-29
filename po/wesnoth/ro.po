@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Romana 0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:28+0100\n"
+"POT-Creation-Date: 2006-12-29 14:47+0100\n"
 "PO-Revision-Date: 2006-04-10 20:02+0100\n"
 "Last-Translator: Dex Stewart\n"
 "Language-Team: \n"
@@ -3266,24 +3266,6 @@ msgid ""
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
 
-#: data/scenario-test.cfg:37
-msgid ""
-"You can come if you wish, but the leader is only interested in speaking to "
-"Baldras."
-msgstr ""
-
-#: data/scenario-test.cfg:254
-msgid "Potion of bleach"
-msgstr ""
-
-#: data/scenario-test.cfg:257
-msgid "Oooh tingly!!!"
-msgstr ""
-
-#: data/scenario-test.cfg:283
-msgid "Send me a thief to spy on the blondes"
-msgstr ""
-
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
 msgstr ""
@@ -3538,6 +3520,8 @@ msgstr ""
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:31
 #: data/scenarios/multiplayer/3p_Morituri.cfg:29
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:29
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:24
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:31
 #: data/scenarios/multiplayer/4p_Clash.cfg:13
 #: data/scenarios/multiplayer/4p_Clash.cfg:27
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:15
@@ -3555,6 +3539,8 @@ msgstr ""
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:24
 #: data/scenarios/multiplayer/3p_Morituri.cfg:22
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:22
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:17
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:38
 #: data/scenarios/multiplayer/4p_Clash.cfg:20
 #: data/scenarios/multiplayer/4p_Clash.cfg:34
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:22
@@ -3789,30 +3775,6 @@ msgstr ""
 msgid ""
 "Hop from castle to castle while fighting over a central isle. Recommended "
 "setting of 2 gold per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:24
-msgid ""
-"teamname^East\n"
-"\t[/side]\n"
-"\t[side]\n"
-"\tside=2\n"
-"\tcanrecruit=1\n"
-"\tcontroller=human\n"
-"\tteam_name=West\n"
-"\tuser_team_name= _ "
-msgstr ""
-
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:38
-msgid ""
-"teamname^West\n"
-"\t[/side]\n"
-"\t[side]\n"
-"\tside=4\n"
-"\tcanrecruit=1\n"
-"\tcontroller=human\n"
-"\tteam_name=East\n"
-"\tuser_team_name= _ "
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
@@ -4740,50 +4702,86 @@ msgid "loyal"
 msgstr ""
 
 #: data/traits.cfg:7
+msgid "female^loyal"
+msgstr ""
+
+#: data/traits.cfg:8
 msgid "Zero upkeep"
 msgstr ""
 
-#: data/traits.cfg:17
+#: data/traits.cfg:18
 msgid "undead"
 msgstr ""
 
-#: data/traits.cfg:18
+#: data/traits.cfg:19
+msgid "female^undead"
+msgstr ""
+
+#: data/traits.cfg:20
 msgid "Immune to poison"
 msgstr ""
 
-#: data/traits.cfg:25
+#: data/traits.cfg:27
 msgid "strong"
 msgstr ""
 
-#: data/traits.cfg:41
+#: data/traits.cfg:28
+msgid "female^strong"
+msgstr ""
+
+#: data/traits.cfg:44
 msgid "dextrous"
 msgstr ""
 
-#: data/traits.cfg:53
+#: data/traits.cfg:45
+msgid "female^dextrous"
+msgstr ""
+
+#: data/traits.cfg:57
 msgid "quick"
 msgstr ""
 
-#: data/traits.cfg:68
+#: data/traits.cfg:58
+msgid "female^quick"
+msgstr ""
+
+#: data/traits.cfg:73
 msgid "intelligent"
 msgstr ""
 
-#: data/traits.cfg:79
+#: data/traits.cfg:74
+msgid "female^intelligent"
+msgstr ""
+
+#: data/traits.cfg:85
 msgid "resilient"
 msgstr ""
 
-#: data/traits.cfg:94
+#: data/traits.cfg:86
+msgid "female^resilient"
+msgstr ""
+
+#: data/traits.cfg:101
 msgid "healthy"
 msgstr ""
 
-#: data/traits.cfg:95
+#: data/traits.cfg:102
+msgid "female^healthy"
+msgstr ""
+
+#: data/traits.cfg:103
 msgid "Heals faster if resting"
 msgstr ""
 
-#: data/traits.cfg:106
+#: data/traits.cfg:114
 msgid "fearless"
 msgstr ""
 
-#: data/traits.cfg:107
+#: data/traits.cfg:115
+msgid "female^fearless"
+msgstr ""
+
+#: data/traits.cfg:116
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
@@ -6551,8 +6549,8 @@ msgid ""
 "vigilante in nature.  Any group of bandits will need a few poachers in their "
 "employ, culling the night's meal from surrounding farmland, and often "
 "lending a hand in any serious fight.\n"
-"\t\n"
-"\tBecause of their experience, these hunters are unusually capable at night, "
+"\n"
+"Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
 
@@ -6620,8 +6618,8 @@ msgid ""
 "sizable group of bandits.  They can track both man and beast, notice things "
 "most others would overlook, and are often the only ones who can find food "
 "for the table, be it animal or vegetable.\n"
-"\t\n"
-"\tTheir skill at hunting is very useful in combat, and also leaves them "
+"\n"
+"Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
 
@@ -7261,7 +7259,7 @@ msgid ""
 "considerably powerful, whilst losing none of their natural mobility.  This "
 "is very dangerous in combat, as a careless enemy can soon find their support "
 "troops flanked by these creatures.\n"
-"\t\n"
+"\n"
 "Special Notes:"
 msgstr ""
 
@@ -7273,10 +7271,10 @@ msgstr ""
 msgid ""
 "Certain saurians are seen, dressed in considerable regalia, and covered head "
 "to toe in horrifing, esoteric shapes and markings, both with paint and "
-"tattoo.  Some suspect them to be visionaries, or oracles amongst their ilk."
-"\tBut whatever 'societal' function they may have, they are undeniably "
-"powerful in the strange magics their kind possess, and are a thing to be "
-"wary of if ever seen.\n"
+"tattoo. Some suspect them to be visionaries, or oracles amongst their ilk. "
+"But whatever 'societal' function they may have, they are undeniably powerful "
+"in the strange magics their kind possess, and are a thing to be wary of if "
+"ever seen.\n"
 "\n"
 "Special Notes:"
 msgstr ""
@@ -7288,11 +7286,11 @@ msgstr ""
 #: data/units/Saurian_Skirmisher.cfg:23
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
-"of this, they are very, very agile.  In combat, their size allows them to "
+"of this, they are very, very agile. In combat, their size allows them to "
 "dart past defenses that would hold any grown man at bay, making them a "
 "tricky foe to deal with.\n"
-"\t\n"
-"\tSpears are their preferred weapon, as their powerful hind legs can drive a "
+"\n"
+"Spears are their preferred weapon, as their powerful hind legs can drive a "
 "spear with enough force to do considerable damage, either in hand or "
 "thrown.\n"
 "\n"
@@ -8799,73 +8797,96 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: src/menu_events.cpp:1454
-msgid "Commands: whisper ignore emote. Type /help [command] for more help."
+#: src/menu_events.cpp:1455
+msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1505
+#: src/menu_events.cpp:1506
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1509
-msgid "Add player to your ignore list. Usage: /ignore add [argument]"
+#: src/menu_events.cpp:1510
+msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1511
-msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
+#: src/menu_events.cpp:1512
+msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1513
-msgid "Clear your ignore list. Usage: /ignore clear"
+#: src/menu_events.cpp:1514
+msgid ""
+"Remove player from your ignore or friends list. Usage: /list remove "
+"[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1515
-msgid "Show your ignore list. Usage: /ignore list"
+#: src/menu_events.cpp:1516
+msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1517
-msgid "Unknown subcommand"
+#: src/menu_events.cpp:1518
+msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
 #: src/menu_events.cpp:1520
-msgid ""
-"Ignore messages from players on this list. Usage: /ignore [subcommand] "
-"[argument](optional) Subcommands: add remove list clear. Type /help ignore "
-"[subcommand] for more info."
+msgid "Unknown subcommand"
 msgstr ""
 
 #: src/menu_events.cpp:1523
+msgid ""
+"Ignore messages from players on the ignore list and highlight players on the "
+"friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
+"addfriend addignore remove display clear. Type /help list [subcommand] for "
+"more info."
+msgstr ""
+
+#: src/menu_events.cpp:1526
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1525
+#: src/menu_events.cpp:1528
 msgid "Unknown command"
 msgstr ""
 
-#: src/menu_events.cpp:1542
+#: src/menu_events.cpp:1545
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1544 src/menu_events.cpp:1554
+#: src/menu_events.cpp:1547 src/menu_events.cpp:1560 src/menu_events.cpp:1570
 msgid "Invalid username: "
 msgstr ""
 
-#: src/menu_events.cpp:1552 src/menu_events.cpp:1578
+#: src/menu_events.cpp:1558
+msgid "Added to friends list: "
+msgstr ""
+
+#: src/menu_events.cpp:1568
+msgid "Removed from list: "
+msgstr ""
+
+#: src/menu_events.cpp:1595
+msgid "There are no players on your friends or ignore list."
+msgstr ""
+
+#: src/menu_events.cpp:1605
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1608
+msgid "Removed from friends list: "
+msgstr ""
+
+#: src/menu_events.cpp:1615
 #, fuzzy
 msgid "Unknown command: "
 msgstr "Scenariu necunoscut: "
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1716
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1859
 msgid "prompt^Command:"
 msgstr ""
 
