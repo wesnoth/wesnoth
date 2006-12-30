@@ -1,4 +1,5 @@
-find data -name themes -prune -o -name campaigns -prune -o -name '*.cfg' -print
+find data -name themes -prune -o -name campaigns -prune -o -name tutorial -prune -o -name '*.cfg' -print
 find data/campaigns/*/units -name '*.cfg' -print
 find data/campaigns/*.cfg -name '*.cfg' -print
-find data/themes/ -name '*.cfg' -print
+find data/tutorial/units -name '*.cfg' -print
+find data/themes/ -name editor.cfg -prune -o -name '*.cfg' -print
