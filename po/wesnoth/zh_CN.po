@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:28+0100\n"
+"POT-Creation-Date: 2006-12-30 16:16+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -9418,13 +9418,13 @@ msgstr "韦诺之战"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告： 你试图载入的文件是错误的。仍然载入。\n"
 
-#: src/game.cpp:668 src/multiplayer_connect.cpp:1272
+#: src/game.cpp:668 src/multiplayer_connect.cpp:1271
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "这个存档来至于不同版本的游戏。你仍然想载入吗？"
 
-#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1257
+#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1256
 msgid "The file you have tried to load is corrupt: '"
 msgstr "你试图载入的文件是错误的： '"
 
@@ -10362,15 +10362,15 @@ msgstr "电脑玩家"
 msgid "Empty"
 msgstr "空"
 
-#: src/multiplayer_connect.cpp:1264
+#: src/multiplayer_connect.cpp:1263
 msgid "This is not a multiplayer save"
 msgstr "这不是多人游戏存档"
 
-#: src/multiplayer_connect.cpp:1314
+#: src/multiplayer_connect.cpp:1313
 msgid "Cannot find era $era"
 msgstr "不能找到时期 $era"
 
-#: src/multiplayer_connect.cpp:1335
+#: src/multiplayer_connect.cpp:1334
 #, fuzzy
 msgid ""
 "Victory:\n"
@@ -10379,7 +10379,7 @@ msgstr ""
 "胜利\n"
 "@打败敌人领袖(们)"
 
-#: src/multiplayer_connect.cpp:1371
+#: src/multiplayer_connect.cpp:1370
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
@@ -10658,8 +10658,8 @@ msgstr "不能加入socket 到 socket 设置"
 msgid "Could not send initial handshake"
 msgstr "不能发送初始化信息"
 
-#: src/play_controller.cpp:378 src/playsingle_controller.cpp:346
-#: src/playsingle_controller.cpp:392
+#: src/play_controller.cpp:378 src/playsingle_controller.cpp:348
+#: src/playsingle_controller.cpp:394
 msgid "The file you have tried to load is corrupt"
 msgstr "你想载入的文件不正确"
 
@@ -10706,67 +10706,67 @@ msgid ""
 "error log of your game?"
 msgstr "游戏不再同步而即将退出。你想保存当前游戏的错误记录吗？"
 
-#: src/playsingle_controller.cpp:217
+#: src/playsingle_controller.cpp:219
 msgid "Game Over"
 msgstr "游戏结束"
 
-#: src/playsingle_controller.cpp:218
+#: src/playsingle_controller.cpp:220
 msgid "The game is over."
 msgstr "本游戏结束。"
 
-#: src/playsingle_controller.cpp:313
+#: src/playsingle_controller.cpp:315
 msgid "Remaining gold: "
 msgstr "所剩金币： "
 
-#: src/playsingle_controller.cpp:316
+#: src/playsingle_controller.cpp:318
 msgid "Early finish bonus: "
 msgstr "提早结束奖励： "
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:320
 msgid "per turn"
 msgstr "每回合"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:321
 msgid "Turns finished early: "
 msgstr "回合数提早结束： "
 
-#: src/playsingle_controller.cpp:321
+#: src/playsingle_controller.cpp:323
 msgid "Bonus: "
 msgstr "奖励： "
 
-#: src/playsingle_controller.cpp:323
+#: src/playsingle_controller.cpp:325
 msgid "Gold: "
 msgstr "金币： "
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:330
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80%的金币会带入下个剧本"
 
-#: src/playsingle_controller.cpp:329
+#: src/playsingle_controller.cpp:331
 msgid "Retained Gold: "
 msgstr "所剩金币： "
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:336
 msgid "Victory"
 msgstr "胜利"
 
-#: src/playsingle_controller.cpp:335
+#: src/playsingle_controller.cpp:337
 msgid "You have emerged victorious!"
 msgstr "你已显现出胜利的姿态！"
 
-#: src/playsingle_controller.cpp:339
+#: src/playsingle_controller.cpp:341
 msgid "Scenario Report"
 msgstr "剧本报告"
 
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:359
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "网络断开连接，游戏将不能继续进行。你想保存游戏吗？"
 
-#: src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:479
 msgid "It is now your turn"
 msgstr "回合到你了"
 

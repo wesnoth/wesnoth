@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:28+0100\n"
+"POT-Creation-Date: 2006-12-30 16:16+0100\n"
 "PO-Revision-Date: 2006-12-27 20:22+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -10895,7 +10895,7 @@ msgstr "The Battle for Wesnoth"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Warnung: Die Datei ist beschädigt. Sie wird trotzdem geladen.\n"
 
-#: src/game.cpp:668 src/multiplayer_connect.cpp:1272
+#: src/game.cpp:668 src/multiplayer_connect.cpp:1271
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -10903,7 +10903,7 @@ msgstr ""
 "Dieser Spielstand stammt aus einer früheren Version. Möchtet Ihr den "
 "Spielstand laden?"
 
-#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1257
+#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1256
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt: '"
 
@@ -11859,16 +11859,16 @@ msgstr "Computer"
 msgid "Empty"
 msgstr "Leer"
 
-#: src/multiplayer_connect.cpp:1264
+#: src/multiplayer_connect.cpp:1263
 msgid "This is not a multiplayer save"
 msgstr "Dies ist kein Mehrspieler-Spielstand"
 
-#: src/multiplayer_connect.cpp:1314
+#: src/multiplayer_connect.cpp:1313
 msgid "Cannot find era $era"
 msgstr "Kann die Ära $era nicht finden"
 
 # XXX - : in original missing!
-#: src/multiplayer_connect.cpp:1335
+#: src/multiplayer_connect.cpp:1334
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -11876,7 +11876,7 @@ msgstr ""
 "Sieg:\n"
 "@Besiegt alle gegnerischen Heerführer"
 
-#: src/multiplayer_connect.cpp:1371
+#: src/multiplayer_connect.cpp:1370
 msgid "Waiting for players to join..."
 msgstr "Warte auf weitere Mitspieler..."
 
@@ -12146,8 +12146,8 @@ msgstr "Der Sockel konnte zum Sockelsatz nicht hinzugefügt werden."
 msgid "Could not send initial handshake"
 msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
-#: src/play_controller.cpp:378 src/playsingle_controller.cpp:346
-#: src/playsingle_controller.cpp:392
+#: src/play_controller.cpp:378 src/playsingle_controller.cpp:348
+#: src/playsingle_controller.cpp:394
 msgid "The file you have tried to load is corrupt"
 msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
 
@@ -12197,60 +12197,60 @@ msgstr ""
 "Das Spiel läuft nicht mehr synchron und muss beendet werden. Möchtet Ihr "
 "einen Fehlerbericht dieses Spiels abspeichern?"
 
-#: src/playsingle_controller.cpp:217
+#: src/playsingle_controller.cpp:219
 msgid "Game Over"
 msgstr "Spielende"
 
-#: src/playsingle_controller.cpp:218
+#: src/playsingle_controller.cpp:220
 msgid "The game is over."
 msgstr "Das Spiel ist vorbei."
 
-#: src/playsingle_controller.cpp:313
+#: src/playsingle_controller.cpp:315
 msgid "Remaining gold: "
 msgstr "Restliches Gold:"
 
-#: src/playsingle_controller.cpp:316
+#: src/playsingle_controller.cpp:318
 msgid "Early finish bonus: "
 msgstr "Bonus für frühzeitiges Ende:"
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:320
 msgid "per turn"
 msgstr "pro Runde"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:321
 msgid "Turns finished early: "
 msgstr "Runden früher abgeschlossen:"
 
-#: src/playsingle_controller.cpp:321
+#: src/playsingle_controller.cpp:323
 msgid "Bonus: "
 msgstr "Bonus:"
 
-#: src/playsingle_controller.cpp:323
+#: src/playsingle_controller.cpp:325
 msgid "Gold: "
 msgstr "Gold:"
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:330
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% des Goldes bleiben für das nächste Szenario erhalten"
 
-#: src/playsingle_controller.cpp:329
+#: src/playsingle_controller.cpp:331
 msgid "Retained Gold: "
 msgstr "Übernommenes Gold:"
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:336
 msgid "Victory"
 msgstr "Sieg"
 
-#: src/playsingle_controller.cpp:335
+#: src/playsingle_controller.cpp:337
 msgid "You have emerged victorious!"
 msgstr "Ihr seid siegreich aus der Schlacht hervorgegangen!"
 
-#: src/playsingle_controller.cpp:339
+#: src/playsingle_controller.cpp:341
 msgid "Scenario Report"
 msgstr "Szenariostatistik"
 
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:359
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -12258,7 +12258,7 @@ msgstr ""
 "Das Spiel kann nicht fortgesetzt werden, da ein Verbindungsfehler "
 "aufgetreten ist. Möchtet Ihr den Spielstand speichern?"
 
-#: src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:479
 msgid "It is now your turn"
 msgstr "Ihr seid an der Reihe"
 
