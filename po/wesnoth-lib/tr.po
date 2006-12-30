@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:32+0200\n"
+"POT-Creation-Date: 2006-12-30 15:47+0100\n"
 "PO-Revision-Date: 2006-06-12 14:28+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -31,12 +31,12 @@ msgid "Create New Map"
 msgstr "Yeni bir harita yap"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:106
+#: src/mapgen_dialog.cpp:110
 msgid "Width:"
 msgstr "Eni:"
 
 #: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
-#: src/mapgen_dialog.cpp:107
+#: src/mapgen_dialog.cpp:111
 msgid "Height:"
 msgstr "Boyu:"
 
@@ -53,8 +53,7 @@ msgid "Random Generator Settings"
 msgstr "Rastgele üreteç ayarları"
 
 #: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/filechooser.cpp:54 src/show_dialog.cpp:432 src/show_dialog.cpp:438
-#: src/show_dialog.cpp:894 src/show_dialog.cpp:984
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
 msgid "Cancel"
 msgstr "İptal"
 
@@ -62,44 +61,43 @@ msgstr "İptal"
 msgid "Map creation failed."
 msgstr "Harita oluşturma başarısız oldu."
 
-#: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:749
+#: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:101
+#: src/preferences_display.cpp:863
 msgid "Close Window"
 msgstr "Pencereyi kapat"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:77 src/preferences_display.cpp:651
+#: src/hotkeys.cpp:78 src/preferences_display.cpp:749
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:238
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:266
 msgid "Scroll Speed:"
 msgstr "Kaydırma hızı:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:59
-#: src/preferences_display.cpp:217
+#: src/preferences_display.cpp:242
 msgid "Toggle Full Screen"
 msgstr "Tam ekran aç-kapa"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:220
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:245
 msgid "Show Grid"
 msgstr "Izgarayı göster"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:228
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:256
 msgid "Video Mode"
 msgstr "Video modu"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:230
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:258
 msgid "Hotkeys"
 msgstr "Klavye kısayolları"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Haritayı boyutlandır"
 
-#: src/editor/editor_dialogs.cpp:409 src/filechooser.cpp:53
-#: src/show_dialog.cpp:418 src/show_dialog.cpp:431
+#: src/editor/editor_dialogs.cpp:409
 msgid "OK"
 msgstr "Tamam"
 
@@ -114,6 +112,31 @@ msgstr "Y-Ekseni"
 #: src/editor/editor_dialogs.cpp:494
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Döndür (bu işlem haritanın boyutlarının değişmesine neden olabilir):"
+
+#: src/filechooser.cpp:51
+msgid "File: "
+msgstr ""
+
+#: src/filechooser.cpp:52
+msgid "Delete File"
+msgstr "Dosyayı sil"
+
+#: src/filechooser.cpp:54 src/filechooser.cpp:166
+msgid "New Folder"
+msgstr ""
+
+#: src/filechooser.cpp:154
+msgid "Deletion of the file failed."
+msgstr "Dosyanın silinmesi başarısız oldu."
+
+#: src/filechooser.cpp:167
+msgid "Name: "
+msgstr ""
+
+#: src/filechooser.cpp:172
+#, fuzzy
+msgid "Creation of the directory failed."
+msgstr "Dosyanın silinmesi başarısız oldu."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -176,282 +199,292 @@ msgid "Save Game"
 msgstr "Oyunu kaydet"
 
 #: src/hotkeys.cpp:65
+#, fuzzy
+msgid "Save The Map"
+msgstr "Haritayı kaydet"
+
+#: src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "Oyun yükle"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Recruit"
 msgstr "Asker al"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Repeat Recruit"
 msgstr "Aynısından askere al"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Recall"
 msgstr "Çağır"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "End Turn"
 msgstr "Eli bitir"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Toggle Grid"
 msgstr "Izgara aç-kapa"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Mouse Scrolling"
 msgstr "Fare ile Kaydırma"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Status Table"
 msgstr "Durum tablosu"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Mute"
 msgstr "Sesi kapat"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Konuş"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Create Unit (Debug!)"
 msgstr "Birim oluştur (Debug!)"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Change Unit Side (Debug!)"
 msgstr "Birim tarafını değiştir (Debug!)"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Scenario Objectives"
 msgstr "Senaryo amaçları"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Unit List"
 msgstr "Birim listesi"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Statistics"
 msgstr "İstatistikler"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Quit Game"
 msgstr "Oyundan çık"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Set Label"
 msgstr "Etiket koy"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Clear Labels"
 msgstr "Etiketleri Temizle"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Show Enemy Moves"
 msgstr "Düşman hareketlerini göster"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Best Possible Enemy Moves"
 msgstr "Muhtemel en iyi düşman hareketleri"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Play"
 msgstr "Oyun"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Reset"
 msgstr "Sıfırla"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Stop"
 msgstr "Dur"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Next Turn"
 msgstr "Sonraki Sıra"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Next Side"
 msgstr "Sonraki "
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Shroud"
 msgstr "Örtülü"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Fog"
 msgstr "Sis"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Skip animation"
 msgstr "Animasyonu atla"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Set Terrain"
 msgstr "Zemini belirle"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Quit Editor"
 msgstr "Editörden çık"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "New Map"
 msgstr "Yeni harita"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Load Map"
 msgstr "Harita yükle"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Save Map"
 msgstr "Haritayı kaydet"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Save As"
 msgstr "Farklı isimle kaydet"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Set Player's keep"
 msgstr "Oyuncunun iç kalesini belirle"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Flood Fill"
 msgstr "Akıcı doldurma"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Fill Selection"
 msgstr "Seçimi doldur"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Cut"
 msgstr "Kes"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Revert from Disk"
 msgstr "Diskten eski haline getir"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Flip Map"
 msgstr "Haritayı yansıt"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Select All"
 msgstr "Hepsini seç"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Draw Terrain"
 msgstr "Zemin çiz"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Refresh Image Cache"
 msgstr "Resim hafızasını tazele"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Delay Shroud Updates"
 msgstr "Örtü güncellemeleri geciktir"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Update Shroud Now"
 msgstr "Örtüyü şimdi güncelle"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Continue Move"
 msgstr "Harekete devam et"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Find Label or Unit"
 msgstr "Etiket veya birim bul"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Speak to Ally"
 msgstr "Müttefikle konuş"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Herkesle konuş"
 
-#: src/hotkeys.cpp:120 src/show_dialog.cpp:586
+#: src/hotkeys.cpp:121
 msgid "Help"
 msgstr "Yardım"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "View Chat Log"
 msgstr "Sohbet kaydını gör"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Enter user command"
 msgstr "Kullanıcı komutu gir"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Change the language"
 msgstr "Dili değiştir"
 
-#: src/hotkeys.cpp:466 src/hotkeys.cpp:672
+#: src/hotkeys.cpp:467 src/hotkeys.cpp:696
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musun?"
 
-#: src/hotkeys.cpp:466 src/hotkeys.cpp:672
+#: src/hotkeys.cpp:467 src/hotkeys.cpp:696
 msgid "Quit"
 msgstr "Çık"
 
-#: src/mapgen_dialog.cpp:100
+#: src/mapgen_dialog.cpp:104
 msgid "Map Generator"
 msgstr "Harita üreticisi"
 
-#: src/mapgen_dialog.cpp:105
+#: src/mapgen_dialog.cpp:109
 msgid "Players:"
 msgstr "Oyuncular:"
 
-#: src/mapgen_dialog.cpp:108
+#: src/mapgen_dialog.cpp:112
 msgid "Number of Hills:"
 msgstr "Tepe sayısı:"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:113
 msgid "Max Hill Size:"
 msgstr "En fazla tepe boyutu:"
 
-#: src/mapgen_dialog.cpp:110
+#: src/mapgen_dialog.cpp:114
 msgid "Villages:"
 msgstr "Köyler:"
 
-#: src/mapgen_dialog.cpp:111
+#: src/mapgen_dialog.cpp:115
+#, fuzzy
+msgid "Castle Size:"
+msgstr "En fazla tepe boyutu:"
+
+#: src/mapgen_dialog.cpp:116
 msgid "Landform:"
 msgstr "Arazi şekli:"
 
-#: src/mapgen_dialog.cpp:217
+#: src/mapgen_dialog.cpp:236
 msgid "Roads Between Castles"
 msgstr "Kaleler arasında yollar"
 
-#: src/mapgen_dialog.cpp:274
+#: src/mapgen_dialog.cpp:296
 msgid "/1000 tiles"
 msgstr "/1000 tuğla"
 
-#: src/mapgen_dialog.cpp:279
+#: src/mapgen_dialog.cpp:306
 msgid "Coastal"
 msgstr "Sahil"
 
-#: src/mapgen_dialog.cpp:279
+#: src/mapgen_dialog.cpp:306
 msgid "Inland"
 msgstr "Kara"
 
-#: src/mapgen_dialog.cpp:279
+#: src/mapgen_dialog.cpp:306
 msgid "Island"
 msgstr "Ada"
 
-#: src/preferences.cpp:297
+#: src/preferences.cpp:384
 msgid "player"
 msgstr "oyuncu"
 
-#: src/preferences_display.cpp:73 src/preferences_display.cpp:105
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:107
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -461,152 +494,196 @@ msgstr ""
 "yönetici pixel başına 16 bit olarak ayarlanmış olmalıdır. Oyunu tam ekran "
 "çalıştırmak için ekranın 1024x768x16 desteklemelidir."
 
-#: src/preferences_display.cpp:218
+#: src/preferences_display.cpp:243
 msgid "Accelerated Speed"
 msgstr "Arttırılmış hız"
 
-#: src/preferences_display.cpp:219
+#: src/preferences_display.cpp:244
 msgid "Skip AI Moves"
 msgstr "YZ hareketlerini atla"
 
-#: src/preferences_display.cpp:221
-msgid "Show Lobby Joins"
+#: src/preferences_display.cpp:246
+#, fuzzy
+msgid "Show Lobby Minimaps"
 msgstr "Lobiye katılanları göster"
 
-#: src/preferences_display.cpp:222
+#: src/preferences_display.cpp:247
+#, fuzzy
+msgid "Show Lobby Joins Of Friends"
+msgstr "Lobiye katılanları göster"
+
+#: src/preferences_display.cpp:248
+#, fuzzy
+msgid "Sort Lobby List"
+msgstr "Lobiye katılanları göster"
+
+#: src/preferences_display.cpp:249
+msgid "Iconize Lobby List"
+msgstr ""
+
+#: src/preferences_display.cpp:250
 msgid "Show Floating Labels"
 msgstr "Seyyar etiketleri göster"
 
-#: src/preferences_display.cpp:223
+#: src/preferences_display.cpp:251
 msgid "Turn Dialog"
 msgstr "Sıra gelme kutusu"
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:252
 msgid "Turn Bell"
 msgstr "Sıra gelme zili"
 
-#: src/preferences_display.cpp:225
+#: src/preferences_display.cpp:253
 msgid "Show Team Colors"
 msgstr "Takım renklerini göster"
 
-#: src/preferences_display.cpp:226
+#: src/preferences_display.cpp:254
 msgid "Show Color Cursors"
 msgstr "Renkli imleçleri göster"
 
-#: src/preferences_display.cpp:227
+#: src/preferences_display.cpp:255
 msgid "Show Haloing Effects"
 msgstr "Nur efektlerini göster"
 
-#: src/preferences_display.cpp:229
+#: src/preferences_display.cpp:257
 msgid "Theme"
 msgstr "Tema"
 
-#: src/preferences_display.cpp:231
+#: src/preferences_display.cpp:259
 msgid "Adjust Gamma"
 msgstr "Gamayı ayarla"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:260
 msgid "Reverse Time Graphics"
 msgstr "Zaman grafiklerini ters çevir"
 
-#: src/preferences_display.cpp:234
+#: src/preferences_display.cpp:262
 msgid "Sound effects"
 msgstr "Ses efektleri"
 
-#: src/preferences_display.cpp:235
+#: src/preferences_display.cpp:263
 msgid "Music"
 msgstr "Müzik"
 
-#: src/preferences_display.cpp:236
+#: src/preferences_display.cpp:264
 msgid "Chat Timestamping"
 msgstr "Yazışma zaman bilgisi"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:265
 msgid "Music Volume:"
 msgstr "Müzik ses düzeyi:"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:265
 msgid "SFX Volume:"
 msgstr "SFX ses düzeyi:"
 
-#: src/preferences_display.cpp:238
+#: src/preferences_display.cpp:266
+#, fuzzy
+msgid "Bell Volume:"
+msgstr "SFX ses düzeyi:"
+
+#: src/preferences_display.cpp:267
 msgid "Gamma:"
 msgstr "Gama:"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:281
 msgid "Sound effects on/off"
 msgstr "Ses efektleri açık/kapalı"
 
-#: src/preferences_display.cpp:255
+#: src/preferences_display.cpp:285
 msgid "Change the sound effects volume"
 msgstr "Ses efektleri ses düzeyini değiştir"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:288
 msgid "Music on/off"
 msgstr "Müzik açık/kapalı"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:292
 msgid "Change the music volume"
 msgstr "Müzik ses düzeyini değiştir"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:298
+#, fuzzy
+msgid "Change the bell volume"
+msgstr "Müzik ses düzeyini değiştir"
+
+#: src/preferences_display.cpp:303
 msgid "Change the speed of scrolling around the map"
 msgstr "Haritada ekranın kayma hızını değiştir"
 
-#: src/preferences_display.cpp:273 src/preferences_display.cpp:275
+#: src/preferences_display.cpp:308 src/preferences_display.cpp:310
 msgid "Set the amount of chat lines shown"
 msgstr "Gösterielcek yazışma satırlarını miktarını ayarla"
 
-#: src/preferences_display.cpp:278
+#: src/preferences_display.cpp:313
 msgid "Add a timestamp to chat messages"
 msgstr "Yazışma  mesajlarına zaman bilgisi ekle"
 
-#: src/preferences_display.cpp:281 src/preferences_display.cpp:286
+#: src/preferences_display.cpp:317 src/preferences_display.cpp:322
 msgid "Change the brightness of the display"
 msgstr "Ekranın parlaklığını degiştir"
 
-#: src/preferences_display.cpp:289
+#: src/preferences_display.cpp:325
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Oyunun tam ekran mı yoksa pencere içinde mi çalışması gerektiğini seç"
 
-#: src/preferences_display.cpp:292
+#: src/preferences_display.cpp:328
 msgid "Make units move and fight faster"
 msgstr "Birimlerin daha hızlı hareket etmesi ve savaşmasını sağlar"
 
-#: src/preferences_display.cpp:295
+#: src/preferences_display.cpp:333
+#, fuzzy
+msgid "Units move and fight speed"
+msgstr "Birimlerin daha hızlı hareket etmesi ve savaşmasını sağlar"
+
+#: src/preferences_display.cpp:336
 msgid "Do not animate AI units moving"
 msgstr "Yapay zeka birimlerini hareket ederken oynatma"
 
-#: src/preferences_display.cpp:298
+#: src/preferences_display.cpp:339
 msgid "Overlay a grid onto the map"
 msgstr "Haritanın üzerine bir ızgara yerleştir"
 
-#: src/preferences_display.cpp:301
-msgid "Show messages about players joining the multiplayer lobby"
+#: src/preferences_display.cpp:342
+#, fuzzy
+msgid "Show minimaps in the multiplayer lobby"
 msgstr "Çokouncu lobisine katılan oyuncular hakkındaki mesajları göster"
 
-#: src/preferences_display.cpp:304
+#: src/preferences_display.cpp:345
+msgid "Sort the player list in the lobby by player groups"
+msgstr ""
+
+#: src/preferences_display.cpp:348
+msgid "Show icons in front of the player names in the lobby."
+msgstr ""
+
+#: src/preferences_display.cpp:351
+#, fuzzy
+msgid "Show messages about your friends joining the multiplayer lobby"
+msgstr "Çokouncu lobisine katılan oyuncular hakkındaki mesajları göster"
+
+#: src/preferences_display.cpp:354
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Bir birim darbe aldığında üzerinde aldığı hasarı gösteren bir yazı göster"
 
-#: src/preferences_display.cpp:306
+#: src/preferences_display.cpp:356
 msgid "Change the resolution the game runs at"
 msgstr "Oyunun çalıştığı çözünürlüğü değiştir"
 
-#: src/preferences_display.cpp:307
+#: src/preferences_display.cpp:357
 msgid "Change the theme the game runs with"
 msgstr "Oyunun çalıştığı temayı değiştir"
 
-#: src/preferences_display.cpp:310
+#: src/preferences_display.cpp:360
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Senin sıran geldiğinde bir uyarı göster"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:363
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Senin sıran geldiğinde bir zil sesi çal"
 
-#: src/preferences_display.cpp:316
+#: src/preferences_display.cpp:366
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -614,128 +691,122 @@ msgstr ""
 "Her birimin bastığı yerin etrafında hangi taraftan olduğunu belli eden "
 "renkli bir çember göster."
 
-#: src/preferences_display.cpp:319
+#: src/preferences_display.cpp:369
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Güneşin soldan sağa mı sağdan sola mı hareket edeceğini seç"
 
-#: src/preferences_display.cpp:322
+#: src/preferences_display.cpp:372
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Renkli fare imleçleri kullan (yavaşlatabilir)"
 
-#: src/preferences_display.cpp:325
+#: src/preferences_display.cpp:375
 msgid "Use graphical special effects (may be slower)"
 msgstr "Görsel özel efektleri kullan (yavaşlatabilir)"
 
-#: src/preferences_display.cpp:327
+#: src/preferences_display.cpp:377
 msgid "View and configure keyboard shortcuts"
 msgstr "Klavye kısayollarını gör ve değiştir"
 
-#: src/preferences_display.cpp:517
+#: src/preferences_display.cpp:604
 msgid "Chat Lines: "
 msgstr "Yazışma Satırları:"
 
-#: src/preferences_display.cpp:569
+#: src/preferences_display.cpp:608
+#, fuzzy
+msgid "Speed: "
+msgstr "Kaydırma hızı:"
+
+#: src/preferences_display.cpp:660
 msgid "yes"
 msgstr "evet"
 
-#: src/preferences_display.cpp:571
+#: src/preferences_display.cpp:662
 msgid "no"
 msgstr "hayır"
 
-#: src/preferences_display.cpp:639
+#: src/preferences_display.cpp:737
 msgid "Prefs section^General"
 msgstr "Genel"
 
-#: src/preferences_display.cpp:640
+#: src/preferences_display.cpp:738
 msgid "Prefs section^Display"
 msgstr "Görüntü"
 
-#: src/preferences_display.cpp:641
+#: src/preferences_display.cpp:739
 msgid "Prefs section^Sound"
 msgstr "Ses"
 
-#: src/preferences_display.cpp:642
+#: src/preferences_display.cpp:740
 msgid "Prefs section^Multiplayer"
 msgstr "Ayarlar section^Multiplayer"
 
-#: src/preferences_display.cpp:643
+#: src/preferences_display.cpp:741
 msgid "Advanced section^Advanced"
 msgstr "Gelişmiş"
 
-#: src/preferences_display.cpp:692
+#: src/preferences_display.cpp:806
 msgid "There are no alternative video modes available"
 msgstr "Alternatif video modları mevcut değil"
 
-#: src/preferences_display.cpp:721
+#: src/preferences_display.cpp:835
 msgid "Choose Resolution"
 msgstr "Çözünürlüğü seç"
 
-#: src/preferences_display.cpp:754
+#: src/preferences_display.cpp:868
 msgid "Hotkey Settings"
 msgstr "Klavye kısayolu ayarları"
 
-#: src/preferences_display.cpp:758 src/preferences_display.cpp:811
+#: src/preferences_display.cpp:872 src/preferences_display.cpp:925
 msgid "Press desired Hotkey"
 msgstr "Klavye kısayolunu gir"
 
-#: src/preferences_display.cpp:776
+#: src/preferences_display.cpp:890
 msgid "Action"
 msgstr "Eylem"
 
-#: src/preferences_display.cpp:776
+#: src/preferences_display.cpp:890
 msgid "Binding"
 msgstr "Kısayol"
 
-#: src/preferences_display.cpp:788
+#: src/preferences_display.cpp:902
 msgid "Change Hotkey"
 msgstr "Kısayolu değiştir"
 
-#: src/preferences_display.cpp:791
+#: src/preferences_display.cpp:905
 msgid "Save Hotkeys"
 msgstr "Kısayolları kaydet"
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:952
 msgid "This Hotkey is already in use."
 msgstr "Bu kısayol zaten kullanımda"
 
-#: src/preferences_display.cpp:871
+#: src/preferences_display.cpp:985
 msgid "Saved Theme Preference: "
 msgstr "Kayıt edilen Tema Tercihleri"
 
-#: src/preferences_display.cpp:877
+#: src/preferences_display.cpp:991
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Yeni tema bir sonraki yeni oyunda yada yüklenen oyunda etkili olmaya "
 "başlayacak."
 
-#: src/preferences_display.cpp:881
+#: src/preferences_display.cpp:995
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Bilinen tema yok. Var olan bir oyundan değiştirmeyi dene."
 
-#: src/show_dialog.cpp:313
+#: src/show_dialog.cpp:314
 msgid "Error"
 msgstr "Hata"
 
-#: src/show_dialog.cpp:424
-msgid "Yes"
-msgstr "Evet"
-
 #: src/show_dialog.cpp:425
-msgid "No"
-msgstr "Hayır"
-
-#: src/show_dialog.cpp:444
-msgid "Close"
-msgstr "Kapat"
-
-#: src/show_dialog.cpp:917
 msgid "KB"
 msgstr "KB"
 
-#: src/widgets/file_chooser.cpp:37
-msgid "Delete File"
-msgstr "Dosyayı sil"
+#~ msgid "Yes"
+#~ msgstr "Evet"
 
-#: src/widgets/file_chooser.cpp:169
-msgid "Deletion of the file failed."
-msgstr "Dosyanın silinmesi başarısız oldu."
+#~ msgid "No"
+#~ msgstr "Hayır"
+
+#~ msgid "Close"
+#~ msgstr "Kapat"

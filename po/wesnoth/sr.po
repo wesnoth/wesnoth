@@ -60,7 +60,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-29 14:47+0100\n"
+"POT-Creation-Date: 2006-12-30 15:46+0100\n"
 "PO-Revision-Date: 2006-08-15 11:32+0000\n"
 "Last-Translator: Branko Kokanovic\n"
 "Language-Team: sr_CS\n"
@@ -557,7 +557,7 @@ msgstr "Словенски"
 msgid "Contributors"
 msgstr "Допринели су"
 
-#: data/about.cfg:590
+#: data/about.cfg:591
 msgid "Bots"
 msgstr "Ботови"
 
@@ -1809,15 +1809,15 @@ msgstr "Мртви"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:37
+#: data/game.cfg:33
 msgid "Binary Saves"
 msgstr "Бинарни Снимци"
 
-#: data/game.cfg:44
+#: data/game.cfg:40
 msgid "Show Combat"
 msgstr "Прикажи Борбу"
 
-#: data/game.cfg:51
+#: data/game.cfg:47
 msgid "Mouse Scrolling"
 msgstr ""
 
@@ -3733,7 +3733,7 @@ msgid "Yes!"
 msgstr "Да!"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:358
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635 src/construct_dialog.cpp:124
 msgid "No"
 msgstr "Не"
 
@@ -4325,7 +4325,7 @@ msgid "Teal"
 msgstr ""
 
 #: data/terrain.cfg:11 data/themes/macros.cfg:136
-#: src/multiplayer_create.cpp:68 src/multiplayer_lobby.cpp:393
+#: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:393
 #: src/multiplayer_lobby.cpp:399
 msgid "Shroud"
 msgstr "Сенка"
@@ -8002,7 +8002,8 @@ msgstr "+"
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:67
+#: src/about.cpp:212 src/construct_dialog.cpp:134 src/help.cpp:2784
+#: src/menu_events.cpp:67
 msgid "Close"
 msgstr "Затвори"
 
@@ -8057,6 +8058,26 @@ msgstr "Јединице на видику! ($friends пријатељска, $e
 #: src/actions.cpp:2069
 msgid "(press $hotkey to continue)"
 msgstr "(притисните $hotkey за даље)"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/multiplayer_create.cpp:72
+msgid "OK"
+msgstr "У реду"
+
+#: src/construct_dialog.cpp:123
+#, fuzzy
+msgid "Yes"
+msgstr "Да!"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
+#: src/multiplayer_wait.cpp:163
+msgid "Cancel"
+msgstr "Одустани"
+
+#: src/construct_dialog.cpp:767 src/titlescreen.cpp:307
+msgid "Help"
+msgstr "Помоћ"
 
 #: src/dialogs.cpp:114
 msgid "Advance Unit"
@@ -8181,8 +8202,8 @@ msgstr "Име"
 msgid "Show replay"
 msgstr "Прикажи ток игре"
 
-#: src/dialogs.cpp:556 src/multiplayer_create.cpp:87
-#: src/multiplayer_create.cpp:88
+#: src/dialogs.cpp:556 src/multiplayer_create.cpp:88
+#: src/multiplayer_create.cpp:89
 msgid "Load Game"
 msgstr "Учитај Игру"
 
@@ -8505,7 +8526,7 @@ msgstr "Победа:"
 msgid "Defeat:"
 msgstr "Пораз:"
 
-#: src/gamestatus.cpp:650
+#: src/gamestatus.cpp:748
 msgid "Could not write to file"
 msgstr "Не могу писати у фајл"
 
@@ -8782,7 +8803,7 @@ msgid "Name:"
 msgstr "Име:"
 
 #: src/menu_events.cpp:456 src/menu_events.cpp:469
-#: src/multiplayer_create.cpp:487
+#: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Грешка"
 
@@ -9192,11 +9213,6 @@ msgstr "Боја"
 msgid "I'm Ready"
 msgstr "Ја Сам Спреман"
 
-#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:70
-#: src/multiplayer_wait.cpp:163
-msgid "Cancel"
-msgstr "Одустани"
-
 #: src/multiplayer_connect.cpp:784
 msgid "The scenario is invalid because it has no sides."
 msgstr "Сценарио је неисправан јер нема страна."
@@ -9221,11 +9237,11 @@ msgstr "Празан"
 msgid "This is not a multiplayer save"
 msgstr "Ово није мултиплејер снимак игре"
 
-#: src/multiplayer_connect.cpp:1299
+#: src/multiplayer_connect.cpp:1311
 msgid "Cannot find era $era"
 msgstr "Не могу наћи епоху $era"
 
-#: src/multiplayer_connect.cpp:1320
+#: src/multiplayer_connect.cpp:1332
 #, fuzzy
 msgid ""
 "Victory:\n"
@@ -9234,7 +9250,7 @@ msgstr ""
 "Победа\n"
 "@Порази непријатељског вођу"
 
-#: src/multiplayer_connect.cpp:1356
+#: src/multiplayer_connect.cpp:1376
 msgid "Waiting for players to join..."
 msgstr "Чекам играче да се придруже..."
 
@@ -9264,147 +9280,152 @@ msgid "Use map settings"
 msgstr "Користи подешавања мапе"
 
 #: src/multiplayer_create.cpp:67
+#, fuzzy
+msgid "Random start time"
+msgstr "Случајна Мапа (Зимска)"
+
+#: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
 msgstr "Ратна Магла"
 
-#: src/multiplayer_create.cpp:69
+#: src/multiplayer_create.cpp:70
 msgid "Observers"
 msgstr "Посматрачи"
 
-#: src/multiplayer_create.cpp:71
-msgid "OK"
-msgstr "У реду"
-
-#: src/multiplayer_create.cpp:72
+#: src/multiplayer_create.cpp:73
 msgid "Regenerate"
 msgstr "Регенерише"
 
-#: src/multiplayer_create.cpp:73
+#: src/multiplayer_create.cpp:74
 msgid "Settings..."
 msgstr "Поставке..."
 
-#: src/multiplayer_create.cpp:120
+#: src/multiplayer_create.cpp:121
 msgid "The maximum number of turns the game can last"
 msgstr "Максималан број потеза колико игра може трајати"
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:124
 msgid "Enables user time limit"
 msgstr "Омогућава ограничавање времена играча"
 
-#: src/multiplayer_create.cpp:129
+#: src/multiplayer_create.cpp:130
 msgid "Longest time allowed for first turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:135
+#: src/multiplayer_create.cpp:136
 msgid "Longest time possible for any turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:141
+#: src/multiplayer_create.cpp:142
 msgid "Time for general tasks each turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:147
+#: src/multiplayer_create.cpp:148
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
-#: src/multiplayer_create.cpp:152
+#: src/multiplayer_create.cpp:153
 msgid "The amount of income each village yields per turn"
 msgstr "Количина злата којег свако село произведе сваки потез"
 
-#: src/multiplayer_create.cpp:157
+#: src/multiplayer_create.cpp:158
 msgid "The amount of experience a unit needs to advance"
 msgstr "Количина искуства које је потребна да би јединица напредовала"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Use scenario specific settings"
 msgstr "Користи специфична подешавања сценарија"
 
-#: src/multiplayer_create.cpp:163
+#: src/multiplayer_create.cpp:164
+msgid "Randomize time of day in begin"
+msgstr ""
+
+#: src/multiplayer_create.cpp:167
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Непријатељске јединице није могуће видети осим ако су у видокругу ваших "
 "јединица"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:170
 msgid "The map is unknown until your units explore it"
 msgstr "Мапа је непозната док је ваше јединице не истраже"
 
-#: src/multiplayer_create.cpp:169
+#: src/multiplayer_create.cpp:173
 msgid "Allow users who are not playing to watch the game"
 msgstr "Дозволи корисницима који не играју да посматрају игру"
 
-#: src/multiplayer_create.cpp:173
+#: src/multiplayer_create.cpp:177
 msgid "Share View"
 msgstr "Дели Поглед"
 
-#: src/multiplayer_create.cpp:174
+#: src/multiplayer_create.cpp:178
 msgid "Share Maps"
 msgstr "Дели Мапе"
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:179
 msgid "Share None"
 msgstr "Не Дели Ништа"
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:190
 msgid "No multiplayer sides."
 msgstr "Нема страна за више играча."
 
-#: src/multiplayer_create.cpp:188
+#: src/multiplayer_create.cpp:192
 msgid "No eras found"
 msgstr "Нема епоха"
 
-#: src/multiplayer_create.cpp:201
+#: src/multiplayer_create.cpp:205
 msgid "$login's game"
 msgstr "$login-ова игра"
 
-#: src/multiplayer_create.cpp:249
+#: src/multiplayer_create.cpp:254
 msgid "Invalid era selected"
 msgstr "Изабрана је неисправна епоха "
 
-#: src/multiplayer_create.cpp:287
+#: src/multiplayer_create.cpp:293
 msgid "You must enter a name."
 msgstr "Морате унети име."
 
-#: src/multiplayer_create.cpp:296
+#: src/multiplayer_create.cpp:302
 msgid "Turns: "
 msgstr "Потеза:"
 
-#: src/multiplayer_create.cpp:298
+#: src/multiplayer_create.cpp:304
 msgid "Unlimited Turns"
 msgstr "Бесконачно Потеза"
 
-#: src/multiplayer_create.cpp:326
+#: src/multiplayer_create.cpp:332
 #, fuzzy
 msgid "Init. Limit: "
 msgstr "Почетно Време:"
 
-#: src/multiplayer_create.cpp:331
+#: src/multiplayer_create.cpp:337
 msgid "Turn Bonus: "
 msgstr "Бонус Потеза:"
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:341
 #, fuzzy
 msgid "Reservoir: "
 msgstr "Сервер:"
 
-#: src/multiplayer_create.cpp:340
+#: src/multiplayer_create.cpp:346
 #, fuzzy
 msgid "Action Bonus: "
 msgstr "Акције"
 
-#: src/multiplayer_create.cpp:347
+#: src/multiplayer_create.cpp:353
 msgid "Village Gold: "
 msgstr "Злата по Селу:"
 
-#: src/multiplayer_create.cpp:355
+#: src/multiplayer_create.cpp:361
 msgid "Exp. Mod.: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:357
+#: src/multiplayer_create.cpp:363
 msgid "Experience Modifier: "
 msgstr "Коефицијент Искуства:"
 
-#: src/multiplayer_create.cpp:485
+#: src/multiplayer_create.cpp:491
 msgid "Players: "
 msgstr "Играчи:"
 
@@ -9508,8 +9529,8 @@ msgstr "Не могу додати утичницу сету утичница."
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:389 src/playsingle_controller.cpp:344
-#: src/playsingle_controller.cpp:390
+#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
+#: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Фајл који сте покушали да отворите је покварен"
 
@@ -9567,60 +9588,60 @@ msgid ""
 "error log of your game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:217
+#: src/playsingle_controller.cpp:219
 msgid "Game Over"
 msgstr "Крај Игре"
 
-#: src/playsingle_controller.cpp:218
+#: src/playsingle_controller.cpp:220
 msgid "The game is over."
 msgstr "Игра је завршена."
 
-#: src/playsingle_controller.cpp:312
+#: src/playsingle_controller.cpp:314
 msgid "Remaining gold: "
 msgstr "Преостало злато:"
 
-#: src/playsingle_controller.cpp:315
+#: src/playsingle_controller.cpp:317
 msgid "Early finish bonus: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:319
 msgid "per turn"
 msgstr "по потезу"
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:320
 msgid "Turns finished early: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:322
 msgid "Bonus: "
 msgstr "Бонус:"
 
-#: src/playsingle_controller.cpp:322
+#: src/playsingle_controller.cpp:324
 msgid "Gold: "
 msgstr "Злато:"
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:329
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% вашег злата је пренесено у следећи сценарио"
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:330
 msgid "Retained Gold: "
 msgstr "Сачувано Злато:"
 
-#: src/playsingle_controller.cpp:333
+#: src/playsingle_controller.cpp:335
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:336
 msgid "You have emerged victorious!"
 msgstr "Победили сте!"
 
-#: src/playsingle_controller.cpp:338
+#: src/playsingle_controller.cpp:340
 msgid "Scenario Report"
 msgstr "Извештај Сценарија"
 
-#: src/playsingle_controller.cpp:355
+#: src/playsingle_controller.cpp:357
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -9628,7 +9649,7 @@ msgstr ""
 "Мрежна веза је прекинута и игра се не може наставити. Желите ли да сачувате "
 "игру?"
 
-#: src/playsingle_controller.cpp:475
+#: src/playsingle_controller.cpp:477
 msgid "It is now your turn"
 msgstr "Ви сте на реду"
 
@@ -9884,10 +9905,6 @@ msgstr "Изађи из игре"
 #: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Више"
-
-#: src/titlescreen.cpp:307
-msgid "Help"
-msgstr "Помоћ"
 
 #: src/titlescreen.cpp:311
 msgid "Help Wesnoth by sending us information"

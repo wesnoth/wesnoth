@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-29 14:47+0100\n"
+"POT-Creation-Date: 2006-12-30 15:46+0100\n"
 "PO-Revision-Date: 2006-09-11 10:49+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <grzywacz@sul.uni.lodz.pl>\n"
@@ -598,7 +598,7 @@ msgstr "Tłumaczenie słoweńskie"
 msgid "Contributors"
 msgstr "Współautorzy"
 
-#: data/about.cfg:590
+#: data/about.cfg:591
 msgid "Bots"
 msgstr "Boty"
 
@@ -2033,15 +2033,15 @@ msgstr "Nieumarli"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:37
+#: data/game.cfg:33
 msgid "Binary Saves"
 msgstr "Zapis gry w formacie binarnym"
 
-#: data/game.cfg:44
+#: data/game.cfg:40
 msgid "Show Combat"
 msgstr "Pokaż walkę"
 
-#: data/game.cfg:51
+#: data/game.cfg:47
 msgid "Mouse Scrolling"
 msgstr "Przewijanie myszą"
 
@@ -4701,7 +4701,7 @@ msgid "Yes!"
 msgstr "Tak!"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:358
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635 src/construct_dialog.cpp:124
 msgid "No"
 msgstr "Nie"
 
@@ -5422,7 +5422,7 @@ msgid "Teal"
 msgstr "Seledyn"
 
 #: data/terrain.cfg:11 data/themes/macros.cfg:136
-#: src/multiplayer_create.cpp:68 src/multiplayer_lobby.cpp:393
+#: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:393
 #: src/multiplayer_lobby.cpp:399
 msgid "Shroud"
 msgstr "Mgła"
@@ -10336,7 +10336,8 @@ msgstr "+"
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:67
+#: src/about.cpp:212 src/construct_dialog.cpp:134 src/help.cpp:2784
+#: src/menu_events.cpp:67
 msgid "Close"
 msgstr "Zamknij"
 
@@ -10393,6 +10394,25 @@ msgstr "Zauważono jednostki! ($friends przyjaznych, $enemies wrogich)"
 #: src/actions.cpp:2069
 msgid "(press $hotkey to continue)"
 msgstr "(wciśnij $hotkey aby kontynuować)"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/multiplayer_create.cpp:72
+msgid "OK"
+msgstr "OK"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Tak"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
+#: src/multiplayer_wait.cpp:163
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: src/construct_dialog.cpp:767 src/titlescreen.cpp:307
+msgid "Help"
+msgstr "Pomoc"
 
 #: src/dialogs.cpp:114
 msgid "Advance Unit"
@@ -10517,8 +10537,8 @@ msgstr "Nazwa"
 msgid "Show replay"
 msgstr "Pokaż powtórkę"
 
-#: src/dialogs.cpp:556 src/multiplayer_create.cpp:87
-#: src/multiplayer_create.cpp:88
+#: src/dialogs.cpp:556 src/multiplayer_create.cpp:88
+#: src/multiplayer_create.cpp:89
 msgid "Load Game"
 msgstr "Wczytaj grę"
 
@@ -10838,7 +10858,7 @@ msgstr "Zwycięstwo:"
 msgid "Defeat:"
 msgstr "Porażka:"
 
-#: src/gamestatus.cpp:650
+#: src/gamestatus.cpp:748
 msgid "Could not write to file"
 msgstr "Nie udało się zapisać do pliku"
 
@@ -11114,7 +11134,7 @@ msgid "Name:"
 msgstr "Nazwa:"
 
 #: src/menu_events.cpp:456 src/menu_events.cpp:469
-#: src/multiplayer_create.cpp:487
+#: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Błąd"
 
@@ -11535,11 +11555,6 @@ msgstr "Kolor"
 msgid "I'm Ready"
 msgstr "Jestem gotowy"
 
-#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:70
-#: src/multiplayer_wait.cpp:163
-msgid "Cancel"
-msgstr "Anuluj"
-
 #: src/multiplayer_connect.cpp:784
 msgid "The scenario is invalid because it has no sides."
 msgstr "Ten scenariusz jest niepoprawny, gdyż nie są w nim określone strony."
@@ -11564,11 +11579,11 @@ msgstr "Puste"
 msgid "This is not a multiplayer save"
 msgstr "To nie jest zapisana gra wieloosobowa"
 
-#: src/multiplayer_connect.cpp:1299
+#: src/multiplayer_connect.cpp:1311
 msgid "Cannot find era $era"
 msgstr "Era $era nie znaleziona"
 
-#: src/multiplayer_connect.cpp:1320
+#: src/multiplayer_connect.cpp:1332
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -11576,7 +11591,7 @@ msgstr ""
 "Zwycięstwo:\n"
 "@Pokonaj wrogich przywódców!"
 
-#: src/multiplayer_connect.cpp:1356
+#: src/multiplayer_connect.cpp:1376
 msgid "Waiting for players to join..."
 msgstr "Oczekiwanie na dołączenie graczy..."
 
@@ -11606,144 +11621,149 @@ msgid "Use map settings"
 msgstr "Użyj ustawień mapy"
 
 #: src/multiplayer_create.cpp:67
+#, fuzzy
+msgid "Random start time"
+msgstr "Losowa mapa (zima)"
+
+#: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
 msgstr "Mgła wojny"
 
-#: src/multiplayer_create.cpp:69
+#: src/multiplayer_create.cpp:70
 msgid "Observers"
 msgstr "Obserwatorzy"
 
-#: src/multiplayer_create.cpp:71
-msgid "OK"
-msgstr "OK"
-
-#: src/multiplayer_create.cpp:72
+#: src/multiplayer_create.cpp:73
 msgid "Regenerate"
 msgstr "Generuj ponownie"
 
-#: src/multiplayer_create.cpp:73
+#: src/multiplayer_create.cpp:74
 msgid "Settings..."
 msgstr "Ustawienia..."
 
-#: src/multiplayer_create.cpp:120
+#: src/multiplayer_create.cpp:121
 msgid "The maximum number of turns the game can last"
 msgstr "Maksymalna liczba tur, przez które gra będzie trwała"
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:124
 msgid "Enables user time limit"
 msgstr "Ustawia limitowanie czasu gracza"
 
-#: src/multiplayer_create.cpp:129
+#: src/multiplayer_create.cpp:130
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Maksymalny czas pierwszej tury (sekundy)"
 
-#: src/multiplayer_create.cpp:135
+#: src/multiplayer_create.cpp:136
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Maksymalny czas na turę (sekundy)"
 
-#: src/multiplayer_create.cpp:141
+#: src/multiplayer_create.cpp:142
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Czas na ogólne czynności na turę (sekundy)"
 
-#: src/multiplayer_create.cpp:147
+#: src/multiplayer_create.cpp:148
 msgid "Time for each attack, recruit, and capture"
 msgstr "Czas za każdy atak, rekrutację i zdobycie"
 
-#: src/multiplayer_create.cpp:152
+#: src/multiplayer_create.cpp:153
 msgid "The amount of income each village yields per turn"
 msgstr "Dochód z wioski na turę"
 
-#: src/multiplayer_create.cpp:157
+#: src/multiplayer_create.cpp:158
 msgid "The amount of experience a unit needs to advance"
 msgstr "Ilość doświadczenia potrzebnego do awansu jednostki"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Use scenario specific settings"
 msgstr "Użyj ustawień scenariusza"
 
-#: src/multiplayer_create.cpp:163
+#: src/multiplayer_create.cpp:164
+msgid "Randomize time of day in begin"
+msgstr ""
+
+#: src/multiplayer_create.cpp:167
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Jednostki wroga są niewidoczne, jeśli nie są w zasięgu wzroku twoich "
 "jednostek"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:170
 msgid "The map is unknown until your units explore it"
 msgstr "Mapa jest nieznana, dopóki twoje jednostki jej nie zbadają"
 
-#: src/multiplayer_create.cpp:169
+#: src/multiplayer_create.cpp:173
 msgid "Allow users who are not playing to watch the game"
 msgstr "Pozwala obserwować grę osobom, które nie grają"
 
-#: src/multiplayer_create.cpp:173
+#: src/multiplayer_create.cpp:177
 msgid "Share View"
 msgstr "Dziel widok"
 
-#: src/multiplayer_create.cpp:174
+#: src/multiplayer_create.cpp:178
 msgid "Share Maps"
 msgstr "Dziel mapę"
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:179
 msgid "Share None"
 msgstr "Nie dziel niczego"
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:190
 msgid "No multiplayer sides."
 msgstr "Brak stron do gry wieloosobowej."
 
-#: src/multiplayer_create.cpp:188
+#: src/multiplayer_create.cpp:192
 msgid "No eras found"
 msgstr "Nie znaleziono żadnych er"
 
-#: src/multiplayer_create.cpp:201
+#: src/multiplayer_create.cpp:205
 msgid "$login's game"
 msgstr "Gra $login"
 
-#: src/multiplayer_create.cpp:249
+#: src/multiplayer_create.cpp:254
 msgid "Invalid era selected"
 msgstr "Wybrana era jest niewłaściwa"
 
-#: src/multiplayer_create.cpp:287
+#: src/multiplayer_create.cpp:293
 msgid "You must enter a name."
 msgstr "Musisz podać nazwę."
 
-#: src/multiplayer_create.cpp:296
+#: src/multiplayer_create.cpp:302
 msgid "Turns: "
 msgstr "Tury: "
 
-#: src/multiplayer_create.cpp:298
+#: src/multiplayer_create.cpp:304
 msgid "Unlimited Turns"
 msgstr "Brak ograniczenia tur"
 
-#: src/multiplayer_create.cpp:326
+#: src/multiplayer_create.cpp:332
 msgid "Init. Limit: "
 msgstr "Pocz. Limit:"
 
-#: src/multiplayer_create.cpp:331
+#: src/multiplayer_create.cpp:337
 msgid "Turn Bonus: "
 msgstr "Bonus tury: "
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:341
 msgid "Reservoir: "
 msgstr "Zapas:"
 
-#: src/multiplayer_create.cpp:340
+#: src/multiplayer_create.cpp:346
 msgid "Action Bonus: "
 msgstr "Premia akcji:"
 
-#: src/multiplayer_create.cpp:347
+#: src/multiplayer_create.cpp:353
 msgid "Village Gold: "
 msgstr "Złoto z wiosek:"
 
-#: src/multiplayer_create.cpp:355
+#: src/multiplayer_create.cpp:361
 msgid "Exp. Mod.: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:357
+#: src/multiplayer_create.cpp:363
 msgid "Experience Modifier: "
 msgstr "Modyfikator doświadczenia:"
 
-#: src/multiplayer_create.cpp:485
+#: src/multiplayer_create.cpp:491
 msgid "Players: "
 msgstr "Gracze:"
 
@@ -11847,8 +11867,8 @@ msgstr "Nie udało się dodać gniazda do zestawu"
 msgid "Could not send initial handshake"
 msgstr "Nie udało się rozpocząć negocjacji połączenia"
 
-#: src/play_controller.cpp:389 src/playsingle_controller.cpp:344
-#: src/playsingle_controller.cpp:390
+#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
+#: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Wczytywany plik jest uszkodzony"
 
@@ -11906,67 +11926,67 @@ msgstr ""
 "Gry straciły synchronizację i konieczne jest wyjście. Zapisać raport błędów "
 "twojej gry?"
 
-#: src/playsingle_controller.cpp:217
+#: src/playsingle_controller.cpp:219
 msgid "Game Over"
 msgstr "Koniec gry"
 
-#: src/playsingle_controller.cpp:218
+#: src/playsingle_controller.cpp:220
 msgid "The game is over."
 msgstr "Gra się skończyła."
 
-#: src/playsingle_controller.cpp:312
+#: src/playsingle_controller.cpp:314
 msgid "Remaining gold: "
 msgstr "Pozostałe złoto: "
 
-#: src/playsingle_controller.cpp:315
+#: src/playsingle_controller.cpp:317
 msgid "Early finish bonus: "
 msgstr "Nagroda za wczesne zakończenie:"
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:319
 msgid "per turn"
 msgstr "na turę"
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:320
 msgid "Turns finished early: "
 msgstr "Tur przed czasem: "
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:322
 msgid "Bonus: "
 msgstr "Nagroda:"
 
-#: src/playsingle_controller.cpp:322
+#: src/playsingle_controller.cpp:324
 msgid "Gold: "
 msgstr "Złoto:"
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:329
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% złota zostaje zachowane do następnego scenariusza"
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:330
 msgid "Retained Gold: "
 msgstr "Zachowane złoto: "
 
-#: src/playsingle_controller.cpp:333
+#: src/playsingle_controller.cpp:335
 msgid "Victory"
 msgstr "Zwycięstwo"
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:336
 msgid "You have emerged victorious!"
 msgstr "Zwyciężyłeś!"
 
-#: src/playsingle_controller.cpp:338
+#: src/playsingle_controller.cpp:340
 msgid "Scenario Report"
 msgstr "Raport"
 
-#: src/playsingle_controller.cpp:355
+#: src/playsingle_controller.cpp:357
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Nastąpiło rozłączenie sieci i gra nie może być kontynuowana. Czy zapisać grę?"
 
-#: src/playsingle_controller.cpp:475
+#: src/playsingle_controller.cpp:477
 msgid "It is now your turn"
 msgstr "Nadeszła twoja tura"
 
@@ -12221,10 +12241,6 @@ msgstr "Wychodzi z gry"
 #: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Więcej"
-
-#: src/titlescreen.cpp:307
-msgid "Help"
-msgstr "Pomoc"
 
 #: src/titlescreen.cpp:311
 msgid "Help Wesnoth by sending us information"
@@ -13311,9 +13327,6 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ msgstr ""
 #~ "Czy chcesz przejrzeć umiejętności, których nauczyłeś się w tym "
 #~ "scenariuszu?"
-
-#~ msgid "Yes"
-#~ msgstr "Tak"
 
 #~ msgid "I'm done reviewing skills!"
 #~ msgstr "Skończyłem przegląd umiejętności!"

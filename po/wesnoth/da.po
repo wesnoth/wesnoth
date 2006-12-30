@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-29 14:47+0100\n"
+"POT-Creation-Date: 2006-12-30 15:46+0100\n"
 "PO-Revision-Date: 2005-08-17 17:58+0200\n"
 "Last-Translator: Anders K. Madsen <madsen@lillesvin.linux.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -578,7 +578,7 @@ msgstr "+Slovenisk  Oversættelse"
 msgid "Contributors"
 msgstr "Bidragere"
 
-#: data/about.cfg:590
+#: data/about.cfg:591
 #, fuzzy
 msgid "Bots"
 msgstr "+Bots"
@@ -1850,15 +1850,15 @@ msgstr "Udød"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:37
+#: data/game.cfg:33
 msgid "Binary Saves"
 msgstr "Gem binært"
 
-#: data/game.cfg:44
+#: data/game.cfg:40
 msgid "Show Combat"
 msgstr "Vis kampe"
 
-#: data/game.cfg:51
+#: data/game.cfg:47
 #, fuzzy
 msgid "Mouse Scrolling"
 msgstr "Helbredelse"
@@ -4016,7 +4016,7 @@ msgid "Yes!"
 msgstr "Ja!"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:358
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635 src/construct_dialog.cpp:124
 msgid "No"
 msgstr "Nej"
 
@@ -4616,7 +4616,7 @@ msgid "Teal"
 msgstr "Hold"
 
 #: data/terrain.cfg:11 data/themes/macros.cfg:136
-#: src/multiplayer_create.cpp:68 src/multiplayer_lobby.cpp:393
+#: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:393
 #: src/multiplayer_lobby.cpp:399
 msgid "Shroud"
 msgstr "Sløring"
@@ -8410,7 +8410,8 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:67
+#: src/about.cpp:212 src/construct_dialog.cpp:134 src/help.cpp:2784
+#: src/menu_events.cpp:67
 msgid "Close"
 msgstr "Luk"
 
@@ -8467,6 +8468,26 @@ msgstr ""
 #: src/actions.cpp:2069
 msgid "(press $hotkey to continue)"
 msgstr "(tryk $hotkey for at fortsætte)"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/multiplayer_create.cpp:72
+msgid "OK"
+msgstr "OK"
+
+#: src/construct_dialog.cpp:123
+#, fuzzy
+msgid "Yes"
+msgstr "Ja!"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
+#: src/multiplayer_wait.cpp:163
+msgid "Cancel"
+msgstr "Anullér"
+
+#: src/construct_dialog.cpp:767 src/titlescreen.cpp:307
+msgid "Help"
+msgstr ""
 
 #: src/dialogs.cpp:114
 msgid "Advance Unit"
@@ -8591,8 +8612,8 @@ msgstr "Navn"
 msgid "Show replay"
 msgstr ""
 
-#: src/dialogs.cpp:556 src/multiplayer_create.cpp:87
-#: src/multiplayer_create.cpp:88
+#: src/dialogs.cpp:556 src/multiplayer_create.cpp:88
+#: src/multiplayer_create.cpp:89
 msgid "Load Game"
 msgstr "Indlæs spil"
 
@@ -8921,7 +8942,7 @@ msgstr "Sejr:"
 msgid "Defeat:"
 msgstr "Nederlag:"
 
-#: src/gamestatus.cpp:650
+#: src/gamestatus.cpp:748
 msgid "Could not write to file"
 msgstr "Kunne ikke skrive til filen"
 
@@ -9207,7 +9228,7 @@ msgid "Name:"
 msgstr "Navn:"
 
 #: src/menu_events.cpp:456 src/menu_events.cpp:469
-#: src/multiplayer_create.cpp:487
+#: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Fejl"
 
@@ -9625,11 +9646,6 @@ msgstr "Farve"
 msgid "I'm Ready"
 msgstr "Jeg er klar"
 
-#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:70
-#: src/multiplayer_wait.cpp:163
-msgid "Cancel"
-msgstr "Anullér"
-
 #: src/multiplayer_connect.cpp:784
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dette scenarie er ugyldigt, det har ingen sider."
@@ -9654,12 +9670,12 @@ msgstr "Tom"
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1299
+#: src/multiplayer_connect.cpp:1311
 #, fuzzy
 msgid "Cannot find era $era"
 msgstr "Kan ikke finde era: $era"
 
-#: src/multiplayer_connect.cpp:1320
+#: src/multiplayer_connect.cpp:1332
 #, fuzzy
 msgid ""
 "Victory:\n"
@@ -9668,7 +9684,7 @@ msgstr ""
 "Sejr\n"
 "@Besejr fjendtlige ledere"
 
-#: src/multiplayer_connect.cpp:1356
+#: src/multiplayer_connect.cpp:1376
 msgid "Waiting for players to join..."
 msgstr "Venter på at spillere kobler op..."
 
@@ -9699,151 +9715,156 @@ msgid "Use map settings"
 msgstr "Brug kort-indstillinger"
 
 #: src/multiplayer_create.cpp:67
+#, fuzzy
+msgid "Random start time"
+msgstr "Tilfældigt kort (vinter)"
+
+#: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
 msgstr "Krigståge"
 
-#: src/multiplayer_create.cpp:69
+#: src/multiplayer_create.cpp:70
 msgid "Observers"
 msgstr "Iagtagere"
 
-#: src/multiplayer_create.cpp:71
-msgid "OK"
-msgstr "OK"
-
-#: src/multiplayer_create.cpp:72
+#: src/multiplayer_create.cpp:73
 msgid "Regenerate"
 msgstr ""
 
-#: src/multiplayer_create.cpp:73
+#: src/multiplayer_create.cpp:74
 msgid "Settings..."
 msgstr "Opsætning..."
 
-#: src/multiplayer_create.cpp:120
+#: src/multiplayer_create.cpp:121
 #, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Max. antal ture spillet kan tage"
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:124
 msgid "Enables user time limit"
 msgstr ""
 
-#: src/multiplayer_create.cpp:129
+#: src/multiplayer_create.cpp:130
 msgid "Longest time allowed for first turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:135
+#: src/multiplayer_create.cpp:136
 msgid "Longest time possible for any turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:141
+#: src/multiplayer_create.cpp:142
 msgid "Time for general tasks each turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:147
+#: src/multiplayer_create.cpp:148
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
-#: src/multiplayer_create.cpp:152
+#: src/multiplayer_create.cpp:153
 msgid "The amount of income each village yields per turn"
 msgstr "Indkomst pr. landsby pr. tur"
 
-#: src/multiplayer_create.cpp:157
+#: src/multiplayer_create.cpp:158
 msgid "The amount of experience a unit needs to advance"
 msgstr "Nødvendig erfaring for at enheder kan blive forfremmet"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Use scenario specific settings"
 msgstr "Brug scenarie-specifikke indstillinger"
 
-#: src/multiplayer_create.cpp:163
+#: src/multiplayer_create.cpp:164
+msgid "Randomize time of day in begin"
+msgstr ""
+
+#: src/multiplayer_create.cpp:167
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Fjendtlige enheder kan ikke ses med mindre de er i dine enheders synsfelt"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:170
 msgid "The map is unknown until your units explore it"
 msgstr "Kortet er ukendt indtil dine enheder udforsker det"
 
-#: src/multiplayer_create.cpp:169
+#: src/multiplayer_create.cpp:173
 msgid "Allow users who are not playing to watch the game"
 msgstr "Tillad at ikke-spillere iagtager spillet"
 
-#: src/multiplayer_create.cpp:173
+#: src/multiplayer_create.cpp:177
 msgid "Share View"
 msgstr ""
 
-#: src/multiplayer_create.cpp:174
+#: src/multiplayer_create.cpp:178
 msgid "Share Maps"
 msgstr ""
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:179
 msgid "Share None"
 msgstr ""
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:190
 msgid "No multiplayer sides."
 msgstr "Ingen multiplayer-sider."
 
-#: src/multiplayer_create.cpp:188
+#: src/multiplayer_create.cpp:192
 #, fuzzy
 msgid "No eras found"
 msgstr "Fandt ingen era'er"
 
-#: src/multiplayer_create.cpp:201
+#: src/multiplayer_create.cpp:205
 msgid "$login's game"
 msgstr "$login|s spil"
 
-#: src/multiplayer_create.cpp:249
+#: src/multiplayer_create.cpp:254
 #, fuzzy
 msgid "Invalid era selected"
 msgstr "Den valgte era er ugyldig"
 
-#: src/multiplayer_create.cpp:287
+#: src/multiplayer_create.cpp:293
 msgid "You must enter a name."
 msgstr "Du skal indtaste et navn"
 
-#: src/multiplayer_create.cpp:296
+#: src/multiplayer_create.cpp:302
 msgid "Turns: "
 msgstr "Ture: "
 
-#: src/multiplayer_create.cpp:298
+#: src/multiplayer_create.cpp:304
 msgid "Unlimited Turns"
 msgstr "Uendeligt antal ture"
 
-#: src/multiplayer_create.cpp:326
+#: src/multiplayer_create.cpp:332
 #, fuzzy
 msgid "Init. Limit: "
 msgstr "Enhedsliste"
 
-#: src/multiplayer_create.cpp:331
+#: src/multiplayer_create.cpp:337
 #, fuzzy
 msgid "Turn Bonus: "
 msgstr "Ture: "
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:341
 #, fuzzy
 msgid "Reservoir: "
 msgstr "Server: "
 
-#: src/multiplayer_create.cpp:340
+#: src/multiplayer_create.cpp:346
 #, fuzzy
 msgid "Action Bonus: "
 msgstr "Handlinger"
 
-#: src/multiplayer_create.cpp:347
+#: src/multiplayer_create.cpp:353
 #, fuzzy
 msgid "Village Gold: "
 msgstr "Landsby-guld: "
 
-#: src/multiplayer_create.cpp:355
+#: src/multiplayer_create.cpp:361
 msgid "Exp. Mod.: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:357
+#: src/multiplayer_create.cpp:363
 msgid "Experience Modifier: "
 msgstr "Erfaringsmodifikator: "
 
-#: src/multiplayer_create.cpp:485
+#: src/multiplayer_create.cpp:491
 msgid "Players: "
 msgstr "Spillere: "
 
@@ -9954,8 +9975,8 @@ msgstr ""
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:389 src/playsingle_controller.cpp:344
-#: src/playsingle_controller.cpp:390
+#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
+#: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du forsøgte at indlæse er korrupt"
 
@@ -10013,67 +10034,67 @@ msgid ""
 msgstr ""
 "Spillene er ude af trit og vil blive afsluttet. Vil du gemme en fejl-log?"
 
-#: src/playsingle_controller.cpp:217
+#: src/playsingle_controller.cpp:219
 #, fuzzy
 msgid "Game Over"
 msgstr "Game Over"
 
-#: src/playsingle_controller.cpp:218
+#: src/playsingle_controller.cpp:220
 msgid "The game is over."
 msgstr "Spillet er slut"
 
-#: src/playsingle_controller.cpp:312
+#: src/playsingle_controller.cpp:314
 msgid "Remaining gold: "
 msgstr "Resterende guld: "
 
-#: src/playsingle_controller.cpp:315
+#: src/playsingle_controller.cpp:317
 msgid "Early finish bonus: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:319
 msgid "per turn"
 msgstr "pr. tur"
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:320
 msgid "Turns finished early: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:322
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:322
+#: src/playsingle_controller.cpp:324
 msgid "Gold: "
 msgstr "Guld: "
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:329
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% af guldet overføres til næste scenarie"
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:330
 msgid "Retained Gold: "
 msgstr "Overført guld: "
 
-#: src/playsingle_controller.cpp:333
+#: src/playsingle_controller.cpp:335
 msgid "Victory"
 msgstr "Sejr!"
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:336
 msgid "You have emerged victorious!"
 msgstr "Du har sejret!"
 
-#: src/playsingle_controller.cpp:338
+#: src/playsingle_controller.cpp:340
 msgid "Scenario Report"
 msgstr "Scenarierapport"
 
-#: src/playsingle_controller.cpp:355
+#: src/playsingle_controller.cpp:357
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:475
+#: src/playsingle_controller.cpp:477
 msgid "It is now your turn"
 msgstr "Det er din tur"
 
@@ -10324,10 +10345,6 @@ msgstr "Afslut spillet"
 #: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Mere"
-
-#: src/titlescreen.cpp:307
-msgid "Help"
-msgstr ""
 
 #: src/titlescreen.cpp:311
 msgid "Help Wesnoth by sending us information"
