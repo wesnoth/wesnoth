@@ -1188,7 +1188,7 @@ void connect::lists_init()
 			}
 		}
 	} else {
-		std::vector<std::string> team_names;
+		std::vector<std::string> map_team_names;
 		for(sd = sides.first; sd != sides.second; ++sd) {
 			const std::string side_num = lexical_cast<std::string>(sd - sides.first + 1);
 			t_string& team_name = (**sd)["team_name"];
@@ -1196,17 +1196,16 @@ void connect::lists_init()
 			if(team_name.empty())
 				team_name = side_num;
 			
-			std::vector<std::string>::const_iterator itor = std::find(team_names.begin(), team_names.end(), team_name);
-			if(itor == team_names.end()) {
-				team_names.push_back(team_name);
-				user_team_names_.push_back(team_name);
-				team_name = lexical_cast<std::string>(team_names.size());
+			std::vector<std::string>::const_iterator itor = std::find(map_team_names.begin(), map_team_names.end(), team_name);
+			if(itor == map_team_names.end()) {
+				map_team_names.push_back(team_name);
+				team_name = lexical_cast<std::string>(map_team_names.size());
 			} else {
-				team_name = lexical_cast<std::string>(itor - team_names.begin() + 1);
+				team_name = lexical_cast<std::string>(itor - map_team_names.begin() + 1);
 			}
 
 			team_names_.push_back(side_num);
-			user_team_names_.push_back(side_num);
+			user_team_names_.push_back(team_prefix_ + side_num);
 			player_teams_.push_back(team_prefix_ + side_num);
 		}
 	}
