@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-12-30 16:02+0100\n"
-"PO-Revision-Date: 2006-12-29 13:42+0100\n"
+"PO-Revision-Date: 2006-12-30 17:05+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -4784,9 +4784,9 @@ msgid ""
 "and ice now remain in the shadow of this once mighty empire. Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Einst befand sich hier das Imperium der Sulla, einer einstmals mächtigen "
-"Rasse. In ihrem Wahn glaubten sie, die Elemente kontrollieren zu können, "
-"doch diese wandten sich gegen sie. Wasser überspülte die prächtigen Städte "
+"Einst befand sich hier das Imperium der Sulla, einer mächtigen Magierin. In "
+"ihrem Wahn glaubte sie, die Elemente kontrollieren zu können, doch diese "
+"wandten sich schließlich gegen sie. Wasser überspülte die prächtigen Städte "
 "und ein grimmiger Winter tat das übrige. Geblieben ist nur Wasser und Eis.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
@@ -4802,6 +4802,10 @@ msgid ""
 "Leveling Flame, Sulla the Incinerator, Sulla the Proud and Sulla the "
 "Righteous."
 msgstr ""
+"Ein aus Stein gemeißeltes Abbild von Sulla der Großen, auch bekannt als "
+"Sulla die Gerechte, Sulla die Tyrannin, Herrin des sinkenden Turms, "
+"Beherrscherin des lebenden Gletschers, Bewahrerin der wandernden Welle, "
+"Königin der ewigen Flamme, Sulla die Stolze und Sulla die Wahnsinnige."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:71
 msgid "Statue of Lhun-dup"
@@ -6176,9 +6180,8 @@ msgid "loyal"
 msgstr "loyal"
 
 #: data/traits.cfg:7
-#, fuzzy
 msgid "female^loyal"
-msgstr "Geächtete"
+msgstr "loyal"
 
 #: data/traits.cfg:8
 msgid "Zero upkeep"
@@ -6189,9 +6192,8 @@ msgid "undead"
 msgstr "untot"
 
 #: data/traits.cfg:19
-#, fuzzy
 msgid "female^undead"
-msgstr "Schurkin"
+msgstr "untot"
 
 #: data/traits.cfg:20
 msgid "Immune to poison"
@@ -6202,16 +6204,14 @@ msgid "strong"
 msgstr "kräftig"
 
 #: data/traits.cfg:28
-#, fuzzy
 msgid "female^strong"
-msgstr "Schurkin"
+msgstr "stark"
 
 #: data/traits.cfg:44
 msgid "dextrous"
 msgstr "treffsicher"
 
 #: data/traits.cfg:45
-#, fuzzy
 msgid "female^dextrous"
 msgstr "treffsicher"
 
@@ -6220,16 +6220,14 @@ msgid "quick"
 msgstr "schnell"
 
 #: data/traits.cfg:58
-#, fuzzy
 msgid "female^quick"
-msgstr "Prinzessin"
+msgstr "schnell"
 
 #: data/traits.cfg:73
 msgid "intelligent"
 msgstr "intelligent"
 
 #: data/traits.cfg:74
-#, fuzzy
 msgid "female^intelligent"
 msgstr "intelligent"
 
@@ -6238,7 +6236,6 @@ msgid "resilient"
 msgstr "robust"
 
 #: data/traits.cfg:86
-#, fuzzy
 msgid "female^resilient"
 msgstr "robust"
 
@@ -6247,9 +6244,8 @@ msgid "healthy"
 msgstr "vital"
 
 #: data/traits.cfg:102
-#, fuzzy
 msgid "female^healthy"
-msgstr "Diebin"
+msgstr "vital"
 
 #: data/traits.cfg:103
 msgid "Heals faster if resting"
@@ -6260,9 +6256,8 @@ msgid "fearless"
 msgstr "furchtlos"
 
 #: data/traits.cfg:115
-#, fuzzy
 msgid "female^fearless"
-msgstr "Prinzessin"
+msgstr "furchtlos"
 
 #: data/traits.cfg:116
 msgid "Fights normally during unfavorable times of day/night"
@@ -10902,7 +10897,6 @@ msgid "OK"
 msgstr "OK"
 
 #: src/construct_dialog.cpp:123
-#, fuzzy
 msgid "Yes"
 msgstr "Ja"
 
@@ -11784,10 +11778,9 @@ msgid "Search"
 msgstr "Suchen"
 
 #: src/menu_events.cpp:1455
-#, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
-"Kommandos: whisper ignore emote. Gebt /help [Kommando] ein, um weiter "
+"Kommandos: whisper list emote. Gebt /help [Kommando] ein, um weitere "
 "Informationen zu erhalten."
 
 #: src/menu_events.cpp:1506
@@ -11800,57 +11793,52 @@ msgstr ""
 "[Nachricht]"
 
 #: src/menu_events.cpp:1510
-#, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
-"Fügt einen Benutzer zur Liste der Benutzer hinzu, die Ihr ignoriert. "
-"Verwendung: /ignore add [Argument]"
+"Fügt einen Benutzer zur Liste Eurer Freunde hinzu. Verwendung: /list "
+"addfriend [Argument]"
 
 #: src/menu_events.cpp:1512
-#, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Fügt einen Benutzer zur Liste der Benutzer hinzu, die Ihr ignoriert. "
-"Verwendung: /ignore add [Argument]"
+"Verwendung: /list ignore [Argument]"
 
 #: src/menu_events.cpp:1514
-#, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 "Entfernt einen Benutzer aus der Liste der Benutzer, die Ihr ignoriert. "
-"Verwendung: /ignore remove [Argument]"
+"Verwendung: /list remove [Argument]"
 
 #: src/menu_events.cpp:1516
-#, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
-"Setzt die Liste der Benutzer, die Ihr ignoriert, zurück. Verwendung: /ignore "
-"clear"
+"Setzt die Liste Eurer Freunde und der Benutzer, die Ihr ignoriert, zurück. "
+"Verwendung: /list clear"
 
 #: src/menu_events.cpp:1518
-#, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
-"Zeigt die Benutzer, die von Euch ignoriert werden. Verwendung: /ignore list"
+"Zeigt die Eure Freunde und Benutzer, die von Euch ignoriert werden. "
+"Verwendung: /list display"
 
 #: src/menu_events.cpp:1520
 msgid "Unknown subcommand"
 msgstr "Unbekanntes Unterkommando"
 
 #: src/menu_events.cpp:1523
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
-"Nachrichten von Spielern in dieser Liste werden ignoriert. Verwendung: /"
-"ignore [Unterkommando] [Argument] (optional) Unterkommandos: add remove list "
-"clear. Gebt /help ignore [Unterkommando] ein, um weitere Informationen zu "
-"erhalten."
+"Nachrichten von Spielern in dieser Liste werden ignoriert. Verwendung: /list "
+"[Unterkommando] [Argument] (optional) Unterkommandos: addfriend addignore "
+"remove display clear. Gebt /help list [Unterkommando] ein, um weitere "
+"Informationen zu erhalten."
 
 #: src/menu_events.cpp:1526
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
@@ -11871,27 +11859,25 @@ msgid "Invalid username: "
 msgstr "Ungültiger Benutzername:"
 
 #: src/menu_events.cpp:1558
-#, fuzzy
 msgid "Added to friends list: "
-msgstr "Zur Liste der zu ignorierenden Benutzer hinzugefügt:"
+msgstr "Zur Freundesliste hinzugefügt:"
 
 #: src/menu_events.cpp:1568
-#, fuzzy
 msgid "Removed from list: "
 msgstr "Von der Liste der zu ignorierenden Benutzer entfernt:"
 
 #: src/menu_events.cpp:1595
 msgid "There are no players on your friends or ignore list."
 msgstr ""
+"Ihr habt keine Spieler auf Eurer Freundes- oder Ignorierliste eingetragen."
 
 #: src/menu_events.cpp:1605
 msgid "Removed from ignore list: "
 msgstr "Von der Liste der zu ignorierenden Benutzer entfernt:"
 
 #: src/menu_events.cpp:1608
-#, fuzzy
 msgid "Removed from friends list: "
-msgstr "Von der Liste der zu ignorierenden Benutzer entfernt:"
+msgstr "Von der Freundesliste entfernt:"
 
 #: src/menu_events.cpp:1615
 msgid "Unknown command: "
@@ -12154,9 +12140,8 @@ msgid "Use map settings"
 msgstr "Vorgaben nutzen"
 
 #: src/multiplayer_create.cpp:67
-#, fuzzy
 msgid "Random start time"
-msgstr "Zufallskarte (Winter)"
+msgstr "Zufällige Startzeit"
 
 #: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
@@ -12214,7 +12199,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:164
 msgid "Randomize time of day in begin"
-msgstr ""
+msgstr "Legt die Tageszeit zu Spielbeginn zufällig fest"
 
 #: src/multiplayer_create.cpp:167
 msgid "Enemy units cannot be seen unless they are in range of your units"
@@ -12292,7 +12277,7 @@ msgstr "Steuereinnahmen pro Dorf:"
 
 #: src/multiplayer_create.cpp:361
 msgid "Exp. Mod.: "
-msgstr ""
+msgstr "Erf. Mod.:"
 
 #: src/multiplayer_create.cpp:363
 msgid "Experience Modifier: "
@@ -12432,14 +12417,12 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
 
 #: src/playcampaign.cpp:295
-#, fuzzy
 msgid "Save Replay"
 msgstr "Wiederholung speichern"
 
 #: src/playcampaign.cpp:302
-#, fuzzy
 msgid "The replay could not be saved"
-msgstr "Der Spielstand konnte nicht gespeichert werden"
+msgstr "Die Wiederholung konnte nicht gespeichert werden"
 
 #: src/playcampaign.cpp:342
 msgid "Downloading next level..."

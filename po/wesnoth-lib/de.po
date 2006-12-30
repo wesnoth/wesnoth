@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-12-30 15:47+0100\n"
-"PO-Revision-Date: 2006-10-10 22:45+0100\n"
+"PO-Revision-Date: 2006-12-30 16:43+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -107,7 +107,7 @@ msgstr "Karte spiegeln (könnte die Größe der Karte ändern):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Datei:"
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -115,7 +115,7 @@ msgstr "Datei löschen"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Neuer Ordner"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
@@ -123,12 +123,11 @@ msgstr "Das Löschen der Datei ist fehlgeschlagen."
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Name:"
 
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Das Löschen der Datei ist fehlgeschlagen."
+msgstr "Das Anlegen des Verzeichnisses ist fehlgeschlagen."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -191,7 +190,6 @@ msgid "Save Game"
 msgstr "Spiel speichern"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
 msgstr "Karte speichern"
 
@@ -444,9 +442,8 @@ msgid "Villages:"
 msgstr "Dörfer:"
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Max. Größe der Berge:"
+msgstr "Burggröße:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -496,23 +493,20 @@ msgid "Skip AI Moves"
 msgstr "Computerzüge überspringen"
 
 #: src/preferences_display.cpp:246
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Neue Spieler in der Lobby anzeigen"
+msgstr "Minikarten in der Eingangshalle anzeigen"
 
 #: src/preferences_display.cpp:247
-#, fuzzy
 msgid "Show Lobby Joins Of Friends"
-msgstr "Neue Spieler in der Lobby anzeigen"
+msgstr "Erscheinen von Freunden in der Eingangshalle anzeigen"
 
 #: src/preferences_display.cpp:248
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Neue Spieler in der Lobby anzeigen"
+msgstr "Spielerliste sortieren"
 
 #: src/preferences_display.cpp:249
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Spielerliste mit Icons versehen"
 
 #: src/preferences_display.cpp:250
 msgid "Show Floating Labels"
@@ -571,9 +565,8 @@ msgid "SFX Volume:"
 msgstr "SFX-Lautstärke:"
 
 #: src/preferences_display.cpp:266
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "SFX-Lautstärke:"
+msgstr "Benachrichtigungslautstärke:"
 
 #: src/preferences_display.cpp:267
 msgid "Gamma:"
@@ -596,9 +589,8 @@ msgid "Change the music volume"
 msgstr "Lautstärke der Musik ändern"
 
 #: src/preferences_display.cpp:298
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Lautstärke der Musik ändern"
+msgstr "Lautstärke der Benachrichtigung zu Rundenbeginn ändern"
 
 #: src/preferences_display.cpp:303
 msgid "Change the speed of scrolling around the map"
@@ -640,24 +632,22 @@ msgid "Overlay a grid onto the map"
 msgstr "Legt ein Gitternetz über die Karte"
 
 #: src/preferences_display.cpp:342
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr ""
-"Zeig eine Mitteilung, falls ein neuer Spieler die Mehrspielerlobby betritt"
+msgstr "Zeigt Minikarten für die laufenden Spiele in Mehrspieler-Eingangshalle"
 
 #: src/preferences_display.cpp:345
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Sortiert die Liste der Spieler in der Eingangshalle nach Gruppen"
 
 #: src/preferences_display.cpp:348
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Zeigt Icons vor den Spielernamen in der Empfangshalle an."
 
 #: src/preferences_display.cpp:351
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
-"Zeig eine Mitteilung, falls ein neuer Spieler die Mehrspielerlobby betritt"
+"Zeigt eine Mitteilung, falls einer Eurer Freunde die Mehrspieler-"
+"Eingangshalle betritt"
 
 #: src/preferences_display.cpp:354
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -710,9 +700,8 @@ msgid "Chat Lines: "
 msgstr "Mitteilungen:"
 
 #: src/preferences_display.cpp:608
-#, fuzzy
 msgid "Speed: "
-msgstr "Scroll-Geschwindigkeit:"
+msgstr "Geschwindigkeit:"
 
 #: src/preferences_display.cpp:660
 msgid "yes"
