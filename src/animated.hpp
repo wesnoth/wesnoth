@@ -18,6 +18,8 @@
 #include <map>
 #include <vector>
 
+void new_animation_frame();
+
 template<typename T>
 class void_value
 {

@@ -19,7 +19,14 @@
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 
+namespace {
+	int current_ticks = 0;
+}
 
+void new_animation_frame()
+{
+	current_ticks = SDL_GetTicks();
+}
 
 template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
@@ -74,7 +81,7 @@ template<typename T,  typename T_void_value>
 void animated<T,T_void_value>::start_animation(int start_time, bool cycles, double acceleration)
 {
 	started_ = true;
-	last_update_tick_ = SDL_GetTicks();
+	last_update_tick_ = current_ticks;
 	start_tick_ =  last_update_tick_ + ( starting_frame_time_ - start_time);
 	cycles_ = cycles;
 	acceleration_ = acceleration;
@@ -87,7 +94,7 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 template<typename T,  typename T_void_value>
 void animated<T,T_void_value>::update_last_draw_time()
 {
-	last_update_tick_ = SDL_GetTicks();
+	last_update_tick_ = current_ticks;
 	if(does_not_change_)
 		return;
 
@@ -124,7 +131,7 @@ bool animated<T,T_void_value>::need_update() const
 	if(!started_) {
 		return false;
 	}
-	if(SDL_GetTicks() >  (unsigned int)(get_current_frame_end_time()/acceleration_+start_tick_)){
+	if(current_ticks >  (unsigned int)(get_current_frame_end_time()/acceleration_+start_tick_)){
 		return true;
 	}
 	return false;
@@ -137,7 +144,7 @@ bool animated<T,T_void_value>::animation_would_finish() const
 		return true;
 	if(!started_)
 		return true;
-	if(!cycles_ && (SDL_GetTicks() >  (unsigned int)(get_end_time()/acceleration_+start_tick_)))
+	if(!cycles_ && (current_ticks >  (unsigned int)(get_end_time()/acceleration_+start_tick_)))
 		return true;
 
 	return false;
