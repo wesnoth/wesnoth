@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-10-26 18:33+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -15,6 +15,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Esperanto\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "En ordo"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Jes"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "Ne"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Nuligu"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Fermi"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Helpo"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -45,11 +72,6 @@ msgstr "Generi Hazardan Mapon"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Agordi Hazardan Generatoron"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Nuligu"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -90,10 +112,6 @@ msgstr "Klavkomandoj"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Ŝanĝi grandecon de mapo"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "En ordo"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -400,10 +418,6 @@ msgstr "Diri al la aliancano"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Diri al ĉiuj"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Helpo"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -790,15 +804,6 @@ msgstr "Eraro"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "Jes"
-
-#~ msgid "No"
-#~ msgstr "Ne"
-
-#~ msgid "Close"
-#~ msgstr "Fermi"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Akceptado de datumoj"

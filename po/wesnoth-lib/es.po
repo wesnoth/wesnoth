@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-06-28 16:34+0200\n"
 "Last-Translator: Isaac Clerencia <isaac@warp.es>\n"
 "Language-Team:  <en@li.org>\n"
@@ -18,6 +18,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.2\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "Aceptar"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Sí"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "No"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Cerrar"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Ayuda"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -49,11 +76,6 @@ msgstr "Generar un mapa aleatorio"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Configuración del generador aleatorio"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -94,10 +116,6 @@ msgstr "Accesos rápidos"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Cambiar el tamaño del mapa"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "Aceptar"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -404,10 +422,6 @@ msgstr "Hablar con aliados"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Hablar con todos"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Ayuda"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -804,12 +818,3 @@ msgstr "Error"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "Sí"
-
-#~ msgid "No"
-#~ msgstr "No"
-
-#~ msgid "Close"
-#~ msgstr "Cerrar"

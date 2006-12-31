@@ -8,13 +8,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2005-08-14 20:06+0100\n"
 "Last-Translator: Bjarke Sørensen <bs@wasd.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "OK"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Ja"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "Nej"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Annullér"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Luk"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Hjælp"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -47,11 +74,6 @@ msgstr ""
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr ""
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Annullér"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -93,10 +115,6 @@ msgstr "Tastaturgenveje"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Skift størrelse på kort"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -409,10 +427,6 @@ msgstr "Tal til allierede"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Tal til alle"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Hjælp"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -805,15 +819,6 @@ msgstr "Fejl"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "Ja"
-
-#~ msgid "No"
-#~ msgstr "Nej"
-
-#~ msgid "Close"
-#~ msgstr "Luk"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Modtager data.."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-07-02 14:39+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -17,6 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "Oké"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Igen"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "Nem"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Mégse"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Bezár"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Segítség"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -47,11 +74,6 @@ msgstr "Véletlenszerű pálya generálása"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Véletlenszerű generálás beállításai"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Mégse"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -92,10 +114,6 @@ msgstr "Gyorsbillentyűk"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Pálya átméretezése"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "Oké"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -402,10 +420,6 @@ msgstr "Szólás a szövetségesekhez"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Szólás mindenkihez"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Segítség"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -800,15 +814,6 @@ msgstr "Hiba"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "Igen"
-
-#~ msgid "No"
-#~ msgstr "Nem"
-
-#~ msgid "Close"
-#~ msgstr "Bezár"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Adatok fogadása..."

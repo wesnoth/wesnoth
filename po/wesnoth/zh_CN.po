@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 16:02+0100\n"
+"POT-Creation-Date: 2006-12-31 13:03+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -624,7 +624,7 @@ msgstr "+斯洛文尼亚语"
 msgid "Contributors"
 msgstr "贡献者"
 
-#: data/about.cfg:591
+#: data/about.cfg:592
 #, fuzzy
 msgid "Bots"
 msgstr "+Bots"
@@ -4271,7 +4271,7 @@ msgid "Yes!"
 msgstr "是的！"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:358
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635 src/construct_dialog.cpp:124
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635
 msgid "No"
 msgstr "不是"
 
@@ -4567,6 +4567,75 @@ msgstr "6p － Hexcake"
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2 vs. 2 or 3 vs. 3 团队游戏。"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
+#, fuzzy
+msgid "Turn 2: Loyalists"
+msgstr "忠诚者"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:173
+msgid "Turn 5: Knalgans"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:174
+#, fuzzy
+msgid "Turn 8: Rebels"
+msgstr "回合数： "
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:175
+#, fuzzy
+msgid "Turn 11: Northerners"
+msgstr "北方人"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:176
+#, fuzzy
+msgid "Turn 14: Drakes"
+msgstr "飓风龙战士"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:177
+msgid "Turn 17: Undead"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:178
+msgid "Tower of Doom"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:299
+msgid "6p - Team Survival"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
+msgid "Scenario where the objective is to survive for as long as possible."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
+msgid "Hint: Learning the enemy spawnpoints and types helps alot."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
+msgid "Survive for 32 turns."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
+msgid "Survival all enemy attacks."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
+msgid "Death of your team leaders."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
+msgid ""
+"Congratulations for surviving the map that so many people claim is "
+"impossible. Frankly, I don't got a clue to how you did it, so send me the "
+"replay by mail to: roze@roze.mine.nu. Thank You!"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
+msgid ""
+"You have lost this game, but fear not. You can always try again. And again. "
+"And again. *Muahahaha*"
+msgstr ""
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
@@ -9385,8 +9454,7 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:212 src/construct_dialog.cpp:134 src/help.cpp:2784
-#: src/menu_events.cpp:67
+#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:67
 msgid "Close"
 msgstr "关闭"
 
@@ -9441,26 +9509,6 @@ msgstr "单位可见！ ($friends 友好 $enemies 敌人)"
 #: src/actions.cpp:2069
 msgid "(press $hotkey to continue)"
 msgstr "(按 $hotkey 继续)"
-
-#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
-#: src/multiplayer_create.cpp:72
-msgid "OK"
-msgstr "确定"
-
-#: src/construct_dialog.cpp:123
-#, fuzzy
-msgid "Yes"
-msgstr "是的！"
-
-#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
-#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
-#: src/multiplayer_wait.cpp:163
-msgid "Cancel"
-msgstr "取消"
-
-#: src/construct_dialog.cpp:767 src/titlescreen.cpp:307
-msgid "Help"
-msgstr ""
 
 #: src/dialogs.cpp:114
 msgid "Advance Unit"
@@ -10604,6 +10652,11 @@ msgstr "颜色"
 msgid "I'm Ready"
 msgstr "已准备好"
 
+#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
+#: src/multiplayer_wait.cpp:163
+msgid "Cancel"
+msgstr "取消"
+
 #: src/multiplayer_connect.cpp:784
 msgid "The scenario is invalid because it has no sides."
 msgstr "由于没有阵营本剧本无效。"
@@ -10682,6 +10735,10 @@ msgstr "战争迷雾"
 #: src/multiplayer_create.cpp:70
 msgid "Observers"
 msgstr "观察员"
+
+#: src/multiplayer_create.cpp:72
+msgid "OK"
+msgstr "确定"
 
 #: src/multiplayer_create.cpp:73
 msgid "Regenerate"
@@ -11298,6 +11355,10 @@ msgstr "退出游戏"
 msgid "More"
 msgstr "更多"
 
+#: src/titlescreen.cpp:307
+msgid "Help"
+msgstr ""
+
 #: src/titlescreen.cpp:311
 msgid "Help Wesnoth by sending us information"
 msgstr ""
@@ -11353,6 +11414,10 @@ msgstr ""
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Yes"
+#~ msgstr "是的！"
 
 #~ msgid ""
 #~ "You can come if you wish, but the leader is only interested in speaking "
@@ -12121,10 +12186,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Turn Dialog"
 #~ msgstr "教程"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "回合数： "
 
 #, fuzzy
 #~ msgid "Theme"

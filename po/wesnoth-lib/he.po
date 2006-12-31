@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-02-14 22:10+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -20,6 +20,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "אשר"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "כן"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "לא"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "בטל"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "סגור"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "עזרה"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -50,11 +77,6 @@ msgstr "יצירת מפה אקראית"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "אפשרויות מחולל אקראי"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "בטל"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -95,10 +117,6 @@ msgstr "מקשי קיצור"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "שנה גודל מפה"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "אשר"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -405,10 +423,6 @@ msgstr "דבר לבן ברית"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "דבר לכולם"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "עזרה"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -795,12 +809,3 @@ msgstr "שגיאה"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "קילו-בייט"
-
-#~ msgid "Yes"
-#~ msgstr "כן"
-
-#~ msgid "No"
-#~ msgstr "לא"
-
-#~ msgid "Close"
-#~ msgstr "סגור"

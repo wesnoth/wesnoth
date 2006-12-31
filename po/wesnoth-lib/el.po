@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2005-08-31 08:00+0300\n"
 "Last-Translator: santi <at@i.gr>\n"
 "Language-Team:  <en@li.org>\n"
@@ -17,6 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 0.9.6\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "Εντάξει"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Ναι"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "Όχι"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Βοήθεια"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -49,11 +76,6 @@ msgstr ""
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr ""
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Ακύρωση"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -94,10 +116,6 @@ msgstr "Συντομεύσεις Πληκτρολογίου"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Αλλαγή μεγέθους χάρτη"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "Εντάξει"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -409,10 +427,6 @@ msgstr "Μιλήστε σε σύμμαχο"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Μιλήστε σε όλους"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Βοήθεια"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -801,15 +815,6 @@ msgstr "Σφάλμα"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "ΚΒ"
-
-#~ msgid "Yes"
-#~ msgstr "Ναι"
-
-#~ msgid "No"
-#~ msgstr "Όχι"
-
-#~ msgid "Close"
-#~ msgstr "Κλείσιμο"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Δέχομαι δεδομένα(κατεβαίνουν...)"

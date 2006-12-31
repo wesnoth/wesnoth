@@ -9,13 +9,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2005-08-10 16:44+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "Ados"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Bai"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "Ez"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Utzi"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Itxi"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Laguntza"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -46,11 +73,6 @@ msgstr "Ausazko mapa sortu"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Ausazko sortzailearen ezarpenak"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Utzi"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -91,10 +113,6 @@ msgstr "Lasterbideak"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Maparen neurria aldatu"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "Ados"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -407,10 +425,6 @@ msgstr "Lagunei hitzegin"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Deneri hitzegin"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Laguntza"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -802,15 +816,6 @@ msgstr "Okerra"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "Bai"
-
-#~ msgid "No"
-#~ msgstr "Ez"
-
-#~ msgid "Close"
-#~ msgstr "Itxi"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Datuak jasotzen..."

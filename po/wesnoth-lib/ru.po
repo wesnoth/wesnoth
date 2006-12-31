@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-07-20 23:41+0600\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -26,6 +26,33 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.2\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "OK"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Да"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "Нет"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Помощь"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -56,11 +83,6 @@ msgstr "Создать случайную карту"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Настройки случайного генератора"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Отмена"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -101,10 +123,6 @@ msgstr "Горячие клавиши"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Изменить размер карты"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -411,10 +429,6 @@ msgstr "Сказать союзникам"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Сказать всем"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Помощь"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -806,12 +820,3 @@ msgstr "Ошибка"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "КБайт"
-
-#~ msgid "Yes"
-#~ msgstr "Да"
-
-#~ msgid "No"
-#~ msgstr "Нет"
-
-#~ msgid "Close"
-#~ msgstr "Закрыть"

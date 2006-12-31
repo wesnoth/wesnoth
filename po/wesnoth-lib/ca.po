@@ -9,13 +9,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-06-28 17:44+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "D'acord"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Sí"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "No"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Tanca"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Ajuda"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -46,11 +73,6 @@ msgstr "Genera mapa aleatori"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Paràmetres del generador aleatori"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Cancel·la"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -91,10 +113,6 @@ msgstr "Dreceres de teclat"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Redimensiona el mapa"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "D'acord"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -401,10 +419,6 @@ msgstr "Parla als aliats"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Parla a tothom"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Ajuda"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -795,12 +809,3 @@ msgstr "Error"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "kB"
-
-#~ msgid "Yes"
-#~ msgstr "Sí"
-
-#~ msgid "No"
-#~ msgstr "No"
-
-#~ msgid "Close"
-#~ msgstr "Tanca"

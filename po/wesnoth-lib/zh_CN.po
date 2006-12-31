@@ -7,13 +7,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2005-11-10 17:59-0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "成功"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "是"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "否"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "取消"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "关闭"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "帮助"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -46,11 +73,6 @@ msgstr ""
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr ""
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "取消"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -91,10 +113,6 @@ msgstr "快捷键"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "改变地图大小"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "成功"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -406,10 +424,6 @@ msgstr "与盟友谈话"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "与所有人谈话"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "帮助"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -794,15 +808,6 @@ msgstr "错误"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "是"
-
-#~ msgid "No"
-#~ msgstr "否"
-
-#~ msgid "Close"
-#~ msgstr "关闭"
 
 #~ msgid "Receiving data..."
 #~ msgstr "接收数据中..."

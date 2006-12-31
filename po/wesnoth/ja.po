@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 16:02+0100\n"
+"POT-Creation-Date: 2006-12-31 13:03+0100\n"
 "PO-Revision-Date: 2006-09-20 18:34+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -597,7 +597,7 @@ msgstr "スロベニア語翻訳"
 msgid "Contributors"
 msgstr "貢献者"
 
-#: data/about.cfg:591
+#: data/about.cfg:592
 msgid "Bots"
 msgstr "ボット"
 
@@ -4575,7 +4575,7 @@ msgid "Yes!"
 msgstr "そう！"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:358
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635 src/construct_dialog.cpp:124
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635
 msgid "No"
 msgstr "いいえ"
 
@@ -4893,6 +4893,75 @@ msgstr "6P - ヘクスケーキ"
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2対2、 あるいは、 3対3のチーム戦。"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
+#, fuzzy
+msgid "Turn 2: Loyalists"
+msgstr "忠誠軍"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:173
+msgid "Turn 5: Knalgans"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:174
+#, fuzzy
+msgid "Turn 8: Rebels"
+msgstr "反乱軍"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:175
+#, fuzzy
+msgid "Turn 11: Northerners"
+msgstr "北方部族"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:176
+#, fuzzy
+msgid "Turn 14: Drakes"
+msgstr "ハリケーンドレーク"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:177
+msgid "Turn 17: Undead"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:178
+msgid "Tower of Doom"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:299
+msgid "6p - Team Survival"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
+msgid "Scenario where the objective is to survive for as long as possible."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
+msgid "Hint: Learning the enemy spawnpoints and types helps alot."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
+msgid "Survive for 32 turns."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
+msgid "Survival all enemy attacks."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
+msgid "Death of your team leaders."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
+msgid ""
+"Congratulations for surviving the map that so many people claim is "
+"impossible. Frankly, I don't got a clue to how you did it, so send me the "
+"replay by mail to: roze@roze.mine.nu. Thank You!"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
+msgid ""
+"You have lost this game, but fear not. You can always try again. And again. "
+"And again. *Muahahaha*"
+msgstr ""
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
@@ -10032,8 +10101,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:212 src/construct_dialog.cpp:134 src/help.cpp:2784
-#: src/menu_events.cpp:67
+#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:67
 msgid "Close"
 msgstr "閉じる"
 
@@ -10090,26 +10158,6 @@ msgstr "ユニットを発見！ (仲間$friends、敵$enemies )"
 #: src/actions.cpp:2069
 msgid "(press $hotkey to continue)"
 msgstr "(続けるには $hotkey を押して下さい)"
-
-#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
-#: src/multiplayer_create.cpp:72
-msgid "OK"
-msgstr "OK"
-
-#: src/construct_dialog.cpp:123
-#, fuzzy
-msgid "Yes"
-msgstr "そう！"
-
-#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
-#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
-#: src/multiplayer_wait.cpp:163
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: src/construct_dialog.cpp:767 src/titlescreen.cpp:307
-msgid "Help"
-msgstr "ヘルプ"
 
 #: src/dialogs.cpp:114
 msgid "Advance Unit"
@@ -11258,6 +11306,11 @@ msgstr "色"
 msgid "I'm Ready"
 msgstr "準備完了"
 
+#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
+#: src/multiplayer_wait.cpp:163
+msgid "Cancel"
+msgstr "キャンセル"
+
 #: src/multiplayer_connect.cpp:784
 msgid "The scenario is invalid because it has no sides."
 msgstr "チームがないため、 シナリオは無効です。"
@@ -11335,6 +11388,10 @@ msgstr "戦争の霧"
 #: src/multiplayer_create.cpp:70
 msgid "Observers"
 msgstr "観戦者"
+
+#: src/multiplayer_create.cpp:72
+msgid "OK"
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:73
 msgid "Regenerate"
@@ -11941,6 +11998,10 @@ msgstr "ゲームを終了します"
 msgid "More"
 msgstr "次"
 
+#: src/titlescreen.cpp:307
+msgid "Help"
+msgstr "ヘルプ"
+
 #: src/titlescreen.cpp:311
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
@@ -12000,6 +12061,10 @@ msgstr "結果をここで見ることができます:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Wesnoth をもっとよくするために協力してください！"
+
+#, fuzzy
+#~ msgid "Yes"
+#~ msgstr "そう！"
 
 #~ msgid ""
 #~ "You can come if you wish, but the leader is only interested in speaking "

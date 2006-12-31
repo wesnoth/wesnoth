@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-06-12 14:28+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -21,6 +21,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.1\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "Tamam"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Evet"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "Hayır"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Kapat"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Yardım"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -51,11 +78,6 @@ msgstr "Rastgele harita oluştur"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Rastgele üreteç ayarları"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "İptal"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -96,10 +118,6 @@ msgstr "Klavye kısayolları"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Haritayı boyutlandır"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "Tamam"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -406,10 +424,6 @@ msgstr "Müttefikle konuş"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Herkesle konuş"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Yardım"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -801,12 +815,3 @@ msgstr "Hata"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "Evet"
-
-#~ msgid "No"
-#~ msgstr "Hayır"
-
-#~ msgid "Close"
-#~ msgstr "Kapat"

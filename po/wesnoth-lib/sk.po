@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-06-25 13:50+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -17,6 +17,33 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-Country: SLOVAKIA\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "OK"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Áno"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "Nie"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Storno"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Zavri"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Pomoc"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -47,11 +74,6 @@ msgstr "Generuj náhodnú mapu"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Nastavenia náhodného generátora"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Storno"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -92,10 +114,6 @@ msgstr "Klávesy"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Zmeň veľkosť mapy"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -402,10 +420,6 @@ msgstr "Povedz spojencom"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Povedz všetkým"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Pomoc"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -794,15 +808,6 @@ msgstr "Chyba"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "Áno"
-
-#~ msgid "No"
-#~ msgstr "Nie"
-
-#~ msgid "Close"
-#~ msgstr "Zavri"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Prijímam údaje..."

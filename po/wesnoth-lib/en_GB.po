@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 15:47+0100\n"
+"POT-Creation-Date: 2006-12-31 13:04+0100\n"
 "PO-Revision-Date: 2006-06-26 00:37+0100\n"
 "Last-Translator: Peter J Ross <pjr@insurgent.org>\n"
 "Language-Team: British English\n"
@@ -15,6 +15,33 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED KINGDOM\n"
 "X-Generator: KBabel 1.11.2\n"
+
+#: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
+#: src/editor/editor_dialogs.cpp:409
+msgid "OK"
+msgstr "OK"
+
+#: src/construct_dialog.cpp:123
+msgid "Yes"
+msgstr "Yes"
+
+#: src/construct_dialog.cpp:124
+msgid "No"
+msgstr "No"
+
+#: src/construct_dialog.cpp:128 src/construct_dialog.cpp:131
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/construct_dialog.cpp:134
+msgid "Close"
+msgstr "Close"
+
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+msgid "Help"
+msgstr "Help"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -45,11 +72,6 @@ msgstr "Generate Random Map"
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Random Generator Settings"
-
-#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/show_dialog.cpp:402 src/show_dialog.cpp:497
-msgid "Cancel"
-msgstr "Cancel"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -90,10 +112,6 @@ msgstr "Hotkeys"
 #: src/hotkeys.cpp:109
 msgid "Resize Map"
 msgstr "Resize Map"
-
-#: src/editor/editor_dialogs.cpp:409
-msgid "OK"
-msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
@@ -400,10 +418,6 @@ msgstr "Speak to Ally"
 #: src/hotkeys.cpp:120
 msgid "Speak to All"
 msgstr "Speak to All"
-
-#: src/hotkeys.cpp:121
-msgid "Help"
-msgstr "Help"
 
 #: src/hotkeys.cpp:122
 msgid "View Chat Log"
@@ -792,12 +806,3 @@ msgstr "Error"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Yes"
-#~ msgstr "Yes"
-
-#~ msgid "No"
-#~ msgstr "No"
-
-#~ msgid "Close"
-#~ msgstr "Close"
