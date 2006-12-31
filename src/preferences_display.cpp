@@ -340,13 +340,13 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	lobby_minimaps_button_.set_check(show_lobby_minimaps());
 	lobby_minimaps_button_.set_help_string(_("Show minimaps in the multiplayer lobby"));
-	
+
 	sort_list_by_group_button_.set_check(sort_list());
 	sort_list_by_group_button_.set_help_string(_("Sort the player list in the lobby by player groups"));
 
 	iconize_list_button_.set_check(iconize_list());
 	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby."));
-	
+
 	show_lobby_joins_button_.set_check(lobby_joins());
 	show_lobby_joins_button_.set_help_string(_("Show messages about your friends joining the multiplayer lobby"));
 
@@ -532,106 +532,129 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 void preferences_dialog::process_event()
 {
-	if (turbo_button_.pressed())
-		set_turbo(turbo_button_.checked());
-	if (show_ai_moves_button_.pressed())
-		set_show_ai_moves(!show_ai_moves_button_.checked());
-	if (show_grid_button_.pressed())
-		set_grid(show_grid_button_.checked());
-	if (lobby_minimaps_button_.pressed())
-		save_show_lobby_minimaps(lobby_minimaps_button_.checked());
-	if (show_lobby_joins_button_.pressed())
-		set_lobby_joins(show_lobby_joins_button_.checked());
-    if (sort_list_by_group_button_.pressed())
-		set_sort_list(sort_list_by_group_button_.checked());
-    if (iconize_list_button_.pressed())
-		set_iconize_list(iconize_list_button_.checked());
-	if (show_floating_labels_button_.pressed())
-		set_show_floating_labels(show_floating_labels_button_.checked());
-	if (video_mode_button_.pressed())
-		throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
-	if (theme_button_.pressed())
-		show_theme_dialog(disp_);
-	if (fullscreen_button_.pressed())
-		throw video_mode_change_exception(fullscreen_button_.checked()
-										? video_mode_change_exception::MAKE_FULLSCREEN
-										: video_mode_change_exception::MAKE_WINDOWED);
-	if (turn_bell_button_.pressed())
-		set_turn_bell(turn_bell_button_.checked());
-	if (turn_dialog_button_.pressed())
-		set_turn_dialog(turn_dialog_button_.checked());
-	if (show_team_colours_button_.pressed())
-		set_show_side_colours(show_team_colours_button_.checked());
-	if (hotkeys_button_.pressed())
-		show_hotkeys_dialog(disp_);
-	if (show_colour_cursors_button_.pressed())
-		set_colour_cursors(show_colour_cursors_button_.checked());
-	if (show_haloing_button_.pressed())
-		set_show_haloes(show_haloing_button_.checked());
-	if (gamma_button_.pressed()) {
-		set_adjust_gamma(gamma_button_.checked());
-		bool enable_gamma = adjust_gamma();
-		gamma_slider_.enable(enable_gamma);
-		gamma_label_.enable(enable_gamma);
+	if (tab_ == GENERAL_TAB) {
+		if (turbo_button_.pressed())
+			set_turbo(turbo_button_.checked());
+		if (show_ai_moves_button_.pressed())
+			set_show_ai_moves(!show_ai_moves_button_.checked());
+		if (show_grid_button_.pressed())
+			set_grid(show_grid_button_.checked());
+		if (turn_dialog_button_.pressed())
+			set_turn_dialog(turn_dialog_button_.checked());
+		if (show_team_colours_button_.pressed())
+			set_show_side_colours(show_team_colours_button_.checked());
+		if (hotkeys_button_.pressed())
+			show_hotkeys_dialog(disp_);
+
+		set_scroll_speed(scroll_slider_.value());
+		set_turbo_speed(turbo_slider_.value());
+
+		std::stringstream buf;
+		buf << _("Speed: ") << turbo_slider_.value();
+		turbo_slider_label_.set_text(buf.str());
+
+		return;
 	}
 
-	if (sound_button_.pressed()) {
-		if(!set_sound(sound_button_.checked()))
-			sound_button_.set_check(false);
+	if (tab_ == DISPLAY_TAB) {
+		if (show_floating_labels_button_.pressed())
+			set_show_floating_labels(show_floating_labels_button_.checked());
+		if (video_mode_button_.pressed())
+			throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
+		if (theme_button_.pressed())
+			show_theme_dialog(disp_);
+		if (fullscreen_button_.pressed())
+			throw video_mode_change_exception(fullscreen_button_.checked()
+											? video_mode_change_exception::MAKE_FULLSCREEN
+											: video_mode_change_exception::MAKE_WINDOWED);
+		if (show_colour_cursors_button_.pressed())
+			set_colour_cursors(show_colour_cursors_button_.checked());
+		if (show_haloing_button_.pressed())
+			set_show_haloes(show_haloing_button_.checked());
+		if (gamma_button_.pressed()) {
+			set_adjust_gamma(gamma_button_.checked());
+			bool enable_gamma = adjust_gamma();
+			gamma_slider_.enable(enable_gamma);
+			gamma_label_.enable(enable_gamma);
+		}
+		if (flip_time_button_.pressed())
+			set_flip_time(flip_time_button_.checked());
+
+		set_gamma(gamma_slider_.value());
+
+		return;
 	}
-	set_sound_volume(sound_slider_.value());
-	set_bell_volume(bell_slider_.value());
 
-	if (music_button_.pressed()) {
-		if(!set_music(music_button_.checked()))
-			music_button_.set_check(false);
+
+	if (tab_ == SOUND_TAB) {
+		if (turn_bell_button_.pressed())
+			set_turn_bell(turn_bell_button_.checked());
+		if (sound_button_.pressed()) {
+			if(!set_sound(sound_button_.checked()))
+				sound_button_.set_check(false);
+		}
+		set_sound_volume(sound_slider_.value());
+		set_bell_volume(bell_slider_.value());
+
+		if (music_button_.pressed()) {
+			if(!set_music(music_button_.checked()))
+				music_button_.set_check(false);
+		}
+		set_music_volume(music_slider_.value());
+
+		return;
 	}
-	set_music_volume(music_slider_.value());
 
-	if (flip_time_button_.pressed())
-		set_flip_time(flip_time_button_.checked());
-
+	if (tab_ == MULTIPLAYER_TAB) {
+		if (lobby_minimaps_button_.pressed())
+			save_show_lobby_minimaps(lobby_minimaps_button_.checked());
+		if (show_lobby_joins_button_.pressed())
+			set_lobby_joins(show_lobby_joins_button_.checked());
+		if (sort_list_by_group_button_.pressed())
+			set_sort_list(sort_list_by_group_button_.checked());
+		if (iconize_list_button_.pressed())
+			set_iconize_list(iconize_list_button_.checked());
 		if (chat_timestamp_button_.pressed())
 			set_chat_timestamp(chat_timestamp_button_.checked());
 
-	set_scroll_speed(scroll_slider_.value());
-	set_gamma(gamma_slider_.value());
-	set_chat_lines(chat_lines_slider_.value());
-	set_turbo_speed(turbo_slider_.value());
+		set_chat_lines(chat_lines_slider_.value());
 
-	// display currently select amount of chat lines
-	std::stringstream buf;
-	buf << _("Chat Lines: ") << chat_lines_slider_.value();
-	chat_lines_label_.set_text(buf.str());
+		//display currently select amount of chat lines
+		std::stringstream buf;
+		buf << _("Chat Lines: ") << chat_lines_slider_.value();
+		chat_lines_label_.set_text(buf.str());
 
-	buf.str("");
-	buf << _("Speed: ") << turbo_slider_.value();
-	turbo_slider_label_.set_text(buf.str());
-
-	if(advanced_.selection() != advanced_selection_) {
-		advanced_selection_ = advanced_.selection();
-		const config* const adv = get_advanced_pref();
-		if(adv != NULL) {
-			const config& pref = *adv;
-			advanced_button_.set_width(0);
-			advanced_button_.set_label(pref["name"]);
-			std::string value = preferences::get(pref["field"]);
-			if(value.empty()) {
-				value = pref["default"];
-			}
-
-			advanced_button_.set_check(value == "yes");
-		}
+		return;
 	}
 
-	if(advanced_button_.pressed()) {
-		const config* const adv = get_advanced_pref();
-		if(adv != NULL) {
-			const config& pref = *adv;
-			preferences::set(pref["field"],
-					 advanced_button_.checked() ? "yes" : "no");
-			set_advanced_menu();
+	if (tab_ == ADVANCED_TAB) {
+		if(advanced_.selection() != advanced_selection_) {
+			advanced_selection_ = advanced_.selection();
+			const config* const adv = get_advanced_pref();
+			if(adv != NULL) {
+				const config& pref = *adv;
+				advanced_button_.set_width(0);
+				advanced_button_.set_label(pref["name"]);
+				std::string value = preferences::get(pref["field"]);
+				if(value.empty()) {
+					value = pref["default"];
+				}
+
+				advanced_button_.set_check(value == "yes");
+			}
 		}
+
+		if(advanced_button_.pressed()) {
+			const config* const adv = get_advanced_pref();
+			if(adv != NULL) {
+				const config& pref = *adv;
+				preferences::set(pref["field"],
+						advanced_button_.checked() ? "yes" : "no");
+				set_advanced_menu();
+			}
+		}
+
+		return;
 	}
 }
 
