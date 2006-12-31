@@ -33,7 +33,7 @@ slider::slider(CVideo &video)
 	: widget(video), image_(image::get_image(slider_image, image::UNSCALED)),
 	  highlightedImage_(image::get_image(selected_image, image::UNSCALED)),
 	  min_(-100000), max_(100000), value_(0),
-	  increment_(1), state_(NORMAL)
+	  increment_(1), value_change_(false), state_(NORMAL)
 {
 }
 
@@ -56,16 +56,20 @@ void slider::set_location(SDL_Rect const &rect)
 void slider::set_min(int value)
 {
 	min_ = value;
-	if (value_ < min_)
+	if (value_ < min_) {
 		value_ = min_;
+		value_change_ = true;
+	}
 	set_dirty(true);
 }
 
 void slider::set_max(int value)
 {
 	max_ = value;
-	if (value_ > max_)
+	if (value_ > max_) {
 		value_ = max_;
+		value_change_ = true;
+	}
 	set_dirty(true);
 }
 
@@ -85,6 +89,7 @@ void slider::set_value(int value)
 		return;
 
 	value_ = value;
+	value_change_ = true;
 	set_dirty(true);
 }
 
@@ -106,6 +111,15 @@ int slider::min_value() const
 int slider::max_value() const
 {
 	return max_;
+}
+
+bool slider::value_change()
+{
+	if (value_change_) {
+		value_change_ = false;
+		return true;
+	}
+	return false;
 }
 
 SDL_Rect slider::slider_area() const
@@ -182,9 +196,9 @@ void slider::handle_event(const SDL_Event& event)
 {
 	if (hidden() || !enabled())
 		return;
-	
+
 	STATE start_state = state_;
-	
+
 	switch(event.type) {
 	case SDL_MOUSEBUTTONUP:
 		state_ = NORMAL;

@@ -37,6 +37,8 @@ public:
 	int max_value() const;
 	int min_value() const;
 
+	bool value_change();
+
 	virtual void enable(bool new_val=true);
 
 	//VC++ doesn't like a 'using scrollarea::set_location' directive here, so we declare
@@ -60,6 +62,8 @@ private:
 	int max_;
 	int value_;
 	int increment_;
+
+	bool value_change_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, CLICKED, DRAGGED };
 	STATE state_;
