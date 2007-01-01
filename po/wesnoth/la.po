@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 16:16+0100\n"
+"POT-Creation-Date: 2007-01-01 18:14+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -590,7 +590,7 @@ msgstr "Reditio turca"
 msgid "Contributors"
 msgstr "+Qui confert"
 
-#: data/about.cfg:582
+#: data/about.cfg:583
 msgid "Bots"
 msgstr "Automata"
 
@@ -649,7 +649,7 @@ msgstr ""
 #: data/units/Elvish_Archer.cfg:23 data/units/Elvish_Avenger.cfg:61
 #: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
 #: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:48 data/units/Elvish_Marshal.cfg:34
+#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
 #: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
 #: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
 #: data/units/Elvish_Sharpshooter.cfg:47
@@ -711,7 +711,7 @@ msgstr "gladius"
 #: data/units/Dwarvish_Ulfserker.cfg:32 data/units/Elvish_Archer.cfg:25
 #: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
 #: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:50
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
 #: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
 #: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
@@ -1049,7 +1049,7 @@ msgstr "hasta"
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:103
 #: data/units/Elvish_Champion.cfg:110 data/units/Elvish_Druid.cfg:143
 #: data/units/Elvish_Fighter.cfg:80 data/units/Elvish_Hero.cfg:89
-#: data/units/Elvish_Marksman.cfg:116 data/units/Elvish_Marshal.cfg:92
+#: data/units/Elvish_Marksman.cfg:121 data/units/Elvish_Marshal.cfg:92
 #: data/units/Elvish_Outrider.cfg:100 data/units/Elvish_Ranger.cfg:126
 #: data/units/Elvish_Rider.cfg:102 data/units/Elvish_Scout.cfg:101
 #: data/units/Elvish_Sharpshooter.cfg:115 data/units/Elvish_Shyde.cfg:135
@@ -1948,75 +1948,134 @@ msgstr "Orci"
 msgid "race^Undead"
 msgstr "Inmortuum"
 
+#: data/english.cfg:21
+#, fuzzy
+msgid "race^Dwarves"
+msgstr "Nani"
+
+#: data/english.cfg:22
+msgid "race^Goblins"
+msgstr ""
+
 #: data/english.cfg:23
+#, fuzzy
+msgid "race^Lizards"
+msgstr "Inmortuum"
+
+#: data/english.cfg:24
+msgid "race^Mechanical"
+msgstr ""
+
+#: data/english.cfg:25
+msgid "race^Mermen"
+msgstr ""
+
+#: data/english.cfg:26
+msgid "race^Monsters"
+msgstr ""
+
+#: data/english.cfg:27
+#, fuzzy
+msgid "race^Nagas"
+msgstr "Naga"
+
+#: data/english.cfg:28
+msgid "race^Ogres"
+msgstr ""
+
+#: data/english.cfg:29
+#, fuzzy
+msgid "race^Troll"
+msgstr "Troglodyta"
+
+#: data/english.cfg:32
 msgid "$name's Bridge,$name's Crossing"
 msgstr "Porta $name|ensis,Transitus $name|ensis"
 
-#: data/english.cfg:24
+#: data/english.cfg:33
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "Via $name|ensis,Saltus $name|ensis,Semita $name|ensis"
 
-#: data/english.cfg:25
+#: data/english.cfg:34
 msgid "$name River,River $name"
 msgstr "$name Flumen,Fluvius $name|ensis"
 
-#: data/english.cfg:26
+#: data/english.cfg:35
 msgid "$name Forest,$name's Forest"
 msgstr "$name Silva,Silva $name|ensis"
 
-#: data/english.cfg:27
+#: data/english.cfg:36
 msgid "$name Lake"
 msgstr "Lacus $name"
 
-#: data/english.cfg:28
+#: data/english.cfg:37
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|ulum,$name|opolis,$name|tia"
 
-#: data/english.cfg:29
+#: data/english.cfg:38
 msgid "$name|harbor,$name|port"
 msgstr "Portus $name|ensis,Portus $name|ensis"
 
-#: data/english.cfg:30
+#: data/english.cfg:39
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 "Pagus $name|ensis,Vadum $name|ensis,Transitus $name|ensis,Vadum $river|i,"
 "Transitus $river|i"
 
-#: data/english.cfg:31
+#: data/english.cfg:40
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 "Porta $river|i,Pons $river|i,Pons $river|ensis,Pagus $name|ensis,Pons $name|"
 "ensis"
 
-#: data/english.cfg:32
+#: data/english.cfg:41
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "Pagus $name|ensis,Oppidum $name|ense,Campus $name|ensis"
 
-#: data/english.cfg:33
+#: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 "Pagus $name|ensis,Oppidum $name|ense,Silva $name|ensis,Nemus $name|ensis"
 
-#: data/english.cfg:34
+#: data/english.cfg:43
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 "Pagus $name|ensis,Pagus $name|ensis,Oppidum $name|ense,Collis $name|ensis,"
 "Apex $name|ensis"
 
-#: data/english.cfg:35
+#: data/english.cfg:44
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "Pagus $name|ensis,Pagus $name|ensis,Oppidum $name|ense,Mons $name|ensis,"
 "Fastigium $name|ensis,Rupes $name|ensis,Scopulus $name|ensis"
 
-#: data/english.cfg:38
+#: data/english.cfg:47
 msgid "melee"
 msgstr "concursus"
 
-#: data/english.cfg:39
+#: data/english.cfg:48
 msgid "ranged"
 msgstr "e procul"
+
+#: data/english.cfg:51
+#, fuzzy
+msgid "Wesnoth unit list"
+msgstr "Schola"
+
+#: data/english.cfg:52
+msgid "Based on version"
+msgstr ""
+
+#: data/english.cfg:53
+#, fuzzy
+msgid "Race"
+msgstr "scipio"
+
+#: data/english.cfg:54
+#, fuzzy
+msgid "Advance from"
+msgstr "Promovetur ad: "
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -6657,11 +6716,11 @@ msgstr ""
 "\n"
 "Nota Praecipua:"
 
-#: data/units/Elvish_Marksman.cfg:114 data/units/Elvish_Sharpshooter.cfg:113
+#: data/units/Elvish_Marksman.cfg:119 data/units/Elvish_Sharpshooter.cfg:113
 msgid "longbow"
 msgstr "arcus longus"
 
-#: data/units/Elvish_Marksman.cfg:207
+#: data/units/Elvish_Marksman.cfg:212
 msgid "female^Elvish Marksman"
 msgstr "Perita Arcus Dryadalis"
 
@@ -12090,10 +12149,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 #~ "oppugnare lentifacientes eos."
 
 #, fuzzy
-#~ msgid "Wesnoth Tutorial"
-#~ msgstr "Schola"
-
-#, fuzzy
 #~ msgid "Delfador"
 #~ msgstr "Delfadorem Vincere"
 
@@ -12514,9 +12569,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "Connecting to remote host..."
 #~ msgstr "Ad hospitem remotum coniungens..."
-
-#~ msgid "Dwarves"
-#~ msgstr "Nani"
 
 #~ msgid "Saurian"
 #~ msgstr "Lacerta"
@@ -13638,9 +13690,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "Merman"
 #~ msgstr "Nereius"
-
-#~ msgid "female^Naga"
-#~ msgstr "Naga"
 
 #~ msgid ""
 #~ "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more "

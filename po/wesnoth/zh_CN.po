@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 16:16+0100\n"
+"POT-Creation-Date: 2007-01-01 18:14+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -614,7 +614,7 @@ msgstr "+土耳其语"
 msgid "Contributors"
 msgstr "贡献者"
 
-#: data/about.cfg:582
+#: data/about.cfg:583
 #, fuzzy
 msgid "Bots"
 msgstr "+Bots"
@@ -675,7 +675,7 @@ msgstr ""
 #: data/units/Elvish_Archer.cfg:23 data/units/Elvish_Avenger.cfg:61
 #: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
 #: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:48 data/units/Elvish_Marshal.cfg:34
+#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
 #: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
 #: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
 #: data/units/Elvish_Sharpshooter.cfg:47
@@ -737,7 +737,7 @@ msgstr "剑"
 #: data/units/Dwarvish_Ulfserker.cfg:32 data/units/Elvish_Archer.cfg:25
 #: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
 #: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:50
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
 #: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
 #: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
@@ -1070,7 +1070,7 @@ msgstr "矛"
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:103
 #: data/units/Elvish_Champion.cfg:110 data/units/Elvish_Druid.cfg:143
 #: data/units/Elvish_Fighter.cfg:80 data/units/Elvish_Hero.cfg:89
-#: data/units/Elvish_Marksman.cfg:116 data/units/Elvish_Marshal.cfg:92
+#: data/units/Elvish_Marksman.cfg:121 data/units/Elvish_Marshal.cfg:92
 #: data/units/Elvish_Outrider.cfg:100 data/units/Elvish_Ranger.cfg:126
 #: data/units/Elvish_Rider.cfg:102 data/units/Elvish_Scout.cfg:101
 #: data/units/Elvish_Sharpshooter.cfg:115 data/units/Elvish_Shyde.cfg:135
@@ -1902,67 +1902,124 @@ msgstr "兽人"
 msgid "race^Undead"
 msgstr "不死族"
 
+#: data/english.cfg:21
+#, fuzzy
+msgid "race^Dwarves"
+msgstr "矮人"
+
+#: data/english.cfg:22
+msgid "race^Goblins"
+msgstr ""
+
 #: data/english.cfg:23
+#, fuzzy
+msgid "race^Lizards"
+msgstr "不死族"
+
+#: data/english.cfg:24
+msgid "race^Mechanical"
+msgstr ""
+
+#: data/english.cfg:25
+msgid "race^Mermen"
+msgstr ""
+
+#: data/english.cfg:26
+msgid "race^Monsters"
+msgstr ""
+
+#: data/english.cfg:27
+msgid "race^Nagas"
+msgstr ""
+
+#: data/english.cfg:28
+msgid "race^Ogres"
+msgstr ""
+
+#: data/english.cfg:29
+#, fuzzy
+msgid "race^Troll"
+msgstr "巨魔"
+
+#: data/english.cfg:32
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name 桥，,$name 渡口"
 
-#: data/english.cfg:24
+#: data/english.cfg:33
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name's 大道，$name's 通道， $name 小路"
 
-#: data/english.cfg:25
+#: data/english.cfg:34
 msgid "$name River,River $name"
 msgstr "$name 河流,河流 $name"
 
-#: data/english.cfg:26
+#: data/english.cfg:35
 msgid "$name Forest,$name's Forest"
 msgstr "$name 森林,$name's 森林"
 
-#: data/english.cfg:27
+#: data/english.cfg:36
 msgid "$name Lake"
 msgstr "$name 湖"
 
-#: data/english.cfg:28
+#: data/english.cfg:37
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|埋藏,$name|ham,$name|吨"
 
-#: data/english.cfg:29
+#: data/english.cfg:38
 msgid "$name|harbor,$name|port"
 msgstr "$name|避乱所,$name|港口"
 
-#: data/english.cfg:30
+#: data/english.cfg:39
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|ham,$name|浅滩,$name|岔口,$river|浅滩,$river|岔口"
 
-#: data/english.cfg:31
+#: data/english.cfg:40
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|桥,$river|桥,$river|桥,$name|过火,$name|桥"
 
-#: data/english.cfg:32
+#: data/english.cfg:41
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|ham,$name|吨,$name|田地"
 
-#: data/english.cfg:33
+#: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|ham,$name|吨,$name|木头,$name 森林"
 
-#: data/english.cfg:34
+#: data/english.cfg:43
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|ham,$name|埋藏,$name|吨,$name|丘陵,$name|冠"
 
-#: data/english.cfg:35
+#: data/english.cfg:44
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|ham,$name|埋葬,$name|吨,$name|mout,$name|mont,$name|悬崖,$name|悬崖"
 
-#: data/english.cfg:38
+#: data/english.cfg:47
 msgid "melee"
 msgstr "近战"
 
-#: data/english.cfg:39
+#: data/english.cfg:48
 msgid "ranged"
 msgstr "射程"
+
+#: data/english.cfg:51
+msgid "Wesnoth unit list"
+msgstr ""
+
+#: data/english.cfg:52
+msgid "Based on version"
+msgstr ""
+
+#: data/english.cfg:53
+#, fuzzy
+msgid "Race"
+msgstr "锤"
+
+#: data/english.cfg:54
+#, fuzzy
+msgid "Advance from"
+msgstr "升级： "
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -6146,11 +6203,11 @@ msgstr ""
 "\n"
 "特别提示：他们的射击术给予了精灵对敌人很高的打击比率，但仅仅在攻击时。"
 
-#: data/units/Elvish_Marksman.cfg:114 data/units/Elvish_Sharpshooter.cfg:113
+#: data/units/Elvish_Marksman.cfg:119 data/units/Elvish_Sharpshooter.cfg:113
 msgid "longbow"
 msgstr "长弓"
 
-#: data/units/Elvish_Marksman.cfg:207
+#: data/units/Elvish_Marksman.cfg:212
 msgid "female^Elvish Marksman"
 msgstr "女性精灵神射手"
 
@@ -11635,9 +11692,6 @@ msgstr ""
 
 #~ msgid "Connecting to remote host..."
 #~ msgstr "连接响应主机中..."
-
-#~ msgid "Dwarves"
-#~ msgstr "矮人"
 
 #~ msgid "Saurian"
 #~ msgstr "蜥蜴人"

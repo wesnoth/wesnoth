@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-30 16:16+0100\n"
+"POT-Creation-Date: 2007-01-01 18:14+0100\n"
 "PO-Revision-Date: 2006-08-30 12:25+0200\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -596,7 +596,7 @@ msgstr "Turecký překlad"
 msgid "Contributors"
 msgstr "Přispěvatelé"
 
-#: data/about.cfg:582
+#: data/about.cfg:583
 msgid "Bots"
 msgstr "Boti"
 
@@ -655,7 +655,7 @@ msgstr ""
 #: data/units/Elvish_Archer.cfg:23 data/units/Elvish_Avenger.cfg:61
 #: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
 #: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:48 data/units/Elvish_Marshal.cfg:34
+#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
 #: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
 #: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
 #: data/units/Elvish_Sharpshooter.cfg:47
@@ -717,7 +717,7 @@ msgstr "meč"
 #: data/units/Dwarvish_Ulfserker.cfg:32 data/units/Elvish_Archer.cfg:25
 #: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
 #: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:50
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
 #: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
 #: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
@@ -1056,7 +1056,7 @@ msgstr "oštěp"
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:103
 #: data/units/Elvish_Champion.cfg:110 data/units/Elvish_Druid.cfg:143
 #: data/units/Elvish_Fighter.cfg:80 data/units/Elvish_Hero.cfg:89
-#: data/units/Elvish_Marksman.cfg:116 data/units/Elvish_Marshal.cfg:92
+#: data/units/Elvish_Marksman.cfg:121 data/units/Elvish_Marshal.cfg:92
 #: data/units/Elvish_Outrider.cfg:100 data/units/Elvish_Ranger.cfg:126
 #: data/units/Elvish_Rider.cfg:102 data/units/Elvish_Scout.cfg:101
 #: data/units/Elvish_Sharpshooter.cfg:115 data/units/Elvish_Shyde.cfg:135
@@ -1966,68 +1966,126 @@ msgstr "Skřeti"
 msgid "race^Undead"
 msgstr "Nemrtví"
 
+#: data/english.cfg:21
+#, fuzzy
+msgid "race^Dwarves"
+msgstr "Trpaslíci"
+
+#: data/english.cfg:22
+msgid "race^Goblins"
+msgstr ""
+
 #: data/english.cfg:23
+#, fuzzy
+msgid "race^Lizards"
+msgstr "Nemrtví"
+
+#: data/english.cfg:24
+msgid "race^Mechanical"
+msgstr ""
+
+#: data/english.cfg:25
+msgid "race^Mermen"
+msgstr ""
+
+#: data/english.cfg:26
+msgid "race^Monsters"
+msgstr ""
+
+#: data/english.cfg:27
+#, fuzzy
+msgid "race^Nagas"
+msgstr "Naga žena"
+
+#: data/english.cfg:28
+msgid "race^Ogres"
+msgstr ""
+
+#: data/english.cfg:29
+#, fuzzy
+msgid "race^Troll"
+msgstr "Trol"
+
+#: data/english.cfg:32
 msgid "$name's Bridge,$name's Crossing"
 msgstr "Most $name,Brod $name"
 
-#: data/english.cfg:24
+#: data/english.cfg:33
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "Silnice $name,Průsmyk $name,Cesta $name"
 
-#: data/english.cfg:25
+#: data/english.cfg:34
 msgid "$name River,River $name"
 msgstr "Řeka $name,řeka $name"
 
-#: data/english.cfg:26
+#: data/english.cfg:35
 msgid "$name Forest,$name's Forest"
 msgstr "Les $name,Les $name"
 
-#: data/english.cfg:27
+#: data/english.cfg:36
 msgid "$name Lake"
 msgstr "Jezero $name"
 
-#: data/english.cfg:28
+#: data/english.cfg:37
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|pochován,město|$name,tón|$name"
 
-#: data/english.cfg:29
+#: data/english.cfg:38
 msgid "$name|harbor,$name|port"
 msgstr "přístav|$name,přístav|$name"
 
-#: data/english.cfg:30
+#: data/english.cfg:39
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "město|$name,brod|$name,křižovatka|$name,$river|brod,soutok|$river"
 
-#: data/english.cfg:31
+#: data/english.cfg:40
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "most|$river,most|$river,most|$river,město|$name,most|$name"
 
-#: data/english.cfg:32
+#: data/english.cfg:41
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "město|$name,tón|$name,pole|$name"
 
-#: data/english.cfg:33
+#: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "město|$name,tón|$name,háj|$name,Les $name"
 
-#: data/english.cfg:34
+#: data/english.cfg:43
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "město|$name,pochován|$name,tón|$name,vrch|$name,hřeben|$name"
 
-#: data/english.cfg:35
+#: data/english.cfg:44
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "město|$name,pochován|$name,tón|$name,vrchol|$name,vrchol|$name,sráz|$name,"
 "sráz|$name"
 
-#: data/english.cfg:38
+#: data/english.cfg:47
 msgid "melee"
 msgstr "zblízka"
 
-#: data/english.cfg:39
+#: data/english.cfg:48
 msgid "ranged"
 msgstr "na dálku"
+
+#: data/english.cfg:51
+#, fuzzy
+msgid "Wesnoth unit list"
+msgstr "Výcvik"
+
+#: data/english.cfg:52
+msgid "Based on version"
+msgstr ""
+
+#: data/english.cfg:53
+msgid "Race"
+msgstr "Národ"
+
+#: data/english.cfg:54
+#, fuzzy
+msgid "Advance from"
+msgstr "Povyšuje na: "
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -6693,11 +6751,11 @@ msgstr ""
 "\n"
 "Zvláštní rysy:"
 
-#: data/units/Elvish_Marksman.cfg:114 data/units/Elvish_Sharpshooter.cfg:113
+#: data/units/Elvish_Marksman.cfg:119 data/units/Elvish_Sharpshooter.cfg:113
 msgid "longbow"
 msgstr "dlouhý luk"
 
-#: data/units/Elvish_Marksman.cfg:207
+#: data/units/Elvish_Marksman.cfg:212
 msgid "female^Elvish Marksman"
 msgstr "Elfí střelkyně"
 
@@ -12177,10 +12235,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #~ "na dálku vrhat sítě, kterými své nepřátele zpomalují."
 
 #, fuzzy
-#~ msgid "Wesnoth Tutorial"
-#~ msgstr "Výcvik"
-
-#, fuzzy
 #~ msgid "Konrad"
 #~ msgstr "Lord"
 
@@ -12534,9 +12588,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 
 #~ msgid "skirmisher,leadership"
 #~ msgstr "průbojnost, vedení"
-
-#~ msgid "Dwarves"
-#~ msgstr "Trpaslíci"
 
 #~ msgid "Saurian"
 #~ msgstr "Ještěrák"
@@ -13832,9 +13883,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 
 #~ msgid "Merman"
 #~ msgstr "Mořský muž"
-
-#~ msgid "female^Naga"
-#~ msgstr "Naga žena"
 
 #~ msgid ""
 #~ "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more "
@@ -15897,9 +15945,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 
 #~ msgid "Stop these intruders from getting through. Ambush them!"
 #~ msgstr "Překazte těm vetřelcům průchod! Přepadněte je!"
-
-#~ msgid "Race"
-#~ msgstr "Národ"
 
 #~ msgid "You have reached the end of the currently playable levels"
 #~ msgstr "Dosáhl jsi konce momentálně hratelných úrovní"
