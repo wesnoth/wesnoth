@@ -1,4 +1,46 @@
 Version 1.3-svn:
+
+Concise list of player-visible changes:
+  * Graphics
+    * Item graphic improvements including an animatable campfire.
+    * Added visible peaks to the impassable mountains.
+    * Added a recruit animation for Skeleton.
+
+  * Sound
+    * New sound effects: morning star.
+    * Added an advanced sound tab to preferences, allowing one to specify the
+      values used for sample rate and buffer size.
+
+  * Unit changes and balancing
+    * New traits: healthy (+3HP, +4 rest healing), fearless (ignore unfavourable
+      time of day).
+    * Dark Adepts no longer get the 'strong' trait.
+    * Added the 'skirmisher' ability to the Shadow line.
+    * Increased the HP of the Longbowman from 45 to 51.
+    * Decreased the XP requirement of the Longbowman from 80 to 68.
+    * Increased the HP of the Master Bowman from 58 to 67.
+    * Increased the XP requirement of the Guardsman from 42 to 47.
+    * Increased the HP of the Stalwart from 48 to 54.
+    * Increased the XP requirement of the Stalwart from 65 to 85.
+    * Increased the HP of the Sentinel from 56 to 68.
+    * Decreased cost of the Mudcrawler from 9 to 5.
+    * Decreased the HP of the Shadow from 26 to 24.
+    * Increased the HP of the Goblin Rouser from 26 to 31.
+    * Increased the melee damage of the Goblin Rouser from 5-3 to 6-3.
+
+  * Multiplayer
+    * Maps
+      * New maps: The Manzivan Traps
+      * Revised maps: Blitz
+
+  * Map editor
+    * Maps can now be opened directly from a scenario file and saved back to it.
+
+  * Language and translations
+    * Updated translations: German, Italian.
+    * Fixed spelling mistakes in the default en_US language.
+
+Detailed changelog and internal changes:
  * Campaignd
    * first argument is number of threads to use, defaults to 5
  * campaigns
@@ -115,7 +157,7 @@ Version 1.3-svn:
    * units can now have a recruit animations that will be played on unit recruit
    * units now have idle animations, played when they've been idle for some time
    * units now have leveling up animations
-   * units can now have victory animations, usable with the WML tag 'victory_anim' 
+   * units can now have victory animations, usable with the WML tag 'victory_anim'
    * units can now have healed animations, used when they get healed
    * units can now have poison animations, used when they suffer poison
      damage
@@ -202,7 +244,7 @@ Version 1.1.14:
      * fixed glitches with impassable moutains at the edges of maps
      * resolved all glitches with cave walls
    * units:
-     * new teamcolored baseframes: Halberdier, Heavy Infanfantry, Pikeman, 
+     * new teamcolored baseframes: Halberdier, Heavy Infanfantry, Pikeman,
        Shocktrooper, Siegetrooper
      * new baseframe: Yeti
      * some new skulls for skeleton units
@@ -217,8 +259,8 @@ Version 1.1.14:
    * updated man-pages: French, German
    * updated translations: Czech, Esperanto, French, Greek, Italian, Russian
  * multiplayer maps:
-    * revised multiplayer maps: 3p Morituri, 4p Morituri, Blue Water Province, 
-      Den of Onis, Hexcake, Isar's Cross, Merkwuerdigliebe, Meteor Lake, 
+    * revised multiplayer maps: 3p Morituri, 4p Morituri, Blue Water Province,
+      Den of Onis, Hexcake, Isar's Cross, Merkwuerdigliebe, Meteor Lake,
       Sablestone Delta, Sulla's Ruins
  * misc:
    * fixed a crash in the recall event_handler
@@ -251,7 +293,7 @@ Version 1.1.13:
    * added descriptions to the weapons of some campaign units to make sure they
      are correctly translated
  * multiplayer maps:
-    * revised multiplayer maps: Charge, Hamlets, Hornshark Island, Silverhead 
+    * revised multiplayer maps: Charge, Hamlets, Hornshark Island, Silverhead
       Crossing, Sulla's Ruins, 3p Morituri
  * misc bugfixes:
    * several minor bugs
