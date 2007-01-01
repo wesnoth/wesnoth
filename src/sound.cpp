@@ -198,19 +198,13 @@ manager::~manager()
 }
 
 bool init_sound() {
-//sounds don't sound good on Windows unless the buffer size is 4k,
-//but this seems to cause crashes on other systems...
-#ifdef WIN32
-	const size_t buf_size = 4096;
-#else
-	const size_t buf_size = 1024;
-#endif
+
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
 			return false;
 
 	if(!mix_ok) {
-		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, buf_size) == -1) {
+		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
 			mix_ok = false;
 			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << "\n";
 			return false;
@@ -249,6 +243,19 @@ void close_sound() {
 		SDL_QuitSubSystem(SDL_INIT_AUDIO);
 
 	LOG_AUDIO << "Audio device released.\n";
+}
+
+void reset_sound() {
+	bool music = preferences::music_on();
+	bool sound = preferences::sound_on();
+	if (music || sound) {
+		sound::close_sound();
+		sound::init_sound();
+		if (!music)
+			sound::stop_music();
+		if (!sound)
+			sound::stop_sound();
+	}
 }
 
 void stop_music() {

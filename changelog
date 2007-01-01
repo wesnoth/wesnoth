@@ -12,6 +12,9 @@ Version 1.2-svn
     * correctly use translated team names when available
     * fix the completion when controlling multiple sides (bug #8101, patch #653)
     * first turn of a game is saved again (fixes bug #7909 and bug #8117)
+ * sound
+   * add advanced sound tab to pref allowing you to play with sample_rate and buffer_size options
+   * set default sample rate to 44100 hz as most user got cracking sound pb with 22050
 
 Version 1.2:
  * campaigns:
@@ -74,7 +77,7 @@ Version 1.1.14:
      * fixed glitches with impassable moutains at the edges of maps
      * resolved all glitches with cave walls
    * units:
-     * new teamcolored baseframes: Halberdier, Heavy Infanfantry, Pikeman, 
+     * new teamcolored baseframes: Halberdier, Heavy Infanfantry, Pikeman,
        Shocktrooper, Siegetrooper
      * new baseframe: Yeti
      * some new skulls for skeleton units
@@ -89,8 +92,8 @@ Version 1.1.14:
    * updated man-pages: French, German
    * updated translations: Czech, Esperanto, French, Greek, Italian, Russian
  * multiplayer maps:
-    * revised multiplayer maps: 3p Morituri, 4p Morituri, Blue Water Province, 
-      Den of Onis, Hexcake, Isar's Cross, Merkwuerdigliebe, Meteor Lake, 
+    * revised multiplayer maps: 3p Morituri, 4p Morituri, Blue Water Province,
+      Den of Onis, Hexcake, Isar's Cross, Merkwuerdigliebe, Meteor Lake,
       Sablestone Delta, Sulla's Ruins
  * misc:
    * fixed a crash in the recall event_handler
@@ -124,7 +127,7 @@ Version 1.1.13:
    * added descriptions to the weapons of some campaign units to make sure they
      are correctly translated
  * multiplayer maps:
-    * revised multiplayer maps: Charge, Hamlets, Hornshark Island, Silverhead 
+    * revised multiplayer maps: Charge, Hamlets, Hornshark Island, Silverhead
       Crossing, Sulla's Ruins, 3p Morituri
  * misc bugfixes:
    * several minor bugs

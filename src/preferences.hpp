@@ -65,6 +65,10 @@ namespace preferences {
 	bool set_sound(bool ison);
 
 	unsigned int sample_rate();
+ 	void save_sample_rate(const unsigned int rate);
+
+	size_t sound_buffer_size();
+	void save_sound_buffer_size(const size_t size);
 
 	int sound_volume();
 	void set_sound_volume(int vol);

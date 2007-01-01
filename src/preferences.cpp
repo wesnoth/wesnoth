@@ -178,7 +178,49 @@ void set_language(const std::string& s)
 
 unsigned int sample_rate()
 {
-	return lexical_cast_default<unsigned int>(prefs["sample_rate"], 22050);
+	return lexical_cast_default<unsigned int>(prefs["sample_rate"], 44100);
+}
+
+void save_sample_rate(const unsigned int rate)
+{
+	const std::string new_rate = lexical_cast_default<std::string>(rate, "44100");
+	if (prefs["sample_rate"] == new_rate)
+		return;
+
+	prefs["sample_rate"] = new_rate;
+
+	//if audio is open we have to re set sample rate
+	sound::reset_sound();
+}
+
+size_t sound_buffer_size()
+{
+	//sounds don't sound good on Windows unless the buffer size is 4k,
+	//but this seems to cause crashes on other systems...
+	#ifdef WIN32
+		const size_t buf_size = 4096;
+	#else
+		const size_t buf_size = 1024;
+	#endif
+
+	return lexical_cast_default<size_t>(prefs["sound_buffer_size"], buf_size);
+}
+
+void save_sound_buffer_size(const size_t size)
+{
+	#ifdef WIN32
+	const char* buf_size = "4096";
+	#else
+	const char* buf_size = "1024";
+	#endif
+
+	const std::string new_size = lexical_cast_default<std::string>(size, buf_size);
+	if (prefs["sound_buffer_size"] == new_size)
+		return;
+
+	prefs["sound_buffer_size"] = new_size;
+
+	sound::reset_sound();
 }
 
 int music_volume()
