@@ -2062,6 +2062,7 @@ void display::invalidate_unit()
 
 void display::invalidate_animations()
 {
+	new_animation_frame();
 	bool animate_flags = false;
 	gamemap::location topleft;
 	gamemap::location bottomright;

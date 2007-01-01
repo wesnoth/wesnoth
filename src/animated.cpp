@@ -21,6 +21,15 @@
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 
+namespace {
+	int current_ticks = 0;
+}
+
+void new_animation_frame()
+{
+	current_ticks = SDL_GetTicks();
+}
+
 template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
 
@@ -94,7 +103,7 @@ void animated<T,T_void_value>::start_animation(int start_frame, int cycles, int 
 {
 	started_ = true;
 	start_frame_ = start_frame;
-	start_ticks_ = real_start_ticks_ = current_time_ = SDL_GetTicks() * acceleration;
+	start_ticks_ = real_start_ticks_ = current_time_ = current_ticks * acceleration;
 	cycles_ = cycles;
 	current_cycle_ = 0;
 	acceleration_ = acceleration;
@@ -120,7 +129,7 @@ void animated<T,T_void_value>::update_current_frame()
 
 	frame_changed_ = false;
 	// Always update current_time_, for the animation_time functions to work.
-	current_time_ = SDL_GetTicks() * acceleration_;
+	current_time_ = current_ticks * acceleration_;
 	if(!started_)
 		return;
 
@@ -218,7 +227,7 @@ template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_animation_time() const
 {
 	if(does_not_change_)
-		return SDL_GetTicks() * acceleration_ - real_start_ticks_ + start_frame_;
+		return current_ticks * acceleration_ - real_start_ticks_ + start_frame_;
 
 	return current_time_ - real_start_ticks_ + start_frame_;
 }
