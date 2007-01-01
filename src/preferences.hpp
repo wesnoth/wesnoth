@@ -73,6 +73,9 @@ namespace preferences {
 	unsigned int sample_rate();
 	void save_sample_rate(const unsigned int rate);
 
+	size_t sound_buffer_size();
+	void save_sound_buffer_size(const size_t size);
+
 	int sound_volume();
 	void set_sound_volume(int vol);
 
@@ -96,10 +99,10 @@ namespace preferences {
 
 	bool lobby_joins();
 	void _set_lobby_joins(bool show);
-	
+
 	bool sort_list();
 	void _set_sort_list(bool show);
-	
+
 	bool iconize_list();
 	void _set_iconize_list(bool show);
 

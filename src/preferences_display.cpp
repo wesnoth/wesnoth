@@ -27,6 +27,7 @@
 #include "widgets/label.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
+#include "widgets/textbox.hpp"
 #include "theme.hpp"
 
 #include <vector>
@@ -213,21 +214,29 @@ private:
 	void set_advanced_menu();
 
 	// change
-	gui::slider music_slider_, sound_slider_, bell_slider_, scroll_slider_,
-				gamma_slider_, chat_lines_slider_, turbo_slider_;
+	gui::slider music_slider_, sound_slider_, bell_slider_, scroll_slider_, gamma_slider_,
+				chat_lines_slider_, turbo_slider_, buffer_size_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, show_grid_button_,
-	            lobby_minimaps_button_, show_lobby_joins_button_, sort_list_by_group_button_, iconize_list_button_, show_floating_labels_button_, turn_dialog_button_,
-	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
-	            show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
-				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_;
+				lobby_minimaps_button_, show_lobby_joins_button_, sort_list_by_group_button_,
+				iconize_list_button_, show_floating_labels_button_, turn_dialog_button_,
+				turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
+				show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
+				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_,
+				advanced_sound_button_, normal_sound_button_,
+				sample_rate_button1_, sample_rate_button2_, sample_rate_button3_, confirm_sound_button_;
 	gui::label music_label_, sound_label_, bell_label_, scroll_label_,
-				gamma_label_, chat_lines_label_, turbo_slider_label_;
+				gamma_label_, chat_lines_label_, turbo_slider_label_,
+				sample_rate_label_, buffer_size_label_;
+	gui::textbox sample_rate_input_;
+
 	unsigned slider_label_width_;
 
 	gui::menu advanced_;
 	int advanced_selection_;
 
-	enum TAB { GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB };
+	enum TAB {	GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB,
+				/*extra tab*/
+				ADVANCED_SOUND_TAB};
 	TAB tab_;
 	display &disp_;
 	const config& game_cfg_;
@@ -238,7 +247,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
 	  music_slider_(disp.video()), sound_slider_(disp.video()), bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()), chat_lines_slider_(disp.video()),
-	  turbo_slider_(disp.video()),
+	  turbo_slider_(disp.video()), buffer_size_slider_(disp.video()),
+
 	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
@@ -262,11 +272,25 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
 	  chat_timestamp_button_(disp.video(), _("Chat Timestamping"), gui::button::TYPE_CHECK),
+	  advanced_sound_button_(disp.video(), _("Advanced Mode")),
+	  normal_sound_button_(disp.video(), _("Normal Mode")),
+	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_CHECK),
+	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_CHECK),
+	  sample_rate_button3_(disp.video(), _("User Define"), gui::button::TYPE_CHECK),
+	  confirm_sound_button_(disp.video(), _("Apply")),
+
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  bell_label_(disp.video(), _("Bell Volume:")), scroll_label_(disp.video(), _("Scroll Speed:")),
-	  gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(),  ""),
-	  turbo_slider_label_(disp.video(), "",font::SIZE_SMALL ),
-	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style), advanced_selection_(-1),
+	  gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(), ""),
+	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
+	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(), ""),
+
+	  sample_rate_input_(disp.video(), 70),
+
+	  slider_label_width_(0),
+	  advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
+	  advanced_selection_(-1),
+
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
 	// FIXME: this box should be vertically centered on the screen, but is not
@@ -297,6 +321,30 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	bell_slider_.set_value(bell_volume());
 	bell_slider_.set_help_string(_("Change the bell volume"));
 
+	sample_rate_label_.set_help_string(_("Change the sample rate"));
+	std::string rate = lexical_cast<std::string>(sample_rate());
+	if (rate == "22050")
+		sample_rate_button1_.set_check(true);
+	else if (rate == "44100")
+		sample_rate_button2_.set_check(true);
+	else
+		sample_rate_button3_.set_check(true);
+	sample_rate_input_.set_text(rate);
+	sample_rate_input_.set_help_string(_("User defined sample rate"));
+	confirm_sound_button_.enable(sample_rate_button3_.checked());
+
+	buffer_size_slider_.set_min(0);
+	buffer_size_slider_.set_max(3);
+	int v = sound_buffer_size()/512 - 1;
+	buffer_size_slider_.set_value(v);
+	//avoid sound reset the first time we load advanced sound
+	buffer_size_slider_.value_change();
+	buffer_size_slider_.set_help_string(_("Change the buffer size"));
+	std::stringstream buf;
+	buf << _("Buffer Size: ") << sound_buffer_size();
+	buffer_size_label_.set_text(buf.str());
+	buffer_size_label_.set_help_string(_("Change the buffer size"));
+
 	scroll_slider_.set_min(1);
 	scroll_slider_.set_max(100);
 	scroll_slider_.set_value(scroll_speed());
@@ -311,7 +359,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	chat_timestamp_button_.set_check(chat_timestamp());
 	chat_timestamp_button_.set_help_string(_("Add a timestamp to chat messages"));
-
 
 	gamma_button_.set_check(adjust_gamma());
 	gamma_button_.set_help_string(_("Change the brightness of the display"));
@@ -389,6 +436,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&gamma_slider_);
 	h.push_back(&chat_lines_slider_);
 	h.push_back(&turbo_slider_);
+	h.push_back(&buffer_size_slider_);
 	h.push_back(&fullscreen_button_);
 	h.push_back(&turbo_button_);
 	h.push_back(&show_ai_moves_button_);
@@ -412,6 +460,12 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&sound_button_);
 	h.push_back(&music_button_);
 	h.push_back(&chat_timestamp_button_);
+	h.push_back(&advanced_sound_button_);
+	h.push_back(&normal_sound_button_);
+	h.push_back(&sample_rate_button1_);
+	h.push_back(&sample_rate_button2_);
+	h.push_back(&sample_rate_button3_);
+	h.push_back(&confirm_sound_button_);
 	h.push_back(&music_label_);
 	h.push_back(&sound_label_);
 	h.push_back(&bell_label_);
@@ -419,6 +473,9 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&gamma_label_);
 	h.push_back(&turbo_slider_label_);
 	h.push_back(&chat_lines_label_);
+	h.push_back(&sample_rate_label_);
+	h.push_back(&buffer_size_label_);
+	h.push_back(&sample_rate_input_);
 	h.push_back(&advanced_);
 	return h;
 }
@@ -494,15 +551,42 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 								rect.w - slider_label_width_ - right_border, 0 };
 	music_slider_.set_location(music_rect);
 
-	// Bell slider
-	ypos += item_interline;
+	ypos += item_interline; //Bell slider
 	turn_bell_button_.set_location(rect.x, ypos);
-
 	ypos += item_interline;
 	bell_label_.set_location(rect.x, ypos);
-	const SDL_Rect bell_rect = { rect.x + slider_label_width_, ypos,
+	const SDL_Rect bell_rect = {rect.x + slider_label_width_, ypos,
 								rect.w - slider_label_width_ - right_border, 0 };
 	bell_slider_.set_location(bell_rect);
+	ypos += item_interline;
+	const int asb_x = rect.x + rect.w - advanced_sound_button_.width() - 20;
+	advanced_sound_button_.set_location(asb_x, ypos);
+
+
+	//Advanced Sound tab
+	ypos = rect.y + top_border;
+	sample_rate_label_.set_location(rect.x, ypos);
+	ypos += short_interline;
+	int h_offset = rect.x + horizontal_padding;
+	sample_rate_button1_.set_location(h_offset, ypos);
+	ypos += short_interline;
+	sample_rate_button2_.set_location(h_offset, ypos);
+	ypos += short_interline;
+	sample_rate_button3_.set_location(h_offset, ypos);
+	h_offset += sample_rate_button3_.width() + 5;
+	sample_rate_input_.set_location(h_offset, ypos);
+	h_offset += sample_rate_input_.width() + 5;
+	confirm_sound_button_.set_location(h_offset, ypos);
+
+	ypos += item_interline;
+	buffer_size_label_.set_location(rect.x, ypos);
+	ypos += short_interline;
+	SDL_Rect buffer_rect = {rect.x + horizontal_padding, ypos,
+							rect.w - horizontal_padding - right_border, 0 };
+	buffer_size_slider_.set_location(buffer_rect);
+	ypos += item_interline;
+	const int nsb_x = rect.x + rect.w - normal_sound_button_.width() - 20;
+	normal_sound_button_.set_location(nsb_x, ypos);
 
 
 	// Multiplayer tab
@@ -601,6 +685,66 @@ void preferences_dialog::process_event()
 				music_button_.set_check(false);
 		}
 		set_music_volume(music_slider_.value());
+
+		if (advanced_sound_button_.pressed())
+			set_selection(ADVANCED_SOUND_TAB);
+
+		return;
+	}
+
+	if (tab_ == ADVANCED_SOUND_TAB) {
+		bool apply = false;
+		std::string rate;
+
+		if (sample_rate_button1_.pressed()) {
+			if (sample_rate_button1_.checked()) {
+				sample_rate_button2_.set_check(false);
+				sample_rate_button3_.set_check(false);
+				confirm_sound_button_.enable(false);
+				apply = true;
+				rate = "22050";
+			} else
+				sample_rate_button1_.set_check(true);
+		}
+		if (sample_rate_button2_.pressed()) {
+			if (sample_rate_button2_.checked()) {
+				sample_rate_button1_.set_check(false);
+				sample_rate_button3_.set_check(false);
+				confirm_sound_button_.enable(false);
+				apply = true;
+				rate = "44100";
+			} else
+				sample_rate_button2_.set_check(true);
+		}
+		if (sample_rate_button3_.pressed()) {
+			if (sample_rate_button3_.checked()) {
+				sample_rate_button1_.set_check(false);
+				sample_rate_button2_.set_check(false);
+				confirm_sound_button_.enable(true);
+			} else
+				sample_rate_button3_.set_check(true);
+		}
+		if (confirm_sound_button_.pressed()) {
+			apply = true;
+			rate = sample_rate_input_.text();
+		}
+
+		if (apply)
+			try {
+			save_sample_rate(lexical_cast<unsigned int>(rate));
+			} catch (bad_lexical_cast&) {
+			}
+
+		if (buffer_size_slider_.value_change()) {
+			const size_t buffer_size = 512 << buffer_size_slider_.value();
+			save_sound_buffer_size(buffer_size);
+			std::stringstream buf;
+			buf << _("Buffer Size: ") << buffer_size;
+			buffer_size_label_.set_text(buf.str());
+		}
+
+		if (normal_sound_button_.pressed())
+			set_selection(SOUND_TAB);
 
 		return;
 	}
@@ -734,6 +878,18 @@ void preferences_dialog::set_selection(int index)
 	turn_bell_button_.hide(hide_sound);
 	bell_label_.hide(hide_sound);
 	bell_slider_.hide(hide_sound);
+	advanced_sound_button_.hide(hide_sound);
+
+	const bool hide_advanced_sound = tab_ != ADVANCED_SOUND_TAB;
+	sample_rate_label_.hide(hide_advanced_sound);
+	sample_rate_button1_.hide(hide_advanced_sound);
+	sample_rate_button2_.hide(hide_advanced_sound);
+	sample_rate_button3_.hide(hide_advanced_sound);
+	sample_rate_input_.hide(hide_advanced_sound);
+	confirm_sound_button_.hide(hide_advanced_sound);
+	buffer_size_label_.hide(hide_advanced_sound);
+	buffer_size_slider_.hide(hide_advanced_sound);
+	normal_sound_button_.hide(hide_advanced_sound);
 
 	const bool hide_multiplayer = tab_ != MULTIPLAYER_TAB;
 	chat_lines_label_.hide(hide_multiplayer);
@@ -1002,26 +1158,22 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 bool show_theme_dialog(display& disp)
 {
-  int action = 0;
-  std::vector<std::string> options = disp.get_theme().get_known_themes();
-  if(options.size()){
-    std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
-    action = gui::show_dialog2(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
-    if(action >= 0){
-      preferences::set_theme(options[action]);
-      //it would be preferable for the new theme to take effect
-      //immediately, however, this will have to do for now.
-      gui::show_dialog(disp,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
-      return(1);
-    }
-  }else{
-      gui::show_dialog(disp,NULL,"",_("No known themes.  Try changing from within an existing game."),gui::MESSAGE);
-  }
-  return(0);
+	int action = 0;
+	std::vector<std::string> options = disp.get_theme().get_known_themes();
+	if(options.size()){
+		std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
+		action = gui::show_dialog2(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
+		if(action >= 0){
+		preferences::set_theme(options[action]);
+		//it would be preferable for the new theme to take effect
+		//immediately, however, this will have to do for now.
+		gui::show_dialog(disp,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
+		return(1);
+		}
+	}else{
+		gui::show_dialog(disp,NULL,"",_("No known themes.  Try changing from within an existing game."),gui::MESSAGE);
+	}
+	return(0);
 }
 
 }
-
-
-
-

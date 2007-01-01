@@ -44,7 +44,7 @@ unsigned max_cached_chunks = 256;
 #endif
 
 std::map<std::string,Mix_Chunk*> sound_cache;
-std::map<std::string,Mix_Music*> music_cache; 
+std::map<std::string,Mix_Music*> music_cache;
 
 // Channel-chunk mapping let us know, if can safely free a given chunk
 std::vector<Mix_Chunk*> channel_chunks;
@@ -225,15 +225,6 @@ manager::~manager()
 }
 
 bool init_sound() {
-//sounds don't sound good on Windows unless the buffer size is 4k,
-//but this seems to cause crashes on other systems...
-#ifdef WIN32
-	const size_t buf_size = 4096;
-#elif GP2X
-	const size_t buf_size = 512;
-#else
-	const size_t buf_size = 1024;
-#endif
 
 	const size_t n_of_channels = 16;
 
@@ -242,7 +233,7 @@ bool init_sound() {
 			return false;
 
 	if(!mix_ok) {
-		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, buf_size) == -1) {
+		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
 			mix_ok = false;
 			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << "\n";
 			return false;
@@ -286,6 +277,22 @@ void close_sound() {
 		SDL_QuitSubSystem(SDL_INIT_AUDIO);
 
 	LOG_AUDIO << "Audio device released.\n";
+}
+
+void reset_sound() {
+	bool music = preferences::music_on();
+	bool sound = preferences::sound_on();
+	bool bell = preferences::turn_bell();
+	if (music || sound || bell) {
+		sound::close_sound();
+		sound::init_sound();
+		if (!music)
+			sound::stop_music();
+		if (!sound)
+			sound::stop_sound();
+		if (!bell)
+			sound::stop_bell();
+	}
 }
 
 void stop_music() {
