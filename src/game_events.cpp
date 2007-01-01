@@ -938,68 +938,84 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		// range. (i.e. -1..-10, 0..100, -10..10, etc)
 		const std::string& random = cfg["random"];
 		if(random.empty() == false) {
-			std::string random_value, word;
-			std::vector<std::string> words;
-			std::vector<std::pair<long,long> > ranges;
-			int num_choices = 0;
-			std::string::size_type pos = 0, pos2 = std::string::npos;
-			std::stringstream ss(std::stringstream::in|std::stringstream::out);
-			while (pos2 != random.length()) {
-				pos = pos2+1;
-				pos2 = random.find(",", pos);
+			std::string random_value;
+			//if we're not replaying create a random number
+			if(get_replay_source().at_end()) {
+				std::string word;
+				std::vector<std::string> words;
+				std::vector<std::pair<long,long> > ranges;
+				int num_choices = 0;
+				std::string::size_type pos = 0, pos2 = std::string::npos;
+				std::stringstream ss(std::stringstream::in|std::stringstream::out);
+				while (pos2 != random.length()) {
+					pos = pos2+1;
+					pos2 = random.find(",", pos);
 
-				if (pos2 == std::string::npos)
-					pos2 = random.length();
+					if (pos2 == std::string::npos)
+						pos2 = random.length();
 
-				word = random.substr(pos, pos2-pos);
-				words.push_back(word);
-				std::string::size_type tmp = word.find("..");
+					word = random.substr(pos, pos2-pos);
+					words.push_back(word);
+					std::string::size_type tmp = word.find("..");
 
 
-				if (tmp == std::string::npos) {
-					// treat this element as a string
-					ranges.push_back(std::pair<int, int>(0,0));
-					num_choices += 1;
-				}
-				else {
-					// treat as a numerical range
-					const std::string first = word.substr(0, tmp);
-					const std::string second = word.substr(tmp+2,
-							random.length());
-
-					long low, high;
-					ss << first + " " + second;
-					ss >> low;
-					ss >> high;
-					ss.clear();
-
-					if (low > high) {
-						tmp = low;
-						low = high;
-						high = tmp;
-					}
-					ranges.push_back(std::pair<long, long>(low,high));
-					num_choices += (high - low) + 1;
-				}
-			}
-
-			size_t choice = get_random() % num_choices;
-			unsigned long tmp = 0;
-			for(size_t i = 0; i < ranges.size(); i++) {
-				tmp += (ranges[i].second - ranges[i].first) + 1;
-				if (tmp > choice) {
-					if (ranges[i].first == 0 && ranges[i].second == 0) {
-						random_value = words[i];
+					if (tmp == std::string::npos) {
+						// treat this element as a string
+						ranges.push_back(std::pair<int, int>(0,0));
+						num_choices += 1;
 					}
 					else {
-						tmp = (ranges[i].second - (tmp - choice)) + 1;
-						ss << tmp;
-						ss >> random_value;
+						// treat as a numerical range
+						const std::string first = word.substr(0, tmp);
+						const std::string second = word.substr(tmp+2,
+								random.length());
+
+						long low, high;
+						ss << first + " " + second;
+						ss >> low;
+						ss >> high;
+						ss.clear();
+
+						if (low > high) {
+							tmp = low;
+							low = high;
+							high = tmp;
+						}
+						ranges.push_back(std::pair<long, long>(low,high));
+						num_choices += (high - low) + 1;
 					}
-					break;
 				}
+
+				size_t choice = get_random() % num_choices;
+				unsigned long tmp = 0;
+				for(size_t i = 0; i < ranges.size(); i++) {
+					tmp += (ranges[i].second - ranges[i].first) + 1;
+					if (tmp > choice) {
+						if (ranges[i].first == 0 && ranges[i].second == 0) {
+							random_value = words[i];
+						}
+						else {
+							tmp = (ranges[i].second - (tmp - choice)) + 1;
+							ss << tmp;
+							ss >> random_value;
+						}
+						break;
+					}
+				}
+
+				recorder.set_random_value(random_value.c_str());
 			}
 
+			//otherwise get the random value from the replay data
+			else {
+				const config* const action = get_replay_source().get_next_action();
+				if(action == NULL || action->get_children("random").empty()) {
+					replay::throw_error("choice expected but none found\n");
+				}
+
+				const std::string& val = (*(action->get_children("random").front()))["value"];
+				random_value = val;
+			}
 			var = random_value;
 		}
 	}

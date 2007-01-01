@@ -358,6 +358,14 @@ void replay::choose_option(int index)
 	add_value("choose",index);
 }
 
+void replay::set_random_value(const std::string& choice)
+{
+	config* const cmd = add_command();
+	config val;
+	val["value"] = choice;
+	cmd->add_child("random",val);
+}
+
 void replay::add_label(const terrain_label* label)
 {
 	wassert(label);

@@ -55,6 +55,7 @@ public:
 	void add_attack(const gamemap::location& a, const gamemap::location& b,
 	                int att_weapon, int def_weapon);
 	void choose_option(int index);
+	void set_random_value(const std::string& choice);
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&);
 	void add_rename(const std::string& name, const gamemap::location& loc);
