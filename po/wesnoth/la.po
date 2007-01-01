@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-31 13:03+0100\n"
+"POT-Creation-Date: 2007-01-01 23:27+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -600,7 +600,7 @@ msgstr "Reditio slovena"
 msgid "Contributors"
 msgstr "+Qui confert"
 
-#: data/about.cfg:592
+#: data/about.cfg:593
 msgid "Bots"
 msgstr "Automata"
 
@@ -659,7 +659,7 @@ msgstr ""
 #: data/units/Elvish_Archer.cfg:22 data/units/Elvish_Avenger.cfg:61
 #: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
 #: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:48 data/units/Elvish_Marshal.cfg:34
+#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
 #: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
 #: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
 #: data/units/Elvish_Sharpshooter.cfg:47
@@ -722,7 +722,7 @@ msgstr "gladius"
 #: data/units/Dwarvish_Ulfserker.cfg:32 data/units/Elvish_Archer.cfg:24
 #: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
 #: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:50
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
 #: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
 #: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
@@ -1098,7 +1098,7 @@ msgstr "arcus"
 #: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
 #: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
 #: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
-#: data/units/Elvish_Marksman.cfg:98 data/units/Elvish_Marshal.cfg:79
+#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
 #: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
 #: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
 #: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
@@ -1914,75 +1914,134 @@ msgstr "Orci"
 msgid "race^Undead"
 msgstr "Inmortuum"
 
+#: data/english.cfg:21
+#, fuzzy
+msgid "race^Dwarves"
+msgstr "Nani"
+
+#: data/english.cfg:22
+msgid "race^Goblins"
+msgstr ""
+
 #: data/english.cfg:23
+#, fuzzy
+msgid "race^Lizards"
+msgstr "Inmortuum"
+
+#: data/english.cfg:24
+msgid "race^Mechanical"
+msgstr ""
+
+#: data/english.cfg:25
+msgid "race^Mermen"
+msgstr ""
+
+#: data/english.cfg:26
+msgid "race^Monsters"
+msgstr ""
+
+#: data/english.cfg:27
+#, fuzzy
+msgid "race^Nagas"
+msgstr "Naga"
+
+#: data/english.cfg:28
+msgid "race^Ogres"
+msgstr ""
+
+#: data/english.cfg:29
+#, fuzzy
+msgid "race^Troll"
+msgstr "Troglodyta"
+
+#: data/english.cfg:32
 msgid "$name's Bridge,$name's Crossing"
 msgstr "Porta $name|ensis,Transitus $name|ensis"
 
-#: data/english.cfg:24
+#: data/english.cfg:33
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "Via $name|ensis,Saltus $name|ensis,Semita $name|ensis"
 
-#: data/english.cfg:25
+#: data/english.cfg:34
 msgid "$name River,River $name"
 msgstr "$name Flumen,Fluvius $name|ensis"
 
-#: data/english.cfg:26
+#: data/english.cfg:35
 msgid "$name Forest,$name's Forest"
 msgstr "$name Silva,Silva $name|ensis"
 
-#: data/english.cfg:27
+#: data/english.cfg:36
 msgid "$name Lake"
 msgstr "Lacus $name"
 
-#: data/english.cfg:28
+#: data/english.cfg:37
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|ulum,$name|opolis,$name|tia"
 
-#: data/english.cfg:29
+#: data/english.cfg:38
 msgid "$name|harbor,$name|port"
 msgstr "Portus $name|ensis,Portus $name|ensis"
 
-#: data/english.cfg:30
+#: data/english.cfg:39
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 "Pagus $name|ensis,Vadum $name|ensis,Transitus $name|ensis,Vadum $river|i,"
 "Transitus $river|i"
 
-#: data/english.cfg:31
+#: data/english.cfg:40
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 "Porta $river|i,Pons $river|i,Pons $river|ensis,Pagus $name|ensis,Pons $name|"
 "ensis"
 
-#: data/english.cfg:32
+#: data/english.cfg:41
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "Pagus $name|ensis,Oppidum $name|ense,Campus $name|ensis"
 
-#: data/english.cfg:33
+#: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 "Pagus $name|ensis,Oppidum $name|ense,Silva $name|ensis,Nemus $name|ensis"
 
-#: data/english.cfg:34
+#: data/english.cfg:43
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 "Pagus $name|ensis,Pagus $name|ensis,Oppidum $name|ense,Collis $name|ensis,"
 "Apex $name|ensis"
 
-#: data/english.cfg:35
+#: data/english.cfg:44
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "Pagus $name|ensis,Pagus $name|ensis,Oppidum $name|ense,Mons $name|ensis,"
 "Fastigium $name|ensis,Rupes $name|ensis,Scopulus $name|ensis"
 
-#: data/english.cfg:38
+#: data/english.cfg:47
 msgid "melee"
 msgstr "concursus"
 
-#: data/english.cfg:39
+#: data/english.cfg:48
 msgid "ranged"
 msgstr "e procul"
+
+#: data/english.cfg:51
+#, fuzzy
+msgid "Wesnoth unit list"
+msgstr "Schola"
+
+#: data/english.cfg:52
+msgid "Based on version"
+msgstr ""
+
+#: data/english.cfg:53
+#, fuzzy
+msgid "Race"
+msgstr "scipio"
+
+#: data/english.cfg:54
+#, fuzzy
+msgid "Advance from"
+msgstr "Promovetur ad: "
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -2040,11 +2099,11 @@ msgstr "Prooemium"
 msgid "Gameplay"
 msgstr "Lusus"
 
-#: data/help.cfg:21 src/menu_events.cpp:292
+#: data/help.cfg:21 src/menu_events.cpp:293
 msgid "Traits"
 msgstr "Lineamenta"
 
-#: data/help.cfg:30 src/menu_events.cpp:360
+#: data/help.cfg:30 src/menu_events.cpp:361
 msgid "Units"
 msgstr "Unitates"
 
@@ -5484,13 +5543,13 @@ msgid "End Turn"
 msgstr "Tractum finire"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:290 src/unit.cpp:2626
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2637
 msgid "HP"
 msgstr "PS"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:165 src/menu_events.cpp:291
-#: src/menu_events.cpp:798
+#: data/themes/experimental.cfg:165 src/menu_events.cpp:292
+#: src/menu_events.cpp:814
 msgid "XP"
 msgstr "PE"
 
@@ -6917,11 +6976,11 @@ msgstr ""
 "\n"
 "Nota Praecipua:"
 
-#: data/units/Elvish_Marksman.cfg:96 data/units/Elvish_Sharpshooter.cfg:95
+#: data/units/Elvish_Marksman.cfg:101 data/units/Elvish_Sharpshooter.cfg:95
 msgid "longbow"
 msgstr "arcus longus"
 
-#: data/units/Elvish_Marksman.cfg:160
+#: data/units/Elvish_Marksman.cfg:165
 msgid "female^Elvish Marksman"
 msgstr "Perita Arcus Dryadalis"
 
@@ -10182,7 +10241,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:67
+#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:68
 msgid "Close"
 msgstr "Claudere"
 
@@ -10300,7 +10359,7 @@ msgstr "Schola"
 msgid "replay"
 msgstr "remonstrare"
 
-#: src/dialogs.cpp:437 src/menu_events.cpp:442 src/multiplayer_lobby.cpp:374
+#: src/dialogs.cpp:437 src/menu_events.cpp:443 src/multiplayer_lobby.cpp:374
 msgid "Turn"
 msgstr "Tractus"
 
@@ -10353,7 +10412,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:527 src/game.cpp:921 src/help.cpp:1187
-#: src/menu_events.cpp:289 src/menu_events.cpp:796
+#: src/menu_events.cpp:290 src/menu_events.cpp:812
 #: src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Nomen"
@@ -10551,7 +10610,7 @@ msgstr ""
 "Quaestio erat in creando pligas necessarias inaugurationi huius stipendii."
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:344
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
 
@@ -10672,11 +10731,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr "Revocans scrinium tituli."
 
-#: src/game_events.cpp:801
+#: src/game_events.cpp:806
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:805
+#: src/game_events.cpp:810
 msgid "Defeat:"
 msgstr "Clades:"
 
@@ -10708,7 +10767,7 @@ msgstr "PE Necessaria: "
 msgid "attacks"
 msgstr "oppugnationes"
 
-#: src/help.cpp:1188 src/menu_events.cpp:288 src/menu_events.cpp:795
+#: src/help.cpp:1188 src/menu_events.cpp:289 src/menu_events.cpp:811
 msgid "Type"
 msgstr "Genus"
 
@@ -10851,12 +10910,12 @@ msgstr "Legens data unitatum."
 msgid "Reading files and creating cache."
 msgstr "Legens data et creans thesaurum."
 
-#: src/menu_events.cpp:65
+#: src/menu_events.cpp:66
 #, fuzzy
 msgid "Detail"
 msgstr "cauda"
 
-#: src/menu_events.cpp:100
+#: src/menu_events.cpp:101
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -10864,7 +10923,7 @@ msgstr ""
 "Domine mi, haec unitas experta est, tenens gradum superiorem! Visne vere "
 "$noun dimittere?"
 
-#: src/menu_events.cpp:102
+#: src/menu_events.cpp:103
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -10872,97 +10931,97 @@ msgstr ""
 "Domine mi, haec unitas mox gradum superiorem attinget! Visne vere $noun "
 "dimittere?"
 
-#: src/menu_events.cpp:107
+#: src/menu_events.cpp:108
 msgid "her"
 msgstr "eam"
 
-#: src/menu_events.cpp:107
+#: src/menu_events.cpp:108
 msgid "him"
 msgstr "eum"
 
-#: src/menu_events.cpp:163 src/menu_events.cpp:236
+#: src/menu_events.cpp:164 src/menu_events.cpp:237
 msgid "Recruits"
 msgstr "Tirones"
 
-#: src/menu_events.cpp:169 src/menu_events.cpp:240
+#: src/menu_events.cpp:170 src/menu_events.cpp:241
 msgid "Recalls"
 msgstr "Revocationes"
 
-#: src/menu_events.cpp:175 src/menu_events.cpp:244
+#: src/menu_events.cpp:176 src/menu_events.cpp:245
 msgid "Advancements"
 msgstr "Promotiones Gradu"
 
-#: src/menu_events.cpp:181 src/menu_events.cpp:248
+#: src/menu_events.cpp:182 src/menu_events.cpp:249
 msgid "Losses"
 msgstr "Amissa"
 
-#: src/menu_events.cpp:187 src/menu_events.cpp:252
+#: src/menu_events.cpp:188 src/menu_events.cpp:253
 msgid "Kills"
 msgstr "Interfecta"
 
-#: src/menu_events.cpp:193
+#: src/menu_events.cpp:194
 msgid "Damage Inflicted"
 msgstr "Damnum Infictum"
 
-#: src/menu_events.cpp:199
+#: src/menu_events.cpp:200
 msgid "Damage Taken"
 msgstr "Damnum Passum"
 
-#: src/menu_events.cpp:205
+#: src/menu_events.cpp:206
 msgid "Damage Inflicted (EV)"
 msgstr "Damnum Inflictum (Exsp)"
 
-#: src/menu_events.cpp:212
+#: src/menu_events.cpp:213
 msgid "Damage Taken (EV)"
 msgstr "Damnum Passum (Exsp)"
 
-#: src/menu_events.cpp:220
+#: src/menu_events.cpp:221
 msgid "Statistics"
 msgstr "Census"
 
-#: src/menu_events.cpp:293 src/unit.cpp:2657
+#: src/menu_events.cpp:294 src/unit.cpp:2668
 msgid "Moves"
 msgstr "Puncta motus"
 
-#: src/menu_events.cpp:294
+#: src/menu_events.cpp:295
 msgid "Location"
 msgstr "Locus"
 
-#: src/menu_events.cpp:339
+#: src/menu_events.cpp:340
 msgid "Unit List"
 msgstr "Index Unitatum"
 
-#: src/menu_events.cpp:357
+#: src/menu_events.cpp:358
 msgid "Leader"
 msgstr "Dux"
 
-#: src/menu_events.cpp:358 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:359 src/multiplayer_connect.cpp:752
 msgid "Gold"
 msgstr "Aurum"
 
-#: src/menu_events.cpp:359
+#: src/menu_events.cpp:360
 msgid "Villages"
 msgstr "Pagi"
 
-#: src/menu_events.cpp:361
+#: src/menu_events.cpp:362
 msgid "Upkeep"
 msgstr "Impensa"
 
-#: src/menu_events.cpp:362 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:363 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:436
 msgid "Income"
 msgstr "Merces"
 
-#: src/menu_events.cpp:451 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:423
 msgid "Name:"
 msgstr "Nomen:"
 
-#: src/menu_events.cpp:456 src/menu_events.cpp:469
+#: src/menu_events.cpp:457 src/menu_events.cpp:470
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Mendum"
 
-#: src/menu_events.cpp:456
+#: src/menu_events.cpp:457
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -10970,82 +11029,82 @@ msgstr ""
 "Nomina servatorum punta duplicia, virgulas aut virgulas reversas non "
 "continere possunt. Amabo, elige nomen alium."
 
-#: src/menu_events.cpp:466
+#: src/menu_events.cpp:467
 msgid "Saved"
 msgstr "Servatus"
 
-#: src/menu_events.cpp:466
+#: src/menu_events.cpp:467
 msgid "The game has been saved"
 msgstr "Lusus servatus est"
 
-#: src/menu_events.cpp:469 src/playcampaign.cpp:433
+#: src/menu_events.cpp:470 src/playcampaign.cpp:433
 msgid "The game could not be saved"
 msgstr "Lusus non servari potest"
 
-#: src/menu_events.cpp:483
+#: src/menu_events.cpp:484
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Chartas Compartire"
 
-#: src/menu_events.cpp:488
+#: src/menu_events.cpp:489
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Iam est nomen hoc. Visne id superscribere?"
 
-#: src/menu_events.cpp:500
+#: src/menu_events.cpp:501
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:505
+#: src/menu_events.cpp:506
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:581 src/menu_events.cpp:583 src/play_controller.cpp:700
+#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:700
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
 
-#: src/menu_events.cpp:586
+#: src/menu_events.cpp:587
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Non poteram lusum automatice servare. Amabo, serva eum manu."
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:611
 msgid "Chat Log"
 msgstr "Acta Colloquii"
 
-#: src/menu_events.cpp:620
+#: src/menu_events.cpp:621
 msgid "Message:"
 msgstr "Nuntius: "
 
-#: src/menu_events.cpp:621
+#: src/menu_events.cpp:622
 msgid "Send to allies only"
 msgstr "Mittere tantum sociis"
 
-#: src/menu_events.cpp:673 src/multiplayer_wait.cpp:432
+#: src/menu_events.cpp:689 src/multiplayer_wait.cpp:432
 msgid "unit^Gold"
 msgstr "Nummis Auri"
 
-#: src/menu_events.cpp:680
+#: src/menu_events.cpp:696
 msgid "You have no units available to recruit."
 msgstr "Non habes unitates quas conscribere potes"
 
-#: src/menu_events.cpp:691
+#: src/menu_events.cpp:707
 msgid "Recruit"
 msgstr "Conscribere"
 
-#: src/menu_events.cpp:692 src/menu_events.cpp:841
+#: src/menu_events.cpp:708 src/menu_events.cpp:857
 msgid "Select unit:"
 msgstr "Unitatem elegere: "
 
-#: src/menu_events.cpp:732
+#: src/menu_events.cpp:748
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Non habes satis auri ut unitatem illam conscribas"
 
-#: src/menu_events.cpp:788
+#: src/menu_events.cpp:804
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Separatus es a militibus tuis et eos non revocare potes"
 
-#: src/menu_events.cpp:790
+#: src/menu_events.cpp:806
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11053,55 +11112,60 @@ msgstr ""
 "Non sunt milites revocandi\n"
 "(Opus est veteranos habere qui supersunt ex missione praeterita)"
 
-#: src/menu_events.cpp:797
+#: src/menu_events.cpp:813
 msgid "Level"
 msgstr "E gradu"
 
-#: src/menu_events.cpp:829
+#: src/menu_events.cpp:845
 msgid "Dismiss Unit"
 msgstr "Unitatem Dimittere"
 
-#: src/menu_events.cpp:840
+#: src/menu_events.cpp:856
 msgid "Recall"
 msgstr "Revocare"
 
-#: src/menu_events.cpp:852
+#: src/menu_events.cpp:868
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Opus est saltem $cost nummos auri ut unitatem revoces."
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1191
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Tractum nondum coepisti. Visne vere tractum finire?"
 
-#: src/menu_events.cpp:1183 src/menu_events.cpp:1188
+#: src/menu_events.cpp:1199 src/menu_events.cpp:1204
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Nonnullis unitatibus puncta motus relicta sunt. Visne vere tractum finire?"
 
-#: src/menu_events.cpp:1229
+#: src/menu_events.cpp:1245
 msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1340
+#, fuzzy
+msgid "Team only"
+msgstr "Caeruleus illustris"
+
+#: src/menu_events.cpp:1345
 msgid "Place Label"
 msgstr "Titulus Loci"
 
-#: src/menu_events.cpp:1314
+#: src/menu_events.cpp:1346
 msgid "Label:"
 msgstr "Titulus: "
 
-#: src/menu_events.cpp:1412
+#: src/menu_events.cpp:1465
 msgid "Search"
 msgstr "Investigatio"
 
-#: src/menu_events.cpp:1455
+#: src/menu_events.cpp:1508
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Imperia: whisper ignore emote. Scribe /help [imperium] si plus aditorium vis."
 
-#: src/menu_events.cpp:1506
+#: src/menu_events.cpp:1559
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -11109,21 +11173,21 @@ msgstr ""
 "Nuntium privatum mittit. Non potes mittere nuntios lusoribus qui partes in "
 "lusione imperant. Syntaxis: /whisper [cognomini] [nuntium]"
 
-#: src/menu_events.cpp:1510
+#: src/menu_events.cpp:1563
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:1512
+#: src/menu_events.cpp:1565
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:1514
+#: src/menu_events.cpp:1567
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -11132,21 +11196,21 @@ msgstr ""
 "Lusorem ex elencho tuo utentium ignoratorum. Syntaxis: /ignore remove "
 "[argumentum]"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1569
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Elenchum tuum utentium ignoratorum dele. Syntaxis: /ignore clear"
 
-#: src/menu_events.cpp:1518
+#: src/menu_events.cpp:1571
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Elenchum utentium ignoratorum monstrare. Syntaxis: /ignore list"
 
-#: src/menu_events.cpp:1520
+#: src/menu_events.cpp:1573
 msgid "Unknown subcommand"
 msgstr "Imperium subordinatum incognitum"
 
-#: src/menu_events.cpp:1523
+#: src/menu_events.cpp:1576
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -11158,56 +11222,56 @@ msgstr ""
 "[argumentum (optionale)]. Subimperia: add remove list clear. Scribe /help "
 "ignore [subimperium] si vis plus sapere."
 
-#: src/menu_events.cpp:1526
+#: src/menu_events.cpp:1579
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Commotionem animi vel actionem personalem in sermone mittere. Syntaxis: /"
 "emote [nuntium]"
 
-#: src/menu_events.cpp:1528
+#: src/menu_events.cpp:1581
 msgid "Unknown command"
 msgstr "Imperium incognitum"
 
-#: src/menu_events.cpp:1545
+#: src/menu_events.cpp:1598
 msgid "Added to ignore list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:1547 src/menu_events.cpp:1560 src/menu_events.cpp:1570
+#: src/menu_events.cpp:1600 src/menu_events.cpp:1613 src/menu_events.cpp:1623
 msgid "Invalid username: "
 msgstr "Nomen utentis invalidum: "
 
-#: src/menu_events.cpp:1558
+#: src/menu_events.cpp:1611
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1621
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1595
+#: src/menu_events.cpp:1648
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1658
 msgid "Removed from ignore list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1608
+#: src/menu_events.cpp:1661
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1615
+#: src/menu_events.cpp:1668
 msgid "Unknown command: "
 msgstr "Imperium incognitum: "
 
-#: src/menu_events.cpp:1716
+#: src/menu_events.cpp:1769
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1913
 msgid "prompt^Command:"
 msgstr "Imperium:"
 
@@ -11327,12 +11391,12 @@ msgid "Normal"
 msgstr "Normalis"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2756
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2767
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2763
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2774
 msgid ")"
 msgstr ")"
 
@@ -11669,7 +11733,7 @@ msgstr "Finire"
 msgid "Skip quickly to the active turn when observing"
 msgstr "Celeriter ad tractum currentem in observatio saltare"
 
-#: src/multiplayer_ui.cpp:81
+#: src/multiplayer_ui.cpp:82
 msgid "Invalid Color"
 msgstr "Color invalidus"
 
@@ -12086,15 +12150,15 @@ msgstr "Auxilium"
 msgid "Help Wesnoth by sending us information"
 msgstr "Occidiseptentrionem adiuvare mittans nuntios"
 
-#: src/unit.cpp:2592 src/unit.cpp:2761
+#: src/unit.cpp:2603 src/unit.cpp:2772
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2674
+#: src/unit.cpp:2685
 msgid "XP to advance"
 msgstr "PE ad promotionem"
 
-#: src/unit.cpp:2752
+#: src/unit.cpp:2763
 msgid ": "
 msgstr ": "
 
@@ -12616,10 +12680,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 #~ "oppugnare lentifacientes eos."
 
 #, fuzzy
-#~ msgid "Wesnoth Tutorial"
-#~ msgstr "Schola"
-
-#, fuzzy
 #~ msgid "Delfador"
 #~ msgstr "Delfadorem Vincere"
 
@@ -13037,9 +13097,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "Connecting to remote host..."
 #~ msgstr "Ad hospitem remotum coniungens..."
-
-#~ msgid "Dwarves"
-#~ msgstr "Nani"
 
 #~ msgid "Saurian"
 #~ msgstr "Lacerta"
@@ -14157,9 +14214,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "Merman"
 #~ msgstr "Nereius"
-
-#~ msgid "female^Naga"
-#~ msgstr "Naga"
 
 #~ msgid ""
 #~ "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more "

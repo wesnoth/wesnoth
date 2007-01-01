@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-31 13:04+0100\n"
+"POT-Creation-Date: 2007-01-01 23:28+0100\n"
 "PO-Revision-Date: 2006-10-26 18:33+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -39,7 +39,7 @@ msgstr "Nuligu"
 msgid "Close"
 msgstr "Fermi"
 
-#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:122
 msgid "Help"
 msgstr "Helpo"
 
@@ -78,38 +78,38 @@ msgid "Map creation failed."
 msgstr "Kreado de mapo malsukcesis."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:863
+#: src/preferences_display.cpp:1042
 msgid "Close Window"
 msgstr "Fermu fenestron"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:749
+#: src/hotkeys.cpp:78 src/preferences_display.cpp:928
 msgid "Preferences"
 msgstr "Preferoj"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:266
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:283
 msgid "Scroll Speed:"
 msgstr "Rapideco de la rulumo:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:59
-#: src/preferences_display.cpp:242
+#: src/preferences_display.cpp:252
 msgid "Toggle Full Screen"
 msgstr "Tuta ekrano"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:245
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:255
 msgid "Show Grid"
 msgstr "Montri kradeton"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:256
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:266
 msgid "Video Mode"
 msgstr "Reĝimo de la ekrano"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:258
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:268
 msgid "Hotkeys"
 msgstr "Klavkomandoj"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "Ŝanĝi grandecon de mapo"
 
@@ -280,162 +280,167 @@ msgid "Quit Game"
 msgstr "Fini la ludon"
 
 #: src/hotkeys.cpp:83
-msgid "Set Label"
+#, fuzzy
+msgid "Set Team Label"
 msgstr "Fari markon"
 
 #: src/hotkeys.cpp:84
+msgid "Set Label"
+msgstr "Fari markon"
+
+#: src/hotkeys.cpp:85
 msgid "Clear Labels"
 msgstr "Purigi markojn"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Show Enemy Moves"
 msgstr "Montri malamikaj movoj"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Best Possible Enemy Moves"
 msgstr "Amplekso de malamika movebleco"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Play"
 msgstr "Ludi"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Reset"
 msgstr "Reŝargi"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Stop"
 msgstr "Halti"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Next Turn"
 msgstr "Plua movo"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Next Side"
 msgstr "Plua flanko"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Shroud"
 msgstr "Vualo"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Fog"
 msgstr "Nebulo"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Skip animation"
 msgstr "Ne bildigi figurmovojn"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Set Terrain"
 msgstr "Agordi terenon"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Quit Editor"
 msgstr "Forlasi la redaktilon"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "New Map"
 msgstr "Nova mapo"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Load Map"
 msgstr "Legi mapon"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Save Map"
 msgstr "Konservi mapon"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Save As"
 msgstr "Konservi kiel"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Set Player's keep"
 msgstr "Fiksi defendejon de Ludanto"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Flood Fill"
 msgstr "Plenigu"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Fill Selection"
 msgstr "Plenigi markitan"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Cut"
 msgstr "Eltondi"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Copy"
 msgstr "Kopii"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Paste"
 msgstr "Enmeti"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Revert from Disk"
 msgstr "Relegi el la disko"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Flip Map"
 msgstr "Renversi la mapon"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Select All"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Draw Terrain"
 msgstr "Bildigi terenon"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Refresh Image Cache"
 msgstr "Refreŝigi Memorkaŝon de Bildoj"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Delay Shroud Updates"
 msgstr "Haltigi Aktualigon de Vualo"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Update Shroud Now"
 msgstr "Aktualigi Vualon Nun"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Continue Move"
 msgstr "Daŭri movon"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Find Label or Unit"
 msgstr "Trovi markon aŭ batalunuon "
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Speak to Ally"
 msgstr "Diri al la aliancano"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Speak to All"
 msgstr "Diri al ĉiuj"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "View Chat Log"
 msgstr "Montri babil-protokolo"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Enter user command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Change the language"
 msgstr "Ŝanghi lingvon"
 
-#: src/hotkeys.cpp:467 src/hotkeys.cpp:696
+#: src/hotkeys.cpp:468 src/hotkeys.cpp:701
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas fini ludon?"
 
-#: src/hotkeys.cpp:467 src/hotkeys.cpp:696
+#: src/hotkeys.cpp:468 src/hotkeys.cpp:701
 msgid "Quit"
 msgstr "Finu ludon"
 
@@ -488,11 +493,11 @@ msgstr "Interno"
 msgid "Island"
 msgstr "Insulo"
 
-#: src/preferences.cpp:384
+#: src/preferences.cpp:410
 msgid "player"
 msgstr "ludanto"
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:107
+#: src/preferences_display.cpp:76 src/preferences_display.cpp:108
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -502,192 +507,231 @@ msgstr ""
 "agordita je po 16 bitoj per rastrumero, por la ludo povus umi en fenestro. "
 "Ekrano devas subteni distingon 1024x768x16, por povi  umi tutekrane. "
 
-#: src/preferences_display.cpp:243
+#: src/preferences_display.cpp:253
 msgid "Accelerated Speed"
 msgstr "Plirapidigo"
 
-#: src/preferences_display.cpp:244
+#: src/preferences_display.cpp:254
 msgid "Skip AI Moves"
 msgstr "Trasaltu movojn de komputilo"
 
-#: src/preferences_display.cpp:246
+#: src/preferences_display.cpp:256
 msgid "Show Lobby Minimaps"
 msgstr ""
 
-#: src/preferences_display.cpp:247
+#: src/preferences_display.cpp:257
 msgid "Show Lobby Joins Of Friends"
 msgstr ""
 
-#: src/preferences_display.cpp:248
+#: src/preferences_display.cpp:258
 msgid "Sort Lobby List"
 msgstr ""
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:259
 msgid "Iconize Lobby List"
 msgstr ""
 
-#: src/preferences_display.cpp:250
+#: src/preferences_display.cpp:260
 msgid "Show Floating Labels"
 msgstr "Montri glitmarkojn"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:261
 msgid "Turn Dialog"
 msgstr "Dialogo de movo"
 
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:262
 msgid "Turn Bell"
 msgstr "Sono de movo"
 
-#: src/preferences_display.cpp:253
+#: src/preferences_display.cpp:263
 msgid "Show Team Colors"
 msgstr "Montri kolorojn de la teamoj"
 
-#: src/preferences_display.cpp:254
+#: src/preferences_display.cpp:264
 msgid "Show Color Cursors"
 msgstr "Montri la koloran kursoron"
 
-#: src/preferences_display.cpp:255
+#: src/preferences_display.cpp:265
 msgid "Show Haloing Effects"
 msgstr "Montri bril-efektojn"
 
-#: src/preferences_display.cpp:257
+#: src/preferences_display.cpp:267
 msgid "Theme"
 msgstr "Temo"
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:269
 msgid "Adjust Gamma"
 msgstr "Agordu Gamon"
 
-#: src/preferences_display.cpp:260
+#: src/preferences_display.cpp:270
 msgid "Reverse Time Graphics"
 msgstr "Inversa montrado de tempaj bildetoj"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:272
 msgid "Sound effects"
 msgstr "Sonefektoj"
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:273
 msgid "Music"
 msgstr "Muziko"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:274
 msgid "Chat Timestamping"
 msgstr "Tempmarkado en Babilejo"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:275
+#, fuzzy
+msgid "Advanced Mode"
+msgstr "Superaj agordoj"
+
+#: src/preferences_display.cpp:276
+msgid "Normal Mode"
+msgstr ""
+
+#: src/preferences_display.cpp:279
+msgid "User Define"
+msgstr ""
+
+#: src/preferences_display.cpp:280
+msgid "Apply"
+msgstr ""
+
+#: src/preferences_display.cpp:282
 msgid "Music Volume:"
 msgstr "Laŭteco de la muziko:"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:282
 msgid "SFX Volume:"
 msgstr "Laŭteco de la efektoj:"
 
-#: src/preferences_display.cpp:266
+#: src/preferences_display.cpp:283
 #, fuzzy
 msgid "Bell Volume:"
 msgstr "Laŭteco de la efektoj:"
 
-#: src/preferences_display.cpp:267
+#: src/preferences_display.cpp:284
 msgid "Gamma:"
 msgstr "Gamo:"
 
-#: src/preferences_display.cpp:281
+#: src/preferences_display.cpp:286
+msgid "Sample Rate (Hz):"
+msgstr ""
+
+#: src/preferences_display.cpp:305
 msgid "Sound effects on/off"
 msgstr "Sonefektoj ŝaltita/malŝaltitaj"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:309
 msgid "Change the sound effects volume"
 msgstr "Agordu laŭteco de sonaj efektoj"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:312
 msgid "Music on/off"
 msgstr "Muziko ŝaltita/malŝaltita"
 
-#: src/preferences_display.cpp:292
+#: src/preferences_display.cpp:316
 msgid "Change the music volume"
 msgstr "Agordi laŭtecon de muziko"
 
-#: src/preferences_display.cpp:298
+#: src/preferences_display.cpp:322
 #, fuzzy
 msgid "Change the bell volume"
 msgstr "Agordi laŭtecon de muziko"
 
-#: src/preferences_display.cpp:303
+#: src/preferences_display.cpp:324
+#, fuzzy
+msgid "Change the sample rate"
+msgstr "Ŝanghi lingvon"
+
+#: src/preferences_display.cpp:333
+msgid "User defined sample rate"
+msgstr ""
+
+#: src/preferences_display.cpp:342 src/preferences_display.cpp:346
+#, fuzzy
+msgid "Change the buffer size"
+msgstr "Agordi laŭtecon de muziko"
+
+#: src/preferences_display.cpp:344 src/preferences_display.cpp:742
+msgid "Buffer Size: "
+msgstr ""
+
+#: src/preferences_display.cpp:351
 msgid "Change the speed of scrolling around the map"
 msgstr "Selekti rapidecon de rulumo"
 
-#: src/preferences_display.cpp:308 src/preferences_display.cpp:310
+#: src/preferences_display.cpp:356 src/preferences_display.cpp:358
 msgid "Set the amount of chat lines shown"
 msgstr "Fiksi la kvanton de linioj de babilado"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:361
 msgid "Add a timestamp to chat messages"
 msgstr "Aldoni markon de tempo en mesaĝoj"
 
-#: src/preferences_display.cpp:317 src/preferences_display.cpp:322
+#: src/preferences_display.cpp:364 src/preferences_display.cpp:369
 msgid "Change the brightness of the display"
 msgstr "Selecti heldenson de la ekrano"
 
-#: src/preferences_display.cpp:325
+#: src/preferences_display.cpp:372
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Selecti, ĉu ludo umu en la tuto ekrano, aŭ en fenetro  "
 
-#: src/preferences_display.cpp:328
+#: src/preferences_display.cpp:375
 msgid "Make units move and fight faster"
 msgstr "Rapidigi movojn kaj batalojn de milit-unuoj"
 
-#: src/preferences_display.cpp:333
+#: src/preferences_display.cpp:380
 #, fuzzy
 msgid "Units move and fight speed"
 msgstr "Rapidigi movojn kaj batalojn de milit-unuoj"
 
-#: src/preferences_display.cpp:336
+#: src/preferences_display.cpp:383
 msgid "Do not animate AI units moving"
 msgstr "Ne montri movadon de AI unuoj"
 
-#: src/preferences_display.cpp:339
+#: src/preferences_display.cpp:386
 msgid "Overlay a grid onto the map"
 msgstr "Montri kradeton sur la mapo "
 
-#: src/preferences_display.cpp:342
+#: src/preferences_display.cpp:389
 #, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
 msgstr "Montri mesaĝon pri ludantoj aliĝintaj al la grupluda kompanio"
 
-#: src/preferences_display.cpp:345
+#: src/preferences_display.cpp:392
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
-#: src/preferences_display.cpp:348
+#: src/preferences_display.cpp:395
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:398
 #, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Montri mesaĝon pri ludantoj aliĝintaj al la grupluda kompanio"
 
-#: src/preferences_display.cpp:354
+#: src/preferences_display.cpp:401
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Montri tekston super milit-unuo por montri faritan domaĝon"
 
-#: src/preferences_display.cpp:356
+#: src/preferences_display.cpp:403
 msgid "Change the resolution the game runs at"
 msgstr "Ŝanĝi distingivon de ludekrano  "
 
-#: src/preferences_display.cpp:357
+#: src/preferences_display.cpp:404
 msgid "Change the theme the game runs with"
 msgstr "Ŝanĝi la temon de la ludo"
 
-#: src/preferences_display.cpp:360
+#: src/preferences_display.cpp:407
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Montri dialogon je la komenco de via movo"
 
-#: src/preferences_display.cpp:363
+#: src/preferences_display.cpp:410
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Ludi sonon je la komenco de via movo"
 
-#: src/preferences_display.cpp:366
+#: src/preferences_display.cpp:413
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -695,105 +739,105 @@ msgstr ""
 "Montri colora cirklo ĉirkau ĉiuj milit-unuoj, por montri, al kiu flanko ili "
 "apartenas"
 
-#: src/preferences_display.cpp:369
+#: src/preferences_display.cpp:416
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Elektu, ĉu la suno irus de maldektre dekstreen  aŭ de dekstre maldekstren "
 
-#: src/preferences_display.cpp:372
+#: src/preferences_display.cpp:419
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Uzi koloran muskursoron (ĝi povas esti mapli rapida)"
 
-#: src/preferences_display.cpp:375
+#: src/preferences_display.cpp:422
 msgid "Use graphical special effects (may be slower)"
 msgstr "Uzi specialajn grafikajn efektojn (ili povas esti malpli rapidaj) "
 
-#: src/preferences_display.cpp:377
+#: src/preferences_display.cpp:424
 msgid "View and configure keyboard shortcuts"
 msgstr "Bildigi kaj agordigi klavajn mallongigojn"
 
-#: src/preferences_display.cpp:604
-msgid "Chat Lines: "
-msgstr "Linioj de babilado:"
-
-#: src/preferences_display.cpp:608
+#: src/preferences_display.cpp:637
 #, fuzzy
 msgid "Speed: "
 msgstr "Rapideco de la rulumo:"
 
-#: src/preferences_display.cpp:660
+#: src/preferences_display.cpp:768
+msgid "Chat Lines: "
+msgstr "Linioj de babilado:"
+
+#: src/preferences_display.cpp:827
 msgid "yes"
 msgstr "jes"
 
-#: src/preferences_display.cpp:662
+#: src/preferences_display.cpp:829
 msgid "no"
 msgstr "ne"
 
-#: src/preferences_display.cpp:737
+#: src/preferences_display.cpp:916
 msgid "Prefs section^General"
 msgstr "Ĝeneralaĵoj"
 
-#: src/preferences_display.cpp:738
+#: src/preferences_display.cpp:917
 msgid "Prefs section^Display"
 msgstr "Ekrano"
 
-#: src/preferences_display.cpp:739
+#: src/preferences_display.cpp:918
 msgid "Prefs section^Sound"
 msgstr "Sonoj"
 
-#: src/preferences_display.cpp:740
+#: src/preferences_display.cpp:919
 msgid "Prefs section^Multiplayer"
 msgstr "Grupludo"
 
-#: src/preferences_display.cpp:741
+#: src/preferences_display.cpp:920
 msgid "Advanced section^Advanced"
 msgstr "Superaj agordoj"
 
-#: src/preferences_display.cpp:806
+#: src/preferences_display.cpp:985
 msgid "There are no alternative video modes available"
 msgstr "Alterantivaj ekranmodusoj ne eblas"
 
-#: src/preferences_display.cpp:835
+#: src/preferences_display.cpp:1014
 msgid "Choose Resolution"
 msgstr "Elektu distingivon"
 
-#: src/preferences_display.cpp:868
+#: src/preferences_display.cpp:1047
 msgid "Hotkey Settings"
 msgstr "Klavkomandaj preferoj"
 
-#: src/preferences_display.cpp:872 src/preferences_display.cpp:925
+#: src/preferences_display.cpp:1051 src/preferences_display.cpp:1104
 msgid "Press desired Hotkey"
 msgstr "Premu klavon, kiun vi volas uzi"
 
-#: src/preferences_display.cpp:890
+#: src/preferences_display.cpp:1069
 msgid "Action"
 msgstr "Ago"
 
-#: src/preferences_display.cpp:890
+#: src/preferences_display.cpp:1069
 msgid "Binding"
 msgstr "Ligado"
 
-#: src/preferences_display.cpp:902
+#: src/preferences_display.cpp:1081
 msgid "Change Hotkey"
 msgstr "Ŝanĝu klavkomandon"
 
-#: src/preferences_display.cpp:905
+#: src/preferences_display.cpp:1084
 msgid "Save Hotkeys"
 msgstr "Konservi klavokomandon"
 
-#: src/preferences_display.cpp:952
+#: src/preferences_display.cpp:1131
 msgid "This Hotkey is already in use."
 msgstr "Tiu klavkomando jam estas uzata"
 
-#: src/preferences_display.cpp:985
+#: src/preferences_display.cpp:1164
 msgid "Saved Theme Preference: "
 msgstr "Savi Preferencoj de la Temo"
 
-#: src/preferences_display.cpp:991
+#: src/preferences_display.cpp:1170
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nova temo donos efekton en nova aŭ ŝargita ludo."
 
-#: src/preferences_display.cpp:995
+#: src/preferences_display.cpp:1174
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Temoj ne ekzistas. Provu shanĝi "
 

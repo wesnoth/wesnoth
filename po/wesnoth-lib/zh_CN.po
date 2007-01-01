@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-31 13:04+0100\n"
+"POT-Creation-Date: 2007-01-01 23:28+0100\n"
 "PO-Revision-Date: 2005-11-10 17:59-0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -38,7 +38,7 @@ msgstr "取消"
 msgid "Close"
 msgstr "关闭"
 
-#: src/construct_dialog.cpp:767 src/hotkeys.cpp:121
+#: src/construct_dialog.cpp:767 src/hotkeys.cpp:122
 msgid "Help"
 msgstr "帮助"
 
@@ -79,38 +79,38 @@ msgid "Map creation failed."
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:863
+#: src/preferences_display.cpp:1042
 msgid "Close Window"
 msgstr "关闭窗口"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:749
+#: src/hotkeys.cpp:78 src/preferences_display.cpp:928
 msgid "Preferences"
 msgstr "选项"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:266
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:283
 msgid "Scroll Speed:"
 msgstr "卷屏速度"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:59
-#: src/preferences_display.cpp:242
+#: src/preferences_display.cpp:252
 msgid "Toggle Full Screen"
 msgstr "开/关全屏"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:245
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:255
 msgid "Show Grid"
 msgstr "显示网格"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:256
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:266
 msgid "Video Mode"
 msgstr "视频模式"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:258
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:268
 msgid "Hotkeys"
 msgstr "快捷键"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "改变地图大小"
 
@@ -282,166 +282,171 @@ msgid "Quit Game"
 msgstr "退出游戏"
 
 #: src/hotkeys.cpp:83
-msgid "Set Label"
+#, fuzzy
+msgid "Set Team Label"
 msgstr "标记"
 
 #: src/hotkeys.cpp:84
+msgid "Set Label"
+msgstr "标记"
+
+#: src/hotkeys.cpp:85
 #, fuzzy
 msgid "Clear Labels"
 msgstr "标记"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Show Enemy Moves"
 msgstr "显示敌方移动范围"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Best Possible Enemy Moves"
 msgstr "显示敌方最大可能移动范围"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 #, fuzzy
 msgid "Play"
 msgstr "玩家"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Reset"
 msgstr ""
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Stop"
 msgstr ""
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 #, fuzzy
 msgid "Next Turn"
 msgstr "下一单位"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 #, fuzzy
 msgid "Next Side"
 msgstr "下一单位"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Shroud"
 msgstr ""
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Fog"
 msgstr ""
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Skip animation"
 msgstr ""
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Set Terrain"
 msgstr "设定地形"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Quit Editor"
 msgstr "退度编辑器"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "New Map"
 msgstr "新地图"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Load Map"
 msgstr "载入地图"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Save Map"
 msgstr "保存地图"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Save As"
 msgstr "另存为"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Set Player's keep"
 msgstr "设定玩家的城堡"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Flood Fill"
 msgstr "色彩填充"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Fill Selection"
 msgstr "填充选择区域"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Cut"
 msgstr "剪切"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Copy"
 msgstr "复制"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Revert from Disk"
 msgstr "重新读取文件"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Flip Map"
 msgstr "翻转地图"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Select All"
 msgstr "全选"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Draw Terrain"
 msgstr "绘制地形"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Refresh Image Cache"
 msgstr "刷新图像缓存"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Delay Shroud Updates"
 msgstr "暂缓刷新阴影区域"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Update Shroud Now"
 msgstr "立即刷新阴影区域"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Continue Move"
 msgstr "继续移动"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Find Label or Unit"
 msgstr "查找标记或单位"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Speak to Ally"
 msgstr "与盟友谈话"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Speak to All"
 msgstr "与所有人谈话"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "View Chat Log"
 msgstr "察看聊天纪录"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Enter user command"
 msgstr "进入用户命令"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Change the language"
 msgstr "语言切换"
 
-#: src/hotkeys.cpp:467 src/hotkeys.cpp:696
+#: src/hotkeys.cpp:468 src/hotkeys.cpp:701
 msgid "Do you really want to quit?"
 msgstr "您要退出吗？"
 
-#: src/hotkeys.cpp:467 src/hotkeys.cpp:696
+#: src/hotkeys.cpp:468 src/hotkeys.cpp:701
 msgid "Quit"
 msgstr "退出"
 
@@ -494,11 +499,11 @@ msgstr ""
 msgid "Island"
 msgstr ""
 
-#: src/preferences.cpp:384
+#: src/preferences.cpp:410
 msgid "player"
 msgstr "玩家"
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:107
+#: src/preferences_display.cpp:76 src/preferences_display.cpp:108
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -507,297 +512,336 @@ msgstr ""
 "无法切换视频模式。以窗口模式运行游戏需要将windows桌面设为16位色，全屏模式需要"
 "您的显示设备支持1024x768分辨率和16位色。"
 
-#: src/preferences_display.cpp:243
+#: src/preferences_display.cpp:253
 msgid "Accelerated Speed"
 msgstr "加速"
 
-#: src/preferences_display.cpp:244
+#: src/preferences_display.cpp:254
 msgid "Skip AI Moves"
 msgstr "略过电脑的移动"
 
-#: src/preferences_display.cpp:246
+#: src/preferences_display.cpp:256
 msgid "Show Lobby Minimaps"
 msgstr ""
 
-#: src/preferences_display.cpp:247
+#: src/preferences_display.cpp:257
 msgid "Show Lobby Joins Of Friends"
 msgstr ""
 
-#: src/preferences_display.cpp:248
+#: src/preferences_display.cpp:258
 msgid "Sort Lobby List"
 msgstr ""
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:259
 msgid "Iconize Lobby List"
 msgstr ""
 
-#: src/preferences_display.cpp:250
+#: src/preferences_display.cpp:260
 msgid "Show Floating Labels"
 msgstr "显示浮动标记"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:261
 msgid "Turn Dialog"
 msgstr "回合对话框"
 
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:262
 msgid "Turn Bell"
 msgstr "回合钟声"
 
-#: src/preferences_display.cpp:253
+#: src/preferences_display.cpp:263
 msgid "Show Team Colors"
 msgstr "显示队伍颜色"
 
-#: src/preferences_display.cpp:254
+#: src/preferences_display.cpp:264
 msgid "Show Color Cursors"
 msgstr "显示彩色光标"
 
-#: src/preferences_display.cpp:255
+#: src/preferences_display.cpp:265
 msgid "Show Haloing Effects"
 msgstr "现实光晕效果"
 
-#: src/preferences_display.cpp:257
+#: src/preferences_display.cpp:267
 msgid "Theme"
 msgstr ""
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:269
 msgid "Adjust Gamma"
 msgstr "调整亮度"
 
-#: src/preferences_display.cpp:260
+#: src/preferences_display.cpp:270
 msgid "Reverse Time Graphics"
 msgstr "翻转表示时间的图像"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:272
 msgid "Sound effects"
 msgstr "音效"
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:273
 msgid "Music"
 msgstr "音乐"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:274
 msgid "Chat Timestamping"
 msgstr ""
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:275
+#, fuzzy
+msgid "Advanced Mode"
+msgstr "高级"
+
+#: src/preferences_display.cpp:276
+msgid "Normal Mode"
+msgstr ""
+
+#: src/preferences_display.cpp:279
+msgid "User Define"
+msgstr ""
+
+#: src/preferences_display.cpp:280
+msgid "Apply"
+msgstr ""
+
+#: src/preferences_display.cpp:282
 msgid "Music Volume:"
 msgstr "音乐音量"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:282
 msgid "SFX Volume:"
 msgstr "音效音量"
 
-#: src/preferences_display.cpp:266
+#: src/preferences_display.cpp:283
 #, fuzzy
 msgid "Bell Volume:"
 msgstr "音效音量"
 
-#: src/preferences_display.cpp:267
+#: src/preferences_display.cpp:284
 msgid "Gamma:"
 msgstr "亮度："
 
-#: src/preferences_display.cpp:281
+#: src/preferences_display.cpp:286
+msgid "Sample Rate (Hz):"
+msgstr ""
+
+#: src/preferences_display.cpp:305
 msgid "Sound effects on/off"
 msgstr "音效 开/关"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:309
 msgid "Change the sound effects volume"
 msgstr "调整音效的音量大小"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:312
 msgid "Music on/off"
 msgstr "音乐 开/关"
 
-#: src/preferences_display.cpp:292
+#: src/preferences_display.cpp:316
 msgid "Change the music volume"
 msgstr "调整音乐的音量大小"
 
-#: src/preferences_display.cpp:298
+#: src/preferences_display.cpp:322
 #, fuzzy
 msgid "Change the bell volume"
 msgstr "调整音乐的音量大小"
 
-#: src/preferences_display.cpp:303
+#: src/preferences_display.cpp:324
+#, fuzzy
+msgid "Change the sample rate"
+msgstr "语言切换"
+
+#: src/preferences_display.cpp:333
+msgid "User defined sample rate"
+msgstr ""
+
+#: src/preferences_display.cpp:342 src/preferences_display.cpp:346
+#, fuzzy
+msgid "Change the buffer size"
+msgstr "调整音乐的音量大小"
+
+#: src/preferences_display.cpp:344 src/preferences_display.cpp:742
+msgid "Buffer Size: "
+msgstr ""
+
+#: src/preferences_display.cpp:351
 msgid "Change the speed of scrolling around the map"
 msgstr "调整屏幕移动的速度"
 
-#: src/preferences_display.cpp:308 src/preferences_display.cpp:310
+#: src/preferences_display.cpp:356 src/preferences_display.cpp:358
 msgid "Set the amount of chat lines shown"
 msgstr ""
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:361
 msgid "Add a timestamp to chat messages"
 msgstr ""
 
-#: src/preferences_display.cpp:317 src/preferences_display.cpp:322
+#: src/preferences_display.cpp:364 src/preferences_display.cpp:369
 msgid "Change the brightness of the display"
 msgstr "调整显示的亮度"
 
-#: src/preferences_display.cpp:325
+#: src/preferences_display.cpp:372
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "选择游戏是以窗口运行还是以全屏模式运行"
 
-#: src/preferences_display.cpp:328
+#: src/preferences_display.cpp:375
 msgid "Make units move and fight faster"
 msgstr "是单位移动和攻击速度加快"
 
-#: src/preferences_display.cpp:333
+#: src/preferences_display.cpp:380
 #, fuzzy
 msgid "Units move and fight speed"
 msgstr "是单位移动和攻击速度加快"
 
-#: src/preferences_display.cpp:336
+#: src/preferences_display.cpp:383
 msgid "Do not animate AI units moving"
 msgstr "不显示电脑的动作"
 
-#: src/preferences_display.cpp:339
+#: src/preferences_display.cpp:386
 msgid "Overlay a grid onto the map"
 msgstr "在地图上显示六角网格"
 
-#: src/preferences_display.cpp:342
+#: src/preferences_display.cpp:389
 msgid "Show minimaps in the multiplayer lobby"
 msgstr ""
 
-#: src/preferences_display.cpp:345
+#: src/preferences_display.cpp:392
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
-#: src/preferences_display.cpp:348
+#: src/preferences_display.cpp:395
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:398
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 
-#: src/preferences_display.cpp:354
+#: src/preferences_display.cpp:401
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "在单位受到攻击时，在单位上显示所受到的伤害值"
 
-#: src/preferences_display.cpp:356
+#: src/preferences_display.cpp:403
 msgid "Change the resolution the game runs at"
 msgstr "调整游戏运行时的解析度"
 
-#: src/preferences_display.cpp:357
+#: src/preferences_display.cpp:404
 #, fuzzy
 msgid "Change the theme the game runs with"
 msgstr "调整游戏运行时的解析度"
 
-#: src/preferences_display.cpp:360
+#: src/preferences_display.cpp:407
 msgid "Display a dialog at the beginning of your turn"
 msgstr "在您的回合开始时显示提示对话框"
 
-#: src/preferences_display.cpp:363
+#: src/preferences_display.cpp:410
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "在您的回合开始时敲响钟声"
 
-#: src/preferences_display.cpp:366
+#: src/preferences_display.cpp:413
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "在单位周围显示彩色圆环以表示不同的阵营"
 
-#: src/preferences_display.cpp:369
+#: src/preferences_display.cpp:416
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "选择太阳由左至右移动还是相反"
 
-#: src/preferences_display.cpp:372
+#: src/preferences_display.cpp:419
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "使用彩色的鼠标指针（可能会使游戏变慢）"
 
-#: src/preferences_display.cpp:375
+#: src/preferences_display.cpp:422
 msgid "Use graphical special effects (may be slower)"
 msgstr "使用某些图形特效（可能会使游戏变慢）"
 
-#: src/preferences_display.cpp:377
+#: src/preferences_display.cpp:424
 msgid "View and configure keyboard shortcuts"
 msgstr "显示并设置快捷键"
 
-#: src/preferences_display.cpp:604
-msgid "Chat Lines: "
-msgstr ""
-
-#: src/preferences_display.cpp:608
+#: src/preferences_display.cpp:637
 #, fuzzy
 msgid "Speed: "
 msgstr "卷屏速度"
 
-#: src/preferences_display.cpp:660
+#: src/preferences_display.cpp:768
+msgid "Chat Lines: "
+msgstr ""
+
+#: src/preferences_display.cpp:827
 msgid "yes"
 msgstr "是"
 
-#: src/preferences_display.cpp:662
+#: src/preferences_display.cpp:829
 msgid "no"
 msgstr "否"
 
-#: src/preferences_display.cpp:737
+#: src/preferences_display.cpp:916
 msgid "Prefs section^General"
 msgstr "一般"
 
-#: src/preferences_display.cpp:738
+#: src/preferences_display.cpp:917
 msgid "Prefs section^Display"
 msgstr "显示"
 
-#: src/preferences_display.cpp:739
+#: src/preferences_display.cpp:918
 msgid "Prefs section^Sound"
 msgstr "声音"
 
-#: src/preferences_display.cpp:740
+#: src/preferences_display.cpp:919
 #, fuzzy
 msgid "Prefs section^Multiplayer"
 msgstr "显示"
 
-#: src/preferences_display.cpp:741
+#: src/preferences_display.cpp:920
 msgid "Advanced section^Advanced"
 msgstr "高级"
 
-#: src/preferences_display.cpp:806
+#: src/preferences_display.cpp:985
 msgid "There are no alternative video modes available"
 msgstr "没有可用的其他显示模式"
 
-#: src/preferences_display.cpp:835
+#: src/preferences_display.cpp:1014
 msgid "Choose Resolution"
 msgstr "切换分辨率"
 
-#: src/preferences_display.cpp:868
+#: src/preferences_display.cpp:1047
 msgid "Hotkey Settings"
 msgstr "快捷键设定"
 
-#: src/preferences_display.cpp:872 src/preferences_display.cpp:925
+#: src/preferences_display.cpp:1051 src/preferences_display.cpp:1104
 #, fuzzy
 msgid "Press desired Hotkey"
 msgstr "请按下要设定的快捷键"
 
-#: src/preferences_display.cpp:890
+#: src/preferences_display.cpp:1069
 msgid "Action"
 msgstr "行为"
 
-#: src/preferences_display.cpp:890
+#: src/preferences_display.cpp:1069
 msgid "Binding"
 msgstr "绑定键"
 
-#: src/preferences_display.cpp:902
+#: src/preferences_display.cpp:1081
 msgid "Change Hotkey"
 msgstr "变更快捷键"
 
-#: src/preferences_display.cpp:905
+#: src/preferences_display.cpp:1084
 msgid "Save Hotkeys"
 msgstr "保存快捷键"
 
-#: src/preferences_display.cpp:952
+#: src/preferences_display.cpp:1131
 #, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "此快捷键已经被使用"
 
-#: src/preferences_display.cpp:985
+#: src/preferences_display.cpp:1164
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/preferences_display.cpp:991
+#: src/preferences_display.cpp:1170
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/preferences_display.cpp:995
+#: src/preferences_display.cpp:1174
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 

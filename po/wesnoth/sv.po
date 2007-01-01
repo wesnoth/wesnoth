@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-31 13:03+0100\n"
+"POT-Creation-Date: 2007-01-01 23:27+0100\n"
 "PO-Revision-Date: 2006-09-29 23:19+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -599,7 +599,7 @@ msgstr "Slovensk översättning"
 msgid "Contributors"
 msgstr "Bidrag"
 
-#: data/about.cfg:592
+#: data/about.cfg:593
 msgid "Bots"
 msgstr "Bots"
 
@@ -658,7 +658,7 @@ msgstr ""
 #: data/units/Elvish_Archer.cfg:22 data/units/Elvish_Avenger.cfg:61
 #: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
 #: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:48 data/units/Elvish_Marshal.cfg:34
+#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
 #: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
 #: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
 #: data/units/Elvish_Sharpshooter.cfg:47
@@ -721,7 +721,7 @@ msgstr "svärd"
 #: data/units/Dwarvish_Ulfserker.cfg:32 data/units/Elvish_Archer.cfg:24
 #: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
 #: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:50
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
 #: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
 #: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
@@ -1095,7 +1095,7 @@ msgstr "pilbåge"
 #: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
 #: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
 #: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
-#: data/units/Elvish_Marksman.cfg:98 data/units/Elvish_Marshal.cfg:79
+#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
 #: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
 #: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
 #: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
@@ -1926,68 +1926,124 @@ msgstr "Orcher"
 msgid "race^Undead"
 msgstr "Vandöda"
 
+#: data/english.cfg:21
+msgid "race^Dwarves"
+msgstr ""
+
+#: data/english.cfg:22
+msgid "race^Goblins"
+msgstr ""
+
 #: data/english.cfg:23
+#, fuzzy
+msgid "race^Lizards"
+msgstr "Vandöda"
+
+#: data/english.cfg:24
+msgid "race^Mechanical"
+msgstr ""
+
+#: data/english.cfg:25
+msgid "race^Mermen"
+msgstr ""
+
+#: data/english.cfg:26
+msgid "race^Monsters"
+msgstr ""
+
+#: data/english.cfg:27
+msgid "race^Nagas"
+msgstr ""
+
+#: data/english.cfg:28
+msgid "race^Ogres"
+msgstr ""
+
+#: data/english.cfg:29
+#, fuzzy
+msgid "race^Troll"
+msgstr "Troll"
+
+#: data/english.cfg:32
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name|s bro,$name|s överfart"
 
-#: data/english.cfg:24
+#: data/english.cfg:33
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name|s väg,$name|s pass,$name|s stig"
 
-#: data/english.cfg:25
+#: data/english.cfg:34
 msgid "$name River,River $name"
 msgstr "$name|floden,Floden $name"
 
-#: data/english.cfg:26
+#: data/english.cfg:35
 msgid "$name Forest,$name's Forest"
 msgstr "$name|skogen,$name|s skog"
 
-#: data/english.cfg:27
+#: data/english.cfg:36
 msgid "$name Lake"
 msgstr "$name|sjön"
 
-#: data/english.cfg:28
+#: data/english.cfg:37
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|hult,$name|torp,$name|by"
 
-#: data/english.cfg:29
+#: data/english.cfg:38
 msgid "$name|harbor,$name|port"
 msgstr "$name|hamn,$name|läge"
 
-#: data/english.cfg:30
+#: data/english.cfg:39
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|torp,$name|vadet,$name|överfarten,$river|vadet,$river|överfarten"
 
-#: data/english.cfg:31
+#: data/english.cfg:40
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|bron,$river|bron,$river|bron,$name|torp,$name|bron"
 
-#: data/english.cfg:32
+#: data/english.cfg:41
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|torp,$name|by,$name|vall"
 
-#: data/english.cfg:33
+#: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|torp,$name|by,$name|lund,$name|skogen"
 
-#: data/english.cfg:34
+#: data/english.cfg:43
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|torp,$name|hult,$name|by,$name|kullen,$name|krönet"
 
-#: data/english.cfg:35
+#: data/english.cfg:44
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|torp,$name|hult,$name|by,$name|berget,$name|berget,$name|klippan,$name|"
 "klippan"
 
-#: data/english.cfg:38
+#: data/english.cfg:47
 msgid "melee"
 msgstr "närstrid"
 
-#: data/english.cfg:39
+#: data/english.cfg:48
 msgid "ranged"
 msgstr "distans"
+
+#: data/english.cfg:51
+msgid "Wesnoth unit list"
+msgstr ""
+
+#: data/english.cfg:52
+msgid "Based on version"
+msgstr ""
+
+#: data/english.cfg:53
+#, fuzzy
+msgid "Race"
+msgstr "spikklubba"
+
+#: data/english.cfg:54
+#, fuzzy
+msgid "Advance from"
+msgstr "Kan befordras till: "
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -2045,11 +2101,11 @@ msgstr "Introduktion"
 msgid "Gameplay"
 msgstr "Spelteknik"
 
-#: data/help.cfg:21 src/menu_events.cpp:292
+#: data/help.cfg:21 src/menu_events.cpp:293
 msgid "Traits"
 msgstr "Karaktärsdrag"
 
-#: data/help.cfg:30 src/menu_events.cpp:360
+#: data/help.cfg:30 src/menu_events.cpp:361
 msgid "Units"
 msgstr "Trupper"
 
@@ -5519,13 +5575,13 @@ msgid "End Turn"
 msgstr "Avsluta draget"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:290 src/unit.cpp:2626
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2637
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:165 src/menu_events.cpp:291
-#: src/menu_events.cpp:798
+#: data/themes/experimental.cfg:165 src/menu_events.cpp:292
+#: src/menu_events.cpp:814
 msgid "XP"
 msgstr "EP"
 
@@ -6970,11 +7026,11 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/units/Elvish_Marksman.cfg:96 data/units/Elvish_Sharpshooter.cfg:95
+#: data/units/Elvish_Marksman.cfg:101 data/units/Elvish_Sharpshooter.cfg:95
 msgid "longbow"
 msgstr "långbåge"
 
-#: data/units/Elvish_Marksman.cfg:160
+#: data/units/Elvish_Marksman.cfg:165
 msgid "female^Elvish Marksman"
 msgstr "Alvprickskytt"
 
@@ -10306,7 +10362,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:67
+#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:68
 msgid "Close"
 msgstr "Stäng"
 
@@ -10426,7 +10482,7 @@ msgstr "Träningsspel"
 msgid "replay"
 msgstr "repris"
 
-#: src/dialogs.cpp:437 src/menu_events.cpp:442 src/multiplayer_lobby.cpp:374
+#: src/dialogs.cpp:437 src/menu_events.cpp:443 src/multiplayer_lobby.cpp:374
 msgid "Turn"
 msgstr "Drag"
 
@@ -10479,7 +10535,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:527 src/game.cpp:921 src/help.cpp:1187
-#: src/menu_events.cpp:289 src/menu_events.cpp:796
+#: src/menu_events.cpp:290 src/menu_events.cpp:812
 #: src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Namn"
@@ -10680,7 +10736,7 @@ msgstr ""
 "kampanj."
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:344
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
@@ -10800,11 +10856,11 @@ msgstr "Ställer in typsnitt för aktuellt språk."
 msgid "Loading title screen."
 msgstr "Laddar titelsidan."
 
-#: src/game_events.cpp:801
+#: src/game_events.cpp:806
 msgid "Victory:"
 msgstr "Seger:"
 
-#: src/game_events.cpp:805
+#: src/game_events.cpp:810
 msgid "Defeat:"
 msgstr "Nederlag:"
 
@@ -10836,7 +10892,7 @@ msgstr "EP för nästa nivå: "
 msgid "attacks"
 msgstr "attacker"
 
-#: src/help.cpp:1188 src/menu_events.cpp:288 src/menu_events.cpp:795
+#: src/help.cpp:1188 src/menu_events.cpp:289 src/menu_events.cpp:811
 msgid "Type"
 msgstr "Typ"
 
@@ -10980,12 +11036,12 @@ msgstr "Läser truppfiler."
 msgid "Reading files and creating cache."
 msgstr "Läser filer och skapar cache."
 
-#: src/menu_events.cpp:65
+#: src/menu_events.cpp:66
 #, fuzzy
 msgid "Detail"
 msgstr "svans"
 
-#: src/menu_events.cpp:100
+#: src/menu_events.cpp:101
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -10993,7 +11049,7 @@ msgstr ""
 "Ers nåd, denna trupp är erfaren och har befordrats. Vill ni verkligen "
 "avskeda $noun?"
 
-#: src/menu_events.cpp:102
+#: src/menu_events.cpp:103
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -11001,97 +11057,97 @@ msgstr ""
 "Ers nåd, denna trupp kommer snart att avancera till en högre nivå. Vill ni "
 "verkligen avskeda $noun?"
 
-#: src/menu_events.cpp:107
+#: src/menu_events.cpp:108
 msgid "her"
 msgstr "henne"
 
-#: src/menu_events.cpp:107
+#: src/menu_events.cpp:108
 msgid "him"
 msgstr "honom"
 
-#: src/menu_events.cpp:163 src/menu_events.cpp:236
+#: src/menu_events.cpp:164 src/menu_events.cpp:237
 msgid "Recruits"
 msgstr "Rekryterade"
 
-#: src/menu_events.cpp:169 src/menu_events.cpp:240
+#: src/menu_events.cpp:170 src/menu_events.cpp:241
 msgid "Recalls"
 msgstr "Återkallade"
 
-#: src/menu_events.cpp:175 src/menu_events.cpp:244
+#: src/menu_events.cpp:176 src/menu_events.cpp:245
 msgid "Advancements"
 msgstr "Befordringar"
 
-#: src/menu_events.cpp:181 src/menu_events.cpp:248
+#: src/menu_events.cpp:182 src/menu_events.cpp:249
 msgid "Losses"
 msgstr "Förluster"
 
-#: src/menu_events.cpp:187 src/menu_events.cpp:252
+#: src/menu_events.cpp:188 src/menu_events.cpp:253
 msgid "Kills"
 msgstr "Dödade fiender"
 
-#: src/menu_events.cpp:193
+#: src/menu_events.cpp:194
 msgid "Damage Inflicted"
 msgstr "Vållad skada"
 
-#: src/menu_events.cpp:199
+#: src/menu_events.cpp:200
 msgid "Damage Taken"
 msgstr "Mottagen skada"
 
-#: src/menu_events.cpp:205
+#: src/menu_events.cpp:206
 msgid "Damage Inflicted (EV)"
 msgstr "Vållad skada (VV)"
 
-#: src/menu_events.cpp:212
+#: src/menu_events.cpp:213
 msgid "Damage Taken (EV)"
 msgstr "Mottagen skada (VV)"
 
-#: src/menu_events.cpp:220
+#: src/menu_events.cpp:221
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/menu_events.cpp:293 src/unit.cpp:2657
+#: src/menu_events.cpp:294 src/unit.cpp:2668
 msgid "Moves"
 msgstr "Förflyttning"
 
-#: src/menu_events.cpp:294
+#: src/menu_events.cpp:295
 msgid "Location"
 msgstr "Position"
 
-#: src/menu_events.cpp:339
+#: src/menu_events.cpp:340
 msgid "Unit List"
 msgstr "Trupplista"
 
-#: src/menu_events.cpp:357
+#: src/menu_events.cpp:358
 msgid "Leader"
 msgstr "Ledare"
 
-#: src/menu_events.cpp:358 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:359 src/multiplayer_connect.cpp:752
 msgid "Gold"
 msgstr "Guld"
 
-#: src/menu_events.cpp:359
+#: src/menu_events.cpp:360
 msgid "Villages"
 msgstr "Byar"
 
-#: src/menu_events.cpp:361
+#: src/menu_events.cpp:362
 msgid "Upkeep"
 msgstr "Underhåll"
 
-#: src/menu_events.cpp:362 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:363 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:436
 msgid "Income"
 msgstr "Inkomst"
 
-#: src/menu_events.cpp:451 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:423
 msgid "Name:"
 msgstr "Namn:"
 
-#: src/menu_events.cpp:456 src/menu_events.cpp:469
+#: src/menu_events.cpp:457 src/menu_events.cpp:470
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Fel"
 
-#: src/menu_events.cpp:456
+#: src/menu_events.cpp:457
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -11099,83 +11155,83 @@ msgstr ""
 "Du får inte använda kolon eller någon form av snedstreck när du sparar ett "
 "spel. Var vänlig välj ett annat namn."
 
-#: src/menu_events.cpp:466
+#: src/menu_events.cpp:467
 msgid "Saved"
 msgstr "Sparat"
 
-#: src/menu_events.cpp:466
+#: src/menu_events.cpp:467
 msgid "The game has been saved"
 msgstr "Spelet har sparats"
 
-#: src/menu_events.cpp:469 src/playcampaign.cpp:433
+#: src/menu_events.cpp:470 src/playcampaign.cpp:433
 msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
-#: src/menu_events.cpp:483
+#: src/menu_events.cpp:484
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Dela kartor"
 
-#: src/menu_events.cpp:488
+#: src/menu_events.cpp:489
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Det sparade spelet finns redan, vill du skriva över det?"
 
-#: src/menu_events.cpp:500
+#: src/menu_events.cpp:501
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:505
+#: src/menu_events.cpp:506
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:581 src/menu_events.cpp:583 src/play_controller.cpp:700
+#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:700
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "Autosparat"
 
-#: src/menu_events.cpp:586
+#: src/menu_events.cpp:587
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunde inte autospara spelet. Var vänlig och spara spelet manuellt."
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:611
 msgid "Chat Log"
 msgstr "Chatlogg"
 
-#: src/menu_events.cpp:620
+#: src/menu_events.cpp:621
 msgid "Message:"
 msgstr "Meddelande: "
 
-#: src/menu_events.cpp:621
+#: src/menu_events.cpp:622
 msgid "Send to allies only"
 msgstr "Skicka enbart till allierade"
 
-#: src/menu_events.cpp:673 src/multiplayer_wait.cpp:432
+#: src/menu_events.cpp:689 src/multiplayer_wait.cpp:432
 msgid "unit^Gold"
 msgstr "Guld"
 
-#: src/menu_events.cpp:680
+#: src/menu_events.cpp:696
 msgid "You have no units available to recruit."
 msgstr "Det finns inte några trupper tillgängliga att värva till armén."
 
-#: src/menu_events.cpp:691
+#: src/menu_events.cpp:707
 msgid "Recruit"
 msgstr "Rekrytera"
 
-#: src/menu_events.cpp:692 src/menu_events.cpp:841
+#: src/menu_events.cpp:708 src/menu_events.cpp:857
 msgid "Select unit:"
 msgstr "Välj trupp: "
 
-#: src/menu_events.cpp:732
+#: src/menu_events.cpp:748
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Du har inte tillräckligt med guld för att rekrytera den truppen"
 
-#: src/menu_events.cpp:788
+#: src/menu_events.cpp:804
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 "Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
 
-#: src/menu_events.cpp:790
+#: src/menu_events.cpp:806
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11183,55 +11239,60 @@ msgstr ""
 "Det finns inga trupper att återkalla\n"
 "(Du måste ha överlevande veteraner från ett tidigare scenario)"
 
-#: src/menu_events.cpp:797
+#: src/menu_events.cpp:813
 msgid "Level"
 msgstr "Nivå"
 
-#: src/menu_events.cpp:829
+#: src/menu_events.cpp:845
 msgid "Dismiss Unit"
 msgstr "Avskeda trupp"
 
-#: src/menu_events.cpp:840
+#: src/menu_events.cpp:856
 msgid "Recall"
 msgstr "Återkalla"
 
-#: src/menu_events.cpp:852
+#: src/menu_events.cpp:868
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 "Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1191
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Vill du verkligen avsluta ditt drag utan att göra något?"
 
-#: src/menu_events.cpp:1183 src/menu_events.cpp:1188
+#: src/menu_events.cpp:1199 src/menu_events.cpp:1204
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
 
-#: src/menu_events.cpp:1229
+#: src/menu_events.cpp:1245
 msgid "Rename Unit"
 msgstr "Döp om truppen"
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1340
+#, fuzzy
+msgid "Team only"
+msgstr "Turkos"
+
+#: src/menu_events.cpp:1345
 msgid "Place Label"
 msgstr "Sätt ut etikett"
 
-#: src/menu_events.cpp:1314
+#: src/menu_events.cpp:1346
 msgid "Label:"
 msgstr "Etikett: "
 
-#: src/menu_events.cpp:1412
+#: src/menu_events.cpp:1465
 msgid "Search"
 msgstr "Sök"
 
-#: src/menu_events.cpp:1455
+#: src/menu_events.cpp:1508
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Kommandon: whisper ignore emote. Skriv /help [kommando] för mer hjälp."
 
-#: src/menu_events.cpp:1506
+#: src/menu_events.cpp:1559
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -11239,19 +11300,19 @@ msgstr ""
 "Skicka ett privat meddelande. Du kan inte skicka meddelanden till spelare "
 "som kontrollerar en sida i spelet. Syntax: /whisper [spelare] [meddelande]"
 
-#: src/menu_events.cpp:1510
+#: src/menu_events.cpp:1563
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Lägg till en spelare till din ignoreralista. Syntax: /ignore add [argument]"
 
-#: src/menu_events.cpp:1512
+#: src/menu_events.cpp:1565
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Lägg till en spelare till din ignoreralista. Syntax: /ignore add [argument]"
 
-#: src/menu_events.cpp:1514
+#: src/menu_events.cpp:1567
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -11259,21 +11320,21 @@ msgid ""
 msgstr ""
 "Ta bort en spelare från din ignoreralista. Syntax: /ignore remove [argument]"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1569
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Rensa din ignorera lista. Syntax: /ignore clear"
 
-#: src/menu_events.cpp:1518
+#: src/menu_events.cpp:1571
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Visa din ignoreralista. Syntax: /ignore list"
 
-#: src/menu_events.cpp:1520
+#: src/menu_events.cpp:1573
 msgid "Unknown subcommand"
 msgstr "Okänt underkommando"
 
-#: src/menu_events.cpp:1523
+#: src/menu_events.cpp:1576
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -11285,55 +11346,55 @@ msgstr ""
 "[underkommando] [argument (valfritt)]. Underkommandon: add remove list "
 "clear. Skriv /help ignore [underkommando] för mer information."
 
-#: src/menu_events.cpp:1526
+#: src/menu_events.cpp:1579
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Skicka en smiley. Syntax: /emote [message]"
 
-#: src/menu_events.cpp:1528
+#: src/menu_events.cpp:1581
 msgid "Unknown command"
 msgstr "Okänt kommando"
 
-#: src/menu_events.cpp:1545
+#: src/menu_events.cpp:1598
 msgid "Added to ignore list: "
 msgstr "Lagd i ignoreralistan: "
 
-#: src/menu_events.cpp:1547 src/menu_events.cpp:1560 src/menu_events.cpp:1570
+#: src/menu_events.cpp:1600 src/menu_events.cpp:1613 src/menu_events.cpp:1623
 msgid "Invalid username: "
 msgstr "Ogiltigt användarnamn: "
 
-#: src/menu_events.cpp:1558
+#: src/menu_events.cpp:1611
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Lagd i ignoreralistan: "
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1621
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Borttagen från ignoreralistan: "
 
-#: src/menu_events.cpp:1595
+#: src/menu_events.cpp:1648
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1658
 msgid "Removed from ignore list: "
 msgstr "Borttagen från ignoreralistan: "
 
-#: src/menu_events.cpp:1608
+#: src/menu_events.cpp:1661
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Borttagen från ignoreralistan: "
 
-#: src/menu_events.cpp:1615
+#: src/menu_events.cpp:1668
 msgid "Unknown command: "
 msgstr "Okänt kommando: "
 
-#: src/menu_events.cpp:1716
+#: src/menu_events.cpp:1769
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Kunde inte finna etikett eller trupp som innehöll textsträngen '$search'."
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1913
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
@@ -11454,12 +11515,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2756
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2767
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2763
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2774
 msgid ")"
 msgstr ")"
 
@@ -11796,7 +11857,7 @@ msgstr "Avsluta"
 msgid "Skip quickly to the active turn when observing"
 msgstr "Hoppa till aktivt drag som observatör"
 
-#: src/multiplayer_ui.cpp:81
+#: src/multiplayer_ui.cpp:82
 msgid "Invalid Color"
 msgstr "Ogiltig färg"
 
@@ -12219,15 +12280,15 @@ msgstr "Hjälp"
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjälp Wesnoth genom att skicka oss information"
 
-#: src/unit.cpp:2592 src/unit.cpp:2761
+#: src/unit.cpp:2603 src/unit.cpp:2772
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2674
+#: src/unit.cpp:2685
 msgid "XP to advance"
 msgstr "EP till befordran"
 
-#: src/unit.cpp:2752
+#: src/unit.cpp:2763
 msgid ": "
 msgstr ": "
 
