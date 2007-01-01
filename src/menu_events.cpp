@@ -636,7 +636,7 @@ namespace events{
 
 		return false;
 	}
-	
+
 	bool menu_handler::has_team() const
 	{
 		if(is_observer()) {
@@ -1325,15 +1325,15 @@ namespace events{
 			return;
 		}
 		const terrain_label* old_label = gui_->labels().get_label(mousehandler.get_last_hex());
-		
+
 		std::string label;
-		
+
 		if (old_label)
 		{
 			label = old_label->text();
 			team_only = !old_label->team_name().empty();
 		}
-		
+
 		std::vector<gui::check_item> options;
 		if (has_team() || (old_label && team_only))
 		{
@@ -1350,10 +1350,10 @@ namespace events{
 			SDL_Color colour = font::LABEL_COLOUR;
 			const std::string last_team_id = "9";
 			std::map<std::string, color_range>::iterator gp = game_config::team_rgb_range.find(last_team_id);
-			
 
 
-			
+
+
 			if ((has_team() || (old_label && team_only)) && options.front().checked)
 			{
 				team_name = gui_->labels().team_name();
@@ -1363,7 +1363,7 @@ namespace events{
 			{
 				colour = team::get_side_colour( gui_->viewing_team() + 1);
 			}
-			
+
 			gui_->labels().set_label(mousehandler.get_last_hex(),label,&recorder, team_name, colour);
 
 		}
