@@ -310,10 +310,6 @@ public:
 	//game board to more clearly show where hexes are.
 	void set_grid(bool grid);
 
-	//a debug highlight draws a cross on a tile to emphasize something there.
-	//it is used in debug mode, typically to show AI plans.
-	static void debug_highlight(const gamemap::location& loc, fixed_t amount);
-	static void clear_debug_highlights();
 
 	//function which returns true if location (x,y) is covered in shroud.
 	bool shrouded(int x, int y) const;
@@ -357,11 +353,9 @@ public:
 	//submerged: the amount of the unit out of 1.0 that is submerged
 	//           (presumably under water) and thus shouldn't be drawn
 	void draw_unit(int x, int y, surface image,
-		        bool upside_down=false,fixed_t alpha=ftofxp(1.0),
+		        fixed_t alpha=ftofxp(1.0),
 			Uint32 blendto=0, double blend_ratio=0,
-			double submerged=0.0,
-			surface ellipse_back=surface(NULL),
-			surface ellipse_front=surface(NULL));
+			double submerged=0.0);
 
 	//rebuild the dynamic terrain at the given location.
 	void rebuild_terrain(const gamemap::location &location);
@@ -506,8 +500,6 @@ private:
 	typedef std::map<gamemap::location,unsigned int> reach_map;
 	reach_map reach_map_;
 
-	//for debug mode
-	static std::map<gamemap::location,fixed_t> debugHighlights_;
 
 	std::set<gamemap::location> highlighted_locations_;
 

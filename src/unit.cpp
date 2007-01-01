@@ -32,6 +32,8 @@
 #include "actions.hpp"
 #include "game_events.hpp"
 #include "sound.hpp"
+#include "gl_image.hpp"
+#include "gl_image_cache.hpp"
 
 #include <ctime>
 #include <algorithm>
@@ -2000,8 +2002,21 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		ellipse_front.assign(image::get_image(image::locator(buf)));
 	}
 
-	disp.draw_unit(x, y -height_adjust, image, false, highlight_ratio,
-			blend_with, blend_ratio, submerge,ellipse_back,ellipse_front);
+	//calculate the y position of the ellipse. It should be the same as the
+	//y position of the image, unless the image is partially submerged, in
+	//which case the ellipse should appear to float 'on top of' the water
+	const int ellipse_ypos = y - height_adjust - (submerge > 0.0 ? int(double(ellipse_back->h)*submerge) : 0)/2;
+	if(ellipse_back != NULL) {
+		disp.draw_unit(x,ellipse_ypos,ellipse_back, highlight_ratio ,0,0.0);
+	}
+
+	disp.draw_unit(x, y -height_adjust, image,  highlight_ratio,
+			blend_with, blend_ratio, submerge);
+
+	if(ellipse_front != NULL) {
+		disp.draw_unit(x,ellipse_ypos,ellipse_front,highlight_ratio,0,0.0);
+	}
+
 	if(!unit_halo_ && !image_halo().empty()) {
 		unit_halo_ = halo::add(0,0,image_halo());
 	}
@@ -2048,23 +2063,14 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			disp.draw_bar(*energy_file,x,y-height_adjust,max_experience()/(level*2),filled,colour,bar_alpha);
 		}
 		if (can_recruit()) {
-			surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
-			if(!crown.null()) {
-				//if(bar_alpha != ftofxp(1.0)) {
-				//	crown = adjust_surface_alpha(crown, bar_alpha);
-				//}
-
-				SDL_Rect r = {0, 0, crown->w, crown->h};
-				disp.video().blit_surface(x,y-height_adjust,crown,&r);
-			}
+			const gl::image& crown = gl::get_image(std::string("misc/leader-crown.png"));
+			crown.draw(x,y-height_adjust,crown.width(),crown.height());
 		}
 
 	}
 	for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
-		const surface img(image::get_image(*ov));
-		if(img != NULL) {
-			disp.draw_unit(x,y-height_adjust,img);
-		}
+		const gl::image& img = gl::get_image(*ov);
+		img.draw(x,y-height_adjust);
 	}
 	refreshing_ = false;
 	anim_->update_last_draw_time();

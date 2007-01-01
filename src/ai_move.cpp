@@ -709,9 +709,6 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	for(std::vector<location>::reverse_iterator ri =
 	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri) {
 
-		if(game_config::debug) {
-			//display::debug_highlight(*ri,0.2);
-		}
 
 		//this is set to 'true' if we are hesitant to proceed because of enemy units,
 		//to rally troops around us.

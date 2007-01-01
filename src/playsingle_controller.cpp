@@ -434,8 +434,6 @@ redo_turn:
 			}
 		}
 
-		if(game_config::debug)
-			display::clear_debug_highlights();
 
 		LOG_NG << "human finished turn...\n";
 	} else if(current_team().is_ai()) {
