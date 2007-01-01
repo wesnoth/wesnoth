@@ -453,7 +453,8 @@ const std::string& game::transfer_side_control(const config& cfg)
 	sides_taken_[side_index] = true;
 	sides_.insert(std::pair<const network::connection,size_t>(sock_entering, side_index));
 
-	// send a response to the host and to the new controller
+	//send "change_controller" msg that make all client update
+	//the current player name
 	config response;
 	config& change = response.add_child("change_controller");
 
@@ -461,7 +462,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 	change["player"] = player;
 
 	change["controller"] = "network";
-	network::send_data(response, owner_);
+	send_data(response, sock_entering);
 
 	change["controller"] = "human";
 	network::queue_data(response, sock_entering);
