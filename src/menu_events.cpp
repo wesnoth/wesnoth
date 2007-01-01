@@ -25,6 +25,7 @@
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "team.hpp"
 #include "unit_display.hpp"
 #include "unit_types.hpp"
 #include "wassert.hpp"
@@ -629,6 +630,21 @@ namespace events{
 
 		for(size_t n = 0; n != teams_.size(); ++n) {
 			if(n != gui_->viewing_team() && teams_[gui_->viewing_team()].team_name() == teams_[n].team_name() && teams_[n].is_network()) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+	
+	bool menu_handler::has_team() const
+	{
+		if(is_observer()) {
+			return false;
+		}
+
+		for(size_t n = 0; n != teams_.size(); ++n) {
+			if(n != gui_->viewing_team() && teams_[gui_->viewing_team()].team_name() == teams_[n].team_name()) {
 				return true;
 			}
 		}
@@ -1303,26 +1319,63 @@ namespace events{
 		i->second.set_side(side);
 	}
 
-	void menu_handler::label_terrain(mouse_handler& mousehandler)
+	void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	{
 		if(map_.on_board(mousehandler.get_last_hex()) == false) {
 			return;
 		}
-
-		std::string label = gui_->labels().get_label(mousehandler.get_last_hex());
+		const terrain_label* old_label = gui_->labels().get_label(mousehandler.get_last_hex());
+		
+		std::string label;
+		
+		if (old_label)
+		{
+			label = old_label->text();
+			team_only = !old_label->team_name().empty();
+		}
+		
+		std::vector<gui::check_item> options;
+		if (has_team() || (old_label && team_only))
+		{
+			gui::check_item team_only_chk = gui::check_item(_("Team only"),
+					team_only);
+			team_only_chk.align = gui::LEFT_ALIGN;
+			options.push_back(team_only_chk);
+		}
 		const int res = gui::show_dialog(*gui_,NULL,_("Place Label"),"",gui::OK_CANCEL,
 										 NULL,NULL,_("Label:"),&label,
-						 map_labels::get_max_chars());
+						 map_labels::get_max_chars(), NULL, &options);
 		if(res == 0) {
-			gui_->labels().set_label(mousehandler.get_last_hex(),label);
-			recorder.add_label(label,mousehandler.get_last_hex());
+			std::string team_name;
+			SDL_Color colour = font::LABEL_COLOUR;
+			const std::string last_team_id = "9";
+			std::map<std::string, color_range>::iterator gp = game_config::team_rgb_range.find(last_team_id);
+			
+
+
+			
+			if ((has_team() || (old_label && team_only)) && options.front().checked)
+			{
+				team_name = gui_->labels().team_name();
+
+			}
+			else
+			{
+				colour = team::get_side_colour( gui_->viewing_team() + 1);
+			}
+			
+			gui_->labels().set_label(mousehandler.get_last_hex(),label,&recorder, team_name, colour);
+
 		}
 	}
 
 	void menu_handler::clear_labels()
 	{
-		gui_->labels().clear();
-		recorder.clear_labels();
+		if (gui_->team_valid()
+		   && !is_observer())
+		{
+			gui_->labels().clear(gui_->current_team_name(),&recorder);
+		}
 	}
 
 	void menu_handler::continue_move(mouse_handler& mousehandler, const unsigned int team_num)
@@ -1682,11 +1735,11 @@ namespace events{
 				loc.y = (loc.y + 1) % map_.y();
 
 			//Search label
-			const std::string label = gui_->labels().get_label(loc);
-			if(label.empty() == false) {
-				if(std::search(label.begin(), label.end(),
+			const terrain_label* label = gui_->labels().get_label(loc);
+			if(label) {
+				if(std::search(label->text().begin(), label->text().end(),
 						last_search_.begin(), last_search_.end(),
-						chars_equal_insensitive) != label.end()) {
+						chars_equal_insensitive) != label->text().end()) {
 					found = !gui_->shrouded(loc.x, loc.y);
 				}
 			}
@@ -1785,6 +1838,7 @@ namespace events{
 						if(team_num == side_num) {
 							//if it is our turn at the moment, we have to indicate to the
 							//play_controller, that we are no longer in control
+							gui_->set_team(0);
 							throw end_turn_exception(side_num);
 						}
 					} else {

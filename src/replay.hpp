@@ -18,6 +18,7 @@
 #include "map.hpp"
 #include "random.hpp"
 #include "unit.hpp"
+#include "map_label.hpp"
 
 class display;
 class config_writer;
@@ -54,8 +55,8 @@ public:
 	void add_attack(const gamemap::location& a, const gamemap::location& b,
 	                int att_weapon, int def_weapon);
 	void choose_option(int index);
-	void add_label(const std::string& text, const gamemap::location& loc);
-	void clear_labels();
+	void add_label(const terrain_label*);
+	void clear_labels(const std::string&);
 	void add_rename(const std::string& name, const gamemap::location& loc);
 	void end_turn();
 	void add_event(const std::string& name);

@@ -22,6 +22,7 @@
 #include "util.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
+#include "game_events.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
@@ -180,13 +181,19 @@ std::string gamemap::location::write_direction(gamemap::location::DIRECTION dir)
 
 void gamemap::location::init(const std::string &xstr, const std::string &ystr)
 {
+	std::string xs = xstr, ys = ystr;
+	if (game_events::get_state_of_game())
+	{
+		xs = utils::interpolate_variables_into_string( xs, *game_events::get_state_of_game());
+		ys = utils::interpolate_variables_into_string( ys, *game_events::get_state_of_game());
+	}
 	//the co-ordinates in config files will be 1-based, while we
 	//want them as 0-based
-	if(xstr.empty() == false)
-		x = atoi(xstr.c_str()) - 1;
+	if(xs.empty() == false)
+		x = atoi(xs.c_str()) - 1;
 
-	if(ystr.empty() == false)
-		y = atoi(ystr.c_str()) - 1;
+	if(ys.empty() == false)
+		y = atoi(ys.c_str()) - 1;
 }
 
 gamemap::location::location(const config& cfg) : x(-1), y(-1)

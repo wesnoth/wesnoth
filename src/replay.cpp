@@ -358,28 +358,28 @@ void replay::choose_option(int index)
 	add_value("choose",index);
 }
 
-void replay::add_label(const std::string& text, const gamemap::location& loc)
+void replay::add_label(const terrain_label* label)
 {
+	wassert(label);
 	config* const cmd = add_command(false);
 
 	(*cmd)["undo"] = "no";
 
 	config val;
 
-	loc.write(val);
-	val["text"] = text;
+	label->write(val);
 
 	cmd->add_child("label",val);
 }
 
-void replay::clear_labels()
+void replay::clear_labels(const std::string& team_name)
 {
 	config* const cmd = add_command(false);
 
 	(*cmd)["undo"] = "no";
-
-
-	cmd->add_child("clear_labels");
+	config val;
+	val["team_name"] = team_name;
+	cmd->add_child("clear_labels",val);
 }
 
 void replay::add_rename(const std::string& name, const gamemap::location& loc)
@@ -729,14 +729,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {
-			const gamemap::location loc(*child);
-			const std::string& text = (*child)["text"];
 
-			if (!replayer.is_skipping()){
-				disp.labels().set_label(loc,text);
-			}
+			terrain_label label(disp.labels(),*child);
+			
+			disp.labels().set_label(label.location(),
+									label.text(),
+									0,
+									label.team_name(),
+									label.colour());
+		
 		} else if((child = cfg->child("clear_labels")) != NULL) {
-			disp.labels().clear();
+			
+			disp.labels().clear(std::string((*child)["team_name"]),0);
 		}
 
 		else if((child = cfg->child("rename")) != NULL) {

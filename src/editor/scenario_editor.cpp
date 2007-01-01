@@ -84,7 +84,7 @@ void scenario_editor::unit_list()
 {
 }
 
-void scenario_editor::label_terrain()
+void scenario_editor::label_terrain(bool team_only)
 {
 }
 

@@ -302,13 +302,17 @@ void playmp_controller::handle_generic_event(const std::string& name){
 
 bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 {
+	bool res = true;
 	switch (command){
-		case hotkey::HOTKEY_SPEAK:
-		case hotkey::HOTKEY_SPEAK_ALLY:
-		case hotkey::HOTKEY_SPEAK_ALL:
 		case hotkey::HOTKEY_CLEAR_LABELS:
-			return network::nconnections() > 0;
+		case hotkey::HOTKEY_SPEAK_ALLY:
+			res = !is_observer();
+		case hotkey::HOTKEY_SPEAK:
+		case hotkey::HOTKEY_SPEAK_ALL:
+			res = res && network::nconnections() > 0;
+			break;
 	    default:
 			return playsingle_controller::can_execute_command(command);
 	}
+	return res;
 }

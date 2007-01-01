@@ -325,7 +325,8 @@ public:
 	size_t viewing_team() const;
 	size_t playing_team() const;
 	bool team_valid() const;
-
+	const std::string current_team_name() const;
+			
 	theme& get_theme();
 
 	const theme::menu* menu_pressed();

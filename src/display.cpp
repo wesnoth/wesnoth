@@ -87,7 +87,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	currentTeam_(0), activeTeam_(0),
 	turbo_speed_(1), turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
-	first_turn_(true), in_game_(false), map_labels_(*this,map),
+	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL),
 	diagnostic_label_(0), fps_handle_(0)
 {
@@ -2165,12 +2165,28 @@ void display::write_overlays(config& cfg) const
 	}
 }
 
+const std::string display::current_team_name() const
+{
+	if (team_valid())
+	{
+		return teams_[currentTeam_].team_name();
+	}
+	return std::string();
+}
+
 void display::set_team(size_t team)
 {
 	wassert(team < teams_.size());
 	currentTeam_ = team;
-
-	labels().recalculate_shroud();
+	if (!is_observer())
+	{
+		labels().set_team(&teams_[team]);
+	}
+	else
+	{
+		labels().set_team(0);
+	}
+	labels().recalculate_labels();
 }
 
 void display::set_playing_team(size_t team)

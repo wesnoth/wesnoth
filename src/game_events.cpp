@@ -98,6 +98,11 @@ message_dialog::~message_dialog()
 
 namespace game_events {
 
+game_state* get_state_of_game()
+{
+	return ::state_of_game;
+}
+
 bool conditional_passed(const unit_map* units,
                         const vconfig cond)
 {
@@ -1661,6 +1666,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	//unit serialization to and from variables
+	// FIXME: Check that store is automove bug safe
 	else if(cmd == "store_unit") {
 		const config empty_filter;
 		vconfig filter = cfg.child("filter");
@@ -1942,10 +1948,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			events::pump();
 		}
 	} else if(cmd == "label") {
-		const gamemap::location loc(cfg);
-		const std::string& text = utils::interpolate_variables_into_string(
-			cfg.get_attribute("text"), *state_of_game);
-		screen->labels().set_label(loc,text);
+		
+		terrain_label label(screen->labels(),cfg.get_config());
+			
+		screen->labels().set_label(label.location(),
+								   label.text(),
+								   0,
+								   label.team_name(),
+								   label.colour());
 	}
 
 	LOG_NG << "done handling command...\n";
