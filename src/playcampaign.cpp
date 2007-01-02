@@ -336,10 +336,17 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 		if(io_type == IO_CLIENT) {
 			config cfg;
+
+			std::string msg;
+			if (state.scenario.empty())
+				msg = _("Receiving data...");
+			else
+				msg = _("Downloading next scenario...");
+
 			do {
 				cfg.clear();
 				network::connection data_res = gui::network_receive_dialog(disp,
-						_("Downloading next level..."), cfg);
+						msg, cfg);
 				if(!data_res)
 					throw network::error(_("Connection timed out"));
 			} while(cfg.child("next_scenario") == NULL &&
