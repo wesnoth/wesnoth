@@ -188,7 +188,7 @@ public:
 
 	//Specific preparations
 	//layout - determines dialog measurements based on all components
-	virtual dimension_measurements layout(int xloc=-1, int yloc=-1) const;
+	virtual dimension_measurements layout(int xloc=-1, int yloc=-1);
 
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
@@ -197,7 +197,7 @@ public:
 
 	//Results
 	int result() const { return result_; }
-	menu &get_menu() const;
+	menu &get_menu();
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
 	const std::string textbox_text() const { return text_widget_->text();}
 	const bool option_checked(unsigned int option_index=0);
@@ -244,7 +244,7 @@ private:
 	const std::string title_, style_;
 	label* message_;
 	const DIALOG_TYPE type_;
-	mutable gui::menu *menu_;
+	gui::menu *menu_;
 	std::vector<preview_pane*> preview_panes_;
 	std::vector< std::pair<dialog_button*,BUTTON_LOCATION> > button_pool_;
 	std::vector<dialog_button*> standard_buttons_;
