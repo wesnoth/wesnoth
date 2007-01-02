@@ -1665,7 +1665,8 @@ void unit::set_standing(const display &disp,const gamemap::location& loc, bool w
 	anim_ = new standing_animation(stand_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(),true,disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
-	next_idling= SDL_GetTicks() +30000 +rand()%10000;
+	next_idling= SDL_GetTicks() +10000;
+	//next_idling= SDL_GetTicks() +10000 +rand()%10000;
 }
 void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
 {
@@ -1864,13 +1865,16 @@ void unit::set_walking(const display &disp,const gamemap::location& loc)
 
 void unit::set_idling(const display &disp,const gamemap::location& loc)
 {
+	const idle_animation * tmp = idling_animation(disp,loc);
+	if(!tmp) {
+		set_standing(disp,loc);
+		return; 
+	}
 	state_ = STATE_IDLING;
 	draw_bars_ = true;
 
 	delete anim_;
 
-	const idle_animation * tmp = idling_animation(disp,loc);
-	if(!tmp) {set_standing(disp,loc) ; return; }
 	anim_ = new idle_animation(*tmp);
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -3083,7 +3087,7 @@ const idle_animation* unit::idling_animation(const display& disp, const gamemap:
 {
 	//select one of the matching animations at random
 	std::vector<const idle_animation*> options;
-	int max_val = -1;
+	int max_val = 0;
 	for(std::vector<idle_animation>::const_iterator i = idle_animations_.begin(); i != idle_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
