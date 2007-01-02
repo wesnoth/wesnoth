@@ -411,7 +411,7 @@ private:
 	surface get_minimap(int w, int h);
 
 	CVideo& screen_;
-	mutable CKey keys_;
+	CKey keys_;
 	int xpos_, ypos_, zoom_;
 	const gamemap& map_;
 
