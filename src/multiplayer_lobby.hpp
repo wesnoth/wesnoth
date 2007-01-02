@@ -79,7 +79,7 @@ private:
 	std::pair<size_t, size_t> visible_range_;
 	std::vector<game_item> games_;
 	std::vector<size_t> redraw_items_;
-	mutable std::vector<int> widths_;
+	std::vector<int> widths_;
 	bool double_clicked_;
 	bool ignore_next_doubleclick_;
 	bool last_was_doubleclick_;
