@@ -38,16 +38,16 @@ public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
 	attack_type(const config& cfg, const std::string& id, const std::string& image_fighting);
-	const t_string& name() const;
-	const std::string& id() const;
-	const std::string& type() const;
-	const std::string& icon() const;
-	RANGE range_type() const;
-	const std::string& range() const;
-	int damage() const;
-	int num_attacks() const;
-	double attack_weight() const;
-	double defense_weight() const;
+	const t_string& name() const { return description_; }
+	const std::string& id() const { return id_; }
+	const std::string& type() const { return type_; }
+	const std::string& icon() const { return icon_; }
+	RANGE range_type() const { return range_type_; }
+	const std::string& range() const { return range_; }
+	int damage() const { return damage_; }
+	int num_attacks() const { return num_attacks_; }
+	double attack_weight() const { return attack_weight_; }
+	double defense_weight() const { return defense_weight_; }
 
 	bool get_special_bool(const std::string& special,bool force=false) const;
 	unit_ability_list get_specials(const std::string& special) const;
@@ -66,10 +66,10 @@ public:
 	bool matches_filter(const config& cfg,bool self=false) const;
 	bool apply_modification(const config& cfg,std::string* description);
 
-	int movement_used() const;
+	int movement_used() const { return cfg_["movement_used"] == "" ? 100000 : lexical_cast_default<int>(cfg_["movement_used"]); }
 
-	config& get_cfg();
-	const config& get_cfg() const;
+	config& get_cfg() { return cfg_; }
+	const config& get_cfg() const { return cfg_; }
 	mutable gamemap::location aloc_,dloc_;
 	mutable bool attacker_;
 	mutable const game_data* gamedata_;
@@ -111,24 +111,24 @@ class unit_movement_type
 public:
 	//this class assumes that the passed in reference will remain valid
 	//for at least as long as the class instance
-	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
+	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL) : cfg_(cfg), parent_(parent) {};
 
 	const t_string& name() const;
 	int movement_cost(const gamemap& map, gamemap::TERRAIN terrain, int recurse_count=0) const;
 	int defense_modifier(const gamemap& map, gamemap::TERRAIN terrain, int recurse_count=0) const;
-	int damage_against(const attack_type& attack) const;
+	int damage_against(const attack_type& attack) const { return resistance_against(attack); }
 	int resistance_against(const attack_type& attack) const;
 
 	string_map damage_table() const;
 
-	void set_parent(const unit_movement_type* parent);
+	void set_parent(const unit_movement_type* parent) { parent_ = parent; }
 
 	bool is_flying() const;
 	const std::map<gamemap::TERRAIN,int>& movement_costs() const;
 	const std::map<gamemap::TERRAIN,int>& defense_mods() const;
 
-	const config& get_cfg() const;
-	const unit_movement_type* get_parent() const;
+	const config& get_cfg() const { return cfg_; }
+	const unit_movement_type* get_parent() const { return parent_; }
 private:
 	const config cfg_;
 
@@ -158,14 +158,14 @@ public:
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
     //info on the type of unit that the unit reanimates as
-    const std::string& undead_variation() const;
+    const std::string& undead_variation() const { return cfg_["undead_variation"]; }
 
-	unsigned int num_traits() const;
+	unsigned int num_traits() const { return (cfg_["num_traits"].size() ? atoi(cfg_["num_traits"].c_str()) : race_->num_traits()); }
 
-	std::string generate_description() const;
+	std::string generate_description() const { return race_->generate_name(cfg_["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE); }
 
 	//the name of the unit in the current language setting
-	const t_string& language_name() const;
+	const t_string& language_name() const { return cfg_["name"]; }
 
 	const std::string& id() const;
 	//Disabling this one for consistency with other similar structures,
@@ -173,20 +173,20 @@ public:
 	//language_name should eventually be renamed name()
 	// const std::string& name() const;
 
-	const std::string& image() const;
+	const std::string& image() const { return cfg_["image"]; }
 	const std::string& image_profile() const;
 	const t_string& unit_description() const;
 
-    const std::string& flag_rgb() const;
+    const std::string& flag_rgb() const { return flag_rgb_; }
 
-	int hitpoints() const;
+	int hitpoints() const { return atoi(cfg_["hitpoints"].c_str()); }
 	std::vector<attack_type> attacks() const;
-	const unit_movement_type& movement_type() const;
+	const unit_movement_type& movement_type() const { return movementType_; }
 
 	int experience_needed(bool with_acceleration=true) const;
-	std::vector<std::string> advances_to() const;
-	const config::child_list& modification_advancements() const;
-	const std::string& usage() const;
+	std::vector<std::string> advances_to() const { return advances_to_; }
+	const config::child_list& modification_advancements() const { return cfg_.get_children("advancement"); }
+	const std::string& usage() const { return cfg_["usage"]; }
 
 	struct experience_accelerator {
 		experience_accelerator(int modifier);
@@ -196,36 +196,36 @@ public:
 		int old_value_;
 	};
 
-	int level() const;
-	int movement() const;
-	int cost() const;
+	int level() const { return atoi(cfg_["level"].c_str()); }
+	int movement() const { return atoi(cfg_["movement"].c_str()); }
+	int cost() const { return atoi(cfg_["cost"].c_str()); }
 
 	enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC };
 
-	ALIGNMENT alignment() const;
+	ALIGNMENT alignment() const { return alignment_; }
 	static const char* alignment_description(ALIGNMENT align);
 	static const char* alignment_id(ALIGNMENT align);
 
-	fixed_t alpha() const;
+	fixed_t alpha() const { return alpha_; }
 
-	const std::vector<std::string>& abilities() const;
-	const std::vector<std::string>& ability_tooltips() const;
+	const std::vector<std::string>& abilities() const { return abilities_; }
+	const std::vector<std::string>& ability_tooltips() const { return ability_tooltips_; }
 
-	bool not_living() const;
-	bool can_advance() const;
+	bool not_living() const { return race_->not_living(); }
+	bool can_advance() const { return !advances_to_.empty(); }
 
-	bool has_zoc() const;
+	bool has_zoc() const { return zoc_; }
 
 	bool has_ability(const std::string& ability) const;
 	bool has_ability_by_id(const std::string& ability) const;
 
-	const std::vector<config*>& possible_traits() const;
-	bool has_random_traits() const;
+	const std::vector<config*>& possible_traits() const { return possibleTraits_; }
+	bool has_random_traits() const { return (num_traits() > 0 && possibleTraits_.size() > 1); }
 
-	const std::vector<unit_race::GENDER>& genders() const;
+	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 
 	const std::string& race() const;
-	bool hide_help() const;
+	bool hide_help() const { return hide_help_; }
 
 private:
 	void operator=(const unit_type& o);
