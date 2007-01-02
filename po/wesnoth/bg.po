@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:14+0100\n"
+"POT-Creation-Date: 2007-01-02 18:21+0100\n"
 "PO-Revision-Date: 2006-09-28 17:30+0100\n"
 "Last-Translator: Боно Нончев <bono.nonchev@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -8740,7 +8740,7 @@ msgid ""
 msgstr ""
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:351
 msgid "Connection timed out"
 msgstr ""
 
@@ -9145,7 +9145,7 @@ msgstr "Надници"
 msgid "Income"
 msgstr "Приход"
 
-#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:430
 msgid "Name:"
 msgstr ""
 
@@ -9170,7 +9170,7 @@ msgstr "Запазена"
 msgid "The game has been saved"
 msgstr "Играта бе запазена"
 
-#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:433
+#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:440
 msgid "The game could not be saved"
 msgstr ""
 
@@ -9895,14 +9895,19 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
 #: src/playcampaign.cpp:342
-msgid "Downloading next level..."
+#, fuzzy
+msgid "Receiving data..."
+msgstr "Приемам данните за играта..."
+
+#: src/playcampaign.cpp:344
+msgid "Downloading next scenario..."
 msgstr ""
 
-#: src/playcampaign.cpp:422
+#: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
 
-#: src/playcampaign.cpp:449
+#: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
 msgstr ""
 

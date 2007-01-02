@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:14+0100\n"
+"POT-Creation-Date: 2007-01-02 18:21+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -10345,7 +10345,7 @@ msgstr ""
 "Quaestio erat in creando pligas necessarias inaugurationi huius stipendii."
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:351
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
 
@@ -10747,7 +10747,7 @@ msgstr "Impensa"
 msgid "Income"
 msgstr "Merces"
 
-#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:430
 msgid "Name:"
 msgstr "Nomen:"
 
@@ -10772,7 +10772,7 @@ msgstr "Servatus"
 msgid "The game has been saved"
 msgstr "Lusus servatus est"
 
-#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:433
+#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:440
 msgid "The game could not be saved"
 msgstr "Lusus non servari potest"
 
@@ -11463,14 +11463,20 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Visne versionem remonstrabilem missionis huius servare?"
 
 #: src/playcampaign.cpp:342
-msgid "Downloading next level..."
+#, fuzzy
+msgid "Receiving data..."
+msgstr "Index lusorum recipitur..."
+
+#: src/playcampaign.cpp:344
+#, fuzzy
+msgid "Downloading next scenario..."
 msgstr "Stipendium proximum trahitur..."
 
-#: src/playcampaign.cpp:422
+#: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Visne lusum servare? (Etiam delet archiva Servatae Automatariae)"
 
-#: src/playcampaign.cpp:449
+#: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
 msgstr "Missio incognita: '"
 
@@ -15060,9 +15066,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "Warning"
 #~ msgstr "Monitum"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Index lusorum recipitur..."
 
 #~ msgid "The game has been cancelled"
 #~ msgstr "Abrogatus est lusus"

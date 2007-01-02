@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:14+0100\n"
+"POT-Creation-Date: 2007-01-02 18:21+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -10569,7 +10569,7 @@ msgstr ""
 "veldtog te installeer."
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:351
 msgid "Connection timed out"
 msgstr "Verbindingtyd het verstryk"
 
@@ -10983,7 +10983,7 @@ msgstr "Onderhoud"
 msgid "Income"
 msgstr "Inkomste"
 
-#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:430
 msgid "Name:"
 msgstr "Naam:"
 
@@ -11008,7 +11008,7 @@ msgstr "Gestoor"
 msgid "The game has been saved"
 msgstr "Die spel is gestoor"
 
-#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:433
+#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:440
 msgid "The game could not be saved"
 msgstr "Die spel kon nie gestoor word nie"
 
@@ -11716,15 +11716,21 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Wil jy 'n 'wys weer' van hierdie scenario stoor?"
 
 #: src/playcampaign.cpp:342
-msgid "Downloading next level..."
+#, fuzzy
+msgid "Receiving data..."
+msgstr "Besig om speldata te lees..."
+
+#: src/playcampaign.cpp:344
+#, fuzzy
+msgid "Downloading next scenario..."
 msgstr "Besig om die volgende vlak af te laai"
 
-#: src/playcampaign.cpp:422
+#: src/playcampaign.cpp:429
 #, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Wil jy jou spel stoor?"
 
-#: src/playcampaign.cpp:449
+#: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
 msgstr "Onbekende scenario: '"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:14+0100\n"
+"POT-Creation-Date: 2007-01-02 18:21+0100\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -10552,7 +10552,7 @@ msgid ""
 msgstr "Okazis eraro dum kreo de instaldosieroj."
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:351
 msgid "Connection timed out"
 msgstr "Aliĝtempo pasis"
 
@@ -10959,7 +10959,7 @@ msgstr "Elspezoj"
 msgid "Income"
 msgstr "Enspezo"
 
-#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:430
 msgid "Name:"
 msgstr "Nomo:"
 
@@ -10984,7 +10984,7 @@ msgstr "Konservita"
 msgid "The game has been saved"
 msgstr "La ludo estis konservita"
 
-#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:433
+#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:440
 msgid "The game could not be saved"
 msgstr "Oni ne sukcesis registri la ludon"
 
@@ -11687,15 +11687,21 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Ĉu vi volas registri trairo de ĉi mapo?"
 
 #: src/playcampaign.cpp:342
-msgid "Downloading next level..."
+#, fuzzy
+msgid "Receiving data..."
+msgstr "Mi akiras datojn de ludo..."
+
+#: src/playcampaign.cpp:344
+#, fuzzy
+msgid "Downloading next scenario..."
 msgstr "Mi elŝutas ceteran nivelon..."
 
-#: src/playcampaign.cpp:422
+#: src/playcampaign.cpp:429
 #, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Ĉu vi volas konservi la ludon?"
 
-#: src/playcampaign.cpp:449
+#: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
 msgstr "Nekonata scenejo: '"
 

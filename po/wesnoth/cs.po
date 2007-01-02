@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:14+0100\n"
+"POT-Creation-Date: 2007-01-02 18:21+0100\n"
 "PO-Revision-Date: 2006-08-30 12:25+0200\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -10429,7 +10429,7 @@ msgid ""
 msgstr "Vytvoření souborů potřebných k instalaci tažení neproběhlo v pořádku."
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:351
 msgid "Connection timed out"
 msgstr "Časový limit pro připojení vypršel"
 
@@ -10829,7 +10829,7 @@ msgstr "Výdaje"
 msgid "Income"
 msgstr "Příjmy"
 
-#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:384 src/playcampaign.cpp:294 src/playcampaign.cpp:430
 msgid "Name:"
 msgstr "Jméno:"
 
@@ -10854,7 +10854,7 @@ msgstr "Uloženo"
 msgid "The game has been saved"
 msgstr "Hra byla uložena"
 
-#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:433
+#: src/menu_events.cpp:402 src/playcampaign.cpp:302 src/playcampaign.cpp:440
 msgid "The game could not be saved"
 msgstr "Hru se nepodařilo uložit"
 
@@ -11544,14 +11544,20 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Chceš uložit záznam této hry?"
 
 #: src/playcampaign.cpp:342
-msgid "Downloading next level..."
+#, fuzzy
+msgid "Receiving data..."
+msgstr "Přijímání seznamu her..."
+
+#: src/playcampaign.cpp:344
+#, fuzzy
+msgid "Downloading next scenario..."
 msgstr "Stahuji další kolo..."
 
-#: src/playcampaign.cpp:422
+#: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Přeješ si uložit hru? (Smaže také všechna automatická uložení)"
 
-#: src/playcampaign.cpp:449
+#: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
 msgstr "Neznámý scénář: '"
 
@@ -15077,9 +15083,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 
 #~ msgid "Warning"
 #~ msgstr "Varování"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Přijímání seznamu her..."
 
 #~ msgid "The game has been cancelled"
 #~ msgstr "Hra byla zrušena"
