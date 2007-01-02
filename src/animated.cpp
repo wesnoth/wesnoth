@@ -28,6 +28,11 @@ void new_animation_frame()
 	current_ticks = SDL_GetTicks();
 }
 
+int get_current_animation_tick() 
+{
+	return current_ticks;
+}
+
 template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
 

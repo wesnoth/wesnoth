@@ -191,6 +191,7 @@ Detailed changelog and internal changes:
      the game easily
    * better handling of SDL_ListModes return code (no user impact)
    * first turn of a game is saved again (fixes bug #7909 and bug #8117)
+   * reduce CPU usage by removing calls to SDL_GetTicks for idle animations
 
 Version 1.2:
  * campaigns:

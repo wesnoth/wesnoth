@@ -1648,9 +1648,8 @@ void unit::refresh(const display& disp,const gamemap::location& loc)
 	if(state_ == STATE_IDLING && anim_ && anim_->animation_finished()) set_standing(disp, loc);
 	if(state_ != STATE_STANDING) return;
 	if(incapacitated()) return;
-	unsigned int tmp = SDL_GetTicks();
-	if(tmp < next_idling) return;
-	if(tmp > next_idling + 1000) {set_standing(disp,loc); return; }// prevent all units animating at the same time
+	if(get_current_animation_tick() < next_idling) return;
+	if(get_current_animation_tick() > next_idling + 1000) {set_standing(disp,loc); return; }// prevent all units animating at the same time
 	set_idling(disp, loc);
 }
 
@@ -1665,8 +1664,7 @@ void unit::set_standing(const display &disp,const gamemap::location& loc, bool w
 	anim_ = new standing_animation(stand_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(),true,disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
-	next_idling= SDL_GetTicks() +10000;
-	//next_idling= SDL_GetTicks() +10000 +rand()%10000;
+	next_idling= get_current_animation_tick() +10000 +rand()%10000;
 }
 void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
 {
