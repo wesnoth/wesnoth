@@ -77,7 +77,7 @@ public:
 	 *              to the parameters, or NULL if there is none.
 	 */
 	const imagelist *get_terrain_at(const gamemap::location &loc,
-			const std::string &tod, ADJACENT_TERRAIN_TYPE terrain_type) const;
+			const std::string &tod, ADJACENT_TERRAIN_TYPE terrain_type);
 
 	/** Updates the animation at a given tile. returns true if something has
 	 * changed, and must be redrawn.
@@ -240,7 +240,7 @@ public:
 		 *               to extract the image we wish to add to the
 		 *               cache.
 		 */
-		void add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor) const;
+		void add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor);
 
 		/** Rebuilds the whole image cache, for a given time-of-day.
 		 * Must be called when the time-of-day has changed, to select
@@ -248,7 +248,7 @@ public:
 		 *
 		 * @param tod    The current time-of-day
 		 */
-		void rebuild_cache(const std::string &tod) const;
+		void rebuild_cache(const std::string &tod);
 
 		/** Clears all data in this tile, and resets the cache */
 		void clear();
@@ -270,16 +270,16 @@ public:
 		 * attached to this tile. This member is considered a cache: it
 		 * is built once, and on-demand.
 		 */
-		mutable imagelist images_foreground;
+		imagelist images_foreground;
 		/** The list of images which are behind the unit sprites,
 		 * attached to this tile. This member is considered a cache: it
 		 * is built once, and on-demand.
 		 */
-		mutable imagelist images_background;
+		imagelist images_background;
 		/**
 		 * The time-of-day to which the image caches correspond.
 		 */
-		mutable std::string last_tod;
+		std::string last_tod;
 
 		/**
 		 * The 6 adjacent terrains of this tile, and the terrain on

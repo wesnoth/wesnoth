@@ -44,7 +44,7 @@ terrain_builder::tile::tile() : last_tod("invalid_tod")
 	memset(adjacents, 0, sizeof(adjacents));
 }
 
-void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor) const
+void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor)
 {
 	rule_image_variantlist::const_iterator tod_variant =
 		itor->second->variants.find(tod);
@@ -61,7 +61,7 @@ void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_r
 	}
 }
 
-void terrain_builder::tile::rebuild_cache(const std::string &tod) const
+void terrain_builder::tile::rebuild_cache(const std::string &tod)
 {
 	images_background.clear();
 	images_foreground.clear();
@@ -129,12 +129,12 @@ terrain_builder::terrain_builder(const config& cfg, const config& level, const g
 }
 
 const terrain_builder::imagelist *terrain_builder::get_terrain_at(const gamemap::location &loc,
-		const std::string &tod, ADJACENT_TERRAIN_TYPE terrain_type) const
+		const std::string &tod, ADJACENT_TERRAIN_TYPE terrain_type)
 {
 	if(!tile_map_.on_map(loc))
 		return NULL;
 
-	const tile& tile_at = tile_map_[loc];
+	tile& tile_at = tile_map_[loc];
 
 	if(tod != tile_at.last_tod) {
 		tile_at.rebuild_cache(tod);
