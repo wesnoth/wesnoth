@@ -108,6 +108,9 @@ class unit_movement_type;
 //large land, etc etc.
 class unit_movement_type
 {
+	mutable std::map<t_translation::t_letter, int> moveCosts_;
+	mutable std::map<t_translation::t_letter, int> defenseMods_;
+
 public:
 	//this class assumes that the passed in reference will remain valid
 	//for at least as long as the class instance
@@ -124,16 +127,13 @@ public:
 	void set_parent(const unit_movement_type* parent);
 
 	bool is_flying() const;
-	const std::map<t_translation::t_letter, int>& movement_costs() const;
-	const std::map<t_translation::t_letter, int>& defense_mods() const;
+	const std::map<t_translation::t_letter, int>& movement_costs() const { return moveCosts_; }
+	const std::map<t_translation::t_letter, int>& defense_mods() const { return defenseMods_; }
 
 	const config& get_cfg() const;
 	const unit_movement_type* get_parent() const;
 private:
 	const config cfg_;
-
-	mutable std::map<t_translation::t_letter, int> moveCosts_;
-	mutable std::map<t_translation::t_letter, int> defenseMods_;
 
 	const unit_movement_type* parent_;
 };

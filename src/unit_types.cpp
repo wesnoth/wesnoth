@@ -615,16 +615,6 @@ void unit_movement_type::set_parent(const unit_movement_type* parent)
 	parent_ = parent;
 }
 
-const std::map<t_translation::t_letter, int>& unit_movement_type::movement_costs() const
-{
-	return moveCosts_;
-}
-const std::map<t_translation::t_letter, int>& unit_movement_type::defense_mods() const
-{
-	return defenseMods_;
-}
-
-
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
