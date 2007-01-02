@@ -224,7 +224,7 @@ void dialog::set_menu(const std::vector<std::string> &menu_items)
 		dialog::max_menu_width, NULL, &menu::default_style, false));
 }
 
-menu& dialog::get_menu()
+menu& dialog::get_menu() const
 {
 	if(menu_ == NULL)
 	{
@@ -363,7 +363,7 @@ void dialog::refresh()
 	disp_.delay(10);
 }
 
-dialog::dimension_measurements dialog::layout(int xloc, int yloc)
+dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 {
 	CVideo& screen = disp_.video();
 	surface const scr = screen.getSurface();
