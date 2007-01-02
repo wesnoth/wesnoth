@@ -1249,7 +1249,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 	return false;
 }
 
-bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, double caution) const
+bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, double caution)
 {
 	if(caution <= 0.0) {
 		return false;
@@ -1928,7 +1928,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/, const move_map& /
 	}
 }
 
-bool ai::leader_can_reach_keep() const
+bool ai::leader_can_reach_keep()
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
 	if(leader == units_.end() || leader->second.incapacitated()) {
@@ -1981,7 +1981,7 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	return rating;
 }
 
-const ai::defensive_position& ai::best_defensive_position(const gamemap::location& loc, const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
+const ai::defensive_position& ai::best_defensive_position(const gamemap::location& loc, const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc)
 {
 	const unit_map::const_iterator itor = units_.find(loc);
 	if(itor == units_.end()) {
@@ -2043,7 +2043,7 @@ bool ai::is_accessible(const location& loc, const move_map& dstsrc) const
 }
 
 
-const std::set<gamemap::location>& ai::keeps() const
+const std::set<gamemap::location>& ai::keeps()
 {
 	if(keeps_.empty()) {
 		//generate the list of keeps -- iterate over the entire map and find all keeps
@@ -2067,7 +2067,7 @@ const std::set<gamemap::location>& ai::keeps() const
 	return keeps_;
 }
 
-const gamemap::location& ai::nearest_keep(const gamemap::location& loc) const
+const gamemap::location& ai::nearest_keep(const gamemap::location& loc)
 {
 	const std::set<gamemap::location>& keeps = this->keeps();
 	if(keeps.empty()) {
@@ -2088,7 +2088,7 @@ const gamemap::location& ai::nearest_keep(const gamemap::location& loc) const
 	return *res;
 }
 
-const std::set<gamemap::location>& ai::avoided_locations() const
+const std::set<gamemap::location>& ai::avoided_locations()
 {
 	if(avoid_.empty()) {
 		const config::child_list& avoids = current_team().ai_parameters().get_children("avoid");
@@ -2108,7 +2108,7 @@ const std::set<gamemap::location>& ai::avoided_locations() const
 	return avoid_;
 }
 
-int ai::attack_depth() const
+int ai::attack_depth()
 {
 	if(attack_depth_ > 0) {
 		return attack_depth_;

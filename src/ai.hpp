@@ -44,18 +44,18 @@ public:
 	};
 
 	defensive_position const& best_defensive_position(const location& unit,
-			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const;
+			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc);
 
 	void invalidate_defensive_position_cache();
 
-	bool leader_can_reach_keep() const;
+	bool leader_can_reach_keep();
 
 	//function which will return true iff there has been another attack this turn 'close' to this one
 	bool attack_close(const location& loc) const;
 
 protected:
 
-	mutable std::map<location,defensive_position> defensive_position_cache_;
+	std::map<location,defensive_position> defensive_position_cache_;
 
 	virtual void do_move();
 
@@ -65,7 +65,7 @@ protected:
 	virtual bool retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
 	virtual bool move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
 
-	virtual bool should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, double caution) const;
+	virtual bool should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, double caution);
 
 	virtual void do_recruitment();
 
@@ -248,10 +248,10 @@ protected:
 	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
 
 	//functions to deal with keeps
-	const std::set<location>& keeps() const;
-	const location& nearest_keep(const location& loc) const;
+	const std::set<location>& keeps();
+	const location& nearest_keep(const location& loc);
 
-	mutable std::set<location> keeps_;
+	std::set<location> keeps_;
 
 	//function which, given a unit position, and a position the unit wants to
 	//get to in two turns, will return all possible positions the unit can
@@ -259,15 +259,15 @@ protected:
 	void access_points(const move_map& srcdst, const location& u, const location& dst, std::vector<location>& out);
 
 	//function which gets the areas of the map that this AI has been instructed to avoid
-	const std::set<location>& avoided_locations() const;
+	const std::set<location>& avoided_locations();
 
-	mutable std::set<location> avoid_;
+	std::set<location> avoid_;
 
 	// Weapon choice cache, to speed simulations.
 	std::map<std::pair<location,const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
 
-	int attack_depth() const;
-	mutable int attack_depth_;
+	int attack_depth();
+	int attack_depth_;
 	friend struct attack_analysis;
 };
 
