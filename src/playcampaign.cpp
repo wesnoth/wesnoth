@@ -341,7 +341,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			if (state.scenario.empty())
 				msg = _("Receiving data...");
 			else
-				msg = _("Downloading next level...");
+				msg = _("Downloading next scenario...");
 
 			do {
 				cfg.clear();
