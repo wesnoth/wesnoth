@@ -34,7 +34,7 @@ class map_labels
 {
 public:
 	typedef std::map<gamemap::location,const terrain_label*> label_map;
-	typedef std::map<std::string,const label_map> team_label_map;
+	typedef std::map<std::string,label_map> team_label_map;
 	
 	map_labels(const display& disp, const gamemap& map, const team*);
 	map_labels(const display& disp, const config& cfg, const gamemap& map, const team*);
@@ -84,7 +84,7 @@ private:
 	const gamemap& map_;
 
 	team_label_map labels_;
-	label_map label_cashe_;
+	label_map label_cache_;
 	bool changed_;
 };
 
