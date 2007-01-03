@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-02 18:21+0100\n"
-"PO-Revision-Date: 2006-12-06 23:06+0100\n"
+"PO-Revision-Date: 2007-01-03 19:24+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team:  <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -2003,36 +2003,40 @@ msgstr "Mort-vivant"
 
 #: data/english.cfg:21
 msgid "race^Dwarves"
-msgstr ""
+msgstr "Nains"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "Gobelins"
 
 #: data/english.cfg:23
 #, fuzzy
 msgid "race^Lizards"
-msgstr "Mort-vivant"
+msgstr "Lézards"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Mécaniques"
 
 #: data/english.cfg:25
+#, fuzzy
 msgid "race^Mermen"
-msgstr ""
+msgstr "Ondins"
 
 #: data/english.cfg:26
+#, fuzzy
 msgid "race^Monsters"
-msgstr ""
+msgstr "Monstres"
 
 #: data/english.cfg:27
+#, fuzzy
 msgid "race^Nagas"
-msgstr ""
+msgstr "Nagas"
 
 #: data/english.cfg:28
+#, fuzzy
 msgid "race^Ogres"
-msgstr ""
+msgstr "Ogres"
 
 #: data/english.cfg:29
 #, fuzzy
@@ -2130,22 +2134,24 @@ msgid "ranged"
 msgstr "à distance"
 
 #: data/english.cfg:51
+#, fuzzy
 msgid "Wesnoth unit list"
-msgstr ""
+msgstr "Liste des unités Wesnoth"
 
 #: data/english.cfg:52
+#, fuzzy
 msgid "Based on version"
-msgstr ""
+msgstr "Basé sur la version"
 
 #: data/english.cfg:53
 #, fuzzy
 msgid "Race"
-msgstr "masse"
+msgstr "Race"
 
 #: data/english.cfg:54
 #, fuzzy
 msgid "Advance from"
-msgstr "Évolue en : "
+msgstr "Évolue à partir de"
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -3186,7 +3192,6 @@ msgid "Wrap Up"
 msgstr "Conclusion"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarize yourself with <ref>dst=traits text=Traits</"
@@ -3409,7 +3414,6 @@ msgid "Undead units are immune to poison."
 msgstr "Les unités mortes-vivantes sont immunisées contre le poison."
 
 #: data/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3875,7 +3879,6 @@ msgid "Village"
 msgstr "Village"
 
 #: data/help.cfg:509
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have an easy time navigating villages, and most units "
@@ -4491,7 +4494,6 @@ msgstr ""
 "(inscrit par Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:130
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4545,7 +4547,6 @@ msgstr ""
 "(inscrit par Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:150
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
 "treasure that had been lost in these watery caves- a spear whose head was "
@@ -5163,7 +5164,6 @@ msgid "9p - Merkwuerdigliebe"
 msgstr "9p - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
-#, fuzzy
 msgid ""
 "A very small 3v3v3map.  A 60sec timer is recommended due to the large number "
 "of players.  The teams are players 159 v 267 v 348 (north v southeast v "
@@ -6119,7 +6119,6 @@ msgid "Pirate Galleon"
 msgstr "Galion pirate"
 
 #: data/units/Boat_Pirate_Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them to "
@@ -6127,7 +6126,7 @@ msgid ""
 msgstr ""
 "Les galions pirates sont aux navires de transport ce que les loups sont aux "
 "brebis. Les navires chargés de marchandises ne devraient pas être seuls si "
-"loin de la terre... Il vaut mieux les aider à ne pas couler par excès de "
+"loin des terres... Il vaut mieux les aider à ne pas couler par excès de "
 "chargement."
 
 #: data/units/Boat_Pirate_Galleon.cfg:19
@@ -11927,14 +11926,12 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Voulez-vous sauvegarder un replay de ce scénario ?"
 
 #: src/playcampaign.cpp:342
-#, fuzzy
 msgid "Receiving data..."
 msgstr "Réception des données du jeu..."
 
 #: src/playcampaign.cpp:344
-#, fuzzy
 msgid "Downloading next scenario..."
-msgstr "Téléchargement du prochain niveau..."
+msgstr "Téléchargement du prochain scénario..."
 
 #: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
