@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-01 23:27+0100\n"
-"PO-Revision-Date: 2006-09-29 23:19+0200\n"
+"PO-Revision-Date: 2007-01-03 00:20+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -402,7 +402,6 @@ msgid "poison"
 msgstr "gift"
 
 #: data/abilities.cfg:532
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -591,9 +590,8 @@ msgid "Turkish Translation"
 msgstr "Turkisk översättning"
 
 #: data/about.cfg:560
-#, fuzzy
 msgid "Valencian Translation"
-msgstr "Slovensk översättning"
+msgstr "Valencisk översättning"
 
 #: data/about.cfg:567 data/help.cfg:252
 msgid "Contributors"
@@ -1928,39 +1926,37 @@ msgstr "Vandöda"
 
 #: data/english.cfg:21
 msgid "race^Dwarves"
-msgstr ""
+msgstr "Dvärgar"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "Vättar"
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
-msgstr "Vandöda"
+msgstr "Ödlefolket"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Konstruktioner"
 
 #: data/english.cfg:25
 msgid "race^Mermen"
-msgstr ""
+msgstr "Sjöfolket"
 
 #: data/english.cfg:26
 msgid "race^Monsters"
-msgstr ""
+msgstr "Monster"
 
 #: data/english.cfg:27
 msgid "race^Nagas"
-msgstr ""
+msgstr "Nagafolket"
 
 #: data/english.cfg:28
 msgid "race^Ogres"
-msgstr ""
+msgstr "Resar"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Troll"
 msgstr "Troll"
 
@@ -2029,21 +2025,19 @@ msgstr "distans"
 
 #: data/english.cfg:51
 msgid "Wesnoth unit list"
-msgstr ""
+msgstr "Wesnoths trupplista"
 
 #: data/english.cfg:52
 msgid "Based on version"
-msgstr ""
+msgstr "Baserad på version"
 
 #: data/english.cfg:53
-#, fuzzy
 msgid "Race"
-msgstr "spikklubba"
+msgstr "Ras"
 
 #: data/english.cfg:54
-#, fuzzy
 msgid "Advance from"
-msgstr "Kan befordras till: "
+msgstr "Befordras från"
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -3297,11 +3291,12 @@ msgid "trait^Undead"
 msgstr "Vandöd"
 
 #: data/help.cfg:321
-#, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
-msgstr "Vandöda trupper är immuna mot gift."
+msgstr ""
+"Vandöda trupper är immuna mot gift, dessutom kan de inte påverkas av suga "
+"livskraft eller pest."
 
 #: data/help.cfg:323
 msgid ""
@@ -3397,7 +3392,6 @@ msgid "Forest"
 msgstr "Skog"
 
 #: data/help.cfg:368
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3424,7 +3418,8 @@ msgstr ""
 "\n"
 "De flesta truppslag har 50% försvar i skog, men kavalleri har 40%. Alver har "
 "däremot 60-70% försvar, även till häst. Dvärgar har vanligtvis bara 30% "
-"försvar i skog."
+"försvar i skog.\n"
+"\n"
 
 #: data/help.cfg:373 data/terrain.cfg:318
 msgid "Hills"
@@ -3582,7 +3577,6 @@ msgid "Castle"
 msgstr "Borg"
 
 #: data/help.cfg:448
-#, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -3600,7 +3594,8 @@ msgstr ""
 "försvarskapacitet. Utan en trupp i varje borgruta kan en fiendetrupp smita "
 "in i borgen utan problem och dra nytta av borgens alla fördelar.\n"
 "\n"
-"De flesta trupper har omkring 60% försvar i borgar."
+"De flesta trupper har omkring 60% försvar i borgar.\n"
+"\n"
 
 #: data/help.cfg:453 data/terrain.cfg:89
 msgid "Sand"
@@ -3755,7 +3750,6 @@ msgid "Village"
 msgstr "By"
 
 #: data/help.cfg:526
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -3775,7 +3769,8 @@ msgstr ""
 "och läka sina sår, vilket betyder att trupper som placerade i byar antingen "
 "läker åtta hälsopoäng varje drag eller blir botade från gift.\n"
 "\n"
-"De flesta truppslag har 50-60% försvar i byar; kavalleri har 40%."
+"De flesta truppslag har 50-60% försvar i byar; kavalleri har 40%.\n"
+"\n"
 
 #: data/help.cfg:531 data/terrain.cfg:429
 msgid "Chasm"
@@ -3874,47 +3869,46 @@ msgid "General commands"
 msgstr "Allmänna kommandon"
 
 #: data/help.cfg:577
-#, fuzzy
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Avsluta scenariot (utan bekräftelse)."
+"Avsluta scenariot (utan bekräftelse).\n"
+"\n"
 
 #: data/help.cfg:580
-#, fuzzy
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Spara spelet (utan bekräftelse)."
+"Spara spelet (utan bekräftelse).\n"
+"\n"
 
 #: data/help.cfg:583
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Spara spelet och avsluta scenariot (utan bekräftelse)."
+"Spara spelet och avsluta scenariot (utan bekräftelse).\n"
+"\n"
 
 #: data/help.cfg:586
-#, fuzzy
 msgid ""
 "\n"
 "Redraw the screen.\n"
 "\n"
 msgstr ""
 "\n"
-"Rita om skärmen."
+"Rita om skärmen.\n"
+"\n"
 
 #: data/help.cfg:589
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -3923,21 +3917,18 @@ msgid ""
 msgstr ""
 "\n"
 "Byt till debugläge (fungerar ej i gruppspel). Debugläge stängs av genom att "
-"avsluta spelet."
+"avsluta spelet.\n"
+"\n"
 
 #: data/help.cfg:590
-#, fuzzy
 msgid "Bring up theme selection menu."
-msgstr ""
-"\n"
-"Visa temavalsmenyn."
+msgstr "Visa temavalsmenyn."
 
 #: data/help.cfg:595
 msgid "Multiplayer commands"
 msgstr "Gruppspelskommandon"
 
 #: data/help.cfg:599
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -3947,20 +3938,20 @@ msgid ""
 msgstr ""
 "\n"
 "Växla till/från att sidan spelas av AI:n. Endast spelaren/klienten som "
-"kontrollerar aktuell sida kan välja detta. Om ingen sida anges, antas '1'."
+"kontrollerar aktuell sida kan välja detta. Om ingen sida anges, antas '1'.\n"
+"\n"
 
 #: data/help.cfg:602
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Växla till/från att ignorera åskådares inlägg."
+"Växla till/från att ignorera åskådares inlägg.\n"
+"\n"
 
 #: data/help.cfg:605
-#, fuzzy
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3968,11 +3959,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Ignorera angiven åskådare. Om inget användarnam anges, visas alla ignorerade "
-"användare."
+"Ignorera angiven åskådare. Om inget användarnamn anges, visas alla "
+"ignorerade användare.\n"
+"\n"
 
 #: data/help.cfg:608
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -3983,10 +3974,10 @@ msgstr ""
 "\n"
 "Sparka ut en användare från gruppspel. Återanslutning är möjlig. Oftast ett "
 "accepterat sätt att ta bort en spelare som har anslutnings- eller andra "
-"problem."
+"problem.\n"
+"\n"
 
 #: data/help.cfg:611
-#, fuzzy
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -3995,10 +3986,10 @@ msgid ""
 msgstr ""
 "\n"
 "Sparka ut och bannlys en användare från gruppspel samt IP-adressen som "
-"används av aktuell användare."
+"används av aktuell användare.\n"
+"\n"
 
 #: data/help.cfg:614
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4006,7 +3997,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Ändra spelare för en sida; ange sida och användarnamn."
+"Ändra spelare för en sida (ange sidans nummer) till ett visst användarnamn "
+"(ange användarnamnet).\n"
+"\n"
 
 #: data/help.cfg:615
 msgid ""
@@ -4601,9 +4594,8 @@ msgstr ""
 "denna duellkarta. 2 guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "Status"
+msgstr "staty"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
@@ -4827,39 +4819,36 @@ msgid "4p - Castle Hopping Isle"
 msgstr "4s - Borghopparön"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid ""
 "Hop from castle to castle while fighting over a central isle. Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Två arméer kolliderar på detta kustlandskap med dolda grottor och irrande "
-"floder. 2 guld per by rekommenderas."
+"Hoppa från slott till slott vid kampen om den centrala ön. 2 guld per by "
+"rekommenderas."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
 msgstr "4s - Sammandrabbning"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs. 2. Recommended setting of 2 gold per village."
-msgstr "En liten karta för snabbt spel 2 mot 2. Två guld per by rekommenderas."
+msgstr "En liten karta för spel 2 mot 2. Två guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
 msgstr "4s - Isars kors"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map.  Close quarters fighting means the successful "
 "rotation of units and planning of moves is important.  Teams set for players "
 "1&4 vs. 2&3 (northeast vs. southwest).  Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
-"En liten 2 mot 2-karta. I så trängda situationer är det viktigt att rotera "
-"sina trupper och planera sina drag på rätt sätt. Det är lämpligt att spela 1 "
-"och 4 mot 2 och 3 (nordöst mot sydväst). Det rekommenderas att man börjar "
-"med 75 guld. Kartan innehåller 20 byar."
+"En mycket liten 2 mot 2-karta. I så trängda situationer är det viktigt att "
+"rotera sina trupper och planera sina drag på rätt sätt. Det är lämpligt att "
+"spela 1 och 4 mot 2 och 3 (nordöst mot sydväst). Rekommenderat är 75 "
+"startguld. Kartan innehåller 20 byar."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:15
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:39
@@ -4890,7 +4879,6 @@ msgid "4p - King of the Hill"
 msgstr "4s - Herre på täppan"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages. "
@@ -4898,7 +4886,7 @@ msgid ""
 msgstr ""
 "Kontroll över området runt den centrala fästningen är mycket fördelaktigt på "
 "denna 36x36-rutors alla mot alla-karta för 4 spelare. Den har 36 byar. 2 "
-"guld per by rekommenderas."
+"guld per by och 150 startguld rekommenderas."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:23
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:28
@@ -4933,7 +4921,6 @@ msgid "4p - Loris River"
 msgstr "4s - Lorisfloden"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages. Recommended setting "
@@ -4960,7 +4947,6 @@ msgid "4p - Paths of Daggers"
 msgstr "4s - Knivarnas väg"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement.  Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA.  "
@@ -4976,7 +4962,6 @@ msgid "4p - Siege Castles"
 msgstr "4s - Belägring"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages. "
@@ -4984,7 +4969,7 @@ msgid ""
 msgstr ""
 "En 40x30-rutors karta där styrkorna från 4 borgar stöter ihop där två floder "
 "löper samman. Lämplig för spel 2 mot 2 eller alla mot alla. Ungefär 45 byar. "
-"Två guld per by rekommenderas."
+"Två guld per by och 150 startguld rekommenderas."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -5044,28 +5029,24 @@ msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2 mot 2- eller 3 mot 3-spel"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
-#, fuzzy
 msgid "Turn 2: Loyalists"
-msgstr "Lojalister"
+msgstr "Drag 2: Lojalister"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:173
 msgid "Turn 5: Knalgans"
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:174
-#, fuzzy
 msgid "Turn 8: Rebels"
-msgstr "Rebeller"
+msgstr "Drag 8: Rebeller"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:175
-#, fuzzy
 msgid "Turn 11: Northerners"
-msgstr "Nordbor"
+msgstr "Drag 11: Nordbor"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:176
-#, fuzzy
 msgid "Turn 14: Drakes"
-msgstr "Orkandrake"
+msgstr "Drag 14: Drakfolket"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:177
 msgid "Turn 17: Undead"
@@ -5129,7 +5110,6 @@ msgid "6p - Waterloo Sunset"
 msgstr "6s - Solnedgång i Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3 vs. 3 map.  Flexible coordination of your alliance is required to "
 "avoid being outnumbered.  Teams set for players 145 vs. 236 (north vs. "
@@ -5139,8 +5119,8 @@ msgstr ""
 "En karta med 40x30 rutor för spel 3 mot 3. Flexibelt koordinerande "
 "tillsammans med dina allierade krävs för att behålla övertaget. "
 "Standardlagen är spelare 145 mot 236 (nord mot syd), men 146 eller 136 "
-"tillsammans ger också intressant spel. Det rekommenderas att man startar med "
-"150 guld. Kartan innehåller 44 byar."
+"tillsammans ger också intressant spel. 150 startguld rekommenderas. Kartan "
+"innehåller 44 byar."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
@@ -5159,7 +5139,6 @@ msgid "9p - Merkwuerdigliebe"
 msgstr "9s - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
-#, fuzzy
 msgid ""
 "A very small 3 vs. 3 vs. 3 map.  A 60sec timer is recommended due to the "
 "large number of players.  The teams are players 159 vs. 267 vs. 348 (north "
@@ -5624,9 +5603,8 @@ msgid "Act."
 msgstr "Handl."
 
 #: data/themes/default.cfg:569
-#, fuzzy
 msgid "short end-turn^E."
-msgstr "Sluta"
+msgstr ""
 
 #: data/themes/dfool.cfg:218
 msgid "MP"
@@ -6011,9 +5989,8 @@ msgid "loyal"
 msgstr "lojal"
 
 #: data/traits.cfg:7
-#, fuzzy
 msgid "female^loyal"
-msgstr "Fredlös"
+msgstr "lojal"
 
 #: data/traits.cfg:8
 msgid "Zero upkeep"
@@ -6024,9 +6001,8 @@ msgid "undead"
 msgstr "vandöd"
 
 #: data/traits.cfg:19
-#, fuzzy
 msgid "female^undead"
-msgstr "Rövare"
+msgstr "vandöd"
 
 #: data/traits.cfg:20
 msgid "Immune to poison"
@@ -6037,16 +6013,14 @@ msgid "strong"
 msgstr "stark"
 
 #: data/traits.cfg:28
-#, fuzzy
 msgid "female^strong"
-msgstr "Rövare"
+msgstr "stark"
 
 #: data/traits.cfg:44
 msgid "dextrous"
 msgstr "träffsäker"
 
 #: data/traits.cfg:45
-#, fuzzy
 msgid "female^dextrous"
 msgstr "träffsäker"
 
@@ -6055,16 +6029,14 @@ msgid "quick"
 msgstr "snabb"
 
 #: data/traits.cfg:58
-#, fuzzy
 msgid "female^quick"
-msgstr "Prinsessa"
+msgstr "snabb"
 
 #: data/traits.cfg:73
 msgid "intelligent"
 msgstr "intelligent"
 
 #: data/traits.cfg:74
-#, fuzzy
 msgid "female^intelligent"
 msgstr "intelligent"
 
@@ -6073,7 +6045,6 @@ msgid "resilient"
 msgstr "tålig"
 
 #: data/traits.cfg:86
-#, fuzzy
 msgid "female^resilient"
 msgstr "tålig"
 
@@ -6082,23 +6053,20 @@ msgid "healthy"
 msgstr ""
 
 #: data/traits.cfg:102
-#, fuzzy
 msgid "female^healthy"
-msgstr "Tjuv"
+msgstr ""
 
 #: data/traits.cfg:103
 msgid "Heals faster if resting"
 msgstr ""
 
 #: data/traits.cfg:114
-#, fuzzy
 msgid "fearless"
-msgstr "Prinsessa"
+msgstr "orädd"
 
 #: data/traits.cfg:115
-#, fuzzy
 msgid "female^fearless"
-msgstr "Prinsessa"
+msgstr "orädd"
 
 #: data/traits.cfg:116
 msgid "Fights normally during unfavorable times of day/night"
@@ -6176,9 +6144,8 @@ msgstr ""
 "trupper. Väl i land kan trupperna anfalla. "
 
 #: data/units/Drake_Armageddon.cfg:3
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "Elddrake"
+msgstr "Harmageddondrake"
 
 #: data/units/Drake_Armageddon.cfg:22
 msgid ""
@@ -6642,9 +6609,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:81
 #: data/units/Human_Loyalist_Javelineer.cfg:82
 #: data/units/Human_Loyalist_Spearman.cfg:202
-#, fuzzy
 msgid "javelin"
-msgstr "Spjutkastare"
+msgstr "kastspjut"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -7635,16 +7601,14 @@ msgid "Cavalier"
 msgstr "Kavaljer"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
 "their mobility, and such mettle is the subject of tale and song."
 msgstr ""
 "Kavaljererna utgör en ståtlig syn på slagfältet, som de mästare från "
-"hästryggen med både svärd och armborst de är. Deras flinkhet med "
-"distansvapen tillåter dem att tryggt anfalla sina fiender, och deras "
-"eldighet har vänt stridslyckan i några av historiens största slag."
+"hästryggen med både svärd och armborst de är. Med deras rörlighet utgör "
+"detta en farlig kombination, och deras eldighet omtalas i sånger och sägner."
 
 #: data/units/Human_Loyalist_Cavalier.cfg:84
 #: data/units/Human_Loyalist_Dragoon.cfg:83
@@ -7742,7 +7706,6 @@ msgid "Fencer"
 msgstr "Fäktare"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -8085,7 +8048,6 @@ msgid "Shock Trooper"
 msgstr "Stormtrupp"
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:15
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and half of their use in "
 "war is simply a matter of intimidation. The only men who can enter their "
@@ -8100,10 +8062,10 @@ msgstr ""
 "nytta i krig är att helt enkelt sätta skräck i fienden. De som når upp i "
 "stormtrupps rang är utomordenligt välbyggda, och i deras typiska "
 "spikförsedda svarta rustning är de en skrämmande syn. Blotta åsynen av "
-"stormtrupper som krossar allt motstånd med sina spikklubbor är ofta nog för "
-"att bryta fiendens kamplusta, och många är det som har undrat om "
-"rustningarna döljer monster istället för människor. Nackdelen med så tung "
-"rustning är förstås tiden det tar att komma till och från striden."
+"stormtrupper som krossar fiendens linjer är ofta nog för att bryta alla "
+"motståndares kamplusta, och många är det som har undrat om rustningarna "
+"döljer monster istället för människor. Nackdelen med så tung rustning är "
+"förstås tiden det tar att komma till och från striden."
 
 #: data/units/Human_Loyalist_Spearman.cfg:3
 msgid "Spearman"
@@ -8454,7 +8416,6 @@ msgid "Assassin"
 msgstr "Lönnmördare"
 
 #: data/units/Human_Outlaw_Assassin.cfg:21
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -9953,7 +9914,6 @@ msgid "Chocobone"
 msgstr "Benryttare"
 
 #: data/units/Undead_Skele_Chocobone.cfg:21
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -9963,7 +9923,9 @@ msgid ""
 msgstr ""
 "Dessa skelettkrigare rider på benen av enorma fåglar, vilka tros ha använts "
 "av en uråldrig civilisation, och kan röra sig snabbare än de flesta "
-"kavalleritrupper."
+"kavalleritrupper.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
@@ -10438,7 +10400,6 @@ msgid "Save Game"
 msgstr "Spara spelet"
 
 #: src/dialogs.cpp:208
-#, fuzzy
 msgid "Quit Game"
 msgstr "Avsluta spelet"
 
@@ -10691,18 +10652,16 @@ msgid "Get Add-ons"
 msgstr "Hämta extramaterial"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Dependencies"
-msgstr "Inställningar"
+msgstr "Beroenden"
 
 #: src/game.cpp:1038
 msgid "This add-on requires the following additional dependencies:"
-msgstr ""
+msgstr "Detta extramaterial har följande beroenden:"
 
 #: src/game.cpp:1040
-#, fuzzy
 msgid "Do you still want to download it?"
-msgstr "Vill du verkligen radera detta spel?"
+msgstr "Vill du hämta det ändå?"
 
 #: src/game.cpp:1049
 msgid "Downloading add-on..."
@@ -10990,7 +10949,7 @@ msgstr "Referens till okänt ämne: "
 
 #: src/help.cpp:2672
 msgid "corrupted original file"
-msgstr ""
+msgstr "trasig originalfil"
 
 #: src/help.cpp:2787
 msgid "The Battle for Wesnoth Help"
@@ -11037,9 +10996,8 @@ msgid "Reading files and creating cache."
 msgstr "Läser filer och skapar cache."
 
 #: src/menu_events.cpp:66
-#, fuzzy
 msgid "Detail"
-msgstr "svans"
+msgstr "Detalj"
 
 #: src/menu_events.cpp:101
 msgid ""
@@ -11168,22 +11126,20 @@ msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
 #: src/menu_events.cpp:484
-#, fuzzy
 msgid "Save the Map As"
-msgstr "Dela kartor"
+msgstr "Spara kartan som"
 
 #: src/menu_events.cpp:489
-#, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Det sparade spelet finns redan, vill du skriva över det?"
+msgstr "Kartan finns redan. Vill du skriva över den?"
 
 #: src/menu_events.cpp:501
 msgid "Map saved."
-msgstr ""
+msgstr "Kartan sparad."
 
 #: src/menu_events.cpp:506
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Kunde inte spara kartan: $msg"
 
 #: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:700
 #: src/playcampaign.cpp:118
@@ -11271,9 +11227,8 @@ msgid "Rename Unit"
 msgstr "Döp om truppen"
 
 #: src/menu_events.cpp:1340
-#, fuzzy
 msgid "Team only"
-msgstr "Turkos"
+msgstr ""
 
 #: src/menu_events.cpp:1345
 msgid "Place Label"
@@ -11288,9 +11243,8 @@ msgid "Search"
 msgstr "Sök"
 
 #: src/menu_events.cpp:1508
-#, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
-msgstr "Kommandon: whisper ignore emote. Skriv /help [kommando] för mer hjälp."
+msgstr "Kommandon: whisper list emote. Skriv /help [kommando] för mer hjälp."
 
 #: src/menu_events.cpp:1559
 msgid ""
@@ -11301,50 +11255,47 @@ msgstr ""
 "som kontrollerar en sida i spelet. Syntax: /whisper [spelare] [meddelande]"
 
 #: src/menu_events.cpp:1563
-#, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
-"Lägg till en spelare till din ignoreralista. Syntax: /ignore add [argument]"
+"Lägg till spelare till din lista över vänner. Syntax: /list addfriend "
+"[argument]"
 
 #: src/menu_events.cpp:1565
-#, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
-"Lägg till en spelare till din ignoreralista. Syntax: /ignore add [argument]"
+"Lägg till spelare till din ignoreralista. Syntax: /list ignore [argument]"
 
 #: src/menu_events.cpp:1567
-#, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
-"Ta bort en spelare från din ignoreralista. Syntax: /ignore remove [argument]"
+"Ta bort spelare från listan över vänner eller ignorerade. Syntax: /list "
+"remove [argument]"
 
 #: src/menu_events.cpp:1569
-#, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
-msgstr "Rensa din ignorera lista. Syntax: /ignore clear"
+msgstr "Rensa dina listor över vänner och ignorerade. Syntax: /list clear"
 
 #: src/menu_events.cpp:1571
-#, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
-msgstr "Visa din ignoreralista. Syntax: /ignore list"
+msgstr "Visa dina listor över vänner och ignorerade. Syntax: /list display"
 
 #: src/menu_events.cpp:1573
 msgid "Unknown subcommand"
 msgstr "Okänt underkommando"
 
 #: src/menu_events.cpp:1576
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
-"Ignorera meddelanden från spelare på denna lista. Syntax: /ignore "
-"[underkommando] [argument (valfritt)]. Underkommandon: add remove list "
-"clear. Skriv /help ignore [underkommando] för mer information."
+"Ignorera meddelanden från spelare på listan över ignorerade och lys upp "
+"spelare på listan över vänner. Syntax: /list [underkommando] [argument "
+"(valfritt)]. Underkommandon: addfriend addignore remove display clear. "
+"Skriv /help list [underkommando] för mer information."
 
 #: src/menu_events.cpp:1579
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
@@ -11363,27 +11314,24 @@ msgid "Invalid username: "
 msgstr "Ogiltigt användarnamn: "
 
 #: src/menu_events.cpp:1611
-#, fuzzy
 msgid "Added to friends list: "
-msgstr "Lagd i ignoreralistan: "
+msgstr "Lagd i vänlistan: "
 
 #: src/menu_events.cpp:1621
-#, fuzzy
 msgid "Removed from list: "
-msgstr "Borttagen från ignoreralistan: "
+msgstr "Borttagen från listan: "
 
 #: src/menu_events.cpp:1648
 msgid "There are no players on your friends or ignore list."
-msgstr ""
+msgstr "Det finns inga spelare på dina listor över vänner och ignorerade."
 
 #: src/menu_events.cpp:1658
 msgid "Removed from ignore list: "
 msgstr "Borttagen från ignoreralistan: "
 
 #: src/menu_events.cpp:1661
-#, fuzzy
 msgid "Removed from friends list: "
-msgstr "Borttagen från ignoreralistan: "
+msgstr "Borttagen från vänlistan: "
 
 #: src/menu_events.cpp:1668
 msgid "Unknown command: "
@@ -11648,9 +11596,8 @@ msgid "Use map settings"
 msgstr "Använd kartinställningar"
 
 #: src/multiplayer_create.cpp:67
-#, fuzzy
 msgid "Random start time"
-msgstr "Slumpkarta (vinter)"
+msgstr "Slumpvald starttid"
 
 #: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
@@ -11927,14 +11874,12 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Vill du spara en repris för detta scenario?"
 
 #: src/playcampaign.cpp:295
-#, fuzzy
 msgid "Save Replay"
-msgstr "Repris"
+msgstr "Spara repris"
 
 #: src/playcampaign.cpp:302
-#, fuzzy
 msgid "The replay could not be saved"
-msgstr "Spelet kunde inte sparas"
+msgstr "Reprisen kunde inte sparas"
 
 #: src/playcampaign.cpp:342
 msgid "Downloading next level..."
@@ -12337,181 +12282,3 @@ msgstr "Du kan se resultaten på:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#, fuzzy
-#~ msgid "Yes"
-#~ msgstr "Ja!"
-
-#~ msgid ""
-#~ "You can come if you wish, but the leader is only interested in speaking "
-#~ "to Baldras."
-#~ msgstr "Om du vill så kan du komma, men ledaren vill bara tala med Baldras."
-
-#, fuzzy
-#~ msgid "Potion of bleach"
-#~ msgstr "Försvagande elixir"
-
-#~ msgid "Sulla's statue"
-#~ msgstr "Sullas staty"
-
-#~ msgid ""
-#~ "Many closely placed and strategically located castles. Which one will you "
-#~ "hop to? Small map for fast play. Recommended setting of 2 gold per "
-#~ "village."
-#~ msgstr ""
-#~ "Många närliggande och strategiskt placerade borgar. Vilken av dem väljer "
-#~ "du? En liten karta för snabbt spel. 2 guld per by rekommenderas."
-
-#~ msgid ""
-#~ "The Elven Enchantresses are masters of offensive magic, striking at their "
-#~ "enemies both with blasts of icy wind drawn from the ethereal plane, and "
-#~ "magically animating roots with which they bind their enemies in place.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Huldrorna är den offensiva magins mästarinnor. De slår mot sina fiender "
-#~ "med isande vindstötar som de manat fram ur andevärlden, och får rötter "
-#~ "att binda fast deras fiender.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid ""
-#~ "Eschewing the study of healing in favor of more aggressive uses of magic, "
-#~ "Elvish Sorceresses have become quite proficient at ranged combat. Their "
-#~ "entangling attack is notably more effective than that of the Elvish "
-#~ "Shaman, and they can call upon bursts of chilling ethereal wind to smite "
-#~ "those who oppose them.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Alvernas besvärjerskor avviker från den helande vägen till förmån för "
-#~ "magins mer aggressiva former, och strider bra på distans. Deras "
-#~ "insnärjningsattack är märkbart effektivare än schamanens, och de kan mana "
-#~ "fram isande vindstötar ur andevärlden att slå ner på deras fiender.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid ""
-#~ "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
-#~ "developed their faerie side, they transform into creatures of both "
-#~ "worlds, wielding powerful magic against their enemies.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Sylfiderna är skönheten reinkarnerad i de dödligas värld. De tillhör både "
-#~ "feernas och de dödligas värld, och använder kraftfull magi mot sina "
-#~ "fiender.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid ""
-#~ "Poachers rely on their hunting experience and are most valuable at night "
-#~ "and in forests and swamps."
-#~ msgstr ""
-#~ "Tjuvskyttar förlitar sig på sina jakterfarenheter, och är som mest "
-#~ "värdefulla på natten och i skogar och träsk."
-
-#~ msgid ""
-#~ "Trappers usually work supplying food for bandits and outlaws. Their "
-#~ "hunting experience makes them most valuable at night and in forests and "
-#~ "swamps."
-#~ msgstr ""
-#~ "Pälsjägare ordnar vanligen mat till banditer och fredlösa. Deras "
-#~ "jakterfarenhet gör dem mest värdefulla på natten och i skogar och träsk."
-
-#~ msgid ""
-#~ "Saurian Ambushers are highly skilled in the use of the spear. Despite "
-#~ "their lethargic cold blooded heritage, and their relative frailty, they "
-#~ "are highly valued as scouts as they can navigate through rough terrain "
-#~ "and around opponents. Saurian Ambushers possess the strength to take full "
-#~ "advantage of this fact. The best Ambushers go on to become Saurian "
-#~ "Flankers.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ödlefolkets bakhållstrupper är mycket skickliga med spjut. Trots sitt "
-#~ "kallblodiga arv och deras relativa bräcklighet är de högt värderade som "
-#~ "spejare, då de lätt förflyttar sig i oländig terräng och förbi "
-#~ "motståndare. Ödlefolkets bakhållstrupper har styrkan att dra full nytta "
-#~ "av detta faktum. De bästa bland bakhållstrupperna blir flanktrupper i "
-#~ "ödlefolkets armé.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid ""
-#~ "Despite their lethargic cold blooded heritage, and their relative "
-#~ "frailty, Saurian Augurs are valued as healers because they can provide "
-#~ "aid to their allies regardless of terrain or opposition. In addition to "
-#~ "healing they possess knowledge of cold magic.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Trots sitt kallblodiga arv och sin relativa bräcklighet, är ödlefolkets "
-#~ "spåmän aktade som helare då de kan bistå sina allierade oavsett terräng "
-#~ "eller motstånd. Utöver helande besitter de kunskaper om frostmagi.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid ""
-#~ "Saurian Flankers are highly skilled in the use of the spear. Despite "
-#~ "their lethargic cold blooded heritage, and their relative frailty, they "
-#~ "are highly valued as scouts as they can navigate through rough terrain "
-#~ "and around opponents. Saurian Flankers possess the strength to take full "
-#~ "advantage of this fact.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ödlefolkets flanktrupper är mycket skickliga med spjut. Trots sitt "
-#~ "kallblodiga arv och deras relativa bräcklighet är de högt värderade som "
-#~ "spejare, då de lätt förflyttar sig i oländig terräng och förbi "
-#~ "motståndare. Ödlefolkets flanktrupper har styrkan att dra full nytta av "
-#~ "detta faktum.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid ""
-#~ "Saurian Oracles have eschewed any further training in healing and curing "
-#~ "in order to refine their skills with the dark arts. While frail, they can "
-#~ "call forth the magic of the cold north, and they do retain their basic "
-#~ "healing ability.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ödlefolkets orakel har avstått vidare träning i läkandets konst för att "
-#~ "kunna hänge sig åt att förfina sin skicklighet i de mörka konsterna. "
-#~ "Trots sin bräcklighet besitter de kunskaper om frostmagi och har kvar sin "
-#~ "grundläggande förmåga som helare.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid ""
-#~ "Saurian Skirmishers are skilled in the use of the spear. Despite their "
-#~ "lethargic cold blooded heritage, and their relative frailty, they are "
-#~ "highly valued as scouts as they can navigate through rough terrain and "
-#~ "around opponents. The best Skirmishers go on to become Saurian "
-#~ "Ambushers.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ödlefolkets stigfinnare är skickliga med spjutet. Trots sitt kallblodiga "
-#~ "arv och deras bräcklighet är de aktade som spejare då de kan förflytta "
-#~ "sig i oländig terräng och ta sig runt fiender. De bästa stigfinnarna "
-#~ "upptas bland ödlefolkets bakhållstrupper.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid ""
-#~ "Saurian Soothsayers are highly valued as healers because they can provide "
-#~ "aid to their friends regardless of terrain or opposition. In addition to "
-#~ "curing their allies they possess knowledge of cold magic.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ödlefolkets sökare högaktas som helare, då de kan bistå sina vänner "
-#~ "oavsett terräng eller motstånd. Utöver att de kan hela sina allierade "
-#~ "besitter de kunskaper om frostmagi.\n"
-#~ "\n"
-#~ "Anmärkning:"
-
-#~ msgid "Computer vs Computer"
-#~ msgstr "Dator mot dator"
