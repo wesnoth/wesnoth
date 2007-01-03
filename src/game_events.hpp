@@ -55,6 +55,7 @@ struct manager {
 	variable::manager variable_manager;
 };
 
+game_state* get_state_of_game();
 void write_events(config& cfg);
 void add_events(const config::child_list& cfgs,const std::string& id);
 

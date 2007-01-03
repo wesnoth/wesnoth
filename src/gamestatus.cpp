@@ -12,6 +12,7 @@
 */
 
 #include "global.hpp"
+#include "wassert.hpp"
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
@@ -160,22 +161,42 @@ void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 		normal_times.push_back(time_of_day(**t));
 	}
 
-}
 
-}
+	if ( normal_times.empty() )
+	{
+		// Makeing sure we have at least default time
 
-gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
-                 turn_(1),numTurns_(num_turns)
-{
-        std::string turn_at = time_cfg["turn_at"];
-	if (s_o_g) {
-	        turn_at = utils::interpolate_variables_into_string(turn_at, *s_o_g);
+		config dummy_cfg;
+		normal_times.push_back(time_of_day(dummy_cfg));
 	}
-	if(turn_at.empty() == false) {
+}
+
+}
+/// Reads turns and time information from parameters
+/// It sets random starting ToD and current_tod to config
+///
+gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
+                 turn_(1),numTurns_(num_turns),currentTime_(0)
+{
+    std::string turn_at = time_cfg["turn_at"];
+	std::string current_tod = time_cfg["current_tod"];
+	std::string random_start_time = time_cfg["random_start_time"];
+	if (s_o_g) 
+	{
+	    turn_at = utils::interpolate_variables_into_string(turn_at, *s_o_g);
+		current_tod = utils::interpolate_variables_into_string(current_tod, *s_o_g);
+
+	}
+	
+	if(turn_at.empty() == false) 
+	{
 		turn_ = atoi(turn_at.c_str());
 	}
-
+	
+	
 	parse_times(time_cfg,times_);
+
+	set_start_ToD(const_cast<config&>(time_cfg),s_o_g);
 
 	const config::child_list& times_range = time_cfg.get_children("time_area");
 	for(config::child_list::const_iterator t = times_range.begin(); t != times_range.end(); ++t) {
@@ -189,6 +210,8 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g)
 	}
 }
 
+
+
 void gamestatus::write(config& cfg) const
 {
 	std::stringstream buf;
@@ -197,6 +220,9 @@ void gamestatus::write(config& cfg) const
 	buf.str(std::string());
 	buf << numTurns_;
 	cfg["turns"] = buf.str();
+	buf.str(std::string());
+	buf << currentTime_;
+	cfg["current_tod"] = buf.str();
 
 	std::vector<time_of_day>::const_iterator t;
 	for(t = times_.begin(); t != times_.end(); ++t) {
@@ -215,20 +241,28 @@ void gamestatus::write(config& cfg) const
 	}
 }
 
+/// returns time of day object in the turn 
+/// Correct time is calculated from current time.
+
 time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 {
-	if(times_.empty() == false) {
-		return times_[(nturn-1)%times_.size()];
-	} else {
-		config dummy_cfg;
-		static time_of_day const default_time(dummy_cfg);
-		return default_time;
+	wassert(!times_.empty());
+	
+	int time = (currentTime_ + nturn  - turn())% times_.size();
+	
+	if (time < 0)
+	{
+		time += times_.size();
 	}
+
+	return times_[time];
 }
+
+/// returns time of day object for current turn
 
 time_of_day gamestatus::get_time_of_day() const
 {
-	return get_time_of_day_turn(turn());
+	return times_[currentTime_];
 }
 
 time_of_day gamestatus::get_previous_time_of_day() const
@@ -236,32 +270,24 @@ time_of_day gamestatus::get_previous_time_of_day() const
 	return get_time_of_day_turn(turn()-1);
 }
 
+/// Returns time of day object in the turn. 
+/// It first tryes to look for specified. If no area time specified in location it returns global time.
 
 time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const
 {
+	time_of_day res = get_time_of_day_turn(n_turn);
+	
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		if(i->hexes.count(loc) == 1) {
-			if (i->times.empty()) { // prevent division by zero if no time is available
-				config dummy_cfg;
-				static time_of_day const default_time(dummy_cfg);
-				return default_time;
-			}
-			time_of_day res = i->times[(n_turn-1)%i->times.size()];
-			if(illuminated) {
-				res.bonus_modified=illuminated;
-				res.lawful_bonus += illuminated;
-			}
-			return res;
+			
+			wassert(!i->times.empty());
+
+			res = i->times[(n_turn-1)%i->times.size()];
+			break;
 		}
 	}
 
-	if (times_.empty()) { // prevent division by zero if no time is available
-	    config dummy_cfg;
-	    static time_of_day const default_time(dummy_cfg);
-	    return default_time;
-	}
 
-	time_of_day res = times_[(n_turn-1)%times_.size()];
 	if(illuminated) {
 		res.bonus_modified=illuminated;
 		res.lawful_bonus += illuminated;
@@ -274,6 +300,77 @@ time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location
 	return get_time_of_day(illuminated,loc,turn());
 }
 
+/// Sets global time of day in this turn.
+/// Time is number between 0 and n-1 where n is number of ToDs
+
+bool gamestatus::set_time_of_day(int newTime)
+{
+	// newTime can come from network so have to take run time test
+	if( newTime >= static_cast<int>(times_.size()) 
+	  || newTime < 0)
+	{
+		return false;
+	}
+	
+	currentTime_ = newTime;
+
+	return true;
+}
+
+bool gamestatus::is_start_ToD(const std::string& random_start_time)
+{
+	return !random_start_time.empty()
+			&& utils::string_bool(random_start_time, true);
+}
+
+void gamestatus::set_start_ToD(config &level, game_state* s_o_g)
+{
+	if (!level["current_tod"].empty())
+	{
+		set_time_of_day(atoi(level["current_tod"].c_str()));
+		return;
+	}
+	std::string random_start_time = level["random_start_time"];
+	if (s_o_g)
+	{
+		random_start_time = utils::interpolate_variables_into_string(random_start_time, *s_o_g);
+	}			 
+	if (gamestatus::is_start_ToD(random_start_time))
+	{
+		std::vector<std::string> start_strings = 
+			utils::split(random_start_time, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+
+		if (utils::string_bool(random_start_time,false))
+		{
+			// We had boolean value
+			set_time_of_day(rand()%times_.size());
+		}
+		else
+		{
+			set_time_of_day(atoi(start_strings[rand()%start_strings.size()].c_str()) - 1);
+		}
+	}
+	else
+	{
+		// We have to set right ToD for oldsaves 
+		
+		set_time_of_day(turn() % times_.size());
+	}
+	// Setting tod to level data
+
+	std::stringstream buf;
+	buf << currentTime_;
+	level["current_tod"] = buf.str();
+
+}
+
+void gamestatus::next_time_of_day()
+{
+	wassert(times_.size() > 0);
+
+	currentTime_ = (currentTime_ + 1)%times_.size();
+}
+	
 size_t gamestatus::turn() const
 {
 	return turn_;
@@ -295,6 +392,7 @@ void gamestatus::add_turns(int num)
 
 bool gamestatus::next_turn()
 {
+	next_time_of_day();
 	++turn_;
 	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
@@ -954,6 +1052,7 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 		}
 	}
 }
+
 
 t_string& game_state::get_variable(const std::string& key)
 {

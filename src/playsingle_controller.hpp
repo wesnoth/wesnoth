@@ -46,7 +46,7 @@ public:
 	virtual void rename_unit();
 	virtual void create_unit();
 	virtual void change_unit_side();
-	virtual void label_terrain();
+	virtual void label_terrain(bool);
 	virtual void continue_move();
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();

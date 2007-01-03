@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:28+0100\n"
+"POT-Creation-Date: 2007-01-01 23:27+0100\n"
 "PO-Revision-Date: 2006-09-20 21:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: Dutch translation <maartenalbrecht@gmail.com>\n"
@@ -597,7 +597,7 @@ msgstr "Sloveense Vertaling"
 msgid "Contributors"
 msgstr "Bijdragen"
 
-#: data/about.cfg:590
+#: data/about.cfg:593
 msgid "Bots"
 msgstr "Bots"
 
@@ -657,7 +657,7 @@ msgstr ""
 #: data/units/Elvish_Archer.cfg:22 data/units/Elvish_Avenger.cfg:61
 #: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
 #: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:48 data/units/Elvish_Marshal.cfg:34
+#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
 #: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
 #: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
 #: data/units/Elvish_Sharpshooter.cfg:47
@@ -720,7 +720,7 @@ msgstr "zwaard"
 #: data/units/Dwarvish_Ulfserker.cfg:32 data/units/Elvish_Archer.cfg:24
 #: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
 #: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:50
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
 #: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
 #: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
@@ -1098,7 +1098,7 @@ msgstr "boog"
 #: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
 #: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
 #: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
-#: data/units/Elvish_Marksman.cfg:98 data/units/Elvish_Marshal.cfg:79
+#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
 #: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
 #: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
 #: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
@@ -1916,67 +1916,123 @@ msgstr "Orks"
 msgid "race^Undead"
 msgstr "Ondoden"
 
+#: data/english.cfg:21
+msgid "race^Dwarves"
+msgstr ""
+
+#: data/english.cfg:22
+msgid "race^Goblins"
+msgstr ""
+
 #: data/english.cfg:23
+#, fuzzy
+msgid "race^Lizards"
+msgstr "Ondoden"
+
+#: data/english.cfg:24
+msgid "race^Mechanical"
+msgstr ""
+
+#: data/english.cfg:25
+msgid "race^Mermen"
+msgstr ""
+
+#: data/english.cfg:26
+msgid "race^Monsters"
+msgstr ""
+
+#: data/english.cfg:27
+msgid "race^Nagas"
+msgstr ""
+
+#: data/english.cfg:28
+msgid "race^Ogres"
+msgstr ""
+
+#: data/english.cfg:29
+#, fuzzy
+msgid "race^Troll"
+msgstr "Trol"
+
+#: data/english.cfg:32
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name's Brug,$name's Oversteek"
 
-#: data/english.cfg:24
+#: data/english.cfg:33
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name's Hogestraat,$name's Pas,Pad van $name"
 
-#: data/english.cfg:25
+#: data/english.cfg:34
 msgid "$name River,River $name"
 msgstr "$name Rivier,Rivier $name"
 
-#: data/english.cfg:26
+#: data/english.cfg:35
 msgid "$name Forest,$name's Forest"
 msgstr "$name Bos,$name's Bos"
 
-#: data/english.cfg:27
+#: data/english.cfg:36
 msgid "$name Lake"
 msgstr "$name Meer"
 
-#: data/english.cfg:28
+#: data/english.cfg:37
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|gem,$name|dam,$name|ton"
 
-#: data/english.cfg:29
+#: data/english.cfg:38
 msgid "$name|harbor,$name|port"
 msgstr "$name|haven,$name|haven"
 
-#: data/english.cfg:30
+#: data/english.cfg:39
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|dam,$name|fort,$name|dam,$river|fort,$river|wade"
 
-#: data/english.cfg:31
+#: data/english.cfg:40
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|brug,$river|brug,$river|brug,$name|dam,$name|brug"
 
-#: data/english.cfg:32
+#: data/english.cfg:41
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|velde,$name|ton,$name|Veld"
 
-#: data/english.cfg:33
+#: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|gem,$name|ton,$name|lo,$name Bos"
 
-#: data/english.cfg:34
+#: data/english.cfg:43
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|gem,$name|steen,$name|ton,$name|heuvel,$name|rug"
 
-#: data/english.cfg:35
+#: data/english.cfg:44
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|gem,$name|steen,$name|ton,$name|mont,$name|mont,$name|klip,$name|klip"
 
-#: data/english.cfg:38
+#: data/english.cfg:47
 msgid "melee"
 msgstr "dichtbij"
 
-#: data/english.cfg:39
+#: data/english.cfg:48
 msgid "ranged"
 msgstr "afstand"
+
+#: data/english.cfg:51
+msgid "Wesnoth unit list"
+msgstr ""
+
+#: data/english.cfg:52
+msgid "Based on version"
+msgstr ""
+
+#: data/english.cfg:53
+#, fuzzy
+msgid "Race"
+msgstr "goedendag"
+
+#: data/english.cfg:54
+#, fuzzy
+msgid "Advance from"
+msgstr "Promoveert tot: "
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -2014,15 +2070,15 @@ msgstr "Ondoden"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:37
+#: data/game.cfg:33
 msgid "Binary Saves"
 msgstr "Spellen binair opslaan"
 
-#: data/game.cfg:44
+#: data/game.cfg:40
 msgid "Show Combat"
 msgstr "Gevechten tonen"
 
-#: data/game.cfg:51
+#: data/game.cfg:47
 msgid "Mouse Scrolling"
 msgstr "Schuiven met de muis"
 
@@ -2034,11 +2090,11 @@ msgstr "Inleiding"
 msgid "Gameplay"
 msgstr "Gameplay"
 
-#: data/help.cfg:21 src/menu_events.cpp:292
+#: data/help.cfg:21 src/menu_events.cpp:293
 msgid "Traits"
 msgstr "Kenmerken"
 
-#: data/help.cfg:30 src/menu_events.cpp:360
+#: data/help.cfg:30 src/menu_events.cpp:361
 msgid "Units"
 msgstr "Eenheden"
 
@@ -4113,26 +4169,6 @@ msgstr ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 
-#: data/scenario-test.cfg:37
-msgid ""
-"You can come if you wish, but the leader is only interested in speaking to "
-"Baldras."
-msgstr ""
-"Je mag komen als je wilt, maar de leider wil alleen met Baldras spreken."
-
-#: data/scenario-test.cfg:254
-#, fuzzy
-msgid "Potion of bleach"
-msgstr "Drank van Verval"
-
-#: data/scenario-test.cfg:257
-msgid "Oooh tingly!!!"
-msgstr ""
-
-#: data/scenario-test.cfg:283
-msgid "Send me a thief to spy on the blondes"
-msgstr ""
-
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
 msgstr "2p - Blitz"
@@ -4503,6 +4539,8 @@ msgstr ""
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:31
 #: data/scenarios/multiplayer/3p_Morituri.cfg:29
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:29
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:24
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:31
 #: data/scenarios/multiplayer/4p_Clash.cfg:13
 #: data/scenarios/multiplayer/4p_Clash.cfg:27
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:15
@@ -4520,6 +4558,8 @@ msgstr "Westen"
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:24
 #: data/scenarios/multiplayer/3p_Morituri.cfg:22
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:22
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:17
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:38
 #: data/scenarios/multiplayer/4p_Clash.cfg:20
 #: data/scenarios/multiplayer/4p_Clash.cfg:34
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:22
@@ -4789,30 +4829,6 @@ msgstr ""
 "Twee legers botsen op het gebroken kustlandschap bestaande uit verborgen "
 "grotten en bochtige rivieren. Aanbevolen wordt 2 goud per dorp in te stellen."
 
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:24
-msgid ""
-"teamname^East\n"
-"\t[/side]\n"
-"\t[side]\n"
-"\tside=2\n"
-"\tcanrecruit=1\n"
-"\tcontroller=human\n"
-"\tteam_name=West\n"
-"\tuser_team_name= _ "
-msgstr ""
-
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:38
-msgid ""
-"teamname^West\n"
-"\t[/side]\n"
-"\t[side]\n"
-"\tside=4\n"
-"\tcanrecruit=1\n"
-"\tcontroller=human\n"
-"\tteam_name=East\n"
-"\tuser_team_name= _ "
-msgstr ""
-
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
 msgstr "4p - Confrontatie"
@@ -5024,6 +5040,75 @@ msgstr "6p - Hexcake"
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2-tegen-2 of 3-tegen-3 teamspel."
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
+#, fuzzy
+msgid "Turn 2: Loyalists"
+msgstr "Loyalisten"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:173
+msgid "Turn 5: Knalgans"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:174
+#, fuzzy
+msgid "Turn 8: Rebels"
+msgstr "Rebellen"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:175
+#, fuzzy
+msgid "Turn 11: Northerners"
+msgstr "Noorderlingen"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:176
+#, fuzzy
+msgid "Turn 14: Drakes"
+msgstr "Orkaandraakling"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:177
+msgid "Turn 17: Undead"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:178
+msgid "Tower of Doom"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:299
+msgid "6p - Team Survival"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
+msgid "Scenario where the objective is to survive for as long as possible."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
+msgid "Hint: Learning the enemy spawnpoints and types helps alot."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
+msgid "Survive for 32 turns."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
+msgid "Survival all enemy attacks."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
+msgid "Death of your team leaders."
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
+msgid ""
+"Congratulations for surviving the map that so many people claim is "
+"impossible. Frankly, I don't got a clue to how you did it, so send me the "
+"replay by mail to: roze@roze.mine.nu. Thank You!"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
+msgid ""
+"You have lost this game, but fear not. You can always try again. And again. "
+"And again. *Muahahaha*"
+msgstr ""
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
@@ -5408,7 +5493,7 @@ msgid "Teal"
 msgstr "Lichtblauw"
 
 #: data/terrain.cfg:11 data/themes/macros.cfg:136
-#: src/multiplayer_create.cpp:68 src/multiplayer_lobby.cpp:393
+#: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:393
 #: src/multiplayer_lobby.cpp:399
 msgid "Shroud"
 msgstr "Sluier"
@@ -5493,13 +5578,13 @@ msgid "End Turn"
 msgstr "Einde Beurt"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:290 src/unit.cpp:2626
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2637
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:165 src/menu_events.cpp:291
-#: src/menu_events.cpp:798
+#: data/themes/experimental.cfg:165 src/menu_events.cpp:292
+#: src/menu_events.cpp:814
 msgid "XP"
 msgstr "XP"
 
@@ -5929,51 +6014,96 @@ msgid "loyal"
 msgstr "loyaal"
 
 #: data/traits.cfg:7
+#, fuzzy
+msgid "female^loyal"
+msgstr "Brigante"
+
+#: data/traits.cfg:8
 msgid "Zero upkeep"
 msgstr "Geen onderhoudskosten"
 
-#: data/traits.cfg:17
+#: data/traits.cfg:18
 msgid "undead"
 msgstr "ondood"
 
-#: data/traits.cfg:18
+#: data/traits.cfg:19
+#, fuzzy
+msgid "female^undead"
+msgstr "Schurk"
+
+#: data/traits.cfg:20
 msgid "Immune to poison"
 msgstr "Immuun voor vergif"
 
-#: data/traits.cfg:25
+#: data/traits.cfg:27
 msgid "strong"
 msgstr "sterk"
 
-#: data/traits.cfg:41
+#: data/traits.cfg:28
+#, fuzzy
+msgid "female^strong"
+msgstr "Schurk"
+
+#: data/traits.cfg:44
 msgid "dextrous"
 msgstr "behendig"
 
-#: data/traits.cfg:53
+#: data/traits.cfg:45
+#, fuzzy
+msgid "female^dextrous"
+msgstr "behendig"
+
+#: data/traits.cfg:57
 msgid "quick"
 msgstr "snel"
 
-#: data/traits.cfg:68
+#: data/traits.cfg:58
+#, fuzzy
+msgid "female^quick"
+msgstr "Prinses"
+
+#: data/traits.cfg:73
 msgid "intelligent"
 msgstr "intelligent"
 
-#: data/traits.cfg:79
+#: data/traits.cfg:74
+#, fuzzy
+msgid "female^intelligent"
+msgstr "intelligent"
+
+#: data/traits.cfg:85
 msgid "resilient"
 msgstr "robuust"
 
-#: data/traits.cfg:94
+#: data/traits.cfg:86
+#, fuzzy
+msgid "female^resilient"
+msgstr "robuust"
+
+#: data/traits.cfg:101
 msgid "healthy"
 msgstr ""
 
-#: data/traits.cfg:95
+#: data/traits.cfg:102
+#, fuzzy
+msgid "female^healthy"
+msgstr "Dievegge"
+
+#: data/traits.cfg:103
 msgid "Heals faster if resting"
 msgstr ""
 
-#: data/traits.cfg:106
+#: data/traits.cfg:114
 #, fuzzy
 msgid "fearless"
 msgstr "Prinses"
 
-#: data/traits.cfg:107
+#: data/traits.cfg:115
+#, fuzzy
+msgid "female^fearless"
+msgstr "Prinses"
+
+#: data/traits.cfg:116
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
@@ -6897,11 +7027,11 @@ msgstr ""
 "\n"
 "Bijzonderheden:"
 
-#: data/units/Elvish_Marksman.cfg:96 data/units/Elvish_Sharpshooter.cfg:95
+#: data/units/Elvish_Marksman.cfg:101 data/units/Elvish_Sharpshooter.cfg:95
 msgid "longbow"
 msgstr "longbow"
 
-#: data/units/Elvish_Marksman.cfg:160
+#: data/units/Elvish_Marksman.cfg:165
 msgid "female^Elvish Marksman"
 msgstr "Elfenlangboogschutster"
 
@@ -8330,8 +8460,8 @@ msgid ""
 "vigilante in nature.  Any group of bandits will need a few poachers in their "
 "employ, culling the night's meal from surrounding farmland, and often "
 "lending a hand in any serious fight.\n"
-"\t\n"
-"\tBecause of their experience, these hunters are unusually capable at night, "
+"\n"
+"Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
 
@@ -8412,8 +8542,8 @@ msgid ""
 "sizable group of bandits.  They can track both man and beast, notice things "
 "most others would overlook, and are often the only ones who can find food "
 "for the table, be it animal or vegetable.\n"
-"\t\n"
-"\tTheir skill at hunting is very useful in combat, and also leaves them "
+"\n"
+"Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
 
@@ -9214,7 +9344,7 @@ msgid ""
 "considerably powerful, whilst losing none of their natural mobility.  This "
 "is very dangerous in combat, as a careless enemy can soon find their support "
 "troops flanked by these creatures.\n"
-"\t\n"
+"\n"
 "Special Notes:"
 msgstr ""
 
@@ -9226,10 +9356,10 @@ msgstr "Sauriaanse Orakel"
 msgid ""
 "Certain saurians are seen, dressed in considerable regalia, and covered head "
 "to toe in horrifing, esoteric shapes and markings, both with paint and "
-"tattoo.  Some suspect them to be visionaries, or oracles amongst their ilk."
-"\tBut whatever 'societal' function they may have, they are undeniably "
-"powerful in the strange magics their kind possess, and are a thing to be "
-"wary of if ever seen.\n"
+"tattoo. Some suspect them to be visionaries, or oracles amongst their ilk. "
+"But whatever 'societal' function they may have, they are undeniably powerful "
+"in the strange magics their kind possess, and are a thing to be wary of if "
+"ever seen.\n"
 "\n"
 "Special Notes:"
 msgstr ""
@@ -9241,11 +9371,11 @@ msgstr "Sauriaanse Warzaaier"
 #: data/units/Saurian_Skirmisher.cfg:23
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
-"of this, they are very, very agile.  In combat, their size allows them to "
+"of this, they are very, very agile. In combat, their size allows them to "
 "dart past defenses that would hold any grown man at bay, making them a "
 "tricky foe to deal with.\n"
-"\t\n"
-"\tSpears are their preferred weapon, as their powerful hind legs can drive a "
+"\n"
+"Spears are their preferred weapon, as their powerful hind legs can drive a "
 "spear with enough force to do considerable damage, either in hand or "
 "thrown.\n"
 "\n"
@@ -10028,7 +10158,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:67
+#: src/about.cpp:212 src/help.cpp:2784 src/menu_events.cpp:68
 msgid "Close"
 msgstr "Sluiten"
 
@@ -10146,7 +10276,7 @@ msgstr "Oefenen"
 msgid "replay"
 msgstr "herspeel"
 
-#: src/dialogs.cpp:437 src/menu_events.cpp:442 src/multiplayer_lobby.cpp:374
+#: src/dialogs.cpp:437 src/menu_events.cpp:443 src/multiplayer_lobby.cpp:374
 msgid "Turn"
 msgstr "Beurt"
 
@@ -10199,7 +10329,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:527 src/game.cpp:921 src/help.cpp:1187
-#: src/menu_events.cpp:289 src/menu_events.cpp:796
+#: src/menu_events.cpp:290 src/menu_events.cpp:812
 #: src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Naam"
@@ -10208,8 +10338,8 @@ msgstr "Naam"
 msgid "Show replay"
 msgstr "Replay"
 
-#: src/dialogs.cpp:556 src/multiplayer_create.cpp:87
-#: src/multiplayer_create.cpp:88
+#: src/dialogs.cpp:556 src/multiplayer_create.cpp:88
+#: src/multiplayer_create.cpp:89
 msgid "Load Game"
 msgstr "Spel laden"
 
@@ -10251,7 +10381,7 @@ msgstr ""
 "Waarschuwing: Het bestand dat je hebt proberen laden is corrupt. Het wordt "
 "toch geladen.\n"
 
-#: src/game.cpp:676 src/multiplayer_connect.cpp:1257
+#: src/game.cpp:676 src/multiplayer_connect.cpp:1256
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -10259,7 +10389,7 @@ msgstr ""
 "Dit opgeslagen spel is van een andere versie van Strijd om Wesnoth. Wil je "
 "proberen het te laden?"
 
-#: src/game.cpp:684 src/game.cpp:687 src/multiplayer_connect.cpp:1242
+#: src/game.cpp:684 src/game.cpp:687 src/multiplayer_connect.cpp:1241
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Het bestand dat je hebt proberen laden is corrupt: '"
 
@@ -10402,7 +10532,7 @@ msgstr ""
 "veldtocht."
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:344
 msgid "Connection timed out"
 msgstr "Connectie timed out"
 
@@ -10523,15 +10653,15 @@ msgstr "Hermaak de lettertypes voor de huidige taal. "
 msgid "Loading title screen."
 msgstr "Inladen titelscherm."
 
-#: src/game_events.cpp:801
+#: src/game_events.cpp:806
 msgid "Victory:"
 msgstr "Overwinning:"
 
-#: src/game_events.cpp:805
+#: src/game_events.cpp:810
 msgid "Defeat:"
 msgstr "Nederlaag:"
 
-#: src/gamestatus.cpp:650
+#: src/gamestatus.cpp:748
 msgid "Could not write to file"
 msgstr "Kon niet naar het bestand schrijven"
 
@@ -10559,7 +10689,7 @@ msgstr "Benodigde XP: "
 msgid "attacks"
 msgstr "aanvallen"
 
-#: src/help.cpp:1188 src/menu_events.cpp:288 src/menu_events.cpp:795
+#: src/help.cpp:1188 src/menu_events.cpp:289 src/menu_events.cpp:811
 msgid "Type"
 msgstr "Type"
 
@@ -10705,12 +10835,12 @@ msgstr "Inlezen eenhedenbestanden."
 msgid "Reading files and creating cache."
 msgstr "Inlezen bestanden en aanmaken cache."
 
-#: src/menu_events.cpp:65
+#: src/menu_events.cpp:66
 #, fuzzy
 msgid "Detail"
 msgstr "staart"
 
-#: src/menu_events.cpp:100
+#: src/menu_events.cpp:101
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -10718,103 +10848,103 @@ msgstr ""
 "Heer, deze eenheid is ervaren en is al gepromoveerd! Wilt u $noun echt "
 "ontslaan?"
 
-#: src/menu_events.cpp:102
+#: src/menu_events.cpp:103
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr "Heer, deze eenheid is bijna gepromoveerd! Wilt u $noun echt ontslaan?"
 
-#: src/menu_events.cpp:107
+#: src/menu_events.cpp:108
 msgid "her"
 msgstr "haar"
 
-#: src/menu_events.cpp:107
+#: src/menu_events.cpp:108
 msgid "him"
 msgstr "hem"
 
-#: src/menu_events.cpp:163 src/menu_events.cpp:236
+#: src/menu_events.cpp:164 src/menu_events.cpp:237
 msgid "Recruits"
 msgstr "Rekruteringen"
 
-#: src/menu_events.cpp:169 src/menu_events.cpp:240
+#: src/menu_events.cpp:170 src/menu_events.cpp:241
 msgid "Recalls"
 msgstr "Oproepingen"
 
-#: src/menu_events.cpp:175 src/menu_events.cpp:244
+#: src/menu_events.cpp:176 src/menu_events.cpp:245
 msgid "Advancements"
 msgstr "Promoties"
 
-#: src/menu_events.cpp:181 src/menu_events.cpp:248
+#: src/menu_events.cpp:182 src/menu_events.cpp:249
 msgid "Losses"
 msgstr "Verliezen"
 
-#: src/menu_events.cpp:187 src/menu_events.cpp:252
+#: src/menu_events.cpp:188 src/menu_events.cpp:253
 msgid "Kills"
 msgstr "Slachtoffers"
 
-#: src/menu_events.cpp:193
+#: src/menu_events.cpp:194
 msgid "Damage Inflicted"
 msgstr "Toegebrachte schade"
 
-#: src/menu_events.cpp:199
+#: src/menu_events.cpp:200
 msgid "Damage Taken"
 msgstr "Ontvangen schade"
 
-#: src/menu_events.cpp:205
+#: src/menu_events.cpp:206
 msgid "Damage Inflicted (EV)"
 msgstr "Toegebrachte schade (VW)"
 
-#: src/menu_events.cpp:212
+#: src/menu_events.cpp:213
 msgid "Damage Taken (EV)"
 msgstr "Ontvangen schade (VW)"
 
-#: src/menu_events.cpp:220
+#: src/menu_events.cpp:221
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: src/menu_events.cpp:293 src/unit.cpp:2657
+#: src/menu_events.cpp:294 src/unit.cpp:2668
 msgid "Moves"
 msgstr "Zetten"
 
-#: src/menu_events.cpp:294
+#: src/menu_events.cpp:295
 msgid "Location"
 msgstr "Locatie"
 
-#: src/menu_events.cpp:339
+#: src/menu_events.cpp:340
 msgid "Unit List"
 msgstr "Troepenlijst"
 
-#: src/menu_events.cpp:357
+#: src/menu_events.cpp:358
 msgid "Leader"
 msgstr "Leider"
 
-#: src/menu_events.cpp:358 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:359 src/multiplayer_connect.cpp:752
 msgid "Gold"
 msgstr "Goud"
 
-#: src/menu_events.cpp:359
+#: src/menu_events.cpp:360
 msgid "Villages"
 msgstr "Dorpen"
 
-#: src/menu_events.cpp:361
+#: src/menu_events.cpp:362
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/menu_events.cpp:362 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:363 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:436
 msgid "Income"
 msgstr "Inkomen"
 
-#: src/menu_events.cpp:451 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:423
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/menu_events.cpp:456 src/menu_events.cpp:469
-#: src/multiplayer_create.cpp:487
+#: src/menu_events.cpp:457 src/menu_events.cpp:470
+#: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Error"
 
-#: src/menu_events.cpp:456
+#: src/menu_events.cpp:457
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -10822,84 +10952,84 @@ msgstr ""
 "Opslagnamen mogen geen dubbele punten of schuine strepen bevatten. Kies een "
 "andere naam."
 
-#: src/menu_events.cpp:466
+#: src/menu_events.cpp:467
 msgid "Saved"
 msgstr "Opgeslagen"
 
-#: src/menu_events.cpp:466
+#: src/menu_events.cpp:467
 msgid "The game has been saved"
 msgstr "Het spel is opgeslagen"
 
-#: src/menu_events.cpp:469 src/playcampaign.cpp:433
+#: src/menu_events.cpp:470 src/playcampaign.cpp:433
 msgid "The game could not be saved"
 msgstr "Het spel kon niet worden opgeslagen"
 
-#: src/menu_events.cpp:483
+#: src/menu_events.cpp:484
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Kaarten delen"
 
-#: src/menu_events.cpp:488
+#: src/menu_events.cpp:489
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Het opgeslagen spel bestaat al. Wil je het overschrijven?"
 
-#: src/menu_events.cpp:500
+#: src/menu_events.cpp:501
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:505
+#: src/menu_events.cpp:506
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:581 src/menu_events.cpp:583 src/play_controller.cpp:700
+#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:700
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "Auto-Save"
 
-#: src/menu_events.cpp:586
+#: src/menu_events.cpp:587
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Kon het spel niet automatisch opslaan. Gelieve het spel handmatig op te "
 "slaan."
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:611
 msgid "Chat Log"
 msgstr "Chat-log"
 
-#: src/menu_events.cpp:620
+#: src/menu_events.cpp:621
 msgid "Message:"
 msgstr "Bericht:"
 
-#: src/menu_events.cpp:621
+#: src/menu_events.cpp:622
 msgid "Send to allies only"
 msgstr "Alleen naar bondgenoten sturen"
 
-#: src/menu_events.cpp:673 src/multiplayer_wait.cpp:432
+#: src/menu_events.cpp:689 src/multiplayer_wait.cpp:432
 msgid "unit^Gold"
 msgstr "Goud"
 
-#: src/menu_events.cpp:680
+#: src/menu_events.cpp:696
 msgid "You have no units available to recruit."
 msgstr "Er zijn geen eenheden beschikbaar om te rekruteren."
 
-#: src/menu_events.cpp:691
+#: src/menu_events.cpp:707
 msgid "Recruit"
 msgstr "Rekruteren"
 
-#: src/menu_events.cpp:692 src/menu_events.cpp:841
+#: src/menu_events.cpp:708 src/menu_events.cpp:857
 msgid "Select unit:"
 msgstr "Selecteer een eenheid:"
 
-#: src/menu_events.cpp:732
+#: src/menu_events.cpp:748
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren"
 
-#: src/menu_events.cpp:788
+#: src/menu_events.cpp:804
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen."
 
-#: src/menu_events.cpp:790
+#: src/menu_events.cpp:806
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10907,54 +11037,60 @@ msgstr ""
 "Je kunt geen troepen oproepen\n"
 "(Daarvoor moeten er overlevende troepen uit een vorig scenario zijn)"
 
-#: src/menu_events.cpp:797
+#: src/menu_events.cpp:813
 msgid "Level"
 msgstr "Rang"
 
-#: src/menu_events.cpp:829
+#: src/menu_events.cpp:845
 msgid "Dismiss Unit"
 msgstr "Eenheid ontslaan"
 
-#: src/menu_events.cpp:840
+#: src/menu_events.cpp:856
 msgid "Recall"
 msgstr "Oproepen"
 
-#: src/menu_events.cpp:852
+#: src/menu_events.cpp:868
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1191
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Je hebt deze beurt nog niets gedaan. Weet je zeker dat je de beurt wilt "
 "beëindigen?"
 
-#: src/menu_events.cpp:1183 src/menu_events.cpp:1188
+#: src/menu_events.cpp:1199 src/menu_events.cpp:1204
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen?"
 
-#: src/menu_events.cpp:1229
+#: src/menu_events.cpp:1245
 msgid "Rename Unit"
 msgstr "Eenheid hernoemen"
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1340
+#, fuzzy
+msgid "Team only"
+msgstr "Lichtblauw"
+
+#: src/menu_events.cpp:1345
 msgid "Place Label"
 msgstr "Label plaatsen"
 
-#: src/menu_events.cpp:1314
+#: src/menu_events.cpp:1346
 msgid "Label:"
 msgstr "Label:"
 
-#: src/menu_events.cpp:1412
+#: src/menu_events.cpp:1465
 msgid "Search"
 msgstr "Zoeken"
 
-#: src/menu_events.cpp:1454
-msgid "Commands: whisper ignore emote. Type /help [command] for more help."
+#: src/menu_events.cpp:1508
+#, fuzzy
+msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Commando's: whisper ignore emote. Typ /help [command] voor meer hulp."
 
-#: src/menu_events.cpp:1505
+#: src/menu_events.cpp:1559
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -10962,67 +11098,99 @@ msgstr ""
 "Stuurt privéberichten. Je kunt niet aan spelers van elke partij berichten "
 "sturen. Gebruik: /whisper [nick] [message]"
 
-#: src/menu_events.cpp:1509
-msgid "Add player to your ignore list. Usage: /ignore add [argument]"
+#: src/menu_events.cpp:1563
+#, fuzzy
+msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Speler toevoegen aan de ignore-lijst. Gebruik: /ignore add [argument]"
 
-#: src/menu_events.cpp:1511
-msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
+#: src/menu_events.cpp:1565
+#, fuzzy
+msgid "Add player to your ignore list. Usage: /list ignore [argument]"
+msgstr "Speler toevoegen aan de ignore-lijst. Gebruik: /ignore add [argument]"
+
+#: src/menu_events.cpp:1567
+#, fuzzy
+msgid ""
+"Remove player from your ignore or friends list. Usage: /list remove "
+"[argument]"
 msgstr ""
 "Speler van de ignore-lijst verwijderen. Gebruik: /ignore remove [argument]"
 
-#: src/menu_events.cpp:1513
-msgid "Clear your ignore list. Usage: /ignore clear"
+#: src/menu_events.cpp:1569
+#, fuzzy
+msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Ignore-lijst leegmaken. Gebruik: /ignore clear"
 
-#: src/menu_events.cpp:1515
-msgid "Show your ignore list. Usage: /ignore list"
+#: src/menu_events.cpp:1571
+#, fuzzy
+msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Ignore-lijst weergeven. Gebruik: /ignore list"
 
-#: src/menu_events.cpp:1517
+#: src/menu_events.cpp:1573
 msgid "Unknown subcommand"
 msgstr "Onbekend subcommando"
 
-#: src/menu_events.cpp:1520
+#: src/menu_events.cpp:1576
+#, fuzzy
 msgid ""
-"Ignore messages from players on this list. Usage: /ignore [subcommand] "
-"[argument](optional) Subcommands: add remove list clear. Type /help ignore "
-"[subcommand] for more info."
+"Ignore messages from players on the ignore list and highlight players on the "
+"friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
+"addfriend addignore remove display clear. Type /help list [subcommand] for "
+"more info."
 msgstr ""
 "Negeer berichten van spelers op deze lijst. Gebruik: /ignore [subcommand] "
 "[argument](optional) Subcommand: add remove list clear. Typ /help ignore "
 "[subcommand] voor meer informatie."
 
-#: src/menu_events.cpp:1523
+#: src/menu_events.cpp:1579
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Stuur een emotie of persoonlijke actie in de chat. Gebruik: /emote [message]"
 
-#: src/menu_events.cpp:1525
+#: src/menu_events.cpp:1581
 msgid "Unknown command"
 msgstr "Onbekend commando"
 
-#: src/menu_events.cpp:1542
+#: src/menu_events.cpp:1598
 msgid "Added to ignore list: "
 msgstr "Toegevoegd aan ignore-lijst: "
 
-#: src/menu_events.cpp:1544 src/menu_events.cpp:1554
+#: src/menu_events.cpp:1600 src/menu_events.cpp:1613 src/menu_events.cpp:1623
 msgid "Invalid username: "
 msgstr "Ongeldige gebruikersnaam: "
 
-#: src/menu_events.cpp:1552 src/menu_events.cpp:1578
+#: src/menu_events.cpp:1611
+#, fuzzy
+msgid "Added to friends list: "
+msgstr "Toegevoegd aan ignore-lijst: "
+
+#: src/menu_events.cpp:1621
+#, fuzzy
+msgid "Removed from list: "
+msgstr "Verwijderd van ignore-lijst: "
+
+#: src/menu_events.cpp:1648
+msgid "There are no players on your friends or ignore list."
+msgstr ""
+
+#: src/menu_events.cpp:1658
 msgid "Removed from ignore list: "
 msgstr "Verwijderd van ignore-lijst: "
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1661
+#, fuzzy
+msgid "Removed from friends list: "
+msgstr "Verwijderd van ignore-lijst: "
+
+#: src/menu_events.cpp:1668
 msgid "Unknown command: "
 msgstr "Onbekend commando: "
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1769
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon geen label of eenheid vinden met '$search'."
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1913
 msgid "prompt^Command:"
 msgstr "Commando:"
 
@@ -11139,12 +11307,12 @@ msgid "Normal"
 msgstr "Normaal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2756
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2767
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2763
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2774
 msgid ")"
 msgstr ")"
 
@@ -11201,7 +11369,7 @@ msgstr "Kleur"
 msgid "I'm Ready"
 msgstr "Klaar!"
 
-#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:70
+#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
 #: src/multiplayer_wait.cpp:163
 msgid "Cancel"
 msgstr "Annuleren"
@@ -11226,15 +11394,15 @@ msgstr "Computerspeler"
 msgid "Empty"
 msgstr "Niemand"
 
-#: src/multiplayer_connect.cpp:1249
+#: src/multiplayer_connect.cpp:1248
 msgid "This is not a multiplayer save"
 msgstr "Dit is geen multiplayer opgeslagen spel."
 
-#: src/multiplayer_connect.cpp:1299
+#: src/multiplayer_connect.cpp:1310
 msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
-#: src/multiplayer_connect.cpp:1320
+#: src/multiplayer_connect.cpp:1331
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -11242,7 +11410,7 @@ msgstr ""
 "Overwinning\n"
 "@Dood de vijandelijke leider(s)"
 
-#: src/multiplayer_connect.cpp:1356
+#: src/multiplayer_connect.cpp:1375
 msgid "Waiting for players to join..."
 msgstr "Aan het wachten op netwerkspelers..."
 
@@ -11272,143 +11440,152 @@ msgid "Use map settings"
 msgstr "Kaartinstellingen gebruiken"
 
 #: src/multiplayer_create.cpp:67
+#, fuzzy
+msgid "Random start time"
+msgstr "Willekeurige winter"
+
+#: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
 msgstr "Mist"
 
-#: src/multiplayer_create.cpp:69
+#: src/multiplayer_create.cpp:70
 msgid "Observers"
 msgstr "Toeschouwers"
 
-#: src/multiplayer_create.cpp:71
+#: src/multiplayer_create.cpp:72
 msgid "OK"
 msgstr "OK"
 
-#: src/multiplayer_create.cpp:72
+#: src/multiplayer_create.cpp:73
 msgid "Regenerate"
 msgstr "Genereren"
 
-#: src/multiplayer_create.cpp:73
+#: src/multiplayer_create.cpp:74
 msgid "Settings..."
 msgstr "Instellingen..."
 
-#: src/multiplayer_create.cpp:120
+#: src/multiplayer_create.cpp:121
 msgid "The maximum number of turns the game can last"
 msgstr "Het maximale aantal beurten dat een spel kan duren"
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:124
 msgid "Enables user time limit"
 msgstr "Tijdslimiet per speler gebruiken"
 
-#: src/multiplayer_create.cpp:129
+#: src/multiplayer_create.cpp:130
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Maximale tijd voor eerste beurt (in seconden)"
 
-#: src/multiplayer_create.cpp:135
+#: src/multiplayer_create.cpp:136
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Maximale tijd voor elke beurt (in seconden)"
 
-#: src/multiplayer_create.cpp:141
+#: src/multiplayer_create.cpp:142
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Extra tijd per algemene bezigheid (in seconden)"
 
-#: src/multiplayer_create.cpp:147
+#: src/multiplayer_create.cpp:148
 msgid "Time for each attack, recruit, and capture"
 msgstr "Extra tijd per aanval, rekrutering en bezetting"
 
-#: src/multiplayer_create.cpp:152
+#: src/multiplayer_create.cpp:153
 msgid "The amount of income each village yields per turn"
 msgstr "Het aantal goudstukken dat een dorp per beurt oplevert"
 
-#: src/multiplayer_create.cpp:157
+#: src/multiplayer_create.cpp:158
 msgid "The amount of experience a unit needs to advance"
 msgstr "Hoeveelheid ervaring die een eenheid nodig heeft om te promoveren"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:161
 msgid "Use scenario specific settings"
 msgstr "Gebruik de standaardinstellingen van de kaart"
 
-#: src/multiplayer_create.cpp:163
+#: src/multiplayer_create.cpp:164
+msgid "Randomize time of day in begin"
+msgstr ""
+
+#: src/multiplayer_create.cpp:167
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Vijandelijke eenheden buiten het bereik van jouw eenheden zijn onzichtbaar"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:170
 msgid "The map is unknown until your units explore it"
 msgstr "Het gebied is onbekend tot je het met je eenheden verkent"
 
-#: src/multiplayer_create.cpp:169
+#: src/multiplayer_create.cpp:173
 msgid "Allow users who are not playing to watch the game"
 msgstr "Toeschouwers tot het spel toelaten"
 
-#: src/multiplayer_create.cpp:173
+#: src/multiplayer_create.cpp:177
 msgid "Share View"
 msgstr "Zicht delen"
 
-#: src/multiplayer_create.cpp:174
+#: src/multiplayer_create.cpp:178
 msgid "Share Maps"
 msgstr "Kaarten delen"
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:179
 msgid "Share None"
 msgstr "Niets delen"
 
-#: src/multiplayer_create.cpp:186
+#: src/multiplayer_create.cpp:190
 msgid "No multiplayer sides."
 msgstr "Geen multiplayerkanten."
 
-#: src/multiplayer_create.cpp:188
+#: src/multiplayer_create.cpp:192
 msgid "No eras found"
 msgstr "Geen tijdperken gevonden"
 
-#: src/multiplayer_create.cpp:201
+#: src/multiplayer_create.cpp:205
 msgid "$login's game"
 msgstr "$login|s spel"
 
-#: src/multiplayer_create.cpp:249
+#: src/multiplayer_create.cpp:254
 msgid "Invalid era selected"
 msgstr "Ongeldig tijdperk geselecteerd"
 
-#: src/multiplayer_create.cpp:287
+#: src/multiplayer_create.cpp:293
 msgid "You must enter a name."
 msgstr "Je moet een naam opgeven."
 
-#: src/multiplayer_create.cpp:296
+#: src/multiplayer_create.cpp:302
 msgid "Turns: "
 msgstr "Aantal beurten: "
 
-#: src/multiplayer_create.cpp:298
+#: src/multiplayer_create.cpp:304
 msgid "Unlimited Turns"
 msgstr "Onbeperkt aantal beurten"
 
-#: src/multiplayer_create.cpp:326
+#: src/multiplayer_create.cpp:332
 msgid "Init. Limit: "
 msgstr "Init. limiet: "
 
-#: src/multiplayer_create.cpp:331
+#: src/multiplayer_create.cpp:337
 msgid "Turn Bonus: "
 msgstr "Beurtbonus: "
 
-#: src/multiplayer_create.cpp:335
+#: src/multiplayer_create.cpp:341
 msgid "Reservoir: "
 msgstr "Reservoir: "
 
-#: src/multiplayer_create.cpp:340
+#: src/multiplayer_create.cpp:346
 msgid "Action Bonus: "
 msgstr "Actiebonus: "
 
-#: src/multiplayer_create.cpp:347
+#: src/multiplayer_create.cpp:353
 msgid "Village Gold: "
 msgstr "Goud per dorp: "
 
-#: src/multiplayer_create.cpp:355
+#: src/multiplayer_create.cpp:361
 msgid "Exp. Mod.: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:357
+#: src/multiplayer_create.cpp:363
 msgid "Experience Modifier: "
 msgstr "Benodigde ervaring: "
 
-#: src/multiplayer_create.cpp:485
+#: src/multiplayer_create.cpp:491
 msgid "Players: "
 msgstr "Spelers: "
 
@@ -11472,7 +11649,7 @@ msgstr "Afsluiten"
 msgid "Skip quickly to the active turn when observing"
 msgstr "Ga meteen naar de huidige ronde in het spel"
 
-#: src/multiplayer_ui.cpp:81
+#: src/multiplayer_ui.cpp:82
 msgid "Invalid Color"
 msgstr "Ongeldige kleur"
 
@@ -11512,8 +11689,8 @@ msgstr "Kon socket niet aan socketset toevoegen"
 msgid "Could not send initial handshake"
 msgstr "Kon initiele handdruk niet verzenden"
 
-#: src/play_controller.cpp:389 src/playsingle_controller.cpp:344
-#: src/playsingle_controller.cpp:390
+#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
+#: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Het bestand dat je hebt proberen laden is corrupt"
 
@@ -11571,60 +11748,60 @@ msgstr ""
 "De spellen lopen niet synchroon en worden afgesloten. Wil je een foutlog van "
 "het spel wegschrijven?"
 
-#: src/playsingle_controller.cpp:217
+#: src/playsingle_controller.cpp:219
 msgid "Game Over"
 msgstr "Game over"
 
-#: src/playsingle_controller.cpp:218
+#: src/playsingle_controller.cpp:220
 msgid "The game is over."
 msgstr "Het spel is over."
 
-#: src/playsingle_controller.cpp:312
+#: src/playsingle_controller.cpp:314
 msgid "Remaining gold: "
 msgstr "Resterend goud: "
 
-#: src/playsingle_controller.cpp:315
+#: src/playsingle_controller.cpp:317
 msgid "Early finish bonus: "
 msgstr "Bonus per beurt: "
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:319
 msgid "per turn"
 msgstr "goudstukken"
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:320
 msgid "Turns finished early: "
 msgstr "Resterend aantal beurten: "
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:322
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:322
+#: src/playsingle_controller.cpp:324
 msgid "Gold: "
 msgstr "Goud: "
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:329
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% van het goud gaat mee naar het volgende scenario"
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:330
 msgid "Retained Gold: "
 msgstr "Resterend goud: "
 
-#: src/playsingle_controller.cpp:333
+#: src/playsingle_controller.cpp:335
 msgid "Victory"
 msgstr "Overwinning"
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:336
 msgid "You have emerged victorious!"
 msgstr "Je hebt de overwinning behaald!"
 
-#: src/playsingle_controller.cpp:338
+#: src/playsingle_controller.cpp:340
 msgid "Scenario Report"
 msgstr "Scenariorapport"
 
-#: src/playsingle_controller.cpp:355
+#: src/playsingle_controller.cpp:357
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -11632,7 +11809,7 @@ msgstr ""
 "Door een verbreking van de netwerkvebinding kan het spel niet voortgezet "
 "worden. Wil je het spel opslaan?"
 
-#: src/playsingle_controller.cpp:475
+#: src/playsingle_controller.cpp:477
 msgid "It is now your turn"
 msgstr "Het is nu jouw beurt"
 
@@ -11890,15 +12067,15 @@ msgstr "Help"
 msgid "Help Wesnoth by sending us information"
 msgstr "Help Wesnoth door ons informatie toe te sturen"
 
-#: src/unit.cpp:2592 src/unit.cpp:2761
+#: src/unit.cpp:2603 src/unit.cpp:2772
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2674
+#: src/unit.cpp:2685
 msgid "XP to advance"
 msgstr "XP om te promoveren"
 
-#: src/unit.cpp:2752
+#: src/unit.cpp:2763
 msgid ": "
 msgstr ": "
 
@@ -11945,6 +12122,20 @@ msgstr "Hier kun je de resultaten zien:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Help ons Wesnoth te verbeteren!"
+
+#, fuzzy
+#~ msgid "Yes"
+#~ msgstr "Ja!"
+
+#~ msgid ""
+#~ "You can come if you wish, but the leader is only interested in speaking "
+#~ "to Baldras."
+#~ msgstr ""
+#~ "Je mag komen als je wilt, maar de leider wil alleen met Baldras spreken."
+
+#, fuzzy
+#~ msgid "Potion of bleach"
+#~ msgstr "Drank van Verval"
 
 #~ msgid "Sulla's statue"
 #~ msgstr "Sulla's standbeeld"

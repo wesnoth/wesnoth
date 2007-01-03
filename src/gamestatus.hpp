@@ -121,6 +121,7 @@ public:
 	time_of_day get_previous_time_of_day() const;
 	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc) const;
 	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
+	bool set_time_of_day(int);
 	size_t turn() const;
 	int number_of_turns() const;
 	void modify_turns(const std::string& mod);
@@ -129,9 +130,13 @@ public:
 	//function to move to the next turn. Returns true iff time
 	//has expired.
 	bool next_turn();
+	
+	static bool is_start_ToD(const std::string&);
 
 private:
+	void set_start_ToD(config&, game_state*);
 	time_of_day get_time_of_day_turn(int nturn) const;
+	void next_time_of_day();
 
 	std::vector<time_of_day> times_;
 
@@ -145,6 +150,7 @@ private:
 
 	size_t turn_;
 	int numTurns_;
+	int currentTime_;
 };
 
 //object which holds all the data needed to start a scenario.

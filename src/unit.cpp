@@ -1648,9 +1648,8 @@ void unit::refresh(const display& disp,const gamemap::location& loc)
 	if(state_ == STATE_IDLING && anim_ && anim_->animation_finished()) set_standing(disp, loc);
 	if(state_ != STATE_STANDING) return;
 	if(incapacitated()) return;
-	unsigned int tmp = SDL_GetTicks();
-	if(tmp < next_idling) return;
-	if(tmp > next_idling + 1000) {set_standing(disp,loc); return; }// prevent all units animating at the same time
+	if(get_current_animation_tick() < next_idling) return;
+	if(get_current_animation_tick() > next_idling + 1000) {set_standing(disp,loc); return; }// prevent all units animating at the same time
 	set_idling(disp, loc);
 }
 
@@ -1665,7 +1664,7 @@ void unit::set_standing(const display &disp,const gamemap::location& loc, bool w
 	anim_ = new standing_animation(stand_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(),true,disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
-	next_idling= SDL_GetTicks() +30000 +rand()%10000;
+	next_idling= get_current_animation_tick() +10000 +rand()%10000;
 }
 void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
 {
@@ -1864,13 +1863,16 @@ void unit::set_walking(const display &disp,const gamemap::location& loc)
 
 void unit::set_idling(const display &disp,const gamemap::location& loc)
 {
+	const idle_animation * tmp = idling_animation(disp,loc);
+	if(!tmp) {
+		set_standing(disp,loc);
+		return; 
+	}
 	state_ = STATE_IDLING;
 	draw_bars_ = true;
 
 	delete anim_;
 
-	const idle_animation * tmp = idling_animation(disp,loc);
-	if(!tmp) {set_standing(disp,loc) ; return; }
 	anim_ = new idle_animation(*tmp);
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time = anim_->get_begin_time() -1;
@@ -2016,7 +2018,18 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		ellipse_front.assign(image::get_image(image::locator(buf)));
 	}
 
-	disp.draw_unit(x, y -height_adjust, image, false, highlight_ratio,
+	
+	
+	int tmp_x = x;
+	int tmp_y = y;
+	
+	if (!image.null())
+	{
+		tmp_x += (disp.hex_size() - image.get()->w)/2;
+		tmp_y += (disp.hex_size() - image.get()->h)/2;
+	}
+
+	disp.draw_unit(tmp_x, tmp_y -height_adjust, image, false, highlight_ratio,
 			blend_with, blend_ratio, submerge,ellipse_back,ellipse_front);
 	if(!unit_halo_ && !image_halo().empty()) {
 		unit_halo_ = halo::add(0,0,image_halo());
@@ -3084,7 +3097,7 @@ const idle_animation* unit::idling_animation(const display& disp, const gamemap:
 {
 	//select one of the matching animations at random
 	std::vector<const idle_animation*> options;
-	int max_val = -1;
+	int max_val = 0;
 	for(std::vector<idle_animation>::const_iterator i = idle_animations_.begin(); i != idle_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -3201,11 +3214,17 @@ void unit::apply_modifications()
 	is_healthy_ = false;
 	config::child_list const &mods = modifications_.get_children("trait");
 	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
-		t_string const &name = (**j)["name"];
 		is_fearless_ = is_fearless_ || (**j)["id"] == "fearless";
 		is_healthy_ = is_healthy_ || (**j)["id"] == "healthy";
-		if (!name.empty())
-			traits.push_back(name);
+		const std::string gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
+		t_string const &gender_specific_name = (**j)[gender_string];
+		if (!gender_specific_name.empty()) {
+			traits.push_back(gender_specific_name);
+		} else {
+			t_string const &name = (**j)["name"];
+			if (!name.empty())
+				traits.push_back(name);
+		}
 	}
 
 	std::vector< t_string >::iterator k = traits.begin(), k_end = traits.end();

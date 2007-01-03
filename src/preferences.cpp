@@ -208,22 +208,48 @@ unsigned int sample_rate()
 
 void save_sample_rate(const unsigned int rate)
 {
-	prefs["sample_rate"] = lexical_cast_default<std::string>(rate, "44100");
+	const std::string new_rate = lexical_cast_default<std::string>(rate, "44100");
+	if (prefs["sample_rate"] == new_rate)
+		return;
 
-	//if audio is open we have to re set sample rate by stop an restart
-	bool sound = sound_on();
-	bool bell = turn_bell();
-	bool music = music_on();
-	if (sound || bell || music) {
-		sound::close_sound();
-		sound::init_sound();
-		if (!sound)
-			sound::stop_sound();
-		if (!bell)
-			sound::stop_bell();
-		if (!music)
-			sound::stop_music();
-	}
+	prefs["sample_rate"] = new_rate;
+
+	//if audio is open we have to re set sample rate
+	sound::reset_sound();
+}
+
+size_t sound_buffer_size()
+{
+	//sounds don't sound good on Windows unless the buffer size is 4k,
+	//but this seems to cause crashes on other systems...
+	#ifdef WIN32
+		const size_t buf_size = 4096;
+	#elif GP2X
+		const size_t buf_size = 512;
+	#else
+		const size_t buf_size = 1024;
+	#endif
+
+	return lexical_cast_default<size_t>(prefs["sound_buffer_size"], buf_size);
+}
+
+void save_sound_buffer_size(const size_t size)
+{
+	#ifdef WIN32
+		const char* buf_size = "4096";
+	#elif GP2X
+		const char* buf_size = "512";
+	#else
+		const char* buf_size = "1024";
+	#endif
+
+	const std::string new_size = lexical_cast_default<std::string>(size, buf_size);
+	if (prefs["sound_buffer_size"] == new_size)
+		return;
+
+	prefs["sound_buffer_size"] = new_size;
+
+	sound::reset_sound();
 }
 
 int music_volume()
@@ -551,6 +577,17 @@ void set_use_map_settings(bool value)
 {
 	prefs["mp_use_map_settings"] = value ? "yes" : "no";
 }
+
+bool random_start_time()
+{
+	return prefs["mp_random_start_time"] != "no";
+}
+
+void set_random_start_time(bool value)
+{
+	prefs["mp_random_Start_time"] = value ? "yes" : "no";
+}
+
 
 bool fog()
 {

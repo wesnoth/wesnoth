@@ -18,6 +18,10 @@
 #include <map>
 #include <vector>
 
+void new_animation_frame();
+int get_current_animation_tick();
+
+
 template<typename T>
 class void_value
 {

@@ -358,28 +358,36 @@ void replay::choose_option(int index)
 	add_value("choose",index);
 }
 
-void replay::add_label(const std::string& text, const gamemap::location& loc)
+void replay::set_random_value(const std::string& choice)
 {
+	config* const cmd = add_command();
+	config val;
+	val["value"] = choice;
+	cmd->add_child("random",val);
+}
+
+void replay::add_label(const terrain_label* label)
+{
+	wassert(label);
 	config* const cmd = add_command(false);
 
 	(*cmd)["undo"] = "no";
 
 	config val;
 
-	loc.write(val);
-	val["text"] = text;
+	label->write(val);
 
 	cmd->add_child("label",val);
 }
 
-void replay::clear_labels()
+void replay::clear_labels(const std::string& team_name)
 {
 	config* const cmd = add_command(false);
 
 	(*cmd)["undo"] = "no";
-
-
-	cmd->add_child("clear_labels");
+	config val;
+	val["team_name"] = team_name;
+	cmd->add_child("clear_labels",val);
 }
 
 void replay::add_rename(const std::string& name, const gamemap::location& loc)
@@ -710,18 +718,24 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 					if(preferences::message_bell()) {
 						sound::play_sound(game_config::sounds::receive_message);
 					}
-    				std::string str = (*child)["message"];
-    				std::string buf;
-    				std::stringstream ss(str);
-    				ss >> buf;
-    
-    				if (!preferences::get_prefs()->child("relationship")){
-						preferences::get_prefs()->add_child("relationship");
-					}
-					config* cignore;
-					cignore = preferences::get_prefs()->child("relationship");
+					if (is_lobby_join) {
+	    				std::string str = (*child)["message"];
+	    				std::string buf;
+	    				std::stringstream ss(str);
+	    				ss >> buf;
+	    
+	    				if (!preferences::get_prefs()->child("relationship")){
+							preferences::get_prefs()->add_child("relationship");
+						}
+						config* cignore;
+						cignore = preferences::get_prefs()->child("relationship");
 	
-					if ((*cignore)[buf] == "friend") {
+						if ((*cignore)[buf] == "friend") {
+							const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
+							disp.add_chat_message(speaker_name,side,(*child)["message"],
+												  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
+						}
+                	} else {
 						const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
 						disp.add_chat_message(speaker_name,side,(*child)["message"],
 											  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
@@ -729,14 +743,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {
-			const gamemap::location loc(*child);
-			const std::string& text = (*child)["text"];
 
-			if (!replayer.is_skipping()){
-				disp.labels().set_label(loc,text);
-			}
+			terrain_label label(disp.labels(),*child);
+			
+			disp.labels().set_label(label.location(),
+									label.text(),
+									0,
+									label.team_name(),
+									label.colour());
+		
 		} else if((child = cfg->child("clear_labels")) != NULL) {
-			disp.labels().clear();
+			
+			disp.labels().clear(std::string((*child)["team_name"]),0);
 		}
 
 		else if((child = cfg->child("rename")) != NULL) {

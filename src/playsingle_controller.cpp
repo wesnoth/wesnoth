@@ -104,8 +104,8 @@ void playsingle_controller::change_unit_side(){
 	menu_handler_.change_unit_side(mouse_handler_);
 }
 
-void playsingle_controller::label_terrain(){
-	menu_handler_.label_terrain(mouse_handler_);
+void playsingle_controller::label_terrain(bool team_only){
+	menu_handler_.label_terrain(mouse_handler_, team_only);
 }
 
 void playsingle_controller::continue_move(){
@@ -185,7 +185,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			}
 		}
 
-		bool save = false;
+		//avoid autosaving after loading but still allow the 
+		//first turn to have an autosave. 
+		bool save = !loading_game_;
 		for(; ; first_player_ = 1) {
 			play_turn(save);
 			save = true;
@@ -566,6 +568,7 @@ void playsingle_controller::check_time_over(){
 
 bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 {
+	bool res = true;
 	switch (command){
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:
@@ -585,10 +588,13 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) 
 		case hotkey::HOTKEY_CHANGE_UNIT_SIDE:
 			return !events::commands_disabled && game_config::debug && map_.on_board(mouse_handler_.get_last_hex());
 
+		case hotkey::HOTKEY_LABEL_TEAM_TERRAIN:
+			res = menu_handler_.has_team();
 		case hotkey::HOTKEY_LABEL_TERRAIN:
-			return !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex())
+			res = res && !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex())
 				&& !gui_->shrouded(mouse_handler_.get_last_hex().x, mouse_handler_.get_last_hex().y)
 				&& !is_observer();
+			break;
 
 		case hotkey::HOTKEY_CONTINUE_MOVE: {
 			if(browse_ || events::commands_disabled)
@@ -603,4 +609,5 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) 
 		}
 		default: return play_controller::can_execute_command(command);
 	}
+	return res;
 }

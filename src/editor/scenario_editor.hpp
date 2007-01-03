@@ -49,7 +49,7 @@ private:
 	void preferences();
 	void objectives();
 	void unit_list();
-	void label_terrain();
+	void label_terrain(bool);
 
 	void edit_set_terrain();
 

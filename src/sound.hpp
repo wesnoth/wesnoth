@@ -26,10 +26,11 @@ struct manager {
 
 bool init_sound();
 void close_sound();
+void reset_sound();
 
 void stop_music();
 void stop_sound();
-void stop_bell(); 
+void stop_bell();
 
 // Read config entry, alter track list accordingly.
 void play_music_config(const config &music);

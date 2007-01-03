@@ -92,7 +92,7 @@ public:
 	void rename_unit(mouse_handler& mousehandler);
 	void create_unit(mouse_handler& mousehandler);
 	void change_unit_side(mouse_handler& mousehandler);
-	void label_terrain(mouse_handler& mousehandler);
+	void label_terrain(mouse_handler& mousehandler, bool team_only);
 	void clear_labels();
 	void continue_move(mouse_handler& mousehandler, const unsigned int team_num);
 	void toggle_grid();
@@ -110,7 +110,7 @@ public:
 	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
 	void autosave(const std::string &label, unsigned turn, const config &starting_pos) const;
-
+	bool has_team() const;
 protected:
 	void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
