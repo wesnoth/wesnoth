@@ -317,10 +317,14 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 				recorder.add_event("turn 1");
 				recorder.add_event("new turn");
 				recorder.add_event("side turn");
+				/* events must not be actively fired through replays, because they have been recorded 
+				   previously and therefore will get executed anyway. If we put this outside the "if", 
+				   those events will be fired two times
+				*/
+				game_events::fire("turn 1");
+				game_events::fire("new turn");
+				game_events::fire("side turn");
 			}
-			game_events::fire("turn 1");
-			game_events::fire("new turn");
-			game_events::fire("side turn");
 		}
 		first_turn_ = false;
 	} else
@@ -329,8 +333,12 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 		if(!current_team.is_network()) {
 			if(!is_replay) {
 				recorder.add_event("side turn");
+				/* events must not be actively fired through replays, because they have been recorded 
+				   previously and therefore will get executed anyway. If we put this outside the "if", 
+				   those events will be fired two times
+				*/
+				game_events::fire("side turn");
 			}
-			game_events::fire("side turn");
 		}
 	}
 
