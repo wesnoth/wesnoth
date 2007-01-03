@@ -76,7 +76,7 @@ manager::manager()
 	v = utils::split(prefs["encountered_units"]);
 	std::copy(v.begin(), v.end(),
 			  std::inserter(encountered_units_set, encountered_units_set.begin()));
-	t_translation::t_list terrain; //FIXME MdW geen =
+	t_translation::t_list terrain = //FIXME MdW untested
 		t_translation::read_list(prefs["encountered_terrain_list"], -1, t_translation::T_FORMAT_STRING);
 	std::copy(terrain.begin(), terrain.end(), 
 			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));

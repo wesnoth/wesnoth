@@ -1456,8 +1456,7 @@ std::vector<topic> generate_terrains_topics(const bool sort_generated)
 		show_info_about = map->get_terrain_list();
 	}
 	else {
-		//FIXME MdW the changes here seem to compile but they have to 
-		//be tested whether they really work
+		//FIXME MdW untested
 		for (std::set<t_translation::t_letter>::const_iterator terrain_it =
 				 preferences::encountered_terrains().begin();
 			 terrain_it != preferences::encountered_terrains().end();

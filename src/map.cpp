@@ -317,9 +317,8 @@ void gamemap::read(const std::string& data)
 	try {
 		tiles_ = t_translation::read_game_map(data, starting_positions);
 	} catch(t_translation::error& e) {
-		// FIXME MdW think about this part
-		// for now we just convert the error and throw it to our callers
-		// might not be the best way but keep it for now
+		// we re-throw the error but as map error, since all codepaths test 
+		// for this, it's the least work
 		throw incorrect_format_exception(e.message.c_str());
 	}
 
@@ -445,8 +444,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 				const t_translation::t_list& terrain = 
 					t_translation::read_list(cfg["terrain"], 0, t_translation::T_FORMAT_AUTO);
 
-				if(! terrain.empty()) {
-					set_terrain(location(x2,y2),terrain[0]); //FIXME MdW tag is this valid?? (should be but test)
+				if(!terrain.empty()) {
+					set_terrain(location(x2,y2),terrain[0]);
 				} else if(cfg["use_old"] != "yes") {
 					set_terrain(location(x2,y2),t);
 				}
@@ -535,8 +534,7 @@ int gamemap::num_valid_starting_positions() const
 
 int gamemap::num_starting_positions() const
 {
-	return sizeof(startingPositions_)/sizeof(*startingPositions_); //FIXME MdW this one already has the number of starting positions
-																   // wonder whether it has any users
+	return sizeof(startingPositions_)/sizeof(*startingPositions_); 
 }
 
 int gamemap::is_starting_position(const gamemap::location& loc) const

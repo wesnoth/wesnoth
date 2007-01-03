@@ -593,27 +593,16 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 			const t_translation::t_letter terrain = map[y_off][x_off];
 			const int  anchor = t_translation::cast_to_builder_number(terrain);
 
-			if(terrain == t_translation::TB_DOT) { 
+			if(terrain == t_translation::TB_DOT) {
 				// Dots are simple placeholders, which do not
 				// represent actual terrains.
 			} else if (anchor != 0 ) {
 				anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, y)));
+			} else if (terrain == t_translation::TB_STAR) {
+				add_constraints(br.constraints, gamemap::location(x, y), t_translation::STAR, global_images);
 			} else {
-				// we have a rule, we filter for validity here
-				// for now only one valid value but might change
-				// in the future
-				switch(terrain) {
-					case  t_translation::TB_STAR: 
-						add_constraints(br.constraints, gamemap::location(x, y),
-								//FIXME MdW this conversion is rather ugly
-								t_translation::t_match(std::string(1, t_translation::TB_STAR)), 
-								global_images);
-						break;
-					default:
-						// FIXME MdW add error msg
-						ERR_NG << "";
-						wassert(false);
-				}
+					ERR_NG << "Invalid terrain (" << t_translation::write_letter(terrain) << ") in builder map\n";
+					wassert(false);
 			}
 		x += 2;
 		}
@@ -914,7 +903,7 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 	if(types.front() == t_translation::NOT) {
 		return INT_MAX;
 	}
-	if(std::find(types.begin(), types.end(), t_translation::TB_STAR) != types.end()) {
+	if(std::find(types.begin(), types.end(), t_translation::STAR) != types.end()) {
 		return INT_MAX;
 	}
 	// as soon as the list has 1 wildcard we bail out

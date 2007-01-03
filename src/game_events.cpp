@@ -1221,10 +1221,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		//convert to an internal number
 		t_translation::t_letter terrain = 
 			t_translation::read_letter(terrain_type, t_translation::T_FORMAT_AUTO);
+
+		if(terrain != t_translation::NONE_TERRAIN) {
 			
-		for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
-			preferences::encountered_terrains().insert(terrain);
-			if(terrain_type.size() > 0) { //FIXME MdW we need a proper way to set and invalid terrain
+			for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
+				preferences::encountered_terrains().insert(terrain);
 				const bool old_village = game_map->is_village(*loc);
 				const bool new_village = game_map->is_village(terrain); 
 
@@ -1237,8 +1238,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				game_map->set_terrain(*loc,terrain); 
 			}
+			rebuild_screen_ = true;
 		}
-		rebuild_screen_ = true;
 	}
 
 	//creating a mask of the terrain
@@ -1843,8 +1844,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		size_t added = 0;
 		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end() && added != MaxLoop; ++j) {
-			if (terrain.empty() == false) {
-				const t_translation::t_letter c = game_map->get_terrain(*j); //FIXME MdW test should work
+			if (!terrain.empty()) {
+				const t_translation::t_letter c = game_map->get_terrain(*j);
 				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
 					continue;
 			}

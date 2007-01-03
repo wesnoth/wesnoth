@@ -15,9 +15,8 @@
 #define TERRAIN_TRANSLATION_H_INCLUDED
 
 //NOTE due to backwards compability some items are done in a
-// not so nice way. This will be corrected in a later version
-// after either 1.4 or 2.0. These items are marked with
-// FIXME: remove
+// not so nice way. This will be corrected in version 1.3.3
+// These items are marked with "FIXME: remove"
 // Also the the next definition is used for the compatible
 // mode. Disabling this define should make wesnoth run in
 // non compatible mode. Using defines is not the most 
@@ -49,6 +48,7 @@ namespace t_translation {
 	struct t_match{
 		t_match(){};
 		t_match(const std::string& str);
+		t_match(const t_letter letter);
 		~t_match(){};
 
 		t_list terrain;	
@@ -97,8 +97,7 @@ namespace t_translation {
 
 	extern const t_letter PLUS; 	// +
 	extern const t_letter MINUS; 	// -
-	extern const t_letter NOT;		// FIXME MdW remove once no longer used in the builder
-	extern const t_letter COMMA;	// , FIXME MdW this one is also need extra things
+	extern const t_letter NOT;		// !
 	extern const t_letter STAR; 	// *
 	const t_letter NONE_TERRAIN = 0;
 		
@@ -274,10 +273,9 @@ namespace t_translation {
 	 */
 	bool has_wildcard(const t_list& list);
 
-	// these terrain letters are in the builder format, so not usable in other 
-	// parts of the engine
-	// FIXME MdW builder.cpp uses TB_STAR in a not so clean way
-	const t_letter TB_STAR = '*';
+	// these terrain letters are in the builder format, and 
+	// not usable in other parts of the engine
+	const t_letter TB_STAR = '*'; //it can be assumed this is the equivalent of STAR
 	const t_letter TB_DOT = '.';
 	
 	/** 

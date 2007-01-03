@@ -18,7 +18,7 @@
 #include "util.hpp"
 #include "terrain.hpp"
 #include "serialization/string_utils.hpp"
-#include "wassert.hpp" // FIXME MdW only used for the terrain initalization
+#include "wassert.hpp"
 
 #include <algorithm>
 #include <cstdlib>

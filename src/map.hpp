@@ -204,7 +204,6 @@ private:
 	
 	std::vector<location> villages_;
 
-
 	mutable std::map<location, t_translation::t_letter> borderCache_;
 	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;
 };

@@ -1691,7 +1691,6 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	get_adjacent_tiles(loc,adjacent);
 	t_translation::t_letter tiles[6];
 	
-	// FIXME MdW might be nice to rewrite as a vector
 	static const t_translation::t_letter terrain_types[] = 
 		{ t_translation::FOGGED, t_translation::VOID_TERRAIN, 0 };
 

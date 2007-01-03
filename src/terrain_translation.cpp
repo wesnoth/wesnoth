@@ -147,12 +147,7 @@ const t_letter DWARVEN_CASTLE = string_to_number_("Cud");
 
 const t_letter PLUS = string_to_number_("+");
 const t_letter MINUS = string_to_number_("-");
-//if only used in terrain match code it can move here since 
-//we will contain terrain match code
 const t_letter NOT = string_to_number_("!");
-
-const t_letter COMMA = ','; //to be translated? or obsoleted
-
 const t_letter STAR = string_to_number_("*");
 
 // the shift used for the builder (needs more comment)
@@ -179,9 +174,21 @@ t_match::t_match(const std::string& str):
 	}
 }
 
+t_match::t_match(const t_letter letter):
+	terrain(t_list(1, letter)) 
+{
+	mask.resize(terrain.size());
+	masked_terrain.resize(terrain.size());
+	has_wildcard = t_translation::has_wildcard(terrain);
+
+	for(size_t i = 0; i < terrain.size(); i++) {
+		mask[i] = t_translation::get_mask_(terrain[i]);
+		masked_terrain[i] = mask[i] & terrain[i];
+	}
+}
+
 t_letter read_letter(const std::string& str, const int t_format)
 {
-//	throw error("empty strings not allowed in read_letter"); FIXME MdW evaluate this it aborts the editor
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 	if(t_format == T_FORMAT_STRING ||
 			(t_format == T_FORMAT_AUTO && map_format_ == 2)) {
@@ -260,7 +267,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	
 	size_t offset = 0;
 	size_t x = 0, y = 0, width = 0;
-	t_map result = t_map();
+	t_map result;
 
 	// skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
@@ -277,7 +284,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 
 		// get a terrain chunk
 		const std::string separators = ",\n\r";
-		const int pos_separator = str.find_first_of(separators, offset);
+		const size_t pos_separator = str.find_first_of(separators, offset);
 		const std::string terrain = str.substr(offset, pos_separator - offset);
 
 		// process the chunk
@@ -336,9 +343,8 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 
 			} else {
 			
-				offset =  pos_separator + 1;
+				offset = pos_separator + 1;
 				//skip the following newlines 
-				//FIXME this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
 				while(offset < str.length() && utils::isnewline(str[offset])) {
 					++offset;
 				}
@@ -528,7 +534,7 @@ bool has_wildcard(const t_list& list)
 t_map read_builder_map(const std::string& str)
 {
 	size_t offset = 0;
-	t_map result = t_map();
+	t_map result;
 
 	// skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
@@ -584,7 +590,6 @@ t_map read_builder_map(const std::string& str)
 			
 			offset =  pos_separator + 1;
 			//skip the following newlines 
-			//FIXME MdW this should be documented "aa<CR><CR>bb<CR><CR><CR>" is now valid
 			while(offset < str.length() && utils::isnewline(str[offset])) {
 				++offset;
 			}
@@ -607,23 +612,6 @@ t_letter cast_to_builder_number(const t_letter terrain)
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 void add_translation(const std::string& str, const t_letter number)
 {
-	// if the table is empty we need to load some
-	// hard-coded values for the custom terrains
-	// FIXME: remove this after Wesnoth 1.4 or 2.0
-	// FIXME MdW this initial table should be obsolete right now so remove it
-	/*
-	if(lookup_table_.empty()) {
-		lookup_table_.insert(std::pair<TERRAIN_LETTER, t_letter>(' ', VOID_TERRAIN));	
-		lookup_table_.insert(std::pair<TERRAIN_LETTER, t_letter>('~', FOGGED));	
-		//UMC
-		lookup_table_.insert(std::pair<TERRAIN_LETTER, t_letter>('^', string_to_number_("_za")));	
-		lookup_table_.insert(std::pair<TERRAIN_LETTER, t_letter>('@', string_to_number_("_zb")));	
-		lookup_table_.insert(std::pair<TERRAIN_LETTER, t_letter>('x', string_to_number_("_zx")));	
-		lookup_table_.insert(std::pair<TERRAIN_LETTER, t_letter>('y', string_to_number_("_zy")));	
-		lookup_table_.insert(std::pair<TERRAIN_LETTER, t_letter>('z', string_to_number_("_zz")));	
-	}
-	*/
-
 	// we translate the terrain manual since the helper functions use the 
 	// translation table and give chicken and egg problem
 	const TERRAIN_LETTER letter = str[0];
@@ -662,7 +650,7 @@ t_list string_to_vector_(const std::string& str, const bool convert_eol, const i
 	// only used here so define here
 	const t_letter EOL = 7;
 	bool last_eol = false;
-	t_list result = t_list(); 
+	t_list result;
 
 	std::string::const_iterator itor = str.begin();
 	for( ; itor != str.end(); ++itor) {
@@ -802,7 +790,7 @@ t_map read_game_map_old_(const std::string& str, std::map<int, coordinate>& star
 t_list string_to_vector_(const std::string& str)
 {
 	// handle an empty string
-	t_list result = t_list();
+	t_list result;
 
 	if(str.empty()) {
 		return result;
@@ -863,6 +851,9 @@ t_letter string_to_number_(std::string str, int& start_position)
 	const std::string& whitespace = " \t";
 	str.erase(0, str.find_first_not_of(whitespace));
 	str.erase(str.find_last_not_of(whitespace) + 1);
+	if(str.empty()) {
+		return result;
+	}
 
 	// split if we have 1 space inside
 	const size_t offset = str.find(' ', 0);
@@ -871,6 +862,9 @@ t_letter string_to_number_(std::string str, int& start_position)
 		str.erase(0, offset + 1);
 	}
 
+	//validate the string
+	wassert(str.size() <= 4);
+	
 	//the conversion to int puts the first char in the 
 	//highest part of the number, this will make the 
 	//wildcard matching later on a bit easier.
@@ -927,7 +921,7 @@ std::string number_to_string_(t_letter terrain, const int start_position, const 
 {
 	std::string result = number_to_string_(terrain, start_position);
 	if(result.size() < min_size) {
-		result.resize(min_size);
+		result.resize(min_size, ' ');
 	}
 
 	return result;
