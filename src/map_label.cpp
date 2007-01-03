@@ -111,21 +111,21 @@ const map_labels::label_map& map_labels::labels()
 {
 	if (changed_)
 	{
-		label_cashe_.clear();
+		label_cache_.clear();
 		team_label_map::iterator i = labels_.find(team_name());
 		if (i != labels_.end())
 		{
-			label_cashe_.insert(i->second.begin(),i->second.end());
+			label_cache_.insert(i->second.begin(),i->second.end());
 		}
 		
-		i = labels_.find(std::string());
+		i = labels_.find("");
 		if (i != labels_.end())
 		{
-			label_cashe_.insert(i->second.begin(),i->second.end());
+			label_cache_.insert(i->second.begin(),i->second.end());
 		}
 		changed_ = false;
 	}
-	return label_cashe_;
+	return label_cache_;
 }
 
 const display& map_labels::disp() const
@@ -251,7 +251,7 @@ void map_labels::clear(const std::string& team_name, replay* replay)
 		clear_map(i->second);
 	}
 		
-	i = labels_.find(std::string());
+	i = labels_.find("");
 	if (i != labels_.end())
 	{
 		clear_map(i->second);
