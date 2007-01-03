@@ -337,11 +337,6 @@ void unit::write_checksum(std::string& str) const
 	str = unit_config.hash();
 }
 
-std::string unit::generate_description() const
-{
-	return race_->generate_name(cfg_["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE);
-}
-
 void unit::generate_traits()
 {
 	if(!traits_description_.empty())
@@ -466,16 +461,7 @@ void unit::advance_to(const unit_type* t)
 	refreshing_  = false;
 	hidden_ = false;
 }
-const std::vector<std::string> unit::advances_to() const
-{
-	return advances_to_;
-}
 
-// the current type id
-const std::string& unit::id() const
-{
-	return id_;
-}
 const unit_type* unit::type() const
 {
 	wassert(gamedata_ != NULL);
@@ -485,37 +471,7 @@ const unit_type* unit::type() const
 	}
 	return NULL;
 }
-// the actual name of the unit
-const std::string& unit::name() const
-{
-	if(description_.empty() == false)
-		return description_;
-	else
-		return language_name();
-}
-void unit::rename(const std::string& name)
-{
-	if (!unrenamable_) {
-		custom_unit_description_ = name;
-	}
-}
-// the unit type name
-const std::string& unit::description() const
-{
-	if(custom_unit_description_ != "") {
-		return custom_unit_description_;
-	} else {
-		return description_;
-	}
-}
-const std::string& unit::underlying_description() const
-{
-	return underlying_description_;
-}
-const t_string& unit::language_name() const
-{
-	return language_name_;
-}
+
 // the unit's profile
 const std::string& unit::profile() const
 {
@@ -524,48 +480,7 @@ const std::string& unit::profile() const
 	}
 	return absolute_image();
 }
-//information about the unit -- a detailed description of it
-const std::string& unit::unit_description() const
-{
-	return cfg_["unit_description"];
-}
 
-
-const std::string& unit::undead_variation() const
-{
-	return undead_variation_;
-}
-int unit::hitpoints() const
-{
-	return hit_points_;
-}
-int unit::max_hitpoints() const
-{
-	return max_hit_points_;
-}
-int unit::experience() const
-{
-	return experience_;
-}
-int unit::max_experience() const
-{
-	return maximum<int>(1,(max_experience_*unit_type::experience_accelerator::get_acceleration() + 50) / 100);
-}
-int unit::level() const
-{
-	return level_;
-}
-// adds 'xp' points to the units experience; returns true if advancement should occur
-bool unit::get_experience(int xp)
-{
-	experience_ += xp;
-	return advances();
-}
-
-bool unit::advances() const
-{
-	return experience_ >= max_experience() && can_advance();
-}
 SDL_Colour unit::hp_color() const
 {
   double unit_energy = 0.0;
@@ -638,23 +553,7 @@ SDL_Colour unit::xp_color() const
   }
   return(colour);
 }
-bool unit::unrenamable() const /** < Set to true for some scenario-specific units which should not be renamed */
-{
-	return unrenamable_;
-}
 
-unsigned int unit::side() const
-{
-	return side_;
-}
-Uint32 unit::team_rgb() const
-{
-	return(team::get_side_rgb(side()));
-}
-const std::vector<Uint32>& unit::flag_rgb() const
-{
-	return game_config::tc_info(flag_rgb_);
-}
 std::vector<Uint32> unit::team_rgb_range() const
 {
   std::vector<Uint32> temp;
@@ -663,78 +562,18 @@ std::vector<Uint32> unit::team_rgb_range() const
   temp.push_back(team::get_side_rgb_min(side()));
   return(temp);
 }
-const std::string& unit::team_color() const
-{
-	return flag_rgb_;
-}
-unit_race::GENDER unit::gender() const
-{
-	return gender_;
-}
-void unit::set_side(unsigned int new_side)
-{
-	side_ = new_side;
-}
-fixed_t unit::alpha() const
-{
-	return alpha_;
+
+const std::vector<Uint32>& unit::flag_rgb() const { 
+  return game_config::tc_info(flag_rgb_);
 }
 
-bool unit::can_recruit() const
-{
-	return utils::string_bool(cfg_["canrecruit"]);
-}
-bool unit::incapacitated() const
-{
-	return utils::string_bool(get_state("stoned"),false);
-}
-const std::vector<std::string>& unit::recruits() const
-{
-	return recruits_;
-}
-int unit::total_movement() const
-{
-	return max_movement_;
-}
-int unit::movement_left() const
-{
-	return movement_;
-}
-void unit::set_hold_position(bool value)
-{
-	hold_position_ = value;
-}
-bool unit::hold_position() const
-{
-	return hold_position_;
-}
-void unit::set_user_end_turn(bool value)
-{
-	end_turn_ = value;
-}
-bool unit::user_end_turn() const
-{
-	return end_turn_;
-}
-int unit::attacks_left() const
-{
-	return attacks_left_;
-}
 void unit::set_movement(int moves)
 {
 	hold_position_ = false;
 	end_turn_ = false;
 	movement_ = maximum<int>(0,minimum<int>(moves,max_movement_));
 }
-void unit::set_attacks(int left)
-{
-	attacks_left_ = maximum<int>(0,minimum<int>(left,max_attacks_));
-}
-void unit::unit_hold_position()
-{
-	hold_position_ = true;
-	end_turn_ = true;
-}
+
 void unit::end_unit_turn()
 {
 //	wassert("not done" == "done");
@@ -801,11 +640,6 @@ void unit::remove_temporary_modifications()
 	}
 }
 
-bool unit::take_hit(int damage)
-{
-	hit_points_ -= damage;
-	return hit_points_ <= 0;
-}
 void unit::heal(int amount)
 {
 	int max_hp = max_hitpoints();
@@ -818,18 +652,6 @@ void unit::heal(int amount)
 	if(hit_points_<1) {
 		hit_points_ = 1;
 	}
-}
-void unit::heal_all()
-{
-	hit_points_ = max_hitpoints();
-}
-bool unit::resting() const
-{
-	return resting_;
-}
-void unit::set_resting(bool rest)
-{
-	resting_ = rest;
 }
 
 const std::string unit::get_state(const std::string& state) const
@@ -852,21 +674,6 @@ void unit::set_state(const std::string& state, const std::string& value)
 	}
 }
 
-bool unit::has_moved() const
-{
-	return movement_left() != total_movement();
-}
-bool unit::has_goto() const
-{
-	return get_goto().valid();
-}
-int unit::emits_zoc() const
-{
-	if(incapacitated()) {
-		return false;
-	}
-	return emit_zoc_;
-}
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
@@ -1034,18 +841,8 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 	}
 	return true;
 }
-void unit::add_overlay(const std::string& overlay)
-{
-	overlays_.push_back(overlay);
-}
-void unit::remove_overlay(const std::string& overlay)
-{
-	overlays_.erase(std::remove(overlays_.begin(),overlays_.end(),overlay),overlays_.end());
-}
-const std::vector<std::string>& unit::overlays() const
-{
-	return overlays_;
-}
+
+
 /**
 * Initializes this unit from a cfg object.
 *
@@ -1605,23 +1402,6 @@ void unit::write(config& cfg) const
 
 }
 
-void unit::assign_role(const std::string& role)
-{
-	role_ = role;
-}
-const std::vector<attack_type>& unit::attacks() const
-{
-	return attacks_;
-}
-std::vector<attack_type>& unit::attacks()
-{
-	return attacks_;
-}
-
-int unit::damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const
-{
-	return resistance_against(attack,attacker,loc);
-}
 
 const surface unit::still_image() const
 {
@@ -1885,6 +1665,11 @@ void unit::restart_animation(const display& disp,int start_time) {
 	frame_begin_time = start_time -1;
 }
 
+void unit::set_facing(gamemap::location::DIRECTION dir) { 
+	wassert(dir != gamemap::location::NDIRECTIONS); 
+	facing_ = dir;
+}
+
 void unit::redraw_unit(display& disp,gamemap::location hex)
 {
 	const gamemap & map = disp.get_map();
@@ -2099,16 +1884,6 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	anim_->update_last_draw_time();
 }
 
-gamemap::location::DIRECTION unit::facing() const
-{
-	return facing_;
-}
-void unit::set_facing(gamemap::location::DIRECTION dir)
-{
-	wassert(dir != gamemap::location::NDIRECTIONS);
-	facing_ = dir;
-}
-
 std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 {
 	std::set<gamemap::location> over;
@@ -2158,29 +1933,6 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 	return over;
 }
 
-const t_string& unit::traits_description() const
-{
-	return traits_description_;
-}
-
-int unit::value() const
-{
-	return unit_value_;
-}
-int unit::cost() const
-{
-	return unit_value_;
-}
-
-const gamemap::location& unit::get_goto() const
-{
-	return goto_;
-}
-void unit::set_goto(const gamemap::location& new_goto)
-{
-	goto_ = new_goto;
-}
-
 int unit::upkeep() const
 {
 	if(cfg_["upkeep"] == "full") {
@@ -2190,11 +1942,6 @@ int unit::upkeep() const
 		return 0;
 	}
 	return lexical_cast_default<int>(cfg_["upkeep"]);
-}
-
-bool unit::is_flying() const
-{
-	return flying_;
 }
 
 int unit::movement_cost_internal(gamemap::TERRAIN terrain, int recurse_count) const
@@ -2398,11 +2145,6 @@ std::map<gamemap::TERRAIN,int> unit::movement_type() const
 }
 #endif
 
-bool unit::can_advance() const
-{
-	return advances_to_.empty()==false || get_modification_advances().empty() == false;
-}
-
 std::map<std::string,std::string> unit::advancement_icons() const
 {
   std::map<std::string,std::string> temp;
@@ -2487,11 +2229,6 @@ void unit::backup_state()
 	} else {
 		resistance_b_ = config();
 	}
-}
-
-const config::child_list& unit::modification_advancements() const
-{
-	return cfg_.get_children("advancement");
 }
 
 config::child_list unit::get_modification_advances() const
@@ -2790,37 +2527,7 @@ const t_string& unit::modification_description(const std::string& type) const
 	}
 }
 
-bool unit::move_interrupted() const
-{
-	return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0;
-}
-const gamemap::location& unit::get_interrupted_move() const
-{
-	return interrupted_move_;
-}
-void unit::set_interrupted_move(const gamemap::location& interrupted_move)
-{
-	interrupted_move_ = interrupted_move;
-}
 
-unit::STATE unit::state() const
-{
-	if(state_ == STATE_IDLING) return STATE_STANDING;
-	return state_;
-}
-
-const std::string& unit::absolute_image() const
-{
-	return cfg_["image"];
-}
-const std::string& unit::image_ellipse() const
-{
-	return cfg_["ellipse"];
-}
-const std::string& unit::image_halo() const
-{
-	return cfg_["halo"];
-}
 const std::string& unit::image_profile() const
 {
 	const std::string& val = cfg_["profile"];
@@ -2855,31 +2562,7 @@ const std::string& unit::image_healing() const
 		return val;
 	}
 }
-const std::string& unit::image_halo_healing() const
-{
-	return cfg_["image_halo_healing"];
-}
-const std::string& unit::get_hit_sound() const
-{
-	return cfg_["get_hit_sound"];
-}
-const std::string& unit::die_sound() const
-{
-	return cfg_["die_sound"];
-}
 
-const std::string& unit::usage() const
-{
-	return cfg_["usage"];
-}
-unit_type::ALIGNMENT unit::alignment() const
-{
-	return alignment_;
-}
-const std::string& unit::race() const
-{
-	return race_->name();
-}
 
 const defensive_animation& unit::defend_animation(const display& disp, const gamemap::location& loc,
 		fighting_animation::hit_type hits, const attack_type* attack,const attack_type* secondary_attack, int swing_num,int damage) const
