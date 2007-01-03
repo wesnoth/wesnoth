@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-01 23:28+0100\n"
-"PO-Revision-Date: 2006-06-13 01:47+0200\n"
+"PO-Revision-Date: 2007-01-03 00:20+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
 #: src/editor/editor_dialogs.cpp:409
@@ -129,7 +129,7 @@ msgstr "Flippa (detta kan ändra kartans dimensioner):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "File: "
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -137,7 +137,7 @@ msgstr "Radera fil"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Ny mapp"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
@@ -145,12 +145,11 @@ msgstr "Kunde ej radera fil."
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Namn: "
 
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Kunde ej radera fil."
+msgstr "Kunde ej skapa mapp."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -213,9 +212,8 @@ msgid "Save Game"
 msgstr "Spara spelet"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
-msgstr "Spara"
+msgstr "Spara kartan"
 
 #: src/hotkeys.cpp:66
 msgid "Load Game"
@@ -282,9 +280,8 @@ msgid "Quit Game"
 msgstr "Avsluta spelet"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Sätt etikett"
+msgstr "Sätt lagetikett"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
@@ -467,9 +464,8 @@ msgid "Villages:"
 msgstr "Byar:"
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Max kullstorlek:"
+msgstr "Borgstorlek:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -518,19 +514,16 @@ msgid "Skip AI Moves"
 msgstr "Visa ej datorns steg"
 
 #: src/preferences_display.cpp:256
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Visa anslutningar till lobbyn"
+msgstr "Visa minikartor i lobbyn"
 
 #: src/preferences_display.cpp:257
-#, fuzzy
 msgid "Show Lobby Joins Of Friends"
-msgstr "Visa anslutningar till lobbyn"
+msgstr "Visa när vänner ansluter till lobbyn"
 
 #: src/preferences_display.cpp:258
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Visa anslutningar till lobbyn"
+msgstr "Sortera lobbylista"
 
 #: src/preferences_display.cpp:259
 msgid "Iconize Lobby List"
@@ -585,21 +578,20 @@ msgid "Chat Timestamping"
 msgstr "Chattidsangivelser"
 
 #: src/preferences_display.cpp:275
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Avancerat"
+msgstr "Avancerat läge"
 
 #: src/preferences_display.cpp:276
 msgid "Normal Mode"
-msgstr ""
+msgstr "Normalt läge"
 
 #: src/preferences_display.cpp:279
 msgid "User Define"
-msgstr ""
+msgstr "Egendefinierad"
 
 #: src/preferences_display.cpp:280
 msgid "Apply"
-msgstr ""
+msgstr "Verkställ"
 
 #: src/preferences_display.cpp:282
 msgid "Music Volume:"
@@ -610,9 +602,8 @@ msgid "SFX Volume:"
 msgstr "Ljudeffektsvolym:"
 
 #: src/preferences_display.cpp:283
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Ljudeffektsvolym:"
+msgstr "Gonggongsvolym:"
 
 #: src/preferences_display.cpp:284
 msgid "Gamma:"
@@ -620,7 +611,7 @@ msgstr "Ljusstyrka:"
 
 #: src/preferences_display.cpp:286
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Samplingsfrekvens (Hz):"
 
 #: src/preferences_display.cpp:305
 msgid "Sound effects on/off"
@@ -639,27 +630,24 @@ msgid "Change the music volume"
 msgstr "Ändra musikvolym"
 
 #: src/preferences_display.cpp:322
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Ändra musikvolym"
+msgstr "Ändra gonggongsvolym"
 
 #: src/preferences_display.cpp:324
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Byt språk"
+msgstr "Byt samplingsfrekvens"
 
 #: src/preferences_display.cpp:333
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Egendefinierad samplingsfrekvens"
 
 #: src/preferences_display.cpp:342 src/preferences_display.cpp:346
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Ändra musikvolym"
+msgstr "Ändra buffertstorlek"
 
 #: src/preferences_display.cpp:344 src/preferences_display.cpp:742
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Buffertstorlek"
 
 #: src/preferences_display.cpp:351
 msgid "Change the speed of scrolling around the map"
@@ -686,9 +674,8 @@ msgid "Make units move and fight faster"
 msgstr "Gör att trupper förflyttar sig och slåss snabbare"
 
 #: src/preferences_display.cpp:380
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Gör att trupper förflyttar sig och slåss snabbare"
+msgstr "Förflyttnings- och stridshastighet"
 
 #: src/preferences_display.cpp:383
 msgid "Do not animate AI units moving"
@@ -699,9 +686,8 @@ msgid "Overlay a grid onto the map"
 msgstr "Lägg ett rutnät över kartan"
 
 #: src/preferences_display.cpp:389
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr "Visa meddelanden när spelare ansluter till gruppspelslobbyn"
+msgstr "Visa minikartor i gruppspelslobbyn"
 
 #: src/preferences_display.cpp:392
 msgid "Sort the player list in the lobby by player groups"
@@ -712,9 +698,8 @@ msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 
 #: src/preferences_display.cpp:398
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Visa meddelanden när spelare ansluter till gruppspelslobbyn"
+msgstr "Underrätta när vänner ansluter till gruppspelslobbyn"
 
 #: src/preferences_display.cpp:401
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -764,9 +749,8 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Se och konfigurera snabbtangenter"
 
 #: src/preferences_display.cpp:637
-#, fuzzy
 msgid "Speed: "
-msgstr "Rullningsfart:"
+msgstr "Fart: "
 
 #: src/preferences_display.cpp:768
 msgid "Chat Lines: "

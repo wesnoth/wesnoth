@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-01 23:27+0100\n"
-"PO-Revision-Date: 2006-12-06 23:06+0100\n"
+"PO-Revision-Date: 2007-01-03 19:24+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team:  <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -1969,36 +1969,40 @@ msgstr "Mort-vivant"
 
 #: data/english.cfg:21
 msgid "race^Dwarves"
-msgstr ""
+msgstr "Nains"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "Gobelins"
 
 #: data/english.cfg:23
 #, fuzzy
 msgid "race^Lizards"
-msgstr "Mort-vivant"
+msgstr "Lézards"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Mécaniques"
 
 #: data/english.cfg:25
+#, fuzzy
 msgid "race^Mermen"
-msgstr ""
+msgstr "Ondins"
 
 #: data/english.cfg:26
+#, fuzzy
 msgid "race^Monsters"
-msgstr ""
+msgstr "Monstres"
 
 #: data/english.cfg:27
+#, fuzzy
 msgid "race^Nagas"
-msgstr ""
+msgstr "Nagas"
 
 #: data/english.cfg:28
+#, fuzzy
 msgid "race^Ogres"
-msgstr ""
+msgstr "Ogres"
 
 #: data/english.cfg:29
 #, fuzzy
@@ -2096,22 +2100,24 @@ msgid "ranged"
 msgstr "à distance"
 
 #: data/english.cfg:51
+#, fuzzy
 msgid "Wesnoth unit list"
-msgstr ""
+msgstr "Liste des unités Wesnoth"
 
 #: data/english.cfg:52
+#, fuzzy
 msgid "Based on version"
-msgstr ""
+msgstr "Basé sur la version"
 
 #: data/english.cfg:53
 #, fuzzy
 msgid "Race"
-msgstr "masse"
+msgstr "Race"
 
 #: data/english.cfg:54
 #, fuzzy
 msgid "Advance from"
-msgstr "Évolue en : "
+msgstr "Évolue à partir de"
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -3152,6 +3158,7 @@ msgid "Wrap Up"
 msgstr "Conclusion"
 
 #: data/help.cfg:247
+#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3385,6 +3392,7 @@ msgid ""
 msgstr "Les unités mortes-vivantes sont immunisées contre le poison."
 
 #: data/help.cfg:323
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4495,6 +4503,7 @@ msgstr ""
 "(inscrit par Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:130
+#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4548,6 +4557,7 @@ msgstr ""
 "(inscrit par Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:150
+#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -6333,6 +6343,7 @@ msgid "Pirate Galleon"
 msgstr "Galion pirate"
 
 #: data/units/Boat_Pirate_Galleon.cfg:17
+#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them to "
@@ -6340,7 +6351,7 @@ msgid ""
 msgstr ""
 "Les galions pirates sont aux navires de transport ce que les loups sont aux "
 "brebis. Les navires chargés de marchandises ne devraient pas être seuls si "
-"loin de la terre... Il vaut mieux les aider à ne pas couler par excès de "
+"loin des terres... Il vaut mieux les aider à ne pas couler par excès de "
 "chargement."
 
 #: data/units/Boat_Pirate_Galleon.cfg:19
@@ -12264,8 +12275,9 @@ msgid "The replay could not be saved"
 msgstr "Le jeu ne peut pas être sauvegardé"
 
 #: src/playcampaign.cpp:342
+#, fuzzy
 msgid "Downloading next level..."
-msgstr "Téléchargement du prochain niveau..."
+msgstr "Téléchargement du prochain scénario..."
 
 #: src/playcampaign.cpp:422
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
@@ -12669,20 +12681,12 @@ msgstr "Vous pouvez voir le résultat à l'adresse : "
 msgid "Help us make Wesnoth better for you!"
 msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 
-#, fuzzy
-#~ msgid "Yes"
-#~ msgstr "Oui !"
-
 #~ msgid ""
 #~ "You can come if you wish, but the leader is only interested in speaking "
 #~ "to Baldras."
 #~ msgstr ""
 #~ "Vous pouvez venir si vous le voulez, mais le chef ne souhaite parler qu'à "
 #~ "Baldras."
-
-#, fuzzy
-#~ msgid "Potion of bleach"
-#~ msgstr "Potion de dégénérescence"
 
 #~ msgid "Sulla's statue"
 #~ msgstr "La statue de Sulla"
@@ -12860,6 +12864,9 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 
 #~ msgid "Computer vs Computer"
 #~ msgstr "Ordinateur contre ordinateur"
+
+#~ msgid "Receiving data..."
+#~ msgstr "Réception des données du jeu..."
 
 #~ msgid "+Core Developers"
 #~ msgstr "+Noyau dur"

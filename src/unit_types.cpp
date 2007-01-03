@@ -89,71 +89,6 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 	}
 }
 
-config& attack_type::get_cfg()
-{
-	return cfg_;
-}
-const config& attack_type::get_cfg() const
-{
-	return cfg_;
-}
-
-const t_string& attack_type::name() const
-{
-	return description_;
-}
-
-const std::string& attack_type::id() const
-{
-	return id_;
-}
-
-const std::string& attack_type::type() const
-{
-	return type_;
-}
-
-const std::string& attack_type::icon() const
-{
-	return icon_;
-}
-
-attack_type::RANGE attack_type::range_type() const
-{
-	return range_type_;
-}
-
-const std::string& attack_type::range() const
-{
-	return range_;
-}
-
-int attack_type::damage() const
-{
-	return damage_;
-}
-
-int attack_type::num_attacks() const
-{
-	return num_attacks_;
-}
-
-double attack_type::attack_weight() const
-{
-	return attack_weight_;
-}
-
-double attack_type::defense_weight() const
-{
-	return defense_weight_;
-}
-
-
-int attack_type::movement_used() const
-{
-	return cfg_["movement_used"] == "" ? 100000 : lexical_cast_default<int>(cfg_["movement_used"]);
-}
-
 const attack_animation& attack_type::animation(const display& disp, const gamemap::location& loc,const unit* my_unit,
 		const fighting_animation::hit_type hit,const attack_type*secondary_attack,int swing_num,int damage) const
 {
@@ -381,11 +316,6 @@ bool attack_type::has_special_by_id(const std::string& special) const
 	return false;
 }
 
-
-unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent)
-             : cfg_(cfg), parent_(parent)
-{}
-
 const t_string& unit_movement_type::name() const
 {
 	const t_string& res = cfg_["name"];
@@ -550,11 +480,6 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 	return res;
 }
 
-int unit_movement_type::damage_against(const attack_type& attack) const
-{
-	return resistance_against(attack);
-}
-
 int unit_movement_type::resistance_against(const attack_type& attack) const
 {
 	bool result_found = false;
@@ -599,20 +524,6 @@ bool unit_movement_type::is_flying() const
 		return parent_->is_flying();
 
 	return utils::string_bool(flies);
-}
-
-const config& unit_movement_type::get_cfg() const
-{
-	return cfg_;
-}
-const unit_movement_type* unit_movement_type::get_parent() const
-{
-	return parent_;
-}
-
-void unit_movement_type::set_parent(const unit_movement_type* parent)
-{
-	parent_ = parent;
 }
 
 unit_type::unit_type(const unit_type& o)
@@ -960,15 +871,6 @@ const unit_type& unit_type::get_variation(const std::string& name) const
 	}
 }
 
-unsigned int unit_type::num_traits() const {
-  return (cfg_["num_traits"].size() ? atoi(cfg_["num_traits"].c_str()) : race_->num_traits());
-}
-
-std::string unit_type::generate_description() const
-{
-	return race_->generate_name(cfg_["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE);
-}
-
 const std::string& unit_type::id() const
 {
 	if(id_.empty()) {
@@ -985,10 +887,6 @@ const std::string& unit_type::id() const
 	return id_;
 }
 
-const t_string& unit_type::language_name() const
-{
-	return cfg_["name"];
-}
 
 #if 0
 const std::string& unit_type::name() const
@@ -997,10 +895,6 @@ const std::string& unit_type::name() const
 }
 #endif
 
-const std::string& unit_type::image() const
-{
-	return cfg_["image"];
-}
 
 const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 {
@@ -1038,10 +932,6 @@ const t_string& unit_type::unit_description() const
 		return desc;
 }
 
-int unit_type::hitpoints() const
-{
-	return atoi(cfg_["hitpoints"].c_str());
-}
 
 std::vector<attack_type> unit_type::attacks() const
 {
@@ -1054,15 +944,6 @@ std::vector<attack_type> unit_type::attacks() const
 	return res;
 }
 
-const unit_movement_type& unit_type::movement_type() const
-{
-	return movementType_;
-}
-
-int unit_type::cost() const
-{
-	return atoi(cfg_["cost"].c_str());
-}
 
 namespace {
 	int experience_modifier = 100;
@@ -1078,7 +959,7 @@ unit_type::experience_accelerator::~experience_accelerator()
 	experience_modifier = old_value_;
 }
 
-int unit_type::experience_accelerator::get_acceleration()
+int unit_type::experience_accelerator::get_acceleration() 
 {
 	return experience_modifier;
 }
@@ -1093,42 +974,7 @@ int unit_type::experience_needed(bool with_acceleration) const
 	return experience_needed_;
 }
 
-std::vector<std::string> unit_type::advances_to() const
-{
-    return advances_to_;
-}
 
-const config::child_list& unit_type::modification_advancements() const
-{
-	return cfg_.get_children("advancement");
-}
-
-const std::string& unit_type::undead_variation() const
-{
-        return cfg_["undead_variation"];
-}
-
-
-
-const std::string& unit_type::usage() const
-{
-	return cfg_["usage"];
-}
-
-int unit_type::level() const
-{
-	return atoi(cfg_["level"].c_str());
-}
-
-int unit_type::movement() const
-{
-	return atoi(cfg_["movement"].c_str());
-}
-
-unit_type::ALIGNMENT unit_type::alignment() const
-{
-	return alignment_;
-}
 
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align)
 {
@@ -1140,37 +986,6 @@ const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
 {
 	static const char* aligns[] = { "lawful", "neutral", "chaotic" };
 	return (aligns[align]);
-}
-
-fixed_t unit_type::alpha() const
-{
-	return alpha_;
-}
-
-const std::vector<std::string>& unit_type::abilities() const
-{
-	return abilities_;
-}
-
-const std::vector<std::string>& unit_type::ability_tooltips() const
-{
-	return ability_tooltips_;
-}
-
-
-bool unit_type::not_living() const
-{
-	return race_->not_living();
-}
-
-bool unit_type::can_advance() const
-{
-	return !advances_to_.empty();
-}
-
-bool unit_type::has_zoc() const
-{
-	return zoc_;
 }
 
 bool unit_type::has_ability(const std::string& ability) const
@@ -1196,20 +1011,6 @@ bool unit_type::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-const std::vector<config*>& unit_type::possible_traits() const
-{
-	return possibleTraits_;
-}
-
-bool unit_type::has_random_traits() const
-{
-	return (num_traits() > 0 && possibleTraits_.size() > 1);
-}
-
-const std::vector<unit_race::GENDER>& unit_type::genders() const
-{
-	return genders_;
-}
 
 const std::string& unit_type::race() const
 {
@@ -1219,11 +1020,6 @@ const std::string& unit_type::race() const
 	}
 
 	return race_->name();
-}
-
-bool unit_type::hide_help() const
-{
-	return hide_help_;
 }
 
 
@@ -1257,11 +1053,6 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		lg::info(lg::config) << "variation advancement: ";
 		v->second->add_advancement(to_unit,xp);
 	}
-}
-
-const std::string& unit_type::flag_rgb() const
-{
-        return flag_rgb_;
 }
 
 

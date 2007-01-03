@@ -20,7 +20,7 @@ CKey::CKey() : is_enabled(true)
 	key_list = SDL_GetKeyState( &num_keys );
 }
 
-int CKey::operator[]( int code )
+int CKey::operator[]( int code ) const
 {
 	return (code == SDLK_ESCAPE || is_enabled) && int(key_list[code]);
 }

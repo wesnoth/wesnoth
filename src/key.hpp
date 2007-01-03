@@ -25,7 +25,7 @@ class CKey {
 public:
 	CKey();
 
-	int operator[](int);
+	int operator[](int) const;
 	void SetEnabled(bool enable);
 private:
 	Uint8 *key_list;

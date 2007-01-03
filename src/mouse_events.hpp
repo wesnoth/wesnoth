@@ -93,7 +93,7 @@ private:
 	paths::route current_route_;
 	paths current_paths_;
 	bool enemy_paths_;
-	mutable unit_map visible_units_;
+	unit_map visible_units_;
 	int path_turns_;
 	unsigned int team_num_;
 
