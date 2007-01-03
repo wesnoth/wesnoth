@@ -49,7 +49,7 @@ public:
 	const terrain_label* set_label(const gamemap::location& loc, 
 							   const std::string& text,
 							   replay* = 0,
-							   const std::string team = std::string(),
+							   const std::string team = "",
 							   const SDL_Color colour = font::NORMAL_COLOUR);
 	
 	void add_label(const gamemap::location&,
