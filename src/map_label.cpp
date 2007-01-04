@@ -176,11 +176,14 @@ const terrain_label* map_labels::set_label(const gamemap::location& loc,
 			
 			delete current_label->second;
 			const_cast<label_map&>(current_label_map->second).erase(loc);
-			
-			const team_label_map::const_iterator global_label_map = labels_.find("");
 					
-			const label_map::const_iterator itor = global_label_map->second.find(loc);
-			const bool update = itor != global_label_map->second.end();
+			team_label_map::iterator global_label_map = labels_.find("");
+			label_map::iterator itor;
+			bool update = false;
+			if(global_label_map != labels_.end()) {
+				itor = global_label_map->second.find(loc);
+				update = itor != global_label_map->second.end();
+			}
 			if (update)
 			{
 				const_cast<terrain_label*>(itor->second)->recalculate();
@@ -201,11 +204,14 @@ const terrain_label* map_labels::set_label(const gamemap::location& loc,
 	}
 	else if(!text.empty())
 	{
-		const team_label_map::const_iterator global_label_map = labels_.find("");
-					
-		const label_map::const_iterator itor = global_label_map->second.find(loc);
-		const bool update = itor != global_label_map->second.end();
-		
+		team_label_map::iterator global_label_map = labels_.find("");
+		label_map::iterator itor;
+		bool update = false;
+		if(global_label_map != labels_.end()) {
+			itor = global_label_map->second.find(loc);
+			update = itor != global_label_map->second.end();
+		}
+
 		terrain_label* label = new terrain_label(text,
 				team_name,
 				loc,
