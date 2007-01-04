@@ -384,7 +384,7 @@ class unit
 		std::vector<healed_animation> healed_animations_;
 		std::vector<poison_animation> poison_animations_;
 		unit_animation *anim_;
-		Uint32 next_idling;
+		int next_idling;
 		int frame_begin_time;
 
 
