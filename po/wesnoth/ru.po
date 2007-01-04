@@ -14,18 +14,21 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: ru\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-04 20:05+0100\n"
-"PO-Revision-Date: 2006-09-15 18:35+0600\n"
+"PO-Revision-Date: 2007-01-05 01:39+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
-"Language-Team:  <ru@li.org>\n"
+"Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.2\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: data/abilities.cfg:8
 msgid "heals +4"
@@ -283,7 +286,7 @@ msgstr ""
 
 #: data/abilities.cfg:432 data/abilities.cfg:441
 msgid "plague"
-msgstr "чумный"
+msgstr "чума"
 
 #: data/abilities.cfg:434 data/abilities.cfg:443
 msgid ""
@@ -292,7 +295,7 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
-"Чумный:\n"
+"Чума:\n"
 "Когда соединение убито чумой, то оно заменяется на идентичное соединение "
 "убившего, и переходит на его сторону. (Это не работает на мертвецов или на "
 "соединения, находящиеся в деревнях)"
@@ -415,16 +418,15 @@ msgid "poison"
 msgstr "яд"
 
 #: data/abilities.cfg:532
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. "
 msgstr ""
 "Яд:\n"
-"Данный вид атаки отравляет соединение. Отравленное соединение теряет 8 "
-"единиц здоровья здоровья каждый ход, до тех пор, пока соединения не "
-"исцелится, либо пока его здоровье не уменьшится до 1 единицы."
+"Данный вид атаки отравляет живых. Отравленное соединение теряет 8 ЗД каждый "
+"ход до тех пор, пока оно не исцелится, либо пока его здоровье не уменьшится "
+"до 1 ЗД."
 
 #: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
 #: data/campaigns/Heir_To_The_Throne.cfg:33
@@ -440,7 +442,7 @@ msgstr "Музыка"
 
 #: data/about.cfg:72
 msgid "Sound effects"
-msgstr ""
+msgstr "Звуковые эффекты"
 
 #: data/about.cfg:81
 msgid "Scenario Designers"
@@ -605,9 +607,8 @@ msgid "Turkish Translation"
 msgstr "Турецкий перевод"
 
 #: data/about.cfg:561
-#, fuzzy
 msgid "Valencian Translation"
-msgstr "Словенский перевод"
+msgstr "Валенсийский перевод"
 
 #: data/about.cfg:568 data/help.cfg:252
 msgid "Contributors"
@@ -1938,41 +1939,39 @@ msgstr "Мертвецы"
 
 #: data/english.cfg:21
 msgid "race^Dwarves"
-msgstr ""
+msgstr "Гномы"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "Гоблины"
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
-msgstr "Мертвецы"
+msgstr "Ящерицы"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Механизмы"
 
 #: data/english.cfg:25
 msgid "race^Mermen"
-msgstr ""
+msgstr "Водяные"
 
 #: data/english.cfg:26
 msgid "race^Monsters"
-msgstr ""
+msgstr "Монстры"
 
 #: data/english.cfg:27
 msgid "race^Nagas"
-msgstr ""
+msgstr "Наги"
 
 #: data/english.cfg:28
 msgid "race^Ogres"
-msgstr ""
+msgstr "Огры"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Troll"
-msgstr "Тролль"
+msgstr "Тролли"
 
 #: data/english.cfg:32
 msgid "$name's Bridge,$name's Crossing"
@@ -1996,7 +1995,7 @@ msgstr "Озеро $name"
 
 #: data/english.cfg:37
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr "$name|берри,$name|хем,$name|тон"
+msgstr "$name|берри,$name|гем,$name|тон"
 
 #: data/english.cfg:38
 msgid "$name|harbor,$name|port"
@@ -2004,29 +2003,29 @@ msgstr "$name|харбор,$name|порт"
 
 #: data/english.cfg:39
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr "$name|хэм,$name|форд,$name|кросс,$river|форд,$river|кросс"
+msgstr "$name|гем,$name|форд,$name|кросс,$river|форд,$river|кросс"
 
 #: data/english.cfg:40
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "$river|бридж,$river|бридж,$river|бридж,$name|хэм,$name|бридж"
+msgstr "$river|бридж,$river|бридж,$river|бридж,$name|гемм,$name|бридж"
 
 #: data/english.cfg:41
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name|хэм,$name|тон,$name|филд"
+msgstr "$name|гем,$name|тон,$name|филд"
 
 #: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "$name|хэм,$name|тон,$name|вуд,$name лес"
+msgstr "$name|гем,$name|тон,$name|вуд,$name лес"
 
 #: data/english.cfg:43
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|хэм,$name|берри,$name|тон,$name|хилл,$name|крест"
+msgstr "$name|гем,$name|берри,$name|тон,$name|хилл,$name|крест"
 
 #: data/english.cfg:44
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name|хэм,$name|берри,$name|тон,$name|монт,$name|монт,$name|клиф,$name|клиф"
+"$name|гем,$name|берри,$name|тон,$name|монт,$name|монт,$name|клиф,$name|клиф"
 
 #: data/english.cfg:47
 msgid "melee"
@@ -2038,16 +2037,15 @@ msgstr "дальний"
 
 #: data/english.cfg:51
 msgid "Wesnoth unit list"
-msgstr ""
+msgstr "Список соединений Веснота"
 
 #: data/english.cfg:52
 msgid "Based on version"
-msgstr ""
+msgstr "Основан на версии"
 
 #: data/english.cfg:53
-#, fuzzy
 msgid "Race"
-msgstr "булава"
+msgstr "Раса"
 
 #: data/english.cfg:54
 #, fuzzy
@@ -3241,11 +3239,11 @@ msgstr ""
 
 #: data/help.cfg:306
 msgid "Fearless"
-msgstr ""
+msgstr "Бесстрашный"
 
 #: data/help.cfg:307
 msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr ""
+msgstr "Над этими смелыми индивидами не властна смена дня и ночи."
 
 #: data/help.cfg:312
 msgid "Loyal"
@@ -3288,11 +3286,11 @@ msgid "trait^Undead"
 msgstr "Мертвец"
 
 #: data/help.cfg:321
-#, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
-msgstr "Мертвецы невосприимчивы к яду."
+msgstr ""
+"Мертвецы невосприимчивы к яду, осушение и чума также не действует на них."
 
 #: data/help.cfg:323
 msgid ""
@@ -3339,13 +3337,15 @@ msgstr ""
 
 #: data/help.cfg:336
 msgid "Healthy"
-msgstr ""
+msgstr "Здоровяк"
 
 #: data/help.cfg:337
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and "
 "recover more quickly when resting."
 msgstr ""
+"Оправдывая свою живучесть, некотрые гномы крепче других и восстанавливаются "
+"быстрее во время отдыха."
 
 #: data/help.cfg:343 data/terrain.cfg:131
 msgid "Grassland"
@@ -3388,7 +3388,6 @@ msgid "Forest"
 msgstr "Лес"
 
 #: data/help.cfg:368
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3405,20 +3404,21 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
-"Лесом считается любая покрытая деревьями местность с подлеском, достаточно "
-"густым, чтобы препятствовать передвижению. Хотя он и замедляют практически "
-"всех, лес предоставляет большинству соединений лучшую защиту, чем открытое "
-"пространство. Однако, для кавалерии лес доставляет столько неудобства при "
-"движении по нему, что любые преимущества скрытности теряются. Эльфы являются "
-"исключением из этого правила. Они не только владеют способностью к "
-"максимальному передвижению в лесу, но и получают значительный защитный "
-"бонус. Гномы являются другим исключением из этого правила, хотя они и могут "
-"пробираться через лес без значительной потери скорости, их абсолютное "
-"незнание этой местности приводит к отсутствию защитных бонусов.\n"
+"Лесом считается любая покрытая деревьями местность с подлеском, достаточным, "
+"чтобы спрятаться. Хотя он и замедляют практически всех, лес предоставляет "
+"большинству соединений лучшую защиту, чем открытое пространство. Однако, для "
+"кавалерии лес доставляет столько неудобства при движении по нему, что любые "
+"преимущества скрытности теряются. Эльфы являются исключением из этого "
+"правила. Они не только максимально быстро передвигаются в лесу, но и "
+"получают значительный защитный бонус. Гномы являются другим исключением из "
+"этого правила, хотя они и могут пробираться через лес без значительной "
+"потери скорости, их абсолютное незнание этой местности приводит к отсутствию "
+"защитных бонусов.\n"
 "\n"
 "Большинство соединений имеют 50% защиты в лесах, но кавалерия ограничена "
 "40%. Эльфы, включая всадников, наоборот, получают от 60 до 70% защиты. Гномы "
-"обычно получают только 30% защиты в лесах. "
+"обычно получают только 30% защиты в лесах.\n"
+"\n"
 
 #: data/help.cfg:373 data/terrain.cfg:318
 msgid "Hills"
@@ -3580,7 +3580,6 @@ msgid "Castle"
 msgstr "Замок"
 
 #: data/help.cfg:448
-#, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -3592,14 +3591,15 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"Замки — это любой тип стационарных укреплений. Практически все соединения "
-"получают значительный бонус к своей защите, находясь в замке, кроме того, "
+"Замки — это любой тип постоянных укреплений. Практически все соединения, "
+"находясь в замке, получают значительный бонус к своей защите, кроме того, "
 "все соединения получают полный запас движения в замке. Размещение соединений "
 "в замке обуславливает их защитные свойства. Если соединения находятся не во "
 "всех ячейках укрепления, враг просто может беспрепятственно пробраться в "
 "замок, получив такой же защитный бонус, как и все находящиеся внутри.\n"
 "\n"
-"Большинство соединений имеет около 60% защиты в замке."
+"Большинство соединений имеет около 60% защиты в замке.\n"
+"\n"
 
 #: data/help.cfg:453 data/terrain.cfg:89
 msgid "Sand"
@@ -3756,7 +3756,6 @@ msgid "Village"
 msgstr "Деревня"
 
 #: data/help.cfg:526
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -3778,7 +3777,8 @@ msgstr ""
 "отравления.\n"
 "\n"
 "Большинство соединений имеют от 50 до 60% защиты в деревнях, в то время как "
-"кавалерия получает только 40%."
+"кавалерия получает только 40%.\n"
+"\n"
 
 #: data/help.cfg:531 data/terrain.cfg:429
 msgid "Chasm"
@@ -3882,47 +3882,46 @@ msgid "General commands"
 msgstr "Основные команды"
 
 #: data/help.cfg:577
-#, fuzzy
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Выйти из сценария (без подтверждения)."
+"Выйти из сценария (без подтверждения).\n"
+"\n"
 
 #: data/help.cfg:580
-#, fuzzy
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Сохранить игру (без подтверждения)."
+"Сохранить игру (без подтверждения).\n"
+"\n"
 
 #: data/help.cfg:583
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Сохранить игру и выйти из сценария (без подтверждения)."
+"Сохранить игру и выйти из сценария (без подтверждения).\n"
+"\n"
 
 #: data/help.cfg:586
-#, fuzzy
 msgid ""
 "\n"
 "Redraw the screen.\n"
 "\n"
 msgstr ""
 "\n"
-"Перерисовать изображение."
+"Перерисовать изображение.\n"
+"\n"
 
 #: data/help.cfg:589
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -3931,21 +3930,18 @@ msgid ""
 msgstr ""
 "\n"
 "Переключиться в режим отладки (не работает в многопользовательской игре). "
-"Этот режим отключается при выходе из игры."
+"Этот режим отключается при выходе из игры.\n"
+"\n"
 
 #: data/help.cfg:590
-#, fuzzy
 msgid "Bring up theme selection menu."
-msgstr ""
-"\n"
-"Вывести меню выбора темы."
+msgstr "Вывести меню выбора темы."
 
 #: data/help.cfg:595
 msgid "Multiplayer commands"
 msgstr "Команды многопользовательской игры"
 
 #: data/help.cfg:599
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -3956,20 +3952,20 @@ msgstr ""
 "\n"
 "Переключить тип игрока между человеком и компьютером. Игрок/клиент, "
 "контролирующий эту сторону должен быть предупрежден. Если вы не укажете "
-"сторону, то будет использована \"1\"."
+"сторону, то будет использована \"1\".\n"
+"\n"
 
 #: data/help.cfg:602
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Включить/выключить сообщения всех наблюдателей."
+"Включить/выключить сообщения всех наблюдателей.\n"
+"\n"
 
 #: data/help.cfg:605
-#, fuzzy
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3978,10 +3974,10 @@ msgid ""
 msgstr ""
 "\n"
 "Отключить сообщения определенного наблюдателя. Если не указано имя, то "
-"отключаемые имена будут выведены. "
+"отключаемые имена будут выведены.\n"
+"\n"
 
 #: data/help.cfg:608
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -3992,10 +3988,10 @@ msgstr ""
 "\n"
 "Выбросить игрока из игры. Он также может вернуться назад. Обычно это "
 "дружественный способ убрать кого-нибудь, испытывающего проблемы с "
-"соединением."
+"соединением.\n"
+"\n"
 
 #: data/help.cfg:611
-#, fuzzy
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -4004,10 +4000,10 @@ msgid ""
 msgstr ""
 "\n"
 "Выбросить и запретить игрока в многопользовательской игре, а также его IP-"
-"адрес, используемый этим именем."
+"адрес, используемый этим именем.\n"
+"\n"
 
 #: data/help.cfg:614
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4016,7 +4012,8 @@ msgid ""
 msgstr ""
 "\n"
 "Сменить управляющего стороной (впишите здесь номер стороны) на ник (впишите "
-"здесь ник игрока или наблюдателя)."
+"здесь ник игрока или наблюдателя).\n"
+"\n"
 
 #: data/help.cfg:615
 msgid ""
@@ -4615,13 +4612,12 @@ msgstr ""
 "многосторонней дуэльной карте. Рекомендуемые настройки — 2 золота на деревню."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "Статус"
+msgstr "статуя"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Это каменная скульптура."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
@@ -4639,7 +4635,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:66
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Статуя Суллы"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:68
 msgid ""
@@ -4649,38 +4645,42 @@ msgid ""
 "Leveling Flame, Sulla the Incinerator, Sulla the Proud and Sulla the "
 "Righteous."
 msgstr ""
+"Каменное изваяние Суллы Великой, также известной как Сулла Справедливая, "
+"Сулла Суровая, Императрица Подводной Башни, Наследница Сокрушающих Штормов, "
+"Дама Ходячего Ледника, Хранительница Огненной Волны, Королева Высокого огня, "
+"Сулла Испепеляющая, Сулла Великолепная и Сулла Праведная."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:71
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Статуя Лун-дапа"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Каменное изваяние Лун-дапа, слуги Суллы."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:75
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Статуя Ри-нзена"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:76
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Каменное изваяние Ри-нзена, слуги Суллы."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:79
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Статуя Тен-зина"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:80
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Каменное изваяние Тен-зина, слуги Суллы."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:83
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Статуя Ло-бзанга"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:84
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Каменное изваяние Ло-бзанга, слуги Суллы."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4838,20 +4838,18 @@ msgid "4p - Castle Hopping Isle"
 msgstr "4и — Замок Хмельного острова"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid ""
 "Hop from castle to castle while fighting over a central isle. Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Две армии сталкиваются на разделенном побережье скрытых пещер и бурных рек. "
-"Рекомендуемые настройки — 2 золота на деревню."
+"Пляски с замка на замок в битвах вокруг острова. Рекомендуемые настройки — 2 "
+"золота на деревню."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
 msgstr "4и — Столкновение"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs. 2. Recommended setting of 2 gold per village."
 msgstr ""
 "Небольшая карта для 2 против 2. Рекомендуемые настройки — 2 золота на "
@@ -4862,7 +4860,6 @@ msgid "4p - Isar's Cross"
 msgstr "4и — Перекресток Исара"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map.  Close quarters fighting means the successful "
 "rotation of units and planning of moves is important.  Teams set for players "
@@ -4871,8 +4868,8 @@ msgid ""
 msgstr ""
 "Очень маленькая карта 2 против 2. Близкорасположенные боевые позиции "
 "означают быструю смену соединений и тщательное планирование ходов. Игроки "
-"расположены так: 1 и 4 против 2 и3 (север против юга). Расчитана на 75 "
-"золотых, 20 деревень."
+"расположены так: 1 и 4 против 2 и 3 (север против юга). Расчитана на 75 "
+"золотых в начале, 20 деревень."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:15
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:39
@@ -4903,7 +4900,6 @@ msgid "4p - King of the Hill"
 msgstr "4и — Царь горы"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages. "
@@ -4911,7 +4907,8 @@ msgid ""
 msgstr ""
 "На этой карте размером 36х36 для четырех игроков (каждый за себя) контроль "
 "территории вокруг центрального укрытия принесет высокую прибыль. Подходит и "
-"для 2 против 2. 36 деревень. Рекомендуемые настройки — 2 золота на деревню."
+"для 2 против 2. Имеется 36 деревень. Рекомендуемые настройки — 2 золота на "
+"деревню и 150 золота при старте. "
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:23
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:28
@@ -4948,14 +4945,13 @@ msgid "4p - Loris River"
 msgstr "4и — Река Лориса"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages. Recommended setting "
 "of 2 gold per village."
 msgstr ""
 "Карта 2 против 2 размером 25х25 с рекой по середине и укрытиях в "
-"противоположных углах. Создана для 1 и 4 против 2 и 3. 28 деревень. "
+"противоположных углах. Создана для 1 и 4 против 2 и 3. Имеется 28 деревень. "
 "Рекомендуемые настройки — 2 золота на деревню."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
@@ -4975,7 +4971,6 @@ msgid "4p - Paths of Daggers"
 msgstr "4и — Путь кинжалов"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement.  Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA.  "
@@ -4983,22 +4978,23 @@ msgid ""
 msgstr ""
 "Карта 2 против 2 размером 35х27 с пятью различными путями для наступления. "
 "Разработана для игры запада против востока (1 и 4 против 2 и 3), но также "
-"хороша и для других вариантов. 2 золота на деревню, 28 деревень."
+"хороша и для других вариантов. Рекомендуемые настройки — 2 золота на "
+"деревню, 28 деревень."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4и — Осаждаемые замки"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2 gold per village and 150 starting gold."
 msgstr ""
-"Карта размером 30х30 для 4 игроков, на которой 4 могущественных замка "
+"Карта размером 40х30 для 4 игроков, на которой 4 могущественных замка "
 "разделены на месте слияния двух рек. Подходит для 2 против 2 и каждый за "
-"себя. Примерно 45 деревень. Рекомендуемые настройки — 2 золота на деревню."
+"себя. Имеется примерно 45 деревень. Рекомендуемые настройки — 2 золота на "
+"деревню и 150 золота в начале."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -5060,60 +5056,57 @@ msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "командная игра 2 на 2 или 3 на 3."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
-#, fuzzy
 msgid "Turn 2: Loyalists"
-msgstr "Верноподданные"
+msgstr "Шаг 2: Верноподданные"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:173
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "Шаг 5: Кналга"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:174
-#, fuzzy
 msgid "Turn 8: Rebels"
-msgstr "Мятежники"
+msgstr "Шаг 8: Мятежники"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:175
-#, fuzzy
 msgid "Turn 11: Northerners"
-msgstr "Северяне"
+msgstr "Шаг 11: Северяне"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:176
-#, fuzzy
 msgid "Turn 14: Drakes"
-msgstr "Ураганный дракон"
+msgstr "Шаг 14: Драконы"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:177
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "Шаг 17: Нежить"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:178
 msgid "Tower of Doom"
-msgstr ""
+msgstr "Роковая башня"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:299
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6и — Командное выживание"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
+"Сценарий, задачей которого является выживание на максимально возможный срок."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-msgstr ""
+msgstr "Совет: изучение точек появления противника и их тип весьма поможет."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "Продержитесь 32 хода."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
 msgid "Survival all enemy attacks."
-msgstr ""
+msgstr "Отбейте все атаки противника."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
 msgid "Death of your team leaders."
-msgstr ""
+msgstr "Гибель лидеров команды."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
 msgid ""
@@ -5121,12 +5114,17 @@ msgid ""
 "impossible. Frankly, I don't got a clue to how you did it, so send me the "
 "replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"Поздравляю, много людей признало, что выжить на этой карте невозможно. Даже "
+"я не представляю, как вам удалось это, поэтому, пожалуйста, отправьте повтор "
+"мне на электронный адрес roze@roze.mine.nu. Спасибо!"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
+"Вы проиграли эту битву, но не отчаивайтесь. Вы всегда можете попробовать "
+"снова. И снова. И снова. *Хехехе*"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
@@ -5145,17 +5143,16 @@ msgid "6p - Waterloo Sunset"
 msgstr "6и — Рассвет Ватерлоо"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3 vs. 3 map.  Flexible coordination of your alliance is required to "
 "avoid being outnumbered.  Teams set for players 145 vs. 236 (north vs. "
 "south), but having players 146 or 136 as a team is also interesting.  "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
-"Карта 40х40 для 3 против 3. Понадобится гибкая координация силами ваших "
+"Карта 40х30 для 3 против 3. Понадобится гибкая координация силами ваших "
 "союзников для предотвращения свалок соединений. Команды разделены как 145 "
 "против 236 (север против юга), но варианты 146 или 136 также интересны. "
-"Разработана для 150 золота, 44 деревни."
+"Разработана для 150 золота в начале, имеется 44 деревни."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
@@ -5175,7 +5172,6 @@ msgid "9p - Merkwuerdigliebe"
 msgstr "9и — Мерквуердиглиебе"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
-#, fuzzy
 msgid ""
 "A very small 3 vs. 3 vs. 3 map.  A 60sec timer is recommended due to the "
 "large number of players.  The teams are players 159 vs. 267 vs. 348 (north "
@@ -5185,7 +5181,8 @@ msgstr ""
 "Очень маленькая карта для 3 против 3 против 3. Из-за большого числа игроков "
 "рекомендуется установить таймер в 60 секунд. Игроки разбиты на команды 159 "
 "против 267 против 348 (север против юго-востока против юго-запада). Здесь "
-"очень мало деревень, поэтому рекомендуемые настройки — 3 золота на деревню."
+"очень мало деревень на каждого игрока, поэтому рекомендуемые настройки — 3 "
+"золота на деревню."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -5642,9 +5639,8 @@ msgid "Act."
 msgstr "Действия"
 
 #: data/themes/default.cfg:569
-#, fuzzy
 msgid "short end-turn^E."
-msgstr "конец хода"
+msgstr "К."
 
 #: data/themes/dfool.cfg:218
 msgid "MP"
@@ -5716,7 +5712,7 @@ msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
-"При прохождении кампании, Вы можете использовать соединения-ветеранов из "
+"При прохождении кампании, вы можете использовать соединения-ветеранов из "
 "прошлого сценария, для этого необходимо использовать команду \"призвать\"."
 
 #: data/tips.cfg:3
@@ -6033,9 +6029,8 @@ msgid "loyal"
 msgstr "преданный"
 
 #: data/traits.cfg:7
-#, fuzzy
 msgid "female^loyal"
-msgstr "Изгнанная"
+msgstr "преданная"
 
 #: data/traits.cfg:8
 msgid "Zero upkeep"
@@ -6046,9 +6041,8 @@ msgid "undead"
 msgstr "мертвец"
 
 #: data/traits.cfg:19
-#, fuzzy
 msgid "female^undead"
-msgstr "Бестия"
+msgstr "нежить"
 
 #: data/traits.cfg:20
 msgid "Immune to poison"
@@ -6059,72 +6053,64 @@ msgid "strong"
 msgstr "сильный"
 
 #: data/traits.cfg:28
-#, fuzzy
 msgid "female^strong"
-msgstr "Бестия"
+msgstr "сильная"
 
 #: data/traits.cfg:44
 msgid "dextrous"
 msgstr "ловкий"
 
 #: data/traits.cfg:45
-#, fuzzy
 msgid "female^dextrous"
-msgstr "ловкий"
+msgstr "ловкая"
 
 #: data/traits.cfg:57
 msgid "quick"
 msgstr "быстрый"
 
 #: data/traits.cfg:58
-#, fuzzy
 msgid "female^quick"
-msgstr "Принцесса"
+msgstr "быстрая"
 
 #: data/traits.cfg:73
 msgid "intelligent"
 msgstr "умный"
 
 #: data/traits.cfg:74
-#, fuzzy
 msgid "female^intelligent"
-msgstr "умный"
+msgstr "умная"
 
 #: data/traits.cfg:85
 msgid "resilient"
 msgstr "неунывающий"
 
 #: data/traits.cfg:86
-#, fuzzy
 msgid "female^resilient"
-msgstr "неунывающий"
+msgstr "неунывающая"
 
 #: data/traits.cfg:101
 msgid "healthy"
-msgstr ""
+msgstr "здоровяк"
 
 #: data/traits.cfg:102
-#, fuzzy
 msgid "female^healthy"
-msgstr "Воровка"
+msgstr "здоровячка"
 
 #: data/traits.cfg:103
 msgid "Heals faster if resting"
-msgstr ""
+msgstr "Во время отдыха восстанавливается быстрее"
 
 #: data/traits.cfg:114
-#, fuzzy
 msgid "fearless"
-msgstr "Принцесса"
+msgstr "бесстрашный"
 
 #: data/traits.cfg:115
-#, fuzzy
 msgid "female^fearless"
-msgstr "Принцесса"
+msgstr "бесстрашная"
 
 #: data/traits.cfg:116
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "Бьется нормально во время неблагоприятного времени суток"
 
 #: data/tutorial/units/Fighteress.cfg:3
 msgid "female^Fighter"
@@ -6199,9 +6185,8 @@ msgstr ""
 "отряды для атаки."
 
 #: data/units/Drake_Armageddon.cfg:3
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "Огненный дракон"
+msgstr "Дракон судного дня"
 
 #: data/units/Drake_Armageddon.cfg:22
 msgid ""
@@ -6225,7 +6210,7 @@ msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
 msgstr ""
-"Драконы, мастерски использующие мечи, присягали специальному полку. В битве "
+"Драконы, мастерски использующие мечи, присягали специальному ордену. В битве "
 "их отличают черные и белые боевые цвета."
 
 #: data/units/Drake_Burner.cfg:3
@@ -6240,14 +6225,15 @@ msgid ""
 "foe in combat."
 msgstr ""
 "Дракон поджигатель — один из немногих, кто унаследовал истинную силу от "
-"своих далеких предков, особенно способность дышать огнем. Это способность, в "
-"паре с его размером и когтями на лапах, делают его опасным противником в бою."
+"своих далеких предков, особенно способность дышать огнем. Эта способность, в "
+"паре с размерами и когтями на лапах, делают его опасным противником в бою."
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
 msgstr "Конфликтный дракон"
 
 #: data/units/Drake_Clasher.cfg:20
+#, fuzzy
 msgid ""
 "A Drake Clasher is incapable of both flight and fire-breathing, and most "
 "assume their relegation to melee combat is because of disability - an "
@@ -6299,9 +6285,9 @@ msgid ""
 "hours at the forge have provided them with a bristling array of weaponry, "
 "and have clad them head to toe in shining armor."
 msgstr ""
-"Великий дракон в броне это само воплощение грубой силы. Долгие часы, "
-"проведенные в кузнице, обеспечили ему надежную броню и вооружение, и одели "
-"его вплоть до пальцев ног блестящей броней."
+"Великий дракон в броне — это само воплощение грубой силы его народа. Долгие "
+"часы, проведенные в кузнице, обеспечили ему надежную броню и вооружение, и "
+"одели его вплоть до пальцев ног блестящей броней."
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -6332,8 +6318,8 @@ msgid ""
 "the strength and majesty of their kind."
 msgstr ""
 "Великие огненные драконы являются мастерами своего внутреннего огня. Одетые "
-"в блестящую броню, они извергают столб пламя в любого, кто противостоит ему, "
-"ему дарованы сила и величие."
+"в блестящую броню, они извергают столб пламени в любого, кто противостоит "
+"им. Им дарованы сила и величие своего народа."
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
@@ -6367,8 +6353,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Драконы — это древняя раса, достаточно мудрая, чтобы слушаться своих "
-"собственных естественных правителей. Именуемые своими врагами \"огоньками\", "
-"драконы стремятся стать лидерами, и в мирное, и в военное время.\n"
+"собственных естественных правителей. Те, кого враги называют \"огоньками\", "
+"стремятся стать лидерами везде, и в мирное, и в военное время.\n"
 "\n"
 "Примечание:"
 
@@ -6387,7 +6373,7 @@ msgid ""
 msgstr ""
 "Дракон гладиатор выбрал совершенно другой путь, отличный от дракона "
 "измельчителя. Придавая особое значение тренировкам, он сосредоточился на "
-"совершенствовании мастерства обращения со своим вооружением. Он кузнец "
+"совершенствовании мастерства обращения со своим оружием. Он — кузнец "
 "общества драконов, это значит, что он обладает лучшим вооружением — "
 "острейшими клинками, копьями и булавой, которая дополняет его и без того "
 "внушительный набор. Сосредоточившись на своем вооружении, он меньше времени "
@@ -6457,10 +6443,10 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
-"Летающая разновидность, известная как \"адский дракон\", это существо "
-"владеют огнем, владеющие внутренним огнем, унаследованным от их предков. Его "
-"естественная особенность предоставляет ему иммунитет к огню. Он одет в "
-"яркую, огненную броню и входит в касту гордых и сильных, совершенных существ."
+"Летающая разновидность дракона, известная как \"адский дракон\", является "
+"мастером внутреннего огня, унаследованным от их предков. Его естественная "
+"особенность предоставляет ему иммунитет к огню. Он одет в яркую, огненную "
+"броню и входит в касту гордых и сильных совершенных существ."
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -6479,11 +6465,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Небесные драконы — истинные повелители неба. Используя свое движение и "
-"огненное дыхание в качестве оружия эти драконы многим приносят несчастье. "
+"огненное дыхание в качестве оружия, эти драконы многим принесли несчастье. "
 "Они могут внезапно налетать на свою жертву, и пройдет еще много времени, "
 "прежде чем кто-то опомнится и попытается остановить их. Атакуя с воздуха, "
 "они могут извергнуть огонь с величайшей точностью по местности, которая в "
-"другом случае считалась бы наилучшим укрытием для противника.\n"
+"другом случае считалась бы наилучшим укрытием от противника.\n"
 "\n"
 "Примечание:"
 
@@ -6585,12 +6571,13 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
-"Драконий страж — такое название было дано ему своими собратьями гномами. "
-"Подумав, можно предположить, такое имя ему дали из-за выбранного ими оружия -"
-"это странного предмета, извергающего огонь и смерть. Также есть подозрение, "
-"что его оружие будет настоящей угрозой для настоящего Дракона. Как бы то ни "
-"было, именно с этим оружием они охраняют великие цитадели гномов; это оружие "
-"повергло многих великих воинов с одного выстрела."
+"Неизвестно, почему этих гномов назвали драконими стражами — такое название "
+"было дано их собратьями. Подумав, можно предположить, такое имя ему дали из-"
+"за выбранного ими оружия — странного предмета, извергающего огонь и смерть. "
+"Также есть подозрение, что его оружие будет настоящей угрозой и для "
+"настоящего Дракона. Как бы то ни было, именно с этим оружием они охраняют "
+"великие цитадели гномов; это оружие повергло многих великих воинов с одного "
+"выстрела."
 
 #: data/units/Dwarvish_Dragonguard.cfg:22 data/units/Dwarvish_Thunderer.cfg:38
 #: data/units/Dwarvish_Thunderguard.cfg:22
@@ -6658,9 +6645,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:81
 #: data/units/Human_Loyalist_Javelineer.cfg:82
 #: data/units/Human_Loyalist_Spearman.cfg:202
-#, fuzzy
 msgid "javelin"
-msgstr "Дротикометатель"
+msgstr "дротик"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -6673,10 +6659,10 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
-"Одетые в блестящую броню, эти гномы выглядят как короли гор. Они владеют "
-"топором и мечом в совершенстве, они могут поразить свою жертву, бросая "
-"ручной топор. Хотя они и медленны при ходьбе, эти гномы доблестные "
-"продолжатели традиций своих предков."
+"Одетые в блестящую броню, эти гномы выглядят как короли подгорья. Они "
+"владеют топором и мечом в совершенстве, они могут поразить свою жертву, "
+"бросая ручной топор. Хотя они и медлительны при ходьбе, эти гномы — "
+"доблестные продолжатели традиций своих предков."
 
 #: data/units/Dwarvish_Lord.cfg:27 data/units/Dwarvish_Steelclad.cfg:26
 #: data/units/Undead_Skele_Death_Knight.cfg:44
@@ -6772,16 +6758,16 @@ msgid ""
 "make any of their own, realized they were lucky to no longer be fighting the "
 "dwarves, and vowed never to do so again."
 msgstr ""
-"Когда люди Веснота встретили гномов, они произвели страшное впечатление "
+"Когда люди Веснота встретили гномов, то те произвели страшное впечатление "
 "мощью своих Громовержцев, способных убивать издали с помощью странных... "
-"\"тростей грома\", носимых ими в бою. После установления мира Ка'лианом, "
+"\"громовых тростей\", носимых ими в бою. После установления мира Ка'лианом "
 "люди Халдрика, не понимая этого оружия и не умея его создавать, поняли, что "
 "лучше не воевать с гномами, и поклялись никогда этого не делать."
 
 #: data/units/Dwarvish_Thunderer.cfg:86
 #: data/units/Dwarvish_Thunderguard.cfg:70
 msgid "thunderstick"
-msgstr "трость грома"
+msgstr "громовая трость"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
@@ -6801,7 +6787,7 @@ msgid ""
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
 "Гномы стражи грома знамениты своим таинственным оружием, странным образом "
-"выполненным из железа и дерева и делающим оглушительный звук при "
+"выполненным из железа и дерева и делающим громоподобный звук при "
 "использовании. Механизм действия этого оружия неизвестен, держится гномами "
 "из Кналга в строжайшей тайне и, предположительно, воссоздается при выковке "
 "оружия. Все, что известно, это то, что гномы засыпают странный черный "
@@ -6844,12 +6830,11 @@ msgid ""
 "recruits."
 msgstr ""
 "Эльфы всегда имели репутацию лучников, это умение, по многим причинам, "
-"является естественным для них. Их хрупкое тело могло стать смертельным, "
-"когда у них в руке появлялась стрела, во времена войны многие из них в "
-"качестве оружия используют именно лук и стрелы. Хотя их относительная "
-"неопытность в боях отчасти влияет на их уязвимость, их природная грация "
-"позволяет им быть намного лучше в бою чем только что призванные человеческие "
-"бойцы."
+"является естественным для них. Их хрупкое тело может стать смертельным, "
+"когда у них в руке появлялась стрела. Во время войн многие из них в качестве "
+"оружия используют именно лук и стрелы. Хотя их относительная неопытность в "
+"боях отчасти влияет на их уязвимость, их природная грация позволяет им быть "
+"намного лучше в бою только что призванных рекрутов людей."
 
 #: data/units/Elvish_Archer.cfg:158
 msgid "female^Elvish Archer"
@@ -6904,9 +6889,9 @@ msgid ""
 msgstr ""
 "Эльфы, в отличии от многих других рас, быстро обучаемы и равняются на тех, "
 "кто имеет больший опыт в боях. В этом и есть разница с людьми, которым для "
-"управления отрядами иногда нужно прибегать к насилию и запугиванию. "
-"Сочетание готовности воспринимать опыт своих правителей и тенденции выбирать "
-"себе лидеров из сильнейших является отличительной чертой эльфов.\n"
+"командования иногда нужно прибегать к насилию и запугиванию. Сочетание "
+"готовности воспринимать мудрость своих правителей и тенденции выбирать себе "
+"лидеров из достойнейших является отличительной чертой эльфов.\n"
 "\n"
 "Примечание:"
 
@@ -6923,11 +6908,12 @@ msgid ""
 "a secondary pursuit, is executed with a skill that most of humanity can only "
 "stare at with wonder."
 msgstr ""
-"Эти немногие эльфы, которые сделали из себя оружие войны, не стали "
-"оправдывать послушную репутацию своей расы. Преданность и умение безупречно "
-"сочетаются в них, и как результат — совершенное владение искусством "
-"фехтования, лишь немногие могут сравниться с ними в мастерстве. Люди только "
-"могут изумляться такому чуду."
+"Эти немногие эльфы, которые сделали из себя орудие войны, не стали "
+"оправдывать распространенную репутацию своей расы. Преданность и умение "
+"безупречно сочетаются в них, и как результат — совершенное владение "
+"искусством фехтования, в котором лишь немногие могут сравниться с ними. Даже "
+"принимая во внимание навыки владения лука, изучаемые ими во вторую очередь,  "
+"людям остается только изумляться такому чуду."
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
@@ -6946,7 +6932,7 @@ msgid ""
 msgstr ""
 "Магия лесных эльфов плохо применима для битвы, но эффективна в других "
 "случаях. С помощью леса, в котором они живут, они могут оживлять "
-"заклинаниями и опутывать любого, кто нарушит их мир.\n"
+"заклинаниями и опутывать любого, кто нарушит их спокойствие.\n"
 "\n"
 "Их главная возможность основывается на целительстве, и этот навык "
 "используется эльфийскими друидами в лечении своих собратьев.\n"
@@ -6966,6 +6952,7 @@ msgid "female^Elvish Enchantress"
 msgstr "Эльфийка колдунья"
 
 #: data/units/Elvish_Enchantress.cfg:19
+#, fuzzy
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "the latter is almost universally incapable of understanding it, let alone "
@@ -6975,6 +6962,8 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Магия эльфов совершенно непохожа на магию людей, настолько, что люди никогда "
+"не смогут понять ее. "
 
 #: data/units/Elvish_Enchantress.cfg:69 data/units/Elvish_Shaman.cfg:67
 #: data/units/Elvish_Sorceress.cfg:74
@@ -6992,9 +6981,9 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
-"Эльфы по природе не воинственны, но, если понадобится, природная грация и "
-"ловкость неплохо служит для умелых бойцов. Эльф легко обучается основам "
-"владения мечом и луком в невообразимо короткие сроки и становится "
+"Эльфы по природе не воинственны, но если понадобится, природная грация и "
+"ловкость неплохо служит им, делая их умелыми мастерами. Эльф легко обучается "
+"основам владения мечом и луком в невообразимо короткие сроки и становится "
 "эффективным бойцом на поле боя."
 
 #: data/units/Elvish_Hero.cfg:3
@@ -7007,10 +6996,10 @@ msgid ""
 "fighter into a master of combat. Those who are honored as heroes are strong "
 "with both sword and bow, skills that never fade for lack of practice."
 msgstr ""
-"Относительно небольшое количество опыта необходимо эльфам чтобы из "
+"Относительно небольшое количество опыта необходимо эльфам для того, чтобы из "
 "компетентного бойца превратиться в мастера боя. Они почитаемы как герои и "
-"сильны в обращении как с мечом, так и с луком, мастерство, которое никогда "
-"не увядает в отсутствии практики."
+"сильны в обращении как с мечом, так и с луком. Это мастерство, которое "
+"никогда не увядает в отсутствии практики."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -7029,9 +7018,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Одна из причин, которая способствует умению обращаться с луком — "
-"необыкновенно острое зрение эльфов. Эльф способен поразить мишень, которую "
-"человек не сможет даже разглядеть (особенно ночью), и натягивать тетиву со "
-"второй стрелой в тот момент, когда первая стрела еще находится в полете.\n"
+"необыкновенно острое зрение эльфов. Натренированный эльф способен поразить "
+"мишень, которую человек не сможет даже разглядеть (особенно ночью), и "
+"натягивать тетиву со второй стрелой в тот момент, когда первая стрела еще "
+"находится в полете.\n"
 "\n"
 "Это удивительное умение негативным образом сказалось лишь на отсутствии "
 "навыков владения с мечом.\n"
@@ -7064,9 +7054,9 @@ msgid ""
 msgstr ""
 "Из-за долгожительства и естественного интеллекта эльфы настолько искушены "
 "военном деле, что предпочитают держаться от него подальше. Эльфы знают "
-"намного больше, чем человечество и обычно интуитивно умеют уже то, что "
+"намного больше, чем человечество, и обычно интуитивно умеют уже то, что "
 "другим дается только после долгих тренировок. Несомненно, это редчайший "
-"случай когда эльф использует свой интеллект в войне, становясь в результате "
+"случай, когда эльф использует свой интеллект в войне, становясь в результате "
 "мастером стратегии.\n"
 "\n"
 "Примечание:"
@@ -7087,14 +7077,15 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
-"Эльфы предвестники обучены так же как и королевские курьеры из королевства "
-"эльфов. Несмотря на то, что их народ миролюбив, их опыт делает этих эльфов "
+"Эльфы предвестники используются в качестве королевских курьеров королевства "
+"эльфов. Несмотря на то, что их народ миролюбив, опыт делает этих эльфов "
 "смертельными врагами в бою. Нет такого человека, который мог бы сравниться с "
-"ними в мастерстве владения луком верхом, факт, что большинству будет тяжело "
-"сравниться с ними, даже стоя на земле.\n"
+"ними в мастерстве стрельбы из лука в седле, фактически большинству будет "
+"тяжело сравниться с ними, даже стоя на земле.\n"
 "\n"
-"Скорость этих солдат позволяет наносить удары везде, где они захотят, факт, "
-"что большинство из них избегают смерти."
+"Скорость этих солдат позволяет наносить удары везде, где и когда они "
+"захотят, особенно если они находятся на своей территории, такая тактика "
+"многих спасла от смерти."
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
@@ -7136,13 +7127,13 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
-"Мастерски владея мастерством верховой езды и являясь при этом эльфом, "
-"позволяет ему двигаться через лес в такой скоростью, которая была бы "
-"смертельна для любого человека. Несомненно, такой наездник пугает людей, их "
-"лошади выглядят сверхестественно.\n"
+"Мастера верховой езды среди эльфов могут двигаться сквозь лес в такой "
+"скоростью, которая была бы смертельно опасна для любого человека. "
+"Несомненно, такой наездник поражает воображение людей, но возникает вопрос "
+"об их лошадях, движения которых выглядят сверхестественно.\n"
 "\n"
-"Такая комбинация невероятной мобильности и огромной силы в бою, это "
-"величайшее достижение эльфов, которым они обладают в бою."
+"Такая комбинация невероятной мобильности и огромной силы в бою является "
+"одним из величайших достижений эльфов, доступных им в битве."
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
@@ -7156,7 +7147,7 @@ msgid ""
 "thick of the forest with nary a scratch. They are, perhaps, some of the only "
 "cavalry in existence that fares better in the woods than on open ground."
 msgstr ""
-"Всадники лесных эльфов обучены обращаться луком и мечом, но их настоящим "
+"Всадники лесных эльфов неплохо обращаются с луком и мечом, но их настоящим "
 "навыком является езда на лошади. Как и все эльфы, они невообразимо быстры в "
 "лесу, они могут мчаться сквозь лесные заросли, не поцарапавшись. Возможно, "
 "это единственная из существующих кавалерий, которая передвигается в лесу "
@@ -7182,10 +7173,10 @@ msgstr ""
 "Являясь потомками магических существ, эльфы унаследовали от них способности "
 "к магии. Они могут общаться с природой, призывая ее силу в союзники. "
 "Блуждающие в лесах враги могут оказаться запутанными в корнях, на которых "
-"они стоят, что делает эльфов более опасными.\n"
+"они стоят, делая их менее опасными.\n"
 "\n"
-"Еще одна замечательная способность, которой обладают эльфы, это способность "
-"исцеления, незаменимая в бою.\n"
+"Еще одна замечательная способность, используемая эльфами в битве, это "
+"способность исцеления.\n"
 "\n"
 "Примечание:"
 
@@ -7203,8 +7194,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Легенды рассказывают об эльфе, который остановил стрелу, выстрелив в нее "
-"своей стрелой. К легендам, рассказывающим о таких способностях эльфов нужно "
-"относиться серьезно. Эльфийские снайперы владеют стрельбой из лука в "
+"своей стрелой. Принимая во внимание мастерство эльфов, к подобным легендам "
+"стоит относиться серьезно. Эльфийские снайперы владеют стрельбой из лука в "
 "совершенстве.\n"
 "\n"
 "Примечание:"
@@ -7264,6 +7255,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Редко встречаемые, мудрые Сильфы являются искусницами в фееричной и обычной "
+"природе. Они владеют с чудесами и иногда страшной силой, и мифы других рас о "
+"них полны страха перед эльфами.\n"
+"\n"
+"Примечание:"
 
 #: data/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
@@ -7289,14 +7285,14 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "\"Ужасные волки\" отличаются от лесной разновидности только размером и "
-"цветом. Они обычно больше лошади и у них хороший аппетит. Только сумашедший "
-"захочет встретить с его. Лишь гоблины, у которых очень высокая самооценка, "
-"могут усмирить их, если так можно сказать.\n"
+"цветом. Они обычно больше лошади и у них соответствующий аппетит. Только "
+"сумашедший захочет встретить с его. Лишь гоблины, у которых очень высокая "
+"самооценка, могут усмирить их, если так можно сказать.\n"
 "\n"
-"Когти волка как правило не считаются опасным орудием, но у этого зверя они "
-"огромные, толще и длиннее железных гвоздей. Его наездник использует яд, но "
-"не тот, который используют оркские убийцы, поэтому удар лапой практически "
-"означает смертельный исход противнику.\n"
+"Когти волка, как правило, не считаются опасным орудием, но у этого зверя они "
+"огромные, толще и длиннее железных гвоздей. Наездники используют яд, не "
+"похожий на тот, который используют оркские убийцы, поэтому удар лапой "
+"практически означает смертельный исход противнику.\n"
 "\n"
 "Примечание:"
 
@@ -7342,10 +7338,12 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"Гоблины \"рыцари\" очень похожи на элитных наездников волка, но более "
-"продвинутые, благодаря своим успехам в некоторых безрассудных набегах.\n"
+"Гоблины \"рыцари\" имеют мало общего с настоящими рыцарями, и этот титул "
+"используется лишь в разговорах противника. Схожесть заключается в том, что "
+"они являются элитой среди наездников волков благодаря своим успехам в "
+"некоторых безрассудных набегах или их характеру.\n"
 "\n"
-"Волки, которыми они управляют, рождены для скорости и силы, что делает их "
+"Волки, которыми они управляют, быстры и сильны с рождения, что делает их "
 "очень опасными в бою."
 
 #: data/units/Goblin_Pillager.cfg:3
@@ -7457,9 +7455,8 @@ msgid ""
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
-"Эти магические и мощные создания господствуют в небе. Грифоны опасны и "
-"осмотрительны к другим разумным созданиям и их не стоит беспокоить без "
-"веской причины."
+"Эти магические и мощные создания господствуют в небе. Грифоны одинаково "
+"опасны и умны, поэтому не стоит их беспокоить без веской причины."
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
@@ -7539,7 +7536,7 @@ msgid ""
 "however, and growing experience with these weapons is only to their benefit."
 msgstr ""
 "Талантливые и дисциплинированные всадники становятся Рыцарями. Ветераны "
-"войны, они видели фатальные результаты неудачного броска и осторожны в его "
+"войны видели фатальные результаты неудачного броска и осторожны в его "
 "применении. Поэтому рыцари носят с собой мечи, и их использование, хотя и "
 "требующее больше терпения, более безопасное, чем бросок. Их пики всегда в "
 "готовности, тем не менее, растущий опыт использования этим вооружением идет "
@@ -7630,7 +7627,7 @@ msgid ""
 "and are very common on the battlefield."
 msgstr ""
 "Применение луков в стрельбе по чему-нибудь, кроме развлечений, стало началом "
-"их использования в войне, и лучники были неотъемлемой частью армии с "
+"их использования в войне, и лучники стали неотъемлемой частью армии с "
 "незапамятных времен. Лучники обычно крестьянского или охотничьего "
 "происхождения одинаково хорошо обращаются с луком и коротким мечом и очень "
 "полезны на поле битвы."
@@ -7688,7 +7685,7 @@ msgstr ""
 "\n"
 "Кавалерию очень полезно применять для удержания позиций на открытых "
 "пространствах, поддержки дружественных солдат, также можно использовать в "
-"качестве разведчика."
+"качестве разведки."
 
 #: data/units/Human_Loyalist_Dragoon.cfg:3
 msgid "Dragoon"
@@ -7733,8 +7730,8 @@ msgstr ""
 "молодых аристократов, которые хотели доказать свою правоту тем, кто нанес им "
 "оскорбление.\n"
 "\n"
-"Опытные фехтовальщики, они не всегда являются благородными от рождения, они "
-"носят с собой небольшой арбалет, который можно легко скрыть под одеждой или "
+"Опытные фехтовальщики, не всегда являясь благородными от рождения, носят с "
+"собой небольшой арбалет, который можно легко скрыть под одеждой или "
 "накидкой. Он долго заряжается и не удобен в использовании, но, тем не менее, "
 "является очень полезным оружием, в течении жизни их ранг повышается до "
 "уровня ветеранов, они становятся более живучими.\n"
@@ -7746,7 +7743,6 @@ msgid "Fencer"
 msgstr "Фехтовальщик"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -7761,9 +7757,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Фехтовальщики принадлежат к школе мыслителей, считающих самым главным врагом "
-"воина его чрезмерно тяжелую броню. Броня может только смягчить удар, "
-"полностью смягчив болевые эффекты. Способность уворачиваться в любом "
+"Фехтовальщики принадлежат к школе мыслителей, считающих чрезмерно тяжелую "
+"броню опаснее любого врага. Броня может только смягчить удар, полностью "
+"смягчив болевые эффекты. Способность уворачиваться от любой угрозы в любом "
 "направлении — вот единственное требование от тела, и именно в этом искусстве "
 "эти воины постоянно тренируются.\n"
 "\n"
@@ -8004,13 +8000,13 @@ msgid ""
 msgstr ""
 "Мастера фехтования занимают завидное место в жизни. Вопреки безрассудству и "
 "опасной жизни, они достигли того времени, когда они получают свои награды. "
-"Знаменитые благодаря своим навыкам и своим распутным поведением, наделенные "
-"аристократизмом от рождения, эти джентльмены не пропустят мимо себя ни одну "
-"высокородную леди.\n"
+"Знаменитые благодаря своим навыкам и своим распутным поведением, эти "
+"джентльмены, наделенные аристократизмом от рождения, не пропустят мимо себя "
+"ни одну высокородную леди.\n"
 "\n"
 "Часто они купаются в роскоши, и они свободны выбирать земли, в которых "
 "осядут. Часто они становятся капитанами гарнизона замка или мастерами "
-"военной академии, должности для них в тягость, но они, возможно, "
+"военной академии, эти должности для них в тягость, но они, возможно, "
 "пригодятся.\n"
 "\n"
 "Примечание:"
@@ -8045,7 +8041,7 @@ msgstr "пика"
 
 #: data/units/Human_Loyalist_Royal_Guard.cfg:3
 msgid "Royal Guard"
-msgstr "Королевский охранник"
+msgstr "Королевский гвардеец"
 
 #: data/units/Human_Loyalist_Royal_Guard.cfg:18
 msgid ""
@@ -8058,9 +8054,9 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
-"В Королевскую охрану набирают лучших мечников Веснота. Служа людям "
+"В Королевскую гвардию набирают лучших мечников Веснота. Служа людям "
 "благородного происхождения, они выполняют функции телохранителей и отчасти "
-"отображают статус их нанимателей. Специальные силы Королевской охраны, "
+"олицетворяют статус их нанимателей. Специальные силы Королевской гвардии, "
 "охраняющие дворец и королевскую семью, расположены в столице. Так как им "
 "доверяют их хозяева, они лучше, чем наемники, и используются в миссиях "
 "критической важности. Их надежность и мастерство в рукопашной схватке "
@@ -8076,7 +8072,7 @@ msgid ""
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
-"Сержант является офицером в Королевской армии. Хотя он учился в академии, "
+"Сержант является офицером в Королевской армии. Хотя он и учился в академии, "
 "ему нужен боевой опыт перед тем, как его лидерство стало значимым и "
 "проверенным."
 
@@ -8085,7 +8081,6 @@ msgid "Shock Trooper"
 msgstr "Ударный пехотинец"
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:15
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and half of their use in "
 "war is simply a matter of intimidation. The only men who can enter their "
@@ -8097,13 +8092,13 @@ msgid ""
 "move into and out of combat."
 msgstr ""
 "Ударные пехотинцы являются элитой тяжелой пехоты, и половина случаев их "
-"использования в войне являлась акцией устрашения. Только люди огромного "
+"использования в войне являлась акцией устрашения. Только люди крепкого "
 "телосложения могут вступить в их ряды, а когда они закованы в черную "
-"панцирную броню, то своим видом устрашат любого. Достаточно самого вида "
-"ударных пехотинцев, ломающих врага своими булавами, чтобы подорвать мораль "
-"любого противника, поразившегося, что за монстра скрывают подобные доспехи. "
-"Недостатком подобной тяжелой брони, конечно является время, необходимое для "
-"вступления и выхода из битвы."
+"клепаную панцирную броню, то своим видом устрашат любого. Достаточно самого "
+"вида ударных пехотинцев, ломающих врага своими булавами, чтобы подорвать "
+"мораль любого противника, поразившегося, что за монстра скрывают подобные "
+"доспехи. Недостатком подобной тяжелой брони, конечно является время, "
+"необходимое для вступления и выхода из битвы."
 
 #: data/units/Human_Loyalist_Spearman.cfg:3
 msgid "Spearman"
@@ -8437,11 +8432,12 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
-"После нескольких лет службы, бывшие разбойники занимают должность, становясь "
-"изгоями. Показав себя в бою, они получили более опасные задания и большую "
-"долю добычи. Хотя много противников посмеивались над их оружием, изгои "
-"хорошо знают их убийственную возможность, а также доступность боеприпасов. "
-"Изгои несколько хуже бьются днем, предпочитая скрываться под покровом ночи."
+"После нескольких лет службы, бывшие \"скороходы\" продвигаются вверх, "
+"становясь изгоями. Показав себя в бою, они будут получать более опасные "
+"задания и большую долю добычи. Хотя много противников посмеивались над их "
+"оружием, изгои хорошо знают их убийственную возможность, а также доступность "
+"боеприпасов. Изгои несколько хуже бьются днем, предпочитая скрываться под "
+"покровом ночи."
 
 #: data/units/Human_Outlaw.cfg:97
 msgid "female^Outlaw"
@@ -8452,7 +8448,6 @@ msgid "Assassin"
 msgstr "Убийца"
 
 #: data/units/Human_Outlaw_Assassin.cfg:21
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -8463,12 +8458,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Иногда задачей опытнейших воров бывает необходимость отнять у жертвы нечто "
-"гораздо более ценное, чем ее собственность. Мастерски владея приемами боя на "
-"ножах и будучи невообразимо ловкими, эти зловещие фигуры могут быть наняты "
-"тем, кому необходимо тихо расправиться со своей жертвой — отравленным ножом, "
-"брошенным издалека, либо кинжалом, всаженным в спину. Смертельно опасные "
-"ночью, эти убийцы испытывают некоторые трудности, сражаясь при свете дня.\n"
+"Иногда задачей опытнейших воров может стать необходимость отнять у жертвы "
+"нечто гораздо более ценное, нежели ее собственность. Мастерски владея "
+"приемами боя на ножах и будучи невообразимо ловкими, эти зловещие фигуры "
+"могут быть наняты тем, кому необходимо тихо расправиться со своей жертвой — "
+"с помощью отравленного ножа, брошенного издалека, либо кинжала, всаженного в "
+"спину. Смертельно опасные ночью, убийцы испытывают некоторые трудности, "
+"сражаясь при свете дня.\n"
 "\n"
 "Примечание:"
 
@@ -8501,7 +8497,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
-msgstr "Разбойник"
+msgstr "Скороход"
 
 #: data/units/Human_Outlaw_Footpad.cfg:18
 msgid ""
@@ -8513,7 +8509,7 @@ msgid ""
 "enemies, especially under cover of darkness."
 msgstr ""
 "Этих мелких преступников их более опытные товарищи обычно иронически "
-"называют \"разбойниками\" за то, что те берутся за любую работу, где нужно "
+"называют \"скороходами\" за то, что те берутся за любую работу, где нужно "
 "много двигаться. Обычно их нанимают в качестве курьеров или разведчиков. "
 "Несмотря на их скудное вооружение, их выносливость и умение передвигаться "
 "позволяют им быть полезными в бою, они очень хороши для разорения "
@@ -9462,6 +9458,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Ящеры имеют некоторые способности к тому, что люди называют магией, но она "
+"напоминает ясновидение и полностью отражает неприятную сторону искусства "
+"колдовства. Так как она мало кому понятна, она охватывает страхом тех, "
+"против кого используется.\n"
+"\n"
+"Примечание:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -9477,6 +9479,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Обычно тело воинов ящеров слабее эльфийских или людских. Конечно это понятие "
+"относительное, и их все же можно признать сильными, при этом они не теряются "
+"своей природной скорости. Они очень опасны в бою, и беспечный противник "
+"скоро обнаружит, что его соединения поддержки окружены этими созданиями.\n"
+"\n"
+"Примечание:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
@@ -9963,7 +9971,6 @@ msgid "Chocobone"
 msgstr "Мертвый всадник"
 
 #: data/units/Undead_Skele_Chocobone.cfg:21
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -9971,9 +9978,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Верхом на костях огромной, похожей на страуса птицы, которая когда-то была "
-"вместо лошади, мертвые всадники могут быстро передвигаться, как и любая "
-"кавалерия."
+"Верхом на костях огромной, похожей на страуса птицы, которую использовали "
+"раньше вместо лошади, мертвые всадники могут быстро передвигаться, как и "
+"любая кавалерия.\n"
+"\n"
+"Примечание:"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
@@ -10405,35 +10414,32 @@ msgid "Ambushed!"
 msgstr "Попал в засаду!"
 
 #: src/actions.cpp:2036
-#, fuzzy
 msgid "$friends Friendly unit sighted"
 msgid_plural "$friends Friendly units sighted"
-msgstr[0] "Замечено $friends дружественных соединений"
-msgstr[1] "Замечено $friends дружественных соединений"
+msgstr[0] "Замечено $friends дружественное соединение"
+msgstr[1] "Замечено $friends дружественных соединения"
 msgstr[2] "Замечено $friends дружественных соединений"
 
 #: src/actions.cpp:2040
-#, fuzzy
 msgid "$enemies Enemy unit sighted!"
 msgid_plural "$enemies Enemy units sighted!"
-msgstr[0] "Замечено $enemies соединения противника!"
+msgstr[0] "Замечено $enemies соединение противника!"
 msgstr[1] "Замечено $enemies соединения противника!"
-msgstr[2] "Замечено $enemies соединения противника!"
+msgstr[2] "Замечено $enemies соединений противника!"
 
 #: src/actions.cpp:2044
-#, fuzzy
 msgid "Units sighted! ($friends friendly, "
 msgid_plural "Units sighted! ($friends friendly, "
-msgstr[0] "Видим соединения! ($friends дружественные, $enemies враждебные)"
-msgstr[1] "Видим соединения! ($friends дружественные, $enemies враждебные)"
-msgstr[2] "Видим соединения! ($friends дружественные, $enemies враждебные)"
+msgstr[0] "Замечены соединения! ($friends дружественное, "
+msgstr[1] "Замечены соединения! ($friends дружественных, "
+msgstr[2] "Замечены соединения! ($friends дружественных, "
 
 #: src/actions.cpp:2045
 msgid "$enemies enemy)"
 msgid_plural "$enemies enemy)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$enemies вражеское)"
+msgstr[1] "$enemies вражеских)"
+msgstr[2] "$enemies вражеских)"
 
 #: src/actions.cpp:2062
 msgid "(press $hotkey to continue)"
@@ -10456,7 +10462,6 @@ msgid "Save Game"
 msgstr "Сохранить игру"
 
 #: src/dialogs.cpp:208
-#, fuzzy
 msgid "Quit Game"
 msgstr "Выйти из игры"
 
@@ -10633,15 +10638,15 @@ msgstr "Выберите уровень сложности:"
 
 #: src/game.cpp:837
 msgid "B"
-msgstr "байт"
+msgstr "б"
 
 #: src/game.cpp:840
 msgid "KB"
-msgstr "Кбайт"
+msgstr "кб"
 
 #: src/game.cpp:843
 msgid "MB"
-msgstr "Мбайт"
+msgstr "Мб"
 
 #: src/game.cpp:870
 msgid "Connect to Server"
@@ -10708,18 +10713,16 @@ msgid "Get Add-ons"
 msgstr "Аддоны"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Dependencies"
-msgstr "Настройки"
+msgstr "Зависимости"
 
 #: src/game.cpp:1038
 msgid "This add-on requires the following additional dependencies:"
-msgstr ""
+msgstr "Этому аддону необходимы следующие зависимости:"
 
 #: src/game.cpp:1040
-#, fuzzy
 msgid "Do you still want to download it?"
-msgstr "Вы действительно хотите удалить эту игру?"
+msgstr "Хотите ли скачать его?"
 
 #: src/game.cpp:1049
 msgid "Downloading add-on..."
@@ -11005,7 +11008,7 @@ msgstr "Ссылка на неизвестную тему: "
 
 #: src/help.cpp:2672
 msgid "corrupted original file"
-msgstr ""
+msgstr "оригинальный файл поврежден"
 
 #: src/help.cpp:2787
 msgid "The Battle for Wesnoth Help"
@@ -11037,11 +11040,11 @@ msgstr "?"
 
 #: src/loadscreen.cpp:160
 msgid "Verifying cache."
-msgstr "Проверка кеша."
+msgstr "Проверка кэша."
 
 #: src/loadscreen.cpp:179
 msgid "Reading cache."
-msgstr "Чтение из кеша."
+msgstr "Чтение из кэша."
 
 #: src/loadscreen.cpp:198
 msgid "Reading unit files."
@@ -11049,12 +11052,11 @@ msgstr "Чтение файлов соединений."
 
 #: src/loadscreen.cpp:217
 msgid "Reading files and creating cache."
-msgstr "Чтение файлов и создание кеша."
+msgstr "Чтение файлов и создание кэша."
 
 #: src/menu_events.cpp:66
-#, fuzzy
 msgid "Detail"
-msgstr "хвост"
+msgstr "Детали"
 
 #: src/menu_events.cpp:101
 msgid ""
@@ -11183,22 +11185,20 @@ msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
 #: src/menu_events.cpp:484
-#, fuzzy
 msgid "Save the Map As"
-msgstr "Распределить карты"
+msgstr "Сохранить карту как"
 
 #: src/menu_events.cpp:489
-#, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Сохранение уже существует. Перезаписать?"
+msgstr "Карта уже существует. Перезаписать ее?"
 
 #: src/menu_events.cpp:501
 msgid "Map saved."
-msgstr ""
+msgstr "Карта сохранена."
 
 #: src/menu_events.cpp:506
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Невозможно сохранить карту: $msg"
 
 #: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:708
 #: src/playcampaign.cpp:118
@@ -11287,9 +11287,8 @@ msgid "Rename Unit"
 msgstr "Переименовать соединение"
 
 #: src/menu_events.cpp:1340
-#, fuzzy
 msgid "Team only"
-msgstr "Голубой"
+msgstr "Только для команд"
 
 #: src/menu_events.cpp:1345
 msgid "Place Label"
@@ -11304,9 +11303,8 @@ msgid "Search"
 msgstr "Поиск"
 
 #: src/menu_events.cpp:1508
-#, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
-msgstr "Команды: whisper ignore emote. Наберите /help [команда] для подсказки."
+msgstr "Команды: whisper list emote. Наберите /help [команда] для подсказки."
 
 #: src/menu_events.cpp:1559
 msgid ""
@@ -11317,48 +11315,47 @@ msgstr ""
 "участвующему в игре. Использование:  /whisper [ник] [сообщение]"
 
 #: src/menu_events.cpp:1563
-#, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
-msgstr "Добавить игрока в игнор-лист. Использование: /ignore add [argument]"
+msgstr ""
+"Добавить игрока в список друзей. Использование: /list addfriend [аргумент]"
 
 #: src/menu_events.cpp:1565
-#, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
-msgstr "Добавить игрока в игнор-лист. Использование: /ignore add [argument]"
+msgstr ""
+"Добавить игрока в список игнорирования. Использование: /list ignore "
+"[аргумент]"
 
 #: src/menu_events.cpp:1567
-#, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
-"Удалить игрока из игнор-листа. Использование: /ignore remove [аргумент]"
+"Удалить игрока из списка игнорирования. Использование: /list remove "
+"[аргумент]"
 
 #: src/menu_events.cpp:1569
-#, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
-msgstr "Очистить игнор-лист. Использование: /ignore clear"
+msgstr "Очистить список игнорирования. Использование: /list clear"
 
 #: src/menu_events.cpp:1571
-#, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
-msgstr "Показать игнор-лист. Использование: /ignore list"
+msgstr "Показать список игнорирования. Использование: /list display"
 
 #: src/menu_events.cpp:1573
 msgid "Unknown subcommand"
 msgstr "Неизвестная подкоманда"
 
 #: src/menu_events.cpp:1576
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
-"Игнорировать сообщения от игрока в этом листе. Использование: /ignore "
-"[подкоманда] [аргумент](необязательно) Подкоманды: add remove list clear. "
-"Наберите /help ignore [подкоманда] для подсказки."
+"Игнорировать сообщения игроков из списка игнорирования и подсвечивать "
+"игроков из списка друзей. Использование: /list [подкоманда] [аргумент]"
+"(необязательно) Подкоманды: addfriend addignore remove display clear. "
+"Наберите /help list [подкоманда] для подсказки."
 
 #: src/menu_events.cpp:1579
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
@@ -11378,27 +11375,24 @@ msgid "Invalid username: "
 msgstr "Неправильный ник: "
 
 #: src/menu_events.cpp:1611
-#, fuzzy
 msgid "Added to friends list: "
-msgstr "Добавлен в игнор-лист: "
+msgstr "Добавлен в список друзей: "
 
 #: src/menu_events.cpp:1621
-#, fuzzy
 msgid "Removed from list: "
-msgstr "Удален из игнор-листа: "
+msgstr "Удален из списка: "
 
 #: src/menu_events.cpp:1648
 msgid "There are no players on your friends or ignore list."
-msgstr ""
+msgstr "В ваших списках друзей или игнорирования нет игроков."
 
 #: src/menu_events.cpp:1658
 msgid "Removed from ignore list: "
 msgstr "Удален из игнор-листа: "
 
 #: src/menu_events.cpp:1661
-#, fuzzy
 msgid "Removed from friends list: "
-msgstr "Удален из игнор-листа: "
+msgstr "Удален из списка друзей: "
 
 #: src/menu_events.cpp:1668
 msgid "Unknown command: "
@@ -11661,9 +11655,8 @@ msgid "Use map settings"
 msgstr "Использовать настройки карты"
 
 #: src/multiplayer_create.cpp:67
-#, fuzzy
 msgid "Random start time"
-msgstr "Случайная карта (зима)"
+msgstr "Случайное время при старте"
 
 #: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
@@ -11723,7 +11716,7 @@ msgstr "Использовать специфичные настройки сц�
 
 #: src/multiplayer_create.cpp:164
 msgid "Randomize time of day in begin"
-msgstr ""
+msgstr "Назначить время суток случайным образом"
 
 #: src/multiplayer_create.cpp:167
 msgid "Enemy units cannot be seen unless they are in range of your units"
@@ -11941,24 +11934,20 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Вы хотите сохранить повтор данного сценария?"
 
 #: src/playcampaign.cpp:295
-#, fuzzy
 msgid "Save Replay"
-msgstr "повтор"
+msgstr "Сохранить повтор"
 
 #: src/playcampaign.cpp:302
-#, fuzzy
 msgid "The replay could not be saved"
-msgstr "Игра не может быть сохранена"
+msgstr "Повтор не может быть сохранен"
 
 #: src/playcampaign.cpp:342
-#, fuzzy
 msgid "Receiving data..."
-msgstr "Получаем данные игры..."
+msgstr "Получение данных..."
 
 #: src/playcampaign.cpp:344
-#, fuzzy
 msgid "Downloading next scenario..."
-msgstr "Загружаем следующий уровень..."
+msgstr "Скачивание следующего уровеня..."
 
 #: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
@@ -12400,150 +12389,3 @@ msgstr "Помогите нам сделать Веснот лучше!"
 #~ "магически оживленными корнями, которые удерживают их на месте.\n"
 #~ "\n"
 #~ "Примечание:"
-
-# rev
-#~ msgid ""
-#~ "Eschewing the study of healing in favor of more aggressive uses of magic, "
-#~ "Elvish Sorceresses have become quite proficient at ranged combat. Their "
-#~ "entangling attack is notably more effective than that of the Elvish "
-#~ "Shaman, and they can call upon bursts of chilling ethereal wind to smite "
-#~ "those who oppose them.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Избегая обучения исцелению ран, она выбрала изучение более агрессивного "
-#~ "использования магии. Эльфийские волшебницы стали более умелыми в бою и "
-#~ "действуют на большие расстояния. Их атака запутывания эффективнее, чем у "
-#~ "эльфийки-шамана, а их холодный ветер испытает любой, кто посмеет "
-#~ "противостоять им.\n"
-#~ "\n"
-#~ "Примечание:"
-
-#~ msgid ""
-#~ "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
-#~ "developed their faerie side, they transform into creatures of both "
-#~ "worlds, wielding powerful magic against their enemies.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Эльфийки сильфы являются эталонами красоты среди смертных. Созданные "
-#~ "полностью волшебными чарами, они трансформируются в созданий обоих миров "
-#~ "и вооружены магией против своих врагов.\n"
-#~ "\n"
-#~ "Примечание:"
-
-#~ msgid ""
-#~ "Poachers rely on their hunting experience and are most valuable at night "
-#~ "and in forests and swamps."
-#~ msgstr ""
-#~ "Браконьеры полагаются на свой охотничий опыт и очень ценны ночью в лесах "
-#~ "и на болотах."
-
-#~ msgid ""
-#~ "Trappers usually work supplying food for bandits and outlaws. Their "
-#~ "hunting experience makes them most valuable at night and in forests and "
-#~ "swamps."
-#~ msgstr ""
-#~ "Звероловы в основном снабжают едой бандитов и изгоев. И охотничий опыт "
-#~ "делает их очень ценными ночью в лесах и болотах."
-
-# rev
-#~ msgid ""
-#~ "Saurian Ambushers are highly skilled in the use of the spear. Despite "
-#~ "their lethargic cold blooded heritage, and their relative frailty, they "
-#~ "are highly valued as scouts as they can navigate through rough terrain "
-#~ "and around opponents. Saurian Ambushers possess the strength to take full "
-#~ "advantage of this fact. The best Ambushers go on to become Saurian "
-#~ "Flankers.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Скрытные ящеры мастерски владеют копьем. Несмотря на то, что они "
-#~ "унаследовали от предков  летаргическую хладнокровность и мягкотелость, "
-#~ "они очень ценны как разведчики, так как они могут исследовать заросшие "
-#~ "земли и вокруг противников. Скрытные ящеры обладают силой, чтобы получить "
-#~ "полное преимущество. Лучшие скрытные ящеры станут фланговыми.\n"
-#~ "\n"
-#~ "Примечание:"
-
-# rev
-#~ msgid ""
-#~ "Despite their lethargic cold blooded heritage, and their relative "
-#~ "frailty, Saurian Augurs are valued as healers because they can provide "
-#~ "aid to their allies regardless of terrain or opposition. In addition to "
-#~ "healing they possess knowledge of cold magic.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Несмотря на то, что они унаследовали от предков летаргическую "
-#~ "хладнокровность и мягкотелость, ящеры прорицатели ценны как целители, "
-#~ "способные помочь своим союзникам, вне зависимости от местности или "
-#~ "противников. Вдобавок к целительству, они владеют знаниями холодной "
-#~ "магии.\n"
-#~ "\n"
-#~ "Примечание:"
-
-#~ msgid ""
-#~ "Saurian Flankers are highly skilled in the use of the spear. Despite "
-#~ "their lethargic cold blooded heritage, and their relative frailty, they "
-#~ "are highly valued as scouts as they can navigate through rough terrain "
-#~ "and around opponents. Saurian Flankers possess the strength to take full "
-#~ "advantage of this fact.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Фланговые ящеры мастерски владеют копьем. Несмотря на то, что они "
-#~ "унаследовали от предков  летаргическую хладнокровность и мягкотелость, "
-#~ "они очень ценны как разведчики, так как они могут исследовать заросшие "
-#~ "земли и вокруг противников. Фланговые ящеры обладают силой, чтобы "
-#~ "получить полное преимущество.\n"
-#~ "\n"
-#~ "Примечание:"
-
-#~ msgid ""
-#~ "Saurian Oracles have eschewed any further training in healing and curing "
-#~ "in order to refine their skills with the dark arts. While frail, they can "
-#~ "call forth the magic of the cold north, and they do retain their basic "
-#~ "healing ability.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ящеры оракулы бросили все тренировки по лечению и целительству ради "
-#~ "изучения навыков темного мастерства. Несмотря на мягкотелость, они могут "
-#~ "вызывать магию холода севера и еще помнят что-то из основ целительства.\n"
-#~ "\n"
-#~ "Примечание:"
-
-#~ msgid ""
-#~ "Saurian Skirmishers are skilled in the use of the spear. Despite their "
-#~ "lethargic cold blooded heritage, and their relative frailty, they are "
-#~ "highly valued as scouts as they can navigate through rough terrain and "
-#~ "around opponents. The best Skirmishers go on to become Saurian "
-#~ "Ambushers.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ящеры застрельщики мастерски владеют копьем. Несмотря на то, что они "
-#~ "унаследовали от предков  летаргическую хладнокровность и мягкотелость, "
-#~ "они очень ценны как разведчики, так как они могут исследовать заросшие "
-#~ "земли и вокруг противников. Лучшие ящеры застрельщики станут скрытными "
-#~ "ящерами.\n"
-#~ "\n"
-#~ "Примечания:"
-
-# rev
-#~ msgid ""
-#~ "Saurian Soothsayers are highly valued as healers because they can provide "
-#~ "aid to their friends regardless of terrain or opposition. In addition to "
-#~ "curing their allies they possess knowledge of cold magic.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ящеры предсказатели очень ценны как целители, способные помочь своим "
-#~ "союзникам, вне зависимости от местности или противников. Вдобавок к "
-#~ "целительству, они владеют знаниями холодной магии.\n"
-#~ "\n"
-#~ "Примечание:"
-
-#~ msgid "Computer vs Computer"
-#~ msgstr "Компьютер с Компьютером"
