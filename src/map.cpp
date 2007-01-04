@@ -618,7 +618,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 #endif
 		//FIXME MdW this codepath is untested
 		const t_translation::t_list& terrain = 
-			t_translation::read_list(cfg["terrain"], 0, t_translation::T_FORMAT_STRING);
+			t_translation::read_list(cfg["terrain"], -1, t_translation::T_FORMAT_STRING);
 		if(! terrain.empty()) {
 
 			const t_translation::t_letter letter = get_terrain_info(loc).number();
