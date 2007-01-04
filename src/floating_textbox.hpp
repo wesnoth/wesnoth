@@ -19,8 +19,9 @@
 #include "display.hpp"
 #include "scoped_resource.hpp"
 #include "team.hpp"
-#include "unit.hpp"
 #include "widgets/textbox.hpp"
+
+class unit_map;
 
 namespace gui{
 	enum TEXTBOX_MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE,

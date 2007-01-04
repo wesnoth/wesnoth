@@ -13,12 +13,16 @@
 #ifndef PATHFIND_H_INCLUDED
 #define PATHFIND_H_INCLUDED
 
-#include "array.hpp"
+class game_data;
 class gamestatus;
+class unit;
+class unit_map;
+
+#include "array.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathutils.hpp"
-#include "unit.hpp"
+#include "team.hpp"
 
 #include <map>
 #include <list>

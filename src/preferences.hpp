@@ -17,8 +17,8 @@ class config;
 class display;
 class team;
 struct game_state;
-
-#include "unit.hpp"
+class unit_map;
+class gamemap;
 
 #include <string>
 #include <utility>

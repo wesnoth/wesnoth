@@ -12,7 +12,7 @@
 */
 
 #include "play_controller.hpp"
-
+#include "dialogs.hpp"
 #include "config_adapter.hpp"
 #include "gettext.hpp"
 #include "gp2x.hpp"

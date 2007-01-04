@@ -19,10 +19,11 @@
 #include <vector>
 
 class gamestatus;
+class unit_map;
 
 #include "map.hpp"
 #include "team.hpp"
-#include "unit.hpp"
+
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics

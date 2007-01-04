@@ -18,10 +18,8 @@
 #include "race.hpp"
 #include "team.hpp"
 #include "unit_types.hpp"
-#include "image.hpp"
 #include "unit_map.hpp"
 
-class unit;
 class display;
 class gamestatus;
 class config_writer;

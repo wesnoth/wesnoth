@@ -18,13 +18,19 @@ class display;
 class gamestatus;
 class replay;
 struct combatant;
+class unit;
+
+class attack_type;
+class team;
+class game_data;
 
 #include "global.hpp"
-
+#include "gamestatus.hpp"
 #include "map.hpp"
-#include "unit.hpp"
+#include "unit_map.hpp"
 
 #include <deque>
+#include <sstream>
 
 #define RECRUIT_POS -2
 

@@ -14,9 +14,13 @@
 #ifndef STATISTICS_HPP_INCLUDED
 #define STATISTICS_HPP_INCLUDED
 
+class config;
 class config_writer;
 class unit;
-#include "actions.hpp"
+//#include "actions.hpp"
+#include <string>
+#include <map>
+#include <vector>
 
 namespace statistics
 {

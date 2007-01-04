@@ -19,7 +19,8 @@
 #include "team.hpp"
 #include "thread.hpp"
 #include "tstring.hpp"
-#include "unit.hpp"
+
+class unit_map;
 
 struct upload_log
 {

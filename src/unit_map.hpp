@@ -13,9 +13,9 @@
 #ifndef UNIT_MAP_H_INCLUDED
 #define UNIT_MAP_H_INCLUDED
 
+class unit;
 #include <cstring>
 #include "map.hpp"
-#include "unit.hpp"
 
 // We used to just open-code a std::map<location,unit>, but as unit
 // gained weight leading up to 1.1.3, manipulating the map caused
