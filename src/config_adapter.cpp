@@ -18,6 +18,7 @@
 #include "game_errors.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
+#include "gamestatus.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NG LOG_STREAM(err, engine)

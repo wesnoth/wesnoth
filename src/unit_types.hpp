@@ -15,7 +15,6 @@
 
 #include "unit_animation.hpp"
 #include "config.hpp"
-#include "color_range.hpp"
 #include "map.hpp"
 #include "race.hpp"
 #include "util.hpp"

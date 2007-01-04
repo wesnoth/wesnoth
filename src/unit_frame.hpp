@@ -13,12 +13,12 @@
 #ifndef UNIT_FRAME_H_INCLUDED
 #define UNIT_FRAME_H_INCLUDED
 
-#include "animated.hpp"
 #include "map.hpp"
-#include "config.hpp"
 #include "util.hpp"
 #include "image.hpp"
 #include "serialization/string_utils.hpp"
+
+class config;
 
 #include <string>
 #include <vector>

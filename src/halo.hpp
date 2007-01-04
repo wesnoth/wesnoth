@@ -15,8 +15,6 @@
 #define HALO_HPP_INCLUDED
 
 class display;
-#include "animated.hpp"
-#include "image.hpp"
 
 #include <string>
 

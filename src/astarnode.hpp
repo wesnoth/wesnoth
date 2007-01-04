@@ -15,10 +15,8 @@ See the COPYING file for more details.
 #ifndef ASTARNODE_H_INCLUDED
 #define ASTARNODE_H_INCLUDED
 
-#include "map.hpp"
 #include "pathutils.hpp"
 #include <set>
-#include <vector>
 
 struct a_star_node
 {

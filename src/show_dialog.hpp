@@ -23,7 +23,6 @@ class CVideo;
 #include "network.hpp"
 #include "tooltips.hpp"
 
-#include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 
 #include "SDL.h"

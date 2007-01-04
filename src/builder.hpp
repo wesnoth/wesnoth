@@ -16,11 +16,9 @@
 #include "animated.hpp"
 #include "image.hpp"
 #include "map.hpp"
-#include "SDL.h"
 
 #include <map>
 #include <set>
-#include <string>
 
 class config;
 
