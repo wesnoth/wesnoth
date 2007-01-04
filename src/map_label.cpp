@@ -99,7 +99,7 @@ const terrain_label* map_labels::get_label(const gamemap::location& loc)
 {
 	team_label_map::const_iterator label_map;
 					
-	label_map::const_iterator itor;
+	map_labels::label_map::const_iterator itor;
 	
 	if (team_)
 	{
@@ -232,7 +232,7 @@ const terrain_label* map_labels::set_label(const gamemap::location& loc,
 const terrain_label* new_label)
 {
 	team_label_map::const_iterator labs = labels_.find(new_label->team_name());
-	if(labs == labels_.end());
+	if(labs == labels_.end())
 	{
 		labels_.insert(std::pair<std::string,label_map>(new_label->team_name(), label_map()));
 		labs = labels_.find(new_label->team_name());

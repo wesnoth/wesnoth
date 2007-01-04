@@ -100,7 +100,7 @@ namespace game_events {
 
 game_state* get_state_of_game()
 {
-	return ::state_of_game;
+	return state_of_game;
 }
 
 bool conditional_passed(const unit_map* units,

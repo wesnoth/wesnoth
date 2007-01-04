@@ -26,7 +26,7 @@ class display;
 class team;
 class terrain_label;
 class replay;
-class game_state;
+struct game_state;
 
 
 
