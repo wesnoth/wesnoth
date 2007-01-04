@@ -1423,17 +1423,6 @@ const surface unit::still_image() const
 	return unit_image;
 }
 
-void unit::refresh(const display& disp,const gamemap::location& loc)
-{
-	if(state_ == STATE_IDLING && anim_ && anim_->animation_finished()) set_standing(disp, loc);
-	if(state_ != STATE_STANDING) return;
-	if(incapacitated()) return;
-	if(get_current_animation_tick() < next_idling) return;
-	if(get_current_animation_tick() > next_idling + 1000) {set_standing(disp,loc); return; }// prevent all units animating at the same time
-	set_idling(disp, loc);
-}
-
-
 void unit::set_standing(const display &disp,const gamemap::location& loc, bool with_bars)
 {
 	state_ = STATE_STANDING;

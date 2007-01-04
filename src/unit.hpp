@@ -120,7 +120,19 @@ class unit
 		void new_turn();
 		void end_turn();
 		void new_level();
-		void refresh(const display& disp,const gamemap::location& loc); // called on every draw
+		// called on every draw
+		void refresh(const display& disp,const gamemap::location& loc) {
+			if (state_ == STATE_IDLING && anim_ && anim_->animation_finished()) {
+				set_standing(disp, loc);
+				return;
+			}
+			if (state_ != STATE_STANDING || incapacitated() || (get_current_animation_tick() < next_idling)) return;
+			if (get_current_animation_tick() > next_idling + 1000) { // prevent all units animating at the same
+				set_standing(disp,loc);
+			} else {
+				set_idling(disp, loc);
+			}	
+		}
 
 		bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 		void heal(int amount);
