@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 23:27+0100\n"
+"POT-Creation-Date: 2007-01-04 20:05+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -511,96 +511,96 @@ msgstr "Reditio finnica"
 msgid "French Translation"
 msgstr "Reditio gallica"
 
-#: data/about.cfg:330
+#: data/about.cfg:331
 msgid "German Translation"
 msgstr "Reditio germanica"
 
-#: data/about.cfg:348
+#: data/about.cfg:349
 msgid "Greek Translation"
 msgstr "Reditio graeca"
 
-#: data/about.cfg:359
+#: data/about.cfg:360
 msgid "Hebrew Translation"
 msgstr "Reditio hebraica"
 
-#: data/about.cfg:367
+#: data/about.cfg:368
 msgid "Hungarian Translation"
 msgstr "Reditio magiarensis"
 
-#: data/about.cfg:384
+#: data/about.cfg:385
 msgid "Indonesian Translation"
 msgstr "Reditio indonesica"
 
-#: data/about.cfg:391
+#: data/about.cfg:392
 msgid "Italian Translation"
 msgstr "Reditio italica"
 
-#: data/about.cfg:406
+#: data/about.cfg:407
 msgid "Japanese Translation"
 msgstr "Reditio iaponica"
 
-#: data/about.cfg:418
+#: data/about.cfg:419
 msgid "Korean Translation"
 msgstr "Reditio coreana"
 
-#: data/about.cfg:425
+#: data/about.cfg:426
 msgid "Latin Translation"
 msgstr "Reditio Latina"
 
-#: data/about.cfg:432
+#: data/about.cfg:433
 msgid "Norwegian Translation"
 msgstr "Reditio norvegiana"
 
-#: data/about.cfg:444
+#: data/about.cfg:445
 msgid "Polish Translation"
 msgstr "Reditio polonica"
 
-#: data/about.cfg:461
+#: data/about.cfg:462
 msgid "Portuguese Translation"
 msgstr "Reditio lusitana"
 
-#: data/about.cfg:468
+#: data/about.cfg:469
 msgid "Portuguese (Brazil) Translation"
 msgstr "Reditio lusitana (brasiliana)"
 
-#: data/about.cfg:484
+#: data/about.cfg:485
 msgid "Russian Translation"
 msgstr "Reditio ruthena"
 
-#: data/about.cfg:497
+#: data/about.cfg:498
 msgid "Serbian Translation"
 msgstr "Reditio serba"
 
-#: data/about.cfg:506
+#: data/about.cfg:507
 msgid "Slovak Translation"
 msgstr "Reditio slovaca"
 
-#: data/about.cfg:515
+#: data/about.cfg:516
 msgid "Slovenian Translation"
 msgstr "Reditio slovena"
 
-#: data/about.cfg:523
+#: data/about.cfg:524
 msgid "Spanish Translation"
 msgstr "Reditio hispanica"
 
-#: data/about.cfg:536
+#: data/about.cfg:537
 msgid "Swedish Translation"
 msgstr "Reditio Suecica"
 
-#: data/about.cfg:549
+#: data/about.cfg:550
 msgid "Turkish Translation"
 msgstr "Reditio turca"
 
-#: data/about.cfg:560
+#: data/about.cfg:561
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "Reditio slovena"
 
-#: data/about.cfg:567 data/help.cfg:252
+#: data/about.cfg:568 data/help.cfg:252
 msgid "Contributors"
 msgstr "+Qui confert"
 
-#: data/about.cfg:593
+#: data/about.cfg:594
 msgid "Bots"
 msgstr "Automata"
 
@@ -5543,7 +5543,7 @@ msgid "End Turn"
 msgstr "Tractum finire"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2637
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2365
 msgid "HP"
 msgstr "PS"
 
@@ -10275,26 +10275,33 @@ msgid "Ambushed!"
 msgstr "Insidiae!"
 
 #: src/actions.cpp:2036
-msgid "Friendly unit sighted"
-msgstr "Untitas socia vista"
+#, fuzzy
+msgid "$friends Friendly unit sighted"
+msgid_plural "$friends Friendly units sighted"
+msgstr[0] "$friends Unitates Sociae vistae"
+msgstr[1] "$friends Unitates Sociae vistae"
 
-#: src/actions.cpp:2039
-msgid "Enemy unit sighted!"
-msgstr "Unitas inimica vista!"
+#: src/actions.cpp:2040
+#, fuzzy
+msgid "$enemies Enemy unit sighted!"
+msgid_plural "$enemies Enemy units sighted!"
+msgstr[0] "$enemies Unitates inimicae vistae!"
+msgstr[1] "$enemies Unitates inimicae vistae!"
+
+#: src/actions.cpp:2044
+#, fuzzy
+msgid "Units sighted! ($friends friendly, "
+msgid_plural "Units sighted! ($friends friendly, "
+msgstr[0] "Unitates vistae! ($friends sociae, $enemies inimicae)"
+msgstr[1] "Unitates vistae! ($friends sociae, $enemies inimicae)"
 
 #: src/actions.cpp:2045
-msgid "$friends Friendly units sighted"
-msgstr "$friends Unitates Sociae vistae"
+msgid "$enemies enemy)"
+msgid_plural "$enemies enemy)"
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/actions.cpp:2048
-msgid "$enemies Enemy units sighted!"
-msgstr "$enemies Unitates inimicae vistae!"
-
-#: src/actions.cpp:2053
-msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr "Unitates vistae! ($friends sociae, $enemies inimicae)"
-
-#: src/actions.cpp:2069
+#: src/actions.cpp:2062
 msgid "(press $hotkey to continue)"
 msgstr "($hotkey premere ad pergendum)"
 
@@ -10610,7 +10617,7 @@ msgstr ""
 "Quaestio erat in creando pligas necessarias inaugurationi huius stipendii."
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:351
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
 
@@ -10979,7 +10986,7 @@ msgstr "Damnum Passum (Exsp)"
 msgid "Statistics"
 msgstr "Census"
 
-#: src/menu_events.cpp:294 src/unit.cpp:2668
+#: src/menu_events.cpp:294 src/unit.cpp:2396
 msgid "Moves"
 msgstr "Puncta motus"
 
@@ -11012,7 +11019,7 @@ msgstr "Impensa"
 msgid "Income"
 msgstr "Merces"
 
-#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:430
 msgid "Name:"
 msgstr "Nomen:"
 
@@ -11037,7 +11044,7 @@ msgstr "Servatus"
 msgid "The game has been saved"
 msgstr "Lusus servatus est"
 
-#: src/menu_events.cpp:470 src/playcampaign.cpp:433
+#: src/menu_events.cpp:470 src/playcampaign.cpp:440
 msgid "The game could not be saved"
 msgstr "Lusus non servari potest"
 
@@ -11059,7 +11066,7 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:700
+#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:708
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
@@ -11391,12 +11398,12 @@ msgid "Normal"
 msgstr "Normalis"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2767
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2495
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2774
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2502
 msgid ")"
 msgstr ")"
 
@@ -11773,16 +11780,16 @@ msgstr "Non poteram portum ad congeriem portuum adiungere"
 msgid "Could not send initial handshake"
 msgstr "Non potui mittere salutationem initialem"
 
-#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:397 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Pliga quam restituere conaris corrupta est"
 
-#: src/play_controller.cpp:704
+#: src/play_controller.cpp:712
 msgid "Back to start"
 msgstr "Rursus ad initium"
 
-#: src/play_controller.cpp:706
+#: src/play_controller.cpp:714
 msgid "Back to turn "
 msgstr "Rursus ad tractum "
 
@@ -11813,14 +11820,20 @@ msgid "The replay could not be saved"
 msgstr "Lusus non servari potest"
 
 #: src/playcampaign.cpp:342
-msgid "Downloading next level..."
+#, fuzzy
+msgid "Receiving data..."
+msgstr "Index lusorum recipitur..."
+
+#: src/playcampaign.cpp:344
+#, fuzzy
+msgid "Downloading next scenario..."
 msgstr "Stipendium proximum trahitur..."
 
-#: src/playcampaign.cpp:422
+#: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Visne lusum servare? (Etiam delet archiva Servatae Automatariae)"
 
-#: src/playcampaign.cpp:449
+#: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
 msgstr "Missio incognita: '"
 
@@ -11960,7 +11973,7 @@ msgstr "Unitas haec petrificatus est. Non potest movere aut oppugnare."
 msgid "stone: "
 msgstr "petrificatus: "
 
-#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:343
+#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:278
 msgid "damage"
 msgstr "damnum"
 
@@ -12150,31 +12163,31 @@ msgstr "Auxilium"
 msgid "Help Wesnoth by sending us information"
 msgstr "Occidiseptentrionem adiuvare mittans nuntios"
 
-#: src/unit.cpp:2603 src/unit.cpp:2772
+#: src/unit.cpp:2331 src/unit.cpp:2500
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2685
+#: src/unit.cpp:2413
 msgid "XP to advance"
 msgstr "PE ad promotionem"
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2491
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:351
+#: src/unit_types.cpp:286
 msgid "strikes"
 msgstr "ictus"
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "chaotic"
 msgstr "tenebrarum"
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "lawful"
 msgstr "lucis"
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "neutral"
 msgstr "crepusculi"
 
@@ -12205,6 +12218,12 @@ msgstr "Eventa videre potes sub: "
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
+
+#~ msgid "Friendly unit sighted"
+#~ msgstr "Untitas socia vista"
+
+#~ msgid "Enemy unit sighted!"
+#~ msgstr "Unitas inimica vista!"
 
 #, fuzzy
 #~ msgid "Yes"
@@ -15574,9 +15593,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "Warning"
 #~ msgstr "Monitum"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Index lusorum recipitur..."
 
 #~ msgid "The game has been cancelled"
 #~ msgstr "Abrogatus est lusus"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Romana 0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 23:27+0100\n"
+"POT-Creation-Date: 2007-01-04 20:05+0100\n"
 "PO-Revision-Date: 2006-04-10 20:02+0100\n"
 "Last-Translator: Dex Stewart\n"
 "Language-Team: \n"
@@ -431,100 +431,100 @@ msgstr "Translatie in limba finlandeza"
 msgid "French Translation"
 msgstr "Translatie in limba franceza"
 
-#: data/about.cfg:330
+#: data/about.cfg:331
 msgid "German Translation"
 msgstr "Translatie in limba germana"
 
-#: data/about.cfg:348
+#: data/about.cfg:349
 msgid "Greek Translation"
 msgstr "Translatie in limba greaca"
 
-#: data/about.cfg:359
+#: data/about.cfg:360
 #, fuzzy
 msgid "Hebrew Translation"
 msgstr "Translatie in limba ebreica"
 
-#: data/about.cfg:367
+#: data/about.cfg:368
 msgid "Hungarian Translation"
 msgstr "Translatie in limba ungara"
 
-#: data/about.cfg:384
+#: data/about.cfg:385
 #, fuzzy
 msgid "Indonesian Translation"
 msgstr "Translatie in limba indoneza"
 
-#: data/about.cfg:391
+#: data/about.cfg:392
 msgid "Italian Translation"
 msgstr "Translatie in limba italiana"
 
-#: data/about.cfg:406
+#: data/about.cfg:407
 msgid "Japanese Translation"
 msgstr "Translatie in limba japoneza"
 
-#: data/about.cfg:418
+#: data/about.cfg:419
 msgid "Korean Translation"
 msgstr "Translatie in limba coreana"
 
-#: data/about.cfg:425
+#: data/about.cfg:426
 msgid "Latin Translation"
 msgstr "Translatie in limba latina"
 
-#: data/about.cfg:432
+#: data/about.cfg:433
 msgid "Norwegian Translation"
 msgstr "Translatie in limba norvegiana"
 
-#: data/about.cfg:444
+#: data/about.cfg:445
 msgid "Polish Translation"
 msgstr "Translatie in limba poloneza"
 
-#: data/about.cfg:461
+#: data/about.cfg:462
 msgid "Portuguese Translation"
 msgstr "Translatie in limba portugheza"
 
-#: data/about.cfg:468
+#: data/about.cfg:469
 msgid "Portuguese (Brazil) Translation"
 msgstr "Translatie in limba portugheza(Brazilia)"
 
-#: data/about.cfg:484
+#: data/about.cfg:485
 msgid "Russian Translation"
 msgstr "Translatie in limba rusa"
 
-#: data/about.cfg:497
+#: data/about.cfg:498
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "Translatie in limba sarba"
 
-#: data/about.cfg:506
+#: data/about.cfg:507
 msgid "Slovak Translation"
 msgstr "Translatie in limba slovaca"
 
-#: data/about.cfg:515
+#: data/about.cfg:516
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "Translatie in limba sloveniana"
 
-#: data/about.cfg:523
+#: data/about.cfg:524
 msgid "Spanish Translation"
 msgstr "Translatie in limba spaniola"
 
-#: data/about.cfg:536
+#: data/about.cfg:537
 msgid "Swedish Translation"
 msgstr "Translatie in limba suedeza"
 
-#: data/about.cfg:549
+#: data/about.cfg:550
 msgid "Turkish Translation"
 msgstr "Translatie in limba turca"
 
-#: data/about.cfg:560
+#: data/about.cfg:561
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "Translatie in limba sloveniana"
 
-#: data/about.cfg:567 data/help.cfg:252
+#: data/about.cfg:568 data/help.cfg:252
 msgid "Contributors"
 msgstr "Contribuitori"
 
-#: data/about.cfg:593
+#: data/about.cfg:594
 msgid "Bots"
 msgstr ""
 
@@ -4476,7 +4476,7 @@ msgid "End Turn"
 msgstr ""
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2637
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2365
 msgid "HP"
 msgstr "PV"
 
@@ -8056,26 +8056,33 @@ msgid "Ambushed!"
 msgstr ""
 
 #: src/actions.cpp:2036
-msgid "Friendly unit sighted"
-msgstr "Unitate aliata descoperita"
+#, fuzzy
+msgid "$friends Friendly unit sighted"
+msgid_plural "$friends Friendly units sighted"
+msgstr[0] "$friends unitati aliate descoperite"
+msgstr[1] "$friends unitati aliate descoperite"
 
-#: src/actions.cpp:2039
-msgid "Enemy unit sighted!"
-msgstr "Unitate inamica descoperita"
+#: src/actions.cpp:2040
+#, fuzzy
+msgid "$enemies Enemy unit sighted!"
+msgid_plural "$enemies Enemy units sighted!"
+msgstr[0] "$enemies unitati inamice descoperite"
+msgstr[1] "$enemies unitati inamice descoperite"
+
+#: src/actions.cpp:2044
+#, fuzzy
+msgid "Units sighted! ($friends friendly, "
+msgid_plural "Units sighted! ($friends friendly, "
+msgstr[0] "Unitati descoperite! ($friends friendly, $enemies enemy)"
+msgstr[1] "Unitati descoperite! ($friends friendly, $enemies enemy)"
 
 #: src/actions.cpp:2045
-msgid "$friends Friendly units sighted"
-msgstr "$friends unitati aliate descoperite"
+msgid "$enemies enemy)"
+msgid_plural "$enemies enemy)"
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/actions.cpp:2048
-msgid "$enemies Enemy units sighted!"
-msgstr "$enemies unitati inamice descoperite"
-
-#: src/actions.cpp:2053
-msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr "Unitati descoperite! ($friends friendly, $enemies enemy)"
-
-#: src/actions.cpp:2069
+#: src/actions.cpp:2062
 msgid "(press $hotkey to continue)"
 msgstr "(apasati $hotkey pentru a continua miscarea)"
 
@@ -8388,7 +8395,7 @@ msgid ""
 msgstr ""
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:351
 msgid "Connection timed out"
 msgstr ""
 
@@ -8749,7 +8756,7 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-#: src/menu_events.cpp:294 src/unit.cpp:2668
+#: src/menu_events.cpp:294 src/unit.cpp:2396
 msgid "Moves"
 msgstr ""
 
@@ -8782,7 +8789,7 @@ msgstr ""
 msgid "Income"
 msgstr ""
 
-#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:430
 msgid "Name:"
 msgstr ""
 
@@ -8805,7 +8812,7 @@ msgstr ""
 msgid "The game has been saved"
 msgstr ""
 
-#: src/menu_events.cpp:470 src/playcampaign.cpp:433
+#: src/menu_events.cpp:470 src/playcampaign.cpp:440
 msgid "The game could not be saved"
 msgstr ""
 
@@ -8826,7 +8833,7 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:700
+#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:708
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr ""
@@ -9133,12 +9140,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2767
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2495
 msgid "("
 msgstr ""
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2774
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2502
 msgid ")"
 msgstr ""
 
@@ -9512,16 +9519,16 @@ msgstr ""
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:397 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/play_controller.cpp:704
+#: src/play_controller.cpp:712
 msgid "Back to start"
 msgstr ""
 
-#: src/play_controller.cpp:706
+#: src/play_controller.cpp:714
 msgid "Back to turn "
 msgstr ""
 
@@ -9551,14 +9558,18 @@ msgid "The replay could not be saved"
 msgstr ""
 
 #: src/playcampaign.cpp:342
-msgid "Downloading next level..."
+msgid "Receiving data..."
 msgstr ""
 
-#: src/playcampaign.cpp:422
+#: src/playcampaign.cpp:344
+msgid "Downloading next scenario..."
+msgstr ""
+
+#: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
 
-#: src/playcampaign.cpp:449
+#: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
 msgstr "Scenariu necunoscut: "
 
@@ -9702,7 +9713,7 @@ msgstr ""
 msgid "stone: "
 msgstr "impietrit:"
 
-#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:343
+#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:278
 msgid "damage"
 msgstr "daune:"
 
@@ -9890,32 +9901,32 @@ msgstr "Ajutor"
 msgid "Help Wesnoth by sending us information"
 msgstr "Ajutati Wesnoth trimitand informatii"
 
-#: src/unit.cpp:2603 src/unit.cpp:2772
+#: src/unit.cpp:2331 src/unit.cpp:2500
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2685
+#: src/unit.cpp:2413
 msgid "XP to advance"
 msgstr "PE pentru nivel"
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2491
 msgid ": "
 msgstr ":"
 
-#: src/unit_types.cpp:351
+#: src/unit_types.cpp:286
 #, fuzzy
 msgid "strikes"
 msgstr "loveste"
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "chaotic"
 msgstr ""
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "lawful"
 msgstr ""
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "neutral"
 msgstr "neutru"
 
@@ -9942,6 +9953,12 @@ msgstr ""
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#~ msgid "Friendly unit sighted"
+#~ msgstr "Unitate aliata descoperita"
+
+#~ msgid "Enemy unit sighted!"
+#~ msgstr "Unitate inamica descoperita"
 
 #, fuzzy
 #~ msgid "Yes"
