@@ -14,18 +14,21 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: ru\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-01 18:15+0100\n"
-"PO-Revision-Date: 2006-07-20 23:41+0600\n"
+"PO-Revision-Date: 2007-01-05 01:51+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
-"Language-Team:  <ru@li.org>\n"
+"Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.2\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -462,8 +465,8 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"Видео режим не может быть изменён. Чтобы запускать игру в окне, Вы должны "
-"установить 16 бит цвет. Чтобы запускать игру на весь экран, Ваш монитор "
+"Видеорежим не может быть изменен. Чтобы запускать игру в окне, вы должны "
+"установить 16 битный цвет. Чтобы запускать игру на весь экран, ваш монитор "
 "должен поддерживать разрешение не менее 1024x768x16."
 
 #: src/preferences_display.cpp:228
@@ -475,8 +478,9 @@ msgid "Skip AI Moves"
 msgstr "Пропускать ходы компьютера"
 
 #: src/preferences_display.cpp:231
+#, fuzzy
 msgid "Show Lobby Joins"
-msgstr "Показывать подключения"
+msgstr "Показывать миниатюры карт в холле"
 
 #: src/preferences_display.cpp:232
 msgid "Show Floating Labels"
@@ -527,21 +531,20 @@ msgid "Chat Timestamping"
 msgstr "Отметка времени в чате"
 
 #: src/preferences_display.cpp:247
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Другие"
+msgstr "Продвинутый режим"
 
 #: src/preferences_display.cpp:248
 msgid "Normal Mode"
-msgstr ""
+msgstr "Нормальный режим"
 
 #: src/preferences_display.cpp:251
 msgid "User Define"
-msgstr ""
+msgstr "Определено пользователем"
 
 #: src/preferences_display.cpp:252
 msgid "Apply"
-msgstr ""
+msgstr "Применить"
 
 #: src/preferences_display.cpp:253
 msgid "Music Volume:"
@@ -557,7 +560,7 @@ msgstr "Гамма:"
 
 #: src/preferences_display.cpp:256
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Размер сэмпла (Гц):"
 
 #: src/preferences_display.cpp:271
 msgid "Sound effects on/off"
@@ -576,22 +579,20 @@ msgid "Change the music volume"
 msgstr "Изменить громкость музыки"
 
 #: src/preferences_display.cpp:284
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Изменить язык игры"
+msgstr "Изменить размер сэмпла"
 
 #: src/preferences_display.cpp:293
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Пользовательский размер сэмпла"
 
 #: src/preferences_display.cpp:302 src/preferences_display.cpp:306
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Изменить громкость музыки"
+msgstr "Изменить размер буфера"
 
 #: src/preferences_display.cpp:304 src/preferences_display.cpp:638
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Размер буфера: "
 
 #: src/preferences_display.cpp:312
 msgid "Change the speed of scrolling around the map"
@@ -626,13 +627,13 @@ msgid "Overlay a grid onto the map"
 msgstr "Показывать сетку на карте"
 
 #: src/preferences_display.cpp:345
+#, fuzzy
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
-"Показывать сообщения о игроках, подключившихся к многопользовательской игре"
+msgstr "Показывать сообщения о друзьях, подключившихся к холлу игр"
 
 #: src/preferences_display.cpp:348
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Показывать над соединением количество нанесённого урона "
+msgstr "Показывать над соединением количество нанесенного урона "
 
 #: src/preferences_display.cpp:350
 msgid "Change the resolution the game runs at"
@@ -676,7 +677,7 @@ msgstr "Просмотр и настройка горячих клавиш"
 
 #: src/preferences_display.cpp:658
 msgid "Chat Lines: "
-msgstr "Линии чата:"
+msgstr "Линии чата: "
 
 #: src/preferences_display.cpp:710
 msgid "yes"
@@ -744,7 +745,7 @@ msgstr "Данная горячая клавиша уже используетс
 
 #: src/preferences_display.cpp:1024
 msgid "Saved Theme Preference: "
-msgstr "Сохранённые настройки темы:"
+msgstr "Сохраненные настройки темы:"
 
 #: src/preferences_display.cpp:1030
 msgid "New theme will take effect on next new or loaded game."
@@ -773,7 +774,7 @@ msgstr "Закрыть"
 
 #: src/show_dialog.cpp:917
 msgid "KB"
-msgstr "КБайт"
+msgstr "кб"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
@@ -782,3 +783,54 @@ msgstr "Удалить файл"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Ошибка удаления файла."
+
+#~ msgid "File: "
+#~ msgstr "Файл: "
+
+#~ msgid "New Folder"
+#~ msgstr "Новый каталог"
+
+#~ msgid "Name: "
+#~ msgstr "Имя: "
+
+#~ msgid "Creation of the directory failed."
+#~ msgstr "Ошибка создания каталога."
+
+#~ msgid "Save The Map"
+#~ msgstr "Сохранить карту"
+
+#~ msgid "Set Team Label"
+#~ msgstr "Установить метку команды"
+
+#~ msgid "Castle Size:"
+#~ msgstr "Размер замка:"
+
+#~ msgid "Show Lobby Joins Of Friends"
+#~ msgstr "Показывать подключения друзей в холле"
+
+#~ msgid "Sort Lobby List"
+#~ msgstr "Сортировать список в холле"
+
+#~ msgid "Iconize Lobby List"
+#~ msgstr "Иконки в списке холла"
+
+#~ msgid "Bell Volume:"
+#~ msgstr "Громкость сигнала:"
+
+#~ msgid "Change the bell volume"
+#~ msgstr "Изменить громкость сигнала"
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "Скорость движения и битвы соединений"
+
+#~ msgid "Show minimaps in the multiplayer lobby"
+#~ msgstr "Показывать миниатюры карт в холле"
+
+#~ msgid "Sort the player list in the lobby by player groups"
+#~ msgstr "Сортировать список игроков в холле по группам"
+
+#~ msgid "Show icons in front of the player names in the lobby."
+#~ msgstr "Показывать иконки напротив игроков в холле."
+
+#~ msgid "Speed: "
+#~ msgstr "Скорость: "
