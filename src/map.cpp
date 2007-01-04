@@ -616,7 +616,6 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 		}
 	} else {
 #endif
-		//FIXME MdW this codepath is untested
 		const t_translation::t_list& terrain = 
 			t_translation::read_list(cfg["terrain"], -1, t_translation::T_FORMAT_STRING);
 		if(! terrain.empty()) {
