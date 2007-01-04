@@ -154,19 +154,12 @@ public:
 	 * The rule_image structure represents one such image.
 	 */
 	struct rule_image {
-		rule_image(int layer, bool global_image=false);
-		rule_image(int x, int y, bool global_image=false);
-
-		/** There are 2 kinds of images:
-		 * * Flat, horizontal, stacked images, who have a layer
-		 * * Vertical images who have an x/y position
-		 */
-		enum { HORIZONTAL, VERTICAL } position;
-
-		/** The layer of the image, if position is set to HORIZONTAL */
+		rule_image(int layer, int x, int y, bool global_image=false);
+	
+		/** The layer of the image for horizontal layering */
 		int layer;
 		/** The position of the image base (that is, the point where
-		 * the image reaches the floor) if position is set to VERTICAL
+		 * the image reaches the floor) for vertical layering
 		 */
 		int basex, basey;
 
@@ -254,15 +247,15 @@ public:
 		/** The list of flags present in this tile */
 		std::set<std::string> flags;
 
-		/** The list of images associated to this tile which have the
-		 * "position=horizontal" parameter set, ordered by their layer.
+		/** The list of images associated to this tile ordered by their 
+			layer first and base-y position second.
 		 */
-		ordered_ri_list horizontal_images;
-		/** The list of images associated to this tile which have the
-		 * "position=vertical" parameter set, ordered by their position
-		 * in the y-axis
+		ordered_ri_list images;
+
+		/** The allowed interval for the base-y position. The possible values are from 
+		 * -BASE_Y_INTERVAL to BASE_Y_INTERVAL-1
 		 */
-		ordered_ri_list vertical_images;
+		static const int BASE_Y_INTERVAL;
 
 		/** The list of images which are in front of the unit sprites,
 		 * attached to this tile. This member is considered a cache: it

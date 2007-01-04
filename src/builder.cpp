@@ -28,15 +28,10 @@
 
 const int terrain_builder::rule_image::TILEWIDTH = 72;
 const int terrain_builder::rule_image::UNITPOS = 36 + 18;
+const int terrain_builder::tile::BASE_Y_INTERVAL = 100000;
 
-terrain_builder::rule_image::rule_image(int layer, bool global_image) :
-	position(HORIZONTAL), layer(layer),
-	basex(0), basey(0), global_image(global_image)
-{}
-
-terrain_builder::rule_image::rule_image(int x, int y, bool global_image) :
-	position(VERTICAL), layer(0),
-	basex(x), basey(y), global_image(global_image)
+terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image) :
+	layer(layer), basex(x), basey(y), global_image(global_image)
 {}
 
 terrain_builder::tile::tile() : last_tod("invalid_tod")
@@ -53,7 +48,16 @@ void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_r
 		tod_variant = itor->second->variants.find("");
 
 	if(tod_variant != itor->second->variants.end()) {
-		if(itor->first < 0) {
+		//calculate original y-value and layer from list index
+		int layer = itor->first / BASE_Y_INTERVAL;
+		int basey = itor->first % BASE_Y_INTERVAL;
+
+		if (basey < 0)
+			basey += BASE_Y_INTERVAL/2;
+		else
+			basey -= BASE_Y_INTERVAL/2;
+
+		if(layer < 0 || (layer == 0 && basey < rule_image::UNITPOS)) {
 			images_background.push_back(tod_variant->second.image);
 		} else {
 			images_foreground.push_back(tod_variant->second.image);
@@ -67,24 +71,15 @@ void terrain_builder::tile::rebuild_cache(const std::string &tod)
 	images_foreground.clear();
 
 	ordered_ri_list::const_iterator itor;
-	for(itor = horizontal_images.begin(); itor != horizontal_images.end(); ++itor) {
-		if (itor->first <= 0)
-			add_image_to_cache(tod, itor);
-	}
-	for(itor = vertical_images.begin(); itor != vertical_images.end(); ++itor) {
+	for(itor = images.begin(); itor != images.end(); ++itor) {
 		add_image_to_cache(tod, itor);
-	}
-	for(itor = horizontal_images.begin(); itor != horizontal_images.end(); ++itor) {
-		if (itor->first > 0)
-			add_image_to_cache(tod, itor);
 	}
 }
 
 void terrain_builder::tile::clear()
 {
 	flags.clear();
-	horizontal_images.clear();
-	vertical_images.clear();
+	images.clear();
 	images_foreground.clear();
 	images_background.clear();
 	last_tod = "invalid_tod";
@@ -351,9 +346,6 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 	for (rule_imagelist::iterator itor = ret.images.begin();
 			itor != ret.images.end(); ++itor) {
 
-		if (itor->position == rule_image::HORIZONTAL)
-			continue;
-
 		double vx, vy, rx, ry;
 
 		vx = double(itor->basex) - double(rule_image::TILEWIDTH)/2;
@@ -490,25 +482,28 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 	for(config::child_list::const_iterator img = cimages.begin(); img != cimages.end(); ++img) {
 
 		const std::string &name = (**img)["name"];
+		int layer, basex, basey;
 
-		if((**img)["position"].empty() ||
-				(**img)["position"] == "horizontal") {
+		if((**img)["layer"].empty())
+			layer = 0;
+		else
+			layer = atoi((**img)["layer"].c_str());
+		
 
-			const int layer = atoi((**img)["layer"].c_str());
-			images.push_back(rule_image(layer, global));
-
-		} else if((**img)["position"] == "vertical") {
-
+		if((**img)["base"].empty()) {
+			basex = rule_image::TILEWIDTH / 2 + dx;
+			basey = rule_image::TILEWIDTH / 2 + dy;
+		} else {
 			std::vector<std::string> base = utils::split((**img)["base"]);
-			int basex = 0, basey = 0;
 
 			if(base.size() >= 2) {
 				basex = atoi(base[0].c_str());
 				basey = atoi(base[1].c_str());
 			}
-			images.push_back(rule_image(basex - dx, basey - dy, global));
-
 		}
+
+		images.push_back(rule_image(layer, basex - dx, basey - dy, global));
+
 
 		// Adds the main (default) variant of the image, if present
 		images.back().variants.insert(std::pair<std::string, rule_image_variant>("", rule_image_variant(name,"")));
@@ -863,15 +858,12 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 
 		tile& btile = tile_map_[tloc];
 
+		// We want to order the images by layer first and base-y second, so we sort by 
+		// layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + basey
+		// Thus, allowed values for basey are from -50000 to 49999
 		for(img = constraint->second.images.begin(); img != constraint->second.images.end(); ++img) {
-
-			if(img->position == rule_image::HORIZONTAL) {
-				btile.horizontal_images.insert(std::pair<int, const rule_image*>(
-							img->layer, &*img));
-			} else if(img->position == rule_image::VERTICAL) {
-				btile.vertical_images.insert(std::pair<int, const rule_image*>(
-						img->basey - rule_image::UNITPOS, &*img));
-			}
+			btile.images.insert(std::pair<int, const rule_image*>(
+									img->layer*tile::BASE_Y_INTERVAL + tile::BASE_Y_INTERVAL/2 + img->basey, &*img));
 		}
 
 		// Sets flags
