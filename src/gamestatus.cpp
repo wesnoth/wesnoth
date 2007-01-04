@@ -565,26 +565,26 @@ void write_player(config_writer &out, const player_info& player)
 
 
 // Deprecated, use other write_game below.
-void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode*/)
+void write_game(const game_state& gamestate, config& cfg/*, WRITE_GAME_MODE mode*/)
 {
 	log_scope("write_game");
-	cfg["label"] = game.label;
+	cfg["label"] = gamestate.label;
 	cfg["version"] = game_config::version;
 
-	cfg["scenario"] = game.scenario;
+	cfg["scenario"] = gamestate.scenario;
 
-	cfg["campaign"] = game.campaign;
+	cfg["campaign"] = gamestate.campaign;
 
-	cfg["campaign_type"] = game.campaign_type;
+	cfg["campaign_type"] = gamestate.campaign_type;
 
-	cfg["difficulty"] = game.difficulty;
+	cfg["difficulty"] = gamestate.difficulty;
 
-	cfg["campaign_define"] = game.campaign_define;
+	cfg["campaign_define"] = gamestate.campaign_define;
 
-	cfg.add_child("variables",game.variables);
+	cfg.add_child("variables",gamestate.variables);
 
-	for(std::map<std::string, player_info>::const_iterator i=game.players.begin();
-	    i!=game.players.end(); ++i) {
+	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
+	    i!=gamestate.players.end(); ++i) {
 		config new_cfg;
 		write_player(i->second, new_cfg);
 		new_cfg["save_id"]=i->first;
@@ -592,43 +592,43 @@ void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode*/)
 	}
 
 //	if(mode == WRITE_FULL_GAME) {
-		if(game.replay_data.child("replay") == NULL) {
-			cfg.add_child("replay",game.replay_data);
+		if(gamestate.replay_data.child("replay") == NULL) {
+			cfg.add_child("replay",gamestate.replay_data);
 		}
 
-		cfg.add_child("snapshot",game.snapshot);
-		cfg.add_child("replay_start",game.starting_pos);
+		cfg.add_child("snapshot",gamestate.snapshot);
+		cfg.add_child("replay_start",gamestate.starting_pos);
 		cfg.add_child("statistics",statistics::write_stats());
-	}
-//}
+//	}
+}
 
-void write_game(config_writer &out, const game_state& game)
+void write_game(config_writer &out, const game_state& gamestate)
 {
 	log_scope("write_game");
 
-	out.write_key_val("label", game.label);
+	out.write_key_val("label", gamestate.label);
 	out.write_key_val("version", game_config::version);
-	out.write_key_val("scenario", game.scenario);
-	out.write_key_val("campaign", game.campaign);
-	out.write_key_val("campaign_type", game.campaign_type);
-	out.write_key_val("difficulty", game.difficulty);
-	out.write_key_val("campaign_define", game.campaign_define);
-	out.write_child("variables", game.variables);
+	out.write_key_val("scenario", gamestate.scenario);
+	out.write_key_val("campaign", gamestate.campaign);
+	out.write_key_val("campaign_type", gamestate.campaign_type);
+	out.write_key_val("difficulty", gamestate.difficulty);
+	out.write_key_val("campaign_define", gamestate.campaign_define);
+	out.write_child("variables", gamestate.variables);
 
-	for(std::map<std::string, player_info>::const_iterator i=game.players.begin();
-	    i!=game.players.end(); ++i) {
+	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
+	    i!=gamestate.players.end(); ++i) {
 		out.open_child("player");
 		out.write_key_val("save_id", i->first);
 		write_player(out, i->second);
 		out.close_child("player");
 	}
 
-	if(game.replay_data.child("replay") == NULL) {
-		out.write_child("replay", game.replay_data);
+	if(gamestate.replay_data.child("replay") == NULL) {
+		out.write_child("replay", gamestate.replay_data);
 	}
 
-	out.write_child("snapshot",game.snapshot);
-	out.write_child("replay_start",game.starting_pos);
+	out.write_child("snapshot",gamestate.snapshot);
+	out.write_child("replay_start",gamestate.starting_pos);
 	out.open_child("statistics");
 	statistics::write_stats(out);
 	out.close_child("statistics");
@@ -705,14 +705,14 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	}
 }
 
-void load_game(const game_data& data, const std::string& name, game_state& state, std::string* error_log)
+void load_game(const game_data& data, const std::string& name, game_state& gamestate, std::string* error_log)
 {
 	log_scope("load_game");
 
 	config cfg;
 	read_save_file(name,cfg,error_log);
 
-	state = read_game(data,&cfg);
+	gamestate = read_game(data,&cfg);
 }
 
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log){
@@ -737,7 +737,7 @@ scoped_ostream open_save_game(const std::string &label)
 	}
 }
 
-void finish_save_game(config_writer &out, const game_state& state, const std::string &label)
+void finish_save_game(config_writer &out, const game_state& gamestate, const std::string &label)
 {
 	std::string name = label;
 	std::replace(name.begin(),name.end(),' ','_');
@@ -749,7 +749,7 @@ void finish_save_game(config_writer &out, const game_state& state, const std::st
 		}
 
 		config& summary = save_summary(label);
-		extract_summary_data_from_save(state,summary);
+		extract_summary_data_from_save(gamestate,summary);
 		const int mod_time = static_cast<int>(file_create_time(fname));
 		summary["mod_time"] = str_cast(mod_time);
 		write_save_index();
@@ -759,12 +759,12 @@ void finish_save_game(config_writer &out, const game_state& state, const std::st
 }
 
 //throws game::save_game_failed
-void save_game(const game_state& state)
+void save_game(const game_state& gamestate)
 {
-	scoped_ostream os(open_save_game(state.label));
+	scoped_ostream os(open_save_game(gamestate.label));
 	config_writer out(*os, preferences::compress_saves(), PACKAGE);
-	write_game(out, state);
-	finish_save_game(out, state, state.label);
+	write_game(out, gamestate);
+	finish_save_game(out, gamestate, gamestate.label);
 }
 
 namespace {
@@ -825,25 +825,25 @@ void write_save_index()
 	}
 }
 
-void extract_summary_data_from_save(const game_state& state, config& out)
+void extract_summary_data_from_save(const game_state& gamestate, config& out)
 {
-	const bool has_replay = state.replay_data.empty() == false;
-	const bool has_snapshot = state.snapshot.child("side") != NULL;
+	const bool has_replay = gamestate.replay_data.empty() == false;
+	const bool has_snapshot = gamestate.snapshot.child("side") != NULL;
 
 	out["replay"] = has_replay ? "yes" : "no";
 	out["snapshot"] = has_snapshot ? "yes" : "no";
 
-	out["label"] = state.label;
-	out["campaign_type"] = state.campaign_type;
-	out["scenario"] = state.scenario;
-	out["difficulty"] = state.difficulty;
-	out["version"] = state.version;
+	out["label"] = gamestate.label;
+	out["campaign_type"] = gamestate.campaign_type;
+	out["scenario"] = gamestate.scenario;
+	out["difficulty"] = gamestate.difficulty;
+	out["version"] = gamestate.version;
 	out["corrupt"] = "";
 
 	if(has_snapshot) {
-		out["turn"] = state.snapshot["turn_at"];
-		if(state.snapshot["turns"] != "-1") {
-			out["turn"] = out["turn"].str() + "/" + state.snapshot["turns"].str();
+		out["turn"] = gamestate.snapshot["turn_at"];
+		if(gamestate.snapshot["turns"] != "-1") {
+			out["turn"] = out["turn"].str() + "/" + gamestate.snapshot["turns"].str();
 		}
 	}
 
@@ -853,8 +853,8 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	//human player?
 	std::string leader;
 
-	for(std::map<std::string, player_info>::const_iterator p = state.players.begin();
-	    p!=state.players.end(); ++p) {
+	for(std::map<std::string, player_info>::const_iterator p = gamestate.players.begin();
+	    p!=gamestate.players.end(); ++p) {
 		for(std::vector<unit>::const_iterator u = p->second.available_units.begin(); u != p->second.available_units.end(); ++u) {
 			if(u->can_recruit()) {
 				leader = u->id();
@@ -865,7 +865,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	bool shrouded = false;
 
 	if(leader == "") {
-		const config& snapshot = has_snapshot ? state.snapshot : state.starting_pos;
+		const config& snapshot = has_snapshot ? gamestate.snapshot : gamestate.starting_pos;
 		const config::child_list& sides = snapshot.get_children("side");
 		for(config::child_list::const_iterator s = sides.begin(); s != sides.end() && leader.empty(); ++s) {
 
@@ -892,12 +892,12 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 
 	if(!shrouded) {
 		if(has_snapshot) {
-			if(state.snapshot.find_child("side","shroud","yes") == NULL) {
-				out["map_data"] = state.snapshot["map_data"];
+			if(gamestate.snapshot.find_child("side","shroud","yes") == NULL) {
+				out["map_data"] = gamestate.snapshot["map_data"];
 			}
 		} else if(has_replay) {
-			if(state.starting_pos.find_child("side","shroud","yes") == NULL) {
-				out["map_data"] = state.starting_pos["map_data"];
+			if(gamestate.starting_pos.find_child("side","shroud","yes") == NULL) {
+				out["map_data"] = gamestate.starting_pos["map_data"];
 			}
 		}
 	}
