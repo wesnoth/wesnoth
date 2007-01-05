@@ -14,14 +14,14 @@
 #define REPLAY_H_INCLUDED
 
 #include "config.hpp"
-#include "gamestatus.hpp"
 #include "map.hpp"
 #include "random.hpp"
-#include "unit.hpp"
 #include "map_label.hpp"
+#include "gamestatus.hpp"
 
 class display;
 class config_writer;
+class unit_map;
 
 struct verification_manager
 {

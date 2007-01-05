@@ -15,13 +15,17 @@
 #ifndef CONFIG_ADAPTER_HPP_INCLUDED
 #define CONFIG_ADAPTER_HPP_INCLUDED
 
-#include "global.hpp"
 
 #include <string>
 #include <vector>
-
+#include "team.hpp"
 #include "config.hpp"
-#include "gamestatus.hpp"
+
+class gamestatus;
+class game_state;
+class game_data;
+class gamemap;
+class unit_map;
 
 //This module is responsible for constructing objects like 'team'
 //or 'unit' out of config-information, that is based on WML.

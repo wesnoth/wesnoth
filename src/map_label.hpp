@@ -26,7 +26,7 @@ class display;
 class team;
 class terrain_label;
 class replay;
-class game_state;
+struct game_state;
 
 
 
@@ -64,9 +64,6 @@ public:
 
 	void recalculate_shroud();
 
-	
-	const label_map& labels();
-	
 	const display& disp() const;
 	
 	const std::string& team_name() const;
@@ -85,7 +82,6 @@ private:
 
 	team_label_map labels_;
 	label_map label_cache_;
-	bool changed_;
 };
 
 /// To store label data

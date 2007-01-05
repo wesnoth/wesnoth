@@ -16,6 +16,7 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "game_errors.hpp"
+#include "gamestatus.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "team.hpp"

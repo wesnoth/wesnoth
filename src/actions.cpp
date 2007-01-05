@@ -2027,39 +2027,32 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			}
 
 			const char* msg_id;
+			const char* msg_id2;
 			SDL_Color msg_colour;
 
-			//the message we display is different depending on whether units sighted
-			//were enemies or friends, and whether there is one or more
-			if(seen_units.size() == 1) {
-				if(nfriends == 1) {
-					msg_id = N_("Friendly unit sighted");
-					msg_colour = font::GOOD_COLOUR;
-				} else {
-					msg_id = N_("Enemy unit sighted!");
-					msg_colour = font::BAD_COLOUR;
-				}
-			}
-			else if(nfriends == 0 || nenemies == 0) {
-				if(nfriends > 0) {
-					msg_id = N_("$friends Friendly units sighted");
-					msg_colour = font::GOOD_COLOUR;
-				} else {
-					msg_id = N_("$enemies Enemy units sighted!");
-					msg_colour = font::BAD_COLOUR;
-				}
-			}
-			else {
-				msg_id = N_("Units sighted! ($friends friendly, $enemies enemy)");
+			//the message we display is different depending on whether the units sighted
+			//were enemies or friends, and their respective number
+			if (nenemies == 0) {
+				msg_id = ngettext("$friends Friendly unit sighted", "$friends Friendly units sighted", nfriends);
+				msg_colour = font::GOOD_COLOUR;
+				msg_id2 = "";
+			} else if (nfriends == 0) {
+				msg_id = ngettext("$enemies Enemy unit sighted!", "$enemies Enemy units sighted!", nenemies);
+				msg_colour = font::BAD_COLOUR;
+				msg_id2 = "";
+			} else {
+				msg_id = ngettext("Units sighted! ($friends friendly, ", "Units sighted! ($friends friendly, ", nfriends);
+                                msg_id2 = ngettext("$enemies enemy)", "$enemies enemy)", nenemies);
 				msg_colour = font::NORMAL_COLOUR;
 			}
+
+			std::stringstream msg;
+			msg << msg_id;
+			msg << msg_id2;
 
 			utils::string_map symbols;
 			symbols["friends"] = lexical_cast<std::string>(nfriends);
 			symbols["enemies"] = lexical_cast<std::string>(nenemies);
-
-			std::stringstream msg;
-			msg << gettext(msg_id);
 
 			if(steps.size() < route.size()) {
 				//see if the "Continue Move" action has an associated hotkey

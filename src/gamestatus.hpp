@@ -60,6 +60,7 @@ struct player_info
 
 struct game_state : public variable_set
 {
+public:
 	game_state() : difficulty("NORMAL") {}
 	std::string label; //name of the game (e.g. name of save file)
 	std::string version; //version game was created with.
@@ -166,26 +167,26 @@ struct save_info {
 //function to get a list of available saves.
 std::vector<save_info> get_saves_list(const std::string *dir = NULL);
 
-//enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
+enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
 
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
 game_state read_game(const game_data& data, const config* cfg);
-void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode=WRITE_FULL_GAME*/);
-void write_game(config_writer &out, const game_state& game);
+void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
+void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 
 // function returns true iff there is already savegame with that name
 bool save_game_exists(const std::string & name);
 
 //throws game::save_game_failed
 scoped_ostream open_save_game(const std::string &label);
-void finish_save_game(config_writer &out, const game_state& state, const std::string &label);
+void finish_save_game(config_writer &out, const game_state& gamestate, const std::string &label);
 
 //functions to load/save games.
-void load_game(const game_data& data, const std::string& name, game_state& state, std::string* error_log);
+void load_game(const game_data& data, const std::string& name, game_state& gamestate, std::string* error_log);
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log);
 //throws gamestatus::save_game_failed
-void save_game(const game_state& state);
+void save_game(const game_state& gamestate);
 
 //function to delete a save
 void delete_game(const std::string& name);
@@ -196,7 +197,7 @@ void delete_save_summary(const std::string& save);
 
 void write_save_index();
 
-void extract_summary_data_from_save(const game_state& state, config& out);
+void extract_summary_data_from_save(const game_state& gamestate, config& out);
 void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 
 #endif

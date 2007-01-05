@@ -16,14 +16,16 @@
 class config;
 class t_string;
 class display;
+class gamestatus;
+class unit;
+struct game_data;
+struct game_state;
 
-#include "gamestatus.hpp"
 #include "map.hpp"
 #include "soundsource.hpp"
 #include "team.hpp"
-#include "unit.hpp"
 #include "variable.hpp"
-
+#include "unit_map.hpp"
 #include <vector>
 #include <map>
 

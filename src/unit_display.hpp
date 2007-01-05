@@ -15,8 +15,10 @@
 #define UNIT_DISPLAY_HPP_INCLUDED
 
 class display;
+class unit;
+class unit_map;
 
-#include "unit.hpp"
+#include "map.hpp"
 
 ///the unit_display namespace contains a number of free functions
 ///which display units performing various on-screen actions - moving,

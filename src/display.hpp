@@ -15,6 +15,8 @@
 
 class config;
 class gamestatus;
+class unit;
+class unit_map;
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
@@ -24,7 +26,6 @@ class gamestatus;
 #include "reports.hpp"
 #include "team.hpp"
 #include "theme.hpp"
-#include "unit.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
 

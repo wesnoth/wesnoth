@@ -5,6 +5,8 @@
 
 #include "ai_interface.hpp"
 #include "map.hpp"
+#include "unit_map.hpp"
+#include "unit.hpp"
 #include <vector>
 #include <map>
 #include <string>

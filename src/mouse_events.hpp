@@ -18,9 +18,10 @@
 
 #include "actions.hpp"
 #include "display.hpp"
-#include "gamestatus.hpp"
 #include "pathfind.hpp"
-#include "unit.hpp"
+#include "unit_map.hpp"
+
+class gamestatus;
 
 #include "SDL.h"
 

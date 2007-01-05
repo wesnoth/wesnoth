@@ -15,7 +15,6 @@
 
 #include "scoped_resource.hpp"
 #include "util.hpp"
-#include "color_range.hpp"
 
 #include "SDL.h"
 

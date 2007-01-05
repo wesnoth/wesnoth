@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 23:27+0100\n"
+"POT-Creation-Date: 2007-01-04 20:05+0100\n"
 "PO-Revision-Date: 2006-08-30 12:25+0200\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -517,96 +517,96 @@ msgstr "Finský překlad"
 msgid "French Translation"
 msgstr "Francouzský překlad"
 
-#: data/about.cfg:330
+#: data/about.cfg:331
 msgid "German Translation"
 msgstr "Německý překlad"
 
-#: data/about.cfg:348
+#: data/about.cfg:349
 msgid "Greek Translation"
 msgstr "Řecký překlad"
 
-#: data/about.cfg:359
+#: data/about.cfg:360
 msgid "Hebrew Translation"
 msgstr "Hebrejský překlad"
 
-#: data/about.cfg:367
+#: data/about.cfg:368
 msgid "Hungarian Translation"
 msgstr "Maďarský překlad"
 
-#: data/about.cfg:384
+#: data/about.cfg:385
 msgid "Indonesian Translation"
 msgstr "Estonský překlad"
 
-#: data/about.cfg:391
+#: data/about.cfg:392
 msgid "Italian Translation"
 msgstr "Italský překlad"
 
-#: data/about.cfg:406
+#: data/about.cfg:407
 msgid "Japanese Translation"
 msgstr "Japonský překlad"
 
-#: data/about.cfg:418
+#: data/about.cfg:419
 msgid "Korean Translation"
 msgstr "Korejský překlad"
 
-#: data/about.cfg:425
+#: data/about.cfg:426
 msgid "Latin Translation"
 msgstr "Latinský překlad"
 
-#: data/about.cfg:432
+#: data/about.cfg:433
 msgid "Norwegian Translation"
 msgstr "Norský překlad"
 
-#: data/about.cfg:444
+#: data/about.cfg:445
 msgid "Polish Translation"
 msgstr "Polský překlad"
 
-#: data/about.cfg:461
+#: data/about.cfg:462
 msgid "Portuguese Translation"
 msgstr "Portugalský překlad"
 
-#: data/about.cfg:468
+#: data/about.cfg:469
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalský (brazilský) překlad"
 
-#: data/about.cfg:484
+#: data/about.cfg:485
 msgid "Russian Translation"
 msgstr "Ruský překlad"
 
-#: data/about.cfg:497
+#: data/about.cfg:498
 msgid "Serbian Translation"
 msgstr "Srbský překlad"
 
-#: data/about.cfg:506
+#: data/about.cfg:507
 msgid "Slovak Translation"
 msgstr "Slovenský překlad"
 
-#: data/about.cfg:515
+#: data/about.cfg:516
 msgid "Slovenian Translation"
 msgstr "Slovinský překlad"
 
-#: data/about.cfg:523
+#: data/about.cfg:524
 msgid "Spanish Translation"
 msgstr "Španělský překlad"
 
-#: data/about.cfg:536
+#: data/about.cfg:537
 msgid "Swedish Translation"
 msgstr "Švédský překlad"
 
-#: data/about.cfg:549
+#: data/about.cfg:550
 msgid "Turkish Translation"
 msgstr "Turecký překlad"
 
-#: data/about.cfg:560
+#: data/about.cfg:561
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "Slovinský překlad"
 
-#: data/about.cfg:567 data/help.cfg:252
+#: data/about.cfg:568 data/help.cfg:252
 msgid "Contributors"
 msgstr "Přispěvatelé"
 
-#: data/about.cfg:593
+#: data/about.cfg:594
 msgid "Bots"
 msgstr "Boti"
 
@@ -5574,7 +5574,7 @@ msgid "End Turn"
 msgstr "Ukonči kolo"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2637
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2365
 msgid "HP"
 msgstr "Životů"
 
@@ -10361,26 +10361,37 @@ msgid "Ambushed!"
 msgstr "Přepadení!"
 
 #: src/actions.cpp:2036
-msgid "Friendly unit sighted"
-msgstr "Spřátelená jednotka spatřena"
+#, fuzzy
+msgid "$friends Friendly unit sighted"
+msgid_plural "$friends Friendly units sighted"
+msgstr[0] "$friends spřátelených jednotek spatřeno"
+msgstr[1] "$friends spřátelených jednotek spatřeno"
+msgstr[2] "$friends spřátelených jednotek spatřeno"
 
-#: src/actions.cpp:2039
-msgid "Enemy unit sighted!"
-msgstr "Nepřátelská jednotka na dohled!"
+#: src/actions.cpp:2040
+#, fuzzy
+msgid "$enemies Enemy unit sighted!"
+msgid_plural "$enemies Enemy units sighted!"
+msgstr[0] "$enemies nepřátelských jednotek na dohled!"
+msgstr[1] "$enemies nepřátelských jednotek na dohled!"
+msgstr[2] "$enemies nepřátelských jednotek na dohled!"
+
+#: src/actions.cpp:2044
+#, fuzzy
+msgid "Units sighted! ($friends friendly, "
+msgid_plural "Units sighted! ($friends friendly, "
+msgstr[0] "Jednotky na dohled! ($friends spřátelených, $enemies nepřátelských)"
+msgstr[1] "Jednotky na dohled! ($friends spřátelených, $enemies nepřátelských)"
+msgstr[2] "Jednotky na dohled! ($friends spřátelených, $enemies nepřátelských)"
 
 #: src/actions.cpp:2045
-msgid "$friends Friendly units sighted"
-msgstr "$friends spřátelených jednotek spatřeno"
+msgid "$enemies enemy)"
+msgid_plural "$enemies enemy)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: src/actions.cpp:2048
-msgid "$enemies Enemy units sighted!"
-msgstr "$enemies nepřátelských jednotek na dohled!"
-
-#: src/actions.cpp:2053
-msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr "Jednotky na dohled! ($friends spřátelených, $enemies nepřátelských)"
-
-#: src/actions.cpp:2069
+#: src/actions.cpp:2062
 msgid "(press $hotkey to continue)"
 msgstr "(stiskni $hotkey k pokračování)"
 
@@ -10696,7 +10707,7 @@ msgid ""
 msgstr "Vytvoření souborů potřebných k instalaci tažení neproběhlo v pořádku."
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:344
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:351
 msgid "Connection timed out"
 msgstr "Časový limit pro připojení vypršel"
 
@@ -11063,7 +11074,7 @@ msgstr "Utržená poranění (odhad)"
 msgid "Statistics"
 msgstr "Statistiky"
 
-#: src/menu_events.cpp:294 src/unit.cpp:2668
+#: src/menu_events.cpp:294 src/unit.cpp:2396
 msgid "Moves"
 msgstr "Kroků"
 
@@ -11096,7 +11107,7 @@ msgstr "Výdaje"
 msgid "Income"
 msgstr "Příjmy"
 
-#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:423
+#: src/menu_events.cpp:452 src/playcampaign.cpp:294 src/playcampaign.cpp:430
 msgid "Name:"
 msgstr "Jméno:"
 
@@ -11121,7 +11132,7 @@ msgstr "Uloženo"
 msgid "The game has been saved"
 msgstr "Hra byla uložena"
 
-#: src/menu_events.cpp:470 src/playcampaign.cpp:433
+#: src/menu_events.cpp:470 src/playcampaign.cpp:440
 msgid "The game could not be saved"
 msgstr "Hru se nepodařilo uložit"
 
@@ -11143,7 +11154,7 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:700
+#: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:708
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "Automatické uložení"
@@ -11470,12 +11481,12 @@ msgid "Normal"
 msgstr "Normální"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2767
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:436 src/unit.cpp:2495
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2774
+#: src/multiplayer_wait.cpp:428 src/multiplayer_wait.cpp:439 src/unit.cpp:2502
 msgid ")"
 msgstr ")"
 
@@ -11855,16 +11866,16 @@ msgstr "Nepodařilo se přidat soket do souboru soketů"
 msgid "Could not send initial handshake"
 msgstr "Nemohu poslat žádost o spojení"
 
-#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:397 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Soubor, který se snažíš načíst, je poškozený."
 
-#: src/play_controller.cpp:704
+#: src/play_controller.cpp:712
 msgid "Back to start"
 msgstr "Zpátky na start"
 
-#: src/play_controller.cpp:706
+#: src/play_controller.cpp:714
 msgid "Back to turn "
 msgstr "Zpět na kolo "
 
@@ -11895,14 +11906,20 @@ msgid "The replay could not be saved"
 msgstr "Hru se nepodařilo uložit"
 
 #: src/playcampaign.cpp:342
-msgid "Downloading next level..."
+#, fuzzy
+msgid "Receiving data..."
+msgstr "Přijímání seznamu her..."
+
+#: src/playcampaign.cpp:344
+#, fuzzy
+msgid "Downloading next scenario..."
 msgstr "Stahuji další kolo..."
 
-#: src/playcampaign.cpp:422
+#: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Přeješ si uložit hru? (Smaže také všechna automatická uložení)"
 
-#: src/playcampaign.cpp:449
+#: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
 msgstr "Neznámý scénář: '"
 
@@ -12046,7 +12063,7 @@ msgstr "Tato jednotka byla proměněna v kámen. Nemůže se ani hýbat, ani út
 msgid "stone: "
 msgstr "zkamenění: "
 
-#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:343
+#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:278
 msgid "damage"
 msgstr "poškození"
 
@@ -12234,31 +12251,31 @@ msgstr "Nápověda"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomozte Wesnothu tím, že nám odešlete informace"
 
-#: src/unit.cpp:2603 src/unit.cpp:2772
+#: src/unit.cpp:2331 src/unit.cpp:2500
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2685
+#: src/unit.cpp:2413
 msgid "XP to advance"
 msgstr "zkušenostních bodů k postupu"
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2491
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:351
+#: src/unit_types.cpp:286
 msgid "strikes"
 msgstr "úderů"
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "chaotic"
 msgstr "chaotická"
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "lawful"
 msgstr "zákonná"
 
-#: src/unit_types.cpp:1129
+#: src/unit_types.cpp:975
 msgid "neutral"
 msgstr "neutrální"
 
@@ -12289,6 +12306,12 @@ msgstr "Výsledky si můžete prohlédnout na:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Pomozte nám vylepšit Wesnoth!"
+
+#~ msgid "Friendly unit sighted"
+#~ msgstr "Spřátelená jednotka spatřena"
+
+#~ msgid "Enemy unit sighted!"
+#~ msgstr "Nepřátelská jednotka na dohled!"
 
 #, fuzzy
 #~ msgid "Yes"
@@ -15573,9 +15596,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 
 #~ msgid "Warning"
 #~ msgstr "Varování"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Přijímání seznamu her..."
 
 #~ msgid "The game has been cancelled"
 #~ msgstr "Hra byla zrušena"

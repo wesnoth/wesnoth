@@ -17,8 +17,10 @@ class config;
 class display;
 class team;
 struct game_state;
+class unit_map;
+class gamemap;
 
-#include "unit.hpp"
+#include "terrain_translation.hpp"
 
 #include <string>
 #include <utility>

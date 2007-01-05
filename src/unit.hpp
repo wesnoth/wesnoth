@@ -18,10 +18,8 @@
 #include "race.hpp"
 #include "team.hpp"
 #include "unit_types.hpp"
-#include "image.hpp"
 #include "unit_map.hpp"
 
-class unit;
 class display;
 class gamestatus;
 class config_writer;
@@ -120,7 +118,19 @@ class unit
 		void new_turn();
 		void end_turn();
 		void new_level();
-		void refresh(const display& disp,const gamemap::location& loc); // called on every draw
+		// called on every draw
+		void refresh(const display& disp,const gamemap::location& loc) {
+			if (state_ == STATE_IDLING && anim_ && anim_->animation_finished()) {
+				set_standing(disp, loc);
+				return;
+			}
+			if (state_ != STATE_STANDING || incapacitated() || (get_current_animation_tick() < next_idling_)) return;
+			if (get_current_animation_tick() > next_idling_ + 1000) { // prevent all units animating at the same
+				set_standing(disp,loc);
+			} else {
+				set_idling(disp, loc);
+			}	
+		}
 
 		bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 		void heal(int amount);
@@ -372,8 +382,8 @@ class unit
 		std::vector<healed_animation> healed_animations_;
 		std::vector<poison_animation> poison_animations_;
 		unit_animation *anim_;
-		Uint32 next_idling;
-		int frame_begin_time;
+		int next_idling_;
+		int frame_begin_time_;
 
 
 		double offset_;
