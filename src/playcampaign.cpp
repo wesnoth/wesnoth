@@ -401,7 +401,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				// Adds player information, and other state
 				// information, to the configuration object
 				wassert(cfg.child("next_scenario") != NULL);
-				write_game(state, *cfg.child("next_scenario")/*, WRITE_SNAPSHOT_ONLY*/);
+				write_game(state, *cfg.child("next_scenario"), WRITE_SNAPSHOT_ONLY);
 				network::send_data(cfg);
 
 			} else if(io_type == IO_SERVER && scenario == NULL) {
