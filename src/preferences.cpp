@@ -72,11 +72,11 @@ manager::manager()
 		prefs.values.erase("mp_countdown_action_bonus");
 	}
 
-	std::vector<std::string> v;
-	v = utils::split(prefs["encountered_units"]);
+	const std::vector<std::string> v = utils::split(prefs["encountered_units"]);
 	std::copy(v.begin(), v.end(),
 			  std::inserter(encountered_units_set, encountered_units_set.begin()));
-	t_translation::t_list terrain = //FIXME MdW untested
+
+	const t_translation::t_list terrain =
 		t_translation::read_list(prefs["encountered_terrain_list"], -1, t_translation::T_FORMAT_STRING);
 	std::copy(terrain.begin(), terrain.end(), 
 			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
@@ -84,7 +84,6 @@ manager::manager()
 
 manager::~manager()
 {
-
 	std::vector<std::string> v;
 	std::copy(encountered_units_set.begin(), encountered_units_set.end(), std::back_inserter(v));
 	prefs["encountered_units"] = utils::join(v);
