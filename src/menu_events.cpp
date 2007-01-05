@@ -551,7 +551,7 @@ namespace events{
 
 		sound::write_music_play_list(start);
 
-		write_game(gamestate_, start /*,WRITE_SNAPSHOT_ONLY*/);
+		write_game(gamestate_, start, WRITE_SNAPSHOT_ONLY);
 
 		// Clobber gold values to make sure the snapshot uses the values
 		// in [side] instead.
