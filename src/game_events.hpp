@@ -18,8 +18,8 @@ class t_string;
 class display;
 class gamestatus;
 class unit;
-class game_data;
-class game_state;
+struct game_data;
+struct game_state;
 
 #include "map.hpp"
 #include "soundsource.hpp"
