@@ -158,7 +158,7 @@ unit::unit(const unit& o):
 		poison_animations_(o.poison_animations_),
 		anim_(NULL),
 
-		frame_begin_time(o.frame_begin_time),
+		frame_begin_time_(o.frame_begin_time_),
 		offset_(o.offset_),
 		unit_halo_(o.unit_halo_),
 		unit_anim_halo_(o.unit_anim_halo_),
@@ -174,6 +174,7 @@ unit::unit(const unit& o):
 		gamestatus_(o.gamestatus_),
 		teams_(o.teams_)
 {
+	next_idling_ = 0;
 	unit_halo_ = 0;
 	unit_anim_halo_ = 0;
 }
@@ -183,7 +184,8 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
      const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) :
 	movement_(0), hold_position_(false),resting_(false),state_(STATE_STANDING),
 	 facing_(gamemap::location::NORTH_EAST),flying_(false),
-	 anim_(NULL),unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(gamedata), units_(unitmap), map_(map),
+	 anim_(NULL),next_idling_(0),frame_begin_time_(0),unit_halo_(0),unit_anim_halo_(0),
+	 draw_bars_(false),gamedata_(gamedata), units_(unitmap), map_(map),
 	 gamestatus_(game_status),teams_(teams)
 {
 	read(cfg);
@@ -201,7 +203,8 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 			hold_position_(false), resting_(false), state_(STATE_STANDING),
 			facing_(gamemap::location::NORTH_EAST),
-			flying_(false),anim_(NULL),unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(&gamedata),
+			flying_(false),anim_(NULL),next_idling_(0),frame_begin_time_(0),
+			unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(&gamedata),
 			units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg);
@@ -257,11 +260,14 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	end_turn_ = false;
 	hold_position_ = false;
 	offset_ = 0;
+	next_idling_ = 0;
+	frame_begin_time_ = 0;
 	unit_halo_ = 0;
 	unit_anim_halo_ = 0;
 }
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
-           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
+           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
+		   state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
 	   gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
 {
 	goto_ = gamemap::location();
@@ -285,6 +291,8 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 		}
 	}
 	unrenamable_ = false;
+	next_idling_ = 0;
+	frame_begin_time_ = 0;
 	anim_ = NULL;
 	getsHit_=0;
 	end_turn_ = false;
@@ -1432,8 +1440,8 @@ void unit::set_standing(const display &disp,const gamemap::location& loc, bool w
 	delete anim_;
 	anim_ = new standing_animation(stand_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(),true,disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
-	next_idling= get_current_animation_tick() +10000 +rand()%10000;
+	frame_begin_time_ = anim_->get_begin_time() -1;
+	next_idling_= get_current_animation_tick() +10000 +rand()%10000;
 }
 void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
 {
@@ -1458,7 +1466,7 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 		anim_->add_frame(100,unit_frame(my_image,100,"1.0","",display::rgb(255,0,0),"0.5:50,0.0:50"));
 	}
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 void unit::set_extra_anim(const display &disp,const gamemap::location& loc, std::string flag)
@@ -1474,7 +1482,7 @@ void unit::set_extra_anim(const display &disp,const gamemap::location& loc, std:
 	}
 	anim_ =  new unit_animation(*(extra_animation(disp,loc,flag)));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 const unit_animation & unit::set_attacking(const display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num)
@@ -1494,7 +1502,7 @@ const unit_animation & unit::set_attacking(const display &disp,const gamemap::lo
 	}
 	anim_ =   new attack_animation(type.animation(disp,loc,this,hit_type,secondary_attack,swing_num,damage));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 	return ((attack_animation*)anim_)->get_missile_anim();
 }
 void unit::set_leading(const display &disp,const gamemap::location& loc)
@@ -1506,7 +1514,7 @@ void unit::set_leading(const display &disp,const gamemap::location& loc)
 
 	anim_ = new leading_animation(lead_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 void unit::set_leveling_in(const display &disp,const gamemap::location& loc)
 {
@@ -1517,7 +1525,7 @@ void unit::set_leveling_in(const display &disp,const gamemap::location& loc)
 
 	anim_ = new levelin_animation(levelingin_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 void unit::set_leveling_out(const display &disp,const gamemap::location& loc)
 {
@@ -1528,7 +1536,7 @@ void unit::set_leveling_out(const display &disp,const gamemap::location& loc)
 
 	anim_ = new levelout_animation(levelingout_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 void unit::set_recruited(const display &disp,const gamemap::location& loc)
 {
@@ -1540,7 +1548,7 @@ void unit::set_recruited(const display &disp,const gamemap::location& loc)
 	anim_ = new recruit_animation(recruiting_animation(disp,loc));
 	// add a fade in effect
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 void unit::set_healed(const display &disp,const gamemap::location& loc, int healing)
 {
@@ -1551,7 +1559,7 @@ void unit::set_healed(const display &disp,const gamemap::location& loc, int heal
 
 	anim_ = new healed_animation(get_healed_animation(disp,loc,healing));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 void unit::set_poisoned(const display &disp,const gamemap::location& loc, int damage)
 {
@@ -1562,7 +1570,7 @@ void unit::set_poisoned(const display &disp,const gamemap::location& loc, int da
 
 	anim_ = new poison_animation(poisoned_animation(disp,loc,damage));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 void unit::set_teleporting(const display &disp,const gamemap::location& loc)
@@ -1574,7 +1582,7 @@ void unit::set_teleporting(const display &disp,const gamemap::location& loc)
 
 	anim_ =  new unit_animation(teleport_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(),false,disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 void unit::set_dying(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
@@ -1588,7 +1596,7 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 	image::locator tmp_image = anim_->get_last_frame().image();
 	anim_->add_frame(600,unit_frame(tmp_image,600,"1~0:600"));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 void unit::set_healing(const display &disp,const gamemap::location& loc)
 {
@@ -1599,7 +1607,7 @@ void unit::set_healing(const display &disp,const gamemap::location& loc)
 
 	anim_ = new healing_animation(heal_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 void unit::set_victorious(const display &disp,const gamemap::location& loc)
 {
@@ -1610,7 +1618,7 @@ void unit::set_victorious(const display &disp,const gamemap::location& loc)
 
 	anim_ = new victory_animation(victorious_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 void unit::set_walking(const display &disp,const gamemap::location& loc)
@@ -1626,7 +1634,7 @@ void unit::set_walking(const display &disp,const gamemap::location& loc)
 
 	anim_ = new movement_animation(move_animation(disp,loc));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 
@@ -1644,14 +1652,14 @@ void unit::set_idling(const display &disp,const gamemap::location& loc)
 
 	anim_ = new idle_animation(*tmp);
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time = anim_->get_begin_time() -1;
+	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 
 void unit::restart_animation(const display& disp,int start_time) {
 	if(!anim_) return;
 	anim_->start_animation(start_time,false,disp.turbo_speed());
-	frame_begin_time = start_time -1;
+	frame_begin_time_ = start_time -1;
 }
 
 void unit::set_facing(gamemap::location::DIRECTION dir) { 
@@ -1695,8 +1703,8 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	if(tmp_offset == -20.0) tmp_offset = offset_;
 	const int x = int(tmp_offset*xdst + (1.0-tmp_offset)*xsrc);
 	const int y = int(tmp_offset*ydst + (1.0-tmp_offset)*ysrc);
-	if(frame_begin_time != anim_->get_current_frame_begin_time()) {
-		frame_begin_time = anim_->get_current_frame_begin_time();
+	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
+		frame_begin_time_ = anim_->get_current_frame_begin_time();
 		if(!current_frame.sound().empty()) {
 			sound::play_sound(current_frame.sound());
 		}

@@ -124,8 +124,8 @@ class unit
 				set_standing(disp, loc);
 				return;
 			}
-			if (state_ != STATE_STANDING || incapacitated() || (get_current_animation_tick() < next_idling)) return;
-			if (get_current_animation_tick() > next_idling + 1000) { // prevent all units animating at the same
+			if (state_ != STATE_STANDING || incapacitated() || (get_current_animation_tick() < next_idling_)) return;
+			if (get_current_animation_tick() > next_idling_ + 1000) { // prevent all units animating at the same
 				set_standing(disp,loc);
 			} else {
 				set_idling(disp, loc);
@@ -382,8 +382,8 @@ class unit
 		std::vector<healed_animation> healed_animations_;
 		std::vector<poison_animation> poison_animations_;
 		unit_animation *anim_;
-		int next_idling;
-		int frame_begin_time;
+		int next_idling_;
+		int frame_begin_time_;
 
 
 		double offset_;
