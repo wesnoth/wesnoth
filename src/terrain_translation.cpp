@@ -60,10 +60,10 @@ namespace t_translation {
 	// reads old maps
 	t_map read_game_map_old_(const std::string& map,std::map<int, coordinate>& starting_positions); 
 
-	//this one is used privately only for error messages used in string_to_number_ 
+	//this is used for error messages used in string_to_number_ 
 	//so we can't use this function to convert us. So we do the conversion here 
-	//manually not the niced solution but good enough for a tempory solution
-	const t_letter KEEP = ((t_letter)'_' << 24) + ((t_letter)'K' << 18);
+	//manually not the best solution but good enough for a tempory solution
+	const t_letter OBSOLETE_KEEP = ((t_letter)'_' << 24) + ((t_letter)'K' << 16);
 
 #endif
 
@@ -880,7 +880,7 @@ t_letter string_to_number_(std::string str, int& start_position)
 	}
 
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-	if(result == KEEP) {
+	if(result == OBSOLETE_KEEP) {
 		ERR_G << "Using _K for a keep is deappricated\n";
 	}
 #endif

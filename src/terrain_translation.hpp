@@ -109,6 +109,7 @@ namespace t_translation {
 	// T_FORMAT_AUTO   uses map_format_ to determine the type
 	enum { T_FORMAT_LETTER = 1, T_FORMAT_STRING = 2, T_FORMAT_AUTO = 3 };
 	
+	extern const t_letter OBSOLETE_KEEP;
 #endif
 	
 	/** 
