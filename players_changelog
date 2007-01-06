@@ -9,9 +9,8 @@ Version 1.3-svn:
     * Added a recruit animation for Skeleton.
     * Fixed animation of gryphon units not being displayed in the center of
       the hex.
-    * Fixed incorrect WML in some units causing female variations to use male
-      images.
-    * Improved hex grid.
+    * Fixed some female versions of units using male images in some animations.
+    * Improved the hex grid.
 
   * Sound
     * New sound effects: morning star.
@@ -19,7 +18,7 @@ Version 1.3-svn:
       values used for sample rate and buffer size.
 
   * Unit changes and balancing
-    * New traits: healthy (+3 HP, +4 rest healing), fearless (ignore 
+    * New traits: healthy (+3 HP, +4 rest healing), fearless (ignore
       unfavourable time of day).
     * Dark Adepts no longer get the 'strong' trait.
     * Added the 'skirmisher' ability to the Shadow line.
@@ -40,13 +39,15 @@ Version 1.3-svn:
       * New maps: The Manzivan Traps.
       * Revised maps: Blitz.
 
+  * User interface
+    * Users in the MP lobby can be marked as friends, and notifications received
+      when friends join the lobby.
+
   * Map editor
     * Maps can now be opened directly from a scenario file and saved back to it.
 
   * Language and translations
-    * Updated translations: British English, French, German, Italian, Russian, 
+    * Updated translations: British English, French, German, Italian, Russian,
       Swedish.
     * Fixed spelling mistakes in the default en_US language.
 
-  * User interface
-    * Users in the MP lobby can be marked as friends. It is possible to only be warned about friends joining
