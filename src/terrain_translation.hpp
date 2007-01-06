@@ -31,7 +31,7 @@
 #include <vector>
 #include <map>
 
-#include "variable.hpp"
+//#include "variable.hpp"
 
 namespace t_translation {
 

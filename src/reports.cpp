@@ -380,20 +380,19 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(map.is_village(mouseover)) {
 			const unsigned int owner = village_owner(mouseover,teams)+1;
 			if(owner == 0 || current_team.fogged(mouseover.x,mouseover.y)) {
-				str << _("Village");
+				str << map.get_terrain_info(terrain).income_description();
 			} else if(owner == current_side) {
-				str << _("Owned village");
+				str << map.get_terrain_info(terrain).income_description_own();
 			} else if(current_team.is_enemy(owner)) {
-				str << _("Enemy village");
+				str << map.get_terrain_info(terrain).income_description_enemy();
 			} else {
-				str << _("Allied village");
+				str << map.get_terrain_info(terrain).income_description_ally();
 			}
 			str << " ";
 		} else {
 		        str << map.get_terrain_info(terrain).name();
 		}
 
-//		if(underlying.size() != 1 || underlying[0] != terrain) {
 		if(underlying.size() != 1 || underlying.front() != terrain) {
 			str << " (";
 

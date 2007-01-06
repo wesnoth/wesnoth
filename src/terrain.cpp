@@ -18,6 +18,7 @@
 #include "util.hpp"
 #include "terrain.hpp"
 #include "serialization/string_utils.hpp"
+#include "gettext.hpp"
 #include "wassert.hpp"
 
 #include <algorithm>
@@ -30,8 +31,8 @@ terrain_type::terrain_type() : symbol_image_("void"),
 			       mvt_type_(1, t_translation::VOID_TERRAIN),
 			       def_type_(1, t_translation::VOID_TERRAIN),
 			       union_type_(1, t_translation::VOID_TERRAIN),
-                               height_adjust_(0), submerge_(0.0),
-                               heals_(false), village_(false), castle_(false), keep_(false) 
+                   height_adjust_(0), submerge_(0.0),
+                   heals_(false), village_(false), castle_(false), keep_(false) 
 {}
 
 terrain_type::terrain_type(const config& cfg)
@@ -105,6 +106,29 @@ terrain_type::terrain_type(const config& cfg)
 	village_ = utils::string_bool(cfg["gives_income"]);
 	castle_ = utils::string_bool(cfg["recruit_onto"]);
 	keep_ = utils::string_bool(cfg["recruit_from"]);
+
+	//mouse over message are only shown on villages
+	if(village_) {
+		income_description_ = cfg["income_description"];
+		if(income_description_ == "") {
+			income_description_ = _("Village");
+		}
+
+		income_description_ally_ = cfg["income_description_ally"];
+		if(income_description_ally_ == "") {
+			income_description_ally_ = _("Allied village");
+		}
+
+		income_description_enemy_ = cfg["income_description_enemy"];
+		if(income_description_enemy_ == "") {
+			income_description_enemy_ = _("Enemy village");
+		}
+
+		income_description_own_ = cfg["income_description_own"];
+		if(income_description_own_ == "") {
+			income_description_own_ = _("Owned village");
+		}
+	}
 }
 
 const std::string& terrain_type::symbol_image() const
