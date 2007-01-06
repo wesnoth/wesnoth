@@ -276,7 +276,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  normal_sound_button_(disp.video(), _("Normal Mode")),
 	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_CHECK),
 	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_CHECK),
-	  sample_rate_button3_(disp.video(), _("User Define"), gui::button::TYPE_CHECK),
+	  sample_rate_button3_(disp.video(), _("Custom"), gui::button::TYPE_CHECK),
 	  confirm_sound_button_(disp.video(), _("Apply")),
 
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
