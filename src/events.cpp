@@ -17,7 +17,6 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "gp2x.hpp"
-#include "mouse.hpp"
 #include "preferences_display.hpp"
 #include "sound.hpp"
 #include "video.hpp"
@@ -329,13 +328,6 @@ void pump()
 					last_mouse_down = current_ticks;
 					last_click_x = event.button.x;
 					last_click_y = event.button.y;
-				}
-
-				//mouse wheel support
-				else if(event.button.button == 4) {
-					gui::scroll_dec();
-				} else if(event.button.button == 5) {
-					gui::scroll_inc();
 				}
 
 				break;

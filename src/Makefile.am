@@ -79,7 +79,6 @@ wesnoth_SOURCES = \
 	marked-up_text.cpp \
 	menu_events.cpp \
 	minimap.cpp \
-	mouse.cpp \
 	mouse_events.cpp \
 	multiplayer.cpp \
 	multiplayer_ui.cpp \
@@ -186,7 +185,6 @@ wesnoth_editor_SOURCES = \
 	marked-up_text.cpp \
 	menu_events.cpp \
 	minimap.cpp \
-	mouse.cpp \
 	mouse_events.cpp \
 	network.cpp \
 	network_worker.cpp \
@@ -344,7 +342,6 @@ noinst_HEADERS = \
 	halo.hpp \
 	variable.hpp \
 	hotkeys.hpp \
-	mouse.hpp \
 	unit_display.hpp \
 	theme.hpp \
 	pathutils.hpp \
