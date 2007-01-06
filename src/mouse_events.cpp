@@ -1389,26 +1389,48 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 
 }
 
+#define LOCAL_VARIABLES \
+unit_map::const_iterator it = units_.find(next_unit_);\
+const unit_map::const_iterator itx = it;\
+const unit_map::const_iterator begin = units_.begin();\
+const unit_map::const_iterator end = units_.end()
+
 void mouse_handler::cycle_units()
 {
-	unit_map::const_iterator it = units_.find(next_unit_);
-	if(it != units_.end()) {
-		for(++it; it != units_.end(); ++it) {
-			if(unit_in_cycle(it)) {
-				break;
-			}
-		}
+	LOCAL_VARIABLES;
+
+	if (it == end) {
+		for (it = begin; it != end && !unit_in_cycle(it); ++it);
+	} else {
+		do {
+			++it;
+			if (it == end) it = begin;
+		} while (it != itx && !unit_in_cycle(it));
 	}
 
-	if(it == units_.end()) {
-		for(it = units_.begin(); it != units_.end(); ++it) {
-			if(unit_in_cycle(it)) {
-				break;
-			}
-		}
+	select_unit(it, itx);
+}
+
+void mouse_handler::cycle_back_units()
+{
+	LOCAL_VARIABLES;
+
+	if (it == end) {
+		while (it != begin && !unit_in_cycle(--it));
+		if (!unit_in_cycle(it)) it = itx;
+	} else {
+		do {
+			if (it == begin) it = end;
+			--it;
+		} while (it != itx && !unit_in_cycle(it));
 	}
 
-	if(it != units_.end() && !gui_->fogged(it->first.x,it->first.y)) {
+	select_unit(it, itx);
+}
+
+inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
+									   const unit_map::const_iterator &itx) {
+	if (it != itx && !gui_->fogged(it->first.x,it->first.y)) {
 		const bool ignore_zocs = it->second.get_ability_bool("skirmisher",it->first);
 		const bool teleport = it->second.get_ability_bool("teleport",it->first);
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,viewing_team(),path_turns_);
@@ -1417,7 +1439,9 @@ void mouse_handler::cycle_units()
 		gui_->scroll_to_tile(it->first.x,it->first.y,display::WARP);
 	}
 
-	if(it != units_.end()) {
+	if (it == itx) {
+		next_unit_ = gamemap::location();
+	} else {
 		next_unit_ = it->first;
 		selected_hex_ = next_unit_;
 		gui_->select_hex(selected_hex_);
@@ -1428,52 +1452,8 @@ void mouse_handler::cycle_units()
 		int mousex, mousey;
 		SDL_GetMouseState(&mousex, &mousey);
 		mouse_motion(mousex, mousey, true);
-
 		show_attack_options(it);
-	} else {
-		next_unit_ = gamemap::location();
-	}
-}
-
-void mouse_handler::cycle_back_units()
-{
-	unit_map::const_iterator it = units_.find(next_unit_);
-	if(it != units_.begin()) {
-		for(--it; it != units_.begin(); --it) {
-			if(unit_in_cycle(it)) {
-				break;
-			}
-		}
-	}
-
-	if(it == units_.begin()) {
-		it = units_.end();
-		for(--it; it != units_.begin(); --it) {
-			if(unit_in_cycle(it)) {
-				break;
-			}
-		}
-	}
-
-	if(it != units_.begin() && !gui_->fogged(it->first.x,it->first.y)) {
-		const bool ignore_zocs = it->second.get_ability_bool("skirmisher",it->first);
-		const bool teleport = it->second.get_ability_bool("teleport",it->first);
-		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,viewing_team(),path_turns_);
-		gui_->highlight_reach(current_paths_);
-
-		gui_->scroll_to_tile(it->first.x,it->first.y,display::WARP);
-	}
-
-	if(it != units_.begin()) {
-		next_unit_ = it->first;
-		selected_hex_ = next_unit_;
-		gui_->select_hex(selected_hex_);
-		gui_->highlight_hex(selected_hex_);
-		current_route_.steps.clear();
-		gui_->set_route(NULL);
-		show_attack_options(it);
-	} else {
-		next_unit_ = gamemap::location();
+		game_events::fire("select",selected_hex_);
 	}
 }
 

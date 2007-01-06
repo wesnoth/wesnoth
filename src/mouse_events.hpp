@@ -76,6 +76,7 @@ private:
 	unit_map::const_iterator find_unit(const gamemap::location& hex) const;
 	unit_map::iterator find_unit(const gamemap::location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
+	void select_unit(const unit_map::const_iterator &it, const unit_map::const_iterator &bound);
 
 	display* gui_;
 	std::vector<team>& teams_;
