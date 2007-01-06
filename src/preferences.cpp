@@ -321,18 +321,24 @@ void _set_grid(bool ison)
 	prefs["grid"] = (ison ? "true" : "false");
 }
 
-bool lobby_joins()
+int lobby_joins()
 {
-	return prefs["lobby_joins"] != "no";
+    if (prefs["lobby_joins"] == "friends") {return SHOW_FRIENDS;}
+    else if (prefs["lobby_joins"] == "all") {return SHOW_ALL;}
+    else {return SHOW_NON;}
+	//return prefs["lobby_joins"] != "no";
 }
 
 
-void _set_lobby_joins(bool show)
+void _set_lobby_joins(int show)
 {
-	if(show)
+    if (show == SHOW_FRIENDS) {prefs["lobby_joins"] = "friends";}
+    else if (show == SHOW_ALL) {prefs["lobby_joins"] = "all";}
+    else {prefs["lobby_joins"] = "non";}
+	/*if(show)
 		prefs["lobby_joins"] = "yes";
 	else
-		prefs["lobby_joins"] = "no";
+		prefs["lobby_joins"] = "no";*/
 }
 
 bool sort_list()

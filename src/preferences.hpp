@@ -97,8 +97,9 @@ namespace preferences {
 	bool grid();
 	void _set_grid(bool ison);
 
-	bool lobby_joins();
-	void _set_lobby_joins(bool show);
+	int lobby_joins();
+	void _set_lobby_joins(int show);
+	enum { SHOW_NON, SHOW_FRIENDS, SHOW_ALL };
 
 	bool sort_list();
 	void _set_sort_list(bool show);
