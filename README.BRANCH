@@ -1,13 +1,16 @@
-This branch tries to improve the terrain system.
-Changes are in the changelog
-TODO contains the points to be done which are tagged in the source
+README.FILES contains files status
 
-README.FILES contains files modified so far
+Main TODO list
 
-Main TODO list is here
+* add translated "owned village" support
 
 * test everything
 
 * Convert all campaigns
 
 * Convert all multiplayer maps
+
+Known backwards compability problems:
+* maps with custom terrains no longer load
+* the macro STARTING_VILLAGES might be broken in scenarios with the old map format
+
