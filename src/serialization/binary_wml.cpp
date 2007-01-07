@@ -15,7 +15,6 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "events.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "serialization/binary_wml.hpp"
