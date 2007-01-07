@@ -9,13 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-04 20:05+0100\n"
-"PO-Revision-Date: 2007-01-03 21:17+0100\n"
+"PO-Revision-Date: 2007-01-07 20:11+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Country: GERMANY\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: German\n"
 
 #: data/abilities.cfg:8
 msgid "heals +4"
@@ -5282,60 +5284,58 @@ msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Teamspiel: 2 gegen 2 oder 3 gegen 3 Spieler."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
-#, fuzzy
 msgid "Turn 2: Loyalists"
-msgstr "Loyalisten"
+msgstr "Runde 2: Loyalisten"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:173
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "Runde 5: Knalgan Allianz"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:174
-#, fuzzy
 msgid "Turn 8: Rebels"
-msgstr "Rebellen"
+msgstr "Runde 8: Rebellen"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:175
-#, fuzzy
 msgid "Turn 11: Northerners"
-msgstr "Nordmannen"
+msgstr "Runde 11: Nordmannen"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:176
-#, fuzzy
 msgid "Turn 14: Drakes"
-msgstr "Sturmdrake"
+msgstr "Runde 14: Draken"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:177
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "Runde 17: Untote"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:178
 msgid "Tower of Doom"
-msgstr ""
+msgstr "Turm des Verderbens"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:299
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6S - Mannschaftskampf"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
 msgid "Scenario where the objective is to survive for as long as possible."
-msgstr ""
+msgstr "Szenario, in dem es darum geht, möglichst lange zu überleben."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
+"Tipp: Wenn Ihr herausfindet, wo Eure Gegner erscheinen, wird Euch Eure "
+"Aufgabe um einiges leichter fallen."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "Überlebt für 32 Runden."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
 msgid "Survival all enemy attacks."
-msgstr ""
+msgstr "Überlebt alle gegnerischen Angriffe."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
 msgid "Death of your team leaders."
-msgstr ""
+msgstr "Eure Anführer fallen in der Schlacht."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
 msgid ""
@@ -5343,12 +5343,19 @@ msgid ""
 "impossible. Frankly, I don't got a clue to how you did it, so send me the "
 "replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"Herzlichen Glückwunsch, dass Ihr diese Karte überlebt habt, was, wie viele "
+"Leute behaupten, unmöglich ist. Deshalb kann ich mir nicht vorstellen wie "
+"ihr es geschafft haben wollt. Also sendet mir die Aufzeichnung Eures Spiels "
+"an roze@roze.mine.nu (auf Englisch). Danke!"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
+"Diese Schlacht habt Ihr verloren, aber fürchtet Euer Versagen nicht. Denn "
+"Ihr könnt es noch einmal versuchen. Und nocheinmal. Und nocheinmal. "
+"*Muhahaha*"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
@@ -9976,6 +9983,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Von den Saurianern weiß man, dass sie ebenfalls über die Gabe der Magie "
+"verfügen. Jedoch ist es bei ihnen weniger eine exakte Wissenschaft, sondern "
+"mehr Wahrsagerei und Schamanentum. Trotz allem sollte man die saurianischen "
+"Seher nicht unterschätzen, denn schon mancher, der dies tat, fand sich "
+"später von der eisigen Magie niedergerafft.\n"
+"\n"
+"Anmerkungen:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -10025,6 +10039,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Saurianer sind von kleinem Wuchs und deutlich weniger robust, als Zwerge. "
+"Jedoch sind sie dafür sehr viel gewandter, was es ihnen im Kampf "
+"ermöglicht,  durch jede noch so dichte Verteidigungslinie, die jeden "
+"ausgewachsenen Mann aufhalten würde, zu schlüpfen.\n"
+"\n"
+"Der Speer ist ihre bevorzugte Waffe, den sie durch ihre kräftigen Beine mit "
+"sehr viel Wucht, im Nahkampf sowie geworfen, gegen ihre Feinde einsetzen "
+"können.\n"
+"\n"
+"Anmerkungen:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
@@ -10988,31 +11012,28 @@ msgid "Ambushed!"
 msgstr "Hinterhalt!"
 
 #: src/actions.cpp:2036
-#, fuzzy
 msgid "$friends Friendly unit sighted"
 msgid_plural "$friends Friendly units sighted"
-msgstr[0] "$friends verbündete Einheiten gesichtet!"
-msgstr[1] "$friends verbündete Einheiten gesichtet!"
+msgstr[0] "$friends verbündete Einheiten gesichtet"
+msgstr[1] "$friends verbündete Einheiten gesichtet"
 
 #: src/actions.cpp:2040
-#, fuzzy
 msgid "$enemies Enemy unit sighted!"
 msgid_plural "$enemies Enemy units sighted!"
 msgstr[0] "$enemies gegnerische Einheiten gesichtet!"
 msgstr[1] "$enemies gegnerische Einheiten gesichtet!"
 
 #: src/actions.cpp:2044
-#, fuzzy
 msgid "Units sighted! ($friends friendly, "
 msgid_plural "Units sighted! ($friends friendly, "
-msgstr[0] "Einheiten gesichtet! ($friends verbündete, $enemies gegnerische)"
-msgstr[1] "Einheiten gesichtet! ($friends verbündete, $enemies gegnerische)"
+msgstr[0] "Einheiten gesichtet! ($friends verbündete, "
+msgstr[1] "Einheiten gesichtet! ($friends verbündete, "
 
 #: src/actions.cpp:2045
 msgid "$enemies enemy)"
 msgid_plural "$enemies enemy)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$enemies gesichtet)"
+msgstr[1] "$enemies gesichtet)"
 
 #: src/actions.cpp:2062
 msgid "(press $hotkey to continue)"
@@ -12547,12 +12568,10 @@ msgid "The replay could not be saved"
 msgstr "Die Wiederholung konnte nicht gespeichert werden"
 
 #: src/playcampaign.cpp:342
-#, fuzzy
 msgid "Receiving data..."
 msgstr "Empfange Spieldaten..."
 
 #: src/playcampaign.cpp:344
-#, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Nächstes Szenario wird geladen..."
 
@@ -12958,22 +12977,6 @@ msgstr "Betrachtet die Ergebnisse unter:"
 msgid "Help us make Wesnoth better for you!"
 msgstr "Helft uns, Wesnoth zu verbessern!"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Verbündete Einheit gesichtet!"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Gegnerische Einheit gesichtet!"
-
-#~ msgid "Yes"
-#~ msgstr "Ja"
-
-#~ msgid ""
-#~ "You can come if you wish, but the leader is only interested in speaking "
-#~ "to Baldras."
-#~ msgstr ""
-#~ "Ihr könnt herkommen, wenn Ihr das wünscht, doch ist unser Herrscher nicht "
-#~ "gewillt, mit einem anderen als Baldras zu sprechen!"
-
 #, fuzzy
 #~ msgid "Potion of bleach"
 #~ msgstr "Trank des Verfalls"
@@ -13072,21 +13075,6 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #~ "Anmerkung:"
 
 #~ msgid ""
-#~ "Despite their lethargic cold blooded heritage, and their relative "
-#~ "frailty, Saurian Augurs are valued as healers because they can provide "
-#~ "aid to their allies regardless of terrain or opposition. In addition to "
-#~ "healing they possess knowledge of cold magic.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Trotz ihrer lethargischen kaltblütigen Abstammung und ihrer relativen "
-#~ "Schwäche sind Saurianische Seher wertvoll als Heiler, da sie die Wunden "
-#~ "ihrer Verbündeten heilen können, unabhängig auf welchem Gelände sie sich "
-#~ "befinden. Außerdem verfügen sie über die Kräfte der Kältemagie.\n"
-#~ "\n"
-#~ "Anmerkung:"
-
-#~ msgid ""
 #~ "Saurian Flankers are highly skilled in the use of the spear. Despite "
 #~ "their lethargic cold blooded heritage, and their relative frailty, they "
 #~ "are highly valued as scouts as they can navigate through rough terrain "
@@ -13119,23 +13107,6 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #~ "Anmerkung:"
 
 #~ msgid ""
-#~ "Saurian Skirmishers are skilled in the use of the spear. Despite their "
-#~ "lethargic cold blooded heritage, and their relative frailty, they are "
-#~ "highly valued as scouts as they can navigate through rough terrain and "
-#~ "around opponents. The best Skirmishers go on to become Saurian "
-#~ "Ambushers.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Saurianische Plänkler sind gut im Umgang mit ihrem Speer. Trotz ihrer "
-#~ "lethargischen kaltblütigen Abstammung und ihrer relativen Schwäche sind "
-#~ "sie sehr wertvoll als Aufklärer, da sie sich auch in schwierigem Gelände "
-#~ "und an Feinden vorbei bewegen können. Die besten Plänkler werden eines "
-#~ "Tages zu Saurianischen Hinterlistlingen.\n"
-#~ "\n"
-#~ "Anmerkung:"
-
-#~ msgid ""
 #~ "Saurian Soothsayers are highly valued as healers because they can provide "
 #~ "aid to their friends regardless of terrain or opposition. In addition to "
 #~ "curing their allies they possess knowledge of cold magic.\n"
@@ -13147,36 +13118,3 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #~ "sie sich gerade befinden. Außerdem besitzen sie Wissen über Kältemagie.\n"
 #~ "\n"
 #~ "Anmerkung:"
-
-#~ msgid "Computer vs Computer"
-#~ msgstr "Computer gegen Computer"
-
-#~ msgid "+Core Developers"
-#~ msgstr "+Hauptentwicklung"
-
-#~ msgid "+  Main Developer"
-#~ msgstr "+  Projektleitung"
-
-#~ msgid "+  Artwork and graphics designer"
-#~ msgstr "+  Grafik"
-
-#~ msgid "Import Saved Games"
-#~ msgstr "Gespeicherte Spiele importieren"
-
-#~ msgid ""
-#~ "Your saves directory contains some files from an old version of Battle "
-#~ "for Wesnoth. Would you like to update these to the latest version? This "
-#~ "may take some time."
-#~ msgstr ""
-#~ "Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände einer "
-#~ "älteren Version des Spiels. Wollt Ihr sie auf die neueste Version "
-#~ "aktualisieren? Dies kann einige Zeit in Anspruch nehmen."
-
-#~ msgid ""
-#~ "Your saves directory contains some files that don't appear to have been "
-#~ "generated by this version of Battle for Wesnoth. Would you like to "
-#~ "register these files with the game?"
-#~ msgstr ""
-#~ "Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände, die "
-#~ "anscheinend nicht von dieser Version des Spieles angelegt wurden. Wollt "
-#~ "Ihr sie in Euer Spiel einbinden?"
