@@ -2256,7 +2256,6 @@ void display::set_grid(bool grid)
 std::string timestring ( void )
 {
     #define TIME_SIZE 10
-
     time_t now = time ( NULL );
     struct tm *lt = localtime( &now );
 
@@ -2264,9 +2263,10 @@ std::string timestring ( void )
     tstring = new char[TIME_SIZE];
     strftime(tstring,TIME_SIZE,preferences::clock_format().c_str(),lt);
 
-    std::string time_string(tstring, TIME_SIZE);
+    std::stringstream time_stream;
+    time_stream << tstring;
     delete[] tstring;
-    return time_string;
+    return time_stream.str();
     #undef TIME_SIZE
 }
 
