@@ -79,6 +79,8 @@ struct _TCPsocket {
 	int sflag;
 };
 unsigned int buf_id = 0;
+unsigned int waiting_threads = 0;
+unsigned int thread_pool = 0;
 
 struct buffer {
 	explicit buffer(TCPsocket sock) : sock(sock) {}
@@ -286,6 +288,11 @@ int process_queue(void*)
 
 		{
 			const threading::lock lock(*global_mutex);
+			if(waiting_threads >= thread_pool) {
+					LOG_NW << "worker thread exiting... not enough job\n";
+					return 0;
+			}
+			waiting_threads++;
 
 			for(;;) {
 
@@ -322,10 +329,16 @@ int process_queue(void*)
 
 				if(managed == false) {
 					LOG_NW << "worker thread exiting...\n";
+					waiting_threads--;
 					return 0;
 				}
 
 				cond->wait(*global_mutex); // temporarily release the mutex and wait for a buffer
+			}
+			waiting_threads--;
+			// if we are the last thread in the pool, create a new one
+			if(!waiting_threads) {
+				threads.push_back(new threading::thread(process_queue,NULL));
 			}
 		}
 
@@ -374,6 +387,7 @@ manager::manager(size_t nthreads) : active_(!managed)
 		managed = true;
 		global_mutex = new threading::mutex();
 		cond = new threading::condition();
+		thread_pool = nthreads;
 
 		for(size_t n = 0; n != nthreads; ++n) {
 			threads.push_back(new threading::thread(process_queue,NULL));
@@ -409,6 +423,13 @@ manager::~manager()
 
 		LOG_NW << "exiting manager::~manager()\n";
 	}
+}
+
+std::pair<unsigned int,size_t> thread_state()
+{
+	const threading::lock lock(*global_mutex);
+	return std::pair<unsigned int,size_t>(waiting_threads,threads.size());
+
 }
 
 void receive_data(TCPsocket sock)
