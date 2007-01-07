@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "events.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "serialization/binary_wml.hpp"
@@ -153,6 +154,12 @@ void write_compressed(std::ostream &out, config const &cfg, compression_schema &
 	write_compressed_internal(out, cfg, schema, 0);
 }
 
+namespace {
+	//FIXME: dirty hack to isolate source of MP Lobby Lag
+	unsigned int lobby_hack = 0;
+    const unsigned int LOBBY_HACK_MAX = 9;
+}
+
 static void read_compressed_internal(config &cfg, std::istream &in, compression_schema &schema, int level)
 {
 	increment_binary_wml_progress();
@@ -162,6 +169,12 @@ static void read_compressed_internal(config &cfg, std::istream &in, compression_
 	bool in_open_element = false;
 	for(;;) {
 		unsigned char const c = in.get();
+		if(++lobby_hack > LOBBY_HACK_MAX)
+		{
+			lobby_hack = 0;
+			events::pump();
+		}
+
 		if (!in.good())
 			return;
 		switch (c) {
