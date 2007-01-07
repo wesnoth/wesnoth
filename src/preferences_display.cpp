@@ -212,13 +212,16 @@ private:
 	void update_location(SDL_Rect const &rect);
 	const config* get_advanced_pref() const;
 	void set_advanced_menu();
+	void set_friends_menu();
+	std::vector<std::string> friends_names_;
 
+//	
 	// change
 	gui::slider music_slider_, sound_slider_, bell_slider_, scroll_slider_, gamma_slider_,
 				chat_lines_slider_, turbo_slider_, buffer_size_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, show_grid_button_,
 				lobby_minimaps_button_, show_lobby_joins_button1_, show_lobby_joins_button2_, show_lobby_joins_button3_, sort_list_by_group_button_,
-				iconize_list_button_, show_floating_labels_button_, turn_dialog_button_,
+                iconize_list_button_, friends_list_button_, friends_back_button_, friends_add_friend_button_, friends_add_ignore_button_, friends_remove_button_, show_floating_labels_button_, turn_dialog_button_,
 				turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 				show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
 				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_,
@@ -227,16 +230,16 @@ private:
 	gui::label music_label_, sound_label_, bell_label_, scroll_label_,
 				gamma_label_, chat_lines_label_, turbo_slider_label_,
 				sample_rate_label_, buffer_size_label_;
-	gui::textbox sample_rate_input_;
+	gui::textbox sample_rate_input_, friends_input_;
 
 	unsigned slider_label_width_;
 
-	gui::menu advanced_;
-	int advanced_selection_;
+	gui::menu advanced_, friends_;
+	int advanced_selection_, friends_selection_;;
 
 	enum TAB {	GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB,
 				/*extra tab*/
-				ADVANCED_SOUND_TAB};
+				ADVANCED_SOUND_TAB, FRIENDS_TAB};
 	TAB tab_;
 	display &disp_;
 	const config& game_cfg_;
@@ -259,6 +262,11 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_lobby_joins_button3_(disp.video(), _("Show All Lobby Joins"), gui::button::TYPE_CHECK),
 	  sort_list_by_group_button_(disp.video(), _("Sort Lobby List"), gui::button::TYPE_CHECK),
 	  iconize_list_button_(disp.video(), _("Iconize Lobby List"), gui::button::TYPE_CHECK),
+	  friends_list_button_(disp.video(), _("Your Friends List")),
+	  friends_back_button_(disp.video(), _("Multiplayer Options")),
+	  friends_add_friend_button_(disp.video(), _("Add As Friend")),
+	  friends_add_ignore_button_(disp.video(), _("Add As Ignore")),
+	  friends_remove_button_(disp.video(), _("Remove")),
 	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
@@ -288,10 +296,14 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(), ""),
 
 	  sample_rate_input_(disp.video(), 70),
+	  friends_input_(disp.video(), 170),
 
 	  slider_label_width_(0),
 	  advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
+	  friends_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
+	  
 	  advanced_selection_(-1),
+	  friends_selection_(-1),
 
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
@@ -402,6 +414,15 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_lobby_joins_button2_.set_help_string(_("Show messages about your friends joining the multiplayer lobby"));
 	show_lobby_joins_button3_.set_check(lobby_joins() == SHOW_ALL);
 	show_lobby_joins_button3_.set_help_string(_("Show messages about all players joining the multiplayer lobby"));
+	
+	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
+	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
+	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));
+	friends_add_ignore_button_.set_help_string(_("Add this username to your ignores list"));
+	friends_remove_button_.set_help_string(_("Remove this username from your list"));
+
+	friends_input_.set_text("");
+	friends_input_.set_help_string(_("Insert a username"));
 
 	show_floating_labels_button_.set_check(show_floating_labels());
 	show_floating_labels_button_.set_help_string(_("Show text above a unit when it is hit to display damage inflicted"));
@@ -430,6 +451,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
 
 	set_advanced_menu();
+	set_friends_menu();
 }
 
 handler_vector preferences_dialog::handler_members()
@@ -453,6 +475,12 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&show_lobby_joins_button1_);
 	h.push_back(&show_lobby_joins_button2_);
 	h.push_back(&show_lobby_joins_button3_);
+	h.push_back(&friends_list_button_);
+	h.push_back(&friends_back_button_);
+	h.push_back(&friends_add_friend_button_);
+	h.push_back(&friends_add_ignore_button_);
+	h.push_back(&friends_remove_button_);
+ 	h.push_back(&friends_input_);		
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
 	h.push_back(&turn_bell_button_);
@@ -485,6 +513,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&buffer_size_label_);
 	h.push_back(&sample_rate_input_);
 	h.push_back(&advanced_);
+	h.push_back(&friends_);
 	return h;
 }
 
@@ -567,7 +596,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 								rect.w - slider_label_width_ - right_border, 0 };
 	bell_slider_.set_location(bell_rect);
 	ypos += item_interline;
-	const int asb_x = rect.x + rect.w - advanced_sound_button_.width() - 20;
+	const int asb_x = rect.x + rect.w - advanced_sound_button_.width() - right_border;
 	advanced_sound_button_.set_location(asb_x, ypos);
 
 
@@ -593,7 +622,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 							rect.w - horizontal_padding - right_border, 0 };
 	buffer_size_slider_.set_location(buffer_rect);
 	ypos += item_interline;
-	const int nsb_x = rect.x + rect.w - normal_sound_button_.width() - 20;
+	const int nsb_x = rect.x + rect.w - normal_sound_button_.width() - right_border;
 	normal_sound_button_.set_location(nsb_x, ypos);
 
 
@@ -612,7 +641,30 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; show_lobby_joins_button1_.set_location(rect.x, ypos);
 	ypos += short_interline; show_lobby_joins_button2_.set_location(rect.x, ypos);
 	ypos += short_interline; show_lobby_joins_button3_.set_location(rect.x, ypos);
+	
+	const int flb_x = rect.x + rect.w - friends_list_button_.width() - right_border;
+	ypos += short_interline; friends_list_button_.set_location(flb_x, ypos);
 
+	//Friends tab
+	ypos = rect.y + top_border;
+	friends_input_.set_location(rect.x,ypos);
+	
+	friends_.set_location(rect.x,ypos + item_interline);
+	friends_.set_max_height(height()-100);
+	
+	int friends_xpos;
+	
+	if (friends_.width() > friends_input_.width()) {
+		friends_xpos = rect.x+  friends_.width() + 20;
+	} else {
+		friends_xpos = rect.x+  friends_input_.width() + 20;
+	}
+	
+	friends_add_friend_button_.set_location(friends_xpos,ypos);
+	ypos += short_interline+3; friends_add_ignore_button_.set_location(friends_xpos,ypos);
+	ypos += short_interline+3; friends_remove_button_.set_location(friends_xpos,ypos);
+	ypos += item_interline*2; friends_back_button_.set_location(friends_xpos,ypos);
+	
 	//Advanced tab
 	ypos = rect.y + top_border;
 	advanced_.set_location(rect.x,ypos);
@@ -788,6 +840,8 @@ void preferences_dialog::process_event()
 			set_iconize_list(iconize_list_button_.checked());
 		if (chat_timestamp_button_.pressed())
 			set_chat_timestamp(chat_timestamp_button_.checked());
+		if (friends_list_button_.pressed())
+			set_selection(FRIENDS_TAB);
 
 		set_chat_lines(chat_lines_slider_.value());
 
@@ -798,6 +852,43 @@ void preferences_dialog::process_event()
 
 		return;
 	}
+
+	if (tab_ == FRIENDS_TAB) {
+ 		if(friends_.selection() != friends_selection_) {
+ 			friends_selection_ = friends_.selection();
+			std::stringstream ss;
+			ss << friends_names_[friends_.selection()];
+			if (ss.str() != "(empty list)") friends_input_.set_text(ss.str());
+			else friends_input_.set_text("");
+		}
+		if (friends_back_button_.pressed())
+			set_selection(MULTIPLAYER_TAB);
+		if (friends_add_friend_button_.pressed()) {
+			if (preferences::_set_relationship(friends_input_.text(), "friend")) {
+				friends_input_.clear();
+				set_friends_menu();
+			} else {
+          		friends_input_.set_text("Invalid username");
+            }
+        }
+		if (friends_add_ignore_button_.pressed()) {
+			if (preferences::_set_relationship(friends_input_.text(), "ignored")) {
+				friends_input_.clear();
+				set_friends_menu();
+			} else {
+          		friends_input_.set_text("Invalid username");
+            }
+        }
+		if (friends_remove_button_.pressed()) {
+			if (preferences::_set_relationship(friends_input_.text(), "no")) {
+				friends_input_.clear();
+				set_friends_menu();
+			} else {
+          		friends_input_.set_text("Invalid username");
+            }
+        }
+		return;
+	} 
 
 	if (tab_ == ADVANCED_TAB) {
 		if(advanced_.selection() != advanced_selection_) {
@@ -862,6 +953,37 @@ void preferences_dialog::set_advanced_menu()
 	}
 
 	advanced_.set_items(advanced_items,true,true);
+}
+
+void preferences_dialog::set_friends_menu()
+{
+	std::vector<std::string> friends_items;
+	std::vector<std::string> friends_names;
+    if (!preferences::get_prefs()->child("relationship")){
+		preferences::get_prefs()->add_child("relationship");
+	}
+	config* cignore;
+	cignore = preferences::get_prefs()->child("relationship");
+
+	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
+
+	for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
+							i != cignore->values.end(); ++i){
+		if (i->second == "friend"){
+			friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR + i->first + COLUMN_SEPARATOR + "friend");
+			friends_names.push_back(i->first);
+		}
+		if (i->second == "ignored"){
+			friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR + i->first + COLUMN_SEPARATOR + "ignored");
+			friends_names.push_back(i->first);
+		}
+	}
+	if (friends_items.empty()) {
+		friends_items.push_back("(empty list)");
+		friends_names.push_back("(empty list)");
+	}
+	friends_names_ = friends_names;
+	friends_.set_items(friends_items,true,true);
 }
 
 void preferences_dialog::set_selection(int index)
@@ -929,6 +1051,15 @@ void preferences_dialog::set_selection(int index)
 	show_lobby_joins_button1_.hide(hide_multiplayer);
 	show_lobby_joins_button2_.hide(hide_multiplayer);
 	show_lobby_joins_button3_.hide(hide_multiplayer);
+	friends_list_button_.hide(hide_multiplayer);
+	
+	const bool hide_friends = tab_ != FRIENDS_TAB;
+	friends_.hide(hide_friends);
+	friends_back_button_.hide(hide_friends);
+	friends_add_friend_button_.hide(hide_friends);
+	friends_add_ignore_button_.hide(hide_friends);
+	friends_remove_button_.hide(hide_friends);
+	friends_input_.hide(hide_friends);
 
 	const bool hide_advanced = tab_ != ADVANCED_TAB;
 	advanced_.hide(hide_advanced);
