@@ -1,8 +1,55 @@
 #!/usr/bin/perl -w
 #script to convert from single char maps to multiple character maps
 
-sub printUsage(){
+sub printUsage{
     print "map_convert.pl terrain.cfg map_file.cfg new_map_file.cfg\n";
+}
+
+sub get_adjacent{
+    #returns string of original location+adjacent locations on hex 1-char map
+    $x=shift(@_);
+    $y=shift(@_);
+
+#    $orig=substr($_[$y],$x,1);
+    $odd=($x) % 2;
+#    print "$orig($x,$y) : $odd";
+    $adj=substr($_[$y],$x,1);
+    if($x>0){
+	$adj.=substr($_[$y],$x-1,1);
+#	print "\tW";
+    }
+    if($x<length($_[$y])){
+	$adj.=substr($_[$y],$x+1,1);
+#	print "\tE";
+    }
+    if($y>0){
+	$adj.=substr($_[$y-1],$x,1);
+#	print "\tN";
+    }
+    if($y<$#_){
+	$adj.=substr($_[$y+1],$x,1);
+#	print "\tS";
+    }
+
+    if($x>0 && $y>0 && !$odd){
+	$adj.=substr($_[$y-1],$x-1,1);
+#	print "\tNW";
+    }
+    if($x<length($_[$y]) && $y>0 && !$odd){
+	$adj.=substr($_[$y-1],$x+1,1);
+#	print "\tNE";
+    }
+    if($x>0 && $y<$#_ && $odd){
+	$adj.=substr($_[$y+1],$x-1,1);
+#	print "\tSW";
+    }
+    if($x<length($_[$y]) && $y<$#_ && $odd){
+	$adj.=substr($_[$y+1],$x+1,1);
+#	print "\tSE";
+    }
+
+#    print "\n";
+    return($adj);
 }
 
 if($#ARGV <1 ||$#ARGV>2){
@@ -130,14 +177,15 @@ while($#mfile){
 	    $line="map_data=\"\n";
 	    push(@newfile,$line);
 	}
+	$y=0;
 	 foreach(@map){
 	     if($_=~/,/){die "map file appears to be converted already\n";}
 	     $line='';
 	     chomp;
 	     chomp;
-	     for($i=0;$i!=length($_);$i++){
+	     for($x=0;$x!=length($_);$x++){
 		 $hex='';
-		 $char=substr($_,$i,1);
+		 $char=substr($_,$x,1);
 #		 print "$char";
 		 $format="%${width}.${max_len}s";
 		 if(defined($conversion{$char})){
@@ -146,12 +194,38 @@ while($#mfile){
 		     die "error, unrecognized map character: $char";
 #		     $hex=sprintf($format,$char);
 		 }
+		 if($hex=~/_K/){
+		     #convert keeps according to adjacent hexes
+		     $adj=get_adjacent($x,$y,@map);
+#		     print "adjacent: $adj\n";
+		     %hexcount=();
+		     for($i=1;$i<length($adj);$i++){
+			 #intentionally skipping 0 as it is original hex
+			 $a=(substr($adj,$i,1));
+			 $ca=$conversion{$a};
+			 if($ca=~/^C/){ #this is a castle hex	
+			     $hexcount{$ca}++;
+			 }
+		     }
+		     $maxc=0;
+		     $maxk="Ch";
+		     foreach(keys(%hexcount)){
+			 if($hexcount{$_}>$maxc){
+			     $maxc=$hexcount{$_};
+			     $maxk=$_;
+			 }
+#			 print "$_ $hexcount{$_}\n";
+		     }
+		     $maxk=~s/^C/K/;
+		     $hex=~s/_K/$maxk/;
+		 }
 		 $line.=$hex;
-		 if($i!=length($_)-1){$line.=','};
+		 if($x!=length($_)-1){$line.=','};
 	     }
 	     $line.="\n";
 	     push(@newfile,$line);
 #	     print "$line\n";
+             $y++;
 	 }
 	if($map_only){
 	    $line="\n";
