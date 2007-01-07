@@ -1845,6 +1845,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
 		wml_terrain = utils::interpolate_variables_into_string(wml_terrain, *state_of_game);
 		//convertert the terrain to a internal vector
+		//FIXME: once the terrain backwards compability layer is gone we can load the string
+		// in a t_match structure and use the optimized match routine in the loop
 		t_translation::t_list terrain = 
 			t_translation::read_list(wml_terrain, 0, t_translation::T_FORMAT_AUTO);
 
