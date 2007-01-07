@@ -86,6 +86,15 @@ public:
 		bool load_failed_;
 		int normal_rgb2_, selected_rgb2_, heading_rgb2_;
 		double normal_alpha2_, selected_alpha2_, heading_alpha2_;
+		struct bg_cache
+		{
+			bg_cache() : width(-1), height(-1)
+			{}
+
+			surface surf;
+			int width, height;
+		};
+		bg_cache bg_cache_;
 	};
 	friend class style;
 	friend class imgsel_style;

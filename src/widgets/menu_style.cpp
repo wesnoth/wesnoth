@@ -123,11 +123,14 @@ bool menu::imgsel_style::load_images()
 void menu::imgsel_style::draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(type == SELECTED_ROW && has_background_ && !load_failed_) {
-		//draw scaled background image
-		//scale image each time (to prevent loss of quality)
-		surface image = scale_surface(img_map_["background"], rect.w, rect.h);
+		if(bg_cache_.width != rect.w || bg_cache_.height != rect.h)
+		{
+			//draw scaled background image
+			//scale image each time (to prevent loss of quality)
+			bg_cache_.surf = scale_surface(img_map_["background"], rect.w, rect.h);
+		}
 		SDL_Rect clip = rect;
-		menu_ref.video().blit_surface(rect.x,rect.y,image,NULL,&clip);
+		menu_ref.video().blit_surface(rect.x,rect.y,bg_cache_.surf,NULL,&clip);
 	}
 	else {
 		style::draw_row_bg(menu_ref, row_index, rect, type);
