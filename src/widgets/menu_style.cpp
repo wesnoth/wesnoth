@@ -161,6 +161,8 @@ void menu::imgsel_style::draw_row_bg(menu& menu_ref, const size_t row_index, con
 			//draw scaled background image
 			//scale image each time (to prevent loss of quality)
 			bg_cache_.surf = scale_surface(img_map_["background"], rect.w, rect.h);
+			bg_cache_.width = rect.w;
+			bg_cache_.height = rect.h;
 		}
 		SDL_Rect clip = rect;
 		menu_ref.video().blit_surface(rect.x,rect.y,bg_cache_.surf,NULL,&clip);
