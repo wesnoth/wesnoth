@@ -99,7 +99,10 @@ while($line=<MAP>){
     if($line=~/map_data/){
 	$map_only=0;
     }
+
 }
+
+push(@mfile,"\n");
 
 @map=();
 close(MAP);
@@ -116,10 +119,12 @@ while($#mfile){
 #	 print "$line\n";
 	 while(($cont) && ($#mfile)){
 	     $line=shift(@mfile);
-	     if($line=~/\"/){$cont=0;} 
-	     ($line,$dummy)=split('"',$line);
+	     if($line=~/\"/){
+		 $cont=0;
+		($line,$dummy)=split('"',$line);
+	     }
 	     if(length($line)){push(@map,$line)};
-	 }
+       	 }
 
 	if(! $map_only){ 
 	    $line="map_data=\"\n";
