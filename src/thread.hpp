@@ -63,6 +63,8 @@ public:
 	void join();
 
 	void detach();
+
+	Uint32 get_id() { return SDL_GetThreadID(thread_); }
 private:
 	thread(const thread&);
 	void operator=(const thread&);
@@ -70,6 +72,7 @@ private:
 	SDL_Thread* thread_;
 };
 
+inline Uint32 get_current_thread_id() { return SDL_ThreadID(); }
 // Binary mutexes.
 //
 // Implements an interface to binary mutexes. This class only defines the
