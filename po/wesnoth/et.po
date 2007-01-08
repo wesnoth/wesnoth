@@ -3,14 +3,15 @@
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
+# Priit Laes <amd@store20.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-02 18:21+0100\n"
-"PO-Revision-Date: 2005-08-07 22:49+0200\n"
-"Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
+"PO-Revision-Date: 2007-01-07 22:49+0200\n"
+"Last-Translator: Priit Laes <amd@store20.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,9 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/abilities.cfg:8
-#, fuzzy
 msgid "heals +4"
-msgstr "taastab"
+msgstr "tervendav +4"
 
 #: data/abilities.cfg:13
 msgid ""
@@ -33,11 +33,18 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Tervendav +4:\n"
+"Võimaldab üksusel iga järgmise käigu alguses tervendada lähedalasuvaid "
+"sõbralikke üksuseid.\n"
+"\n"
+"Selle ravija poolt hooldataval üksusel lisandub kuni 8 HP-d käigu igal "
+"käigul või mürgitusnähtud vastaval käigul ei esine.\n"
+"Mürgitatud üksust tervendamisega mürgitusest vabastada ei saa ja seega peaks "
+"ta otsima hoolitsust kas külast või üksuselt mis omab ravitsemisvõimet."
 
 #: data/abilities.cfg:27
-#, fuzzy
 msgid "heals +8"
-msgstr "taastab"
+msgstr "tervendav +8"
 
 #: data/abilities.cfg:32
 msgid ""
@@ -50,10 +57,18 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Tervendav +4:\n"
+"Võimaldab üksusel iga järgmise käigu alguses tervendada lähedalasuvaid "
+"sõbralikke üksuseid.\n"
+"\n"
+"Selle ravija poolt hooldataval üksusel lisandub kuni 8 HP-d igal käigul või "
+"mürgitusnähtud vastaval käigul ei esine.\n"
+"Mürgitatud üksust tervendamisega mürgitusest vabastada ei saa ja seega peaks "
+"ta otsima hoolitsust kas külast või üksuselt mis omab ravitsemisvõimet."
 
 #: data/abilities.cfg:42
 msgid "cures"
-msgstr "ravib"
+msgstr "ravitsev"
 
 #: data/abilities.cfg:44
 msgid ""
@@ -61,10 +76,13 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Ravitsev:\n"
+"Ravitseja suudab mürgitud üksust ravida, kuigi mürgituse eemaldamise käigul "
+"lisatervendamist ei saa."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
-msgstr "taastub"
+msgstr "taastuv"
 
 #: data/abilities.cfg:59
 msgid ""
@@ -72,6 +90,9 @@ msgid ""
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Taastuv:\n"
+"Üksus tervendab iseennast 8 HP igal käigul. Kui üksus mürgitatakse, siis "
+"eemaldab ta mürgituse tervendamise asemel."
 
 #: data/abilities.cfg:74
 msgid "steadfast"
@@ -83,6 +104,9 @@ msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
+"Vankumatu:\n"
+"Selle üksuse vastupanuvõime kahekordistatakse kaitsel kuni maksimaalne 50%. "
+"Haavatavustele see ei mõju."
 
 #: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
 #: data/abilities.cfg:183 data/abilities.cfg:239
@@ -101,6 +125,14 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
+"Juhtimisvõime:\n"
+"See üksus suudab juhtida kõrvalasuvaid üksuseid, nii et nad võitlevad "
+"paremini.\n"
+"\n"
+"Lähedalasuvad madalama auastmega üksused teevad võitluses rohkem kahju. Kui "
+"üksus, millel on madalam auaste kui kõrvalasuval juhtimisvõimega üksusel, "
+"astub võitlusesse, siis tema rünnakud teevad vaenlasele 25% korda auastmete "
+"vahe võrra rohkem kahju."
 
 #: data/abilities.cfg:304
 msgid "skirmisher"
@@ -112,10 +144,13 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"Kähmleja:\n"
+"See üksus omab oskust vaenlase üksustest kiiresti mööda liikuda ning "
+"ignoreerida kõiki vaenlase kontrollvöönde."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
-msgstr "valgustab"
+msgstr "valgustav"
 
 #: data/abilities.cfg:321
 msgid ""
@@ -126,6 +161,12 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Valgustav:\n"
+"See üksus valgusta oma ümbritsevat piirkonda, mille tulemusel kuulekad "
+"üksused võitlevad paremini ja mittekuulekatel üksused halvemini.\n"
+".\n"
+"Kõik selle üksuse läheduses asuvad üksused võitlevad öösel nagu oleks "
+"videvik ja videviku ajal nagu oleks päev."
 
 #: data/abilities.cfg:328
 msgid "teleport"
@@ -137,6 +178,9 @@ msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
+"Teleportatsioon:\n"
+"See üksus suudab kahe sõbraliku küla vahel teleporteeruda kasutades selleks "
+"ühte oma liikumist."
 
 #: data/abilities.cfg:336 data/abilities.cfg:337
 msgid "ambush"
@@ -167,9 +211,8 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:378 data/abilities.cfg:383
-#, fuzzy
 msgid "submerge"
-msgstr "pussitama"
+msgstr "sukelduv"
 
 #: data/abilities.cfg:382 data/abilities.cfg:387
 msgid ""
@@ -217,7 +260,6 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:443
-#, fuzzy
 msgid "slows"
 msgstr "aeglustus"
 
@@ -230,9 +272,8 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:451
-#, fuzzy
 msgid "stones"
-msgstr "kivi"
+msgstr "kivistama"
 
 #: data/abilities.cfg:453
 msgid ""
@@ -315,6 +356,7 @@ msgid "poison"
 msgstr "mürk"
 
 #: data/abilities.cfg:522
+#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -724,14 +766,14 @@ msgstr "mõõk"
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
 msgid "blade"
-msgstr "mõõk"
+msgstr "tera"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:57
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:65
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:65
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:20
 msgid "morning star"
-msgstr "morgernstern"
+msgstr "koidutäht"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:58
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:66
@@ -829,9 +871,8 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:27
 #: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
 #: data/units/Orcish_Warlord.cfg:22 data/units/Orcish_Warrior.cfg:21
-#, fuzzy
 msgid "greatsword"
-msgstr "mõõk"
+msgstr "suur mõõk"
 
 #: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -898,9 +939,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Duelist.cfg:69
 #: data/units/Human_Loyalist_Fencer.cfg:124
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:28
-#, fuzzy
 msgid "sabre"
-msgstr "pussitama"
+msgstr "saabel"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:229
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:278
@@ -1062,7 +1102,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:19
 msgid "gaze"
-msgstr "jõllitus"
+msgstr "pilk"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:20
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:53
@@ -1203,9 +1243,8 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:66
 #: data/units/Elvish_Enchantress.cfg:145 data/units/Elvish_Sorceress.cfg:150
 #: data/units/Elvish_Sylph.cfg:127
-#, fuzzy
 msgid "faerie fire"
-msgstr "haldja puudutus"
+msgstr "haldjatuli"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
@@ -1221,7 +1260,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:20
 msgid "shove"
-msgstr "labidas"
+msgstr "tõuge"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
@@ -1288,7 +1327,7 @@ msgstr "Printsess"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr "Mere mäekoll"
+msgstr "Meriörk"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:16
 msgid ""
@@ -1301,11 +1340,11 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr "Magav grifoon"
+msgstr "Magav Greif"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:16
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "Kuss! Grifoon magab! Ära teda parem üles aja!"
+msgstr "Kuss! Greif magab! Ära teda parem üles aja!"
 
 #: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:3
 msgid "Youth"
@@ -1449,7 +1488,7 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:21
 msgid "blood kiss"
-msgstr "verine suudlus"
+msgstr "veresuudlus"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:69
 #: data/units/Saurian_Augur.cfg:82 data/units/Saurian_Oracle.cfg:82
@@ -1503,7 +1542,7 @@ msgstr ""
 #: data/units/Wose.cfg:30 data/units/Wose_Ancient.cfg:29
 #: data/units/Wose_Elder.cfg:28
 msgid "crush"
-msgstr "lõmastama"
+msgstr "lõmastus"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:3
 msgid "Demilich"
@@ -1567,7 +1606,7 @@ msgstr ""
 #: data/units/Human_Mage_Arch.cfg:105 data/units/Human_Mage_Great.cfg:94
 #: data/units/Human_Mage_Red.cfg:115
 msgid "fireball"
-msgstr "tulepall"
+msgstr "tulekera"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:4
 #: data/units/Human_Mage_Great.cfg:145
@@ -1595,7 +1634,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:4
 #: data/units/Human_Mage_Red.cfg:166
 msgid "female^Red Mage"
-msgstr "Punane maag"
+msgstr "Punamaag"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:26
 msgid ""
@@ -1654,7 +1693,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:118
 #: data/units/Human_Mage.cfg:115 data/units/Human_Mage_Silver.cfg:144
 msgid "missile"
-msgstr "mürsk"
+msgstr "rakett"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 #: data/units/Undead_Necromancer.cfg:3
@@ -1743,12 +1782,10 @@ msgid "Orcs"
 msgstr "Mäekollid"
 
 #: data/english.cfg:20
-#, fuzzy
 msgid "race^Undead"
-msgstr "Kooljad"
+msgstr "Koolnud"
 
 #: data/english.cfg:21
-#, fuzzy
 msgid "race^Dwarves"
 msgstr "Kääbused"
 
@@ -1757,35 +1794,32 @@ msgid "race^Goblins"
 msgstr ""
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
-msgstr "Kooljad"
+msgstr "Sisalikud"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Mehaanilised"
 
 #: data/english.cfg:25
 msgid "race^Mermen"
-msgstr ""
+msgstr "Merimehed"
 
 #: data/english.cfg:26
 msgid "race^Monsters"
-msgstr ""
+msgstr "Koletised"
 
 #: data/english.cfg:27
-#, fuzzy
 msgid "race^Nagas"
-msgstr "Naga"
+msgstr "Nagad"
 
 #: data/english.cfg:28
 msgid "race^Ogres"
-msgstr ""
+msgstr "Sookollid"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Troll"
-msgstr "Troll"
+msgstr "Kivihiiud"
 
 #: data/english.cfg:32
 msgid "$name's Bridge,$name's Crossing"
@@ -2783,8 +2817,9 @@ msgid "trait^Undead"
 msgstr "Kooljad"
 
 #: data/help.cfg:315
+#, fuzzy
 msgid "Undead units are immune to poison."
-msgstr ""
+msgstr "Mürgi suhtes immuunne"
 
 #: data/help.cfg:317
 msgid ""
@@ -3438,7 +3473,7 @@ msgstr ""
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
-msgstr "Sa võid tulla, kui tahad, aga juht soovib rääkida ainult Baldrasega."
+msgstr ""
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 #, fuzzy
@@ -3752,8 +3787,9 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:64
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:66
+#, fuzzy
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Noviits"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 #, fuzzy
@@ -3947,7 +3983,7 @@ msgstr ""
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 #, fuzzy
 msgid "4p - King of the Hill"
-msgstr "Mäekuningas"
+msgstr "4p - Mäe Kuningas"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
 msgid ""
@@ -4040,9 +4076,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
-#, fuzzy
 msgid "5p - Forest of Fear"
-msgstr "Hirmu Mets"
+msgstr "5p - Hirmu Mets"
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
@@ -4425,9 +4460,8 @@ msgid "Impassable Mountains"
 msgstr "Kõrbemäed"
 
 #: data/terrain.cfg:445
-#, fuzzy
 msgid "Great Tree"
-msgstr "Suur Troll"
+msgstr "Suur Puu"
 
 #: data/terrain.cfg:464
 msgid "Encampment"
@@ -4518,6 +4552,7 @@ msgid "Act."
 msgstr ""
 
 #: data/themes/default.cfg:569
+#, fuzzy
 msgid "short end-turn^End"
 msgstr "Lõpeta"
 
@@ -6611,8 +6646,6 @@ msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
-"Salakütid juhinduvad oma jahikogemustest ja on kõige väärtuslikumad öösiti "
-"ja metsades ning soodes."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
@@ -6673,13 +6706,10 @@ msgid "Trapper"
 msgstr "Kütt"
 
 #: data/units/Human_Outlaw_Trapper.cfg:19
-#, fuzzy
 msgid ""
 "Trappers usually work supplying food for bandits and outlaws. Their hunting "
 "experience makes them most valuable at night and in forests and swamps."
 msgstr ""
-"Salakütid juhinduvad oma jahikogemustest ja on kõige väärtuslikumad öösiti "
-"ja metsades ning soodes."
 
 #: data/units/Human_Peasant.cfg:3
 msgid "Peasant"
@@ -7377,7 +7407,7 @@ msgstr ""
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
-msgstr "Troll"
+msgstr "Kivihiid"
 
 #: data/units/Troll.cfg:19
 msgid ""
@@ -7394,7 +7424,7 @@ msgstr ""
 
 #: data/units/Troll_Great.cfg:3
 msgid "Great Troll"
-msgstr "Suur Troll"
+msgstr "Suur Kivihiid"
 
 #: data/units/Troll_Great.cfg:19
 msgid ""
@@ -7409,7 +7439,7 @@ msgstr ""
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
-msgstr "Trollikangelane"
+msgstr "Kivihiiuvägilane"
 
 #: data/units/Troll_Hero.cfg:18
 msgid ""
@@ -7422,7 +7452,7 @@ msgstr ""
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr "Kiviheitja Troll"
+msgstr "Kiviheitja hiid"
 
 #: data/units/Troll_Rocklobber.cfg:21
 msgid ""
@@ -7438,7 +7468,7 @@ msgstr ""
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
-msgstr "Trollisõdalane."
+msgstr "Kivihiidsõdalane."
 
 #: data/units/Troll_Warrior.cfg:21
 msgid ""
@@ -7456,7 +7486,7 @@ msgstr ""
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
-msgstr "Trollinäss"
+msgstr "Kivihiiunäss"
 
 #: data/units/Troll_Whelp.cfg:20
 msgid ""
@@ -7987,22 +8017,27 @@ msgid "Ambushed!"
 msgstr "Varitsus!"
 
 #: src/actions.cpp:2071
+#, fuzzy
 msgid "Friendly unit sighted"
-msgstr "Sõbralikku üksust on märgatud!"
+msgstr "$friends sõbralikku üksust märgatud"
 
 #: src/actions.cpp:2073
+#, fuzzy
 msgid "Enemy unit sighted!"
-msgstr "Vaenlase üksust on märgatud!"
+msgstr "$enemies vaenlase üksust märgatud!"
 
 #: src/actions.cpp:2078
+#, fuzzy
 msgid "$friends Friendly units sighted"
 msgstr "$friends sõbralikku üksust märgatud"
 
 #: src/actions.cpp:2080
+#, fuzzy
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies vaenlase üksust märgatud!"
 
 #: src/actions.cpp:2084
+#, fuzzy
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Märkasime üksusi! ($friends sõbralikke, $enemies vaenulikke)"
 
@@ -9105,8 +9140,9 @@ msgid "Color"
 msgstr "Värv"
 
 #: src/multiplayer_connect.cpp:756
+#, fuzzy
 msgid "Computer vs Computer"
-msgstr "Arvuti vs Arvuti"
+msgstr "Arvuti mängija"
 
 #: src/multiplayer_connect.cpp:757
 msgid "I'm Ready"
@@ -9441,7 +9477,7 @@ msgstr ""
 #: src/play_controller.cpp:378 src/playsingle_controller.cpp:348
 #: src/playsingle_controller.cpp:394
 msgid "The file you have tried to load is corrupt"
-msgstr "Fail, mida sa proovisid laadida, on vigane."
+msgstr "Fail, mida sa proovisid laadida, on vigane"
 
 #: src/play_controller.cpp:673
 msgid "Back to start"
@@ -9479,21 +9515,22 @@ msgid "Downloading next scenario..."
 msgstr "Tõmban kampaaniat..."
 
 #: src/playcampaign.cpp:429
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Kas sa tahad oma mängu salvestada?"
+msgstr ""
+"Kas soovid oma mängu salvestada? (Lisaks kustutab ka automaatsed "
+"salvestusfailid)"
 
 #: src/playcampaign.cpp:456
 msgid "Unknown scenario: '"
-msgstr "Tundmatu stsenaarium : '"
+msgstr "Tundmatu stsenaarium: '"
 
 #: src/playmp_controller.cpp:274
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
-"Mäng ei ole enam sünkrooniseeritud ja tuleb lõpetada.  Kas sa soovid vealogi "
-"salvestada?"
+"Mäng ei ole enam sünkrooniseeritud ja peab lõpetada.  Kas sa soovid oma "
+"mängu vealogi salvestada?"
 
 #: src/playsingle_controller.cpp:219
 msgid "Game Over"
@@ -9505,36 +9542,37 @@ msgstr "Mäng on läbi."
 
 #: src/playsingle_controller.cpp:315
 msgid "Remaining gold: "
-msgstr "Alles jäänud kuld:"
+msgstr "Allesjäänud kuld: "
 
 #: src/playsingle_controller.cpp:318
 msgid "Early finish bonus: "
-msgstr "Kiire lõpetamise preemia:"
+msgstr "Varase lõpetamise preemia: "
 
 #: src/playsingle_controller.cpp:320
 msgid "per turn"
 msgstr "käigu kohta"
 
 #: src/playsingle_controller.cpp:321
+#, fuzzy
 msgid "Turns finished early: "
-msgstr "Järgi jäänud käikude arv:"
+msgstr "Järelejäänud käikude arv:"
 
 #: src/playsingle_controller.cpp:323
 msgid "Bonus: "
-msgstr "Preemia:"
+msgstr "Preemia: "
 
 #: src/playsingle_controller.cpp:325
 msgid "Gold: "
-msgstr "Kuld:"
+msgstr "Kuld: "
 
 #: src/playsingle_controller.cpp:330
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr "80% kullast kandub üle järgmisesse stsenaariumi."
+msgstr "80% kullast säilitatakse järgmiseks stsenaariumiks"
 
 #: src/playsingle_controller.cpp:331
 msgid "Retained Gold: "
-msgstr "Säilitatud kuld:"
+msgstr "Säilitatud kuld: "
 
 #: src/playsingle_controller.cpp:336
 msgid "Victory"
@@ -9542,20 +9580,18 @@ msgstr "Võit"
 
 #: src/playsingle_controller.cpp:337
 msgid "You have emerged victorious!"
-msgstr "Sa oled võitnud!"
+msgstr "Sa oled väljunud võidukalt!"
 
 #: src/playsingle_controller.cpp:341
 msgid "Scenario Report"
 msgstr "Stsenaariumi raport"
 
 #: src/playsingle_controller.cpp:359
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Võrguühendus katkes ja mäng ei saa jätkuda. Kas sa tahad selle mängu "
-"salvestada?"
+"Võrguühendus katkes ja mäng ei saa jätkuda. Kas soovid seda mängu salvestada?"
 
 #: src/playsingle_controller.cpp:479
 msgid "It is now your turn"
@@ -9563,7 +9599,7 @@ msgstr "Sinu käik"
 
 #: src/playturn.cpp:200
 msgid "Replace with AI"
-msgstr "Asenda AI-ga"
+msgstr "Asenda arvutiga"
 
 #: src/playturn.cpp:201
 msgid "Replace with local player"
@@ -9579,26 +9615,27 @@ msgstr "Asenda "
 
 #: src/playturn.cpp:221
 msgid "has left the game. What do you want to do?"
-msgstr "lahkus mängust. Mida sa teha tahad?"
+msgstr "lahkus mängust. Mida sa teha sooviksid?"
 
 #: src/reports.cpp:130
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
-msgstr "See üksus on nähtamatu. Vastase üksused teda ei näe ja rünnata ei saa."
+msgstr "See üksus on nähtamatu. Vastase üksused ei näe ega saa seda rünnata."
 
 #: src/reports.cpp:130
 msgid "invisible: "
-msgstr "nähtamatu:"
+msgstr "nähtamatu: "
 
 #: src/reports.cpp:135
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "See üksus on kivistatud. Ta ei või liikuda ega rünnata."
+msgstr ""
+"See üksus on aeglustatud. Ta suudab rünnakul rakendada ainult poole oma "
+"jõust."
 
 #: src/reports.cpp:135
 msgid "slowed: "
-msgstr "aeglustatud:"
+msgstr "aeglustatud: "
 
 #: src/reports.cpp:140
 msgid ""
@@ -9610,12 +9647,13 @@ msgid ""
 "1 HP."
 msgstr ""
 "See üksus on mürgitatud. Ta kaotab 8 HP-d iga käiguga kuni ta leiab abi kas "
-"külast või sõbralikult üksuselt kellel on ravimisvõime.\n"
-"Ainult mürgist üksuste tapmiseks ei piisa. Mürk vähendab elusid 1 HP-ni."
+"külast või mõnelt sõbralikult üksuselt mis omab ravimisvõimet.\n"
+"\n"
+"Ainult mürgist üksuste tapmiseks ei piisa, sest HP alla 1 ei lange."
 
 #: src/reports.cpp:140
 msgid "poisoned: "
-msgstr "mürgitatud:"
+msgstr "mürgitatud: "
 
 #: src/reports.cpp:147
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -9623,20 +9661,19 @@ msgstr "See üksus on kivistatud. Ta ei või liikuda ega rünnata."
 
 #: src/reports.cpp:147
 msgid "stone: "
-msgstr "kivi:"
+msgstr "kivi: "
 
 #: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:343
 msgid "damage"
-msgstr "kahju"
+msgstr "kahjustus"
 
 #: src/reports.cpp:265
 msgid "weapon range: "
-msgstr ""
+msgstr "relva ulatus: "
 
 #: src/reports.cpp:266
-#, fuzzy
 msgid "damage type: "
-msgstr "kahju"
+msgstr "kahjustuse liik: "
 
 #: src/reports.cpp:328
 msgid "Lawful units: "
@@ -9708,11 +9745,11 @@ msgstr "Tühi muutuja nimi"
 
 #: src/serialization/parser.cpp:211
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Ootamatud peale muutuja nime (oodatakse , või =)"
 
 #: src/serialization/parser.cpp:246 src/serialization/parser.cpp:270
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Lõpetamata jutumärkides tekst"
 
 #: src/serialization/parser.cpp:293
 msgid " included from "
@@ -9720,7 +9757,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:314
 msgid "$error at $pos"
-msgstr ""
+msgstr "$viga asukohas $pos"
 
 #: src/titlescreen.cpp:166
 msgid "-- The Tome of Wesnoth"
@@ -9815,7 +9852,7 @@ msgstr ""
 
 #: src/unit.cpp:2507 src/unit.cpp:2662
 msgid "; "
-msgstr ";"
+msgstr "; "
 
 #: src/unit.cpp:2589
 msgid "XP to advance"
@@ -9823,7 +9860,7 @@ msgstr ""
 
 #: src/unit.cpp:2653
 msgid ": "
-msgstr ":"
+msgstr ": "
 
 #: src/unit_types.cpp:351
 msgid "strikes"
@@ -9865,821 +9902,121 @@ msgstr ""
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
-#~ msgid "+Core Developers"
-#~ msgstr "+Põhiarendajad"
+#, fuzzy
+#~ msgid "Valencian Translation"
+#~ msgstr "+ Sloveeniakeelne tõlge"
 
 #, fuzzy
-#~ msgid "+  Main Developer"
-#~ msgstr "- Pea-arendaja"
+#~ msgid "Healthy"
+#~ msgstr "terve"
 
 #, fuzzy
-#~ msgid "+  Artwork and graphics designer"
-#~ msgstr "- Kunst ja graafika"
-
-#~ msgid "Import Saved Games"
-#~ msgstr "Impordi salvestatud mäng"
-
-#~ msgid ""
-#~ "Your saves directory contains some files from an old version of Battle "
-#~ "for Wesnoth. Would you like to update these to the latest version? This "
-#~ "may take some time."
-#~ msgstr ""
-#~ "Sinu salvestatud mängude kataloog sisaldab faile Wesnothi lahingu "
-#~ "vanematest versioonidest. Kas sa tahaksid need uuendada viimase versiooni "
-#~ "jaoks? See võib natukene aega võtta."
-
-#~ msgid ""
-#~ "Your saves directory contains some files that don't appear to have been "
-#~ "generated by this version of Battle for Wesnoth. Would you like to "
-#~ "register these files with the game?"
-#~ msgstr ""
-#~ "Sinu salvestatud mängude kataloog sisaldab faile, mis ei tundu olevat "
-#~ "selle Wesnothi lahingu genereeritud. Kas sa tahaksid need failid mängu "
-#~ "jaoks ära registreerida?"
-
-#~ msgid "Flaming Sword"
-#~ msgstr "Leegitsev mõõk"
-
-#~ msgid "Only the leader of an army can wield this sword!"
-#~ msgstr "Ainult väejuht võib seda mõõka kasutada!"
-
-#~ msgid "flaming sword"
-#~ msgstr "leegitsev mõõk"
-
-#~ msgid "Scepter of Fire"
-#~ msgstr "tuleskepter"
-
-#~ msgid ""
-#~ "This ancient Scepter was forged by the Dwarves. A symbol of the kingship "
-#~ "of Wesnoth, the Scepter has the power to shoot fireballs at enemies of "
-#~ "the bearer!"
-#~ msgstr ""
-#~ "Selle iidse valitsuskeppi sepistasid kääbused. Wesnothi kuninga sümbolina "
-#~ "omab see valitsuskepp võimet kandja vaenlaste pihta tulepalle tulistada!"
-
-#~ msgid ""
-#~ "This is the Scepter of Fire. Only a true successor to the throne can "
-#~ "possibly dare to take this!"
-#~ msgstr ""
-#~ "See on leegitsev valitsuskepp. Ainult tõeline troonipärija julgeb seda "
-#~ "võtta!"
-
-#~ msgid "Get More Campaigns..."
-#~ msgstr "Hangi veel kampaaniaid..."
+#~ msgid "Turn 2: Loyalists"
+#~ msgstr "Lojalistid"
 
 #, fuzzy
-#~ msgid "Download more campaigns from an Internet server."
-#~ msgstr "Lae uusi kampaaniad Internetist."
-
-#~ msgid "Get Campaign"
-#~ msgstr "Hangi kampaania"
-
-#, fuzzy
-#~ msgid "TitleScreen button^Help Wesnoth"
-#~ msgstr "Laadimine"
-
-#~ msgid "stab"
-#~ msgstr "pussitama"
-
-#~ msgid "dragonstick"
-#~ msgstr "draakonikepp"
-
-#~ msgid "base damage"
-#~ msgstr "baaskahju"
-
-#~ msgid "Halved"
-#~ msgstr "Poolitatud"
-
-#~ msgid "attacker resistance vs"
-#~ msgstr "ründaja vastupanu vs"
-
-#~ msgid "attacker vulnerability vs"
-#~ msgstr "ründaja nõrkus vs"
-
-#~ msgid "total damage"
-#~ msgstr "kogukahju"
-
-#~ msgid "defender resistance vs"
-#~ msgstr "kaitsja vastupanu vs"
-
-#~ msgid "defender vulnerability vs"
-#~ msgstr "kaitsja nõrkus vs"
-
-#~ msgid "Siren"
-#~ msgstr "Sireen"
-
-#~ msgid "Grey"
-#~ msgstr "Hall"
-
-#~ msgid "drain"
-#~ msgstr "kurnama"
-
-#, fuzzy
-#~ msgid "plague(Walking Corpse)"
-#~ msgstr "Kõndiv laip"
-
-#~ msgid "slow"
-#~ msgstr "aeglustus"
-
-#, fuzzy
-#~ msgid "Do you want to skip the replay?"
-#~ msgstr "Kas sa tahad oma mängu salvestada?"
-
-#~ msgid "Doubled"
-#~ msgstr "Kahekordne"
-
-#, fuzzy
-#~ msgid " (+steadfast)"
-#~ msgstr "vankumatu"
-
-#, fuzzy
-#~ msgid "Turn time: "
+#~ msgid "Turn 8: Rebels"
 #~ msgstr "Käike:"
 
 #, fuzzy
-#~ msgid "Artwork and Graphic Designers"
-#~ msgstr "+ Kunst ja graafika"
+#~ msgid "Turn 11: Northerners"
+#~ msgstr "Põhjamaalased"
 
 #, fuzzy
-#~ msgid "Ethereal Spectre"
-#~ msgstr "Spekter"
+#~ msgid "Turn 14: Drakes"
+#~ msgstr "Tulelohe"
 
 #, fuzzy
-#~ msgid "quintain"
-#~ msgstr "Mäed"
-
-#, fuzzy
-#~ msgid "Cave Spider"
-#~ msgstr "Hiiglaslik ämblik"
-
-#, fuzzy
-#~ msgid "Delfador"
-#~ msgstr "Alista Delfador"
-
-#, fuzzy
-#~ msgid "Left click on an Elvish Fighter"
-#~ msgstr "Haldjasõdalane"
-
-#, fuzzy
-#~ msgid "Do you want to keep practicing?"
-#~ msgstr "Kas sa tahad oma mängu salvestada?"
-
-#, fuzzy
-#~ msgid "Patch of forest"
+#~ msgid "Death of your team leaders."
 #~ msgstr "Delfadori surm"
 
 #, fuzzy
-#~ msgid "Galdrad"
-#~ msgstr "Rohumaa"
+#~ msgid "female^loyal"
+#~ msgstr "Lindprii"
 
 #, fuzzy
-#~ msgid "Defeat the Orc Leader"
-#~ msgstr "Alista Delfador"
+#~ msgid "female^undead"
+#~ msgstr "Hulkur"
 
 #, fuzzy
-#~ msgid "Death of Konrad"
-#~ msgstr "Delfadori surm"
+#~ msgid "female^strong"
+#~ msgstr "Hulkur"
 
 #, fuzzy
-#~ msgid "Death of Li'sar"
-#~ msgstr "Delfadori surm"
+#~ msgid "female^dextrous"
+#~ msgstr "Hulkur"
 
 #, fuzzy
-#~ msgid "What should I do?"
-#~ msgstr "Mis edasi saab?"
+#~ msgid "female^quick"
+#~ msgstr "Printsess"
 
 #, fuzzy
-#~ msgid "Right click on the tile south of you and recruit an Elvish Fighter"
-#~ msgstr "Suurepärane! Sul õnnestus värvata haldjasõdalane."
+#~ msgid "female^intelligent"
+#~ msgstr "intelligentne"
 
 #, fuzzy
-#~ msgid "So, should I end my turn now?"
-#~ msgstr "Kuidas ma oma käiku lõpetada saan?"
-
-#, fuzzy
-#~ msgid "Eowynial"
-#~ msgstr "lojaalne"
-
-#, fuzzy
-#~ msgid "Shaman"
-#~ msgstr "Odamees"
-
-#, fuzzy
-#~ msgid "Golir"
-#~ msgstr "Kuld"
-
-#, fuzzy
-#~ msgid ""
-#~ "Right click on the tile south-east of you and recruit an Elvish Fighter"
-#~ msgstr "Suurepärane! Sul õnnestus värvata haldjasõdalane."
-
-#~ msgid "End your turn"
-#~ msgstr "Lõpeta oma käik."
-
-#, fuzzy
-#~ msgid "Fighter to Here"
-#~ msgstr "Kangelaste aeg"
-
-#, fuzzy
-#~ msgid "I have no more money to recruit!"
-#~ msgstr "Paistab, et sul ei ole kedagi värvata."
-
-#, fuzzy
-#~ msgid "I have enough gold to recruit more units!"
-#~ msgstr "Sul ei ole selle üksuse värbamiseks piisavalt kulda."
-
-#, fuzzy
-#~ msgid "Defend here"
-#~ msgstr "Kaitsja"
-
-#, fuzzy
-#~ msgid "Dummy"
-#~ msgstr "fiktiivne"
-
-#~ msgid "Orcish Shaman"
-#~ msgstr "Mäekollide šamaan"
-
-#~ msgid "Novice Orcish Shaman"
-#~ msgstr "Noor mäekollide šamaan"
-
-#~ msgid "Old Orcish Shaman"
-#~ msgstr "Vana mäekollide šamaan"
-
-#~ msgid "Watch Tower"
-#~ msgstr "Vahitorn"
-
-#~ msgid "Dark Spirit"
-#~ msgstr "Pimeduse vaim"
-
-#~ msgid "Deathmaster"
-#~ msgstr "Surmaisand"
-
-#~ msgid "magic"
-#~ msgstr "maagia"
-
-#~ msgid "Initiate"
-#~ msgstr "Noviits"
-
-#~ msgid "Saurian Icecaster"
-#~ msgstr "Sauri jäämanaja"
-
-#~ msgid "frost blast"
-#~ msgstr "külmalöök"
-
-#~ msgid "+Music"
-#~ msgstr "+Muusika"
-
-#~ msgid "+Contributors"
-#~ msgstr "+ Toetajad"
-
-#, fuzzy
-#~ msgid "4p - An Island"
-#~ msgstr "Saar"
-
-#~ msgid "Desert Village"
-#~ msgstr "Kõrbeküla"
-
-#~ msgid "Tropical Forest Village"
-#~ msgstr "Troopiline metsaküla"
-
-#~ msgid "Snow Village"
-#~ msgstr "Lumeküla"
-
-#, fuzzy
-#~ msgid "Dwarven Village"
-#~ msgstr "Kõrbeküla"
-
-#~ msgid "Desert Hills"
-#~ msgstr "Kõrbekünkad"
-
-#~ msgid "rapier"
-#~ msgstr "rapiir"
-
-#~ msgid "Awaiting response from server"
-#~ msgstr "Ootan serverilt vastust"
-
-#~ msgid "Connecting to remote host..."
-#~ msgstr "Võtan serveriga ühendust..."
-
-#~ msgid "Saurian"
-#~ msgstr "Saur"
-
-#~ msgid "Classic"
-#~ msgstr "Klassikud"
-
-#~ msgid "leadership,skirmisher"
-#~ msgstr "juhivõime, kähmleja"
-
-#~ msgid "skirmisher,leadership"
-#~ msgstr "kähmleb, juhivõime"
-
-#~ msgid "Canyon"
-#~ msgstr "Kanjon"
-
-#, fuzzy
-#~ msgid "4p - The Valley of Death"
-#~ msgstr "Surmaorg"
-
-#, fuzzy
-#~ msgid "7p - Battle World"
-#~ msgstr "Lahingumaailm"
-
-#~ msgid "ambush,regenerates"
-#~ msgstr "varitseb, taastub"
-
-#~ msgid "illuminates,cures"
-#~ msgstr "valgustab, ravib"
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Õpetus"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Käike:"
-
-#, fuzzy
-#~ msgid "Theme"
-#~ msgstr "Meeskond"
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Muuda kasutatavat keelt"
-
-#, fuzzy
-#~ msgid "Chat Lines: "
-#~ msgstr "Korratud üksused:"
-
-#, fuzzy
-#~ msgid "yes"
-#~ msgstr "Jah"
-
-#, fuzzy
-#~ msgid "no"
-#~ msgstr "Lumi"
-
-#, fuzzy
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Mitu mängijat"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Vali relv:"
-
-#~ msgid "Close Window"
-#~ msgstr "Sulge aken"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Seaded..."
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Tegevused"
-
-#, fuzzy
-#~ msgid "Binding"
-#~ msgstr "välk"
-
-#~ msgid "Gate"
-#~ msgstr "Värav"
-
-#~ msgid "bump"
-#~ msgstr "müksama"
-
-#~ msgid "Wall Guard"
-#~ msgstr "Müürivalvur"
-
-#~ msgid "skirmisher,regenerates"
-#~ msgstr "kähmleb, taastub"
-
-#, fuzzy
-#~ msgid "Unkown era"
-#~ msgstr "Tundmatu stsenaarium : '"
-
-#~ msgid "Yellow"
-#~ msgstr "Kollane"
-
-#, fuzzy
-#~ msgid ""
-#~ "This unit has been slowed. It emits no zone of control, moves at half "
-#~ "speed and enemies will be able to strike earlier once during a fight."
-#~ msgstr ""
-#~ "See üksus on aeglustatu. Ta liigub poolel kiirusel ja ründab võitluses "
-#~ "ühe korra vähem, kui tavaliselt."
-
-#~ msgid "Basic Training"
-#~ msgstr "Põhioskuste treenimine"
-
-#~ msgid ""
-#~ "I am here to learn how to fight in a battle. As an experienced elder "
-#~ "mage, surely you can explain the art of combat to me..."
-#~ msgstr ""
-#~ "Ma olen siin, et õppida kuidas lahingus võidelda. Sinusugune elukogenud "
-#~ "vana maag oskab kindlasti mulle võitlemise kunsti selgitada..."
-
-#, fuzzy
-#~ msgid ""
-#~ "Before entering any battle, you need to recruit units. To recruit a unit, "
-#~ "right click on the castle tile on which you wish to recruit the unit. "
-#~ "Then select Recruit, and select 'OK'. You can only recruit units on "
-#~ "castle tiles connected to the keep your leader is on."
-#~ msgstr ""
-#~ "Enne lahingu alustamist on sul vaja värvata üksuseid. Värbamiseks tee "
-#~ "parem klõps lossil, kuhu sa üksuse värvata tahad. Siis vali Värba ja siis "
-#~ "'Nõus'. Sa saad värvata ainult nendes lossides kus su juht parajasti "
-#~ "pesas asub."
-
-#~ msgid "Recruit a unit"
-#~ msgstr "Värba üksus"
-
-#, fuzzy
-#~ msgid "You have successfully ended your turn."
-#~ msgstr "Sa oled edukalt oma käigu lõpetanud."
-
-#, fuzzy
-#~ msgid ""
-#~ "Excellent! You have successfully moved your Elvish Fighter. However, "
-#~ "since he moved next to an enemy unit, he has lost all his movement for "
-#~ "this turn; this is called the 'zone of control'."
-#~ msgstr ""
-#~ "Suurepärane! Sa oled edukalt oma haldjasõdalast liigutanud. Aga et ta "
-#~ "liikus vaenuliku üksuse mõjualasse, siis ta selle käigu jooksul enam "
-#~ "liikuda ei saa. "
-
-#~ msgid "Attack Merle"
-#~ msgstr "Ründa Merlet"
-
-#~ msgid "You have successfully attacked Merle."
-#~ msgstr "Sa oled Merlet edukalt rünnanud."
-
-#, fuzzy
-#~ msgid ""
-#~ "Your fighter has survived Merle's attack. Whenever a unit survives a "
-#~ "battle, it gets experience from the combat. Once a unit gains enough "
-#~ "experience, it advances to the next level, and becomes more powerful."
-#~ msgstr ""
-#~ "Sinu võitleja elas Merle rünnaku üle. Kui üksus jääb lahingus ellu, siis "
-#~ "ta saab kogemuspunkte. Kui üksus on piisavalt kogenud, siis ta edutatakse "
-#~ "järgmisele tasemele ja ta muutub võimsamaks."
-
-#~ msgid "Villages heal the units on them."
-#~ msgstr "Küla ravib nendes peatuvaid üksusi."
-
-#~ msgid "Defeat Merle"
-#~ msgstr "Tapa Merle"
-
-#~ msgid "Hooray!"
-#~ msgstr "Hurraa!"
-
-#, fuzzy
-#~ msgid "Do you want to review any of the skills learned in this scenario?"
-#~ msgstr "Kas sa tahad sellel tasemel õpitut üle korrata?"
-
-#~ msgid "Traits and Specialties"
-#~ msgstr "Eripärad ja Erialad"
-
-#~ msgid "You have successfully recalled your Elvish Fighter."
-#~ msgstr "Sa oled edukalt oma haldjasõdalase tagasi kutsunud."
-
-#~ msgid "En garde!"
-#~ msgstr "En garde!"
-
-#~ msgid ""
-#~ "The sun is setting over Wesnoth. The time of day affects how much damage "
-#~ "units of different alignments can inflict upon each other."
-#~ msgstr ""
-#~ "Päike loojub Wesnothi kohal. Kellaaeg mõjutab seda kui palju erinevate "
-#~ "meelelaadidega üksused üksteisele viga võivad teha."
-
-#~ msgid "That was explained well! But.."
-#~ msgstr "See oli väga hea selgitus! Aga..."
-
-#~ msgid "How do I recruit units?"
-#~ msgstr "Kuidas ma üksuseid värban?"
-
-#~ msgid "What's a leader?"
-#~ msgstr "Misasi see juht on?"
-
-#~ msgid "What happens when I recruit a unit?"
-#~ msgstr "Mis juhtub, kui ma värban üksuse?"
-
-#~ msgid "How far can my Elvish Fighter move?"
-#~ msgstr "Kui kaugele minu haldjasõdalane liikuda saab?"
-
-#~ msgid "What's the zone of control?"
-#~ msgstr "Misasi see kontrollitud piirkond on?"
-
-#~ msgid "How do I tell who is allied and who is an enemy?"
-#~ msgstr "Kuidas ma aru saan, kes on liitlased ja kes vaenlased?"
-
-#~ msgid "Can Merle retaliate from my attack?"
-#~ msgstr "Kas Merle saab mind vastu ka rünnata?"
-
-#~ msgid "What's experience?"
-#~ msgstr "Misasi see elukogemus on?"
-
-#~ msgid "What happens when a unit advances?"
-#~ msgstr "Mis juhtub, kui üksust edutatakse?"
-
-#~ msgid "What happens when I win a scenario?"
-#~ msgstr "Mis juhtub, kui ma võidan stsenaariumi?"
-
-#~ msgid "What happens when I recall a unit?"
-#~ msgstr "Mis juhtub, kui ma üksuse tagasi kutsun?"
-
-#~ msgid "What do traits do?"
-#~ msgstr "Mida kalduvused teevad?"
-
-#~ msgid "How do I get gold?"
-#~ msgstr "Kuidas ma kulda saan?"
-
-#~ msgid ""
-#~ "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 "
-#~ "times of day: day, twilight, and night. During day, units of the "
-#~ "alignment Lawful, such as humans, do 25% more damage, while Chaotic units "
-#~ "such as undead do 25% less. At night it is reversed. During twilight, all "
-#~ "units do their normal damage. Neutral units such as elves are unaffected "
-#~ "by day and night."
-#~ msgstr ""
-#~ "Meelelaade on kolm: kuulekas, neutraalne ja kaootiline. Päev jagatakse "
-#~ "samuti kolmeks osaks: päev, hämarik ja öö. Päevasel ajal teevad kuulekad "
-#~ "üksused, näiteks inimesed, 25% rohkem kahju, samal ajal kui kaootilised "
-#~ "teevad 25% vähem. Öösel on asjad täpselt vastupidi. Hämariku ajal teevad "
-#~ "kõik üksused tavalist kahju. Neutraalseid üksuseid, näiteks haldjaid, "
-#~ "päev ja öö üldse ei mõjuta."
-
-#~ msgid "What are the different alignments and times of day?"
-#~ msgstr "Millised on erinevad meelelaadid ja kellaajad?"
-
-#~ msgid "How do I know what time of day it is?"
-#~ msgstr "Kuidas ma teada saan, mis kell parajasti on?"
-
-#~ msgid "What are the different damage types?"
-#~ msgstr "Millised on erinevad kahjutüübid?"
-
-#~ msgid "What do specialties do?"
-#~ msgstr "Mida erialad teevad?"
-
-#~ msgid "How do I use specialties?"
-#~ msgstr "Kuidas ma erialasid kasutan?"
-
-#~ msgid "How long do these objects last?"
-#~ msgstr "Kui kaua need objektid kestavad?"
-
-#~ msgid "How do I play a campaign?"
-#~ msgstr "Kuidas ma kampaaniad mängida saan?"
-
-#~ msgid "How do I play multiplayer?"
-#~ msgstr "Kuidas me mitmekesi mängida saaksime?"
-
-#~ msgid "Map Generator"
-#~ msgstr "Kaardigeneraator"
-
-#~ msgid "Width:"
-#~ msgstr "Laius:"
-
-#~ msgid "Height:"
-#~ msgstr "Kõrgus:"
-
-#~ msgid "Villages:"
-#~ msgstr "Külad:"
-
-#~ msgid "Landform:"
-#~ msgstr "Maastiku kuju:"
-
-#~ msgid "Roads Between Castles"
-#~ msgstr "Lossidevahelised teed"
-
-#~ msgid "/1000 tiles"
-#~ msgstr "/1000 maatükki"
-
-#~ msgid "Coastal"
-#~ msgstr "Rannikuala"
-
-#~ msgid "Inland"
-#~ msgstr "Sisemaa"
-
-#~ msgid "Island"
-#~ msgstr "Saar"
-
-#~ msgid "Merman"
-#~ msgstr "Merimees"
-
-#~ msgid "Saurian Warrior"
-#~ msgstr "Sauri sõdalane"
-
-#~ msgid "female^Sea Hag"
-#~ msgstr "Meremoor"
-
-#~ msgid ""
-#~ "Sea Hags are older and more experienced Nagas who have learned to control "
-#~ "the water magic."
-#~ msgstr "Meremoorid on veemaagiat valdavad vanad ja kogenud nagad."
-
-#~ msgid "Triton"
-#~ msgstr "Triiton"
+#~ msgid "female^resilient"
+#~ msgstr "vastupidav"
 
 #~ msgid "healthy"
 #~ msgstr "terve"
 
-#~ msgid "invisible"
-#~ msgstr "nähtamatu"
-
-#~ msgid ""
-#~ "\n"
-#~ "Morning and Afternoon count as day, First and Second Watch count as night."
-#~ msgstr ""
-#~ "\n"
-#~ "Hommik ja pärastlõuna lähevad arvesse kui päev, esimene ja teine vahtkond "
-#~ "kui öö."
+#, fuzzy
+#~ msgid "female^healthy"
+#~ msgstr "Varas"
 
 #, fuzzy
-#~ msgid "Tundra"
-#~ msgstr "kooljad"
-
-#, fuzzy
-#~ msgid "2p - Icy Waters"
-#~ msgstr "Jäised veed"
-
-#, fuzzy
-#~ msgid ""
-#~ "At first sight, these mystical snake-like creatures appear weak, but "
-#~ "looks are deceiving. With just a glance, Cockatrices can turn their "
-#~ "enemies into stone. This enchantment lasts until the source of their "
-#~ "power is destroyed."
-#~ msgstr ""
-#~ "Esmapilgul tunduvad need müstilised maosarnased olendid olevat nõrgad, "
-#~ "aga esmamulje on petlik. Sulismaod võivad vastase muuta oma pilguga "
-#~ "kivikujuks, halvates kogu nende jõu."
-
-#~ msgid ""
-#~ "Ghosts are the souls of warriors that died in agony centuries ago without "
-#~ "leaving a corpse behind. Although their non-corporeal form allows them "
-#~ "great freedom of movement and protection from physical attacks, ghosts "
-#~ "cannot easily cross running water."
-#~ msgstr ""
-#~ "Vaimud on sajandeid tagasi surnud sõdalaste hinged, kes suurtes piinades "
-#~ "ja laipa maha jätmata. Kuigi nende kehatu kuju annab neile suure "
-#~ "liikumisvabaduse ja kaitse füüsiliste rünnakute eest, ei saa vaimud "
-#~ "kergesti ületada voolavat vett."
-
-#~ msgid ""
-#~ "The more learned among the mermaids often take a path of holy study. This "
-#~ "leaves them quite capable of ministering to the wounds of their comrades, "
-#~ "as well as being a potent defense against the unworldly."
-#~ msgstr ""
-#~ "Haritumad merineitside hulgas valivad tihti pühade õpingute tee. Tänu "
-#~ "sellele on nad üsna võimekad oma kaaslaste vigastuste ravimisel ja on "
-#~ "heaks kaitseks ebamaise eest."
-
-#~ msgid "darts"
-#~ msgstr "viskenooled"
-
-#~ msgid ""
-#~ "Revenants are undead creatures raised from once mighty warriors. While "
-#~ "the warriors' will and soul are all but lost, their fighting skills "
-#~ "certainly remain with the Revenant."
-#~ msgstr ""
-#~ "Viirastused on hauatagused olevused, kes kunagi olid võimsad sõdalased. "
-#~ "Kuigi nende sõjamehe tahe ja hing on kaotsi läinud, pole viirastus "
-#~ "võitlemise kunsti unustanud."
-
-#~ msgid "Vera.ttf"
-#~ msgstr "Vera.ttf"
-
-#, fuzzy
-#~ msgid "tough"
-#~ msgstr "puudutus"
-
-#, fuzzy
-#~ msgid "satiated"
-#~ msgstr "Noviits"
-
-#, fuzzy
-#~ msgid ""
-#~ "Assassins are masters of the night. Like Rogues, they can surround and "
-#~ "backstab an opponent, doing double damage. They can also throw poison-"
-#~ "tipped knives at their enemies from long range."
-#~ msgstr ""
-#~ "Palgamõrtsugas on öö isandad. Nagu hulkuridki, hiilivad nad vastasele "
-#~ "ligi ja pussitavad teda, tehes seega kahekordset kahju. Nad võivad veel "
-#~ "loopida vastaseid mürgitatud viskenugadega kauge maa tagant."
-
-#~ msgid ""
-#~ "Duelists are masters of the art of swordplay. Their skill with the rapier "
-#~ "allows them to attack and parry with only one hand, while they wield a "
-#~ "crossbow in the other to shoot distant foes."
-#~ msgstr ""
-#~ "Duellandid on mõõgakunsti meistrid. Nende osavus rapiiriga lubab neil "
-#~ "rünnata ja pareerida ühe käega ja samal ajal, amb teises käes, lasta "
-#~ "kaugemate vaenlaste pihta. "
-
-#~ msgid ""
-#~ "The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
-#~ "places and people to rob."
-#~ msgstr ""
-#~ "Kasimata kanupoisid otsivad bandiidijõukude jaoks röövimiseks sobivaid "
-#~ "kohti välja."
-
-#~ msgid ""
-#~ "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
-#~ "though a little slower than the sword, can strike with deadly force, and "
-#~ "because of its great length, Halberdiers always strike first in combat, "
-#~ "even when defending. Halberdiers have great facility at dealing with "
-#~ "troops they can keep further than the end of their weapons, but find some "
-#~ "difficulty in very close combat."
-#~ msgstr ""
-#~ "Hellebardid antakse kätte parimatele sõduritele. Nende relv, kuigi veidi "
-#~ "aeglasem kui mõõk, omab tohutut löögijõudu. Tänu selle suurele pikkusele "
-#~ "ründavad hellebardiga varustatud sõdurid alati võitluses esimesena, isegi "
-#~ "ennast kaitstes. Nad saavad väga hästi hakkama vastastega, keda neil oma "
-#~ "relva kaugema otsa juures õnnestub hoida, aga lähivõitlus võib neile "
-#~ "valmistada kerget peavalu."
-
-#~ msgid ""
-#~ "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
-#~ "lack of speed is their only disadvantage."
-#~ msgstr ""
-#~ "Raskejalaväelased on kaetud rauaga ja seetõttu peavad rünnakutele hästi "
-#~ "vastu. Nende ainus puudus on vähene kiirus."
-
-#~ msgid ""
-#~ "Longbowmen carry the huge specialized bows that they have learned to "
-#~ "handle after years of combat. Their missiles can pierce even armor."
-#~ msgstr ""
-#~ "Pikkvibumehed kannavad kaasas erilisi vibusid, mida nad on pikkade "
-#~ "lahinguaastatega käsitsema õppinud. Nende lasud läbistavad isegi turvise."
-
-#~ msgid "Outlaws fight better at night."
-#~ msgstr "Lindpriid võitlevad öösel paremini."
-
-#~ msgid ""
-#~ "Outlaws fight better at night. Female Outlaws look good while doing it."
-#~ msgstr ""
-#~ "Lindpriid võitlevad öösel paremini. Naissoost lindpriid näevad seda tehes "
-#~ "veel head välja kah."
-
-#~ msgid ""
-#~ "Lancers are some of the bravest and most feared riders in all of Wesnoth. "
-#~ "They wear very little armor, and thus ride swiftly and are ideal for "
-#~ "offensive use. While their charges inflict large amounts of damage, they "
-#~ "also expose the Lancers to great risk."
-#~ msgstr ""
-#~ "Piigimehed on julgeimad ja kardetuimad ratsamehed terves Wesnothis. Nad "
-#~ "kannavad vähe turvist ja ratsutavad tänu sellele kiirelt, ideaalsed "
-#~ "ründetegevuseks. Kuigi nende rünnakud tekitavad tohutut kahju, on "
-#~ "piigimehed seejuures suures ohus."
-
-#~ msgid "Mounted Captain"
-#~ msgstr "Ratsutav kapten"
-
-#~ msgid "Mounted Commander"
-#~ msgstr "Ratsutav komandör"
-
-#~ msgid ""
-#~ "Red Mages attack with powerful magic fireballs that are guaranteed a good "
-#~ "chance of hitting. Deft of foot, and skilled fighters both day and night, "
-#~ "Red Mages are therefore valuable in almost all situations."
-#~ msgstr ""
-#~ "Punased maagid ründavad võimsate võlutule keradega, mis tagavad hea "
-#~ "tabamisvõimaluse. Välejalgsete ja osavate sõdalastena nii päeval kui "
-#~ "öösel on punased maagid kasulikud igas olukorras."
-
-#~ msgid "boiling water"
-#~ msgstr "keev vesi"
-
-#~ msgid "The Broken Bridge"
-#~ msgstr "Katkine sild"
-
-#~ msgid "Battle for Weslin Bridge"
-#~ msgstr "Weslini silla lahing"
-
-#, fuzzy
-#~ msgid " "
-#~ msgstr ";"
-
-#~ msgid "The Isle of Anduin"
-#~ msgstr "Anduini saar"
-
-#~ msgid "The Three Rivers"
-#~ msgstr "Kolm jõge"
-
-#~ msgid "The Isles of the Damned"
-#~ msgstr "Neetud saared"
-
-#~ msgid "Dwarven Wasteland"
-#~ msgstr "Kääbuste kõnnumaa"
-
-#, fuzzy
-#~ msgid "100 gold will be available for the next scenario"
-#~ msgstr "80% kullast kandub üle järgmisesse stsenaariumi."
-
-#~ msgid "level: "
-#~ msgstr "tase:"
-
-#~ msgid "fey gale"
+#~ msgid "fearless"
 #~ msgstr "ebamaine tormituul"
 
-#~ msgid "Dmg"
-#~ msgstr "Kahju"
+#, fuzzy
+#~ msgid "female^fearless"
+#~ msgstr "Printsess"
+
+#, fuzzy
+#~ msgid "Armageddon Drake"
+#~ msgstr "Tulelohe"
+
+#, fuzzy
+#~ msgid "javelin"
+#~ msgstr "Odaloopija"
+
+#, fuzzy
+#~ msgid "Quit Game"
+#~ msgstr "Välju mängust"
+
+#, fuzzy
+#~ msgid "Dependencies"
+#~ msgstr "Printsess"
+
+#, fuzzy
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Kas sa tahad päriselt ka seda mängu kustutada?"
+
+#, fuzzy
+#~ msgid "Detail"
+#~ msgstr "saba"
+
+#, fuzzy
+#~ msgid "Save the Map As"
+#~ msgstr "Jaga kaarte"
+
+#, fuzzy
+#~ msgid "The map already exists. Do you want to overwrite it?"
+#~ msgstr "Salvestus on juba olemas. Kas sa tahad selle üle kirjutada?"
+
+#, fuzzy
+#~ msgid "Team only"
+#~ msgstr "Meeskond"
+
+#, fuzzy
+#~ msgid "Random start time"
+#~ msgstr "Juhuslik kaart (Talv)"
+
+#, fuzzy
+#~ msgid "Save Replay"
+#~ msgstr "kordus"
+
+#, fuzzy
+#~ msgid "The replay could not be saved"
+#~ msgstr "Mängu salvestamine ebaõnnestus."
