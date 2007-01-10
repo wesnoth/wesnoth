@@ -489,16 +489,16 @@ void ui::gamelist_updated(bool silent)
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
 	char const sep1 = COLUMN_SEPARATOR;
 
-			if(preferences::iconize_list()) {
-			    user_strings.push_back(preferences::login());
-			    user_strings_.push_back(imgpre + "self.png" + sep1 + preferences::login());
-            } else {
-			    user_strings.push_back(preferences::login());
-			    user_strings_.push_back(preferences::login());
-            }
-	
     if(preferences::sort_list()) {
-	
+
+		if(preferences::iconize_list()) {
+		    user_strings.push_back(preferences::login());
+		    user_strings_.push_back(imgpre + "self.png" + sep1 + preferences::login());
+        } else {
+		    user_strings.push_back(preferences::login());
+		    user_strings_.push_back(preferences::login());
+        }
+
 	for (user = users.begin(); user != users.end(); ++user) {
         std::string ig = std::string((**user)["name"]);
 	    if((*cignore)[ig] == "friend" && ig != preferences::login()) {
@@ -554,16 +554,18 @@ void ui::gamelist_updated(bool silent)
    	}
     } else {
 	
-	for (user = users.begin(); user != users.end(); ++user) { 
-        std::string ig = std::string((**user)["name"]);
+	for (user = users.begin(); user != users.end(); ++user) {
 		const std::string prefix = (**user)["available"] == "no" ? "#" : "";
 		std::string suffix = "";
 		if(!(**user)["location"].empty()) {
 			suffix = std::string(" (") + (**user)["location"] + std::string(")");
 		}
-		if(preferences::iconize_list() && ig != preferences::login()) {
+		if(preferences::iconize_list()) {
 			std::string ig = std::string((**user)["name"]);
-		    if((*cignore)[ig] == "ignored") {
+		    if(ig == preferences::login()) {
+	            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+	            user_strings_.push_back(imgpre + "self.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+	        } else if((*cignore)[ig] == "ignored") {
 	            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
 	            user_strings_.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        } else if ((*cignore)[ig] == "friend") {
@@ -573,7 +575,7 @@ void ui::gamelist_updated(bool silent)
 	             user_strings.push_back(prefix + (**user)["name"].str() + suffix);
 	             user_strings_.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        }
-		} else if (ig != preferences::login()){
+		} else {
             user_strings.push_back(prefix + (**user)["name"].str() + suffix);
             user_strings_.push_back(prefix + (**user)["name"].str() + suffix);
         }
