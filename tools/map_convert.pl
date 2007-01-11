@@ -9,42 +9,46 @@ sub get_adjacent{
     #returns string of original location+adjacent locations on hex 1-char map
     $x=shift(@_);
     $y=shift(@_);
+    local @map=@_;
+    foreach(@map){
+	chomp;
+    }
 
-#    $orig=substr($_[$y],$x,1);
+#    $orig=substr($map[$y],$x,1);
     $odd=($x) % 2;
 #    print "$orig($x,$y) : $odd";
-    $adj=substr($_[$y],$x,1);
+    $adj=substr($map[$y],$x,1);
     if($x>0){
-	$adj.=substr($_[$y],$x-1,1);
+	$adj.=substr($map[$y],$x-1,1);
 #	print "\tW";
     }
-    if($x<length($_[$y])){
-	$adj.=substr($_[$y],$x+1,1);
+    if($x<length($map[$y])){
+	$adj.=substr($map[$y],$x+1,1);
 #	print "\tE";
     }
     if($y>0){
-	$adj.=substr($_[$y-1],$x,1);
+	$adj.=substr($map[$y-1],$x,1);
 #	print "\tN";
     }
     if($y<$#_){
-	$adj.=substr($_[$y+1],$x,1);
+	$adj.=substr($map[$y+1],$x,1);
 #	print "\tS";
     }
 
     if($x>0 && $y>0 && !$odd){
-	$adj.=substr($_[$y-1],$x-1,1);
+	$adj.=substr($map[$y-1],$x-1,1);
 #	print "\tNW";
     }
-    if($x<length($_[$y]) && $y>0 && !$odd){
-	$adj.=substr($_[$y-1],$x+1,1);
+    if($x<length($map[$y]) && $y>0 && !$odd){
+	$adj.=substr($map[$y-1],$x+1,1);
 #	print "\tNE";
     }
     if($x>0 && $y<$#_ && $odd){
-	$adj.=substr($_[$y+1],$x-1,1);
+	$adj.=substr($map[$y+1],$x-1,1);
 #	print "\tSW";
     }
-    if($x<length($_[$y]) && $y<$#_ && $odd){
-	$adj.=substr($_[$y+1],$x+1,1);
+    if($x<length($map[$y]) && $y<$#_ && $odd){
+	$adj.=substr($map[$y+1],$x+1,1);
 #	print "\tSE";
     }
 
@@ -170,7 +174,7 @@ while($#mfile){
 		 $cont=0;
 		($line,$dummy)=split('"',$line);
 	     }
-	     if(length($line)){push(@map,$line)};
+	     if(defined($line) && length($line)){push(@map,$line)};
        	 }
 
 	if(! $map_only){ 
@@ -179,10 +183,9 @@ while($#mfile){
 	}
 	$y=0;
 	 foreach(@map){
+	     chomp;
 	     if($_=~/,/){die "map file appears to be converted already\n";}
 	     $line='';
-	     chomp;
-	     chomp;
 	     for($x=0;$x!=length($_);$x++){
 		 $hex='';
 		 $char=substr($_,$x,1);
@@ -191,7 +194,8 @@ while($#mfile){
 		 if(defined($conversion{$char})){
 		     $hex=sprintf($format,$conversion{$char});
 		 }else{
-		     die "error, unrecognized map character: $char";
+		     $ord=ord($char);
+		     die "error, unrecognized map character at ($x,$y):[$ord]$char";
 #		     $hex=sprintf($format,$char);
 		 }
 		 if($hex=~/_K/){
@@ -203,6 +207,11 @@ while($#mfile){
 			 #intentionally skipping 0 as it is original hex
 			 $a=(substr($adj,$i,1));
 			 $ca=$conversion{$a};
+			 if(!defined($ca)){
+			     $ord=ord($a);
+			     print "error in adjacent hexes:\n";
+			     print "($x,$y,$i)[$ord]:$a\n";
+			 }
 			 if($ca=~/^C/){ #this is a castle hex	
 			     $hexcount{$ca}++;
 			 }
