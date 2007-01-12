@@ -32,7 +32,7 @@ namespace network {
 //a network manager must be created before networking can be used.
 //it must be destroyed only after all networking activity stops.
 struct manager {
-	explicit manager(size_t nthreads=1);
+	explicit manager(size_t nthreads=2);
 	~manager();
 
 private:
@@ -123,6 +123,10 @@ void send_data_all_except(const config& cfg, connection connection_num);
 
 //function to get the remote ip address of a socket
 std::string ip_address(connection connection_num);
+
+
+// function to know the total number of threads and the number of idle threads
+std::pair<unsigned int,size_t> get_thread_state();
 
 struct connection_stats
 {

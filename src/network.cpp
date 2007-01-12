@@ -696,10 +696,8 @@ void send_data(const config& cfg, connection connection_num)
 //	std::cerr << "--- SEND DATA to " << ((int)connection_num) << ": '"
 //	          << cfg.write() << "'\n--- END SEND DATA\n";
 
-	std::vector<char> buf(4 + value.size() + 1);
-	SDLNet_Write32(value.size()+1,&buf[0]);
-	std::copy(value.begin(),value.end(),buf.begin()+4);
-	buf.back() = 0;
+	std::vector<char> buf( value.size());
+	std::copy(value.begin(),value.end(),buf.begin());
 
 	const connection_map::iterator info = connections.find(connection_num);
 	wassert(info != connections.end());
@@ -744,6 +742,12 @@ std::string ip_address(connection connection_num)
 	}
 
 	return str.str();
+}
+
+
+std::pair<unsigned int,size_t> get_thread_state()
+{
+	return network_worker_pool::thread_state();
 }
 
 statistics get_send_stats(connection handle)

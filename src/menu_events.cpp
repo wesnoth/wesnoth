@@ -1588,40 +1588,25 @@ namespace events{
 			config* cignore;
 
 			if (arg1 == addignore){
-				if (!preferences::get_prefs()->child("relationship")){
-					preferences::get_prefs()->add_child("relationship");
-				}
-				cignore = preferences::get_prefs()->child("relationship");
-				if(utils::isvalid_username(arg2))
+				if(preferences::_set_relationship(arg2, "ignored"))
 				{
-					(*cignore)[arg2] = "ignored";
 					add_chat_message("ignores list",0, _("Added to ignore list: ")+arg2,display::MESSAGE_PRIVATE);
 				} else {
 					add_chat_message("ignores list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
 				}
-
 			} else if (arg1 == addfriend){
-				if (!preferences::get_prefs()->child("relationship")){
-					preferences::get_prefs()->add_child("relationship");
-				}
-				cignore = preferences::get_prefs()->child("relationship");
-				if(utils::isvalid_username(arg2))
+				if(preferences::_set_relationship(arg2, "friend"))
 				{
-					(*cignore)[arg2] = "friend";
 					add_chat_message("friends list",0, _("Added to friends list: ")+arg2,display::MESSAGE_PRIVATE);
 				} else {
 					add_chat_message("friends list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
-				}
-
+                }
 			} else if (arg1 == remove){
-				if ((cignore = preferences::get_prefs()->child("relationship"))){
-					if(utils::isvalid_username(arg2))
-					{
-						(*cignore)[arg2] = "no";
-						add_chat_message("list",0, _("Removed from list: ")+arg2,display::MESSAGE_PRIVATE);
-					} else {
-						add_chat_message("list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
-					}
+				if(preferences::_set_relationship(arg2, "no"))
+				{
+					add_chat_message("list",0, _("Removed from list: ")+arg2,display::MESSAGE_PRIVATE);
+				} else {
+					add_chat_message("list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
 				}
 			} else if (arg1 == display){
 				std::string text_ignore;

@@ -482,14 +482,9 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 	for(config::child_list::const_iterator img = cimages.begin(); img != cimages.end(); ++img) {
 
 		const std::string &name = (**img)["name"];
-		int layer, basex, basey;
+		const int layer = lexical_cast_default<int>((**img)["layer"], 0);
 
-		if((**img)["layer"].empty())
-			layer = 0;
-		else
-			layer = atoi((**img)["layer"].c_str());
-		
-
+		int basex = 0, basey = 0;
 		if((**img)["base"].empty()) {
 			basex = rule_image::TILEWIDTH / 2 + dx;
 			basey = rule_image::TILEWIDTH / 2 + dy;

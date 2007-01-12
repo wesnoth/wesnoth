@@ -29,7 +29,7 @@ namespace network_worker_pool
 
 struct manager
 {
-	explicit manager(size_t nthreads=1);
+	explicit manager(size_t nthreads=2);
 	~manager();
 
 private:
@@ -47,6 +47,7 @@ TCPsocket get_received_data(TCPsocket sock, std::vector<char>& buf);
 void queue_data(TCPsocket sock, std::vector<char>& buf);
 bool socket_locked(TCPsocket sock);
 bool close_socket(TCPsocket sock);
+std::pair<unsigned int,size_t> thread_state();
 TCPsocket detect_error();
 
 std::pair<network::statistics,network::statistics> get_current_transfer_stats(TCPsocket sock);

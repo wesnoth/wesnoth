@@ -713,33 +713,26 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
 				bool is_lobby_join = (speaker_name == "server"
 							&& (*child)["message"].value().find("has logged into the lobby") != std::string::npos);
+					    				std::string str = (*child)["message"];
+	    		std::string buf;
+	    		std::stringstream ss(str);
+	    		ss >> buf;
+	    		if (!preferences::get_prefs()->child("relationship")){
+					preferences::get_prefs()->add_child("relationship");
+				}
+				config* cignore;
+				cignore = preferences::get_prefs()->child("relationship");
+				bool is_lobby_join_of_friend = ((*cignore)[buf] == "friend");
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
-				if((!replayer.is_skipping() || is_whisper) && (!is_lobby_join || preferences::lobby_joins())) {
+				if((!replayer.is_skipping() || is_whisper) &&
+                (!is_lobby_join || ((is_lobby_join && preferences::lobby_joins() == preferences::SHOW_ALL) || (is_lobby_join_of_friend && preferences::lobby_joins() == preferences::SHOW_FRIENDS)))) {
 					if(preferences::message_bell()) {
 						sound::play_sound(game_config::sounds::receive_message);
 					}
-					if (is_lobby_join) {
-	    				std::string str = (*child)["message"];
-	    				std::string buf;
-	    				std::stringstream ss(str);
-	    				ss >> buf;
-	    
-	    				if (!preferences::get_prefs()->child("relationship")){
-							preferences::get_prefs()->add_child("relationship");
-						}
-						config* cignore;
-						cignore = preferences::get_prefs()->child("relationship");
-	
-						if ((*cignore)[buf] == "friend") {
-							const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
-							disp.add_chat_message(speaker_name,side,(*child)["message"],
-												  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
-						}
-                	} else {
-						const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
-						disp.add_chat_message(speaker_name,side,(*child)["message"],
-											  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
-					}
+					
+					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
+					disp.add_chat_message(speaker_name,side,(*child)["message"],
+										  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
 				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {

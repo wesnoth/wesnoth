@@ -79,6 +79,8 @@ struct _TCPsocket {
 	int sflag;
 };
 unsigned int buf_id = 0;
+unsigned int waiting_threads = 0;
+unsigned int thread_pool = 0;
 
 struct buffer {
 	explicit buffer(TCPsocket sock) : sock(sock) {}
@@ -109,9 +111,15 @@ int socket_errors = 0;
 threading::mutex* global_mutex = NULL;
 threading::condition* cond = NULL;
 
-std::vector<threading::thread*> threads;
+std::map<Uint32,threading::thread*> threads;
+std::vector<Uint32> to_clear;
 
-SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
+SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf2) {
+	std::vector<char> buf(4 + buf2.size() + 1);
+	SDLNet_Write32(buf2.size()+1,&buf[0]);
+	std::copy(buf2.begin(),buf2.end(),buf.begin()+4);
+	buf.back() = 0;
+
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif
@@ -286,6 +294,20 @@ int process_queue(void*)
 
 		{
 			const threading::lock lock(*global_mutex);
+			while(managed && !to_clear.empty()) {
+				Uint32 tmp = to_clear.back();
+				to_clear.pop_back();
+				threading::thread *zombie = threads[tmp];
+				threads.erase(tmp);
+				delete zombie;
+
+			}
+			if(waiting_threads >= thread_pool) {
+					LOG_NW << "worker thread exiting... not enough job\n";
+					to_clear.push_back(threading::get_current_thread_id());
+					return 0;
+			}
+			waiting_threads++;
 
 			for(;;) {
 
@@ -322,10 +344,18 @@ int process_queue(void*)
 
 				if(managed == false) {
 					LOG_NW << "worker thread exiting...\n";
+					waiting_threads--;
+					to_clear.push_back(threading::get_current_thread_id());
 					return 0;
 				}
 
 				cond->wait(*global_mutex); // temporarily release the mutex and wait for a buffer
+			}
+			waiting_threads--;
+			// if we are the last thread in the pool, create a new one
+			if(!waiting_threads && managed == true) {
+				threading::thread * tmp = new threading::thread(process_queue,NULL);
+				threads[tmp->get_id()] =tmp;
 			}
 		}
 
@@ -374,9 +404,11 @@ manager::manager(size_t nthreads) : active_(!managed)
 		managed = true;
 		global_mutex = new threading::mutex();
 		cond = new threading::condition();
+		thread_pool = nthreads;
 
 		for(size_t n = 0; n != nthreads; ++n) {
-			threads.push_back(new threading::thread(process_queue,NULL));
+			threading::thread * tmp = new threading::thread(process_queue,NULL);
+			threads[tmp->get_id()] =tmp;
 		}
 	}
 }
@@ -391,9 +423,9 @@ manager::~manager()
 		}
 		cond->notify_all();
 
-		for(std::vector<threading::thread*>::const_iterator i = threads.begin(); i != threads.end(); ++i) {
-			LOG_NW << "waiting for thread " << int(i - threads.begin()) << " to exit...\n";
-			delete *i;
+		for(std::map<Uint32,threading::thread*>::const_iterator i = threads.begin(); i != threads.end(); ++i) {
+			LOG_NW << "waiting for thread " << i->first << " to exit...\n";
+			delete i->second;
 			LOG_NW << "thread exited...\n";
 		}
 
@@ -409,6 +441,13 @@ manager::~manager()
 
 		LOG_NW << "exiting manager::~manager()\n";
 	}
+}
+
+std::pair<unsigned int,size_t> thread_state()
+{
+	const threading::lock lock(*global_mutex);
+	return std::pair<unsigned int,size_t>(waiting_threads,threads.size());
+
 }
 
 void receive_data(TCPsocket sock)

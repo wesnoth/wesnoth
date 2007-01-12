@@ -649,10 +649,11 @@ void config::debug() const{
 	i--;
 }
 
-const t_string& config::get_variable_const(const std::string& key)
+const t_string& config::get_variable_const(const std::string& key) const
 {
 	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
-			size_t MaxLoop= 1024;
+	size_t MaxLoop= 1024;
+	static t_string empty = "";
 	if(itor != key.end()) {
 		std::string element(key.begin(),itor);
 		std::string sub_key(itor+1,key.end());
@@ -687,15 +688,14 @@ const t_string& config::get_variable_const(const std::string& key)
 			}
 		}
 
-		while(get_children(element).size() <= index) {
-			add_child(element);
+		if(get_children(element).size() <= index) {
+			return empty;
 		}
 		return (*get_children(element)[index]).get_variable_const(sub_key);
 	} else {
 		if(values.find(key) != values.end()){
 			return values.find(key)->second;
 		}else {
-			static t_string empty = "";
 			return empty;
 		}
 	}

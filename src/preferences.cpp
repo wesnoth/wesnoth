@@ -322,18 +322,34 @@ void _set_grid(bool ison)
 	prefs["grid"] = (ison ? "true" : "false");
 }
 
-bool lobby_joins()
+bool _set_relationship(std::string nick, std::string rela) {
+	if (!get_prefs()->child("relationship")){
+		get_prefs()->add_child("relationship");
+	}
+	config* cignore;
+	cignore = get_prefs()->child("relationship");
+	if(utils::isvalid_username(nick))
+	{
+		(*cignore)[nick] = rela;
+		return true;
+	} else {
+		return false;
+	}
+}
+
+int lobby_joins()
 {
-	return prefs["lobby_joins"] != "no";
+    if (prefs["lobby_joins"] == "friends") {return SHOW_FRIENDS;}
+    else if (prefs["lobby_joins"] == "all") {return SHOW_ALL;}
+    else {return SHOW_NON;}
 }
 
 
-void _set_lobby_joins(bool show)
+void _set_lobby_joins(int show)
 {
-	if(show)
-		prefs["lobby_joins"] = "yes";
-	else
-		prefs["lobby_joins"] = "no";
+    if (show == SHOW_FRIENDS) {prefs["lobby_joins"] = "friends";}
+    else if (show == SHOW_ALL) {prefs["lobby_joins"] = "all";}
+    else {prefs["lobby_joins"] = "non";}
 }
 
 bool sort_list()

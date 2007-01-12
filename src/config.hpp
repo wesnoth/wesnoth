@@ -143,7 +143,7 @@ public:
 	void reset_translation() const;
 
 	// allow any WML to be used to interpolate variables
-	const t_string& get_variable_const(const std::string& id) ;
+	const t_string& get_variable_const(const std::string& id) const;
 
 	//all the attributes of this node.
 	string_map values;

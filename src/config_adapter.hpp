@@ -22,8 +22,8 @@
 #include "config.hpp"
 
 class gamestatus;
-class game_state;
-class game_data;
+struct game_state;
+struct game_data;
 class gamemap;
 class unit_map;
 

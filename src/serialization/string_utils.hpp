@@ -28,7 +28,7 @@ class variable_set
 public:
 	virtual ~variable_set();
 
-	virtual const t_string& get_variable_const(const std::string& id) = 0;
+	virtual const t_string& get_variable_const(const std::string& id) const = 0;
 };
 
 //the type we use to represent Unicode strings.
@@ -71,7 +71,7 @@ typedef std::map< std::string, t_string > string_map;
 // the equivalent symbols in the given symbol table. If 'symbols' is NULL, then game event
 // variables will be used instead
 std::string interpolate_variables_into_string(std::string const &str, string_map const *symbols);
-std::string interpolate_variables_into_string(std::string const &str, variable_set& variables);
+std::string interpolate_variables_into_string(std::string const &str, const variable_set& variables);
 
 //functions for converting Unicode wide-char strings to UTF-8 encoded
 //strings, back and forth
