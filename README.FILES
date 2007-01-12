@@ -2,8 +2,78 @@
 
 V	data/terrain/graphics/*
 V	data/factions/*
-	data/campaigns/*
+\	data/campaigns/*
 	data/tutorial/*
+
+===[ Httt ]===
+T	data/campaigns/Heir_To_The_Throne/maps/*
+T	data/campaigns/Heir_To_The_Throne/scenarios/*
+T	data/campaigns/Heir_To_The_Throne/scenarios/utils/httt_utils.cfg
+
+04_Bay_of_Pearls.cfg should be tested on Easy and Hard especially Easy has confusing comment, check against 1.2
+Grypon uses a fixed start position for the mother Grypon, all other positions are manually done
+Elven_Council has the map internal :/
+
+Scenarios with terrain 
+04_Bay_of_Pearls.cfg
+06_Siege_of_Elensefar.cfg
+07_Crossroads.cfg
+09_Valley_of_Death.cfg
+12_Northern_Winter.cfg
+15_Plunging_Into_the_Darkness.cfg
+16_Lost_General.cfg
+18_Scepter_of_Fire.cfg
+21_Home_North_Elves.cfg
+
+scenarios tested
+1, 2, 3, 4, 5a
+
+STARTING_VILLAGES is broken
+
+===[ Tb ]===
+T	data/campaigns/Two_Brother/maps/*
+T	data/campaigns/Two_Brother/scenarios/*
+
+Scenarios with terrain
+2, 3
+
+scenarios tested
+none
+
+===[ Tsg ]===
+T	data/campaigns/The_South_Guard/maps/*
+T	data/campaigns/The_South_Guard/scenarios/*
+
+Scenarions with terrain
+1, 2, 3, 4, 6a(map), 6b, 7a, 8a(map), 8b, 9a, 9b
+
+===[ Trow ]===
+T	data/campaigns/The_Rise_Of_Wesnoth/maps/*
+T	data/campaigns/The_Rise_Of_Wesnoth/scenarios/*
+
+Scenarions with terrain
+21 (map), 22, 23 (map)
+
+===[ Ei ]===
+T	data/campaigns/Eastern_Invasion/maps/*
+T	data/campaigns/Eastern_Invasion/scenarios/*
+
+Scenarions with terrain
+1, 2, 3(map), 7a, 9(map), 12(extra attention, Kud nice keep?, change of ground is dubious), 13, 14, 17, 18a
+
+===[ UtbS ]===
+
+
+
+Converted under the burning suns campaign to new format (untested)
+
+===[ Tutorial ]==
+T	data/tutorial/maps/*
+T	data/tutorial/scenarios/*
+
+
+===============================================================================
+
 
 V	data/scenarios/multiplayer/Random*
 
@@ -12,6 +82,8 @@ V	data/terrain-graphics.cfg
 V	data/abilities.cfg
 T	data/utils/utils.cfg
 	data/scenario-test.cfg
+
+
 
 =====[ THAWED ]=====
 \	src/*
