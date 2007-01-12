@@ -206,7 +206,7 @@ namespace{
 		units_strings_height_ = maximum<int>(attacker_left_strings_.size(), defender_left_strings_.size())
 							    * (font::SIZE_NORMAL + inter_line_gap_) + 14;
 
-		hp_distrib_string_ = _("Expected Battle Result (hp)");
+		hp_distrib_string_ = _("Expected Battle Result (HP)");
 		hp_distrib_string_width_ = font::line_width(hp_distrib_string_, font::SIZE_SMALL);
 
 		attacker_width_ = maximum<int>(attacker_label_width_, attacker_strings_width_);
