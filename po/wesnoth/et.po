@@ -1,17 +1,17 @@
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Estonian translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
+# Copyright (C) 2005-2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-# Priit Laes <amd@store20.com>
+# Translators:
+#  Mart Tõnso <tm AT rinjin DOT pri DOT ee>
+#  Priit Laes <amd AT store20 DOT com>, 2007
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-12 20:28+0100\n"
-"PO-Revision-Date: 2007-01-07 22:49+0200\n"
-"Last-Translator: Priit Laes <amd@store20.com>\n"
+"PO-Revision-Date: 2007-01-13 00:26+0200\n"
+"Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -195,6 +195,12 @@ msgid ""
 "any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
+"Varitsus:\n"
+"See üksus võib peituda metsas ja jääda vaenlaste jaoks märkamatuks.\n"
+"\n"
+"Vaenlase üksused ei näe ega saa seda üksust rünnata selle üksuse metsas "
+"paiknemise korral, välja arvatud käigud peale vaenlast ründamist või juhul "
+"kui vaenlase üksused asuvad selle üksuse kõrval."
 
 #: data/abilities.cfg:357 data/abilities.cfg:362
 msgid "nightstalk"
@@ -362,256 +368,211 @@ msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
-"Mürk:\n"
+"Mürgitus:\n"
 "See rünnak mürgitab ohvri. Mürgitatud üksused kaotavad iga käiguga 8 HP-d "
-"kuni nad terveks ravitakse või kuni nende elud kahanevad ühe HP-ni. "
+"kuni nad kas terveks ravitakse või kuni nende elud kahanevad ühe HP-ni. "
 
 #: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
 #: data/campaigns/Heir_To_The_Throne.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
-msgstr "+ Kunst ja graafika"
+msgstr "Kunst ja graafika"
 
 #: data/about.cfg:62
-#, fuzzy
 msgid "Music"
-msgstr "+Muusika"
+msgstr "Muusika"
 
 #: data/about.cfg:73
-#, fuzzy
 msgid "Scenario Designers"
-msgstr "+Stsenaariumite disainerid"
+msgstr "Stsenaariumite disainerid"
 
 #: data/about.cfg:90
-#, fuzzy
 msgid "Multiplayer Developers"
-msgstr "+Mitmemängija kaardid"
+msgstr "Mitme mängija toe arendus"
 
 #: data/about.cfg:100
-#, fuzzy
 msgid "Multiplayer Maps"
-msgstr "+Mitmemängija kaardid"
+msgstr "Mitmemängija kaardid"
 
 #: data/about.cfg:110
-#, fuzzy
 msgid "Packagers"
-msgstr "+ Pakettide koostajad"
+msgstr "Pakettide koostajad"
 
 #: data/about.cfg:125 data/campaigns/The_South_Guard.cfg:39
 #: data/campaigns/Two_Brothers.cfg:36
 #: data/campaigns/Under_the_Burning_Suns.cfg:48
-#, fuzzy
 msgid "Miscellaneous"
-msgstr "+ Mitmesugust"
+msgstr "Mitmesugune tugi"
 
 #: data/about.cfg:135
-#, fuzzy
 msgid "Internationalization Managers"
-msgstr "+ Rahvusvahelised koordinaatorid"
+msgstr "Tõlkekoordinaatorid"
 
 #: data/about.cfg:146
-#, fuzzy
 msgid "Afrikaans Translation"
-msgstr "+ Afrikaanikeelne tõlge"
+msgstr "Afrikaanikeelne tõlge"
 
 #: data/about.cfg:156
-#, fuzzy
 msgid "Basque Translation"
-msgstr "+ Baski keelne tõlge"
+msgstr "Baskikeelne tõlge"
 
 #: data/about.cfg:165
-#, fuzzy
 msgid "Bulgarian Translation"
-msgstr "+ Bulgaaria keelne tõlge"
+msgstr "Bulgaariakeelne tõlge"
 
 #: data/about.cfg:174
-#, fuzzy
 msgid "Catalan Translation"
-msgstr "+ Katalaani keelne tõlge"
+msgstr "Katalaanikeelne tõlge"
 
 #: data/about.cfg:190
-#, fuzzy
 msgid "Chinese Translation"
-msgstr "+ Hiinakeelne tõlge"
+msgstr "Hiinakeelnetõlge"
 
 #: data/about.cfg:197
-#, fuzzy
 msgid "Czech Translation"
-msgstr "+ Tšehhi keelne tõlge"
+msgstr "Tšehhikeelne tõlge"
 
 #: data/about.cfg:216
-#, fuzzy
 msgid "Danish Translation"
-msgstr "+ Taani keelne tõlge"
+msgstr "Taanikeelne tõlge"
 
 #: data/about.cfg:227
-#, fuzzy
 msgid "Dutch Translation"
-msgstr "+ Hollandikeelne tõlge"
+msgstr "Hollandikeelne tõlge"
 
 #: data/about.cfg:245
-#, fuzzy
 msgid "English (GB) Translation"
-msgstr "+ Inglise keelne (GB) tõlge"
+msgstr "Inglisekeelne (Suurbritannia) tõlge"
 
 #: data/about.cfg:253
-#, fuzzy
 msgid "Esperanto Translation"
-msgstr "+ Saksakeelne tõlge"
+msgstr "Esperantokeelne tõlge"
 
 #: data/about.cfg:263
-#, fuzzy
 msgid "Estonian Translation"
-msgstr "+ Eesti keelne tõlge"
+msgstr "Eestikeelne tõlge"
 
 #: data/about.cfg:270
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "+ Soomekeelne tõlge"
+msgstr "Filipiinikeelne tõlge"
 
 #: data/about.cfg:277
-#, fuzzy
 msgid "Finnish Translation"
-msgstr "+ Soomekeelne tõlge"
+msgstr "Soomekeelne tõlge"
 
 #: data/about.cfg:289
-#, fuzzy
 msgid "French Translation"
-msgstr "+ Prantsuse keelne tõlge"
+msgstr "Prantsusekeelne tõlge"
 
 #: data/about.cfg:323
-#, fuzzy
 msgid "German Translation"
-msgstr "+ Saksakeelne tõlge"
+msgstr "Saksakeelne tõlge"
 
 #: data/about.cfg:341
-#, fuzzy
 msgid "Greek Translation"
-msgstr "+ Kreekakeelne tõlge"
+msgstr "Kreekakeelne tõlge"
 
 #: data/about.cfg:352
-#, fuzzy
 msgid "Hebrew Translation"
-msgstr "+ Kreekakeelne tõlge"
+msgstr "Heebreakeelne tõlge"
 
 #: data/about.cfg:360
-#, fuzzy
 msgid "Hungarian Translation"
-msgstr "+ Hungari keelne tõlge"
+msgstr "Ungarikeelne tõlge"
 
 #: data/about.cfg:377
-#, fuzzy
 msgid "Indonesian Translation"
-msgstr "+ Eesti keelne tõlge"
+msgstr "Indoneesiakeelne tõlge"
 
 #: data/about.cfg:384
-#, fuzzy
 msgid "Italian Translation"
-msgstr "+ Itaalia keelne tõlge"
+msgstr "Itaaliakeelne tõlge"
 
 #: data/about.cfg:399
-#, fuzzy
 msgid "Japanese Translation"
-msgstr "+ Jaapanikeelne tõlge"
+msgstr "Jaapanikeelne tõlge"
 
 #: data/about.cfg:411
-#, fuzzy
 msgid "Korean Translation"
-msgstr "+ Norrakeelne tõlge"
+msgstr "Koreakeelne tõlge"
 
 #: data/about.cfg:418
-#, fuzzy
 msgid "Latin Translation"
-msgstr "+ Ladinakeelne tõlge"
+msgstr "Ladinakeelne tõlge"
 
 #: data/about.cfg:425
-#, fuzzy
 msgid "Norwegian Translation"
-msgstr "+ Norrakeelne tõlge"
+msgstr "Norrakeelne tõlge"
 
 #: data/about.cfg:437
-#, fuzzy
 msgid "Polish Translation"
-msgstr "+ Poola keelne tõlge"
+msgstr "Poolakeelne tõlge"
 
 #: data/about.cfg:454
-#, fuzzy
 msgid "Portuguese Translation"
-msgstr "+ Portugali (Brasiilia) keelne tõlge"
+msgstr "Portugalikeelne tõlge"
 
 #: data/about.cfg:461
-#, fuzzy
 msgid "Portuguese (Brazil) Translation"
-msgstr "+ Portugali (Brasiilia) keelne tõlge"
+msgstr "Portugalikeelne tõlge (Brasiilia) "
 
 #: data/about.cfg:477
-#, fuzzy
 msgid "Russian Translation"
-msgstr "+ Venekeelne tõlge"
+msgstr "Venekeelne tõlge"
 
 #: data/about.cfg:490
-#, fuzzy
 msgid "Serbian Translation"
-msgstr "+ Saksakeelne tõlge"
+msgstr "Serbiakeelne tõlge"
 
 #: data/about.cfg:499
-#, fuzzy
 msgid "Slovak Translation"
-msgstr "+ Slovakikeelne tõlge"
+msgstr "Slovakikeelne tõlge"
 
 #: data/about.cfg:508
-#, fuzzy
 msgid "Slovenian Translation"
-msgstr "+ Sloveeniakeelne tõlge"
+msgstr "Sloveeniakeelne tõlge"
 
 #: data/about.cfg:516
-#, fuzzy
 msgid "Spanish Translation"
-msgstr "+ Hispaania keelne tõlge"
+msgstr "Hispaaniakeelne tõlge"
 
 #: data/about.cfg:529
-#, fuzzy
 msgid "Swedish Translation"
-msgstr "+ Rootsi keelne tõlge"
+msgstr "Rootsikeelne tõlge"
 
 #: data/about.cfg:542
-#, fuzzy
 msgid "Turkish Translation"
-msgstr "+ Türgikeelne tõlge"
+msgstr "Türgikeelne tõlge"
 
 #: data/about.cfg:560 data/help.cfg:252
-#, fuzzy
 msgid "Contributors"
-msgstr "+ Toetajad"
+msgstr "Kaasaitajad"
 
 #: data/about.cfg:585
-#, fuzzy
 msgid "Bots"
-msgstr "+ Robotid"
+msgstr "Robotite tugi"
 
 #: data/amla.cfg:9
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", MAX XP +25%"
 
 #: data/amla.cfg:9
 msgid "Max HP bonus +"
-msgstr ""
+msgstr "Maks. HP boonus +"
 
 #: data/amla.cfg:30
 msgid "Full Heal"
-msgstr ""
+msgstr "Täielik taastamine"
 
 #: data/campaigns/Eastern_Invasion.cfg:22
 #: data/campaigns/Heir_To_The_Throne.cfg:25
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Kampaania"
+msgstr "Sõjakäikude kavandamise tööriist"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -907,9 +868,8 @@ msgstr "küünised"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
 msgid "Current Maintainer"
-msgstr "Eesmärk:"
+msgstr "Praegune hooldaja"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:123
@@ -1883,18 +1843,16 @@ msgid "ranged"
 msgstr "kauge"
 
 #: data/english.cfg:51
-#, fuzzy
 msgid "Wesnoth unit list"
-msgstr "Õpetus"
+msgstr "Wesnothi üksuste nimekiri"
 
 #: data/english.cfg:52
 msgid "Based on version"
 msgstr ""
 
 #: data/english.cfg:53
-#, fuzzy
 msgid "Race"
-msgstr "oganui"
+msgstr "Rass"
 
 #: data/english.cfg:54
 #, fuzzy
@@ -1981,14 +1939,12 @@ msgid "Terrains"
 msgstr "Maastikud"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Komandör"
+msgstr "Käsud"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
-#, fuzzy
 msgid "Overview"
-msgstr "Üle kirjutada?"
+msgstr "Ülevaade"
 
 #: data/help.cfg:66
 msgid ""
@@ -2001,7 +1957,6 @@ msgstr ""
 "leiad selle teema alt infot, kui sa neid kohtad."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2013,12 +1968,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Wesnothi Lahing on kordamööda käimisel põhinev fantaasia-strateegiamäng, "
-"mõneti ebatavaline kaasaegsete strateegiamängude hulgas. Samas kui teised "
-"mängud põhinevad keerukatel reeglitel ja mängu ülesehitusel, üritab Wesnothi "
-"Lahing reegleid teha võimalikult lihtsaks. See ei muuda veel mängu ennast "
-"lihtsaks - lihtsatel reeglitel baseerub rikkalik strateegia. Mängu aluste "
-"õppimine on lihtne, aga selle meisterlik valdamine on omaette kunsttükk."
+"Battle for Wesnoth on kordamööda käimisel põhinev fantaasia-strateegiamäng, "
+"mis kaasaegsete strateegiamängude hulgas on mõneti ebatavaline, sest enamus "
+"neist mängudest põhinevad keerukal reeglite ülesehitusel, siis Battle of "
+"Wesnothi reeglid ja mängu ülesehitus on küllaltki lihtsad. Samas ei muuda "
+"see mängu ennast lihtsaks - lihtsate reeglitega saab luua küllaltki palju "
+"erinevaid strateegiaid, mille tulemuseks on see, et mängu aluste õppimine on "
+"lihtne, aga selle meisterlik valdamine on omaette kunsttükk."
 
 #: data/help.cfg:79
 msgid "Fundamentals of Gameplay"
@@ -2054,9 +2010,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:90
-#, fuzzy
 msgid "About the Game"
-msgstr "Välju mängust"
+msgstr "Mängust endast"
 
 #: data/help.cfg:91
 msgid ""
@@ -2151,31 +2106,35 @@ msgstr ""
 "et sellest rohkem teada saada."
 
 #: data/help.cfg:114
-#, fuzzy
 msgid "Orbs"
-msgstr "Mäekollid"
+msgstr "Infokerad"
 
 #: data/help.cfg:115
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"Iga sinu üksuse energiariba kohal on kera. Iga sinu poolt juhitava üksuse "
+"kera võib olla:"
 
 #: data/help.cfg:116
 msgid "green if it hasn't moved this turn,"
-msgstr ""
+msgstr "roheline kui see üksus ei ole selle käigu jooksul veel liikunud, "
 
 #: data/help.cfg:117
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
+"kollane, kui üksus on liikunud, kuid oleks võimeline veel edasi liikuma või "
+"ründama, või"
 
 #: data/help.cfg:118
 msgid "red if it has used all its movement this turn."
-msgstr ""
+msgstr "punake kui ta on ära kasutanud kõik liikumised selles käigus."
 
 #: data/help.cfg:119
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr ""
+"Kui kera on sinine, siis on tegemist liitlasüksusega mida ei saa juhtida."
 
 #: data/help.cfg:120
 msgid "Enemy units have no orb on top of their energy bar."
@@ -2611,9 +2570,9 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 "Wesnothis ei piisa ainult üksuste värbamisest ja võitlemisest. Sa pead "
-"hoidma silma peal ka oma kullavarudel, eriti kampaaniates, kus kuld kandub "
-"ühest osast järgmisesse edasi. Seejuures peab arvestama kahe asjaga: "
-"sissutulekute ja ülalpidamiskuludega."
+"hoidma silma peal ka oma kullavarudel, eriti sõjakäikudel, kus kuld kandub "
+"ühest osast teise edasi. Seejuures peab arvestama kahe asjaga: sissutulekute "
+"ja ülalpidamiskuludega."
 
 #: data/help.cfg:236
 #, fuzzy
@@ -2706,7 +2665,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:274
-#, fuzzy
 msgid "Intelligent"
 msgstr "intelligentne"
 
@@ -2726,9 +2684,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:282
-#, fuzzy
 msgid "Quick"
-msgstr "väle"
+msgstr "Kiire"
 
 #: data/help.cfg:283
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
@@ -2747,9 +2704,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:290
-#, fuzzy
 msgid "Resilient"
-msgstr "vastupidav"
+msgstr "Vastupidav"
 
 #: data/help.cfg:291
 msgid "Resilient units have 10% +3 more HP than usual."
@@ -2767,9 +2723,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:298
-#, fuzzy
 msgid "Strong"
-msgstr "tugev"
+msgstr "Tugev"
 
 #: data/help.cfg:299
 msgid ""
@@ -2788,9 +2743,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:306
-#, fuzzy
 msgid "Loyal"
-msgstr "lojaalne"
+msgstr "Lojaalne"
 
 #: data/help.cfg:307
 msgid ""
@@ -2812,9 +2766,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:314
-#, fuzzy
 msgid "trait^Undead"
-msgstr "Kooljad"
+msgstr "Surmast ülestõusnud"
 
 #: data/help.cfg:315
 #, fuzzy
@@ -3031,9 +2984,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:449 data/terrain.cfg:97
-#, fuzzy
 msgid "Desert"
-msgstr "Kõrbekünkad"
+msgstr "Kõrv"
 
 #: data/help.cfg:452
 msgid ""
@@ -3076,9 +3028,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "valgustab"
+msgstr "Helendav koobas"
 
 #: data/help.cfg:482
 msgid ""
@@ -3200,9 +3151,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:546 data/terrain.cfg:422
-#, fuzzy
 msgid "Cave Wall"
-msgstr "Koopasein"
+msgstr "Koopa sein"
 
 #: data/help.cfg:548
 msgid ""
@@ -3211,9 +3161,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:553
-#, fuzzy
 msgid "General commands"
-msgstr "Üldine"
+msgstr "Üldised käsud"
 
 #: data/help.cfg:555
 msgid ""
@@ -3253,9 +3202,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:575
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "+Mitmemängija kaardid"
+msgstr "Mitmemängija käsud"
 
 #: data/help.cfg:577
 msgid ""
@@ -3508,7 +3456,7 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:65
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:105
 msgid "teamname^North"
-msgstr ""
+msgstr "Põhi"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:33
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:57
@@ -3526,7 +3474,7 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:51
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:62
 msgid "teamname^South"
-msgstr ""
+msgstr "Lõuna"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
 #, fuzzy
@@ -3739,7 +3687,7 @@ msgstr ""
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:48
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:28
 msgid "teamname^West"
-msgstr ""
+msgstr "Lääs"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:29
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:29
@@ -3752,7 +3700,7 @@ msgstr ""
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:28
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:38
 msgid "teamname^East"
-msgstr ""
+msgstr "Ida"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
@@ -3789,7 +3737,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 #, fuzzy
 msgid "Sulla's statue"
-msgstr "Noviits"
+msgstr "kuju"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 #, fuzzy
@@ -3818,17 +3766,17 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:196
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:473
 msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "Punane sai punkte! Praegune skoor on $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:244
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:521
 msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "Sinine sai punkte! Praegune skoor on $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:334
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:611
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr ""
+msgstr "Kas ma peaksin palli edasi söötma $passto.type ($xloc,$yloc)?"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:336
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:613
@@ -3842,11 +3790,11 @@ msgstr "Ei"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:658
 msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr ""
+msgstr "Sinine meeskond võitis! Lõplik tulemus: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:670
 msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr ""
+msgstr "Punane meeskond võitis! Lõplik tulemus: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:682
 msgid "Draw! Final score: $redscore-$bluescore"
@@ -3908,7 +3856,7 @@ msgstr ""
 #: data/scenarios/multiplayer/8p_Morituri.cfg:66
 #: data/scenarios/multiplayer/8p_Morituri.cfg:76
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "Meeskond 1"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:28
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:38
@@ -3923,7 +3871,7 @@ msgstr ""
 #: data/scenarios/multiplayer/8p_Morituri.cfg:46
 #: data/scenarios/multiplayer/8p_Morituri.cfg:86
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "Meeskond 2"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:9
 #, fuzzy
@@ -3967,7 +3915,7 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:55
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:95
 msgid "teamname^South-West"
-msgstr ""
+msgstr "Kagu"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:29
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:40
@@ -3978,7 +3926,7 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:46
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:56
 msgid "teamname^North-East"
-msgstr ""
+msgstr "Loe"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 #, fuzzy
@@ -4001,14 +3949,14 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:75
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:85
 msgid "teamname^South-East"
-msgstr ""
+msgstr "Edel"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:51
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:24
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:54
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:20
 msgid "teamname^North-West"
-msgstr ""
+msgstr "Kirre"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -4230,9 +4178,8 @@ msgid "Underground"
 msgstr "Maa-alune"
 
 #: data/schedules.cfg:98 data/schedules.cfg:109
-#, fuzzy
 msgid "Deep Underground"
-msgstr "Maa-alune"
+msgstr "Sügaval maa all"
 
 #: data/special-notes.cfg:2
 msgid ""
@@ -4396,9 +4343,8 @@ msgid "Orange"
 msgstr "Oranž"
 
 #: data/team-colors.cfg:34
-#, fuzzy
 msgid "Black"
-msgstr "< Tagasi"
+msgstr "Must"
 
 #: data/team-colors.cfg:40
 msgid "White"
@@ -4409,9 +4355,8 @@ msgid "Brown"
 msgstr "Pruun"
 
 #: data/team-colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "Meeskond"
+msgstr "Sinakasroheline"
 
 #: data/terrain.cfg:11 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:68 src/multiplayer_lobby.cpp:381
@@ -4433,9 +4378,8 @@ msgid "Oasis"
 msgstr "Oaas"
 
 #: data/terrain.cfg:325
-#, fuzzy
 msgid "Dunes"
-msgstr "Hämarik"
+msgstr "Luited"
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
@@ -4450,14 +4394,12 @@ msgid "Snow Forest"
 msgstr "Lumine mets"
 
 #: data/terrain.cfg:405
-#, fuzzy
 msgid "Cave Lit"
-msgstr "Koobas"
+msgstr "Valgustatud koobas"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Kõrbemäed"
+msgstr "Läbipääsmatu mäestik"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -4468,9 +4410,8 @@ msgid "Encampment"
 msgstr "Laagriplats"
 
 #: data/terrain.cfg:474
-#, fuzzy
 msgid "Dwarven Castle"
-msgstr "Kääbuste loss"
+msgstr "Päkapikkude kindlus"
 
 #: data/terrain.cfg:484
 msgid "Keep"
@@ -4565,24 +4506,20 @@ msgid "time left"
 msgstr ""
 
 #: data/themes/macros.cfg:52
-#, fuzzy
 msgid "Replay"
-msgstr "kordus"
+msgstr "Korda"
 
 #: data/themes/macros.cfg:67
-#, fuzzy
 msgid "Play"
-msgstr "Mängijad:"
+msgstr "Esita"
 
 #: data/themes/macros.cfg:68
-#, fuzzy
 msgid "continous replay"
-msgstr "kordus"
+msgstr "katkestusteta kordus"
 
 #: data/themes/macros.cfg:81
-#, fuzzy
 msgid "Stop"
-msgstr "tugev"
+msgstr "Peata"
 
 #: data/themes/macros.cfg:82
 msgid "pause at end of turn"
@@ -4598,9 +4535,8 @@ msgid "reset to beginning"
 msgstr ""
 
 #: data/themes/macros.cfg:109
-#, fuzzy
 msgid "Next Turn"
-msgstr "Käik"
+msgstr "Järgmine käik"
 
 #: data/themes/macros.cfg:110
 #, fuzzy
@@ -4882,7 +4818,7 @@ msgstr ""
 
 #: data/traits.cfg:53
 msgid "quick"
-msgstr "väle"
+msgstr "kiire"
 
 #: data/traits.cfg:68
 msgid "intelligent"
@@ -4893,9 +4829,8 @@ msgid "resilient"
 msgstr "vastupidav"
 
 #: data/tutorial/units/Fighteress.cfg:3
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Maag"
+msgstr "Võitlejanna"
 
 #: data/tutorial/units/Quintain.cfg:3
 #, fuzzy
@@ -7468,7 +7403,7 @@ msgstr ""
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
-msgstr "Kivihiidsõdalane."
+msgstr "Trollisõdalane"
 
 #: data/units/Troll_Warrior.cfg:21
 msgid ""
@@ -7486,7 +7421,7 @@ msgstr ""
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
-msgstr "Kivihiiunäss"
+msgstr "Trollinäss"
 
 #: data/units/Troll_Whelp.cfg:20
 msgid ""
@@ -7686,9 +7621,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:25
-#, fuzzy
 msgid "plague staff"
-msgstr "katk"
+msgstr "katkusau"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
@@ -8087,7 +8021,7 @@ msgstr "#(Vigane)"
 
 #: src/dialogs.cpp:397 src/game.cpp:776
 msgid "Campaign"
-msgstr "Kampaania"
+msgstr "Sõjakäik"
 
 #: src/dialogs.cpp:399 src/game.cpp:1188
 msgid "Multiplayer"
@@ -8150,9 +8084,8 @@ msgid "Delete Save"
 msgstr "Kustuta salvestus"
 
 #: src/dialogs.cpp:501
-#, fuzzy
 msgid "Date"
-msgstr "Värav"
+msgstr "Kuupäev"
 
 #: src/dialogs.cpp:501 src/game.cpp:913 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:689
@@ -8195,7 +8128,7 @@ msgstr "Käigud:"
 
 #: src/display.cpp:531
 msgid "Screenshot"
-msgstr ""
+msgstr "Ekraanitõmmis"
 
 #: src/game.cpp:398 src/game.cpp:1272
 msgid "The Battle for Wesnoth"
@@ -8223,7 +8156,7 @@ msgstr "Faili I/O viga mängu lugedes"
 
 #: src/game.cpp:777
 msgid "Choose the campaign you want to play:"
-msgstr "Vali mängimiseks kampaania:"
+msgstr "Vali sõjakäik mida mängida:"
 
 #: src/game.cpp:800
 msgid "Difficulty"
@@ -8260,9 +8193,8 @@ msgid "Server: "
 msgstr "Server: "
 
 #: src/game.cpp:879 src/multiplayer.cpp:126 src/multiplayer.cpp:163
-#, fuzzy
 msgid "Connecting to Server..."
-msgstr "Ühenda serveriga"
+msgstr "Serveriga ühenduse loomine..."
 
 #: src/game.cpp:882
 msgid "Could not connect to host."
@@ -8270,7 +8202,7 @@ msgstr "Võõrustajaga ei õnnestu ühendust luua."
 
 #: src/game.cpp:891
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Lisade nimekirja küsimine"
 
 #: src/game.cpp:904
 msgid "Error communicating with the server."
@@ -8293,14 +8225,12 @@ msgid "Size"
 msgstr "Suurus"
 
 #: src/game.cpp:975
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Avalda kampaania:"
+msgstr "Avalda lisa:"
 
 #: src/game.cpp:979
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Kustuta kampaania"
+msgstr "Kustuta lisa:"
 
 #: src/game.cpp:983
 #, fuzzy
@@ -8308,32 +8238,28 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Sellel serveril ei ole alla laadimiseks kampaaniaid pakkuda."
 
 #: src/game.cpp:990
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Vali milline mäng alla laadida."
+msgstr "Vali allalaaditav lisa."
 
 #: src/game.cpp:990
 msgid "Get Add-ons"
 msgstr ""
 
 #: src/game.cpp:1010
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Tõmban kampaaniat..."
+msgstr "Lisa allalaadimine..."
 
 #: src/game.cpp:1034
 msgid "Cannot rescan the filesystem"
 msgstr "Ei saa failisüsteemi skaneerida"
 
 #: src/game.cpp:1059
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Kampaania installeeritud"
+msgstr "Lisa paigaldatud"
 
 #: src/game.cpp:1059
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "Kampaania on installeeritud."
+msgstr "Lisa on paigaldatud."
 
 #: src/game.cpp:1062
 msgid "Network communication error."
@@ -8346,7 +8272,7 @@ msgstr "Teine pool katkestas ühenduse."
 #: src/game.cpp:1066
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
-msgstr "Kampaania installeerimiseks vajalike failide loomisel tekkis probleem."
+msgstr "Sõjakäigu paigaldamiseks vajalike failide loomisel tekkis probleem."
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
 #: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:351
@@ -8362,9 +8288,8 @@ msgid "Terms"
 msgstr "Tingimused"
 
 #: src/game.cpp:1115
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Tõmban kampaaniat..."
+msgstr "Lisa saatmine"
 
 #: src/game.cpp:1122 src/game.cpp:1147 src/multiplayer_wait.cpp:325
 msgid "Response"
@@ -8447,7 +8372,7 @@ msgstr "Mängu kaarti ei õnnestunud laadida:"
 
 #: src/game.cpp:1415
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "VEAINFO:"
 
 #: src/game.cpp:1429
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -8463,12 +8388,11 @@ msgstr "'(Mäng läheb nüüd kinni)"
 
 #: src/game.cpp:1615
 msgid "Battle for Wesnoth"
-msgstr "Wesnothi Lahing"
+msgstr "Battle for Wesnoth"
 
 #: src/game.cpp:1735
-#, fuzzy
 msgid "Loading game configuration."
-msgstr "Mängu konfiguratsioonifailide laadimisel tekkis viga: '"
+msgstr "Mängu sätete laadimine."
 
 #: src/game.cpp:1741
 msgid "Re-initialize fonts for the current language."
@@ -8500,9 +8424,8 @@ msgid "Abilities: "
 msgstr "Võimed:"
 
 #: src/help.cpp:1154
-#, fuzzy
 msgid "Cost: "
-msgstr "Käigud:"
+msgstr "Maksumus:"
 
 #: src/help.cpp:1155
 msgid "Alignment: "
@@ -8510,15 +8433,15 @@ msgstr "Meelelaad:"
 
 #: src/help.cpp:1161
 msgid "Required XP: "
-msgstr "Nõutud XP:"
+msgstr "Nõutav XP:"
 
 #: src/help.cpp:1170 src/reports.cpp:255
 msgid "attacks"
-msgstr "rünnakuid"
+msgstr "rünnakud"
 
 #: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:688
 msgid "Type"
-msgstr "Tüüp"
+msgstr "Liik"
 
 #: src/help.cpp:1179
 msgid "Strikes"
@@ -8534,7 +8457,7 @@ msgstr "Eriline"
 
 #: src/help.cpp:1231
 msgid "Resistances"
-msgstr "Vastupidavused"
+msgstr "Vastupanuliigid"
 
 #: src/help.cpp:1235
 msgid "Attack Type"
@@ -8557,9 +8480,8 @@ msgid "Defense"
 msgstr "Kaitse"
 
 #: src/help.cpp:1267
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Liikumine"
+msgstr "Liikumiskulu"
 
 #: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
@@ -8607,7 +8529,6 @@ msgid "This terrain gives healing."
 msgstr "See maastik tervendab."
 
 #: src/help.cpp:2289
-#, fuzzy
 msgid " < Back"
 msgstr "< Tagasi"
 
@@ -8646,15 +8567,15 @@ msgstr "Süsteemi vaikimisi keel"
 
 #: src/leader_list.cpp:136 src/leader_list.cpp:142
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/loadscreen.cpp:153
 msgid "Verifying cache."
-msgstr ""
+msgstr "Vahemälu kontrollimine."
 
 #: src/loadscreen.cpp:172
 msgid "Reading cache."
-msgstr ""
+msgstr "Vahemälu lugemine."
 
 #: src/loadscreen.cpp:191
 msgid "Reading unit files."
@@ -8935,22 +8856,20 @@ msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
 #: src/menu_events.cpp:1410
-#, fuzzy
 msgid "Unknown command"
-msgstr "Tundmatu stsenaarium : '"
+msgstr "Tundmatu käsk"
 
 #: src/menu_events.cpp:1427
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Lisatud ignoreeritavate nimekirja:"
 
 #: src/menu_events.cpp:1429 src/menu_events.cpp:1439
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Vigane sildi nimi"
+msgstr "Vigane kasutajanimi:"
 
 #: src/menu_events.cpp:1437 src/menu_events.cpp:1463
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Eemaldatud ignoreeritavate nimekirjast:"
 
 #: src/menu_events.cpp:1468
 #, fuzzy
@@ -8978,19 +8897,16 @@ msgid "Expected Battle Result (hp)"
 msgstr ""
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
-msgstr "Vastupidavused"
+msgstr "vastupidavus vs"
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "ründaja nõrkus vs"
+msgstr "nõrkus vs"
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid "Slowed"
-msgstr "aeglustatud"
+msgstr "Aeglustatud"
 
 #: src/mouse_events.cpp:319
 #, fuzzy
@@ -8998,23 +8914,20 @@ msgid "Time of day"
 msgstr "Aeg"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
-msgstr "juhtimisvõime"
+msgstr "Juhtimisvõime"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
-msgstr "kogukahju"
+msgstr "Kogukahju"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Vali relv:"
+msgstr "Kasutatavat relva ei ole"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Terve nahaga pääsemise võimalus"
 
 #: src/mouse_events.cpp:649 src/mouse_events.cpp:1299
 msgid "Damage Calculations"
@@ -9090,9 +9003,8 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:429
-#, fuzzy
 msgid "Default AI"
-msgstr "Vaikimisi"
+msgstr "Vaikimisi tehisintelligents"
 
 #: src/multiplayer_connect.cpp:481
 msgid "(Vacant slot)"
@@ -9182,13 +9094,12 @@ msgid "Cannot find era $era"
 msgstr "Ei leia ajastut $era"
 
 #: src/multiplayer_connect.cpp:1334
-#, fuzzy
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
-"Võit\n"
-"@Alista vaenlaste juhid"
+"Võit:\n"
+"@Alista vaenlaste juht või juhid"
 
 #: src/multiplayer_connect.cpp:1370
 msgid "Waiting for players to join..."
@@ -9200,7 +9111,7 @@ msgstr "Loo mäng"
 
 #: src/multiplayer_create.cpp:49
 msgid "Time limit"
-msgstr ""
+msgstr "Ajalimiit"
 
 #: src/multiplayer_create.cpp:62
 msgid "Name of game:"
@@ -9336,9 +9247,8 @@ msgid "Init. Limit: "
 msgstr "Noviits"
 
 #: src/multiplayer_create.cpp:332
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Käike:"
+msgstr "Käikude boonus:"
 
 #: src/multiplayer_create.cpp:336
 #, fuzzy
@@ -9364,31 +9274,27 @@ msgstr "Mängijad:"
 
 #: src/multiplayer_lobby.cpp:33
 msgid "Map"
-msgstr ""
+msgstr "Kaart"
 
 #: src/multiplayer_lobby.cpp:34
-#, fuzzy
 msgid "Settings"
-msgstr "Seaded..."
+msgstr "Seaded"
 
 #: src/multiplayer_lobby.cpp:34
-#, fuzzy
 msgid "Status"
-msgstr "Statistika"
+msgstr "Olek"
 
 #: src/multiplayer_lobby.cpp:104
 msgid "--no games open--"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:313 src/multiplayer_lobby.cpp:316
-#, fuzzy
 msgid "Unknown era"
-msgstr "Tundmatu stsenaarium : '"
+msgstr "Tundmatu ajastu"
 
 #: src/multiplayer_lobby.cpp:338 src/multiplayer_lobby.cpp:354
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Tundmatu stsenaarium : '"
+msgstr "Tundmatu stsenaarium"
 
 #: src/multiplayer_lobby.cpp:350
 #, fuzzy
@@ -9414,14 +9320,12 @@ msgid "Observe Game"
 msgstr "Jälgi mängu"
 
 #: src/multiplayer_lobby.cpp:485
-#, fuzzy
 msgid "Quick Replays"
-msgstr "kordus"
+msgstr "Kiired kordused"
 
 #: src/multiplayer_lobby.cpp:486
-#, fuzzy
 msgid "Preferences"
-msgstr "Printsess"
+msgstr "Eelistused"
 
 #: src/multiplayer_lobby.cpp:487
 msgid "Quit"
@@ -9432,9 +9336,8 @@ msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
-msgstr "Vigane värv"
+msgstr "Vigane värvus"
 
 #: src/multiplayer_wait.cpp:116
 msgid "Leader: "
@@ -9461,14 +9364,12 @@ msgid "invalid network handle"
 msgstr ""
 
 #: src/network.cpp:127
-#, fuzzy
 msgid "Client disconnected"
-msgstr "Teine pool katkestas ühenduse."
+msgstr "Klient ühendas lahti"
 
 #: src/network.cpp:482
-#, fuzzy
 msgid "Could not add socket to socket set"
-msgstr "Võõrustajaga ei õnnestu ühendust luua."
+msgstr "Soklit ei suudetud soklite hulka lisada"
 
 #: src/network.cpp:493
 msgid "Could not send initial handshake"
@@ -9481,7 +9382,7 @@ msgstr "Fail, mida sa proovisid laadida, on vigane"
 
 #: src/play_controller.cpp:681
 msgid "Back to start"
-msgstr ""
+msgstr "Tagasi algusesse"
 
 #: src/play_controller.cpp:683
 msgid "Back to turn "
@@ -9496,7 +9397,6 @@ msgid "You have been defeated!"
 msgstr "Sind on alistatud!"
 
 #: src/playcampaign.cpp:285
-#, fuzzy
 msgid " replay"
 msgstr "kordus"
 
@@ -9505,14 +9405,12 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Kas sa tahad salvestada sellele stsenaariumile kordusmängu?"
 
 #: src/playcampaign.cpp:342
-#, fuzzy
 msgid "Receiving data..."
-msgstr "Hangin mängu andmeid..."
+msgstr "Andmete vastuvõtmine..."
 
 #: src/playcampaign.cpp:344
-#, fuzzy
 msgid "Downloading next scenario..."
-msgstr "Tõmban kampaaniat..."
+msgstr "Järgmise sõjakäigu allalaadimine..."
 
 #: src/playcampaign.cpp:429
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
@@ -9553,9 +9451,8 @@ msgid "per turn"
 msgstr "käigu kohta"
 
 #: src/playsingle_controller.cpp:321
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Järelejäänud käikude arv:"
+msgstr "Varem lõpetatud käikude arv:"
 
 #: src/playsingle_controller.cpp:323
 msgid "Bonus: "
@@ -9769,7 +9666,7 @@ msgstr "Õpetus"
 
 #: src/titlescreen.cpp:255
 msgid "TitleScreen button^Campaign"
-msgstr "Kampaaniad"
+msgstr "Sõjakäigud"
 
 #: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
@@ -9780,9 +9677,8 @@ msgid "TitleScreen button^Load"
 msgstr "Laadimine"
 
 #: src/titlescreen.cpp:258
-#, fuzzy
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Laadimine"
+msgstr "Lisade allalaadimine"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
@@ -9798,7 +9694,7 @@ msgstr "Info"
 
 #: src/titlescreen.cpp:262
 msgid "TitleScreen button^Quit"
-msgstr "Välja"
+msgstr "Välju"
 
 #: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -9806,7 +9702,7 @@ msgstr "Mänguga tutvumiseks alusta õpetusest"
 
 #: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
-msgstr "Alusta uut üksikmängija kampaaniat"
+msgstr "Alusta uut üksikmängija sõjakäiku"
 
 #: src/titlescreen.cpp:265
 msgid ""
@@ -9844,7 +9740,7 @@ msgstr "Veel"
 
 #: src/titlescreen.cpp:304
 msgid "Help"
-msgstr ""
+msgstr "Abiteave"
 
 #: src/titlescreen.cpp:307
 msgid "Help Wesnoth by sending us information"
@@ -9902,17 +9798,36 @@ msgstr ""
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
-#, fuzzy
-#~ msgid "Valencian Translation"
-#~ msgstr "+ Sloveeniakeelne tõlge"
+#~ msgid "Sound effects"
+#~ msgstr "Heliefektid"
 
-#, fuzzy
+#~ msgid "Valencian Translation"
+#~ msgstr "Valentsiakeelne tõlge"
+
 #~ msgid "Healthy"
-#~ msgstr "terve"
+#~ msgstr "Tervisklik"
+
+#~ msgid "Statue of Sulla"
+#~ msgstr "Sulla kuju"
+
+#~ msgid "Statue of Lhun-dup"
+#~ msgstr "Lhun-dupi kuju"
+
+#~ msgid "Statue of Ri-nzen"
+#~ msgstr "Ri-nzeni kuju"
+
+#~ msgid "Statue of Ten-zin"
+#~ msgstr "Ten-zini kuju"
+
+#~ msgid "Statue of Lo-bsang"
+#~ msgstr "Lo-bsangi kuju"
 
 #, fuzzy
 #~ msgid "Turn 2: Loyalists"
 #~ msgstr "Lojalistid"
+
+#~ msgid "Turn 5: Knalgans"
+#~ msgstr "5. käik: Knalganid"
 
 #, fuzzy
 #~ msgid "Turn 8: Rebels"
@@ -9926,72 +9841,64 @@ msgstr ""
 #~ msgid "Turn 14: Drakes"
 #~ msgstr "Tulelohe"
 
+#~ msgid "Turn 17: Undead"
+#~ msgstr "17. käik: Surnuist ülestõusnud"
+
+#~ msgid "Survive for 32 turns."
+#~ msgstr "Ela üle 32 käiku."
+
 #, fuzzy
 #~ msgid "Death of your team leaders."
 #~ msgstr "Delfadori surm"
 
-#, fuzzy
 #~ msgid "female^loyal"
-#~ msgstr "Lindprii"
+#~ msgstr "lojaalne"
 
-#, fuzzy
 #~ msgid "female^undead"
-#~ msgstr "Hulkur"
+#~ msgstr "surnust ülestõusnud"
 
-#, fuzzy
 #~ msgid "female^strong"
-#~ msgstr "Hulkur"
+#~ msgstr "tugev"
 
-#, fuzzy
 #~ msgid "female^dextrous"
-#~ msgstr "Hulkur"
+#~ msgstr "osav"
 
-#, fuzzy
 #~ msgid "female^quick"
-#~ msgstr "Printsess"
+#~ msgstr "kiire"
 
-#, fuzzy
 #~ msgid "female^intelligent"
 #~ msgstr "intelligentne"
 
-#, fuzzy
 #~ msgid "female^resilient"
 #~ msgstr "vastupidav"
 
 #~ msgid "healthy"
 #~ msgstr "terve"
 
-#, fuzzy
 #~ msgid "female^healthy"
-#~ msgstr "Varas"
+#~ msgstr "tervislik"
 
-#, fuzzy
 #~ msgid "fearless"
-#~ msgstr "ebamaine tormituul"
+#~ msgstr "kartmatu"
 
-#, fuzzy
 #~ msgid "female^fearless"
-#~ msgstr "Printsess"
+#~ msgstr "kartmatu"
 
 #, fuzzy
 #~ msgid "Armageddon Drake"
 #~ msgstr "Tulelohe"
 
-#, fuzzy
 #~ msgid "javelin"
-#~ msgstr "Odaloopija"
+#~ msgstr "oda"
 
-#, fuzzy
 #~ msgid "Quit Game"
 #~ msgstr "Välju mängust"
 
-#, fuzzy
 #~ msgid "Dependencies"
-#~ msgstr "Printsess"
+#~ msgstr "Sõltuvused"
 
-#, fuzzy
 #~ msgid "Do you still want to download it?"
-#~ msgstr "Kas sa tahad päriselt ka seda mängu kustutada?"
+#~ msgstr "Kas soovid ikka seda alla laadida?"
 
 #, fuzzy
 #~ msgid "Detail"
@@ -10005,18 +9912,31 @@ msgstr ""
 #~ msgid "The map already exists. Do you want to overwrite it?"
 #~ msgstr "Salvestus on juba olemas. Kas sa tahad selle üle kirjutada?"
 
+#~ msgid "Map saved."
+#~ msgstr "Kaart salvestatud."
+
+#~ msgid "Could not save the map: $msg"
+#~ msgstr "Kaarti ei suudeta salvestada: $msg"
+
 #, fuzzy
 #~ msgid "Team only"
 #~ msgstr "Meeskond"
+
+#~ msgid "Added to friends list: "
+#~ msgstr "Lisatud sõprade nimekirja:"
+
+#~ msgid "Removed from list: "
+#~ msgstr "Nimekirjast eemaldatud:"
+
+#~ msgid "Removed from friends list: "
+#~ msgstr "Eemaldatud sõprade nimekrjast:"
 
 #, fuzzy
 #~ msgid "Random start time"
 #~ msgstr "Juhuslik kaart (Talv)"
 
-#, fuzzy
 #~ msgid "Save Replay"
-#~ msgstr "kordus"
+#~ msgstr "Salvesta kordus"
 
-#, fuzzy
 #~ msgid "The replay could not be saved"
-#~ msgstr "Mängu salvestamine ebaõnnestus."
+#~ msgstr "Kordust ei suudetud salvestada"
