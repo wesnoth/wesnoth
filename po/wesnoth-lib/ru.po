@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 23:28+0100\n"
+"POT-Creation-Date: 2007-01-12 22:40+0100\n"
 "PO-Revision-Date: 2007-01-05 01:51+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -92,33 +92,33 @@ msgid "Map creation failed."
 msgstr "Ошибка создания карты."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:1042
+#: src/preferences_display.cpp:1203
 msgid "Close Window"
 msgstr "Закрыть окно"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:928
+#: src/hotkeys.cpp:78 src/preferences_display.cpp:1089
 msgid "Preferences"
 msgstr "Настройки"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:283
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:293
 msgid "Scroll Speed:"
 msgstr "Скорость прокрутки:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:59
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:255
 msgid "Toggle Full Screen"
 msgstr "На весь экран"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:255
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:258
 msgid "Show Grid"
 msgstr "Показывать сетку"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:266
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:276
 msgid "Video Mode"
 msgstr "Видеорежимы"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:268
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:278
 msgid "Hotkeys"
 msgstr "Горячие клавиши"
 
@@ -503,7 +503,7 @@ msgstr "Внутренний"
 msgid "Island"
 msgstr "Остров"
 
-#: src/preferences.cpp:410
+#: src/preferences.cpp:426
 msgid "player"
 msgstr "игрок"
 
@@ -517,223 +517,290 @@ msgstr ""
 "установить 16 битный цвет. Чтобы запускать игру на весь экран, ваш монитор "
 "должен поддерживать разрешение не менее 1024x768x16."
 
-#: src/preferences_display.cpp:253
+#: src/preferences_display.cpp:256
 msgid "Accelerated Speed"
 msgstr "Ускоренные движения"
 
-#: src/preferences_display.cpp:254
+#: src/preferences_display.cpp:257
 msgid "Skip AI Moves"
 msgstr "Пропускать ходы компьютера"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:259
 msgid "Show Lobby Minimaps"
 msgstr "Показывать миниатюры карт в холле"
 
-#: src/preferences_display.cpp:257
-msgid "Show Lobby Joins Of Friends"
+#: src/preferences_display.cpp:260
+#, fuzzy
+msgid "Do Not Show Lobby Joins"
+msgstr "Показывать миниатюры карт в холле"
+
+#: src/preferences_display.cpp:261
+#, fuzzy
+msgid "Show Lobby Joins Of Friends Only"
 msgstr "Показывать подключения друзей в холле"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:262
+#, fuzzy
+msgid "Show All Lobby Joins"
+msgstr "Показывать миниатюры карт в холле"
+
+#: src/preferences_display.cpp:263
 msgid "Sort Lobby List"
 msgstr "Сортировать список в холле"
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:264
 msgid "Iconize Lobby List"
 msgstr "Иконки в списке холла"
 
-#: src/preferences_display.cpp:260
+#: src/preferences_display.cpp:265
+msgid "Your Friends List"
+msgstr ""
+
+#: src/preferences_display.cpp:266
+msgid "Multiplayer Options"
+msgstr ""
+
+#: src/preferences_display.cpp:267
+msgid "Add As Friend"
+msgstr ""
+
+#: src/preferences_display.cpp:268
+msgid "Add As Ignore"
+msgstr ""
+
+#: src/preferences_display.cpp:269
+#, fuzzy
+msgid "Remove"
+msgstr "Повторить"
+
+#: src/preferences_display.cpp:270
 msgid "Show Floating Labels"
 msgstr "Показывать плавающие метки"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:271
 msgid "Turn Dialog"
 msgstr "Показывать диалог"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:272
 msgid "Turn Bell"
 msgstr "Включить сигнал"
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:273
 msgid "Show Team Colors"
 msgstr "Показывать командные цвета"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:274
 msgid "Show Color Cursors"
 msgstr "Показывать улучшенные курсоры"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:275
 msgid "Show Haloing Effects"
 msgstr "Показывать эффекты"
 
-#: src/preferences_display.cpp:267
+#: src/preferences_display.cpp:277
 msgid "Theme"
 msgstr "Тема"
 
-#: src/preferences_display.cpp:269
+#: src/preferences_display.cpp:279
 msgid "Adjust Gamma"
 msgstr "Настроить гамму"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:280
 msgid "Reverse Time Graphics"
 msgstr "Обратить отображение времени"
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:282
 msgid "Sound effects"
 msgstr "Звуковые эффекты"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:283
 msgid "Music"
 msgstr "Музыка"
 
-#: src/preferences_display.cpp:274
+#: src/preferences_display.cpp:284
 msgid "Chat Timestamping"
 msgstr "Отметка времени в чате"
 
-#: src/preferences_display.cpp:275
+#: src/preferences_display.cpp:285
 msgid "Advanced Mode"
 msgstr "Продвинутый режим"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:286
 msgid "Normal Mode"
 msgstr "Нормальный режим"
 
-#: src/preferences_display.cpp:279
-msgid "User Define"
-msgstr "Определено пользователем"
+#: src/preferences_display.cpp:289
+#, fuzzy
+msgid "Custom"
+msgstr "Вырезать"
 
-#: src/preferences_display.cpp:280
+#: src/preferences_display.cpp:290
 msgid "Apply"
 msgstr "Применить"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:292
 msgid "Music Volume:"
 msgstr "Громкость музыки:"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:292
 msgid "SFX Volume:"
 msgstr "Громкость звуков:"
 
-#: src/preferences_display.cpp:283
+#: src/preferences_display.cpp:293
 msgid "Bell Volume:"
 msgstr "Громкость сигнала:"
 
-#: src/preferences_display.cpp:284
+#: src/preferences_display.cpp:294
 msgid "Gamma:"
 msgstr "Гамма:"
 
-#: src/preferences_display.cpp:286
+#: src/preferences_display.cpp:296
 msgid "Sample Rate (Hz):"
 msgstr "Размер сэмпла (Гц):"
 
-#: src/preferences_display.cpp:305
+#: src/preferences_display.cpp:319
 msgid "Sound effects on/off"
 msgstr "Звуковые эффекты вкл/выкл"
 
-#: src/preferences_display.cpp:309
+#: src/preferences_display.cpp:323
 msgid "Change the sound effects volume"
 msgstr "Изменить громкость звуков"
 
-#: src/preferences_display.cpp:312
+#: src/preferences_display.cpp:326
 msgid "Music on/off"
 msgstr "Музыка вкл/выкл"
 
-#: src/preferences_display.cpp:316
+#: src/preferences_display.cpp:330
 msgid "Change the music volume"
 msgstr "Изменить громкость музыки"
 
-#: src/preferences_display.cpp:322
+#: src/preferences_display.cpp:336
 msgid "Change the bell volume"
 msgstr "Изменить громкость сигнала"
 
-#: src/preferences_display.cpp:324
+#: src/preferences_display.cpp:338
 msgid "Change the sample rate"
 msgstr "Изменить размер сэмпла"
 
-#: src/preferences_display.cpp:333
+#: src/preferences_display.cpp:347
 msgid "User defined sample rate"
 msgstr "Пользовательский размер сэмпла"
 
-#: src/preferences_display.cpp:342 src/preferences_display.cpp:346
+#: src/preferences_display.cpp:356 src/preferences_display.cpp:360
 msgid "Change the buffer size"
 msgstr "Изменить размер буфера"
 
-#: src/preferences_display.cpp:344 src/preferences_display.cpp:742
+#: src/preferences_display.cpp:358 src/preferences_display.cpp:805
 msgid "Buffer Size: "
 msgstr "Размер буфера: "
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:365
 msgid "Change the speed of scrolling around the map"
 msgstr "Изменить скорость прокрутки карты"
 
-#: src/preferences_display.cpp:356 src/preferences_display.cpp:358
+#: src/preferences_display.cpp:370 src/preferences_display.cpp:372
 msgid "Set the amount of chat lines shown"
 msgstr "Установите количество показываемых линий в чате"
 
-#: src/preferences_display.cpp:361
+#: src/preferences_display.cpp:375
 msgid "Add a timestamp to chat messages"
 msgstr "Добавьте отметку времени сообщениями в чате"
 
-#: src/preferences_display.cpp:364 src/preferences_display.cpp:369
+#: src/preferences_display.cpp:378 src/preferences_display.cpp:383
 msgid "Change the brightness of the display"
 msgstr "Изменить яркость"
 
-#: src/preferences_display.cpp:372
+#: src/preferences_display.cpp:386
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Выберите режим игры, на весь экран или в окне"
 
-#: src/preferences_display.cpp:375
+#: src/preferences_display.cpp:389
 msgid "Make units move and fight faster"
 msgstr "Делает движения и битву соединений быстрее"
 
-#: src/preferences_display.cpp:380
+#: src/preferences_display.cpp:394
 msgid "Units move and fight speed"
 msgstr "Скорость движения и битвы соединений"
 
-#: src/preferences_display.cpp:383
+#: src/preferences_display.cpp:397
 msgid "Do not animate AI units moving"
 msgstr "Не анимировать движения соединений компьютера"
 
-#: src/preferences_display.cpp:386
+#: src/preferences_display.cpp:400
 msgid "Overlay a grid onto the map"
 msgstr "Показывать сетку на карте"
 
-#: src/preferences_display.cpp:389
+#: src/preferences_display.cpp:403
 msgid "Show minimaps in the multiplayer lobby"
 msgstr "Показывать миниатюры карт в холле"
 
-#: src/preferences_display.cpp:392
+#: src/preferences_display.cpp:406
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Сортировать список игроков в холле по группам"
 
-#: src/preferences_display.cpp:395
+#: src/preferences_display.cpp:409
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Показывать иконки напротив игроков в холле."
 
-#: src/preferences_display.cpp:398
+#: src/preferences_display.cpp:412
+#, fuzzy
+msgid "Do not show messages about players joining the multiplayer lobby"
+msgstr "Показывать сообщения о друзьях, подключившихся к холлу игр"
+
+#: src/preferences_display.cpp:414
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Показывать сообщения о друзьях, подключившихся к холлу игр"
 
-#: src/preferences_display.cpp:401
+#: src/preferences_display.cpp:416
+#, fuzzy
+msgid "Show messages about all players joining the multiplayer lobby"
+msgstr "Показывать сообщения о друзьях, подключившихся к холлу игр"
+
+#: src/preferences_display.cpp:418
+msgid "View and edit your friends and ignores list"
+msgstr ""
+
+#: src/preferences_display.cpp:419
+msgid "Back to the multiplayer options"
+msgstr ""
+
+#: src/preferences_display.cpp:420
+msgid "Add this username to your friends list"
+msgstr ""
+
+#: src/preferences_display.cpp:421
+msgid "Add this username to your ignores list"
+msgstr ""
+
+#: src/preferences_display.cpp:422
+msgid "Remove this username from your list"
+msgstr ""
+
+#: src/preferences_display.cpp:425
+msgid "Insert a username"
+msgstr ""
+
+#: src/preferences_display.cpp:428
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Показывать над соединением количество нанесенного урона "
 
-#: src/preferences_display.cpp:403
+#: src/preferences_display.cpp:430
 msgid "Change the resolution the game runs at"
 msgstr "Изменить разрешение игры, запущенной в"
 
-#: src/preferences_display.cpp:404
+#: src/preferences_display.cpp:431
 msgid "Change the theme the game runs with"
 msgstr "Изменить тему игры, запущенной с"
 
-#: src/preferences_display.cpp:407
+#: src/preferences_display.cpp:434
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Показывать диалог в начале Вашего хода"
 
-#: src/preferences_display.cpp:410
+#: src/preferences_display.cpp:437
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Проигрывать звук колокола в начале Вашего хода"
 
-#: src/preferences_display.cpp:413
+#: src/preferences_display.cpp:440
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -741,104 +808,104 @@ msgstr ""
 "Показывать цветные круги вокруг каждого соединения для того чтобы различать, "
 "кто свой, а кто чужой"
 
-#: src/preferences_display.cpp:416
+#: src/preferences_display.cpp:443
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Выберите передвижение солнца, слева-направо или справа-налево"
 
-#: src/preferences_display.cpp:419
+#: src/preferences_display.cpp:446
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Использовать улучшенные курсоры мышки (может замедлить игру)"
 
-#: src/preferences_display.cpp:422
+#: src/preferences_display.cpp:449
 msgid "Use graphical special effects (may be slower)"
 msgstr "Использовать графические эффекты (может замедлить игру)"
 
-#: src/preferences_display.cpp:424
+#: src/preferences_display.cpp:451
 msgid "View and configure keyboard shortcuts"
 msgstr "Просмотр и настройка горячих клавиш"
 
-#: src/preferences_display.cpp:637
+#: src/preferences_display.cpp:700
 msgid "Speed: "
 msgstr "Скорость: "
 
-#: src/preferences_display.cpp:768
+#: src/preferences_display.cpp:850
 msgid "Chat Lines: "
 msgstr "Линии чата: "
 
-#: src/preferences_display.cpp:827
+#: src/preferences_display.cpp:946
 msgid "yes"
 msgstr "да"
 
-#: src/preferences_display.cpp:829
+#: src/preferences_display.cpp:948
 msgid "no"
 msgstr "нет"
 
-#: src/preferences_display.cpp:916
+#: src/preferences_display.cpp:1077
 msgid "Prefs section^General"
 msgstr "Общие"
 
-#: src/preferences_display.cpp:917
+#: src/preferences_display.cpp:1078
 msgid "Prefs section^Display"
 msgstr "Графика"
 
-#: src/preferences_display.cpp:918
+#: src/preferences_display.cpp:1079
 msgid "Prefs section^Sound"
 msgstr "Звук"
 
-#: src/preferences_display.cpp:919
+#: src/preferences_display.cpp:1080
 msgid "Prefs section^Multiplayer"
 msgstr "Многопользовательская игра"
 
-#: src/preferences_display.cpp:920
+#: src/preferences_display.cpp:1081
 msgid "Advanced section^Advanced"
 msgstr "Другие"
 
-#: src/preferences_display.cpp:985
+#: src/preferences_display.cpp:1146
 msgid "There are no alternative video modes available"
 msgstr "Нет доступных альтернативных видео режимов"
 
-#: src/preferences_display.cpp:1014
+#: src/preferences_display.cpp:1175
 msgid "Choose Resolution"
 msgstr "Выберите разрешение"
 
-#: src/preferences_display.cpp:1047
+#: src/preferences_display.cpp:1208
 msgid "Hotkey Settings"
 msgstr "Настройка горячих клавиш"
 
-#: src/preferences_display.cpp:1051 src/preferences_display.cpp:1104
+#: src/preferences_display.cpp:1212 src/preferences_display.cpp:1265
 msgid "Press desired Hotkey"
 msgstr "Нажмите желаемую горячую клавишу"
 
-#: src/preferences_display.cpp:1069
+#: src/preferences_display.cpp:1230
 msgid "Action"
 msgstr "Действие"
 
-#: src/preferences_display.cpp:1069
+#: src/preferences_display.cpp:1230
 msgid "Binding"
 msgstr "Клавиша"
 
-#: src/preferences_display.cpp:1081
+#: src/preferences_display.cpp:1242
 msgid "Change Hotkey"
 msgstr "Изменить"
 
-#: src/preferences_display.cpp:1084
+#: src/preferences_display.cpp:1245
 msgid "Save Hotkeys"
 msgstr "Сохранить"
 
-#: src/preferences_display.cpp:1131
+#: src/preferences_display.cpp:1292
 msgid "This Hotkey is already in use."
 msgstr "Данная горячая клавиша уже используется."
 
-#: src/preferences_display.cpp:1164
+#: src/preferences_display.cpp:1325
 msgid "Saved Theme Preference: "
 msgstr "Сохраненные настройки темы:"
 
-#: src/preferences_display.cpp:1170
+#: src/preferences_display.cpp:1331
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Новая тема будет задействована при следующей новой или загруженной игре."
 
-#: src/preferences_display.cpp:1174
+#: src/preferences_display.cpp:1335
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
@@ -849,3 +916,6 @@ msgstr "Ошибка"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "кб"
+
+#~ msgid "User Define"
+#~ msgstr "Определено пользователем"
