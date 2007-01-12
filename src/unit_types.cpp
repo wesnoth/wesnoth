@@ -112,18 +112,18 @@ const attack_animation& attack_type::animation(const display& disp, const gamema
 
 bool attack_type::matches_filter(const config& cfg,bool self) const
 {
-	const std::string& filter_range = cfg["range"];
-	const t_string& filter_name = cfg["name"];
-	const std::string& filter_type = cfg["type"];
-	const std::string& filter_special = cfg["special"];
+	const std::vector<std::string>& filter_range = utils::split(cfg["range"]);
+	const std::vector<std::string> filter_name = utils::split(cfg["name"]);
+	const std::vector<std::string> filter_type = utils::split(cfg["type"]);
+	const std::string filter_special = cfg["special"];
 
-	if(filter_range.empty() == false && filter_range != range())
+	if(filter_range.empty() == false && std::find(filter_range.begin(),filter_range.end(),range()) == filter_range.end())
 			return false;
 
-	if(filter_name.empty() == false && filter_name != name())
+	if(filter_name.empty() == false && std::find(filter_name.begin(),filter_name.end(),name()) == filter_name.end())
 		return false;
 
-	if(filter_type.empty() == false && filter_type != type())
+	if(filter_type.empty() == false && std::find(filter_type.begin(),filter_type.end(),type()) == filter_type.end())
 		return false;
 
 	if(!self && filter_special.empty() == false && !get_special_bool(filter_special,true))

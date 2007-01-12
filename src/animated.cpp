@@ -136,7 +136,7 @@ bool animated<T,T_void_value>::need_update() const
 	if(!started_) {
 		return false;
 	}
-	if(current_ticks >  (unsigned int)(get_current_frame_end_time()/acceleration_+start_tick_)){
+	if(current_ticks >  (int)(get_current_frame_end_time()/acceleration_+start_tick_)){
 		return true;
 	}
 	return false;
@@ -149,7 +149,7 @@ bool animated<T,T_void_value>::animation_would_finish() const
 		return true;
 	if(!started_)
 		return true;
-	if(!cycles_ && (current_ticks >  (unsigned int)(get_end_time()/acceleration_+start_tick_)))
+	if(!cycles_ && (current_ticks >  (int)(get_end_time()/acceleration_+start_tick_)))
 		return true;
 
 	return false;

@@ -991,6 +991,68 @@ namespace {
 const size_t MaxLoop = 1024;
 }
 
+void game_state::get_variable_internal_const(const std::string& key, const config& cfg,
+		const t_string** varout) const
+{
+	//we get the variable from the [variables] section of the game state. Variables may
+	//be in the format
+	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
+	if(itor != key.end()) {
+		std::string element(key.begin(),itor);
+		std::string sub_key(itor+1,key.end());
+
+		size_t index = 0;
+		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
+		const bool explicit_index = index_start != element.end();
+
+		if(explicit_index) {
+			const std::string::iterator index_end = std::find(index_start,element.end(),']');
+			const std::string index_str(index_start+1,index_end);
+			index = size_t(atoi(index_str.c_str()));
+			if(index > MaxLoop) {
+				LOG_NG << "get_variable_internal: index greater than " << MaxLoop
+				       << ", truncated\n";
+				index = MaxLoop;
+			}
+
+			element = std::string(element.begin(),index_start);
+		}
+
+		const config::child_list& items = cfg.get_children(element);
+
+		//special case -- '.length' on an array returns the size of the array
+		if(explicit_index == false && sub_key == "length") {
+			if(items.empty()) {
+				if(varout != NULL) {
+					static t_string zero_str = "";
+					*varout = &zero_str;
+				}
+			} else {
+				int size = minimum<int>(MaxLoop,int(items.size()));
+				(*items.back())["__length"] = lexical_cast<std::string>(size);
+
+				if(varout != NULL) {
+					*varout = &(*items.back())["__length"];
+				}
+			}
+
+			return;
+		}
+
+		if(cfg.get_children(element).size() <= index) {
+			static t_string empty_str = "";
+			*varout = &empty_str;
+			return;
+		}
+
+
+		get_variable_internal_const(sub_key,*cfg.get_children(element)[index],varout);
+	} else {
+		if(varout != NULL) {
+			*varout = &cfg[key];
+		}
+	}
+}
 void game_state::get_variable_internal(const std::string& key, config& cfg,
 		t_string** varout, config** cfgout)
 {
@@ -1024,7 +1086,7 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 		if(explicit_index == false && sub_key == "length") {
 			if(items.empty()) {
 				if(varout != NULL) {
-					static t_string zero_str = "0";
+					static t_string zero_str = "";
 					*varout = &zero_str;
 				}
 			} else {
@@ -1068,9 +1130,16 @@ t_string& game_state::get_variable(const std::string& key)
 	return empty_string;
 }
 
-const t_string& game_state::get_variable_const(const std::string& key)
+const t_string& game_state::get_variable_const(const std::string& key) const
 {
-	return get_variable(key);
+	const t_string* res = NULL;
+	get_variable_internal_const(key, variables, &res);
+	if(res != NULL) {
+		return *res;
+	}
+
+	static t_string empty_string;
+	return empty_string;
 }
 
 config& game_state::get_variable_cfg(const std::string& key)

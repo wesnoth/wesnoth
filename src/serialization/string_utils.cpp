@@ -34,7 +34,7 @@ namespace {
 
 bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 
-std::string do_interpolation(const std::string &str, variable_set& set)
+std::string do_interpolation(const std::string &str, const variable_set& set)
 {
 	std::string res = str;
 	//this needs to be able to store negative numbers to check for the while's condition
@@ -297,7 +297,7 @@ class string_map_variable_set : public variable_set
 public:
 	string_map_variable_set(const string_map& map) : map_(map) {};
 
-	virtual const t_string& get_variable_const(const std::string& key)
+	virtual const t_string& get_variable_const (const std::string& key) const
 	{
 		static const t_string empty_string = "";
 
@@ -319,7 +319,7 @@ std::string interpolate_variables_into_string(const std::string &str, const stri
 	return do_interpolation(str, set);
 }
 
-std::string interpolate_variables_into_string(const std::string &str, variable_set& variables)
+std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables)
 {
 	return do_interpolation(str, variables);
 }

@@ -98,45 +98,44 @@ vconfig vconfig::child(const std::string& key) const
 	return tmp;
 }
 
-const t_string vconfig::operator[](const std::string& key) const
+const t_string &vconfig::operator[](const std::string& key) const
 {
 	return expand(key);
 }
 
-const t_string vconfig::expand(const std::string& key) const
+const t_string &vconfig::expand(const std::string& key) const
 {
 	const t_string& val = (*cfg_)[key];
 
 	if(!val.str().empty() && val.str()[0] == '$') {
-		std::string tmp = val.str();
-		// stupid const
-		config grr = local_vars_;
-		// first expand local variables
-		tmp = utils::interpolate_variables_into_string(val.str(),grr);
-		if(tmp.empty()) tmp = val.str();
-		// now expand global variables
-		if(repos != NULL && !tmp.empty() && tmp[0] == '$') {
-			tmp =  repos->get_variable(tmp.substr(1));
-			if(tmp.empty()) tmp = val.str();
+		// we didn't find the variable in global, look in local
+		const t_string &tmp = local_vars_.get_variable_const(val.str().substr(1));
+		if(!tmp.str().empty()) {
+			return tmp;
 		}
-		return tmp;
-	} else {
-		return val;
+		// now expand global variables
+		if(repos != NULL ) {
+			const t_string &tmp2 =  repos->get_variable_const(val.str().substr(1));
+			if(!tmp2.str().empty()) {
+				return tmp2;
+			}
+		}
 	}
+	return val;
 }
 
-const t_string vconfig::get_attribute(const std::string& key) const
+const t_string &vconfig::get_attribute(const std::string& key) const
 {
 	return (*cfg_)[key];
 }
 
 void vconfig::add_local_var(std::string var_name, config& var)
 {
-	local_vars_.add_child(var_name,var);
+	local_vars_.variables.add_child(var_name,var);
 }
 void vconfig::rem_local_var(std::string var_name)
 {
-	local_vars_.clear_children(var_name);
+	local_vars_.variables.clear_children(var_name);
 }
 namespace variable
 {

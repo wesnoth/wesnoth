@@ -19,8 +19,8 @@
 #include <vector>
 
 #include "config.hpp"
+#include "gamestatus.hpp"
 class t_string;
-struct game_state;
 
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves
@@ -43,15 +43,15 @@ public:
 	child_list get_children(const std::string& key) const;
 	vconfig child(const std::string& key) const;
 
-	const t_string operator[](const std::string&) const;
-	const t_string expand(const std::string&) const; /** < Synonym for operator[] */
-	const t_string get_attribute(const std::string&) const;
+	const t_string& operator[](const std::string&) const;
+	const t_string& expand(const std::string&) const; /** < Synonym for operator[] */
+	const t_string& get_attribute(const std::string&) const;
 	void add_local_var(std::string var_name, config& var);
 	void rem_local_var(std::string var_name);
 
 private:
 	const config* cfg_;
-	config local_vars_;
+	game_state local_vars_;
 };
 
 namespace variable

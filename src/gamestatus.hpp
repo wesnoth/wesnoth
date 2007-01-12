@@ -84,7 +84,7 @@ public:
 
 	//Variable access
 	t_string& get_variable(const std::string& varname);
-	virtual const t_string& get_variable_const(const std::string& varname);
+	virtual const t_string& get_variable_const(const std::string& varname)const ;
 
 	config& get_variable_cfg(const std::string& varname);
 	void set_variable(const std::string& varname, const t_string& value);
@@ -108,6 +108,8 @@ public:
 private:
 	void get_variable_internal(const std::string& key, config& cfg,
 			t_string** varout, config** cfgout);
+	void get_variable_internal_const(const std::string& key, const config& cfg,
+			const t_string** varout) const;
 };
 
 //class which contains the global status of the game -- namely
