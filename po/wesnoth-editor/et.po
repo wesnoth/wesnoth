@@ -1,16 +1,16 @@
-# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Estonian translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
+# Copyright (C) 2005-2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
+# Mart Tõnso, 2006
+# Priit Laes, 2007
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-29 01:32+0200\n"
-"PO-Revision-Date: 2005-05-07 12:50+0300\n"
-"Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
+"PO-Revision-Date: 2007-01-14 16:29+0200\n"
+"Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,49 +31,47 @@ msgstr ""
 
 #: src/editor/editor.cpp:163
 msgid "Draw tiles"
-msgstr ""
+msgstr "Joonista plaate"
 
 #: src/editor/editor.cpp:165
-#, fuzzy
 msgid "Fill"
-msgstr "Fail"
+msgstr "Täida"
 
 #: src/editor/editor.cpp:167
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Määra kasutaja alustamiskoht"
 
 #: src/editor/editor.cpp:169
 msgid "Zoom in"
-msgstr ""
+msgstr "Suurenda"
 
 #: src/editor/editor.cpp:171
 msgid "Zoom out"
-msgstr ""
+msgstr "Vähenda"
 
 #: src/editor/editor.cpp:173
 msgid "Undo"
-msgstr ""
+msgstr "Taasta"
 
 #: src/editor/editor.cpp:175
 msgid "Redo"
-msgstr ""
+msgstr "Uuesti"
 
 #: src/editor/editor.cpp:177
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Vaikimisi suurendus"
 
 #: src/editor/editor.cpp:179
 msgid "Toggle grid"
-msgstr ""
+msgstr "Ruudustiku näitamine"
 
 #: src/editor/editor.cpp:181
-#, fuzzy
 msgid "Resize the map"
 msgstr "Muuda kaardi mõõtmeid"
 
 #: src/editor/editor.cpp:183
 msgid "Flip map"
-msgstr ""
+msgstr "Pööra kaarti"
 
 #: src/editor/editor.cpp:381
 msgid "Language"
@@ -81,11 +79,11 @@ msgstr "Keel"
 
 #: src/editor/editor.cpp:382
 msgid "Choose your preferred language:"
-msgstr "Vali endale sobiv keel:"
+msgstr "Vali eelistatud keel:"
 
 #: src/editor/editor.cpp:396 src/editor/editor_main.cpp:252
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Battle for Wesnothi kaardiredaktor"
 
 #: src/editor/editor.cpp:420
 msgid "Save the Map As"
@@ -93,7 +91,7 @@ msgstr "Salvesta kaart kui"
 
 #: src/editor/editor.cpp:431
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Kaart on juba olemas. Kas sa tahad selle üle kirjutada?"
+msgstr "Kaart on juba olemas. Kas soovid selle üle kirjutada?"
 
 #: src/editor/editor.cpp:454 src/editor/editor.cpp:1248
 msgid "Player"
@@ -105,17 +103,19 @@ msgstr "Milline mängija?"
 
 #: src/editor/editor.cpp:458
 msgid "Which player should start here?"
-msgstr "Milline mängija siit alustama peaks?"
+msgstr "Milline mängija peaks siit alustama?"
 
 #: src/editor/editor.cpp:509
 msgid "Choose a Map to Load"
-msgstr "Vali milline kaart laadida"
+msgstr "Vali laaditav kaart"
 
 #: src/editor/editor.cpp:513
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
+"Hoiatus: Kaardi nimest leiti keelatud sümboleid. Palun salvesta teistsuguse "
+"nimega."
 
 #: src/editor/editor.cpp:531 src/editor/editor.cpp:610
 msgid "The file does not contain a valid map."
@@ -151,7 +151,7 @@ msgstr "Ei saa kaarti salvestada: $msg"
 
 #: src/editor/editor.cpp:1192
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Viga: Lubamatu sümbol failinimes."
 
 #: src/editor/editor_palettes.cpp:319
 msgid "FG"
