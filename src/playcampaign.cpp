@@ -67,6 +67,7 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 	config starting_pos;
 
 	recorder.set_save_info(state);
+	/*
 	if (state.snapshot.child("side") != NULL){
 		state = read_game(units_data, &state.snapshot);
 	}
@@ -87,6 +88,9 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	}
+	*/
+	starting_pos = state.starting_pos;
+	scenario = &starting_pos;
 
 	controller_map controllers;
 

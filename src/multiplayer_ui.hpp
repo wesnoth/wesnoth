@@ -39,7 +39,7 @@ enum controller { CNTR_NETWORK = 0, CNTR_LOCAL, CNTR_COMPUTER, CNTR_EMPTY, CNTR_
 
 void check_response(network::connection res, const config& data);
 
-void level_to_gamestate(config& level, game_state& state);
+void level_to_gamestate(config& level, game_state& state, bool saved_game = false);
 
 std::string get_colour_string(int id);
 
