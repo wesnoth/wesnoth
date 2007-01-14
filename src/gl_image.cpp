@@ -135,23 +135,37 @@ void image::set(SDL_Surface* surf)
 
 void image::draw(int x, int y, unsigned int w, unsigned int h,
                  GLfloat red, GLfloat green,
-				 GLfloat blue,GLfloat alpha) const
+				 GLfloat blue,GLfloat alpha,
+				 ORIENTATION orient, VFLIP vflip) const
 {
 	if(!id_) {
 		return;
+	}
+
+	GLfloat left = left_;
+	GLfloat right = right_;
+	GLfloat top = top_;
+	GLfloat bot = bot_;
+
+	if(orient == REVERSE_ORIENTATION) {
+		std::swap(left,right);
+	}
+
+	if(vflip == UPSIDE_DOWN) {
+		std::swap(top,bot);
 	}
 
 	glBindTexture(GL_TEXTURE_2D,id_);
 
 	glBegin(GL_QUADS);
 	glColor4f(red,green,blue,alpha);
-	glTexCoord2f(left_,top_);
+	glTexCoord2f(left,top);
 	glVertex3i(x,y,0);
-	glTexCoord2f(right_,top_);
+	glTexCoord2f(right,top);
 	glVertex3i(x+w,y,0);
-	glTexCoord2f(right_,bot_);
+	glTexCoord2f(right,bot);
 	glVertex3i(x+w,y+h,0);
-	glTexCoord2f(left_,bot_);
+	glTexCoord2f(left,bot);
 	glVertex3i(x,y+h,0);
 	glEnd();
 }

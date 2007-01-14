@@ -26,7 +26,9 @@ public:
 
 	void draw(int x, int y, unsigned int w, unsigned int h,
 	          GLfloat red, GLfloat green,
-			  GLfloat blue, GLfloat alpha) const;
+			  GLfloat blue, GLfloat alpha,
+			  ORIENTATION o=NORMAL_ORIENTATION,
+			  VFLIP vflip=RIGHT_SIDE_UP) const;
 	void draw(int x, int y, ORIENTATION o=NORMAL_ORIENTATION,
 	          ::image::TYPE type=::image::SCALED,
 			  const time_of_day* tod=0) const;
