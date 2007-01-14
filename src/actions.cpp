@@ -589,7 +589,6 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 			swarm_min = swarm_specials.highest("attacks_min").first;
 			swarm_max = swarm_specials.highest("attacks_max", weapon->num_attacks()).first;
 			num_blows = swarm_min + (swarm_max - swarm_min) * hp / max_hp;
-				if (num_blows < 1) num_blows = 1;
 		} else {
 			swarm = false;
 			num_blows = weapon->num_attacks();
