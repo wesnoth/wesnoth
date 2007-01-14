@@ -94,7 +94,7 @@ private:
 
 	//make it so that only one textbox object can be receiving
 	//events at a time.
-	bool requires_event_focus() const { return editable_; }
+	bool requires_event_focus(const SDL_Event *event=NULL) const;
 
 	bool show_scrollbar() const;
 };

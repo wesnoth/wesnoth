@@ -1009,11 +1009,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			//otherwise get the random value from the replay data
 			else {
 				const config* const action = get_replay_source().get_next_action();
-				if(action == NULL || action->get_children("random").empty()) {
+				if(action == NULL || action->get_children("random_number").empty()) {
 					replay::throw_error("choice expected but none found\n");
 				}
 
-				const std::string& val = (*(action->get_children("random").front()))["value"];
+				const std::string& val = (*(action->get_children("random_number").front()))["value"];
 				random_value = val;
 			}
 			var = random_value;

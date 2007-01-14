@@ -42,7 +42,7 @@ void check_response(network::connection res, const config& data)
 	}
 }
 
-void level_to_gamestate(config& level, game_state& state)
+void level_to_gamestate(config& level, game_state& state, bool saved_game)
 {
 	//any replay data is only temporary and should be removed from
 	//the level data in case we want to save the game later
@@ -60,13 +60,23 @@ void level_to_gamestate(config& level, game_state& state)
 	}
 
 	//adds the starting pos to the level
-	if(level.child("replay_start") == NULL)
-		level.add_child("replay_start") = level;
+	if(level.child("replay_start") == NULL){
+		level.add_child("replay_start", level);
+	}
+	//this is important, if it does not happen, the starting position is missing and
+	//will be drawn from the snapshot instead (which is not what we want since we have
+	//all needed information here already)
+	state.starting_pos = *(level.child("replay_start"));
 
 	level["campaign_type"] = "multiplayer";
 	state.campaign_type = "multiplayer";
-	state.snapshot = level;
+	state.version = level["version"];
 
+	//If we start a fresh game, there won't be any snapshot information. If however this
+	//is a savegame, we got a valid snapshot here.
+	if (saved_game){
+		state.snapshot = *(level.child("snapshot"));
+	}
 }
 
 std::string get_colour_string(int id)
