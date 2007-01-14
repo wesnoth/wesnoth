@@ -529,15 +529,48 @@ void menu::key_press(SDLKey key)
 		set_selection_pos(key - SDLK_1);
 }
 
+bool menu::requires_event_focus(const SDL_Event* event) const
+{
+	if(!focus_ || height() == 0 || hidden()) {
+		return false;
+	}
+	if(event == NULL) {
+		//when event is not specified, signal that focus may be desired later
+		return true;
+	}
+
+	if(event->type == SDL_KEYDOWN) {
+		SDLKey key = event->key.keysym.sym;
+		if (!click_selects_) {
+			switch(key) {
+			case SDLK_UP:
+			case SDLK_DOWN:
+			case SDLK_PAGEUP:
+			case SDLK_PAGEDOWN:
+			case SDLK_HOME:
+			case SDLK_END:
+				return true;
+			default:
+				break;
+			}
+		}
+		if (num_selects_ && key >= SDLK_1 && key <= SDLK_9) {
+			return true;
+		}
+	}
+	//mouse events are processed regardless of focus
+	return false;
+}
+
 void menu::handle_event(const SDL_Event& event)
 {
 	scrollarea::handle_event(event);
-	if (hidden())
+	if (height()==0 || hidden())
 		return;
 
 	if(event.type == SDL_KEYDOWN) {
 		// Only pass key events if we have the focus
-		if (focus())
+		if (focus(&event))
 			key_press(event.key.keysym.sym);
 	} else if(event.type == SDL_MOUSEBUTTONDOWN &&
 	          event.button.button == SDL_BUTTON_LEFT ||

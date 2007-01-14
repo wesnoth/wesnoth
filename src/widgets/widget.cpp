@@ -136,9 +136,9 @@ void widget::set_focus(bool focus)
 	set_dirty(true);
 }
 
-bool widget::focus() const
+bool widget::focus(const SDL_Event* event)
 {
-	return events::has_focus(this) && focus_;
+	return events::has_focus(this, event) && focus_;
 }
 
 void widget::hide(bool value)

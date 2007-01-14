@@ -136,7 +136,7 @@ void textbox::draw_contents()
 
 	surface surf = video().getSurface();
 	draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
-				    focus() ? alpha_focus_ : alpha_, surf);
+				    focus(NULL) ? alpha_focus_ : alpha_, surf);
 
 	SDL_Rect src;
 
@@ -191,7 +191,7 @@ void textbox::draw_contents()
 void textbox::process()
 {
 	if(editable_) {
-		if(focus()) {
+		if(focus(NULL)) {
 			const int ticks = SDL_GetTicks();
 			if(ticks > show_cursor_at_+500) {
 				show_cursor_ = !show_cursor_;
@@ -361,9 +361,19 @@ namespace {
 		;
 }
 
+bool textbox::requires_event_focus(const SDL_Event* event) const
+{
+	if(!focus_ || !editable_ || hidden()) {
+		return false;
+	}
+	return (event==NULL || event->type == SDL_KEYDOWN);
+}
+
 void textbox::handle_event(const SDL_Event& event)
 {
 	scrollarea::handle_event(event);
+	if(hidden())
+		return;
 
 	bool changed = false;
 
@@ -384,10 +394,13 @@ void textbox::handle_event(const SDL_Event& event)
 	}
 
 	SDL_Rect const &loc = inner_location();
-
-	if ((grabmouse_ && (event.type == SDL_MOUSEMOTION)) ||
-	    (event.type == SDL_MOUSEBUTTONDOWN && (mousebuttons & SDL_BUTTON(1)) &&
-	     point_in_rect(mousex, mousey, loc))) {
+	bool clicked_inside = (event.type == SDL_MOUSEBUTTONDOWN
+					   && (mousebuttons & SDL_BUTTON(1))
+					   && point_in_rect(mousex, mousey, loc));
+	if(clicked_inside) {
+		set_focus(true);
+	}
+	if ((grabmouse_ && (event.type == SDL_MOUSEMOTION)) || clicked_inside) {
 		const int x = mousex - loc.x + text_pos_;
 		const int y = mousey - loc.y;
 		int pos = 0;
@@ -429,14 +442,14 @@ void textbox::handle_event(const SDL_Event& event)
 
 	//if we don't have the focus, then see if we gain the focus,
 	//otherwise return
-	if(focus() == false) {
+	if(focus(&event) == false) {
 		if (event.type == SDL_MOUSEMOTION && point_in_rect(mousex, mousey, loc))
 			events::focus_handler(this);
 
 		return;
 	}
 
-	if(event.type != SDL_KEYDOWN || focus() != true) {
+	if(event.type != SDL_KEYDOWN || focus(&event) != true) {
 		draw();
 		return;
 	}
