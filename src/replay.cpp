@@ -363,7 +363,7 @@ void replay::set_random_value(const std::string& choice)
 	config* const cmd = add_command();
 	config val;
 	val["value"] = choice;
-	cmd->add_child("random",val);
+	cmd->add_child("random_number",val);
 }
 
 void replay::add_label(const terrain_label* label)
