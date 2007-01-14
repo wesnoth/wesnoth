@@ -805,12 +805,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				replay::throw_error(errbuf.str());
 			}
 
-			bool old_replay = false;
-			float version = atof(state_of_game.version.substr(0, 3).c_str());
-			if (version < 1.1){
-				old_replay = true;
-			}
-			unit new_unit(&gameinfo,&units,&map,&state,&teams,&(u_type->second),team_num,true, old_replay);
+			unit new_unit(&gameinfo,&units,&map,&state,&teams,&(u_type->second),team_num,true, false);
 			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc);
 			if(!res.empty()) {
 				std::stringstream errbuf;
