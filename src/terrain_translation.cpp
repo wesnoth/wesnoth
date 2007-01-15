@@ -276,7 +276,6 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	
 	// did we get an empty map?
 	if((offset + 1) >= str.length()) {
-		WRN_G << "Empty map found\n";
 		return result;
 	}
 		
@@ -612,19 +611,7 @@ t_letter cast_to_builder_number(const t_letter terrain)
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 void add_translation(const std::string& str, const t_letter number)
 {
-	// we translate the terrain manual since the helper functions use the 
-	// translation table and give chicken and egg problem
-	const TERRAIN_LETTER letter = str[0];
-	std::map<TERRAIN_LETTER, t_letter>::iterator index = lookup_table_.find(letter);
-	
-	if(index == lookup_table_.end()) {
-		// add new item
-		lookup_table_.insert(std::pair<TERRAIN_LETTER, t_letter>(letter, number));
-	} else {
-		// replace existing item
-		WRN_G << "Old terrain letter " << letter <<" is redefined.\n";
-		index->second = number;
-	}
+	lookup_table_[str[0]] = number;
 }
 
 std::string get_old_letter(const t_letter number) 
@@ -879,9 +866,10 @@ t_letter string_to_number_(std::string str, int& start_position)
 		result += c;
 	}
 
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
+#ifndef TERRAIN_TRANSLATION_COMPATIBLE 
 	if(result == OBSOLETE_KEEP) {
-		ERR_G << "Using _K for a keep is deappricated\n";
+		ERR_G << "Using _K for a keep is deappricated, support will be removed shortly\n";
+		result = HUMAN_KEEP;
 	}
 #endif
 	
