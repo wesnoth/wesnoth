@@ -46,7 +46,7 @@ public:
 	virtual void volatile_draw() {}
 	virtual void volatile_undraw() {}
 
-	virtual bool requires_event_focus() const { return false; }
+	virtual bool requires_event_focus(const SDL_Event *event=NULL) const { return false; }
 
 	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
 
@@ -66,7 +66,7 @@ private:
 void focus_handler(const handler* ptr);
 void cycle_focus();
 
-bool has_focus(const handler* ptr);
+bool has_focus(const handler* ptr, const SDL_Event* event);
 
 //event_context objects control the handler objects that SDL events are sent
 //to. When an event_context is created, it will become the current event context.

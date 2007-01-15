@@ -194,7 +194,7 @@ protected:
 	void handle_event(const SDL_Event& event);
 	void set_inner_location(const SDL_Rect& rect);
 
-	bool requires_event_focus() const { return true; };
+	bool requires_event_focus(const SDL_Event *event=NULL) const;
 	const std::vector<int>& column_widths() const;
 	virtual void draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 

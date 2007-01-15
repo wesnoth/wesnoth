@@ -192,9 +192,33 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 	set_slider_position(event.x);
 }
 
+bool slider::requires_event_focus(const SDL_Event* event) const
+{
+	if(!focus_ || !enabled() || hidden()) {
+		return false;
+	}
+	if(event == NULL) {
+		//when event is not specified, signal that focus may be desired later
+		return true;
+	}
+
+	if(event->type == SDL_KEYDOWN) {
+		SDLKey key = event->key.keysym.sym;
+		switch(key) {
+		case SDLK_LEFT:
+		case SDLK_RIGHT:
+			return true;
+		default:
+			break;
+		}
+	}
+	//mouse events are processed regardless of focus
+	return false;
+}
+
 void slider::handle_event(const SDL_Event& event)
 {
-	if (hidden() || !enabled())
+	if (!enabled() || hidden())
 		return;
 
 	STATE start_state = state_;
@@ -210,7 +234,7 @@ void slider::handle_event(const SDL_Event& event)
 		mouse_motion(event.motion);
 		break;
 	case SDL_KEYDOWN:
-		if(focus()) {
+		if(focus(&event)) {
 			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 			const int c = key.sym;
 			if(c == SDLK_LEFT) {

@@ -43,7 +43,8 @@ public:
 	unsigned height() const;
 	ALIGN align() const;
 
-	virtual bool focus() const;
+	//focus() may gain the focus if the currently focused handler doesn't require this event
+	bool focus(const SDL_Event* event);
 	void set_focus(bool focus);
 
 	virtual void hide(bool value = true);
@@ -85,13 +86,14 @@ protected:
 
 	CVideo& video() const { return *video_; };
 
-	virtual void handle_event(SDL_Event const &/*event*/) {}
-
 	virtual void draw();
 	virtual void draw_contents() {};
 	virtual void update_location(SDL_Rect const &rect);
 
 	const SDL_Rect* clip_rect() const;
+
+	virtual void handle_event(SDL_Event const &/*event*/) {}
+	bool focus_;		// Should user input be ignored?
 
 private:
 	void volatile_draw();
@@ -102,7 +104,6 @@ private:
 	CVideo* video_;
 	std::vector< surface_restorer > restorer_;
 	SDL_Rect rect_;
-	bool focus_;		// Should user input be ignored?
 	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?
 
 	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;
