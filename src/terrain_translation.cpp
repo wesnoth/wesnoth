@@ -299,7 +299,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 				starting_positions[starting_position].y = y;
 			} else {
 				// add new position
-				struct coordinate coord = {x, y};
+				const struct coordinate coord = {x, y};
 				starting_positions.insert(std::pair<int, coordinate>(starting_position, coord));
 			}
 		} 
