@@ -67,28 +67,6 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 	config starting_pos;
 
 	recorder.set_save_info(state);
-	/*
-	if (state.snapshot.child("side") != NULL){
-		state = read_game(units_data, &state.snapshot);
-	}
-
-	//see if we load the scenario from the scenario data -- if there is
-	//no snapshot data available from a save, or if the user has selected
-	//to view the replay from scratch
-	if(!recorder.at_end()) {
-		//if the starting state is specified, then use that,
-		//otherwise get the scenario data and start from there.
-		if(state.starting_pos.empty() == false) {
-			LOG_G << "loading starting position...\n";
-			starting_pos = state.starting_pos;
-			scenario = &starting_pos;
-		} else {
-			LOG_G << "loading scenario: '" << state.scenario << "'\n";
-			scenario = game_config.find_child(type,"id",state.scenario);
-			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
-		}
-	}
-	*/
 	starting_pos = state.starting_pos;
 	scenario = &starting_pos;
 
@@ -161,11 +139,10 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
+		//This game was started from a savegame
 		LOG_G << "loading snapshot...\n";
-		//load from a save-snapshot.
-		starting_pos = state.snapshot;
-		scenario = &starting_pos;
-		state = read_game(units_data, &state.snapshot);
+		starting_pos = state.starting_pos;
+		scenario = &state.snapshot;
 	}
 
 	controller_map controllers;
