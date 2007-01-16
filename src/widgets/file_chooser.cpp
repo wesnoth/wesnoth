@@ -147,9 +147,6 @@ void file_chooser::process_event() {
 		// case so this is done explicitly here.
 		filename_textbox_.set_focus(true);
 	}
-	else {
-		filename_textbox_.set_focus(false);
-	}
 	if (!filename_textbox_.focus(NULL)) {
 		file_list_.process();
 		const int new_selection = file_list_.selection();
