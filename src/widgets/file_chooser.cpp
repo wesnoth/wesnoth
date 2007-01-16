@@ -150,7 +150,7 @@ void file_chooser::process_event() {
 	else {
 		filename_textbox_.set_focus(false);
 	}
-	if (!filename_textbox_.focus()) {
+	if (!filename_textbox_.focus(NULL)) {
 		file_list_.process();
 		const int new_selection = file_list_.selection();
 		const bool double_click = file_list_.double_clicked();
@@ -340,7 +340,7 @@ void file_chooser::update_file_lists() {
 void file_chooser::handle_event(const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 		if (event.key.keysym.sym == SDLK_RETURN) {
-			if (filename_textbox_.focus()) {
+			if (filename_textbox_.focus(&event)) {
 				chosen_file_ = filename_textbox_.text();
 				choice_made_ = true;
 			}
