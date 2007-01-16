@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:40+0100\n"
+"POT-Creation-Date: 2007-01-16 21:26+0100\n"
 "PO-Revision-Date: 2006-09-01 19:29+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -22,13 +22,14 @@ msgstr "tätä tuskin tarvitsee kääntää"
 msgid "Wesnoth Tutorial"
 msgstr "Wesnoth Tutoriaali"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:257
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
 #: data/tutorial/scenarios/1_Tutorial.cfg:149
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
+#: data/tutorial/scenarios/2_Tutorial.cfg:257
 msgid "Konrad"
 msgstr "Konrad"
 
+#: data/tutorial/units/Quintain.cfg:4
 #: data/tutorial/scenarios/1_Tutorial.cfg:80
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Quintain"
@@ -64,10 +65,10 @@ msgstr "Tapata itsesi"
 msgid "Who would you like to play?"
 msgstr "Millä hahmolla haluaisit pelata?"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:329
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
 #: data/tutorial/scenarios/1_Tutorial.cfg:174
+#: data/tutorial/scenarios/2_Tutorial.cfg:329
 msgid "Li'sar"
 msgstr "Li'sar"
 
@@ -295,8 +296,8 @@ msgstr "Paina 'Lopeta Vuoro' nappia ruudun oikeassa alakulmassa"
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
 msgstr "Ai! Minä tarvitsen parannusta! Vain $student_hp EP jäljellä!"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:409
 #: data/tutorial/scenarios/1_Tutorial.cfg:486
+#: data/tutorial/scenarios/2_Tutorial.cfg:409
 msgid "Village"
 msgstr "Kylä"
 
@@ -352,8 +353,8 @@ msgstr ""
 msgid "I'll recruit some elves!"
 msgstr "Värvään haltioita!"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:934
 #: data/tutorial/scenarios/1_Tutorial.cfg:564
+#: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Keep"
 msgstr "Linnake"
 
@@ -1512,6 +1513,80 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1559
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Sinulla kesti liian pitkään. Emme pääse koskaan eroon näistä örkeistä!"
+
+#: data/tutorial/units/Elder_Mage.cfg:4
+msgid "Elder Mage"
+msgstr "Vanhempi velho"
+
+#: data/tutorial/units/Elder_Mage.cfg:30
+msgid ""
+"Once great, Elder Magi have seen their power a little diminished from "
+"wearying years of battle. Nevertheless they remain feared on the battlefield "
+"on account of their powerful lightning bolts."
+msgstr ""
+"Muinoin mahtavien vanhempien velhojen voima on vähentynyt vuosien "
+"taistelujen jälkeen. Kuitenkin heitä edelleen pelätään taistelukentillä "
+"heidän mahtavien salamoidensa takia."
+
+#: data/tutorial/units/Elder_Mage.cfg:32 data/tutorial/units/Elder_Mage.cfg:33
+msgid "staff"
+msgstr "sauva"
+
+#: data/tutorial/units/Elder_Mage.cfg:35 data/tutorial/units/Quintain.cfg:25
+msgid "impact"
+msgstr "murskaus"
+
+#: data/tutorial/units/Elder_Mage.cfg:109
+#: data/tutorial/units/Elder_Mage.cfg:110
+msgid "lightning"
+msgstr "salama"
+
+#: data/tutorial/units/Elder_Mage.cfg:112
+msgid "fire"
+msgstr "tuli"
+
+#: data/tutorial/units/Fighter.cfg:4
+msgid "Fighter"
+msgstr "Soturi"
+
+#: data/tutorial/units/Fighteress.cfg:23 data/tutorial/units/Fighter.cfg:17
+msgid ""
+"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
+"from enemies. However they have the potential to become great warriors one "
+"day."
+msgstr ""
+"Nuoret ja röyhkeät soturit taistelevat miekalla ja ovat haavoittuvaisia "
+"hyökkäyksiä vastaan. Jonain päivänä heistä voi kuitenkin kasvaa suuria "
+"johtajia."
+
+#: data/tutorial/units/Fighter.cfg:21 data/tutorial/units/Fighter.cfg:22
+msgid "sword"
+msgstr "miekka"
+
+#: data/tutorial/units/Fighteress.cfg:30 data/tutorial/units/Fighter.cfg:24
+msgid "blade"
+msgstr "viilto"
+
+#: data/tutorial/units/Fighteress.cfg:4
+msgid "female^Fighter"
+msgstr "Soturi"
+
+#: data/tutorial/units/Fighteress.cfg:27 data/tutorial/units/Fighteress.cfg:28
+msgid "sabre"
+msgstr "säilä"
+
+#: data/tutorial/units/Quintain.cfg:14
+msgid ""
+"Quintains are used to practice swordplay and jousting on.  It would be "
+"extremely unusual to be attacked by one."
+msgstr ""
+"Harjoittelunukkeja käytetään miekkailun ja kaksintaistelun "
+"harjoittelemiseen. Olisi erittäin epätodennäköistä, että sellainen hyökkäisi "
+"kimppuun."
+
+#: data/tutorial/units/Quintain.cfg:21 data/tutorial/units/Quintain.cfg:22
+msgid "flail"
+msgstr "huitaisu"
 
 #~ msgid "Click on $student"
 #~ msgstr "Paina $student|ia"

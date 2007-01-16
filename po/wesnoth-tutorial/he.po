@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:40+0100\n"
+"POT-Creation-Date: 2007-01-16 21:26+0100\n"
 "PO-Revision-Date: 2006-03-08 23:56+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -25,13 +25,14 @@ msgstr ""
 msgid "Wesnoth Tutorial"
 msgstr ""
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:257
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
 #: data/tutorial/scenarios/1_Tutorial.cfg:149
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
+#: data/tutorial/scenarios/2_Tutorial.cfg:257
 msgid "Konrad"
 msgstr "קונרד"
 
+#: data/tutorial/units/Quintain.cfg:4
 #: data/tutorial/scenarios/1_Tutorial.cfg:80
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Quintain"
@@ -62,10 +63,10 @@ msgstr ""
 msgid "Who would you like to play?"
 msgstr ""
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:329
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
 #: data/tutorial/scenarios/1_Tutorial.cfg:174
+#: data/tutorial/scenarios/2_Tutorial.cfg:329
 msgid "Li'sar"
 msgstr ""
 
@@ -258,10 +259,10 @@ msgstr ""
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
 msgstr ""
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:409
 #: data/tutorial/scenarios/1_Tutorial.cfg:486
+#: data/tutorial/scenarios/2_Tutorial.cfg:409
 msgid "Village"
-msgstr ""
+msgstr "כפר"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:490
 msgid ""
@@ -304,10 +305,10 @@ msgstr ""
 msgid "I'll recruit some elves!"
 msgstr ""
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:934
 #: data/tutorial/scenarios/1_Tutorial.cfg:564
+#: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Keep"
-msgstr ""
+msgstr "מצודה"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:568
 msgid ""
@@ -746,9 +747,8 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:505
 #: data/tutorial/scenarios/2_Tutorial.cfg:782
 #: data/tutorial/scenarios/2_Tutorial.cfg:825
-#, fuzzy
 msgid "Elvish Fighter"
-msgstr "כמה רחוק יכול הלוחם האלפי שלי לזוז?"
+msgstr "לוחם אלפי"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:506
 #, fuzzy
@@ -1216,6 +1216,75 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1559
 msgid "You took too long, we'll never be rid of these Orcs!"
+msgstr ""
+
+#: data/tutorial/units/Elder_Mage.cfg:4
+msgid "Elder Mage"
+msgstr "זקן קוסמים"
+
+#: data/tutorial/units/Elder_Mage.cfg:30
+msgid ""
+"Once great, Elder Magi have seen their power a little diminished from "
+"wearying years of battle. Nevertheless they remain feared on the battlefield "
+"on account of their powerful lightning bolts."
+msgstr ""
+"פעם אדירים, זקני הקוסמים ראו את כוחם נחלש קלות משנים שוחקות של קרבות. למרות "
+"זאת הם נןתרו מטילי אימה בשדה הקרב בזכות חזיזי הברק העוצמתיים שלהם."
+
+#: data/tutorial/units/Elder_Mage.cfg:32 data/tutorial/units/Elder_Mage.cfg:33
+msgid "staff"
+msgstr "מקל"
+
+#: data/tutorial/units/Elder_Mage.cfg:35 data/tutorial/units/Quintain.cfg:25
+msgid "impact"
+msgstr "מכה"
+
+#: data/tutorial/units/Elder_Mage.cfg:109
+#: data/tutorial/units/Elder_Mage.cfg:110
+msgid "lightning"
+msgstr "ברק"
+
+#: data/tutorial/units/Elder_Mage.cfg:112
+msgid "fire"
+msgstr "אש"
+
+#: data/tutorial/units/Fighter.cfg:4
+msgid "Fighter"
+msgstr "לוחם"
+
+#: data/tutorial/units/Fighteress.cfg:23 data/tutorial/units/Fighter.cfg:17
+msgid ""
+"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
+"from enemies. However they have the potential to become great warriors one "
+"day."
+msgstr ""
+"צעירים ונועזים,לוחמים נלחמים עם חרב, ופגיעים להתקפות מאוייבים. אולם יש להם "
+"את היכולת להפוך, יום אחד, ללוחמים אדירים."
+
+#: data/tutorial/units/Fighter.cfg:21 data/tutorial/units/Fighter.cfg:22
+msgid "sword"
+msgstr "חרב"
+
+#: data/tutorial/units/Fighteress.cfg:30 data/tutorial/units/Fighter.cfg:24
+msgid "blade"
+msgstr "להב"
+
+#: data/tutorial/units/Fighteress.cfg:4
+msgid "female^Fighter"
+msgstr ""
+
+#: data/tutorial/units/Fighteress.cfg:27 data/tutorial/units/Fighteress.cfg:28
+msgid "sabre"
+msgstr "סברה"
+
+#: data/tutorial/units/Quintain.cfg:14
+msgid ""
+"Quintains are used to practice swordplay and jousting on.  It would be "
+"extremely unusual to be attacked by one."
+msgstr ""
+
+#: data/tutorial/units/Quintain.cfg:21 data/tutorial/units/Quintain.cfg:22
+msgid "flail"
 msgstr ""
 
 #~ msgid "Basic Training"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:40+0100\n"
+"POT-Creation-Date: 2007-01-16 21:26+0100\n"
 "PO-Revision-Date: 2006-03-18 21:09+0200\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -26,17 +26,18 @@ msgstr ""
 msgid "Wesnoth Tutorial"
 msgstr ""
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:257
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
 #: data/tutorial/scenarios/1_Tutorial.cfg:149
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
+#: data/tutorial/scenarios/2_Tutorial.cfg:257
 msgid "Konrad"
 msgstr ""
 
+#: data/tutorial/units/Quintain.cfg:4
 #: data/tutorial/scenarios/1_Tutorial.cfg:80
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Quintain"
-msgstr ""
+msgstr "Quintain"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:101
 #, fuzzy
@@ -64,10 +65,10 @@ msgstr ""
 msgid "Who would you like to play?"
 msgstr ""
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:329
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
 #: data/tutorial/scenarios/1_Tutorial.cfg:174
+#: data/tutorial/scenarios/2_Tutorial.cfg:329
 msgid "Li'sar"
 msgstr ""
 
@@ -260,10 +261,10 @@ msgstr ""
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
 msgstr ""
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:409
 #: data/tutorial/scenarios/1_Tutorial.cfg:486
+#: data/tutorial/scenarios/2_Tutorial.cfg:409
 msgid "Village"
-msgstr ""
+msgstr "Kasaba"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:490
 msgid ""
@@ -306,10 +307,10 @@ msgstr ""
 msgid "I'll recruit some elves!"
 msgstr ""
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:934
 #: data/tutorial/scenarios/1_Tutorial.cfg:564
+#: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Keep"
-msgstr ""
+msgstr "İç kale"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:568
 msgid ""
@@ -745,9 +746,8 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:505
 #: data/tutorial/scenarios/2_Tutorial.cfg:782
 #: data/tutorial/scenarios/2_Tutorial.cfg:825
-#, fuzzy
 msgid "Elvish Fighter"
-msgstr "Elf savaşçım ne kadar uzağa hareket edebilir?"
+msgstr "Elf savaşçı"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:506
 msgid "Right click on the tile south of you and recruit an Elvish Fighter"
@@ -1209,3 +1209,74 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1559
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr ""
+
+#: data/tutorial/units/Elder_Mage.cfg:4
+msgid "Elder Mage"
+msgstr "Yaşlı büyücü"
+
+#: data/tutorial/units/Elder_Mage.cfg:30
+msgid ""
+"Once great, Elder Magi have seen their power a little diminished from "
+"wearying years of battle. Nevertheless they remain feared on the battlefield "
+"on account of their powerful lightning bolts."
+msgstr ""
+"Bir zamanlar harika olan yaşlı büyücüler güçlerinin yılllarca süren savaş "
+"bıkkınlığı yüzünden azaldığını gördüler. Mamafih güçlü yıldırım toplarının "
+"hürmetine savaş alanlarında korkulan kişiler olarak kaldılar."
+
+#: data/tutorial/units/Elder_Mage.cfg:32 data/tutorial/units/Elder_Mage.cfg:33
+msgid "staff"
+msgstr "değnek"
+
+#: data/tutorial/units/Elder_Mage.cfg:35 data/tutorial/units/Quintain.cfg:25
+msgid "impact"
+msgstr "darbe"
+
+#: data/tutorial/units/Elder_Mage.cfg:109
+#: data/tutorial/units/Elder_Mage.cfg:110
+msgid "lightning"
+msgstr "yıldırım"
+
+#: data/tutorial/units/Elder_Mage.cfg:112
+msgid "fire"
+msgstr "ateş"
+
+#: data/tutorial/units/Fighter.cfg:4
+msgid "Fighter"
+msgstr "Savaşçı"
+
+#: data/tutorial/units/Fighteress.cfg:23 data/tutorial/units/Fighter.cfg:17
+msgid ""
+"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
+"from enemies. However they have the potential to become great warriors one "
+"day."
+msgstr ""
+"Genç ve aceleci olan savaşçılar kılıçla savaşırlar ve düşman saldırılarına "
+"karşı savunmasızdırlar. Bununla beraber bir gün büyük cengaverler olma "
+"potansiyelleri vardır."
+
+#: data/tutorial/units/Fighter.cfg:21 data/tutorial/units/Fighter.cfg:22
+msgid "sword"
+msgstr "kılıç"
+
+#: data/tutorial/units/Fighteress.cfg:30 data/tutorial/units/Fighter.cfg:24
+msgid "blade"
+msgstr "pala"
+
+#: data/tutorial/units/Fighteress.cfg:4
+msgid "female^Fighter"
+msgstr "female^Savaşçı"
+
+#: data/tutorial/units/Fighteress.cfg:27 data/tutorial/units/Fighteress.cfg:28
+msgid "sabre"
+msgstr "eskrim kılıcı"
+
+#: data/tutorial/units/Quintain.cfg:14
+msgid ""
+"Quintains are used to practice swordplay and jousting on.  It would be "
+"extremely unusual to be attacked by one."
+msgstr ""
+
+#: data/tutorial/units/Quintain.cfg:21 data/tutorial/units/Quintain.cfg:22
+msgid "flail"
+msgstr "döven"
