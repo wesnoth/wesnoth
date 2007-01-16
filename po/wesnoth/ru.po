@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:45+0100\n"
+"POT-Creation-Date: 2007-01-16 21:30+0100\n"
 "PO-Revision-Date: 2007-01-05 01:39+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -429,11 +429,7 @@ msgstr ""
 "ход до тех пор, пока оно не исцелится, либо пока его здоровье не уменьшится "
 "до 1 ЗД."
 
-#: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
-#: data/campaigns/Heir_To_The_Throne.cfg:33
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
-#: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
-#: data/campaigns/Under_the_Burning_Suns.cfg:36
+#: data/about.cfg:6
 msgid "Artwork and Graphics Designers"
 msgstr "Графика и дизайн"
 
@@ -461,9 +457,7 @@ msgstr "Сетевые карты"
 msgid "Packagers"
 msgstr "Программные сборки"
 
-#: data/about.cfg:134 data/campaigns/The_South_Guard.cfg:39
-#: data/campaigns/Two_Brothers.cfg:36
-#: data/campaigns/Under_the_Burning_Suns.cfg:48
+#: data/about.cfg:134
 msgid "Miscellaneous"
 msgstr "Разное"
 
@@ -630,1254 +624,6 @@ msgstr "Максимальный бонус ЗД +"
 #: data/amla.cfg:30
 msgid "Full Heal"
 msgstr "Полное исцеление"
-
-#: data/campaigns/Eastern_Invasion.cfg:22
-#: data/campaigns/Heir_To_The_Throne.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
-#: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
-#: data/campaigns/Under_the_Burning_Suns.cfg:28
-msgid "Campaign Designer"
-msgstr "Разработчик кампании"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
-msgid "Horse Lord"
-msgstr "Лорд наездник"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:16
-msgid ""
-"The greatest of the men of the plains, Horse Lords are heads of their houses "
-"and are respected by all, friend or foe. Their sword can kill most ordinary "
-"enemies, and their morning star crushes those who are left."
-msgstr ""
-"Лучший из людей равнин, Лорд наездник возглавляют свой род и уважаем всеми, "
-"друзьями или врагами. Его меч убивает всех простых противников, а его "
-"моргенштерн крушит тех, кто покрепче."
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:19
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:27
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:29
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:165
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:59
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:20
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:82
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:220
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:20
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:28
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:29
-#: data/tutorial/units/Fighter.cfg:20 data/units/Drake_Blademaster.cfg:66
-#: data/units/Drake_Clasher.cfg:75 data/units/Drake_Enforcer.cfg:68
-#: data/units/Drake_Flameheart.cfg:78 data/units/Drake_Flare.cfg:82
-#: data/units/Drake_Gladiator.cfg:67 data/units/Drake_Warrior.cfg:70
-#: data/units/Elvish_Archer.cfg:22 data/units/Elvish_Avenger.cfg:61
-#: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
-#: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
-#: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
-#: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
-#: data/units/Elvish_Sharpshooter.cfg:47
-#: data/units/Human_Horse_Grand_Knight.cfg:24
-#: data/units/Human_Horse_Knight.cfg:23 data/units/Human_Horse_Paladin.cfg:31
-#: data/units/Human_Loyalist_Bowman.cfg:23
-#: data/units/Human_Loyalist_Cavalier.cfg:35
-#: data/units/Human_Loyalist_Cavalryman.cfg:49
-#: data/units/Human_Loyalist_Dragoon.cfg:34
-#: data/units/Human_Loyalist_General.cfg:43
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:39
-#: data/units/Human_Loyalist_Lieutenant.cfg:33
-#: data/units/Human_Loyalist_Longbowman.cfg:25
-#: data/units/Human_Loyalist_Master_Bowman.cfg:24
-#: data/units/Human_Loyalist_Royal_Guard.cfg:26
-#: data/units/Human_Loyalist_Sergeant.cfg:32
-#: data/units/Human_Loyalist_Swordsman.cfg:25 data/units/Naga_Fighter.cfg:23
-#: data/units/Naga_Myrmidon.cfg:27 data/units/Naga_Warrior.cfg:26
-#: data/units/Orcish_Grunt.cfg:74 data/units/Orcish_Leader.cfg:28
-msgid "sword"
-msgstr "меч"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:30
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:65
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:35
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:132
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:167
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:61
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:24
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:84
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:221
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:110
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:32
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:30
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:22
-#: data/tutorial/units/Fighter.cfg:22 data/tutorial/units/Fighteress.cfg:28
-#: data/units/Drake_Armageddon.cfg:81 data/units/Drake_Blademaster.cfg:67
-#: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
-#: data/units/Drake_Enforcer.cfg:69 data/units/Drake_Fighter.cfg:64
-#: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
-#: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:68
-#: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
-#: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
-#: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
-#: data/units/Dwarvish_Fighter.cfg:27 data/units/Dwarvish_Lord.cfg:29
-#: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
-#: data/units/Dwarvish_Thunderer.cfg:41
-#: data/units/Dwarvish_Thunderguard.cfg:25
-#: data/units/Dwarvish_Ulfserker.cfg:33 data/units/Elvish_Archer.cfg:24
-#: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
-#: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
-#: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
-#: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
-#: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
-#: data/units/Goblin_Direwolf_Rider.cfg:35
-#: data/units/Goblin_Direwolf_Rider.cfg:83 data/units/Goblin_Knight.cfg:35
-#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:24
-#: data/units/Gryphon_Master.cfg:27 data/units/Gryphon_Rider.cfg:27
-#: data/units/Human_Horse_Grand_Knight.cfg:26
-#: data/units/Human_Horse_Knight.cfg:25
-#: data/units/Human_Loyalist_Bowman.cfg:25
-#: data/units/Human_Loyalist_Cavalier.cfg:37
-#: data/units/Human_Loyalist_Cavalryman.cfg:51
-#: data/units/Human_Loyalist_Dragoon.cfg:36
-#: data/units/Human_Loyalist_Duelist.cfg:71
-#: data/units/Human_Loyalist_Fencer.cfg:126
-#: data/units/Human_Loyalist_General.cfg:45
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:41
-#: data/units/Human_Loyalist_Halberdier.cfg:215
-#: data/units/Human_Loyalist_Lieutenant.cfg:35
-#: data/units/Human_Loyalist_Longbowman.cfg:27
-#: data/units/Human_Loyalist_Master_Bowman.cfg:26
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:30
-#: data/units/Human_Loyalist_Royal_Guard.cfg:28
-#: data/units/Human_Loyalist_Sergeant.cfg:34
-#: data/units/Human_Loyalist_Swordsman.cfg:27
-#: data/units/Human_Outlaw_Assassin.cfg:30
-#: data/units/Human_Outlaw_Assassin.cfg:111
-#: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
-#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
-#: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
-#: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
-#: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
-#: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
-#: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:69
-#: data/units/Orcish_Assassin.cfg:107 data/units/Orcish_Crossbowman.cfg:24
-#: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
-#: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:26
-#: data/units/Orcish_Slayer.cfg:117 data/units/Orcish_Slurbow.cfg:24
-#: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
-#: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:43
-#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:67
-#: data/units/Undead_Corpse_Necrophage.cfg:35
-#: data/units/Undead_Skele_Bone_Shooter.cfg:43
-#: data/units/Undead_Skele_Death_Knight.cfg:46
-#: data/units/Undead_Skele_Deathblade.cfg:44
-#: data/units/Undead_Skele_Draug.cfg:44
-#: data/units/Undead_Skele_Revenant.cfg:43
-#: data/units/Undead_Skele_Soul_Shooter.cfg:33
-#: data/units/Undead_Skeleton.cfg:108
-#: data/units/Undead_Spirit_Nightgaunt.cfg:54
-#: data/units/Undead_Spirit_Shadow.cfg:28
-#: data/units/Undead_Spirit_Spectre.cfg:46
-#: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "blade"
-msgstr "режущий"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:53
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:61
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:61
-#: data/units/Human_Loyalist_Shock_Trooper.cfg:20
-msgid "morning star"
-msgstr "моргенштерн"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:54
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:62
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:62
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:23
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:106
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:21
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:23
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:74
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:26
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:91
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:139
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:94
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:142
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:30
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:53
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:92
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:27
-#: data/tutorial/units/Elder_Mage.cfg:33 data/tutorial/units/Quintain.cfg:23
-#: data/units/Boat_Galleon.cfg:23 data/units/Drake_Enforcer.cfg:102
-#: data/units/Drake_Gladiator.cfg:154 data/units/Drake_Glider.cfg:77
-#: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
-#: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
-#: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
-#: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
-#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:70
-#: data/units/Elvish_Shaman.cfg:30 data/units/Elvish_Shaman.cfg:68
-#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Shyde.cfg:57
-#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:75
-#: data/units/Elvish_Sylph.cfg:29 data/units/Elvish_Sylph.cfg:57
-#: data/units/Goblin_Pillager.cfg:73
-#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:22
-#: data/units/Human_Loyalist_Iron_Mauler.cfg:24
-#: data/units/Human_Loyalist_Shock_Trooper.cfg:22 data/units/Human_Mage.cfg:56
-#: data/units/Human_Mage_Arch.cfg:41 data/units/Human_Mage_Great.cfg:30
-#: data/units/Human_Mage_Red.cfg:51 data/units/Human_Mage_Silver.cfg:88
-#: data/units/Human_Mage_White.cfg:88 data/units/Human_Mage_of_Light.cfg:68
-#: data/units/Human_Outlaw.cfg:23 data/units/Human_Outlaw.cfg:60
-#: data/units/Human_Outlaw_Bandit.cfg:35
-#: data/units/Human_Outlaw_Footpad.cfg:23
-#: data/units/Human_Outlaw_Footpad.cfg:70 data/units/Human_Outlaw_Thug.cfg:23
-#: data/units/Mermaid_Diviner.cfg:69 data/units/Mermaid_Enchantress.cfg:26
-#: data/units/Mermaid_Enchantress.cfg:64 data/units/Mermaid_Initiate.cfg:29
-#: data/units/Mermaid_Initiate.cfg:67 data/units/Mermaid_Priestess.cfg:66
-#: data/units/Mermaid_Siren.cfg:30 data/units/Mermaid_Siren.cfg:75
-#: data/units/Merman_Entangler.cfg:57 data/units/Merman_Netcaster.cfg:56
-#: data/units/Monster_Cave_Spider.cfg:86 data/units/Monster_Cuttle_Fish.cfg:35
-#: data/units/Monster_Giant_Mudcrawler.cfg:47
-#: data/units/Monster_Giant_Mudcrawler.cfg:85
-#: data/units/Monster_Giant_Scorpion.cfg:71
-#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:60
-#: data/units/Monster_Yeti.cfg:34 data/units/Saurian_Augur.cfg:38
-#: data/units/Saurian_Oracle.cfg:38 data/units/Saurian_Soothsayer.cfg:38
-#: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:27
-#: data/units/Troll_Hero.cfg:26 data/units/Troll_Rocklobber.cfg:29
-#: data/units/Troll_Rocklobber.cfg:66 data/units/Troll_Warrior.cfg:29
-#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:46
-#: data/units/Undead_Corpse_Walking.cfg:48
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:26
-#: data/units/Undead_Necromancer.cfg:27
-#: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
-#: data/units/Wose_Ancient.cfg:31 data/units/Wose_Elder.cfg:30
-msgid "impact"
-msgstr "крушащий"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:3
-msgid "Mounted Fighter"
-msgstr "Конный боец"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:24
-msgid ""
-"The nobles of the men of the plains are trained with the rest of the "
-"horsemen to become great warriors. However, they are also trained in "
-"commanding their comrades, and they are the ones that become captains of the "
-"armies of the Clans."
-msgstr ""
-"Благороднейшие из людей равнин, они натренированы управлять лошадьми, чтобы "
-"стать великими воинами. Тем не менее, они также обучены командовать своими "
-"товарищами, и они — одни из тех, кто станет капитанами армий Кланов."
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:3
-msgid "Mounted Warrior"
-msgstr "Конный воин"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:24
-msgid ""
-"Leaders of the plains, Mounted Warriors are skilled with the use of the "
-"sword and the morning star. Riding horses, they are able to move around the "
-"battlefield with great speed, and can provide much needed assistance to "
-"different fronts."
-msgstr ""
-"Хозяева равнин — конные воины — используют меч и утреннюю звезду. На лошадях "
-"они способны передвигаться по полю битвы с большой скоростью и предоставлять "
-"необходимую помощь на различных фронтах."
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:27
-#: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
-#: data/units/Orcish_Warlord.cfg:23 data/units/Orcish_Warrior.cfg:21
-msgid "greatsword"
-msgstr "большой меч"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:3
-msgid "Skeletal Dragon"
-msgstr "Скелетный дракон"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:25
-msgid ""
-"Long ago one of the mightiest living creatures, the feared Dragon has become "
-"only bones and dark sinew. Long after its death, it was raised through the "
-"dark powers of necromancy, which it now serves. The Skeletal Dragon may look "
-"like nothing more than a pile of bones, but few people who thought that way "
-"lived long enough to change their minds."
-msgstr ""
-"Давным-давно от страшного Дракона, одного из величественных созданий, "
-"остались всего лишь кости и кучка темного пепла. Спустя много лет после "
-"смерти они были подняты с помощью темной силы некромантов для того, чтобы "
-"служить им. Скелетный дракон может создавать впечатление всего лишь груды "
-"костей, но есть несколько людей, кто хотя бы раз встречал их, изменили свое "
-"мнение о них."
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:28
-msgid "jaw"
-msgstr "челюсти"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:64
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
-#: data/units/Drake_Armageddon.cfg:79 data/units/Drake_Burner.cfg:61
-#: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
-#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:22
-#: data/units/Gryphon_Master.cfg:25 data/units/Gryphon_Rider.cfg:25
-#: data/units/Undead_Corpse_Ghoul.cfg:65
-#: data/units/Undead_Corpse_Necrophage.cfg:33
-#: data/units/Undead_Spirit_Nightgaunt.cfg:53
-#: data/units/Undead_Spirit_Shadow.cfg:27
-msgid "claws"
-msgstr "когти"
-
-#: data/campaigns/Heir_To_The_Throne.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
-#: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
-#: data/campaigns/Under_the_Burning_Suns.cfg:32
-msgid "Current Maintainer"
-msgstr "Текущий разработчик"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:100
-msgid "female^Battle Princess"
-msgstr "Боевая принцесса"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:30
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:126
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals, and battle tactics with the greatest sages, making her both a "
-"great combatant and leader. Now battle-hardened and strong of will, she can "
-"now aid those around her in the art of combat."
-msgstr ""
-"Благородная от рождения, принцесса изучала искусство меча с великими "
-"генералами и тактику боя с великими стратегами, сделавшими ее великой "
-"воительницей и лидером. Сильная волей и закаленная в бою, она поможет всем, "
-"кто окружает ее, в искусстве битвы."
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:130
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:108
-#: data/tutorial/units/Fighteress.cfg:26
-#: data/units/Human_Loyalist_Duelist.cfg:69
-#: data/units/Human_Loyalist_Fencer.cfg:124
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:28
-msgid "sabre"
-msgstr "сабля"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:183
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:213
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:125
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:290
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:156
-msgid "scepter of fire"
-msgstr "скипетр огня"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:184
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:214
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:79
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:126
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:291
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:157
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:112
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:27
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:28
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:82
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:71
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:75
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:121
-#: data/tutorial/units/Elder_Mage.cfg:109 data/units/Drake_Armageddon.cfg:131
-#: data/units/Drake_Blademaster.cfg:116 data/units/Drake_Burner.cfg:111
-#: data/units/Drake_Fighter.cfg:113 data/units/Drake_Fire.cfg:118
-#: data/units/Drake_Flameheart.cfg:156 data/units/Drake_Flare.cfg:137
-#: data/units/Drake_Glider.cfg:131 data/units/Drake_Hurricane.cfg:151
-#: data/units/Drake_Inferno.cfg:119 data/units/Drake_Sky.cfg:178
-#: data/units/Drake_Warrior.cfg:120 data/units/Dwarvish_Runemaster.cfg:63
-#: data/units/Goblin_Pillager.cfg:36 data/units/Human_Mage.cfg:104
-#: data/units/Human_Mage_Arch.cfg:88 data/units/Human_Mage_Great.cfg:77
-#: data/units/Human_Mage_Red.cfg:98 data/units/Human_Mage_Silver.cfg:132
-#: data/units/Orcish_Archer.cfg:238 data/units/Orcish_Crossbowman.cfg:101
-#: data/units/Orcish_Slurbow.cfg:121
-msgid "fire"
-msgstr "огонь"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:3
-msgid "Cockatrice"
-msgstr "Василиск"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:16
-msgid ""
-"Sometimes known as 'basilisks', these mystical creatures are said to be able "
-"to turn the living to stone. Needless to say, this makes them extremely "
-"dangerous."
-msgstr ""
-"Известные как \"василиски\", эти таинственные создания способны превратить "
-"живое в камень. Надо ли говорить, что это делает их очень опасными."
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:19
-msgid "gaze"
-msgstr "пристальный взгляд"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:20
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:51
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:52
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:103
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:61
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:26
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:46
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:52
-#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
-#: data/units/Elvish_Sylph.cfg:128 data/units/Saurian_Augur.cfg:75
-#: data/units/Saurian_Oracle.cfg:75 data/units/Saurian_Soothsayer.cfg:75
-#: data/units/Undead_Necro_Ancient_Lich.cfg:29
-#: data/units/Undead_Necro_Ancient_Lich.cfg:69
-#: data/units/Undead_Necro_Dark_Adept.cfg:32
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
-#: data/units/Undead_Necro_Lich.cfg:31 data/units/Undead_Necro_Lich.cfg:71
-#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:26
-#: data/units/Undead_Spirit_Ghost.cfg:64
-#: data/units/Undead_Spirit_Spectre.cfg:86
-#: data/units/Undead_Spirit_Wraith.cfg:68
-msgid "cold"
-msgstr "холод"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:139
-msgid "Commander"
-msgstr "Командир"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:162
-msgid ""
-"The rank of Commander is held by those who lead battle groups into combat. "
-"Possessing leadership skills, they give lower-level units in adjacent hexes "
-"improved performance in combat. Commanders are best skilled with the sword, "
-"although they also carry a bow to use when necessary. If the Commander is "
-"lost, so is the battle."
-msgstr ""
-"Обязанности командира — возглавлять боевые группы в бою. Знающий навыки "
-"лидерства, он дает соседним соединениям низшего уровня улучшенные действия в "
-"битве. Командиры отлично обучены владеть мечом, к тому же они могут "
-"использовать при необходимости и лук. Гибель командира означает проигрыш в "
-"битве."
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:77
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:101
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:66
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:67
-#: data/units/Elvish_Archer.cfg:75 data/units/Elvish_Avenger.cfg:109
-#: data/units/Elvish_Captain.cfg:83 data/units/Elvish_Champion.cfg:80
-#: data/units/Elvish_Fighter.cfg:65 data/units/Elvish_Hero.cfg:69
-#: data/units/Elvish_Marshal.cfg:77 data/units/Elvish_Outrider.cfg:79
-#: data/units/Elvish_Ranger.cfg:106 data/units/Elvish_Rider.cfg:81
-#: data/units/Elvish_Scout.cfg:80 data/units/Human_Loyalist_Bowman.cfg:61
-#: data/units/Human_Loyalist_Longbowman.cfg:63
-#: data/units/Human_Loyalist_Master_Bowman.cfg:62
-#: data/units/Human_Outlaw_Poacher.cfg:72
-#: data/units/Human_Outlaw_Trapper.cfg:102 data/units/Orcish_Archer.cfg:177
-#: data/units/Orcish_Archer.cfg:236 data/units/Orcish_Leader.cfg:66
-#: data/units/Orcish_Ruler.cfg:64 data/units/Orcish_Sovereign.cfg:65
-#: data/units/Orcish_Warlord.cfg:76
-#: data/units/Undead_Skele_Bone_Shooter.cfg:79
-#: data/units/Undead_Skele_Soul_Shooter.cfg:69
-#: data/units/Undead_Skeleton_Archer.cfg:69
-msgid "bow"
-msgstr "лук"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:78
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:103
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:67
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:68
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:71
-#: data/units/Boat_Pirate_Galleon.cfg:21
-#: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:119
-#: data/units/Drake_Enforcer.cfg:135 data/units/Drake_Gladiator.cfg:111
-#: data/units/Drake_Slasher.cfg:118 data/units/Drake_Warden.cfg:124
-#: data/units/Dwarvish_Dragonguard.cfg:62 data/units/Dwarvish_Guardsman.cfg:33
-#: data/units/Dwarvish_Guardsman.cfg:81 data/units/Dwarvish_Sentinel.cfg:41
-#: data/units/Dwarvish_Sentinel.cfg:89 data/units/Dwarvish_Stalwart.cfg:36
-#: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
-#: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
-#: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
-#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
-#: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
-#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
-#: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
-#: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
-#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
-#: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
-#: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
-#: data/units/Goblin_Spearman.cfg:160
-#: data/units/Human_Horse_Grand_Knight.cfg:64
-#: data/units/Human_Horse_Knight.cfg:63 data/units/Human_Horse_Lancer.cfg:25
-#: data/units/Human_Horse_Paladin.cfg:71 data/units/Human_Horseman.cfg:25
-#: data/units/Human_Loyalist_Bowman.cfg:62
-#: data/units/Human_Loyalist_Cavalier.cfg:86
-#: data/units/Human_Loyalist_Dragoon.cfg:85
-#: data/units/Human_Loyalist_Duelist.cfg:109
-#: data/units/Human_Loyalist_General.cfg:93
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:89
-#: data/units/Human_Loyalist_Halberdier.cfg:31
-#: data/units/Human_Loyalist_Javelineer.cfg:28
-#: data/units/Human_Loyalist_Javelineer.cfg:84
-#: data/units/Human_Loyalist_Lieutenant.cfg:78
-#: data/units/Human_Loyalist_Longbowman.cfg:64
-#: data/units/Human_Loyalist_Master_Bowman.cfg:63
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:188
-#: data/units/Human_Loyalist_Pikeman.cfg:54
-#: data/units/Human_Loyalist_Sergeant.cfg:82
-#: data/units/Human_Loyalist_Spearman.cfg:63
-#: data/units/Human_Loyalist_Spearman.cfg:204
-#: data/units/Human_Outlaw_Poacher.cfg:73
-#: data/units/Human_Outlaw_Trapper.cfg:103 data/units/Human_Peasant.cfg:24
-#: data/units/Human_Peasant.cfg:67 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
-#: data/units/Merman_Hunter.cfg:23 data/units/Merman_Hunter.cfg:174
-#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:134
-#: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:22
-#: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
-#: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
-#: data/units/Monster_Giant_Scorpion.cfg:25
-#: data/units/Monster_Sea_Serpent.cfg:22 data/units/Orcish_Archer.cfg:179
-#: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
-#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
-#: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
-#: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
-#: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
-#: data/units/Saurian_Skirmisher.cfg:32 data/units/Saurian_Skirmisher.cfg:75
-#: data/units/Undead_Skele_Bone_Shooter.cfg:81
-#: data/units/Undead_Skele_Chocobone.cfg:26
-#: data/units/Undead_Skele_Death_Knight.cfg:89
-#: data/units/Undead_Skele_Soul_Shooter.cfg:71
-#: data/units/Undead_Skeleton_Archer.cfg:71
-msgid "pierce"
-msgstr "колющий"
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:87
-msgid "female^Dark Queen"
-msgstr "Темная королева"
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:18
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:102
-msgid ""
-"The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
-"knowledge of magic makes her a worthy foe in combat, although her power is "
-"mostly derived from those she commands."
-msgstr ""
-"Злобная королева-мать Ашивье терроризировала Веснот много лет. Ее знания в "
-"магии делают ее опасным врагом в битве, хотя ее сила главным образом "
-"получена из тех, кем она командует."
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:21
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:105
-msgid "scepter"
-msgstr "скипетр"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:3
-#: data/tutorial/units/Elder_Mage.cfg:3
-msgid "Elder Mage"
-msgstr "Древний маг"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:22
-#: data/tutorial/units/Elder_Mage.cfg:29
-msgid ""
-"Once great, Elder Magi have seen their power a little diminished from "
-"wearying years of battle. Nevertheless they remain feared on the battlefield "
-"on account of their powerful lightning bolts."
-msgstr ""
-"Когда-то великие, древние маги поняли, что их сила стала постепенно угасать "
-"от изнурительных лет битв. Тем не менее, они остаются грозными на поле "
-"битвы, благодаря их мощным атакам молниями."
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:90
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:93
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:41
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:30
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:31
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:51
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:90
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:91
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:25
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:26
-#: data/tutorial/units/Elder_Mage.cfg:31 data/units/Elvish_Druid.cfg:27
-#: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:29
-#: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:54
-#: data/units/Human_Mage_Arch.cfg:39 data/units/Human_Mage_Great.cfg:28
-#: data/units/Human_Mage_Red.cfg:49 data/units/Human_Mage_Silver.cfg:86
-#: data/units/Human_Mage_White.cfg:86 data/units/Mermaid_Diviner.cfg:67
-#: data/units/Mermaid_Enchantress.cfg:24 data/units/Mermaid_Initiate.cfg:27
-#: data/units/Mermaid_Priestess.cfg:64 data/units/Saurian_Augur.cfg:36
-#: data/units/Saurian_Oracle.cfg:36 data/units/Saurian_Soothsayer.cfg:36
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:24
-msgid "staff"
-msgstr "посох"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:77
-#: data/tutorial/units/Elder_Mage.cfg:107
-msgid "lightning"
-msgstr "молния"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:3
-msgid "Elvish High Lord"
-msgstr "Эльф Великий лорд"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:18
-msgid ""
-"The leaders of the elves do not fall sallow and frail with age. Rather, it "
-"is then that they grow to their true potential. Quiet and contemplative in "
-"times of peace, a High Lord in the full of his wrath is an awesome sight "
-"indeed."
-msgstr ""
-"Лидеры эльфов с годами не становятся дряхлыми и хилыми. Напротив, с "
-"возрастом они реализуют свой истинный потенциал. Спокойный и задумчивый в "
-"мирное время, Высший лорд выглядит в случае опасности яростно и устрашающе."
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:102
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:60
-#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
-#: data/units/Elvish_Sylph.cfg:127
-msgid "faerie fire"
-msgstr "фееричный огонь"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:4
-msgid "female^Elvish Lady"
-msgstr "Эльфийка леди"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:18
-msgid ""
-"Elves choose their leaders for their power and wisdom; foresight is what has "
-"protected them in times of uncertainty. Their just reign is rewarded by the "
-"unflagging fealty of their people, which is the greatest gift any ruler "
-"could ask for."
-msgstr ""
-"Эльфы выбирают своих лидеров за их силу и мудрость; предвидение — то, что "
-"защищает их в трудные времена. Они просто правят своими людьми, это "
-"величайший подарок для любого правителя."
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:20
-msgid "shove"
-msgstr "толчок"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:3
-msgid "Elvish Lord"
-msgstr "Эльф лорд"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:17
-msgid ""
-"The nobility of the elves are possessed of merit to match their standing in "
-"society. Elvish Lords are the wisest and strongest of their people, and are "
-"fearsome in their command of magic."
-msgstr ""
-"Благородство эльфов это то, что позволяет занимать им положение в обществе. "
-"Эльфийские Лорды являются знатью и являются одними из самых сильных "
-"представителей своего народа, они страшны при использовании своей магии."
-
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:66
-#: data/tutorial/units/Fighter.cfg:3
-msgid "Fighter"
-msgstr "Боец"
-
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:17
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:79
-#: data/tutorial/units/Fighter.cfg:16 data/tutorial/units/Fighteress.cfg:22
-msgid ""
-"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
-"from enemies. However they have the potential to become great warriors one "
-"day."
-msgstr ""
-"Молодые и дерзкие, бойцы вооружены мечом и уязвимы атакам врагов. Тем не "
-"менее, однажды они могут стать великими воинами."
-
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:192
-msgid "Lord"
-msgstr "Лорд"
-
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:27
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:216
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:24
-msgid ""
-"The noble leaders of many troops, Lords are especially strong in melee "
-"combat, and also possess skill with the bow. Like Commanders, Lords possess "
-"leadership skills, and improve the fighting ability of all adjacent lower-"
-"level units."
-msgstr ""
-"Благородные лидеры солдат, лорды особенно сильны в рукопашной схватке и "
-"также владеют навыками обращения с луком. Как и командиры, лорды имеют "
-"навыки лидерства и повышают боеспособность всех соседних соединений низших "
-"уровней."
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:3
-msgid "female^Princess"
-msgstr "Принцесса"
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:105
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals and battle tactics with the greatest sages, making her both a great "
-"combatant and leader. The units of lower level around the Princess will "
-"fight better due to her presence. The Princess is also nimble and dextrous, "
-"having skills like that of a thief."
-msgstr ""
-"Благородная от рождения, принцесса изучала искусство меча с великими "
-"генералами и тактику боя с великими стратегами, сделавшими ее великим бойцом "
-"и лидером. Соединения низшего уровня, окружающие Принцессу, будут драться "
-"лучше под ее командованием. Принцесса также быстра и проворна, благодаря "
-"чему у нее есть навыки вора."
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:81
-msgid "Princess"
-msgstr "Принцесса"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:3
-msgid "Sea Orc"
-msgstr "Морской орк"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:16
-msgid ""
-"While often viewed as inferior to their land loving counterparts, Sea Orcs "
-"represent a great leap for all goblinoids as they have adapted to aquatic "
-"environments. With their curved swords they are competent fighters, although "
-"their lack of a ranged attack and poor defence on land do represent "
-"strategic weaknesses."
-msgstr ""
-"Пока большинство низших созданий обожает свои земли, морские орки "
-"представляют огромный прыжок для всех оркообразных, так как приспособились к "
-"водной среде. Со своими изогнутыми мечами они являются достойными бойцами, "
-"хотя отсутствие навыков в стрельбе и слабая защищенность на суше делает их "
-"стратегически уязвимыми."
-
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:3
-msgid "Sleeping Gryphon"
-msgstr "Спящий грифон"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:16
-msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "Тссс! Грифон спит! Лучше не будить его!"
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:3
-msgid "Youth"
-msgstr "Юноша"
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:18
-msgid ""
-"Today almost a boy, by his devotion to the crown he is seeking to become a "
-"Lord -- to join the elite of human fighters."
-msgstr ""
-"Сегодня он — юноша, преданный короне и желающий стать лордом — чтобы "
-"присоединиться к лучшим представителям людей-воинов."
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:21
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:24
-msgid "training sword"
-msgstr "тренировочный меч"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:3
-msgid "Fire Dragon"
-msgstr "Огненный дракон"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:20
-msgid ""
-"A fire dragon is an ancient and horrifying being that normally lives only in "
-"hushed rumor and fantastic stories. It is normal for centuries to pass "
-"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
-"form flying in the distance. Legends are very specific about the ravages of "
-"fire dragons: hideously swift in flight, leathery wings spread over one "
-"hundred feet in width, they swoop in and blast their prey with inferno jets "
-"of flame. Anything escaping the dragon's fire breath must beware its "
-"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
-"often take underlings whom they lead to victory."
-msgstr ""
-"Огненный дракон — древнее и грозное существо, которое обычно живет лишь в "
-"полузабытых легендах и небылицах. Уже несколько столетий в Весноте никто не "
-"видел настоящего дракона, лишь только тень, летящую вдали. Легенды чаще "
-"всего упоминают о буйствах драконов: незаметно подлетая на огромных крыльях "
-"размером в сотню шагов, они внезапно нападают и изрыгают огненные струи. "
-"Любой избежавший огненного дыхания дракона должен поберечься также "
-"сокрушительного удара хвостом. Огненные драконы очень хитры и вероломны, "
-"поэтому чаще всего побеждают они."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:23
-msgid "bite"
-msgstr "укус"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:71
-msgid "tail"
-msgstr "хвост"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:110
-#: data/units/Drake_Armageddon.cfg:129 data/units/Drake_Blademaster.cfg:114
-#: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
-#: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
-#: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
-#: data/units/Drake_Hurricane.cfg:149 data/units/Drake_Inferno.cfg:117
-#: data/units/Drake_Sky.cfg:176 data/units/Drake_Warrior.cfg:118
-msgid "fire breath"
-msgstr "огненное дыхание"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:4
-msgid "Fireball"
-msgstr "Огненный Шар"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:24
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr ""
-"Огненный шар. Он никак не может быть использован, кроме как "
-"\"Передвигать_Соединение\"!"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:3
-msgid "Noble Commander"
-msgstr "Благородный командир"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:23
-msgid ""
-"The rank of a noble Commander is held by those who lead battle groups into "
-"combat. Possessing leadership skills, they give lower-level units in "
-"adjacent hexes improved performance in combat. Commanders are best skilled "
-"with the sword, although they also carry a bow to use when necessary. If the "
-"Commander is lost, so is the battle."
-msgstr ""
-"Обязанности командира — возглавлять боевые группы в бою. Знающий навыки "
-"лидерства, он дает соседним соединениям низшего уровня улучшенные действия в "
-"битве. Командиры владеют мечом, к тому же они могут использовать при "
-"необходимости и лук. Гибель командира означает проигрыш в битве."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:3
-msgid "Noble Fighter"
-msgstr "Благородный боец"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:21
-msgid ""
-"Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
-"attacks from enemies. However they have the potential to become great "
-"Commanders one day."
-msgstr ""
-"Молодые и дерзкие, бойцы дерутся с мечом и уязвимы вражеским атакам с "
-"расстояния. Тем не менее, однажды они могут стать великими командирами."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:3
-msgid "Noble Lord"
-msgstr "Благородный лорд"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:3
-msgid "Noble Youth"
-msgstr "Благородный юноша"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:21
-msgid ""
-"Today he is a young man, by his devotion to the crown he is seeking to "
-"become a Lord -- to join the elite of humanity."
-msgstr ""
-"Сегодня он — юноша, преданный короне, желающий стать лордом — чтобы "
-"присоединиться к лучшим представителям человечества."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:3
-msgid "female^Outlaw Princess"
-msgstr "Принцесса в изгнании"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:22
-msgid ""
-"A noble by birth, the Outlaw Princess has learnt swordplay with the greatest "
-"generals, but she is the product of a failed aristocracy who has opted for "
-"the life of an Outlaw. She dreams of founding her own Queendom with the "
-"plunder she finds on the road."
-msgstr ""
-"Благородная от рождения, изгнанная принцесса изучала искусство меча с "
-"великими генералами, но она — продукт отверженной аристократии, которая пала "
-"ради ее жизни. Она мечтает найти свое богатое королевство, которое она ищет "
-"в пути."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:138
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:141
-#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
-#: data/units/Troll_Rocklobber.cfg:65
-msgid "sling"
-msgstr "праща"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:3
-msgid "female^Outlaw Queen"
-msgstr "Королева в изгнании"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:25
-msgid ""
-"A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
-"generals and battle tactics with the greatest sages, making her both a great "
-"combatant and leader. However, she is the product of a failed aristocracy "
-"who has opted for the life of an Outlaw. She dreams of founding her own "
-"Queendom with the plunder she finds on the road, and she is ever so close to "
-"that goal."
-msgstr ""
-"Благородная от рождения, изгнанная королева изучала искусство меча с "
-"великими генералами и тактику боя с великими стратегами, сделавшими ее "
-"великим бойцом и лидером. Тем не менее, она — продукт отверженной "
-"аристократии, которая пала ради жизни изгнанной. Она мечтает найти свое "
-"богатое королевство, которое она ищет в пути, и она близка, чтобы выполнить "
-"эту мечту."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:3
-msgid "female^Vampire Lady"
-msgstr "Королева вампиров"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:18
-msgid ""
-"Cold and beautiful, she maintains her eternal youthful appearance drinking "
-"the blood of the living."
-msgstr ""
-"Холодная и красивая, она поддерживает свою вечную молодость, постоянно "
-"выпивая кровь живых."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:21
-msgid "blood kiss"
-msgstr "кровавый поцелуй"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:69
-#: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
-#: data/units/Saurian_Soothsayer.cfg:74
-msgid "curse"
-msgstr "проклятие"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:3
-msgid "Warrior King"
-msgstr "Король воин"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:25
-msgid ""
-"As the leaders of the human Kingdoms, Kings are responsible for ruling and "
-"protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
-"units, thereby increasing their fighting efficiency."
-msgstr ""
-"Как лидер королевств людей, король ответственен за правление и защиту своих "
-"владений. Король может координировать атаки соединений 1 и 2 уровня, "
-"увеличивая их боеспособность."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:28
-#: data/units/Drake_Enforcer.cfg:101 data/units/Drake_Gladiator.cfg:153
-#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:21
-#: data/units/Human_Loyalist_Iron_Mauler.cfg:23
-#: data/units/Human_Mage_of_Light.cfg:67 data/units/Human_Outlaw.cfg:22
-#: data/units/Human_Outlaw_Bandit.cfg:34 data/units/Troll_Great.cfg:26
-msgid "mace"
-msgstr "булава"
-
-# rev
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-msgid "Wose Sapling"
-msgstr "Молодой леший"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:25
-msgid ""
-"Rarely seen, even by elves, a Wose is an order of creature about which "
-"little is known. The elves are the source of most of this knowledge; they "
-"know that these beings are not descended from trees, despite the similarity "
-"in form, and they know that a wose is more closely tied to the faerie world "
-"than the elves themselves, though in a different way. The motives and "
-"workings of their kind are unknown, though most posit the obvious idea that "
-"woses are wardens of the natural world.\n"
-"\n"
-"Woses are utterly unwarlike, but possess a great strength. They are, "
-"however, neither used to, nor quick at moving around.\n"
-"\n"
-"Special Notes: Woses regenerate by using natural resources around them, "
-"without needing to huddle in villages to obtain sustenance and aid."
-msgstr ""
-"Редко встречаемые, даже эльфами, лешие — создания, о которых мало что "
-"известно. Почти все знания о них получены от эльфов. От них известно, что "
-"лешие не являются потомками деревьев, хотя и очень похожи на них. Также "
-"известно, что лешие намного сильнее связаны с миром волшебства, чем сами "
-"эльфы, хотя несколько по-иному. Мотивы и действия этого народа неизвестны, "
-"хотя очевидно, что лешие являются защитниками природного мира.\n"
-"\n"
-"Лешие не агрессивны, но обладают огромной силой. Тем не менее, они почти ее "
-"не используют, также они медлительны в движении.\n"
-"\n"
-"Примечание: лешие регенерируются, используя природные ресурсы вокруг себя, и "
-"им не нужно останавливаться в деревнях, чтобы отдохнуть и восстановиться."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:29
-#: data/units/Wose.cfg:30 data/units/Wose_Ancient.cfg:29
-#: data/units/Wose_Elder.cfg:28
-msgid "crush"
-msgstr "дробление"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:3
-msgid "Demilich"
-msgstr "Демилич"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:20
-msgid ""
-"After too much time dabbling with forbidden magics and dark arts, these magi "
-"have begun to pay a heavy price. Demiliches have started losing their "
-"bodies, becoming undead themselves. With time, they may become fully undead, "
-"and feared by all alike."
-msgstr ""
-"После долгого и изучения забытых книг по магии и темному искусству, эти маги "
-"начали платить высокую цену — демиличи теряют свои тела, превращаясь в "
-"нежить. Со временем, они могут стать полностью мертвецами, ужасными как и "
-"все мертвецы."
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:23
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:24
-#: data/units/Undead_Corpse_Soulless.cfg:44
-#: data/units/Undead_Corpse_Walking.cfg:46
-#: data/units/Undead_Necro_Ancient_Lich.cfg:27
-#: data/units/Undead_Necro_Lich.cfg:29 data/units/Undead_Spirit_Ghost.cfg:24
-msgid "touch"
-msgstr "прикосновение"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
-#: data/units/Undead_Necro_Ancient_Lich.cfg:68
-#: data/units/Undead_Necro_Lich.cfg:70
-msgid "chill tempest"
-msgstr "волна холода"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
-#: data/units/Human_Mage_Arch.cfg:127
-msgid "female^Arch Mage"
-msgstr "Старшая волшебница"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:26
-msgid ""
-"The title of Arch Mage is conferred only after a lifetime of study and "
-"achievement to match. Arch Magi are often employed in positions of "
-"education, or as advisors to those wise enough to seek the fruits of their "
-"wisdom. Many tend to wealthy patrons, a profitable enterprise for both as, "
-"outside of the occasional task or word of advice, it gives the mage leave to "
-"pursue their research undisturbed. Certain others shun civilization, "
-"spending their days as hermits, often to study something which most would "
-"tend to frown upon.\n"
-"\n"
-"Though not trained for any sort of combat, if need arises an Arch Mage can "
-"unleash the full power of their art, something which is not to be taken "
-"lightly.\n"
-"\n"
-"Special Notes: the arch mage's fireballs are magical, and always have a high "
-"chance of hitting an opponent."
-msgstr ""
-"Титул Старшего мага даруется только после многих лет учебы и достойных "
-"свершений. Старшие маги часто задействованы в области обучения, или как "
-"советники того, кто достаточно умен, чтобы искать плоды их мудрости. "
-"Служение властительному патрону — взаимовыгодное сотрудничество для обоих "
-"сторон, так как все время, когда не требуется выполнить случайное задание "
-"или дать совет, маг получает для проведения своих исследований, никем не "
-"обеспокоенный. Некоторые другие маги избегают цивилизации, проводя свои дни "
-"как отшельники, часто для того, чтобы изучить нечто, что не терпит никаких "
-"раздражающих факторов.\n"
-"\n"
-"Хоть и не являясь тренированными ни для какого вида боя, в случае "
-"необходимости, Старшие маги могут высвободить всю мощь своего искусства, так "
-"что никому мало не покажется.\n"
-"\n"
-"Примечание: огненные шары старших магов имеют магическую природу, и всегда "
-"имеют высокие шансы поразить оппонента."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:80
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:81
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:69
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:70
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:73
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:74
-#: data/units/Human_Mage_Arch.cfg:87 data/units/Human_Mage_Great.cfg:76
-#: data/units/Human_Mage_Red.cfg:97
-msgid "fireball"
-msgstr "огненный шар"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:4
-#: data/units/Human_Mage_Great.cfg:116
-msgid "female^Great Mage"
-msgstr "Великая волшебница"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:27
-msgid ""
-"Any person who is even considered for the title of Great Mage is quite "
-"nearly a legend in their own time, and town criers have forcibly learnt "
-"discretion in applying the title. Merit for the title is carefully "
-"considered by a council of the leading magi of the age, and the conferment "
-"of the title is given only by a majority vote. Regardless, anyone who is "
-"seriously nominated for the honor of being called a Great Mage is, without "
-"question, a master of their art, and has surpassed almost any of their peers "
-"in skill.\n"
-"\n"
-"Though they are not warriors, by any means, the application of their art to "
-"combat is something that often causes other soldiers to stand aside in awe.\n"
-"\n"
-"Special Notes: the great mage's fireballs are magical, and always have a "
-"high chance of hitting an opponent."
-msgstr ""
-"Любой удостоившийся титула Великого мага очень скоро станет легендой своего "
-"времени, и городские глашатае весьма осмотрительны в произношении титула. "
-"Этот титул назначается после долгого рассмотрения советом величайших магов "
-"эпохи, и это решение будет принято только при большинстве поданных голосов. "
-"Несмотря на то, кто выдвинут на титул Великого мага, он, вне сомнения, "
-"является мастером своего искусства и превосходит каждого во своем "
-"мастерстве.\n"
-"\n"
-"Хотя они не являются воинами, но применение их искусства в битве иногда "
-"действенно, когда солдаты остолбенели от страха.\n"
-"\n"
-"Примечание: огненные шары Великих магов являются магией, и поэтому они имеют "
-"высокую вероятность попасть в противника."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:4
-#: data/units/Human_Mage_Red.cfg:137
-msgid "female^Red Mage"
-msgstr "Красная волшебница"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:26
-msgid ""
-"Upon the successful termination of their apprenticeship, a mage is stripped "
-"of the blue robes of an apprentice, and given the red robes of a master. The "
-"significance of this change is often lost on the peasantry, who mistakenly "
-"title Master Magi as 'Red Magi'. Likewise, the symbolism of the change in "
-"colors is often mistaken to signify the mage's ability to seemingly conjure "
-"fire from nothing but thin air, a trick which, although undeniably useful, "
-"is viewed as a crass application of the knowledge which they have "
-"painstakingly accrued.\n"
-"\n"
-"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
-"number of tricks up their sleeves, including the gouts of fire which may "
-"have cemented their colloquial name.\n"
-"\n"
-"Special Notes: the red mage's fireballs are magical, and always have a high "
-"chance of hitting an opponent."
-msgstr ""
-"Полностью закончив свое ученичество, маги сбрасывают синие робы учеников и "
-"получают красные робы мастеров. Смысл этого изменения неизвестен для "
-"простолюдин, ошибочно называющих мастеров магов \"Красными магами\". Скорее "
-"всего, символизм этой смены в цветах основан на способности мага создавать "
-"огонь из ничего, кроме воздуха — на трюке, хотя вне сомнений полезном, "
-"рассматриваемом, как полнейшее применение старательно накопленного знания.\n"
-"\n"
-"Примечание: огненные шары красных магов являются магией, и поэтому они имеют "
-"высокую вероятность попасть в противника."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:4
-#: data/units/Human_Mage_Silver.cfg:176
-msgid "female^Silver Mage"
-msgstr "Серебряная волшебница"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:33
-msgid ""
-"The many paths that a mage can take in study lead to strikingly different "
-"ends. Silver magi have devoted themselves to a study of the forces that bind "
-"reality together, and have managed, somewhat, to unravel the mysteries of a "
-"world far more vast than most would ever imagine. Often viewed as sages, or "
-"wandering mystics, silver magi act under an agenda which is obscure even to "
-"their own colleagues. Though helpful to the magisteriums which often employ "
-"them in the field, they remain somewhat aloof.\n"
-"\n"
-"They have, in fact, their own order amongst the ranks of magi, an order "
-"which withholds certain secrets from their peers. One of these is an "
-"apparent ability to cross great distances, faster than one could possibly "
-"travel on foot. Members of the silver order ardently refuse to discuss the "
-"workings of this with any of their fellow magi, and on those rare occasions "
-"when others have pried into their work, they have abandoned the endeavor, "
-"never to speak of it again.\n"
-"\n"
-"Silver magi are often more physically adept than other magi, and their "
-"skills are of undeniable use on the battlefield, if one can manage to coerce "
-"the mage into applying them.\n"
-"\n"
-"Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
-"magical natures and are highly resistant to non-physical damage. They can "
-"also teleport between any two villages instantly, though the player must "
-"control both, and the destination village must be unoccupied."
-msgstr ""
-"Есть много способов, позволяющих магу закончить свое обучение. Серебряные "
-"маги посвящают себя изучению сил, изменяющих реальность, и управлению, в "
-"какой-то мере, ими для исследования тайн мира, намного большего, чем себе "
-"может кто-либо представить. Часто представляемые мудрыми или владеющими "
-"тайнами, серебряные маги действуют в тени дня, благодаря чему они наблюдают "
-"за всем для своих коллег. Хотя они полезны при поддержке на поле битвы, "
-"лучше держать их поодаль.\n"
-"\n"
-"В действительности, у них есть собственный орден среди других магов, "
-"удерживающий свои секреты от других. Один из них раскрывает способ "
-"перемещения на большие расстояния намного быстрее, чем путешествие пешком. "
-"Члены серебряного ордена ревностно отклоняют предложения по работе над тем, "
-"чтобы этим секретом овладели другие маги. За редкими исключениями никто не "
-"был посвящен в их работу, и их в конце концов оставили в покое, не начиная "
-"разговор об этом снова.\n"
-"\n"
-"Серебряные маги являются чаще всего последователями физического воздействия, "
-"в отличие от других, и их навыки неоспоримо пригодятся на поле боя, если "
-"магов вынудят использовать их.\n"
-"\n"
-"Примечание: на дистанции серебряный маг атакует магией, которая имеет "
-"большой шанс поразить оппонента. Серебряные маги хорошо защищены от всех "
-"форм магического повреждения. Они могут также мгновенно перемещаться между "
-"двумя деревнями, обе деревни должны контролироваться игроком и деревня, в "
-"которую передвигается маг не должна быть оккупирована противником."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:119
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:120
-#: data/units/Human_Mage.cfg:102 data/units/Human_Mage_Silver.cfg:130
-msgid "missile"
-msgstr "снаряд"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
-#: data/units/Undead_Necromancer.cfg:3
-msgid "Necromancer"
-msgstr "Некромант"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:22
-msgid ""
-"One of the greatest circles of what is considered 'black magic' is the art "
-"of necromancy, the terrible ability to awaken the dead with false life. It "
-"was a discovery that had terrible ramifications and caused humanity's "
-"condemnation of black magic, for it has given fear a vast new arsenal.\n"
-"\n"
-"This ability, in all aspects, is the first step towards cheating death of "
-"its ultimate prize. It is the highest degree of power a dark mage can attain "
-"without losing grip on humanity itself, but pales to the lethal power "
-"wielded by Liches. Their mortal bodies are also made sturdier by their "
-"magic, in contrast to the frail decayed form of a Lich.\n"
-"\n"
-"Special Notes: the necromancer's ranged attacks are magical and always have "
-"a high chance of hitting an opponent. The staff of a necromancer is marked "
-"with the plague, and any foe struck down by it will rise again in unlife."
-msgstr ""
-"Одна из выдающихся областей так называемой \"черной магии\" — искусство "
-"некроманта, ужасная способность возрождать мертвых. Эта область является "
-"запрещенным всеми людскими законами ответвлением черной магии, так как "
-"вселяет страх перед невиданными новыми возможностями.\n"
-"\n"
-"Эта возможность — первый шаг, совершаемый человеком, чтобы обмануть смерть. "
-"Высшей степени могущества черный маг способен достигнуть и без потери "
-"человечности, однако его сила бледнеет на фоне смертельных возможностей "
-"личей. Их магия только укрепила физическое тело, в отличие от хрупкого "
-"полуразложившегося тела лича.\n"
-"\n"
-"Примечание: атака на расстоянии является магической и всегда имеет высокие "
-"шансы поразить противника. Посох некроманта помечен чумой, поэтому любой, "
-"погибший от него, восстанет снова в виде мертвеца."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:50
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:62
-#: data/units/Undead_Necromancer.cfg:66
-msgid "chill wave"
-msgstr "волна холода"
 
 #: data/english.cfg:2
 msgid "Easy"
@@ -5102,7 +3848,8 @@ msgid "Survive for 32 turns."
 msgstr "Продержитесь 32 хода."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
-msgid "Survival all enemy attacks."
+#, fuzzy
+msgid "Survive all enemy attacks."
 msgstr "Отбейте все атаки противника."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
@@ -5110,10 +3857,11 @@ msgid "Death of your team leaders."
 msgstr "Гибель лидеров команды."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
+#, fuzzy
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
-"impossible. Frankly, I don't got a clue to how you did it, so send me the "
-"replay by mail to: roze@roze.mine.nu. Thank You!"
+"impossible. Frankly, I haven't got a clue as to how you did it, so send me "
+"the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 "Поздравляю, много людей признало, что выжить на этой карте невозможно. Даже "
 "я не представляю, как вам удалось это, поэтому, пожалуйста, отправьте повтор "
@@ -6113,26 +4861,6 @@ msgstr "бесстрашная"
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Бьется нормально во время неблагоприятного времени суток"
 
-#: data/tutorial/units/Fighteress.cfg:3
-msgid "female^Fighter"
-msgstr "Боец"
-
-#: data/tutorial/units/Quintain.cfg:3
-msgid "Quintain"
-msgstr "Манекен"
-
-#: data/tutorial/units/Quintain.cfg:13
-msgid ""
-"Quintains are used to practice swordplay and jousting on.  It would be "
-"extremely unusual to be attacked by one."
-msgstr ""
-"Манекены используются для тренировок и проведения рыцарских турниров. Было "
-"бы очень странным быть атакованным подобным манекеном."
-
-#: data/tutorial/units/Quintain.cfg:20
-msgid "flail"
-msgstr "цеп"
-
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
 msgstr "Галеон"
@@ -6153,6 +4881,52 @@ msgstr ""
 msgid "dummy"
 msgstr "ложный"
 
+#: data/units/Boat_Galleon.cfg:23 data/units/Drake_Enforcer.cfg:102
+#: data/units/Drake_Gladiator.cfg:154 data/units/Drake_Glider.cfg:77
+#: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
+#: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
+#: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
+#: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
+#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:70
+#: data/units/Elvish_Shaman.cfg:30 data/units/Elvish_Shaman.cfg:68
+#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Shyde.cfg:57
+#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:75
+#: data/units/Elvish_Sylph.cfg:29 data/units/Elvish_Sylph.cfg:57
+#: data/units/Goblin_Pillager.cfg:73
+#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:22
+#: data/units/Human_Loyalist_Iron_Mauler.cfg:24
+#: data/units/Human_Loyalist_Shock_Trooper.cfg:22 data/units/Human_Mage.cfg:56
+#: data/units/Human_Mage_Arch.cfg:41 data/units/Human_Mage_Great.cfg:30
+#: data/units/Human_Mage_Red.cfg:51 data/units/Human_Mage_Silver.cfg:88
+#: data/units/Human_Mage_White.cfg:88 data/units/Human_Mage_of_Light.cfg:68
+#: data/units/Human_Outlaw.cfg:23 data/units/Human_Outlaw.cfg:60
+#: data/units/Human_Outlaw_Bandit.cfg:35
+#: data/units/Human_Outlaw_Footpad.cfg:23
+#: data/units/Human_Outlaw_Footpad.cfg:70 data/units/Human_Outlaw_Thug.cfg:23
+#: data/units/Mermaid_Diviner.cfg:69 data/units/Mermaid_Enchantress.cfg:26
+#: data/units/Mermaid_Enchantress.cfg:64 data/units/Mermaid_Initiate.cfg:29
+#: data/units/Mermaid_Initiate.cfg:67 data/units/Mermaid_Priestess.cfg:66
+#: data/units/Mermaid_Siren.cfg:30 data/units/Mermaid_Siren.cfg:75
+#: data/units/Merman_Entangler.cfg:57 data/units/Merman_Netcaster.cfg:56
+#: data/units/Monster_Cave_Spider.cfg:86 data/units/Monster_Cuttle_Fish.cfg:35
+#: data/units/Monster_Giant_Mudcrawler.cfg:47
+#: data/units/Monster_Giant_Mudcrawler.cfg:85
+#: data/units/Monster_Giant_Scorpion.cfg:71
+#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:60
+#: data/units/Monster_Yeti.cfg:34 data/units/Saurian_Augur.cfg:38
+#: data/units/Saurian_Oracle.cfg:38 data/units/Saurian_Soothsayer.cfg:38
+#: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:27
+#: data/units/Troll_Hero.cfg:26 data/units/Troll_Rocklobber.cfg:29
+#: data/units/Troll_Rocklobber.cfg:66 data/units/Troll_Warrior.cfg:29
+#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:46
+#: data/units/Undead_Corpse_Walking.cfg:48
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:26
+#: data/units/Undead_Necromancer.cfg:27
+#: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
+#: data/units/Wose_Ancient.cfg:31 data/units/Wose_Elder.cfg:30
+msgid "impact"
+msgstr "крушащий"
+
 #: data/units/Boat_Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
 msgstr "Пиратский галеон"
@@ -6171,6 +4945,70 @@ msgstr ""
 #: data/units/Boat_Transport_Galleon.cfg:20
 msgid "ballista"
 msgstr "баллиста"
+
+#: data/units/Boat_Pirate_Galleon.cfg:21
+#: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:119
+#: data/units/Drake_Enforcer.cfg:135 data/units/Drake_Gladiator.cfg:111
+#: data/units/Drake_Slasher.cfg:118 data/units/Drake_Warden.cfg:124
+#: data/units/Dwarvish_Dragonguard.cfg:62 data/units/Dwarvish_Guardsman.cfg:33
+#: data/units/Dwarvish_Guardsman.cfg:81 data/units/Dwarvish_Sentinel.cfg:41
+#: data/units/Dwarvish_Sentinel.cfg:89 data/units/Dwarvish_Stalwart.cfg:36
+#: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
+#: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
+#: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
+#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
+#: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
+#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
+#: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
+#: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
+#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
+#: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
+#: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
+#: data/units/Goblin_Spearman.cfg:160
+#: data/units/Human_Horse_Grand_Knight.cfg:64
+#: data/units/Human_Horse_Knight.cfg:63 data/units/Human_Horse_Lancer.cfg:25
+#: data/units/Human_Horse_Paladin.cfg:71 data/units/Human_Horseman.cfg:25
+#: data/units/Human_Loyalist_Bowman.cfg:62
+#: data/units/Human_Loyalist_Cavalier.cfg:86
+#: data/units/Human_Loyalist_Dragoon.cfg:85
+#: data/units/Human_Loyalist_Duelist.cfg:109
+#: data/units/Human_Loyalist_General.cfg:93
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:89
+#: data/units/Human_Loyalist_Halberdier.cfg:31
+#: data/units/Human_Loyalist_Javelineer.cfg:28
+#: data/units/Human_Loyalist_Javelineer.cfg:84
+#: data/units/Human_Loyalist_Lieutenant.cfg:78
+#: data/units/Human_Loyalist_Longbowman.cfg:64
+#: data/units/Human_Loyalist_Master_Bowman.cfg:63
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:188
+#: data/units/Human_Loyalist_Pikeman.cfg:54
+#: data/units/Human_Loyalist_Sergeant.cfg:82
+#: data/units/Human_Loyalist_Spearman.cfg:63
+#: data/units/Human_Loyalist_Spearman.cfg:204
+#: data/units/Human_Outlaw_Poacher.cfg:73
+#: data/units/Human_Outlaw_Trapper.cfg:103 data/units/Human_Peasant.cfg:24
+#: data/units/Human_Peasant.cfg:67 data/units/Merman_Entangler.cfg:25
+#: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
+#: data/units/Merman_Hunter.cfg:23 data/units/Merman_Hunter.cfg:174
+#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:134
+#: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:22
+#: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
+#: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
+#: data/units/Monster_Giant_Scorpion.cfg:25
+#: data/units/Monster_Sea_Serpent.cfg:22 data/units/Orcish_Archer.cfg:179
+#: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
+#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
+#: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
+#: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
+#: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
+#: data/units/Saurian_Skirmisher.cfg:32 data/units/Saurian_Skirmisher.cfg:75
+#: data/units/Undead_Skele_Bone_Shooter.cfg:81
+#: data/units/Undead_Skele_Chocobone.cfg:26
+#: data/units/Undead_Skele_Death_Knight.cfg:89
+#: data/units/Undead_Skele_Soul_Shooter.cfg:71
+#: data/units/Undead_Skeleton_Archer.cfg:71
+msgid "pierce"
+msgstr "колющий"
 
 #: data/units/Boat_Transport_Galleon.cfg:3
 msgid "Transport Galleon"
@@ -6202,6 +5040,112 @@ msgid ""
 "cold attacks than most other drakes."
 msgstr ""
 
+#: data/units/Drake_Armageddon.cfg:79 data/units/Drake_Burner.cfg:61
+#: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
+#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:22
+#: data/units/Gryphon_Master.cfg:25 data/units/Gryphon_Rider.cfg:25
+#: data/units/Undead_Corpse_Ghoul.cfg:65
+#: data/units/Undead_Corpse_Necrophage.cfg:33
+#: data/units/Undead_Spirit_Nightgaunt.cfg:53
+#: data/units/Undead_Spirit_Shadow.cfg:27
+msgid "claws"
+msgstr "когти"
+
+#: data/units/Drake_Armageddon.cfg:81 data/units/Drake_Blademaster.cfg:67
+#: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
+#: data/units/Drake_Enforcer.cfg:69 data/units/Drake_Fighter.cfg:64
+#: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
+#: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:68
+#: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
+#: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
+#: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
+#: data/units/Dwarvish_Fighter.cfg:27 data/units/Dwarvish_Lord.cfg:29
+#: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
+#: data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Dwarvish_Thunderguard.cfg:25
+#: data/units/Dwarvish_Ulfserker.cfg:33 data/units/Elvish_Archer.cfg:24
+#: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
+#: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
+#: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
+#: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
+#: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
+#: data/units/Goblin_Direwolf_Rider.cfg:35
+#: data/units/Goblin_Direwolf_Rider.cfg:83 data/units/Goblin_Knight.cfg:35
+#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:24
+#: data/units/Gryphon_Master.cfg:27 data/units/Gryphon_Rider.cfg:27
+#: data/units/Human_Horse_Grand_Knight.cfg:26
+#: data/units/Human_Horse_Knight.cfg:25
+#: data/units/Human_Loyalist_Bowman.cfg:25
+#: data/units/Human_Loyalist_Cavalier.cfg:37
+#: data/units/Human_Loyalist_Cavalryman.cfg:51
+#: data/units/Human_Loyalist_Dragoon.cfg:36
+#: data/units/Human_Loyalist_Duelist.cfg:71
+#: data/units/Human_Loyalist_Fencer.cfg:126
+#: data/units/Human_Loyalist_General.cfg:45
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:41
+#: data/units/Human_Loyalist_Halberdier.cfg:215
+#: data/units/Human_Loyalist_Lieutenant.cfg:35
+#: data/units/Human_Loyalist_Longbowman.cfg:27
+#: data/units/Human_Loyalist_Master_Bowman.cfg:26
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:30
+#: data/units/Human_Loyalist_Royal_Guard.cfg:28
+#: data/units/Human_Loyalist_Sergeant.cfg:34
+#: data/units/Human_Loyalist_Swordsman.cfg:27
+#: data/units/Human_Outlaw_Assassin.cfg:30
+#: data/units/Human_Outlaw_Assassin.cfg:111
+#: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
+#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
+#: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
+#: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
+#: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
+#: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
+#: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:69
+#: data/units/Orcish_Assassin.cfg:107 data/units/Orcish_Crossbowman.cfg:24
+#: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
+#: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:26
+#: data/units/Orcish_Slayer.cfg:117 data/units/Orcish_Slurbow.cfg:24
+#: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
+#: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:43
+#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:67
+#: data/units/Undead_Corpse_Necrophage.cfg:35
+#: data/units/Undead_Skele_Bone_Shooter.cfg:43
+#: data/units/Undead_Skele_Death_Knight.cfg:46
+#: data/units/Undead_Skele_Deathblade.cfg:44
+#: data/units/Undead_Skele_Draug.cfg:44
+#: data/units/Undead_Skele_Revenant.cfg:43
+#: data/units/Undead_Skele_Soul_Shooter.cfg:33
+#: data/units/Undead_Skeleton.cfg:108
+#: data/units/Undead_Spirit_Nightgaunt.cfg:54
+#: data/units/Undead_Spirit_Shadow.cfg:28
+#: data/units/Undead_Spirit_Spectre.cfg:46
+#: data/units/Undead_Spirit_Wraith.cfg:23
+msgid "blade"
+msgstr "режущий"
+
+#: data/units/Drake_Armageddon.cfg:129 data/units/Drake_Blademaster.cfg:114
+#: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
+#: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
+#: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
+#: data/units/Drake_Hurricane.cfg:149 data/units/Drake_Inferno.cfg:117
+#: data/units/Drake_Sky.cfg:176 data/units/Drake_Warrior.cfg:118
+msgid "fire breath"
+msgstr "огненное дыхание"
+
+#: data/units/Drake_Armageddon.cfg:131 data/units/Drake_Blademaster.cfg:116
+#: data/units/Drake_Burner.cfg:111 data/units/Drake_Fighter.cfg:113
+#: data/units/Drake_Fire.cfg:118 data/units/Drake_Flameheart.cfg:156
+#: data/units/Drake_Flare.cfg:137 data/units/Drake_Glider.cfg:131
+#: data/units/Drake_Hurricane.cfg:151 data/units/Drake_Inferno.cfg:119
+#: data/units/Drake_Sky.cfg:178 data/units/Drake_Warrior.cfg:120
+#: data/units/Dwarvish_Runemaster.cfg:63 data/units/Goblin_Pillager.cfg:36
+#: data/units/Human_Mage.cfg:104 data/units/Human_Mage_Arch.cfg:88
+#: data/units/Human_Mage_Great.cfg:77 data/units/Human_Mage_Red.cfg:98
+#: data/units/Human_Mage_Silver.cfg:132 data/units/Orcish_Archer.cfg:238
+#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:121
+msgid "fire"
+msgstr "огонь"
+
 #: data/units/Drake_Blademaster.cfg:3
 msgid "Drake Blademaster"
 msgstr "Дракон мастер клинка"
@@ -6213,6 +5157,35 @@ msgid ""
 msgstr ""
 "Драконы, мастерски использующие мечи, присягали специальному ордену. В битве "
 "их отличают черные и белые боевые цвета."
+
+#: data/units/Drake_Blademaster.cfg:66 data/units/Drake_Clasher.cfg:75
+#: data/units/Drake_Enforcer.cfg:68 data/units/Drake_Flameheart.cfg:78
+#: data/units/Drake_Flare.cfg:82 data/units/Drake_Gladiator.cfg:67
+#: data/units/Drake_Warrior.cfg:70 data/units/Elvish_Archer.cfg:22
+#: data/units/Elvish_Avenger.cfg:61 data/units/Elvish_Captain.cfg:35
+#: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:22
+#: data/units/Elvish_Hero.cfg:21 data/units/Elvish_Marksman.cfg:53
+#: data/units/Elvish_Marshal.cfg:34 data/units/Elvish_Outrider.cfg:30
+#: data/units/Elvish_Ranger.cfg:58 data/units/Elvish_Rider.cfg:32
+#: data/units/Elvish_Scout.cfg:31 data/units/Elvish_Sharpshooter.cfg:47
+#: data/units/Human_Horse_Grand_Knight.cfg:24
+#: data/units/Human_Horse_Knight.cfg:23 data/units/Human_Horse_Paladin.cfg:31
+#: data/units/Human_Loyalist_Bowman.cfg:23
+#: data/units/Human_Loyalist_Cavalier.cfg:35
+#: data/units/Human_Loyalist_Cavalryman.cfg:49
+#: data/units/Human_Loyalist_Dragoon.cfg:34
+#: data/units/Human_Loyalist_General.cfg:43
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:39
+#: data/units/Human_Loyalist_Lieutenant.cfg:33
+#: data/units/Human_Loyalist_Longbowman.cfg:25
+#: data/units/Human_Loyalist_Master_Bowman.cfg:24
+#: data/units/Human_Loyalist_Royal_Guard.cfg:26
+#: data/units/Human_Loyalist_Sergeant.cfg:32
+#: data/units/Human_Loyalist_Swordsman.cfg:25 data/units/Naga_Fighter.cfg:23
+#: data/units/Naga_Myrmidon.cfg:27 data/units/Naga_Warrior.cfg:26
+#: data/units/Orcish_Grunt.cfg:74 data/units/Orcish_Leader.cfg:28
+msgid "sword"
+msgstr "меч"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
@@ -6289,6 +5262,14 @@ msgstr ""
 "Великий дракон в броне — это само воплощение грубой силы его народа. Долгие "
 "часы, проведенные в кузнице, обеспечили ему надежную броню и вооружение, и "
 "одели его вплоть до пальцев ног блестящей броней."
+
+#: data/units/Drake_Enforcer.cfg:101 data/units/Drake_Gladiator.cfg:153
+#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:21
+#: data/units/Human_Loyalist_Iron_Mauler.cfg:23
+#: data/units/Human_Mage_of_Light.cfg:67 data/units/Human_Outlaw.cfg:22
+#: data/units/Human_Outlaw_Bandit.cfg:34 data/units/Troll_Great.cfg:26
+msgid "mace"
+msgstr "булава"
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -6837,6 +5818,25 @@ msgstr ""
 "боях отчасти влияет на их уязвимость, их природная грация позволяет им быть "
 "намного лучше в бою только что призванных рекрутов людей."
 
+#: data/units/Elvish_Archer.cfg:75 data/units/Elvish_Avenger.cfg:109
+#: data/units/Elvish_Captain.cfg:83 data/units/Elvish_Champion.cfg:80
+#: data/units/Elvish_Fighter.cfg:65 data/units/Elvish_Hero.cfg:69
+#: data/units/Elvish_Marshal.cfg:77 data/units/Elvish_Outrider.cfg:79
+#: data/units/Elvish_Ranger.cfg:106 data/units/Elvish_Rider.cfg:81
+#: data/units/Elvish_Scout.cfg:80 data/units/Human_Loyalist_Bowman.cfg:61
+#: data/units/Human_Loyalist_Longbowman.cfg:63
+#: data/units/Human_Loyalist_Master_Bowman.cfg:62
+#: data/units/Human_Outlaw_Poacher.cfg:72
+#: data/units/Human_Outlaw_Trapper.cfg:102 data/units/Orcish_Archer.cfg:177
+#: data/units/Orcish_Archer.cfg:236 data/units/Orcish_Leader.cfg:66
+#: data/units/Orcish_Ruler.cfg:64 data/units/Orcish_Sovereign.cfg:65
+#: data/units/Orcish_Warlord.cfg:76
+#: data/units/Undead_Skele_Bone_Shooter.cfg:79
+#: data/units/Undead_Skele_Soul_Shooter.cfg:69
+#: data/units/Undead_Skeleton_Archer.cfg:69
+msgid "bow"
+msgstr "лук"
+
 #: data/units/Elvish_Archer.cfg:158
 msgid "female^Elvish Archer"
 msgstr "Эльфийка лучница"
@@ -6940,6 +5940,19 @@ msgstr ""
 "\n"
 "Примечание:"
 
+#: data/units/Elvish_Druid.cfg:27 data/units/Elvish_Enchantress.cfg:25
+#: data/units/Elvish_Shaman.cfg:29 data/units/Elvish_Sorceress.cfg:25
+#: data/units/Human_Mage.cfg:54 data/units/Human_Mage_Arch.cfg:39
+#: data/units/Human_Mage_Great.cfg:28 data/units/Human_Mage_Red.cfg:49
+#: data/units/Human_Mage_Silver.cfg:86 data/units/Human_Mage_White.cfg:86
+#: data/units/Mermaid_Diviner.cfg:67 data/units/Mermaid_Enchantress.cfg:24
+#: data/units/Mermaid_Initiate.cfg:27 data/units/Mermaid_Priestess.cfg:64
+#: data/units/Saurian_Augur.cfg:36 data/units/Saurian_Oracle.cfg:36
+#: data/units/Saurian_Soothsayer.cfg:36
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:24
+msgid "staff"
+msgstr "посох"
+
 #: data/units/Elvish_Druid.cfg:65 data/units/Elvish_Shyde.cfg:56
 msgid "ensnare"
 msgstr "заманивать"
@@ -6970,6 +5983,26 @@ msgstr ""
 #: data/units/Elvish_Sorceress.cfg:74
 msgid "entangle"
 msgstr "путы"
+
+#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
+#: data/units/Elvish_Sylph.cfg:127
+msgid "faerie fire"
+msgstr "фееричный огонь"
+
+#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
+#: data/units/Elvish_Sylph.cfg:128 data/units/Saurian_Augur.cfg:75
+#: data/units/Saurian_Oracle.cfg:75 data/units/Saurian_Soothsayer.cfg:75
+#: data/units/Undead_Necro_Ancient_Lich.cfg:29
+#: data/units/Undead_Necro_Ancient_Lich.cfg:69
+#: data/units/Undead_Necro_Dark_Adept.cfg:32
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
+#: data/units/Undead_Necro_Lich.cfg:31 data/units/Undead_Necro_Lich.cfg:71
+#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:26
+#: data/units/Undead_Spirit_Ghost.cfg:64
+#: data/units/Undead_Spirit_Spectre.cfg:86
+#: data/units/Undead_Spirit_Wraith.cfg:68
+msgid "cold"
+msgstr "холод"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -7739,6 +6772,12 @@ msgstr ""
 "\n"
 "Примечание:"
 
+#: data/units/Human_Loyalist_Duelist.cfg:69
+#: data/units/Human_Loyalist_Fencer.cfg:124
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:28
+msgid "sabre"
+msgstr "сабля"
+
 #: data/units/Human_Loyalist_Fencer.cfg:3
 msgid "Fencer"
 msgstr "Фехтовальщик"
@@ -8101,6 +7140,10 @@ msgstr ""
 "доспехи. Недостатком подобной тяжелой брони, конечно является время, "
 "необходимое для вступления и выхода из битвы."
 
+#: data/units/Human_Loyalist_Shock_Trooper.cfg:20
+msgid "morning star"
+msgstr "моргенштерн"
+
 #: data/units/Human_Loyalist_Spearman.cfg:3
 msgid "Spearman"
 msgstr "Копьеносец"
@@ -8187,6 +7230,10 @@ msgstr ""
 "\n"
 "Примечание:"
 
+#: data/units/Human_Mage.cfg:102 data/units/Human_Mage_Silver.cfg:130
+msgid "missile"
+msgstr "снаряд"
+
 #: data/units/Human_Mage.cfg:160
 msgid "female^Mage"
 msgstr "Волшебница"
@@ -8227,6 +7274,15 @@ msgstr ""
 "\n"
 "Примечание:"
 
+#: data/units/Human_Mage_Arch.cfg:87 data/units/Human_Mage_Great.cfg:76
+#: data/units/Human_Mage_Red.cfg:97
+msgid "fireball"
+msgstr "огненный шар"
+
+#: data/units/Human_Mage_Arch.cfg:127
+msgid "female^Arch Mage"
+msgstr "Старшая волшебница"
+
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Великий маг"
@@ -8259,6 +7315,10 @@ msgstr ""
 "действенно, когда солдаты остолбенели от страха.\n"
 "\n"
 "Примечание:"
+
+#: data/units/Human_Mage_Great.cfg:116
+msgid "female^Great Mage"
+msgstr "Великая волшебница"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
@@ -8294,6 +7354,10 @@ msgstr ""
 "есть много трюков в запасе, включая и огонь, из-за которого они и получили "
 "свое прозвище.\n"
 "Примечание:"
+
+#: data/units/Human_Mage_Red.cfg:137
+msgid "female^Red Mage"
+msgstr "Красная волшебница"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
@@ -8346,6 +7410,10 @@ msgstr ""
 "\n"
 "Примечание: Серебряные маги хорошо защищены от всех форм магического "
 "повреждения."
+
+#: data/units/Human_Mage_Silver.cfg:176
+msgid "female^Silver Mage"
+msgstr "Серебряная волшебница"
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
@@ -8439,6 +7507,11 @@ msgstr ""
 "оружием, изгои хорошо знают их убийственную возможность, а также доступность "
 "боеприпасов. Изгои несколько хуже бьются днем, предпочитая скрываться под "
 "покровом ночи."
+
+#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
+#: data/units/Troll_Rocklobber.cfg:65
+msgid "sling"
+msgstr "праща"
 
 #: data/units/Human_Outlaw.cfg:97
 msgid "female^Outlaw"
@@ -9338,6 +8411,11 @@ msgstr ""
 "\n"
 "Примечание:"
 
+#: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
+#: data/units/Orcish_Warlord.cfg:23 data/units/Orcish_Warrior.cfg:21
+msgid "greatsword"
+msgstr "большой меч"
+
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Орк разрушитель"
@@ -9465,6 +8543,11 @@ msgstr ""
 "против кого используется.\n"
 "\n"
 "Примечание:"
+
+#: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
+#: data/units/Saurian_Soothsayer.cfg:74
+msgid "curse"
+msgstr "проклятие"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -9778,6 +8861,13 @@ msgstr ""
 "\n"
 "Примечание:"
 
+#: data/units/Undead_Corpse_Soulless.cfg:44
+#: data/units/Undead_Corpse_Walking.cfg:46
+#: data/units/Undead_Necro_Ancient_Lich.cfg:27
+#: data/units/Undead_Necro_Lich.cfg:29 data/units/Undead_Spirit_Ghost.cfg:24
+msgid "touch"
+msgstr "прикосновение"
+
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Ходячий труп"
@@ -9813,6 +8903,11 @@ msgstr ""
 "следует опасаться гораздо более худших вещей, нежели смерть.\n"
 "\n"
 "Примечание:"
+
+#: data/units/Undead_Necro_Ancient_Lich.cfg:68
+#: data/units/Undead_Necro_Lich.cfg:70
+msgid "chill tempest"
+msgstr "волна холода"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
@@ -9882,6 +8977,11 @@ msgstr ""
 "\n"
 "Примечание:"
 
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:62
+#: data/units/Undead_Necromancer.cfg:66
+msgid "chill wave"
+msgstr "волна холода"
+
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Лич"
@@ -9910,6 +9010,10 @@ msgstr ""
 "требуется значительная дань от того, кто уже достиг этого.\n"
 "\n"
 "Примечание:"
+
+#: data/units/Undead_Necromancer.cfg:3
+msgid "Necromancer"
+msgstr "Некромант"
 
 #: data/units/Undead_Necromancer.cfg:21
 msgid ""
@@ -10299,6 +9403,11 @@ msgstr ""
 "не используют, также они медлительны в движении.\n"
 "\n"
 "Примечание:"
+
+#: data/units/Wose.cfg:30 data/units/Wose_Ancient.cfg:29
+#: data/units/Wose_Elder.cfg:28
+msgid "crush"
+msgstr "дробление"
 
 #: data/units/Wose_Ancient.cfg:3
 msgid "Ancient Wose"
@@ -10757,7 +9866,7 @@ msgstr ""
 "кампании."
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:350
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:331
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
@@ -10821,15 +9930,15 @@ msgstr "Игра против компьютера"
 msgid "Login: "
 msgstr "Имя пользователя: "
 
-#: src/game.cpp:1264 src/playcampaign.cpp:107 src/playcampaign.cpp:322
+#: src/game.cpp:1264 src/playcampaign.cpp:89 src/playcampaign.cpp:303
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game.cpp:1266 src/playcampaign.cpp:109 src/playcampaign.cpp:325
+#: src/game.cpp:1266 src/playcampaign.cpp:91 src/playcampaign.cpp:306
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1278 src/playcampaign.cpp:111 src/playcampaign.cpp:328
+#: src/game.cpp:1278 src/playcampaign.cpp:93 src/playcampaign.cpp:309
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
@@ -11156,7 +10265,7 @@ msgstr "Содержание"
 msgid "Income"
 msgstr "Доход"
 
-#: src/menu_events.cpp:452 src/playcampaign.cpp:293 src/playcampaign.cpp:429
+#: src/menu_events.cpp:452 src/playcampaign.cpp:274 src/playcampaign.cpp:410
 msgid "Name:"
 msgstr "Название:"
 
@@ -11181,7 +10290,7 @@ msgstr "Сохранено"
 msgid "The game has been saved"
 msgstr "Игра успешно сохранена"
 
-#: src/menu_events.cpp:470 src/playcampaign.cpp:439
+#: src/menu_events.cpp:470 src/playcampaign.cpp:420
 msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
@@ -11202,7 +10311,7 @@ msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
 #: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:708
-#: src/playcampaign.cpp:118
+#: src/playcampaign.cpp:100
 msgid "Auto-Save"
 msgstr "автосохр"
 
@@ -11866,7 +10975,7 @@ msgstr "Выйти"
 msgid "Skip quickly to the active turn when observing"
 msgstr "Быстро перейти к активному ходу при наблюдении"
 
-#: src/multiplayer_ui.cpp:82
+#: src/multiplayer_ui.cpp:92
 msgid "Invalid Color"
 msgstr "Неверный цвет"
 
@@ -11919,43 +11028,43 @@ msgstr "Назад к старту"
 msgid "Back to turn "
 msgstr "Назад к ходу "
 
-#: src/playcampaign.cpp:270
+#: src/playcampaign.cpp:251
 msgid "Defeat"
 msgstr "Поражение"
 
-#: src/playcampaign.cpp:271
+#: src/playcampaign.cpp:252
 msgid "You have been defeated!"
 msgstr "Вы проиграли!"
 
-#: src/playcampaign.cpp:284
+#: src/playcampaign.cpp:265
 msgid " replay"
 msgstr " повтор"
 
-#: src/playcampaign.cpp:292
+#: src/playcampaign.cpp:273
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Вы хотите сохранить повтор данного сценария?"
 
-#: src/playcampaign.cpp:294
+#: src/playcampaign.cpp:275
 msgid "Save Replay"
 msgstr "Сохранить повтор"
 
-#: src/playcampaign.cpp:301
+#: src/playcampaign.cpp:282
 msgid "The replay could not be saved"
 msgstr "Повтор не может быть сохранен"
 
-#: src/playcampaign.cpp:341
+#: src/playcampaign.cpp:322
 msgid "Receiving data..."
 msgstr "Получение данных..."
 
-#: src/playcampaign.cpp:343
+#: src/playcampaign.cpp:324
 msgid "Downloading next scenario..."
 msgstr "Скачивание следующего уровеня..."
 
-#: src/playcampaign.cpp:428
+#: src/playcampaign.cpp:409
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Сохранить свою игру (и удалить файлы автосохранения)? "
 
-#: src/playcampaign.cpp:455
+#: src/playcampaign.cpp:436
 msgid "Unknown scenario: '"
 msgstr "Неизвестный сценарий: \""
 
@@ -12345,6 +11454,652 @@ msgstr "Вы можете просмотреть результаты в:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Помогите нам сделать Веснот лучше!"
+
+#~ msgid "Campaign Designer"
+#~ msgstr "Разработчик кампании"
+
+#~ msgid "Horse Lord"
+#~ msgstr "Лорд наездник"
+
+#~ msgid ""
+#~ "The greatest of the men of the plains, Horse Lords are heads of their "
+#~ "houses and are respected by all, friend or foe. Their sword can kill most "
+#~ "ordinary enemies, and their morning star crushes those who are left."
+#~ msgstr ""
+#~ "Лучший из людей равнин, Лорд наездник возглавляют свой род и уважаем "
+#~ "всеми, друзьями или врагами. Его меч убивает всех простых противников, а "
+#~ "его моргенштерн крушит тех, кто покрепче."
+
+#~ msgid "Mounted Fighter"
+#~ msgstr "Конный боец"
+
+#~ msgid ""
+#~ "The nobles of the men of the plains are trained with the rest of the "
+#~ "horsemen to become great warriors. However, they are also trained in "
+#~ "commanding their comrades, and they are the ones that become captains of "
+#~ "the armies of the Clans."
+#~ msgstr ""
+#~ "Благороднейшие из людей равнин, они натренированы управлять лошадьми, "
+#~ "чтобы стать великими воинами. Тем не менее, они также обучены командовать "
+#~ "своими товарищами, и они — одни из тех, кто станет капитанами армий "
+#~ "Кланов."
+
+#~ msgid "Mounted Warrior"
+#~ msgstr "Конный воин"
+
+#~ msgid ""
+#~ "Leaders of the plains, Mounted Warriors are skilled with the use of the "
+#~ "sword and the morning star. Riding horses, they are able to move around "
+#~ "the battlefield with great speed, and can provide much needed assistance "
+#~ "to different fronts."
+#~ msgstr ""
+#~ "Хозяева равнин — конные воины — используют меч и утреннюю звезду. На "
+#~ "лошадях они способны передвигаться по полю битвы с большой скоростью и "
+#~ "предоставлять необходимую помощь на различных фронтах."
+
+#~ msgid "Skeletal Dragon"
+#~ msgstr "Скелетный дракон"
+
+#~ msgid ""
+#~ "Long ago one of the mightiest living creatures, the feared Dragon has "
+#~ "become only bones and dark sinew. Long after its death, it was raised "
+#~ "through the dark powers of necromancy, which it now serves. The Skeletal "
+#~ "Dragon may look like nothing more than a pile of bones, but few people "
+#~ "who thought that way lived long enough to change their minds."
+#~ msgstr ""
+#~ "Давным-давно от страшного Дракона, одного из величественных созданий, "
+#~ "остались всего лишь кости и кучка темного пепла. Спустя много лет после "
+#~ "смерти они были подняты с помощью темной силы некромантов для того, чтобы "
+#~ "служить им. Скелетный дракон может создавать впечатление всего лишь груды "
+#~ "костей, но есть несколько людей, кто хотя бы раз встречал их, изменили "
+#~ "свое мнение о них."
+
+#~ msgid "jaw"
+#~ msgstr "челюсти"
+
+#~ msgid "Current Maintainer"
+#~ msgstr "Текущий разработчик"
+
+#~ msgid "female^Battle Princess"
+#~ msgstr "Боевая принцесса"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals, and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. Now battle-hardened and strong of will, she "
+#~ "can now aid those around her in the art of combat."
+#~ msgstr ""
+#~ "Благородная от рождения, принцесса изучала искусство меча с великими "
+#~ "генералами и тактику боя с великими стратегами, сделавшими ее великой "
+#~ "воительницей и лидером. Сильная волей и закаленная в бою, она поможет "
+#~ "всем, кто окружает ее, в искусстве битвы."
+
+#~ msgid "scepter of fire"
+#~ msgstr "скипетр огня"
+
+#~ msgid "Cockatrice"
+#~ msgstr "Василиск"
+
+#~ msgid ""
+#~ "Sometimes known as 'basilisks', these mystical creatures are said to be "
+#~ "able to turn the living to stone. Needless to say, this makes them "
+#~ "extremely dangerous."
+#~ msgstr ""
+#~ "Известные как \"василиски\", эти таинственные создания способны "
+#~ "превратить живое в камень. Надо ли говорить, что это делает их очень "
+#~ "опасными."
+
+#~ msgid "gaze"
+#~ msgstr "пристальный взгляд"
+
+#~ msgid "Commander"
+#~ msgstr "Командир"
+
+#~ msgid ""
+#~ "The rank of Commander is held by those who lead battle groups into "
+#~ "combat. Possessing leadership skills, they give lower-level units in "
+#~ "adjacent hexes improved performance in combat. Commanders are best "
+#~ "skilled with the sword, although they also carry a bow to use when "
+#~ "necessary. If the Commander is lost, so is the battle."
+#~ msgstr ""
+#~ "Обязанности командира — возглавлять боевые группы в бою. Знающий навыки "
+#~ "лидерства, он дает соседним соединениям низшего уровня улучшенные "
+#~ "действия в битве. Командиры отлично обучены владеть мечом, к тому же они "
+#~ "могут использовать при необходимости и лук. Гибель командира означает "
+#~ "проигрыш в битве."
+
+#~ msgid "female^Dark Queen"
+#~ msgstr "Темная королева"
+
+#~ msgid ""
+#~ "The evil queen mother Asheviere has terrorized Wesnoth for many years. "
+#~ "Her knowledge of magic makes her a worthy foe in combat, although her "
+#~ "power is mostly derived from those she commands."
+#~ msgstr ""
+#~ "Злобная королева-мать Ашивье терроризировала Веснот много лет. Ее знания "
+#~ "в магии делают ее опасным врагом в битве, хотя ее сила главным образом "
+#~ "получена из тех, кем она командует."
+
+#~ msgid "scepter"
+#~ msgstr "скипетр"
+
+#~ msgid "Elder Mage"
+#~ msgstr "Древний маг"
+
+#~ msgid ""
+#~ "Once great, Elder Magi have seen their power a little diminished from "
+#~ "wearying years of battle. Nevertheless they remain feared on the "
+#~ "battlefield on account of their powerful lightning bolts."
+#~ msgstr ""
+#~ "Когда-то великие, древние маги поняли, что их сила стала постепенно "
+#~ "угасать от изнурительных лет битв. Тем не менее, они остаются грозными на "
+#~ "поле битвы, благодаря их мощным атакам молниями."
+
+#~ msgid "lightning"
+#~ msgstr "молния"
+
+#~ msgid "Elvish High Lord"
+#~ msgstr "Эльф Великий лорд"
+
+#~ msgid ""
+#~ "The leaders of the elves do not fall sallow and frail with age. Rather, "
+#~ "it is then that they grow to their true potential. Quiet and "
+#~ "contemplative in times of peace, a High Lord in the full of his wrath is "
+#~ "an awesome sight indeed."
+#~ msgstr ""
+#~ "Лидеры эльфов с годами не становятся дряхлыми и хилыми. Напротив, с "
+#~ "возрастом они реализуют свой истинный потенциал. Спокойный и задумчивый в "
+#~ "мирное время, Высший лорд выглядит в случае опасности яростно и "
+#~ "устрашающе."
+
+#~ msgid "female^Elvish Lady"
+#~ msgstr "Эльфийка леди"
+
+#~ msgid ""
+#~ "Elves choose their leaders for their power and wisdom; foresight is what "
+#~ "has protected them in times of uncertainty. Their just reign is rewarded "
+#~ "by the unflagging fealty of their people, which is the greatest gift any "
+#~ "ruler could ask for."
+#~ msgstr ""
+#~ "Эльфы выбирают своих лидеров за их силу и мудрость; предвидение — то, что "
+#~ "защищает их в трудные времена. Они просто правят своими людьми, это "
+#~ "величайший подарок для любого правителя."
+
+#~ msgid "shove"
+#~ msgstr "толчок"
+
+#~ msgid "Elvish Lord"
+#~ msgstr "Эльф лорд"
+
+#~ msgid ""
+#~ "The nobility of the elves are possessed of merit to match their standing "
+#~ "in society. Elvish Lords are the wisest and strongest of their people, "
+#~ "and are fearsome in their command of magic."
+#~ msgstr ""
+#~ "Благородство эльфов это то, что позволяет занимать им положение в "
+#~ "обществе. Эльфийские Лорды являются знатью и являются одними из самых "
+#~ "сильных представителей своего народа, они страшны при использовании своей "
+#~ "магии."
+
+#~ msgid "Fighter"
+#~ msgstr "Боец"
+
+#~ msgid ""
+#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#~ "attack from enemies. However they have the potential to become great "
+#~ "warriors one day."
+#~ msgstr ""
+#~ "Молодые и дерзкие, бойцы вооружены мечом и уязвимы атакам врагов. Тем не "
+#~ "менее, однажды они могут стать великими воинами."
+
+#~ msgid "Lord"
+#~ msgstr "Лорд"
+
+#~ msgid ""
+#~ "The noble leaders of many troops, Lords are especially strong in melee "
+#~ "combat, and also possess skill with the bow. Like Commanders, Lords "
+#~ "possess leadership skills, and improve the fighting ability of all "
+#~ "adjacent lower-level units."
+#~ msgstr ""
+#~ "Благородные лидеры солдат, лорды особенно сильны в рукопашной схватке и "
+#~ "также владеют навыками обращения с луком. Как и командиры, лорды имеют "
+#~ "навыки лидерства и повышают боеспособность всех соседних соединений "
+#~ "низших уровней."
+
+#~ msgid "female^Princess"
+#~ msgstr "Принцесса"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. The units of lower level around the Princess "
+#~ "will fight better due to her presence. The Princess is also nimble and "
+#~ "dextrous, having skills like that of a thief."
+#~ msgstr ""
+#~ "Благородная от рождения, принцесса изучала искусство меча с великими "
+#~ "генералами и тактику боя с великими стратегами, сделавшими ее великим "
+#~ "бойцом и лидером. Соединения низшего уровня, окружающие Принцессу, будут "
+#~ "драться лучше под ее командованием. Принцесса также быстра и проворна, "
+#~ "благодаря чему у нее есть навыки вора."
+
+#~ msgid "Princess"
+#~ msgstr "Принцесса"
+
+#~ msgid "Sea Orc"
+#~ msgstr "Морской орк"
+
+#~ msgid ""
+#~ "While often viewed as inferior to their land loving counterparts, Sea "
+#~ "Orcs represent a great leap for all goblinoids as they have adapted to "
+#~ "aquatic environments. With their curved swords they are competent "
+#~ "fighters, although their lack of a ranged attack and poor defence on land "
+#~ "do represent strategic weaknesses."
+#~ msgstr ""
+#~ "Пока большинство низших созданий обожает свои земли, морские орки "
+#~ "представляют огромный прыжок для всех оркообразных, так как "
+#~ "приспособились к водной среде. Со своими изогнутыми мечами они являются "
+#~ "достойными бойцами, хотя отсутствие навыков в стрельбе и слабая "
+#~ "защищенность на суше делает их стратегически уязвимыми."
+
+#~ msgid "Sleeping Gryphon"
+#~ msgstr "Спящий грифон"
+
+#~ msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
+#~ msgstr "Тссс! Грифон спит! Лучше не будить его!"
+
+#~ msgid "Youth"
+#~ msgstr "Юноша"
+
+#~ msgid ""
+#~ "Today almost a boy, by his devotion to the crown he is seeking to become "
+#~ "a Lord -- to join the elite of human fighters."
+#~ msgstr ""
+#~ "Сегодня он — юноша, преданный короне и желающий стать лордом — чтобы "
+#~ "присоединиться к лучшим представителям людей-воинов."
+
+#~ msgid "training sword"
+#~ msgstr "тренировочный меч"
+
+#~ msgid "Fire Dragon"
+#~ msgstr "Огненный дракон"
+
+#~ msgid ""
+#~ "A fire dragon is an ancient and horrifying being that normally lives only "
+#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
+#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
+#~ "shadowy form flying in the distance. Legends are very specific about the "
+#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
+#~ "over one hundred feet in width, they swoop in and blast their prey with "
+#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
+#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
+#~ "cruel and often take underlings whom they lead to victory."
+#~ msgstr ""
+#~ "Огненный дракон — древнее и грозное существо, которое обычно живет лишь в "
+#~ "полузабытых легендах и небылицах. Уже несколько столетий в Весноте никто "
+#~ "не видел настоящего дракона, лишь только тень, летящую вдали. Легенды "
+#~ "чаще всего упоминают о буйствах драконов: незаметно подлетая на огромных "
+#~ "крыльях размером в сотню шагов, они внезапно нападают и изрыгают огненные "
+#~ "струи. Любой избежавший огненного дыхания дракона должен поберечься также "
+#~ "сокрушительного удара хвостом. Огненные драконы очень хитры и вероломны, "
+#~ "поэтому чаще всего побеждают они."
+
+#~ msgid "bite"
+#~ msgstr "укус"
+
+#~ msgid "tail"
+#~ msgstr "хвост"
+
+#~ msgid "Fireball"
+#~ msgstr "Огненный Шар"
+
+#~ msgid ""
+#~ "A Fireball. This is not to be used for anything else than a "
+#~ "'Move_Unit_Fake'!"
+#~ msgstr ""
+#~ "Огненный шар. Он никак не может быть использован, кроме как "
+#~ "\"Передвигать_Соединение\"!"
+
+#~ msgid "Noble Commander"
+#~ msgstr "Благородный командир"
+
+#~ msgid ""
+#~ "The rank of a noble Commander is held by those who lead battle groups "
+#~ "into combat. Possessing leadership skills, they give lower-level units in "
+#~ "adjacent hexes improved performance in combat. Commanders are best "
+#~ "skilled with the sword, although they also carry a bow to use when "
+#~ "necessary. If the Commander is lost, so is the battle."
+#~ msgstr ""
+#~ "Обязанности командира — возглавлять боевые группы в бою. Знающий навыки "
+#~ "лидерства, он дает соседним соединениям низшего уровня улучшенные "
+#~ "действия в битве. Командиры владеют мечом, к тому же они могут "
+#~ "использовать при необходимости и лук. Гибель командира означает проигрыш "
+#~ "в битве."
+
+#~ msgid "Noble Fighter"
+#~ msgstr "Благородный боец"
+
+#~ msgid ""
+#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#~ "ranged attacks from enemies. However they have the potential to become "
+#~ "great Commanders one day."
+#~ msgstr ""
+#~ "Молодые и дерзкие, бойцы дерутся с мечом и уязвимы вражеским атакам с "
+#~ "расстояния. Тем не менее, однажды они могут стать великими командирами."
+
+#~ msgid "Noble Lord"
+#~ msgstr "Благородный лорд"
+
+#~ msgid "Noble Youth"
+#~ msgstr "Благородный юноша"
+
+#~ msgid ""
+#~ "Today he is a young man, by his devotion to the crown he is seeking to "
+#~ "become a Lord -- to join the elite of humanity."
+#~ msgstr ""
+#~ "Сегодня он — юноша, преданный короне, желающий стать лордом — чтобы "
+#~ "присоединиться к лучшим представителям человечества."
+
+#~ msgid "female^Outlaw Princess"
+#~ msgstr "Принцесса в изгнании"
+
+#~ msgid ""
+#~ "A noble by birth, the Outlaw Princess has learnt swordplay with the "
+#~ "greatest generals, but she is the product of a failed aristocracy who has "
+#~ "opted for the life of an Outlaw. She dreams of founding her own Queendom "
+#~ "with the plunder she finds on the road."
+#~ msgstr ""
+#~ "Благородная от рождения, изгнанная принцесса изучала искусство меча с "
+#~ "великими генералами, но она — продукт отверженной аристократии, которая "
+#~ "пала ради ее жизни. Она мечтает найти свое богатое королевство, которое "
+#~ "она ищет в пути."
+
+#~ msgid "female^Outlaw Queen"
+#~ msgstr "Королева в изгнании"
+
+#~ msgid ""
+#~ "A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. However, she is the product of a failed "
+#~ "aristocracy who has opted for the life of an Outlaw. She dreams of "
+#~ "founding her own Queendom with the plunder she finds on the road, and she "
+#~ "is ever so close to that goal."
+#~ msgstr ""
+#~ "Благородная от рождения, изгнанная королева изучала искусство меча с "
+#~ "великими генералами и тактику боя с великими стратегами, сделавшими ее "
+#~ "великим бойцом и лидером. Тем не менее, она — продукт отверженной "
+#~ "аристократии, которая пала ради жизни изгнанной. Она мечтает найти свое "
+#~ "богатое королевство, которое она ищет в пути, и она близка, чтобы "
+#~ "выполнить эту мечту."
+
+#~ msgid "female^Vampire Lady"
+#~ msgstr "Королева вампиров"
+
+#~ msgid ""
+#~ "Cold and beautiful, she maintains her eternal youthful appearance "
+#~ "drinking the blood of the living."
+#~ msgstr ""
+#~ "Холодная и красивая, она поддерживает свою вечную молодость, постоянно "
+#~ "выпивая кровь живых."
+
+#~ msgid "blood kiss"
+#~ msgstr "кровавый поцелуй"
+
+#~ msgid "Warrior King"
+#~ msgstr "Король воин"
+
+#~ msgid ""
+#~ "As the leaders of the human Kingdoms, Kings are responsible for ruling "
+#~ "and protecting their subjects. Kings can coordinate the attacks of level "
+#~ "1 and 2 units, thereby increasing their fighting efficiency."
+#~ msgstr ""
+#~ "Как лидер королевств людей, король ответственен за правление и защиту "
+#~ "своих владений. Король может координировать атаки соединений 1 и 2 "
+#~ "уровня, увеличивая их боеспособность."
+
+# rev
+#~ msgid "Wose Sapling"
+#~ msgstr "Молодой леший"
+
+#~ msgid ""
+#~ "Rarely seen, even by elves, a Wose is an order of creature about which "
+#~ "little is known. The elves are the source of most of this knowledge; they "
+#~ "know that these beings are not descended from trees, despite the "
+#~ "similarity in form, and they know that a wose is more closely tied to the "
+#~ "faerie world than the elves themselves, though in a different way. The "
+#~ "motives and workings of their kind are unknown, though most posit the "
+#~ "obvious idea that woses are wardens of the natural world.\n"
+#~ "\n"
+#~ "Woses are utterly unwarlike, but possess a great strength. They are, "
+#~ "however, neither used to, nor quick at moving around.\n"
+#~ "\n"
+#~ "Special Notes: Woses regenerate by using natural resources around them, "
+#~ "without needing to huddle in villages to obtain sustenance and aid."
+#~ msgstr ""
+#~ "Редко встречаемые, даже эльфами, лешие — создания, о которых мало что "
+#~ "известно. Почти все знания о них получены от эльфов. От них известно, что "
+#~ "лешие не являются потомками деревьев, хотя и очень похожи на них. Также "
+#~ "известно, что лешие намного сильнее связаны с миром волшебства, чем сами "
+#~ "эльфы, хотя несколько по-иному. Мотивы и действия этого народа "
+#~ "неизвестны, хотя очевидно, что лешие являются защитниками природного "
+#~ "мира.\n"
+#~ "\n"
+#~ "Лешие не агрессивны, но обладают огромной силой. Тем не менее, они почти "
+#~ "ее не используют, также они медлительны в движении.\n"
+#~ "\n"
+#~ "Примечание: лешие регенерируются, используя природные ресурсы вокруг "
+#~ "себя, и им не нужно останавливаться в деревнях, чтобы отдохнуть и "
+#~ "восстановиться."
+
+#~ msgid "Demilich"
+#~ msgstr "Демилич"
+
+#~ msgid ""
+#~ "After too much time dabbling with forbidden magics and dark arts, these "
+#~ "magi have begun to pay a heavy price. Demiliches have started losing "
+#~ "their bodies, becoming undead themselves. With time, they may become "
+#~ "fully undead, and feared by all alike."
+#~ msgstr ""
+#~ "После долгого и изучения забытых книг по магии и темному искусству, эти "
+#~ "маги начали платить высокую цену — демиличи теряют свои тела, превращаясь "
+#~ "в нежить. Со временем, они могут стать полностью мертвецами, ужасными как "
+#~ "и все мертвецы."
+
+#~ msgid ""
+#~ "The title of Arch Mage is conferred only after a lifetime of study and "
+#~ "achievement to match. Arch Magi are often employed in positions of "
+#~ "education, or as advisors to those wise enough to seek the fruits of "
+#~ "their wisdom. Many tend to wealthy patrons, a profitable enterprise for "
+#~ "both as, outside of the occasional task or word of advice, it gives the "
+#~ "mage leave to pursue their research undisturbed. Certain others shun "
+#~ "civilization, spending their days as hermits, often to study something "
+#~ "which most would tend to frown upon.\n"
+#~ "\n"
+#~ "Though not trained for any sort of combat, if need arises an Arch Mage "
+#~ "can unleash the full power of their art, something which is not to be "
+#~ "taken lightly.\n"
+#~ "\n"
+#~ "Special Notes: the arch mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "Титул Старшего мага даруется только после многих лет учебы и достойных "
+#~ "свершений. Старшие маги часто задействованы в области обучения, или как "
+#~ "советники того, кто достаточно умен, чтобы искать плоды их мудрости. "
+#~ "Служение властительному патрону — взаимовыгодное сотрудничество для обоих "
+#~ "сторон, так как все время, когда не требуется выполнить случайное задание "
+#~ "или дать совет, маг получает для проведения своих исследований, никем не "
+#~ "обеспокоенный. Некоторые другие маги избегают цивилизации, проводя свои "
+#~ "дни как отшельники, часто для того, чтобы изучить нечто, что не терпит "
+#~ "никаких раздражающих факторов.\n"
+#~ "\n"
+#~ "Хоть и не являясь тренированными ни для какого вида боя, в случае "
+#~ "необходимости, Старшие маги могут высвободить всю мощь своего искусства, "
+#~ "так что никому мало не покажется.\n"
+#~ "\n"
+#~ "Примечание: огненные шары старших магов имеют магическую природу, и "
+#~ "всегда имеют высокие шансы поразить оппонента."
+
+#~ msgid ""
+#~ "Any person who is even considered for the title of Great Mage is quite "
+#~ "nearly a legend in their own time, and town criers have forcibly learnt "
+#~ "discretion in applying the title. Merit for the title is carefully "
+#~ "considered by a council of the leading magi of the age, and the "
+#~ "conferment of the title is given only by a majority vote. Regardless, "
+#~ "anyone who is seriously nominated for the honor of being called a Great "
+#~ "Mage is, without question, a master of their art, and has surpassed "
+#~ "almost any of their peers in skill.\n"
+#~ "\n"
+#~ "Though they are not warriors, by any means, the application of their art "
+#~ "to combat is something that often causes other soldiers to stand aside in "
+#~ "awe.\n"
+#~ "\n"
+#~ "Special Notes: the great mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "Любой удостоившийся титула Великого мага очень скоро станет легендой "
+#~ "своего времени, и городские глашатае весьма осмотрительны в произношении "
+#~ "титула. Этот титул назначается после долгого рассмотрения советом "
+#~ "величайших магов эпохи, и это решение будет принято только при "
+#~ "большинстве поданных голосов. Несмотря на то, кто выдвинут на титул "
+#~ "Великого мага, он, вне сомнения, является мастером своего искусства и "
+#~ "превосходит каждого во своем мастерстве.\n"
+#~ "\n"
+#~ "Хотя они не являются воинами, но применение их искусства в битве иногда "
+#~ "действенно, когда солдаты остолбенели от страха.\n"
+#~ "\n"
+#~ "Примечание: огненные шары Великих магов являются магией, и поэтому они "
+#~ "имеют высокую вероятность попасть в противника."
+
+#~ msgid ""
+#~ "Upon the successful termination of their apprenticeship, a mage is "
+#~ "stripped of the blue robes of an apprentice, and given the red robes of a "
+#~ "master. The significance of this change is often lost on the peasantry, "
+#~ "who mistakenly title Master Magi as 'Red Magi'. Likewise, the symbolism "
+#~ "of the change in colors is often mistaken to signify the mage's ability "
+#~ "to seemingly conjure fire from nothing but thin air, a trick which, "
+#~ "although undeniably useful, is viewed as a crass application of the "
+#~ "knowledge which they have painstakingly accrued.\n"
+#~ "\n"
+#~ "Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+#~ "number of tricks up their sleeves, including the gouts of fire which may "
+#~ "have cemented their colloquial name.\n"
+#~ "\n"
+#~ "Special Notes: the red mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "Полностью закончив свое ученичество, маги сбрасывают синие робы учеников "
+#~ "и получают красные робы мастеров. Смысл этого изменения неизвестен для "
+#~ "простолюдин, ошибочно называющих мастеров магов \"Красными магами\". "
+#~ "Скорее всего, символизм этой смены в цветах основан на способности мага "
+#~ "создавать огонь из ничего, кроме воздуха — на трюке, хотя вне сомнений "
+#~ "полезном, рассматриваемом, как полнейшее применение старательно "
+#~ "накопленного знания.\n"
+#~ "\n"
+#~ "Примечание: огненные шары красных магов являются магией, и поэтому они "
+#~ "имеют высокую вероятность попасть в противника."
+
+#~ msgid ""
+#~ "The many paths that a mage can take in study lead to strikingly different "
+#~ "ends. Silver magi have devoted themselves to a study of the forces that "
+#~ "bind reality together, and have managed, somewhat, to unravel the "
+#~ "mysteries of a world far more vast than most would ever imagine. Often "
+#~ "viewed as sages, or wandering mystics, silver magi act under an agenda "
+#~ "which is obscure even to their own colleagues. Though helpful to the "
+#~ "magisteriums which often employ them in the field, they remain somewhat "
+#~ "aloof.\n"
+#~ "\n"
+#~ "They have, in fact, their own order amongst the ranks of magi, an order "
+#~ "which withholds certain secrets from their peers. One of these is an "
+#~ "apparent ability to cross great distances, faster than one could possibly "
+#~ "travel on foot. Members of the silver order ardently refuse to discuss "
+#~ "the workings of this with any of their fellow magi, and on those rare "
+#~ "occasions when others have pried into their work, they have abandoned the "
+#~ "endeavor, never to speak of it again.\n"
+#~ "\n"
+#~ "Silver magi are often more physically adept than other magi, and their "
+#~ "skills are of undeniable use on the battlefield, if one can manage to "
+#~ "coerce the mage into applying them.\n"
+#~ "\n"
+#~ "Special Notes: the ranged attack of a silver mage is magical, and always "
+#~ "has a high chance of hitting an opponent. Silver Magi are well-attuned to "
+#~ "their magical natures and are highly resistant to non-physical damage. "
+#~ "They can also teleport between any two villages instantly, though the "
+#~ "player must control both, and the destination village must be unoccupied."
+#~ msgstr ""
+#~ "Есть много способов, позволяющих магу закончить свое обучение. Серебряные "
+#~ "маги посвящают себя изучению сил, изменяющих реальность, и управлению, в "
+#~ "какой-то мере, ими для исследования тайн мира, намного большего, чем себе "
+#~ "может кто-либо представить. Часто представляемые мудрыми или владеющими "
+#~ "тайнами, серебряные маги действуют в тени дня, благодаря чему они "
+#~ "наблюдают за всем для своих коллег. Хотя они полезны при поддержке на "
+#~ "поле битвы, лучше держать их поодаль.\n"
+#~ "\n"
+#~ "В действительности, у них есть собственный орден среди других магов, "
+#~ "удерживающий свои секреты от других. Один из них раскрывает способ "
+#~ "перемещения на большие расстояния намного быстрее, чем путешествие "
+#~ "пешком. Члены серебряного ордена ревностно отклоняют предложения по "
+#~ "работе над тем, чтобы этим секретом овладели другие маги. За редкими "
+#~ "исключениями никто не был посвящен в их работу, и их в конце концов "
+#~ "оставили в покое, не начиная разговор об этом снова.\n"
+#~ "\n"
+#~ "Серебряные маги являются чаще всего последователями физического "
+#~ "воздействия, в отличие от других, и их навыки неоспоримо пригодятся на "
+#~ "поле боя, если магов вынудят использовать их.\n"
+#~ "\n"
+#~ "Примечание: на дистанции серебряный маг атакует магией, которая имеет "
+#~ "большой шанс поразить оппонента. Серебряные маги хорошо защищены от всех "
+#~ "форм магического повреждения. Они могут также мгновенно перемещаться "
+#~ "между двумя деревнями, обе деревни должны контролироваться игроком и "
+#~ "деревня, в которую передвигается маг не должна быть оккупирована "
+#~ "противником."
+
+#~ msgid ""
+#~ "One of the greatest circles of what is considered 'black magic' is the "
+#~ "art of necromancy, the terrible ability to awaken the dead with false "
+#~ "life. It was a discovery that had terrible ramifications and caused "
+#~ "humanity's condemnation of black magic, for it has given fear a vast new "
+#~ "arsenal.\n"
+#~ "\n"
+#~ "This ability, in all aspects, is the first step towards cheating death of "
+#~ "its ultimate prize. It is the highest degree of power a dark mage can "
+#~ "attain without losing grip on humanity itself, but pales to the lethal "
+#~ "power wielded by Liches. Their mortal bodies are also made sturdier by "
+#~ "their magic, in contrast to the frail decayed form of a Lich.\n"
+#~ "\n"
+#~ "Special Notes: the necromancer's ranged attacks are magical and always "
+#~ "have a high chance of hitting an opponent. The staff of a necromancer is "
+#~ "marked with the plague, and any foe struck down by it will rise again in "
+#~ "unlife."
+#~ msgstr ""
+#~ "Одна из выдающихся областей так называемой \"черной магии\" — искусство "
+#~ "некроманта, ужасная способность возрождать мертвых. Эта область является "
+#~ "запрещенным всеми людскими законами ответвлением черной магии, так как "
+#~ "вселяет страх перед невиданными новыми возможностями.\n"
+#~ "\n"
+#~ "Эта возможность — первый шаг, совершаемый человеком, чтобы обмануть "
+#~ "смерть. Высшей степени могущества черный маг способен достигнуть и без "
+#~ "потери человечности, однако его сила бледнеет на фоне смертельных "
+#~ "возможностей личей. Их магия только укрепила физическое тело, в отличие "
+#~ "от хрупкого полуразложившегося тела лича.\n"
+#~ "\n"
+#~ "Примечание: атака на расстоянии является магической и всегда имеет "
+#~ "высокие шансы поразить противника. Посох некроманта помечен чумой, "
+#~ "поэтому любой, погибший от него, восстанет снова в виде мертвеца."
+
+#~ msgid "female^Fighter"
+#~ msgstr "Боец"
+
+#~ msgid "Quintain"
+#~ msgstr "Манекен"
+
+#~ msgid ""
+#~ "Quintains are used to practice swordplay and jousting on.  It would be "
+#~ "extremely unusual to be attacked by one."
+#~ msgstr ""
+#~ "Манекены используются для тренировок и проведения рыцарских турниров. "
+#~ "Было бы очень странным быть атакованным подобным манекеном."
+
+#~ msgid "flail"
+#~ msgstr "цеп"
 
 #~ msgid "Friendly unit sighted"
 #~ msgstr "Замечено дружественное соединение!"
