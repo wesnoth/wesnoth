@@ -583,6 +583,20 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 	const std::string& terrain = cfg["terrain"];
 	const std::string& tod_type = cfg["time_of_day"];
 	const std::string& tod_id = cfg["time_of_day_id"];
+
+	//Allow filtering on location ranges 
+	if(!cfg["x"].empty() && !cfg["y"].empty()){
+	  bool found=false;
+	  std::vector<gamemap::location> locs = parse_location_range(cfg["x"],cfg["y"]);
+	  for(std::vector<gamemap::location>::iterator ll = locs.begin(); ll != locs.end(); ll++){
+	    if((*ll)==loc){
+	      found=true;
+	      break;
+	    }
+	  }
+	  if(!found)return(false);
+	}
+
 	// Any of these may be a CSV
 	std::string terrain_letter;
 	terrain_letter += get_terrain_info(loc).letter();

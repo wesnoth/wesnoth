@@ -171,7 +171,7 @@ std::vector<std::string> get_available_ais()
     ais.push_back("default");
     ais.push_back("sample_ai");
     //ais.push_back("idle_ai");
-    //ais.push_back("dfool_ai");
+    ais.push_back("dfool_ai");
 #ifdef HAVE_PYTHON
     std::vector<std::string> scripts = python_ai::get_available_scripts();
     ais.insert(ais.end(), scripts.begin(), scripts.end());
