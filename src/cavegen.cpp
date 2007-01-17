@@ -24,7 +24,8 @@
 
 cave_map_generator::cave_map_generator(const config* cfg) : wall_(t_translation::CAVE_WALL), 
 	clear_(t_translation::CAVE), village_(t_translation::UNDERGROUND_VILLAGE), 
-    castle_(t_translation::DWARVEN_CASTLE), cfg_(cfg), width_(50), height_(50), 
+    castle_(t_translation::DWARVEN_CASTLE), keep_(t_translation::DWARVEN_KEEP), 
+	cfg_(cfg), width_(50), height_(50), 
 	village_density_(0), flipx_(false), flipy_(false)
 {
 	if(cfg_ == NULL) {
@@ -43,7 +44,6 @@ cave_map_generator::cave_map_generator(const config* cfg) : wall_(t_translation:
 
 	LOG_NG << "flipx: " << r << " < " << chance << " = " << (flipx_ ? "true" : "false") << "\n";
 	flipy_ = (rand()%100) < atoi((*cfg_)["flipy_chance"].c_str());
-
 
 }
 
@@ -104,17 +104,9 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 	}
 
 	LOG_NG << "outputting map....\n";
-	std::stringstream out;
-	for(size_t y = 0; y != height_; ++y) {
-		for(size_t x = 0; x != width_; ++x) {
-			out << t_translation::write_letter(map_[x][y]); //FIXME MdW, should this be done by the map converter??
-		}
 
-		out << "\n";
-	}
-
-	res_["map_data"] = out.str();
-
+	res_["map_data"] = t_translation::write_game_map(map_, starting_positions_);
+		
 	LOG_NG << "returning result...\n";
 
 	return res_;
@@ -359,8 +351,12 @@ void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_let
 
 void cave_map_generator::place_castle(const std::string& side, gamemap::location loc)
 {
-	if(side != "") {
-		set_terrain(loc, t_translation::read_letter(side, t_translation::T_FORMAT_AUTO));
+	const int starting_position = lexical_cast_default<int>(side, -1);
+	if(starting_position != -1) {
+		set_terrain(loc, keep_);
+
+		const struct t_translation::coordinate coord = {loc.x, loc.y};
+		starting_positions_[starting_position] = coord; 
 	}
 
 	gamemap::location adj[6];

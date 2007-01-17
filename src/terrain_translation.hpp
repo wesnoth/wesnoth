@@ -94,6 +94,7 @@ namespace t_translation {
 	extern const t_letter CAVE;
 	extern const t_letter UNDERGROUND_VILLAGE;
 	extern const t_letter DWARVEN_CASTLE;
+	extern const t_letter DWARVEN_KEEP;
 
 	extern const t_letter PLUS; 	// +
 	extern const t_letter MINUS; 	// -

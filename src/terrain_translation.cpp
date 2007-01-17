@@ -144,6 +144,7 @@ const t_letter CAVE_WALL = string_to_number_("Xu");
 const t_letter CAVE = string_to_number_("Uu");
 const t_letter UNDERGROUND_VILLAGE = string_to_number_("Vu");
 const t_letter DWARVEN_CASTLE = string_to_number_("Cud");
+const t_letter DWARVEN_KEEP = string_to_number_("Kud");
 
 const t_letter PLUS = string_to_number_("+");
 const t_letter MINUS = string_to_number_("-");

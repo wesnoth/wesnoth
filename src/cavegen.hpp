@@ -60,8 +60,9 @@ private:
 	void set_terrain(gamemap::location loc, t_translation::t_letter t);
 	void place_castle(const std::string& side, gamemap::location loc);
 
-	t_translation::t_letter wall_, clear_, village_, castle_;
+	t_translation::t_letter wall_, clear_, village_, castle_, keep_;
 	t_translation::t_map map_;
+	std::map<int, t_translation::coordinate> starting_positions_;
 
 	std::map<std::string,size_t> chamber_ids_;
 	std::vector<chamber> chambers_;
