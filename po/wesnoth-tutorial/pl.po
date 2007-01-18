@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:40+0100\n"
+"POT-Creation-Date: 2007-01-16 21:26+0100\n"
 "PO-Revision-Date: 2006-09-03 11:09+0100\n"
 "Last-Translator: Karol Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <grzywacz@sul.uni.lodz.pol>\n"
@@ -27,13 +27,14 @@ msgstr "Yes yes yes!"
 msgid "Wesnoth Tutorial"
 msgstr "Samouczek Wesnoth"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:257
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
 #: data/tutorial/scenarios/1_Tutorial.cfg:149
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
+#: data/tutorial/scenarios/2_Tutorial.cfg:257
 msgid "Konrad"
 msgstr "Konrad"
 
+#: data/tutorial/units/Quintain.cfg:4
 #: data/tutorial/scenarios/1_Tutorial.cfg:80
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Quintain"
@@ -69,10 +70,10 @@ msgstr "Danie się zabić"
 msgid "Who would you like to play?"
 msgstr "Kim chciałbyś grać?"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:329
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
 #: data/tutorial/scenarios/1_Tutorial.cfg:174
+#: data/tutorial/scenarios/2_Tutorial.cfg:329
 msgid "Li'sar"
 msgstr "Li'sar"
 
@@ -298,8 +299,8 @@ msgstr "Kliknij przycisk \"Zakończ turę\", w prawym-dolnym rogu"
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
 msgstr "Ała! Potrzebuję leczenia! Zostało im tylko $student_hp PŻ!"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:409
 #: data/tutorial/scenarios/1_Tutorial.cfg:486
+#: data/tutorial/scenarios/2_Tutorial.cfg:409
 msgid "Village"
 msgstr "Wioska"
 
@@ -356,8 +357,8 @@ msgstr ""
 msgid "I'll recruit some elves!"
 msgstr "Powołam do służby trochę elfów!"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:934
 #: data/tutorial/scenarios/1_Tutorial.cfg:564
+#: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Keep"
 msgstr "Forteca"
 
@@ -1502,6 +1503,78 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1559
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
+
+#: data/tutorial/units/Elder_Mage.cfg:4
+msgid "Elder Mage"
+msgstr "Starszy mag"
+
+#: data/tutorial/units/Elder_Mage.cfg:30
+msgid ""
+"Once great, Elder Magi have seen their power a little diminished from "
+"wearying years of battle. Nevertheless they remain feared on the battlefield "
+"on account of their powerful lightning bolts."
+msgstr ""
+"Niegdyś wspaniali, starsi magowie utracili z wiekiem część swojej potęgi, "
+"jednak ich niszczące błyskawice wciąż sieją postrach na polu bitwy."
+
+#: data/tutorial/units/Elder_Mage.cfg:32 data/tutorial/units/Elder_Mage.cfg:33
+msgid "staff"
+msgstr "laska"
+
+#: data/tutorial/units/Elder_Mage.cfg:35 data/tutorial/units/Quintain.cfg:25
+msgid "impact"
+msgstr "obuchowa"
+
+#: data/tutorial/units/Elder_Mage.cfg:109
+#: data/tutorial/units/Elder_Mage.cfg:110
+msgid "lightning"
+msgstr "błyskawica"
+
+#: data/tutorial/units/Elder_Mage.cfg:112
+msgid "fire"
+msgstr "ogień"
+
+#: data/tutorial/units/Fighter.cfg:4
+msgid "Fighter"
+msgstr "Wojownik"
+
+#: data/tutorial/units/Fighteress.cfg:23 data/tutorial/units/Fighter.cfg:17
+msgid ""
+"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
+"from enemies. However they have the potential to become great warriors one "
+"day."
+msgstr ""
+"Młodzi i nieokrzesani, szlachetni wojownicy walczą tylko mieczem, więc są "
+"narażeni na wszelkie ataki. Mimo tego mają potencjał, by pewnego dnia stać "
+"się wielkimi wojownikami."
+
+#: data/tutorial/units/Fighter.cfg:21 data/tutorial/units/Fighter.cfg:22
+msgid "sword"
+msgstr "miecz"
+
+#: data/tutorial/units/Fighteress.cfg:30 data/tutorial/units/Fighter.cfg:24
+msgid "blade"
+msgstr "sieczna"
+
+#: data/tutorial/units/Fighteress.cfg:4
+msgid "female^Fighter"
+msgstr "Wojowniczka"
+
+#: data/tutorial/units/Fighteress.cfg:27 data/tutorial/units/Fighteress.cfg:28
+msgid "sabre"
+msgstr "szabla"
+
+#: data/tutorial/units/Quintain.cfg:14
+msgid ""
+"Quintains are used to practice swordplay and jousting on.  It would be "
+"extremely unusual to be attacked by one."
+msgstr ""
+"Atrapy używane są do trenowania walki mieczem i potyczek. Byłoby niezwykle "
+"dziwne, gdyby któraś sama zaatakowała."
+
+#: data/tutorial/units/Quintain.cfg:21 data/tutorial/units/Quintain.cfg:22
+msgid "flail"
+msgstr "cep"
 
 #~ msgid "he"
 #~ msgstr "on"
@@ -5488,9 +5561,6 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 #~ msgid "crush"
 #~ msgstr "zgniatająca"
 
-#~ msgid "impact"
-#~ msgstr "obuchowa"
-
 #~ msgid "Arch Mage"
 #~ msgstr "Arcymag"
 
@@ -5528,14 +5598,8 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 #~ "Uwagi specjalne: ogniste kule arcy magów są magiczne i zawsze mają wysoką "
 #~ "szansę trafienia przeciwnika."
 
-#~ msgid "staff"
-#~ msgstr "laska"
-
 #~ msgid "fireball"
 #~ msgstr "kula ognia"
-
-#~ msgid "fire"
-#~ msgstr "ogień"
 
 #~ msgid "female^Arch Mage"
 #~ msgstr "Arcymag"
@@ -5570,9 +5634,6 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 
 #~ msgid "dagger"
 #~ msgstr "sztylet"
-
-#~ msgid "blade"
-#~ msgstr "sieczna"
 
 #~ msgid "backstab"
 #~ msgstr "cios w plecy"
@@ -5623,9 +5684,6 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 #~ "wspaniałym wojownikiem i przywódcą. Teraz, zaprawiona w boju może dzięki "
 #~ "silnej woli pomóc otaczającym ją żołnierzom w prowadzeniu walki."
 
-#~ msgid "sword"
-#~ msgstr "miecz"
-
 #~ msgid "scepter of fire"
 #~ msgstr "berło ognia"
 
@@ -5663,9 +5721,6 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 #~ "kołczany nie są wypełnione pociskami zrobionymi z drewna, lecz z kości "
 #~ "ich ofiar. Pechowi przeciwnicy nazywają te terroryzujące żywych, "
 #~ "odrażające istoty \"Miotaczami kości\"."
-
-#~ msgid "stab"
-#~ msgstr "dźgnięcie"
 
 #~ msgid "bow"
 #~ msgstr "łuk"
@@ -5923,9 +5978,6 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 
 #~ msgid "baneblade"
 #~ msgstr "ostrze zguby"
-
-#~ msgid "wail"
-#~ msgstr "jęk"
 
 #~ msgid "Death Knight"
 #~ msgstr "Rycerz śmierci"
@@ -6613,20 +6665,6 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 #~ "bitwie ich najokrutniejsi przedstawiciele: walczą do momentu, aż ich "
 #~ "przeciwnik lub oni sami zginą, bez względu na to ile ran otrzymują."
 
-#~ msgid "Elder Mage"
-#~ msgstr "Starszy mag"
-
-#~ msgid ""
-#~ "Once great, Elder Magi have seen their power a little diminished from "
-#~ "wearying years of battle. Nevertheless they remain feared on the "
-#~ "battlefield on account of their powerful lightning bolts."
-#~ msgstr ""
-#~ "Niegdyś wspaniali, starsi magowie utracili z wiekiem część swojej potęgi, "
-#~ "jednak ich niszczące błyskawice wciąż sieją postrach na polu bitwy."
-
-#~ msgid "lightning"
-#~ msgstr "błyskawica"
-
 #~ msgid "Elder Wose"
 #~ msgstr "Starszy drzewiec"
 
@@ -7173,18 +7211,6 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 #~ "\n"
 #~ "Uwagi specjalne: szermierze spełniają też rolę harcowników i jako tacy "
 #~ "potrafią przemknąć koło przeciwnika, ignorując strefy kontroli."
-
-#~ msgid "Fighter"
-#~ msgstr "Wojownik"
-
-#~ msgid ""
-#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
-#~ "attack from enemies. However they have the potential to become great "
-#~ "warriors one day."
-#~ msgstr ""
-#~ "Młodzi i nieokrzesani, szlachetni wojownicy walczą tylko mieczem, więc są "
-#~ "narażeni na wszelkie ataki. Mimo tego mają potencjał, by pewnego dnia "
-#~ "stać się wielkimi wojownikami."
 
 #~ msgid "Fire Dragon"
 #~ msgstr "Smok ognia"
@@ -7988,9 +8014,6 @@ msgstr "Zbytnio się guzdrałeś, nigdy już nie pozbędziemy się orków!"
 
 #~ msgid "missile"
 #~ msgstr "pocisk"
-
-#~ msgid "female^Mage"
-#~ msgstr "Mag"
 
 #~ msgid "Mage of Light"
 #~ msgstr "Mag Światła"

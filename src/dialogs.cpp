@@ -143,7 +143,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 
 	if(!gui.update_locked()) {
 		u->second.set_leveling_out(gui,u->first);
-		while(!u->second.get_animation()->animation_finished()) {
+		while(!u->second.get_animation()->animation_would_finish()) {
 			gui.invalidate(loc);
 			gui.draw();
 			events::pump();
@@ -166,7 +166,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 
 	if(!gui.update_locked()) {
 		u->second.set_leveling_in(gui,u->first);
-		while(!u->second.get_animation()->animation_finished()) {
+		while(!u->second.get_animation()->animation_would_finish()) {
 			gui.invalidate(loc);
 			gui.draw();
 			events::pump();

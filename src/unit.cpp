@@ -127,6 +127,7 @@ unit::unit(const unit& o):
 		overlays_(o.overlays_),
 
 		role_(o.role_),
+		ai_special_(o.ai_special_),
 		attacks_(o.attacks_),
 		attacks_b_(o.attacks_b_),
 		facing_(o.facing_),
@@ -254,6 +255,12 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 			generate_traits();
 		}
 	}
+	if(underlying_description_.empty()){
+	  char buf[80];
+	  sprintf(buf,"%s-%d",type()->id().c_str(),(SDL_GetTicks()));
+	  underlying_description_ = buf;
+	}
+
 	unrenamable_ = false;
 	anim_ = NULL;
 	getsHit_=0;
@@ -290,6 +297,12 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 			generate_traits();
 		}
 	}
+	if(underlying_description_.empty()){
+	  char buf[80];
+	  sprintf(buf,"%s-%d",type()->id().c_str(),(SDL_GetTicks()));
+	  underlying_description_ = buf;
+	}
+
 	unrenamable_ = false;
 	next_idling_ = 0;
 	frame_begin_time_ = 0;
@@ -620,6 +633,7 @@ void unit::end_turn()
 void unit::new_level()
 {
 	role_ = "";
+	ai_special_ = "";
 
 	//set the goto command to be going to no-where
 	goto_ = gamemap::location();
@@ -712,6 +726,7 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 	const std::string& side = cfg["side"];
 	const std::string& weapon = cfg["has_weapon"];
 	const std::string& role = cfg["role"];
+	const std::string& ai_special = cfg["ai_special"];
 	const std::string& race = cfg["race"];
 	const std::string& gender = cfg["gender"];
 	const std::string& canrecruit = cfg["canrecruit"];
@@ -820,6 +835,10 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 		return false;
 	}
 
+	if(ai_special.empty() == false && ai_special_ != ai_special) {
+		return false;
+	}
+
 	if (canrecruit.empty() == false && (canrecruit == "1") != can_recruit())
 		return false;
 
@@ -892,11 +911,17 @@ void unit::read(const config& cfg)
 	std::string custom_unit_desc = cfg["unit_description"];
 
 	underlying_description_ = cfg["description"];
+	if(underlying_description_.empty()){
+	  char buf[80];
+	  sprintf(buf,"%s-%d",cfg["type"].c_str(),(SDL_GetTicks()%1000000));
+	  underlying_description_ = buf;
+	}
 	if(description_.empty()) {
-		description_ = underlying_description_;
+	  description_ = cfg["type"].c_str();
 	}
 
 	role_ = cfg["role"];
+	ai_special_ = cfg["ai_special"];
 	overlays_ = utils::split(cfg["overlays"]);
 	if(overlays_.size() == 1 && overlays_.front() == "") {
 		overlays_.clear();
@@ -1340,6 +1365,7 @@ void unit::write(config& cfg) const
 	cfg["variation"] = variation_;
 
 	cfg["role"] = role_;
+	cfg["ai_special"] = ai_special_;
 	cfg["flying"] = flying_ ? "yes" : "no";
 
 	config status_flags;

@@ -159,6 +159,8 @@ class unit
 		void write(config_writer& out) const;
 
 		void assign_role(const std::string& role) { role_ = role; }
+                void assign_ai_special(const std::string& s) { ai_special_ = s;}
+                std::string get_ai_special() const { return(ai_special_); }
 		const std::vector<attack_type>& attacks() const { return attacks_; }
 		std::vector<attack_type>& attacks() { return attacks_; }
 
@@ -353,6 +355,7 @@ class unit
 		std::vector<std::string> overlays_;
 
 		std::string role_;
+		std::string ai_special_;
 		std::vector<attack_type> attacks_, attacks_b_;
 		gamemap::location::DIRECTION facing_;
 

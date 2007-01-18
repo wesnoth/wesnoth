@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:40+0100\n"
+"POT-Creation-Date: 2007-01-16 21:26+0100\n"
 "PO-Revision-Date: 2006-09-05 13:59+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team:  Spanish <es@li.org>\n"
@@ -32,13 +32,14 @@ msgstr ""
 msgid "Wesnoth Tutorial"
 msgstr "Tutorial de Wesnoth"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:257
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
 #: data/tutorial/scenarios/1_Tutorial.cfg:149
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
+#: data/tutorial/scenarios/2_Tutorial.cfg:257
 msgid "Konrad"
 msgstr "Konrad"
 
+#: data/tutorial/units/Quintain.cfg:4
 #: data/tutorial/scenarios/1_Tutorial.cfg:80
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Quintain"
@@ -74,10 +75,10 @@ msgstr "Consigue morir"
 msgid "Who would you like to play?"
 msgstr "¿Con qué personaje te gustaría jugar?"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:329
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
 #: data/tutorial/scenarios/1_Tutorial.cfg:174
+#: data/tutorial/scenarios/2_Tutorial.cfg:329
 msgid "Li'sar"
 msgstr "Li'sar"
 
@@ -302,8 +303,8 @@ msgstr "Pulsa en el botón «Fin de turno» abajo a la derecha"
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
 msgstr "¡Ay! ¡Necesito curarme! ¡Sólo me quedan $student_hp puntos de vida!"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:409
 #: data/tutorial/scenarios/1_Tutorial.cfg:486
+#: data/tutorial/scenarios/2_Tutorial.cfg:409
 msgid "Village"
 msgstr "Aldea"
 
@@ -358,8 +359,8 @@ msgstr ""
 msgid "I'll recruit some elves!"
 msgstr "¡Reclutaré algunos elfos!"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:934
 #: data/tutorial/scenarios/1_Tutorial.cfg:564
+#: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Keep"
 msgstr "Torreón"
 
@@ -1348,3 +1349,75 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1559
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr ""
+
+#: data/tutorial/units/Elder_Mage.cfg:4
+msgid "Elder Mage"
+msgstr "Mago anciano"
+
+#: data/tutorial/units/Elder_Mage.cfg:30
+msgid ""
+"Once great, Elder Magi have seen their power a little diminished from "
+"wearying years of battle. Nevertheless they remain feared on the battlefield "
+"on account of their powerful lightning bolts."
+msgstr ""
+"El que una vez fue un gran mago, este anciano aún conserva gran parte de sus "
+"poderes, aunque han disminuido ligeramente durante todos estos años de "
+"combates. Aún así, en el campo de batalla se lo sigue temiendo por sus "
+"potentes relámpagos."
+
+#: data/tutorial/units/Elder_Mage.cfg:32 data/tutorial/units/Elder_Mage.cfg:33
+msgid "staff"
+msgstr "bastón"
+
+#: data/tutorial/units/Elder_Mage.cfg:35 data/tutorial/units/Quintain.cfg:25
+msgid "impact"
+msgstr "impacto"
+
+#: data/tutorial/units/Elder_Mage.cfg:109
+#: data/tutorial/units/Elder_Mage.cfg:110
+msgid "lightning"
+msgstr "relámpago"
+
+#: data/tutorial/units/Elder_Mage.cfg:112
+msgid "fire"
+msgstr "fuego"
+
+#: data/tutorial/units/Fighter.cfg:4
+msgid "Fighter"
+msgstr "Luchador"
+
+#: data/tutorial/units/Fighteress.cfg:23 data/tutorial/units/Fighter.cfg:17
+msgid ""
+"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
+"from enemies. However they have the potential to become great warriors one "
+"day."
+msgstr ""
+"El luchador ha sido entrenado en el uso de la espada. Joven e inexperto, es "
+"vulnerable a los ataques enemigos. Sin embargo, tiene el potencial para "
+"convertirse en un gran guerrero algún día."
+
+#: data/tutorial/units/Fighter.cfg:21 data/tutorial/units/Fighter.cfg:22
+msgid "sword"
+msgstr "espada"
+
+#: data/tutorial/units/Fighteress.cfg:30 data/tutorial/units/Fighter.cfg:24
+msgid "blade"
+msgstr "de filo"
+
+#: data/tutorial/units/Fighteress.cfg:4
+msgid "female^Fighter"
+msgstr "Luchadora"
+
+#: data/tutorial/units/Fighteress.cfg:27 data/tutorial/units/Fighteress.cfg:28
+msgid "sabre"
+msgstr "sable"
+
+#: data/tutorial/units/Quintain.cfg:14
+msgid ""
+"Quintains are used to practice swordplay and jousting on.  It would be "
+"extremely unusual to be attacked by one."
+msgstr ""
+
+#: data/tutorial/units/Quintain.cfg:21 data/tutorial/units/Quintain.cfg:22
+msgid "flail"
+msgstr "mayal"

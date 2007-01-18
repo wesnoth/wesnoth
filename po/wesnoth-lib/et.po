@@ -1,15 +1,15 @@
 # Estonian translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
+# Copyright (C) 2005-2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-#
+# Mart Tõnso, 2006
+# Priit Laes, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-12 22:40+0100\n"
-"PO-Revision-Date: 2005-05-07 12:59+0300\n"
-"Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
+"PO-Revision-Date: 2007-01-14 16:37+0200\n"
+"Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,11 +45,11 @@ msgstr "Abi"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Kaardile tehtud muudatused lähevad kaduma. Jätkad?"
+msgstr "Kaardile tehtud muudatused lähevad kaduma. Kas soovid jätkata?"
 
 #: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:196
 msgid "Create New Map"
-msgstr "Loo uus kaart:"
+msgstr "Loo uus kaart"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 #: src/mapgen_dialog.cpp:110
@@ -63,7 +63,7 @@ msgstr "Kõrgus:"
 
 #: src/editor/editor_dialogs.cpp:94
 msgid "Generate New Map"
-msgstr "Genereeri uus kaart:"
+msgstr "Genereeri uus kaart"
 
 #: src/editor/editor_dialogs.cpp:95
 msgid "Generate Random Map"
@@ -71,7 +71,7 @@ msgstr "Genereeri juhuslik kaart"
 
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
-msgstr "Juhugeneraatori seaded:"
+msgstr "Juhugeneraatori sätted"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
@@ -106,7 +106,7 @@ msgstr "Video režiim"
 
 #: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:278
 msgid "Hotkeys"
-msgstr "Kiirvalikud"
+msgstr "Kiirklahvid"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
 #: src/hotkeys.cpp:110
@@ -127,7 +127,7 @@ msgstr "Keera ümber (see võib kaardi mõõtmeid muuta):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Fail:"
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -135,7 +135,7 @@ msgstr "Kustuta fail"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Uus kaust"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
@@ -143,25 +143,23 @@ msgstr "Faili kustutamine ebaõnnestus."
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Nimi:"
 
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Faili kustutamine ebaõnnestus."
+msgstr "Kataloogi loomine ebaõnnestus."
 
 #: src/hotkeys.cpp:49
-#, fuzzy
 msgid "Next Unit"
 msgstr "Järgmine üksus"
 
 #: src/hotkeys.cpp:50
 msgid "Previous Unit"
-msgstr ""
+msgstr "Eelmine üksus"
 
 #: src/hotkeys.cpp:51
 msgid "Hold Position"
-msgstr ""
+msgstr "Hoia asukohta"
 
 #: src/hotkeys.cpp:52
 msgid "End Unit Turn"
@@ -212,7 +210,6 @@ msgid "Save Game"
 msgstr "Salvesta mäng"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
 msgstr "Salvesta kaart"
 
@@ -281,18 +278,16 @@ msgid "Quit Game"
 msgstr "Lõpeta mäng"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Paiguta silt"
+msgstr "Määra meeskonna silt"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
 msgstr "Paiguta silt"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Clear Labels"
-msgstr "Paiguta silt"
+msgstr "Tühjenda sildid"
 
 #: src/hotkeys.cpp:86
 msgid "Show Enemy Moves"
@@ -303,27 +298,24 @@ msgid "Best Possible Enemy Moves"
 msgstr "Parimad vastase käigud"
 
 #: src/hotkeys.cpp:88
-#, fuzzy
 msgid "Play"
-msgstr "Mängijad:"
+msgstr "Mängi"
 
 #: src/hotkeys.cpp:89
 msgid "Reset"
-msgstr ""
+msgstr "Taasta"
 
 #: src/hotkeys.cpp:90
 msgid "Stop"
-msgstr ""
+msgstr "Peata"
 
 #: src/hotkeys.cpp:91
-#, fuzzy
 msgid "Next Turn"
-msgstr "Järgmine üksus"
+msgstr "Järgmine käik"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
 msgid "Next Side"
-msgstr "Järgmine üksus"
+msgstr "Järgmine pool"
 
 #: src/hotkeys.cpp:93
 msgid "Shroud"
@@ -331,11 +323,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:94
 msgid "Fog"
-msgstr ""
+msgstr "Udu"
 
 #: src/hotkeys.cpp:95
 msgid "Skip animation"
-msgstr ""
+msgstr "Jäta animatsioon vahele"
 
 #: src/hotkeys.cpp:97
 msgid "Set Terrain"
@@ -459,11 +451,11 @@ msgstr "Mängijad:"
 
 #: src/mapgen_dialog.cpp:112
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Mägede arv:"
 
 #: src/mapgen_dialog.cpp:113
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Maks. mäe suurus:"
 
 #: src/mapgen_dialog.cpp:114
 msgid "Villages:"
@@ -471,7 +463,7 @@ msgstr "Külad:"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Castle Size:"
-msgstr ""
+msgstr "Kindluse suurus:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -521,31 +513,31 @@ msgstr "Jäta AI käigud vahele"
 
 #: src/preferences_display.cpp:259
 msgid "Show Lobby Minimaps"
-msgstr ""
+msgstr "Näita fuajees minikaarte"
 
 #: src/preferences_display.cpp:260
 msgid "Do Not Show Lobby Joins"
-msgstr ""
+msgstr "Ära näita fuajeesse sisenejaid"
 
 #: src/preferences_display.cpp:261
 msgid "Show Lobby Joins Of Friends Only"
-msgstr ""
+msgstr "Näita ainult sõprade sisenemist fuajeesse"
 
 #: src/preferences_display.cpp:262
 msgid "Show All Lobby Joins"
-msgstr ""
+msgstr "Näita kõiki fuajeesse sisenemisi"
 
 #: src/preferences_display.cpp:263
 msgid "Sort Lobby List"
-msgstr ""
+msgstr "Sorteeri fuajees olevate nimekirja"
 
 #: src/preferences_display.cpp:264
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Minimeeri fuajees olevate nimekiri"
 
 #: src/preferences_display.cpp:265
 msgid "Your Friends List"
-msgstr ""
+msgstr "Sinu sõprade nimekiri"
 
 #: src/preferences_display.cpp:266
 msgid "Multiplayer Options"
@@ -553,16 +545,15 @@ msgstr ""
 
 #: src/preferences_display.cpp:267
 msgid "Add As Friend"
-msgstr ""
+msgstr "Lisa kui sõber"
 
 #: src/preferences_display.cpp:268
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Lisa kui ignoreeritud"
 
 #: src/preferences_display.cpp:269
-#, fuzzy
 msgid "Remove"
-msgstr "Käi uuesti"
+msgstr "Eemalda"
 
 #: src/preferences_display.cpp:270
 msgid "Show Floating Labels"
@@ -590,7 +581,7 @@ msgstr "Näita haloefekte"
 
 #: src/preferences_display.cpp:277
 msgid "Theme"
-msgstr ""
+msgstr "Teema"
 
 #: src/preferences_display.cpp:279
 msgid "Adjust Gamma"
@@ -601,35 +592,32 @@ msgid "Reverse Time Graphics"
 msgstr "Graafika tagurpidises ajas"
 
 #: src/preferences_display.cpp:282
-#, fuzzy
 msgid "Sound effects"
-msgstr "Näita haloefekte"
+msgstr "Heliefektid"
 
 #: src/preferences_display.cpp:283
 msgid "Music"
-msgstr ""
+msgstr "Muusika"
 
 #: src/preferences_display.cpp:284
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Näita vestlustes aega"
 
 #: src/preferences_display.cpp:285
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Video režiim"
+msgstr "Režiim edasijõudnutele"
 
 #: src/preferences_display.cpp:286
 msgid "Normal Mode"
-msgstr ""
+msgstr "Tavarežiim"
 
 #: src/preferences_display.cpp:289
-#, fuzzy
 msgid "Custom"
-msgstr "Lõika"
+msgstr "Kohandatud"
 
 #: src/preferences_display.cpp:290
 msgid "Apply"
-msgstr ""
+msgstr "Rakenda"
 
 #: src/preferences_display.cpp:292
 msgid "Music Volume:"
@@ -640,9 +628,8 @@ msgid "SFX Volume:"
 msgstr "Efektide valjus:"
 
 #: src/preferences_display.cpp:293
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Efektide valjus:"
+msgstr "Kellahelina valjus:"
 
 #: src/preferences_display.cpp:294
 msgid "Gamma:"
@@ -650,11 +637,11 @@ msgstr "Gamma:"
 
 #: src/preferences_display.cpp:296
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Sämplimissagedus (Hz):"
 
 #: src/preferences_display.cpp:319
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Heliefektid sees/väljas"
 
 #: src/preferences_display.cpp:323
 msgid "Change the sound effects volume"
@@ -662,34 +649,31 @@ msgstr "Muuda heliefektide valjusust"
 
 #: src/preferences_display.cpp:326
 msgid "Music on/off"
-msgstr ""
+msgstr "Muusika sees/väljas"
 
 #: src/preferences_display.cpp:330
 msgid "Change the music volume"
 msgstr "Muuda muusika valjusust"
 
 #: src/preferences_display.cpp:336
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Muuda muusika valjusust"
+msgstr "Muuda kellahaleina valjusust"
 
 #: src/preferences_display.cpp:338
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Muuda kasutatavat keelt"
+msgstr "Muuda sämplimissagedust"
 
 #: src/preferences_display.cpp:347
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Kasutajapoolse sämplimissageduse tarvitamine"
 
 #: src/preferences_display.cpp:356 src/preferences_display.cpp:360
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Muuda muusika valjusust"
+msgstr "Muuda puhvri suurust"
 
 #: src/preferences_display.cpp:358 src/preferences_display.cpp:805
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Puhvri suurus:"
 
 #: src/preferences_display.cpp:365
 msgid "Change the speed of scrolling around the map"
@@ -701,7 +685,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:375
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Lisa vestlussõnumitele ajatempel"
 
 #: src/preferences_display.cpp:378 src/preferences_display.cpp:383
 msgid "Change the brightness of the display"
@@ -716,9 +700,8 @@ msgid "Make units move and fight faster"
 msgstr "Üksused liiguvad ja võitlevad kiiremini"
 
 #: src/preferences_display.cpp:394
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Üksused liiguvad ja võitlevad kiiremini"
+msgstr "Üksuste liikumis- ja võitlemiskiirus"
 
 #: src/preferences_display.cpp:397
 msgid "Do not animate AI units moving"
@@ -774,7 +757,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:425
 msgid "Insert a username"
-msgstr ""
+msgstr "Sisesta kasutajanimi"
 
 #: src/preferences_display.cpp:428
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -785,9 +768,8 @@ msgid "Change the resolution the game runs at"
 msgstr "Muuda mängu kasutatavad ekraani eraldusvõimet"
 
 #: src/preferences_display.cpp:431
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Muuda mängu kasutatavad ekraani eraldusvõimet"
+msgstr "Muuda mängus kasutatavad teemat"
 
 #: src/preferences_display.cpp:434
 msgid "Display a dialog at the beginning of your turn"
@@ -820,23 +802,20 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Vaata ja seadista klaviatuuri kiirvalikuid"
 
 #: src/preferences_display.cpp:700
-#, fuzzy
 msgid "Speed: "
-msgstr "Kerimiskiirus:"
+msgstr "Kiirus:"
 
 #: src/preferences_display.cpp:850
 msgid "Chat Lines: "
 msgstr ""
 
 #: src/preferences_display.cpp:946
-#, fuzzy
 msgid "yes"
-msgstr "Jah"
+msgstr "jah"
 
 #: src/preferences_display.cpp:948
-#, fuzzy
 msgid "no"
-msgstr "Võta tagasi"
+msgstr "ei"
 
 #: src/preferences_display.cpp:1077
 msgid "Prefs section^General"
@@ -851,13 +830,12 @@ msgid "Prefs section^Sound"
 msgstr "Heli"
 
 #: src/preferences_display.cpp:1080
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Pilt"
+msgstr "Mitu mängijat"
 
 #: src/preferences_display.cpp:1081
 msgid "Advanced section^Advanced"
-msgstr ""
+msgstr "Edasijõudnutele"
 
 #: src/preferences_display.cpp:1146
 msgid "There are no alternative video modes available"
@@ -872,17 +850,16 @@ msgid "Hotkey Settings"
 msgstr "Kiirvalikute seaded"
 
 #: src/preferences_display.cpp:1212 src/preferences_display.cpp:1265
-#, fuzzy
 msgid "Press desired Hotkey"
-msgstr "Vajuta soovitud kiirvalikut"
+msgstr "Vajuta soovitud kiirklahvi"
 
 #: src/preferences_display.cpp:1230
 msgid "Action"
-msgstr ""
+msgstr "Tegevus"
 
 #: src/preferences_display.cpp:1230
 msgid "Binding"
-msgstr ""
+msgstr "Klahv"
 
 #: src/preferences_display.cpp:1242
 msgid "Change Hotkey"
@@ -893,21 +870,20 @@ msgid "Save Hotkeys"
 msgstr "Salvesta kiirvalikud"
 
 #: src/preferences_display.cpp:1292
-#, fuzzy
 msgid "This Hotkey is already in use."
-msgstr "See kiirvalik on juba kasutusel."
+msgstr "See kiirklahv on juba kasutusel."
 
 #: src/preferences_display.cpp:1325
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Salvestatud teema eelistus:"
 
 #: src/preferences_display.cpp:1331
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Uus teema ei rakendub kas uue mängu alustamisel või mängu laadimisel."
 
 #: src/preferences_display.cpp:1335
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Teemasid ei leitud. Proovi teemat muuta olemasolevast mängust."
 
 #: src/show_dialog.cpp:314
 msgid "Error"

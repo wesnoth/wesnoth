@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:40+0100\n"
+"POT-Creation-Date: 2007-01-16 21:26+0100\n"
 "PO-Revision-Date: 2006-12-22 21:29+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: none\n"
@@ -22,13 +22,14 @@ msgstr ":)"
 msgid "Wesnoth Tutorial"
 msgstr "Wesnoth opplæring"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:257
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
 #: data/tutorial/scenarios/1_Tutorial.cfg:149
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
+#: data/tutorial/scenarios/2_Tutorial.cfg:257
 msgid "Konrad"
 msgstr "Konrad"
 
+#: data/tutorial/units/Quintain.cfg:4
 #: data/tutorial/scenarios/1_Tutorial.cfg:80
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Quintain"
@@ -64,10 +65,10 @@ msgstr "Bli drept i forsøket"
 msgid "Who would you like to play?"
 msgstr "Hvilken karakter vil du spille?"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:329
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
 #: data/tutorial/scenarios/1_Tutorial.cfg:174
+#: data/tutorial/scenarios/2_Tutorial.cfg:329
 msgid "Li'sar"
 msgstr "Li'sar"
 
@@ -293,8 +294,8 @@ msgstr "Klikk på knappen Avslutt runde nederst til høyre."
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
 msgstr "Auu!  Jeg trenger helbredelse!  Bare $student_hp hp igjen!"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:409
 #: data/tutorial/scenarios/1_Tutorial.cfg:486
+#: data/tutorial/scenarios/2_Tutorial.cfg:409
 msgid "Village"
 msgstr "Landsby"
 
@@ -350,8 +351,8 @@ msgstr ""
 msgid "I'll recruit some elves!"
 msgstr "Ja! Jeg kan rekruttere noen alver!"
 
-#: data/tutorial/scenarios/2_Tutorial.cfg:934
 #: data/tutorial/scenarios/1_Tutorial.cfg:564
+#: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Keep"
 msgstr "Vakttårn"
 
@@ -1474,6 +1475,80 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1559
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Du har brukt for lang tid.  Vi blir aldri kvitt orkene nå!"
+
+#: data/tutorial/units/Elder_Mage.cfg:4
+msgid "Elder Mage"
+msgstr "Aldrende magiker"
+
+#: data/tutorial/units/Elder_Mage.cfg:30
+msgid ""
+"Once great, Elder Magi have seen their power a little diminished from "
+"wearying years of battle. Nevertheless they remain feared on the battlefield "
+"on account of their powerful lightning bolts."
+msgstr ""
+"En aldrende magiker var en gang en stor trollmann, og besitter fremdeles mye "
+"av sin tidligere styrke. På tross av de tærende erfaringene han har gjort "
+"seg i årenes løp, er han fryktet på slagmarken for lynkilene han har makt "
+"over."
+
+#: data/tutorial/units/Elder_Mage.cfg:32 data/tutorial/units/Elder_Mage.cfg:33
+msgid "staff"
+msgstr "stav"
+
+#: data/tutorial/units/Elder_Mage.cfg:35 data/tutorial/units/Quintain.cfg:25
+msgid "impact"
+msgstr "slag"
+
+#: data/tutorial/units/Elder_Mage.cfg:109
+#: data/tutorial/units/Elder_Mage.cfg:110
+msgid "lightning"
+msgstr "lynkile"
+
+#: data/tutorial/units/Elder_Mage.cfg:112
+msgid "fire"
+msgstr "ild"
+
+#: data/tutorial/units/Fighter.cfg:4
+msgid "Fighter"
+msgstr "Soldat"
+
+#: data/tutorial/units/Fighteress.cfg:23 data/tutorial/units/Fighter.cfg:17
+msgid ""
+"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
+"from enemies. However they have the potential to become great warriors one "
+"day."
+msgstr ""
+"Unge og fremadstormende er soldatene trent i sverdkamp. Skjønt de ennå er "
+"sårbare for angrep fra fiender, har de potensiale til en dag å bli en store "
+"krigere."
+
+#: data/tutorial/units/Fighter.cfg:21 data/tutorial/units/Fighter.cfg:22
+msgid "sword"
+msgstr "sverd"
+
+#: data/tutorial/units/Fighteress.cfg:30 data/tutorial/units/Fighter.cfg:24
+msgid "blade"
+msgstr "hugg"
+
+#: data/tutorial/units/Fighteress.cfg:4
+msgid "female^Fighter"
+msgstr "Stridsmøy"
+
+#: data/tutorial/units/Fighteress.cfg:27 data/tutorial/units/Fighteress.cfg:28
+msgid "sabre"
+msgstr "sabel"
+
+#: data/tutorial/units/Quintain.cfg:14
+msgid ""
+"Quintains are used to practice swordplay and jousting on.  It would be "
+"extremely unusual to be attacked by one."
+msgstr ""
+"Stråmenn brukes for å trene sverdlek og lansespill. Du vil svært sjelden "
+"oppleve å bli angrepet av en."
+
+#: data/tutorial/units/Quintain.cfg:21 data/tutorial/units/Quintain.cfg:22
+msgid "flail"
+msgstr "stålpisk"
 
 #~ msgid "Click on $student"
 #~ msgstr "Klikk på $student"

@@ -139,11 +139,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
+		//This game was started from a savegame
 		LOG_G << "loading snapshot...\n";
-		//load from a save-snapshot.
-		starting_pos = gamestate.snapshot;
-		scenario = &starting_pos;
-		gamestate = read_game(units_data, &gamestate.snapshot);
+		starting_pos = gamestate.starting_pos;
+		scenario = &gamestate.snapshot;
 	}
 
 	controller_map controllers;

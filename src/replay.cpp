@@ -704,7 +704,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			return false;
 		}
 
-		else if(cfg->child("start") != NULL) {
+		//if there is an empty command tag, create by pre_replay() or a start tag
+		else if ( (cfg->all_children().size() == 0) || (cfg->child("start") != NULL) ){
 			//do nothing
 
 		} else if((child = cfg->child("speak")) != NULL) {

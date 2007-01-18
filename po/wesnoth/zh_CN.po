@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:45+0100\n"
+"POT-Creation-Date: 2007-01-16 21:30+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -396,11 +396,7 @@ msgstr ""
 "中毒：\n"
 "本攻击是目标中毒，中毒单位每回合失去8hp，直到他们被治愈或生命降到1hp。"
 
-#: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
-#: data/campaigns/Heir_To_The_Throne.cfg:33
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
-#: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
-#: data/campaigns/Under_the_Burning_Suns.cfg:36
+#: data/about.cfg:6
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "+艺术与图像设计师"
@@ -434,9 +430,7 @@ msgstr "+多人游戏地图"
 msgid "Packagers"
 msgstr "+游戏打包人员"
 
-#: data/about.cfg:134 data/campaigns/The_South_Guard.cfg:39
-#: data/campaigns/Two_Brothers.cfg:36
-#: data/campaigns/Under_the_Burning_Suns.cfg:48
+#: data/about.cfg:134
 #, fuzzy
 msgid "Miscellaneous"
 msgstr "+其它方面"
@@ -641,1176 +635,6 @@ msgstr "最大生命值奖励 +"
 #: data/amla.cfg:30
 msgid "Full Heal"
 msgstr "生命全满"
-
-#: data/campaigns/Eastern_Invasion.cfg:22
-#: data/campaigns/Heir_To_The_Throne.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
-#: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
-#: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
-msgid "Campaign Designer"
-msgstr "战役"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
-msgid "Horse Lord"
-msgstr "骑兵君主"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:16
-#, fuzzy
-msgid ""
-"The greatest of the men of the plains, Horse Lords are heads of their houses "
-"and are respected by all, friend or foe. Their sword can kill most ordinary "
-"enemies, and their morning star crushes those who are left."
-msgstr ""
-"平原上最优秀的人类，骑兵君主是所属马的领导，并得到所以朋友或敌人的尊敬。他们"
-"的剑能杀死大多数普通的敌人，"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:19
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:27
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:29
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:165
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:59
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:20
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:82
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:220
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:20
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:28
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:29
-#: data/tutorial/units/Fighter.cfg:20 data/units/Drake_Blademaster.cfg:66
-#: data/units/Drake_Clasher.cfg:75 data/units/Drake_Enforcer.cfg:68
-#: data/units/Drake_Flameheart.cfg:78 data/units/Drake_Flare.cfg:82
-#: data/units/Drake_Gladiator.cfg:67 data/units/Drake_Warrior.cfg:70
-#: data/units/Elvish_Archer.cfg:22 data/units/Elvish_Avenger.cfg:61
-#: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
-#: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
-#: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
-#: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
-#: data/units/Elvish_Sharpshooter.cfg:47
-#: data/units/Human_Horse_Grand_Knight.cfg:24
-#: data/units/Human_Horse_Knight.cfg:23 data/units/Human_Horse_Paladin.cfg:31
-#: data/units/Human_Loyalist_Bowman.cfg:23
-#: data/units/Human_Loyalist_Cavalier.cfg:35
-#: data/units/Human_Loyalist_Cavalryman.cfg:49
-#: data/units/Human_Loyalist_Dragoon.cfg:34
-#: data/units/Human_Loyalist_General.cfg:43
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:39
-#: data/units/Human_Loyalist_Lieutenant.cfg:33
-#: data/units/Human_Loyalist_Longbowman.cfg:25
-#: data/units/Human_Loyalist_Master_Bowman.cfg:24
-#: data/units/Human_Loyalist_Royal_Guard.cfg:26
-#: data/units/Human_Loyalist_Sergeant.cfg:32
-#: data/units/Human_Loyalist_Swordsman.cfg:25 data/units/Naga_Fighter.cfg:23
-#: data/units/Naga_Myrmidon.cfg:27 data/units/Naga_Warrior.cfg:26
-#: data/units/Orcish_Grunt.cfg:74 data/units/Orcish_Leader.cfg:28
-msgid "sword"
-msgstr "剑"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:30
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:65
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:35
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:132
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:167
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:61
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:24
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:84
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:221
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:110
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:32
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:30
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:22
-#: data/tutorial/units/Fighter.cfg:22 data/tutorial/units/Fighteress.cfg:28
-#: data/units/Drake_Armageddon.cfg:81 data/units/Drake_Blademaster.cfg:67
-#: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
-#: data/units/Drake_Enforcer.cfg:69 data/units/Drake_Fighter.cfg:64
-#: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
-#: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:68
-#: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
-#: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
-#: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
-#: data/units/Dwarvish_Fighter.cfg:27 data/units/Dwarvish_Lord.cfg:29
-#: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
-#: data/units/Dwarvish_Thunderer.cfg:41
-#: data/units/Dwarvish_Thunderguard.cfg:25
-#: data/units/Dwarvish_Ulfserker.cfg:33 data/units/Elvish_Archer.cfg:24
-#: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
-#: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
-#: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
-#: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
-#: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
-#: data/units/Goblin_Direwolf_Rider.cfg:35
-#: data/units/Goblin_Direwolf_Rider.cfg:83 data/units/Goblin_Knight.cfg:35
-#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:24
-#: data/units/Gryphon_Master.cfg:27 data/units/Gryphon_Rider.cfg:27
-#: data/units/Human_Horse_Grand_Knight.cfg:26
-#: data/units/Human_Horse_Knight.cfg:25
-#: data/units/Human_Loyalist_Bowman.cfg:25
-#: data/units/Human_Loyalist_Cavalier.cfg:37
-#: data/units/Human_Loyalist_Cavalryman.cfg:51
-#: data/units/Human_Loyalist_Dragoon.cfg:36
-#: data/units/Human_Loyalist_Duelist.cfg:71
-#: data/units/Human_Loyalist_Fencer.cfg:126
-#: data/units/Human_Loyalist_General.cfg:45
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:41
-#: data/units/Human_Loyalist_Halberdier.cfg:215
-#: data/units/Human_Loyalist_Lieutenant.cfg:35
-#: data/units/Human_Loyalist_Longbowman.cfg:27
-#: data/units/Human_Loyalist_Master_Bowman.cfg:26
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:30
-#: data/units/Human_Loyalist_Royal_Guard.cfg:28
-#: data/units/Human_Loyalist_Sergeant.cfg:34
-#: data/units/Human_Loyalist_Swordsman.cfg:27
-#: data/units/Human_Outlaw_Assassin.cfg:30
-#: data/units/Human_Outlaw_Assassin.cfg:111
-#: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
-#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
-#: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
-#: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
-#: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
-#: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
-#: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:69
-#: data/units/Orcish_Assassin.cfg:107 data/units/Orcish_Crossbowman.cfg:24
-#: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
-#: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:26
-#: data/units/Orcish_Slayer.cfg:117 data/units/Orcish_Slurbow.cfg:24
-#: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
-#: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:43
-#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:67
-#: data/units/Undead_Corpse_Necrophage.cfg:35
-#: data/units/Undead_Skele_Bone_Shooter.cfg:43
-#: data/units/Undead_Skele_Death_Knight.cfg:46
-#: data/units/Undead_Skele_Deathblade.cfg:44
-#: data/units/Undead_Skele_Draug.cfg:44
-#: data/units/Undead_Skele_Revenant.cfg:43
-#: data/units/Undead_Skele_Soul_Shooter.cfg:33
-#: data/units/Undead_Skeleton.cfg:108
-#: data/units/Undead_Spirit_Nightgaunt.cfg:54
-#: data/units/Undead_Spirit_Shadow.cfg:28
-#: data/units/Undead_Spirit_Spectre.cfg:46
-#: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "blade"
-msgstr "剑"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:53
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:61
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:61
-#: data/units/Human_Loyalist_Shock_Trooper.cfg:20
-msgid "morning star"
-msgstr "晨星攻击"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:54
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:62
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:62
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:23
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:106
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:21
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:23
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:74
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:26
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:91
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:139
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:94
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:142
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:30
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:53
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:92
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:27
-#: data/tutorial/units/Elder_Mage.cfg:33 data/tutorial/units/Quintain.cfg:23
-#: data/units/Boat_Galleon.cfg:23 data/units/Drake_Enforcer.cfg:102
-#: data/units/Drake_Gladiator.cfg:154 data/units/Drake_Glider.cfg:77
-#: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
-#: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
-#: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
-#: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
-#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:70
-#: data/units/Elvish_Shaman.cfg:30 data/units/Elvish_Shaman.cfg:68
-#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Shyde.cfg:57
-#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:75
-#: data/units/Elvish_Sylph.cfg:29 data/units/Elvish_Sylph.cfg:57
-#: data/units/Goblin_Pillager.cfg:73
-#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:22
-#: data/units/Human_Loyalist_Iron_Mauler.cfg:24
-#: data/units/Human_Loyalist_Shock_Trooper.cfg:22 data/units/Human_Mage.cfg:56
-#: data/units/Human_Mage_Arch.cfg:41 data/units/Human_Mage_Great.cfg:30
-#: data/units/Human_Mage_Red.cfg:51 data/units/Human_Mage_Silver.cfg:88
-#: data/units/Human_Mage_White.cfg:88 data/units/Human_Mage_of_Light.cfg:68
-#: data/units/Human_Outlaw.cfg:23 data/units/Human_Outlaw.cfg:60
-#: data/units/Human_Outlaw_Bandit.cfg:35
-#: data/units/Human_Outlaw_Footpad.cfg:23
-#: data/units/Human_Outlaw_Footpad.cfg:70 data/units/Human_Outlaw_Thug.cfg:23
-#: data/units/Mermaid_Diviner.cfg:69 data/units/Mermaid_Enchantress.cfg:26
-#: data/units/Mermaid_Enchantress.cfg:64 data/units/Mermaid_Initiate.cfg:29
-#: data/units/Mermaid_Initiate.cfg:67 data/units/Mermaid_Priestess.cfg:66
-#: data/units/Mermaid_Siren.cfg:30 data/units/Mermaid_Siren.cfg:75
-#: data/units/Merman_Entangler.cfg:57 data/units/Merman_Netcaster.cfg:56
-#: data/units/Monster_Cave_Spider.cfg:86 data/units/Monster_Cuttle_Fish.cfg:35
-#: data/units/Monster_Giant_Mudcrawler.cfg:47
-#: data/units/Monster_Giant_Mudcrawler.cfg:85
-#: data/units/Monster_Giant_Scorpion.cfg:71
-#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:60
-#: data/units/Monster_Yeti.cfg:34 data/units/Saurian_Augur.cfg:38
-#: data/units/Saurian_Oracle.cfg:38 data/units/Saurian_Soothsayer.cfg:38
-#: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:27
-#: data/units/Troll_Hero.cfg:26 data/units/Troll_Rocklobber.cfg:29
-#: data/units/Troll_Rocklobber.cfg:66 data/units/Troll_Warrior.cfg:29
-#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:46
-#: data/units/Undead_Corpse_Walking.cfg:48
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:26
-#: data/units/Undead_Necromancer.cfg:27
-#: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
-#: data/units/Wose_Ancient.cfg:31 data/units/Wose_Elder.cfg:30
-msgid "impact"
-msgstr "冲击"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:3
-msgid "Mounted Fighter"
-msgstr "骑兵斗士"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:24
-#, fuzzy
-msgid ""
-"The nobles of the men of the plains are trained with the rest of the "
-"horsemen to become great warriors. However, they are also trained in "
-"commanding their comrades, and they are the ones that become captains of the "
-"armies of the Clans."
-msgstr ""
-"平原上高贵的人们被训练成为伟大的勇士。然而，他们也会被训练去指挥士兵，他们也"
-"是唯一能成为军队首领的人选。"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:3
-msgid "Mounted Warrior"
-msgstr "骑兵勇士"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:24
-msgid ""
-"Leaders of the plains, Mounted Warriors are skilled with the use of the "
-"sword and the morning star. Riding horses, they are able to move around the "
-"battlefield with great speed, and can provide much needed assistance to "
-"different fronts."
-msgstr ""
-"平原的领袖，骑兵勇士有着强力的剑术和晨星攻击的能力。由于骑马，所以在战场上能"
-"进行有效的移动，并且能够给予盟友足够的支援。"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:27
-#: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
-#: data/units/Orcish_Warlord.cfg:23 data/units/Orcish_Warrior.cfg:21
-#, fuzzy
-msgid "greatsword"
-msgstr "剑"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:3
-msgid "Skeletal Dragon"
-msgstr "骨龙"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:25
-msgid ""
-"Long ago one of the mightiest living creatures, the feared Dragon has become "
-"only bones and dark sinew. Long after its death, it was raised through the "
-"dark powers of necromancy, which it now serves. The Skeletal Dragon may look "
-"like nothing more than a pile of bones, but few people who thought that way "
-"lived long enough to change their minds."
-msgstr ""
-"曾经最神秘的生物之一，这令人恐惧的龙仅由骨头和黑暗力量组成。在他们死亡很长一"
-"段时间之后，被死灵法师的黑暗能力召唤出来，并服务于他们。骨龙看起来就是一堆骨"
-"头，但少数人这样长时间的存活方式足以改变他们的思想。"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:28
-msgid "jaw"
-msgstr "颚"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:64
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
-#: data/units/Drake_Armageddon.cfg:79 data/units/Drake_Burner.cfg:61
-#: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
-#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:22
-#: data/units/Gryphon_Master.cfg:25 data/units/Gryphon_Rider.cfg:25
-#: data/units/Undead_Corpse_Ghoul.cfg:65
-#: data/units/Undead_Corpse_Necrophage.cfg:33
-#: data/units/Undead_Spirit_Nightgaunt.cfg:53
-#: data/units/Undead_Spirit_Shadow.cfg:27
-msgid "claws"
-msgstr "爪击"
-
-#: data/campaigns/Heir_To_The_Throne.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
-#: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
-#: data/campaigns/Under_the_Burning_Suns.cfg:32
-msgid "Current Maintainer"
-msgstr ""
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:100
-msgid "female^Battle Princess"
-msgstr "女性战斗公主"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:30
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:126
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals, and battle tactics with the greatest sages, making her both a "
-"great combatant and leader. Now battle-hardened and strong of will, she can "
-"now aid those around her in the art of combat."
-msgstr ""
-"与生俱来的高贵气质，使得公主能学到最全面的剑术技能和贤能的战斗技巧，让她成为"
-"强大的战斗者和领袖。能承受高强度战斗并有着强烈的意志，使她能够充分发挥战斗技"
-"巧。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:130
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:108
-#: data/tutorial/units/Fighteress.cfg:26
-#: data/units/Human_Loyalist_Duelist.cfg:69
-#: data/units/Human_Loyalist_Fencer.cfg:124
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:28
-#, fuzzy
-msgid "sabre"
-msgstr "戳"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:183
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:213
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:125
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:290
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:156
-msgid "scepter of fire"
-msgstr "火焰权杖"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:184
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:214
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:79
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:126
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:291
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:157
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:112
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:27
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:28
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:82
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:71
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:75
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:121
-#: data/tutorial/units/Elder_Mage.cfg:109 data/units/Drake_Armageddon.cfg:131
-#: data/units/Drake_Blademaster.cfg:116 data/units/Drake_Burner.cfg:111
-#: data/units/Drake_Fighter.cfg:113 data/units/Drake_Fire.cfg:118
-#: data/units/Drake_Flameheart.cfg:156 data/units/Drake_Flare.cfg:137
-#: data/units/Drake_Glider.cfg:131 data/units/Drake_Hurricane.cfg:151
-#: data/units/Drake_Inferno.cfg:119 data/units/Drake_Sky.cfg:178
-#: data/units/Drake_Warrior.cfg:120 data/units/Dwarvish_Runemaster.cfg:63
-#: data/units/Goblin_Pillager.cfg:36 data/units/Human_Mage.cfg:104
-#: data/units/Human_Mage_Arch.cfg:88 data/units/Human_Mage_Great.cfg:77
-#: data/units/Human_Mage_Red.cfg:98 data/units/Human_Mage_Silver.cfg:132
-#: data/units/Orcish_Archer.cfg:238 data/units/Orcish_Crossbowman.cfg:101
-#: data/units/Orcish_Slurbow.cfg:121
-msgid "fire"
-msgstr "火"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:3
-msgid "Cockatrice"
-msgstr "梅杜莎"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:16
-msgid ""
-"Sometimes known as 'basilisks', these mystical creatures are said to be able "
-"to turn the living to stone. Needless to say, this makes them extremely "
-"dangerous."
-msgstr ""
-"有时被称为‘蛇怪’，这些神秘的生物能让活物变成石头，无需多说，这让他们变得十分"
-"危险。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:19
-msgid "gaze"
-msgstr "凝视"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:20
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:51
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:52
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:103
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:61
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:26
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:46
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:52
-#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
-#: data/units/Elvish_Sylph.cfg:128 data/units/Saurian_Augur.cfg:75
-#: data/units/Saurian_Oracle.cfg:75 data/units/Saurian_Soothsayer.cfg:75
-#: data/units/Undead_Necro_Ancient_Lich.cfg:29
-#: data/units/Undead_Necro_Ancient_Lich.cfg:69
-#: data/units/Undead_Necro_Dark_Adept.cfg:32
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
-#: data/units/Undead_Necro_Lich.cfg:31 data/units/Undead_Necro_Lich.cfg:71
-#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:26
-#: data/units/Undead_Spirit_Ghost.cfg:64
-#: data/units/Undead_Spirit_Spectre.cfg:86
-#: data/units/Undead_Spirit_Wraith.cfg:68
-msgid "cold"
-msgstr "冰"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:139
-msgid "Commander"
-msgstr "指挥官"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:162
-msgid ""
-"The rank of Commander is held by those who lead battle groups into combat. "
-"Possessing leadership skills, they give lower-level units in adjacent hexes "
-"improved performance in combat. Commanders are best skilled with the sword, "
-"although they also carry a bow to use when necessary. If the Commander is "
-"lost, so is the battle."
-msgstr ""
-"指挥官的军衔由他们在战斗中所领导的军队来决定。拥有领导能力，使他能让附近格子"
-"内的低级单位能更好的作战。指挥官非常善于剑术，有时也会弓。如果指挥官死亡，战"
-"斗也会失败。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:77
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:101
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:66
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:67
-#: data/units/Elvish_Archer.cfg:75 data/units/Elvish_Avenger.cfg:109
-#: data/units/Elvish_Captain.cfg:83 data/units/Elvish_Champion.cfg:80
-#: data/units/Elvish_Fighter.cfg:65 data/units/Elvish_Hero.cfg:69
-#: data/units/Elvish_Marshal.cfg:77 data/units/Elvish_Outrider.cfg:79
-#: data/units/Elvish_Ranger.cfg:106 data/units/Elvish_Rider.cfg:81
-#: data/units/Elvish_Scout.cfg:80 data/units/Human_Loyalist_Bowman.cfg:61
-#: data/units/Human_Loyalist_Longbowman.cfg:63
-#: data/units/Human_Loyalist_Master_Bowman.cfg:62
-#: data/units/Human_Outlaw_Poacher.cfg:72
-#: data/units/Human_Outlaw_Trapper.cfg:102 data/units/Orcish_Archer.cfg:177
-#: data/units/Orcish_Archer.cfg:236 data/units/Orcish_Leader.cfg:66
-#: data/units/Orcish_Ruler.cfg:64 data/units/Orcish_Sovereign.cfg:65
-#: data/units/Orcish_Warlord.cfg:76
-#: data/units/Undead_Skele_Bone_Shooter.cfg:79
-#: data/units/Undead_Skele_Soul_Shooter.cfg:69
-#: data/units/Undead_Skeleton_Archer.cfg:69
-msgid "bow"
-msgstr "弓"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:78
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:103
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:67
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:68
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:71
-#: data/units/Boat_Pirate_Galleon.cfg:21
-#: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:119
-#: data/units/Drake_Enforcer.cfg:135 data/units/Drake_Gladiator.cfg:111
-#: data/units/Drake_Slasher.cfg:118 data/units/Drake_Warden.cfg:124
-#: data/units/Dwarvish_Dragonguard.cfg:62 data/units/Dwarvish_Guardsman.cfg:33
-#: data/units/Dwarvish_Guardsman.cfg:81 data/units/Dwarvish_Sentinel.cfg:41
-#: data/units/Dwarvish_Sentinel.cfg:89 data/units/Dwarvish_Stalwart.cfg:36
-#: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
-#: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
-#: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
-#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
-#: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
-#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
-#: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
-#: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
-#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
-#: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
-#: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
-#: data/units/Goblin_Spearman.cfg:160
-#: data/units/Human_Horse_Grand_Knight.cfg:64
-#: data/units/Human_Horse_Knight.cfg:63 data/units/Human_Horse_Lancer.cfg:25
-#: data/units/Human_Horse_Paladin.cfg:71 data/units/Human_Horseman.cfg:25
-#: data/units/Human_Loyalist_Bowman.cfg:62
-#: data/units/Human_Loyalist_Cavalier.cfg:86
-#: data/units/Human_Loyalist_Dragoon.cfg:85
-#: data/units/Human_Loyalist_Duelist.cfg:109
-#: data/units/Human_Loyalist_General.cfg:93
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:89
-#: data/units/Human_Loyalist_Halberdier.cfg:31
-#: data/units/Human_Loyalist_Javelineer.cfg:28
-#: data/units/Human_Loyalist_Javelineer.cfg:84
-#: data/units/Human_Loyalist_Lieutenant.cfg:78
-#: data/units/Human_Loyalist_Longbowman.cfg:64
-#: data/units/Human_Loyalist_Master_Bowman.cfg:63
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:188
-#: data/units/Human_Loyalist_Pikeman.cfg:54
-#: data/units/Human_Loyalist_Sergeant.cfg:82
-#: data/units/Human_Loyalist_Spearman.cfg:63
-#: data/units/Human_Loyalist_Spearman.cfg:204
-#: data/units/Human_Outlaw_Poacher.cfg:73
-#: data/units/Human_Outlaw_Trapper.cfg:103 data/units/Human_Peasant.cfg:24
-#: data/units/Human_Peasant.cfg:67 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
-#: data/units/Merman_Hunter.cfg:23 data/units/Merman_Hunter.cfg:174
-#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:134
-#: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:22
-#: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
-#: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
-#: data/units/Monster_Giant_Scorpion.cfg:25
-#: data/units/Monster_Sea_Serpent.cfg:22 data/units/Orcish_Archer.cfg:179
-#: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
-#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
-#: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
-#: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
-#: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
-#: data/units/Saurian_Skirmisher.cfg:32 data/units/Saurian_Skirmisher.cfg:75
-#: data/units/Undead_Skele_Bone_Shooter.cfg:81
-#: data/units/Undead_Skele_Chocobone.cfg:26
-#: data/units/Undead_Skele_Death_Knight.cfg:89
-#: data/units/Undead_Skele_Soul_Shooter.cfg:71
-#: data/units/Undead_Skeleton_Archer.cfg:71
-msgid "pierce"
-msgstr "刺"
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:87
-msgid "female^Dark Queen"
-msgstr "女性黑暗女王"
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:18
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:102
-msgid ""
-"The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
-"knowledge of magic makes her a worthy foe in combat, although her power is "
-"mostly derived from those she commands."
-msgstr ""
-"邪恶女王Asheviere在韦诺之地上实施恐怖统治多年。她卓越的魔法知识使她成为有价值"
-"的战斗对手，虽然常常她的力量来至于部下。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:21
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:105
-msgid "scepter"
-msgstr "权杖"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:3
-#: data/tutorial/units/Elder_Mage.cfg:3
-msgid "Elder Mage"
-msgstr "长老法师"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:22
-#: data/tutorial/units/Elder_Mage.cfg:29
-msgid ""
-"Once great, Elder Magi have seen their power a little diminished from "
-"wearying years of battle. Nevertheless they remain feared on the battlefield "
-"on account of their powerful lightning bolts."
-msgstr ""
-"虽然在多年厌倦的战斗中伟大长老法师的能力会些微降低，但是敌人还是惧怕他那强有"
-"力的闪电箭。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:90
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:93
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:41
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:30
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:31
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:51
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:90
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:91
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:25
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:26
-#: data/tutorial/units/Elder_Mage.cfg:31 data/units/Elvish_Druid.cfg:27
-#: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:29
-#: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:54
-#: data/units/Human_Mage_Arch.cfg:39 data/units/Human_Mage_Great.cfg:28
-#: data/units/Human_Mage_Red.cfg:49 data/units/Human_Mage_Silver.cfg:86
-#: data/units/Human_Mage_White.cfg:86 data/units/Mermaid_Diviner.cfg:67
-#: data/units/Mermaid_Enchantress.cfg:24 data/units/Mermaid_Initiate.cfg:27
-#: data/units/Mermaid_Priestess.cfg:64 data/units/Saurian_Augur.cfg:36
-#: data/units/Saurian_Oracle.cfg:36 data/units/Saurian_Soothsayer.cfg:36
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:24
-msgid "staff"
-msgstr "棍"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:77
-#: data/tutorial/units/Elder_Mage.cfg:107
-msgid "lightning"
-msgstr "闪电"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:3
-msgid "Elvish High Lord"
-msgstr "精灵高阶君主"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:18
-msgid ""
-"The leaders of the elves do not fall sallow and frail with age. Rather, it "
-"is then that they grow to their true potential. Quiet and contemplative in "
-"times of peace, a High Lord in the full of his wrath is an awesome sight "
-"indeed."
-msgstr ""
-"精灵领袖不会随着时间流逝而衰老。这是他们的天赋。在长时间的和平里进行安静的冥"
-"想，当愤怒充满一个高阶君主时是非常可怕的。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:102
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:60
-#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
-#: data/units/Elvish_Sylph.cfg:127
-msgid "faerie fire"
-msgstr "仙境火"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:4
-msgid "female^Elvish Lady"
-msgstr "女性精灵淑女"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:18
-msgid ""
-"Elves choose their leaders for their power and wisdom; foresight is what has "
-"protected them in times of uncertainty. Their just reign is rewarded by the "
-"unflagging fealty of their people, which is the greatest gift any ruler "
-"could ask for."
-msgstr ""
-"精灵选择领袖作为他们力量和智慧的象征：预见能力在不可知的时间长河里保护着他"
-"们。他们的统治在永远支持的人们那里得到的回报就是，他们是不可多的的明君。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:20
-msgid "shove"
-msgstr "猛推"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:3
-msgid "Elvish Lord"
-msgstr "精灵王"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:17
-msgid ""
-"The nobility of the elves are possessed of merit to match their standing in "
-"society. Elvish Lords are the wisest and strongest of their people, and are "
-"fearsome in their command of magic."
-msgstr ""
-"精灵贵族在社会中有着足够的功绩。精灵王是他们中最智慧和最强壮的，并有着令人畏"
-"惧的魔法。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:66
-#: data/tutorial/units/Fighter.cfg:3
-msgid "Fighter"
-msgstr "战士"
-
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:17
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:79
-#: data/tutorial/units/Fighter.cfg:16 data/tutorial/units/Fighteress.cfg:22
-msgid ""
-"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
-"from enemies. However they have the potential to become great warriors one "
-"day."
-msgstr ""
-"年轻性急的战士使用剑，易受敌人攻击。然而他们有可能某一天成为伟大的勇士。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:192
-msgid "Lord"
-msgstr "君主"
-
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:27
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:216
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:24
-msgid ""
-"The noble leaders of many troops, Lords are especially strong in melee "
-"combat, and also possess skill with the bow. Like Commanders, Lords possess "
-"leadership skills, and improve the fighting ability of all adjacent lower-"
-"level units."
-msgstr ""
-"许多军队的高级领袖，君主在近战中特别强而有力，并有弓技能，像指挥官一样，君主"
-"拥有领导技能，并让相邻的低级单位改进战斗能力。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:3
-msgid "female^Princess"
-msgstr "公主"
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:105
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals and battle tactics with the greatest sages, making her both a great "
-"combatant and leader. The units of lower level around the Princess will "
-"fight better due to her presence. The Princess is also nimble and dextrous, "
-"having skills like that of a thief."
-msgstr ""
-"天生贵族，公主与最伟大的将军学习战术，使得他们成为高超的战斗者和领袖。公主相"
-"邻的低级单位在她的领导下能更好的战斗。公主也十分灵活和敏捷，有着如小偷般的技"
-"能。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:81
-msgid "Princess"
-msgstr "公主"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:3
-msgid "Sea Orc"
-msgstr "海洋兽"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:16
-msgid ""
-"While often viewed as inferior to their land loving counterparts, Sea Orcs "
-"represent a great leap for all goblinoids as they have adapted to aquatic "
-"environments. With their curved swords they are competent fighters, although "
-"their lack of a ranged attack and poor defence on land do represent "
-"strategic weaknesses."
-msgstr ""
-"尽管通常认为比陆地上的同类低级。海洋兽是goblinoids人的领袖正如他们不得不适应"
-"水中的环境。有着弯曲的剑，使得他们能胜任战士这一职业，虽然他们缺乏有效的远程"
-"攻击和在陆地上疏于防御，表现出他们战略上的弱势。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:3
-msgid "Sleeping Gryphon"
-msgstr "沉睡狮鹫"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:16
-msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "嘘！狮鹫在睡觉！最好别吵醒他们！"
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:3
-msgid "Youth"
-msgstr "青卫队"
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:18
-msgid ""
-"Today almost a boy, by his devotion to the crown he is seeking to become a "
-"Lord -- to join the elite of human fighters."
-msgstr ""
-"今天几乎是个孩子，为了能有一天成为君主而开始争夺王权之路 － 加入人类战士的精"
-"英部队。"
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:21
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:24
-msgid "training sword"
-msgstr "训练剑术"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:3
-msgid "Fire Dragon"
-msgstr "火龙"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:20
-msgid ""
-"A fire dragon is an ancient and horrifying being that normally lives only in "
-"hushed rumor and fantastic stories. It is normal for centuries to pass "
-"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
-"form flying in the distance. Legends are very specific about the ravages of "
-"fire dragons: hideously swift in flight, leathery wings spread over one "
-"hundred feet in width, they swoop in and blast their prey with inferno jets "
-"of flame. Anything escaping the dragon's fire breath must beware its "
-"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
-"often take underlings whom they lead to victory."
-msgstr ""
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:23
-msgid "bite"
-msgstr "咬击"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:71
-msgid "tail"
-msgstr "尾击"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:110
-#: data/units/Drake_Armageddon.cfg:129 data/units/Drake_Blademaster.cfg:114
-#: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
-#: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
-#: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
-#: data/units/Drake_Hurricane.cfg:149 data/units/Drake_Inferno.cfg:117
-#: data/units/Drake_Sky.cfg:176 data/units/Drake_Warrior.cfg:118
-msgid "fire breath"
-msgstr "火息术"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:4
-msgid "Fireball"
-msgstr "火球"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:24
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr "火球并不常用于‘伪装移动单位’等。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:3
-msgid "Noble Commander"
-msgstr "高阶指挥官"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:23
-msgid ""
-"The rank of a noble Commander is held by those who lead battle groups into "
-"combat. Possessing leadership skills, they give lower-level units in "
-"adjacent hexes improved performance in combat. Commanders are best skilled "
-"with the sword, although they also carry a bow to use when necessary. If the "
-"Commander is lost, so is the battle."
-msgstr ""
-"高阶指挥官的等级使得他们在战斗中能组织有效的攻击。拥有领导技能，他们让相邻的"
-"低级单位改进攻击能力。指挥官善于使用剑，必须时他们会用弓，如果失去指挥官，战"
-"争也将失败。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:3
-msgid "Noble Fighter"
-msgstr "高价战士"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:21
-msgid ""
-"Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
-"attacks from enemies. However they have the potential to become great "
-"Commanders one day."
-msgstr ""
-"年轻而高傲，战士用剑作战，并易受远程攻击。然而他们有成为伟大指挥官的潜能。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:3
-msgid "Noble Lord"
-msgstr "高阶君主"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:3
-msgid "Noble Youth"
-msgstr "高阶青卫队"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:21
-msgid ""
-"Today he is a young man, by his devotion to the crown he is seeking to "
-"become a Lord -- to join the elite of humanity."
-msgstr ""
-"今天他们是年轻人，但作为王位继承人有一天能成为君主 － 成为人类精英中的一员。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:3
-msgid "female^Outlaw Princess"
-msgstr "亡命之徒公主"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:22
-msgid ""
-"A noble by birth, the Outlaw Princess has learnt swordplay with the greatest "
-"generals, but she is the product of a failed aristocracy who has opted for "
-"the life of an Outlaw. She dreams of founding her own Queendom with the "
-"plunder she finds on the road."
-msgstr ""
-"天生贵族，她们和最伟大的将军一起联系剑术，但是确实那些投向亡命之徒的贵族的产"
-"物。她们梦想着通过抢得的赃物来达到女王之路。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:138
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:141
-#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
-#: data/units/Troll_Rocklobber.cfg:65
-msgid "sling"
-msgstr "投石器"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:3
-msgid "female^Outlaw Queen"
-msgstr "亡命之徒女王"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:25
-msgid ""
-"A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
-"generals and battle tactics with the greatest sages, making her both a great "
-"combatant and leader. However, she is the product of a failed aristocracy "
-"who has opted for the life of an Outlaw. She dreams of founding her own "
-"Queendom with the plunder she finds on the road, and she is ever so close to "
-"that goal."
-msgstr ""
-"天生贵族，她们和最伟大的将军一起练习剑术，但是确实那些投向亡命之徒的贵族的产"
-"物。她们梦想着通过抢得的赃物来达到女王之路，并已经非常接近目标。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:3
-msgid "female^Vampire Lady"
-msgstr "吸血贵妇"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:18
-msgid ""
-"Cold and beautiful, she maintains her eternal youthful appearance drinking "
-"the blood of the living."
-msgstr "冷艳，他们通过吸血来维持那永远年轻的面容。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:21
-msgid "blood kiss"
-msgstr "血之吻"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:69
-#: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
-#: data/units/Saurian_Soothsayer.cfg:74
-msgid "curse"
-msgstr "诅咒"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:3
-msgid "Warrior King"
-msgstr "勇士王"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:25
-msgid ""
-"As the leaders of the human Kingdoms, Kings are responsible for ruling and "
-"protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
-"units, thereby increasing their fighting efficiency."
-msgstr ""
-"作为人类王国的领袖，他们有责任统治和保护他们的子民。他们能协调1级和2级的单"
-"位，因此而增加他们的攻击效果。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:28
-#: data/units/Drake_Enforcer.cfg:101 data/units/Drake_Gladiator.cfg:153
-#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:21
-#: data/units/Human_Loyalist_Iron_Mauler.cfg:23
-#: data/units/Human_Mage_of_Light.cfg:67 data/units/Human_Outlaw.cfg:22
-#: data/units/Human_Outlaw_Bandit.cfg:34 data/units/Troll_Great.cfg:26
-msgid "mace"
-msgstr "锤"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-#, fuzzy
-msgid "Wose Sapling"
-msgstr "治疗"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:25
-#, fuzzy
-msgid ""
-"Rarely seen, even by elves, a Wose is an order of creature about which "
-"little is known. The elves are the source of most of this knowledge; they "
-"know that these beings are not descended from trees, despite the similarity "
-"in form, and they know that a wose is more closely tied to the faerie world "
-"than the elves themselves, though in a different way. The motives and "
-"workings of their kind are unknown, though most posit the obvious idea that "
-"woses are wardens of the natural world.\n"
-"\n"
-"Woses are utterly unwarlike, but possess a great strength. They are, "
-"however, neither used to, nor quick at moving around.\n"
-"\n"
-"Special Notes: Woses regenerate by using natural resources around them, "
-"without needing to huddle in villages to obtain sustenance and aid."
-msgstr ""
-"极少见，即使对精灵来说也一样，树人是极少非正常的生命形式。精灵是这些认知的发"
-"源地：他们知道这些生物不是由树生成，尽管有着相同的形式，并且他们知道树人比精"
-"灵更接近仙境世界，虽然是以不同的方式。他们的动机和运行方式还不可知，尽管大多"
-"数意见认为他们是自然世界的保护者。\n"
-"\n"
-"他们不好战，但拥有强大的力量。然而他们不善于迅速的移动。\n"
-"\n"
-"特别提示：树人使用周围的自然力量来重生，而不需要呆在村庄等待支援或帮助。"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:29
-#: data/units/Wose.cfg:30 data/units/Wose_Ancient.cfg:29
-#: data/units/Wose_Elder.cfg:28
-msgid "crush"
-msgstr "压碎"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:3
-msgid "Demilich"
-msgstr "邪恶巫妖"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:20
-msgid ""
-"After too much time dabbling with forbidden magics and dark arts, these magi "
-"have begun to pay a heavy price. Demiliches have started losing their "
-"bodies, becoming undead themselves. With time, they may become fully undead, "
-"and feared by all alike."
-msgstr ""
-"在使用足够的被禁止魔法和黑暗魔法后，这些魔法师将付出巨大的代价。他们开始失去"
-"他们的身体，慢慢成为不死族。随着时间的流逝，他们将成为真正的不死族并被其他人"
-"所惧怕。"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:23
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:24
-#: data/units/Undead_Corpse_Soulless.cfg:44
-#: data/units/Undead_Corpse_Walking.cfg:46
-#: data/units/Undead_Necro_Ancient_Lich.cfg:27
-#: data/units/Undead_Necro_Lich.cfg:29 data/units/Undead_Spirit_Ghost.cfg:24
-msgid "touch"
-msgstr "触碰"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
-#: data/units/Undead_Necro_Ancient_Lich.cfg:68
-#: data/units/Undead_Necro_Lich.cfg:70
-#, fuzzy
-msgid "chill tempest"
-msgstr "冷冻波"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
-#: data/units/Human_Mage_Arch.cfg:127
-msgid "female^Arch Mage"
-msgstr "女性大法师"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:26
-msgid ""
-"The title of Arch Mage is conferred only after a lifetime of study and "
-"achievement to match. Arch Magi are often employed in positions of "
-"education, or as advisors to those wise enough to seek the fruits of their "
-"wisdom. Many tend to wealthy patrons, a profitable enterprise for both as, "
-"outside of the occasional task or word of advice, it gives the mage leave to "
-"pursue their research undisturbed. Certain others shun civilization, "
-"spending their days as hermits, often to study something which most would "
-"tend to frown upon.\n"
-"\n"
-"Though not trained for any sort of combat, if need arises an Arch Mage can "
-"unleash the full power of their art, something which is not to be taken "
-"lightly.\n"
-"\n"
-"Special Notes: the arch mage's fireballs are magical, and always have a high "
-"chance of hitting an opponent."
-msgstr ""
-"大法师的名号需要花费一生的学习和成就来与之相配。大法师通常受雇于教学，或作为"
-"顾问帮助那些想在智慧上寻求更多进步的人。许多成为富有的赞助人，在外临时教学或"
-"书面的建议都是赚钱的事业，这会使他们远离安静的研究工作。另外一些则避开人群，"
-"选择隐居，常常考虑一些高深的问题。\n"
-"\n"
-"虽然没受训任何战斗，只要有需要，大法师就能释放出精妙的能量，且轻而易举。\n"
-"\n"
-"特别提示：大法师的火球术是魔法攻击，并对对手有很高的击中几率。"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:80
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:81
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:69
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:70
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:73
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:74
-#: data/units/Human_Mage_Arch.cfg:87 data/units/Human_Mage_Great.cfg:76
-#: data/units/Human_Mage_Red.cfg:97
-msgid "fireball"
-msgstr "火球"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:4
-#: data/units/Human_Mage_Great.cfg:116
-msgid "female^Great Mage"
-msgstr "女性高阶大法师"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:27
-msgid ""
-"Any person who is even considered for the title of Great Mage is quite "
-"nearly a legend in their own time, and town criers have forcibly learnt "
-"discretion in applying the title. Merit for the title is carefully "
-"considered by a council of the leading magi of the age, and the conferment "
-"of the title is given only by a majority vote. Regardless, anyone who is "
-"seriously nominated for the honor of being called a Great Mage is, without "
-"question, a master of their art, and has surpassed almost any of their peers "
-"in skill.\n"
-"\n"
-"Though they are not warriors, by any means, the application of their art to "
-"combat is something that often causes other soldiers to stand aside in awe.\n"
-"\n"
-"Special Notes: the great mage's fireballs are magical, and always have a "
-"high chance of hitting an opponent."
-msgstr ""
-"任何人要配的上这个名号需要花费一生的时间来证明，而村庄卫士有权力来辨别他们是"
-"否配的上。名号由法师协会的长老来小心谨慎的授予，并且要得到大多投票才能通过。"
-"不管任何人被授予这高阶大法师的名号，毋庸置疑，就是魔法大师，并有超于其他法师"
-"的易能。\n"
-"\n"
-"虽然他们不是武士，但他们魔法的攻击性，是让许多战士畏惧的。\n"
-"特别提示：高阶大法师的火球是魔法攻击，常常对敌人有很高的击中比率。"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:4
-#: data/units/Human_Mage_Red.cfg:137
-msgid "female^Red Mage"
-msgstr "女性红魔法师"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:26
-msgid ""
-"Upon the successful termination of their apprenticeship, a mage is stripped "
-"of the blue robes of an apprentice, and given the red robes of a master. The "
-"significance of this change is often lost on the peasantry, who mistakenly "
-"title Master Magi as 'Red Magi'. Likewise, the symbolism of the change in "
-"colors is often mistaken to signify the mage's ability to seemingly conjure "
-"fire from nothing but thin air, a trick which, although undeniably useful, "
-"is viewed as a crass application of the knowledge which they have "
-"painstakingly accrued.\n"
-"\n"
-"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
-"number of tricks up their sleeves, including the gouts of fire which may "
-"have cemented their colloquial name.\n"
-"\n"
-"Special Notes: the red mage's fireballs are magical, and always have a high "
-"chance of hitting an opponent."
-msgstr ""
-"随着新手生涯的终结，新手魔法师脱掉蓝色长袍，并被给予红色大师长袍。这些转换的"
-"标志常常是农民迷惑，错误的理解大师头衔如‘红魔法师’。同样的，颜色转变的标志是"
-"人们常常认为他们只是有火焰魔法能力的，习惯性的，虽然这些标识不太有用，但人们"
-"都会认为这是知识的象征。\n"
-"\n"
-"虽然身体薄弱，并没被训练成勇士，‘红魔法师’用袖子施展出许多幻术，包括如火焰魔"
-"法这适合他们那口语化名字的法术。\n"
-"\n"
-"特别提示：红魔法师的火球攻击是魔法攻击，并对敌人有很高的魔法伤害。"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:4
-#: data/units/Human_Mage_Silver.cfg:176
-msgid "female^Silver Mage"
-msgstr "女性银魔法师"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:33
-#, fuzzy
-msgid ""
-"The many paths that a mage can take in study lead to strikingly different "
-"ends. Silver magi have devoted themselves to a study of the forces that bind "
-"reality together, and have managed, somewhat, to unravel the mysteries of a "
-"world far more vast than most would ever imagine. Often viewed as sages, or "
-"wandering mystics, silver magi act under an agenda which is obscure even to "
-"their own colleagues. Though helpful to the magisteriums which often employ "
-"them in the field, they remain somewhat aloof.\n"
-"\n"
-"They have, in fact, their own order amongst the ranks of magi, an order "
-"which withholds certain secrets from their peers. One of these is an "
-"apparent ability to cross great distances, faster than one could possibly "
-"travel on foot. Members of the silver order ardently refuse to discuss the "
-"workings of this with any of their fellow magi, and on those rare occasions "
-"when others have pried into their work, they have abandoned the endeavor, "
-"never to speak of it again.\n"
-"\n"
-"Silver magi are often more physically adept than other magi, and their "
-"skills are of undeniable use on the battlefield, if one can manage to coerce "
-"the mage into applying them.\n"
-"\n"
-"Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
-"magical natures and are highly resistant to non-physical damage. They can "
-"also teleport between any two villages instantly, though the player must "
-"control both, and the destination village must be unoccupied."
-msgstr ""
-"成为魔法师的不同之路会造成不同的学习效果。最终，银魔法师学习到利用和控制物体"
-"的力量。某些事物，是解开那些难以想象的世界之谜关键。通常被认为是圣人，或徘徊"
-"的神秘者，银魔法师常常默默无闻的工作。虽然受雇佣于战场之上起教诲作用，但他们"
-"却有几分超然于世。\n"
-"\n"
-"事实上，他们有着他们自己等级的魔法力量，对他们的同伴来说很是神秘。其中一个是"
-"能在极短的时间内，能比那些最快步兵到达更远的地方。当别人介入时，这些法师的成"
-"员非常避讳于别人讨论他们工作的方式，如果无须，他们将不会再谈起。\n"
-"\n"
-"银魔法师通常被认为事实上强于其他法师，他们在战场上的能力是不容置疑的，如果有"
-"人能强制他们加入的话。\n"
-"\n"
-"特别提示：他们的远程攻击是魔法攻击，并对敌人有很高的击中比率。他们对很多形式"
-"的魔法攻击有很高的抗性。他们也能在任意两个村庄之间传送，然而玩家必须有这两个"
-"村庄的控制权。"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:119
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:120
-#: data/units/Human_Mage.cfg:102 data/units/Human_Mage_Silver.cfg:130
-msgid "missile"
-msgstr "魔法飞弹"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
-#: data/units/Undead_Necromancer.cfg:3
-msgid "Necromancer"
-msgstr "死灵法师"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:22
-msgid ""
-"One of the greatest circles of what is considered 'black magic' is the art "
-"of necromancy, the terrible ability to awaken the dead with false life. It "
-"was a discovery that had terrible ramifications and caused humanity's "
-"condemnation of black magic, for it has given fear a vast new arsenal.\n"
-"\n"
-"This ability, in all aspects, is the first step towards cheating death of "
-"its ultimate prize. It is the highest degree of power a dark mage can attain "
-"without losing grip on humanity itself, but pales to the lethal power "
-"wielded by Liches. Their mortal bodies are also made sturdier by their "
-"magic, in contrast to the frail decayed form of a Lich.\n"
-"\n"
-"Special Notes: the necromancer's ranged attacks are magical and always have "
-"a high chance of hitting an opponent. The staff of a necromancer is marked "
-"with the plague, and any foe struck down by it will rise again in unlife."
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:50
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:62
-#: data/units/Undead_Necromancer.cfg:66
-msgid "chill wave"
-msgstr "冷冻波"
 
 #: data/english.cfg:2
 msgid "Easy"
@@ -4675,7 +3499,7 @@ msgid "Survive for 32 turns."
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
-msgid "Survival all enemy attacks."
+msgid "Survive all enemy attacks."
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
@@ -4685,8 +3509,8 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
-"impossible. Frankly, I don't got a clue to how you did it, so send me the "
-"replay by mail to: roze@roze.mine.nu. Thank You!"
+"impossible. Frankly, I haven't got a clue as to how you did it, so send me "
+"the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
@@ -5601,27 +4425,6 @@ msgstr "公主"
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
-#: data/tutorial/units/Fighteress.cfg:3
-#, fuzzy
-msgid "female^Fighter"
-msgstr "女性魔法师"
-
-#: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
-msgid "Quintain"
-msgstr "山脉"
-
-#: data/tutorial/units/Quintain.cfg:13
-msgid ""
-"Quintains are used to practice swordplay and jousting on.  It would be "
-"extremely unusual to be attacked by one."
-msgstr ""
-
-#: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
-msgid "flail"
-msgstr "尾击"
-
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
 msgstr "大帆船"
@@ -5641,6 +4444,52 @@ msgstr ""
 msgid "dummy"
 msgstr "傀儡"
 
+#: data/units/Boat_Galleon.cfg:23 data/units/Drake_Enforcer.cfg:102
+#: data/units/Drake_Gladiator.cfg:154 data/units/Drake_Glider.cfg:77
+#: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
+#: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
+#: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
+#: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
+#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:70
+#: data/units/Elvish_Shaman.cfg:30 data/units/Elvish_Shaman.cfg:68
+#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Shyde.cfg:57
+#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:75
+#: data/units/Elvish_Sylph.cfg:29 data/units/Elvish_Sylph.cfg:57
+#: data/units/Goblin_Pillager.cfg:73
+#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:22
+#: data/units/Human_Loyalist_Iron_Mauler.cfg:24
+#: data/units/Human_Loyalist_Shock_Trooper.cfg:22 data/units/Human_Mage.cfg:56
+#: data/units/Human_Mage_Arch.cfg:41 data/units/Human_Mage_Great.cfg:30
+#: data/units/Human_Mage_Red.cfg:51 data/units/Human_Mage_Silver.cfg:88
+#: data/units/Human_Mage_White.cfg:88 data/units/Human_Mage_of_Light.cfg:68
+#: data/units/Human_Outlaw.cfg:23 data/units/Human_Outlaw.cfg:60
+#: data/units/Human_Outlaw_Bandit.cfg:35
+#: data/units/Human_Outlaw_Footpad.cfg:23
+#: data/units/Human_Outlaw_Footpad.cfg:70 data/units/Human_Outlaw_Thug.cfg:23
+#: data/units/Mermaid_Diviner.cfg:69 data/units/Mermaid_Enchantress.cfg:26
+#: data/units/Mermaid_Enchantress.cfg:64 data/units/Mermaid_Initiate.cfg:29
+#: data/units/Mermaid_Initiate.cfg:67 data/units/Mermaid_Priestess.cfg:66
+#: data/units/Mermaid_Siren.cfg:30 data/units/Mermaid_Siren.cfg:75
+#: data/units/Merman_Entangler.cfg:57 data/units/Merman_Netcaster.cfg:56
+#: data/units/Monster_Cave_Spider.cfg:86 data/units/Monster_Cuttle_Fish.cfg:35
+#: data/units/Monster_Giant_Mudcrawler.cfg:47
+#: data/units/Monster_Giant_Mudcrawler.cfg:85
+#: data/units/Monster_Giant_Scorpion.cfg:71
+#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:60
+#: data/units/Monster_Yeti.cfg:34 data/units/Saurian_Augur.cfg:38
+#: data/units/Saurian_Oracle.cfg:38 data/units/Saurian_Soothsayer.cfg:38
+#: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:27
+#: data/units/Troll_Hero.cfg:26 data/units/Troll_Rocklobber.cfg:29
+#: data/units/Troll_Rocklobber.cfg:66 data/units/Troll_Warrior.cfg:29
+#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:46
+#: data/units/Undead_Corpse_Walking.cfg:48
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:26
+#: data/units/Undead_Necromancer.cfg:27
+#: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
+#: data/units/Wose_Ancient.cfg:31 data/units/Wose_Elder.cfg:30
+msgid "impact"
+msgstr "冲击"
+
 #: data/units/Boat_Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
 msgstr "海盗大帆船"
@@ -5658,6 +4507,70 @@ msgstr ""
 #: data/units/Boat_Transport_Galleon.cfg:20
 msgid "ballista"
 msgstr "投石器"
+
+#: data/units/Boat_Pirate_Galleon.cfg:21
+#: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:119
+#: data/units/Drake_Enforcer.cfg:135 data/units/Drake_Gladiator.cfg:111
+#: data/units/Drake_Slasher.cfg:118 data/units/Drake_Warden.cfg:124
+#: data/units/Dwarvish_Dragonguard.cfg:62 data/units/Dwarvish_Guardsman.cfg:33
+#: data/units/Dwarvish_Guardsman.cfg:81 data/units/Dwarvish_Sentinel.cfg:41
+#: data/units/Dwarvish_Sentinel.cfg:89 data/units/Dwarvish_Stalwart.cfg:36
+#: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
+#: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
+#: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
+#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
+#: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
+#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
+#: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
+#: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
+#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
+#: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
+#: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
+#: data/units/Goblin_Spearman.cfg:160
+#: data/units/Human_Horse_Grand_Knight.cfg:64
+#: data/units/Human_Horse_Knight.cfg:63 data/units/Human_Horse_Lancer.cfg:25
+#: data/units/Human_Horse_Paladin.cfg:71 data/units/Human_Horseman.cfg:25
+#: data/units/Human_Loyalist_Bowman.cfg:62
+#: data/units/Human_Loyalist_Cavalier.cfg:86
+#: data/units/Human_Loyalist_Dragoon.cfg:85
+#: data/units/Human_Loyalist_Duelist.cfg:109
+#: data/units/Human_Loyalist_General.cfg:93
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:89
+#: data/units/Human_Loyalist_Halberdier.cfg:31
+#: data/units/Human_Loyalist_Javelineer.cfg:28
+#: data/units/Human_Loyalist_Javelineer.cfg:84
+#: data/units/Human_Loyalist_Lieutenant.cfg:78
+#: data/units/Human_Loyalist_Longbowman.cfg:64
+#: data/units/Human_Loyalist_Master_Bowman.cfg:63
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:188
+#: data/units/Human_Loyalist_Pikeman.cfg:54
+#: data/units/Human_Loyalist_Sergeant.cfg:82
+#: data/units/Human_Loyalist_Spearman.cfg:63
+#: data/units/Human_Loyalist_Spearman.cfg:204
+#: data/units/Human_Outlaw_Poacher.cfg:73
+#: data/units/Human_Outlaw_Trapper.cfg:103 data/units/Human_Peasant.cfg:24
+#: data/units/Human_Peasant.cfg:67 data/units/Merman_Entangler.cfg:25
+#: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
+#: data/units/Merman_Hunter.cfg:23 data/units/Merman_Hunter.cfg:174
+#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:134
+#: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:22
+#: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
+#: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
+#: data/units/Monster_Giant_Scorpion.cfg:25
+#: data/units/Monster_Sea_Serpent.cfg:22 data/units/Orcish_Archer.cfg:179
+#: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
+#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
+#: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
+#: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
+#: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
+#: data/units/Saurian_Skirmisher.cfg:32 data/units/Saurian_Skirmisher.cfg:75
+#: data/units/Undead_Skele_Bone_Shooter.cfg:81
+#: data/units/Undead_Skele_Chocobone.cfg:26
+#: data/units/Undead_Skele_Death_Knight.cfg:89
+#: data/units/Undead_Skele_Soul_Shooter.cfg:71
+#: data/units/Undead_Skeleton_Archer.cfg:71
+msgid "pierce"
+msgstr "刺"
 
 #: data/units/Boat_Transport_Galleon.cfg:3
 msgid "Transport Galleon"
@@ -5689,6 +4602,112 @@ msgid ""
 "cold attacks than most other drakes."
 msgstr ""
 
+#: data/units/Drake_Armageddon.cfg:79 data/units/Drake_Burner.cfg:61
+#: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
+#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:22
+#: data/units/Gryphon_Master.cfg:25 data/units/Gryphon_Rider.cfg:25
+#: data/units/Undead_Corpse_Ghoul.cfg:65
+#: data/units/Undead_Corpse_Necrophage.cfg:33
+#: data/units/Undead_Spirit_Nightgaunt.cfg:53
+#: data/units/Undead_Spirit_Shadow.cfg:27
+msgid "claws"
+msgstr "爪击"
+
+#: data/units/Drake_Armageddon.cfg:81 data/units/Drake_Blademaster.cfg:67
+#: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
+#: data/units/Drake_Enforcer.cfg:69 data/units/Drake_Fighter.cfg:64
+#: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
+#: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:68
+#: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
+#: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
+#: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
+#: data/units/Dwarvish_Fighter.cfg:27 data/units/Dwarvish_Lord.cfg:29
+#: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
+#: data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Dwarvish_Thunderguard.cfg:25
+#: data/units/Dwarvish_Ulfserker.cfg:33 data/units/Elvish_Archer.cfg:24
+#: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
+#: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
+#: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
+#: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
+#: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
+#: data/units/Goblin_Direwolf_Rider.cfg:35
+#: data/units/Goblin_Direwolf_Rider.cfg:83 data/units/Goblin_Knight.cfg:35
+#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:24
+#: data/units/Gryphon_Master.cfg:27 data/units/Gryphon_Rider.cfg:27
+#: data/units/Human_Horse_Grand_Knight.cfg:26
+#: data/units/Human_Horse_Knight.cfg:25
+#: data/units/Human_Loyalist_Bowman.cfg:25
+#: data/units/Human_Loyalist_Cavalier.cfg:37
+#: data/units/Human_Loyalist_Cavalryman.cfg:51
+#: data/units/Human_Loyalist_Dragoon.cfg:36
+#: data/units/Human_Loyalist_Duelist.cfg:71
+#: data/units/Human_Loyalist_Fencer.cfg:126
+#: data/units/Human_Loyalist_General.cfg:45
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:41
+#: data/units/Human_Loyalist_Halberdier.cfg:215
+#: data/units/Human_Loyalist_Lieutenant.cfg:35
+#: data/units/Human_Loyalist_Longbowman.cfg:27
+#: data/units/Human_Loyalist_Master_Bowman.cfg:26
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:30
+#: data/units/Human_Loyalist_Royal_Guard.cfg:28
+#: data/units/Human_Loyalist_Sergeant.cfg:34
+#: data/units/Human_Loyalist_Swordsman.cfg:27
+#: data/units/Human_Outlaw_Assassin.cfg:30
+#: data/units/Human_Outlaw_Assassin.cfg:111
+#: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
+#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
+#: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
+#: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
+#: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
+#: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
+#: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:69
+#: data/units/Orcish_Assassin.cfg:107 data/units/Orcish_Crossbowman.cfg:24
+#: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
+#: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:26
+#: data/units/Orcish_Slayer.cfg:117 data/units/Orcish_Slurbow.cfg:24
+#: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
+#: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:43
+#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:67
+#: data/units/Undead_Corpse_Necrophage.cfg:35
+#: data/units/Undead_Skele_Bone_Shooter.cfg:43
+#: data/units/Undead_Skele_Death_Knight.cfg:46
+#: data/units/Undead_Skele_Deathblade.cfg:44
+#: data/units/Undead_Skele_Draug.cfg:44
+#: data/units/Undead_Skele_Revenant.cfg:43
+#: data/units/Undead_Skele_Soul_Shooter.cfg:33
+#: data/units/Undead_Skeleton.cfg:108
+#: data/units/Undead_Spirit_Nightgaunt.cfg:54
+#: data/units/Undead_Spirit_Shadow.cfg:28
+#: data/units/Undead_Spirit_Spectre.cfg:46
+#: data/units/Undead_Spirit_Wraith.cfg:23
+msgid "blade"
+msgstr "剑"
+
+#: data/units/Drake_Armageddon.cfg:129 data/units/Drake_Blademaster.cfg:114
+#: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
+#: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
+#: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
+#: data/units/Drake_Hurricane.cfg:149 data/units/Drake_Inferno.cfg:117
+#: data/units/Drake_Sky.cfg:176 data/units/Drake_Warrior.cfg:118
+msgid "fire breath"
+msgstr "火息术"
+
+#: data/units/Drake_Armageddon.cfg:131 data/units/Drake_Blademaster.cfg:116
+#: data/units/Drake_Burner.cfg:111 data/units/Drake_Fighter.cfg:113
+#: data/units/Drake_Fire.cfg:118 data/units/Drake_Flameheart.cfg:156
+#: data/units/Drake_Flare.cfg:137 data/units/Drake_Glider.cfg:131
+#: data/units/Drake_Hurricane.cfg:151 data/units/Drake_Inferno.cfg:119
+#: data/units/Drake_Sky.cfg:178 data/units/Drake_Warrior.cfg:120
+#: data/units/Dwarvish_Runemaster.cfg:63 data/units/Goblin_Pillager.cfg:36
+#: data/units/Human_Mage.cfg:104 data/units/Human_Mage_Arch.cfg:88
+#: data/units/Human_Mage_Great.cfg:77 data/units/Human_Mage_Red.cfg:98
+#: data/units/Human_Mage_Silver.cfg:132 data/units/Orcish_Archer.cfg:238
+#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:121
+msgid "fire"
+msgstr "火"
+
 #: data/units/Drake_Blademaster.cfg:3
 msgid "Drake Blademaster"
 msgstr "大师级龙剑士"
@@ -5700,6 +4719,35 @@ msgid ""
 msgstr ""
 "那些非常善于用剑的龙剑士会被赋予其它的人物。在战争中会由白色和黑色来描绘，以"
 "示区别。"
+
+#: data/units/Drake_Blademaster.cfg:66 data/units/Drake_Clasher.cfg:75
+#: data/units/Drake_Enforcer.cfg:68 data/units/Drake_Flameheart.cfg:78
+#: data/units/Drake_Flare.cfg:82 data/units/Drake_Gladiator.cfg:67
+#: data/units/Drake_Warrior.cfg:70 data/units/Elvish_Archer.cfg:22
+#: data/units/Elvish_Avenger.cfg:61 data/units/Elvish_Captain.cfg:35
+#: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:22
+#: data/units/Elvish_Hero.cfg:21 data/units/Elvish_Marksman.cfg:53
+#: data/units/Elvish_Marshal.cfg:34 data/units/Elvish_Outrider.cfg:30
+#: data/units/Elvish_Ranger.cfg:58 data/units/Elvish_Rider.cfg:32
+#: data/units/Elvish_Scout.cfg:31 data/units/Elvish_Sharpshooter.cfg:47
+#: data/units/Human_Horse_Grand_Knight.cfg:24
+#: data/units/Human_Horse_Knight.cfg:23 data/units/Human_Horse_Paladin.cfg:31
+#: data/units/Human_Loyalist_Bowman.cfg:23
+#: data/units/Human_Loyalist_Cavalier.cfg:35
+#: data/units/Human_Loyalist_Cavalryman.cfg:49
+#: data/units/Human_Loyalist_Dragoon.cfg:34
+#: data/units/Human_Loyalist_General.cfg:43
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:39
+#: data/units/Human_Loyalist_Lieutenant.cfg:33
+#: data/units/Human_Loyalist_Longbowman.cfg:25
+#: data/units/Human_Loyalist_Master_Bowman.cfg:24
+#: data/units/Human_Loyalist_Royal_Guard.cfg:26
+#: data/units/Human_Loyalist_Sergeant.cfg:32
+#: data/units/Human_Loyalist_Swordsman.cfg:25 data/units/Naga_Fighter.cfg:23
+#: data/units/Naga_Myrmidon.cfg:27 data/units/Naga_Warrior.cfg:26
+#: data/units/Orcish_Grunt.cfg:74 data/units/Orcish_Leader.cfg:28
+msgid "sword"
+msgstr "剑"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
@@ -5775,6 +4823,14 @@ msgid ""
 msgstr ""
 "全部重甲龙战士的力量只有同族的一半。由于长时间在锻造车间，他们制造并自己使用"
 "锋利的武器，和从头到脚的全身铠甲。"
+
+#: data/units/Drake_Enforcer.cfg:101 data/units/Drake_Gladiator.cfg:153
+#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:21
+#: data/units/Human_Loyalist_Iron_Mauler.cfg:23
+#: data/units/Human_Mage_of_Light.cfg:67 data/units/Human_Outlaw.cfg:22
+#: data/units/Human_Outlaw_Bandit.cfg:34 data/units/Troll_Great.cfg:26
+msgid "mace"
+msgstr "锤"
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -6268,6 +5324,25 @@ msgstr ""
 "而死亡，但在战争中，许多精灵会拿起他们的武器。虽然没什么战斗经验使得他们有时"
 "在战斗中处于不利地位，但天性优雅使得他们成为人类朋友最好的征兵对象。"
 
+#: data/units/Elvish_Archer.cfg:75 data/units/Elvish_Avenger.cfg:109
+#: data/units/Elvish_Captain.cfg:83 data/units/Elvish_Champion.cfg:80
+#: data/units/Elvish_Fighter.cfg:65 data/units/Elvish_Hero.cfg:69
+#: data/units/Elvish_Marshal.cfg:77 data/units/Elvish_Outrider.cfg:79
+#: data/units/Elvish_Ranger.cfg:106 data/units/Elvish_Rider.cfg:81
+#: data/units/Elvish_Scout.cfg:80 data/units/Human_Loyalist_Bowman.cfg:61
+#: data/units/Human_Loyalist_Longbowman.cfg:63
+#: data/units/Human_Loyalist_Master_Bowman.cfg:62
+#: data/units/Human_Outlaw_Poacher.cfg:72
+#: data/units/Human_Outlaw_Trapper.cfg:102 data/units/Orcish_Archer.cfg:177
+#: data/units/Orcish_Archer.cfg:236 data/units/Orcish_Leader.cfg:66
+#: data/units/Orcish_Ruler.cfg:64 data/units/Orcish_Sovereign.cfg:65
+#: data/units/Orcish_Warlord.cfg:76
+#: data/units/Undead_Skele_Bone_Shooter.cfg:79
+#: data/units/Undead_Skele_Soul_Shooter.cfg:69
+#: data/units/Undead_Skeleton_Archer.cfg:69
+msgid "bow"
+msgstr "弓"
+
 #: data/units/Elvish_Archer.cfg:158
 msgid "female^Elvish Archer"
 msgstr "女性精灵弓箭手"
@@ -6369,6 +5444,19 @@ msgstr ""
 "特别提示：卷入战争的精灵能降低敌人的速度，并减低他们所造成的伤害。德鲁伊有治"
 "疗相邻单位，并治愈中毒的能力。"
 
+#: data/units/Elvish_Druid.cfg:27 data/units/Elvish_Enchantress.cfg:25
+#: data/units/Elvish_Shaman.cfg:29 data/units/Elvish_Sorceress.cfg:25
+#: data/units/Human_Mage.cfg:54 data/units/Human_Mage_Arch.cfg:39
+#: data/units/Human_Mage_Great.cfg:28 data/units/Human_Mage_Red.cfg:49
+#: data/units/Human_Mage_Silver.cfg:86 data/units/Human_Mage_White.cfg:86
+#: data/units/Mermaid_Diviner.cfg:67 data/units/Mermaid_Enchantress.cfg:24
+#: data/units/Mermaid_Initiate.cfg:27 data/units/Mermaid_Priestess.cfg:64
+#: data/units/Saurian_Augur.cfg:36 data/units/Saurian_Oracle.cfg:36
+#: data/units/Saurian_Soothsayer.cfg:36
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:24
+msgid "staff"
+msgstr "棍"
+
 #: data/units/Elvish_Druid.cfg:65 data/units/Elvish_Shyde.cfg:56
 msgid "ensnare"
 msgstr "陷阱"
@@ -6396,6 +5484,26 @@ msgstr ""
 #: data/units/Elvish_Sorceress.cfg:74
 msgid "entangle"
 msgstr "缠绕"
+
+#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
+#: data/units/Elvish_Sylph.cfg:127
+msgid "faerie fire"
+msgstr "仙境火"
+
+#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
+#: data/units/Elvish_Sylph.cfg:128 data/units/Saurian_Augur.cfg:75
+#: data/units/Saurian_Oracle.cfg:75 data/units/Saurian_Soothsayer.cfg:75
+#: data/units/Undead_Necro_Ancient_Lich.cfg:29
+#: data/units/Undead_Necro_Ancient_Lich.cfg:69
+#: data/units/Undead_Necro_Dark_Adept.cfg:32
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
+#: data/units/Undead_Necro_Lich.cfg:31 data/units/Undead_Necro_Lich.cfg:71
+#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:26
+#: data/units/Undead_Spirit_Ghost.cfg:64
+#: data/units/Undead_Spirit_Spectre.cfg:86
+#: data/units/Undead_Spirit_Wraith.cfg:68
+msgid "cold"
+msgstr "冰"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -7098,6 +6206,13 @@ msgstr ""
 "\n"
 "特别提示：他们的侦察技能使得他们很容易的绕过敌军，并忽略可控制区域。"
 
+#: data/units/Human_Loyalist_Duelist.cfg:69
+#: data/units/Human_Loyalist_Fencer.cfg:124
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:28
+#, fuzzy
+msgid "sabre"
+msgstr "戳"
+
 #: data/units/Human_Loyalist_Fencer.cfg:3
 msgid "Fencer"
 msgstr "剑术师"
@@ -7431,6 +6546,10 @@ msgstr ""
 "的标志攻击是晨星攻击，通常能粉碎敌人的信心，有时被惊异的认为是裹着装甲的怪物"
 "而非人。穿着重甲的缺点是需要点时间才能移动到战斗所需的位置。"
 
+#: data/units/Human_Loyalist_Shock_Trooper.cfg:20
+msgid "morning star"
+msgstr "晨星攻击"
+
 #: data/units/Human_Loyalist_Spearman.cfg:3
 msgid "Spearman"
 msgstr "矛兵"
@@ -7509,6 +6628,10 @@ msgstr ""
 "\n"
 "特别提示：魔法师的远程攻击是魔法攻击，并对敌人有很高的击中比率。"
 
+#: data/units/Human_Mage.cfg:102 data/units/Human_Mage_Silver.cfg:130
+msgid "missile"
+msgstr "魔法飞弹"
+
 #: data/units/Human_Mage.cfg:160
 msgid "female^Mage"
 msgstr "女性魔法师"
@@ -7544,6 +6667,15 @@ msgstr ""
 "\n"
 "特别提示：大法师的火球术是魔法攻击，并对对手有很高的击中几率。"
 
+#: data/units/Human_Mage_Arch.cfg:87 data/units/Human_Mage_Great.cfg:76
+#: data/units/Human_Mage_Red.cfg:97
+msgid "fireball"
+msgstr "火球"
+
+#: data/units/Human_Mage_Arch.cfg:127
+msgid "female^Arch Mage"
+msgstr "女性大法师"
+
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "高阶大法师"
@@ -7572,6 +6704,10 @@ msgstr ""
 "\n"
 "虽然他们不是武士，但他们魔法的攻击性，是让许多战士畏惧的。\n"
 "特别提示：高阶大法师的火球是魔法攻击，常常对敌人有很高的击中比率。"
+
+#: data/units/Human_Mage_Great.cfg:116
+msgid "female^Great Mage"
+msgstr "女性高阶大法师"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
@@ -7604,6 +6740,10 @@ msgstr ""
 "法这适合他们那口语化名字的法术。\n"
 "\n"
 "特别提示：红魔法师的火球攻击是魔法攻击，并对敌人有很高的魔法伤害。"
+
+#: data/units/Human_Mage_Red.cfg:137
+msgid "female^Red Mage"
+msgstr "女性红魔法师"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
@@ -7650,6 +6790,10 @@ msgstr ""
 "特别提示：他们的远程攻击是魔法攻击，并对敌人有很高的击中比率。他们对很多形式"
 "的魔法攻击有很高的抗性。他们也能在任意两个村庄之间传送，然而玩家必须有这两个"
 "村庄的控制权。"
+
+#: data/units/Human_Mage_Silver.cfg:176
+msgid "female^Silver Mage"
+msgstr "女性银魔法师"
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
@@ -7741,6 +6885,11 @@ msgstr ""
 "被授予更多危险的任务，并能享有一大部分赃物。虽然许多对手嘲笑他们的武器装备，"
 "但他们能造成致命打击，也成为有效的军事力量。亡命之徒不善于白天作战，跟喜欢在"
 "夜幕掩护之下。"
+
+#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
+#: data/units/Troll_Rocklobber.cfg:65
+msgid "sling"
+msgstr "投石器"
 
 #: data/units/Human_Outlaw.cfg:97
 msgid "female^Outlaw"
@@ -8572,6 +7721,12 @@ msgstr ""
 "弓，但却有着强力的剑术技能：总而言之，他们是强力的战士，他们天生的领导技能使"
 "得他们在战争中很珍贵：如果领袖死亡，战斗也一样。"
 
+#: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
+#: data/units/Orcish_Warlord.cfg:23 data/units/Orcish_Warrior.cfg:21
+#, fuzzy
+msgid "greatsword"
+msgstr "剑"
+
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "兽人杀手"
@@ -8683,6 +7838,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+
+#: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
+#: data/units/Saurian_Soothsayer.cfg:74
+msgid "curse"
+msgstr "诅咒"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -8969,6 +8129,13 @@ msgid ""
 "Special Notes:"
 msgstr "这些行尸走肉由生前充足的战斗经验而变得强壮。"
 
+#: data/units/Undead_Corpse_Soulless.cfg:44
+#: data/units/Undead_Corpse_Walking.cfg:46
+#: data/units/Undead_Necro_Ancient_Lich.cfg:27
+#: data/units/Undead_Necro_Lich.cfg:29 data/units/Undead_Spirit_Ghost.cfg:24
+msgid "touch"
+msgstr "触碰"
+
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "僵尸"
@@ -9002,6 +8169,12 @@ msgstr ""
 "\n"
 "特别提示：巫妖的远程攻击是魔法，并且有很高的击中对手的几率。巫妖触碰对手，会"
 "吸干对手的且用来恢复自己的生命。"
+
+#: data/units/Undead_Necro_Ancient_Lich.cfg:68
+#: data/units/Undead_Necro_Lich.cfg:70
+#, fuzzy
+msgid "chill tempest"
+msgstr "冷冻波"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
@@ -9060,6 +8233,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:62
+#: data/units/Undead_Necromancer.cfg:66
+msgid "chill wave"
+msgstr "冷冻波"
+
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "巫妖"
@@ -9087,6 +8265,10 @@ msgstr ""
 "\n"
 "比特提示：巫妖的远程攻击是魔法攻击，并对敌人有很高的击中比率。巫妖之触会让受"
 "害人的生命转到他们自己身上。"
+
+#: data/units/Undead_Necromancer.cfg:3
+msgid "Necromancer"
+msgstr "死灵法师"
 
 #: data/units/Undead_Necromancer.cfg:21
 msgid ""
@@ -9437,6 +8619,11 @@ msgstr ""
 "他们不好战，但拥有强大的力量。然而他们不善于迅速的移动。\n"
 "\n"
 "特别提示：树人使用周围的自然力量来重生，而不需要呆在村庄等待支援或帮助。"
+
+#: data/units/Wose.cfg:30 data/units/Wose_Ancient.cfg:29
+#: data/units/Wose_Elder.cfg:28
+msgid "crush"
+msgstr "压碎"
 
 #: data/units/Wose_Ancient.cfg:3
 msgid "Ancient Wose"
@@ -9893,7 +9080,7 @@ msgid ""
 msgstr "创建安装这个战役所需文件有问题。"
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:350
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:331
 msgid "Connection timed out"
 msgstr "连接超时"
 
@@ -9958,15 +9145,15 @@ msgstr "与敌人AI作战"
 msgid "Login: "
 msgstr "登入： "
 
-#: src/game.cpp:1264 src/playcampaign.cpp:107 src/playcampaign.cpp:322
+#: src/game.cpp:1264 src/playcampaign.cpp:89 src/playcampaign.cpp:303
 msgid "The game could not be loaded: "
 msgstr "游戏不能被加载： "
 
-#: src/game.cpp:1266 src/playcampaign.cpp:109 src/playcampaign.cpp:325
+#: src/game.cpp:1266 src/playcampaign.cpp:91 src/playcampaign.cpp:306
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1278 src/playcampaign.cpp:111 src/playcampaign.cpp:328
+#: src/game.cpp:1278 src/playcampaign.cpp:93 src/playcampaign.cpp:309
 msgid "The game map could not be loaded: "
 msgstr "游戏地图不能加载： "
 
@@ -10297,7 +9484,7 @@ msgstr "维护费"
 msgid "Income"
 msgstr "收入"
 
-#: src/menu_events.cpp:452 src/playcampaign.cpp:293 src/playcampaign.cpp:429
+#: src/menu_events.cpp:452 src/playcampaign.cpp:274 src/playcampaign.cpp:410
 msgid "Name:"
 msgstr "名字："
 
@@ -10320,7 +9507,7 @@ msgstr "以存储"
 msgid "The game has been saved"
 msgstr "游戏以存储"
 
-#: src/menu_events.cpp:470 src/playcampaign.cpp:439
+#: src/menu_events.cpp:470 src/playcampaign.cpp:420
 msgid "The game could not be saved"
 msgstr "游戏不能被保存"
 
@@ -10343,7 +9530,7 @@ msgid "Could not save the map: $msg"
 msgstr ""
 
 #: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:708
-#: src/playcampaign.cpp:118
+#: src/playcampaign.cpp:100
 msgid "Auto-Save"
 msgstr "自动存档"
 
@@ -11015,7 +10202,7 @@ msgstr "退出"
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
-#: src/multiplayer_ui.cpp:82
+#: src/multiplayer_ui.cpp:92
 #, fuzzy
 msgid "Invalid Color"
 msgstr "无效颜色"
@@ -11069,48 +10256,48 @@ msgstr ""
 msgid "Back to turn "
 msgstr ""
 
-#: src/playcampaign.cpp:270
+#: src/playcampaign.cpp:251
 msgid "Defeat"
 msgstr "失败"
 
-#: src/playcampaign.cpp:271
+#: src/playcampaign.cpp:252
 msgid "You have been defeated!"
 msgstr "你被打败了！"
 
-#: src/playcampaign.cpp:284
+#: src/playcampaign.cpp:265
 msgid " replay"
 msgstr " 游戏录像"
 
-#: src/playcampaign.cpp:292
+#: src/playcampaign.cpp:273
 msgid "Do you want to save a replay of this scenario?"
 msgstr "你想保存这个剧本的游戏录像吗？"
 
-#: src/playcampaign.cpp:294
+#: src/playcampaign.cpp:275
 #, fuzzy
 msgid "Save Replay"
 msgstr "游戏玩法"
 
-#: src/playcampaign.cpp:301
+#: src/playcampaign.cpp:282
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "游戏不能被保存"
 
-#: src/playcampaign.cpp:341
+#: src/playcampaign.cpp:322
 #, fuzzy
 msgid "Receiving data..."
 msgstr "读取游戏数据..."
 
-#: src/playcampaign.cpp:343
+#: src/playcampaign.cpp:324
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "下载下个等级..."
 
-#: src/playcampaign.cpp:428
+#: src/playcampaign.cpp:409
 #, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "你想保存游戏吗？"
 
-#: src/playcampaign.cpp:455
+#: src/playcampaign.cpp:436
 msgid "Unknown scenario: '"
 msgstr "未知剧本： '"
 
@@ -11490,6 +10677,525 @@ msgstr ""
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Campaign Designer"
+#~ msgstr "战役"
+
+#~ msgid "Horse Lord"
+#~ msgstr "骑兵君主"
+
+#, fuzzy
+#~ msgid ""
+#~ "The greatest of the men of the plains, Horse Lords are heads of their "
+#~ "houses and are respected by all, friend or foe. Their sword can kill most "
+#~ "ordinary enemies, and their morning star crushes those who are left."
+#~ msgstr ""
+#~ "平原上最优秀的人类，骑兵君主是所属马的领导，并得到所以朋友或敌人的尊敬。他"
+#~ "们的剑能杀死大多数普通的敌人，"
+
+#~ msgid "Mounted Fighter"
+#~ msgstr "骑兵斗士"
+
+#, fuzzy
+#~ msgid ""
+#~ "The nobles of the men of the plains are trained with the rest of the "
+#~ "horsemen to become great warriors. However, they are also trained in "
+#~ "commanding their comrades, and they are the ones that become captains of "
+#~ "the armies of the Clans."
+#~ msgstr ""
+#~ "平原上高贵的人们被训练成为伟大的勇士。然而，他们也会被训练去指挥士兵，他们"
+#~ "也是唯一能成为军队首领的人选。"
+
+#~ msgid "Mounted Warrior"
+#~ msgstr "骑兵勇士"
+
+#~ msgid ""
+#~ "Leaders of the plains, Mounted Warriors are skilled with the use of the "
+#~ "sword and the morning star. Riding horses, they are able to move around "
+#~ "the battlefield with great speed, and can provide much needed assistance "
+#~ "to different fronts."
+#~ msgstr ""
+#~ "平原的领袖，骑兵勇士有着强力的剑术和晨星攻击的能力。由于骑马，所以在战场上"
+#~ "能进行有效的移动，并且能够给予盟友足够的支援。"
+
+#~ msgid "Skeletal Dragon"
+#~ msgstr "骨龙"
+
+#~ msgid ""
+#~ "Long ago one of the mightiest living creatures, the feared Dragon has "
+#~ "become only bones and dark sinew. Long after its death, it was raised "
+#~ "through the dark powers of necromancy, which it now serves. The Skeletal "
+#~ "Dragon may look like nothing more than a pile of bones, but few people "
+#~ "who thought that way lived long enough to change their minds."
+#~ msgstr ""
+#~ "曾经最神秘的生物之一，这令人恐惧的龙仅由骨头和黑暗力量组成。在他们死亡很长"
+#~ "一段时间之后，被死灵法师的黑暗能力召唤出来，并服务于他们。骨龙看起来就是一"
+#~ "堆骨头，但少数人这样长时间的存活方式足以改变他们的思想。"
+
+#~ msgid "jaw"
+#~ msgstr "颚"
+
+#~ msgid "female^Battle Princess"
+#~ msgstr "女性战斗公主"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals, and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. Now battle-hardened and strong of will, she "
+#~ "can now aid those around her in the art of combat."
+#~ msgstr ""
+#~ "与生俱来的高贵气质，使得公主能学到最全面的剑术技能和贤能的战斗技巧，让她成"
+#~ "为强大的战斗者和领袖。能承受高强度战斗并有着强烈的意志，使她能够充分发挥战"
+#~ "斗技巧。"
+
+#~ msgid "scepter of fire"
+#~ msgstr "火焰权杖"
+
+#~ msgid "Cockatrice"
+#~ msgstr "梅杜莎"
+
+#~ msgid ""
+#~ "Sometimes known as 'basilisks', these mystical creatures are said to be "
+#~ "able to turn the living to stone. Needless to say, this makes them "
+#~ "extremely dangerous."
+#~ msgstr ""
+#~ "有时被称为‘蛇怪’，这些神秘的生物能让活物变成石头，无需多说，这让他们变得十"
+#~ "分危险。"
+
+#~ msgid "gaze"
+#~ msgstr "凝视"
+
+#~ msgid "Commander"
+#~ msgstr "指挥官"
+
+#~ msgid ""
+#~ "The rank of Commander is held by those who lead battle groups into "
+#~ "combat. Possessing leadership skills, they give lower-level units in "
+#~ "adjacent hexes improved performance in combat. Commanders are best "
+#~ "skilled with the sword, although they also carry a bow to use when "
+#~ "necessary. If the Commander is lost, so is the battle."
+#~ msgstr ""
+#~ "指挥官的军衔由他们在战斗中所领导的军队来决定。拥有领导能力，使他能让附近格"
+#~ "子内的低级单位能更好的作战。指挥官非常善于剑术，有时也会弓。如果指挥官死"
+#~ "亡，战斗也会失败。"
+
+#~ msgid "female^Dark Queen"
+#~ msgstr "女性黑暗女王"
+
+#~ msgid ""
+#~ "The evil queen mother Asheviere has terrorized Wesnoth for many years. "
+#~ "Her knowledge of magic makes her a worthy foe in combat, although her "
+#~ "power is mostly derived from those she commands."
+#~ msgstr ""
+#~ "邪恶女王Asheviere在韦诺之地上实施恐怖统治多年。她卓越的魔法知识使她成为有"
+#~ "价值的战斗对手，虽然常常她的力量来至于部下。"
+
+#~ msgid "scepter"
+#~ msgstr "权杖"
+
+#~ msgid "Elder Mage"
+#~ msgstr "长老法师"
+
+#~ msgid ""
+#~ "Once great, Elder Magi have seen their power a little diminished from "
+#~ "wearying years of battle. Nevertheless they remain feared on the "
+#~ "battlefield on account of their powerful lightning bolts."
+#~ msgstr ""
+#~ "虽然在多年厌倦的战斗中伟大长老法师的能力会些微降低，但是敌人还是惧怕他那强"
+#~ "有力的闪电箭。"
+
+#~ msgid "lightning"
+#~ msgstr "闪电"
+
+#~ msgid "Elvish High Lord"
+#~ msgstr "精灵高阶君主"
+
+#~ msgid ""
+#~ "The leaders of the elves do not fall sallow and frail with age. Rather, "
+#~ "it is then that they grow to their true potential. Quiet and "
+#~ "contemplative in times of peace, a High Lord in the full of his wrath is "
+#~ "an awesome sight indeed."
+#~ msgstr ""
+#~ "精灵领袖不会随着时间流逝而衰老。这是他们的天赋。在长时间的和平里进行安静的"
+#~ "冥想，当愤怒充满一个高阶君主时是非常可怕的。"
+
+#~ msgid "female^Elvish Lady"
+#~ msgstr "女性精灵淑女"
+
+#~ msgid ""
+#~ "Elves choose their leaders for their power and wisdom; foresight is what "
+#~ "has protected them in times of uncertainty. Their just reign is rewarded "
+#~ "by the unflagging fealty of their people, which is the greatest gift any "
+#~ "ruler could ask for."
+#~ msgstr ""
+#~ "精灵选择领袖作为他们力量和智慧的象征：预见能力在不可知的时间长河里保护着他"
+#~ "们。他们的统治在永远支持的人们那里得到的回报就是，他们是不可多的的明君。"
+
+#~ msgid "shove"
+#~ msgstr "猛推"
+
+#~ msgid "Elvish Lord"
+#~ msgstr "精灵王"
+
+#~ msgid ""
+#~ "The nobility of the elves are possessed of merit to match their standing "
+#~ "in society. Elvish Lords are the wisest and strongest of their people, "
+#~ "and are fearsome in their command of magic."
+#~ msgstr ""
+#~ "精灵贵族在社会中有着足够的功绩。精灵王是他们中最智慧和最强壮的，并有着令人"
+#~ "畏惧的魔法。"
+
+#~ msgid "Fighter"
+#~ msgstr "战士"
+
+#~ msgid ""
+#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#~ "attack from enemies. However they have the potential to become great "
+#~ "warriors one day."
+#~ msgstr ""
+#~ "年轻性急的战士使用剑，易受敌人攻击。然而他们有可能某一天成为伟大的勇士。"
+
+#~ msgid "Lord"
+#~ msgstr "君主"
+
+#~ msgid ""
+#~ "The noble leaders of many troops, Lords are especially strong in melee "
+#~ "combat, and also possess skill with the bow. Like Commanders, Lords "
+#~ "possess leadership skills, and improve the fighting ability of all "
+#~ "adjacent lower-level units."
+#~ msgstr ""
+#~ "许多军队的高级领袖，君主在近战中特别强而有力，并有弓技能，像指挥官一样，君"
+#~ "主拥有领导技能，并让相邻的低级单位改进战斗能力。"
+
+#~ msgid "female^Princess"
+#~ msgstr "公主"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. The units of lower level around the Princess "
+#~ "will fight better due to her presence. The Princess is also nimble and "
+#~ "dextrous, having skills like that of a thief."
+#~ msgstr ""
+#~ "天生贵族，公主与最伟大的将军学习战术，使得他们成为高超的战斗者和领袖。公主"
+#~ "相邻的低级单位在她的领导下能更好的战斗。公主也十分灵活和敏捷，有着如小偷般"
+#~ "的技能。"
+
+#~ msgid "Princess"
+#~ msgstr "公主"
+
+#~ msgid "Sea Orc"
+#~ msgstr "海洋兽"
+
+#~ msgid ""
+#~ "While often viewed as inferior to their land loving counterparts, Sea "
+#~ "Orcs represent a great leap for all goblinoids as they have adapted to "
+#~ "aquatic environments. With their curved swords they are competent "
+#~ "fighters, although their lack of a ranged attack and poor defence on land "
+#~ "do represent strategic weaknesses."
+#~ msgstr ""
+#~ "尽管通常认为比陆地上的同类低级。海洋兽是goblinoids人的领袖正如他们不得不适"
+#~ "应水中的环境。有着弯曲的剑，使得他们能胜任战士这一职业，虽然他们缺乏有效的"
+#~ "远程攻击和在陆地上疏于防御，表现出他们战略上的弱势。"
+
+#~ msgid "Sleeping Gryphon"
+#~ msgstr "沉睡狮鹫"
+
+#~ msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
+#~ msgstr "嘘！狮鹫在睡觉！最好别吵醒他们！"
+
+#~ msgid "Youth"
+#~ msgstr "青卫队"
+
+#~ msgid ""
+#~ "Today almost a boy, by his devotion to the crown he is seeking to become "
+#~ "a Lord -- to join the elite of human fighters."
+#~ msgstr ""
+#~ "今天几乎是个孩子，为了能有一天成为君主而开始争夺王权之路 － 加入人类战士的"
+#~ "精英部队。"
+
+#~ msgid "training sword"
+#~ msgstr "训练剑术"
+
+#~ msgid "Fire Dragon"
+#~ msgstr "火龙"
+
+#~ msgid "bite"
+#~ msgstr "咬击"
+
+#~ msgid "tail"
+#~ msgstr "尾击"
+
+#~ msgid "Fireball"
+#~ msgstr "火球"
+
+#~ msgid ""
+#~ "A Fireball. This is not to be used for anything else than a "
+#~ "'Move_Unit_Fake'!"
+#~ msgstr "火球并不常用于‘伪装移动单位’等。"
+
+#~ msgid "Noble Commander"
+#~ msgstr "高阶指挥官"
+
+#~ msgid ""
+#~ "The rank of a noble Commander is held by those who lead battle groups "
+#~ "into combat. Possessing leadership skills, they give lower-level units in "
+#~ "adjacent hexes improved performance in combat. Commanders are best "
+#~ "skilled with the sword, although they also carry a bow to use when "
+#~ "necessary. If the Commander is lost, so is the battle."
+#~ msgstr ""
+#~ "高阶指挥官的等级使得他们在战斗中能组织有效的攻击。拥有领导技能，他们让相邻"
+#~ "的低级单位改进攻击能力。指挥官善于使用剑，必须时他们会用弓，如果失去指挥"
+#~ "官，战争也将失败。"
+
+#~ msgid "Noble Fighter"
+#~ msgstr "高价战士"
+
+#~ msgid ""
+#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#~ "ranged attacks from enemies. However they have the potential to become "
+#~ "great Commanders one day."
+#~ msgstr ""
+#~ "年轻而高傲，战士用剑作战，并易受远程攻击。然而他们有成为伟大指挥官的潜能。"
+
+#~ msgid "Noble Lord"
+#~ msgstr "高阶君主"
+
+#~ msgid "Noble Youth"
+#~ msgstr "高阶青卫队"
+
+#~ msgid ""
+#~ "Today he is a young man, by his devotion to the crown he is seeking to "
+#~ "become a Lord -- to join the elite of humanity."
+#~ msgstr ""
+#~ "今天他们是年轻人，但作为王位继承人有一天能成为君主 － 成为人类精英中的一"
+#~ "员。"
+
+#~ msgid "female^Outlaw Princess"
+#~ msgstr "亡命之徒公主"
+
+#~ msgid ""
+#~ "A noble by birth, the Outlaw Princess has learnt swordplay with the "
+#~ "greatest generals, but she is the product of a failed aristocracy who has "
+#~ "opted for the life of an Outlaw. She dreams of founding her own Queendom "
+#~ "with the plunder she finds on the road."
+#~ msgstr ""
+#~ "天生贵族，她们和最伟大的将军一起联系剑术，但是确实那些投向亡命之徒的贵族的"
+#~ "产物。她们梦想着通过抢得的赃物来达到女王之路。"
+
+#~ msgid "female^Outlaw Queen"
+#~ msgstr "亡命之徒女王"
+
+#~ msgid ""
+#~ "A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. However, she is the product of a failed "
+#~ "aristocracy who has opted for the life of an Outlaw. She dreams of "
+#~ "founding her own Queendom with the plunder she finds on the road, and she "
+#~ "is ever so close to that goal."
+#~ msgstr ""
+#~ "天生贵族，她们和最伟大的将军一起练习剑术，但是确实那些投向亡命之徒的贵族的"
+#~ "产物。她们梦想着通过抢得的赃物来达到女王之路，并已经非常接近目标。"
+
+#~ msgid "female^Vampire Lady"
+#~ msgstr "吸血贵妇"
+
+#~ msgid ""
+#~ "Cold and beautiful, she maintains her eternal youthful appearance "
+#~ "drinking the blood of the living."
+#~ msgstr "冷艳，他们通过吸血来维持那永远年轻的面容。"
+
+#~ msgid "blood kiss"
+#~ msgstr "血之吻"
+
+#~ msgid "Warrior King"
+#~ msgstr "勇士王"
+
+#~ msgid ""
+#~ "As the leaders of the human Kingdoms, Kings are responsible for ruling "
+#~ "and protecting their subjects. Kings can coordinate the attacks of level "
+#~ "1 and 2 units, thereby increasing their fighting efficiency."
+#~ msgstr ""
+#~ "作为人类王国的领袖，他们有责任统治和保护他们的子民。他们能协调1级和2级的单"
+#~ "位，因此而增加他们的攻击效果。"
+
+#, fuzzy
+#~ msgid "Wose Sapling"
+#~ msgstr "治疗"
+
+#, fuzzy
+#~ msgid ""
+#~ "Rarely seen, even by elves, a Wose is an order of creature about which "
+#~ "little is known. The elves are the source of most of this knowledge; they "
+#~ "know that these beings are not descended from trees, despite the "
+#~ "similarity in form, and they know that a wose is more closely tied to the "
+#~ "faerie world than the elves themselves, though in a different way. The "
+#~ "motives and workings of their kind are unknown, though most posit the "
+#~ "obvious idea that woses are wardens of the natural world.\n"
+#~ "\n"
+#~ "Woses are utterly unwarlike, but possess a great strength. They are, "
+#~ "however, neither used to, nor quick at moving around.\n"
+#~ "\n"
+#~ "Special Notes: Woses regenerate by using natural resources around them, "
+#~ "without needing to huddle in villages to obtain sustenance and aid."
+#~ msgstr ""
+#~ "极少见，即使对精灵来说也一样，树人是极少非正常的生命形式。精灵是这些认知的"
+#~ "发源地：他们知道这些生物不是由树生成，尽管有着相同的形式，并且他们知道树人"
+#~ "比精灵更接近仙境世界，虽然是以不同的方式。他们的动机和运行方式还不可知，尽"
+#~ "管大多数意见认为他们是自然世界的保护者。\n"
+#~ "\n"
+#~ "他们不好战，但拥有强大的力量。然而他们不善于迅速的移动。\n"
+#~ "\n"
+#~ "特别提示：树人使用周围的自然力量来重生，而不需要呆在村庄等待支援或帮助。"
+
+#~ msgid "Demilich"
+#~ msgstr "邪恶巫妖"
+
+#~ msgid ""
+#~ "After too much time dabbling with forbidden magics and dark arts, these "
+#~ "magi have begun to pay a heavy price. Demiliches have started losing "
+#~ "their bodies, becoming undead themselves. With time, they may become "
+#~ "fully undead, and feared by all alike."
+#~ msgstr ""
+#~ "在使用足够的被禁止魔法和黑暗魔法后，这些魔法师将付出巨大的代价。他们开始失"
+#~ "去他们的身体，慢慢成为不死族。随着时间的流逝，他们将成为真正的不死族并被其"
+#~ "他人所惧怕。"
+
+#~ msgid ""
+#~ "The title of Arch Mage is conferred only after a lifetime of study and "
+#~ "achievement to match. Arch Magi are often employed in positions of "
+#~ "education, or as advisors to those wise enough to seek the fruits of "
+#~ "their wisdom. Many tend to wealthy patrons, a profitable enterprise for "
+#~ "both as, outside of the occasional task or word of advice, it gives the "
+#~ "mage leave to pursue their research undisturbed. Certain others shun "
+#~ "civilization, spending their days as hermits, often to study something "
+#~ "which most would tend to frown upon.\n"
+#~ "\n"
+#~ "Though not trained for any sort of combat, if need arises an Arch Mage "
+#~ "can unleash the full power of their art, something which is not to be "
+#~ "taken lightly.\n"
+#~ "\n"
+#~ "Special Notes: the arch mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "大法师的名号需要花费一生的学习和成就来与之相配。大法师通常受雇于教学，或作"
+#~ "为顾问帮助那些想在智慧上寻求更多进步的人。许多成为富有的赞助人，在外临时教"
+#~ "学或书面的建议都是赚钱的事业，这会使他们远离安静的研究工作。另外一些则避开"
+#~ "人群，选择隐居，常常考虑一些高深的问题。\n"
+#~ "\n"
+#~ "虽然没受训任何战斗，只要有需要，大法师就能释放出精妙的能量，且轻而易举。\n"
+#~ "\n"
+#~ "特别提示：大法师的火球术是魔法攻击，并对对手有很高的击中几率。"
+
+#~ msgid ""
+#~ "Any person who is even considered for the title of Great Mage is quite "
+#~ "nearly a legend in their own time, and town criers have forcibly learnt "
+#~ "discretion in applying the title. Merit for the title is carefully "
+#~ "considered by a council of the leading magi of the age, and the "
+#~ "conferment of the title is given only by a majority vote. Regardless, "
+#~ "anyone who is seriously nominated for the honor of being called a Great "
+#~ "Mage is, without question, a master of their art, and has surpassed "
+#~ "almost any of their peers in skill.\n"
+#~ "\n"
+#~ "Though they are not warriors, by any means, the application of their art "
+#~ "to combat is something that often causes other soldiers to stand aside in "
+#~ "awe.\n"
+#~ "\n"
+#~ "Special Notes: the great mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "任何人要配的上这个名号需要花费一生的时间来证明，而村庄卫士有权力来辨别他们"
+#~ "是否配的上。名号由法师协会的长老来小心谨慎的授予，并且要得到大多投票才能通"
+#~ "过。不管任何人被授予这高阶大法师的名号，毋庸置疑，就是魔法大师，并有超于其"
+#~ "他法师的易能。\n"
+#~ "\n"
+#~ "虽然他们不是武士，但他们魔法的攻击性，是让许多战士畏惧的。\n"
+#~ "特别提示：高阶大法师的火球是魔法攻击，常常对敌人有很高的击中比率。"
+
+#~ msgid ""
+#~ "Upon the successful termination of their apprenticeship, a mage is "
+#~ "stripped of the blue robes of an apprentice, and given the red robes of a "
+#~ "master. The significance of this change is often lost on the peasantry, "
+#~ "who mistakenly title Master Magi as 'Red Magi'. Likewise, the symbolism "
+#~ "of the change in colors is often mistaken to signify the mage's ability "
+#~ "to seemingly conjure fire from nothing but thin air, a trick which, "
+#~ "although undeniably useful, is viewed as a crass application of the "
+#~ "knowledge which they have painstakingly accrued.\n"
+#~ "\n"
+#~ "Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+#~ "number of tricks up their sleeves, including the gouts of fire which may "
+#~ "have cemented their colloquial name.\n"
+#~ "\n"
+#~ "Special Notes: the red mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "随着新手生涯的终结，新手魔法师脱掉蓝色长袍，并被给予红色大师长袍。这些转换"
+#~ "的标志常常是农民迷惑，错误的理解大师头衔如‘红魔法师’。同样的，颜色转变的标"
+#~ "志是人们常常认为他们只是有火焰魔法能力的，习惯性的，虽然这些标识不太有用，"
+#~ "但人们都会认为这是知识的象征。\n"
+#~ "\n"
+#~ "虽然身体薄弱，并没被训练成勇士，‘红魔法师’用袖子施展出许多幻术，包括如火焰"
+#~ "魔法这适合他们那口语化名字的法术。\n"
+#~ "\n"
+#~ "特别提示：红魔法师的火球攻击是魔法攻击，并对敌人有很高的魔法伤害。"
+
+#, fuzzy
+#~ msgid ""
+#~ "The many paths that a mage can take in study lead to strikingly different "
+#~ "ends. Silver magi have devoted themselves to a study of the forces that "
+#~ "bind reality together, and have managed, somewhat, to unravel the "
+#~ "mysteries of a world far more vast than most would ever imagine. Often "
+#~ "viewed as sages, or wandering mystics, silver magi act under an agenda "
+#~ "which is obscure even to their own colleagues. Though helpful to the "
+#~ "magisteriums which often employ them in the field, they remain somewhat "
+#~ "aloof.\n"
+#~ "\n"
+#~ "They have, in fact, their own order amongst the ranks of magi, an order "
+#~ "which withholds certain secrets from their peers. One of these is an "
+#~ "apparent ability to cross great distances, faster than one could possibly "
+#~ "travel on foot. Members of the silver order ardently refuse to discuss "
+#~ "the workings of this with any of their fellow magi, and on those rare "
+#~ "occasions when others have pried into their work, they have abandoned the "
+#~ "endeavor, never to speak of it again.\n"
+#~ "\n"
+#~ "Silver magi are often more physically adept than other magi, and their "
+#~ "skills are of undeniable use on the battlefield, if one can manage to "
+#~ "coerce the mage into applying them.\n"
+#~ "\n"
+#~ "Special Notes: the ranged attack of a silver mage is magical, and always "
+#~ "has a high chance of hitting an opponent. Silver Magi are well-attuned to "
+#~ "their magical natures and are highly resistant to non-physical damage. "
+#~ "They can also teleport between any two villages instantly, though the "
+#~ "player must control both, and the destination village must be unoccupied."
+#~ msgstr ""
+#~ "成为魔法师的不同之路会造成不同的学习效果。最终，银魔法师学习到利用和控制物"
+#~ "体的力量。某些事物，是解开那些难以想象的世界之谜关键。通常被认为是圣人，或"
+#~ "徘徊的神秘者，银魔法师常常默默无闻的工作。虽然受雇佣于战场之上起教诲作用，"
+#~ "但他们却有几分超然于世。\n"
+#~ "\n"
+#~ "事实上，他们有着他们自己等级的魔法力量，对他们的同伴来说很是神秘。其中一个"
+#~ "是能在极短的时间内，能比那些最快步兵到达更远的地方。当别人介入时，这些法师"
+#~ "的成员非常避讳于别人讨论他们工作的方式，如果无须，他们将不会再谈起。\n"
+#~ "\n"
+#~ "银魔法师通常被认为事实上强于其他法师，他们在战场上的能力是不容置疑的，如果"
+#~ "有人能强制他们加入的话。\n"
+#~ "\n"
+#~ "特别提示：他们的远程攻击是魔法攻击，并对敌人有很高的击中比率。他们对很多形"
+#~ "式的魔法攻击有很高的抗性。他们也能在任意两个村庄之间传送，然而玩家必须有这"
+#~ "两个村庄的控制权。"
+
+#, fuzzy
+#~ msgid "female^Fighter"
+#~ msgstr "女性魔法师"
+
+#, fuzzy
+#~ msgid "Quintain"
+#~ msgstr "山脉"
+
+#, fuzzy
+#~ msgid "flail"
+#~ msgstr "尾击"
 
 #~ msgid "Friendly unit sighted"
 #~ msgstr "友好单位可见"

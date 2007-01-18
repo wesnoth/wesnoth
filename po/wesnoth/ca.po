@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-12 22:45+0100\n"
+"POT-Creation-Date: 2007-01-16 21:30+0100\n"
 "PO-Revision-Date: 2006-12-22 20:35+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
@@ -419,11 +419,7 @@ msgstr ""
 "Aquest atac enverina el seu blanc. Les unitats enverinades perden 8 punts de "
 "vida cada torn fins que son curades o bé arriben a només 1 punt de vida."
 
-#: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
-#: data/campaigns/Heir_To_The_Throne.cfg:33
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
-#: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
-#: data/campaigns/Under_the_Burning_Suns.cfg:36
+#: data/about.cfg:6
 msgid "Artwork and Graphics Designers"
 msgstr "Dissenyadors gràfics i il·lustradors"
 
@@ -451,9 +447,7 @@ msgstr "Mapes multijugador"
 msgid "Packagers"
 msgstr "Empaquetadors"
 
-#: data/about.cfg:134 data/campaigns/The_South_Guard.cfg:39
-#: data/campaigns/Two_Brothers.cfg:36
-#: data/campaigns/Under_the_Burning_Suns.cfg:48
+#: data/about.cfg:134
 msgid "Miscellaneous"
 msgstr "Altres"
 
@@ -621,1276 +615,6 @@ msgstr "Bonificació HP màxim +"
 #: data/amla.cfg:30
 msgid "Full Heal"
 msgstr "Curació completa"
-
-#: data/campaigns/Eastern_Invasion.cfg:22
-#: data/campaigns/Heir_To_The_Throne.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
-#: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
-#: data/campaigns/Under_the_Burning_Suns.cfg:28
-msgid "Campaign Designer"
-msgstr "Dissenyador de la campanya"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
-msgid "Horse Lord"
-msgstr "Senyor dels cavalls"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:16
-msgid ""
-"The greatest of the men of the plains, Horse Lords are heads of their houses "
-"and are respected by all, friend or foe. Their sword can kill most ordinary "
-"enemies, and their morning star crushes those who are left."
-msgstr ""
-"Els més grans dels homes de les planes, els Senyors dels cavalls, són els "
-"caps de les seves cases. Amb el temps s'han fet respectar per tothom, ja "
-"siguin amics o enemics. La seva espasa pot matar els adversaris més comuns, "
-"i amb l'estel d'alba esclafen els que són capaços de sobreviure al primer "
-"atac."
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:19
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:27
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:29
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:165
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:59
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:20
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:82
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:220
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:20
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:28
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:29
-#: data/tutorial/units/Fighter.cfg:20 data/units/Drake_Blademaster.cfg:66
-#: data/units/Drake_Clasher.cfg:75 data/units/Drake_Enforcer.cfg:68
-#: data/units/Drake_Flameheart.cfg:78 data/units/Drake_Flare.cfg:82
-#: data/units/Drake_Gladiator.cfg:67 data/units/Drake_Warrior.cfg:70
-#: data/units/Elvish_Archer.cfg:22 data/units/Elvish_Avenger.cfg:61
-#: data/units/Elvish_Captain.cfg:35 data/units/Elvish_Champion.cfg:22
-#: data/units/Elvish_Fighter.cfg:22 data/units/Elvish_Hero.cfg:21
-#: data/units/Elvish_Marksman.cfg:53 data/units/Elvish_Marshal.cfg:34
-#: data/units/Elvish_Outrider.cfg:30 data/units/Elvish_Ranger.cfg:58
-#: data/units/Elvish_Rider.cfg:32 data/units/Elvish_Scout.cfg:31
-#: data/units/Elvish_Sharpshooter.cfg:47
-#: data/units/Human_Horse_Grand_Knight.cfg:24
-#: data/units/Human_Horse_Knight.cfg:23 data/units/Human_Horse_Paladin.cfg:31
-#: data/units/Human_Loyalist_Bowman.cfg:23
-#: data/units/Human_Loyalist_Cavalier.cfg:35
-#: data/units/Human_Loyalist_Cavalryman.cfg:49
-#: data/units/Human_Loyalist_Dragoon.cfg:34
-#: data/units/Human_Loyalist_General.cfg:43
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:39
-#: data/units/Human_Loyalist_Lieutenant.cfg:33
-#: data/units/Human_Loyalist_Longbowman.cfg:25
-#: data/units/Human_Loyalist_Master_Bowman.cfg:24
-#: data/units/Human_Loyalist_Royal_Guard.cfg:26
-#: data/units/Human_Loyalist_Sergeant.cfg:32
-#: data/units/Human_Loyalist_Swordsman.cfg:25 data/units/Naga_Fighter.cfg:23
-#: data/units/Naga_Myrmidon.cfg:27 data/units/Naga_Warrior.cfg:26
-#: data/units/Orcish_Grunt.cfg:74 data/units/Orcish_Leader.cfg:28
-msgid "sword"
-msgstr "espasa"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:30
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:65
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:35
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:132
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:167
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:61
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:24
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:84
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:221
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:110
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:32
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:30
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:22
-#: data/tutorial/units/Fighter.cfg:22 data/tutorial/units/Fighteress.cfg:28
-#: data/units/Drake_Armageddon.cfg:81 data/units/Drake_Blademaster.cfg:67
-#: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
-#: data/units/Drake_Enforcer.cfg:69 data/units/Drake_Fighter.cfg:64
-#: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
-#: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:68
-#: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
-#: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
-#: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
-#: data/units/Dwarvish_Fighter.cfg:27 data/units/Dwarvish_Lord.cfg:29
-#: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
-#: data/units/Dwarvish_Thunderer.cfg:41
-#: data/units/Dwarvish_Thunderguard.cfg:25
-#: data/units/Dwarvish_Ulfserker.cfg:33 data/units/Elvish_Archer.cfg:24
-#: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
-#: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
-#: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
-#: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
-#: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
-#: data/units/Goblin_Direwolf_Rider.cfg:35
-#: data/units/Goblin_Direwolf_Rider.cfg:83 data/units/Goblin_Knight.cfg:35
-#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:24
-#: data/units/Gryphon_Master.cfg:27 data/units/Gryphon_Rider.cfg:27
-#: data/units/Human_Horse_Grand_Knight.cfg:26
-#: data/units/Human_Horse_Knight.cfg:25
-#: data/units/Human_Loyalist_Bowman.cfg:25
-#: data/units/Human_Loyalist_Cavalier.cfg:37
-#: data/units/Human_Loyalist_Cavalryman.cfg:51
-#: data/units/Human_Loyalist_Dragoon.cfg:36
-#: data/units/Human_Loyalist_Duelist.cfg:71
-#: data/units/Human_Loyalist_Fencer.cfg:126
-#: data/units/Human_Loyalist_General.cfg:45
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:41
-#: data/units/Human_Loyalist_Halberdier.cfg:215
-#: data/units/Human_Loyalist_Lieutenant.cfg:35
-#: data/units/Human_Loyalist_Longbowman.cfg:27
-#: data/units/Human_Loyalist_Master_Bowman.cfg:26
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:30
-#: data/units/Human_Loyalist_Royal_Guard.cfg:28
-#: data/units/Human_Loyalist_Sergeant.cfg:34
-#: data/units/Human_Loyalist_Swordsman.cfg:27
-#: data/units/Human_Outlaw_Assassin.cfg:30
-#: data/units/Human_Outlaw_Assassin.cfg:111
-#: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
-#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
-#: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
-#: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
-#: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
-#: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
-#: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:69
-#: data/units/Orcish_Assassin.cfg:107 data/units/Orcish_Crossbowman.cfg:24
-#: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
-#: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:26
-#: data/units/Orcish_Slayer.cfg:117 data/units/Orcish_Slurbow.cfg:24
-#: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
-#: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:43
-#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:67
-#: data/units/Undead_Corpse_Necrophage.cfg:35
-#: data/units/Undead_Skele_Bone_Shooter.cfg:43
-#: data/units/Undead_Skele_Death_Knight.cfg:46
-#: data/units/Undead_Skele_Deathblade.cfg:44
-#: data/units/Undead_Skele_Draug.cfg:44
-#: data/units/Undead_Skele_Revenant.cfg:43
-#: data/units/Undead_Skele_Soul_Shooter.cfg:33
-#: data/units/Undead_Skeleton.cfg:108
-#: data/units/Undead_Spirit_Nightgaunt.cfg:54
-#: data/units/Undead_Spirit_Shadow.cfg:28
-#: data/units/Undead_Spirit_Spectre.cfg:46
-#: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "blade"
-msgstr "talla"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:53
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:61
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:61
-#: data/units/Human_Loyalist_Shock_Trooper.cfg:20
-msgid "morning star"
-msgstr "estel d'alba"
-
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:54
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:62
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:62
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:23
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:106
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:21
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:23
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:74
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:26
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:91
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:139
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:94
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:142
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:30
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:53
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:92
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:27
-#: data/tutorial/units/Elder_Mage.cfg:33 data/tutorial/units/Quintain.cfg:23
-#: data/units/Boat_Galleon.cfg:23 data/units/Drake_Enforcer.cfg:102
-#: data/units/Drake_Gladiator.cfg:154 data/units/Drake_Glider.cfg:77
-#: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
-#: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
-#: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
-#: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
-#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:70
-#: data/units/Elvish_Shaman.cfg:30 data/units/Elvish_Shaman.cfg:68
-#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Shyde.cfg:57
-#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:75
-#: data/units/Elvish_Sylph.cfg:29 data/units/Elvish_Sylph.cfg:57
-#: data/units/Goblin_Pillager.cfg:73
-#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:22
-#: data/units/Human_Loyalist_Iron_Mauler.cfg:24
-#: data/units/Human_Loyalist_Shock_Trooper.cfg:22 data/units/Human_Mage.cfg:56
-#: data/units/Human_Mage_Arch.cfg:41 data/units/Human_Mage_Great.cfg:30
-#: data/units/Human_Mage_Red.cfg:51 data/units/Human_Mage_Silver.cfg:88
-#: data/units/Human_Mage_White.cfg:88 data/units/Human_Mage_of_Light.cfg:68
-#: data/units/Human_Outlaw.cfg:23 data/units/Human_Outlaw.cfg:60
-#: data/units/Human_Outlaw_Bandit.cfg:35
-#: data/units/Human_Outlaw_Footpad.cfg:23
-#: data/units/Human_Outlaw_Footpad.cfg:70 data/units/Human_Outlaw_Thug.cfg:23
-#: data/units/Mermaid_Diviner.cfg:69 data/units/Mermaid_Enchantress.cfg:26
-#: data/units/Mermaid_Enchantress.cfg:64 data/units/Mermaid_Initiate.cfg:29
-#: data/units/Mermaid_Initiate.cfg:67 data/units/Mermaid_Priestess.cfg:66
-#: data/units/Mermaid_Siren.cfg:30 data/units/Mermaid_Siren.cfg:75
-#: data/units/Merman_Entangler.cfg:57 data/units/Merman_Netcaster.cfg:56
-#: data/units/Monster_Cave_Spider.cfg:86 data/units/Monster_Cuttle_Fish.cfg:35
-#: data/units/Monster_Giant_Mudcrawler.cfg:47
-#: data/units/Monster_Giant_Mudcrawler.cfg:85
-#: data/units/Monster_Giant_Scorpion.cfg:71
-#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:60
-#: data/units/Monster_Yeti.cfg:34 data/units/Saurian_Augur.cfg:38
-#: data/units/Saurian_Oracle.cfg:38 data/units/Saurian_Soothsayer.cfg:38
-#: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:27
-#: data/units/Troll_Hero.cfg:26 data/units/Troll_Rocklobber.cfg:29
-#: data/units/Troll_Rocklobber.cfg:66 data/units/Troll_Warrior.cfg:29
-#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:46
-#: data/units/Undead_Corpse_Walking.cfg:48
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:26
-#: data/units/Undead_Necromancer.cfg:27
-#: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
-#: data/units/Wose_Ancient.cfg:31 data/units/Wose_Elder.cfg:30
-msgid "impact"
-msgstr "impacta"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:3
-msgid "Mounted Fighter"
-msgstr "Lluitador muntat"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:24
-msgid ""
-"The nobles of the men of the plains are trained with the rest of the "
-"horsemen to become great warriors. However, they are also trained in "
-"commanding their comrades, and they are the ones that become captains of the "
-"armies of the Clans."
-msgstr ""
-"Els nobles dels homes de les planes s'entrenen amb la resta de genets per "
-"convertir-se en grans guerrers. Tanmateix, també aprenen la comandància dels "
-"seus camarades, i són aquells que es convertiran en capitans dels exèrcits "
-"dels clans."
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:3
-msgid "Mounted Warrior"
-msgstr "Guerrer muntat"
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:24
-msgid ""
-"Leaders of the plains, Mounted Warriors are skilled with the use of the "
-"sword and the morning star. Riding horses, they are able to move around the "
-"battlefield with great speed, and can provide much needed assistance to "
-"different fronts."
-msgstr ""
-"Líders de les planes, els guerrers muntats són hàbils en l'us de l'espasa i "
-"de l'estel d'alba. Cavalcant els seus cavalls, poden arribar a moure's pel "
-"camp de batalla amb una gran velocitat, i poden oferir assistència als "
-"fronts on sigui més necessària."
-
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:27
-#: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
-#: data/units/Orcish_Warlord.cfg:23 data/units/Orcish_Warrior.cfg:21
-msgid "greatsword"
-msgstr "espasa gran"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:3
-msgid "Skeletal Dragon"
-msgstr "Drac esquelètic"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:25
-msgid ""
-"Long ago one of the mightiest living creatures, the feared Dragon has become "
-"only bones and dark sinew. Long after its death, it was raised through the "
-"dark powers of necromancy, which it now serves. The Skeletal Dragon may look "
-"like nothing more than a pile of bones, but few people who thought that way "
-"lived long enough to change their minds."
-msgstr ""
-"Temps era temps era una de les bèsties més poderoses i temudes; ara s'ha "
-"convertit en ossos i foscos tendons. Molt després de la seva mort, fou "
-"invocat mitjançant la nigromància, a la qual ara serveix. El drac esquelètic "
-"pot semblar només una pila de ossos, però pocs dels que han pensat així han "
-"sobreviscut prou com per canviar d'opinió."
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:28
-msgid "jaw"
-msgstr "mandíbula"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:64
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
-#: data/units/Drake_Armageddon.cfg:79 data/units/Drake_Burner.cfg:61
-#: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
-#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:22
-#: data/units/Gryphon_Master.cfg:25 data/units/Gryphon_Rider.cfg:25
-#: data/units/Undead_Corpse_Ghoul.cfg:65
-#: data/units/Undead_Corpse_Necrophage.cfg:33
-#: data/units/Undead_Spirit_Nightgaunt.cfg:53
-#: data/units/Undead_Spirit_Shadow.cfg:27
-msgid "claws"
-msgstr "urpes"
-
-#: data/campaigns/Heir_To_The_Throne.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
-#: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
-#: data/campaigns/Under_the_Burning_Suns.cfg:32
-msgid "Current Maintainer"
-msgstr "Mantenidor actual"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:100
-msgid "female^Battle Princess"
-msgstr "Princesa de batalla"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:30
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:126
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals, and battle tactics with the greatest sages, making her both a "
-"great combatant and leader. Now battle-hardened and strong of will, she can "
-"now aid those around her in the art of combat."
-msgstr ""
-"Noble de naixement, la princesa ha après a lluitar amb els millors generals, "
-"i ha conegut l'estratègia amb els savis més grans. Ens trobem doncs davant "
-"d'una gran combatent i millor líder, capaç d'ajudar durant la lluita als "
-"seus soldats de rang inferior."
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:130
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:108
-#: data/tutorial/units/Fighteress.cfg:26
-#: data/units/Human_Loyalist_Duelist.cfg:69
-#: data/units/Human_Loyalist_Fencer.cfg:124
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:28
-msgid "sabre"
-msgstr "sabre"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:183
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:213
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:125
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:290
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:156
-msgid "scepter of fire"
-msgstr "ceptre de foc"
-
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:184
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:214
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:79
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:126
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:291
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:157
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:112
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:27
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:28
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:82
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:71
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:75
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:121
-#: data/tutorial/units/Elder_Mage.cfg:109 data/units/Drake_Armageddon.cfg:131
-#: data/units/Drake_Blademaster.cfg:116 data/units/Drake_Burner.cfg:111
-#: data/units/Drake_Fighter.cfg:113 data/units/Drake_Fire.cfg:118
-#: data/units/Drake_Flameheart.cfg:156 data/units/Drake_Flare.cfg:137
-#: data/units/Drake_Glider.cfg:131 data/units/Drake_Hurricane.cfg:151
-#: data/units/Drake_Inferno.cfg:119 data/units/Drake_Sky.cfg:178
-#: data/units/Drake_Warrior.cfg:120 data/units/Dwarvish_Runemaster.cfg:63
-#: data/units/Goblin_Pillager.cfg:36 data/units/Human_Mage.cfg:104
-#: data/units/Human_Mage_Arch.cfg:88 data/units/Human_Mage_Great.cfg:77
-#: data/units/Human_Mage_Red.cfg:98 data/units/Human_Mage_Silver.cfg:132
-#: data/units/Orcish_Archer.cfg:238 data/units/Orcish_Crossbowman.cfg:101
-#: data/units/Orcish_Slurbow.cfg:121
-msgid "fire"
-msgstr "foc"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:3
-msgid "Cockatrice"
-msgstr "Basilisc"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:16
-msgid ""
-"Sometimes known as 'basilisks', these mystical creatures are said to be able "
-"to turn the living to stone. Needless to say, this makes them extremely "
-"dangerous."
-msgstr ""
-"Es diu que aquestes místiques criatures són capaces de convertir els éssers "
-"vius en pedra, fet que les converteix en extremadament perilloses.Així "
-"doncs, el millor consell per lluitar-hi és evitar la seva mirada, l'origen "
-"del seu poder."
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:19
-msgid "gaze"
-msgstr "mirada"
-
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:20
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:51
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:52
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:103
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:61
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:26
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:46
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:52
-#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
-#: data/units/Elvish_Sylph.cfg:128 data/units/Saurian_Augur.cfg:75
-#: data/units/Saurian_Oracle.cfg:75 data/units/Saurian_Soothsayer.cfg:75
-#: data/units/Undead_Necro_Ancient_Lich.cfg:29
-#: data/units/Undead_Necro_Ancient_Lich.cfg:69
-#: data/units/Undead_Necro_Dark_Adept.cfg:32
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
-#: data/units/Undead_Necro_Lich.cfg:31 data/units/Undead_Necro_Lich.cfg:71
-#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:26
-#: data/units/Undead_Spirit_Ghost.cfg:64
-#: data/units/Undead_Spirit_Spectre.cfg:86
-#: data/units/Undead_Spirit_Wraith.cfg:68
-msgid "cold"
-msgstr "fred"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:139
-msgid "Commander"
-msgstr "Comandant"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:162
-msgid ""
-"The rank of Commander is held by those who lead battle groups into combat. "
-"Possessing leadership skills, they give lower-level units in adjacent hexes "
-"improved performance in combat. Commanders are best skilled with the sword, "
-"although they also carry a bow to use when necessary. If the Commander is "
-"lost, so is the battle."
-msgstr ""
-"El rang de comandant només el tenen aquells que lideren grups de batalla en "
-"combat. Posseeixen habilitats de lideratge que milloren l'efectivitat de les "
-"unitats de nivell més baix. Els comandants són més hàbils amb l'espasa, tot "
-"i que també són capaços de fer servir l'arc quan és necessari. Si el "
-"comandant cau, la batalla està perduda."
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:77
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:101
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:66
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:67
-#: data/units/Elvish_Archer.cfg:75 data/units/Elvish_Avenger.cfg:109
-#: data/units/Elvish_Captain.cfg:83 data/units/Elvish_Champion.cfg:80
-#: data/units/Elvish_Fighter.cfg:65 data/units/Elvish_Hero.cfg:69
-#: data/units/Elvish_Marshal.cfg:77 data/units/Elvish_Outrider.cfg:79
-#: data/units/Elvish_Ranger.cfg:106 data/units/Elvish_Rider.cfg:81
-#: data/units/Elvish_Scout.cfg:80 data/units/Human_Loyalist_Bowman.cfg:61
-#: data/units/Human_Loyalist_Longbowman.cfg:63
-#: data/units/Human_Loyalist_Master_Bowman.cfg:62
-#: data/units/Human_Outlaw_Poacher.cfg:72
-#: data/units/Human_Outlaw_Trapper.cfg:102 data/units/Orcish_Archer.cfg:177
-#: data/units/Orcish_Archer.cfg:236 data/units/Orcish_Leader.cfg:66
-#: data/units/Orcish_Ruler.cfg:64 data/units/Orcish_Sovereign.cfg:65
-#: data/units/Orcish_Warlord.cfg:76
-#: data/units/Undead_Skele_Bone_Shooter.cfg:79
-#: data/units/Undead_Skele_Soul_Shooter.cfg:69
-#: data/units/Undead_Skeleton_Archer.cfg:69
-msgid "bow"
-msgstr "arc"
-
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:78
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:103
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:67
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:68
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:71
-#: data/units/Boat_Pirate_Galleon.cfg:21
-#: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:119
-#: data/units/Drake_Enforcer.cfg:135 data/units/Drake_Gladiator.cfg:111
-#: data/units/Drake_Slasher.cfg:118 data/units/Drake_Warden.cfg:124
-#: data/units/Dwarvish_Dragonguard.cfg:62 data/units/Dwarvish_Guardsman.cfg:33
-#: data/units/Dwarvish_Guardsman.cfg:81 data/units/Dwarvish_Sentinel.cfg:41
-#: data/units/Dwarvish_Sentinel.cfg:89 data/units/Dwarvish_Stalwart.cfg:36
-#: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
-#: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
-#: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
-#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
-#: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
-#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
-#: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
-#: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
-#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
-#: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
-#: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
-#: data/units/Goblin_Spearman.cfg:160
-#: data/units/Human_Horse_Grand_Knight.cfg:64
-#: data/units/Human_Horse_Knight.cfg:63 data/units/Human_Horse_Lancer.cfg:25
-#: data/units/Human_Horse_Paladin.cfg:71 data/units/Human_Horseman.cfg:25
-#: data/units/Human_Loyalist_Bowman.cfg:62
-#: data/units/Human_Loyalist_Cavalier.cfg:86
-#: data/units/Human_Loyalist_Dragoon.cfg:85
-#: data/units/Human_Loyalist_Duelist.cfg:109
-#: data/units/Human_Loyalist_General.cfg:93
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:89
-#: data/units/Human_Loyalist_Halberdier.cfg:31
-#: data/units/Human_Loyalist_Javelineer.cfg:28
-#: data/units/Human_Loyalist_Javelineer.cfg:84
-#: data/units/Human_Loyalist_Lieutenant.cfg:78
-#: data/units/Human_Loyalist_Longbowman.cfg:64
-#: data/units/Human_Loyalist_Master_Bowman.cfg:63
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:188
-#: data/units/Human_Loyalist_Pikeman.cfg:54
-#: data/units/Human_Loyalist_Sergeant.cfg:82
-#: data/units/Human_Loyalist_Spearman.cfg:63
-#: data/units/Human_Loyalist_Spearman.cfg:204
-#: data/units/Human_Outlaw_Poacher.cfg:73
-#: data/units/Human_Outlaw_Trapper.cfg:103 data/units/Human_Peasant.cfg:24
-#: data/units/Human_Peasant.cfg:67 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
-#: data/units/Merman_Hunter.cfg:23 data/units/Merman_Hunter.cfg:174
-#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:134
-#: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:22
-#: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
-#: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
-#: data/units/Monster_Giant_Scorpion.cfg:25
-#: data/units/Monster_Sea_Serpent.cfg:22 data/units/Orcish_Archer.cfg:179
-#: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
-#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
-#: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
-#: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
-#: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
-#: data/units/Saurian_Skirmisher.cfg:32 data/units/Saurian_Skirmisher.cfg:75
-#: data/units/Undead_Skele_Bone_Shooter.cfg:81
-#: data/units/Undead_Skele_Chocobone.cfg:26
-#: data/units/Undead_Skele_Death_Knight.cfg:89
-#: data/units/Undead_Skele_Soul_Shooter.cfg:71
-#: data/units/Undead_Skeleton_Archer.cfg:71
-msgid "pierce"
-msgstr "perfora"
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:87
-msgid "female^Dark Queen"
-msgstr "Reina Obscura"
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:18
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:102
-msgid ""
-"The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
-"knowledge of magic makes her a worthy foe in combat, although her power is "
-"mostly derived from those she commands."
-msgstr ""
-"La malvada reina mare Asheviere ha aterroritzat Wesnoth durant molts anys. "
-"El seu coneixement de la màgia la converteix en una digna combatent, encara "
-"que el seu poder es deriva principalment dels seus súbdits."
-
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:21
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:105
-msgid "scepter"
-msgstr "ceptre"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:3
-#: data/tutorial/units/Elder_Mage.cfg:3
-msgid "Elder Mage"
-msgstr "Mag ancià"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:22
-#: data/tutorial/units/Elder_Mage.cfg:29
-msgid ""
-"Once great, Elder Magi have seen their power a little diminished from "
-"wearying years of battle. Nevertheless they remain feared on the battlefield "
-"on account of their powerful lightning bolts."
-msgstr ""
-"Aquells que una vegada foren els més grans, encara conserven bona part dels "
-"seus poders. Tot i que han disminuït sensiblement amb el pas dels anys, "
-"continuen usant potents llampecs al camp de batalla. La vellesa no és prou "
-"motiu com per deixar de témer-los."
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:90
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:93
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:41
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:30
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:31
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:51
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:90
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:91
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:25
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:26
-#: data/tutorial/units/Elder_Mage.cfg:31 data/units/Elvish_Druid.cfg:27
-#: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:29
-#: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:54
-#: data/units/Human_Mage_Arch.cfg:39 data/units/Human_Mage_Great.cfg:28
-#: data/units/Human_Mage_Red.cfg:49 data/units/Human_Mage_Silver.cfg:86
-#: data/units/Human_Mage_White.cfg:86 data/units/Mermaid_Diviner.cfg:67
-#: data/units/Mermaid_Enchantress.cfg:24 data/units/Mermaid_Initiate.cfg:27
-#: data/units/Mermaid_Priestess.cfg:64 data/units/Saurian_Augur.cfg:36
-#: data/units/Saurian_Oracle.cfg:36 data/units/Saurian_Soothsayer.cfg:36
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:24
-msgid "staff"
-msgstr "bastó"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:77
-#: data/tutorial/units/Elder_Mage.cfg:107
-msgid "lightning"
-msgstr "llampec"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:3
-msgid "Elvish High Lord"
-msgstr "Alt senyor elf"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:18
-msgid ""
-"The leaders of the elves do not fall sallow and frail with age. Rather, it "
-"is then that they grow to their true potential. Quiet and contemplative in "
-"times of peace, a High Lord in the full of his wrath is an awesome sight "
-"indeed."
-msgstr ""
-"Els líders dels elfs no envelleixen ni es debiliten amb els anys, ans al "
-"contrari. És amb l'edat que arriben a adquirir el seu autèntic potencial. "
-"Silenciós i contemplatiu en temps de pau, un alt senyor elf enrauxat és "
-"certament un espectacle increïble."
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:102
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:60
-#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
-#: data/units/Elvish_Sylph.cfg:127
-msgid "faerie fire"
-msgstr "foc de fada"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:4
-msgid "female^Elvish Lady"
-msgstr "Dama elfa"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:18
-msgid ""
-"Elves choose their leaders for their power and wisdom; foresight is what has "
-"protected them in times of uncertainty. Their just reign is rewarded by the "
-"unflagging fealty of their people, which is the greatest gift any ruler "
-"could ask for."
-msgstr ""
-"Els elfs trien els líders pel seu poder i saviesa; la previsió és el que els "
-"ha protegit sempre en temps d'incertesa. El seu regne just és recompensat "
-"per la lleialtat del poble, que alhora és el millor regal per a qualsevol "
-"dirigent."
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:20
-msgid "shove"
-msgstr "empenta"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:3
-msgid "Elvish Lord"
-msgstr "Senyor elf"
-
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:17
-msgid ""
-"The nobility of the elves are possessed of merit to match their standing in "
-"society. Elvish Lords are the wisest and strongest of their people, and are "
-"fearsome in their command of magic."
-msgstr ""
-"La noblesa dels elfs va acompanyada d'avantatges iguals a la posició dins la "
-"societat. Els Senyors elfs són els més savis i forts de la seva gent, i "
-"temibles en el comandament de la màgia."
-
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:66
-#: data/tutorial/units/Fighter.cfg:3
-msgid "Fighter"
-msgstr "Lluitador"
-
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:17
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:79
-#: data/tutorial/units/Fighter.cfg:16 data/tutorial/units/Fighteress.cfg:22
-msgid ""
-"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
-"from enemies. However they have the potential to become great warriors one "
-"day."
-msgstr ""
-"El lluitador és hàbil en el ús de l'espasa. Jove i inexpert, és vulnerable "
-"als atacs enemics. No obstant, té el potencial per a convertir-se en un "
-"gran  lluitador, algun dia..."
-
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:192
-msgid "Lord"
-msgstr "Senyor"
-
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:27
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:216
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:24
-msgid ""
-"The noble leaders of many troops, Lords are especially strong in melee "
-"combat, and also possess skill with the bow. Like Commanders, Lords possess "
-"leadership skills, and improve the fighting ability of all adjacent lower-"
-"level units."
-msgstr ""
-"Un noble líder de tropes, el senyor és especialment fort en la lluita cos a "
-"cos, però també poseeix l'habilitat de tir amb arc. Com els comandants, el "
-"lideratge dels senyors milloren les habilitats de les unitats de nivell "
-"inferior que l'envolten."
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:3
-msgid "female^Princess"
-msgstr "Princesa"
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:105
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals and battle tactics with the greatest sages, making her both a great "
-"combatant and leader. The units of lower level around the Princess will "
-"fight better due to her presence. The Princess is also nimble and dextrous, "
-"having skills like that of a thief."
-msgstr ""
-"Noble de naixement, la Princesa ha après a lluitar amb els més grans "
-"Generals, i ha après estratègia amb els més grans savis. Ens trobem, doncs, "
-"davant una gran combatent i millor líder, capaç de millorar les habilitats "
-"de lluita dels seus soldats de rang inferior. La princesa és, tanmateix, "
-"àgil i destra, posseint habilitats pròpies fins i tot d'un lladre."
-
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:81
-msgid "Princess"
-msgstr "Princesa"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:3
-msgid "Sea Orc"
-msgstr "Mariner orc"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:16
-msgid ""
-"While often viewed as inferior to their land loving counterparts, Sea Orcs "
-"represent a great leap for all goblinoids as they have adapted to aquatic "
-"environments. With their curved swords they are competent fighters, although "
-"their lack of a ranged attack and poor defence on land do represent "
-"strategic weaknesses."
-msgstr ""
-"Tot i que sovint són vistos com orcs de classe inferior, els mariners "
-"representen un gran salt per a tots els goblionides ja que s'han adaptat als "
-"entorns aquàtics. Són competents lluitant amb les seves espases curves, però "
-"la manca d'atac a distància i la pobre defensa representen una gran "
-"debilitat estratègica per a aquestes criatures."
-
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:3
-msgid "Sleeping Gryphon"
-msgstr "Griu dorment"
-
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:16
-msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "Shhhh! El griu dorm... Més us val no despertar-lo!"
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:3
-msgid "Youth"
-msgstr "Jove"
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:18
-msgid ""
-"Today almost a boy, by his devotion to the crown he is seeking to become a "
-"Lord -- to join the elite of human fighters."
-msgstr ""
-"Avui pràcticament un nen, amb la seva devoció a la corona buscarà convertir-"
-"se en un Senyor per tal d'unir-se a l'elit dels lluitadors humans."
-
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:21
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:24
-msgid "training sword"
-msgstr "espesa d'entrenament"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:3
-msgid "Fire Dragon"
-msgstr "Gran Drac de foc"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:20
-msgid ""
-"A fire dragon is an ancient and horrifying being that normally lives only in "
-"hushed rumor and fantastic stories. It is normal for centuries to pass "
-"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
-"form flying in the distance. Legends are very specific about the ravages of "
-"fire dragons: hideously swift in flight, leathery wings spread over one "
-"hundred feet in width, they swoop in and blast their prey with inferno jets "
-"of flame. Anything escaping the dragon's fire breath must beware its "
-"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
-"often take underlings whom they lead to victory."
-msgstr ""
-"Un drac de foc és un ésser ancestral i horrorós que habitualment viu només "
-"en rumors silenciats i històries fantàstiques. És normal que passin segles "
-"sencers sense que es vegi un drac a Wesnoth, i usualment només és com una "
-"forma ombrejada que vola en la distància. Les llegendes són molt "
-"específiques quan parlen dels estralls dels dracs de foc: sobtadament "
-"arranquen el vol d'amagat, les endurides ales desplegades en una longitud de "
-"més de trenta metres, es llancen en picat i socarrimen la seva presa amb "
-"rajos infernals de flama.Qualsevol cosa que escapi de l'alè de foc del drac "
-"encara ha de parar atenció a les seves ferotges mossegades i a no ésser "
-"esclafat per la seva cua. Els dracsde foc són llestos i cruels i sovint "
-"porten subordinats als quals condueixen a la victòria."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:23
-msgid "bite"
-msgstr "mossegada"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:71
-msgid "tail"
-msgstr "cua"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:110
-#: data/units/Drake_Armageddon.cfg:129 data/units/Drake_Blademaster.cfg:114
-#: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
-#: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
-#: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
-#: data/units/Drake_Hurricane.cfg:149 data/units/Drake_Inferno.cfg:117
-#: data/units/Drake_Sky.cfg:176 data/units/Drake_Warrior.cfg:118
-msgid "fire breath"
-msgstr "alè de foc"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:4
-msgid "Fireball"
-msgstr "Bola de foc"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:24
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr "Una bola de foc. Només usat per 'Move_Unit_Fake'."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:3
-msgid "Noble Commander"
-msgstr "Comandant noble"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:23
-msgid ""
-"The rank of a noble Commander is held by those who lead battle groups into "
-"combat. Possessing leadership skills, they give lower-level units in "
-"adjacent hexes improved performance in combat. Commanders are best skilled "
-"with the sword, although they also carry a bow to use when necessary. If the "
-"Commander is lost, so is the battle."
-msgstr ""
-"El rang de comandant noble només el tenen aquells que lideren grups de "
-"batalla en combat. Posseeixen habilitats de lideratge que milloren "
-"l'efectivitat de les unitats de nivell més baix. Els comandants són més "
-"hàbils amb l'espasa, tot i que també són capaços de fer servir l'arc quan és "
-"necessari. Si el comandant cau, la batalla està perduda."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:3
-msgid "Noble Fighter"
-msgstr "Lluitador noble"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:21
-msgid ""
-"Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
-"attacks from enemies. However they have the potential to become great "
-"Commanders one day."
-msgstr ""
-"Joves i temeraris, els lluitadors es defensen només amb l'espasa i són "
-"vulnerables als atacs a distància dels enemics. Tanmateix, tenen el "
-"potencial de convertir-se en grans comandants."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:3
-msgid "Noble Lord"
-msgstr "Senyor noble"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:3
-msgid "Noble Youth"
-msgstr "Jove noble"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:21
-msgid ""
-"Today he is a young man, by his devotion to the crown he is seeking to "
-"become a Lord -- to join the elite of humanity."
-msgstr ""
-"Tot i que encara és un home jove, amb la seva devoció a la corona buscarà "
-"convertir-se en un Senyor per tal d'unir-se a l'elit dels lluitadors humans."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:3
-msgid "female^Outlaw Princess"
-msgstr "Princesa proscrita"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:22
-msgid ""
-"A noble by birth, the Outlaw Princess has learnt swordplay with the greatest "
-"generals, but she is the product of a failed aristocracy who has opted for "
-"the life of an Outlaw. She dreams of founding her own Queendom with the "
-"plunder she finds on the road."
-msgstr ""
-"Una noble de naixement, la Princesa proscrita ha après el joc de l'espasa "
-"amb els grans generals. Però és el resultat d'una aristocràcia fallida que "
-"ha optat per la vida de proscrita. Somia en formar el seu propi regne amb el "
-"pillatge que va trobant pel camí."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:138
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:141
-#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
-#: data/units/Troll_Rocklobber.cfg:65
-msgid "sling"
-msgstr "fona"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:3
-msgid "female^Outlaw Queen"
-msgstr "Reina proscrita"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:25
-msgid ""
-"A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
-"generals and battle tactics with the greatest sages, making her both a great "
-"combatant and leader. However, she is the product of a failed aristocracy "
-"who has opted for the life of an Outlaw. She dreams of founding her own "
-"Queendom with the plunder she finds on the road, and she is ever so close to "
-"that goal."
-msgstr ""
-"Una noble de naixement, la Reina proscrita ha après el joc de l'espasa amb "
-"els grans generals i les tàctiques de la batalla amb els millors "
-"estrategues, convertint-se així en una excel·lent lluitadora i líder. "
-"Alhora, és el resultat d'una aristocràcia fallida que ha optat per la vida "
-"de proscrita. Somia en formar el seu propi regne amb el pillatge que va "
-"trobant pel camí, i sempre està ben a prop d'aconseguir-ho."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:3
-msgid "female^Vampire Lady"
-msgstr "Rata-penada vampírica"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:18
-msgid ""
-"Cold and beautiful, she maintains her eternal youthful appearance drinking "
-"the blood of the living."
-msgstr ""
-"Freda i bella, manté la seva aparença eternament jove gràcies a la sang de "
-"les seves víctimes."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:21
-msgid "blood kiss"
-msgstr "petó de sang"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:69
-#: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
-#: data/units/Saurian_Soothsayer.cfg:74
-msgid "curse"
-msgstr "maledicció"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:3
-msgid "Warrior King"
-msgstr "Rei guerrer"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:25
-msgid ""
-"As the leaders of the human Kingdoms, Kings are responsible for ruling and "
-"protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
-"units, thereby increasing their fighting efficiency."
-msgstr ""
-"Com a líders dels regnes humans, els reis són responsables de dirigir i "
-"protegir els seus súbdits. Els reis poden coordinar els atacs de les unitats "
-"de nivell 1 i 2, incrementant així la seva efectivitat en combat."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:28
-#: data/units/Drake_Enforcer.cfg:101 data/units/Drake_Gladiator.cfg:153
-#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:21
-#: data/units/Human_Loyalist_Iron_Mauler.cfg:23
-#: data/units/Human_Mage_of_Light.cfg:67 data/units/Human_Outlaw.cfg:22
-#: data/units/Human_Outlaw_Bandit.cfg:34 data/units/Troll_Great.cfg:26
-msgid "mace"
-msgstr "maça"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-msgid "Wose Sapling"
-msgstr "Wose jove"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:25
-msgid ""
-"Rarely seen, even by elves, a Wose is an order of creature about which "
-"little is known. The elves are the source of most of this knowledge; they "
-"know that these beings are not descended from trees, despite the similarity "
-"in form, and they know that a wose is more closely tied to the faerie world "
-"than the elves themselves, though in a different way. The motives and "
-"workings of their kind are unknown, though most posit the obvious idea that "
-"woses are wardens of the natural world.\n"
-"\n"
-"Woses are utterly unwarlike, but possess a great strength. They are, "
-"however, neither used to, nor quick at moving around.\n"
-"\n"
-"Special Notes: Woses regenerate by using natural resources around them, "
-"without needing to huddle in villages to obtain sustenance and aid."
-msgstr ""
-"Rarament vist, fins i tot per elfs, el wose és un tipus de criatura de la "
-"que se sap ben poc. Els elfs són la font de la majoria del que se sap "
-"d'ells. Per exemple, aquests sers no provenen dels arbres malgrat la "
-"similitud de la seva forma, i estan més lligats al món de les fades que els "
-"propis elfs, encara que d'una manera diferent. Els motius i afers de la seva "
-"raça són desconeguts, encara que la majoria postulen l'obvia idea de que els "
-"woses són guardes del món natural.\n"
-"\n"
-"Els woses són completament pacífics, però posseeixen una gran força. De "
-"totes maneres, no són ni ràpids ni estan habituats a moure's pel món.\n"
-"\n"
-"Notes especials\n"
-"Els woses es regeneren per mitja dels recursos naturals que troben al seu "
-"voltant, sense haver d'entrar en viles per obtenir sustent o ajuda."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:29
-#: data/units/Wose.cfg:30 data/units/Wose_Ancient.cfg:29
-#: data/units/Wose_Elder.cfg:28
-msgid "crush"
-msgstr "esclafa"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:3
-msgid "Demilich"
-msgstr "Semilich"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:20
-msgid ""
-"After too much time dabbling with forbidden magics and dark arts, these magi "
-"have begun to pay a heavy price. Demiliches have started losing their "
-"bodies, becoming undead themselves. With time, they may become fully undead, "
-"and feared by all alike."
-msgstr ""
-"Després de molt de temps indagant en el camí de les màgies prohibides i les "
-"arts obscures, aquests mags comencen a pagar les conseqüències del que han "
-"fet. Perden el seu cos convertint-se d'aquesta manera en no morts, i essent "
-"cada vegada més temuts per tothom."
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:23
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:24
-#: data/units/Undead_Corpse_Soulless.cfg:44
-#: data/units/Undead_Corpse_Walking.cfg:46
-#: data/units/Undead_Necro_Ancient_Lich.cfg:27
-#: data/units/Undead_Necro_Lich.cfg:29 data/units/Undead_Spirit_Ghost.cfg:24
-msgid "touch"
-msgstr "toc"
-
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
-#: data/units/Undead_Necro_Ancient_Lich.cfg:68
-#: data/units/Undead_Necro_Lich.cfg:70
-msgid "chill tempest"
-msgstr "tempesta de fred"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
-#: data/units/Human_Mage_Arch.cfg:127
-msgid "female^Arch Mage"
-msgstr "Arximaga"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:26
-msgid ""
-"The title of Arch Mage is conferred only after a lifetime of study and "
-"achievement to match. Arch Magi are often employed in positions of "
-"education, or as advisors to those wise enough to seek the fruits of their "
-"wisdom. Many tend to wealthy patrons, a profitable enterprise for both as, "
-"outside of the occasional task or word of advice, it gives the mage leave to "
-"pursue their research undisturbed. Certain others shun civilization, "
-"spending their days as hermits, often to study something which most would "
-"tend to frown upon.\n"
-"\n"
-"Though not trained for any sort of combat, if need arises an Arch Mage can "
-"unleash the full power of their art, something which is not to be taken "
-"lightly.\n"
-"\n"
-"Special Notes: the arch mage's fireballs are magical, and always have a high "
-"chance of hitting an opponent."
-msgstr ""
-"El títol d'arximag només és conferit després de tota una vida d'estudi i "
-"dedicació a la màgia. Els arximags sovint ocupen el seu temps en l'educació, "
-"o com a consellers d'aquells prou intel·ligents com per buscar en la seva "
-"saviesa. Molts tenen patrons rics, un negoci profitòs ja que més enllà dels "
-"consells ocasionals, els deixa tenen temps per dedicar-se a la recerca. N'hi "
-"ha d'altres que prefereixen allunyar-se de la civilització, passant els seus "
-"dies com ermitans.\n"
-"\n"
-"Tot i que no estan entrenats pel combat, si sorgeix la necessitat són "
-"capaços de desplegar tot el poder del seu art, cosa que no s'ha de prendre a "
-"la lleugera.\n"
-"\n"
-"Notes especials\n"
-"Les boles de foc dels arximags són màgiques, per tant, tenen moltes "
-"possibilitats de colpejar l'enemic."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:80
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:81
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:69
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:70
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:73
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:74
-#: data/units/Human_Mage_Arch.cfg:87 data/units/Human_Mage_Great.cfg:76
-#: data/units/Human_Mage_Red.cfg:97
-msgid "fireball"
-msgstr "bola de foc"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:4
-#: data/units/Human_Mage_Great.cfg:116
-msgid "female^Great Mage"
-msgstr "Gran maga"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:27
-msgid ""
-"Any person who is even considered for the title of Great Mage is quite "
-"nearly a legend in their own time, and town criers have forcibly learnt "
-"discretion in applying the title. Merit for the title is carefully "
-"considered by a council of the leading magi of the age, and the conferment "
-"of the title is given only by a majority vote. Regardless, anyone who is "
-"seriously nominated for the honor of being called a Great Mage is, without "
-"question, a master of their art, and has surpassed almost any of their peers "
-"in skill.\n"
-"\n"
-"Though they are not warriors, by any means, the application of their art to "
-"combat is something that often causes other soldiers to stand aside in awe.\n"
-"\n"
-"Special Notes: the great mage's fireballs are magical, and always have a "
-"high chance of hitting an opponent."
-msgstr ""
-"Qualsevol persona que sigui tan sols considerada per merèixer el títol de "
-"Gran mag ja és pràcticament tota una llegenda del seu temps. Els mèrits per "
-"atorgar definitivament el títol són considerats en un consell format pels "
-"mags més destacats de l'època, i decidit per majoria. Qualsevol que sigui "
-"seriosament nominat és sens cap mena de dubte un autèntic mestre en l'art de "
-"la màgia, sobrepassant a gairebé tots els seus companys.\n"
-"\n"
-"Encara que no són guerrers, ni molt menys, cada vegada que dediquen el seu "
-"poder al combat causen l'esglai de la resta de soldats.\n"
-"\n"
-"Notes especials\n"
-"Les boles de foc dels grans mags són màgiques, i sempre tenen una alt "
-"percentatge d'encertar l'oponent."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:4
-#: data/units/Human_Mage_Red.cfg:137
-msgid "female^Red Mage"
-msgstr "Maga roja"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:26
-msgid ""
-"Upon the successful termination of their apprenticeship, a mage is stripped "
-"of the blue robes of an apprentice, and given the red robes of a master. The "
-"significance of this change is often lost on the peasantry, who mistakenly "
-"title Master Magi as 'Red Magi'. Likewise, the symbolism of the change in "
-"colors is often mistaken to signify the mage's ability to seemingly conjure "
-"fire from nothing but thin air, a trick which, although undeniably useful, "
-"is viewed as a crass application of the knowledge which they have "
-"painstakingly accrued.\n"
-"\n"
-"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
-"number of tricks up their sleeves, including the gouts of fire which may "
-"have cemented their colloquial name.\n"
-"\n"
-"Special Notes: the red mage's fireballs are magical, and always have a high "
-"chance of hitting an opponent."
-msgstr ""
-"Després d'assolir satisfactòriament el seu aprenentatge, el mag abandona el "
-"vestit blau d'aprenent i rep el roig de mestre. El significat d'aquest canvi "
-"sovint es perd entre la pagesia que erròniament anomena als mestres mags, "
-"mags rojos. De tota manera, el simbolisme del canvi de color de la "
-"vestimenta sovint s'ha associat equivocadament amb l'habilitat del mag per "
-"conjurar foc de l'aire, un truc que, encara que indubtablement útil, es vist "
-"com una ruda aplicació del coneixement que han assolit amb molt d'esforç.\n"
-"\n"
-"Encara que són físicament molt febles, i no han estat entrenats per a ser "
-"guerrers, els mags rojos posseeixen un gran nombre de trucs sota la màniga, "
-"incloses les boles de foc que poden haver propiciat col·loquialment el seu "
-"nom.\n"
-"\n"
-"Notes especials\n"
-" Les boles de foc del mag roig són màgiques i sempre tenen una alta "
-"probabilitat d'impactar en l'oponent."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:4
-#: data/units/Human_Mage_Silver.cfg:176
-msgid "female^Silver Mage"
-msgstr "Maga d'argent"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:33
-msgid ""
-"The many paths that a mage can take in study lead to strikingly different "
-"ends. Silver magi have devoted themselves to a study of the forces that bind "
-"reality together, and have managed, somewhat, to unravel the mysteries of a "
-"world far more vast than most would ever imagine. Often viewed as sages, or "
-"wandering mystics, silver magi act under an agenda which is obscure even to "
-"their own colleagues. Though helpful to the magisteriums which often employ "
-"them in the field, they remain somewhat aloof.\n"
-"\n"
-"They have, in fact, their own order amongst the ranks of magi, an order "
-"which withholds certain secrets from their peers. One of these is an "
-"apparent ability to cross great distances, faster than one could possibly "
-"travel on foot. Members of the silver order ardently refuse to discuss the "
-"workings of this with any of their fellow magi, and on those rare occasions "
-"when others have pried into their work, they have abandoned the endeavor, "
-"never to speak of it again.\n"
-"\n"
-"Silver magi are often more physically adept than other magi, and their "
-"skills are of undeniable use on the battlefield, if one can manage to coerce "
-"the mage into applying them.\n"
-"\n"
-"Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
-"magical natures and are highly resistant to non-physical damage. They can "
-"also teleport between any two villages instantly, though the player must "
-"control both, and the destination village must be unoccupied."
-msgstr ""
-"Els diversos camins que un mag pot emprendre en el seu estudi condueixen "
-"afinals notablement diferents. Els mag d'argent s'han dedicat a l'estudi de "
-"les forces que uneixen la realitat, i han aconseguit, d'alguna manera, "
-"desxifrar els misteris d'un món molt més vast del que hom hauria imaginat "
-"mai. Sovint considerats erudits o místics errants, els mags d'argent "
-"segueixen unes directrius que són obscures fins i tot per als seus iguals. "
-"Encara que són útils en els magisteris, que els empren sovint en la batalla, "
-"romanen quelcomallunyats. \n"
-"\n"
-"Tenen, de fet, la seva pròpia orde entre els rangs dels mags, una orde que "
-"guarda amb recel certs secrets als seus iguals. Un d'aquests secrets és "
-"l'aparent habilitat de creuar grans distàncies, més ràpidament del que es "
-"podria fer a peu. Els membres de l'ordre d'argent refusen ardentment "
-"discutir aquestes obres amb cap dels companys mags, i en les comptades "
-"ocasions en què d'altres han escodrinyat en els seus treballs, han abandonat "
-"els seus esforços, per no tornar-ne a parlar mai més.\n"
-"\n"
-"Sovint, els mags d'argent són físicament més destres que la resta de mags i "
-"les seves habilitats són d'un innegable valor al camp de batalla, sempre i "
-"quan se'ls pugui convèncer per lluitar.\n"
-"\n"
-"Notes especials: el seu atac a distància és màgic i sempre té una alta "
-"probabilitat de colpejar l'oponent. Els mags d'argent estan en armonia amb "
-"la seva naturalesamàgica i són molt resistents al mal no físic. També es "
-"poden teletransportar instantàniament entre dos llogarets, encara que el "
-"jugador ha de controlar-losambdós, i la destinació ha d'estar desocupada."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:119
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:120
-#: data/units/Human_Mage.cfg:102 data/units/Human_Mage_Silver.cfg:130
-msgid "missile"
-msgstr "míssil"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
-#: data/units/Undead_Necromancer.cfg:3
-msgid "Necromancer"
-msgstr "Nigromant"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:22
-msgid ""
-"One of the greatest circles of what is considered 'black magic' is the art "
-"of necromancy, the terrible ability to awaken the dead with false life. It "
-"was a discovery that had terrible ramifications and caused humanity's "
-"condemnation of black magic, for it has given fear a vast new arsenal.\n"
-"\n"
-"This ability, in all aspects, is the first step towards cheating death of "
-"its ultimate prize. It is the highest degree of power a dark mage can attain "
-"without losing grip on humanity itself, but pales to the lethal power "
-"wielded by Liches. Their mortal bodies are also made sturdier by their "
-"magic, in contrast to the frail decayed form of a Lich.\n"
-"\n"
-"Special Notes: the necromancer's ranged attacks are magical and always have "
-"a high chance of hitting an opponent. The staff of a necromancer is marked "
-"with the plague, and any foe struck down by it will rise again in unlife."
-msgstr ""
-"Un dels majors cercles del que hom anomena \"màgia negra\" és l'art de "
-"lanigromància, l'espantosa habilitat de despertar els morts en una falsa "
-"vida. Va ser un descobriment que tingué ramificacions terribles i que causar "
-"la condemna de la humanitat a la màgia negra, per l'enorme arsenal nou que "
-"se li donà a la por.\n"
-"\n"
-"Aquesta habilitat, en tots els aspectes, és el primer pas per burlar la mort "
-"del seu premi definitiu. És el grau més alt de poder que un mag fosc pot "
-"assolir sense perdre la seva pròpia humanitat, però empal·lideix al poder "
-"letal esgrimit pels Liches. Els seus cossos mortals també són més robustos "
-"degut a la seva màgia, en contrast amb la decadència fràgil d'un Lich.\n"
-"\n"
-"Notes especials: els atacs a distància dels nigromants són màgics i sempre "
-"tenen una alta probabilitat de colpejar l'oponent. El bastó d'un nigromant "
-"té l'empremta de la plaga, i qualsevol que sigui abatut amb ell reviurà de "
-"nou en la no-vida."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:50
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:62
-#: data/units/Undead_Necromancer.cfg:66
-msgid "chill wave"
-msgstr "onada de fred"
 
 #: data/english.cfg:2
 msgid "Easy"
@@ -4978,7 +3702,7 @@ msgid "Survive for 32 turns."
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
-msgid "Survival all enemy attacks."
+msgid "Survive all enemy attacks."
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
@@ -4989,8 +3713,8 @@ msgstr "Mort de Konrad"
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
-"impossible. Frankly, I don't got a clue to how you did it, so send me the "
-"replay by mail to: roze@roze.mine.nu. Thank You!"
+"impossible. Frankly, I haven't got a clue as to how you did it, so send me "
+"the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
@@ -5940,24 +4664,6 @@ msgstr "Princesa"
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
-#: data/tutorial/units/Fighteress.cfg:3
-msgid "female^Fighter"
-msgstr "Guerrera"
-
-#: data/tutorial/units/Quintain.cfg:3
-msgid "Quintain"
-msgstr "Quintana"
-
-#: data/tutorial/units/Quintain.cfg:13
-msgid ""
-"Quintains are used to practice swordplay and jousting on.  It would be "
-"extremely unusual to be attacked by one."
-msgstr ""
-
-#: data/tutorial/units/Quintain.cfg:20
-msgid "flail"
-msgstr "maça amb cadenes"
-
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
 msgstr "Gal·leó"
@@ -5979,6 +4685,52 @@ msgstr ""
 msgid "dummy"
 msgstr "arma fictícia"
 
+#: data/units/Boat_Galleon.cfg:23 data/units/Drake_Enforcer.cfg:102
+#: data/units/Drake_Gladiator.cfg:154 data/units/Drake_Glider.cfg:77
+#: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
+#: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
+#: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
+#: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
+#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:70
+#: data/units/Elvish_Shaman.cfg:30 data/units/Elvish_Shaman.cfg:68
+#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Shyde.cfg:57
+#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:75
+#: data/units/Elvish_Sylph.cfg:29 data/units/Elvish_Sylph.cfg:57
+#: data/units/Goblin_Pillager.cfg:73
+#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:22
+#: data/units/Human_Loyalist_Iron_Mauler.cfg:24
+#: data/units/Human_Loyalist_Shock_Trooper.cfg:22 data/units/Human_Mage.cfg:56
+#: data/units/Human_Mage_Arch.cfg:41 data/units/Human_Mage_Great.cfg:30
+#: data/units/Human_Mage_Red.cfg:51 data/units/Human_Mage_Silver.cfg:88
+#: data/units/Human_Mage_White.cfg:88 data/units/Human_Mage_of_Light.cfg:68
+#: data/units/Human_Outlaw.cfg:23 data/units/Human_Outlaw.cfg:60
+#: data/units/Human_Outlaw_Bandit.cfg:35
+#: data/units/Human_Outlaw_Footpad.cfg:23
+#: data/units/Human_Outlaw_Footpad.cfg:70 data/units/Human_Outlaw_Thug.cfg:23
+#: data/units/Mermaid_Diviner.cfg:69 data/units/Mermaid_Enchantress.cfg:26
+#: data/units/Mermaid_Enchantress.cfg:64 data/units/Mermaid_Initiate.cfg:29
+#: data/units/Mermaid_Initiate.cfg:67 data/units/Mermaid_Priestess.cfg:66
+#: data/units/Mermaid_Siren.cfg:30 data/units/Mermaid_Siren.cfg:75
+#: data/units/Merman_Entangler.cfg:57 data/units/Merman_Netcaster.cfg:56
+#: data/units/Monster_Cave_Spider.cfg:86 data/units/Monster_Cuttle_Fish.cfg:35
+#: data/units/Monster_Giant_Mudcrawler.cfg:47
+#: data/units/Monster_Giant_Mudcrawler.cfg:85
+#: data/units/Monster_Giant_Scorpion.cfg:71
+#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:60
+#: data/units/Monster_Yeti.cfg:34 data/units/Saurian_Augur.cfg:38
+#: data/units/Saurian_Oracle.cfg:38 data/units/Saurian_Soothsayer.cfg:38
+#: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:27
+#: data/units/Troll_Hero.cfg:26 data/units/Troll_Rocklobber.cfg:29
+#: data/units/Troll_Rocklobber.cfg:66 data/units/Troll_Warrior.cfg:29
+#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:46
+#: data/units/Undead_Corpse_Walking.cfg:48
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:26
+#: data/units/Undead_Necromancer.cfg:27
+#: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
+#: data/units/Wose_Ancient.cfg:31 data/units/Wose_Elder.cfg:30
+msgid "impact"
+msgstr "impacta"
+
 #: data/units/Boat_Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
 msgstr "Gal·leó pirata"
@@ -5998,6 +4750,70 @@ msgstr ""
 #: data/units/Boat_Transport_Galleon.cfg:20
 msgid "ballista"
 msgstr "balista"
+
+#: data/units/Boat_Pirate_Galleon.cfg:21
+#: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:119
+#: data/units/Drake_Enforcer.cfg:135 data/units/Drake_Gladiator.cfg:111
+#: data/units/Drake_Slasher.cfg:118 data/units/Drake_Warden.cfg:124
+#: data/units/Dwarvish_Dragonguard.cfg:62 data/units/Dwarvish_Guardsman.cfg:33
+#: data/units/Dwarvish_Guardsman.cfg:81 data/units/Dwarvish_Sentinel.cfg:41
+#: data/units/Dwarvish_Sentinel.cfg:89 data/units/Dwarvish_Stalwart.cfg:36
+#: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
+#: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
+#: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
+#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:144
+#: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:71
+#: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
+#: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
+#: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
+#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:136
+#: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
+#: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
+#: data/units/Goblin_Spearman.cfg:160
+#: data/units/Human_Horse_Grand_Knight.cfg:64
+#: data/units/Human_Horse_Knight.cfg:63 data/units/Human_Horse_Lancer.cfg:25
+#: data/units/Human_Horse_Paladin.cfg:71 data/units/Human_Horseman.cfg:25
+#: data/units/Human_Loyalist_Bowman.cfg:62
+#: data/units/Human_Loyalist_Cavalier.cfg:86
+#: data/units/Human_Loyalist_Dragoon.cfg:85
+#: data/units/Human_Loyalist_Duelist.cfg:109
+#: data/units/Human_Loyalist_General.cfg:93
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:89
+#: data/units/Human_Loyalist_Halberdier.cfg:31
+#: data/units/Human_Loyalist_Javelineer.cfg:28
+#: data/units/Human_Loyalist_Javelineer.cfg:84
+#: data/units/Human_Loyalist_Lieutenant.cfg:78
+#: data/units/Human_Loyalist_Longbowman.cfg:64
+#: data/units/Human_Loyalist_Master_Bowman.cfg:63
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:188
+#: data/units/Human_Loyalist_Pikeman.cfg:54
+#: data/units/Human_Loyalist_Sergeant.cfg:82
+#: data/units/Human_Loyalist_Spearman.cfg:63
+#: data/units/Human_Loyalist_Spearman.cfg:204
+#: data/units/Human_Outlaw_Poacher.cfg:73
+#: data/units/Human_Outlaw_Trapper.cfg:103 data/units/Human_Peasant.cfg:24
+#: data/units/Human_Peasant.cfg:67 data/units/Merman_Entangler.cfg:25
+#: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
+#: data/units/Merman_Hunter.cfg:23 data/units/Merman_Hunter.cfg:174
+#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:134
+#: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:22
+#: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
+#: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
+#: data/units/Monster_Giant_Scorpion.cfg:25
+#: data/units/Monster_Sea_Serpent.cfg:22 data/units/Orcish_Archer.cfg:179
+#: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
+#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
+#: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
+#: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
+#: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
+#: data/units/Saurian_Skirmisher.cfg:32 data/units/Saurian_Skirmisher.cfg:75
+#: data/units/Undead_Skele_Bone_Shooter.cfg:81
+#: data/units/Undead_Skele_Chocobone.cfg:26
+#: data/units/Undead_Skele_Death_Knight.cfg:89
+#: data/units/Undead_Skele_Soul_Shooter.cfg:71
+#: data/units/Undead_Skeleton_Archer.cfg:71
+msgid "pierce"
+msgstr "perfora"
 
 #: data/units/Boat_Transport_Galleon.cfg:3
 msgid "Transport Galleon"
@@ -6029,6 +4845,112 @@ msgid ""
 "cold attacks than most other drakes."
 msgstr ""
 
+#: data/units/Drake_Armageddon.cfg:79 data/units/Drake_Burner.cfg:61
+#: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
+#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:22
+#: data/units/Gryphon_Master.cfg:25 data/units/Gryphon_Rider.cfg:25
+#: data/units/Undead_Corpse_Ghoul.cfg:65
+#: data/units/Undead_Corpse_Necrophage.cfg:33
+#: data/units/Undead_Spirit_Nightgaunt.cfg:53
+#: data/units/Undead_Spirit_Shadow.cfg:27
+msgid "claws"
+msgstr "urpes"
+
+#: data/units/Drake_Armageddon.cfg:81 data/units/Drake_Blademaster.cfg:67
+#: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
+#: data/units/Drake_Enforcer.cfg:69 data/units/Drake_Fighter.cfg:64
+#: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
+#: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:68
+#: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
+#: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
+#: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
+#: data/units/Dwarvish_Fighter.cfg:27 data/units/Dwarvish_Lord.cfg:29
+#: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
+#: data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Dwarvish_Thunderguard.cfg:25
+#: data/units/Dwarvish_Ulfserker.cfg:33 data/units/Elvish_Archer.cfg:24
+#: data/units/Elvish_Avenger.cfg:63 data/units/Elvish_Captain.cfg:37
+#: data/units/Elvish_Champion.cfg:24 data/units/Elvish_Fighter.cfg:24
+#: data/units/Elvish_Hero.cfg:23 data/units/Elvish_Marksman.cfg:55
+#: data/units/Elvish_Marshal.cfg:36 data/units/Elvish_Outrider.cfg:32
+#: data/units/Elvish_Ranger.cfg:60 data/units/Elvish_Rider.cfg:34
+#: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
+#: data/units/Goblin_Direwolf_Rider.cfg:35
+#: data/units/Goblin_Direwolf_Rider.cfg:83 data/units/Goblin_Knight.cfg:35
+#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:24
+#: data/units/Gryphon_Master.cfg:27 data/units/Gryphon_Rider.cfg:27
+#: data/units/Human_Horse_Grand_Knight.cfg:26
+#: data/units/Human_Horse_Knight.cfg:25
+#: data/units/Human_Loyalist_Bowman.cfg:25
+#: data/units/Human_Loyalist_Cavalier.cfg:37
+#: data/units/Human_Loyalist_Cavalryman.cfg:51
+#: data/units/Human_Loyalist_Dragoon.cfg:36
+#: data/units/Human_Loyalist_Duelist.cfg:71
+#: data/units/Human_Loyalist_Fencer.cfg:126
+#: data/units/Human_Loyalist_General.cfg:45
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:41
+#: data/units/Human_Loyalist_Halberdier.cfg:215
+#: data/units/Human_Loyalist_Lieutenant.cfg:35
+#: data/units/Human_Loyalist_Longbowman.cfg:27
+#: data/units/Human_Loyalist_Master_Bowman.cfg:26
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:30
+#: data/units/Human_Loyalist_Royal_Guard.cfg:28
+#: data/units/Human_Loyalist_Sergeant.cfg:34
+#: data/units/Human_Loyalist_Swordsman.cfg:27
+#: data/units/Human_Outlaw_Assassin.cfg:30
+#: data/units/Human_Outlaw_Assassin.cfg:111
+#: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
+#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
+#: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
+#: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
+#: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
+#: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
+#: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:69
+#: data/units/Orcish_Assassin.cfg:107 data/units/Orcish_Crossbowman.cfg:24
+#: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
+#: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:26
+#: data/units/Orcish_Slayer.cfg:117 data/units/Orcish_Slurbow.cfg:24
+#: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
+#: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:43
+#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:67
+#: data/units/Undead_Corpse_Necrophage.cfg:35
+#: data/units/Undead_Skele_Bone_Shooter.cfg:43
+#: data/units/Undead_Skele_Death_Knight.cfg:46
+#: data/units/Undead_Skele_Deathblade.cfg:44
+#: data/units/Undead_Skele_Draug.cfg:44
+#: data/units/Undead_Skele_Revenant.cfg:43
+#: data/units/Undead_Skele_Soul_Shooter.cfg:33
+#: data/units/Undead_Skeleton.cfg:108
+#: data/units/Undead_Spirit_Nightgaunt.cfg:54
+#: data/units/Undead_Spirit_Shadow.cfg:28
+#: data/units/Undead_Spirit_Spectre.cfg:46
+#: data/units/Undead_Spirit_Wraith.cfg:23
+msgid "blade"
+msgstr "talla"
+
+#: data/units/Drake_Armageddon.cfg:129 data/units/Drake_Blademaster.cfg:114
+#: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
+#: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
+#: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
+#: data/units/Drake_Hurricane.cfg:149 data/units/Drake_Inferno.cfg:117
+#: data/units/Drake_Sky.cfg:176 data/units/Drake_Warrior.cfg:118
+msgid "fire breath"
+msgstr "alè de foc"
+
+#: data/units/Drake_Armageddon.cfg:131 data/units/Drake_Blademaster.cfg:116
+#: data/units/Drake_Burner.cfg:111 data/units/Drake_Fighter.cfg:113
+#: data/units/Drake_Fire.cfg:118 data/units/Drake_Flameheart.cfg:156
+#: data/units/Drake_Flare.cfg:137 data/units/Drake_Glider.cfg:131
+#: data/units/Drake_Hurricane.cfg:151 data/units/Drake_Inferno.cfg:119
+#: data/units/Drake_Sky.cfg:178 data/units/Drake_Warrior.cfg:120
+#: data/units/Dwarvish_Runemaster.cfg:63 data/units/Goblin_Pillager.cfg:36
+#: data/units/Human_Mage.cfg:104 data/units/Human_Mage_Arch.cfg:88
+#: data/units/Human_Mage_Great.cfg:77 data/units/Human_Mage_Red.cfg:98
+#: data/units/Human_Mage_Silver.cfg:132 data/units/Orcish_Archer.cfg:238
+#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:121
+msgid "fire"
+msgstr "foc"
+
 #: data/units/Drake_Blademaster.cfg:3
 msgid "Drake Blademaster"
 msgstr "Mestre espadatxí drac"
@@ -6041,6 +4963,35 @@ msgstr ""
 "Els dracs especialitzats en l'ús de l'espasa juren fidelitat a un orde "
 "diferent. La seva marca és el símbol de guerra negre i blanc que mostren en "
 "combat."
+
+#: data/units/Drake_Blademaster.cfg:66 data/units/Drake_Clasher.cfg:75
+#: data/units/Drake_Enforcer.cfg:68 data/units/Drake_Flameheart.cfg:78
+#: data/units/Drake_Flare.cfg:82 data/units/Drake_Gladiator.cfg:67
+#: data/units/Drake_Warrior.cfg:70 data/units/Elvish_Archer.cfg:22
+#: data/units/Elvish_Avenger.cfg:61 data/units/Elvish_Captain.cfg:35
+#: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:22
+#: data/units/Elvish_Hero.cfg:21 data/units/Elvish_Marksman.cfg:53
+#: data/units/Elvish_Marshal.cfg:34 data/units/Elvish_Outrider.cfg:30
+#: data/units/Elvish_Ranger.cfg:58 data/units/Elvish_Rider.cfg:32
+#: data/units/Elvish_Scout.cfg:31 data/units/Elvish_Sharpshooter.cfg:47
+#: data/units/Human_Horse_Grand_Knight.cfg:24
+#: data/units/Human_Horse_Knight.cfg:23 data/units/Human_Horse_Paladin.cfg:31
+#: data/units/Human_Loyalist_Bowman.cfg:23
+#: data/units/Human_Loyalist_Cavalier.cfg:35
+#: data/units/Human_Loyalist_Cavalryman.cfg:49
+#: data/units/Human_Loyalist_Dragoon.cfg:34
+#: data/units/Human_Loyalist_General.cfg:43
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:39
+#: data/units/Human_Loyalist_Lieutenant.cfg:33
+#: data/units/Human_Loyalist_Longbowman.cfg:25
+#: data/units/Human_Loyalist_Master_Bowman.cfg:24
+#: data/units/Human_Loyalist_Royal_Guard.cfg:26
+#: data/units/Human_Loyalist_Sergeant.cfg:32
+#: data/units/Human_Loyalist_Swordsman.cfg:25 data/units/Naga_Fighter.cfg:23
+#: data/units/Naga_Myrmidon.cfg:27 data/units/Naga_Warrior.cfg:26
+#: data/units/Orcish_Grunt.cfg:74 data/units/Orcish_Leader.cfg:28
+msgid "sword"
+msgstr "espasa"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
@@ -6124,6 +5075,14 @@ msgstr ""
 "Els grans dracs imposadors personifiquen la força bruta dels de la seva "
 "raça. Llargues hores a la forja els han proveït amb una gran varietat "
 "d'armes, i un revestiment en forma d'armadura brillant."
+
+#: data/units/Drake_Enforcer.cfg:101 data/units/Drake_Gladiator.cfg:153
+#: data/units/Human_Loyalist_Heavy_Infantryman.cfg:21
+#: data/units/Human_Loyalist_Iron_Mauler.cfg:23
+#: data/units/Human_Mage_of_Light.cfg:67 data/units/Human_Outlaw.cfg:22
+#: data/units/Human_Outlaw_Bandit.cfg:34 data/units/Troll_Great.cfg:26
+msgid "mace"
+msgstr "maça"
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -6673,6 +5632,25 @@ msgstr ""
 "relativa inexperiència en combat els deixa una mica vulnerables en cos a "
 "cos, la seva gràcia innata els permet vèncer rivals del mateix nivell."
 
+#: data/units/Elvish_Archer.cfg:75 data/units/Elvish_Avenger.cfg:109
+#: data/units/Elvish_Captain.cfg:83 data/units/Elvish_Champion.cfg:80
+#: data/units/Elvish_Fighter.cfg:65 data/units/Elvish_Hero.cfg:69
+#: data/units/Elvish_Marshal.cfg:77 data/units/Elvish_Outrider.cfg:79
+#: data/units/Elvish_Ranger.cfg:106 data/units/Elvish_Rider.cfg:81
+#: data/units/Elvish_Scout.cfg:80 data/units/Human_Loyalist_Bowman.cfg:61
+#: data/units/Human_Loyalist_Longbowman.cfg:63
+#: data/units/Human_Loyalist_Master_Bowman.cfg:62
+#: data/units/Human_Outlaw_Poacher.cfg:72
+#: data/units/Human_Outlaw_Trapper.cfg:102 data/units/Orcish_Archer.cfg:177
+#: data/units/Orcish_Archer.cfg:236 data/units/Orcish_Leader.cfg:66
+#: data/units/Orcish_Ruler.cfg:64 data/units/Orcish_Sovereign.cfg:65
+#: data/units/Orcish_Warlord.cfg:76
+#: data/units/Undead_Skele_Bone_Shooter.cfg:79
+#: data/units/Undead_Skele_Soul_Shooter.cfg:69
+#: data/units/Undead_Skeleton_Archer.cfg:69
+msgid "bow"
+msgstr "arc"
+
 #: data/units/Elvish_Archer.cfg:158
 msgid "female^Elvish Archer"
 msgstr "Arquera elfa"
@@ -6789,6 +5767,19 @@ msgstr ""
 "la meitat el seu moviment i el mal que fan a l'atacar. Les druides poden "
 "guarir les unitats que tenen al seu voltant, i curar-les del verí."
 
+#: data/units/Elvish_Druid.cfg:27 data/units/Elvish_Enchantress.cfg:25
+#: data/units/Elvish_Shaman.cfg:29 data/units/Elvish_Sorceress.cfg:25
+#: data/units/Human_Mage.cfg:54 data/units/Human_Mage_Arch.cfg:39
+#: data/units/Human_Mage_Great.cfg:28 data/units/Human_Mage_Red.cfg:49
+#: data/units/Human_Mage_Silver.cfg:86 data/units/Human_Mage_White.cfg:86
+#: data/units/Mermaid_Diviner.cfg:67 data/units/Mermaid_Enchantress.cfg:24
+#: data/units/Mermaid_Initiate.cfg:27 data/units/Mermaid_Priestess.cfg:64
+#: data/units/Saurian_Augur.cfg:36 data/units/Saurian_Oracle.cfg:36
+#: data/units/Saurian_Soothsayer.cfg:36
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:24
+msgid "staff"
+msgstr "bastó"
+
 #: data/units/Elvish_Druid.cfg:65 data/units/Elvish_Shyde.cfg:56
 msgid "ensnare"
 msgstr "atrapar"
@@ -6816,6 +5807,26 @@ msgstr ""
 #: data/units/Elvish_Sorceress.cfg:74
 msgid "entangle"
 msgstr "enredar"
+
+#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
+#: data/units/Elvish_Sylph.cfg:127
+msgid "faerie fire"
+msgstr "foc de fada"
+
+#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
+#: data/units/Elvish_Sylph.cfg:128 data/units/Saurian_Augur.cfg:75
+#: data/units/Saurian_Oracle.cfg:75 data/units/Saurian_Soothsayer.cfg:75
+#: data/units/Undead_Necro_Ancient_Lich.cfg:29
+#: data/units/Undead_Necro_Ancient_Lich.cfg:69
+#: data/units/Undead_Necro_Dark_Adept.cfg:32
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
+#: data/units/Undead_Necro_Lich.cfg:31 data/units/Undead_Necro_Lich.cfg:71
+#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:26
+#: data/units/Undead_Spirit_Ghost.cfg:64
+#: data/units/Undead_Spirit_Spectre.cfg:86
+#: data/units/Undead_Spirit_Wraith.cfg:68
+msgid "cold"
+msgstr "fred"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -7631,6 +6642,12 @@ msgstr ""
 "La seva habilitat a l'hora d'esquivar fa que aquests esgrimidors puguin "
 "passar entre els oponents, ignorant les zones de control."
 
+#: data/units/Human_Loyalist_Duelist.cfg:69
+#: data/units/Human_Loyalist_Fencer.cfg:124
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:28
+msgid "sabre"
+msgstr "sabre"
+
 #: data/units/Human_Loyalist_Fencer.cfg:3
 msgid "Fencer"
 msgstr "Esgrimidor"
@@ -8026,6 +7043,10 @@ msgstr ""
 "desavantatge d'aquestes armadures tan pesades és la lentitud en els "
 "moviments a l'hora d'entrar en combat."
 
+#: data/units/Human_Loyalist_Shock_Trooper.cfg:20
+msgid "morning star"
+msgstr "estel d'alba"
+
 #: data/units/Human_Loyalist_Spearman.cfg:3
 msgid "Spearman"
 msgstr "Soldat"
@@ -8124,6 +7145,10 @@ msgstr ""
 "L'atac a distància d'un mag és màgic i per tant sempre té moltes "
 "possibilitats d'encertar."
 
+#: data/units/Human_Mage.cfg:102 data/units/Human_Mage_Silver.cfg:130
+msgid "missile"
+msgstr "míssil"
+
 #: data/units/Human_Mage.cfg:160
 msgid "female^Mage"
 msgstr "Maga"
@@ -8166,6 +7191,15 @@ msgstr ""
 "Les boles de foc dels arximags són màgiques, per tant, tenen moltes "
 "possibilitats de colpejar l'enemic."
 
+#: data/units/Human_Mage_Arch.cfg:87 data/units/Human_Mage_Great.cfg:76
+#: data/units/Human_Mage_Red.cfg:97
+msgid "fireball"
+msgstr "bola de foc"
+
+#: data/units/Human_Mage_Arch.cfg:127
+msgid "female^Arch Mage"
+msgstr "Arximaga"
+
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Gran mag"
@@ -8200,6 +7234,10 @@ msgstr ""
 "Notes especials\n"
 "Les boles de foc dels grans mags són màgiques, i sempre tenen una alt "
 "percentatge d'encertar l'oponent."
+
+#: data/units/Human_Mage_Great.cfg:116
+msgid "female^Great Mage"
+msgstr "Gran maga"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
@@ -8239,6 +7277,10 @@ msgstr ""
 "Notes especials\n"
 " Les boles de foc del mag roig són màgiques i sempre tenen una alta "
 "probabilitat d'impactar en l'oponent."
+
+#: data/units/Human_Mage_Red.cfg:137
+msgid "female^Red Mage"
+msgstr "Maga roja"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
@@ -8296,6 +7338,10 @@ msgstr ""
 "la seva naturalesamàgica i són molt resistents al mal no físic. També es "
 "poden teletransportar instantàniament entre dos llogarets, encara que el "
 "jugador ha de controlar-losambdós, i la destinació ha d'estar desocupada."
+
+#: data/units/Human_Mage_Silver.cfg:176
+msgid "female^Silver Mage"
+msgstr "Maga d'argent"
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
@@ -8401,6 +7447,11 @@ msgstr ""
 "proscrits són ben conscients tant de la seva capacitat mortífera com de la "
 "disponibilitat de munició. Els proscrits són especialment dèbils en la "
 "lluita a ple dia i prefereixen la protecció que els dóna el capvespre."
+
+#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
+#: data/units/Troll_Rocklobber.cfg:65
+msgid "sling"
+msgstr "fona"
 
 #: data/units/Human_Outlaw.cfg:97
 msgid "female^Outlaw"
@@ -9355,6 +8406,11 @@ msgstr ""
 "naturals de lideratge els els converteixen en imprescindibles: si cauen, la "
 "batalla està perduda."
 
+#: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
+#: data/units/Orcish_Warlord.cfg:23 data/units/Orcish_Warrior.cfg:21
+msgid "greatsword"
+msgstr "espasa gran"
+
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Matador orc"
@@ -9478,6 +8534,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+
+#: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
+#: data/units/Saurian_Soothsayer.cfg:74
+msgid "curse"
+msgstr "maledicció"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -9805,6 +8866,13 @@ msgstr ""
 "Aquests cossos sensanima s'han fet forts gràcies a la llarga experiència que "
 "han guanyat lluitant contra els vius."
 
+#: data/units/Undead_Corpse_Soulless.cfg:44
+#: data/units/Undead_Corpse_Walking.cfg:46
+#: data/units/Undead_Necro_Ancient_Lich.cfg:27
+#: data/units/Undead_Necro_Lich.cfg:29 data/units/Undead_Spirit_Ghost.cfg:24
+msgid "touch"
+msgstr "toc"
+
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Cadàver ambulant"
@@ -9843,6 +8911,11 @@ msgstr ""
 "Els atacs a distància d'un lich són màgics i sempre tenen "
 "moltespossibilitats d'encertar. D'altra banda, el seu toc drena la vida de "
 "la víctima per recuperar-se."
+
+#: data/units/Undead_Necro_Ancient_Lich.cfg:68
+#: data/units/Undead_Necro_Lich.cfg:70
+msgid "chill tempest"
+msgstr "tempesta de fred"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
@@ -9907,6 +8980,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:62
+#: data/units/Undead_Necromancer.cfg:66
+msgid "chill wave"
+msgstr "onada de fred"
+
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Lich"
@@ -9940,6 +9018,10 @@ msgstr ""
 "Els atacs a distància d'un lich són màgics i sempre tenen "
 "moltespossibilitats d'encertar. D'altra banda, el seu toc drena la vida de "
 "la víctima per recuperar-se."
+
+#: data/units/Undead_Necromancer.cfg:3
+msgid "Necromancer"
+msgstr "Nigromant"
 
 #: data/units/Undead_Necromancer.cfg:21
 #, fuzzy
@@ -10358,6 +9440,11 @@ msgstr ""
 "Notes especials\n"
 "Els woses es regeneren per mitja dels recursos naturals que troben al seu "
 "voltant, sense haver d'entrar en viles per obtenir sustent o ajuda."
+
+#: data/units/Wose.cfg:30 data/units/Wose_Ancient.cfg:29
+#: data/units/Wose_Elder.cfg:28
+msgid "crush"
+msgstr "esclafa"
 
 #: data/units/Wose_Ancient.cfg:3
 msgid "Ancient Wose"
@@ -10826,7 +9913,7 @@ msgstr ""
 "campanya."
 
 #: src/game.cpp:1117 src/game.cpp:1156 src/game.cpp:1181
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:350
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:36 src/playcampaign.cpp:331
 msgid "Connection timed out"
 msgstr "Connexió perduda."
 
@@ -10890,15 +9977,15 @@ msgstr "Juga una partida contra la màquina"
 msgid "Login: "
 msgstr "Nom: "
 
-#: src/game.cpp:1264 src/playcampaign.cpp:107 src/playcampaign.cpp:322
+#: src/game.cpp:1264 src/playcampaign.cpp:89 src/playcampaign.cpp:303
 msgid "The game could not be loaded: "
 msgstr "No ha estat possible desar la partida:"
 
-#: src/game.cpp:1266 src/playcampaign.cpp:109 src/playcampaign.cpp:325
+#: src/game.cpp:1266 src/playcampaign.cpp:91 src/playcampaign.cpp:306
 msgid "Error while playing the game: "
 msgstr "S'ha produït un error durant la partida: "
 
-#: src/game.cpp:1278 src/playcampaign.cpp:111 src/playcampaign.cpp:328
+#: src/game.cpp:1278 src/playcampaign.cpp:93 src/playcampaign.cpp:309
 msgid "The game map could not be loaded: "
 msgstr "No ha estat possible carregar la partida:"
 
@@ -11230,7 +10317,7 @@ msgstr "Manteniment"
 msgid "Income"
 msgstr "Beneficis"
 
-#: src/menu_events.cpp:452 src/playcampaign.cpp:293 src/playcampaign.cpp:429
+#: src/menu_events.cpp:452 src/playcampaign.cpp:274 src/playcampaign.cpp:410
 msgid "Name:"
 msgstr "Nom:"
 
@@ -11254,7 +10341,7 @@ msgstr "Partida desada"
 msgid "The game has been saved"
 msgstr "La partida ha estat desada."
 
-#: src/menu_events.cpp:470 src/playcampaign.cpp:439
+#: src/menu_events.cpp:470 src/playcampaign.cpp:420
 msgid "The game could not be saved"
 msgstr "No s'ha pogut desar la partida."
 
@@ -11277,7 +10364,7 @@ msgid "Could not save the map: $msg"
 msgstr ""
 
 #: src/menu_events.cpp:582 src/menu_events.cpp:584 src/play_controller.cpp:708
-#: src/playcampaign.cpp:118
+#: src/playcampaign.cpp:100
 msgid "Auto-Save"
 msgstr "Partida desada automàticament"
 
@@ -11931,7 +11018,7 @@ msgstr "Surt"
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
-#: src/multiplayer_ui.cpp:82
+#: src/multiplayer_ui.cpp:92
 msgid "Invalid Color"
 msgstr "Color no vàlid"
 
@@ -11984,49 +11071,49 @@ msgstr "Torna al principi"
 msgid "Back to turn "
 msgstr "Torna al torn "
 
-#: src/playcampaign.cpp:270
+#: src/playcampaign.cpp:251
 msgid "Defeat"
 msgstr "Derrota"
 
-#: src/playcampaign.cpp:271
+#: src/playcampaign.cpp:252
 msgid "You have been defeated!"
 msgstr "Heu estat derrotat!"
 
-#: src/playcampaign.cpp:284
+#: src/playcampaign.cpp:265
 msgid " replay"
 msgstr " repetició"
 
-#: src/playcampaign.cpp:292
+#: src/playcampaign.cpp:273
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Voleu desar la repetició d'aquest escenari?"
 
-#: src/playcampaign.cpp:294
+#: src/playcampaign.cpp:275
 #, fuzzy
 msgid "Save Replay"
 msgstr "Repetició"
 
-#: src/playcampaign.cpp:301
+#: src/playcampaign.cpp:282
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "No s'ha pogut desar la partida."
 
-#: src/playcampaign.cpp:341
+#: src/playcampaign.cpp:322
 #, fuzzy
 msgid "Receiving data..."
 msgstr "Rebent les dades de la partida..."
 
-#: src/playcampaign.cpp:343
+#: src/playcampaign.cpp:324
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "S'està descarregant el següent nivell..."
 
-#: src/playcampaign.cpp:428
+#: src/playcampaign.cpp:409
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
 "Voleu desar la partida? (També s'esborraran les partides desades "
 "automàticament.)"
 
-#: src/playcampaign.cpp:455
+#: src/playcampaign.cpp:436
 msgid "Unknown scenario: '"
 msgstr "Escenari desconegut: '"
 
@@ -12413,6 +11500,665 @@ msgstr "Podeu veure els resultats a:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Ajuda'ns a millorar Wesnoth!"
+
+#~ msgid "Campaign Designer"
+#~ msgstr "Dissenyador de la campanya"
+
+#~ msgid "Horse Lord"
+#~ msgstr "Senyor dels cavalls"
+
+#~ msgid ""
+#~ "The greatest of the men of the plains, Horse Lords are heads of their "
+#~ "houses and are respected by all, friend or foe. Their sword can kill most "
+#~ "ordinary enemies, and their morning star crushes those who are left."
+#~ msgstr ""
+#~ "Els més grans dels homes de les planes, els Senyors dels cavalls, són els "
+#~ "caps de les seves cases. Amb el temps s'han fet respectar per tothom, ja "
+#~ "siguin amics o enemics. La seva espasa pot matar els adversaris més "
+#~ "comuns, i amb l'estel d'alba esclafen els que són capaços de sobreviure "
+#~ "al primer atac."
+
+#~ msgid "Mounted Fighter"
+#~ msgstr "Lluitador muntat"
+
+#~ msgid ""
+#~ "The nobles of the men of the plains are trained with the rest of the "
+#~ "horsemen to become great warriors. However, they are also trained in "
+#~ "commanding their comrades, and they are the ones that become captains of "
+#~ "the armies of the Clans."
+#~ msgstr ""
+#~ "Els nobles dels homes de les planes s'entrenen amb la resta de genets per "
+#~ "convertir-se en grans guerrers. Tanmateix, també aprenen la comandància "
+#~ "dels seus camarades, i són aquells que es convertiran en capitans dels "
+#~ "exèrcits dels clans."
+
+#~ msgid "Mounted Warrior"
+#~ msgstr "Guerrer muntat"
+
+#~ msgid ""
+#~ "Leaders of the plains, Mounted Warriors are skilled with the use of the "
+#~ "sword and the morning star. Riding horses, they are able to move around "
+#~ "the battlefield with great speed, and can provide much needed assistance "
+#~ "to different fronts."
+#~ msgstr ""
+#~ "Líders de les planes, els guerrers muntats són hàbils en l'us de l'espasa "
+#~ "i de l'estel d'alba. Cavalcant els seus cavalls, poden arribar a moure's "
+#~ "pel camp de batalla amb una gran velocitat, i poden oferir assistència "
+#~ "als fronts on sigui més necessària."
+
+#~ msgid "Skeletal Dragon"
+#~ msgstr "Drac esquelètic"
+
+#~ msgid ""
+#~ "Long ago one of the mightiest living creatures, the feared Dragon has "
+#~ "become only bones and dark sinew. Long after its death, it was raised "
+#~ "through the dark powers of necromancy, which it now serves. The Skeletal "
+#~ "Dragon may look like nothing more than a pile of bones, but few people "
+#~ "who thought that way lived long enough to change their minds."
+#~ msgstr ""
+#~ "Temps era temps era una de les bèsties més poderoses i temudes; ara s'ha "
+#~ "convertit en ossos i foscos tendons. Molt després de la seva mort, fou "
+#~ "invocat mitjançant la nigromància, a la qual ara serveix. El drac "
+#~ "esquelètic pot semblar només una pila de ossos, però pocs dels que han "
+#~ "pensat així han sobreviscut prou com per canviar d'opinió."
+
+#~ msgid "jaw"
+#~ msgstr "mandíbula"
+
+#~ msgid "Current Maintainer"
+#~ msgstr "Mantenidor actual"
+
+#~ msgid "female^Battle Princess"
+#~ msgstr "Princesa de batalla"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals, and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. Now battle-hardened and strong of will, she "
+#~ "can now aid those around her in the art of combat."
+#~ msgstr ""
+#~ "Noble de naixement, la princesa ha après a lluitar amb els millors "
+#~ "generals, i ha conegut l'estratègia amb els savis més grans. Ens trobem "
+#~ "doncs davant d'una gran combatent i millor líder, capaç d'ajudar durant "
+#~ "la lluita als seus soldats de rang inferior."
+
+#~ msgid "scepter of fire"
+#~ msgstr "ceptre de foc"
+
+#~ msgid "Cockatrice"
+#~ msgstr "Basilisc"
+
+#~ msgid ""
+#~ "Sometimes known as 'basilisks', these mystical creatures are said to be "
+#~ "able to turn the living to stone. Needless to say, this makes them "
+#~ "extremely dangerous."
+#~ msgstr ""
+#~ "Es diu que aquestes místiques criatures són capaces de convertir els "
+#~ "éssers vius en pedra, fet que les converteix en extremadament perilloses."
+#~ "Així doncs, el millor consell per lluitar-hi és evitar la seva mirada, "
+#~ "l'origen del seu poder."
+
+#~ msgid "gaze"
+#~ msgstr "mirada"
+
+#~ msgid "Commander"
+#~ msgstr "Comandant"
+
+#~ msgid ""
+#~ "The rank of Commander is held by those who lead battle groups into "
+#~ "combat. Possessing leadership skills, they give lower-level units in "
+#~ "adjacent hexes improved performance in combat. Commanders are best "
+#~ "skilled with the sword, although they also carry a bow to use when "
+#~ "necessary. If the Commander is lost, so is the battle."
+#~ msgstr ""
+#~ "El rang de comandant només el tenen aquells que lideren grups de batalla "
+#~ "en combat. Posseeixen habilitats de lideratge que milloren l'efectivitat "
+#~ "de les unitats de nivell més baix. Els comandants són més hàbils amb "
+#~ "l'espasa, tot i que també són capaços de fer servir l'arc quan és "
+#~ "necessari. Si el comandant cau, la batalla està perduda."
+
+#~ msgid "female^Dark Queen"
+#~ msgstr "Reina Obscura"
+
+#~ msgid ""
+#~ "The evil queen mother Asheviere has terrorized Wesnoth for many years. "
+#~ "Her knowledge of magic makes her a worthy foe in combat, although her "
+#~ "power is mostly derived from those she commands."
+#~ msgstr ""
+#~ "La malvada reina mare Asheviere ha aterroritzat Wesnoth durant molts "
+#~ "anys. El seu coneixement de la màgia la converteix en una digna "
+#~ "combatent, encara que el seu poder es deriva principalment dels seus "
+#~ "súbdits."
+
+#~ msgid "scepter"
+#~ msgstr "ceptre"
+
+#~ msgid "Elder Mage"
+#~ msgstr "Mag ancià"
+
+#~ msgid ""
+#~ "Once great, Elder Magi have seen their power a little diminished from "
+#~ "wearying years of battle. Nevertheless they remain feared on the "
+#~ "battlefield on account of their powerful lightning bolts."
+#~ msgstr ""
+#~ "Aquells que una vegada foren els més grans, encara conserven bona part "
+#~ "dels seus poders. Tot i que han disminuït sensiblement amb el pas dels "
+#~ "anys, continuen usant potents llampecs al camp de batalla. La vellesa no "
+#~ "és prou motiu com per deixar de témer-los."
+
+#~ msgid "lightning"
+#~ msgstr "llampec"
+
+#~ msgid "Elvish High Lord"
+#~ msgstr "Alt senyor elf"
+
+#~ msgid ""
+#~ "The leaders of the elves do not fall sallow and frail with age. Rather, "
+#~ "it is then that they grow to their true potential. Quiet and "
+#~ "contemplative in times of peace, a High Lord in the full of his wrath is "
+#~ "an awesome sight indeed."
+#~ msgstr ""
+#~ "Els líders dels elfs no envelleixen ni es debiliten amb els anys, ans al "
+#~ "contrari. És amb l'edat que arriben a adquirir el seu autèntic potencial. "
+#~ "Silenciós i contemplatiu en temps de pau, un alt senyor elf enrauxat és "
+#~ "certament un espectacle increïble."
+
+#~ msgid "female^Elvish Lady"
+#~ msgstr "Dama elfa"
+
+#~ msgid ""
+#~ "Elves choose their leaders for their power and wisdom; foresight is what "
+#~ "has protected them in times of uncertainty. Their just reign is rewarded "
+#~ "by the unflagging fealty of their people, which is the greatest gift any "
+#~ "ruler could ask for."
+#~ msgstr ""
+#~ "Els elfs trien els líders pel seu poder i saviesa; la previsió és el que "
+#~ "els ha protegit sempre en temps d'incertesa. El seu regne just és "
+#~ "recompensat per la lleialtat del poble, que alhora és el millor regal per "
+#~ "a qualsevol dirigent."
+
+#~ msgid "shove"
+#~ msgstr "empenta"
+
+#~ msgid "Elvish Lord"
+#~ msgstr "Senyor elf"
+
+#~ msgid ""
+#~ "The nobility of the elves are possessed of merit to match their standing "
+#~ "in society. Elvish Lords are the wisest and strongest of their people, "
+#~ "and are fearsome in their command of magic."
+#~ msgstr ""
+#~ "La noblesa dels elfs va acompanyada d'avantatges iguals a la posició dins "
+#~ "la societat. Els Senyors elfs són els més savis i forts de la seva gent, "
+#~ "i temibles en el comandament de la màgia."
+
+#~ msgid "Fighter"
+#~ msgstr "Lluitador"
+
+#~ msgid ""
+#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#~ "attack from enemies. However they have the potential to become great "
+#~ "warriors one day."
+#~ msgstr ""
+#~ "El lluitador és hàbil en el ús de l'espasa. Jove i inexpert, és "
+#~ "vulnerable als atacs enemics. No obstant, té el potencial per a convertir-"
+#~ "se en un gran  lluitador, algun dia..."
+
+#~ msgid "Lord"
+#~ msgstr "Senyor"
+
+#~ msgid ""
+#~ "The noble leaders of many troops, Lords are especially strong in melee "
+#~ "combat, and also possess skill with the bow. Like Commanders, Lords "
+#~ "possess leadership skills, and improve the fighting ability of all "
+#~ "adjacent lower-level units."
+#~ msgstr ""
+#~ "Un noble líder de tropes, el senyor és especialment fort en la lluita cos "
+#~ "a cos, però també poseeix l'habilitat de tir amb arc. Com els comandants, "
+#~ "el lideratge dels senyors milloren les habilitats de les unitats de "
+#~ "nivell inferior que l'envolten."
+
+#~ msgid "female^Princess"
+#~ msgstr "Princesa"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. The units of lower level around the Princess "
+#~ "will fight better due to her presence. The Princess is also nimble and "
+#~ "dextrous, having skills like that of a thief."
+#~ msgstr ""
+#~ "Noble de naixement, la Princesa ha après a lluitar amb els més grans "
+#~ "Generals, i ha après estratègia amb els més grans savis. Ens trobem, "
+#~ "doncs, davant una gran combatent i millor líder, capaç de millorar les "
+#~ "habilitats de lluita dels seus soldats de rang inferior. La princesa és, "
+#~ "tanmateix, àgil i destra, posseint habilitats pròpies fins i tot d'un "
+#~ "lladre."
+
+#~ msgid "Princess"
+#~ msgstr "Princesa"
+
+#~ msgid "Sea Orc"
+#~ msgstr "Mariner orc"
+
+#~ msgid ""
+#~ "While often viewed as inferior to their land loving counterparts, Sea "
+#~ "Orcs represent a great leap for all goblinoids as they have adapted to "
+#~ "aquatic environments. With their curved swords they are competent "
+#~ "fighters, although their lack of a ranged attack and poor defence on land "
+#~ "do represent strategic weaknesses."
+#~ msgstr ""
+#~ "Tot i que sovint són vistos com orcs de classe inferior, els mariners "
+#~ "representen un gran salt per a tots els goblionides ja que s'han adaptat "
+#~ "als entorns aquàtics. Són competents lluitant amb les seves espases "
+#~ "curves, però la manca d'atac a distància i la pobre defensa representen "
+#~ "una gran debilitat estratègica per a aquestes criatures."
+
+#~ msgid "Sleeping Gryphon"
+#~ msgstr "Griu dorment"
+
+#~ msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
+#~ msgstr "Shhhh! El griu dorm... Més us val no despertar-lo!"
+
+#~ msgid "Youth"
+#~ msgstr "Jove"
+
+#~ msgid ""
+#~ "Today almost a boy, by his devotion to the crown he is seeking to become "
+#~ "a Lord -- to join the elite of human fighters."
+#~ msgstr ""
+#~ "Avui pràcticament un nen, amb la seva devoció a la corona buscarà "
+#~ "convertir-se en un Senyor per tal d'unir-se a l'elit dels lluitadors "
+#~ "humans."
+
+#~ msgid "training sword"
+#~ msgstr "espesa d'entrenament"
+
+#~ msgid "Fire Dragon"
+#~ msgstr "Gran Drac de foc"
+
+#~ msgid ""
+#~ "A fire dragon is an ancient and horrifying being that normally lives only "
+#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
+#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
+#~ "shadowy form flying in the distance. Legends are very specific about the "
+#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
+#~ "over one hundred feet in width, they swoop in and blast their prey with "
+#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
+#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
+#~ "cruel and often take underlings whom they lead to victory."
+#~ msgstr ""
+#~ "Un drac de foc és un ésser ancestral i horrorós que habitualment viu "
+#~ "només en rumors silenciats i històries fantàstiques. És normal que passin "
+#~ "segles sencers sense que es vegi un drac a Wesnoth, i usualment només és "
+#~ "com una forma ombrejada que vola en la distància. Les llegendes són molt "
+#~ "específiques quan parlen dels estralls dels dracs de foc: sobtadament "
+#~ "arranquen el vol d'amagat, les endurides ales desplegades en una longitud "
+#~ "de més de trenta metres, es llancen en picat i socarrimen la seva presa "
+#~ "amb rajos infernals de flama.Qualsevol cosa que escapi de l'alè de foc "
+#~ "del drac encara ha de parar atenció a les seves ferotges mossegades i a "
+#~ "no ésser esclafat per la seva cua. Els dracsde foc són llestos i cruels i "
+#~ "sovint porten subordinats als quals condueixen a la victòria."
+
+#~ msgid "bite"
+#~ msgstr "mossegada"
+
+#~ msgid "tail"
+#~ msgstr "cua"
+
+#~ msgid "Fireball"
+#~ msgstr "Bola de foc"
+
+#~ msgid ""
+#~ "A Fireball. This is not to be used for anything else than a "
+#~ "'Move_Unit_Fake'!"
+#~ msgstr "Una bola de foc. Només usat per 'Move_Unit_Fake'."
+
+#~ msgid "Noble Commander"
+#~ msgstr "Comandant noble"
+
+#~ msgid ""
+#~ "The rank of a noble Commander is held by those who lead battle groups "
+#~ "into combat. Possessing leadership skills, they give lower-level units in "
+#~ "adjacent hexes improved performance in combat. Commanders are best "
+#~ "skilled with the sword, although they also carry a bow to use when "
+#~ "necessary. If the Commander is lost, so is the battle."
+#~ msgstr ""
+#~ "El rang de comandant noble només el tenen aquells que lideren grups de "
+#~ "batalla en combat. Posseeixen habilitats de lideratge que milloren "
+#~ "l'efectivitat de les unitats de nivell més baix. Els comandants són més "
+#~ "hàbils amb l'espasa, tot i que també són capaços de fer servir l'arc quan "
+#~ "és necessari. Si el comandant cau, la batalla està perduda."
+
+#~ msgid "Noble Fighter"
+#~ msgstr "Lluitador noble"
+
+#~ msgid ""
+#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#~ "ranged attacks from enemies. However they have the potential to become "
+#~ "great Commanders one day."
+#~ msgstr ""
+#~ "Joves i temeraris, els lluitadors es defensen només amb l'espasa i són "
+#~ "vulnerables als atacs a distància dels enemics. Tanmateix, tenen el "
+#~ "potencial de convertir-se en grans comandants."
+
+#~ msgid "Noble Lord"
+#~ msgstr "Senyor noble"
+
+#~ msgid "Noble Youth"
+#~ msgstr "Jove noble"
+
+#~ msgid ""
+#~ "Today he is a young man, by his devotion to the crown he is seeking to "
+#~ "become a Lord -- to join the elite of humanity."
+#~ msgstr ""
+#~ "Tot i que encara és un home jove, amb la seva devoció a la corona buscarà "
+#~ "convertir-se en un Senyor per tal d'unir-se a l'elit dels lluitadors "
+#~ "humans."
+
+#~ msgid "female^Outlaw Princess"
+#~ msgstr "Princesa proscrita"
+
+#~ msgid ""
+#~ "A noble by birth, the Outlaw Princess has learnt swordplay with the "
+#~ "greatest generals, but she is the product of a failed aristocracy who has "
+#~ "opted for the life of an Outlaw. She dreams of founding her own Queendom "
+#~ "with the plunder she finds on the road."
+#~ msgstr ""
+#~ "Una noble de naixement, la Princesa proscrita ha après el joc de l'espasa "
+#~ "amb els grans generals. Però és el resultat d'una aristocràcia fallida "
+#~ "que ha optat per la vida de proscrita. Somia en formar el seu propi regne "
+#~ "amb el pillatge que va trobant pel camí."
+
+#~ msgid "female^Outlaw Queen"
+#~ msgstr "Reina proscrita"
+
+#~ msgid ""
+#~ "A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. However, she is the product of a failed "
+#~ "aristocracy who has opted for the life of an Outlaw. She dreams of "
+#~ "founding her own Queendom with the plunder she finds on the road, and she "
+#~ "is ever so close to that goal."
+#~ msgstr ""
+#~ "Una noble de naixement, la Reina proscrita ha après el joc de l'espasa "
+#~ "amb els grans generals i les tàctiques de la batalla amb els millors "
+#~ "estrategues, convertint-se així en una excel·lent lluitadora i líder. "
+#~ "Alhora, és el resultat d'una aristocràcia fallida que ha optat per la "
+#~ "vida de proscrita. Somia en formar el seu propi regne amb el pillatge que "
+#~ "va trobant pel camí, i sempre està ben a prop d'aconseguir-ho."
+
+#~ msgid "female^Vampire Lady"
+#~ msgstr "Rata-penada vampírica"
+
+#~ msgid ""
+#~ "Cold and beautiful, she maintains her eternal youthful appearance "
+#~ "drinking the blood of the living."
+#~ msgstr ""
+#~ "Freda i bella, manté la seva aparença eternament jove gràcies a la sang "
+#~ "de les seves víctimes."
+
+#~ msgid "blood kiss"
+#~ msgstr "petó de sang"
+
+#~ msgid "Warrior King"
+#~ msgstr "Rei guerrer"
+
+#~ msgid ""
+#~ "As the leaders of the human Kingdoms, Kings are responsible for ruling "
+#~ "and protecting their subjects. Kings can coordinate the attacks of level "
+#~ "1 and 2 units, thereby increasing their fighting efficiency."
+#~ msgstr ""
+#~ "Com a líders dels regnes humans, els reis són responsables de dirigir i "
+#~ "protegir els seus súbdits. Els reis poden coordinar els atacs de les "
+#~ "unitats de nivell 1 i 2, incrementant així la seva efectivitat en combat."
+
+#~ msgid "Wose Sapling"
+#~ msgstr "Wose jove"
+
+#~ msgid ""
+#~ "Rarely seen, even by elves, a Wose is an order of creature about which "
+#~ "little is known. The elves are the source of most of this knowledge; they "
+#~ "know that these beings are not descended from trees, despite the "
+#~ "similarity in form, and they know that a wose is more closely tied to the "
+#~ "faerie world than the elves themselves, though in a different way. The "
+#~ "motives and workings of their kind are unknown, though most posit the "
+#~ "obvious idea that woses are wardens of the natural world.\n"
+#~ "\n"
+#~ "Woses are utterly unwarlike, but possess a great strength. They are, "
+#~ "however, neither used to, nor quick at moving around.\n"
+#~ "\n"
+#~ "Special Notes: Woses regenerate by using natural resources around them, "
+#~ "without needing to huddle in villages to obtain sustenance and aid."
+#~ msgstr ""
+#~ "Rarament vist, fins i tot per elfs, el wose és un tipus de criatura de la "
+#~ "que se sap ben poc. Els elfs són la font de la majoria del que se sap "
+#~ "d'ells. Per exemple, aquests sers no provenen dels arbres malgrat la "
+#~ "similitud de la seva forma, i estan més lligats al món de les fades que "
+#~ "els propis elfs, encara que d'una manera diferent. Els motius i afers de "
+#~ "la seva raça són desconeguts, encara que la majoria postulen l'obvia idea "
+#~ "de que els woses són guardes del món natural.\n"
+#~ "\n"
+#~ "Els woses són completament pacífics, però posseeixen una gran força. De "
+#~ "totes maneres, no són ni ràpids ni estan habituats a moure's pel món.\n"
+#~ "\n"
+#~ "Notes especials\n"
+#~ "Els woses es regeneren per mitja dels recursos naturals que troben al seu "
+#~ "voltant, sense haver d'entrar en viles per obtenir sustent o ajuda."
+
+#~ msgid "Demilich"
+#~ msgstr "Semilich"
+
+#~ msgid ""
+#~ "After too much time dabbling with forbidden magics and dark arts, these "
+#~ "magi have begun to pay a heavy price. Demiliches have started losing "
+#~ "their bodies, becoming undead themselves. With time, they may become "
+#~ "fully undead, and feared by all alike."
+#~ msgstr ""
+#~ "Després de molt de temps indagant en el camí de les màgies prohibides i "
+#~ "les arts obscures, aquests mags comencen a pagar les conseqüències del "
+#~ "que han fet. Perden el seu cos convertint-se d'aquesta manera en no "
+#~ "morts, i essent cada vegada més temuts per tothom."
+
+#~ msgid ""
+#~ "The title of Arch Mage is conferred only after a lifetime of study and "
+#~ "achievement to match. Arch Magi are often employed in positions of "
+#~ "education, or as advisors to those wise enough to seek the fruits of "
+#~ "their wisdom. Many tend to wealthy patrons, a profitable enterprise for "
+#~ "both as, outside of the occasional task or word of advice, it gives the "
+#~ "mage leave to pursue their research undisturbed. Certain others shun "
+#~ "civilization, spending their days as hermits, often to study something "
+#~ "which most would tend to frown upon.\n"
+#~ "\n"
+#~ "Though not trained for any sort of combat, if need arises an Arch Mage "
+#~ "can unleash the full power of their art, something which is not to be "
+#~ "taken lightly.\n"
+#~ "\n"
+#~ "Special Notes: the arch mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "El títol d'arximag només és conferit després de tota una vida d'estudi i "
+#~ "dedicació a la màgia. Els arximags sovint ocupen el seu temps en "
+#~ "l'educació, o com a consellers d'aquells prou intel·ligents com per "
+#~ "buscar en la seva saviesa. Molts tenen patrons rics, un negoci profitòs "
+#~ "ja que més enllà dels consells ocasionals, els deixa tenen temps per "
+#~ "dedicar-se a la recerca. N'hi ha d'altres que prefereixen allunyar-se de "
+#~ "la civilització, passant els seus dies com ermitans.\n"
+#~ "\n"
+#~ "Tot i que no estan entrenats pel combat, si sorgeix la necessitat són "
+#~ "capaços de desplegar tot el poder del seu art, cosa que no s'ha de "
+#~ "prendre a la lleugera.\n"
+#~ "\n"
+#~ "Notes especials\n"
+#~ "Les boles de foc dels arximags són màgiques, per tant, tenen moltes "
+#~ "possibilitats de colpejar l'enemic."
+
+#~ msgid ""
+#~ "Any person who is even considered for the title of Great Mage is quite "
+#~ "nearly a legend in their own time, and town criers have forcibly learnt "
+#~ "discretion in applying the title. Merit for the title is carefully "
+#~ "considered by a council of the leading magi of the age, and the "
+#~ "conferment of the title is given only by a majority vote. Regardless, "
+#~ "anyone who is seriously nominated for the honor of being called a Great "
+#~ "Mage is, without question, a master of their art, and has surpassed "
+#~ "almost any of their peers in skill.\n"
+#~ "\n"
+#~ "Though they are not warriors, by any means, the application of their art "
+#~ "to combat is something that often causes other soldiers to stand aside in "
+#~ "awe.\n"
+#~ "\n"
+#~ "Special Notes: the great mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "Qualsevol persona que sigui tan sols considerada per merèixer el títol de "
+#~ "Gran mag ja és pràcticament tota una llegenda del seu temps. Els mèrits "
+#~ "per atorgar definitivament el títol són considerats en un consell format "
+#~ "pels mags més destacats de l'època, i decidit per majoria. Qualsevol que "
+#~ "sigui seriosament nominat és sens cap mena de dubte un autèntic mestre en "
+#~ "l'art de la màgia, sobrepassant a gairebé tots els seus companys.\n"
+#~ "\n"
+#~ "Encara que no són guerrers, ni molt menys, cada vegada que dediquen el "
+#~ "seu poder al combat causen l'esglai de la resta de soldats.\n"
+#~ "\n"
+#~ "Notes especials\n"
+#~ "Les boles de foc dels grans mags són màgiques, i sempre tenen una alt "
+#~ "percentatge d'encertar l'oponent."
+
+#~ msgid ""
+#~ "Upon the successful termination of their apprenticeship, a mage is "
+#~ "stripped of the blue robes of an apprentice, and given the red robes of a "
+#~ "master. The significance of this change is often lost on the peasantry, "
+#~ "who mistakenly title Master Magi as 'Red Magi'. Likewise, the symbolism "
+#~ "of the change in colors is often mistaken to signify the mage's ability "
+#~ "to seemingly conjure fire from nothing but thin air, a trick which, "
+#~ "although undeniably useful, is viewed as a crass application of the "
+#~ "knowledge which they have painstakingly accrued.\n"
+#~ "\n"
+#~ "Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+#~ "number of tricks up their sleeves, including the gouts of fire which may "
+#~ "have cemented their colloquial name.\n"
+#~ "\n"
+#~ "Special Notes: the red mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "Després d'assolir satisfactòriament el seu aprenentatge, el mag abandona "
+#~ "el vestit blau d'aprenent i rep el roig de mestre. El significat d'aquest "
+#~ "canvi sovint es perd entre la pagesia que erròniament anomena als mestres "
+#~ "mags, mags rojos. De tota manera, el simbolisme del canvi de color de la "
+#~ "vestimenta sovint s'ha associat equivocadament amb l'habilitat del mag "
+#~ "per conjurar foc de l'aire, un truc que, encara que indubtablement útil, "
+#~ "es vist com una ruda aplicació del coneixement que han assolit amb molt "
+#~ "d'esforç.\n"
+#~ "\n"
+#~ "Encara que són físicament molt febles, i no han estat entrenats per a ser "
+#~ "guerrers, els mags rojos posseeixen un gran nombre de trucs sota la "
+#~ "màniga, incloses les boles de foc que poden haver propiciat "
+#~ "col·loquialment el seu nom.\n"
+#~ "\n"
+#~ "Notes especials\n"
+#~ " Les boles de foc del mag roig són màgiques i sempre tenen una alta "
+#~ "probabilitat d'impactar en l'oponent."
+
+#~ msgid ""
+#~ "The many paths that a mage can take in study lead to strikingly different "
+#~ "ends. Silver magi have devoted themselves to a study of the forces that "
+#~ "bind reality together, and have managed, somewhat, to unravel the "
+#~ "mysteries of a world far more vast than most would ever imagine. Often "
+#~ "viewed as sages, or wandering mystics, silver magi act under an agenda "
+#~ "which is obscure even to their own colleagues. Though helpful to the "
+#~ "magisteriums which often employ them in the field, they remain somewhat "
+#~ "aloof.\n"
+#~ "\n"
+#~ "They have, in fact, their own order amongst the ranks of magi, an order "
+#~ "which withholds certain secrets from their peers. One of these is an "
+#~ "apparent ability to cross great distances, faster than one could possibly "
+#~ "travel on foot. Members of the silver order ardently refuse to discuss "
+#~ "the workings of this with any of their fellow magi, and on those rare "
+#~ "occasions when others have pried into their work, they have abandoned the "
+#~ "endeavor, never to speak of it again.\n"
+#~ "\n"
+#~ "Silver magi are often more physically adept than other magi, and their "
+#~ "skills are of undeniable use on the battlefield, if one can manage to "
+#~ "coerce the mage into applying them.\n"
+#~ "\n"
+#~ "Special Notes: the ranged attack of a silver mage is magical, and always "
+#~ "has a high chance of hitting an opponent. Silver Magi are well-attuned to "
+#~ "their magical natures and are highly resistant to non-physical damage. "
+#~ "They can also teleport between any two villages instantly, though the "
+#~ "player must control both, and the destination village must be unoccupied."
+#~ msgstr ""
+#~ "Els diversos camins que un mag pot emprendre en el seu estudi condueixen "
+#~ "afinals notablement diferents. Els mag d'argent s'han dedicat a l'estudi "
+#~ "de les forces que uneixen la realitat, i han aconseguit, d'alguna manera, "
+#~ "desxifrar els misteris d'un món molt més vast del que hom hauria imaginat "
+#~ "mai. Sovint considerats erudits o místics errants, els mags d'argent "
+#~ "segueixen unes directrius que són obscures fins i tot per als seus "
+#~ "iguals. Encara que són útils en els magisteris, que els empren sovint en "
+#~ "la batalla, romanen quelcomallunyats. \n"
+#~ "\n"
+#~ "Tenen, de fet, la seva pròpia orde entre els rangs dels mags, una orde "
+#~ "que guarda amb recel certs secrets als seus iguals. Un d'aquests secrets "
+#~ "és l'aparent habilitat de creuar grans distàncies, més ràpidament del que "
+#~ "es podria fer a peu. Els membres de l'ordre d'argent refusen ardentment "
+#~ "discutir aquestes obres amb cap dels companys mags, i en les comptades "
+#~ "ocasions en què d'altres han escodrinyat en els seus treballs, han "
+#~ "abandonat els seus esforços, per no tornar-ne a parlar mai més.\n"
+#~ "\n"
+#~ "Sovint, els mags d'argent són físicament més destres que la resta de mags "
+#~ "i les seves habilitats són d'un innegable valor al camp de batalla, "
+#~ "sempre i quan se'ls pugui convèncer per lluitar.\n"
+#~ "\n"
+#~ "Notes especials: el seu atac a distància és màgic i sempre té una alta "
+#~ "probabilitat de colpejar l'oponent. Els mags d'argent estan en armonia "
+#~ "amb la seva naturalesamàgica i són molt resistents al mal no físic. També "
+#~ "es poden teletransportar instantàniament entre dos llogarets, encara que "
+#~ "el jugador ha de controlar-losambdós, i la destinació ha d'estar "
+#~ "desocupada."
+
+#~ msgid ""
+#~ "One of the greatest circles of what is considered 'black magic' is the "
+#~ "art of necromancy, the terrible ability to awaken the dead with false "
+#~ "life. It was a discovery that had terrible ramifications and caused "
+#~ "humanity's condemnation of black magic, for it has given fear a vast new "
+#~ "arsenal.\n"
+#~ "\n"
+#~ "This ability, in all aspects, is the first step towards cheating death of "
+#~ "its ultimate prize. It is the highest degree of power a dark mage can "
+#~ "attain without losing grip on humanity itself, but pales to the lethal "
+#~ "power wielded by Liches. Their mortal bodies are also made sturdier by "
+#~ "their magic, in contrast to the frail decayed form of a Lich.\n"
+#~ "\n"
+#~ "Special Notes: the necromancer's ranged attacks are magical and always "
+#~ "have a high chance of hitting an opponent. The staff of a necromancer is "
+#~ "marked with the plague, and any foe struck down by it will rise again in "
+#~ "unlife."
+#~ msgstr ""
+#~ "Un dels majors cercles del que hom anomena \"màgia negra\" és l'art de "
+#~ "lanigromància, l'espantosa habilitat de despertar els morts en una falsa "
+#~ "vida. Va ser un descobriment que tingué ramificacions terribles i que "
+#~ "causar la condemna de la humanitat a la màgia negra, per l'enorme arsenal "
+#~ "nou que se li donà a la por.\n"
+#~ "\n"
+#~ "Aquesta habilitat, en tots els aspectes, és el primer pas per burlar la "
+#~ "mort del seu premi definitiu. És el grau més alt de poder que un mag fosc "
+#~ "pot assolir sense perdre la seva pròpia humanitat, però empal·lideix al "
+#~ "poder letal esgrimit pels Liches. Els seus cossos mortals també són més "
+#~ "robustos degut a la seva màgia, en contrast amb la decadència fràgil d'un "
+#~ "Lich.\n"
+#~ "\n"
+#~ "Notes especials: els atacs a distància dels nigromants són màgics i "
+#~ "sempre tenen una alta probabilitat de colpejar l'oponent. El bastó d'un "
+#~ "nigromant té l'empremta de la plaga, i qualsevol que sigui abatut amb ell "
+#~ "reviurà de nou en la no-vida."
+
+#~ msgid "female^Fighter"
+#~ msgstr "Guerrera"
+
+#~ msgid "Quintain"
+#~ msgstr "Quintana"
+
+#~ msgid "flail"
+#~ msgstr "maça amb cadenes"
 
 #~ msgid "Friendly unit sighted"
 #~ msgstr "Heu vist una unitat amiga."
