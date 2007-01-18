@@ -409,7 +409,7 @@ void map_editor::change_language() {
 
 void map_editor::edit_save_as() {
 	const std::string default_dir =
-		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
+		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
 	std::string input_name = filename_.empty() ? default_dir : filename_;
 	const std::string old_input_name = input_name;
 
@@ -505,7 +505,7 @@ void map_editor::edit_new_map() {
 
 void map_editor::edit_load_map() {
 	std::string fn = filename_.empty() ?
-		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/") : filename_;
+		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps") : filename_;
 	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a Map to Load"));
 	if (res == 0) {
 		// Check if the mapname contains any illegal characters
