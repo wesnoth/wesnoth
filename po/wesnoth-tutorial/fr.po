@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-16 21:26+0100\n"
-"PO-Revision-Date: 2006-12-29 17:08+0100\n"
-"Last-Translator: POLENI <mi.poleni@wanadoo.fr>\n"
+"PO-Revision-Date: 2007-01-19 01:45+0100\n"
+"Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,6 @@ msgid ""
 "email rusty@rustcorp.com.au!"
 msgstr ":)"
 
-# Alors, la traduction doit être 'didacticiel' et non 'didactiel'
 #: data/tutorial/scenarios/1_Tutorial.cfg:39
 msgid "Wesnoth Tutorial"
 msgstr "Didacticiel Wesnoth"
@@ -209,7 +208,6 @@ msgstr ""
 "Mon enfant, vous avez 32 points de vie et une épée. Je suis certain que vous "
 "gagnerez."
 
-# 'Konradt' remplacé par 'Konrad'
 #: data/tutorial/scenarios/1_Tutorial.cfg:379
 msgid ""
 "To attack the quintain, you will first select the attacker (Konrad) and then "
@@ -250,27 +248,23 @@ msgstr "Devrais-je battre en retraite ?"
 msgid "Good idea!"
 msgstr "Bonne idée !"
 
-# Faute de conjugaison: '... s'il venez à mourrir.' est incorrect. 
-# Il faut utiliser l'imparfait: '...s'il venait à mourrir.'
-# De plus, on est à la 3ème personne du singulier et non pas la 1ère du pluriel.
 #: data/tutorial/scenarios/1_Tutorial.cfg:448
 msgid ""
 "Note: the tiny blue shield near Delfador shows that you will lose the game "
 "if he is killed.  You will also lose the game if your leader (Konrad) is "
 "killed."
 msgstr ""
-"Remarque : le mini bouclier bleu prêt de Delfador indique que vous perdriez "
+"Remarque : le mini-bouclier bleu prêt de Delfador indique que vous perdriez "
 "la partie s'il venait à mourir. Vous perdriez aussi la partie si votre chef "
 "(Konrad) venait à être tué."
 
-# Idem que précédement.
 #: data/tutorial/scenarios/1_Tutorial.cfg:451
 msgid ""
 "Note: the tiny blue shield near Delfador shows that you will lose the game "
 "if he is killed.  You will also lose the game if your leader (Li'sar) is "
 "killed."
 msgstr ""
-"Remarque : le mini bouclier bleu prêt de Delfador indique que vous perdriez "
+"Remarque : le mini-bouclier bleu prêt de Delfador indique que vous perdriez "
 "la partie s'il venait à mourir. Vous perdriez aussi la partie si votre chef "
 "(Li'sar) venait à être tué."
 
@@ -318,9 +312,9 @@ msgid ""
 "good idea, and standing in one will heal you at the start of your next turn: "
 "you should retreat to there."
 msgstr ""
-"Il y a un village de l'autre côté de la rivière. Visiter les villages est "
-"une bonne idée et terminer son tour dans l'un d'eux te guérit : tu devrais "
-"t'y rendre."
+"Il y a un village de l'autre côté de la rivière. C'est une bonne idée de "
+"visiter les villages, les unités qui y stationnent guérissent au début du "
+"tour suivant : vous devriez vous y rendre."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:502
 msgid "Click on the village to move Konrad"
@@ -340,8 +334,7 @@ msgstr ""
 "Maintenant vous 'possédez' ce village : vous pouvez y voir votre drapeau "
 "flotter et bientôt un '1' apparaîtra près de l'icône représentant une maison "
 "en haut de l'écran. Les villages génèrent de l'or : à chaque tour vous "
-"gagnez une base de 2 pièces d'or, plus une pour chaque village que vous "
-"possédez.\n"
+"gagnez une base de 2 pièces d'or, plus une pour chaque village possédé.\n"
 "*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:522
@@ -374,8 +367,8 @@ msgid ""
 "A splendid idea.  If you return to your keep, you can recruit two units.  "
 "You have plenty of gold for that."
 msgstr ""
-"Une idée brillante. Si vous retournez dans votre donjon, vous pouvez "
-"recruter deux unités. Vous avez plein d'or à cette intention."
+"Brillante idée. Vous pouvez recruter deux unités si vous retournez dans "
+"votre donjon. Vous avez beaucoup d'or pour le faire."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:572
 msgid "Move Konrad to the keep"
@@ -395,7 +388,7 @@ msgstr ""
 "Quand vous êtes dans un donjon, vous pouvez recruter dans les cases du "
 "château alentour, en pressant le bouton droit et en sélectionnant "
 "'Recruter'. Dans ce didacticiel, vous n'aurez accès qu'à un seul type "
-"d'unité : sélectionnez le.\n"
+"d'unité : sélectionnez-le.\n"
 "*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:595
@@ -414,7 +407,7 @@ msgid ""
 msgstr ""
 "Ces unités nouvellement recrutées ne peuvent rien faire durant ce tour : "
 "vous pourrez les contrôler au tour suivant.\n"
-"Remarque : après ce dialogue, vous pourrez déplacer la souris au dessus "
+"Remarque : après ce dialogue, vous pourrez déplacer la souris au-dessus "
 "d'une unité pour en voir une description à la droite de l'écran.\n"
 "*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
 
@@ -460,7 +453,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:681
 msgid "Left click on an Elvish Fighter"
-msgstr "Pressez le bouton gauche sur un guerrier elfe"
+msgstr "Cliquez avec le bouton gauche sur un guerrier elfe"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:682
 msgid "End your turn, then attack again."
@@ -470,11 +463,6 @@ msgstr "Terminez votre tour puis attaquez à nouveau."
 msgid "Left click on the Quintain to attack it."
 msgstr "Pressez le bouton gauche sur la quintaine pour l'attaquer."
 
-# Je propose plutôt cette traduction:
-#  
-# Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 attaques), qui est une arme de mêlée ; aussi la quintaine fut-elle capable de se défendre avec son arme de mêlée (3-5). L'attaque à distance aurait été plus sûre.
-#  
-# En effet, a mon avis, la quintaine a réagi (à l'attaque de Konrad); cette action là est donc la plus 'proche' dans le temps d'où l'utilisation du passé simple pour la description de l'action de la quintaine.
 #: data/tutorial/scenarios/1_Tutorial.cfg:718
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
@@ -482,11 +470,10 @@ msgid ""
 "attack was safer."
 msgstr ""
 "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
-"attaques), qui est une arme de mêlée ; ainsi la quintaine a été capable de "
-"se défendre avec son arme de mêlée (3-5). L'attaque à distance aurait été "
-"plus sécuritaire."
+"attaques), qui est une arme de corps à corps ; la quintaine a donc été "
+"capable de se défendre avec son arme de corps à corps (3-5). L'attaque à "
+"distance aurait été plus sûre."
 
-# Commentaire équivalent au précédent mais appliquer à la présente traduction
 #: data/tutorial/scenarios/1_Tutorial.cfg:725
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
@@ -495,12 +482,11 @@ msgid ""
 "End your turn, then attack again."
 msgstr ""
 "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
-"attaques), qui est une arme de mêlée ; ainsi la quintaine a été capable de "
-"se défendre avec son arme de mêlée (3-5). L'attaque à distance aurait été "
-"plus sécuritaire.\n"
+"attaques), qui est une arme de corps à corps ; la quintaine a donc été "
+"capable de se défendre avec son arme de corps à corps (3-5). L'attaque à "
+"distance aurait été plus sûre.\n"
 "Terminez votre tour puis attaquez à nouveau."
 
-# Commentaire équivalent au précédent mais appliquer à la présente traduction
 #: data/tutorial/scenarios/1_Tutorial.cfg:735
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
@@ -508,9 +494,9 @@ msgid ""
 "You should tell the other Elf to use the bow."
 msgstr ""
 "Votre elfe a utilisé une épée (5-4, soit 5 points de dégâts pour 4 "
-"attaques), qui est une arme de mêlée ; ainsi la quintaine a été capable de "
-"se défendre avec son arme de mêlée (3-5). L'attaque à distance aurait été "
-"plus sécuritaire.\n"
+"attaques), qui est une arme de corps à corps ; la quintaine a donc été "
+"capable de se défendre avec son arme de corps à corps (3-5). L'attaque à "
+"distance aurait été plus sûre.\n"
 "Vous devriez dire à l'autre elfe d'utiliser l'arc."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:737
@@ -518,7 +504,6 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "Attaquez avec l'autre elfe."
 
-# Etant donné l'imossibilité de réaction de la quintaine, le passé composé passe bien  mieux ici. On ne changera donc rien ici.
 #: data/tutorial/scenarios/1_Tutorial.cfg:767
 #: data/tutorial/scenarios/1_Tutorial.cfg:783
 msgid ""
@@ -528,10 +513,9 @@ msgid ""
 msgstr ""
 "Votre elfe a utilisé un arc, qui est une attaque à distance (3-3, soit 3 "
 "points de dégâts pour 3 attaques). La quintaine n'a pas d'attaque à "
-"distance, seulement une attaque de mêlée ; par conséquent elle n'a pas été "
-"capable de se défendre."
+"distance, mais seulement une attaque de corps à corps ; elle n'a donc pas "
+"été capable de se défendre."
 
-# Etant donné l'imossibilité de réaction de la quintaine, le passé composé passe bien  mieux ici. On ne changera donc rien ici.
 #: data/tutorial/scenarios/1_Tutorial.cfg:774
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3, or 3 damage, 3 "
@@ -541,8 +525,8 @@ msgid ""
 msgstr ""
 "Votre elfe a utilisé un arc, qui est une attaque à distance (3-3, soit 3 "
 "points de dégâts pour 3 attaques). La quintaine n'a pas d'attaque à "
-"distance, seulement une attaque de mêlée ; par conséquent elle n'a pas été "
-"capable de se défendre.\n"
+"distance, mais seulement une attaque de corps à corps ; elle n'a donc pas "
+"été capable de se défendre.\n"
 "Terminez votre tour puis attaquez à nouveau."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:800
@@ -562,10 +546,9 @@ msgid ""
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
 "Remarque :\n"
-"Vous pouvez pressez le bouton droit sur une unité pour avoir accès à une "
+"Vous pouvez presser le bouton droit sur une unité pour avoir accès à une "
 "'Description de l'unité' détaillée."
 
-# Majuscule en début de phrase.
 #: data/tutorial/scenarios/1_Tutorial.cfg:828
 msgid ""
 "Note:\n"
@@ -577,7 +560,6 @@ msgstr ""
 "villages et d'en recruter davantage si nécessaire. Protégez en particulier "
 "vos unités avec le plus de points d'expérience (XP)."
 
-# Majuscule en début de phrase.
 #: data/tutorial/scenarios/1_Tutorial.cfg:845
 msgid ""
 "Note:\n"
@@ -588,7 +570,6 @@ msgstr ""
 "Ces poupées n'attaquent que si vous êtes à une case adjacente. En faisant "
 "attention vous devriez être capable de les tuer l'une après l'autre."
 
-# Majuscule en début de phrase.
 #: data/tutorial/scenarios/1_Tutorial.cfg:856
 msgid ""
 "Note:\n"
@@ -609,7 +590,7 @@ msgid ""
 "twice as much to support as level 1 units."
 msgstr ""
 "Remarque :\n"
-"quand une unité a acquis suffisamment d'expérience (la barre d'expérience "
+"Quand une unité a acquis suffisamment d'expérience (la barre d'expérience "
 "est la plus petite barre à droite près du personnage), elle montera de "
 "niveau. Les guerriers elfes ont deux possibilités et vous devrez choisir "
 "celle que vous désirez. Notez que le coût d'entretien d'une unité de niveau "
@@ -694,7 +675,7 @@ msgid ""
 "advance a level."
 msgstr ""
 ", votre nouvelle recrue, a 2 traits : fort et intelligent. Fort signifie "
-"qu'une unité fait davantage de dégâts et intelligent signifie qu'elle "
+"qu'une unité fait davantage de dégâts, et intelligent signifie qu'elle "
 "nécessite moins d'expérience pour monter de niveau."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:86
@@ -724,7 +705,6 @@ msgid "Can one unit survive against all those enemies?"
 msgstr "Une unité peut-elle survivre seule contre tous ces ennemis ?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes.  If you move your Shaman next to the defending "
 "unit, it will heal it by 4 hitpoints per turn.  Just be careful not to "
@@ -732,8 +712,8 @@ msgid ""
 msgstr ""
 "Avec un peu d'aide, oui. Si vous déplacez votre chaman à côté de l'unité qui "
 "défend, il la guérira de 4 points de vie par tour. Faites seulement "
-"attention de ne pas exposer le chaman à des attaques : il est plutôt faible "
-"pour sa part."
+"attention de ne pas exposer le chaman aux attaques : il est lui-même plutôt "
+"faible."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:29
 msgid "Move a unit (fighter if possible) to the patch of forest"
@@ -761,7 +741,7 @@ msgstr "J'espère que je pourrai battre en retraite après cela !"
 #: data/tutorial/scenarios/2_Tutorial.cfg:194
 msgid "One lucky attack by an Orcish Grunt and I'm done for!"
 msgstr ""
-"Plus qu'une seule attaque chanceuse de la part d'un Grognard orc et je suis "
+"Plus qu'une seule attaque chanceuse de la part d'un grognard orc et je suis "
 "fait !"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:205
@@ -772,7 +752,6 @@ msgstr "Ouille ! Je ne serais pas contre aller me soigner dans un village."
 msgid "I have $gold gold: enough to recruit!"
 msgstr "J'ai $gold d'or : bien assez pour recruter !"
 
-# Pourquoi passer du 'vous' au 'tu'?
 #: data/tutorial/scenarios/2_Tutorial.cfg:232
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr ""
@@ -828,7 +807,7 @@ msgid ""
 "defeat their leader, so they never bother us again.  I will advise you."
 msgstr ""
 "Les orcs ont monté un campement de l'autre côté de la rivière. Nous sommes "
-"en pays elfe : nous autres Elfes sommes rapides et durs à atteindre en "
+"en pays elfe : nous autres elfes sommes rapides et durs à atteindre en "
 "forêt. Ce sont des fous pour être venus ici ! Vous devez éliminer leur "
 "meneur, de sorte qu'ils ne nous dérangent plus jamais. Je vous conseillerai."
 
@@ -845,7 +824,7 @@ msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river.  He should be little trouble."
 msgstr ""
-"Tout d'abord nous devrons nous occuper du Grognard orc posté au milieu de la "
+"Tout d'abord nous devrons nous occuper du grognard orc posté au milieu de la "
 "rivière. Il ne devrait pas poser beaucoup de problèmes."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:388
@@ -927,7 +906,7 @@ msgstr ""
 "Pendant votre didactiel, $recall_name1 a gagné $recall_xp1 points "
 "d'expérience. Vous devriez rappeler cette unité maintenant, de sorte qu'elle "
 "puisse gagner encore plus d'expérience et en recruter une seconde (ce qui "
-"est moins cher que rappeler de toutes façons)."
+"est moins cher que rappeler de toute façon)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:489
 msgid "RECALL $recall_name1"
@@ -938,7 +917,6 @@ msgid "Right click on the tile south of you and recall $recall_name1"
 msgstr ""
 "Pressez le bouton droit sur la case au sud de vous et rappelez $recall_name1"
 
-# Dans le complément d'objet, il faut faire l'accord du participe avec 'qui' qui représente les 'guerriers elfes' même avec le verbe avoir présent.
 #: data/tutorial/scenarios/2_Tutorial.cfg:499
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would recall "
@@ -990,9 +968,6 @@ msgstr ""
 msgid "So, should I end my turn now?"
 msgstr "Je peux terminer mon tour maintenant ?"
 
-# Là, l'accord est bien respecté dans le complément avec le verbe avoir.
-#  
-# La tournure de phrase 'Vous avez besoin' nécessite l'introduction de 'de' : on a besoin de quelque chose. Ce n'est pas le cas d'une tournure de phrase du type 'Il vous faut davantage de revenu' puisqu'on ne dit pas: il nous faut de quelque chose. Evidemment...
 #: data/tutorial/scenarios/2_Tutorial.cfg:549
 msgid ""
 "It's true, none of your recruited units can move, but you still can.  Your "
@@ -1002,15 +977,15 @@ msgstr ""
 "Il est vrai qu'aucune des unités que vous avez recrutées ne peut bouger, "
 "mais vous, vous le pouvez encore. Vos 5 unités vous coûtent 5 pièces d'or, "
 "vous appauvrissant de 3 pièces d'or à chaque tour. Vous avez besoin de "
-"davantage de revenu."
+"davantage de revenus."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:550
 msgid "Move Konrad to capture a village"
-msgstr "Déplacez Konrad afin de prendre un village"
+msgstr "Déplacez Konrad pour prendre un village"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:551
 msgid "Move Li'sar to capture a village"
-msgstr "Déplacez Li'sar afin de prendre un village"
+msgstr "Déplacez Li'sar pour prendre un village"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:570
 #: data/tutorial/scenarios/2_Tutorial.cfg:615
@@ -1059,7 +1034,7 @@ msgstr "Recrutez deux archers elfes dans les cases à l'ouest de vous"
 #: data/tutorial/scenarios/2_Tutorial.cfg:685
 msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
 msgstr ""
-"Non ! J'ai dit de recruter un GUERRIER Elfe ! Maintenant essayez encore..."
+"Non ! J'ai dit de recruter un GUERRIER elfe ! Maintenant essayez encore..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:695
 #: data/tutorial/scenarios/2_Tutorial.cfg:706
@@ -1072,7 +1047,6 @@ msgstr ""
 "Non ! J'ai dit de rappeler $recall_name1|, non pas $recall_name2| ! "
 "Maintenant essayez encore..."
 
-# Ne pas oublier le $ devant recruit.type|
 #: data/tutorial/scenarios/2_Tutorial.cfg:761
 msgid ""
 "No!  I said RECALL $recall_name1 from the last battle, not recruit a new "
@@ -1096,13 +1070,13 @@ msgstr "RAPPELEZ $recall_name2"
 #: data/tutorial/scenarios/2_Tutorial.cfg:826
 msgid "Right click on the tile south-east of you and recruit an Elvish Fighter"
 msgstr ""
-"Pressez le bouton droit sur la case au sud-est de vous puis recrutez un "
-"guerrier Elfe"
+"Pressez le bouton droit sur la case au sud-est de vous, puis recrutez un "
+"guerrier elfe"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:799
 msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
 msgstr ""
-"$recruit.type| ? J'ai dit de recruter un nouveau GUERRIER Elfe ! Maintenant "
+" $recruit.type| ? J'ai dit de recruter un nouveau GUERRIER elfe ! Maintenant "
 "essayez encore..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:813
@@ -1146,8 +1120,8 @@ msgid ""
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
 "Vous devriez laisser les villages à proximité de votre donjon pour que "
-"Konrad les capture : le meneur a besoin de rester proche de toutes façons "
-"afin de pouvoir recruter plus d'unités."
+"Konrad les capture : le meneur a besoin de rester proche de toute façon afin "
+"de pouvoir recruter plus d'unités."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:878
 msgid ""
@@ -1155,8 +1129,8 @@ msgid ""
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
 "Vous devriez laisser les villages à proximité de votre donjon pour que "
-"Li'sar les capture : le meneur a besoin de rester proche de toutes façons "
-"afin de pouvoir recruter plus d'unités."
+"Li'sar les capture : le meneur a besoin de rester proche de toute façon afin "
+"de pouvoir recruter plus d'unités."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:884
 msgid "Orcs have no ranged attack, so use your archers against it."
@@ -1170,7 +1144,7 @@ msgid ""
 "right)"
 msgstr ""
 "Attaquez l'orc avec un archer\n"
-"(déplacez la souris au dessus des unités pour en avoir une description à "
+"(déplacez la souris au-dessus des unités pour en avoir une description à "
 "droite)"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:894
@@ -1291,8 +1265,8 @@ msgid ""
 "To move your troops onto that island without wading slowly through the "
 "water, you'll have to kill him."
 msgstr ""
-"Non: une fois que vous vous êtes approché d'une unité ennemie, vous êtes "
-"dans sa 'Zone de Contrôle' (ZdC) et ne pouvez plus bouger durant ce tour.\n"
+"Non : une fois que vous vous êtes approché d'un ennemi, vous êtes dans sa "
+"'Zone de Contrôle' (ZdC) et ne pouvez plus bouger durant ce tour.\n"
 "Pour déplacer vos troupes sur cette île sans devoir patauger péniblement "
 "dans l'eau, vous devrez le tuer."
 
@@ -1333,8 +1307,8 @@ msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
 msgstr ""
-"Faites attention: si vous restez sur le pont, vous êtes exposé à des "
-"attaques de multiples provenances !"
+"Faites attention : si vous restez sur le pont, vous êtes exposé à des "
+"attaques provenant de plusieurs côtés !"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1090
 msgid ""
@@ -1342,7 +1316,7 @@ msgid ""
 "unit would have an 80% chance of being hit!  Cancel, and wait for them to "
 "attack you!"
 msgstr ""
-"Il est très dangereux de se tenir dans l'eau alors qu'il y a des ennemis à "
+"Il est très dangereux d'être dans l'eau quand il y a des ennemis à "
 "proximité ! Votre unité aurait 80% de chance d'être touchée ! Annulez et "
 "attendez qu'ils vous attaquent !"
 
@@ -1379,7 +1353,7 @@ msgid ""
 "After this dialog, hold the mouse over the image below the map on the right, "
 "to see a description of the time of day."
 msgstr ""
-"A la fin de ce dialogue, maintenez votre souris au dessus de l'image du ciel "
+"À la fin de ce dialogue, maintenez votre souris au-dessus de l'image du ciel "
 "située sous la mini-carte sur la droite pour voir une description de la "
 "période de la journée."
 
@@ -1462,8 +1436,8 @@ msgid ""
 "Using me to attack is risky!  I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
-"M'utiliser pour attaquer est risqué ! Je peux ralentir l'ennemi avec mon "
-"attaque à distance, mais j'espère que vous avez un plan de secours si je "
+"Il est risqué de m'utiliser pour attaquer ! Je peux ralentir l'ennemi avec "
+"mon attaque à distance, mais j'espère que vous avez un plan de secours si je "
 "rate !"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1243
@@ -1482,23 +1456,22 @@ msgid ""
 "We will miss $deadguy.user_description|, and he had $deadguy.experience "
 "experience points, meaning he would have advanced to level 2 soon."
 msgstr ""
-"$deadguy.user_description nous manquera. En plus il avait $deadguy."
-"experience points d'expérience, ce qui signifie qu'il allait bientôt "
-"atteindre le niveau 2."
+"Nous allons regretter $deadguy.user_description|. En plus, il avait $deadguy."
+"experience points d'expérience, il allait donc bientôt atteindre le niveau 2."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1309
 msgid ""
 "We will miss $deadguy.user_description|, but better than one of our "
 "experienced troops dying!"
 msgstr ""
-"$deadguy.user_description nous manquera, mais c'est préférable à perdre une "
-"de nos unité expérimentée !"
+"Nous allons regretter $deadguy.user_description, mais c'est préférable à "
+"perdre une de nos unités expérimentées !"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1322
 msgid ""
 "Losing a healer hurts all the troops!  Keep them out of the enemy's reach!"
 msgstr ""
-"Perdre un guérisseur met à mal toutes les troupes ! Gardez les hors "
+"Perdre un guérisseur met à mal toutes les troupes ! Gardez-les hors "
 "d'atteinte des ennemis !"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1323
@@ -1508,7 +1481,7 @@ msgid ""
 "the 'Actions' menu."
 msgstr ""
 "Vous pouvez voir les zones atteignables par un ennemi en déplaçant la souris "
-"au dessus d'eux. Vous pouvez voir tous les déplacements ennemis possibles en "
+"au-dessus d'eux. Vous pouvez voir tous les déplacements ennemis possibles en "
 "une fois à partir de l'option 'Afficher les déplacements ennemis' du menu "
 "'Actions'."
 
@@ -1526,7 +1499,7 @@ msgid ""
 "units at once, during the day."
 msgstr ""
 "Faites attention au meneur : il peut faire 36 points de dégâts de nuit ! "
-"Attaquez le avec beaucoup d'unités à la fois, en plein jour."
+"Attaquez-le avec beaucoup d'unités à la fois, en plein jour."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1355
 msgid ""
@@ -1561,7 +1534,7 @@ msgstr ""
 "Monter d'un niveau a complètement guéri mes blessures !\n"
 "Je suis aussi bon avec l'arc qu'avec l'épée, mais j'ai aussi une capacité "
 "spéciale : le commandement. Les unités de niveau 1 autour de moi font 25% de "
-"dégâts en plus, donc placez moi stratégiquement."
+"dégâts en plus, donc placez-moi stratégiquement."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1392
 msgid ""
@@ -1644,7 +1617,7 @@ msgid ""
 "extremely unusual to be attacked by one."
 msgstr ""
 "Les quintaines sont utilisées pour s'entrainer à la joute et à l'épée. Il "
-"n'est pas courant de se faire attaquer par l'une d'entre elles."
+"est rare de se faire attaquer par l'une d'entre elles."
 
 #: data/tutorial/units/Quintain.cfg:21 data/tutorial/units/Quintain.cfg:22
 msgid "flail"
