@@ -1835,6 +1835,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	bool discovered_unit = false;
 	bool should_clear_stack = false;
 	std::vector<gamemap::location>::const_iterator step;
+	std::string ambushed_string;
 	for(step = route.begin()+1; step != route.end(); ++step) {
 		const t_translation::t_letter terrain = map[step->x][step->y];
 
@@ -1894,6 +1895,11 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			if(it != units.end() && teams[ui->second.side()-1].is_enemy(it->second.side()) &&
 			   it->second.invisible(it->first,units,teams)) {
 				discovered_unit = true;
+				unit_ability_list hides = it->second.get_abilities("hides",it->first);
+				for(std::vector<std::pair<config*,gamemap::location> >::const_iterator hide_it = hides.cfgs.begin(); 
+				    hide_it != hides.cfgs.end(); ++hide_it) {
+					ambushed_string =(*hide_it->first)["alert"];
+				}
 				should_clear_stack = true;
 				moves_left = 0;
 				break;
@@ -1996,8 +2002,10 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 		//show messages on the screen here
 		if(discovered_unit) {
+			if (ambushed_string.empty())
+				ambushed_string = _("Ambushed!");
 			//we've been ambushed, so display an appropriate message
-			font::add_floating_label(_("Ambushed!"),font::SIZE_XLARGE,font::BAD_COLOUR,
+			font::add_floating_label(ambushed_string,font::SIZE_XLARGE,font::BAD_COLOUR,
 			                         disp->map_area().w/2,disp->map_area().h/3,
 									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
 		}

@@ -2,8 +2,6 @@
 #include "ai_dfool.hpp"
 
 namespace dfool {
-  bool test=1;
-
   void dfool_ai::play_turn(){
     info info_ = get_info();
     int team_num=get_info().team_num;
@@ -19,19 +17,11 @@ namespace dfool {
 
     LOG_STREAM(info, ai)<<"dfool sees:"<<std::endl;
     
-    for(unit_map::iterator ui = get_info().units.begin(); ui != get_info().units.end(); ++ui) {
-      if(test){
-	//	ui->second.assign_ai_special("test");
-      }else{
-	//	ui->second.assign_ai_special("notest");
-      }    
-    }
-
-    for(unit_map::iterator ua = get_info().units.begin(); ua != get_info().units.end(); ++ua) {
-      std::string t = ua->second.get_ai_special();
-      LOG_STREAM(info, ai)<<"ua:"<<ua->second.underlying_description()<<"\t"<<t<<std::endl;
-      LOG_STREAM(info, ai)<<"\t\t\t"<<ua->first.x<<","<<ua->first.y<<std::endl;
-    }
+    //    for(unit_map::iterator ua = get_info().units.begin(); ua != get_info().units.end(); ++ua) {
+      //      std::string t = ua->second.get_ai_special();
+      //      LOG_STREAM(info, ai)<<"ua:"<<ua->second.underlying_description()<<"\t"<<t<<std::endl;
+      //      LOG_STREAM(info, ai)<<"\t\t\t"<<ua->first.x<<","<<ua->first.y<<std::endl;
+    //    }
 
     unit_list all = all_units();
     unit_list my_units=filter_units(side_filter, all,get_info().units);
@@ -49,14 +39,14 @@ namespace dfool {
     //	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
     //      }
     //    }
-    LOG_STREAM(info, ai)<<"Visible Units"<<std::endl;
+        LOG_STREAM(info, ai)<<"Visible Units"<<std::endl;
     for(unit_list::iterator ui = v_units.begin(); ui != v_units.end(); ++ui) {
       unit_map::iterator u = unit(*ui,get_info().units);
       if(u!=get_info().units.end()){
-	LOG_STREAM(info, ai)<<"\t"<<u->second.name()<<std::endl;
+	//	LOG_STREAM(info, ai)<<"\t"<<u->second.name()<<std::endl;
 	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<std::endl;
-	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
-	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
+	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
+	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
       }
     }
 
@@ -78,7 +68,7 @@ namespace dfool {
 	if(filter.size()){
 	  for(config::child_list::const_iterator f = filter.begin(); f != filter.end(); ++f) {
 	    config ff=**f;
-            LOG_STREAM(info, ai)<<"dfool filter:"<<std::endl;
+	    //            LOG_STREAM(info, ai)<<"dfool filter:"<<std::endl;
             unit_list filtered_units=filter_units(ff,my_units,get_info().units);
 
 	    //FIXME: add sorting
@@ -88,16 +78,16 @@ namespace dfool {
 	      if(ui!=get_info().units.end()){
 		std::string ais=ui->second.get_ai_special();
 		
-		LOG_STREAM(info, ai)<<"\t match: "<<ui->second.underlying_description()<<"\t"<<ais<<":::"<<std::endl;	      
+		//		LOG_STREAM(info, ai)<<"\t match: "<<ui->second.underlying_description()<<"\t"<<ais<<":::"<<std::endl;	      
 		
-		bool used=(ais.size());
+		bool used=(ais.size() > 0);
 		if(used){
-		  LOG_STREAM(info, ai)<<"\t\talready assigned: "<<ui->second.underlying_description()<<"\t"<<ais<<std::endl;
+		  //		  LOG_STREAM(info, ai)<<"\t\talready assigned: "<<ui->second.underlying_description()<<"\t"<<ais<<std::endl;
 		}else{
 		  ui->second.assign_ai_special(order_id);
 		  order_units.push_back(*i);
 		  
-		  LOG_STREAM(info, ai)<<"\t\tmatching: "<<ui->second.underlying_description()<<" to order: "<<order_id<<"\t"<<ui->second.get_ai_special()<<std::endl;
+		  //		  LOG_STREAM(info, ai)<<"\t\tmatching: "<<ui->second.underlying_description()<<" to order: "<<order_id<<"\t"<<ui->second.get_ai_special()<<std::endl;
 		}
 	      }
             }
@@ -110,9 +100,26 @@ namespace dfool {
       //execute commands
       for(unit_list::iterator ou = order_units.begin(); ou != order_units.end(); ou++){
         const config::child_list& commands = (**o).get_children("command");
-        for(config::child_list::const_iterator com = commands.begin(); com != commands.end(); ++com) {
+	bool com_break=false;
+
+        for(config::child_list::const_iterator com = commands.begin(); com != commands.end() && !com_break; ++com) {
 	  unit_map::iterator u=unit(*ou,get_info().units);
+
+	  const config::child_list& com_filter = (**com).get_children("filter");
+	  bool found=true;
 	  if(u!=get_info().units.end()){
+	    for(config::child_list::const_iterator sf = com_filter.begin(); sf != com_filter.end(); ++sf) {
+	      config ff=**sf;
+	      LOG_STREAM(info, ai)<<"ff:"<<(**com)["type"]<<" "<<ff["type"]<<" "<<ff["x"]<<","<<ff["y"]<<std::endl;
+	      LOG_STREAM(info, ai)<<"ff?"<<u->second.id()<<" "<<u->first.x<<","<<u->first.y<<std::endl;
+	      if(! u->second.matches_filter(ff,u->first)) {
+		found=false;
+		break;
+	      }
+	    }
+	  }
+
+	  if(found){
 	    std::string type=(**com)["type"];
 	    LOG_STREAM(info, ai)<<"\tcommand: "<<type<<std::endl;
 	    if(type=="moveto"){
@@ -120,39 +127,20 @@ namespace dfool {
 	    }
 	    if(type=="set_order"){
 	      std::string set_id=(**com)["id"];
-	      const config::child_list& set_filter = (**com).get_children("filter");
-	      bool set_bool=true;
-	      for(config::child_list::const_iterator sf = set_filter.begin(); sf != set_filter.end(); ++sf) {
-		config ff=**sf;
-		LOG_STREAM(info, ai)<<"ff:"<<ff["type"]<<std::endl;
-
-		if(! u->second.matches_filter(ff,u->first)) {
-		  set_bool=false;
-		  break;
-		}
-	      }
 	      std::string a=(u->second.get_ai_special());
-	      LOG_STREAM(info, ai)<<"set_order:\t"<<u->second.underlying_description()<<"\t"<<set_id<<"\t"<<a<<std::endl;
-	      if(set_bool){
-		(u->second.assign_ai_special(set_id));
-	      }
-	      LOG_STREAM(info, ai)<<"set_order:\t"<<u->second.underlying_description()<<"\t"<<set_id<<"\t"<<a<<std::endl;
+	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<"\t"<<a<<"->"<<set_id<<std::endl;
+	      (u->second.assign_ai_special(set_id));
+	      a=(u->second.get_ai_special());
+	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<"\t"<<a<<" =?= "<<set_id<<std::endl;
+	    }
+	    if(type=="break"){
+	      com_break=true;
 	    }
           }
         }
       }
     }
-    if(test){
-      test=0;
-    }else{
-      test=1;
-    }    
 
-    for(unit_map::iterator ua = get_info().units.begin(); ua != get_info().units.end(); ++ua) {
-      std::string t = ua->second.get_ai_special();
-      LOG_STREAM(info, ai)<<"ua:"<<ua->second.underlying_description()<<"\t"<<t<<std::endl;
-      LOG_STREAM(info, ai)<<"\t\t\t"<<ua->first.x<<","<<ua->first.y<<std::endl;
-    }
     return;  
   }
 
@@ -179,20 +167,19 @@ namespace dfool {
   unit_list dfool_ai::visible_units()
   {
     unit_list visible_units;
-    if(current_team().uses_shroud() == false && current_team().uses_fog() == false) {
-      LOG_STREAM(info, ai) << "all units are visible...\n";
-      visible_units=all_units();
-    }else{
-      unit_map um=get_info().units;
-      for(unit_map::const_iterator i = um.begin(); i != um.end(); ++i) {
-	if(current_team().fogged(i->first.x,i->first.y) == false) {
+    bool no_fog=current_team().uses_shroud() == false && current_team().uses_fog() == false;
+
+    unit_map um=get_info().units;
+    for(unit_map::iterator i = um.begin(); i != um.end(); ++i) {
+      bool hidden_by_fog = current_team().fogged(i->first.x,i->first.y);
+      bool hidden = i->second.invisible(i->first, um, get_info().teams);
+      if((no_fog || !hidden_by_fog) && !hidden) {
 	  visible_units.push_back(i->second.underlying_description());
-	}
+	
       }
     }
     
     LOG_STREAM(info, ai) << "number of visible units: " << visible_units.size() << "\n";
-    //still need to deal with invisible units not in fog.
     return visible_units;
   }
 
