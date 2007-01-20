@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-12-27 19:30+0100\n"
-"PO-Revision-Date: 2007-01-19 21:02+0100\n"
+"PO-Revision-Date: 2007-01-20 11:09+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -107,7 +107,7 @@ msgid ""
 "*Left click or any key to continue..."
 msgstr ""
 "\n"
-"*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
+"*Pressez le bouton gauche ou n'importe quelle touche pour continuer..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:198
 msgid ""
@@ -173,7 +173,7 @@ msgstr ""
 "*Zut !\n"
 "Vous vous êtes déplacé au mauvais endroit ! Après ce message, vous pouvez "
 "appuyer sur 'u' pour annUler, puis réessayer.\n"
-"*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
+"*Pressez le bouton gauche ou n'importe quelle touche pour continuer..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:309
 msgid "Good morning Delfador!  Is it time to attack things?"
@@ -193,7 +193,7 @@ msgstr "Du calme ! Je vais vous invoquer un ennemi..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:364
 msgid "... this quintain!"
-msgstr "... une quintaine !"
+msgstr "... cette quintaine !"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:369
 msgid "A quintain?  You want me to pretend to fight a dummy??"
@@ -330,11 +330,11 @@ msgid ""
 "gold: every turn you gain two gold, plus one for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
-"Maintenant vous 'possédez' ce village : vous pouvez y voir votre drapeau "
-"flotter et bientôt un '1' apparaîtra près de l'icône représentant une maison "
+"Maintenant vous 'possédez' ce village : vous pouvez y voir flotter votre "
+"drapeau et bientôt un '1' apparaîtra près de l'icône représentant une maison "
 "en haut de l'écran. Les villages génèrent de l'or : à chaque tour vous "
 "gagnez une base de 2 pièces d'or, plus une pour chaque village possédé.\n"
-"*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
+"*Pressez le bouton gauche ou n'importe quelle touche pour continuer..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:522
 #: data/tutorial/scenarios/1_Tutorial.cfg:620
@@ -349,8 +349,8 @@ msgid ""
 "You're about to be healed by 8 hitpoints.   But I think you're going to need "
 "some help against that quintain."
 msgstr ""
-"Vous allez être guéri de 8 points de vie. Mais je pense que vous aurez "
-"besoin d'aide contre cette quintaine."
+"Vous allez récupérer 8 points de vie. Mais je pense que vous aurez besoin "
+"d'aide contre cette quintaine."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:561
 msgid "I'll recruit some elves!"
@@ -371,11 +371,11 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:572
 msgid "Move Konrad to the keep"
-msgstr "Déplacez Konrad au donjon"
+msgstr "Déplacez Konrad jusqu'au donjon"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:573
 msgid "Move Li'sar to the keep"
-msgstr "Déplacez Li'sar au donjon"
+msgstr "Déplacez Li'sar jusqu'au donjon"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:592
 msgid ""
@@ -388,7 +388,7 @@ msgstr ""
 "château alentour, en pressant le bouton droit et en sélectionnant "
 "'Recruter'. Dans ce didacticiel, vous n'aurez accès qu'à un seul type "
 "d'unité : sélectionnez-le.\n"
-"*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
+"*Pressez le bouton gauche ou n'importe quelle touche pour continuer..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:595
 msgid "Right click on one castle tile and select Recruit"
@@ -408,7 +408,7 @@ msgstr ""
 "vous pourrez les contrôler au tour suivant.\n"
 "Remarque : après ce dialogue, vous pourrez déplacer la souris au-dessus "
 "d'une unité pour en voir une description à la droite de l'écran.\n"
-"*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
+"*Pressez le bouton gauche ou n'importe quelle touche pour continuer..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:623
 #: data/tutorial/scenarios/1_Tutorial.cfg:653
@@ -437,7 +437,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:675
 msgid "I'll tell them to use the one which does most damage!"
-msgstr "Je leur dirai d'utiliser celui qui fait le plus de dégâts !"
+msgstr "Je leur dirai d'utiliser celle qui fait le plus de dégâts !"
 
 # Dans les dialogues précédents, on parle de 'type d'attaque', il faut donc garder cela en tête dans la suite.
 # De plus, il faut faire attention au temps. Delfador pose une question en demandant l'avis de Konrad.
@@ -448,7 +448,7 @@ msgid ""
 msgstr ""
 "Et lequel serait-ce ? L'épée (5-4, signifiant qu'un coup fait 5 points de "
 "dégâts et qu'il y a 4 chances de toucher) ou l'arc (3-3) ? J'imagine que "
-"vous trouverez tout seul..."
+"vous trouverez par vous-même..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:681
 msgid "Left click on an Elvish Fighter"
@@ -566,7 +566,7 @@ msgid ""
 "should be able to kill them one at a time."
 msgstr ""
 "Remarque :\n"
-"Ces poupées n'attaquent que si vous êtes à une case adjacente. En faisant "
+"Ces poupées n'attaquent que si vous êtes sur une case adjacente. En faisant "
 "attention vous devriez être capable de les tuer l'une après l'autre."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:856
@@ -577,7 +577,7 @@ msgid ""
 msgstr ""
 "Remarque :\n"
 "Chacun de vos villages permet d'entretenir une de vos unités. Si vous avez "
-"plus d'unités que de villages, chaque unité en trop vous coûtera une pièce "
+"plus d'unités que de villages, chaque unité en trop vous coûte une pièce "
 "d'or par tour."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:865
@@ -603,10 +603,10 @@ msgid ""
 msgstr ""
 "Remarque :\n"
 "Lorsque vous sélectionnez une unité, vous pouvez voir des pourcentages pour "
-"divers types de terrain : plus le pourcentage est haut, meilleure est la "
+"divers types de terrain : plus le pourcentage est élevé, meilleure est la "
 "défense. Par exemple la défense est bonne dans les châteaux et les villages, "
 "mauvaise dans les rivières. Cependant les attaques des mannequins sont "
-"magiques, ainsi ils ont 70% de chance de vous toucher où que vous soyiez."
+"magiques, ainsi ils ont 70 % de chance de vous toucher où que vous soyiez."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:896
 msgid "The quintain is dead, sirs, and I have gained more experience!"
@@ -628,7 +628,7 @@ msgid ""
 "we have real work to do..."
 msgstr ""
 "Maintenant Konrad, je vais vous laisser avec plus de pantins pour vous "
-"entrainer ! Après cela, nous avons du travail qui nous attend."
+"entraîner ! Après cela, nous avons du travail qui nous attend."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:905
 msgid ""
@@ -636,7 +636,7 @@ msgid ""
 "we have real work to do..."
 msgstr ""
 "Maintenant Li'sar, je vais vous laisser avec plus de pantins pour vous "
-"entrainer ! Après cela, nous avons du travail qui nous attend."
+"entraîner ! Après cela, nous avons du travail qui nous attend."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:952
 msgid "Do you want to keep practicing?"
@@ -829,8 +829,8 @@ msgid ""
 "By then, their leader will have recruited units to send against us, and the "
 "real fight will begin."
 msgstr ""
-"D'ici là, leur meneur aura recruté des unités à nous envoyer et le vrai "
-"combat commencera."
+"D'ici là, leur meneur aura recruté des unités à envoyer contre nous et le "
+"vrai combat commencera."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:389
 #: data/tutorial/scenarios/2_Tutorial.cfg:390
@@ -858,7 +858,7 @@ msgstr ""
 "puissions passer, et pour eux aussi. Ils pourraient lentement se frayer un "
 "chemin dans cette mince bande d'eau peu profonde d'un bleu plus clair, à "
 "l'est, mais nous nous tiendrions sur le rivage et les forcerions à nous "
-"combattre depuis l'eau où ils sont plus exposés alors que nous sommes "
+"combattre depuis l'eau où ils sont plus exposés alors que nous serions "
 "protégés par la forêt."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:410
@@ -868,7 +868,7 @@ msgid ""
 "fight so well."
 msgstr ""
 "Par conséquent, l'attaque la plus probable est par le pont. Cette île au "
-"milieu est la clé: elle a un village, pour guérir les unités blessées, et "
+"milieu est la clé : elle a un village pour guérir les unités blessées, et "
 "une forêt dans laquelle nous savons si bien nous battre."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:415
@@ -889,10 +889,10 @@ msgid ""
 "and $recall_name2 gained $recall_xp2.  You should recall them now so they "
 "can gain more experience, rather than recruiting new ones."
 msgstr ""
-"Pendant votre didactiel, $recall_name1 a gagné $recall_xp1 points "
+"Pendant ce didacticiel, $recall_name1 a gagné $recall_xp1 points "
 "d'expérience et $recall_name2 en a gagné $recall_xp2. Vous devriez les "
-"rappeler maintenant, de sorte qu'ils puissent gagner encore plus "
-"d'expérience, plutôt qu'en recruter de nouveaux."
+"rappeler maintenant, pour qu'ils puissent gagner encore plus d'expérience, "
+"plutôt qu'en recruter de nouveaux."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:486
 msgid ""
@@ -900,10 +900,10 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
-"Pendant votre didactiel, $recall_name1 a gagné $recall_xp1 points "
+"Pendant ce didacticiel, $recall_name1 a gagné $recall_xp1 points "
 "d'expérience. Vous devriez rappeler cette unité maintenant, de sorte qu'elle "
 "puisse gagner encore plus d'expérience et en recruter une seconde (ce qui "
-"est moins cher que rappeler de toute façon)."
+"est moins cher que de rappeler de toute façon)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:489
 msgid "RECALL $recall_name1"
@@ -920,10 +920,9 @@ msgid ""
 "them: as they don't, it's cheaper to recruit new ones.  So recruit an Elvish "
 "Fighter."
 msgstr ""
-"Si certains des guerriers elfes qui ont survécu à votre dernière bataille "
-"avaient de l'expérience, nous les rappellerions : comme ce n'est pas le cas, "
-"il est plus économique d'en recruter de nouveaux. Recrutez donc un guerrier "
-"elfe."
+"Si certains guerriers elfes expérimentés avaient survécu à votre dernière "
+"bataille, nous les rappellerions : comme ce n'est pas le cas, il est plus "
+"économique d'en recruter de nouveaux. Recrutez donc un guerrier elfe."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:502
 msgid ""
@@ -1092,7 +1091,7 @@ msgid ""
 "losing 1 gold per turn now."
 msgstr ""
 "Le village entretient une unité et vous rapporte une pièce d'or par tour : "
-"vous perdez seulement une pièce d'or par tour maintenant."
+"vous perdez seulement une pièce d'or par tour désormais."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:854
 msgid "You've learned well, Li'sar! "
@@ -1149,7 +1148,7 @@ msgid ""
 "Excellent.  Elves are well protected in the forest: there's only a 30% "
 "chance of hitting an Elven Archer when it's in forest."
 msgstr ""
-"Excellent. Les elfes sont bien protégés en forêt : il y a seulement 30% de "
+"Excellent. Les elfes sont bien protégés en forêt : il y a seulement 30 % de "
 "chances de toucher un archer elfe qui se trouve dans la forêt."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:903
@@ -1159,7 +1158,7 @@ msgid ""
 "Cancel!"
 msgstr ""
 "C'est très dangereux de rester dans l'eau quand il y a des ennemis à "
-"proximité ! Votre unité aurait 80% de chance de se faire toucher si l'orc "
+"proximité ! Votre unité aurait 80 % de chance de se faire toucher si l'orc "
 "contre-attaquait ! Annulez !"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:909
@@ -1196,9 +1195,8 @@ msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
-"Envoyez l'autre guerrier et le chaman au sud, de sorte qu'ils puissent "
-"attaquer au tour suivant ; puis revenez au donjon pour recruter plus "
-"d'unités !"
+"Envoyez l'autre guerrier et le chaman au sud pour qu'ils puissent attaquer "
+"au tour suivant ; puis revenez au donjon pour recruter plus d'unités !"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:936
 msgid "Move Fighter and Shaman south, then return Konrad to the Keep"
@@ -1314,7 +1312,7 @@ msgid ""
 "attack you!"
 msgstr ""
 "Il est très dangereux d'être dans l'eau quand il y a des ennemis à "
-"proximité ! Votre unité aurait 80% de chance d'être touchée ! Annulez et "
+"proximité ! Votre unité aurait 80 % de chance d'être touchée ! Annulez et "
 "attendez qu'ils vous attaquent !"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1100
@@ -1341,7 +1339,7 @@ msgid ""
 "Elves are neutral: we are unaffected by night and day."
 msgstr ""
 "Soyez prudent ! Il fait maintenant nuit. Les orcs sont chaotiques : leurs "
-"attaques sont 25% plus puissantes de nuit, 25% plus faibles de jour. Vous "
+"attaques sont 25 % plus puissantes de nuit, 25 % plus faibles de jour. Vous "
 "êtes loyal : plus puissant de jour. Les elfes sont neutres : nous ne sommes "
 "pas affectés par les cycles diurnes et nocturnes."
 
@@ -1444,7 +1442,7 @@ msgid ""
 "gain 16 experience points, because he is level 2.  Choose your unit "
 "carefully!"
 msgstr ""
-"Vous êtes sur le point de tuer leur meneur ! L'unité qui le finira gagnera "
+"Vous êtes sur le point de tuer leur meneur ! L'unité qui l'achèvera gagnera "
 "16 points d'expérience car il est niveau 2. Choisissez votre unité avec "
 "attention !"
 
@@ -1478,8 +1476,8 @@ msgid ""
 "the 'Actions' menu."
 msgstr ""
 "Vous pouvez voir les zones atteignables par un ennemi en déplaçant la souris "
-"au-dessus d'eux. Vous pouvez voir tous les déplacements ennemis possibles en "
-"une fois à partir de l'option 'Afficher les déplacements ennemis' du menu "
+"sur lui. Vous pouvez voir tous les déplacements ennemis possibles en une "
+"fois à partir de l'option 'Afficher les déplacements ennemis' du menu "
 "'Actions'."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1328
@@ -1505,7 +1503,7 @@ msgid ""
 "each of the four attacks.  Use me to dislodge hard-to-hit units."
 msgstr ""
 "Monter d'un niveau a complètement guéri mes blessures !\n"
-"J'ai toujours 60% de chances de toucher avec mon arc et chacune de mes 4 "
+"J'ai toujours 60 % de chances de toucher avec mon arc et chacune de mes 4 "
 "attaques fait 9 points de dégâts si elle touche. Utilisez-moi pour déloger "
 "des unités difficiles à toucher."
 
@@ -1518,8 +1516,8 @@ msgid ""
 msgstr ""
 "Avancer d'un niveau a complètement guéri mes blessures !\n"
 "Je suis aussi bon à l'arc qu'à l'épée, mais j'ai une capacité spéciale : "
-"l'embuscade. Je peux me cacher en forêt et les ennemis peuvent me voir "
-"uniquement lorsqu'elles sont juste à côté de moi."
+"l'embuscade. Je peux me cacher en forêt et les ennemis peuvent me voir que "
+"lorsqu'elles sont juste à côté de moi."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1380
 msgid ""
@@ -1529,9 +1527,9 @@ msgid ""
 "carefully."
 msgstr ""
 "Monter d'un niveau a complètement guéri mes blessures !\n"
-"Je suis aussi bon avec l'arc qu'avec l'épée, mais j'ai aussi une capacité "
-"spéciale : le commandement. Les unités de niveau 1 autour de moi font 25% de "
-"dégâts en plus, donc placez-moi stratégiquement."
+"Je suis aussi bon à l'arc qu'à l'épée, mais j'ai aussi une capacité "
+"spéciale : le commandement. Les unités de niveau 1 autour de moi font 25 % "
+"de dégâts en plus, donc placez-moi stratégiquement."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1393
 msgid ""
@@ -1599,7 +1597,7 @@ msgstr ""
 #~ "Quintains are used to practice swordplay and jousting on.  It would be "
 #~ "extremely unusual to be attacked by one."
 #~ msgstr ""
-#~ "Les quintaines sont utilisées pour s'entrainer à la joute et à l'épée. Il "
+#~ "Les quintaines sont utilisées pour s'exercer à la joute et à l'épée. Il "
 #~ "est rare de se faire attaquer par l'une d'entre elles."
 
 #~ msgid "flail"
