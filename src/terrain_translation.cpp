@@ -295,7 +295,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		if(starting_position != -1) {
 			if(starting_positions.find(starting_position) != starting_positions.end()) {
 				// redefine existion position
-				WRN_G << "Starting position " << starting_position <<" is redefined.\n";
+				WRN_G << "Starting position " << starting_position << " is redefined.\n";
 				starting_positions[starting_position].x = x;
 				starting_positions[starting_position].y = y;
 			} else {
@@ -543,7 +543,6 @@ t_map read_builder_map(const std::string& str)
 	
 	// did we get an empty map?
 	if((offset + 1) >= str.length()) {
-		WRN_G << "Empty map found\n";
 		return result;
 	}
 		
