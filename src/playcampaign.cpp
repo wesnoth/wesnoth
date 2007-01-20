@@ -143,6 +143,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		LOG_G << "loading snapshot...\n";
 		starting_pos = state.starting_pos;
 		scenario = &state.snapshot;
+		state.variables = *state.snapshot.child("variables");
 	}
 
 	controller_map controllers;
