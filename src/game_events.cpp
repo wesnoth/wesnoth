@@ -117,7 +117,11 @@ bool conditional_passed(const unit_map* units,
 
 		const std::string& equals = values["equals"];
 		if(values.get_attribute("equals") != "" && value != equals) {
-			return false;
+			//special case for uninitialized variables
+			if(!value.empty() || equals != "0")
+			{
+				return false;
+			}
 		}
 
 		const std::string& numerical_equals = values["numerical_equals"];
