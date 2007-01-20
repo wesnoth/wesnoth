@@ -1268,10 +1268,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
 
 		gamemap mask(*game_map);
-		std::string map_data = cfg["mask"];
  
 		try {
-			mask.read(map_data);
+			mask.read(cfg["mask"]);
 		} catch(gamemap::incorrect_format_exception&) {
 			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 			return rval;
@@ -1847,7 +1846,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		//convertert the terrain to a internal vector
 		//FIXME: once the terrain backwards compability layer is gone we can load the string
 		// in a t_match structure and use the optimized match routine in the loop
-		t_translation::t_list terrain = 
+		const t_translation::t_list& terrain = 
 			t_translation::read_list(wml_terrain, 0, t_translation::T_FORMAT_AUTO);
 
 		x = utils::interpolate_variables_into_string(x, *state_of_game);
