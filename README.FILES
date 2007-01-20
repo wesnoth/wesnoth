@@ -6,72 +6,36 @@ V	data/factions/*
 	data/tutorial/*
 
 ===[ Httt ]===
-T	data/campaigns/Heir_To_The_Throne/maps/*
-T	data/campaigns/Heir_To_The_Throne/scenarios/*
-T	data/campaigns/Heir_To_The_Throne/scenarios/utils/httt_utils.cfg
-
-04_Bay_of_Pearls.cfg should be tested on Easy and Hard especially Easy has confusing comment, check against 1.2
-Grypon uses a fixed start position for the mother Grypon, all other positions are manually done
-Elven_Council has the map internal :/
-
-Scenarios with terrain 
-04_Bay_of_Pearls.cfg
-06_Siege_of_Elensefar.cfg
-07_Crossroads.cfg
-09_Valley_of_Death.cfg
-12_Northern_Winter.cfg
-15_Plunging_Into_the_Darkness.cfg
-16_Lost_General.cfg
-18_Scepter_of_Fire.cfg
-21_Home_North_Elves.cfg
-
-scenarios tested (no 13 available)
-1, 2, 3, 4, 5a, 6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 20a
+V	data/campaigns/Heir_To_The_Throne/maps/*
+V	data/campaigns/Heir_To_The_Throne/scenarios/*
+V	data/campaigns/Heir_To_The_Throne/scenarios/utils/httt_utils.cfg
 
 ===[ Tb ]===
-T	data/campaigns/Two_Brother/maps/*
-T	data/campaigns/Two_Brother/scenarios/*
-
-Scenarios with terrain
-2, 3
-
-scenarios tested
-none
+V	data/campaigns/Two_Brother/maps/*
+V	data/campaigns/Two_Brother/scenarios/*
 
 ===[ Tsg ]===
-T	data/campaigns/The_South_Guard/maps/*
-T	data/campaigns/The_South_Guard/scenarios/*
-
-Scenarions with terrain
-1, 2, 3, 4, 6a(map), 6b, 7a, 8a(map), 8b, 9a, 9b
+V	data/campaigns/The_South_Guard/maps/*
+V	data/campaigns/The_South_Guard/scenarios/*
 
 ===[ Trow ]===
-T	data/campaigns/The_Rise_Of_Wesnoth/maps/*
-T	data/campaigns/The_Rise_Of_Wesnoth/scenarios/*
-
-Scenarions with terrain
-21 (map), 22, 23 (map)
+V	data/campaigns/The_Rise_Of_Wesnoth/maps/*
+V	data/campaigns/The_Rise_Of_Wesnoth/scenarios/*
 
 ===[ Ei ]===
-T	data/campaigns/Eastern_Invasion/maps/*
-T	data/campaigns/Eastern_Invasion/scenarios/*
-
-Scenarions with terrain
-1, 2, 3(map), 7a, 9(map), 12(extra attention, Kud nice keep?, change of ground is dubious), 13, 14, 17, 18a
+V	data/campaigns/Eastern_Invasion/maps/*
+V	data/campaigns/Eastern_Invasion/scenarios/*
 
 ===[ UtbS ]===
-
-
 
 Converted under the burning suns campaign to new format (untested)
 
 ===[ Tutorial ]==
-T	data/tutorial/maps/*
-T	data/tutorial/scenarios/*
+V	data/tutorial/maps/*
+V	data/tutorial/scenarios/*
 
 
 ===============================================================================
-
 
 V	data/scenarios/multiplayer/Random*
 
@@ -81,8 +45,13 @@ V	data/abilities.cfg
 T	data/utils/utils.cfg
 	data/scenario-test.cfg
 
-
-
 =====[ THAWED ]=====
 \	src/*
 	data/scenarios/multiplayer/*
+
+====[ random problems ]=====
+Home North Elves scenatio objectives are not 100% correct
+recalling a unit in the start event might duplicate the unit, needs more testing
+(not sure about the cause needs more debugging but happens with Elven council and
+home noth elves)
+
