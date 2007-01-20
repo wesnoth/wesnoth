@@ -1063,7 +1063,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		};
 
 		for (size_t i = 0; i < castle_size - 1; i++) {
-		  terrain[x+castles[i][0]][y+castles[i][1]] = t_translation::CASTLE;
+		  terrain[x+castles[i][0]][y+castles[i][1]] = t_translation::HUMAN_CASTLE;
 		}
 
 		//remove all labels under the castle tiles

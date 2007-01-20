@@ -81,7 +81,7 @@ namespace t_translation {
 	extern const t_letter VOID_TERRAIN;
 	extern const t_letter FOGGED;
 
-	extern const t_letter CASTLE;
+	extern const t_letter HUMAN_CASTLE;
 	extern const t_letter HUMAN_KEEP;
 	extern const t_letter SHALLOW_WATER;
 	extern const t_letter DEEP_WATER;

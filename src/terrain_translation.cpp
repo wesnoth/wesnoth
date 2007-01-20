@@ -131,7 +131,7 @@ namespace t_translation {
 const t_letter VOID_TERRAIN = string_to_number_("_s");
 const t_letter FOGGED = string_to_number_("_f");
 
-const t_letter CASTLE = string_to_number_("Ch");
+const t_letter HUMAN_CASTLE = string_to_number_("Ch");
 const t_letter HUMAN_KEEP = string_to_number_("Kh");
 const t_letter SHALLOW_WATER = string_to_number_("Ww");
 const t_letter DEEP_WATER = string_to_number_("Wo");
