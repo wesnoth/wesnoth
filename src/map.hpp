@@ -165,18 +165,19 @@ public:
 
 	//function to get the corresponding terrain_type information object
 	//for a given type of terrain
-	const terrain_type& get_terrain_info(t_translation::t_letter terrain) const;
+	const terrain_type& get_terrain_info(const t_translation::t_letter terrain) const;
 
 	//shortcut to get_terrain_info(get_terrain(loc))
 	const terrain_type& get_terrain_info(const location &loc) const;
 	//
-	bool terrain_matches_filter(const location& loc, const config& cfg, const gamestatus& game_status, const unit_map& units,bool flat_tod=false) const;
+	bool terrain_matches_filter(const location& loc, const config& cfg, 
+			const gamestatus& game_status, const unit_map& units, const bool flat_tod=false) const;
 
 	//gets the list of terrains
 	const t_translation::t_list& get_terrain_list() const;
 
 	//clobbers over the terrain at location 'loc', with the given terrain
-	void set_terrain(const location& loc, t_translation::t_letter ter);
+	void set_terrain(const location& loc, const t_translation::t_letter terrain);
 
 	//function which returns a list of the frequencies of different terrain
 	//types on the map, with terrain nearer the center getting weighted higher

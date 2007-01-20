@@ -560,7 +560,7 @@ void gamemap::set_starting_position(int side, const gamemap::location& loc)
 	}
 }
 
-const terrain_type& gamemap::get_terrain_info(t_translation::t_letter terrain) const
+const terrain_type& gamemap::get_terrain_info(const t_translation::t_letter terrain) const
 {
 	static const terrain_type default_terrain;
 	const std::map<t_translation::t_letter,terrain_type>::const_iterator i =
@@ -577,7 +577,7 @@ const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) cons
 	return get_terrain_info(get_terrain(loc));
 }
 bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, 
-		const gamestatus& game_status, const unit_map& units,bool flat_tod) const
+		const gamestatus& game_status, const unit_map& units, const bool flat_tod) const
 {
 	/* *
 	 * The abilities use a comma separated list of terrains, this code has been
@@ -691,13 +691,13 @@ const t_translation::t_list& gamemap::get_terrain_list() const
 	return terrainList_;
 }
 
-void gamemap::set_terrain(const gamemap::location& loc, t_translation::t_letter ter)
+void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_letter terrain)
 {
 	if(!on_board(loc))
 		return;
 
 	const bool old_village = is_village(loc);
-	const bool new_village = is_village(ter);
+	const bool new_village = is_village(terrain);
 
 	if(old_village && !new_village) {
 		villages_.erase(std::remove(villages_.begin(),villages_.end(),loc),villages_.end());
@@ -712,7 +712,7 @@ void gamemap::set_terrain(const gamemap::location& loc, t_translation::t_letter 
 			startingPositions_[i] = location();
 	}
 
-	tiles_[loc.x][loc.y] = ter;
+	tiles_[loc.x][loc.y] = terrain;
 
 	location adj[6];
 	get_adjacent_tiles(loc,adj);
