@@ -80,7 +80,7 @@ namespace dfool {
 		
 		//		LOG_STREAM(info, ai)<<"\t match: "<<ui->second.underlying_description()<<"\t"<<ais<<":::"<<std::endl;	      
 		
-		bool used=(ais.size());
+		bool used=(ais.size() > 0);
 		if(used){
 		  //		  LOG_STREAM(info, ai)<<"\t\talready assigned: "<<ui->second.underlying_description()<<"\t"<<ais<<std::endl;
 		}else{

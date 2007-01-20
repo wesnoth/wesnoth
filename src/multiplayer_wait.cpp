@@ -166,6 +166,7 @@ wait::wait(display& disp, const config& cfg, const game_data& data, mp::chat& c,
 	game_data_(data),
 	stop_updates_(false)
 {
+	game_menu_.set_numeric_keypress_selection(false);
 	gamelist_updated();
 }
 

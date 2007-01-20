@@ -50,6 +50,7 @@ namespace mp {
 	header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
 	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
 {
+	set_numeric_keypress_selection(false);
 }
 
 void gamebrowser::set_inner_location(const SDL_Rect& rect)
@@ -558,7 +559,6 @@ void lobby::gamelist_updated(bool silent)
 {
 	ui::gamelist_updated(silent);
 
-	std::vector<std::string> game_strings;
 	const config* list = gamelist().child("gamelist");
 	if(list == NULL) {
 		// No gamelist yet. Do not update anything.
