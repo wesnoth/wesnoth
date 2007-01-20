@@ -18,9 +18,6 @@ class config;
 class map_generator;
 
 #include <string>
-#include <vector>
-
-#include "terrain_translation.hpp"
 
 std::string random_generate_map(const std::string& parms, const config* cfg);
 config random_generate_scenario(const std::string& parms, const config* cfg);

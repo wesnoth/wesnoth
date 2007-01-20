@@ -19,8 +19,6 @@
 #include <string>
 #include <vector>
 
-#include "terrain_translation.hpp"
-
 //an exception object used when an IO error occurs
 struct io_exception : public std::exception {
 	io_exception() {}
