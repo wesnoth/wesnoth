@@ -114,7 +114,7 @@ namespace t_translation {
 	 * 								given it's padded to 4 chars else padded to 7 chars
 	 */
 	std::string number_to_string_(t_letter terrain, const int start_position = -1);
-	std::string number_to_string_(t_letter terrain, const int start_position, const int min_size);
+	std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size);
 
 	/**
 	 * converts a terrain string to a letter for the builder the translation 
@@ -906,7 +906,7 @@ std::string number_to_string_(t_letter terrain, const int start_position)
 	return result;
 }
 
-std::string number_to_string_(t_letter terrain, const int start_position, const int min_size)
+std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size)
 {
 	std::string result = number_to_string_(terrain, start_position);
 	if(result.size() < min_size) {
