@@ -134,8 +134,7 @@ int placing_score(const config& side, const gamemap& map, const gamemap::locatio
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE	
 	const std::string& terrain_liked = side["terrain_liked"]; 
 	t_translation::t_list terrain;
-	//FIXME MdW untested
-	if(std::find(terrain_liked.begin(), terrain_liked.end(), ',') == terrain_liked.end()) {
+	if(std::find(terrain_liked.begin(), terrain_liked.end(), ',') != terrain_liked.end()) {
 		terrain = t_translation::read_list(terrain_liked, -1, t_translation::T_FORMAT_STRING);
 	} else {
 		terrain = t_translation::read_list(terrain_liked, 0, t_translation::T_FORMAT_LETTER);
