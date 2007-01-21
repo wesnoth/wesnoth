@@ -47,7 +47,6 @@ config map_generator::create_scenario(const std::vector<std::string>& args)
 namespace {
 
 typedef std::vector<std::vector<int> > height_map;
-//typedef std::vector<std::vector<char> > terrain_map;
 typedef t_translation::t_map terrain_map;
 
 typedef gamemap::location location;
@@ -377,7 +376,8 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc, 
 		return itor->second*windiness;
 	}
 
-	static std::string terrain = t_translation::write_letter(c);
+	static std::string terrain; 
+	terrain = t_translation::write_letter(c);
 	const config* const child = cfg_.find_child("road_cost","terrain",terrain);
 	double res = getNoPathValue();
 	if(child != NULL) {
@@ -479,7 +479,7 @@ int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, in
 }
 
 gamemap::location place_village(const t_translation::t_map& map,
-	size_t x, size_t y, size_t radius, const config& cfg)
+	const size_t x, const size_t y, const size_t radius, const config& cfg)
 {
 	const gamemap::location loc(x,y);
 	std::set<gamemap::location> locs;
@@ -562,7 +562,7 @@ class terrain_height_mapper
 public:
 	explicit terrain_height_mapper(const config& cfg);
 
-	bool convert_terrain(int height) const;
+	bool convert_terrain(const int height) const;
 	t_translation::t_letter convert_to() const;
 
 private:
@@ -580,7 +580,7 @@ terrain_height_mapper::terrain_height_mapper(const config& cfg) :
 	}
 }
 
-bool terrain_height_mapper::convert_terrain(int height) const
+bool terrain_height_mapper::convert_terrain(const int height) const
 {
 	return height >= terrain_height;
 }
@@ -595,7 +595,7 @@ class terrain_converter
 public:
 	explicit terrain_converter(const config& cfg);
 
-	bool convert_terrain(t_translation::t_letter terrain, int height, int temperature) const;
+	bool convert_terrain(const t_translation::t_letter terrain, const int height, const int temperature) const;
 	t_translation::t_letter convert_to() const;
 
 private:
@@ -620,8 +620,8 @@ terrain_converter::terrain_converter(const config& cfg) : min_temp(-1),
 	}
 }
 
-bool terrain_converter::convert_terrain(t_translation::t_letter terrain, 
-		int height, int temperature) const
+bool terrain_converter::convert_terrain(const t_translation::t_letter terrain, 
+		const int height, const int temperature) const
 {
 	return std::find(from.begin(),from.end(),terrain) != from.end() && height >= min_height && height <= max_height &&
 	       temperature >= min_temp && temperature <= max_temp && to != 0;
