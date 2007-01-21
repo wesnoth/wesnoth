@@ -113,95 +113,6 @@ void editormap::swap_starting_position(const size_t x1, const size_t y1,
 	}
 }
 
-namespace {
-
-	// Grow the map, represented by lines, one step. If grow_height is
-	// true, the height is increased and every other column is shifted
-	// one step downwards. Otherwise the map is increased in width one
-	// step. The terrain used as padding is deducted from the surrounded
-	// terrain.
-	void grow_and_pad(const gamemap &map, std::vector<std::string> &lines,
-					  bool grow_height) {
-		int i, j;
-		t_translation::t_list terrains;
-		t_translation::t_letter chosen_terrain;
-		if (grow_height) {
-			lines.push_back(std::string(lines[0].size(), t_translation::FOREST));
-			// Shift terrain on odd numbered columns one step downwards.
-			for (i = 0; (unsigned)i < lines[0].size(); i += 2) {
-				for (j = lines.size() - 2; j >= 0; j--) {
-					lines[j + 1][i] = lines[j][i];
-				}
-			}
-			// Set the terrain for the hexes that was used as padding.
-			for (i = 0; (unsigned)i < lines[0].size(); i++) {
-				terrains.clear();
-				if (is_even(i)) {
-					terrains.push_back(lines[1][i]);
-					terrains.push_back(i == 0 ? terrains[0] : lines[0][i - 1]);
-					terrains.push_back((unsigned)i == lines[0].size() - 1
-									   ? terrains[0] : lines[0][i + 1]);
-				}
-				else {
-					terrains.push_back(lines[lines.size() - 2][i]);
-					terrains.push_back(i == 0
-									   ? terrains[0] :
-									   lines[lines.size() - 1][i - 1]);
-					terrains.push_back((unsigned)i == lines[0].size() - 1 ?
-						terrains[0] : lines[lines.size() - 1][i + 1]);
-				}
-				if (terrains[1] == terrains[2]) {
-					chosen_terrain = terrains[2];
-				}
-				else {
-					chosen_terrain = terrains[0];
-				}
-				if (map.is_village(chosen_terrain)) {
-					for (j = 0; j < 3; j++) {
-						if (!map.is_village(terrains[j])) {
-							chosen_terrain = terrains[j];
-							break;
-						}
-					}
-				}
-				if (map.is_village(chosen_terrain)) {
-					chosen_terrain = t_translation::FOREST;
-				}
-				if (is_even(i)) {
-					lines[0][i] = chosen_terrain;
-				}
-				else {
-					lines[lines.size() - 1][i] = chosen_terrain;
-				}
-			}
-		}
-		else {
-			for (i = 0; (unsigned)i < lines.size(); i++) {
-				int change;
-				terrains.clear();
-				terrains.push_back(lines[i][lines[i].length() - 1]);
-				if (is_even(lines[i].size()+1)) {
-					change = 1;
-				}
-				else {
-					change = -1;
-				}
-				if (i + change > 0 && (unsigned)(i + change) < lines.size()) {
-					terrains.push_back(lines[i + change][lines[i].length() - 1]);
-				}
-				else {
-					terrains.push_back(terrains[0]);
-				}
-				chosen_terrain = map.is_village(terrains[0])
-					? terrains[1] : terrains[0];
-				chosen_terrain = map.is_village(chosen_terrain)
-					? t_translation::FOREST : chosen_terrain;
-				lines[i].resize(lines[i].length() + 1, chosen_terrain);
-			}
-		}
-	}
-}
-
 namespace map_editor {
 
 std::vector<gamemap::location> get_tiles(const gamemap &map,
@@ -232,7 +143,6 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 	}
 	return res;
 }
-
 
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
 				const t_translation::t_letter fill_with, terrain_log *log) 
