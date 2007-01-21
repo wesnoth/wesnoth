@@ -1199,8 +1199,11 @@ bool game_controller::play_multiplayer()
 	preferences::set_login(login);
 
 	try {
-		defines_map_.clear();
-		defines_map_[state_.campaign_define] = preproc_define();
+		/* do */ {
+			input_blocker eventlock;
+			defines_map_.clear();
+			defines_map_[state_.campaign_define] = preproc_define();
+		}
 		refresh_game_cfg();
 
 		if(res >= 2) {
