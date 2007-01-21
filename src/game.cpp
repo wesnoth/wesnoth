@@ -1203,9 +1203,9 @@ bool game_controller::play_multiplayer()
 			input_blocker eventlock;
 			defines_map_.clear();
 			defines_map_[state_.campaign_define] = preproc_define();
-		}
-		refresh_game_cfg();
+			refresh_game_cfg();
 
+		}
 		if(res >= 2) {
 			std::vector<std::string> chat;
 			config game_data;
