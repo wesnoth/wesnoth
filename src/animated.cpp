@@ -149,7 +149,7 @@ bool animated<T,T_void_value>::animation_would_finish() const
 		return true;
 	if(!started_)
 		return true;
-	if(!cycles_ && (current_ticks >  (int)(get_end_time()/acceleration_+start_tick_)))
+	if(!cycles_ && (((double)(current_ticks - start_tick_)*acceleration_)+starting_frame_time_) > get_end_time())
 		return true;
 
 	return false;
