@@ -300,8 +300,8 @@ public:
 	bool turbo() const;
 	void set_turbo(bool turbo);
 
-	int turbo_speed() const;
-	void set_turbo_speed(const int speed);
+	double turbo_speed() const;
+	void set_turbo_speed(const double speed);
 
 	//Delay routines: use these not SDL_Delay (for --nogui).
 	void non_turbo_delay() const;
@@ -468,7 +468,7 @@ private:
 
 
 
-	int turbo_speed_;
+	double turbo_speed_;
 	bool turbo_, grid_;
 	double sidebarScaling_;
 

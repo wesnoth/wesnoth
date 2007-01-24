@@ -169,12 +169,12 @@ void _set_turbo(bool ison)
 	prefs["turbo"] = (ison ? "true" : "false");
 }
 
-int turbo_speed()
+double turbo_speed()
 {
-	return lexical_cast_default<int>(prefs["turbo_speed"], 1);
+	return lexical_cast_default<double>(prefs["turbo_speed"], 1);
 }
 
-void save_turbo_speed(int speed)
+void save_turbo_speed(const double speed)
 {
 	prefs["turbo_speed"] = lexical_cast_default<std::string>(speed, "1");
 }

@@ -58,8 +58,8 @@ namespace preferences {
 	bool turbo();
 	void _set_turbo(bool ison);
 
-	int turbo_speed();
-	void save_turbo_speed(const int speed);
+	double turbo_speed();
+	void save_turbo_speed(const double speed);
 
 	bool show_lobby_minimaps();
 	void save_show_lobby_minimaps(const bool show);

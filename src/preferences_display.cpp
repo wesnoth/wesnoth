@@ -125,7 +125,7 @@ void set_turbo(bool ison)
 	}
 }
 
-void set_turbo_speed(const int speed)
+void set_turbo_speed(const double speed)
 {
 	save_turbo_speed(speed);
 
@@ -218,7 +218,8 @@ private:
 //	
 	// change
 	gui::slider music_slider_, sound_slider_, bell_slider_, scroll_slider_, gamma_slider_,
-				chat_lines_slider_, turbo_slider_, buffer_size_slider_;
+				chat_lines_slider_, buffer_size_slider_;
+	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, show_grid_button_,
 				lobby_minimaps_button_, show_lobby_joins_button1_, show_lobby_joins_button2_, show_lobby_joins_button3_, sort_list_by_group_button_,
                 iconize_list_button_, friends_list_button_, friends_back_button_, friends_add_friend_button_, friends_add_ignore_button_, friends_remove_button_, show_floating_labels_button_, turn_dialog_button_,
@@ -387,10 +388,20 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	turbo_button_.set_check(turbo());
 	turbo_button_.set_help_string(_("Make units move and fight faster"));
-
-	turbo_slider_.set_min(2);
-	turbo_slider_.set_max(20);
-	turbo_slider_.set_value(turbo_speed());
+	
+	//0.25 0.5 1 2 4 8 16 
+	std::vector< double > turbo_items;
+	turbo_items.push_back(0.25);
+	turbo_items.push_back(0.5);
+	turbo_items.push_back(1);
+	turbo_items.push_back(2);
+	turbo_items.push_back(4);
+	turbo_items.push_back(8);
+	turbo_items.push_back(16);
+	turbo_slider_.set_items(turbo_items);
+	if(!turbo_slider_.select_item(turbo_speed())) {
+		turbo_slider_.select_item(1);
+	}
 	turbo_slider_.set_help_string(_("Units move and fight speed"));
 
 	show_ai_moves_button_.set_check(!show_ai_moves());
@@ -694,10 +705,10 @@ void preferences_dialog::process_event()
 			show_hotkeys_dialog(disp_);
 
 		set_scroll_speed(scroll_slider_.value());
-		set_turbo_speed(turbo_slider_.value());
+		set_turbo_speed(turbo_slider_.item_selected());
 
 		std::stringstream buf;
-		buf << _("Speed: ") << turbo_slider_.value();
+		buf << _("Speed: ") << turbo_slider_.item_selected();
 		turbo_slider_label_.set_text(buf.str());
 
 		return;

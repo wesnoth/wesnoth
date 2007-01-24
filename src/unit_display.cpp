@@ -74,7 +74,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	const t_translation::t_letter dst_terrain = map.get_terrain(b);
 
-	const int acceleration = disp.turbo_speed();
+	const double acceleration = disp.turbo_speed();
 
 	gamemap::location src_adjacent[6];
 	get_adjacent_tiles(a, src_adjacent);
@@ -232,7 +232,7 @@ void unit_attack_ranged(display& disp, unit_map& units,
 	wassert(def != units.end());
 	unit& defender = def->second;
 
-	const int acceleration = disp.turbo_speed();
+	const double acceleration = disp.turbo_speed();
 
 
 	// more damage shown for longer, but 1s at most for this factor

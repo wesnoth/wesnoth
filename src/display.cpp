@@ -2216,7 +2216,7 @@ void display::set_turbo(bool turbo)
 	turbo_ = turbo;
 }
 
-int display::turbo_speed() const
+double display::turbo_speed() const
 {
 	if (turbo_ || keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT])
 		return turbo_speed_;
@@ -2224,7 +2224,7 @@ int display::turbo_speed() const
 		return 1;
 }
 
-void display::set_turbo_speed(const int speed)
+void display::set_turbo_speed(const double speed)
 {
 #if 0
 	// speed < 2 don't make sense

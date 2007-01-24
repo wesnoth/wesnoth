@@ -1237,9 +1237,13 @@ bool game_controller::play_multiplayer()
 	preferences::set_login(login);
 
 	try {
-		defines_map_.clear();
-		defines_map_[state_.campaign_define] = preproc_define();
-		refresh_game_cfg();
+
+		/* do */ {
+			input_blocker eventlock; //prevent the "keylogger" effect
+			defines_map_.clear();
+			defines_map_[state_.campaign_define] = preproc_define();
+			refresh_game_cfg();
+		}
 
 		if(res >= 2) {
 			std::vector<std::string> chat;

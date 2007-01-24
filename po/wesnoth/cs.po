@@ -4,21 +4,21 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
-# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006.
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-16 21:30+0100\n"
-"PO-Revision-Date: 2006-08-30 12:25+0200\n"
+"PO-Revision-Date: 2007-01-22 11:31+0100\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
-"Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
+"Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 
@@ -91,14 +91,13 @@ msgid "regenerates"
 msgstr "regeneruje"
 
 #: data/abilities.cfg:59
-#, fuzzy
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
 "Regenerace:\n"
-"Jednotka se uzdraví o 8 hp za tah. V případě otravy, místo uzdravení "
+"Jednotka se uzdraví o 8 životů za tah. V případě otravy, místo uzdravení "
 "odstraní jed."
 
 #: data/abilities.cfg:74
@@ -410,15 +409,14 @@ msgid "poison"
 msgstr "otrava"
 
 #: data/abilities.cfg:532
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. "
 msgstr ""
 "Otrava:\n"
-"Tento útok způsobuje protivníkovi otravu. Otrávené jednotky ztrácejí 8 "
-"životů za kolo, dokud se nevyléčí, nebo počet životů neklesne na jeden."
+"Tento útok otráví živé cíle. Otrávené jednotky ztrácejí 8 životů za kolo, "
+"dokud se nevyléčí, nebo počet životů neklesne na jeden."
 
 #: data/about.cfg:6
 msgid "Artwork and Graphics Designers"
@@ -430,7 +428,7 @@ msgstr "Hudba"
 
 #: data/about.cfg:73
 msgid "Sound effects"
-msgstr ""
+msgstr "Zvukové efekty"
 
 #: data/about.cfg:82
 msgid "Scenario Designers"
@@ -677,13 +675,12 @@ msgid "race^Undead"
 msgstr "Nemrtví"
 
 #: data/english.cfg:21
-#, fuzzy
 msgid "race^Dwarves"
 msgstr "Trpaslíci"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "Skřeti"
 
 #: data/english.cfg:23
 #, fuzzy
@@ -696,11 +693,11 @@ msgstr ""
 
 #: data/english.cfg:25
 msgid "race^Mermen"
-msgstr ""
+msgstr "Mořský lid"
 
 #: data/english.cfg:26
 msgid "race^Monsters"
-msgstr ""
+msgstr "Monstra"
 
 #: data/english.cfg:27
 #, fuzzy
@@ -709,7 +706,7 @@ msgstr "Naga žena"
 
 #: data/english.cfg:28
 msgid "race^Ogres"
-msgstr ""
+msgstr "Obři"
 
 #: data/english.cfg:29
 #, fuzzy
@@ -780,22 +777,20 @@ msgid "ranged"
 msgstr "na dálku"
 
 #: data/english.cfg:51
-#, fuzzy
 msgid "Wesnoth unit list"
-msgstr "Výcvik"
+msgstr "Seznam jednotek Wesnothu"
 
 #: data/english.cfg:52
 msgid "Based on version"
-msgstr ""
+msgstr "Založeno na verzi"
 
 #: data/english.cfg:53
 msgid "Race"
 msgstr "Národ"
 
 #: data/english.cfg:54
-#, fuzzy
 msgid "Advance from"
-msgstr "Povyšuje na: "
+msgstr "Povyšuje z "
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"

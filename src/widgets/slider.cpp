@@ -250,4 +250,64 @@ void slider::handle_event(const SDL_Event& event)
 	if (start_state != state_)
 		set_dirty(true);
 }
+
+template<typename T>
+list_slider<T>::list_slider(CVideo &video) :
+	slider(video)
+{
+	set_min(0);
+	set_increment(1);
+	slider::set_value(0);
+}
+
+template<typename T>
+list_slider<T>::list_slider(CVideo &video, const std::vector<T> &items) :
+	slider(video),
+	items_(items)
+{
+	set_min(0);
+	set_increment(1);
+	if(items.size() > 0)
+	{
+		set_max(items.size() - 1);
+	}
+	slider::set_value(0);
+}
+
+template<typename T>
+const T& list_slider<T>::item_selected() const
+{
+	return items_[value()];
+}
+
+template<typename T>
+bool list_slider<T>::select_item(const T& item)
+{
+	for(int i=0; i < items_.size(); i++)
+	{
+		if(item == items_[i])
+		{
+			slider::set_value(i);
+			return true;
+		}
+	}
+	return false;
+}
+
+template<typename T>
+void list_slider<T>::set_items(const std::vector<T> &items)
+{
+	items_ = items;
+	if(items.size() > 0)
+	{
+		set_max(items.size() - 1);
+	}
+	slider::set_value(0);
+}
+
+// Force compilation of the following template instantiations
+template class list_slider< double >;
+template class list_slider< int >;
+template class list_slider< std::string >;
+
 } //end namespace gui
