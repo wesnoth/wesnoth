@@ -3,7 +3,7 @@
 V	data/terrain/graphics/*
 V	data/factions/*
 \	data/campaigns/*
-	data/tutorial/*
+V	data/tutorial/*
 
 ===[ Httt ]===
 V	data/campaigns/Heir_To_The_Throne/maps/*
@@ -54,4 +54,19 @@ Home North Elves scenatio objectives are not 100% correct
 recalling a unit in the start event might duplicate the unit, needs more testing
 (not sure about the cause needs more debugging but happens with Elven council and
 home noth elves)
+
+===[ extra new files ]===
+tools/map_convert.pl
+images/terrain/swamp-keep-tile.png
+images/terrain/sunken-keep-tile.png
+images/terrain/encampment-keep-tile.png
+images/terrain/ruined-keep-tile.png
+images/terrain/dwarven-keep-tile.png
+
+===[ TODO before merge ]===
+revert src/wesconfig.h and all other files with branch info
+remove README.*
+add a TODO.mordante so I can track my status
+remove old stuff in data/terrain.cfg and data/terrain-graphics.cfg
+make a nice changelog and player_changelog
 
