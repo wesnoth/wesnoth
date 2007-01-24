@@ -84,6 +84,8 @@ $conversion{6}='6 _K';
 $conversion{7}='7 _K';
 $conversion{8}='8 _K';
 $conversion{9}='9 _K';
+$conversion{' '}='_s';
+
 
 #parse terrain_file
 open(TERRAIN, "<$terrain_file");
