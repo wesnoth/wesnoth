@@ -2,7 +2,7 @@
 #script to convert from single char maps to multiple character maps
 
 sub printUsage{
-    print "map_convert.pl terrain.cfg map_file.cfg new_map_file.cfg\n";
+    print "map_convert.pl terrain.cfg map_file.cfg [new_map_file.cfg]\n";
 }
 
 sub get_adjacent{
