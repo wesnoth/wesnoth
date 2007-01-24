@@ -1378,6 +1378,7 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 	return NO_DESCRIPTION;
 }
 
+// This struct is unused since the only user has also been unused -- Mordante
 struct terrain_topic_generator: topic_generator
 {
 	terrain_topic_generator(terrain_type const &t): type(t) {}
@@ -1405,7 +1406,7 @@ struct terrain_topic_generator: topic_generator
 			sm["terrains"] = alias_ss.str();
 			ss << utils::interpolate_variables_into_string(
 				_("This terrain acts as $terrains for movement purposes."), &sm);
-			if (aliased_terrains.size() > 1 && aliased_terrains[0] != '-')
+			if (aliased_terrains.size() > 1 && aliased_terrains[0] != t_translation::MINUS)
 				ss << " " << _("The terrain with the best modifier is chosen automatically.");
 			else
 				ss << " " << _("The terrain with the worst modifier is chosen automatically.");
@@ -1432,7 +1433,7 @@ struct terrain_topic_generator: topic_generator
 			sm["terrains"] = alias_ss.str();
 			ss << utils::interpolate_variables_into_string(
 				_("This terrain acts as $terrains for defense purposes."), &sm);
-			if (aliased_terrains.size() > 1 && aliased_terrains[0] != '-')
+			if (aliased_terrains.size() > 1 && aliased_terrains[0] != t_translation::MINUS)
 				ss << " " << _("The terrain with the best modifier is chosen automatically.");
 			else
 				ss << " " << _("The terrain with the worst modifier is chosen automatically.");
@@ -1448,6 +1449,9 @@ struct terrain_topic_generator: topic_generator
 	}
 };
 
+//Note this function is not used, if works with the new terrain system
+//but is broken when used form the title page, this problem is inherited
+//from trunk -- Mordante
 std::vector<topic> generate_terrains_topics(const bool sort_generated)
 {
 	std::vector<topic> res;
@@ -1456,7 +1460,6 @@ std::vector<topic> generate_terrains_topics(const bool sort_generated)
 		show_info_about = map->get_terrain_list();
 	}
 	else {
-		//FIXME MdW untested
 		for (std::set<t_translation::t_letter>::const_iterator terrain_it =
 				 preferences::encountered_terrains().begin();
 			 terrain_it != preferences::encountered_terrains().end();
