@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-12 22:40+0100\n"
-"PO-Revision-Date: 2006-11-26 12:42+0100\n"
-"Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
+"PO-Revision-Date: 2007-01-25 11:32+0100\n"
+"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -127,29 +127,32 @@ msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Retourner (cela peut modifier les dimensions de la carte) :"
 
 #: src/filechooser.cpp:51
+#, fuzzy
 msgid "File: "
-msgstr ""
+msgstr "Fichier : "
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
 msgstr "Supprimer le fichier"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
+#, fuzzy
 msgid "New Folder"
-msgstr ""
+msgstr "Nouveau répertoire"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
 
 #: src/filechooser.cpp:167
+#, fuzzy
 msgid "Name: "
-msgstr ""
+msgstr "Nom : "
 
 #: src/filechooser.cpp:172
 #, fuzzy
 msgid "Creation of the directory failed."
-msgstr "La suppression du fichier a échoué."
+msgstr "La création du fichier a échoué."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -214,7 +217,7 @@ msgstr "Sauvegarder le jeu"
 #: src/hotkeys.cpp:65
 #, fuzzy
 msgid "Save The Map"
-msgstr "Sauvegarder"
+msgstr "Sauvegarder la carte"
 
 #: src/hotkeys.cpp:66
 msgid "Load Game"
@@ -280,10 +283,11 @@ msgstr "Statistiques"
 msgid "Quit Game"
 msgstr "Quitter la partie"
 
+# Benoît : heu comment traduire correctement "Team label" ?
 #: src/hotkeys.cpp:83
 #, fuzzy
 msgid "Set Team Label"
-msgstr "Placer une étiquette"
+msgstr "Placer une étiquette d'équipe"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
@@ -471,13 +475,10 @@ msgstr ""
 msgid "Villages:"
 msgstr "Villages :"
 
-# césure pour interface
 #: src/mapgen_dialog.cpp:115
 #, fuzzy
 msgid "Castle Size:"
-msgstr ""
-"Taille maximum\n"
-"d'une colline :"
+msgstr "Taille des châteaux :"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -529,52 +530,57 @@ msgstr "Sauter les déplacements de l'IA"
 #: src/preferences_display.cpp:259
 #, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Affiche les arrivées au vestibule."
+msgstr "Aperçu des cartes dans le vestibule."
 
 #: src/preferences_display.cpp:260
 #, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Affiche les arrivées au vestibule."
+msgstr "Masque les arrivées au vestibule"
 
 #: src/preferences_display.cpp:261
 #, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Affiche les arrivées au vestibule."
+msgstr "Affiche seulement les arrivées des amis au vestibule"
 
 #: src/preferences_display.cpp:262
 #, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Affiche les arrivées au vestibule."
+msgstr "Affiche toutes les arrivées au vestibule"
 
 #: src/preferences_display.cpp:263
 #, fuzzy
 msgid "Sort Lobby List"
-msgstr "Affiche les arrivées au vestibule."
+msgstr "Trie la liste des connectés au vestibule"
 
 #: src/preferences_display.cpp:264
+#, fuzzy
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Iconifie la liste des connectés au vestibule"
 
 #: src/preferences_display.cpp:265
+#, fuzzy
 msgid "Your Friends List"
-msgstr ""
+msgstr "Liste de vos amis"
 
 #: src/preferences_display.cpp:266
+#, fuzzy
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Options multi-joueur"
 
 #: src/preferences_display.cpp:267
+#, fuzzy
 msgid "Add As Friend"
-msgstr ""
+msgstr "Ajouter comme ami"
 
 #: src/preferences_display.cpp:268
+#, fuzzy
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Ajouter comme ignoré"
 
 #: src/preferences_display.cpp:269
 #, fuzzy
 msgid "Remove"
-msgstr "Refaire"
+msgstr "Refaire le mouvement"
 
 #: src/preferences_display.cpp:270
 msgid "Show Floating Labels"
@@ -627,20 +633,22 @@ msgstr "Heure sur les discussions"
 #: src/preferences_display.cpp:285
 #, fuzzy
 msgid "Advanced Mode"
-msgstr "Avancé"
+msgstr "Mode avancé"
 
 #: src/preferences_display.cpp:286
+#, fuzzy
 msgid "Normal Mode"
-msgstr ""
+msgstr "Mode normal"
 
 #: src/preferences_display.cpp:289
 #, fuzzy
 msgid "Custom"
-msgstr "Couper"
+msgstr "Personalisé"
 
 #: src/preferences_display.cpp:290
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Appliquer"
 
 #: src/preferences_display.cpp:292
 msgid "Music Volume:"
@@ -653,15 +661,16 @@ msgstr "Volume des effets sonores :"
 #: src/preferences_display.cpp:293
 #, fuzzy
 msgid "Bell Volume:"
-msgstr "Volume des effets sonores :"
+msgstr "Volume de la cloche :"
 
 #: src/preferences_display.cpp:294
 msgid "Gamma:"
 msgstr "Gamma :"
 
 #: src/preferences_display.cpp:296
+#, fuzzy
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Fréquence d'échantillonage (Hz) :"
 
 #: src/preferences_display.cpp:319
 msgid "Sound effects on/off"
@@ -682,25 +691,27 @@ msgstr "Modifier le volume de la musique"
 #: src/preferences_display.cpp:336
 #, fuzzy
 msgid "Change the bell volume"
-msgstr "Modifier le volume de la musique"
+msgstr "Modifier le volume de cloche"
 
 #: src/preferences_display.cpp:338
 #, fuzzy
 msgid "Change the sample rate"
-msgstr "Changer la langue"
+msgstr "Changer la fréquence d'échantillonage"
 
 #: src/preferences_display.cpp:347
+#, fuzzy
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Fréquence d'échantillonage définie par l'utilisateur"
 
 #: src/preferences_display.cpp:356 src/preferences_display.cpp:360
 #, fuzzy
 msgid "Change the buffer size"
-msgstr "Modifier le volume de la musique"
+msgstr "Modifier la taille du tampon"
 
 #: src/preferences_display.cpp:358 src/preferences_display.cpp:805
+#, fuzzy
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Taille du tampon : "
 
 #: src/preferences_display.cpp:365
 msgid "Change the speed of scrolling around the map"
@@ -729,7 +740,7 @@ msgstr "Accélérer les déplacements et combats"
 #: src/preferences_display.cpp:394
 #, fuzzy
 msgid "Units move and fight speed"
-msgstr "Accélérer les déplacements et combats"
+msgstr "Vitesse des déplacements et combats"
 
 #: src/preferences_display.cpp:397
 msgid "Do not animate AI units moving"
@@ -742,58 +753,65 @@ msgstr "Afficher une grille en surimpression sur la carte"
 #: src/preferences_display.cpp:403
 #, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr ""
-"Affiche les messages concernant les joueurs qui rejoignent le vestibule."
+msgstr "Affiche l'aperçu des cartes dans le vestibule"
 
 #: src/preferences_display.cpp:406
+#, fuzzy
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Trie la liste des joueurs du vestibule par groupe de joueurs"
 
 #: src/preferences_display.cpp:409
+#, fuzzy
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Affiche une icone devant le nom des joueurs connectés."
 
 #: src/preferences_display.cpp:412
 #, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
-"Affiche les messages concernant les joueurs qui rejoignent le vestibule."
+"Masque les messages concernant les joueurs qui rejoignent le vestibule."
 
 #: src/preferences_display.cpp:414
 #, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
-"Affiche les messages concernant les joueurs qui rejoignent le vestibule."
+"Affiche les messages concernant les joueurs amis qui rejoignent le vestibule."
 
 #: src/preferences_display.cpp:416
 #, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
-"Affiche les messages concernant les joueurs qui rejoignent le vestibule."
+"Affiche les messages concernant tout les joueurs qui rejoignent le vestibule."
 
 #: src/preferences_display.cpp:418
+#, fuzzy
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Affiche et modifie la liste des amis et des ignorés"
 
 #: src/preferences_display.cpp:419
+#, fuzzy
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Retour aux options multi-joueur"
 
 #: src/preferences_display.cpp:420
+#, fuzzy
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Ajouter cet utilisateur dans la liste de vos amis"
 
 #: src/preferences_display.cpp:421
+#, fuzzy
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Ajouter cet utilisateur dans votre liste d'ignorés"
 
 #: src/preferences_display.cpp:422
+#, fuzzy
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Enlever cet utilisateur de votre liste"
 
 #: src/preferences_display.cpp:425
+#, fuzzy
 msgid "Insert a username"
-msgstr ""
+msgstr "Entrer un nom d'utilisateur"
 
 #: src/preferences_display.cpp:428
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -841,7 +859,7 @@ msgstr "Voir et configurer les raccourcis clavier"
 #: src/preferences_display.cpp:700
 #, fuzzy
 msgid "Speed: "
-msgstr "Vitesse de défilement :"
+msgstr "Vitesse :"
 
 #: src/preferences_display.cpp:850
 msgid "Chat Lines: "
