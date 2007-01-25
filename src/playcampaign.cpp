@@ -141,9 +141,13 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 	} else {
 		//This game was started from a savegame
 		LOG_G << "loading snapshot...\n";
-		starting_pos = state.starting_pos;
-		scenario = &state.snapshot;
-		state.variables = *state.snapshot.child("variables");
+		starting_pos = gamestate.starting_pos;
+		scenario = &gamestate.snapshot;
+		// when starting wesnoth --multiplayer there might be 
+		// no variables which leads to a segfault
+		if(gamestate.snapshot.child("variables") != NULL) {
+			gamestate.variables = *gamestate.snapshot.child("variables");
+		}
 	}
 
 	controller_map controllers;
