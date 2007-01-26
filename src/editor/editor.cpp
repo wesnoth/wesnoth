@@ -724,38 +724,6 @@ void map_editor::edit_refresh() {
 	redraw_everything();
 }
 
-std::string map_editor::load_map(const std::string filename) {
-	bool load_successful = true;
-	std::string msg;
-	std::string new_map;
-	utils::string_map symbols;
-	symbols["filename"] = filename;
-	if (!file_exists(filename) || is_directory(filename)) {
-		load_successful = false;
-		msg = vgettext("'$filename' does not exist or can not be read as a file.", symbols);
-	}
-	else {
-		try {
-			new_map = read_file(filename);
-		}
-		catch (io_exception e) {
-			load_successful = false;
-			msg = e.what();
-		}
-	}
-	if (!load_successful) {
-		const std::string failed_msg = _("Load failed: ");
-		const std::string show_msg = failed_msg +
-			utils::interpolate_variables_into_string(msg, &symbols);
-		gui::show_dialog(gui_, NULL, "", show_msg, gui::OK_ONLY);
-		throw load_map_exception();
-	}
-	else {
-		return new_map;
-	}
-}
-
-
 void map_editor::insert_selection_in_clipboard() {
 	if (selected_hexes_.empty()) {
 		return;

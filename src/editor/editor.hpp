@@ -76,11 +76,6 @@ public:
 	/// Exception thrown when the loading of a map failed.
 	struct load_map_exception {};
 
-	/// Load the map from filename. Return the string representation of
-	/// the map. Show a message if the load failed. Throw
-	/// load_map_exception if the file could not be loaded.
-	std::string load_map(const std::string filename);
-
 	virtual void handle_event(const SDL_Event &event);
 
 	/// Handle a keyboard event. mousex and mousey is the current
