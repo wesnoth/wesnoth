@@ -424,7 +424,6 @@ std::vector<section> generate_sections(const std::string &generator);
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
 std::string generate_topic_text(const std::string &generator);
 std::string generate_about_text();
-std::string generate_traits_text();
 std::vector<topic> generate_unit_topics(const bool);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
 /// Return the type of description that should be shown for a unit of
@@ -434,7 +433,6 @@ enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESC
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
 std::vector<topic> generate_ability_topics(const bool);
 std::vector<topic> generate_weapon_special_topics(const bool);
-std::vector<topic> generate_terrains_topics(const bool);
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
@@ -913,10 +911,6 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 	else if (generator == "weapon_specials") {
 		res = generate_weapon_special_topics(sort_generated);
 	}
-//  terrain topics removed for now, since they aren't release-quality
-//	else if (generator == "terrains") {
-//		res = generate_terrains_topics(sort_generated);
-//	}
 
 	return res;
 }
@@ -926,14 +920,9 @@ std::string generate_topic_text(const std::string &generator)
 	std::string empty_string = "";
 	if (generator == "") {
 		return empty_string;
-	}
-	if (generator == "about") {
+	} else if (generator == "about") {
 		return generate_about_text();
-	}
-	if (generator == "traits") {
-		// See comment on generate_traits_text()
-		//return generate_traits_text();
-	}
+	} 
 	return empty_string;
 }
 
@@ -1377,148 +1366,6 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 	}
 	return NO_DESCRIPTION;
 }
-
-// This struct is unused since the only user has also been unused -- Mordante
-struct terrain_topic_generator: topic_generator
-{
-	terrain_topic_generator(terrain_type const &t): type(t) {}
-	terrain_type type;
-	virtual std::string operator()() const {
-		std::stringstream ss;
-		ss << "<img>src='terrain/" << type.symbol_image() << ".png'</img>\n\n";
-		if (type.mvt_type().size() != 1 || type.mvt_type()[0] != type.number()) {
-			const t_translation::t_list aliased_terrains = type.mvt_type();
-			std::stringstream alias_ss;
-			for (t_translation::t_list::const_iterator it = aliased_terrains.begin();
-				  it != aliased_terrains.end(); it++) {
-				const t_translation::t_letter t = *it;
-				const std::string &alias_name = map->get_terrain_info(t).name();
-				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
-					 << escape(std::string("terrain_")) 
-					 << escape(t_translation::write_letter(t))
-					 << "'</ref>";
-				if (it + 2 == aliased_terrains.end())
-					alias_ss << " " << _("or") << " ";
-				else if (it + 1 != aliased_terrains.end())
-					alias_ss << ", ";
-			}
-			utils::string_map sm;
-			sm["terrains"] = alias_ss.str();
-			ss << utils::interpolate_variables_into_string(
-				_("This terrain acts as $terrains for movement purposes."), &sm);
-			if (aliased_terrains.size() > 1 && aliased_terrains[0] != t_translation::MINUS)
-				ss << " " << _("The terrain with the best modifier is chosen automatically.");
-			else
-				ss << " " << _("The terrain with the worst modifier is chosen automatically.");
-			ss << "\n\n";
-		}
-		if (type.def_type().size() != 1 || type.def_type()[0] != type.number()) {
-			const t_translation::t_list aliased_terrains = type.def_type();
-			std::stringstream alias_ss;
-			for (t_translation::t_list::const_iterator it = aliased_terrains.begin();
-				  it != aliased_terrains.end(); it++) {
-
-				const t_translation::t_letter t = *it;
-				const std::string &alias_name = map->get_terrain_info(t).name();
-				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
-					 << escape(std::string("terrain_")) 
-					 << escape(t_translation::write_letter(t))
-					 << "'</ref>"; 
-				if (it + 2 == aliased_terrains.end())
-					alias_ss << " " << _("or") << " ";
-				else if (it + 1 != aliased_terrains.end())
-					alias_ss << ", ";
-			}
-			utils::string_map sm;
-			sm["terrains"] = alias_ss.str();
-			ss << utils::interpolate_variables_into_string(
-				_("This terrain acts as $terrains for defense purposes."), &sm);
-			if (aliased_terrains.size() > 1 && aliased_terrains[0] != t_translation::MINUS)
-				ss << " " << _("The terrain with the best modifier is chosen automatically.");
-			else
-				ss << " " << _("The terrain with the worst modifier is chosen automatically.");
-			ss << "\n\n";
-		}
-		if (type.is_keep())
-			ss << _("This terrain acts as a keep, i.e., you can recruit units when a leader is in a location with this terrain.") << "\n\n";
-		if (type.is_castle())
-			ss << _("This terrain acts as a castle, i.e., you can recruit units onto a location with this terrain.") << "\n\n";
-		if (type.gives_healing())
-			ss << _("This terrain gives healing.") << "\n\n";
-		return ss.str();
-	}
-};
-
-//Note this function is not used, if works with the new terrain system
-//but is broken when used form the title page, this problem is inherited
-//from trunk -- Mordante
-std::vector<topic> generate_terrains_topics(const bool sort_generated)
-{
-	std::vector<topic> res;
-	t_translation::t_list show_info_about;
-	if (game_config::debug) {
-		show_info_about = map->get_terrain_list();
-	}
-	else {
-		for (std::set<t_translation::t_letter>::const_iterator terrain_it =
-				 preferences::encountered_terrains().begin();
-			 terrain_it != preferences::encountered_terrains().end();
-			 terrain_it++) {
-			show_info_about.push_back(*terrain_it);
-		}
-	}
-	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
-		  t_translation::VOID_TERRAIN), show_info_about.end());
-	
-	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
-		  t_translation::FOGGED), show_info_about.end());
-
-	for (t_translation::t_list::const_iterator terrain_it = show_info_about.begin();
-		 terrain_it != show_info_about.end(); terrain_it++) {
-
-		const terrain_type& info = map->get_terrain_info(*terrain_it);
-		const std::string &name = info.name();
-		topic t(name, std::string("terrain_") + t_translation::write_letter(*terrain_it), 
-				new terrain_topic_generator(info));
-		res.push_back(t);
-	}
-	if (sort_generated)
-		std::sort(res.begin(), res.end(), title_less());
-	return res;
-}
-
-std::string generate_traits_text()
-{
-	// OK, this didn't go as well as I thought since the information
-	// generated from this is rather short and not suitable for the help
-	// system. Hence, this method is not used currently :).
-	std::stringstream ss;
-	if (game_cfg != NULL) {
-		const config *unit_cfg = game_cfg->child("units");
-		if (unit_cfg != NULL) {
-			const config::child_list child_list = unit_cfg->get_children("trait");
-			for (config::const_child_iterator it = child_list.begin();
-				 it != child_list.end(); it++) {
-				if (game_info->unit_types.size() > 0) {
-					unit dummy_unit(&(*(game_info->unit_types.begin())).second, 0, false, true);
-					dummy_unit.add_modification("trait", *(*it), true);
-					std::string s = dummy_unit.modification_description("trait");
-					size_t pos = 0;
-					while (pos != std::string::npos) {
-						// Remove paranthesis, they do not look good in the help.
-						pos = s.find_first_of("()");
-						if (pos != std::string::npos) {
-							s.replace(pos, pos+1, "");
-						}
-					}
-					ss << s << '\n';
-				}
-			}
-		}
-	}
-	return ss.str();
-}
-
 
 std::string generate_about_text()
 {
