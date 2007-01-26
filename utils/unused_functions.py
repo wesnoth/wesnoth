@@ -7,7 +7,7 @@ for o in glob.glob("src/*.o") + glob.glob("src/*/*.o"):
 output2 = os.popen("nm -C src/wesnoth").read()
 output2 += os.popen("nm -C src/wesnoth_editor").read()
 output2 += os.popen("nm -C src/campaignd").read()
-output2 += os.popen("nm -C src/wesnoth").read()
+output2 += os.popen("nm -C src/wesnothd").read()
 output2 += os.popen("nm -C src/exploder").read()
 
 def extract(line):
