@@ -1233,16 +1233,22 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//changing the terrain
 	else if(cmd == "terrain") {
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
-
+		
 		std::string terrain_type = cfg["letter"];
 		wassert(state_of_game != NULL);
 		terrain_type = utils::interpolate_variables_into_string(terrain_type, *state_of_game);
+		
+		//At this point terrain_type contains the letter as known in WML
+		//convert to an internal number
+		t_translation::t_letter terrain = 
+			t_translation::read_letter(terrain_type, t_translation::T_FORMAT_AUTO);
 
-		for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
-			preferences::encountered_terrains().insert(terrain_type);
-			if(terrain_type.size() > 0) {
+		if(terrain != t_translation::NONE_TERRAIN) {
+			
+			for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
+				preferences::encountered_terrains().insert(terrain);
 				const bool old_village = game_map->is_village(*loc);
-				const bool new_village = game_map->is_village(terrain_type[0]);
+				const bool new_village = game_map->is_village(terrain); 
 
 				if(old_village && !new_village) {
 					int owner = village_owner(*loc, *teams);
@@ -1251,10 +1257,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					}
 				}
 
-				game_map->set_terrain(*loc,terrain_type[0]);
+				game_map->set_terrain(*loc,terrain); 
 			}
+			rebuild_screen_ = true;
 		}
-		rebuild_screen_ = true;
 	}
 
 	//creating a mask of the terrain
@@ -1262,7 +1268,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
 
 		gamemap mask(*game_map);
-
+ 
 		try {
 			mask.read(cfg["mask"]);
 		} catch(gamemap::incorrect_format_exception&) {
@@ -1830,13 +1836,19 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "store_locations") {
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
-		std::string terrain = cfg["terrain"];
+		std::string wml_terrain = cfg["terrain"];
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		std::string radius_str = cfg["radius"];
 		wassert(state_of_game != NULL);
 		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
-		terrain = utils::interpolate_variables_into_string(terrain, *state_of_game);
+		wml_terrain = utils::interpolate_variables_into_string(wml_terrain, *state_of_game);
+		//convertert the terrain to a internal vector
+		//FIXME: once the terrain backwards compability layer is gone we can load the string
+		// in a t_match structure and use the optimized match routine in the loop
+		const t_translation::t_list& terrain = 
+			t_translation::read_list(wml_terrain, 0, t_translation::T_FORMAT_AUTO);
+
 		x = utils::interpolate_variables_into_string(x, *state_of_game);
 		y = utils::interpolate_variables_into_string(y, *state_of_game);
 		radius_str = utils::interpolate_variables_into_string(radius_str, *state_of_game);
@@ -1855,8 +1867,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		size_t added = 0;
 		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end() && added != MaxLoop; ++j) {
-			if (terrain.empty() == false) {
-				const gamemap::TERRAIN c = game_map->get_terrain(*j);
+			if (!terrain.empty()) {
+				const t_translation::t_letter c = game_map->get_terrain(*j);
 				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
 					continue;
 			}

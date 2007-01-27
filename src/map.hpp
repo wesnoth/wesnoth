@@ -33,27 +33,13 @@ class gamemap
 {
 public:
 
-	typedef char TERRAIN;
-	enum { NB_TERRAIN = 256, ADD_INDEX_TERRAIN = 128 };
-
-	//some types of terrain which must be known, and can't just be loaded
-	//in dynamically because they're special. It's asserted that there will
-	//be corresponding entries for these types of terrain in the terrain
-	//configuration file.
-	static const TERRAIN VOID_TERRAIN;
-	static const TERRAIN FOGGED;
-	static const TERRAIN KEEP;
-	static const TERRAIN CASTLE;
-	static const TERRAIN VILLAGE;
-	static const TERRAIN FOREST;
-
 	//the name of the terrain is the terrain itself, the underlying terrain
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
 	//is simply an alias, the underlying terrain name is the name of the
 	//terrain that it's aliased to
-	const std::string& underlying_mvt_terrain(TERRAIN terrain) const;
-	const std::string& underlying_def_terrain(TERRAIN terrain) const;
-	const std::string& underlying_union_terrain(TERRAIN terrain) const;
+	const t_translation::t_list& underlying_mvt_terrain(t_translation::t_letter terrain) const;
+	const t_translation::t_list& underlying_def_terrain(t_translation::t_letter terrain) const;
+	const t_translation::t_list& underlying_union_terrain(t_translation::t_letter terrain) const;
 
 	//exception thrown if the map file is not in the correct format.
 	struct incorrect_format_exception {
@@ -106,26 +92,25 @@ public:
 	private:
 		void init(const std::string &x, const std::string &y);
 	};
+	const t_translation::t_list& underlying_mvt_terrain(const location& loc) const
+		{ return underlying_mvt_terrain(get_terrain(loc)); }
+	const t_translation::t_list& underlying_def_terrain(const location& loc) const
+		{ return underlying_def_terrain(get_terrain(loc)); }
+	const t_translation::t_list& underlying_union_terrain(const location& loc) const
+		{ return underlying_union_terrain(get_terrain(loc)); }
 
-	const std::string& underlying_mvt_terrain(const location& loc) const
-	{ return underlying_mvt_terrain(get_terrain(loc)); }
-	const std::string& underlying_def_terrain(const location& loc) const
-	{ return underlying_def_terrain(get_terrain(loc)); }
-	const std::string& underlying_union_terrain(const location& loc) const
-	{ return underlying_union_terrain(get_terrain(loc)); }
-
-	bool is_village(TERRAIN terrain) const;
-	int gives_healing(TERRAIN terrain) const;
-	bool is_castle(TERRAIN terrain) const;
-	bool is_keep(TERRAIN terrain) const;
+	bool is_village(t_translation::t_letter terrain) const;
+	int gives_healing(t_translation::t_letter terrain) const;
+	bool is_castle(t_translation::t_letter terrain) const;
+	bool is_keep(t_translation::t_letter terrain) const;
 
 	bool is_village(const location& loc) const;
 	int gives_healing(const location& loc) const;
 	bool is_castle(const location& loc) const;
 	bool is_keep(const location& loc) const;
 
-        //function to filter whether a location matches a set of criteria
-        bool filter_location(const location &loc,const config &con) const;
+	//function to filter whether a location matches a set of criteria
+	bool filter_location(const location &loc,const config &con) const;
 
 	//loads a map, with the given terrain configuration.
 	//data should be a series of lines, with each character representing
@@ -144,12 +129,12 @@ public:
 	int y() const;
 
 	//allows lookup of terrain at a particular location.
-	const std::vector<TERRAIN>& operator[](int index) const;
+	const t_translation::t_list& operator[](int index) const;
 
 	//looks up terrain at a particular location. Hexes off the map
 	//may be looked up, and their 'emulated' terrain will also be returned.
 	//this allows proper drawing of the edges of the map
-	TERRAIN get_terrain(const location& loc) const;
+	t_translation::t_letter get_terrain(const location& loc) const;
 
 	//writes the terrain at loc to cfg
 	void write_terrain(const gamemap::location &loc, config& cfg) const;
@@ -180,41 +165,48 @@ public:
 
 	//function to get the corresponding terrain_type information object
 	//for a given type of terrain
-	const terrain_type& get_terrain_info(TERRAIN terrain) const;
+	const terrain_type& get_terrain_info(const t_translation::t_letter terrain) const;
 
 	//shortcut to get_terrain_info(get_terrain(loc))
 	const terrain_type& get_terrain_info(const location &loc) const;
 	//
-	bool terrain_matches_filter(const location& loc, const config& cfg, const gamestatus& game_status, const unit_map& units,bool flat_tod=false) const;
+	bool terrain_matches_filter(const location& loc, const config& cfg, 
+			const gamestatus& game_status, const unit_map& units, const bool flat_tod=false) const;
 
 	//gets the list of terrains
-	const std::vector<TERRAIN>& get_terrain_list() const;
+	const t_translation::t_list& get_terrain_list() const;
 
 	//clobbers over the terrain at location 'loc', with the given terrain
-	void set_terrain(const location& loc, TERRAIN ter);
+	void set_terrain(const location& loc, const t_translation::t_letter terrain);
 
 	//function which returns a list of the frequencies of different terrain
 	//types on the map, with terrain nearer the center getting weighted higher
-	const std::map<TERRAIN,size_t>& get_weighted_terrain_frequencies() const;
+	const std::map<t_translation::t_letter, size_t>& get_weighted_terrain_frequencies() const;
 	//remove the cached border terrain at loc. Needed by the editor
 	//to make tiles at the border update correctly when drawing
 	//other tiles.
 	void remove_from_border_cache(const location &loc);
+
+	//the size of the starting positions array
+	//the positions themselves are numbered from
+	//1. Thus max_starting positions is
+	//STARTING_POSITIONS - 1
+	enum { STARTING_POSITIONS = 10 };
+protected:
+	t_translation::t_map tiles_;
+	location startingPositions_[STARTING_POSITIONS];
+	
 private:
 	int num_starting_positions() const;
 
-	std::vector<TERRAIN> terrainList_;
-	std::map<TERRAIN,terrain_type> letterToTerrain_;
-	std::map<std::string,terrain_type> terrain_;
-
-	std::vector<std::vector<TERRAIN> > tiles_;
+	t_translation::t_list terrainList_;
+	std::map<t_translation::t_letter, terrain_type> letterToTerrain_;
+	std::map<std::string,terrain_type> terrain_; 
+	
 	std::vector<location> villages_;
 
-	enum { STARTING_POSITIONS = 10 };
-	location startingPositions_[STARTING_POSITIONS];
-
-	mutable std::map<location,TERRAIN> borderCache_;
-	mutable std::map<TERRAIN,size_t> terrainFrequencyCache_;
+	mutable std::map<location, t_translation::t_letter> borderCache_;
+	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;
 };
 
 //a utility function which parses ranges of locations

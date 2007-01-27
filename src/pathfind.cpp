@@ -406,7 +406,7 @@ namespace {
 				continue;
 
 			//find the terrain of the adjacent location
-			const gamemap::TERRAIN terrain = map[currentloc.x][currentloc.y];
+			const t_translation::t_letter terrain = map[currentloc.x][currentloc.y];
 
 			//find the movement cost of this type onto the terrain
 			const int move_cost = u.movement_cost(terrain);

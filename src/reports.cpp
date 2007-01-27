@@ -374,29 +374,31 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(!map.on_board(mouseover) || current_team.shrouded(mouseover.x,mouseover.y))
 			break;
 
-		const gamemap::TERRAIN terrain = map.get_terrain(mouseover);
-		const std::string& underlying = map.underlying_union_terrain(terrain);
+		const t_translation::t_letter terrain = map.get_terrain(mouseover);
+		const t_translation::t_list& underlying = map.underlying_union_terrain(terrain);
 
 		if(map.is_village(mouseover)) {
 			const unsigned int owner = village_owner(mouseover,teams)+1;
 			if(owner == 0 || current_team.fogged(mouseover.x,mouseover.y)) {
-				str << _("Village");
+				str << map.get_terrain_info(terrain).income_description();
 			} else if(owner == current_side) {
-				str << _("Owned village");
+				str << map.get_terrain_info(terrain).income_description_own();
 			} else if(current_team.is_enemy(owner)) {
-				str << _("Enemy village");
+				str << map.get_terrain_info(terrain).income_description_enemy();
 			} else {
-				str << _("Allied village");
+				str << map.get_terrain_info(terrain).income_description_ally();
 			}
 			str << " ";
 		} else {
 		        str << map.get_terrain_info(terrain).name();
 		}
 
-		if(underlying.size() != 1 || underlying[0] != terrain) {
-			str << "(";
+		if(underlying.size() != 1 || underlying.front() != terrain) {
+			str << " (";
 
-			for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+			for(t_translation::t_list::const_iterator i = 
+					underlying.begin(); i != underlying.end(); ++i) {
+
 			str << map.get_terrain_info(*i).name();
 				if(i+1 != underlying.end()) {
 					str << ",";
@@ -416,7 +418,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(u == units.end() || current_team.shrouded(mouseover.x,mouseover.y))
 			break;
 
-		const gamemap::TERRAIN terrain = map[mouseover.x][mouseover.y];
+		const t_translation::t_letter terrain = map[mouseover.x][mouseover.y];
 
 		const int move_cost = u->second.movement_cost(terrain);
 		const int defense = 100 - u->second.defense_modifier(terrain);

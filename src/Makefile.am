@@ -364,6 +364,7 @@ noinst_HEADERS = \
 	publish_campaign.hpp \
 	game_config.hpp \
 	terrain.hpp \
+	terrain_translation.hpp \
 	config.hpp \
 	network_worker.hpp \
 	util.hpp \
@@ -457,6 +458,7 @@ libwesnoth_core_a_SOURCES = \
 	race.cpp \
 	random.cpp \
 	terrain.cpp \
+	terrain_translation.cpp \
 	thread.cpp \
 	tstring.cpp \
 	util.cpp \

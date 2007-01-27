@@ -350,13 +350,12 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
-
 	std::string map_data = summary["map_data"];
 	if(map_data.empty()) {
 		const config* const scenario = game_config_->find_child(summary["campaign_type"],"id",summary["scenario"]);
 		if(scenario != NULL && scenario->find_child("side","shroud","yes") == NULL) {
 			map_data = (*scenario)["map_data"];
-			if(map_data.empty() && (*scenario)["map"].empty() == false) {
+			if(map_data.empty() && (*scenario)["map"].empty() == false) { 
 				try {
 					map_data = read_map((*scenario)["map"]);
 				} catch(io_exception& e) {
@@ -364,7 +363,7 @@ void save_preview_pane::draw_contents()
 				}
 			}
 		}
-	}
+	} 
 
 	surface map_surf(NULL);
 
@@ -540,7 +539,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_id_sort(1);
 
-	gamemap map_obj(game_config,"");
+	gamemap map_obj(game_config, "");
 
 	std::vector<gui::preview_pane*> preview_panes;
 	save_preview_pane save_preview(disp.video(),game_config,&map_obj,data,games,summaries);

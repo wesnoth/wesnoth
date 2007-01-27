@@ -328,10 +328,11 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().map_info = _("Unknown era");
 		}
 		games_.back().map_data = (**game)["map_data"];
-		if(games_.back().map_data == "")
+		if(games_.back().map_data.empty()) {
 			games_.back().map_data = read_map((**game)["map"]);
+		}
 
-		if(games_.back().map_data != "") {
+		if(! games_.back().map_data.empty()) {
 			try {
 				gamemap map(game_config, games_.back().map_data);
 				if (minimaps_)

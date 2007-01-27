@@ -28,11 +28,13 @@ map_undo_action::map_undo_action() {
 	starting_locations_set_ = false;
 }
 
-const std::map<gamemap::location,gamemap::TERRAIN>& map_undo_action::undo_terrains() const {
+const std::map<gamemap::location, t_translation::t_letter>& map_undo_action::undo_terrains() const 
+{
 	return old_terrain_;
 }
 
-const std::map<gamemap::location,gamemap::TERRAIN>& map_undo_action::redo_terrains() const {
+const std::map<gamemap::location, t_translation::t_letter>& map_undo_action::redo_terrains() const 
+{
 	return new_terrain_;
 }
 
@@ -60,9 +62,10 @@ const std::map<gamemap::location, int>& map_undo_action::redo_starting_locations
 	return new_starting_locations_;
 }
 
-void map_undo_action::add_terrain(const gamemap::TERRAIN& old_tr,
-								  const gamemap::TERRAIN& new_tr,
-								  const gamemap::location& lc) {
+void map_undo_action::add_terrain(const t_translation::t_letter& old_tr,
+								  const t_translation::t_letter& new_tr,
+								  const gamemap::location& lc) 
+{
 	old_terrain_[lc] = old_tr;
 	new_terrain_[lc] = new_tr;
 	terrain_set_ = true;

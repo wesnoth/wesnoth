@@ -391,12 +391,12 @@ void create::process_event()
 			if(index < levels.size()) {
 
 				parameters_.scenario_data = *levels[index];
+				std::string map_data = parameters_.scenario_data["map_data"];
 
-				t_string& map_data = parameters_.scenario_data["map_data"];
-				if(map_data == "" && parameters_.scenario_data["map"] != "") {
+				if(map_data.empty() && parameters_.scenario_data["map"] != "") {
 					map_data = read_map(parameters_.scenario_data["map"]);
 				}
-
+				
 				//if the map should be randomly generated
 				if(parameters_.scenario_data["map_generation"] != "") {
 					generator_.assign(create_map_generator(parameters_.scenario_data["map_generation"],parameters_.scenario_data.child("generator")));

@@ -264,10 +264,9 @@ int main(int argc, char** argv)
 	font::load_font_config();
 	::init_textdomains(cfg);
 
-	if(mapdata.empty())
-		for(int i = 0; i != 20; ++i) {
-			mapdata += "gggggggggggggggggggg\n";
-		}
+	if(mapdata.empty()) {
+		mapdata = map_editor::new_map(20, 20, t_translation::GRASS_LAND);
+	}
 
 	srand(time(NULL));
 	bool done = false;
@@ -289,7 +288,7 @@ int main(int argc, char** argv)
 	while (!done) {
 		try {
 			std::cerr << "creating map...\n";
-			gamemap map(cfg, mapdata);
+			editormap map(cfg, mapdata);
 
 			const config dummy_cfg;
 			display gui(units, video, map, status, teams,

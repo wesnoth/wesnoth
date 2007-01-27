@@ -46,14 +46,14 @@ public:
 	void scroll_bottom();
 
 	/// Return the currently selected foreground terrain.
-	gamemap::TERRAIN selected_fg_terrain() const;
+	t_translation::t_letter selected_fg_terrain() const;
 	/// Return the currently selected background terrain.
-	gamemap::TERRAIN selected_bg_terrain() const;
+	t_translation::t_letter selected_bg_terrain() const;
 
 
 	/// Select a foreground terrain.
-	void select_fg_terrain(gamemap::TERRAIN);
-	void select_bg_terrain(gamemap::TERRAIN);
+	void select_fg_terrain(t_translation::t_letter);
+	void select_bg_terrain(t_translation::t_letter);
 
 	// Update the selected terrains strings
 	void update_selected_terrains(void);
@@ -87,7 +87,7 @@ private:
 	int tile_selected(const int x, const int y) const;
 
 	/// Return a string represeting the terrain and the underlying ones.
-	std::string get_terrain_string(const gamemap::TERRAIN);
+	std::string get_terrain_string(const t_translation::t_letter);
 
 	/// Update the report with the currently selected terrains.
 	void update_report();
@@ -95,8 +95,8 @@ private:
 	const size_specs &size_specs_;
 	display &gui_;
 	unsigned int tstart_;
-	std::vector<gamemap::TERRAIN> terrains_;
-	gamemap::TERRAIN selected_fg_terrain_, selected_bg_terrain_;
+	t_translation::t_list terrains_;
+	t_translation::t_letter selected_fg_terrain_, selected_bg_terrain_;
 	const gamemap &map_;
 	gui::button top_button_, bot_button_;
 	size_t button_x_, top_button_y_, bot_button_y_;

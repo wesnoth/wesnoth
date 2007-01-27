@@ -1837,7 +1837,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	std::vector<gamemap::location>::const_iterator step;
 	std::string ambushed_string;
 	for(step = route.begin()+1; step != route.end(); ++step) {
-		const gamemap::TERRAIN terrain = map[step->x][step->y];
+		const t_translation::t_letter terrain = map[step->x][step->y];
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 

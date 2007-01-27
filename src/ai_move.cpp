@@ -55,7 +55,7 @@ struct move_cost_calculator : cost_calculator
 		*/
 		wassert(map_.on_board(loc));
 
-		const gamemap::TERRAIN terrain = map_[loc.x][loc.y];
+		const t_translation::t_letter terrain = map_[loc.x][loc.y];
 
 		const double modifier = 1.0; //move_type_.defense_modifier(map_,terrain);
 		const double move_cost = unit_.movement_cost(terrain);//move_type_[terrain];
@@ -77,7 +77,7 @@ private:
 	const gamemap& map_;
 	const game_data& data_;
 	const unit_map& units_;
-//	mutable std::map<gamemap::TERRAIN,int> move_type_;
+//	mutable std::map<t_translation::t_letter,int> move_type_;
 	const gamemap::location loc_;
 	const ai::move_map dstsrc_, enemy_dstsrc_;
 	const bool avoid_enemies_;

@@ -97,7 +97,9 @@ unit_animation::unit_animation(int start_time,const unit_frame & frame ):animate
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
 
-unit_animation::unit_animation(const config& cfg,const std::string frame_string ):terrain_types(utils::split(cfg["terrain"]))
+unit_animation::unit_animation(const config& cfg,const std::string frame_string )
+//this format hasn't been used yet, so force the new terrain format
+:terrain_types_(t_translation::read_list(cfg["terrain"], -1, t_translation::T_FORMAT_STRING))
 {
 	config::const_child_itors range = cfg.child_range(frame_string);
 	if(cfg["start_time"].empty() &&range.first != range.second) {
@@ -137,16 +139,15 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	}
 }
 
-
 int unit_animation::matches(const display& disp, const gamemap::location& loc,const unit* my_unit) const
 {
 	int result = 0;
-	if(terrain_types.empty()== false) {
-		if (std::find(terrain_types.begin(),terrain_types.end(),disp.get_map().underlying_union_terrain(loc))== terrain_types.end()) {
-			return -1;
-		} else {
+	if(terrain_types_.empty() == false) {
+		if(t_translation::terrain_matches(disp.get_map().get_terrain(loc), terrain_types_)) {	
 			result ++;
-		}
+		} else {
+			return -1;
+		} 
 	}
 
 	if(my_unit) {

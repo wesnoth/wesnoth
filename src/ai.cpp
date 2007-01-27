@@ -75,7 +75,7 @@ protected:
 						const location& src = range.first->second;
 						const unit_map::const_iterator un = get_info().units.find(src);
 
-						const gamemap::TERRAIN terrain = get_info().map.get_terrain(dst);
+						const t_translation::t_letter terrain = get_info().map.get_terrain(dst);
 
 						const int chance_to_hit = un->second.defense_modifier(terrain);
 
@@ -1440,8 +1440,12 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
 	int weighting_sum = 0, defense = 0;
-	const std::map<gamemap::TERRAIN,size_t>& terrain = map_.get_weighted_terrain_frequencies();
-	for(std::map<gamemap::TERRAIN,size_t>::const_iterator j = terrain.begin(); j != terrain.end(); ++j) {
+	const std::map<t_translation::t_letter, size_t>& terrain = 
+		map_.get_weighted_terrain_frequencies();
+
+	for(std::map<t_translation::t_letter, size_t>::const_iterator j = terrain.begin(); 
+			j != terrain.end(); ++j) {
+
 		defense += a.movement_type().defense_modifier(map_,j->first)*j->second;
 		weighting_sum += j->second;
 	}
@@ -1953,7 +1957,7 @@ bool ai::leader_can_reach_keep()
 
 int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 {
-	const gamemap::TERRAIN terrain = map_.get_terrain(loc);
+	const t_translation::t_letter terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
 

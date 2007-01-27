@@ -22,9 +22,11 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('u'), village_('D'), castle_('o'),
-                                                            cfg_(cfg), width_(50), height_(50), village_density_(0),
-							    flipx_(false), flipy_(false)
+cave_map_generator::cave_map_generator(const config* cfg) : wall_(t_translation::CAVE_WALL), 
+	clear_(t_translation::CAVE), village_(t_translation::UNDERGROUND_VILLAGE), 
+    castle_(t_translation::DWARVEN_CASTLE), keep_(t_translation::DWARVEN_KEEP), 
+	cfg_(cfg), width_(50), height_(50), 
+	village_density_(0), flipx_(false), flipy_(false)
 {
 	if(cfg_ == NULL) {
 		static const config default_cfg;
@@ -42,7 +44,6 @@ cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('
 
 	LOG_NG << "flipx: " << r << " < " << chance << " = " << (flipx_ ? "true" : "false") << "\n";
 	flipy_ = (rand()%100) < atoi((*cfg_)["flipy_chance"].c_str());
-
 
 }
 
@@ -78,7 +79,7 @@ std::string cave_map_generator::create_map(const std::vector<std::string>& args)
 
 config cave_map_generator::create_scenario(const std::vector<std::string>& /*args*/)
 {
-	map_ = std::vector<std::vector<gamemap::TERRAIN> >(width_,std::vector<gamemap::TERRAIN>(height_,wall_));
+	map_ = t_translation::t_map(width_, t_translation::t_list(height_, wall_));
 	chambers_.clear();
 	passages_.clear();
 
@@ -103,17 +104,9 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 	}
 
 	LOG_NG << "outputting map....\n";
-	std::stringstream out;
-	for(size_t y = 0; y != height_; ++y) {
-		for(size_t x = 0; x != width_; ++x) {
-			out << map_[x][y];
-		}
 
-		out << "\n";
-	}
-
-	res_["map_data"] = out.str();
-
+	res_["map_data"] = t_translation::write_game_map(map_, starting_positions_);
+		
 	LOG_NG << "returning result...\n";
 
 	return res_;
@@ -279,14 +272,15 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 
 struct passage_path_calculator : cost_calculator
 {
-	passage_path_calculator(const std::vector<std::vector<gamemap::TERRAIN> >& mapdata, gamemap::TERRAIN wall, double laziness, size_t windiness)
-		        : map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
+	passage_path_calculator(const t_translation::t_map& mapdata, 
+	t_translation::t_letter wall, double laziness, size_t windiness): 
+		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
 
 	virtual double cost(const gamemap::location& src,const gamemap::location& loc, const double so_far, const bool is_dest) const;
 private:
-	const std::vector<std::vector<gamemap::TERRAIN> >& map_;
-	gamemap::TERRAIN wall_;
+	const t_translation::t_map& map_;
+	t_translation::t_letter wall_;
 	double laziness_;
 	size_t windiness_;
 };
@@ -341,14 +335,14 @@ bool cave_map_generator::on_board(const gamemap::location& loc) const
 	return loc.x >= 0 && loc.y >= 0 && loc.x < (long)width_ && loc.y < (long)height_;
 }
 
-void cave_map_generator::set_terrain(gamemap::location loc, gamemap::TERRAIN t)
+void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_letter t)
 {
 	if(on_board(loc)) {
 		if(t == clear_ && (rand()%1000) < (long)village_density_) {
 			t = village_;
 		}
 
-		gamemap::TERRAIN& c = map_[loc.x][loc.y];
+		t_translation::t_letter& c = map_[loc.x][loc.y];
 		if(c == clear_ || c == wall_ || c == village_) {
 			c = t;
 		}
@@ -357,8 +351,12 @@ void cave_map_generator::set_terrain(gamemap::location loc, gamemap::TERRAIN t)
 
 void cave_map_generator::place_castle(const std::string& side, gamemap::location loc)
 {
-	if(side != "") {
-		set_terrain(loc,side[0]);
+	const int starting_position = lexical_cast_default<int>(side, -1);
+	if(starting_position != -1) {
+		set_terrain(loc, keep_);
+
+		const struct t_translation::coordinate coord = {loc.x, loc.y};
+		starting_positions_[starting_position] = coord; 
 	}
 
 	gamemap::location adj[6];

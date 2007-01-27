@@ -18,14 +18,21 @@
 #include "util.hpp"
 #include "terrain.hpp"
 #include "serialization/string_utils.hpp"
+#include "gettext.hpp"
+#include "wassert.hpp"
 
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
 
-terrain_type::terrain_type() : symbol_image_("void"), letter_(' '),mvt_type_(" "), def_type_(" "),
-                               height_adjust_(0), submerge_(0.0),
-                               heals_(false), village_(false), castle_(false), keep_(false)
+
+terrain_type::terrain_type() : symbol_image_("void"),
+			       number_(t_translation::VOID_TERRAIN),
+			       mvt_type_(1, t_translation::VOID_TERRAIN),
+			       def_type_(1, t_translation::VOID_TERRAIN),
+			       union_type_(1, t_translation::VOID_TERRAIN),
+                   height_adjust_(0), submerge_(0.0), light_modification_(0),
+                   heals_(false), village_(false), castle_(false), keep_(false) 
 {}
 
 terrain_type::terrain_type(const config& cfg)
@@ -34,41 +41,60 @@ terrain_type::terrain_type(const config& cfg)
 
 	name_ = cfg["name"];
 	id_ = cfg["id"];
-	const std::string& letter = cfg["char"];
 
-	if(letter == "") {
-		letter_ = 0;
-	} else {
-		letter_ = letter[0];
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE
+	// load the old char and the new string part
+	std::string terrain_char = cfg["char"];
+	std::string terrain_string = cfg["string"];
+
+	wassert(terrain_string != "");
+	number_ = t_translation::read_letter(terrain_string, t_translation::T_FORMAT_STRING);
+	//if both a char and a string are defined load it in the translation 
+	//table. This to maintain backwards compability
+	if(terrain_char != "") {
+		t_translation::add_translation(terrain_char, number_);
 	}
+#else
+	number_ = t_translation::read_letter(terrain_string);
+#endif
 
-	mvt_type_.resize(1);
-	mvt_type_[0] = letter_;
-	def_type_.resize(1);
-	def_type_[0] = letter_;
-	const std::string& alias = cfg["aliasof"];
+
+	mvt_type_.push_back(number_);
+	def_type_.push_back(number_);
+	const t_translation::t_list& alias = 
+		t_translation::read_list(cfg["aliasof"], -1, t_translation::T_FORMAT_STRING);
 	if(!alias.empty()) {
 		mvt_type_ = alias;
 		def_type_ = alias;
 	}
-	const std::string& mvt_alias = cfg["mvt_alias"];
+
+	const t_translation::t_list& mvt_alias = 
+		t_translation::read_list(cfg["mvt_alias"], -1, t_translation::T_FORMAT_STRING);
 	if(!mvt_alias.empty()) {
 		mvt_type_ = mvt_alias;
 	}
 
-	const std::string& def_alias = cfg["def_alias"];
+	const t_translation::t_list& def_alias = 
+		t_translation::read_list(cfg["def_alias"], -1, t_translation::T_FORMAT_STRING);
 	if(!def_alias.empty()) {
 		def_type_ = def_alias;
 	}
-	union_type_ = mvt_type_ +def_type_;
-	union_type_.erase(std::remove(union_type_.begin(),union_type_.end(),'-'),union_type_.end());
-	union_type_.erase(std::remove(union_type_.begin(),union_type_.end(),'+'),union_type_.end());
+	union_type_ = mvt_type_;
+	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
+
+	// remove + and -
+	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(), 
+				t_translation::MINUS), union_type_.end());
+
+	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
+				t_translation::PLUS), union_type_.end());
+
+	// remove doubles
 	std::sort(union_type_.begin(),union_type_.end());
-	union_type_.erase(std::unique(union_type_.begin(),union_type_.end()),union_type_.end());
+	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
 
 	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
 	submerge_ = atof(cfg["submerge"].c_str());
-
 	light_modification_ = atoi(cfg["light"].c_str());
 
 	if (cfg["heals"] == "true") {
@@ -80,6 +106,29 @@ terrain_type::terrain_type(const config& cfg)
 	village_ = utils::string_bool(cfg["gives_income"]);
 	castle_ = utils::string_bool(cfg["recruit_onto"]);
 	keep_ = utils::string_bool(cfg["recruit_from"]);
+
+	//mouse over message are only shown on villages
+	if(village_) {
+		income_description_ = cfg["income_description"];
+		if(income_description_ == "") {
+			income_description_ = _("Village");
+		}
+
+		income_description_ally_ = cfg["income_description_ally"];
+		if(income_description_ally_ == "") {
+			income_description_ally_ = _("Allied village");
+		}
+
+		income_description_enemy_ = cfg["income_description_enemy"];
+		if(income_description_enemy_ == "") {
+			income_description_enemy_ = _("Enemy village");
+		}
+
+		income_description_own_ = cfg["income_description_own"];
+		if(income_description_own_ == "") {
+			income_description_own_ = _("Owned village");
+		}
+	}
 }
 
 const std::string& terrain_type::symbol_image() const
@@ -97,31 +146,30 @@ const std::string& terrain_type::id() const
 	return id_;
 }
 
-char terrain_type::letter() const
+t_translation::t_letter terrain_type::number() const
 {
-	return letter_;
+	return number_;
 }
 
 bool terrain_type::is_nonnull() const
 {
-	return (letter_ != 0) && (letter_ != ' ');
+	return (number_ != 0) && (number_ != t_translation::VOID_TERRAIN );
 }
 
-const std::string& terrain_type::mvt_type() const
+const t_translation::t_list& terrain_type::mvt_type() const
 {
 	return mvt_type_;
 }
 
-const std::string& terrain_type::def_type() const
+const t_translation::t_list& terrain_type::def_type() const
 {
 	return def_type_;
 }
 
-const std::string& terrain_type::union_type() const
+const t_translation::t_list& terrain_type::union_type() const
 {
 	return union_type_;
 }
-
 
 int terrain_type::light_modification() const
 {
@@ -159,16 +207,17 @@ bool terrain_type::is_keep() const
 }
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
-                         std::vector<char>& terrain_list,
-                         std::map<char,terrain_type>& letter_to_terrain,
-                         std::map<std::string,terrain_type>& str_to_terrain)
+                         t_translation::t_list& terrain_list,
+                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain,
+                         std::map<std::string, terrain_type>& str_to_terrain)
 {
 	for(std::vector<config*>::const_iterator i = cfgs.begin();
 	    i != cfgs.end(); ++i) {
-		terrain_type terrain(**i);
-		terrain_list.push_back(terrain.letter());
-		letter_to_terrain.insert(std::pair<char,terrain_type>(
-		                              terrain.letter(),terrain));
+		terrain_type terrain(**i); 
+		terrain_list.push_back(terrain.number()); 
+		letter_to_terrain.insert(std::pair<t_translation::t_letter, terrain_type>(
+		                              terrain.number(),terrain));
+
 		str_to_terrain.insert(std::pair<std::string,terrain_type>(
 		                              terrain.id(),terrain));
 	}

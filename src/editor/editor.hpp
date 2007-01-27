@@ -19,6 +19,7 @@
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
 #include "editor_undo.hpp"
+#include "map_manip.hpp"
 
 #include "../display.hpp"
 #include "../events.hpp"
@@ -43,7 +44,7 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 class map_editor : public events::handler,
 				   public hotkey::command_executor {
 public:
-	map_editor(display &gui, gamemap &map, config &theme, config &game_config);
+	map_editor(display &gui, editormap &map, config &theme, config &game_config);
 	virtual ~map_editor();
 
 	/// Enter the main loop. The loop runs until set_abort() is called
@@ -74,11 +75,6 @@ public:
 
 	/// Exception thrown when the loading of a map failed.
 	struct load_map_exception {};
-
-	/// Load the map from filename. Return the string representation of
-	/// the map. Show a message if the load failed. Throw
-	/// load_map_exception if the file could not be loaded.
-	std::string load_map(const std::string filename);
 
 	virtual void handle_event(const SDL_Event &event);
 
@@ -196,7 +192,7 @@ private:
 
 	/// Draw terrain at a location. The operation is saved in the undo
 	/// stack. Update the map to reflect the change.
-	void draw_terrain(const gamemap::TERRAIN terrain,
+	void draw_terrain(const t_translation::t_letter terrain,
 					  const gamemap::location hex);
 
 
@@ -285,7 +281,7 @@ private:
 
 	/// Draw the terrain on the hexes the mouse is over, taking account
 	/// for brush size.
-	void draw_on_mouseover_hexes(const gamemap::TERRAIN t);
+	void draw_on_mouseover_hexes(const t_translation::t_letter t);
 
 	// Load the tooltips for each button
 	void load_tooltips(void);
@@ -295,16 +291,16 @@ private:
 	/// where to put the pasted hex when calculating from the one
 	/// selected when the paste takes place.
 	struct clipboard_item {
-		clipboard_item(int xo, int yo, gamemap::TERRAIN t, int start_side) :
+		clipboard_item(int xo, int yo, t_translation::t_letter t, int start_side) :
 			x_offset(xo), y_offset(yo), terrain(t),
 			starting_side(start_side){}
 		int x_offset, y_offset;
-		gamemap::TERRAIN terrain;
+		t_translation::t_letter terrain;
 		int starting_side;
 	};
 
 	display &gui_;
-	gamemap &map_;
+	editormap &map_;
 	std::string filename_, original_filename_;
 	bool from_scenario_;
 	ABORT_MODE abort_;
@@ -345,7 +341,7 @@ private:
 	static config hotkeys_;
 	static bool first_time_created_;
 	static LEFT_BUTTON_FUNC l_button_func_;
-	static gamemap::TERRAIN old_fg_terrain_, old_bg_terrain_;
+	static t_translation::t_letter old_fg_terrain_, old_bg_terrain_;
 	static int old_brush_size_;
 	bool all_hexes_selected_;
 

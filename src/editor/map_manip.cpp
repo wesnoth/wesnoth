@@ -22,93 +22,94 @@
 #include <algorithm>
 #include <set>
 
-namespace {
+std::string editormap::resize(const size_t width, const size_t height, const t_translation::t_letter filler)
+{
+	const unsigned old_w = static_cast<unsigned>(x());
+	const unsigned old_h = static_cast<unsigned>(y());
 
-	// Grow the map, represented by lines, one step. If grow_height is
-	// true, the height is increased and every other column is shifted
-	// one step downwards. Otherwise the map is increased in width one
-	// step. The terrain used as padding is deducted from the surrounded
-	// terrain.
-	void grow_and_pad(const gamemap &map, std::vector<std::string> &lines,
-					  bool grow_height) {
-		int i, j;
-		std::vector<gamemap::TERRAIN> terrains;
-		gamemap::TERRAIN chosen_terrain;
-		if (grow_height) {
-			lines.push_back(std::string(lines[0].size(),
-										gamemap::FOREST));
-			// Shift terrain on odd numbered columns one step downwards.
-			for (i = 0; (unsigned)i < lines[0].size(); i += 2) {
-				for (j = lines.size() - 2; j >= 0; j--) {
-					lines[j + 1][i] = lines[j][i];
+	if(old_w == width && old_h == height) {
+		return "";
+	}
+	
+	if (old_w != width) {
+		const t_translation::t_list one_row(old_h, filler);		
+		tiles_.resize(width, one_row);
+	}
+
+	if(height != old_h) {
+		for(size_t i = 0; i < tiles_.size(); ++i) {
+			tiles_[i].resize(height, filler);
+		}
+	}
+
+	return write();
+}
+
+std::string editormap::flip(const map_editor::FLIP_AXIS axis)
+{
+	if(axis !=  map_editor::FLIP_X && axis != map_editor::FLIP_Y) {
+		return "";
+	}
+
+	if(axis == map_editor::FLIP_X) {
+		// due to the hexes we need some mirror tricks when mirroring over the
+		// X axis. We resize the map and fill it. The odd columns will be extended
+		// with the data in row 0 the even columns are extended with the data in
+		// the last row
+		const size_t middle = (tiles_[0].size() / 2); // the middle if reached we flipped all
+		const size_t end = tiles_[0].size() - 1; // the last row _before_ resizing
+		for(size_t x = 0; x < tiles_.size(); ++x) {
+			if(x % 2) {
+				// odd lines
+				tiles_[x].resize(tiles_[x].size() + 1, tiles_[x][0]);
+				
+				for(size_t y1 = 0, y2 = end; y1 < middle; ++y1, --y2) {
+					swap_starting_position(x, y1, x, y2);
+					std::swap(tiles_[x][y1], tiles_[x][y2]);
 				}
-			}
-			// Set the terrain for the hexes that was used as padding.
-			for (i = 0; (unsigned)i < lines[0].size(); i++) {
-				terrains.clear();
-				if (is_even(i)) {
-					terrains.push_back(lines[1][i]);
-					terrains.push_back(i == 0 ? terrains[0] : lines[0][i - 1]);
-					terrains.push_back((unsigned)i == lines[0].size() - 1
-									   ? terrains[0] : lines[0][i + 1]);
+			} else {
+				// even lines
+				tiles_[x].resize(tiles_[x].size() + 1, tiles_[x][end]);
+				
+				for(size_t y1 = 0, y2 = end + 1; y1 < middle; ++y1, --y2) {
+					swap_starting_position(x, y1, x, y2);
+					std::swap(tiles_[x][y1], tiles_[x][y2]);
 				}
-				else {
-					terrains.push_back(lines[lines.size() - 2][i]);
-					terrains.push_back(i == 0
-									   ? terrains[0] :
-									   lines[lines.size() - 1][i - 1]);
-					terrains.push_back((unsigned)i == lines[0].size() - 1 ?
-						terrains[0] : lines[lines.size() - 1][i + 1]);
-				}
-				if (terrains[1] == terrains[2]) {
-					chosen_terrain = terrains[2];
-				}
-				else {
-					chosen_terrain = terrains[0];
-				}
-				if (map.is_village(chosen_terrain)) {
-					for (j = 0; j < 3; j++) {
-						if (!map.is_village(terrains[j])) {
-							chosen_terrain = terrains[j];
-							break;
-						}
-					}
-				}
-				if (map.is_village(chosen_terrain)) {
-					chosen_terrain = gamemap::FOREST;
-				}
-				if (is_even(i)) {
-					lines[0][i] = chosen_terrain;
-				}
-				else {
-					lines[lines.size() - 1][i] = chosen_terrain;
-				}
+
 			}
 		}
-		else {
-			for (i = 0; (unsigned)i < lines.size(); i++) {
-				int change;
-				terrains.clear();
-				terrains.push_back(lines[i][lines[i].length() - 1]);
-				if (is_even(lines[i].size()+1)) {
-					change = 1;
-				}
-				else {
-					change = -1;
-				}
-				if (i + change > 0 && (unsigned)(i + change) < lines.size()) {
-					terrains.push_back(lines[i + change][lines[i].length() - 1]);
-				}
-				else {
-					terrains.push_back(terrains[0]);
-				}
-				chosen_terrain = map.is_village(terrains[0])
-					? terrains[1] : terrains[0];
-				chosen_terrain = map.is_village(chosen_terrain)
-					? gamemap::FOREST : chosen_terrain;
-				lines[i].resize(lines[i].length() + 1, chosen_terrain);
+	} else { // FLIP_Y
+		// flipping on the Y axis requires no resize so the code
+		// is much simpeler
+		const size_t middle = (tiles_.size() / 2);
+		const size_t end = tiles_.size() - 1;
+		for(size_t y = 0; y < tiles_[0].size(); ++y) {
+			for(size_t x1 = 0, x2 = end; x1 < middle; ++x1, --x2) {
+				swap_starting_position(x1, y, x2, y);
+				std::swap(tiles_[x1][y], tiles_[x2][y]);
 			}
 		}
+	}
+
+	return write();
+}
+
+void editormap::set_starting_position(const int pos, const location loc) {
+	startingPositions_[pos] = loc;
+}
+
+void editormap::swap_starting_position(const size_t x1, const size_t y1,
+										const size_t x2, const size_t y2)
+{
+	const int pos1 = is_starting_position(location(x1, y1));
+	const int pos2 = is_starting_position(location(x2, y2));
+
+	if(pos1 != -1) {
+		set_starting_position(pos1 + 1, location(x2, y2));
+	}
+	
+	if(pos2 != -1) {
+		set_starting_position(pos2 + 1, location(x1, y1));
 	}
 }
 
@@ -143,10 +144,10 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 	return res;
 }
 
-
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
-				const gamemap::TERRAIN fill_with, terrain_log *log) {
-	gamemap::TERRAIN terrain_to_fill = map.get_terrain(start_loc);
+				const t_translation::t_letter fill_with, terrain_log *log) 
+{
+	t_translation::t_letter terrain_to_fill = map.get_terrain(start_loc);
 	if (fill_with == terrain_to_fill) {
 		return;
 	}
@@ -161,9 +162,10 @@ void flood_fill(gamemap &map, const gamemap::location &start_loc,
 	}
 }
 
-std::set<gamemap::location>
-get_component(const gamemap &map, const gamemap::location &start_loc) {
-	gamemap::TERRAIN terrain_to_fill = map.get_terrain(start_loc);
+std::set<gamemap::location> get_component(const gamemap &map, 
+		const gamemap::location &start_loc) 
+{
+	t_translation::t_letter terrain_to_fill = map.get_terrain(start_loc);
 	std::set<gamemap::location> to_fill;
 	std::set<gamemap::location> filled;
 	std::set<gamemap::location>::iterator it;
@@ -190,67 +192,15 @@ get_component(const gamemap &map, const gamemap::location &start_loc) {
 	return filled;
 }
 
-std::string resize_map(const gamemap &map, const unsigned new_w,
-					   const unsigned new_h, const gamemap::TERRAIN fill_with) {
-	std::string str_map = map.write();
-	std::vector<std::string> lines = utils::split(str_map, '\n');
-	bool map_changed = false;
-	const unsigned old_w = (unsigned)map.x();
-	const unsigned old_h = (unsigned)map.y();
-	if (old_h != new_h) {
-		const std::string one_row(old_w, fill_with);
-		lines.resize(new_h, one_row);
-		map_changed = true;
-	}
-	if (new_w != old_w) {
-		for (std::vector<std::string>::iterator it = lines.begin();
-			 it != lines.end(); it++) {
-			(*it).resize(new_w, fill_with);
-		}
-		map_changed = true;
-	}
-	if (map_changed) {
-		return utils::join(lines, '\n');
-	}
-	else {
-		return "";
-	}
+std::string resize_map(editormap &map, const unsigned new_w,
+	const unsigned new_h, const t_translation::t_letter fill_with) 
+{
+	return map.resize(new_w, new_h, fill_with);
 }
 
 
-std::string flip_map(const gamemap &map, const FLIP_AXIS axis) {
-	const std::string str_map = map.write();
-	if (str_map == "") {
-		return str_map;
-	}
-	std::vector<std::string> lines = utils::split(str_map, '\n');
-	std::vector<std::string> new_lines;
-	if (axis == FLIP_Y) {
-		if (is_even(lines[0].size())) {
-			grow_and_pad(map, lines, false);
-		}
-		new_lines.resize(lines.size());
-		std::vector<std::string>::iterator new_line_it = new_lines.begin();
-		for (std::vector<std::string>::const_iterator it = lines.begin();
-			 it != lines.end(); it++) {
-			for (std::string::const_reverse_iterator sit = (*it).rbegin();
-				 sit != (*it).rend(); sit++) {
-				push_back(*new_line_it,*sit);
-			}
-			new_line_it++;
-		}
-	}
-	else if (axis == FLIP_X) {
-		std::vector<std::string>::reverse_iterator it;
-		for (it = lines.rbegin(); it != lines.rend(); it++) {
-			new_lines.push_back(*it);
-		}
-		grow_and_pad(map, new_lines, true);
-	}
-	else {
-		new_lines = lines;
-	}
-	return utils::join(new_lines, '\n');
+std::string flip_map(editormap &map, const FLIP_AXIS axis) {
+	return map.flip(axis);
 }
 
 bool valid_mapdata(const std::string &data, const config &cfg) {
@@ -269,4 +219,13 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	return res;
 }
 
+std::string new_map(const size_t width, const size_t height, const t_translation::t_letter filler)
+{
+	const t_translation::t_list column(height, filler);
+	const t_translation::t_map map(width, column);
+
+	return t_translation::write_game_map(map);
+	
 }
+
+} // namespace

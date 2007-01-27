@@ -130,7 +130,7 @@ namespace image {
 
 	typedef std::vector<cache_item<surface> > image_cache;
 	typedef std::vector<cache_item<locator> > locator_cache;
-	typedef std::map<gamemap::TERRAIN, surface> mini_terrain_cache_map;
+	typedef std::map<t_translation::t_letter, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 
 	void flush_cache();

@@ -208,14 +208,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				gamestate.starting_pos = scenario2;
 				scenario = &scenario2;
 			}
-
 			std::string map_data = (*scenario)["map_data"];
-			if(map_data == "" && (*scenario)["map"] != "") {
+			if(map_data.empty() && (*scenario)["map"] != "") {
 				map_data = read_map((*scenario)["map"]);
 			}
-
+			
 			//if the map should be randomly generated
-			if(map_data == "" && (*scenario)["map_generation"] != "") {
+			if(map_data.empty() && (*scenario)["map_generation"] != "") {
 				const cursor::setter cursor_setter(cursor::WAIT);
 				map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
 

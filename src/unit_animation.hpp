@@ -38,7 +38,7 @@ class unit_animation:public animated<unit_frame>
 		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit) const;
 
 	private:
-		std::vector<std::string> terrain_types;
+		t_translation::t_list terrain_types_;
 		std::vector<config> unit_filter_;
 		std::vector<config> secondary_unit_filter_;
 		std::vector<config> neighbour_unit_filter_;

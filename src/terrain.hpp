@@ -15,6 +15,7 @@
 
 class config;
 #include "tstring.hpp"
+#include "terrain_translation.hpp"
 
 #include <map>
 #include <string>
@@ -23,6 +24,7 @@ class config;
 class terrain_type
 {
 public:
+
 	terrain_type();
 	terrain_type(const config& cfg);
 
@@ -31,12 +33,12 @@ public:
 	const std::string& id() const;
 
 	//the character representing this terrain
-	char letter() const;
+	t_translation::t_letter number() const;
 
 	//the underlying type of the terrain
-	const std::string& mvt_type() const;
-	const std::string& def_type() const;
-	const std::string& union_type() const;
+	const t_translation::t_list& mvt_type() const;
+	const t_translation::t_list& def_type() const;
+	const t_translation::t_list& union_type() const;
 
 	bool is_nonnull() const;
 	int light_modification() const;
@@ -49,19 +51,27 @@ public:
 	bool is_castle() const;
 	bool is_keep() const;
 
+	//these descriptions are shown for the terrain in the mouse over
+	//depending on the owner or the village
+	const t_string& income_description() const { return income_description_; }
+	const t_string& income_description_ally() const { return income_description_ally_; }
+	const t_string& income_description_enemy() const { return income_description_enemy_; }
+	const t_string& income_description_own() const { return income_description_own_; }
+
 private:
 	std::string symbol_image_;
 	std::string id_;
 	t_string name_;
 
-	//the 'letter' is the letter that represents this
+	//the 'number' is the number that represents this
 	//terrain type. The 'type' is a list of the 'underlying types'
-	//of the terrain. This may simply be the same as the letter.
-	char letter_;
-	std::string mvt_type_;
-	std::string def_type_;
-	std::string union_type_;
-
+	//of the terrain. This may simply be the same as the number.
+	//This is the internal number used, WML still used characters
+	t_translation::t_letter number_;
+	t_translation::t_list mvt_type_;
+	t_translation::t_list def_type_;
+	t_translation::t_list union_type_;
+		
 	int height_adjust_;
 
 	double submerge_;
@@ -69,11 +79,15 @@ private:
 	int light_modification_, heals_;
 
 	bool village_, castle_, keep_;
+
+	t_string income_description_;
+	t_string income_description_ally_;
+	t_string income_description_enemy_;
+	t_string income_description_own_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
-                         std::vector<char>& terrain_precedence,
-                         std::map<char,terrain_type>& letter_to_terrain,
-			 std::map<std::string,terrain_type>& str_to_terrain);
-
+                         t_translation::t_list& terrain_list,
+                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain,
+                         std::map<std::string, terrain_type>& str_to_terrain);
 #endif

@@ -51,8 +51,8 @@ bool confirm_modification_disposal(display& disp) {
 }
 
 
-std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
-						   bool confirmation_needed, const config &game_config)
+std::string new_map_dialog(display& disp, const t_translation::t_letter fill_terrain,
+	const bool confirmation_needed, const config &game_config)
 {
 	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
@@ -149,17 +149,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 			if ((confirmation_needed &&
 				 confirm_modification_disposal(disp))
 				|| !confirmation_needed) {
-				int i;
-				std::stringstream str;
-				std::stringstream map_str;
-				for (i = 0; i < width_slider.value(); i++) {
-					str << fill_terrain;
-				}
-				str << "\n";
-				for (i = 0; i < height_slider.value(); i++) {
-					map_str << str.str();
-				}
-				return map_str.str();
+
+				return map_editor::new_map(width_slider.value(), height_slider.value(), fill_terrain);
 			}
 		}
 		if(random_map_setting_button.pressed()) {

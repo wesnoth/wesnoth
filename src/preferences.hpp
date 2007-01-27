@@ -20,6 +20,8 @@ struct game_state;
 class unit_map;
 class gamemap;
 
+#include "terrain_translation.hpp"
+
 #include <string>
 #include <utility>
 #include <set>
@@ -226,7 +228,7 @@ namespace preferences {
 	bool compress_saves();
 
 	std::set<std::string> &encountered_units();
-	std::set<std::string> &encountered_terrains();
+	std::set<t_translation::t_letter> &encountered_terrains();
 
 	enum CACHE_SAVES_METHOD { CACHE_SAVES_ASK, CACHE_SAVES_NEVER, CACHE_SAVES_ALWAYS };
 	CACHE_SAVES_METHOD cache_saves();

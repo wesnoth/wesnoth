@@ -25,8 +25,9 @@
 
 namespace map_editor {
 
-bool is_invalid_terrain(char c) {
-	return c == ' ' || c == '~';
+bool is_invalid_terrain(t_translation::t_letter c) {
+	return (c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED || 
+			c == t_translation::OBSOLETE_KEEP);
 }
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
@@ -122,15 +123,18 @@ void terrain_palette::scroll_bottom() {
 	}
 }
 
-gamemap::TERRAIN terrain_palette::selected_fg_terrain() const {
+t_translation::t_letter terrain_palette::selected_fg_terrain() const 
+{
 	return selected_fg_terrain_;
 }
 
-gamemap::TERRAIN terrain_palette::selected_bg_terrain() const {
+t_translation::t_letter terrain_palette::selected_bg_terrain() const 
+{
 	return selected_bg_terrain_;
 }
 
-void terrain_palette::select_fg_terrain(gamemap::TERRAIN terrain) {
+void terrain_palette::select_fg_terrain(t_translation::t_letter terrain) 
+{
 	if (selected_fg_terrain_ != terrain) {
 		set_dirty();
 		selected_fg_terrain_ = terrain;
@@ -138,7 +142,8 @@ void terrain_palette::select_fg_terrain(gamemap::TERRAIN terrain) {
 	}
 }
 
-void terrain_palette::select_bg_terrain(gamemap::TERRAIN terrain) {
+void terrain_palette::select_bg_terrain(t_translation::t_letter terrain) 
+{
 	if (selected_bg_terrain_ != terrain) {
 		set_dirty();
 		selected_bg_terrain_ = terrain;
@@ -149,19 +154,21 @@ void terrain_palette::select_bg_terrain(gamemap::TERRAIN terrain) {
 /**
  * After the language is changed, the selected terrains needs an update.
  */
-void terrain_palette::update_selected_terrains(void) {
+void terrain_palette::update_selected_terrains(void) 
+{
 	set_dirty();
 	update_report();
 }
 
-std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
+std::string terrain_palette::get_terrain_string(const t_translation::t_letter t) 
+{
 	std::stringstream str;
 	const std::string& name = map_.get_terrain_info(t).name();
-	const std::string& underlying = map_.underlying_union_terrain(t);
+	const t_translation::t_list& underlying = map_.underlying_union_terrain(t);
 	str << name;
 	if(underlying.size() != 1 || underlying[0] != t) {
 		str << " (";
-		for(std::string::const_iterator i = underlying.begin();
+		for(t_translation::t_list::const_iterator i = underlying.begin();
 			i != underlying.end(); ++i) {
 
 			str << map_.get_terrain_info(*i).name();
@@ -259,7 +266,7 @@ void terrain_palette::draw(bool force) {
 	const SDL_Rect &loc = location();
 	int y = terrain_start_;
 	for(unsigned int counter = starting; counter < ending; counter++){
-		const gamemap::TERRAIN terrain = terrains_[counter];
+		const t_translation::t_letter terrain = terrains_[counter];
 		const std::string filename = "terrain/" + map_.get_terrain_info(terrain).symbol_image() + ".png";
 		surface image(image::get_image(filename, image::UNSCALED));
 		if(image == NULL) {

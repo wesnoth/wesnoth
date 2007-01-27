@@ -72,7 +72,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		return;
 	}
 
-	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
+	const t_translation::t_letter dst_terrain = map.get_terrain(b);
 
 	const double acceleration = disp.turbo_speed();
 

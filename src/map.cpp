@@ -34,13 +34,6 @@
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
 
-const gamemap::TERRAIN gamemap::VOID_TERRAIN = ' ';
-const gamemap::TERRAIN gamemap::FOGGED = '~';
-const gamemap::TERRAIN gamemap::KEEP = 'K';
-const gamemap::TERRAIN gamemap::CASTLE = 'C';
-const gamemap::TERRAIN gamemap::VILLAGE = 't';
-const gamemap::TERRAIN gamemap::FOREST = 'f';
-
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 	s << (l.x + 1) << ',' << (l.y + 1);
 	return s;
@@ -48,59 +41,64 @@ std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 
 gamemap::location gamemap::location::null_location;
 
-const std::string& gamemap::underlying_mvt_terrain(TERRAIN terrain) const
+const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_letter terrain) const
 {
-	const std::map<TERRAIN,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
+	const std::map<t_translation::t_letter,terrain_type>::const_iterator i = 
+		letterToTerrain_.find(terrain);
+
 	if(i == letterToTerrain_.end()) {
-		static std::string res;
-		res.resize(1);
-		res[0] = terrain;
-		return res;
+		static t_translation::t_list result(1);
+		result[0] = terrain;
+		return result;
 	} else {
 		return i->second.mvt_type();
 	}
 }
-const std::string& gamemap::underlying_def_terrain(TERRAIN terrain) const
+
+const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_letter terrain) const
 {
-	const std::map<TERRAIN,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
+	const std::map<t_translation::t_letter, terrain_type>::const_iterator i = 
+		letterToTerrain_.find(terrain);
+
 	if(i == letterToTerrain_.end()) {
-		static std::string res;
-		res.resize(1);
-		res[0] = terrain;
-		return res;
+		static t_translation::t_list result(1);
+		result[0] = terrain;
+		return result;
 	} else {
 		return i->second.def_type();
-	}
+	} 
 }
-const std::string& gamemap::underlying_union_terrain(TERRAIN terrain) const
+
+const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_letter terrain) const
 {
-	const std::map<TERRAIN,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
+	const std::map<t_translation::t_letter,terrain_type>::const_iterator i = 
+		letterToTerrain_.find(terrain);
+	
 	if(i == letterToTerrain_.end()) {
-		static std::string res;
-		res.resize(1);
-		res[0] = terrain;
-		return res;
+		static t_translation::t_list result(1);
+		result[0] = terrain;
+		return result;
 	} else {
 		return i->second.union_type();
 	}
 }
-
-bool gamemap::is_village(gamemap::TERRAIN terrain) const
+	
+bool gamemap::is_village(t_translation::t_letter terrain) const
 {
 	return get_terrain_info(terrain).is_village();
 }
 
-int gamemap::gives_healing(gamemap::TERRAIN terrain) const
+int gamemap::gives_healing(t_translation::t_letter terrain) const
 {
 	return get_terrain_info(terrain).gives_healing();
 }
 
-bool gamemap::is_castle(gamemap::TERRAIN terrain) const
+bool gamemap::is_castle(t_translation::t_letter terrain) const
 {
 	return get_terrain_info(terrain).is_castle();
 }
 
-bool gamemap::is_keep(gamemap::TERRAIN terrain) const
+bool gamemap::is_keep(t_translation::t_letter terrain) const
 {
 	return get_terrain_info(terrain).is_keep();
 }
@@ -134,9 +132,7 @@ bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*
 
 void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 {
-	std::string loc_terrain;
-	loc_terrain += get_terrain(loc);
-	cfg["terrain"] = loc_terrain;
+	cfg["terrain"] = t_translation::write_letter(get_terrain(loc));
 }
 
 gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
@@ -312,7 +308,7 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 {
 	LOG_G << "loading map: '" << data << "'\n";
-	const config::child_list& terrains = cfg.get_children("terrain");
+	const config::child_list& terrains = cfg.get_children("terrain"); 
 	create_terrain_maps(terrains,terrainList_,letterToTerrain_,terrain_);
 
 	read(data);
@@ -323,80 +319,70 @@ void gamemap::read(const std::string& data)
 	tiles_.clear();
 	villages_.clear();
 	std::fill(startingPositions_,startingPositions_+sizeof(startingPositions_)/sizeof(*startingPositions_),location());
+	std::map<int, t_translation::coordinate> starting_positions;
 
-	//ignore leading newlines
-	std::string::const_iterator i = data.begin();
-	while(i != data.end() && (*i == '\r' || *i == '\n')) {
-		++i;
+	try {
+		tiles_ = t_translation::read_game_map(data, starting_positions);
+	} catch(t_translation::error& e) {
+		// we re-throw the error but as map error, since all codepaths test 
+		// for this, it's the least work
+		throw incorrect_format_exception(e.message.c_str());
 	}
 
-	size_t x = 0, y = 0;
-	for(; i != data.end(); ++i) {
-		char c = *i;
-		if(c == '\r') {
-			continue;
-		} if(c == '\n') {
-			x = 0;
-			++y;
-		} else {
-			if(letterToTerrain_.count(c) == 0) {
-				if(isdigit(*i)) {
-					startingPositions_[c - '0'] = location(x,y);
-					c = KEEP;
-				} else {
-					ERR_CF << "Illegal character in map: (" << int(c) << ") '" << c << "'\n";
-					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
-				}
+	//convert the starting positions to the array
+	std::map<int, t_translation::coordinate>::const_iterator itor = 
+		starting_positions.begin();
+
+	for(; itor != starting_positions.end(); ++itor) {
+
+		// check for valid position, the first valid position is
+		// 1 so the offset 0 in the array is never used
+		if(itor->first < 1 || itor->first >= STARTING_POSITIONS) { 
+			ERR_CF << "Starting position " << itor->first << " out of range\n"; 
+			throw incorrect_format_exception("Illegal starting position found in map. The scenario cannot be loaded.");
+		}
+
+		// add to the starting position array
+		startingPositions_[itor->first] = location(itor->second.x, itor->second.y);
+	}
+	
+	// post processing on the map
+	const int width = tiles_.size();
+	const int height = tiles_[0].size();
+	for(int x = 0; x < width; ++x) {
+		for(int y = 0; y < height; ++y) {
+			
+			// is the terrain valid? 
+			if(letterToTerrain_.count(tiles_[x][y]) == 0) {
+				ERR_CF << "Illegal character in map: (" << t_translation::write_letter(tiles_[x][y]) 
+					<< ") '" << tiles_[x][y] << "'\n"; 
+				throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
+			} 
+			
+			// is it a village
+			if(is_village(tiles_[x][y])) {
+				villages_.push_back(location(x, y));
 			}
-
-			if(is_village(c)) {
-				villages_.push_back(location(int(x),int(y)));
-			}
-
-			if(x >= tiles_.size()) {
-				tiles_.resize(x+1);
-			}
-
-			tiles_[x].push_back(c);
-
-			++x;
 		}
 	}
-
-	unsigned ysize = this->y();
-	for(size_t n = 0; n != tiles_.size(); ++n) { // tiles_.size() is not constant
-		if (tiles_[n].size() != ysize) {
-			ERR_CF << "Map is not rectangular!\n";
-			tiles_.erase(tiles_.begin()+n);
-			--n;
-		}
-	}
-
-	LOG_G << "loaded map: " << this->x() << ',' << ysize << '\n';
 }
 
 std::string gamemap::write() const
 {
-	std::stringstream str;
-	for(int j = 0; j != y(); ++j) {
-		for(int i = 0; i != x(); ++i) {
-			int n;
-			for(n = 0; n != STARTING_POSITIONS; ++n) {
-				if(startingPositions_[n] == location(i,j))
-					break;
-			}
+	std::map<int, t_translation::coordinate> starting_positions = std::map<int, t_translation::coordinate>();
 
-			if(n < STARTING_POSITIONS) {
-				str << n;
-			} else {
-				str << tiles_[i][j];
-			}
+	// convert the starting positions to a map
+	for(int i = 0; i < STARTING_POSITIONS; ++i) {
+    	if(on_board(startingPositions_[i])) {
+			const struct t_translation::coordinate position = 
+				{startingPositions_[i].x, startingPositions_[i].y};
+			
+			 starting_positions.insert(std::pair<int, t_translation::coordinate>(i, position));
 		}
-
-		str << "\n";
 	}
-
-	return str.str();
+	
+	// let the low level convertor do the conversion
+	return t_translation::write_game_map(tiles_, starting_positions);
 }
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos, const int ypos)
@@ -415,10 +401,10 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 			if (y2 < 0 || y2 >= y()) {
 				continue;
 			}
-			const TERRAIN t = m[x1][y1];
-			const TERRAIN current = (*this)[x2][y2];
+			const t_translation::t_letter t = m[x1][y1];
+			const t_translation::t_letter current = (*this)[x2][y2];
 
-			if(t == FOGGED || t == VOID_TERRAIN) {
+			if(t == t_translation::FOGGED || t == t_translation::VOID_TERRAIN) {
 				continue;
 			}
 
@@ -428,23 +414,31 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 				static const std::string src_key = "old", src_not_key = "old_not",
 				                         dst_key = "new", dst_not_key = "new_not";
 				const config& cfg = **rule;
-				const std::string& src = cfg[src_key];
-				if(src != "" && std::find(src.begin(),src.end(),current) == src.end()) {
+				const t_translation::t_list& src = 
+					t_translation::read_list(cfg[src_key], 0, t_translation::T_FORMAT_AUTO);
+
+				if(!src.empty() && std::find(src.begin(),src.end(),current) == src.end()) {
 					continue;
 				}
 
-				const std::string& src_not = cfg[src_not_key];
-				if(src_not != "" && std::find(src_not.begin(),src_not.end(),current) != src_not.end()) {
+				const t_translation::t_list& src_not = 
+					t_translation::read_list(cfg[src_not_key], 0, t_translation::T_FORMAT_AUTO);
+
+				if(!src_not.empty() && std::find(src_not.begin(),src_not.end(),current) != src_not.end()) {
 					continue;
 				}
 
-				const std::string& dst = cfg[dst_key];
-				if(dst != "" && std::find(dst.begin(),dst.end(),t) == dst.end()) {
+				const t_translation::t_list& dst = 
+					t_translation::read_list(cfg[dst_key], 0, t_translation::T_FORMAT_AUTO);
+
+				if(!dst.empty() && std::find(dst.begin(),dst.end(),t) == dst.end()) {
 					continue;
 				}
 
-				const std::string& dst_not = cfg[dst_not_key];
-				if(dst_not != "" && std::find(dst_not.begin(),dst_not.end(),t) != dst_not.end()) {
+				const t_translation::t_list& dst_not = 
+					t_translation::read_list(cfg[dst_not_key], 0, t_translation::T_FORMAT_AUTO);
+
+				if(!dst_not.empty() && std::find(dst_not.begin(),dst_not.end(),t) != dst_not.end()) {
 					continue;
 				}
 
@@ -454,8 +448,10 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 
 			if(rule != rules.end()) {
 				const config& cfg = **rule;
-				const std::string& terrain = cfg["terrain"];
-				if(terrain != "") {
+				const t_translation::t_list& terrain = 
+					t_translation::read_list(cfg["terrain"], 0, t_translation::T_FORMAT_AUTO);
+
+				if(!terrain.empty()) {
 					set_terrain(location(x2,y2),terrain[0]);
 				} else if(cfg["use_old"] != "yes") {
 					set_terrain(location(x2,y2),t);
@@ -466,33 +462,35 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 		}
 	}
 
-	for(const location* pos = m.startingPositions_; pos != m.startingPositions_ + sizeof(m.startingPositions_)/sizeof(*m.startingPositions_); ++pos) {
+	for(const location* pos = m.startingPositions_; 
+			pos != m.startingPositions_ + sizeof(m.startingPositions_)/sizeof(*m.startingPositions_); 
+			++pos) {
+
 		if(pos->valid()) {
 			startingPositions_[pos - m.startingPositions_] = *pos;
 		}
 	}
-
 }
 
 int gamemap::x() const { return tiles_.size(); }
 int gamemap::y() const { return tiles_.empty() ? 0 : tiles_.front().size(); }
 
-const std::vector<gamemap::TERRAIN>& gamemap::operator[](int index) const
+const t_translation::t_list& gamemap::operator[](int index) const
 {
 	return tiles_[index];
 }
 
-gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
+t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 {
 	if(on_board(loc))
 		return tiles_[loc.x][loc.y];
 
-	const std::map<location,TERRAIN>::const_iterator itor = borderCache_.find(loc);
+	const std::map<location, t_translation::t_letter>::const_iterator itor = borderCache_.find(loc);
 	if(itor != borderCache_.end())
 		return itor->second;
 
 	//if not on the board, decide based on what surrounding terrain is
-	TERRAIN items[6];
+	t_translation::t_letter items[6];
 	int nitems = 0;
 
 	location adj[6];
@@ -506,7 +504,7 @@ gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
 
 	//count all the terrain types found, and see which one
 	//is the most common, and use it.
-	TERRAIN used_terrain = 0;
+	t_translation::t_letter used_terrain = 0;
 	int terrain_count = 0;
 	for(int i = 0; i != nitems; ++i) {
 		if(items[i] != used_terrain && !is_village(items[i]) && !is_keep(items[i])) {
@@ -518,8 +516,7 @@ gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
 		}
 	}
 
-	borderCache_.insert(std::pair<location,TERRAIN>(loc,used_terrain));
-
+	borderCache_.insert(std::pair<location, t_translation::t_letter>(loc,used_terrain));
 	return used_terrain;
 }
 
@@ -544,7 +541,7 @@ int gamemap::num_valid_starting_positions() const
 
 int gamemap::num_starting_positions() const
 {
-	return sizeof(startingPositions_)/sizeof(*startingPositions_);
+	return sizeof(startingPositions_)/sizeof(*startingPositions_); 
 }
 
 int gamemap::is_starting_position(const gamemap::location& loc) const
@@ -563,11 +560,12 @@ void gamemap::set_starting_position(int side, const gamemap::location& loc)
 	}
 }
 
-const terrain_type& gamemap::get_terrain_info(TERRAIN terrain) const
+const terrain_type& gamemap::get_terrain_info(const t_translation::t_letter terrain) const
 {
 	static const terrain_type default_terrain;
-	const std::map<TERRAIN,terrain_type>::const_iterator i =
-	                                letterToTerrain_.find(terrain);
+	const std::map<t_translation::t_letter,terrain_type>::const_iterator i =
+		letterToTerrain_.find(terrain);
+
 	if(i != letterToTerrain_.end())
 		return i->second;
 	else
@@ -578,12 +576,59 @@ const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) cons
 {
 	return get_terrain_info(get_terrain(loc));
 }
-bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, const gamestatus& game_status, const unit_map& units,bool flat_tod) const
+bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, 
+		const gamestatus& game_status, const unit_map& units, const bool flat_tod) const
 {
-	const std::string& terrain = cfg["terrain"];
-	const std::string& tod_type = cfg["time_of_day"];
-	const std::string& tod_id = cfg["time_of_day_id"];
+	/* *
+	 * The abilities use a comma separated list of terrains, this code has been
+	 * used and also needs to be backwards compatible. This should happen 
+	 * independant of the map so added this hack. Obiously it needs to be removed
+	 * as soon as possible.
+	 */
+	const int terrain_format = lexical_cast_default(cfg["terrain_format"], -1);
 
+/*  enable when the hack is no longer used	
+	if(terrain_format != -1) {
+		std::cerr << "key terrain_format in filter_location is obsolete old format no longer supported";
+	}
+*/	
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE
+	if(terrain_format == 0 || terrain_format == -1) {
+		std::cerr << "Warning deappreciated terrain format in filter_location \n";
+
+		const std::string& terrain = cfg["terrain"];
+		// Any of these may be a CSV
+		std::string terrain_letter;
+		terrain_letter += t_translation::get_old_letter(get_terrain_info(loc).number());
+		if(!terrain.empty() && !terrain_letter.empty()) {
+			if(terrain != terrain_letter) {
+				if(std::find(terrain.begin(),terrain.end(),',') != terrain.end() &&
+					std::search(terrain.begin(),terrain.end(),
+					terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
+					const std::vector<std::string>& vals = utils::split(terrain);
+					if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
+						return false;
+					}
+				} else {
+					return false;
+				}
+			}
+		}
+	} else {
+#endif
+		const t_translation::t_list& terrain = 
+			t_translation::read_list(cfg["terrain"], -1, t_translation::T_FORMAT_STRING);
+		if(! terrain.empty()) {
+
+			const t_translation::t_letter letter = get_terrain_info(loc).number();
+			if(! t_translation::terrain_matches(letter, terrain)) {
+					return false;
+			}
+		}
+#ifdef TERRAIN_TRANSLATION_COMPATIBLE
+	}
+#endif
+	
 	//Allow filtering on location ranges 
 	if(!cfg["x"].empty() && !cfg["y"].empty()){
 	  bool found=false;
@@ -597,24 +642,8 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 	  if(!found)return(false);
 	}
 
-	// Any of these may be a CSV
-	std::string terrain_letter;
-	terrain_letter += get_terrain_info(loc).letter();
-	if(!terrain.empty()) {
-		if(terrain != terrain_letter) {
-			if(std::find(terrain.begin(),terrain.end(),',') != terrain.end() &&
-				std::search(terrain.begin(),terrain.end(),
-				terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
-				const std::vector<std::string>& vals = utils::split(terrain);
-				if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
-					return false;
-				}
-			} else {
-				return false;
-			}
-		}
-	}
-
+	const std::string& tod_type = cfg["time_of_day"];
+	const std::string& tod_id = cfg["time_of_day_id"];
 	static config const dummy_cfg;
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {
@@ -654,23 +683,21 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 			}
 		}
 	}
-
-	return true;
+	return true; 
 }
 
-
-const std::vector<gamemap::TERRAIN>& gamemap::get_terrain_list() const
+const t_translation::t_list& gamemap::get_terrain_list() const
 {
 	return terrainList_;
 }
 
-void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)
+void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_letter terrain)
 {
 	if(!on_board(loc))
 		return;
 
 	const bool old_village = is_village(loc);
-	const bool new_village = is_village(ter);
+	const bool new_village = is_village(terrain);
 
 	if(old_village && !new_village) {
 		villages_.erase(std::remove(villages_.begin(),villages_.end(),loc),villages_.end());
@@ -685,7 +712,7 @@ void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)
 			startingPositions_[i] = location();
 	}
 
-	tiles_[loc.x][loc.y] = ter;
+	tiles_[loc.x][loc.y] = terrain;
 
 	location adj[6];
 	get_adjacent_tiles(loc,adj);
@@ -714,7 +741,7 @@ std::vector<gamemap::location> parse_location_range(const std::string& x, const 
 	return res;
 }
 
-const std::map<gamemap::TERRAIN,size_t>& gamemap::get_weighted_terrain_frequencies() const
+const std::map<t_translation::t_letter, size_t>& gamemap::get_weighted_terrain_frequencies() const
 {
 	if(terrainFrequencyCache_.empty() == false) {
 		return terrainFrequencyCache_;

@@ -208,10 +208,10 @@ class unit
 		bool is_flying() const { return flying_; }
 		bool is_fearless() const { return is_fearless_; }
 		bool is_healthy() const { return is_healthy_; }
-		int movement_cost(gamemap::TERRAIN terrain, int recurse_count=0) const;
-		int defense_modifier(gamemap::TERRAIN terrain, int recurse_count=0) const;
+		int movement_cost(t_translation::t_letter terrain, int recurse_count=0) const;
+		int defense_modifier(t_translation::t_letter terrain, int recurse_count=0) const;
 		int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const;
-//		std::map<gamemap::TERRAIN,int> movement_type() const;
+//		std::map<terrain_type::TERRAIN,int> movement_type() const;
 
 		bool can_advance() const { return advances_to_.empty()==false || get_modification_advances().empty() == false; }
 		bool advances() const { return experience_ >= max_experience() && can_advance(); }
@@ -302,7 +302,7 @@ class unit
 		bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
 		bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 		bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const;
-		int movement_cost_internal(gamemap::TERRAIN terrain, int recurse_count=0) const;
+		int movement_cost_internal(t_translation::t_letter terrain, int recurse_count=0) const;
 		bool has_ability_by_id(const std::string& ability) const;
 
 		config cfg_;
@@ -340,7 +340,7 @@ class unit
 
 		int movement_;
 		int max_movement_, max_movement_b_;
-		mutable std::map<gamemap::TERRAIN,int> movement_costs_; // movement cost cache
+		mutable std::map<t_translation::t_letter, int> movement_costs_; // movement cost cache
 		bool hold_position_;
 		bool end_turn_;
 		bool resting_;
@@ -364,8 +364,8 @@ class unit
 		gamemap::location goto_, interrupted_move_;
 		bool flying_, is_fearless_, is_healthy_;
 
-//		std::map<gamemap::TERRAIN,int> movement_costs_, movement_costs_b_;
-//		std::map<gamemap::TERRAIN,int> defense_mods_, defense_mods_b_;
+//		std::map<terrain_type::TERRAIN,int> movement_costs_, movement_costs_b_;
+//		std::map<terrain_type::TERRAIN,int> defense_mods_, defense_mods_b_;
 
 		string_map modification_descriptions_;
 		// animations

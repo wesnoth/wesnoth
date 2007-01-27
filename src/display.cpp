@@ -1370,7 +1370,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	surface const dst(screen_.getSurface());
 
 	const bool is_shrouded = shrouded(loc.x, loc.y);
-	gamemap::TERRAIN terrain = gamemap::VOID_TERRAIN;
+	t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
 
 	if(!is_shrouded) {
 		terrain = map_.get_terrain(loc);
@@ -1689,21 +1689,25 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
-	int tiles[6];
-	static const int terrain_types[] = { gamemap::FOGGED, gamemap::VOID_TERRAIN, 0 };
+	t_translation::t_letter tiles[6];
+	
+	static const t_translation::t_letter terrain_types[] = 
+		{ t_translation::FOGGED, t_translation::VOID_TERRAIN, 0 };
 
 	for(int i = 0; i != 6; ++i) {
 		if(shrouded(adjacent[i].x,adjacent[i].y)) {
-			tiles[i] = gamemap::VOID_TERRAIN;
+			tiles[i] = t_translation::VOID_TERRAIN;
 		} else if(!fogged(loc.x,loc.y) && fogged(adjacent[i].x,adjacent[i].y)) {
-			tiles[i] = gamemap::FOGGED;
+			tiles[i] = t_translation::FOGGED;
 		} else {
-			tiles[i] = 0;
+			tiles[i] = t_translation::NONE_TERRAIN; 
 		}
 	}
 
 
-	for(const int * terrain = terrain_types; *terrain != 0; terrain ++) {
+	for(const t_translation::t_letter *terrain = terrain_types; 
+			*terrain != 0; terrain ++) {
+
 		//find somewhere that doesn't have overlap to use as a starting point
 		int start;
 		for(start = 0; start != 6; ++start) {
@@ -1721,7 +1725,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 			if(tiles[i] == *terrain) {
 				std::ostringstream stream;
 				std::string name;
-				// if(*terrain == gamemap::VOID_TERRAIN)
+				// if(*terrain == terrain_type::VOID_TERRAIN)
 				//	stream << "void";
 				//else
 				//	stream << "fog";
@@ -1803,7 +1807,7 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 	return res;
 }
 
-surface display::get_flag(gamemap::TERRAIN terrain, int x, int y)
+surface display::get_flag(t_translation::t_letter terrain, int x, int y)
 {
 	const bool village = map_.is_village(terrain);
 	if(!village) {

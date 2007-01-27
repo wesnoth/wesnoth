@@ -75,7 +75,7 @@ public:
 	 *              to the parameters, or NULL if there is none.
 	 */
 	const imagelist *get_terrain_at(const gamemap::location &loc,
-			const std::string &tod, ADJACENT_TERRAIN_TYPE terrain_type);
+			const std::string &tod, ADJACENT_TERRAIN_TYPE const terrain_type);
 
 	/** Updates the animation at a given tile. returns true if something has
 	 * changed, and must be redrawn.
@@ -200,11 +200,10 @@ public:
 		terrain_constraint(gamemap::location loc) : loc(loc) {};
 
 		gamemap::location loc;
-		std::string terrain_types;
+		t_translation::t_match terrain_types_match;
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
 		std::vector<std::string> has_flag;
-
 		rule_imagelist images;
 	};
 
@@ -276,7 +275,7 @@ public:
 		 * The 6 adjacent terrains of this tile, and the terrain on
 		 * this tile.
 		 */
-		gamemap::TERRAIN adjacents[7];
+		t_translation::t_letter adjacents[7];
 
 	};
 
@@ -381,7 +380,7 @@ private:
 	 *
 	 * @return true if the rule is valid, false if it is not.
 	 */
-	bool rule_valid(const building_rule &rule);
+	bool rule_valid(const building_rule &rule) const;
 
 	/**
 	 * Starts the animation on a rule.
@@ -533,7 +532,7 @@ private:
 	 *                    describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
-			const gamemap::location &loc, const std::string& type,
+			const gamemap::location &loc, const t_translation::t_match& type,
 			const config& global_images);
 
 	/**
@@ -558,7 +557,7 @@ private:
 	 * Parses a map string (the map= element of a [terrain_graphics] rule,
 	 * and adds constraints from this map to a building_rule.
 	 *
-	 * @param mapstring The map string to parse
+	 * @param mapstring The map vector to parse
 	 * @param br        The building rule into which to add the extracted
 	 *                  constraints
 	 * @param anchors   A map where to put "anchors" extracted from the map.
@@ -599,15 +598,26 @@ private:
 	/**
 	 * Checks whether a terrain letter matches a given list of terrain letters
 	 *
-	 * @param letter   The letter to check
-	 * @param terrains The terrain list agains which to check the terrain
-	 *                 letter. May contain the metacharacter '*' meaning
-	 *                 "all terrains" or the character "!" meaning "all
+	 * @param letter   The terrain to check
+	 * @param terrains The terrain list agains which to check the terrain. 
+	 *                 May contain the metacharacter '*' STAR meaning
+	 *                 "all terrains" or the character '!' NOT meaning "all
 	 *                 terrains except those present in the list."
 	 *
-	 * @return returns true if "letter" matches the list, false if it does not.
+	 * @return returns true if "letter" matches the list, false if it does not and empty list matches.
 	 */
-	bool terrain_matches(gamemap::TERRAIN letter, const std::string &terrains);
+	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list &terrains) const; 
+
+	/**
+	 * Checks whether a terrain letter matches a given list of terrain letters
+	 *
+	 * @param letter   The terrain to check
+	 * @param terrain  The terrain match structure which to check the terrain.
+	 *                 See previous definition for more details.
+	 *
+	 * @return returns true if "letter" matches the list, false if it does not and empty list matches.
+	 */
+	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_match &terrain) const; 
 
 	/**
 	 * Checks whether a rule matches a given location in the map.
@@ -626,7 +636,7 @@ private:
 	 *                  checked.
 	 */
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc,
-			int rule_index, bool check_loc);
+			const int rule_index, const bool check_loc) const;
 
 	/**
 	 * Applies a rule at a given location: applies the result of a matching
@@ -696,7 +706,7 @@ private:
 	/**
 	 * Shorthand typedef for a map associating a list of locations to a terrain type.
 	 */
-	typedef std::map<unsigned char, std::vector<gamemap::location> > terrain_by_type_map;
+	typedef std::map<t_translation::t_letter, std::vector<gamemap::location> > terrain_by_type_map;
 
 	/**
 	 * A map representing all locations whose terrain is of a given type.
