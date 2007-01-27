@@ -52,6 +52,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		"-   J.R. Blain (Cowboy)",
 		"-   Kristoffer Erlandsson (erl)",
 		"-   Maksim Orlovich (SadEagle)",
+		"-   Mark de Wever (Mordante/SkeletonCrew)",
 		"-   Nicolas Weeger (Ryo)",
 		"-   Patrick Parker (Sapient)",
 		"-   Philippe Plantier (Ayin)",
