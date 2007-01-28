@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:15+0100\n"
+"POT-Creation-Date: 2007-01-28 15:50+0100\n"
 "PO-Revision-Date: 2007-01-08 22:55+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -526,8 +526,9 @@ msgid "Normal Mode"
 msgstr "Normálny režim"
 
 #: src/preferences_display.cpp:251
-msgid "User Define"
-msgstr "Podľa používateľa"
+#, fuzzy
+msgid "Custom"
+msgstr "Vystrihni"
 
 #: src/preferences_display.cpp:252
 msgid "Apply"
@@ -765,9 +766,12 @@ msgstr "KB"
 msgid "Delete File"
 msgstr "Vymaž súbor"
 
-#: src/widgets/file_chooser.cpp:169
+#: src/widgets/file_chooser.cpp:166
 msgid "Deletion of the file failed."
 msgstr "Nepodarilo sa vymazať súbor."
+
+#~ msgid "User Define"
+#~ msgstr "Podľa používateľa"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Prijímam údaje..."

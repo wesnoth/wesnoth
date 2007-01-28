@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:15+0100\n"
+"POT-Creation-Date: 2007-01-28 15:50+0100\n"
 "PO-Revision-Date: 2007-01-03 10:59+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -528,8 +528,9 @@ msgid "Normal Mode"
 msgstr "Modalità normale"
 
 #: src/preferences_display.cpp:251
-msgid "User Define"
-msgstr "Definita dall'utente"
+#, fuzzy
+msgid "Custom"
+msgstr "Taglia"
 
 #: src/preferences_display.cpp:252
 msgid "Apply"
@@ -773,6 +774,9 @@ msgstr "KB"
 msgid "Delete File"
 msgstr "Elimina file"
 
-#: src/widgets/file_chooser.cpp:169
+#: src/widgets/file_chooser.cpp:166
 msgid "Deletion of the file failed."
 msgstr "Eliminazione file fallita."
+
+#~ msgid "User Define"
+#~ msgstr "Definita dall'utente"

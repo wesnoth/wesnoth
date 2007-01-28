@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:15+0100\n"
+"POT-Creation-Date: 2007-01-28 15:50+0100\n"
 "PO-Revision-Date: 2007-01-08 19:25+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -538,8 +538,9 @@ msgid "Normal Mode"
 msgstr "Нормальный режим"
 
 #: src/preferences_display.cpp:251
-msgid "User Define"
-msgstr "Определено пользователем"
+#, fuzzy
+msgid "Custom"
+msgstr "Вырезать"
 
 #: src/preferences_display.cpp:252
 msgid "Apply"
@@ -778,9 +779,12 @@ msgstr "кб"
 msgid "Delete File"
 msgstr "Удалить файл"
 
-#: src/widgets/file_chooser.cpp:169
+#: src/widgets/file_chooser.cpp:166
 msgid "Deletion of the file failed."
 msgstr "Ошибка удаления файла."
+
+#~ msgid "User Define"
+#~ msgstr "Определено пользователем"
 
 #~ msgid "File: "
 #~ msgstr "Файл: "

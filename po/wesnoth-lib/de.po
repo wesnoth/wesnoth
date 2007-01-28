@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:15+0100\n"
+"POT-Creation-Date: 2007-01-28 15:50+0100\n"
 "PO-Revision-Date: 2007-01-03 21:20+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -523,8 +523,9 @@ msgid "Normal Mode"
 msgstr "Standard Einstellungen"
 
 #: src/preferences_display.cpp:251
-msgid "User Define"
-msgstr "Benutzerdefiniert"
+#, fuzzy
+msgid "Custom"
+msgstr "Ausschneiden"
 
 #: src/preferences_display.cpp:252
 msgid "Apply"
@@ -771,6 +772,9 @@ msgstr "KB"
 msgid "Delete File"
 msgstr "Datei löschen"
 
-#: src/widgets/file_chooser.cpp:169
+#: src/widgets/file_chooser.cpp:166
 msgid "Deletion of the file failed."
 msgstr "Das Löschen der Datei ist fehlgeschlagen."
+
+#~ msgid "User Define"
+#~ msgstr "Benutzerdefiniert"

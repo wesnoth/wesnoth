@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-01-01 18:15+0100\n"
+"POT-Creation-Date: 2007-01-28 15:50+0100\n"
 "PO-Revision-Date: 2007-01-05 18:35+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
@@ -532,8 +532,9 @@ msgid "Normal Mode"
 msgstr "Mode normal"
 
 #: src/preferences_display.cpp:251
-msgid "User Define"
-msgstr "Personnalisé"
+#, fuzzy
+msgid "Custom"
+msgstr "Couper"
 
 #: src/preferences_display.cpp:252
 msgid "Apply"
@@ -774,9 +775,12 @@ msgstr "Ko"
 msgid "Delete File"
 msgstr "Supprimer le fichier"
 
-#: src/widgets/file_chooser.cpp:169
+#: src/widgets/file_chooser.cpp:166
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
+
+#~ msgid "User Define"
+#~ msgstr "Personnalisé"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Réception de données..."
