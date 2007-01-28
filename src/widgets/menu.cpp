@@ -383,6 +383,8 @@ void menu::set_heading(const std::vector<std::string>& heading)
 
 void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, bool keep_viewport)
 {
+	
+	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
 	items_.clear();
 	item_pos_.clear();
 	itemRects_.clear();
@@ -398,6 +400,8 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	fill_items(items, strip_spaces);
 	if(!keep_viewport) {
 		set_position(0);
+	} else if(scrolled_to_max) {
+		set_position(get_max_position());
 	}
 
 	update_scrollbar_grip_height();

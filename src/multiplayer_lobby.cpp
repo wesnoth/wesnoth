@@ -306,6 +306,8 @@ void gamebrowser::handle_event(const SDL_Event& event)
 }
 void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 {
+	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
+
 	//if you change lobby_minimaps setting, content will be update on lobby update
 	minimaps_ = preferences::show_lobby_minimaps();
 	if (minimaps_) {
@@ -418,6 +420,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	}
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
+	if(scrolled_to_max) {
+		set_position(get_max_position());
+	}
 	scroll(get_position());
 	if(selected_ >= games_.size())
 		selected_ = maximum<long>(static_cast<long>(games_.size()) - 1, 0);
