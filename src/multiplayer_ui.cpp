@@ -485,7 +485,7 @@ void ui::layout_children(const SDL_Rect& /*rect*/)
 void ui::gamelist_updated(bool silent)
 { 
    	std::vector<std::string> user_strings;
-   	std::vector<std::string> user_strings_;
+   	std::vector<std::string> user_strings_with_image;
 	config::child_list users = gamelist_.get_children("user");
 	config::child_iterator user;
 	
@@ -504,10 +504,10 @@ void ui::gamelist_updated(bool silent)
 
 		if(preferences::iconize_list()) {
 		    user_strings.push_back(preferences::login());
-		    user_strings_.push_back(imgpre + "self.png" + sep1 + preferences::login());
+		    user_strings_with_image.push_back(imgpre + "self.png" + sep1 + preferences::login());
         } else {
 		    user_strings.push_back(preferences::login());
-		    user_strings_.push_back(preferences::login());
+		    user_strings_with_image.push_back(preferences::login());
         }
 
 	for (user = users.begin(); user != users.end(); ++user) {
@@ -520,10 +520,10 @@ void ui::gamelist_updated(bool silent)
 			}
 			if(preferences::iconize_list()) {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-			    user_strings_.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+			    user_strings_with_image.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
             } else {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-			    user_strings_.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings_with_image.push_back(prefix + (**user)["name"].str() + suffix);
             }
         }
 	}
@@ -538,10 +538,10 @@ void ui::gamelist_updated(bool silent)
 			}
 			if(preferences::iconize_list()) {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-			    user_strings_.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+			    user_strings_with_image.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
             } else {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-			    user_strings_.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings_with_image.push_back(prefix + (**user)["name"].str() + suffix);
             }
         }
 	}
@@ -556,10 +556,10 @@ void ui::gamelist_updated(bool silent)
 			}
 			if(preferences::iconize_list()) {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-			    user_strings_.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+			    user_strings_with_image.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
             } else {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-			    user_strings_.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings_with_image.push_back(prefix + (**user)["name"].str() + suffix);
             }
         }
    	}
@@ -575,26 +575,26 @@ void ui::gamelist_updated(bool silent)
 			std::string ig = std::string((**user)["name"]);
 		    if(ig == preferences::login()) {
 	            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-	            user_strings_.push_back(imgpre + "self.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+	            user_strings_with_image.push_back(imgpre + "self.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        } else if((*cignore)[ig] == "ignored") {
 	            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-	            user_strings_.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+	            user_strings_with_image.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        } else if ((*cignore)[ig] == "friend") {
 	            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-	            user_strings_.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+	            user_strings_with_image.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        } else {
 	             user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-	             user_strings_.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
+	             user_strings_with_image.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        }
 		} else {
             user_strings.push_back(prefix + (**user)["name"].str() + suffix);
-            user_strings_.push_back(prefix + (**user)["name"].str() + suffix);
+            user_strings_with_image.push_back(prefix + (**user)["name"].str() + suffix);
         }
     }
     }
    	
 	set_user_list(user_strings, silent);
-	set_user_menu_items(user_strings_);
+	set_user_menu_items(user_strings_with_image);
 }
 
 void ui::set_user_menu_items(const std::vector<std::string>& list)
