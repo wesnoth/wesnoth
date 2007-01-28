@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:39+0100\n"
+"POT-Creation-Date: 2007-01-28 15:26+0100\n"
 "PO-Revision-Date: 2006-02-21 22:09+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
@@ -80,7 +80,7 @@ msgstr "Tallenna kartta nimellä"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kartta on jo olemassa. Haluatko korvata sen?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
 msgid "Player"
 msgstr "Pelaaja"
 
@@ -108,46 +108,44 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "Tiedosto ei sisällä kelvollista karttaa."
 
-#: src/editor/editor.cpp:734
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr ""
-"Karttaa '$filename' ei ole olemassa, tai sitä ei voitu lukea tiedostona."
-
-#: src/editor/editor.cpp:746
-msgid "Load failed: "
-msgstr "Lataus epäonnistui: "
-
-#: src/editor/editor.cpp:946
+#: src/editor/editor.cpp:913
 msgid "You must have a hex selected on the board."
 msgstr "Sinulla täytyy olla jokin heksa valittuna kartalta."
 
-#: src/editor/editor.cpp:1198
+#: src/editor/editor.cpp:1168
 msgid "Quit Editor"
 msgstr "Lopeta"
 
-#: src/editor/editor.cpp:1203
+#: src/editor/editor.cpp:1173
 msgid "Do you want to save the map before quitting?"
 msgstr "Haluatko tallentaa kartan ennenkuin lopetat?"
 
-#: src/editor/editor.cpp:1251
+#: src/editor/editor.cpp:1221
 msgid "Map saved."
 msgstr "Kartta tallennettu."
 
-#: src/editor/editor.cpp:1260
+#: src/editor/editor.cpp:1230
 msgid "Could not save the map: $msg"
 msgstr "Karttaa ei voitu tallentaa: $msg"
 
-#: src/editor/editor.cpp:1275
+#: src/editor/editor.cpp:1245
 msgid "Error: Illegal character in filename."
 msgstr "Virhe: virheellinen merkki tiedoston nimessä."
 
-#: src/editor/editor_palettes.cpp:319
+#: src/editor/editor_palettes.cpp:326
 msgid "FG"
 msgstr "Etuala (vasen näppäin)"
 
-#: src/editor/editor_palettes.cpp:321
+#: src/editor/editor_palettes.cpp:328
 msgid "BG"
 msgstr "Taka-ala (oikea näppäin)"
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr ""
+#~ "Karttaa '$filename' ei ole olemassa, tai sitä ei voitu lukea tiedostona."
+
+#~ msgid "Load failed: "
+#~ msgstr "Lataus epäonnistui: "
 
 #~ msgid "File"
 #~ msgstr "Tiedosto"

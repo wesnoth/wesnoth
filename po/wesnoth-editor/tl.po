@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:39+0100\n"
+"POT-Creation-Date: 2007-01-28 15:26+0100\n"
 "PO-Revision-Date: 2006-05-08 07:52-0000\n"
 "Last-Translator: Joset Anthony Zamora <eradicus_kee@yahoo.ca>\n"
 "Language-Team: none\n"
@@ -80,7 +80,7 @@ msgstr "I-seyb ang mapa sa ibang pangalan"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Ang mapang ito ay dati pa dito. Baguhin ito?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
 msgid "Player"
 msgstr "Manlalaro"
 
@@ -108,45 +108,43 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "Ang fayl ay hindi isang ganap na mapa."
 
-#: src/editor/editor.cpp:734
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr "'$filename' ay hindi makita o hindi mabasa bilang isang fayl."
-
-#: src/editor/editor.cpp:746
-msgid "Load failed: "
-msgstr "Hindi nabuksan:"
-
-#: src/editor/editor.cpp:946
+#: src/editor/editor.cpp:913
 msgid "You must have a hex selected on the board."
 msgstr "Dapat ay may napili kang hex sa bord."
 
-#: src/editor/editor.cpp:1198
+#: src/editor/editor.cpp:1168
 msgid "Quit Editor"
 msgstr "Umalis sa editor"
 
-#: src/editor/editor.cpp:1203
+#: src/editor/editor.cpp:1173
 msgid "Do you want to save the map before quitting?"
 msgstr "Gusto mo bang i-seyb ang mapa bago isarado ito?"
 
-#: src/editor/editor.cpp:1251
+#: src/editor/editor.cpp:1221
 msgid "Map saved."
 msgstr "Ang mapa ay na-seyb na."
 
-#: src/editor/editor.cpp:1260
+#: src/editor/editor.cpp:1230
 msgid "Could not save the map: $msg"
 msgstr "Hindi ma-seyb ang mapang: $msg"
 
-#: src/editor/editor.cpp:1275
+#: src/editor/editor.cpp:1245
 msgid "Error: Illegal character in filename."
 msgstr "Error: May ilegal na karakter sa faylneym."
 
-#: src/editor/editor_palettes.cpp:319
+#: src/editor/editor_palettes.cpp:326
 msgid "FG"
 msgstr "FG"
 
-#: src/editor/editor_palettes.cpp:321
+#: src/editor/editor_palettes.cpp:328
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr "'$filename' ay hindi makita o hindi mabasa bilang isang fayl."
+
+#~ msgid "Load failed: "
+#~ msgstr "Hindi nabuksan:"
 
 #~ msgid "File"
 #~ msgstr "Fayl"

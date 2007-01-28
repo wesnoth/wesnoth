@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:39+0100\n"
+"POT-Creation-Date: 2007-01-28 15:26+0100\n"
 "PO-Revision-Date: 2007-01-14 16:29+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -81,7 +81,7 @@ msgstr "Salvesta kaart kui"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kaart on juba olemas. Kas soovid selle üle kirjutada?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
 msgid "Player"
 msgstr "Mängija"
 
@@ -109,45 +109,43 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "Fail ei sisalda korralikku kaarti."
 
-#: src/editor/editor.cpp:734
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr "'$filename' ei ole olemas või seda ei õnnestu failina lugeda."
-
-#: src/editor/editor.cpp:746
-msgid "Load failed: "
-msgstr "Laadimine ebaõnnestus:"
-
-#: src/editor/editor.cpp:946
+#: src/editor/editor.cpp:913
 msgid "You must have a hex selected on the board."
 msgstr "Sul peab olema kaardil mõni väli valitud."
 
-#: src/editor/editor.cpp:1198
+#: src/editor/editor.cpp:1168
 msgid "Quit Editor"
 msgstr "Välju redaktorist"
 
-#: src/editor/editor.cpp:1203
+#: src/editor/editor.cpp:1173
 msgid "Do you want to save the map before quitting?"
 msgstr "Kas sa tahad kaardi enne väljumist salvestada?"
 
-#: src/editor/editor.cpp:1251
+#: src/editor/editor.cpp:1221
 msgid "Map saved."
 msgstr "Kaart salvestatud"
 
-#: src/editor/editor.cpp:1260
+#: src/editor/editor.cpp:1230
 msgid "Could not save the map: $msg"
 msgstr "Ei saa kaarti salvestada: $msg"
 
-#: src/editor/editor.cpp:1275
+#: src/editor/editor.cpp:1245
 msgid "Error: Illegal character in filename."
 msgstr "Viga: Lubamatu sümbol failinimes."
 
-#: src/editor/editor_palettes.cpp:319
+#: src/editor/editor_palettes.cpp:326
 msgid "FG"
 msgstr "FG"
 
-#: src/editor/editor_palettes.cpp:321
+#: src/editor/editor_palettes.cpp:328
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr "'$filename' ei ole olemas või seda ei õnnestu failina lugeda."
+
+#~ msgid "Load failed: "
+#~ msgstr "Laadimine ebaõnnestus:"
 
 #~ msgid "File"
 #~ msgstr "Fail"

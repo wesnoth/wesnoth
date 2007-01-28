@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:39+0100\n"
+"POT-Creation-Date: 2007-01-28 15:26+0100\n"
 "PO-Revision-Date: 2006-05-24 21:02+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -82,7 +82,7 @@ msgstr "Ulož mapu ako"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Táto mapa už existuje. Chceš ju prepísať?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
 msgid "Player"
 msgstr "Hráč"
 
@@ -109,45 +109,43 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "Tento súbor neobsahuje platnú mapu."
 
-#: src/editor/editor.cpp:734
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr "'$filename' neexistuje, alebo sa nedá prečítať."
-
-#: src/editor/editor.cpp:746
-msgid "Load failed: "
-msgstr "Nepodarilo sa načítať: "
-
-#: src/editor/editor.cpp:946
+#: src/editor/editor.cpp:913
 msgid "You must have a hex selected on the board."
 msgstr "Musíš označiť pole na mape."
 
-#: src/editor/editor.cpp:1198
+#: src/editor/editor.cpp:1168
 msgid "Quit Editor"
 msgstr "Ukonči editor"
 
-#: src/editor/editor.cpp:1203
+#: src/editor/editor.cpp:1173
 msgid "Do you want to save the map before quitting?"
 msgstr "Chceš pred ukončením uložiť mapu?"
 
-#: src/editor/editor.cpp:1251
+#: src/editor/editor.cpp:1221
 msgid "Map saved."
 msgstr "Mapa uložená."
 
-#: src/editor/editor.cpp:1260
+#: src/editor/editor.cpp:1230
 msgid "Could not save the map: $msg"
 msgstr "Neviem uložiť mapu: $msg"
 
-#: src/editor/editor.cpp:1275
+#: src/editor/editor.cpp:1245
 msgid "Error: Illegal character in filename."
 msgstr "Chyba: Nepovolený znak v mene súboru."
 
-#: src/editor/editor_palettes.cpp:319
+#: src/editor/editor_palettes.cpp:326
 msgid "FG"
 msgstr "Vec"
 
-#: src/editor/editor_palettes.cpp:321
+#: src/editor/editor_palettes.cpp:328
 msgid "BG"
 msgstr "Terén"
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr "'$filename' neexistuje, alebo sa nedá prečítať."
+
+#~ msgid "Load failed: "
+#~ msgstr "Nepodarilo sa načítať: "
 
 #~ msgid "File"
 #~ msgstr "Súbor"

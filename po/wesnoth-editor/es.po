@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:39+0100\n"
+"POT-Creation-Date: 2007-01-28 15:26+0100\n"
 "PO-Revision-Date: 2006-08-19 12:35+0200\n"
 "Last-Translator: Isaac Clerencia <isaac@warp.es>\n"
 "Language-Team:  <en@li.org>\n"
@@ -83,7 +83,7 @@ msgstr "Guardar el mapa como..."
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "El mapa ya existe. ¿Quiere sobreescribirlo?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
 msgid "Player"
 msgstr "Jugador"
 
@@ -111,45 +111,43 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "El fichero no contiene un mapa válido."
 
-#: src/editor/editor.cpp:734
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr "«$filename» no existe o no es un fichero legible."
-
-#: src/editor/editor.cpp:746
-msgid "Load failed: "
-msgstr "Error de carga: "
-
-#: src/editor/editor.cpp:946
+#: src/editor/editor.cpp:913
 msgid "You must have a hex selected on the board."
 msgstr "Debe tener seleccionado un hexágono en el tablero."
 
-#: src/editor/editor.cpp:1198
+#: src/editor/editor.cpp:1168
 msgid "Quit Editor"
 msgstr "Salir del editor"
 
-#: src/editor/editor.cpp:1203
+#: src/editor/editor.cpp:1173
 msgid "Do you want to save the map before quitting?"
 msgstr "¿Desea guardar el mapa antes de salir?"
 
-#: src/editor/editor.cpp:1251
+#: src/editor/editor.cpp:1221
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor/editor.cpp:1260
+#: src/editor/editor.cpp:1230
 msgid "Could not save the map: $msg"
 msgstr "No se ha podido guardar el mapa: $msg"
 
-#: src/editor/editor.cpp:1275
+#: src/editor/editor.cpp:1245
 msgid "Error: Illegal character in filename."
 msgstr "Error: Carácter inválido en el nombre del fichero."
 
-#: src/editor/editor_palettes.cpp:319
+#: src/editor/editor_palettes.cpp:326
 msgid "FG"
 msgstr "Dela"
 
-#: src/editor/editor_palettes.cpp:321
+#: src/editor/editor_palettes.cpp:328
 msgid "BG"
 msgstr "Detr"
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr "«$filename» no existe o no es un fichero legible."
+
+#~ msgid "Load failed: "
+#~ msgstr "Error de carga: "
 
 #~ msgid "File"
 #~ msgstr "Fichero"

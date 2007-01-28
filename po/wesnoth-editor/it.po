@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:39+0100\n"
+"POT-Creation-Date: 2007-01-28 15:26+0100\n"
 "PO-Revision-Date: 2006-03-26 00:07+0100\n"
 "Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: IT\n"
@@ -79,7 +79,7 @@ msgstr "Salva la mappa con nome"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Una mappa con questo nome esiste già. Vuoi sovrascriverla?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
 msgid "Player"
 msgstr "Giocatore"
 
@@ -107,45 +107,43 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "Il file non contiene una mappa valida."
 
-#: src/editor/editor.cpp:734
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr "'$filename' non esiste o non può essere letto come file."
-
-#: src/editor/editor.cpp:746
-msgid "Load failed: "
-msgstr "Caricamento fallito:"
-
-#: src/editor/editor.cpp:946
+#: src/editor/editor.cpp:913
 msgid "You must have a hex selected on the board."
 msgstr "Devi selezionare un esagono sulla mappa."
 
-#: src/editor/editor.cpp:1198
+#: src/editor/editor.cpp:1168
 msgid "Quit Editor"
 msgstr "Esci dall'editor"
 
-#: src/editor/editor.cpp:1203
+#: src/editor/editor.cpp:1173
 msgid "Do you want to save the map before quitting?"
 msgstr "Vuoi salvare la mappa prima di uscire?"
 
-#: src/editor/editor.cpp:1251
+#: src/editor/editor.cpp:1221
 msgid "Map saved."
 msgstr "Mappa salvata."
 
-#: src/editor/editor.cpp:1260
+#: src/editor/editor.cpp:1230
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/editor/editor.cpp:1275
+#: src/editor/editor.cpp:1245
 msgid "Error: Illegal character in filename."
 msgstr "Errore: Hai inserito un carattere non valido nel nome del file"
 
-#: src/editor/editor_palettes.cpp:319
+#: src/editor/editor_palettes.cpp:326
 msgid "FG"
 msgstr "Primo piano"
 
-#: src/editor/editor_palettes.cpp:321
+#: src/editor/editor_palettes.cpp:328
 msgid "BG"
 msgstr "Sfondo"
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr "'$filename' non esiste o non può essere letto come file."
+
+#~ msgid "Load failed: "
+#~ msgstr "Caricamento fallito:"
 
 #~ msgid "File"
 #~ msgstr "File"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-27 19:39+0100\n"
+"POT-Creation-Date: 2007-01-28 15:26+0100\n"
 "PO-Revision-Date: 2005-12-23 16:01+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -76,7 +76,7 @@ msgstr "Mentés másként"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "A pálya már létezik. Felül akarod írni?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1331
+#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
 msgid "Player"
 msgstr "Játékos"
 
@@ -104,45 +104,43 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "A fájl nem tartalmaz érvényes pályát"
 
-#: src/editor/editor.cpp:734
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr "'$filename' nem létezik, vagy nem olvasható."
-
-#: src/editor/editor.cpp:746
-msgid "Load failed: "
-msgstr "Betöltés sikertelen:"
-
-#: src/editor/editor.cpp:946
+#: src/editor/editor.cpp:913
 msgid "You must have a hex selected on the board."
 msgstr "Ki kell jelölnöd egy hatszöget a táblán"
 
-#: src/editor/editor.cpp:1198
+#: src/editor/editor.cpp:1168
 msgid "Quit Editor"
 msgstr "Kilépés a szerkesztőből"
 
-#: src/editor/editor.cpp:1203
+#: src/editor/editor.cpp:1173
 msgid "Do you want to save the map before quitting?"
 msgstr "El akarod menteni a pályát kilépés előtt?"
 
-#: src/editor/editor.cpp:1251
+#: src/editor/editor.cpp:1221
 msgid "Map saved."
 msgstr "Pálya sikeresen elmentve"
 
-#: src/editor/editor.cpp:1260
+#: src/editor/editor.cpp:1230
 msgid "Could not save the map: $msg"
 msgstr "A pályát nem lehet elmenteni: $msg"
 
-#: src/editor/editor.cpp:1275
+#: src/editor/editor.cpp:1245
 msgid "Error: Illegal character in filename."
 msgstr "Hiba: A fájlnév érvénytelen karaktert tartalmaz."
 
-#: src/editor/editor_palettes.cpp:319
+#: src/editor/editor_palettes.cpp:326
 msgid "FG"
 msgstr "Bal gomb"
 
-#: src/editor/editor_palettes.cpp:321
+#: src/editor/editor_palettes.cpp:328
 msgid "BG"
 msgstr "Jobb gomb"
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr "'$filename' nem létezik, vagy nem olvasható."
+
+#~ msgid "Load failed: "
+#~ msgstr "Betöltés sikertelen:"
 
 #~ msgid "File"
 #~ msgstr "Fájl"
