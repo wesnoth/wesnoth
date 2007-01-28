@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
 #include "log.hpp"
 #include "terrain_translation.hpp"
 #include "serialization/string_utils.hpp"
@@ -894,7 +895,7 @@ std::string number_to_string_(t_letter terrain, const int start_position)
 		
 	for(int i = 0; i < 4; ++i) {
 		if(letter[i] != 0) {
-			result.push_back(letter[i]);
+			push_back<std::string, unsigned char>(result, letter[i]);
 		} else {
 			// no letter, means no more letters at all
 			// so leave the loop
@@ -936,7 +937,7 @@ t_letter string_to_builder_number_(std::string str)
 		// builder, so return this number
 		return str[0];
 	} else {
-		wassert(number >= 0 && number < 2^24); 
+		wassert(number >= 0 && number < (2^24)); 
 		return (number << BUILDER_SHIFT);
 	}
 }
