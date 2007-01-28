@@ -937,7 +937,7 @@ t_letter string_to_builder_number_(std::string str)
 		// builder, so return this number
 		return str[0];
 	} else {
-		wassert(number >= 0 && number < (2^24)); 
+		wassert(number >= 0 && number < (2 << 24)); 
 		return (number << BUILDER_SHIFT);
 	}
 }
