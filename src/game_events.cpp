@@ -987,7 +987,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				}
 
 				size_t choice = get_random() % num_choices;
-				unsigned long tmp = 0;
+				int tmp = 0;
 				for(size_t i = 0; i < ranges.size(); i++) {
 					tmp += (ranges[i].second - ranges[i].first) + 1;
 					if (tmp > choice) {
