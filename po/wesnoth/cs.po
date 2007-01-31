@@ -1,4 +1,4 @@
-# translation of wesnoth-cs.po to Czech
+# translation of cs.po to Czech
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-28 15:45+0100\n"
-"PO-Revision-Date: 2007-01-23 16:09+0100\n"
+"PO-Revision-Date: 2007-01-31 13:26+0100\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -91,15 +91,14 @@ msgid "regenerates"
 msgstr "regeneruje"
 
 #: data/abilities.cfg:59
-#, fuzzy
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
 "Regenerace:\n"
-"Jednotka se uzdraví o 8 hp za tah. V případě otravy, místo uzdravení "
-"odstraní jed."
+"Jednotka se vyléčí o 8 životů za tah. V případě, že je otrávena, místo "
+"vyléčení je uzdravena z otravy."
 
 #: data/abilities.cfg:74
 msgid "steadfast"
@@ -1981,7 +1980,7 @@ msgstr "Ještěráci"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Stroje"
 
 #: data/english.cfg:25
 msgid "race^Mermen"
@@ -2000,14 +1999,12 @@ msgid "race^Ogres"
 msgstr "Obři"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Trolls"
 msgstr "Trollové"
 
 #: data/english.cfg:30
-#, fuzzy
 msgid "race^Woses"
-msgstr "Monstra"
+msgstr "Stromový lid"
 
 #: data/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
@@ -2085,9 +2082,8 @@ msgid "Race"
 msgstr "Národ"
 
 #: data/english.cfg:55
-#, fuzzy
 msgid "Advance from:"
-msgstr "Povyšuje z "
+msgstr "Povyšuje z:"
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -4346,7 +4342,6 @@ msgstr ""
 "(sepsal Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:136
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4400,7 +4395,6 @@ msgstr ""
 "(sepsal Elfský Plenitel)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -4589,13 +4583,12 @@ msgstr ""
 "soubojové mapy. Doporučeným nastavením je 2 zlaté na vesnici."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "Zasvěcenec"
+msgstr "socha"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Toto je socha z kamene."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
@@ -4613,7 +4606,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Sullina socha"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:74
 msgid ""
@@ -4827,7 +4820,6 @@ msgid "4p - Clash"
 msgstr "4p - Srážka"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs. 2. Recommended setting of 2 gold per village."
 msgstr ""
 "Malá mapa pro dva proti dvěma. Doporučeným nastavením jsou 2 zlaté na "
@@ -11129,9 +11121,8 @@ msgid "Defender"
 msgstr "Obránce"
 
 #: src/mouse_events.cpp:209
-#, fuzzy
 msgid "Expected Battle Result (HP)"
-msgstr "Očekávaný výsledek boje (hp)"
+msgstr "Očekávaný výsledek boje (HP)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "

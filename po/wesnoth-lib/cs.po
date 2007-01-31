@@ -5,21 +5,21 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
-# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006.
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-28 15:50+0100\n"
-"PO-Revision-Date: 2006-06-28 18:08+0200\n"
+"PO-Revision-Date: 2007-01-31 13:43+0100\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
-"Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
+"Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -392,7 +392,7 @@ msgstr "Vlož uživatelský příkaz"
 
 #: src/hotkeys.cpp:124
 msgid "Change the language"
-msgstr "Změnit používaný jazyk"
+msgstr "Změna používaného jazyka"
 
 #: src/hotkeys.cpp:466 src/hotkeys.cpp:691
 msgid "Do you really want to quit?"
@@ -522,22 +522,20 @@ msgid "Chat Timestamping"
 msgstr "Časování chatu"
 
 #: src/preferences_display.cpp:247
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Pokročilé nastavení"
+msgstr "Pokročilý mód"
 
 #: src/preferences_display.cpp:248
 msgid "Normal Mode"
-msgstr ""
+msgstr "Normální mód"
 
 #: src/preferences_display.cpp:251
-#, fuzzy
 msgid "Custom"
-msgstr "Vyřízni"
+msgstr "Vlastní"
 
 #: src/preferences_display.cpp:252
 msgid "Apply"
-msgstr ""
+msgstr "Použij"
 
 #: src/preferences_display.cpp:253
 msgid "Music Volume:"
@@ -553,7 +551,7 @@ msgstr "Gama:"
 
 #: src/preferences_display.cpp:256
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Vzorkovací frekvence (Hz):"
 
 #: src/preferences_display.cpp:271
 msgid "Sound effects on/off"
@@ -572,22 +570,20 @@ msgid "Change the music volume"
 msgstr "Změna hlasitosti hudebního doprovodu"
 
 #: src/preferences_display.cpp:284
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Změnit používaný jazyk"
+msgstr "Změna vzorkovací frekvence"
 
 #: src/preferences_display.cpp:293
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Vlastní vzorkovací frekvence"
 
 #: src/preferences_display.cpp:302 src/preferences_display.cpp:306
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Změna hlasitosti hudebního doprovodu"
+msgstr "Změna velikosti vyrovnávací paměti"
 
 #: src/preferences_display.cpp:304 src/preferences_display.cpp:638
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Velikost vyrovnávací paměti:"
 
 #: src/preferences_display.cpp:312
 msgid "Change the speed of scrolling around the map"
@@ -670,7 +666,7 @@ msgstr "Zobraz a nastav klávesové zkratky"
 
 #: src/preferences_display.cpp:658
 msgid "Chat Lines: "
-msgstr "Řádek chatu:"
+msgstr "Řádek chatu: "
 
 #: src/preferences_display.cpp:710
 msgid "yes"
