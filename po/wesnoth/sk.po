@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-28 15:45+0100\n"
-"PO-Revision-Date: 2007-01-08 22:45+0100\n"
+"PO-Revision-Date: 2007-01-31 13:08+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,6 @@ msgid "regenerates"
 msgstr "regeneruje"
 
 #: data/abilities.cfg:59
-#, fuzzy
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
@@ -1975,14 +1974,12 @@ msgid "race^Ogres"
 msgstr "Ohyzdi"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Trolls"
-msgstr "Troll"
+msgstr "Trollovia"
 
 #: data/english.cfg:30
-#, fuzzy
 msgid "race^Woses"
-msgstr "Potvory"
+msgstr "Lesní muži"
 
 # Bridge
 #: data/english.cfg:33
@@ -2067,9 +2064,8 @@ msgid "Race"
 msgstr "Rasa"
 
 #: data/english.cfg:55
-#, fuzzy
 msgid "Advance from:"
-msgstr "Povýšený z"
+msgstr "Povýšený z:"
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -4308,7 +4304,6 @@ msgstr ""
 "(zapísal Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:136
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4361,7 +4356,6 @@ msgstr ""
 "(zapísal Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -4549,13 +4543,12 @@ msgstr ""
 "duelovej mape. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "Stav"
+msgstr "socha"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Toto je kamenná socha."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
@@ -4572,7 +4565,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Socha Sully"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:74
 msgid ""
@@ -4582,38 +4575,42 @@ msgid ""
 "Leveling Flame, Sulla the Incinerator, Sulla the Proud and Sulla the "
 "Righteous."
 msgstr ""
+"V kameni vytesaná podoba Sully Veľkej, známej aj ako Sulla Spravodlivá, "
+"Sulla Tyranka, Cárovná potápajúcej sa veže, Prorokyňa drvivého vetra, Lady "
+"pohyblivého ľadovca, Strážkyňa horiacej vlny, Kráľovná zničujúceho plameňa, "
+"Sulla Spaľovačka, Sulla Pyšná a Sulla Pravdovravná."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Socha Lhun-dupa"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "V kameni vytesaná podoba Lhun-dupa, Sullinho služobníka."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Socha Ri-nzena"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "V kameni vytesaná podoba Ri-nzena, Sullinho služobníka."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Socha Ten-zina"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "V kameni vytesaná podoba Ten-zina, Sullinho služobníka."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Socha Lo-bsanga"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "V kameni vytesaná podoba Lo-bsanga, Sullinho služobníka."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4770,25 +4767,22 @@ msgid "4p - Castle Hopping Isle"
 msgstr "(4) - Ostrov blízkych hradov"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid ""
 "Hop from castle to castle while fighting over a central isle. Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Dve armáy sa zrazili na rozdelenom pobreží plnom skrytých jaskýň a "
-"rozvetvených riek. Odporúča sa nastaviť 2 zlatky za dedinu."
+"Skáč z hradu na hrad a bojuj pritom o centrálny ostrov. Odporúča sa nastaviť "
+"2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
 msgstr "(4) - Zrážka"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs. 2. Recommended setting of 2 gold per village."
 msgstr "Malá mapa pre 2 proti 2. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:3
-#, fuzzy
 msgid "4p - Hamlets"
 msgstr "(2) - Osady"
 
@@ -4797,7 +4791,6 @@ msgid "4p - Isar's Cross"
 msgstr "(4) - Isarov kríž"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map.  Close quarters fighting means the successful "
 "rotation of units and planning of moves is important.  Teams set for players "
@@ -4805,7 +4798,7 @@ msgid ""
 "villages."
 msgstr ""
 "Maličká mapa 2v2. Blízkosť hráčov znamená, že je dôležité striedať jednotky "
-"a plánovať ťahy. Tímy sú nastavené 1+4 proti 2+3 (severovýchoch proti "
+"a plánovať ťahy. Tímy sú nastavené 1+4 proti 2+3 (severovýchod proti "
 "juhozápadu). Odporúča sa 75 zlata, 20 dedín."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:18
@@ -4837,7 +4830,6 @@ msgid "4p - King of the Hill"
 msgstr "(4) - Kráľ kopca"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages. "
@@ -4845,7 +4837,7 @@ msgid ""
 msgstr ""
 "V tejto mape pre 4 hráčov veľkosti 36x36 je veľmi výhodné ovládať oblasť "
 "okolo strednej pevnosti. Každý proti každému alebo 2v2. Na mape je 36 dedín. "
-"Odporúčané nastavenie 2 zlatky za dedinu."
+"Odporúčané nastavenie 2 zlatky za dedinu a 150 zlata na začiatok."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:29
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:34
@@ -4882,7 +4874,6 @@ msgid "4p - Loris River"
 msgstr "(4) - Rieka Loris"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages. Recommended setting "
@@ -4909,7 +4900,6 @@ msgid "4p - Paths of Daggers"
 msgstr "(4) - Cesta dýk"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement.  Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA.  "
@@ -4924,7 +4914,6 @@ msgid "4p - Siege Castles"
 msgstr "(4) - Obliehanie hradov"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages. "
@@ -4932,7 +4921,7 @@ msgid ""
 msgstr ""
 "Mapa pre 4 hráčov veľkosti 40x30. 4 mocné hrady stoja proti sebe pri sútoku "
 "dvoch riek. Možno hrať 2v2 alebo každý proti každému. Približne 45 dedín. "
-"Odporúčané nastavenie 2 zlatky za dedinu."
+"Odporúčané nastavenie 2 zlatky za dedinu a 150 zlata na začiatok."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -4993,7 +4982,7 @@ msgstr "(2 + 2) alebo (3 + 3) tímová hra."
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "(6) - Manzivanské pasce"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
 msgid ""
@@ -5002,13 +4991,16 @@ msgid ""
 "extended.  Teams set for players 145 vs. 236 (east vs west).  Designed for "
 "100 starting gold, has 33 villages."
 msgstr ""
+"Mapa 40x20, 3 proti 3. Manzivanské pasce sú známa zložitá a mätúca oblasť, "
+"kde je jednoduché ocitnúť sa mimo formácie alebo príliš naširoko. Nastavenie "
+"tímov: 1+4+5 proti 2+3+6 (východ proti západu). Odporúča sa 100 zlata na "
+"začiatok, má 33 dedín."
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
 msgstr "(6) - Súmrak nad Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3 vs. 3 map.  Flexible coordination of your alliance is required to "
 "avoid being outnumbered.  Teams set for players 145 vs. 236 (north vs. "
@@ -5036,7 +5028,6 @@ msgid "9p - Merkwuerdigliebe"
 msgstr "(9) - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
-#, fuzzy
 msgid ""
 "A very small 3 vs. 3 vs. 3 map.  A 60sec timer is recommended due to the "
 "large number of players.  The teams are players 159 vs. 267 vs. 348 (north "
@@ -10964,7 +10955,6 @@ msgid "Defender"
 msgstr "Obranca"
 
 #: src/mouse_events.cpp:209
-#, fuzzy
 msgid "Expected Battle Result (HP)"
 msgstr "Predpokladaný výsledok bitky (živ)"
 
