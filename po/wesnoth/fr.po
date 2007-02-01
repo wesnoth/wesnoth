@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-31 14:14+0100\n"
-"PO-Revision-Date: 2007-01-29 00:42+0100\n"
+"PO-Revision-Date: 2007-02-01 01:31+0100\n"
 "Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team:  <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -134,12 +134,10 @@ msgstr ""
 "Cette unité peut commander les unités alliées présentes à ses côtés, les "
 "rendant meilleures au combat.\n"
 "\n"
-"Les attaques des unités aux côtés du commandant et appartenant au même camp "
-"feront 25% de dégâts supplémentaires pour chaque niveau d'écart entre elles "
-"et lui."
+"Les attaques des unités aux côtés du commandant, de niveau inférieur, et "
+"appartenant au même camp feront 25% de dégâts supplémentaires pour chaque "
+"niveau d'écart entre elles et lui."
 
-# FIXME: Skirmisher = tirailleur??
-# (breversa : skirmish = escarmouche)
 #: data/abilities.cfg:305
 msgid "skirmisher"
 msgstr "tirailleur"
@@ -172,7 +170,7 @@ msgstr ""
 "plus fortes et les unités chaotiques plus faibles.\n"
 "\n"
 "Toutes les unités adjacentes à cette unité combattront la nuit comme si "
-"c'était le crépuscule et comme s'il faisait jour au moment du crépuscule."
+"c'était le crépuscule, et comme s'il faisait jour au crépuscule."
 
 #: data/abilities.cfg:330
 msgid "teleport"
@@ -205,8 +203,8 @@ msgstr ""
 "Cette unité peut se cacher dans les forêts et rester invisible à ses "
 "ennemis.\n"
 "\n"
-"Les unités ennemies ne peuvent voir ni attaquer cette unité tant qu'elle se "
-"trouve en forêt, sauf lors du tour suivant une attaque de cette unité ou "
+"Les unités ennemies ne peuvent ni voir ni attaquer cette unité tant qu'elle "
+"se trouve en forêt, sauf lors du tour suivant une attaque de cette unité ou "
 "s'il y a des unités ennemies à proximité de cette unité."
 
 #: data/abilities.cfg:362 data/abilities.cfg:367
@@ -261,8 +259,8 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "Fureur berzerk :\n"
-"Offensivement et défensivement, cette attaque poursuit le combat jusqu'à ce "
-"que l'un des deux protagonistes meure, ou jusqu'à un maximum de 30 tours."
+"En attaque comme en défense, cette attaque force le combat jusqu'à la mort "
+"de l'un des deux protagonistes ou jusqu'à un maximum de 30 tours."
 
 #: data/abilities.cfg:422
 msgid "backstab"
@@ -292,10 +290,9 @@ msgid ""
 "doesn't work on Undead or units in villages.)"
 msgstr ""
 "Peste :\n"
-"Quand une unité est tuée par une telle attaque, elle est remplacée par une "
-"unité identique et dans la même armée que celle ayant porté l'attaque (cela "
-"ne marche pas contre les morts-vivants ou les unités stationnées dans les "
-"villages)."
+"Une unité tuée par une telle attaque est remplacée par une unité identique "
+"appartenant à la même armée que celle ayant la peste (Ne fonctionne pas sur "
+"les morts-vivants ou sur les unités situées dans les villages)."
 
 #: data/abilities.cfg:452
 msgid "slows"
@@ -309,9 +306,9 @@ msgid ""
 "up)."
 msgstr ""
 "Ralentissement:\n"
-"Cette attaque ralentit la cible jusqu'à la fin de son tour. Le "
-"ralentissement diminue de moitié les dégâts causés par les attaques de la "
-"cible et diminue de moitié le mouvement de celle-ci (arrondi au supérieur)."
+"Cette attaque ralentit la cible jusqu'à la fin de son tour. Une unité "
+"ralentie inflige moitié moins de dégâts et voit son mouvement diminé par "
+"deux (arrondi au supérieur)."
 
 #: data/abilities.cfg:461
 msgid "stones"
@@ -325,7 +322,7 @@ msgid ""
 msgstr ""
 "Pétrification :\n"
 "Cette attaque transforme la cible en pierre. Les unités ainsi pétrifiées ne "
-"peuvent plus ni se déplacer, ni attaquer."
+"peuvent plus se déplacer ou attaquer."
 
 #: data/abilities.cfg:470
 msgid "marksman"
@@ -381,8 +378,8 @@ msgid ""
 "take double damage from the target's counterattack."
 msgstr ""
 "Charge :\n"
-"Cette attaque inflige le double de dégâts à la cible. Cependant cette unité "
-"recevra également le double de dégâts lors de la contre-attaque."
+"Cette attaque inflige le double de dégâts à la cible, mais l'attaquant "
+"recevra également le double de dégâts lors de la riposte."
 
 #: data/abilities.cfg:514
 msgid "drains"
@@ -395,8 +392,8 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "Drain :\n"
-"Cette unité draine la vie des unités vivantes, se régénérant ainsi de la "
-"moitié des dégâts causés (arrondis par défaut)."
+"Cette unité draine la vie des unités vivantes et se régénère de la moitié "
+"des dégâts causés (arrondis à l'inférieur)."
 
 #: data/abilities.cfg:523
 msgid "firststrike"
@@ -408,7 +405,7 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Initiative :\n"
-"Cette unité attaque toujours en premier, même lorsqu'elle se défend."
+"Cette unité attaque toujours en premier, même quand elle se défend."
 
 #: data/abilities.cfg:532
 msgid "poison"
@@ -422,8 +419,8 @@ msgid ""
 msgstr ""
 "Empoisonnement :\n"
 "Cette attaque empoisonne la cible. Les unités empoisonnées perdent 8 points "
-"de vie à chaque tour jusqu'à ce qu'elles soient guéries, ou n'aient plus "
-"qu'un seul point de vie."
+"de vie à chaque tour jusqu'à ce qu'elles soient guéries ou qu'elles n'aient "
+"plus qu'un seul point de vie."
 
 #: data/about.cfg:6
 msgid "Artwork and Graphics Designers"
@@ -611,7 +608,7 @@ msgstr "Bots"
 
 #: data/amla.cfg:9
 msgid ", MAX XP +25%"
-msgstr ", XP MAX +25%"
+msgstr ", XP MAX +25 %"
 
 #: data/amla.cfg:9
 msgid "Max HP bonus +"
@@ -642,15 +639,15 @@ msgid ""
 msgstr ""
 "Les unités loyales se battent mieux le jour et moins bien la nuit.\n"
 "\n"
-"Jour : +25 % de dégâts infligés\n"
-"Nuit : -25 % de dégâts infligés"
+"Jour : +25 % de dégâts\n"
+"Nuit : -25 % de dégâts"
 
 #: data/english.cfg:10
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"Les unités neutres ne sont ni affectées par le jour ni par la nuit et se "
+"Les unités neutres ne sont affectées ni par le jour ni par la nuit, et se "
 "battent aussi bien de jour que de nuit."
 
 #: data/english.cfg:14
@@ -662,8 +659,8 @@ msgid ""
 msgstr ""
 "Les unités chaotiques se battent mieux la nuit et moins bien le jour.\n"
 "\n"
-"Jour : -25 % de dégâts infligés\n"
-"Nuit : +25 % de dégâts infligés"
+"Jour : -25 % de dégâts\n"
+"Nuit : +25 % de dégâts"
 
 #: data/english.cfg:17
 msgid "Elves"
@@ -813,7 +810,7 @@ msgstr "à distance"
 
 #: data/english.cfg:52
 msgid "Wesnoth unit list"
-msgstr "Liste des unités Wesnoth"
+msgstr "Liste des unités de Wesnoth"
 
 #: data/english.cfg:53
 msgid "Based on version"
@@ -873,7 +870,7 @@ msgstr "Montrer les combats"
 
 #: data/game.cfg:47
 msgid "Mouse Scrolling"
-msgstr "Défilement à la souris"
+msgstr "Défilement de la souris"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -917,7 +914,7 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
-"Certaines unités ont des capacités qui affectent les autres unités, ou qui "
+"Certaines unités ont des capacités qui affectent les autres unités ou qui "
 "ont un impact sur la manière dont l'unité interagit avec les autres. Ces "
 "capacités seront listées dans cette rubrique au fur et à mesure que vous les "
 "rencontrerez."
@@ -1010,7 +1007,7 @@ msgid ""
 msgstr ""
 "Le jeu consiste en séries de batailles, appelées scénarios. Chaque scénario "
 "fait se mesurer vos troupes contre les troupes d'un ou plusieurs "
-"adversaires. Vous pouvez jouer contre l'ordinateur, ou avec des amis en "
+"adversaires. Vous pouvez jouer contre l'ordinateur ou avec des amis en "
 "jouant à tour de rôle sur le même ordinateur (jeu en chaise tournante). Si "
 "votre ordinateur est connecté à un réseau, vous pouvez aussi jouer contre "
 "d'autres personnes connectées. Si votre ordinateur a une connexion à "
@@ -1090,7 +1087,7 @@ msgstr ""
 "\n"
 "\n"
 "Si vous faites un clic-droit sur un hexagone de château et sélectionnez "
-"Recruter, la nouvelle unité apparaîtra sur cette case. Autrement, elle "
+"'Recruter', la nouvelle unité apparaîtra sur cette case. Autrement, elle "
 "apparaîtra sur une case libre près du donjon. Vous pouvez recruter autant "
 "d'unités qu'il y a de cases libres dans votre château mais vous ne pouvez "
 "pas dépenser plus d'or que vous n'en disposez en nouvelles unités."
@@ -1117,7 +1114,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dans les scénarios ultérieurs, vous pourrez aussi Rappeler des survivants de "
+"Dans les scénarios suivants, vous pourrez aussi rappeler des survivants de "
 "batailles antérieures. Le rappel coûte toujours 20 pièces d'or et vous "
 "présente une liste de toutes les unités survivantes des scénarios précédents."
 
@@ -1131,10 +1128,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités ne coûtent pas seulement de l'or pour le recrutement et le "
-"rappel, elles nécessitent aussi de l'argent pour l'entretien. Voir "
-"<ref>dst=income_and_upkeep text='Revenu et Entretien'</ref> pour plus "
-"d'informations."
+"Les unités coûtent de l'or pour le recrutement, le rappel, et pour "
+"l'entretien. Voir <ref>dst=income_and_upkeep text='Revenu et Entretien'</"
+"ref> pour plus d'informations."
 
 #: data/help.cfg:114
 msgid "Orbs"
@@ -1145,18 +1141,18 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
-"Au-dessus de la barre d'énergie affichée à côté de chacune de vos unités il "
-"y a une orbe. Pour les unités que vous contrôlez, cette orbe est :"
+"Il y un orbe au-dessus de la barre d'énergie affichée à côté de chacune de "
+"vos unités. Pour les unités que vous contrôlez, cet orbe est :"
 
 #: data/help.cfg:116
 msgid "green if it hasn't moved this turn,"
-msgstr "verte si elle ne s'est pas déplacée pendant ce tour,"
+msgstr "vert si l'unité ne s'est pas déplacée pendant ce tour,"
 
 #: data/help.cfg:117
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"jaune si elle s'est déplacée, mais pourrait se déplacer encore plus loin ou "
-"attaquer, ou"
+"jaune si elle s'est déplacée, mais pourrait encore se déplacer ou attaquer, "
+"ou"
 
 #: data/help.cfg:118
 msgid "red if it has used all its movement this turn."
@@ -1164,7 +1160,7 @@ msgstr "rouge si elle a utilisé tout son mouvement pour ce tour."
 
 #: data/help.cfg:119
 msgid "The orb is blue if the unit is an ally you do not control."
-msgstr "L'orbe est bleue si l'unité est un allié que vous ne contrôlez pas."
+msgstr "L'orbe est bleu si l'unité est un allié que vous ne contrôlez pas."
 
 #: data/help.cfg:120
 msgid "Enemy units have no orb on top of their energy bar."
@@ -1182,10 +1178,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
-"Chaque unité a un certain nombre de points de vie (PV). Si les points de vie "
-"d'une unité passent sous 1, l'unité meurt. Chaque unité a aussi un certain "
+"Chaque unité a un certain nombre de points de vie (PV). L'unité meurt si les "
+"points de vie d'une unité passent sous 1. Chaque unité a aussi un certain "
 "nombre de points d'expérience (XP). Une unité fraîchement recrutée démarre "
-"sans point d'expérience et gagne de l'expérience en combattant des ennemis."
+"sans point d'expérience mais en gagne en combattant."
 
 #: data/help.cfg:130
 msgid ""
@@ -1572,7 +1568,7 @@ msgid ""
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"Le moment de la journée affecte la quantité de dégâts infligée par certaines "
+"Le moment de la journée modifie la quantité de dégâts infligés par certaines "
 "unités de la manière suivante :\n"
 " Les unités loyales infligent +25 % de dégâts le jour et -25 % la nuit.\n"
 " Les unités chaotiques infligent +25 % de dégâts la nuit et -25 % le jour.\n"
@@ -1588,7 +1584,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le moment de la journée peut être observé sous la mini carte dans le panneau "
+"Le moment de la journée peut être observé sous la mini-carte dans le panneau "
 "d'état. Pour le cycle habituel jour/nuit, le matin et l'après-midi comptent "
 "pour le jour, le premier et le deuxième quart comptent pour la nuit :\n"
 
@@ -1892,10 +1888,9 @@ msgid ""
 msgstr ""
 "La plupart des unités ont deux traits de caractère, avec pour exception les "
 "unités mortes-vivantes qui n'en possèdent qu'un seul : « Mort-vivant » et "
-"les woses qui ne reçoivent aucun trait. Les traits de caractère sont des "
-"modifications qui changent légèrement les caractéristiques d'une unité. Ils "
-"sont habituellement attribués aléatoirement à une unité lorsqu'elle est "
-"recrutée."
+"les woses qui ne reçoivent aucun trait. Les traits sont des modifications "
+"légères des caractéristiques d'une unité. Ils sont habituellement attribués "
+"aléatoirement à une unité lorsqu'elle est recrutée."
 
 #: data/help.cfg:267
 msgid ""
@@ -1950,12 +1945,12 @@ msgstr ""
 "\n"
 "\n"
 "Les unités intelligentes sont très utiles au début d'une campagne parce "
-"qu'elles progressent rapidement vers des unités de plus haut niveau. Plus "
-"tard dans les campagnes, le trait Intelligent n'est plus aussi utile car "
-"l'amélioration post-niveau maximum ne représente pas un changement aussi "
-"significatif qu'une augmentation de niveau. Si vous avez plusieurs unités au "
-"niveau maximum vous aimeriez peut-être rappeler les unités avec des traits "
-"de caractère plus intéressants."
+"qu'elles progressent rapidement vers des unités de plus haut niveau. Il "
+"devient moins utile plus tard dans les campagnes car une amélioration au-"
+"delà du niveau maximum ne représente pas un changement aussi significatif "
+"qu'une augmentation de niveau. Si vous avez plusieurs unités au niveau "
+"maximum vous aimeriez peut-être rappeler les unités avec des traits plus "
+"intéressants."
 
 #: data/help.cfg:282
 msgid "Quick"
@@ -1980,12 +1975,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rapide est le trait le plus visible, particulièrement pour les unités lentes "
+"Il est facile de remarquer le trait rapide surtout si sur des troupes lentes "
 "comme les trolls ou l'infanterie lourde. Les unités avec le trait rapide "
-"peuvent souvent bénéficier d'une mobilité très améliorée dans les terrains "
-"difficiles, aussi prenez cela en compte lorsque vous déployez vos forces. "
-"Rappelez-vous également que les unités rapides ne sont pas aussi endurantes "
-"que la normale et ainsi ne sont pas adéquates pour tenir des positions."
+"bénéficient souvent d'une mobilité améliorée sur les terrains difficiles ; "
+"prenez cela en compte lorsque vous déployez vos forces. Rappelez-vous "
+"également que les unités rapides ne sont pas aussi endurantes que la normale "
+"et ainsi ne sont pas adéquates pour tenir des positions."
 
 #: data/help.cfg:290
 msgid "Resilient"
@@ -1995,7 +1990,6 @@ msgstr "Robuste"
 msgid "Resilient units have 10% +3 more HP than usual."
 msgstr "Les unités robustes ont 10% +3 PV de plus que la normale."
 
-# "à la fois (...) ou" est un peu bizarre.
 #: data/help.cfg:293
 msgid ""
 "\n"
@@ -2012,7 +2006,7 @@ msgstr ""
 "et c'est un trait utile pour toutes les unités. La résistance est souvent "
 "plus utile sur une unité qui a à la fois peu de points de vie, une bonne "
 "défense, ou de bonnes résistances. Les unités robustes sont particulièrement "
-"adéquates pour tenir des positions stratégiques contre des opposants."
+"adéquates pour tenir des positions stratégiques."
 
 #: data/help.cfg:298
 msgid "Strong"
@@ -2045,13 +2039,13 @@ msgstr ""
 
 #: data/help.cfg:306
 msgid "Fearless"
-msgstr "Courageux"
+msgstr "Intrépide"
 
 #: data/help.cfg:307
-#, fuzzy
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
-"L'aversion de la lumière ou des ténèbres n'a pas d'emprise sur ces braves."
+"Ces braves ne subissent pas les effets de leur aversion pour la lumière ou "
+"les ténèbres."
 
 #: data/help.cfg:312
 msgid "Loyal"
@@ -2081,13 +2075,12 @@ msgstr ""
 "\n"
 "\n"
 "Durant une campagne, certaines unités peuvent décider de rejoindre le joueur "
-"de leur propre initiative. Ces unités obtiennent alors le trait 'fidèle'. "
-"Bien qu'elles puissent avoir un coût de rappel à chaque scénario, elles "
-"n'ont pas de coût d'entretien. Cela peut les rendre plus qu'indispensables "
-"pendant une longue campagne, lorsque l'or se fait rare. Ce trait de "
-"caractère n'est jamais donné à une unité recrutée, il est donc fortement "
-"déconseillé de renvoyer de telles unités ou de les laisser se faire tuer "
-"bêtement."
+"de leur propre initiative. Ces unités sont signalées par le trait 'fidèle'. "
+"Elles n'ont pas de coût d'entretien, mais peuvent avoir un coût de rappel. "
+"Cela peut les rendre plus qu'indispensables pendant une longue campagne, "
+"lorsque l'or se fait rare. Une unité recrutée ne possède jamais ce trait ; "
+"il est donc fortement déconseillé de renvoyer des troupes fidèles ou de les "
+"faire tuer bêtement."
 
 #: data/help.cfg:320
 msgid "trait^Undead"
@@ -2112,11 +2105,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités mortes-vivantes n'ont généralement que ce trait de caractère. "
-"Puisque ces unités sont constituées des corps d'unités mortes, relevées pour "
-"combattre par-delà la mort, le poison n'a aucun effet sur elles. Cela les "
-"rend sans égal contre les ennemis utilisant le poison en conjonction avec "
-"leurs attaques."
+"Les unités mortes-vivantes n'ont généralement que ce trait. Puisque ces "
+"unités sont constituées des corps d'unités mortes, relevées pour combattre "
+"par-delà la mort, le poison n'a aucun effet sur elles. Cela les rend sans "
+"égal contre les ennemis utilisant le poison en conjonction avec leurs "
+"attaques."
 
 #: data/help.cfg:328
 msgid "Dextrous"
@@ -2140,25 +2133,23 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Habile est un trait de caractère que seuls les elfes peuvent posséder. Cette "
-"race est bien connue pour sa grâce sans pareil, ainsi que pour ses facilités "
-"au tir à l'arc. Certains de ses individus, cependant, dépassent leurs "
-"confrères et possèdent un talent naturel encore supérieur. Ces elfes "
-"infligent donc un point de dégâts supplémentaire pour chaque flèche touchant "
-"au but."
+"Seuls les elfes peuvent posséder le trait habile. Cette race est bien connue "
+"pour sa grâce sans pareil et pour ses dons à l'arc. Certains de ses "
+"individus dépassent même leurs semblables et possèdent un talent naturel "
+"encore supérieur. Ces elfes infligent donc un point de dégâts supplémentaire "
+"pour chaque flèche touchant son but."
 
 #: data/help.cfg:336
 msgid "Healthy"
 msgstr "Vigoureux"
 
 #: data/help.cfg:337
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and "
 "recover more quickly when resting."
 msgstr ""
-"Connus pour leur vitalité, certain nains sont plus robustes que les autres "
-"et récupèrent plus vite lorsqu'il se reposent."
+"Certains nains, connus pour leur vitalité, sont plus résistants que les "
+"autres et récupèrent plus vite lorsqu'ils se reposent."
 
 #: data/help.cfg:343 data/terrain.cfg:416
 msgid "Grassland"
@@ -2174,8 +2165,8 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"La prairie représente des plaines ouvertes, cultivées, moissonnées pour la "
-"pâture, ou sauvages. Étant un terrain ouvert, la prairie facilite les "
+"La prairie représente des plaines ouvertes, cultivées, utilisées pour la "
+"pâture, ou restés sauvages. Étant un terrain ouvert, la prairie facilite les "
 "déplacements mais rend aussi la défense plus difficile. Généralement, les "
 "unités pour qui la prairie réussit le mieux sont la cavalerie ou les unités "
 "agiles qui prennent avantage de l'espace ouvert.\n"
@@ -2192,7 +2183,7 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
-"Les routes sont des chemins de terre, formées par le passage de nombreux "
+"Les routes sont des chemins de terre formés par le passage de nombreux "
 "voyageurs. Dans le jeu, les routes sont identiques aux "
 "<ref>dst=terrain_grassland text=prairies</ref>."
 
@@ -2201,7 +2192,6 @@ msgid "Forest"
 msgstr "Forêt"
 
 #: data/help.cfg:368
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -2218,22 +2208,22 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
-"Les forêts représentent tout terrain boisé avec un sous-bois suffisamment "
+"Les forêts correspondent à tout terrain boisé avec un sous-bois suffisamment "
 "touffu pour gêner le passage. Bien qu'elles ralentissent presque tout le "
-"monde, les forêts offrent une meilleure défense à la plupart des unités "
-"qu'un terrain ouvert. La cavalerie a cependant tant de mal à y circuler que "
-"le bénéfice de la furtivité y est annulé. Les elfes constituent une "
-"exception à cette règle générale pour les forêts. Non seulement ils y ont "
-"une pleine capacité de leurs mouvements, mais ils y gagnent également un "
-"bonus défensif considérable. Les nains sont une autre exception à cette "
-"règle ; bien qu'ils soient capables de progresser en forêt sans grande perte "
-"de vitesse, la forêt leur est un terrain complètement inconnu, ils ne "
-"reçoivent donc aucun bonus défensif.\n"
+"monde, elles protègent souvent mieux qu'un terrain ouvert. La cavalerie a "
+"cependant tant de mal à y circuler que le bénéfice de la furtivité y est "
+"annulé. Les elfes constituent une exception à cette règle générale : non "
+"seulement ils s'y déplacent sans malus, mais ils y gagnent également un "
+"bonus défensif considérable. Les nains sont une autre exception : bien "
+"qu'ils soient capables de progresser en forêt sans être trop ralentis, la "
+"forêt leur est un terrain complètement inconnu, ils ne reçoivent donc aucun "
+"bonus défensif.\n"
 "\n"
-"La plupart des unités ont une défense de 50 % en forêt, mais les cavaleries "
-"sont limitées à 40 %. Les elfes, au contraire, y bénéficient de 60 à 70 % de "
+"La plupart des unités ont une défense de 50 % en forêt et celles des "
+"cavaleries sont limitées à 40 %. Les elfes bénéficient de 60 à 70 % de "
 "défense, même pour leurs unités montées. Les nains ne reçoivent généralement "
-"que 30 % de défense en forêt."
+"que 30 % de défense en forêt.\n"
+"\n"
 
 #: data/help.cfg:373 data/terrain.cfg:458
 msgid "Hills"
@@ -2251,12 +2241,12 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"Les collines représentent tout terrain inégal, comportant suffisamment de "
-"creux et de bosses pour apporter une couverture. Il est difficile de "
-"circuler dans des collines pour la plupart des troupes. Les nains, les "
-"trolls et les orcs sont suffisamment familiers avec le terrain pour ne pas "
-"être ralentis. Les cavaleries ont tant de mal à y circuler que l'aide "
-"défensive apportée par la couverture leur est annulée.\n"
+"Les collines représentent tout terrain inégal comportant suffisamment de "
+"creux et de bosses pour apporter une couverture. La plupart des troupes "
+"circulent difficilement dans des collines. Les nains, les trolls et les orcs "
+"sont suffisamment familiers avec le terrain pour ne pas être ralentis. Les "
+"cavaleries s'y déplacent si difficilement que le bonus apporté par cette "
+"couverture est annulé.\n"
 "\n"
 "La plupart des unités ont environ 50 % de défense dans les collines, tandis "
 "que les cavaleries sont limitées à 40 %. Les nains bénéficient d'une défense "
@@ -2522,9 +2512,8 @@ msgid ""
 msgstr ""
 "Une caverne éclairée est une zone de terrain où la lumière de la surface "
 "vient illuminer les ténèbres souterraines. Celle-ci procure un bonus de "
-"dégat aux unités loyales et enlève celui des unités chaotiques. Pour tous "
-"les autres aspects, ce terrain est fonctionnellement identique aux cavernes "
-"normales.\n"
+"dégâts aux unités loyales et enlève celui des unités chaotiques. Sinon ce "
+"terrain ressemble aux cavernes normales.\n"
 "\n"
 "La plupart des unités reçoivent 20 à 40 % de défense dans les cavernes, les "
 "nains en obtiennent 50 %."
@@ -2635,8 +2624,8 @@ msgstr ""
 "évidents. Ce terrain ne peut être traversé que par les unités capables de "
 "voler à une distance considérable au-dessus. La lave en fusion produit "
 "également une lumière rougeâtre éclairant la zone au-dessus. Celle-ci "
-"procure donc un bonus de dégât aux unités loyales et enlève celui des unités "
-"chaotiques."
+"procure donc un bonus de dégâts aux unités loyales et enlève celui des "
+"unités chaotiques."
 
 #: data/help.cfg:547 data/terrain.cfg:798
 msgid "River Ford"
@@ -2651,11 +2640,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
-"Quand une rivière est très peu profonde, la traverser est très facile pour "
-"les unités terrestres. De plus, toute créature adaptée à la natation a une "
-"mobilité totale à de tels endroits de la rivière. Dans le jeu, un gué est "
-"traité soit comme une plaine, soit comme une eau peu profonde, selon les "
-"meilleurs bonus de défense et de mouvement pour l'unité qui y est présente."
+"Les unités terrestres peuvent traverser très facilement une rivière très peu "
+"profonde. De plus, toute créature nageuse a une mobilité totale à de tels "
+"endroits de la rivière. Dans le jeu, un gué est traité soit comme une "
+"plaine, soit comme une eau peu profonde, selon les meilleurs bonus de "
+"défense et de mouvement pour l'unité qui y est présente."
 
 #: data/help.cfg:555 data/terrain.cfg:60 data/terrain.cfg:69
 #: data/terrain.cfg:78 data/terrain.cfg:88 data/terrain.cfg:97
@@ -2678,18 +2667,18 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"À ceux capables d'en construire, la capacité de poser un pont permet de "
-"s'affranchir de la nature inconstante des passages à gué, qui dépendent des "
-"variations du niveau de l'eau. Ceux-ci ne valent rien à côté du luxe d'un "
-"passage à sec, dont la perte est une affaire très sérieuse dans les périodes "
-"froides de l'année.\n"
+"Un pont permet à ceux à ceux capables d'en construire de s'affranchir de la "
+"nature inconstante des passages à gué qui dépendent des variations du niveau "
+"de l'eau. Il ne faut pas oublier qu'un passage à pieds secs est un luxe dont "
+"la perte est un problème très sérieux durant les périodes froides de "
+"l'année.\n"
 "\n"
-"Pour ceux qui se déplacent sur terre ou sur mer, un pont vaudra le meilleur "
-"des deux mondes - dans le jeu, il sera traité soit comme une prairie, soit "
-"comme une eau peu profonde, selon les meilleurs bonus de mouvement et de "
-"défense pour l'unité occupant la case du pont. Notez qu'une unité nageuse et "
-"une unité terrestre ne sont pas capables d'occuper toutes les deux à la fois "
-"une case de pont."
+"Un pont sera considéré comme le meilleur terrain pour ceux qui se déplacent "
+"sur terre comme sur mer - dans le jeu, il sera traité soit comme une "
+"prairie, soit comme une eau peu profonde, selon les meilleurs bonus de "
+"mouvement et de défense pour l'unité occupant la case du pont. Une unité "
+"nageuse et une unité terrestre ne sont pas capables d'occuper toutes les "
+"deux à la fois une case de pont."
 
 #: data/help.cfg:565 data/terrain.cfg:822
 msgid "Cave Wall"
@@ -2700,7 +2689,7 @@ msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
-"Les murs de cavernes sont constitués de pierre dure et sont bien connus pour "
+"Les murs de cavernes sont constitués de pierre dure et sont réputés pour "
 "empêcher le passage du voyageur même le plus déterminé."
 
 #: data/help.cfg:573
@@ -2764,7 +2753,6 @@ msgid "Multiplayer commands"
 msgstr "Commandes multijoueurs"
 
 #: data/help.cfg:599
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2774,11 +2762,10 @@ msgid ""
 msgstr ""
 "\n"
 "Bascule le contrôle d'un camp entre un humain et l'IA. Cette commande doit "
-"être exécutée par le joueur/client qui contrôle ce camp. Si le numéro n'est "
-"pas précisé, il s'agit du camp '1'.\n"
+"être exécutée par le joueur/client qui contrôle ce camp. Sans précision, le "
+"camp par défaut est '1'.\n"
 
 #: data/help.cfg:602
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -2788,7 +2775,6 @@ msgstr ""
 "Bascule entre ignorer/ne pas ignorer les messages de tous les observateurs.\n"
 
 #: data/help.cfg:605
-#, fuzzy
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2800,7 +2786,6 @@ msgstr ""
 "des utilisateurs ignorés.\n"
 
 #: data/help.cfg:608
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2809,12 +2794,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Éjecte un utilisateur en mode multijoueur. Il pourra rejoindre la partie. En "
-"général c'est un moyen amical d'enlever quelqu'un qui a des problèmes de "
-"connexion ou d'autres problèmes.\n"
+"Éjecte un utilisateur en mode multijoueur. Il pourra rejoindre la partie. "
+"C'est en général un moyen amical d'enlever quelqu'un qui a des problèmes de "
+"connexion ou autre.\n"
 
 #: data/help.cfg:611
-#, fuzzy
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -2824,9 +2808,9 @@ msgstr ""
 "\n"
 "Éjecte et bannit un utilisateur en mode multijoueur, ainsi que l'IP utilisée "
 "par cet utilisateur.\n"
+"\n"
 
 #: data/help.cfg:614
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2834,8 +2818,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Donne le contrôle d'un camp (représenté par un numéro en premier argument) à "
-"un joueur (représenté par son nom d'utilisateur en dernier argument).\n"
+"Donne le contrôle d'un camp (écrire ici le numéro de camp) à un joueur "
+"(écrire ici son surnom d'utilisateur ou d'observateur).\n"
+"\n"
 
 #: data/help.cfg:615
 msgid ""
@@ -3044,16 +3029,13 @@ msgstr "2p - Blitz"
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
-"Une petite carte pour 2 contre 2. Paramétrage recommandé : 2 pièces d'or par "
-"village."
+msgstr "Paramétrage recommandé : 2 pièces d'or par village."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "Une carte pour un duel très rapide."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:22
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
@@ -3233,7 +3215,6 @@ msgstr ""
 "(inscrit par Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:136
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -3280,14 +3261,13 @@ msgstr ""
 "woses qui vivaient dans le coin. Ils s'en allèrent rapidement (rapidement "
 "pour des woses, en tout cas), mais Bramwythl resta en arrière - dans leur "
 "hâte, aucun ne pensa à aller le trouver pour le prévenir du danger.\n"
-"Il fut prit complètement par surprise par le basilic et changé en pierre "
+"Il fut pris complètement par surprise par le basilic et changé en pierre "
 "avant même de reconnaître la bête. Sa silhouette pétrifiée est encore là "
 "aujourd'hui, chauffée par les rayons du soleil, sous la voute céleste. Son "
 "souhait le plus cher lui a été accordé.\n"
 "(inscrit par Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -3301,10 +3281,10 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
-"Ce vaillant guerrier, connu comme Rilhon parmi les nagas, entendit parler "
-"d'un trésor fabuleux qui aurait été perdu dans ces cavernes humides - une "
-"lance dont la pointe aurait été fabriquée à partir d'une dent de Chak'kso "
-"Ney'yks, un vénérable basilic tué il y a bien longtemps par le héros elfe, "
+"Ce vaillant guerrier, nommé Rilhon chez les nagas, entendit parler d'un "
+"trésor fabuleux qui aurait été perdu dans ces cavernes humides - une lance "
+"dont la pointe aurait été fabriquée à partir d'une dent de Chak'kso Ney'yks, "
+"un vénérable basilic tué il y a bien longtemps par le héros elfe, "
 "Eloralduil. D'après la légende, l'arme reposerait quelque part au fond de ce "
 "même lac (le lac Ruaskkolin, en hommage au fameux serpent qui en a fait sa "
 "tanière). Alors qu'il s'était préparé pour combattre le serpent, Rilhon eut "
@@ -3356,35 +3336,28 @@ msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Le Champ de bataille de Cynsaun"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid " Recommended settings of 150 gold and 1 gold per village."
-msgstr ""
-"Une petite carte pour 2 contre 2. Paramétrage recommandé : 2 pièces d'or par "
-"village."
+msgstr "Paramétrage recommandé : 150 pièces d'or et 1 pièce d'or par village."
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr ""
 "Il y a beaucoup à explorer dans ce vaste champ de bataille, conçu pour les "
-"joueurs favorisant les duels épiques, à grande échelle. Paramétrage "
-"recommandé : 150 pièces d'or et 1 pièce d'or par village."
+"joueurs favorisant les duels épiques, à grande échelle."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
 msgstr "2p - L'Antre d'Onis"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet."
 msgstr ""
 "Les dangers menacent dans chaque recoin de ce champ de bataille souterrain, "
-"une carte où la force et les subterfuges se rencontrent. Paramétrage "
-"recommandé : 2 pièces d'or par village."
+"duel où force et subterfuge se rencontrent."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
@@ -3392,41 +3365,36 @@ msgstr "2p - Hameaux"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
 "La guerre transforme les fermes et les villages d'une région paisible en un "
-"champ de bataille subtilement divisé. Paramétrage recommandé : 2 pièces d'or "
-"par village."
+"champ de bataille subtilement divisé."
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
 msgstr "2p - L'Île du requin cornu"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
 "Les joueurs doivent naviguer à travers les terres morcelées de cette île "
-"petite mais dense. Paramétrage recommandé : 2 pièces d'or par village."
+"petite mais dense."
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
 msgstr "2p - Le Lac du météore"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
 "Il y a longtemps, un énorme météore est tombé des cieux, laissant sa marque "
-"sur cette région de conifères. Paramétrage recommandé : 2 pièces d'or par "
-"village."
+"sur cette région de conifères."
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:18
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:18
@@ -3470,14 +3438,12 @@ msgid "2p - Sablestone Delta"
 msgstr "2p - Le Delta des roches sombres"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
-"Deux armées se heurtent dans ce paysage côtier disloqué, couvert de cavernes "
-"cachées et de rivières tortueuses. Paramétrage recommandé : 2 pièces d'or "
-"par village."
+"Deux armées se heurtent dans ce paysage côtier disloqué couvert de cavernes "
+"cachées et de rivières tortueuses."
 
 # Silverhead : silver = argent + head = cap (tête en vieux français, comme dans l'expression "de pied en cap")
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
@@ -3485,14 +3451,12 @@ msgid "2p - Silverhead Crossing"
 msgstr "2p - La Traversée d'Argentcap"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
 "Les joueurs doivent traverser toutes sortes de terrains pour obtenir la "
-"victoire sur cette carte aux nombreux fronts. Paramétrage recommandé : 2 "
-"pièces d'or par village."
+"victoire sur cette carte aux nombreux fronts."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
 msgid "statue"
@@ -3507,15 +3471,13 @@ msgid "2p - Sullas Ruins"
 msgstr "2p - Les Ruines de Sulla"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:34
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
 "Inondées par les océans et maltraitées par les éléments hivernaux, seules "
 "des ruines, de l'eau et de la glace restent dorénavant dans l'ombre de cet "
-"empire autrefois glorieux. Paramétrage recommandé : 2 pièces d'or par "
-"village."
+"empire autrefois glorieux."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
@@ -3644,56 +3606,49 @@ msgid "3p - Island of the Horatii"
 msgstr "3p - L'Île des horatii"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
 "Le contrôle de l'île centrale est bien souvent la clé de la victoire sur "
-"cette carte à 3 joueurs individuels. Paramétrage recommandé : 2 pièces d'or "
-"par village."
+"cette carte à 3 joueurs individuels."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "3p - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr ""
 "Seule une faction sortira victorieuse de cette carte étroite pour trois "
-"joueurs. Paramétrage recommandé : 2 pièces d'or par village."
+"joueurs."
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
 msgstr "3p - Triple blitz"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr ""
-"Trois joueurs s'affrontent sur ce champ de bataille découpé par les "
-"rivières. Paramétrage recommandé : 2 pièces d'or par village."
+"Trois joueurs s'affrontent sur ce champ de bataille découpé par les rivières."
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
 msgstr "4p - La Province d'Aiguebleue"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
-"On raconte que la province de Bluewater fut détruite et reconstruite une "
-"vingtaine de fois. Maintenant que des armées convergent une fois encore vers "
-"les torrents rocailleux et les montagnes enneigées de cette petite province, "
-"ses villageois ne semblent pas y faire attention. Paramétrage recommandé : 2 "
-"pièces d'or par village."
+"On raconte que la petite province de Bluewater fut détruite et reconstruite "
+"une vingtaine de fois. Ses villageois ne semblent plus faire attention aux "
+"armées qui convergent une fois encore vers ses torrents rocailleux et ses "
+"montagnes enneigées."
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:18
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:48
@@ -3727,14 +3682,11 @@ msgstr "Équipe 2"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
-msgstr "4p - L'île des châteaux tournants"
+msgstr "4p - L'Île des châteaux tournants"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
-"Sautez de château en château tout en combattant sur une île centrale. "
-"Paramétrage recommandé : 2 pièces d'or par village."
+msgstr "Sautez de château en château tout en combattant sur une île centrale."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
@@ -3742,7 +3694,7 @@ msgstr "4p - Affrontement"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "Petite carte, 2 contre 2"
 
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:3
 msgid "4p - Hamlets"
@@ -3753,16 +3705,15 @@ msgid "4p - Isar's Cross"
 msgstr "4p - La Croix de l'isard"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
-"Une carte minuscule, 2 contre 2. Combattre près de sa base rend la "
-"préparation des mouvements et une bonne rotation de ses unités importantes. "
-"Les équipes sont 1 & 4 contre 2 & 3 (Nord-Est contre Sud-Ouest). Conçue pour "
+"Une carte minuscule, 2 contre 2. Combattre près de sa base rend importantes "
+"la préparation des mouvements et une bonne rotation de ses unités. Les "
+"équipes sont 1 & 4 contre 2 & 3 (Nord-Est contre Sud-Ouest). Conçue pour "
 "commencer avec 75 pièces d'or et 20 villages."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:18
@@ -3795,22 +3746,19 @@ msgstr "4p - Le Roi de la colline"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr ""
-"Une petite carte pour 2 contre 2. Paramétrage recommandé : 2 pièces d'or par "
-"village."
+"Paramétrage recommandé : 2 pièces d'or par village et 150 pièces d'or pour "
+"commencer."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Sur cette carte 36x36 conçue pour 4 joueurs en solo ou en équipe, il est "
 "très rentable de contrôler la zone autour du château central. Il y a 36 "
-"villages. Paramétrage recommandé : 2 pièces d'or par village et 150 pièces "
-"d'or pour commencer."
+"villages."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:29
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:34
@@ -3837,95 +3785,75 @@ msgstr "4p - Le Lagon"
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
-"Une petite carte pour 2 contre 2. Paramétrage recommandé : 2 pièces d'or par "
-"village."
+msgstr "Paramétrage recommandé : 1 pièce d'or par village."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid "Four factions contend for dominance over this watery settlement."
-msgstr ""
-"Quatre factions se contestent la domination de ce territoire humide. "
-"Paramétrage recommandé : 1 pièce d'or par village."
+msgstr "Quatre factions se disputent la domination de ce territoire humide."
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
 msgid "4p - Loris River"
 msgstr "4p - La Rivière Loris"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
 "Une carte de 25x25 pour un jeu 2 contre 2 organisée autour d'une rivière "
 "avec une paire de châteaux dans les coins opposés. Conçu pour 1 & 4 contre 2 "
-"& 3. Il y a 28 villages. Paramétrage recommandé : 2 pièces d'or par village."
+"& 3. Il y a 28 villages."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
 msgstr "4p - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
-"Qui sortira victorieux de ce périlleux champ de bataille ? Paramétrage "
-"recommandé : 2 pièces d'or par village."
+msgstr "Qui sortira victorieux de ce périlleux champ de bataille ?"
 
-# FIXME y'a plein de traductions possibles pour paths
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
-msgstr "4p - Les Chemins des dagues"
+msgstr "4p - Les Voies des dagues"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr ""
-"Une petite carte pour 2 contre 2. Paramétrage recommandé : 2 pièces d'or par "
-"village."
+msgstr "Une petite carte pour 2 contre 2 avec 28 villages."
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
 "Une carte de 35X27 en 2 contre 2 avec cinq chemins d'engagement possibles. "
 "Conçue pour être jouée est contre ouest (1 & 4 contre 2 & 3), mais "
-"fonctionne aussi bien en solo ou en équipes. Paramétrage recommandé : 2 "
-"pièces d'or par villages, 28 villages."
+"fonctionne aussi bien en solo ou en équipes."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4p - Les Châteaux assiégés"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
-"Une carte de 40x30 pour 4 joueurs, où 4 châteaux-forts se font face au "
-"confluent de deux rivières. Conçu pour le jeu 2 contre 2 ou individuel. Il y "
-"a environ 45 villages. Paramétrage recommandé : 2 pièces d'or par village et "
-"150 pièces d'or pour commencer."
+"Une carte de 40x30, pour 4 joueurs, où 4 châteaux forts se font face au "
+"confluent de deux rivières. Conçu pour jouer en solo ou 2 contre 2. Il y a "
+"environ 45 villages."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
 msgstr "4p - Les Contrées sauvages"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
-#, fuzzy
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 "Une vaste région sauvage et désertique, parsemée de forêts, de cavernes, de "
-"rivières et de ruines d'anciennes forteresses. Paramétrage recommandé : une "
-"pièce d'or par village."
+"rivières et de ruines d'anciennes forteresses."
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
@@ -3940,30 +3868,27 @@ msgid "6p - Amohsad Caldera"
 msgstr "6p - La Caldera d'Amohsad"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head."
 msgstr ""
-"Seul un vrai tacticien survivra à ce champ de bataille mortel et confiné où "
-"six armées se tiennent tête. Paramétrage recommandé : 2 pièces d'or par "
-"village."
+"Seul un vrai tacticien survivra sur ce champ de bataille mortel et confiné "
+"où six armées se tiennent tête."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
 msgstr "6p - Le Champ des croisés"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
 "through the mountains, trees and rivers."
 msgstr ""
 "Les cris de guerre et de ralliement résonnent encore sur ce champ de "
-"bataille, marqué par l'empreinte du temps, où les fantômes de centaines de "
-"guerriers braves flottent invisibles au travers des rivières, montagnes et "
-"fôrets. Paramétrage recommandé : une pièce d'or par village."
+"bataille marqué par l'empreinte du temps, où les fantômes de centaines de "
+"courageux guerriers flottent invisibles au travers des rivières, des "
+"montagnes et des forêts."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -4012,7 +3937,7 @@ msgstr "Scénario dont l'objectif est de survivre le plus longtemps possible."
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
-"Indice : il est très utile de connaître l'endoit où l'ennemi arrive et sous "
+"Indice : il est très utile de connaître l'endroit où l'ennemi arrive et sous "
 "quelle forme."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
@@ -4021,7 +3946,7 @@ msgstr "Survivre 32 tours."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
 msgid "Survive all enemy attacks."
-msgstr "Survivre à toute les attaques ennemies."
+msgstr "Survivre à toutes les attaques ennemies."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
 msgid "Death of your team leaders."
@@ -4052,17 +3977,16 @@ msgstr "6p - Les Pièges de Manzivan"
 
 # Benoît : visiblement y'a une typo dans la version anglaise...
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
-#, fuzzy
 msgid ""
 "A 40X20 3 vs. 3 map. The Mazivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
-"Une carte de 40 par 20 à 3 contre 3 avec 33 villages. Les pièges de Manzivan "
-"sont notoirement connus comme une région déroutante où il est facile de se "
-"retrouver dépassé ou au mauvais endroit. Les équipes sont les joueurs 1, 4 "
-"et 5 contre 2, 3 et 6 (est contre ouest). Conçue pour 100 pièces d'or au "
+"Une carte de 40 par 20, à 3 contre 3, avec 33 villages. Les pièges de "
+"Manzivan sont célèbres pour être une région déroutante où il est facile de "
+"se retrouver dépassé ou au mauvais endroit. Les équipes sont les joueurs 1, "
+"4 et 5 contre 2, 3 et 6 (Est contre Ouest). Conçue pour 100 pièces d'or au "
 "départ."
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
@@ -4070,17 +3994,16 @@ msgid "6p - Waterloo Sunset"
 msgstr "6p - Coucher de soleil sur Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
 "avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
-"Une carte de 40x30 3 contre 3, avec 44 villages. Une coordination flexible "
-"de votre alliance est nécessaire pour éviter de se faire déborder. Les "
-"équipes sont 1,4 et 5 contre 2,3 et 6 (Nord contre Sud), mais 1,4 et 6 ou "
-"1,3 et 6 peut être aussi intéressant. Conçue pour commencer avec 150 pièces "
+"Une carte de 40x30, 3 contre 3, avec 44 villages. Une coordination souple de "
+"votre alliance est nécessaire pour éviter de se faire déborder. Les équipes "
+"sont 1,4 et 5 contre 2,3 et 6 (Nord contre Sud), mais jouer en 1,4 et 6 ou "
+"en 1,3 et 6 peut être intéressant. Conçue pour commencer avec 150 pièces "
 "d'or."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
@@ -4088,30 +4011,27 @@ msgid "8p - Morituri"
 msgstr "8p - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
 msgstr ""
 "La tactique et le jeu d'équipe sont la clé de la victoire sur ce champ de "
-"bataille inhabituel, où huit armées se tiendront tête. Paramétrage "
-"recommandé : 2 pièces d'or par village."
+"bataille inhabituel, où huit armées se tiendront tête."
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
 msgstr "9p - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
-#, fuzzy
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
 "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
 "vs. southeast vs. southwest). There are very few villages per player, so 3 "
 "gold per villages is recommended."
 msgstr ""
-"Une carte minuscule de 3 contre 3 contre 3 joueurs. Un minutage de 60 sec "
-"est recommandé vu le nombre important de joueurs. Les équipes sont les "
-"joueurs 1, 5 et 9 contre 2, 6 et 7 contre 3, 4 et 8 (Nord contre Sud-Est "
+"Une carte minuscule de 3 contre 3 contre 3 joueurs. Un minutage de 60 s est "
+"recommandé vu le nombre important de joueurs. Les équipes sont les joueurs "
+"1, 5 et 9 contre 2, 6 et 7 et contre 3, 4 et 8 (Nord contre Sud-Est et "
 "contre Sud-Ouest). Il y a très peu de villages par joueur. Paramétrage "
 "recommandé : 3 pièces d'or par village."
 
@@ -4891,17 +4811,17 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
-"Généralement, évitez de vous déplacer à coté d'un village inoccupé. Une "
-"unité ennemie pourrait se déplacer dans ce village et vous attaquer, en "
-"profitant de la défense et des capacités de soin du village."
+"Généralement, évitez de vous déplacer à côté d'un village inoccupé. Une "
+"unité ennemie pourrait s'y déplacer et vous attaquer, profitant de la "
+"défense et des capacités de soin du village."
 
 #: data/tips.cfg:23
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
-"Déplacez le curseur de la souris sur une capacité ou un trait de caractère "
-"affiche une description de celui-ci."
+"Déplacez le curseur de la souris sur une capacité ou un trait pour afficher "
+"sa description."
 
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
@@ -4918,9 +4838,9 @@ msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
-"Si vous déplacez une unité, mais que vous n'attaquez pas et que vous ne "
-"découvrez aucune information supplémentaire, vous pouvez annuler votre "
-"mouvement en pressant la touche « u »."
+"Vous pouvez annuler un mouvement en appuyant sur la touche « u » après avoir "
+"déplacé une unité si vous n'avez pas attaqué ou découvert d'information "
+"supplémentaire."
 
 #: data/tips.cfg:27
 msgid ""
@@ -4935,8 +4855,8 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Utilisez des soigneurs pour soutenir vos attaques, ils gagneront la bataille "
-"sans avoir à frapper par eux-mêmes."
+"Utilisez des soigneurs pour soutenir vos combats, ils vous permettront de "
+"remporter des batailles sans avoir à attaquer eux-mêmes."
 
 #: data/tips.cfg:29
 msgid ""
@@ -4975,7 +4895,7 @@ msgid ""
 "often more useful to try to advance your lower level units."
 msgstr ""
 "Les unités peuvent gagner des Améliorations Post-Niveau Maximum (APNMs), qui "
-"habituellement augmente le nombre de point de vie maximal de 3. Gagner une "
+"habituellement augmentent le nombre de point de vie maximal de 3. Gagner une "
 "nouvelle APNM devient toutefois progressivement plus difficile à chaque APNM "
 "que l'unité reçoit. Il est donc en général plus utile d'essayer d'améliorer "
 "les unités de niveau inférieur."
@@ -5087,16 +5007,15 @@ msgstr "Se soigne plus rapidement au repos"
 
 #: data/traits.cfg:114
 msgid "fearless"
-msgstr "courageux"
+msgstr "intrépide"
 
 #: data/traits.cfg:115
 msgid "female^fearless"
-msgstr "courageuse"
+msgstr "intrépide"
 
 #: data/traits.cfg:116
-#, fuzzy
 msgid "Fights normally during unfavorable times of day/night"
-msgstr "Combat sans malus lors des périodes de jour/nuit défavorables"
+msgstr "Combat sans malus lors des périodes défavorables de jour ou de nuit"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -5259,7 +5178,7 @@ msgid ""
 msgstr ""
 "Les galions de transport sont des navires bien armés qui transportent des "
 "troupes. S'ils parviennent à atteindre la rive, ils peuvent débarquer les "
-"troupes afin qu'elles attaquent."
+"troupes pour qu'elles attaquent."
 
 #: data/units/Drake_Armageddon.cfg:3
 msgid "Armageddon Drake"
@@ -5793,8 +5712,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Les nains sont une ancienne race de puissants combattants. Leurs berserkers "
-"ont abandonné toute défense afin d'infliger d'énormes dégâts à leurs "
-"ennemis.\n"
+"oublient de se défendre afin d'infliger d'énormes dégâts à leurs ennemis.\n"
 "\n"
 "Remarque : "
 
@@ -5821,10 +5739,10 @@ msgstr ""
 "frères nains, n'est pas très claire. Certains pensent qu'il viendrait de "
 "leur arme de prédilection, ces étranges bâtons qui crachent le feu et la "
 "mort. D'autres supposent que c'est parce que ces armes seraient une menace "
-"même contre un vrai dragon, qu'une telle chose fusse revue dans le monde "
+"même contre un vrai dragon si une une telle chose était revue dans le monde "
 "connu. Quoi qu'il en soit, c'est pour ces armes que les gardiens des grandes "
-"citadelles naines sont à la fois craints et renommés ; des armes qui ont "
-"brisé le plus puissant des guerriers en un seul coup."
+"citadelles naines sont à la fois craints et renommés ; ces armes ont brisé "
+"le plus puissant des guerriers d'un seul coup."
 
 #: data/units/Dwarvish_Dragonguard.cfg:23 data/units/Dwarvish_Thunderer.cfg:39
 #: data/units/Dwarvish_Thunderguard.cfg:23
@@ -6006,13 +5924,13 @@ msgid ""
 "make any of their own, realized they were lucky to no longer be fighting the "
 "dwarves, and vowed never to do so again."
 msgstr ""
-"Quand les hommes de Wesnoth rencontrèrent les nains pour la première fois, "
-"ils furent impressionnés par la puissance des foudroyeurs, capables de "
-"lancer la mort au loin au moyen de ces instruments étranges, ces... bâtons "
-"qu'ils apportaient à la bataille. Lorsque la paix fut instaurée par Ka'lian, "
-"le peuple de Haldric, ne comprenant pas ces armes, et bien sûr incapable "
-"d'en fabriquer, réalisa qu'il était chanceux de ne plus combattre les nains "
-"et prêta serment de ne plus le faire."
+"Les hommes de Wesnoth qui rencontrèrent les nains pour la première fois "
+"furent impressionnés par la puissance des foudroyeurs, capables de lancer la "
+"mort au loin au moyen de ces instruments étranges, ces... bâtons qu'ils "
+"apportaient pour la bataille. Lorsque la paix fut instaurée par Ka'lian, le "
+"peuple de Haldric, ne comprenant pas ces armes, et bien sûr incapable d'en "
+"fabriquer, réalisa qu'il était chanceux de ne plus combattre les nains et "
+"jura de ne plus le faire."
 
 #: data/units/Dwarvish_Thunderer.cfg:87
 #: data/units/Dwarvish_Thunderguard.cfg:71
@@ -6040,14 +5958,13 @@ msgstr ""
 "étranges bâtons de bois et de fer qui font un bruit de tonnerre dans leur "
 "furie. Les machinations derrière cet armement sont un mystère, un secret "
 "gardé jusqu'à la tombe par les nains de Knalga qui les manient et sont "
-"supposés les forger. Tout ce qu'on en sait sont des rapports de nains "
-"versant une étrange poudre noire dans la gueule de leurs armes, dont "
-"certains disent qu'il s'agit de nourriture pour la bête emprisonnée à "
-"l'intérieur.\n"
+"supposés les forger. On ne connait que des rapports de nains versant une "
+"étrange poudre noire dans la gueule de leurs armes, dont certains disent "
+"qu'il s'agit de nourriture pour la bête emprisonnée à l'intérieur.\n"
 "\n"
-"Bien qu'un seul coup de ces 'bâtons de tonnerre' peut nécessiter plusieurs "
-"minutes de préparation, pour les nains les résultats valent le coup "
-"d'attendre."
+"Même si un seul coup de ces 'bâtons de tonnerre' peut nécessiter plusieurs "
+"minutes de préparation, les résultats valent le coup d'attendre pour les "
+"nains."
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
@@ -6063,8 +5980,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Les nains sont une ancienne race de puissants combattants. Les ulfserkers "
-"sont les plus féroces d'entre eux : ils attaquent sans arrêter de combattre, "
-"sans considération pour leurs blessures, jusqu'à ce que mort s'ensuive.\n"
+"sont les plus féroces d'entre eux : ils attaquent jusqu'à ce que mort "
+"s'ensuive sans s'arrêter, sans faire attention à leurs blessures.\n"
 "\n"
 "Remarque : "
 
@@ -6569,7 +6486,6 @@ msgstr "Sylphide elfe"
 
 # FIXME
 #: data/units/Elvish_Sylph.cfg:21
-#, fuzzy
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
 "mundane natures. They are possessed of wondrous, and sometimes terrifying "
@@ -6578,8 +6494,8 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Rarement vue, les sages sylphides sont les maîtres de leur nature à la fois "
-"féérique et terrestre. Elles possèdes des pouvoirs merveilleux, et "
+"Rarement vues, les sages sylphides sont les maîtresses de leur nature à la "
+"fois féérique et terrestre. Elles possèdent des pouvoirs merveilleux et "
 "quelquefois terrifiants, et les légendes ont donné aux autres races une peur "
 "salutaire de ces elfes.\n"
 "\n"
@@ -6608,17 +6524,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les « loups noirs » ne diffèrent de la variété commune que par leur taille "
-"et leur couleur. Ils ont une taille au garrot généralement supérieure à "
+"Les « loups noirs » ne se distinguent de de la variété commune que par la "
+"taille et la couleur. Ils ont une taille au garrot généralement supérieure à "
 "celle d'un cheval et un appétit d'autant plus grand. Seul un fou voudrait en "
-"rencontrer ; les gobelins, après en avoir payé le prix, ont réussi à les "
-"dompter, si l'on peut dire.\n"
+"rencontrer ; les gobelins ont réussi à les dompter, si l'on peut dire, après "
+"en avoir payé le prix.\n"
 "\n"
-"Les crocs d'un loup ne sont généralement pas considérés comme les parties "
-"les plus dangereuses, mais sur une bête de cette taille ils sont plus gros "
-"et plus longs que des clous. Leurs cavaliers enduisent leurs griffes de "
-"poison, comme les orcs assassins, rendant plus mortel encore un coup de "
-"patte de ces bêtes.\n"
+"Les griffes d'un loup ne sont généralement pas considérées comme trop "
+"dangereuses, mais elles sont plus grosses et plus longues que des clous sur "
+"un animal de cette taille. Leurs cavaliers les enduisent d'un poison "
+"semblable à celui utilisé par les orcs assassins, rendant plus mortel encore "
+"un coup de patte de ces bêtes.\n"
 "\n"
 "Remarque : "
 
@@ -6642,11 +6558,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les gobelins sont donnés en pâture par les orcs à leurs ennemis sur les "
-"lignes de front. Ceux qui parviennent à survivre s'équipent pour continuer "
-"leur besogne. Une lance beaucoup plus longue les aide à compenser leur "
-"faible portée et une meilleure armure les aide à défendre leur corps "
-"minuscule.\n"
+"Les gobelins sont sacrifiés sur les lignes de front par les orcs. Ceux qui "
+"parviennent néanmoins à survivre s'équipent pour continuer leur besogne. Une "
+"lance beaucoup plus longue les aide à compenser leur faible portée et une "
+"meilleure armure les aide à défendre leur corps minuscule.\n"
 "\n"
 "Remarque : "
 
@@ -6722,8 +6637,8 @@ msgstr ""
 "survécu à suffisamment de batailles pour être considéré comme un vétéran est "
 "une chose rare et il est encore plus rare que les autres gobelins le "
 "reconnaissent et le respectent dans son statut de vétéran. Néanmoins "
-"l'agitation frénétique des chefs gobelins poussent les plus jeunes à "
-"combattre plus longtemps et plus ardûment avant leur mort.\n"
+"l'agitation frénétique des chefs gobelins pousse les plus jeunes à combattre "
+"plus longtemps et plus ardument avant leur mort.\n"
 "\n"
 "Remarque : "
 
@@ -7393,8 +7308,8 @@ msgstr ""
 "armures de cuir rapiécées de recrues. Une pique est une arme plus longue "
 "qu'une lance, ce qui facilite différentes tactiques de combats. Un mur de "
 "piquiers est le fléau de n'importe quelle charge de cavalerie et, avec une "
-"discipline et une tactique appropriées, ils peuvent également tenir la "
-"plupart de l'infanterie aux abois.\n"
+"discipline et une tactique appropriées, ils peuvent également tenir le gros "
+"de l'infanterie aux abois.\n"
 "\n"
 "Remarque : "
 
@@ -7459,7 +7374,7 @@ msgstr ""
 "Les troupes de chocs sont les élites de l'infanterie lourde et la moitié de "
 "leur intérêt dans une guerre est simplement une question d'intimidation. Les "
 "seules personnes qui peuvent entrer dans leur rang sont prodigieusement bien "
-"bâtis et ont un aspect redoutable lorsqu'ils sont entièrement revêtus d'une "
+"bâties et ont un aspect redoutable lorsqu'ils sont entièrement revêtus d'une "
 "armure en plaques noires. La vue des troupes de chocs brisant un ennemi avec "
 "leur étoile du matin est souvent suffisante pour casser le moral de "
 "n'importe quelle opposition, qui se demande parfois si une telle armure ne "
@@ -8439,7 +8354,7 @@ msgstr ""
 "Les calamars sont de gigantesques créatures des mers. Ils peuvent saisir "
 "leurs adversaires avec leurs puissants tentacules ou cracher une encre noire "
 "toxique à distance. La meilleure manière de survivre à une rencontre avec "
-"ces monstres est de rester à terre.\n"
+"ces monstres est de rester sur terre.\n"
 "\n"
 "Remarque : "
 
@@ -8462,8 +8377,8 @@ msgid ""
 "foes, or by slapping them with their fists."
 msgstr ""
 "Les colosses de boue sont des créatures magiques construites à partie de "
-"terre et d'eau. Ils attaquent en projetant de la boue sur leurs ennemis ou à "
-"l'aide de leurs poings argileux."
+"terre et d'eau. Ils attaquent en projetant de la boue sur leurs ennemis ou "
+"avec  leurs poings argileux."
 
 #: data/units/Monster_Giant_Mudcrawler.cfg:45 data/units/Monster_Yeti.cfg:32
 #: data/units/Troll_Rocklobber.cfg:27 data/units/Troll_Whelp.cfg:26
@@ -8509,7 +8424,7 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"Les golems de boue sont des créatures magiques construites à partie de terre "
+"Les golems de boue sont des créatures magiques construites à partir de terre "
 "et d'eau. Ils attaquent en projetant de la boue sur leurs ennemis."
 
 #: data/units/Monster_Sea_Serpent.cfg:3
@@ -8534,8 +8449,8 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les tentacules des profondeurs sont les appendices de quelques monstres "
-"gigantesques qui se tapissent au-dessous des vagues.\n"
+"Les tentacules des profondeurs sont les appendices de quelque monstre "
+"gigantesque qui se tapit au-dessous des vagues.\n"
 "\n"
 "Remarque : "
 
@@ -8549,9 +8464,9 @@ msgid ""
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"On sait peu de choses sur les yétis, ces gigantesques humanoïdes qui vivent "
-"dans les montagnes enneigées les plus reculées. Peu de gens rapportent en "
-"avoir vu un et leur existence même est remise en cause."
+"On sait peu de choses sur les yétis, ces gigantesques humanoïdes simisques "
+"qui vivent dans les montagnes enneigées les plus reculées. Peu de gens "
+"racontent en avoir vu un, et on doute de leur existence même."
 
 #: data/units/Naga_Fighter.cfg:3
 msgid "Naga Fighter"
@@ -8565,9 +8480,9 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
-"Les nagas appartiennent à l'une des quelques races capables de se mouvoir de "
-"façon significative dans l'eau, leur donnant accès à un monde entièrement "
-"interdit aux habitants des terres. Toujours est-il qu'elles ne sont pas de "
+"Les nagas appartiennent à l'une des quelques races capables de se mouvoir "
+"librement dans l'eau, ce qui leur donne accès à un monde entièrement "
+"interdit aux habitants terriens. Toujours est-il qu'elles ne sont pas de "
 "vraies créatures des profondeurs et sont incapables de respirer sous l'eau. "
 "Elles sont petites et quelque peu frêles, mais souvent beaucoup plus agiles "
 "que leurs adversaires."
@@ -8898,7 +8813,6 @@ msgid "Saurian Ambusher"
 msgstr "Embusqueur saurien"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and considerably good at navigating "
 "terrain that confounds their enemies. When this is combined with experience, "
@@ -8910,14 +8824,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les sauriens ont le pas rapide et léger, sont très agiles et peuvent se "
-"déplacer sur un terrain difficile pour leur ennemis. Quand en plus ils ont "
-"l'expérience, la force et de l'équipement, n'importe lequel de ces guerriers "
-"s'avère particulièrement dangereux au cours d'une bataille, surtout parce "
-"qu'il sont beaucoup plus difficile à encercler que n'importe quel autre "
-"adversaire. Même en armure, les guerriers sauriens peuvent exploiter la plus "
-"petite brèche dans une ligne ennemie, et ont le talent de faire regretter à "
-"l'ennemi son erreur.\n"
+"Les sauriens sont rapides, légers et très agiles, et ils peuvent se déplacer "
+"sur un terrain difficile pour leur ennemis. Quand en plus ils ont de "
+"l'expérience, de la force et de l'équipement, n'importe lequel de ces "
+"guerriers s'avère particulièrement dangereux, surtout parce qu'il sont "
+"beaucoup plus difficile à encercler que n'importe quel autre adversaire. "
+"Même en armure, les guerriers sauriens peuvent exploiter la plus petite "
+"brèche dans une ligne ennemie et ont le talent de faire regretter ses "
+"erreurs à l'ennemi.\n"
 "\n"
 "Remarque : "
 
@@ -8925,9 +8839,7 @@ msgstr ""
 msgid "Saurian Augur"
 msgstr "Augure saurien"
 
-# FIXME
 #: data/units/Saurian_Augur.cfg:22
-#, fuzzy
 msgid ""
 "Saurians have some ability in what men call magic, but one which reeks of "
 "augury and all the unpleasantry of witchcraft. As little as it may be "
@@ -8935,10 +8847,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les sauriens ont une capacité que les humains nomment magie, mais au travers "
-"de la puanteur des augures et de toute la déplaisance de la sorcellerie. "
-"Aussi peu qu'elle soit comprise, elle est crainte avec raison par ceux qui "
-"la subissent.\n"
+"Les sauriens ont une capacité que les humains nomment magie, mais une magie "
+"puant l'occultisme et la sorcellerie. Quasiment incomprise, elle est crainte "
+"avec raison par ceux qui la subissent.\n"
 "\n"
 "Remarque : "
 
@@ -8952,7 +8863,6 @@ msgid "Saurian Flanker"
 msgstr "Flanqueur saurien"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven, or human "
 "counterparts. This is of course a relative term, and they can still become "
@@ -9026,7 +8936,6 @@ msgid "Saurian Soothsayer"
 msgstr "Prédicateur saurien"
 
 #: data/units/Saurian_Soothsayer.cfg:22
-#, fuzzy
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
 "magical and mysterious. It is clear that some of them are particularly "
@@ -9035,9 +8944,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les sauriens sont connu comme ayant d'étranges capacités et de mystérieux et "
+"Les sauriens sont connus pour avoir d'étranges capacités et de mystérieux "
 "arts magiques. Il est clair que certains d'entre eux sont particulièrement "
-"doués dans une sorte de médecine, ce qui est très appréciable au combat.\n"
+"doués dans une sorte de médecine très appréciable au combat.\n"
 "\n"
 "Remarque : "
 
@@ -9473,7 +9382,7 @@ msgstr ""
 "Cette capacité, dans tous ses aspects, est le premier pas vers la défaite de "
 "la mort et de son ultime récompense. C'est le niveau de puissance le plus "
 "élevé qu'un mage noir peut atteindre sans lâcher prise avec l'humanité, mais "
-"c'est bien peu de chose à coté du pouvoir mortel des liches. Leur corps de "
+"c'est bien peu de chose à côté du pouvoir mortel des liches. Leur corps de "
 "mortels sont aussi rendus plus résistants par leur magie, par opposition à "
 "ceux décomposés et fragiles des liches.\n"
 "\n"
@@ -9972,11 +9881,10 @@ msgid "Ambushed!"
 msgstr "Embuscade !"
 
 #: src/actions.cpp:2044
-#, fuzzy
 msgid "$friends Friendly unit sighted"
 msgid_plural "$friends Friendly units sighted"
-msgstr[0] " $enemies unité ennemie en vue !"
-msgstr[1] " $enemies unités ennemies en vue !"
+msgstr[0] " $enemies unité alliéee en vue !"
+msgstr[1] " $enemies unités alliées en vue !"
 
 #: src/actions.cpp:2048
 msgid "$enemies Enemy unit sighted!"
@@ -10827,7 +10735,7 @@ msgstr "Renommer l'unité"
 #: src/menu_events.cpp:1340
 #, fuzzy
 msgid "Team only"
-msgstr "Étiquette d'équipe"
+msgstr "En équipe seulement"
 
 #: src/menu_events.cpp:1345
 msgid "Place Label"
@@ -11201,7 +11109,7 @@ msgstr "Utiliser les paramètres de la carte"
 
 #: src/multiplayer_create.cpp:67
 msgid "Random start time"
-msgstr "Heure de début aléatoire"
+msgstr "Moment de la journée aléatoire"
 
 #: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
@@ -11253,7 +11161,7 @@ msgstr "Quantité d'or que chaque village rapporte par tour"
 
 #: src/multiplayer_create.cpp:158
 msgid "The amount of experience a unit needs to advance"
-msgstr "Quantité d'expérience requise aux unités pour avancer"
+msgstr "Quantité d'expérience nécessaire aux unités pour progresser"
 
 #: src/multiplayer_create.cpp:161
 msgid "Use scenario specific settings"
@@ -11261,13 +11169,11 @@ msgstr "Utiliser les paramètres du scénario"
 
 #: src/multiplayer_create.cpp:164
 msgid "Randomize time of day in begin"
-msgstr "Rendre aléatoire l'heure de départ"
+msgstr "Rendre aléatoire le début du moment de la journée"
 
 #: src/multiplayer_create.cpp:167
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
-"Les ennemis ne peuvent être vus à moins qu'ils ne soient à porté de vos "
-"unités"
+msgstr "Les ennemis ne peuvent être vus sauf s'ils sont à porté de vos unités"
 
 #: src/multiplayer_create.cpp:170
 msgid "The map is unknown until your units explore it"
@@ -11614,7 +11520,7 @@ msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr ""
-"Cette unité a été ralentie. Elle ne fera plus que la moitié de ses dégats "
+"Cette unité a été ralentie. Elle ne fera plus que la moitié de ses dégâts "
 "normaux en attaquant."
 
 #: src/reports.cpp:135
