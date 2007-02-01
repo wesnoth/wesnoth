@@ -1608,7 +1608,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		//otherwise if a choice has to be made, get it from the replay data
 		else {
-			const config* const action = get_replay_source().get_next_action();
+			const config* action = get_replay_source().get_next_action();
+			if (action != NULL && !action->get_children("start").empty()){
+				action = get_replay_source().get_next_action();
+			}
 			if(action == NULL || action->get_children("choose").empty()) {
 				replay::throw_error("choice expected but none found\n");
 			}

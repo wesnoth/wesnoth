@@ -529,11 +529,25 @@ namespace events{
 			buf << side_num;
 			side["side"] = buf.str();
 
+			//current visible units
 			for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 				if(i->second.side() == side_num) {
 					config& u = side.add_child("unit");
 					i->first.write(u);
 					i->second.write(u);
+				}
+			}
+			//recall list
+			{
+				for(std::map<std::string, player_info>::const_iterator i=gamestate_.players.begin(); 
+				i!=gamestate_.players.end(); ++i) {
+					for(std::vector<unit>::const_iterator j = i->second.available_units.begin();
+						j != i->second.available_units.end(); ++j) {
+						if (j->side() == side_num){
+							config& u = side.add_child("unit");
+							j->write(u);
+						}
+					}
 				}
 			}
 		}

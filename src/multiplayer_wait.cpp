@@ -288,7 +288,7 @@ void wait::start_game()
 		statistics::read_stats(*stats);
 	}
 
-	level_to_gamestate(level_, state_);
+	level_to_gamestate(level_, state_, level_["savegame"] == "yes");
 
 	LOG_NW << "starting game\n";
 }
