@@ -123,12 +123,14 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 	recorder.set_save_info(state);
 
-	//see if we load the scenario from the scenario data -- if there is
-	//no snapshot data available from a save, or if the user has selected
-	//to view the replay from scratch
+	//do we have any snapshot data?
+	//yes => this must be a savegame
+	//no  => we are starting a fresh scenario
 	if(state.snapshot.child("side") == NULL || !recorder.at_end()) {
-		//if the starting state is specified, then use that,
-		//otherwise get the scenario data and start from there.
+		//campaign or multiplayer?
+		//if the gamestate already contains a starting_pos, then we are 
+		//starting a fresh multiplayer game. Otherwise this is the start
+		//of a campaign scenario.
 		if(state.starting_pos.empty() == false) {
 			LOG_G << "loading starting position...\n";
 			starting_pos = state.starting_pos;
@@ -136,6 +138,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		} else {
 			LOG_G << "loading scenario: '" << state.scenario << "'\n";
 			scenario = game_config.find_child(type,"id",state.scenario);
+			starting_pos = *scenario;
+			state.starting_pos = *scenario;
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
@@ -186,6 +190,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 		const config::child_list& story = scenario->get_children("story");
 		const std::string current_scenario = state.scenario;
+		const std::string next_scenario = (*scenario)["next_scenario"];
 
 		bool save_game_after_scenario = true;
 
@@ -232,7 +237,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 			sound::play_no_music();
 
-			//LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story,log, skip_replay);
 			LEVEL_RESULT res;
 			switch (io_type){
 			case IO_NONE:
@@ -318,7 +322,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 		//if the scenario hasn't been set in-level, set it now.
 		if(state.scenario == current_scenario)
-			state.scenario = (*scenario)["next_scenario"];
+			state.scenario = next_scenario;
 
 		if(io_type == IO_CLIENT) {
 			config cfg;
@@ -404,7 +408,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 			//if this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
-				state.starting_pos = config();
+				state.starting_pos = *scenario;
 
 				bool retry = true;
 
@@ -432,7 +436,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 			//update the replay start
 			//FIXME: this should only be done if the scenario was not tweaked.
-			state.starting_pos = *scenario;
+			//state.starting_pos = *scenario;
 		}
 
 		recorder.set_save_info(state);

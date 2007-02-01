@@ -141,6 +141,9 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 
 	//if there are additional starting units on this side
 	const config::child_list& starting_units = cfg.get_children("unit");
+	if ( (starting_units.begin() != starting_units.end()) && (player) ){
+		player->available_units.clear();
+	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
 		unit new_unit(&gameinfo, &units, &map, &game_status,&teams,**su);
 
