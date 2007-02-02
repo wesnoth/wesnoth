@@ -1024,7 +1024,7 @@ void game_state::get_variable_internal_const(const std::string& key, const confi
 		if(explicit_index == false && sub_key == "length") {
 			if(items.empty()) {
 				if(varout != NULL) {
-					static const t_string zero_str = "0";
+					static const t_string zero_str = "";
 					*varout = &zero_str;
 				}
 			} else {
@@ -1086,7 +1086,7 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 		if(explicit_index == false && sub_key == "length") {
 			if(items.empty()) {
 				if(varout != NULL) {
-					static t_string zero_str = "0";
+					static t_string zero_str = "";
 					*varout = &zero_str;
 				}
 			} else {
