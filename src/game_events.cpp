@@ -158,7 +158,6 @@ bool conditional_passed(const unit_map* units,
 		const std::string& value = state_of_game->get_variable(name);
 
 		const double num_value = atof(value.c_str());
-		printf("%f\n",num_value);
 
 		const std::string& equals = values["equals"];
 		if(values.get_attribute("equals") != "" && value != equals) {
