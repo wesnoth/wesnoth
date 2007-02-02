@@ -88,7 +88,7 @@ void truncate_message(t_string& str)
 class server
 {
 public:
-	server(int port, input_stream& input, const config& cfg, size_t nthreads);
+	server(int port, input_stream& input, const config& cfg, size_t min_threads,size_t max_threads);
 	void run();
 private:
 	void process_data(network::connection sock, config& data, config& gamelist);
@@ -152,7 +152,7 @@ private:
 	std::string motd_;
 };
 
-server::server(int port, input_stream& input, const config& cfg, size_t nthreads) : net_manager_(nthreads), server_(port),
+server::server(int port, input_stream& input, const config& cfg, size_t min_threads,size_t max_threads) : net_manager_(min_threads,max_threads), server_(port),
     not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), cfg_(cfg), admin_passwd_(cfg["passwd"]), motd_(cfg["motd"])
 {
 	version_query_response_.add_child("version");
@@ -1343,7 +1343,8 @@ void server::delete_game(std::vector<game>::iterator i)
 int main(int argc, char** argv)
 {
 	int port = 15000;
-	size_t nthreads = 5;
+	size_t min_threads = 5;
+	size_t max_threads = 0;
 
 	config configuration;
 
@@ -1407,10 +1408,12 @@ int main(int argc, char** argv)
 			setsid();
 #endif
 		} else if((val == "--threads" || val == "-t") && arg+1 != argc) {
-			nthreads = atoi(argv[++arg]);
-			if(nthreads > 30) {
-				nthreads = 30;
+			min_threads = atoi(argv[++arg]);
+			if(min_threads > 30) {
+				min_threads = 30;
 			}
+		} else if((val == "--max-threads" || val == "-T") && arg+1 != argc) {
+			max_threads = atoi(argv[++arg]);
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
@@ -1422,7 +1425,7 @@ int main(int argc, char** argv)
 	input_stream input(fifo_path);
 
 	try {
-		server(port,input,configuration,nthreads).run();
+		server(port,input,configuration,min_threads,max_threads).run();
 	} catch(network::error& e) {
 		std::cerr << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;

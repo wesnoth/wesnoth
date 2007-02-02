@@ -183,7 +183,7 @@ void error::disconnect()
 	network::disconnect(socket);
 }
 
-manager::manager(size_t nthreads) : free_(true)
+manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 {
 	//if the network is already being managed
 	if(socket_set) {
@@ -204,7 +204,7 @@ manager::manager(size_t nthreads) : free_(true)
 
 	socket_set = SDLNet_AllocSocketSet(512);
 
-	worker_pool_man = new network_worker_pool::manager(nthreads);
+	worker_pool_man = new network_worker_pool::manager(min_threads, max_threads);
 }
 
 manager::~manager()

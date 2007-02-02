@@ -80,7 +80,8 @@ struct _TCPsocket {
 };
 unsigned int buf_id = 0;
 unsigned int waiting_threads = 0;
-unsigned int thread_pool = 0;
+size_t min_threads = 0;
+size_t max_threads = 0;
 
 struct buffer {
 	explicit buffer(TCPsocket sock) : sock(sock) {}
@@ -302,7 +303,7 @@ int process_queue(void*)
 				delete zombie;
 
 			}
-			if(waiting_threads >= thread_pool) {
+			if(min_threads && waiting_threads >= min_threads) {
 					LOG_NW << "worker thread exiting... not enough job\n";
 					to_clear.push_back(threading::get_current_thread_id());
 					return 0;
@@ -354,8 +355,11 @@ int process_queue(void*)
 			waiting_threads--;
 			// if we are the last thread in the pool, create a new one
 			if(!waiting_threads && managed == true) {
-				threading::thread * tmp = new threading::thread(process_queue,NULL);
-				threads[tmp->get_id()] =tmp;
+				// max_threads of 0 is unlimited
+				if(!max_threads || max_threads >threads.size()) {
+					threading::thread * tmp = new threading::thread(process_queue,NULL);
+					threads[tmp->get_id()] =tmp;
+				}
 			}
 		}
 
@@ -398,15 +402,16 @@ int process_queue(void*)
 namespace network_worker_pool
 {
 
-manager::manager(size_t nthreads) : active_(!managed)
+manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 {
 	if(active_) {
 		managed = true;
 		global_mutex = new threading::mutex();
 		cond = new threading::condition();
-		thread_pool = nthreads;
+		min_threads = p_min_threads;
+		max_threads = p_max_threads;
 
-		for(size_t n = 0; n != nthreads; ++n) {
+		for(size_t n = 0; n != min_threads; ++n) {
 			threading::thread * tmp = new threading::thread(process_queue,NULL);
 			threads[tmp->get_id()] =tmp;
 		}

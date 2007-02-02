@@ -31,8 +31,14 @@ namespace network {
 
 //a network manager must be created before networking can be used.
 //it must be destroyed only after all networking activity stops.
+
+// min_threads is the maximum number we allow to wait, of more threads attempt to wait, they will die
+// if min_threads == 0 no thread will ever be destroyed, and we will stay at the max number of threads ever needed
+
+// max_threads is the overall max number of helper threads. if we have that many threads already running, we will never create more
+// if max_threads == 0 we will alway create a thread if we need it
 struct manager {
-	explicit manager(size_t nthreads=2);
+	explicit manager(size_t min_threads = 1,size_t max_threads = 0);
 	~manager();
 
 private:

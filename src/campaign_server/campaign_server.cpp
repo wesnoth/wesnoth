@@ -46,7 +46,7 @@ namespace {
 	class campaign_server
 	{
 		public:
-			explicit campaign_server(const std::string& cfgfile,unsigned int nthread = 10);
+			explicit campaign_server(const std::string& cfgfile,size_t min_thread = 10,size_t max_thread = 0);
 			void run();
 		private:
 			int load_config(); // return the server port
@@ -66,8 +66,8 @@ namespace {
 		return lexical_cast_default<int>(cfg_["port"], 15003);
 	}
 
-	campaign_server::campaign_server(const std::string& cfgfile,unsigned int nthread)
-		: file_(cfgfile), net_manager_(nthread), server_manager_(load_config())
+	campaign_server::campaign_server(const std::string& cfgfile,size_t min_thread,size_t max_thread)
+		: file_(cfgfile), net_manager_(min_thread,max_thread), server_manager_(load_config())
 	{
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");

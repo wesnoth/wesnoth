@@ -29,7 +29,7 @@ namespace network_worker_pool
 
 struct manager
 {
-	explicit manager(size_t nthreads=2);
+	explicit manager(size_t min_threads,size_t max_threads);
 	~manager();
 
 private:
