@@ -2,108 +2,111 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
-.\"
+.\" 
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
-.\"
+.\" 
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\"
-.
-.TH WESNOTHD 6 "2006" "wesnothd" "Battle for Wesnoth multiplayer network daemon"
-.
-.SH NAME
+.\" 
+.\" .
+.\" .
+.TH "WESNOTHD" "6" "2006" "wesnothd" "Battle for Wesnoth multiplayer network daemon"
+.SH "NAME"
 .
 wesnothd \- Battle for 
 .B Wesnoth 
 multiplayer network daemon
 .
-.SH SYNOPSIS
+.SH "SYNOPSIS"
 .
 .B wesnothd 
 .RB [\| \-dvV \|]
 .RB [\| \-c
-.IR path \|]
+.I R path \|]
 .RB [\| \-p
-.IR port \|]
+.I R port \|]
 .RB [\| \-t
-.IR number \|]
+.I R number \|]
 .
-.SH DESCRIPTION
+.SH "DESCRIPTION"
 .
 Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/wiki/ServerAdministration
 on what commands the server accepts via the wesnoth client or the socket.
 .
-.SH OPTIONS
+.SH "OPTIONS"
 .
-.TP
-.BI -c,\ --config \ path
+.TP 
+.BI \-c,\ \-\-config \ path
 tells wesnothd where to find the config file to use. See the section 
 .B SERVER CONFIG 
 below for the syntax.
-.TP
-.B -d,\ --daemon
+.TP 
+.B \-d,\ \-\-daemon
 runs wesnothd as a daemon.
-.TP
-.B -h,\ --help
+.TP 
+.B \-h,\ \-\-help
 tells you what the command line options do.
-.TP
-.BI -p,\ --port \ port
+.TP 
+.BI \-p,\ \-\-port \ port
 binds the server to the specified port. If no port is specified, port
 15000 will be used.
-.TP
-.BI -t,\ --threads \ number
-sets the number of worker threads for network I/O to n (default: 5, max: 30).
-.TP
-.B -V,\ --version
+.TP 
+.BI \-t,\ \-\-threads \ number
+sets the maximum number of waiting network thread (default: 5, max: 30).
+.BI \-T,\ \-\-max\-threads \ number
+sets the maximum number of worker threads that will be created
+if set to 0 there will be no limit (default: 0).
+.TP 
+.B \-V,\ \-\-version
 shows version number and exits.
-.TP
-.B -v,\ --verbose
+.TP 
+.B \-v,\ \-\-verbose
 turns on more verbose logging.
 .
-.SH SERVER CONFIG
+.SH "SERVER CONFIG"
 .
 .SS The general syntax is:
 .
 .P
 [\fItag\fR]
-.IP
+.IP 
 key="\fIvalue\fR"
-.IP
+.IP 
 key="\fIvalue\fR,\fIvalue\fR,..."
 .P
 [/\fItag\fR]
 .
 .SS "Global keys:"
 .
-.TP
+.TP 
 .B connections_allowed
 The number of allowed connections from the same IP.
-.TP
+.TP 
 .B disallow_names
 Names/nicks that are not accepted by the server. `*' and `?' from wildcard patterns are supported. See 
 .BR glob (7) 
 for more details.
 Default values (used if nothing is specified) are: `server,ai,player,network,human,admin,computer'.
-.TP
+.TP 
 .B max_messages
 The number of allowed messages in \fBmessages_time_period\fR.
-.TP
+.TP 
 .B messages_time_period
 The time period (in seconds) message flooding is detected in.
-.TP
+.TP 
 .B motd
 The message of the day.
-.TP
+.TP 
 .B passwd
 The password used to gain admin privileges. Usually it starts with "admin ".
-.TP
+.TP 
 .B versions_accepted
 A comma separated list of version strings to be accepted by the server. `*' and `?' from wildcard patterns are supported.
-.br
+.br 
 Example: versions_accepted="*" accepts any version string.
 .
 .SS "Global tags:"
@@ -112,13 +115,13 @@ Example: versions_accepted="*" accepts any version string.
 .B [redirect]
 A tag to specify a server to redirect certain client versions to.
 .RS
-.TP
+.TP 
 .B host
 The address of the server to redirect to.
-.TP
+.TP 
 .B port
 The port to connect to.
-.TP
+.TP 
 .B version
 A comma separated list of versions to redirect. Behaves the same way as
 .B versions_accepted
@@ -129,22 +132,22 @@ in regard to wildcard patterns.
 A tag to tell the server to act as a proxy and forward the connected client's requests to the specified server.
 Accepts the same keys as [redirect].
 .
-.SH AUTHOR
+.SH "AUTHOR"
 .
 Written by David White <davidnwhite@verizon.net>.
-Edited by Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> and Soliton <soliton@sonnenkinder.org>.
+Edited by Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> and Soliton <soliton@sonnenkinder.org>.
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
-.br
+.br 
 Visit the official homepage: http://www.wesnoth.org/
 .
-.SH COPYRIGHT
+.SH "COPYRIGHT"
 .
-Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
-.br
+Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br 
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .
-.SH SEE ALSO
+.SH "SEE ALSO"
 .
 .BR wesnoth (6), 
 .BR wesnoth_editor (6)
