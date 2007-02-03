@@ -301,19 +301,19 @@ void event_handler::add_event_var(const unit* primary_unit, const unit* secondar
 	if(primary_unit) {
 		config tmp_cfg;
 		primary_unit->write(tmp_cfg);
-		cfg_.add_local_var("_primary_unit",tmp_cfg);
+		cfg_.add_local_var("unit",tmp_cfg);
 	}
 	if(secondary_unit) {
 		config tmp_cfg;
 		secondary_unit->write(tmp_cfg);
-		cfg_.add_local_var("_secondary_unit",tmp_cfg);
+		cfg_.add_local_var("second_unit",tmp_cfg);
 	}
 
 }
 void event_handler::rem_event_var()
 {
-	cfg_.rem_local_var("_primary_unit");
-	cfg_.rem_local_var("_secondary_unit");
+	cfg_.rem_local_var("unit");
+	cfg_.rem_local_var("second_unit");
 }
 
 gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)

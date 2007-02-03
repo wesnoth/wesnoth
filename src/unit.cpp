@@ -717,7 +717,7 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 	vconfig tmp_vconf(&orig_cfg);
 	config tmp_unit;
 	write(tmp_unit);
-	tmp_vconf.add_local_var("_filtered_unit",tmp_unit);
+	tmp_vconf.add_local_var("this_unit",tmp_unit);
 	config cfg = tmp_vconf.get_parsed_config();
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
