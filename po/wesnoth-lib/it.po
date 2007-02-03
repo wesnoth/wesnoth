@@ -130,7 +130,7 @@ msgstr "Ruota (potrebbe cambiare le dimensioni della mappa):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "File: "
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -281,17 +281,16 @@ msgid "Quit Game"
 msgstr "Termina la partita"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Imposta un'etichetta"
+msgstr "Imposta l'etichetta della squadra"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
-msgstr "Imposta un'etichetta"
+msgstr "Imposta etichetta"
 
 #: src/hotkeys.cpp:85
 msgid "Clear Labels"
-msgstr "Elimina le etichette"
+msgstr "Pulisci le etichette"
 
 #: src/hotkeys.cpp:86
 msgid "Show Enemy Moves"
@@ -466,9 +465,8 @@ msgid "Villages:"
 msgstr "Villaggi: "
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Dimensione massima delle colline: "
+msgstr "Dimensione del castello:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -518,54 +516,48 @@ msgid "Skip AI Moves"
 msgstr "Salta mosse AI"
 
 #: src/preferences_display.cpp:260
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Mostra i collegamenti alla lobby"
+msgstr "Mostra minimappe nella lobby"
 
 #: src/preferences_display.cpp:261
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Mostra i collegamenti alla lobby"
+msgstr "Non mostrare i collegamenti alla lobby"
 
 #: src/preferences_display.cpp:262
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Mostra i collegamenti alla lobby"
+msgstr "Mostra solo i collegamenti degli amici alla lobby"
 
 #: src/preferences_display.cpp:263
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Mostra i collegamenti alla lobby"
+msgstr "Mostra tutti i collegamenti alla lobby"
 
 #: src/preferences_display.cpp:264
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Mostra i collegamenti alla lobby"
+msgstr "Ordina l'elenco della lobby"
 
 #: src/preferences_display.cpp:265
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Iconifica l'elenco della lobby"
 
 #: src/preferences_display.cpp:266
 msgid "Your Friends List"
-msgstr ""
+msgstr "Elenco dei tuoi amici"
 
 #: src/preferences_display.cpp:267
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Opzioni per multigiocatori"
 
 #: src/preferences_display.cpp:268
 msgid "Add As Friend"
-msgstr ""
+msgstr "Aggiungi agli amici"
 
 #: src/preferences_display.cpp:269
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Aggiungi agli utenti da ignorare"
 
 #: src/preferences_display.cpp:270
-#, fuzzy
 msgid "Remove"
-msgstr "Ripeti"
+msgstr "Rimuovi"
 
 #: src/preferences_display.cpp:271
 msgid "Show Floating Labels"
@@ -714,9 +706,8 @@ msgid "Make units move and fight faster"
 msgstr "Fai muovere e combattere le unità più velocemente"
 
 #: src/preferences_display.cpp:405
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Fai muovere e combattere le unità più velocemente"
+msgstr "Velocità di spostamento e combattimento delle unità"
 
 #: src/preferences_display.cpp:408
 msgid "Do not animate AI units moving"
@@ -727,40 +718,33 @@ msgid "Overlay a grid onto the map"
 msgstr "Mostra la griglia sulla mappa"
 
 #: src/preferences_display.cpp:414
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr ""
-"Mostra i messaggi sui giocatori che si collegano alla lobby dei giocatori in "
-"rete."
+msgstr "Mostra le minimappe nella lobby multigiocatori"
 
 #: src/preferences_display.cpp:417
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Ordina l'elenco dei giocatori nella lobby per gruppi di giocatori"
 
 #: src/preferences_display.cpp:420
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Mostra le icone davanti ai nomi dei giocatori nella lobby."
 
 #: src/preferences_display.cpp:423
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
-"Mostra i messaggi sui giocatori che si collegano alla lobby dei giocatori in "
-"rete."
+"Non mostrare i messaggi sui collegamenti dei giocatori alla lobby "
+"multigiocatori"
 
 #: src/preferences_display.cpp:425
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
-"Mostra i messaggi sui giocatori che si collegano alla lobby dei giocatori in "
-"rete."
+"Mostra i messaggi sui collegamenti dei tuoi amici alla lobby multigiocatori"
 
 #: src/preferences_display.cpp:427
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
-"Mostra i messaggi sui giocatori che si collegano alla lobby dei giocatori in "
-"rete."
+"Mostra i messaggi sui collegamenti di tutti i giocatori alla lobby "
+"multigiocatori"
 
 #: src/preferences_display.cpp:429
 msgid "View and edit your friends and ignores list"
@@ -772,19 +756,19 @@ msgstr "Torna alle opzioni per giocatori multipli"
 
 #: src/preferences_display.cpp:431
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Aggiungi questo nome utente alla lista degli amici"
 
 #: src/preferences_display.cpp:432
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Aggiungi questo nome utente alla lista degli utenti da ignorare"
 
 #: src/preferences_display.cpp:433
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Rimuovi questo nome utente dalla tua lista"
 
 #: src/preferences_display.cpp:436
 msgid "Insert a username"
-msgstr ""
+msgstr "Inserisci nome utente"
 
 #: src/preferences_display.cpp:439
 msgid "Show text above a unit when it is hit to display damage inflicted"
