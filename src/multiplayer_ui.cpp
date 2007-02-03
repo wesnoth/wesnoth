@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "display.hpp"
+#include "font.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
@@ -27,6 +28,33 @@
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
+
+namespace {
+
+	class user_menu_style : public gui::menu::imgsel_style {
+	public:
+		user_menu_style() : gui::menu::imgsel_style("misc/selection", false,
+										   0x000000, 0x4a4440, 0x999999,
+										   0.0, 0.2, 0.2), 
+										   item_size_(empty_rect) 
+		{}
+		virtual void init();
+		virtual SDL_Rect item_size(const std::string& item) { return item_size_; }
+		void set_width(const int width) { item_size_.w = width; }
+	private:
+		SDL_Rect item_size_;
+	};
+
+	void user_menu_style::init()
+	{
+		imgsel_style::init();
+		item_size_.h = font::get_max_height(font_size_);
+		scale_images(-1, item_size_.h); 
+		item_size_.h += 2 * thickness_;
+	}
+
+	user_menu_style umenu_style;
+}
 
 namespace mp {
 
@@ -176,7 +204,7 @@ ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, conf
 	entry_textbox_(disp.video(), 100),
 #endif
 	chat_textbox_(disp.video(), 100, "", false),
-	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::slateborder_style),
+	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &umenu_style),
 
 	result_(CONTINUE)
 {
@@ -475,6 +503,7 @@ void ui::hide_children(bool hide)
 void ui::layout_children(const SDL_Rect& /*rect*/)
 {
 	title_.set_location(xscale(12) + 8, yscale(38) + 8);
+	umenu_style.set_width(xscale(159));
 	users_menu_.set_width(xscale(159));
 	users_menu_.set_max_width(xscale(159));
 	users_menu_.set_location(xscale(856), yscale(42));
