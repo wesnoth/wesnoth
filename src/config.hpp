@@ -15,11 +15,13 @@
 
 #include "global.hpp"
 
+#include <iostream>
 #include <map>
 #include <string>
 #include <vector>
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
+
 
 //This module defines the interface to Wesnoth Markup Language (WML).
 //WML is a simple hierarchical text-based file format. The format
@@ -80,7 +82,7 @@ public:
 	void clear();
 	bool empty() const;
 
-	void debug() const;
+	void debug(std::ostream& outstream=std::cerr) const;
 	std::string hash() const;
 
 	struct error {
