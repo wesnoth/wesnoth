@@ -90,7 +90,6 @@ msgid "regenerates"
 msgstr "Regeneration"
 
 #: data/abilities.cfg:59
-#, fuzzy
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
@@ -99,7 +98,7 @@ msgstr ""
 "Regeneration:\n"
 "Die Selbstheilungskräfte sind bei dieser Einheit so stark, dass sie 8 LP pro "
 "Runde zurückgewinnt. Falls die Einheit vergiftet sein sollte, wird die "
-"Wirkung des Giftes gestoppt, und es werden keine LP zurückgewonnen."
+"Wirkung des Giftes gestoppt, aber es werden keine LP zurückgewonnen."
 
 #: data/abilities.cfg:74
 msgid "steadfast"
@@ -446,7 +445,7 @@ msgstr "Musik"
 
 #: data/about.cfg:74
 msgid "Sound effects"
-msgstr ""
+msgstr "Soundeffekte"
 
 #: data/about.cfg:83
 msgid "Scenario Designers"
@@ -612,7 +611,7 @@ msgstr "Türkische Übersetzung"
 
 #: data/about.cfg:566
 msgid "Valencian Translation"
-msgstr ""
+msgstr " Valencianische Übersetzung"
 
 #: data/about.cfg:573 data/help.cfg:252
 msgid "Contributors"
@@ -2138,7 +2137,7 @@ msgstr "Trolle"
 
 #: data/english.cfg:30
 msgid "race^Woses"
-msgstr ""
+msgstr "Waldschrate"
 
 #: data/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
@@ -4411,7 +4410,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "Eine Duellkarte für sehr schnelle Spiele."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:22
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
@@ -4604,7 +4603,6 @@ msgstr ""
 "(Niedergeschrieben von Agon dem Kaltherzigen)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:136
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4660,7 +4658,6 @@ msgstr ""
 "(Niedergeschrieben von Ignatius von Schmottke)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -4861,7 +4858,7 @@ msgstr "Statue"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Dies ist eine, aus Stein gefertigte, Skulptur."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
@@ -4879,7 +4876,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Statue der Sulla"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:74
 msgid ""
@@ -4889,38 +4886,42 @@ msgid ""
 "Leveling Flame, Sulla the Incinerator, Sulla the Proud and Sulla the "
 "Righteous."
 msgstr ""
+"Ein aus Stein gemeißeltes Abbild von Sulla der Großen, auch bekannt als "
+"Sulla die Gerechte, Sulla die Tyrannin, Herrin des sinkenden Turms, "
+"Beherrscherin des lebenden Gletschers, Bewahrerin der wandernden Welle, "
+"Königin der ewigen Flamme, Sulla die Stolze und Sulla die Wahnsinnige."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Statue des Lhun-dup"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Ein aus Stein gemeißeltes Abbild von Lhun-dup, Diener von Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Statue des Ri-nzen"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Ein aus Stein gemeißeltes Abbild von Ri-nzen, Diener von Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Statue des Ten-zin"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Ein aus Stein gemeißeltes Abbild von Ten-zin, Diener von Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Statue des Lo-bsang"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Ein aus Stein gemeißeltes Abbild von Lo-bsang, Diener von Sulla."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -5092,10 +5093,12 @@ msgstr "4S - Zusammenstoß"
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
 msgstr ""
+"Eine kleine Karte in der zwei Bündnisse aus jeweils zwei Spielern "
+"gegeneinander antreten."
 
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:3
 msgid "4p - Hamlets"
-msgstr ""
+msgstr "4S - Entzweites Land"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
@@ -5305,7 +5308,7 @@ msgstr "Teamspiel: 2 gegen 2 oder 3 gegen 3 Spieler."
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6S - Die manzivanische Falle"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
 msgid ""
@@ -5314,6 +5317,12 @@ msgid ""
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
+"In dieser 40x20 Felder großen Region, die auch als marzivanische Falle "
+"bekannt ist, treten zwei Allianzen (1, 4, 6/2, 3, 6) aus jeweils 3 Spielern "
+"im Kampf um die 33 Dörfer an. Wer sich in diesem schwierigen Gelände "
+"verläuft, kann schnell vom Feinde eingekesselt und besiegt werden. Überlegt "
+"Euch also gut, wie Ihr vorgeht.\n"
+"Empfohlene Einstellung: 100 Gold als Startkapital"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
@@ -12738,13 +12747,34 @@ msgid "Help us make Wesnoth better for you!"
 msgstr "Helft uns, Wesnoth zu verbessern!"
 
 #~ msgid ""
-#~ "A duel map for super fast play. Recommended setting of 2 gold per village."
+#~ "Your saves directory contains some files that don't appear to have been "
+#~ "generated by this version of Battle for Wesnoth. Would you like to "
+#~ "register these files with the game?"
 #~ msgstr ""
-#~ "Eine Duellkarte für superschnelle Spiele.\n"
-#~ "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
+#~ "Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände, die "
+#~ "anscheinend nicht von dieser Version des Spieles angelegt wurden. Wollt "
+#~ "Ihr sie in Euer Spiel einbinden?"
 
-#~ msgid "Sulla's statue"
-#~ msgstr "Sulla Statue"
+#~ msgid ""
+#~ "Your saves directory contains some files from an old version of Battle "
+#~ "for Wesnoth. Would you like to update these to the latest version? This "
+#~ "may take some time."
+#~ msgstr ""
+#~ "Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände einer "
+#~ "älteren Version des Spiels. Wollt Ihr sie auf die neueste Version "
+#~ "aktualisieren? Dies kann einige Zeit in Anspruch nehmen."
+
+#~ msgid "Import Saved Games"
+#~ msgstr "Gespeicherte Spiele importieren"
+
+#~ msgid "+  Artwork and graphics designer"
+#~ msgstr "+  Grafik"
+
+#~ msgid "+  Main Developer"
+#~ msgstr "+  Projektleitung"
+
+#~ msgid "+Core Developers"
+#~ msgstr "+Hauptentwicklung"
 
 #~ msgid ""
 #~ "Many closely placed and strategically located castles. Which one will you "
@@ -12756,32 +12786,11 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #~ "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf und die Spieler 1 und 3 "
 #~ "gegen die Spieler 2 und 4 für ein Spiel 2 gegen 2."
 
-#~ msgid "+Core Developers"
-#~ msgstr "+Hauptentwicklung"
-
-#~ msgid "+  Main Developer"
-#~ msgstr "+  Projektleitung"
-
-#~ msgid "+  Artwork and graphics designer"
-#~ msgstr "+  Grafik"
-
-#~ msgid "Import Saved Games"
-#~ msgstr "Gespeicherte Spiele importieren"
+#~ msgid "Sulla's statue"
+#~ msgstr "Sulla Statue"
 
 #~ msgid ""
-#~ "Your saves directory contains some files from an old version of Battle "
-#~ "for Wesnoth. Would you like to update these to the latest version? This "
-#~ "may take some time."
+#~ "A duel map for super fast play. Recommended setting of 2 gold per village."
 #~ msgstr ""
-#~ "Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände einer "
-#~ "älteren Version des Spiels. Wollt Ihr sie auf die neueste Version "
-#~ "aktualisieren? Dies kann einige Zeit in Anspruch nehmen."
-
-#~ msgid ""
-#~ "Your saves directory contains some files that don't appear to have been "
-#~ "generated by this version of Battle for Wesnoth. Would you like to "
-#~ "register these files with the game?"
-#~ msgstr ""
-#~ "Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände, die "
-#~ "anscheinend nicht von dieser Version des Spieles angelegt wurden. Wollt "
-#~ "Ihr sie in Euer Spiel einbinden?"
+#~ "Eine Duellkarte für superschnelle Spiele.\n"
+#~ "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
