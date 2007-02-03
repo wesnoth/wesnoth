@@ -18,6 +18,7 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
+#include "game_events.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
 #include "language.hpp"
@@ -44,6 +45,7 @@
 #include <time.h>
 #include <vector>
 
+#define LOG_NG LOG_STREAM(info, engine)
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_G  LOG_STREAM(err, general)
 
@@ -152,19 +154,26 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	}
 
 	if(choice < options.size()) {
-		const std::string& chosen_unit = choice < options.size() ? options[choice] : u->second.id();
+		const std::string& chosen_unit = options[choice];
 		::advance_unit(info,units,loc,chosen_unit);
+	} else {
+		unit amla_unit(u->second);
+
+		LOG_NG << "firing advance event (AMLA)\n";
+		game_events::fire("advance",loc);
+
+		amla_unit.get_experience(-amla_unit.max_experience()); //subtract xp required
+		amla_unit.add_modification("advance",*mod_options[choice - options.size()]);
+		units.replace(new std::pair<gamemap::location,unit>(loc,amla_unit));
+
+		LOG_NG << "firing post_advance event (AMLA)\n";
+		game_events::fire("post_advance",loc);
 	}
 
 	u = units.find(loc);
-	if(u != units.end() && choice >= options.size()) {
-		u->second.get_experience(-u->second.max_experience()); //subtract xp required
-		u->second.add_modification("advance",*mod_options[choice - options.size()]);
-	}
-
 	gui.invalidate_unit();
 
-	if(!gui.update_locked()) {
+	if(u != units.end() && !gui.update_locked()) {
 		u->second.set_leveling_in(gui,u->first);
 		while(!u->second.get_animation()->animation_would_finish()) {
 			gui.invalidate(loc);
