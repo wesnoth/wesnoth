@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-31 14:14+0100\n"
-"PO-Revision-Date: 2007-01-31 15:07+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2007-01-31 17:13+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -728,7 +728,7 @@ msgstr "Trolle"
 
 #: data/english.cfg:30
 msgid "race^Woses"
-msgstr ""
+msgstr "Waldschrate"
 
 #: data/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
@@ -3047,7 +3047,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "Eine Duellkarte für sehr schnelle Spiele."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:22
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
@@ -3730,10 +3730,12 @@ msgstr "4S - Zusammenstoß"
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
 msgstr ""
+"Eine kleine Karte in der zwei Bündnisse aus jeweils zwei Spielern "
+"gegeneinander antreten."
 
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:3
 msgid "4p - Hamlets"
-msgstr ""
+msgstr "4S - Entzweites Land"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
@@ -3996,14 +3998,13 @@ msgid "Death of your team leaders."
 msgstr "Eure Anführer fallen in der Schlacht."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
-#, fuzzy
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 "Herzlichen Glückwunsch, dass Ihr diese Karte überlebt habt, was, wie viele "
-"Leute behaupten, unmöglich ist. Deshalb kann ich mir nicht vorstellen wie "
+"Leute behaupten, unmöglich ist. Deshalb kann ich mir nicht vorstellen, wie "
 "ihr es geschafft haben wollt. Also sendet mir die Aufzeichnung Eures Spiels "
 "an roze@roze.mine.nu (auf Englisch). Danke!"
 
@@ -4018,7 +4019,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6S - Die manzivanische Falle"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
 msgid ""
@@ -4027,6 +4028,12 @@ msgid ""
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
+"In dieser 40x20 Felder großen Region, die auch als marzivanische Falle "
+"bekannt ist, treten zwei Allianzen (1, 4, 6/2, 3, 6) aus jeweils 3 Spielern "
+"im Kampf um die 33 Dörfer an. Wer sich in diesem schwierigen Gelände "
+"verläuft, kann schnell vom Feinde eingekesselt und besiegt werden. Überlegt "
+"Euch also gut, wie Ihr vorgeht.\n"
+"Empfohlene Einstellung: 100 Gold als Startkapital"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
@@ -4458,9 +4465,8 @@ msgid "Keep"
 msgstr "Burgfried"
 
 #: data/terrain.cfg:241
-#, fuzzy
 msgid "Encampment keep"
-msgstr "Lager"
+msgstr "Hauptzelt"
 
 #: data/terrain.cfg:263
 msgid "Ruined keep"
@@ -4475,7 +4481,6 @@ msgid "Swamp keep"
 msgstr "Sumpffestung"
 
 #: data/terrain.cfg:305
-#, fuzzy
 msgid "Dwarven keep"
 msgstr "Zwergische Burg"
 
@@ -4485,7 +4490,7 @@ msgstr "Krater"
 
 #: data/terrain.cfg:340
 msgid "Rubble"
-msgstr ""
+msgstr "Trümmer"
 
 #: data/terrain.cfg:357
 msgid "Oasis"
@@ -4512,9 +4517,8 @@ msgid "Dunes"
 msgstr "Dünen"
 
 #: data/terrain.cfg:516
-#, fuzzy
 msgid "Desert road"
-msgstr "Wüste"
+msgstr "Wüstenstraße"
 
 #: data/terrain.cfg:525
 msgid "Dirt"
@@ -4592,9 +4596,8 @@ msgid "Act."
 msgstr "Akt."
 
 #: data/themes/default.cfg:569
-#, fuzzy
 msgid "short end-turn^E."
-msgstr "Ende"
+msgstr "E."
 
 #: data/themes/dfool.cfg:218
 msgid "MP"
@@ -5248,9 +5251,8 @@ msgstr ""
 "transportieren. Bei der Landung laden sie die Kämpfer direkt zur Attacke aus."
 
 #: data/units/Drake_Armageddon.cfg:3
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "Feuerdrake"
+msgstr "Armageddondrake"
 
 #: data/units/Drake_Armageddon.cfg:19
 msgid ""
@@ -5414,7 +5416,7 @@ msgstr "Schwert"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
-msgstr "Flammen Drake"
+msgstr "Flammendrake"
 
 #: data/units/Drake_Burner.cfg:18
 msgid ""
@@ -7982,7 +7984,6 @@ msgid "Poacher"
 msgstr "Wilddieb"
 
 #: data/units/Human_Outlaw_Poacher.cfg:21
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter, especially "
 "those of archery, are useful in battle. Turning these skills against their "
@@ -8991,7 +8992,6 @@ msgid "Saurian Ambusher"
 msgstr "Saurianischer Hinterlistling"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and considerably good at navigating "
 "terrain that confounds their enemies. When this is combined with experience, "
@@ -9019,7 +9019,6 @@ msgid "Saurian Augur"
 msgstr "Saurianischer Seher"
 
 #: data/units/Saurian_Augur.cfg:22
-#, fuzzy
 msgid ""
 "Saurians have some ability in what men call magic, but one which reeks of "
 "augury and all the unpleasantry of witchcraft. As little as it may be "
@@ -10390,9 +10389,8 @@ msgid "This add-on requires the following additional dependencies:"
 msgstr "Diese Erweiterung benötigt die folgenden Abhängigkeiten:"
 
 #: src/game.cpp:1040
-#, fuzzy
 msgid "Do you still want to download it?"
-msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
+msgstr "Möchtet Ihr sie trotzdem herunterladen?"
 
 #: src/game.cpp:1049
 msgid "Downloading add-on..."
@@ -10925,9 +10923,8 @@ msgid "Rename Unit"
 msgstr "Einheit umbenennen"
 
 #: src/menu_events.cpp:1340
-#, fuzzy
 msgid "Team only"
-msgstr "Türkis"
+msgstr "Nur Mannschaft"
 
 #: src/menu_events.cpp:1345
 msgid "Place Label"
