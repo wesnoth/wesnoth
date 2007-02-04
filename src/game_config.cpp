@@ -33,6 +33,7 @@ namespace game_config
 	int recall_cost = 20;
 	int kill_experience = 8;
 	int leadership_bonus = 25;
+	int lobby_refresh = 6000;
 	const std::string version = VERSION;
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
 
@@ -110,6 +111,7 @@ namespace game_config
 		rest_heal_amount = atoi(v["rest_heal_amount"].c_str());
 		recall_cost = atoi(v["recall_cost"].c_str());
 		kill_experience = atoi(v["kill_experience"].c_str());
+		lobby_refresh = atoi(v["lobby_refresh"].c_str());
 
 		game_icon = v["icon"];
 		game_title = v["title"];

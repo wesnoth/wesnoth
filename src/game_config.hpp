@@ -31,6 +31,7 @@ namespace game_config
 	extern int recall_cost;
 	extern int kill_experience;
 	extern int leadership_bonus;
+	extern int lobby_refresh;
 	extern const std::string version;
 
 	extern bool debug, editor, ignore_replay_errors, mp_debug, exit_at_end, no_delay, disable_autosave;

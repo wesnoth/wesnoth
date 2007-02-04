@@ -206,7 +206,9 @@ ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, conf
 	chat_textbox_(disp.video(), 100, "", false),
 	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &umenu_style),
 
-	result_(CONTINUE)
+	result_(CONTINUE),
+	gamelist_refresh_(false),
+	lobby_clock_(0)
 {
 	const SDL_Rect area = { 0, 0, disp.video().getx(), disp.video().gety() };
 	users_menu_.set_numeric_keypress_selection(false);
@@ -216,7 +218,6 @@ ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, conf
 void ui::process_network()
 {
 	config data;
-
 	try {
 		const network::connection sock = network::receive_data(data);
 
@@ -225,6 +226,14 @@ void ui::process_network()
 		}
 	} catch(network::error& e) {
 		process_network_error(e);
+	}
+
+	//apply diffs at a set interval
+	if(gamelist_refresh_ && SDL_GetTicks() - lobby_clock_ > game_config::lobby_refresh)
+	{
+		gamelist_updated(false);
+		gamelist_refresh_ = false;
+		lobby_clock_ = SDL_GetTicks();
 	}
 
 	if (accept_connections()) {
@@ -382,7 +391,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 				if(matches.empty()) {
 					best_match = *i;
 				} else {
-					int j= 0;;
+					int j= 0;
 					while(toupper(best_match[j]) == toupper((*i)[j])) j++;
 					best_match.erase(best_match.begin()+j,best_match.end());
 				}
@@ -462,16 +471,17 @@ void ui::process_network_data(const config& data, const network::connection /*so
 				chat_.update_textbox(chat_textbox_);
 			}
 		}
-
 		if(data.child("gamelist")) {
 			if(!gamelist_initialized_)
 				gamelist_initialized_ = true;
 			gamelist_ = data;
 			gamelist_updated(false);
+			gamelist_refresh_ = false;
+			lobby_clock_ = SDL_GetTicks();
 		} else if(data.child("gamelist_diff")) {
 			if(gamelist_initialized_) {
 				gamelist_.apply_diff(*data.child("gamelist_diff"));
-				gamelist_updated(false);
+				gamelist_refresh_ = true;
 			}
 		}
 	}

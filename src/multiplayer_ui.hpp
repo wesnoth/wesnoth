@@ -62,7 +62,6 @@ private:
 	std::string format_message(const msg& message);
 
 	msg_hist message_history_;
-
 	msg_hist::size_type last_update_;
 };
 
@@ -188,6 +187,10 @@ private:
 	std::vector<std::string> user_list_;
 
 	result result_;
+
+	bool gamelist_refresh_;
+
+	Uint32 lobby_clock_;
 };
 
 }
