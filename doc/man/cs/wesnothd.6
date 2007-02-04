@@ -2,32 +2,29 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
-.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
-.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\"
-.
+.\" .
+.\" .
 .\"*******************************************************************
 .\"
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
 .TH WESNOTHD 6 2006 wesnothd "Bitva o Wesnoth \- sí»ový server pro hru více hráèù"
-.
 .SH NÁZEV
 .
 Bitva o \fBWesnoth\fP \- sí»ový server pro hru více hráèù
 .
 .SH POU®ITÍ
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIpoèet_vláken\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR path \|]\fP [\|\fB\-p\fP \fIR port \|]\fP
+[\|\fB\-t\fP \fIR number \|]\fP
 .
 .SH POPIS
 .
@@ -37,27 +34,28 @@ server akceptuje, a to jak pøes soket, tak pøímo odwesnoth klienta.
 .
 .SH VOLBY
 .
-.TP 
+.TP  
 \fB\-c,\ \-\-config\fP\fI\ cesta\fP
 specifikuje cestu, kde má wesnothd hledat konfiguraèní soubor. Syntaxe
 souboru je popsána v sekci \fBKONFIGURACE SERVERU\fP.
-.TP 
+.TP  
 \fB\-d,\ \-\-daemon\fP
 spou¹tí wesnothd jako démona.
-.TP 
+.TP  
 zobrazuje nápovìdu k parametrùm pøíkazové øádky.
 zobrazuje nápovìdu k parametrùm pøíkazové øádky.
-.TP 
+.TP  
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 øíká wesnothd, na kterém portu má bì¾et. Implicitní hodnota je 15000.
-.TP 
+.TP  
 \fB\-t,\ \-\-threads\fP\fI\ poèet\fP
-nastavuje poèet vláken, které bude wesnothd pou¾ívat pro sí»ová spojení
-(implicitnì: 5, max: 30).
-.TP 
+sets the maximum number of waiting network thread (default: 5, max: 30). 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP sets the maximum number of worker threads
+that will be created if set to 0 there will be no limit (default: 0).
+.TP  
 \fB\-V,\ \-\-version\fP
 zobrazí verzi wesnothd.
-.TP 
+.TP  
 \fB\-v,\ \-\-verbose\fP
 zapíná výpis logovacích informací.
 .
@@ -76,27 +74,27 @@ klíè="\fIhodnota\fP,\fIhodnota\fP"
 .
 .SS "Globální klíèe:"
 .
-.TP 
+.TP  
 \fBconnections_allowed\fP
 Poèet povolených spojení z jedné IP adresy.
-.TP 
+.TP  
 \fBdisallow_names\fP
 Jména/pøezdívky, které nejsou serverem akceptována. Je mo¾no pou¾ít znaky
 `*' a `?'. Více viz. \fBglob\fP(7). Implicitní hodnota je:
 `server,ai,player,network,human,admin,computer'.
-.TP 
+.TP  
 \fBmax_messages\fP
 Maximální poèet zpráv, které jsou pøijaty bìhem \fBmessages_time_period\fP.
-.TP 
+.TP  
 \fBmessages_time_period\fP
 Èasová perioda (ve vteøinách), po které se nuluje poèítadlo pøjatých zpráv.
-.TP 
+.TP  
 \fBmotd\fP
 Zpráva dne.
-.TP 
+.TP  
 \fBpasswd\fP
 Heslo pro získání administrátorských práv. Obvykle zaèíná "admin ".
-.TP 
+.TP  
 \fBversions_accepted\fP
 Seznam èárkou oddìlených øetìzcù verzí Wesnothu, které jsou serverem
 akceptovány. Je mo¾no pou¾ít znaky `*' a `?'.
@@ -109,13 +107,13 @@ Pøíklad: versions_accepted="*" akceptuje v¹echny verze.
 \fB[redirect]\fP Znaèka udávající server, na který bude pøesmìrován po¾adavek
 pro konkrétní verzi klienta.
 .RS
-.TP 
+.TP  
 \fBhost\fP
 Adresa serveru pro pøesmìrování.
-.TP 
+.TP  
 \fBport\fP
 Port, na kterém poslouchá vzdálený wesnothd.
-.TP 
+.TP  
 \fBversion\fP
 Seznam èárkou oddìlených øetìzcù verzí Wesnothu, pro které jsou po¾adavky
 pøesmìrovány na tento vzdálený server. Obdobný zápis jako u

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2006-12-27 19:45+0100\n"
+"POT-Creation-Date: 2007-02-04 14:06+0100\n"
 "PO-Revision-Date: 2006-09-12 12:09+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -22,7 +22,7 @@ msgid "WESNOTH"
 msgstr "WESNOTH"
 
 # type: TH
-#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:17
 #, no-wrap
 msgid "2006"
 msgstr "2006"
@@ -484,7 +484,7 @@ msgstr "選択されたシナリオのターン数を設定する。 既定値�
 # type: TP
 #: ../../doc/man/wesnoth.6:159
 #, fuzzy, no-wrap
-msgid "Example to test your own AI:  "
+msgid "Example to test your own AI: "
 msgstr "あなたの自作のAIをテストする例: "
 
 # type: Plain text
@@ -498,7 +498,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:163 ../../doc/man/wesnoth_editor.6:63
-#: ../../doc/man/wesnothd.6:132
+#: ../../doc/man/wesnothd.6:135
 #, no-wrap
 msgid "AUTHOR"
 msgstr "著者"
@@ -529,27 +529,27 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:172 ../../doc/man/wesnoth_editor.6:69
-#: ../../doc/man/wesnothd.6:139
+#: ../../doc/man/wesnothd.6:142
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "公式ホームページ http://www.wesnoth.org/ を訪問して下さい。"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:173 ../../doc/man/wesnoth_editor.6:70
-#: ../../doc/man/wesnothd.6:140
+#: ../../doc/man/wesnothd.6:143
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "著作権"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:176 ../../doc/man/wesnoth_editor.6:72
-#: ../../doc/man/wesnothd.6:143
+#: ../../doc/man/wesnothd.6:146
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:179 ../../doc/man/wesnoth_editor.6:75
-#: ../../doc/man/wesnothd.6:146
+#: ../../doc/man/wesnothd.6:149
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -561,7 +561,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:76
-#: ../../doc/man/wesnothd.6:147
+#: ../../doc/man/wesnothd.6:150
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "関連項目"
@@ -697,19 +697,19 @@ msgid "wesnoth(6), wesnothd(6)"
 msgstr "wesnoth(6), wesnothd(6)"
 
 # type: TH
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:17
 #, no-wrap
 msgid "WESNOTHD"
 msgstr "WESNOTHD"
 
 # type: TH
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:17
 #, no-wrap
 msgid "wesnothd"
 msgstr "wesnothd"
 
 # type: TH
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:17
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
 msgstr "Battle for Wesnoth マルチプレイヤー・ネットワーク・デーモン"
@@ -722,9 +722,10 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:34
+#, fuzzy
 msgid ""
-"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|]"
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<R path \\|]> [\\|B<-p> I<R port \\|]"
+"> [\\|B<-t> I<R number \\|]>"
 msgstr ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|]"
@@ -794,91 +795,92 @@ msgid "B<-t,\\ --threads>I<\\ number>"
 msgstr "B<-t,\\ --threads>I<\\ number>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:63
 msgid ""
-"sets the number of worker threads for network I/O to n (default: 5, max: 30)."
+"sets the maximum number of waiting network thread (default: 5, max: 30).  B<-"
+"T,\\ --max-threads>I<\\ number> sets the maximum number of worker threads "
+"that will be created if set to 0 there will be no limit (default: 0)."
 msgstr ""
-"ネットワークI/O用の作業スレッドの数を n に設定する。(デフォルト: 5、最大: 30)"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:63
 #, no-wrap
 msgid "B<-V,\\ --version>"
 msgstr "B<-V,\\ --version>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:63
+#: ../../doc/man/wesnothd.6:66
 msgid "shows version number and exits."
 msgstr "バージョン番号を表示して、終了する。"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:63
+#: ../../doc/man/wesnothd.6:66
 #, no-wrap
 msgid "B<-v,\\ --verbose>"
 msgstr "B<-v,\\ --verbose>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:66
+#: ../../doc/man/wesnothd.6:69
 msgid "turns on more verbose logging."
 msgstr "より冗長なログ出力を有効にする。"
 
 # type: SH
-#: ../../doc/man/wesnothd.6:67
+#: ../../doc/man/wesnothd.6:70
 #, no-wrap
 msgid "SERVER CONFIG"
 msgstr "サーバー設定"
 
 # type: SS
-#: ../../doc/man/wesnothd.6:69
+#: ../../doc/man/wesnothd.6:72
 #, no-wrap
 msgid "The general syntax is:"
 msgstr "一般的な文法："
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:73
+#: ../../doc/man/wesnothd.6:76
 msgid "[I<tag>]"
 msgstr "[I<tag>]"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:75
+#: ../../doc/man/wesnothd.6:78
 msgid "key=\"I<value>\""
 msgstr "key=\"I<value>\""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:77
+#: ../../doc/man/wesnothd.6:80
 msgid "key=\"I<value>,I<value>,...\""
 msgstr "key=\"I<value>,I<value>,...\""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:79
+#: ../../doc/man/wesnothd.6:82
 msgid "[/I<tag>]"
 msgstr "[/I<tag>]"
 
 # type: SS
-#: ../../doc/man/wesnothd.6:80
+#: ../../doc/man/wesnothd.6:83
 #, no-wrap
 msgid "Global keys:"
 msgstr "グローバルキー:"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:82
+#: ../../doc/man/wesnothd.6:85
 #, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:85
+#: ../../doc/man/wesnothd.6:88
 msgid "The number of allowed connections from the same IP."
 msgstr "同じ IP から許可される接続数。"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:85
+#: ../../doc/man/wesnothd.6:88
 #, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:91
+#: ../../doc/man/wesnothd.6:94
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -890,59 +892,59 @@ msgstr ""
 "既定の値は `server,ai,player,network,human,admin,computer'。"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:91
+#: ../../doc/man/wesnothd.6:94
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:94
+#: ../../doc/man/wesnothd.6:97
 msgid "The number of allowed messages in B<messages_time_period>."
 msgstr "B<messages_time_period> の時間内に許可されるメッセージ数"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:94
+#: ../../doc/man/wesnothd.6:97
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:97
+#: ../../doc/man/wesnothd.6:100
 msgid "The time period (in seconds) message flooding is detected in."
 msgstr "メッセージの殺到(flood)が検出される時間周期。(秒単位)"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:97
+#: ../../doc/man/wesnothd.6:100
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:100
+#: ../../doc/man/wesnothd.6:103
 msgid "The message of the day."
 msgstr "本日のメッセージ。"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:100
+#: ../../doc/man/wesnothd.6:103
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:103
+#: ../../doc/man/wesnothd.6:106
 msgid ""
 "The password used to gain admin privileges. Usually it starts with \"admin "
 "\"."
 msgstr "管理者権限の獲得に用いられるパスワード。 通常は \"admin\" で始まる。"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:103
+#: ../../doc/man/wesnothd.6:106
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:106
+#: ../../doc/man/wesnothd.6:109
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported."
@@ -951,19 +953,19 @@ msgstr ""
 "`?' からなるワイルドカードのパターンに対応。"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:108
+#: ../../doc/man/wesnothd.6:111
 msgid "Example: versions_accepted=\"*\" accepts any version string."
 msgstr ""
 "例: versions_accepted=\"*\" で、どのようなバージョン文字列も受けつける。"
 
 # type: SS
-#: ../../doc/man/wesnothd.6:109
+#: ../../doc/man/wesnothd.6:112
 #, no-wrap
 msgid "Global tags:"
 msgstr "グローバルタグ:"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:114
+#: ../../doc/man/wesnothd.6:117
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
@@ -972,35 +974,35 @@ msgstr ""
 "のタグ。"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:115
+#: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:118
+#: ../../doc/man/wesnothd.6:121
 msgid "The address of the server to redirect to."
 msgstr "リダイレクトするサーバのアドレス。"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:118
+#: ../../doc/man/wesnothd.6:121
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:121
+#: ../../doc/man/wesnothd.6:124
 msgid "The port to connect to."
 msgstr "接続するポート。"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:121
+#: ../../doc/man/wesnothd.6:124
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:126
+#: ../../doc/man/wesnothd.6:129
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -1009,7 +1011,7 @@ msgstr ""
 "ターンに関しては、 B<versions_accepted> と同様に振る舞う。"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:131
+#: ../../doc/man/wesnothd.6:134
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1020,7 +1022,7 @@ msgstr ""
 "キーを受けつける。"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:137
+#: ../../doc/man/wesnothd.6:140
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
@@ -1034,6 +1036,14 @@ msgstr ""
 "た。 岡田信人 E<lt>okyada@gmail.comE<gt>によって日本語に翻訳された。"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:150
+#: ../../doc/man/wesnothd.6:153
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+# type: Plain text
+#~ msgid ""
+#~ "sets the number of worker threads for network I/O to n (default: 5, max: "
+#~ "30)."
+#~ msgstr ""
+#~ "ネットワークI/O用の作業スレッドの数を n に設定する。(デフォルト: 5、最大: "
+#~ "30)"

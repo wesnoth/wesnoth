@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2006-12-27 19:45+0100\n"
+"POT-Creation-Date: 2007-02-04 14:06+0100\n"
 "PO-Revision-Date: 2006-12-30 19:05+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team: none\n"
@@ -25,7 +25,7 @@ msgid "WESNOTH"
 msgstr "WESNOTH"
 
 # type: TH
-#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:17
 #, no-wrap
 msgid "2006"
 msgstr "2006"
@@ -495,8 +495,8 @@ msgstr "установить число ходов для выбранного �
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
-#, no-wrap
-msgid "Example to test your own AI:  "
+#, fuzzy, no-wrap
+msgid "Example to test your own AI: "
 msgstr "Пример для тестирования собственного AI:"
 
 # type: Plain text
@@ -510,7 +510,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:163 ../../doc/man/wesnoth_editor.6:63
-#: ../../doc/man/wesnothd.6:132
+#: ../../doc/man/wesnothd.6:135
 #, no-wrap
 msgid "AUTHOR"
 msgstr "АВТОР"
@@ -542,27 +542,27 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:172 ../../doc/man/wesnoth_editor.6:69
-#: ../../doc/man/wesnothd.6:139
+#: ../../doc/man/wesnothd.6:142
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Посетите официальную страницу: http://www.wesnoth.org/"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:173 ../../doc/man/wesnoth_editor.6:70
-#: ../../doc/man/wesnothd.6:140
+#: ../../doc/man/wesnothd.6:143
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:176 ../../doc/man/wesnoth_editor.6:72
-#: ../../doc/man/wesnothd.6:143
+#: ../../doc/man/wesnothd.6:146
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:179 ../../doc/man/wesnoth_editor.6:75
-#: ../../doc/man/wesnothd.6:146
+#: ../../doc/man/wesnothd.6:149
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -574,7 +574,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:76
-#: ../../doc/man/wesnothd.6:147
+#: ../../doc/man/wesnothd.6:150
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "СМ. ТАКЖЕ"
@@ -710,19 +710,19 @@ msgid "wesnoth(6), wesnothd(6)"
 msgstr "wesnoth(6), wesnothd(6)"
 
 # type: TH
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:17
 #, no-wrap
 msgid "WESNOTHD"
 msgstr "WESNOTHD"
 
 # type: TH
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:17
 #, no-wrap
 msgid "wesnothd"
 msgstr "wesnothd"
 
 # type: TH
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnothd.6:17
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
 msgstr "Демон для игры по сети Battle for Wesnoth"
@@ -734,9 +734,10 @@ msgstr "wesnothd - демон многопользовательской игр�
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:34
+#, fuzzy
 msgid ""
-"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|]"
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<R path \\|]> [\\|B<-p> I<R port \\|]"
+"> [\\|B<-t> I<R number \\|]>"
 msgstr ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|]"
@@ -806,92 +807,92 @@ msgid "B<-t,\\ --threads>I<\\ number>"
 msgstr "B<-t,\\ --threads>I<\\ number>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:63
 msgid ""
-"sets the number of worker threads for network I/O to n (default: 5, max: 30)."
+"sets the maximum number of waiting network thread (default: 5, max: 30).  B<-"
+"T,\\ --max-threads>I<\\ number> sets the maximum number of worker threads "
+"that will be created if set to 0 there will be no limit (default: 0)."
 msgstr ""
-"установить число рабочих потоков для сетевого ввода-вывода (по умолчанию 5, "
-"максимум 30)."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:63
 #, no-wrap
 msgid "B<-V,\\ --version>"
 msgstr "B<-V,\\ --version>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:63
+#: ../../doc/man/wesnothd.6:66
 msgid "shows version number and exits."
 msgstr "вывести номер версии и выйти."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:63
+#: ../../doc/man/wesnothd.6:66
 #, no-wrap
 msgid "B<-v,\\ --verbose>"
 msgstr "B<-v,\\ --verbose>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:66
+#: ../../doc/man/wesnothd.6:69
 msgid "turns on more verbose logging."
 msgstr "включить расширенный режим отладки."
 
 # type: SH
-#: ../../doc/man/wesnothd.6:67
+#: ../../doc/man/wesnothd.6:70
 #, no-wrap
 msgid "SERVER CONFIG"
 msgstr "КОНФИГУРАЦИЯ СЕРВЕРА"
 
 # type: SS
-#: ../../doc/man/wesnothd.6:69
+#: ../../doc/man/wesnothd.6:72
 #, no-wrap
 msgid "The general syntax is:"
 msgstr "Основной синтаксис:"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:73
+#: ../../doc/man/wesnothd.6:76
 msgid "[I<tag>]"
 msgstr "[I<tag>]"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:75
+#: ../../doc/man/wesnothd.6:78
 msgid "key=\"I<value>\""
 msgstr "key=\"I<value>\""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:77
+#: ../../doc/man/wesnothd.6:80
 msgid "key=\"I<value>,I<value>,...\""
 msgstr "key=\"I<value>,I<value>,...\""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:79
+#: ../../doc/man/wesnothd.6:82
 msgid "[/I<tag>]"
 msgstr "[/I<tag>]"
 
 # type: SS
-#: ../../doc/man/wesnothd.6:80
+#: ../../doc/man/wesnothd.6:83
 #, no-wrap
 msgid "Global keys:"
 msgstr "Глобальные ключи:"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:82
+#: ../../doc/man/wesnothd.6:85
 #, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:85
+#: ../../doc/man/wesnothd.6:88
 msgid "The number of allowed connections from the same IP."
 msgstr "Число разрешенных подключений от одного IP-адреса."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:85
+#: ../../doc/man/wesnothd.6:88
 #, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:91
+#: ../../doc/man/wesnothd.6:94
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -903,48 +904,48 @@ msgstr ""
 "если ничего не указано): 'server,ai,player,network,human,admin,computer'."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:91
+#: ../../doc/man/wesnothd.6:94
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:94
+#: ../../doc/man/wesnothd.6:97
 msgid "The number of allowed messages in B<messages_time_period>."
 msgstr "Число разрешенных сообщений в B<messages_time_period>."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:94
+#: ../../doc/man/wesnothd.6:97
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:97
+#: ../../doc/man/wesnothd.6:100
 msgid "The time period (in seconds) message flooding is detected in."
 msgstr ""
 "Временной отрезок (в секундах), в течение которого определяются сообщения "
 "наводнений."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:97
+#: ../../doc/man/wesnothd.6:100
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:100
+#: ../../doc/man/wesnothd.6:103
 msgid "The message of the day."
 msgstr "Сообщение дня."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:100
+#: ../../doc/man/wesnothd.6:103
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:103
+#: ../../doc/man/wesnothd.6:106
 msgid ""
 "The password used to gain admin privileges. Usually it starts with \"admin "
 "\"."
@@ -953,13 +954,13 @@ msgstr ""
 "умолчанию используется \"admin \"."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:103
+#: ../../doc/man/wesnothd.6:106
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:106
+#: ../../doc/man/wesnothd.6:109
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported."
@@ -968,18 +969,18 @@ msgstr ""
 "Поддерживаются '*' и '?' в качестве заполнителей шаблона."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:108
+#: ../../doc/man/wesnothd.6:111
 msgid "Example: versions_accepted=\"*\" accepts any version string."
 msgstr "Пример: versions_accepted=\"*\" принимает строку с любой версией."
 
 # type: SS
-#: ../../doc/man/wesnothd.6:109
+#: ../../doc/man/wesnothd.6:112
 #, no-wrap
 msgid "Global tags:"
 msgstr "Глобальные тэги:"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:114
+#: ../../doc/man/wesnothd.6:117
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
@@ -988,35 +989,35 @@ msgstr ""
 "версии клиента."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:115
+#: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:118
+#: ../../doc/man/wesnothd.6:121
 msgid "The address of the server to redirect to."
 msgstr "Адрес сервера для перенаправления."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:118
+#: ../../doc/man/wesnothd.6:121
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:121
+#: ../../doc/man/wesnothd.6:124
 msgid "The port to connect to."
 msgstr "Порт подключения."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:121
+#: ../../doc/man/wesnothd.6:124
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:126
+#: ../../doc/man/wesnothd.6:129
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -1025,7 +1026,7 @@ msgstr ""
 "заполнителей поведение аналогично B<versions_accepted>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:131
+#: ../../doc/man/wesnothd.6:134
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1036,7 +1037,7 @@ msgstr ""
 "ключи, что и [redirect]."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:137
+#: ../../doc/man/wesnothd.6:140
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
@@ -1050,6 +1051,14 @@ msgstr ""
 "Bouthors) E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:150
+#: ../../doc/man/wesnothd.6:153
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+# type: Plain text
+#~ msgid ""
+#~ "sets the number of worker threads for network I/O to n (default: 5, max: "
+#~ "30)."
+#~ msgstr ""
+#~ "установить число рабочих потоков для сетевого ввода-вывода (по умолчанию "
+#~ "5, максимум 30)."

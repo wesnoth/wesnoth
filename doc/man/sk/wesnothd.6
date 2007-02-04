@@ -2,32 +2,29 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
-.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
-.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\"
-.
+.\" .
+.\" .
 .\"*******************************************************************
 .\"
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
 .TH WESNOTHD 6 2006 wesnothd "Démon na sie»ovú hru Bitky o Wesnoth"
-.
 .SH NÁZOV
 .
 wesnothd \- Démon na sie»ovú hru Bitky o \fBWesnoth\fP
 .
 .SH ZHRNUTIE
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIèíslo\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR path \|]\fP [\|\fB\-p\fP \fIR port \|]\fP
+[\|\fB\-t\fP \fIR number \|]\fP
 .
 .SH POPIS
 .
@@ -37,28 +34,29 @@ server príjíma cez klienta alebo socket.
 .
 .SH MO®NOSTI
 .
-.TP 
+.TP  
 \fB\-c,\ \-\-config\fP\fI\ cesta\fP
 povie wesnothd, kde má hµada» konfiguraèný súbor. Syntax, viï sekciu 
 \fBKONFIGURÁCIA SERVERA\fP ni¾¹ie.
-.TP 
+.TP  
 \fB\-d,\ \-\-daemon\fP
 spustí wesnothd ako démona.
-.TP 
+.TP  
 \fB\-h,\ \-\-help\fP
 povie, èo robia jednotlivé mo¾nosti príkazového riadku.
-.TP 
+.TP  
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 zavesí server na daný port. Ak nie je daný port, pou¾ije sa port èíslo
 15000.
-.TP 
+.TP  
 \fB\-t,\ \-\-threads\fP\fI\ èíslo\fP
-nastaví èíslo pracovných vlákien pre sie»ové I/O (¹tandardne: 5, maximum:
-30).
-.TP 
+sets the maximum number of waiting network thread (default: 5, max: 30). 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP sets the maximum number of worker threads
+that will be created if set to 0 there will be no limit (default: 0).
+.TP  
 \fB\-V,\ \-\-version\fP
 vypí¹e èíslo verzie a skonèí.
-.TP 
+.TP  
 \fB\-v,\ \-\-verbose\fP
 zapne ukecanej¹ie zaznamenávanie.
 .
@@ -77,28 +75,28 @@ kµúè="\fIhodnota\fP,\fIhodnota\fP,..."
 .
 .SS "Globálne kµúèe:"
 .
-.TP 
+.TP  
 \fBconnections_allowed\fP
 Poèet povolených spojení z rovnakej IP adresy.
-.TP 
+.TP  
 \fBdisallow_names\fP
 Mená/prezývky, ktoré server neprijíma. Podporujú sa ¾olíkové znaky "*" a
 "?". Ïal¹ie podrobnosti viï \fBglob\fP(7). ©tandardné hodnoty (ak sa niè
 nezadá) sú: "server,ai,player,network,human,admin,computer".
-.TP 
+.TP  
 \fBmax_messages\fP
 Poèet povolených správ za \fBmessages_time_period\fP.
-.TP 
+.TP  
 \fBmessages_time_period\fP
 Èasové obdobie (v sekundách), v ktorom sa meria zasypávanie správami.
-.TP 
+.TP  
 \fBmotd\fP
 Správa dòa.
-.TP 
+.TP  
 \fBpasswd\fP
 Heslo pou¾ívané na získanie administrátorských práv. Zvyèajne zaèína na
 "admin ".
-.TP 
+.TP  
 \fBversions_accepted\fP
 Èiarkami oddelený zoznam verzií, ktoré má server prijíma». Podporujú sa
 ¾olíkové znaky "*" a "?".
@@ -111,13 +109,13 @@ Napríklad: versions_accepted="*" prijme hocijakú verziu.
 \fB[redirect]\fP Znaèka urèujúca server, na ktorý sa presmerujú niektoré vezie
 klientov.
 .RS
-.TP 
+.TP  
 \fBhost\fP
 Adresa servera, kam sa presmerujú.
-.TP 
+.TP  
 \fBport\fP
 Port, na ktorý sa majú pripoji».
-.TP 
+.TP  
 \fBversion\fP
 Èiarkami oddelený zoznam verzií, ktoré sa majú presmerova». Podporuje
 ¾olíkové znaky rovnako ako  \fBversions_accepted\fP.

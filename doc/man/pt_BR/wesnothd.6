@@ -2,32 +2,29 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
-.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
-.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\"
-.
+.\" .
+.\" .
 .\"*******************************************************************
 .\"
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
 .TH WESNOTHD 6 2006 wesnothd "Deamon de rede para jogos multijogadores de Battle for Wesnoth"
-.
 .SH NOME
 .
 wesnothd \- deamon de rede para jogos multijogadores de Battle for \fBWesnoth\fP
 .
 .SH SINOPSE
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcaminho\fP\|] [\|\fB\-p\fP \fIporta\fP\|]
-[\|\fB\-t\fP \fInúmero\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR path \|]\fP [\|\fB\-p\fP \fIR port \|]\fP
+[\|\fB\-t\fP \fIR number \|]\fP
 .
 .SH DESCRIÇÃO
 .
@@ -37,28 +34,29 @@ servidor aceita via o clitente wesnoth ou via socket.
 .
 .SH OPÇÕES
 .
-.TP 
+.TP  
 \fB\-c,\ \-\-config\fP\fI\ caminho\fP
 diz a wesnothd onde achar o arquivo de configuração a ser usado. Veja a
 seção \fBCONFIGURAÇÃO DO SERVIDOR\fP abaixo para a sintaxe.
-.TP 
+.TP  
 \fB\-d,\ \-\-daemon\fP
 executa wesnothd como um daemon.
-.TP 
+.TP  
 \fB\-h,\ \-\-help\fP
 explica o que as opções de linha de comando fazem.
-.TP 
+.TP  
 \fB\-p,\ \-\-port\fP\fI\ porta\fP
 conecta o servidor à porta escolhida. Se nenhum número de porta for
 escolhido, porta 15000 será usada.
-.TP 
+.TP  
 \fB\-t,\ \-\-threads\fP\fI\ número\fP
-configura o número de threads para a entrada e saida da rede. (padrão: 5,
-máximo: 30).
-.TP 
+sets the maximum number of waiting network thread (default: 5, max: 30). 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP sets the maximum number of worker threads
+that will be created if set to 0 there will be no limit (default: 0).
+.TP  
 \fB\-V,\ \-\-version\fP
 mostra o número da versão e termina.
-.TP 
+.TP  
 \fB\-v,\ \-\-verbose\fP
 aciona um log mais detalhado.
 .
@@ -77,28 +75,28 @@ chave="\fIvalor\fP,\fIvalor\fP,..."
 .
 .SS "Chaves globais:"
 .
-.TP 
+.TP  
 \fBconnections_allowed\fP
 O número de conexões oriundas do mesmo IP permitidas.
-.TP 
+.TP  
 \fBdisallow_names\fP
 Nomes/apelidos que não são aceitos pelo servidor. `*'e `?' podem ser usados
 como coringas. Veja \fBglob\fP(7) para mais detalhes. O valor padrão (usado se
 nada for especificado) é: `server,ai,player,network,human,admin,computer'.
-.TP 
+.TP  
 \fBmax_messages\fP
 O número de mensagens permitidas dentro de \fBmessages_time_period\fP.
-.TP 
+.TP  
 \fBmessages_time_period\fP
 O tempo (em segundos) usado para detectar flood de mensagens.
-.TP 
+.TP  
 \fBmotd\fP
 A mensagem do dia.
-.TP 
+.TP  
 \fBpasswd\fP
 A senha usada para ganhar privilégios admnistrativos. Geralmente ela começa
 com "admin".
-.TP 
+.TP  
 \fBversions_accepted\fP
 Uma lista separada por vírgulas de strings de versão que serão aceitas pelo
 servidor. `*'e `?' podem ser usados para formar coringas.
@@ -111,13 +109,13 @@ Exemplo: versions_accepted="*" aceita qualquer string de versão.
 \fB[redirect]\fP Uma tag para especificar um servidor ao qual redirecionar
 certas versões de clientes.
 .RS
-.TP 
+.TP  
 \fBhost\fP
 O endereço do servidor para o qual redirecionar.
-.TP 
+.TP  
 \fBport\fP
 A porta para a qual se conectar.
-.TP 
+.TP  
 \fBversion\fP
 Uma lista separada por vírgulas de versões para redirecionar. Se comporta do
 mesmo modo que \fBversions_accepted\fP em relação a coringas.

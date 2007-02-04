@@ -2,32 +2,29 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
-.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
-.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\"
-.
+.\" .
+.\" .
 .\"*******************************************************************
 .\"
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
 .TH WESNOTHD 6 2006 wesnothd "Strijd om Wesnoth multiplayer netwerk daemon"
-.
 .SH NAAM
 .
 wesnothd \- Strijd om \fBWesnoth\fP multiplayer netwerk daemon
 .
 .SH OVERZICHT
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR path \|]\fP [\|\fB\-p\fP \fIR port \|]\fP
+[\|\fB\-t\fP \fIR number \|]\fP
 .
 .SH OMSCHRIJVING
 .
@@ -37,27 +34,29 @@ toegestane commandos.
 .
 .SH OPTIES
 .
-.TP 
+.TP  
 \fB\-c,\ \-\-config\fP\fI\ path\fP
 vertelt wesnothd waar het het configuratiebestand kan vinden. Lees de sectie
 \fBSERVER CONFIG\fP hieronder voor de syntax.
-.TP 
+.TP  
 \fB\-d,\ \-\-daemon\fP
 draait wesntohd als een daemon.
-.TP 
+.TP  
 \fB\-h,\ \-\-help\fP
 veklaart de opties voor command line.
-.TP 
+.TP  
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 verbind de server met de opgegeven poort. Als geen poort is opgegeven, poort
 15000 zal worden gebruikt.
-.TP 
+.TP  
 \fB\-t,\ \-\-threads\fP\fI\ number\fP
-stelt het aantal threads voor netwerk I/O in op n (Standaard: 5, max: 30).
-.TP 
+sets the maximum number of waiting network thread (default: 5, max: 30). 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP sets the maximum number of worker threads
+that will be created if set to 0 there will be no limit (default: 0).
+.TP  
 \fB\-V,\ \-\-version\fP
 toont het versie nummer en sluit af.
-.TP 
+.TP  
 \fB\-v,\ \-\-verbose\fP
 schakelt uitgebreidere logging in.
 .
@@ -76,28 +75,28 @@ sleutel="\fIwaarde\fP,\fIwaarde\fP,..."
 .
 .SS "Globale sleutels:"
 .
-.TP 
+.TP  
 \fBconnections_allowed\fP
 Het aantal toegestane verbindingen van hetzelfde IP.
-.TP 
+.TP  
 \fBdisallow_names\fP
 Namen die niet geaccepteerd worden door de sever. `*' en `?' als jokertekens
 zijn toegestaan. Bekijk \fBglob\fP(7) voor meer details. Standaard waarden
 (gebruikt wanneer niet gespecificeerd) zijn:
 `server,ai,player,network,human,admin,computer'.
-.TP 
+.TP  
 \fBmax_messages\fP
 Het aantal toegestane berichten in \fBmessages_time_period\fP.
-.TP 
+.TP  
 \fBmessages_time_period\fP
 De tijdsperiode (in seconden)
-.TP 
+.TP  
 \fBmotd\fP
 Bericht van de dag.
-.TP 
+.TP  
 \fBpasswd\fP
 Het wachtwoord om admin rechten te krijgen. Meestal begint het met "admin ".
-.TP 
+.TP  
 \fBversions_accepted\fP
 Een comma gescheiden lijst van versies die door de server geaccepteerd dient
 te worden. `*' en `?' zijn als jokertekens toegestaan.
@@ -110,13 +109,13 @@ Voorbeeld: versions_accepted="*" accepteerd elke versie.
 \fB[redirect]\fP Een element om een server aan te wijzen om bepaalde client
 versies naar te verwijzen.
 .RS
-.TP 
+.TP  
 \fBhost\fP
 Het adres van de te verwijzen server.
-.TP 
+.TP  
 \fBport\fP
 De te verbinden poort.
-.TP 
+.TP  
 \fBversion\fP
 Een comma gescheiden lijst van te verwijzen versies. Gedraagt zich hetzelfde
 als \fBversions_accepted\fP wat betreft jokertekens.

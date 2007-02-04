@@ -2,32 +2,29 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
-.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
-.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\"
-.
+.\" .
+.\" .
 .\"*******************************************************************
 .\"
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
 .TH WESNOTHD 6 2006 wesnothd "Демон для игры по сети Battle for Wesnoth"
-.
 .SH ИМЯ
 .
 wesnothd \- демон многопользовательской игры Битва за \fBВеснот\fP
 .
 .SH ОБЗОР
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR path \|]\fP [\|\fB\-p\fP \fIR port \|]\fP
+[\|\fB\-t\fP \fIR number \|]\fP
 .
 .SH ОПИСАНИЕ
 .
@@ -37,28 +34,29 @@ Wesnoth. См. http://www.wesnoth.org/wiki/ServerAdministration, чтобы узнать
 .
 .SH ПАРАМЕТРЫ
 .
-.TP 
+.TP  
 \fB\-c,\ \-\-config\fP\fI\ path\fP
 указать wesnothd конфигурационный файл для использования. См. раздел
 \fBКОНФИГУРАЦИЯ СЕРВЕРА\fP для описания.
-.TP 
+.TP  
 \fB\-d,\ \-\-daemon\fP
 запустить wesnothd в качестве демона.
-.TP 
+.TP  
 \fB\-h,\ \-\-help\fP
 сообщает, какие принимаются параметры командной строки.
-.TP 
+.TP  
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 указать серверу порт для прослушивания. Если порт не указан, используется
 порт 15000.
-.TP 
+.TP  
 \fB\-t,\ \-\-threads\fP\fI\ number\fP
-установить число рабочих потоков для сетевого ввода\-вывода (по умолчанию 5,
-максимум 30).
-.TP 
+sets the maximum number of waiting network thread (default: 5, max: 30). 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP sets the maximum number of worker threads
+that will be created if set to 0 there will be no limit (default: 0).
+.TP  
 \fB\-V,\ \-\-version\fP
 вывести номер версии и выйти.
-.TP 
+.TP  
 \fB\-v,\ \-\-verbose\fP
 включить расширенный режим отладки.
 .
@@ -77,29 +75,29 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .
 .SS "Глобальные ключи:"
 .
-.TP 
+.TP  
 \fBconnections_allowed\fP
 Число разрешенных подключений от одного IP\-адреса.
-.TP 
+.TP  
 \fBdisallow_names\fP
 Имена/ники, не принимаемые сервером. Поддерживаются '*' и '?' для создания
 шаблонов. См. \fBglob\fP(7) для деталей. Значения по умолчанию (используются
 если ничего не указано): 'server,ai,player,network,human,admin,computer'.
-.TP 
+.TP  
 \fBmax_messages\fP
 Число разрешенных сообщений в \fBmessages_time_period\fP.
-.TP 
+.TP  
 \fBmessages_time_period\fP
 Временной отрезок (в секундах), в течение которого определяются сообщения
 наводнений.
-.TP 
+.TP  
 \fBmotd\fP
 Сообщение дня.
-.TP 
+.TP  
 \fBpasswd\fP
 Пароль, используемый для предоставления административных привелегий. По
 умолчанию используется "admin ".
-.TP 
+.TP  
 \fBversions_accepted\fP
 Список строк версий, разделенных запятыми, принимаемых
 сервером. Поддерживаются '*' и '?' в качестве заполнителей шаблона.
@@ -112,13 +110,13 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 \fB[redirect]\fP тэг, указывающий перенаправление на сервер для определенной
 версии клиента.
 .RS
-.TP 
+.TP  
 \fBhost\fP
 Адрес сервера для перенаправления.
-.TP 
+.TP  
 \fBport\fP
 Порт подключения.
-.TP 
+.TP  
 \fBversion\fP
 Список версий, разделенных запятыми, для перенаправления. При использовании
 заполнителей поведение аналогично \fBversions_accepted\fP.
