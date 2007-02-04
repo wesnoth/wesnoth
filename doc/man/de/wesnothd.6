@@ -27,7 +27,8 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .SH ZUSAMMENFASSUNG
 .
 \fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|]
+\fInumber\fP\|]\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP
+\fIPort\fP\|] [\|\fB\-t\fP \fINummer\fP\|]
 .
 .SH BESCHREIBUNG
 .
@@ -53,8 +54,8 @@ bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port 15000 genommen.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ WERT\fP
-sets the maximum number of waiting worker threads for network I/O to n
-(default: 5, max: 30).
+Legt die maximale Anzahl an Arbeiterprozessen für Netzwerk I/O
+fest. (Standard: 5, Maximum: 30)
 .TP 
 \fB\-t,\ \-\-max\-threads\fP\fI\ WERT\fP
 Legt die maximal zu erzeugende Anzahl an Arbeiterprozessen fest. Bei einem
