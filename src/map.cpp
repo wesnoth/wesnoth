@@ -82,48 +82,6 @@ const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_
 		return i->second.union_type();
 	}
 }
-	
-bool gamemap::is_village(t_translation::t_letter terrain) const
-{
-	return get_terrain_info(terrain).is_village();
-}
-
-int gamemap::gives_healing(t_translation::t_letter terrain) const
-{
-	return get_terrain_info(terrain).gives_healing();
-}
-
-bool gamemap::is_castle(t_translation::t_letter terrain) const
-{
-	return get_terrain_info(terrain).is_castle();
-}
-
-bool gamemap::is_keep(t_translation::t_letter terrain) const
-{
-	return get_terrain_info(terrain).is_keep();
-}
-
-bool gamemap::is_village(const gamemap::location& loc) const
-{
-	return on_board(loc) && is_village(get_terrain(loc));
-}
-
-int gamemap::gives_healing(const gamemap::location& loc) const
-{
-	if (!on_board(loc))
-		return 0;
-	return gives_healing(get_terrain(loc));
-}
-
-bool gamemap::is_castle(const gamemap::location& loc) const
-{
-	return on_board(loc) && is_castle(get_terrain(loc));
-}
-
-bool gamemap::is_keep(const gamemap::location& loc) const
-{
-	return on_board(loc) && is_keep(get_terrain(loc));
-}
 
 bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*/) const
 { //need to fill this in
@@ -472,14 +430,6 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 	}
 }
 
-int gamemap::x() const { return tiles_.size(); }
-int gamemap::y() const { return tiles_.empty() ? 0 : tiles_.front().size(); }
-
-const t_translation::t_list& gamemap::operator[](int index) const
-{
-	return tiles_[index];
-}
-
 t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 {
 	if(on_board(loc))
@@ -539,11 +489,6 @@ int gamemap::num_valid_starting_positions() const
 		return res;
 }
 
-int gamemap::num_starting_positions() const
-{
-	return sizeof(startingPositions_)/sizeof(*startingPositions_); 
-}
-
 int gamemap::is_starting_position(const gamemap::location& loc) const
 {
 	const gamemap::location* const beg = startingPositions_+1;
@@ -572,10 +517,6 @@ const terrain_type& gamemap::get_terrain_info(const t_translation::t_letter terr
 		return default_terrain;
 }
 
-const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) const
-{
-	return get_terrain_info(get_terrain(loc));
-}
 bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod) const
 {
@@ -685,11 +626,6 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 	return true; 
 }
 
-const t_translation::t_list& gamemap::get_terrain_list() const
-{
-	return terrainList_;
-}
-
 void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_letter terrain)
 {
 	if(!on_board(loc))
@@ -762,8 +698,3 @@ const std::map<t_translation::t_letter, size_t>& gamemap::get_weighted_terrain_f
 
 	return terrainFrequencyCache_;
 }
-
-void gamemap::remove_from_border_cache(const location &loc) {
-	borderCache_.erase(loc);
-}
-

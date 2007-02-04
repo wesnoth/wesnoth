@@ -99,15 +99,23 @@ public:
 	const t_translation::t_list& underlying_union_terrain(const location& loc) const
 		{ return underlying_union_terrain(get_terrain(loc)); }
 
-	bool is_village(t_translation::t_letter terrain) const;
-	int gives_healing(t_translation::t_letter terrain) const;
-	bool is_castle(t_translation::t_letter terrain) const;
-	bool is_keep(t_translation::t_letter terrain) const;
+	bool is_village(t_translation::t_letter terrain) const
+		{ return get_terrain_info(terrain).is_village(); }
+	int gives_healing(t_translation::t_letter terrain) const
+		{ return get_terrain_info(terrain).gives_healing(); }
+	bool is_castle(t_translation::t_letter terrain) const
+		{ return get_terrain_info(terrain).is_castle(); }
+	bool is_keep(t_translation::t_letter terrain) const
+		{ return get_terrain_info(terrain).is_keep(); }
 
-	bool is_village(const location& loc) const;
-	int gives_healing(const location& loc) const;
-	bool is_castle(const location& loc) const;
-	bool is_keep(const location& loc) const;
+	bool is_village(const location& loc) const
+		{ return on_board(loc) && is_village(get_terrain(loc)); }
+	int gives_healing(const location& loc) const
+		{ return on_board(loc) ?  gives_healing(get_terrain(loc)) : 0; }
+	bool is_castle(const location& loc) const
+		{ return on_board(loc) && is_castle(get_terrain(loc)); }
+	bool is_keep(const location& loc) const
+		{ return on_board(loc) && is_keep(get_terrain(loc)); }
 
 	//function to filter whether a location matches a set of criteria
 	bool filter_location(const location &loc,const config &con) const;
@@ -125,11 +133,12 @@ public:
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
 
 	//dimensions of the map.
-	int x() const;
-	int y() const;
+	int x() const { return tiles_.size(); }
+	int y() const { return tiles_.empty() ? 0 : tiles_.front().size(); }
 
 	//allows lookup of terrain at a particular location.
-	const t_translation::t_list& operator[](int index) const;
+	const t_translation::t_list& operator[](int index) const 
+		{ return tiles_[index]; }
 
 	//looks up terrain at a particular location. Hexes off the map
 	//may be looked up, and their 'emulated' terrain will also be returned.
@@ -168,13 +177,15 @@ public:
 	const terrain_type& get_terrain_info(const t_translation::t_letter terrain) const;
 
 	//shortcut to get_terrain_info(get_terrain(loc))
-	const terrain_type& get_terrain_info(const location &loc) const;
+	const terrain_type& get_terrain_info(const location &loc) const
+		{ return get_terrain_info(get_terrain(loc)); }
 	//
 	bool terrain_matches_filter(const location& loc, const config& cfg, 
 			const gamestatus& game_status, const unit_map& units, const bool flat_tod=false) const;
 
 	//gets the list of terrains
-	const t_translation::t_list& get_terrain_list() const;
+	const t_translation::t_list& get_terrain_list() const
+		{ return terrainList_; }
 
 	//clobbers over the terrain at location 'loc', with the given terrain
 	void set_terrain(const location& loc, const t_translation::t_letter terrain);
@@ -185,7 +196,8 @@ public:
 	//remove the cached border terrain at loc. Needed by the editor
 	//to make tiles at the border update correctly when drawing
 	//other tiles.
-	void remove_from_border_cache(const location &loc);
+	void remove_from_border_cache(const location &loc)
+		{ borderCache_.erase(loc); }
 
 	//the size of the starting positions array
 	//the positions themselves are numbered from
@@ -197,7 +209,8 @@ protected:
 	location startingPositions_[STARTING_POSITIONS];
 	
 private:
-	int num_starting_positions() const;
+	int num_starting_positions() const
+		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 
 	t_translation::t_list terrainList_;
 	std::map<t_translation::t_letter, terrain_type> letterToTerrain_;
