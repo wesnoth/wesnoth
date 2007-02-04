@@ -160,9 +160,6 @@ namespace image {
 	///for representing day/night. Invalidates all scaled images.
 	void set_colour_adjustment(int r, int g, int b);
 
-	///function to get back the current colour adjustment values
-	void get_colour_adjustment(int *r, int *g, int *b);
-
 	///function which sets a certain image as a 'mask' for all scaled images.
 	///the 'mask' is blitted onto all scaled images.
 	void set_image_mask(const std::string& image_name);
