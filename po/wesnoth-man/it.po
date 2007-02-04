@@ -121,6 +121,8 @@ msgid ""
 "compresses a savefile (infile) that is in text WML format into binary WML "
 "format (outfile)."
 msgstr ""
+"comprime un file di salvataggio (infile) in formato WML testuale in formato "
+"WML binario (outfile)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:51
@@ -152,6 +154,8 @@ msgid ""
 "decompresses a savefile (infile) that is in binary WML format into text WML "
 "format (outfile)."
 msgstr ""
+"decomprime un file di salvataggio (infile) in formato WML binario in formato "
+"WML testuale (outfile)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -162,7 +166,7 @@ msgstr "B<-f>, B<--fullscreen>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:63
 msgid "runs the game in full screen mode."
-msgstr "carica il gioco a tutto schermo"
+msgstr "esegue il gioco a tutto schermo."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:63
@@ -176,8 +180,8 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
-"Mostra, su un angolo dello schermo, il numero di schermate per secondo al "
-"quale il gioco sta correntemente funzionando. "
+"mostra, in un angolo dello schermo, il numero di schermate per secondo che "
+"il gioco sta generando attualmente."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
@@ -190,8 +194,8 @@ msgstr "B<-h>, B<--help>"
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr ""
-"Visualizza un riepilogo delle opzioni tramite riga di comando verso un "
-"output standard ed esce"
+"mostra un riepilogo delle opzioni tramite riga di comando verso un output "
+"standard ed esce."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:70
@@ -202,7 +206,7 @@ msgstr "B<--load>I<\\ savegame>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "loads the file savegame from the standard save game directory."
-msgstr "Carica il file savegame dalla cartella standard di salvataggio."
+msgstr "carica il file savegame dalla cartella standard di salvataggio."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73
@@ -230,6 +234,8 @@ msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
+"esegue una partita multigiocatore. Ci sono opzioni aggiuntive che possono "
+"essere usate con B<--mutiplayer>, come spiegato di seguito."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:89
@@ -240,7 +246,7 @@ msgstr "B<--nocache>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:92
 msgid "disables caching of game data."
-msgstr "Disabilita il caching dei dati del gioco"
+msgstr "disabilita la cache dei dati di gioco."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:92
@@ -251,7 +257,7 @@ msgstr "B<--nosound>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:95
 msgid "runs the game without sounds and music."
-msgstr "Carica il gioco senza suono e musica"
+msgstr "esegue il gioco senza suono e musica."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:95 ../../doc/man/wesnoth_editor.6:43
@@ -262,7 +268,7 @@ msgstr "B<--path>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:98 ../../doc/man/wesnoth_editor.6:46
 msgid "prints the name of the game data directory and exits."
-msgstr "Visualizza il nome della cartella contenente i dati del gioco ed esce."
+msgstr "stampa il nome della cartella contenente i dati del gioco ed esce."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:98
@@ -273,7 +279,7 @@ msgstr "B<-r>, B<--resolution>\\ I<XxY>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:101
 msgid "sets the screen resolution. Example: -r 800x600"
-msgstr "Imposta la risoluzione dello schermo. Esempio: -r 800x600"
+msgstr "imposta la risoluzione dello schermo. Esempio: -r 800x600"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:101
@@ -284,7 +290,7 @@ msgstr "B<-t>, B<--test>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:104
 msgid "runs the game in a small test scenario."
-msgstr "Carca il gioco con un piccolo scenario di test"
+msgstr "esegue il gioco con un piccolo scenario di test."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:104
@@ -320,6 +326,8 @@ msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by --nogui."
 msgstr ""
+"esegue il gioco senza ritardi per stabilire le prestazioni del sistema. "
+"Questa opzione è abilitata automaticamente da --nogui."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:113
@@ -400,6 +408,8 @@ msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
 msgstr ""
+"esegue il gioco senza GUI. Deve apparire prima di B<--multiplayer> per avere "
+"l'effetto desiderato."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:139
@@ -427,6 +437,8 @@ msgid ""
 "selects a multiplayer scenario. The default scenario is \"multiplayer_Charge"
 "\"."
 msgstr ""
+"seleziona uno scenario multigiocatore. lo scenario predefinito è "
+"\"multiplayer_Charge\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:151
@@ -457,9 +469,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Example to test your own AI:  "
-msgstr "Esempio per testare la tua IA:"
+msgstr "Esempio per verificare il funzionamento della tua IA: "
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:162
@@ -488,6 +500,8 @@ msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 msgstr ""
+"Edito da Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> e Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:170
@@ -495,12 +509,14 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Questa pagina di manuale è stata scritta in origine da Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:172 ../../doc/man/wesnoth_editor.6:69
 #: ../../doc/man/wesnothd.6:139
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr ""
+msgstr "Visita la pagina home ufficiale: http://www.wesnoth.org/"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:173 ../../doc/man/wesnoth_editor.6:70
@@ -519,15 +535,15 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:179 ../../doc/man/wesnoth_editor.6:75
 #: ../../doc/man/wesnothd.6:146
-#, fuzzy
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
-"Questo gioco è rilasciato come Software Libero; Viene rilasciato secondo i "
+"Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i "
 "termini della licenza GPL versione 2 come pubblicata dalla Free Software "
-"Foundation. Non vi è nessuna garanzia sul suo utilizzo; "
+"Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né "
+"per l'ADEGUATEZZA AD UNO SCOPO PARTICOLARE."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:76
@@ -655,6 +671,10 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Scritto da David White E<lt>davidnwhite@verizon.netE<gt>. Edito da Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> e ott E<lt>ott@gaon.netE<gt>.  "
+"Questa pagina di manuale è stata scritta in origine da Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:77
@@ -677,12 +697,12 @@ msgstr "wesnothd"
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr ""
+msgstr "Demone di rete per multigiocatore di Battle for Wesnoth"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr ""
+msgstr "wesnothd - Demone di rete per multigiocatore di Battle for B<Wesnoth>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:34
@@ -825,7 +845,7 @@ msgstr "B<connections_allowed>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:85
 msgid "The number of allowed connections from the same IP."
-msgstr ""
+msgstr "Il numero di connessioni permesse dallo stesso IP."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:85
@@ -852,6 +872,7 @@ msgstr "B<max_messages>"
 #: ../../doc/man/wesnothd.6:94
 msgid "The number of allowed messages in B<messages_time_period>."
 msgstr ""
+"Il numero di messaggi permessi in un periodo di B<messages_time_period>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:94
@@ -873,7 +894,7 @@ msgstr "B<motd>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:100
 msgid "The message of the day."
-msgstr "Messaggio del giorno."
+msgstr "Il messaggio del giorno."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:100
@@ -887,6 +908,8 @@ msgid ""
 "The password used to gain admin privileges. Usually it starts with \"admin "
 "\"."
 msgstr ""
+"La password da usare per dare i privilegi di amministratore. Di solito "
+"inizia con \"admin \"."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
@@ -900,11 +923,14 @@ msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported."
 msgstr ""
+"Un elenco separato da virgole delle stringhe di versione che il server deve "
+"accettare. I caratteri jolly `*' e `?' sono ammessi."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:108
 msgid "Example: versions_accepted=\"*\" accepts any version string."
 msgstr ""
+"Esempio: versions_accepted=\"*\" accetta tutte le stringhe di versione."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:109

@@ -9760,7 +9760,7 @@ msgstr "Chiudi"
 
 #: src/actions.cpp:111
 msgid "You don't have a leader to recruit with."
-msgstr "Non hai un condottiero con cui reclutare"
+msgstr "Non hai un condottiero con cui reclutare."
 
 #: src/actions.cpp:118
 msgid "You must have your leader on a keep to recruit or recall units."
@@ -10071,7 +10071,7 @@ msgstr "Pubblica estensione: "
 
 #: src/game.cpp:987
 msgid "Delete add-on: "
-msgstr "Cancella estensione:"
+msgstr "Cancella estensione: "
 
 #: src/game.cpp:991
 msgid "There are no add-ons available for download from this server."
@@ -10229,11 +10229,11 @@ msgstr ""
 
 #: src/game.cpp:1524
 msgid "Error loading game configuration files: '"
-msgstr "Errore durante il caricamento dei file di configurazione: '"
+msgstr "Errore durante il caricamento dei file di configurazione: «"
 
 #: src/game.cpp:1525
 msgid "' (The game will now exit)"
-msgstr "' (Partita in fase di chiusura.)"
+msgstr "» (Partita in fase di chiusura.)"
 
 #: src/game.cpp:1666
 msgid "Battle for Wesnoth"
@@ -10643,10 +10643,9 @@ msgid "Search"
 msgstr "Cerca"
 
 #: src/menu_events.cpp:1508
-#, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
-"Comandi: whisper ignore emote. Scrivi /help [command] per ulteriore aiuto."
+"Comandi: whisper list emote. Scrivi /help [comando] per ulteriore aiuto."
 
 #: src/menu_events.cpp:1559
 msgid ""
@@ -10657,37 +10656,32 @@ msgstr ""
 "controllano una qualunque fazione in partita. Uso: /whisper [nick] [message]"
 
 #: src/menu_events.cpp:1563
-#, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
-"Aggiungi il giocatore dal tuo elenco degli utenti da ignorare. Uso: /ignore "
-"add [argument]"
+"Aggiungi il giocatore all'elenco degli amici. Uso: /list addfriend [argument]"
 
 #: src/menu_events.cpp:1565
-#, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
-"Aggiungi il giocatore dal tuo elenco degli utenti da ignorare. Uso: /ignore "
-"add [argument]"
+"Aggiungi il giocatore all'elenco degli utenti da ignorare. Uso: /list ignore "
+"[argument]"
 
 #: src/menu_events.cpp:1567
-#, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
-"Rimuovi il giocatore dal tuo elenco degli utenti da ignorare. Uso: /ignore "
-"remove [argument]"
+"Rimuovi il giocatore dal tuo elenco di amici o utenti da ignorare. Uso: /"
+"list remove [argument]"
 
 #: src/menu_events.cpp:1569
-#, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
-msgstr "Svuota l'elenco degli utenti da ignorare: Uso: /ignore clear"
+msgstr ""
+"Svuota l'elenco degli amici e degli utenti da ignorare: Uso: /list clear"
 
 #: src/menu_events.cpp:1571
-#, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
-msgstr "Mostra il tuo elenco degli utenti da ignorare. Uso: /ignore list"
+msgstr "Mostra il tuo elenco di amici e utenti da ignorare. Uso: /list display"
 
 #: src/menu_events.cpp:1573
 msgid "Unknown subcommand"
