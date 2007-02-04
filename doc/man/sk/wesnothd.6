@@ -26,8 +26,8 @@ wesnothd \- Démon na sie»ovú hru Bitky o \fBWesnoth\fP
 .
 .SH ZHRNUTIE
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIèíslo\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|]
 .
 .SH POPIS
 .
@@ -53,9 +53,15 @@ zavesí server na daný port. Ak nie je daný port, pou¾ije sa port èíslo
 15000.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ èíslo\fP
-nastaví èíslo pracovných vlákien pre sie»ové I/O (¹tandardne: 5, maximum:
-30).
+sets the maximum number of waiting worker threads for network I/O to n
+(default: 5, max: 30).
 .TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
+sets the maximum number of worker threads that will be created if set to 0
+there will be no limit (default: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
+.TP  
 \fB\-V,\ \-\-version\fP
 vypí¹e èíslo verzie a skonèí.
 .TP 

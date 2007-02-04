@@ -26,8 +26,8 @@ Bitva o \fBWesnoth\fP \- sí»ový server pro hru více hráèù
 .
 .SH POU®ITÍ
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIpoèet_vláken\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|]
 .
 .SH POPIS
 .
@@ -52,9 +52,15 @@ zobrazuje nápovìdu k parametrùm pøíkazové øádky.
 øíká wesnothd, na kterém portu má bì¾et. Implicitní hodnota je 15000.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ poèet\fP
-nastavuje poèet vláken, které bude wesnothd pou¾ívat pro sí»ová spojení
-(implicitnì: 5, max: 30).
+sets the maximum number of waiting worker threads for network I/O to n
+(default: 5, max: 30).
 .TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
+sets the maximum number of worker threads that will be created if set to 0
+there will be no limit (default: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
+.TP  
 \fB\-V,\ \-\-version\fP
 zobrazí verzi wesnothd.
 .TP 
