@@ -24,7 +24,8 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .SH ZUSAMMENFASSUNG
 .
 \fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR path \|]\fP [\|\fB\-p\fP \fIR port \|]\fP
-[\|\fB\-t\fP \fIR number \|]\fP
+[\|\fB\-t\fP \fIR number \|]\fP\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR Pfad \|]\fP
+[\|\fB\-p\fP \fIR Port \|]\fP [\|\fB\-t\fP \fIR Nummer \|]\fP
 .
 .SH BESCHREIBUNG
 .
@@ -50,9 +51,11 @@ bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port 15000 genommen.
 .TP  
 \fB\-t,\ \-\-threads\fP\fI\ WERT\fP
-sets the maximum number of waiting network thread (default: 5, max: 30). 
-\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP sets the maximum number of worker threads
-that will be created if set to 0 there will be no limit (default: 0).
+sets the maximum number of waiting network thread (default: 5, max: 30).
+.TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
+sets the maximum number of worker threads that will be created if set to 0
+there will be no limit (default: 0).
 .TP  
 \fB\-V,\ \-\-version\fP
 Zeigt die Versionsnummer an und beendet das Programm.
