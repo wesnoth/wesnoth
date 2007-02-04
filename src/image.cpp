@@ -617,11 +617,6 @@ surface reverse_image(const surface& surf)
 	return rev;
 }
 
-void register_image(const image::locator& id, const surface& surf)
-{
-	id.add_to_cache(images_, surf);
-}
-
 bool exists(const image::locator& i_locator)
 {
 	typedef image::locator loc;
