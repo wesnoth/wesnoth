@@ -26,9 +26,8 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .
 .SH ZUSAMMENFASSUNG
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|]\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP
-\fIPort\fP\|] [\|\fB\-t\fP \fINummer\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP \fIPort\fP\|] [\|\fB\-t\fP
+\fINummer\fP\|]
 .
 .SH BESCHREIBUNG
 .
@@ -54,15 +53,8 @@ bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port 15000 genommen.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ WERT\fP
-Legt die maximale Anzahl an Arbeiterprozessen für Netzwerk I/O
-fest. (Standard: 5, Maximum: 30)
+setzt die Anzahl der Threads für Netzwerk I/O auf n (Standard: 5, Max: 30).
 .TP 
-\fB\-t,\ \-\-max\-threads\fP\fI\ WERT\fP
-Legt die maximal zu erzeugende Anzahl an Arbeiterprozessen fest. Bei einem
-Wert von 0 gibt es keine Beschränkung. (Standard: 0)
-.TP 
-\fB\-V,\ \-\-version\fP
-.TP  
 \fB\-V,\ \-\-version\fP
 Zeigt die Versionsnummer an und beendet das Programm.
 .TP 

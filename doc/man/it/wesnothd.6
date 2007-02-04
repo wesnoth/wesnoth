@@ -18,24 +18,24 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2006 wesnothd "Battle for Wesnoth multiplayer network daemon"
+.TH WESNOTHD 6 2006 wesnothd "Demone di rete per multigiocatore di Battle for Wesnoth"
 .
-.SH NAME
+.SH NOME
 .
-wesnothd \- Battle for \fBWesnoth\fP multiplayer network daemon
+wesnothd \- Demone di rete per multigiocatore di Battle for \fBWesnoth\fP
 .
 .SH SYNOPSIS
 .
 \fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
 \fInumber\fP\|]
 .
-.SH DESCRIPTION
+.SH DESCRIZIONE
 .
 Manages Battle for Wesnoth multiplayer games. See
 http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
 accepts via the wesnoth client or the socket.
 .
-.SH OPTIONS
+.SH OPZIONI
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ path\fP
@@ -43,28 +43,34 @@ tells wesnothd where to find the config file to use. See the section
 \fBSERVER CONFIG\fP below for the syntax.
 .TP 
 \fB\-d,\ \-\-daemon\fP
-runs wesnothd as a daemon.
+carica wesnothd come demone.
 .TP 
 \fB\-h,\ \-\-help\fP
-tells you what the command line options do.
+spiega che cosa fanno le opzioni da linea di comando
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 binds the server to the specified port. If no port is specified, port 15000
 will be used.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ number\fP
-sets the number of worker threads for network I/O to n (default: 5, max:
-30).
+sets the maximum number of waiting worker threads for network I/O to n
+(default: 5, max: 30).
+.TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
+sets the maximum number of worker threads that will be created if set to 0
+there will be no limit (default: 0).
 .TP 
 \fB\-V,\ \-\-version\fP
-shows version number and exits.
+.TP  
+\fB\-V,\ \-\-version\fP
+visualizza il numero di versione ed esci
 .TP 
 \fB\-v,\ \-\-verbose\fP
 turns on more verbose logging.
 .
 .SH "SERVER CONFIG"
 .
-.SS "The general syntax is:"
+.SS "La sintassi generale è:"
 .
 .P
 [\fItag\fP]
@@ -75,11 +81,11 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .P
 [/\fItag\fP]
 .
-.SS "Global keys:"
+.SS "Caratteri globali:"
 .
 .TP 
 \fBconnections_allowed\fP
-The number of allowed connections from the same IP.
+Il numero di connessioni permesse dallo stesso IP.
 .TP 
 \fBdisallow_names\fP
 Names/nicks that are not accepted by the server. `*' and `?' from wildcard
@@ -88,24 +94,25 @@ patterns are supported. See \fBglob\fP(7)  for more details.  Default values
 `server,ai,player,network,human,admin,computer'.
 .TP 
 \fBmax_messages\fP
-The number of allowed messages in \fBmessages_time_period\fP.
+Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP.
 .TP 
 \fBmessages_time_period\fP
 The time period (in seconds) message flooding is detected in.
 .TP 
 \fBmotd\fP
-The message of the day.
+Il messaggio del giorno.
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges. Usually it starts with "admin ".
+La password da usare per dare i privilegi di amministratore. Di solito
+inizia con "admin ".
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. `*'
-and `?' from wildcard patterns are supported.
+Un elenco separato da virgole delle stringhe di versione che il server deve
+accettare. I caratteri jolly `*' e `?' sono ammessi.
 .br
-Example: versions_accepted="*" accepts any version string.
+Esempio: versions_accepted="*" accetta tutte le stringhe di versione.
 .
-.SS "Global tags:"
+.SS "Tag globali:"
 .
 .P
 \fB[redirect]\fP A tag to specify a server to redirect certain client versions
@@ -113,10 +120,10 @@ to.
 .RS
 .TP 
 \fBhost\fP
-The address of the server to redirect to.
+Indirizzo del server a cui reindirizzre i collegamenti
 .TP 
 \fBport\fP
-The port to connect to.
+Porta su cui connettersi
 .TP 
 \fBversion\fP
 A comma separated list of versions to redirect. Behaves the same way as
@@ -127,22 +134,23 @@ A comma separated list of versions to redirect. Behaves the same way as
 connected client's requests to the specified server.  Accepts the same keys
 as [redirect].
 .
-.SH AUTHOR
+.SH AUTORE
 .
-Written by David White <davidnwhite@verizon.net>.  Edited by Nils
-Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> and
-Soliton <soliton@sonnenkinder.org>.  This manual page was originally
-written by Cyril Bouthors <cyril@bouthors.org>.
+Scritto David White <davidnwhite@verizon.net>.  Modificato da Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> e
+Soliton <soliton@sonnenkinder.org>.  Questo manuale è stato scritto
+in origine da Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visit the official homepage: http://www.wesnoth.org/
+Visita la pagina home ufficiale: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-This is Free Software; this software is licensed under the GPL version 2, as
-published by the Free Software Foundation.  There is NO warranty; not even
-for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
+termini della licenza GPL versione 2 come pubblicata dalla Free Software
+Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né
+per l'ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
 .
 .SH "SEE ALSO"
 .
