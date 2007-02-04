@@ -11,15 +11,15 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-28 15:26+0100\n"
-"PO-Revision-Date: 2006-06-28 18:08+0200\n"
-"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
+"PO-Revision-Date: 2007-02-04 16:48+0100\n"
+"Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
 #: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
 #: src/editor/editor_dialogs.cpp:400
@@ -132,15 +132,16 @@ msgstr "Převrať dokola (může změnit rozměry mapy):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Soubor: "
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
 msgstr "Smaž soubor"
 
+# adresář?
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Nová složka"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
@@ -148,12 +149,12 @@ msgstr "Smazání souboru se nezdařilo."
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Jméno: "
 
+# adresář?
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Smazání souboru se nezdařilo."
+msgstr "Složku se nezdařilo vytvořit."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -216,7 +217,6 @@ msgid "Save Game"
 msgstr "Ulož hru"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
 msgstr "Ulož mapu"
 
@@ -285,9 +285,8 @@ msgid "Quit Game"
 msgstr "Ukončit hru"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Umísti popisek"
+msgstr "Umísti týmový popisek"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
@@ -470,9 +469,8 @@ msgid "Villages:"
 msgstr "Vesnic:"
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Maximální velikost kopce:"
+msgstr "Velikost hradu:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -522,54 +520,50 @@ msgid "Skip AI Moves"
 msgstr "Přeskakuj tahy počítače"
 
 #: src/preferences_display.cpp:260
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Ukaž připojení uživatelů"
+msgstr "Ukazuj v čekárně mapky"
 
 #: src/preferences_display.cpp:261
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Ukaž připojení uživatelů"
+msgstr "Neukazuj připojení uživatelů"
 
 #: src/preferences_display.cpp:262
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Ukaž připojení uživatelů"
+msgstr "Ukaž pouze připojení přátel"
 
 #: src/preferences_display.cpp:263
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Ukaž připojení uživatelů"
+msgstr "Ukaž všechna připojení uživatelů"
 
+# seznam připojení?
 #: src/preferences_display.cpp:264
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Ukaž připojení uživatelů"
+msgstr "Seřaď seznam v čekárně"
 
 #: src/preferences_display.cpp:265
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Ikony v čekárně"
 
 #: src/preferences_display.cpp:266
 msgid "Your Friends List"
-msgstr ""
+msgstr "Seznam přátel"
 
+# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #: src/preferences_display.cpp:267
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Nastavení hry více hráčů"
 
 #: src/preferences_display.cpp:268
 msgid "Add As Friend"
-msgstr ""
+msgstr "Přidej jako přítele"
 
 #: src/preferences_display.cpp:269
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Přidej jako otrapu"
 
 #: src/preferences_display.cpp:270
-#, fuzzy
 msgid "Remove"
-msgstr "Znovu"
+msgstr "Odstraň"
 
 #: src/preferences_display.cpp:271
 msgid "Show Floating Labels"
@@ -620,22 +614,20 @@ msgid "Chat Timestamping"
 msgstr "Časování chatu"
 
 #: src/preferences_display.cpp:286
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Pokročilé nastavení"
+msgstr "Pokročilý mód"
 
 #: src/preferences_display.cpp:287
 msgid "Normal Mode"
-msgstr ""
+msgstr "Normální mód"
 
 #: src/preferences_display.cpp:290
-#, fuzzy
 msgid "Custom"
-msgstr "Vyřízni"
+msgstr "Vlastní"
 
 #: src/preferences_display.cpp:291
 msgid "Apply"
-msgstr ""
+msgstr "Použij"
 
 #: src/preferences_display.cpp:293
 msgid "Music Volume:"
@@ -646,9 +638,8 @@ msgid "SFX Volume:"
 msgstr "Hlasitost zvuků:"
 
 #: src/preferences_display.cpp:294
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Hlasitost zvuků:"
+msgstr "Hlasitost zvonku:"
 
 #: src/preferences_display.cpp:295
 msgid "Gamma:"
@@ -656,7 +647,7 @@ msgstr "Gama:"
 
 #: src/preferences_display.cpp:297
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Vzorkovací frekvence (Hz):"
 
 #: src/preferences_display.cpp:320
 msgid "Sound effects on/off"
@@ -675,27 +666,25 @@ msgid "Change the music volume"
 msgstr "Změna hlasitosti hudebního doprovodu"
 
 #: src/preferences_display.cpp:337
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Změna hlasitosti hudebního doprovodu"
+msgstr "Změna hlasitosti zvonku na konci kola"
 
 #: src/preferences_display.cpp:339
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Změnit používaný jazyk"
+msgstr "Změna vzorkovací frekvence"
 
+# vlastní?
 #: src/preferences_display.cpp:348
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Uživatelská vzorkovací frekvence"
 
 #: src/preferences_display.cpp:357 src/preferences_display.cpp:361
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Změna hlasitosti hudebního doprovodu"
+msgstr "Změna velikosti vyrovnávací paměti"
 
 #: src/preferences_display.cpp:359 src/preferences_display.cpp:816
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Velikost vyrovnávací paměti: "
 
 #: src/preferences_display.cpp:366
 msgid "Change the speed of scrolling around the map"
@@ -722,9 +711,8 @@ msgid "Make units move and fight faster"
 msgstr "Jednotky se pohybují a bojují rychleji"
 
 #: src/preferences_display.cpp:405
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Jednotky se pohybují a bojují rychleji"
+msgstr "Rychlost pohybu a boje jednotek"
 
 #: src/preferences_display.cpp:408
 msgid "Do not animate AI units moving"
@@ -734,57 +722,55 @@ msgstr "Neanimuj jednotky ovládané počítačem"
 msgid "Overlay a grid onto the map"
 msgstr "Nakresli přes mapu mřížku"
 
+# pův.: "na hru"?
 #: src/preferences_display.cpp:414
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr "Ukaž zprávy o hráčích, kteří se připojili k serveru"
+msgstr "Ukazuj mapky v čekárně hry více hráčů"
 
 #: src/preferences_display.cpp:417
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Seřaď seznam hráčů v čekárně podle skupin"
 
 #: src/preferences_display.cpp:420
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Ukazuj ikony před jmény hráčů v čekárně"
 
 #: src/preferences_display.cpp:423
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Ukaž zprávy o hráčích, kteří se připojili k serveru"
+msgstr "Neukazuj zprávy o hráčích, kteří se připojili k serveru"
 
 #: src/preferences_display.cpp:425
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Ukaž zprávy o hráčích, kteří se připojili k serveru"
+msgstr "Ukazuj zprávy o tvých přátelích, kteří se připojili k serveru"
 
 #: src/preferences_display.cpp:427
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Ukaž zprávy o hráčích, kteří se připojili k serveru"
+msgstr "Ukazuj zprávy o všech hráčích, kteří se připojili k serveru"
 
 #: src/preferences_display.cpp:429
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Zobraz a uprav seznam přátel a otrapů"
 
+# do, na, k ?
 #: src/preferences_display.cpp:430
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Zpět do nastavení hry více hráčů"
 
 #: src/preferences_display.cpp:431
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Přidej tuto přezdívku do seznamu přátel"
 
 #: src/preferences_display.cpp:432
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Přidej tuto přezdívku do seznamu otrapů"
 
 #: src/preferences_display.cpp:433
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Odstraň tuto přezdívku ze seznamu"
 
 #: src/preferences_display.cpp:436
 msgid "Insert a username"
-msgstr ""
+msgstr "Vlož přezdívku"
 
 #: src/preferences_display.cpp:439
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -830,9 +816,8 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Zobraz a nastav klávesové zkratky"
 
 #: src/preferences_display.cpp:711
-#, fuzzy
 msgid "Speed: "
-msgstr "Rychlost posouvání:"
+msgstr "Rychlost: "
 
 #: src/preferences_display.cpp:861
 msgid "Chat Lines: "
@@ -921,15 +906,3 @@ msgstr "Chyba"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "kB"
-
-#~ msgid "Receiving data..."
-#~ msgstr "Přijímání dat ..."
-
-#~ msgid "Ok"
-#~ msgstr "OK"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Celá obrazovka"
-
-#~ msgid "Set Player Start Position"
-#~ msgstr "Nastav startovací pozici hráče"
