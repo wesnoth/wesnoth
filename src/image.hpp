@@ -110,12 +110,18 @@ namespace image {
 		template<typename T>
 		void add_to_cache(std::vector<cache_item<T> >& cache, const T &image) const;
 #endif
-		bool in_cache(const std::vector<cache_item<surface> >& cache) const;
-		surface locate_in_cache(const std::vector<cache_item<surface> >& cache) const;
-		void add_to_cache(std::vector<cache_item<surface> >& cache, const surface &image) const;
-		bool in_cache(const std::vector<cache_item<locator> >& cache) const;
-		locator locate_in_cache(const std::vector<cache_item<locator> >& cache) const;
-		void add_to_cache(std::vector<cache_item<locator> >& cache, const locator &image) const;
+		bool in_cache(const std::vector<cache_item<surface> >& cache) const
+			{ return index_ == -1 ? false : cache[index_].loaded; }
+		surface locate_in_cache(const std::vector<cache_item<surface> >& cache) const
+			{ return index_ == -1 ? surface() : cache[index_].item; }
+		void add_to_cache(std::vector<cache_item<surface> >& cache, const surface &image) const
+			{ if(index_ != -1 ) cache[index_] = cache_item<surface>(image); }
+		bool in_cache(const std::vector<cache_item<locator> >& cache) const
+			{ return index_ == -1 ? false : cache[index_].loaded; }
+		locator locate_in_cache(const std::vector<cache_item<locator> >& cache) const
+			{ return index_ == -1 ? locator() : cache[index_].item; }
+		void add_to_cache(std::vector<cache_item<locator> >& cache, const locator &image) const
+			{ if(index_ != -1) cache[index_] = cache_item<locator>(image); }
 	protected:
 		static int last_index_;
 	private:
