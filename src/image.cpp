@@ -612,20 +612,6 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 	return res;
 }
 
-surface get_image_dim(const image::locator& i_locator, size_t x, size_t y,bool add_to_cache)
-{
-	const surface surf(get_image(i_locator,UNSCALED));
-
-	if(surf != NULL && (size_t(surf->w) != x || size_t(surf->h) != y)) {
-		const surface new_image(scale_surface(surf,x,y));
-
-		if(add_to_cache) i_locator.add_to_cache(images_, new_image);
-		return new_image;
-	}
-
-	return surf;
-}
-
 surface reverse_image(const surface& surf)
 {
 	if(surf == NULL) {
