@@ -83,11 +83,6 @@ const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_
 	}
 }
 
-bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*/) const
-{ //need to fill this in
-  return on_board(loc);
-}
-
 void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 {
 	cfg["terrain"] = t_translation::write_letter(get_terrain(loc));

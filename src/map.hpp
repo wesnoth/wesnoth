@@ -117,9 +117,6 @@ public:
 	bool is_keep(const location& loc) const
 		{ return on_board(loc) && is_keep(get_terrain(loc)); }
 
-	//function to filter whether a location matches a set of criteria
-	bool filter_location(const location &loc,const config &con) const;
-
 	//loads a map, with the given terrain configuration.
 	//data should be a series of lines, with each character representing
 	//one hex on the map. Starting locations are represented by numbers,
