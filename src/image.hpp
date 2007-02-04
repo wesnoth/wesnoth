@@ -193,9 +193,6 @@ namespace image {
 	///and must be freed using SDL_FreeSurface()
 	surface reverse_image(const surface &surf);
 
-
-	locator get_alternative(const locator &i_locator, const std::string &alt,bool add_to_cache = true);
-
 	///function to register an image with the given id. Calls to get_image(id,UNSCALED) will
 	///return this image. register_image() will take ownership of this image and free
 	///it when the cache is cleared (change of video mode or colour adjustment).

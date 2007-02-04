@@ -634,36 +634,6 @@ surface reverse_image(const surface& surf)
 	return rev;
 }
 
-locator get_alternative(const image::locator &i_locator, const std::string &alt,bool add_to_cache)
-{
-	if(i_locator.is_void())
-		return locator();
-
-	if(i_locator.in_cache(alternative_images_))
-		return i_locator.locate_in_cache(alternative_images_);
-
-	const std::string &name = i_locator.get_filename();
-	const std::string::size_type pos = name.rfind('.');
-	const std::string alternative = (pos != 0 ? name.substr(0, pos) : "") +
-		alt + (pos != std::string::npos ? name.substr(pos) : "");
-	locator res;
-
-	switch (i_locator.get_type()) {
-	case locator::FILE:
-		res = locator(alternative);
-		break;
-	case locator::SUB_FILE:
-		res = locator(alternative, i_locator.get_loc(), i_locator.get_modifications());
-		break;
-	default:
-		wassert(false);
-	}
-
-	if(add_to_cache) i_locator.add_to_cache(alternative_images_, res);
-
-	return res;
-}
-
 void register_image(const image::locator& id, const surface& surf)
 {
 	id.add_to_cache(images_, surf);
