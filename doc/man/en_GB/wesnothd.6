@@ -2,29 +2,32 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
+.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
+.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\" .
-.\" .
+.\"
+.
 .\"*******************************************************************
 .\"
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
 .TH WESNOTHD 6 2006 wesnothd "Battle for Wesnoth multiplayer network daemon"
+.
 .SH NAME
 .
 wesnothd \- Battle for \fBWesnoth\fP multiplayer network daemon
 .
 .SH SYNOPSIS
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR path \|]\fP [\|\fB\-p\fP \fIR port \|]\fP
-[\|\fB\-t\fP \fIR number \|]\fP
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|]
 .
 .SH DESCRIPTION
 .
@@ -34,31 +37,34 @@ accepts via the wesnoth client or the socket.
 .
 .SH OPTIONS
 .
-.TP  
+.TP 
 \fB\-c,\ \-\-config\fP\fI\ path\fP
 tells wesnothd where to find the config file to use. See the section
 \fBSERVER CONFIG\fP below for the syntax.
-.TP  
+.TP 
 \fB\-d,\ \-\-daemon\fP
 runs wesnothd as a daemon.
-.TP  
+.TP 
 \fB\-h,\ \-\-help\fP
 tells you what the command line options do.
-.TP  
+.TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 binds the server to the specified port. If no port is specified, port 15000
 will be used.
-.TP  
+.TP 
 \fB\-t,\ \-\-threads\fP\fI\ number\fP
-sets the maximum number of waiting network thread (default: 5, max: 30).
+sets the maximum number of waiting worker threads for network I/O to n
+(default: 5, max: 30).
 .TP 
 \fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
 sets the maximum number of worker threads that will be created if set to 0
 there will be no limit (default: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
 .TP  
 \fB\-V,\ \-\-version\fP
 shows version number and exits.
-.TP  
+.TP 
 \fB\-v,\ \-\-verbose\fP
 turns on more verbose logging.
 .
@@ -77,28 +83,28 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .
 .SS "Global keys:"
 .
-.TP  
+.TP 
 \fBconnections_allowed\fP
 The number of allowed connections from the same IP.
-.TP  
+.TP 
 \fBdisallow_names\fP
 Names/nicks that are not accepted by the server. `*' and `?' from wildcard
 patterns are supported. See \fBglob\fP(7)  for more details.  Default values
 (used if nothing is specified) are:
 `server,ai,player,network,human,admin,computer'.
-.TP  
+.TP 
 \fBmax_messages\fP
 The number of allowed messages in \fBmessages_time_period\fP.
-.TP  
+.TP 
 \fBmessages_time_period\fP
 The time period (in seconds) message flooding is detected in.
-.TP  
+.TP 
 \fBmotd\fP
 The message of the day.
-.TP  
+.TP 
 \fBpasswd\fP
 The password used to gain admin privileges. Usually it starts with "admin ".
-.TP  
+.TP 
 \fBversions_accepted\fP
 A comma separated list of version strings to be accepted by the server. `*'
 and `?' from wildcard patterns are supported.
@@ -111,13 +117,13 @@ Example: versions_accepted="*" accepts any version string.
 \fB[redirect]\fP A tag to specify a server to redirect certain client versions
 to.
 .RS
-.TP  
+.TP 
 \fBhost\fP
 The address of the server to redirect to.
-.TP  
+.TP 
 \fBport\fP
 The port to connect to.
-.TP  
+.TP 
 \fBversion\fP
 A comma separated list of versions to redirect. Behaves the same way as
 \fBversions_accepted\fP in regard to wildcard patterns.

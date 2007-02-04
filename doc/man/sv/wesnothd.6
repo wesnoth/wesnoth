@@ -2,29 +2,32 @@
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
+.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
+.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-.\" .
-.\" .
+.\"
+.
 .\"*******************************************************************
 .\"
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
 .TH WESNOTHD 6 2006 wesnothd "Kampen om Wesnoths nätverksdaemon"
+.
 .SH NAMN
 .
 wesnothd \- Kampen om \fBWesnoth\fPs nätverksdaemon
 .
 .SH SYNOPSIS
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIR path \|]\fP [\|\fB\-p\fP \fIR port \|]\fP
-[\|\fB\-t\fP \fIR number \|]\fP
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|]
 .
 .SH BESKRIVNING
 .
@@ -34,31 +37,34 @@ kommandon servern accepterar via wesnoth\-klienten eller sockeln.
 .
 .SH FLAGGOR
 .
-.TP  
+.TP 
 \fB\-c,\ \-\-config\fP\fI\ sökväg\fP
 anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om
 \fBSERVERKONFIGURATION\fP nedan för syntaxen.
-.TP  
+.TP 
 \fB\-d,\ \-\-daemon\fP
 kör wesnothd som en daemon.
-.TP  
+.TP 
 \fB\-h,\ \-\-help\fP
 visar en sammanfattning av möjliga kommandoradsflaggor.
-.TP  
+.TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 knyter servern till den specificerade porten. Om ingen port anges så används
 port 15000.
-.TP  
+.TP 
 \fB\-t,\ \-\-threads\fP\fI\ antal\fP
-sets the maximum number of waiting network thread (default: 5, max: 30).
+sets the maximum number of waiting worker threads for network I/O to n
+(default: 5, max: 30).
 .TP 
 \fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
 sets the maximum number of worker threads that will be created if set to 0
 there will be no limit (default: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
 .TP  
 \fB\-V,\ \-\-version\fP
 visar versionen.
-.TP  
+.TP 
 \fB\-v,\ \-\-verbose\fP
 ger mer utförlig information.
 .
@@ -77,27 +83,27 @@ parameter="\fIvärde\fP,\fIvärde\fP,..."
 .
 .SS "Globala parametrar:"
 .
-.TP  
+.TP 
 \fBconnections_allowed\fP
 Antal tillåtna anslutningar från samma värd (IP).
-.TP  
+.TP 
 \fBdisallow_names\fP
 Spelarnamn som ej accepteras av servern. '*' och '?' är tillåtna för att
 matcha flera tecken. Se \fBglob\fP (7) för detaljer. Standardvärden (som
 används om inget anges) är 'server,ai,player,network,human,admin,computer'.
-.TP  
+.TP 
 \fBmax_messages\fP
 Antal tillåtna meddelanden inom \fBmessages_time_period\fP.
-.TP  
+.TP 
 \fBmessages_time_period\fP
 Tidsperioden (i sekunder) under vilken meddelandeöversvämning detekteras.
-.TP  
+.TP 
 \fBmotd\fP
 Meddelandet för dagen.
-.TP  
+.TP 
 \fBpasswd\fP
 Lösenordet för administrationsrättigheter. Börjar ofta med "admin ".
-.TP  
+.TP 
 \fBversions_accepted\fP
 En komma\-separerad lista med versionssträngar som accepteras av servern. '*'
 och '?' är tillåtna för att matcha flera tecken.
@@ -110,13 +116,13 @@ Exempel: versions_accepted="*" accepterar alla versionssträngar.
 \fB[redirect]\fP En tag som anger vart en server skall omdirigera vissa
 klientversioner.
 .RS
-.TP  
+.TP 
 \fBhost\fP
 Värdadressen att omdirigera till.
-.TP  
+.TP 
 \fBport\fP
 Porten att ansluta till.
-.TP  
+.TP 
 \fBversion\fP
 En komma\-separerad lista av versioner att omdirigera. Fungerar på samma sätt
 som \fBversions_accepted\fP vad gäller strängmatchning.
