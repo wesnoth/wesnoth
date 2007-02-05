@@ -474,13 +474,13 @@ int flush(Uint32 event_mask)
 	}
 
 	//FIXME: there is a chance new events are added before kept events are replaced
-	std::vector<SDL_Event>::iterator itor;
-	for(itor = keepers.begin(); itor != keepers.end(); ++itor)
+	for (unsigned int i=0; i < keepers.size(); ++i) 
 	{
-		if(SDL_PushEvent(itor) != 0) {
-			ERR_GEN << "failed to return an event to the queue.";
-		}
-	}
+		if(SDL_PushEvent(&keepers[i]) != 0) {
+                       ERR_GEN << "failed to return an event to the queue.";
+                }
+        }
+
 	return flush_count;
 }
 
