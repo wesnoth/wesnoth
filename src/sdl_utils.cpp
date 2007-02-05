@@ -25,8 +25,6 @@
 #include <iostream>
 #include <map>
 
-unsigned input_blocker::instance_count = 0; //static initialization
-
 SDLKey sdl_keysym_from_name(std::string const &keyname)
 {
 	static bool initialized = false;

@@ -167,34 +167,6 @@ struct pixel_data
 	int r, g, b;
 };
 
-struct input_blocker
-{
-	static unsigned instance_count;
-	input_blocker()
-	{
-		SDL_EventState(SDL_KEYDOWN, SDL_IGNORE);
-		SDL_EventState(SDL_KEYUP, SDL_IGNORE);
-		SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_IGNORE);
-		SDL_EventState(SDL_MOUSEBUTTONUP, SDL_IGNORE);
-		SDL_EventState(SDL_JOYBUTTONDOWN, SDL_IGNORE);
-		SDL_EventState(SDL_JOYBUTTONUP, SDL_IGNORE);
-		instance_count++;
-	}
-
-	~input_blocker()
-	{
-		instance_count--;
-		if(instance_count == 0) {
-			SDL_EventState(SDL_KEYDOWN, SDL_ENABLE);
-			SDL_EventState(SDL_KEYUP, SDL_ENABLE);
-			SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_ENABLE);
-			SDL_EventState(SDL_MOUSEBUTTONUP, SDL_ENABLE);
-			SDL_EventState(SDL_JOYBUTTONDOWN, SDL_ENABLE);
-			SDL_EventState(SDL_JOYBUTTONUP, SDL_ENABLE);
-		}
-	}
-};
-
 struct surface_lock
 {
 	surface_lock(surface const &surf) : surface_(surf), locked_(false)

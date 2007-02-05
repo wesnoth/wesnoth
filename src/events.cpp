@@ -17,6 +17,7 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "gp2x.hpp"
+#include "log.hpp"
 #include "preferences_display.hpp"
 #include "sound.hpp"
 #include "video.hpp"
@@ -28,6 +29,11 @@
 #include <deque>
 #include <utility>
 #include <vector>
+
+#define ERR_GEN LOG_STREAM(err, general)
+
+
+unsigned input_blocker::instance_count = 0; //static initialization
 
 namespace events
 {
@@ -272,10 +278,17 @@ void pump()
 
 		switch(event.type) {
 
-			case SDL_APPMOUSEFOCUS: {
+			case SDL_ACTIVEEVENT: {
 				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
-				if(ae.state == SDL_APPMOUSEFOCUS || ae.state == SDL_APPINPUTFOCUS) {
-					cursor::set_focus(ae.gain == 1);
+				if((ae.state & SDL_APPMOUSEFOCUS) != 0 || (ae.state & SDL_APPINPUTFOCUS) != 0) {
+					cursor::set_focus(ae.gain != 0);
+					events::flush( SDL_EVENTMASK(SDL_KEYDOWN)|
+			               SDL_EVENTMASK(SDL_KEYUP)|
+			               SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)|
+			               SDL_EVENTMASK(SDL_MOUSEBUTTONUP)|
+			               SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|
+			               SDL_EVENTMASK(SDL_JOYBUTTONUP)
+			             );
 				}
 				break;
 			}
@@ -444,6 +457,31 @@ void raise_help_string_event(int mousex, int mousey)
 			event_handlers[i1]->process_help_string(mousex,mousey);
 		}
 	}
+}
+
+int flush(Uint32 event_mask)
+{
+	int flush_count = 0;
+	SDL_Event temp_event;
+	std::vector< SDL_Event > keepers;
+	SDL_Delay(10);
+	while(SDL_PollEvent(&temp_event) > 0) {
+		if((SDL_EVENTMASK(temp_event.type) & event_mask) == 0) {
+			keepers.push_back( temp_event );
+		} else {
+			++flush_count;
+		}
+	}
+
+	//FIXME: there is a chance new events are added before kept events are replaced
+	std::vector<SDL_Event>::iterator itor;
+	for(itor = keepers.begin(); itor != keepers.end(); ++itor)
+	{
+		if(SDL_PushEvent(itor) != 0) {
+			ERR_GEN << "failed to return an event to the queue.";
+		}
+	}
+	return flush_count;
 }
 
 }
