@@ -231,6 +231,7 @@ void ui::process_network()
 	//apply diffs at a set interval
 	if(gamelist_refresh_ && SDL_GetTicks() - lobby_clock_ > game_config::lobby_refresh)
 	{
+		const cursor::setter cursor_setter(cursor::WAIT);
 		gamelist_updated(false);
 		gamelist_refresh_ = false;
 		lobby_clock_ = SDL_GetTicks();
@@ -472,6 +473,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			}
 		}
 		if(data.child("gamelist")) {
+			const cursor::setter cursor_setter(cursor::WAIT);
 			if(!gamelist_initialized_)
 				gamelist_initialized_ = true;
 			gamelist_ = data;
