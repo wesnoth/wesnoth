@@ -1967,7 +1967,7 @@ int unit::upkeep() const
 	return lexical_cast_default<int>(cfg_["upkeep"]);
 }
 
-int unit::movement_cost_internal(t_translation::t_letter terrain, int recurse_count) const
+int unit::movement_cost_internal(const t_translation::t_letter terrain, const int recurse_count) const
 {
 	const int impassable = 10000000;
 
@@ -2000,7 +2000,7 @@ int unit::movement_cost_internal(t_translation::t_letter terrain, int recurse_co
 				revert = true;
 				continue;
 			}
-			const int value = movement_cost(*i,recurse_count+1);
+			const int value = movement_cost_internal(*i,recurse_count+1);
 			if(value < ret_value && !revert) {
 				ret_value = value;
 			} else if(value > ret_value && revert) {
@@ -2042,9 +2042,9 @@ int unit::movement_cost_internal(t_translation::t_letter terrain, int recurse_co
 	return res;
 }
 
-int unit::movement_cost(t_translation::t_letter terrain, int recurse_count) const
+int unit::movement_cost(const t_translation::t_letter terrain) const
 {
-	int res = movement_cost_internal(terrain,recurse_count);
+	const int res = movement_cost_internal(terrain, 0);
 	if(utils::string_bool(get_state("slowed"))) {
 		return res*2;
 	}

@@ -208,7 +208,7 @@ class unit
 		bool is_flying() const { return flying_; }
 		bool is_fearless() const { return is_fearless_; }
 		bool is_healthy() const { return is_healthy_; }
-		int movement_cost(t_translation::t_letter terrain, int recurse_count=0) const;
+		int movement_cost(const t_translation::t_letter terrain) const;
 		int defense_modifier(t_translation::t_letter terrain, int recurse_count=0) const;
 		int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const;
 //		std::map<terrain_type::TERRAIN,int> movement_type() const;
