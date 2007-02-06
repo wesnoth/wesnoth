@@ -177,7 +177,9 @@ void wait::join_game(bool observe)
 		check_response(data_res, level_);
 
 		//if we have got valid side data
-		if(level_.child("gamelist") == NULL)
+		//the first condition is to make sure that we don't have another
+		//WML message with a side-tag in it
+		if( (level_.values.find("version") != level_.values.end()) && (level_.child("side") != NULL) )
 			break;
 	}
 
@@ -186,6 +188,7 @@ void wait::join_game(bool observe)
 
 		if(sides_list.empty()) {
 			set_result(QUIT);
+			level_.debug();
 			throw network::error(_("No multiplayer sides available in this game"));
 			return;
 		}
