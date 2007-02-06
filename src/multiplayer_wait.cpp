@@ -188,7 +188,6 @@ void wait::join_game(bool observe)
 
 		if(sides_list.empty()) {
 			set_result(QUIT);
-			level_.debug();
 			throw network::error(_("No multiplayer sides available in this game"));
 			return;
 		}
