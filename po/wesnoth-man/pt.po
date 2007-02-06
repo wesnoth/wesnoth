@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2007-02-04 14:47+0100\n"
+"POT-Creation-Date: 2007-02-06 15:13+0100\n"
 "PO-Revision-Date: 2006-08-22 00:19+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -64,7 +64,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
-#: ../../doc/man/wesnothd.6:35
+#: ../../doc/man/wesnothd.6:37
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr ""
@@ -89,7 +89,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:29
-#: ../../doc/man/wesnothd.6:40
+#: ../../doc/man/wesnothd.6:42
 #, no-wrap
 msgid "OPTIONS"
 msgstr ""
@@ -583,7 +583,7 @@ msgid "B<-h>,B<\\ --help>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth_editor.6:42 ../../doc/man/wesnothd.6:53
+#: ../../doc/man/wesnoth_editor.6:42 ../../doc/man/wesnothd.6:55
 msgid "tells you what the command line options do."
 msgstr ""
 
@@ -664,14 +664,14 @@ msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:34
+#: ../../doc/man/wesnothd.6:36
 msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|]"
+"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:39
+#: ../../doc/man/wesnothd.6:41
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -679,76 +679,76 @@ msgid ""
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:42
+#: ../../doc/man/wesnothd.6:44
 #, no-wrap
 msgid "B<-c,\\ --config>I<\\ path>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:47
+#: ../../doc/man/wesnothd.6:49
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:47
+#: ../../doc/man/wesnothd.6:49
 #, no-wrap
 msgid "B<-d,\\ --daemon>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:50
+#: ../../doc/man/wesnothd.6:52
 msgid "runs wesnothd as a daemon."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:50
+#: ../../doc/man/wesnothd.6:52
 #, no-wrap
 msgid "B<-h,\\ --help>"
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:53
+#: ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-p,\\ --port>I<\\ port>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:57
+#: ../../doc/man/wesnothd.6:59
 msgid ""
 "binds the server to the specified port. If no port is specified, port 15000 "
 "will be used."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:57
+#: ../../doc/man/wesnothd.6:59
 #, no-wrap
 msgid "B<-t,\\ --threads>I<\\ number>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:62
 msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: 5, max: 30)."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:62
 #, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:64
+#: ../../doc/man/wesnothd.6:66
 msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
 "there will be no limit (default: 0)."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:64 ../../doc/man/wesnothd.6:66
+#: ../../doc/man/wesnothd.6:66
 #, no-wrap
 msgid "B<-V,\\ --version>"
 msgstr ""

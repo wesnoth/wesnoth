@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
-"POT-Creation-Date: 2007-02-04 14:47+0100\n"
+"POT-Creation-Date: 2007-02-06 15:13+0100\n"
 "PO-Revision-Date: 2007-02-02 21:25+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -67,7 +67,7 @@ msgstr "B<wesnoth> [I<VOLBY>] [I<CESTA_K_DATŮM>]"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
-#: ../../doc/man/wesnothd.6:35
+#: ../../doc/man/wesnothd.6:37
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "POPIS"
@@ -100,7 +100,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:29
-#: ../../doc/man/wesnothd.6:40
+#: ../../doc/man/wesnothd.6:42
 #, no-wrap
 msgid "OPTIONS"
 msgstr "VOLBY"
@@ -643,7 +643,7 @@ msgid "B<-h>,B<\\ --help>"
 msgstr "B<-h>,B<\\ --help>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth_editor.6:42 ../../doc/man/wesnothd.6:53
+#: ../../doc/man/wesnoth_editor.6:42 ../../doc/man/wesnothd.6:55
 msgid "tells you what the command line options do."
 msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
 
@@ -728,17 +728,17 @@ msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
 msgstr "Bitva o B<Wesnoth> - síťový server pro hru více hráčů"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:34
+#: ../../doc/man/wesnothd.6:36
 #, fuzzy
 msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|]"
+"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<cesta>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<počet_vláken>\\|]"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:39
+#: ../../doc/man/wesnothd.6:41
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -749,13 +749,13 @@ msgstr ""
 "jak přes soket, tak přímo odwesnoth klienta."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:42
+#: ../../doc/man/wesnothd.6:44
 #, no-wrap
 msgid "B<-c,\\ --config>I<\\ path>"
 msgstr "B<-c,\\ --config>I<\\ cesta>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:47
+#: ../../doc/man/wesnothd.6:49
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax."
@@ -764,43 +764,43 @@ msgstr ""
 "souboru je popsána v sekci B<KONFIGURACE SERVERU>."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:47
+#: ../../doc/man/wesnothd.6:49
 #, no-wrap
 msgid "B<-d,\\ --daemon>"
 msgstr "B<-d,\\ --daemon>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:50
+#: ../../doc/man/wesnothd.6:52
 msgid "runs wesnothd as a daemon."
 msgstr "spouští wesnothd jako démona."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:50
+#: ../../doc/man/wesnothd.6:52
 #, no-wrap
 msgid "B<-h,\\ --help>"
 msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:53
+#: ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-p,\\ --port>I<\\ port>"
 msgstr "B<-p,\\ --port>I<\\ port>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:57
+#: ../../doc/man/wesnothd.6:59
 msgid ""
 "binds the server to the specified port. If no port is specified, port 15000 "
 "will be used."
 msgstr "říká wesnothd, na kterém portu má běžet. Implicitní hodnota je 15000."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:57
+#: ../../doc/man/wesnothd.6:59
 #, no-wrap
 msgid "B<-t,\\ --threads>I<\\ number>"
 msgstr "B<-t,\\ --threads>I<\\ počet>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:62
 #, fuzzy
 msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
@@ -810,13 +810,13 @@ msgstr ""
 "(implicitně: 5, max: 30)."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:60
+#: ../../doc/man/wesnothd.6:62
 #, fuzzy, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
 msgstr "B<-t,\\ --threads>I<\\ počet>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:64
+#: ../../doc/man/wesnothd.6:66
 #, fuzzy
 msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
@@ -826,7 +826,7 @@ msgstr ""
 "(implicitně: 5, max: 30)."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:64 ../../doc/man/wesnothd.6:66
+#: ../../doc/man/wesnothd.6:66
 #, no-wrap
 msgid "B<-V,\\ --version>"
 msgstr "B<-V,\\ --version>"
