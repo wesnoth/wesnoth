@@ -2126,7 +2126,7 @@ int unit::movement_cost_internal(gamemap::TERRAIN terrain, int recurse_count) co
 				revert = true;
 				continue;
 			}
-			const int value = movement_cost(*i,recurse_count+1);
+			const int value = movement_cost_internal(*i,recurse_count+1);
 			if(value < ret_value && !revert) {
 				ret_value = value;
 			} else if(value > ret_value && revert) {
@@ -2166,9 +2166,9 @@ int unit::movement_cost_internal(gamemap::TERRAIN terrain, int recurse_count) co
 	return res;
 }
 
-int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
+int unit::movement_cost(gamemap::TERRAIN terrain) const
 {
-	int res = movement_cost_internal(terrain,recurse_count);
+	const int res = movement_cost_internal(terrain, 0);
 	if(utils::string_bool(get_state("slowed"))) {
 		return res*2;
 	}
