@@ -2362,6 +2362,19 @@ void unit::add_modification(const std::string& type, const config& mod,
 			advance_to(&var->second.get_variation(variation_));
 		} else if(apply_to == "new_attack") {
 			attacks_.push_back(attack_type(**i.first,id(),image_fighting((**i.first)["range"]=="ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+		} else if(apply_to == "remove_attacks") {
+			int num_attacks= attacks_.size();
+			for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
+				if (a->matches_filter(**i.first,false)) {
+					if (num_attacks > 1) {
+					    	attacks_.erase(a--);
+						num_attacks--;
+					} else {
+						// Don't remove the last attack
+						LOG_STREAM(err, config) << "[effect] tried to remove the last attack : ignored.\n";
+					}
+				}
+			}
 		} else if(apply_to == "attack") {
 
 			bool first_attack = true;
