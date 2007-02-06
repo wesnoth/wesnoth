@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-09-25 02:47+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -10077,6 +10077,28 @@ msgstr "石化"
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "味方ユニット発見"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "敵ユニット発見！"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10843,6 +10865,12 @@ msgstr "メッセージ: "
 msgid "Send to allies only"
 msgstr "同盟者にのみ送る"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "ゴールド"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "雇用できるユニットがいない。"
@@ -10882,6 +10910,12 @@ msgstr "ユニットを解雇する"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "召還"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "１ユニット召還するのに 少なくとも $cost ゴールド必要です。"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11658,6 +11692,17 @@ msgstr "このユニットは石になってしまいました。移動や攻撃
 msgid "stone: "
 msgstr "石化: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "総ダメージ"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "武器の射程:"
@@ -12050,12 +12095,6 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #~ "\n"
 #~ "特記事項:"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "味方ユニット発見"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "敵ユニット発見！"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends の味方ユニットを発見"
 
@@ -12064,12 +12103,6 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 
 #~ msgid "attacks"
 #~ msgstr "攻撃"
-
-#~ msgid "unit^Gold"
-#~ msgstr "ゴールド"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "１ユニット召還するのに 少なくとも $cost ゴールド必要です。"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."

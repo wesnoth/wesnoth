@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -8823,6 +8823,32 @@ msgstr "איבון"
 msgid "Ambushed!"
 msgstr "נכנסנו למארב!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "יחידה ידידותית נראתה"
+msgstr[1] "יחידה ידידותית נראתה"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "יחידת אויב נראתה!"
+msgstr[1] "יחידת אויב נראתה!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -9595,6 +9621,13 @@ msgstr "הודעה:"
 msgid "Send to allies only"
 msgstr "שלח לבעלי ברית בלבד"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "זהב"
+msgstr[1] "זהב"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "אין לך יחידות זמינות לגיוס."
@@ -9635,6 +9668,13 @@ msgstr "שחרר יחידה"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "החזר"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "אתה חייב לפחות $cost זהב כדי להחזיר יחידה"
+msgstr[1] "אתה חייב לפחות $cost זהב כדי להחזיר יחידה"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -10413,6 +10453,19 @@ msgstr "היחידה הזו הפכה לאבן. היא לא יכולה לזוז �
 msgid "stone: "
 msgstr "אבן: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "נזק כולל"
+msgstr[1] "נזק כולל"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "טווח נשק: "
@@ -10673,12 +10726,6 @@ msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבי
 #~ "לוכדים עובדים בדרך כלל בהספקת מזון לשודדים ולנמלטים מהחוק. ניסיונם בצייד "
 #~ "הופך אותם לבעלי ערך רב בלילה וביערות וביצות."
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "יחידה ידידותית נראתה"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "יחידת אויב נראתה!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends יחידות ידידותיות נראו"
 
@@ -10687,12 +10734,6 @@ msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבי
 
 #~ msgid "attacks"
 #~ msgstr "התקפות"
-
-#~ msgid "unit^Gold"
-#~ msgstr "זהב"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "אתה חייב לפחות $cost זהב כדי להחזיר יחידה"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."
@@ -10806,9 +10847,6 @@ msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבי
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "פגיעות התוקף מצד"
-
-#~ msgid "total damage"
-#~ msgstr "נזק כולל"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "עמידות המגן כנגד"

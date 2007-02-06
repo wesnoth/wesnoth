@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-05-07 23:49+0100\n"
 "Last-Translator: Elestel <dadoverde@hotmail.com>\n"
 "Language-Team: none\n"
@@ -8059,6 +8059,30 @@ msgstr ""
 msgid "Ambushed!"
 msgstr ""
 
+#: src/actions.cpp:2074
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2076
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr ""
@@ -8807,6 +8831,12 @@ msgstr ""
 msgid "Send to allies only"
 msgstr ""
 
+#: src/menu_events.cpp:582
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr ""
@@ -8844,6 +8874,12 @@ msgstr ""
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr ""
+
+#: src/menu_events.cpp:754
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -9589,6 +9625,18 @@ msgstr ""
 #: src/reports.cpp:147
 msgid "stone: "
 msgstr ""
+
+#: src/reports.cpp:255
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/reports.cpp:266
 msgid "weapon range: "

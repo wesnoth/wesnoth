@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -10156,6 +10156,32 @@ msgstr "petrificare"
 msgid "Ambushed!"
 msgstr "Insidiae!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Untitas socia vista"
+msgstr[1] "Untitas socia vista"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Unitas inimica vista!"
+msgstr[1] "Unitas inimica vista!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10922,6 +10948,13 @@ msgstr "Nuntius: "
 msgid "Send to allies only"
 msgstr "Mittere tantum sociis"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Nummis Auri"
+msgstr[1] "Nummis Auri"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Non habes unitates quas conscribere potes"
@@ -10961,6 +10994,13 @@ msgstr "Unitatem Dimittere"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Revocare"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Opus est saltem $cost nummos auri ut unitatem revoces."
+msgstr[1] "Opus est saltem $cost nummos auri ut unitatem revoces."
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11734,6 +11774,19 @@ msgstr "Unitas haec petrificatus est. Non potest movere aut oppugnare."
 msgid "stone: "
 msgstr "petrificatus: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "damnum totale"
+msgstr[1] "damnum totale"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "iactus teli: "
@@ -12134,12 +12187,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 #~ "\n"
 #~ "Nota Praecipua:"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Untitas socia vista"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Unitas inimica vista!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends Unitates Sociae vistae"
 
@@ -12148,12 +12195,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "attacks"
 #~ msgstr "oppugnationes"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Nummis Auri"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Opus est saltem $cost nummos auri ut unitatem revoces."
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."
@@ -12289,9 +12330,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "nuditas oppugnantis versus"
-
-#~ msgid "total damage"
-#~ msgstr "damnum totale"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "repugnantia defensoris contra"

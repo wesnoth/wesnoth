@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -8128,6 +8128,32 @@ msgstr "harria"
 msgid "Ambushed!"
 msgstr "Segada batean harrapatuta!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Unitate lagun bat ikustatua"
+msgstr[1] "Unitate lagun bat ikustatua"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Unitate etsai bat ikustatua!"
+msgstr[1] "Unitate etsai bat ikustatua!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -8902,6 +8928,13 @@ msgstr "Mezua:"
 msgid "Send to allies only"
 msgstr "Lagunei soilik bidali"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Urrea"
+msgstr[1] "Urrea"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Ez duzu biltzeko unitaterik."
@@ -8942,6 +8975,13 @@ msgstr "Unitatea lizentziatu"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Deitu"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Gutxienez $cost urre izan behar duzu unitateak deidu ahal izateko"
+msgstr[1] "Gutxienez $cost urre izan behar duzu unitateak deidu ahal izateko"
 
 #: src/menu_events.cpp:1077
 #, fuzzy
@@ -9743,6 +9783,19 @@ msgstr "Unitate hau harkaitz bihurtu da. Ezin du mugitu edo eraso."
 msgid "stone: "
 msgstr "harria:"
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "guztira kalteak"
+msgstr[1] "guztira kalteak"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr ""
@@ -9983,12 +10036,6 @@ msgstr ""
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Unitate lagun bat ikustatua"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Unitate etsai bat ikustatua!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends Lagun-unitateak ikustatuta!"
 
@@ -9997,12 +10044,6 @@ msgstr ""
 
 #~ msgid "attacks"
 #~ msgstr "erasotzen du"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Urrea"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Gutxienez $cost urre izan behar duzu unitateak deidu ahal izateko"
 
 #, fuzzy
 #~ msgid ""
@@ -10084,9 +10125,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "Gizakia vs AA"
-
-#~ msgid "total damage"
-#~ msgstr "guztira kalteak"
 
 #, fuzzy
 #~ msgid "defender resistance vs"

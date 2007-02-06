@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-09-28 17:30+0100\n"
 "Last-Translator: Боно Нончев <bono.nonchev@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -8572,6 +8572,30 @@ msgstr "камък"
 msgid "Ambushed!"
 msgstr ""
 
+#: src/actions.cpp:2074
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2076
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr ""
@@ -9344,6 +9368,13 @@ msgstr "Съобщение"
 msgid "Send to allies only"
 msgstr "Изпращане само на съюзници"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "злато"
+msgstr[1] "злато"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Нямате еденици на разположение за набор"
@@ -9385,6 +9416,13 @@ msgstr "Разпусни единицата"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Привикване"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Трябва да имате поне $cost златни монети за да привикате единица"
+msgstr[1] "Трябва да имате поне $cost златни монети за да привикате единица"
 
 #: src/menu_events.cpp:1077
 #, fuzzy
@@ -10199,6 +10237,19 @@ msgstr "Тази единица е вкаменена. Не може да ата
 msgid "stone: "
 msgstr "камък"
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "щети"
+msgstr[1] "щети"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr ""
@@ -10534,12 +10585,6 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #~ "могат да подпомагат събратята си в битка без да се интересуват от терена "
 #~ "или опозицията. В допълнение към лечителските им способноти те владеят "
 #~ "магии на студа. "
-
-#~ msgid "unit^Gold"
-#~ msgstr "злато"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Трябва да имате поне $cost златни монети за да привикате единица"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."

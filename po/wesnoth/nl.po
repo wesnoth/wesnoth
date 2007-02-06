@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2007-02-04 22:18+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -10010,6 +10010,32 @@ msgstr "versteen"
 msgid "Ambushed!"
 msgstr "Hinderlaag!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Bevriende eenheid in zicht!"
+msgstr[1] "Bevriende eenheid in zicht!"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Vijandelijke eenheid in zicht!"
+msgstr[1] "Vijandelijke eenheid in zicht!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10782,6 +10808,13 @@ msgstr "Bericht:"
 msgid "Send to allies only"
 msgstr "Alleen naar bondgenoten sturen"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Goud"
+msgstr[1] "Goud"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Er zijn geen eenheden beschikbaar om te rekruteren."
@@ -10821,6 +10854,15 @@ msgstr "Eenheid ontslaan"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Oproepen"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+"Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
+msgstr[1] ""
+"Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11589,6 +11631,19 @@ msgstr "Deze eenheid is in steen veranderd. Hij kan bewegen noch aanvallen."
 msgid "stone: "
 msgstr "steen: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "totale verwondingen"
+msgstr[1] "totale verwondingen"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "bereik: "
@@ -11975,12 +12030,6 @@ msgstr "Help ons Wesnoth te verbeteren!"
 #~ "vriendelijk gezinde troepen kunnen bijstaan, ongeacht het terrein of de "
 #~ "tegenstand. Behalve geneeskrachtige magie, kennen ze ook ijsmagie."
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Bevriende eenheid in zicht!"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Vijandelijke eenheid in zicht!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends Bevriende troepen gesignaleerd"
 
@@ -11989,10 +12038,3 @@ msgstr "Help ons Wesnoth te verbeteren!"
 
 #~ msgid "attacks"
 #~ msgstr "aanvallen"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Goud"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr ""
-#~ "Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2005-08-17 17:58+0200\n"
 "Last-Translator: Anders K. Madsen <madsen@lillesvin.linux.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -8438,6 +8438,32 @@ msgstr "sten"
 msgid "Ambushed!"
 msgstr "Baghold!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Fjendtlig enhed i syne!"
+msgstr[1] "Fjendtlig enhed i syne!"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Fjendtlig enhed i syne!"
+msgstr[1] "Fjendtlig enhed i syne!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr ""
@@ -9219,6 +9245,13 @@ msgstr "Besked:"
 msgid "Send to allies only"
 msgstr "Send kun til allierede"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Guld"
+msgstr[1] "Guld"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Der er ingen enheder at rekrutere."
@@ -9259,6 +9292,13 @@ msgstr "Bortsend enhed"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Tilbagekald"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Du skal bruge mindst $cost guldstykker for at tilbagekalde en enhed"
+msgstr[1] "Du skal bruge mindst $cost guldstykker for at tilbagekalde en enhed"
 
 #: src/menu_events.cpp:1077
 #, fuzzy
@@ -10054,6 +10094,19 @@ msgstr "Denne enhed er blevet til sten og kan ikke flytte sig eller angribe."
 msgid "stone: "
 msgstr "sten: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Total skade"
+msgstr[1] "Total skade"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr ""
@@ -10296,20 +10349,11 @@ msgstr ""
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Fjendtlig enhed i syne!"
-
 #~ msgid "$enemies Enemy units sighted!"
 #~ msgstr "$enemies fjendtlige enheder i syne!"
 
 #~ msgid "attacks"
 #~ msgstr "angreb"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Guld"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Du skal bruge mindst $cost guldstykker for at tilbagekalde en enhed"
 
 #, fuzzy
 #~ msgid ""
@@ -10393,9 +10437,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Halved"
 #~ msgstr "Gemt"
-
-#~ msgid "total damage"
-#~ msgstr "Total skade"
 
 #~ msgid "(both should survive)"
 #~ msgstr "(begge burde overleve)"

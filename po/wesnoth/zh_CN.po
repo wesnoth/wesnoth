@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -9410,6 +9410,32 @@ msgstr "石化"
 msgid "Ambushed!"
 msgstr "伏击！"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "友好单位可见"
+msgstr[1] "友好单位可见"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "敌人单位可见！"
+msgstr[1] "敌人单位可见！"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10180,6 +10206,13 @@ msgstr "信息："
 msgid "Send to allies only"
 msgstr "仅发送给同盟"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "单位金币"
+msgstr[1] "单位金币"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "你没有足够的单位去征募。"
@@ -10220,6 +10253,13 @@ msgstr "解散单位"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "召回"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "你至少需要 $cost 金币来召回单位"
+msgstr[1] "你至少需要 $cost 金币来召回单位"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11005,6 +11045,19 @@ msgstr "本单位已石化。不能攻击或移动。"
 msgid "stone: "
 msgstr "石化： "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "总伤害"
+msgstr[1] "总伤害"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr ""
@@ -11373,12 +11426,6 @@ msgstr ""
 #~ "蜥蜴人占卜师有着和治疗者一样高的价值，因为他们能支援盟军而无论地形或位置。"
 #~ "除了能治愈盟军之外，他们也会冰冻魔法。"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "友好单位可见"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "敌人单位可见！"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends 友好单位可见"
 
@@ -11387,12 +11434,6 @@ msgstr ""
 
 #~ msgid "attacks"
 #~ msgstr "攻击次数"
-
-#~ msgid "unit^Gold"
-#~ msgstr "单位金币"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "你至少需要 $cost 金币来召回单位"
 
 #, fuzzy
 #~ msgid ""
@@ -11506,9 +11547,6 @@ msgstr ""
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "攻击者易受于"
-
-#~ msgid "total damage"
-#~ msgstr "总伤害"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "防御者抵抗于"

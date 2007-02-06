@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2007-02-01 01:23+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -10225,6 +10225,32 @@ msgstr "förstena"
 msgid "Ambushed!"
 msgstr "Bakhåll!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Allierad trupp inom synhåll"
+msgstr[1] "Allierad trupp inom synhåll"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Fiendetrupp inom synhåll!"
+msgstr[1] "Fiendetrupp inom synhåll!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10995,6 +11021,13 @@ msgstr "Meddelande: "
 msgid "Send to allies only"
 msgstr "Skicka enbart till allierade"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Guld"
+msgstr[1] "Guld"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Det finns inte några trupper tillgängliga att värva till armén."
@@ -11035,6 +11068,15 @@ msgstr "Avskeda trupp"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Återkalla"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+"Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
+msgstr[1] ""
+"Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11810,6 +11852,19 @@ msgstr ""
 msgid "stone: "
 msgstr "förstenad: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Total skada"
+msgstr[1] "Total skada"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "vapenräckvidd: "
@@ -12207,12 +12262,6 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #~ "\n"
 #~ "Anmärkning:"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Allierad trupp inom synhåll"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Fiendetrupp inom synhåll!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends allierade trupper inom synhåll"
 
@@ -12221,10 +12270,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 
 #~ msgid "attacks"
 #~ msgstr "attacker"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Guld"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr ""
-#~ "Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"

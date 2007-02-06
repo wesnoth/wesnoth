@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2007-02-02 16:19+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -10184,6 +10184,36 @@ msgstr "zkamenění"
 msgid "Ambushed!"
 msgstr "Přepadení!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Spřátelená jednotka spatřena"
+msgstr[1] "Spřátelená jednotka spatřena"
+msgstr[2] "Spřátelená jednotka spatřena"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Nepřátelská jednotka na dohled!"
+msgstr[1] "Nepřátelská jednotka na dohled!"
+msgstr[2] "Nepřátelská jednotka na dohled!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10949,6 +10979,14 @@ msgstr "Zpráva:"
 msgid "Send to allies only"
 msgstr "Pošli jen spojencům"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "zlatých za jednotku"
+msgstr[1] "zlatých za jednotku"
+msgstr[2] "zlatých za jednotku"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Nemáš žádné jednotky k naverbování."
@@ -10988,6 +11026,14 @@ msgstr "Propusť jednotku"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Přivolej"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "K přivolání jednotky potřebuješ nejméně $cost zlaťáků "
+msgstr[1] "K přivolání jednotky potřebuješ nejméně $cost zlaťáků "
+msgstr[2] "K přivolání jednotky potřebuješ nejméně $cost zlaťáků "
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11761,6 +11807,21 @@ msgstr "Tato jednotka byla proměněna v kámen. Nemůže se ani hýbat, ani út
 msgid "stone: "
 msgstr "zkamenění: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "celkové poškození"
+msgstr[1] "celkové poškození"
+msgstr[2] "celkové poškození"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "dosah zbraně: "
@@ -12156,12 +12217,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #~ "\n"
 #~ "Zvláštní rysy:"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Spřátelená jednotka spatřena"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Nepřátelská jednotka na dohled!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends spřátelených jednotek spatřeno"
 
@@ -12170,12 +12225,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 
 #~ msgid "attacks"
 #~ msgstr "útoky"
-
-#~ msgid "unit^Gold"
-#~ msgstr "zlatých za jednotku"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "K přivolání jednotky potřebuješ nejméně $cost zlaťáků "
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."
@@ -12314,9 +12363,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "zranitelnost útočníka vs."
-
-#~ msgid "total damage"
-#~ msgstr "celkové poškození"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "odolnost obránce vs."

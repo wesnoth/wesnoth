@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2007-01-31 14:58+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -10841,6 +10841,32 @@ msgstr "versteinern"
 msgid "Ambushed!"
 msgstr "Hinterhalt!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Verbündete Einheit gesichtet!"
+msgstr[1] "Verbündete Einheit gesichtet!"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Gegnerische Einheit gesichtet!"
+msgstr[1] "Gegnerische Einheit gesichtet!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -11617,6 +11643,13 @@ msgstr "Nachricht:"
 msgid "Send to allies only"
 msgstr "Nur an Verbündete senden"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Gold"
+msgstr[1] "Gold"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Es gibt keine Einheiten, die Ihr ausbilden könntet."
@@ -11656,6 +11689,17 @@ msgstr "Einheit entlassen"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Einberufen"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+"Ihr benötigt mindestens $cost Goldstücke, um eine Einheit einberufen zu "
+"können."
+msgstr[1] ""
+"Ihr benötigt mindestens $cost Goldstücke, um eine Einheit einberufen zu "
+"können."
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -12454,6 +12498,19 @@ msgstr ""
 msgid "stone: "
 msgstr "versteinert:"
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Gesamtschaden"
+msgstr[1] "Gesamtschaden"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "Reichweite:"
@@ -12858,12 +12915,6 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #~ "\n"
 #~ "Anmerkung:"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Verbündete Einheit gesichtet!"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Gegnerische Einheit gesichtet!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends verbündete Einheiten gesichtet!"
 
@@ -12872,14 +12923,6 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 
 #~ msgid "attacks"
 #~ msgstr "Attacken"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Gold"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr ""
-#~ "Ihr benötigt mindestens $cost Goldstücke, um eine Einheit einberufen zu "
-#~ "können."
 
 #~ msgid ""
 #~ "Your saves directory contains some files that don't appear to have been "

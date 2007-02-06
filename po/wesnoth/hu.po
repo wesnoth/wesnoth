@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -9986,6 +9986,28 @@ msgstr "kővéváltoztatás"
 msgid "Ambushed!"
 msgstr "Rajtaütés!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Szövetséges egység a láthatáron"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Ellenséges egység a láthatáron!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10757,6 +10779,12 @@ msgstr "Üzenet: "
 msgid "Send to allies only"
 msgstr "Küldés csak a szövetségeseknek"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Arany"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Nincs toborozható egységed."
@@ -10796,6 +10824,12 @@ msgstr "Egység elbocsátása"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Visszahívás"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Legalább $cost arannyal kell rendelkezned ahhoz, hogy toborozhass."
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11578,6 +11612,17 @@ msgstr "Ezt az egységet kővé változtatták. Sem nem léphet, sem nem harcolh
 msgid "stone: "
 msgstr "kővévált: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "összsebzés"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "fegyver hatósugara: "
@@ -11979,12 +12024,6 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #~ "\n"
 #~ "Megjegyzés:"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Szövetséges egység a láthatáron"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Ellenséges egység a láthatáron!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends szövetséges egység a láthatáron"
 
@@ -11993,12 +12032,6 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 
 #~ msgid "attacks"
 #~ msgstr "támadás"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Arany"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Legalább $cost arannyal kell rendelkezned ahhoz, hogy toborozhass."
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."
@@ -12118,9 +12151,6 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "támadó sebezhetőség kontra"
-
-#~ msgid "total damage"
-#~ msgstr "összsebzés"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "védekező ellenállás kontra"

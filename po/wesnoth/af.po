@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -10343,6 +10343,32 @@ msgstr "versteen"
 msgid "Ambushed!"
 msgstr "Lokval!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Goedgesinde eenheid opgemerk"
+msgstr[1] "Goedgesinde eenheid opgemerk"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Vyandige eenheid opgemerk!"
+msgstr[1] "Vyandige eenheid opgemerk!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -11136,6 +11162,13 @@ msgstr "Boodskap:"
 msgid "Send to allies only"
 msgstr "Stuur slegs aan bondgenote"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Goud"
+msgstr[1] "Goud"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Jy het geen eenhede om te werf nie."
@@ -11176,6 +11209,13 @@ msgstr "Ontslaan Eenheid"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Terugroep"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
+msgstr[1] "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11971,6 +12011,19 @@ msgstr "Hierdie eenheid is versteen. Dit mag nie skuif of aanval nie."
 msgid "stone: "
 msgstr "versteen: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "totale skade"
+msgstr[1] "totale skade"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr ""
@@ -12357,12 +12410,6 @@ msgstr ""
 #~ "hulle vriende help in rowwe terrein of met enige vyand naby. Behalwe "
 #~ "hulle geneeskrag besit hulle ook kennis van die koue toorkrag."
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Goedgesinde eenheid opgemerk"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Vyandige eenheid opgemerk!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends Goedgesinde eenhede opgemerk"
 
@@ -12371,12 +12418,6 @@ msgstr ""
 
 #~ msgid "attacks"
 #~ msgstr "aanvalle"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Goud"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 
 #, fuzzy
 #~ msgid ""
@@ -12498,9 +12539,6 @@ msgstr ""
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "aanvaller swakheid teen"
-
-#~ msgid "total damage"
-#~ msgstr "totale skade"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "verdediger weerstand teen"

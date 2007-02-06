@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -9490,6 +9490,32 @@ msgstr "forsteinet"
 msgid "Ambushed!"
 msgstr "Bakhold!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Vennlig enhet i sikte"
+msgstr[1] "Vennlig enhet i sikte"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Fiendtlig enhet i sikte!"
+msgstr[1] "Fiendtlig enhet i sikte!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10258,6 +10284,13 @@ msgstr "Melding:"
 msgid "Send to allies only"
 msgstr "Send kun til allierte"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Gull"
+msgstr[1] "Gull"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Du har ingen enheter å rekruttere."
@@ -10297,6 +10330,13 @@ msgstr "Send bort enhet"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Tilbakekall"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Du må ha minst $cost gullstykker for å tilbakekalle en enhet"
+msgstr[1] "Du må ha minst $cost gullstykker for å tilbakekalle en enhet"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11085,6 +11125,19 @@ msgstr ""
 msgid "stone: "
 msgstr "forsteinet: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "totalskade"
+msgstr[1] "totalskade"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "våpenrekkevidde: "
@@ -11387,12 +11440,6 @@ msgstr "Hjelp oss å gjøre Kampen om Wesnoth bedre for deg!"
 #~ "og på å brødfø banditter og røvere. Jakterfaringen gjør dem effektive i "
 #~ "skog og våtmark."
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Vennlig enhet i sikte"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Fiendtlig enhet i sikte!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends vennlige enheter i sikte"
 
@@ -11401,12 +11448,6 @@ msgstr "Hjelp oss å gjøre Kampen om Wesnoth bedre for deg!"
 
 #~ msgid "attacks"
 #~ msgstr "angrep"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Gull"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Du må ha minst $cost gullstykker for å tilbakekalle en enhet"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."
@@ -11526,9 +11567,6 @@ msgstr "Hjelp oss å gjøre Kampen om Wesnoth bedre for deg!"
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "angriper sårbar for"
-
-#~ msgid "total damage"
-#~ msgstr "totalskade"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "forsvarer motstand mot"

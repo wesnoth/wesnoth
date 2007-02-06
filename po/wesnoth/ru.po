@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2007-01-08 19:03+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -10291,6 +10291,36 @@ msgstr "камень"
 msgid "Ambushed!"
 msgstr "Попал в засаду!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Замечено дружественное соединение!"
+msgstr[1] "Замечено дружественное соединение!"
+msgstr[2] "Замечено дружественное соединение!"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Замечено вражеское соединение!"
+msgstr[1] "Замечено вражеское соединение!"
+msgstr[2] "Замечено вражеское соединение!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -11056,6 +11086,14 @@ msgstr "Сообщение:"
 msgid "Send to allies only"
 msgstr "Отправить только союзникам"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Золото"
+msgstr[1] "Золото"
+msgstr[2] "Золото"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Нет соединений для вербовки."
@@ -11095,6 +11133,17 @@ msgstr "Распустить соединение"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Призвать"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+"У вас должно быть по крайней мере $cost единиц золота для вербовки соединения"
+msgstr[1] ""
+"У вас должно быть по крайней мере $cost единиц золота для вербовки соединения"
+msgstr[2] ""
+"У вас должно быть по крайней мере $cost единиц золота для вербовки соединения"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11873,6 +11922,21 @@ msgstr ""
 msgid "stone: "
 msgstr "камень: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Всего повреждений"
+msgstr[1] "Всего повреждений"
+msgstr[2] "Всего повреждений"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "диапазон действия оружия: "
@@ -12273,12 +12337,6 @@ msgstr "Помогите нам сделать Веснот лучше!"
 #~ "\n"
 #~ "Примечание:"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Замечено дружественное соединение!"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Замечено вражеское соединение!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "Замечено $friends дружественных соединений"
 
@@ -12287,14 +12345,6 @@ msgstr "Помогите нам сделать Веснот лучше!"
 
 #~ msgid "attacks"
 #~ msgstr "атаки"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Золото"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr ""
-#~ "У вас должно быть по крайней мере $cost единиц золота для вербовки "
-#~ "соединения"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."

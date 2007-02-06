@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-10-11 02:18+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -9290,6 +9290,32 @@ msgstr "pedra"
 msgid "Ambushed!"
 msgstr "Emboscada!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Heu vist una unitat amiga."
+msgstr[1] "Heu vist una unitat amiga."
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Enemic a la vista!"
+msgstr[1] "Enemic a la vista!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10061,6 +10087,13 @@ msgstr "Missatge: "
 msgid "Send to allies only"
 msgstr "Enviar només als aliats"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Or"
+msgstr[1] "Or"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "No teniu unitats disponibles per a reclutar."
@@ -10100,6 +10133,15 @@ msgstr "Llicenciar unitat"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Reincorporar"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+"Necessiteu a lo manco $cost monedes d'or per a reincorporar una unitat."
+msgstr[1] ""
+"Necessiteu a lo manco $cost monedes d'or per a reincorporar una unitat."
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -10883,6 +10925,19 @@ msgstr "Esta unitat ha sigut convertida en pedra. No es pot moure ni atacar."
 msgid "stone: "
 msgstr "pedra: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Dany total"
+msgstr[1] "Dany total"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "alcanç de l'arma: "
@@ -11293,12 +11348,6 @@ msgstr "¡Ajudeu-nos a fer un millor Wesnoth per a tots!"
 #~ "\n"
 #~ "Notes Especials:"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Heu vist una unitat amiga."
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Enemic a la vista!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends unitats amigues vistes."
 
@@ -11307,13 +11356,6 @@ msgstr "¡Ajudeu-nos a fer un millor Wesnoth per a tots!"
 
 #~ msgid "attacks"
 #~ msgstr "atacs"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Or"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr ""
-#~ "Necessiteu a lo manco $cost monedes d'or per a reincorporar una unitat."
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."

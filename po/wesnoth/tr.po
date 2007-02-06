@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -10233,6 +10233,28 @@ msgstr "taş"
 msgid "Ambushed!"
 msgstr "Pusuya düştü!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Arkadaş birim göründü"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Düşman birimi göründü!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -10998,6 +11020,12 @@ msgstr "Mesaj:"
 msgid "Send to allies only"
 msgstr "Sadece müttefiklere gönder"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Altın"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Askere alabilecek birimin yok"
@@ -11037,6 +11065,12 @@ msgstr "Birimi yok et"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Çağır"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Bir birimi tekrar çağırmak için en az $cost altının olmalı"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11809,6 +11843,17 @@ msgstr "Bu birim taşa çevirildi. Artık hareket edemez ve saldıramaz."
 msgid "stone: "
 msgstr "taş: "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Toplam hasar"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "Silah mesafesi:"
@@ -12200,12 +12245,6 @@ msgstr "Wesnoth'u sizin için daha iyi hale getirmemize yardım et!"
 #~ "karşılamaya aldırmadan yardım götürebilirler. Dostlarını tedavi etmesine "
 #~ "ek olarak onlar soğuk büyünün bilgisinede sahiptirler."
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Arkadaş birim göründü"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Düşman birimi göründü!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends arkadaş birim göründü"
 
@@ -12214,12 +12253,6 @@ msgstr "Wesnoth'u sizin için daha iyi hale getirmemize yardım et!"
 
 #~ msgid "attacks"
 #~ msgstr "saldırı"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Altın"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Bir birimi tekrar çağırmak için en az $cost altının olmalı"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."

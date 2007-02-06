@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -10333,6 +10333,32 @@ msgstr "ŝtono"
 msgid "Ambushed!"
 msgstr "Atako!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Mi vidas amikan milit-unuon"
+msgstr[1] "Mi vidas amikan milit-unuon"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Mi vidas malamikan milit-unuon!"
+msgstr[1] "Mi vidas malamikan milit-unuon!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -11114,6 +11140,13 @@ msgstr "Mesaĝo:"
 msgid "Send to allies only"
 msgstr "Sendu nur al aliancanoj"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "oro por milit-unuo"
+msgstr[1] "oro por milit-unuo"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Vi ne povas varbi milit-unuojn"
@@ -11152,6 +11185,13 @@ msgstr "Forlasu milit-unuon"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Alvoku"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Necesas almenaŭ $cost oramoneroj por alvoki milit-unuon"
+msgstr[1] "Necesas almenaŭ $cost oramoneroj por alvoki milit-unuon"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -11941,6 +11981,19 @@ msgstr "Ĉi tiu milit-unuo ŝtoniĝis. Eblas nek moviĝi nek batali."
 msgid "stone: "
 msgstr "ŝtonigita:"
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "tuta damaĝo"
+msgstr[1] "tuta damaĝo"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr ""
@@ -12321,12 +12374,6 @@ msgstr ""
 #~ "Saŭro kuracisto estas altetaksata, ĉar kapablas ie ajn helpi al amikoj. "
 #~ "Krom kurackapabloj regas magion de frosto."
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Mi vidas amikan milit-unuon"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Mi vidas malamikan milit-unuon!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "Mi vidas $friends da amikajn milit-unuojn"
 
@@ -12335,12 +12382,6 @@ msgstr ""
 
 #~ msgid "attacks"
 #~ msgstr "atakoj"
-
-#~ msgid "unit^Gold"
-#~ msgstr "oro por milit-unuo"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Necesas almenaŭ $cost oramoneroj por alvoki milit-unuon"
 
 #, fuzzy
 #~ msgid ""

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2007-01-05 18:20+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team:  <wesnoth@ml.free.fr>\n"
@@ -10588,6 +10588,32 @@ msgstr "pierre"
 msgid "Ambushed!"
 msgstr "Embuscade !"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Unité alliée en vue"
+msgstr[1] "Unité alliée en vue"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Unité ennemie en vue !"
+msgstr[1] "Unité ennemie en vue !"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -11376,6 +11402,13 @@ msgstr "Message : "
 msgid "Send to allies only"
 msgstr "Parler aux alliés uniquement"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "p. d'or"
+msgstr[1] "p. d'or"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Vous n'avez pas d'unité à recruter disponible."
@@ -11415,6 +11448,15 @@ msgstr "Renvoyer l'unité"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Rappeler"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+"Vous devez posséder au moins $cost pièces d'or pour rappeler une unité"
+msgstr[1] ""
+"Vous devez posséder au moins $cost pièces d'or pour rappeler une unité"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -12201,6 +12243,19 @@ msgstr ""
 msgid "stone: "
 msgstr "pétrification : "
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Dégâts totaux"
+msgstr[1] "Dégâts totaux"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "portée de l'arme :"
@@ -12609,12 +12664,6 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 #~ "\n"
 #~ "Remarque : "
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Unité alliée en vue"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Unité ennemie en vue !"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr " $friends unité(s) alliée(s) en vue"
 
@@ -12623,13 +12672,6 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 
 #~ msgid "attacks"
 #~ msgstr "attaques"
-
-#~ msgid "unit^Gold"
-#~ msgstr "p. d'or"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr ""
-#~ "Vous devez posséder au moins $cost pièces d'or pour rappeler une unité"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."

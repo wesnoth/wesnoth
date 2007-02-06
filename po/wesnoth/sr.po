@@ -60,7 +60,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 16:05+0100\n"
+"POT-Creation-Date: 2007-02-06 17:33+0100\n"
 "PO-Revision-Date: 2006-08-15 11:32+0000\n"
 "Last-Translator: Branko Kokanovic\n"
 "Language-Team: sr_CS\n"
@@ -8034,6 +8034,32 @@ msgstr "стена"
 msgid "Ambushed!"
 msgstr "Заседа!"
 
+#: src/actions.cpp:2074
+#, fuzzy
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Савезник на видику!"
+msgstr[1] "Савезник на видику!"
+
+#: src/actions.cpp:2076
+#, fuzzy
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Противник на видику!"
+msgstr[1] "Противник на видику!"
+
+#: src/actions.cpp:2080
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2081
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/actions.cpp:2082
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -8804,6 +8830,13 @@ msgstr "Порука:"
 msgid "Send to allies only"
 msgstr "Пошаљи само пријатељима"
 
+#: src/menu_events.cpp:582
+#, fuzzy
+msgid "unit^Gold"
+msgid_plural "Gold"
+msgstr[0] "Злато"
+msgstr[1] "Злато"
+
 #: src/menu_events.cpp:588
 msgid "You have no units available to recruit."
 msgstr "Нема јединица за регрутацију."
@@ -8843,6 +8876,13 @@ msgstr "Отпусти Јединицу"
 #: src/menu_events.cpp:742
 msgid "Recall"
 msgstr "Призови"
+
+#: src/menu_events.cpp:754
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Морате имати барем $cost злата да бисте призвали ветеране"
+msgstr[1] "Морате имати барем $cost злата да бисте призвали ветеране"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -9617,6 +9657,19 @@ msgstr ""
 msgid "stone: "
 msgstr "камен:"
 
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "укупна штета"
+msgstr[1] "укупна штета"
+
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "домет оружја:"
@@ -9867,12 +9920,6 @@ msgstr "Резултати се могу видети код"
 msgid "Help us make Wesnoth better for you!"
 msgstr "Помозите нам да направимо Веснот бољим због Вас!"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Савезник на видику!"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Противник на видику!"
-
 #~ msgid "$friends Friendly units sighted"
 #~ msgstr "$friends Пријатељска јединица на видику!"
 
@@ -9881,12 +9928,6 @@ msgstr "Помозите нам да направимо Веснот бољим 
 
 #~ msgid "attacks"
 #~ msgstr "напада"
-
-#~ msgid "unit^Gold"
-#~ msgstr "Злато"
-
-#~ msgid "You must have at least $cost gold pieces to recall a unit"
-#~ msgstr "Морате имати барем $cost злата да бисте призвали ветеране"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."
