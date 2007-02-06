@@ -123,7 +123,8 @@ bool wildcard_string_match(const std::string& str, const std::string& match);
 
 }
 
-// handy wrapper around interpolate_variables_into_string and gettext
+// handy wrappers around interpolate_variables_into_string and gettext
 std::string vgettext(const char*, const utils::string_map&);
+std::string vngettext(const char*, const char*, int, const utils::string_map&);
 
 #endif

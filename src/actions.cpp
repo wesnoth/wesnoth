@@ -34,6 +34,7 @@
 #include "wml_separators.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/string_utils.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NW LOG_STREAM(err, network)
@@ -2062,44 +2063,33 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				teams[team_num].see(u->second.side()-1);
 			}
 
-			const char* msg_id;
-
 			//the message we display is different depending on whether units sighted
 			//were enemies or friends, and whether there is one or more
-			if(seen_units.size() == 1) {
-				if(nfriends == 1) {
-					msg_id = N_("Friendly unit sighted");
-				} else {
-					msg_id = N_("Enemy unit sighted!");
-				}
-			}
-			else if(nfriends == 0 || nenemies == 0) {
-				if(nfriends > 0) {
-					msg_id = N_("$friends Friendly units sighted");
-				} else {
-					msg_id = N_("$enemies Enemy units sighted!");
-				}
-			}
-			else {
-				msg_id = N_("Units sighted! ($friends friendly, $enemies enemy)");
-			}
-
 			utils::string_map symbols;
 			symbols["friends"] = lexical_cast<std::string>(nfriends);
 			symbols["enemies"] = lexical_cast<std::string>(nenemies);
-
-			std::stringstream msg;
-			msg << gettext(msg_id);
+			std::string message;
+			if(nfriends == 0 || nenemies == 0) {
+				if(nfriends > 0) {
+					message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
+				} else {
+					message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
+				}
+			}
+			else {
+				symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
+				symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
+				message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
+			}
 
 			if(steps.size() < route.size()) {
 				//see if the "Continue Move" action has an associated hotkey
 				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
 				if(!hk.null()) {
 					symbols["hotkey"] = hk.get_name();
-					msg << '\n' << _("(press $hotkey to continue)");
+					message += "\n" + vgettext("(press $hotkey to continue)", symbols);
 				}
 			}
-			const std::string message = utils::interpolate_variables_into_string(msg.str(), &symbols);
 
 			font::add_floating_label(message,font::SIZE_XLARGE,font::BAD_COLOUR,
 			                         disp->map_area().w/2,disp->map_area().h/3,

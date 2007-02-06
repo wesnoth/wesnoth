@@ -48,3 +48,30 @@ const char* dsgettext (const char * domainname, const char *msgid)
 	}
 	return msgval;
 }
+
+const char* sngettext (const char *singular, const char *plural, int n)
+{
+	const char *msgval = ngettext (singular, plural, n);
+	if (msgval == singular) {
+		msgval = strrchr (singular, '^');
+		if (msgval == NULL)
+			msgval = singular;
+		else
+			msgval++;
+	}
+	return msgval;
+}
+
+const char* dsngettext (const char * domainname, const char *singular, const char *plural, int n)
+{
+	bind_textdomain_codeset(domainname, "UTF-8");
+	const char *msgval = dngettext (domainname, singular, plural, n);
+	if (msgval == singular) {
+		msgval = strrchr (singular, '^');
+		if (msgval == NULL)
+			msgval = singular;
+		else
+			msgval++;
+	}
+	return msgval;
+}

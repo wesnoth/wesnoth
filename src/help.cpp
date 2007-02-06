@@ -1167,14 +1167,14 @@ public:
 		std::vector<attack_type> attacks = type_.attacks();
 		if (!attacks.empty()) {
 			// Print headers for the table.
-			ss << "\n\n<header>text='" << escape(utils::capitalize(_("attacks")))
+			ss << "\n\n<header>text='" << escape(_("unit help^Attacks"))
 			   << "'</header>\n\n";
 			table_spec table;
 
 			std::vector<item> first_row;
 			// Dummy element, icons are below.
 			first_row.push_back(item("", 0));
-			push_header(first_row, _("Name"));
+			push_header(first_row, _("unit help^Name"));
 			push_header(first_row, _("Type"));
 			push_header(first_row, _("Strikes"));
 			push_header(first_row, _("Range"));
