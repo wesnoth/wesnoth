@@ -491,6 +491,7 @@ void server::run()
 
 							//now sync players in the lobby again, to remove the game
 							lobby_players_.send_data(sync_initial_response());
+							break;
 						}
 					}
 				}
