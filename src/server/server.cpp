@@ -1039,6 +1039,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		const config& response = construct_server_message(
 		             "You cannot ban: not the game creator",*g);
 		network::send_data(response,sock);
+	} else if(data.child("kick")) {
+		const config& response = construct_server_message(
+		             "You cannot kick: not the game creator",*g);
+		network::send_data(response,sock);
 	}
 
 	//if this is data describing changes to a game.
