@@ -201,36 +201,33 @@ bool game::take_side(network::connection player, const config& cfg)
 		}
 		//if we get here we couldn't find a side to take
 		return false;
-	} else { //else take the current side
+	}
+	//else take the current side
+	if (player == owner_ && started_ && !cfg["controller"].empty()) {
 		//if the owner have transfer side to an ai or an human in game
 		//fake a "change_controller" command so other player update controller name
-		if (player == owner_ && started_ && !cfg["controller"].empty()) {
-			config fake;
-			config& change = fake.add_child("change_controller");
-			change["side"] = side;
-			change["player"] = cfg["name"];
-			change["controller"] = "network";
-			send_data(fake, owner_); //send change to all except owner
-			//send a server message displaying new controller name
-			send_data(construct_server_message(cfg["name"] + " takes control of side " + side));
+		config fake;
+		config& change = fake.add_child("change_controller");
+		change["side"] = side;
+		change["player"] = cfg["name"];
+		change["controller"] = "network";
+		send_data(fake, owner_); //send change to all except owner
+		//send a server message displaying new controller name
+		send_data(construct_server_message(cfg["name"] + " takes control of side " + side));
 
-			//update level_ so observer who join display the good player name
-			config::child_itors it = level_.child_range("side");
-			it.first += side_index;
-			wassert(it.first != it.second);
-			(**it.first)["current_player"] = cfg["name"];
+		//update level_ so observer who join display the good player name
+		config::child_itors it = level_.child_range("side");
+		it.first += side_index;
+		wassert(it.first != it.second);
+		(**it.first)["current_player"] = cfg["name"];
 
-			side_controllers_[side_index] = cfg["controller"];
-		} else {
-			side_controllers_[side_index] = "network";
-		}
-		sides_.insert(std::pair<network::connection, size_t>(player, side_index));
-		sides_taken_[side_index] = true;
-		network::queue_data(cfg, owner_);
-		return true;
-	}
-
-	return false;
+		side_controllers_[side_index] = cfg["controller"];
+	} else
+		side_controllers_[side_index] = "network";
+	sides_.insert(std::pair<network::connection, size_t>(player, side_index));
+	sides_taken_[side_index] = true;
+	network::queue_data(cfg, owner_);
+	return true;
 }
 
 void game::update_side_data()
