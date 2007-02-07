@@ -2034,43 +2034,37 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				teams[team_num].see(u->second.side()-1);
 			}
 
-			const char* msg_id;
-			const char* msg_id2;
-			SDL_Color msg_colour;
-
 			//the message we display is different depending on whether the units sighted
 			//were enemies or friends, and their respective number
-			if (nenemies == 0) {
-				msg_id = ngettext("$friends Friendly unit sighted", "$friends Friendly units sighted", nfriends);
-				msg_colour = font::GOOD_COLOUR;
-				msg_id2 = "";
-			} else if (nfriends == 0) {
-				msg_id = ngettext("$enemies Enemy unit sighted!", "$enemies Enemy units sighted!", nenemies);
-				msg_colour = font::BAD_COLOUR;
-				msg_id2 = "";
-			} else {
-				msg_id = ngettext("Units sighted! ($friends friendly, ", "Units sighted! ($friends friendly, ", nfriends);
-                                msg_id2 = ngettext("$enemies enemy)", "$enemies enemy)", nenemies);
-				msg_colour = font::NORMAL_COLOUR;
-			}
-
-			std::stringstream msg;
-			msg << msg_id;
-			msg << msg_id2;
-
 			utils::string_map symbols;
 			symbols["friends"] = lexical_cast<std::string>(nfriends);
 			symbols["enemies"] = lexical_cast<std::string>(nenemies);
+			std::string message;
+			SDL_Color msg_colour;
+			if(nfriends == 0 || nenemies == 0) {
+				if(nfriends > 0) {
+					message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
+					msg_colour = font::GOOD_COLOUR;
+				} else {
+					message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
+					msg_colour = font::BAD_COLOUR;
+				}
+			}
+			else {
+				symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
+				symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
+				message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
+				msg_colour = font::NORMAL_COLOUR;
+			}
 
 			if(steps.size() < route.size()) {
 				//see if the "Continue Move" action has an associated hotkey
 				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
 				if(!hk.null()) {
 					symbols["hotkey"] = hk.get_name();
-					msg << '\n' << _("(press $hotkey to continue)");
+					message += "\n" + vgettext("(press $hotkey to continue)", symbols);
 				}
 			}
-			const std::string message = utils::interpolate_variables_into_string(msg.str(), &symbols);
 
 			font::add_floating_label(message,font::SIZE_XLARGE,msg_colour,
 			                         disp->map_area().w/2,disp->map_area().h/3,

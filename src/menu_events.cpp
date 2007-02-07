@@ -290,7 +290,7 @@ namespace events{
 									_("Name") + COLUMN_SEPARATOR +
 									_("HP") + COLUMN_SEPARATOR +
 									_("XP") + COLUMN_SEPARATOR +
-									_("Traits") + COLUMN_SEPARATOR +
+									_("unit list^Traits") + COLUMN_SEPARATOR +
 									_("Moves") + COLUMN_SEPARATOR +
 									_("Location");
 
@@ -358,7 +358,7 @@ namespace events{
 		heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
 				<< _("Gold") << COLUMN_SEPARATOR
 				<< _("Villages") << COLUMN_SEPARATOR
-				<< _("Units") << COLUMN_SEPARATOR
+				<< _("status^Units") << COLUMN_SEPARATOR
 				<< _("Upkeep") << COLUMN_SEPARATOR
 				<< _("Income");
 
@@ -700,7 +700,7 @@ namespace events{
 			description << "~RC(" << type.flag_rgb() << ">" << team::get_side_colour_index(team_num) << ")";
 #endif
 			description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type.language_name() << "\n"
-					<< prefix << type.cost() << " " << sgettext("unit^Gold");
+					<< prefix << type.cost() << " " << sngettext("unit^Gold", "Gold", type.cost());
 
 			items.push_back(description.str());
 			sample_units.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&type,team_num));
@@ -879,7 +879,10 @@ namespace events{
 					std::stringstream msg;
 					utils::string_map i18n_symbols;
 					i18n_symbols["cost"] = lexical_cast<std::string>(game_config::recall_cost);
-					msg << vgettext("You must have at least $cost gold pieces to recall a unit", i18n_symbols);
+					msg << vngettext("You must have at least 1 gold piece to recall a unit",
+						"You must have at least $cost gold pieces to recall a unit",
+						game_config::recall_cost,
+						i18n_symbols);
 					gui::show_dialog(*gui_,NULL,"",msg.str());
 				} else {
 					std::cerr << "recall index: " << res << "\n";

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 15:00+0100\n"
+"POT-Creation-Date: 2007-02-07 18:27+0100\n"
 "PO-Revision-Date: 2007-01-13 00:26+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -807,11 +807,11 @@ msgstr "Tutvustus"
 msgid "Gameplay"
 msgstr "Mängimine"
 
-#: data/help.cfg:21 src/menu_events.cpp:293
+#: data/help.cfg:21
 msgid "Traits"
 msgstr "Eripärad"
 
-#: data/help.cfg:30 src/menu_events.cpp:361
+#: data/help.cfg:30
 msgid "Units"
 msgstr "Üksused"
 
@@ -4042,7 +4042,7 @@ msgid "End Turn"
 msgstr "Lõpeta käik"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2411
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2424
 msgid "HP"
 msgstr "HP"
 
@@ -4710,7 +4710,7 @@ msgstr "küünised"
 #: data/units/Human_Outlaw_Assassin.cfg:30
 #: data/units/Human_Outlaw_Assassin.cfg:111
 #: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
-#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
+#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:178
 #: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
 #: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
 #: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
@@ -5096,7 +5096,7 @@ msgstr ""
 #: data/units/Dwarvish_Thunderguard.cfg:23
 #: data/units/Human_Outlaw_Assassin.cfg:28
 #: data/units/Human_Outlaw_Poacher.cfg:34 data/units/Human_Outlaw_Rogue.cfg:27
-#: data/units/Human_Outlaw_Thief.cfg:145
+#: data/units/Human_Outlaw_Thief.cfg:176
 #: data/units/Human_Outlaw_Trapper.cfg:34 data/units/Orcish_Archer.cfg:69
 #: data/units/Orcish_Assassin.cfg:67 data/units/Orcish_Slayer.cfg:24
 #: data/units/Undead_Skele_Bone_Shooter.cfg:41
@@ -6646,7 +6646,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/units/Human_Outlaw_Thief.cfg:186
+#: data/units/Human_Outlaw_Thief.cfg:217
 msgid "female^Thief"
 msgstr "Varas"
 
@@ -7999,7 +7999,7 @@ msgid "+General Purpose Administrators"
 msgstr "+Üldotstarbelised administraatorid"
 
 #: src/about.cpp:78 src/about.cpp:108 src/multiplayer_connect.cpp:355
-#: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:439
+#: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:441
 msgid "+"
 msgstr ""
 
@@ -8040,34 +8040,38 @@ msgstr "kivi"
 msgid "Ambushed!"
 msgstr "Varitsus!"
 
-#: src/actions.cpp:2044
+#: src/actions.cpp:2046
 #, fuzzy
-msgid "$friends Friendly unit sighted"
-msgid_plural "$friends Friendly units sighted"
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
 msgstr[0] "$friends sõbralikku üksust märgatud"
 msgstr[1] "$friends sõbralikku üksust märgatud"
 
-#: src/actions.cpp:2048
+#: src/actions.cpp:2049
 #, fuzzy
-msgid "$enemies Enemy unit sighted!"
-msgid_plural "$enemies Enemy units sighted!"
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "$enemies vaenlase üksust märgatud!"
 msgstr[1] "$enemies vaenlase üksust märgatud!"
 
-#: src/actions.cpp:2052
-#, fuzzy
-msgid "Units sighted! ($friends friendly, "
-msgid_plural "Units sighted! ($friends friendly, "
-msgstr[0] "Märkasime üksusi! ($friends sõbralikke, $enemies vaenulikke)"
-msgstr[1] "Märkasime üksusi! ($friends sõbralikke, $enemies vaenulikke)"
-
-#: src/actions.cpp:2053
-msgid "$enemies enemy)"
-msgid_plural "$enemies enemy)"
+#: src/actions.cpp:2054
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2070
+#: src/actions.cpp:2055
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2056
+#, fuzzy
+msgid "Units sighted! ($friendphrase, $enemyphrase)"
+msgstr "Märkasime üksusi! ($friends sõbralikke, $enemies vaenulikke)"
+
+#: src/actions.cpp:2065
 msgid "(press $hotkey to continue)"
 msgstr "(jätkamiseks vajuta $hotkey)"
 
@@ -8183,9 +8187,8 @@ msgstr "Kustuta salvestus"
 msgid "Date"
 msgstr "Kuupäev"
 
-#: src/dialogs.cpp:535 src/game.cpp:921 src/help.cpp:1176
-#: src/menu_events.cpp:290 src/menu_events.cpp:826
-#: src/multiplayer_lobby.cpp:34
+#: src/dialogs.cpp:535 src/game.cpp:921 src/menu_events.cpp:290
+#: src/menu_events.cpp:826 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Nimi"
 
@@ -8399,7 +8402,7 @@ msgstr "Tingimused"
 msgid "Sending add-on"
 msgstr "Lisa saatmine"
 
-#: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:333
+#: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:335
 msgid "Response"
 msgstr "Vastus"
 
@@ -8537,9 +8540,14 @@ msgstr "Meelelaad:"
 msgid "Required XP: "
 msgstr "Nõutav XP:"
 
-#: src/help.cpp:1169 src/reports.cpp:255
-msgid "attacks"
-msgstr "rünnakud"
+#: src/help.cpp:1169
+msgid "unit help^Attacks"
+msgstr ""
+
+#: src/help.cpp:1176
+#, fuzzy
+msgid "unit help^Name"
+msgstr "Välju mängust"
 
 #: src/help.cpp:1177 src/menu_events.cpp:289 src/menu_events.cpp:825
 msgid "Type"
@@ -8715,7 +8723,11 @@ msgstr "Kahju saadud (EV)"
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/menu_events.cpp:294 src/unit.cpp:2442
+#: src/menu_events.cpp:293
+msgid "unit list^Traits"
+msgstr ""
+
+#: src/menu_events.cpp:294 src/unit.cpp:2455
 msgid "Moves"
 msgstr "Käigud"
 
@@ -8732,6 +8744,7 @@ msgid "Leader"
 msgstr "Juht"
 
 #: src/menu_events.cpp:359 src/multiplayer_connect.cpp:752
+#: src/multiplayer_wait.cpp:435
 msgid "Gold"
 msgstr "Kuld"
 
@@ -8739,12 +8752,16 @@ msgstr "Kuld"
 msgid "Villages"
 msgstr "Külad"
 
+#: src/menu_events.cpp:361
+msgid "status^Units"
+msgstr ""
+
 #: src/menu_events.cpp:362
 msgid "Upkeep"
 msgstr "Elatis"
 
 #: src/menu_events.cpp:363 src/multiplayer_connect.cpp:753
-#: src/multiplayer_wait.cpp:437
+#: src/multiplayer_wait.cpp:439
 msgid "Income"
 msgstr "Sissetulek"
 
@@ -8817,9 +8834,12 @@ msgstr "Teade:"
 msgid "Send to allies only"
 msgstr "Saada ainult liitlastele"
 
-#: src/menu_events.cpp:703 src/multiplayer_wait.cpp:433
+#: src/menu_events.cpp:703
+#, fuzzy
 msgid "unit^Gold"
-msgstr "Kuld"
+msgid_plural "Gold"
+msgstr[0] "Kuld"
+msgstr[1] "Kuld"
 
 #: src/menu_events.cpp:710
 msgid "You have no units available to recruit."
@@ -8864,10 +8884,13 @@ msgid "Recall"
 msgstr "Kutsu tagasi"
 
 #: src/menu_events.cpp:882
-msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "Sul peab üksuse tagasi kutsumiseks olema vähemalt $gold kullatükki."
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Sul peab üksuse tagasi kutsumiseks olema vähemalt $gold kullatükki."
+msgstr[1] "Sul peab üksuse tagasi kutsumiseks olema vähemalt $gold kullatükki."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1208
 #, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
@@ -8875,70 +8898,70 @@ msgstr ""
 "Sa ei ole oma käiku veel alustanud. Kas sa tõesti tahad oma käigu juba "
 "lõpetada?"
 
-#: src/menu_events.cpp:1213 src/menu_events.cpp:1218
+#: src/menu_events.cpp:1216 src/menu_events.cpp:1221
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Osad üksused saavad veel liikuda? Kas sa tahad tõesti oma käigu lõpetada?"
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1262
 msgid "Rename Unit"
 msgstr "Muuda üksuse nime"
 
-#: src/menu_events.cpp:1354
+#: src/menu_events.cpp:1357
 #, fuzzy
 msgid "Team only"
 msgstr "Meeskond"
 
-#: src/menu_events.cpp:1359
+#: src/menu_events.cpp:1362
 msgid "Place Label"
 msgstr "Paiguta silt"
 
-#: src/menu_events.cpp:1360
+#: src/menu_events.cpp:1363
 msgid "Label:"
 msgstr "Silt:"
 
-#: src/menu_events.cpp:1479
+#: src/menu_events.cpp:1482
 msgid "Search"
 msgstr "Otsi"
 
-#: src/menu_events.cpp:1522
+#: src/menu_events.cpp:1525
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1576
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1577
+#: src/menu_events.cpp:1580
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1579
+#: src/menu_events.cpp:1582
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1584
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1586
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1585
+#: src/menu_events.cpp:1588
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1587
+#: src/menu_events.cpp:1590
 #, fuzzy
 msgid "Unknown subcommand"
 msgstr "Tundmatu stsenaarium : '"
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1593
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -8946,52 +8969,52 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1593
+#: src/menu_events.cpp:1596
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1595
+#: src/menu_events.cpp:1598
 msgid "Unknown command"
 msgstr "Tundmatu käsk"
 
-#: src/menu_events.cpp:1607
+#: src/menu_events.cpp:1610
 msgid "Added to ignore list: "
 msgstr "Lisatud ignoreeritavate nimekirja:"
 
-#: src/menu_events.cpp:1609 src/menu_events.cpp:1616 src/menu_events.cpp:1623
+#: src/menu_events.cpp:1612 src/menu_events.cpp:1619 src/menu_events.cpp:1626
 msgid "Invalid username: "
 msgstr "Vigane kasutajanimi:"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1617
 msgid "Added to friends list: "
 msgstr "Lisatud sõprade nimekirja:"
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1624
 msgid "Removed from list: "
 msgstr "Nimekirjast eemaldatud:"
 
-#: src/menu_events.cpp:1647
+#: src/menu_events.cpp:1650
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1657
+#: src/menu_events.cpp:1660
 msgid "Removed from ignore list: "
 msgstr "Eemaldatud ignoreeritavate nimekirjast:"
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1663
 msgid "Removed from friends list: "
 msgstr "Eemaldatud sõprade nimekrjast:"
 
-#: src/menu_events.cpp:1667
+#: src/menu_events.cpp:1670
 #, fuzzy
 msgid "Unknown command: "
 msgstr "Tundmatu stsenaarium : '"
 
-#: src/menu_events.cpp:1768
+#: src/menu_events.cpp:1771
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Ei leindud silti ega üksust mille nimes sisalduks tekst '$search'."
 
-#: src/menu_events.cpp:1912
+#: src/menu_events.cpp:1915
 msgid "prompt^Command:"
 msgstr "Käsk:"
 
@@ -9044,7 +9067,7 @@ msgstr "Terve nahaga pääsemise võimalus"
 msgid "Damage Calculations"
 msgstr "Kahju arvutamine"
 
-#: src/mouse_events.cpp:1282 src/reports.cpp:281
+#: src/mouse_events.cpp:1282 src/reports.cpp:282
 msgid "vs"
 msgstr "vs"
 
@@ -9090,17 +9113,17 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:372 src/multiplayer.cpp:387
-#: src/multiplayer_wait.cpp:196
+#: src/multiplayer_wait.cpp:198
 msgid "No multiplayer sides available in this game"
 msgstr "Selles mängus ei ole mitme mängija pooli."
 
 #: src/multiplayer.cpp:373 src/multiplayer.cpp:388
-#: src/multiplayer_wait.cpp:233
+#: src/multiplayer_wait.cpp:235
 msgid "Era not available"
 msgstr "Ajastu pole saadaval."
 
 #: src/multiplayer.cpp:374 src/multiplayer.cpp:389
-#: src/multiplayer_wait.cpp:238
+#: src/multiplayer_wait.cpp:240
 msgid "No multiplayer sides found"
 msgstr "Mitme mängija pooli ei leitud"
 
@@ -9110,12 +9133,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:429 src/multiplayer_wait.cpp:437 src/unit.cpp:2541
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2554
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:429 src/multiplayer_wait.cpp:440 src/unit.cpp:2548
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2561
 msgid ")"
 msgstr ")"
 
@@ -9480,7 +9503,7 @@ msgstr "Ootan mängu algust..."
 msgid "Getting game data..."
 msgstr "Hangin mängu andmeid..."
 
-#: src/multiplayer_wait.cpp:254
+#: src/multiplayer_wait.cpp:256
 msgid "Choose your side:"
 msgstr "Vali oma pool:"
 
@@ -9693,31 +9716,40 @@ msgstr "See üksus on kivistatud. Ta ei või liikuda ega rünnata."
 msgid "stone: "
 msgstr "kivi: "
 
-#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:278
-msgid "damage"
-msgstr "kahjustus"
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Kogukahju"
+msgstr[1] "Kogukahju"
 
-#: src/reports.cpp:265
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "relva ulatus: "
 
-#: src/reports.cpp:266
+#: src/reports.cpp:267
 msgid "damage type: "
 msgstr "kahjustuse liik: "
 
-#: src/reports.cpp:328
+#: src/reports.cpp:329
 msgid "Lawful units: "
 msgstr "Kuulekad üksused:"
 
-#: src/reports.cpp:330
+#: src/reports.cpp:331
 msgid "Neutral units: "
 msgstr "Neutraalsed üksused:"
 
-#: src/reports.cpp:331
+#: src/reports.cpp:332
 msgid "Chaotic units: "
 msgstr "Korratud üksused:"
 
-#: src/reports.cpp:464
+#: src/reports.cpp:465
 msgid "Observers:"
 msgstr "Jälgijad:"
 
@@ -9879,17 +9911,21 @@ msgstr "Abiteave"
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2377 src/unit.cpp:2546
+#: src/unit.cpp:2390 src/unit.cpp:2559
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2459
+#: src/unit.cpp:2472
 msgid "XP to advance"
 msgstr ""
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2550
 msgid ": "
 msgstr ": "
+
+#: src/unit_types.cpp:278
+msgid "damage"
+msgstr "kahjustus"
 
 #: src/unit_types.cpp:286
 msgid "strikes"
@@ -9930,6 +9966,9 @@ msgstr ""
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#~ msgid "attacks"
+#~ msgstr "rünnakud"
 
 #~ msgid "or"
 #~ msgstr "või"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 15:00+0100\n"
+"POT-Creation-Date: 2007-02-07 18:27+0100\n"
 "PO-Revision-Date: 2006-09-05 20:50+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -861,11 +861,11 @@ msgstr "Introducción"
 msgid "Gameplay"
 msgstr "Juego"
 
-#: data/help.cfg:21 src/menu_events.cpp:293
+#: data/help.cfg:21
 msgid "Traits"
 msgstr "Rasgos"
 
-#: data/help.cfg:30 src/menu_events.cpp:361
+#: data/help.cfg:30
 msgid "Units"
 msgstr "Unidades"
 
@@ -4737,7 +4737,7 @@ msgid "End Turn"
 msgstr "Fin de turno"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2411
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2424
 msgid "HP"
 msgstr "pv"
 
@@ -5517,7 +5517,7 @@ msgstr "garras"
 #: data/units/Human_Outlaw_Assassin.cfg:30
 #: data/units/Human_Outlaw_Assassin.cfg:111
 #: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
-#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
+#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:178
 #: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
 #: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
 #: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
@@ -6005,7 +6005,7 @@ msgstr ""
 #: data/units/Dwarvish_Thunderguard.cfg:23
 #: data/units/Human_Outlaw_Assassin.cfg:28
 #: data/units/Human_Outlaw_Poacher.cfg:34 data/units/Human_Outlaw_Rogue.cfg:27
-#: data/units/Human_Outlaw_Thief.cfg:145
+#: data/units/Human_Outlaw_Thief.cfg:176
 #: data/units/Human_Outlaw_Trapper.cfg:34 data/units/Orcish_Archer.cfg:69
 #: data/units/Orcish_Assassin.cfg:67 data/units/Orcish_Slayer.cfg:24
 #: data/units/Undead_Skele_Bone_Shooter.cfg:41
@@ -8211,7 +8211,7 @@ msgstr ""
 "al enemigo, éste puede acercarse sigilosamente y asestarle una puñalada por "
 "la espalda, duplicando así el daño infligido."
 
-#: data/units/Human_Outlaw_Thief.cfg:186
+#: data/units/Human_Outlaw_Thief.cfg:217
 msgid "female^Thief"
 msgstr "Ladrona"
 
@@ -10080,7 +10080,7 @@ msgid "+General Purpose Administrators"
 msgstr "+Administradores de ámbito general"
 
 #: src/about.cpp:78 src/about.cpp:108 src/multiplayer_connect.cpp:355
-#: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:439
+#: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:441
 msgid "+"
 msgstr "+"
 
@@ -10121,34 +10121,38 @@ msgstr "piedra"
 msgid "Ambushed!"
 msgstr "¡Emboscada!"
 
-#: src/actions.cpp:2044
+#: src/actions.cpp:2046
 #, fuzzy
-msgid "$friends Friendly unit sighted"
-msgid_plural "$friends Friendly units sighted"
-msgstr[0] "$friends unidades aliadas avistadas"
-msgstr[1] "$friends unidades aliadas avistadas"
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "¡Aliado avistado!"
+msgstr[1] "¡Aliado avistado!"
 
-#: src/actions.cpp:2048
+#: src/actions.cpp:2049
 #, fuzzy
-msgid "$enemies Enemy unit sighted!"
-msgid_plural "$enemies Enemy units sighted!"
-msgstr[0] "¡$enemies unidades enemigas avistadas!"
-msgstr[1] "¡$enemies unidades enemigas avistadas!"
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "¡Enemigo avistado!"
+msgstr[1] "¡Enemigo avistado!"
 
-#: src/actions.cpp:2052
-#, fuzzy
-msgid "Units sighted! ($friends friendly, "
-msgid_plural "Units sighted! ($friends friendly, "
-msgstr[0] "Unidades avistadas ($friends aliadas, $enemies enemigas)"
-msgstr[1] "Unidades avistadas ($friends aliadas, $enemies enemigas)"
-
-#: src/actions.cpp:2053
-msgid "$enemies enemy)"
-msgid_plural "$enemies enemy)"
+#: src/actions.cpp:2054
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2070
+#: src/actions.cpp:2055
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2056
+#, fuzzy
+msgid "Units sighted! ($friendphrase, $enemyphrase)"
+msgstr "Unidades avistadas ($friends aliadas, $enemies enemigas)"
+
+#: src/actions.cpp:2065
 msgid "(press $hotkey to continue)"
 msgstr "(pulse $hotkey para continuar)"
 
@@ -10265,9 +10269,8 @@ msgstr "Borrar partida"
 msgid "Date"
 msgstr "Fecha"
 
-#: src/dialogs.cpp:535 src/game.cpp:921 src/help.cpp:1176
-#: src/menu_events.cpp:290 src/menu_events.cpp:826
-#: src/multiplayer_lobby.cpp:34
+#: src/dialogs.cpp:535 src/game.cpp:921 src/menu_events.cpp:290
+#: src/menu_events.cpp:826 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Nombre"
 
@@ -10485,7 +10488,7 @@ msgstr "Términos"
 msgid "Sending add-on"
 msgstr "Enviando expansión..."
 
-#: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:333
+#: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:335
 msgid "Response"
 msgstr "Respuesta"
 
@@ -10623,9 +10626,14 @@ msgstr "Alineamiento: "
 msgid "Required XP: "
 msgstr "PX requeridos: "
 
-#: src/help.cpp:1169 src/reports.cpp:255
-msgid "attacks"
-msgstr "ataques"
+#: src/help.cpp:1169
+msgid "unit help^Attacks"
+msgstr ""
+
+#: src/help.cpp:1176
+#, fuzzy
+msgid "unit help^Name"
+msgstr "Salir del juego"
 
 #: src/help.cpp:1177 src/menu_events.cpp:289 src/menu_events.cpp:825
 msgid "Type"
@@ -10800,7 +10808,11 @@ msgstr "Daño recibido (VE)"
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: src/menu_events.cpp:294 src/unit.cpp:2442
+#: src/menu_events.cpp:293
+msgid "unit list^Traits"
+msgstr ""
+
+#: src/menu_events.cpp:294 src/unit.cpp:2455
 msgid "Moves"
 msgstr "Movimientos"
 
@@ -10817,6 +10829,7 @@ msgid "Leader"
 msgstr "Líder"
 
 #: src/menu_events.cpp:359 src/multiplayer_connect.cpp:752
+#: src/multiplayer_wait.cpp:435
 msgid "Gold"
 msgstr "Oro"
 
@@ -10824,12 +10837,16 @@ msgstr "Oro"
 msgid "Villages"
 msgstr "Aldeas"
 
+#: src/menu_events.cpp:361
+msgid "status^Units"
+msgstr ""
+
 #: src/menu_events.cpp:362
 msgid "Upkeep"
 msgstr "Mantenimiento"
 
 #: src/menu_events.cpp:363 src/multiplayer_connect.cpp:753
-#: src/multiplayer_wait.cpp:437
+#: src/multiplayer_wait.cpp:439
 msgid "Income"
 msgstr "Ingresos"
 
@@ -10903,9 +10920,12 @@ msgstr "Mensaje:"
 msgid "Send to allies only"
 msgstr "Mandarlo sólo a aliados"
 
-#: src/menu_events.cpp:703 src/multiplayer_wait.cpp:433
+#: src/menu_events.cpp:703
+#, fuzzy
 msgid "unit^Gold"
-msgstr "Oro"
+msgid_plural "Gold"
+msgstr[0] "Oro"
+msgstr[1] "Oro"
 
 #: src/menu_events.cpp:710
 msgid "You have no units available to recruit."
@@ -10948,52 +10968,56 @@ msgid "Recall"
 msgstr "Reincorporar"
 
 #: src/menu_events.cpp:882
-msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr ""
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+"Ha de tener por lo menos $cost piezas de oro para reincorporar a una unidad."
+msgstr[1] ""
 "Ha de tener por lo menos $cost piezas de oro para reincorporar a una unidad."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1208
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Aún no ha hecho nada en este turno. ¿Está seguro de que quiere terminar el "
 "turno?"
 
-#: src/menu_events.cpp:1213 src/menu_events.cpp:1218
+#: src/menu_events.cpp:1216 src/menu_events.cpp:1221
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algunas unidades todavía tienen puntos de movimiento. ¿Quiere finalizar su "
 "turno?"
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1262
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/menu_events.cpp:1354
+#: src/menu_events.cpp:1357
 #, fuzzy
 msgid "Team only"
 msgstr "Verde azulado"
 
-#: src/menu_events.cpp:1359
+#: src/menu_events.cpp:1362
 msgid "Place Label"
 msgstr "Poner etiqueta"
 
-#: src/menu_events.cpp:1360
+#: src/menu_events.cpp:1363
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: src/menu_events.cpp:1479
+#: src/menu_events.cpp:1482
 msgid "Search"
 msgstr "Búsqueda"
 
-#: src/menu_events.cpp:1522
+#: src/menu_events.cpp:1525
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Órdenes: whisper ignore emote. Escriba /help [orden] si desea ayuda "
 "específica."
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1576
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -11001,21 +11025,21 @@ msgstr ""
 "Envía un mensaje privado. No se pueden enviar mensajes a jugadores que "
 "controlen cualquier bando del juego. Uso: /whisper [apodo] [mensaje]"
 
-#: src/menu_events.cpp:1577
+#: src/menu_events.cpp:1580
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Añade un jugador a su lista de jugadores ignorados. Uso: /ignore add "
 "[argumento]"
 
-#: src/menu_events.cpp:1579
+#: src/menu_events.cpp:1582
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Añade un jugador a su lista de jugadores ignorados. Uso: /ignore add "
 "[argumento]"
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1584
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -11024,21 +11048,21 @@ msgstr ""
 "Elimina un jugador de su lista de jugadores ignorados. Uso: /ignore remove "
 "[argumento]"
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1586
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Borra su lista de jugadores ignorados. Uso: /ignore clear"
 
-#: src/menu_events.cpp:1585
+#: src/menu_events.cpp:1588
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Muestra su lista de jugadores ignorados. Uso: /ignore list"
 
-#: src/menu_events.cpp:1587
+#: src/menu_events.cpp:1590
 msgid "Unknown subcommand"
 msgstr "Suborden desconocida"
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1593
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -11046,56 +11070,56 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1593
+#: src/menu_events.cpp:1596
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Enviar un «emoticono» o acción personal a través de texto. Uso: /emote "
 "[mensaje]"
 
-#: src/menu_events.cpp:1595
+#: src/menu_events.cpp:1598
 msgid "Unknown command"
 msgstr "Orden desconocida"
 
-#: src/menu_events.cpp:1607
+#: src/menu_events.cpp:1610
 msgid "Added to ignore list: "
 msgstr "Añadido a lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1609 src/menu_events.cpp:1616 src/menu_events.cpp:1623
+#: src/menu_events.cpp:1612 src/menu_events.cpp:1619 src/menu_events.cpp:1626
 msgid "Invalid username: "
 msgstr "Nombre de usuario inválido"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1617
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Añadido a lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1624
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Eliminado de lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1647
+#: src/menu_events.cpp:1650
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1657
+#: src/menu_events.cpp:1660
 msgid "Removed from ignore list: "
 msgstr "Eliminado de lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1663
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Eliminado de lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1667
+#: src/menu_events.cpp:1670
 msgid "Unknown command: "
 msgstr "Orden desconocida: "
 
-#: src/menu_events.cpp:1768
+#: src/menu_events.cpp:1771
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "No se encontró una etiquieta o unidad con la cadena «$search»."
 
-#: src/menu_events.cpp:1912
+#: src/menu_events.cpp:1915
 msgid "prompt^Command:"
 msgstr "Orden:"
 
@@ -11148,7 +11172,7 @@ msgstr "Posibilidad de salir ileso"
 msgid "Damage Calculations"
 msgstr "Cálculo del daño"
 
-#: src/mouse_events.cpp:1282 src/reports.cpp:281
+#: src/mouse_events.cpp:1282 src/reports.cpp:282
 msgid "vs"
 msgstr "contra"
 
@@ -11197,17 +11221,17 @@ msgstr ""
 "nombre de menos de 18 caracteres"
 
 #: src/multiplayer.cpp:372 src/multiplayer.cpp:387
-#: src/multiplayer_wait.cpp:196
+#: src/multiplayer_wait.cpp:198
 msgid "No multiplayer sides available in this game"
 msgstr "No hay más bandos de multijugador disponibles en este juego."
 
 #: src/multiplayer.cpp:373 src/multiplayer.cpp:388
-#: src/multiplayer_wait.cpp:233
+#: src/multiplayer_wait.cpp:235
 msgid "Era not available"
 msgstr "Era no disponible"
 
 #: src/multiplayer.cpp:374 src/multiplayer.cpp:389
-#: src/multiplayer_wait.cpp:238
+#: src/multiplayer_wait.cpp:240
 msgid "No multiplayer sides found"
 msgstr "No se han encontrado bandos multijugador"
 
@@ -11217,12 +11241,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:429 src/multiplayer_wait.cpp:437 src/unit.cpp:2541
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2554
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:429 src/multiplayer_wait.cpp:440 src/unit.cpp:2548
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2561
 msgid ")"
 msgstr ")"
 
@@ -11582,7 +11606,7 @@ msgstr "Esperando a que la partida empiece..."
 msgid "Getting game data..."
 msgstr "Obteniendo datos de la partida..."
 
-#: src/multiplayer_wait.cpp:254
+#: src/multiplayer_wait.cpp:256
 msgid "Choose your side:"
 msgstr "Escoja su bando:"
 
@@ -11802,31 +11826,40 @@ msgstr "Esta unidad ha sido petrificada. No se puede mover ni atacar."
 msgid "stone: "
 msgstr "petrificado: "
 
-#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:278
-msgid "damage"
-msgstr "daño"
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "Daño neto"
+msgstr[1] "Daño neto"
 
-#: src/reports.cpp:265
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "alcance del arma: "
 
-#: src/reports.cpp:266
+#: src/reports.cpp:267
 msgid "damage type: "
 msgstr "tipo de daño: "
 
-#: src/reports.cpp:328
+#: src/reports.cpp:329
 msgid "Lawful units: "
 msgstr "Unidades legales: "
 
-#: src/reports.cpp:330
+#: src/reports.cpp:331
 msgid "Neutral units: "
 msgstr "Unidades neutrales: "
 
-#: src/reports.cpp:331
+#: src/reports.cpp:332
 msgid "Chaotic units: "
 msgstr "Unidades caóticas: "
 
-#: src/reports.cpp:464
+#: src/reports.cpp:465
 msgid "Observers:"
 msgstr "Observadores:"
 
@@ -11995,17 +12028,21 @@ msgstr "Ayuda"
 msgid "Help Wesnoth by sending us information"
 msgstr "Ayude a Wesnoth enviándonos información"
 
-#: src/unit.cpp:2377 src/unit.cpp:2546
+#: src/unit.cpp:2390 src/unit.cpp:2559
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2459
+#: src/unit.cpp:2472
 msgid "XP to advance"
 msgstr "PX para subir de nivel"
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2550
 msgid ": "
 msgstr ": "
+
+#: src/unit_types.cpp:278
+msgid "damage"
+msgstr "daño"
 
 #: src/unit_types.cpp:286
 msgid "strikes"
@@ -12056,6 +12093,21 @@ msgstr "Puede ver los resultados en:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
+
+#, fuzzy
+#~ msgid "$friends Friendly unit sighted"
+#~ msgid_plural "$friends Friendly units sighted"
+#~ msgstr[0] "$friends unidades aliadas avistadas"
+#~ msgstr[1] "$friends unidades aliadas avistadas"
+
+#, fuzzy
+#~ msgid "$enemies Enemy unit sighted!"
+#~ msgid_plural "$enemies Enemy units sighted!"
+#~ msgstr[0] "¡$enemies unidades enemigas avistadas!"
+#~ msgstr[1] "¡$enemies unidades enemigas avistadas!"
+
+#~ msgid "attacks"
+#~ msgstr "ataques"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."
@@ -12726,12 +12778,6 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 
 #~ msgid "flail"
 #~ msgstr "mayal"
-
-#~ msgid "Friendly unit sighted"
-#~ msgstr "¡Aliado avistado!"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "¡Enemigo avistado!"
 
 #, fuzzy
 #~ msgid "Yes"

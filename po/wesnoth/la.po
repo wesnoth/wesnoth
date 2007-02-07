@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 15:00+0100\n"
+"POT-Creation-Date: 2007-02-07 18:27+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -861,11 +861,11 @@ msgstr "Prooemium"
 msgid "Gameplay"
 msgstr "Lusus"
 
-#: data/help.cfg:21 src/menu_events.cpp:293
+#: data/help.cfg:21
 msgid "Traits"
 msgstr "Lineamenta"
 
-#: data/help.cfg:30 src/menu_events.cpp:361
+#: data/help.cfg:30
 msgid "Units"
 msgstr "Unitates"
 
@@ -4874,7 +4874,7 @@ msgid "End Turn"
 msgstr "Tractum finire"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2411
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2424
 msgid "HP"
 msgstr "PS"
 
@@ -5637,7 +5637,7 @@ msgstr "ungues"
 #: data/units/Human_Outlaw_Assassin.cfg:30
 #: data/units/Human_Outlaw_Assassin.cfg:111
 #: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
-#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
+#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:178
 #: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
 #: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
 #: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
@@ -6103,7 +6103,7 @@ msgstr ""
 #: data/units/Dwarvish_Thunderguard.cfg:23
 #: data/units/Human_Outlaw_Assassin.cfg:28
 #: data/units/Human_Outlaw_Poacher.cfg:34 data/units/Human_Outlaw_Rogue.cfg:27
-#: data/units/Human_Outlaw_Thief.cfg:145
+#: data/units/Human_Outlaw_Thief.cfg:176
 #: data/units/Human_Outlaw_Trapper.cfg:34 data/units/Orcish_Archer.cfg:69
 #: data/units/Orcish_Assassin.cfg:67 data/units/Orcish_Slayer.cfg:24
 #: data/units/Undead_Skele_Bone_Shooter.cfg:41
@@ -8162,7 +8162,7 @@ msgstr ""
 "\n"
 "Nota·Praecipua:"
 
-#: data/units/Human_Outlaw_Thief.cfg:186
+#: data/units/Human_Outlaw_Thief.cfg:217
 msgid "female^Thief"
 msgstr "Fur"
 
@@ -9930,7 +9930,7 @@ msgid "+General Purpose Administrators"
 msgstr "+Administratores Communes"
 
 #: src/about.cpp:78 src/about.cpp:108 src/multiplayer_connect.cpp:355
-#: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:439
+#: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:441
 msgid "+"
 msgstr "+"
 
@@ -9971,34 +9971,38 @@ msgstr "petrificare"
 msgid "Ambushed!"
 msgstr "Insidiae!"
 
-#: src/actions.cpp:2044
+#: src/actions.cpp:2046
 #, fuzzy
-msgid "$friends Friendly unit sighted"
-msgid_plural "$friends Friendly units sighted"
-msgstr[0] "$friends Unitates Sociae vistae"
-msgstr[1] "$friends Unitates Sociae vistae"
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Untitas socia vista"
+msgstr[1] "Untitas socia vista"
 
-#: src/actions.cpp:2048
+#: src/actions.cpp:2049
 #, fuzzy
-msgid "$enemies Enemy unit sighted!"
-msgid_plural "$enemies Enemy units sighted!"
-msgstr[0] "$enemies Unitates inimicae vistae!"
-msgstr[1] "$enemies Unitates inimicae vistae!"
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Unitas inimica vista!"
+msgstr[1] "Unitas inimica vista!"
 
-#: src/actions.cpp:2052
-#, fuzzy
-msgid "Units sighted! ($friends friendly, "
-msgid_plural "Units sighted! ($friends friendly, "
-msgstr[0] "Unitates vistae! ($friends sociae, $enemies inimicae)"
-msgstr[1] "Unitates vistae! ($friends sociae, $enemies inimicae)"
-
-#: src/actions.cpp:2053
-msgid "$enemies enemy)"
-msgid_plural "$enemies enemy)"
+#: src/actions.cpp:2054
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2070
+#: src/actions.cpp:2055
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2056
+#, fuzzy
+msgid "Units sighted! ($friendphrase, $enemyphrase)"
+msgstr "Unitates vistae! ($friends sociae, $enemies inimicae)"
+
+#: src/actions.cpp:2065
 msgid "(press $hotkey to continue)"
 msgstr "($hotkey premere ad pergendum)"
 
@@ -10115,9 +10119,8 @@ msgstr "Servatum Delere"
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:535 src/game.cpp:921 src/help.cpp:1176
-#: src/menu_events.cpp:290 src/menu_events.cpp:826
-#: src/multiplayer_lobby.cpp:34
+#: src/dialogs.cpp:535 src/game.cpp:921 src/menu_events.cpp:290
+#: src/menu_events.cpp:826 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Nomen"
 
@@ -10330,7 +10333,7 @@ msgstr "Condicio"
 msgid "Sending add-on"
 msgstr "Adiunctum mittitur"
 
-#: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:333
+#: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:335
 msgid "Response"
 msgstr "Responsum"
 
@@ -10467,9 +10470,14 @@ msgstr "Gratia diei et noctis: "
 msgid "Required XP: "
 msgstr "PE Necessaria: "
 
-#: src/help.cpp:1169 src/reports.cpp:255
-msgid "attacks"
-msgstr "oppugnationes"
+#: src/help.cpp:1169
+msgid "unit help^Attacks"
+msgstr ""
+
+#: src/help.cpp:1176
+#, fuzzy
+msgid "unit help^Name"
+msgstr "Lusum relinquere"
 
 #: src/help.cpp:1177 src/menu_events.cpp:289 src/menu_events.cpp:825
 msgid "Type"
@@ -10644,7 +10652,11 @@ msgstr "Damnum Passum (Exsp)"
 msgid "Statistics"
 msgstr "Census"
 
-#: src/menu_events.cpp:294 src/unit.cpp:2442
+#: src/menu_events.cpp:293
+msgid "unit list^Traits"
+msgstr ""
+
+#: src/menu_events.cpp:294 src/unit.cpp:2455
 msgid "Moves"
 msgstr "Puncta motus"
 
@@ -10661,6 +10673,7 @@ msgid "Leader"
 msgstr "Dux"
 
 #: src/menu_events.cpp:359 src/multiplayer_connect.cpp:752
+#: src/multiplayer_wait.cpp:435
 msgid "Gold"
 msgstr "Aurum"
 
@@ -10668,12 +10681,16 @@ msgstr "Aurum"
 msgid "Villages"
 msgstr "Pagi"
 
+#: src/menu_events.cpp:361
+msgid "status^Units"
+msgstr ""
+
 #: src/menu_events.cpp:362
 msgid "Upkeep"
 msgstr "Impensa"
 
 #: src/menu_events.cpp:363 src/multiplayer_connect.cpp:753
-#: src/multiplayer_wait.cpp:437
+#: src/multiplayer_wait.cpp:439
 msgid "Income"
 msgstr "Merces"
 
@@ -10745,9 +10762,12 @@ msgstr "Nuntius: "
 msgid "Send to allies only"
 msgstr "Mittere tantum sociis"
 
-#: src/menu_events.cpp:703 src/multiplayer_wait.cpp:433
+#: src/menu_events.cpp:703
+#, fuzzy
 msgid "unit^Gold"
-msgstr "Nummis Auri"
+msgid_plural "Gold"
+msgstr[0] "Nummis Auri"
+msgstr[1] "Nummis Auri"
 
 #: src/menu_events.cpp:710
 msgid "You have no units available to recruit."
@@ -10790,47 +10810,50 @@ msgid "Recall"
 msgstr "Revocare"
 
 #: src/menu_events.cpp:882
-msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "Opus est saltem $cost nummos auri ut unitatem revoces."
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] "Opus est saltem $cost nummos auri ut unitatem revoces."
+msgstr[1] "Opus est saltem $cost nummos auri ut unitatem revoces."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1208
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Tractum nondum coepisti. Visne vere tractum finire?"
 
-#: src/menu_events.cpp:1213 src/menu_events.cpp:1218
+#: src/menu_events.cpp:1216 src/menu_events.cpp:1221
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Nonnullis unitatibus puncta motus relicta sunt. Visne vere tractum finire?"
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1262
 msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
-#: src/menu_events.cpp:1354
+#: src/menu_events.cpp:1357
 #, fuzzy
 msgid "Team only"
 msgstr "Caeruleus illustris"
 
-#: src/menu_events.cpp:1359
+#: src/menu_events.cpp:1362
 msgid "Place Label"
 msgstr "Titulus Loci"
 
-#: src/menu_events.cpp:1360
+#: src/menu_events.cpp:1363
 msgid "Label:"
 msgstr "Titulus: "
 
-#: src/menu_events.cpp:1479
+#: src/menu_events.cpp:1482
 msgid "Search"
 msgstr "Investigatio"
 
-#: src/menu_events.cpp:1522
+#: src/menu_events.cpp:1525
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Imperia: whisper ignore emote. Scribe /help [imperium] si plus aditorium vis."
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1576
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -10838,21 +10861,21 @@ msgstr ""
 "Nuntium privatum mittit. Non potes mittere nuntios lusoribus qui partes in "
 "lusione imperant. Syntaxis: /whisper [cognomini] [nuntium]"
 
-#: src/menu_events.cpp:1577
+#: src/menu_events.cpp:1580
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:1579
+#: src/menu_events.cpp:1582
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1584
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -10861,21 +10884,21 @@ msgstr ""
 "Lusorem ex elencho tuo utentium ignoratorum. Syntaxis: /ignore remove "
 "[argumentum]"
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1586
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Elenchum tuum utentium ignoratorum dele. Syntaxis: /ignore clear"
 
-#: src/menu_events.cpp:1585
+#: src/menu_events.cpp:1588
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Elenchum utentium ignoratorum monstrare. Syntaxis: /ignore list"
 
-#: src/menu_events.cpp:1587
+#: src/menu_events.cpp:1590
 msgid "Unknown subcommand"
 msgstr "Imperium subordinatum incognitum"
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1593
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -10887,56 +10910,56 @@ msgstr ""
 "[argumentum (optionale)]. Subimperia: add remove list clear. Scribe /help "
 "ignore [subimperium] si vis plus sapere."
 
-#: src/menu_events.cpp:1593
+#: src/menu_events.cpp:1596
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Commotionem animi vel actionem personalem in sermone mittere. Syntaxis: /"
 "emote [nuntium]"
 
-#: src/menu_events.cpp:1595
+#: src/menu_events.cpp:1598
 msgid "Unknown command"
 msgstr "Imperium incognitum"
 
-#: src/menu_events.cpp:1607
+#: src/menu_events.cpp:1610
 msgid "Added to ignore list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:1609 src/menu_events.cpp:1616 src/menu_events.cpp:1623
+#: src/menu_events.cpp:1612 src/menu_events.cpp:1619 src/menu_events.cpp:1626
 msgid "Invalid username: "
 msgstr "Nomen utentis invalidum: "
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1617
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1624
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1647
+#: src/menu_events.cpp:1650
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1657
+#: src/menu_events.cpp:1660
 msgid "Removed from ignore list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1663
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1667
+#: src/menu_events.cpp:1670
 msgid "Unknown command: "
 msgstr "Imperium incognitum: "
 
-#: src/menu_events.cpp:1768
+#: src/menu_events.cpp:1771
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
-#: src/menu_events.cpp:1912
+#: src/menu_events.cpp:1915
 msgid "prompt^Command:"
 msgstr "Imperium:"
 
@@ -10989,7 +11012,7 @@ msgstr "Probabilitas damnum effugendi"
 msgid "Damage Calculations"
 msgstr "Rationes Damni"
 
-#: src/mouse_events.cpp:1282 src/reports.cpp:281
+#: src/mouse_events.cpp:1282 src/reports.cpp:282
 msgid "vs"
 msgstr "contra"
 
@@ -11037,17 +11060,17 @@ msgstr ""
 "XVIII litteris."
 
 #: src/multiplayer.cpp:372 src/multiplayer.cpp:387
-#: src/multiplayer_wait.cpp:196
+#: src/multiplayer_wait.cpp:198
 msgid "No multiplayer sides available in this game"
 msgstr "Partes pro pluribus lusoribus non adsunt in hoc lusu."
 
 #: src/multiplayer.cpp:373 src/multiplayer.cpp:388
-#: src/multiplayer_wait.cpp:233
+#: src/multiplayer_wait.cpp:235
 msgid "Era not available"
 msgstr "Saeculum non ad manum"
 
 #: src/multiplayer.cpp:374 src/multiplayer.cpp:389
-#: src/multiplayer_wait.cpp:238
+#: src/multiplayer_wait.cpp:240
 msgid "No multiplayer sides found"
 msgstr "Partes pro pluribus lusoribus non inventae"
 
@@ -11057,12 +11080,12 @@ msgid "Normal"
 msgstr "Normalis"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:429 src/multiplayer_wait.cpp:437 src/unit.cpp:2541
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2554
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:429 src/multiplayer_wait.cpp:440 src/unit.cpp:2548
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2561
 msgid ")"
 msgstr ")"
 
@@ -11419,7 +11442,7 @@ msgstr "Exspecto initium lusus..."
 msgid "Getting game data..."
 msgstr "Data lusus recipiuntur..."
 
-#: src/multiplayer_wait.cpp:254
+#: src/multiplayer_wait.cpp:256
 msgid "Choose your side:"
 msgstr "Partem elige:"
 
@@ -11632,31 +11655,40 @@ msgstr "Unitas haec petrificatus est. Non potest movere aut oppugnare."
 msgid "stone: "
 msgstr "petrificatus: "
 
-#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:278
-msgid "damage"
-msgstr "damnum"
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "damnum totale"
+msgstr[1] "damnum totale"
 
-#: src/reports.cpp:265
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "iactus teli: "
 
-#: src/reports.cpp:266
+#: src/reports.cpp:267
 msgid "damage type: "
 msgstr "genus damni:"
 
-#: src/reports.cpp:328
+#: src/reports.cpp:329
 msgid "Lawful units: "
 msgstr "Filii lucis: "
 
-#: src/reports.cpp:330
+#: src/reports.cpp:331
 msgid "Neutral units: "
 msgstr "Filii crepusculi: "
 
-#: src/reports.cpp:331
+#: src/reports.cpp:332
 msgid "Chaotic units: "
 msgstr "Filii tenebrarum: "
 
-#: src/reports.cpp:464
+#: src/reports.cpp:465
 msgid "Observers:"
 msgstr "Spectatores: "
 
@@ -11822,17 +11854,21 @@ msgstr "Auxilium"
 msgid "Help Wesnoth by sending us information"
 msgstr "Occidiseptentrionem adiuvare mittans nuntios"
 
-#: src/unit.cpp:2377 src/unit.cpp:2546
+#: src/unit.cpp:2390 src/unit.cpp:2559
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2459
+#: src/unit.cpp:2472
 msgid "XP to advance"
 msgstr "PE ad promotionem"
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2550
 msgid ": "
 msgstr ": "
+
+#: src/unit_types.cpp:278
+msgid "damage"
+msgstr "damnum"
 
 #: src/unit_types.cpp:286
 msgid "strikes"
@@ -11877,6 +11913,21 @@ msgstr "Eventa videre potes sub: "
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
+
+#, fuzzy
+#~ msgid "$friends Friendly unit sighted"
+#~ msgid_plural "$friends Friendly units sighted"
+#~ msgstr[0] "$friends Unitates Sociae vistae"
+#~ msgstr[1] "$friends Unitates Sociae vistae"
+
+#, fuzzy
+#~ msgid "$enemies Enemy unit sighted!"
+#~ msgid_plural "$enemies Enemy units sighted!"
+#~ msgstr[0] "$enemies Unitates inimicae vistae!"
+#~ msgstr[1] "$enemies Unitates inimicae vistae!"
+
+#~ msgid "attacks"
+#~ msgstr "oppugnationes"
 
 #~ msgid ""
 #~ "A duel map for super fast play. Recommended setting of 2 gold per village."
@@ -12550,12 +12601,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 #~ msgid "flail"
 #~ msgstr "fustis"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Untitas socia vista"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Unitas inimica vista!"
-
 #, fuzzy
 #~ msgid "Yes"
 #~ msgstr "Ita!"
@@ -12855,9 +12900,6 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "nuditas oppugnantis versus"
-
-#~ msgid "total damage"
-#~ msgstr "damnum totale"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "repugnantia defensoris contra"

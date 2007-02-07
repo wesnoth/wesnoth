@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-06 15:00+0100\n"
+"POT-Creation-Date: 2007-02-07 18:27+0100\n"
 "PO-Revision-Date: 2006-12-15 16:18+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -926,11 +926,11 @@ msgstr "Εισαγωγή"
 msgid "Gameplay"
 msgstr "Κανόνες του Παιχνιδιού"
 
-#: data/help.cfg:21 src/menu_events.cpp:293
+#: data/help.cfg:21
 msgid "Traits"
 msgstr "Χαρακτηριστικά "
 
-#: data/help.cfg:30 src/menu_events.cpp:361
+#: data/help.cfg:30
 msgid "Units"
 msgstr "Μονάδες"
 
@@ -4449,7 +4449,7 @@ msgid "End Turn"
 msgstr "Τέλος Γύρου"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2411
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2424
 msgid "HP"
 msgstr "Βαθμοί Υγείας"
 
@@ -5160,7 +5160,7 @@ msgstr "νύχια"
 #: data/units/Human_Outlaw_Assassin.cfg:30
 #: data/units/Human_Outlaw_Assassin.cfg:111
 #: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:29
-#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:147
+#: data/units/Human_Outlaw_Rogue.cfg:70 data/units/Human_Outlaw_Thief.cfg:178
 #: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
 #: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
 #: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
@@ -5544,7 +5544,7 @@ msgstr ""
 #: data/units/Dwarvish_Thunderguard.cfg:23
 #: data/units/Human_Outlaw_Assassin.cfg:28
 #: data/units/Human_Outlaw_Poacher.cfg:34 data/units/Human_Outlaw_Rogue.cfg:27
-#: data/units/Human_Outlaw_Thief.cfg:145
+#: data/units/Human_Outlaw_Thief.cfg:176
 #: data/units/Human_Outlaw_Trapper.cfg:34 data/units/Orcish_Archer.cfg:69
 #: data/units/Orcish_Assassin.cfg:67 data/units/Orcish_Slayer.cfg:24
 #: data/units/Undead_Skele_Bone_Shooter.cfg:41
@@ -7219,7 +7219,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/units/Human_Outlaw_Thief.cfg:186
+#: data/units/Human_Outlaw_Thief.cfg:217
 msgid "female^Thief"
 msgstr " Κλέφτρα"
 
@@ -8574,7 +8574,7 @@ msgid "+General Purpose Administrators"
 msgstr "+Διαχειριστές γενικών καθηκόντων"
 
 #: src/about.cpp:78 src/about.cpp:108 src/multiplayer_connect.cpp:355
-#: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:439
+#: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:441
 msgid "+"
 msgstr "+"
 
@@ -8616,34 +8616,38 @@ msgstr "πέτρα"
 msgid "Ambushed!"
 msgstr "Επεσες σέ ενέδρα "
 
-#: src/actions.cpp:2044
+#: src/actions.cpp:2046
 #, fuzzy
-msgid "$friends Friendly unit sighted"
-msgid_plural "$friends Friendly units sighted"
-msgstr[0] "Εθεάθησαν $friends φιλικές μονάδες"
-msgstr[1] "Εθεάθησαν $friends φιλικές μονάδες"
+msgid "Friendly unit sighted"
+msgid_plural "$friends friendly units sighted"
+msgstr[0] "Εθεάθη φιλική μονάδα"
+msgstr[1] "Εθεάθη φιλική μονάδα"
 
-#: src/actions.cpp:2048
+#: src/actions.cpp:2049
 #, fuzzy
-msgid "$enemies Enemy unit sighted!"
-msgid_plural "$enemies Enemy units sighted!"
-msgstr[0] "Εθεάθησαν $friends εχθρικές μονάδες"
-msgstr[1] "Εθεάθησαν $friends εχθρικές μονάδες"
+msgid "Enemy unit sighted!"
+msgid_plural "$enemies enemy units sighted!"
+msgstr[0] "Εθεάθη εχθρική μονάδα!"
+msgstr[1] "Εθεάθη εχθρική μονάδα!"
 
-#: src/actions.cpp:2052
-#, fuzzy
-msgid "Units sighted! ($friends friendly, "
-msgid_plural "Units sighted! ($friends friendly, "
-msgstr[0] "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
-msgstr[1] "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
-
-#: src/actions.cpp:2053
-msgid "$enemies enemy)"
-msgid_plural "$enemies enemy)"
+#: src/actions.cpp:2054
+msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2070
+#: src/actions.cpp:2055
+msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+msgid_plural "$enemies enemy"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/actions.cpp:2056
+#, fuzzy
+msgid "Units sighted! ($friendphrase, $enemyphrase)"
+msgstr "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
+
+#: src/actions.cpp:2065
 msgid "(press $hotkey to continue)"
 msgstr "(πάτα  $hotkey γιά νά συνεχίσεις) "
 
@@ -8760,9 +8764,8 @@ msgstr "Σβήσιμο Αποθήκευσης"
 msgid "Date"
 msgstr "ημερομηνία"
 
-#: src/dialogs.cpp:535 src/game.cpp:921 src/help.cpp:1176
-#: src/menu_events.cpp:290 src/menu_events.cpp:826
-#: src/multiplayer_lobby.cpp:34
+#: src/dialogs.cpp:535 src/game.cpp:921 src/menu_events.cpp:290
+#: src/menu_events.cpp:826 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Όνομα"
 
@@ -8980,7 +8983,7 @@ msgstr "Οροι"
 msgid "Sending add-on"
 msgstr "Στέλνετε η επέκταση"
 
-#: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:333
+#: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:335
 msgid "Response"
 msgstr "Απάντηση"
 
@@ -9119,9 +9122,14 @@ msgstr "Νοοτροπία: "
 msgid "Required XP: "
 msgstr "Απαιτούμενη εμπειρία: "
 
-#: src/help.cpp:1169 src/reports.cpp:255
-msgid "attacks"
-msgstr "επιθέσεις"
+#: src/help.cpp:1169
+msgid "unit help^Attacks"
+msgstr ""
+
+#: src/help.cpp:1176
+#, fuzzy
+msgid "unit help^Name"
+msgstr "Βγές από τό παιχνίδι"
 
 #: src/help.cpp:1177 src/menu_events.cpp:289 src/menu_events.cpp:825
 msgid "Type"
@@ -9292,7 +9300,11 @@ msgstr ""
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/menu_events.cpp:294 src/unit.cpp:2442
+#: src/menu_events.cpp:293
+msgid "unit list^Traits"
+msgstr ""
+
+#: src/menu_events.cpp:294 src/unit.cpp:2455
 msgid "Moves"
 msgstr "Κινήσεις"
 
@@ -9309,6 +9321,7 @@ msgid "Leader"
 msgstr "Ηγέτης"
 
 #: src/menu_events.cpp:359 src/multiplayer_connect.cpp:752
+#: src/multiplayer_wait.cpp:435
 msgid "Gold"
 msgstr "Χρυσά"
 
@@ -9316,12 +9329,16 @@ msgstr "Χρυσά"
 msgid "Villages"
 msgstr "Χωριά"
 
+#: src/menu_events.cpp:361
+msgid "status^Units"
+msgstr ""
+
 #: src/menu_events.cpp:362
 msgid "Upkeep"
 msgstr "Συντήρηση"
 
 #: src/menu_events.cpp:363 src/multiplayer_connect.cpp:753
-#: src/multiplayer_wait.cpp:437
+#: src/multiplayer_wait.cpp:439
 msgid "Income"
 msgstr "Εισόδημα"
 
@@ -9392,9 +9409,12 @@ msgstr "Μήνυμα:"
 msgid "Send to allies only"
 msgstr "Στείλε μόνο στούς συμμάχους"
 
-#: src/menu_events.cpp:703 src/multiplayer_wait.cpp:433
+#: src/menu_events.cpp:703
+#, fuzzy
 msgid "unit^Gold"
-msgstr "Χρυσά"
+msgid_plural "Gold"
+msgstr[0] "Χρυσά"
+msgstr[1] "Χρυσά"
 
 #: src/menu_events.cpp:710
 msgid "You have no units available to recruit."
@@ -9438,76 +9458,83 @@ msgid "Recall"
 msgstr "Ανάκληση"
 
 #: src/menu_events.cpp:882
-msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr ""
+#, fuzzy
+msgid "You must have at least 1 gold piece to recall a unit"
+msgid_plural "You must have at least $cost gold pieces to recall a unit"
+msgstr[0] ""
+"Πρέπει νά έχεις τόν αρχηγό σέ κάστρο η στρατόπεδο γιά να στρατολογήσεις η νά "
+"ανακαλέσεις μονάδες"
+msgstr[1] ""
+"Πρέπει νά έχεις τόν αρχηγό σέ κάστρο η στρατόπεδο γιά να στρατολογήσεις η νά "
+"ανακαλέσεις μονάδες"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1208
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:1213 src/menu_events.cpp:1218
+#: src/menu_events.cpp:1216 src/menu_events.cpp:1221
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1262
 msgid "Rename Unit"
 msgstr "Μετονομασία Μονάδας"
 
-#: src/menu_events.cpp:1354
+#: src/menu_events.cpp:1357
 #, fuzzy
 msgid "Team only"
 msgstr "Ομάδα"
 
-#: src/menu_events.cpp:1359
+#: src/menu_events.cpp:1362
 msgid "Place Label"
 msgstr "Δώσε Ονομα"
 
-#: src/menu_events.cpp:1360
+#: src/menu_events.cpp:1363
 msgid "Label:"
 msgstr "Ονομα:"
 
-#: src/menu_events.cpp:1479
+#: src/menu_events.cpp:1482
 msgid "Search"
 msgstr "Ερευνα"
 
-#: src/menu_events.cpp:1522
+#: src/menu_events.cpp:1525
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1576
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1577
+#: src/menu_events.cpp:1580
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1579
+#: src/menu_events.cpp:1582
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1584
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1586
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1585
+#: src/menu_events.cpp:1588
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1587
+#: src/menu_events.cpp:1590
 msgid "Unknown subcommand"
 msgstr ""
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1593
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -9515,51 +9542,51 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1593
+#: src/menu_events.cpp:1596
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1595
+#: src/menu_events.cpp:1598
 msgid "Unknown command"
 msgstr "Άγνωστη ενέργεια"
 
-#: src/menu_events.cpp:1607
+#: src/menu_events.cpp:1610
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1609 src/menu_events.cpp:1616 src/menu_events.cpp:1623
+#: src/menu_events.cpp:1612 src/menu_events.cpp:1619 src/menu_events.cpp:1626
 msgid "Invalid username: "
 msgstr "Μη έγκυρο όνομα:"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1617
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1624
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:1647
+#: src/menu_events.cpp:1650
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1657
+#: src/menu_events.cpp:1660
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1663
 msgid "Removed from friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1667
+#: src/menu_events.cpp:1670
 msgid "Unknown command: "
 msgstr "Άγνωστη ενέργεια:"
 
-#: src/menu_events.cpp:1768
+#: src/menu_events.cpp:1771
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/menu_events.cpp:1912
+#: src/menu_events.cpp:1915
 msgid "prompt^Command:"
 msgstr ""
 
@@ -9612,7 +9639,7 @@ msgstr ""
 msgid "Damage Calculations"
 msgstr "Υπολογισμοί Ζημιάς"
 
-#: src/mouse_events.cpp:1282 src/reports.cpp:281
+#: src/mouse_events.cpp:1282 src/reports.cpp:282
 msgid "vs"
 msgstr "εναντίων"
 
@@ -9657,17 +9684,17 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:372 src/multiplayer.cpp:387
-#: src/multiplayer_wait.cpp:196
+#: src/multiplayer_wait.cpp:198
 msgid "No multiplayer sides available in this game"
 msgstr ""
 
 #: src/multiplayer.cpp:373 src/multiplayer.cpp:388
-#: src/multiplayer_wait.cpp:233
+#: src/multiplayer_wait.cpp:235
 msgid "Era not available"
 msgstr "Η περιοχή δεν είναι διαθέσιμη"
 
 #: src/multiplayer.cpp:374 src/multiplayer.cpp:389
-#: src/multiplayer_wait.cpp:238
+#: src/multiplayer_wait.cpp:240
 msgid "No multiplayer sides found"
 msgstr ""
 
@@ -9677,12 +9704,12 @@ msgid "Normal"
 msgstr "Κανονικό"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:429 src/multiplayer_wait.cpp:437 src/unit.cpp:2541
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2554
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:429 src/multiplayer_wait.cpp:440 src/unit.cpp:2548
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2561
 msgid ")"
 msgstr ")"
 
@@ -10040,7 +10067,7 @@ msgstr "Περιμένοντας να ξεκινήσει το παχνίδι..."
 msgid "Getting game data..."
 msgstr "Λαμβάνω ορισμένα δεδομένα ...."
 
-#: src/multiplayer_wait.cpp:254
+#: src/multiplayer_wait.cpp:256
 msgid "Choose your side:"
 msgstr "Επιλέξτε πλευρά:"
 
@@ -10251,31 +10278,40 @@ msgstr ""
 msgid "stone: "
 msgstr "πέτρα"
 
-#: src/reports.cpp:250 src/reports.cpp:252 src/unit_types.cpp:278
-msgid "damage"
-msgstr "ζημιά"
+#: src/reports.cpp:255
+#, fuzzy
+msgid "tooltip^damage"
+msgid_plural "damage"
+msgstr[0] "συνολική ζημιά"
+msgstr[1] "συνολική ζημιά"
 
-#: src/reports.cpp:265
+#: src/reports.cpp:256
+msgid "tooltip^attack"
+msgid_plural "attacks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:266
 msgid "weapon range: "
 msgstr "εμβέλεια όπλου:"
 
-#: src/reports.cpp:266
+#: src/reports.cpp:267
 msgid "damage type: "
 msgstr "τύπος ζημιάς:"
 
-#: src/reports.cpp:328
+#: src/reports.cpp:329
 msgid "Lawful units: "
 msgstr "νομιμόφρονες μονάδες:"
 
-#: src/reports.cpp:330
+#: src/reports.cpp:331
 msgid "Neutral units: "
 msgstr "Ουδέτερες μονάδες: "
 
-#: src/reports.cpp:331
+#: src/reports.cpp:332
 msgid "Chaotic units: "
 msgstr "χαοτικές μονάδες:"
 
-#: src/reports.cpp:464
+#: src/reports.cpp:465
 msgid "Observers:"
 msgstr "Παρατηρητές:"
 
@@ -10439,17 +10475,21 @@ msgstr "Βοήθεια"
 msgid "Help Wesnoth by sending us information"
 msgstr "Βοηθήστε μας στέλνοντάς μας πληροφορίες"
 
-#: src/unit.cpp:2377 src/unit.cpp:2546
+#: src/unit.cpp:2390 src/unit.cpp:2559
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2459
+#: src/unit.cpp:2472
 msgid "XP to advance"
 msgstr "απαιτούμενες μονάδες εμπειρίας γιά εξέλιξη"
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2550
 msgid ": "
 msgstr " :"
+
+#: src/unit_types.cpp:278
+msgid "damage"
+msgstr "ζημιά"
 
 #: src/unit_types.cpp:286
 msgid "strikes"
@@ -10494,6 +10534,21 @@ msgstr "Μπορείτε να δείτε τα αποτελέσματα εδώ:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Βοηθήστε μας να κάνουμε το Γουέσνοθ καλύτερο για εσάς!"
+
+#, fuzzy
+#~ msgid "$friends Friendly unit sighted"
+#~ msgid_plural "$friends Friendly units sighted"
+#~ msgstr[0] "Εθεάθησαν $friends φιλικές μονάδες"
+#~ msgstr[1] "Εθεάθησαν $friends φιλικές μονάδες"
+
+#, fuzzy
+#~ msgid "$enemies Enemy unit sighted!"
+#~ msgid_plural "$enemies Enemy units sighted!"
+#~ msgstr[0] "Εθεάθησαν $friends εχθρικές μονάδες"
+#~ msgstr[1] "Εθεάθησαν $friends εχθρικές μονάδες"
+
+#~ msgid "attacks"
+#~ msgstr "επιθέσεις"
 
 #~ msgid "or"
 #~ msgstr "είτε"
@@ -10752,12 +10807,6 @@ msgstr "Βοηθήστε μας να κάνουμε το Γουέσνοθ καλ
 #~ msgid "female^Fighter"
 #~ msgstr "Πολεμήστρια"
 
-#~ msgid "Friendly unit sighted"
-#~ msgstr "Εθεάθη φιλική μονάδα"
-
-#~ msgid "Enemy unit sighted!"
-#~ msgstr "Εθεάθη εχθρική μονάδα!"
-
 #, fuzzy
 #~ msgid "Yes"
 #~ msgstr "Ναι!"
@@ -10857,9 +10906,6 @@ msgstr "Βοηθήστε μας να κάνουμε το Γουέσνοθ καλ
 
 #~ msgid "attacker vulnerability vs"
 #~ msgstr "αδυναμία επιτιθέμενου εναντίον"
-
-#~ msgid "total damage"
-#~ msgstr "συνολική ζημιά"
 
 #~ msgid "defender resistance vs"
 #~ msgstr "αντίσταση αμυνόμενου εναντίον"

@@ -246,13 +246,14 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << nattacks;
 			str << " " << at_it->name();
 			tooltip << at_it->name() << "\n";
+			int effdmg;
 			if(utils::string_bool(u->second.get_state("slowed"))) {
-				tooltip << round_damage(at_it->damage(),1,2) << " " << _("damage") << ", ";
+				effdmg = round_damage(at_it->damage(),1,2);
 			} else {
-				tooltip << at_it->damage() << " " << _("damage") << ", ";
+				effdmg = at_it->damage();
 			}
-			tooltip << nattacks;
-			tooltip << " " << _("attacks");
+			tooltip << effdmg << " " << _n("tooltip^damage", "damage", effdmg) << ", ";
+			tooltip << nattacks << " " << _n("tooltip^attack", "attacks", nattacks);
 
 			str<<"\n";
 			res.add_text(str,tooltip);

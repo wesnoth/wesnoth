@@ -826,3 +826,10 @@ std::string vgettext(const char *msgid, const utils::string_map& symbols)
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }
+
+std::string vngettext(const char* sing, const char* plur, int n, const utils::string_map& symbols)
+{
+	const std::string orig(_n(sing, plur, n));
+	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
+	return msg;
+}
