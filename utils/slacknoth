@@ -13,7 +13,7 @@ cd $3
 mkdir -p /wesnothpack/wesnoth-$1
 echo "Configuring..."
 ./autogen.sh
-./configure --prefix=/usr --enable-server --enable-tools --enable-kde --enable-gnome
+./configure --prefix=/usr --enable-server --enable-tools
 make clean
 echo "Compiling and gathering package contents..."
 make DESTDIR=/wesnothpack/wesnoth-$1 CXXFLAGS="-g -O2 -fno-omit-frame-pointer -march=$2" install -i -k

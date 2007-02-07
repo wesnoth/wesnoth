@@ -225,26 +225,6 @@ AC_ARG_WITH([fribidi],
 	      [fribidi=$withval],
 	      [fribidi=yes])
 
-AC_ARG_WITH([kde],
-            AS_HELP_STRING([--with-kde], [enable installation of icon and KDE menu entry]),
-	      [kde=$withval],
-	      [kde=no])
-
-AC_ARG_WITH([gnome],
-            AS_HELP_STRING([--with-gnome], [enable installation of icon and GNOME menu entry]),
-	      [gnome=$withval],
-	      [gnome=no])
-
-AC_ARG_ENABLE([gnome1],
-              AS_HELP_STRING([--disable-gnome1], [disable installation of icon and menu entry in GNOME1]),
-              [gnome1=$enableval],
-              [gnome1=yes])
-
-AC_ARG_ENABLE([gnome2],
-              AS_HELP_STRING([--disable-gnome2], [disable installation of icon and menu entry in GNOME2]),
-		  [gnome2=$enableval],
-		  [gnome2=yes])
-
 AC_ARG_ENABLE([dummy-locales],
               AS_HELP_STRING([--enable-dummy-locales], [enable installation of Wesnoth own private locales]),
               [dummylocales=$enableval],
@@ -281,6 +261,28 @@ fi
 if test x$internaldata = xyes; then
   AC_DEFINE([USE_INTERNAL_DATA],[],[Define if translations should be placed inside app, for Mac OS X])
 fi
+
+AC_ARG_ENABLE([desktop-entry],
+              AS_HELP_STRING([--disable-desktop-entry], [disable installation of desktop entry files]),
+	      [desktopentry=$enableval],
+	      [desktopentry=yes])
+
+# Allow user to override default icondir and desktopdir paths
+AC_ARG_WITH([icondir],
+            AS_HELP_STRING([--with-icondir@<:@=DIR@:>@], [change icon directory for desktop entry]),
+		  [APP_ICON="${with_icondir}"],
+		  [APP_ICON="${datadir}"/icons])
+
+AC_ARG_WITH([desktopdir],
+            AS_HELP_STRING([--with-desktopdir@<:@=DIR@:>@], [change desktop file directory for desktop entry]),
+		   [APP_ENTRY="${with_desktopdir}"],
+		   [APP_ENTRY="${datadir}"/applications])
+
+AC_SUBST([APP_ENTRY])
+AC_SUBST([APP_ICON])
+
+AM_CONDITIONAL(GAME_DESKTOP_ENTRY, [test x$desktopentry = xyes && \
+	test x$game = xyes])
 
 #######################################################################
 # Checks for programs.                                                #
@@ -519,57 +521,6 @@ int main (int argc, char **argv)
     CFLAGS="$ac_save_CFLAGS"
     LIBS="$ac_save_LIBS"
 fi
-
-
-# GNOME_CONFIG
-
-AC_PATH_PROGS([GNOME_CONFIG], [gnome-config], [none])
-
-if test "x$GNOME_CONFIG" = "xnone"; then
-	gnome1found=no
-else
-	GNOME1_DESKTOP=`$GNOME_CONFIG --datadir`/gnome/apps/Games
-	gnome1found=yes
-fi
-
-GNOME2_DESKTOP=${datadir}/applications
-GNOME_ICON=${datadir}/icons
-
-# KDE_CONFIG
-
-AC_PATH_PROGS([KDE_CONFIG], [kde-config], [none])
-
-if test "x$KDE_CONFIG" = "xnone"; then
-	kdefound=no
-else
-	KDE_DESKTOP=`$KDE_CONFIG --install apps`/Games/TacticStrategy
-	KDE_ICON=`$KDE_CONFIG --install icon`
-	kdefound=yes
-fi
-
-# icondir and desktopdir may differ from datadir (suggested by Gentoo), and
-# override above.
-AC_ARG_WITH([icondir],
-            AS_HELP_STRING([--with-icondir@<:@=DIR@:>@], [change icon directory under gnome or kde, needs --with-gnome or --with-kde option]),
-		  [GNOME_ICON="${with_icondir}"
-		   KDE_ICON="${with_icondir}"])
-
-AC_ARG_WITH([desktopdir],
-            AS_HELP_STRING([--with-desktopdir@<:@=DIR@:>@], [change desktop directory under gnome or kde, needs --with-gnome or --with-kde option]),
-		  [GNOME1_DESKTOP="${with_desktopdir}"
-		   GNOME2_DESKTOP="${with_desktopdir}"
-		   KDE_DESKTOP="${with_desktopdir}"])
-
-AC_SUBST([GNOME1_DESKTOP])
-AC_SUBST([GNOME2_DESKTOP])
-AC_SUBST([GNOME_ICON])
-
-AC_SUBST([KDE_DESKTOP])
-AC_SUBST([KDE_ICON])
-
-AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
-AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes && test x$gnome1 = xyes])
-AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 
 # po4a
 
@@ -933,7 +884,7 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-ei/Makefile.in
 		 po/wesnoth-trow/Makefile.in
 		 po/wesnoth-tb/Makefile.in
-                 po/wesnoth-tsg/Makefile.in
+		 po/wesnoth-tsg/Makefile.in
 		 po/wesnoth-utbs/Makefile.in
 		 m4/Makefile
 		 icons/Makefile
