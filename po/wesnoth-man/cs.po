@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "POT-Creation-Date: 2007-02-06 15:13+0100\n"
-"PO-Revision-Date: 2007-02-02 21:25+0100\n"
+"PO-Revision-Date: 2007-02-07 21:05+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -491,9 +491,9 @@ msgstr "nastavuje počet kol pro vybraný scénář, implicitně je \"50\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Example to test your own AI: "
-msgstr "Příklad na testování vaší vlastní AI:"
+msgstr "Příklad testování vaší vlastní AI: "
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:162
@@ -502,7 +502,7 @@ msgid ""
 "parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
 msgstr ""
 "wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
-"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
+"parm2=python_script:py/moje_vlastní_python_ai.py --side2=Rebels"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:163 ../../doc/man/wesnoth_editor.6:63
@@ -729,13 +729,12 @@ msgstr "Bitva o B<Wesnoth> - síťový server pro hru více hráčů"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
-#, fuzzy
 msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<cesta>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<počet_vláken>\\|]"
+"B<-t> I<počet_vláken>\\|] [\\|B<-T> I<počet_vláken>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:41
@@ -801,29 +800,27 @@ msgstr "B<-t,\\ --threads>I<\\ počet>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy
 msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: 5, max: 30)."
 msgstr ""
-"nastavuje počet vláken, které bude wesnothd používat pro síťová spojení "
+"nastavuje limit pro počet nečinných vláken čekajících na síťová spojení "
 "(implicitně: 5, max: 30)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ počet>"
+msgstr "B<-T,\\ --max-threads>I<\\ počet>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:66
-#, fuzzy
 msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
 "there will be no limit (default: 0)."
 msgstr ""
-"nastavuje počet vláken, které bude wesnothd používat pro síťová spojení "
-"(implicitně: 5, max: 30)."
+"nastavuje nejvyšší počet vláken, které wesnothd vytvoří; 0 znamená bez "
+"omezení (implicitně: 0)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:66
