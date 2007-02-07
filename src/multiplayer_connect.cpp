@@ -1262,6 +1262,20 @@ void connect::load_game()
 		}
 
 		level_["savegame"] = "yes";
+		level_["map_data"] = state_.snapshot["map_data"];
+		level_["id"] = state_.snapshot["id"];
+		level_["name"] = state_.snapshot["name"];
+		level_["turn"] = state_.snapshot["turn_at"];
+		level_["mp_use_map_settings"] = state_.snapshot["mp_use_map_settings"];
+		level_["mp_village_gold"] = state_.snapshot["mp_village_gold"];
+		level_["mp_fog"] = state_.snapshot["mp_fog"];
+		level_["mp_shroud"] = state_.snapshot["mp_shroud"];
+		level_["mp_countdown"] = state_.snapshot["mp_countdown"];
+		level_["mp_countdown_init_time"] = state_.snapshot["mp_countdown_init_time"];
+		level_["mp_countdown_turn_bonus"] = state_.snapshot["mp_countdown_turn_bonus"];
+		level_["mp_countdown_action_bonus"] = state_.snapshot["mp_countdown_action_bonus"];
+		level_["experience_modifier"] = state_.snapshot["experience_modifier"];
+		level_["observer"] = state_.snapshot["observer"];
 		level_.add_child("snapshot") = state_.snapshot;
 
 		// Adds the replay data, and the replay start, to the level, so
@@ -1297,20 +1311,22 @@ void connect::load_game()
 
 
 
-		const std::string& era = params_.era;
-
-		// Initialize the list of sides available for the current era.
-		const config* const era_cfg = game_config().find_child("era", "id", era);
-		if(era_cfg == NULL) {
-			utils::string_map i18n_symbols;
-			i18n_symbols["era"] = era;
-			throw config::error(vgettext("Cannot find era $era", i18n_symbols));
-		}
-		era_sides_ = era_cfg->get_children("multiplayer_side");
 		level_["scenario"] = params_.name;
 		level_.add_child("era", *era_cfg);
 		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 	}
+
+	const std::string& era = params_.era;
+
+	// Initialize the list of sides available for the current era.
+	const config* const era_cfg = game_config().find_child("era", "id", era);
+	if(era_cfg == NULL) {
+		utils::string_map i18n_symbols;
+		i18n_symbols["era"] = era;
+		throw config::error(vgettext("Cannot find era $era", i18n_symbols));
+	}
+	era_sides_ = era_cfg->get_children("multiplayer_side");
+
 	gold_title_label_.hide(params_.saved_game);
 	income_title_label_.hide(params_.saved_game);
 
