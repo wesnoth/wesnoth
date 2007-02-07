@@ -1309,10 +1309,7 @@ void connect::load_game()
 			level_["random_start_time"] = "no";
 		}
 
-
-
 		level_["scenario"] = params_.name;
-		level_.add_child("era", *era_cfg);
 		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 	}
 
@@ -1326,6 +1323,7 @@ void connect::load_game()
 		throw config::error(vgettext("Cannot find era $era", i18n_symbols));
 	}
 	era_sides_ = era_cfg->get_children("multiplayer_side");
+	level_.add_child("era", *era_cfg);
 
 	gold_title_label_.hide(params_.saved_game);
 	income_title_label_.hide(params_.saved_game);
