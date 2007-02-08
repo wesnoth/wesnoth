@@ -120,7 +120,6 @@ public:
 
 	void recalculate();
 	void calculate_shroud() const;
-	void invalidate_handle();
 
 private:
 	terrain_label(const terrain_label&);

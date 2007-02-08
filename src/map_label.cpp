@@ -427,11 +427,6 @@ const std::string& terrain_label::team_name() const
 	return team_name_;
 }
 
-void terrain_label::invalidate_handle()
-{
-	handle_ = 0;
-}
-
 const gamemap::location& terrain_label::location() const
 {
 	return loc_;
