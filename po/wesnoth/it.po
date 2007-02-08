@@ -6289,7 +6289,7 @@ msgstr ""
 "Le unità avvelenate perdono 8 punti ferita ogni turno, ma non possono morire "
 "di solo veleno: il veleno non ridurrà mai i punti ferita sotto il valore di "
 "1. Le unità avvelenate possono essere curate muovendole in un villaggio o "
-"disponendole vicino a un'unità che possiede l'abilità 'cura'."
+"disponendole vicino a un'unità che possiede l'abilità \"cura\"."
 
 #: data/tips.cfg:6
 msgid ""
@@ -6297,8 +6297,8 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"Puoi utilizzare le unità di uno scenario precedente selezionando 'richiama' "
-"dal menù del gioco. Richiamando le stesse unità potrai ottenere un'armata "
+"Puoi utilizzare le unità di uno scenario precedente selezionando \"richiama"
+"\" dal menù del gioco. Richiamando le stesse unità potrai ottenere un'armata "
 "esperta e potente nel combattimento."
 
 #: data/tips.cfg:7
@@ -6308,7 +6308,7 @@ msgid ""
 "turn. Level 0 units are too frail to control a zone; and skirmisher units "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Tutte le unità hanno una 'zona di controllo' in ciascuno degli esagoni "
+"Tutte le unità hanno una \"zona di controllo\" in ciascuno degli esagoni "
 "adiacenti. Se un'unità si muove all'interno di una zona di controllo di un "
 "nemico non potrà più muoversi per quel turno. Le unità di livello 0 sono "
 "troppo deboli per controllare una zona; gli incursori sono abbastanza "
@@ -6564,8 +6564,8 @@ msgid ""
 "campaign difficulty."
 msgstr ""
 "Puoi mandare al progetto Wesnoth un rapporto anonimo dei tuoi progressi, "
-"utilizzando il bottone 'Aiuta Wesnoth'. Queste informazioni sono essenziali "
-"per noi per calibrare la difficoltà delle campagne."
+"utilizzando il bottone \"Aiuta Wesnoth\". Queste informazioni sono "
+"essenziali per noi per calibrare la difficoltà delle campagne."
 
 #: data/traits.cfg:6
 msgid "loyal"
@@ -7432,6 +7432,7 @@ msgstr "spine"
 msgid "female^Elvish Enchantress"
 msgstr "Incantatrice elfica"
 
+# XXX Da tradurre
 #: data/units/Elvish_Enchantress.cfg:19
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
@@ -7442,6 +7443,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"The magic of the elves is wholly unlike that of humanity, so much so that "
+"the latter is almost universally incapable of understanding it, let alone "
+"using it. Likewise, those who are masters of it are equally enigmatic; "
+"though it can be said that they are revered by their people, very little can "
+"be said about their actual function or purpose within that society.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Elvish_Enchantress.cfg:69 data/units/Elvish_Shaman.cfg:67
 #: data/units/Elvish_Sorceress.cfg:76
@@ -7713,6 +7721,7 @@ msgstr "tocco fatato"
 msgid "female^Elvish Sorceress"
 msgstr "Strega elfica"
 
+# XXX Da tradurre
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
 "The world of faerie is far more potent than the corporeal world. Simply "
@@ -7725,11 +7734,21 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"The world of faerie is far more potent than the corporeal world. Simply "
+"bringing some of this world into our own can have violent results. This is "
+"well-understood by the elves, although rarely used with malicious intent; "
+"doing so is no easy task, and is a very ill-regarded use of their strength.\n"
+"\n"
+"\tThose able to do so are roughly titled as 'sorceresses' by other races; "
+"and certainly are capable of acting the part.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Ninfa"
 
+# XXX Da tradurre
 #: data/units/Elvish_Sylph.cfg:21
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
@@ -7739,6 +7758,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Rarely seen, the sage-like Sylphs are masters of both their faerie and "
+"mundane natures. They are possessed of wondrous, and sometimes terrifying "
+"powers, the myths about which have given other races a healthy fear of the "
+"elves.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
@@ -7903,9 +7928,9 @@ msgstr ""
 "misero degli equipaggiamenti, e vengono impiegati come scudo per permettere "
 "ai Signori della Guerra di preparare il vero attacco.\n"
 "\n"
-"Alcuni speculano che l'esistenza di queste creature sia l'inizio della "
-"decadenza della stirpe degli orchi, nonostante nessuno ne sappia abbastanza "
-"per poter affermare qualcosa di concludente."
+"Alcuni ipotizzano che l'esistenza di queste creature sia l'inizio della "
+"decadenza della stirpe degli orchi, ma nessuno ne sa abbastanza per poter "
+"affermare qualcosa di conclusivo."
 
 #: data/units/Goblin_Wolf_Rider.cfg:3
 msgid "Wolf Rider"
@@ -8659,7 +8684,6 @@ msgid "Mage"
 msgstr "Mago"
 
 #: data/units/Human_Mage.cfg:24
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -8692,11 +8716,11 @@ msgstr ""
 "coloro che cercavano una fuga dal vuoto intellettuale prodotto dai lavori di "
 "fatica.\n"
 "\n"
-"Ironia della sorte, grazie a tutta la conoscenza acquisita e al un modesto "
-"controllo su di essa, la comunità dei maghi potrebbe governare la società, "
-"se mai ci provasse. Invece il loro vero amore non è né il danaro ne il "
-"potere e chi vede lo studio della magia come mezzo per tali fini spesso non "
-"ha la vera convinzione necessaria per dominarla.\n"
+"È ironici che, con tutta la loro conoscenza e un virtuale monopolio su di "
+"essa, la comunità dei maghi potrebbe governare la società, se mai ci "
+"provasse. Invece la loro passione non è né il danaro né il potere e chi vede "
+"lo studio della magia come mezzo per tali fini spesso non ha la vera "
+"convinzione necessaria per dominarla.\n"
 "\n"
 "Fisicamente fragili e con scarsa dimestichezza al combattimento, i maghi "
 "possiedono alcune arti che sono di grande utilità in battaglia.\n"
@@ -8711,8 +8735,8 @@ msgstr "Maga"
 msgid "Arch Mage"
 msgstr "Arcimago"
 
+# XXX Rivedere traduzione non più valida
 #: data/units/Human_Mage_Arch.cfg:21
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -8783,7 +8807,6 @@ msgid "Red Mage"
 msgstr "Mago rosso"
 
 #: data/units/Human_Mage_Red.cfg:21
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice, and given the ruddy cloak of a master. "
@@ -8807,10 +8830,10 @@ msgstr ""
 "rosso». Inoltre il simbolismo del cambiamento del colore della veste è "
 "spesso frainteso in quanto si pensa che il mago vestito di rosso sia capace "
 "di evocare il fuoco dal niente, un trucco che, anche se è innegabilmente "
-"utile, è visto come una stupida applicazione delle conoscenze che hanno "
-"dolorosamente acquisito.\n"
+"utile, è visto come una volgare applicazione delle conoscenze che hanno "
+"faticosamente acquisito.\n"
 "\n"
-"Se da una parte i \"maghi rossi\" sono fisicamente fragili e inesperti come "
+"Se da una parte i «maghi rossi» sono fisicamente fragili e inesperti come "
 "guerrieri, il loro vantaggio consiste in una serie di trucchi "
 "incomprensibili, incluse le lingue di fuoco che possono aver influenzato la "
 "scelta del loro soprannome.\n"
@@ -8822,7 +8845,6 @@ msgid "Silver Mage"
 msgstr "Mago argentato"
 
 #: data/units/Human_Mage_Silver.cfg:24
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -8846,13 +8868,10 @@ msgid ""
 "highly resistant to non-physical damage."
 msgstr ""
 "I vari percorsi di studio che un mago può intraprendere lo condurranno a "
-"delle specializzazioni differenti. I maghi argentati si sono dedicati allo "
-"studio delle energie che formano la realtà e, non si sa come, sono riusciti "
-"a scoprire i misteri di un mondo molto più vasto di quanto si possa "
-"immaginare. Sono spesso visti come saggi o mistici vaganti, e agiscono "
-"secondo una conoscenza che è ignota anche ai loro colleghi. Forniscono aiuto "
-"alle autorità magiche che spesso li impiegano sul campo, ma rimangano freddi "
-"e distaccati in ogni situazione.\n"
+"delle specializzazioni differenti. Sono spesso visti come saggi o mistici "
+"erranti, e agiscono secondo una conoscenza che è ignota anche ai loro "
+"colleghi. Forniscono aiuto alle autorità magiche che spesso li impiegano sul "
+"campo, ma rimangano freddi e distaccati in ogni situazione.\n"
 "\n"
 "Hanno formato un loro ordine tra le fila dei maghi, un ordine che custodisce "
 "gelosamente segreti che non devono essere resi di pubblico dominio. Uno di "
@@ -8860,7 +8879,7 @@ msgstr ""
 "velocità impossibile per chi si muove normalmente. I membri dell'Ordine "
 "Argentato si rifiutano di parlare di questa abilità anche con i loro "
 "colleghi maghi, e nelle rare occasioni in cui persone esterne all'ordine "
-"sono venute in contatto con i loro lavori, essi hanno perso conoscenza e non "
+"hanno provato a carpire i loro segreti, hanno abbandonato il tentativo e non "
 "ne hanno parlato mai più.\n"
 "\n"
 "I maghi argentati spesso possiedono maggior vigore fisico rispetto agli "
@@ -9069,6 +9088,16 @@ msgid ""
 "\tBecause of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"Sebbene non siano addestrati come guerrieri, le abilità posseduta dai "
+"cacciatori, soprattutto per quanto riguarda il tiro con l'arco, sono utili "
+"in battaglia. L'uso di queste abilità contro altri uomini può accadere per "
+"molte ragioni, che siano di natura mercenaria o di difesa. Tutti i gruppi di "
+"banditi avrà bisogno di qualche bracconiere, per procurare i pasti serali "
+"dalla campagna vicina, e spesso per dare una mano nei combattimenti più "
+"seri.\n"
+"\t\n"
+"\tPer la loro esperienza, questi cacciatori sono abili a muoversi di notte, "
+"nelle foreste e nelle paludi."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
@@ -9152,6 +9181,7 @@ msgstr ""
 msgid "Trapper"
 msgstr "Cacciatore"
 
+# XXX Da tradurre
 #: data/units/Human_Outlaw_Trapper.cfg:21
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
@@ -9988,6 +10018,7 @@ msgstr ""
 msgid "Saurian Ambusher"
 msgstr "Sauro imboscatore"
 
+# XXX Da tradurre
 #: data/units/Saurian_Ambusher.cfg:20
 msgid ""
 "Saurians are light on their feet, and considerably good at navigating "
@@ -10000,6 +10031,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Saurians are light on their feet, and considerably good at navigating "
+"terrain that confounds their enemies.  When this is combined with "
+"experience, strength, and equipment, one of their warriors can become "
+"particularly threatening in battle, largely because they are so much more "
+"difficult to confine than other foes.  Even in armor, saurian warriors can "
+"take advantage of the smallest gap in an enemy line, and have the prowess to "
+"make the enemy regret the mistake.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
@@ -10013,10 +10053,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"I sauri hanno qualche abilità in ciò che gli uomini chiamano magia, ma solo "
+"nella divinazione e nelle spiacevolezze della stregoneria. Per quanto sia "
+"poco compresa, è rispettata con il terrore di coloro contro cui è usata.\n"
+"\n"
+"Note speciali:"
 
+# XXX Da tradurre
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
-msgstr "Sauri affiancatori"
+msgstr "Sauro affiancatore"
 
 #: data/units/Saurian_Flanker.cfg:21
 msgid ""
@@ -10028,11 +10074,19 @@ msgid ""
 "\t\n"
 "Special Notes:"
 msgstr ""
+"Saurian warriors are generally weaker in frame than their elven, or human "
+"counterparts.  This is of course a relative term, and they can still become "
+"considerably powerful, whilst losing none of their natural mobility.  This "
+"is very dangerous in combat, as a careless enemy can soon find their support "
+"troops flanked by these creatures.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
 msgstr "Sauro oracolo"
 
+# XXX Da tradurre
 #: data/units/Saurian_Oracle.cfg:22
 msgid ""
 "Certain saurians are seen, dressed in considerable regalia, and covered head "
@@ -10044,11 +10098,20 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Certain saurians are seen, dressed in considerable regalia, and covered head "
+"to toe in horrifing, esoteric shapes and markings, both with paint and "
+"tattoo.  Some suspect them to be visionaries, or oracles amongst their ilk."
+"\tBut whatever 'societal' function they may have, they are undeniably "
+"powerful in the strange magics their kind possess, and are a thing to be "
+"wary of if ever seen.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr "Sauro incursore"
 
+# XXX Da tradurre
 #: data/units/Saurian_Skirmisher.cfg:23
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
@@ -10062,11 +10125,22 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Saurians are very small of frame, and though they are somewhat frail because "
+"of this, they are very, very agile.  In combat, their size allows them to "
+"dart past defenses that would hold any grown man at bay, making them a "
+"tricky foe to deal with.\n"
+"\t\n"
+"\tSpears are their preferred weapon, as their powerful hind legs can drive a "
+"spear with enough force to do considerable damage, either in hand or "
+"thrown.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Sauro veggente"
 
+# XXX Da tradurre
 #: data/units/Saurian_Soothsayer.cfg:22
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
@@ -10076,6 +10150,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Saurians are known to have some strange skills, arts bordering on the "
+"magical and mysterious.  It is clear that some of them are particularly "
+"skilled at a sort of medicine, which is of great benefit whenever battle is "
+"brought against them.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -10962,34 +11042,33 @@ msgid "Ambushed!"
 msgstr "Imboscata!"
 
 #: src/actions.cpp:2074
-#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Avvistata unità alleata."
-msgstr[1] "Avvistata unità alleata."
+msgstr[0] "Avvistata un'unità alleata."
+msgstr[1] "Avvistate $friend unità alleate."
 
 #: src/actions.cpp:2076
-#, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "Avvistata unità nemica!"
-msgstr[1] "Avvistata unità nemica!"
+msgstr[0] "Avvistata un'unità nemica!"
+msgstr[1] "Avvistate $enemies unità nemiche!"
 
+# XXX aggira un potenziale bug con variabili all'inizio del testo.
 #: src/actions.cpp:2080
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(una amica"
+msgstr[1] "($friends amiche"
 
 #: src/actions.cpp:2081
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " una nemica"
+msgstr[1] " $enemies nemiche"
 
 #: src/actions.cpp:2082
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Unità avvistate! ($friendphrase, $enemyphrase)."
+msgstr "Unità avvistate! $friendphrase,$enemyphrase)"
 
 #: src/actions.cpp:2090
 msgid "(press $hotkey to continue)"
@@ -11762,7 +11841,6 @@ msgid "Send to allies only"
 msgstr "Invia solo agli alleati"
 
 #: src/menu_events.cpp:582
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Oro"
@@ -11809,10 +11887,9 @@ msgid "Recall"
 msgstr "Richiama"
 
 #: src/menu_events.cpp:754
-#, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "Devi avere almeno $cost monete d'oro per richiamare un'unità"
+msgstr[0] "Devi avere almeno una moneta d'oro per richiamare un'unità"
 msgstr[1] "Devi avere almeno $cost monete d'oro per richiamare un'unità"
 
 #: src/menu_events.cpp:1077
@@ -12593,17 +12670,16 @@ msgid "stone: "
 msgstr "pietrifica: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "Danno totale"
-msgstr[1] "Danno totale"
+msgstr[0] "danno"
+msgstr[1] "danni"
 
 #: src/reports.cpp:256
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "attacco"
+msgstr[1] "attacchi"
 
 #: src/reports.cpp:266
 msgid "weapon range: "
