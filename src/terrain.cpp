@@ -208,8 +208,7 @@ bool terrain_type::is_keep() const
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,
-                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain,
-                         std::map<std::string, terrain_type>& str_to_terrain)
+                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain)
 {
 	for(std::vector<config*>::const_iterator i = cfgs.begin();
 	    i != cfgs.end(); ++i) {
@@ -217,8 +216,5 @@ void create_terrain_maps(const std::vector<config*>& cfgs,
 		terrain_list.push_back(terrain.number()); 
 		letter_to_terrain.insert(std::pair<t_translation::t_letter, terrain_type>(
 		                              terrain.number(),terrain));
-
-		str_to_terrain.insert(std::pair<std::string,terrain_type>(
-		                              terrain.id(),terrain));
 	}
 }

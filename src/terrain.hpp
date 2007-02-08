@@ -88,6 +88,5 @@ private:
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,
-                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain,
-                         std::map<std::string, terrain_type>& str_to_terrain);
+                         std::map<t_translation::t_letter, terrain_type>& letter_to_terrain);
 #endif

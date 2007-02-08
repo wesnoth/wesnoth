@@ -211,8 +211,6 @@ private:
 
 	t_translation::t_list terrainList_;
 	std::map<t_translation::t_letter, terrain_type> letterToTerrain_;
-	std::map<std::string,terrain_type> terrain_; 
-	
 	std::vector<location> villages_;
 
 	mutable std::map<location, t_translation::t_letter> borderCache_;

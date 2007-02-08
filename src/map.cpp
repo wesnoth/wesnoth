@@ -261,8 +261,8 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 {
 	LOG_G << "loading map: '" << data << "'\n";
-	const config::child_list& terrains = cfg.get_children("terrain"); 
-	create_terrain_maps(terrains,terrainList_,letterToTerrain_,terrain_);
+	const config::child_list& terrains = cfg.get_children("terrain");
+	create_terrain_maps(terrains,terrainList_,letterToTerrain_);
 
 	read(data);
 }
