@@ -8714,6 +8714,16 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"Sebbene non siano addestrati come guerrieri, le abilità posseduta dai "
+"cacciatori, soprattutto per quanto riguarda il tiro con l'arco, sono utili "
+"in battaglia. L'uso di queste abilità contro altri uomini può accadere per "
+"molte ragioni, che siano di natura mercenaria o di difesa. Tutti i gruppi di "
+"banditi avrà bisogno di qualche bracconiere, per procurare i pasti serali "
+"dalla campagna vicina, e spesso per dare una mano nei combattimenti più "
+"seri.\n"
+"\t\n"
+"\tPer la loro esperienza, questi cacciatori sono abili a muoversi di notte, "
+"nelle foreste e nelle paludi."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
@@ -9663,6 +9673,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"I sauri hanno qualche abilità in ciò che gli uomini chiamano magia, ma solo "
+"nella divinazione e nelle spiacevolezze della stregoneria. Per quanto sia "
+"poco compresa, è rispettata con il terrore di coloro contro cui è usata.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
 #: data/units/Saurian_Soothsayer.cfg:74
@@ -9671,7 +9686,7 @@ msgstr "maledetto"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
-msgstr "Sauri affiancatori"
+msgstr "Sauro affiancatore"
 
 #: data/units/Saurian_Flanker.cfg:21
 msgid ""
@@ -10675,10 +10690,11 @@ msgstr[0] "Avvistata $enemies unità nemica!"
 msgstr[1] "Avvistate $enemies unità nemiche!"
 
 #: src/actions.cpp:2054
+#, fuzzy
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Avvistate unità! ($friends alleata,"
+msgstr[1] "Avvistate unità! ($friends alleate,"
 
 #: src/actions.cpp:2055
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
