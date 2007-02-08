@@ -40,7 +40,8 @@ public:
 	const t_translation::t_list& def_type() const { return def_type_; }
 	const t_translation::t_list& union_type() const { return union_type_; }
 
-	bool is_nonnull() const;
+	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) && 
+		(number_ != t_translation::VOID_TERRAIN ); }
 	int light_modification() const { return light_modification_; }
 
 	int unit_height_adjust() const { return height_adjust_; }

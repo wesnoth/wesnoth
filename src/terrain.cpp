@@ -131,12 +131,6 @@ terrain_type::terrain_type(const config& cfg)
 	}
 }
 
-bool terrain_type::is_nonnull() const
-{
-	return (number_ != 0) && (number_ != t_translation::VOID_TERRAIN );
-}
-
-
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_letter, terrain_type>& letter_to_terrain)
