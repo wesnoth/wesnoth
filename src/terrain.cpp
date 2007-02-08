@@ -131,80 +131,11 @@ terrain_type::terrain_type(const config& cfg)
 	}
 }
 
-const std::string& terrain_type::symbol_image() const
-{
-	return symbol_image_;
-}
-
-const t_string& terrain_type::name() const
-{
-	return name_;
-}
-
-const std::string& terrain_type::id() const
-{
-	return id_;
-}
-
-t_translation::t_letter terrain_type::number() const
-{
-	return number_;
-}
-
 bool terrain_type::is_nonnull() const
 {
 	return (number_ != 0) && (number_ != t_translation::VOID_TERRAIN );
 }
 
-const t_translation::t_list& terrain_type::mvt_type() const
-{
-	return mvt_type_;
-}
-
-const t_translation::t_list& terrain_type::def_type() const
-{
-	return def_type_;
-}
-
-const t_translation::t_list& terrain_type::union_type() const
-{
-	return union_type_;
-}
-
-int terrain_type::light_modification() const
-{
-	return light_modification_;
-}
-
-int terrain_type::unit_height_adjust() const
-{
-	return height_adjust_;
-}
-
-double terrain_type::unit_submerge() const
-{
-	return submerge_;
-}
-
-int terrain_type::gives_healing() const
-{
-	return heals_;
-}
-
-bool terrain_type::is_village() const
-{
-	return village_;
-}
-
-bool terrain_type::is_castle() const
-{
-	return castle_;
-}
-
-bool terrain_type::is_keep() const
-{
-	return keep_;
-}
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,

@@ -28,28 +28,28 @@ public:
 	terrain_type();
 	terrain_type(const config& cfg);
 
-	const std::string& symbol_image() const;
-	const t_string& name() const;
-	const std::string& id() const;
+	const std::string& symbol_image() const { return symbol_image_; }
+	const t_string& name() const { return name_; }
+	const std::string& id() const { return id_; }
 
 	//the character representing this terrain
-	t_translation::t_letter number() const;
+	t_translation::t_letter number() const { return number_; }
 
 	//the underlying type of the terrain
-	const t_translation::t_list& mvt_type() const;
-	const t_translation::t_list& def_type() const;
-	const t_translation::t_list& union_type() const;
+	const t_translation::t_list& mvt_type() const { return mvt_type_; }
+	const t_translation::t_list& def_type() const { return def_type_; }
+	const t_translation::t_list& union_type() const { return union_type_; }
 
 	bool is_nonnull() const;
-	int light_modification() const;
+	int light_modification() const { return light_modification_; }
 
-	int unit_height_adjust() const;
-	double unit_submerge() const;
+	int unit_height_adjust() const { return height_adjust_; }
+	double unit_submerge() const { return submerge_; }
 
-	int gives_healing() const;
-	bool is_village() const;
-	bool is_castle() const;
-	bool is_keep() const;
+	int gives_healing() const { return heals_; }
+	bool is_village() const { return village_; }
+	bool is_castle() const { return castle_; }
+	bool is_keep() const { return keep_; }
 
 	//these descriptions are shown for the terrain in the mouse over
 	//depending on the owner or the village
