@@ -794,11 +794,6 @@ bool team::copy_ally_shroud()
 	return shroud_.copy_from(ally_shroud(*teams));
 }
 
-const std::string& team::music() const
-{
-	return info_.music;
-}
-
 std::string team::map_colour_to() const
 {
 	return info_.colour;

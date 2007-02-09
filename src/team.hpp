@@ -225,8 +225,6 @@ public:
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 
-	const std::string& music() const;
-
 	std::string map_colour_to() const;
 
 	static int nteams();
