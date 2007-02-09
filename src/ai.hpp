@@ -46,7 +46,7 @@ public:
 	defensive_position const& best_defensive_position(const location& unit,
 			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc);
 
-	void invalidate_defensive_position_cache();
+	void invalidate_defensive_position_cache() { defensive_position_cache_.clear(); }
 
 	bool leader_can_reach_keep();
 
@@ -219,7 +219,7 @@ protected:
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
 
-	void add_target(const target& tgt);
+	void add_target(const target& tgt) { additional_targets_.push_back(tgt); }
 
 	//function which will analyze all the units that this side can recruit and rate
 	//their movement types. Ratings will be placed in 'unit_movement_scores_', with

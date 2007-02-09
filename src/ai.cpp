@@ -336,18 +336,6 @@ void ai_interface::raise_user_interact()
 	last_interact_ = SDL_GetTicks();
 }
 
-void ai_interface::raise_unit_recruited(){
-	unit_recruited_.notify_observers();
-}
-
-void ai_interface::raise_unit_moved(){
-	unit_moved_.notify_observers();
-}
-
-void ai_interface::raise_enemy_attacked(){
-	enemy_attacked_.notify_observers();
-}
-
 void ai_interface::diagnostic(const std::string& msg)
 {
 	if(game_config::debug) {
@@ -362,15 +350,6 @@ void ai_interface::log_message(const std::string& msg)
 	}
 }
 
-team& ai_interface::current_team()
-{
-	return info_.teams[info_.team_num-1];
-}
-
-const team& ai_interface::current_team() const
-{
-	return info_.teams[info_.team_num-1];
-}
 
 gamemap::location ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
@@ -773,11 +752,6 @@ void ai::find_threats()
 			}
 		}
 	}
-}
-
-void ai::add_target(const target& tgt)
-{
-	additional_targets_.push_back(tgt);
 }
 
 void ai::play_turn()
@@ -2026,11 +2000,6 @@ const ai::defensive_position& ai::best_defensive_position(const gamemap::locatio
 
 	defensive_position_cache_.insert(std::pair<location,defensive_position>(loc,pos));
 	return defensive_position_cache_[loc];
-}
-
-void ai::invalidate_defensive_position_cache()
-{
-	defensive_position_cache_.clear();
 }
 
 bool ai::is_accessible(const location& loc, const move_map& dstsrc) const
