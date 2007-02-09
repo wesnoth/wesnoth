@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-12-23 15:05+0100\n"
+"POT-Creation-Date: 2007-01-31 14:21+0100\n"
 "PO-Revision-Date: 2005-09-06 20:15+0200\n"
 "Last-Translator: Margarita Manterola <marga@debian.org>\n"
 "Language-Team:  Margarita Manterola <marga@debian.org>\n"
@@ -348,7 +348,8 @@ msgid "Let me through, you rogue!"
 msgstr "¡Te voy a machacar, maldito!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:460
-msgid "They are destroying our home!"
+#, fuzzy
+msgid "Oh no! They are destroying our home!"
 msgstr "¡Están destruyendo nuestro hogar!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:464
@@ -466,8 +467,9 @@ msgstr ""
 "magos."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:179
+#, fuzzy
 msgid ""
-"I will send one of my horsemen to serve under you. I offer you my support "
+"I will send one of my horsemen to serve under you. I offer you my support, "
 "Konrad, and the support of my men - from now on you will be able to recruit "
 "horsemen."
 msgstr ""
@@ -1718,14 +1720,14 @@ msgid "Delfador! So good to see you! Where have you been?"
 msgstr "¡Delfador! ¡Qué contento estoy de verte! ¿Dónde estabas?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:567
+#, fuzzy
 msgid ""
 "I have been meeting with the Great Elven Council. This is Kalenz, a lord of "
 "the Northern Elves who came to the Council to offer us the support of the "
-"North Elves."
+"Northern Elves."
 msgstr ""
-"He estado en una reunión del Gran Consejo élfico. Éste es Kalenz, un señor "
-"de los elfos del norte, que fue al Consejo a ofrecer la ayuda de los elfos "
-"del norte."
+"Estaba en una reunión del Gran Consejo élfico. Éste es Kalenz, un señor de "
+"los elfos, que viene a prestarnos ayuda de parte de los elfos del norte."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:572
 msgid "Greetings, friend."
@@ -3547,13 +3549,10 @@ msgstr "(se lo ve irritado)"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:597
 msgid ""
-"Well, if you most go on with this mad scheme, I shall supply you with my own "
+"Well, if you must go on with this mad scheme, I shall supply you with my own "
 "troops as riders! A frail human - or worse, an elf - would never be able to "
 "handle their violent instincts!"
 msgstr ""
-"Bueno, si debéis continuar con este plan demente, ¡Os ofrezco mis propios "
-"soldados como jinetes! Un humano frágil - o peor, un elfo - nunca podría "
-"manipular sus violentos instintos."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:605
 msgid ""
@@ -4332,14 +4331,9 @@ msgstr "¿Quién dejaría atrás un objeto tan poderoso?"
 msgid ""
 "I believe it belonged to Ila'alion, a mighty Marshal of the Wood. It was "
 "enchanted as a boon to him by your elvish friends in the south. He was "
-"visiting their home as an envoy from we North Elves and was called upon to "
+"visiting their home as an envoy from us North Elves and was called upon to "
 "vanquish some beast or other."
 msgstr ""
-"Es mi entender que perteneció a Ila'alion, un poderoso mariscal del bosque. "
-"Le fue entregado como un obsequio encantado, de parte de tus amigos élficos "
-"del sur. Estaba visitando su hogar como embajador nuestro, de los elfos del "
-"norte, y fue llamado a sus filas para ayudar a eliminar alguna que otra "
-"bestia."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_Snow_Plains.cfg:116
 msgid "Some boon! All for a beast?"
@@ -4556,12 +4550,9 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:246
 msgid ""
 "As the last Death Knight falls, an ear-splitting screech escapes from the "
-"Lich. It is is clear that controlling such powerful spirits has drained it "
+"Lich. It is clear that controlling such powerful spirits has drained it "
 "significantly, and it is seething in anger towards you."
 msgstr ""
-"Al caer el último Caballero de la Muerte, un grito estridente escapa del "
-"Cadáver. Es evidente que se ha debilitado significativamente por controlar "
-"espíritus tan poderosos, y está furibundo contra ti."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:274
 msgid ""
@@ -4617,10 +4608,11 @@ msgid "Your encampment will be dismantled after the first turn"
 msgstr "Tu campamento será desmantelado luego del primer turno"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:24
-msgid "Konrad must reach the elvish forest and resist until the end of turns"
-msgstr ""
-"Konrad debe llegar al bosque de los elfos, y resistir hasta el fin de los "
-"turnos"
+#, fuzzy
+msgid ""
+"Konrad must reach the elvish forest and hold that position until the turn is "
+"over"
+msgstr "Llegar al bosque de los elfos, y resistir hasta el fin de los turnos"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:44
 msgid "Turns run out before reaching the forest"
@@ -4991,14 +4983,15 @@ msgstr ""
 "en la batalla. Extraña combinación, especialmente entre los hombres."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Elven_Council.cfg:110
+#, fuzzy
 msgid ""
-"How quickly do the race of men mature! Only seventeen winters have passed "
+"How quickly does the race of men mature! Only seventeen winters have passed "
 "since I last laid eyes on you, Konrad, yet you are now a grown man. A brave "
 "warrior stands before me!"
 msgstr ""
 "¡Qué rápido madura la raza de los hombres! Sólo diecisiete inviernos han "
-"pasado desde que te vi por última vez Konrad, y ante mí tengo ahora a un "
-"valiente guerrero!"
+"pasado desde que te vi por última vez Konrad, y ante mi tengo ahora a un "
+"bravo guerrero!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Elven_Council.cfg:114
 msgid "Forgive me, Elf, but I'm afraid I do not recall meeting you before."
@@ -5635,23 +5628,23 @@ msgid "Defeat Enemy Leaders (Bonus)"
 msgstr "Derrotar a los líderes enemigos (bonificación)"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:70
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:203
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:202
 msgid "Sir Alric"
 msgstr "Sir Alric"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:96
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:194
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:193
 msgid "Sir Ruga"
 msgstr "Sir Ruga"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:122
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:185
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:184
 msgid "Sir Daryn"
 msgstr "Sir Daryn"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:148
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:467
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:176
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:175
 msgid "Lord Bayar"
 msgstr "Señor Bayar"
 
@@ -5807,11 +5800,9 @@ msgstr "Os serviremos, mi señor. Seréis un rey merecedor de tal título."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:380
 msgid ""
-"The mighty riders of the easten plains, the Knights of the Clans, are now "
+"The mighty riders of the eastern plains, the Knights of the Clans, are now "
 "yours to command!"
 msgstr ""
-"¡Los poderosos jinetes de las llanuras del este, los Caballaros de los "
-"Clanes, están ahora a vuestro servicio!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:389
 msgid "I think you are mistaken! You will help me be queen."
@@ -6000,7 +5991,7 @@ msgstr "Sir Kalm"
 msgid "Asheviere"
 msgstr "Asheviere"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:226
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:225
 msgid ""
 "So, these rebels come at last to face me, while most of my army is off "
 "fighting the fickle clans."
@@ -6008,7 +5999,7 @@ msgstr ""
 "Finalmente los rebeldes vienen a enfrentarse conmigo, mientras el grueso de "
 "mi ejército está fuera, luchando contra los clanes inconstantes."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:230
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:229
 msgid ""
 "Wretched wench. Your army is tasting death as we speak. The clans have "
 "arrived to unseat you, pretender!"
@@ -6017,7 +6008,7 @@ msgstr ""
 "estos instantes. Los clanes han llegado para sacarte del trono, "
 "¡pretendiente!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:234
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:233
 msgid ""
 "Surrender, mother. The land's blood is spent. I have come to take my "
 "rightful place."
@@ -6025,7 +6016,7 @@ msgstr ""
 "Rendíos, madre. Ya se ha derramado mucha sangre. Vengo a ocupar el lugar que "
 "me corresponde."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:238
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:237
 msgid ""
 "Ahh. My own daughter, a turncoat. So it is true. Such treason my reign must "
 "endure! But endure it will."
@@ -6033,7 +6024,7 @@ msgstr ""
 "Ahhh... mi propia hija, una traidora. Así que es cierto. ¡Mi reino tiene que "
 "tolerar tamaña traición! Pero lo hará."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:242
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:241
 msgid ""
 "How long must the people endure your rule? Give the throne to your daughter. "
 "She is the rightful heir. We even hold the scepter to prove it!"
@@ -6042,7 +6033,7 @@ msgstr ""
 "trono a vuestra hija. Ella es su heredera legítima. ¡Tenemos incluso el "
 "Cetro, para eliminar cualquier atisbo de duda!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:246
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:245
 msgid ""
 "Delfador! My old tormentor! Treason! Men! Seize them! Kill them! Kill them "
 "all!"
@@ -6050,26 +6041,26 @@ msgstr ""
 "¡Delfador! ¡Mi antiguo atormentador! ¡Traición! ¡Hombres! ¡¡Acabad con "
 "ellos!! ¡¡Acabad con todos ellos!!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:256
 msgid "Take this, witch!"
 msgstr "¡Toma esto, bruja!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:265
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:318
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:369
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:470
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:264
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:317
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:368
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:469
 msgid "The Queen is Dead"
 msgstr "La Reina ha muerto"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:287
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:286
 msgid "Mother, I swore to end your reign of evil, and now I shall."
 msgstr "Madre, juré poner un fin a tu reino de maldad, y lo haré."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:291
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:290
 msgid "Daughter, I built this kingdom for you. It has all been for you!"
 msgstr "Hija, he construido este reino para tí. ¡Siempre ha sido todo para tí!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:295
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:294
 msgid ""
 "Even now, can you not tell the truth? Your greed has corrupted your soul. "
 "You are a monster! A murderess! It pains me to kill you, mother, but you "
@@ -6079,11 +6070,11 @@ msgstr ""
 "alma. ¡Eres un monstruo! ¡Una asesina! Me duele matarte, madre, pero haz "
 "elegido tu propio destino. ¡Por Wesnoth!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:300
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:299
 msgid "Li'sar strikes a killing blow!"
 msgstr "Li'sar dá un golpe asesino"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:334
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:333
 msgid ""
 "You have hunted me across the countryside, indeed across the years. Here I "
 "am, Dark Queen."
@@ -6091,7 +6082,7 @@ msgstr ""
 "Me haz seguido a través de las tierras de este país, y a través de los años. "
 "Aquí estoy, Reina Oscura."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:338
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:337
 msgid ""
 "I was sure I had killed you, yet you haunt me still. Be gone, demon! I "
 "banish you, ghost!"
@@ -6099,7 +6090,7 @@ msgstr ""
 "Estaba segura de que te había matado, y sin embargo me sigues persiguiendo. "
 "¡Vete, demoño! ¡Te destierro, fantasma!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:342
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:341
 msgid ""
 "Oh, wretched lady, I am very real. The land burns from your greed and "
 "ambition. You will now be held to account for your misdeeds. For the young "
@@ -6109,15 +6100,15 @@ msgstr ""
 "ambición. Ahora debereís pagar por vuestros actos. ¡Por el jóven príncipe "
 "Konrad! ¡Por WESNOTH!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:348
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:347
 msgid "Konrad strikes a killing blow!"
 msgstr "Konrad dá un golpe asesino!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:385
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:384
 msgid "As I destroyed your son, I now destroy you."
 msgstr "Como destruí a vuestro hijo, os destruiré ahora."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:389
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:388
 msgid ""
 "You were always defiant, wizard, and no one has thwarted my plans as much as "
 "you."
@@ -6125,11 +6116,11 @@ msgstr ""
 "Siempre fuiste desafiante, mago, y nadie ha desbaratado tanto mis planes "
 "como tú."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:393
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:392
 msgid "I have always been the humble servant of the crown, even now."
 msgstr "Siempre he sido un humilde servidor de la corona, incluso ahora."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:397
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:396
 msgid ""
 "Delfador! You utterly disgust me, you sniveling worm. How dare you confront "
 "me, your queen."
@@ -6137,16 +6128,16 @@ msgstr ""
 "¡Delfador! Me repugnas, gusano lloriqueante. ¿Cómo te atreves a enfrantarte "
 "conmigo, tu Reina?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:401
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:400
 msgid "How dare I? I am Delfador, High Provost of the Council of Archmagi..."
 msgstr ""
 "¿Cómo me atrevo? Soy Delfador, Alto Rector del Concilio de los Archimagos..."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:405
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:404
 msgid "... bearer of the staff of Emeric, guardian of the book of Crelanu ..."
 msgstr "... portador del cetro de Emeric, guardián del libro de Crelanu... "
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:408
 msgid ""
 "... Mage Protector of The Kingdom Of The Peoples From The West-North, Chief "
 "Advisor to the CROWN..."
@@ -6154,7 +6145,7 @@ msgstr ""
 "... Mago Protector de los Reinos de las Gentes del Noroeste, Conejero en "
 "jefe de la CORONA..."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:413
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:412
 msgid ""
 "... AND PERSONAL COUNSELOR TO MY FRIEND AND KING, GARARD THE SECOND! TODAY "
 "YOU MEET YOUR ATONEMENT!"
@@ -6162,26 +6153,26 @@ msgstr ""
 "... ¡Y CONSEJERO PERSONAL DE MI AMIGO Y REY, GARARD SEGUNDO! ¡HOY RECIBIRÁS "
 "TU CASTIGO!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:418
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:417
 msgid ""
 "In a horrific inferno of magical rage, Asheviere is completely annihilated!"
 msgstr ""
 "¡En un infierno horroroso de furia mágica, Asheviere es aniquilada "
 "completamente!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:467
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:466
 msgid "Treason! The evil ones have slain me!"
 msgstr "¡Traición! ¡Los traidores han conseguido vencerme!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:492
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:491
 msgid "And so passes Asheviere, the dark queen of Wesnoth."
 msgstr "Y así se acaba el reinado de Asheviere, la Reina Oscura de Wesnoth."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:496
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:495
 msgid "We have won at last! Li'sar! You will be queen!"
 msgstr "¡Finalmente hemos vencido! ¡Li'sar! ¡Serás reina¡"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:500
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:499
 msgid ""
 "Yes, but I won't ever forget what you have done for me, Konrad, Delfador, "
 "and Kalenz."
@@ -6189,11 +6180,11 @@ msgstr ""
 "Sí, pero jamás olvidaré lo que habéis hecho por mí los tres: Konrad, "
 "Delfador y Kalenz."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:504
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:503
 msgid "So much blood. So much death. For what? A title?"
 msgstr "Tanta sangre. Tanta muerte. ¿Para qué? ¿Un título?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:508
+#: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:507
 msgid ""
 "For justice, Elf Lord. We fight because if we do not, evil would prevail. "
 "But, I implore you to let the dead have their rest. We have taken victory. "
@@ -6542,76 +6533,77 @@ msgstr ""
 "de los elfos, viendo cómo el terror del reinado de Asheviere se empezaba a "
 "extender..."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:460
-#, fuzzy
-msgid "Oh no! They are destroying our home!"
-msgstr "¡Están destruyendo nuestro hogar!"
+#~ msgid "They are destroying our home!"
+#~ msgstr "¡Están destruyendo nuestro hogar!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:179
-#, fuzzy
-msgid ""
-"I will send one of my horsemen to serve under you. I offer you my support, "
-"Konrad, and the support of my men - from now on you will be able to recruit "
-"horsemen."
-msgstr ""
-"Os enviaré uno de mis jinetes para serviros. Os ofrezco mi ayuda, Konrad, y "
-"la de mis hombres; a partir de ahora, podréis reclutar jinetes."
+#~ msgid ""
+#~ "I will send one of my horsemen to serve under you. I offer you my support "
+#~ "Konrad, and the support of my men - from now on you will be able to "
+#~ "recruit horsemen."
+#~ msgstr ""
+#~ "Os enviaré uno de mis jinetes para serviros. Os ofrezco mi ayuda, Konrad, "
+#~ "y la de mis hombres; a partir de ahora, podréis reclutar jinetes."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:567
-#, fuzzy
-msgid ""
-"I have been meeting with the Great Elven Council. This is Kalenz, a lord of "
-"the Northern Elves who came to the Council to offer us the support of the "
-"Northern Elves."
-msgstr ""
-"Estaba en una reunión del Gran Consejo élfico. Éste es Kalenz, un señor de "
-"los elfos, que viene a prestarnos ayuda de parte de los elfos del norte."
+#~ msgid ""
+#~ "I have been meeting with the Great Elven Council. This is Kalenz, a lord "
+#~ "of the Northern Elves who came to the Council to offer us the support of "
+#~ "the North Elves."
+#~ msgstr ""
+#~ "He estado en una reunión del Gran Consejo élfico. Éste es Kalenz, un "
+#~ "señor de los elfos del norte, que fue al Consejo a ofrecer la ayuda de "
+#~ "los elfos del norte."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:597
-msgid ""
-"Well, if you must go on with this mad scheme, I shall supply you with my own "
-"troops as riders! A frail human - or worse, an elf - would never be able to "
-"handle their violent instincts!"
-msgstr ""
+#~ msgid ""
+#~ "Well, if you most go on with this mad scheme, I shall supply you with my "
+#~ "own troops as riders! A frail human - or worse, an elf - would never be "
+#~ "able to handle their violent instincts!"
+#~ msgstr ""
+#~ "Bueno, si debéis continuar con este plan demente, ¡Os ofrezco mis propios "
+#~ "soldados como jinetes! Un humano frágil - o peor, un elfo - nunca podría "
+#~ "manipular sus violentos instintos."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/20a_Snow_Plains.cfg:112
-msgid ""
-"I believe it belonged to Ila'alion, a mighty Marshal of the Wood. It was "
-"enchanted as a boon to him by your elvish friends in the south. He was "
-"visiting their home as an envoy from us North Elves and was called upon to "
-"vanquish some beast or other."
-msgstr ""
+#~ msgid ""
+#~ "I believe it belonged to Ila'alion, a mighty Marshal of the Wood. It was "
+#~ "enchanted as a boon to him by your elvish friends in the south. He was "
+#~ "visiting their home as an envoy from we North Elves and was called upon "
+#~ "to vanquish some beast or other."
+#~ msgstr ""
+#~ "Es mi entender que perteneció a Ila'alion, un poderoso mariscal del "
+#~ "bosque. Le fue entregado como un obsequio encantado, de parte de tus "
+#~ "amigos élficos del sur. Estaba visitando su hogar como embajador nuestro, "
+#~ "de los elfos del norte, y fue llamado a sus filas para ayudar a eliminar "
+#~ "alguna que otra bestia."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:246
-msgid ""
-"As the last Death Knight falls, an ear-splitting screech escapes from the "
-"Lich. It is clear that controlling such powerful spirits has drained it "
-"significantly, and it is seething in anger towards you."
-msgstr ""
+#~ msgid ""
+#~ "As the last Death Knight falls, an ear-splitting screech escapes from the "
+#~ "Lich. It is is clear that controlling such powerful spirits has drained "
+#~ "it significantly, and it is seething in anger towards you."
+#~ msgstr ""
+#~ "Al caer el último Caballero de la Muerte, un grito estridente escapa del "
+#~ "Cadáver. Es evidente que se ha debilitado significativamente por "
+#~ "controlar espíritus tan poderosos, y está furibundo contra ti."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:24
-#, fuzzy
-msgid ""
-"Konrad must reach the elvish forest and hold that position until the turn is "
-"over"
-msgstr "Llegar al bosque de los elfos, y resistir hasta el fin de los turnos"
+#~ msgid ""
+#~ "Konrad must reach the elvish forest and resist until the end of turns"
+#~ msgstr ""
+#~ "Konrad debe llegar al bosque de los elfos, y resistir hasta el fin de los "
+#~ "turnos"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/22_Elven_Council.cfg:110
-#, fuzzy
-msgid ""
-"How quickly does the race of men mature! Only seventeen winters have passed "
-"since I last laid eyes on you, Konrad, yet you are now a grown man. A brave "
-"warrior stands before me!"
-msgstr ""
-"¡Qué rápido madura la raza de los hombres! Sólo diecisiete inviernos han "
-"pasado desde que te vi por última vez Konrad, y ante mi tengo ahora a un "
-"bravo guerrero!"
+#~ msgid ""
+#~ "How quickly do the race of men mature! Only seventeen winters have passed "
+#~ "since I last laid eyes on you, Konrad, yet you are now a grown man. A "
+#~ "brave warrior stands before me!"
+#~ msgstr ""
+#~ "¡Qué rápido madura la raza de los hombres! Sólo diecisiete inviernos han "
+#~ "pasado desde que te vi por última vez Konrad, y ante mí tengo ahora a un "
+#~ "valiente guerrero!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:380
-msgid ""
-"The mighty riders of the eastern plains, the Knights of the Clans, are now "
-"yours to command!"
-msgstr ""
+#~ msgid ""
+#~ "The mighty riders of the easten plains, the Knights of the Clans, are now "
+#~ "yours to command!"
+#~ msgstr ""
+#~ "¡Los poderosos jinetes de las llanuras del este, los Caballaros de los "
+#~ "Clanes, están ahora a vuestro servicio!"
 
 #, fuzzy
 #~ msgid "You may now recruit horsemen!"
