@@ -931,11 +931,6 @@ bool show_tip_of_day()
 	return prefs["tip_of_day"] != "no";
 }
 
-void set_show_tip_of_day(bool value)
-{
-	prefs["tip_of_day"] = value ? "yes" : "no";
-}
-
 bool show_haloes()
 {
 	return haloes;
