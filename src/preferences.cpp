@@ -1041,21 +1041,6 @@ std::set<t_translation::t_letter> &encountered_terrains() {
 	return encountered_terrains_set;
 }
 
-void set_cache_saves(CACHE_SAVES_METHOD method)
-{
-	switch(method) {
-	case CACHE_SAVES_ALWAYS:
-		prefs["cache_saves"] = "always";
-		break;
-	case CACHE_SAVES_NEVER:
-		prefs["cache_saves"] = "never";
-		break;
-	case CACHE_SAVES_ASK:
-		prefs["cache_saves"] = "ask";
-		break;
-	}
-}
-
 bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs)
 {
 	return lhs.first*lhs.second < rhs.first*rhs.second;

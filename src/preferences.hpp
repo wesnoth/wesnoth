@@ -231,7 +231,6 @@ namespace preferences {
 	std::set<t_translation::t_letter> &encountered_terrains();
 
 	enum CACHE_SAVES_METHOD { CACHE_SAVES_ASK, CACHE_SAVES_NEVER, CACHE_SAVES_ALWAYS };
-	void set_cache_saves(CACHE_SAVES_METHOD method);
 
 	std::string client_type();
 
