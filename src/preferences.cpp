@@ -1041,17 +1041,6 @@ std::set<t_translation::t_letter> &encountered_terrains() {
 	return encountered_terrains_set;
 }
 
-CACHE_SAVES_METHOD cache_saves()
-{
-	if(prefs["cache_saves"] == "always") {
-		return CACHE_SAVES_ALWAYS;
-	} else if(prefs["cache_saves"] == "never") {
-		return CACHE_SAVES_NEVER;
-	} else {
-		return CACHE_SAVES_ASK;
-	}
-}
-
 void set_cache_saves(CACHE_SAVES_METHOD method)
 {
 	switch(method) {
