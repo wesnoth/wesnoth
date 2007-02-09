@@ -39,7 +39,6 @@ public:
 
 	~turn_info();
 
-	void turn_slice();
 	void sync_network();
 
 	void send_data();

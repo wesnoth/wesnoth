@@ -34,13 +34,6 @@ turn_info::~turn_info(){
 	undo_stack_.clear();
 }
 
-void turn_info::turn_slice()
-{
-	events::pump();
-	events::raise_process_event();
-	events::raise_draw_event();
-}
-
 void turn_info::sync_network()
 {
 	if(network::nconnections() > 0) {
