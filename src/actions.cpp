@@ -1250,12 +1250,6 @@ int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
 }
 
 bool get_village(const gamemap::location& loc, std::vector<team>& teams,
-                 size_t team_num, const unit_map& units)
-{
-	return get_village(loc,teams,team_num,units,NULL);
-}
-
-bool get_village(const gamemap::location& loc, std::vector<team>& teams,
                  size_t team_num, const unit_map& units, int *action_timebonus)
 {
 	if(team_num < teams.size() && teams[team_num].owns_village(loc)) {
