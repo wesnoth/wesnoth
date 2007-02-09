@@ -204,11 +204,6 @@ std::string recruit_unit(const gamemap& map, int side,
 	return std::string();
 }
 
-void validate_recruit_unit()
-{
-
-}
-
 gamemap::location under_leadership(const unit_map& units,
                                    const gamemap::location& loc, int* bonus)
 {
