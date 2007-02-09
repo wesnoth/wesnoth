@@ -13,18 +13,18 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
+class display;
+class config;
+struct game_state;
 class replay_network_sender;
+class team;
+class unit;
 
 #include "global.hpp"
 
 #include "actions.hpp"
-#include "config.hpp"
-#include "display.hpp"
-#include "gamestatus.hpp"
 #include "generic_event.hpp"
 #include "network.hpp"
-#include "team.hpp"
-#include "unit.hpp"
 
 #include <map>
 #include <vector>
