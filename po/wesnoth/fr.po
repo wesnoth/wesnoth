@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-07 18:27+0100\n"
+"POT-Creation-Date: 2007-02-10 00:06+0100\n"
 "PO-Revision-Date: 2007-02-03 01:33+0100\n"
 "Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team:  <wesnoth@ml.free.fr>\n"
@@ -3510,8 +3510,8 @@ msgstr "Une carte pour un duel très rapide."
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:20
 #: data/scenarios/multiplayer/3p_Morituri.cfg:18
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:18
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:18
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:48
+#: data/scenarios/multiplayer/4p_Hamlets.cfg:19
+#: data/scenarios/multiplayer/4p_Hamlets.cfg:52
 #: data/scenarios/multiplayer/4p_Morituri.cfg:16
 #: data/scenarios/multiplayer/4p_Morituri.cfg:46
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:18
@@ -3533,8 +3533,8 @@ msgstr "Nord"
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:29
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:29
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:48
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:28
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:38
+#: data/scenarios/multiplayer/4p_Hamlets.cfg:30
+#: data/scenarios/multiplayer/4p_Hamlets.cfg:41
 #: data/scenarios/multiplayer/4p_Morituri.cfg:26
 #: data/scenarios/multiplayer/4p_Morituri.cfg:36
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:58
@@ -10315,54 +10315,54 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Il n'y a pas de place vacante dans le château pour recruter une unité."
 
-#: src/actions.cpp:972 src/actions.cpp:1172
+#: src/actions.cpp:967 src/actions.cpp:1167
 msgid "poisoned"
 msgstr "empoisonné"
 
-#: src/actions.cpp:980 src/actions.cpp:1180
+#: src/actions.cpp:975 src/actions.cpp:1175
 msgid "slowed"
 msgstr "ralenti"
 
-#: src/actions.cpp:991 src/actions.cpp:1192
+#: src/actions.cpp:986 src/actions.cpp:1187
 msgid "stone"
 msgstr "pierre"
 
-#: src/actions.cpp:2006
+#: src/actions.cpp:1995
 msgid "Ambushed!"
 msgstr "Embuscade !"
 
-#: src/actions.cpp:2046
+#: src/actions.cpp:2035
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] " $enemies unité alliéee en vue !"
 msgstr[1] " $enemies unités alliées en vue !"
 
-#: src/actions.cpp:2049
+#: src/actions.cpp:2038
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] " $enemies unité ennemie en vue !"
 msgstr[1] " $enemies unités ennemies en vue !"
 
-#: src/actions.cpp:2054
+#: src/actions.cpp:2043
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2055
+#: src/actions.cpp:2044
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2056
+#: src/actions.cpp:2045
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unité en vue ! ($friends alliée, "
 
-#: src/actions.cpp:2065
+#: src/actions.cpp:2054
 msgid "(press $hotkey to continue)"
 msgstr "(appuyez sur $hotkey pour continuer)"
 
@@ -11543,11 +11543,11 @@ msgstr "Vide"
 msgid "This is not a multiplayer save"
 msgstr "Cette sauvegarde ne provient pas d'un jeu multijoueur"
 
-#: src/multiplayer_connect.cpp:1307
+#: src/multiplayer_connect.cpp:1323
 msgid "Cannot find era $era"
 msgstr "Ère $era introuvable"
 
-#: src/multiplayer_connect.cpp:1328
+#: src/multiplayer_connect.cpp:1342
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -11555,7 +11555,7 @@ msgstr ""
 "Victoire :\n"
 "@Vaincre le(s) chef(s) ennemi(s)"
 
-#: src/multiplayer_connect.cpp:1387
+#: src/multiplayer_connect.cpp:1401
 msgid "Waiting for players to join..."
 msgstr "En attente d'autres joueurs..."
 
@@ -11962,23 +11962,23 @@ msgstr ""
 msgid "It is now your turn"
 msgstr "À vous de jouer"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:199
 msgid "Replace with AI"
 msgstr "Remplacer par l'ordinateur"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:200
 msgid "Replace with local player"
 msgstr "Remplacer par un joueur local"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:201
 msgid "Abort game"
 msgstr "Annuler le jeu"
 
-#: src/playturn.cpp:207 src/playturn.cpp:218
+#: src/playturn.cpp:205 src/playturn.cpp:216
 msgid "Replace with "
 msgstr "Remplacer par "
 
-#: src/playturn.cpp:223
+#: src/playturn.cpp:221
 msgid "has left the game. What do you want to do?"
 msgstr "a quitté le jeu. Que voulez-vous faire ?"
 

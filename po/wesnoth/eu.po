@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-07 18:27+0100\n"
+"POT-Creation-Date: 2007-02-10 00:06+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -2855,8 +2855,8 @@ msgstr ""
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:20
 #: data/scenarios/multiplayer/3p_Morituri.cfg:18
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:18
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:18
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:48
+#: data/scenarios/multiplayer/4p_Hamlets.cfg:19
+#: data/scenarios/multiplayer/4p_Hamlets.cfg:52
 #: data/scenarios/multiplayer/4p_Morituri.cfg:16
 #: data/scenarios/multiplayer/4p_Morituri.cfg:46
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:18
@@ -2878,8 +2878,8 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:29
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:29
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:48
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:28
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:38
+#: data/scenarios/multiplayer/4p_Hamlets.cfg:30
+#: data/scenarios/multiplayer/4p_Hamlets.cfg:41
 #: data/scenarios/multiplayer/4p_Morituri.cfg:26
 #: data/scenarios/multiplayer/4p_Morituri.cfg:36
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:58
@@ -8082,54 +8082,54 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Ez dago gaztelu gelaxka librerik unitateak biltzeko."
 
-#: src/actions.cpp:972 src/actions.cpp:1172
+#: src/actions.cpp:967 src/actions.cpp:1167
 msgid "poisoned"
 msgstr "pozoindua"
 
-#: src/actions.cpp:980 src/actions.cpp:1180
+#: src/actions.cpp:975 src/actions.cpp:1175
 msgid "slowed"
 msgstr "mantsotua"
 
-#: src/actions.cpp:991 src/actions.cpp:1192
+#: src/actions.cpp:986 src/actions.cpp:1187
 msgid "stone"
 msgstr "harria"
 
-#: src/actions.cpp:2006
+#: src/actions.cpp:1995
 msgid "Ambushed!"
 msgstr "Segada batean harrapatuta!"
 
-#: src/actions.cpp:2046
+#: src/actions.cpp:2035
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unitate lagun bat ikustatua"
 msgstr[1] "Unitate lagun bat ikustatua"
 
-#: src/actions.cpp:2049
+#: src/actions.cpp:2038
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unitate etsai bat ikustatua!"
 msgstr[1] "Unitate etsai bat ikustatua!"
 
-#: src/actions.cpp:2054
+#: src/actions.cpp:2043
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2055
+#: src/actions.cpp:2044
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2056
+#: src/actions.cpp:2045
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitateak ikustatuta! ($friends lagun, $enemies etsai)"
 
-#: src/actions.cpp:2065
+#: src/actions.cpp:2054
 msgid "(press $hotkey to continue)"
 msgstr "(sakatu $hotkey jarraitzeko)"
 
@@ -9301,11 +9301,11 @@ msgstr "Hutsa"
 msgid "This is not a multiplayer save"
 msgstr "Hau ez da jokalari-anitzeko gordeketa"
 
-#: src/multiplayer_connect.cpp:1307
+#: src/multiplayer_connect.cpp:1323
 msgid "Cannot find era $era"
 msgstr "Ezin izan da $era garaia aurkitu"
 
-#: src/multiplayer_connect.cpp:1328
+#: src/multiplayer_connect.cpp:1342
 #, fuzzy
 msgid ""
 "Victory:\n"
@@ -9314,7 +9314,7 @@ msgstr ""
 "Garaipena\n"
 "@Arerioen nagusia(k) gainditu"
 
-#: src/multiplayer_connect.cpp:1387
+#: src/multiplayer_connect.cpp:1401
 msgid "Waiting for players to join..."
 msgstr "Jokalariak sartu zai..."
 
@@ -9743,23 +9743,23 @@ msgstr ""
 msgid "It is now your turn"
 msgstr "Zure txanda"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:199
 msgid "Replace with AI"
 msgstr "AA-rekin ordeztu"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:200
 msgid "Replace with local player"
 msgstr "Jokalari lokalarekin ordezkatu"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:201
 msgid "Abort game"
 msgstr "Jokoa bertan behera utzi"
 
-#: src/playturn.cpp:207 src/playturn.cpp:218
+#: src/playturn.cpp:205 src/playturn.cpp:216
 msgid "Replace with "
 msgstr "Ordeztu "
 
-#: src/playturn.cpp:223
+#: src/playturn.cpp:221
 msgid "has left the game. What do you want to do?"
 msgstr "jokoa utzi du. Zer egin nahi duzu?"
 
