@@ -501,11 +501,6 @@ bool message_bell()
 	return prefs["message_bell"] != "no";
 }
 
-void set_message_bell(bool ison)
-{
-	prefs["message_bell"] = (ison ? "yes" : "no");
-}
-
 bool sound_on() {
 	return prefs["sound"] != "no";
 }

@@ -130,7 +130,6 @@ namespace preferences {
 	void set_turn_bell(bool ison);
 
 	bool message_bell();
-	void set_message_bell(bool ison);
 
 	const std::string& turn_cmd();
 
