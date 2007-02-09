@@ -13,7 +13,6 @@
 
 #include "global.hpp"
 
-#include "game_config.hpp"
 #include "game_events.hpp"
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
@@ -401,36 +400,6 @@ void team::lose_village(const gamemap::location& loc)
 	}
 }
 
-void team::clear_villages()
-{
-	villages_.clear();
-}
-
-const std::set<gamemap::location>& team::villages() const
-{
-	return villages_;
-}
-
-bool team::owns_village(const gamemap::location& loc) const
-{
-	return villages_.count(loc) > 0;
-}
-
-int team::gold() const
-{
-	return gold_;
-}
-
-int team::income() const
-{
-	return atoi(info_.income.c_str()) + villages_.size()*info_.income_per_village+game_config::base_income;
-}
-
-void team::new_turn()
-{
-	gold_ += income();
-}
-
 void team::set_time_of_day(int turn, const time_of_day& tod)
 {
 	aiparams_.clear();
@@ -473,58 +442,6 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 	caution_ = lexical_cast_default<double>(aiparams_["caution"],0.25);
 }
 
-void team::spend_gold(int amount)
-{
-	gold_ -= amount;
-}
-
-void team::set_income(int amount)
-{
-	info_.income = lexical_cast<std::string>(amount);
-}
-
-int team::countdown_time() const
-{
-	return countdown_time_;
-}
-void team::set_countdown_time(int amount)
-{
-	countdown_time_=amount;
-}
-
-int team::action_bonus_count() const
-{
-	return action_bonus_count_;
-}
-void team::set_action_bonus_count(int count)
-{
-	action_bonus_count_=count;
-}
-
-void team::set_current_player(const std::string player){
-	info_.current_player = player;
-}
-
-const std::set<std::string>& team::recruits() const
-{
-	return info_.can_recruit;
-}
-
-std::set<std::string>& team::recruits()
-{
-	return info_.can_recruit;
-}
-
-const std::vector<std::string>& team::recruitment_pattern() const
-{
-	return info_.recruitment_pattern;
-}
-
-const std::string& team::name() const
-{
-	return info_.name;
-}
-
 bool team::calculate_enemies(size_t index) const
 {
 	if(teams == NULL || index >= teams->size()) {
@@ -557,63 +474,7 @@ bool team::calculate_is_enemy(size_t index) const
 	return std::find(info_.enemies.begin(),info_.enemies.end(),int(index+1)) != info_.enemies.end();
 }
 
-double team::aggression() const
-{
-	return aggression_;
-}
-
-double team::caution() const
-{
-	return caution_;
-}
-
-bool team::is_human() const
-{
-	return info_.controller == team_info::HUMAN;
-}
-
-bool team::is_ai() const
-{
-	return info_.controller == team_info::AI;
-}
-
-bool team::is_network() const
-{
-	return info_.controller == team_info::NETWORK;
-}
-
-bool team::is_empty() const
-{
-	return info_.controller == team_info::EMPTY;
-}
-
-bool team::is_persistent() const
-{
-	return info_.persistent;
-}
-
-void team::make_human()
-{
-	info_.controller = team_info::HUMAN;
-}
-
-void team::make_ai()
-{
-	info_.controller = team_info::AI;
-}
-
-const std::string& team::team_name() const
-{
-	return info_.team_name;
-}
-
-const std::string& team::user_team_name() const
-{
-	return info_.user_team_name;
-}
-
-void team::change_team(const std::string& name,
-					   const std::string& user_name)
+void team::change_team(const std::string& name, const std::string& user_name)
 {
 	info_.team_name = name;
 	if (!user_name.empty())
@@ -633,15 +494,6 @@ void team::change_team(const std::string& name,
 	}
 }
 
-const std::string& team::save_id() const
-{
-	return info_.save_id;
-}
-
-const std::string& team::current_player() const{
-	return info_.current_player;
-}
-
 void team::set_objectives(const t_string& new_objectives, bool silently)
 {
 	info_.objectives = new_objectives;
@@ -649,72 +501,11 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 		info_.objectives_changed = true;
 }
 
-void team::reset_objectives_changed()
-{
-	info_.objectives_changed = false;
-}
-
-const t_string& team::objectives() const
-{
-	return info_.objectives;
-}
-
-bool team::objectives_changed() const
-{
-	return info_.objectives_changed;
-}
-
-const std::string& team::flag() const
-{
-	return info_.flag;
-}
-
-const std::string& team::ai_algorithm() const
-{
-	return info_.ai_algorithm;
-}
-
-const config& team::ai_parameters() const
-{
-	return aiparams_;
-}
-
-const config& team::ai_memory() const
-{
-       return info_.ai_memory_;
-}
-
 void team::set_ai_memory(const config& ai_mem){
   //would perhaps be more efficient to allow writing to the memory directly,
   //but this method comparmentalizes the functionality and protects against
   //accidentally overwriting the memory
   info_.ai_memory_=ai_mem;
-  return;
-}
-
-void team::make_network()
-{
-	info_.controller = team_info::NETWORK;
-}
-
-double team::leader_value() const
-{
-	return info_.leader_value;
-}
-
-double team::village_value() const
-{
-	return info_.village_value;
-}
-
-int team::villages_per_scout() const
-{
-	return info_.villages_per_scout;
-}
-
-std::vector<team::target>& team::targets()
-{
-	return info_.targets;
 }
 
 bool team::shrouded(int x, int y) const
@@ -792,11 +583,6 @@ bool team::copy_ally_shroud()
 		return false;
 
 	return shroud_.copy_from(ally_shroud(*teams));
-}
-
-std::string team::map_colour_to() const
-{
-	return info_.colour;
 }
 
 int team::nteams()
@@ -976,18 +762,6 @@ const color_range team::get_side_color_range(int side){
   }
 
   return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
-}
-
-const Uint32 team::get_side_rgb(int side){
-  return(get_side_color_range(side).mid());
-}
-
-const Uint32 team::get_side_rgb_max(int side){
-  return(get_side_color_range(side).max());
-}
-
-const Uint32 team::get_side_rgb_min(int side){
-  return(get_side_color_range(side).min());
 }
 
 const SDL_Color team::get_side_colour(int side)
