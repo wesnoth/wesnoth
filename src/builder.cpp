@@ -377,11 +377,6 @@ void terrain_builder::replace_token(std::string &s, const std::string &token, co
 	}
 }
 
-void terrain_builder::replace_token(terrain_builder::rule_image_variant &variant, const std::string &token, const std::string &replacement)
-{
-	replace_token(variant.image_string, token, replacement);
-}
-
 void terrain_builder::replace_token(terrain_builder::rule_image &image, const std::string &token, const std::string &replacement)
 {
 	rule_image_variantlist::iterator itor;
@@ -535,7 +530,6 @@ void terrain_builder::add_constraints(
 	int y = loc.y * rule_image::TILEWIDTH + (loc.x % 2) *
 		rule_image::TILEWIDTH / 2;
 	add_images_from_config(constraints[loc].images, global_images, true, x, y);
-
 }
 
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints, const gamemap::location& loc, const config& cfg, const config& global_images)
@@ -613,7 +607,6 @@ void terrain_builder::add_rule(building_ruleset& rules, building_rule &rule)
 		start_animation(rule);
 		rules.insert(std::pair<int, building_rule>(rule.precedence, rule));
 	}
-
 }
 
 void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& tpl, const std::string &rotations) 
@@ -749,20 +742,6 @@ void terrain_builder::parse_config(const config &cfg)
 	}
 #endif
 
-}
-
-bool terrain_builder::terrain_matches(t_translation::t_letter letter, 
-		const t_translation::t_list& terrains) const
-{
-	// we return true on an empty list terrain_matches returns false on an empty list
-	return terrains.empty()? true : t_translation::terrain_matches(letter, terrains);
-}
-
-bool terrain_builder::terrain_matches(t_translation::t_letter letter, 
-		const t_translation::t_match& terrain) const
-{
-	// we return true on an empty list terrain_matches returns false on an empty list
-	return terrain.terrain.empty()? true : t_translation::terrain_matches(letter, terrain);
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, 

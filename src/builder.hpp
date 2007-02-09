@@ -421,18 +421,6 @@ private:
 			const std::string& replacement);
 
 	/**
-	 * Replaces, in a given rule_variant_image, a token with its value. The
-	 * actual substitution is done in the "image_string" parameter of this
-	 * rule_variant_image.
-	 *
-	 * @param variant The rule_variant_image in which to do the replacement
-	 * @param token  The token to substitute
-	 * @param replacement The replacement string
-	 */
-	void replace_token(rule_image_variant &variant, const std::string &token,
-			const std::string& replacement);
-
-	/**
 	 * Replaces, in a given rule_image, a token with its value. The actual
 	 * substitution is done in all variants of the given image.
 	 *
@@ -442,6 +430,19 @@ private:
 	 */
 	void replace_token(rule_image &image, const std::string &token,
 			const std::string& replacement);
+
+	/**
+	 * Replaces, in a given rule_variant_image, a token with its value. The
+	 * actual substitution is done in the "image_string" parameter of this
+	 * rule_variant_image.
+	 *
+	 * @param variant The rule_variant_image in which to do the replacement
+	 * @param token  The token to substitute
+	 * @param replacement The replacement string
+	 */
+	void replace_token(rule_image_variant &variant, const std::string &token,
+			const std::string& replacement)
+		{ replace_token(variant.image_string, token, replacement); }
 
 	/**
 	 * Replaces, in a given rule_imagelist, a token with its value. The
@@ -604,9 +605,10 @@ private:
 	 *                 "all terrains" or the character '!' NOT meaning "all
 	 *                 terrains except those present in the list."
 	 *
-	 * @return returns true if "letter" matches the list, false if it does not and empty list matches.
+	 * @return returns true if "letter" matches the list or the list is empty, else false.
 	 */
-	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list &terrains) const; 
+	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list& terrains) const 
+		{ return terrains.empty()? true : t_translation::terrain_matches(letter, terrains); }
 
 	/**
 	 * Checks whether a terrain letter matches a given list of terrain letters
@@ -615,9 +617,10 @@ private:
 	 * @param terrain  The terrain match structure which to check the terrain.
 	 *                 See previous definition for more details.
 	 *
-	 * @return returns true if "letter" matches the list, false if it does not and empty list matches.
+	 * @return returns true if "letter" matches the list or the list is empty, else false.
 	 */
-	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_match &terrain) const; 
+	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_match &terrain) const
+		{ return terrain.terrain.empty()? true : t_translation::terrain_matches(letter, terrain); }
 
 	/**
 	 * Checks whether a rule matches a given location in the map.
