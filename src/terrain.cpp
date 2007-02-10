@@ -129,6 +129,8 @@ terrain_type::terrain_type(const config& cfg)
 			income_description_own_ = _("Owned village");
 		}
 	}
+
+	editor_group_ = cfg["editor_group"]; 
 }
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

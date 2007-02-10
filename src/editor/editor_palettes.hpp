@@ -25,13 +25,27 @@
 
 #include <vector>
 
+class config;
+
 namespace map_editor {
+
+// a helper struct which for some reason can't be moved to
+// the cpp file. Stores the info about the data in 
+// editor-groups.cfg in a nice format
+struct terrain_group
+{
+	terrain_group(const config& cfg, display& gui);
+
+	std::string id;
+	t_string name;
+	gui::button button;
+};
 
 /// A palette where the terrain to be drawn can be selected.
 class terrain_palette : public gui::widget {
 public:
 	terrain_palette(display &gui, const size_specs &sizes,
-					const gamemap &map);
+					const gamemap &map, const config& cfg);
 
 	/// Scroll the terrain palette up one step if possible.
 	void scroll_up();
@@ -45,11 +59,15 @@ public:
 	/// Scroll the terrain palette to the bottom.
 	void scroll_bottom();
 
+	/// sets a group active id == terrain_map_->first
+	//the selected terrains remain the same, this can
+	//result in no visible selected items
+	void set_group(const std::string& id);
+
 	/// Return the currently selected foreground terrain.
 	t_translation::t_letter selected_fg_terrain() const;
 	/// Return the currently selected background terrain.
 	t_translation::t_letter selected_bg_terrain() const;
-
 
 	/// Select a foreground terrain.
 	void select_fg_terrain(t_translation::t_letter);
@@ -65,13 +83,15 @@ public:
 	virtual void handle_event(const SDL_Event& event);
 	void set_dirty(bool dirty=true);
 
-
 	/// Return the number of terrains in the palette.
 	size_t num_terrains() const;
 
 	/// Update the size of this widget. Use if the size_specs have
 	/// changed.
 	void adjust_size();
+
+	/// sets the tooltips used in the palette
+	void load_tooltips();
 
 private:
 	void draw_old(bool);
@@ -95,7 +115,20 @@ private:
 	const size_specs &size_specs_;
 	display &gui_;
 	unsigned int tstart_;
-	t_translation::t_list terrains_;
+	
+	//this map contains all editor_group as defined in terrain.cfg and
+	//associate with the group there. The group all is added automatically
+	//and all terrains are also automatically stored in this group
+	std::map<std::string, t_translation::t_list> terrain_map_;
+	
+	// a copy from the terrain_map_->second for the current active group
+	t_translation::t_list terrains_; 
+
+	//the editor_groups as defined in editor-groups.cfg, note the
+	//user must make sure the id's here are the same as the 
+	//editor_group in terrain.cfg
+	std::vector<terrain_group> terrain_groups_; 
+	
 	t_translation::t_letter selected_fg_terrain_, selected_bg_terrain_;
 	const gamemap &map_;
 	gui::button top_button_, bot_button_;

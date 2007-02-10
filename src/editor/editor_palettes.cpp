@@ -15,10 +15,13 @@
 
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
+#include "../config.hpp"
 #include "../sdl_utils.hpp"
+#include "../serialization/string_utils.hpp"
 #include "../image.hpp"
 #include "../reports.hpp"
 #include "../gettext.hpp"
+#include "../tooltips.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 #include "../wassert.hpp"
@@ -30,14 +33,51 @@ bool is_invalid_terrain(t_translation::t_letter c) {
 			c == t_translation::OBSOLETE_KEEP);
 }
 
+terrain_group::terrain_group(const config& cfg, display& gui):
+	id(cfg["id"]), name(cfg["name"]), 
+	button(gui.video(), "", gui::button::TYPE_PRESS, cfg["icon"])
+{
+}
+
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
-								 const gamemap &map)
+								 const gamemap &map, const config& cfg)
 	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0), map_(map),
 	  top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button"),
-	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button") {
+	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
+{
+
+	// get the available terrains temporary in terrains_
 	terrains_ = map_.get_terrain_list();
 	terrains_.erase(std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain),
 					terrains_.end());
+
+	// get the available groups and add them to the structure
+    const config::child_list& groups = cfg.get_children("editor_group");
+	config::child_list::const_iterator g_itor = groups.begin();
+	for(; g_itor != groups.end(); ++ g_itor) {
+		terrain_groups_.push_back(terrain_group(**g_itor, gui));
+	}
+
+	// add the groups for all terrains to the map
+	t_translation::t_list::const_iterator t_itor = terrains_.begin();
+	for(; t_itor != terrains_.end(); ++t_itor) {
+		// add the terrain to the requested groups
+		const std::vector<std::string>& key = 
+			utils::split(map_.get_terrain_info(*t_itor).editor_group());
+		
+		for(std::vector<std::string>::const_iterator k_itor = key.begin(); 
+				k_itor != key.end(); ++k_itor)
+		 {
+			terrain_map_[*k_itor].push_back(*t_itor);
+		}
+		
+		// add the terrain to the default group
+		terrain_map_["all"].push_back(*t_itor);
+	}
+	
+	// set the default group
+	terrains_ = terrain_map_["all"];
+
 	if(terrains_.empty()) {
 		std::cerr << "No terrain found.\n";
 	}
@@ -55,12 +95,19 @@ void terrain_palette::adjust_size() {
 	const size_t button_height = 24;
 	const size_t button_palette_padding = 8;
 
+	//determine number of theme button rows
+	size_t theme_rows = terrain_groups_.size() / 4;
+	if(terrain_groups_.size() % 4 != 0) {
+		++theme_rows;
+	}
+	const size_t theme_height = theme_rows * (button_height + button_palette_padding);
+
 	SDL_Rect rect = { size_specs_.palette_x, size_specs_.palette_y, size_specs_.palette_w, size_specs_.palette_h };
 	set_location(rect);
-	top_button_y_ = size_specs_.palette_y;
+	top_button_y_ = size_specs_.palette_y + theme_height ;
 	button_x_ = size_specs_.palette_x + size_specs_.palette_w/2 - button_height/2;
 	terrain_start_ = top_button_y_ + button_height + button_palette_padding;
-	const size_t space_for_terrains = size_specs_.palette_h - (button_height + button_palette_padding) * 2;
+	const size_t space_for_terrains = size_specs_.palette_h - (button_height + button_palette_padding) * 2 - theme_height;
 	rect.y = terrain_start_;
 	rect.h = space_for_terrains;
 	bg_register(rect);
@@ -68,11 +115,22 @@ void terrain_palette::adjust_size() {
 	const unsigned total_terrains = num_terrains();
 	nterrains_ = minimum<int>(terrains_fitting, total_terrains);
 	bot_button_y_ = size_specs_.palette_y + (nterrains_ / size_specs_.terrain_width) * size_specs_.terrain_space + \
-		button_palette_padding * size_specs_.terrain_width + button_height;
+		button_palette_padding * size_specs_.terrain_width + button_height + theme_height;
 	top_button_.set_location(button_x_, top_button_y_);
 	bot_button_.set_location(button_x_, bot_button_y_);
-	top_button_.set_dirty();
-	bot_button_.set_dirty();
+
+	size_t top = size_specs_.palette_y;
+	size_t left = size_specs_.palette_x;
+	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
+		terrain_groups_[i].button.set_location(left, top);
+		if(i % 4 == 3) {
+			left = size_specs_.palette_x;
+			top += button_height + button_palette_padding;
+		} else {
+			left += button_height + button_palette_padding;
+		}
+	}
+	
 	set_dirty();
 }
 
@@ -81,6 +139,9 @@ void terrain_palette::set_dirty(bool dirty) {
 	if (dirty) {
 		top_button_.set_dirty();
 		bot_button_.set_dirty();
+		for(size_t i = 0; i < terrain_groups_.size(); ++i) {
+			terrain_groups_[i].button.set_dirty();
+		}
 	}
 }
 
@@ -121,6 +182,15 @@ void terrain_palette::scroll_bottom() {
 		old_start = tstart_;
 		scroll_down();
 	}
+}
+
+void terrain_palette::set_group(const std::string& id)
+{
+	terrains_ = terrain_map_[id];
+	if(terrains_.empty()) {
+		std::cerr << "No terrain found.\n";
+	}
+	scroll_top();
 }
 
 t_translation::t_letter terrain_palette::selected_fg_terrain() const 
@@ -254,6 +324,12 @@ void terrain_palette::draw(bool force) {
 	if (bot_button_.pressed()) {
 		scroll_down();
 	}
+	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
+		if(terrain_groups_[i].button.pressed()) {
+			set_group(terrain_groups_[i].id);
+			break;
+		}
+	}
 	if (!dirty() && !force) {
 		return;
 	}
@@ -328,6 +404,17 @@ void terrain_palette::update_report() {
 		+ std::string(_("BG")) +
 		": " + get_terrain_string(selected_bg_terrain());
 	reports::set_report_content(reports::SELECTED_TERRAIN, msg);
+}
+
+void terrain_palette::load_tooltips()
+{
+	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
+		const std::string& text = terrain_groups_[i].name;
+		if(text !="") {
+			const SDL_Rect tooltip_rect = terrain_groups_[i].button.location();
+			tooltips::add_tooltip(tooltip_rect, text);
+		}
+	}
 }
 
 // void terrain_palette::bg_backup() {

@@ -59,6 +59,8 @@ public:
 	const t_string& income_description_enemy() const { return income_description_enemy_; }
 	const t_string& income_description_own() const { return income_description_own_; }
 
+	const std::string& editor_group() const { return editor_group_; }
+
 private:
 	std::string symbol_image_;
 	std::string id_;
@@ -85,6 +87,8 @@ private:
 	t_string income_description_ally_;
 	t_string income_description_enemy_;
 	t_string income_description_own_;
+
+	std::string editor_group_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

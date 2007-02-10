@@ -163,7 +163,7 @@ int map_editor::old_brush_size_;
 map_editor::map_editor(display &gui, editormap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  theme_(theme), game_config_(game_config), map_dirty_(false), l_button_palette_dirty_(true),
-	  everything_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
+	  everything_dirty_(false), palette_(gui, size_specs_, map, game_config), brush_(gui, size_specs_),
 	  l_button_held_func_(NONE), tooltip_manager_(gui_.video()), floating_label_manager_(),
 	  mouse_moved_(false),
 	  highlighted_locs_cleared_(false), prefs_disp_manager_(&gui_), all_hexes_selected_(false) {
@@ -218,9 +218,9 @@ void map_editor::load_tooltips()
 
 	// Add tooltips to all buttons
 	const theme &t = gui_.get_theme();
-        const std::vector<theme::menu> &menus = t.menus();
-        std::vector<theme::menu>::const_iterator it;
-        for (it = menus.begin(); it != menus.end(); it++) {
+	const std::vector<theme::menu> &menus = t.menus();
+	std::vector<theme::menu>::const_iterator it;
+	for (it = menus.begin(); it != menus.end(); it++) {
 
 		// Get the button's screen location
 		SDL_Rect screen;
@@ -257,7 +257,10 @@ void map_editor::load_tooltips()
 
 		if(text != "")
 			tooltips::add_tooltip(tooltip_rect, text);
-        }
+	}
+	
+	// tooltips for the groups 
+	palette_.load_tooltips();
 }
 
 map_editor::~map_editor() {
