@@ -26,46 +26,44 @@ Bitva o \fBWesnoth\fP \- sí»ový server pro hru více hráèù
 .
 .SH POU®ITÍ
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIpoèet_vláken\fP\|] [\|\fB\-T\fP \fIpoèet_vláken\fP\|]
 .
 .SH POPIS
 .
 Souèást Bitvy o Wesnoth spravující hry více hráèù. Na
-http://www.wesnoth.org/wiki/ServerAdministrationlze nalézt pøíkazy, které
-server akceptuje, a to jak pøes soket, tak pøímo odwesnoth klienta.
+http://www.wesnoth.org/wiki/ServerAdministration lze nalézt pøíkazy, které
+server akceptuje, a to jak pøes soket, tak pøímo od klienta wesnoth.
 .
 .SH VOLBY
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ cesta\fP
 specifikuje cestu, kde má wesnothd hledat konfiguraèní soubor. Syntaxe
-souboru je popsána v sekci \fBKONFIGURACE SERVERU\fP.
+souboru je popsána v sekci \fBKONFIGURACE SERVERU\fP ní¾e.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 spou¹tí wesnothd jako démona.
 .TP 
-zobrazuje nápovìdu k parametrùm pøíkazové øádky.
+\fB\-h,\ \-\-help\fP
 zobrazuje nápovìdu k parametrùm pøíkazové øádky.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
-øíká wesnothd, na kterém portu má bì¾et. Implicitní hodnota je 15000.
+urèuje, který port má wesnothd pou¾ívat. Implicitní hodnota je 15000.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ poèet\fP
-sets the maximum number of waiting worker threads for network I/O to n
-(default: 5, max: 30).
+nastavuje limit pro poèet neèinných vláken èekajících na sí»ová spojení
+(implicitnì: 5, max: 30).
 .TP 
-\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
-sets the maximum number of worker threads that will be created if set to 0
-there will be no limit (default: 0).
+\fB\-T,\ \-\-max\-threads\fP\fI\ poèet\fP
+nastavuje nejvy¹¹í poèet vláken, které wesnothd vytvoøí; 0 znamená bez
+omezení (implicitnì: 0).
 .TP 
 \fB\-V,\ \-\-version\fP
-.TP  
-\fB\-V,\ \-\-version\fP
-zobrazí verzi wesnothd.
+zobrazí verzi wesnothd a skonèí.
 .TP 
 \fB\-v,\ \-\-verbose\fP
-zapíná výpis logovacích informací.
+zapíná výpis roz¹íøených logovacích informací.
 .
 .SH "KONFIGURACE SERVERU"
 .
@@ -146,9 +144,9 @@ stránky http://www.wesnoth.wz.cz/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak
-jepublikována nadací Free Software Foundation.Tento program je bez záruky; a
-to i co se týká obchodovatelnosti apou¾itelnosti.
+Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
+publikována nadací Free Software Foundation. Tento program je bez záruky, a
+to i co se týká obchodovatelnosti a pou¾itelnosti.
 .
 .SH "VIZ TAKÉ"
 .

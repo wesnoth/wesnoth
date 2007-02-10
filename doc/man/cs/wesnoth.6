@@ -31,14 +31,14 @@ wesnoth \- Bitva o Wesnoth, tahová fantasy strategická hra
 .
 Bitva o \fBWesnoth\fP je tahová fantasy strategická hra.
 
-Poraz v¹echny vùdce nepøátel pou¾itím vhodnì zvolené sestavy jednotek,
-dbajepøitom na mno¾ství zlata a vesnic. V¹echny jednotky mají své silné
-stránky islabiny; cesta k vítìzství vede i pøes postupné posilování
-vlastních jednoteka zabránìní soupeøi v tomté¾. Tak jak jednotky získávají
-zku¹enosti, získávajíi nové schopnosti a stávají se silnìj¹ími. Hraj ve svém
-rodném jazyce aotestuj si své schopnosti proti silnému poèítaèi nebo se
-pøipoj k velkékomunitì hráèù Wesnothu hrajících po síti hry více
-hráèù. Vytvoø si vlastníjednotky, scénáøe a kampanì a podìl se o nì s
+Poraz v¹echny vùdce nepøátel pou¾itím vhodnì zvolené sestavy jednotek, dbaje
+pøitom na mno¾ství zlata a vesnic. V¹echny jednotky mají své silné stránky i
+slabiny; cesta k vítìzství vede i pøes postupné posilování vlastních
+jednotek a zabránìní soupeøi v tomté¾. Tak jak jednotky získávají
+zku¹enosti, získávají i nové schopnosti a stávají se silnìj¹ími. Hraj ve
+svém rodném jazyce a otestuj si své schopnosti proti silnému poèítaèi nebo
+se pøipoj k velké komunitì hráèù Wesnothu hrajících po síti hry více
+hráèù. Vytvoø si vlastní jednotky, scénáøe a kampanì a podìl se o nì s
 ostatními.
 .
 .SH VOLBY
@@ -69,7 +69,7 @@ obrazovky.
 \fB\-h\fP, \fB\-\-help\fP
 zobrazuje nápovìdu k parametrùm pøíkazové øádky.
 .TP 
-\fB\-\-load\fP\fI\ soubor_s_hrou\fP
+\fB\-\-load\fP\fI\ soubor_se_hrou\fP
 nahraje ulo¾enou hru ze souboru ze standardního adresáøe pro ulo¾ené hry.
 .TP 
 \fB\-\-log\-error="kategorie1,kategorie2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
@@ -83,13 +83,13 @@ spou¹tí hru více hráèù. Ní¾e jsou popsány dal¹í volby, které se k této volbì
 vá¾í.
 .TP 
 \fB\-\-nocache\fP
-vypíná cache pro data her.
+vypíná cache pro herní data.
 .TP 
 \fB\-\-nosound\fP
-spustí her bez zvukù a hudby.
+spustí hru bez zvukù a hudby.
 .TP 
 \fB\-\-path\fP
-pouze zobrazí cestu k adresáøi s daty.
+pouze zobrazí cestu k adresáøi s daty a skonèí.
 .TP 
 \fB\-r\fP, \fB\-\-resolution\fP\ \fIXxY\fP
 nastavuje rozli¹ení. Pøíklad: \-r 800x600
@@ -98,7 +98,7 @@ nastavuje rozli¹ení. Pøíklad: \-r 800x600
 spou¹tí hru v malém testovacím scénáøi.
 .TP 
 \fB\-v\fP, \fB\-\-version\fP
-zobrazí verzi wesnothu.
+zobrazí verzi wesnothu a skonèí.
 .TP 
 \fB\-w\fP, \fB\-\-windowed\fP
 spustí hry v oknì.
@@ -108,26 +108,26 @@ vypustí testování grafiky bìhem startu. Tato volba je automaticky pou¾ita
 pou¾itím \-\-nogui.
 .TP 
 \fB\-\-exit\-at\-end\fP
-skonèí hru pøi konci scénáøe, tedy bez zobrazení okénka s informací
-ovítìzství/prohøe, které vy¾aduje u¾ivatelskou akci \- stisk tlaèítka
-OK. tatovolba se pou¾ívá pøi ruzných mìøeních.
+skonèí hru pøi konci scénáøe, tedy bez zobrazení okénka s informací o
+vítìzství/prohøe, které vy¾aduje u¾ivatelskou akci \- stisk tlaèítka OK. Tato
+volba se pou¾ívá pøi ruzných mìøeních.
 .
 .SH "Volby pro \-\-multiplayer"
 .
-Volby s platností pouze pro jednu stranu jsou oznaèeny <strana>. kde
+Volby s platností pouze pro jednu stranu jsou oznaèeny <strana>, kde
 <strana>je tøeba nahradit za èíslo konkrétní strany. Obvykle je to 1
-nebo 2, alezále¾í to v¾dy od konkrétního scénáøe a od poètu hráèù.
+nebo 2, ale zále¾í to v¾dy od konkrétního scénáøe a od poètu hráèù.
 .TP 
 \fB\-\-algorithm<strana>=hodnota\fP
 vybírá nestandardní algoritmus, který bude pou¾it pro umìlou inteligenci
 této strany. Momentálnì jsou k dispozici hodnoty: "idle_ai" a "sample_ai".
 .TP  
 \fB\-\-controller<strana>=hodnota\fP
-vybírá druh ovládání. Pou¾itelné hodnoty jsou "human" a "ai".
+vybírá druh ovládání strany. Pou¾itelné hodnoty jsou "human" a "ai".
 .TP  
 \fB\-\-era=hodnota\fP
-pou¾ij tuto volbu pro hraní ve specifické éøe místo "Default" éry. Éra
-jevybrána pomocí svého id. V¹echny éry jsou popsány v souboru
+pou¾ij tuto volbu pro hraní ve specifické éøe místo "Default" éry. Éra je
+vybrána pomocí svého id. V¹echny éry jsou popsány v souboru
 data/multiplayer.cfg
 .TP 
 \fB\-\-nogui\fP
@@ -136,8 +136,8 @@ ký¾eného efektu.
 .TP 
 \fB\-\-parm<strana>=jméno:hodnota\fP
 nastavuje dal¹í parametry pro tuto stranu. Jméno a hodnota parametru závisí
-nahodnotách voleb \fB\-\-controller\fP a \fB\-\-algorithm.\fP Mìlo by být pou¾ito
-pouze lidmi vyvíjejícími si vlastní umìlouinteligenci. Není zdokumentováno.
+na hodnotách voleb \fB\-\-controller\fP a \fB\-\-algorithm.\fP Mìlo by být pou¾ito
+pouze lidmi vyvíjejícími si vlastní umìlou inteligenci. Není zdokumentováno.
 .TP 
 \fB\-\-scenario=hodnota\fP
 vybírá scénáø pro hru více hráèù. Defaultní scénáø je "multiplayer_Charge".
@@ -158,10 +158,10 @@ wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
 Vytvoøil David White <davidnwhite@verizon.net>.
 .br
 Upravili Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
-<ott@gaon.net> and Soliton <soliton@sonnenkinder.org>.
+<ott@gaon.net> a Soliton <soliton@sonnenkinder.org>.
 .br
 Tuto manovou stránku pùvodnì vytvoøil Cyril Bouthors
-<cyril@bouthors.org>.  Pøeklad Oto 'tapik' Buchta
+<cyril@bouthors.org>. Pøeklad Oto 'tapik' Buchta
 <tapik@buchtovi.cz>
 .br
 Nav¹tivte oficiální stránky: http://www.wesnoth.org/ a oficiální èeské
@@ -171,9 +171,9 @@ stránky http://www.wesnoth.wz.cz/
 .
 Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
 .br
-Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak
-jepublikována nadací Free Software Foundation.Tento program je bez záruky; a
-to i co se týká obchodovatelnosti apou¾itelnosti.
+Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
+publikována nadací Free Software Foundation. Tento program je bez záruky, a
+to i co se týká obchodovatelnosti a pou¾itelnosti.
 .
 .SH "VIZ TAKÉ"
 .
