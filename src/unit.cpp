@@ -584,7 +584,7 @@ std::vector<Uint32> unit::team_rgb_range() const
   return(temp);
 }
 
-const std::vector<Uint32>& unit::flag_rgb() const { 
+const std::vector<Uint32>& unit::flag_rgb() const {
   return game_config::tc_info(flag_rgb_);
 }
 
@@ -859,13 +859,16 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 	// if a key is in the unit and in the filter, they should match
 	// filter only => not for us
 	// unit only => not filtered
-	config unit_cfg;
-	write(unit_cfg);
 	config::const_child_itors my_range = cfg.child_range("wml_filter");
-	//now, match the kids, WML based
-	for(config::const_child_iterator i = my_range.first; i != my_range.second; ++i) {
-		if(!unit_cfg.matches(**i)) return false;
+	if (my_range.first != my_range.second) {
+		config unit_cfg;
+		write(unit_cfg);
+		//now, match the kids, WML based
+		for(config::const_child_iterator i = my_range.first; i != my_range.second; ++i) {
+			if(!unit_cfg.matches(**i)) return false;
+		}
 	}
+
 	return true;
 }
 
@@ -1669,7 +1672,7 @@ void unit::set_idling(const display &disp,const gamemap::location& loc)
 	const idle_animation * tmp = idling_animation(disp,loc);
 	if(!tmp) {
 		set_standing(disp,loc);
-		return; 
+		return;
 	}
 	state_ = STATE_IDLING;
 	draw_bars_ = true;
@@ -1688,15 +1691,15 @@ void unit::restart_animation(const display& disp,int start_time) {
 	frame_begin_time_ = start_time -1;
 }
 
-void unit::set_facing(gamemap::location::DIRECTION dir) { 
-	wassert(dir != gamemap::location::NDIRECTIONS); 
+void unit::set_facing(gamemap::location::DIRECTION dir) {
+	wassert(dir != gamemap::location::NDIRECTIONS);
 	facing_ = dir;
 }
 
 void unit::redraw_unit(display& disp,gamemap::location hex)
 {
 	const gamemap & map = disp.get_map();
-	if(hidden_ || 
+	if(hidden_ ||
 	disp.fogged(hex.x,hex.y) ||
 	(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			disp.get_teams()[disp.viewing_team()].is_enemy(side())) ){
@@ -1759,7 +1762,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		loc = absolute_image();
 	}
 #ifndef LOW_MEM
-	std::string mod=image_mods();	
+	std::string mod=image_mods();
 	if(mod.size()){
 		loc = image::locator(loc,mod);
 	}
@@ -1817,7 +1820,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		if(ellipse.empty()){
 			ellipse="misc/ellipse";
 		}
-		
+
 		std::string tc=team::get_side_colour_index(side_);
 
 		snprintf(buf,sizeof(buf),"%s-%stop.png~RC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
@@ -1826,11 +1829,11 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		ellipse_front.assign(image::get_image(image::locator(buf)));
 	}
 
-	
-	
+
+
 	int tmp_x = x;
 	int tmp_y = y;
-	
+
 	if (!image.null())
 	{
 		tmp_x += (disp.hex_size() - image.get()->w)/2;
@@ -1971,7 +1974,7 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 {
 	const int impassable = 10000000;
 
-	const std::map<t_translation::t_letter,int>::const_iterator i = 
+	const std::map<t_translation::t_letter,int>::const_iterator i =
 		movement_costs_.find(terrain);
 
 	if(i != movement_costs_.end()) {
@@ -1981,7 +1984,7 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
 	const t_translation::t_list& underlying = map_->underlying_mvt_terrain(terrain);
-	
+
 	wassert(!underlying.empty());
 	if(underlying.size() != 1 || underlying.front() != terrain) { // We fail here but first test underlying_mvt_terrain
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
@@ -1990,7 +1993,7 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 		}
 
 		int ret_value = revert?0:impassable;
-		for(t_translation::t_list::const_iterator i = underlying.begin(); 
+		for(t_translation::t_list::const_iterator i = underlying.begin();
 				i != underlying.end(); ++i) {
 
 			if(*i == t_translation::PLUS) {
@@ -2019,7 +2022,7 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 
 	if(movement_costs != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has " 
+			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return impassable;
@@ -2097,7 +2100,7 @@ int unit::defense_modifier(t_translation::t_letter terrain, int recurse_count) c
 
 	if(defense != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has " 
+			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return 100;
@@ -2523,7 +2526,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 			}
 		}else if (apply_to == "image_mod") {
 			LOG_UT << "applying image_mod \n";
-			std::string mod = (**i.first)["replace"];			
+			std::string mod = (**i.first)["replace"];
 			if (!mod.empty()){
 				image_mods_ = mod;
 			}
@@ -2531,8 +2534,8 @@ void unit::add_modification(const std::string& type, const config& mod,
 			mod = (**i.first)["add"];
 			if (!mod.empty()){
 				image_mods_ += mod;
-			}			
-			
+			}
+
 			game_config::add_color_info(**i.first);
 			LOG_UT << "applying image_mod \n";
 		}
