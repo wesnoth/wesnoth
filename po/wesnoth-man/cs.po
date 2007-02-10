@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "POT-Creation-Date: 2007-02-06 15:13+0100\n"
-"PO-Revision-Date: 2007-02-07 21:05+0100\n"
+"PO-Revision-Date: 2007-02-09 17:50+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -89,14 +89,14 @@ msgid ""
 "Wesnoth's large community of on-line players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
-"Poraz všechny vůdce nepřátel použitím vhodně zvolené sestavy jednotek, "
-"dbajepřitom na množství zlata a vesnic. Všechny jednotky mají své silné "
-"stránky islabiny; cesta k vítězství vede i přes postupné posilování "
-"vlastních jednoteka zabránění soupeři v tomtéž. Tak jak jednotky získávají "
-"zkušenosti, získávajíi nové schopnosti a stávají se silnějšími. Hraj ve svém "
-"rodném jazyce aotestuj si své schopnosti proti silnému počítači nebo se "
-"připoj k velkékomunitě hráčů Wesnothu hrajících po síti hry více hráčů. "
-"Vytvoř si vlastníjednotky, scénáře a kampaně a poděl se o ně s ostatními."
+"Poraz všechny vůdce nepřátel použitím vhodně zvolené sestavy jednotek, dbaje "
+"přitom na množství zlata a vesnic. Všechny jednotky mají své silné stránky i "
+"slabiny; cesta k vítězství vede i přes postupné posilování vlastních "
+"jednotek a zabránění soupeři v tomtéž. Tak jak jednotky získávají "
+"zkušenosti, získávají i nové schopnosti a stávají se silnějšími. Hraj ve "
+"svém rodném jazyce a otestuj si své schopnosti proti silnému počítači nebo "
+"se připoj k velké komunitě hráčů Wesnothu hrajících po síti hry více hráčů. "
+"Vytvoř si vlastní jednotky, scénáře a kampaně a poděl se o ně s ostatními."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:29
@@ -204,7 +204,7 @@ msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--load>I<\\ savegame>"
-msgstr "B<--load>I<\\ soubor_s_hrou>"
+msgstr "B<--load>I<\\ soubor_se_hrou>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
@@ -254,7 +254,7 @@ msgstr "B<--nocache>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:92
 msgid "disables caching of game data."
-msgstr "vypíná cache pro data her."
+msgstr "vypíná cache pro herní data."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:92
@@ -265,7 +265,7 @@ msgstr "B<--nosound>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:95
 msgid "runs the game without sounds and music."
-msgstr "spustí her bez zvuků a hudby."
+msgstr "spustí hru bez zvuků a hudby."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:95 ../../doc/man/wesnoth_editor.6:43
@@ -276,7 +276,7 @@ msgstr "B<--path>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:98 ../../doc/man/wesnoth_editor.6:46
 msgid "prints the name of the game data directory and exits."
-msgstr "pouze zobrazí cestu k adresáři s daty."
+msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:98
@@ -309,7 +309,7 @@ msgstr "B<-v>, B<--version>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:107
 msgid "shows the version number and exits."
-msgstr "zobrazí verzi wesnothu."
+msgstr "zobrazí verzi wesnothu a skončí."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:107
@@ -350,9 +350,9 @@ msgid ""
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
-"skončí hru při konci scénáře, tedy bez zobrazení okénka s informací "
-"ovítězství/prohře, které vyžaduje uživatelskou akci - stisk tlačítka OK. "
-"tatovolba se používá při ruzných měřeních."
+"skončí hru při konci scénáře, tedy bez zobrazení okénka s informací o "
+"vítězství/prohře, které vyžaduje uživatelskou akci - stisk tlačítka OK. Tato "
+"volba se používá při ruzných měřeních."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:117
@@ -367,9 +367,9 @@ msgid ""
 "E<lt>numberE<gt> has to be replaced by a side number. It usually is 1 or 2 "
 "but depends on the number of players possible in the chosen scenario."
 msgstr ""
-"Volby s platností pouze pro jednu stranu jsou označeny E<lt>stranaE<gt>. kde "
+"Volby s platností pouze pro jednu stranu jsou označeny E<lt>stranaE<gt>, kde "
 "E<lt>stranaE<gt>je třeba nahradit za číslo konkrétní strany. Obvykle je to 1 "
-"nebo 2, alezáleží to vždy od konkrétního scénáře a od počtu hráčů."
+"nebo 2, ale záleží to vždy od konkrétního scénáře a od počtu hráčů."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:122
@@ -397,7 +397,8 @@ msgstr "B<--controllerE<lt>stranaE<gt>=hodnota>"
 #: ../../doc/man/wesnoth.6:129
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
-msgstr "vybírá druh ovládání. Použitelné hodnoty jsou \"human\" a \"ai\"."
+msgstr ""
+"vybírá druh ovládání strany. Použitelné hodnoty jsou \"human\" a \"ai\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:129
@@ -412,9 +413,9 @@ msgid ""
 "The era is chosen by an id. Eras are described in the data/multiplayer.cfg "
 "file."
 msgstr ""
-"použij tuto volbu pro hraní ve specifické éře místo \"Default\" éry. Éra "
-"jevybrána pomocí svého id. Všechny éry jsou popsány v souboru data/"
-"multiplayer.cfg"
+"použij tuto volbu pro hraní ve specifické éře místo \"Default\" éry. Éra je "
+"vybrána pomocí svého id. Všechny éry jsou popsány v souboru data/multiplayer."
+"cfg"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:134
@@ -445,8 +446,8 @@ msgid ""
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
 "nastavuje další parametry pro tuto stranu. Jméno a hodnota parametru závisí "
-"nahodnotách voleb B<--controller> a B<--algorithm.> Mělo by být použito "
-"pouze lidmi vyvíjejícími si vlastní umělouinteligenci. Není zdokumentováno."
+"na hodnotách voleb B<--controller> a B<--algorithm.> Mělo by být použito "
+"pouze lidmi vyvíjejícími si vlastní umělou inteligenci. Není zdokumentováno."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:148
@@ -523,7 +524,7 @@ msgid ""
 "netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 msgstr ""
 "Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
+"netE<gt> a Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:170
@@ -532,7 +533,7 @@ msgid ""
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Tuto manovou stránku původně vytvořil Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>.  Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt>"
+"orgE<gt>. Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:172 ../../doc/man/wesnoth_editor.6:69
@@ -564,9 +565,9 @@ msgid ""
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
-"Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak "
-"jepublikována nadací Free Software Foundation.Tento program je bez záruky; a "
-"to i co se týká obchodovatelnosti apoužitelnosti."
+"Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je "
+"publikována nadací Free Software Foundation. Tento program je bez záruky, a "
+"to i co se týká obchodovatelnosti a použitelnosti."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:76
@@ -590,7 +591,7 @@ msgstr "WESNOTH_EDITOR"
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "June 2005"
-msgstr "červen 2005"
+msgstr "Červen 2005"
 
 # type: TH
 #: ../../doc/man/wesnoth_editor.6:16
@@ -673,7 +674,7 @@ msgstr "B<-v>,B<\\ --version>"
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:58
 msgid "prints version number and exits."
-msgstr "zobrazuje verzi Wesnothu."
+msgstr "zobrazí verzi Wesnothu a skončí."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:59
@@ -694,9 +695,9 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>.  Upravili Nils "
-"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott E<lt>ott@gaon.netE<gt>.  "
-"Tuto manovou stránku vytvořil Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>. "
+"Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>. Upravili Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> a ott E<lt>ott@gaon.netE<gt>. Tuto "
+"manovou stránku vytvořil Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>. "
 "Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt>."
 
 # type: Plain text
@@ -744,8 +745,8 @@ msgid ""
 "wesnoth client or the socket."
 msgstr ""
 "Součást Bitvy o Wesnoth spravující hry více hráčů. Na http://www.wesnoth.org/"
-"wiki/ServerAdministrationlze nalézt příkazy, které server akceptuje, a to "
-"jak přes soket, tak přímo odwesnoth klienta."
+"wiki/ServerAdministration lze nalézt příkazy, které server akceptuje, a to "
+"jak přes soket, tak přímo od klienta wesnoth."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:44
@@ -760,7 +761,7 @@ msgid ""
 "B<SERVER CONFIG> below for the syntax."
 msgstr ""
 "specifikuje cestu, kde má wesnothd hledat konfigurační soubor. Syntaxe "
-"souboru je popsána v sekci B<KONFIGURACE SERVERU>."
+"souboru je popsána v sekci B<KONFIGURACE SERVERU> níže."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
@@ -773,11 +774,12 @@ msgstr "B<-d,\\ --daemon>"
 msgid "runs wesnothd as a daemon."
 msgstr "spouští wesnothd jako démona."
 
+# pův.: "zobrazuje nápovědu k parametrům příkazové řádky." -- co?
 # type: TP
 #: ../../doc/man/wesnothd.6:52
 #, no-wrap
 msgid "B<-h,\\ --help>"
-msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
+msgstr "B<-h,\\ --help>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:55
@@ -790,7 +792,7 @@ msgstr "B<-p,\\ --port>I<\\ port>"
 msgid ""
 "binds the server to the specified port. If no port is specified, port 15000 "
 "will be used."
-msgstr "říká wesnothd, na kterém portu má běžet. Implicitní hodnota je 15000."
+msgstr "určuje, který port má wesnothd používat. Implicitní hodnota je 15000."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59
@@ -831,7 +833,7 @@ msgstr "B<-V,\\ --version>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:69
 msgid "shows version number and exits."
-msgstr "zobrazí verzi wesnothd."
+msgstr "zobrazí verzi wesnothd a skončí."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:69
@@ -842,7 +844,7 @@ msgstr "B<-v,\\ --verbose>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:72
 msgid "turns on more verbose logging."
-msgstr "zapíná výpis logovacích informací."
+msgstr "zapíná výpis rozšířených logovacích informací."
 
 # type: SH
 #: ../../doc/man/wesnothd.6:73
