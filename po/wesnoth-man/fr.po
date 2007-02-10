@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-02-06 15:13+0100\n"
-"PO-Revision-Date: 2007-01-04 19:02+0100\n"
+"PO-Revision-Date: 2007-02-10 17:18+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Language fr <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "SYNOPSIS"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
+msgstr "B<wesnoth> [I<OPTIONS>] [I<CHEMIN_DE_DATA>]"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
@@ -111,7 +111,7 @@ msgstr "OPTIONS"
 #: ../../doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--bpp>I<\\ number>"
-msgstr "B<--bpp>I<\\ number>"
+msgstr "B<--bpp>I<\\ nombre>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:48 ../../doc/man/wesnoth_editor.6:54
@@ -122,7 +122,7 @@ msgstr "définit la valeur de bits par pixel (couleurs). Exemple : --bpp 32"
 #: ../../doc/man/wesnoth.6:48
 #, no-wrap
 msgid "B<--compress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
-msgstr "B<--compress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
+msgstr "B<--compress>I<\\ E<lt>fichier d'entréeE<gt>>B<\\ >I<E<lt>fichier de sortieE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:51
@@ -154,7 +154,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:56
 #, no-wrap
 msgid "B<--decompress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
-msgstr "B<--decompress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
+msgstr "B<--decompress>I<\\ E<lt>fichier d'entréeE<gt>>B<\\ >I<E<lt>fichier de sortieE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -209,7 +209,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--load>I<\\ savegame>"
-msgstr "B<--load>I<\\ savegame>"
+msgstr "B<--load>I<\\ sauvegarde>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
@@ -222,7 +222,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:73
 #, no-wrap
 msgid "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
-msgstr "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
+msgstr "B<--log-error=\"domaine1,domaine2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:83
@@ -374,7 +374,7 @@ msgid ""
 "but depends on the number of players possible in the chosen scenario."
 msgstr ""
 "Les options spécifiques au mode multijoueur sont marquées d'un "
-"E<lt>numberE<gt>. E<lt>numberE<gt> doit être remplacé par le nombre de "
+"E<lt>nombreE<gt>. E<lt>nombreE<gt> doit être remplacé par le nombre de "
 "joueurs. Il s'agit souvent de 1 ou de 2 mais cela dépend du nombre possible "
 "de joueurs pour le scénario choisi."
 
@@ -382,7 +382,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:122
 #, no-wrap
 msgid "B<--algorithmE<lt>numberE<gt>=value>"
-msgstr "B<--algorithmE<lt>numberE<gt>=value>"
+msgstr "B<--algorithmE<lt>nombreE<gt>=valeur>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:126
@@ -391,27 +391,27 @@ msgid ""
 "side. Available values: \"idle_ai\" and \"sample_ai\"."
 msgstr ""
 "Sélectionne un algorithme utilisé par l'IA de cette faction. Valeurs "
-"possibles : \"idle_ai\" et \"sample_ai\"."
+"possibles : « idle_ai » et « sample_ai »."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:126
 #, no-wrap
 msgid "B<--controllerE<lt>numberE<gt>=value>"
-msgstr "B<--controllerE<lt>numberE<gt>=value>"
+msgstr "B<--controllerE<lt>nombreE<gt>=valeur>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:129
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
 msgstr ""
-"Sélectionne le type de joueur de ce camp. Valeurs possibles : \"human\" and "
-"\"ai\". "
+"Sélectionne le type de joueur de ce camp. Valeurs possibles : « human » et "
+"« ai ». "
 
 # type: TP
 #: ../../doc/man/wesnoth.6:129
 #, no-wrap
 msgid "B<--era=value>"
-msgstr "B<--era=value>"
+msgstr "B<--era=valeur>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:134
@@ -421,7 +421,7 @@ msgid ""
 "file."
 msgstr ""
 "utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère "
-"\"Default\". Cette ère est sélectionnée par un identifiant. Les ères sont "
+"« Par défaut ». Cette ère est sélectionnée par un identifiant. Les ères sont "
 "décrites dans le fichier data/multiplayer.cfg."
 
 # type: TP
@@ -443,7 +443,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<--parmE<lt>numberE<gt>=name:value>"
-msgstr "B<--parmE<lt>numberE<gt>=name:value>"
+msgstr "B<--parmE<lt>nombreE<gt>=nom:valeur>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:148
@@ -461,7 +461,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:148
 #, no-wrap
 msgid "B<--scenario=value>"
-msgstr "B<--scenario=value>"
+msgstr "B<--scenario=valeur>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:151
@@ -470,13 +470,13 @@ msgid ""
 "\"."
 msgstr ""
 "sélectionne un scénario multijoueur. Le scénario par défaut est : "
-"\"multiplayer_Charge\"."
+"« multiplayer_Charge »."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:151
 #, no-wrap
 msgid "B<--sideE<lt>numberE<gt>=value>"
-msgstr "B<--sideE<lt>numberE<gt>=value>"
+msgstr "B<--sideE<lt>nombreE<gt>=valeur>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:156
@@ -491,17 +491,17 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:156
 #, no-wrap
 msgid "B<--turns=value>"
-msgstr "B<--turns=value>"
+msgstr "B<--turns=valeur>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:159
 msgid ""
 "sets the number of turns for the chosen scenario. The default is \"50\"."
-msgstr "défini le nombre de tours du scénario. Valeur par défaut : \"50\"."
+msgstr "défini le nombre de tours du scénario. Valeur par défaut : « 50 »."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Example to test your own AI: "
 msgstr "Exemple pour tester votre propre IA : "
 
@@ -540,7 +540,8 @@ msgstr ""
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
-msgstr "Ce manuel a été écrit par Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+msgstr ""
+"Ce manuel a été à l'origine écrit par Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:172 ../../doc/man/wesnoth_editor.6:69
@@ -703,7 +704,7 @@ msgid ""
 msgstr ""
 "Écrit par David White E<lt>davidnwhite@verizon.netE<gt>. Édité par Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> et ott E<lt>ott@gaon.netE<gt>. Ce "
-"manuel a été écrit par Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"manuel a été à l'origine écrit par Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:77
@@ -736,13 +737,12 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
-#, fuzzy
 msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|]"
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<chemin>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<nombre>\\|] [\\|B<-T> I<nombre>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:41
@@ -759,7 +759,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:44
 #, no-wrap
 msgid "B<-c,\\ --config>I<\\ path>"
-msgstr "B<-c,\\ --config>I<\\ path>"
+msgstr "B<-c,\\ --config>I<\\ chemin>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
@@ -768,7 +768,7 @@ msgid ""
 "B<SERVER CONFIG> below for the syntax."
 msgstr ""
 "indique le fichier de configuration à utiliser par wesnothd. Voir la syntaxe "
-"ci-dessous dans la section B<SERVER CONFIG>."
+"ci-dessous dans la section B<CONFIGURATION DU SERVEUR>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
@@ -804,33 +804,31 @@ msgstr "lie le serveur au port spécifié. Valeur par défaut : 15000."
 #: ../../doc/man/wesnothd.6:59
 #, no-wrap
 msgid "B<-t,\\ --threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ number>"
+msgstr "B<-t,\\ --threads>I<\\ nombre>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy
 msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: 5, max: 30)."
 msgstr ""
-"définit le nombre effectif de threads pour les entrées/sorties réseau à la "
-"valeur n (defaut : 5, max : 30)."
+"définit le nombre maximal de threads pour les entrées/sorties réseau "
+"à la valeur n (defaut : 5, max : 30)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ number>"
+msgstr "B<-T,\\ --max-threads>I<\\ nombre>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:66
-#, fuzzy
 msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
 "there will be no limit (default: 0)."
 msgstr ""
-"définit le nombre effectif de threads pour les entrées/sorties réseau à la "
-"valeur n (defaut : 5, max : 30)."
+"définit le nombre maximal de threads qui seront crées. Si ce nombre est nul, "
+"il n'y a pas de limite (defaut : 0)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:66
@@ -874,12 +872,12 @@ msgstr "[I<tag>]"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:81
 msgid "key=\"I<value>\""
-msgstr "cl=\"I<value>\""
+msgstr "clé=\"I<valeur>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:83
 msgid "key=\"I<value>,I<value>,...\""
-msgstr "cl=\"I<value>,I<value>,...\""
+msgstr "clé=\"I<valeur>,I<valeur>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:85
@@ -942,7 +940,7 @@ msgstr "B<messages_time_period>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
 msgid "The time period (in seconds) message flooding is detected in."
-msgstr "Période, en secondes, après laquelle un échec système est détecté."
+msgstr "Période, en secondes, après laquelle une avalanche de messages est détectée."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
@@ -968,7 +966,7 @@ msgid ""
 "\"."
 msgstr ""
 "Mot de passe des habilitations de l'administrateur. Commence souvent par "
-"\"admin \"."
+"« admin »."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:109
@@ -1063,7 +1061,7 @@ msgid ""
 msgstr ""
 "Écrit par David White E<lt>davidnwhite@verizon.netE<gt>. Édité par Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> et ott E<lt>ott@gaon.netE<gt>. Ce "
-"manuel a été écrit par Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"manuel a été à l'origine écrit par Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
