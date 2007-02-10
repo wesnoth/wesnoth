@@ -122,7 +122,8 @@ msgid ""
 "format (outfile)."
 msgstr ""
 "comprime un file di salvataggio (infile) in formato WML testuale in formato "
-"WML binario (outfile)."
+"WML binario (outfile).comprime un file di salvataggio (infile) in formato "
+"WML testuale in formato WML binario (outfile)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:51
@@ -469,7 +470,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Example to test your own AI: "
 msgstr "Esempio per verificare il funzionamento della tua IA: "
 
@@ -702,17 +703,19 @@ msgstr "Demone di rete per multigiocatore di Battle for Wesnoth"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr "wesnothd - Demone di rete per multigiocatore di Battle for B<Wesnoth>"
+msgstr ""
+"wesnothd - Demone di rete per multigiocatore di Battle for "
+"B<Wesnoth>wesnothd - Demone di rete per multigiocatore di Battle for "
+"B<Wesnoth>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
-#, fuzzy
 msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|]"
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<percorso>\\|] [\\|B<-p> I<porta>\\|] "
+"[\\|B<-t> I<numero>\\|] [\\|B<-T> I<numero>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:41
@@ -726,7 +729,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:44
 #, no-wrap
 msgid "B<-c,\\ --config>I<\\ path>"
-msgstr "B<-c,\\ --config>I<\\ path>"
+msgstr "B<-c,\\ --config>I<\\ percorso>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
@@ -734,6 +737,8 @@ msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax."
 msgstr ""
+"indica a wesnothd dove trovare il file di configurazione da usare. Vedi la "
+"sezione B<SERVER CONFIG> più avanti per la sintassi."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
@@ -756,7 +761,7 @@ msgstr "B<-h,\\ --help>"
 #: ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-p,\\ --port>I<\\ port>"
-msgstr "B<-p,\\ --port>I<\\ port>"
+msgstr "B<-p,\\ --port>I<\\ porta>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
@@ -764,12 +769,14 @@ msgid ""
 "binds the server to the specified port. If no port is specified, port 15000 "
 "will be used."
 msgstr ""
+"lega il server ad una porta specifica. Se non viene specificata una porta, "
+"sarà usata la porta 15000."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59
 #, no-wrap
 msgid "B<-t,\\ --threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ number>"
+msgstr "B<-t,\\ --threads>I<\\ numero>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:62
@@ -780,9 +787,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ number>"
+msgstr "B<-T,\\ --max-threads>I<\\ numero>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:66
@@ -800,7 +807,7 @@ msgstr "B<-V,\\ --version>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:69
 msgid "shows version number and exits."
-msgstr "visualizza il numero di versione ed esci"
+msgstr "visualizza il numero di versione ed esce."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:69
@@ -811,7 +818,7 @@ msgstr "B<-v,\\ --verbose>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:72
 msgid "turns on more verbose logging."
-msgstr ""
+msgstr "rende più prolisso il log."
 
 # type: SH
 #: ../../doc/man/wesnothd.6:73
@@ -887,7 +894,8 @@ msgstr "B<max_messages>"
 #: ../../doc/man/wesnothd.6:100
 msgid "The number of allowed messages in B<messages_time_period>."
 msgstr ""
-"Il numero di messaggi permessi in un periodo di B<messages_time_period>."
+"Il numero di messaggi permessi in un periodo di B<messages_time_period>.Il "
+"numero di messaggi permessi in un periodo di B<messages_time_period>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:100

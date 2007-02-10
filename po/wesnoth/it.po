@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-10 00:14+0100\n"
-"PO-Revision-Date: 2007-02-09 14:10+0100\n"
+"PO-Revision-Date: 2007-02-10 10:30+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2176,7 +2176,6 @@ msgid "Forest"
 msgstr "Foresta"
 
 #: data/help.cfg:368
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -2207,7 +2206,8 @@ msgstr ""
 "Gran parte delle unità ha il 50% di difesa nelle foreste, mentre la "
 "cavalleria ha il 40%. Gli elfi, d'altro canto, godono del 60-70% di difesa, "
 "anche le loro unità a cavallo. I nani di solito hanno il 30% di difesa nelle "
-"foreste."
+"foreste.\n"
+"\n"
 
 #: data/help.cfg:373 data/terrain.cfg:458
 msgid "Hills"
@@ -2376,7 +2376,6 @@ msgid "Castle"
 msgstr "Castello"
 
 #: data/help.cfg:448
-#, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2396,7 +2395,8 @@ msgstr ""
 "esso senza combattere, guadagnando lo stesso bonus difensivo delle altre "
 "unità al suo interno.\n"
 "\n"
-"La maggior parte delle unità ha circa il 60% di difesa nel castello."
+"La maggior parte delle unità ha circa il 60% di difesa nel castello.\n"
+"\n"
 
 #: data/help.cfg:453 data/terrain.cfg:349
 msgid "Sand"
@@ -4791,19 +4791,22 @@ msgstr "Turno 17: Non-morti"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:178
 msgid "Tower of Doom"
-msgstr ""
+msgstr "Torre del destino"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:299
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6p - Sopravvivenza squadra"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
+"Scenario il cui obiettivo è la sopravvivenza per il maggior tempo possibile."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
+"Suggerimento: imparare da dove provengono i nemici ed il loro tipo è di "
+"grande aiuto."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Survive for 32 turns."
@@ -4823,6 +4826,9 @@ msgid ""
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"Congratulazioni per essere sopravvissuto alla mappa che tanti ritenevano "
+"impossibile. Francamente, non ho idea di come tu abbia fatto, quindi inviami "
+"un messaggio presso: roze@roze.mine.nu. Grazie!"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
 msgid ""
@@ -5259,9 +5265,8 @@ msgid "Keep"
 msgstr "Fortezza"
 
 #: data/terrain.cfg:241
-#, fuzzy
 msgid "Encampment keep"
-msgstr "Accampamento"
+msgstr "Fortezza di accampamento"
 
 #: data/terrain.cfg:263
 msgid "Ruined keep"
@@ -5272,9 +5277,8 @@ msgid "Sunken keep"
 msgstr "Fortezza sommersa"
 
 #: data/terrain.cfg:285
-#, fuzzy
 msgid "Swamp keep"
-msgstr "Palude"
+msgstr "Fortezza di palude"
 
 #: data/terrain.cfg:305
 msgid "Dwarven keep"
@@ -5286,7 +5290,7 @@ msgstr "Cratere"
 
 #: data/terrain.cfg:340
 msgid "Rubble"
-msgstr ""
+msgstr "Macerie"
 
 #: data/terrain.cfg:357
 msgid "Oasis"
@@ -5321,9 +5325,8 @@ msgid "Dirt"
 msgstr "Terreno arido"
 
 #: data/terrain.cfg:543
-#, fuzzy
 msgid "Farmland"
-msgstr "tiro di precisione"
+msgstr "Terra agricola"
 
 #: data/terrain.cfg:596
 msgid "Cave Lit"
@@ -7022,6 +7025,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"La magia degli elfi è completamente diversa da quella dell'umanità, tanto "
+"che gli umani sono quasi universalmente incapaci di comprenderla, per non "
+"parlare di usarla. Allo stesso modo, coloro che la padroneggiano sono "
+"altrettanto enigmatici; sebbene si possa dire che sono riveriti dal loro "
+"popolo, si può dire pochissimo sulla loro attuale funzione o scopo "
+"all'interno della società.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Elvish_Enchantress.cfg:69 data/units/Elvish_Shaman.cfg:67
 #: data/units/Elvish_Sorceress.cfg:76
@@ -7325,6 +7336,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Il mondo fatato è molto più potente di quello corporeo. Semplicemente "
+"portare un po' di esso nel nostro mondo può dare risultati violenti. Ciò è "
+"ben compreso dagli elfi, sebbene sia raramente usato con cattive intenzioni; "
+"fare ciò non è semplice, ed è un uso molto malvisto della loro forza.\n"
+"\n"
+"\tQuelle in grado di fare ciò sono rozzamente definite \"streghe\" dalle "
+"altre razze; di sicuro sono in grado di reggere questa parte.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
@@ -7852,7 +7872,6 @@ msgid "Fencer"
 msgstr "Schermitore"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -8331,7 +8350,6 @@ msgid "Arch Mage"
 msgstr "Arcimago"
 
 #: data/units/Human_Mage_Arch.cfg:21
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -8360,7 +8378,8 @@ msgstr ""
 "bisogno gli arcimaghi utilizzano le loro potenti arti magiche e non sono da "
 "prendere alla leggera.\n"
 "\n"
-"Note speciali:"
+"Note speciali: la palla di fuoco degli arcimaghi è magica ed ha sempre "
+"un'elevata possibilità di colpire l'avversario."
 
 #: data/units/Human_Mage_Arch.cfg:76 data/units/Human_Mage_Great.cfg:77
 #: data/units/Human_Mage_Red.cfg:98
@@ -9664,6 +9683,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"I sauri hanno piede leggero, e sono considerevolmente abili a percorrere "
+"territori che confondono i loro nemici. Se combinata ciò con l'esperienza, "
+"la forza e l'equipaggiamento, uno dei loro guerrieri può divenire "
+"particolarmente pericoloso in battagia, soprattutto perché è così difficile "
+"trattenerlo rispetto ad altri avversari. Anche con un armatura un guerriero "
+"sauro può sfruttare anche i più piccoli spazi fra le linee nemiche, ed ha i "
+"mezzi per far pentire il nemico di questo sbaglio.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
@@ -9702,6 +9730,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"I guerrieri sauri sono in generale più deboli di costituzione delle loro "
+"controparti elfiche o umane. Ciò è naturalmente in termini relativi, e "
+"possono ancora divenire considerevolmente potenti, senza perdere alcunché in "
+"mobilità. Ciò è molto pericoloso in battaglia, ed un nemico imprudente può "
+"presto trovarsi messo in difficoltà da queste creature.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
@@ -9718,6 +9753,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Alcuni sauri appaiono vestiti di paramenti considerevoli e coperti dalla "
+"testa ai piedi da orrificanti ed esoteriche forme e segni dipinti o tatuati. "
+"Alcuni sospettano che essi siano visionari, o oracoli della loro gente. Ma "
+"qualunque funzione \"sociale\" essi ricoprano, sono innegabilmente potenti "
+"nella strana magia che la loro razza possiede, e sono da trattare con "
+"prudenza in caso di incontro.\n"
+"\n"
+"Note speciali:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
@@ -11553,9 +11596,8 @@ msgid "Rename Unit"
 msgstr "Rinomina unità"
 
 #: src/menu_events.cpp:1357
-#, fuzzy
 msgid "Team only"
-msgstr "Squadra"
+msgstr "Solo squadra"
 
 #: src/menu_events.cpp:1362
 msgid "Place Label"
@@ -11615,16 +11657,16 @@ msgid "Unknown subcommand"
 msgstr "Comando sconosciuto"
 
 #: src/menu_events.cpp:1593
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
-"Ignora i messaggi dai giocatori su questo elenco. Uso: /ignore [subcommand] "
-"[argument](optional) Sotto-comandi: add remove list clear. Scrivi /help "
-"ignore [subcommand] per ulteriori informazioni."
+"Ignora i messaggi dai giocatori da ignorare ed evidenzia i giocatori della "
+"lista degli amici. Uso: /list [subcommand] [argument](optional) Sotto-"
+"comandi: addfriend addignore remove display clear. Scrivi /help list "
+"[subcommand] per ulteriori informazioni."
 
 #: src/menu_events.cpp:1596
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
