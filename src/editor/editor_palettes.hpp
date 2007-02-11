@@ -127,7 +127,12 @@ private:
 	//the editor_groups as defined in editor-groups.cfg, note the
 	//user must make sure the id's here are the same as the 
 	//editor_group in terrain.cfg
-	std::vector<terrain_group> terrain_groups_; 
+	std::vector<terrain_group> terrain_groups_;
+
+	//the group buttons behave like a radio group this one points to the 
+	//selected button, this value should not be 0 otherwise things will
+	//fail. Thus should be set in constructor
+	gui::button *checked_group_btn_;
 	
 	t_translation::t_letter selected_fg_terrain_, selected_bg_terrain_;
 	const gamemap &map_;

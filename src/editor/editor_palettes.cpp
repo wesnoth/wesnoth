@@ -43,7 +43,8 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 								 const gamemap &map, const config& cfg)
 	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0), map_(map),
 	  top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button"),
-	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
+	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button"),
+	  checked_group_btn_(0)
 {
 
 	// get the available terrains temporary in terrains_
@@ -56,7 +57,15 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	config::child_list::const_iterator g_itor = groups.begin();
 	for(; g_itor != groups.end(); ++ g_itor) {
 		terrain_groups_.push_back(terrain_group(**g_itor, gui));
+
+		// by default the all button is pressed
+		if(terrain_groups_.back().id == "all") {
+			terrain_groups_.back().button.set_check(true);
+			checked_group_btn_ = &terrain_groups_.back().button;
+		}
 	}
+	// the rest of the code assumes this is a valid pointer
+	wassert(checked_group_btn_ != 0);
 
 	// add the groups for all terrains to the map
 	t_translation::t_list::const_iterator t_itor = terrains_.begin();
@@ -95,19 +104,25 @@ void terrain_palette::adjust_size() {
 	const size_t button_height = 24;
 	const size_t button_palette_padding = 8;
 
+	//values for the group buttons fully hardcoded for now
+	//will be fixed later
+	const size_t group_button_height = 24;
+	const size_t group_button_padding = 2;
+	const size_t group_buttons_per_row = 5;
+
 	//determine number of theme button rows
-	size_t theme_rows = terrain_groups_.size() / 4;
-	if(terrain_groups_.size() % 4 != 0) {
-		++theme_rows;
+	size_t group_rows = terrain_groups_.size() / group_buttons_per_row;
+	if(terrain_groups_.size() % group_buttons_per_row != 0) {
+		++group_rows;
 	}
-	const size_t theme_height = theme_rows * (button_height + button_palette_padding);
+	const size_t group_height = group_rows * (group_button_height + group_button_padding);
 
 	SDL_Rect rect = { size_specs_.palette_x, size_specs_.palette_y, size_specs_.palette_w, size_specs_.palette_h };
 	set_location(rect);
-	top_button_y_ = size_specs_.palette_y + theme_height ;
+	top_button_y_ = size_specs_.palette_y + group_height ;
 	button_x_ = size_specs_.palette_x + size_specs_.palette_w/2 - button_height/2;
 	terrain_start_ = top_button_y_ + button_height + button_palette_padding;
-	const size_t space_for_terrains = size_specs_.palette_h - (button_height + button_palette_padding) * 2 - theme_height;
+	const size_t space_for_terrains = size_specs_.palette_h - (button_height + button_palette_padding) * 2 - group_height;
 	rect.y = terrain_start_;
 	rect.h = space_for_terrains;
 	bg_register(rect);
@@ -115,19 +130,19 @@ void terrain_palette::adjust_size() {
 	const unsigned total_terrains = num_terrains();
 	nterrains_ = minimum<int>(terrains_fitting, total_terrains);
 	bot_button_y_ = size_specs_.palette_y + (nterrains_ / size_specs_.terrain_width) * size_specs_.terrain_space + \
-		button_palette_padding * size_specs_.terrain_width + button_height + theme_height;
+		button_palette_padding * size_specs_.terrain_width + button_height + group_height;
 	top_button_.set_location(button_x_, top_button_y_);
 	bot_button_.set_location(button_x_, bot_button_y_);
 
 	size_t top = size_specs_.palette_y;
-	size_t left = size_specs_.palette_x;
+	size_t left = size_specs_.palette_x - 8;
 	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
 		terrain_groups_[i].button.set_location(left, top);
-		if(i % 4 == 3) {
-			left = size_specs_.palette_x;
-			top += button_height + button_palette_padding;
+		if(i % group_buttons_per_row == (group_buttons_per_row - 1)) {
+			left = size_specs_.palette_x - 8;
+			top += group_button_height + group_button_padding;
 		} else {
-			left += button_height + button_palette_padding;
+			left += group_button_height + group_button_padding;
 		}
 	}
 	
@@ -326,7 +341,13 @@ void terrain_palette::draw(bool force) {
 	}
 	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
 		if(terrain_groups_[i].button.pressed()) {
-			set_group(terrain_groups_[i].id);
+			if(&terrain_groups_[i].button == checked_group_btn_) {
+				checked_group_btn_->set_check(true);
+			} else {
+				checked_group_btn_->set_check(false);
+				checked_group_btn_ = &terrain_groups_[i].button;
+				set_group(terrain_groups_[i].id);
+			}
 			break;
 		}
 	}
