@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-10 14:45+0100\n"
-"PO-Revision-Date: 2007-02-01 22:03+0100\n"
+"PO-Revision-Date: 2007-02-11 00:00+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -7835,7 +7835,6 @@ msgid "Cavalier"
 msgstr "Jazdec expert"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
@@ -7937,7 +7936,6 @@ msgid "Fencer"
 msgstr "Šermiar"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -8260,7 +8258,6 @@ msgid "Shock Trooper"
 msgstr "Špeciálny pešiak"
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:15
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and half of their use in "
 "war is simply a matter of intimidation. The only men who can enter their "
@@ -8323,7 +8320,6 @@ msgid "Mage"
 msgstr "Mág"
 
 #: data/units/Human_Mage.cfg:24
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -8374,7 +8370,6 @@ msgid "Arch Mage"
 msgstr "Archmág"
 
 #: data/units/Human_Mage_Arch.cfg:21
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -8395,9 +8390,8 @@ msgstr ""
 "úspechoch. Archmágovia sú zvyčajne na pozíciách učiteľov alebo poradcov "
 "tých, ktorí sú dosť rozumní, aby ocenili plody ich múdrosti. Mnohí majú "
 "bohatých patrónov, čo je výhodné pre obe strany, pretože okrem občasnej rady "
-"či pomoci sa mág môže nerušene sústrediť na svoj výskum. Niektorí zavrhujú "
-"civilizáciu a trávia svoje dni ako pustovníci; často pritom študujú niečo, "
-"čo spoločnosť zavrhuje.\n"
+"či pomoci sa mág môže nerušene sústrediť na svoj výskum. Z toho pochádza "
+"veľká časť ľudského poznania; veda, filozofia, krásne umenia.\n"
 "\n"
 "Archmág nie je trénovaný v boji, ale keď treba, dokáže prejaviť plnú silu "
 "svojho umenia, čo nie je žiadna sranda.\n"
@@ -8440,7 +8434,6 @@ msgid "Red Mage"
 msgstr "Červený mág"
 
 #: data/units/Human_Mage_Red.cfg:21
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice, and given the ruddy cloak of a master. "
@@ -8474,7 +8467,6 @@ msgid "Silver Mage"
 msgstr "Strieborný mág"
 
 #: data/units/Human_Mage_Silver.cfg:24
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -8514,7 +8506,8 @@ msgstr ""
 "Strieborní mágovia sú telesne zdatnejší ako väčšina mágov a ich schopnosti "
 "sú v boji neoceniteľné, ak ich prejavia.\n"
 "\n"
-"Poznámka: Strieborní mágovia sú vysoko odolní voči mnohým magickým útokom."
+"Poznámka: Strieborní mágovia sú vysoko odolní voči mnohým nefyzickým "
+"zraneniam."
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
@@ -8612,7 +8605,6 @@ msgid "Assassin"
 msgstr "Zabijak"
 
 #: data/units/Human_Outlaw_Assassin.cfg:21
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -10490,39 +10482,36 @@ msgid "Ambushed!"
 msgstr "Prepad!"
 
 #: src/actions.cpp:2074
-#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Vidím priateľskú jednotku"
+msgstr[0] "Vidím $friends priateľských jednotiek"
 msgstr[1] "Vidím priateľskú jednotku"
-msgstr[2] "Vidím priateľskú jednotku"
+msgstr[2] "Vidím $friends priateľské jednotky"
 
 #: src/actions.cpp:2076
-#, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "Vidím nepriateľskú jednotku!"
+msgstr[0] "Vidím $enemies nepriateľských jednotiek!"
 msgstr[1] "Vidím nepriateľskú jednotku!"
-msgstr[2] "Vidím nepriateľskú jednotku!"
+msgstr[2] "Vidím $enemies nepriateľské jednotky!"
 
 #: src/actions.cpp:2080
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$friends priateľov"
+msgstr[1] "1 priateľa"
+msgstr[2] "$friends priateľov"
 
 #: src/actions.cpp:2081
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$enemies nepriateľov"
+msgstr[1] "1 nepriateľa"
+msgstr[2] "$enemies nepriateľov"
 
 #: src/actions.cpp:2082
-#, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Vidím jednotky! (priatelia: $friends, nepriatelia: $enemies)"
+msgstr "Vidím jednotky! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2090
 msgid "(press $hotkey to continue)"
@@ -10981,12 +10970,11 @@ msgstr "Potrebné skúsenosti:"
 
 #: src/help.cpp:1170
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "Útoky"
 
 #: src/help.cpp:1177
-#, fuzzy
 msgid "unit help^Name"
-msgstr "Ukonči hru"
+msgstr "Meno"
 
 #: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:702
 msgid "Type"
@@ -11192,7 +11180,7 @@ msgstr "Štatistika"
 
 #: src/menu_events.cpp:236
 msgid "unit list^Traits"
-msgstr ""
+msgstr "Vlastnosti"
 
 #: src/menu_events.cpp:237 src/unit.cpp:2572
 msgid "Moves"
@@ -11221,7 +11209,7 @@ msgstr "Dediny"
 
 #: src/menu_events.cpp:300
 msgid "status^Units"
-msgstr ""
+msgstr "Jednotky"
 
 #: src/menu_events.cpp:301
 msgid "Upkeep"
@@ -11283,7 +11271,6 @@ msgid "Send to allies only"
 msgstr "Pošli iba spojencom"
 
 #: src/menu_events.cpp:582
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Zlato"
@@ -11331,12 +11318,11 @@ msgid "Recall"
 msgstr "Privolaj"
 
 #: src/menu_events.cpp:754
-#, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Musíš mať aspoň $cost zlatých, aby si privolal jednotku"
-msgstr[1] "Musíš mať aspoň $cost zlatých, aby si privolal jednotku"
-msgstr[2] "Musíš mať aspoň $cost zlatých, aby si privolal jednotku"
+msgstr[1] "Musíš mať aspoň $cost zlatku, aby si privolal jednotku"
+msgstr[2] "Musíš mať aspoň $cost zlatky, aby si privolal jednotku"
 
 #: src/menu_events.cpp:1077
 msgid ""
@@ -12105,19 +12091,18 @@ msgid "stone: "
 msgstr "skamenený: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "Celkové zranenie"
-msgstr[1] "Celkové zranenie"
-msgstr[2] "Celkové zranenie"
+msgstr[0] "zranenie"
+msgstr[1] "zranenie"
+msgstr[2] "zranenie"
 
 #: src/reports.cpp:256
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "útoky"
+msgstr[1] "útok"
+msgstr[2] "útoky"
 
 #: src/reports.cpp:266
 msgid "weapon range: "
