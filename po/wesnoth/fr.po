@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-10 14:56+0100\n"
+"POT-Creation-Date: 2007-02-11 13:01+0100\n"
 "PO-Revision-Date: 2007-02-10 17:23+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team:  <wesnoth@ml.free.fr>\n"
@@ -860,15 +860,15 @@ msgstr "Morts-vivants"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:33
+#: data/game.cfg:35
 msgid "Binary Saves"
 msgstr "Sauvegardes binaires"
 
-#: data/game.cfg:40
+#: data/game.cfg:42
 msgid "Show Combat"
 msgstr "Montrer les combats"
 
-#: data/game.cfg:47
+#: data/game.cfg:49
 msgid "Mouse Scrolling"
 msgstr "Défilement de la souris"
 
@@ -2152,7 +2152,7 @@ msgstr ""
 "Certains nains, connus pour leur vitalité, sont plus résistants que les "
 "autres et récupèrent plus vite lorsqu'ils se reposent."
 
-#: data/help.cfg:343 data/terrain.cfg:416
+#: data/help.cfg:343 data/terrain.cfg:443
 msgid "Grassland"
 msgstr "Prairie"
 
@@ -2174,7 +2174,7 @@ msgstr ""
 "\n"
 "La plupart des unités ont une défense de 30 à 40 % en prairie."
 
-#: data/help.cfg:353 data/terrain.cfg:534
+#: data/help.cfg:353 data/terrain.cfg:564
 msgid "Road"
 msgstr "Route"
 
@@ -2188,7 +2188,7 @@ msgstr ""
 "voyageurs. Dans le jeu, les routes sont identiques aux "
 "<ref>dst=terrain_grassland text=prairies</ref>."
 
-#: data/help.cfg:361 data/terrain.cfg:393
+#: data/help.cfg:361 data/terrain.cfg:420
 msgid "Forest"
 msgstr "Forêt"
 
@@ -2226,7 +2226,7 @@ msgstr ""
 "que 30 % de défense en forêt.\n"
 "\n"
 
-#: data/help.cfg:373 data/terrain.cfg:458
+#: data/help.cfg:373 data/terrain.cfg:486
 msgid "Hills"
 msgstr "Collines"
 
@@ -2253,7 +2253,7 @@ msgstr ""
 "que les cavaleries sont limitées à 40 %. Les nains bénéficient d'une défense "
 "de 60 % dans les collines."
 
-#: data/help.cfg:383 data/terrain.cfg:470 data/terrain.cfg:479
+#: data/help.cfg:383 data/terrain.cfg:498 data/terrain.cfg:507
 msgid "Mountains"
 msgstr "Montagnes"
 
@@ -2280,7 +2280,7 @@ msgstr ""
 "La plupart des unités reçoivent environ 60 % de défense dans les montagnes, "
 "tandis que les nains y bénéficient de 70 %."
 
-#: data/help.cfg:393 data/terrain.cfg:555
+#: data/help.cfg:393 data/terrain.cfg:585
 msgid "Swamp"
 msgstr "Marais"
 
@@ -2304,7 +2304,7 @@ msgstr ""
 "La plupart des unités ont 30 % de défense dans les marais. Les ondins, les "
 "nagas et les sauriens y profitent d'une défense de 60 %."
 
-#: data/help.cfg:403 data/terrain.cfg:794
+#: data/help.cfg:403 data/terrain.cfg:844
 msgid "Shallow Water"
 msgstr "Eau peu profonde"
 
@@ -2331,7 +2331,7 @@ msgstr ""
 "La plupart des unités ont 20 à 30 % de défense en eau peu profonde, tandis "
 "que les nagas et les ondins y profitent d'une défense de 60 %."
 
-#: data/help.cfg:413 data/terrain.cfg:784
+#: data/help.cfg:413 data/terrain.cfg:833
 msgid "Deep Water"
 msgstr "Eau profonde"
 
@@ -2351,7 +2351,7 @@ msgstr ""
 "Les ondins et les nagas reçoivent 50 % de défense en eau profonde et leur "
 "plein mouvement."
 
-#: data/help.cfg:423 data/terrain.cfg:47
+#: data/help.cfg:423 data/terrain.cfg:48
 msgid "Snow"
 msgstr "Neige"
 
@@ -2384,7 +2384,7 @@ msgstr ""
 "unités nageuses, y compris celles capables de respirer sous l'eau, ne "
 "peuvent nager sous la glace."
 
-#: data/help.cfg:441 data/terrain.cfg:157
+#: data/help.cfg:441 data/terrain.cfg:169
 msgid "Castle"
 msgstr "Château"
 
@@ -2410,7 +2410,7 @@ msgstr ""
 "\n"
 "La plupart des unités ont environ 60 % de défense dans un château.\n"
 
-#: data/help.cfg:453 data/terrain.cfg:349
+#: data/help.cfg:453 data/terrain.cfg:375
 msgid "Sand"
 msgstr "Sable"
 
@@ -2429,7 +2429,7 @@ msgstr ""
 "\n"
 "La plupart des unités reçoivent une défense de 20 à 40 % dans le sable."
 
-#: data/help.cfg:463 data/terrain.cfg:330
+#: data/help.cfg:463 data/terrain.cfg:356
 msgid "Desert"
 msgstr "Désert"
 
@@ -2443,7 +2443,7 @@ msgstr ""
 "des plages, mais dans le jeu ils sont identiques. Voir <ref>dst=terrain_sand "
 "text=sable</ref>."
 
-#: data/help.cfg:471 data/terrain.cfg:588
+#: data/help.cfg:471 data/terrain.cfg:621
 msgid "Cave"
 msgstr "Caverne"
 
@@ -2469,7 +2469,7 @@ msgstr ""
 "La plupart des unités reçoivent 20 à 40 % de défense dans les cavernes, les "
 "nains en obtiennent 50 %."
 
-#: data/help.cfg:481 data/terrain.cfg:578
+#: data/help.cfg:481 data/terrain.cfg:610
 msgid "Rockbound Cave"
 msgstr "Caverne accidentée"
 
@@ -2518,7 +2518,7 @@ msgstr ""
 "La plupart des unités reçoivent 20 à 40 % de défense dans les cavernes, les "
 "nains en obtiennent 50 %."
 
-#: data/help.cfg:501 data/terrain.cfg:570
+#: data/help.cfg:501 data/terrain.cfg:601
 msgid "Mushroom Grove"
 msgstr "Forêt de champignons"
 
@@ -2546,7 +2546,7 @@ msgstr ""
 "La plupart des unités reçoivent 50% à 60% de défense dans les forêts de "
 "champignons, alors que la cavalerie n'en reçoit que 20%."
 
-#: data/help.cfg:511 data/terrain.cfg:424
+#: data/help.cfg:511 data/terrain.cfg:451
 msgid "Savanna"
 msgstr "Savane"
 
@@ -2560,11 +2560,11 @@ msgstr ""
 "climats les plus chauds du monde. Dans le jeu, elles sont identiques aux "
 "<ref>dst=terrain_grassland text=plaines</ref>."
 
-#: data/help.cfg:519 data/terrain.cfg:613 data/terrain.cfg:624
-#: data/terrain.cfg:637 data/terrain.cfg:649 data/terrain.cfg:663
-#: data/terrain.cfg:674 data/terrain.cfg:684 data/terrain.cfg:695
-#: data/terrain.cfg:706 data/terrain.cfg:717 data/terrain.cfg:730
-#: data/terrain.cfg:741 data/terrain.cfg:754 data/terrain.cfg:769
+#: data/help.cfg:519 data/terrain.cfg:648 data/terrain.cfg:660
+#: data/terrain.cfg:674 data/terrain.cfg:687 data/terrain.cfg:702
+#: data/terrain.cfg:714 data/terrain.cfg:725 data/terrain.cfg:737
+#: data/terrain.cfg:749 data/terrain.cfg:761 data/terrain.cfg:775
+#: data/terrain.cfg:787 data/terrain.cfg:801 data/terrain.cfg:817
 #: src/terrain.cpp:114
 msgid "Village"
 msgstr "Village"
@@ -2592,7 +2592,7 @@ msgstr ""
 "La plupart des unités ont 50 à 60 % de défense dans les villages, tandis que "
 "les cavaleries n'en reçoivent que 40 %.\n"
 
-#: data/help.cfg:531 data/terrain.cfg:492
+#: data/help.cfg:531 data/terrain.cfg:520
 msgid "Chasm"
 msgstr "Abîme"
 
@@ -2608,7 +2608,7 @@ msgstr ""
 "les traverser. Dans le jeu, seules les unités capables de voler au-dessus "
 "des abîmes peuvent traverser ce terrain."
 
-#: data/help.cfg:539 data/terrain.cfg:500
+#: data/help.cfg:539 data/terrain.cfg:529
 msgid "Lava"
 msgstr "Lave"
 
@@ -2626,7 +2626,7 @@ msgstr ""
 "lumière rougeâtre éclairant la zone au-dessus. Celle-ci procure donc un "
 "bonus de dégâts aux unités loyales et enlève celui des unités chaotiques."
 
-#: data/help.cfg:547 data/terrain.cfg:805
+#: data/help.cfg:547 data/terrain.cfg:856
 msgid "River Ford"
 msgstr "Gué"
 
@@ -2645,10 +2645,10 @@ msgstr ""
 "plaine, soit comme une eau peu profonde, selon les meilleurs bonus de "
 "défense et de mouvement pour l'unité qui y est présente."
 
-#: data/help.cfg:555 data/terrain.cfg:60 data/terrain.cfg:69
-#: data/terrain.cfg:78 data/terrain.cfg:88 data/terrain.cfg:97
-#: data/terrain.cfg:106 data/terrain.cfg:116 data/terrain.cfg:125
-#: data/terrain.cfg:134
+#: data/help.cfg:555 data/terrain.cfg:62 data/terrain.cfg:72
+#: data/terrain.cfg:82 data/terrain.cfg:93 data/terrain.cfg:103
+#: data/terrain.cfg:113 data/terrain.cfg:124 data/terrain.cfg:134
+#: data/terrain.cfg:144
 msgid "Bridge"
 msgstr "Pont"
 
@@ -2678,7 +2678,7 @@ msgstr ""
 "nageuse et une unité terrestre ne sont pas capables d'occuper toutes les "
 "deux à la fois une case de pont."
 
-#: data/help.cfg:565 data/terrain.cfg:829
+#: data/help.cfg:565 data/terrain.cfg:881
 msgid "Cave Wall"
 msgstr "Mur de caverne"
 
@@ -5238,100 +5238,100 @@ msgstr "Voile"
 msgid "Fog"
 msgstr "Brouillard"
 
-#: data/terrain.cfg:146
+#: data/terrain.cfg:157
 msgid "Encampment"
 msgstr "Campement"
 
-#: data/terrain.cfg:167
+#: data/terrain.cfg:180
 msgid "Ruin"
 msgstr "Ruine"
 
-#: data/terrain.cfg:178
+#: data/terrain.cfg:192
 msgid "Sunken Ruin"
 msgstr "Ruine engloutie"
 
-#: data/terrain.cfg:190
+#: data/terrain.cfg:205
 msgid "Swamp Ruin"
 msgstr "Ruine des marais"
 
-#: data/terrain.cfg:212
+#: data/terrain.cfg:229
 msgid "Dwarven Castle"
 msgstr "Château nain"
 
-#: data/terrain.cfg:228 data/terrain.cfg:252
+#: data/terrain.cfg:246 data/terrain.cfg:272
 msgid "Keep"
 msgstr "Donjon"
 
-#: data/terrain.cfg:241
+#: data/terrain.cfg:260
 msgid "Encampment keep"
 msgstr "Donjon de cantonnement"
 
-#: data/terrain.cfg:263
+#: data/terrain.cfg:284
 msgid "Ruined keep"
 msgstr "Donjon en ruine"
 
-#: data/terrain.cfg:274
+#: data/terrain.cfg:296
 msgid "Sunken keep"
 msgstr "Donjon englouti"
 
-#: data/terrain.cfg:285
+#: data/terrain.cfg:308
 msgid "Swamp keep"
 msgstr "Donjon des marais"
 
-#: data/terrain.cfg:305
+#: data/terrain.cfg:330
 msgid "Dwarven keep"
 msgstr "Donjon nain"
 
-#: data/terrain.cfg:321
+#: data/terrain.cfg:347
 msgid "Crater"
 msgstr "Cratère"
 
-#: data/terrain.cfg:340
+#: data/terrain.cfg:366
 msgid "Rubble"
 msgstr "Gravats"
 
-#: data/terrain.cfg:357
+#: data/terrain.cfg:383
 msgid "Oasis"
 msgstr "Oasis"
 
-#: data/terrain.cfg:373
+#: data/terrain.cfg:399
 msgid "Snow Forest"
 msgstr "Forêt enneigée"
 
 # FIXME on doit pouvoir faire mieux
-#: data/terrain.cfg:384
+#: data/terrain.cfg:411
 msgid "Great Tree"
 msgstr "Arbre vénérable"
 
-#: data/terrain.cfg:401
+#: data/terrain.cfg:428
 msgid "Tropical Forest"
 msgstr "Forêt tropicale"
 
-#: data/terrain.cfg:438
+#: data/terrain.cfg:465
 msgid "Snow Hills"
 msgstr "Collines enneigées"
 
-#: data/terrain.cfg:448
+#: data/terrain.cfg:476
 msgid "Dunes"
 msgstr "Dunes"
 
-#: data/terrain.cfg:516
+#: data/terrain.cfg:546
 msgid "Desert road"
 msgstr "Route du désert"
 
-#: data/terrain.cfg:525
+#: data/terrain.cfg:555
 msgid "Dirt"
 msgstr "Terre battue"
 
-#: data/terrain.cfg:543
+#: data/terrain.cfg:573
 msgid "Farmland"
 msgstr "Champ"
 
-#: data/terrain.cfg:596
+#: data/terrain.cfg:630
 msgid "Cave Lit"
 msgstr "Caverne éclairée"
 
-#: data/terrain.cfg:820
+#: data/terrain.cfg:872
 msgid "Impassable Mountains"
 msgstr "Montagnes infranchissables"
 
@@ -7340,8 +7340,9 @@ msgstr ""
 "ce n'est d'ailleurs pas une tâche si facile, et c'est une manière très mal "
 "considérée d'utiliser leur force.\n"
 "\n"
-"Celles qui en sont capables sont cavalièrement appelées « Sorcières » par les "
-"autres races. Et elles sont très certainement capables d'agir de la sorte.\n"
+"Celles qui en sont capables sont cavalièrement appelées « Sorcières » par "
+"les autres races. Et elles sont très certainement capables d'agir de la "
+"sorte.\n"
 "\n"
 "Remarque :"
 
@@ -11582,8 +11583,7 @@ msgstr "Rappeler"
 #: src/menu_events.cpp:882
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] ""
-"Vous devez posséder au moins 1 pièce d'or pour rappeler une unité"
+msgstr[0] "Vous devez posséder au moins 1 pièce d'or pour rappeler une unité"
 msgstr[1] ""
 "Vous devez posséder au moins $cost pièces d'or pour rappeler une unité"
 

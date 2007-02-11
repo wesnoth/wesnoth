@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ed-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-10 00:15+0100\n"
+"POT-Creation-Date: 2007-02-11 12:41+0100\n"
 "PO-Revision-Date: 2004-10-18 18:33+0200\n"
 "Last-Translator: lynx \n"
 "Language-Team:  sl\n"
@@ -19,6 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 "X-Generator: KBabel 1.9\n"
+
+#: data/themes/editor.cfg:461
+msgid "File"
+msgstr "Datoteka"
+
+#: data/themes/editor.cfg:470
+msgid "Edit"
+msgstr "Uredi"
+
+#: data/themes/editor.cfg:477
+msgid "Settings"
+msgstr "Nastavitve"
 
 #: src/editor/editor.cpp:235
 msgid "Draw tiles"
@@ -64,43 +76,43 @@ msgstr "Spremeni velikost karte"
 msgid "Flip map"
 msgstr "Prevrni karto"
 
-#: src/editor/editor.cpp:453
+#: src/editor/editor.cpp:456
 msgid "Language"
 msgstr "Jezik"
 
-#: src/editor/editor.cpp:454
+#: src/editor/editor.cpp:457
 msgid "Choose your preferred language:"
 msgstr "Izberite jezik"
 
-#: src/editor/editor.cpp:468 src/editor/editor_main.cpp:253
+#: src/editor/editor.cpp:471 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Urejevalnik kart za Battle for Wesnoth"
 
-#: src/editor/editor.cpp:492
+#: src/editor/editor.cpp:495
 msgid "Save the Map As"
 msgstr "Shrani kot"
 
-#: src/editor/editor.cpp:503
+#: src/editor/editor.cpp:506
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Ta karta že obstaja. Ali jo hočete prepisati?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
+#: src/editor/editor.cpp:529 src/editor/editor.cpp:1304
 msgid "Player"
 msgstr "Igralec"
 
-#: src/editor/editor.cpp:529
+#: src/editor/editor.cpp:532
 msgid "Which Player?"
 msgstr "Kateri igralec?"
 
-#: src/editor/editor.cpp:530
+#: src/editor/editor.cpp:533
 msgid "Which player should start here?"
 msgstr "Kateri igralec naj začne tukaj?"
 
-#: src/editor/editor.cpp:581
+#: src/editor/editor.cpp:584
 msgid "Choose a Map to Load"
 msgstr "Izberi karto za nalaganje"
 
-#: src/editor/editor.cpp:585
+#: src/editor/editor.cpp:588
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -108,39 +120,39 @@ msgstr ""
 "Opozorilo: nedovoljeni znaki v imenu karte. Prosim shranite jo pod drugim "
 "imenom."
 
-#: src/editor/editor.cpp:598 src/editor/editor.cpp:672
+#: src/editor/editor.cpp:601 src/editor/editor.cpp:675
 msgid "The file does not contain a valid map."
 msgstr "Datoteka ne vsebuje veljavne karte."
 
-#: src/editor/editor.cpp:913
+#: src/editor/editor.cpp:916
 msgid "You must have a hex selected on the board."
 msgstr "Na karti morate imeti izbran en hex."
 
-#: src/editor/editor.cpp:1168
+#: src/editor/editor.cpp:1171
 msgid "Quit Editor"
 msgstr "Zapusti Urejevalnik"
 
-#: src/editor/editor.cpp:1173
+#: src/editor/editor.cpp:1176
 msgid "Do you want to save the map before quitting?"
 msgstr "Ali želite pred odhodom karto shraniti?"
 
-#: src/editor/editor.cpp:1221
+#: src/editor/editor.cpp:1224
 msgid "Map saved."
 msgstr "Karta shranjena."
 
-#: src/editor/editor.cpp:1230
+#: src/editor/editor.cpp:1233
 msgid "Could not save the map: $msg"
 msgstr "Karte nisem mogel shraniti: $msg"
 
-#: src/editor/editor.cpp:1245
+#: src/editor/editor.cpp:1248
 msgid "Error: Illegal character in filename."
 msgstr "Napaka: nedovoljen znak v imenu datoteke."
 
-#: src/editor/editor_palettes.cpp:326
+#: src/editor/editor_palettes.cpp:402
 msgid "FG"
 msgstr "FG"
 
-#: src/editor/editor_palettes.cpp:328
+#: src/editor/editor_palettes.cpp:404
 msgid "BG"
 msgstr "BG"
 
@@ -149,15 +161,6 @@ msgstr "BG"
 
 #~ msgid "Load failed: "
 #~ msgstr "Nalaganje ni uspelo: "
-
-#~ msgid "File"
-#~ msgstr "Datoteka"
-
-#~ msgid "Edit"
-#~ msgstr "Uredi"
-
-#~ msgid "Settings"
-#~ msgstr "Nastavitve"
 
 #~ msgid "Player "
 #~ msgstr "Igralec "

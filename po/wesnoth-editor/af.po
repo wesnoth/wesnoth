@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-10 00:15+0100\n"
+"POT-Creation-Date: 2007-02-11 12:41+0100\n"
 "PO-Revision-Date: 2005-12-05 10:25+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: afrikaans\n"
@@ -11,6 +11,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Afrikaans\n"
+
+#: data/themes/editor.cfg:461
+msgid "File"
+msgstr "Lêer"
+
+#: data/themes/editor.cfg:470
+msgid "Edit"
+msgstr "Wysig"
+
+#: data/themes/editor.cfg:477
+msgid "Settings"
+msgstr "Instellings"
 
 #: src/editor/editor.cpp:235
 msgid "Draw tiles"
@@ -56,43 +68,43 @@ msgstr "Verander Kaart Grootte"
 msgid "Flip map"
 msgstr "Keer kaart om"
 
-#: src/editor/editor.cpp:453
+#: src/editor/editor.cpp:456
 msgid "Language"
 msgstr "Taal"
 
-#: src/editor/editor.cpp:454
+#: src/editor/editor.cpp:457
 msgid "Choose your preferred language:"
 msgstr "Dui jou taalvoorkeur aan:"
 
-#: src/editor/editor.cpp:468 src/editor/editor_main.cpp:253
+#: src/editor/editor.cpp:471 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Die stryd vir Wesnoth Kaart Redigeerder"
 
-#: src/editor/editor.cpp:492
+#: src/editor/editor.cpp:495
 msgid "Save the Map As"
 msgstr "Stoor die Kaart As"
 
-#: src/editor/editor.cpp:503
+#: src/editor/editor.cpp:506
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kaart bestaan reeds. Wil jy dit vervang?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
+#: src/editor/editor.cpp:529 src/editor/editor.cpp:1304
 msgid "Player"
 msgstr "Speler"
 
-#: src/editor/editor.cpp:529
+#: src/editor/editor.cpp:532
 msgid "Which Player?"
 msgstr "Watter Speler?"
 
-#: src/editor/editor.cpp:530
+#: src/editor/editor.cpp:533
 msgid "Which player should start here?"
 msgstr "Watter speler moet hier begin?"
 
-#: src/editor/editor.cpp:581
+#: src/editor/editor.cpp:584
 msgid "Choose a Map to Load"
 msgstr "Kies 'n kaart om te laai"
 
-#: src/editor/editor.cpp:585
+#: src/editor/editor.cpp:588
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -100,39 +112,39 @@ msgstr ""
 "Waarskuwing: Onwettige karakters is in die kaartnaam gevind. Jy sal onder 'n "
 "ander naam moet stoor."
 
-#: src/editor/editor.cpp:598 src/editor/editor.cpp:672
+#: src/editor/editor.cpp:601 src/editor/editor.cpp:675
 msgid "The file does not contain a valid map."
 msgstr "Hierdie lêer bevat nie 'n geldige kaart nie."
 
-#: src/editor/editor.cpp:913
+#: src/editor/editor.cpp:916
 msgid "You must have a hex selected on the board."
 msgstr "Jy moet een van die heksagonale spasies op die bord gemerk hê."
 
-#: src/editor/editor.cpp:1168
+#: src/editor/editor.cpp:1171
 msgid "Quit Editor"
 msgstr "Sluit Editor"
 
-#: src/editor/editor.cpp:1173
+#: src/editor/editor.cpp:1176
 msgid "Do you want to save the map before quitting?"
 msgstr "Wil jy die kaart stoor voor jy afsluit?"
 
-#: src/editor/editor.cpp:1221
+#: src/editor/editor.cpp:1224
 msgid "Map saved."
 msgstr "Kaart gestoor."
 
-#: src/editor/editor.cpp:1230
+#: src/editor/editor.cpp:1233
 msgid "Could not save the map: $msg"
 msgstr "Kon nie die kaart stoor nie: $msg"
 
-#: src/editor/editor.cpp:1245
+#: src/editor/editor.cpp:1248
 msgid "Error: Illegal character in filename."
 msgstr "Fout: Onwettige karakter in lêernaam."
 
-#: src/editor/editor_palettes.cpp:326
+#: src/editor/editor_palettes.cpp:402
 msgid "FG"
 msgstr "VG"
 
-#: src/editor/editor_palettes.cpp:328
+#: src/editor/editor_palettes.cpp:404
 msgid "BG"
 msgstr "AG"
 
@@ -141,15 +153,6 @@ msgstr "AG"
 
 #~ msgid "Load failed: "
 #~ msgstr "Oplaai het misluk: "
-
-#~ msgid "File"
-#~ msgstr "Lêer"
-
-#~ msgid "Edit"
-#~ msgstr "Wysig"
-
-#~ msgid "Settings"
-#~ msgstr "Instellings"
 
 #~ msgid "Player "
 #~ msgstr "Speler"

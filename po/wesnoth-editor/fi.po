@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-10 00:15+0100\n"
+"POT-Creation-Date: 2007-02-11 12:41+0100\n"
 "PO-Revision-Date: 2006-02-21 22:09+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
@@ -15,6 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/themes/editor.cfg:461
+msgid "File"
+msgstr "Tiedosto"
+
+#: data/themes/editor.cfg:470
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: data/themes/editor.cfg:477
+msgid "Settings"
+msgstr "Asetukset"
 
 #: src/editor/editor.cpp:235
 msgid "Draw tiles"
@@ -60,43 +72,43 @@ msgstr "Muuta kartan kokoa"
 msgid "Flip map"
 msgstr "Käännä kartta"
 
-#: src/editor/editor.cpp:453
+#: src/editor/editor.cpp:456
 msgid "Language"
 msgstr "Kieli"
 
-#: src/editor/editor.cpp:454
+#: src/editor/editor.cpp:457
 msgid "Choose your preferred language:"
 msgstr "Valitse haluamasi kieli:"
 
-#: src/editor/editor.cpp:468 src/editor/editor_main.cpp:253
+#: src/editor/editor.cpp:471 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Taistelu Wesnothista -karttaeditori"
 
-#: src/editor/editor.cpp:492
+#: src/editor/editor.cpp:495
 msgid "Save the Map As"
 msgstr "Tallenna kartta nimellä"
 
-#: src/editor/editor.cpp:503
+#: src/editor/editor.cpp:506
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kartta on jo olemassa. Haluatko korvata sen?"
 
-#: src/editor/editor.cpp:526 src/editor/editor.cpp:1301
+#: src/editor/editor.cpp:529 src/editor/editor.cpp:1304
 msgid "Player"
 msgstr "Pelaaja"
 
-#: src/editor/editor.cpp:529
+#: src/editor/editor.cpp:532
 msgid "Which Player?"
 msgstr "Pelaajan numero?"
 
-#: src/editor/editor.cpp:530
+#: src/editor/editor.cpp:533
 msgid "Which player should start here?"
 msgstr "Mikä pelaaja aloittaa tästä?"
 
-#: src/editor/editor.cpp:581
+#: src/editor/editor.cpp:584
 msgid "Choose a Map to Load"
 msgstr "Valitse ladattava kartta"
 
-#: src/editor/editor.cpp:585
+#: src/editor/editor.cpp:588
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -104,39 +116,39 @@ msgstr ""
 "Varoitus: Kartan nimi sisältää virheellisiä merkkejä. Ole hyvä ja tallenna "
 "kartta toisella nimellä."
 
-#: src/editor/editor.cpp:598 src/editor/editor.cpp:672
+#: src/editor/editor.cpp:601 src/editor/editor.cpp:675
 msgid "The file does not contain a valid map."
 msgstr "Tiedosto ei sisällä kelvollista karttaa."
 
-#: src/editor/editor.cpp:913
+#: src/editor/editor.cpp:916
 msgid "You must have a hex selected on the board."
 msgstr "Sinulla täytyy olla jokin heksa valittuna kartalta."
 
-#: src/editor/editor.cpp:1168
+#: src/editor/editor.cpp:1171
 msgid "Quit Editor"
 msgstr "Lopeta"
 
-#: src/editor/editor.cpp:1173
+#: src/editor/editor.cpp:1176
 msgid "Do you want to save the map before quitting?"
 msgstr "Haluatko tallentaa kartan ennenkuin lopetat?"
 
-#: src/editor/editor.cpp:1221
+#: src/editor/editor.cpp:1224
 msgid "Map saved."
 msgstr "Kartta tallennettu."
 
-#: src/editor/editor.cpp:1230
+#: src/editor/editor.cpp:1233
 msgid "Could not save the map: $msg"
 msgstr "Karttaa ei voitu tallentaa: $msg"
 
-#: src/editor/editor.cpp:1245
+#: src/editor/editor.cpp:1248
 msgid "Error: Illegal character in filename."
 msgstr "Virhe: virheellinen merkki tiedoston nimessä."
 
-#: src/editor/editor_palettes.cpp:326
+#: src/editor/editor_palettes.cpp:402
 msgid "FG"
 msgstr "Etuala (vasen näppäin)"
 
-#: src/editor/editor_palettes.cpp:328
+#: src/editor/editor_palettes.cpp:404
 msgid "BG"
 msgstr "Taka-ala (oikea näppäin)"
 
@@ -146,15 +158,6 @@ msgstr "Taka-ala (oikea näppäin)"
 
 #~ msgid "Load failed: "
 #~ msgstr "Lataus epäonnistui: "
-
-#~ msgid "File"
-#~ msgstr "Tiedosto"
-
-#~ msgid "Edit"
-#~ msgstr "Muokkaa"
-
-#~ msgid "Settings"
-#~ msgstr "Asetukset"
 
 #~ msgid "Player "
 #~ msgstr "Pelaaja "

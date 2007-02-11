@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-10 14:56+0100\n"
+"POT-Creation-Date: 2007-02-11 13:01+0100\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -728,15 +728,15 @@ msgstr "언데드"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "gkai00mp.ttf,FreeSans.ttf,sazanami-gothic.ttf,DejaVuSans.ttf"
 
-#: data/game.cfg:33
+#: data/game.cfg:35
 msgid "Binary Saves"
 msgstr ""
 
-#: data/game.cfg:40
+#: data/game.cfg:42
 msgid "Show Combat"
 msgstr "전투 보여주기"
 
-#: data/game.cfg:47
+#: data/game.cfg:49
 msgid "Mouse Scrolling"
 msgstr ""
 
@@ -1602,7 +1602,7 @@ msgid ""
 "recover more quickly when resting."
 msgstr ""
 
-#: data/help.cfg:343 data/terrain.cfg:416
+#: data/help.cfg:343 data/terrain.cfg:443
 msgid "Grassland"
 msgstr "초원"
 
@@ -1617,7 +1617,7 @@ msgid ""
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
 
-#: data/help.cfg:353 data/terrain.cfg:534
+#: data/help.cfg:353 data/terrain.cfg:564
 msgid "Road"
 msgstr "길"
 
@@ -1628,7 +1628,7 @@ msgid ""
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
-#: data/help.cfg:361 data/terrain.cfg:393
+#: data/help.cfg:361 data/terrain.cfg:420
 msgid "Forest"
 msgstr "숲"
 
@@ -1650,7 +1650,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:373 data/terrain.cfg:458
+#: data/help.cfg:373 data/terrain.cfg:486
 msgid "Hills"
 msgstr "언덕"
 
@@ -1667,7 +1667,7 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 
-#: data/help.cfg:383 data/terrain.cfg:470 data/terrain.cfg:479
+#: data/help.cfg:383 data/terrain.cfg:498 data/terrain.cfg:507
 msgid "Mountains"
 msgstr "산"
 
@@ -1684,7 +1684,7 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 
-#: data/help.cfg:393 data/terrain.cfg:555
+#: data/help.cfg:393 data/terrain.cfg:585
 msgid "Swamp"
 msgstr "늪"
 
@@ -1700,7 +1700,7 @@ msgid ""
 "all generally enjoy 60%."
 msgstr ""
 
-#: data/help.cfg:403 data/terrain.cfg:794
+#: data/help.cfg:403 data/terrain.cfg:844
 msgid "Shallow Water"
 msgstr "얕은 물"
 
@@ -1717,7 +1717,7 @@ msgid ""
 "Naga and Mermen enjoy 60%."
 msgstr ""
 
-#: data/help.cfg:413 data/terrain.cfg:784
+#: data/help.cfg:413 data/terrain.cfg:833
 msgid "Deep Water"
 msgstr "깊은 물"
 
@@ -1730,7 +1730,7 @@ msgid ""
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 
-#: data/help.cfg:423 data/terrain.cfg:47
+#: data/help.cfg:423 data/terrain.cfg:48
 msgid "Snow"
 msgstr "눈"
 
@@ -1754,7 +1754,7 @@ msgid ""
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 
-#: data/help.cfg:441 data/terrain.cfg:157
+#: data/help.cfg:441 data/terrain.cfg:169
 msgid "Castle"
 msgstr "성"
 
@@ -1771,7 +1771,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:453 data/terrain.cfg:349
+#: data/help.cfg:453 data/terrain.cfg:375
 msgid "Sand"
 msgstr "모래"
 
@@ -1784,7 +1784,7 @@ msgid ""
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
 
-#: data/help.cfg:463 data/terrain.cfg:330
+#: data/help.cfg:463 data/terrain.cfg:356
 msgid "Desert"
 msgstr "사막"
 
@@ -1795,7 +1795,7 @@ msgid ""
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
 
-#: data/help.cfg:471 data/terrain.cfg:588
+#: data/help.cfg:471 data/terrain.cfg:621
 msgid "Cave"
 msgstr "동굴"
 
@@ -1811,7 +1811,7 @@ msgid ""
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
 
-#: data/help.cfg:481 data/terrain.cfg:578
+#: data/help.cfg:481 data/terrain.cfg:610
 msgid "Rockbound Cave"
 msgstr "암성 동굴"
 
@@ -1843,7 +1843,7 @@ msgid ""
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
 
-#: data/help.cfg:501 data/terrain.cfg:570
+#: data/help.cfg:501 data/terrain.cfg:601
 msgid "Mushroom Grove"
 msgstr "버섯 동굴"
 
@@ -1860,7 +1860,7 @@ msgid ""
 "receive only 20%."
 msgstr ""
 
-#: data/help.cfg:511 data/terrain.cfg:424
+#: data/help.cfg:511 data/terrain.cfg:451
 msgid "Savanna"
 msgstr "대초원"
 
@@ -1871,11 +1871,11 @@ msgid ""
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
-#: data/help.cfg:519 data/terrain.cfg:613 data/terrain.cfg:624
-#: data/terrain.cfg:637 data/terrain.cfg:649 data/terrain.cfg:663
-#: data/terrain.cfg:674 data/terrain.cfg:684 data/terrain.cfg:695
-#: data/terrain.cfg:706 data/terrain.cfg:717 data/terrain.cfg:730
-#: data/terrain.cfg:741 data/terrain.cfg:754 data/terrain.cfg:769
+#: data/help.cfg:519 data/terrain.cfg:648 data/terrain.cfg:660
+#: data/terrain.cfg:674 data/terrain.cfg:687 data/terrain.cfg:702
+#: data/terrain.cfg:714 data/terrain.cfg:725 data/terrain.cfg:737
+#: data/terrain.cfg:749 data/terrain.cfg:761 data/terrain.cfg:775
+#: data/terrain.cfg:787 data/terrain.cfg:801 data/terrain.cfg:817
 #: src/terrain.cpp:114
 msgid "Village"
 msgstr "마을"
@@ -1894,7 +1894,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:531 data/terrain.cfg:492
+#: data/help.cfg:531 data/terrain.cfg:520
 msgid "Chasm"
 msgstr "협곡"
 
@@ -1906,7 +1906,7 @@ msgid ""
 "terrain."
 msgstr ""
 
-#: data/help.cfg:539 data/terrain.cfg:500
+#: data/help.cfg:539 data/terrain.cfg:529
 msgid "Lava"
 msgstr "용암"
 
@@ -1919,7 +1919,7 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
 
-#: data/help.cfg:547 data/terrain.cfg:805
+#: data/help.cfg:547 data/terrain.cfg:856
 msgid "River Ford"
 msgstr "시내"
 
@@ -1933,10 +1933,10 @@ msgid ""
 "the unit on it."
 msgstr ""
 
-#: data/help.cfg:555 data/terrain.cfg:60 data/terrain.cfg:69
-#: data/terrain.cfg:78 data/terrain.cfg:88 data/terrain.cfg:97
-#: data/terrain.cfg:106 data/terrain.cfg:116 data/terrain.cfg:125
-#: data/terrain.cfg:134
+#: data/help.cfg:555 data/terrain.cfg:62 data/terrain.cfg:72
+#: data/terrain.cfg:82 data/terrain.cfg:93 data/terrain.cfg:103
+#: data/terrain.cfg:113 data/terrain.cfg:124 data/terrain.cfg:134
+#: data/terrain.cfg:144
 msgid "Bridge"
 msgstr "다리"
 
@@ -1955,7 +1955,7 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 
-#: data/help.cfg:565 data/terrain.cfg:829
+#: data/help.cfg:565 data/terrain.cfg:881
 msgid "Cave Wall"
 msgstr "동굴 벽"
 
@@ -3809,104 +3809,104 @@ msgstr "맵 가리기"
 msgid "Fog"
 msgstr "안개"
 
-#: data/terrain.cfg:146
+#: data/terrain.cfg:157
 msgid "Encampment"
 msgstr ""
 
-#: data/terrain.cfg:167
+#: data/terrain.cfg:180
 msgid "Ruin"
 msgstr ""
 
-#: data/terrain.cfg:178
+#: data/terrain.cfg:192
 msgid "Sunken Ruin"
 msgstr ""
 
-#: data/terrain.cfg:190
+#: data/terrain.cfg:205
 msgid "Swamp Ruin"
 msgstr ""
 
-#: data/terrain.cfg:212
+#: data/terrain.cfg:229
 msgid "Dwarven Castle"
 msgstr ""
 
-#: data/terrain.cfg:228 data/terrain.cfg:252
+#: data/terrain.cfg:246 data/terrain.cfg:272
 msgid "Keep"
 msgstr ""
 
-#: data/terrain.cfg:241
+#: data/terrain.cfg:260
 msgid "Encampment keep"
 msgstr ""
 
-#: data/terrain.cfg:263
+#: data/terrain.cfg:284
 msgid "Ruined keep"
 msgstr ""
 
-#: data/terrain.cfg:274
+#: data/terrain.cfg:296
 msgid "Sunken keep"
 msgstr ""
 
-#: data/terrain.cfg:285
+#: data/terrain.cfg:308
 #, fuzzy
 msgid "Swamp keep"
 msgstr "늪"
 
-#: data/terrain.cfg:305
+#: data/terrain.cfg:330
 msgid "Dwarven keep"
 msgstr ""
 
-#: data/terrain.cfg:321
+#: data/terrain.cfg:347
 #, fuzzy
 msgid "Crater"
 msgstr "성"
 
-#: data/terrain.cfg:340
+#: data/terrain.cfg:366
 #, fuzzy
 msgid "Rubble"
 msgstr "두 배"
 
-#: data/terrain.cfg:357
+#: data/terrain.cfg:383
 msgid "Oasis"
 msgstr "오아시스"
 
-#: data/terrain.cfg:373
+#: data/terrain.cfg:399
 msgid "Snow Forest"
 msgstr ""
 
-#: data/terrain.cfg:384
+#: data/terrain.cfg:411
 msgid "Great Tree"
 msgstr ""
 
-#: data/terrain.cfg:401
+#: data/terrain.cfg:428
 msgid "Tropical Forest"
 msgstr "열대 숲"
 
-#: data/terrain.cfg:438
+#: data/terrain.cfg:465
 msgid "Snow Hills"
 msgstr ""
 
-#: data/terrain.cfg:448
+#: data/terrain.cfg:476
 msgid "Dunes"
 msgstr "모래 언덕"
 
-#: data/terrain.cfg:516
+#: data/terrain.cfg:546
 #, fuzzy
 msgid "Desert road"
 msgstr "사막"
 
-#: data/terrain.cfg:525
+#: data/terrain.cfg:555
 msgid "Dirt"
 msgstr "흙"
 
-#: data/terrain.cfg:543
+#: data/terrain.cfg:573
 #, fuzzy
 msgid "Farmland"
 msgstr "스피어맨"
 
-#: data/terrain.cfg:596
+#: data/terrain.cfg:630
 msgid "Cave Lit"
 msgstr ""
 
-#: data/terrain.cfg:820
+#: data/terrain.cfg:872
 #, fuzzy
 msgid "Impassable Mountains"
 msgstr "산"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-10 14:56+0100\n"
+"POT-Creation-Date: 2007-02-11 13:01+0100\n"
 "PO-Revision-Date: 2007-02-03 16:05+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -838,15 +838,15 @@ msgstr "Мертвецы"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:33
+#: data/game.cfg:35
 msgid "Binary Saves"
 msgstr "Двоичные сохранения"
 
-#: data/game.cfg:40
+#: data/game.cfg:42
 msgid "Show Combat"
 msgstr "Показать битву"
 
-#: data/game.cfg:47
+#: data/game.cfg:49
 msgid "Mouse Scrolling"
 msgstr "Прокрутка мыши"
 
@@ -2097,7 +2097,7 @@ msgstr ""
 "Оправдывая свою живучесть, некотрые гномы крепче других и восстанавливаются "
 "быстрее во время отдыха."
 
-#: data/help.cfg:343 data/terrain.cfg:416
+#: data/help.cfg:343 data/terrain.cfg:443
 msgid "Grassland"
 msgstr "Луг"
 
@@ -2119,7 +2119,7 @@ msgstr ""
 "\n"
 "Большинство соединения имеют защиту от 30% до 40% на лугах."
 
-#: data/help.cfg:353 data/terrain.cfg:534
+#: data/help.cfg:353 data/terrain.cfg:564
 msgid "Road"
 msgstr "Дорога"
 
@@ -2133,7 +2133,7 @@ msgstr ""
 "прошедшими по ним. В игровом контексте дороги считаются идентичными "
 "<ref>dst=terrain_grassland text=Лугу</ref>. "
 
-#: data/help.cfg:361 data/terrain.cfg:393
+#: data/help.cfg:361 data/terrain.cfg:420
 msgid "Forest"
 msgstr "Лес"
 
@@ -2170,7 +2170,7 @@ msgstr ""
 "обычно получают только 30% защиты в лесах.\n"
 "\n"
 
-#: data/help.cfg:373 data/terrain.cfg:458
+#: data/help.cfg:373 data/terrain.cfg:486
 msgid "Hills"
 msgstr "Холмы"
 
@@ -2196,7 +2196,7 @@ msgstr ""
 "Большинство соединений имеют около 50% защиты в холмах, а кавалерия "
 "ограничена 40%. Гномы получают 60% защиты в холмах."
 
-#: data/help.cfg:383 data/terrain.cfg:470 data/terrain.cfg:479
+#: data/help.cfg:383 data/terrain.cfg:498 data/terrain.cfg:507
 msgid "Mountains"
 msgstr "Горы"
 
@@ -2223,7 +2223,7 @@ msgstr ""
 "Большинство соединений получают до 60% защиты в горах, в то время как гномы "
 "получают 70%."
 
-#: data/help.cfg:393 data/terrain.cfg:555
+#: data/help.cfg:393 data/terrain.cfg:585
 msgid "Swamp"
 msgstr "Болото"
 
@@ -2247,7 +2247,7 @@ msgstr ""
 "Большинство соединений получает 30% защиты в болоте. Водяные, наги и ящеры "
 "обычно получают 60%."
 
-#: data/help.cfg:403 data/terrain.cfg:794
+#: data/help.cfg:403 data/terrain.cfg:844
 msgid "Shallow Water"
 msgstr "Отмель"
 
@@ -2273,7 +2273,7 @@ msgstr ""
 "Большинство соединений имеют от 20 до 30% защиты на мелководье, в то время "
 "как и наги и водяные получают 60%."
 
-#: data/help.cfg:413 data/terrain.cfg:784
+#: data/help.cfg:413 data/terrain.cfg:833
 msgid "Deep Water"
 msgstr "Глубокая вода"
 
@@ -2292,7 +2292,7 @@ msgstr ""
 "\n"
 "Водяные и наги получают 50% защиты в глубокой воде, и полный запас движения."
 
-#: data/help.cfg:423 data/terrain.cfg:47
+#: data/help.cfg:423 data/terrain.cfg:48
 msgid "Snow"
 msgstr "Снег"
 
@@ -2325,7 +2325,7 @@ msgstr ""
 "что плавающие соединения, несмотря на умение дышать под водой, не могут "
 "плавать подо льдом."
 
-#: data/help.cfg:441 data/terrain.cfg:157
+#: data/help.cfg:441 data/terrain.cfg:169
 msgid "Castle"
 msgstr "Замок"
 
@@ -2351,7 +2351,7 @@ msgstr ""
 "Большинство соединений имеет около 60% защиты в замке.\n"
 "\n"
 
-#: data/help.cfg:453 data/terrain.cfg:349
+#: data/help.cfg:453 data/terrain.cfg:375
 msgid "Sand"
 msgstr "Песок"
 
@@ -2370,7 +2370,7 @@ msgstr ""
 "\n"
 "Большинство соединений получают от 20 до 40% защиты на песке."
 
-#: data/help.cfg:463 data/terrain.cfg:330
+#: data/help.cfg:463 data/terrain.cfg:356
 msgid "Desert"
 msgstr "Пустыня"
 
@@ -2384,7 +2384,7 @@ msgstr ""
 "пляжи, тем не менее по игровым правилам, они идентичны. Смотрите "
 "<ref>dst=terrain_sand text=Песок</ref>."
 
-#: data/help.cfg:471 data/terrain.cfg:588
+#: data/help.cfg:471 data/terrain.cfg:621
 msgid "Cave"
 msgstr "Пещера"
 
@@ -2409,7 +2409,7 @@ msgstr ""
 "Большинство соединений получают от 20 до 40% защиты в пещерах, в то время "
 "как гномы имеют 50%."
 
-#: data/help.cfg:481 data/terrain.cfg:578
+#: data/help.cfg:481 data/terrain.cfg:610
 msgid "Rockbound Cave"
 msgstr "Каменистая пещера"
 
@@ -2456,7 +2456,7 @@ msgstr ""
 "В пещере большинство соединений получают от 20% до 40% защиты, в то время "
 "как гномы имеют 50%."
 
-#: data/help.cfg:501 data/terrain.cfg:570
+#: data/help.cfg:501 data/terrain.cfg:601
 msgid "Mushroom Grove"
 msgstr "Грибная роща"
 
@@ -2482,7 +2482,7 @@ msgstr ""
 "В грибных рощах большинство соединений получают от 50% до 60% к защите, а "
 "кавалерия — только 20%."
 
-#: data/help.cfg:511 data/terrain.cfg:424
+#: data/help.cfg:511 data/terrain.cfg:451
 msgid "Savanna"
 msgstr "Саванна"
 
@@ -2496,11 +2496,11 @@ msgstr ""
 "местах с теплым климатом. По игровым правилам, они идентичны с "
 "<ref>dst=terrain_grassland text=Лугом</ref>."
 
-#: data/help.cfg:519 data/terrain.cfg:613 data/terrain.cfg:624
-#: data/terrain.cfg:637 data/terrain.cfg:649 data/terrain.cfg:663
-#: data/terrain.cfg:674 data/terrain.cfg:684 data/terrain.cfg:695
-#: data/terrain.cfg:706 data/terrain.cfg:717 data/terrain.cfg:730
-#: data/terrain.cfg:741 data/terrain.cfg:754 data/terrain.cfg:769
+#: data/help.cfg:519 data/terrain.cfg:648 data/terrain.cfg:660
+#: data/terrain.cfg:674 data/terrain.cfg:687 data/terrain.cfg:702
+#: data/terrain.cfg:714 data/terrain.cfg:725 data/terrain.cfg:737
+#: data/terrain.cfg:749 data/terrain.cfg:761 data/terrain.cfg:775
+#: data/terrain.cfg:787 data/terrain.cfg:801 data/terrain.cfg:817
 #: src/terrain.cpp:114
 msgid "Village"
 msgstr "Деревня"
@@ -2530,7 +2530,7 @@ msgstr ""
 "кавалерия получает только 40%.\n"
 "\n"
 
-#: data/help.cfg:531 data/terrain.cfg:492
+#: data/help.cfg:531 data/terrain.cfg:520
 msgid "Chasm"
 msgstr "Пропасть"
 
@@ -2546,7 +2546,7 @@ msgstr ""
 "правилам считается, что только соединения, способные перелететь через "
 "пропасть, могут пересечь этот тип местности."
 
-#: data/help.cfg:539 data/terrain.cfg:500
+#: data/help.cfg:539 data/terrain.cfg:529
 msgid "Lava"
 msgstr "Лава"
 
@@ -2564,7 +2564,7 @@ msgstr ""
 "местность вокруг нее. Благодаря этому порядочные соединения получают бонус к "
 "атаке, а хаотичные — штраф к атаке."
 
-#: data/help.cfg:547 data/terrain.cfg:805
+#: data/help.cfg:547 data/terrain.cfg:856
 msgid "River Ford"
 msgstr "Брод"
 
@@ -2584,10 +2584,10 @@ msgstr ""
 "из этих типов местности, предоставляет соединению, стоящему на нем, лучшие "
 "бонусы защиты и перемещения."
 
-#: data/help.cfg:555 data/terrain.cfg:60 data/terrain.cfg:69
-#: data/terrain.cfg:78 data/terrain.cfg:88 data/terrain.cfg:97
-#: data/terrain.cfg:106 data/terrain.cfg:116 data/terrain.cfg:125
-#: data/terrain.cfg:134
+#: data/help.cfg:555 data/terrain.cfg:62 data/terrain.cfg:72
+#: data/terrain.cfg:82 data/terrain.cfg:93 data/terrain.cfg:103
+#: data/terrain.cfg:113 data/terrain.cfg:124 data/terrain.cfg:134
+#: data/terrain.cfg:144
 msgid "Bridge"
 msgstr "Мост"
 
@@ -2616,7 +2616,7 @@ msgstr ""
 "соединения, занимающего ячейку моста. Помните, что плавающее и сухопутное "
 "соединение не может одновременно занимать ячейку моста."
 
-#: data/help.cfg:565 data/terrain.cfg:829
+#: data/help.cfg:565 data/terrain.cfg:881
 msgid "Cave Wall"
 msgstr "Стена пещеры"
 
@@ -4740,100 +4740,100 @@ msgstr "Пелена"
 msgid "Fog"
 msgstr "Туман"
 
-#: data/terrain.cfg:146
+#: data/terrain.cfg:157
 msgid "Encampment"
 msgstr "Лагерь"
 
-#: data/terrain.cfg:167
+#: data/terrain.cfg:180
 msgid "Ruin"
 msgstr "Руины"
 
-#: data/terrain.cfg:178
+#: data/terrain.cfg:192
 msgid "Sunken Ruin"
 msgstr "Затопленные руины"
 
-#: data/terrain.cfg:190
+#: data/terrain.cfg:205
 msgid "Swamp Ruin"
 msgstr "Болотные руины"
 
-#: data/terrain.cfg:212
+#: data/terrain.cfg:229
 msgid "Dwarven Castle"
 msgstr "Замок гномов"
 
-#: data/terrain.cfg:228 data/terrain.cfg:252
+#: data/terrain.cfg:246 data/terrain.cfg:272
 msgid "Keep"
 msgstr "Укрытие"
 
-#: data/terrain.cfg:241
+#: data/terrain.cfg:260
 msgid "Encampment keep"
 msgstr "Лагерное укрытие"
 
-#: data/terrain.cfg:263
+#: data/terrain.cfg:284
 msgid "Ruined keep"
 msgstr "Разрушенное укрытие"
 
-#: data/terrain.cfg:274
+#: data/terrain.cfg:296
 msgid "Sunken keep"
 msgstr "Затопленное укрытие"
 
-#: data/terrain.cfg:285
+#: data/terrain.cfg:308
 msgid "Swamp keep"
 msgstr "Болотистое укрытие"
 
-#: data/terrain.cfg:305
+#: data/terrain.cfg:330
 msgid "Dwarven keep"
 msgstr "Укрытие гномов"
 
-#: data/terrain.cfg:321
+#: data/terrain.cfg:347
 msgid "Crater"
 msgstr "Кратер"
 
-#: data/terrain.cfg:340
+#: data/terrain.cfg:366
 msgid "Rubble"
 msgstr "Булыжник"
 
-#: data/terrain.cfg:357
+#: data/terrain.cfg:383
 msgid "Oasis"
 msgstr "Оазис"
 
-#: data/terrain.cfg:373
+#: data/terrain.cfg:399
 msgid "Snow Forest"
 msgstr "Снежный лес"
 
-#: data/terrain.cfg:384
+#: data/terrain.cfg:411
 msgid "Great Tree"
 msgstr "Большое дерево"
 
-#: data/terrain.cfg:401
+#: data/terrain.cfg:428
 msgid "Tropical Forest"
 msgstr "Тропический лес"
 
-#: data/terrain.cfg:438
+#: data/terrain.cfg:465
 msgid "Snow Hills"
 msgstr "Заснеженные холмы"
 
-#: data/terrain.cfg:448
+#: data/terrain.cfg:476
 msgid "Dunes"
 msgstr "Дюны"
 
-#: data/terrain.cfg:516
+#: data/terrain.cfg:546
 msgid "Desert road"
 msgstr "Пустынная дорога"
 
-#: data/terrain.cfg:525
+#: data/terrain.cfg:555
 msgid "Dirt"
 msgstr "Грязь"
 
-#: data/terrain.cfg:543
+#: data/terrain.cfg:573
 #, fuzzy
 msgid "Farmland"
 msgstr "снайпер"
 
-#: data/terrain.cfg:596
+#: data/terrain.cfg:630
 msgid "Cave Lit"
 msgstr "Освещенная пещера"
 
-#: data/terrain.cfg:820
+#: data/terrain.cfg:872
 msgid "Impassable Mountains"
 msgstr "Непроходимые горы"
 

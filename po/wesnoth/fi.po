@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-10 14:56+0100\n"
+"POT-Creation-Date: 2007-02-11 13:01+0100\n"
 "PO-Revision-Date: 2006-09-01 19:23+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -827,15 +827,15 @@ msgstr "Epäkuolleet"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf"
 
-#: data/game.cfg:33
+#: data/game.cfg:35
 msgid "Binary Saves"
 msgstr "Binääritallennukset"
 
-#: data/game.cfg:40
+#: data/game.cfg:42
 msgid "Show Combat"
 msgstr "Näytä taistelu"
 
-#: data/game.cfg:47
+#: data/game.cfg:49
 msgid "Mouse Scrolling"
 msgstr "Vieritys hiirellä"
 
@@ -2087,7 +2087,7 @@ msgid ""
 "recover more quickly when resting."
 msgstr ""
 
-#: data/help.cfg:343 data/terrain.cfg:416
+#: data/help.cfg:343 data/terrain.cfg:443
 msgid "Grassland"
 msgstr "tasankoa"
 
@@ -2109,7 +2109,7 @@ msgstr ""
 "\n"
 "Useimpien yksiköiden puolustus ruohotasangolla on 30% tai 40%."
 
-#: data/help.cfg:353 data/terrain.cfg:534
+#: data/help.cfg:353 data/terrain.cfg:564
 msgid "Road"
 msgstr "tie"
 
@@ -2123,7 +2123,7 @@ msgstr ""
 "tallaamana. Pelaamisen kannalta tiet vastaavat <ref>dst=terrain_grassland "
 "text=tasankoja</ref>."
 
-#: data/help.cfg:361 data/terrain.cfg:393
+#: data/help.cfg:361 data/terrain.cfg:420
 msgid "Forest"
 msgstr "metsää"
 
@@ -2160,7 +2160,7 @@ msgstr ""
 "puolustus metsässä on 60% tai 70%. Kääpiöiden puolustus metsässä on yleensä "
 "vain 30%."
 
-#: data/help.cfg:373 data/terrain.cfg:458
+#: data/help.cfg:373 data/terrain.cfg:486
 msgid "Hills"
 msgstr "mäkiä"
 
@@ -2185,7 +2185,7 @@ msgstr ""
 "Useimpien yksiköiden puolustus kukkuloilla on 50%. Ratsuyksiköillä se on "
 "vain 40%. Kääpiöiden puolustus kukkuloilla on 60%."
 
-#: data/help.cfg:383 data/terrain.cfg:470 data/terrain.cfg:479
+#: data/help.cfg:383 data/terrain.cfg:498 data/terrain.cfg:507
 msgid "Mountains"
 msgstr "vuoria"
 
@@ -2210,7 +2210,7 @@ msgstr ""
 "\n"
 "Useimpien yksiköiden puolustus vuorilla on 60%. Kääpiöillä se on 70%."
 
-#: data/help.cfg:393 data/terrain.cfg:555
+#: data/help.cfg:393 data/terrain.cfg:585
 msgid "Swamp"
 msgstr "suota"
 
@@ -2234,7 +2234,7 @@ msgstr ""
 "Useimpien yksiköiden puolustus soilla on 30%. Merenmiesten, nagojen ja "
 "liskojen puolustus on 60%."
 
-#: data/help.cfg:403 data/terrain.cfg:794
+#: data/help.cfg:403 data/terrain.cfg:844
 msgid "Shallow Water"
 msgstr "matalaa vettä"
 
@@ -2260,7 +2260,7 @@ msgstr ""
 "Useimpien yksiköiden puolustus matalassa vedessä on vain 20% tai 30%, kun "
 "merenmiehillä ja nagoilla se on 60%."
 
-#: data/help.cfg:413 data/terrain.cfg:784
+#: data/help.cfg:413 data/terrain.cfg:833
 msgid "Deep Water"
 msgstr "syvää vettä"
 
@@ -2279,7 +2279,7 @@ msgstr ""
 "Merenmiehillä ja nagoilla puolustus syvässä vedessä on 50%, ja ne liikkuvat "
 "siellä vaivatta."
 
-#: data/help.cfg:423 data/terrain.cfg:47
+#: data/help.cfg:423 data/terrain.cfg:48
 msgid "Snow"
 msgstr "lunta"
 
@@ -2312,7 +2312,7 @@ msgstr ""
 "<ref>dst=terrain_tundra text=lunta</ref>. Huomaa, että uivatkaan yksiköt "
 "eivät voi liikkua jään alla."
 
-#: data/help.cfg:441 data/terrain.cfg:157
+#: data/help.cfg:441 data/terrain.cfg:169
 msgid "Castle"
 msgstr "linna"
 
@@ -2337,7 +2337,7 @@ msgstr ""
 "\n"
 "Useimpien yksiköiden puolustus linnassa on 60%."
 
-#: data/help.cfg:453 data/terrain.cfg:349
+#: data/help.cfg:453 data/terrain.cfg:375
 msgid "Sand"
 msgstr "hiekkaa"
 
@@ -2355,7 +2355,7 @@ msgstr ""
 "\n"
 "Useimpien yksiköiden puolustus hiekalla on 20%:sta 40%:iin."
 
-#: data/help.cfg:463 data/terrain.cfg:330
+#: data/help.cfg:463 data/terrain.cfg:356
 msgid "Desert"
 msgstr "aavikkoa"
 
@@ -2368,7 +2368,7 @@ msgstr ""
 "Aavikot eroavat hieman hiekkakuoppien ja -rantojen hiekasta. Pelin kannalta "
 "ne kuitenkin vastaavat <ref>dst=terrain_sand text=hiekkaa</ref>."
 
-#: data/help.cfg:471 data/terrain.cfg:588
+#: data/help.cfg:471 data/terrain.cfg:621
 msgid "Cave"
 msgstr "luola"
 
@@ -2392,7 +2392,7 @@ msgstr ""
 "Useimpien yksiköiden puolustus luolissa on 20% 40%:iin, kun se kääpiöillä on "
 "50%."
 
-#: data/help.cfg:481 data/terrain.cfg:578
+#: data/help.cfg:481 data/terrain.cfg:610
 msgid "Rockbound Cave"
 msgstr "louhikkoluola"
 
@@ -2437,7 +2437,7 @@ msgstr ""
 "\n"
 "Yleensä yksiköiden puolustus luolassa on 20%-40%. Kääpiöillä se on 50%."
 
-#: data/help.cfg:501 data/terrain.cfg:570
+#: data/help.cfg:501 data/terrain.cfg:601
 msgid "Mushroom Grove"
 msgstr "sienilehtoa"
 
@@ -2463,7 +2463,7 @@ msgstr ""
 "Useimmilla yksiköillä puolustus sienilehdoissa on 50% tai 60%, mutta "
 "ratsuyksiköillä puolustus on vain 20%."
 
-#: data/help.cfg:511 data/terrain.cfg:424
+#: data/help.cfg:511 data/terrain.cfg:451
 msgid "Savanna"
 msgstr "savannia"
 
@@ -2476,11 +2476,11 @@ msgstr ""
 "Savannit ovat pitkäruohoisia, lämpimien maiden ruohotasankoja. Pelaamisen "
 "kannalta ne vastaavat <ref>dst=terrain_grassland text=tasankoja</ref>."
 
-#: data/help.cfg:519 data/terrain.cfg:613 data/terrain.cfg:624
-#: data/terrain.cfg:637 data/terrain.cfg:649 data/terrain.cfg:663
-#: data/terrain.cfg:674 data/terrain.cfg:684 data/terrain.cfg:695
-#: data/terrain.cfg:706 data/terrain.cfg:717 data/terrain.cfg:730
-#: data/terrain.cfg:741 data/terrain.cfg:754 data/terrain.cfg:769
+#: data/help.cfg:519 data/terrain.cfg:648 data/terrain.cfg:660
+#: data/terrain.cfg:674 data/terrain.cfg:687 data/terrain.cfg:702
+#: data/terrain.cfg:714 data/terrain.cfg:725 data/terrain.cfg:737
+#: data/terrain.cfg:749 data/terrain.cfg:761 data/terrain.cfg:775
+#: data/terrain.cfg:787 data/terrain.cfg:801 data/terrain.cfg:817
 #: src/terrain.cpp:114
 msgid "Village"
 msgstr "kylä"
@@ -2509,7 +2509,7 @@ msgstr ""
 "Useimpien yksiköiden puolustus kylissä on 50% tai 60%, ratsuyksiköillä "
 "kuitenkin vain 40%."
 
-#: data/help.cfg:531 data/terrain.cfg:492
+#: data/help.cfg:531 data/terrain.cfg:520
 msgid "Chasm"
 msgstr "kuilu"
 
@@ -2525,7 +2525,7 @@ msgstr ""
 "Pelaamisen kannalta tärkeää on, että vain lentävät yksiköt voivat liikkua "
 "yli kuilun."
 
-#: data/help.cfg:539 data/terrain.cfg:500
+#: data/help.cfg:539 data/terrain.cfg:529
 msgid "Lava"
 msgstr "laavaa"
 
@@ -2542,7 +2542,7 @@ msgstr ""
 "Lisäksi laava hohtaa valoa, joka antaa sen yläpuolella käydyissä "
 "taisteluissa etua lainkuuliaisille yksiköille ja haittaa kaoottisille."
 
-#: data/help.cfg:547 data/terrain.cfg:805
+#: data/help.cfg:547 data/terrain.cfg:856
 msgid "River Ford"
 msgstr "kahlaamo"
 
@@ -2561,10 +2561,10 @@ msgstr ""
 "mukaan, kumpi tarjoaa yksikölle paremmat mahdollisuudet liikkumiseen ja "
 "puolustautumiseen."
 
-#: data/help.cfg:555 data/terrain.cfg:60 data/terrain.cfg:69
-#: data/terrain.cfg:78 data/terrain.cfg:88 data/terrain.cfg:97
-#: data/terrain.cfg:106 data/terrain.cfg:116 data/terrain.cfg:125
-#: data/terrain.cfg:134
+#: data/help.cfg:555 data/terrain.cfg:62 data/terrain.cfg:72
+#: data/terrain.cfg:82 data/terrain.cfg:93 data/terrain.cfg:103
+#: data/terrain.cfg:113 data/terrain.cfg:124 data/terrain.cfg:134
+#: data/terrain.cfg:144
 msgid "Bridge"
 msgstr "silta"
 
@@ -2594,7 +2594,7 @@ msgstr ""
 "heksassa ei voi olla yhtäaikaa kahta yksikköä (maa- ja vesiyksikköä), kuten "
 "ei muussakaan pelin heksassa."
 
-#: data/help.cfg:565 data/terrain.cfg:829
+#: data/help.cfg:565 data/terrain.cfg:881
 msgid "Cave Wall"
 msgstr "kiveä"
 
@@ -4780,107 +4780,107 @@ msgstr "Huntu"
 msgid "Fog"
 msgstr "sumua"
 
-#: data/terrain.cfg:146
+#: data/terrain.cfg:157
 msgid "Encampment"
 msgstr "leiri"
 
-#: data/terrain.cfg:167
+#: data/terrain.cfg:180
 msgid "Ruin"
 msgstr "raunioita"
 
-#: data/terrain.cfg:178
+#: data/terrain.cfg:192
 msgid "Sunken Ruin"
 msgstr "uponneita raunioita"
 
-#: data/terrain.cfg:190
+#: data/terrain.cfg:205
 msgid "Swamp Ruin"
 msgstr "soistuneita raunioita"
 
-#: data/terrain.cfg:212
+#: data/terrain.cfg:229
 msgid "Dwarven Castle"
 msgstr "kääpiölinna"
 
-#: data/terrain.cfg:228 data/terrain.cfg:252
+#: data/terrain.cfg:246 data/terrain.cfg:272
 msgid "Keep"
 msgstr "linnake"
 
-#: data/terrain.cfg:241
+#: data/terrain.cfg:260
 #, fuzzy
 msgid "Encampment keep"
 msgstr "leiri"
 
-#: data/terrain.cfg:263
+#: data/terrain.cfg:284
 msgid "Ruined keep"
 msgstr ""
 
-#: data/terrain.cfg:274
+#: data/terrain.cfg:296
 #, fuzzy
 msgid "Sunken keep"
 msgstr "uponneita raunioita"
 
-#: data/terrain.cfg:285
+#: data/terrain.cfg:308
 #, fuzzy
 msgid "Swamp keep"
 msgstr "suota"
 
-#: data/terrain.cfg:305
+#: data/terrain.cfg:330
 #, fuzzy
 msgid "Dwarven keep"
 msgstr "kääpiölinna"
 
-#: data/terrain.cfg:321
+#: data/terrain.cfg:347
 #, fuzzy
 msgid "Crater"
 msgstr "linna"
 
-#: data/terrain.cfg:340
+#: data/terrain.cfg:366
 #, fuzzy
 msgid "Rubble"
 msgstr "kaksinkertaistettu"
 
-#: data/terrain.cfg:357
+#: data/terrain.cfg:383
 msgid "Oasis"
 msgstr "keidas"
 
-#: data/terrain.cfg:373
+#: data/terrain.cfg:399
 msgid "Snow Forest"
 msgstr "lumista metsää"
 
-#: data/terrain.cfg:384
+#: data/terrain.cfg:411
 msgid "Great Tree"
 msgstr "suuri puu"
 
-#: data/terrain.cfg:401
+#: data/terrain.cfg:428
 msgid "Tropical Forest"
 msgstr "trooppista metsää"
 
-#: data/terrain.cfg:438
+#: data/terrain.cfg:465
 msgid "Snow Hills"
 msgstr "lumisia mäkiä"
 
-#: data/terrain.cfg:448
+#: data/terrain.cfg:476
 msgid "Dunes"
 msgstr "hiekkadyynejä"
 
-#: data/terrain.cfg:516
+#: data/terrain.cfg:546
 #, fuzzy
 msgid "Desert road"
 msgstr "aavikkoa"
 
-#: data/terrain.cfg:525
+#: data/terrain.cfg:555
 msgid "Dirt"
 msgstr "mutaa"
 
-#: data/terrain.cfg:543
+#: data/terrain.cfg:573
 #, fuzzy
 msgid "Farmland"
 msgstr "tarkk'ampuja"
 
-#: data/terrain.cfg:596
+#: data/terrain.cfg:630
 msgid "Cave Lit"
 msgstr "valoisa luola"
 
-#: data/terrain.cfg:820
+#: data/terrain.cfg:872
 msgid "Impassable Mountains"
 msgstr "ylitsepääsemätön vuoristo"
 
