@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "POT-Creation-Date: 2007-02-06 15:13+0100\n"
-"PO-Revision-Date: 2007-01-02 23:59+0100\n"
+"PO-Revision-Date: 2007-02-11 22:29+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -496,9 +496,9 @@ msgstr "anger antalet drag för det valda scenariot. Standardvärdet är 50."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Example to test your own AI: "
-msgstr "Exempel för att testa en egen AI:  "
+msgstr "Exempel för att testa en egen AI: "
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:162
@@ -732,13 +732,12 @@ msgstr "wesnothd - Kampen om B<Wesnoth>s nätverksdaemon"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
-#, fuzzy
 msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<sökväg>\\|] [\\|B<-p> I<port>\\|] "
-"[\\|B<-t> I<antal>\\|]"
+"[\\|B<-t> I<antal>\\|] [\\|B<-T> I<antal>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:41
@@ -806,25 +805,27 @@ msgstr "B<-t,\\ --threads>I<\\ antal>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy
 msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: 5, max: 30)."
-msgstr "anger antalet trådar för nätverkstrafik (standardvärde: 5; max: 30)"
+msgstr ""
+"anger maximalt antal väntande trådar för nätverkstrafik (standardvärde: 5; "
+"max: 30)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ antal>"
+msgstr "B<-T,\\ --max-threads>I<\\ antal>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:66
-#, fuzzy
 msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
 "there will be no limit (default: 0)."
-msgstr "anger antalet trådar för nätverkstrafik (standardvärde: 5; max: 30)"
+msgstr ""
+"anger maximalt antal trådar för nätverkstrafik som skapas; om 0 anges sätts "
+"ingen övre gräns (standardvärde: 0)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:66
