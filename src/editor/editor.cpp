@@ -1308,9 +1308,11 @@ void map_editor::recalculate_starting_pos_labels() {
 	}
 }
 
-void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex) {
-	std::vector<gamemap::location> curr_locs =
-		get_tiles(map_, mouse_over_hex, brush_.selected_brush_size());
+void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex) 
+{
+	const int size = (l_button_func_ == DRAW) ? brush_.selected_brush_size() : 1;
+	std::vector<gamemap::location> curr_locs = get_tiles(map_, mouse_over_hex, size);
+	
 	std::set<gamemap::location>::iterator it;
 	for (it = mouse_over_hexes_.begin(); it != mouse_over_hexes_.end(); it++) {
 		if (selected_hexes_.find(*it) == selected_hexes_.end()) {
