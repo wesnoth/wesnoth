@@ -328,15 +328,6 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 	return relative_loc_;
 }
 
-const SDL_Rect& theme::object::get_location(void) const
-{
-	return loc_;
-}
-
-const std::string& theme::object::get_id() const{
-	return id_;
-}
-
 theme::object::ANCHORING theme::object::read_anchor(const std::string& str)
 {
 	static const std::string top_anchor = "top", left_anchor = "left",
@@ -414,36 +405,6 @@ theme::label::label(const config& cfg)
 	}
 }
 
-const std::string& theme::label::text() const
-{
-	return text_;
-}
-
-const std::string& theme::label::icon() const
-{
-	return icon_;
-}
-
-bool theme::label::empty() const
-{
-	return text_.empty() && icon_.empty();
-}
-
-size_t theme::label::font_size() const
-{
-	return font_;
-}
-
-Uint32 theme::label::font_rgb() const
-{
-	return font_rgb_;
-}
-
-bool theme::label::font_rgb_set() const
-{
-	return font_rgb_set_;
-}
-
 theme::status_item::status_item(const config& cfg)
         : object(cfg),
 		  prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str()),
@@ -484,43 +445,8 @@ theme::status_item::status_item(const config& cfg)
 	}
 }
 
-const std::string& theme::status_item::prefix() const
-{
-	return prefix_;
-}
-
-const std::string& theme::status_item::postfix() const
-{
-	return postfix_;
-}
-
-const theme::label* theme::status_item::get_label() const
-{
-	return label_.empty() ? NULL : &label_;
-}
-
-size_t theme::status_item::font_size() const
-{
-	return font_;
-}
-
-Uint32 theme::status_item::font_rgb() const
-{
-	return font_rgb_;
-}
-
-bool theme::status_item::font_rgb_set() const
-{
-	return font_rgb_set_;
-}
-
 theme::panel::panel(const config& cfg) : object(cfg), image_(cfg["image"])
 {}
-
-const std::string& theme::panel::image() const
-{
-	return image_;
-}
 
 theme::menu::menu() : context_(false)
 {}
@@ -531,18 +457,6 @@ theme::menu::menu(const config& cfg) : object(cfg), context_(cfg["is_context_men
 						image_(cfg["image"]), type_(cfg["type"]),
 						items_(utils::split(cfg["items"]))
 {}
-
-bool theme::menu::is_context() const { return context_; }
-
-const std::string& theme::menu::title() const { return title_; }
-
-const std::string& theme::menu::tooltip() const { return tooltip_; }
-
-const std::string& theme::menu::type() const { return type_; }
-
-const std::string& theme::menu::image() const { return image_; }
-
-const std::vector<std::string>& theme::menu::items() const { return items_; }
 
 theme::theme(const config& cfg, const SDL_Rect& screen) {
 	config tmp;
@@ -593,7 +507,6 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	return result;
 }
-
 
 theme::object& theme::add_object(const config& cfg){
 	static theme::object result;
@@ -742,26 +655,6 @@ theme::object& theme::find_element(std::string id){
 	return *res;
 }
 
-const std::vector<theme::panel>& theme::panels() const
-{
-	return panels_;
-}
-
-const std::vector<theme::label>& theme::labels() const
-{
-	return labels_;
-}
-
-const std::vector<theme::menu>& theme::menus() const
-{
-	return menus_;
-}
-
-const theme::menu* theme::context_menu() const
-{
-	return context_.is_context() ? &context_ : NULL;
-}
-
 const theme::status_item* theme::get_status_item(const std::string& key) const
 {
 	const std::map<std::string,status_item>::const_iterator i = status_.find(key);
@@ -769,21 +662,6 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 		return &i->second;
 	else
 		return NULL;
-}
-
-const SDL_Rect& theme::main_map_location(const SDL_Rect& screen) const
-{
-	return main_map_.location(screen);
-}
-
-const SDL_Rect& theme::mini_map_location(const SDL_Rect& screen) const
-{
-	return mini_map_.location(screen);
-}
-
-const SDL_Rect& theme::unit_image_location(const SDL_Rect& screen) const
-{
-	return unit_image_.location(screen);
 }
 
 std::map<std::string, config> theme::known_themes;

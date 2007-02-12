@@ -34,8 +34,8 @@ class theme
 		object(const config& cfg);
 
 		SDL_Rect& location(const SDL_Rect& screen) const;
-		const SDL_Rect& get_location(void) const;
-		const std::string& get_id() const;
+		const SDL_Rect& get_location(void) const { return loc_; }
+		const std::string& get_id() const { return id_; }
 
 		//this supports relocating of theme elements ingame.
 		//It is needed for [change] tags in theme WML.
@@ -74,18 +74,18 @@ public:
 
 		using object::location;
 
-		const std::string& text() const;
-		const std::string& icon() const;
+		const std::string& text() const { return text_; }
+		const std::string& icon() const { return icon_; }
 
-		bool empty() const;
+		bool empty() const { return text_.empty() && icon_.empty(); }
 
-		size_t font_size() const;
-		Uint32 font_rgb() const;
-	        bool font_rgb_set() const;
+		size_t font_size() const { return font_; }
+		Uint32 font_rgb() const { return font_rgb_; }
+		bool font_rgb_set() const { return font_rgb_set_; }
 	private:
 		std::string text_, icon_;
 		size_t font_;
-	        bool font_rgb_set_;
+		bool font_rgb_set_;
 		Uint32 font_rgb_;
 	};
 
@@ -97,21 +97,21 @@ public:
 
 		using object::location;
 
-		const std::string& prefix() const;
-		const std::string& postfix() const;
+		const std::string& prefix() const { return prefix_; }
+		const std::string& postfix() const { return postfix_; }
 
 		//if the item has a label associated with it, show where the label is
-		const label* get_label() const;
+		const label* get_label() const { return label_.empty() ? NULL : &label_; }
 
-		size_t font_size() const;
-                Uint32 font_rgb() const;
-	        bool font_rgb_set() const;
+		size_t font_size() const { return font_; }
+		Uint32 font_rgb() const { return font_rgb_; }
+		bool font_rgb_set() const { return font_rgb_set_; }
 
 	private:
 		std::string prefix_, postfix_;
 		label label_;
 		size_t font_;
-	        bool font_rgb_set_;
+		bool font_rgb_set_;
 		Uint32 font_rgb_;
 	};
 
@@ -122,7 +122,7 @@ public:
 
 		using object::location;
 
-		const std::string& image() const;
+		const std::string& image() const { return image_; }
 
 	private:
 		std::string image_;
@@ -136,17 +136,17 @@ public:
 
 		using object::location;
 
-		bool is_context() const;
+		bool is_context() const  { return context_; }
 
-		const std::string& title() const;
+		const std::string& title() const { return title_; }
 
-		const std::string& tooltip() const;
+		const std::string& tooltip() const { return tooltip_; }
 
-		const std::string& type() const;
+		const std::string& type() const { return type_; }
 
-		const std::string& image() const;
+		const std::string& image() const { return image_; }
 
-		const std::vector<std::string>& items() const;
+		const std::vector<std::string>& items() const { return items_; }
 	private:
 		bool context_;
 		std::string title_, tooltip_, image_, type_;
@@ -157,17 +157,21 @@ public:
 	bool set_resolution(const SDL_Rect& screen);
 	void modify(const config* cfg);
 
-	const std::vector<panel>& panels() const;
-	const std::vector<label>& labels() const;
-	const std::vector<menu>& menus() const;
+	const std::vector<panel>& panels() const { return panels_; }
+	const std::vector<label>& labels() const { return labels_; }
+	const std::vector<menu>& menus() const { return menus_; }
 
-	const menu* context_menu() const;
+	const menu* context_menu() const 
+		{ return context_.is_context() ? &context_ : NULL; }
 
 	const status_item* get_status_item(const std::string& item) const;
 
-	const SDL_Rect& main_map_location(const SDL_Rect& screen) const;
-	const SDL_Rect& mini_map_location(const SDL_Rect& screen) const;
-	const SDL_Rect& unit_image_location(const SDL_Rect& screen) const;
+	const SDL_Rect& main_map_location(const SDL_Rect& screen) const
+		{ return main_map_.location(screen); }
+	const SDL_Rect& mini_map_location(const SDL_Rect& screen) const
+		{ return mini_map_.location(screen); }
+	const SDL_Rect& unit_image_location(const SDL_Rect& screen) const
+		{ return unit_image_.location(screen); }
 
     static void set_known_themes(const config* cfg);
     static std::vector<std::string> get_known_themes();
