@@ -16,7 +16,6 @@
 #include "global.hpp"
 
 #include "variable.hpp"
-#include "gamestatus.hpp"
 #include "config.hpp"
 #include <iostream>
 
@@ -47,16 +46,6 @@ vconfig& vconfig::operator=(const config* cfg)
 {
 	cfg_ = cfg;
 	return *this;
-}
-
-bool vconfig::null() const
-{
-	return cfg_ == NULL;
-}
-
-const config& vconfig::get_config() const
-{
-	return *cfg_;
 }
 
 const config vconfig::get_parsed_config() const
@@ -124,19 +113,6 @@ const t_string &vconfig::expand(const std::string& key) const
 	return val;
 }
 
-const t_string &vconfig::get_attribute(const std::string& key) const
-{
-	return (*cfg_)[key];
-}
-
-void vconfig::add_local_var(std::string var_name, config& var)
-{
-	local_vars_.variables.add_child(var_name,var);
-}
-void vconfig::rem_local_var(std::string var_name)
-{
-	local_vars_.variables.clear_children(var_name);
-}
 namespace variable
 {
 	manager::manager(game_state* repository)

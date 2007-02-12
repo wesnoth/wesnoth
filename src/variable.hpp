@@ -18,8 +18,8 @@
 #include <string>
 #include <vector>
 
-#include "config.hpp"
 #include "gamestatus.hpp"
+class config;
 class t_string;
 
 /**
@@ -35,8 +35,8 @@ public:
 	vconfig& operator=(const vconfig cfg);
 	vconfig& operator=(const config* cfg);
 
-	bool null() const;
-	const config& get_config() const;
+	bool null() const { return cfg_ == NULL; }
+	const config& get_config() const { return *cfg_; }
 	const config get_parsed_config() const;
 
 	typedef std::vector<vconfig> child_list;
@@ -45,9 +45,11 @@ public:
 
 	const t_string& operator[](const std::string&) const;
 	const t_string& expand(const std::string&) const; /** < Synonym for operator[] */
-	const t_string& get_attribute(const std::string&) const;
-	void add_local_var(std::string var_name, config& var);
-	void rem_local_var(std::string var_name);
+	const t_string& get_attribute(const std::string& key) const { return (*cfg_)[key]; }
+	void add_local_var(std::string var_name, config& var)
+		{ local_vars_.variables.add_child(var_name,var); }
+	void rem_local_var(std::string var_name)
+		{ local_vars_.variables.clear_children(var_name); }
 
 private:
 	const config* cfg_;
