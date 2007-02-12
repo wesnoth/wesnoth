@@ -3,23 +3,25 @@
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
+# Joe Hansen <joedalton2@yahoo.dk>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-11 12:41+0100\n"
-"PO-Revision-Date: 2005-08-01 13:27+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2007-02-09 13:27+0200\n"
+"Last-Translator: Joe Hansen\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/themes/editor.cfg:461
+#, fuzzy
 msgid "File"
-msgstr ""
+msgstr "Fyld"
 
 #: data/themes/editor.cfg:470
 msgid "Edit"
@@ -31,47 +33,48 @@ msgstr ""
 
 #: src/editor/editor.cpp:235
 msgid "Draw tiles"
-msgstr ""
+msgstr "Tegn flise"
 
 #: src/editor/editor.cpp:237
 msgid "Fill"
-msgstr ""
+msgstr "Fyld"
 
 #: src/editor/editor.cpp:239
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Angiv spillernes start placering"
 
 #: src/editor/editor.cpp:241
 msgid "Zoom in"
-msgstr ""
+msgstr "Forstør"
 
 #: src/editor/editor.cpp:243
 msgid "Zoom out"
-msgstr ""
+msgstr "Formindsk"
 
 #: src/editor/editor.cpp:245
 msgid "Undo"
-msgstr ""
+msgstr "Genskab"
 
 #: src/editor/editor.cpp:247
 msgid "Redo"
-msgstr ""
+msgstr "Omgøre"
 
+# Burde vel egentlig være forstør, men her kan den både være forstør og formindsk
 #: src/editor/editor.cpp:249
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Zoom til standard"
 
 #: src/editor/editor.cpp:251
 msgid "Toggle grid"
-msgstr ""
+msgstr "Til/fra gitter"
 
 #: src/editor/editor.cpp:253
 msgid "Resize the map"
-msgstr ""
+msgstr "Ny kortstørrelse"
 
 #: src/editor/editor.cpp:255
 msgid "Flip map"
-msgstr ""
+msgstr "Vend kort"
 
 #: src/editor/editor.cpp:456
 msgid "Language"
@@ -83,70 +86,74 @@ msgstr "Vælg dit foretrukne sprog:"
 
 #: src/editor/editor.cpp:471 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Kortredigering til Slaget om Wesnoth"
 
 #: src/editor/editor.cpp:495
 msgid "Save the Map As"
-msgstr ""
+msgstr "Gem kortet som"
 
 #: src/editor/editor.cpp:506
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Kortet eksisterer allerede. Ønsker du at overskrive?"
 
 #: src/editor/editor.cpp:529 src/editor/editor.cpp:1304
 msgid "Player"
-msgstr ""
+msgstr "Spiller"
 
 #: src/editor/editor.cpp:532
 msgid "Which Player?"
-msgstr ""
+msgstr "Hvilken spiller?"
 
 #: src/editor/editor.cpp:533
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Hvilken spiller skal starte her?"
 
 #: src/editor/editor.cpp:584
 msgid "Choose a Map to Load"
-msgstr ""
+msgstr "Vælg et kort"
 
 #: src/editor/editor.cpp:588
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
+"Advarsel: Der er ugyldige tegn i kortnavnet. Gem venligst under et andet "
+"navn."
 
 #: src/editor/editor.cpp:601 src/editor/editor.cpp:675
 msgid "The file does not contain a valid map."
-msgstr ""
+msgstr "Filen indeholder ikke et brugbart kort."
 
 #: src/editor/editor.cpp:916
 msgid "You must have a hex selected on the board."
-msgstr ""
+msgstr "Du skal have markeret et felt på kortet."
 
 #: src/editor/editor.cpp:1171
 msgid "Quit Editor"
-msgstr ""
+msgstr "Luk program"
 
 #: src/editor/editor.cpp:1176
 msgid "Do you want to save the map before quitting?"
-msgstr ""
+msgstr "Ønsker du at gemme kortet før lukning?"
 
 #: src/editor/editor.cpp:1224
 msgid "Map saved."
-msgstr ""
+msgstr "Kort gemt."
 
 #: src/editor/editor.cpp:1233
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Kunne ikke gemme kortet: $msg"
 
 #: src/editor/editor.cpp:1248
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Fejl: Ugyldig tegn i filnavn."
 
+# ved ikke hvad dette står for
 #: src/editor/editor_palettes.cpp:402
 msgid "FG"
-msgstr ""
+msgstr "FG"
 
+# ved ikke hvad dette står for
 #: src/editor/editor_palettes.cpp:404
 msgid "BG"
-msgstr ""
+msgstr "BG"
