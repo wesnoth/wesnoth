@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
+"Project-Id-Version: wesnoth-man.po\n"
 "POT-Creation-Date: 2007-02-06 15:13+0100\n"
-"PO-Revision-Date: 2006-12-30 19:05+0500\n"
+"PO-Revision-Date: 2007-02-10 00:47+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "ОБЗОР"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
+msgstr "B<wesnoth> [I<ПАРАМЕТРЫ>] [I<ПУТЬ_К_ДАННЫМ>]"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
@@ -495,7 +495,7 @@ msgstr "установить число ходов для выбранного �
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Example to test your own AI: "
 msgstr "Пример для тестирования собственного AI:"
 
@@ -734,13 +734,12 @@ msgstr "wesnothd - демон многопользовательской игр�
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
-#, fuzzy
 msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|]"
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<путь>\\|] [\\|B<-p> I<порт>\\|] [\\|"
+"B<-t> I<число>\\|] [\\|B<-T> I<число>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:41
@@ -789,7 +788,7 @@ msgstr "B<-h,\\ --help>"
 #: ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-p,\\ --port>I<\\ port>"
-msgstr "B<-p,\\ --port>I<\\ port>"
+msgstr "B<-p,\\ --port>I<\\ порт>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
@@ -804,33 +803,31 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:59
 #, no-wrap
 msgid "B<-t,\\ --threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ number>"
+msgstr "B<-t,\\ --threads>I<\\ число>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy
 msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: 5, max: 30)."
 msgstr ""
-"установить число рабочих потоков для сетевого ввода-вывода (по умолчанию 5, "
-"максимум 30)."
+"установить максимальное число рабочих потоков для сетевого ввода-вывода в n "
+"(по умолчанию 5, максимум 30)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:62
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
-msgstr "B<-t,\\ --threads>I<\\ number>"
+msgstr "B<-t,\\ --max-threads>I<\\ число>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:66
-#, fuzzy
 msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
 "there will be no limit (default: 0)."
 msgstr ""
-"установить число рабочих потоков для сетевого ввода-вывода (по умолчанию 5, "
-"максимум 30)."
+"установить максимальное число создаваемых рабочих потоков, если 0, то "
+"ограничений нет (по умолчанию 0)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:66
