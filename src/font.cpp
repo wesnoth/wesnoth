@@ -509,12 +509,24 @@ class text_cache
 {
 public:
 	static text_surface &find(text_surface const &t);
+	static void resize(unsigned int size);
 private:
 	typedef std::list< text_surface > text_list;
 	static text_list cache_;
+	static unsigned int max_size_;
 };
 
 text_cache::text_list text_cache::cache_;
+unsigned int text_cache::max_size_ = 50;
+
+void text_cache::resize(unsigned int size) 
+{
+	while(size < cache_.size()) { 
+		cache_.pop_back(); 
+	} 
+	max_size_ = size; 
+} 
+
 
 text_surface &text_cache::find(text_surface const &t)
 {
@@ -525,7 +537,7 @@ text_surface &text_cache::find(text_surface const &t)
 		cache_.splice(it_bgn, cache_, it);
 		++hit_;
 	} else {
-		if (cache_.size() >= 50)
+		if (cache_.size() >= max_size_)
 			cache_.pop_back();
 		cache_.push_front(t);
 	}
@@ -782,14 +794,11 @@ int line_width(const std::string& line, int font_size, int style)
 
 SDL_Rect line_size(const std::string& line, int font_size, int style)
 {
-	const size_t max_cache_size = 12;
 	line_size_cache_map& cache = line_size_cache[style][font_size];
 
-	if(line.size() < max_cache_size) {
-		const line_size_cache_map::const_iterator i = cache.find(line);
-		if(i != cache.end()) {
-			return i->second;
-		}
+	const line_size_cache_map::const_iterator i = cache.find(line);
+	if(i != cache.end()) {
+		return i->second;
 	}
 
 	SDL_Rect res;
@@ -801,10 +810,7 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 	res.h = s.height();
 	res.x = res.y = 0;
 
-	if(line.size() < max_cache_size) {
-		cache.insert(std::pair<std::string,SDL_Rect>(line,res));
-	}
-
+	cache.insert(std::pair<std::string,SDL_Rect>(line,res));
 	return res;
 }
 
@@ -1251,6 +1257,14 @@ bool load_font_config()
 	return true;
 }
 
+void cache_mode(CACHE mode) 
+{
+	if(mode == CACHE_LOBBY) { 
+		text_cache::resize(1000); 
+	} else { 
+		text_cache::resize(50); 
+	} 
+} 
 
 
 }

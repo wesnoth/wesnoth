@@ -61,7 +61,7 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 {
 	disp.video().modeChanged();
 	bool first = true;
-
+	font::cache_mode(font::CACHE_LOBBY);
 	while (ui.get_result() == mp::ui::CONTINUE) {
 		if (disp.video().modeChanged() || first) {
 			SDL_Rect lobby_pos = { 0, 0, disp.video().getx(), disp.video().gety() };
@@ -78,6 +78,7 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 		disp.flip();
 		disp.delay(20);
 	}
+	font::cache_mode(font::CACHE_GAME);
 }
 
 enum server_type {
