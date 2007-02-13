@@ -154,6 +154,9 @@ void undraw_floating_labels(surface screen);
 
 bool load_font_config();
 
+enum CACHE { CACHE_LOBBY, CACHE_GAME };
+void cache_mode(CACHE mode);
+
 }
 
 #endif
