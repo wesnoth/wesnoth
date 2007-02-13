@@ -32,6 +32,7 @@ public:
 		std::string map_data;
 		std::string name;
 		std::string map_info;
+		std::string map_info_size;
 		std::string gold;
 		std::string xp;
 		std::string vision;

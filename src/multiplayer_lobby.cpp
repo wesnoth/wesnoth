@@ -301,8 +301,26 @@ void gamebrowser::handle_event(const SDL_Event& event)
 		}
 	}
 }
+
+struct minimap_cache_item {
+	std::string map_data;
+	surface mini_map;
+	std::string map_info_size;
+};
+
 void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 {
+
+	// don't throw the rendered minimaps away
+	std::vector<minimap_cache_item> minimap_cache;
+	for(std::vector<game_item>::iterator oldgame = games_.begin(); oldgame != games_.end(); ++oldgame) {
+		minimap_cache_item item;
+		item.map_data = oldgame->map_data;
+		item.mini_map = oldgame->mini_map;
+		item.map_info_size = oldgame->map_info_size;
+		minimap_cache.push_back(item);
+	}
+		
 	games_.clear();
 	config::child_list games = cfg.get_children("game");
 	config::child_iterator game;
@@ -322,9 +340,25 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 
 		if(games_.back().map_data != "") {
 			try {
-				gamemap map(game_config, games_.back().map_data);
-				games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
-				games_.back().map_info += " - " + lexical_cast_default<std::string, int>(map.x(), "??") + std::string("x") + lexical_cast_default<std::string, int>(map.y(), "??");
+				std::vector<minimap_cache_item>::iterator i;
+				bool found = false;
+				for(i = minimap_cache.begin(); i != minimap_cache.end() && !found; ++i) {
+					if (i->map_data == games_.back().map_data) {
+						found = true;
+						games_.back().map_info_size = i->map_info_size;
+						games_.back().mini_map = i->mini_map;
+					}
+				}
+				if (!found) {
+					// parsing the map and generating the minimap are both cpu expensive
+					gamemap map(game_config, games_.back().map_data);
+					games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
+					games_.back().map_info_size = lexical_cast_default<std::string, int>
+						(map.x(), "??") + std::string("x") + lexical_cast_default<std::string, int>(map.y(), "??");
+				}
+
+				games_.back().map_info += " - " + games_.back().map_info_size;
+				
 			} catch(gamemap::incorrect_format_exception &e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
 			}
