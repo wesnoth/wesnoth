@@ -19,25 +19,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/themes/editor.cfg:461
-#, fuzzy
 msgid "File"
-msgstr "Fyld"
+msgstr "Fil"
 
 #: data/themes/editor.cfg:470
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
 #: data/themes/editor.cfg:477
 msgid "Settings"
-msgstr ""
+msgstr "Indstillinger"
 
 #: src/editor/editor.cpp:163
 msgid "Draw tiles"
-msgstr "Tegn flise"
+msgstr "Tegn fliser"
 
+# Måske "Fyld ud", hvis det er sådan noget med at fylde en del af et 
+# kort ud med en eller anden slags "tern". Eller også fejl fill=file
+# og dermed skal der oversættes med fil.
 #: src/editor/editor.cpp:165
 msgid "Fill"
-msgstr "Fyld"
+msgstr "Fyld ud"
 
 #: src/editor/editor.cpp:167
 msgid "Set player's starting position"
@@ -62,7 +64,7 @@ msgstr "Omgøre"
 # Burde vel egentlig være forstør, men her kan den både være forstør og formindsk
 #: src/editor/editor.cpp:177
 msgid "Zoom to default view"
-msgstr "Zoom til standard"
+msgstr "Zoom til standard-visning"
 
 #: src/editor/editor.cpp:179
 msgid "Toggle grid"
@@ -110,7 +112,7 @@ msgstr "Hvilken spiller skal starte her?"
 
 #: src/editor/editor.cpp:509
 msgid "Choose a Map to Load"
-msgstr "Vælg et kort"
+msgstr "Vælg et kort til indlæsning"
 
 #: src/editor/editor.cpp:513
 msgid ""
@@ -126,11 +128,11 @@ msgstr "Filen indeholder ikke et brugbart kort."
 
 #: src/editor/editor.cpp:672
 msgid "'$filename' does not exist or can not be read as a file."
-msgstr ""
+msgstr "'$filename' eksisterer ikke eller kan ikke læses."
 
 #: src/editor/editor.cpp:684
 msgid "Load failed: "
-msgstr ""
+msgstr "Indlæsning fejlede:"
 
 #: src/editor/editor.cpp:884
 msgid "You must have a hex selected on the board."
@@ -156,12 +158,12 @@ msgstr "Kunne ikke gemme kortet: $msg"
 msgid "Error: Illegal character in filename."
 msgstr "Fejl: Ugyldig tegn i filnavn."
 
-# ved ikke hvad dette står for
+# ved ikke hvad dette står for (kan være ForeGround)
 #: src/editor/editor_palettes.cpp:319
 msgid "FG"
 msgstr "FG"
 
-# ved ikke hvad dette står for
+# ved ikke hvad dette står for (kan være BackGround)
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "BG"
