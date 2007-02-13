@@ -1,3 +1,4 @@
+# translation of ru.po to
 # translation of ru.po.bz2_[iK302b].po to
 # #-#-#-#-#  wesnoth-httt.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
@@ -11,13 +12,14 @@
 #
 # Automatically generated, 2004.
 # Kotov Ilya <kotov_ilya@mail.ru>, 2006.
-# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2005, 2006.
+# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2005, 2006, 2007.
+# Alexey Khudiakov <alexey.skladnoy@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: ru.po.bz2_[iK302b]\n"
+"Project-Id-Version: wesnoth-httt.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-31 14:21+0100\n"
-"PO-Revision-Date: 2007-01-08 19:24+0500\n"
+"PO-Revision-Date: 2007-02-10 00:46+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +29,8 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:9
 msgid "Heir to the Throne"
@@ -39,7 +42,7 @@ msgstr "Боец"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:13
 msgid "(easiest)"
-msgstr "(легче)"
+msgstr "(легко)"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:14
 msgid "Hero"
@@ -47,7 +50,7 @@ msgstr "Герой"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:15
 msgid "(hardest)"
-msgstr "(сложнее)"
+msgstr "(сложно)"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:15
 msgid "Champion"
@@ -56,17 +59,15 @@ msgstr "Чемпион"
 #: data/campaigns/Heir_To_The_Throne.cfg:16
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate heir."
-msgstr ""
-"Сражайтесь за возврат трона Веснота, законным наследником которого вы "
-"являетесь."
+msgstr "Сражайтесь за вовращение трона Веснота, принадлежащего вам по праву."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:4
 msgid "The Elves Besieged"
-msgstr "Осада эльфов"
+msgstr "Эльфы в осаде"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:24
 msgid "Move Konrad to the signpost in the northwest"
-msgstr "Приведите Конрада к указательному столбу на северо-западе"
+msgstr "Приведите Конрада к указателю на северо-западе"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:20
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:27
@@ -202,7 +203,7 @@ msgid ""
 msgstr ""
 "Спустя шестнадцать лет своего правления, Ашевир устремила свой взор в "
 "сторону ненавистных лесных эльфов, живущих на юго-западе Веснота в большом "
-"лесу. Орки-наёмники были посланы уничтожить их."
+"лесу и послала орков-наёмников, чтобы уничтожить их."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:233
 msgid ""
@@ -212,19 +213,22 @@ msgstr "Мастер Делфадор! Смотрите, орки идут со 
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:237
 msgid "There are too many to fight, far too many. We must escape!"
-msgstr "Их очень много для битвы, слишком много. Мы должны бежать!"
+msgstr ""
+"Их слишком много, чтобы нам сражаться с ними... слишком много. Мы должны "
+"спасаться!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:241
 msgid "But to where? This is the only home we have! What about the elves?"
 msgstr ""
-"Но куда? Это единственный дом, который у нас есть. Может быть к эльфам?"
+"Но куда? Это единственный дом, который у нас есть. А что насчёт эльфов?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:245
 msgid ""
 "We will fight them, but you must escape, Konrad. It is imperative that you "
 "escape!"
 msgstr ""
-"Мы будем сражаться, но ты должен бежать, Конрад. Необходимо, чтобы ты бежал."
+"Мы будем сражаться, но ты должен спасаться, Конрад. Необходимо, чтобы ты "
+"спасся."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:249
 msgid ""
@@ -247,35 +251,35 @@ msgid ""
 "Attack the elves, my grunts, and take their villages. Let us claim this land "
 "for the Queen!"
 msgstr ""
-"Бейте эльфов, дети мои, жгите их деревни! Захватим эту землю для королевы!"
+"Бейте эльфов, воины, жгите их деревни! Захватим эту землю для королевы!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:266
 msgid ""
 "Remember, it is rumored that the filthy mage and one that he protects are in "
 "these parts. They are the ones we want!"
 msgstr ""
-"Помните, здесь есть грязный маг и он один охраняет здешние земли. Он один "
-"нам и нужен!"
+"Помните, по слухам здесь живут грязный маг и тот, кого он охраняет. Они-то "
+"нам и нужны."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:272
 msgid "Ha ha! We will rip the filthy elves to pieces!"
-msgstr "Ха ха! Мы разорвём этих грязных эльфов на куски!"
+msgstr "Ха-ха! Мы разорвём этих грязных эльфов на куски!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:277
 msgid "Let them come. We will fight them with all we have!"
-msgstr "Они идут. Мы должны драться всеми, кто у нас есть!"
+msgstr "Они идут. Мы будем сражаться с ними всеми силами."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:281
 msgid "Be careful, Konrad! Guard him well, Delfador!"
-msgstr "Будь осторожен, Конрад! У них хорошая охрана, Делфадор!"
+msgstr "Будь осторожен, Конрад! Делфадор, береги его!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:285
 msgid "And so it has begun!"
-msgstr "Итак, это началось!"
+msgstr "Итак, началось!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:298
 msgid "OK, we have made it this far! But where do we go next?"
-msgstr "Хорошо, мы проделали это долгий путь. Но что будем делать дальше?"
+msgstr "Хорошо, мы проделали этот долгий путь. Но что будем делать дальше?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:302
 msgid ""
@@ -283,7 +287,7 @@ msgid ""
 "will find refuge there."
 msgstr ""
 "Мы должны идти на север и попытаться переправиться на остров Андуин. "
-"Надеюсь, мы найдём там помощь."
+"Надеюсь, мы найдём там убежище."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:306
 msgid ""
@@ -295,8 +299,8 @@ msgid ""
 "The elves will fight. They may even prevail. But I fear things do not bode "
 "well for them. Let us not speak of it now. Onward!"
 msgstr ""
-"Эльфы будут биться. Это всё, что им остаётся делать. Но, боюсь, они не "
-"продержатся долго. Не будем больше об этом. Уходим!"
+"Эльфы будут биться. Они даже могут победить, но, боюсь, они не продержатся "
+"долго. Не будем больше об этом. Уходим!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:314
 msgid "Good luck, Konrad! Don't worry about us, we will fight as best we can!"
@@ -308,7 +312,7 @@ msgstr "Я... Я не могу понять, как я это сделал."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:333
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr "Принц... ты не должен сражаться! Нееееет!"
+msgstr "Принц... ты должен сражаться! Нееееет!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:337
 msgid "It is over. I am doomed..."
@@ -341,11 +345,11 @@ msgstr "Только глупцы могут противостоять мне!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:411
 msgid "I am Galdrad. You will have to fight me to get any further!"
-msgstr "Я Галдрад. Ты должен сразиться со мной чтобы идти дальше!"
+msgstr "Я Галдрад. Ты должен сразиться со мной, чтобы идти дальше!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:422
 msgid "Only a fool would dare to attack me!"
-msgstr "Только дурак осмелится атаковать меня!"
+msgstr "Только глупец осмелится атаковать меня!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:433
 msgid "I am Delfador the Great. Prepare to die!"
@@ -356,9 +360,8 @@ msgid "Let me through, you rogue!"
 msgstr "Я вижу тебя насквозь, ты жулик!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:460
-#, fuzzy
 msgid "Oh no! They are destroying our home!"
-msgstr "Они уничтожают наш дом!"
+msgstr "О нет! Они уничтожают наш дом!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_Elves_Besieged.cfg:464
 msgid "There can be no looking back. We must go quickly!"
@@ -421,7 +424,7 @@ msgid ""
 "in such sad times."
 msgstr ""
 "Делфадор, мой старый друг! Мы слышали о твоём прибытии, и о нападениях на "
-"эльфов. Рад видеть тебя снова, хотя я предпочёл бы, что бы это было не в "
+"эльфов. Рад видеть тебя снова, хотя я предпочёл бы, чтобы это было не в "
 "такие грустные времена."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:155
@@ -431,7 +434,7 @@ msgid ""
 "has slain fifty men and a hundred orcs."
 msgstr ""
 "Конрад, это — Кайлан, один из самых могущественных конных лордов и один из "
-"немногих, кто выступает против тёмной короны. Ходят слухи, что его копье "
+"немногих, кто выступает против тёмной короны. Ходят слухи, что его копьё "
 "убило пятьдесят человек и сотню орков."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:159
@@ -453,7 +456,7 @@ msgid ""
 "strength of the port. A ship is due here in two days, surely it will be able "
 "to take you to safety."
 msgstr ""
-"Надеюсь с вашей помощью мы сможем отразить их атаку. Но вам не стоит здесь "
+"Надеюсь, с вашей помощью мы сможем отразить их атаку. Но вам не стоит здесь "
 "долго задерживаться, поскольку ваши жизни более важны для нас, чем стойкость "
 "порта. Корабль прибудет через два дня, он доставит вас в безопасное место."
 
@@ -474,8 +477,8 @@ msgid ""
 "Konrad, and the support of my men - from now on you will be able to recruit "
 "horsemen."
 msgstr ""
-"Я дам одного моего всадника, он будет служить вам. В обмен на вашу помощь, "
-"Конрад, теперь вы можете нанимать всадников."
+"Я дам одного моего всадника, он будет служить вам. Я предлагаю вам мою "
+"помощь, Конрад, и помощь моих людей — теперь вы можете нанимать всадников."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:188
 msgid ""
@@ -525,7 +528,7 @@ msgstr "Галдиэль"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:219
 msgid "Greetings, young master. I pledge myself to your service."
-msgstr "Приветствую, молодой мастер. Я обязуюсь служить Вам."
+msgstr "Приветствую, юный мастер. Я обязуюсь служить Вам."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:223
 msgid ""
@@ -590,7 +593,7 @@ msgid ""
 "you to Anduin."
 msgstr ""
 "Спасибо вам за помощь, друзья. Корабль должен скоро прибыть, и он переправит "
-"вас в Андуин."
+"вас на Андуин."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:331
 msgid "We should embark now."
@@ -704,7 +707,7 @@ msgid ""
 "other magi here. I pledge myself to your service so we can work together to "
 "recapture the island!"
 msgstr ""
-"Мой лорд, я прятался в деревне от орков, также как и многие другие маги. Я к "
+"Милорд, я прятался в деревне от орков, также как и многие другие маги. Я к "
 "Вашим услугам, мы сможем работать вместе и мы отобьём остров!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_Isle_of_Anduin.cfg:226
@@ -834,7 +837,7 @@ msgstr "Иналаи"
 msgid ""
 "So this is the Bay of Pearls. It looks like they have those mermen working "
 "hard!"
-msgstr "Итак это — залив Жемчуга. Видно, работа водяных здесь тяжела!"
+msgstr "Итак, это — залив Жемчуга. Видно, работа водяных здесь тяжела!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:183
 msgid ""
@@ -850,7 +853,7 @@ msgstr "Хорошо! Будь осторожен!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:212
 msgid "But boss, why are we only using bats and nagas?"
-msgstr "Но босс, почему мы используем только мышей и нага?"
+msgstr "Но босс, почему мы используем только мышей и нагов?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:218
 msgid ""
@@ -866,11 +869,11 @@ msgstr "Но орки самая мощная раса в..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:229
 msgid "Shut up, worm! I'm the boss!"
-msgstr "Замолчи, червяк! Я босс!"
+msgstr "Молчи, червяк! Я здесь главный!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:254
 msgid "Ha ha ha! Now orcs will rule over land and sea!"
-msgstr "Ха ха ха! Теперь орки правят землями и морями!"
+msgstr "Ха-ха-ха! Теперь орки будут править землями и морями!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:260
 msgid "(Sigh) Will someone kill this idiot for me, please?"
@@ -882,7 +885,7 @@ msgstr "Но... Но... как это могло произойти со мно�
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:278
 msgid "Who was that idiot?"
-msgstr "Кто этот идиот?"
+msgstr "Кто был этот идиот?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:300
 msgid "Gwaba"
@@ -986,7 +989,7 @@ msgid ""
 "Death to the orcs! Come, my mer brethren, let us fight the orcs and drive "
 "them from our shores!"
 msgstr ""
-"Смерть оркам! Вперед мои братья, будем биться с орками и прогоним их прочь "
+"Смерть оркам! Вперёд мои братья, будем биться с орками и прогоним их прочь "
 "от наших берегов!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:644
@@ -1066,7 +1069,7 @@ msgstr "Но Делфадор! Я не могу это сделать самос
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:719
 msgid "On your own? My lord! We, your loyal soldiers, will support you!"
-msgstr "Самостоятельно? Мой лорд! Мы, ваши верные солдаты, поддержим Вас!"
+msgstr "Самостоятельно? Милорд! Мы, ваши верные солдаты, поддержим Вас!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_Bay_of_Pearls.cfg:723
 msgid ""
@@ -1220,7 +1223,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:117
 msgid "My lord! On yonder peninsula there seems to be some movement!"
-msgstr "Мой лорд! На том полуострове заметно некоторое движение!"
+msgstr "Милорд! На том полуострове замечено какое-то движение!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:121
 msgid ""
@@ -1245,7 +1248,7 @@ msgid ""
 "I see. If we are to break the siege of Elensefar, we will need every veteran "
 "soldier we can get."
 msgstr ""
-"Я вижу. Если мы прорвём осаду Эленсефара, нам тогда понадобится каждый "
+"Понятно. Если мы прорвём осаду Эленсефара, нам тогда понадобится каждый "
 "солдат-ветеран, который у нас есть."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:133
@@ -1254,8 +1257,8 @@ msgid ""
 "before they are upon us. If we are to fight, then... To Arms!"
 msgstr ""
 "Решение за вами, сэр. Если мы должны бежать, то я отдам приказ и мы покинем "
-"это место прежде, чем они успеют опомнится. Если мы должны бороться, то... К "
-"оружию!"
+"это место прежде, чем они успеют опомниться. Если мы должны бороться, то... "
+"К оружию!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:153
 msgid "To Elensefar"
@@ -1330,7 +1333,7 @@ msgid ""
 "that the fiends of the undead have come in great numbers and turned the "
 "island into an ugly wasteland."
 msgstr ""
-"Нам известно об этом месте только одно, мой Лорд. Говорят, что сюда пришли "
+"Нам известно об этом месте только одно, милорд. Говорят, что сюда пришли "
 "неисчислимые орды мертвецов и превратили этот остров в неприветливую пустошь."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:181
@@ -1347,9 +1350,8 @@ msgid ""
 "recruit some of them to help, we might have some hope of holding off the "
 "undead hordes!"
 msgstr ""
-"Здесь ещё есть группы людей, прячущихся на острове, мой лорд. Если вы "
-"наймёте некоторых из них, то у нас будет надежда удержать эти толпы "
-"мертвецов!"
+"Здесь ещё есть группы людей, прячущихся на острове, милорд. Если вы наймёте "
+"некоторых из них, то у нас будет надежда удержать эти толпы мертвецов!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:194
 msgid "Delurin"
@@ -1358,8 +1360,8 @@ msgstr "Делурин"
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:201
 msgid "Maybe we can make a deal! Help us defeat those evil creatures!"
 msgstr ""
-"Может быть, мы сможем заключить сделку! Помогите нам победить эти "
-"дьявольские создания!"
+"Может быть, мы сможем заключить сделку! Помогите нам победить этих "
+"дьявольских созданий!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:210
 msgid ""
@@ -1487,7 +1489,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:162
 msgid "My lord! It seems the city has already fallen!"
-msgstr "Мой лорд! Кажется, город пал!"
+msgstr "Милорд! Кажется, город пал!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:166
 msgid "This is terrible news! We must retake the city!"
@@ -1550,7 +1552,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:268
 msgid "Thieves, hmmm? Who says we can trust such as you?"
-msgstr "Воры, гмммм? Кто сказал, что мы можем верить таким, как ты?"
+msgstr "Хмм, воры? Кто сказал, что мы можем верить таким, как вы?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:272
 msgid ""
@@ -1605,7 +1607,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:310
 msgid "I want you to reinforce us once we break through their line."
 msgstr ""
-"Вы нужны мне в качестве подкрепления как только мы пробьёмся через их линии."
+"Вы нужны мне в качестве подкрепления, как только мы пробьёмся через их ряды."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:314
 msgid ""
@@ -1680,7 +1682,7 @@ msgstr "Наконец, мы отбили город! Отдохнём здес�
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:516
 msgid "Victory! The thieves of Elensefar will be in your service, my lord"
-msgstr "Победа! Воры Эленсефара теперь к Вашим услугам, мой Лорд"
+msgstr "Победа! Воры Эленсефара теперь к Вашим услугам, ммлорд"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:521
 msgid "The party rested for three days, after which an old friend returned."
@@ -1703,7 +1705,6 @@ msgid "Delfador! So good to see you! Where have you been?"
 msgstr "Делфадор! Как хорошо видеть тебя! Где ты был?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:567
-#, fuzzy
 msgid ""
 "I have been meeting with the Great Elven Council. This is Kalenz, a lord of "
 "the Northern Elves who came to the Council to offer us the support of the "
@@ -1767,7 +1768,7 @@ msgstr "Ох, и ты хочешь, чтобы я нашёл этот скипе
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:612
 msgid "We will help you retrieve it, my lord."
-msgstr "Мы поможем тебе достать его, мой лорд."
+msgstr "Мы поможем тебе достать его, милорд."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:617
 msgid ""
@@ -1791,7 +1792,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_Siege_of_Elensefar.cfg:641
 msgid "So you endeavor to fight me in my home. Foolish."
-msgstr "И ты попытался биться со мной в моём же доме. Глупо."
+msgstr "Так ты попытался биться со мной в моём же доме. Глупец."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:4
 msgid "Crossroads"
@@ -1835,7 +1836,7 @@ msgid ""
 "The queen's agents were still scouring the coastal regions, for news of "
 "Elensefar's rescue had not yet reached her."
 msgstr ""
-"Представитель королевы всё ещё очищают береговые регионы, новости о спасении "
+"Представители королевы всё ещё очищают береговые регионы, новости о спасении "
 "Эленсефара ещё не дошли до неё."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:46
@@ -1916,7 +1917,7 @@ msgid ""
 "We dare not confront Asheviere yet. We must retrieve the Scepter of Fire and "
 "gather more allies in the north."
 msgstr ""
-"Мы не можем ещё сражаться с Ашевир. Мы должны вернуть Огненный Скипетр и "
+"Мы не можем больше сражаться с Ашевир. Мы должны вернуть Огненный Скипетр и "
 "собрать больше союзников на севере."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:499
@@ -1961,7 +1962,7 @@ msgstr "Ли'сар"
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_Princess_of_Wesnoth.cfg:159
 msgid ""
 "On the road to Knalga, the party was opposed by the forces of Asheviere."
-msgstr "По дороге в Кналга компания была остановлена войсками Ашевир."
+msgstr "По дороге в Кналгу компания была остановлена войсками Ашевир."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_Princess_of_Wesnoth.cfg:163
 msgid "The Queen has sent me to stop you, you impostor!"
@@ -2146,7 +2147,7 @@ msgid ""
 "My lord! This road does not seem as safe as we had hoped. Look around us at "
 "the hills - there are undead about!"
 msgstr ""
-"Мой лорд! Эта дорога выглядит не так безопасной, как мы надеялись. "
+"Милорд! Эта дорога выглядит не такой безопасной, как мы надеялись. "
 "Оглянитесь на холмы вокруг — они полны мертвецами!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_Valley_of_Death.cfg:211
@@ -2225,7 +2226,7 @@ msgstr "Уверен, что нет! Кажется, что мы спасены 
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_Valley_of_Death.cfg:293
 msgid "Whew! That was a difficult battle, but they are retreating at last!"
-msgstr "Вух! Это была сложная битва, но они наконец-то отступают!"
+msgstr "Ух! Это была сложная битва, но они наконец-то отступают!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_Valley_of_Death.cfg:316
 msgid "Yes! We have fought them off!"
@@ -2242,7 +2243,7 @@ msgid ""
 "of how you were tricked into traveling these dangerous lands. We could do "
 "nothing but help you!"
 msgstr ""
-"Во имя славы и почёта, мой Лорд! Мы обедали с королевскими охранниками "
+"Во имя славы и почёта, милорд! Мы обедали с королевскими охранниками "
 "принцессы, отдыхая от нашего путешествия, когда они сообщили, что обманом "
 "направили Вас в опасные земли. Мы поможем Вам!"
 
@@ -2261,10 +2262,10 @@ msgid ""
 "able to ford the great river at Abez. Make haste though, for you will not be "
 "able to ford the river in winter!"
 msgstr ""
-"Вы должны ускользнуть из лап этой мерзкой королевы, мой лорд. Если вы "
-"пойдёте на северо-восток, через гору Грифонов, то вы сможете добраться до "
-"брода через Великую реку в Абез. Тем не менее, поторопитесь, иначе вы не "
-"сможете перейти реку зимой!"
+"Вы должны ускользнуть из лап этой мерзкой королевы, милорд. Если вы пойдёте "
+"на северо-восток, через гору Грифонов, то вы сможете добраться до брода "
+"через Великую реку в Абез. Тем не менее, поторопитесь, иначе вы не сможете "
+"перейти реку зимой!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_Valley_of_Death.cfg:346
 msgid ""
@@ -2363,8 +2364,8 @@ msgid ""
 "we do, we must pass by this place."
 msgstr ""
 "Мы можем попробовать, но надо быть осторожным. Это может быть опасно — "
-"тревожить грифонов... но подобные всадники смогут принести ощутимую пользу "
-"после. Не важно, сделаем мы это или нет, но мы должны пройти через эти места."
+"тревожить грифонов... но подобные всадники смогут принести ощутимую пользу. "
+"Не важно, сделаем мы это или нет, но мы должны пройти через эти места."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:136
 msgid "Well, let's start climbing the mountain!"
@@ -2383,7 +2384,7 @@ msgid ""
 "Ha ha! We have killed this foul beast of the air, and can deny the rebels "
 "its eggs!"
 msgstr ""
-"Ха-ха! Мы убили этих глупых воздушных тварей, и перекрыли путь к яйцам для "
+"Ха-ха! Мы убили этих глупых летучих тварей, и перекрыли путь к яйцам для "
 "мятежников!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:183
@@ -2410,7 +2411,7 @@ msgid ""
 msgstr ""
 "Мы должны продолжать двигаться на север. Мы не успеем вернуться в безопасные "
 "Эленсефар или Андуин до зимних снегопадов. Поэтому мы должны пересечь "
-"великую реку и продолжить двигаться вперёд, к землям гномов. Быстрее, в путь!"
+"великую реку и продолжать двигаться вперёд, к землям гномов. Быстрее, в путь!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:209
 msgid ""
@@ -2612,7 +2613,7 @@ msgstr "Только не она снова! Быстрее! Мы должны �
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_Ford_of_Abez.cfg:301
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_Ford_of_Abez.cfg:320
 msgid "Stop! You shall not pass! Quick, reinforcements, protect the Princess!"
-msgstr "Стой! Ты не пройдёшь! Быстрее, перегруппироваться, защитить принцессу!"
+msgstr "Стой! Ты не пройдёшь! Быстро, помощники, защитить принцессу!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_Ford_of_Abez.cfg:333
 msgid "Sea Serpent"
@@ -2662,7 +2663,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_Ford_of_Abez.cfg:394
 msgid "Do you think she's really going to chase us, Delfador?"
-msgstr "Ты думаешь, что они действительно будут преследовать нас, Делфадор?"
+msgstr "Ты думаешь, что она действительно будет преследовать нас, Делфадор?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_Ford_of_Abez.cfg:399
 msgid ""
@@ -2670,9 +2671,8 @@ msgid ""
 "difficult for her. We must continue onward. If she makes it across before "
 "winter, then so be it!"
 msgstr ""
-"Похоже, она попытается, но морские создания сделают это сложным для неё. Мы "
-"должны идти вперёд. Если она переправится до наступления зимы, то она "
-"нагонит нас!"
+"Похоже, она попытается, но морские создания помешают ей. Мы должны идти "
+"вперёд. Если она переправится до наступления зимы, то она нагонит нас!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:4
 msgid "Northern Winter"
@@ -2705,7 +2705,7 @@ msgstr "Халгар Ду'нар"
 msgid ""
 "This winter is bitterly cold! Perhaps we should stop here and rest a while."
 msgstr ""
-"Это зима очень холодная! Может быть нам стоит остановиться здесь и отдохнуть "
+"Эта зима очень холодная! Возможно нам стоит остановиться здесь и отдохнуть "
 "некоторые время."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:141
@@ -2713,7 +2713,7 @@ msgid ""
 "Stop and rest? My lord, we must go hard after the Scepter of Fire, lest it "
 "fall into the hands of our enemies!"
 msgstr ""
-"Остановиться и отдохнуть? Мой лорд, мы должны идти ещё быстрее за Огненным "
+"Остановиться и отдохнуть? Милорд, мы должны идти ещё быстрее за Огненным "
 "Скипетром, чтобы не попасть в руки наших врагов!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:145
@@ -2994,19 +2994,19 @@ msgstr "Это вход в королевство гномов."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:173
 msgid "All I can see are ruins and poor villages."
-msgstr "Руины и бедные деревни, это всё что я вижу."
+msgstr "Руины и бедные деревни, это всё, что я вижу."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:177
 msgid ""
 "The poor villagers that once lived here and traded with the dwarves are now "
 "held in slavery by the orcs."
 msgstr ""
-"Бедные крестьяне, жившие раньше здесь и торговавшие с гномами, теперь угнаны "
-"в рабство орками."
+"Бедные крестьяне, жившие раньше здесь и торговавшие с гномами, теперь в "
+"рабстве у орков."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:181
 msgid "Slaves to the evil orcs? We must liberate them!"
-msgstr "В рабство злыми орками? Мы должны освободить их!"
+msgstr "В рабстве у злых орков? Мы должны освободить их!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:185
 msgid ""
@@ -3022,8 +3022,8 @@ msgid ""
 "orcs from these lands. Look - orcs are already gathering. More are surely on "
 "their way."
 msgstr ""
-"Конрад, послушайся Делфадора. Мы вернёмся и выгоним орков их этих мест. "
-"Посмотрите — орки уже собрались. Больше на их дороге."
+"Конрад, послушайся Делфадора. Мы вернёмся и выгоним орков из этих мест. "
+"Посмотрите — орки уже собираются. Их, конечно же, больше на пути."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:193
 msgid "This does not please me, but I will listen to your advice."
@@ -3035,20 +3035,20 @@ msgid ""
 "to find these doors sealed, leaving us as hunting fodder for the gathering "
 "horde."
 msgstr ""
-"Сэр, я должен обследовать путь впереди. Худшим для нас будет найти эти двери "
-"запечатанными, что сделает нас легкой добычей для приближающейся орды."
+"Сир, я должен обследовать путь впереди. Худшим для нас будет найти эти двери "
+"запечатанными, что сделает нас лёгкой добычей для приближающейся орды."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:201
 msgid "Excellent. We must find a way underground before we are overwhelmed."
-msgstr "Великолепно. Мы должны найти путь под землей прежде, чем нас убьют."
+msgstr "Великолепно. Мы должны найти путь под землёй прежде, чем нас убьют."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:217
 msgid ""
 "My uncle used to smuggle... err... I mean... trade food for the dwarves. He "
 "could get grain carts in under the very noses of those ugly orcs."
 msgstr ""
-"Мой дядя контрабандой... ерр... я хотел сказать... торговал едой с гномами. "
-"Он мог перевозить мешки с зерном под самым носом этих злобных орков."
+"Мой дядя занимался контрабандой... эмм... я хотел сказать... торговал едой с "
+"гномами. Он мог перевозить мешки с зерном под самым носом этих злобных орков."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:221
 msgid "He must be hiding in one of those villages."
@@ -3065,7 +3065,7 @@ msgid ""
 "The battle outside was fierce and lasted a full half-year. But, the battles "
 "inside the tunnels were worse."
 msgstr ""
-"Битва снаружи был свирепая и длилась полный полгода. Но бои внутри тоннелей "
+"Битва снаружи была свирепой и длилась целых полгода. Но бои внутри тоннелей "
 "ещё хуже."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:266
@@ -3074,7 +3074,7 @@ msgid ""
 "stand here. May we triumph where he fell."
 msgstr ""
 "Колонны Тундейна. Он был легендарным лордом гномов, здесь он останавливался "
-"в последний раз. Мы праздновали триумф когда но пал."
+"в последний раз. Мы праздновали триумф, когда он пал."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:270
 msgid ""
@@ -3094,7 +3094,7 @@ msgstr "Как твои дела, $outlaw_name|?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:351
 msgid "The same as always, Uncle!"
-msgstr "Также как всегда, дядя!"
+msgstr "Так же как и всегда, дядя!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:355
 msgid "That bad, huh?"
@@ -3192,7 +3192,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:558
 msgid "I hope we can make it through the main doors, then."
-msgstr "Я надеюсь мы сможем пройти через главные врата, затем."
+msgstr "Я надеюсь мы сможем пройти через главные врата."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:562
 msgid "It is our only choice now. Hurry!"
@@ -3245,7 +3245,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:693
 msgid "But Konrad's party was not alone in entering the caves..."
-msgstr "Но люди Конрада не одни вошли в шахту..."
+msgstr "Но люди Конрада вошли в пещеры не одни..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Dwarven_Doors.cfg:705
 msgid ""
@@ -3254,7 +3254,7 @@ msgid ""
 "caves that lie ahead of us!"
 msgstr ""
 "Вух! Мы прошли сквозь опасный туман в горах, а теперь перед нами полный "
-"хаос! Вперёд, солдаты! Мы должны должны добраться до шахт, лежащих перед "
+"хаос! Вперёд, солдаты! Мы должны должны добраться до пещер, лежащих перед "
 "нами!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:4
@@ -3327,7 +3327,7 @@ msgid ""
 "sniveling in his tunnel, call me a coward?"
 msgstr ""
 "Ты слишком далеко зашёл! Я Каленз, могущественный эльфийский лорд! Как "
-"посмел ты, хныкающий в своем тоннеле, назвать меня трусом?"
+"посмел ты, хныкающий в своём тоннеле, назвать меня трусом?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:361
 msgid ""
@@ -3489,8 +3489,9 @@ msgid ""
 "handle their violent instincts!"
 msgstr ""
 "Хорошо, если ты всё-таки собираешься реализовать этот безумный план, то я "
-"снабжу тебя своими войсками, для использования их как наездников. Ни хрупкий "
-"человек, ни даже эльф никогда не справятся с их неистовыми инстинктами!"
+"снабжу тебя своими войсками, для использования их как наездников. Хилый "
+"человек — или ещё хуже, эльф — никогда не справится с их неистовыми "
+"инстинктами!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:605
 msgid ""
@@ -3502,7 +3503,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:609
 msgid "Well, I suppose..."
-msgstr "Ну, мы сбежали..."
+msgstr "Ну, я думаю..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_Plunging_Into_the_Darkness.cfg:645
 msgid "Woah there... No need to be surly, now. Ok, easy... now GO!"
@@ -3575,7 +3576,7 @@ msgstr "Семья моего дяди утонула после того, ка�
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:153
 msgid "These passages seem to have been used recently."
-msgstr "Эти переходы выглядят часто используемыми."
+msgstr "Похоже на то, что эти переходы часто используют."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:185
 msgid ""
@@ -3586,11 +3587,10 @@ msgid ""
 "which have since been driven into the upper caves of Knalga by the forces of "
 "darkness."
 msgstr ""
-"Вы вошли в огромный природный собор, стены уходили вверх, в темноту, за "
-"пределы видимости. Поперёк галереи — огромная пропасть, пол пещеры вокруг "
-"неё, казалось, был идеально гладок. Когда-то это был центр шумной империи "
-"гномов, остатки которой до сих пор скрывались в темных верхних пещерах "
-"Кналга."
+"Вы вошли в огромный природный собор, стены уходят вверх, в темноту, за "
+"пределы видимости. Поперёк галереи — огромная трещина, пол пещеры вокруг неё "
+"идеально гладок. Когда-то это был центр шумной империи гномов, остатки "
+"которой до сих пор скрываются от тёмных сил в верхних пещерах Кналга."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:198
 msgid "There is a big cave-in south of here."
@@ -3622,11 +3622,11 @@ msgstr "А, грязные орки! Освободим эти пещеры от
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:304
 msgid "I did not know that the undead were in these pits!"
-msgstr "Не знал, в этих шахтах есть мертвецы!"
+msgstr "Не знал, что в этих пещерах есть мертвецы!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:315
 msgid "Who is this foul enemy that we fight?"
-msgstr "Кто этой грязный противник, с которым мы сражаемся?"
+msgstr "Кто этот грязный противник, с которым мы сражаемся?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:319
 msgid "I am Lionel. I am the Lost General. I will avenge myself upon you all!"
@@ -3648,7 +3648,7 @@ msgid ""
 "die. Now I will get revenge on you all!"
 msgstr ""
 "Помните меня, да? Ага. Я был лучшим генералом короля, брошенным сюда, в эти "
-"шахты чтобы вернуть скипетр. Но орки окружили нас в этой пещере и оставили "
+"шахты, чтобы вернуть скипетр. Но орки окружили нас в этой пещере и оставили "
 "умирать от голода. Гномы не помогли, оставив меня умирать. Но теперь я "
 "отомщу вам всем!"
 
@@ -3657,8 +3657,7 @@ msgid ""
 "Argh! I am vanquished! But at least by worthy foes, instead of those "
 "disgusting orcs."
 msgstr ""
-"Аргх! Я побеждён! Хорошо, что достойным противником, а не этими глупыми "
-"орками."
+"Ах! Я побеждён! Хорошо, что достойным противником, а не этими глупыми орками."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:354
 msgid "Rest in peace, Lionel. The poor, lost general."
@@ -3674,8 +3673,9 @@ msgid ""
 msgstr ""
 "Я уничтожен, но моя миссия должна быть выполнена. Хотя вы и противники, но "
 "вы достойные противники, и я вам скажу, что скипетр находится на востоке "
-"отсюда, там откуда вы пришли, в глубине пещер. Я совершил ошибку, не спросив "
-"дорогу, когда потерялся. Может, вы будете более удачливы в поисках, чем я!"
+"отсюда, там, откуда вы пришли, в глубине пещер. Я совершил ошибку, не "
+"спросив дорогу, когда потерялся. Может, вы будете более удачливы в поисках, "
+"чем я!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:400
 msgid "The earth shakes."
@@ -3686,7 +3686,7 @@ msgid ""
 "Tall ones, I thank you. Life has been nothing but a struggle recently. We "
 "are the last outpost of civilization in these caves."
 msgstr ""
-"Высокие, я благодарю вас. Недавно жизнь была всего-лишь борьбой. Мы — "
+"Благодарю вас, громадины. Недавно жизнь была одной лишь борьбой. Мы — "
 "последний оплот цивилизации в этих пещерах."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Lost_General.cfg:437
@@ -3705,7 +3705,7 @@ msgid ""
 "Beyond my citadel the spawn of the darkness hold complete sway. You will not "
 "survive without assistance."
 msgstr ""
-"Скипетр? Ах, Вы ищете скипетр. Вы, жители сверху, слишком честолюбивы. Вне "
+"Скипетр? Ах, вы ищете скипетр. Вы, жители сверху, слишком честолюбивы. Вне "
 "моей цитадели темные отродья имеют огромную власть. Вы не выживете без моей "
 "помощи."
 
@@ -3719,7 +3719,7 @@ msgid ""
 "reaches of the underground kingdom. The Scepter can only be there. Please "
 "accept the gift of my guardsmen. These elite warriors will protect you."
 msgstr ""
-"Молодой человек, к северу-востоку от моего жилья туннели сходятся к самым "
+"Молодой человек, к северу-востоку от моего жилья тоннели сходятся к самым "
 "глубоким местам подземного королевства. Скипетр может быть только там. "
 "Пожалуйста, примите в подарок моих гвардейцев. Эти элитные воины защитят вас."
 
@@ -3740,8 +3740,8 @@ msgid ""
 "I do not know, Konrad, but I can sense our path only leads us downward. We "
 "will continue to the northeast, to the deepest depths of these caverns."
 msgstr ""
-"Я не знаю, Конрад, но я могу чувствовать, что наш путь ведёт нас всё глубже. "
-"Мы продолжим идти на северо-восток, к самым глубоким недрам этих пещер."
+"Я не знаю, Конрад, но чувствую, что наш путь ведёт нас всё глубже. Мы "
+"продолжим идти на северо-восток, к самым глубоким недрам этих пещер."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Hasty_Alliance.cfg:4
 msgid "Hasty Alliance"
@@ -3778,7 +3778,7 @@ msgid ""
 "produce enough light to see by."
 msgstr ""
 "Ступая по низкому проходу, Конрад и Делфадор вышли из запутанных катакомб в "
-"ледяную черноту. Казалось, темнота давила на их. Огни померкли и исчезли. "
+"ледяную черноту. Казалось, темнота давила на них. Огни померкли и исчезли. "
 "Даже посох старого волшебника с трудом освещал окружающее пространство."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Hasty_Alliance.cfg:52
@@ -3859,8 +3859,8 @@ msgid ""
 "I see we have little choice but to help each other. Let us fight together "
 "until we return to the surface. Agreed?"
 msgstr ""
-"Я вижу у нас есть небольшой выбор, но давайте поможем друг другу. Давайте "
-"драться вместе пока мы не вернёмся на поверхность. Согласны?"
+"Я вижу, у нас есть небольшой выбор, но давайте поможем друг другу. Давайте "
+"драться вместе, пока мы не вернёмся на поверхность. Согласны?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Hasty_Alliance.cfg:314
 msgid ""
@@ -3868,7 +3868,7 @@ msgid ""
 "perish together, Princess."
 msgstr ""
 "Очень хорошо, я обещаю, что Вы снова окажетесь на поверхности или мы все "
-"должны умереть вместе, принцесса."
+"умрём вместе, принцесса."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Hasty_Alliance.cfg:318
 msgid "But once we escape from this hole, I have a score to settle with you!"
@@ -3879,8 +3879,8 @@ msgid ""
 "Well, we have helped each other survive so far, Princess. Now let's continue "
 "together. What do you say?"
 msgstr ""
-"Хорошо, мы помогли спастись любому, принцесса. Теперь продолжим путь. Что Вы "
-"на это скажете?"
+"Хорошо, мы помогли спастись друг другу, принцесса. Теперь продолжим путь. "
+"Что Вы на это скажете?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Hasty_Alliance.cfg:331
 msgid ""
@@ -3911,8 +3911,8 @@ msgid ""
 "faint glow provided a small reprieve from the thick blackness. Volcanic "
 "fumes drifted up from cracks in the floor."
 msgstr ""
-"Вокруг пропасти воздух почти потрескивал от волшебной энергии. Также он стал "
-"более тёплым. Пол был ровным и, местами, идеально гладким, слабый жар принёс "
+"Вокруг пропасти воздух почти потрескивал от волшебной энергии. Он стал даже "
+"теплее. Пол был ровным и, местами идеально гладким, слабый жар принёс "
 "временное облегчение от плотной темноты. Вулканические пары поднимались из "
 "трещин в полу."
 
@@ -3931,7 +3931,7 @@ msgstr "Захватите Огненный Скипетр Конрадом ил
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:125
 msgid "The Scepter must be getting close now! Where shall we go?"
-msgstr "Скипетр должен закрыться сейчас! Куда мы должны идти?"
+msgstr "Скипетр находится где-то поблизости! Куда нам идти?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:129
 msgid ""
@@ -3945,7 +3945,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:133
 msgid "Yes, I feel it is near here! We must search for it carefully."
-msgstr "Да, я чувствую, что он близко! Мы должно внимательно искать его."
+msgstr "Да, я чувствую, что он близко! Мы должны внимательно искать его."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:139
 msgid "An earthquake! We'll be trapped!"
@@ -3971,12 +3971,12 @@ msgid ""
 "power of it!"
 msgstr ""
 "Скипетр... земля... кипящая лава... огонь... воздух вокруг нас... всё. Он "
-"вызывает наследника — я могу лишь сдерживать его в моем сознании. Он был "
+"зовёт наследника — я могу лишь сдерживать его в моем сознании. Он был "
 "выкован здесь, неподалёку, чуть к северу от нас. Явная сила этого предмета!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:156
 msgid "Where? Where is it?"
-msgstr "Где? Где это?"
+msgstr "Где? Где он?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:160
 msgid "North. More than that, I cannot tell."
@@ -4021,10 +4021,10 @@ msgid ""
 "old wizard's normally inscrutable face. Finally, fresh air greeted the "
 "party..."
 msgstr ""
-"Делфадор вел своих молодых подчинённых через одинокие коридоры, и они "
-"покинули туннели в течении четырех дней. Впервые Конрад увидел признаки "
-"усталости на обычно непроницаемом лице старого волшебника. Наконец, отряд "
-"вышел на свежий воздух."
+"Делфадор вёл своих молодых подчинённых через пустые коридоры, и они покинули "
+"тоннели в течение четырёх дней. Впервые Конрад увидел признаки усталости на "
+"обычно непроницаемом лице старого волшебника. Наконец, отряд вышел на свежий "
+"воздух."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19_A_Choice_Must_Be_Made.cfg:41
 msgid "Defeat either of the enemy leaders"
@@ -4098,16 +4098,16 @@ msgid ""
 "get. So if you promise never to come south of the great river, I will spare "
 "your life."
 msgstr ""
-"Нет, я думала... Я действительно не хочу убивать Вас. Я получила то, за чем "
-"пришла. Так, если Вы обещаете никогда не появляться к югу от великой реки, я "
-"пощажу вашу жизнь."
+"Нет, я думала... Я действительно не хочу убивать вас. Я получила то, за чем "
+"пришла. поэтому если вы обещаете никогда не появляться к югу от Великой "
+"реки, я пощажу твою жизнь."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19_A_Choice_Must_Be_Made.cfg:201
 msgid ""
 "With all due respect, Princess, it is once again we who will spare you, "
 "Scepter or no Scepter."
 msgstr ""
-"При всем должном уважении, принцесса, мы ещё раз пощадим Вас. Скипетр или "
+"При всём должном уважении, принцесса, мы ещё раз пощадим Вас. Скипетр или "
 "ничего."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19_A_Choice_Must_Be_Made.cfg:205
@@ -4123,7 +4123,7 @@ msgid ""
 "another, or else all perish!"
 msgstr ""
 "Не ссорьтесь, друзья! Хоть мы и вышли из тоннелей, вряд ли мы в "
-"безопасности. Всё что мы знаем, сейчас мы где-то в засушливых и диких "
+"безопасности. Всё, что мы знаем, сейчас мы где-то в засушливых и диких "
 "северных землях. Взгляните! На севере — орки, на юге — тёмные орды. Мы "
 "должны держатся вместе, иначе все пропадём!"
 
@@ -4160,7 +4160,7 @@ msgid ""
 "Cliffs of Thoria. It has been many centuries since any man or elf has passed "
 "over the Cliffs and survived. No, Prince, we must choose another way."
 msgstr ""
-"Нам действительно стоит найти укрытие, мой лорд, но лучше не идти на восток "
+"Нам действительно стоит найти укрытие, милорд, но лучше не идти на восток "
 "вдоль реки. Название реки переводится как \"Река Костей\". Огромные и "
 "злобные существа прячутся вдоль её берегов, её вода непригодна для питья, и "
 "она течёт мимо утёса Тории. Прошло много веков с тех пор, как человек или "
@@ -4227,7 +4227,7 @@ msgid ""
 "ago. Legends say a great sword of fire was left behind."
 msgstr ""
 "Эти снежные равнины были когда-то домом моего народа. Мы покинули это место "
-"столетия назад. Легенды гласят, что великий огненный меч был здесь утерян."
+"столетия назад. Легенды гласят, что здесь был утерян великий огненный меч."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_Snow_Plains.cfg:104
 msgid ""
@@ -4248,9 +4248,9 @@ msgid ""
 "visiting their home as an envoy from us North Elves and was called upon to "
 "vanquish some beast or other."
 msgstr ""
-"Полагаю, что он принадлежал Ила'алиону, великому лесному маршалу. Этот "
-"артефакт был заколдован для него в подарок вашими эльфийскими друзьями на "
-"юге. Он посещал их, как посланник от нас, северных эльфов, и был позван, "
+"Полагаю, он принадлежал Ила'алиону, великому лесному маршалу. Этот артефакт "
+"был заколдован для него в подарок вашими эльфийскими друзьями на юге. Он "
+"прибыл к ним в качестве нашего, северных эльфов, посланника, и был призван, "
 "чтобы убить какого-то зверя или что-то подобное."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_Snow_Plains.cfg:116
@@ -4262,8 +4262,8 @@ msgid ""
 "It must have been an infestation. Regardless, after returning to his own "
 "people, the sword was nothing but an invitation to disaster."
 msgstr ""
-"Должно быть, он был проклят. Тем не менее, после возвращения к своим людям, "
-"меч был только предвестием беды."
+"Должно быть, он был проклят. Тем не менее, после возвращения своим "
+"владельцам, меч был только предвестием беды."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_Snow_Plains.cfg:124
 msgid ""
@@ -4275,8 +4275,8 @@ msgid ""
 msgstr ""
 "Его собратья по оружию... одно можно сказать, что они не спешили помочь "
 "Ила'алиону, поскольку он считал, что он один справится с вторжением орков. "
-"Они обиделись на высокомерие владельца меча, да и негодование среди моих "
-"людей иногда очень сильно. С тех пор меч был потерян на территории орков."
+"Они обиделись на высокомерие владельца меча, негодование среди моих "
+"собратьев иногда очень сильно. С тех пор меч был потерян на территории орков."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_Snow_Plains.cfg:128
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:290
@@ -4412,7 +4412,7 @@ msgid ""
 "Look there! The swamp is infested with all manner of skeletons, corpses, and "
 "worse. I hope I have made a wise choice in taking this path."
 msgstr ""
-"Посмотрите туда! Болото битком набито скелетами, трупами и еще чем похуже.  "
+"Посмотрите туда! Болото битком набито скелетами, трупами и еще чем похуже. "
 "Надеюсь, я поступил правильно, выбрав этот путь."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:178
@@ -4421,8 +4421,8 @@ msgid ""
 "must be particularly powerful, since Death Knights are usually strong-willed "
 "spirits on their own."
 msgstr ""
-"Похоже, что эти рыцари смерти — порабощенные любимцы лорда личей. Вот этот "
-"должно быть особенно силён, так как рыцари смерти обычно тверды духом."
+"Похоже, что эти рыцари смерти — порабощённые любимцы лорда личей. Вот этот, "
+"должно быть, особенно силён, так как рыцари смерти обычно тверды духом."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:182
 msgid ""
@@ -4432,7 +4432,7 @@ msgid ""
 msgstr ""
 "Я верю, что мы можем уничтожить хозяина и освободить его последователей. "
 "Пройдет еще много много сражений, прежде чем мы сможем пройти через болота "
-"без боя. Можеть быть наши кости не станут частями тех, кто сейчас "
+"без боя. Может быть наши кости не станут частями тех, кто сейчас "
 "противостоит нам."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:196
@@ -4464,9 +4464,9 @@ msgid ""
 "Lich. It is clear that controlling such powerful spirits has drained it "
 "significantly, and it is seething in anger towards you."
 msgstr ""
-"После того, как был сокрушен последний рыцарь смерти, дикий крик вырвался из "
-"горла лича. Очевидно контроль таких мощных духов значительно иссушал его, и "
-"лич кипит от ненависти к вам."
+"Как только умер последний рыцарь смерти, дикий крик вырвался из лича. "
+"Очевидно, контроль таких мощных духов значительно иссушил его, и лич кипит "
+"от ненависти к вам."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:274
 msgid ""
@@ -4500,9 +4500,9 @@ msgid ""
 "what happened to him."
 msgstr ""
 "Да, очень сильным. Сначала я не был уверен, что это он, но теперь я вижу, "
-"что не ошибался. Он жил века назад... он появился в наше время, бывший "
-"директор школы на Андуине. Говорили, что он бесследно пропал, теперь мы "
-"знаем, что с ним случилось."
+"что не ошибался. Он жил несколько веков назад... появился в наше время, "
+"бывший директор школы на Андуине. Говорили, что он бесследно пропал, теперь "
+"мы знаем, что с ним случилось."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Swamp_Of_Dread.cfg:298
 msgid ""
@@ -4521,12 +4521,11 @@ msgid "Your encampment will be dismantled after the first turn"
 msgstr "Ваш лагерь будет разбит после первого хода"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:24
-#, fuzzy
 msgid ""
 "Konrad must reach the elvish forest and hold that position until the turn is "
 "over"
 msgstr ""
-"Конрад должен добраться до эльфийского леса и сопротивляться до окончания "
+"Конрад должен добраться до эльфийского леса и оставаться там до окончания "
 "ходов"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:44
@@ -4581,7 +4580,7 @@ msgstr "Эонихар"
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:384
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:527
 msgid "My lords! I have found you at last."
-msgstr "Мой лорд! Наконец-то я нашёл Вас."
+msgstr "Милорд! Наконец-то я нашёл Вас."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:389
 msgid "Greetings, Eonihar, old friend! Why have you been searching for us?"
@@ -4592,7 +4591,7 @@ msgid ""
 "When my lord learned of your coming, he sent riders out looking for you! "
 "There is trouble afoot!"
 msgstr ""
-"Как только мой лорд узнает о вашем прибытии, он отправит всадников за вами! "
+"Как только милорд узнал о вашем прибытии, он отправил всадников за вами! "
 "Здесь опасности на каждом шагу!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:399
@@ -4620,7 +4619,7 @@ msgid ""
 "men, and are even now gathering a great host to oppose them to the north! It "
 "is now certain that there will be a great battle."
 msgstr ""
-"Это ещё не всё, мой лорд. Глупые орки почувствовали приближение людей и "
+"Это ещё не всё, милорд. Глупые орки почувствовали приближение людей, и "
 "сейчас их собралось на севере огромное количество, чтобы противостоять им! "
 "Здесь точно будет страшное побоище."
 
@@ -4663,7 +4662,7 @@ msgid ""
 "Rider, do not fool with us. You yourself say men and orcs wage war on this "
 "plain that lies ahead. Do you propose we fly to the great woods of the east?"
 msgstr ""
-"Всадник, не дурачь нас. Ты сам сказал, что на равнине впереди, затеяли битву "
+"Всадник, не дурачь нас. Ты сам сказал, что на равнине впереди затеяли битву "
 "люди и орки. Ты предлагаешь нам перелететь к великим лесам на востоке?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:437
@@ -4671,7 +4670,7 @@ msgid ""
 "My lord, you must rush across the field before the main host of each army "
 "makes it to the battle. It is the only way to avoid this great calamity."
 msgstr ""
-"Мой лорд, Вы должны пересечь поле, прежде чем в бой вступят основные силы "
+"Милорд, Вы должны пересечь поле, прежде чем в бой вступят основные силы "
 "сторон. Это единственная возможность избежать великой беды."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:441
@@ -4687,17 +4686,17 @@ msgid ""
 "My lord has begun assembling a party of elves to come and escort you into "
 "the forest. Beware, for we are all in great danger!"
 msgstr ""
-"Мой лорд собрал отряд эльфов для сопровождения вас в лес. Будьте бдительны, "
-"мы все в большой опасности!"
+"Милорд собрал отряд эльфов для сопровождения вас в лес. Будьте бдительны, мы "
+"все в большой опасности!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:453
 msgid ""
 "Konrad, the encampment must be torn down. Any delay and these armies will "
 "crush us. Any evidence of our passage through here, and they will chase us."
 msgstr ""
-"Конрад, пора сворачивать лагерь. Малейшее промедление и эти армии сотрут нас "
-"с лица земли. Любой намек на то, что мы побывали здесь — и они бросятся за "
-"нами в погоню."
+"Конрад, пора сворачивать лагерь. Малейшее промедление, и эти армии сотрут "
+"нас с лица земли. Любой намёк на то, что мы побывали здесь — и они бросятся "
+"за нами в погоню."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:476
 msgid "So, Konrad, do you think we can simply trot across the battlefield?"
@@ -4718,7 +4717,7 @@ msgstr ""
 msgid ""
 "But they will not neglect to notice our presence in their midst! We are "
 "walking into slaughter!"
-msgstr "Но они заметят нас у них на пути! Мы идём в резню!"
+msgstr "Но они заметят нас на пути! Мы идём в резню!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:488
 msgid ""
@@ -4788,7 +4787,7 @@ msgid ""
 msgstr ""
 "Приветствуем вас, друзья эльфов! Добро пожаловать в Эметрию. Вы должны найти "
 "укрытие, пока битва не закончится. Если вы останетесь рядом со мной на "
-"время, мы будем в безопасности."
+"время, мы все будем в безопасности."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Home_North_Elves.cfg:688
 msgid ""
@@ -4877,7 +4876,7 @@ msgstr ""
 msgid ""
 "Yes... you are right, sir. It is I who am honored to be here, and I "
 "apologize for my discourtesy."
-msgstr "Да... Вы правы, сэр. Я приношу извинения за мою невоспитанность."
+msgstr "Да... Вы правы, сир. Я приношу извинения за мою невоспитанность."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Elven_Council.cfg:106
 msgid ""
@@ -4893,7 +4892,7 @@ msgid ""
 "since I last laid eyes on you, Konrad, yet you are now a grown man. A brave "
 "warrior stands before me!"
 msgstr ""
-"Как быстро растёт людская раса! Семнадцать лет назад я в последний раз "
+"Как быстро растёт людская раса! Лишь семнадцать лет назад я в последний раз "
 "убаюкивала тебя, Конрад, а теперь ты такой взрослый. Бравый воин стоит "
 "передо мной!"
 
@@ -5010,8 +5009,8 @@ msgid ""
 "If it is necessary, princess, I will ask Konrad to fight you in a duel for "
 "it."
 msgstr ""
-"Если понадобится, принцесса, я попрошу Конрада сразиться с Вами в дуэли "
-"вместо него."
+"Если понадобится, принцесса, я попрошу Конрада сразиться с Вами в дуэли за "
+"него."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Elven_Council.cfg:182
 msgid ""
@@ -5418,7 +5417,6 @@ msgstr ""
 "увидел черные клубы дыма, перемешавшиеся с облаками. Он прокричал приказ "
 "отбывать."
 
-# mountains of the Dragons
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Return_to_Wesnoth.cfg:67
 msgid ""
 "Kalenz's champion courtiers escorted Konrad and Delfador through their "
@@ -5440,7 +5438,7 @@ msgid ""
 "plains of Northeastern Wesnoth lay before them."
 msgstr ""
 "Небольшой отряд эльфов Конрада вырос в огромное войско. Одинокий маг-"
-"отшельник был не так прост, чтобы мешать этому росту, ведь вскоре перед ними "
+"отшельник знал, что лучше не мешать этому росту, ведь вскоре перед ними "
 "лягут равнины северо-восточного Веснота."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Return_to_Wesnoth.cfg:77
@@ -5449,9 +5447,9 @@ msgid ""
 "Konrad's heart leapt at the thought this journey was almost over. Though the "
 "greatest danger lay ahead, he knew he was finally returning home."
 msgstr ""
-"После долгого пребывания далёких, опасных пустынях, сердцем Конрад "
+"После долгого пребывания в далёких, опасных пустынях, сердцем Конрад "
 "почувствовал, что близится конец пути. Несмотря на то, что впереди ждала "
-"большая опасность, он знал, что в конце концов вернется домой."
+"большая опасность, он знал, что в конце концов вернётся домой."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Return_to_Wesnoth.cfg:100
 msgid "Josephus"
@@ -5528,7 +5526,7 @@ msgstr "Испытание клана"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:23
 msgid "Defeat 25 Units"
-msgstr "Уничтожьте 25 отрядов"
+msgstr "Уничтожьте 25 соединений"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:27
 msgid "Defeat Enemy Leaders (Bonus)"
@@ -5584,8 +5582,8 @@ msgid ""
 "reclaimed."
 msgstr ""
 "Выбирайте, вы или за нас, или против нас. Если вы не присоединитесь к нам, "
-"чтобы свергнуть злобную королеву, мы лишим тебя твоей власти, как только "
-"трон будет законно занят."
+"чтобы свергнуть злобную королеву, мы лишим вас власти, как только трон будет "
+"законно занят."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:209
 msgid ""
@@ -5661,8 +5659,8 @@ msgid ""
 "I cannot believe this! You have defeated me! You are now my liege, and I "
 "leave the battlefield in shame. But the Clan shall fight on!"
 msgstr ""
-"Я не могу поверить в это! Вы победили меня! Теперь Вы мои вассалы, и я "
-"покидаю поле боя с позором. Но клан всё же будет сражаться!"
+"Я не могу поверить в это! Вы победили меня! Теперь я ваш вассал, и я покидаю "
+"поле боя с позором. Но клан всё же будет сражаться!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:290
 msgid "Their leader has fallen but still they fight!"
@@ -5701,14 +5699,14 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:373
 msgid "We will serve you, my lord. You will make a worthy king."
-msgstr "Мы будем служить Вам, мой лорд. Вы станете достойным королём."
+msgstr "Мы будем служить Вам, милорд. Вы станете достойным королём."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:380
 msgid ""
 "The mighty riders of the eastern plains, the Knights of the Clans, are now "
 "yours to command!"
 msgstr ""
-"Могучие наездники восточных равнин, рыцари кланов, теперь под вашим "
+"Рыцари кланов, могучие наездники восточных равнин теперь под вашим "
 "командованием!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:389
@@ -5717,7 +5715,7 @@ msgstr "Я думаю, ты ошибаешься! Ты должен помочь
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:393
 msgid "Who then is your leader? Who do we serve?"
-msgstr "Кто твой лидер? Кому нам служить?"
+msgstr "Кто твой повелитель? Кому нам служить?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:397
 msgid ""
@@ -5759,7 +5757,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:436
 msgid "Clan Members Defeated"
-msgstr "Отряды противника уничтожены"
+msgstr "Членов клана побеждено"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:455
 msgid ""
@@ -5804,7 +5802,7 @@ msgid ""
 "out their evil orders."
 msgstr ""
 "Битва была долгой и тяжёлой. Мы проигрывали. Элдред был убит, но я знал, что "
-"гневу Ашевир не будет предел. Слишком много невиновных будет казнено. Я "
+"гневу Ашевир не будет предела. Слишком много невиновных будет казнено. Я "
 "должен был спасти монархию. Спасти принцев. Я поспешил в Велдин, пытаясь "
 "опередить охранников Ашевир выполнить её ужасные приказания."
 
@@ -5981,7 +5979,7 @@ msgid ""
 "You have hunted me across the countryside, indeed across the years. Here I "
 "am, Dark Queen."
 msgstr ""
-"Ты искала меня по всему королевству, на протяжении долгих лет. Вот он я, "
+"Ты искала меня по всему королевству, на протяжении долгих лет. Вот она я, "
 "тёмная королева."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:337
@@ -6089,7 +6087,7 @@ msgid ""
 "Tomorrow is a new day, friends... let us build this kingdom anew."
 msgstr ""
 "Во имя справедливости, лорд эльфов. Если бы мы не боролись, зло праздновало "
-"бы победу. Но, я прошу Вас оставить мертвых в покое. Мы добились победы. "
+"бы победу. Но, я прошу Вас оставить мёртвых в покое. Мы добились победы. "
 "Завтра будет новый день, друзья... позвольте нам отстроить королевство "
 "заново."
 
@@ -6154,7 +6152,7 @@ msgstr "Мы проиграли, поскольку я был побежден!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:38
 msgid "Argh! I am finished!"
-msgstr "Фух! Я закончил!"
+msgstr "Ах! Меня победили!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:51
 msgid "No! This is the end! We have been defeated!"
@@ -6162,7 +6160,7 @@ msgstr "Нет! Это конец! Мы проиграли!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:33
 msgid "Do you want this unit to pick up the sword?"
-msgstr "Вы хотите чтобы этот отряд подобрал меч?"
+msgstr "Хотите ли вы, чтобы это соединение подобрало меч?"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:35
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:129
@@ -6180,10 +6178,10 @@ msgid ""
 "fire. Tongues of flame dance on the surface, giving the bluish steel a "
 "flawless mirrored finish."
 msgstr ""
-"Этот тяжелый клинок создан столетия назад, древними эльфийскими кузнецами, "
-"которые сумели наполнить синеватую сталь внутренним волшебным огнём. Языки "
-"пламени, танцующие на поверхности, придают синеватой стали безупречный "
-"зеркальный вид."
+"Этот тяжёлый клинок создан несколько столетий назад древними эльфийскими "
+"кузнецами, которые сумели наполнить синеватую сталь внутренним волшебным "
+"огнём. Языки пламени, танцующие на поверхности, придают синеватой стали "
+"безупречный зеркальный вид."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:43
 msgid "Only the leader of an army can wield this sword!"
@@ -6210,31 +6208,31 @@ msgstr "Нет"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:127
 msgid "Do you want this unit to pick up the armor?"
-msgstr "Вы хотите чтобы этот отряд подобрал доспех?"
+msgstr "Хотите ли вы, чтобы это соединение подобрало доспехи?"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:133
 msgid "Void Armor"
-msgstr "Призрачный Доспех"
+msgstr "Призрачные Доспехи"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:135
 msgid ""
 "A beautiful chest plate crafted from shimmering black steel, the Void Armor "
 "is virtually impenetrable to physical weapons!"
 msgstr ""
-"Превосходный нагрудник, изготовленный из мерцающей черной стали, Призрачный "
-"Доспех практически непроницаем для обычного оружия!"
+"Превосходный нагрудник, изготовленный из мерцающей чёрной стали, Призрачные "
+"Доспехи практически непроницаемы для обычного оружия!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:136
 msgid "Only a powerful warrior may don this armor!"
-msgstr "Только сильный воин может одеть этот доспех!"
+msgstr "Только сильный воин может одеть эти доспехи!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:150
 msgid ""
 "You struggle to lift and don the heavy plate. Once worn, however, it is "
 "amazingly comfortable. You have increased resistance to all physical damage!"
 msgstr ""
-"Вы с трудом подняли и одели тяжелый доспех. К удивлению, он оказался очень "
-"удобным. Ваша сопротивляемость обычному оружию возросла!"
+"Вы с трудом подняли и одели тяжелые доспехи. К удивлению, они оказались "
+"очень удобными. Ваша сопротивляемость обычному оружию возросла!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:205
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:370
@@ -6257,15 +6255,14 @@ msgid ""
 "possibly dare to take this!"
 msgstr "Это Огненный Скипетр. Только настоящий хозяин трона сможет взять его!"
 
-# Deep Mountains
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:373
 msgid ""
 "This ancient Scepter was forged by the great Dwarves of the Deep Mountains. "
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
-"Этот древний скипетр был создан гномами. Символ королевской власти Веснота, "
-"скипетр способен метать огненные шары во врагов владельца!"
+"Этот древний скипетр был создан гномами Подгорья. Символ королевской власти "
+"Веснота, скипетр способен метать огненные шары во врагов владельца!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:399
 msgid "Here it is at last, I have the Scepter!"
@@ -6288,7 +6285,7 @@ msgstr "Наконец-то! Скипетр у меня!"
 msgid "Indeed. You managed to reach it Li'sar. I hope you shall use it wisely."
 msgstr ""
 "Действительно. Ты ухитрилась добраться до него, Ли'сар. Надеюсь, ты будешь "
-"использовать мудро."
+"использовать его мудро."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:436
 msgid ""
