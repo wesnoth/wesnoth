@@ -46,6 +46,7 @@ public:
 	bool pressed();
 	bool hit(int x, int y) const;
 	virtual void enable(bool new_val=true);
+	void release();
 
 protected:
 	virtual void handle_event(const SDL_Event& event);

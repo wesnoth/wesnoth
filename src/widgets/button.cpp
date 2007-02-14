@@ -262,14 +262,13 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 void button::mouse_down(SDL_MouseButtonEvent const &event)
 {
 	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT && type_ != TYPE_CHECK){
-		if (type_ != TYPE_IMAGE){
-			state_ = PRESSED;
-		}
-		else{
-			if (state_ == PRESSED) { state_ = ACTIVE; }
-			else { state_ = PRESSED; }
-		}
+		state_ = PRESSED;
 	}
+}
+
+void button::release(){
+	state_ = NORMAL;
+	draw_contents();
 }
 
 void button::mouse_up(SDL_MouseButtonEvent const &event)

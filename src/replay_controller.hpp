@@ -64,6 +64,7 @@ public:
 
 protected:
 	virtual void init_gui();
+	void init_shroudfog_controls(const std::vector<team>::iterator);
 
 private:
 	void init();

@@ -323,6 +323,7 @@ public:
 	bool team_valid() const;
 
 	theme& get_theme();
+	gui::button* find_button(const std::string& id);
 
 	const theme::menu* menu_pressed();
 

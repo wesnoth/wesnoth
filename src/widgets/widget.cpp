@@ -22,13 +22,13 @@ namespace {
 
 namespace gui {
 
-widget::widget(const widget &o)
+	widget::widget(const widget &o)
 	: events::handler(), video_(o.video_), restorer_(o.restorer_),
 	  rect_(o.rect_), focus_(o.focus_), needs_restore_(o.needs_restore_),
 	  state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_),
 	  volatile_(o.volatile_), help_text_(o.help_text_),
-	  help_string_(o.help_string_), align_(o.align_)
+	  help_string_(o.help_string_), align_(o.align_), id_(o.id_)
 {
 }
 
@@ -36,7 +36,7 @@ widget::widget(CVideo& video, bool auto_join)
 	: handler(auto_join), video_(&video), rect_(EmptyRect), focus_(true),
 	  needs_restore_(false), state_(UNINIT), hidden_override_(false),
 	  enabled_(true), clip_(false), volatile_(false), help_string_(0),
-	  align_(RIGHT_ALIGN)
+	  align_(RIGHT_ALIGN), id_()
 {
 }
 
@@ -212,6 +212,18 @@ void widget::set_dirty(bool dirty)
 bool widget::dirty() const
 {
 	return state_ == DIRTY;
+}
+
+const std::string& widget::id() const
+{
+	return id_;
+}
+
+void widget::set_id(const std::string& id)
+{
+	if (id_.empty()){
+		id_ = id;
+	}
 }
 
 void widget::bg_update()
