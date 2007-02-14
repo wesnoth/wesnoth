@@ -305,6 +305,11 @@ void gamebrowser::handle_event(const SDL_Event& event)
 	}
 }
 
+//NOTE this cache uses the map_data as lookup value and tests the entire 
+//vector. For 1.2 this works but in 1.3 the map_data is much larger due
+//to the new terrain system. It might be useful to find a better unique
+//key for a map (including the randoms) if this becomes a performance 
+//issue --Mordante (struct added in commit 15764)
 struct minimap_cache_item {
 	std::string map_data;
 	surface mini_map;
