@@ -142,6 +142,7 @@ surface scale_surface(surface const &surf, int w, int h)
 
 	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
 	surface src(make_neutral_surface(surf));
+	// now both surfaces are always in the "neutral" pixel format
 
 	if(src == NULL || dst == NULL) {
 		std::cerr << "Could not create surface to scale onto\n";
@@ -209,7 +210,10 @@ surface scale_surface(surface const &surf, int w, int h)
 				avg_r = avg_g = avg_b = avg_a = 0;
 				int loc;
 				for (loc=0; loc<4; loc++) {
-				  SDL_GetRGBA(pix[loc],src->format,&r,&g,&b,&a);
+				  a = pix[loc] >> 24;
+				  r = pix[loc] >> 16;
+				  g = pix[loc] >> 8;
+				  b = pix[loc] >> 0;
 				  if (a != 0) {
 				    avg_r += r;
 				    avg_g += g;
@@ -253,7 +257,10 @@ surface scale_surface(surface const &surf, int w, int h)
 
 				rr = gg = bb = aa = 0;
 				for (loc=0; loc<4; loc++) {
-				  SDL_GetRGBA(pix[loc],src->format,&r,&g,&b,&a);
+				  a = pix[loc] >> 24;
+				  r = pix[loc] >> 16;
+				  g = pix[loc] >> 8;
+				  b = pix[loc] >> 0;
 				  if (a == 0) {
 				    r = avg_r;
 				    g = avg_g;
@@ -269,7 +276,7 @@ surface scale_surface(surface const &surf, int w, int h)
 				b = bb >> 16;
 				a = aa >> 16;
 				a = (a < avg_a/2) ? 0 : avg_a;
-				*dst_word = SDL_MapRGBA(dst->format,r,g,b,a);
+				*dst_word = (a << 24) + (r << 16) + (g << 8) + b;
 			}
 		}
 	}
@@ -372,13 +379,17 @@ surface adjust_surface_colour(surface const &surf, int r, int g, int b)
 
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+			alpha = (*beg) >> 24;
+			red   = (*beg) >> 16;
+			green = (*beg) >> 8;
+			blue  = (*beg) >> 0;
+
 
 			red = maximum<int>(8,minimum<int>(255,int(red)+r));
 			green = maximum<int>(0,minimum<int>(255,int(green)+g));
 			blue  = maximum<int>(0,minimum<int>(255,int(blue)+b));
 
-			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
+			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
 
 			++beg;
 		}
@@ -583,13 +594,16 @@ surface brighten_image(surface const &surf, fixed_t amount)
 		if (amount < 0) amount = 0;
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+			alpha = (*beg) >> 24;
+			red   = (*beg) >> 16;
+			green = (*beg) >> 8;
+			blue  = (*beg) >> 0;
 
 			red = minimum<unsigned>(unsigned(fxpmult(red,amount)),255);
 			green = minimum<unsigned>(unsigned(fxpmult(green,amount)),255);
 			blue = minimum<unsigned>(unsigned(fxpmult(blue,amount)),255);
 
-			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
+			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
 
 			++beg;
 		}
@@ -619,11 +633,14 @@ surface adjust_surface_alpha(surface const &surf, fixed_t amount)
 		if (amount < 0) amount = 0;
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+			alpha = (*beg) >> 24;
+			red   = (*beg) >> 16;
+			green = (*beg) >> 8;
+			blue  = (*beg) >> 0;
 
 			alpha = minimum<unsigned>(unsigned(fxpmult(alpha,amount)),255);
 
-			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
+			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
 
 			++beg;
 		}
@@ -652,11 +669,14 @@ surface adjust_surface_alpha_add(surface const &surf, int amount)
 
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+			alpha = (*beg) >> 24;
+			red   = (*beg) >> 16;
+			green = (*beg) >> 8;
+			blue  = (*beg) >> 0;
 
 			alpha = Uint8(maximum<int>(0,minimum<int>(255,int(alpha) + amount)));
 
-			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
+			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
 
 			++beg;
 		}
@@ -691,14 +711,18 @@ surface mask_surface(surface const &surf, surface const &mask)
 
 		while(beg != end && mbeg != mend) {
 			Uint8 red, green, blue, alpha;
-			Uint8 mred, mgreen, mblue, malpha;
+			Uint8 malpha;
 
-			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
-			SDL_GetRGBA(*mbeg,nmask->format,&mred,&mgreen,&mblue,&malpha);
+			alpha = (*beg) >> 24;
+			red   = (*beg) >> 16;
+			green = (*beg) >> 8;
+			blue  = (*beg) >> 0;
+
+			malpha = (*mbeg) >> 24;
 
 			alpha = Uint8(minimum<int>(malpha, alpha));
 
-			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
+			*beg = (alpha << 24) + (red << 16) + (green << 8) + blue;
 
 			++beg;
 			++mbeg;
