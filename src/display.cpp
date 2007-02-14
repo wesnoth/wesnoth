@@ -1352,8 +1352,6 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 
 void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 {
-	reach_map::iterator reach = reach_map_.end();
-
 	if(screen_.update_locked()) {
 		return;
 	}
@@ -1451,8 +1449,6 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 	if(!shrouded(loc.x,loc.y)) {
 		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_FOGSHROUD);
-		if (reach != reach_map_.end())
-			draw_enemies_reach(reach->second,xpos,ypos);
 	}
 
 	//draw the time-of-day mask on top of the hex
@@ -1475,13 +1471,15 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	}
 	//find if this tile should be darkened or bightened (reach of a unit)
 	if (!reach_map_.empty()) {
-		reach = reach_map_.find(loc);
+		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach == reach_map_.end()) {
 			const surface img(image::get_image("terrain/darken.png",image::UNMASKED,image::NO_ADJUST_COLOUR));
 			if(img != NULL) {
 				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 				SDL_BlitSurface(img,NULL,dst,&dstrect);
 			}
+		} else {
+			draw_enemies_reach(reach->second,xpos,ypos);
 		}
 	}
 
