@@ -521,6 +521,9 @@ unsigned int text_cache::max_size_ = 50;
 
 void text_cache::resize(unsigned int size) 
 {
+	LOG_FT << "Text cache: resize from: " << max_size_ << " to: " 
+		<< size << " items in cache: " << cache_.size() << '\n';
+	
 	while(size < cache_.size()) { 
 		cache_.pop_back(); 
 	} 
