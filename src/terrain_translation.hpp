@@ -179,12 +179,12 @@ namespace t_translation {
 	 * 					* The map can be postfixed with one or more empty lines,
 	 * 					  these lines are ignored
 	 * 					* Every end of line can be followed by one or more empty
-	 * 					  lines, these lines are ignored. NOTE it's deapriciated
+	 * 					  lines, these lines are ignored. NOTE it's deprecated
 	 * 					  to use this feature.
 	 * 					* Terrain strings are separated by comma's or an end of line
 	 * 					  symbol, for the last terrain string in the row. For 
 	 * 					  readability it's allowed to pad strings with either spaces
-	 * 					  or tab, however the tab is deapriciated.
+	 * 					  or tab, however the tab is deprecated.
 	 * 					* A terrain string contains either a terrain or a terrain and
 	 * 					  starting loction. The following format is used
 	 * 					  [S ]T

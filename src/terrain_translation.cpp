@@ -257,7 +257,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	// format. Shouldn't hurt
 	if(str.find(',') == std::string::npos) {
 		//old format
-		ERR_G << "Using the single letter map format is deappricated\n";
+		ERR_G << "Using the single letter map format is deprecated\n";
 		map_format_ = 1;
 		return read_game_map_old_(str, starting_positions);
 	}
@@ -869,7 +869,7 @@ t_letter string_to_number_(std::string str, int& start_position)
 
 #ifndef TERRAIN_TRANSLATION_COMPATIBLE 
 	if(result == OBSOLETE_KEEP) {
-		ERR_G << "Using _K for a keep is deappricated, support will be removed shortly\n";
+		ERR_G << "Using _K for a keep is deprecated, support will be removed shortly\n";
 		result = HUMAN_KEEP;
 	}
 #endif
