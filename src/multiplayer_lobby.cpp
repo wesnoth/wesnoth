@@ -310,6 +310,7 @@ struct minimap_cache_item {
 
 void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 {
+	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
 
 	// don't throw the rendered minimaps away
 	std::vector<minimap_cache_item> minimap_cache;
@@ -439,6 +440,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	}
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
+	if(scrolled_to_max) {
+		set_position(get_max_position());
+	}
 	scroll(get_position());
 	if(selected_ >= games_.size())
 		selected_ = maximum<long>(static_cast<long>(games_.size()) - 1, 0);
