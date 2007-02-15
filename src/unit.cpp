@@ -79,15 +79,16 @@ unit::unit(const unit& o):
 
 		advances_to_(o.advances_to_),
 		id_(o.id_),
-		race_(o.race_),
 		name_(o.name_),
 		description_(o.description_),
 		custom_unit_description_(o.custom_unit_description_),
 		underlying_description_(o.underlying_description_),
 		language_name_(o.language_name_),
+		race_(o.race_),
 		undead_variation_(o.undead_variation_),
 		variation_(o.variation_),
 
+		flag_rgb_(o.flag_rgb_),
 		hit_points_(o.hit_points_),
 		max_hit_points_(o.max_hit_points_),
 		max_hit_points_b_(o.max_hit_points_b_),
@@ -95,44 +96,29 @@ unit::unit(const unit& o):
 		max_experience_(o.max_experience_),
 		max_experience_b_(o.max_experience_b_),
 		level_(o.level_),
-		alignment_(o.alignment_),
-		flag_rgb_(o.flag_rgb_),
 
-		unrenamable_(o.unrenamable_),
-		side_(o.side_),
-		gender_(o.gender_),
 
 		alpha_(o.alpha_),
-
-		recruits_(o.recruits_),
+		side_(o.side_),
 
 		movement_(o.movement_),
 		max_movement_(o.max_movement_),
 		max_movement_b_(o.max_movement_b_),
-		movement_costs_(o.movement_costs_),
-		hold_position_(o.hold_position_),
-		end_turn_(o.end_turn_),
-		resting_(o.resting_),
 		attacks_left_(o.attacks_left_),
 		max_attacks_(o.max_attacks_),
+		movement_costs_(o.movement_costs_),
+		recruits_(o.recruits_),
 
 		states_(o.states_),
 		variables_(o.variables_),
-		emit_zoc_(o.emit_zoc_),
-		state_(o.state_),
 
 		overlays_(o.overlays_),
 
 		role_(o.role_),
 		attacks_(o.attacks_),
 		attacks_b_(o.attacks_b_),
-		facing_(o.facing_),
 
 		traits_description_(o.traits_description_),
-		unit_value_(o.unit_value_),
-		goto_(o.goto_),
-		interrupted_move_(o.interrupted_move_),
-		flying_(o.flying_),
 
 		modification_descriptions_(o.modification_descriptions_),
 		defensive_animations_(o.defensive_animations_),
@@ -150,15 +136,28 @@ unit::unit(const unit& o):
 		leading_animations_(o.leading_animations_),
 
 		healing_animations_(o.healing_animations_),
+		goto_(o.goto_),
+		interrupted_move_(o.interrupted_move_),
 		anim_(o.anim_),
-		frame_begin_time(o.frame_begin_time),
 		offset_(o.offset_),
+		emit_zoc_(o.emit_zoc_),
+		frame_begin_time(o.frame_begin_time),
 		unit_halo_(o.unit_halo_),
 		unit_anim_halo_(o.unit_anim_halo_),
+		unit_value_(o.unit_value_),
 		getsHit_(o.getsHit_),
 		refreshing_(o.refreshing_),
 		hidden_(o.hidden_),
 		draw_bars_(o.draw_bars_),
+		unrenamable_(o.unrenamable_),
+		flying_(o.flying_),
+		hold_position_(o.hold_position_),
+		end_turn_(o.end_turn_),
+		resting_(o.resting_),
+		facing_(o.facing_),
+		state_(o.state_),
+		gender_(o.gender_),
+		alignment_(o.alignment_),
 
 		modifications_(o.modifications_),
 		gamedata_(o.gamedata_),
@@ -175,9 +174,9 @@ unit::unit(const unit& o):
 // Initilizes a unit from a config
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
      const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) :
-	movement_(0), hold_position_(false),resting_(false),state_(STATE_STANDING),
-	 facing_(gamemap::location::NORTH_EAST),flying_(false),
-	 anim_(NULL),unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(gamedata), units_(unitmap), map_(map),
+	movement_(0), anim_(NULL),unit_halo_(0),unit_anim_halo_(0),draw_bars_(false), flying_(false),
+	 hold_position_(false), resting_(false), facing_(gamemap::location::NORTH_EAST),
+	 state_(STATE_STANDING), gamedata_(gamedata), units_(unitmap), map_(map),
 	 gamestatus_(game_status),teams_(teams)
 {
 	read(cfg);
@@ -192,9 +191,9 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 }
 
 unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
-			hold_position_(false), resting_(false), state_(STATE_STANDING),
-			facing_(gamemap::location::NORTH_EAST),
-			flying_(false),anim_(NULL),unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(&gamedata),
+			anim_(NULL), unit_halo_(0), unit_anim_halo_(0), draw_bars_(false), flying_(false),
+			hold_position_(false), resting_(false), facing_(gamemap::location::NORTH_EAST),
+			state_(STATE_STANDING), gamedata_(&gamedata), 
 			units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg);
@@ -221,8 +220,9 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t,
 					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
-	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false), state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
-           gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
+	draw_bars_(false), resting_(false), facing_(gamemap::location::NORTH_EAST), state_(STATE_STANDING),
+	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
+        gamedata_(gamedata), units_(unitmap), map_(map), gamestatus_(game_status), teams_(teams)
 {
 	goto_ = gamemap::location();
 	side_ = side;
@@ -254,8 +254,9 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	unit_anim_halo_ = 0;
 }
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
-           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
-	   gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
+	draw_bars_(false), facing_(gamemap::location::NORTH_EAST), state_(STATE_STANDING),
+	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), gamedata_(NULL), units_(NULL),
+	map_(NULL), gamestatus_(NULL), teams_(NULL)
 {
 	goto_ = gamemap::location();
 	side_ = side;
