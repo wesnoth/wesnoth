@@ -611,9 +611,9 @@ const std::map<gamemap::TERRAIN,int>& unit_movement_type::defense_mods() const
 
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
-      alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      advances_to_(o.advances_to_), experience_needed_(o.experience_needed_),
-      alignment_(o.alignment_),
+      abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_), alpha_(o.alpha_),
+      experience_needed_(o.experience_needed_),
+      alignment_(o.alignment_), advances_to_(o.advances_to_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
