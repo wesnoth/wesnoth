@@ -1,24 +1,24 @@
 # ----wesnoth.cpp1.po (Battle for Wesnoth 0.9.5+CVS)  ----Danish translation of Battle for Wesnoth.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
+# Anders K. Madsen (madsen@lillesvin.linux.dk), 2005
+# Joe Hansen (joedalton2@yahoo.dk), 2007
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-11 14:07+0100\n"
-"PO-Revision-Date: 2005-08-17 17:58+0200\n"
-"Last-Translator: Anders K. Madsen <madsen@lillesvin.linux.dk>\n"
-"Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
+"PO-Revision-Date: 2007-02-14 17:58+0200\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/abilities.cfg:8
-#, fuzzy
 msgid "heals +4"
-msgstr "helbreder"
+msgstr "helbreder +4"
 
 #: data/abilities.cfg:13
 msgid ""
@@ -33,9 +33,8 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:27
-#, fuzzy
 msgid "heals +8"
-msgstr "helbreder"
+msgstr "helbreder +8"
 
 #: data/abilities.cfg:32
 msgid ""
@@ -135,6 +134,9 @@ msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
+"Teleport:\n"
+"Denne enhed kan teleportere mellem to venligsindede landsbyer hvis den "
+"bruger et af dens runder."
 
 #: data/abilities.cfg:339 data/abilities.cfg:340
 msgid "ambush"
@@ -171,12 +173,10 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:384 data/abilities.cfg:389
-#, fuzzy
 msgid "submerge"
-msgstr "dolk"
+msgstr "dykke"
 
 #: data/abilities.cfg:388 data/abilities.cfg:393
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -186,11 +186,12 @@ msgid ""
 "units next to this unit."
 msgstr ""
 "Baghold:\n"
-"Denne enhed kan gemme sig i skoven og forblive uset af fjender.\n"
+"Denne enhed kan gemme sig i dybt vand og forblive uset af fjender.\n"
 "\n"
 "Fjendtlige enheder kan ikke se eller angribe denne enhed så længe den "
-"opholder sig i skoven, med undtagelse for ture umiddelbart efter enheden har "
-"angrebet eller hvis der står en fjendtlig enhed ved siden af den."
+"opholder sig dybt under overfladen, med undtagelse for runder umiddelbart "
+"efter enheden har angrebet, eller hvis der står en fjendtlig enhed ved siden "
+"af den."
 
 #: data/abilities.cfg:412
 msgid "berserk"
@@ -356,217 +357,177 @@ msgid "Artwork and Graphics Designers"
 msgstr ""
 
 #: data/about.cfg:63
-#, fuzzy
 msgid "Music"
-msgstr "hurtig"
+msgstr "Musik"
 
 #: data/about.cfg:74
 msgid "Sound effects"
-msgstr ""
+msgstr "Lydeffekter"
 
 #: data/about.cfg:83
-#, fuzzy
 msgid "Scenario Designers"
-msgstr "Scenarierapport"
+msgstr "Scenariedesignere"
 
 #: data/about.cfg:100
-#, fuzzy
 msgid "Multiplayer Developers"
-msgstr "Multiplayer"
+msgstr "flerspillerudviklere"
 
 #: data/about.cfg:110
-#, fuzzy
 msgid "Multiplayer Maps"
-msgstr "Multiplayer"
+msgstr "flerspillerkort"
 
 #: data/about.cfg:120
 msgid "Packagers"
-msgstr ""
+msgstr "Pakkere"
 
 #: data/about.cfg:137
-#, fuzzy
 msgid "Miscellaneous"
-msgstr "+Diverse"
+msgstr "Diverse"
 
 #: data/about.cfg:148
-#, fuzzy
 msgid "Internationalization Managers"
-msgstr "+Oversættelsesadministratorer"
+msgstr "Oversættelsesadministratorer"
 
 #: data/about.cfg:159
-#, fuzzy
 msgid "Afrikaans Translation"
-msgstr "+Afrikaans Oversættelse"
+msgstr "Afrikaan oversættelse"
 
 #: data/about.cfg:169
-#, fuzzy
 msgid "Basque Translation"
-msgstr "+Baskisk Oversættelse"
+msgstr "Baskisk oversættelse"
 
 #: data/about.cfg:178
-#, fuzzy
 msgid "Bulgarian Translation"
-msgstr "+Bulgarsk Oversættelse"
+msgstr "Bulgarsk oversættelse"
 
 #: data/about.cfg:187
-#, fuzzy
 msgid "Catalan Translation"
-msgstr "+Katalansk Oversættelse"
+msgstr "Katalansk oversættelse"
 
 #: data/about.cfg:203
-#, fuzzy
 msgid "Chinese Translation"
-msgstr "+Kinesisk Oversættelse"
+msgstr "Kinesisk oversættelse"
 
 #: data/about.cfg:210
-#, fuzzy
 msgid "Czech Translation"
-msgstr "+Tjekkisk Oversættelse"
+msgstr "Tjekkisk oversættelse"
 
 #: data/about.cfg:229
-#, fuzzy
 msgid "Danish Translation"
-msgstr "+Dansk Oversættelse"
+msgstr "Dansk oversættelse"
 
 #: data/about.cfg:240
-#, fuzzy
 msgid "Dutch Translation"
-msgstr "+Hollandsk Oversættelse"
+msgstr "Hollandsk oversættelse"
 
 #: data/about.cfg:258
-#, fuzzy
 msgid "English (GB) Translation"
-msgstr "+Engelsk (Britisk) Oversættelse"
+msgstr "Engelsk (britisk) oversættelse"
 
 #: data/about.cfg:266
-#, fuzzy
 msgid "Esperanto Translation"
-msgstr "+Tysk Oversættelse"
+msgstr "Esperanto oversættelse"
 
 #: data/about.cfg:277
-#, fuzzy
 msgid "Estonian Translation"
-msgstr "+Estisk Oversættelse"
+msgstr "Estisk oversættelse"
 
 #: data/about.cfg:284
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "+Finsk Oversættelse"
+msgstr "Fillippinsk oversættelse"
 
 #: data/about.cfg:291
-#, fuzzy
 msgid "Finnish Translation"
-msgstr "+Finsk Oversættelse"
+msgstr "Finsk oversættelse"
 
 #: data/about.cfg:303
-#, fuzzy
 msgid "French Translation"
-msgstr "+Fransk Oversættelse"
+msgstr "Fransk oversættelse"
 
 #: data/about.cfg:337
-#, fuzzy
 msgid "German Translation"
-msgstr "+Tysk Oversættelse"
+msgstr "Tysk oversættelse"
 
 #: data/about.cfg:355
-#, fuzzy
 msgid "Greek Translation"
-msgstr "+Græsk Oversættelse"
+msgstr "Græsk oversættelse"
 
 #: data/about.cfg:366
-#, fuzzy
 msgid "Hebrew Translation"
-msgstr "+Græsk Oversættelse"
+msgstr "Hebraisk oversættelse"
 
 #: data/about.cfg:374
-#, fuzzy
 msgid "Hungarian Translation"
-msgstr "+Ungarsk Oversættelse"
+msgstr "Ungarsk oversættelse"
 
 #: data/about.cfg:391
-#, fuzzy
 msgid "Indonesian Translation"
-msgstr "+Estisk Oversættelse"
+msgstr "Indonesisk oversættelse"
 
 #: data/about.cfg:398
-#, fuzzy
 msgid "Italian Translation"
-msgstr "+Italiensk Oversættelse"
+msgstr "Italiensk oversættelse"
 
 #: data/about.cfg:413
-#, fuzzy
 msgid "Japanese Translation"
-msgstr "+Japansk Oversættelse"
+msgstr "Japansk oversættelse"
 
 #: data/about.cfg:425
-#, fuzzy
 msgid "Korean Translation"
-msgstr "+Norsk Oversættelse"
+msgstr "Koreansk oversættelse"
 
 #: data/about.cfg:432
-#, fuzzy
 msgid "Latin Translation"
-msgstr "+Latin Oversættelse"
+msgstr "Latinsk oversættelse"
 
 #: data/about.cfg:439
-#, fuzzy
 msgid "Norwegian Translation"
-msgstr "+Norsk Oversættelse"
+msgstr "Norsk oversættelse"
 
 #: data/about.cfg:451
-#, fuzzy
 msgid "Polish Translation"
-msgstr "+Polsk Oversættelse"
+msgstr "Polsk oversættelse"
 
 #: data/about.cfg:469
-#, fuzzy
 msgid "Portuguese Translation"
-msgstr "+(Brasiliansk) Portugisisk Oversættelse"
+msgstr "Portugisisk oversættelse"
 
 #: data/about.cfg:476
-#, fuzzy
 msgid "Portuguese (Brazil) Translation"
-msgstr "+(Brasiliansk) Portugisisk Oversættelse"
+msgstr "Portugisisk (brasiliansk) oversættelse"
 
 #: data/about.cfg:492
-#, fuzzy
 msgid "Russian Translation"
-msgstr "+Russisk Oversættelse"
+msgstr "Russisk oversættelse"
 
 #: data/about.cfg:506
-#, fuzzy
 msgid "Serbian Translation"
-msgstr "+Serbisk Oversættelse"
+msgstr "Serbisk oversættelse"
 
 #: data/about.cfg:515
-#, fuzzy
 msgid "Slovak Translation"
-msgstr "+Slovakisk Oversættelse"
+msgstr "Slovakisk oversættelse"
 
 #: data/about.cfg:524
-#, fuzzy
 msgid "Slovenian Translation"
-msgstr "+Slovenisk  Oversættelse"
+msgstr "Slovensk oversættelse"
 
 #: data/about.cfg:532
-#, fuzzy
 msgid "Spanish Translation"
-msgstr "+Spansk Oversættelse"
+msgstr "Spansk oversættelse"
 
 #: data/about.cfg:545
-#, fuzzy
 msgid "Swedish Translation"
-msgstr "+Svensk Oversættelse"
+msgstr "Svensk oversættelse"
 
 #: data/about.cfg:558
-#, fuzzy
 msgid "Turkish Translation"
-msgstr "+Tyrkisk Oversættelse"
+msgstr "Tyrkisk oversættelse"
 
 #: data/about.cfg:569
 #, fuzzy
 msgid "Valencian Translation"
-msgstr "+Slovenisk  Oversættelse"
+msgstr "Slovenisk  Oversættelse"
 
 #: data/about.cfg:576 data/help.cfg:252
 msgid "Contributors"
@@ -579,12 +540,11 @@ msgstr "+Bots"
 
 #: data/amla.cfg:9
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", MAKS XP +25 %"
 
 #: data/amla.cfg:9
-#, fuzzy
 msgid "Max HP bonus +"
-msgstr "Max. HP bonus +{HP_ADVANCE}"
+msgstr "Maks. livbonus +"
 
 #: data/amla.cfg:30
 msgid "Full Heal"
@@ -603,7 +563,6 @@ msgid "Hard"
 msgstr "Svær"
 
 #: data/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -612,8 +571,8 @@ msgid ""
 msgstr ""
 "Hæderlige enheder kæmper bedre om dagen, og dårligere om natten.\n"
 "\n"
-"Dag: +25% skade\n"
-"Nat: -25% skade"
+"Dag: +25 % skade\n"
+"Nat: -25 % skade"
 
 #: data/english.cfg:10
 msgid ""
@@ -624,7 +583,6 @@ msgstr ""
 "tilfælde."
 
 #: data/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -633,8 +591,8 @@ msgid ""
 msgstr ""
 "Lyssky enheder kæmper bedre om natten, og dårligere om dagen.\n"
 "\n"
-"Dag: -25% skade\n"
-"Nat: +25% skade"
+"Dag: -25 % skade\n"
+"Nat: +25 % skade"
 
 #: data/english.cfg:17
 msgid "Elves"
@@ -649,23 +607,20 @@ msgid "Orcs"
 msgstr "Orker"
 
 #: data/english.cfg:20
-#, fuzzy
 msgid "race^Undead"
-msgstr "Udød"
+msgstr "race^Udød"
 
 #: data/english.cfg:21
-#, fuzzy
 msgid "race^Dwarves"
-msgstr "Dværge"
+msgstr "race^Dværge"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "race^Gobliner"
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
-msgstr "Udød"
+msgstr "race^Øgler"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
@@ -673,7 +628,7 @@ msgstr ""
 
 #: data/english.cfg:25
 msgid "race^Mermen"
-msgstr ""
+msgstr "race^havmænd"
 
 #: data/english.cfg:26
 msgid "race^Monsters"
@@ -688,9 +643,8 @@ msgid "race^Ogres"
 msgstr ""
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Trolls"
-msgstr "Trold"
+msgstr "race^Trolde"
 
 #: data/english.cfg:30
 #, fuzzy
@@ -726,7 +680,7 @@ msgstr "$name|skoven,$name|s skov"
 
 #: data/english.cfg:37
 msgid "$name Lake"
-msgstr ""
+msgstr "$name Sø"
 
 #: data/english.cfg:38
 msgid "$name|bury,$name|ham,$name|ton"
@@ -771,13 +725,12 @@ msgid "ranged"
 msgstr ""
 
 #: data/english.cfg:52
-#, fuzzy
 msgid "Wesnoth unit list"
-msgstr "Vejledning"
+msgstr "Wesnoth enhedsliste"
 
 #: data/english.cfg:53
 msgid "Based on version"
-msgstr ""
+msgstr "Baseret på version"
 
 #: data/english.cfg:54
 #, fuzzy
@@ -785,9 +738,8 @@ msgid "Race"
 msgstr "morgenstjerne"
 
 #: data/english.cfg:55
-#, fuzzy
 msgid "Advance from:"
-msgstr "Forfremmes til: "
+msgstr "Forfremmes fra:"
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -798,9 +750,8 @@ msgid "Alliance of Light"
 msgstr "Lysets alliance"
 
 #: data/factions/drakes-aoh.cfg:4 data/factions/drakes-default.cfg:4
-#, fuzzy
 msgid "Drakes"
-msgstr "slag"
+msgstr "Hestedragere"
 
 #: data/factions/knalgans-aoh.cfg:4 data/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
@@ -836,9 +787,8 @@ msgid "Show Combat"
 msgstr "Vis kampe"
 
 #: data/game.cfg:49
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "Helbredelse"
+msgstr "Musepanorering"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -869,9 +819,8 @@ msgid "Terrains"
 msgstr "Terræner"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Kommandant"
+msgstr "Kommandanter"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -946,7 +895,6 @@ msgstr ""
 "at du starter på niveauet: <italic>text=Let</italic>."
 
 #: data/help.cfg:85
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -954,9 +902,9 @@ msgid ""
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
 "Husk, at du kan få information om mange ting ved blot at holde musen henover "
-"dem. F.eks. kan du få uddybet mange ting i status-panelet på denne måde. "
-"Dette er især nyttigt når du første gang støder på nye <ref>dst=abilities "
-"text=evner</ref>."
+"dem. For eksempel kan du få uddybet mange ting i status-panelet på denne "
+"måde. Dette er især nyttigt når du første gang støder på nye "
+"<ref>dst=abilities text=evner</ref>."
 
 #: data/help.cfg:90
 msgid "About the Game"
@@ -1098,9 +1046,8 @@ msgstr ""
 # > kugle, sfære, klode..  sfære!
 # Nah... Jeg ved nu ikke... Der er nok ikke ret mange der ved hvad en sfære er. (Jeg kender i hvert fald mange der ikke gør.)
 #: data/help.cfg:114
-#, fuzzy
 msgid "Orbs"
-msgstr "Sfære"
+msgstr "Sfærer"
 
 #: data/help.cfg:115
 msgid ""
@@ -1277,7 +1224,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:157
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1429,7 +1375,6 @@ msgstr ""
 "hvis den forsvarende enhed har 100% resistens mod skadestypen."
 
 #: data/help.cfg:188
-#, fuzzy
 msgid "Time of Day"
 msgstr "Tid på døgnet"
 
@@ -1692,7 +1637,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:246
-#, fuzzy
 msgid "Wrap Up"
 msgstr "Opsummering"
 
@@ -1814,13 +1758,12 @@ msgid "Strong"
 msgstr "Stærk"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
-"Stærke enheder gør 1 mere skade for hvert vellykket slag i nærkamp og har 2 "
-"HP mere."
+"Stærke enheder gør 1 mere skade for hvert vellykket slag i nærkamp og har 1 "
+"liv mere."
 
 #: data/help.cfg:301
 msgid ""
@@ -1834,7 +1777,7 @@ msgstr ""
 
 #: data/help.cfg:306
 msgid "Fearless"
-msgstr ""
+msgstr "Frygløs"
 
 #: data/help.cfg:307
 msgid "Aversion to light and dark holds no sway over these brave individuals."
@@ -1864,16 +1807,16 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:320
-#, fuzzy
 msgid "trait^Undead"
-msgstr "Udød"
+msgstr "trait^Udød"
 
 #: data/help.cfg:321
-#, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
-msgstr "Udøde enheder er immune overfor gift."
+msgstr ""
+"Udøde enheder er immune overfor gift, bloddræning og pest virker heller ikke "
+"på dem."
 
 #: data/help.cfg:323
 msgid ""
@@ -2306,6 +2249,9 @@ msgid ""
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
+"\n"
+"Gem spillet (uden prompt).\n"
+"\n"
 
 #: data/help.cfg:583
 msgid ""
@@ -2313,6 +2259,9 @@ msgid ""
 "Save the game and quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
+"\n"
+"Gem spillet og forlad scenariet (uden prompt).\n"
+"\n"
 
 #: data/help.cfg:586
 msgid ""
@@ -2320,6 +2269,9 @@ msgid ""
 "Redraw the screen.\n"
 "\n"
 msgstr ""
+"\n"
+"Tegn skærmen igen.\n"
+"\n"
 
 #: data/help.cfg:589
 msgid ""
@@ -2334,9 +2286,8 @@ msgid "Bring up theme selection menu."
 msgstr ""
 
 #: data/help.cfg:595
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "Multiplayer"
+msgstr "Flerspiller kommandoer"
 
 #: data/help.cfg:599
 msgid ""
@@ -2392,6 +2343,8 @@ msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Slet snakkebeskeder."
 
 #: data/items.cfg:264
 msgid ""
@@ -2453,7 +2406,7 @@ msgstr "Gift"
 
 #: data/items.cfg:377
 msgid "Poison is seeping through the veins of this unit at this very moment."
-msgstr ""
+msgstr "I dette øjeblik strømmer der gift igennem årene på denne enhed."
 
 #: data/items.cfg:412
 msgid "Holy Water"
@@ -2477,7 +2430,7 @@ msgstr "Styrkes gives til den der drikker."
 
 #: data/items.cfg:495
 msgid "Potion of Decay"
-msgstr ""
+msgstr "Forrådnelsesmikstur"
 
 #: data/items.cfg:498
 msgid "This poor unit drank something really bad."
@@ -2489,7 +2442,7 @@ msgstr ""
 
 #: data/items.cfg:536
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
+msgstr "Denne ring vil helbrede bæreren en lille smule hver runde."
 
 #: data/items.cfg:555
 msgid "Can't set abilities yet, sorry."
@@ -2509,7 +2462,7 @@ msgstr ""
 
 #: data/items.cfg:617
 msgid "This staff will grant the bearer swift movement."
-msgstr ""
+msgstr "Denne stav vil give bæreren hurtig bevægelse."
 
 #: data/items.cfg:618
 msgid "Only magical beings can wield such an object."
@@ -2522,6 +2475,7 @@ msgstr "Stormtrefork"
 #: data/items.cfg:655
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
+"Denne trefork tillader en havmand at skyde elektriske lyn på sine fjender!"
 
 #: data/items.cfg:656
 msgid "Only the mermen can use this item!"
@@ -2532,9 +2486,8 @@ msgid "storm trident"
 msgstr "stormtrefork"
 
 #: data/items.cfg:742
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -2618,6 +2571,65 @@ msgid ""
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
 "Amithrarion,Cálad,Legilad"
 msgstr ""
+"Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
+"Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
+"Amowyn,Háriand,Beliril,Mylith,Giombor,Fer,Roldur,Cithraldur,Elvaramir,Sénd,"
+"Cylas,Thrilmandel,Rorfindil,Uradrielas,Sénd,Hil-Garion,Fithraril,Unorfiril,"
+"Eäryldur,Eärithrandil,Cithrand,Unálas,Elyrion,Glul,Vebrilas,Lómorfindil,"
+"Hithrandel,Gil-Gang,Hilas,Gil-Gandel,Eowarar,Carang,Lómariand,Isilmandel,"
+"Uril-Gambor,Hénduil,Unaraldur,Galithrariand,Hirion,Anilmambor,Celadrieriand,"
+"Róldur,Eärérion,Calónduil,Anerion,Elvélith,Eliondil,Lómebrind,Isándir,"
+"Eowówyn,Belel,Cáldur,Tadriendir,Vunduil,Belólad,Thrélad,Isadrieng,Eowil-"
+"Garion,Tinyl,Tinun,Lómémbor,Urálith,Celong,Horfilad,Iselas,Galálad,Norfildor,"
+"Thrithran,Unil-Gan,Gloldor,Celarandil,Delánd,Maldur,Celyndel,Ról,Vandir,"
+"Glómir,Unadrieldor,Elvandir,Vebril,Unólith,Maraldur,Elvilmaril,Isól,Legaran,"
+"Farandir,Nél,Glandil,Galalith,Galálas,Elebrildor,Sóriand,Elvóriand,Pindir,"
+"Anán,Amiorion,Amorfimir,Isarandel,Thril-Gamir,Taraldur,Amundil,Unorfildor,"
+"Glararil,Sólad,Fáwyn,Tinarambor,Tinil-Ganduil,Padrieriand,Ameldor,Gyl,"
+"Unebrind,Celebririon,Corfildur,Canduil,Glámbor,Urul,Elran,Glilmal,Porfildur,"
+"Cadrieriand,Delaraldur,Galelas,Hebril,Varalas,Celér,Nóndel,Eladrieng,"
+"Elvorfiriand,Delandel,Delorfilad,Méng,Lómowyn,Elélas,Unebrin,Anithranduil,"
+"Celáriand,Threbring,Belyrion,Belilmand,Numbor,Vóldur,Tinorfind,Gambor,"
+"Thrambor,Táriand,Eäradriendel,Rówyn,Elvémir,Elvorfiril,Calioriand,Delóldor,"
+"Tinóriand,Eowaraldor,Vel,Galémbor,Elrithralith,Elánd,Fadriendel,Deláril,"
+"Fandel,Cindil,Unalas,Delawyn,Fyrion,Eowylas,Eowithrawyn,Elvombor,Vuldur,"
+"Legorfindil,Unombor,Gadrieng,Amilmandir,Elrioldor,Calil-Gawyn,Eäréldor,"
+"Glólas,Norfindir,Unorfiwyn,Amind,Sóriand,Isóndel,Caliril,Eowaran,Elolas,"
+"Fendel,Tówyn,Hiong,Elvebrindel,Eowar,Vulas,Legémir,Torfildur,Col,Isorfilad,"
+"Elilmaldur,Celuwyn,Gymbor,Hundel,Elen,Isarar,Delán,Thrimir,Tinilmand,"
+"Tinithrar,Elvioldur,Tendel,Harariand,Rithrandil,Garaldor,Lómarand,Celór,"
+"Elvorfimir,Galar,Paraldor,Morfiriand,Celang,Amóldor,Vararion,Belondel,Hywyn,"
+"Legiondel,Elyldor,Eärorfiriand,Glarang,Gor,Throlas,Gararil,Norfilith,Deliwyn,"
+"Nyldur,Vólas,Isér,Eowanduil,Eowiomir,Belithraldor,Elemir,Amiol,Urálas,Belil-"
+"Gandil,Nalith,Thréldur,Gán,Eowimbor,Padrieril,Anorfing,Rebrir,Anilmariand,"
+"Rilmandil,Thryriand,Isyndel,Celorion,Isóng,Sadrielas,Pór,Thraral,Miolith,"
+"Elil-Garil,Vándel,Cówyn,Unóndel,Uniolith,Legówyn,Vylas,Unulad,Legal,Celelas,"
+"Galeldur,Amendel,Amorfir,Elvilmaldur,Eäránduil,Til-Gan,Nilmar,Eäradrier,"
+"Celior,Sebrin,Pyldur,Urér,Fioril,Anebrin,Hemir,Thrón,Glal,Mondir,Cénduil,"
+"Galur,Glimir,Anior,Tinoldor,Ván,Hilmariand,Lómebrilad,Gyn,Legyn,Vol,Cun,"
+"Lómadrieril,Amadrieriand,Eowémir,Belómir,Elrithranduil,Gumbor,Célad,Anebrir,"
+"Téwyn,Táriand,Géril,Elreldur,Legil-Gal,Eärebrindel,Elvund,Unil,Pilmalad,"
+"Deléng,Tinowyn,Cundir,Gadriendil,Eowariand,Ciong,Morfin,Nadrieldor,Elrorfir,"
+"Hymir,Elvebrind,Urambor,Thrund,Anénduil,Anon,Elrilmand,Cithraril,Mithrand,"
+"Caraldur,Eowóldur,Glior,Elváwyn,Legithralith,Vólas,Calándel,Caldur,Lómariand,"
+"Elebriril,Celundir,Eoworfildor,Celiorion,Elor,Elváwyn,Lómilmaril,Delilmaldor,"
+"Amelad,Tion,Unál,Calebrindel,Amilmalith,Eäryriand,Unondir,Isuwyn,Elralith,"
+"Belilmang,Eowarar,Sil-Gal,Calil-Gandir,Glon,Deliol,Sebriril,Elémbor,"
+"Calebrindir,Celilmalas,Elverion,Cithrandel,Anémbor,Uradrierion,Ganduil,"
+"Parariand,Pumbor,Githral,Galoldur,Rorfilad,Tinorfiriand,Vondel,Tinimir,"
+"Sorfind,Uróldor,Delithrar,Galurion,Elval,Tinond,Delorion,Taral,Thróng,"
+"Madrieril,Isithral,Belarandel,Celendel,Gladriendil,Lómiriand,Legéril,Nán,"
+"Vilith,Belén,Elriolith,Delundil,Anilad,Celaral,Ameng,Mérion,Eowarion,"
+"Tilmalad,Elvil-Garion,Cithralad,Ryn,Tinén,Elólas,Belandil,Golad,Miomir,Tolas,"
+"Urilmalith,Norfindil,Mánduil,Githralad,Legorfirion,Móndir,Hyrion,Anundil,"
+"Tinilmawyn,Legyl,Elradrien,Anil-Gawyn,Tinandir,Uneldor,Amulas,Válad,Amulas,"
+"Celiondir,Thradrieriand,Réndir,Elvónduil,Urorfildor,Vyldor,Galelith,Caloril,"
+"Amáril,Belithrawyn,Cadriembor,Tilmalas,Thril-Gar,Elálith,Vorfin,Eowebrind,"
+"Nil-Galas,Eowambor,Morfilas,Thrion,Róldor,Filman,Unioril,Forfilas,"
+"Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
+"Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
+"Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
+"Amithrarion,Cálad,Legilad"
 
 #: data/names.cfg:3
 msgid ""
@@ -2687,6 +2699,71 @@ msgid ""
 "Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
 "Eowathiel,Iséng,Legondra,Celorfilindë"
 msgstr ""
+"Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
+"Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
+"Belaraviel,Vódia,Vadriewen,Legadien,Glithiel,Nowen,Elviondra,Cithrania,"
+"Isithradien,Legithrandra,Tilmaclya,Galadriethien,Rorfiviel,Thryng,Unindra,"
+"Lómeniel,Deliowen,Corfiviel,Eärániel,Eärélia,Feclya,Vorfing,Tinóng,Celith,"
+"Celelith,Sadrienia,Deléthien,Uradriedia,Pulia,Lómuthiel,Elvyniel,Réviel,"
+"Parandra,Galaraniel,Til-Gandra,Isilindë,Belendra,Galorfiwiel,Mil-Gathien,"
+"Lómilindë,Elvithrang,Uránia,Cádë,Eäradriedien,Belarania,Legelith,Lómythien,"
+"Legethiel,Godien,Goclya,Elywen,Githrawiel,Galowen,Glilmawiel,Fadrielia,"
+"Galedien,Miowen,Tinorfilith,Amuwen,Silmathiel,Hódia,Hiwien,Anilmarith,Sáng,"
+"Amionia,Miowiel,Gadrieclya,Celódith,Amorith,Amodë,Thrália,Fil-Gathiel,"
+"Eäréwiel,Delil-Ganiel,Unynia,Belithraniel,Caladrieng,Eäriolith,Celarandra,"
+"Elorfing,Sothien,Amiwen,Deloviel,Celália,Glália,Anaraclya,Mithradë,Eowylia,"
+"Celindë,Legádë,Amiolith,Urilmawiel,Elvil-Gawien,Thrulith,Padriedith,Viowiel,"
+"Elrithradith,Elvánia,Violindë,Lómániel,Pong,Mithralindë,Amithrawien,Mil-"
+"Gathiel,Celioniel,Uryrith,Soniel,Lómulindë,Eärilmathien,Hódia,Tithrathien,"
+"Tówiel,Glowiel,Aniorith,Uniong,Tinorfithien,Madrieclya,Sadrierith,Vówien,"
+"Reniel,Legil-Galindë,Amewien,Nithrarith,Vebrithien,Ril-Gawien,Fólindë,"
+"Galebrindra,Pilindë,Nithraniel,Gólia,Medien,Munia,Cithralith,Eärithrang,"
+"Throng,Eledë,Cithrawen,Thrithradia,Calóniel,Elilmalia,Rindra,Eladriedë,"
+"Lómebriniel,Ceclya,Calówien,Hiodë,Calewen,Gebririth,Tinerith,Sarandra,"
+"Eowebridith,Eärarawien,Eluviel,Sendra,Héclya,Sálindë,Fódë,Throlith,Varawiel,"
+"Elrithiel,Celebriniel,Hythien,Myndra,Urithralindë,Calándra,Delorfilindë,Fil-"
+"Galia,Gloviel,Eowidien,Delebrinia,Puthien,Elvádia,Elrilindë,Legadriedë,"
+"Vithraniel,Módia,Lómithradë,Elradrierith,Hythiel,Glilmadien,Thradia,"
+"Vadrierith,Beliolia,Gil-Gawien,Lómuniel,Milindë,Elóndra,Elvyviel,Glorfilith,"
+"Pebridien,Galándra,Fulindë,Galiothiel,Gléndra,Calánia,Eowedith,Elrebridith,"
+"Anuthiel,Gioviel,Mywiel,Tinawiel,Hedia,Amebrilindë,Eärewen,Isendra,Lómudia,"
+"Tiorith,Lómorfing,Anythien,Eowil-Galindë,Thrithraniel,Amil-Garith,Belowen,"
+"Elynia,Elvithrathien,Tinálindë,Helith,Beladriewien,Fáwien,Lómithrarith,"
+"Calorfiniel,Galéwiel,Lómebriclya,Lómolith,Anáthien,Módë,Hunia,Tinaraniel,"
+"Vithrang,Pil-Gadia,Eluviel,Fáthiel,Elarawiel,Unénia,Sithrang,Celadë,"
+"Beladrielith,Elriwen,Meclya,Pádia,Lómóndra,Elvil-Gawien,Tiniolith,Elelith,"
+"Thraraviel,Eowarawien,Giowen,Eärorfiwien,Amarang,Newen,Náviel,Amithrawien,"
+"Caluclya,Galothiel,Paralindë,Celorfing,Elránia,Mebriwiel,Anebriniel,"
+"Tilmaviel,Fadriendra,Unulindë,Haviel,Elilmawien,Celylia,Thrithrandra,"
+"Lómiclya,Féthiel,Celália,Eowalia,Huclya,Horfiwien,Elrilmathien,Unionia,"
+"Gioniel,Elrilmandra,Delararith,Uraclya,Huthien,Celéng,Isil-Garith,Lómudia,"
+"Thrérith,Amadrielindë,Eladrielia,Amuviel,Legadrieclya,Legilmadith,"
+"Belebrindra,Lómódë,Uniolia,Gadrieviel,Galilmadia,Filmaclya,Naraniel,"
+"Calilmalith,Hil-Gania,Anuthien,Elviniel,Elebrindra,Legadrieniel,Galundra,"
+"Anylindë,Celówien,Thridith,Niolia,Falindë,Milith,Anundra,Lómorith,Delararith,"
+"Anywien,Saradith,Galédë,Háwien,Celérith,Niothien,Elvilmathiel,Hewen,Isóthien,"
+"Hóthiel,Celebriviel,Moniel,Elithradien,Vorficlya,Glebrithien,Golindë,Viwiel,"
+"Sethien,Sioclya,Hodia,Taradien,Fadrienia,Githrania,Calil-Galith,Elréthiel,"
+"Legithrania,Calewiel,Isebridien,Thredien,Tinudia,Tinadriethien,Galithrathien,"
+"Mádia,Isadrieng,Celárith,Isebrinia,Amorfilith,Sédith,Eärudë,Eärenia,"
+"Belithrawien,Amil-Gadith,Vadrieviel,Lómilmathiel,Tinebrithiel,Eowilindë,"
+"Terith,Calang,Celararith,Glodith,Siorith,Beladriewen,Fioniel,Amulia,Nydith,"
+"Lómilmawiel,Gáviel,Belulindë,Legorfidë,Unáthien,Porfindra,Calithraclya,"
+"Celorfiwien,Analia,Elithraclya,Delóndra,Unóndra,Nilmadia,Riothien,Guviel,"
+"Elrorfidia,Horfinia,Uriolia,Delithrathiel,Legéniel,Calebriwien,Delorfithien,"
+"Unebridë,Legeng,Thrinia,Galolindë,Galyniel,Vorfirith,Syniel,Harawiel,"
+"Vorfiwiel,Porfiwien,Isithrarith,Maraclya,Amadriendra,Gilia,Fadriedith,Amedë,"
+"Celidien,Legolith,Unuviel,Nil-Gang,Celithradith,Pindra,Póviel,Elil-Gang,"
+"Galebrilia,Tathiel,Unadrieng,Isithrawiel,Amadrielia,Nawen,Tang,Cydia,"
+"Silmaclya,Cadriewen,Threbriniel,Urilmadia,Thruthien,Ureclya,Galólia,"
+"Sithrawen,Elródith,Throthiel,Lómedia,Pawen,Legilmawiel,Legebrilia,Urárith,"
+"Unilmadia,Morfilindë,Iseviel,Améthien,Gloclya,Cing,Legithralindë,Isáwen,"
+"Sothiel,Eowiowien,Uruthien,Amadriewen,Vóng,Róng,Eärilmadë,Anówien,Tuniel,"
+"Tarathiel,Lómynia,Celiodë,Pil-Gadien,Belithrawiel,Gathien,Anang,Vorfing,"
+"Tinarathien,Fil-Gawien,Amilmadia,Amithraniel,Cethien,Gloclya,Hyclya,"
+"Isithradë,Legidia,Celálindë,Galil-Gania,Tinil-Gania,Eowyniel,Cólindë,"
+"Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
+"Eowathiel,Iséng,Legondra,Celorfilindë"
 
 #: data/names.cfg:7
 msgid ""
@@ -2741,6 +2818,56 @@ msgid ""
 "Cubryn,Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
 "Gwaeddyn,Saenvan,Todd,Tegwyn"
 msgstr ""
+"Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,Owaecyn,"
+"Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,Yryrcyn,Glynvan,"
+"Ryddry,Saemyr,Dibryn,Owuddry,Gloddyn,Gladoc,Yroddry,Bladoc,Addreonyc,Rheoran,"
+"Tiryn,Glynry,Rhaemyr,Gweddyn,Cemyr,Mimyr,Caraennyn,Careorraent,Gwor,Cin,Goc,"
+"Glydd,Oweomyr,Carraent,Gubryn,Gannyn,Aethadry,Aethonnyn,Blygwyn,Laellyn,"
+"Carudoc,Ladoc,Blercyn,Carocyn,Aetheoc,Rumyr,Gaercyn,Careogwyn,Caryn,Careddry,"
+"Owarcyn,Daeddry,Mubryn,Gwymyr,Blaedry,Owaryn,Addreddry,Owaryn,Taedoc,"
+"Addraecyn,Morcyn,Vugwyn,Rhenry,Blullyn,Dycyn,Daeddry,Blydd,Seddyn,Teoddyn,"
+"Gwaec,Rycyn,Rhobryn,Gwyddry,Tudoc,Roddyn,Oweran,Ceoddyn,Blubryn,Glonry,Sedry,"
+"Owecyn,Blydd,Owinyc,Gwuran,Yryllyn,Tunvan,Gwan,Carac,Cebryn,Murcyn,Ronry,"
+"Geodry,Midry,Gweogwyn,Aethec,Blinvan,Rhyrraent,Aethaeryn,Seoddry,Caradoc,"
+"Aethenvan,Sanyc,Aethaec,Gwumyr,Teorcyn,Lenvan,Rabryn,Yrynyc,Murcyn,Mydoc,"
+"Yrannyn,Rhobryn,Oworraent,Owac,Vuddyn,Gwellyn,Glaercyn,Yregwyn,Oweorcyn,"
+"Addrenyc,Rhaedoc,Carocyn,Rhonvan,Owercyn,Dadd,Corcyn,Addrocyn,Yreryn,Tinry,"
+"Rharcyn,Rar,Addroryn,Tabryn,Blinvan,Addrunvan,Derraent,Leogwyn,Virraent,"
+"Gwudoc,Lercyn,Glarraent,Caren,Liryn,Gwegwyn,Ligwyn,Gwybryn,Lin,Veoddyn,Owodd,"
+"Cariddry,Glonvan,Gymyr,Aethuc,Careonvan,Aethudry,Addreoddyn,Gweocyn,Vonry,"
+"Rhygwyn,Rhyrcyn,Rhur,Deonyc,Veocyn,Siryn,Teobryn,Yraec,Gweodry,Caroran,"
+"Caraedry,Vaennyn,Moddry,Vaeddyn,Caredd,Siddry,Aethacyn,Rheorraent,Rhubryn,"
+"Addrurcyn,Sodry,Rhunyc,Gweodd,Reoddyn,Vinyc,Glydoc,Sodd,Dyddyn,Dinnyn,Ruddry,"
+"Addraryn,Gwollyn,Rurcyn,Glinry,Blyr,Aetharcyn,Blybryn,Addraercyn,Cararyn,"
+"Carygwyn,Menvan,Caric,Turraent,Oworcyn,Gwennyn,Meorraent,Ludoc,Aethoddyn,"
+"Glyc,Oworan,Simyr,Aethugwyn,Gwynnyn,Glunry,Cynyc,Addregwyn,Maddyn,Gecyn,"
+"Deollyn,Gwidoc,Meon,Goc,Sudd,Yredd,Addredry,Caeran,Vobryn,Saellyn,Surcyn,"
+"Taercyn,Labryn,Yran,Ceomyr,Caroddyn,Deodd,Glunvan,Gwoddyn,Addrocyn,Aethydry,"
+"Carygwyn,Aethynyc,Aetheorcyn,Taec,Rocyn,Laellyn,Tinvan,Owaedry,Teor,Ceonnyn,"
+"Rynry,Lunnyn,Myn,Rynnyn,Dac,Owaddyn,Vyc,Bliddry,Gur,Gwumyr,Owinvan,Maennyn,"
+"Veogwyn,Blenvan,Owur,Curyn,Gleoddyn,Aethec,Aethanry,Lec,Blanry,Vaddyn,Modd,"
+"Gaddry,Yrinvan,Blidd,Rheran,Veomyr,Owadd,Saran,Gullyn,Owollyn,Aethiddry,"
+"Gloddry,Carullyn,Secyn,Manyc,Romyr,Vinvan,Careoryn,Gegwyn,Gleddry,Tennyn,"
+"Manry,Syran,Gor,Ceoddry,Aethobryn,Yrunvan,Yraryn,Oweor,Daellyn,Mec,Lannyn,"
+"Owyran,Lemyr,Rhaedoc,Yrullyn,Syryn,Bludry,Bledoc,Caregwyn,Tuddry,Careobryn,"
+"Addrenyc,Aethellyn,Veodry,Meonnyn,Myrraent,Addraer,Aethun,Coc,Sarraent,"
+"Rheollyn,Reodry,Blucyn,Caedry,Mudoc,Sydd,Carygwyn,Cadry,Gwucyn,Ten,Ron,Lan,"
+"Owoddry,Owugwyn,Tarcyn,Owuddyn,Rhenvan,Tanry,Aetheonyc,Caraddry,Blaec,"
+"Yrunnyn,Glircyn,Aetherraent,Rheoddyn,Cennyn,Ginvan,Gweoran,Gumyr,Blymyr,"
+"Rygwyn,Gagwyn,Addrynvan,Rherraent,Yrymyr,Laran,Rubryn,Ceoc,Gwodd,Gwadoc,"
+"Gwenyc,Corcyn,Gaebryn,Gwydoc,Yrumyr,Caregwyn,Rheollyn,Rhollyn,Gliddyn,Owedry,"
+"Aethercyn,Caryn,Saec,Vogwyn,Lorraent,Mygwyn,Cac,Mac,Tarcyn,Tenvan,Ronry,"
+"Gwaec,Seorcyn,Soran,Luddry,Addreran,Yranvan,Gwidoc,Ceonry,Glacyn,Varcyn,"
+"Vyrcyn,Terraent,Blillyn,Run,Ligwyn,Rhyllyn,Sercyn,Denvan,Convan,Owogwyn,Gar,"
+"Glumyr,Rheodd,Cicyn,Blac,Daedoc,Gweodoc,Addreorcyn,Caercyn,Rhynyc,Lunnyn,"
+"Dadoc,Sellyn,Aethaeran,Gydoc,Sodry,Tyddyn,Rhaerraent,Gan,Lunvan,Saercyn,"
+"Gaedry,Rhodry,Taenvan,Radd,Caror,Monry,Mugwyn,Meollyn,Glun,Moran,Rybryn,"
+"Aethibryn,Gwaec,Addryllyn,Caebryn,Cinry,Ranvan,Blemyr,Addriddyn,Rhugwyn,"
+"Gwycyn,Blebryn,Yranvan,Teddyn,Vaedry,Addreoddry,Taedd,Cyryn,Yrirraent,"
+"Aethercyn,Middry,Lurraent,Bleollyn,Aethircyn,Ven,Modd,Ceoryn,Carercyn,Lonnyn,"
+"Car,Taemyr,Owidry,Geddyn,Aethunry,Yreddyn,Addribryn,Suc,Gleran,Addredry,"
+"Cubryn,Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
+"Gwaeddyn,Saenvan,Todd,Tegwyn"
 
 #: data/names.cfg:8
 msgid ""
@@ -2795,6 +2922,56 @@ msgid ""
 "Deassa,Jovyan,Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,"
 "Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 msgstr ""
+"Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
+"Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
+"Clarka,Clwlla,Cira,Lylla,Elavyan,Meroniver,Lwlla,Reacla,Neallyra,Mudda,"
+"Brirka,Alyryan,Reangwen,Sorka,Nalyan,Ysilyan,Realla,Lyna,Rwllyra,Elyrka,Nera,"
+"Gwwcla,Caella,Gwwvyan,Nuvyan,Sona,Merolla,Nyssa,Sera,Lwryan,Ysell,Elulonna,"
+"Raerka,Saell,Dwnoic,Clissa,Medda,Lessa,Rwllyra,Ledda,Jeabrylla,Brera,Meanoic,"
+"Lelyan,Clobrylla,Brellyra,Nucla,Jalyan,Dydda,Cyvyan,Revyan,Nyll,Clillyra,"
+"Langwen,Jyvyan,Saellyra,Sera,Sara,Rucla,Ryngwen,Cicla,Lolonna,Lycla,Merydda,"
+"Naecla,Aleara,Rwlla,Curyan,Lina,Mylla,Rarka,Merubrylla,Clwdda,Gwerka,Saessa,"
+"Brungwen,Jonoic,Elalonna,Elwlonna,Lidda,Dyssa,Cassa,Relyan,Gworyan,Dwdda,"
+"Alengwen,Lill,Raebrylla,Elwra,Joll,Brerka,Mengwen,Caevyan,Mwnoic,Nivyan,"
+"Merina,Rilonna,Gwangwen,Gwussa,Lealonna,Cwdda,Jaerka,Jassa,Sassa,Elerka,"
+"Elaedda,Sull,Elyngwen,Mwbrylla,Livyan,Maecla,Cwlonna,Ysodda,Elurka,Clylla,"
+"Clilyan,Daenoic,Naell,Brynoic,Syssa,Nulla,Merebrylla,Breabrylla,Call,Jycla,"
+"Dulonna,Gwirka,Dollyra,Alybrylla,Elaell,Jura,Dalla,Mereangwen,Cinoic,Naell,"
+"Ysyrka,Alearka,Jiryan,Ysonoic,Ysycla,Merilyan,Brorka,Jull,Alwllyra,Cealonna,"
+"Gwonoic,Gwobrylla,Brellyra,Curyan,Moniver,Cleall,Elara,Lylyan,Daelyan,Relyan,"
+"Sallyra,Cleacla,Alalonna,Elealla,Ysyssa,Clacla,Rilyan,Jeniver,Aleaniver,"
+"Meraelyan,Gweacla,Jwll,Elealla,Lirka,Milonna,Lealyan,Messa,Nabrylla,Lollyra,"
+"Merona,Meressa,Bravyan,Elaevyan,Ceryan,Mereaniver,Ysaenoic,Gwaessa,Alearka,"
+"Myra,Nobrylla,Jona,Jyrka,Cyniver,Lulyan,Rerka,Swlla,Nybrylla,Yswniver,"
+"Dangwen,Gwicla,Yseacla,Eleanoic,Mwngwen,Neavyan,Larka,Brealonna,Gwycla,"
+"Aluryan,Meacla,Brona,Jyvyan,Brwra,Coryan,Cudda,Elivyan,Nyryan,Alyra,Alilonna,"
+"Merana,Merylyan,Cydda,Diniver,Merolyan,Myll,Rwlonna,Gweacla,Ysylla,"
+"Alaebrylla,Naebrylla,Clenoic,Daengwen,Reana,Alynoic,Jissa,Myvyan,Brora,"
+"Alaryan,Rengwen,Clavyan,Ryna,Jull,Brollyra,Brobrylla,Ysedda,Alingwen,Ysell,"
+"Jealla,Liryan,Merurka,Elallyra,Clinoic,Ninoic,Merudda,Gwongwen,Jacla,Nungwen,"
+"Clalla,Gwona,Gwaera,Rora,Ninoic,Brycla,Clwvyan,Clurka,Clill,Merella,Ysylyan,"
+"Rwdda,Lelonna,Yselonna,Claella,Clallyra,Dassa,Clealyan,Merydda,Cibrylla,"
+"Deanoic,Claenoic,Rassa,Gwwvyan,Cucla,Lwnoic,Aluniver,Dwbrylla,Dybrylla,"
+"Merissa,Ysealyan,Clydda,Maeniver,Dallyra,Nessa,Gwydda,Merall,Clill,Clungwen,"
+"Ysongwen,Cucla,Jora,Elyniver,Meana,Sallyra,Ysinoic,Clara,Meradda,Dwra,Nolla,"
+"Nera,Merealonna,Clibrylla,Alaeniver,Nonoic,Jacla,Rara,Cwngwen,Dara,Ysura,"
+"Sulonna,Dissa,Clona,Ralonna,Cwvyan,Mulyan,Lungwen,Mwlyan,Meralonna,Lerka,"
+"Noryan,Curyan,Mealyan,Nera,Sylyan,Merivyan,Lwnoic,Sanoic,Ysanoic,Cyllyra,"
+"Ysyrka,Cleanoic,Bronoic,Devyan,Ysaerka,Rwngwen,Nwllyra,Ysycla,Swngwen,Nyvyan,"
+"Cleana,Merylyan,Alwlyan,Lassa,Locla,Meniver,Laenoic,Mullyra,Judda,Mycla,"
+"Brassa,Ysacla,Elacla,Muryan,Clollyra,Ysanoic,Senoic,Rwngwen,Merwlla,Brera,"
+"Saeniver,Deassa,Meranoic,Bronoic,Aleacla,Mavyan,Alora,Jarka,Elaelonna,"
+"Merwryan,Lengwen,Alilonna,Meangwen,Claelyan,Silonna,Ysealyan,Alora,Revyan,"
+"Cera,Merwnoic,Dicla,Laeryan,Alubrylla,Lycla,Mavyan,Jull,Syllyra,Swlyan,"
+"Elaessa,Caena,Cluvyan,Breryan,Laeniver,Jorka,Raera,Gwedda,Lodda,Brell,"
+"Rybrylla,Meanoic,Niryan,Cylla,Bricla,Cudda,Alabrylla,Nealonna,Alolla,Rirka,"
+"Jyniver,Elearka,Jaevyan,Melonna,Alengwen,Sura,Cissa,Mossa,Norka,Nangwen,"
+"Saerka,Elycla,Della,Merallyra,Elyllyra,Elenoic,Alussa,Elwngwen,Calla,Merina,"
+"Jynoic,Ysealonna,Sussa,Sulyan,Mossa,Dissa,Daedda,Merinoic,Searka,Rella,Sira,"
+"Clillyra,Alwna,Lulla,Nulyan,Jwlyan,Swnoic,Clongwen,Alalla,Siryan,Braedda,"
+"Jealla,Gwwna,Gwullyra,Merengwen,Molyan,Dwna,Lunoic,Brealla,Ruryan,Alabrylla,"
+"Deassa,Jovyan,Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,"
+"Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 
 #: data/names.cfg:12
 msgid ""
@@ -2806,6 +2983,13 @@ msgid ""
 "Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimmud,"
 "Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 msgstr ""
+"Neptun,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,Tangaroa,"
+"Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,Barinthus,Llyr,"
+"Lir,Aigaion,Melicertes,Dylan,Tanaoa,Tikitiki,Alastyn,Apam,Natat,Vourukasa,"
+"Vodnik,Faro,Nun,Habaek,Apsu,Abzu,Absu,Sisiutl,Atlaua,Atlahua,Jamm,Vizi,Ember,"
+"Toniwha,Apalala,Dhakhan,Nechtan,Elcmar,Mimir,Enki,Makara,Aremata,Rorua,Popoa,"
+"Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimmud,Tagaloa,Labuna,Jin,Laut,"
+"Raja,Ikatere,Nuada,Nudd,Ludd"
 
 #: data/names.cfg:13
 msgid ""
@@ -2814,6 +2998,10 @@ msgid ""
 "Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
 "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 msgstr ""
+"Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,Rân,"
+"Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
+"Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
+"Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 
 #: data/names.cfg:17
 msgid ""
@@ -2861,6 +3049,49 @@ msgid ""
 "Varag,Huurk,Vadush,Grok,Rank,Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,"
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 msgstr ""
+"Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,Goshnak,"
+"Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,Hunk,Goshnak,"
+"Bogor,Varbag,Hort,Graol,Gork,Vrugdush,Gagor,Gadash,Prong,Prodush,Pidush,"
+"Grorag,Grolg,Pung,Hurbag,Bink,Grort,Erugar,Vilo,Pagor,Vak,Prarg,Hurag,"
+"Eragdush,Gulg,Pragdush,Grugdush,Erirg,Gridush,Hulo,Vrogar,Eronk,Erulo,Rok,"
+"Prurk,Prurg,Grulo,Prirg,Prugar,Bogar,Prudish,Prunk,Groshnak,Eronk,Prilg,Erik,"
+"Rodush,Vulo,Pork,Prilo,Horbag,Bong,Prarag,Vourk,Vrik,Boshnak,Prong,Rugdish,"
+"Erulo,Palo,Vrik,Hak,Vrurg,Gurbag,Vrang,Pilg,Bogdush,Erurag,Vadush,Eruurk,"
+"Vank,Ruk,Vrogor,Vrurg,Bagar,Vink,Prinak,Vraurk,Prarbag,Hidush,Ruol,Grugdish,"
+"Prodash,Gridish,Pulo,Bik,Rinak,Halg,Erudish,Pirbag,Gank,Galo,Burk,Hunk,"
+"Bagdish,Pink,Bort,Gridash,Valo,Eruol,Radash,Erarg,Vigor,Vudish,Vak,Grirg,"
+"Groshnak,Pronak,Punk,Grigar,Prolg,Pigdush,Ging,Vong,Hulg,Bashnak,Vork,Ruol,"
+"Vogdish,Rinak,Gagar,Borg,Virt,Bunak,Hushnak,Ganak,Barbag,Vralo,Hidash,Vrirt,"
+"Gurt,Erarag,Rugar,Pridish,Prugdish,Eruol,Vriurk,Grudash,Vurg,Eriol,Bok,"
+"Granak,Vrodish,Hoshnak,Grogdish,Bork,Hushnak,Hagdush,Parag,Eriurk,Vuk,Rirg,"
+"Rok,Bolg,Vrishnak,Vilo,Vragar,Budush,Gruk,Bidish,Praurk,Gunak,Hinak,Hak,"
+"Grork,Grong,Erogdish,Rolo,Vadash,Pulg,Vilg,Vrodash,Vurg,Gink,Grilg,Birt,Biol,"
+"Vrudish,Hagor,Vragdush,Vogor,Vulg,Erong,Rashnak,Garag,Grink,Vogdish,Badush,"
+"Rodish,Gradash,Erart,Purbag,Pralo,Grigar,Badush,Priurk,Rink,Puurk,Vonak,"
+"Eradish,Vridash,Podush,Pruurk,Pronk,Hiol,Gushnak,Gugdish,Hashnak,Eragor,"
+"Rarbag,Gagdush,Granak,Budush,Vilg,Hort,Pulg,Gaol,Podash,Punak,Gogdush,Porg,"
+"Pogdish,Prigar,Gushnak,Prarbag,Gagar,Bogor,Gogdish,Eranak,Gralo,Palg,Virag,"
+"Grishnak,Rank,Hing,Grak,Pirbag,Prarag,Virag,Hink,Buk,Burg,Prodish,Prashnak,"
+"Ragar,Purag,Bugdish,Vigdish,Grogdish,Huol,Hank,Gruurk,Rak,Rudash,Ginak,Huol,"
+"Erigdush,Vraurk,Prool,Pragor,Grirag,Vishnak,Grorg,Eronk,Vraurk,Erishnak,"
+"Erunk,Bilo,Hodush,Vrork,Eriurk,Vrarbag,Hagar,Vorg,Pidush,Pigdish,Bidush,"
+"Prashnak,Virag,Bunk,Vrurg,Hong,Rik,Hirg,Rushnak,Gink,Hadish,Vilo,Vrork,Rak,"
+"Huk,Ronak,Vrulg,Vilg,Rogdish,Prodash,Erirt,Gragar,Gigor,Burag,Priol,Rodush,"
+"Rirg,Vruurk,Barag,Podish,Vunak,Hork,Grilg,Bogdish,Vadash,Raurk,Puurk,Rark,"
+"Ronak,Grogar,Hashnak,Bink,Grodish,Hidish,Bagar,Erinak,Vrugdush,Rarag,"
+"Eragdish,Hirag,Vrolo,Hogor,Erirbag,Vruol,Gulg,Pralo,Hogar,Hadush,Budush,"
+"Hadash,Gigor,Goshnak,Hugor,Hudash,Biol,Vrurg,Pradish,Pralg,Bilg,Vrart,Prunak,"
+"Prigdish,Vrung,Vrugdush,Grudash,Ging,Puk,Graol,Prigor,Buurk,Pagdish,Hirg,"
+"Prang,Eragor,Gralg,Prart,Vrolo,Prark,Pashnak,Pradish,Vilg,Pulo,Gunak,Paol,"
+"Gridash,Erirag,Bart,Burag,Vrinak,Vushnak,Prilo,Vragor,Rigor,Bung,Prourk,"
+"Vrork,Burg,Erugdush,Bogdish,Prurg,Prigor,Binak,Vadish,Grilo,Ruol,Vrodish,"
+"Pinak,Pradish,Eragor,Higdush,Parag,Pink,Vrong,Port,Bok,Porbag,Grilo,Bung,"
+"Grugar,Rak,Gulo,Grork,Bik,Grodish,Polg,Pung,Grarbag,Vurg,Vurbag,Pung,Prolo,"
+"Voshnak,Ruk,Vigdish,Vradash,Vrarg,Gong,Gragor,Varbag,Erogdush,Erorbag,Bidish,"
+"Prirt,Hadush,Rirk,Vrurt,Hing,Gronk,Rung,Girt,Gronk,Vigar,Prugar,Raol,Eronk,"
+"Hurk,Purg,Hilg,Vrudish,Grurk,Gigor,Grurg,Polg,Erurag,Erudush,Vadush,Vrulg,"
+"Varag,Huurk,Vadush,Grok,Rank,Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,"
+"Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 
 #: data/names.cfg:21
 msgid ""
@@ -2929,6 +3160,70 @@ msgid ""
 "Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
 "Pelaithil,Gomaithsol,Augaithsil"
 msgstr ""
+"Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,Trithaithus,"
+"Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,Augaithing,Anthaas,"
+"Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,Trithdurol,Glamcatil,Augthail,"
+"Trithduril,Dulthalos,Glamthasol,Aldrsol,Glamaithol,Glamalil,Analus,Nardril,"
+"Augating,Dulaithsol,Aldrlos,Alalus,Aigcatsol,Ancatas,Trithdris,Pelatol,"
+"Aigthasil,Anthais,Narcatis,Trithatil,Aigaithing,Althail,Trithaithil,"
+"Naraithol,Duldrlos,Gomatas,Alcatis,Naraithsil,Althalos,Aigdursol,Glamalsil,"
+"Nardrus,Aigalis,Aldurlos,Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,"
+"Glamthaas,Dulcatsol,Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,"
+"Peldrsol,Pelalsol,Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,"
+"Augdris,Anthasol,Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,"
+"Pelalis,Gomatlos,Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,"
+"Gomcatil,Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
+"Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
+"Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,Trithdring,"
+"Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,Dulaithlos,"
+"Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,Trithcatlos,"
+"Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,Aldurol,Aigatsil,"
+"Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,Althaol,Aldrsol,"
+"Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,Glamthaol,Ancatus,"
+"Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,Naraithsil,Aldris,"
+"Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,Aigdurlos,Aigaithol,"
+"Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,Anthaing,Aigcatis,"
+"Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,Gomdursil,Nardras,"
+"Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,Anatol,Augdrsil,"
+"Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,Augaling,Alating,Glamatil,"
+"Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,Gomdursol,Naraithus,"
+"Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,Aigduras,Nardrol,Nardurol,"
+"Pelalil,Gomalil,Aigatis,Analil,Dulthaus,Gomaithil,Alduras,Trithduril,Ancatol,"
+"Alduras,Pelduril,Narcatsol,Pelating,Dulcatsil,Augatol,Glamthasil,Gomthasol,"
+"Naraithsil,Alatsil,Dulcatol,Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,"
+"Trithatas,Aigthais,Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,"
+"Gomdras,Naraithsol,Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,"
+"Gomating,Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
+"Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
+"Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,Augcatsil,"
+"Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,Pelaling,"
+"Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,Augthalos,"
+"Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,Triththail,"
+"Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,Glamalsil,"
+"Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,Dulatsol,Naralus,"
+"Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,Naraithil,Aigatsil,"
+"Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,Pelcatlos,Glamduris,"
+"Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,Pelthasil,Gomatis,Aldril,"
+"Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,Narduras,Dulaithlos,Duldris,"
+"Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,Anduril,Alaithol,Aigalis,"
+"Trithaithas,Aigcatil,Trithaithil,Naraithing,Augatsol,Trithaithol,Dulalsil,"
+"Dulthasol,Glamcatas,Glamthaol,Gomaithsol,Dulaithing,Naratlos,Naraithol,"
+"Gomthasol,Ancatas,Aigcatsil,Pelduris,Trithdrus,Andurus,Trithdring,Glamthaas,"
+"Aigcating,Nardrsol,Glamaithol,Dulaithsol,Althaus,Augduras,Aigaithas,"
+"Gomdurlos,Glamalus,Gomdrsil,Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,"
+"Glamaling,Dulduras,Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,"
+"Trithduring,Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,"
+"Naratlos,Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
+"Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
+"Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
+"Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
+"Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
+"Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
+"Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,Glamcatil,"
+"Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,Narcatis,"
+"Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,Aigatsil,"
+"Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
+"Pelaithil,Gomaithsol,Augaithsil"
 
 #: data/names.cfg:25
 msgid ""
@@ -2940,6 +3235,13 @@ msgid ""
 "Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
 "Klez,Zlek,Trixzed"
 msgstr ""
+"Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
+"Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
+"Brassas,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,Sassalia,"
+"Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,Grissilai,"
+"Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,Zsekp,Kzap,"
+"Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
+"Klez,Zlek,Trixzed"
 
 #: data/names.cfg:26
 msgid ""
@@ -2950,6 +3252,12 @@ msgid ""
 "Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
 "Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 msgstr ""
+"Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,Saxrireii,"
+"Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,Vilail,Aleiss,"
+"Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,Ineii,Inaloss,"
+"Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,Slell,Soill,Sorkol,"
+"Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
+"Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 
 #: data/names.cfg:30
 msgid ""
@@ -2966,6 +3274,18 @@ msgid ""
 "Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,Boladrumbadrum,"
 "Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 msgstr ""
+"Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
+"Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
+"Munnamdulbon,Monlamwimdan,Dulwulmendom,Delmduelmdelom,Mundionalafla,"
+"Laffalialomdium,Rithramcamhan,Bregalad,Orofarnië,Lassemista,Carnimirië,"
+"Tumtonnongatum,Tumtentantarun,Tantondernintan,Bombempomgontor,"
+"Pomtamkomtrobum,Brommantendronnor,Dammantongonnur,Brumennarunom,"
+"Dumdumdumatum,Tumtumgamtomtom,Tondenkontenkon,Bumbadadabum,Dabumdabumtam,"
+"Bomtanbomkenton,Bomtanbomtonum,Brumbendublun,Brenbasnudnem,Temtunnongetem,"
+"Debundbemun,Diblembumnde,Bremdebubde,Pambedrumne,Drongnoblemdu,Bludebalmen,"
+"Temtundembenn,Lefnublemdde,Libleddnumm,Mundumblemdum,Brendumadoak,"
+"Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,Boladrumbadrum,"
+"Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 
 #: data/names.cfg:34
 msgid ""
@@ -2976,6 +3296,12 @@ msgid ""
 "Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
 "Urkar"
 msgstr ""
+"Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,Markaak,"
+"Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,Kingrok,"
+"Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,Borkuk,Orkut,"
+"Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,Kramak,Goruk,Krog,"
+"Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
+"Urkar"
 
 #: data/names.cfg:38
 msgid ""
@@ -2984,6 +3310,10 @@ msgid ""
 "Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
 "Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
+"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
+"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
+"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
+"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/names.cfg:42
 msgid ""
@@ -2998,6 +3328,16 @@ msgid ""
 "Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
 "Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 msgstr ""
+"Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
+"Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,Anexir,"
+"Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,Jezzix,"
+"Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,Flixta,"
+"Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,Xartrez,"
+"Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,Hesz,Xasz,"
+"Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,Ssorix,Ssexur,"
+"Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,Lixeez,Sklizle,"
+"Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
+"Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 
 #: data/names.cfg:46
 msgid ""
@@ -3011,6 +3351,15 @@ msgid ""
 "Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
 "Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 msgstr ""
+"Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
+"Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
+"Garadin,Krall Ohn,Merkush,Gridda,Garlan,Græt Ihn,Ka,Karron,Markinos,Gashöl,"
+"Grenn ohn,Gegchi,Gadé Ihn,Marrito,Grelnit,Kraslar,Marritos,Kran Kor,Kerath "
+"Kor,Kerath Ihn,Galsh,Garrutin,Gray,Garlin ohn,Merritos Gark,Gark,Gelknick,"
+"Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
+"Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
+"Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
+"Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 
 #: data/names.cfg:47
 msgid ""
@@ -3018,12 +3367,17 @@ msgid ""
 "Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
 "Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 msgstr ""
+"Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin Ka,"
+"Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
+"Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 
 #: data/names.cfg:51
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
@@ -3049,15 +3403,13 @@ msgstr "2p - Blitz"
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
-"Duel-bane til super-hurtigt spil. Anbefalet indstilling er 2g pr. landsby."
+msgstr "Anbefalet indstilling er 2 guld per landsby."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "Et dobbelt kort til meget hurtig spil."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:22
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
@@ -3083,7 +3435,7 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:65
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:105
 msgid "teamname^North"
-msgstr ""
+msgstr "teamname^Nord"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:33
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:57
@@ -3103,11 +3455,11 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:51
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:62
 msgid "teamname^South"
-msgstr ""
+msgstr "teamname^Syd"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
-msgstr ""
+msgstr "2p - Basiliskens huler"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
@@ -3255,10 +3607,8 @@ msgid "2p - Cynsaun Battlefield"
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid " Recommended settings of 150 gold and 1 gold per village."
-msgstr ""
-"Duel-bane til super-hurtigt spil. Anbefalet indstilling er 2g pr. landsby."
+msgstr " Anbefalet indstilling er 150 guld og 1 guld per landsby."
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -3291,7 +3641,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
-msgstr ""
+msgstr "2p - Hornshark Ø"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
 msgid ""
@@ -3328,7 +3678,7 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:40
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:73
 msgid "teamname^West"
-msgstr ""
+msgstr "teamname^Vest"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:29
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:29
@@ -3346,7 +3696,7 @@ msgstr ""
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:51
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:62
 msgid "teamname^East"
-msgstr ""
+msgstr "teamname^Øst"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
@@ -3369,9 +3719,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "Status"
+msgstr "Statue"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
@@ -3402,7 +3751,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Lhun-dup statuen"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
@@ -3410,7 +3759,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Ri-nzen statuen"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
@@ -3418,7 +3767,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Ten-zin statuen"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
@@ -3517,7 +3866,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
-msgstr ""
+msgstr "3p - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
 #, fuzzy
@@ -3663,26 +4012,24 @@ msgstr ""
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:75
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:85
 msgid "teamname^South-East"
-msgstr ""
+msgstr "teamname^Sydøst"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:51
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:24
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:54
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:20
 msgid "teamname^North-West"
-msgstr ""
+msgstr "teamname^Nordvest"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
-msgstr ""
+msgstr "4p - Lagoon"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
-"Duel-bane til super-hurtigt spil. Anbefalet indstilling er 2g pr. landsby."
+msgstr "Anbefalet indstilling er 1 guld per landsby."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 #, fuzzy
@@ -3702,7 +4049,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
-msgstr ""
+msgstr "4p - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
 #, fuzzy
@@ -3798,17 +4145,16 @@ msgid "Turn 8: Rebels"
 msgstr "Ture: "
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:175
-#, fuzzy
 msgid "Turn 11: Northerners"
-msgstr "Nordfolk"
+msgstr "Runde 11: Folk fra nord"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:176
 msgid "Turn 14: Drakes"
-msgstr ""
+msgstr "Runde 14: Hestedrager"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:177
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "Runde 17: Udøde"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:178
 msgid "Tower of Doom"
@@ -3828,16 +4174,15 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "Overlev i 32 runder."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
 msgid "Survive all enemy attacks."
-msgstr ""
+msgstr "Overlev alle fjendtlige angreb."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
-#, fuzzy
 msgid "Death of your team leaders."
-msgstr "Konrad dør"
+msgstr "Dine holdlederes død."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
 msgid ""
@@ -3878,7 +4223,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
-msgstr ""
+msgstr "8p - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
 #, fuzzy
@@ -4007,7 +4352,7 @@ msgstr ""
 #: data/special-notes.cfg:11
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
+msgstr " Denne enhed kan helbrede enheder omkring den, og rense dem for gift."
 
 #: data/special-notes.cfg:14
 msgid ""
@@ -4148,9 +4493,8 @@ msgid "Orange"
 msgstr "Orange"
 
 #: data/team-colors.cfg:34
-#, fuzzy
 msgid "Black"
-msgstr "< Tilbage"
+msgstr "Sort"
 
 #: data/team-colors.cfg:40
 msgid "White"
@@ -4207,17 +4551,15 @@ msgstr "Indtjening og vedligehold"
 
 #: data/terrain.cfg:284
 msgid "Ruined keep"
-msgstr ""
+msgstr "Tårnruin"
 
 #: data/terrain.cfg:296
-#, fuzzy
 msgid "Sunken keep"
-msgstr "Nedsunket ruin"
+msgstr "Nedsunket tårnruin"
 
 #: data/terrain.cfg:308
-#, fuzzy
 msgid "Swamp keep"
-msgstr "Sump"
+msgstr "Sumptårn"
 
 #: data/terrain.cfg:330
 #, fuzzy
@@ -4242,9 +4584,8 @@ msgid "Snow Forest"
 msgstr "Sneskov"
 
 #: data/terrain.cfg:411
-#, fuzzy
 msgid "Great Tree"
-msgstr "Den Store Krig"
+msgstr "Det Store Træ"
 
 #: data/terrain.cfg:428
 msgid "Tropical Forest"
@@ -4260,18 +4601,16 @@ msgid "Dunes"
 msgstr "Skumring"
 
 #: data/terrain.cfg:546
-#, fuzzy
 msgid "Desert road"
-msgstr "Ørken"
+msgstr "Ørkenvej"
 
 #: data/terrain.cfg:555
 msgid "Dirt"
-msgstr ""
+msgstr "Skidt"
 
 #: data/terrain.cfg:573
-#, fuzzy
 msgid "Farmland"
-msgstr "skarpskytte"
+msgstr "Landbrugsjord"
 
 #: data/terrain.cfg:630
 #, fuzzy
@@ -4279,9 +4618,8 @@ msgid "Cave Lit"
 msgstr "Hule"
 
 #: data/terrain.cfg:872
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Ørkenbjerge"
+msgstr "Ufremkommelige bjerge"
 
 #: data/themes/default.cfg:80 data/themes/dfool.cfg:101
 #: data/themes/experimental.cfg:71
@@ -4295,18 +4633,18 @@ msgstr "Handlinger"
 
 #: data/themes/default.cfg:113 data/themes/dfool.cfg:127
 msgid "End Turn"
-msgstr "Afslut tur"
+msgstr "Afslut runde"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
 #: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2427
 msgid "HP"
-msgstr "HP"
+msgstr "L"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
 #: data/themes/experimental.cfg:165 src/menu_events.cpp:292
 #: src/menu_events.cpp:828
 msgid "XP"
-msgstr "XP"
+msgstr "EP"
 
 #: data/themes/default.cfg:190 data/themes/dfool.cfg:227
 #: data/themes/experimental.cfg:174
@@ -4326,7 +4664,7 @@ msgstr "enheder"
 #: data/themes/default.cfg:217 data/themes/dfool.cfg:254
 #: data/themes/experimental.cfg:201
 msgid "upkeep"
-msgstr ""
+msgstr "vedligeholdelse"
 
 #: data/themes/default.cfg:226 data/themes/dfool.cfg:263
 #: data/themes/experimental.cfg:210
@@ -4357,7 +4695,7 @@ msgstr ""
 
 #: data/themes/macros.cfg:13
 msgid "time left"
-msgstr ""
+msgstr "tid tilbage"
 
 #: data/themes/macros.cfg:52
 #, fuzzy
@@ -4365,22 +4703,20 @@ msgid "Replay"
 msgstr "Gameplay"
 
 #: data/themes/macros.cfg:67
-#, fuzzy
 msgid "Play"
-msgstr "Spillere:"
+msgstr "Spil"
 
 #: data/themes/macros.cfg:68
 msgid "continous replay"
 msgstr ""
 
 #: data/themes/macros.cfg:81
-#, fuzzy
 msgid "Stop"
-msgstr "Stærk"
+msgstr "Stop"
 
 #: data/themes/macros.cfg:82
 msgid "pause at end of turn"
-msgstr ""
+msgstr "lav pause ved rundens slutning"
 
 #: data/themes/macros.cfg:95
 #, fuzzy
@@ -4392,29 +4728,24 @@ msgid "reset to beginning"
 msgstr ""
 
 #: data/themes/macros.cfg:109
-#, fuzzy
 msgid "Next Turn"
-msgstr "Tur"
+msgstr "Næste runde"
 
 #: data/themes/macros.cfg:110
-#, fuzzy
 msgid "play turn"
-msgstr "pr. tur"
+msgstr "spil runde"
 
 #: data/themes/macros.cfg:123
-#, fuzzy
 msgid "Next Side"
-msgstr "Næste"
+msgstr "Næste side"
 
 #: data/themes/macros.cfg:124
-#, fuzzy
 msgid "play side turn"
-msgstr "pr. tur"
+msgstr "spil side runde"
 
 #: data/themes/macros.cfg:160
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Slovakisk Oversættelse"
+msgstr "Undland animation"
 
 #: data/tips.cfg:1
 msgid ""
@@ -4683,9 +5014,8 @@ msgid "undead"
 msgstr "udød"
 
 #: data/traits.cfg:19
-#, fuzzy
 msgid "female^undead"
-msgstr "Troldkvinde"
+msgstr "female^udød"
 
 #: data/traits.cfg:20
 msgid "Immune to poison"
@@ -4696,36 +5026,32 @@ msgid "strong"
 msgstr "stærk"
 
 #: data/traits.cfg:28
-#, fuzzy
 msgid "female^strong"
-msgstr "Troldkvinde"
+msgstr "female^stærk"
 
 #: data/traits.cfg:44
 msgid "dextrous"
 msgstr "behændig"
 
 #: data/traits.cfg:45
-#, fuzzy
 msgid "female^dextrous"
-msgstr "behændig"
+msgstr "female^behændig"
 
 #: data/traits.cfg:57
 msgid "quick"
 msgstr "hurtig"
 
 #: data/traits.cfg:58
-#, fuzzy
 msgid "female^quick"
-msgstr "Prinsesse"
+msgstr "female^hurtig"
 
 #: data/traits.cfg:73
 msgid "intelligent"
 msgstr "intelligent"
 
 #: data/traits.cfg:74
-#, fuzzy
 msgid "female^intelligent"
-msgstr "intelligent"
+msgstr "female^intelligent"
 
 # > spændstig, elastisk, ukuelig..
 # Robust!
@@ -4736,9 +5062,8 @@ msgstr "robust"
 # > spændstig, elastisk, ukuelig..
 # Robust!
 #: data/traits.cfg:86
-#, fuzzy
 msgid "female^resilient"
-msgstr "robust"
+msgstr "female^robust"
 
 #: data/traits.cfg:101
 msgid "healthy"
@@ -4747,21 +5072,19 @@ msgstr ""
 #: data/traits.cfg:102
 #, fuzzy
 msgid "female^healthy"
-msgstr "Tyv"
+msgstr "female^Tyv"
 
 #: data/traits.cfg:103
 msgid "Heals faster if resting"
-msgstr ""
+msgstr "Helbreder hurtigere i hvile"
 
 #: data/traits.cfg:114
-#, fuzzy
 msgid "fearless"
-msgstr "Prinsesse"
+msgstr "frygløs"
 
 #: data/traits.cfg:115
-#, fuzzy
 msgid "female^fearless"
-msgstr "Prinsesse"
+msgstr "female^frygtløs"
 
 #: data/traits.cfg:116
 msgid "Fights normally during unfavorable times of day/night"
@@ -4769,7 +5092,7 @@ msgstr ""
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
-msgstr ""
+msgstr "Galeon"
 
 #: data/units/Boat_Galleon.cfg:20
 msgid ""
@@ -4831,7 +5154,7 @@ msgstr "slag"
 
 #: data/units/Boat_Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "Piratgaleon"
 
 #: data/units/Boat_Pirate_Galleon.cfg:17
 msgid ""
@@ -4911,7 +5234,7 @@ msgstr "stik"
 
 #: data/units/Boat_Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Transportgaleon"
 
 #: data/units/Boat_Transport_Galleon.cfg:17
 msgid ""
@@ -4920,9 +5243,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Armageddon.cfg:3
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "Ild-drage"
+msgstr "Ild-hestedrage"
 
 #: data/units/Drake_Armageddon.cfg:19
 msgid ""
@@ -5171,9 +5493,8 @@ msgid "scimitar"
 msgstr ""
 
 #: data/units/Drake_Fire.cfg:3
-#, fuzzy
 msgid "Fire Drake"
-msgstr "Ild-drage"
+msgstr "Ild-hestedrage"
 
 #: data/units/Drake_Fire.cfg:17
 msgid ""
@@ -5387,9 +5708,8 @@ msgid "dragonstaff"
 msgstr "dragestav"
 
 #: data/units/Dwarvish_Fighter.cfg:3
-#, fuzzy
 msgid "Dwarvish Fighter"
-msgstr "Dværgesoldat"
+msgstr "Dværgekæmper"
 
 #: data/units/Dwarvish_Fighter.cfg:22
 msgid ""
@@ -5433,9 +5753,8 @@ msgid "javelin"
 msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:3
-#, fuzzy
 msgid "Dwarvish Lord"
-msgstr "Dværgesoldat"
+msgstr "Dværgelensherre"
 
 #: data/units/Dwarvish_Lord.cfg:19
 msgid ""
@@ -5571,9 +5890,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Archer.cfg:3
-#, fuzzy
 msgid "Elvish Archer"
-msgstr "Elverskytte"
+msgstr "Elverbueskytte"
 
 #: data/units/Elvish_Archer.cfg:19
 msgid ""
@@ -5606,10 +5924,9 @@ msgstr "bue"
 
 #: data/units/Elvish_Archer.cfg:158
 msgid "female^Elvish Archer"
-msgstr "Elverskytte"
+msgstr "female^Elverbueskytte"
 
 #: data/units/Elvish_Avenger.cfg:3
-#, fuzzy
 msgid "Elvish Avenger"
 msgstr "Elver-hævner"
 
@@ -6661,7 +6978,7 @@ msgstr "missil"
 
 #: data/units/Human_Mage.cfg:161
 msgid "female^Mage"
-msgstr "Troldkvinde"
+msgstr "female^Troldkvinde"
 
 #: data/units/Human_Mage_Arch.cfg:3
 #, fuzzy
@@ -6697,9 +7014,8 @@ msgid "female^Arch Mage"
 msgstr "Ærketroldkvinde"
 
 #: data/units/Human_Mage_Great.cfg:3
-#, fuzzy
 msgid "Great Mage"
-msgstr "Den Store Krig"
+msgstr "Den Store Troldmand"
 
 #: data/units/Human_Mage_Great.cfg:22
 msgid ""
@@ -6719,9 +7035,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Mage_Great.cfg:117
-#, fuzzy
 msgid "female^Great Mage"
-msgstr "Rød Troldkvinde"
+msgstr "female^Den Store Troldkvinde"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
@@ -6857,12 +7172,11 @@ msgstr "slynge"
 
 #: data/units/Human_Outlaw.cfg:97
 msgid "female^Outlaw"
-msgstr "Lovløs"
+msgstr "female^Lovløs"
 
 # > to assassin eller a assassin?
 # Det er "assassinate"... Det her er "an assassin". :-)
 #: data/units/Human_Outlaw_Assassin.cfg:3
-#, fuzzy
 msgid "Assassin"
 msgstr "Snigmorder"
 
@@ -6902,7 +7216,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
-msgstr ""
+msgstr "Landevejstyv"
 
 #: data/units/Human_Outlaw_Footpad.cfg:18
 msgid ""
@@ -6920,9 +7234,8 @@ msgid "club"
 msgstr "kølle"
 
 #: data/units/Human_Outlaw_Footpad.cfg:107
-#, fuzzy
 msgid "female^Footpad"
-msgstr "Lovløs"
+msgstr "female^landevejstyv"
 
 #: data/units/Human_Outlaw_Poacher.cfg:3
 msgid "Poacher"
@@ -6981,11 +7294,11 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Thief.cfg:217
 msgid "female^Thief"
-msgstr "Tyv"
+msgstr "female^Tyv"
 
 #: data/units/Human_Outlaw_Thug.cfg:3
 msgid "Thug"
-msgstr ""
+msgstr "Bølle"
 
 #: data/units/Human_Outlaw_Thug.cfg:18
 msgid ""
@@ -7143,7 +7456,7 @@ msgstr ""
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
-msgstr ""
+msgstr "Havmandkæmper"
 
 #: data/units/Merman_Fighter.cfg:18
 msgid ""
@@ -7172,9 +7485,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Hunter.cfg:3
-#, fuzzy
 msgid "Merman Hunter"
-msgstr "Havmand"
+msgstr "Havmand jager"
 
 #: data/units/Merman_Hunter.cfg:18
 msgid ""
@@ -7216,7 +7528,7 @@ msgstr ""
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
-msgstr ""
+msgstr "Havmand spydmand"
 
 #: data/units/Merman_Spearman.cfg:17
 msgid ""
@@ -7231,7 +7543,7 @@ msgstr ""
 #: data/units/Merman_Triton.cfg:3
 #, fuzzy
 msgid "Merman Triton"
-msgstr "+Tysk Oversættelse"
+msgstr "Havmand triton"
 
 #: data/units/Merman_Triton.cfg:18
 msgid ""
@@ -7241,9 +7553,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Warrior.cfg:3
-#, fuzzy
 msgid "Merman Warrior"
-msgstr "Øglekriger"
+msgstr "Havmand kriger"
 
 #: data/units/Merman_Warrior.cfg:17
 msgid ""
@@ -7253,7 +7564,7 @@ msgstr ""
 
 #: data/units/Monster_Cave_Spider.cfg:3
 msgid "Giant Spider"
-msgstr "Kæmpe-edderkop."
+msgstr "Kæmpeedderkop"
 
 #: data/units/Monster_Cave_Spider.cfg:18
 msgid ""
@@ -7263,6 +7574,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Kæmpeedderkopperne siges at leve i Knalgas dybder, hvor de koster mange "
+"ofre. De kan bide i nærkamp og dermed forgifte deres fjender. På afstand kan "
+"de også angribe med et net, som gør deres modstandere langsomme i deres "
+"bevægelser.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Monster_Cave_Spider.cfg:85
 msgid "web"
@@ -7322,6 +7639,8 @@ msgid "Giant Scorpion"
 msgstr "Kæmpeskorpion"
 
 # Den originale sætning er _godt_ nok mystisk... Hvor er forklaringen?
+# Joe 14. februar 2007 (virker som om engelsk tekst er blevet misforstået, har rettet
+# en smule til ingen.
 #: data/units/Monster_Giant_Scorpion.cfg:20
 #, fuzzy
 msgid ""
@@ -7331,7 +7650,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "En almindelig skorpion en farlig nok - en på størrelse med et menneske "
-"kræver en smule forklaring."
+"kræver ingen forklaring.\n"
+"Specielle bemærkninger:"
 
 #: data/units/Monster_Giant_Scorpion.cfg:24
 #, fuzzy
@@ -7355,12 +7675,13 @@ msgstr ""
 
 #: data/units/Monster_Sea_Serpent.cfg:3
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Søslange"
 
 #: data/units/Monster_Sea_Serpent.cfg:16
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
+"Søslanger er gigantiske monstre, der selv er i stand til at erobre både."
 
 # Jeg ved ikke helt om jeg var fuld da jeg lavede den her...
 #: data/units/Monster_Tentacle.cfg:3
@@ -7481,9 +7802,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Archer.cfg:3
-#, fuzzy
 msgid "Orcish Archer"
-msgstr "Elverskytte"
+msgstr "Orkerbueskytte"
 
 #: data/units/Orcish_Archer.cfg:18
 msgid ""
@@ -7496,9 +7816,8 @@ msgstr ""
 # > to assassin eller a assassin?
 # Det er "assassinate"... Det her er "an assassin". :-)
 #: data/units/Orcish_Assassin.cfg:3
-#, fuzzy
 msgid "Orcish Assassin"
-msgstr "Snigmorder"
+msgstr "Orkersnigmorder"
 
 #: data/units/Orcish_Assassin.cfg:20
 msgid ""
@@ -7516,9 +7835,8 @@ msgid "throwing knives"
 msgstr "kasteknive"
 
 #: data/units/Orcish_Crossbowman.cfg:3
-#, fuzzy
 msgid "Orcish Crossbowman"
-msgstr "armbrøst"
+msgstr "Orkerarmbrøstskytte"
 
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
@@ -7545,7 +7863,7 @@ msgstr ""
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr ""
+msgstr "Orkerleder"
 
 #: data/units/Orcish_Leader.cfg:20
 msgid ""
@@ -7634,9 +7952,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Warrior.cfg:3
-#, fuzzy
 msgid "Orcish Warrior"
-msgstr "Øglekriger"
+msgstr "Orkerkriger"
 
 #: data/units/Orcish_Warrior.cfg:17
 msgid ""
@@ -8461,7 +8778,6 @@ msgid "Save Game"
 msgstr "Gem spil"
 
 #: src/dialogs.cpp:217
-#, fuzzy
 msgid "Quit Game"
 msgstr "Afslut spillet"
 
@@ -8585,15 +8901,15 @@ msgstr "level"
 
 #: src/dialogs.cpp:722 src/help.cpp:1151
 msgid "HP: "
-msgstr "HP: "
+msgstr "L: "
 
 #: src/dialogs.cpp:726 src/dialogs.cpp:734
 msgid "XP: "
-msgstr "XP: "
+msgstr "EP: "
 
 #: src/dialogs.cpp:739 src/help.cpp:1152
 msgid "Moves: "
-msgstr ""
+msgstr "Bevægelser:"
 
 #: src/display.cpp:527
 msgid "Screenshot"
@@ -8653,7 +8969,6 @@ msgid "Connect to Server"
 msgstr "Tilslut server"
 
 #: src/game.cpp:871
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
 msgstr ""
 "Du bliver nu forbundet til en kampagneserver, så du kan hente kampagner."
@@ -8664,7 +8979,7 @@ msgstr "Server: "
 
 #: src/game.cpp:887 src/multiplayer.cpp:126 src/multiplayer.cpp:163
 msgid "Connecting to Server..."
-msgstr "Tilslutter til server"
+msgstr "Tilslutter til server..."
 
 #: src/game.cpp:890
 msgid "Could not connect to host."
@@ -8672,7 +8987,7 @@ msgstr "Kunne ikke sluttes til vært."
 
 #: src/game.cpp:899
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Forespørger på kampagneliste"
 
 #: src/game.cpp:912
 msgid "Error communicating with the server."
@@ -8695,45 +9010,38 @@ msgid "Size"
 msgstr "Størrelse"
 
 #: src/game.cpp:983
-#, fuzzy
 msgid "Publish add-on: "
 msgstr "Udgiv kampagne: "
 
 #: src/game.cpp:987
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Slet kampagne:-"
+msgstr "Slet kampagne: "
 
 #: src/game.cpp:991
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr "Der er ingen kampagner at hente på denne server."
 
 #: src/game.cpp:998
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Vælg kampagne til download."
+msgstr "Vælg kampagne til hentning."
 
 #: src/game.cpp:998
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Hent kampagne"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Dependencies"
-msgstr "Prinsesse"
+msgstr "Afhængigheder"
 
 #: src/game.cpp:1038
 msgid "This add-on requires the following additional dependencies:"
-msgstr ""
+msgstr "Denne kampagne kræver følgende afhængigheder:"
 
 #: src/game.cpp:1040
-#, fuzzy
 msgid "Do you still want to download it?"
-msgstr "Vil du virkelig slette dette gemte spil?"
+msgstr "Vil du stadig hente den?"
 
 #: src/game.cpp:1049
-#, fuzzy
 msgid "Downloading add-on..."
 msgstr "Henter kampagne..."
 
@@ -8742,12 +9050,10 @@ msgid "Cannot rescan the filesystem"
 msgstr "Kunne ikke genscanne filsystemet"
 
 #: src/game.cpp:1098
-#, fuzzy
 msgid "Add-on Installed"
 msgstr "Kampagne installeret"
 
 #: src/game.cpp:1098
-#, fuzzy
 msgid "The add-on has been installed."
 msgstr "Kampagnen er installeret"
 
@@ -8781,7 +9087,7 @@ msgstr "Betingelser"
 #: src/game.cpp:1154
 #, fuzzy
 msgid "Sending add-on"
-msgstr "Henter kampagne..."
+msgstr "Sender kampagne..."
 
 #: src/game.cpp:1161 src/game.cpp:1186 src/multiplayer_wait.cpp:335
 msgid "Response"
@@ -8915,20 +9221,19 @@ msgstr "Bonus: "
 
 #: src/help.cpp:1154
 msgid "Alignment: "
-msgstr ""
+msgstr "Sindelag: "
 
 #: src/help.cpp:1160
 msgid "Required XP: "
-msgstr "Nødvendig XP: "
+msgstr "Nødvendig EP: "
 
 #: src/help.cpp:1169
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "unit help^Angreb"
 
 #: src/help.cpp:1176
-#, fuzzy
 msgid "unit help^Name"
-msgstr "Afslut spillet"
+msgstr "unit help^Navn"
 
 #: src/help.cpp:1177 src/menu_events.cpp:289 src/menu_events.cpp:825
 msgid "Type"
@@ -8986,7 +9291,7 @@ msgstr "Fremad >"
 
 #: src/help.cpp:2270
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Reference til ukendt emne: "
 
 #: src/help.cpp:2530
 msgid "corrupted original file"
@@ -8994,7 +9299,7 @@ msgstr ""
 
 #: src/help.cpp:2645
 msgid "The Battle for Wesnoth Help"
-msgstr "Kampen om Wesnoth Hjælp"
+msgstr "Hjælp til Kampen om Wesnoth"
 
 #: src/help.cpp:2693
 msgid "Parse error when parsing help text: "
@@ -9022,11 +9327,11 @@ msgstr "?"
 
 #: src/loadscreen.cpp:160
 msgid "Verifying cache."
-msgstr ""
+msgstr "Verificerer mellemlager."
 
 #: src/loadscreen.cpp:179
 msgid "Reading cache."
-msgstr ""
+msgstr "Læser mellemlager."
 
 #: src/loadscreen.cpp:198
 msgid "Reading unit files."
@@ -9088,15 +9393,15 @@ msgstr "Påført skade"
 
 #: src/menu_events.cpp:200
 msgid "Damage Taken"
-msgstr ""
+msgstr "Skade taget"
 
 #: src/menu_events.cpp:206
 msgid "Damage Inflicted (EV)"
-msgstr ""
+msgstr "Påført skade (EV)"
 
 #: src/menu_events.cpp:213
 msgid "Damage Taken (EV)"
-msgstr ""
+msgstr "Skade taget (EV)"
 
 #: src/menu_events.cpp:221
 msgid "Statistics"
@@ -9104,12 +9409,11 @@ msgstr "Statistik"
 
 #: src/menu_events.cpp:293
 msgid "unit list^Traits"
-msgstr ""
+msgstr "unit list^Karaktertræk"
 
 #: src/menu_events.cpp:294 src/unit.cpp:2458
-#, fuzzy
 msgid "Moves"
-msgstr "Bevægelse"
+msgstr "Bevægelser"
 
 #: src/menu_events.cpp:295
 msgid "Location"
@@ -9134,11 +9438,11 @@ msgstr "Landsbyer"
 
 #: src/menu_events.cpp:361
 msgid "status^Units"
-msgstr ""
+msgstr "status^Enheder"
 
 #: src/menu_events.cpp:362
 msgid "Upkeep"
-msgstr ""
+msgstr "Vedligeholdelse"
 
 #: src/menu_events.cpp:363 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:439
@@ -9174,20 +9478,19 @@ msgstr "Spillet kunne ikke gemmes"
 
 #: src/menu_events.cpp:484
 msgid "Save the Map As"
-msgstr ""
+msgstr "Gem kortet som"
 
 #: src/menu_events.cpp:489
-#, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Filen eksisterer allerede. Vil du overskrive den?"
+msgstr "Kortet eksisterer allerede. Vil du overskrive det?"
 
 #: src/menu_events.cpp:501
 msgid "Map saved."
-msgstr ""
+msgstr "Kort gemt."
 
 #: src/menu_events.cpp:506
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Kunne ikke gemme kortet: $msg"
 
 #: src/menu_events.cpp:596 src/menu_events.cpp:598 src/play_controller.cpp:719
 #: src/playcampaign.cpp:100
@@ -9200,7 +9503,7 @@ msgstr "Kunne ikke auto-gemme spillet, gem det venligst manuelt."
 
 #: src/menu_events.cpp:625
 msgid "Chat Log"
-msgstr "Chat Log"
+msgstr "Snakke log"
 
 #: src/menu_events.cpp:635
 msgid "Message:"
@@ -9219,11 +9522,11 @@ msgstr[1] "Guld"
 
 #: src/menu_events.cpp:710
 msgid "You have no units available to recruit."
-msgstr "Der er ingen enheder at rekrutere."
+msgstr "Der er ingen enheder at rekruttere."
 
 #: src/menu_events.cpp:721
 msgid "Recruit"
-msgstr "Rekrutér"
+msgstr "Rekruttér"
 
 #: src/menu_events.cpp:722 src/menu_events.cpp:871
 msgid "Select unit:"
@@ -9238,13 +9541,12 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "Du er blevet adskilt fra dine soldater og du kan ikke tilbagekalde dem"
 
 #: src/menu_events.cpp:820
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Der er ingen enheder at tilbagekalde.\n"
-"(Det kræver at der er overlevende fra et tidligere scenarie.)"
+"(Det kræver, at der er overlevende veteraner fra et tidligere scenarie)"
 
 #: src/menu_events.cpp:827
 msgid "Level"
@@ -9266,26 +9568,23 @@ msgstr[0] "Du skal bruge mindst $cost guldstykker for at tilbagekalde en enhed"
 msgstr[1] "Du skal bruge mindst $cost guldstykker for at tilbagekalde en enhed"
 
 #: src/menu_events.cpp:1208
-#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
-"Du har ikke gjort noget i denne tur, er du sikker på at du vil afslutte "
-"turen?"
+"Du har begyndt din runde endnu. Er du sikker på at du vil afslutte runden?"
 
 #: src/menu_events.cpp:1216 src/menu_events.cpp:1221
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
-"Der er enheder, der stadig kan flyttes. Vil du virkelig afslutte din tur?"
+"Der er enheder, der stadig kan flyttes. Vil du virkelig afslutte din runde?"
 
 #: src/menu_events.cpp:1262
 msgid "Rename Unit"
 msgstr "Omdøb enhed"
 
 #: src/menu_events.cpp:1357
-#, fuzzy
 msgid "Team only"
-msgstr "Hold"
+msgstr "Kun hold"
 
 #: src/menu_events.cpp:1362
 msgid "Place Label"
@@ -9332,9 +9631,8 @@ msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
 #: src/menu_events.cpp:1590
-#, fuzzy
 msgid "Unknown subcommand"
-msgstr "Ukendt scenarie: '"
+msgstr "Ukendt underkommando"
 
 #: src/menu_events.cpp:1593
 msgid ""
@@ -9349,18 +9647,16 @@ msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
 #: src/menu_events.cpp:1598
-#, fuzzy
 msgid "Unknown command"
-msgstr "Ukendt scenarie: '"
+msgstr "Ukendt kommando"
 
 #: src/menu_events.cpp:1610
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Tilføjet til ignorerliste: "
 
 #: src/menu_events.cpp:1612 src/menu_events.cpp:1619 src/menu_events.cpp:1626
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Den valgte era er ugyldig"
+msgstr "Ugyldig brugernavn: "
 
 #: src/menu_events.cpp:1617
 msgid "Added to friends list: "
@@ -9383,9 +9679,8 @@ msgid "Removed from friends list: "
 msgstr ""
 
 #: src/menu_events.cpp:1670
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Ukendt scenarie: '"
+msgstr "Ukendt kommando: "
 
 #: src/menu_events.cpp:1771
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9393,19 +9688,19 @@ msgstr "Kunne ikke finde mærkat eller enhed med strengen '$search'."
 
 #: src/menu_events.cpp:1915
 msgid "prompt^Command:"
-msgstr "Kommando:"
+msgstr "prompt^Kommando:"
 
 #: src/mouse_events.cpp:190 src/mouse_events.cpp:300
 msgid "Attacker"
-msgstr ""
+msgstr "Angriber"
 
 #: src/mouse_events.cpp:191 src/mouse_events.cpp:299
 msgid "Defender"
-msgstr ""
+msgstr "Forsvarer"
 
 #: src/mouse_events.cpp:209
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "Forventet kampresultat (L)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
@@ -9421,24 +9716,20 @@ msgid "Slowed"
 msgstr "langsom"
 
 #: src/mouse_events.cpp:319
-#, fuzzy
 msgid "Time of day"
 msgstr "Tid på døgnet"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
 msgstr "lederskab"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
 msgstr "Total skade"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Vælg våben:"
+msgstr "Intet brugbar våben"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
@@ -9469,9 +9760,8 @@ msgid "Choose host to connect to: "
 msgstr "Vælg vært at tilslutte"
 
 #: src/multiplayer.cpp:136
-#, fuzzy
 msgid "Reading from Server..."
-msgstr "Tilslutter til server"
+msgstr "Læser fra server..."
 
 #: src/multiplayer.cpp:145
 msgid ""
@@ -9512,7 +9802,7 @@ msgstr "Fandt ingen multiplayer-sider"
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:357
 #: src/multiplayer_connect.cpp:454
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
 #: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2557
@@ -9531,7 +9821,7 @@ msgstr "Standard"
 
 #: src/multiplayer_connect.cpp:480
 msgid "(Vacant slot)"
-msgstr ""
+msgstr "(ledig plads)"
 
 #: src/multiplayer_connect.cpp:486
 msgid "Anonymous local player"
@@ -9628,11 +9918,11 @@ msgstr "Venter på at spillere kobler op..."
 
 #: src/multiplayer_create.cpp:39 src/multiplayer_lobby.cpp:503
 msgid "Create Game"
-msgstr ""
+msgstr "Lav spil"
 
 #: src/multiplayer_create.cpp:49
 msgid "Time limit"
-msgstr ""
+msgstr "Tidsbegrænsning"
 
 #: src/multiplayer_create.cpp:62
 msgid "Name of game:"
@@ -9645,7 +9935,7 @@ msgstr "Era:"
 
 #: src/multiplayer_create.cpp:65
 msgid "Map to play:"
-msgstr ""
+msgstr "Kort der spilles:"
 
 #: src/multiplayer_create.cpp:66 src/multiplayer_lobby.cpp:386
 #: src/multiplayer_lobby.cpp:387
@@ -9653,9 +9943,8 @@ msgid "Use map settings"
 msgstr "Brug kort-indstillinger"
 
 #: src/multiplayer_create.cpp:67
-#, fuzzy
 msgid "Random start time"
-msgstr "Tilfældigt kort (vinter)"
+msgstr "Tilfældigt starttid"
 
 #: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
@@ -9667,7 +9956,7 @@ msgstr "Iagtagere"
 
 #: src/multiplayer_create.cpp:72
 msgid "OK"
-msgstr "OK"
+msgstr "O.k."
 
 #: src/multiplayer_create.cpp:73
 msgid "Regenerate"
@@ -9767,11 +10056,11 @@ msgstr "Du skal indtaste et navn"
 
 #: src/multiplayer_create.cpp:302
 msgid "Turns: "
-msgstr "Ture: "
+msgstr "Runder: "
 
 #: src/multiplayer_create.cpp:304
 msgid "Unlimited Turns"
-msgstr "Uendeligt antal ture"
+msgstr "Uendeligt antal runder"
 
 #: src/multiplayer_create.cpp:332
 #, fuzzy
@@ -9779,9 +10068,8 @@ msgid "Init. Limit: "
 msgstr "Enhedsliste"
 
 #: src/multiplayer_create.cpp:337
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Ture: "
+msgstr "Rundebonus: "
 
 #: src/multiplayer_create.cpp:341
 #, fuzzy
@@ -9794,9 +10082,8 @@ msgid "Action Bonus: "
 msgstr "Handlinger"
 
 #: src/multiplayer_create.cpp:353
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Landsby-guld: "
+msgstr "Landsbyens guld: "
 
 #: src/multiplayer_create.cpp:361
 msgid "Exp. Mod.: "
@@ -9833,9 +10120,8 @@ msgid "Unknown era"
 msgstr "Ukendt scenarie: '"
 
 #: src/multiplayer_lobby.cpp:354 src/multiplayer_lobby.cpp:370
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Ukendt scenarie: '"
+msgstr "Ukendt scenarie"
 
 #: src/multiplayer_lobby.cpp:366
 #, fuzzy
@@ -9844,11 +10130,11 @@ msgstr "Ukendt scenarie: '"
 
 #: src/multiplayer_lobby.cpp:382
 msgid "Vacant Slot:"
-msgstr ""
+msgstr "Ledig plads:"
 
 #: src/multiplayer_lobby.cpp:382
 msgid "Vacant Slots:"
-msgstr ""
+msgstr "Ledige pladser:"
 
 #: src/multiplayer_lobby.cpp:407
 msgid "none"
@@ -9877,7 +10163,6 @@ msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
 #: src/multiplayer_ui.cpp:130
-#, fuzzy
 msgid "Invalid Color"
 msgstr "Ugyldig farve"
 
@@ -9887,7 +10172,7 @@ msgstr "Leder: "
 
 #: src/multiplayer_wait.cpp:124
 msgid "Recruits: "
-msgstr "Rekruteringer: "
+msgstr "Rekrutteringer: "
 
 #: src/multiplayer_wait.cpp:164
 msgid "Waiting for game to start..."
@@ -9907,7 +10192,7 @@ msgstr ""
 
 #: src/network.cpp:127
 msgid "Client disconnected"
-msgstr ""
+msgstr "Klient afbrudt"
 
 #: src/network.cpp:482
 msgid "Could not add socket to socket set"
@@ -9924,11 +10209,11 @@ msgstr "Filen du forsøgte at indlæse er korrupt"
 
 #: src/play_controller.cpp:723
 msgid "Back to start"
-msgstr ""
+msgstr "Tilbage til start"
 
 #: src/play_controller.cpp:725
 msgid "Back to turn "
-msgstr ""
+msgstr "Tilbage til runde "
 
 #: src/playcampaign.cpp:262
 msgid "Defeat"
@@ -9957,19 +10242,16 @@ msgid "The replay could not be saved"
 msgstr "Spillet kunne ikke gemmes"
 
 #: src/playcampaign.cpp:333
-#, fuzzy
 msgid "Receiving data..."
-msgstr "Henter spil-data..."
+msgstr "Henter data..."
 
 #: src/playcampaign.cpp:335
-#, fuzzy
 msgid "Downloading next scenario..."
-msgstr "Henter næste level..."
+msgstr "Henter næste scenarie..."
 
 #: src/playcampaign.cpp:420
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Vil du gemme spillet?"
+msgstr "Ønsker du at gemme dit spil? (Sletter også de automatisk gemte filer)"
 
 #: src/playcampaign.cpp:447
 msgid "Unknown scenario: '"
@@ -9983,9 +10265,8 @@ msgstr ""
 "Spillene er ude af trit og vil blive afsluttet. Vil du gemme en fejl-log?"
 
 #: src/playsingle_controller.cpp:219
-#, fuzzy
 msgid "Game Over"
-msgstr "Game Over"
+msgstr "Spil forbi"
 
 #: src/playsingle_controller.cpp:220
 msgid "The game is over."
@@ -9997,15 +10278,15 @@ msgstr "Resterende guld: "
 
 #: src/playsingle_controller.cpp:317
 msgid "Early finish bonus: "
-msgstr ""
+msgstr "Bonus for hurtig afslutning: "
 
 #: src/playsingle_controller.cpp:319
 msgid "per turn"
-msgstr "pr. tur"
+msgstr "per runde"
 
 #: src/playsingle_controller.cpp:320
 msgid "Turns finished early: "
-msgstr ""
+msgstr "Runder afsluttet tidligt: "
 
 #: src/playsingle_controller.cpp:322
 msgid "Bonus: "
@@ -10018,7 +10299,7 @@ msgstr "Guld: "
 #: src/playsingle_controller.cpp:329
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr "80% af guldet overføres til næste scenarie"
+msgstr "80 % af guldet overføres til næste scenarie"
 
 #: src/playsingle_controller.cpp:330
 msgid "Retained Gold: "
@@ -10041,6 +10322,8 @@ msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"En netværksfejl er opstået og spillet kan ikke fortsættes. Ønsker du at "
+"gemme spillet?"
 
 #: src/playsingle_controller.cpp:477
 msgid "It is now your turn"
@@ -10130,9 +10413,8 @@ msgid "weapon range: "
 msgstr ""
 
 #: src/reports.cpp:267
-#, fuzzy
 msgid "damage type: "
-msgstr "skade"
+msgstr "skade type: "
 
 #: src/reports.cpp:329
 msgid "Lawful units: "
@@ -10200,7 +10482,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:293
 msgid " included from "
-msgstr ""
+msgstr " inkluderet fra "
 
 #: src/serialization/parser.cpp:314
 msgid "$error at $pos"
