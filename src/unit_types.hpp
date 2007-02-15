@@ -253,20 +253,18 @@ private:
 
 	const unit_race* race_;
 
-	fixed_t alpha_;
-
 	std::vector<std::string> abilities_;
 	std::vector<std::string> ability_tooltips_;
 
 	mutable std::string id_;
 
+	fixed_t alpha_;
+	int experience_needed_;
+	ALIGNMENT alignment_;
 	bool zoc_;
 
     std::vector<std::string> advances_to_;
-    int experience_needed_;
 
-
-	ALIGNMENT alignment_;
 
 	unit_movement_type movementType_;
 
