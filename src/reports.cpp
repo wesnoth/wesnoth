@@ -510,8 +510,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				str << "0";
 			}
 			str << sec;
-		}
-		break;
+			break;
+		} //intentional fall-through to REPORT_CLOCK if the
+		  //time countdown isn't valid. If there is no turn time
+		  //limit, then we display the clock instead.
 		}
 	case REPORT_CLOCK: {
 		time_t t = time(NULL);
