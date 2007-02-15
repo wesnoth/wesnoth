@@ -313,6 +313,8 @@ surface locator::load_image_sub_file() const
 	}
 
 	if(val_.modifications_.size()){
+		bool xflip = false;
+		bool yflip = false;
 		std::map<Uint32, Uint32> recolor_map;
 		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
 		for(std::vector<std::string>::const_iterator i=modlist.begin();
@@ -346,7 +348,7 @@ surface locator::load_image_sub_file() const
 						field= f2 + ">" + f1;
 					}						
 				}
-				if("RC" == function){
+				if("RC" == function){ //re-color function
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
 						std::map<std::string, color_range>::const_iterator nc = game_config::team_rgb_range.find(recolor[1]);
@@ -360,9 +362,23 @@ surface locator::load_image_sub_file() const
 						}	 
 					}
 				}									
+				if("FL" == function){ //flip layer
+					if(field.empty() || field.find("horiz") != std::string::npos) {
+						xflip = !xflip;
+					}
+					if(field.find("vert") != std::string::npos) {
+						yflip = !yflip;
+					}
+				}									
 			} 			
 		}
 		surf = recolor_image(surf,recolor_map);
+		if(xflip) {
+			surf = flip_surface(surf);
+		}
+		if(yflip) {
+			surf = flop_surface(surf);
+		}
 	}
 	return surf;
 }
