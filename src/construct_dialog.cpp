@@ -278,7 +278,7 @@ int dialog::show(const dimension_measurements &dim)
 	return result();
 }
 
-void dialog::draw_contents(const dimension_measurements &dim)
+void dialog::draw_contents(const dimension_measurements & /*dim*/)
 {
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
