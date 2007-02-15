@@ -284,55 +284,39 @@ class unit
 
 		std::vector<std::string> advances_to_;
 		std::string id_;
-		const unit_race* race_;
 		std::string name_;
 		std::string description_;
 		std::string custom_unit_description_;
 		std::string underlying_description_;
 		t_string language_name_;
+		const unit_race* race_;
 		std::string undead_variation_;
 		std::string variation_;
+		std::string flag_rgb_;
 
 		int hit_points_;
 		int max_hit_points_, max_hit_points_b_;
 		int experience_;
 		int max_experience_, max_experience_b_;
 		int level_;
-		unit_type::ALIGNMENT alignment_;
-		std::string flag_rgb_;
-
-		bool unrenamable_;
-		unsigned int side_;
-		unit_race::GENDER gender_;
-
 		fixed_t alpha_;
-
-		std::vector<std::string> recruits_;
-
+		unsigned int side_;
 		int movement_;
 		int max_movement_, max_movement_b_;
-		mutable std::map<gamemap::TERRAIN,int> movement_costs_; // movement cost cache
-		bool hold_position_;
-		bool end_turn_;
-		bool resting_;
 		int attacks_left_;
 		int max_attacks_;
 
+		mutable std::map<gamemap::TERRAIN,int> movement_costs_; // movement cost cache
+		std::vector<std::string> recruits_;
 		std::map<std::string,std::string> states_;
 		config variables_;
-		int emit_zoc_;
-		STATE state_;
 
 		std::vector<std::string> overlays_;
 
 		std::string role_;
 		std::vector<attack_type> attacks_, attacks_b_;
-		gamemap::location::DIRECTION facing_;
 
 		t_string traits_description_;
-		int unit_value_;
-		gamemap::location goto_, interrupted_move_;
-		bool flying_;
 
 //		std::map<gamemap::TERRAIN,int> movement_costs_, movement_costs_b_;
 //		std::map<gamemap::TERRAIN,int> defense_mods_, defense_mods_b_;
@@ -353,25 +337,39 @@ class unit
 		std::vector<leading_animation> leading_animations_;
 
 		std::vector<healing_animation> healing_animations_;
+
+		gamemap::location goto_, interrupted_move_;
+
 		unit_animation *anim_;
-		int frame_begin_time;
 		double offset_;
+		int emit_zoc_;
+		int frame_begin_time;
 		int unit_halo_;
 		int unit_anim_halo_;
+		int unit_value_;
 		bool getsHit_;
 		bool refreshing_; // avoid infinite recursion
 		bool hidden_;
 		bool draw_bars_;
+		bool unrenamable_;
+		bool flying_;
+		bool hold_position_;
+		bool end_turn_;
+		bool resting_;
+		gamemap::location::DIRECTION facing_;
+		STATE state_;
+		unit_race::GENDER gender_;
+		unit_type::ALIGNMENT alignment_;
 
 		config modifications_;
 
-		friend void attack_type::set_specials_context(const gamemap::location& loc,const unit& un) const;
 		const game_data* gamedata_;
 		const unit_map* units_;
 		const gamemap* map_;
 		const gamestatus* gamestatus_;
 		const std::vector<team>* teams_;
 
+		friend void attack_type::set_specials_context(const gamemap::location& loc,const unit& un) const;
 };
 
 //object which temporarily resets a unit's movement
