@@ -101,11 +101,17 @@ void replay_controller::init_gui(){
 
 	gui_->scroll_to_leader(units_, player_number_);
 	update_locker lock_display((*gui_).video(),false);
+	init_shroudfog_controls(teams_.begin());
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		t->set_fog(false);
-		t->set_shroud(false);
 		t->reset_objectives_changed();
 	}
+}
+
+void replay_controller::init_shroudfog_controls(const std::vector<team>::iterator t){
+	gui::button* b = gui_->find_button("check-fog");
+	if (b != NULL) { b->set_check(t->uses_fog()); }
+	b = gui_->find_button("check-shroud");
+	if (b != NULL) { b->set_check(t->uses_shroud()); }
 }
 
 void replay_controller::init_replay_display(){
@@ -150,6 +156,10 @@ const bool replay_controller::is_loading_game(){
 }
 
 void replay_controller::reset_replay(){
+	gui::button* b = gui_->find_button("button-playreplay");
+	if (b != NULL) { b->release(); }
+	b = gui_->find_button("button-stopreplay");
+	if (b != NULL) { b->release(); }
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;
@@ -164,20 +174,27 @@ void replay_controller::reset_replay(){
 		events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_, 
 								units_,teams_, gamestate_,status_,gameinfo_);
 	}
+	init_shroudfog_controls(teams_.begin());
 	fire_prestart(true);
 	fire_start(!loading_game_);
 	(*gui_).invalidate_all();
 	(*gui_).draw();
+	b = gui_->find_button("button-resetreplay");
+	if (b != NULL) { b->release(); }
 }
 
 void replay_controller::stop_replay(){
 	is_playing_ = false;
+	gui::button* b = gui_->find_button("button-playreplay");
+	if (b != NULL) { b->release(); }
 }
 
 void replay_controller::replay_next_turn(){
 	is_playing_ = true;
 	play_turn();
 	is_playing_ = false;
+	gui::button* b = gui_->find_button("button-nextturn");
+	if (b != NULL) { b->release(); }
 }
 
 void replay_controller::replay_next_side(){
@@ -189,19 +206,23 @@ void replay_controller::replay_next_side(){
 		current_turn_++;
 	}
 	is_playing_ = false;
+	gui::button* b = gui_->find_button("button-nextside");
+	if (b != NULL) { b->release(); }
 }
 
 void replay_controller::replay_switch_fog(){
+	gui::button* b = gui_->find_button("check-fog");
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		t->set_fog(!t->uses_fog());
+		t->set_fog(b->checked());
 	}
 	update_teams();
 	update_gui();
 }
 
 void replay_controller::replay_switch_shroud(){
+	gui::button* b = gui_->find_button("check-shroud");
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		t->set_shroud(!t->uses_shroud());
+		t->set_shroud(b->checked());
 	}
 	update_teams();
 	update_gui();
@@ -213,6 +234,8 @@ void replay_controller::replay_skip_animation(){
 }
 
 void replay_controller::play_replay(){
+	gui::button* b = gui_->find_button("button-stopreplay");
+	if (b != NULL) { b->release(); }
 	if (recorder.at_end()){
 		return;
 	}
@@ -308,7 +331,7 @@ void replay_controller::update_teams(){
 		recalculate_fog(map_, status_, gameinfo_, units_, teams_, next_team - 1);
 	}
 	gui_->set_playing_team(next_team - 1);
-	(*gui_).scroll_to_leader(units_, next_team);
+	//(*gui_).scroll_to_leader(units_, next_team);
 }
 
 void replay_controller::update_gui(){

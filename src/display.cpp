@@ -2368,6 +2368,14 @@ theme& display::get_theme()
 	return theme_;
 }
 
+gui::button* display::find_button(const std::string& id){
+	gui::button* res = NULL;
+	for (std::vector<gui::button>::iterator b = buttons_.begin(); b != buttons_.end(); ++b){
+		if (b->id() == id) { res = b; }
+	}
+	return res;
+}
+
 const theme::menu* display::menu_pressed()
 {
 
@@ -2411,6 +2419,7 @@ void display::create_buttons()
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
 		gui::button b(screen_,i->title(),string_to_button_type(i->type()),i->image());
+		b.set_id(i->get_id());
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
 		if (!i->tooltip().empty()){

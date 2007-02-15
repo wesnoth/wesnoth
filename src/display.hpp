@@ -329,6 +329,7 @@ public:
 	const std::string current_team_name() const;
 			
 	theme& get_theme();
+	gui::button* find_button(const std::string& id);
 
 	const theme::menu* menu_pressed();
 

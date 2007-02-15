@@ -66,6 +66,8 @@ public:
 
 	void set_dirty(bool dirty=true);
 	bool dirty() const;
+	const std::string& id() const;
+	void set_id(const std::string& id);
 
 	void set_help_string(const std::string& str);
 
@@ -118,6 +120,7 @@ private:
 	std::string help_text_;
 	int help_string_;
 	ALIGN align_; //limited support, use position
+	std::string id_;
 
 	friend class scrollpane;
 	friend class dialog;
