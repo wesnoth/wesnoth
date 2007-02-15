@@ -815,6 +815,8 @@ void display::draw(bool update,bool force)
 	//log_scope("Drawing");
 	invalidate_animations();
 
+	process_reachmap_changes();
+
 	if(!panelsDrawn_) {
 		surface const screen(screen_.getSurface());
 
@@ -1854,14 +1856,58 @@ void display::highlight_another_reach(const paths &paths_list)
 	// Fold endpoints of routes into reachability map.
 	for (r = paths_list.routes.begin(); r != paths_list.routes.end(); ++r) {
 		reach_map_[r->first]++;
-		invalidate(r->first);
 	}
+	reach_map_changed_ = true;
 }
 
 void display::unhighlight_reach()
 {
 	reach_map_ = reach_map();
-	invalidate_all();
+	reach_map_changed_ = true;
+}
+
+void display::process_reachmap_changes()
+{
+	if (!reach_map_changed_) return;
+	if (reach_map_.empty() != reach_map_old_.empty()) {
+		// invalidate everything except the non-darkened tiles
+		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
+		gamemap::location topleft;
+		gamemap::location bottomright;
+		get_visible_hex_bounds(topleft, bottomright);
+		for(int x = topleft.x; x <= bottomright.x; ++x) {
+			for(int y = topleft.y; y <= bottomright.y; ++y) {
+				gamemap::location loc(x, y);
+				reach_map::iterator reach = full.find(loc);
+				if (reach == full.end()) {
+					// location needs to be darkened or brightened
+					invalidate(loc);
+				} else if (reach->second != 1) {
+					// number needs to be displayed or cleared
+					invalidate(loc);
+				}
+			}
+		}
+	} else if (!reach_map_.empty()) {
+		// invalidate only changes
+		reach_map::iterator reach, reach_old;
+		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
+			reach_old = reach_map_old_.find(reach->first);
+			if (reach_old == reach_map_old_.end()) {
+				invalidate(reach->first);
+			} else {
+				if (reach_old->second != reach->second) {
+					invalidate(reach->first);
+				}
+				reach_map_old_.erase(reach_old);
+			}
+		}
+		for (reach_old = reach_map_old_.begin(); reach_old != reach_map_old_.end(); ++reach_old) {
+			invalidate(reach_old->first);
+		}
+	}
+	reach_map_old_ = reach_map_;
+	reach_map_changed_ = false;
 }
 
 void display::invalidate_route()

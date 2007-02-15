@@ -152,7 +152,7 @@ public:
 
 	//given x,y co-ordinates of a pixel on the map, will return the
 	//location of the hex that this pixel corresponds to. Returns an
-	//invalid location is the mouse isn't over any valid location.
+	//invalid location if the mouse isn't over any valid location.
 	gamemap::location pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex=NULL, gamemap::location::DIRECTION* second_nearest_hex=NULL);
 
 	//given x,y co-ordinates of the mouse, will return the location of the
@@ -505,6 +505,9 @@ private:
 	//tiles lit for showing where unit(s) can reach
 	typedef std::map<gamemap::location,unsigned int> reach_map;
 	reach_map reach_map_;
+	reach_map reach_map_old_;
+	bool reach_map_changed_;
+	void process_reachmap_changes();
 
 	//for debug mode
 	static std::map<gamemap::location,fixed_t> debugHighlights_;
