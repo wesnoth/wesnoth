@@ -2283,11 +2283,12 @@ theme& display::get_theme()
 }
 
 gui::button* display::find_button(const std::string& id){
-	gui::button* res = NULL;
-	for (std::vector<gui::button>::iterator b = buttons_.begin(); b != buttons_.end(); ++b){
-		if (b->id() == id) { res = b; }
+	for (size_t i = 0; i < buttons_.size(); ++i) {
+		if(buttons_[i].id() == id) {
+			return &buttons_[i];
+		}
 	}
-	return res;
+	return NULL;
 }
 
 const theme::menu* display::menu_pressed()
