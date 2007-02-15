@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-11 14:10+0100\n"
-"PO-Revision-Date: 2007-02-11 09:44+0100\n"
+"PO-Revision-Date: 2007-02-16 00:26+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -7651,7 +7651,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Elvenbezweerster"
 
 #: data/units/Elvish_Enchantress.cfg:19
-#, fuzzy
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "the latter is almost universally incapable of understanding it, let alone "
@@ -7663,7 +7662,9 @@ msgid ""
 msgstr ""
 "De magie van de elven is totaal verschillend dan dat bij mensen, zo veel dat "
 "mensen bijna niet in staat zijn om het te begrijpen, laat staan het "
-"gebruiken. \n"
+"gebruiken. Logischerwijs zijn degenen die meesters hierin zijn even "
+"geheimzinnig; natuurlijk worden ze gerespecteerd door hun volk, maar weinig "
+"kan worden gezegd over hun positie binnen die gemeenschap.\n"
 "\n"
 "Bijzonderheden:"
 
@@ -7933,7 +7934,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Elventovenares"
 
 #: data/units/Elvish_Sorceress.cfg:21
-#, fuzzy
 msgid ""
 "The world of faerie is far more potent than the corporeal world. Simply "
 "bringing some of this world into our own can have violent results. This is "
@@ -7945,9 +7945,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"De sprookjeswereld spreekt meer tot de verbeelding dan de dagelijkse "
+"realiteit. Simpelweg iets van deze wereld in onze eigen zetten kan "
+"gewelddadige resultaten hebben. Dit is goed begrepen door de Elven, hoewel "
+"nauwelijks met slechte bedoelingen gebruikt; het doen is geen gemakkelijke "
+"taak en een verspilling van kracht.\n"
 "\n"
-"\n"
-"\t\n"
+"Degenen die daartoe in staat zijn worden door andere rassen 'tovenaars' "
+"genoemd en zijn zeker in staat er naar te handelen.\n"
 "\n"
 "Bijzonderheden:"
 
@@ -7956,7 +7961,6 @@ msgid "female^Elvish Sylph"
 msgstr "Sidhe"
 
 #: data/units/Elvish_Sylph.cfg:21
-#, fuzzy
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
 "mundane natures. They are possessed of wondrous, and sometimes terrifying "
@@ -7965,7 +7969,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"\n"
+"Zelden gezien, de \n"
 "\n"
 "Bijzonderheden:"
 
@@ -8345,7 +8349,6 @@ msgid "Cavalier"
 msgstr "Kurassier"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
@@ -8442,7 +8445,6 @@ msgid "Fencer"
 msgstr "Schermer"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -8460,6 +8462,11 @@ msgstr ""
 "Schermers worden getraind in de fijne kunst van het zwaardspel. Hun degen is "
 "een licht wapen, doch zij kunnen het hanteren met dodelijke precisie. Met "
 "een dolk in de andere hand slaan ze allerlei aanvallen succesvol af.\n"
+"\n"
+"Met enkel een degen en dolk zijn schermers licht en kunnen zich dus snel "
+"verplaatsen, wat handig is in veel situaties als de tegenstander door de "
+"zware bewapening traag is. Vaak staan ze, letterlijk, om een tegenstander "
+"heen te dansen, die de prijs van zijn bepakking moet bekopen.\n"
 "\n"
 "Bijzonderheden:"
 
@@ -8807,7 +8814,6 @@ msgid "Mage"
 msgstr "Magiër"
 
 #: data/units/Human_Mage.cfg:24
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -8840,15 +8846,13 @@ msgstr ""
 "intellectuele leegte van een leven van handenarbeid wilden ontsnappen.\n"
 "\n"
 "Het is ironisch dat, met alle kennis die ze hebben verzameld en hun "
-"monopolie daarop, de magiërs gezamelijk vermoedelijk de wereld zouden kunnen "
-"regeren, als ze dat ooit zouden proberen. Maar hun begeerte naar geld en "
-"macht is gering en degenen die de wetten van de magie bestuderen met die "
+"monopolie daarop, de magiërs gezamenlijk vermoedelijk de wereld zouden "
+"kunnen regeren, als ze dat ooit zouden proberen. Maar hun begeerte naar geld "
+"en macht is gering en degenen die de wetten van de magie bestuderen met die "
 "doelen hebben vaak niet de benodigde overtuiging.\n"
 "\n"
 "Fysiek broos en onervaren in het gevecht hebben magiërs toch enige, op het "
 "slagveld nuttige, eigenschappen.\n"
-"Bijzonderheden: de aanval op afstand van de magiër is magisch en heeft als "
-"zodanig altijd een hoge raakkans.\n"
 "\n"
 "Bijzonderheden:"
 
@@ -8861,7 +8865,6 @@ msgid "Arch Mage"
 msgstr "Oppermagiër"
 
 #: data/units/Human_Mage_Arch.cfg:21
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -8883,9 +8886,9 @@ msgstr ""
 "een positie als leraar of adviseur van degenen die slim genoeg zijn de "
 "vruchten van hun wijsheid te zoeken. Velen staan in dienst van rijke "
 "patroonheren, waarvan beide partijen profiteren, omdat het de magiër in "
-"staat stelt zijn studie ongestoord uit te voeren. Sommige anderen keren zich "
-"af van de beschaving en brengen hun dagen door als kluizenaars, veelal om "
-"dubieuze studies te verrichten.\n"
+"staat stelt zijn studie ongestoord uit te voeren. Hieruit vloeit de grotere "
+"kennis van de mensheid voort, wetenschap, filosofie en de kunsten die het "
+"leven mooier maken.\n"
 "\n"
 "Hoewel niet geoefend in het gevecht, kunnen Oppermagiërs wanneer nodig de "
 "volle kracht van hun magische kunsten inzetten, wat niet licht opgevat kan "
@@ -9082,7 +9085,6 @@ msgid "Outlaw"
 msgstr "Brigant"
 
 #: data/units/Human_Outlaw.cfg:18
-#, fuzzy
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -9092,8 +9094,11 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
-"Briganten vechten beter 's nachts. Vrouwelijk Briganten zien er goed uit "
-"terwijl ze dit doen."
+"Na enkele jaren dienst gaat voormalige 'voetscouts' in rang omhoog naar "
+"brigant. Bewezen in de strijd worden hen gevaarlijkere taken gegeven en een "
+"groter aandeel in de verliezen. Ondanks dat menig tegenstander lacht om hun "
+"wapenkeuze kennen briganten zijn dodelijke eigenschap. Briganten zijn "
+"overdag niet op hun sterkst, dat maken ze 's nachts echter weer goed."
 
 #: data/units/Human_Outlaw.cfg:114
 msgid "female^Outlaw"
@@ -9180,7 +9185,6 @@ msgid "Poacher"
 msgstr "Stroper"
 
 #: data/units/Human_Outlaw_Poacher.cfg:21
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter, especially "
 "those of archery, are useful in battle.  Turning these skills against their "
@@ -9198,9 +9202,9 @@ msgstr ""
 "eigen rechter spelen. Iedere groep bandieten heeft een paar stropers binnen "
 "hun gelederen, voor zowel hun avondmaal als een helpende hand in het echte "
 "gevecht.\n"
-"\t\n"
-"\tVanwege hun ervaring zijn jagers enorm behendig in de nacht en in het bos "
-"en moeras."
+"\n"
+"Vanwege hun ervaring zijn jagers enorm behendig in de nacht en in het bos en "
+"moeras."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
@@ -9283,6 +9287,13 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"Meesterstropers zijn nuttige bondgenoten voor ieder leger en onmisbaar voor "
+"iedere groep bandieten. Ze kunnen zowel mens als beest opsporen, merken "
+"dingen op die anderen over het hoofd zien en zijn meestal de enigen die "
+"voedsel voor op tafel vinden, of het nu dier of groente mogen zijn.\n"
+"\n"
+"Hun jachtvaardigheden zijn erg nuttig in de strijd en maakt ze "
+"ongebruikelijk breekbaar 's nachts en in het bos en moeras."
 
 #: data/units/Human_Peasant.cfg:3
 msgid "Peasant"
@@ -10077,13 +10088,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Saurianen hebben enigszins de beschikking over wat mensen magie zou noemen, "
+"maar wat riekt naar alle onaangenaamheden van hekserij. Zo weinig als er van "
+"bekend is, zo veel wordt het gevreesd door degenen tegen wie het gebruikt "
+"wordt.\n"
+"\n"
+"Bijzonderheden:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
 msgstr "Saurian Tuimelaar"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven, or human "
 "counterparts.  This is of course a relative term, and they can still become "
@@ -10098,7 +10114,7 @@ msgstr ""
 "behoorlijk krachtig worden, zonder daarvoor op mobiliteit te hoeven "
 "inboeten. Dit is gevaarlijk in de strijd zodra een onbehoedzame tegenstander "
 "zijn troepen ingesloten ziet door deze wezens.\n"
-"\t\n"
+"\n"
 "Bijzonderheden:"
 
 #: data/units/Saurian_Oracle.cfg:3
@@ -10116,6 +10132,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Bepaalde Saurianen zijn koninklijk gekleed gespot en getooid van top tot "
+"teen in angstaanjagende esoterische vormen en merken met verf of als "
+"tatoeage aangebracht. Sommigen vermoeden dat het visionairs zijn, of orakels "
+"in hun gemeenschap. Welke 'sociale' functie ze ook mogen hebben, ze zijn "
+"ontegenzeggelijk krachtig in de vreemde magie die ze beoefenen en er moet "
+"zeker rekening mee gehouden worden, als ze zich tonen.\n"
+"\n"
+"Bijzonderheden:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
@@ -10134,6 +10158,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Saurianen hebben een klein gestel, maar ondanks dat ze wat iel zijn zijn ze "
+"erg vlug. In de strijd staat hun grootte het toe om door linies te breken, "
+"die volgroeide wezen tegen zouden houden, wat ze een lastige tegenstander "
+"maakt.\n"
+"\n"
+"Hun favoriete wapens zijn speren, door hun krachtige achterpoten kunnen ze "
+"daarmee behoorlijke schade aanrichten.\n"
+"\n"
+"Bijzonderheden:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
@@ -10148,6 +10181,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Saurianen staan bekend om hun vreemde vaardigheden, die magisch en "
+"mysterieus genoemd kunnen worden. Het is duidelijk dat enkelen erg vaardig "
+"zijn met een soort medicijn, dat hen een groot voordeel geeft in de strijd.\n"
+"\n"
+"Bijzonderheden:  "
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -11629,7 +11667,7 @@ msgstr "Statistieken"
 
 #: src/menu_events.cpp:236
 msgid "unit list^Traits"
-msgstr ""
+msgstr "Bijzonderheden"
 
 #: src/menu_events.cpp:237 src/unit.cpp:2572
 msgid "Moves"
@@ -12542,11 +12580,10 @@ msgid "stone: "
 msgstr "steen: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "totale verwonding"
-msgstr[1] "totale verwondingen"
+msgstr[0] "verwonding"
+msgstr[1] "verwondingen"
 
 #: src/reports.cpp:256
 msgid "tooltip^attack"
