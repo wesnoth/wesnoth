@@ -171,6 +171,7 @@ wesnoth_editor_SOURCES = \
 	font.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
+	generic_event.cpp \
 	halo.cpp \
 	help.cpp \
 	hotkeys.cpp \
