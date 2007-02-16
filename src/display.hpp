@@ -151,7 +151,7 @@ public:
 
 	//given x,y co-ordinates of a pixel on the map, will return the
 	//location of the hex that this pixel corresponds to. Returns an
-	//invalid location is the mouse isn't over any valid location.
+	//invalid location if the mouse isn't over any valid location.
 	gamemap::location pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex=NULL, gamemap::location::DIRECTION* second_nearest_hex=NULL);
 
 	//given x,y co-ordinates of the mouse, will return the location of the
@@ -396,6 +396,8 @@ private:
 
 	void bounds_check_position();
 
+	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
+
 	// std::vector<surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 	std::vector<surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
@@ -443,6 +445,8 @@ private:
 	bool invalidateAll_;
 	bool invalidateUnit_;
 	bool invalidateGameStatus_;
+
+	void invalidate_locations_in_rect(SDL_Rect r);
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
@@ -500,6 +504,9 @@ private:
 	//tiles lit for showing where unit(s) can reach
 	typedef std::map<gamemap::location,unsigned int> reach_map;
 	reach_map reach_map_;
+	reach_map reach_map_old_;
+	bool reach_map_changed_;
+	void process_reachmap_changes();
 
 	//for debug mode
 	static std::map<gamemap::location,fixed_t> debugHighlights_;
