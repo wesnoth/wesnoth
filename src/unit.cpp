@@ -1771,10 +1771,11 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	surface image(image::get_image(loc,
 				image::UNSCALED,image::ADJUST_COLOUR,
 #ifndef LOW_MEM
-				true));
+				true
 #else
-				state_ == STATE_STANDING?true:false));
+				state_ == STATE_STANDING?true:false
 #endif
+				));
 
 	if(image == NULL) {
 		image = still_image();
