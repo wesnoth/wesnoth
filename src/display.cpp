@@ -513,6 +513,8 @@ void display::scroll(int xmove, int ymove)
 	}
 
 	update_rect(map_area());
+
+	redrawMinimap_ = true;
 }
 
 void display::invalidate_locations_in_rect(SDL_Rect r)
@@ -902,6 +904,7 @@ void display::draw(bool update,bool force)
 				invalidated_.insert(gamemap::location(x,y));
 		invalidateAll_ = false;
 
+		// FIXME: the minimap should have nothing to do with invalidateAll_
 		redrawMinimap_ = true;
 	}
 
