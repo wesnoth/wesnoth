@@ -166,10 +166,6 @@ public:
 	//location if the mouse isn't over the minimap.
 	gamemap::location minimap_location_on(int x, int y);
 
-	// given x,y co-ordinates of the mouse, returns whether the
-	// mouse is over the unit image or not
-	bool unit_image_on(int x, int y);
-
 	//sets the paths that are currently displayed as available for the unit
 	//to move along.  All other paths will be greyed out.
 	void highlight_reach(const paths &paths_list);

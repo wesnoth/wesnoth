@@ -412,14 +412,6 @@ gamemap::location display::minimap_location_on(int x, int y)
 	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
 
-bool display::unit_image_on(int x, int y)
-{
-	const SDL_Rect rect = unit_image_area();
-
-	return (x >= rect.x && y >= rect.y &&
-		x < rect.x + rect.w && y < rect.y + rect.h);
-}
-
 void display::scroll(int xmove, int ymove)
 {
 	const int orig_x = xpos_;
