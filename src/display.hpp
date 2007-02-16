@@ -569,6 +569,4 @@ private:
 	int fps_handle_;
 };
 
-const std::string& get_angle_direction(size_t n);
-
 #endif

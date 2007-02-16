@@ -1692,12 +1692,6 @@ const std::string& get_direction(size_t n)
 
 }
 
-const std::string& get_angle_direction(size_t n)
-{
-	static std::string const dirs[6] = { "-ne", "-e", "-se", "-sw", "-w", "-nw" };
-	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
-}
-
 std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
 {
 	std::vector<std::string> res;
