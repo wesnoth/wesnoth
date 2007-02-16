@@ -900,7 +900,6 @@ void display::draw(bool update,bool force)
 				invalidated_.insert(gamemap::location(x,y));
 		invalidateAll_ = false;
 
-		// FIXME: the minimap should have nothing to do with invalidateAll_
 		redrawMinimap_ = true;
 	}
 
@@ -2110,13 +2109,13 @@ void display::invalidate(const gamemap::location& loc)
 			unit_map::iterator u = units_.find(loc);
 
 			if (u != units_.end()) {
-				std::set<gamemap::location> overlaps = u->second.overlaps(u->first);
+				std::set<gamemap::location> overlaps = u->second.overlaps(*this, u->first);
 				for (std::set<gamemap::location>::iterator i = overlaps.begin(); i != overlaps.end(); i++) {
 					invalidate(*i);
 				}
 			}
 			if (temp_unit_  && temp_unit_loc_ == loc ) {
-				std::set<gamemap::location> overlaps = temp_unit_->overlaps(temp_unit_loc_);
+				std::set<gamemap::location> overlaps = temp_unit_->overlaps(*this, temp_unit_loc_);
 				for (std::set<gamemap::location>::iterator i = overlaps.begin(); i != overlaps.end(); i++) {
 					invalidate(*i);
 				}
@@ -2127,13 +2126,13 @@ void display::invalidate(const gamemap::location& loc)
 			for (unsigned int i = 0; i < 6; i++) {
 				u = units_.find(adjacent[i]);
 				if (u != units_.end()) {
-					std::set<gamemap::location> overlaps = u->second.overlaps(u->first);
+					std::set<gamemap::location> overlaps = u->second.overlaps(*this, u->first);
 					if (overlaps.find(loc) != overlaps.end()) {
 						invalidate(u->first);
 					}
 				}
 				if (temp_unit_  && temp_unit_loc_ == adjacent[i] ) {
-					std::set<gamemap::location> overlaps = temp_unit_->overlaps(temp_unit_loc_);
+					std::set<gamemap::location> overlaps = temp_unit_->overlaps(*this, temp_unit_loc_);
 					if (overlaps.find(loc) != overlaps.end()) {
 						invalidate(temp_unit_loc_);
 					}

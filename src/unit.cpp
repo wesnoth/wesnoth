@@ -1911,13 +1911,17 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	anim_->update_last_draw_time();
 }
 
-std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
+std::set<gamemap::location> unit::overlaps(const display &disp, const gamemap::location &loc) const
 {
 	std::set<gamemap::location> over;
 
 	if (draw_bars_) {
-		over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
-		over.insert(loc.get_direction(gamemap::location::NORTH));
+		const gamemap & map = disp.get_map();
+		if (map.get_terrain_info(map.get_terrain(loc)).unit_height_adjust() != 0) {
+			over.insert(loc.get_direction(gamemap::location::NORTH));
+			over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
+			over.insert(loc.get_direction(gamemap::location::NORTH_EAST));
+		}
 	}
 
 	switch (state_) {
