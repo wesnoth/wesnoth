@@ -17,6 +17,8 @@ class config;
 class gamestatus;
 class unit;
 class unit_map;
+
+#include "generic_event.hpp"
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
@@ -196,6 +198,9 @@ public:
 
 	const gamemap& get_map()const { return map_;}
 
+	//expose the event so that observers can be notified about map scrolling
+	events::generic_event &scroll_event() const { return _scroll_event; }
+
 	// The last action in drawing a tile is adding the overlays
 	// these overlays are drawn in the following order
 	// hex_overlay_ 			if the drawn location is in the map
@@ -226,6 +231,9 @@ private:
 	// void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
 	void draw_enemies_reach(unsigned int num, int xloc, int yloc);
+
+	// event raised when the map is being scrolled
+	mutable events::generic_event _scroll_event;
 
 public:
 	//function to draw a footstep for the given location, on screen at

@@ -76,6 +76,7 @@ namespace {
 display::display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
+	_scroll_event("scrolled"),
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	temp_unit_(NULL),
@@ -508,6 +509,7 @@ void display::scroll(int xmove, int ymove)
 		invalidate_locations_in_rect(r);
 	}
 
+	_scroll_event.notify_observers();
 	update_rect(map_area());
 
 	redrawMinimap_ = true;
@@ -639,7 +641,6 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 
 		draw();
 	}
-
 }
 
 void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
