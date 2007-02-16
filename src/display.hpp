@@ -195,6 +195,24 @@ public:
 	                 int red, int green, int blue);
 
 	const gamemap& get_map()const { return map_;}
+
+	// The last action in drawing a tile is adding the overlays
+	// these overlays are drawn in the following order
+	// hex_overlay_ 			if the drawn location is in the map
+	// selected_hex_overlay_	if the drawn location is selected
+	// mouseover_hex_overlay_	if the drawn location is underneath the mouse
+	//
+	// These functions require a prerendered surface since they are
+	// drawn at the top, they are not influenced by TOD, shroud etc
+	void set_hex_overlay(const gamemap::location& loc, surface image) { hex_overlay_[loc] = image; }
+	void clear_hex_overlay(const gamemap::location& loc);
+	
+	void set_selected_hex_overlay(const surface& image) { selected_hex_overlay_ = image; }
+	void clear_selected_hex_overlay() { selected_hex_overlay_ = NULL; }
+
+	void set_mouseover_hex_overlay(const surface& image) { mouseover_hex_overlay_ = image; }
+	void clear_mouseover_hex_overlay() { mouseover_hex_overlay_ = NULL; }
+	
 private:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
@@ -419,6 +437,10 @@ private:
 	int xpos_, ypos_, zoom_;
 	const gamemap& map_;
 
+	std::map<gamemap::location, surface> hex_overlay_;
+	surface selected_hex_overlay_;
+	surface mouseover_hex_overlay_;
+
 	gamemap::location selectedHex_;
 	gamemap::location mouseoverHex_;
 
@@ -457,7 +479,7 @@ private:
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
 		        int handle) : image(img), halo(halo_img),
-		                           halo_handle(handle) {}
+				halo_handle(handle) {}
 		std::string image;
 		std::string halo;
 		int halo_handle;

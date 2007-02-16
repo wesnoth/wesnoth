@@ -1551,6 +1551,25 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		}
 	}
 
+	// Add the top layer overlay surfaces
+	if(! hex_overlay_.empty()) {
+		std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(loc);
+		if(itor != hex_overlay_.end()) {
+			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+			SDL_BlitSurface(itor->second,NULL,dst,&dstrect);
+		}
+	}
+
+    if(loc == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL) {
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+		SDL_BlitSurface(selected_hex_overlay_,NULL,dst,&dstrect);
+	}
+
+    if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL) {
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+		SDL_BlitSurface(mouseover_hex_overlay_,NULL,dst,&dstrect);
+	}
+
 	update_rect(xpos,ypos,zoom_,zoom_);
 }
 
@@ -2001,6 +2020,16 @@ void display::float_label(const gamemap::location& loc, const std::string& text,
 	const SDL_Color colour = {red,green,blue,255};
 	font::add_floating_label(text,font::SIZE_XLARGE,colour,get_location_x(loc)+zoom_/2,get_location_y(loc),
 	                         0,-2,60,screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);
+}
+
+void display::clear_hex_overlay(const gamemap::location& loc)
+{
+	if(! hex_overlay_.empty()) {
+		std::map<gamemap::location, surface>::iterator itor = hex_overlay_.find(loc);
+		if(itor != hex_overlay_.end()) {
+			hex_overlay_.erase(itor);
+		}
+	}
 }
 
 void display::draw_unit(int x, int y, surface image,
