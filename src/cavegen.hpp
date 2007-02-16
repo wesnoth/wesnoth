@@ -25,7 +25,8 @@ public:
 	cave_map_generator(const config* game_config);
 
 	bool allow_user_config() const { return true; }
-	void user_config(display& disp) { return; }
+	// This is a pure virtual function in the base class so must be here
+	void user_config(display& /* disp*/) { return; }
 
 	std::string name() const { return "cave"; }
 
