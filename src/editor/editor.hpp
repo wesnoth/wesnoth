@@ -245,6 +245,11 @@ private:
 	/// refreshed.
 	void clear_highlighted_hexes_in_gui();
 
+	// Sets the special overlay with the selection of fore and background
+	void set_mouseover_overlay();
+	// Clears the special overlay 
+	void reset_mouseover_overlay() { gui_.clear_mouseover_hex_overlay(); }
+
 	/// Terrain has changed at the specified hex through user drawing
 	/// (not undo/redo or other special things). If the hex was a
 	/// starting position, remove this position. Save additional

@@ -43,6 +43,8 @@ namespace {
 
 namespace map_editor {
 
+Uint8 alpha = 155; // DEBUG
+
 bool confirm_modification_disposal(display& disp) {
 	const int res = gui::show_dialog(disp, NULL, "",
 					 _("Your modifications to the map will be lost. Continue?"),
@@ -270,6 +272,36 @@ void preferences_dialog(display &disp, config &prefs) {
 	scroll_slider.set_min(1);
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(preferences::scroll_speed());
+	
+	// DEBUG
+	std::stringstream alpha_label;
+	alpha_label << "Alpha: 255";
+
+	SDL_Rect alpha_rect = {0,0,0,0};
+	alpha_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
+	                              alpha_label.str(),0,0);
+
+	const int alpha_text_right = xpos + alpha_rect.w + 5;
+
+	const int alpha_pos = ypos + 60;
+
+	alpha_rect.x = alpha_text_right - alpha_rect.w;
+	alpha_rect.y = alpha_pos;
+
+	const int alpha_slider_left = alpha_text_right + 10;
+	const int alpha_slider_right = xpos + width - 5;
+	if(alpha_slider_left >= alpha_slider_right)
+		return;
+
+	SDL_Rect alpha_slider_rect = { alpha_slider_left, alpha_pos, alpha_slider_right - alpha_slider_left, 10  };
+
+	slider_rect.y = alpha_pos; //same pos a slider above
+	gui::slider alpha_slider(disp.video());
+	alpha_slider.set_location(slider_rect);
+	alpha_slider.set_min(0);
+	alpha_slider.set_max(255);
+	alpha_slider.set_value(alpha);
+	// -- END DEBUG
 
 	gui::button fullscreen_button(disp.video(),_("Toggle Full Screen"),
 	                              gui::button::TYPE_CHECK);
@@ -293,6 +325,11 @@ void preferences_dialog(display &disp, config &prefs) {
 								scroll_pos + 80 + 50);
 
 	bool redraw_all = true;
+	
+	//DEBUG
+	SDL_Rect alpha_restore_rect = {alpha_rect.x,alpha_rect.y,alpha_rect.w,alpha_rect.h};
+	surface_restorer alpha_restorer(&disp.video(),alpha_restore_rect);
+	// -- END DEBUG
 
 	for(;;) {
 		if(close_button.pressed()) {
@@ -316,6 +353,7 @@ void preferences_dialog(display &disp, config &prefs) {
 			grid_button.set_dirty();
 			hotkeys_button.set_dirty();
 			scroll_slider.set_dirty();
+			alpha_slider.set_dirty(); //DEBUG
 
 			font::draw_text(&disp.video(),clip_rect,14,font::NORMAL_COLOUR,scroll_label,
 		                scroll_rect.x,scroll_rect.y);
@@ -324,6 +362,19 @@ void preferences_dialog(display &disp, config &prefs) {
 
 			redraw_all = false;
 		}
+
+
+		// DEBUG
+		if(alpha_slider.value_change()) {
+			alpha_restorer.restore();
+
+			std::stringstream label_sstr;
+			label_sstr << "Alpha: " << alpha_slider.value();
+			font::draw_text(&disp.video(),clip_rect,14,font::NORMAL_COLOUR,label_sstr.str(),
+		                alpha_rect.x,alpha_rect.y);
+			update_rect(screen_area());
+		}
+		// -- END DEBUG
 
 		if(grid_button.pressed()) {
 			preferences::set_grid(grid_button.checked());
@@ -349,6 +400,7 @@ void preferences_dialog(display &disp, config &prefs) {
 		events::raise_draw_event();
 
 		preferences::set_scroll_speed(scroll_slider.value());
+		alpha = alpha_slider.value(); // DEBUG
 
 		disp.update_display();
 

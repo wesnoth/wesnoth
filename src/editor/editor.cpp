@@ -898,6 +898,48 @@ void map_editor::clear_highlighted_hexes_in_gui() {
 	highlighted_locs_cleared_ = true;
 }
 
+void map_editor::set_mouseover_overlay()
+{
+	surface image_fg(get_image("terrain/" + map_.get_terrain_info(
+				palette_.selected_fg_terrain()).symbol_image() + 
+				".png",image::UNSCALED));
+	surface image_bg(get_image("terrain/" + map_.get_terrain_info(
+				palette_.selected_bg_terrain()).symbol_image() + 
+				".png",image::UNSCALED));
+
+	// for efficiency the size of the tile is cached. We assume all tiles are 
+	// of the same size. The zoom factor can change so it's not cached. 
+	// NOTE when zooming and not moving the mouse there are glitches.
+	// Since the optimal alpha factor is unknown it has to be calculated
+	// on the fly and caching the surfaces makes no sense yet.
+	static const int size = image_fg->w;
+	static const int half_size = size / 2;
+	static const int quarter_size = size / 4;
+	static const int offset = 2;
+	static const int new_size = half_size - 2;
+	const int zoom = size * gui_.zoom();
+
+	// create a transparant surface of the right size, not sure
+	// what's the best way, but this works (but probably not efficient)
+	surface image = adjust_surface_alpha(image_fg, 0);
+		
+	//blit left side
+	image_fg = scale_surface(image_fg, new_size, new_size);
+   	SDL_Rect rcDestLeft = { offset, quarter_size, 0, 0 };
+   	SDL_BlitSurface ( image_fg, NULL, image, &rcDestLeft );
+			  
+	//blit left side
+	image_bg = scale_surface(image_bg, new_size, new_size);
+   	SDL_Rect rcDestRight = { half_size, quarter_size, 0, 0 };
+   	SDL_BlitSurface ( image_bg, NULL, image, &rcDestRight );
+
+	// add the alpha factor and scale the image
+	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+
+	// set as mouseover
+	gui_.set_mouseover_hex_overlay(image);
+}
+
 bool map_editor::changed_since_save() const {
 	return num_operations_since_save_ != 0;
 }
@@ -982,9 +1024,11 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	// If the left mouse button is down and we beforhand have registred
 	// a mouse down event, draw terrain at the current location.
 	else if (l_button_held_func_ == DRAW_TERRAIN) {
+		reset_mouseover_overlay();
 		draw_on_mouseover_hexes(palette_.selected_fg_terrain());
 	}
 	else if (l_button_held_func_ == MOVE_SELECTION) {
+		reset_mouseover_overlay();
 		const int x_diff = hex.x - selection_move_start_.x;
 		const int y_diff = hex.y - selection_move_start_.y;
 		// No other selections should be active when doing this.
@@ -1330,12 +1374,18 @@ void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex)
 			gui_.add_highlighted_loc(*itv);
 		}
 	}
+	
 	gui_.highlight_hex(mouse_over_hex);
+
+	if(l_button_func_ == DRAW || l_button_func_ == FLOOD_FILL) {
+		set_mouseover_overlay();
+	}
 	selected_hex_ = mouse_over_hex;
 }
 
 void map_editor::left_button_func_changed(const LEFT_BUTTON_FUNC func) {
 	if (func != l_button_func_) {
+		reset_mouseover_overlay();
 		l_button_func_ = func;
 		reports::set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
 				hotkey::get_hotkey(get_action_name(func)).get_description());
