@@ -59,7 +59,8 @@ public:
 			const config& cfg, const config& level);
 	~display();
 
-	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue);
+	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
+		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
 
 	//new_turn should be called on every new turn, to update
 	//lighting settings.
@@ -86,11 +87,11 @@ public:
 
 	//function which returns the size of a hex in pixels
 	//(from top tip to bottom tip or left edge to right edge)
-	int hex_size() const;
+	int hex_size() const { return zoom_; }
 
 	//function which returns the width of a pixel, up to where the next hex starts
 	//(i.e. not entirely from tip to tip -- use hex_size() to get the distance from tip to tip)
-	int hex_width() const;
+	int hex_width() const { return (zoom_*3)/4; }
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
 
@@ -121,13 +122,16 @@ public:
 	//the dimensions of the display. x and y are width/height. mapx is the
 	//width of the portion of the display which shows the game area. Between
 	//mapx and x is the sidebar region.
-	int x() const;
-	int mapx() const;
-	int y() const;
+	int x() const { return screen_.getx(); }
+	int mapx() const { return x() - 140; }
+	int y() const { return screen_.gety(); }
 
-	const SDL_Rect& map_area() const;
-	const SDL_Rect& minimap_area() const;
-	const SDL_Rect& unit_image_area() const;
+	const SDL_Rect& map_area() const 
+		{ return theme_.main_map_location(screen_area()); }
+	const SDL_Rect& minimap_area() const 
+		{ return theme_.mini_map_location(screen_area()); }
+	const SDL_Rect& unit_image_area() const 
+		{ return theme_.unit_image_location(screen_area()); }
 
 	SDL_Rect screen_area() const;
 
@@ -183,11 +187,14 @@ public:
 	void set_route(const paths::route* route);
 
 	//functions to get the on-screen positions of hexes.
-	int get_location_x(const gamemap::location& loc) const;
-	int get_location_y(const gamemap::location& loc) const;
+	int get_location_x(const gamemap::location& loc) const
+		{ return map_area().x + loc.x*hex_width() - xpos_; }
+	int get_location_y(const gamemap::location& loc) const
+		{ return map_area().y + loc.y*zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
 
 	//returns the locations of 2 hexes that bind the visible area of the map.
-	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
+	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
+		{ get_rect_hex_bounds(map_area(), topleft, bottomright); }
 
 	//function to remove a footstep from a specific location
 	void remove_footstep(const gamemap::location& loc);
@@ -255,18 +262,18 @@ public:
 	void invalidate(const gamemap::location& loc);
 
 	//function to invalidate the game status displayed on the sidebar.
-	void invalidate_game_status();
-	const gamestatus &get_game_status() {return status_;};
+	void invalidate_game_status() { invalidateGameStatus_ = true; }
+	const gamestatus &get_game_status() { return status_; }
 
 	//function to invalidate that unit status displayed on the sidebar.
-	void invalidate_unit();
+	void invalidate_unit() { invalidateUnit_ = true; }
 
 	//function to invalidate animated terrains which may have changed.
 	void invalidate_animations();
 
 	//function to invalidate controls and panels when changed after
 	//they have been drawn initially. Useful for dynamic theme modification.
-	void invalidate_theme();
+	void invalidate_theme() { panelsDrawn_ = false; }
 
 	//function to schedule the minimap for recalculation. Useful if any
 	//terrain in the map has changed.
@@ -274,7 +281,7 @@ public:
 
 	//function to schedule the minimap to be redrawn. Useful if units
 	//have moved about on the map
-	void redraw_minimap();
+	void redraw_minimap() { redrawMinimap_ = true; }
 
 	//temporarily place a unit on map (moving: can overlap others)
 	void place_temporary_unit(unit &u, const gamemap::location& loc);
@@ -324,7 +331,7 @@ public:
 	//functions to set/get whether 'turbo' mode is on. When turbo mode is on,
 	//everything moves much faster.
 	bool turbo() const;
-	void set_turbo(bool turbo);
+	void set_turbo(const bool turbo) { turbo_ = turbo; }
 
 	double turbo_speed() const;
 	void set_turbo_speed(const double speed);
@@ -335,26 +342,28 @@ public:
 
 	//function which determines whether a grid should be overlayed on the
 	//game board to more clearly show where hexes are.
-	void set_grid(bool grid);
+	void set_grid(const bool grid) { grid_ = grid; }
 
 	//a debug highlight draws a cross on a tile to emphasize something there.
 	//it is used in debug mode, typically to show AI plans.
 	static void debug_highlight(const gamemap::location& loc, fixed_t amount);
-	static void clear_debug_highlights();
+	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	//function which returns true if location (x,y) is covered in shroud.
-	bool shrouded(int x, int y) const;
+	bool shrouded(int x, int y) const
+		{ return team_valid() ? teams_[currentTeam_].shrouded(x,y) : false; }
 
-	bool fogged(int x, int y) const;
+	bool fogged(int x, int y) const
+		{ return team_valid() ? teams_[currentTeam_].fogged(x,y) : false; }
 
 	//the viewing team is the team currently viewing the game. The playing team
 	//is the team whose turn it is
-	size_t viewing_team() const;
-	size_t playing_team() const;
-	bool team_valid() const;
+	size_t viewing_team() const { return currentTeam_; }
+	size_t playing_team() const { return activeTeam_; }
+	bool team_valid() const { return currentTeam_ < teams_.size(); }
 	const std::string current_team_name() const;
 			
-	theme& get_theme();
+	theme& get_theme() { return theme_; }
 	gui::button* find_button(const std::string& id);
 
 	const theme::menu* menu_pressed();
@@ -362,8 +371,8 @@ public:
 	//finds the menu which has a given item in it, and enables or disables it.
 	void enable_menu(const std::string& item, bool enable);
 
-	void add_observer(const std::string& name);
-	void remove_observer(const std::string& name);
+	void add_observer(const std::string& name) { observers_.insert(name); }
+	void remove_observer(const std::string& name) { observers_.erase(name); }
 	const std::set<std::string>& observers() const { return observers_; }
 
 	map_labels& labels() { return map_labels_; }
@@ -373,7 +382,7 @@ public:
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type);
-	void clear_chat_messages();
+	void clear_chat_messages() { prune_chat_messages(true); }
 
 	//function to draw the image of a unit at a certain location
 	//x,y: pixel location on screen to draw the unit
@@ -393,9 +402,10 @@ public:
 			surface ellipse_front=surface(NULL));
 
 	//rebuild the dynamic terrain at the given location.
-	void rebuild_terrain(const gamemap::location &location);
+	void rebuild_terrain(const gamemap::location &loc) 
+		{ builder_.rebuild_terrain(loc); }
 	//rebuild all dynamic terrain.
-	void rebuild_all();
+	void rebuild_all() { builder_.rebuild_all(); }
 
 	//Add a location to highlight. Note that this has nothing to do with
 	//selecting hexes, it is pure highlighting. These hexes will be
