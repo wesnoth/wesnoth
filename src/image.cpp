@@ -393,7 +393,6 @@ surface locator::load_from_disk() const
 		default:
 			return surface(NULL);
 	}
-	wassert(false);
 }
 
 #if 0
