@@ -569,7 +569,6 @@ private:
 	int fps_handle_;
 };
 
-bool angle_is_northern(size_t n);
 const std::string& get_angle_direction(size_t n);
 
 #endif

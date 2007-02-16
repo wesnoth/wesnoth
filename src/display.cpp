@@ -1692,12 +1692,6 @@ const std::string& get_direction(size_t n)
 
 }
 
-bool angle_is_northern(size_t n)
-{
-	static bool const results[6] = { true, false, false, false, false, true };
-	return results[n >= sizeof(results)/sizeof(*results) ? 0 : n];
-}
-
 const std::string& get_angle_direction(size_t n)
 {
 	static std::string const dirs[6] = { "-ne", "-e", "-se", "-sw", "-w", "-nw" };
