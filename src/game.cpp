@@ -104,8 +104,8 @@ public:
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
-  const config& game_config(){return game_config_;};
-  const game_data& units_data(){return units_data_;};
+	const config& game_config(){return game_config_;};
+	const game_data& units_data(){return units_data_;};
 
 private:
 	game_controller(const game_controller&);

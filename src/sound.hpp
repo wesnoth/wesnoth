@@ -46,8 +46,21 @@ void play_no_music();
 // Start playing current music.
 void play_music();
 
+// Change parameters of a playing sound, given its id
+void reposition_sound(int id, unsigned int distance);
+
+// Check if there's a sound associated with given id playing
+bool is_sound_playing(int id);
+
+// Stop sound associated with a given id
+void stop_sound(int id);
+
 // Play sound, or random one of comma-separated sounds.
 void play_sound(const std::string& files, int channel = -1);
+
+// Play sound, or random one of comma-separated sounds. Use specified
+// distance and associate it with specified id (of a sound source).
+void play_sound_positioned(const std::string &files, int id, unsigned int distance);
 
 // Play sound, or random one of comma-separated sounds in bell channel
 void play_bell(const std::string& files);

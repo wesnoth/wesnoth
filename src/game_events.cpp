@@ -1213,14 +1213,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		y = utils::interpolate_variables_into_string(y, *state_of_game);
 
 		if(!sounds.empty() && !delay.empty() && !chance.empty()) {
-			const std::vector<std::string>& v = utils::split(sounds);
 			const std::vector<std::string>& vx = utils::split(x);
 			const std::vector<std::string>& vy = utils::split(y);
 
 			if(play_fogged.empty())
-				soundsources->add(id, v, lexical_cast<int>(delay), lexical_cast<int>(chance));
+				soundsources->add(id, sounds, lexical_cast<int>(delay), lexical_cast<int>(chance));
 			else
-				soundsources->add(id, v, lexical_cast<int>(delay), 
+				soundsources->add(id, sounds, lexical_cast<int>(delay), 
 						lexical_cast<int>(chance), utils::string_bool(play_fogged));
 
 			for(unsigned int i = 0; i < minimum(vx.size(), vy.size()); ++i) {

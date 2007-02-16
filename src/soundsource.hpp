@@ -18,24 +18,33 @@
 #include <string>
 #include <vector>
 
+#include "generic_event.hpp"
 #include "map.hpp"
 
 
 namespace soundsource {
 
-class manager {
+class manager : public events::observer {
 	/*
 	 * Sound source is an object on a map (a location) which has one or more
 	 * sounds effects associated with it, which are played randomly and with
 	 * appropriate delays, when sound emiting object is visible on screen.
 	 */
-	class soundsource {
+	class positional_source {
 		unsigned int _last_played;
 		unsigned int _min_delay;
 		unsigned int _chance;
+		unsigned int _id;
 		bool _play_fogged;
-		std::vector<std::string> _files;
+		bool _visible;
+		std::string _files;
 		std::list<gamemap::location> _locations;
+
+		/*
+		 * Last assigned id; this can, of course, overflow, but I'd never expect to
+		 * see 4 billions sound sources being created...
+		 */
+		static unsigned int last_id;
 
 	public:
 		// min_delay is a minimum time in seconds, which must pass before
@@ -43,27 +52,34 @@ class manager {
 		//
 		// chance is a chance ;-) (in %) that the sound source will emit
 		// sound every second
-		soundsource(const std::vector<std::string> &files, int min_delay, int chance, bool play_fogged = false);
+		positional_source(const std::string &files, int min_delay, int chance, bool play_fogged = false);
 
 		void update(unsigned int time, const display &disp);
+		void update_positions(unsigned int time, const display &disp);
 
 		void add_location(const gamemap::location &loc);
 		void remove_location(const gamemap::location &loc);
 		void replace_location(const gamemap::location &oldloc, const gamemap::location &newloc);
 	};
 
-	typedef std::map<std::string, soundsource *> soundsource_map;
-	typedef soundsource_map::iterator soundsource_map_iterator;
+	typedef std::map<std::string, positional_source *> positional_source_map;
+	typedef positional_source_map::iterator positional_source_iterator;
 
-	soundsource_map _sources;
+	positional_source_map _sources;
 	const display &_disp;
+	
+	// checks which sound sources are visible
+	void update_positions();
 
 public:
 	manager(const display &disp);
 	~manager();
 
+	// event interface
+	void handle_generic_event(const std::string &event_name);
+
 	// add or replace a soundsource
-	void add(const std::string &name, const std::vector<std::string> &files, int min_delay, int chance, bool play_fogged = false);
+	void add(const std::string &name, const std::string &files, int min_delay, int chance, bool play_fogged = false);
 	void remove(const std::string &name);
 	void update();
 

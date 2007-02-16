@@ -19,6 +19,7 @@
 #include "preferences.hpp"
 #include "random.hpp"
 #include "sound.hpp"
+#include "thread.hpp"
 #include "wassert.hpp"
 #include "wesconfig.h"
 
@@ -32,8 +33,17 @@
 #define ERR_AUDIO LOG_STREAM(err, audio)
 
 namespace {
+
 bool mix_ok = false;
 unsigned music_start_time = 0;
+unsigned bell_volume;
+const size_t n_of_channels = 16;	// number of allocated channels
+const size_t source_channels = n_of_channels - 6;	// number of channels reserved for sound sources
+
+enum channel_groups {
+	SOUND_SOURCES = 0,
+	OTHER
+};
 
 // Max number of sound chunks that we want to cache
 // Keep this above number of available channels to avoid busy-looping
@@ -46,8 +56,16 @@ unsigned max_cached_chunks = 256;
 std::map<std::string,Mix_Chunk*> sound_cache;
 std::map<std::string,Mix_Music*> music_cache;
 
-// Channel-chunk mapping let us know, if can safely free a given chunk
+// Channel-chunk mapping lets us know, if we can safely free a given chunk
 std::vector<Mix_Chunk*> channel_chunks;
+
+// Channel-id mapping for use with sound sources (to check if given source 
+// is playing on a channel for fading/panning)
+std::vector<int> channel_ids;
+
+// Mutex syncing access to channel_chunks and channel_ids vectors
+threading::mutex channel_mutex;
+
 
 struct music_track
 {
@@ -68,6 +86,7 @@ music_track::music_track(const std::string &tname)
 	: name(tname), ms_before(0), ms_after(0), once(false)
 {
 }
+
 music_track::music_track(const std::string &tname,
 						 const std::string &ms_before_str,
 						 const std::string &ms_after_str)
@@ -204,17 +223,19 @@ std::string pick_one(const std::string &files)
 	return names[choice];
 }
 
-// Removes channel-chunk mapping
+// Removes channel-chunk and channel-id mapping
 void channel_finished_hook(int channel)
 {
+	threading::lock l(channel_mutex);
 	channel_chunks[channel] = 0;
+	channel_ids[channel] = -1;
 }
 
 } // end of anonymous namespace
 
 
 namespace sound {
-
+	
 manager::manager()
 {
 }
@@ -225,8 +246,6 @@ manager::~manager()
 }
 
 bool init_sound() {
-
-	const size_t n_of_channels = 16;
 
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
@@ -241,7 +260,13 @@ bool init_sound() {
 
 		mix_ok = true;
 		Mix_AllocateChannels(n_of_channels);
+		Mix_ReserveChannels(source_channels);
+
 		channel_chunks.resize(n_of_channels, 0);
+		channel_ids.resize(source_channels, -1);
+
+		Mix_GroupChannels(1, source_channels, SOUND_SOURCES);
+
 		set_sound_volume(preferences::sound_volume());
 		set_music_volume(preferences::music_volume());
 		set_bell_volume(preferences::bell_volume());
@@ -309,7 +334,7 @@ void stop_music() {
 void stop_sound() {
 	if(mix_ok) {
 		{
-			for (int i = 0; i < 15; i++)
+			for (unsigned i = 0; i < n_of_channels; i++)
 				Mix_HaltChannel(i);
 		}
 
@@ -476,6 +501,59 @@ void write_music_play_list(config& snapshot)
 	}
 }
 
+void reposition_sound(int id, unsigned int distance)
+{
+	threading::lock l(channel_mutex);
+	std::vector<int>::iterator it = std::find(channel_ids.begin(), channel_ids.end(), id);
+
+	while(it != channel_ids.end()) {
+		const int ch = it - channel_ids.begin();
+
+		if(distance >= 255) {
+			Mix_FadeOutChannel(ch, 100);
+			channel_ids[ch] = -1;
+		}
+		else
+			Mix_SetDistance(ch, distance);
+
+		it = std::find(++it, channel_ids.end(), id);
+	}
+}
+
+bool is_sound_playing(int id)
+{
+	threading::lock l(channel_mutex);
+	return std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
+}
+
+void stop_sound(int id)
+{
+	threading::lock l(channel_mutex);
+	std::vector<int>::iterator i = std::find(channel_ids.begin(), channel_ids.end(), id);
+	if(i != channel_ids.end())
+		Mix_FadeOutChannel(i - channel_ids.begin(), 100);
+}
+
+void play_sound_positioned(const std::string &files, int id, unsigned int distance)
+{
+	if(distance >= 255)	// guarantee silence, which SDL_Mixer doesn't
+		return;
+
+	threading::lock l(channel_mutex);
+
+	// find a free channel in the reserved group
+	int channel = Mix_GroupAvailable(SOUND_SOURCES);
+
+	if(channel == -1) {
+		LOG_AUDIO << "All channels dedicated to sound sources are busy, skipping.\n";
+		return;
+	}
+
+	channel_ids[channel] = id;
+	Mix_SetDistance(channel, distance);
+	play_sound(files, channel);
+}
+
 void play_sound(const std::string& files, int channel)
 {
 	if(files.empty()) return;
@@ -488,6 +566,8 @@ void play_sound(const std::string& files, int channel)
 			std::map<std::string,Mix_Chunk*>::iterator i;
 
 			while(1) {
+				threading::lock l(channel_mutex);
+
 				// pick a random chunk that we have cached
 				unsigned chunk = rand() % sound_cache.size();
 				i = sound_cache.begin();
@@ -508,6 +588,8 @@ void play_sound(const std::string& files, int channel)
 				break;
 			}
 		}
+
+		threading::lock l(channel_mutex);
 
 		// the insertion will fail if there is already an element in the cache
 		std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
@@ -537,7 +619,7 @@ void play_sound(const std::string& files, int channel)
 		}
 
 		//play on the first available channel
-		//FIXME: in worst case it can play on bell channel(15), nothing happend
+		//FIXME: in worst case it can play on bell channel(0), nothing happend
 		// only sound can have another volume than others sounds
 		const int res = Mix_PlayChannel(channel, cache, 0);
 		channel_chunks[res] = cache;
@@ -555,7 +637,7 @@ void play_bell(const std::string& files)
 	if(files.empty()) return;
 
 	if(preferences::turn_bell() && mix_ok)
-		play_sound(files, 15);
+		play_sound(files, 0);
 }
 
 void set_music_volume(int vol)
@@ -574,7 +656,7 @@ void set_sound_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 
 		// Bell has separate channel which we can't set up from this
-		for (int i = 0; i < 15; i++){
+		for (unsigned i = 1; i < n_of_channels; i++){
 			Mix_Volume(i, vol);
 		}
 	}
@@ -585,7 +667,8 @@ void set_bell_volume(int vol)
 	if(mix_ok && vol >= 0) {
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
-		Mix_Volume(15, vol);
+
+		Mix_Volume(0, vol);
 	}
 }
 
