@@ -5,17 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-01-28 15:50+0100\n"
-"PO-Revision-Date: 2006-06-15 23:53+0100\n"
-"Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2007-02-16 23:41+0100\n"
+"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
+"Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -517,22 +519,20 @@ msgid "Chat Timestamping"
 msgstr "Znaczniki czasowe wiadomości"
 
 #: src/preferences_display.cpp:247
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Zaawansowane"
+msgstr "Tryb zaawansowany"
 
 #: src/preferences_display.cpp:248
 msgid "Normal Mode"
-msgstr ""
+msgstr "Tryb normalny"
 
 #: src/preferences_display.cpp:251
-#, fuzzy
 msgid "Custom"
-msgstr "Wytnij"
+msgstr "Niestandardowe"
 
 #: src/preferences_display.cpp:252
 msgid "Apply"
-msgstr ""
+msgstr "Zastosuj"
 
 #: src/preferences_display.cpp:253
 msgid "Music Volume:"
@@ -548,7 +548,7 @@ msgstr "Gamma:"
 
 #: src/preferences_display.cpp:256
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Częstotliwość próbkowania (Hz):"
 
 #: src/preferences_display.cpp:271
 msgid "Sound effects on/off"
@@ -567,22 +567,20 @@ msgid "Change the music volume"
 msgstr "Zmień głośność muzyki"
 
 #: src/preferences_display.cpp:284
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Pozwala wybrać język gry"
+msgstr "Zmień częstotliwość próbkowania"
 
 #: src/preferences_display.cpp:293
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Niestandardowa częstotliwość próbkowania"
 
 #: src/preferences_display.cpp:302 src/preferences_display.cpp:306
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Zmień głośność muzyki"
+msgstr "Zmień rozmiar bufora"
 
 #: src/preferences_display.cpp:304 src/preferences_display.cpp:638
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Rozmiar bufora:"
 
 #: src/preferences_display.cpp:312
 msgid "Change the speed of scrolling around the map"
@@ -788,3 +786,6 @@ msgstr "Kasowanie pliku nie powiodło się."
 
 #~ msgid "Set Player Start Position"
 #~ msgstr "Ustaw pozycję startową gracza"
+
+#~ msgid "User Define"
+#~ msgstr "Niestandardowe"
