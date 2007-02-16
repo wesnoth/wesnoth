@@ -15,6 +15,7 @@
 
 class config;
 class gamestatus;
+class team;
 class unit;
 class unit_map;
 
@@ -26,7 +27,6 @@ class unit_map;
 #include "map_label.hpp"
 #include "pathfind.hpp"
 #include "reports.hpp"
-#include "team.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
