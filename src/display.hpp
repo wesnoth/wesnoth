@@ -402,6 +402,8 @@ private:
 
 	void bounds_check_position();
 
+	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
+
 	// std::vector<surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 	std::vector<surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
@@ -449,6 +451,8 @@ private:
 	bool invalidateAll_;
 	bool invalidateUnit_;
 	bool invalidateGameStatus_;
+
+	void invalidate_locations_in_rect(SDL_Rect r);
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,

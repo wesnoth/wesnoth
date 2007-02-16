@@ -407,16 +407,15 @@ int display::get_location_y(const gamemap::location& loc) const
 	return map_area().y + loc.y*zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0);
 }
 
-void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
+void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const
 {
-	const SDL_Rect& rect = map_area();
 	const int tile_width = hex_width();
 
-	topleft.x  = xpos_ / tile_width;
-	topleft.y  = (ypos_ - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
+	topleft.x  = (xpos_ + rect.x) / tile_width;
+	topleft.y  = (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
 
-	bottomright.x  = (xpos_ + rect.w) / tile_width;
-	bottomright.y  = ((ypos_ + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
+	bottomright.x  = (xpos_ + rect.x + rect.w) / tile_width;
+	bottomright.y  = ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
 
 	if(topleft.x > -1) {
 		topleft.x--;
@@ -430,6 +429,11 @@ void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::locati
 	if(bottomright.y < map_.y()) {
 		bottomright.y++;
 	}
+}
+
+void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
+{
+	get_rect_hex_bounds(map_area(), topleft, bottomright);
 }
 
 gamemap::location display::minimap_location_on(int x, int y)
@@ -462,12 +466,60 @@ void display::scroll(int xmove, int ymove)
 	xpos_ += xmove;
 	ypos_ += ymove;
 	bounds_check_position();
+	const int dx = orig_x - xpos_; // dx = -xmove
+	const int dy = orig_y - ypos_; // dy = -ymove
 
 	//only invalidate if we've actually moved
-	if(orig_x != xpos_ || orig_y != ypos_) {
-		map_labels_.scroll(orig_x - xpos_, orig_y - ypos_);
-		font::scroll_floating_labels(orig_x - xpos_, orig_y - ypos_);
-		invalidate_all();
+	if(dx == 0 && dy == 0)
+		return;
+
+	map_labels_.scroll(dx, dy);
+	font::scroll_floating_labels(dx, dy);
+	
+	surface screen(screen_.getSurface());
+	
+	SDL_Rect dstrect = map_area();
+	dstrect.x += dx;
+	dstrect.y += dy;
+	dstrect = intersect_rects(dstrect, map_area());
+
+	SDL_Rect srcrect = dstrect;
+	srcrect.x -= dx;
+	srcrect.y -= dy;
+	
+	SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+	
+	//invalidate locations in the newly visible rects
+
+	if (dy != 0) {
+		SDL_Rect r = map_area();
+		if (dy < 0) {
+			r.y += r.h-abs(dy);
+		}
+		r.h = abs(dy);
+		invalidate_locations_in_rect(r);
+	}
+	if (dx != 0) {
+		SDL_Rect r = map_area();
+		if (dx < 0) {
+			r.x += r.w-abs(dx);
+		}
+		r.w = abs(dx);
+		invalidate_locations_in_rect(r);
+	}
+
+	update_rect(map_area());
+}
+
+void display::invalidate_locations_in_rect(SDL_Rect r)
+{
+	gamemap::location topleft, bottomright;
+	get_rect_hex_bounds(r, topleft, bottomright);
+	for (int x = topleft.x; x <= bottomright.x; ++x) {
+		for (int y = topleft.y; y <= bottomright.y; ++y) {
+			gamemap::location loc(x, y);
+			invalidate(loc);
+		}
 	}
 }
 
@@ -569,7 +621,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 
 	int num_moves = (abs(xmove) > abs(ymove) ? abs(xmove):abs(ymove))/speed;
 
-	if(scroll_type == WARP || turbo()) {
+	if(scroll_type == WARP || turbo() || num_moves == 0) {
 		num_moves = 1;
 	}
 
@@ -583,12 +635,9 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 			continue;
 		}
 
-	invalidate_all();
 		draw();
 	}
 
-	invalidate_all();
-	draw();
 }
 
 void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
