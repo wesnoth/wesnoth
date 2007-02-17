@@ -228,7 +228,9 @@ void channel_finished_hook(int channel)
 {
 	threading::lock l(channel_mutex);
 	channel_chunks[channel] = 0;
-	channel_ids[channel] = -1;
+
+	if(channel < source_channels)
+		channel_ids[channel] = -1;
 }
 
 } // end of anonymous namespace
