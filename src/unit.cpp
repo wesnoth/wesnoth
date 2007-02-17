@@ -1747,13 +1747,13 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			const int d = disp.hex_size() / 2;
 			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x(anim_->get_current_frame_time())*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y(anim_->get_current_frame_time())*disp.zoom()),
-					current_frame.halo(anim_->get_current_frame_time()));
+					current_frame.halo(anim_->get_current_frame_time()),
+					halo::HREVERSE);
 		} else {
 			const int d = disp.hex_size() / 2;
 			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x(anim_->get_current_frame_time())*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y(anim_->get_current_frame_time())*disp.zoom()),
-					current_frame.halo(anim_->get_current_frame_time()),
-					halo::HREVERSE);
+					current_frame.halo(anim_->get_current_frame_time()));
 		}
 	}
 	image::locator loc;
