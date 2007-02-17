@@ -1861,13 +1861,13 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			const int d = disp.hex_size() / 2;
 			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y*disp.zoom()),
-					current_frame.halo[sub_halo].first);
+					current_frame.halo[sub_halo].first,
+					halo::HREVERSE);
 		} else {
 			const int d = disp.hex_size() / 2;
 			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y*disp.zoom()),
-					current_frame.halo[sub_halo].first,
-					halo::HREVERSE);
+					current_frame.halo[sub_halo].first);
 		}
 	}
 	if(image_name.empty()) {
