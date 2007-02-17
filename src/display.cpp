@@ -1436,7 +1436,6 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 	if(!is_shrouded) {
 		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_FOREGROUND);
-		draw_movement_info(loc,xpos,ypos);
 	}
 
 	if(fogged(loc.x,loc.y) && shrouded(loc.x,loc.y) == false) {
@@ -1481,6 +1480,9 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		} else {
 			draw_enemies_reach(reach->second,xpos,ypos);
 		}
+	}
+	if(!is_shrouded) {
+		draw_movement_info(loc,xpos,ypos);
 	}
 
 	if(grid_) {
