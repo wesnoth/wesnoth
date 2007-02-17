@@ -29,7 +29,9 @@ int calculate_volume(int x, int y, const display &disp)
 	int dx = area.w / 2 - x; dx *= dx;
 	int dy = area.h / 2 - y; dy *= dy;
 
-	return maximum<int>(0, 256.0 * (sqrt(dx + dy) / (sqrt(area.w*area.w + area.h * area.h) / 2)));
+	// An obscure formula to calculate SDL_Mixer's "distance" based on the source's
+	// distance from screen's center
+	return maximum<int>(0, 128 * static_cast<int>(sqrt(dx + dy) / (sqrt(area.w*area.w + area.h * area.h))));
 }
 
 } // end of namespace
@@ -113,7 +115,8 @@ void manager::add_location(const std::string &name, const gamemap::location &loc
 
 manager::positional_source::positional_source(const std::string &files, int min_delay, int chance, bool play_fogged)
 						: _last_played(0), _min_delay(min_delay), _chance(chance), 
-							_play_fogged(play_fogged), _files(files), _id(last_id++)
+							_id(last_id++), _play_fogged(play_fogged), _visible(false),
+							_files(files)
 {
 }
 

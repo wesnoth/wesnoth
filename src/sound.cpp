@@ -589,8 +589,6 @@ void play_sound(const std::string& files, int channel)
 			}
 		}
 
-		threading::lock l(channel_mutex);
-
 		// the insertion will fail if there is already an element in the cache
 		std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
 			it = sound_cache.insert(std::make_pair(file, (Mix_Chunk *)0));
@@ -622,12 +620,14 @@ void play_sound(const std::string& files, int channel)
 		//FIXME: in worst case it can play on bell channel(0), nothing happend
 		// only sound can have another volume than others sounds
 		const int res = Mix_PlayChannel(channel, cache, 0);
-		channel_chunks[res] = cache;
+
+		threading::lock l(channel_mutex);
 		if(res < 0) {
 			channel_chunks[res] = 0;
 			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		}
-
+		else
+			channel_chunks[res] = cache;
 	}
 }
 

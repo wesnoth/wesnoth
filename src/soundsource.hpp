@@ -48,10 +48,11 @@ class manager : public events::observer {
 
 	public:
 		// min_delay is a minimum time in seconds, which must pass before
-		// this sound source can be played again
+		// this sound source can be played again if it remains visible
 		//
 		// chance is a chance ;-) (in %) that the sound source will emit
-		// sound every second
+		// sound every second after the delay has passed or once the source
+		// becomes visible
 		positional_source(const std::string &files, int min_delay, int chance, bool play_fogged = false);
 
 		void update(unsigned int time, const display &disp);
