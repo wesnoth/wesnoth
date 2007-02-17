@@ -82,8 +82,8 @@ Version 1.3-svn:
      * added option to have random time of day in begin of multiplayer game
    * maps:
      * new multiplayer maps: The Manzivan Traps, 4p Hamlets
-     * revised maps: Blitz, Charge, Den of Onis, Hamlets, Sablestone Delta, 
-       Sulla's Ruins, Meteor Lake
+     * revised maps: Blitz, Charge, Den of Onis, Hamlets, Meteor Lake, 
+       Sablestone Delta, Sulla's Ruins
      * made the AI recruit less scouts by setting the village_per_scout parameter
  * Python AI
    * Added various input validations
@@ -103,10 +103,12 @@ Version 1.3-svn:
    * Added a conversion script to convert old maps
  * units:
    * balancing changes:
+     * increased the pierce resistance of the Gladiator line from -10% to 0%
      * increased the HP of the Longbowman from 45 to 51
      * decreased the XP requirement of the Longbowman from 80 to 68
      * increased the HP of the Master Bowman from 58 to 67
      * decreased the HP of the Arch Mage from 57 to 54
+     * removed the Shock Trooper line from random_leader
      * increased the melee attack of the Shyde from 4-2 to 6-2
      * increased the ranged slow attack of the Shyde from 7-2 to 6-3
      * increased the ranged magical attack of the Shyde from 7-3 to 8-3
@@ -130,6 +132,8 @@ Version 1.3-svn:
      * increased the cost of Walking Corpses from 6 to 7 gold
      * increased the HP of the Goblin Rouser from 26 to 31
      * increased the melee attack of the Goblin Rouser from 5-3 to 6-3
+     * increased the moves of the Troll Rocklobber from 4 to 5
+     * decreased the HP of the Troll Rocklobber from 53 to 49
    * adapted WML to use [if] statements to differentiate hit and miss frames
    * new traits
      * healthy (+3HP, +4 rest healing), fearless (ignore unfavorable ToD)
