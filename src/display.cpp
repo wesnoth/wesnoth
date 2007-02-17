@@ -571,6 +571,10 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 		num_moves = 1;
 	}
 
+	// this is needed for initially drawing all tiles before a dialog box 
+	// FIXME: this is bad, for most scrolls a needless performance penalty.
+	invalidate_all();
+
 	for(int i = 0; i != num_moves; ++i) {
 		events::pump();
 
