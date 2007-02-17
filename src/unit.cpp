@@ -2022,13 +2022,16 @@ std::set<gamemap::location> unit::overlaps(const display &disp, const gamemap::l
 {
 	std::set<gamemap::location> over;
 
-	if (draw_bars_) {
-		const gamemap & map = disp.get_map();
-		if (map.get_terrain_info(map.get_terrain(loc)).unit_height_adjust() != 0) {
-			over.insert(loc.get_direction(gamemap::location::NORTH));
-			over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
-			over.insert(loc.get_direction(gamemap::location::NORTH_EAST));
-		}
+	const gamemap & map = disp.get_map();
+	int height_adjust = map.get_terrain_info(map.get_terrain(loc)).unit_height_adjust();
+	if (height_adjust > 0) {
+		over.insert(loc.get_direction(gamemap::location::NORTH));
+		over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
+		over.insert(loc.get_direction(gamemap::location::NORTH_EAST));
+	} else if (height_adjust < 0) {
+		over.insert(loc.get_direction(gamemap::location::SOUTH));
+		over.insert(loc.get_direction(gamemap::location::SOUTH_WEST));
+		over.insert(loc.get_direction(gamemap::location::SOUTH_EAST));
 	}
 
 	switch (state()) {
