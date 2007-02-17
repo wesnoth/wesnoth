@@ -420,7 +420,6 @@ private:
 // see.
 
 /// Dispatch generators to their appropriate functions.
-std::vector<section> generate_sections(const std::string &generator);
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
 std::string generate_topic_text(const std::string &generator);
 std::string generate_about_text();
@@ -811,10 +810,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 				throw parse_error(ss.str());
 			}
 		}
-		const std::vector<section> generated_sections =
-			generate_sections((*section_cfg)["generator"]);
-		std::transform(generated_sections.begin(), generated_sections.end(),
-			       std::back_inserter(sec.sections), create_section());
+
 		bool sort_topics = false;
 		bool sort_generated = true;
 
@@ -887,16 +883,6 @@ section parse_config(const config *cfg)
 		parse_config_internal(cfg, toplevel_cfg, sec);
 	}
 	return sec;
-}
-
-
-std::vector<section> generate_sections(const std::string &generator)
-{
-	std::vector<section> empty_vec;
-	if (generator == "") {
-		return empty_vec;
-	}
-	return empty_vec;
 }
 
 std::vector<topic> generate_topics(const bool sort_generated,const std::string &generator)
