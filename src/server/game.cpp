@@ -597,7 +597,7 @@ bool game::end_turn()
 
 	const size_t nsides = level_.get_children("side").size();
 
-	if((end_turn_%nsides) != 0) {
+	if(nsides == 0 || (end_turn_%nsides) != 0) {
 		return false;
 	}
 
