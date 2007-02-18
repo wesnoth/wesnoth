@@ -15,7 +15,6 @@
 #include "dialogs.hpp"
 #include "config_adapter.hpp"
 #include "gettext.hpp"
-#include "gp2x.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
@@ -664,13 +663,7 @@ void play_controller::play_slice()
 	}
 
 	int mousex, mousey;
-
-#ifdef GP2X
-	gp2x::get_joystick_state(&mousex, &mousey);
-#else
 	SDL_GetMouseState(&mousex,&mousey);
-#endif
-
 	tooltips::process(mousex, mousey);
 
 	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;

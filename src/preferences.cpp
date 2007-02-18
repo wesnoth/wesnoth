@@ -223,8 +223,6 @@ size_t sound_buffer_size()
 	//but this seems to cause crashes on other systems...
 	#ifdef WIN32
 		const size_t buf_size = 4096;
-	#elif GP2X
-		const size_t buf_size = 512;
 	#else
 		const size_t buf_size = 1024;
 	#endif
@@ -236,8 +234,6 @@ void save_sound_buffer_size(const size_t size)
 {
 	#ifdef WIN32
 		const char* buf_size = "4096";
-	#elif GP2X
-		const char* buf_size = "512";
 	#else
 		const char* buf_size = "1024";
 	#endif
