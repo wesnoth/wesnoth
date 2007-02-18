@@ -716,7 +716,7 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bo
 {
 	vconfig tmp_vconf(&orig_cfg);
 	config tmp_unit;
-	write(tmp_unit);
+	write(tmp_unit); // <-- performance bottleneck (maxy)
 	tmp_vconf.add_local_var("this_unit",tmp_unit);
 	config cfg = tmp_vconf.get_parsed_config();
 	const std::string& description = cfg["description"];
@@ -2075,6 +2075,9 @@ int unit::defense_modifier(t_translation::t_letter terrain, int recurse_count) c
 	wassert(underlying.size() > 0);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
+		if(recurse_count >= 90) {
+			LOG_STREAM(err, config) << "infinite defense_modifier recursion: " << t_translation::write_letter(terrain) << " depth " << recurse_count << "\n";
+		}
 		if(recurse_count >= 100) {
 			return 100;
 		}
