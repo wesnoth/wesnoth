@@ -356,6 +356,7 @@ namespace events{
 	{
 		std::stringstream heading;
 		heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
+				<< _("Team") << COLUMN_SEPARATOR
 				<< _("Gold") << COLUMN_SEPARATOR
 				<< _("Villages") << COLUMN_SEPARATOR
 				<< _("status^Units") << COLUMN_SEPARATOR
@@ -403,7 +404,7 @@ namespace events{
 #endif
 				str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm';
 				// Delete all tags before name
-				str << font::del_tags(teams_[n].current_player()) << COLUMN_SEPARATOR;
+				str << font::del_tags(teams_[n].current_player()) << COLUMN_SEPARATOR << data.teamname << COLUMN_SEPARATOR;
 
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;

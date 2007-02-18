@@ -3087,6 +3087,7 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	res.expenses = maximum<int>(0,res.upkeep - res.villages);
 	res.net_income = tm.income() - res.expenses;
 	res.gold = tm.gold();
+	res.teamname = tm.user_team_name();
 	return res;
 }
 
