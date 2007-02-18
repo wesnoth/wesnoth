@@ -1409,26 +1409,13 @@ namespace events{
 	{
 		wassert(ui != units_.end());
 
-		unit u = ui->second;
-		const shortest_path_calculator calc(u,teams_[team_num - 1],mousehandler.visible_units(),teams_,map_);
+		paths::route route = mousehandler.get_route(ui, target, teams_[team_num - 1]);
 
-		const std::set<gamemap::location>* teleports = NULL;
-
-		std::set<gamemap::location> allowed_teleports;
-		if(u.get_ability_bool("teleport",ui->first)) {
-			allowed_teleports = vacant_villages(teams_[team_num - 1].villages(),units_);
-			teleports = &allowed_teleports;
-			if(teams_[team_num - 1].villages().count(ui->first))
-				allowed_teleports.insert(ui->first);
-		}
-
-		paths::route route = a_star_search(ui->first, target, 10000.0, &calc, map_.x(), map_.y(), teleports);
 		if(route.steps.empty())
 			return;
 
 		wassert(route.steps.front() == ui->first);
 
-		route.move_left = route_turns_to_complete(ui->second,map_,route);
 		gui_->set_route(&route);
 		move_unit(gui_,gameinfo_,status_,map_,units_,teams_,route.steps,&recorder,&undo_stack_,NULL,continue_move);
 		gui_->invalidate_game_status();

@@ -771,23 +771,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			unit_map::const_iterator un = find_unit(selected_hex_);
 
 			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.incapacitated()) {
-				const shortest_path_calculator calc(un->second,current_team(), visible_units(),teams_,map_);
-				const bool can_teleport = un->second.get_ability_bool("teleport",un->first);
-
-				const std::set<gamemap::location>* teleports = NULL;
-
-				std::set<gamemap::location> allowed_teleports;
-				if(can_teleport) {
-					allowed_teleports = vacant_villages(current_team().villages(),units_);
-					teleports = &allowed_teleports;
-					if(current_team().villages().count(un->first))
-						allowed_teleports.insert(un->first);
-				}
-
-				current_route_ = a_star_search(selected_hex_, dest, 10000.0, &calc, map_.x(), map_.y(), teleports);
-
-				current_route_.move_left = route_turns_to_complete(un->second,map_,current_route_);
-
+				current_route_ = get_route(un, dest, current_team());
 				if(!browse) {
 					(*gui_).set_route(&current_route_);
 				}
@@ -812,22 +796,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 				unit u = un->second;
 				const gamemap::location go_to = u.get_goto();
 				if(map_.on_board(go_to)) {
-					const shortest_path_calculator calc(u,current_team(),
-									visible_units(),teams_,map_);
-
-					const std::set<gamemap::location>* teleports = NULL;
-
-					std::set<gamemap::location> allowed_teleports;
-					if(u.get_ability_bool("teleport",un->first)) {
-						allowed_teleports = vacant_villages(current_team().villages(),units_);
-						teleports = &allowed_teleports;
-						if(current_team().villages().count(un->first))
-							allowed_teleports.insert(un->first);
-
-					}
-
-					paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.x(), map_.y(), teleports);
-					route.move_left = route_turns_to_complete(un->second,map_,route);
+					paths::route route = get_route(un, go_to, current_team());
 					gui_->set_route(&route);
 				}
 				over_route_ = true;
@@ -910,24 +879,26 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 	return res;
 }
 
-// FIXME: Should borrow unit pointers, not copy units.
-const unit_map& mouse_handler::visible_units()
+paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::location go_to, team &team)
 {
-	if(viewing_team().uses_shroud() == false && viewing_team().uses_fog() == false) {
-		LOG_STREAM(info, engine) << "all units are visible...\n";
-		return units_;
+	// The pathfinder will check unit visibility (fogged/stealthy).
+	unit u = un->second;
+	const shortest_path_calculator calc(u,team,units_,teams_,map_);
+		
+	const std::set<gamemap::location>* teleports = NULL;
+	std::set<gamemap::location> allowed_teleports;
+	if(u.get_ability_bool("teleport",un->first)) {
+		allowed_teleports = vacant_villages(team.villages(),units_);
+		teleports = &allowed_teleports;
+		if(team.villages().count(un->first))
+			allowed_teleports.insert(un->first);
+		
 	}
+	
+	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.x(), map_.y(), teleports);
+	route.move_left = route_turns_to_complete(u,map_,route);
 
-	visible_units_.clear();
-	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-		if((*gui_).fogged(i->first.x,i->first.y) == false) {
-			visible_units_.add(new std::pair<gamemap::location,unit>(*i));
-		}
-	}
-
-	LOG_STREAM(info, engine) << "number of visible units: " << visible_units_.size() << "\n";
-
-	return visible_units_;
+	return route;
 }
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
@@ -1153,22 +1124,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			unit u = it->second;
 			const gamemap::location go_to = u.get_goto();
 			if(map_.on_board(go_to)) {
-				const shortest_path_calculator calc(u,current_team(),
-				                                    visible_units(),teams_,map_);
-
-				const std::set<gamemap::location>* teleports = NULL;
-
-				std::set<gamemap::location> allowed_teleports;
-				if(u.get_ability_bool("teleport",it->first)) {
-					allowed_teleports = vacant_villages(current_team().villages(),units_);
-					teleports = &allowed_teleports;
-					if(current_team().villages().count(it->first))
-						allowed_teleports.insert(it->first);
-
-				}
-
-				paths::route route = a_star_search(it->first, go_to, 10000.0, &calc, map_.x(), map_.y(), teleports);
-				route.move_left = route_turns_to_complete(it->second,map_,route);
+				paths::route route = get_route(it, go_to, current_team());
 				gui_->set_route(&route);
 			}
 			game_events::fire("select",hex);

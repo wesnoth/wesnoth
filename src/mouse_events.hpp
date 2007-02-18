@@ -57,7 +57,7 @@ public:
 	void set_undo(const bool undo) { undo_ = undo; }
 
 	unit_map::iterator selected_unit();
-	const unit_map& visible_units();
+	paths::route get_route(unit_map::const_iterator un, gamemap::location go_to, team &team);
 private:
 	team& viewing_team() { return teams_[(*gui_).viewing_team()]; }
 	const team& viewing_team() const { return teams_[(*gui_).viewing_team()]; }
@@ -95,7 +95,6 @@ private:
 	paths::route current_route_;
 	paths current_paths_;
 	bool enemy_paths_;
-	unit_map visible_units_;
 	int path_turns_;
 	unsigned int team_num_;
 
