@@ -1560,12 +1560,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const vconfig::child_list menu_items = cfg.get_children("option");
 		for(vconfig::child_list::const_iterator mi = menu_items.begin();
 				mi != menu_items.end(); ++mi) {
-
 			std::string msg_str = (*mi)["message"];
-			msg_str = utils::interpolate_variables_into_string(msg_str, *state_of_game);
-
-			options.push_back(msg_str);
-			option_events.push_back((*mi).get_children("command"));
+			if((*mi)["show_always"] != "no" || game_events::conditional_passed(units,(*mi))) {
+            	msg_str = utils::interpolate_variables_into_string(msg_str, *state_of_game);
+				options.push_back(msg_str);
+				option_events.push_back((*mi).get_children("command"));
+            }
 		}
 
 		surface surface(NULL);
