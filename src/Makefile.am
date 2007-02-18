@@ -60,6 +60,7 @@ wesnoth_SOURCES = \
 	game_events.cpp \
 	gamestatus.cpp \
 	generic_event.cpp \
+	gp2x.cpp \
 	halo.cpp \
 	help.cpp \
 	hotkeys.cpp \
@@ -348,6 +349,7 @@ noinst_HEADERS = \
 	dialogs.hpp \
 	map.hpp \
 	global.hpp \
+	gp2x.hpp \
 	checksum.hpp \
 	video.hpp \
 	ai_interface.hpp \

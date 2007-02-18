@@ -91,6 +91,30 @@ then
 fi
 AM_CONDITIONAL([TINYGUI], [test "x$tinygui" = "xyes"])
 
+AC_ARG_ENABLE([lowmem],
+              AS_HELP_STRING([--enable-lowmem], [reduce memory usage by removing extra functionality]),
+	      [lowmem=$enableval],
+	      [lowmem=no])
+
+if test "x$lowmem" = "xyes"
+then
+	CPPFLAGS="$CPPFLAGS -DLOW_MEM"
+fi
+
+AM_CONDITIONAL([LOWMEM], [test "x$lowmem" = "xyes"])
+
+AC_ARG_ENABLE([gp2x],
+              AS_HELP_STRING([--enable-gp2x], [enable support for GP2X Personal Entertainment Player]),
+	      [gp2x=$enableval],
+	      [gp2x=no])
+
+if test "x$gp2x" = "xyes"
+then
+	CPPFLAGS="$CPPFLAGS -DGP2X"
+fi
+
+AM_CONDITIONAL([GP2X], [test "x$gp2x" = "xyes"])
+
 DATADIR=$PACKAGE
 AC_ARG_WITH([datadir-name],
             AS_HELP_STRING([--with-datadir-name@<:@=DIR@:>@], [change name of data directory @<:@wesnoth@:>@]),
@@ -563,32 +587,10 @@ LIBS="$LIBS $SDL_LIBS"
 # so recommend using fink sdl packages as a workaround
 
 ac_link="$LDPREFIX $ac_link"
-AC_CHECK_LIB([SDL_image],
-	     [IMG_Load],
-	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_image.la
-then SDL_IMAGE_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL_image.la
-else SDL_IMAGE_LIBS=-lSDL_image
-fi],
-	     [AC_MSG_ERROR([*** SDL_image lib not found! Get SDL_image from
-http://www.libsdl.org/projects/SDL_image/index.html])])
 
-AC_CHECK_LIB([SDL_mixer],
-	     [Mix_OpenAudio],
-	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_mixer.la
-then SDL_MIXER_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL_mixer.la
-else SDL_MIXER_LIBS=-lSDL_mixer
-fi],
-	     [AC_MSG_ERROR([*** SDL_mixer lib not found! Get SDL_mixer from
-http://www.libsdl.org/projects/SDL_mixer/index.html])])
-
-AC_CHECK_LIB([SDL_net],
-	     [SDLNet_Init],
-	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_net.la
-then SDL_NET_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL_net.la
-else SDL_NET_LIBS=-lSDL_net
-fi],
-	     [AC_MSG_ERROR([*** SDL_net lib not found! Get SDL_net from
-http://www.libsdl.org/projects/SDL_net/index.html])])
+SDL_IMAGE_LIBS=-lSDL_image
+SDL_MIXER_LIBS=-lSDL_mixer
+SDL_NET_LIBS=-lSDL_net
 
 LIBS=$OLD_LIBS
 

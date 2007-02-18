@@ -30,7 +30,14 @@ namespace game_config
 	int kill_experience = 8;
 	int leadership_bonus = 25;
 	const std::string version = VERSION;
-	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
+	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false;
+	
+	// Save our SD cards!
+	#ifdef GP2X
+		bool disable_autosave = true;
+	#else
+		bool disable_autosave = false;
+	#endif
 
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, anonymous_music,
 			victory_music, defeat_music;

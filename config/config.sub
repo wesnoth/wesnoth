@@ -518,6 +518,10 @@ case $basic_machine in
 		basic_machine=i386-pc
 		os=-go32
 		;;
+        gp2x)
+                basic_machine=arm-gp2x
+                os=-gnu-linux
+                ;;
 	h3050r* | hiux*)
 		basic_machine=hppa1.1-hitachi
 		os=-hiuxwe2

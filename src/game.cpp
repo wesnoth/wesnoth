@@ -26,6 +26,7 @@
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "gp2x.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
@@ -1855,6 +1856,18 @@ int main(int argc, char** argv)
 		return(1);
 	}
 #endif
+
+#ifdef GP2X
+//      gp2x::mmu_hack::instance();
+
+        atexit(gp2x::return_to_menu);
+
+        if(gp2x::init_joystick() < 0) {
+                fprintf(stderr, "Couldn't initialize joystick: %s\n", SDL_GetError());
+                return 1;
+        }
+#endif
+
 	try {
 		std::cerr << "Battle for Wesnoth v" << VERSION << "\n";
 		time_t t = time(NULL);
@@ -1881,9 +1894,15 @@ int main(int argc, char** argv)
 		std::cerr << "caught end_level_exception (quitting)\n";
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
-	} /*catch(...) {
-		std::cerr << "Unhandled exception. Exiting\n";
-	}*/
+	} 
+
+#ifdef GP2X
+        // We want this in gp2x so that users don't have to power-cycle
+        // their consoles on unhandled exception
+        catch(...) {
+                std::cerr << "Unhandled exception. Exiting\n";
+        }
+#endif
 
 	return 0;
 }
