@@ -59,20 +59,35 @@ protected:
 
 	virtual void do_move();
 
-	virtual bool do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
-	virtual bool get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::iterator &leader);
-	virtual bool get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& enemy_dstsrc);
-	virtual bool retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
-	virtual bool move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
+	virtual bool do_combat(std::map<gamemap::location,paths>& possible_moves, 
+			const move_map& srcdst, const move_map& dstsrc, 
+			const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
+	virtual bool get_villages(std::map<gamemap::location,paths>& possible_moves, 
+			const move_map& srcdst, const move_map& dstsrc, 
+			const move_map& enemy_srcdst, const move_map& enemy_dstsrc, 
+			unit_map::iterator &leader);
+	virtual bool get_healing(std::map<gamemap::location,paths>& possible_moves, 
+			const move_map& srcdst, const move_map& enemy_dstsrc);
+	virtual bool retreat_units(std::map<gamemap::location,paths>& possible_moves, 
+			const move_map& srcdst, const move_map& dstsrc, 
+			const move_map& enemy_dstsrc, unit_map::const_iterator leader);
+	virtual bool move_to_targets(std::map<gamemap::location,paths>& possible_moves, 
+			move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc, 
+			unit_map::const_iterator leader);
 
-	virtual bool should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, double caution);
+	virtual bool should_retreat(const gamemap::location& loc, 
+			const unit_map::const_iterator un, const move_map& srcdst, 
+			const move_map& dstsrc, const move_map& enemy_dstsrc, double caution);
 
 	virtual void do_recruitment();
 
 	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
-	virtual void move_leader_after_recruit(const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc);
+	virtual void move_leader_after_recruit(const move_map& srcdst,
+			const move_map& dstsrc, const move_map& enemy_dstsrc);
+	
 	virtual void move_leader_to_goals(const move_map& enemy_dstsrc);
 
+	
 	virtual bool recruit_usage(const std::string& usage);
 
 	virtual bool desperate_attack(const gamemap::location &loc);
@@ -84,25 +99,30 @@ protected:
 
 	bool threats_found_;
 
-	//function which will calculate which movements should be made to get an optimal number of villages
-	std::vector<std::pair<gamemap::location,gamemap::location> > get_village_combinations(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc,
-																						  const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader,
-																						  std::set<location>& taken_villages, std::set<location>& moved_units,
-																						  const std::vector<std::pair<gamemap::location,gamemap::location> >& village_moves,
-																						  std::vector<std::pair<gamemap::location,gamemap::location> >::const_iterator start_at);
+	//function which will calculate which movements should 
+	//be made to get an optimal number of villages
+	std::vector<std::pair<gamemap::location,gamemap::location> > get_village_combinations(
+			std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, 
+			const move_map& dstsrc, const move_map& enemy_srcdst, 
+			const move_map& enemy_dstsrc, unit_map::const_iterator leader,
+			std::set<location>& taken_villages, std::set<location>& moved_units,
+			const std::vector<std::pair<gamemap::location,gamemap::location> >& village_moves,
+			std::vector<std::pair<gamemap::location,gamemap::location> >::const_iterator start_at);
 
 
-	//our own version of 'move_unit'. It is like the version in ai_interface, however if it is the leader
-	//moving, it will first attempt recruitment.
+	//our own version of 'move_unit'. It is like the version in ai_interface, 
+	//however if it is the leader moving, it will first attempt recruitment.
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
 
 	//our own version of 'attack_enemy'. We record all attacks to support group attacking
-	void attack_enemy(const location& attacking_unit, const location& target, int att_weapon, int def_weapon);
+	void attack_enemy(const location& attacking_unit, const location& target, 
+			int att_weapon, int def_weapon);
 
 	std::set<location> attacks_;
 
 	//sees if it's possible for a unit to move 'from' -> 'via' -> 'to' all in one turn
-	bool multistep_move_possible(location from, location to, location via, std::map<location,paths>& possible_moves);
+	bool multistep_move_possible(location from, location to, location via, 
+			std::map<location,paths>& possible_moves);
 
 	struct attack_analysis
 	{
@@ -179,7 +199,8 @@ protected:
 	//Example: 'loc' can be reached by two units, one of whom has a 10-3 attack and has 48/48 hp, and
 	//can defend at 40% on the adjacent grassland. The other has a 8-2 attack, and has 30/40 hp, and
 	//can defend at 60% on the adjacent mountain. The rating will be 10*3*1.0*0.4 + 8*2*0.75*0.6 = 19.2
-	virtual double power_projection(const gamemap::location& loc, const move_map& dstsrc, bool use_terrain=true) const;
+	virtual double power_projection(const gamemap::location& loc, const move_map& dstsrc, 
+			bool use_terrain=true) const;
 
 	virtual std::vector<attack_analysis> analyze_targets(
 	             const move_map& srcdst, const move_map& dstsrc,
@@ -188,23 +209,31 @@ protected:
 
 	bool is_accessible(const location& loc, const move_map& dstsrc) const;
 
-	virtual std::vector<target> find_targets(unit_map::const_iterator leader, const move_map& enemy_dstsrc);
+	virtual std::vector<target> find_targets(unit_map::const_iterator leader, 
+			const move_map& enemy_dstsrc);
 
 	//function to form a group of units suitable for moving along the route, 'route'.
 	//returns the location which the group may reach this turn.
 	//stores the locations of the units in the group in 'units'
-	virtual location form_group(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& units);
+	virtual location form_group(const std::vector<location>& route,
+			const move_map& dstsrc, std::set<location>& units);
 
 	//function to return the group of enemies that threaten a certain path
-	virtual void enemies_along_path(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& units);
+	virtual void enemies_along_path(const std::vector<location>& route,
+			const move_map& dstsrc, std::set<location>& units);
 
-	virtual bool move_group(const location& dst, const std::vector<location>& route, const std::set<location>& units);
+	virtual bool move_group(const location& dst, const std::vector<location>& route,
+			const std::set<location>& units);
 
-	virtual double rate_group(const std::set<location>& group, const std::vector<location>& battlefield) const;
+	virtual double rate_group(const std::set<location>& group,
+			const std::vector<location>& battlefield) const;
 
-	virtual double compare_groups(const std::set<location>& our_group, const std::set<location>& enemy_groups, const std::vector<location>& battlefield) const;
+	virtual double compare_groups(const std::set<location>& our_group,
+			const std::set<location>& enemy_groups, 
+			const std::vector<location>& battlefield) const;
 
-	virtual std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc);
+	virtual std::pair<location,location> choose_move(std::vector<target>& targets,
+			const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc);
 
 	//function which rates the value of moving onto certain terrain for a unit
 	virtual int rate_terrain(const unit& u, const location& loc);
@@ -256,7 +285,8 @@ protected:
 	//function which, given a unit position, and a position the unit wants to
 	//get to in two turns, will return all possible positions the unit can
 	//move to, that will make the destination position accessible next turn
-	void access_points(const move_map& srcdst, const location& u, const location& dst, std::vector<location>& out);
+	void access_points(const move_map& srcdst, const location& u,
+			const location& dst, std::vector<location>& out);
 
 	//function which gets the areas of the map that this AI has been instructed to avoid
 	const std::set<location>& avoided_locations();
@@ -264,7 +294,8 @@ protected:
 	std::set<location> avoid_;
 
 	// Weapon choice cache, to speed simulations.
-	std::map<std::pair<location,const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
+	std::map<std::pair<location,const unit_type *>,
+		std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
 
 	int attack_depth();
 	int attack_depth_;
