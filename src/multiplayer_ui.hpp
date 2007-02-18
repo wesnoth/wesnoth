@@ -67,7 +67,7 @@ private:
 
 //a base class for the different multiplayer base dialogs: game list, create
 //game, wait game, game setup
-class ui : public gui::widget, private events::chat_handler
+class ui : public gui::widget, private events::chat_handler, private font::floating_label_context
 {
 public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PREFERENCES, PLAY, QUIT };
