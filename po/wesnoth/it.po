@@ -214,7 +214,7 @@ msgstr ""
 
 #: data/abilities.cfg:362 data/abilities.cfg:367
 msgid "nightstalk"
-msgstr "sospiro della notte"
+msgstr "agguato notturno"
 
 #: data/abilities.cfg:366 data/abilities.cfg:371
 msgid ""
@@ -225,7 +225,7 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
-"Sospiro della Notte:\n"
+"Agguato notturno:\n"
 "L'unità diviene invisibile durante la notte.\n"
 "\n"
 "Le unità nemiche non possono né vedere né attaccare questa unità durante la "
@@ -286,7 +286,7 @@ msgstr ""
 
 #: data/abilities.cfg:434 data/abilities.cfg:443
 msgid "plague"
-msgstr "piaga"
+msgstr " contagio"
 
 #: data/abilities.cfg:436 data/abilities.cfg:445
 msgid ""
@@ -295,10 +295,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
-"Piaga:\n"
-"Quando una unità viene uccisa da un attacco Piaga, quell'unità viene "
-"sostituita da un'unità identica e della stessa squadra dell'unità con "
-"l'attacco Piaga. (Non funziona sui non morti e sulle unità nei villaggi)"
+"Contagio:\n"
+"Quando un'unità viene uccisa da un attacco Contagio, essa viene sostituita "
+"da un'unità identica e della stessa squadra dell'unità con l'attacco "
+"Contagio (Non funziona sui non morti e sulle unità nei villaggi)."
 
 #: data/abilities.cfg:452
 msgid "slows"
@@ -1370,9 +1370,9 @@ msgstr ""
 "colpo andato a segno causa un determinato danno o, se manca il bersaglio, "
 "non causa alcun danno. Questo alternarsi continua finché tutte e due le "
 "unità hanno esaurito gli attacchi concessi. Il numero degli attacchi di ogni "
-"unità può variare; per esempio un combattente elfico con una spada da 5-4 "
-"può colpire 4 volte infliggendo 5 danni per colpo, mentre un fante orchesco "
-"con 9-2 colpisce 2 sole volte (causando però 9 danni per colpo)."
+"unità può variare; per esempio un elfo combattente con una spada da 5-4 può "
+"colpire 4 volte infliggendo 5 danni per colpo, mentre un fante orchesco con "
+"9-2 colpisce 2 sole volte (causando però 9 danni per colpo)."
 
 #: data/help.cfg:161
 msgid ""
@@ -1451,8 +1451,8 @@ msgstr ""
 "\n"
 "\n"
 "Ogni colpo che va a segno causa un ammontare di danno base a seconda del "
-"tipo di attacco. Per esempio, un attacco con la spada di un combattente "
-"elfico con 5-4 causa un danno di base di 5. Questo valore viene modificato "
+"tipo di attacco. Per esempio, un attacco con la spada di un elfo combattente "
+"con 5-4 causa un danno di base di 5. Questo valore viene modificato "
 "solitamente da due fattori: dalla <ref>dst=damage_types_and_resistance "
 "text=resistenza</ref> e dal <ref>dst=time_of_day text='periodo del giorno'</"
 "ref>. Per vedere come il danno base viene modificato dalle circostanze "
@@ -2075,7 +2075,7 @@ msgid ""
 "them."
 msgstr ""
 "I non-morti sono immuni al veleno, ed inoltre gli attacchi di assorbimento e "
-"piaga non funzionano su di loro."
+"contagio non funzionano su di loro."
 
 #: data/help.cfg:323
 msgid ""
@@ -2684,9 +2684,8 @@ msgstr ""
 "capacità di bloccare anche il viaggiatore più determinato."
 
 #: data/help.cfg:573
-#, fuzzy
 msgid "Impassable Mountain"
-msgstr "Montagne invalicabili"
+msgstr "Montagna invalicabili"
 
 #: data/help.cfg:576
 msgid ""
@@ -5134,7 +5133,7 @@ msgstr ""
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr ""
-"I nemici che perdono la vita a causa della piaga risorgeranno non-morti."
+"I nemici che perdono la vita a causa del contagio risorgeranno non-morti."
 
 #: data/special-notes.cfg:50
 msgid ""
@@ -6857,7 +6856,7 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
-msgstr "Arciere elfico"
+msgstr "Elfo arciere"
 
 #: data/units/Elvish_Archer.cfg:19
 msgid ""
@@ -6901,7 +6900,7 @@ msgstr "Arciere elfica"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
-msgstr "Vendicatore elfico"
+msgstr "Elfo vendicatore"
 
 #: data/units/Elvish_Avenger.cfg:24
 msgid ""
@@ -6935,7 +6934,7 @@ msgstr "Vendicatrice elfica"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
-msgstr "Capitano elfico"
+msgstr "Elfo capitano"
 
 #: data/units/Elvish_Captain.cfg:27
 msgid ""
@@ -7074,7 +7073,7 @@ msgstr "freddo"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
-msgstr "Combattente elfico"
+msgstr "Elfo combattente"
 
 #: data/units/Elvish_Fighter.cfg:19
 msgid ""
@@ -7106,7 +7105,7 @@ msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
-msgstr "Tiratore scelto elfico"
+msgstr "Elfo tiratore scelto"
 
 #: data/units/Elvish_Marksman.cfg:23
 msgid ""
@@ -7140,7 +7139,7 @@ msgstr "Tiratrice scelta elfica"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
-msgstr "Maresciallo elfico"
+msgstr "Elfo colonnello"
 
 #: data/units/Elvish_Marshal.cfg:28
 msgid ""
@@ -7191,7 +7190,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
-msgstr "Ranger elfico"
+msgstr "Elfo ranger"
 
 #: data/units/Elvish_Ranger.cfg:21
 msgid ""
@@ -7203,12 +7202,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Anche se un uomo trascorresse anni nella foresta, non riuscirà mai a "
+"Se anche un uomo trascorresse anni nella foresta, non riuscirebbe a "
 "scacciare la sensazione di essere ospite di un luogo che non gli appartiene "
-"veramente. Con gli elfi avviene il contrario. Qualunque elfo che studi la "
-"dottrina delle foreste ne diventa rapidamente un maestro e ciò, combinato "
-"con una considerevole abilità nell'uso dell'arco e della spada, lo rende una "
-"potente arma da guerra.\n"
+"veramente. Con gli elfi avviene il contrario. Un elfo che studi la dottrina "
+"delle foreste ne diventa rapidamente un maestro e ciò, combinato con una "
+"considerevole abilità nell'uso dell'arco e della spada, lo rende una potente "
+"arma da guerra.\n"
 "\n"
 "Note speciali:"
 
@@ -7218,7 +7217,7 @@ msgstr "Ranger elfica"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
-msgstr "Cavaliere elfico"
+msgstr "Elfo cavaliere"
 
 #: data/units/Elvish_Rider.cfg:22
 msgid ""
@@ -7230,18 +7229,18 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
-"Il maestro cavallerizzo elfico è in grado di muoversi attraverso le foreste "
-"a una tale velocità che sarebbe un letale per qualunque essere umano. Si "
-"pensa che tale prodigiosa velocità sia dovuta alla notevole abilità del "
-"fantino e alla razza dei loro cavalli che, si dice, hanno origini "
-"soprannaturali, questo provoca un timoroso rispetto nella gente.\n"
+"L'elfo cavaliere è in grado di muoversi attraverso le foreste a una velocità "
+"che sarebbe un suicidio per qualunque essere umano. Si pensa che tale "
+"prodigiosa velocità sia dovuta alla notevole abilità del fantino e alla "
+"razza dei loro cavalli che, si dice, hanno origini soprannaturali, questo "
+"provoca un timoroso rispetto nella gente.\n"
 "\n"
 "Questa combinazione di incredibile mobilità e grande forza nel combattimento "
 "è uno dei più grandi beni che gli elfi possiedono durante i tempi ostili."
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
-msgstr "Esploratore elfico"
+msgstr "Elfo esploratore"
 
 #: data/units/Elvish_Scout.cfg:21
 msgid ""
@@ -7287,7 +7286,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
-msgstr "Tiratore elfico leggendario"
+msgstr "Elfo maestro di tiro"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
 msgid ""
@@ -7307,7 +7306,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:152
 msgid "female^Elvish Sharpshooter"
-msgstr "Tiratrice elfica leggendaria"
+msgstr "Maestra di tiro elfica"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
@@ -7338,7 +7337,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Strega elfica"
 
 #: data/units/Elvish_Sorceress.cfg:21
-#, fuzzy
 msgid ""
 "The world of faerie is far more potent than the corporeal world. Simply "
 "bringing some of this world into our own can have violent results. This is "
@@ -7355,8 +7353,8 @@ msgstr ""
 "ben compreso dagli elfi, sebbene sia raramente usato con cattive intenzioni; "
 "fare ciò non è semplice, ed è un uso molto malvisto della loro forza.\n"
 "\n"
-"\tQuelle in grado di fare ciò sono rozzamente definite \"streghe\" dalle "
-"altre razze; di sicuro sono in grado di reggere questa parte.\n"
+"Quelle in grado di fare ciò sono rozzamente definite \"streghe\" dalle altre "
+"razze; di sicuro sono in grado di reggere questa parte.\n"
 "\n"
 "Note speciali:"
 
@@ -8749,8 +8747,8 @@ msgstr ""
 "banditi avrà bisogno di qualche bracconiere, per procurare i pasti serali "
 "dalla campagna vicina, e spesso per dare una mano nei combattimenti più "
 "seri.\n"
-"\t\n"
-"\tPer la loro esperienza, questi cacciatori sono abili a muoversi di notte, "
+"\n"
+"Per la loro esperienza, questi cacciatori sono abili a muoversi di notte, "
 "nelle foreste e nelle paludi."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
@@ -9514,9 +9512,9 @@ msgid ""
 "little better than the Elves in close combat."
 msgstr ""
 "Gli orchi balestrieri tentano di compensare la loro mancanza di abilità con "
-"il potere naturale della loro arma. Anche non essendo letali come i tiratori "
-"scelti elfici nel combattimento a distanza, sono molto vigorosi e combattono "
-"un po' più efficacemente degli elfi negli scontri ravvicinati."
+"il potere naturale della loro arma. Anche non essendo letali come gli elfi "
+"tiratori scelti nel combattimento a distanza, sono molto vigorosi e "
+"combattono un po' più efficacemente degli elfi negli scontri ravvicinati."
 
 #: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:22
 msgid "short sword"
@@ -9728,7 +9726,7 @@ msgstr ""
 #: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
 #: data/units/Saurian_Soothsayer.cfg:74
 msgid "curse"
-msgstr "maledetto"
+msgstr "maledizione"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -10263,7 +10261,7 @@ msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:25
 msgid "plague staff"
-msgstr "bastone della piaga"
+msgstr "bastone del contagio"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
