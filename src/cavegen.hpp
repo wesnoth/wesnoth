@@ -24,10 +24,10 @@ class cave_map_generator : public map_generator
 public:
 	cave_map_generator(const config* game_config);
 
-	bool allow_user_config() const;
-	void user_config(display& disp);
+	bool allow_user_config() const { return true; }
+	void user_config(display& disp) { return; }
 
-	std::string name() const;
+	std::string name() const { return "cave"; }
 
 	std::string create_map(const std::vector<std::string>& args);
 	config create_scenario(const std::vector<std::string>& args);
@@ -56,7 +56,8 @@ private:
 
 	void place_passage(const passage& p);
 
-	bool on_board(const gamemap::location& loc) const;
+	bool on_board(const gamemap::location& loc) const
+		{ return loc.x >= 0 && loc.y >= 0 && loc.x < (long)width_ && loc.y < (long)height_; }
 	void set_terrain(gamemap::location loc, gamemap::TERRAIN t);
 	void place_castle(const std::string& side, gamemap::location loc);
 

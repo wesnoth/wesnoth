@@ -159,11 +159,6 @@ display::~display()
 	prune_chat_messages(true);
 }
 
-Uint32 display::rgb(Uint8 red, Uint8 green, Uint8 blue)
-{
-	return 0xFF000000 | (red << 16) | (green << 8) | blue;
-}
-
 void display::new_turn()
 {
 	const time_of_day& tod = status_.get_time_of_day();
@@ -217,26 +212,6 @@ void display::adjust_colours(int r, int g, int b)
 {
 	const time_of_day& tod = status_.get_time_of_day();
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
-}
-
-
-int display::x() const { return screen_.getx(); }
-int display::mapx() const { return x() - 140; }
-int display::y() const { return screen_.gety(); }
-
-const SDL_Rect& display::map_area() const
-{
-	return theme_.main_map_location(screen_area());
-}
-
-const SDL_Rect& display::minimap_area() const
-{
-	return theme_.mini_map_location(screen_area());
-}
-
-const SDL_Rect& display::unit_image_area() const
-{
-	return theme_.unit_image_location(screen_area());
 }
 
 SDL_Rect display::screen_area() const
@@ -401,16 +376,6 @@ gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location
 	return res;
 }
 
-int display::get_location_x(const gamemap::location& loc) const
-{
-	return map_area().x + loc.x*hex_width() - xpos_;
-}
-
-int display::get_location_y(const gamemap::location& loc) const
-{
-	return map_area().y + loc.y*zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0);
-}
-
 void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const
 {
 	const int tile_width = hex_width();
@@ -433,11 +398,6 @@ void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gam
 	if(bottomright.y < map_.y()) {
 		bottomright.y++;
 	}
-}
-
-void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
-{
-	get_rect_hex_bounds(map_area(), topleft, bottomright);
 }
 
 gamemap::location display::minimap_location_on(int x, int y)
@@ -529,16 +489,6 @@ void display::invalidate_locations_in_rect(SDL_Rect r)
 	}
 }
 
-int display::hex_size() const
-{
-	return zoom_;
-}
-
-int display::hex_width() const
-{
-	return (zoom_*3)/4;
-}
-
 double display::zoom(int amount)
 {
 	int new_zoom = zoom_ + amount;
@@ -568,11 +518,6 @@ double display::zoom(int amount)
 	return double(zoom_)/double(DefaultZoom);
 }
 
-void display::default_zoom()
-{
-	zoom(DefaultZoom - zoom_);
-}
-
 void display::screenshot()
 {
 	std::string datadir = get_screenshot_dir();
@@ -594,6 +539,11 @@ void display::screenshot()
 	} while(file_exists(name));
 
 	SDL_SaveBMP(screen_.getSurface().get(), name.c_str());
+}
+
+void display::default_zoom()
+{ 
+	zoom(DefaultZoom - zoom_); 
 }
 
 void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_fogged)
@@ -2139,11 +2089,6 @@ void display::invalidate_all()
 	update_rect(map_area());
 }
 
-void display::invalidate_unit()
-{
-	invalidateUnit_ = true;
-}
-
 void display::invalidate_animations()
 {
 	new_animation_frame();
@@ -2176,10 +2121,6 @@ void display::invalidate_animations()
 
 }
 
-void display::invalidate_theme(){
-	panelsDrawn_ = false;
-}
-
 void display::recalculate_minimap()
 {
 	if(minimap_ != NULL) {
@@ -2188,12 +2129,6 @@ void display::recalculate_minimap()
 
 	redraw_minimap();
 }
-
-void display::redraw_minimap()
-{
-	redrawMinimap_ = true;
-}
-
 void display::place_temporary_unit(unit &u, const gamemap::location& loc)
 {
 	temp_unit_ = &u;
@@ -2216,12 +2151,6 @@ void display::remove_temporary_unit()
 		invalidated_.insert(adjacent[i]);
 	}
 }
-
-void display::invalidate_game_status()
-{
-	invalidateGameStatus_ = true;
-}
-
 void display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
 	const int halo_handle = halo::add(get_location_x(loc)+hex_size()/2,get_location_y(loc)+hex_size()/2,halo);
@@ -2277,11 +2206,6 @@ bool display::turbo() const
 	return res || screen_.faked();
 }
 
-void display::set_turbo(bool turbo)
-{
-	turbo_ = turbo;
-}
-
 //Delay routines: use these not SDL_Delay (for --nogui).
 void display::non_turbo_delay() const
 {
@@ -2293,11 +2217,6 @@ void display::delay(unsigned int milliseconds) const
 {
 	if (!game_config::no_delay)
 		SDL_Delay(milliseconds);
-}
-
-void display::set_grid(bool grid)
-{
-	grid_ = grid;
 }
 
 // timestring() returns the current date as a string.
@@ -2323,50 +2242,8 @@ void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 	debugHighlights_[loc] += amount;
 }
 
-void display::clear_debug_highlights()
+gui::button* display::find_button(const std::string& id)
 {
-	debugHighlights_.clear();
-}
-
-bool display::shrouded(int x, int y) const
-{
-	if(team_valid()) {
-		return teams_[currentTeam_].shrouded(x,y);
-	} else {
-		return false;
-	}
-}
-
-bool display::fogged(int x, int y) const
-{
-	if(team_valid()) {
-		return teams_[currentTeam_].fogged(x,y);
-	} else {
-		return false;
-	}
-}
-
-bool display::team_valid() const
-{
-	return currentTeam_ < teams_.size();
-}
-
-size_t display::viewing_team() const
-{
-	return currentTeam_;
-}
-
-size_t display::playing_team() const
-{
-	return activeTeam_;
-}
-
-theme& display::get_theme()
-{
-	return theme_;
-}
-
-gui::button* display::find_button(const std::string& id){
 	for (size_t i = 0; i < buttons_.size(); ++i) {
 		if(buttons_[i].id() == id) {
 			return &buttons_[i];
@@ -2432,21 +2309,12 @@ void display::create_buttons()
 	}
 }
 
-gui::button::TYPE display::string_to_button_type(std::string type){
+gui::button::TYPE display::string_to_button_type(std::string type)
+{
 	gui::button::TYPE res = gui::button::TYPE_PRESS;
 	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }
 	else if (type == "image") { res = gui::button::TYPE_IMAGE; }
 	return res;
-}
-
-void display::add_observer(const std::string& name)
-{
-	observers_.insert(name);
-}
-
-void display::remove_observer(const std::string& name)
-{
-	observers_.erase(name);
 }
 
 namespace {
@@ -2544,11 +2412,6 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	}
 }
 
-void display::clear_chat_messages()
-{
-	prune_chat_messages(true);
-}
-
 void display::prune_chat_messages(bool remove_all)
 {
 	const unsigned int message_ttl = remove_all ? 0 : 1200000;
@@ -2581,15 +2444,8 @@ void display::set_diagnostic(const std::string& msg)
 	}
 }
 
-void display::rebuild_terrain(const gamemap::location &loc) {
-	builder_.rebuild_terrain(loc);
-}
-
-void display::rebuild_all() {
-	builder_.rebuild_all();
-}
-
-void display::add_highlighted_loc(const gamemap::location &hex) {
+void display::add_highlighted_loc(const gamemap::location &hex) 
+{
 	// Only invalidate and insert if this is a new addition, for
 	// efficiency.
 	if (highlighted_locations_.find(hex) == highlighted_locations_.end()) {
@@ -2598,7 +2454,8 @@ void display::add_highlighted_loc(const gamemap::location &hex) {
 	}
 }
 
-void display::clear_highlighted_locs() {
+void display::clear_highlighted_locs() 
+{
 	for (std::set<gamemap::location>::const_iterator it = highlighted_locations_.begin();
 		 it != highlighted_locations_.end(); it++) {
 		invalidate(*it);
@@ -2606,7 +2463,8 @@ void display::clear_highlighted_locs() {
 	highlighted_locations_.clear();
 }
 
-void display::remove_highlighted_loc(const gamemap::location &hex) {
+void display::remove_highlighted_loc(const gamemap::location &hex) 
+{
 	std::set<gamemap::location>::iterator it = highlighted_locations_.find(hex);
 	// Only invalidate and remove if the hex was found, for efficiency.
 	if (it != highlighted_locations_.end()) {

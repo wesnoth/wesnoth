@@ -76,8 +76,8 @@ public:
 	virtual void play_turn() = 0;
 
 	///functions which return a reference to the 'team' object for the AI
-	team& current_team();
-	const team& current_team() const;
+	team& current_team() { return info_.teams[info_.team_num-1]; }
+	const team& current_team() const { return info_.teams[info_.team_num-1]; }
 
 	///function to show a diagnostic message on the screen
 	void diagnostic(const std::string& msg);
@@ -145,9 +145,9 @@ protected:
 	void raise_user_interact();
 
 	///notifies all interested observers of the event respectively
-	void raise_unit_recruited();
-	void raise_unit_moved();
-	void raise_enemy_attacked();
+	void raise_unit_recruited() { unit_recruited_.notify_observers(); }
+	void raise_unit_moved() {  unit_moved_.notify_observers(); }
+	void raise_enemy_attacked() { enemy_attacked_.notify_observers(); }
 private:
 	info info_;
 	int last_interact_;
