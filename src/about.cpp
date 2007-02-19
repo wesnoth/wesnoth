@@ -28,45 +28,7 @@ namespace about
   std::string images_default;
 
 std::vector<std::string> get_text(std::string campaign) {
-	static const char *credits[] = {
-		"_" N_("+Developers"),
-		"-   David White (Sirp)",
-		"-   *",
-		"-   Alfredo Beaumont (ziberpunk)",
-		"-   András Salamon (ott)",
-		"-   Benoît Timbert (Noyga)",
-		"-   Bram Ridder (Morloth)",
-		"-   Bruno Wolff III",
-		"-   Cedric Duval",
-		"-   Cyril Bouthors (CyrilB)",
-		"-   Dominic Bolin (Xan)",
-		"-   Guillaume Melquiond (silene)",
-		"-   Isaac Clerencia",
-		"-   Jan Zvánovec (jaz)",
-		"-   Jérémy Rosen (Boucman)",
-		"-   John B. Messerly",
-		"-   John W. C. McNabb (Darth Fool)",
-		"-   Jon Daniel (forcemstr)",
-		"-   Jörg Hinrichs (Yogi Bear/YogiHH)",
-		"-   Justin Zaun (jzaun)",
-		"-   J.R. Blain (Cowboy)",
-		"-   Kristoffer Erlandsson (erl)",
-		"-   Maksim Orlovich (SadEagle)",
-		"-   Mark de Wever (Mordante/SkeletonCrew)",
-		"-   Nicolas Weeger (Ryo)",
-		"-   Patrick Parker (Sapient)",
-		"-   Philippe Plantier (Ayin)",
-		"-   Rusty Russell (rusty)",
-		"-   Yann Dirson",
-		"-   Zas",
-		"_" N_("+General Purpose Administrators"),
-		"-   Crossbow/Miyo",
-		"-   Isaac Clerencia",
-	};
-
 	std::vector< std::string > res;
-	size_t len = sizeof(credits) / sizeof(*credits);
-	res.reserve(len);
 
 	const config::child_list& children = about::about_list.get_children("about");
 
@@ -93,13 +55,6 @@ std::vector<std::string> get_text(std::string campaign) {
 	      }
 	    }
 	  }
-	}
-
-	for(size_t i = 0; i < len; ++i) {
-		const char *s = credits[i];
-		if (s[0] == '_')
-		  s = gettext(s + 1);
-		res.push_back(s);
 	}
 
 	for(config::child_list::const_iterator acc = children.begin(); acc != children.end(); ++acc) {
