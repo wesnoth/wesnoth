@@ -294,7 +294,9 @@ namespace events{
 	void menu_handler::status_table()
 	{
 		std::stringstream heading;
-		heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
+		heading << HEADING_PREFIX << ' ' << COLUMN_SEPARATOR
+				<< _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
+				<< _("Team") << COLUMN_SEPARATOR
 				<< _("Gold") << COLUMN_SEPARATOR
 				<< _("Villages") << COLUMN_SEPARATOR
 				<< _("status^Units") << COLUMN_SEPARATOR
@@ -302,8 +304,9 @@ namespace events{
 				<< _("Income");
 
 		gui::menu::basic_sorter sorter;
-		sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2).set_numeric_sort(3)
-			  .set_numeric_sort(4).set_numeric_sort(5).set_numeric_sort(6).set_numeric_sort(7);
+		sorter.set_id_sort(0).set_redirect_sort(1,2).set_alpha_sort(2).set_alpha_sort(3)
+			.set_numeric_sort(4).set_numeric_sort(5).set_numeric_sort(6)
+			.set_numeric_sort(7).set_numeric_sort(8).set_numeric_sort(9);
 
 		if(game_config::debug)
 			heading << COLUMN_SEPARATOR << _("Gold");
@@ -336,13 +339,15 @@ namespace events{
 			const unit_map::const_iterator leader = team_leader(n+1,units_);
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
+			char side = lexical_cast<char, size_t>(n+1);
+			str << "\033[3" << side << 'm' << side << ". " << COLUMN_SEPARATOR;
 			if(leader != units_.end()) {
 				str << IMAGE_PREFIX << leader->second.absolute_image() << "~TC(" << (n+1) << "," << leader->second.team_color() << ")" << COLUMN_SEPARATOR
-					<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << teams_[n].current_player() /*leader->second.description()*/ << COLUMN_SEPARATOR;
+					<< "\033[3" << side << 'm' << teams_[n].current_player() /*leader->second.description()*/ << COLUMN_SEPARATOR;
 			} else {
-				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
+				str << ' ' << COLUMN_SEPARATOR << "\033[3" << side << "m-" << COLUMN_SEPARATOR;
 			}
-
+			str << teams_[n].user_team_name() << COLUMN_SEPARATOR;
 			if(enemy && viewing_team.uses_fog()) {
 				str << ' ' << COLUMN_SEPARATOR;
 			} else {
@@ -359,8 +364,9 @@ namespace events{
 		}
 
 		if(fog)
-			items.push_back(IMAGE_PREFIX + std::string("random-enemy.png") + COLUMN_SEPARATOR +
-							IMAGE_PREFIX + "random-enemy.png");
+			items.push_back(std::string(" ") + COLUMN_SEPARATOR +
+			               IMAGE_PREFIX + "random-enemy.png" + COLUMN_SEPARATOR +
+			               IMAGE_PREFIX + "random-enemy.png");
 
 		gui::show_dialog2(*gui_,NULL,"","",gui::CLOSE_ONLY,&items,
 						 NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
