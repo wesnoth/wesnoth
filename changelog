@@ -38,9 +38,6 @@ Version 1.3-svn:
    * fixed terrain selection probabilites (patch #617)
    * stoned units do not use a separate cache
    * no more "darkened" cache. we now overlay terrain/darken.png
-   * star shaped "ellipses" for leaders and hero units
-   * crown icons for heros and expendable allied leaders.
-   * item graphic improvements including animate-able campfire.
    * added the option to draw overlays on terrains filter by location, selected
      and mouseover hex
    * terrain
@@ -56,16 +53,22 @@ Version 1.3-svn:
      * changed name on Dwarvish Warrior art files to Dwarvish Steelclad, to 
        conform to unit .cfg file name
      * new attack icons : undead axes, undead crossbow, pick axe, glaive,
-       elven staff
+       elven staff, mace-and-chain
      * new baseframes: all Mages, Footpad
      * new and changed animations:
        * Elvish Hero: melee attack
        * Elvish Sorceress line: magic shield
      * updated portraits: Troll
+   * other images
+     * animate-able campfire
+     * crown icons for heros and expendable allied leaders
+     * star shaped "ellipses" for leaders and hero units
+     * updated many misc items
+     * modified hex-grid
+     * slightly modified logo
    * fix gryphon not being in the center of their hex
    * Fixed incorrect WML in some units causing female variations to use male
  * language and i18n:
-   * new/updated man pages:
    * updated translations: British English, Catalan, Czech, Danish, Dutch,
      Estonian, French, German, Greek, Italian, Polish, Russian, Serbian,
      Slovak, Swedish
@@ -77,6 +80,7 @@ Version 1.3-svn:
      textdomain (some campaigns did still use the wesnoth textdomain for their
      units)
    * made the unit generated names translatable
+   * switch to mainly using single space
  * multiplayer
    * game management
      * replace "Downloading next level..." by "Receiving data..."
