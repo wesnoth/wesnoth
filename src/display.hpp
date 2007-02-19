@@ -479,7 +479,6 @@ private:
 	const std::vector<team>& teams_;
 
 	int lastDraw_;
-	int drawSkips_;
 
 	void invalidate_route();
 
