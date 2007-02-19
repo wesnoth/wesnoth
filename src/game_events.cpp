@@ -283,9 +283,6 @@ public:
 
 	bool& rebuild_screen() {return rebuild_screen_;}
 
-	void add_event_var(const unit* primary_unit, const unit* secondary_unit=NULL);
-	void rem_event_var();
-
 private:
 	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated);
 
@@ -296,25 +293,6 @@ private:
 	vconfig cfg_;
 };
 
-void event_handler::add_event_var(const unit* primary_unit, const unit* secondary_unit)
-{
-	if(primary_unit) {
-		config tmp_cfg;
-		primary_unit->write(tmp_cfg);
-		cfg_.add_local_var("unit",tmp_cfg);
-	}
-	if(secondary_unit) {
-		config tmp_cfg;
-		secondary_unit->write(tmp_cfg);
-		cfg_.add_local_var("second_unit",tmp_cfg);
-	}
-
-}
-void event_handler::rem_event_var()
-{
-	cfg_.rem_local_var("unit");
-	cfg_.rem_local_var("second_unit");
-}
 
 gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
 {
@@ -2103,15 +2081,24 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
-	unit* tmp_unit1 = NULL;
-	unit* tmp_unit2 = NULL;
+	config tmp_cfg;
 	if(unit1!= units->end()) {
-		tmp_unit1 = &(unit1->second);
+		unit1->second.write(tmp_cfg);
+		tmp_cfg["x"] = lexical_cast<std::string,int>(ev.loc1.x+1);
+		tmp_cfg["y"] = lexical_cast<std::string,int>(ev.loc1.y+1);
+	} else {
+		tmp_cfg = config();
 	}
+	scoped_wml_variable first_unit("unit",tmp_cfg);
+
 	if(unit2!= units->end()) {
-		tmp_unit2 = &(unit2->second);
+		unit2->second.write(tmp_cfg);
+		tmp_cfg["x"] = lexical_cast<std::string,int>(ev.loc2.x+1);
+		tmp_cfg["y"] = lexical_cast<std::string,int>(ev.loc2.y+1);
+	} else {
+		tmp_cfg = config();
 	}
-	handler.add_event_var(tmp_unit1,tmp_unit2);
+	scoped_wml_variable second_unit("second_unit",tmp_cfg);
 
 
 	const vconfig::child_list first_filters = handler.first_arg_filters();
@@ -2120,7 +2107,6 @@ bool process_event(event_handler& handler, const queued_event& ev)
 			ffi != first_filters.end(); ++ffi) {
 
 		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,*ffi)) {
-			handler.rem_event_var();
 			return false;
 		}
 	}
@@ -2135,7 +2121,6 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		}
 	}
 	if(!special_matches) {
-		handler.rem_event_var();
 		return false;
 	}
 
@@ -2143,7 +2128,6 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	for(vconfig::child_list::const_iterator sfi = second_filters.begin();
 			sfi != second_filters.end(); ++sfi) {
 		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,*sfi)) {
-			handler.rem_event_var();
 			return false;
 		}
 	}
@@ -2157,7 +2141,6 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		}
 	}
 	if(!special_matches) {
-		handler.rem_event_var();
 		return false;
 	}
 
@@ -2175,7 +2158,6 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		handler.disable();
 	}
 
-	handler.rem_event_var();
 	return res;
 }
 

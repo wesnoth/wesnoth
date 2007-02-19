@@ -46,14 +46,9 @@ public:
 	const t_string& operator[](const std::string&) const;
 	const t_string& expand(const std::string&) const; /** < Synonym for operator[] */
 	const t_string& get_attribute(const std::string& key) const { return (*cfg_)[key]; }
-	void add_local_var(std::string var_name, config& var)
-		{ local_vars_.variables.add_child(var_name,var); }
-	void rem_local_var(std::string var_name)
-		{ local_vars_.variables.clear_children(var_name); }
 
 private:
 	const config* cfg_;
-	game_state local_vars_;
 };
 
 namespace variable
@@ -70,6 +65,21 @@ public:
 	~manager();
 };
 
+}
+
+
+
+class scoped_wml_variable
+{
+public:
+	scoped_wml_variable(const std::string var_name,const config&var_value);
+	~scoped_wml_variable();
+private:
+	config previous_val_;
+	std::string var_name_;
+};
+
+
 // Here should go a class which servers as a variable repository
 #if 0
 class repository
@@ -79,6 +89,5 @@ private:
 	config variables_;
 }
 #endif
-}
 
 #endif

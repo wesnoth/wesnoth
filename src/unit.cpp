@@ -712,12 +712,12 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc,bool use_flat_tod) const
+bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, bool use_flat_tod) const
 {
-	vconfig tmp_vconf(&orig_cfg);
 	config tmp_unit;
 	write(tmp_unit); // <-- performance bottleneck (maxy)
-	tmp_vconf.add_local_var("this_unit",tmp_unit);
+	scoped_wml_variable this_unit("this_unit",tmp_unit);
+	vconfig tmp_vconf(&orig_cfg);
 	config cfg = tmp_vconf.get_parsed_config();
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];

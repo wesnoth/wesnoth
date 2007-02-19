@@ -58,7 +58,7 @@ struct player_info
 	std::set<std::string> can_recruit; /** < units the player has the ability to recruit */
 };
 
-struct game_state : public variable_set
+class game_state : public variable_set
 {
 public:
 	game_state() : difficulty("NORMAL") {}
@@ -111,6 +111,7 @@ private:
 	void get_variable_internal_const(const std::string& key, const config& cfg,
 			const t_string** varout) const;
 };
+
 
 //class which contains the global status of the game -- namely
 //the current turn, the number of turns, and the time of day.
