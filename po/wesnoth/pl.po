@@ -1,3 +1,4 @@
+# translation of pl.po to
 # Polish translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -7,14 +8,16 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-17 20:05+0100\n"
-"PO-Revision-Date: 2006-09-11 10:49+0100\n"
+"PO-Revision-Date: 2007-02-19 15:53+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
-"Language-Team:  <grzywacz@sul.uni.lodz.pl>\n"
+"Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2)\n"
 
 #: data/abilities.cfg:8
 msgid "heals +4"
@@ -55,7 +58,7 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Leczy +8:\n"
-"Jednostka łączy leki ziołowe z magią, by leczyć jednostki szybciej i lepiej, "
+"Jednostka łączy leki ziołowe z magią, by leczyć jednostki szybciej i lepiej "
 "niż jest to zwykle możliwe w warunkach polowych.\n"
 "\n"
 "Jednostka pod opieką uzdrowiciela może odzyskać do 8 PŻ na turę lub nie "
@@ -82,7 +85,6 @@ msgid "regenerates"
 msgstr "regeneruje się"
 
 #: data/abilities.cfg:59
-#, fuzzy
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
@@ -192,7 +194,7 @@ msgid ""
 "units next to this unit."
 msgstr ""
 "Zasadzka:\n"
-"Jednostka umie ukrywać się w lesie i pozostawać niewidoczną dla wrogów.\n"
+"Jednostka potrafi ukrywać się w lesie i pozostawać niewidoczną dla wrogów.\n"
 "\n"
 "Jednostki nieprzyjaciela nie mogą zobaczyć ani zaatakować tej jednostki w "
 "lesie, chyba że atakowała ona w poprzedniej turze albo sąsiaduje z nią "
@@ -231,7 +233,7 @@ msgid ""
 "units next to this unit."
 msgstr ""
 "Zanurzenie:\n"
-"Jednostka może się ukryć w głębokiej wodzie, pozostając niezauważoną przez "
+"Jednostka może ukryć się w głębokiej wodzie, pozostając niezauważoną przez "
 "wrogów.\n"
 "\n"
 "Wrogie jednostki nie mogą zauważyć ani zaatakować tej jednostki, gdy "
@@ -250,7 +252,7 @@ msgid ""
 msgstr ""
 "Berserk:\n"
 "Ten typ ataku powoduje trwanie walki aż do śmierci jednego z uczestników lub "
-"wymiany 30 ciosów, i to zarówno podczas ataku, jak i obrony."
+"wymiany 30 ciosów i to zarówno podczas ataku, jak i obrony."
 
 #: data/abilities.cfg:422
 msgid "backstab"
@@ -316,7 +318,7 @@ msgstr ""
 
 #: data/abilities.cfg:470
 msgid "marksman"
-msgstr "strzelec"
+msgstr "strzelec wyborowy"
 
 #: data/abilities.cfg:472
 msgid ""
@@ -329,7 +331,7 @@ msgstr ""
 
 #: data/abilities.cfg:482
 msgid "magical"
-msgstr "magiczna"
+msgstr "magiczny"
 
 #: data/abilities.cfg:484
 msgid ""
@@ -402,7 +404,6 @@ msgid "poison"
 msgstr "trucizna"
 
 #: data/abilities.cfg:534
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -422,7 +423,7 @@ msgstr "Muzyka"
 
 #: data/about.cfg:77
 msgid "Sound effects"
-msgstr ""
+msgstr "Efekty dźwiękowe"
 
 #: data/about.cfg:86
 msgid "Scenario Designers"
@@ -585,9 +586,8 @@ msgid "Turkish Translation"
 msgstr "Tłumaczenie tureckie"
 
 #: data/about.cfg:572
-#, fuzzy
 msgid "Valencian Translation"
-msgstr "Tłumaczenie słoweńskie"
+msgstr "Tłumaczenie walenckie"
 
 #: data/about.cfg:579 data/help.cfg:252
 msgid "Contributors"
@@ -670,49 +670,44 @@ msgid "race^Undead"
 msgstr "Nieumarli"
 
 #: data/english.cfg:21
-#, fuzzy
 msgid "race^Dwarves"
 msgstr "Krasnoludy"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "Gobliny"
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
-msgstr "Nieumarli"
+msgstr "Jaszczury"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Mechaniczne"
 
 #: data/english.cfg:25
 msgid "race^Mermen"
-msgstr ""
+msgstr "Mermeni"
 
 #: data/english.cfg:26
 msgid "race^Monsters"
-msgstr ""
+msgstr "Potwory"
 
 #: data/english.cfg:27
-#, fuzzy
 msgid "race^Nagas"
-msgstr "Naga"
+msgstr "Nagi"
 
 #: data/english.cfg:28
 msgid "race^Ogres"
-msgstr ""
+msgstr "Ogry"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Trolls"
-msgstr "Troll"
+msgstr "Trolle"
 
 #: data/english.cfg:30
-#, fuzzy
 msgid "race^Woses"
-msgstr "Krasnoludy"
+msgstr "Drzewce"
 
 #: data/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
@@ -782,21 +777,19 @@ msgstr "na odległość"
 
 #: data/english.cfg:52
 msgid "Wesnoth unit list"
-msgstr ""
+msgstr "Lista jednostek Wesnoth"
 
 #: data/english.cfg:53
 msgid "Based on version"
-msgstr ""
+msgstr "Na podstawie wersji"
 
 #: data/english.cfg:54
-#, fuzzy
 msgid "Race"
-msgstr "buzdygan"
+msgstr "Rasa"
 
 #: data/english.cfg:55
-#, fuzzy
 msgid "Advance from:"
-msgstr "Awansuje na:"
+msgstr "Awans z"
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -872,7 +865,7 @@ msgstr "Broń specjalna"
 
 #: data/help.cfg:52
 msgid "Terrains"
-msgstr "Teren"
+msgstr "Typy terenu"
 
 #: data/help.cfg:59
 msgid "Commands"
@@ -924,11 +917,11 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Te strony przedstawiają wszystko, co musisz wiedzieć, by grać w Bitwę o "
-"Wesnoth. Omówione są podstawowe mechanizmy i sposoby gry. Wraz z postępem "
-"rozgrywki pojawiać się tu będą kolejne informacje dotyczące nowych aspektów "
-"gry. Bardziej szczegółowe wyjaśnienia specjalnych sytuacji i wyjątków od "
-"reguł znajdziesz pod odpowiednimi odsyłaczami."
+"Te strony przedstawiają wszystko, co należy wiedzieć, by grać w Bitwę o "
+"Wesnoth. Omówione zostały podstawowe mechanizmy i sposoby gry. Wraz z "
+"postępem rozgrywki pojawiać się tu będą kolejne informacje dotyczące nowych "
+"aspektów gry. Bardziej szczegółowe wyjaśnienia specjalnych sytuacji i "
+"wyjątków od reguł można znaleźć pod odpowiednimi odsyłaczami."
 
 #: data/help.cfg:82
 msgid ""
@@ -977,13 +970,13 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"Gra rozgrywa się na przestrzeni serii bitew, zwanych scenariuszami. W każdym "
+"Gra rozgrywa się na przestrzeni serii bitew zwanych scenariuszami. W każdym "
 "scenariuszu twoi żołnierze stawiają czoła wojsku jednego lub więcej "
 "przeciwników. Możesz grać przeciwko komputerowi lub przeciw przyjaciołom, "
 "którzy kolejno wykonują swoje tury siedząc przy tym samym komputerze. Jeśli "
 "twój komputer znajduje się w sieci, możesz grać przeciwko innym graczom "
-"podłączonym do niej. Jeśli twój komputer posiada połączenie z Internetem, "
-"możesz grać z graczami z całego świata."
+"podłączonym do niej. Jeśli twój komputer ma połączenie z Internetem, możesz "
+"grać z graczami z całego świata."
 
 #: data/help.cfg:93
 msgid ""
@@ -997,9 +990,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Każdy scenariusz ma określone cele, które są wyświetlane na jego początku i "
-"określają, co musisz zrobić, by wygrać, i czego unikać, by nie przegrać. "
-"Często celem jest pokonanie wszystkich wrogów, ale czasem musisz dotrzeć do "
+"Każdy scenariusz ma ustalone cele, które są wyświetlane na jego początku i "
+"określają, co należy zrobić, by wygrać, i czego unikać, by nie przegrać. "
+"Często celem jest pokonanie wszystkich wrogów, ale czasem trzeba dotrzeć do "
 "określonego miejsca, uratować kogoś, rozwiązać zagadkę albo po prostu "
 "przetrwać pewną liczbę tur."
 
@@ -1058,11 +1051,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jeśli kliknąłeś prawym przyciskiem myszy na puste pole zamku i wybrałeś "
-"Rekrutuj, nowa jednostka pojawi się w tym miejscu. W przeciwnym razie pojawi "
-"się ona na pierwszym wolnym miejscu w pobliżu twierdzy. Możesz rekrutować "
-"tylko tyle jednostek, ile masz wolnych miejsc w zamku. Nie możesz też wydać "
-"na rekrutację więcej złota, niż posiadasz."
+"Po kliknięciu prawym przyciskiem myszy pustego pola zamku i wybraniu "
+"polecenia Rekrutuj nowa jednostka pojawi się w tym miejscu. W przeciwnym "
+"razie pojawi się ona na pierwszym wolnym miejscu w pobliżu twierdzy. Możesz "
+"rekrutować tylko tyle jednostek, ile masz wolnych miejsc w zamku. Nie możesz "
+"też wydać na rekrutację więcej złota, niż posiadasz."
 
 #: data/help.cfg:105
 msgid ""
@@ -1073,8 +1066,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rekrutowane jednostki posiadają dwie losowe <ref>dst=traits text=Cechy</"
-"ref>, które wpływają na ich statystyki."
+"Rekrutowane jednostki mają dwie losowe <ref>dst=traits text=Cechy</ref>, "
+"które wpływają na ich statystyki."
 
 #: data/help.cfg:107
 msgid ""
@@ -1115,20 +1108,20 @@ msgid ""
 "units you control, this orb is:"
 msgstr ""
 "Na górze paska energii znajdującego się przy każdej twojej jednostce "
-"znajduje się kula. W przypadku jednostek, które kontrolujesz jest ona:"
+"znajduje się kula. W przypadku jednostek, które kontrolujesz, jest ona:"
 
 #: data/help.cfg:116
 msgid "green if it hasn't moved this turn,"
-msgstr "zielona, jeśli jednostka nie ruszyła się w tej turze"
+msgstr "zielona, jeśli jednostka nie ruszyła się w tej turze,"
 
 #: data/help.cfg:117
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"żółta, jeśli ruszyła się, ale nadal może się przemieszczać lub atakować, albo"
+"żółta, jeśli ruszyła się, ale nadal może przemieszczać się lub atakować albo"
 
 #: data/help.cfg:118
 msgid "red if it has used all its movement this turn."
-msgstr "czerwona, jeżeli zużyła w tej turze już wszystkie możliwości ruchu."
+msgstr "czerwona, jeżeli zużyła już wszystkie możliwości ruchu  w tej turze."
 
 #: data/help.cfg:119
 msgid "The orb is blue if the unit is an ally you do not control."
@@ -1228,7 +1221,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Każda jednostka posiada pewną liczbę punktów ruchu, zużywanych podczas "
+"Każda jednostka ma pewną liczbę punktów ruchu, zużywanych podczas "
 "przechodzenia na inne pole w ilości zależnej od typu terenu. Na przykład "
 "wejście na  łąkę prawie zawsze kosztuje 1 punkt. Koszt ruchu na danym typie "
 "terenu zależy od jednostki - w lasach elfy tracą tylko jeden punkt ruchu, "
@@ -1292,10 +1285,10 @@ msgstr ""
 "W miejscu zakrytym Całunem zarówno jednostki, jak i teren, stają się "
 "niewidoczne. Jednak gdy zostanie on odkryty, zawsze będziesz już widzieć "
 "wszystko, co się tam dzieje. Mgła wojny ukrywa przed tobą wyłącznie "
-"jednostki oraz posiadaczy wiosek (innych niż twoi sojusznicy). Zarówno Całun "
-"jak i Mgła wojny są usuwane przez jednostki. Każda jednostka odkrywa miejsca "
-"przyległe do pól, które znajdują się w zasięgu jednego jej ruchu (strefy "
-"kontroli i jednostki przeciwnika nie są uwzględniane)."
+"jednostki oraz posiadaczy wiosek (innych niż twoi sojusznicy). Zarówno "
+"Całun, jak i Mgła wojny są usuwane przez jednostki. Każda jednostka odkrywa "
+"miejsca przyległe do pól, które znajdują się w zasięgu jednego jej ruchu "
+"(strefy kontroli i jednostki przeciwnika nie są uwzględniane)."
 
 #: data/help.cfg:154
 msgid "Combat"
@@ -1381,8 +1374,8 @@ msgstr ""
 "\n"
 "Szansa trafienia jednostki zależy od jej umiejętności obrony w terenie, na "
 "którym się znajduje. Szansa jest widoczna na panelu statusu, sprawdzić można "
-"ją też w <italic>text='modyfikatorach terenu'</italic>, widocznych po "
-"kliknięciu prawym przyciskiem myszy na jednostce i wybieraniu 'Opis "
+"ją też w <italic>text='modyfikatorach terenu'</italic> widocznych po "
+"kliknięciu prawym przyciskiem myszy na jednostce i wybraniu pozycji 'Opis "
 "jednostki'. Na przykład współczynnik obrony elfów w lasach wynosi 70%, co "
 "oznacza, że jednostka je atakująca ma tylko 30% szans na trafienie. Szansa, "
 "że broniący się elf trafi atakującego, również zależy od typu terenu, na "
@@ -1432,7 +1425,7 @@ msgstr ""
 "Każdy celny cios zadaje podstawową ilość obrażeń, zależną od typu ataku. Na "
 "przykład elficki wojownik wykonujący mieczem atak 5-4 zadaje bazowo 5 "
 "punktów obrażeń. Liczba ta jest zazwyczaj modyfikowana przez dwa czynniki: "
-"<ref>dst=damage_types_and_resistance text=odporności</ref> i "
+"<ref>dst=damage_types_and_resistance text=odporność</ref> i "
 "<ref>dst=time_of_day text='porę dnia'</ref>. Aby zobaczyć, jak panujące "
 "warunki zmieniają podstawowe obrażenia, wybierz <italic>text='Obliczenia "
 "obrażeń'</italic> w menu wyboru ataku."
@@ -1513,7 +1506,7 @@ msgstr ""
 "\n"
 "\n"
 "Jeśli atak trafia, zawsze zadaje co najmniej 1 punkt obrażeń. Dzieje się tak "
-"nawet wtedy, gdy jeśli obrońca posiada 100% odporność na obrażenia tego typu."
+"nawet wtedy, gdy jeśli obrońca ma 100% odporności na obrażenia tego typu."
 
 #: data/help.cfg:188
 msgid "Time of Day"
@@ -1542,7 +1535,7 @@ msgstr ""
 "\n"
 "\n"
 "Aktualną porę dnia przedstawia rysunek znajdujący się pod minimapą na panelu "
-"statusu. W przypadku zwykłego cyklu dnia/nocy, ranek i popołudnie uważane są "
+"statusu. W przypadku zwykłego cyklu dnia/nocy ranek i popołudnie uważane są "
 "za dzień, a pierwsza i druga straż za noc:\n"
 
 #: data/help.cfg:195 data/schedules.cfg:5
@@ -1606,9 +1599,10 @@ msgstr ""
 "\n"
 "\n"
 "Jednostki wymagają pewnej ilości doświadczenia, by awansować (jednostki z "
-"cechą Inteligentny wymagają o 20% mniej doświadczenia). Gdy osiągną tą "
+"cechą Inteligentny wymagają o 20% mniej doświadczenia). Gdy osiągną tę "
 "ilość, natychmiast awansują na wyższy poziom, lecząc się przy tym "
-"całkowicie. W niektórych przypadkach otrzymasz możliwość wyboru drogi awansu."
+"całkowicie. W niektórych przypadkach pojawi się możliwość wyboru drogi "
+"awansu."
 
 #: data/help.cfg:214
 msgid ""
@@ -1633,14 +1627,14 @@ msgstr ""
 "\n"
 "Choć większość jednostek ma trzy poziomy, to zdarzają się wyjątki. Niektóre "
 "(takie jak <ref>dst=unit_Mage text=magowie</ref>) mogą mieć cztery. Gdy "
-"jednostka osiągnie maksymalny poziom może uzyskać Awans Po Ostatnim Poziomie "
-"(APOP). APOP zmienia jednostkę za każdym razem, gdy osiąga ona wymagany "
-"poziom doświadczenia, jednak jednostka pozostaje na tym samym poziomie. "
-"Typowym wpływem APOP na jednostkę jest podniesienie maksymalnej liczby PŻ o "
-"3. Pierwszy APOP jest na ogół osiągany po zdobyciu 100PD (80PD w przypadku "
-"jednostek inteligentnych). Zdobywanie kolejnych awansów jest jednak coraz "
-"trudniejsze i często bardziej korzystne jest awansowanie jednostek na "
-"niższych poziomach.\n"
+"jednostka osiągnie maksymalny poziom, może uzyskać Awans Po Ostatnim "
+"Poziomie (APOP). APOP zmienia jednostkę za każdym razem, gdy osiąga ona "
+"wymagany poziom doświadczenia, jednak jednostka pozostaje na tym samym "
+"poziomie. Typowym wpływem APOP na jednostkę jest podniesienie maksymalnej "
+"liczby PŻ o 3. Pierwszy APOP jest na ogół osiągany po zdobyciu 100PD (80PD w "
+"przypadku jednostek inteligentnych). Zdobywanie kolejnych awansów jest "
+"jednak coraz trudniejsze i często bardziej korzystne jest awansowanie "
+"jednostek na niższych poziomach.\n"
 "\n"
 "Należy pamiętać, że tylko niektóre jednostki (na przykład trupojad) leczą "
 "się przy osiągnięciu APOP. Większość jedynie otrzymuje premię do "
@@ -1658,10 +1652,10 @@ msgid ""
 "not. Wesnoth offers several other ways for your units to heal, all of which "
 "take place at the beginning of your turn, before you take action."
 msgstr ""
-"W walce twoje jednostki nie unikną obrażeń. Gdy jednostka "
+"Twoje jednostki nie unikną obrażeń w walce. Gdy jednostka "
 "<ref>dst=experience_and_advancement text='osiąga kolejny poziom'</ref>, "
-"odzyskuje ona wszystkie punkty życia. Może stać się to po zakończonej walce "
-"z przeciwnikiem, bez względu na to, w czyjej turze. Wesnoth daje kilka "
+"odzyskuje wszystkie punkty życia. Może stać się to po zakończonej walce z "
+"przeciwnikiem, bez względu na to, w czyjej turze. Wesnoth daje kilka "
 "możliwości leczenia jednostek, z których wszystkie mają miejsce na początku "
 "twojej tury, przed wykonaniem jakichkolwiek czynności."
 
@@ -1674,7 +1668,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Odpoczywanie: Jednostka, która nie rusza się, nie atakuje, ani nie jest "
+"Odpoczywanie: jednostka, która nie rusza się, nie atakuje, ani nie jest "
 "atakowana odzyska w następnej turze 2PŻ."
 
 #: data/help.cfg:223
@@ -1683,7 +1677,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Wioski: Jednostka, która rozpoczyna turę w wiosce odzyska 8PŻ."
+"Wioski: jednostka, która rozpoczyna turę w wiosce, odzyska 8PŻ."
 
 #: data/help.cfg:224
 msgid ""
@@ -1693,7 +1687,7 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneracja</ref>: Niektóre jednostki (na "
-"przykład trolle) automatycznie odzyskują 8PŻ w każdej turze."
+"przykład trolle) automatycznie odzyskują 8 PŻ w każdej turze."
 
 #: data/help.cfg:225
 msgid ""
@@ -1703,7 +1697,7 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Jednostki leczące: Jednostki z umiejętnością <ref>dst=ability_heals "
+"Jednostki leczące: jednostki z umiejętnością <ref>dst=ability_heals "
 "text=leczenia</ref> leczą sąsiadujące jednostki sojusznicze, zazwyczaj o 4 "
 "lub 8 PŻ na turę, lub sprawiają, że trucizna nie zadaje obrażeń."
 
@@ -1715,7 +1709,7 @@ msgid ""
 "it has that ability as well)."
 msgstr ""
 "\n"
-"Jednostki uzdrawiające: Jednostki z umiejętnością <ref>dst=ability_cures "
+"Jednostki uzdrawiające: jednostki z umiejętnością <ref>dst=ability_cures "
 "text=uzdrawiania</ref> leczą spod wpływu trucizny wszystkie sąsiadujące "
 "jednostki sojusznicze (ma to większy priorytet niż leczenie, jeżeli "
 "jednostka posiada i tę umiejętność)."
@@ -1744,7 +1738,7 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
-"By grać w Wesnoth, nie wystarczy po prostu rekrutować jednostek i walczyć. "
+"Aby grać w Wesnoth, nie wystarczy po prostu rekrutować jednostek i walczyć. "
 "Musisz również dbać o swoje złoto, szczególnie w kampaniach, gdzie możesz "
 "przenosić dodatkowe złoto z jednego scenariusza do następnego. Związane są z "
 "tym dwa pojęcia: dochód i utrzymanie."
@@ -1760,11 +1754,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Idea dochodu jest prosta. Twój podstawowy dochód wynosi 2 sztuki złota na "
-"turę, a za każdą kontrolowaną wioskę otrzymujesz każdej tury jedną sztukę "
-"złota. Zatem jeśli posiadasz dziesięć wiosek, w normalnych warunkach "
-"otrzymasz 12 sztuk złota. Od dochodu odejmowane są koszty utrzymania, co "
-"wyjaśniono niżej."
+"Idea dochodu jest prosta. Podstawowy dochód wynosi 2 sztuki złota na turę, a "
+"za każdą kontrolowaną wioskę otrzymujesz każdej tury jedną sztukę złota. "
+"Zatem jeśli posiadasz dziesięć wiosek, w normalnych warunkach otrzymasz 12 "
+"sztuk złota. Od dochodu odejmowane są koszty utrzymania, co wyjaśniono "
+"poniżej."
 
 #: data/help.cfg:238
 msgid ""
@@ -1782,8 +1776,8 @@ msgstr ""
 "Utrzymanie jest także dość proste. Każda jednostka wymaga każdej tury ilości "
 "złota równej jej poziomowi. Możesz utrzymać tyle jednostek (<italic>text='w "
 "przeliczeniu na poziomy'</italic>), ile masz wiosek, bez płacenia za ich "
-"utrzymanie. Dla każdego poziomu powyżej liczby wiosek kontrolowanych wiosek, "
-"musisz co turę zapłacić jedną sztukę złota. Na przykład jeśli masz dwanaście "
+"utrzymanie. Dla każdego poziomu powyżej liczby kontrolowanych wiosek musisz "
+"co turę zapłacić jedną sztukę złota. Na przykład jeśli masz dwanaście "
 "jednostek pierwszego poziomu i dziesięć wiosek, to płacisz dwie sztuki złota "
 "w każdej turze."
 
@@ -1798,8 +1792,8 @@ msgstr ""
 "\n"
 "\n"
 "Koszty utrzymania są odejmowane od dochodu, więc w przypadku dwunastu "
-"jednostek i dziesięciu wiosek, twój końcowy dochód wyniósłby 10 sztuk złota "
-"na turę."
+"jednostek i dziesięciu wiosek końcowy dochód wyniósłby 10 sztuk złota na "
+"turę."
 
 #: data/help.cfg:241
 msgid ""
@@ -1812,7 +1806,7 @@ msgstr ""
 "\n"
 "Od zwykłych reguł dotyczących utrzymania jest jeden ważny wyjątek: jednostki "
 "z cechą Lojalna nigdy nie wymagają utrzymania. Jednostki, z którymi "
-"zaczynasz scenariusz (takie jak Konrad lub Delfador), lub jednostki, które "
+"zaczynasz scenariusz (takie jak Konrad lub Delfador) lub jednostki, które "
 "dołączają do ciebie w jego trakcie (jak Jeźdźcy w drugim scenariuszu w "
 "Następcy Tronu), będą zazwyczaj lojalne."
 
@@ -1844,10 +1838,10 @@ msgid ""
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
-"Większość jednostek posiada dwie cechy, z wyjątkiem jednostek nieumarłych, "
-"do których przypisana jest cecha Nieumarły, oraz drzewców, które nie "
-"otrzymują żadnych cech. Cechy nieco modyfikują atrybuty jednostki i są "
-"zazwyczaj przydzielane losowo podczas rekrutacji."
+"Większość jednostek ma dwie cechy, z wyjątkiem jednostek nieumarłych, do "
+"których przypisana jest cecha Nieumarły, oraz drzewców, które nie otrzymują "
+"żadnych cech. Cechy nieco modyfikują atrybuty jednostki i są zazwyczaj "
+"przydzielane losowo podczas rekrutacji."
 
 #: data/help.cfg:267
 msgid ""
@@ -1906,7 +1900,7 @@ msgstr ""
 "poziomu. W dalszej części kampanii nie są już tak użyteczne, ponieważ Awans "
 "Po Ostatnim Poziomie (APOP) nie stanowi tak poważnej zmiany, jak osiągnięcie "
 "kolejnego poziomu. Jeśli masz sporo jednostek na \"maksymalnym poziomie\", "
-"będziesz raczej przywoływał te z bardziej użytecznymi cechami."
+"będziesz raczej przywoływać te z bardziej użytecznymi cechami."
 
 #: data/help.cfg:282
 msgid "Quick"
@@ -1995,7 +1989,7 @@ msgstr ""
 
 #: data/help.cfg:306
 msgid "Fearless"
-msgstr ""
+msgstr "Nieustraszony"
 
 #: data/help.cfg:307
 msgid "Aversion to light and dark holds no sway over these brave individuals."
@@ -2041,11 +2035,12 @@ msgid "trait^Undead"
 msgstr "Nieumarła"
 
 #: data/help.cfg:321
-#, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
-msgstr "Jednostki nieumarłe są odporne na truciznę."
+msgstr ""
+"Jednostki nieumarłe są odporne na truciznę oraz ataki z wyssaniem życia i "
+"zarazą."
 
 #: data/help.cfg:323
 msgid ""
@@ -2058,9 +2053,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\"Nieumarła\" jest jedyną cechą nieumarłych jednostek. Ponieważ są to ciała "
-"umarłych, które wskrzeszono, by znów walczyły, trucizna nie ma na nie "
-"żadnego wpływu. Czyni to je nieocenionymi w starciach z przeciwnikami, "
+"\"Nieumarła\" jest na ogół jedyną cechą nieumarłych jednostek. Ponieważ są "
+"to ciała umarłych, które wskrzeszono, by znów walczyły, trucizna nie ma na "
+"nie żadnego wpływu. Czyni to je nieocenionymi w starciach z przeciwnikami, "
 "którzy używają w swoich atakach trucizny."
 
 #: data/help.cfg:328
@@ -2091,7 +2086,7 @@ msgstr ""
 
 #: data/help.cfg:336
 msgid "Healthy"
-msgstr ""
+msgstr "Zdrowy"
 
 #: data/help.cfg:337
 msgid ""
@@ -2140,7 +2135,6 @@ msgid "Forest"
 msgstr "Las"
 
 #: data/help.cfg:368
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -2171,7 +2165,8 @@ msgstr ""
 "Większość jednostek ma w lasach obronę na poziomie 50%, ale kawaleria jest "
 "ograniczona do 40%. Z kolei elfy cieszą się w nich obroną od 60 do 70%, "
 "włącznie z jednostkami konnymi. Krasnoludy na ogół mają w lasach obronę "
-"zaledwie 30%."
+"zaledwie 30%.\n"
+"\n"
 
 #: data/help.cfg:373 data/terrain.cfg:521
 msgid "Hills"
@@ -2189,16 +2184,16 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"Wzgórza reprezentują każdy względnie nierówny teren, ze sporą liczbą spadków "
+"Wzgórza reprezentują każdy względnie nierówny teren ze sporą liczbą spadków "
 "i wzniesień, które umożliwiają schronienie się. Większość żołnierzy ma "
 "problemy z poruszaniem się na wzgórzach. Krasnoludy, trolle i orki znają je "
 "na tyle, że przemieszczają po nich bez utraty szybkości. Kawaleria ma na "
 "tyle duże trudności z jazdą w tym terenie, że możliwość ukrycia się "
 "całkowicie traci na znaczeniu.\n"
 "\n"
-"Większość jednostek posiada na wzgórzach obronę na poziomie 50%, lecz "
-"kawaleria jest ograniczona do 40%. Krasnoludy korzystają na wzgórzach z "
-"obrony na poziomie 60%."
+"Większość jednostek ma na wzgórzach obronę na poziomie 50%, lecz kawaleria "
+"jest ograniczona do 40%. Krasnoludy korzystają na wzgórzach z obrony na "
+"poziomie 60%."
 
 #: data/help.cfg:383 data/terrain.cfg:534 data/terrain.cfg:544
 msgid "Mountains"
@@ -2308,10 +2303,9 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in snow."
 msgstr ""
-"Śnieg reprezentuje dowolną płaską przestrzeń, która jest zamarznięta, czy to "
-"na stałe (jak tundra), czy tymczasowo (jak pokryta śniegiem trawa). "
-"Większość jednostek porusza się na nim wolniej i mają problemy z bronieniem "
-"się.\n"
+"Śnieg reprezentuje dowolną płaską przestrzeń, która jest zamarznięta na "
+"stałe (jak tundra), lub tymczasowo (jak pokryta śniegiem trawa). Większość "
+"jednostek porusza się na nim wolniej i mają problemy z bronieniem się.\n"
 "\n"
 "Większość jednostek posiada na śniegu obronę na poziomie 20 do 40%."
 
@@ -2335,7 +2329,6 @@ msgid "Castle"
 msgstr "Zamek"
 
 #: data/help.cfg:448
-#, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2354,7 +2347,8 @@ msgstr ""
 "obsadzony jednostkami, wróg może po prostu wkraść się do zamku, zyskując "
 "taką samą premię do obrony jak każdy z obrońców.\n"
 "\n"
-"Większość jednostek ma w zamku obronę rzędu 60%."
+"Większość jednostek ma w zamku obronę rzędu 60%.\n"
+"\n"
 
 #: data/help.cfg:453 data/terrain.cfg:402
 msgid "Sand"
@@ -2513,7 +2507,6 @@ msgid "Village"
 msgstr "Wioska"
 
 #: data/help.cfg:526
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2534,7 +2527,8 @@ msgstr ""
 "wyleczone z trucizny.\n"
 "\n"
 "Większość jednostek otrzymuje w wioskach współczynnik obrony na poziomie od "
-"50 do 60%, choć w przypadku kawalerii jest to tylko 40%."
+"50 do 60%, choć w przypadku kawalerii jest to tylko 40%.\n"
+"\n"
 
 #: data/help.cfg:531 data/terrain.cfg:558
 msgid "Chasm"
@@ -2549,7 +2543,7 @@ msgid ""
 msgstr ""
 "Otchłań to szczelina w ziemi prowadząca w niezbadane głębiny. Charakteryzują "
 "ją strome ściany, których pokonanie zabrałoby całe dnie. Z punktu widzenia "
-"rozgrywki, otchłanie mogą przekraczać wyłącznie jednostki latające."
+"rozgrywki otchłanie mogą przekraczać wyłącznie jednostki latające."
 
 #: data/help.cfg:539 data/terrain.cfg:567
 msgid "Lava"
@@ -2565,7 +2559,7 @@ msgid ""
 msgstr ""
 "Niebezpieczeństwa związane z chodzeniem po lawie są dość oczywiste. Tylko "
 "jednostki potrafiące latać na znacznej wysokości mogą przekraczać ten typ "
-"terenu. Płynna magma wytwarza też jasny blask, który oświetla wszystko co "
+"terenu. Płynna magma wytwarza też jasny blask, który oświetla wszystko, co "
 "się nad nią znajduje. Zapewnia to premię do ataku jednostkom praworządnym i "
 "odbiera ją chaotycznym."
 
@@ -2652,47 +2646,46 @@ msgid "General commands"
 msgstr "Komendy ogólne"
 
 #: data/help.cfg:585
-#, fuzzy
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Zakończ scenariusz (bez potwierdzenia)."
+"Zakończ scenariusz (bez potwierdzenia).\n"
+"\n"
 
 #: data/help.cfg:588
-#, fuzzy
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Zapisz grę (bez potwierdzenia)."
+"Zapisz grę (bez potwierdzenia).\n"
+"\n"
 
 #: data/help.cfg:591
-#, fuzzy
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Zapisz grę i zakończ scenariusz (bez potwierdzenia)."
+"Zapisz grę i zakończ scenariusz (bez potwierdzenia).\n"
+"\n"
 
 #: data/help.cfg:594
-#, fuzzy
 msgid ""
 "\n"
 "Redraw the screen.\n"
 "\n"
 msgstr ""
 "\n"
-"Przerysuj zawartość ekranu."
+"Przerysuj ekran.\n"
+"\n"
 
 #: data/help.cfg:597
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2700,22 +2693,19 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Przełącz na tryb debugowania (nie działa w grze wieloosobowej). Wyłączyć go "
-"można tylko wychodząc z gry."
+"Przełącz w tryb debugowania (nie działa w grze wieloosobowej). Wyłączyć go "
+"można tylko wychodząc z gry.\n"
+"\n"
 
 #: data/help.cfg:598
-#, fuzzy
 msgid "Bring up theme selection menu."
-msgstr ""
-"\n"
-"Pokaż menu wyboru motywu graficznego."
+msgstr "Pokaż menu wyboru motywu graficznego."
 
 #: data/help.cfg:603
 msgid "Multiplayer commands"
 msgstr "Komendy gry wieloosobowej"
 
 #: data/help.cfg:607
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2726,20 +2716,20 @@ msgstr ""
 "\n"
 "Przełączanie kontrolera gracza strony \"side\" między człowiekiem a "
 "komputerem. Komendę tę musi wydać gracz kontrolujący daną stronę. Jeżeli "
-"strona nie zostanie podana, wartością domyślną jest \"1\"."
+"strona nie zostanie podana, wartością domyślną jest \"1\".\n"
+"\n"
 
 #: data/help.cfg:610
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Odbierz/daj głos obserwatorom."
+"Odbierz/daj głos obserwatorom.\n"
+"\n"
 
 #: data/help.cfg:613
-#, fuzzy
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2748,10 +2738,10 @@ msgid ""
 msgstr ""
 "\n"
 "Odbierz głos konkretnemu obserwatorowi (\"username\"). Jeżeli nie podano "
-"nazwy użytkownika, wyświetlana jest lista pozbawionych głosu."
+"nazwy użytkownika, wyświetlana jest lista pozbawionych głosu.\n"
+"\n"
 
 #: data/help.cfg:616
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2762,10 +2752,10 @@ msgstr ""
 "\n"
 "Wyrzuć użytkownika \"user\" z gry wieloosobowej. Będzie mógł ponownie "
 "przyłączyć się do gry. Jest to ogólnie przyjazny sposób usunięcia kogoś, kto "
-"ma problemy z połączeniem lub podobne."
+"ma problemy z połączeniem lub podobne.\n"
+"\n"
 
 #: data/help.cfg:619
-#, fuzzy
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -2774,10 +2764,10 @@ msgid ""
 msgstr ""
 "\n"
 "Wyrzuć na stałe użytkownika \"user\" z gry wieloosobowej oraz zablokuj "
-"dostęp z adresu IP mu odpowiadającego."
+"dostęp z adresu IP mu odpowiadającego.\n"
+"\n"
 
 #: data/help.cfg:622
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2786,7 +2776,8 @@ msgid ""
 msgstr ""
 "\n"
 "Zmień kontrolera danej strony \"side\" (podając jej numer) na \"username"
-"\" (podaj ksywkę obserwującego gracza)."
+"\" (podaj ksywkę obserwującego gracza).\n"
+"\n"
 
 #: data/help.cfg:623
 msgid ""
@@ -2813,7 +2804,7 @@ msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
-"Poprzez tę złotą monetę, proszę o szybkie i bezpieczne zwycięstwo w tej "
+"Poprzez tę złotą monetę proszę o szybkie i bezpieczne zwycięstwo w tej "
 "bitwie."
 
 #: data/items.cfg:283
@@ -2826,11 +2817,11 @@ msgstr "Proszę, aby ta złota moneta wróciła do mnie po dziesięćkroć."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
-msgstr "O pokój w całym Wesnoth"
+msgstr "O pokój w całym Wesnoth."
 
 #: data/items.cfg:306
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr "Jedyną rzeczą, o którą można prosić jest pokój na całej tej ziemi."
+msgstr "Jedyną rzeczą, o którą można prosić, jest pokój na całej tej ziemi."
 
 #: data/items.cfg:313
 msgid "Don't make a wish."
@@ -3018,6 +3009,65 @@ msgid ""
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
 "Amithrarion,Cálad,Legilad"
 msgstr ""
+"Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
+"Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
+"Amowyn,Háriand,Beliril,Mylith,Giombor,Fer,Roldur,Cithraldur,Elvaramir,Sénd,"
+"Cylas,Thrilmandel,Rorfindil,Uradrielas,Sénd,Hil-Garion,Fithraril,Unorfiril,"
+"Eäryldur,Eärithrandil,Cithrand,Unálas,Elyrion,Glul,Vebrilas,Lómorfindil,"
+"Hithrandel,Gil-Gang,Hilas,Gil-Gandel,Eowarar,Carang,Lómariand,Isilmandel,"
+"Uril-Gambor,Hénduil,Unaraldur,Galithrariand,Hirion,Anilmambor,Celadrieriand,"
+"Róldur,Eärérion,Calónduil,Anerion,Elvélith,Eliondil,Lómebrind,Isándir,"
+"Eowówyn,Belel,Cáldur,Tadriendir,Vunduil,Belólad,Thrélad,Isadrieng,Eowil-"
+"Garion,Tinyl,Tinun,Lómémbor,Urálith,Celong,Horfilad,Iselas,Galálad,Norfildor,"
+"Thrithran,Unil-Gan,Gloldor,Celarandil,Delánd,Maldur,Celyndel,Ról,Vandir,"
+"Glómir,Unadrieldor,Elvandir,Vebril,Unólith,Maraldur,Elvilmaril,Isól,Legaran,"
+"Farandir,Nél,Glandil,Galalith,Galálas,Elebrildor,Sóriand,Elvóriand,Pindir,"
+"Anán,Amiorion,Amorfimir,Isarandel,Thril-Gamir,Taraldur,Amundil,Unorfildor,"
+"Glararil,Sólad,Fáwyn,Tinarambor,Tinil-Ganduil,Padrieriand,Ameldor,Gyl,"
+"Unebrind,Celebririon,Corfildur,Canduil,Glámbor,Urul,Elran,Glilmal,Porfildur,"
+"Cadrieriand,Delaraldur,Galelas,Hebril,Varalas,Celér,Nóndel,Eladrieng,"
+"Elvorfiriand,Delandel,Delorfilad,Méng,Lómowyn,Elélas,Unebrin,Anithranduil,"
+"Celáriand,Threbring,Belyrion,Belilmand,Numbor,Vóldur,Tinorfind,Gambor,"
+"Thrambor,Táriand,Eäradriendel,Rówyn,Elvémir,Elvorfiril,Calioriand,Delóldor,"
+"Tinóriand,Eowaraldor,Vel,Galémbor,Elrithralith,Elánd,Fadriendel,Deláril,"
+"Fandel,Cindil,Unalas,Delawyn,Fyrion,Eowylas,Eowithrawyn,Elvombor,Vuldur,"
+"Legorfindil,Unombor,Gadrieng,Amilmandir,Elrioldor,Calil-Gawyn,Eäréldor,"
+"Glólas,Norfindir,Unorfiwyn,Amind,Sóriand,Isóndel,Caliril,Eowaran,Elolas,"
+"Fendel,Tówyn,Hiong,Elvebrindel,Eowar,Vulas,Legémir,Torfildur,Col,Isorfilad,"
+"Elilmaldur,Celuwyn,Gymbor,Hundel,Elen,Isarar,Delán,Thrimir,Tinilmand,"
+"Tinithrar,Elvioldur,Tendel,Harariand,Rithrandil,Garaldor,Lómarand,Celór,"
+"Elvorfimir,Galar,Paraldor,Morfiriand,Celang,Amóldor,Vararion,Belondel,Hywyn,"
+"Legiondel,Elyldor,Eärorfiriand,Glarang,Gor,Throlas,Gararil,Norfilith,Deliwyn,"
+"Nyldur,Vólas,Isér,Eowanduil,Eowiomir,Belithraldor,Elemir,Amiol,Urálas,Belil-"
+"Gandil,Nalith,Thréldur,Gán,Eowimbor,Padrieril,Anorfing,Rebrir,Anilmariand,"
+"Rilmandil,Thryriand,Isyndel,Celorion,Isóng,Sadrielas,Pór,Thraral,Miolith,"
+"Elil-Garil,Vándel,Cówyn,Unóndel,Uniolith,Legówyn,Vylas,Unulad,Legal,Celelas,"
+"Galeldur,Amendel,Amorfir,Elvilmaldur,Eäránduil,Til-Gan,Nilmar,Eäradrier,"
+"Celior,Sebrin,Pyldur,Urér,Fioril,Anebrin,Hemir,Thrón,Glal,Mondir,Cénduil,"
+"Galur,Glimir,Anior,Tinoldor,Ván,Hilmariand,Lómebrilad,Gyn,Legyn,Vol,Cun,"
+"Lómadrieril,Amadrieriand,Eowémir,Belómir,Elrithranduil,Gumbor,Célad,Anebrir,"
+"Téwyn,Táriand,Géril,Elreldur,Legil-Gal,Eärebrindel,Elvund,Unil,Pilmalad,"
+"Deléng,Tinowyn,Cundir,Gadriendil,Eowariand,Ciong,Morfin,Nadrieldor,Elrorfir,"
+"Hymir,Elvebrind,Urambor,Thrund,Anénduil,Anon,Elrilmand,Cithraril,Mithrand,"
+"Caraldur,Eowóldur,Glior,Elváwyn,Legithralith,Vólas,Calándel,Caldur,Lómariand,"
+"Elebriril,Celundir,Eoworfildor,Celiorion,Elor,Elváwyn,Lómilmaril,Delilmaldor,"
+"Amelad,Tion,Unál,Calebrindel,Amilmalith,Eäryriand,Unondir,Isuwyn,Elralith,"
+"Belilmang,Eowarar,Sil-Gal,Calil-Gandir,Glon,Deliol,Sebriril,Elémbor,"
+"Calebrindir,Celilmalas,Elverion,Cithrandel,Anémbor,Uradrierion,Ganduil,"
+"Parariand,Pumbor,Githral,Galoldur,Rorfilad,Tinorfiriand,Vondel,Tinimir,"
+"Sorfind,Uróldor,Delithrar,Galurion,Elval,Tinond,Delorion,Taral,Thróng,"
+"Madrieril,Isithral,Belarandel,Celendel,Gladriendil,Lómiriand,Legéril,Nán,"
+"Vilith,Belén,Elriolith,Delundil,Anilad,Celaral,Ameng,Mérion,Eowarion,"
+"Tilmalad,Elvil-Garion,Cithralad,Ryn,Tinén,Elólas,Belandil,Golad,Miomir,Tolas,"
+"Urilmalith,Norfindil,Mánduil,Githralad,Legorfirion,Móndir,Hyrion,Anundil,"
+"Tinilmawyn,Legyl,Elradrien,Anil-Gawyn,Tinandir,Uneldor,Amulas,Válad,Amulas,"
+"Celiondir,Thradrieriand,Réndir,Elvónduil,Urorfildor,Vyldor,Galelith,Caloril,"
+"Amáril,Belithrawyn,Cadriembor,Tilmalas,Thril-Gar,Elálith,Vorfin,Eowebrind,"
+"Nil-Galas,Eowambor,Morfilas,Thrion,Róldor,Filman,Unioril,Forfilas,"
+"Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
+"Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
+"Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
+"Amithrarion,Cálad,Legilad"
 
 #: data/names.cfg:3
 msgid ""
@@ -3087,6 +3137,71 @@ msgid ""
 "Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
 "Eowathiel,Iséng,Legondra,Celorfilindë"
 msgstr ""
+"Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
+"Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
+"Belaraviel,Vódia,Vadriewen,Legadien,Glithiel,Nowen,Elviondra,Cithrania,"
+"Isithradien,Legithrandra,Tilmaclya,Galadriethien,Rorfiviel,Thryng,Unindra,"
+"Lómeniel,Deliowen,Corfiviel,Eärániel,Eärélia,Feclya,Vorfing,Tinóng,Celith,"
+"Celelith,Sadrienia,Deléthien,Uradriedia,Pulia,Lómuthiel,Elvyniel,Réviel,"
+"Parandra,Galaraniel,Til-Gandra,Isilindë,Belendra,Galorfiwiel,Mil-Gathien,"
+"Lómilindë,Elvithrang,Uránia,Cádë,Eäradriedien,Belarania,Legelith,Lómythien,"
+"Legethiel,Godien,Goclya,Elywen,Githrawiel,Galowen,Glilmawiel,Fadrielia,"
+"Galedien,Miowen,Tinorfilith,Amuwen,Silmathiel,Hódia,Hiwien,Anilmarith,Sáng,"
+"Amionia,Miowiel,Gadrieclya,Celódith,Amorith,Amodë,Thrália,Fil-Gathiel,"
+"Eäréwiel,Delil-Ganiel,Unynia,Belithraniel,Caladrieng,Eäriolith,Celarandra,"
+"Elorfing,Sothien,Amiwen,Deloviel,Celália,Glália,Anaraclya,Mithradë,Eowylia,"
+"Celindë,Legádë,Amiolith,Urilmawiel,Elvil-Gawien,Thrulith,Padriedith,Viowiel,"
+"Elrithradith,Elvánia,Violindë,Lómániel,Pong,Mithralindë,Amithrawien,Mil-"
+"Gathiel,Celioniel,Uryrith,Soniel,Lómulindë,Eärilmathien,Hódia,Tithrathien,"
+"Tówiel,Glowiel,Aniorith,Uniong,Tinorfithien,Madrieclya,Sadrierith,Vówien,"
+"Reniel,Legil-Galindë,Amewien,Nithrarith,Vebrithien,Ril-Gawien,Fólindë,"
+"Galebrindra,Pilindë,Nithraniel,Gólia,Medien,Munia,Cithralith,Eärithrang,"
+"Throng,Eledë,Cithrawen,Thrithradia,Calóniel,Elilmalia,Rindra,Eladriedë,"
+"Lómebriniel,Ceclya,Calówien,Hiodë,Calewen,Gebririth,Tinerith,Sarandra,"
+"Eowebridith,Eärarawien,Eluviel,Sendra,Héclya,Sálindë,Fódë,Throlith,Varawiel,"
+"Elrithiel,Celebriniel,Hythien,Myndra,Urithralindë,Calándra,Delorfilindë,Fil-"
+"Galia,Gloviel,Eowidien,Delebrinia,Puthien,Elvádia,Elrilindë,Legadriedë,"
+"Vithraniel,Módia,Lómithradë,Elradrierith,Hythiel,Glilmadien,Thradia,"
+"Vadrierith,Beliolia,Gil-Gawien,Lómuniel,Milindë,Elóndra,Elvyviel,Glorfilith,"
+"Pebridien,Galándra,Fulindë,Galiothiel,Gléndra,Calánia,Eowedith,Elrebridith,"
+"Anuthiel,Gioviel,Mywiel,Tinawiel,Hedia,Amebrilindë,Eärewen,Isendra,Lómudia,"
+"Tiorith,Lómorfing,Anythien,Eowil-Galindë,Thrithraniel,Amil-Garith,Belowen,"
+"Elynia,Elvithrathien,Tinálindë,Helith,Beladriewien,Fáwien,Lómithrarith,"
+"Calorfiniel,Galéwiel,Lómebriclya,Lómolith,Anáthien,Módë,Hunia,Tinaraniel,"
+"Vithrang,Pil-Gadia,Eluviel,Fáthiel,Elarawiel,Unénia,Sithrang,Celadë,"
+"Beladrielith,Elriwen,Meclya,Pádia,Lómóndra,Elvil-Gawien,Tiniolith,Elelith,"
+"Thraraviel,Eowarawien,Giowen,Eärorfiwien,Amarang,Newen,Náviel,Amithrawien,"
+"Caluclya,Galothiel,Paralindë,Celorfing,Elránia,Mebriwiel,Anebriniel,"
+"Tilmaviel,Fadriendra,Unulindë,Haviel,Elilmawien,Celylia,Thrithrandra,"
+"Lómiclya,Féthiel,Celália,Eowalia,Huclya,Horfiwien,Elrilmathien,Unionia,"
+"Gioniel,Elrilmandra,Delararith,Uraclya,Huthien,Celéng,Isil-Garith,Lómudia,"
+"Thrérith,Amadrielindë,Eladrielia,Amuviel,Legadrieclya,Legilmadith,"
+"Belebrindra,Lómódë,Uniolia,Gadrieviel,Galilmadia,Filmaclya,Naraniel,"
+"Calilmalith,Hil-Gania,Anuthien,Elviniel,Elebrindra,Legadrieniel,Galundra,"
+"Anylindë,Celówien,Thridith,Niolia,Falindë,Milith,Anundra,Lómorith,Delararith,"
+"Anywien,Saradith,Galédë,Háwien,Celérith,Niothien,Elvilmathiel,Hewen,Isóthien,"
+"Hóthiel,Celebriviel,Moniel,Elithradien,Vorficlya,Glebrithien,Golindë,Viwiel,"
+"Sethien,Sioclya,Hodia,Taradien,Fadrienia,Githrania,Calil-Galith,Elréthiel,"
+"Legithrania,Calewiel,Isebridien,Thredien,Tinudia,Tinadriethien,Galithrathien,"
+"Mádia,Isadrieng,Celárith,Isebrinia,Amorfilith,Sédith,Eärudë,Eärenia,"
+"Belithrawien,Amil-Gadith,Vadrieviel,Lómilmathiel,Tinebrithiel,Eowilindë,"
+"Terith,Calang,Celararith,Glodith,Siorith,Beladriewen,Fioniel,Amulia,Nydith,"
+"Lómilmawiel,Gáviel,Belulindë,Legorfidë,Unáthien,Porfindra,Calithraclya,"
+"Celorfiwien,Analia,Elithraclya,Delóndra,Unóndra,Nilmadia,Riothien,Guviel,"
+"Elrorfidia,Horfinia,Uriolia,Delithrathiel,Legéniel,Calebriwien,Delorfithien,"
+"Unebridë,Legeng,Thrinia,Galolindë,Galyniel,Vorfirith,Syniel,Harawiel,"
+"Vorfiwiel,Porfiwien,Isithrarith,Maraclya,Amadriendra,Gilia,Fadriedith,Amedë,"
+"Celidien,Legolith,Unuviel,Nil-Gang,Celithradith,Pindra,Póviel,Elil-Gang,"
+"Galebrilia,Tathiel,Unadrieng,Isithrawiel,Amadrielia,Nawen,Tang,Cydia,"
+"Silmaclya,Cadriewen,Threbriniel,Urilmadia,Thruthien,Ureclya,Galólia,"
+"Sithrawen,Elródith,Throthiel,Lómedia,Pawen,Legilmawiel,Legebrilia,Urárith,"
+"Unilmadia,Morfilindë,Iseviel,Améthien,Gloclya,Cing,Legithralindë,Isáwen,"
+"Sothiel,Eowiowien,Uruthien,Amadriewen,Vóng,Róng,Eärilmadë,Anówien,Tuniel,"
+"Tarathiel,Lómynia,Celiodë,Pil-Gadien,Belithrawiel,Gathien,Anang,Vorfing,"
+"Tinarathien,Fil-Gawien,Amilmadia,Amithraniel,Cethien,Gloclya,Hyclya,"
+"Isithradë,Legidia,Celálindë,Galil-Gania,Tinil-Gania,Eowyniel,Cólindë,"
+"Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
+"Eowathiel,Iséng,Legondra,Celorfilindë"
 
 #: data/names.cfg:7
 msgid ""
@@ -3141,6 +3256,56 @@ msgid ""
 "Cubryn,Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
 "Gwaeddyn,Saenvan,Todd,Tegwyn"
 msgstr ""
+"Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,Owaecyn,"
+"Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,Yryrcyn,Glynvan,"
+"Ryddry,Saemyr,Dibryn,Owuddry,Gloddyn,Gladoc,Yroddry,Bladoc,Addreonyc,Rheoran,"
+"Tiryn,Glynry,Rhaemyr,Gweddyn,Cemyr,Mimyr,Caraennyn,Careorraent,Gwor,Cin,Goc,"
+"Glydd,Oweomyr,Carraent,Gubryn,Gannyn,Aethadry,Aethonnyn,Blygwyn,Laellyn,"
+"Carudoc,Ladoc,Blercyn,Carocyn,Aetheoc,Rumyr,Gaercyn,Careogwyn,Caryn,Careddry,"
+"Owarcyn,Daeddry,Mubryn,Gwymyr,Blaedry,Owaryn,Addreddry,Owaryn,Taedoc,"
+"Addraecyn,Morcyn,Vugwyn,Rhenry,Blullyn,Dycyn,Daeddry,Blydd,Seddyn,Teoddyn,"
+"Gwaec,Rycyn,Rhobryn,Gwyddry,Tudoc,Roddyn,Oweran,Ceoddyn,Blubryn,Glonry,Sedry,"
+"Owecyn,Blydd,Owinyc,Gwuran,Yryllyn,Tunvan,Gwan,Carac,Cebryn,Murcyn,Ronry,"
+"Geodry,Midry,Gweogwyn,Aethec,Blinvan,Rhyrraent,Aethaeryn,Seoddry,Caradoc,"
+"Aethenvan,Sanyc,Aethaec,Gwumyr,Teorcyn,Lenvan,Rabryn,Yrynyc,Murcyn,Mydoc,"
+"Yrannyn,Rhobryn,Oworraent,Owac,Vuddyn,Gwellyn,Glaercyn,Yregwyn,Oweorcyn,"
+"Addrenyc,Rhaedoc,Carocyn,Rhonvan,Owercyn,Dadd,Corcyn,Addrocyn,Yreryn,Tinry,"
+"Rharcyn,Rar,Addroryn,Tabryn,Blinvan,Addrunvan,Derraent,Leogwyn,Virraent,"
+"Gwudoc,Lercyn,Glarraent,Caren,Liryn,Gwegwyn,Ligwyn,Gwybryn,Lin,Veoddyn,Owodd,"
+"Cariddry,Glonvan,Gymyr,Aethuc,Careonvan,Aethudry,Addreoddyn,Gweocyn,Vonry,"
+"Rhygwyn,Rhyrcyn,Rhur,Deonyc,Veocyn,Siryn,Teobryn,Yraec,Gweodry,Caroran,"
+"Caraedry,Vaennyn,Moddry,Vaeddyn,Caredd,Siddry,Aethacyn,Rheorraent,Rhubryn,"
+"Addrurcyn,Sodry,Rhunyc,Gweodd,Reoddyn,Vinyc,Glydoc,Sodd,Dyddyn,Dinnyn,Ruddry,"
+"Addraryn,Gwollyn,Rurcyn,Glinry,Blyr,Aetharcyn,Blybryn,Addraercyn,Cararyn,"
+"Carygwyn,Menvan,Caric,Turraent,Oworcyn,Gwennyn,Meorraent,Ludoc,Aethoddyn,"
+"Glyc,Oworan,Simyr,Aethugwyn,Gwynnyn,Glunry,Cynyc,Addregwyn,Maddyn,Gecyn,"
+"Deollyn,Gwidoc,Meon,Goc,Sudd,Yredd,Addredry,Caeran,Vobryn,Saellyn,Surcyn,"
+"Taercyn,Labryn,Yran,Ceomyr,Caroddyn,Deodd,Glunvan,Gwoddyn,Addrocyn,Aethydry,"
+"Carygwyn,Aethynyc,Aetheorcyn,Taec,Rocyn,Laellyn,Tinvan,Owaedry,Teor,Ceonnyn,"
+"Rynry,Lunnyn,Myn,Rynnyn,Dac,Owaddyn,Vyc,Bliddry,Gur,Gwumyr,Owinvan,Maennyn,"
+"Veogwyn,Blenvan,Owur,Curyn,Gleoddyn,Aethec,Aethanry,Lec,Blanry,Vaddyn,Modd,"
+"Gaddry,Yrinvan,Blidd,Rheran,Veomyr,Owadd,Saran,Gullyn,Owollyn,Aethiddry,"
+"Gloddry,Carullyn,Secyn,Manyc,Romyr,Vinvan,Careoryn,Gegwyn,Gleddry,Tennyn,"
+"Manry,Syran,Gor,Ceoddry,Aethobryn,Yrunvan,Yraryn,Oweor,Daellyn,Mec,Lannyn,"
+"Owyran,Lemyr,Rhaedoc,Yrullyn,Syryn,Bludry,Bledoc,Caregwyn,Tuddry,Careobryn,"
+"Addrenyc,Aethellyn,Veodry,Meonnyn,Myrraent,Addraer,Aethun,Coc,Sarraent,"
+"Rheollyn,Reodry,Blucyn,Caedry,Mudoc,Sydd,Carygwyn,Cadry,Gwucyn,Ten,Ron,Lan,"
+"Owoddry,Owugwyn,Tarcyn,Owuddyn,Rhenvan,Tanry,Aetheonyc,Caraddry,Blaec,"
+"Yrunnyn,Glircyn,Aetherraent,Rheoddyn,Cennyn,Ginvan,Gweoran,Gumyr,Blymyr,"
+"Rygwyn,Gagwyn,Addrynvan,Rherraent,Yrymyr,Laran,Rubryn,Ceoc,Gwodd,Gwadoc,"
+"Gwenyc,Corcyn,Gaebryn,Gwydoc,Yrumyr,Caregwyn,Rheollyn,Rhollyn,Gliddyn,Owedry,"
+"Aethercyn,Caryn,Saec,Vogwyn,Lorraent,Mygwyn,Cac,Mac,Tarcyn,Tenvan,Ronry,"
+"Gwaec,Seorcyn,Soran,Luddry,Addreran,Yranvan,Gwidoc,Ceonry,Glacyn,Varcyn,"
+"Vyrcyn,Terraent,Blillyn,Run,Ligwyn,Rhyllyn,Sercyn,Denvan,Convan,Owogwyn,Gar,"
+"Glumyr,Rheodd,Cicyn,Blac,Daedoc,Gweodoc,Addreorcyn,Caercyn,Rhynyc,Lunnyn,"
+"Dadoc,Sellyn,Aethaeran,Gydoc,Sodry,Tyddyn,Rhaerraent,Gan,Lunvan,Saercyn,"
+"Gaedry,Rhodry,Taenvan,Radd,Caror,Monry,Mugwyn,Meollyn,Glun,Moran,Rybryn,"
+"Aethibryn,Gwaec,Addryllyn,Caebryn,Cinry,Ranvan,Blemyr,Addriddyn,Rhugwyn,"
+"Gwycyn,Blebryn,Yranvan,Teddyn,Vaedry,Addreoddry,Taedd,Cyryn,Yrirraent,"
+"Aethercyn,Middry,Lurraent,Bleollyn,Aethircyn,Ven,Modd,Ceoryn,Carercyn,Lonnyn,"
+"Car,Taemyr,Owidry,Geddyn,Aethunry,Yreddyn,Addribryn,Suc,Gleran,Addredry,"
+"Cubryn,Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
+"Gwaeddyn,Saenvan,Todd,Tegwyn"
 
 #: data/names.cfg:8
 msgid ""
@@ -3195,6 +3360,56 @@ msgid ""
 "Deassa,Jovyan,Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,"
 "Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 msgstr ""
+"Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
+"Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
+"Clarka,Clwlla,Cira,Lylla,Elavyan,Meroniver,Lwlla,Reacla,Neallyra,Mudda,"
+"Brirka,Alyryan,Reangwen,Sorka,Nalyan,Ysilyan,Realla,Lyna,Rwllyra,Elyrka,Nera,"
+"Gwwcla,Caella,Gwwvyan,Nuvyan,Sona,Merolla,Nyssa,Sera,Lwryan,Ysell,Elulonna,"
+"Raerka,Saell,Dwnoic,Clissa,Medda,Lessa,Rwllyra,Ledda,Jeabrylla,Brera,Meanoic,"
+"Lelyan,Clobrylla,Brellyra,Nucla,Jalyan,Dydda,Cyvyan,Revyan,Nyll,Clillyra,"
+"Langwen,Jyvyan,Saellyra,Sera,Sara,Rucla,Ryngwen,Cicla,Lolonna,Lycla,Merydda,"
+"Naecla,Aleara,Rwlla,Curyan,Lina,Mylla,Rarka,Merubrylla,Clwdda,Gwerka,Saessa,"
+"Brungwen,Jonoic,Elalonna,Elwlonna,Lidda,Dyssa,Cassa,Relyan,Gworyan,Dwdda,"
+"Alengwen,Lill,Raebrylla,Elwra,Joll,Brerka,Mengwen,Caevyan,Mwnoic,Nivyan,"
+"Merina,Rilonna,Gwangwen,Gwussa,Lealonna,Cwdda,Jaerka,Jassa,Sassa,Elerka,"
+"Elaedda,Sull,Elyngwen,Mwbrylla,Livyan,Maecla,Cwlonna,Ysodda,Elurka,Clylla,"
+"Clilyan,Daenoic,Naell,Brynoic,Syssa,Nulla,Merebrylla,Breabrylla,Call,Jycla,"
+"Dulonna,Gwirka,Dollyra,Alybrylla,Elaell,Jura,Dalla,Mereangwen,Cinoic,Naell,"
+"Ysyrka,Alearka,Jiryan,Ysonoic,Ysycla,Merilyan,Brorka,Jull,Alwllyra,Cealonna,"
+"Gwonoic,Gwobrylla,Brellyra,Curyan,Moniver,Cleall,Elara,Lylyan,Daelyan,Relyan,"
+"Sallyra,Cleacla,Alalonna,Elealla,Ysyssa,Clacla,Rilyan,Jeniver,Aleaniver,"
+"Meraelyan,Gweacla,Jwll,Elealla,Lirka,Milonna,Lealyan,Messa,Nabrylla,Lollyra,"
+"Merona,Meressa,Bravyan,Elaevyan,Ceryan,Mereaniver,Ysaenoic,Gwaessa,Alearka,"
+"Myra,Nobrylla,Jona,Jyrka,Cyniver,Lulyan,Rerka,Swlla,Nybrylla,Yswniver,"
+"Dangwen,Gwicla,Yseacla,Eleanoic,Mwngwen,Neavyan,Larka,Brealonna,Gwycla,"
+"Aluryan,Meacla,Brona,Jyvyan,Brwra,Coryan,Cudda,Elivyan,Nyryan,Alyra,Alilonna,"
+"Merana,Merylyan,Cydda,Diniver,Merolyan,Myll,Rwlonna,Gweacla,Ysylla,"
+"Alaebrylla,Naebrylla,Clenoic,Daengwen,Reana,Alynoic,Jissa,Myvyan,Brora,"
+"Alaryan,Rengwen,Clavyan,Ryna,Jull,Brollyra,Brobrylla,Ysedda,Alingwen,Ysell,"
+"Jealla,Liryan,Merurka,Elallyra,Clinoic,Ninoic,Merudda,Gwongwen,Jacla,Nungwen,"
+"Clalla,Gwona,Gwaera,Rora,Ninoic,Brycla,Clwvyan,Clurka,Clill,Merella,Ysylyan,"
+"Rwdda,Lelonna,Yselonna,Claella,Clallyra,Dassa,Clealyan,Merydda,Cibrylla,"
+"Deanoic,Claenoic,Rassa,Gwwvyan,Cucla,Lwnoic,Aluniver,Dwbrylla,Dybrylla,"
+"Merissa,Ysealyan,Clydda,Maeniver,Dallyra,Nessa,Gwydda,Merall,Clill,Clungwen,"
+"Ysongwen,Cucla,Jora,Elyniver,Meana,Sallyra,Ysinoic,Clara,Meradda,Dwra,Nolla,"
+"Nera,Merealonna,Clibrylla,Alaeniver,Nonoic,Jacla,Rara,Cwngwen,Dara,Ysura,"
+"Sulonna,Dissa,Clona,Ralonna,Cwvyan,Mulyan,Lungwen,Mwlyan,Meralonna,Lerka,"
+"Noryan,Curyan,Mealyan,Nera,Sylyan,Merivyan,Lwnoic,Sanoic,Ysanoic,Cyllyra,"
+"Ysyrka,Cleanoic,Bronoic,Devyan,Ysaerka,Rwngwen,Nwllyra,Ysycla,Swngwen,Nyvyan,"
+"Cleana,Merylyan,Alwlyan,Lassa,Locla,Meniver,Laenoic,Mullyra,Judda,Mycla,"
+"Brassa,Ysacla,Elacla,Muryan,Clollyra,Ysanoic,Senoic,Rwngwen,Merwlla,Brera,"
+"Saeniver,Deassa,Meranoic,Bronoic,Aleacla,Mavyan,Alora,Jarka,Elaelonna,"
+"Merwryan,Lengwen,Alilonna,Meangwen,Claelyan,Silonna,Ysealyan,Alora,Revyan,"
+"Cera,Merwnoic,Dicla,Laeryan,Alubrylla,Lycla,Mavyan,Jull,Syllyra,Swlyan,"
+"Elaessa,Caena,Cluvyan,Breryan,Laeniver,Jorka,Raera,Gwedda,Lodda,Brell,"
+"Rybrylla,Meanoic,Niryan,Cylla,Bricla,Cudda,Alabrylla,Nealonna,Alolla,Rirka,"
+"Jyniver,Elearka,Jaevyan,Melonna,Alengwen,Sura,Cissa,Mossa,Norka,Nangwen,"
+"Saerka,Elycla,Della,Merallyra,Elyllyra,Elenoic,Alussa,Elwngwen,Calla,Merina,"
+"Jynoic,Ysealonna,Sussa,Sulyan,Mossa,Dissa,Daedda,Merinoic,Searka,Rella,Sira,"
+"Clillyra,Alwna,Lulla,Nulyan,Jwlyan,Swnoic,Clongwen,Alalla,Siryan,Braedda,"
+"Jealla,Gwwna,Gwullyra,Merengwen,Molyan,Dwna,Lunoic,Brealla,Ruryan,Alabrylla,"
+"Deassa,Jovyan,Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,"
+"Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 
 #: data/names.cfg:12
 msgid ""
@@ -3206,6 +3421,13 @@ msgid ""
 "Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimmud,"
 "Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 msgstr ""
+"Neptune,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
+"Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
+"Barinthus,Llyr,Lir,Aigaion,Melicertes,Dylan,Tanaoa,Tikitiki,Alastyn,Apam,"
+"Natat,Vourukasa,Vodnik,Faro,Nun,Habaek,Apsu,Abzu,Absu,Sisiutl,Atlaua,Atlahua,"
+"Jamm,Vizi,Ember,Toniwha,Apalala,Dhakhan,Nechtan,Elcmar,Mimir,Enki,Makara,"
+"Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimmud,"
+"Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 
 #: data/names.cfg:13
 msgid ""
@@ -3214,6 +3436,10 @@ msgid ""
 "Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
 "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 msgstr ""
+"Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,Rân,"
+"Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
+"Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
+"Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 
 #: data/names.cfg:17
 msgid ""
@@ -3261,6 +3487,49 @@ msgid ""
 "Varag,Huurk,Vadush,Grok,Rank,Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,"
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 msgstr ""
+"Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,Goshnak,"
+"Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,Hunk,Goshnak,"
+"Bogor,Varbag,Hort,Graol,Gork,Vrugdush,Gagor,Gadash,Prong,Prodush,Pidush,"
+"Grorag,Grolg,Pung,Hurbag,Bink,Grort,Erugar,Vilo,Pagor,Vak,Prarg,Hurag,"
+"Eragdush,Gulg,Pragdush,Grugdush,Erirg,Gridush,Hulo,Vrogar,Eronk,Erulo,Rok,"
+"Prurk,Prurg,Grulo,Prirg,Prugar,Bogar,Prudish,Prunk,Groshnak,Eronk,Prilg,Erik,"
+"Rodush,Vulo,Pork,Prilo,Horbag,Bong,Prarag,Vourk,Vrik,Boshnak,Prong,Rugdish,"
+"Erulo,Palo,Vrik,Hak,Vrurg,Gurbag,Vrang,Pilg,Bogdush,Erurag,Vadush,Eruurk,"
+"Vank,Ruk,Vrogor,Vrurg,Bagar,Vink,Prinak,Vraurk,Prarbag,Hidush,Ruol,Grugdish,"
+"Prodash,Gridish,Pulo,Bik,Rinak,Halg,Erudish,Pirbag,Gank,Galo,Burk,Hunk,"
+"Bagdish,Pink,Bort,Gridash,Valo,Eruol,Radash,Erarg,Vigor,Vudish,Vak,Grirg,"
+"Groshnak,Pronak,Punk,Grigar,Prolg,Pigdush,Ging,Vong,Hulg,Bashnak,Vork,Ruol,"
+"Vogdish,Rinak,Gagar,Borg,Virt,Bunak,Hushnak,Ganak,Barbag,Vralo,Hidash,Vrirt,"
+"Gurt,Erarag,Rugar,Pridish,Prugdish,Eruol,Vriurk,Grudash,Vurg,Eriol,Bok,"
+"Granak,Vrodish,Hoshnak,Grogdish,Bork,Hushnak,Hagdush,Parag,Eriurk,Vuk,Rirg,"
+"Rok,Bolg,Vrishnak,Vilo,Vragar,Budush,Gruk,Bidish,Praurk,Gunak,Hinak,Hak,"
+"Grork,Grong,Erogdish,Rolo,Vadash,Pulg,Vilg,Vrodash,Vurg,Gink,Grilg,Birt,Biol,"
+"Vrudish,Hagor,Vragdush,Vogor,Vulg,Erong,Rashnak,Garag,Grink,Vogdish,Badush,"
+"Rodish,Gradash,Erart,Purbag,Pralo,Grigar,Badush,Priurk,Rink,Puurk,Vonak,"
+"Eradish,Vridash,Podush,Pruurk,Pronk,Hiol,Gushnak,Gugdish,Hashnak,Eragor,"
+"Rarbag,Gagdush,Granak,Budush,Vilg,Hort,Pulg,Gaol,Podash,Punak,Gogdush,Porg,"
+"Pogdish,Prigar,Gushnak,Prarbag,Gagar,Bogor,Gogdish,Eranak,Gralo,Palg,Virag,"
+"Grishnak,Rank,Hing,Grak,Pirbag,Prarag,Virag,Hink,Buk,Burg,Prodish,Prashnak,"
+"Ragar,Purag,Bugdish,Vigdish,Grogdish,Huol,Hank,Gruurk,Rak,Rudash,Ginak,Huol,"
+"Erigdush,Vraurk,Prool,Pragor,Grirag,Vishnak,Grorg,Eronk,Vraurk,Erishnak,"
+"Erunk,Bilo,Hodush,Vrork,Eriurk,Vrarbag,Hagar,Vorg,Pidush,Pigdish,Bidush,"
+"Prashnak,Virag,Bunk,Vrurg,Hong,Rik,Hirg,Rushnak,Gink,Hadish,Vilo,Vrork,Rak,"
+"Huk,Ronak,Vrulg,Vilg,Rogdish,Prodash,Erirt,Gragar,Gigor,Burag,Priol,Rodush,"
+"Rirg,Vruurk,Barag,Podish,Vunak,Hork,Grilg,Bogdish,Vadash,Raurk,Puurk,Rark,"
+"Ronak,Grogar,Hashnak,Bink,Grodish,Hidish,Bagar,Erinak,Vrugdush,Rarag,"
+"Eragdish,Hirag,Vrolo,Hogor,Erirbag,Vruol,Gulg,Pralo,Hogar,Hadush,Budush,"
+"Hadash,Gigor,Goshnak,Hugor,Hudash,Biol,Vrurg,Pradish,Pralg,Bilg,Vrart,Prunak,"
+"Prigdish,Vrung,Vrugdush,Grudash,Ging,Puk,Graol,Prigor,Buurk,Pagdish,Hirg,"
+"Prang,Eragor,Gralg,Prart,Vrolo,Prark,Pashnak,Pradish,Vilg,Pulo,Gunak,Paol,"
+"Gridash,Erirag,Bart,Burag,Vrinak,Vushnak,Prilo,Vragor,Rigor,Bung,Prourk,"
+"Vrork,Burg,Erugdush,Bogdish,Prurg,Prigor,Binak,Vadish,Grilo,Ruol,Vrodish,"
+"Pinak,Pradish,Eragor,Higdush,Parag,Pink,Vrong,Port,Bok,Porbag,Grilo,Bung,"
+"Grugar,Rak,Gulo,Grork,Bik,Grodish,Polg,Pung,Grarbag,Vurg,Vurbag,Pung,Prolo,"
+"Voshnak,Ruk,Vigdish,Vradash,Vrarg,Gong,Gragor,Varbag,Erogdush,Erorbag,Bidish,"
+"Prirt,Hadush,Rirk,Vrurt,Hing,Gronk,Rung,Girt,Gronk,Vigar,Prugar,Raol,Eronk,"
+"Hurk,Purg,Hilg,Vrudish,Grurk,Gigor,Grurg,Polg,Erurag,Erudush,Vadush,Vrulg,"
+"Varag,Huurk,Vadush,Grok,Rank,Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,"
+"Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 
 #: data/names.cfg:21
 msgid ""
@@ -3329,6 +3598,70 @@ msgid ""
 "Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
 "Pelaithil,Gomaithsol,Augaithsil"
 msgstr ""
+"Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,Trithaithus,"
+"Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,Augaithing,Anthaas,"
+"Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,Trithdurol,Glamcatil,Augthail,"
+"Trithduril,Dulthalos,Glamthasol,Aldrsol,Glamaithol,Glamalil,Analus,Nardril,"
+"Augating,Dulaithsol,Aldrlos,Alalus,Aigcatsol,Ancatas,Trithdris,Pelatol,"
+"Aigthasil,Anthais,Narcatis,Trithatil,Aigaithing,Althail,Trithaithil,"
+"Naraithol,Duldrlos,Gomatas,Alcatis,Naraithsil,Althalos,Aigdursol,Glamalsil,"
+"Nardrus,Aigalis,Aldurlos,Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,"
+"Glamthaas,Dulcatsol,Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,"
+"Peldrsol,Pelalsol,Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,"
+"Augdris,Anthasol,Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,"
+"Pelalis,Gomatlos,Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,"
+"Gomcatil,Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
+"Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
+"Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,Trithdring,"
+"Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,Dulaithlos,"
+"Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,Trithcatlos,"
+"Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,Aldurol,Aigatsil,"
+"Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,Althaol,Aldrsol,"
+"Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,Glamthaol,Ancatus,"
+"Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,Naraithsil,Aldris,"
+"Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,Aigdurlos,Aigaithol,"
+"Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,Anthaing,Aigcatis,"
+"Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,Gomdursil,Nardras,"
+"Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,Anatol,Augdrsil,"
+"Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,Augaling,Alating,Glamatil,"
+"Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,Gomdursol,Naraithus,"
+"Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,Aigduras,Nardrol,Nardurol,"
+"Pelalil,Gomalil,Aigatis,Analil,Dulthaus,Gomaithil,Alduras,Trithduril,Ancatol,"
+"Alduras,Pelduril,Narcatsol,Pelating,Dulcatsil,Augatol,Glamthasil,Gomthasol,"
+"Naraithsil,Alatsil,Dulcatol,Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,"
+"Trithatas,Aigthais,Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,"
+"Gomdras,Naraithsol,Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,"
+"Gomating,Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
+"Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
+"Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,Augcatsil,"
+"Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,Pelaling,"
+"Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,Augthalos,"
+"Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,Triththail,"
+"Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,Glamalsil,"
+"Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,Dulatsol,Naralus,"
+"Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,Naraithil,Aigatsil,"
+"Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,Pelcatlos,Glamduris,"
+"Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,Pelthasil,Gomatis,Aldril,"
+"Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,Narduras,Dulaithlos,Duldris,"
+"Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,Anduril,Alaithol,Aigalis,"
+"Trithaithas,Aigcatil,Trithaithil,Naraithing,Augatsol,Trithaithol,Dulalsil,"
+"Dulthasol,Glamcatas,Glamthaol,Gomaithsol,Dulaithing,Naratlos,Naraithol,"
+"Gomthasol,Ancatas,Aigcatsil,Pelduris,Trithdrus,Andurus,Trithdring,Glamthaas,"
+"Aigcating,Nardrsol,Glamaithol,Dulaithsol,Althaus,Augduras,Aigaithas,"
+"Gomdurlos,Glamalus,Gomdrsil,Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,"
+"Glamaling,Dulduras,Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,"
+"Trithduring,Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,"
+"Naratlos,Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
+"Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
+"Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
+"Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
+"Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
+"Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
+"Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,Glamcatil,"
+"Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,Narcatis,"
+"Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,Aigatsil,"
+"Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
+"Pelaithil,Gomaithsol,Augaithsil"
 
 #: data/names.cfg:25
 msgid ""
@@ -3340,6 +3673,13 @@ msgid ""
 "Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
 "Klez,Zlek,Trixzed"
 msgstr ""
+"Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
+"Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
+"Brassas,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,Sassalia,"
+"Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,Grissilai,"
+"Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,Zsekp,Kzap,"
+"Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
+"Klez,Zlek,Trixzed"
 
 #: data/names.cfg:26
 msgid ""
@@ -3350,6 +3690,12 @@ msgid ""
 "Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
 "Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 msgstr ""
+"Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,Saxrireii,"
+"Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,Vilail,Aleiss,"
+"Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,Ineii,Inaloss,"
+"Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,Slell,Soill,Sorkol,"
+"Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
+"Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 
 #: data/names.cfg:30
 msgid ""
@@ -3366,6 +3712,18 @@ msgid ""
 "Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,Boladrumbadrum,"
 "Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 msgstr ""
+"Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
+"Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
+"Munnamdulbon,Monlamwimdan,Dulwulmendom,Delmduelmdelom,Mundionalafla,"
+"Laffalialomdium,Rithramcamhan,Bregalad,Orofarnië,Lassemista,Carnimirië,"
+"Tumtonnongatum,Tumtentantarun,Tantondernintan,Bombempomgontor,"
+"Pomtamkomtrobum,Brommantendronnor,Dammantongonnur,Brumennarunom,"
+"Dumdumdumatum,Tumtumgamtomtom,Tondenkontenkon,Bumbadadabum,Dabumdabumtam,"
+"Bomtanbomkenton,Bomtanbomtonum,Brumbendublun,Brenbasnudnem,Temtunnongetem,"
+"Debundbemun,Diblembumnde,Bremdebubde,Pambedrumne,Drongnoblemdu,Bludebalmen,"
+"Temtundembenn,Lefnublemdde,Libleddnumm,Mundumblemdum,Brendumadoak,"
+"Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,Boladrumbadrum,"
+"Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 
 #: data/names.cfg:34
 msgid ""
@@ -3376,6 +3734,12 @@ msgid ""
 "Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
 "Urkar"
 msgstr ""
+"Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,Markaak,"
+"Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,Kingrok,"
+"Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,Borkuk,Orkut,"
+"Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,Kramak,Goruk,Krog,"
+"Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
+"Urkar"
 
 #: data/names.cfg:38
 msgid ""
@@ -3384,6 +3748,10 @@ msgid ""
 "Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
 "Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
+"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
+"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
+"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
+"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/names.cfg:42
 msgid ""
@@ -3398,6 +3766,16 @@ msgid ""
 "Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
 "Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 msgstr ""
+"Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
+"Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,Anexir,"
+"Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,Jezzix,"
+"Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,Flixta,"
+"Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,Xartrez,"
+"Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,Hesz,Xasz,"
+"Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,Ssorix,Ssexur,"
+"Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,Lixeez,Sklizle,"
+"Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
+"Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 
 #: data/names.cfg:46
 msgid ""
@@ -3411,6 +3789,15 @@ msgid ""
 "Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
 "Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 msgstr ""
+"Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
+"Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
+"Garadin,Krall Ohn,Merkush,Gridda,Garlan,Græt Ihn,Ka,Karron,Markinos,Gashöl,"
+"Grenn ohn,Gegchi,Gadé Ihn,Marrito,Grelnit,Kraslar,Marritos,Kran Kor,Kerath "
+"Kor,Kerath Ihn,Galsh,Garrutin,Gray,Garlin ohn,Merritos Gark,Gark,Gelknick,"
+"Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
+"Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
+"Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
+"Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 
 #: data/names.cfg:47
 msgid ""
@@ -3418,6 +3805,9 @@ msgid ""
 "Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
 "Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 msgstr ""
+"Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin Ka,"
+"Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
+"Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 
 #: data/names.cfg:51
 msgid ""
@@ -3453,15 +3843,13 @@ msgstr "2g - Błyskawica"
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
-"Mała mapa do gry 2 na 2. Zalecane ustawienie to 2 sztuki złota na wioskę."
+msgstr " Zalecane ustawienie to 2 sztuki złota na wioskę."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "Mapa 1 na 1 do bardzo szybkiej rozgrywki."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:22
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
@@ -3585,7 +3973,7 @@ msgstr ""
 "Nie dał swym wrogom za dużo szans\n"
 "- - Siedem kamieni i jedenaście\n"
 "Strzelec znany jako Smoków Zguba\n"
-"pośród statuł martwych poległ tu\n"
+"pośród statui martwych poległ tu\n"
 "- - Siedem kamieni - i jedenaście\n"
 "(zapisane przez Gauteamusa)"
 
@@ -3649,12 +4037,12 @@ msgid ""
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
-"Odważny bohater Złotego Wieku Wesnoth, potężny jeździec i dowódca ludzi "
+"Oto dzielny bohater Złotego Wieku Wesnoth, potężny jeździec i dowódca ludzi, "
 "przybył do tego złowrogiego miejsca ścigając orków. Wielu z jego ludzi "
-"zginęło, gdy te podłe stworzenia zaatakowały z zaskoczenia, ale on walczył "
-"mężnie, zabijając wielu wrogów. Ale niestety! Złowrogi Bazyliszek zmienił go "
-"w kamień, gdy zadawał cios ostatniemu z orków. Teraz pozostała tylko smutna "
-"pamiątka jego potężnej postaci i wielkiej siły. \n"
+"zginęło, gdy te podłe bestie zaatakowały z zaskoczenia, ale on walczył "
+"mężnie, zabijając wielu wrogów. Lecz niestety! Złowrogi Bazyliszek zmienił "
+"go w kamień, gdy zadawał cios ostatniemu z orków. Teraz pozostała tylko "
+"smutna pamiątka jego potężnej postaci i wielkiej siły. \n"
 "(zapisane przez Fynmiira)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:147
@@ -3760,34 +4148,28 @@ msgid "2p - Cynsaun Battlefield"
 msgstr "2g - Bitwa pod Cynsaun"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid " Recommended settings of 150 gold and 1 gold per village."
-msgstr ""
-"Mała mapa do gry 2 na 2. Zalecane ustawienie to 2 sztuki złota na wioskę."
+msgstr " Zalecane ustawienie to 150 sztuk złota i 2 sztuki złota na wioskę."
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr ""
 "Pole bitwy stanowią rozległe tereny czekające na eksplorację, stworzone dla "
-"graczy, którzy lubią epickie pojedynki na dużą skalę. Zalecane ustawienie "
-"początkowe to 150 sztuk złota i 1 sztuka złota na wioskę."
+"graczy, którzy lubią epickie pojedynki na dużą skalę."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
 msgstr "2p - Kryjówka Onisa"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet."
 msgstr ""
 "Niebezpieczeństwo czai się za każdym rogiem na tym podziemnym polu bitwy - "
-"mapie pojedynkowej, na której siła spotyka się ze sprytem. Zalecane "
-"ustawienie to 2 sztuki złota na wioskę."
+"mapie pojedynkowej, na której siła spotyka się ze sprytem."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
@@ -3795,40 +4177,36 @@ msgstr "2g - Wioski"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
 "Wojna zmienia zwyczajne farmy i wioski spokojnego regionu w subtelnie "
-"podzielone pole bitwy. Zalecane ustawienie to 2 sztuki złota na wioskę."
+"podzielone pole bitwy."
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
 msgstr "2g - Wyspa rekinów"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
 "Gracze muszą nawigować w skomplikowanym terenie tej niewielkiej, ale "
-"zróżnicowanej geograficznie wyspy. Zalecane ustawienie to 2 sztuki złota na "
-"wioskę."
+"zróżnicowanej geograficznie wyspy."
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
 msgstr "2g - Meteorytowe jezioro"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
 "Dawno temu wielki meteoryt runął z niebios, pozostawiając swój ślad w tym "
-"lesistym regionie. Zalecane ustawienie to 2 sztuki złota na wioskę."
+"lesistym regionie."
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:18
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:18
@@ -3872,55 +4250,48 @@ msgid "2p - Sablestone Delta"
 msgstr "2p - Delta Sablestone"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
 "Dwie armie ścierają się w chaotycznie ukształtowanym nadbrzeżnym terenie, "
-"pełnym ukrytych jaskiń i krętych rzek. Zalecane ustawienie to 2 sztuki złota "
-"na wioskę."
+"pełnym ukrytych jaskiń i krętych rzek."
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
 msgstr "2g - Przeprawa Silverhead"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
 "Aby osiągnąć zwycięstwo na tej mapie stworzonej do pojedynków na wielu "
-"frontach, gracze muszą przemierzyć wiele różnych typów terenu. Zalecane "
-"ustawienie to 2 sztuki złota na wioskę."
+"frontach, gracze muszą przemierzyć wiele różnych typów terenu."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "Stan"
+msgstr "statua"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "To kamienna rzeźba."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
 msgstr "2g - Ruiny Sullas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:34
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
 "Zalane przez morskie wody i skute lodem ruiny to jedynie cień potężnego "
-"imperium, które się tu niegdyś znajdowało. Zalecane ustawienie to 2 sztuki "
-"złota na wioskę."
+"imperium, które się tu niegdyś znajdowało."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Statua Sulli"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:74
 msgid ""
@@ -3930,38 +4301,42 @@ msgid ""
 "Leveling Flame, Sulla the Incinerator, Sulla the Proud and Sulla the "
 "Righteous."
 msgstr ""
+"Wykuta w kamieniu podobizna Sulli Wielkiej, znanej też jako Sulla "
+"Sprawiedliwa, Sulla Tyranka, Cesarzowa Tonącej Wieży, Latorośl Miażdżących "
+"Wichur, Pani Chodzącego Lodowca, Strażniczka Ognistej Fali, Królowa "
+"Sprawiedliwego Płomienia, Sulla Spalająca, Sulla Dumna i Sulla Praworządna."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Statua Lhun-dup"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Wykuta w kamieniu podobizna Lhun-dup, Sługi Sulli."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Statua Ri-nzena"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Wykuta w kamieniu podobizna Ri-nzena, Sługi Sulli."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Statua Ten-zina"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Wykuta w kamieniu podobizna Ten-zina, Sługi Sulli."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Statua Lo-bsanga"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Wykuta w kamieniu podobizna Lo-bsanga, Sługi Sulli."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4011,7 +4386,7 @@ msgstr "Punkt dla niebieskich! Wynik: $redscore-$bluescore"
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:334
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:611
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Czy podać piłkę do $passto.type($xloc,$yloc)?"
+msgstr "Czy podać piłkę do $passto.type ($xloc,$yloc)?"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:336
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:613
@@ -4040,45 +4415,38 @@ msgid "3p - Island of the Horatii"
 msgstr "3g - Wyspa Horacjusza"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
 "Kontrola nad centralną wyspą często stanowi klucz do zwycięstwa na tej mapie "
-"o rozmiarze 21x21 heksów, przeznaczonej do swobodnej rozgrywki dla 3 graczy. "
-"Zalecane ustawienie to 2 sztuki złota na wioskę."
+"o rozmiarze 21x21 heksów, przeznaczonej do swobodnej rozgrywki dla 3 graczy."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "3g - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr ""
 "Tylko jedna ze stron osiągnie zwycięstwo na tej mocno ograniczonej mapie dla "
-"trzech graczy. Zalecane ustawienie to 2 sztuki złota na wioskę."
+"trzech graczy."
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
 msgstr "3g - Potrójna błyskawica"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid "Three players come head to head on this water-cut battlefield."
-msgstr ""
-"Trzej gracze stają do walki na poprzecinanym wodą polu bitwy. Zalecane "
-"ustawienie to 2 sztuki złota na wioskę."
+msgstr "Trzej gracze stają do walki na poprzecinanym wodą polu bitwy."
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
 msgstr "4p - Prowincja Błękitnej Wody"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -4088,8 +4456,7 @@ msgstr ""
 "Mówi się, że Prowincja Błękitnej Wody była niszczona i odbudowywana około "
 "dwudziestu razy. Teraz, gdy armie po raz kolejny maszerują poprzez "
 "kamieniste koryta strumieni i pokryte śniegiem góry tej małej prowincji, "
-"mieszkańcy prawie nie zwracają na nie uwagi. Zalecane ustawienie to 2 sztuki "
-"złota na wioskę."
+"mieszkańcy prawie nie zwracają na nie uwagi."
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:18
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:48
@@ -4126,12 +4493,10 @@ msgid "4p - Castle Hopping Isle"
 msgstr "4g - Zamki na wyspie"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid "Hop from castle to castle while fighting over a central isle."
 msgstr ""
-"Dwie armie ścierają się w chaotycznie ukształtowanym nadbrzeżnym terenie, "
-"pełnym ukrytych jaskiń i krętych rzek. Zalecane ustawienie to 2 sztuki złota "
-"na wioskę."
+"Przeciwnicy przeskakują z zamku do zamku, tocząc bój o kontrolę nad "
+"centralną wyspą."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
@@ -4139,19 +4504,17 @@ msgstr "4g - Starcie"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "Mała mapa do gry 2 na 2."
 
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:3
-#, fuzzy
 msgid "4p - Hamlets"
-msgstr "2g - Wioski"
+msgstr "4g - Wioski"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
 msgstr "4g - Krzyż Isar"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -4159,8 +4522,8 @@ msgid ""
 "villages."
 msgstr ""
 "Bardzo mała mapa do gry 2 na 2. Walka w zwarciu wymaga odpowiedniej rotacji "
-"jednostek i planowania ruchów. Drużyny ustawione dla graczy 1&4 kontra 2&3 "
-"(północny wschód kontra południowy zachód). Założenia projektowe to 75 "
+"jednostek i planowania ruchów. Drużyny ustawione dla graczy 1 i 4 kontra 2 i "
+"3 (północny wschód kontra południowy zachód). Założenia projektowe to 75 "
 "początkowych sztuk złota i 20 wiosek."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:18
@@ -4193,21 +4556,19 @@ msgstr "4g - Król Wzgórza"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr ""
-"Mała mapa do gry 2 na 2. Zalecane ustawienie to 2 sztuki złota na wioskę."
+" Zalecane ustawienie to 2 sztuki złota na wioskę i 150 początkowych sztuk "
+"złota."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Na tej mapie o rozmiarze 36x36 i przeznaczonej do swobodnej rozgrywki dla 4 "
-"graczy kontrolowanie centralnej fortecy jest bardzo opłacalne. Mapa nadaje "
-"się również do gry 2 na 2. 36 wiosek. Zalecane ustawienie to 2 sztuki złota "
-"na wioskę."
+"graczy kontrolowanie centralnej twierdzy jest bardzo opłacalne. Mapa nadaje "
+"się również do gry 2 na 2. 36 wiosek."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:29
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:34
@@ -4234,90 +4595,74 @@ msgstr "4g - Laguna"
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
-"Mała mapa do gry 2 na 2. Zalecane ustawienie to 2 sztuki złota na wioskę."
+msgstr " Zalecane ustawienie to 1 sztuka złota na wioskę."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid "Four factions contend for dominance over this watery settlement."
-msgstr ""
-"Cztery armie walczą o dominację nad tą nadwodną osadą. Zalecane ustawienie "
-"to 1 sztuka złota na wioskę."
+msgstr "Cztery armie walczą o dominację nad tą nadwodną osadą."
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
 msgid "4p - Loris River"
 msgstr "4g - Rzeka Loris"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
 "Mapa 25x25 do gry 2 na 2. Zbudowana wokół rzeki, z dwoma twierdzami w "
-"przeciwległych narożnikach. Do gry 1&4 kontra 2&3. 28 wiosek. Zalecane "
-"ustawienie to 2 sztuki złota na wioskę."
+"przeciwległych narożnikach. Do gry 1 i 4 kontra 2 i 3. 28 wiosek."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
 msgstr "4g - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
-"Kto wyjdzie cało ze starcia na tym niebezpiecznym polu bitwy? Zalecane "
-"ustawienie to 2 sztuki złota na wioskę."
+msgstr "Kto wyjdzie cało ze starcia na tym niebezpiecznym polu bitwy?"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
 msgstr "4g - Ścieżki sztyletów"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr ""
-"Mała mapa do gry 2 na 2. Zalecane ustawienie to 2 sztuki złota na wioskę."
+msgstr " Zalecane ustawienie to 2 sztuki złota na wioskę. 28 wiosek."
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
 "Mapa 35x27 do gry 2 na 2, o pięciu możliwych kierunkach prowadzenia "
-"natarcia. Przystosowana do gry wschód kontra zachód (1&4 kontra 2&3), ale "
-"sprawdza się dobrze z innymi układami oraz w grze swobodnej. 28 wiosek. "
-"Zalecane ustawienie to 2 sztuki złota na wioskę."
+"natarcia. Przystosowana do gry wschód kontra zachód (1 i 4 kontra 2 i 3), "
+"ale sprawdza się też dobrze z innymi układami oraz w grze swobodnej."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4g - Oblężone Zamki"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 "Mapa 40x30 dla 4 graczy. Armie z czterech potężnych zamków walczą u zbiegu "
-"dwóch rzek. Mapa sprawdza w grze 2 na 2 lub grze swobodnej. Jest na niej "
-"około 45 wiosek. Zalecane ustawienie to 2 sztuki złota na wioskę."
+"dwóch rzek. Mapa sprawdza się w grze 2 na 2 lub grze swobodnej. Jest na niej "
+"około 45 wiosek."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
 msgstr "4g - Pustkowia"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
-#, fuzzy
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 "Obszerne dzikie pustkowia, z terenem usianym lasami, jaskiniami, rzekami i "
-"ruinami starożytnych fortec. Zalecane ustawienie to 1 sztuka złota na wioskę."
+"ruinami starożytnych twierdz."
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
@@ -4332,21 +4677,18 @@ msgid "6p - Amohsad Caldera"
 msgstr "6g - Kaldera Amohsad"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head."
 msgstr ""
 "Tylko prawdziwy taktyk zdoła przetrwać na tym ciasnym i niebezpiecznym polu "
-"bitwy, na którym zmierzy się sześć stłoczonych armii. Zalecane ustawienie to "
-"2 sztuki złota na wioskę."
+"bitwy, na którym zmierzy się sześć stłoczonych armii."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
 msgstr "6g - Pole krzyżowców"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
@@ -4354,52 +4696,47 @@ msgid ""
 msgstr ""
 "Na tych zniszczonych przez czas i wojnę ziemiach, gdzie duchy tysięcy "
 "odważnych wojowników unoszą się niewidzialne nad górami, lasami i rzekami, "
-"tryby wojny znów poszły w ruch... Zalecane ustawienie to 1 sztuka złota na "
-"wioskę."
+"tryby wojny znów poszły w ruch..."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
-msgstr "6g - Hexciastko"
+msgstr "6g - Heksciastko"
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Gra drużynowa: 2 na 2 lub 3 na 3."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
-#, fuzzy
 msgid "Turn 2: Loyalists"
-msgstr "Lojaliści"
+msgstr "Tura 2: Lojaliści"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:173
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "Tura 5: Knalganie"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:174
-#, fuzzy
 msgid "Turn 8: Rebels"
-msgstr "Buntownicy"
+msgstr "Tura 8: Rebelianci"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:175
-#, fuzzy
 msgid "Turn 11: Northerners"
-msgstr "Ludy północy"
+msgstr "Tura 11: Ludy północy"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:176
-#, fuzzy
 msgid "Turn 14: Drakes"
-msgstr "Huraganowy smok"
+msgstr "Tura 14: Smoki"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:177
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "Tura 17: Nieumarli"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:178
 msgid "Tower of Doom"
-msgstr ""
+msgstr "Wieża Przeznaczenia"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:299
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6g - Przeżycie zespołowe"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
 msgid "Scenario where the objective is to survive for as long as possible."
@@ -4411,16 +4748,15 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "Przeżyj 32 tury."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:310
 msgid "Survive all enemy attacks."
-msgstr ""
+msgstr "Przeżyj wszystkie ataki przeciwnika."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:311
-#, fuzzy
 msgid "Death of your team leaders."
-msgstr "Śmierć Delfadora"
+msgstr "Śmierć przywódców Twoich drużyn."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:333
 msgid ""
@@ -4428,68 +4764,68 @@ msgid ""
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"Gratuluję przetrwania mapy, której według wielu graczy ukończyć się nie da. "
+"Szczerze mówiąc nie mam pojęcia, jak Ci się to udało, więc prześlij mi "
+"powtórkę swojej rozgrywki mailem na adres roze@roze.mine.nu. Dziękuję!"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
+"Niestety nie udało Ci ukończyć tej gry, ale nie przejmuj się. Zawsze możesz "
+"spróbować jeszcze raz. I jeszcze raz. I jeszcze raz. *Muahahaha*"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6g - Pułapki Manzivanu"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
-#, fuzzy
 msgid ""
 "A 40X20 3 vs. 3 map. The Mazivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
-"Bardzo mała mapa do gry 2 na 2. Walka w zwarciu wymaga odpowiedniej rotacji "
-"jednostek i planowania ruchów. Drużyny ustawione dla graczy 1&4 kontra 2&3 "
-"(północny wschód kontra południowy zachód). Założenia projektowe to 75 "
-"początkowych sztuk złota i 20 wiosek."
+"Mapa 40X20 do gry 3 na 3. Pułapki Manzivanu słyną z trudnego i mylącego "
+"terenu, w którym łatwo wmanewrować armię w niekorzystną pozycję lub posunąć "
+"się za daleko. Rozgrywka ustawiona dla graczy 1,4,5 kontra 2,3,6 (wschód "
+"kontra zachód). Zalecane 100 początkowych sztuk złota. 33 wioski."
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
 msgstr "6g - Zachód słońca nad Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
 "avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
-"Mapa 40x30 heksów do gry 3 na 3. Sprawna koordynacja twojego sojuszu jest "
-"niezbędna do utrzymania równowagi liczebnej. Drużyny ustawione do gry 1,4,5 "
-"kontra 2,3,6 (północ kontra południe), ale umieszczenie w jednej drużynie "
-"graczy 1,4,6 lub 1,3,6 również daje ciekawe wyniki. 44 wioski. "
-"Zaprojektowana do gry z początkowymi 150 sztukami złota."
+"Mapa 40x30 do gry 3 na 3. Sprawna koordynacja twojego sojuszu jest niezbędna "
+"do utrzymania równowagi liczebnej. Drużyny ustawione do gry 1,4,5 kontra "
+"2,3,6 (północ kontra południe), ale umieszczenie w jednej drużynie graczy "
+"1,4,6 lub 1,3,6 również daje ciekawe wyniki. 44 wioski. Zaprojektowana do "
+"gry z początkowymi 150 sztukami złota."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
 msgstr "8g - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
 msgstr ""
 "Kluczem do sukcesu na tym niecodziennym polu bitwy, na którym ściera się "
-"osiem armii, jest praca zespołowa i taktyka. Zalecane ustawienie to 2 sztuki "
-"złota na wioskę."
+"osiem armii, jest praca zespołowa i taktyka."
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
 msgstr "9g - Dziwnamiłość"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
-#, fuzzy
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
 "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
@@ -4513,7 +4849,7 @@ msgid ""
 "have time, you can regenerate them until you get a good one."
 msgstr ""
 "Losowo wygenerowana mapa. Uwaga: losowe mapy często nie są zbalansowane, ale "
-"jeśli masz czas możesz je generować do momentu uzyskania dobrej mapy."
+"jeśli masz czas, możesz je generować do momentu uzyskania dobrej mapy."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:10
@@ -4527,7 +4863,7 @@ msgid ""
 "good one."
 msgstr ""
 "Losowa mapa z piaskiem jako podstawowym terenem. Uwaga: losowe mapy często "
-"nie są zbalansowane, ale jeśli masz czas możesz je generować do momentu "
+"nie są zbalansowane, ale jeśli masz czas, możesz je generować do momentu "
 "uzyskania dobrej mapy."
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:4
@@ -4542,7 +4878,7 @@ msgid ""
 "good one."
 msgstr ""
 "Losowa mapa z bagnem jako podstawowym terenem. Uwaga: losowe mapy często nie "
-"są zbalansowane, ale jeśli masz czas możesz je generować do momentu "
+"są zbalansowane, ale jeśli masz czas, możesz je generować do momentu "
 "uzyskania dobrej mapy."
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
@@ -4557,7 +4893,7 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 "Losowa mapa w czasie przedwiośnia, głównie pokryta śniegiem. Uwaga: losowe "
-"mapy często nie są zbalansowane, ale jeśli masz czas możesz je generować do "
+"mapy często nie są zbalansowane, ale jeśli masz czas, możesz je generować do "
 "momentu uzyskania dobrej mapy."
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
@@ -4586,7 +4922,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "Test wydajności Wesnoth: Marsz przez mgłę"
+msgstr "Test wydajności Wesnoth: Marsz przez całun"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
@@ -4866,41 +5202,35 @@ msgstr "Bagienna ruina"
 
 #: data/terrain.cfg:258 data/terrain.cfg:284 data/terrain.cfg:296
 msgid "Keep"
-msgstr "Forteca"
+msgstr "Twierdza"
 
 #: data/terrain.cfg:272
-#, fuzzy
 msgid "Encampment keep"
-msgstr "Obóz"
+msgstr "Twierdza polowa"
 
 #: data/terrain.cfg:308
-#, fuzzy
 msgid "Dwarven keep"
-msgstr "Krasnoludzki zamek"
+msgstr "Krasnoludzka twierdza"
 
 #: data/terrain.cfg:320
 msgid "Ruined keep"
-msgstr ""
+msgstr "Zrujnowana twierdza"
 
 #: data/terrain.cfg:332
-#, fuzzy
 msgid "Sunken keep"
-msgstr "Podtopiona ruina"
+msgstr "Zatopiona twierdza"
 
 #: data/terrain.cfg:344
-#, fuzzy
 msgid "Swamp keep"
-msgstr "Bagno"
+msgstr "Bagienna twierdza"
 
 #: data/terrain.cfg:371
-#, fuzzy
 msgid "Crater"
-msgstr "Zamek"
+msgstr "Krater"
 
 #: data/terrain.cfg:392
-#, fuzzy
 msgid "Rubble"
-msgstr "Podwojone"
+msgstr "Rumowisko"
 
 #: data/terrain.cfg:411
 msgid "Oasis"
@@ -4927,18 +5257,16 @@ msgid "Dunes"
 msgstr "Wydmy"
 
 #: data/terrain.cfg:584
-#, fuzzy
 msgid "Desert road"
-msgstr "Pustynia"
+msgstr "Pustynna droga"
 
 #: data/terrain.cfg:594
 msgid "Dirt"
 msgstr "Błoto"
 
 #: data/terrain.cfg:614
-#, fuzzy
 msgid "Farmland"
-msgstr "strzelec"
+msgstr "Pola uprawne"
 
 #: data/terrain.cfg:672
 msgid "Cave Lit"
@@ -4981,22 +5309,22 @@ msgstr "złoto"
 #: data/themes/default.cfg:199 data/themes/dfool.cfg:236
 #: data/themes/experimental.cfg:183
 msgid "villages"
-msgstr "Wioski"
+msgstr "wioski"
 
 #: data/themes/default.cfg:208 data/themes/dfool.cfg:245
 #: data/themes/experimental.cfg:192
 msgid "units"
-msgstr "Jednostki"
+msgstr "jednostki"
 
 #: data/themes/default.cfg:217 data/themes/dfool.cfg:254
 #: data/themes/experimental.cfg:201
 msgid "upkeep"
-msgstr "Utrzymanie"
+msgstr "utrzymanie"
 
 #: data/themes/default.cfg:226 data/themes/dfool.cfg:263
 #: data/themes/experimental.cfg:210
 msgid "income"
-msgstr "Dochód"
+msgstr "dochód"
 
 #: data/themes/default.cfg:365 data/themes/dfool.cfg:416
 #: data/themes/experimental.cfg:336
@@ -5012,7 +5340,6 @@ msgid "Act."
 msgstr "Akt."
 
 #: data/themes/default.cfg:569
-#, fuzzy
 msgid "short end-turn^E."
 msgstr "Koniec"
 
@@ -5085,7 +5412,7 @@ msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
-"W kampanii można korzystać z weteranów z poprzednich scenariuszy używając "
+"W kampanii można korzystać z weteranów z poprzednich scenariuszy, używając "
 "opcji \"przywołaj\"."
 
 #: data/tips.cfg:3
@@ -5130,9 +5457,9 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"Możesz użyć jednostek z poprzednich scenariuszy wybierając \"Przywołaj\" z "
-"menu gry. Przywołując co misję te same jednostki masz szanse stworzyć "
-"potężną i doświadczoną armię."
+"Możesz użyć jednostek z poprzednich scenariuszy, wybierając polecenie "
+"\"Przywołaj\" z menu gry. Przywołując co misję te same jednostki, masz "
+"szanse stworzyć potężną i doświadczoną armię."
 
 #: data/tips.cfg:7
 msgid ""
@@ -5214,8 +5541,8 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
-"Cierpliwość często jest kluczowa. Zamiast atakować w złych warunkach albo "
-"zbyt małą armią, lepiej poczekać na poprawę sytuacji i dopiero wtedy "
+"Cierpliwość często ma kluczowe znaczenie. Zamiast atakować w złych warunkach "
+"albo zbyt małą armią, lepiej poczekać na poprawę sytuacji i dopiero wtedy "
 "kontynuować natarcie."
 
 #: data/tips.cfg:16
@@ -5223,7 +5550,7 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
-"Jeśli jesteś atakowany z kilku stron naraz, dobrze jest wysłać nieco "
+"Jeśli przeciwnik atakuje cię z kilku stron naraz, dobrze jest wysłać nieco "
 "zbędnych jednostek w kilka różnych stron, by opóźnić marsz wroga."
 
 #: data/tips.cfg:17
@@ -5240,7 +5567,7 @@ msgid ""
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
-"W większość kampanii dostaniesz nagrodę w złocie za wcześniejsze "
+"W większości kampanii dostaniesz nagrodę w złocie za wcześniejsze "
 "zakończenie, zależną od liczby wiosek na mapie i liczby oszczędzonych tur. "
 "Zawsze zarobisz w ten sposób więcej, niż przejmując wszystkie wioski i "
 "czekając, aż minie czas."
@@ -5304,14 +5631,14 @@ msgid ""
 "you can undo your move by pressing 'u'."
 msgstr ""
 "Jeśli poruszysz jednostkę, ale nie zaatakujesz i nie odkryjesz niczego "
-"nowego, będziesz mógł cofnąć ruch naciskając \"u\"."
+"nowego, będzie można cofnąć ruch, naciskając klawisz \"u\"."
 
 #: data/tips.cfg:27
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"Możesz sprawdzić, jak daleko może poruszyć się jednostka wroga najeżdżając "
+"Możesz sprawdzić, jak daleko może poruszyć się jednostka wroga, najeżdżając "
 "na nią myszą."
 
 #: data/tips.cfg:28
@@ -5369,8 +5696,8 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
-"Na mapach z włączoną mgłą wojny lub całunem, promień widzenia jednostki jest "
-"ograniczony przez zasięg jej ruchów. Pamiętaj o tym wybierając jednostkę "
+"Na mapach z włączoną mgłą wojny lub całunem promień widzenia jednostki jest "
+"ograniczony przez zasięg jej ruchów. Pamiętaj o tym, wybierając jednostkę "
 "najlepiej nadającą się do zwiadu w danych terenie."
 
 #: data/tips.cfg:35
@@ -5378,7 +5705,7 @@ msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
-"Prawie wszystkie ikony i słowa występujące na ekranie gry w Wesnoth "
+"Prawie wszystkie ikony i słowa występujące na ekranie gry Wesnoth "
 "udostępniają pomoc kontekstową. Umieść nad nimi wskaźnik myszy, by zobaczyć "
 "wyjaśnienie lub opis."
 
@@ -5389,7 +5716,7 @@ msgid ""
 "campaign difficulty."
 msgstr ""
 "Możesz przekazać Projektowi Wesnoth anonimowe zestawienie twoich postępów w "
-"grze przy pomocy przycisku \"Pomóż nam\". Informacje te są nam potrzebne do "
+"grze przy użyciu przycisku \"Pomóż nam\". Informacje te są nam potrzebne do "
 "dopracowania poziomu trudności kampanii."
 
 #: data/traits.cfg:6
@@ -5397,9 +5724,8 @@ msgid "loyal"
 msgstr "lojalny"
 
 #: data/traits.cfg:7
-#, fuzzy
 msgid "female^loyal"
-msgstr "Banita"
+msgstr "lojalna"
 
 #: data/traits.cfg:8
 msgid "Zero upkeep"
@@ -5407,12 +5733,11 @@ msgstr "Brak kosztów utrzymania"
 
 #: data/traits.cfg:18
 msgid "undead"
-msgstr "nieumarli"
+msgstr "nieumarły"
 
 #: data/traits.cfg:19
-#, fuzzy
 msgid "female^undead"
-msgstr "Łotrzyca"
+msgstr "nieumarła"
 
 #: data/traits.cfg:20
 msgid "Immune to poison"
@@ -5423,72 +5748,64 @@ msgid "strong"
 msgstr "silny"
 
 #: data/traits.cfg:28
-#, fuzzy
 msgid "female^strong"
-msgstr "Łotrzyca"
+msgstr "silna"
 
 #: data/traits.cfg:44
 msgid "dextrous"
 msgstr "zręczny"
 
 #: data/traits.cfg:45
-#, fuzzy
 msgid "female^dextrous"
-msgstr "zręczny"
+msgstr "zręczna"
 
 #: data/traits.cfg:57
 msgid "quick"
 msgstr "szybki"
 
 #: data/traits.cfg:58
-#, fuzzy
 msgid "female^quick"
-msgstr "Księżniczka"
+msgstr "szybka"
 
 #: data/traits.cfg:73
 msgid "intelligent"
 msgstr "inteligentny"
 
 #: data/traits.cfg:74
-#, fuzzy
 msgid "female^intelligent"
-msgstr "inteligentny"
+msgstr "inteligentna"
 
 #: data/traits.cfg:85
 msgid "resilient"
 msgstr "wytrzymały"
 
 #: data/traits.cfg:86
-#, fuzzy
 msgid "female^resilient"
-msgstr "wytrzymały"
+msgstr "wytrzymała"
 
 #: data/traits.cfg:101
 msgid "healthy"
-msgstr ""
+msgstr "zdrowy"
 
 #: data/traits.cfg:102
-#, fuzzy
 msgid "female^healthy"
-msgstr "Złodziejka"
+msgstr "zdrowa"
 
 #: data/traits.cfg:103
 msgid "Heals faster if resting"
-msgstr ""
+msgstr "Szybciej odzyskuje zdrowie podczas odpoczynku"
 
 #: data/traits.cfg:114
-#, fuzzy
 msgid "fearless"
-msgstr "Księżniczka"
+msgstr "nieustraszony"
 
 #: data/traits.cfg:115
-#, fuzzy
 msgid "female^fearless"
-msgstr "Księżniczka"
+msgstr "nieustraszona"
 
 #: data/traits.cfg:116
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "Walczy normalnie nawet w niesprzyjających porach dnia lub nocy"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -5559,7 +5876,7 @@ msgstr "obuchowa"
 
 #: data/units/Boat_Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
-msgstr "Piracki Galeon"
+msgstr "Piracki galeon"
 
 #: data/units/Boat_Pirate_Galleon.cfg:17
 msgid ""
@@ -5642,7 +5959,7 @@ msgstr "kłująca"
 
 #: data/units/Boat_Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr "Galeon Transportowy"
+msgstr "Galeon transportowy"
 
 #: data/units/Boat_Transport_Galleon.cfg:17
 msgid ""
@@ -5653,9 +5970,8 @@ msgstr ""
 "dotrą do brzegu, mogą wysadzić transport wojska."
 
 #: data/units/Drake_Armageddon.cfg:3
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "Ognisty smok"
+msgstr ""
 
 #: data/units/Drake_Armageddon.cfg:19
 msgid ""
@@ -5830,8 +6146,8 @@ msgid ""
 msgstr ""
 "Smoczy spalacze to nieliczna, dumna grupa tych, którzy najpełniej "
 "odziedziczyli siłę swoich przodków, a w szczególności umiejętność ziania "
-"ogniem, która w połączeniu z ich rozmiarem i uzbrojonymi w szpony rękami "
-"czyni z nich niebezpiecznych przeciwników."
+"ogniem, która w połączeniu z rozmiarem i uzbrojonymi w szpony rękami czyni z "
+"nich niebezpiecznych przeciwników."
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
@@ -5854,7 +6170,7 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
-"Smoczy bojownicy nie potrafią ani latać, ani zionąć ogniem, i wielu uważa, "
+"Smoczy bojownicy nie potrafią ani latać, ani zionąć ogniem, a wielu uważa, "
 "że oddelegowanie ich do walki wręcz wynika właśnie z ułomności - próba "
 "uczynienia cnotą czegoś, co inaczej byłoby obciążeniem. Możliwe, że istotnie "
 "mają pewne braki w tych umiejętnościach, ale zwolennicy tej teorii nie biorą "
@@ -5975,7 +6291,7 @@ msgid ""
 msgstr ""
 "Smoki są starą rasą i są na tyle mądre, że słuchają swych naturalnych "
 "przywódców. Smoki zwane przez przeciwników \"wodzami\" aspirują do miana "
-"prawdziwych przywódców, zarówno na wojnie jak i w czasie pokoju.\n"
+"prawdziwych przywódców, zarówno na wojnie, jak i w czasie pokoju.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -5992,7 +6308,7 @@ msgid ""
 "maces which complement their already impressive array. Their intense focus "
 "on their weapons comes at the slight expense of their defensive abilities."
 msgstr ""
-"Gladiatorzy podążyli zupełnie inną ścieżką rozwoju niż Siepacze. Zamiast "
+"Gladiatorzy podążyli zupełnie inną ścieżką rozwoju niż siepacze. Zamiast "
 "skupiać się na treningu, wolą zająć się wykonywaniem broni. Są kowalami w "
 "społeczności smoków, i dlatego właśnie posiadają najlepszą broń - "
 "najostrzejsze klingi i oszczepy, a także najlepsze maczugi uzupełniające ich "
@@ -6088,9 +6404,9 @@ msgid ""
 msgstr ""
 "Smoki przestworzy to prawdziwi królowie nieba. Używając potężnego pędu i "
 "ognia, którym zieją, stają się zgubą wielu. Potrafią błyskawicznie spaść na "
-"swoją ofiarę i zazwyczaj znikają wykonawszy zadanie, nim ktokolwiek zdoła je "
-"powstrzymać. Atakując z powietrza potrafią z wielką precyzją atakować ogniem "
-"nawet najlepiej przygotowane pozycje obronne wroga.\n"
+"swoją ofiarę i zazwyczaj znikają po wykonaniu zadania, zanim ktokolwiek "
+"zdoła je powstrzymać. Atakując z powietrza, potrafią z wielką precyzją "
+"zionąć ogniem w nawet najlepiej przygotowane pozycje obronne wroga.\n"
 "\n"
 "Uwagi specjalne: "
 
@@ -6269,9 +6585,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:82
 #: data/units/Human_Loyalist_Javelineer.cfg:82
 #: data/units/Human_Loyalist_Spearman.cfg:202
-#, fuzzy
 msgid "javelin"
-msgstr "Oszczepnik"
+msgstr "oszczep"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -6334,7 +6649,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Krasnoludzki wartownik, wyposażony w olbrzymią tarczę i równie wielką "
-"odwagę, nigdy nie ulega, nawet najsilniejszym atakom wroga.\n"
+"odwagę, nigdy nie ulega nawet najsilniejszym atakom wroga.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -6623,6 +6938,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Magia elfów bardzo się różni od magii ludzi, przez co mało który człowiek "
+"jest ją w stanie pojąć, nie mówiąc już o jej praktykowaniu. Równie "
+"tajemnicze są istoty, którym udało się opanować arkana elfickiej magii. Choć "
+"wiadomo, że są przez swój lud darzone szacunkiem, trudno cokolwiek pewnego "
+"powiedzieć o faktycznej ich roli w społeczności elfów.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Enchantress.cfg:69 data/units/Elvish_Shaman.cfg:67
 #: data/units/Elvish_Sorceress.cfg:76
@@ -6803,7 +7125,7 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
-"Elfy, które mistrzowsko opanowały sztukę jeździectwa, potrafią się poruszać "
+"Elfy, które mistrzowsko opanowały sztukę jeździectwa, potrafią poruszać się "
 "pośród lasów z prędkością niechybnie samobójczą dla ludzi. Choć zdolności te "
 "budzą przede wszystkim podziw dla jeźdźca, to pojawiały się też pytania o "
 "rasę koni, gdyż ich osiągnięcia wydają się niemal nadnaturalne.\n"
@@ -6921,6 +7243,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Świat wróżek niesie znacznie większą moc od świata fizycznego. Już samo "
+"wprowadzenie cząstki świata magicznego do naszej rzeczywistości może mieć "
+"potężne konsekwencje. Elfy dobrze tę możliwość rozumieją, choć rzadko "
+"używają jej w walce - zwłaszcza, że uważają to za niegodne wykorzystanie "
+"drzemiącej w nich siły.\n"
+"\n"
+"Elfki posiadające taką umiejętność są przez inne rasy nazywane po prostu "
+"'czarodziejkami' i w pełni na to miano zasługują.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
@@ -6935,6 +7267,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Rzadko widywane, podobne wieszczkom sylfidy posiadły mistrzowskie panowanie "
+"zarówno nad magiczną, jak i fizyczną strony swej natury. Dysponują "
+"niezwykłymi, nierzadko przerażającymi mocami, o których mity w dużej mierze "
+"tłumaczą trwożny respekt, jaki do elfów mają inne rasy.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
@@ -7002,7 +7340,7 @@ msgstr ""
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
-msgstr "Goblin rycerz"
+msgstr "Gobliński rycerz"
 
 #: data/units/Goblin_Knight.cfg:19
 msgid ""
@@ -7026,7 +7364,7 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
-msgstr "Goblin grabieżca"
+msgstr "Gobliński grabieżca"
 
 #: data/units/Goblin_Pillager.cfg:20
 msgid ""
@@ -7067,17 +7405,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Chorąży to rzadki widok w armiach goblinów. Goblin, który przetrwał tyle "
-"bitew, by mógł być uznany za weterana do rzadki widok, a jaszcze rzadziej "
-"zdarza się, że inne gobliny uznają i respektują ten status. Niemniej jednak "
-"szaleńcze wycie chorążego skutecznie umacnia wolę walki w młodszych "
+"Chorąży to jednostki nieczęsto spotykane w armiach goblinów. Goblin, który "
+"przetrwał tyle bitew, by mógł zostać uznany za weterana to rzadki widok, a "
+"jaszcze rzadziej zdarza się, że inne gobliny uznają i respektują ten status. "
+"Niemniej szaleńcze wycie chorążego skutecznie umacnia wolę walki w młodszych "
 "kamratach, dzięki czemu przed śmiercią walczą dłużej i bardziej zaciekle.\n"
 "\n"
 "Uwagi specjalne:"
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
-msgstr "Goblin włócznik"
+msgstr "Gobliński włócznik"
 
 #: data/units/Goblin_Spearman.cfg:19
 msgid ""
@@ -7117,8 +7455,8 @@ msgid ""
 msgstr ""
 "Nie wiadomo dokładnie, skąd wzięła się praktyka oswajania i dosiadania "
 "wilków. Gobliny są mniejsze i znacznie słabsze niż orkowie. Każdy goblin, "
-"który jest w stanie znaleźć sobie wierzchowca jest znacznie bezpieczniejszy "
-"i - można by rzec - odgrywa bardziej widowiskową rolę w bitwie.\n"
+"który jest w stanie znaleźć sobie wierzchowca, jest znacznie bezpieczniejszy "
+"i - można rzec - odgrywa bardziej widowiskową rolę w bitwie.\n"
 "\n"
 "Wilki raczej nie udźwignęłyby człowieka w zbroi płytowej, ale goblin odziany "
 "w skórzany pancerz jest wystarczająco lekki. W przeciwieństwie do koni, "
@@ -7319,7 +7657,6 @@ msgid "Cavalier"
 msgstr "Ułan"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
@@ -7435,7 +7772,6 @@ msgid "Fencer"
 msgstr "Szermierz"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -7455,10 +7791,11 @@ msgstr ""
 "to tylko unik pozwala całkowicie uniknąć obrażeń. Tylko ci, którzy przeszli "
 "rygorystyczny trening i cieszą się wyjątkową sprawnością fizyczną mogą "
 "skutecznie unikać dowolnych ataków.\n"
+"\n"
 "Szermierze są uzbrojeni jedynie w sztylet i rapier, dzięki czemu szybko się "
 "poruszają i są przydatni w sytuacjach, w których ich zakuci w pancerze "
-"towarzysze stoją na straconej pozycji. Często wręcz zabawiają się tańcząc "
-"wokół żołnierzy w rodzaju ciężkej piechoty i kpiąc z wysokiej ceny noszenia "
+"towarzysze stoją na straconej pozycji. Często wręcz zabawiają się, tańcząc "
+"wokół żołnierzy w rodzaju ciężkiej piechoty i kpiąc z wysokiej ceny noszenia "
 "pełnej zbroi płytowej.\n"
 "\n"
 "Uwagi specjalne:"
@@ -7496,8 +7833,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Ranga wielkiego marszałka jest jedną z najbardziej cenionych w armiach "
-"ludzkości, a ci którzy noszą ten tytuł przeszli wiele prób, dowodząc swoich "
-"umiejętności taktycznych oraz sprawności w walce.\n"
+"ludzkości, a ci, którzy noszą ten tytuł, przeszli wiele prób, dowodząc "
+"swoich umiejętności taktycznych oraz sprawności w walce.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -7524,12 +7861,12 @@ msgid ""
 msgstr ""
 "Halabarda jest bronią ciężką i trudną w użyciu, ale w rękach eksperta staje "
 "się niezwykle groźna. Jest też znacznie bardziej uniwersalna niż włócznia, z "
-"której się wywodzi. Jak poinformuje każdy halabardier, bronią tą można "
+"której się wywodzi. Jak poinformuje każdy halabardzista, bronią tą można "
 "zadawać ciosy na cztery sposoby, czyli o dwa więcej niż przy pomocy włóczni "
 "lub piki, a mianowicie grotem, ostrzem, kolcem na końcu drzewca oraz "
-"wewnętrznym szpicem ostrza, którym można atakować przyciągając broń w swoim "
-"kierunku. Wszystko to czyni w walce halabardę bronią bardzo wszechstronną, "
-"zwłaszcza przeciw kawalerii.\n"
+"wewnętrznym szpicem ostrza, którym można atakować, przyciągając broń w swoim "
+"kierunku. Wszystko to czyni halabardę bronią bardzo wszechstronną, zwłaszcza "
+"przeciw kawalerii.\n"
 "\n"
 "Wytworzenie halabardy jest jednak znacznie droższe niż włóczni, a w rękach "
 "nowicjusza jest ona znacznie mniej skuteczna. Zwyczajem w armiach Wesnoth "
@@ -7586,10 +7923,10 @@ msgstr ""
 "nie można ich wysyłać na odległe bitwy bez całego orszaku sług, którzy ich "
 "obsługują.\n"
 "\n"
-"Pomimo zabójczej skuteczności w walce wręcz, ciężki rynsztunek ma swoje "
-"wady: Zgniatacze żelaza łatwo się męczą i sami dobrze wiedzą, że nie są w "
-"stanie biec przez pole bitwy. Często - zbyt często - widzieli w oddali "
-"ginących towarzyszy, nie będąc w stanie na czas przyjść im z pomocą."
+"Pomimo zabójczej skuteczności w walce wręcz ciężki rynsztunek ma swoje wady: "
+"Zgniatacze żelaza łatwo się męczą i sami dobrze wiedzą, że nie są w stanie "
+"biec przez pole bitwy. Często - zbyt często - widzieli w oddali ginących "
+"towarzyszy, nie będąc w stanie na czas przyjść im z pomocą."
 
 #: data/units/Human_Loyalist_Javelineer.cfg:3
 msgid "Javelineer"
@@ -7728,7 +8065,7 @@ msgstr ""
 "Obiecujący włócznicy w armiach Wesnoth często awansują, otrzymując piki i "
 "znacznie lepsze opancerzenie od zbieraniny skórzanych pancerzy, które nosili "
 "jako rekruci. Pika jest bronią znacznie dłuższą niż włócznia, pozwalającą na "
-"stosowanie innej taktyki. Ściana pikinierów jest zgubna dla każdej szarży "
+"stosowanie innej taktyki. Ściana pikinierów jest zgubą każdej szarży "
 "kawalerii, a jeśli pikinierzy są zdyscyplinowani i posługują się odpowiednią "
 "taktyką, to potrafią też zatrzymać niemal każdy oddział piechoty.\n"
 "\n"
@@ -7780,7 +8117,6 @@ msgid "Shock Trooper"
 msgstr "Żołnierz uderzeniowy"
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:15
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and half of their use in "
 "war is simply a matter of intimidation. The only men who can enter their "
@@ -7822,7 +8158,7 @@ msgstr ""
 "Miecze są dla wielu kosztownym luksusem, i większość chłopów nie może sobie "
 "na nie pozwolić. Włócznie robi się znacznie łatwiej i są one dość skuteczne "
 "nawet bez odpowiedniego grotu, choć większość chłopów na taki stać. Odziani "
-"w skórzane pancerze i nierzadko niosący tarcze i kilka oszczepów, włócznicy "
+"w skórzane pancerze, nierzadko niosący tarcze i kilka oszczepów włócznicy "
 "stanowią trzon większości armii i często są wysyłani do boju zaledwie po "
 "podstawowym przeszkoleniu.\n"
 "\n"
@@ -7853,7 +8189,6 @@ msgid "Mage"
 msgstr "Mag"
 
 #: data/units/Human_Mage.cfg:29
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7881,7 +8216,7 @@ msgstr ""
 "uczynić poznanie tych praw głównym celem swojego życia. Magowie wiele lat "
 "spędzili na naukach i zgromadzili wiedzę wyróżniającą ich spośród innych "
 "ludzi. W świecie, w którym niewielu potrafi czytać i pisać, ci mężczyźni i "
-"kobiety poświęcili się w pełni pogoni za wiedzą. Ich szeregi pełne są "
+"kobiety poświęcili się całkowicie pogoni za wiedzą. Ich szeregi pełne są "
 "zarówno szlachetnie urodzonej młodzieży, jak i tych, którzy szukali ucieczki "
 "od intelektualnej pustki narzuconej przez pracę fizyczną.\n"
 "\n"
@@ -7910,7 +8245,6 @@ msgid "Arch Mage"
 msgstr "Arcymag"
 
 #: data/units/Human_Mage_Arch.cfg:21
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -7994,7 +8328,6 @@ msgid "Red Mage"
 msgstr "Czerwony mag"
 
 #: data/units/Human_Mage_Red.cfg:21
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice, and given the ruddy cloak of a master. "
@@ -8034,7 +8367,6 @@ msgid "Silver Mage"
 msgstr "Srebrny mag"
 
 #: data/units/Human_Mage_Silver.cfg:24
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -8068,7 +8400,7 @@ msgstr ""
 "\n"
 "Posiadają swój własny zakon, który odmawia przekazania wybranych tajemnic "
 "pozostałym magom. Jednym z tych sekretów jest umiejętność przemierzania "
-"wielkich odległości szybciej, niż ktokolwiek mógłby to zrobić pieszo. "
+"wielkich odległości szybciej niż ktokolwiek mógłby to zrobić pieszo. "
 "Członkowie srebrnego zakonu stanowczo odmawiają rozmów na ten temat z innymi "
 "magami, a ci nieliczni, którzy zostali podpatrzeni podczas pracy, porzucają "
 "swe praktyki i nigdy więcej o nich nie wspominają.\n"
@@ -8077,7 +8409,8 @@ msgstr ""
 "umiejętności niewątpliwie bywają użyteczne na polu bitwy, o ile oczywiście "
 "ktoś zdoła przekonać maga, by ich użył.\n"
 "\n"
-"Uwagi specjalne:"
+"Uwagi specjalne: Ze względu na doskonałe wyczucie natury magii, srebrni "
+"magowie są niezwykle odporni na ataki magiczne."
 
 #: data/units/Human_Mage_Silver.cfg:142
 msgid "female^Silver Mage"
@@ -8190,7 +8523,6 @@ msgid "Assassin"
 msgstr "Zabójca"
 
 #: data/units/Human_Outlaw_Assassin.cfg:21
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -8234,7 +8566,7 @@ msgstr ""
 "Bandyci to zbieranina osobników o szemranej historii. Stanowią oni zbrojne "
 "ramię każdej zorganizowanej grupy przestępców i choć brakuje im finezji i "
 "inteligencji, to świetnie wykonują swoje podstawowe zadanie zmuszania ofiar "
-"do posłuszeństwa przy pomocy pięści. Jak wszyscy przestępcy są oni "
+"do posłuszeństwa przy pomocy pięści. Jak wszyscy przestępcy, są oni "
 "przyzwyczajeni do pracy w nocy i nie lubią walczyć za dnia."
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
@@ -8250,7 +8582,7 @@ msgid ""
 "despite their pitiable weaponry, they are quite good at harrying their "
 "enemies, especially under cover of darkness."
 msgstr ""
-"Ci godni pożałowania kryminaliści są często szydząco nazywani przez swoich "
+"Ci godni pożałowania kryminaliści są często szyderczo nazywani przez swoich "
 "zwierzchników \"rozbójnikami\", a ich wymagająca ciągłego ruchu praca "
 "sprawia, że często wykorzystywani są jako kurierzy i zwiadowcy. Wytrzymałość "
 "i umiejętność sprawnego biegania pomaga im walce, a pomimo dość żałosnego "
@@ -8282,6 +8614,15 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"Choć myśliwi nie są szkoleni na wojowników, ich umiejętności - zwłaszcza "
+"łucznicze - bardzo przydają się w walce. Niewiele też potrzeba, by "
+"umiejętności te zostały obrócone przeciwko innym ludziom, czy to z pobudek "
+"szczytnych, czy bardziej materialnych. W każdej zgrai bandytów przyda się "
+"kilku kłusowników, którzy zdobędą dla wszystkich wieczorny posiłek, a "
+"nierzadko pomogą też w walce.\n"
+"\n"
+"Dzięki doświadczeniu myśliwskiemu kłusownicy niezwykle dobrze walczą w nocy, "
+"jak również w lasach i na bagnach."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
@@ -8374,6 +8715,14 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"Traperzy są przydatni w każdej armii, a wręcz nieodzowni w każdym większym "
+"oddziale bandytów. Potrafią oni tropić zarówno zwierzynę, jak i ludzi oraz "
+"zauważać to, co umyka na ogół uwadze innych. Nierzadko tylko oni potrafią "
+"zdobyć dla kompanów strawę, czy to mięsną, czy jarską.\n"
+"\n"
+"Dzięki doświadczeniu myśliwskiemu traperzy bardzo przydają się w boju, "
+"zwłaszcza że niezwykle dobrze walczą w nocy, jak również w lasach i na "
+"bagnach."
 
 #: data/units/Human_Peasant.cfg:3
 msgid "Peasant"
@@ -8410,8 +8759,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Wróżbitki syren oddają się swemu powołaniu z żarliwością, która nieco "
-"zaskakuje kapłanki ludzi. Może mieć to swoje źródła w powtarzanej przez nie "
-"legendzie, która opowiada o bezimiennej, mrocznej zmorze, która niegdyś była "
+"zaskakuje kapłanki ludzi. Może mieć to swoje źródło w powtarzanej przez nie "
+"legendzie, która opowiada o bezimiennej, mrocznej zmorze będącej niegdyś "
 "postrachem ich ludu. Chociaż z opowieści niewiele wynika, pewne jest "
 "jedynie, że to dzięki mocy światła ostatecznie zmorę pokonano i zapewniono "
 "bezpieczeństwo ludu.\n"
@@ -8436,7 +8785,7 @@ msgstr ""
 "Syreny, podobnie jak elfy, posiadają silną wrodzoną zdolność do posługiwania "
 "się magią, choć diametralnie od elfów różną. Te, które mistrzowsko opanują "
 "tą zdolność, zdobywają wielki szacunek, a ich umiejętności wykorzystywane są "
-"w licznych zastosowaniach, o wielu z których ludzkości nawet się nie śniło. "
+"w licznych zastosowaniach, o których większości ludzkość nawet nie śniła. "
 "Nie wolno im jednak używać tych sztuk w walce przeciwko przedstawicielom "
 "własnej rasy - ich moc ma wyższy cel ochrony ludu przed potworami, które "
 "wynurzą się odmętów.\n"
@@ -8488,7 +8837,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Mermani wyznają tę samą wiarę, co większość ludzkości, ale z przyczyn "
+"Mermeni wyznają tę samą wiarę, co większość ludzkości, ale z przyczyn "
 "kulturowych jej podtrzymywanie pozostawione jest syrenom, które są do tego "
 "bardziej intelektualnie predysponowane. To one poświęcają się ideałom takim "
 "jak szerzenie pokoju i życia na świecie, a także studiują sztukę walki z "
@@ -8527,7 +8876,7 @@ msgstr ""
 "Niezliczone zastosowania tych umiejętności rzadko przychodzą na myśl "
 "mieszkańcom lądu, którzy po prostu przyglądają się im ze zdumieniem.\n"
 "\n"
-"Uwagi specjalne: Ataki syren są z natury magiczne i zawsze mają wysoką "
+"Uwagi specjalne: ataki syren są z natury magiczne i zawsze mają wysoką "
 "szansę trafienia przeciwnika."
 
 #: data/units/Mermaid_Siren.cfg:28
@@ -8536,7 +8885,7 @@ msgstr "dotyk nimfy"
 
 #: data/units/Merman_Entangler.cfg:3
 msgid "Merman Entangler"
-msgstr "Merman oplątywacz"
+msgstr "Mermen oplątywacz"
 
 #: data/units/Merman_Entangler.cfg:20
 msgid ""
@@ -8548,9 +8897,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Obciążone sieci używane przez mermanów w boju są bronią, którą niełatwo się "
+"Obciążone sieci używane przez mermenów w boju są bronią, którą niełatwo się "
 "sprawnie posługiwać. Ci którzy opanują tę sztukę są cenieni i szanowani "
-"przez towarzyszy. Broń ta dobitnie podkreśla bezwzględną przewagę mermana "
+"przez towarzyszy. Broń ta dobitnie podkreśla bezwzględną przewagę mermena "
 "walczącego w swoim własnym środowisku i powoduje, że rasa ta może być groźna "
 "dla wszystkich wrogów, którzy tylko zbliżą się do wody.\n"
 "\n"
@@ -8558,7 +8907,7 @@ msgstr ""
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
-msgstr "Merman wojownik"
+msgstr "Mermen wojownik"
 
 #: data/units/Merman_Fighter.cfg:18
 msgid ""
@@ -8576,7 +8925,7 @@ msgstr "trójząb"
 
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
-msgstr "Merman hoplita"
+msgstr "Mermen hoplita"
 
 #: data/units/Merman_Hoplite.cfg:21
 msgid ""
@@ -8597,7 +8946,7 @@ msgstr ""
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
-msgstr "Merman łowca"
+msgstr "Mermen łowca"
 
 #: data/units/Merman_Hunter.cfg:18
 msgid ""
@@ -8613,7 +8962,7 @@ msgstr ""
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr "Merman oszczepnik"
+msgstr "Mermen oszczepnik"
 
 #: data/units/Merman_Javelineer.cfg:18
 msgid ""
@@ -8630,7 +8979,7 @@ msgstr ""
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
-msgstr "Merman sieciarz"
+msgstr "Mermen sieciarz"
 
 #: data/units/Merman_Netcaster.cfg:19
 msgid ""
@@ -8659,7 +9008,7 @@ msgstr ""
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
-msgstr "Merman włócznik"
+msgstr "Mermen włócznik"
 
 #: data/units/Merman_Spearman.cfg:17
 msgid ""
@@ -8679,7 +9028,7 @@ msgstr ""
 
 #: data/units/Merman_Triton.cfg:3
 msgid "Merman Triton"
-msgstr "Merman tryton"
+msgstr "Mermen tryton"
 
 #: data/units/Merman_Triton.cfg:18
 msgid ""
@@ -8693,7 +9042,7 @@ msgstr ""
 
 #: data/units/Merman_Warrior.cfg:3
 msgid "Merman Warrior"
-msgstr "Merman żołnierz"
+msgstr "Mermen żołnierz"
 
 #: data/units/Merman_Warrior.cfg:17
 msgid ""
@@ -8763,7 +9112,7 @@ msgid ""
 "foes, or by slapping them with their fists."
 msgstr ""
 "Wielkie błotniaki to po prostu większy rodzaj błotniaków - istot stworzonych "
-"z ziemi i wody przy pomocy magii. Atakują miotając w przeciwników kulami "
+"z ziemi i wody przy użyciu magii. Atakują, miotając w przeciwników kulami "
 "błota lub uderzając potężnymi pięściami."
 
 #: data/units/Monster_Giant_Mudcrawler.cfg:45 data/units/Monster_Yeti.cfg:32
@@ -8810,7 +9159,7 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"Błotniaki to istoty magicznie stworzone z ziemi i wody. Atakują miotając w "
+"Błotniaki to istoty magicznie stworzone z ziemi i wody. Atakują, miotając w "
 "przeciwników kulami błota."
 
 #: data/units/Monster_Sea_Serpent.cfg:3
@@ -8850,7 +9199,7 @@ msgid ""
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"Niewiele wiadomo o yetich poza tym, że są to podobne do małp stworzenia "
+"Niewiele wiadomo o yeti poza tym, że są to podobne do małp stworzenia "
 "zamieszkujące odległe, pokryte śniegiem góry. Niewielu je widziało, przez co "
 "wielu w ogóle wątpi w ich istnienie."
 
@@ -8947,7 +9296,7 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Ogry to olbrzymie stworzenia, które zazwyczaj żyją samotnie na odludziach. Z "
+"Ogry to olbrzymie stworzenia, które zazwyczaj żyją samotnie na odludziu. Z "
 "wyglądu są dość podobne do ludzi, choć duże i koślawe. Można je z łatwością "
 "przechytrzyć lub prześcignąć, ale nie wolno nie doceniać ich siły."
 
@@ -9038,8 +9387,8 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
-"Rębacze stanowią trzon sił orków. Choć są wolniejsi od elfickich i ludzkich "
-"wojowników, rębacze atakują znacznie silniej i mogą przyjąć znacznie więcej "
+"Rębacze stanowią trzon sił orków. Są wolniejsi od elfickich i ludzkich "
+"wojowników, atakują jednak znacznie silniej i mogą przyjąć znacznie więcej "
 "obrażeń."
 
 #: data/units/Orcish_Leader.cfg:3
@@ -9125,11 +9474,11 @@ msgid ""
 "than their Elven and Human counterparts, they still maintain an edge in "
 "melee strength and stamina."
 msgstr ""
-"Niektórym kusznikom udało się ulepszyć swoją broń dodając do niej kołowrót i "
-"lufę. Pozwala im to strzelać ołowianymi pociskami z zabójczą siłą i "
-"celnością. Choć w walce na odległość nadal nie dorównują swym odpowiednikom "
-"w armiach elfów i ludzi, to przewyższają ich pod względem siły i "
-"wytrzymałości w walce wręcz."
+"Niektórym kusznikom udało się ulepszyć swoją broń poprzez dodanie do niej "
+"kołowrotu i lufy. Pozwala im to strzelać ołowianymi pociskami z zabójczą "
+"siłą i celnością. Choć w walce na odległość nadal nie dorównują swym "
+"odpowiednikom w armiach elfów i ludzi, to przewyższają ich pod względem siły "
+"i wytrzymałości w walce wręcz."
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -9197,6 +9546,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Jaszczury są niezwykle zwinne i świetnie radzą sobie w terenach, które ich "
+"wrogom sprawiają niemałe trudności. Gdy połączyć te zdolności z "
+"doświadczeniem, siłą i odpowiednim ekwipunkiem, jaszczurzy wojownicy stają "
+"się szczególnie niebezpieczni w walce, zwłaszcza że otoczenie ich jest "
+"zadaniem znacznie trudniejszym, niż w przypadku innych jednostek. Nawet w "
+"pełnej zbroi wojownicy jaszczurów potrafią prześlizgnąć się przez "
+"najmniejszy choćby wyłom w szeregach wroga i zadać mu poważne straty.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
@@ -9210,6 +9568,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Jaszczury posiadają pewne zdolności przypominające to, co ludzie nazywają "
+"magią, choć ich sztuki magiczne przypominają bardziej wróżbiarstwo i "
+"czarnoksięskie gusła. Choć o magii jaszczurów niewiele wiadomo, wszyscy, "
+"którym było dane jej doświadczyć, czują do niej trwożny respekt.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Augur.cfg:74 data/units/Saurian_Oracle.cfg:74
 #: data/units/Saurian_Soothsayer.cfg:74
@@ -9218,7 +9582,7 @@ msgstr "klątwa"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
-msgstr "Jaszczurzy naganiacz"
+msgstr "Jaszczurzy oskrzydlacz"
 
 #: data/units/Saurian_Flanker.cfg:21
 msgid ""
@@ -9230,6 +9594,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Wojownicy jaszczurów są na ogół drobniejszej budowy od wojowników elfów czy "
+"ludzi. Oczywiście jest to kwestią względną, więc jaszczurzy wojownik może "
+"stać się bardzo silny, nie tracąc przy tym swej przyrodzonej zwinności. "
+"Połączenie to jest niezwykle groźne w boju, gdyż wystarczy chwila nieuwagi "
+"przeciwnika, by jego rezerwy zostały przez te stworzenia błyskawicznie "
+"oskrzydlone.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
@@ -9246,6 +9618,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Widywano jaszczury pokryte od stóp do głów przerażającymi, ezoterycznymi "
+"znakami w postaci malunków i tatuaży, ubrane w szaty wskazujące na wysoką "
+"pozycję społeczną. Niektórzy uważają, że są one wśród jaszczurów "
+"jasnowidzami czy też wyroczniami. Niezależnie jednak od ich roli społecznej, "
+"jaszczury te niewątpliwie biegle opanowały obce innym rasom sztuki magiczne, "
+"a każdy, kto je spotka, winien zachować ostrożność.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
@@ -9264,6 +9644,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Jaszczury są bardzo drobnej budowy, lecz pomimo związanej z tym delikatności "
+"są bardzo, bardzo zwinne. Dzięki drobnej posturze potrafią w walce "
+"błyskawicznie przemknąć się przez obronę, która zatrzymałaby każdego "
+"dorosłego mężczyznę, co czyni z nich trudnym przeciwników.\n"
+"\n"
+"Ich preferowaną bronią są włócznie, którymi dzięki silnym kończynom potrafią "
+"zadawać poważne obrażenia, czy to w walce wręcz, czy z dystansu.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
@@ -9278,6 +9667,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Jaszczury niewątpliwie posiadają pewne zdolności magiczne i praktykują "
+"jakiegoś rodzaju sztuki tajemne. Wiadomo też, że niektóre z nich szczególnie "
+"dobrze opanowały sztukę leczenia, z której pomocą wspierają wojowników w "
+"walce.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -9360,13 +9755,13 @@ msgid ""
 "Special Notes: though unwieldy, a stone thrown by one of these monsters is "
 "much more deadly than any arrow, if it manages to hit."
 msgstr ""
-"Pomysł rzucenia głazem w trakcie walki z pewnością zaświtał wielu trollom, a "
-"niektóre z nich wybrały głazy jako swoją ulubioną broń. Ponieważ niełatwo "
+"Pomysł rzucania głazami w trakcie walki z pewnością zaświtał wielu trollom, "
+"a niektóre z nich wybrały głazy jako swoją ulubioną broń. Ponieważ niełatwo "
 "znaleźć odpowiednie kamienie, trolle skałomioty noszą je w skórzanych "
 "workach przerzuconych przez ramię. Ten sam worek służy w walce za prymitywną "
 "procę.\n"
 "\n"
-"Uwagi specjalne: Choć miotane głazy są na ogół niecelne, ewentualne "
+"Uwagi specjalne: choć miotane głazy są na ogół niecelne, ewentualne "
 "trafienie powoduje znacznie większe obrażenia, niż strzała."
 
 #: data/units/Troll_Warrior.cfg:3
@@ -9452,8 +9847,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Nietoperze wampiry to nieumarłe bestie, które gryzą swoje ofiary. Choć ich "
-"kły nie są zbyt silne, to nietoperze te wzmacniają się wysysając wraz z "
-"krwią życie swych ofiar.\n"
+"kły nie są zbyt silne, nietoperze te wzmacniają się, wysysając wraz z krwią "
+"życie swych ofiar.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -9475,7 +9870,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Tylko ci, którzy pogrążyli się w nekromancji wiedzą, co trzeba zrobić, by "
+"Tylko ci, którzy pogrążyli się w nekromancji, wiedzą co trzeba zrobić, by "
 "zmienić człowieka w ghula, i sekretu tego nie zdradzają. Owocem tych "
 "straszliwych rytuałów jest monstrum, które nie pamięta czasów swego "
 "człowieczeństwa - potwór włóczący się nago jak w dniu swoich narodzin i "
@@ -9499,7 +9894,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Doprowadzone do szaleństwa przez głód martwego mięsa trupojady atakują swoje "
+"Doprowadzone do szaleństwa przez głód martwych ciał trupojady atakują swoje "
 "potencjalne źródła pożywienia z zawziętością dzikich bestii. Gdy trupojad "
 "napcha się już mięsem swoich ofiar, wszelkie otrzymane przez niego obrażenia "
 "po prostu znikają, jak gdyby został świeżo przyzwany, i może na nowo "
@@ -9542,7 +9937,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Chodzące trupy to ciała zmarłych, przywrócone do życia przez czarną magię. "
+"Chodzące trupy to ciała zmarłych przywrócone do życia przez czarną magię. "
 "Choć są słabe w walce, jednostki te przenoszą swe przekleństwo na swoje "
 "ofiary, powiększając w ten sposób armię nieumarłych.\n"
 "\n"
@@ -9561,8 +9956,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Istota należąca do starożytnych liczów jest reliktem zamierzchłych czasów. "
-"Każdy, kto natknie się na starożytnego licza, będzie miał dużo większe "
-"zmartwienia, niż śmierć.\n"
+"Każdy, kto natknie się na starożytnego licza, będzie miał zmartwienia dużo "
+"większe niż śmierć.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -9594,7 +9989,7 @@ msgstr ""
 "czarnej magii czeka śmierć, nowych praktykujących może przyciągnąć tylko "
 "wyjątkowo wspaniała nagroda. A jednak znajdują się tacy, którzy pragną "
 "zajmować się tą mroczną sztuką, gdyż czekającą na nich nagrodą jest nic "
-"innego, jak tylko nieśmiertelność. Kryjący się w tajemnych kultach lub "
+"innego jak tylko nieśmiertelność. Kryjący się w tajemnych kultach lub "
 "wprowadzeni w szeregi mrocznych adeptów fanatycy poddawani są szkoleniu, "
 "które często doprowadza ich do krańcowego wyczerpania i wyniszczenia.\n"
 "\n"
@@ -9636,7 +10031,7 @@ msgstr ""
 "\n"
 "Ostateczną nagrodą czekającą na tych, którzy opanują mroczne sztuki, jest "
 "całkowite panowanie nad życiem i śmiercią. Czarnoksiężnicy uczą się jak "
-"manipulować życiem i śmiercią wskrzeszając ciała, szkielety i dusze. "
+"manipulować życiem i śmiercią, wskrzeszając ciała, szkielety i dusze. "
 "Najbardziej zepsuci i żądni władzy starają się całkowicie pokonać śmierć, "
 "stając się liczami i osiągając przerażającą nieśmiertelność.\n"
 "\n"
@@ -9702,7 +10097,7 @@ msgstr ""
 "ona stanowić potężny oręż w służbie zła.\n"
 "\n"
 "Umiejętność ta jest pod każdym względem pierwszym krokiem w stronę oszukania "
-"śmierci. Stanowi ona szczyt mocy, jaką mroczny mag może posiąść nie tracąc "
+"śmierci. Stanowi ona szczyt mocy, jaką mroczny mag może posiąść, nie tracąc "
 "przy tym swojego człowieczeństwa, ale blednie w porównaniu ze "
 "śmiercionośnymi mocami, którymi władają licze. Ponadto magia wzmacnia "
 "śmiertelne ciała magów, w przeciwieństwie do kruchych, rozkładającej się "
@@ -9743,7 +10138,6 @@ msgid "Chocobone"
 msgstr "Kościec"
 
 #: data/units/Undead_Skele_Chocobone.cfg:21
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -9752,7 +10146,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Jeżdżąc na szkieletach strusiopodobnych stworów, rumaków zapomnianej "
-"cywilizacji, kośćce mogą poruszać się szybciej niż zwykła kawaleria."
+"cywilizacji, kośćce mogą poruszać się szybciej niż zwykła kawaleria.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
@@ -9770,7 +10166,7 @@ msgstr ""
 "Między ludźmi krążą opowieści o najpotężniejszych wojownikach i generałach, "
 "którzy zawładnięci nienawiścią i poczuciem zdrady powracają na ten świat "
 "jako rycerze śmierci. Uzbrojeni tak jak za życia, dowodzą nieumarłymi "
-"kierowani rządzą zemsty.\n"
+"kierowani żądzą zemsty.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -9839,8 +10235,8 @@ msgstr ""
 "zostali obdarzeni fałszywym życiem, by ponownie móc walczyć. Jednak pamięć "
 "tych czasów dawno minęła i nawet czarownicy, którzy ich wskrzesili, mogą "
 "jedynie spekulować na temat ich przeszłości. Powracający jest w walce "
-"potężnym narzędziem, nieustraszonym wojownikiem nie czującym bólu i "
-"walczącym do samego gorzkiego końca.\n"
+"potężnym narzędziem, nieustraszonym wojownikiem nieczującym bólu i walczącym "
+"do samego gorzkiego końca.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -9861,8 +10257,8 @@ msgstr ""
 "Najpotężniejsi z nieumarłych łuczników niezmiennie rekrutują się spośród "
 "tych, którzy byli łucznikami w poprzednim życiu. Wędrują po polach bitew, "
 "wiedzeni przez niknące wspomnienie dawnych umiejętności, bez zwracania uwagi "
-"na to kim są ich przeciwnicy ani do jakiego celu dążą. Prowadzi ich zła wola "
-"zrodzona z udręczonej, pustej i niespójnej egzystencji.\n"
+"na to, kim są ich przeciwnicy ani do jakiego celu dążą. Prowadzi ich zła "
+"wola zrodzona z udręczonej, pustej i niespójnej egzystencji.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -9902,7 +10298,7 @@ msgid ""
 msgstr ""
 "Szkielet łucznik jest nieco inny od szkieletów, które często mu towarzyszą - "
 "jest grzechem przeciwko naturze, wojownikiem powstałym z martwych, by znów "
-"walczyć. Ci żołnierze zrobią wszystko, by osiągnąć cele nakreślone przez ich "
+"walczyć. Żołnierze ci zrobią wszystko, by osiągnąć cele nakreślone przez ich "
 "władców, albowiem śmierć nie jest straszna tym, którzy są już martwi.\n"
 "\n"
 "Uwagi specjalne:"
@@ -9925,10 +10321,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Jedną z łask stworzenia jest to, że ludzka dusza jest niezmienna i nie da "
-"się jej zniszczyć. Na przekór temu, nekromanta może uczynić wiele prawdziwie "
+"się jej zniszczyć. Na przekór temu nekromanta może uczynić wiele prawdziwie "
 "przerażających rzeczy.\n"
 "\n"
-"Opleciona zasłoną odrażających zaklęć, dusza upodabnia się do wiatru w "
+"Opleciona zasłoną odrażających zaklęć dusza upodabnia się do wiatru w "
 "żaglach okrętu. Rezultatem tego uwięzienia jest niezawodny sługa, któremu "
 "można zlecić każde zadanie, jakiego zażyczy sobie jego pan.\n"
 "\n"
@@ -9998,7 +10394,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Widma, zwane niekiedy \"pustymi ludźmi\", stanowią główną siłę zastępów "
+"Widma, zwane niekiedy \"chochołowymi ludźmi\", stanowią główną siłę zastępów "
 "mrocznego władcy. Te odrażające istoty sieją postrach wśród żywych i "
 "niestrudzenie czuwają nad krainami opanowanymi przez ich mistrza.\n"
 "\n"
@@ -10033,7 +10429,7 @@ msgstr ""
 "Te umęczone postaci dawnych wojowników należą na najbardziej przerażających "
 "stworzeń w arsenale nekromanty, gdyż miecz przecina je jak powietrze, nie "
 "czyniąc żadnej szkody. Źródłem strachu przed upiorami jest przeświadczenie, "
-"że nie można ich pokonać - co wcale nie jest dalekie od prawdy.\n"
+"że nie można ich pokonać, co wcale nie jest dalekie od prawdy.\n"
 "\n"
 "Upiory otrzymały broń, dzięki której zaklęcia podtrzymujące ich istnienie "
 "mogą się odnawiać kosztem atakujących je istot.\n"
@@ -10059,12 +10455,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Widywane rzadko nawet przez elfy, drzewce są stworzeniami, o których "
-"niewiele wiadomo. Większość wiedzy o nich pochodzi właśnie od elfów. "
-"Wiadomo, że mimo swego wyglądu nie są one potomkami drzew, lecz wywodzą się "
-"raczej ze świata wróżek i są do nich pod pewnymi względami nawet bardziej "
-"podobne niż elfy. Nie wiadomo jakie motywy kierują ich poczynaniami, ale "
-"dość powszechnie przyjmuje się, że są one strażnikami świata przyrody.\n"
+"Widywane rzadko nawet przez elfy drzewce są stworzeniami, o których niewiele "
+"wiadomo. Większość wiedzy o nich pochodzi właśnie od elfów. Wiadomo, że mimo "
+"swego wyglądu nie są one potomkami drzew, lecz wywodzą się raczej ze świata "
+"wróżek i są do nich pod pewnymi względami nawet bardziej podobne niż elfy. "
+"Nie wiadomo jakie motywy kierują ich poczynaniami, ale dość powszechnie "
+"przyjmuje się, że są one strażnikami świata przyrody.\n"
 "\n"
 "Drzewce są zupełnie nieprzystosowane do wojny, ale dysponują wielką siłą. "
 "Nie są również przyzwyczajone do szybkiego przemieszczania się.\n"
@@ -10174,7 +10570,7 @@ msgstr ""
 
 #: src/actions.cpp:137
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "Nie ma pustych pól zamku, na które można by rekrutować."
+msgstr "Nie ma pustych pól zamku, na których można by rekrutować."
 
 #: src/actions.cpp:967 src/actions.cpp:1167
 msgid "poisoned"
@@ -10193,39 +10589,40 @@ msgid "Ambushed!"
 msgstr "Zasadzka!"
 
 #: src/actions.cpp:2035
-#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Zauważono przyjazną jednostkę"
-msgstr[1] "Zauważono przyjazną jednostkę"
+msgstr[1] "Zauważono $friends przyjazne jednostki"
+msgstr[2] "Zauważono $friends przyjaznych jednostek"
 
 #: src/actions.cpp:2038
-#, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Zauważono jednostkę wroga!"
-msgstr[1] "Zauważono jednostkę wroga!"
+msgstr[1] "Zauważono $enemies jednostki wroga!"
+msgstr[2] "Zauważono $enemies jednostek wroga!"
 
 #: src/actions.cpp:2043
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$friends przyjazna"
+msgstr[1] "$friends przyjazne"
+msgstr[2] "$friends przyjaznych"
 
 #: src/actions.cpp:2044
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$enemies wroga"
+msgstr[1] "$enemies wrogie"
+msgstr[2] "$enemies wrogich"
 
 #: src/actions.cpp:2045
-#, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Zauważono jednostki! ($friends przyjaznych, $enemies wrogich)"
+msgstr "Zauważono jednostki! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2054
 msgid "(press $hotkey to continue)"
-msgstr "(wciśnij $hotkey aby kontynuować)"
+msgstr "(wciśnij $hotkey, aby kontynuować)"
 
 #: src/dialogs.cpp:116
 msgid "Advance Unit"
@@ -10244,9 +10641,8 @@ msgid "Save Game"
 msgstr "Zapisz grę"
 
 #: src/dialogs.cpp:217
-#, fuzzy
 msgid "Quit Game"
-msgstr "Wychodzi z gry"
+msgstr "Opuść grę"
 
 #: src/dialogs.cpp:223
 msgid "Overwrite?"
@@ -10334,7 +10730,7 @@ msgstr ""
 
 #: src/dialogs.cpp:527
 msgid "Delete Save"
-msgstr "Skasuj zapisaną grę"
+msgstr "Usuń zapisaną grę"
 
 #: src/dialogs.cpp:535
 msgid "Date"
@@ -10389,7 +10785,7 @@ msgstr "Bitwa o Wesnoth"
 #: src/game.cpp:654
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
-"Ostrzeżenie: Wczytywany plik jest uszkodzony. Mimo to zostanie załadowany.\n"
+"Ostrzeżenie: wczytywany plik jest uszkodzony. Mimo to zostanie załadowany.\n"
 
 #: src/game.cpp:676 src/multiplayer_connect.cpp:1256
 msgid ""
@@ -10496,18 +10892,16 @@ msgid "Get Add-ons"
 msgstr "Pobierz dodatki"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Dependencies"
-msgstr "Ustawienia"
+msgstr "Zależności"
 
 #: src/game.cpp:1038
 msgid "This add-on requires the following additional dependencies:"
-msgstr ""
+msgstr "Ten dodatek wymaga następujących zależności dodatkowych:"
 
 #: src/game.cpp:1040
-#, fuzzy
 msgid "Do you still want to download it?"
-msgstr "Czy na pewno skasować tę grę?"
+msgstr "Czy nadal chcesz go pobrać?"
 
 #: src/game.cpp:1049
 msgid "Downloading add-on..."
@@ -10696,12 +11090,11 @@ msgstr "Wymagane PD: "
 
 #: src/help.cpp:1169
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "Ataki"
 
 #: src/help.cpp:1176
-#, fuzzy
 msgid "unit help^Name"
-msgstr "Wychodzi z gry"
+msgstr "Nazwa"
 
 #: src/help.cpp:1177 src/menu_events.cpp:289 src/menu_events.cpp:825
 msgid "Type"
@@ -10761,7 +11154,7 @@ msgstr "Odniesienie do nieznanego tematu:"
 
 #: src/help.cpp:2530
 msgid "corrupted original file"
-msgstr ""
+msgstr "uszkodzony plik oryginalny"
 
 #: src/help.cpp:2645
 msgid "The Battle for Wesnoth Help"
@@ -10785,7 +11178,7 @@ msgstr "Koniec"
 
 #: src/language.cpp:103
 msgid "System default language"
-msgstr "Język systemowy"
+msgstr "Domyślny język systemowy"
 
 #: src/leader_list.cpp:140 src/leader_list.cpp:146
 msgid "?"
@@ -10808,9 +11201,8 @@ msgid "Reading files and creating cache."
 msgstr "Odczytywanie plików i tworzenie pamięci podręcznej."
 
 #: src/menu_events.cpp:66
-#, fuzzy
 msgid "Detail"
-msgstr "ogon"
+msgstr ""
 
 #: src/menu_events.cpp:101
 msgid ""
@@ -10876,7 +11268,7 @@ msgstr "Statystyki"
 
 #: src/menu_events.cpp:293
 msgid "unit list^Traits"
-msgstr ""
+msgstr "Cechy"
 
 #: src/menu_events.cpp:294 src/unit.cpp:2466
 msgid "Moves"
@@ -10905,7 +11297,7 @@ msgstr "Wioski"
 
 #: src/menu_events.cpp:361
 msgid "status^Units"
-msgstr ""
+msgstr "Jednostki"
 
 #: src/menu_events.cpp:362
 msgid "Upkeep"
@@ -10930,8 +11322,8 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
-"Nazwy gier nie mogą zawierać dwukropków, ukośników ani ukośników odwrotnych. "
-"Wybierz inną nazwę."
+"Nazwy zapisanych gier nie mogą zawierać dwukropków, ukośników ani ukośników "
+"odwrotnych. Wybierz inną nazwę."
 
 #: src/menu_events.cpp:467
 msgid "Saved"
@@ -10946,22 +11338,20 @@ msgid "The game could not be saved"
 msgstr "Gra nie może zostać zapisana"
 
 #: src/menu_events.cpp:484
-#, fuzzy
 msgid "Save the Map As"
-msgstr "Dziel mapę"
+msgstr "Zapisz mapę Jako"
 
 #: src/menu_events.cpp:489
-#, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Taki plik już istnieje. Czy ma zostać nadpisany?"
+msgstr "Mapa już istnieje. Czy chcesz ją nadpisać?"
 
 #: src/menu_events.cpp:501
 msgid "Map saved."
-msgstr ""
+msgstr "Mapa zapisana."
 
 #: src/menu_events.cpp:506
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Zapisanie mapy nie powiodło się: $msg"
 
 #: src/menu_events.cpp:596 src/menu_events.cpp:598 src/play_controller.cpp:719
 #: src/playcampaign.cpp:100
@@ -10985,11 +11375,11 @@ msgid "Send to allies only"
 msgstr "Wyślij tylko do sojuszników"
 
 #: src/menu_events.cpp:703
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "złota"
 msgstr[1] "złota"
+msgstr[2] "złota"
 
 #: src/menu_events.cpp:710
 msgid "You have no units available to recruit."
@@ -11032,11 +11422,11 @@ msgid "Recall"
 msgstr "Przywołaj"
 
 #: src/menu_events.cpp:882
-#, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "Musisz mieć $cost sztuk złota, żeby przywołać jednostkę"
-msgstr[1] "Musisz mieć $cost sztuk złota, żeby przywołać jednostkę"
+msgstr[0] "Musisz mieć co najmniej 1 sztukę złota, by przywołać jednostkę"
+msgstr[1] "Musisz mieć co najmniej $cost sztuki złota, by przywołać jednostkę"
+msgstr[2] "Musisz mieć co najmniej $cost sztuk złota, by przywołać jednostkę"
 
 #: src/menu_events.cpp:1208
 msgid ""
@@ -11053,9 +11443,8 @@ msgid "Rename Unit"
 msgstr "Przemianuj jednostkę"
 
 #: src/menu_events.cpp:1357
-#, fuzzy
 msgid "Team only"
-msgstr "Seledyn"
+msgstr ""
 
 #: src/menu_events.cpp:1362
 msgid "Place Label"
@@ -11070,11 +11459,8 @@ msgid "Search"
 msgstr "Szukaj"
 
 #: src/menu_events.cpp:1525
-#, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
-"Komendy: whisper ignore emote. Wpisz /help [komenda], aby uzyskać więcej "
-"informacji."
 
 #: src/menu_events.cpp:1576
 msgid ""
@@ -11085,47 +11471,38 @@ msgstr ""
 "kontrolują stronę w grze. Użycie: /whisper [nick] [wiadomość]"
 
 #: src/menu_events.cpp:1580
-#, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
-msgstr "Dodaje gracza do listy ignorowanych. Użycie: /ignore add [argument]"
+msgstr ""
 
 #: src/menu_events.cpp:1582
-#, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
-msgstr "Dodaje gracza do listy ignorowanych. Użycie: /ignore add [argument]"
+msgstr ""
 
 #: src/menu_events.cpp:1584
-#, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
-msgstr "Usuwa gracza z listy ignorowanych. Użycie: /ignore remove [argument]"
+msgstr ""
 
 #: src/menu_events.cpp:1586
-#, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
-msgstr "Czyści listę ignorowanych. Użycie: /ignore clear"
+msgstr ""
 
 #: src/menu_events.cpp:1588
-#, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
-msgstr "Pokazuje listę ignorowanych. Użycie: /ignore list"
+msgstr ""
 
 #: src/menu_events.cpp:1590
 msgid "Unknown subcommand"
 msgstr "Nieznana podkomenda"
 
 #: src/menu_events.cpp:1593
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
-"Ignoruje wiadomości od graczy znajdujących się na liście. Użycie: /ignore "
-"[podkomenda] [argument](opcjonalny); Podkomendy: add remove list clear. "
-"Wpisz /help ignore [podkomenda], aby uzyskać więcej informacji."
 
 #: src/menu_events.cpp:1596
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
@@ -11144,14 +11521,12 @@ msgid "Invalid username: "
 msgstr "Zła nazwa użytkownika: "
 
 #: src/menu_events.cpp:1617
-#, fuzzy
 msgid "Added to friends list: "
-msgstr "Dodano do listy ignorowanych: "
+msgstr ""
 
 #: src/menu_events.cpp:1624
-#, fuzzy
 msgid "Removed from list: "
-msgstr "Usunięto z listy ignorowanych: "
+msgstr ""
 
 #: src/menu_events.cpp:1650
 msgid "There are no players on your friends or ignore list."
@@ -11162,9 +11537,8 @@ msgid "Removed from ignore list: "
 msgstr "Usunięto z listy ignorowanych: "
 
 #: src/menu_events.cpp:1663
-#, fuzzy
 msgid "Removed from friends list: "
-msgstr "Usunięto z listy ignorowanych: "
+msgstr ""
 
 #: src/menu_events.cpp:1670
 msgid "Unknown command: "
@@ -11187,7 +11561,6 @@ msgid "Defender"
 msgstr "Broniący się"
 
 #: src/mouse_events.cpp:209
-#, fuzzy
 msgid "Expected Battle Result (HP)"
 msgstr "Oczekiwany wynik bitwy (pż)"
 
@@ -11361,7 +11734,8 @@ msgstr "Anuluj"
 
 #: src/multiplayer_connect.cpp:784
 msgid "The scenario is invalid because it has no sides."
-msgstr "Ten scenariusz jest niepoprawny, gdyż nie są w nim określone strony."
+msgstr ""
+"Ten scenariusz jest niepoprawny, gdyż nie zostały w nim określone strony."
 
 #: src/multiplayer_connect.cpp:1137
 msgid "Network Player"
@@ -11385,7 +11759,7 @@ msgstr "To nie jest zapisana gra wieloosobowa"
 
 #: src/multiplayer_connect.cpp:1323
 msgid "Cannot find era $era"
-msgstr "Era $era nie znaleziona"
+msgstr "Era $era nieznaleziona"
 
 #: src/multiplayer_connect.cpp:1342
 msgid ""
@@ -11425,9 +11799,8 @@ msgid "Use map settings"
 msgstr "Użyj ustawień mapy"
 
 #: src/multiplayer_create.cpp:67
-#, fuzzy
 msgid "Random start time"
-msgstr "Losowa mapa (zima)"
+msgstr ""
 
 #: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
@@ -11525,7 +11898,7 @@ msgstr "Nie znaleziono żadnych er"
 
 #: src/multiplayer_create.cpp:205
 msgid "$login's game"
-msgstr "Gra $login"
+msgstr "Gra użytkownika $login"
 
 #: src/multiplayer_create.cpp:254
 msgid "Invalid era selected"
@@ -11549,7 +11922,7 @@ msgstr "Pocz. Limit:"
 
 #: src/multiplayer_create.cpp:337
 msgid "Turn Bonus: "
-msgstr "Bonus tury: "
+msgstr "Premia tury: "
 
 #: src/multiplayer_create.cpp:341
 msgid "Reservoir: "
@@ -11705,24 +12078,20 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Czy zapisać powtórkę tego scenariusza?"
 
 #: src/playcampaign.cpp:286
-#, fuzzy
 msgid "Save Replay"
-msgstr "Powtórka"
+msgstr "Zapisz powtórkę"
 
 #: src/playcampaign.cpp:293
-#, fuzzy
 msgid "The replay could not be saved"
-msgstr "Gra nie może zostać zapisana"
+msgstr "Zapisanie powtórki nie było możliwe"
 
 #: src/playcampaign.cpp:333
-#, fuzzy
 msgid "Receiving data..."
 msgstr "Pobieranie danych gry..."
 
 #: src/playcampaign.cpp:335
-#, fuzzy
 msgid "Downloading next scenario..."
-msgstr "Pobieranie kolejnego poziomu..."
+msgstr "Pobieranie następnego scenariusza..."
 
 #: src/playcampaign.cpp:420
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
@@ -11737,7 +12106,7 @@ msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
-"Gry straciły synchronizację i konieczne jest wyjście. Zapisać raport błędów "
+"Gry utraciły synchronizację i konieczne jest wyjście. Zapisać raport błędów "
 "twojej gry?"
 
 #: src/playsingle_controller.cpp:219
@@ -11787,7 +12156,7 @@ msgstr "Zwycięstwo"
 
 #: src/playsingle_controller.cpp:336
 msgid "You have emerged victorious!"
-msgstr "Zwyciężyłeś!"
+msgstr "Zwyciężono wroga!"
 
 #: src/playsingle_controller.cpp:340
 msgid "Scenario Report"
@@ -11827,8 +12196,8 @@ msgstr "opuścił grę. Co teraz?"
 #: src/reports.cpp:130
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
-"Ta jednostka jest niewidzialna. Nie może być zauważona ani zaatakowana przez "
-"wrogie jednostki."
+"Ta jednostka jest niewidzialna. Nie może zostać zauważona ani zaatakowana "
+"przez wrogie jednostki."
 
 #: src/reports.cpp:130
 msgid "invisible: "
@@ -11855,8 +12224,8 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Ta jednostka jest zatruta. Będzie tracić 8 PŻ co turę, dopóki nie uda się do "
-"wioski albo nie zostanie uzdrowiona przez inną jednostkę.\n"
+"Ta jednostka jest zatruta. Będzie tracić 8 PŻ w każdej turze, dopóki nie uda "
+"się do wioski albo nie zostanie uzdrowiona przez inną jednostkę.\n"
 "\n"
 "Sama trucizna nie zabija. PŻ jednostki nie spadną poniżej 1 z powodu "
 "zatrucia."
@@ -11875,17 +12244,18 @@ msgid "stone: "
 msgstr "skamieniała: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "suma obrażeń"
-msgstr[1] "suma obrażeń"
+msgstr[0] "obrażenia"
+msgstr[1] "obrażenia"
+msgstr[2] "obrażenia"
 
 #: src/reports.cpp:256
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "atak"
+msgstr[1] "ataki"
+msgstr[2] "ataków"
 
 #: src/reports.cpp:266
 msgid "weapon range: "
@@ -11913,7 +12283,7 @@ msgstr "Obserwatorzy:"
 
 #: src/serialization/parser.cpp:98
 msgid "Unexpected characters at line start"
-msgstr "Nieoczekiwane znaki na początku linii"
+msgstr "Nieoczekiwane znaki na początku wiersza"
 
 #: src/serialization/parser.cpp:125
 msgid "Missing closing tag for tag $tag at $pos"
@@ -12034,7 +12404,7 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Gra wieloosobowa (na jednym komputerze, przez LAN albo Internet) lub "
+"Gra wieloosobowa (na jednym komputerze, przez sieć LAN albo Internet) lub "
 "pojedyncza bitwa przeciwko komputerowi"
 
 #: src/titlescreen.cpp:266
@@ -12071,7 +12441,7 @@ msgstr "Pomoc"
 
 #: src/titlescreen.cpp:311
 msgid "Help Wesnoth by sending us information"
-msgstr "Pomóż Wesnoth wysyłając nam informacje"
+msgstr "Pomóż Wesnoth, wysyłając nam informacje"
 
 #: src/unit.cpp:2401 src/unit.cpp:2570
 msgid "; "
@@ -12118,7 +12488,7 @@ msgid ""
 msgstr ""
 "Podczas tworzenia Wesnoth niezwykle cenne są opinie ochotników takich jak "
 "Ty, w szczególności nowych i początkujących graczy. Wesnoth zapisuje "
-"podsumowania Twoich gier: możesz pomóc nam ulepszyć grę wyrażając zgodę na "
+"podsumowania gier: możesz pomóc nam ulepszyć grę, wyrażając zgodę na "
 "anonimowe przesyłanie tych podsumowań do serwisu wesnoth.org.\n"
 
 #: src/upload_log.cpp:290
@@ -12131,19 +12501,19 @@ msgstr "Wyniki możesz obejrzeć pod adresem:"
 
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
-msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
+msgstr "Pomóż nam uczynić Wesnoth lepszym!"
 
-#, fuzzy
 #~ msgid "$friends Friendly unit sighted"
 #~ msgid_plural "$friends Friendly units sighted"
-#~ msgstr[0] "Zauważono przyjazne jednostki: $friends"
-#~ msgstr[1] "Zauważono przyjazne jednostki: $friends"
+#~ msgstr[0] "Zauważono $friends przyjazną jednostkę"
+#~ msgstr[1] "Zauważono $friends przyjazne jednostki"
+#~ msgstr[2] "Zauważono $friends przyjaznych jednostek"
 
-#, fuzzy
 #~ msgid "$enemies Enemy unit sighted!"
 #~ msgid_plural "$enemies Enemy units sighted!"
-#~ msgstr[0] "Zauważono wrogie jednostki: $enemies"
-#~ msgstr[1] "Zauważono wrogie jednostki: $enemies"
+#~ msgstr[0] "Zauważono $enemies wrogą jednostkę"
+#~ msgstr[1] "Zauważono $enemies wrogie jednostki"
+#~ msgstr[2] "Zauważono $enemies wrogich jednostek"
 
 #~ msgid "attacks"
 #~ msgstr "ataki"
@@ -12196,10 +12566,10 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "houses and are respected by all, friend or foe. Their sword can kill most "
 #~ "ordinary enemies, and their morning star crushes those who are left."
 #~ msgstr ""
-#~ "Najpotężniejsi spośród ludzi równin, władcy jeźdźców, stoją na czele "
-#~ "swych rodów i cieszą się szacunkiem zarówno przyjaciół, jak i wrogów. Ich "
-#~ "miecz potrafi zabić większość zwyczajnych przeciwników, a morgensztern "
-#~ "miażdży tych, którzy pozostaną."
+#~ "Najpotężniejsi spośród ludzi równin, władcy jeźdźców stoją na czele swych "
+#~ "rodów i cieszą się szacunkiem zarówno przyjaciół, jak i wrogów. Ich miecz "
+#~ "potrafi zabić większość zwyczajnych przeciwników, a morgensztern miażdży "
+#~ "pozostałych."
 
 #~ msgid "Mounted Fighter"
 #~ msgstr "Konny wojownik"
@@ -12241,7 +12611,7 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "Choć niegdyś był jednym z najpotężniejszych stworzeń, budzący postrach "
 #~ "Smok jest już tylko stosem kości i sczerniałych ścięgien. Długo po swej "
 #~ "śmierci smok został wskrzeszony przez mroczne moce nekromancji, którym do "
-#~ "dzisiaj służy. Pomimo swego wyglądu, smoczy szkielet to nie tylko stos "
+#~ "dzisiaj służy. Pomimo swego wyglądu smoczy szkielet to nie tylko stos "
 #~ "kości - choć przeżyli tylko nieliczni spośród tych, którym dane było się "
 #~ "o tym przekonać."
 
@@ -12261,7 +12631,7 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "can now aid those around her in the art of combat."
 #~ msgstr ""
 #~ "Szlachetnie urodzona księżniczka uczyła się szermierki od najlepszych "
-#~ "wojowników i taktyki bitewnej od największych mędrców, co uczyniło ją "
+#~ "wojowników oraz taktyki bitewnej od największych mędrców, co uczyniło ją "
 #~ "wspaniałym wojownikiem i przywódcą. Dzięki doświadczeniu w boju i "
 #~ "niezłomnej woli wspomaga otaczających ją żołnierzy w prowadzeniu walki."
 
@@ -12307,7 +12677,7 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "Her knowledge of magic makes her a worthy foe in combat, although her "
 #~ "power is mostly derived from those she commands."
 #~ msgstr ""
-#~ "Asheviere, zła królowa-matka, terroryzowała Wesnoth przez wiele lat. Jej "
+#~ "Asheviere, zła królowa matka, terroryzowała Wesnoth przez wiele lat. Jej "
 #~ "znajomość magii sprawia, że jest godnym przeciwnikiem w walce, choć "
 #~ "większość jej mocy pochodzi od tych, którymi dowodzi."
 
@@ -12338,7 +12708,7 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "an awesome sight indeed."
 #~ msgstr ""
 #~ "Przywódcy elfów nie słabną z wiekiem. Wręcz przeciwnie - dopiero w sile "
-#~ "wieku ukazują swój pełen potencjał. Choć w czasie pokoju wysoki władca "
+#~ "wieku ukazują swój pełny potencjał. Choć w czasie pokoju wysoki władca "
 #~ "elfów bywa raczej cichy i zamyślony, to rozgniewany budzi grozę w każdym, "
 #~ "kto go ujrzy."
 
@@ -12452,7 +12822,7 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ msgstr "miecz treningowy"
 
 #~ msgid "Fire Dragon"
-#~ msgstr "Smok ognia"
+#~ msgstr "Ognisty smok"
 
 #~ msgid ""
 #~ "A fire dragon is an ancient and horrifying being that normally lives only "
@@ -12465,16 +12835,16 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
 #~ "cruel and often take underlings whom they lead to victory."
 #~ msgstr ""
-#~ "Ognisty smok jest prawdawnym i przerażającym stworzeniem, które zazwyczaj "
+#~ "Ognisty smok jest pradawnym i przerażającym stworzeniem, które zazwyczaj "
 #~ "żyje tylko w szeptanych plotkach i fantastycznych opowieściach. Często "
 #~ "mija wiele wieków, nim smok znów pojawi się w Wesnoth, a i wtedy bywa "
 #~ "tylko niewyraźnym cieniem lecącym gdzieś w oddali. Legendy szczegółowo "
 #~ "opisują zniszczenia dokonywane przez ogniste smoki, które bezgłośnie mkną "
-#~ "na swych skórzanych skrzydłach o rozpiętości przekraczającej sto stóp, a "
-#~ "następnie spadają na swoje ofiary, zmiatając je piekielnymi płomieniami. "
-#~ "Wszystko, co uniknie ognistego oddechu smoka musi strzec się jego "
-#~ "okrutnych zębów i miażdżącego ogona. Ogniste smoki są przebiegłe, okrutne "
-#~ "i często gromadzą wokół siebie podwładnych, których prowadzą do "
+#~ "na swych skórzanych skrzydłach o rozpiętości przekraczającej trzydzieści "
+#~ "metrów, a następnie spadają na swoje ofiary, zmiatając je piekielnymi "
+#~ "płomieniami. Wszystko, co uniknie ognistego oddechu smoka musi strzec się "
+#~ "jego okrutnych zębów i miażdżącego ogona. Ogniste smoki są przebiegłe, "
+#~ "okrutne i często gromadzą wokół siebie podwładnych, których prowadzą do "
 #~ "zwycięstwa."
 
 #~ msgid "bite"
@@ -12611,9 +12981,8 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "niewiele wiadomo. Większość wiedzy o nich pochodzi właśnie od elfów. "
 #~ "Wiadomo, że mimo swego wyglądu nie są one potomkami drzew, lecz wywodzą "
 #~ "się raczej ze świata wróżek i są do nich pod pewnymi względami nawet "
-#~ "bardziej podobne niż elfy. Nie wiadomo jakie motywy kierują ich "
-#~ "poczynaniami, ale dość powszechnie przyjmuje się, że są one strażnikami "
-#~ "świata przyrody.\n"
+#~ "bardziej podobne niż elfy. Nieznane są motywy ich poczynań, ale dość "
+#~ "powszechnie przyjmuje się, że są one strażnikami świata przyrody.\n"
 #~ "\n"
 #~ "Drzewce są zupełnie nieprzystosowane do wojny, ale dysponują wielką siłą. "
 #~ "Nie są również przyzwyczajone do szybkiego przemieszczania się.\n"
@@ -12771,7 +13140,7 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "magów. Choć pomagają szkołom, które często ich zatrudniają, zawsze "
 #~ "pozostają nieco na uboczu.\n"
 #~ "\n"
-#~ "Posiadają swój własny zakon, który odmawia przekazania wybranych tajemnic "
+#~ "Mają swój własny zakon, który odmawia przekazania wybranych tajemnic "
 #~ "pozostałym magom. Jednym z tych sekretów jest umiejętność przemierzania "
 #~ "wielkich odległości szybciej, niż ktokolwiek mógłby to zrobić pieszo. "
 #~ "Członkowie srebrnego zakonu stanowczo odmawiają rozmów na ten temat z "
@@ -12782,9 +13151,9 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "umiejętności niewątpliwie bywają użyteczne na polu bitwy, o ile "
 #~ "oczywiście ktoś zdoła przekonać maga, by ich użył.\n"
 #~ "\n"
-#~ "Uwagi specjalne: srebrni magowie atakują na odległość przy pomocy magii, "
+#~ "Uwagi specjalne: srebrni magowie atakują na odległość za pomocą magii, "
 #~ "która ma zawsze wysoką szansę na trafienie przeciwnika. Srebrni magowie "
-#~ "są bardzo odporni na wiele rodzajów obrażeń zadawanych przy pomocy "
+#~ "są bardzo odporni na wiele rodzajów obrażeń zadawanych przy użyciu "
 #~ "czarów. Potrafią też błyskawicznie teleportować się między dwoma "
 #~ "wioskami, o ile gracz kontroluje obie z nich, a wieś docelowa nie zajęta "
 #~ "przez żadną inną jednostkę."
@@ -12848,10 +13217,6 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ msgstr ""
 #~ "Możesz przyjść, jeśli masz na to ochotę, ale przywódca jest "
 #~ "zainteresowany wyłącznie rozmową z Baldrasem."
-
-#, fuzzy
-#~ msgid "Potion of bleach"
-#~ msgstr "Eliksir rozkładu"
 
 #~ msgid "Sulla's statue"
 #~ msgstr "Statua Sulli"
@@ -12937,7 +13302,7 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "Jaszczurzy łowcy bardzo umiejętnie posługują się włócznią. Wbrew swej "
 #~ "letargicznej, zimnokrwistej naturze i względnej delikatności, są wysoko "
 #~ "cenionymi zwiadowcami, którzy potrafią się poruszać nawet w trudnym "
-#~ "terenie i przemykać się koło nieprzyjaciół. Jaszczurzy łowcy posiadają "
+#~ "terenie i przemykać się obok nieprzyjaciół. Jaszczurzy łowcy posiadają "
 #~ "też siłę, która pozwala im odpowiednio wykorzystać te umiejętności. "
 #~ "Najlepsi łowcy zostają jaszczurzymi naganiaczami.\n"
 #~ "\n"
@@ -13187,7 +13552,6 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "Uwagi specjalne: szarża powoduje, że lansjerzy zadają i otrzymują "
 #~ "podwójne obrażenia. Nie odnosi się to do obrony."
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -13201,9 +13565,7 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "Uwagi specjalne: szarżując z lancą paladyni zadają i otrzymują podwójne "
 #~ "obrażenia. Nie odnosi się to do obrony. Święty atak, który paladyn zadaje "
 #~ "przy pomocy miecza zadaje olbrzymie obrażenia nieumarłym, ale też kilku "
-#~ "rodzajom żyjących stworzeń. Paladyni potrafią się leczyć, choć "
-#~ "umiejętność ta ograniczona jest do spowalniania efektów trucizny, której "
-#~ "nie potrafią zneutralizować."
+#~ "rodzajom żyjących stworzeń."
 
 #~ msgid ""
 #~ "\n"
@@ -13544,7 +13906,6 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ msgid "rapier"
 #~ msgstr "rapier"
 
-#, fuzzy
 #~ msgid ""
 #~ "The many paths that a mage can take in study lead to strikingly different "
 #~ "ends. The silver magi have devoted themselves to a study of the forces "
@@ -13573,32 +13934,32 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "They can also teleport between any two villages instantly, though the "
 #~ "player must control both, and the destination village must be unoccupied."
 #~ msgstr ""
-#~ "Wiele jest ścieżek, które mag może studiować, i prowadzą one do "
-#~ "zdumiewająco różnych końców. Srebrni magowie poświęcili się studiom sił "
-#~ "spajających rzeczywistość, i udało im się w jakiś sposób odkryć tajemnice "
-#~ "świata o wiele obszerniejszego niż ktokolwiek mógłby przypuszczać. Często "
-#~ "uważani za mędrców, wędrujących mistyków, srebrni magowie działają według "
-#~ "zasad tajemniczych nawet dla ich kolegów. Chociaż pomocni sądom, które "
-#~ "często ich zatrudniają, zawsze pozostają nieco na uboczu.\n"
+#~ "Wiele jest ścieżek, którymi mag może podążyć w swych badaniach, i "
+#~ "prowadzą one do zdumiewająco różnych celów. Srebrni magowie poświęcili "
+#~ "się studiom sił spajających rzeczywistość i udało im się w pewnym stopniu "
+#~ "odkryć tajemnice świata o wiele obszerniejszego, niż ktokolwiek mógłby "
+#~ "przypuszczać. Srebrni magowie są często uważani za mędrców lub wędrownych "
+#~ "mistyków, a ich działania są często nieprzeniknione nawet dla innych "
+#~ "magów. Choć pomagają szkołom, które często ich zatrudniają, zawsze "
+#~ "pozostają nieco na uboczu.\n"
 #~ "\n"
-#~ "Posiadają właściwie swój własny zakon pomiędzy magami, zakon który "
-#~ "odmawia pewnych sekretów pozostałym. Jednym z nich jest najwidoczniej "
-#~ "umiejętność przemierzanie wielkich odległości, szybciej niż ktokolwiek "
-#~ "mógłby to zrobić pieszo. Członkowie zakonu stanowczo odmawiają dyskusji "
-#~ "na ten temat z jakimkolwiek innym magiem, a w czasie tych rzadkich "
-#~ "okazji, gdy się zdarzy, że ktoś ich zaskoczyy w czasie odmawiania zaklęć, "
-#~ "natychmiast je przerywają, nigdy o tym więcej nie mówiąc.\n"
+#~ "Posiadają swój własny zakon, który odmawia przekazania wybranych tajemnic "
+#~ "pozostałym magom. Jednym z tych sekretów jest umiejętność przemierzania "
+#~ "wielkich odległości szybciej, niż ktokolwiek mógłby to zrobić pieszo. "
+#~ "Członkowie srebrnego zakonu stanowczo odmawiają rozmów na ten temat z "
+#~ "innymi magami, a ci nieliczni, którzy zostali podpatrzeni podczas pracy, "
+#~ "porzucają swe praktyki i nigdy więcej o nich nie wspominają.\n"
 #~ "\n"
-#~ "Srebrni magowie często są lepiej zbudowani niż inni magowie, i ich "
-#~ "umiejętności bez wątpienia znajdują użycie na polu bitwy, o ile "
-#~ "oczywiście ktoś zdoła przekonać maga by ich użył.\n"
+#~ "Srebrni magowie są często sprawniejsi fizycznie niż inni magowie, a ich "
+#~ "umiejętności niewątpliwie bywają użyteczne na polu bitwy, o ile "
+#~ "oczywiście ktoś zdoła przekonać maga, by ich użył.\n"
 #~ "\n"
 #~ "Uwagi specjalne: srebrni magowie atakują na odległość przy pomocy magii, "
 #~ "która ma zawsze wysoką szansę na trafienie przeciwnika. Srebrni magowie "
-#~ "są bardzo odporni na wiele rodzajów obrażeń zadawanych magią. Potrafią "
-#~ "również teleportować się natychmiastowo między dwoma wioskami, o ile "
-#~ "gracz kontroluje obie z nich i docelowa wieś jest nie zajęta przez żadną "
-#~ "inną jednostkę."
+#~ "są bardzo odporni na wiele rodzajów obrażeń zadawanych przy pomocy "
+#~ "czarów. Potrafią też błyskawicznie teleportować się między dwoma "
+#~ "wioskami, o ile gracz kontroluje obie z nich, a wieś docelowa nie zajęta "
+#~ "przez żadną inną jednostkę."
 
 #~ msgid "Awaiting response from server"
 #~ msgstr "Oczekiwanie na odpowiedź serwera"

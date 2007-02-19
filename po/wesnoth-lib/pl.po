@@ -5,17 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-17 20:06+0100\n"
-"PO-Revision-Date: 2006-06-15 23:53+0100\n"
-"Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2007-02-17 20:26+0100\n"
+"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
+"Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
 
 #: src/construct_dialog.cpp:120 src/construct_dialog.cpp:127
 #: src/editor/editor_dialogs.cpp:452
@@ -128,7 +130,7 @@ msgstr "Obróć (wymiary mapy mogą zostać zmienione)"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Plik:"
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -136,7 +138,7 @@ msgstr "Skasuj plik"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Nowy folder"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
@@ -144,12 +146,11 @@ msgstr "Kasowanie pliku nie powiodło się."
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Nazwa:"
 
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Kasowanie pliku nie powiodło się."
+msgstr "Tworzenie katalogu nie powiodło się."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -212,7 +213,6 @@ msgid "Save Game"
 msgstr "Zapisz grę"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
 msgstr "Zapisz mapę"
 
@@ -281,9 +281,8 @@ msgid "Quit Game"
 msgstr "Opuść grę"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Ustaw etykietę"
+msgstr ""
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
@@ -466,9 +465,8 @@ msgid "Villages:"
 msgstr "Wioski:"
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Maksymalny rozmiar wzgórza:"
+msgstr ""
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -517,29 +515,24 @@ msgid "Skip AI Moves"
 msgstr "Pomiń ruchy komputera"
 
 #: src/preferences_display.cpp:260
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Pokazuj wejścia do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:261
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Pokazuj wejścia do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:262
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Pokazuj wejścia do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:263
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Pokazuj wejścia do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:264
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Pokazuj wejścia do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:265
 msgid "Iconize Lobby List"
@@ -562,9 +555,8 @@ msgid "Add As Ignore"
 msgstr ""
 
 #: src/preferences_display.cpp:270
-#, fuzzy
 msgid "Remove"
-msgstr "Ponów"
+msgstr ""
 
 #: src/preferences_display.cpp:271
 msgid "Show Floating Labels"
@@ -615,22 +607,20 @@ msgid "Chat Timestamping"
 msgstr "Znaczniki czasowe wiadomości"
 
 #: src/preferences_display.cpp:286
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Zaawansowane"
+msgstr "Tryb zaawansowany"
 
 #: src/preferences_display.cpp:287
 msgid "Normal Mode"
-msgstr ""
+msgstr "Tryb normalny"
 
 #: src/preferences_display.cpp:290
-#, fuzzy
 msgid "Custom"
-msgstr "Wytnij"
+msgstr "Niestandardowe"
 
 #: src/preferences_display.cpp:291
 msgid "Apply"
-msgstr ""
+msgstr "Zastosuj"
 
 #: src/preferences_display.cpp:293
 msgid "Music Volume:"
@@ -641,9 +631,8 @@ msgid "SFX Volume:"
 msgstr "Głośność efektów:"
 
 #: src/preferences_display.cpp:294
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Głośność efektów:"
+msgstr ""
 
 #: src/preferences_display.cpp:295
 msgid "Gamma:"
@@ -651,7 +640,7 @@ msgstr "Gamma:"
 
 #: src/preferences_display.cpp:297
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Częstotliwość próbkowania (Hz):"
 
 #: src/preferences_display.cpp:320
 msgid "Sound effects on/off"
@@ -670,27 +659,24 @@ msgid "Change the music volume"
 msgstr "Zmień głośność muzyki"
 
 #: src/preferences_display.cpp:337
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Zmień głośność muzyki"
+msgstr ""
 
 #: src/preferences_display.cpp:339
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Pozwala wybrać język gry"
+msgstr "Zmień częstotliwość próbkowania"
 
 #: src/preferences_display.cpp:348
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Niestandardowa częstotliwość próbkowania"
 
 #: src/preferences_display.cpp:357 src/preferences_display.cpp:361
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Zmień głośność muzyki"
+msgstr "Zmień rozmiar bufora"
 
 #: src/preferences_display.cpp:359 src/preferences_display.cpp:816
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Rozmiar bufora:"
 
 #: src/preferences_display.cpp:366
 msgid "Change the speed of scrolling around the map"
@@ -718,9 +704,8 @@ msgid "Make units move and fight faster"
 msgstr "Spraw, by jednostki poruszały się i walczyły szybciej"
 
 #: src/preferences_display.cpp:405
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Spraw, by jednostki poruszały się i walczyły szybciej"
+msgstr ""
 
 #: src/preferences_display.cpp:408
 msgid "Do not animate AI units moving"
@@ -731,9 +716,8 @@ msgid "Overlay a grid onto the map"
 msgstr "Rysuj siatkę na polu gry"
 
 #: src/preferences_display.cpp:414
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr "Wyświetlaj wiadomości o graczach dołączających do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:417
 msgid "Sort the player list in the lobby by player groups"
@@ -744,19 +728,16 @@ msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 
 #: src/preferences_display.cpp:423
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Wyświetlaj wiadomości o graczach dołączających do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:425
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Wyświetlaj wiadomości o graczach dołączających do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:427
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Wyświetlaj wiadomości o graczach dołączających do lobby"
+msgstr ""
 
 #: src/preferences_display.cpp:429
 msgid "View and edit your friends and ignores list"
@@ -827,9 +808,8 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Pozwala obejrzeć i zmienić skróty klawiszowe."
 
 #: src/preferences_display.cpp:711
-#, fuzzy
 msgid "Speed: "
-msgstr "Szybkość przewijania:"
+msgstr "Szybkość:"
 
 #: src/preferences_display.cpp:861
 msgid "Chat Lines: "
@@ -934,3 +914,6 @@ msgstr "KB"
 
 #~ msgid "Set Player Start Position"
 #~ msgstr "Ustaw pozycję startową gracza"
+
+#~ msgid "User Define"
+#~ msgstr "Niestandardowe"
