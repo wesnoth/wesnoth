@@ -82,7 +82,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	temp_unit_(NULL),
 	minimap_(NULL), redrawMinimap_(false),
 	status_(status),
-	teams_(t), lastDraw_(0), drawSkips_(0),
+	teams_(t), lastDraw_(0),
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0),
@@ -898,7 +898,6 @@ void display::draw(bool update,bool force)
 
 	prune_chat_messages();
 
-	const int max_skips = 5;
 	const int time_between_draws = 20;
 	const int current_time = SDL_GetTicks();
 	const int wait_time = lastDraw_ + time_between_draws - current_time;
@@ -906,12 +905,8 @@ void display::draw(bool update,bool force)
 	if(update) {
 		lastDraw_ = SDL_GetTicks();
 
-		if(wait_time >= 0 || drawSkips_ >= max_skips || force) {
-			if(changed || force) {
-				update_display();
-			}
-		} else {
-			drawSkips_++;
+		if(force || (changed && wait_time >= 0)) {
+			update_display();
 		}
 	}
 }
