@@ -26,8 +26,8 @@ wesnothd \- демон многопользовательской игры Битва за \fBВеснот\fP
 .
 .SH ОБЗОР
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIпуть\fP\|] [\|\fB\-p\fP \fIпорт\fP\|] [\|\fB\-t\fP
+\fIчисло\fP\|] [\|\fB\-T\fP \fIчисло\fP\|]
 .
 .SH ОПИСАНИЕ
 .
@@ -48,17 +48,17 @@ Wesnoth. См. http://www.wesnoth.org/wiki/ServerAdministration, чтобы узнать
 \fB\-h,\ \-\-help\fP
 сообщает, какие принимаются параметры командной строки.
 .TP 
-\fB\-p,\ \-\-port\fP\fI\ port\fP
+\fB\-p,\ \-\-port\fP\fI\ порт\fP
 указать серверу порт для прослушивания. Если порт не указан, используется
 порт 15000.
 .TP 
-\fB\-t,\ \-\-threads\fP\fI\ number\fP
-sets the maximum number of waiting worker threads for network I/O to n
-(default: 5, max: 30).
+\fB\-t,\ \-\-threads\fP\fI\ число\fP
+установить максимальное число рабочих потоков для сетевого ввода\-вывода в n
+(по умолчанию 5, максимум 30).
 .TP 
-\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
-sets the maximum number of worker threads that will be created if set to 0
-there will be no limit (default: 0).
+\fB\-t,\ \-\-max\-threads\fP\fI\ число\fP
+установить максимальное число создаваемых рабочих потоков, если 0, то
+ограничений нет (по умолчанию 0).
 .TP 
 \fB\-V,\ \-\-version\fP
 вывести номер версии и выйти.

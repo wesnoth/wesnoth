@@ -26,8 +26,8 @@ wesnothd \- Démon pour jeu réseau multijoueur de la Bataille pour \fBWesnoth\fP
 .
 .SH SYNOPSIS
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIchemin\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInombre\fP\|] [\|\fB\-T\fP \fInombre\fP\|]
 .
 .SH DESCRIPTION
 .
@@ -38,9 +38,9 @@ http://www.wesnoth.org/wiki/ServerAdministration.
 .SH OPTIONS
 .
 .TP 
-\fB\-c,\ \-\-config\fP\fI\ path\fP
+\fB\-c,\ \-\-config\fP\fI\ chemin\fP
 indique le fichier de configuration à utiliser par wesnothd. Voir la syntaxe
-ci\-dessous dans la section \fBSERVER CONFIG\fP.
+ci\-dessous dans la section \fBCONFIGURATION DU SERVEUR\fP.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 exécute wesnothd en tant que démon.
@@ -51,13 +51,13 @@ aide sur les options de la ligne de commande.
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 lie le serveur au port spécifié. Valeur par défaut\ : 15000.
 .TP 
-\fB\-t,\ \-\-threads\fP\fI\ number\fP
-sets the maximum number of waiting worker threads for network I/O to n
-(default: 5, max: 30).
+\fB\-t,\ \-\-threads\fP\fI\ nombre\fP
+définit le nombre maximal de threads pour les entrées/sorties réseau à la
+valeur n (defaut\ : 5, max\ : 30).
 .TP 
-\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
-sets the maximum number of worker threads that will be created if set to 0
-there will be no limit (default: 0).
+\fB\-T,\ \-\-max\-threads\fP\fI\ nombre\fP
+définit le nombre maximal de threads qui seront crées. Si ce nombre est nul,
+il n'y a pas de limite (defaut\ : 0).
 .TP 
 \fB\-V,\ \-\-version\fP
 affiche le numéro de version et quitte le programme.
@@ -72,9 +72,9 @@ active une journalisation maximale.
 .P
 [\fItag\fP]
 .IP
-cl="\fIvalue\fP"
+clé="\fIvaleur\fP"
 .IP
-cl="\fIvalue\fP,\fIvalue\fP,..."
+clé="\fIvaleur\fP,\fIvaleur\fP,..."
 .P
 [/\fItag\fP]
 .
@@ -94,14 +94,14 @@ défaut (utilisées si rien n'est précisé) sont\ :
 Le nombre maximum de messages permis en \fBmessages_time_period\fP.
 .TP 
 \fBmessages_time_period\fP
-Période, en secondes, après laquelle un échec système est détecté.
+Période, en secondes, après laquelle une avalanche de messages est détectée.
 .TP 
 \fBmotd\fP
 Le message du jour.
 .TP 
 \fBpasswd\fP
-Mot de passe des habilitations de l'administrateur. Commence souvent par
-"admin ".
+Mot de passe des habilitations de l'administrateur. Commence souvent par «
+admin ».
 .TP 
 \fBversions_accepted\fP
 Liste des versions acceptées par le serveur, séparées par des virgules. Les
@@ -135,7 +135,8 @@ mêmes clés que [redirect].
 .
 Écrit par David White <davidnwhite@verizon.net>. Édité par Nils
 Kneuper <crazy\-ivanovic@gmx.net> et ott <ott@gaon.net>. Ce
-manuel a été écrit par Cyril Bouthors <cyril@bouthors.org>.
+manuel a été à l'origine écrit par Cyril Bouthors
+<cyril@bouthors.org>.
 .br
 Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
 .

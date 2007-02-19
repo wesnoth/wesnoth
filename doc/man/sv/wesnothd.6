@@ -26,8 +26,8 @@ wesnothd \- Kampen om \fBWesnoth\fPs nätverksdaemon
 .
 .SH SYNOPSIS
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIsökväg\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIantal\fP\|] [\|\fB\-T\fP \fIantal\fP\|]
 .
 .SH BESKRIVNING
 .
@@ -53,12 +53,12 @@ knyter servern till den specificerade porten. Om ingen port anges så används
 port 15000.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ antal\fP
-sets the maximum number of waiting worker threads for network I/O to n
-(default: 5, max: 30).
+anger maximalt antal väntande trådar för nätverkstrafik (standardvärde: 5;
+max: 30)
 .TP 
-\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
-sets the maximum number of worker threads that will be created if set to 0
-there will be no limit (default: 0).
+\fB\-T,\ \-\-max\-threads\fP\fI\ antal\fP
+anger maximalt antal trådar för nätverkstrafik som skapas; om 0 anges sätts
+ingen övre gräns (standardvärde: 0)
 .TP 
 \fB\-V,\ \-\-version\fP
 visar versionen.

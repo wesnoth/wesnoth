@@ -26,7 +26,7 @@ tour
 .
 .SH SYNOPSIS
 .
-\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fICHEMIN_DE_DATA\fP]
 .
 .SH DESCRIPTION
 .
@@ -46,10 +46,10 @@ partagez\-les avec d'autres.
 .SH OPTIONS
 .
 .TP 
-\fB\-\-bpp\fP\fI\ number\fP
+\fB\-\-bpp\fP\fI\ nombre\fP
 définit la valeur de bits par pixel (couleurs). Exemple\ : \-\-bpp 32
 .TP 
-\fB\-\-compress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
+\fB\-\-compress\fP\fI\ <fichier d'entrée>\fP\fB\ \fP\fI<fichier de sortie>\fP
 compresse une sauvegarde au format texte WML (fichier en entrée) en format
 binaire WML (fichier en sortie).
 .TP 
@@ -58,7 +58,7 @@ affiche des informations supplémentaires de débogage et permet d'utiliser
 des options en ligne de commande dans le jeu (voir Wiki\ :
 http://www.wesnoth.org/ pour plus d'informations sur la ligne de commande).
 .TP 
-\fB\-\-decompress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
+\fB\-\-decompress\fP\fI\ <fichier d'entrée>\fP\fB\ \fP\fI<fichier de sortie>\fP
 décompresse une sauvegarde au format binaire WML (fichier en entrée) en
 format texte WML (fichier en sortie).
 .TP 
@@ -73,11 +73,11 @@ jeu.
 affiche un résumé des options de ligne de commande sur la sortie standard et
 quitte le programme.
 .TP 
-\fB\-\-load\fP\fI\ savegame\fP
+\fB\-\-load\fP\fI\ sauvegarde\fP
 charge le fichier de sauvegarde à partir du répertoire de sauvegarde par
 défaut.
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+\fB\-\-log\-error="domaine1,domaine2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
 définit le niveau d'alerte du débogueur. "all" permet de suivre tous les
 niveaux. \fB\-\-log\-info\fP affiche tous les messages, \fB\-\-log\-warning\fP n'affiche
 que les avertissements et les erreurs et \fB\-\-log\-error\fP n'affiche que les
@@ -120,45 +120,45 @@ joueur. Utilisable pour permettre une mesure par script des performances.
 .SH "Options pour \-\-multiplayer"
 .
 Les options spécifiques au mode multijoueur sont marquées d'un
-<number>. <number> doit être remplacé par le nombre de
+<nombre>. <nombre> doit être remplacé par le nombre de
 joueurs. Il s'agit souvent de 1 ou de 2 mais cela dépend du nombre possible
 de joueurs pour le scénario choisi.
 .TP 
-\fB\-\-algorithm<number>=value\fP
+\fB\-\-algorithm<nombre>=valeur\fP
 Sélectionne un algorithme utilisé par l'IA de cette faction. Valeurs
-possibles\ : "idle_ai" et "sample_ai".
+possibles\ : « idle_ai » et « sample_ai ».
 .TP  
-\fB\-\-controller<number>=value\fP
-Sélectionne le type de joueur de ce camp. Valeurs possibles\ : "human" and
-"ai".
+\fB\-\-controller<nombre>=valeur\fP
+Sélectionne le type de joueur de ce camp. Valeurs possibles\ : « human » et «
+ai ».
 .TP  
-\fB\-\-era=value\fP
-utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère
-"Default". Cette ère est sélectionnée par un identifiant. Les ères sont
+\fB\-\-era=valeur\fP
+utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère « Par
+défaut ». Cette ère est sélectionnée par un identifiant. Les ères sont
 décrites dans le fichier data/multiplayer.cfg.
 .TP 
 \fB\-\-nogui\fP
 lance le jeu sans interface graphique. Doit apparaître avant
 \fB\-\-multiplayer\fP.
 .TP 
-\fB\-\-parm<number>=name:value\fP
+\fB\-\-parm<nombre>=nom:valeur\fP
 ajoute des paramètres spécifiques à ce camp. Ces paramètres dépendent des
 options utilisées avec \fB\-\-controller\fP et \fB\-\-algorithm\fP. Ne devrait être
 utile qu'aux personnes expérimentant leur propre IA (non encore totalement
 documenté).
 .TP 
-\fB\-\-scenario=value\fP
-sélectionne un scénario multijoueur. Le scénario par défaut est\ :
-"multiplayer_Charge".
+\fB\-\-scenario=valeur\fP
+sélectionne un scénario multijoueur. Le scénario par défaut est\ : «
+multiplayer_Charge ».
 .TP 
-\fB\-\-side<number>=value\fP
+\fB\-\-side<nombre>=valeur\fP
 permet de sélectionner un camp. Ce camp est choisi par identifiant. Les
 camps sont décrits dans le fichier data/multiplayer.cfg.
 .TP 
-\fB\-\-turns=value\fP
-défini le nombre de tours du scénario. Valeur par défaut\ : "50".
+\fB\-\-turns=valeur\fP
+défini le nombre de tours du scénario. Valeur par défaut\ : « 50 ».
 .TP 
-Example to test your own AI: 
+Exemple pour tester votre propre IA\ : 
 wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
 \-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
 .
@@ -169,7 +169,8 @@ wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
 Édité par Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
 <ott@gaon.net> et Soliton <soliton@sonnenkinder.org>.
 .br
-Ce manuel a été écrit par Cyril Bouthors <cyril@bouthors.org>.
+Ce manuel a été à l'origine écrit par Cyril Bouthors
+<cyril@bouthors.org>.
 .br
 Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
 .
