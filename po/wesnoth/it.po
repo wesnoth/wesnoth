@@ -214,7 +214,7 @@ msgstr ""
 
 #: data/abilities.cfg:357 data/abilities.cfg:362
 msgid "nightstalk"
-msgstr "sospiro della notte"
+msgstr "agguato notturno"
 
 #: data/abilities.cfg:361 data/abilities.cfg:366
 msgid ""
@@ -225,7 +225,7 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
-"Sospiro della Notte:\n"
+"Agguato notturno:\n"
 "L'unità diviene invisibile durante la notte.\n"
 "\n"
 "Le unità nemiche non possono né vedere né attaccare questa unità durante la "
@@ -286,7 +286,7 @@ msgstr ""
 
 #: data/abilities.cfg:426 data/abilities.cfg:434
 msgid "plague"
-msgstr "piaga"
+msgstr "contagio"
 
 #: data/abilities.cfg:428 data/abilities.cfg:436
 msgid ""
@@ -295,7 +295,7 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
-"Piaga:\n"
+"Contagio:\n"
 "Quando una unità viene uccisa da un attacco Piaga, quell'unità viene "
 "sostituita da un'unità identica e della stessa squadra dell'unità con "
 "l'attacco Piaga. (Non funziona sui non morti e sulle unità nei villaggi)"
@@ -1615,7 +1615,7 @@ msgstr "bacio di sangue"
 #: data/units/Saurian_Augur.cfg:82 data/units/Saurian_Oracle.cfg:82
 #: data/units/Saurian_Soothsayer.cfg:82
 msgid "curse"
-msgstr "maledetto"
+msgstr "maledizione"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:3
 msgid "Warrior King"
@@ -2700,9 +2700,9 @@ msgstr ""
 "colpo andato a segno causa un determinato danno o, se manca il bersaglio, "
 "non causa alcun danno. Questo alternarsi continua finché tutte e due le "
 "unità hanno esaurito gli attacchi concessi. Il numero degli attacchi di ogni "
-"unità può variare; per esempio un combattente elfico con una spada da 5-4 "
-"può colpire 4 volte infliggendo 5 danni per colpo, mentre un fante orchesco "
-"con 9-2 colpisce 2 sole volte (causando però 9 danni per colpo)."
+"unità può variare; per esempio un elfo combattente con una spada da 5-4 può "
+"colpire 4 volte infliggendo 5 danni per colpo, mentre un fante orchesco con "
+"9-2 colpisce 2 sole volte (causando però 9 danni per colpo)."
 
 #: data/help.cfg:161
 msgid ""
@@ -6334,7 +6334,7 @@ msgstr ""
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr ""
-"I nemici che perdono la vita a causa della piaga risorgeranno non-morti."
+"I nemici che perdono la vita a causa del contagio risorgeranno non-morti."
 
 #: data/special-notes.cfg:50
 msgid ""
@@ -7857,7 +7857,7 @@ msgstr "intrappolare"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
-msgstr "Combattente elfico"
+msgstr "Elfo combattente"
 
 #: data/units/Elvish_Fighter.cfg:19
 msgid ""
@@ -7889,7 +7889,7 @@ msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
-msgstr "Tiratore scelto elfico"
+msgstr "Elfo tiratore scelto"
 
 #: data/units/Elvish_Marksman.cfg:23
 msgid ""
@@ -7921,9 +7921,10 @@ msgstr "arco lungo"
 msgid "female^Elvish Marksman"
 msgstr "Tiratrice scelta elfica"
 
+# XXX Marshal non è maresciallo...
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
-msgstr "Maresciallo elfico"
+msgstr "Elfo colonnello"
 
 #: data/units/Elvish_Marshal.cfg:28
 msgid ""
@@ -7974,7 +7975,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
-msgstr "Ranger elfico"
+msgstr "Elfo ranger"
 
 #: data/units/Elvish_Ranger.cfg:21
 msgid ""
@@ -7986,12 +7987,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Anche se un uomo trascorresse anni nella foresta, non riuscirà mai a "
+"Se anche un uomo trascorresse anni nella foresta, non riuscirebbe a "
 "scacciare la sensazione di essere ospite di un luogo che non gli appartiene "
-"veramente. Con gli elfi avviene il contrario. Qualunque elfo che studi la "
-"dottrina delle foreste ne diventa rapidamente un maestro e ciò, combinato "
-"con una considerevole abilità nell'uso dell'arco e della spada, lo rende una "
-"potente arma da guerra.\n"
+"veramente. Con gli elfi avviene il contrario. Un elfo che studi la dottrina "
+"delle foreste ne diventa rapidamente un maestro e ciò, combinato con una "
+"considerevole abilità nell'uso dell'arco e della spada, lo rende una potente "
+"arma da guerra.\n"
 "\n"
 "Note speciali:"
 
@@ -8024,7 +8025,7 @@ msgstr ""
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
-msgstr "Esploratore elfico"
+msgstr "Elfo esploratore"
 
 #: data/units/Elvish_Scout.cfg:21
 msgid ""
@@ -8070,7 +8071,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
-msgstr "Tiratore elfico leggendario"
+msgstr "Elfo maestro di tiro"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
 msgid ""
@@ -8090,7 +8091,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:216
 msgid "female^Elvish Sharpshooter"
-msgstr "Tiratrice elfica leggendaria"
+msgstr "Maestra di tiro elfica"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
@@ -8137,8 +8138,8 @@ msgstr ""
 "ben compreso dagli elfi, sebbene sia raramente usato con cattive intenzioni; "
 "fare ciò non è semplice, ed è un uso molto malvisto della loro forza.\n"
 "\n"
-"\tQuelle in grado di fare ciò sono rozzamente definite \"streghe\" dalle "
-"altre razze; di sicuro sono in grado di reggere questa parte.\n"
+"Quelle in grado di fare ciò sono rozzamente definite \"streghe\" dalle altre "
+"razze; di sicuro sono in grado di reggere questa parte.\n"
 "\n"
 "Note speciali:"
 
@@ -9491,8 +9492,8 @@ msgstr ""
 "banditi avrà bisogno di qualche bracconiere, per procurare i pasti serali "
 "dalla campagna vicina, e spesso per dare una mano nei combattimenti più "
 "seri.\n"
-"\t\n"
-"\tPer la loro esperienza, questi cacciatori sono abili a muoversi di notte, "
+"\n"
+"Per la loro esperienza, questi cacciatori sono abili a muoversi di notte, "
 "nelle foreste e nelle paludi."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
@@ -10974,7 +10975,7 @@ msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:25
 msgid "plague staff"
-msgstr "bastone della piaga"
+msgstr "bastone del contagio"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
