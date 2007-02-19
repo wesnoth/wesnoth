@@ -237,9 +237,9 @@ void unit_attack_ranged(display& disp, unit_map& units,
 
 	// more damage shown for longer, but 1s at most for this factor
 	const double xsrc = disp.get_location_x(a);
-	const double ysrc = disp.get_location_y(a);
+	const double ysrc = disp.get_location_y(a) - (attacker.is_flying() ? 0 : disp.get_map().get_terrain_info(disp.get_map().get_terrain(a)).unit_height_adjust());
 	const double xdst = disp.get_location_x(b);
-	const double ydst = disp.get_location_y(b);
+	const double ydst = disp.get_location_y(b) -( defender.is_flying() ? 0 : disp.get_map().get_terrain_info(disp.get_map().get_terrain(b)).unit_height_adjust());
 
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(b,update_tiles);
