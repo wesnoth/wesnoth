@@ -328,7 +328,7 @@ void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &
 
 ability_cache_item get_cached(ability_cache_map &cache, gamemap::location loc,
 			      team const &team, unit_map const &units,
-			      std::vector<team> const &teams, gamemap const &map)
+			      std::vector<class team> const &teams, gamemap const &map)
 {
 	ability_cache_map::iterator i;
 	i = cache.find(loc);
