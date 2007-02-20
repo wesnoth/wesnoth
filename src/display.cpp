@@ -2424,7 +2424,10 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 
 		SDL_Color speaker_colour = {255,255,255,255};
 		if(side >= 1) {
-			speaker_colour = team::get_side_colour(side);
+			Uint32 rgb = team::get_side_color_range(side).mid();
+			speaker_colour.r = (0x00FF0000 & rgb)>>16;
+			speaker_colour.g = (0x0000FF00 & rgb)>>8;
+			speaker_colour.b = (0x000000FF & rgb);
 		}
 
 		SDL_Color message_colour = chat_message_colour;
