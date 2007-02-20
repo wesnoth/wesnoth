@@ -1072,6 +1072,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			disp.recalculate_minimap();
 			disp.invalidate_game_status();
 			disp.invalidate_all();
+			disp.draw();
 		}
 
 		child = cfg->child("verify");

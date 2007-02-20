@@ -1055,6 +1055,8 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 							//check if some new part of map discovered or is active delay shroud updates, which need special care
 							if (clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
 								clear_undo_stack();
+								gui_->invalidate_all();
+								gui_->draw();
 								//some new part of map discovered
 								for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 						       if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
@@ -1075,6 +1077,8 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 
 			if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
 				clear_undo_stack();
+				gui_->invalidate_all();
+				gui_->draw();
 			}
 
 			return;
