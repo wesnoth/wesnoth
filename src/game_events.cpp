@@ -585,7 +585,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const size_t team_index = side_num-1;
 
 		if(team_index < teams->size()) {
-			std::cerr << "modifying team: " << team_index << "\n";
+			std::cerr << "modifying team: " << side_num << "\n";
 			if(!team_name.empty()) {
 				std::cerr << "change team to team_name '" << team_name << "'\n";
 				(*teams)[team_index].change_team(team_name,
