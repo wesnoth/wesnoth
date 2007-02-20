@@ -109,7 +109,6 @@ void clean_autosaves(const std::string &label)
 
 LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_config,
 		const game_data& units_data, CVideo& video,
-		upload_log &log,
 		io_type_t io_type, bool skip_replay)
 {
 	std::string type = state.campaign_type;
@@ -242,11 +241,11 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			LEVEL_RESULT res;
 			switch (io_type){
 			case IO_NONE:
-				res = playsingle_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
+				res = playsingle_scenario(units_data,game_config,scenario,video,state,story, skip_replay);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
+				res = playmp_scenario(units_data,game_config,scenario,video,state,story, skip_replay);
 				break;
 			}
 

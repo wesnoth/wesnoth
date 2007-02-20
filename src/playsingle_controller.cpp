@@ -24,7 +24,7 @@
 
 LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_config,
 		const config* level, CVideo& video, game_state& state_of_game,
-		const std::vector<config*>& story, upload_log& log, bool skip_replay)
+		const std::vector<config*>& story, bool skip_replay)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
@@ -32,7 +32,7 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 	playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
-	return playcontroller.play_scenario(story, log, skip_replay);
+	return playcontroller.play_scenario(story, skip_replay);
 }
 
 playsingle_controller::playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
@@ -126,8 +126,7 @@ void playsingle_controller::user_command(){
 	menu_handler_.user_command();
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
-												  bool skip_replay)
+LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, bool skip_replay)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -158,12 +157,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
-		// log before prestart events: they do weird things.
-		if (first_human_team_ != -1) {
-			log.start(gamestate_, teams_[first_human_team_], first_human_team_ + 1, units_,
-					  loading_game_ ? gamestate_.get_variable("turn_number") : "", status_.number_of_turns());
-		}
-
 		fire_prestart(!loading_game_);
 		init_gui();
 
@@ -193,10 +186,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			save = true;
 		} //end for loop
 
-	} catch(game::load_game_exception&) {
-		// Loading a new game is effectively a quit.
-		log.quit(status_.turn());
-		throw;
 	} catch(end_level_exception& end_level) {
 		bool obs = team_manager_.is_observer();
 		if (game_config::exit_at_end) {
@@ -223,10 +212,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		}
 
 		if(end_level.result == QUIT) {
-			log.quit(status_.turn());
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {
-			log.defeat(status_.turn());
 			try {
 				game_events::fire("defeat");
 			} catch(end_level_exception&) {
@@ -243,7 +230,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			} catch(end_level_exception&) {
 			}
 			if (first_human_team_ != -1)
-				log.victory(status_.turn(), teams_[first_human_team_].gold());
 
 			if(gamestate_.scenario == (level_)["id"]) {
 				gamestate_.scenario = (level_)["next_scenario"];

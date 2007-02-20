@@ -55,6 +55,6 @@ private:
 
 LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& terrain_config,
 		config const* level, CVideo& video,	game_state& state_of_game,
-		const config::child_list& story, upload_log& log, bool skip_replay);
+		const config::child_list& story, bool skip_replay);
 
 #endif

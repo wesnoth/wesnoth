@@ -22,7 +22,6 @@
 #include "play_controller.hpp"
 #include "playturn.hpp"
 #include "random.hpp"
-#include "upload_log.hpp"
 
 #include <vector>
 
@@ -32,7 +31,7 @@ public:
 	playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 
-	LEVEL_RESULT play_scenario(const std::vector<config*>& story, upload_log& log, bool skip_replay);
+	LEVEL_RESULT play_scenario(const std::vector<config*>& story, bool skip_replay);
 
 	virtual void handle_generic_event(const std::string& name);
 
@@ -76,6 +75,6 @@ private:
 
 LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& terrain_config,
 		const config* level, CVideo& video,	game_state& state_of_game,
-		const std::vector<config*>& story, upload_log& loo, bool skip_replay);
+		const std::vector<config*>& story, bool skip_replay);
 
 #endif
