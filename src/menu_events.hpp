@@ -23,7 +23,7 @@
 #include "statistics.hpp"
 #include "widgets/textbox.hpp"
 
-struct game_state;
+class game_state;
 class gamestatus;
 
 enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE };

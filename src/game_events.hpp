@@ -19,7 +19,7 @@ class display;
 class gamestatus;
 class unit;
 struct game_data;
-struct game_state;
+class game_state;
 
 #include "map.hpp"
 #include "soundsource.hpp"

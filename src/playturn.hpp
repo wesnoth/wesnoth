@@ -15,7 +15,7 @@
 
 class display;
 class config;
-struct game_state;
+class game_state;
 class replay_network_sender;
 class team;
 class unit;

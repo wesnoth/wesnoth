@@ -16,7 +16,7 @@
 class config;
 class display;
 class team;
-struct game_state;
+class game_state;
 class unit_map;
 class gamemap;
 
