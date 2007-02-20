@@ -206,6 +206,9 @@ void display::new_turn()
 
 	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
 	image::set_image_mask(tod.image_mask);
+
+	invalidate_all();
+	draw();
 }
 
 void display::adjust_colours(int r, int g, int b)
