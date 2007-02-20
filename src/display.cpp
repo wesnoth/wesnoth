@@ -48,6 +48,7 @@
 #include <sstream>
 
 #define ERR_DP LOG_STREAM(err, display)
+#define INFO_DP LOG_STREAM(info, display)
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
 
@@ -203,6 +204,9 @@ void display::new_turn()
 
 	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
 	image::set_image_mask(tod.image_mask);
+
+	invalidate_all();
+	draw();
 }
 
 void display::adjust_colours(int r, int g, int b)
@@ -833,6 +837,7 @@ void display::draw(bool update,bool force)
 	}
 
 	if(invalidateAll_ && !map_.empty()) {
+		INFO_DP << "draw() with invalidateAll\n";
 		gamemap::location topleft;
 		gamemap::location bottomright;
 		get_visible_hex_bounds(topleft, bottomright);
@@ -2099,6 +2104,7 @@ void display::invalidate(const gamemap::location& loc)
 
 void display::invalidate_all()
 {
+	INFO_DP << "invalidate_all()";
 	invalidateAll_ = true;
 	invalidated_.clear();
 	update_rect(map_area());
