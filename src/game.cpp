@@ -36,7 +36,6 @@
 #include "network.hpp"
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
-#include "publish_campaign.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
@@ -90,7 +89,6 @@ public:
 
 	bool new_campaign();
 	bool play_multiplayer();
-	void download_campaigns();
 	bool change_language();
 
 	void show_help();
@@ -108,10 +106,6 @@ private:
 
 	void read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache);
 	void refresh_game_cfg(bool reset_translations=false);
-
-	void upload_campaign(const std::string& campaign, network::connection sock);
-	void delete_campaign(const std::string& campaign, network::connection sock);
-	void remove_campaign(const std::string& campaign);
 
 	const int argc_;
 	int arg_;
@@ -854,306 +848,6 @@ std::string format_file_size(const std::string& size_str)
 
 }
 
-void game_controller::download_campaigns()
-{
-	std::string host = preferences::campaign_server();
-
-	const int res = gui::show_dialog(disp(),NULL,_("Connect to Server"),
-	        _("You will now connect to a server to download add-ons."),
-	        gui::OK_CANCEL,NULL,NULL,_("Server: "),&host);
-	if(res != 0) {
-		return;
-	}
-
-	const std::vector<std::string> items = utils::split(host, ':');
-	if(items.empty()) {
-		return;
-	}
-
-	host = items.front();
-	preferences::set_campaign_server(host);
-
-	try {
-		const network::manager net_manager;
-		const network::connection sock = gui::network_connect_dialog(disp(), _("Connecting to Server..."),
-										items.front(), lexical_cast_default<int>(items.back(),15004) );
-		if(!sock) {
-			gui::show_error_message(disp(), _("Could not connect to host."));
-			preferences::set_campaign_server("");
-			return;
-		}
-
-		config cfg;
-		cfg.add_child("request_campaign_list");
-		network::send_data(cfg,sock);
-
-		network::connection res = gui::network_receive_dialog(disp(),_("Asking for list of add-ons"),cfg,sock);
-		if(!res) {
-			return;
-		}
-
-		const config* const error = cfg.child("error");
-		if(error != NULL) {
-			gui::show_error_message(disp(), (*error)["message"]);
-			return;
-		}
-
-		const config* const campaigns_cfg = cfg.child("campaigns");
-		if(campaigns_cfg == NULL) {
-			gui::show_error_message(disp(), _("Error communicating with the server."));
-			return;
-		}
-
-		std::vector<std::string> campaigns, options;
-
-		std::string sep(1, COLUMN_SEPARATOR);
-
-		std::stringstream heading;
-		heading << HEADING_PREFIX << sep << _("Name") << sep << _("Version") << sep
-				<< _("Author") << sep << _("Downloads") << sep << _("Size");
-
-		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
-		const std::vector<std::string>& publish_options = available_campaigns();
-
-		std::vector<std::string> delete_options;
-
-		std::vector<int> sizes;
-
-		for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
-			const std::string& name = (**i)["name"];
-			campaigns.push_back(name);
-
-			if(std::count(publish_options.begin(),publish_options.end(),name) != 0) {
-				delete_options.push_back(name);
-			}
-
-			std::string title = (**i)["title"];
-			if(title == "") {
-				title = name;
-				std::replace(title.begin(),title.end(),'_',' ');
-			}
-
-			std::string version   = (**i)["version"],
-			            author    = (**i)["author"];
-
-			if(title.size() > 20) {
-				title.resize(20);
-			}
-
-			if(version.size() > 12) {
-				version.resize(12);
-			}
-
-			if(author.size() > 16) {
-				author.resize(16);
-			}
-
-			//add negative sizes to reverse the sort order
-			sizes.push_back(-atoi((**i)["size"].c_str()));
-
-			const int max_icon_dim = 80;
-
-			//make sure the icon isn't too big
-			std::string icon = (**i)["icon"];
-			const surface icon_img = image::get_image(icon,image::UNSCALED);
-			if(icon_img.null() == false && icon_img->w > max_icon_dim && icon_img->h > max_icon_dim) {
-				icon = "";
-			}
-
-			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR +
-			                  title + COLUMN_SEPARATOR +
-			                  version + COLUMN_SEPARATOR +
-			                  author + COLUMN_SEPARATOR +
-			                  (**i)["downloads"].str() + COLUMN_SEPARATOR +
-			                  format_file_size((**i)["size"]));
-		}
-
-		options.push_back(heading.str());
-
-		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
-			options.push_back(sep + _("Publish add-on: ") + *j);
-		}
-
-		for(std::vector<std::string>::const_iterator d = delete_options.begin(); d != delete_options.end(); ++d) {
-			options.push_back(sep + _("Delete add-on: ") + *d);
-		}
-
-		if(campaigns.empty() && publish_options.empty()) {
-			gui::show_error_message(disp(), _("There are no add-ons available for download from this server."));
-			return;
-		}
-
-		gui::menu::basic_sorter sorter;
-		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
-
-		const int index = gui::show_dialog2(disp(),NULL,_("Get Add-ons"),_("Choose the add-on to download."),gui::OK_CANCEL,&options,
-			NULL, "", NULL, 256, NULL, NULL, -1, -1, NULL, NULL, "", &sorter);
-		if(index < 0) {
-			return;
-		}
-
-		if(index >= int(campaigns.size() + publish_options.size())) {
-			delete_campaign(delete_options[index - int(campaigns.size() + publish_options.size())],sock);
-			return;
-		}
-
-		if(index >= int(campaigns.size())) {
-			upload_campaign(publish_options[index - int(campaigns.size())],sock);
-			return;
-		}
-
-		config request;
-		request.add_child("request_campaign")["name"] = campaigns[index];
-		network::send_data(request,sock);
-
-		res = gui::network_receive_dialog(disp(),_("Downloading add-on..."),cfg,sock);
-		if(!res) {
-			return;
-		}
-
-		if(cfg.child("error") != NULL) {
-			gui::show_error_message(disp(), (*cfg.child("error"))["message"]);
-			return;
-		}
-
-		if(!check_names_legal(cfg)) {
-			gui::show_error_message(disp(), "The add-on has an invalid file or directory name and can not be installed.");
-			return;
-		}
-
-		//remove any existing versions of the just downloaded campaign
-		//assuming it consists of a dir and a cfg file
-		remove_campaign(campaigns[index]);
-
-		//put a break at line below to see that it really works.
-		unarchive_campaign(cfg);
-
-		// when using zipios, force a reread zip and directory indices
-		if (!filesystem_init()) {
-			gui::show_error_message(disp(), _("Cannot rescan the filesystem"));
-			return;
-		}
-
-		//force a reload of configuration information
-		const bool old_cache = use_caching_;
-		use_caching_ = false;
-		old_defines_map_.clear();
-		refresh_game_cfg();
-		use_caching_ = old_cache;
-		::init_textdomains(game_config_);
-		paths_manager_.set_paths(game_config_);
-
-		clear_binary_paths_cache();
-
-		std::string warning = "";
-		std::vector<config *> scripts = find_scripts(cfg, ".unchecked");
-		if (!scripts.empty()) {
-			warning += "\nUnchecked script files found:";
-			std::vector<config *>::iterator i;
-			for (i = scripts.begin(); i != scripts.end(); ++i) {
-				warning += "\n" + (**i)["name"];
-			}
-		}
-
-		gui::show_dialog(disp(),NULL,_("Add-on Installed"),_("The add-on has been installed.") +
-		    warning,gui::OK_ONLY);
-	} catch(config::error&) {
-		gui::show_error_message(disp(), _("Network communication error."));
-	} catch(network::error&) {
-		gui::show_error_message(disp(), _("Remote host disconnected."));
-	} catch(io_exception&) {
-		gui::show_error_message(disp(), _("There was a problem creating the files necessary to install this campaign."));
-	}
-}
-
-void game_controller::upload_campaign(const std::string& campaign, network::connection sock)
-{
-	config request_terms;
-	request_terms.add_child("request_terms");
-	network::send_data(request_terms,sock);
-	config data;
-	sock = network::receive_data(data,sock,5000);
-	if(!sock) {
-		gui::show_error_message(disp(), _("Connection timed out"));
-		return;
-	} else if(data.child("error")) {
-		gui::show_error_message(disp(), _("The server responded with an error: \"") +
-		                        (*data.child("error"))["message"].str() + '"');
-		return;
-	} else if(data.child("message")) {
-		const int res = gui::show_dialog(disp(),NULL,_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL);
-		if(res != 0) {
-			return;
-		}
-	}
-
-	config cfg;
-	get_campaign_info(campaign,cfg);
-
-	std::string passphrase = cfg["passphrase"];
-	if(passphrase.empty()) {
-		passphrase.resize(8);
-		for(size_t n = 0; n != 8; ++n) {
-			passphrase[n] = 'a' + (rand()%26);
-		}
-		cfg["passphrase"] = passphrase;
-		set_campaign_info(campaign,cfg);
-	}
-
-	cfg["name"] = campaign;
-
-	config campaign_data;
-	archive_campaign(campaign,campaign_data);
-
-	data.clear();
-	data.add_child("upload",cfg).add_child("data",campaign_data);
-
-	std::cerr << "uploading campaign...\n";
-	network::send_data(data,sock);
-
-	sock = gui::network_send_dialog(disp(),_("Sending add-on"),data,sock);
-	if(!sock) {
-		gui::show_error_message(disp(), _("Connection timed out"));
-	} else if(data.child("error")) {
-		gui::show_error_message(disp(), _("The server responded with an error: \"") +
-		                        (*data.child("error"))["message"].str() + '"');
-	} else if(data.child("message")) {
-		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
-	}
-}
-
-void game_controller::delete_campaign(const std::string& campaign, network::connection sock)
-{
-	config cfg;
-	get_campaign_info(campaign,cfg);
-
-	config msg;
-	msg["name"] = campaign;
-	msg["passphrase"] = cfg["passphrase"];
-
-	config data;
-	data.add_child("delete",msg);
-
-	network::send_data(data,sock);
-
-	sock = network::receive_data(data,sock,5000);
-	if(!sock) {
-		gui::show_error_message(disp(), _("Connection timed out"));
-	} else if(data.child("error")) {
-		gui::show_error_message(disp(), _("The server responded with an error: \"") +
-		                        (*data.child("error"))["message"].str() + '"');
-	} else if(data.child("message")) {
-		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
-	}
-}
-
-void game_controller::remove_campaign(const std::string& campaign)
-{
-	const std::string campaign_dir = get_user_data_dir() + "/data/campaigns/" + campaign;
-	delete_directory(campaign_dir);
-	delete_directory(campaign_dir + ".cfg");
-}
-
 bool game_controller::play_multiplayer()
 {
 	state_ = game_state();
@@ -1179,7 +873,6 @@ bool game_controller::play_multiplayer()
 	host_or_join.push_back(pre + "ai.png"
 		+ sep1 + _("Human vs AI")
 		+ sep2 + _("Play a game against AI opponents"));
-
 	std::string login = preferences::login();
 
 	int res;
@@ -1816,9 +1509,6 @@ int play_game(int argc, char** argv)
 		} else if(res == gui::SHOW_HELP) {
 			help::help_manager help_manager(&game.game_config(), &game.units_data(), NULL);
 			help::show_help(game.disp());
-			continue;
-		} else if(res == gui::GET_ADDONS) {
-			game.download_campaigns();
 			continue;
 		}
 		if (recorder.at_end()) {

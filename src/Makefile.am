@@ -47,7 +47,6 @@ wesnoth_SOURCES = \
 	builder.cpp \
 	cavegen.cpp \
 	checksum.cpp \
-	clipboard.cpp \
 	color_range.cpp \
 	config_adapter.cpp \
 	cursor.cpp \
@@ -95,7 +94,6 @@ wesnoth_SOURCES = \
 	playturn.cpp \
 	preferences.cpp \
 	preferences_display.cpp \
-	publish_campaign.cpp \
 	replay.cpp \
 	replay_controller.cpp \
 	reports.cpp \
@@ -154,7 +152,6 @@ wesnoth_editor_SOURCES = \
 	builder.cpp \
 	cavegen.cpp \
 	checksum.cpp \
-	clipboard.cpp \
 	color_range.cpp \
 	cursor.cpp \
 	dialogs.cpp \
@@ -251,7 +248,6 @@ campaignd_SOURCES = \
 	campaign_server/campaign_server.cpp \
 	network.cpp \
 	network_worker.cpp \
-	publish_campaign.cpp \
 	loadscreen_empty.cpp \
 	serialization/parser.cpp
 
@@ -356,7 +352,6 @@ noinst_HEADERS = \
 	gettext.hpp \
 	loadscreen.hpp \
 	builder.hpp \
-	publish_campaign.hpp \
 	game_config.hpp \
 	terrain.hpp \
 	config.hpp \
@@ -387,7 +382,6 @@ noinst_HEADERS = \
 	image.hpp \
 	team.hpp \
 	game_events.hpp \
-	clipboard.hpp \
 	color_range.hpp \
 	events.hpp \
 	playcampaign.hpp \

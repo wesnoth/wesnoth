@@ -71,8 +71,6 @@ namespace game_config
 	std::string unchecked_menu_image = "buttons/checkbox.png";
 	std::string checked_menu_image = "buttons/checkbox-pressed.png";
 
-	std::string download_campaign_image;
-
 	std::string level_image;
 	std::string ellipsis_image;
 
@@ -164,7 +162,6 @@ namespace game_config
 
 		observer_image = v["observer_image"];
 
-		download_campaign_image = v["download_campaign_image"];
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];
 

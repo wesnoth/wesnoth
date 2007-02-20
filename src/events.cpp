@@ -13,7 +13,6 @@
 
 #include "global.hpp"
 
-#include "clipboard.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
 #include "gp2x.hpp"
@@ -334,14 +333,6 @@ void pump()
 
 				break;
 			}
-
-#if defined(_X11) && !defined(__APPLE__)
-			case SDL_SYSWMEVENT: {
-				//clipboard support for X11
-				handle_system_event(event);
-				break;
-			}
-#endif
 
 			case SDL_QUIT: {
 				throw CVideo::quit();

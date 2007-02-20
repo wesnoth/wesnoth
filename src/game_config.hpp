@@ -43,7 +43,7 @@ namespace game_config
 	  enemy_ball_image, ally_ball_image, energy_image,
 	  flag_image, dot_image, cross_image,
 	  missile_n_image, missile_ne_image,
-	  terrain_mask_image, observer_image, download_campaign_image,
+	  terrain_mask_image, observer_image, 
 	  checked_menu_image, unchecked_menu_image, level_image,ellipsis_image;
 
   extern std::vector<Uint32> flag_rgb;
