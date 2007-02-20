@@ -137,7 +137,7 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 			return;
 		}
 
-		SDL_Rect area = disp.map_area();
+//		SDL_Rect area = disp.map_area();
 
 		int distance_volume = 256;
 		for(std::list<gamemap::location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
