@@ -383,6 +383,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 
 	if (!recorder.is_skipping()){
 		::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_index);
+		gui_->invalidate_all();
 	}
 
 	if (!recorder.is_skipping()){
