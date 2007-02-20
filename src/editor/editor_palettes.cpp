@@ -35,7 +35,7 @@ bool is_invalid_terrain(t_translation::t_letter c) {
 
 terrain_group::terrain_group(const config& cfg, display& gui):
 	id(cfg["id"]), name(cfg["name"]), 
-	button(gui.video(), "", gui::button::TYPE_PRESS, cfg["icon"])
+	button(gui.video(), "", gui::button::TYPE_CHECK, cfg["icon"])
 {
 }
 

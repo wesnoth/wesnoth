@@ -900,10 +900,10 @@ void map_editor::clear_highlighted_hexes_in_gui() {
 
 void map_editor::set_mouseover_overlay()
 {
-	surface image_fg(get_image("terrain/" + map_.get_terrain_info(
+	surface image_fg(image::get_image("terrain/" + map_.get_terrain_info(
 				palette_.selected_fg_terrain()).symbol_image() + 
 				".png",image::UNSCALED));
-	surface image_bg(get_image("terrain/" + map_.get_terrain_info(
+	surface image_bg(image::get_image("terrain/" + map_.get_terrain_info(
 				palette_.selected_bg_terrain()).symbol_image() + 
 				".png",image::UNSCALED));
 

@@ -136,7 +136,11 @@ void button::calculate_size()
 		}
 #endif
 	} else {
-		set_width(checkbox_horizontal_padding + textRect_.w + base_width_);
+		if(label_.empty()) {
+			set_width(base_width_);
+		} else {
+			set_width(checkbox_horizontal_padding + textRect_.w + base_width_);
+		}
 	}
 }
 
