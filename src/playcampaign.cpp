@@ -152,6 +152,16 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		if(state.snapshot.child("variables") != NULL) {
 			state.variables = *state.snapshot.child("variables");
 		}
+		//get the current gold values of players so they don't start with the amount
+		//they had at the start of the scenario
+		const std::vector<config*>& player_cfg = state.snapshot.get_children("player");
+		for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
+			std::string save_id = (**p)["save_id"];
+			player_info* player = state.get_player(save_id);
+			if (player != NULL){
+				player->gold = lexical_cast <int> ((**p)["gold"]);
+			}
+		}
 	}
 
 	controller_map controllers;
