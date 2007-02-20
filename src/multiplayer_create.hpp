@@ -22,7 +22,7 @@
 
 namespace mp {
 
-class create : public mp::ui, public font::floating_label_context
+class create : public mp::ui
 {
 public:
 	struct parameters
