@@ -126,11 +126,17 @@ namespace game_config
 		title_logo_y = atoi(v["logo_y"].c_str());
 		title_buttons_x = atoi(v["buttons_x"].c_str());
 		title_buttons_y = atoi(v["buttons_y"].c_str());
-		title_buttons_padding = atoi(v["buttons_padding"].c_str());
 		title_tip_x = atoi(v["tip_x"].c_str());
 		title_tip_y = atoi(v["tip_y"].c_str());
 		title_tip_width = atoi(v["tip_width"].c_str());
+
+#ifdef USE_TINY_GUI
+		title_tip_padding = atoi(v["tinygui_tip_padding"].c_str());
+		title_buttons_padding = atoi(v["tinygui_buttons_padding"].c_str());
+#else
 		title_tip_padding = atoi(v["tip_padding"].c_str());
+		title_buttons_padding = atoi(v["buttons_padding"].c_str());
+#endif
 
 		map_image = v["map_image"];
 		rightside_image = v["sidebar_image"];

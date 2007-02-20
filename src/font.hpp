@@ -60,6 +60,16 @@ inline int relative_size(int size)
 	return (SIZE_NORMAL * size / 14);
 }
 // automatic computation of other font sizes, to be made a default for theme-provided values
+#ifdef USE_TINY_GUI
+        const int
+        SIZE_TINY       = 8,
+        SIZE_SMALL      = 8,
+        SIZE_15         = 9,
+        SIZE_PLUS       = 9,
+        SIZE_LARGE      = 10,
+        SIZE_XLARGE     = 10
+  ;
+#else
 const int
 	SIZE_TINY       = relative_size(10),
 	SIZE_SMALL      = relative_size(12),
@@ -69,6 +79,7 @@ const int
 	SIZE_LARGE      = relative_size(18),
 	SIZE_XLARGE     = relative_size(24)
   ;
+#endif
 
 // Returns a SDL surface containing the text rendered in a given colour.
 surface get_rendered_text(const std::string& text, int size, const SDL_Color& colour, int style=0);

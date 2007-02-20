@@ -274,12 +274,15 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	const int menu_xbase = (game_config::title_buttons_x*screen.x())/1024;
 	const int menu_xincr = 0;
-	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768;
+
 #ifdef USE_TINY_GUI
+	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768 - 15;
 	const int menu_yincr = 15;
 #else
+	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768;
 	const int menu_yincr = 35;
 #endif
+
 	const int padding = game_config::title_buttons_padding;
 
 	std::vector<button> buttons;
@@ -302,9 +305,12 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	gui::button next_tip_button(screen.video(),_("More"),button::TYPE_PRESS,"lite_small");
 	gui::button help_tip_button(screen.video(),_("Help"),button::TYPE_PRESS,"lite_small");
+
+#ifndef USE_TINY_GUI
 	// FIXME: Translatable string is here because we WILL put text in before 1.2!
 	gui::button beg_button(screen.video(),("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
 	beg_button.set_help_string(_("Help Wesnoth by sending us information"));
+#endif
 
 	if(tips_of_day.empty()) {
 		tips_of_day = get_tips_of_day();
@@ -315,9 +321,11 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
+#ifndef USE_TINY_GUI
 	const int pad = game_config::title_tip_padding;
 	beg_button.set_location(screen.x() - pad - beg_button.location().w,
 		screen.y() - pad - beg_button.location().h);
+#endif
 
 	events::raise_draw_event();
 
@@ -349,11 +357,11 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		if(help_tip_button.pressed()) {
 			return SHOW_HELP;
 		}
-
+#ifndef USE_TINY_GUI
 		if(beg_button.pressed()) {
 			return BEG_FOR_UPLOAD;
 		}
-
+#endif
 		events::raise_process_event();
 		events::raise_draw_event();
 

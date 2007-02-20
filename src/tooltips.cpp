@@ -80,8 +80,15 @@ void show_tooltip(const tooltip& tip)
 
 	const SDL_Color bgcolour = {0,0,0,128};
 	SDL_Rect area = screen_area();
+
+#ifdef USE_TINY_GUI
+	const int border = 2;
+#else
+	const int border = 10;
+#endif
+
 	tooltip_handle = font::add_floating_label(tip.message,font_size,font::NORMAL_COLOUR,
-	                                          0,0,0,0,-1,area,font::LEFT_ALIGN,&bgcolour,10);
+	                                          0,0,0,0,-1,area,font::LEFT_ALIGN,&bgcolour,border);
 
 	SDL_Rect rect = font::get_floating_label_rect(tooltip_handle);
 

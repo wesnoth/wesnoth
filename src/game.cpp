@@ -136,6 +136,7 @@ private:
 
 	bool test_mode_, multiplayer_mode_, no_gui_;
 	bool use_caching_;
+	bool force_valid_cache_;
 	int force_bpp_;
 
 	config game_config_;
@@ -154,8 +155,8 @@ private:
 game_controller::game_controller(int argc, char** argv)
    : argc_(argc), arg_(1), argv_(argv), thread_manager(),
      test_mode_(false), multiplayer_mode_(false),
-     no_gui_(false), use_caching_(true), force_bpp_(-1), disp_(NULL),
-     loaded_game_show_replay_(false)
+     no_gui_(false), use_caching_(true), force_valid_cache_(true),
+     force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false)
 {
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
@@ -167,6 +168,8 @@ game_controller::game_controller(int argc, char** argv)
 			preferences::set_show_fps(true);
 		} else if(val == "--nocache") {
 			use_caching_ = false;
+		} else if(val == "--validcache") {
+			force_valid_cache_ = "true";
 		} else if(val == "--resolution" || val == "-r") {
 			if(arg_+1 != argc_) {
 				++arg_;
@@ -1328,7 +1331,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 				file_tree_checksum dir_checksum;
 
-				if(use_cache) {
+				if(use_cache && !force_valid_cache_) {
 					try {
 						if(file_exists(fname_checksum)) {
 							config checksum_cfg;
@@ -1343,7 +1346,10 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 					}
 				}
 
-				if(use_cache && file_exists(fname) && file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum()) {
+				if(force_valid_cache_)
+					std::cerr << "skipping cache validation (forced)\n";
+
+				if(use_cache && file_exists(fname) && (force_valid_cache_ || file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum())) {
 					std::cerr << "found valid cache at '" << fname << "' using it\n";
 					log_scope("read cache");
 					try {

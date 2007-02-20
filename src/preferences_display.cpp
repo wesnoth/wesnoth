@@ -260,8 +260,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
 	// FIXME: this box should be vertically centered on the screen, but is not
-#if USE_TINY_GUI
-	set_measurements(260, 220);		  // FIXME: should compute this, but using what data ?
+#ifdef USE_TINY_GUI
+	set_measurements(180, 180);		  // FIXME: should compute this, but using what data ?
 #else
 	set_measurements(400, 400);
 #endif

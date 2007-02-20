@@ -50,6 +50,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		"-   Jörg Hinrichs (Yogi Bear/YogiHH)",
 		"-   Justin Zaun (jzaun)",
 		"-   J.R. Blain (Cowboy)",
+		"-   Karol Nowak (grzywacz)",
 		"-   Kristoffer Erlandsson (erl)",
 		"-   Maksim Orlovich (SadEagle)",
 		"-   Nicolas Weeger (Ryo)",
