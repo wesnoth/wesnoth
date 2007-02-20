@@ -329,6 +329,7 @@ void replay_controller::update_teams(){
 	}
 	gui_->set_playing_team(next_team - 1);
 	//(*gui_).scroll_to_leader(units_, next_team);
+	gui_->invalidate_all();
 }
 
 void replay_controller::update_gui(){
