@@ -18,7 +18,7 @@
 #include "menu_events.hpp"
 
 class display;
-struct game_state;
+class game_state;
 class config;
 struct game_data;
 class CVideo;

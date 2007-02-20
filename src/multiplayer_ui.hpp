@@ -27,7 +27,7 @@
 #include <string>
 
 class display;
-struct game_state;
+class game_state;
 
 namespace mp {
 

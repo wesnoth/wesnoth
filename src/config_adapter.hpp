@@ -22,7 +22,7 @@
 #include "config.hpp"
 
 class gamestatus;
-struct game_state;
+class game_state;
 struct game_data;
 class gamemap;
 class unit_map;
