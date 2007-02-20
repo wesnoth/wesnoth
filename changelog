@@ -45,6 +45,8 @@ Version 1.2.1+svn:
     * overall game performance improved when many units are visible
     * better performance when mouse is over a unit that sees many enemy units
     * show side and team in the status table
+    * animations draw faster now and the speed is independent of the resolution
+    * fog/shroud is cleared after attack-move (bug #7131)
  * WML engine
     * fixed a bug which returned wrong values if a random number was negative
 
