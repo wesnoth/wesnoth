@@ -43,7 +43,7 @@ class checksumstream : private checksumstreambuf, public std::basic_ostream<char
 {
 public:
 	checksumstream();
-	unsigned int checksum();
+	unsigned int checksum() { return sbuf.checksum(); }
 private:
 	checksumstreambuf& sbuf;
 };

@@ -64,12 +64,6 @@ size_t cave_map_generator::translate_y(size_t y) const
 	return y;
 }
 
-bool cave_map_generator::allow_user_config() const { return true; }
-
-void cave_map_generator::user_config(display& /*disp*/) { return; }
-
-std::string cave_map_generator::name() const { return "cave"; }
-
 std::string cave_map_generator::create_map(const std::vector<std::string>& args)
 {
 	const config res = create_scenario(args);
@@ -334,11 +328,6 @@ void cave_map_generator::place_passage(const passage& p)
 			set_terrain(*j,clear_);
 		}
 	}
-}
-
-bool cave_map_generator::on_board(const gamemap::location& loc) const
-{
-	return loc.x >= 0 && loc.y >= 0 && loc.x < (long)width_ && loc.y < (long)height_;
 }
 
 void cave_map_generator::set_terrain(gamemap::location loc, gamemap::TERRAIN t)
