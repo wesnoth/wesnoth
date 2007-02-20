@@ -551,8 +551,6 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	const int xpos = get_location_x(loc);
 	const int ypos = get_location_y(loc);
 	if ((scroll_type == ONSCREEN) && !outside_area(map_area(),xpos,ypos)) {
-		invalidate_all();
-		draw();
 		return;
 	}
 
@@ -570,10 +568,6 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	if(scroll_type == WARP || turbo() || num_moves == 0) {
 		num_moves = 1;
 	}
-
-	// this is needed for initially drawing all tiles before a dialog box 
-	// FIXME: this is bad, for most scrolls a needless performance penalty.
-	invalidate_all();
 
 	for(int i = 0; i != num_moves; ++i) {
 		events::pump();
@@ -2350,6 +2344,7 @@ void display::begin_game()
 {
 	in_game_ = true;
 	create_buttons();
+	invalidate_all();
 }
 
 void display::create_buttons()
