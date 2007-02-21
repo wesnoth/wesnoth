@@ -23,8 +23,8 @@ namespace {
 namespace gui {
 
 	widget::widget(const widget &o)
-	: events::handler(), video_(o.video_), restorer_(o.restorer_),
-	  rect_(o.rect_), focus_(o.focus_), needs_restore_(o.needs_restore_),
+	: events::handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_),
+	  rect_(o.rect_), needs_restore_(o.needs_restore_),
 	  state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_),
 	  volatile_(o.volatile_), help_text_(o.help_text_),
@@ -33,10 +33,10 @@ namespace gui {
 }
 
 widget::widget(CVideo& video, bool auto_join)
-	: handler(auto_join), video_(&video), rect_(EmptyRect), focus_(true),
+	: handler(auto_join), focus_(false), video_(&video), rect_(EmptyRect), 
 	  needs_restore_(false), state_(UNINIT), hidden_override_(false),
-	  enabled_(true), clip_(false), volatile_(false), help_string_(0),
-	  align_(RIGHT_ALIGN), id_()
+	  enabled_(true), clip_(false), clip_rect_(EmptyRect), volatile_(false),
+	  help_string_(0), align_(RIGHT_ALIGN)
 {
 }
 
