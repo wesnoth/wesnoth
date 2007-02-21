@@ -259,16 +259,14 @@ namespace {
 
 theme::object::object() : location_modified_(false), loc_(empty_rect), relative_loc_(empty_rect),
                           last_screen_(empty_rect), xanchor_(object::FIXED), yanchor_(object::FIXED)
-{}
-
-theme::object::object(const config& cfg)
-                   : id_(cfg["id"]),
-					 loc_(read_sdl_rect(cfg)), relative_loc_(empty_rect),
-				     last_screen_(empty_rect),
-                     xanchor_(read_anchor(cfg["xanchor"])),
-					 yanchor_(read_anchor(cfg["yanchor"]))
 {
-	location_modified_ = false;
+}
+
+theme::object::object(const config& cfg) :
+		location_modified_(false), id_(cfg["id"]), loc_(read_sdl_rect(cfg)),
+		relative_loc_(empty_rect), last_screen_(empty_rect), 
+		xanchor_(read_anchor(cfg["xanchor"])), yanchor_(read_anchor(cfg["yanchor"]))
+{
 }
 
 SDL_Rect& theme::object::location(const SDL_Rect& screen) const
