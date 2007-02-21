@@ -110,7 +110,7 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
-	void read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache, bool force_valid_cache_);
+	void read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache);
 	void refresh_game_cfg(bool reset_translations=false);
 
 	void upload_campaign(const std::string& campaign, network::connection sock);
@@ -1338,7 +1338,7 @@ void game_controller::show_upload_begging()
 }
 
 //this function reads the game configuration, searching for valid cached copies first
-void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache, bool force_valid_cache_)
+void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache)
 {
 	log_scope("read_game_cfg");
 
@@ -1506,7 +1506,7 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 
 			if(!reset_translations) {
 				game_config_.clear();
-				read_game_cfg(defines_map_, game_config_, use_caching_, force_valid_cache_);
+				read_game_cfg(defines_map_, game_config_, use_caching_);
 			} else {
 				game_config_.reset_translation();
 			}

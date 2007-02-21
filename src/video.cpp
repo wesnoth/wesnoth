@@ -418,9 +418,9 @@ int CVideo::set_help_string(const std::string& str)
 	}
 
 #ifdef USE_TINY_GUI
-	int border = 2;
+	const int border = 2;
 #else
-	int border = 5;
+	const int border = 5;
 #endif
 
 	help_string_ = font::add_floating_label(str,size,font::NORMAL_COLOUR,getx()/2,gety(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,border);
