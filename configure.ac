@@ -590,14 +590,12 @@ ac_link="$LDPREFIX $ac_link"
 
 SDL_IMAGE_LIBS=-lSDL_image
 SDL_MIXER_LIBS=-lSDL_mixer
-SDL_NET_LIBS=-lSDL_net
 
 LIBS=$OLD_LIBS
 
 AC_SUBST([SDL_LIBS])
 AC_SUBST([SDL_IMAGE_LIBS])
 AC_SUBST([SDL_MIXER_LIBS])
-AC_SUBST([SDL_NET_LIBS])
 
 # Checking for the freetype library. This was copied from the
 # config script of SDL_ttf, modified for CPPFLAGS
@@ -697,11 +695,6 @@ You should install development package.])])
 AC_CHECK_HEADER([SDL_mixer.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_mixer include files not found!
-You should install development package.])])
-
-AC_CHECK_HEADER([SDL_net.h],
-		[],
-		[AC_MSG_ERROR([*** SDL_net include files not found!
 You should install development package.])])
 
 CPPFLAGS=$OLD_CPPFLAGS

@@ -45,7 +45,6 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 	player_info *player = NULL;
 
 	if(cfg["controller"] == "human" ||
-	   cfg["controller"] == "network" ||
 	   cfg["persistent"] == "1") {
 		player = gamestate.get_player(save_id);
 

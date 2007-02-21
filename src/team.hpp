@@ -90,7 +90,7 @@ public:
 		 * displayed to the user. */
 		bool objectives_changed;
 
-		enum CONTROLLER { HUMAN, AI, NETWORK, EMPTY };
+		enum CONTROLLER { HUMAN, AI, EMPTY };
 		CONTROLLER controller;
 		bool persistent;
 		std::string ai_algorithm;
@@ -175,14 +175,12 @@ public:
 	double caution() const;
 
 	bool is_human() const;
-	bool is_network() const;
 	bool is_ai() const;
 	bool is_empty() const;
 
 	bool is_persistent() const;
 
 	void make_human();
-	void make_network();
 	void make_ai();
 
 	const std::string& team_name() const;

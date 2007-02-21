@@ -32,8 +32,6 @@
 #include "intro.hpp"
 #include "language.hpp"
 #include "loadscreen.hpp"
-#include "multiplayer.hpp"
-#include "network.hpp"
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
@@ -79,7 +77,6 @@ public:
 	bool init_config();
 	bool init_language();
 	bool play_test();
-	bool play_multiplayer_mode();
 
 	void reset_game_cfg();
 
@@ -88,7 +85,6 @@ public:
 	void set_tutorial();
 
 	bool new_campaign();
-	bool play_multiplayer();
 	bool change_language();
 
 	void show_help();
@@ -125,7 +121,7 @@ private:
 	const hotkey::manager hotkey_manager_;
 	binary_paths_manager paths_manager_;
 
-	bool test_mode_, multiplayer_mode_, no_gui_;
+	bool test_mode_, no_gui_;
 	bool use_caching_;
 	bool force_valid_cache_;
 	int force_bpp_;
@@ -145,7 +141,7 @@ private:
 
 game_controller::game_controller(int argc, char** argv)
    : argc_(argc), arg_(1), argv_(argv), thread_manager(),
-     test_mode_(false), multiplayer_mode_(false),
+     test_mode_(false), 
      no_gui_(false), use_caching_(true), force_valid_cache_(true),
      force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false)
 {
@@ -191,9 +187,6 @@ game_controller::game_controller(int argc, char** argv)
 			preferences::set_fullscreen(false);
 		} else if(val == "--fullscreen" || val == "-f") {
 			preferences::set_fullscreen(true);
-		} else if(val == "--multiplayer") {
-			multiplayer_mode_ = true;
-			break; //parse the rest of the arguments when we set up the game
 		} else if(val == "--test" || val == "-t") {
 			test_mode_ = true;
 		} else if(val == "--debug" || val == "-d") {
@@ -255,16 +248,6 @@ display& game_controller::disp()
 
 bool game_controller::init_video()
 {
-	if(no_gui_) {
-		if(!multiplayer_mode_) {
-			std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
-			return false;
-		}
-		video_.make_fake();
-		game_config::no_delay = true;
-		return true;
-	}
-
 	image::set_wm_icon();
 
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
@@ -425,188 +408,6 @@ bool game_controller::play_test()
 	return false;
 }
 
-bool game_controller::play_multiplayer_mode()
-{
-	state_ = game_state();
-
-	if(!multiplayer_mode_) {
-		return true;
-	}
-
-	std::string era = "era_default";
-	std::string scenario = "multiplayer_Charge";
-	std::map<int,std::string> side_types, side_controllers, side_algorithms;
-	std::map<int,string_map> side_parameters;
-	std::string turns = "50";
-
-	size_t sides_counted = 0;
-
-	for(++arg_; arg_ < argc_; ++arg_) {
-		const std::string val(argv_[arg_]);
-		if(val.empty()) {
-			continue;
-		}
-
-		std::vector<std::string> name_value = utils::split(val, '=');
-		if(name_value.size() > 2) {
-			std::cerr << "invalid argument '" << val << "'\n";
-			return false;
-		} else if(name_value.size() == 2) {
-			const std::string name = name_value.front();
-			const std::string value = name_value.back();
-
-			const std::string name_head = name.substr(0,name.size()-1);
-			const char name_tail = name[name.size()-1];
-			const bool last_digit = isdigit(name_tail) ? true:false;
-			const size_t side = name_tail - '0';
-
-			if(last_digit && side > sides_counted) {
-				std::cerr << "counted sides: " << side << "\n";
-				sides_counted = side;
-			}
-
-			if(name == "--scenario") {
-				scenario = value;
-			} else if(name == "--turns") {
-				turns = value;
-			} else if(name == "--era") {
-				era = value;
-			} else if(last_digit && name_head == "--controller") {
-				side_controllers[side] = value;
-			} else if(last_digit && name_head == "--algorithm") {
-				side_algorithms[side] = value;
-			} else if(last_digit && name_head == "--side") {
-				side_types[side] = value;
-			} else if(last_digit && name_head == "--parm") {
-				const std::vector<std::string> name_value = utils::split(value, ':');
-				if(name_value.size() != 2) {
-					std::cerr << "argument to '" << name << "' must be in the format name:value\n";
-					return false;
-				}
-
-				side_parameters[side][name_value.front()] = name_value.back();
-			} else {
-				std::cerr << "unrecognized option: '" << name << "'\n";
-				return false;
-			}
-		} else {
-			if (val == "--exit-at-end") {
-				game_config::exit_at_end = true;
-			}
-		}
-	}
-
-	const config* const lvl = game_config_.find_child("multiplayer","id",scenario);
-	if(lvl == NULL) {
-		std::cerr << "Could not find scenario '" << scenario << "'\n";
-		return false;
-	}
-
-	state_.campaign_type = "multiplayer";
-	state_.scenario = "";
-	state_.snapshot = config();
-
-	config level = *lvl;
-	std::vector<config*> story;
-
-	const config* const era_cfg = game_config_.find_child("era","id",era);
-	if(era_cfg == NULL) {
-		std::cerr << "Could not find era '" << era << "'\n";
-		return false;
-	}
-
-	level["turns"] = turns;
-
-	const config* const side = era_cfg->child("multiplayer_side");
-	if(side == NULL) {
-		std::cerr << "Could not find multiplayer side\n";
-		return false;
-	}
-
-	while(level.get_children("side").size() < sides_counted) {
-		std::cerr << "now adding side...\n";
-		level.add_child("side");
-	}
-
-	int side_num = 1;
-	for(config::child_itors itors = level.child_range("side"); itors.first != itors.second; ++itors.first, ++side_num) {
-		std::map<int,std::string>::const_iterator type = side_types.find(side_num),
-		                                          controller = side_controllers.find(side_num),
-		                                          algorithm = side_algorithms.find(side_num);
-
-		const config* side = type == side_types.end() ?
-			era_cfg->find_child("multiplayer_side", "random_faction", "yes") :
-			era_cfg->find_child("multiplayer_side", "id", type->second);
-
-		if (side == NULL) {
-			std::string side_name = (type == side_types.end() ? "default" : type->second);
-			std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
-			return false;
-		}
-
-		if ((*side)["random_faction"] == "yes") {
-			const config::child_list& eras = era_cfg->get_children("multiplayer_side");
-			for(unsigned int i = 0, j = 0; i < eras.size(); ++i) {
-				if ((*eras[i])["random_faction"] != "yes") {
-					j++;
-					if (rand()%j == 0) {
-						side = eras[i];
-					}
-				}
-			}
-			if ((*side)["random_faction"] == "yes") {
-				std::string side_name = (type == side_types.end() ? "default" : type->second);
-				std::cerr << "Could not find any non-random faction for side " << side_num << "\n";
-				return false;
-			}
-		}
-
-		char buf[20];
-		snprintf(buf,sizeof(buf),"%d",side_num);
-		(*itors.first)->values["side"] = buf;
-
-		(*itors.first)->values["canrecruit"] = "1";
-
-
-		for(string_map::const_iterator i = side->values.begin(); i != side->values.end(); ++i) {
-			(*itors.first)->values[i->first] = i->second;
-		}
-
-		if(controller != side_controllers.end()) {
-			(*itors.first)->values["controller"] = controller->second;
-		}
-
-		if(algorithm != side_algorithms.end()) {
-			(*itors.first)->values["ai_algorithm"] = algorithm->second;
-		}
-
-		config& ai_params = (*itors.first)->add_child("ai");
-
-		//now add in any arbitrary parameters given to the side
-		for(string_map::const_iterator j = side_parameters[side_num].begin(); j != side_parameters[side_num].end(); ++j) {
-			(*itors.first)->values[j->first] = j->second;
-			ai_params[j->first] = j->second;
-		}
-	}
-
-	try {
-		state_.snapshot = level;
-		::play_game(disp(),state_,game_config_,units_data_,video_);
-		//play_level(units_data_,game_config_,&level,video_,state_,story);
-	} catch(game::error& e) {
-		std::cerr << "caught error: '" << e.message << "'\n";
-	} catch(game::load_game_exception& e) {
-		//the user's trying to load a game, so go into the normal title screen loop and load one
-		loaded_game_ = e.game;
-		loaded_game_show_replay_ = e.show_replay;
-		return true;
-	} catch(...) {
-		std::cerr << "caught unknown error playing level...\n";
-	}
-
-	return false;
-}
-
 bool game_controller::is_loading() const
 {
 	return loaded_game_.empty() == false;
@@ -707,12 +508,6 @@ bool game_controller::load_game()
 
 	if(state_.campaign_type == "tutorial") {
 		defines_map_["TUTORIAL"] = preproc_define();
-	} else if(state_.campaign_type == "multiplayer") {
-		for(config::child_itors sides = state_.snapshot.child_range("side");
-		    sides.first != sides.second; ++sides.first) {
-			if((**sides.first)["controller"] == "network")
-				(**sides.first)["controller"] = "human";
-		}
 	}
 
 	return true;
@@ -846,100 +641,6 @@ std::string format_file_size(const std::string& size_str)
 	}
 }
 
-}
-
-bool game_controller::play_multiplayer()
-{
-	state_ = game_state();
-	state_.campaign_type = "multiplayer";
-	state_.campaign_define = "MULTIPLAYER";
-
-	std::vector<std::string> host_or_join;
-	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
-	char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;
-
-	host_or_join.push_back(pre + "server.png"
-		+ sep1 + _("Join Official Server")
-		+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
-	host_or_join.push_back(pre + "serverother.png"
-		+ sep1 + _("Join Game")
-		+ sep2 + _("Join a server or hosted game"));
-	host_or_join.push_back(pre + "hostgame.png"
-		+ sep1 + _("Host Networked Game")
-		+ sep2 + _("Host a game without using a server"));
-	host_or_join.push_back(pre + "hotseat.png"
-		+ sep1 + _("Hotseat Game")
-		+ sep2 + _("Play a multiplayer game sharing the same machine"));
-	host_or_join.push_back(pre + "ai.png"
-		+ sep1 + _("Human vs AI")
-		+ sep2 + _("Play a game against AI opponents"));
-	std::string login = preferences::login();
-
-	int res;
-	do {
-		res = gui::show_dialog2(disp(), NULL, _("Multiplayer"), "",
-					   gui::OK_CANCEL, &host_or_join, NULL,
-					   _("Login: "), &login, 18);
-		if(login.size() > 18) {
-			gui::show_error_message(disp(), _("The login name you chose is too long, please use a login with less than 18 characters"));
-		}
-	}while(login.size() > 18) ;
-	if (res < 0)
-		return false;
-
-
-	preferences::set_login(login);
-
-	try {
-		/* do */ {
-			input_blocker eventlock;
-			defines_map_.clear();
-			defines_map_[state_.campaign_define] = preproc_define();
-			refresh_game_cfg();
-
-		}
-		if(res >= 2) {
-			std::vector<std::string> chat;
-			config game_data;
-
-			const mp::controller cntr = (res == 2 ?
-					mp::CNTR_NETWORK :
-					(res == 3 ? mp::CNTR_LOCAL : mp::CNTR_COMPUTER ));
-			const bool is_server = res == 2;
-
-			mp::start_server(disp(), game_config_, units_data_, cntr, is_server);
-
-		} else if(res == 0 || res == 1) {
-			std::string host;
-			if(res == 0) {
-				host = preferences::official_network_host();
-			}
-
-			mp::start_client(disp(), game_config_, units_data_, host);
-		}
-	} catch(game::load_game_failed& e) {
-		gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
-	} catch(game::game_error& e) {
-		gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
-	} catch(network::error& e) {
-		std::cerr << "caught network error...\n";
-		if(e.message != "") {
-			gui::show_dialog(disp(),NULL,"",e.message,gui::OK_ONLY);
-		}
-	} catch(config::error& e) {
-		std::cerr << "caught config::error...\n";
-		if(e.message != "") {
-			gui::show_dialog(disp(),NULL,"",e.message,gui::OK_ONLY);
-		}
-	} catch(gamemap::incorrect_format_exception& e) {
-		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
-	} catch(game::load_game_exception& e) {
-		//this will make it so next time through the title screen loop, this game is loaded
-		loaded_game_ = e.game;
-		loaded_game_show_replay_ = e.show_replay;
-	}
-
-	return false;
 }
 
 bool game_controller::change_language()
@@ -1110,11 +811,6 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 				cfg.merge_children("units");
 
-				config& hashes = cfg.add_child("multiplayer_hashes");
-				for(config::child_list::const_iterator ch = cfg.get_children("multiplayer").begin(); ch != cfg.get_children("multiplayer").end(); ++ch) {
-					hashes[(**ch)["id"]] = (*ch)->hash();
-				}
-
 				if(!error_log.empty()) {
 					gui::show_error_message(disp(),
 							_("Warning: Errors occurred while loading game configuration files: '") +
@@ -1185,10 +881,6 @@ void game_controller::reset_game_cfg()
 	defines_map_["NORMAL"] = preproc_define();
 	defines_map_["MEDIUM"] = preproc_define();
 
-	if(multiplayer_mode_) {
-		defines_map_["MULTIPLAYER"] = preproc_define();
-	}
-
 	refresh_game_cfg();
 }
 
@@ -1210,9 +902,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 
 	try {
 		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_,video_);
-		// don't show The End for multiplayer scenario
-		// change this if MP campaigns are implemented
-		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
+		if(result == VICTORY && state_.campaign_type.empty()) {
 			the_end(disp());
 			about::show_about(disp(),state_.campaign);
 		}
@@ -1280,21 +970,6 @@ int play_game(int argc, char** argv)
 			<< "  -v, --version                prints the game's version number and exits.\n"
 			<< "  -w, --windowed               runs the game in windowed mode.\n"
 			<< "  --no-delay                   run the game without any delays.\n"
-			<< "  --multiplayer                runs a multiplayer game. There are additional\n"
-			<< "                               options that can be used as explained below:\n"
-			<< "  --algorithm<number>=value    selects a non-standard algorithm to be used by the\n"
-			<< "                               AI controller for this side.\n"
-			<< "  --controller<number>=value   selects the controller for this side.\n"
-			<< "  --era=value                  selects the era to be played in by its id.\n"
-			<< "  --nogui                      runs the game without the GUI. Must appear before\n"
-			<< "                               --multiplayer to have the desired effect.\n"
-			<< "  --parm<number>=name:value    sets additional parameters for this side.\n"
-			<< "  --scenario=value             selects a multiplayer scenario. The default\n"
-			<< "                               scenario is \"multiplayer_Charge\".\n"
-			<< "  --side<number>=value         selects a faction of the current era for this side\n"
-			<< "                               by id.\n"
-			<< "  --turns=value                sets the number of turns. The default is \"50\".\n"
-			<< "  --exit-at-end                exit Wesnoth at end of scenario.\n"
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {
@@ -1459,10 +1134,6 @@ int play_game(int argc, char** argv)
 			return 0;
 		}
 
-		if(game.play_multiplayer_mode() == false) {
-			return 0;
-		}
-
 		recorder.clear();
 
 		std::cerr << "showing title screen...\n";
@@ -1488,10 +1159,6 @@ int play_game(int argc, char** argv)
 			game.set_tutorial();
 		} else if(res == gui::NEW_CAMPAIGN) {
 			if(game.new_campaign() == false) {
-				continue;
-			}
-		} else if(res == gui::MULTIPLAYER) {
-			if(game.play_multiplayer() == false) {
 				continue;
 			}
 		} else if(res == gui::CHANGE_LANGUAGE) {

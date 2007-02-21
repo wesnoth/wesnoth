@@ -301,40 +301,6 @@ void _set_lobby_joins(bool show)
 		prefs["lobby_joins"] = "no";
 }
 
-const std::string& official_network_host()
-{
-	static const std::string host = WESNOTH_DEFAULT_SERVER;
-	return host;
-}
-
-const std::string& network_host()
-{
-	t_string& res = prefs["host"];
-	if(res.empty())
-		res = WESNOTH_DEFAULT_SERVER;
-
-	return res;
-}
-
-void set_network_host(const std::string& host)
-{
-	prefs["host"] = host;
-}
-
-const std::string& campaign_server()
-{
-	t_string& res = prefs["campaign_server"];
-	if(res.empty())
-		res = "campaigns.wesnoth.org";
-
-	return res;
-}
-
-void set_campaign_server(const std::string& host)
-{
-	prefs["campaign_server"] = host;
-}
-
 const std::string& login()
 {
 	t_string& res = prefs["login"];

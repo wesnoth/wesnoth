@@ -20,7 +20,6 @@ class CVideo;
 #include "cursor.hpp"
 #include "font.hpp"
 #include "halo.hpp"
-#include "network.hpp"
 #include "tooltips.hpp"
 
 #include "widgets/button.hpp"
@@ -160,10 +159,6 @@ int show_dialog2(display &screen, surface image,
 			 );
 
 void show_error_message(display &disp, std::string const &message);
-
-network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
-network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
-network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port);
 
 void check_quit(CVideo &video);
 

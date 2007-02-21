@@ -250,7 +250,6 @@ void play_controller::toggle_grid(){
 }
 
 void play_controller::search(){
-	menu_handler_.search();
 }
 
 const int play_controller::get_ticks(){
@@ -300,33 +299,29 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	gamestate_.set_variable("side_number",player_number_str.str());
 
 	if(first_turn_) {
-		if(!current_team.is_network()) {
-			if(!is_replay) {
-				recorder.add_event("turn 1");
-				recorder.add_event("new turn");
-				recorder.add_event("side turn");
-				/* events must not be actively fired through replays, because they have been recorded 
-				   previously and therefore will get executed anyway. If we put this outside the "if", 
-				   those events will be fired two times
-				*/
-				game_events::fire("turn 1");
-				game_events::fire("new turn");
-				game_events::fire("side turn");
-			}
+		if(!is_replay) {
+			recorder.add_event("turn 1");
+			recorder.add_event("new turn");
+			recorder.add_event("side turn");
+			/* events must not be actively fired through replays, because they have been recorded 
+			   previously and therefore will get executed anyway. If we put this outside the "if", 
+			   those events will be fired two times
+			*/
+			game_events::fire("turn 1");
+			game_events::fire("new turn");
+			game_events::fire("side turn");
 		}
 		first_turn_ = false;
 	} else
 	//fire side turn event only if real side change occurs not counting changes from void to a side
 	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
-		if(!current_team.is_network()) {
-			if(!is_replay) {
-				recorder.add_event("side turn");
-				/* events must not be actively fired through replays, because they have been recorded 
-				   previously and therefore will get executed anyway. If we put this outside the "if", 
-				   those events will be fired two times
-				*/
-				game_events::fire("side turn");
-			}
+		if(!is_replay) {
+			recorder.add_event("side turn");
+			/* events must not be actively fired through replays, because they have been recorded 
+			   previously and therefore will get executed anyway. If we put this outside the "if", 
+			   those events will be fired two times
+			*/
+			game_events::fire("side turn");
 		}
 	}
 
@@ -465,6 +460,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
 	case hotkey::HOTKEY_USER_CMD:
+	case hotkey::HOTKEY_LOAD_GAME:
 		return true;
 
 	case hotkey::HOTKEY_SAVE_GAME:
@@ -474,11 +470,8 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
 		return enemies_visible();
 
-	case hotkey::HOTKEY_LOAD_GAME:
-		return network::nconnections() == 0; //can only load games if not in a network game
-
 	case hotkey::HOTKEY_CHAT_LOG:
-		return network::nconnections() > 0;
+		return false;
 
 	case hotkey::HOTKEY_REDO:
 		return !browse_ && !redo_stack_.empty() && !events::commands_disabled;
@@ -498,29 +491,6 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	default:
 		return false;
 	}
-}
-
-void play_controller::enter_textbox()
-{
-	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	switch(menu_handler_.get_textbox().mode()) {
-	case gui::TEXTBOX_SEARCH:
-		menu_handler_.do_search(menu_handler_.get_textbox().box()->text());
-		break;
-	case gui::TEXTBOX_MESSAGE:
-		menu_handler_.do_speak();
-		break;
-	case gui::TEXTBOX_COMMAND:
-		menu_handler_.do_command(menu_handler_.get_textbox().box()->text(), player_number_, mouse_handler_);
-		break;
-	default:
-		LOG_STREAM(err, display) << "unknown textbox mode\n";
-	}
-
-	menu_handler_.get_textbox().close(*gui_);
 }
 
 int play_controller::find_human_team_before(const size_t team_num) const
@@ -554,22 +524,6 @@ void play_controller::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_KEYDOWN:
-		//detect key press events, unless there is a textbox present on-screen
-		//in which case the key press events should go only to it.
-		if(menu_handler_.get_textbox().active() == false) {
-			hotkey::key_event(*gui_,event.key,this);
-		} else {
-			if(event.key.keysym.sym == SDLK_ESCAPE) {
-				menu_handler_.get_textbox().close(*gui_);
-			} else if(event.key.keysym.sym == SDLK_TAB) {
-				menu_handler_.get_textbox().tab(teams_, units_, *gui_);
-			} else if(event.key.keysym.sym == SDLK_RETURN) {
-				enter_textbox();
-			}
-			break;
-		}
-
-		//intentionally fall-through
 	case SDL_KEYUP:
 
 		//if the user has pressed 1 through 9, we want to show how far

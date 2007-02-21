@@ -17,7 +17,6 @@
 #include "game_events.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "network.hpp"
 #include "team.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
@@ -158,8 +157,6 @@ team::team_info::team_info(const config& cfg)
 	std::string control = cfg["controller"];
 	if (control == "human")
 		controller = HUMAN;
-	else if (control == "network")
-		controller = NETWORK;
 	else if (control == "null")
 		controller = EMPTY;
 	else
@@ -294,7 +291,6 @@ void team::team_info::write(config& cfg) const
 	switch(controller) {
 	case AI: cfg["controller"] = "ai"; break;
 	case HUMAN: cfg["controller"] = "human"; break;
-	case NETWORK: cfg["controller"] = "network"; break;
 	case EMPTY: cfg["controller"] = "null"; break;
 	default: wassert(false);
 	}
@@ -577,11 +573,6 @@ bool team::is_ai() const
 	return info_.controller == team_info::AI;
 }
 
-bool team::is_network() const
-{
-	return info_.controller == team_info::NETWORK;
-}
-
 bool team::is_empty() const
 {
 	return info_.controller == team_info::EMPTY;
@@ -692,11 +683,6 @@ void team::set_ai_memory(const config& ai_mem){
   return;
 }
 
-void team::make_network()
-{
-	info_.controller = team_info::NETWORK;
-}
-
 double team::leader_value() const
 {
 	return info_.leader_value;
@@ -773,9 +759,6 @@ bool team::knows_about_team(size_t index) const
 
 	//We don't know about enemies
 	if(is_enemy(index+1)) return false;
-
-	//We know our allies in multiplayer
-	if(network::nconnections() > 0) return true;
 
 	//We know about allies we're sharing maps with
 	if(share_maps() && t.uses_shroud()) return true;

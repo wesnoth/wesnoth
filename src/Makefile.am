@@ -78,18 +78,9 @@ wesnoth_SOURCES = \
 	minimap.cpp \
 	mouse.cpp \
 	mouse_events.cpp \
-	multiplayer.cpp \
-	multiplayer_ui.cpp \
-	multiplayer_wait.cpp \
-	multiplayer_connect.cpp \
-	multiplayer_create.cpp \
-	multiplayer_lobby.cpp \
-	network.cpp \
-	network_worker.cpp \
 	pathfind.cpp \
 	playcampaign.cpp \
 	play_controller.cpp \
-	playmp_controller.cpp \
 	playsingle_controller.cpp \
 	playturn.cpp \
 	preferences.cpp \
@@ -178,8 +169,6 @@ wesnoth_editor_SOURCES = \
 	minimap.cpp \
 	mouse.cpp \
 	mouse_events.cpp \
-	network.cpp \
-	network_worker.cpp \
 	pathfind.cpp \
 	config_adapter.cpp \
 	intro.cpp \
@@ -322,7 +311,6 @@ noinst_HEADERS = \
 	editor/editor_palettes.hpp \
 	editor/editor_dialogs.hpp \
 	statistics.hpp \
-	network.hpp \
 	ai2.hpp \
 	ai_python.hpp \
 	attack_prediction.hpp \
@@ -338,7 +326,6 @@ noinst_HEADERS = \
 	mapgen.hpp \
 	cavegen.hpp \
 	race.hpp \
-	multiplayer_connect.hpp \
 	array.hpp \
 	wassert.hpp \
 	dialogs.hpp \
@@ -348,17 +335,14 @@ noinst_HEADERS = \
 	checksum.hpp \
 	video.hpp \
 	ai_interface.hpp \
-	multiplayer_wait.hpp \
 	gettext.hpp \
 	loadscreen.hpp \
 	builder.hpp \
 	game_config.hpp \
 	terrain.hpp \
 	config.hpp \
-	network_worker.hpp \
 	util.hpp \
 	language.hpp \
-	multiplayer_lobby.hpp \
 	scoped_resource.hpp \
 	sound.hpp \
 	pathfind.hpp \
@@ -377,7 +361,6 @@ noinst_HEADERS = \
 	game_errors.hpp \
 	font.hpp \
 	astarnode.hpp \
-	multiplayer_ui.hpp \
 	titlescreen.hpp \
 	image.hpp \
 	team.hpp \
@@ -385,14 +368,12 @@ noinst_HEADERS = \
 	color_range.hpp \
 	events.hpp \
 	playcampaign.hpp \
-	multiplayer.hpp \
 	thread.hpp \
 	gamestatus.hpp \
 	playturn.hpp \
 	log.hpp \
 	key.hpp \
 	tstring.hpp \
-	multiplayer_create.hpp \
 	intro.hpp \
 	preferences.hpp \
 	unit_types.hpp \
@@ -416,7 +397,6 @@ noinst_HEADERS = \
 	config_adapter.hpp \
 	floating_textbox.hpp \
 	play_controller.hpp \
-	playmp_controller.hpp \
 	playsingle_controller.hpp \
 	generic_event.hpp \
 	sdl_ttf/SDL_ttf.h \

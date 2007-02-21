@@ -92,7 +92,6 @@ protected:
 	void finish_turn();
 	bool clear_shroud();
 	bool enemies_visible() const;
-	void enter_textbox();
 
 	team& current_team() { return teams_[player_number_-1]; }
 	const team& current_team() const { return teams_[player_number_-1]; }

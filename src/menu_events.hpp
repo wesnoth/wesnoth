@@ -41,21 +41,7 @@ struct end_turn_exception {
 
 namespace events{
 
-class chat_handler {
-public:
-	chat_handler() {}
-	virtual ~chat_handler();
-
-protected:
-	void do_speak(const std::string& message, bool allies_only=false);
-
-	//called from do_speak
-	virtual void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE)=0;
-	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
-	virtual void send_chat_query(const std::string& /*args*/) {}
-};
-
-class menu_handler : private chat_handler {
+class menu_handler {
 public:
 	menu_handler(display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const game_data& gameinfo, const gamemap& map,
@@ -97,22 +83,14 @@ public:
 	void toggle_grid();
 	void unit_hold_position(mouse_handler& mousehandler, const unsigned int team_num);
 	void end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num);
-	void search();
-	void user_command();
 
 	unit_map::iterator current_unit(mouse_handler& mousehandler);
 	unit_map::const_iterator current_unit(const mouse_handler& mousehandler) const;
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target,
 		bool continue_move, const unsigned int team_num, mouse_handler& mousehandler);
-	void do_speak();
-	void do_search(const std::string& new_search);
-	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
 	void autosave(const std::string &label, unsigned turn, const config &starting_pos) const;
 
-protected:
-	void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE);
-	void send_chat_message(const std::string& message, bool allies_only=false);
 private:
 	//void do_speak(const std::string& message, bool allies_only);
 	void do_recruit(const std::string& name, const unsigned int team_num, const gamemap::location& last_hex);

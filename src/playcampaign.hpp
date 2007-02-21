@@ -25,8 +25,6 @@ class CVideo;
 
 enum io_type_t {
 	IO_NONE,
-	IO_SERVER,
-	IO_CLIENT
 };
 
 LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_config,

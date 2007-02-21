@@ -39,7 +39,7 @@ playsingle_controller::playsingle_controller(const config& level, const game_dat
 											 const int ticks, const int num_turns, const config& game_config, CVideo& video,
 											 bool skip_replay)
 	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay),
-	cursor_setter(cursor::NORMAL), replay_sender_(recorder)
+	cursor_setter(cursor::NORMAL)
 {
 	end_turn_ = false;
 	replaying_ = false;
@@ -123,7 +123,6 @@ void playsingle_controller::end_unit_turn(){
 }
 
 void playsingle_controller::user_command(){
-	menu_handler_.user_command();
 }
 
 LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, bool skip_replay)
@@ -192,23 +191,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			exit(0);
 		}
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
-			// if we're a player, and the result is victory/defeat, then send a message to notify
-			// the server of the reason for the game ending
-			if (!obs) {
-				config cfg;
-				config& info = cfg.add_child("info");
-				info["type"] = "termination";
-				info["condition"] = "game over";
-				if (end_level.result == VICTORY)
-					info["result"] = "victory";
-				else
-					info["result"] = "defeat";
-				network::send_data(cfg);
-			} else {
-				gui::show_dialog(*gui_, NULL, _("Game Over"),
-				                 _("The game is over."), gui::OK_ONLY);
-				return QUIT;
-			}
+			gui::show_dialog(*gui_, NULL, _("Game Over"),
+					 _("The game is over."), gui::OK_ONLY);
+			return QUIT;
 		}
 
 		if(end_level.result == QUIT) {
@@ -334,20 +319,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),
 		                 gui::OK_ONLY);
 		return QUIT;
-	}
-	catch(network::error& e) {
-		bool disconnect = false;
-		if(e.socket) {
-			e.disconnect();
-			disconnect = true;
-		}
-
-		menu_handler_.save_game(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
-		if(disconnect) {
-			throw network::error();
-		} else {
-			return QUIT;
-		}
 	}
 
 	return QUIT;
@@ -511,7 +482,7 @@ void playsingle_controller::play_ai_turn(){
 	const cursor::setter cursor_setter(cursor::WAIT);
 
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
-						map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
+						map_,teams_,player_number_,units_, undo_stack_);
 
 	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data);
 	util::scoped_ptr<ai_interface> ai_obj(create_ai(current_team().ai_algorithm(),ai_info));
@@ -521,7 +492,6 @@ void playsingle_controller::play_ai_turn(){
 	ai_obj->enemy_attacked().attach_handler(this);
 	ai_obj->play_turn();
 	recorder.end_turn();
-	turn_data.sync_network();
 
 	gui_->recalculate_minimap();
 	::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,player_number_-1);

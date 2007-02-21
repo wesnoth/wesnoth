@@ -21,7 +21,6 @@
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
 #include "map_create.hpp"
-#include "playmp_controller.hpp"
 #include "playsingle_controller.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
@@ -155,40 +154,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 	controller_map controllers;
 
-	if(io_type == IO_SERVER) {
-		const config::child_list& sides_list = scenario->get_children("side");
-		for(config::child_list::const_iterator side = sides_list.begin();
-				side != sides_list.end(); ++side) {
-			std::string id = (**side)["save_id"];
-			if(id.empty())
-				continue;
-			controllers[id] = player_controller((**side)["controller"],
-					(**side)["description"]);
-		}
-	}
-
 	while(scenario != NULL) {
-		//If we are a multiplayer client, tweak the controllers
-		if(io_type == IO_CLIENT) {
-			if(scenario != &starting_pos) {
-				starting_pos = *scenario;
-				scenario = &starting_pos;
-			}
-
-			const config::child_list& sides_list = starting_pos.get_children("side");
-			for(config::child_list::const_iterator side = sides_list.begin();
-					side != sides_list.end(); ++side) {
-				if((**side)["controller"] == "network" &&
-						(**side)["current_player"] == preferences::login()) {
-					(**side)["controller"] = preferences::client_type();
-					(**side)["persistent"] = "1";
-				} else if((**side)["controller"] != "null") {
-					(**side)["controller"] = "network";
-					(**side)["persistent"] = "0";
-				}
-			}
-		}
-
 		const config::child_list& story = scenario->get_children("story");
 		const std::string current_scenario = state.scenario;
 		const std::string next_scenario = (*scenario)["next_scenario"];
@@ -243,30 +209,15 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			case IO_NONE:
 				res = playsingle_scenario(units_data,game_config,scenario,video,state,story, skip_replay);
 				break;
-			case IO_SERVER:
-			case IO_CLIENT:
-				res = playmp_scenario(units_data,game_config,scenario,video,state,story, skip_replay);
-				break;
 			}
 
 
 			state.snapshot = config();
 			if (res == DEFEAT) {
-				// tell all clients that the campaign won't continue
-				if(io_type == IO_SERVER) {
-					config end;
-					end.add_child("end_scenarios");
-					network::send_data(end);
-				}
 				gui::show_dialog(disp, NULL,
 				                 _("Defeat"),
 				                 _("You have been defeated!"),
 				                 gui::OK_ONLY);
-			}
-			if(res == QUIT && io_type == IO_SERVER) {
-					config end;
-					end.add_child("end_scenarios");
-					network::send_data(end);
 			}
 			//ask to save a replay of the game
 			if(res == VICTORY || res == DEFEAT) {
@@ -325,82 +276,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		if(state.scenario == current_scenario)
 			state.scenario = next_scenario;
 
-		if(io_type == IO_CLIENT) {
-			config cfg;
-
-			std::string msg;
-			if (state.scenario.empty())
-				msg = _("Receiving data...");
-			else
-				msg = _("Downloading next scenario...");
-
-			do {
-				cfg.clear();
-				network::connection data_res = gui::network_receive_dialog(disp,
-						msg, cfg);
-				if(!data_res)
-					throw network::error(_("Connection timed out"));
-			} while(cfg.child("next_scenario") == NULL &&
-					cfg.child("end_scenarios") == NULL);
-
-			if(cfg.child("next_scenario")) {
-				starting_pos = (*cfg.child("next_scenario"));
-				scenario = &starting_pos;
-				state = read_game(units_data, scenario);
-			} else if(scenario->child("end_scenarios")) {
-				scenario = NULL;
-				state.scenario = "null";
-			} else {
-				return QUIT;
-			}
-
-		} else {
-			scenario = game_config.find_child(type,"id",state.scenario);
-
-			if(io_type == IO_SERVER && scenario != NULL) {
-				starting_pos = *scenario;
-				scenario = &starting_pos;
-
-				// Tweaks sides to adapt controllers and descriptions.
-				const config::child_list& sides_list = starting_pos.get_children("side");
-				for(config::child_list::const_iterator side = sides_list.begin();
-						side != sides_list.end(); ++side) {
-					std::string id = (**side)["save_id"];
-					if(id.empty()) {
-						continue;
-					}
-
-					/*Upadate side info to match current_player info to
-					  allow it taking the side in next scenario and to be
-					  set in the players list on side server */
-					controller_map::const_iterator ctr = controllers.find(id);
-					if(ctr != controllers.end()) {
-						player_info *player = state.get_player(id);
-						if (player) {
-							(**side)["current_player"] = player->name;
-							//TODO : remove (see TODO line 276 in server/game.cpp)
-							(**side)["user_description"] = player->name;
-						}
-						(**side)["controller"] = ctr->second.controller;
-					}
-				}
-
-				// Sends scenario data
-				config cfg;
-				cfg.add_child("next_scenario", *scenario);
-
-				// Adds player information, and other state
-				// information, to the configuration object
-				wassert(cfg.child("next_scenario") != NULL);
-				write_game(state, *cfg.child("next_scenario"), WRITE_SNAPSHOT_ONLY);
-				network::send_data(cfg);
-
-			} else if(io_type == IO_SERVER && scenario == NULL) {
-				config end;
-				end.add_child("end_scenarios");
-				network::send_data(end);
-			}
-		}
+		scenario = game_config.find_child(type,"id",state.scenario);
 
 		if(scenario != NULL) {
 			// update the label
