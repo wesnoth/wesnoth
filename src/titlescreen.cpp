@@ -253,7 +253,6 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	//members of this array must correspond to the enumeration TITLE_RESULT
 	static const char* button_labels[] = { N_("TitleScreen button^Tutorial"),
 					       N_("TitleScreen button^Campaign"),
-					       N_("TitleScreen button^Multiplayer"),
 					       N_("TitleScreen button^Load"),
 					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
@@ -261,7 +260,6 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 						   N_("TitleScreen button^Quit") };
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
-						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
 						    N_("Load a single player saved game"),
 						    N_("Change the language"),
 						    N_("Configure the game's settings"),

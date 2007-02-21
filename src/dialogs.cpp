@@ -395,8 +395,6 @@ void save_preview_pane::draw_contents()
 
 		if(campaign_type == "scenario") {
 			str << _("Campaign");
-		} else if(campaign_type == "multiplayer") {
-			str << _("Multiplayer");
 		} else if(campaign_type == "tutorial") {
 			str << _("Tutorial");
 		} else {
