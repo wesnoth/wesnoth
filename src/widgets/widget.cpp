@@ -33,7 +33,7 @@ namespace gui {
 }
 
 widget::widget(CVideo& video, bool auto_join)
-	: handler(auto_join), focus_(false), video_(&video), rect_(EmptyRect), 
+	: handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), 
 	  needs_restore_(false), state_(UNINIT), hidden_override_(false),
 	  enabled_(true), clip_(false), clip_rect_(EmptyRect), volatile_(false),
 	  help_string_(0), align_(RIGHT_ALIGN)
