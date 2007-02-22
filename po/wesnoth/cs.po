@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-22 03:16+0100\n"
-"PO-Revision-Date: 2007-02-10 16:00+0100\n"
+"PO-Revision-Date: 2007-02-22 13:17+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -420,15 +420,14 @@ msgstr ""
 
 #: data/about.cfg:6
 msgid "Programming"
-msgstr ""
+msgstr "Programování"
 
+# pův.: Administrace všeho možného
 #: data/about.cfg:56
-#, fuzzy
 msgid "General Purpose Administration and Coordination"
-msgstr "+Administrátoři všeho možného"
+msgstr "Obecná administrace a koordinace"
 
 #: data/about.cfg:64
-#, fuzzy
 msgid "Artwork and Graphics"
 msgstr "Kresby a grafika"
 
@@ -437,23 +436,20 @@ msgid "Music"
 msgstr "Hudba"
 
 #: data/about.cfg:182
-#, fuzzy
 msgid "Sound Effects"
 msgstr "Zvukové efekty"
 
 #: data/about.cfg:191
-#, fuzzy
 msgid "Campaign Design"
-msgstr "Tažení"
+msgstr "Návrh tažení"
 
 #: data/about.cfg:215
-#, fuzzy
 msgid "Multiplayer Maps and Balancing"
-msgstr "Mapy pro Hry více hráčů"
+msgstr "Mapy pro Hru více hráčů"
 
 #: data/about.cfg:230
 msgid "Packagers"
-msgstr "Tvůrci balíčků"
+msgstr "Tvorba balíčků"
 
 #: data/about.cfg:253
 msgid "Miscellaneous"
@@ -461,7 +457,7 @@ msgstr "Různé"
 
 #: data/about.cfg:262
 msgid "Internationalization Managers"
-msgstr "Správci internacionalizace"
+msgstr "Správa internacionalizace"
 
 #: data/about.cfg:274
 msgid "Afrikaans Translation"
@@ -2574,7 +2570,6 @@ msgid "Bridge"
 msgstr "Most"
 
 #: data/help.cfg:560
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2589,12 +2584,12 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 "Těm, kteří je jsou schopni postavit, nabízí schopnost vztyčit most "
-"osvobození od vrtkavé povaze vodních toků, jejichž brody vznikají a zase "
+"osvobození od vrtkavé povahy vodních toků, jejichž brody vznikají a zase "
 "mizí s kolísáním hladiny. To však není ničím oproti luxusu suchých nohou, "
 "který zvláště v chladných obdobích není zanedbatelný.\n"
 "\n"
 "Pro ty, kteří se pohybují po zemi nebo vodou, znamená most to lepší z obou "
-"prostředí - pro účely hry se chová buď jako louka nebo mělká voda, podle "
+"prostředí - pro účely hry se chová buď jako louka nebo voda pod ním, podle "
 "toho, co jednotce nabízí lepší obraný bonus a dovoluje rychlejší pohyb. "
 "Pamatujte, že jednotky schopné plavat a ty pozemní nejsou schopné zabrat "
 "most v témže okamžiku."
@@ -2612,7 +2607,6 @@ msgstr ""
 "schopností odolat i tomu nejodhodlanějšímu cestovateli."
 
 #: data/help.cfg:573
-#, fuzzy
 msgid "Impassable Mountain"
 msgstr "Neschůdné hory"
 
@@ -2622,6 +2616,9 @@ msgid ""
 "in cloud.  To cross such moutains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
+"Neschůdné hory jsou natolik vysoké a strmé že je neustále zahalují mračna. "
+"Přechod takového pohoří je téměř nemožný, dokonce ani létající tvorové "
+"nedokáží proniknout mezi rozeklanými vršky v tak zřídkavé výši."
 
 #: data/help.cfg:581
 msgid "General commands"
@@ -5188,9 +5185,8 @@ msgid "Encampment"
 msgstr "Ležení"
 
 #: data/terrain.cfg:180
-#, fuzzy
 msgid "Elven Castle"
-msgstr "Trpasličí hrad"
+msgstr "Elfský hrad"
 
 #: data/terrain.cfg:191
 msgid "Dwarven Castle"
@@ -5218,9 +5214,8 @@ msgid "Encampment keep"
 msgstr "Velitelský stan"
 
 #: data/terrain.cfg:296
-#, fuzzy
 msgid "Elven Keep"
-msgstr "Trpasličí tvrz"
+msgstr "Elfská tvrz"
 
 #: data/terrain.cfg:308
 msgid "Dwarven keep"
@@ -12457,12 +12452,3 @@ msgstr "Výsledky si můžete prohlédnout na:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Pomozte nám vylepšit Wesnoth!"
-
-#~ msgid "Scenario Designers"
-#~ msgstr "Tvůrci scénářů"
-
-#~ msgid "Multiplayer Developers"
-#~ msgstr "Vývojáři Hry více hráčů"
-
-#~ msgid "+Developers"
-#~ msgstr "+Vývojáři"
