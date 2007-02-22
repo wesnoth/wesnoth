@@ -1748,12 +1748,14 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x(anim_->get_current_frame_time())*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y(anim_->get_current_frame_time())*disp.zoom()),
 					current_frame.halo(anim_->get_current_frame_time()),
+					gamemap::location(-1, -1),
 					halo::HREVERSE);
 		} else {
 			const int d = disp.hex_size() / 2;
 			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x(anim_->get_current_frame_time())*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y(anim_->get_current_frame_time())*disp.zoom()),
-					current_frame.halo(anim_->get_current_frame_time()));
+					current_frame.halo(anim_->get_current_frame_time()),
+					gamemap::location(-1, -1));
 		}
 	}
 	image::locator loc;
@@ -1844,7 +1846,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	disp.draw_unit(tmp_x, tmp_y -height_adjust, image, false, highlight_ratio,
 			blend_with, blend_ratio, submerge,ellipse_back,ellipse_front);
 	if(!unit_halo_ && !image_halo().empty()) {
-		unit_halo_ = halo::add(0,0,image_halo());
+		unit_halo_ = halo::add(0, 0, image_halo(), gamemap::location(-1, -1));
 	}
 	if(unit_halo_) {
 		const int d = disp.hex_size() / 2;

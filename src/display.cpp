@@ -2177,7 +2177,9 @@ void display::remove_temporary_unit()
 }
 void display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
-	const int halo_handle = halo::add(get_location_x(loc)+hex_size()/2,get_location_y(loc)+hex_size()/2,halo);
+	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2, 
+			get_location_y(loc) + hex_size() / 2, halo, loc);
+
 	const overlay item(img,halo,halo_handle);
 	overlays_.insert(overlay_map::value_type(loc,item));
 }

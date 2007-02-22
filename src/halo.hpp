@@ -16,6 +16,7 @@
 
 class display;
 
+#include "map.hpp"
 #include <string>
 
 namespace halo
@@ -44,7 +45,12 @@ enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
 ///centered on (x,y)
 ///returns the handle to the halo object
 ///0 is the invalid handle
-int add(int x, int y, const std::string& image, ORIENTATION orientation=NORMAL, bool infinite=true);
+//
+// if the halo is attached to an item it needs to be hidden if the shroud is
+// active. (Note it will be shown with the fog active.) If it's not attached
+// to an iten the location should be set to -1, -1
+int add(int x, int y, const std::string& image, const gamemap::location& loc,
+		ORIENTATION orientation=NORMAL, bool infinite=true);
 
 ///function to set the position of an existing haloing
 ///effect, according to its handle

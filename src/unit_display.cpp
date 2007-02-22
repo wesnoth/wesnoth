@@ -336,17 +336,20 @@ void unit_attack_ranged(display& disp, unit_map& units,
 					missile_halo = halo::add(posx+d+missile_frame.halo_x(missile_animation.get_current_frame_time()),
 							posy+d+missile_frame.halo_y(missile_animation.get_current_frame_time()),
 							missile_frame.halo(missile_animation.get_current_frame_time()),
+							gamemap::location(-1, -1),
 							orientation);
 				} else {
 					missile_halo = halo::add(posx+d-missile_frame.halo_x(missile_animation.get_current_frame_time()),
 							posy+d+missile_frame.halo_y(missile_animation.get_current_frame_time()),
 							missile_frame.halo(missile_animation.get_current_frame_time()),
+							gamemap::location(-1, -1),
 							orientation);
 				}
 			}
 			missile_frame_halo = halo::add(posx+d,
 					posy+d,
 					missile_image.get_filename(),
+					gamemap::location(-1, -1),
 					orientation);
 
 		}

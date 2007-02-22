@@ -35,7 +35,8 @@ display* disp = NULL;
 class effect
 {
 public:
-	effect(int xpos, int ypos, const animated<std::string>::anim_description& img, ORIENTATION orientation,bool infinite);
+	effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
+			const gamemap::location& loc, ORIENTATION, bool infinite);
 
 	void set_location(int x, int y);
 
@@ -58,6 +59,7 @@ private:
 	double origzoom_, zoom_;
 	surface surf_, buffer_;
 	SDL_Rect rect_;
+	gamemap::location loc_;
 };
 
 std::map<int,effect> haloes;
@@ -66,9 +68,11 @@ int halo_id = 1;
 bool hide_halo = false;
 
 
-effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img, ORIENTATION orientation,bool infinite)
-: images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),
-  origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
+effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
+	const gamemap::location& loc, ORIENTATION orientation, bool infinite) :
+		images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), 
+		x_(xpos), y_(ypos), origzoom_(disp->zoom()), zoom_(disp->zoom()), 
+		surf_(NULL), buffer_(NULL), rect_(empty_rect), loc_(loc)
 {
 	wassert(disp != NULL);
 	// std::cerr << "Constructing halo sequence from image " << img << "\n";
@@ -128,6 +132,10 @@ void effect::rezoom()
 void effect::render()
 {
 	if(disp == NULL) {
+		return;
+	}
+	
+	if(loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_.x, loc_.y)) {
 		return;
 	}
 
@@ -218,7 +226,8 @@ halo_hider::~halo_hider()
 	unrender();
 }
 
-int add(int x, int y, const std::string& image, ORIENTATION orientation, bool infinite)
+int add(int x, int y, const std::string& image, const gamemap::location& loc,
+		ORIENTATION orientation,  bool infinite)
 {
 	const int id = halo_id++;
 	animated<std::string>::anim_description image_vector;
@@ -239,7 +248,7 @@ int add(int x, int y, const std::string& image, ORIENTATION orientation, bool in
 		image_vector.push_back(animated<std::string>::frame_description(time,std::string(str)));
 
 	}
-	haloes.insert(std::pair<int,effect>(id,effect(x,y,image_vector,orientation,infinite)));
+	haloes.insert(std::pair<int,effect>(id,effect(x,y,image_vector,loc,orientation,infinite)));
 	return id;
 }
 
