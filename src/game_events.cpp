@@ -15,6 +15,7 @@
 #include "actions.hpp"
 #include "construct_dialog.hpp"
 #include "display.hpp"
+#include "dialogs.hpp"
 #include "game_errors.hpp"
 #include "game_events.hpp"
 #include "image.hpp"
@@ -1780,6 +1781,16 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					{
 						screen->float_label(loc,text,red,green,blue);
 					}
+				}
+				if(utils::string_bool(cfg["advance"],true)) {
+					// try to advance the unit, the code in dialogs tests whether the 
+					// unit can advance, whether or not to show a dialog depends on 
+					// who's turn it is. Only shown if the side is the playing side 
+					// and the current player is a human. (The parameter is random
+					// so needs to be inverted.)
+					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, 
+							! (lexical_cast<size_t>(state_of_game->get_variable("side_number")) == u.side() &&
+							(*teams)[u.side()-1].is_human()));
 				}
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
