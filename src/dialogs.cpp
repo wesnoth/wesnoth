@@ -122,6 +122,21 @@ void advance_unit(const game_data& info,
 
 	LOG_DP << "animating advancement...\n";
 	animate_unit_advancement(info,units,loc,gui,size_t(res));
+	
+	// in some rare cases the unit can have enough XP to advance again so try to do that, 
+	// make sure that we're no entering an infinite level loop
+	u = units.find(loc);
+	if(u != units.end()) {
+		// level 10 unit gives 80 XP and the highest mainline is level 5
+		if(u->second.experience() < 81) {
+			advance_unit(info, map, units, loc, gui,  random_choice);
+		} else {
+			LOG_STREAM(err, config) << "Unit has an too high amount of " << u->second.experience() 
+				<< " XP left, cascade leveling disabled\n";
+		}
+	} else {
+		LOG_STREAM(err, engine) << "Unit advanced no longer exists\n";
+	}
 }
 
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice)
