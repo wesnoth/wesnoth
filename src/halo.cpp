@@ -35,7 +35,8 @@ display* disp = NULL;
 class effect
 {
 public:
-	effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime);
+	effect(int xpos, int ypos, const std::string& img,
+			const gamemap::location& loc, ORIENTATION orientation, int lifetime);
 
 	void set_location(int x, int y);
 
@@ -58,6 +59,7 @@ private:
 	double origzoom_, zoom_;
 	surface surf_, buffer_;
 	SDL_Rect rect_;
+	gamemap::location loc_;
 };
 
 std::map<int,effect> haloes;
@@ -67,9 +69,11 @@ bool hide_halo = false;
 
 static const SDL_Rect empty_rect = {0,0,0,0};
 
-effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime)
-: images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),
-  origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
+effect::effect(int xpos, int ypos, const std::string& img,
+	const gamemap::location& loc, ORIENTATION orientation, int lifetime) :
+		images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), 
+		x_(xpos), y_(ypos), origzoom_(disp->zoom()), zoom_(disp->zoom()), 
+		surf_(NULL), buffer_(NULL), rect_(empty_rect), loc_(loc)
 {
 	wassert(disp != NULL);
 	// std::cerr << "Constructing halo sequence from image " << img << "\n";
@@ -129,6 +133,10 @@ void effect::rezoom()
 void effect::render()
 {
 	if(disp == NULL) {
+		return;
+	}
+	
+	if(loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_.x, loc_.y)) {
 		return;
 	}
 
@@ -219,10 +227,11 @@ halo_hider::~halo_hider()
 	unrender();
 }
 
-int add(int x, int y, const std::string& image, ORIENTATION orientation, int lifetime_cycles)
+int add(int x, int y, const std::string& image, const gamemap::location& loc,
+		ORIENTATION orientation, int lifetime_cycles) 
 {
 	const int id = halo_id++;
-	haloes.insert(std::pair<int,effect>(id,effect(x,y,image,orientation,lifetime_cycles)));
+	haloes.insert(std::pair<int,effect>(id,effect(x, y, image, loc, orientation, lifetime_cycles)));
 	return id;
 }
 

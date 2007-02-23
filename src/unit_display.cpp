@@ -330,17 +330,20 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 					missile_halo = halo::add(posx+d+missile_frame.halo_x,
 							posy+d+missile_frame.halo_y,
 							missile_frame.halo[sub_halo].first,
+							gamemap::location(-1, -1),
 							orientation);
 				} else {
 					missile_halo = halo::add(posx+d-missile_frame.halo_x,
 							posy+d+missile_frame.halo_y,
 							missile_frame.halo[sub_halo].first,
+							gamemap::location(-1, -1),
 							orientation);
 				}
 			}
 			missile_frame_halo = halo::add(posx+d,
 					posy+d,
 					missile_image,
+					gamemap::location(-1, -1),
 					orientation);
 
 		}
