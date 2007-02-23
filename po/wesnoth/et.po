@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-22 03:16+0100\n"
+"POT-Creation-Date: 2007-02-23 20:20+0100\n"
 "PO-Revision-Date: 2007-01-13 00:26+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -557,7 +557,7 @@ msgstr "Türgikeelne tõlge"
 msgid "Valencian Translation"
 msgstr "Valentsiakeelne tõlge"
 
-#: data/about.cfg:691 data/help.cfg:252
+#: data/about.cfg:691 data/help.cfg:254
 msgid "Contributors"
 msgstr "Kaasaitajad"
 
@@ -840,7 +840,7 @@ msgstr "Maastikud"
 msgid "Commands"
 msgstr "Käsud"
 
-#: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
+#: data/help.cfg:65 data/help.cfg:71 data/help.cfg:266
 msgid "Overview"
 msgstr "Ülevaade"
 
@@ -1125,7 +1125,7 @@ msgstr ""
 msgid "Shroud and Fog of War"
 msgstr ""
 
-#: data/help.cfg:149
+#: data/help.cfg:151
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1135,14 +1135,22 @@ msgid ""
 "temporarily when you have units nearby, but returns when they leave. Both "
 "the Shroud and the Fog of War are cleared by units. Each unit clears "
 "locations adjacent to those within one turn's move (ignoring zones of "
-"control and enemy units)."
+"control and enemy units).\n"
+"\n"
+"Normaly you can undo a unit's movement, as long as an event with a "
+"randomized result has not occurred, such as combat or a recuritment. "
+"Exploring hidden terrain by clearing Shroud or Fog will also prevent undos "
+"to a previous state. You may wish to activate 'delay shroud updates' in the "
+"actions menu. This will prevent units from clearing Shroud or Fog until the "
+"next randomized event or a manual update via 'update shroud now' (or the end "
+"of your turn) and thereby perserve your ability to undo movement."
 msgstr ""
 
-#: data/help.cfg:154
+#: data/help.cfg:156
 msgid "Combat"
 msgstr "Võitlus"
 
-#: data/help.cfg:155
+#: data/help.cfg:157
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -1155,7 +1163,7 @@ msgid ""
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
 
-#: data/help.cfg:157
+#: data/help.cfg:159
 #, fuzzy
 msgid ""
 "\n"
@@ -1166,7 +1174,7 @@ msgstr ""
 "\n"
 "<header>text=Kahju</header>"
 
-#: data/help.cfg:159
+#: data/help.cfg:161
 #, fuzzy
 msgid ""
 "\n"
@@ -1187,14 +1195,14 @@ msgstr ""
 "punkti kahju, samas kui mäekollide reamees 9-2 rünnakuga saab ainult 2 korda "
 "lüüa (aga tekitab löögiga 9 punkti kahju)."
 
-#: data/help.cfg:161
+#: data/help.cfg:163
 msgid ""
 "\n"
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
 
-#: data/help.cfg:163
+#: data/help.cfg:165
 msgid ""
 "\n"
 "\n"
@@ -1207,7 +1215,7 @@ msgid ""
 "what terrain the attacker is in."
 msgstr ""
 
-#: data/help.cfg:165
+#: data/help.cfg:167
 msgid ""
 "\n"
 "\n"
@@ -1218,7 +1226,7 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 
-#: data/help.cfg:167
+#: data/help.cfg:169
 msgid ""
 "\n"
 "\n"
@@ -1228,7 +1236,7 @@ msgstr ""
 "\n"
 "<header>text=Kahju</header>"
 
-#: data/help.cfg:169
+#: data/help.cfg:171
 msgid ""
 "\n"
 "\n"
@@ -1241,7 +1249,7 @@ msgid ""
 "italic> in the attack selection menu."
 msgstr ""
 
-#: data/help.cfg:171
+#: data/help.cfg:173
 msgid ""
 "\n"
 "\n"
@@ -1251,11 +1259,11 @@ msgid ""
 "dealt by both attacker and defender when the unit with Charge attacks."
 msgstr ""
 
-#: data/help.cfg:176
+#: data/help.cfg:178
 msgid "Damage Types and Resistance"
 msgstr "Kahju tüübid ja vastupidavus"
 
-#: data/help.cfg:177
+#: data/help.cfg:179
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1264,7 +1272,7 @@ msgid ""
 "damage which they take from certain damage types."
 msgstr ""
 
-#: data/help.cfg:179
+#: data/help.cfg:181
 msgid ""
 "\n"
 "\n"
@@ -1275,7 +1283,7 @@ msgid ""
 "damage when hit by that type."
 msgstr ""
 
-#: data/help.cfg:181
+#: data/help.cfg:183
 msgid ""
 "\n"
 "\n"
@@ -1284,7 +1292,7 @@ msgid ""
 "damage."
 msgstr ""
 
-#: data/help.cfg:183
+#: data/help.cfg:185
 msgid ""
 "\n"
 "\n"
@@ -1293,11 +1301,11 @@ msgid ""
 "type."
 msgstr ""
 
-#: data/help.cfg:188
+#: data/help.cfg:190
 msgid "Time of Day"
 msgstr "Aeg"
 
-#: data/help.cfg:192
+#: data/help.cfg:194
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1305,7 +1313,7 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 
-#: data/help.cfg:195
+#: data/help.cfg:197
 msgid ""
 "\n"
 "\n"
@@ -1314,41 +1322,41 @@ msgid ""
 "First and Second Watch count as night:\n"
 msgstr ""
 
-#: data/help.cfg:195 data/schedules.cfg:5
+#: data/help.cfg:197 data/schedules.cfg:5
 msgid "Dawn"
 msgstr "Koit"
 
-#: data/help.cfg:196 data/schedules.cfg:18
+#: data/help.cfg:198 data/schedules.cfg:18
 msgid "Morning"
 msgstr "Hommik"
 
-#: data/help.cfg:197 data/schedules.cfg:29
+#: data/help.cfg:199 data/schedules.cfg:29
 msgid "Afternoon"
 msgstr "Pärastlõuna"
 
-#: data/help.cfg:198 data/schedules.cfg:40
+#: data/help.cfg:200 data/schedules.cfg:40
 msgid "Dusk"
 msgstr "Hämarik"
 
-#: data/help.cfg:199 data/schedules.cfg:53
+#: data/help.cfg:201 data/schedules.cfg:53
 msgid "First Watch"
 msgstr "Esimene vahtkond"
 
-#: data/help.cfg:200 data/schedules.cfg:67
+#: data/help.cfg:202 data/schedules.cfg:67
 msgid "Second Watch"
 msgstr "Teine vahtkond"
 
-#: data/help.cfg:202
+#: data/help.cfg:204
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
 
-#: data/help.cfg:207
+#: data/help.cfg:209
 msgid "Experience and Advancement"
 msgstr "Elukogemus ja Edutamine"
 
-#: data/help.cfg:208
+#: data/help.cfg:210
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1360,7 +1368,7 @@ msgstr ""
 "vastase, siis juba rohkem: 4 punkti null-taseme üksuse eest, 8 esimese "
 "taseme eest, 16 teise taseme eest, 24 kolmanda taseme eest ja nii edasi."
 
-#: data/help.cfg:210
+#: data/help.cfg:212
 msgid ""
 "\n"
 "\n"
@@ -1377,7 +1385,7 @@ msgstr ""
 "täiesti terveks. Mõnel juhul saad sa erinevate edutamisvariantide vahel "
 "valida."
 
-#: data/help.cfg:214
+#: data/help.cfg:216
 msgid ""
 "\n"
 "\n"
@@ -1397,11 +1405,11 @@ msgid ""
 "Maximum HP."
 msgstr ""
 
-#: data/help.cfg:219
+#: data/help.cfg:221
 msgid "Healing"
 msgstr "Ravimine"
 
-#: data/help.cfg:220
+#: data/help.cfg:222
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1410,7 +1418,7 @@ msgid ""
 "take place at the beginning of your turn, before you take action."
 msgstr ""
 
-#: data/help.cfg:222
+#: data/help.cfg:224
 msgid ""
 "\n"
 "\n"
@@ -1418,20 +1426,20 @@ msgid ""
 "in its next turn."
 msgstr ""
 
-#: data/help.cfg:223
+#: data/help.cfg:225
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 
-#: data/help.cfg:224
+#: data/help.cfg:226
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 
-#: data/help.cfg:225
+#: data/help.cfg:227
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1439,7 +1447,7 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 
-#: data/help.cfg:226
+#: data/help.cfg:228
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1447,7 +1455,7 @@ msgid ""
 "it has that ability as well)."
 msgstr ""
 
-#: data/help.cfg:228
+#: data/help.cfg:230
 msgid ""
 "\n"
 "\n"
@@ -1456,11 +1464,11 @@ msgid ""
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
 
-#: data/help.cfg:233
+#: data/help.cfg:235
 msgid "Income and Upkeep"
 msgstr "Sissetulek ja ülalpidamine"
 
-#: data/help.cfg:234
+#: data/help.cfg:236
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1472,7 +1480,7 @@ msgstr ""
 "ühest osast teise edasi. Seejuures peab arvestama kahe asjaga: sissutulekute "
 "ja ülalpidamiskuludega."
 
-#: data/help.cfg:236
+#: data/help.cfg:238
 #, fuzzy
 msgid ""
 "\n"
@@ -1488,7 +1496,7 @@ msgstr ""
 "kullatüki igal käigul. Kui sul oleks kümme küla, siis sa saaksid kümme "
 "kullatükki. Paraku võetakse sinu sissetulekutest maha ülalpidamiskulud."
 
-#: data/help.cfg:238
+#: data/help.cfg:240
 msgid ""
 "\n"
 "\n"
@@ -1500,7 +1508,7 @@ msgid ""
 "you would have to pay two gold each turn in upkeep."
 msgstr ""
 
-#: data/help.cfg:240
+#: data/help.cfg:242
 msgid ""
 "\n"
 "\n"
@@ -1509,7 +1517,7 @@ msgid ""
 "turn."
 msgstr ""
 
-#: data/help.cfg:241
+#: data/help.cfg:243
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -1518,11 +1526,11 @@ msgid ""
 "the second scenario of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 
-#: data/help.cfg:246
+#: data/help.cfg:248
 msgid "Wrap Up"
 msgstr "Saur"
 
-#: data/help.cfg:247
+#: data/help.cfg:249
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1531,11 +1539,11 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 
-#: data/help.cfg:258
+#: data/help.cfg:260
 msgid "License"
 msgstr ""
 
-#: data/help.cfg:265
+#: data/help.cfg:267
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1543,7 +1551,7 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 
-#: data/help.cfg:267
+#: data/help.cfg:269
 msgid ""
 "\n"
 "\n"
@@ -1553,7 +1561,7 @@ msgid ""
 "<ref>dst=traits_strong text=Strong</ref>."
 msgstr ""
 
-#: data/help.cfg:269
+#: data/help.cfg:271
 msgid ""
 "\n"
 "\n"
@@ -1562,15 +1570,15 @@ msgid ""
 "<ref>dst=traits_undead text=Undead</ref>."
 msgstr ""
 
-#: data/help.cfg:274
+#: data/help.cfg:276
 msgid "Intelligent"
 msgstr "intelligentne"
 
-#: data/help.cfg:275
+#: data/help.cfg:277
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 
-#: data/help.cfg:277
+#: data/help.cfg:279
 msgid ""
 "\n"
 "\n"
@@ -1581,15 +1589,15 @@ msgid ""
 "units you may wish to recall units with more desirable traits."
 msgstr ""
 
-#: data/help.cfg:282
+#: data/help.cfg:284
 msgid "Quick"
 msgstr "Kiire"
 
-#: data/help.cfg:283
+#: data/help.cfg:285
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgstr ""
 
-#: data/help.cfg:285
+#: data/help.cfg:287
 msgid ""
 "\n"
 "\n"
@@ -1601,15 +1609,15 @@ msgid ""
 "positions."
 msgstr ""
 
-#: data/help.cfg:290
+#: data/help.cfg:292
 msgid "Resilient"
 msgstr "Vastupidav"
 
-#: data/help.cfg:291
+#: data/help.cfg:293
 msgid "Resilient units have 10% +3 more HP than usual."
 msgstr ""
 
-#: data/help.cfg:293
+#: data/help.cfg:295
 msgid ""
 "\n"
 "\n"
@@ -1620,17 +1628,17 @@ msgid ""
 "holding strategic positions against opponents."
 msgstr ""
 
-#: data/help.cfg:298
+#: data/help.cfg:300
 msgid "Strong"
 msgstr "Tugev"
 
-#: data/help.cfg:299
+#: data/help.cfg:301
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
 
-#: data/help.cfg:301
+#: data/help.cfg:303
 msgid ""
 "\n"
 "\n"
@@ -1640,26 +1648,26 @@ msgid ""
 "turn a damaging stroke into a killing blow."
 msgstr ""
 
-#: data/help.cfg:306
+#: data/help.cfg:308
 msgid "Fearless"
 msgstr ""
 
-#: data/help.cfg:307
+#: data/help.cfg:309
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
-#: data/help.cfg:312
+#: data/help.cfg:314
 msgid "Loyal"
 msgstr "Lojaalne"
 
-#: data/help.cfg:313
+#: data/help.cfg:315
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
 
-#: data/help.cfg:315
+#: data/help.cfg:317
 msgid ""
 "\n"
 "\n"
@@ -1671,17 +1679,17 @@ msgid ""
 "such units or to send them to a foolish death."
 msgstr ""
 
-#: data/help.cfg:320
+#: data/help.cfg:322
 msgid "trait^Undead"
 msgstr "Surmast ülestõusnud"
 
-#: data/help.cfg:321
+#: data/help.cfg:323
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
 
-#: data/help.cfg:323
+#: data/help.cfg:325
 msgid ""
 "\n"
 "\n"
@@ -1691,16 +1699,16 @@ msgid ""
 "conjunction with their attacks."
 msgstr ""
 
-#: data/help.cfg:328
+#: data/help.cfg:330
 msgid "Dextrous"
 msgstr ""
 
-#: data/help.cfg:329
+#: data/help.cfg:331
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 
-#: data/help.cfg:331
+#: data/help.cfg:333
 msgid ""
 "\n"
 "\n"
@@ -1710,21 +1718,21 @@ msgid ""
 "inflict an additional point of damage with each arrow."
 msgstr ""
 
-#: data/help.cfg:336
+#: data/help.cfg:338
 msgid "Healthy"
 msgstr "Tervisklik"
 
-#: data/help.cfg:337
+#: data/help.cfg:339
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and "
 "recover more quickly when resting."
 msgstr ""
 
-#: data/help.cfg:343 data/terrain.cfg:475
+#: data/help.cfg:345 data/terrain.cfg:473 data/terrain.cfg:482
 msgid "Grassland"
 msgstr "Rohumaa"
 
-#: data/help.cfg:348
+#: data/help.cfg:350
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1735,22 +1743,22 @@ msgid ""
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
 
-#: data/help.cfg:353 data/terrain.cfg:604
+#: data/help.cfg:355 data/terrain.cfg:611
 msgid "Road"
 msgstr "Tee"
 
-#: data/help.cfg:356
+#: data/help.cfg:358
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
-#: data/help.cfg:361 data/terrain.cfg:450
+#: data/help.cfg:363 data/terrain.cfg:450
 msgid "Forest"
 msgstr "Mets"
 
-#: data/help.cfg:368
+#: data/help.cfg:370
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1768,11 +1776,11 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:373 data/terrain.cfg:521
+#: data/help.cfg:375 data/terrain.cfg:528
 msgid "Hills"
 msgstr "Künkad"
 
-#: data/help.cfg:378
+#: data/help.cfg:380
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1785,11 +1793,11 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 
-#: data/help.cfg:383 data/terrain.cfg:534 data/terrain.cfg:544
+#: data/help.cfg:385 data/terrain.cfg:541 data/terrain.cfg:551
 msgid "Mountains"
 msgstr "Mäed"
 
-#: data/help.cfg:388
+#: data/help.cfg:390
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1802,11 +1810,11 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 
-#: data/help.cfg:393 data/terrain.cfg:627
+#: data/help.cfg:395 data/terrain.cfg:634
 msgid "Swamp"
 msgstr "Soo"
 
-#: data/help.cfg:398
+#: data/help.cfg:400
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1818,11 +1826,11 @@ msgid ""
 "all generally enjoy 60%."
 msgstr ""
 
-#: data/help.cfg:403 data/terrain.cfg:886
+#: data/help.cfg:405 data/terrain.cfg:927
 msgid "Shallow Water"
 msgstr "Madal vesi"
 
-#: data/help.cfg:408
+#: data/help.cfg:410
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1835,11 +1843,11 @@ msgid ""
 "Naga and Mermen enjoy 60%."
 msgstr ""
 
-#: data/help.cfg:413 data/terrain.cfg:875
+#: data/help.cfg:415 data/terrain.cfg:916
 msgid "Deep Water"
 msgstr "Sügav vesi"
 
-#: data/help.cfg:418
+#: data/help.cfg:420
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1848,11 +1856,11 @@ msgid ""
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 
-#: data/help.cfg:423 data/terrain.cfg:48
+#: data/help.cfg:425 data/terrain.cfg:48
 msgid "Snow"
 msgstr "Lumi"
 
-#: data/help.cfg:428
+#: data/help.cfg:430
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1861,22 +1869,22 @@ msgid ""
 "Most units have 20 to 40% defense in snow."
 msgstr ""
 
-#: data/help.cfg:433 data/terrain.cfg:37
+#: data/help.cfg:435 data/terrain.cfg:37
 msgid "Ice"
 msgstr "Jää"
 
-#: data/help.cfg:436
+#: data/help.cfg:438
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 
-#: data/help.cfg:441 data/terrain.cfg:169
+#: data/help.cfg:443 data/terrain.cfg:169
 msgid "Castle"
 msgstr "Loss"
 
-#: data/help.cfg:448
+#: data/help.cfg:450
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1889,11 +1897,11 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:453 data/terrain.cfg:402
+#: data/help.cfg:455 data/terrain.cfg:402
 msgid "Sand"
 msgstr "Liiv"
 
-#: data/help.cfg:458
+#: data/help.cfg:460
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1902,65 +1910,66 @@ msgid ""
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
 
-#: data/help.cfg:463 data/terrain.cfg:381
+#: data/help.cfg:465 data/terrain.cfg:381
 msgid "Desert"
 msgstr "Kõrv"
 
-#: data/help.cfg:466
+#: data/help.cfg:468
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
 
-#: data/help.cfg:471 data/terrain.cfg:663
+#: data/help.cfg:473 data/terrain.cfg:650
 msgid "Cave"
 msgstr "Koobas"
 
-#: data/help.cfg:476
+#: data/help.cfg:478
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
 "both slowed down and hindered in defense. Dwarves and Trolls, who make their "
 "homes in caves, both have a relatively easy time navigating this terrain, "
 "especially dwarves, who by dint of their small size can navigate many "
-"obstacles that other races cannot.\n"
+"obstacles that other races cannot. Occasionally caves are "
+"<ref>dst=terrain_illuminated_cave text=Illuminated</ref>.\n"
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
 
-#: data/help.cfg:481 data/terrain.cfg:652
+#: data/help.cfg:483 data/terrain.cfg:690
 msgid "Rockbound Cave"
 msgstr ""
 
-#: data/help.cfg:486
+#: data/help.cfg:488
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
 "cavern which reduces efficiency of most units, but shoulders defense. "
 "Dwarves and Trolls, who are main settlers of caves, have a relatively easy "
 "time navigating this terrain. Dwarves, who by dint of their small size have "
-"the full advantage of navigation in such topography.\n"
+"the full advantage of navigation in such topography. Occasionally caves are "
+"<ref>dst=terrain_illuminated_cave text=Illuminated</ref>\n"
 "\n"
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
 
-#: data/help.cfg:491
+#: data/help.cfg:493
 msgid "Illuminated Cave"
 msgstr "Helendav koobas"
 
 #: data/help.cfg:496
 msgid ""
-"Illuminated cave is a patch of ground where light from the surface shines "
-"down into the gloomy darkness.  This provides an attack bonus for lawful "
-"units and removes the attack bonus from chaotic units. In all other regards "
-"this terrain is functionally identical to normal cave terrain.\n"
-"\n"
-"Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
+"Rare patches of the underground world are illuminated by light from the "
+"surface shining down into the gloomy darkness.  This provides an attack "
+"bonus for lawful units and removes the attack bonus from chaotic units. In "
+"all other regards this terrain is functionally identical to normal cave "
+"terrains."
 msgstr ""
 
-#: data/help.cfg:501 data/terrain.cfg:643
+#: data/help.cfg:501 data/terrain.cfg:670
 msgid "Mushroom Grove"
 msgstr ""
 
@@ -1977,7 +1986,7 @@ msgid ""
 "receive only 20%."
 msgstr ""
 
-#: data/help.cfg:511 data/terrain.cfg:484
+#: data/help.cfg:511 data/terrain.cfg:491
 msgid "Savanna"
 msgstr "Savann"
 
@@ -1988,12 +1997,12 @@ msgid ""
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
-#: data/help.cfg:519 data/terrain.cfg:690 data/terrain.cfg:702
-#: data/terrain.cfg:716 data/terrain.cfg:729 data/terrain.cfg:744
-#: data/terrain.cfg:756 data/terrain.cfg:767 data/terrain.cfg:779
-#: data/terrain.cfg:791 data/terrain.cfg:803 data/terrain.cfg:817
-#: data/terrain.cfg:829 data/terrain.cfg:843 data/terrain.cfg:859
-#: src/terrain.cpp:114
+#: data/help.cfg:519 data/terrain.cfg:719 data/terrain.cfg:731
+#: data/terrain.cfg:745 data/terrain.cfg:758 data/terrain.cfg:773
+#: data/terrain.cfg:785 data/terrain.cfg:796 data/terrain.cfg:808
+#: data/terrain.cfg:820 data/terrain.cfg:832 data/terrain.cfg:846
+#: data/terrain.cfg:858 data/terrain.cfg:872 data/terrain.cfg:888
+#: data/terrain.cfg:900 src/terrain.cpp:114
 msgid "Village"
 msgstr "Küla"
 
@@ -2011,11 +2020,29 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:531 data/terrain.cfg:558
+#: data/help.cfg:531
+#, fuzzy
+msgid "Submerged Village"
+msgstr "Oma külad"
+
+#: data/help.cfg:536
+msgid ""
+"Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
+"creatures are at home here, land-dwellers have a hard time navigating and "
+"defending these villages. However, like any village, the facilites are "
+"available to all creatures which allow units to tend to their wounds. Any "
+"unit stationed in a village can heal eight hitpoints each turn, or be cured "
+"of poison.\n"
+"\n"
+"Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
+"units usually have a low defence."
+msgstr ""
+
+#: data/help.cfg:541 data/terrain.cfg:565
 msgid "Chasm"
 msgstr ""
 
-#: data/help.cfg:534
+#: data/help.cfg:544
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2023,11 +2050,11 @@ msgid ""
 "terrain."
 msgstr ""
 
-#: data/help.cfg:539 data/terrain.cfg:567
+#: data/help.cfg:549 data/terrain.cfg:574
 msgid "Lava"
 msgstr "Laava"
 
-#: data/help.cfg:542
+#: data/help.cfg:552
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2036,11 +2063,11 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
 
-#: data/help.cfg:547 data/terrain.cfg:898
+#: data/help.cfg:557 data/terrain.cfg:939
 msgid "River Ford"
 msgstr ""
 
-#: data/help.cfg:550
+#: data/help.cfg:560
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2050,14 +2077,14 @@ msgid ""
 "the unit on it."
 msgstr ""
 
-#: data/help.cfg:555 data/terrain.cfg:62 data/terrain.cfg:72
+#: data/help.cfg:565 data/terrain.cfg:62 data/terrain.cfg:72
 #: data/terrain.cfg:82 data/terrain.cfg:93 data/terrain.cfg:103
 #: data/terrain.cfg:113 data/terrain.cfg:124 data/terrain.cfg:134
 #: data/terrain.cfg:144
 msgid "Bridge"
 msgstr "Sild"
 
-#: data/help.cfg:560
+#: data/help.cfg:570
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2072,61 +2099,61 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 
-#: data/help.cfg:565 data/terrain.cfg:924
+#: data/help.cfg:575 data/terrain.cfg:965
 msgid "Cave Wall"
 msgstr "Koopa sein"
 
-#: data/help.cfg:568
+#: data/help.cfg:578
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
 
-#: data/help.cfg:573
+#: data/help.cfg:583
 #, fuzzy
 msgid "Impassable Mountain"
 msgstr "Läbipääsmatu mäestik"
 
-#: data/help.cfg:576
+#: data/help.cfg:586
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such moutains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 
-#: data/help.cfg:581
+#: data/help.cfg:591
 msgid "General commands"
 msgstr "Üldised käsud"
 
-#: data/help.cfg:585
+#: data/help.cfg:595
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 
-#: data/help.cfg:588
+#: data/help.cfg:598
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
 
-#: data/help.cfg:591
+#: data/help.cfg:601
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 
-#: data/help.cfg:594
+#: data/help.cfg:604
 msgid ""
 "\n"
 "Redraw the screen.\n"
 "\n"
 msgstr ""
 
-#: data/help.cfg:597
+#: data/help.cfg:607
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2134,15 +2161,15 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:598
+#: data/help.cfg:608
 msgid "Bring up theme selection menu."
 msgstr ""
 
-#: data/help.cfg:603
+#: data/help.cfg:613
 msgid "Multiplayer commands"
 msgstr "Mitmemängija käsud"
 
-#: data/help.cfg:607
+#: data/help.cfg:617
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2151,14 +2178,14 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:610
+#: data/help.cfg:620
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 
-#: data/help.cfg:613
+#: data/help.cfg:623
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2166,7 +2193,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:616
+#: data/help.cfg:626
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2175,7 +2202,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:619
+#: data/help.cfg:629
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -2183,7 +2210,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:622
+#: data/help.cfg:632
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2191,7 +2218,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/help.cfg:623
+#: data/help.cfg:633
 msgid ""
 "\n"
 "Clear chat messages."
@@ -3250,40 +3277,44 @@ msgid ""
 "the opponent's end zone"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:196
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:473
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:32
+msgid "{TYPE}"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:178
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:424
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "Punane sai punkte! Praegune skoor on $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:244
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:521
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:220
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:466
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "Sinine sai punkte! Praegune skoor on $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:334
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:611
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:304
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:550
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "Kas ma peaksin palli edasi söötma $passto.type ($xloc,$yloc)?"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:336
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:613
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:306
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:552
 msgid "Yes!"
 msgstr "Jah!"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:358
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:328
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:574
 msgid "No"
 msgstr "Ei"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:658
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:597
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "Sinine meeskond võitis! Lõplik tulemus: $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:670
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:609
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "Punane meeskond võitis! Lõplik tulemus: $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:682
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:621
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Viik! Lõpptulemus: $redscore-$bluescore"
 
@@ -4028,33 +4059,38 @@ msgstr "Suur Puu"
 msgid "Tropical Forest"
 msgstr "Troopiline mets"
 
-#: data/terrain.cfg:499
+#: data/terrain.cfg:506
 msgid "Snow Hills"
 msgstr "Lumekünkad"
 
-#: data/terrain.cfg:510
+#: data/terrain.cfg:517
 msgid "Dunes"
 msgstr "Luited"
 
-#: data/terrain.cfg:584
+#: data/terrain.cfg:591
 #, fuzzy
 msgid "Desert road"
 msgstr "Kõrv"
 
-#: data/terrain.cfg:594
+#: data/terrain.cfg:601
 msgid "Dirt"
 msgstr "Muld"
 
-#: data/terrain.cfg:614
+#: data/terrain.cfg:621
 #, fuzzy
 msgid "Farmland"
 msgstr "laskur"
 
-#: data/terrain.cfg:672
+#: data/terrain.cfg:659
 msgid "Cave Lit"
 msgstr "Valgustatud koobas"
 
-#: data/terrain.cfg:914
+#: data/terrain.cfg:701
+#, fuzzy
+msgid "Rockbound Cave Lit"
+msgstr "Valgustatud koobas"
+
+#: data/terrain.cfg:955
 msgid "Impassable Mountains"
 msgstr "Läbipääsmatu mäestik"
 
@@ -4073,7 +4109,7 @@ msgid "End Turn"
 msgstr "Lõpeta käik"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2438
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2440
 msgid "HP"
 msgstr "HP"
 
@@ -8750,7 +8786,7 @@ msgstr "Statistika"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:294 src/unit.cpp:2469
+#: src/menu_events.cpp:294 src/unit.cpp:2471
 msgid "Moves"
 msgstr "Käigud"
 
@@ -9161,12 +9197,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2568
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2570
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2575
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2577
 msgid ")"
 msgstr ")"
 
@@ -9935,15 +9971,15 @@ msgstr "Abiteave"
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2404 src/unit.cpp:2573
+#: src/unit.cpp:2406 src/unit.cpp:2575
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2486
+#: src/unit.cpp:2488
 msgid "XP to advance"
 msgstr ""
 
-#: src/unit.cpp:2564
+#: src/unit.cpp:2566
 msgid ": "
 msgstr ": "
 

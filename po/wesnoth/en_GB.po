@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-22 03:16+0100\n"
+"POT-Creation-Date: 2007-02-23 20:20+0100\n"
 "PO-Revision-Date: 2007-01-04 19:17+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -601,7 +601,7 @@ msgstr "Turkish Translation"
 msgid "Valencian Translation"
 msgstr "Slovenian Translation"
 
-#: data/about.cfg:691 data/help.cfg:252
+#: data/about.cfg:691 data/help.cfg:254
 msgid "Contributors"
 msgstr "Contributors"
 
@@ -882,7 +882,7 @@ msgstr "Terrains"
 msgid "Commands"
 msgstr "Commands"
 
-#: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
+#: data/help.cfg:65 data/help.cfg:71 data/help.cfg:266
 msgid "Overview"
 msgstr "Overview"
 
@@ -1268,7 +1268,8 @@ msgstr ""
 msgid "Shroud and Fog of War"
 msgstr "Shroud and Fog of War"
 
-#: data/help.cfg:149
+#: data/help.cfg:151
+#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1278,7 +1279,15 @@ msgid ""
 "temporarily when you have units nearby, but returns when they leave. Both "
 "the Shroud and the Fog of War are cleared by units. Each unit clears "
 "locations adjacent to those within one turn's move (ignoring zones of "
-"control and enemy units)."
+"control and enemy units).\n"
+"\n"
+"Normaly you can undo a unit's movement, as long as an event with a "
+"randomized result has not occurred, such as combat or a recuritment. "
+"Exploring hidden terrain by clearing Shroud or Fog will also prevent undos "
+"to a previous state. You may wish to activate 'delay shroud updates' in the "
+"actions menu. This will prevent units from clearing Shroud or Fog until the "
+"next randomized event or a manual update via 'update shroud now' (or the end "
+"of your turn) and thereby perserve your ability to undo movement."
 msgstr ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1290,46 +1299,46 @@ msgstr ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units)."
 
-#: data/help.cfg:154
+#: data/help.cfg:156
 msgid "Combat"
 msgstr "Combat"
 
-#: data/help.cfg:155
-msgid ""
-"Combat in Battle for Wesnoth always takes place between units in adjacent "
-"hexes. Click on your unit, and click on the enemy you want to attack: your "
-"unit will move towards the enemy unit, and when they are next to each other, "
-"combat will begin. The attacker and defender alternate strikes until each "
-"has used their allotted number of strikes. The attacker chooses one of its "
-"weapons to attack with, and the defender retaliates with one of its attacks "
-"of the same type. There are two types of attacks: melee, which usually "
-"involves weapons such as swords, axes or fangs; and ranged, which usually "
-"involves weapons such as bows, spears and fireballs."
-msgstr ""
-"Combat in Battle for Wesnoth always takes place between units in adjacent "
-"hexes. Click on your unit, and click on the enemy you want to attack: your "
-"unit will move towards the enemy unit, and when they are next to each other, "
-"combat will begin. The attacker and defender alternate strikes until each "
-"has used their allotted number of strikes. The attacker chooses one of its "
-"weapons to attack with, and the defender retaliates with one of its attacks "
-"of the same type. There are two types of attacks: melee, which usually "
-"involves weapons such as swords, axes or fangs; and ranged, which usually "
-"involves weapons such as bows, spears and fireballs."
-
 #: data/help.cfg:157
 msgid ""
-"\n"
-"\n"
-"<header>text='Order and number of strikes'</header>"
+"Combat in Battle for Wesnoth always takes place between units in adjacent "
+"hexes. Click on your unit, and click on the enemy you want to attack: your "
+"unit will move towards the enemy unit, and when they are next to each other, "
+"combat will begin. The attacker and defender alternate strikes until each "
+"has used their allotted number of strikes. The attacker chooses one of its "
+"weapons to attack with, and the defender retaliates with one of its attacks "
+"of the same type. There are two types of attacks: melee, which usually "
+"involves weapons such as swords, axes or fangs; and ranged, which usually "
+"involves weapons such as bows, spears and fireballs."
 msgstr ""
-"\n"
-"\n"
-"<header>text='Order and number of strikes'</header>"
+"Combat in Battle for Wesnoth always takes place between units in adjacent "
+"hexes. Click on your unit, and click on the enemy you want to attack: your "
+"unit will move towards the enemy unit, and when they are next to each other, "
+"combat will begin. The attacker and defender alternate strikes until each "
+"has used their allotted number of strikes. The attacker chooses one of its "
+"weapons to attack with, and the defender retaliates with one of its attacks "
+"of the same type. There are two types of attacks: melee, which usually "
+"involves weapons such as swords, axes or fangs; and ranged, which usually "
+"involves weapons such as bows, spears and fireballs."
 
 #: data/help.cfg:159
 msgid ""
 "\n"
 "\n"
+"<header>text='Order and number of strikes'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Order and number of strikes'</header>"
+
+#: data/help.cfg:161
+msgid ""
+"\n"
+"\n"
 "The attacker gets the first strike, then the defender retaliates. Each "
 "strike either hits, doing a given amount of damage, or misses, doing no "
 "damage at all. Strikes alternate until each unit has used up all of its "
@@ -1348,7 +1357,7 @@ msgstr ""
 "5 damage, while an Orcish Grunt with a 9-2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 
-#: data/help.cfg:161
+#: data/help.cfg:163
 msgid ""
 "\n"
 "\n"
@@ -1358,7 +1367,7 @@ msgstr ""
 "\n"
 "<header>text='Chance to hit'</header>"
 
-#: data/help.cfg:163
+#: data/help.cfg:165
 msgid ""
 "\n"
 "\n"
@@ -1380,60 +1389,60 @@ msgstr ""
 "Conversely, the elf's chance of hitting the attacker in return depends on "
 "what terrain the attacker is in."
 
-#: data/help.cfg:165
-msgid ""
-"\n"
-"\n"
-"There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
-"text='Magical attacks'</ref> and <ref>dst=weaponspecial_marksman "
-"text=Marksmen</ref>. Magical attacks always have a 70% chance to hit, "
-"regardless of terrain, and, when used offensively, Marksmen always have at "
-"least a 60% chance to hit, regardless of terrain."
-msgstr ""
-"\n"
-"\n"
-"There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
-"text='Magical attacks'</ref> and <ref>dst=weaponspecial_marksman "
-"text=Marksmen</ref>. Magical attacks always have a 70% chance to hit, "
-"regardless of terrain, and, when used offensively, Marksmen always have at "
-"least a 60% chance to hit, regardless of terrain."
-
 #: data/help.cfg:167
 msgid ""
 "\n"
 "\n"
-"<header>text=Damage</header>"
+"There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
+"text='Magical attacks'</ref> and <ref>dst=weaponspecial_marksman "
+"text=Marksmen</ref>. Magical attacks always have a 70% chance to hit, "
+"regardless of terrain, and, when used offensively, Marksmen always have at "
+"least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
 "\n"
-"<header>text=Damage</header>"
+"There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
+"text='Magical attacks'</ref> and <ref>dst=weaponspecial_marksman "
+"text=Marksmen</ref>. Magical attacks always have a 70% chance to hit, "
+"regardless of terrain, and, when used offensively, Marksmen always have at "
+"least a 60% chance to hit, regardless of terrain."
 
 #: data/help.cfg:169
 msgid ""
 "\n"
 "\n"
-"Each strike which hits causes a base amount of damage depending on the "
-"attack type. For instance, an Elvish Fighter with a 5-4 attack does 5 base "
-"damage. This is usually modified by two things: "
-"<ref>dst=damage_types_and_resistance text=Resistance</ref> and "
-"<ref>dst=time_of_day text='Time of Day'</ref>. To see how base damage is "
-"modified by the circumstances, select <italic>text='Damage Calculations'</"
-"italic> in the attack selection menu."
+"<header>text=Damage</header>"
 msgstr ""
 "\n"
 "\n"
-"Each strike which hits causes a base amount of damage depending on the "
-"attack type. For instance, an Elvish Fighter with a 5-4 attack does 5 base "
-"damage. This is usually modified by two things: "
-"<ref>dst=damage_types_and_resistance text=Resistance</ref> and "
-"<ref>dst=time_of_day text='Time of Day'</ref>. To see how base damage is "
-"modified by the circumstances, select <italic>text='Damage Calculations'</"
-"italic> in the attack selection menu."
+"<header>text=Damage</header>"
 
 #: data/help.cfg:171
 msgid ""
 "\n"
 "\n"
+"Each strike which hits causes a base amount of damage depending on the "
+"attack type. For instance, an Elvish Fighter with a 5-4 attack does 5 base "
+"damage. This is usually modified by two things: "
+"<ref>dst=damage_types_and_resistance text=Resistance</ref> and "
+"<ref>dst=time_of_day text='Time of Day'</ref>. To see how base damage is "
+"modified by the circumstances, select <italic>text='Damage Calculations'</"
+"italic> in the attack selection menu."
+msgstr ""
+"\n"
+"\n"
+"Each strike which hits causes a base amount of damage depending on the "
+"attack type. For instance, an Elvish Fighter with a 5-4 attack does 5 base "
+"damage. This is usually modified by two things: "
+"<ref>dst=damage_types_and_resistance text=Resistance</ref> and "
+"<ref>dst=time_of_day text='Time of Day'</ref>. To see how base damage is "
+"modified by the circumstances, select <italic>text='Damage Calculations'</"
+"italic> in the attack selection menu."
+
+#: data/help.cfg:173
+msgid ""
+"\n"
+"\n"
 "A few units have special <ref>dst=abilities text=abilities</ref> which "
 "affect damage dealt in combat. The most common of these is "
 "<ref>dst=weaponspecial_charge text=Charge</ref>, which doubles the damage "
@@ -1446,60 +1455,60 @@ msgstr ""
 "<ref>dst=weaponspecial_charge text=Charge</ref>, which doubles the damage "
 "dealt by both attacker and defender when the unit with Charge attacks."
 
-#: data/help.cfg:176
+#: data/help.cfg:178
 msgid "Damage Types and Resistance"
 msgstr "Damage Types and Resistance"
 
-#: data/help.cfg:177
-msgid ""
-"In Wesnoth, there are three types of damage usually associated with physical "
-"attacks: Blade, Pierce and Impact damage. Additionally, there are three "
-"further types of damage usually associated with magical attacks: Fire, Cold "
-"and Holy attacks. Different units may have resistances which alter the "
-"damage which they take from certain damage types."
-msgstr ""
-"In Wesnoth, there are three types of damage usually associated with physical "
-"attacks: Blade, Pierce and Impact damage. Additionally, there are three "
-"further types of damage usually associated with magical attacks: Fire, Cold "
-"and Holy attacks. Different units may have resistances which alter the "
-"damage which they take from certain damage types."
-
 #: data/help.cfg:179
 msgid ""
-"\n"
-"\n"
-"Resistances work very simply: if a unit has 40% resistance against a damage "
-"type, then it will suffer 40% less damage when hit with that damage type. It "
-"is also possible for a unit to be vulnerable against some damage types. If a "
-"unit has -100% resistance against a damage type, it will suffer 100% more "
-"damage when hit by that type."
+"In Wesnoth, there are three types of damage usually associated with physical "
+"attacks: Blade, Pierce and Impact damage. Additionally, there are three "
+"further types of damage usually associated with magical attacks: Fire, Cold "
+"and Holy attacks. Different units may have resistances which alter the "
+"damage which they take from certain damage types."
 msgstr ""
-"\n"
-"\n"
-"Resistances work very simply: if a unit has 40% resistance against a damage "
-"type, then it will suffer 40% less damage when hit with that damage type. It "
-"is also possible for a unit to be vulnerable against some damage types. If a "
-"unit has -100% resistance against a damage type, it will suffer 100% more "
-"damage when hit by that type."
+"In Wesnoth, there are three types of damage usually associated with physical "
+"attacks: Blade, Pierce and Impact damage. Additionally, there are three "
+"further types of damage usually associated with magical attacks: Fire, Cold "
+"and Holy attacks. Different units may have resistances which alter the "
+"damage which they take from certain damage types."
 
 #: data/help.cfg:181
 msgid ""
 "\n"
 "\n"
-"For example, Skeletons are highly resistant to Blade and Pierce damage, but "
-"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
-"damage."
+"Resistances work very simply: if a unit has 40% resistance against a damage "
+"type, then it will suffer 40% less damage when hit with that damage type. It "
+"is also possible for a unit to be vulnerable against some damage types. If a "
+"unit has -100% resistance against a damage type, it will suffer 100% more "
+"damage when hit by that type."
 msgstr ""
 "\n"
 "\n"
-"For example, Skeletons are highly resistant to Blade and Pierce damage, but "
-"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
-"damage."
+"Resistances work very simply: if a unit has 40% resistance against a damage "
+"type, then it will suffer 40% less damage when hit with that damage type. It "
+"is also possible for a unit to be vulnerable against some damage types. If a "
+"unit has -100% resistance against a damage type, it will suffer 100% more "
+"damage when hit by that type."
 
 #: data/help.cfg:183
 msgid ""
 "\n"
 "\n"
+"For example, Skeletons are highly resistant to Blade and Pierce damage, but "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"damage."
+msgstr ""
+"\n"
+"\n"
+"For example, Skeletons are highly resistant to Blade and Pierce damage, but "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"damage."
+
+#: data/help.cfg:185
+msgid ""
+"\n"
+"\n"
 "If a strike is determined to hit, it will always do at least 1 point of "
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
@@ -1510,11 +1519,11 @@ msgstr ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 
-#: data/help.cfg:188
+#: data/help.cfg:190
 msgid "Time of Day"
 msgstr "Time of Day"
 
-#: data/help.cfg:192
+#: data/help.cfg:194
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1526,7 +1535,7 @@ msgstr ""
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 
-#: data/help.cfg:195
+#: data/help.cfg:197
 msgid ""
 "\n"
 "\n"
@@ -1540,31 +1549,31 @@ msgstr ""
 "pane. For the usual day/night cycle, Morning and Afternoon count as day, "
 "First and Second Watch count as night:\n"
 
-#: data/help.cfg:195 data/schedules.cfg:5
+#: data/help.cfg:197 data/schedules.cfg:5
 msgid "Dawn"
 msgstr "Dawn"
 
-#: data/help.cfg:196 data/schedules.cfg:18
+#: data/help.cfg:198 data/schedules.cfg:18
 msgid "Morning"
 msgstr "Morning"
 
-#: data/help.cfg:197 data/schedules.cfg:29
+#: data/help.cfg:199 data/schedules.cfg:29
 msgid "Afternoon"
 msgstr "Afternoon"
 
-#: data/help.cfg:198 data/schedules.cfg:40
+#: data/help.cfg:200 data/schedules.cfg:40
 msgid "Dusk"
 msgstr "Dusk"
 
-#: data/help.cfg:199 data/schedules.cfg:53
+#: data/help.cfg:201 data/schedules.cfg:53
 msgid "First Watch"
 msgstr "First Watch"
 
-#: data/help.cfg:200 data/schedules.cfg:67
+#: data/help.cfg:202 data/schedules.cfg:67
 msgid "Second Watch"
 msgstr "Second Watch"
 
-#: data/help.cfg:202
+#: data/help.cfg:204
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1572,24 +1581,24 @@ msgstr ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 
-#: data/help.cfg:207
+#: data/help.cfg:209
 msgid "Experience and Advancement"
 msgstr "Experience and Advancement"
 
-#: data/help.cfg:208
-msgid ""
-"If both units survive a combat, they gain a number of experience points "
-"equal to the level of the unit they're fighting. If a unit kills another in "
-"combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
-"level 1, 16 for level 2, 24 for level 3, and so forth."
-msgstr ""
-"If both units survive a combat, they gain a number of experience points "
-"equal to the level of the unit they're fighting. If a unit kills another in "
-"combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
-"level 1, 16 for level 2, 24 for level 3, and so forth."
-
 #: data/help.cfg:210
 msgid ""
+"If both units survive a combat, they gain a number of experience points "
+"equal to the level of the unit they're fighting. If a unit kills another in "
+"combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
+"level 1, 16 for level 2, 24 for level 3, and so forth."
+msgstr ""
+"If both units survive a combat, they gain a number of experience points "
+"equal to the level of the unit they're fighting. If a unit kills another in "
+"combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
+"level 1, 16 for level 2, 24 for level 3, and so forth."
+
+#: data/help.cfg:212
+msgid ""
 "\n"
 "\n"
 "Units have a certain amount of experience required to advance (this is 20% "
@@ -1604,7 +1613,7 @@ msgstr ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 
-#: data/help.cfg:214
+#: data/help.cfg:216
 msgid ""
 "\n"
 "\n"
@@ -1640,81 +1649,81 @@ msgstr ""
 "actually heal with AMLA effects. Most units just gain the bonus to the "
 "Maximum HP."
 
-#: data/help.cfg:219
+#: data/help.cfg:221
 msgid "Healing"
 msgstr "Healing"
 
-#: data/help.cfg:220
-msgid ""
-"In combat, your units will inevitably take damage. When a unit "
-"<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
-"This can happen as you finish fighting an enemy, whether it is your turn or "
-"not. Wesnoth offers several other ways for your units to heal, all of which "
-"take place at the beginning of your turn, before you take action."
-msgstr ""
-"In combat, your units will inevitably take damage. When a unit "
-"<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
-"This can happen as you finish fighting an enemy, whether it is your turn or "
-"not. Wesnoth offers several other ways for your units to heal, all of which "
-"take place at the beginning of your turn, before you take action."
-
 #: data/help.cfg:222
 msgid ""
-"\n"
-"\n"
-"Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
-"in its next turn."
+"In combat, your units will inevitably take damage. When a unit "
+"<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
+"This can happen as you finish fighting an enemy, whether it is your turn or "
+"not. Wesnoth offers several other ways for your units to heal, all of which "
+"take place at the beginning of your turn, before you take action."
 msgstr ""
-"\n"
-"\n"
-"Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
-"in its next turn."
-
-#: data/help.cfg:223
-msgid ""
-"\n"
-"Villages: A unit which starts a turn in a village will heal 8HP."
-msgstr ""
-"\n"
-"Villages: A unit which starts a turn in a village will heal 8HP."
+"In combat, your units will inevitably take damage. When a unit "
+"<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
+"This can happen as you finish fighting an enemy, whether it is your turn or "
+"not. Wesnoth offers several other ways for your units to heal, all of which "
+"take place at the beginning of your turn, before you take action."
 
 #: data/help.cfg:224
 msgid ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
-"trolls) will automatically heal 8HP every turn."
+"\n"
+"Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
+"in its next turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
-"trolls) will automatically heal 8HP every turn."
+"\n"
+"Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
+"in its next turn."
 
 #: data/help.cfg:225
 msgid ""
 "\n"
-"Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
-"ability will heal each allied adjacent unit, usually 4 or 8HP per turn, or "
-"prevent Poison from causing that unit damage."
+"Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
-"ability will heal each allied adjacent unit, usually 4 or 8HP per turn, or "
-"prevent Poison from causing that unit damage."
+"Villages: A unit which starts a turn in a village will heal 8HP."
 
 #: data/help.cfg:226
 msgid ""
 "\n"
-"Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
-"will cure Poison in all allied adjacent units (in preference to healing, if "
-"it has that ability as well)."
+"<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
+"trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
-"will cure Poison in all allied adjacent units (in preference to healing, if "
-"it has that ability as well)."
+"<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
+"trolls) will automatically heal 8HP every turn."
+
+#: data/help.cfg:227
+msgid ""
+"\n"
+"Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
+"ability will heal each allied adjacent unit, usually 4 or 8HP per turn, or "
+"prevent Poison from causing that unit damage."
+msgstr ""
+"\n"
+"Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
+"ability will heal each allied adjacent unit, usually 4 or 8HP per turn, or "
+"prevent Poison from causing that unit damage."
 
 #: data/help.cfg:228
 msgid ""
 "\n"
+"Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
+"will cure Poison in all allied adjacent units (in preference to healing, if "
+"it has that ability as well)."
+msgstr ""
+"\n"
+"Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
+"will cure Poison in all allied adjacent units (in preference to healing, if "
+"it has that ability as well)."
+
+#: data/help.cfg:230
+msgid ""
+"\n"
 "\n"
 "Resting can be combined with other forms of healing, but villages, "
 "regeneration, healing and curing cannot combine with each other: the best "
@@ -1726,62 +1735,62 @@ msgstr ""
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
 
-#: data/help.cfg:233
+#: data/help.cfg:235
 msgid "Income and Upkeep"
 msgstr "Income and Upkeep"
 
-#: data/help.cfg:234
-msgid ""
-"In Wesnoth, it is not enough simply to recruit units and fight. You must "
-"watch your gold as well, especially in campaigns, where you can carry extra "
-"gold over from one scenario to the next. There are two aspects to this; "
-"Income and Upkeep."
-msgstr ""
-"In Wesnoth, it is not enough simply to recruit units and fight. You must "
-"watch your gold as well, especially in campaigns, where you can carry extra "
-"gold over from one scenario to the next. There are two aspects to this; "
-"Income and Upkeep."
-
 #: data/help.cfg:236
 msgid ""
-"\n"
-"\n"
-"Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. Thus, if you "
-"have ten villages, you would normally gain 12 gold each turn. Your Upkeep "
-"costs are subtracted from this income, as detailed below."
+"In Wesnoth, it is not enough simply to recruit units and fight. You must "
+"watch your gold as well, especially in campaigns, where you can carry extra "
+"gold over from one scenario to the next. There are two aspects to this; "
+"Income and Upkeep."
 msgstr ""
-"\n"
-"\n"
-"Income is simple. You have a base income of 2 gold per turn. For every "
-"village you control, you gain one additional gold each turn. Thus, if you "
-"have ten villages, you would normally gain 12 gold each turn. Your Upkeep "
-"costs are subtracted from this income, as detailed below."
+"In Wesnoth, it is not enough simply to recruit units and fight. You must "
+"watch your gold as well, especially in campaigns, where you can carry extra "
+"gold over from one scenario to the next. There are two aspects to this; "
+"Income and Upkeep."
 
 #: data/help.cfg:238
 msgid ""
 "\n"
 "\n"
-"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
-"to its level. You can support as many levels <italic>text=worth</italic> of "
-"units as you have villages, without paying any upkeep. However, for each "
-"level of unit beyond the number of villages you have, you must pay one gold "
-"per turn. For example, if you have twelve level one units and ten villages, "
-"you would have to pay two gold each turn in upkeep."
+"Income is simple. You have a base income of 2 gold per turn. For every "
+"village you control, you gain one additional gold each turn. Thus, if you "
+"have ten villages, you would normally gain 12 gold each turn. Your Upkeep "
+"costs are subtracted from this income, as detailed below."
 msgstr ""
 "\n"
 "\n"
-"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
-"to its level. You can support as many levels <italic>text=worth</italic> of "
-"units as you have villages, without paying any upkeep. However, for each "
-"level of unit beyond the number of villages you have, you must pay one gold "
-"per turn. For example, if you have twelve level one units and ten villages, "
-"you would have to pay two gold each turn in upkeep."
+"Income is simple. You have a base income of 2 gold per turn. For every "
+"village you control, you gain one additional gold each turn. Thus, if you "
+"have ten villages, you would normally gain 12 gold each turn. Your Upkeep "
+"costs are subtracted from this income, as detailed below."
 
 #: data/help.cfg:240
 msgid ""
 "\n"
 "\n"
+"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
+"to its level. You can support as many levels <italic>text=worth</italic> of "
+"units as you have villages, without paying any upkeep. However, for each "
+"level of unit beyond the number of villages you have, you must pay one gold "
+"per turn. For example, if you have twelve level one units and ten villages, "
+"you would have to pay two gold each turn in upkeep."
+msgstr ""
+"\n"
+"\n"
+"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
+"to its level. You can support as many levels <italic>text=worth</italic> of "
+"units as you have villages, without paying any upkeep. However, for each "
+"level of unit beyond the number of villages you have, you must pay one gold "
+"per turn. For example, if you have twelve level one units and ten villages, "
+"you would have to pay two gold each turn in upkeep."
+
+#: data/help.cfg:242
+msgid ""
+"\n"
+"\n"
 "Upkeep costs are subtracted from your Income, so in the case of twelve "
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
@@ -1792,7 +1801,7 @@ msgstr ""
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
 
-#: data/help.cfg:241
+#: data/help.cfg:243
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -1806,11 +1815,11 @@ msgstr ""
 "Delfador), or units who join you during a scenario (such as the Horseman in "
 "the second scenario of Heir to the Throne) will usually have the Loyal trait."
 
-#: data/help.cfg:246
+#: data/help.cfg:248
 msgid "Wrap Up"
 msgstr "Wrap Up"
 
-#: data/help.cfg:247
+#: data/help.cfg:249
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1825,42 +1834,42 @@ msgstr ""
 "everything you need to know to play the Heir to the Throne campaign. Have "
 "fun, and good luck!"
 
-#: data/help.cfg:258
+#: data/help.cfg:260
 msgid "License"
 msgstr "Licence"
 
-#: data/help.cfg:265
-msgid ""
-"Most units have two traits. However, Undead units are assigned the single "
-"trait 'Undead', and Woses do not receive any traits. Traits are "
-"modifications that change a unit's attributes slightly. They are usually "
-"randomly assigned to a unit when it is recruited."
-msgstr ""
-"Most units have two traits. However, Undead units are assigned the single "
-"trait 'Undead', and Woses do not receive any traits. Traits are "
-"modifications that change a unit's attributes slightly. They are usually "
-"randomly assigned to a unit when it is recruited."
-
 #: data/help.cfg:267
 msgid ""
-"\n"
-"\n"
-"The traits that are available to all non-Undead units are "
-"<ref>dst=traits_intelligent text=Intelligent</ref>, <ref>dst=traits_quick "
-"text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
-"<ref>dst=traits_strong text=Strong</ref>."
+"Most units have two traits. However, Undead units are assigned the single "
+"trait 'Undead', and Woses do not receive any traits. Traits are "
+"modifications that change a unit's attributes slightly. They are usually "
+"randomly assigned to a unit when it is recruited."
 msgstr ""
-"\n"
-"\n"
-"The traits that are available to all non-Undead units are "
-"<ref>dst=traits_intelligent text=Intelligent</ref>, <ref>dst=traits_quick "
-"text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
-"<ref>dst=traits_strong text=Strong</ref>."
+"Most units have two traits. However, Undead units are assigned the single "
+"trait 'Undead', and Woses do not receive any traits. Traits are "
+"modifications that change a unit's attributes slightly. They are usually "
+"randomly assigned to a unit when it is recruited."
 
 #: data/help.cfg:269
 msgid ""
 "\n"
 "\n"
+"The traits that are available to all non-Undead units are "
+"<ref>dst=traits_intelligent text=Intelligent</ref>, <ref>dst=traits_quick "
+"text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
+"<ref>dst=traits_strong text=Strong</ref>."
+msgstr ""
+"\n"
+"\n"
+"The traits that are available to all non-Undead units are "
+"<ref>dst=traits_intelligent text=Intelligent</ref>, <ref>dst=traits_quick "
+"text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
+"<ref>dst=traits_strong text=Strong</ref>."
+
+#: data/help.cfg:271
+msgid ""
+"\n"
+"\n"
 "Other traits that may be assigned to units are <ref>dst=traits_dextrous "
 "text=Dextrous</ref>, <ref>dst=traits_loyal text=Loyal</ref>, and "
 "<ref>dst=traits_undead text=Undead</ref>."
@@ -1871,15 +1880,15 @@ msgstr ""
 "text=Dextrous</ref>, <ref>dst=traits_loyal text=Loyal</ref>, and "
 "<ref>dst=traits_undead text=Undead</ref>."
 
-#: data/help.cfg:274
+#: data/help.cfg:276
 msgid "Intelligent"
 msgstr "Intelligent"
 
-#: data/help.cfg:275
+#: data/help.cfg:277
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "Intelligent units require 20% less experience than usual to advance."
 
-#: data/help.cfg:277
+#: data/help.cfg:279
 msgid ""
 "\n"
 "\n"
@@ -1897,15 +1906,15 @@ msgstr ""
 "significant a change as advancing a level. If you have many 'maximum level' "
 "units you may wish to recall units with more desirable traits."
 
-#: data/help.cfg:282
+#: data/help.cfg:284
 msgid "Quick"
 msgstr "Quick"
 
-#: data/help.cfg:283
+#: data/help.cfg:285
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgstr "Quick units have 1 extra movement point, but 10% less HP than usual."
 
-#: data/help.cfg:285
+#: data/help.cfg:287
 msgid ""
 "\n"
 "\n"
@@ -1925,15 +1934,15 @@ msgstr ""
 "without this trait and are subsequently less good at holding contested "
 "positions."
 
-#: data/help.cfg:290
+#: data/help.cfg:292
 msgid "Resilient"
 msgstr "Resilient"
 
-#: data/help.cfg:291
+#: data/help.cfg:293
 msgid "Resilient units have 10% +3 more HP than usual."
 msgstr "Resilient units have 10% +3 more HP than usual."
 
-#: data/help.cfg:293
+#: data/help.cfg:295
 msgid ""
 "\n"
 "\n"
@@ -1951,20 +1960,20 @@ msgstr ""
 "defence, or high resistances. Resilient units are especially useful for "
 "holding strategic positions against opponents."
 
-#: data/help.cfg:298
+#: data/help.cfg:300
 msgid "Strong"
 msgstr "Strong"
 
-#: data/help.cfg:299
-msgid ""
-"Strong units do 1 more damage for every successful strike in melee combat, "
-"and have 1 more HP."
-msgstr ""
-"Strong units do 1 more damage for every successful strike in melee combat, "
-"and have 1 more HP."
-
 #: data/help.cfg:301
 msgid ""
+"Strong units do 1 more damage for every successful strike in melee combat, "
+"and have 1 more HP."
+msgstr ""
+"Strong units do 1 more damage for every successful strike in melee combat, "
+"and have 1 more HP."
+
+#: data/help.cfg:303
+msgid ""
 "\n"
 "\n"
 "While useful for any close-combat unit, Strong is most effective for units "
@@ -1979,30 +1988,30 @@ msgstr ""
 "can be very useful when a tiny bit of extra damage is all that is needed to "
 "turn a damaging stroke into a killing blow."
 
-#: data/help.cfg:306
+#: data/help.cfg:308
 msgid "Fearless"
 msgstr ""
 
-#: data/help.cfg:307
+#: data/help.cfg:309
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
-#: data/help.cfg:312
+#: data/help.cfg:314
 msgid "Loyal"
 msgstr "Loyal"
 
-#: data/help.cfg:313
-msgid ""
-"Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
-"of every turn, which is equal to their level. Loyal units do not incur this "
-"cost."
-msgstr ""
-"Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
-"of every turn, which is equal to their level. Loyal units do not incur this "
-"cost."
-
 #: data/help.cfg:315
 msgid ""
+"Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
+"of every turn, which is equal to their level. Loyal units do not incur this "
+"cost."
+msgstr ""
+"Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
+"of every turn, which is equal to their level. Loyal units do not incur this "
+"cost."
+
+#: data/help.cfg:317
+msgid ""
 "\n"
 "\n"
 "During campaigns, certain units may opt to join the player's forces of their "
@@ -2021,18 +2030,18 @@ msgstr ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 
-#: data/help.cfg:320
+#: data/help.cfg:322
 msgid "trait^Undead"
 msgstr "Undead"
 
-#: data/help.cfg:321
+#: data/help.cfg:323
 #, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "Undead units are immune to poison."
 
-#: data/help.cfg:323
+#: data/help.cfg:325
 #, fuzzy
 msgid ""
 "\n"
@@ -2049,18 +2058,18 @@ msgstr ""
 "them. This can make them invaluable in dealing with foes that use poison in "
 "conjunction with their attacks."
 
-#: data/help.cfg:328
+#: data/help.cfg:330
 msgid "Dextrous"
 msgstr "Dextrous"
 
-#: data/help.cfg:329
-msgid ""
-"Dextrous units do 1 more damage for every successful strike in ranged combat."
-msgstr ""
-"Dextrous units do 1 more damage for every successful strike in ranged combat."
-
 #: data/help.cfg:331
 msgid ""
+"Dextrous units do 1 more damage for every successful strike in ranged combat."
+msgstr ""
+"Dextrous units do 1 more damage for every successful strike in ranged combat."
+
+#: data/help.cfg:333
+msgid ""
 "\n"
 "\n"
 "Dextrous is a trait possessed only by Elves. The Elven people are known for "
@@ -2075,21 +2084,21 @@ msgstr ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 
-#: data/help.cfg:336
+#: data/help.cfg:338
 msgid "Healthy"
 msgstr ""
 
-#: data/help.cfg:337
+#: data/help.cfg:339
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and "
 "recover more quickly when resting."
 msgstr ""
 
-#: data/help.cfg:343 data/terrain.cfg:475
+#: data/help.cfg:345 data/terrain.cfg:473 data/terrain.cfg:482
 msgid "Grassland"
 msgstr "Grassland"
 
-#: data/help.cfg:348
+#: data/help.cfg:350
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -2107,11 +2116,11 @@ msgstr ""
 "\n"
 "Most units have defence of 30 to 40% on grassland."
 
-#: data/help.cfg:353 data/terrain.cfg:604
+#: data/help.cfg:355 data/terrain.cfg:611
 msgid "Road"
 msgstr "Road"
 
-#: data/help.cfg:356
+#: data/help.cfg:358
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -2121,11 +2130,11 @@ msgstr ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 
-#: data/help.cfg:361 data/terrain.cfg:450
+#: data/help.cfg:363 data/terrain.cfg:450
 msgid "Forest"
 msgstr "Forest"
 
-#: data/help.cfg:368
+#: data/help.cfg:370
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -2157,11 +2166,11 @@ msgstr ""
 "Elves, on the other hand, enjoy 60 to 70% defence, even their mounted units. "
 "Dwarves generally receive only 30% defence in forests."
 
-#: data/help.cfg:373 data/terrain.cfg:521
+#: data/help.cfg:375 data/terrain.cfg:528
 msgid "Hills"
 msgstr "Hills"
 
-#: data/help.cfg:378
+#: data/help.cfg:380
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2183,11 +2192,11 @@ msgstr ""
 "Most units have about 50% defence in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defence in hills."
 
-#: data/help.cfg:383 data/terrain.cfg:534 data/terrain.cfg:544
+#: data/help.cfg:385 data/terrain.cfg:541 data/terrain.cfg:551
 msgid "Mountains"
 msgstr "Mountains"
 
-#: data/help.cfg:388
+#: data/help.cfg:390
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2209,11 +2218,11 @@ msgstr ""
 "\n"
 "Most units receive about 60% defence in mountains, whereas Dwarves enjoy 70%."
 
-#: data/help.cfg:393 data/terrain.cfg:627
+#: data/help.cfg:395 data/terrain.cfg:634
 msgid "Swamp"
 msgstr "Swamp"
 
-#: data/help.cfg:398
+#: data/help.cfg:400
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2233,11 +2242,11 @@ msgstr ""
 "Most units make do with 30% defence in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 
-#: data/help.cfg:403 data/terrain.cfg:886
+#: data/help.cfg:405 data/terrain.cfg:927
 msgid "Shallow Water"
 msgstr "Shallow Water"
 
-#: data/help.cfg:408
+#: data/help.cfg:410
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2259,11 +2268,11 @@ msgstr ""
 "Most units make do with 20 to 30% defence in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 
-#: data/help.cfg:413 data/terrain.cfg:875
+#: data/help.cfg:415 data/terrain.cfg:916
 msgid "Deep Water"
 msgstr "Deep Water"
 
-#: data/help.cfg:418
+#: data/help.cfg:420
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2277,11 +2286,11 @@ msgstr ""
 "\n"
 "Mermen and Naga both receive 50% defence in deep water, with full movement."
 
-#: data/help.cfg:423 data/terrain.cfg:48
+#: data/help.cfg:425 data/terrain.cfg:48
 msgid "Snow"
 msgstr "Snow"
 
-#: data/help.cfg:428
+#: data/help.cfg:430
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -2295,11 +2304,11 @@ msgstr ""
 "\n"
 "Most units have 20 to 40% defence in snow."
 
-#: data/help.cfg:433 data/terrain.cfg:37
+#: data/help.cfg:435 data/terrain.cfg:37
 msgid "Ice"
 msgstr "Ice"
 
-#: data/help.cfg:436
+#: data/help.cfg:438
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -2309,11 +2318,11 @@ msgstr ""
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 
-#: data/help.cfg:441 data/terrain.cfg:169
+#: data/help.cfg:443 data/terrain.cfg:169
 msgid "Castle"
 msgstr "Castle"
 
-#: data/help.cfg:448
+#: data/help.cfg:450
 #, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -2335,11 +2344,11 @@ msgstr ""
 "\n"
 "Most units have about 60% defence in a castle."
 
-#: data/help.cfg:453 data/terrain.cfg:402
+#: data/help.cfg:455 data/terrain.cfg:402
 msgid "Sand"
 msgstr "Sand"
 
-#: data/help.cfg:458
+#: data/help.cfg:460
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2353,11 +2362,11 @@ msgstr ""
 "\n"
 "Most units receive 20 to 40% defence in Sand."
 
-#: data/help.cfg:463 data/terrain.cfg:381
+#: data/help.cfg:465 data/terrain.cfg:381
 msgid "Desert"
 msgstr "Desert"
 
-#: data/help.cfg:466
+#: data/help.cfg:468
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -2367,18 +2376,20 @@ msgstr ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 
-#: data/help.cfg:471 data/terrain.cfg:663
+#: data/help.cfg:473 data/terrain.cfg:650
 msgid "Cave"
 msgstr "Cave"
 
-#: data/help.cfg:476
+#: data/help.cfg:478
+#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
 "both slowed down and hindered in defense. Dwarves and Trolls, who make their "
 "homes in caves, both have a relatively easy time navigating this terrain, "
 "especially dwarves, who by dint of their small size can navigate many "
-"obstacles that other races cannot.\n"
+"obstacles that other races cannot. Occasionally caves are "
+"<ref>dst=terrain_illuminated_cave text=Illuminated</ref>.\n"
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
@@ -2391,18 +2402,20 @@ msgstr ""
 "\n"
 "Most units receive 20 to 40% defence in Caves, whereas dwarves have 50%."
 
-#: data/help.cfg:481 data/terrain.cfg:652
+#: data/help.cfg:483 data/terrain.cfg:690
 msgid "Rockbound Cave"
 msgstr "Rockbound Cave"
 
-#: data/help.cfg:486
+#: data/help.cfg:488
+#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
 "cavern which reduces efficiency of most units, but shoulders defense. "
 "Dwarves and Trolls, who are main settlers of caves, have a relatively easy "
 "time navigating this terrain. Dwarves, who by dint of their small size have "
-"the full advantage of navigation in such topography.\n"
+"the full advantage of navigation in such topography. Occasionally caves are "
+"<ref>dst=terrain_illuminated_cave text=Illuminated</ref>\n"
 "\n"
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
@@ -2417,18 +2430,18 @@ msgstr ""
 "Most units have about 50% defence in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defence in Rockbound caves."
 
-#: data/help.cfg:491
+#: data/help.cfg:493
 msgid "Illuminated Cave"
 msgstr "Illuminated Cave"
 
 #: data/help.cfg:496
+#, fuzzy
 msgid ""
-"Illuminated cave is a patch of ground where light from the surface shines "
-"down into the gloomy darkness.  This provides an attack bonus for lawful "
-"units and removes the attack bonus from chaotic units. In all other regards "
-"this terrain is functionally identical to normal cave terrain.\n"
-"\n"
-"Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
+"Rare patches of the underground world are illuminated by light from the "
+"surface shining down into the gloomy darkness.  This provides an attack "
+"bonus for lawful units and removes the attack bonus from chaotic units. In "
+"all other regards this terrain is functionally identical to normal cave "
+"terrains."
 msgstr ""
 "Illuminated cave is a patch of ground where light from the surface shines "
 "down into the gloomy darkness.  This provides an attack bonus for lawful "
@@ -2437,7 +2450,7 @@ msgstr ""
 "\n"
 "Most units receive 20 to 40% defence in Caves, whereas dwarves have 50%."
 
-#: data/help.cfg:501 data/terrain.cfg:643
+#: data/help.cfg:501 data/terrain.cfg:670
 msgid "Mushroom Grove"
 msgstr "Mushroom Grove"
 
@@ -2463,7 +2476,7 @@ msgstr ""
 "Most units receive 50% to 60% defence in mushroom groves, whereas cavalry "
 "receive only 20%."
 
-#: data/help.cfg:511 data/terrain.cfg:484
+#: data/help.cfg:511 data/terrain.cfg:491
 msgid "Savanna"
 msgstr "Savanna"
 
@@ -2477,12 +2490,12 @@ msgstr ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 
-#: data/help.cfg:519 data/terrain.cfg:690 data/terrain.cfg:702
-#: data/terrain.cfg:716 data/terrain.cfg:729 data/terrain.cfg:744
-#: data/terrain.cfg:756 data/terrain.cfg:767 data/terrain.cfg:779
-#: data/terrain.cfg:791 data/terrain.cfg:803 data/terrain.cfg:817
-#: data/terrain.cfg:829 data/terrain.cfg:843 data/terrain.cfg:859
-#: src/terrain.cpp:114
+#: data/help.cfg:519 data/terrain.cfg:719 data/terrain.cfg:731
+#: data/terrain.cfg:745 data/terrain.cfg:758 data/terrain.cfg:773
+#: data/terrain.cfg:785 data/terrain.cfg:796 data/terrain.cfg:808
+#: data/terrain.cfg:820 data/terrain.cfg:832 data/terrain.cfg:846
+#: data/terrain.cfg:858 data/terrain.cfg:872 data/terrain.cfg:888
+#: data/terrain.cfg:900 src/terrain.cpp:114
 msgid "Village"
 msgstr "Village"
 
@@ -2510,11 +2523,29 @@ msgstr ""
 "Most units have 50 to 60% defence in villages, whereas cavalry receive only "
 "40%."
 
-#: data/help.cfg:531 data/terrain.cfg:558
+#: data/help.cfg:531
+#, fuzzy
+msgid "Submerged Village"
+msgstr "Owned village"
+
+#: data/help.cfg:536
+msgid ""
+"Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
+"creatures are at home here, land-dwellers have a hard time navigating and "
+"defending these villages. However, like any village, the facilites are "
+"available to all creatures which allow units to tend to their wounds. Any "
+"unit stationed in a village can heal eight hitpoints each turn, or be cured "
+"of poison.\n"
+"\n"
+"Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
+"units usually have a low defence."
+msgstr ""
+
+#: data/help.cfg:541 data/terrain.cfg:565
 msgid "Chasm"
 msgstr "Chasm"
 
-#: data/help.cfg:534
+#: data/help.cfg:544
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2526,11 +2557,11 @@ msgstr ""
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 
-#: data/help.cfg:539 data/terrain.cfg:567
+#: data/help.cfg:549 data/terrain.cfg:574
 msgid "Lava"
 msgstr "Lava"
 
-#: data/help.cfg:542
+#: data/help.cfg:552
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2544,11 +2575,11 @@ msgstr ""
 "illuminating the area immediately above it. This provides an attack bonus "
 "for lawful units and removes the attack bonus from chaotic units."
 
-#: data/help.cfg:547 data/terrain.cfg:898
+#: data/help.cfg:557 data/terrain.cfg:939
 msgid "River Ford"
 msgstr "River Ford"
 
-#: data/help.cfg:550
+#: data/help.cfg:560
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2564,14 +2595,14 @@ msgstr ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 
-#: data/help.cfg:555 data/terrain.cfg:62 data/terrain.cfg:72
+#: data/help.cfg:565 data/terrain.cfg:62 data/terrain.cfg:72
 #: data/terrain.cfg:82 data/terrain.cfg:93 data/terrain.cfg:103
 #: data/terrain.cfg:113 data/terrain.cfg:124 data/terrain.cfg:134
 #: data/terrain.cfg:144
 msgid "Bridge"
 msgstr "Bridge"
 
-#: data/help.cfg:560
+#: data/help.cfg:570
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2598,11 +2629,11 @@ msgstr ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 
-#: data/help.cfg:565 data/terrain.cfg:924
+#: data/help.cfg:575 data/terrain.cfg:965
 msgid "Cave Wall"
 msgstr "Cave Wall"
 
-#: data/help.cfg:568
+#: data/help.cfg:578
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2610,23 +2641,23 @@ msgstr ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveller."
 
-#: data/help.cfg:573
+#: data/help.cfg:583
 #, fuzzy
 msgid "Impassable Mountain"
 msgstr "Impassable Mountains"
 
-#: data/help.cfg:576
+#: data/help.cfg:586
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such moutains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 
-#: data/help.cfg:581
+#: data/help.cfg:591
 msgid "General commands"
 msgstr "General commands"
 
-#: data/help.cfg:585
+#: data/help.cfg:595
 #, fuzzy
 msgid ""
 "\n"
@@ -2636,7 +2667,7 @@ msgstr ""
 "\n"
 "Quit the scenario (without prompting)."
 
-#: data/help.cfg:588
+#: data/help.cfg:598
 #, fuzzy
 msgid ""
 "\n"
@@ -2646,7 +2677,7 @@ msgstr ""
 "\n"
 "Save the game (without prompting)."
 
-#: data/help.cfg:591
+#: data/help.cfg:601
 #, fuzzy
 msgid ""
 "\n"
@@ -2656,7 +2687,7 @@ msgstr ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 
-#: data/help.cfg:594
+#: data/help.cfg:604
 #, fuzzy
 msgid ""
 "\n"
@@ -2666,7 +2697,7 @@ msgstr ""
 "\n"
 "Redraw the screen."
 
-#: data/help.cfg:597
+#: data/help.cfg:607
 #, fuzzy
 msgid ""
 "\n"
@@ -2678,18 +2709,18 @@ msgstr ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 
-#: data/help.cfg:598
+#: data/help.cfg:608
 #, fuzzy
 msgid "Bring up theme selection menu."
 msgstr ""
 "\n"
 "Bring up theme selection menu."
 
-#: data/help.cfg:603
+#: data/help.cfg:613
 msgid "Multiplayer commands"
 msgstr "Multiplayer commands"
 
-#: data/help.cfg:607
+#: data/help.cfg:617
 #, fuzzy
 msgid ""
 "\n"
@@ -2703,7 +2734,7 @@ msgstr ""
 "controls that side needs to issue this command. If you don't provide side, "
 "'1' is assumed."
 
-#: data/help.cfg:610
+#: data/help.cfg:620
 #, fuzzy
 msgid ""
 "\n"
@@ -2713,7 +2744,7 @@ msgstr ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 
-#: data/help.cfg:613
+#: data/help.cfg:623
 #, fuzzy
 msgid ""
 "\n"
@@ -2725,7 +2756,7 @@ msgstr ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 
-#: data/help.cfg:616
+#: data/help.cfg:626
 #, fuzzy
 msgid ""
 "\n"
@@ -2739,7 +2770,7 @@ msgstr ""
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
 
-#: data/help.cfg:619
+#: data/help.cfg:629
 #, fuzzy
 msgid ""
 "\n"
@@ -2750,7 +2781,7 @@ msgstr ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 
-#: data/help.cfg:622
+#: data/help.cfg:632
 #, fuzzy
 msgid ""
 "\n"
@@ -2762,7 +2793,7 @@ msgstr ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 
-#: data/help.cfg:623
+#: data/help.cfg:633
 msgid ""
 "\n"
 "Clear chat messages."
@@ -3965,40 +3996,44 @@ msgstr ""
 "#Opponent moves the balls to your end zone more times than you move them to "
 "the opponent's end zone"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:196
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:473
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:32
+msgid "{TYPE}"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:178
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:424
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "Red scores! Current score is $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:244
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:521
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:220
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:466
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "Blue scores! Current score is $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:334
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:611
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:304
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:550
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:336
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:613
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:306
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:552
 msgid "Yes!"
 msgstr "Yes!"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:358
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:635
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:328
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:574
 msgid "No"
 msgstr "No"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:658
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:597
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "Blue team wins! Final score: $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:670
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:609
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "Red team wins! Final score: $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:682
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:621
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Draw! Final score: $redscore-$bluescore"
 
@@ -4869,33 +4904,38 @@ msgstr "Great Tree"
 msgid "Tropical Forest"
 msgstr "Tropical Forest"
 
-#: data/terrain.cfg:499
+#: data/terrain.cfg:506
 msgid "Snow Hills"
 msgstr "Snow Hills"
 
-#: data/terrain.cfg:510
+#: data/terrain.cfg:517
 msgid "Dunes"
 msgstr "Dunes"
 
-#: data/terrain.cfg:584
+#: data/terrain.cfg:591
 #, fuzzy
 msgid "Desert road"
 msgstr "Desert"
 
-#: data/terrain.cfg:594
+#: data/terrain.cfg:601
 msgid "Dirt"
 msgstr "Dirt"
 
-#: data/terrain.cfg:614
+#: data/terrain.cfg:621
 #, fuzzy
 msgid "Farmland"
 msgstr "marksman"
 
-#: data/terrain.cfg:672
+#: data/terrain.cfg:659
 msgid "Cave Lit"
 msgstr "Cave Lit"
 
-#: data/terrain.cfg:914
+#: data/terrain.cfg:701
+#, fuzzy
+msgid "Rockbound Cave Lit"
+msgstr "Rockbound Cave"
+
+#: data/terrain.cfg:955
 msgid "Impassable Mountains"
 msgstr "Impassable Mountains"
 
@@ -4914,7 +4954,7 @@ msgid "End Turn"
 msgstr "End Turn"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2438
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2440
 msgid "HP"
 msgstr "HP"
 
@@ -10809,7 +10849,7 @@ msgstr "Statistics"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:294 src/unit.cpp:2469
+#: src/menu_events.cpp:294 src/unit.cpp:2471
 msgid "Moves"
 msgstr "Moves"
 
@@ -11230,12 +11270,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2568
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2570
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2575
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2577
 msgid ")"
 msgstr ")"
 
@@ -12000,15 +12040,15 @@ msgstr "Help"
 msgid "Help Wesnoth by sending us information"
 msgstr "Help Wesnoth by sending us information"
 
-#: src/unit.cpp:2404 src/unit.cpp:2573
+#: src/unit.cpp:2406 src/unit.cpp:2575
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2486
+#: src/unit.cpp:2488
 msgid "XP to advance"
 msgstr "XP to advance"
 
-#: src/unit.cpp:2564
+#: src/unit.cpp:2566
 msgid ": "
 msgstr ": "
 
