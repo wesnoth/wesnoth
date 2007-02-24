@@ -625,7 +625,7 @@ void check_checksums(display& disp,const unit_map& units,const config& cfg)
 		if(u == units.end()) {
 			std::stringstream message;
 			message << "non existant unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
-			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE);
+			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE,false);
 			continue;
 		}
 		std::string check;
@@ -633,7 +633,7 @@ void check_checksums(display& disp,const unit_map& units,const config& cfg)
 		if(check != (**ci)["value"]) {
 			std::stringstream message;
 			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE);
+			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE,false);
 		}
 	}
 }
@@ -726,14 +726,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				bool is_lobby_join_of_friend = ((*cignore)[buf] == "friend");
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
 				if((!replayer.is_skipping() || is_whisper) &&
-                (!is_lobby_join || ((is_lobby_join && preferences::lobby_joins() == preferences::SHOW_ALL) || (is_lobby_join_of_friend && preferences::lobby_joins() == preferences::SHOW_FRIENDS)))) {
-					if(preferences::message_bell()) {
-						sound::play_sound(game_config::sounds::receive_message);
-					}
-					
+                (!is_lobby_join || 
+				 		((is_lobby_join && preferences::lobby_joins() == preferences::SHOW_ALL) || 
+						(is_lobby_join_of_friend && preferences::lobby_joins() == preferences::SHOW_FRIENDS)))) {
 					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
 					disp.add_chat_message(speaker_name,side,(*child)["message"],
-										  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
+						  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE, preferences::message_bell());
 				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {

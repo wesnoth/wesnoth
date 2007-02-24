@@ -2395,7 +2395,7 @@ namespace {
 	const SDL_Color chat_message_bg     = {0,0,0,140};
 }
 
-void display::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type)
+void display::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type, bool bell)
 {
 	config* cignore;
 	bool ignored = false;
@@ -2413,6 +2413,10 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	if (!ignored){
 		bool action;
 		std::string msg;
+
+		if (bell) {
+			sound::play_sound(game_config::sounds::receive_message);
+		}
 
 		if(message.find("/me ") == 0) {
 			msg.assign(message,4,message.size());

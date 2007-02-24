@@ -1483,7 +1483,7 @@ namespace events{
 
 	void menu_handler::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type)
 	{
-		gui_->add_chat_message(speaker,side,message,type);
+		gui_->add_chat_message(speaker,side,message,type,false);
 	}
 
 	chat_handler::~chat_handler()
