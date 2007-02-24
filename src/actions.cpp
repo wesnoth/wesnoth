@@ -223,11 +223,12 @@ gamemap::location under_leadership(const unit_map& units,
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-							   int attacker_weapon, int defender_weapon, double harm_weight, const combatant *prev_def)
+							   int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def)
 	: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
 {
 	const unit& attacker = units.find(attacker_loc)->second;
 	const unit& defender = units.find(defender_loc)->second;
+	const double harm_weight = 1.0 - aggression;
 
 	// A Python AI can send an invalid weapon and crash Wesnoth
 	// Haven't found a way for the Python API to prevent this
@@ -458,8 +459,8 @@ bool battle_context::better_combat(const combatant &us_a, const combatant &them_
 		return true;
 
 	// Compare: damage to them - damage to us (average_hp replaces -damage)
-	a = us_a.average_hp() - them_a.average_hp();
-	b = us_b.average_hp() - them_b.average_hp();
+	a = us_a.average_hp()*harm_weight - them_a.average_hp();
+	b = us_b.average_hp()*harm_weight - them_b.average_hp();
 	if (a - b < -0.01)
 		return false;
 	if (a - b > 0.01)

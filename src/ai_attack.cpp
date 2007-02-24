@@ -368,7 +368,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			from_cache = true;
 			bc = new battle_context(usc->second.first, usc->second.second);
 		} else {
-			bc = new battle_context(map, teams, units, status, gamedata, m->second, target, att_weapon, def_weapon, 1.0 - aggression, prev_def);
+			bc = new battle_context(map, teams, units, status, gamedata, m->second, target, att_weapon, def_weapon, aggression, prev_def);
 		}
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);

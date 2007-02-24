@@ -108,7 +108,7 @@ public:
 	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 				   const gamestatus& status, const game_data& gamedata,
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-				   int attacker_weapon = -1, int defender_weapon = -1, double harm_weight = 1.0, const combatant *prev_def = NULL);
+				   int attacker_weapon = -1, int defender_weapon = -1, double aggression = 0.0, const combatant *prev_def = NULL);
 
 	// Used by the AI which caches unit_stats
 	battle_context(const unit_stats &att, const unit_stats &def);
