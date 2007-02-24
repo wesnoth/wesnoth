@@ -291,11 +291,10 @@ Version 1.3-svn:
    * first turn of a game is saved again (fixes bug #7909 and bug #8117)
    * reduce CPU usage by removing calls to SDL_GetTicks for idle animations
    * changed network thread management to be more scalable, both with an upper
-     and lower number of threads
+   and lower number of threads
    * enabled python as default, to disable it use --disable-python
    * various code cleanups
    * replaced KDE/Gnome desktop support with generic freedesktop standard
-   * fixed the AI getting 'stuck' if no village reachable (bug #7215)
    * if a unit gains enough XP to gain 2 levels this will be done directly
 
 Version 1.2:

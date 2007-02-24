@@ -1076,13 +1076,6 @@ std::vector<std::pair<gamemap::location,gamemap::location> > ai::get_village_com
 				possible_moves, srcdst, dstsrc, enemy_srcdst, enemy_dstsrc, leader,
 				taken_villages, moved_units, village_moves, i+1);
 
-		if(res.size() == 0) {
-			// didn't find a result, abort otherwise we might enter
-			// a very lengthy recursion see bug #7215
-			LOG_AI << "No result found breaking loop...\n";
-			break;
-		}
-
 		//the result is better if it results in getting more villages, or if it results in the same number of villages,
 		//but the leader ends closer to their keep
 		const bool result_better = res.size() >= result.size() || 
