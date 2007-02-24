@@ -151,9 +151,6 @@ public:
 	string_map values;
 
 private:
-	//detach child nodes without deleting them (eg. for moving)
-	void detach_children(const std::string& key);
-
 	//a list of all children of this node.
 	child_map children;
 
