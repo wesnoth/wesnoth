@@ -2351,6 +2351,10 @@ bool pump()
 		const std::string& event_name = ev.name;
 		typedef std::multimap<std::string,event_handler>::iterator itor;
 
+		// clear the unit cache, since the best clearing time is hard to figure out
+		// due to status changes by WML every event will flush the cache.
+		unit::clear_status_caches();
+
 		//find all handlers for this event in the map
 		std::pair<itor,itor> i = events_map.equal_range(event_name);
 

@@ -46,6 +46,10 @@ class unit_ability_list
 class unit
 {
 	public:
+		// clear the status caches for esch unit, this is should be called it
+		// the status of a unit changes
+		static void clear_status_caches();
+
 		friend struct unit_movement_resetter;
 		// Copy constructor
 		unit(const unit& u);
@@ -292,7 +296,7 @@ class unit
 
 		unit_race::GENDER generate_gender(const unit_type& type, bool gen);
 		std::string image_mods() const;
-
+		
 	private:
 
 		/*
@@ -406,6 +410,13 @@ class unit
 		const gamestatus* gamestatus_;
 		const std::vector<team>* teams_;
 
+		// hold the visibility status cache for a unit, mutable since it's a cache
+		mutable std::map<gamemap::location, bool> invisibility_cache_;
+
+		// clears the cache, since we don't change the state of the object
+		// we're marked const (also required since the objects in the cache
+		// need to be marked const.)
+		void clear_visibility_cache() const { invisibility_cache_.clear(); }
 };
 
 //object which temporarily resets a unit's movement

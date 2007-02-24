@@ -48,6 +48,11 @@ namespace {
 	const std::string ModificationTypes[] = { "object", "trait", "advance" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
 	                                    sizeof(*ModificationTypes);
+
+	// hold pointers to units which have data in their internal caches
+	// the destructor of an unit removes itself from the cache so
+	// the pointers are always valid
+	static std::vector<const unit *> units_with_cache;
 }
 
 static bool compare_unit_values(unit const &a, unit const &b)
@@ -218,6 +223,17 @@ unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 		set_state("not_living","yes");
 	}
 }
+
+void unit::clear_status_caches()
+{
+	for(std::vector<const unit *>::const_iterator itor = units_with_cache.begin();
+			itor != units_with_cache.end(); ++itor) {
+		(*itor)->clear_visibility_cache();
+	}
+
+	units_with_cache.clear();
+}
+
 unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
@@ -324,6 +340,13 @@ unit::~unit()
 
 	delete anim_;
 
+	// remove us from the status cache
+	std::vector<const unit *>::iterator itor = 
+		std::find(units_with_cache.begin(), units_with_cache.end(), this);
+
+	if(itor != units_with_cache.end()) {
+		units_with_cache.erase(itor);
+	}
 }
 
 
@@ -2976,24 +2999,31 @@ void unit::apply_modifications()
 bool unit::invisible(const gamemap::location& loc,
 		const unit_map& units,const std::vector<team>& teams) const
 {
-	bool is_inv = false;
-
-	static const std::string hides("hides");
-	if (utils::string_bool(get_state(hides))) {
-		is_inv = this->get_ability_bool("hides",loc);
+	// fetch from cache
+	std::map<gamemap::location, bool>::const_iterator itor = invisibility_cache_.find(loc);
+	if(itor != invisibility_cache_.end()) {
+		return itor->second;
 	}
 
+	// test hidden status
+	static const std::string hides("hides");
+	bool is_inv = (utils::string_bool(get_state(hides)) && get_ability_bool(hides,loc));
 	if(is_inv){
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-			if(teams[side_-1].is_enemy(u->second.side())) {
-				if(tiles_adjacent(loc,u->first))
-					return false;
-			}
+			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {				
+				is_inv = false;
+				break;
+			}		
 		}
-		return true;
 	}
 
-	return false;
+	// add to caches
+	if(invisibility_cache_.empty()) {
+		units_with_cache.push_back(this);
+	}
+	invisibility_cache_[loc] = is_inv;
+	
+	return is_inv;
 }
 
 int team_units(const unit_map& units, unsigned int side)
