@@ -152,17 +152,19 @@ void ai::do_attack_analysis(
 			}
 
 			//see if the current unit can reach that position
-			typedef std::multimap<location,location>::const_iterator Itor;
-			std::pair<Itor,Itor> its = dstsrc.equal_range(tiles[j]);
-			while(its.first != its.second) {
-				if(its.first->second == current_unit)
-					break;
-				++its.first;
-			}
+			if (tiles[j] != current_unit) {
+				typedef std::multimap<location,location>::const_iterator Itor;
+				std::pair<Itor,Itor> its = dstsrc.equal_range(tiles[j]);
+				while(its.first != its.second) {
+					if(its.first->second == current_unit)
+						break;
+					++its.first;
+				}
 
-			//if the unit can't move to this location
-			if(its.first == its.second || units_.find(tiles[j]) != units_.end()) {
-				continue;
+				//if the unit can't move to this location
+				if(its.first == its.second || units_.find(tiles[j]) != units_.end()) {
+					continue;
+				}
 			}
 
 			//check to see whether this move would be a backstab
@@ -556,7 +558,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 
 	std::vector<location> unit_locs;
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-		if(i->second.side() == team_num_) {
+		if(i->second.side() == team_num_ && i->second.attacks_left()) {
 			unit_locs.push_back(i->first);
 		}
 	}
