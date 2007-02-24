@@ -299,6 +299,8 @@ class unit
 		
 	private:
 
+		bool internal_matches_filter(const config& cfg,const gamemap::location& loc,
+			bool use_flat_tod) const;
 		/*
 		 * cfg: an ability WML structure
 		 */

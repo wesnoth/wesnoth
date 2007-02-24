@@ -737,6 +737,17 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, bool use_flat_tod) const
 {
+	scoped_wml_variable* auto_store;
+	if(map_ != NULL && loc.valid() && units_ != NULL) {
+		auto_store = new scoped_xy_unit("this_unit", loc.x, loc.y, *units_);
+	}
+	bool to_return = internal_matches_filter(orig_cfg, loc, use_flat_tod);
+	delete auto_store;
+	return to_return;
+}
+
+bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::location& loc, bool use_flat_tod) const
+{
 	vconfig tmp_vconf(&orig_cfg);
 	config cfg = tmp_vconf.get_parsed_config();
 	const std::string& description = cfg["description"];
@@ -847,8 +858,9 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, b
 			}
 		}
 
-		if(!has_weapon)
+		if(!has_weapon) {
 			return false;
+		}
 	}
 
 	if(role.empty() == false && role_ != role) {
@@ -859,8 +871,9 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, b
 		return false;
 	}
 
-	if (canrecruit.empty() == false && (canrecruit == "1") != can_recruit())
+	if (canrecruit.empty() == false && (canrecruit == "1") != can_recruit()) {
 		return false;
+	}
 
 	if(level.empty() == false && level_ != lexical_cast_default<int>(level,-1)) {
 		return false;
@@ -870,7 +883,7 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, b
 	//should not match if what is in the [not] tag does match
 	const config::child_list& negatives = cfg.get_children("not");
 	for(config::child_list::const_iterator not_it = negatives.begin(); not_it != negatives.end(); ++not_it) {
-		if(matches_filter(**not_it,loc)) {
+		if(internal_matches_filter(**not_it,loc,use_flat_tod)) {
 			return false;
 		}
 	}
@@ -885,10 +898,11 @@ bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, b
 		write(unit_cfg);
 		//now, match the kids, WML based
 		for(config::const_child_iterator i = my_range.first; i != my_range.second; ++i) {
-			if(!unit_cfg.matches(**i)) return false;
+			if(!unit_cfg.matches(**i)) {
+				return false;
+			}
 		}
 	}
-
 	return true;
 }
 
