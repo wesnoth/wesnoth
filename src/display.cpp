@@ -991,6 +991,9 @@ void display::draw_game_status()
 	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
 		draw_report(reports::TYPE(r));
 	}
+
+	// the mouse-over needs to update the visibility icon
+	draw_report(reports::UNIT_STATUS);
 }
 
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
