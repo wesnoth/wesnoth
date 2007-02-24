@@ -107,11 +107,11 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 
 		const config* const vars = level.child("variables");
 		if(vars != NULL) {
-			state.variables = *vars;
+			state.set_variables(*vars);
 		}
 		else{
 			if (state.snapshot.child("variables") != NULL){
-				state.variables = *state.snapshot.child("variables");
+				state.set_variables(*state.snapshot.child("variables"));
 			}
 		}
 	}

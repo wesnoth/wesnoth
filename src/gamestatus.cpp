@@ -475,7 +475,7 @@ game_state read_game(const game_data& data, const config* cfg)
 
 	const config* const vars = cfg->child("variables");
 	if(vars != NULL) {
-		res.variables = *vars;
+		res.set_variables(*vars);
 	}
 
 	const config* const replay = cfg->child("replay");
@@ -581,7 +581,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 
 	cfg["campaign_define"] = gamestate.campaign_define;
 
-	cfg.add_child("variables",gamestate.variables);
+	cfg.add_child("variables",gamestate.get_variables());
 
 	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
 	    i!=gamestate.players.end(); ++i) {
@@ -613,7 +613,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	out.write_key_val("campaign_type", gamestate.campaign_type);
 	out.write_key_val("difficulty", gamestate.difficulty);
 	out.write_key_val("campaign_define", gamestate.campaign_define);
-	out.write_child("variables", gamestate.variables);
+	out.write_child("variables", gamestate.get_variables());
 
 	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
 	    i!=gamestate.players.end(); ++i) {
@@ -1158,6 +1158,16 @@ config& game_state::get_variable_cfg(const std::string& key)
 void game_state::set_variable(const std::string& key, const t_string& value)
 {
 	variables[key] = value;
+}
+
+config& game_state::add_variable_cfg(const std::string& key, const config& value)
+{
+	return variables.add_child(key, value);
+}
+
+void game_state::clear_variable_cfg(const std::string& varname)
+{
+	variables.clear_children(varname);
 }
 
 void game_state::clear_variable(const std::string& varname)

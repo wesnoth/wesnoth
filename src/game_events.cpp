@@ -1679,10 +1679,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string& variable = cfg["variable"];
 		const std::string& mode = cfg["mode"];
 		bool cleared = false;
-
-		config& vars = state_of_game->variables;
 		if(mode != "replace" && mode != "append") {
-			vars.clear_children(variable);
+			state_of_game->clear_variable_cfg(variable);
 		}
 
 		const bool kill_units = utils::string_bool(cfg["kill"]);
@@ -1694,10 +1692,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			if(mode == "replace" && !cleared) {
-				vars.clear_children(variable);
+				state_of_game->clear_variable_cfg(variable);
 				cleared = true;
 			}
-			config& data = vars.add_child(variable);
+			config& data = state_of_game->add_variable_cfg(variable);
 			i->first.write(data);
 			i->second.write(data);
 
@@ -1723,10 +1721,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					}
 
 					if(mode == "replace" && !cleared) {
-						vars.clear_children(variable);
+						state_of_game->clear_variable_cfg(variable);
 						cleared = true;
 					}
-					config& data = vars.add_child(variable);
+					config& data = state_of_game->add_variable_cfg(variable);
 					j->write(data);
 					data["x"] = "recall";
 					data["y"] = "recall";
@@ -1819,7 +1817,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		static const t_string default_store = "location";
 		const t_string& store = variable.empty() ? default_store : variable;
 		wassert(state_of_game != NULL);
-		config &loc_store = state_of_game->get_variable_cfg(store);
+		config &loc_store = state_of_game->add_variable_cfg(store);
 		loc.write(loc_store);
 		game_map->write_terrain(loc, loc_store);
 	}
@@ -1845,7 +1843,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		radius_str = utils::interpolate_variables_into_string(radius_str, *state_of_game);
 		const vconfig unit_filter = cfg.child("filter");
 
-		state_of_game->variables.clear_children(variable);
+		state_of_game->clear_variable_cfg(variable);
 
 		std::vector<gamemap::location> locs = parse_location_range(x,y);
 		if(locs.size() > MaxLoop) {
@@ -1868,7 +1866,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				if (u == units->end() || !game_events::unit_matches_filter(u, unit_filter))
 					continue;
 			}
-			config &loc_store = state_of_game->variables.add_child(variable);
+			config &loc_store = state_of_game->add_variable_cfg(variable);
 			j->write(loc_store);
 			game_map->write_terrain(*j, loc_store);
 			++added;
@@ -2369,16 +2367,16 @@ bool pump()
 		if(i.first != i.second && state_of_game != NULL) {
 			char buf[50];
 			snprintf(buf,sizeof(buf),"%d",ev.loc1.x+1);
-			state_of_game->variables["x1"] = buf;
+			state_of_game->set_variable("x1", buf);
 
 			snprintf(buf,sizeof(buf),"%d",ev.loc1.y+1);
-			state_of_game->variables["y1"] = buf;
+			state_of_game->set_variable("y1", buf);
 
 			snprintf(buf,sizeof(buf),"%d",ev.loc2.x+1);
-			state_of_game->variables["x2"] = buf;
+			state_of_game->set_variable("x2", buf);
 
 			snprintf(buf,sizeof(buf),"%d",ev.loc2.y+1);
-			state_of_game->variables["y2"] = buf;
+			state_of_game->set_variable("y2", buf);
 		}
 
 		while(i.first != i.second) {

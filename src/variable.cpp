@@ -113,15 +113,19 @@ scoped_wml_variable::scoped_wml_variable(const std::string var_name,const config
 	var_name_(var_name)
 
 {
-	previous_val_= repos->variables;
-	repos->variables.clear_children(var_name);
-	repos->variables.add_child(var_name,var_value);
+	//previous_val_;
+	const config::child_list& children = repos->get_variables().get_children(var_name);
+	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
+		previous_val_.append(**i);
+	}
+	repos->clear_variable_cfg(var_name);
+	repos->add_variable_cfg(var_name, var_value);
 }
 scoped_wml_variable::~scoped_wml_variable()
 {
-	repos->variables.clear_children(var_name_);
+	repos->clear_variable_cfg(var_name_);
 	config::child_list old_val =previous_val_.get_children(var_name_);
 	for(config::child_list::iterator j=old_val.begin(); j != old_val.end() ; j++){
-		repos->variables.add_child(var_name_,**j);
+		repos->add_variable_cfg(var_name_,**j);
 	}
 }

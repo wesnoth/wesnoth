@@ -150,7 +150,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// when starting wesnoth --multiplayer there might be 
 		// no variables which leads to a segfault
 		if(gamestate.snapshot.child("variables") != NULL) {
-			gamestate.variables = *gamestate.snapshot.child("variables");
+			gamestate.set_variables(*gamestate.snapshot.child("variables"));
 		}
 		//get the current gold values of players so they don't start with the amount
 		//they had at the start of the scenario

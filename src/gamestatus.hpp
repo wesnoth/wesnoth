@@ -80,16 +80,23 @@ public:
 	// Return the Nth player, or NULL if no such player exists
 	player_info* get_player(const std::string& id);
 
+private:
 	config variables; //variables that have been set
+public:
+	const config& get_variables() const { return variables; }
+	void set_variables(const config& vars) { variables = vars; }
 
 	//Variable access
+
 	t_string& get_variable(const std::string& varname);
 	virtual const t_string& get_variable_const(const std::string& varname)const ;
-
 	config& get_variable_cfg(const std::string& varname);
+
 	void set_variable(const std::string& varname, const t_string& value);
+	config& add_variable_cfg(const std::string& varname, const config& value=config());
 
 	void clear_variable(const std::string& varname);
+	void clear_variable_cfg(const std::string& varname); //clears only the config children
 
 	std::string difficulty; //the difficulty level the game is being played on.
 
