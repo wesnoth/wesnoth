@@ -72,13 +72,40 @@ public:
 class scoped_wml_variable
 {
 public:
-	scoped_wml_variable(const std::string var_name,const config&var_value);
+	scoped_wml_variable(const std::string& var_name);
 	~scoped_wml_variable();
+	const std::string& name() const { return var_name_; }
+	virtual void activate() = 0;
+	void store(const config& var_value);
+	bool activated() const { return activated_; }
 private:
 	config previous_val_;
-	std::string var_name_;
+	const std::string var_name_;
+	bool activated_;
 };
 
+class scoped_xy_unit : public scoped_wml_variable
+{
+public:
+	scoped_xy_unit(const std::string& var_name, const int x, const int y, const unit_map& umap)
+		: scoped_wml_variable(var_name), x_(x), y_(y), umap_(umap) {}
+	void activate();
+private:
+	const int x_, y_;
+	const unit_map& umap_;
+};
+
+class scoped_recall_unit : public scoped_wml_variable
+{
+public:
+	scoped_recall_unit(const std::string& var_name, const std::string& player,
+		unsigned int recall_index) : scoped_wml_variable(var_name), player_(player),
+		recall_index_(recall_index) {}
+	void activate();
+private:
+	const std::string player_;
+	unsigned int recall_index_;
+};
 
 // Here should go a class which servers as a variable repository
 #if 0

@@ -1057,8 +1057,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				std::vector<std::string>::const_iterator si;
 				for(si = sides.begin(); si != sides.end(); ++si) {
 					int side_num = lexical_cast_default<int>(*si,1);
-
-					player_info* player=state_of_game->get_player((*teams)[side_num-1].save_id());
+					const std::string player_id = (*teams)[side_num-1].save_id();
+					player_info* player=state_of_game->get_player(player_id);
 
 					if(!player)
 						continue;
@@ -1069,6 +1069,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 							ui != player->available_units.end(); ++ui) {
 						wassert(game_data_ptr != NULL);
 						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+						scoped_recall_unit("this_unit", player_id,
+							(ui - player->available_units.begin()));
 						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
 							ui->assign_role(cfg["role"]);
 							found=true;
@@ -1086,6 +1088,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 							ui != pi->second.available_units.end(); ++ui) {
 						wassert(game_data_ptr != NULL);
 						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+						scoped_recall_unit("this_unit", pi->first,
+							(ui - pi->second.available_units.begin()));
 						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
 							ui->assign_role(cfg["role"]);
 							found=true;
@@ -1319,7 +1323,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		bool unit_recalled = false;
 		for(int index = 0; !unit_recalled && index < int(teams->size()); ++index) {
 			LOG_NG << "for side " << index << "...\n";
-			player_info* const player = state_of_game->get_player((*teams)[index].save_id());
+			const std::string player_id = (*teams)[index].save_id();
+			player_info* const player = state_of_game->get_player(player_id);
 
 			if(player == NULL) {
 				ERR_NG << "player not found!\n";
@@ -1332,6 +1337,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				LOG_NG << "checking unit against filter...\n";
 				wassert(game_data_ptr != NULL);
 				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+				scoped_recall_unit("this_unit", player_id, u - avail.begin());
 				if(game_events::unit_matches_filter(*u, cfg,gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
@@ -1652,6 +1658,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
 				wassert(game_data_ptr != NULL);
 				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+				scoped_recall_unit("this_unit", pi->first, j - avail_units.begin());
 				if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
                             j = avail_units.erase(j);
                           } else {
@@ -1715,6 +1722,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
 				wassert(game_data_ptr != NULL);
 				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
+				scoped_recall_unit("this_unit", pi->first, j - avail_units.begin());
 				if(game_events::unit_matches_filter(*j, filter,gamemap::location()) == false) {
 						++j;
 						continue;
@@ -2090,25 +2098,8 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
-	config tmp_cfg;
-	if(unit1!= units->end()) {
-		unit1->second.write(tmp_cfg);
-		tmp_cfg["x"] = lexical_cast<std::string,int>(ev.loc1.x+1);
-		tmp_cfg["y"] = lexical_cast<std::string,int>(ev.loc1.y+1);
-	} else {
-		tmp_cfg = config();
-	}
-	scoped_wml_variable first_unit("unit",tmp_cfg);
-
-	if(unit2!= units->end()) {
-		unit2->second.write(tmp_cfg);
-		tmp_cfg["x"] = lexical_cast<std::string,int>(ev.loc2.x+1);
-		tmp_cfg["y"] = lexical_cast<std::string,int>(ev.loc2.y+1);
-	} else {
-		tmp_cfg = config();
-	}
-	scoped_wml_variable second_unit("second_unit",tmp_cfg);
-
+	scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
+	scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
 
 	const vconfig::child_list first_filters = handler.first_arg_filters();
 	vconfig::child_list::const_iterator ffi;

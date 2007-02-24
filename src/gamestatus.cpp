@@ -24,6 +24,7 @@
 #include "preferences.hpp"
 #include "statistics.hpp"
 #include "util.hpp"
+#include "variable.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
@@ -991,6 +992,27 @@ namespace {
 const size_t MaxLoop = 1024;
 }
 
+void game_state::activate_scope_variable(std::string var_name) const
+{
+	if(recursive_)
+		return;
+	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
+	if(itor != var_name.end()) {
+		var_name.erase(itor, var_name.end());
+	}
+	std::vector<scoped_wml_variable*>::const_reverse_iterator rit;
+	for(rit = scoped_variables.rbegin(); rit != scoped_variables.rend(); ++rit) {
+		if((**rit).name() == var_name) {
+			recursive_ = true;
+			if(!(**rit).activated()) {
+				(**rit).activate();
+			}
+			recursive_ = false;
+			break;
+		}
+	}
+}
+
 void game_state::get_variable_internal_const(const std::string& key, const config& cfg,
 		const t_string** varout) const
 {
@@ -1121,6 +1143,7 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 t_string& game_state::get_variable(const std::string& key)
 {
 	t_string* res = NULL;
+	activate_scope_variable(key);
 	get_variable_internal(key, variables, &res, NULL);
 	if(res != NULL) {
 		return *res;
@@ -1133,6 +1156,7 @@ t_string& game_state::get_variable(const std::string& key)
 const t_string& game_state::get_variable_const(const std::string& key) const
 {
 	const t_string* res = NULL;
+	activate_scope_variable(key);
 	get_variable_internal_const(key, variables, &res);
 	if(res != NULL) {
 		return *res;
@@ -1145,6 +1169,7 @@ const t_string& game_state::get_variable_const(const std::string& key) const
 config& game_state::get_variable_cfg(const std::string& key)
 {
 	config* res = NULL;
+	activate_scope_variable(key);
 	get_variable_internal(key + ".", variables, NULL, &res);
 
 	if(res != NULL) {
@@ -1157,11 +1182,13 @@ config& game_state::get_variable_cfg(const std::string& key)
 
 void game_state::set_variable(const std::string& key, const t_string& value)
 {
+	activate_scope_variable(key);
 	variables[key] = value;
 }
 
 config& game_state::add_variable_cfg(const std::string& key, const config& value)
 {
+	activate_scope_variable(key);
 	return variables.add_child(key, value);
 }
 

@@ -21,6 +21,8 @@
 #include <string>
 #include <vector>
 
+class scoped_wml_variable;
+
 //an object which defines the current time of day
 struct time_of_day
 {
@@ -61,7 +63,7 @@ struct player_info
 class game_state : public variable_set
 {
 public:
-	game_state() : difficulty("NORMAL") {}
+	game_state() : difficulty("NORMAL"), recursive_(false) {}
 	std::string label; //name of the game (e.g. name of save file)
 	std::string version; //version game was created with.
 	std::string campaign_type; //type of the game - campaign, multiplayer etc
@@ -81,8 +83,12 @@ public:
 	player_info* get_player(const std::string& id);
 
 private:
-	config variables; //variables that have been set
+	mutable config variables; //mutable due to lazy-evaluation
+	void activate_scope_variable(std::string var_name) const;
+	mutable bool recursive_; //checks for recursion in activate_scope_variable()
 public:
+	std::vector<scoped_wml_variable*> scoped_variables;
+
 	const config& get_variables() const { return variables; }
 	void set_variables(const config& vars) { variables = vars; }
 
