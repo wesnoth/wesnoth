@@ -766,12 +766,7 @@ const color_range team::get_side_color_range(int side){
 
 const SDL_Color team::get_side_colour(int side)
 {
-	Uint32 rgb=get_side_color_range(side).rep();
-	SDL_Color color={ (0x00FF0000 & rgb)>>16,
-				       (0x0000FF00 & rgb)>>8,
-				       (0x000000FF & rgb),
-	                               0} ;
-	return color;
+	return int_to_color(get_side_color_range(side).rep());
 }
 
 std::string team::get_side_colour_index(int side)

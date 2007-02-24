@@ -81,10 +81,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 							if(*i1 != '0')
 							{
 								Uint32 rgb = team::get_side_rgb(lexical_cast<int, char>(*i1));
-								SDL_Color mid_colour = { (0x00FF0000 & rgb)>>16,
-									(0x0000FF00 & rgb)>>8,
-									(0x000000FF & rgb), 0} ;
-								*colour = mid_colour;
+								*colour = int_to_color(rgb);
 							}
 							++i1;
 						}

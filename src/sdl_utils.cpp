@@ -25,6 +25,15 @@
 #include <iostream>
 #include <map>
 
+SDL_Color int_to_color(const Uint32 rgb) {
+	SDL_Color to_return = {
+		(0x00FF0000 & rgb)>>16,
+		(0x0000FF00 & rgb)>>8,
+		(0x000000FF & rgb), 0
+	};
+	return to_return;
+}
+
 SDLKey sdl_keysym_from_name(std::string const &keyname)
 {
 	static bool initialized = false;
