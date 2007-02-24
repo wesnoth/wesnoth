@@ -42,6 +42,7 @@ public:
 	typedef std::vector<vconfig> child_list;
 	child_list get_children(const std::string& key) const;
 	vconfig child(const std::string& key) const;
+	bool has_child(const std::string& key) const;
 
 	const t_string& operator[](const std::string&) const;
 	const t_string& expand(const std::string&) const; /** < Synonym for operator[] */

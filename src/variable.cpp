@@ -83,6 +83,11 @@ vconfig vconfig::child(const std::string& key) const
 	return vconfig(cfg_->child(key));
 }
 
+bool vconfig::has_child(const std::string& key) const
+{
+	return (cfg_->child(key) != NULL);
+}
+
 const t_string &vconfig::operator[](const std::string& key) const
 {
 	return expand(key);
