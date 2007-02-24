@@ -956,6 +956,7 @@ attack::attack(display& gui, const gamemap& map,
 				}
 				if (update_display_){
 					recalculate_fog(map_,state_,info_,units_,teams_,defender_side-1);
+					gui_.invalidate_all();
 					gui_.recalculate_minimap();
 					gui_.draw();
 				}
@@ -1155,9 +1156,10 @@ attack::attack(display& gui, const gamemap& map,
 					LOG_NG<<"unit not reanimated"<<std::endl;
 				}
 				if (update_display_){
+					recalculate_fog(map_,state_,info_,units_,teams_,attacker_side-1);
+					gui_.invalidate_all();
 					gui_.recalculate_minimap();
 					gui_.draw();
-					recalculate_fog(map_,state_,info_,units_,teams_,attacker_side-1);
 				}
 				break;
 			} else if(hits) {
