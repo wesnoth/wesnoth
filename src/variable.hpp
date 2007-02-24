@@ -73,7 +73,7 @@ class scoped_wml_variable
 {
 public:
 	scoped_wml_variable(const std::string& var_name);
-	~scoped_wml_variable();
+	virtual ~scoped_wml_variable();
 	const std::string& name() const { return var_name_; }
 	virtual void activate() = 0;
 	void store(const config& var_value);
