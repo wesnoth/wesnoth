@@ -325,6 +325,17 @@ void ui::handle_event(const SDL_Event& event)
 	if(event.type == SDL_KEYDOWN) {
 		handle_key_event(event.key);
 	}
+    if(users_menu_.double_clicked()) {
+		std::string msg_text;         
+		const int res = gui::show_dialog(disp(), NULL, "Whisper",
+							_("Send a private message to ") + user_list_[users_menu_.selection()], gui::OK_CANCEL,
+							NULL, NULL, _("Message: "), &msg_text);
+		if (res == 0 && !msg_text.empty()) {
+			std::stringstream msg;
+			msg << "/msg " << user_list_[users_menu_.selection()] << " " << msg_text;
+			chat_handler::do_speak(msg.str());
+        }
+	}
 }
 
 void ui::send_chat_query(const std::string& args)
