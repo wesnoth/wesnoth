@@ -338,11 +338,18 @@ void ui::handle_event(const SDL_Event& event)
 		std::string caption = _("Send a private message to ") + usr_text;
 		gui::dialog d(disp(), _("Whisper"), caption, gui::OK_CANCEL);
 		d.set_textbox( _("Message: "));
+		Uint32 show_time = SDL_GetTicks();
 		if (!(d.show() || d.textbox_text().empty())) {
 			std::stringstream msg;
 			msg << "/msg " << usr_text << " " << d.textbox_text();
 			chat_handler::do_speak(msg.str());
         }
+		if(show_time + 60000 < SDL_GetTicks()) {
+			//if the dialog has been open for a long time, refresh the lobby
+			config request;
+			request.add_child("refresh_lobby");
+			network::send_data(request);
+		}
 	}
 }
 
