@@ -341,7 +341,7 @@ void ui::handle_event(const SDL_Event& event)
 		Uint32 show_time = SDL_GetTicks();
 		if (!(d.show() || d.textbox_text().empty())) {
 			std::stringstream msg;
-			msg << "/msg " << usr_text << " " << d.textbox_text();
+			msg << "/msg " << usr_text << ' ' << d.textbox_text();
 			chat_handler::do_speak(msg.str());
         }
 		if(show_time + 60000 < SDL_GetTicks()) {

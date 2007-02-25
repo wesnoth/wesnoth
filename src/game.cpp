@@ -972,15 +972,12 @@ void game_controller::download_campaigns()
 			//add negative sizes to reverse the sort order
 			sizes.push_back(-atoi((**i)["size"].c_str()));
 
-			const int max_icon_dim = 80;
-
-			//make sure the icon isn't too big
 			std::string icon = (**i)["icon"];
-			const surface icon_img = image::get_image(icon,image::UNSCALED);
-			if(icon_img.null() == false && icon_img->w > max_icon_dim && icon_img->h > max_icon_dim) {
-				icon = "";
+			if(icon.find("units/") != std::string::npos
+			&& icon.find_first_of('~') == std::string::npos) {
+				//a hack to prevent magenta icons, because they look awful
+				icon.append("~TC(1,magenta)");
 			}
-
 			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR +
 			                  title + COLUMN_SEPARATOR +
 			                  version + COLUMN_SEPARATOR +
@@ -1010,6 +1007,8 @@ void game_controller::download_campaigns()
 		gui::dialog addon_dialog(disp(), _("Get Add-ons"), _("Choose the add-on to download."),
 			gui::OK_CANCEL);
 		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
+
+		//make sure the icon isn't too big
 		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
 		gui::menu *addon_menu = new gui::menu(disp().video(), options, false, -1,
 			gui::dialog::max_menu_width, &sorter, &addon_style, false);
