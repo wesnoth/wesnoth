@@ -897,16 +897,22 @@ void display::draw(bool update,bool force)
 
 	prune_chat_messages();
 
-	const int time_between_draws = 20;
+	const int time_between_draws = 10;
 	const int current_time = SDL_GetTicks();
 	const int wait_time = lastDraw_ + time_between_draws - current_time;
 
 	if(update) {
-		lastDraw_ = SDL_GetTicks();
-
-		if(force || (changed && wait_time >= 0)) {
+		if(force || changed) {
+			if(wait_time > 0) {
+				// if it's not time yet to draw add a small delay due to the recent
+				// optimizations we're now able to DOS the CPU if there's not much
+				// invalidated, this still needs to be reworked after 1.3.1 has
+				// been released -- Mordante
+				SDL_Delay(wait_time);
+			}
 			update_display();
 		}
+		lastDraw_ = SDL_GetTicks();
 	}
 }
 
