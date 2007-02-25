@@ -111,20 +111,12 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 int route_turns_to_complete(const unit& u, const gamemap& map,
                             paths::route& rt);
 
-// cache used internally by the cost calculator because checking for
-// an ability (visible) is expensive and needed often
-struct ability_cache_item {
-	unit const *visible_unit; // NULL if no visible unit
-};
-typedef std::map<gamemap::location, ability_cache_item> ability_cache_map;
-
 struct shortest_path_calculator : cost_calculator
 {
 	shortest_path_calculator(const unit& u, const team& t,
 	                         const unit_map& units, const std::vector<team>& teams,
 	                         const gamemap& map);
 	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far, const bool isDst) const;
-	ability_cache_item get_cached(gamemap::location loc) const;
 
 private:
 	unit const &unit_;
@@ -134,7 +126,6 @@ private:
 	gamemap const &map_;
 	int const movement_left_;
 	int const total_movement_;
-	mutable ability_cache_map cache_;
 };
 
 //function which only uses terrain, ignoring shroud, enemies, etc.

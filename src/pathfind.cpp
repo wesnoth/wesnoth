@@ -326,28 +326,6 @@ void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &
 	}
 }
 
-ability_cache_item get_cached(ability_cache_map &cache, gamemap::location loc,
-			      team const &team, unit_map const &units,
-			      std::vector<class team> const &teams, gamemap const &map)
-{
-	ability_cache_map::iterator i;
-	i = cache.find(loc);
-	if (i == cache.end()) {
-		ability_cache_item item;
-
-		unit_map::const_iterator unit = find_visible_unit(units, loc, map, teams, team);
-		if (unit != units.end()) {
-			item.visible_unit = &unit->second;
-		} else {
-			item.visible_unit = NULL;
-		}
-
-		ability_cache_map::value_type tuple(loc, item);
-		i = cache.insert(tuple).first;
-	}
-	return i->second; 
-}
-
 bool enemy_zoc(gamemap const &map,
                unit_map const &units,
                std::vector<team> const &teams,
@@ -368,42 +346,18 @@ bool enemy_zoc(gamemap const &map,
 	return false;
 }
 
-
-bool enemy_zoc_cached(gamemap const &map,
-		      unit_map const &units,
-		      std::vector<team> const &teams,
-		      gamemap::location const &loc, team const &viewing_team, unsigned int side,
-		      ability_cache_map &cache)
-{
-	gamemap::location locs[6];
-	const team &current_team = teams[side-1];
-	get_adjacent_tiles(loc,locs);
-	for(int i = 0; i != 6; ++i) {
-		ability_cache_item item;
-		item = ::get_cached(cache, locs[i], viewing_team, units, teams, map);
-
-		if (item.visible_unit && item.visible_unit->side() != side &&
-		    current_team.is_enemy(item.visible_unit->side()) && item.visible_unit->emits_zoc()) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
 namespace {
 
 	void find_routes(const gamemap& map, const gamestatus& status,
-			 const game_data& gamedata,
-			 const unit_map& units,
-			 const unit& u,
-			 const gamemap::location& loc,
-			 int move_left,
-			 std::map<gamemap::location,paths::route>& routes,
-			 std::vector<team> const &teams,
-			 bool ignore_zocs, bool allow_teleport, int turns_left,
-			 bool starting_pos, const team &viewing_team,
-			 ability_cache_map &cache)
+		const game_data& gamedata,
+		const unit_map& units,
+		const unit& u,
+		const gamemap::location& loc,
+		int move_left,
+		std::map<gamemap::location,paths::route>& routes,
+		std::vector<team> const &teams,
+		bool ignore_zocs, bool allow_teleport, int turns_left,
+	    bool starting_pos, const team &viewing_team)
 	{
 		if(size_t(u.side()-1) >= teams.size()) {
 			return;
@@ -444,9 +398,11 @@ namespace {
 				continue;
 
 			//see if the tile is on top of an enemy unit
-			ability_cache_item item = get_cached(cache, locs[i], viewing_team, units, teams, map);
+			const unit_map::const_iterator unit_it =
+				find_visible_unit(units, locs[i], map, teams, viewing_team);
 
-			if (item.visible_unit && current_team.is_enemy(item.visible_unit->side()))
+			if (unit_it != units.end() &&
+			    current_team.is_enemy(unit_it->second.side()))
 				continue;
 
 			//find the terrain of the adjacent location
@@ -472,8 +428,8 @@ namespace {
 				if(rtit != routes.end() && rtit->second.move_left >= total_movement)
 					continue;
 
-				const bool zoc = !ignore_zocs && enemy_zoc_cached(map,units,teams,currentloc,
-										  viewing_team,u.side(), cache);
+				const bool zoc = !ignore_zocs && enemy_zoc(map,units,teams,currentloc,
+														   viewing_team,u.side());
 				paths::route new_route = routes[loc];
 				new_route.steps.push_back(loc);
 
@@ -484,7 +440,7 @@ namespace {
 				if (new_route.move_left > 0) {
 					find_routes(map, status, gamedata, units, u, currentloc,
 					            zoc_move_left, routes, teams, ignore_zocs,
-					            allow_teleport, new_turns_left, false, viewing_team, cache);
+					            allow_teleport, new_turns_left, false, viewing_team);
 				}
 			}
 		}
@@ -507,10 +463,9 @@ paths::paths(gamemap const &map, gamestatus const &status,
 	}
 
 	routes[loc].move_left = i->second.movement_left();
-	ability_cache_map cache;
 	find_routes(map,status,gamedata,units,i->second,loc,
 		i->second.movement_left(),routes,teams,
-		ignore_zocs,allow_teleport,additional_turns,true,viewing_team,cache);
+		ignore_zocs,allow_teleport,additional_turns,true,viewing_team);
 }
 
 int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt)
@@ -554,13 +509,6 @@ shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 {
 }
 
-
-
-ability_cache_item shortest_path_calculator::get_cached(gamemap::location loc) const
-{
-	return ::get_cached(cache_, loc, team_, units_, teams_, map_);
-}
-
 double shortest_path_calculator::cost(const gamemap::location& src,const gamemap::location& loc, const double so_far, const bool isDst) const
 {
 	wassert(map_.on_board(loc));
@@ -580,9 +528,11 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 	if (total_movement_ < base_cost)
 		return getNoPathValue();
 
-	ability_cache_item item = get_cached(loc);
+	unit_map::const_iterator
+		enemy_unit = find_visible_unit(units_, loc, map_, teams_, team_),
+		units_end = units_.end();
 
-	if (item.visible_unit && team_.is_enemy(item.visible_unit->side()))
+	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
 		return getNoPathValue();
 
 	if (!isDst && !unit_.get_ability_bool("skirmisher",src)) {
@@ -590,10 +540,10 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 		get_adjacent_tiles(loc, adj);
 
 		for (size_t i = 0; i != 6; ++i) {
-			item = get_cached(adj[i]);
+			enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, team_);
 
-			if (item.visible_unit && team_.is_enemy(item.visible_unit->side()) &&
-			    item.visible_unit->emits_zoc())
+			if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
+			    enemy_unit->second.emits_zoc())
 				return getNoPathValue();
 		}
 	}
