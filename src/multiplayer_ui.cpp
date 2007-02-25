@@ -327,7 +327,7 @@ void ui::handle_event(const SDL_Event& event)
 	}
     if(users_menu_.double_clicked()) {
 		std::string msg_text;         
-		const int res = gui::show_dialog(disp(), NULL, "Whisper",
+		const int res = gui::show_dialog(disp(), NULL, _("Whisper"),
 							_("Send a private message to ") + user_list_[users_menu_.selection()], gui::OK_CANCEL,
 							NULL, NULL, _("Message: "), &msg_text);
 		if (res == 0 && !msg_text.empty()) {

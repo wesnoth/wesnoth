@@ -29,6 +29,7 @@ class gamebrowser : public gui::menu {
 public:
 	struct game_item {
 		surface mini_map;
+		std::string id;
 		std::string map_data;
 		std::string name;
 		std::string map_info;
@@ -39,6 +40,7 @@ public:
 		std::string status;
 		std::string time_limit;
 		size_t vacant_slots;
+		unsigned int current_turn;
 		bool started;
 		bool fog;
 		bool shroud;
@@ -61,6 +63,7 @@ public:
 	bool selection_is_observable() const { return empty() ? false : games_[selected_].observers; }
 	bool selected() const { return double_clicked_ && !empty(); }
 	int selection() const { return selected_; }
+	game_item selected_game() { return games_[selected_]; }
 protected:
 	unsigned int row_height() const { return item_height_ + (2 * style_->get_thickness()); }
 private:

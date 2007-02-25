@@ -406,12 +406,19 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		} else {
 			games_.back().map_info += _("Unknown scenario");
 		}
+		games_.back().id = (**game)["id"];
 		games_.back().name = (**game)["name"];
 		const std::string& turn = (**game)["turn"];
 		const std::string& slots = (**game)["slots"];
 		games_.back().vacant_slots = lexical_cast_default<size_t>(slots, 0);
+		games_.back().current_turn = 0;
 		if(turn != "") {
 			games_.back().started = true;
+			int index = turn.find_first_of('/');
+			if (index > -1){
+				const std::string current_turn = turn.substr(0, index);
+				games_.back().current_turn = lexical_cast<unsigned int>(current_turn);
+			}
 			games_.back().status = _("Turn") + (" " + turn);
 		} else {
 			games_.back().started = false;
@@ -623,19 +630,13 @@ void lobby::process_event()
 	playmp_controller::set_replay_last_turn(0);
 
 	if(join || observe) {
-		const config* game = gamelist().child("gamelist");
-
 		const int selected = games_menu_.selection();
-		if(game != NULL && selected >= 0) {
-			const config::const_child_itors i = game->child_range("game");
-			wassert(i.first + selected < i.second);
-
-			const config& game_cfg = **(i.first + selected);
-			const std::string& id = game_cfg["id"];
+		if(!games_menu_.empty() && selected >= 0) {
+			gamebrowser::game_item game = games_menu_.selected_game();
 
 			config response;
 			config& join = response.add_child("join");
-			join["id"] = id;
+			join["id"] = game.id;
 			if (observe){
 				join["observe"] = "yes";
 			}
@@ -645,11 +646,8 @@ void lobby::process_event()
 			network::send_data(response);
 
 			if(observe) {
-				const std::string& str_current_turn = game_cfg["turn"];
-				int index = str_current_turn.find_first_of('/');
-				if (index > -1){
-					const std::string strTest = str_current_turn.substr(0, index);
-					playmp_controller::set_replay_last_turn(lexical_cast<unsigned int>(strTest));
+				if (game.started){
+					playmp_controller::set_replay_last_turn(game.current_turn);
 				}
 				set_result(OBSERVE);
 			} else {
