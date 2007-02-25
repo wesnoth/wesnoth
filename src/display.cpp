@@ -1998,7 +1998,7 @@ void display::draw_unit(int x, int y, surface image,
 	//} else if(alpha != 1.0 && blendto != 0) {
 	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
 	} else if(alpha != ftofxp(1.0)) {
-		surf = adjust_surface_alpha(surf,alpha);
+		surf = adjust_surface_alpha(surf,alpha,false);
 	}
 
 	if(surf == NULL) {
@@ -2013,7 +2013,7 @@ void display::draw_unit(int x, int y, surface image,
 	video().blit_surface(x,y,surf,&srcrect,&clip_rect);
 
 	if(submerge_height != surf->h) {
-		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2)));
+		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2),false));
 
 		srcrect.y = submerge_height;
 		srcrect.h = surf->h-submerge_height;

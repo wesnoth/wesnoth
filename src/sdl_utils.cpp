@@ -567,7 +567,7 @@ surface brighten_image(surface const &surf, fixed_t amount)
 	return create_optimized_surface(nsurf);
 }
 
-surface adjust_surface_alpha(surface const &surf, fixed_t amount)
+surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -601,7 +601,11 @@ surface adjust_surface_alpha(surface const &surf, fixed_t amount)
 		}
 	}
 
-	return create_optimized_surface(nsurf);
+	if (optimize) {
+		return create_optimized_surface(nsurf);
+	} else {
+		return nsurf;
+	}
 }
 
 surface adjust_surface_alpha_add(surface const &surf, int amount)

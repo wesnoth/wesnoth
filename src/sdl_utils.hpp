@@ -114,7 +114,7 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb);
 
 surface brighten_image(surface const &surf, fixed_t amount);
 surface get_surface_portion(surface const &surf, SDL_Rect &rect);
-surface adjust_surface_alpha(surface const &surf, fixed_t amount);
+surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize=true);
 surface adjust_surface_alpha_add(surface const &surf, int amount);
 surface mask_surface(surface const &surf, surface const &mask);
 surface blur_surface(surface const &surf, int depth = 1);
