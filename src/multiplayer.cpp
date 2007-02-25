@@ -260,14 +260,15 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-			if (preferences::skip_mp_replay()){
+			// FIXME commented a pointeless if since the else does exactly the same thing
+			//if (preferences::skip_mp_replay()){
 				//FIXME implement true skip replay
 				//state = ui.request_snapshot();
+				//state = ui.get_state();
+			//}
+			//else{
 				state = ui.get_state();
-			}
-			else{
-				state = ui.get_state();
-			}
+			//}
 		}
 	}
 
