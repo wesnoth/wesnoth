@@ -305,13 +305,8 @@ void gamebrowser::handle_event(const SDL_Event& event)
 	}
 }
 
-//NOTE this cache uses the map_data as lookup value and tests the entire 
-//vector. For 1.2 this works but in 1.3 the map_data is much larger due
-//to the new terrain system. It might be useful to find a better unique
-//key for a map (including the randoms) if this becomes a performance 
-//issue --Mordante (struct added in commit 15764)
 struct minimap_cache_item {
-	std::string map_data;
+	std::string map_id;
 	surface mini_map;
 	std::string map_info_size;
 };
@@ -332,7 +327,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	std::vector<minimap_cache_item> minimap_cache;
 	for(std::vector<game_item>::iterator oldgame = games_.begin(); oldgame != games_.end(); ++oldgame) {
 		minimap_cache_item item;
-		item.map_data = oldgame->map_data;
+		item.map_id = oldgame->id;
 		item.mini_map = oldgame->mini_map;
 		item.map_info_size = oldgame->map_info_size;
 		minimap_cache.push_back(item);
@@ -361,7 +356,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				std::vector<minimap_cache_item>::iterator i;
 				bool found = false;
 				for(i = minimap_cache.begin(); i != minimap_cache.end() && !found; ++i) {
-					if (i->map_data == games_.back().map_data) {
+					if (i->map_id == games_.back().id) {
 						found = true;
 						games_.back().map_info_size = i->map_info_size;
 						if (minimaps_)
