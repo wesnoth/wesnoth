@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-23 20:20+0100\n"
+"POT-Creation-Date: 2007-02-25 12:30+0100\n"
 "PO-Revision-Date: 2006-09-05 20:50+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -3911,44 +3911,40 @@ msgstr ""
 "Derrota:\n"
 "#El oponente mueve más balones a su parte del fondo que usted a la suya"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:32
-msgid "{TYPE}"
-msgstr ""
-
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:178
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:424
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:177
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:423
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "¡Los rojos marcan! La puntuación actual es $redscore-$bluescore."
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:220
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:466
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:219
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:465
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "¡Los azules marcan! La puntuación actual es $redscore-$bluescore."
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:304
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:550
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:303
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:549
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "¿Debería pasar la pelota a $passto.type ($xloc,$yloc)?"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:306
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:552
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:305
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:551
 msgid "Yes!"
 msgstr "¡Sí!"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:328
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:574
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:327
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:573
 msgid "No"
 msgstr "No"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:597
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:596
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "¡El equipo azul gana! La puntuación final es: $redscore-$bluescore."
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:609
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:608
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "¡El equipo rojo gana! La puntuación final es: $redscore-$bluescore."
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:621
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:620
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "¡Empate! La puntuación final es: $redscore-$bluescore."
 
@@ -4805,7 +4801,7 @@ msgid "End Turn"
 msgstr "Fin de turno"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2440
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2474
 msgid "HP"
 msgstr "pv"
 
@@ -5354,7 +5350,7 @@ msgstr ""
 msgid "Galleon"
 msgstr "Galeón"
 
-#: data/units/Boat_Galleon.cfg:20
+#: data/units/Boat_Galleon.cfg:19
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -5367,11 +5363,11 @@ msgstr ""
 "es rápido y resistente y, aunque no está preparado para la lucha, es capaz "
 "de adaptarse a múltiples tareas."
 
-#: data/units/Boat_Galleon.cfg:22
+#: data/units/Boat_Galleon.cfg:21
 msgid "dummy"
 msgstr "ataque cualquiera"
 
-#: data/units/Boat_Galleon.cfg:23 data/units/Drake_Enforcer.cfg:99
+#: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:99
 #: data/units/Drake_Gladiator.cfg:151 data/units/Drake_Glider.cfg:77
 #: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
 #: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
@@ -5402,8 +5398,8 @@ msgstr "ataque cualquiera"
 #: data/units/Monster_Giant_Mudcrawler.cfg:47
 #: data/units/Monster_Giant_Mudcrawler.cfg:85
 #: data/units/Monster_Giant_Scorpion.cfg:71
-#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:60
-#: data/units/Monster_Yeti.cfg:34 data/units/Saurian_Augur.cfg:38
+#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:63
+#: data/units/Monster_Yeti.cfg:35 data/units/Saurian_Augur.cfg:38
 #: data/units/Saurian_Oracle.cfg:38 data/units/Saurian_Soothsayer.cfg:38
 #: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:27
 #: data/units/Troll_Hero.cfg:26 data/units/Troll_Rocklobber.cfg:29
@@ -5485,7 +5481,7 @@ msgstr "balista"
 #: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
 #: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
 #: data/units/Monster_Giant_Scorpion.cfg:25
-#: data/units/Monster_Sea_Serpent.cfg:22 data/units/Orcish_Archer.cfg:179
+#: data/units/Monster_Sea_Serpent.cfg:25 data/units/Orcish_Archer.cfg:179
 #: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
 #: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
 #: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
@@ -5526,22 +5522,21 @@ msgid ""
 "more effecient weapon to use than a torch; Their armour is alot like a "
 "status symbol just like the armour of his weaker cousin the Inferno Drake, "
 "it is made out off extremely tough minerals and rocks at the bottom of magma "
-"rivers and gives them a slightly better defence against cold attacks than "
-"most other drakes."
+"rivers."
 msgstr ""
 
-#: data/units/Drake_Armageddon.cfg:76 data/units/Drake_Burner.cfg:61
+#: data/units/Drake_Armageddon.cfg:75 data/units/Drake_Burner.cfg:61
 #: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
-#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:22
-#: data/units/Gryphon_Master.cfg:25 data/units/Gryphon_Rider.cfg:25
-#: data/units/Undead_Corpse_Ghoul.cfg:65
-#: data/units/Undead_Corpse_Necrophage.cfg:33
+#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:25
+#: data/units/Gryphon_Master.cfg:28 data/units/Gryphon_Rider.cfg:28
+#: data/units/Undead_Corpse_Ghoul.cfg:66
+#: data/units/Undead_Corpse_Necrophage.cfg:34
 #: data/units/Undead_Spirit_Nightgaunt.cfg:53
 #: data/units/Undead_Spirit_Shadow.cfg:27
 msgid "claws"
 msgstr "garras"
 
-#: data/units/Drake_Armageddon.cfg:78 data/units/Drake_Blademaster.cfg:67
+#: data/units/Drake_Armageddon.cfg:77 data/units/Drake_Blademaster.cfg:67
 #: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
 #: data/units/Drake_Enforcer.cfg:66 data/units/Drake_Fighter.cfg:64
 #: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
@@ -5562,8 +5557,8 @@ msgstr "garras"
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
 #: data/units/Goblin_Direwolf_Rider.cfg:35
 #: data/units/Goblin_Direwolf_Rider.cfg:83 data/units/Goblin_Knight.cfg:35
-#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:24
-#: data/units/Gryphon_Master.cfg:27 data/units/Gryphon_Rider.cfg:27
+#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:27
+#: data/units/Gryphon_Master.cfg:30 data/units/Gryphon_Rider.cfg:30
 #: data/units/Human_Horse_Grand_Knight.cfg:26
 #: data/units/Human_Horse_Knight.cfg:25
 #: data/units/Human_Loyalist_Bowman.cfg:25
@@ -5589,7 +5584,7 @@ msgstr "garras"
 #: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
 #: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
 #: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
-#: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
+#: data/units/Ogre.cfg:24 data/units/Ogre_Young.cfg:24
 #: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:69
 #: data/units/Orcish_Assassin.cfg:107 data/units/Orcish_Crossbowman.cfg:24
 #: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
@@ -5597,8 +5592,8 @@ msgstr "garras"
 #: data/units/Orcish_Slayer.cfg:117 data/units/Orcish_Slurbow.cfg:24
 #: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
 #: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:53
-#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:67
-#: data/units/Undead_Corpse_Necrophage.cfg:35
+#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:68
+#: data/units/Undead_Corpse_Necrophage.cfg:36
 #: data/units/Undead_Skele_Bone_Shooter.cfg:43
 #: data/units/Undead_Skele_Death_Knight.cfg:46
 #: data/units/Undead_Skele_Deathblade.cfg:44
@@ -5608,12 +5603,10 @@ msgstr "garras"
 #: data/units/Undead_Skeleton.cfg:108
 #: data/units/Undead_Spirit_Nightgaunt.cfg:54
 #: data/units/Undead_Spirit_Shadow.cfg:28
-#: data/units/Undead_Spirit_Spectre.cfg:46
-#: data/units/Undead_Spirit_Wraith.cfg:23
 msgid "blade"
 msgstr "de filo"
 
-#: data/units/Drake_Armageddon.cfg:122 data/units/Drake_Blademaster.cfg:114
+#: data/units/Drake_Armageddon.cfg:121 data/units/Drake_Blademaster.cfg:114
 #: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
 #: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
 #: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
@@ -5622,7 +5615,7 @@ msgstr "de filo"
 msgid "fire breath"
 msgstr "aliento de fuego"
 
-#: data/units/Drake_Armageddon.cfg:124 data/units/Drake_Blademaster.cfg:116
+#: data/units/Drake_Armageddon.cfg:123 data/units/Drake_Blademaster.cfg:116
 #: data/units/Drake_Burner.cfg:111 data/units/Drake_Fighter.cfg:113
 #: data/units/Drake_Fire.cfg:118 data/units/Drake_Flameheart.cfg:156
 #: data/units/Drake_Flare.cfg:137 data/units/Drake_Glider.cfg:131
@@ -6506,19 +6499,14 @@ msgid "faerie fire"
 msgstr "fuego faérico"
 
 #: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:154
-#: data/units/Elvish_Sylph.cfg:128 data/units/Saurian_Augur.cfg:75
-#: data/units/Saurian_Oracle.cfg:75 data/units/Saurian_Soothsayer.cfg:75
-#: data/units/Undead_Necro_Ancient_Lich.cfg:29
-#: data/units/Undead_Necro_Ancient_Lich.cfg:69
-#: data/units/Undead_Necro_Dark_Adept.cfg:32
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
-#: data/units/Undead_Necro_Lich.cfg:31 data/units/Undead_Necro_Lich.cfg:71
-#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:26
-#: data/units/Undead_Spirit_Ghost.cfg:64
-#: data/units/Undead_Spirit_Spectre.cfg:86
-#: data/units/Undead_Spirit_Wraith.cfg:68
-msgid "cold"
-msgstr "frío"
+#: data/units/Elvish_Sylph.cfg:128 data/units/Human_Horse_Paladin.cfg:33
+#: data/units/Human_Mage_White.cfg:176 data/units/Human_Mage_of_Light.cfg:146
+#: data/units/Mermaid_Diviner.cfg:106 data/units/Mermaid_Priestess.cfg:81
+#: data/units/Undead_Spirit_Ghost.cfg:26
+#: data/units/Undead_Spirit_Spectre.cfg:46
+#: data/units/Undead_Spirit_Wraith.cfg:23
+msgid "holy"
+msgstr "sagrado"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -6851,7 +6839,7 @@ msgstr ""
 
 #: data/units/Goblin_Direwolf_Rider.cfg:33 data/units/Goblin_Knight.cfg:33
 #: data/units/Goblin_Wolf_Rider.cfg:34 data/units/Monster_Cave_Spider.cfg:34
-#: data/units/Monster_Sea_Serpent.cfg:20 data/units/Undead_Bat_Blood.cfg:51
+#: data/units/Monster_Sea_Serpent.cfg:23 data/units/Undead_Bat_Blood.cfg:51
 #: data/units/Undead_Bat_Vampire.cfg:65
 msgid "fangs"
 msgstr "colmillos"
@@ -7151,12 +7139,6 @@ msgstr ""
 "camaradas.\n"
 "\n"
 "Notas especiales:"
-
-#: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:176
-#: data/units/Human_Mage_of_Light.cfg:146 data/units/Mermaid_Diviner.cfg:106
-#: data/units/Mermaid_Priestess.cfg:81
-msgid "holy"
-msgstr "sagrado"
 
 #: data/units/Human_Horseman.cfg:3
 msgid "Horseman"
@@ -8716,7 +8698,7 @@ msgstr ""
 "distancia. La mejor forma de sobrevivir a un encuentro con unas lindezas "
 "como estas es permanecer alejado de la costa."
 
-#: data/units/Monster_Cuttle_Fish.cfg:34 data/units/Monster_Tentacle.cfg:58
+#: data/units/Monster_Cuttle_Fish.cfg:34 data/units/Monster_Tentacle.cfg:61
 msgid "tentacle"
 msgstr "tentáculo"
 
@@ -8739,7 +8721,7 @@ msgstr ""
 "vomitando pedazos de barro hacia sus oponentes, o golpeándolos con sus puños "
 "de barro."
 
-#: data/units/Monster_Giant_Mudcrawler.cfg:45 data/units/Monster_Yeti.cfg:32
+#: data/units/Monster_Giant_Mudcrawler.cfg:45 data/units/Monster_Yeti.cfg:33
 #: data/units/Troll_Rocklobber.cfg:27 data/units/Troll_Whelp.cfg:26
 #: data/units/Undead_Skeleton_Archer.cfg:31
 msgid "fist"
@@ -8790,7 +8772,7 @@ msgstr ""
 msgid "Sea Serpent"
 msgstr "Serpiente marina"
 
-#: data/units/Monster_Sea_Serpent.cfg:16
+#: data/units/Monster_Sea_Serpent.cfg:19
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
@@ -8801,7 +8783,7 @@ msgstr ""
 msgid "Tentacle of the Deep"
 msgstr "Tentáculo de las profundidades"
 
-#: data/units/Monster_Tentacle.cfg:19
+#: data/units/Monster_Tentacle.cfg:22
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves.\n"
@@ -8917,7 +8899,7 @@ msgstr "Guerrero nagini"
 msgid "Ogre"
 msgstr "Ogro"
 
-#: data/units/Ogre.cfg:17
+#: data/units/Ogre.cfg:20
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -8929,7 +8911,7 @@ msgstr ""
 "aunque son una versión muy grande y deformada de ellos. Aunque se les puede "
 "dar esquinazo o engañar fácilmente, no debe subestimarse su fuerza."
 
-#: data/units/Ogre.cfg:20 data/units/Ogre_Young.cfg:20
+#: data/units/Ogre.cfg:23 data/units/Ogre_Young.cfg:23
 msgid "cleaver"
 msgstr "trituracarne"
 
@@ -8937,7 +8919,7 @@ msgstr "trituracarne"
 msgid "Young Ogre"
 msgstr "Ogro joven"
 
-#: data/units/Ogre_Young.cfg:17
+#: data/units/Ogre_Young.cfg:20
 msgid ""
 "When still young, Ogres are sometimes captured and taken into the army to be "
 "trained. They cannot manage weapons skillfully, but that is of little "
@@ -9201,6 +9183,19 @@ msgstr ""
 #: data/units/Saurian_Soothsayer.cfg:74
 msgid "curse"
 msgstr "maldición"
+
+#: data/units/Saurian_Augur.cfg:75 data/units/Saurian_Oracle.cfg:75
+#: data/units/Saurian_Soothsayer.cfg:75
+#: data/units/Undead_Necro_Ancient_Lich.cfg:29
+#: data/units/Undead_Necro_Ancient_Lich.cfg:69
+#: data/units/Undead_Necro_Dark_Adept.cfg:32
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
+#: data/units/Undead_Necro_Lich.cfg:34 data/units/Undead_Necro_Lich.cfg:74
+#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:64
+#: data/units/Undead_Spirit_Spectre.cfg:86
+#: data/units/Undead_Spirit_Wraith.cfg:68
+msgid "cold"
+msgstr "frío"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -9534,7 +9529,7 @@ msgstr ""
 #: data/units/Undead_Corpse_Soulless.cfg:46
 #: data/units/Undead_Corpse_Walking.cfg:48
 #: data/units/Undead_Necro_Ancient_Lich.cfg:27
-#: data/units/Undead_Necro_Lich.cfg:29 data/units/Undead_Spirit_Ghost.cfg:24
+#: data/units/Undead_Necro_Lich.cfg:32 data/units/Undead_Spirit_Ghost.cfg:24
 msgid "touch"
 msgstr "toque"
 
@@ -9576,7 +9571,7 @@ msgstr ""
 "Notas especiales:"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:68
-#: data/units/Undead_Necro_Lich.cfg:70
+#: data/units/Undead_Necro_Lich.cfg:73
 msgid "chill tempest"
 msgstr "ola de frío"
 
@@ -9652,7 +9647,7 @@ msgstr "ola de frío"
 msgid "Lich"
 msgstr "Cadáver"
 
-#: data/units/Undead_Necro_Lich.cfg:21
+#: data/units/Undead_Necro_Lich.cfg:24
 #, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
@@ -10165,54 +10160,54 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "No hay zonas de castillo libres para reclutar unidades."
 
-#: src/actions.cpp:967 src/actions.cpp:1167
+#: src/actions.cpp:969 src/actions.cpp:1170
 msgid "poisoned"
 msgstr "envenenado"
 
-#: src/actions.cpp:975 src/actions.cpp:1175
+#: src/actions.cpp:977 src/actions.cpp:1178
 msgid "slowed"
 msgstr "ralentizado"
 
-#: src/actions.cpp:986 src/actions.cpp:1187
+#: src/actions.cpp:988 src/actions.cpp:1190
 msgid "stone"
 msgstr "piedra"
 
-#: src/actions.cpp:1995
+#: src/actions.cpp:1998
 msgid "Ambushed!"
 msgstr "¡Emboscada!"
 
-#: src/actions.cpp:2035
+#: src/actions.cpp:2038
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "¡Aliado avistado!"
 msgstr[1] "¡Aliado avistado!"
 
-#: src/actions.cpp:2038
+#: src/actions.cpp:2041
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "¡Enemigo avistado!"
 msgstr[1] "¡Enemigo avistado!"
 
-#: src/actions.cpp:2043
+#: src/actions.cpp:2046
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2044
+#: src/actions.cpp:2047
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2045
+#: src/actions.cpp:2048
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unidades avistadas ($friends aliadas, $enemies enemigas)"
 
-#: src/actions.cpp:2054
+#: src/actions.cpp:2057
 msgid "(press $hotkey to continue)"
 msgstr "(pulse $hotkey para continuar)"
 
@@ -10224,96 +10219,96 @@ msgstr "Promocionar unidad"
 msgid "What should our victorious unit become?"
 msgstr "¿En qué debe convertirse la unidad victoriosa?"
 
-#: src/dialogs.cpp:198
+#: src/dialogs.cpp:213
 msgid "No objectives available"
 msgstr "Objetivos no disponibles"
 
-#: src/dialogs.cpp:210
+#: src/dialogs.cpp:225
 msgid "Save Game"
 msgstr "Guardar partida"
 
-#: src/dialogs.cpp:217
+#: src/dialogs.cpp:232
 #, fuzzy
 msgid "Quit Game"
 msgstr "Salir del juego"
 
-#: src/dialogs.cpp:223
+#: src/dialogs.cpp:238
 msgid "Overwrite?"
 msgstr "¿Sobreescribir?"
 
-#: src/dialogs.cpp:224
+#: src/dialogs.cpp:239
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "La partida ya existe. ¿Quiere sobreescribirla?"
 
-#: src/dialogs.cpp:255
+#: src/dialogs.cpp:270
 msgid "Don't ask me again!"
 msgstr "¡No me lo vuelvas a preguntar!"
 
-#: src/dialogs.cpp:257
+#: src/dialogs.cpp:272
 msgid "Do you really want to delete this game?"
 msgstr "¿Está seguro de que quiere borrarlo?"
 
-#: src/dialogs.cpp:409
+#: src/dialogs.cpp:424
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:426
+#: src/dialogs.cpp:441
 msgid "#(Invalid)"
 msgstr "#(Inválido)"
 
-#: src/dialogs.cpp:431 src/game.cpp:783
+#: src/dialogs.cpp:446 src/game.cpp:783
 msgid "Campaign"
 msgstr "Campaña"
 
-#: src/dialogs.cpp:433 src/game.cpp:1226
+#: src/dialogs.cpp:448 src/game.cpp:1226
 msgid "Multiplayer"
 msgstr "Multijugador"
 
-#: src/dialogs.cpp:435
+#: src/dialogs.cpp:450
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/dialogs.cpp:443
+#: src/dialogs.cpp:458
 msgid "replay"
 msgstr "repetición"
 
-#: src/dialogs.cpp:445 src/menu_events.cpp:444 src/multiplayer_lobby.cpp:415
+#: src/dialogs.cpp:460 src/menu_events.cpp:444 src/multiplayer_lobby.cpp:415
 msgid "Turn"
 msgstr "Turno"
 
-#: src/dialogs.cpp:447
+#: src/dialogs.cpp:462
 msgid "Scenario Start"
 msgstr "Inicio del escenario"
 
-#: src/dialogs.cpp:450
+#: src/dialogs.cpp:465
 msgid "Difficulty: "
 msgstr "Dificultad: "
 
-#: src/dialogs.cpp:452
+#: src/dialogs.cpp:467
 msgid "Version: "
 msgstr "Versión: "
 
-#: src/dialogs.cpp:476 src/dialogs.cpp:492
+#: src/dialogs.cpp:491 src/dialogs.cpp:507
 msgid "%b %d %y"
 msgstr "%d de %b del %y"
 
-#: src/dialogs.cpp:482
+#: src/dialogs.cpp:497
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:485
+#: src/dialogs.cpp:500
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:488
+#: src/dialogs.cpp:503
 msgid "%b %d"
 msgstr "%d de %b"
 
-#: src/dialogs.cpp:512
+#: src/dialogs.cpp:527
 msgid "No Saved Games"
 msgstr "No hay ningún juego guardado."
 
-#: src/dialogs.cpp:513
+#: src/dialogs.cpp:528
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -10321,50 +10316,50 @@ msgstr ""
 "No hay juegos guardados que cargar.\n"
 "(Las partidas se guardan automáticamente cuando completa un escenario)."
 
-#: src/dialogs.cpp:527
+#: src/dialogs.cpp:542
 msgid "Delete Save"
 msgstr "Borrar partida"
 
-#: src/dialogs.cpp:535
+#: src/dialogs.cpp:550
 msgid "Date"
 msgstr "Fecha"
 
-#: src/dialogs.cpp:535 src/game.cpp:920 src/menu_events.cpp:290
+#: src/dialogs.cpp:550 src/game.cpp:920 src/menu_events.cpp:290
 #: src/menu_events.cpp:827 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Nombre"
 
-#: src/dialogs.cpp:561
+#: src/dialogs.cpp:576
 msgid "Show replay"
 msgstr "Muestra repetición"
 
-#: src/dialogs.cpp:564 src/multiplayer_create.cpp:88
+#: src/dialogs.cpp:579 src/multiplayer_create.cpp:88
 #: src/multiplayer_create.cpp:89
 msgid "Load Game"
 msgstr "Cargar partida"
 
-#: src/dialogs.cpp:565
+#: src/dialogs.cpp:580
 msgid "Choose the game to load"
 msgstr "Escoja partida a cargar"
 
-#: src/dialogs.cpp:591 src/dialogs.cpp:603
+#: src/dialogs.cpp:606 src/dialogs.cpp:618
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/dialogs.cpp:687 src/help.cpp:1079
+#: src/dialogs.cpp:702 src/help.cpp:1079
 msgid "level"
 msgstr "nivel"
 
 # Aquí queda muy mal poner pv en minúscula.
-#: src/dialogs.cpp:709 src/help.cpp:1137
+#: src/dialogs.cpp:724 src/help.cpp:1137
 msgid "HP: "
 msgstr "PV: "
 
-#: src/dialogs.cpp:713 src/dialogs.cpp:721
+#: src/dialogs.cpp:728 src/dialogs.cpp:736
 msgid "XP: "
 msgstr "PX: "
 
-#: src/dialogs.cpp:726 src/help.cpp:1138
+#: src/dialogs.cpp:741 src/help.cpp:1138
 msgid "Moves: "
 msgstr "Movimiento: "
 
@@ -10532,7 +10527,7 @@ msgstr ""
 "Hubo un problema al crear los ficheros necesarios para instalar esta campaña."
 
 #: src/game.cpp:1116 src/game.cpp:1155 src/game.cpp:1180
-#: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:64 src/playcampaign.cpp:352
+#: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:64 src/playcampaign.cpp:356
 msgid "Connection timed out"
 msgstr "Conexión terminada"
 
@@ -10596,15 +10591,15 @@ msgstr "Jugar una partida contra oponentes con IA"
 msgid "Login: "
 msgstr "Usuario: "
 
-#: src/game.cpp:1267 src/playcampaign.cpp:89 src/playcampaign.cpp:324
+#: src/game.cpp:1267 src/playcampaign.cpp:89 src/playcampaign.cpp:328
 msgid "The game could not be loaded: "
 msgstr "La partida no se ha podido cargar: "
 
-#: src/game.cpp:1269 src/playcampaign.cpp:91 src/playcampaign.cpp:327
+#: src/game.cpp:1269 src/playcampaign.cpp:91 src/playcampaign.cpp:331
 msgid "Error while playing the game: "
 msgstr "Error durante el juego: "
 
-#: src/game.cpp:1281 src/playcampaign.cpp:93 src/playcampaign.cpp:330
+#: src/game.cpp:1281 src/playcampaign.cpp:93 src/playcampaign.cpp:334
 msgid "The game map could not be loaded: "
 msgstr "El mapa del juego no se ha podido cargar: "
 
@@ -10654,15 +10649,15 @@ msgstr "Reiniciando tipografías para el idioma actual."
 msgid "Loading title screen."
 msgstr "Cargando pantalla inicial."
 
-#: src/game_events.cpp:784
+#: src/game_events.cpp:785
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:788
+#: src/game_events.cpp:789
 msgid "Defeat:"
 msgstr "Derrota:"
 
-#: src/gamestatus.cpp:750
+#: src/gamestatus.cpp:751
 msgid "Could not write to file"
 msgstr "No ha sido posible escribir en el fichero."
 
@@ -10872,7 +10867,7 @@ msgstr "Estadísticas"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:294 src/unit.cpp:2471
+#: src/menu_events.cpp:294 src/unit.cpp:2505
 msgid "Moves"
 msgstr "Movimientos"
 
@@ -10915,7 +10910,7 @@ msgstr "Mantenimiento"
 msgid "Income"
 msgstr "Ingresos"
 
-#: src/menu_events.cpp:453 src/playcampaign.cpp:295 src/playcampaign.cpp:431
+#: src/menu_events.cpp:453 src/playcampaign.cpp:299 src/playcampaign.cpp:435
 msgid "Name:"
 msgstr "Nombre:"
 
@@ -10940,7 +10935,7 @@ msgstr "Guardado"
 msgid "The game has been saved"
 msgstr "El juego ha sido guardado."
 
-#: src/menu_events.cpp:471 src/playcampaign.cpp:441
+#: src/menu_events.cpp:471 src/playcampaign.cpp:445
 msgid "The game could not be saved"
 msgstr "La partida no se ha podido guardar."
 
@@ -11306,12 +11301,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2570
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2604
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2577
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2611
 msgid ")"
 msgstr ")"
 
@@ -11700,48 +11695,48 @@ msgstr "Volver a empezar"
 msgid "Back to turn "
 msgstr "Volver al turno "
 
-#: src/playcampaign.cpp:272
+#: src/playcampaign.cpp:276
 msgid "Defeat"
 msgstr "Derrota"
 
-#: src/playcampaign.cpp:273
+#: src/playcampaign.cpp:277
 msgid "You have been defeated!"
 msgstr "¡Has sido derrotado!"
 
-#: src/playcampaign.cpp:286
+#: src/playcampaign.cpp:290
 msgid " replay"
 msgstr " repetición"
 
-#: src/playcampaign.cpp:294
+#: src/playcampaign.cpp:298
 msgid "Do you want to save a replay of this scenario?"
 msgstr "¿Quiere guardar la repetición de este escenario?"
 
-#: src/playcampaign.cpp:296
+#: src/playcampaign.cpp:300
 #, fuzzy
 msgid "Save Replay"
 msgstr "Repetición"
 
-#: src/playcampaign.cpp:303
+#: src/playcampaign.cpp:307
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "La partida no se ha podido guardar."
 
-#: src/playcampaign.cpp:343
+#: src/playcampaign.cpp:347
 #, fuzzy
 msgid "Receiving data..."
 msgstr "Obteniendo datos de la partida..."
 
-#: src/playcampaign.cpp:345
+#: src/playcampaign.cpp:349
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Descargando próximo nivel..."
 
-#: src/playcampaign.cpp:430
+#: src/playcampaign.cpp:434
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
 "¿Quiere guardar el juego? (Esto también borrará los ficheros de autoguardado)"
 
-#: src/playcampaign.cpp:457
+#: src/playcampaign.cpp:461
 msgid "Unknown scenario: '"
 msgstr "Escenario desconocido: '"
 
@@ -12089,15 +12084,15 @@ msgstr "Ayuda"
 msgid "Help Wesnoth by sending us information"
 msgstr "Ayude a Wesnoth enviándonos información"
 
-#: src/unit.cpp:2406 src/unit.cpp:2575
+#: src/unit.cpp:2440 src/unit.cpp:2609
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2488
+#: src/unit.cpp:2522
 msgid "XP to advance"
 msgstr "PX para subir de nivel"
 
-#: src/unit.cpp:2566
+#: src/unit.cpp:2600
 msgid ": "
 msgstr ": "
 

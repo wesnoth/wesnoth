@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-23 20:20+0100\n"
+"POT-Creation-Date: 2007-02-25 12:30+0100\n"
 "PO-Revision-Date: 2006-09-20 18:34+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -3935,44 +3935,40 @@ msgstr ""
 "#あなたがボールを敵の最終ゾーンに持ち込むよりも多くの回数で、敵がボールをあな"
 "たの最終ゾーンに 持ち込む。"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:32
-msgid "{TYPE}"
-msgstr ""
-
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:178
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:424
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:177
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:423
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "赤の得点！ 現在のスコアは $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:220
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:466
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:219
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:465
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "青の得点！ 現在のスコアは $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:304
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:550
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:303
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:549
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "そのボールを $passto.type ($xloc,$yloc) にパスしてよいですか？"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:306
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:552
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:305
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:551
 msgid "Yes!"
 msgstr "そう！"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:328
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:574
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:327
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:573
 msgid "No"
 msgstr "いいえ"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:597
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:596
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "青の勝利！ 最終スコアは $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:609
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:608
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "赤の勝利！ 最終スコアは $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:621
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:620
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "引き分け！ 最終スコアは $redscore-$bluescore"
 
@@ -4893,7 +4889,7 @@ msgid "End Turn"
 msgstr "ターン終了"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2440
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2474
 msgid "HP"
 msgstr "HP"
 
@@ -5417,7 +5413,7 @@ msgstr ""
 msgid "Galleon"
 msgstr "ガレオン船"
 
-#: data/units/Boat_Galleon.cfg:20
+#: data/units/Boat_Galleon.cfg:19
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -5429,11 +5425,11 @@ msgstr ""
 "す。それは早く頑丈で戦闘用ではありませんが、多くの仕事に 適応することができま"
 "す。"
 
-#: data/units/Boat_Galleon.cfg:22
+#: data/units/Boat_Galleon.cfg:21
 msgid "dummy"
 msgstr "模造"
 
-#: data/units/Boat_Galleon.cfg:23 data/units/Drake_Enforcer.cfg:99
+#: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:99
 #: data/units/Drake_Gladiator.cfg:151 data/units/Drake_Glider.cfg:77
 #: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
 #: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
@@ -5464,8 +5460,8 @@ msgstr "模造"
 #: data/units/Monster_Giant_Mudcrawler.cfg:47
 #: data/units/Monster_Giant_Mudcrawler.cfg:85
 #: data/units/Monster_Giant_Scorpion.cfg:71
-#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:60
-#: data/units/Monster_Yeti.cfg:34 data/units/Saurian_Augur.cfg:38
+#: data/units/Monster_Mudcrawler.cfg:46 data/units/Monster_Tentacle.cfg:63
+#: data/units/Monster_Yeti.cfg:35 data/units/Saurian_Augur.cfg:38
 #: data/units/Saurian_Oracle.cfg:38 data/units/Saurian_Soothsayer.cfg:38
 #: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:27
 #: data/units/Troll_Hero.cfg:26 data/units/Troll_Rocklobber.cfg:29
@@ -5546,7 +5542,7 @@ msgstr "バリスタ"
 #: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
 #: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
 #: data/units/Monster_Giant_Scorpion.cfg:25
-#: data/units/Monster_Sea_Serpent.cfg:22 data/units/Orcish_Archer.cfg:179
+#: data/units/Monster_Sea_Serpent.cfg:25 data/units/Orcish_Archer.cfg:179
 #: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
 #: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
 #: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
@@ -5586,22 +5582,21 @@ msgid ""
 "more effecient weapon to use than a torch; Their armour is alot like a "
 "status symbol just like the armour of his weaker cousin the Inferno Drake, "
 "it is made out off extremely tough minerals and rocks at the bottom of magma "
-"rivers and gives them a slightly better defence against cold attacks than "
-"most other drakes."
+"rivers."
 msgstr ""
 
-#: data/units/Drake_Armageddon.cfg:76 data/units/Drake_Burner.cfg:61
+#: data/units/Drake_Armageddon.cfg:75 data/units/Drake_Burner.cfg:61
 #: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
-#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:22
-#: data/units/Gryphon_Master.cfg:25 data/units/Gryphon_Rider.cfg:25
-#: data/units/Undead_Corpse_Ghoul.cfg:65
-#: data/units/Undead_Corpse_Necrophage.cfg:33
+#: data/units/Goblin_Direwolf_Rider.cfg:81 data/units/Gryphon.cfg:25
+#: data/units/Gryphon_Master.cfg:28 data/units/Gryphon_Rider.cfg:28
+#: data/units/Undead_Corpse_Ghoul.cfg:66
+#: data/units/Undead_Corpse_Necrophage.cfg:34
 #: data/units/Undead_Spirit_Nightgaunt.cfg:53
 #: data/units/Undead_Spirit_Shadow.cfg:27
 msgid "claws"
 msgstr "かぎ爪"
 
-#: data/units/Drake_Armageddon.cfg:78 data/units/Drake_Blademaster.cfg:67
+#: data/units/Drake_Armageddon.cfg:77 data/units/Drake_Blademaster.cfg:67
 #: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
 #: data/units/Drake_Enforcer.cfg:66 data/units/Drake_Fighter.cfg:64
 #: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
@@ -5622,8 +5617,8 @@ msgstr "かぎ爪"
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:49
 #: data/units/Goblin_Direwolf_Rider.cfg:35
 #: data/units/Goblin_Direwolf_Rider.cfg:83 data/units/Goblin_Knight.cfg:35
-#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:24
-#: data/units/Gryphon_Master.cfg:27 data/units/Gryphon_Rider.cfg:27
+#: data/units/Goblin_Wolf_Rider.cfg:36 data/units/Gryphon.cfg:27
+#: data/units/Gryphon_Master.cfg:30 data/units/Gryphon_Rider.cfg:30
 #: data/units/Human_Horse_Grand_Knight.cfg:26
 #: data/units/Human_Horse_Knight.cfg:25
 #: data/units/Human_Loyalist_Bowman.cfg:25
@@ -5649,7 +5644,7 @@ msgstr "かぎ爪"
 #: data/units/Human_Outlaw_Trapper.cfg:36 data/units/Merman_Triton.cfg:70
 #: data/units/Monster_Cave_Spider.cfg:36 data/units/Naga_Fighter.cfg:25
 #: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
-#: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
+#: data/units/Ogre.cfg:24 data/units/Ogre_Young.cfg:24
 #: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:69
 #: data/units/Orcish_Assassin.cfg:107 data/units/Orcish_Crossbowman.cfg:24
 #: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
@@ -5657,8 +5652,8 @@ msgstr "かぎ爪"
 #: data/units/Orcish_Slayer.cfg:117 data/units/Orcish_Slurbow.cfg:24
 #: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
 #: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:53
-#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:67
-#: data/units/Undead_Corpse_Necrophage.cfg:35
+#: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:68
+#: data/units/Undead_Corpse_Necrophage.cfg:36
 #: data/units/Undead_Skele_Bone_Shooter.cfg:43
 #: data/units/Undead_Skele_Death_Knight.cfg:46
 #: data/units/Undead_Skele_Deathblade.cfg:44
@@ -5668,12 +5663,10 @@ msgstr "かぎ爪"
 #: data/units/Undead_Skeleton.cfg:108
 #: data/units/Undead_Spirit_Nightgaunt.cfg:54
 #: data/units/Undead_Spirit_Shadow.cfg:28
-#: data/units/Undead_Spirit_Spectre.cfg:46
-#: data/units/Undead_Spirit_Wraith.cfg:23
 msgid "blade"
 msgstr "斬撃"
 
-#: data/units/Drake_Armageddon.cfg:122 data/units/Drake_Blademaster.cfg:114
+#: data/units/Drake_Armageddon.cfg:121 data/units/Drake_Blademaster.cfg:114
 #: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
 #: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
 #: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
@@ -5682,7 +5675,7 @@ msgstr "斬撃"
 msgid "fire breath"
 msgstr "火炎のブレス"
 
-#: data/units/Drake_Armageddon.cfg:124 data/units/Drake_Blademaster.cfg:116
+#: data/units/Drake_Armageddon.cfg:123 data/units/Drake_Blademaster.cfg:116
 #: data/units/Drake_Burner.cfg:111 data/units/Drake_Fighter.cfg:113
 #: data/units/Drake_Fire.cfg:118 data/units/Drake_Flameheart.cfg:156
 #: data/units/Drake_Flare.cfg:137 data/units/Drake_Glider.cfg:131
@@ -6530,19 +6523,14 @@ msgid "faerie fire"
 msgstr "妖精の炎"
 
 #: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:154
-#: data/units/Elvish_Sylph.cfg:128 data/units/Saurian_Augur.cfg:75
-#: data/units/Saurian_Oracle.cfg:75 data/units/Saurian_Soothsayer.cfg:75
-#: data/units/Undead_Necro_Ancient_Lich.cfg:29
-#: data/units/Undead_Necro_Ancient_Lich.cfg:69
-#: data/units/Undead_Necro_Dark_Adept.cfg:32
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
-#: data/units/Undead_Necro_Lich.cfg:31 data/units/Undead_Necro_Lich.cfg:71
-#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:26
-#: data/units/Undead_Spirit_Ghost.cfg:64
-#: data/units/Undead_Spirit_Spectre.cfg:86
-#: data/units/Undead_Spirit_Wraith.cfg:68
-msgid "cold"
-msgstr "冷気"
+#: data/units/Elvish_Sylph.cfg:128 data/units/Human_Horse_Paladin.cfg:33
+#: data/units/Human_Mage_White.cfg:176 data/units/Human_Mage_of_Light.cfg:146
+#: data/units/Mermaid_Diviner.cfg:106 data/units/Mermaid_Priestess.cfg:81
+#: data/units/Undead_Spirit_Ghost.cfg:26
+#: data/units/Undead_Spirit_Spectre.cfg:46
+#: data/units/Undead_Spirit_Wraith.cfg:23
+msgid "holy"
+msgstr "神聖"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -6860,7 +6848,7 @@ msgstr ""
 
 #: data/units/Goblin_Direwolf_Rider.cfg:33 data/units/Goblin_Knight.cfg:33
 #: data/units/Goblin_Wolf_Rider.cfg:34 data/units/Monster_Cave_Spider.cfg:34
-#: data/units/Monster_Sea_Serpent.cfg:20 data/units/Undead_Bat_Blood.cfg:51
+#: data/units/Monster_Sea_Serpent.cfg:23 data/units/Undead_Bat_Blood.cfg:51
 #: data/units/Undead_Bat_Vampire.cfg:65
 msgid "fangs"
 msgstr "牙"
@@ -7141,12 +7129,6 @@ msgstr ""
 "ては致命的であり、また彼の仲間の傷を治療できるよう訓練を 受けています。\n"
 "\n"
 "特記事項:"
-
-#: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:176
-#: data/units/Human_Mage_of_Light.cfg:146 data/units/Mermaid_Diviner.cfg:106
-#: data/units/Mermaid_Priestess.cfg:81
-msgid "holy"
-msgstr "神聖"
 
 #: data/units/Human_Horseman.cfg:3
 msgid "Horseman"
@@ -8556,7 +8538,7 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/units/Monster_Cuttle_Fish.cfg:34 data/units/Monster_Tentacle.cfg:58
+#: data/units/Monster_Cuttle_Fish.cfg:34 data/units/Monster_Tentacle.cfg:61
 msgid "tentacle"
 msgstr "触手"
 
@@ -8577,7 +8559,7 @@ msgstr ""
 "巨大泥蟲は泥蟲よりも大きく、魔法によって土と水から造られました。 彼らは敵に泥"
 "のかたまりを噴射するか、あるいは拳で打ちつけることで攻撃します。"
 
-#: data/units/Monster_Giant_Mudcrawler.cfg:45 data/units/Monster_Yeti.cfg:32
+#: data/units/Monster_Giant_Mudcrawler.cfg:45 data/units/Monster_Yeti.cfg:33
 #: data/units/Troll_Rocklobber.cfg:27 data/units/Troll_Whelp.cfg:26
 #: data/units/Undead_Skeleton_Archer.cfg:31
 msgid "fist"
@@ -8628,7 +8610,7 @@ msgstr ""
 msgid "Sea Serpent"
 msgstr "シーサーパント"
 
-#: data/units/Monster_Sea_Serpent.cfg:16
+#: data/units/Monster_Sea_Serpent.cfg:19
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
@@ -8638,7 +8620,7 @@ msgstr ""
 msgid "Tentacle of the Deep"
 msgstr "深淵のテンタクル"
 
-#: data/units/Monster_Tentacle.cfg:19
+#: data/units/Monster_Tentacle.cfg:22
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves.\n"
@@ -8744,7 +8726,7 @@ msgstr "女ナーガの熟練戦士"
 msgid "Ogre"
 msgstr "オーガ"
 
-#: data/units/Ogre.cfg:17
+#: data/units/Ogre.cfg:20
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -8755,7 +8737,7 @@ msgstr ""
 "間に似ています。素早さや知恵で彼らに打ち勝つのは簡単ですが、その腕力は 侮るこ"
 "とはできません。"
 
-#: data/units/Ogre.cfg:20 data/units/Ogre_Young.cfg:20
+#: data/units/Ogre.cfg:23 data/units/Ogre_Young.cfg:23
 msgid "cleaver"
 msgstr "大包丁"
 
@@ -8763,7 +8745,7 @@ msgstr "大包丁"
 msgid "Young Ogre"
 msgstr "若者オーガ"
 
-#: data/units/Ogre_Young.cfg:17
+#: data/units/Ogre_Young.cfg:20
 msgid ""
 "When still young, Ogres are sometimes captured and taken into the army to be "
 "trained. They cannot manage weapons skillfully, but that is of little "
@@ -9012,6 +8994,19 @@ msgstr ""
 #: data/units/Saurian_Soothsayer.cfg:74
 msgid "curse"
 msgstr "呪い"
+
+#: data/units/Saurian_Augur.cfg:75 data/units/Saurian_Oracle.cfg:75
+#: data/units/Saurian_Soothsayer.cfg:75
+#: data/units/Undead_Necro_Ancient_Lich.cfg:29
+#: data/units/Undead_Necro_Ancient_Lich.cfg:69
+#: data/units/Undead_Necro_Dark_Adept.cfg:32
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
+#: data/units/Undead_Necro_Lich.cfg:34 data/units/Undead_Necro_Lich.cfg:74
+#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:64
+#: data/units/Undead_Spirit_Spectre.cfg:86
+#: data/units/Undead_Spirit_Wraith.cfg:68
+msgid "cold"
+msgstr "冷気"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -9317,7 +9312,7 @@ msgstr ""
 #: data/units/Undead_Corpse_Soulless.cfg:46
 #: data/units/Undead_Corpse_Walking.cfg:48
 #: data/units/Undead_Necro_Ancient_Lich.cfg:27
-#: data/units/Undead_Necro_Lich.cfg:29 data/units/Undead_Spirit_Ghost.cfg:24
+#: data/units/Undead_Necro_Lich.cfg:32 data/units/Undead_Spirit_Ghost.cfg:24
 msgid "touch"
 msgstr "接触"
 
@@ -9356,7 +9351,7 @@ msgstr ""
 "特記事項:"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:68
-#: data/units/Undead_Necro_Lich.cfg:70
+#: data/units/Undead_Necro_Lich.cfg:73
 msgid "chill tempest"
 msgstr "冷気の大嵐"
 
@@ -9436,7 +9431,7 @@ msgstr "冷気の嵐"
 msgid "Lich"
 msgstr "リッチ"
 
-#: data/units/Undead_Necro_Lich.cfg:21
+#: data/units/Undead_Necro_Lich.cfg:24
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -9942,50 +9937,50 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "ユニットを雇用するための 城タイルの空きがありません。"
 
-#: src/actions.cpp:967 src/actions.cpp:1167
+#: src/actions.cpp:969 src/actions.cpp:1170
 msgid "poisoned"
 msgstr "毒を受けた"
 
-#: src/actions.cpp:975 src/actions.cpp:1175
+#: src/actions.cpp:977 src/actions.cpp:1178
 msgid "slowed"
 msgstr "遅くなった"
 
-#: src/actions.cpp:986 src/actions.cpp:1187
+#: src/actions.cpp:988 src/actions.cpp:1190
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:1995
+#: src/actions.cpp:1998
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
-#: src/actions.cpp:2035
+#: src/actions.cpp:2038
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見"
 
-#: src/actions.cpp:2038
+#: src/actions.cpp:2041
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！"
 
-#: src/actions.cpp:2043
+#: src/actions.cpp:2046
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 
-#: src/actions.cpp:2044
+#: src/actions.cpp:2047
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 
-#: src/actions.cpp:2045
+#: src/actions.cpp:2048
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "ユニットを発見！ (仲間$friends、敵$enemies )"
 
-#: src/actions.cpp:2054
+#: src/actions.cpp:2057
 msgid "(press $hotkey to continue)"
 msgstr "(続けるには $hotkey を押して下さい)"
 
@@ -9997,96 +9992,96 @@ msgstr "ユニットの昇進"
 msgid "What should our victorious unit become?"
 msgstr "この勝利ユニットは何になりますか？"
 
-#: src/dialogs.cpp:198
+#: src/dialogs.cpp:213
 msgid "No objectives available"
 msgstr "目標がありません"
 
-#: src/dialogs.cpp:210
+#: src/dialogs.cpp:225
 msgid "Save Game"
 msgstr "ゲームの保存"
 
-#: src/dialogs.cpp:217
+#: src/dialogs.cpp:232
 #, fuzzy
 msgid "Quit Game"
 msgstr "ゲームを終了します"
 
-#: src/dialogs.cpp:223
+#: src/dialogs.cpp:238
 msgid "Overwrite?"
 msgstr "上書きしますか？"
 
-#: src/dialogs.cpp:224
+#: src/dialogs.cpp:239
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "保存データは既に存在します。 上書きしますか？"
 
-#: src/dialogs.cpp:255
+#: src/dialogs.cpp:270
 msgid "Don't ask me again!"
 msgstr "二度と聞かないで！"
 
-#: src/dialogs.cpp:257
+#: src/dialogs.cpp:272
 msgid "Do you really want to delete this game?"
 msgstr "このゲームを本当に削除しますか？"
 
-#: src/dialogs.cpp:409
+#: src/dialogs.cpp:424
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y年%m月%d日(%a) %H:%M"
 
-#: src/dialogs.cpp:426
+#: src/dialogs.cpp:441
 msgid "#(Invalid)"
 msgstr "#(無効)"
 
-#: src/dialogs.cpp:431 src/game.cpp:783
+#: src/dialogs.cpp:446 src/game.cpp:783
 msgid "Campaign"
 msgstr "キャンペーン"
 
-#: src/dialogs.cpp:433 src/game.cpp:1226
+#: src/dialogs.cpp:448 src/game.cpp:1226
 msgid "Multiplayer"
 msgstr "マルチプレイヤー"
 
-#: src/dialogs.cpp:435
+#: src/dialogs.cpp:450
 msgid "Tutorial"
 msgstr "チュートリアル"
 
-#: src/dialogs.cpp:443
+#: src/dialogs.cpp:458
 msgid "replay"
 msgstr "リプレイ"
 
-#: src/dialogs.cpp:445 src/menu_events.cpp:444 src/multiplayer_lobby.cpp:415
+#: src/dialogs.cpp:460 src/menu_events.cpp:444 src/multiplayer_lobby.cpp:415
 msgid "Turn"
 msgstr "ターン"
 
-#: src/dialogs.cpp:447
+#: src/dialogs.cpp:462
 msgid "Scenario Start"
 msgstr "シナリオ開始"
 
-#: src/dialogs.cpp:450
+#: src/dialogs.cpp:465
 msgid "Difficulty: "
 msgstr "難易度: "
 
-#: src/dialogs.cpp:452
+#: src/dialogs.cpp:467
 msgid "Version: "
 msgstr "バージョン: "
 
-#: src/dialogs.cpp:476 src/dialogs.cpp:492
+#: src/dialogs.cpp:491 src/dialogs.cpp:507
 msgid "%b %d %y"
 msgstr "%y年%m月%d日"
 
-#: src/dialogs.cpp:482
+#: src/dialogs.cpp:497
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:485
+#: src/dialogs.cpp:500
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:488
+#: src/dialogs.cpp:503
 msgid "%b %d"
 msgstr "%m月%d日"
 
-#: src/dialogs.cpp:512
+#: src/dialogs.cpp:527
 msgid "No Saved Games"
 msgstr "保存されたゲームはありません"
 
-#: src/dialogs.cpp:513
+#: src/dialogs.cpp:528
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -10094,49 +10089,49 @@ msgstr ""
 "読み込み用に保存されたゲームがありません。\n"
 "(シナリオを制覇すると、 自動的にゲームは保存されます)"
 
-#: src/dialogs.cpp:527
+#: src/dialogs.cpp:542
 msgid "Delete Save"
 msgstr "保存データの削除"
 
-#: src/dialogs.cpp:535
+#: src/dialogs.cpp:550
 msgid "Date"
 msgstr "日付"
 
-#: src/dialogs.cpp:535 src/game.cpp:920 src/menu_events.cpp:290
+#: src/dialogs.cpp:550 src/game.cpp:920 src/menu_events.cpp:290
 #: src/menu_events.cpp:827 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "名前"
 
-#: src/dialogs.cpp:561
+#: src/dialogs.cpp:576
 msgid "Show replay"
 msgstr "リプレイを見る"
 
-#: src/dialogs.cpp:564 src/multiplayer_create.cpp:88
+#: src/dialogs.cpp:579 src/multiplayer_create.cpp:88
 #: src/multiplayer_create.cpp:89
 msgid "Load Game"
 msgstr "ロード"
 
-#: src/dialogs.cpp:565
+#: src/dialogs.cpp:580
 msgid "Choose the game to load"
 msgstr "ロードするゲームを選択して下さい"
 
-#: src/dialogs.cpp:591 src/dialogs.cpp:603
+#: src/dialogs.cpp:606 src/dialogs.cpp:618
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/dialogs.cpp:687 src/help.cpp:1079
+#: src/dialogs.cpp:702 src/help.cpp:1079
 msgid "level"
 msgstr "レベル"
 
-#: src/dialogs.cpp:709 src/help.cpp:1137
+#: src/dialogs.cpp:724 src/help.cpp:1137
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:713 src/dialogs.cpp:721
+#: src/dialogs.cpp:728 src/dialogs.cpp:736
 msgid "XP: "
 msgstr "経験: "
 
-#: src/dialogs.cpp:726 src/help.cpp:1138
+#: src/dialogs.cpp:741 src/help.cpp:1138
 msgid "Moves: "
 msgstr "移動: "
 
@@ -10300,7 +10295,7 @@ msgstr ""
 "た。"
 
 #: src/game.cpp:1116 src/game.cpp:1155 src/game.cpp:1180
-#: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:64 src/playcampaign.cpp:352
+#: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:64 src/playcampaign.cpp:356
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
@@ -10364,15 +10359,15 @@ msgstr "AIと対戦します。"
 msgid "Login: "
 msgstr "ログイン: "
 
-#: src/game.cpp:1267 src/playcampaign.cpp:89 src/playcampaign.cpp:324
+#: src/game.cpp:1267 src/playcampaign.cpp:89 src/playcampaign.cpp:328
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1269 src/playcampaign.cpp:91 src/playcampaign.cpp:327
+#: src/game.cpp:1269 src/playcampaign.cpp:91 src/playcampaign.cpp:331
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1281 src/playcampaign.cpp:93 src/playcampaign.cpp:330
+#: src/game.cpp:1281 src/playcampaign.cpp:93 src/playcampaign.cpp:334
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
@@ -10420,15 +10415,15 @@ msgstr "現在の言語でフォントを再初期化します。"
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
-#: src/game_events.cpp:784
+#: src/game_events.cpp:785
 msgid "Victory:"
 msgstr "勝利条件:"
 
-#: src/game_events.cpp:788
+#: src/game_events.cpp:789
 msgid "Defeat:"
 msgstr "敗北条件:"
 
-#: src/gamestatus.cpp:750
+#: src/gamestatus.cpp:751
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
@@ -10638,7 +10633,7 @@ msgstr "統計情報"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:294 src/unit.cpp:2471
+#: src/menu_events.cpp:294 src/unit.cpp:2505
 msgid "Moves"
 msgstr "移動"
 
@@ -10681,7 +10676,7 @@ msgstr "維持"
 msgid "Income"
 msgstr "収入"
 
-#: src/menu_events.cpp:453 src/playcampaign.cpp:295 src/playcampaign.cpp:431
+#: src/menu_events.cpp:453 src/playcampaign.cpp:299 src/playcampaign.cpp:435
 msgid "Name:"
 msgstr "名前:"
 
@@ -10706,7 +10701,7 @@ msgstr "保存された"
 msgid "The game has been saved"
 msgstr "ゲームを保存しました。"
 
-#: src/menu_events.cpp:471 src/playcampaign.cpp:441
+#: src/menu_events.cpp:471 src/playcampaign.cpp:445
 msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
@@ -11062,12 +11057,12 @@ msgid "Normal"
 msgstr "ノーマル"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2570
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:439 src/unit.cpp:2604
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2577
+#: src/multiplayer_wait.cpp:431 src/multiplayer_wait.cpp:442 src/unit.cpp:2611
 msgid ")"
 msgstr "）"
 
@@ -11452,47 +11447,47 @@ msgstr "最初に戻る"
 msgid "Back to turn "
 msgstr "戻るターン : "
 
-#: src/playcampaign.cpp:272
+#: src/playcampaign.cpp:276
 msgid "Defeat"
 msgstr "敗北"
 
-#: src/playcampaign.cpp:273
+#: src/playcampaign.cpp:277
 msgid "You have been defeated!"
 msgstr "あなたは敗れました！"
 
-#: src/playcampaign.cpp:286
+#: src/playcampaign.cpp:290
 msgid " replay"
 msgstr "リプレイ"
 
-#: src/playcampaign.cpp:294
+#: src/playcampaign.cpp:298
 msgid "Do you want to save a replay of this scenario?"
 msgstr "このシナリオのリプレイを保存しますか？"
 
-#: src/playcampaign.cpp:296
+#: src/playcampaign.cpp:300
 #, fuzzy
 msgid "Save Replay"
 msgstr "リプレイ"
 
-#: src/playcampaign.cpp:303
+#: src/playcampaign.cpp:307
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "ゲームは保存できませんでした"
 
-#: src/playcampaign.cpp:343
+#: src/playcampaign.cpp:347
 #, fuzzy
 msgid "Receiving data..."
 msgstr "ゲームデータ入手中..."
 
-#: src/playcampaign.cpp:345
+#: src/playcampaign.cpp:349
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "次のレベルをダウンロード中..."
 
-#: src/playcampaign.cpp:430
+#: src/playcampaign.cpp:434
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "このゲームを保存しますか？（この操作は自動保存ファイルを消去します）"
 
-#: src/playcampaign.cpp:457
+#: src/playcampaign.cpp:461
 msgid "Unknown scenario: '"
 msgstr "不明のシナリオ: '"
 
@@ -11833,15 +11828,15 @@ msgstr "ヘルプ"
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 
-#: src/unit.cpp:2406 src/unit.cpp:2575
+#: src/unit.cpp:2440 src/unit.cpp:2609
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2488
+#: src/unit.cpp:2522
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2566
+#: src/unit.cpp:2600
 msgid ": "
 msgstr ": "
 
