@@ -128,7 +128,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	//no  => we are starting a fresh scenario
 	if(gamestate.snapshot.child("side") == NULL || !recorder.at_end()) {
 		//campaign or multiplayer?
-		//if the gamestate already contains a starting_pos, then we are 
+		//if the gamestate already contains a starting_pos, then we are
 		//starting a fresh multiplayer game. Otherwise this is the start
 		//of a campaign scenario.
 		if(gamestate.starting_pos.empty() == false) {
@@ -147,10 +147,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		LOG_G << "loading snapshot...\n";
 		starting_pos = gamestate.starting_pos;
 		scenario = &gamestate.snapshot;
-		// when starting wesnoth --multiplayer there might be 
+		// when starting wesnoth --multiplayer there might be
 		// no variables which leads to a segfault
 		if(gamestate.snapshot.child("variables") != NULL) {
 			gamestate.set_variables(*gamestate.snapshot.child("variables"));
+		}
+		//Replace game label with that from snapshot
+		if (!state.snapshot["label"].empty()){
+			state.label = state.snapshot["label"];
 		}
 		//get the current gold values of players so they don't start with the amount
 		//they had at the start of the scenario
@@ -229,7 +233,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			if(map_data.empty() && (*scenario)["map"] != "") {
 				map_data = read_map((*scenario)["map"]);
 			}
-			
+
 			//if the map should be randomly generated
 			if(map_data.empty() && (*scenario)["map_generation"] != "") {
 				const cursor::setter cursor_setter(cursor::WAIT);
