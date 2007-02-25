@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "font.hpp"
 #include "gettext.hpp"
@@ -326,13 +327,20 @@ void ui::handle_event(const SDL_Event& event)
 		handle_key_event(event.key);
 	}
     if(users_menu_.double_clicked()) {
-		std::string msg_text;         
-		const int res = gui::show_dialog(disp(), NULL, _("Whisper"),
-							_("Send a private message to ") + user_list_[users_menu_.selection()], gui::OK_CANCEL,
-							NULL, NULL, _("Message: "), &msg_text);
-		if (res == 0 && !msg_text.empty()) {
+		std::string usr_text = user_list_[users_menu_.selection()];
+		if(usr_text.size() > 1 && usr_text.at(0) == '#') {
+			usr_text.erase(0,1);
+			int index = usr_text.find_first_of(' ');
+			if(index > -1) {
+				usr_text.erase(index);
+			}
+		}
+		std::string caption = _("Send a private message to ") + usr_text;
+		gui::dialog d(disp(), _("Whisper"), caption, gui::OK_CANCEL);
+		d.set_textbox( _("Message: "));
+		if (!(d.show() || d.textbox_text().empty())) {
 			std::stringstream msg;
-			msg << "/msg " << user_list_[users_menu_.selection()] << " " << msg_text;
+			msg << "/msg " << usr_text << " " << d.textbox_text();
 			chat_handler::do_speak(msg.str());
         }
 	}
