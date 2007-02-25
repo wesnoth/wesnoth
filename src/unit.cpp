@@ -341,7 +341,7 @@ unit::~unit()
 	delete anim_;
 
 	// remove us from the status cache
-	std::vector<const unit *>::iterator itor = 
+	std::vector<const unit *>::iterator itor =
 		std::find(units_with_cache.begin(), units_with_cache.end(), this);
 
 	if(itor != units_with_cache.end()) {
@@ -737,7 +737,7 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, bool use_flat_tod) const
 {
-	scoped_wml_variable* auto_store;
+	scoped_wml_variable* auto_store = NULL;
 	if(map_ != NULL && loc.valid() && units_ != NULL) {
 		auto_store = new scoped_xy_unit("this_unit", loc.x, loc.y, *units_);
 	}
@@ -3024,10 +3024,10 @@ bool unit::invisible(const gamemap::location& loc,
 	bool is_inv = (utils::string_bool(get_state(hides)) && get_ability_bool(hides,loc));
 	if(is_inv){
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {				
+			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {
 				is_inv = false;
 				break;
-			}		
+			}
 		}
 	}
 
@@ -3036,7 +3036,7 @@ bool unit::invisible(const gamemap::location& loc,
 		units_with_cache.push_back(this);
 	}
 	invisibility_cache_[loc] = is_inv;
-	
+
 	return is_inv;
 }
 
