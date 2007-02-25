@@ -83,7 +83,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	temp_unit_(NULL),
 	minimap_(NULL), redrawMinimap_(false),
 	status_(status),
-	teams_(t), lastDraw_(0),
+	teams_(t), nextDraw_(0),
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0),
@@ -897,22 +897,26 @@ void display::draw(bool update,bool force)
 
 	prune_chat_messages();
 
-	const int time_between_draws = 10;
+	static const int time_between_draws = preferences::draw_delay();
 	const int current_time = SDL_GetTicks();
-	const int wait_time = lastDraw_ + time_between_draws - current_time;
+	const int wait_time = nextDraw_ - current_time;
 
 	if(update) {
 		if(force || changed) {
 			if(!force && wait_time > 0) {
-				// if it's not time yet to draw add a small delay due to the recent
-				// optimizations we're now able to DOS the CPU if there's not much
-				// invalidated, this still needs to be reworked after 1.3.1 has
-				// been released -- Mordante
+				// if it's not time yet to draw delay until it is
 				SDL_Delay(wait_time);
 			}
 			update_display();
 		}
-		lastDraw_ = SDL_GetTicks();
+		// set the theortical next draw time
+		nextDraw_ += time_between_draws;
+		
+		// if the next draw already should have been finished we'll enter an
+		// update frenzy, so make sure that the too late value doesn't keep
+		// growing. Note if force is used too often we can also get the 
+		// opposite effect.
+		nextDraw_ = maximum<int>(nextDraw_, SDL_GetTicks());
 	}
 }
 

@@ -478,7 +478,9 @@ private:
 
 	const std::vector<team>& teams_;
 
-	int lastDraw_;
+	// holds the tick count for when the next drawing event is scheduled
+	// drawing shouldn't occur before this time
+	int nextDraw_;
 
 	void invalidate_route();
 

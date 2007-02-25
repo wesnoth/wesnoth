@@ -170,6 +170,20 @@ game_controller::game_controller(int argc, char** argv)
 			preferences::set_show_fps(true);
 		} else if(val == "--nocache") {
 			use_caching_ = false;
+		} else if(val == "--max-fps") {
+			if(arg_+1 != argc_) {
+				++arg_;
+				int fps = lexical_cast_default<int>(argv_[arg_], 50);
+				fps = minimum<int>(fps, 1000);
+				fps = maximum<int>(fps, 1);
+				fps = 1000 / fps;
+				// increase the delay to avoid going above the maximum
+				if(1000 % fps != 0) {
+					++fps;
+				}
+				preferences::set_draw_delay(fps);
+				std::cerr << preferences::draw_delay() << "\n";
+			}
 		} else if(val == "--validcache") {
 			force_valid_cache_ = true;
 		} else if(val == "--resolution" || val == "-r") {
@@ -1638,6 +1652,8 @@ int play_game(int argc, char** argv)
 			<< "  --nocache                    disables caching of game data.\n"
 			<< "  --validcache                 assume that cache is valid (dangerous)\n"
 			<< "  --nosound                    runs the game without sounds and music.\n"
+			<< "  --max-fps                    the maximum fps the game tries to run at the value\n"
+			<< "                               should be between the 1 and 1000, the default is 50.\n"
 			<< "  --path                       prints the name of the game data directory and exits.\n"
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  -t, --test                   runs the game in a small test scenario.\n"

@@ -48,6 +48,8 @@ bool unit_genders = true;
 
 bool fps = false;
 
+int draw_delay_ = 20;
+
 bool lobby_minimaps = true;
 
 std::set<std::string> encountered_units_set;
@@ -956,6 +958,16 @@ bool show_fps()
 void set_show_fps(bool value)
 {
 	fps = value;
+}
+
+int draw_delay()
+{
+	return draw_delay_;
+}
+
+void set_draw_delay(int value)
+{
+	draw_delay_ = value;
 }
 
 bool upload_log()

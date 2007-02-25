@@ -205,6 +205,9 @@ namespace preferences {
 	bool show_haloes();
 	void set_show_haloes(bool value);
 
+	int draw_delay();
+	void set_draw_delay(int value);
+
 	bool show_fps();
 	void set_show_fps(bool value);
 
