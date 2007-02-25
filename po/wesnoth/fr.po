@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-25 12:30+0100\n"
-"PO-Revision-Date: 2007-02-22 04:14+0100\n"
-"Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
+"PO-Revision-Date: 2007-02-25 18:31+0100\n"
+"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team:  <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1313,7 +1313,6 @@ msgid "Shroud and Fog of War"
 msgstr "Voile et brouillard de guerre"
 
 #: data/help.cfg:151
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1342,7 +1341,17 @@ msgstr ""
 "dans les parages, mais réapparaît dès que celles-ci s'en vont. Le voile et "
 "le brouillard de guerre sont tous deux mis à jour par les unités. Chaque "
 "unité va mettre à jour les zones adjacentes pendant un déplacement (ignorant "
-"les zones de contrôle et les unités ennemies)."
+"les zones de contrôle et les unités ennemies).\n"
+"\n"
+"En principe vous pouvez annuler une action d'unité tant qu'un événement "
+"aléatoire n'a pas eu lieu, comme un combat ou un recrutement. "
+"Explorer des lieux non visibles en enlevant le voile ou le brouillard "
+"empêchera aussi d'annuler l'action. Vous pouvez toutefois activer "
+"l'option « Différer les mises à jour du voile » dans le menu des actions. "
+"Cela aura pour effet de différer les mises à jour du voile ou du brouillard "
+"jusqu'au prochain événement aléatoire ou une mise à jour manuelle via l'"
+"option « Mettre à jour le voile maintenant » (ou la fin de votre tour), et "
+"ainsi garder la possibilitié d'annuler votre action."
 
 #: data/help.cfg:156
 msgid "Combat"
@@ -2459,7 +2468,6 @@ msgid "Cave"
 msgstr "Caverne"
 
 #: data/help.cfg:478
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2477,7 +2485,8 @@ msgstr ""
 "leur défense. Les nains et les trolls, qui font de ces cavernes leurs "
 "foyers, s'y déplacent relativement aisément, particulièrement les nains qui, "
 "du fait de leur petite taille, peuvent circuler à travers de nombreux "
-"obstacles.\n"
+"obstacles. De temps en temps, les cavernes sont "
+"<ref>dst=terrain_illuminated_cave text=Éclairées</ref>.\n"
 "\n"
 "La plupart des unités reçoivent 20 à 40 % de défense dans les cavernes, les "
 "nains en obtiennent 50 %."
@@ -2487,7 +2496,6 @@ msgid "Rockbound Cave"
 msgstr "Caverne accidentée"
 
 #: data/help.cfg:488
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2506,7 +2514,8 @@ msgstr ""
 "favorise la défense. Les nains et les trolls, qui sont les principaux "
 "habitants des cavernes, s'y déplacent relativement aisément. Les nains, du "
 "fait de leur petite taille, peuvent pleinement tirer parti de ce type de "
-"topographie.\n"
+"topographie. De temps en temps, les cavernes sont "
+"<ref>dst=terrain_illuminated_cave text=Éclairées</ref>.\n"
 "\n"
 "La plupart des unités ont environ 50% de défense dans ces cavernes, alors "
 "que la cavalerie est limitée à 40%. Les nains y bénéficient de 60% de "
@@ -2517,7 +2526,6 @@ msgid "Illuminated Cave"
 msgstr "Caverne éclairée"
 
 #: data/help.cfg:496
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness.  This provides an attack "
@@ -2528,10 +2536,7 @@ msgstr ""
 "Une caverne éclairée est une zone de terrain où la lumière de la surface "
 "vient illuminer les ténèbres souterraines. Celle-ci procure un bonus de "
 "dégâts aux unités loyales et enlève celui des unités chaotiques. Sinon ce "
-"terrain ressemble aux cavernes normales.\n"
-"\n"
-"La plupart des unités reçoivent 20 à 40 % de défense dans les cavernes, les "
-"nains en obtiennent 50 %."
+"terrain ressemble aux cavernes normales."
 
 #: data/help.cfg:501 data/terrain.cfg:670
 msgid "Mushroom Grove"
@@ -2608,9 +2613,8 @@ msgstr ""
 "les cavaleries n'en reçoivent que 40 %.\n"
 
 #: data/help.cfg:531
-#, fuzzy
 msgid "Submerged Village"
-msgstr "Village possédé"
+msgstr "Village sous-marin"
 
 #: data/help.cfg:536
 msgid ""
@@ -2624,6 +2628,15 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defence."
 msgstr ""
+"Les villages sous-marins sont les villages des ondins et des nagas. Alors que "
+"ces creatures de l'eau sont chez elles, celles de la terre on du mal à se "
+"mouvoir et se défensdre dans ce milieu. Toutefois, comme tout village, ils "
+"apportent à toute creature des moyens de laver et soigner leurs blessures, ce qui "
+"permet à toute unité qui y stationne de se soigner de 8 points de vie à "
+"chaque tour ou d'être guérie du poison.\n"
+"\n"
+"Les ondins et les nagas ont 60 % de défense dans les villages sous-marins, tandis "
+"que les unités n'ont qu'une défense réduite."
 
 #: data/help.cfg:541 data/terrain.cfg:565
 msgid "Chasm"
@@ -5388,9 +5401,8 @@ msgid "Cave Lit"
 msgstr "Caverne éclairée"
 
 #: data/terrain.cfg:701
-#, fuzzy
 msgid "Rockbound Cave Lit"
-msgstr "Caverne accidentée"
+msgstr "Caverne accidentée éclairée"
 
 #: data/terrain.cfg:955
 msgid "Impassable Mountains"
@@ -6110,7 +6122,6 @@ msgid "Armageddon Drake"
 msgstr "Drake apocalyse"
 
 #: data/units/Drake_Armageddon.cfg:19
-#, fuzzy
 msgid ""
 "The Armageddon Drakes truely are amongst the toughest of all drakes, they "
 "are so incredibly used to living near fire that they've grown to be "
@@ -6126,8 +6137,6 @@ msgstr ""
 "qu'un polochon. Leur armure est faite de minéraux très résistants et de "
 "pierres venant du fond des rivières de lave ; elle est, comme celle des "
 "drakes infernaux, leurs plus faibles cousins, un symbole de leur statut. "
-"Elle leur donne une défense contre le froid bien meilleure que celle des "
-"autres drakes."
 
 #: data/units/Drake_Armageddon.cfg:75 data/units/Drake_Burner.cfg:61
 #: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
