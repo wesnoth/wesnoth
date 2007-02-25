@@ -903,7 +903,7 @@ void display::draw(bool update,bool force)
 
 	if(update) {
 		if(force || changed) {
-			if(wait_time > 0) {
+			if(!force && wait_time > 0) {
 				// if it's not time yet to draw add a small delay due to the recent
 				// optimizations we're now able to DOS the CPU if there's not much
 				// invalidated, this still needs to be reworked after 1.3.1 has
