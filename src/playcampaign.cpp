@@ -152,6 +152,10 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		if(state.snapshot.child("variables") != NULL) {
 			state.variables = *state.snapshot.child("variables");
 		}
+		//Replace game label with that from snapshot
+		if (!state.snapshot["label"].empty()){
+			state.label = state.snapshot["label"];
+		}
 		//get the current gold values of players so they don't start with the amount
 		//they had at the start of the scenario
 		const std::vector<config*>& player_cfg = state.snapshot.get_children("player");
