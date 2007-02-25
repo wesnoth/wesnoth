@@ -153,8 +153,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			gamestate.set_variables(*gamestate.snapshot.child("variables"));
 		}
 		//Replace game label with that from snapshot
-		if (!state.snapshot["label"].empty()){
-			state.label = state.snapshot["label"];
+		if (!gamestate.snapshot["label"].empty()){
+			gamestate.label = gamestate.snapshot["label"];
 		}
 		//get the current gold values of players so they don't start with the amount
 		//they had at the start of the scenario
