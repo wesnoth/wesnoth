@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "display.hpp"
+#include "game_events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -277,6 +278,10 @@ const game_state& wait::get_state()
 
 void wait::start_game()
 {
+	// add era events
+	const config* const era_cfg = level_.child("era");
+	game_events::add_events(era_cfg->get_children("event"),"all");
+
 	config const * const stats = level_.child("statistics");
 	if(stats != NULL) {
 		statistics::fresh_stats();
