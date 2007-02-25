@@ -355,15 +355,17 @@ msgstr ""
 "med halvdelen af det drænede (nedrundet)."
 
 #: data/abilities.cfg:523
-#, fuzzy
 msgid "firststrike"
-msgstr "slag"
+msgstr "initiativ"
 
 #: data/abilities.cfg:525
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Initiativ:\n"
+"Denne enhed angriber først - har initiativet - med dette angreb, også selv "
+"om de forsvarer sig."
 
 #: data/abilities.cfg:532
 msgid "poison"
@@ -381,35 +383,31 @@ msgstr ""
 
 #: data/about.cfg:6
 msgid "Programming"
-msgstr ""
+msgstr "Programmering"
 
 #: data/about.cfg:56
-#, fuzzy
 msgid "General Purpose Administration and Coordination"
-msgstr "+Administratorer"
+msgstr "General Administration og koordinering"
 
 #: data/about.cfg:64
 msgid "Artwork and Graphics"
-msgstr ""
+msgstr "Illustrationer og grafik"
 
 #: data/about.cfg:171
 msgid "Music"
 msgstr "Musik"
 
 #: data/about.cfg:182
-#, fuzzy
 msgid "Sound Effects"
 msgstr "Lydeffekter"
 
 #: data/about.cfg:191
-#, fuzzy
 msgid "Campaign Design"
-msgstr "Kampagne"
+msgstr "Kampagne design"
 
 #: data/about.cfg:215
-#, fuzzy
 msgid "Multiplayer Maps and Balancing"
-msgstr "flerspillerkort"
+msgstr "flerspillerkort og afbalancering"
 
 #: data/about.cfg:230
 msgid "Packagers"
@@ -560,9 +558,8 @@ msgid "Turkish Translation"
 msgstr "Tyrkisk oversættelse"
 
 #: data/about.cfg:684
-#, fuzzy
 msgid "Valencian Translation"
-msgstr "Slovenisk  Oversættelse"
+msgstr "Valencisk oversættelse"
 
 #: data/about.cfg:691 data/help.cfg:254
 msgid "Contributors"
@@ -658,7 +655,7 @@ msgstr "race^Øgler"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "race^Mekaniske"
 
 #: data/english.cfg:25
 msgid "race^Mermen"
@@ -670,11 +667,11 @@ msgstr "race^Monstre"
 
 #: data/english.cfg:27
 msgid "race^Nagas"
-msgstr ""
+msgstr "race^Nagaer"
 
 #: data/english.cfg:28
 msgid "race^Ogres"
-msgstr ""
+msgstr "race^Ogretrolde"
 
 #: data/english.cfg:29
 msgid "race^Trolls"
@@ -682,7 +679,7 @@ msgstr "race^Trolde"
 
 #: data/english.cfg:30
 msgid "race^Woses"
-msgstr "race^Wose"
+msgstr "race^Træsjæle"
 
 #: data/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
@@ -1171,7 +1168,7 @@ msgid ""
 "a move in a village you don't already own will also use up a unit's "
 "movement, but will still allow it to attack."
 msgstr ""
-"Bevægelse af enheder i Kampen for Wesnoth er simpel. Klik på en enhed for at "
+"Bevægelse af enheder i Kampen om Wesnoth er simpel. Klik på en enhed for at "
 "vælge den og klik derefter på det felt du vil flytte den til. Når en enhed "
 "er valgt, oplyses alle de felter den kan flytte til. Når du flytter musen "
 "hen over et oplyst felt, kan du se forsvarsstyrken enheden vil få, hvis du "
@@ -1372,6 +1369,12 @@ msgid ""
 "<ref>dst=weaponspecial_charge text=Charge</ref>, which doubles the damage "
 "dealt by both attacker and defender when the unit with Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Nogle få enheder har specielle <ref>dst=abilities text=abilities</ref> som "
+"påvirker deres skadevirkning i kamp. Den udbredste af disse er "
+"<ref>dst=weaponspecial_charge text=Charge</ref>, som fordobler skaden "
+"forvoldt af både angriber og forsvarer når enheden med charge angriber."
 
 #: data/help.cfg:178
 msgid "Damage Types and Resistance"
@@ -1727,9 +1730,12 @@ msgid ""
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
+"De fleste enheder har to karaktertræk. Udøde enheder har dog kun et "
+"karaktertræk 'udød', og træsjæle har ingen karaktertræk. Karaktertræk er "
+"modifikationer som ændrer en enheds attributer en smule. De tildeles normalt "
+"tilfældigt når en enhed rekrutteres."
 
 #: data/help.cfg:269
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1740,10 +1746,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Karaktertrækkene der er tilgængelige for alle enheder, der ikke er udøde, "
-"er: <ref>dst=traits_intelligent text=Intelligent</ref>, "
-"<ref>dst=traits_quick text=Quick</ref>, <ref>dst=traits_resilient "
-"text=Resilient</ref>, og <ref>dst=traits_strong text=Strong</ref>."
+"Karaktertrækkene der er tilgængelige for alle enheder, der ikke er udøde, er "
+"<ref>dst=traits_intelligent text=Intelligent</ref>, <ref>dst=traits_quick "
+"text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, og "
+"<ref>dst=traits_strong text=Strong</ref>."
 
 #: data/help.cfg:271
 msgid ""
@@ -2250,9 +2256,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:531
-#, fuzzy
 msgid "Submerged Village"
-msgstr "Egen landssby"
+msgstr "Undervandslandssby"
 
 #: data/help.cfg:536
 msgid ""
@@ -3688,6 +3693,21 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Bramwythl træsjælen var altid blevet anset for en langsom ordknap fyr, selv "
+"af andre træsjæle. I langt højere grad end andre træsjæle, nød han at stå "
+"alene i solen, med armene oprejst, og beundrende skønheden over hans himmel. "
+"Selv han indrømmede en enkelt gang over for en artsfælle, at hans største "
+"ønske var at være i stang til at baske med vinger i solens stråler.\n"
+"Hvorledes end, ikke lang tid derefter, hørte det lokale træsjæle samfund om "
+"at et forfærdelig monster, stærk nok til let at ødelægge de få træsjæle der "
+"levede i området, var på vej. De flyttede sig hurtigt (hurtigt for træsjæle "
+"i hvert fald), men Bramwythl blev glemt tilbage - i travlheden havde ingen "
+"husket at finde ham og fortælle ham om faren.\n"
+"Han blev overrasket af basilisken, og omdannet til sten inden han "
+"overhovedet havde genkendt monsteret. Hans forstenet legeme står der stadig "
+"i dag, og bliver varmet af solens stråler, under en åben himmel. Hans "
+"største ønske blev opfyldt.\n"
+"(indhugget af elverplyndringsmand)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
 msgid ""
@@ -3824,7 +3844,7 @@ msgstr "teamname^Øst"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
-msgstr ""
+msgstr "2p - Sablestone Delta"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
 msgid ""
@@ -3834,17 +3854,19 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
-msgstr ""
+msgstr "2p - Silverhead Overgangen"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
+"Spillerne skal igennem alle slags terræn i jagten på sejren på dette "
+"duelkort med flere fronter."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
 msgid "statue"
-msgstr "Statue"
+msgstr "statue"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
@@ -3859,6 +3881,8 @@ msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
+"Oversvømmet af havet og påvirket af vinterens elementer har gjort, at kun "
+"ruiner, vand og is er tilbage af dette tidligere stor rige."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
@@ -3978,7 +4002,7 @@ msgstr "Uafgjort! Resultat: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
-msgstr ""
+msgstr "3p - Horatiiøen"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
 msgid ""
@@ -4000,7 +4024,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
-msgstr ""
+msgstr "3p - Triple blits"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
 msgid "Three players come head to head on this water-cut battlefield."
@@ -4051,7 +4075,7 @@ msgstr "teamname^Hold 2"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
-msgstr ""
+msgstr "4p - Borg hoppende ø"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
@@ -4059,7 +4083,7 @@ msgstr "Hop fra borg til borg mens der kæmpes om en central ø."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
-msgstr ""
+msgstr "4p - Sammenstød"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
@@ -4071,7 +4095,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4p - Isars kors"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
 msgid ""
@@ -4156,13 +4180,15 @@ msgstr "Fire fraktioner slås om dominans over dette vandrige område."
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
 msgid "4p - Loris River"
-msgstr ""
+msgstr "4p - Lorisfloden"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
+"Et 25x25 2 vs 2 kort centreret omkring en flod med tårne i hvert hjørne. "
+"Designet for spiller 1&4 vs 2&3. Der er 28 landsbyer."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
@@ -4174,7 +4200,7 @@ msgstr "Hvem vil dukke op fra ruinerne af denne slagmark?"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
-msgstr ""
+msgstr "4p - Daggerternes spor"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
 msgid " Recommended setting of 2 gold per village, 28 villages."
@@ -4211,15 +4237,15 @@ msgstr ""
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
-msgstr ""
+msgstr "5p - Frygtens skov"
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "I dette blandede landskap, kæmper fem hære for overmagten."
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
-msgstr ""
+msgstr "6p - Amohsad Caldera"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 msgid ""
@@ -4276,15 +4302,15 @@ msgstr "Undergangstårnet"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:299
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6p - Holdoverlevelse"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
 msgid "Scenario where the objective is to survive for as long as possible."
-msgstr ""
+msgstr "Scenarie hvor missionen er at overleve i så lang tid som muligt."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-msgstr ""
+msgstr "Hjælp: At lære fjendes opstartsteder og enhedstyper hjælper meget."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Survive for 32 turns."
@@ -4311,11 +4337,11 @@ msgid ""
 "And again. *Muahahaha*"
 msgstr ""
 "Du har tabt dette spil, men frygt ikke. Du kan altid prøve igen. Og igen. og "
-"igen. *hahaha*"
+"igen. *Muahahaha*"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6p - Manzivanfælderne"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
 msgid ""
@@ -4324,10 +4350,14 @@ msgid ""
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
+"Et 40x20 3 vs 3 kort. Manzivanfælderne er kendt for at være svære og "
+"forvirrende terrænområder hvor det er nemt at ende i orden eller for langt "
+"fra hinanden. Hold sætte spiller 145 vx 236 (øst vs vest). Designet for 100 "
+"guldstykker i starten, har 33 landsbyer."
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "6p - Waterloo solnedgang"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
 msgid ""
@@ -4395,6 +4425,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Et tilfældig kort med sumpe som den primære terræntype. Bemærk: Tilfældige "
+"kort er ofte ubalanceret, men hvis du har tid, kan du gendanne indtil du får "
+"et godt kort."
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:9
@@ -4420,7 +4453,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Wesnoth benchmark: Panorering"
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
 msgid ""
@@ -4451,18 +4484,24 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+" Ånder har stor modstandskraft til skade, og flytter sig hurtigt over åben "
+"vand."
 
 #: data/special-notes.cfg:5
 msgid ""
 " This unit's holy attack deals tremendous damage to the undead, and even "
 "some to living creatures."
 msgstr ""
+" Denne enheds hellige angreb gør umådelig skade til udøde, og også til nogle "
+"levende skabninger."
 
 #: data/special-notes.cfg:8
 msgid ""
 " This unit is capable of basic healing, though it can only delay the effects "
 "of poison, not cure them entirely."
 msgstr ""
+" Denne enhed er i stand til at foretage elementær helbredelse, men kan kun "
+"forsinke effekten af gift, ikke helbrede en forgiftning fuldstændig."
 
 #: data/special-notes.cfg:11
 msgid ""
@@ -4486,6 +4525,8 @@ msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
+" Lederskabet hos denne enhed gør at vendlige enheder tæt på den giver mere "
+"skade i kamp. Det gælder dog kun for lavererangerende enheder."
 
 #: data/special-notes.cfg:23
 msgid ""
@@ -4502,6 +4543,9 @@ msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
+" Denne enhed kan øjeblikkeligt teleportere sig mellem to landsbyer. "
+"spilleren skal dog kontrollere begge landsbyer, og landsbyen der "
+"teleporteres til skal være ledig."
 
 #: data/special-notes.cfg:32
 msgid ""
@@ -4512,11 +4556,15 @@ msgstr ""
 #: data/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
+" Denne enhed kan skjule sig om natten uden at vise tegn på dens "
+"tilstedeværelse."
 
 #: data/special-notes.cfg:38
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" Denne enhed kan flytte uset i dybt vand. Den kræver ikke luft fra "
+"overfladen."
 
 #: data/special-notes.cfg:41
 msgid ""
@@ -4624,9 +4672,8 @@ msgid "Brown"
 msgstr "Brun"
 
 #: data/team-colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "Hold"
+msgstr "Grønblå"
 
 #: data/terrain.cfg:21 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:434
@@ -4644,9 +4691,8 @@ msgid "Encampment"
 msgstr "Lejr"
 
 #: data/terrain.cfg:180
-#, fuzzy
 msgid "Elven Castle"
-msgstr "Dværgeborg"
+msgstr "Elverborg"
 
 #: data/terrain.cfg:191
 msgid "Dwarven Castle"
@@ -4673,9 +4719,8 @@ msgid "Encampment keep"
 msgstr "Lejrvedligeholdelse"
 
 #: data/terrain.cfg:296
-#, fuzzy
 msgid "Elven Keep"
-msgstr "Dværgetårnborg"
+msgstr "Elvertårnborg"
 
 #: data/terrain.cfg:308
 msgid "Dwarven keep"
@@ -4722,9 +4767,8 @@ msgid "Snow Hills"
 msgstr "Snebakker"
 
 #: data/terrain.cfg:517
-#, fuzzy
 msgid "Dunes"
-msgstr "Skumring"
+msgstr "Klitter"
 
 #: data/terrain.cfg:591
 msgid "Desert road"
@@ -4739,9 +4783,8 @@ msgid "Farmland"
 msgstr "Landbrugsjord"
 
 #: data/terrain.cfg:659
-#, fuzzy
 msgid "Cave Lit"
-msgstr "Hule"
+msgstr "Hulelys"
 
 #: data/terrain.cfg:701
 #, fuzzy
@@ -4942,13 +4985,17 @@ msgid ""
 "chance to hit both when attacking and defending. Marksman attacks have at "
 "least 60% chance to hit when attacking."
 msgstr ""
+"Chancen for at ramme en enhed afhænger normalt af hvor egnet en enhed er til "
+"at forsvare sig i det terræn den står i. Magiske angreb har en 70 % chance "
+"for ta ramme både under angreb og forsvar. Ekspertangreb har mindst 60 % "
+"chance for at ramme under angreb."
 
 #: data/tips.cfg:9
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
-"Enheder, der er placeret i landsbyer får helbredt 8 HP i begyndelsen af "
-"deres tur."
+"Enheder, der er placeret i landsbyer får helbredt 8 liv i begyndelsen af "
+"deres runde."
 
 #: data/tips.cfg:10
 msgid ""
@@ -5651,6 +5698,9 @@ msgid ""
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
 "join the ranks of the elite Drake Warriors."
 msgstr ""
+"Hestedragekæmper svinger deres krumsabler med dødelig præcision, og har også "
+"ildånden fra deres forfædre som våben. De bedste kæmper bliver en del af "
+"elite hestedragekæmperne."
 
 #: data/units/Drake_Fighter.cfg:63
 msgid "scimitar"
@@ -6127,9 +6177,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Champion.cfg:3
-#, fuzzy
 msgid "Elvish Champion"
-msgstr "Elverkaptajn"
+msgstr "Elverridder"
 
 #: data/units/Elvish_Champion.cfg:18
 msgid ""
@@ -6490,9 +6539,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:3
-#, fuzzy
 msgid "Goblin Pillager"
-msgstr "Allieret landsby"
+msgstr "Goblinplyndrer"
 
 #: data/units/Goblin_Pillager.cfg:20
 msgid ""
@@ -6503,6 +6551,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Nogle gobliner træner deres ulve i at kunne modstå deres naturlige angst for "
+"ild. Under angreb har disse gobliner en støttefunktion; de sætter ild til "
+"hjem og afgrøder hos deres fjende. De har også net som kan skabe forvirring "
+"blandt dem som forsøger at etablere et forsvar eller et modangreb.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Goblin_Pillager.cfg:34
 msgid "torch"
@@ -7820,14 +7874,12 @@ msgstr ""
 "Specielle bemærkninger:"
 
 #: data/units/Monster_Giant_Scorpion.cfg:24
-#, fuzzy
 msgid "sting"
-msgstr "slynge"
+msgstr "stik"
 
 #: data/units/Monster_Giant_Scorpion.cfg:70
-#, fuzzy
 msgid "pincers"
-msgstr "Prinsesse"
+msgstr "knibtange"
 
 #: data/units/Monster_Mudcrawler.cfg:3
 msgid "Mudcrawler"
@@ -8277,7 +8329,7 @@ msgstr ""
 "endnu mere hvilken kraft der ligger bag deres unaturlige iver og styrke. En "
 "fuldtudvokset trold står over et menneskse, og, vil selv ubevæbnet være en "
 "alvorlig trussel i kamp. Deres store køller fungerer som en forlængelse af "
-"deres arme og bruges til at xxx deres bytte.\n"
+"deres arme og bruges til at knuse deres bytte.\n"
 "\n"
 "Specielle bemærkninger:"
 
@@ -8687,7 +8739,7 @@ msgstr ""
 #: data/units/Undead_Skele_Revenant.cfg:3
 #, fuzzy
 msgid "Revenant"
-msgstr "Omdøb enhed"
+msgstr "Revenant"
 
 #: data/units/Undead_Skele_Revenant.cfg:18
 msgid ""
@@ -8854,7 +8906,7 @@ msgstr ""
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
-msgstr "Wose"
+msgstr "Træsjæl"
 
 #: data/units/Wose.cfg:21
 msgid ""
@@ -8871,6 +8923,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Sjældent set, selv af elver, er træsjælene en skabning der ikke vides meget "
+"om. Elverne er kilden til de fleste oplysninger. De ved, at disse skabninger "
+"ikke nedstammer fra træer, selvom de ligner dem i form, og de ved, at en "
+"træsjæl er mere i familie med feerne end selv elverne; dog på en anden måde. "
+"Deres rolle i verden er ukendt. De fleste har den indlysende opfattelse, at "
+"de er beskyttere af den naturlige verden.\n"
+"\n"
+"Træsjæle er i den grad pacifister, men har stor styrke. De bevæger sig ikke "
+"hurtigt rundt og er heller ikke velegnede til dette formål.\n"
+".\n"
+"Specielle bemærkninger:"
 
 #: data/units/Wose.cfg:30 data/units/Wose_Ancient.cfg:92
 #: data/units/Wose_Elder.cfg:91
@@ -8879,7 +8942,7 @@ msgstr "knus"
 
 #: data/units/Wose_Ancient.cfg:3
 msgid "Ancient Wose"
-msgstr "Ældgammel wose"
+msgstr "Ældgammel træsjæl"
 
 #: data/units/Wose_Ancient.cfg:21
 msgid ""
@@ -8895,10 +8958,22 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Der er en historie om en landmand som havde et stort egetræ i sin græsplæne, "
+"et træ som havde stået på dette sted, da hans far begyndte at kultivere "
+"dette område for første gang, og hvor hans familie kunne fortælle mange "
+"historier. Det var et chok for ham, da han en morgen, vågnede og så at det "
+"på en eller anden måde havde materialiserede sig væk. Der var intet tilbage "
+"undtagen det jordstykke hvor træet havde stået. Den stakkels landmand blev "
+"aldrig den samme igen.\n"
+"\n"
+"Sådanne møder, med hvad der menes, at være de ældste træsjæle, er alt der "
+"kendes til disse skabninger.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
-msgstr "Wose ældste"
+msgstr "Træsjæl ældste"
 
 #: data/units/Wose_Elder.cfg:20
 msgid ""
@@ -8916,6 +8991,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Træsjæle siges at have mange former, alle dog træ-lignende, og jo ældre de "
+"bliver jo større er de. Sagnene beretter om træsjæle, der ligner træerne i "
+"så stor udstrækning at de kan kigge ned på de skabninger som går under dem. "
+"Dette er den største årsag til, at de ses så sjældent - stående på den måde "
+"ligner de ikke andet end et hvilket som helst træ. Selv en uforsigtig elv "
+"kan blive snydt på denne måde.\n"
+"\n"
+"Træsjæle er ikke krigere, men den styrke de har, er i stand til at påføre "
+"stor skade, såfremt en uforsigtig skulle vække deres vrede.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: src/about.cpp:40 src/about.cpp:63 src/multiplayer_connect.cpp:355
 #: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:441
@@ -10152,9 +10238,8 @@ msgid "Name of game:"
 msgstr "Spillets navn:"
 
 #: src/multiplayer_create.cpp:64
-#, fuzzy
 msgid "Era:"
-msgstr "Era:"
+msgstr "Æra:"
 
 #: src/multiplayer_create.cpp:65
 msgid "Map to play:"
@@ -10283,18 +10368,16 @@ msgid "Unlimited Turns"
 msgstr "Uendeligt antal runder"
 
 #: src/multiplayer_create.cpp:332
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Enhedsliste"
+msgstr "Begynd. begr.: "
 
 #: src/multiplayer_create.cpp:337
 msgid "Turn Bonus: "
 msgstr "Rundebonus: "
 
 #: src/multiplayer_create.cpp:341
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Server: "
+msgstr "Reservoir: "
 
 #: src/multiplayer_create.cpp:346
 msgid "Action Bonus: "
@@ -10361,9 +10444,8 @@ msgid "Observe Game"
 msgstr "Iagtag spil"
 
 #: src/multiplayer_lobby.cpp:541
-#, fuzzy
 msgid "Quick Replays"
-msgstr "Gameplay"
+msgstr "Hurtige omspil"
 
 #: src/multiplayer_lobby.cpp:543
 msgid "Preferences"
@@ -10440,21 +10522,19 @@ msgstr "Du er blevet besejret!"
 
 #: src/playcampaign.cpp:290
 msgid " replay"
-msgstr ""
+msgstr " omspil"
 
 #: src/playcampaign.cpp:298
 msgid "Do you want to save a replay of this scenario?"
-msgstr ""
+msgstr "Ønsker du at gemme et omspil for dette scenarie?"
 
 #: src/playcampaign.cpp:300
-#, fuzzy
 msgid "Save Replay"
-msgstr "Gameplay"
+msgstr "Gem omspil"
 
 #: src/playcampaign.cpp:307
-#, fuzzy
 msgid "The replay could not be saved"
-msgstr "Spillet kunne ikke gemmes"
+msgstr "Omspillet kunne ikke gemmes"
 
 #: src/playcampaign.cpp:347
 msgid "Receiving data..."
