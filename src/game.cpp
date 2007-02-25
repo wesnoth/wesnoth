@@ -182,7 +182,6 @@ game_controller::game_controller(int argc, char** argv)
 					++fps;
 				}
 				preferences::set_draw_delay(fps);
-				std::cerr << preferences::draw_delay() << "\n";
 			}
 		} else if(val == "--validcache") {
 			force_valid_cache_ = true;
