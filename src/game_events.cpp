@@ -629,6 +629,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "store_side") {
 		std::string side = cfg["side"];
 		std::string var_name = cfg["variable"];
+		if(var_name.empty()) {
+			var_name = "side";
+		}
 		wassert(state_of_game != NULL);
 		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		var_name = utils::interpolate_variables_into_string(var_name, *state_of_game);
@@ -1707,7 +1710,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(filter.null())
 			filter = &empty_filter;
 
-		const std::string& variable = cfg["variable"];
+		std::string variable = cfg["variable"];
+		if(variable.empty()) {
+			variable="unit";
+		}
 		const std::string& mode = cfg["mode"];
 		bool cleared = false;
 		if(mode != "replace" && mode != "append") {
@@ -1839,31 +1845,35 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "store_starting_location") {
 		std::string side = cfg["side"];
-		t_string variable = cfg["variable"];
+		std::string variable = cfg["variable"];
+		if (variable.empty()) {
+			variable="location";
+		}
 		wassert(state_of_game != NULL);
 		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 
 		const gamemap::location& loc = game_map->starting_position(side_num);
-		static const t_string default_store = "location";
-		const t_string& store = variable.empty() ? default_store : variable;
 		wassert(state_of_game != NULL);
-		config &loc_store = state_of_game->add_variable_cfg(store);
+		config &loc_store = state_of_game->add_variable_cfg(variable);
 		loc.write(loc_store);
 		game_map->write_terrain(loc, loc_store);
 	}
 
-	/* [store_owned_villages] : store owned villages into an array
+	/* [store_villages] : store villages into an array
 	 * keys:
-	 * - side (default=1): side we want to check (0=unowned villages)
 	 * - variable (mandatory): variable to store in
+	 * - side: if present, the village should be owned by this side (0=unowned villages)
 	 * - terrain: if present, filter the village types against this list of terrain types 
 	 */
-	else if(cmd == "store_owned_villages" ) {
-		log_scope("store_owned_villages");
+	else if(cmd == "store_villages" ) {
+		log_scope("store_villages");
 		std::string side = cfg["side"];
 		std::string variable = cfg["variable"];
+		if (variable.empty()) {
+			variable="location";
+		}
 		std::string wml_terrain = cfg["terrain"];
 		wassert(state_of_game != NULL);
 		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
@@ -1886,7 +1896,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
 					continue;
 			}
-			if (village_owner(*j,*teams) == side_index) {
+			if (side.empty() || village_owner(*j,*teams) == side_index) {
 				config &loc_store = state_of_game->add_variable_cfg(variable);
 				j->write(loc_store);
 				game_map->write_terrain(*j, loc_store);
@@ -1897,6 +1907,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "store_locations" ) {
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
+		if (variable.empty()) {
+			variable="location";
+		}
 		std::string wml_terrain = cfg["terrain"];
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
