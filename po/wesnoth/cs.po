@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-25 12:30+0100\n"
-"PO-Revision-Date: 2007-02-22 13:17+0100\n"
+"PO-Revision-Date: 2007-02-26 22:25+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -1267,8 +1267,8 @@ msgstr ""
 msgid "Shroud and Fog of War"
 msgstr "Zahalení tmou a Mlha"
 
+# velké písmena - názvy mechanismů?
 #: data/help.cfg:151
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1295,8 +1295,17 @@ msgstr ""
 "vlastnictví vesnic (jiných než vlastních nebo spojeneckých). Mlha ustupuje "
 "pouze dočasně, a to tehdy, když máte poblíž vlastní jednotku. Jak jednotka "
 "odejde, mlha znovu políčko zahalí. Jak Mlhu, tak Zahalení tmou tedy "
-"odstraňují jednotky, a to svým pohybem. Na odstranění nemají vliv oblasti "
-"kontroly ani cizí jednotky."
+"odstraňují jednotky, a to svým pohybem. Jednotka odhalí políčka ve "
+"vzdálenosti jednoho tahu; na odstranění nemají vliv oblasti kontroly ani "
+"cizí jednotky.\n"
+"\n"
+"Běžně je možné vrátit pohyb jednotky, pokud pokud nedošlo k akci vyžadující "
+"náhodný výsledek - např. boj, verbování. Poznávání terénu skrytého zahalením "
+"tmou či mlhou také znemožňuje vracení hry. Můžete však zapnout volbu „Pozdrž "
+"překreslování mlhy“ v menu „Akce“. Tato volba způsobí, že pohyb jednotek "
+"neodstraňuje zahalení tmou a mlhu, dokud nedojde k náhodnému jevu nebo "
+"ručnímu odhalení volbou „Obnov mlhu“ z menu „Akce“ (nebo koncem kola). Tak "
+"budete moci vracet pohyb i při použití mlhy nebo zahalení tmou."
 
 #: data/help.cfg:156
 msgid "Combat"
@@ -2386,7 +2395,6 @@ msgid "Cave"
 msgstr "Jeskyně"
 
 #: data/help.cfg:478
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2400,9 +2408,10 @@ msgid ""
 msgstr ""
 "Jeskyně představuje jakákoliv podzemní sluj s dostatkem místa pro pochod "
 "jednotek. Většina jednotek se v tomto terénu neumí pohybovat a tak jsou "
-"zpomaleny a překáží jim to v obraně. Trpaslíci a Trollové, kteří zde bydlí, "
-"tu jsou jako doma a to hlavně trpaslíci, kteří se zde mohou díky své malé "
-"velikosti snadno pohybovat a překonávat překážky. To jiným činí problémy.\n"
+"zpomaleny a překáží jim to v obraně. Trpaslíci a Trolové, kteří zde bydlí, "
+"tu jsou jako doma a to zejména trpaslíci, kteří se zde mohou díky své malé "
+"velikosti snadno pohybovat a překonávat překážky. To jiným činí problémy. "
+"Někdy jsou jeskyně <ref>dst=terrain_illuminated_cave text=Osvětlené</ref>\n"
 "\n"
 "Většina jednotek zde získá 20 až 40% obranný bonus, zatímco trpaslíci 50%."
 
@@ -2411,7 +2420,6 @@ msgid "Rockbound Cave"
 msgstr "Skalnatá jeskyně"
 
 #: data/help.cfg:488
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2428,7 +2436,8 @@ msgstr ""
 "Připomíná rozeklanou podzemní dutinu, která snižuje efektivitu většiny "
 "jednotek a zvyšuje obranné možnosti. Trpaslíci a trollové žijící v jeskyních "
 "nemají s pohybem v tomto terénu problémy, zvláště trpaslíci díky jejich "
-"malému vzrůstu.\n"
+"malému vzrůstu. Někdy jsou jeskyně <ref>dst=terrain_illuminated_cave "
+"text=osvětlené</ref>\n"
 "\n"
 "Většina jednotek má ve skalnatých jeskyních obranný bonus okolo 50%, jízda "
 "pouze 40% a trpaslíci 60%."
@@ -2438,7 +2447,6 @@ msgid "Illuminated Cave"
 msgstr "Osvětlená jeskyně"
 
 #: data/help.cfg:496
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness.  This provides an attack "
@@ -2446,13 +2454,10 @@ msgid ""
 "all other regards this terrain is functionally identical to normal cave "
 "terrains."
 msgstr ""
-"Osvětlená jeskyně je místo, kam sluneční svit z povrchu pronikl do ponuré "
-"temnoty. Tím poskytuje výhodu při útoku všem zákonným jednotkám a odnímá ji "
-"chaotickým. Ve všech ostatních ohledech je tento typ terénu funkčně shodný s "
-"normální jeskyní.\n"
-"\n"
-"Většina jednotek má v osvětlené jeskyni obranný bonus od 20 do 40%, "
-"trpaslíci pak 50%."
+"Osvětlená jeskyně je vzácné místo, kam sluneční svit z povrchu pronikl do "
+"ponuré temnoty. Tím poskytuje výhodu při útoku všem zákonným jednotkám a "
+"odnímá ji chaotickým. Ve všech ostatních ohledech je tento typ terénu "
+"funkčně shodný s normální jeskyní."
 
 #: data/help.cfg:501 data/terrain.cfg:670
 msgid "Mushroom Grove"
@@ -2525,9 +2530,8 @@ msgstr ""
 "\n"
 
 #: data/help.cfg:531
-#, fuzzy
 msgid "Submerged Village"
-msgstr "Vlastní vesnice"
+msgstr "Ponořená vesnice"
 
 #: data/help.cfg:536
 msgid ""
@@ -2541,6 +2545,14 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defence."
 msgstr ""
+"Ponořené vesnice jsou domovem Mořského lidu a nág. Zatímco vodní tvorové se "
+"zde cítí doma, suchozemci mají s užíváním a obranou těchto vesnic problémy. "
+"I tak se zde nachází vše potřebné pro léčení zranění jakýchkoliv tvorů. "
+"Jednotka umístěná ve vesnici může být každé kolo buď uzdravena o osm životů "
+"nebo vyléčena z otravy jedem.\n"
+"\n"
+"Mořský lid a nágy se v ponořených vesnicích těší obrannému bonusu 60%, "
+"zatímco pozemní jednotky obvykle nezískávají příliš velký bonus."
 
 #: data/help.cfg:541 data/terrain.cfg:565
 msgid "Chasm"
@@ -5239,7 +5251,6 @@ msgstr "Propadlá zřícenina"
 msgid "Keep"
 msgstr "Tvrz"
 
-# tvrz ležení?
 #: data/terrain.cfg:272
 msgid "Encampment keep"
 msgstr "Velitelský stan"
@@ -5314,9 +5325,8 @@ msgid "Cave Lit"
 msgstr "Osvětlená jeskyně"
 
 #: data/terrain.cfg:701
-#, fuzzy
 msgid "Rockbound Cave Lit"
-msgstr "Skalnatá jeskyně"
+msgstr "Osvětlená skalnatá jeskyně"
 
 #: data/terrain.cfg:955
 msgid "Impassable Mountains"
@@ -6016,7 +6026,6 @@ msgid "Armageddon Drake"
 msgstr "Drak zkázy"
 
 #: data/units/Drake_Armageddon.cfg:19
-#, fuzzy
 msgid ""
 "The Armageddon Drakes truely are amongst the toughest of all drakes, they "
 "are so incredibly used to living near fire that they've grown to be "
