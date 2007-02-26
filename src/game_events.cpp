@@ -148,6 +148,29 @@ bool conditional_passed(const unit_map* units,
 		}
 	}
 
+	//if the if statement requires we have a certain village, then
+	//check for that.
+	const vconfig::child_list& own_village = cond.get_children("own_village");
+
+	for(vconfig::child_list::const_iterator v = own_village.begin(); v != own_village.end(); ++v) {
+
+		std::string side = (*v)["side"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		const int side_index = lexical_cast_default<int>(side,1)-1;
+		
+		int x = lexical_cast_default((*v)["x"], 0) - 1;
+		int y = lexical_cast_default((*v)["y"], 0) - 1;
+
+		const gamemap::location vloc = gamemap::location(x, y);
+
+		if(game_map->is_village(vloc)) {
+			if (village_owner(vloc,*teams) == side_index)
+				break;
+		}
+		return false;		
+	}
+
 	//check against each variable statement to see if the variable
 	//matches the conditions or not
 	const vconfig::child_list& variables = cond.get_children("variable");
@@ -209,7 +232,7 @@ bool conditional_passed(const unit_map* units,
 		}
 	}
 
-	return !have_unit.empty() || !variables.empty() || !not_statements.empty() || !and_statements.empty();
+	return !have_unit.empty() || !!own_village.empty() || variables.empty() || !not_statements.empty() || !and_statements.empty();
 }
 
 } //end namespace game_events
@@ -1831,7 +1854,47 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		game_map->write_terrain(loc, loc_store);
 	}
 
-	else if(cmd == "store_locations") {
+	/* [store_owned_villages] : store owned villages into an array
+	 * keys:
+	 * - side (default=1): side we want to check (0=unowned villages)
+	 * - variable (mandatory): variable to store in
+	 * - terrain: if present, filter the village types against this list of terrain types 
+	 */
+	else if(cmd == "store_owned_villages" ) {
+		log_scope("store_owned_villages");
+		std::string side = cfg["side"];
+		std::string variable = cfg["variable"];
+		std::string wml_terrain = cfg["terrain"];
+		wassert(state_of_game != NULL);
+		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
+		wml_terrain = utils::interpolate_variables_into_string(wml_terrain, *state_of_game);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		const int side_index = lexical_cast_default<int>(side,1)-1;
+		//convertert the terrain to a internal vector
+		//FIXME: once the terrain backwards compability layer is gone we can load the string
+		// in a t_match structure and use the optimized match routine in the loop
+		const t_translation::t_list& terrain = 
+			t_translation::read_list(wml_terrain, 0, t_translation::T_FORMAT_AUTO);
+
+		state_of_game->clear_variable_cfg(variable);
+
+		std::vector<gamemap::location> locs = game_map->villages();
+
+		for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+			if (!terrain.empty()) {
+				const t_translation::t_letter c = game_map->get_terrain(*j);
+				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
+					continue;
+			}
+			if (village_owner(*j,*teams) == side_index) {
+				config &loc_store = state_of_game->add_variable_cfg(variable);
+				j->write(loc_store);
+				game_map->write_terrain(*j, loc_store);
+			}
+		}
+	}
+
+	else if(cmd == "store_locations" ) {
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
 		std::string wml_terrain = cfg["terrain"];
