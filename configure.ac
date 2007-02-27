@@ -126,18 +126,6 @@ fi
 
 AM_CONDITIONAL([LOWMEM], [test "x$lowmem" = "xyes"])
 
-AC_ARG_ENABLE([gp2x],
-              AS_HELP_STRING([--enable-gp2x], [enable support for GP2X Personal Entertainment Player]),
-	      [gp2x=$enableval],
-	      [gp2x=no])
-
-if test "x$gp2x" = "xyes"
-then
-	CPPFLAGS="$CPPFLAGS -DGP2X"
-fi
-
-AM_CONDITIONAL([GP2X], [test "x$gp2x" = "xyes"])
-
 DATADIR=$PACKAGE
 AC_ARG_WITH([datadir-name],
             AS_HELP_STRING([--with-datadir-name@<:@=DIR@:>@], [change name of data directory @<:@wesnoth@:>@]),
