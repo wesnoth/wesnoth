@@ -192,6 +192,12 @@ std::string file_menu::get_path_up(const std::string path, const unsigned levels
 		}
 		curr_path = strip_last_delim(curr_path);
 		size_t index = curr_path.find_last_of(path_delim);
+#ifdef __AMIGAOS4__
+		if (index == std::string::npos) {
+			index = curr_path.find_last_of(':');
+			if (index != std::string::npos) index++;
+		}
+#endif
 		if (index != std::string::npos) {
 			curr_path = curr_path.substr(0, index);
 		}
@@ -215,6 +221,9 @@ std::string file_menu::strip_last_delim(const std::string path) const {
 }
 
 bool file_menu::is_root(const std::string path) const {
+#ifdef __AMIGAOS4__
+	return path.size() == 0 || path[path.size()-1] == ':';
+#endif
 	return path.size() == 0 || path.size() == 1 && path[0] == path_delim;
 }
 
@@ -225,6 +234,14 @@ std::string file_menu::add_path(const std::string path, const std::string to_add
 		if (to_add == path_up) {
 			return get_path_up(path);
 		}
+#ifdef __AMIGAOS4__
+		else if (joined_path.empty() || joined_path[joined_path.size()-1] == ':') {
+			if (to_add[0] == path_delim)
+				joined_path += to_add.substr(1);
+			else
+				joined_path += to_add;
+		}
+#endif
 		else if (to_add[0] == path_delim) {
 			joined_path += to_add;
 		}

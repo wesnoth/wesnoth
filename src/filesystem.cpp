@@ -232,7 +232,15 @@ void get_files_in_dir(const std::string& directory,
 #else
 		  char *filename = entry->d_name;
 #endif
+#ifndef __AMIGAOS4__
 			const std::string name((directory + "/") + filename);
+#else
+			std::string name;
+			if (directory.empty() || directory[directory.size()-1] == ':')
+				name = directory + filename;
+			else
+				name = (directory + "/") + filename;
+#endif
 
 			struct stat st;
 			if (::stat(name.c_str(), &st) != -1) {
