@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-19 17:35+0100\n"
-"PO-Revision-Date: 2007-01-05 14:16+0100\n"
+"PO-Revision-Date: 2007-03-01 09:21+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -129,7 +129,7 @@ msgstr "Kaart omdraaien (kan een verandering van dimensies tot gevolg hebben):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Bestand:"
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -137,7 +137,7 @@ msgstr "Bestand verwijderen"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Nieuwe map"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
@@ -145,12 +145,11 @@ msgstr "Bestand verwijderen mislukt."
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Naam:"
 
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Bestand verwijderen mislukt."
+msgstr "Map aanmaken mislukt."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -213,7 +212,6 @@ msgid "Save Game"
 msgstr "Spel opslaan"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
 msgstr "Kaart opslaan"
 
@@ -282,9 +280,8 @@ msgid "Quit Game"
 msgstr "Spel verlaten"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Label plaatsen"
+msgstr ""
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
@@ -467,9 +464,8 @@ msgid "Villages:"
 msgstr "Dorpjes:"
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Grootste heuvels:"
+msgstr "Kasteelgrootte:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -519,29 +515,25 @@ msgid "Skip AI Moves"
 msgstr "Computerzetten overslaan"
 
 #: src/preferences_display.cpp:260
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Lobbyactiviteit melden"
+msgstr "Toon lobbyminikaarten"
 
 #: src/preferences_display.cpp:261
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Lobbyactiviteit melden"
+msgstr ""
 
 #: src/preferences_display.cpp:262
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Lobbyactiviteit melden"
+msgstr ""
 
 #: src/preferences_display.cpp:263
 #, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Lobbyactiviteit melden"
+msgstr "Toon alle lobby"
 
 #: src/preferences_display.cpp:264
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Lobbyactiviteit melden"
+msgstr "Sorteer lobbylijst"
 
 #: src/preferences_display.cpp:265
 msgid "Iconize Lobby List"
@@ -549,24 +541,24 @@ msgstr ""
 
 #: src/preferences_display.cpp:266
 msgid "Your Friends List"
-msgstr ""
+msgstr "Jouw vriendenlijst"
 
 #: src/preferences_display.cpp:267
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Multiplayer opties"
 
 #: src/preferences_display.cpp:268
 msgid "Add As Friend"
-msgstr ""
+msgstr "Voeg toe als vriend"
 
 #: src/preferences_display.cpp:269
+#, fuzzy
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Voeg toe aan "
 
 #: src/preferences_display.cpp:270
-#, fuzzy
 msgid "Remove"
-msgstr "Opnieuw"
+msgstr "Verwijderen"
 
 #: src/preferences_display.cpp:271
 msgid "Show Floating Labels"
@@ -625,9 +617,8 @@ msgid "Normal Mode"
 msgstr "Normaal"
 
 #: src/preferences_display.cpp:290
-#, fuzzy
 msgid "Custom"
-msgstr "Knippen"
+msgstr "Aangepast"
 
 #: src/preferences_display.cpp:291
 msgid "Apply"
@@ -642,9 +633,8 @@ msgid "SFX Volume:"
 msgstr "SFX Volume:"
 
 #: src/preferences_display.cpp:294
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "SFX Volume:"
+msgstr "Bel volume:"
 
 #: src/preferences_display.cpp:295
 msgid "Gamma:"
@@ -671,9 +661,8 @@ msgid "Change the music volume"
 msgstr "Het volume van de muziek"
 
 #: src/preferences_display.cpp:337
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Het volume van de muziek"
+msgstr "Verander het volume van de bel"
 
 #: src/preferences_display.cpp:339
 msgid "Change the sample rate"
@@ -718,9 +707,8 @@ msgid "Make units move and fight faster"
 msgstr "Eenheden vechten en bewegen sneller"
 
 #: src/preferences_display.cpp:405
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Eenheden vechten en bewegen sneller"
+msgstr "Vecht- en beweegsnelheid eenheden"
 
 #: src/preferences_display.cpp:408
 msgid "Do not animate AI units moving"
@@ -731,56 +719,54 @@ msgid "Overlay a grid onto the map"
 msgstr "Een raster op de kaart weergeven"
 
 #: src/preferences_display.cpp:414
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr "Berichten weergeven als spelers de lobby binnenkomen"
+msgstr ""
 
 #: src/preferences_display.cpp:417
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Sorteer de spelerslijst in de lobby per spelergroepen"
 
 #: src/preferences_display.cpp:420
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 
 #: src/preferences_display.cpp:423
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Berichten weergeven als spelers de lobby binnenkomen"
+msgstr ""
 
 #: src/preferences_display.cpp:425
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Berichten weergeven als spelers de lobby binnenkomen"
+msgstr ""
 
 #: src/preferences_display.cpp:427
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Berichten weergeven als spelers de lobby binnenkomen"
+msgstr ""
 
 #: src/preferences_display.cpp:429
+#, fuzzy
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Bekijk en bewerk je vrienden en lijst"
 
 #: src/preferences_display.cpp:430
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Terug naar de multiplayer opties"
 
 #: src/preferences_display.cpp:431
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Voeg deze gebruikersnaam toe aan je vriendenlijst"
 
 #: src/preferences_display.cpp:432
+#, fuzzy
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Voeg deze gebruikersnaam toe aan je lijst"
 
 #: src/preferences_display.cpp:433
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Verwijder deze gebruikersnaam van je lijst"
 
 #: src/preferences_display.cpp:436
 msgid "Insert a username"
-msgstr ""
+msgstr "Voer een gebruikersnaam in"
 
 #: src/preferences_display.cpp:439
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -828,9 +814,8 @@ msgid "View and configure keyboard shortcuts"
 msgstr "De sneltoetsen bekijken en instellen"
 
 #: src/preferences_display.cpp:711
-#, fuzzy
 msgid "Speed: "
-msgstr "Schuifsnelheid:"
+msgstr "Snelheid:"
 
 #: src/preferences_display.cpp:861
 msgid "Chat Lines: "
