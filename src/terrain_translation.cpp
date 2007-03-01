@@ -64,7 +64,7 @@ namespace t_translation {
 	//this is used for error messages used in string_to_number_ 
 	//so we can't use this function to convert us. So we do the conversion here 
 	//manually not the best solution but good enough for a tempory solution
-	const t_letter OBSOLETE_KEEP = ((t_letter)'_' << 56) | ((t_letter)'K' << 48) | 0xFFFFFFFF;
+	const t_letter OBSOLETE_KEEP = ((t_letter)'_' << 24) + ((t_letter)'K' << 16);
 
 #endif
 
@@ -91,30 +91,6 @@ namespace t_translation {
 	 */
 	t_letter get_mask_(const t_letter terrain);
 
-	/** 
-	 * if one of the 2 has a caret and we use a wildcard in the first part 
-	 * we fail eg *^ != A without wildcards no problem occurs eg A^ == A
-	 *
-	 * This function fixes that problem but the match is expensive due to the
-	 * overhead of an extra function
-	 *
-	 * @param src	the value to match (may also contain the wildcard)
-	 * @param dest 	the value to match against
-	 *
-	 * @returns		the result of the match ! not allowed in this match
-	 */
-	bool match_ignore_layer_(const t_letter& src, const t_letter& dest);
-
-	/**
-	 * converts a terrain layer part to the partial number to convert a terrain
-	 * with 2 layers it's possible to send the layer strings to this procedure
-	 * and get the converted result back. The old result will always be send
-	 * back with << 32.
-	 * @param str				the terrain string without spaces between 2 - 4 characters
-	 * @param result			result + old value << 32 is send back
-	 */
-	void convert_string_to_number_(const std::string& str, t_letter& result); 
-		
 	/**
 	 * converts a terrain string to a number
 	 * @param str 				the terrain string with an optional number
@@ -135,7 +111,8 @@ namespace t_translation {
 	 * 								ignored else it's written
 	 * @param min_size				padds the results with spaces if required untill the 
 	 * 								result has a length of min_size
-	 * @return						the converted string
+	 * @return						the converted string, if no starting position 
+	 * 								given it's padded to 4 chars else padded to 7 chars
 	 */
 	std::string number_to_string_(t_letter terrain, const int start_position = -1);
 	std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size);
@@ -182,7 +159,7 @@ const int BUILDER_SHIFT = 8;
 // defined here. The other masks are only used without
 // other functions knowing their value, so they're not
 // defined here
-const t_letter WILDCARD_NONE = 0xFFFFFFFFFFFFFFFFi64;
+enum{ WILDCARD_NONE = 0xFFFFFFFF };
 
 /***************************************************************************************/	
 
@@ -415,7 +392,7 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 			if(x != 0) {
 				str << ", ";
 			}
-			str << number_to_string_(map[x][y], starting_position, 12);
+			str << number_to_string_(map[x][y], starting_position, 7);
 		}
 
 		str << "\n";
@@ -446,11 +423,6 @@ bool terrain_matches(const t_letter src, const t_list& dest)
 	const t_letter masked_src = (src & src_mask);
 	const bool src_has_wildcard = has_wildcard(src);
 
-#if 0	
-	std::cerr << std::hex << "src = " << src << "\t" 
-		<< src_mask << "\t" << masked_src << "\t" << src_has_wildcard << "\n";
-#endif
-	
 	bool result = true;
 	t_list::const_iterator itor = dest.begin();
 
@@ -481,20 +453,8 @@ bool terrain_matches(const t_letter src, const t_list& dest)
 		// does the destination wildcard match
 		const t_letter dest_mask = get_mask_(*itor);
 		const t_letter masked_dest = (*itor & dest_mask);
-#if 0		
-		std::cerr << std::hex << "dest= " 
-			<< *itor << "\t" << dest_mask << "\t" << masked_dest << "\n";
-#endif
 		if((src & dest_mask) == masked_dest) {
 			return result;
-		}
-
-		// if one of the 2 has a caret and we use a wildcard in the first part
-		// we fail eg *^ != A without wildcards no problem occurs eg A^ == A
-		if(src_has_wildcard || has_wildcard(*itor)) {
-			if(match_ignore_layer_(src, *itor)) {
-				return result;
-			}
 		}
 	}
 
@@ -547,14 +507,6 @@ bool terrain_matches(const t_letter src, const t_match& dest)
 		// does the destination wildcard match
 		if(dest.has_wildcard && (src & dest.mask[i]) == dest.masked_terrain[i]) {
 			return result;
-		}
-		
-		// if one of the 2 has a caret and we use a wildcard in the first part
-		// we fail eg *^ != A without wildcards no problem occurs eg A^ == A
-		if(src_has_wildcard || has_wildcard(*it)) {
-			if(match_ignore_layer_(src, *it)) {
-				return result;
-			}
 		}
 	}
 
@@ -866,77 +818,24 @@ t_list string_to_vector_(const std::string& str)
 
 t_letter get_mask_(const t_letter terrain)
 {
+	// NOTE this code was first written in a loop, it looked ugly and was slow
+	// g++ won't unroll-loops by default and older versions also optimize no so
+	// good. The code change almost doubled the speed of the routine.
+	
 	// test for the star 0x2A in every postion and return the
 	// appropriate mask
-	uint32_t hi = terrain >> 32;
-	uint32_t lo = terrain;
+	if((terrain & 0xFF000000) == 0x2A000000) return 0x00000000;
+	if((terrain & 0x00FF0000) == 0x002A0000) return 0xFF000000;
+	if((terrain & 0x0000FF00) == 0x00002A00) return 0xFFFF0000;
+	if((terrain & 0x000000FF) == 0x0000002A) return 0xFFFFFF00;
 
-	if     ((hi & 0xFF000000) == 0x2A000000) hi = 0x00000000;
-	else if((hi & 0x00FF0000) == 0x002A0000) hi = 0xFF000000;
-	else if((hi & 0x0000FF00) == 0x00002A00) hi = 0xFFFF0000;
-	else if((hi & 0x000000FF) == 0x0000002A) hi = 0xFFFFFF00;
-	else                                     hi = 0xFFFFFFFF;
-		
-	if     (lo == 0xFFFFFFFF)                lo = 0x00000000; // no caret so match all layers
-	else if((lo & 0xFF000000) == 0x2A000000) lo = 0x00000000;
-	else if((lo & 0x00FF0000) == 0x002A0000) lo = 0xFF000000;
-	else if((lo & 0x0000FF00) == 0x00002A00) lo = 0xFFFF0000;
-	else if((lo & 0x000000FF) == 0x0000002A) lo = 0xFFFFFF00;
-	else                                     lo = 0xFFFFFFFF;
-
-	t_letter result = hi;
-	return ((result << 32) | lo);
-}
-
-bool match_ignore_layer_(const t_letter& src, const t_letter& dest)
-{
-	// if one of the 2 has a caret and we use a wildcard in the first part
-	// we fail eg *^ != A without wildcards no problem occurs eg A^ == A
-	// our caller makes sure one of the 2 has a wildcard
-	
-	// mask out the part before the caret
-	t_letter src_lo = src & 0x00000000FFFFFFFFi64;
-	t_letter dest_lo = dest & 0x00000000FFFFFFFFi64;
-
-	// if the part after the caret is 0 in one and all F in the 
-	// other we have our special case
-	if((src_lo == 0x00000000 && dest_lo == 0xFFFFFFFF) ||
-			(dest_lo == 0x00000000 && src_lo == 0xFFFFFFFF)) {
-
-		// force both to have a caret
-		src_lo = src & 0xFFFFFFFF00000000i64;
-		dest_lo = dest & 0xFFFFFFFF00000000i64;
-
-		// match again
-		return terrain_matches(src_lo, dest_lo);
-	}
-
-	return false;
+	// no star found return the default
+	return WILDCARD_NONE;
 }
 
 t_letter string_to_number_(const std::string& str) {
 	int dummy = -1;
 	return string_to_number_(str, dummy);
-}
-
-void convert_string_to_number_(const std::string& str, t_letter& result) {
-
-	//validate the string
-	wassert(str.size() <= 4);
-
-	//the conversion to int puts the first char in the 
-	//highest part of the number, this will make the 
-	//wildcard matching later on a bit easier.
-	for(size_t i = 0; i < 4; ++i) {
-		const unsigned char c = (i < str.length()) ? str[i] : 0;
-		
-		// clear the lower area also needed on i == 0 due
-		// to a possible partial result
-		result <<= 8; 
-		
-		// add the result
-		result += c;
-	}
 }
 
 t_letter string_to_number_(std::string str, int& start_position)
@@ -952,28 +851,27 @@ t_letter string_to_number_(std::string str, int& start_position)
 	}
 
 	// split if we have 1 space inside
-	size_t offset = str.find(' ', 0);
+	const size_t offset = str.find(' ', 0);
 	if(offset != std::string::npos) {
 		start_position = lexical_cast<int>(str.substr(0, offset));
 		str.erase(0, offset + 1);
 	}
 
-	// split on the caret
-	offset = str.find('^', 0);
-	if(offset !=  std::string::npos) {
-		convert_string_to_number_(std::string(str, 0, offset).c_str(), result);
-		const std::string layer(str.c_str(), offset + 1);
-		if(layer == "" ) {
-			// set layer to empty
-			result <<= 32;
-		} else {
-			convert_string_to_number_(layer, result);
-		}
-	} else {
-		convert_string_to_number_(str, result);
-		// set the layer to not existing
-		result <<= 32;
-		result |= 0xFFFFFFFF; 
+	//validate the string
+	wassert(str.size() <= 4);
+	
+	//the conversion to int puts the first char in the 
+	//highest part of the number, this will make the 
+	//wildcard matching later on a bit easier.
+	for(size_t i = 0; i < 4; ++i) {
+		const unsigned char c = (i < str.length()) ? str[i] : 0;
+		
+		// clear the lower area is a nop on i == 0 so 
+		// no need for if statement
+		result <<= 8; 
+		
+		// add the result
+		result += c;
 	}
 
 #ifndef TERRAIN_TRANSLATION_COMPATIBLE 
@@ -996,25 +894,19 @@ std::string number_to_string_(t_letter terrain, const int start_position)
 	}
 	
 	//insert the terrain letter
-	unsigned char letter[8];
-	letter[0] = ((terrain & 0xFF00000000000000i64) >> 56);
-	letter[1] = ((terrain & 0x00FF000000000000i64) >> 48);
-	letter[2] = ((terrain & 0x0000FF0000000000i64) >> 40);
-	letter[3] = ((terrain & 0x000000FF00000000i64) >> 32);
-	letter[4] = ((terrain & 0x00000000FF000000i64) >> 24);
-	letter[5] = ((terrain & 0x0000000000FF0000i64) >> 16);
-	letter[6] = ((terrain & 0x000000000000FF00i64) >> 8);
-	letter[7] =  (terrain & 0x00000000000000FFi64);
+	unsigned char letter[4];
+	letter[0] = ((terrain & 0xFF000000) >> 24);
+	letter[1] = ((terrain & 0x00FF0000) >> 16);
+	letter[2] = ((terrain & 0x0000FF00) >> 8);
+	letter[3] =  (terrain & 0x000000FF);
 		
-	for(int i = 0; i < 8; ++i) {
-		if(letter[i] != 0 && letter[i] != 0xFF) {
-			if(i == 5) {
-				result += '^';
-			}
-			result += letter[i];
+	for(int i = 0; i < 4; ++i) {
+		if(letter[i] != 0) {
+			push_back<std::string, unsigned char>(result, letter[i]);
 		} else {
-			// no letter, but can be more due to the 2 parts
-			continue;
+			// no letter, means no more letters at all
+			// so leave the loop
+			break;
 		}
 	}
 
@@ -1058,30 +950,3 @@ t_letter string_to_builder_number_(std::string str)
 }
 	
 } //namespace
-
-#if 0
-// small helper rule to test the matching rules
-// building rule
-// make terrain_translation.o &&  g++ terrain_translation.o libwesnoth-core.a -lSDL -o terrain_translation
-int main(int argc, char** argv)
-{
-	if(argc > 1) {
-	
-		if(std::string(argv[1]) == "match" && argc == 4) {
-			t_translation::t_letter src = 
-				t_translation::read_letter(std::string(argv[2]), t_translation::T_FORMAT_STRING);
-			
-			t_translation::t_list dest = 
-				t_translation::read_list(std::string(argv[3]), -1, t_translation::T_FORMAT_STRING);
-
-			if(t_translation::terrain_matches(src, dest)) {
-				std::cout << "Match\n" ;
-			} else {
-				std::cout << "No match\n";
-			}
-		}
-	}
-}
-
-#endif
-

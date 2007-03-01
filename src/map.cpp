@@ -310,7 +310,7 @@ void gamemap::read(const std::string& data)
 			// is the terrain valid? 
 			if(letterToTerrain_.count(tiles_[x][y]) == 0) {
 				ERR_CF << "Illegal character in map: (" << t_translation::write_letter(tiles_[x][y]) 
-					<< ") '" << output_terrain(tiles_[x][y]) << "'\n"; 
+					<< ") '" << tiles_[x][y] << "'\n"; 
 				throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 			} 
 			

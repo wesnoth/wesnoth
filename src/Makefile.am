@@ -435,7 +435,6 @@ noinst_HEADERS = \
 	playsingle_controller.hpp \
 	generic_event.hpp \
 	sdl_ttf/SDL_ttf.h \
-	stdint/pstdint.h \
 	wesconfig.h
 
 #############################################################################

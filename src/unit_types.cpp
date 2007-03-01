@@ -375,7 +375,7 @@ int unit_movement_type::movement_cost(const gamemap& map,
 
 	if(movement_costs != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << output_terrain(terrain) << "' has " 
+			LOG_STREAM(err, config) << "terrain '" << terrain << "' has " 
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return impassable;
@@ -453,7 +453,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 
 	if(defense != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << output_terrain(terrain) << "' has " 
+			LOG_STREAM(err, config) << "terrain '" << terrain << "' has " 
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return 100;

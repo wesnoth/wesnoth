@@ -26,27 +26,17 @@
 // to really use -- Mordante
 #define TERRAIN_TRANSLATION_COMPATIBLE
 
+#include <SDL_types.h> //used for Uint32 definition
 #include <string>
 #include <vector>
 #include <map>
 
-// MS VC at least up to version 8 doesn't include stdint.h which is 
-// defined C99. Use this to fix that ommision, if other  compilers
-// also miss this header add them to the ifdef
-#ifdef _MSC_VER
-#include "stdint/pstdint.h"
-#define output_terrain(Num) ((Uint32)((Num)>>32)) << ((Uint32)(Num))
-//comment this operator<< part out for now, since it doesn't work
-/*ostream& operator << (ostream& os, const uint64_t num);*/
-#else
-#include <stdint.h>
-#define output_terrain(Num) (Num)
-#endif
+//#include "variable.hpp"
 
 namespace t_translation {
 
 	//The definitions for a terrain
-	typedef uint64_t t_letter;
+	typedef Uint32 t_letter;
 	typedef std::vector<t_letter> t_list;
 	typedef std::vector<std::vector<t_letter> > t_map;
 
@@ -111,7 +101,7 @@ namespace t_translation {
 	extern const t_letter MINUS; 	// -
 	extern const t_letter NOT;		// !
 	extern const t_letter STAR; 	// *
-	const t_letter NONE_TERRAIN = 0xFFFFFFFF;
+	const t_letter NONE_TERRAIN = 0;
 		
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	//the terrain format lets the terrain functions know what to expect
@@ -128,9 +118,8 @@ namespace t_translation {
 	 * Reads a single terrain from a string
 	 * FIXME: remove t_format
 	 *
-	 * @param str		The string which should contain 1 letter the new format.
-	 * 					This 'letter' can be one or 2 groups of letters separated
-	 * 					by a caret.	A group letter is 2 to 4 characters in the set
+	 * @param str		The string which should contain 1 letter the new format 
+	 * 					of a letter is 2 to 4 characters in the set
 	 * 					[a-Z][A-Z]/|\_ The underscore is intended for internal
 	 * 					use. Other letters and characters are not validated but
 	 * 					users of these letters can get nasty surprices. The * 
@@ -221,7 +210,7 @@ namespace t_translation {
 	 * @param starting_positions A starting positions map, as returned from read_game_map
 	 *
 	 * @returns			A terrain string which can be read with read_game_map.
-	 * 					For readability the map is padded to groups of 12 chars
+	 * 					For readability the map is padded to groups of 7 chars
 	 * 					followed by a comma and space
 	 */
 	std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions = std::map<int, coordinate>());
@@ -236,19 +225,11 @@ namespace t_translation {
 	 * W*, Ww 		does match and returns true
 	 * W*, {!, Ww}	does match and returns false (due to the !)
 	 * Ww, WW		doesn't match and return false
-	 * 
-	 * Layer based matching:
-	 * A*			matches Abcd but also Abcd^Abcd
-	 * A*^*			matches Abcd but also Abcd^Abcd
-	 * A*^			matches Abcd but *not* Abcd^Abcd
-	 * A*^Abcd		does not match Abcd but matches Abcd^Abcd
-	 *
-	 * ^*			invalid since it will only match terrains with a second layer
 	 *
 	 * @param src	the value to match (may also contain the wildcard)
-	 * @param dest	the list of values to match against
+	 * @param dest the list of values to match against
 	 *
-	 * @returns		the result of the match (depending on the !'s)
+	 * @returns	the result of the match (depending on the !'s)
 	 */
 	bool terrain_matches(const t_letter src, const t_list& dest);
 
@@ -259,7 +240,7 @@ namespace t_translation {
 	 * @param src	the value to match (may also contain the wildcard)
 	 * @param dest 	the value to match against
 	 *
-	 * @returns		the result of the match (depending on the !'s)
+	 * @returns	the result of the match (depending on the !'s)
 	 */
 	bool terrain_matches(const t_letter src, const t_letter dest);
 	
@@ -272,7 +253,7 @@ namespace t_translation {
 	 * @param src	the value to match (may also contain the wildcard)
 	 * @param dest 	the value to match against
 	 *
-	 * @returns		the result of the match (depending on the !'s)
+	 * @returns	the result of the match (depending on the !'s)
 	 */
 	bool terrain_matches(const t_letter src, const t_match& dest);
 
