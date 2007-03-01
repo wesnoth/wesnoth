@@ -5,15 +5,15 @@
 # Automatically generated, 2005.
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
-# naoki iimura <amatubu@gmail.com>, 2005-2006.
+# naoki iimura <amatubu@gmail.com>, 2005-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-19 17:36+0100\n"
-"PO-Revision-Date: 2006-09-25 02:47+0900\n"
-"Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
+"PO-Revision-Date: 2007-02-24 11:26+0900\n"
+"Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -87,7 +87,6 @@ msgid "regenerates"
 msgstr "再生"
 
 #: data/abilities.cfg:59
-#, fuzzy
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
@@ -424,7 +423,7 @@ msgstr "音楽"
 
 #: data/about.cfg:75
 msgid "Sound effects"
-msgstr ""
+msgstr "サウンドエフェクト"
 
 #: data/about.cfg:84
 msgid "Scenario Designers"
@@ -589,9 +588,8 @@ msgid "Turkish Translation"
 msgstr "トルコ語翻訳"
 
 #: data/about.cfg:569
-#, fuzzy
 msgid "Valencian Translation"
-msgstr "スロベニア語翻訳"
+msgstr "バレンシア語翻訳"
 
 #: data/about.cfg:576 data/help.cfg:252
 msgid "Contributors"
@@ -1948,46 +1946,43 @@ msgstr "アンデッド"
 
 #: data/english.cfg:21
 msgid "race^Dwarves"
-msgstr ""
+msgstr "ドワーフ"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "ゴブリン"
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
-msgstr "アンデッド"
+msgstr "トカゲ族"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
-msgstr ""
+msgstr "機械"
 
 #: data/english.cfg:25
 msgid "race^Mermen"
-msgstr ""
+msgstr "マーマン"
 
 #: data/english.cfg:26
 msgid "race^Monsters"
-msgstr ""
+msgstr "モンスター"
 
 #: data/english.cfg:27
 msgid "race^Nagas"
-msgstr ""
+msgstr "ナーガ"
 
 #: data/english.cfg:28
 msgid "race^Ogres"
-msgstr ""
+msgstr "オーガ"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Trolls"
 msgstr "トロル"
 
 #: data/english.cfg:30
-#, fuzzy
 msgid "race^Woses"
-msgstr "トロル"
+msgstr "ウーズ"
 
 #: data/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
@@ -2052,21 +2047,19 @@ msgstr "投射"
 
 #: data/english.cfg:52
 msgid "Wesnoth unit list"
-msgstr ""
+msgstr "Wesnoth ユニットリスト"
 
 #: data/english.cfg:53
 msgid "Based on version"
-msgstr ""
+msgstr "基となったバージョン"
 
 #: data/english.cfg:54
-#, fuzzy
 msgid "Race"
-msgstr "メイス"
+msgstr "種族"
 
 #: data/english.cfg:55
-#, fuzzy
 msgid "Advance from:"
-msgstr "クラスチェンジ先: "
+msgstr "クラスチェンジ元: "
 
 #: data/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
@@ -3056,7 +3049,6 @@ msgid "Wrap Up"
 msgstr "まとめ"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarize yourself with <ref>dst=traits text=Traits</"
@@ -3261,7 +3253,6 @@ msgid "Undead units are immune to poison."
 msgstr "アンデッドユニットは毒に免疫がある。"
 
 #: data/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3686,7 +3677,6 @@ msgid "Village"
 msgstr "村"
 
 #: data/help.cfg:509
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have an easy time navigating villages, and most units "
@@ -3699,10 +3689,9 @@ msgid ""
 "40%."
 msgstr ""
 "村は建物と人間やその他の一群を表します。ほとんど全てのユニットは、例え騎兵で"
-"あっても、村を進行するのは容易で、多くのユニットは村に駐留中は防御特典を得ま"
-"す。\n"
-"村はユニットに資源をきれいにし傷を介抱することで、駐留している全てのユニット"
-"は各ターン8HPの回復と毒の治療が行われます。\n"
+"あっても、村を進行するのは容易で、多くのユニットは村に駐留中は防御ボーナスを"
+"得ます。村はユニットに資源をきれいにし傷を介抱することで、駐留している全ての"
+"ユニットは各ターン8HPの回復もしくは毒の治療が行われます。\n"
 "\n"
 "ほとんどのユニットは50から60%の防御を村でもちますが、騎兵は40%のみです。"
 
@@ -4145,6 +4134,65 @@ msgid ""
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
 "Amithrarion,Cálad,Legilad"
 msgstr ""
+"Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
+"Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
+"Amowyn,Háriand,Beliril,Mylith,Giombor,Fer,Roldur,Cithraldur,Elvaramir,Sénd,"
+"Cylas,Thrilmandel,Rorfindil,Uradrielas,Sénd,Hil-Garion,Fithraril,Unorfiril,"
+"Eäryldur,Eärithrandil,Cithrand,Unálas,Elyrion,Glul,Vebrilas,Lómorfindil,"
+"Hithrandel,Gil-Gang,Hilas,Gil-Gandel,Eowarar,Carang,Lómariand,Isilmandel,"
+"Uril-Gambor,Hénduil,Unaraldur,Galithrariand,Hirion,Anilmambor,Celadrieriand,"
+"Róldur,Eärérion,Calónduil,Anerion,Elvélith,Eliondil,Lómebrind,Isándir,"
+"Eowówyn,Belel,Cáldur,Tadriendir,Vunduil,Belólad,Thrélad,Isadrieng,Eowil-"
+"Garion,Tinyl,Tinun,Lómémbor,Urálith,Celong,Horfilad,Iselas,Galálad,Norfildor,"
+"Thrithran,Unil-Gan,Gloldor,Celarandil,Delánd,Maldur,Celyndel,Ról,Vandir,"
+"Glómir,Unadrieldor,Elvandir,Vebril,Unólith,Maraldur,Elvilmaril,Isól,Legaran,"
+"Farandir,Nél,Glandil,Galalith,Galálas,Elebrildor,Sóriand,Elvóriand,Pindir,"
+"Anán,Amiorion,Amorfimir,Isarandel,Thril-Gamir,Taraldur,Amundil,Unorfildor,"
+"Glararil,Sólad,Fáwyn,Tinarambor,Tinil-Ganduil,Padrieriand,Ameldor,Gyl,"
+"Unebrind,Celebririon,Corfildur,Canduil,Glámbor,Urul,Elran,Glilmal,Porfildur,"
+"Cadrieriand,Delaraldur,Galelas,Hebril,Varalas,Celér,Nóndel,Eladrieng,"
+"Elvorfiriand,Delandel,Delorfilad,Méng,Lómowyn,Elélas,Unebrin,Anithranduil,"
+"Celáriand,Threbring,Belyrion,Belilmand,Numbor,Vóldur,Tinorfind,Gambor,"
+"Thrambor,Táriand,Eäradriendel,Rówyn,Elvémir,Elvorfiril,Calioriand,Delóldor,"
+"Tinóriand,Eowaraldor,Vel,Galémbor,Elrithralith,Elánd,Fadriendel,Deláril,"
+"Fandel,Cindil,Unalas,Delawyn,Fyrion,Eowylas,Eowithrawyn,Elvombor,Vuldur,"
+"Legorfindil,Unombor,Gadrieng,Amilmandir,Elrioldor,Calil-Gawyn,Eäréldor,"
+"Glólas,Norfindir,Unorfiwyn,Amind,Sóriand,Isóndel,Caliril,Eowaran,Elolas,"
+"Fendel,Tówyn,Hiong,Elvebrindel,Eowar,Vulas,Legémir,Torfildur,Col,Isorfilad,"
+"Elilmaldur,Celuwyn,Gymbor,Hundel,Elen,Isarar,Delán,Thrimir,Tinilmand,"
+"Tinithrar,Elvioldur,Tendel,Harariand,Rithrandil,Garaldor,Lómarand,Celór,"
+"Elvorfimir,Galar,Paraldor,Morfiriand,Celang,Amóldor,Vararion,Belondel,Hywyn,"
+"Legiondel,Elyldor,Eärorfiriand,Glarang,Gor,Throlas,Gararil,Norfilith,Deliwyn,"
+"Nyldur,Vólas,Isér,Eowanduil,Eowiomir,Belithraldor,Elemir,Amiol,Urálas,Belil-"
+"Gandil,Nalith,Thréldur,Gán,Eowimbor,Padrieril,Anorfing,Rebrir,Anilmariand,"
+"Rilmandil,Thryriand,Isyndel,Celorion,Isóng,Sadrielas,Pór,Thraral,Miolith,"
+"Elil-Garil,Vándel,Cówyn,Unóndel,Uniolith,Legówyn,Vylas,Unulad,Legal,Celelas,"
+"Galeldur,Amendel,Amorfir,Elvilmaldur,Eäránduil,Til-Gan,Nilmar,Eäradrier,"
+"Celior,Sebrin,Pyldur,Urér,Fioril,Anebrin,Hemir,Thrón,Glal,Mondir,Cénduil,"
+"Galur,Glimir,Anior,Tinoldor,Ván,Hilmariand,Lómebrilad,Gyn,Legyn,Vol,Cun,"
+"Lómadrieril,Amadrieriand,Eowémir,Belómir,Elrithranduil,Gumbor,Célad,Anebrir,"
+"Téwyn,Táriand,Géril,Elreldur,Legil-Gal,Eärebrindel,Elvund,Unil,Pilmalad,"
+"Deléng,Tinowyn,Cundir,Gadriendil,Eowariand,Ciong,Morfin,Nadrieldor,Elrorfir,"
+"Hymir,Elvebrind,Urambor,Thrund,Anénduil,Anon,Elrilmand,Cithraril,Mithrand,"
+"Caraldur,Eowóldur,Glior,Elváwyn,Legithralith,Vólas,Calándel,Caldur,Lómariand,"
+"Elebriril,Celundir,Eoworfildor,Celiorion,Elor,Elváwyn,Lómilmaril,Delilmaldor,"
+"Amelad,Tion,Unál,Calebrindel,Amilmalith,Eäryriand,Unondir,Isuwyn,Elralith,"
+"Belilmang,Eowarar,Sil-Gal,Calil-Gandir,Glon,Deliol,Sebriril,Elémbor,"
+"Calebrindir,Celilmalas,Elverion,Cithrandel,Anémbor,Uradrierion,Ganduil,"
+"Parariand,Pumbor,Githral,Galoldur,Rorfilad,Tinorfiriand,Vondel,Tinimir,"
+"Sorfind,Uróldor,Delithrar,Galurion,Elval,Tinond,Delorion,Taral,Thróng,"
+"Madrieril,Isithral,Belarandel,Celendel,Gladriendil,Lómiriand,Legéril,Nán,"
+"Vilith,Belén,Elriolith,Delundil,Anilad,Celaral,Ameng,Mérion,Eowarion,"
+"Tilmalad,Elvil-Garion,Cithralad,Ryn,Tinén,Elólas,Belandil,Golad,Miomir,Tolas,"
+"Urilmalith,Norfindil,Mánduil,Githralad,Legorfirion,Móndir,Hyrion,Anundil,"
+"Tinilmawyn,Legyl,Elradrien,Anil-Gawyn,Tinandir,Uneldor,Amulas,Válad,Amulas,"
+"Celiondir,Thradrieriand,Réndir,Elvónduil,Urorfildor,Vyldor,Galelith,Caloril,"
+"Amáril,Belithrawyn,Cadriembor,Tilmalas,Thril-Gar,Elálith,Vorfin,Eowebrind,"
+"Nil-Galas,Eowambor,Morfilas,Thrion,Róldor,Filman,Unioril,Forfilas,"
+"Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
+"Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
+"Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
+"Amithrarion,Cálad,Legilad"
 
 #: data/names.cfg:3
 msgid ""
@@ -4214,6 +4262,71 @@ msgid ""
 "Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
 "Eowathiel,Iséng,Legondra,Celorfilindë"
 msgstr ""
+"Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
+"Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
+"Belaraviel,Vódia,Vadriewen,Legadien,Glithiel,Nowen,Elviondra,Cithrania,"
+"Isithradien,Legithrandra,Tilmaclya,Galadriethien,Rorfiviel,Thryng,Unindra,"
+"Lómeniel,Deliowen,Corfiviel,Eärániel,Eärélia,Feclya,Vorfing,Tinóng,Celith,"
+"Celelith,Sadrienia,Deléthien,Uradriedia,Pulia,Lómuthiel,Elvyniel,Réviel,"
+"Parandra,Galaraniel,Til-Gandra,Isilindë,Belendra,Galorfiwiel,Mil-Gathien,"
+"Lómilindë,Elvithrang,Uránia,Cádë,Eäradriedien,Belarania,Legelith,Lómythien,"
+"Legethiel,Godien,Goclya,Elywen,Githrawiel,Galowen,Glilmawiel,Fadrielia,"
+"Galedien,Miowen,Tinorfilith,Amuwen,Silmathiel,Hódia,Hiwien,Anilmarith,Sáng,"
+"Amionia,Miowiel,Gadrieclya,Celódith,Amorith,Amodë,Thrália,Fil-Gathiel,"
+"Eäréwiel,Delil-Ganiel,Unynia,Belithraniel,Caladrieng,Eäriolith,Celarandra,"
+"Elorfing,Sothien,Amiwen,Deloviel,Celália,Glália,Anaraclya,Mithradë,Eowylia,"
+"Celindë,Legádë,Amiolith,Urilmawiel,Elvil-Gawien,Thrulith,Padriedith,Viowiel,"
+"Elrithradith,Elvánia,Violindë,Lómániel,Pong,Mithralindë,Amithrawien,Mil-"
+"Gathiel,Celioniel,Uryrith,Soniel,Lómulindë,Eärilmathien,Hódia,Tithrathien,"
+"Tówiel,Glowiel,Aniorith,Uniong,Tinorfithien,Madrieclya,Sadrierith,Vówien,"
+"Reniel,Legil-Galindë,Amewien,Nithrarith,Vebrithien,Ril-Gawien,Fólindë,"
+"Galebrindra,Pilindë,Nithraniel,Gólia,Medien,Munia,Cithralith,Eärithrang,"
+"Throng,Eledë,Cithrawen,Thrithradia,Calóniel,Elilmalia,Rindra,Eladriedë,"
+"Lómebriniel,Ceclya,Calówien,Hiodë,Calewen,Gebririth,Tinerith,Sarandra,"
+"Eowebridith,Eärarawien,Eluviel,Sendra,Héclya,Sálindë,Fódë,Throlith,Varawiel,"
+"Elrithiel,Celebriniel,Hythien,Myndra,Urithralindë,Calándra,Delorfilindë,Fil-"
+"Galia,Gloviel,Eowidien,Delebrinia,Puthien,Elvádia,Elrilindë,Legadriedë,"
+"Vithraniel,Módia,Lómithradë,Elradrierith,Hythiel,Glilmadien,Thradia,"
+"Vadrierith,Beliolia,Gil-Gawien,Lómuniel,Milindë,Elóndra,Elvyviel,Glorfilith,"
+"Pebridien,Galándra,Fulindë,Galiothiel,Gléndra,Calánia,Eowedith,Elrebridith,"
+"Anuthiel,Gioviel,Mywiel,Tinawiel,Hedia,Amebrilindë,Eärewen,Isendra,Lómudia,"
+"Tiorith,Lómorfing,Anythien,Eowil-Galindë,Thrithraniel,Amil-Garith,Belowen,"
+"Elynia,Elvithrathien,Tinálindë,Helith,Beladriewien,Fáwien,Lómithrarith,"
+"Calorfiniel,Galéwiel,Lómebriclya,Lómolith,Anáthien,Módë,Hunia,Tinaraniel,"
+"Vithrang,Pil-Gadia,Eluviel,Fáthiel,Elarawiel,Unénia,Sithrang,Celadë,"
+"Beladrielith,Elriwen,Meclya,Pádia,Lómóndra,Elvil-Gawien,Tiniolith,Elelith,"
+"Thraraviel,Eowarawien,Giowen,Eärorfiwien,Amarang,Newen,Náviel,Amithrawien,"
+"Caluclya,Galothiel,Paralindë,Celorfing,Elránia,Mebriwiel,Anebriniel,"
+"Tilmaviel,Fadriendra,Unulindë,Haviel,Elilmawien,Celylia,Thrithrandra,"
+"Lómiclya,Féthiel,Celália,Eowalia,Huclya,Horfiwien,Elrilmathien,Unionia,"
+"Gioniel,Elrilmandra,Delararith,Uraclya,Huthien,Celéng,Isil-Garith,Lómudia,"
+"Thrérith,Amadrielindë,Eladrielia,Amuviel,Legadrieclya,Legilmadith,"
+"Belebrindra,Lómódë,Uniolia,Gadrieviel,Galilmadia,Filmaclya,Naraniel,"
+"Calilmalith,Hil-Gania,Anuthien,Elviniel,Elebrindra,Legadrieniel,Galundra,"
+"Anylindë,Celówien,Thridith,Niolia,Falindë,Milith,Anundra,Lómorith,Delararith,"
+"Anywien,Saradith,Galédë,Háwien,Celérith,Niothien,Elvilmathiel,Hewen,Isóthien,"
+"Hóthiel,Celebriviel,Moniel,Elithradien,Vorficlya,Glebrithien,Golindë,Viwiel,"
+"Sethien,Sioclya,Hodia,Taradien,Fadrienia,Githrania,Calil-Galith,Elréthiel,"
+"Legithrania,Calewiel,Isebridien,Thredien,Tinudia,Tinadriethien,Galithrathien,"
+"Mádia,Isadrieng,Celárith,Isebrinia,Amorfilith,Sédith,Eärudë,Eärenia,"
+"Belithrawien,Amil-Gadith,Vadrieviel,Lómilmathiel,Tinebrithiel,Eowilindë,"
+"Terith,Calang,Celararith,Glodith,Siorith,Beladriewen,Fioniel,Amulia,Nydith,"
+"Lómilmawiel,Gáviel,Belulindë,Legorfidë,Unáthien,Porfindra,Calithraclya,"
+"Celorfiwien,Analia,Elithraclya,Delóndra,Unóndra,Nilmadia,Riothien,Guviel,"
+"Elrorfidia,Horfinia,Uriolia,Delithrathiel,Legéniel,Calebriwien,Delorfithien,"
+"Unebridë,Legeng,Thrinia,Galolindë,Galyniel,Vorfirith,Syniel,Harawiel,"
+"Vorfiwiel,Porfiwien,Isithrarith,Maraclya,Amadriendra,Gilia,Fadriedith,Amedë,"
+"Celidien,Legolith,Unuviel,Nil-Gang,Celithradith,Pindra,Póviel,Elil-Gang,"
+"Galebrilia,Tathiel,Unadrieng,Isithrawiel,Amadrielia,Nawen,Tang,Cydia,"
+"Silmaclya,Cadriewen,Threbriniel,Urilmadia,Thruthien,Ureclya,Galólia,"
+"Sithrawen,Elródith,Throthiel,Lómedia,Pawen,Legilmawiel,Legebrilia,Urárith,"
+"Unilmadia,Morfilindë,Iseviel,Améthien,Gloclya,Cing,Legithralindë,Isáwen,"
+"Sothiel,Eowiowien,Uruthien,Amadriewen,Vóng,Róng,Eärilmadë,Anówien,Tuniel,"
+"Tarathiel,Lómynia,Celiodë,Pil-Gadien,Belithrawiel,Gathien,Anang,Vorfing,"
+"Tinarathien,Fil-Gawien,Amilmadia,Amithraniel,Cethien,Gloclya,Hyclya,"
+"Isithradë,Legidia,Celálindë,Galil-Gania,Tinil-Gania,Eowyniel,Cólindë,"
+"Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
+"Eowathiel,Iséng,Legondra,Celorfilindë"
 
 #: data/names.cfg:7
 msgid ""
@@ -4268,6 +4381,56 @@ msgid ""
 "Cubryn,Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
 "Gwaeddyn,Saenvan,Todd,Tegwyn"
 msgstr ""
+"Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,Owaecyn,"
+"Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,Yryrcyn,Glynvan,"
+"Ryddry,Saemyr,Dibryn,Owuddry,Gloddyn,Gladoc,Yroddry,Bladoc,Addreonyc,Rheoran,"
+"Tiryn,Glynry,Rhaemyr,Gweddyn,Cemyr,Mimyr,Caraennyn,Careorraent,Gwor,Cin,Goc,"
+"Glydd,Oweomyr,Carraent,Gubryn,Gannyn,Aethadry,Aethonnyn,Blygwyn,Laellyn,"
+"Carudoc,Ladoc,Blercyn,Carocyn,Aetheoc,Rumyr,Gaercyn,Careogwyn,Caryn,Careddry,"
+"Owarcyn,Daeddry,Mubryn,Gwymyr,Blaedry,Owaryn,Addreddry,Owaryn,Taedoc,"
+"Addraecyn,Morcyn,Vugwyn,Rhenry,Blullyn,Dycyn,Daeddry,Blydd,Seddyn,Teoddyn,"
+"Gwaec,Rycyn,Rhobryn,Gwyddry,Tudoc,Roddyn,Oweran,Ceoddyn,Blubryn,Glonry,Sedry,"
+"Owecyn,Blydd,Owinyc,Gwuran,Yryllyn,Tunvan,Gwan,Carac,Cebryn,Murcyn,Ronry,"
+"Geodry,Midry,Gweogwyn,Aethec,Blinvan,Rhyrraent,Aethaeryn,Seoddry,Caradoc,"
+"Aethenvan,Sanyc,Aethaec,Gwumyr,Teorcyn,Lenvan,Rabryn,Yrynyc,Murcyn,Mydoc,"
+"Yrannyn,Rhobryn,Oworraent,Owac,Vuddyn,Gwellyn,Glaercyn,Yregwyn,Oweorcyn,"
+"Addrenyc,Rhaedoc,Carocyn,Rhonvan,Owercyn,Dadd,Corcyn,Addrocyn,Yreryn,Tinry,"
+"Rharcyn,Rar,Addroryn,Tabryn,Blinvan,Addrunvan,Derraent,Leogwyn,Virraent,"
+"Gwudoc,Lercyn,Glarraent,Caren,Liryn,Gwegwyn,Ligwyn,Gwybryn,Lin,Veoddyn,Owodd,"
+"Cariddry,Glonvan,Gymyr,Aethuc,Careonvan,Aethudry,Addreoddyn,Gweocyn,Vonry,"
+"Rhygwyn,Rhyrcyn,Rhur,Deonyc,Veocyn,Siryn,Teobryn,Yraec,Gweodry,Caroran,"
+"Caraedry,Vaennyn,Moddry,Vaeddyn,Caredd,Siddry,Aethacyn,Rheorraent,Rhubryn,"
+"Addrurcyn,Sodry,Rhunyc,Gweodd,Reoddyn,Vinyc,Glydoc,Sodd,Dyddyn,Dinnyn,Ruddry,"
+"Addraryn,Gwollyn,Rurcyn,Glinry,Blyr,Aetharcyn,Blybryn,Addraercyn,Cararyn,"
+"Carygwyn,Menvan,Caric,Turraent,Oworcyn,Gwennyn,Meorraent,Ludoc,Aethoddyn,"
+"Glyc,Oworan,Simyr,Aethugwyn,Gwynnyn,Glunry,Cynyc,Addregwyn,Maddyn,Gecyn,"
+"Deollyn,Gwidoc,Meon,Goc,Sudd,Yredd,Addredry,Caeran,Vobryn,Saellyn,Surcyn,"
+"Taercyn,Labryn,Yran,Ceomyr,Caroddyn,Deodd,Glunvan,Gwoddyn,Addrocyn,Aethydry,"
+"Carygwyn,Aethynyc,Aetheorcyn,Taec,Rocyn,Laellyn,Tinvan,Owaedry,Teor,Ceonnyn,"
+"Rynry,Lunnyn,Myn,Rynnyn,Dac,Owaddyn,Vyc,Bliddry,Gur,Gwumyr,Owinvan,Maennyn,"
+"Veogwyn,Blenvan,Owur,Curyn,Gleoddyn,Aethec,Aethanry,Lec,Blanry,Vaddyn,Modd,"
+"Gaddry,Yrinvan,Blidd,Rheran,Veomyr,Owadd,Saran,Gullyn,Owollyn,Aethiddry,"
+"Gloddry,Carullyn,Secyn,Manyc,Romyr,Vinvan,Careoryn,Gegwyn,Gleddry,Tennyn,"
+"Manry,Syran,Gor,Ceoddry,Aethobryn,Yrunvan,Yraryn,Oweor,Daellyn,Mec,Lannyn,"
+"Owyran,Lemyr,Rhaedoc,Yrullyn,Syryn,Bludry,Bledoc,Caregwyn,Tuddry,Careobryn,"
+"Addrenyc,Aethellyn,Veodry,Meonnyn,Myrraent,Addraer,Aethun,Coc,Sarraent,"
+"Rheollyn,Reodry,Blucyn,Caedry,Mudoc,Sydd,Carygwyn,Cadry,Gwucyn,Ten,Ron,Lan,"
+"Owoddry,Owugwyn,Tarcyn,Owuddyn,Rhenvan,Tanry,Aetheonyc,Caraddry,Blaec,"
+"Yrunnyn,Glircyn,Aetherraent,Rheoddyn,Cennyn,Ginvan,Gweoran,Gumyr,Blymyr,"
+"Rygwyn,Gagwyn,Addrynvan,Rherraent,Yrymyr,Laran,Rubryn,Ceoc,Gwodd,Gwadoc,"
+"Gwenyc,Corcyn,Gaebryn,Gwydoc,Yrumyr,Caregwyn,Rheollyn,Rhollyn,Gliddyn,Owedry,"
+"Aethercyn,Caryn,Saec,Vogwyn,Lorraent,Mygwyn,Cac,Mac,Tarcyn,Tenvan,Ronry,"
+"Gwaec,Seorcyn,Soran,Luddry,Addreran,Yranvan,Gwidoc,Ceonry,Glacyn,Varcyn,"
+"Vyrcyn,Terraent,Blillyn,Run,Ligwyn,Rhyllyn,Sercyn,Denvan,Convan,Owogwyn,Gar,"
+"Glumyr,Rheodd,Cicyn,Blac,Daedoc,Gweodoc,Addreorcyn,Caercyn,Rhynyc,Lunnyn,"
+"Dadoc,Sellyn,Aethaeran,Gydoc,Sodry,Tyddyn,Rhaerraent,Gan,Lunvan,Saercyn,"
+"Gaedry,Rhodry,Taenvan,Radd,Caror,Monry,Mugwyn,Meollyn,Glun,Moran,Rybryn,"
+"Aethibryn,Gwaec,Addryllyn,Caebryn,Cinry,Ranvan,Blemyr,Addriddyn,Rhugwyn,"
+"Gwycyn,Blebryn,Yranvan,Teddyn,Vaedry,Addreoddry,Taedd,Cyryn,Yrirraent,"
+"Aethercyn,Middry,Lurraent,Bleollyn,Aethircyn,Ven,Modd,Ceoryn,Carercyn,Lonnyn,"
+"Car,Taemyr,Owidry,Geddyn,Aethunry,Yreddyn,Addribryn,Suc,Gleran,Addredry,"
+"Cubryn,Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
+"Gwaeddyn,Saenvan,Todd,Tegwyn"
 
 #: data/names.cfg:8
 msgid ""
@@ -4322,6 +4485,56 @@ msgid ""
 "Deassa,Jovyan,Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,"
 "Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 msgstr ""
+"Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
+"Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
+"Clarka,Clwlla,Cira,Lylla,Elavyan,Meroniver,Lwlla,Reacla,Neallyra,Mudda,"
+"Brirka,Alyryan,Reangwen,Sorka,Nalyan,Ysilyan,Realla,Lyna,Rwllyra,Elyrka,Nera,"
+"Gwwcla,Caella,Gwwvyan,Nuvyan,Sona,Merolla,Nyssa,Sera,Lwryan,Ysell,Elulonna,"
+"Raerka,Saell,Dwnoic,Clissa,Medda,Lessa,Rwllyra,Ledda,Jeabrylla,Brera,Meanoic,"
+"Lelyan,Clobrylla,Brellyra,Nucla,Jalyan,Dydda,Cyvyan,Revyan,Nyll,Clillyra,"
+"Langwen,Jyvyan,Saellyra,Sera,Sara,Rucla,Ryngwen,Cicla,Lolonna,Lycla,Merydda,"
+"Naecla,Aleara,Rwlla,Curyan,Lina,Mylla,Rarka,Merubrylla,Clwdda,Gwerka,Saessa,"
+"Brungwen,Jonoic,Elalonna,Elwlonna,Lidda,Dyssa,Cassa,Relyan,Gworyan,Dwdda,"
+"Alengwen,Lill,Raebrylla,Elwra,Joll,Brerka,Mengwen,Caevyan,Mwnoic,Nivyan,"
+"Merina,Rilonna,Gwangwen,Gwussa,Lealonna,Cwdda,Jaerka,Jassa,Sassa,Elerka,"
+"Elaedda,Sull,Elyngwen,Mwbrylla,Livyan,Maecla,Cwlonna,Ysodda,Elurka,Clylla,"
+"Clilyan,Daenoic,Naell,Brynoic,Syssa,Nulla,Merebrylla,Breabrylla,Call,Jycla,"
+"Dulonna,Gwirka,Dollyra,Alybrylla,Elaell,Jura,Dalla,Mereangwen,Cinoic,Naell,"
+"Ysyrka,Alearka,Jiryan,Ysonoic,Ysycla,Merilyan,Brorka,Jull,Alwllyra,Cealonna,"
+"Gwonoic,Gwobrylla,Brellyra,Curyan,Moniver,Cleall,Elara,Lylyan,Daelyan,Relyan,"
+"Sallyra,Cleacla,Alalonna,Elealla,Ysyssa,Clacla,Rilyan,Jeniver,Aleaniver,"
+"Meraelyan,Gweacla,Jwll,Elealla,Lirka,Milonna,Lealyan,Messa,Nabrylla,Lollyra,"
+"Merona,Meressa,Bravyan,Elaevyan,Ceryan,Mereaniver,Ysaenoic,Gwaessa,Alearka,"
+"Myra,Nobrylla,Jona,Jyrka,Cyniver,Lulyan,Rerka,Swlla,Nybrylla,Yswniver,"
+"Dangwen,Gwicla,Yseacla,Eleanoic,Mwngwen,Neavyan,Larka,Brealonna,Gwycla,"
+"Aluryan,Meacla,Brona,Jyvyan,Brwra,Coryan,Cudda,Elivyan,Nyryan,Alyra,Alilonna,"
+"Merana,Merylyan,Cydda,Diniver,Merolyan,Myll,Rwlonna,Gweacla,Ysylla,"
+"Alaebrylla,Naebrylla,Clenoic,Daengwen,Reana,Alynoic,Jissa,Myvyan,Brora,"
+"Alaryan,Rengwen,Clavyan,Ryna,Jull,Brollyra,Brobrylla,Ysedda,Alingwen,Ysell,"
+"Jealla,Liryan,Merurka,Elallyra,Clinoic,Ninoic,Merudda,Gwongwen,Jacla,Nungwen,"
+"Clalla,Gwona,Gwaera,Rora,Ninoic,Brycla,Clwvyan,Clurka,Clill,Merella,Ysylyan,"
+"Rwdda,Lelonna,Yselonna,Claella,Clallyra,Dassa,Clealyan,Merydda,Cibrylla,"
+"Deanoic,Claenoic,Rassa,Gwwvyan,Cucla,Lwnoic,Aluniver,Dwbrylla,Dybrylla,"
+"Merissa,Ysealyan,Clydda,Maeniver,Dallyra,Nessa,Gwydda,Merall,Clill,Clungwen,"
+"Ysongwen,Cucla,Jora,Elyniver,Meana,Sallyra,Ysinoic,Clara,Meradda,Dwra,Nolla,"
+"Nera,Merealonna,Clibrylla,Alaeniver,Nonoic,Jacla,Rara,Cwngwen,Dara,Ysura,"
+"Sulonna,Dissa,Clona,Ralonna,Cwvyan,Mulyan,Lungwen,Mwlyan,Meralonna,Lerka,"
+"Noryan,Curyan,Mealyan,Nera,Sylyan,Merivyan,Lwnoic,Sanoic,Ysanoic,Cyllyra,"
+"Ysyrka,Cleanoic,Bronoic,Devyan,Ysaerka,Rwngwen,Nwllyra,Ysycla,Swngwen,Nyvyan,"
+"Cleana,Merylyan,Alwlyan,Lassa,Locla,Meniver,Laenoic,Mullyra,Judda,Mycla,"
+"Brassa,Ysacla,Elacla,Muryan,Clollyra,Ysanoic,Senoic,Rwngwen,Merwlla,Brera,"
+"Saeniver,Deassa,Meranoic,Bronoic,Aleacla,Mavyan,Alora,Jarka,Elaelonna,"
+"Merwryan,Lengwen,Alilonna,Meangwen,Claelyan,Silonna,Ysealyan,Alora,Revyan,"
+"Cera,Merwnoic,Dicla,Laeryan,Alubrylla,Lycla,Mavyan,Jull,Syllyra,Swlyan,"
+"Elaessa,Caena,Cluvyan,Breryan,Laeniver,Jorka,Raera,Gwedda,Lodda,Brell,"
+"Rybrylla,Meanoic,Niryan,Cylla,Bricla,Cudda,Alabrylla,Nealonna,Alolla,Rirka,"
+"Jyniver,Elearka,Jaevyan,Melonna,Alengwen,Sura,Cissa,Mossa,Norka,Nangwen,"
+"Saerka,Elycla,Della,Merallyra,Elyllyra,Elenoic,Alussa,Elwngwen,Calla,Merina,"
+"Jynoic,Ysealonna,Sussa,Sulyan,Mossa,Dissa,Daedda,Merinoic,Searka,Rella,Sira,"
+"Clillyra,Alwna,Lulla,Nulyan,Jwlyan,Swnoic,Clongwen,Alalla,Siryan,Braedda,"
+"Jealla,Gwwna,Gwullyra,Merengwen,Molyan,Dwna,Lunoic,Brealla,Ruryan,Alabrylla,"
+"Deassa,Jovyan,Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,"
+"Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 
 #: data/names.cfg:12
 msgid ""
@@ -4333,6 +4546,13 @@ msgid ""
 "Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimmud,"
 "Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 msgstr ""
+"Neptune,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
+"Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
+"Barinthus,Llyr,Lir,Aigaion,Melicertes,Dylan,Tanaoa,Tikitiki,Alastyn,Apam,"
+"Natat,Vourukasa,Vodnik,Faro,Nun,Habaek,Apsu,Abzu,Absu,Sisiutl,Atlaua,Atlahua,"
+"Jamm,Vizi,Ember,Toniwha,Apalala,Dhakhan,Nechtan,Elcmar,Mimir,Enki,Makara,"
+"Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimmud,"
+"Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 
 #: data/names.cfg:13
 msgid ""
@@ -4341,6 +4561,10 @@ msgid ""
 "Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
 "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 msgstr ""
+"Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,Rân,"
+"Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
+"Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
+"Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 
 #: data/names.cfg:17
 msgid ""
@@ -4388,6 +4612,49 @@ msgid ""
 "Varag,Huurk,Vadush,Grok,Rank,Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,"
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 msgstr ""
+"Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,Goshnak,"
+"Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,Hunk,Goshnak,"
+"Bogor,Varbag,Hort,Graol,Gork,Vrugdush,Gagor,Gadash,Prong,Prodush,Pidush,"
+"Grorag,Grolg,Pung,Hurbag,Bink,Grort,Erugar,Vilo,Pagor,Vak,Prarg,Hurag,"
+"Eragdush,Gulg,Pragdush,Grugdush,Erirg,Gridush,Hulo,Vrogar,Eronk,Erulo,Rok,"
+"Prurk,Prurg,Grulo,Prirg,Prugar,Bogar,Prudish,Prunk,Groshnak,Eronk,Prilg,Erik,"
+"Rodush,Vulo,Pork,Prilo,Horbag,Bong,Prarag,Vourk,Vrik,Boshnak,Prong,Rugdish,"
+"Erulo,Palo,Vrik,Hak,Vrurg,Gurbag,Vrang,Pilg,Bogdush,Erurag,Vadush,Eruurk,"
+"Vank,Ruk,Vrogor,Vrurg,Bagar,Vink,Prinak,Vraurk,Prarbag,Hidush,Ruol,Grugdish,"
+"Prodash,Gridish,Pulo,Bik,Rinak,Halg,Erudish,Pirbag,Gank,Galo,Burk,Hunk,"
+"Bagdish,Pink,Bort,Gridash,Valo,Eruol,Radash,Erarg,Vigor,Vudish,Vak,Grirg,"
+"Groshnak,Pronak,Punk,Grigar,Prolg,Pigdush,Ging,Vong,Hulg,Bashnak,Vork,Ruol,"
+"Vogdish,Rinak,Gagar,Borg,Virt,Bunak,Hushnak,Ganak,Barbag,Vralo,Hidash,Vrirt,"
+"Gurt,Erarag,Rugar,Pridish,Prugdish,Eruol,Vriurk,Grudash,Vurg,Eriol,Bok,"
+"Granak,Vrodish,Hoshnak,Grogdish,Bork,Hushnak,Hagdush,Parag,Eriurk,Vuk,Rirg,"
+"Rok,Bolg,Vrishnak,Vilo,Vragar,Budush,Gruk,Bidish,Praurk,Gunak,Hinak,Hak,"
+"Grork,Grong,Erogdish,Rolo,Vadash,Pulg,Vilg,Vrodash,Vurg,Gink,Grilg,Birt,Biol,"
+"Vrudish,Hagor,Vragdush,Vogor,Vulg,Erong,Rashnak,Garag,Grink,Vogdish,Badush,"
+"Rodish,Gradash,Erart,Purbag,Pralo,Grigar,Badush,Priurk,Rink,Puurk,Vonak,"
+"Eradish,Vridash,Podush,Pruurk,Pronk,Hiol,Gushnak,Gugdish,Hashnak,Eragor,"
+"Rarbag,Gagdush,Granak,Budush,Vilg,Hort,Pulg,Gaol,Podash,Punak,Gogdush,Porg,"
+"Pogdish,Prigar,Gushnak,Prarbag,Gagar,Bogor,Gogdish,Eranak,Gralo,Palg,Virag,"
+"Grishnak,Rank,Hing,Grak,Pirbag,Prarag,Virag,Hink,Buk,Burg,Prodish,Prashnak,"
+"Ragar,Purag,Bugdish,Vigdish,Grogdish,Huol,Hank,Gruurk,Rak,Rudash,Ginak,Huol,"
+"Erigdush,Vraurk,Prool,Pragor,Grirag,Vishnak,Grorg,Eronk,Vraurk,Erishnak,"
+"Erunk,Bilo,Hodush,Vrork,Eriurk,Vrarbag,Hagar,Vorg,Pidush,Pigdish,Bidush,"
+"Prashnak,Virag,Bunk,Vrurg,Hong,Rik,Hirg,Rushnak,Gink,Hadish,Vilo,Vrork,Rak,"
+"Huk,Ronak,Vrulg,Vilg,Rogdish,Prodash,Erirt,Gragar,Gigor,Burag,Priol,Rodush,"
+"Rirg,Vruurk,Barag,Podish,Vunak,Hork,Grilg,Bogdish,Vadash,Raurk,Puurk,Rark,"
+"Ronak,Grogar,Hashnak,Bink,Grodish,Hidish,Bagar,Erinak,Vrugdush,Rarag,"
+"Eragdish,Hirag,Vrolo,Hogor,Erirbag,Vruol,Gulg,Pralo,Hogar,Hadush,Budush,"
+"Hadash,Gigor,Goshnak,Hugor,Hudash,Biol,Vrurg,Pradish,Pralg,Bilg,Vrart,Prunak,"
+"Prigdish,Vrung,Vrugdush,Grudash,Ging,Puk,Graol,Prigor,Buurk,Pagdish,Hirg,"
+"Prang,Eragor,Gralg,Prart,Vrolo,Prark,Pashnak,Pradish,Vilg,Pulo,Gunak,Paol,"
+"Gridash,Erirag,Bart,Burag,Vrinak,Vushnak,Prilo,Vragor,Rigor,Bung,Prourk,"
+"Vrork,Burg,Erugdush,Bogdish,Prurg,Prigor,Binak,Vadish,Grilo,Ruol,Vrodish,"
+"Pinak,Pradish,Eragor,Higdush,Parag,Pink,Vrong,Port,Bok,Porbag,Grilo,Bung,"
+"Grugar,Rak,Gulo,Grork,Bik,Grodish,Polg,Pung,Grarbag,Vurg,Vurbag,Pung,Prolo,"
+"Voshnak,Ruk,Vigdish,Vradash,Vrarg,Gong,Gragor,Varbag,Erogdush,Erorbag,Bidish,"
+"Prirt,Hadush,Rirk,Vrurt,Hing,Gronk,Rung,Girt,Gronk,Vigar,Prugar,Raol,Eronk,"
+"Hurk,Purg,Hilg,Vrudish,Grurk,Gigor,Grurg,Polg,Erurag,Erudush,Vadush,Vrulg,"
+"Varag,Huurk,Vadush,Grok,Rank,Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,"
+"Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 
 #: data/names.cfg:21
 msgid ""
@@ -4456,6 +4723,70 @@ msgid ""
 "Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
 "Pelaithil,Gomaithsol,Augaithsil"
 msgstr ""
+"Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,Trithaithus,"
+"Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,Augaithing,Anthaas,"
+"Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,Trithdurol,Glamcatil,Augthail,"
+"Trithduril,Dulthalos,Glamthasol,Aldrsol,Glamaithol,Glamalil,Analus,Nardril,"
+"Augating,Dulaithsol,Aldrlos,Alalus,Aigcatsol,Ancatas,Trithdris,Pelatol,"
+"Aigthasil,Anthais,Narcatis,Trithatil,Aigaithing,Althail,Trithaithil,"
+"Naraithol,Duldrlos,Gomatas,Alcatis,Naraithsil,Althalos,Aigdursol,Glamalsil,"
+"Nardrus,Aigalis,Aldurlos,Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,"
+"Glamthaas,Dulcatsol,Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,"
+"Peldrsol,Pelalsol,Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,"
+"Augdris,Anthasol,Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,"
+"Pelalis,Gomatlos,Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,"
+"Gomcatil,Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
+"Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
+"Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,Trithdring,"
+"Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,Dulaithlos,"
+"Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,Trithcatlos,"
+"Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,Aldurol,Aigatsil,"
+"Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,Althaol,Aldrsol,"
+"Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,Glamthaol,Ancatus,"
+"Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,Naraithsil,Aldris,"
+"Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,Aigdurlos,Aigaithol,"
+"Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,Anthaing,Aigcatis,"
+"Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,Gomdursil,Nardras,"
+"Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,Anatol,Augdrsil,"
+"Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,Augaling,Alating,Glamatil,"
+"Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,Gomdursol,Naraithus,"
+"Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,Aigduras,Nardrol,Nardurol,"
+"Pelalil,Gomalil,Aigatis,Analil,Dulthaus,Gomaithil,Alduras,Trithduril,Ancatol,"
+"Alduras,Pelduril,Narcatsol,Pelating,Dulcatsil,Augatol,Glamthasil,Gomthasol,"
+"Naraithsil,Alatsil,Dulcatol,Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,"
+"Trithatas,Aigthais,Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,"
+"Gomdras,Naraithsol,Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,"
+"Gomating,Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
+"Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
+"Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,Augcatsil,"
+"Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,Pelaling,"
+"Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,Augthalos,"
+"Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,Triththail,"
+"Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,Glamalsil,"
+"Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,Dulatsol,Naralus,"
+"Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,Naraithil,Aigatsil,"
+"Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,Pelcatlos,Glamduris,"
+"Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,Pelthasil,Gomatis,Aldril,"
+"Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,Narduras,Dulaithlos,Duldris,"
+"Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,Anduril,Alaithol,Aigalis,"
+"Trithaithas,Aigcatil,Trithaithil,Naraithing,Augatsol,Trithaithol,Dulalsil,"
+"Dulthasol,Glamcatas,Glamthaol,Gomaithsol,Dulaithing,Naratlos,Naraithol,"
+"Gomthasol,Ancatas,Aigcatsil,Pelduris,Trithdrus,Andurus,Trithdring,Glamthaas,"
+"Aigcating,Nardrsol,Glamaithol,Dulaithsol,Althaus,Augduras,Aigaithas,"
+"Gomdurlos,Glamalus,Gomdrsil,Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,"
+"Glamaling,Dulduras,Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,"
+"Trithduring,Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,"
+"Naratlos,Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
+"Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
+"Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
+"Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
+"Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
+"Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
+"Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,Glamcatil,"
+"Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,Narcatis,"
+"Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,Aigatsil,"
+"Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
+"Pelaithil,Gomaithsol,Augaithsil"
 
 #: data/names.cfg:25
 msgid ""
@@ -4467,6 +4798,13 @@ msgid ""
 "Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
 "Klez,Zlek,Trixzed"
 msgstr ""
+"Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
+"Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
+"Brassas,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,Sassalia,"
+"Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,Grissilai,"
+"Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,Zsekp,Kzap,"
+"Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
+"Klez,Zlek,Trixzed"
 
 #: data/names.cfg:26
 msgid ""
@@ -4477,6 +4815,12 @@ msgid ""
 "Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
 "Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 msgstr ""
+"Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,Saxrireii,"
+"Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,Vilail,Aleiss,"
+"Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,Ineii,Inaloss,"
+"Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,Slell,Soill,Sorkol,"
+"Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
+"Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 
 #: data/names.cfg:30
 msgid ""
@@ -4493,6 +4837,18 @@ msgid ""
 "Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,Boladrumbadrum,"
 "Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 msgstr ""
+"Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
+"Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
+"Munnamdulbon,Monlamwimdan,Dulwulmendom,Delmduelmdelom,Mundionalafla,"
+"Laffalialomdium,Rithramcamhan,Bregalad,Orofarnië,Lassemista,Carnimirië,"
+"Tumtonnongatum,Tumtentantarun,Tantondernintan,Bombempomgontor,"
+"Pomtamkomtrobum,Brommantendronnor,Dammantongonnur,Brumennarunom,"
+"Dumdumdumatum,Tumtumgamtomtom,Tondenkontenkon,Bumbadadabum,Dabumdabumtam,"
+"Bomtanbomkenton,Bomtanbomtonum,Brumbendublun,Brenbasnudnem,Temtunnongetem,"
+"Debundbemun,Diblembumnde,Bremdebubde,Pambedrumne,Drongnoblemdu,Bludebalmen,"
+"Temtundembenn,Lefnublemdde,Libleddnumm,Mundumblemdum,Brendumadoak,"
+"Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,Boladrumbadrum,"
+"Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 
 #: data/names.cfg:34
 msgid ""
@@ -4503,6 +4859,12 @@ msgid ""
 "Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
 "Urkar"
 msgstr ""
+"Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,Markaak,"
+"Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,Kingrok,"
+"Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,Borkuk,Orkut,"
+"Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,Kramak,Goruk,Krog,"
+"Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
+"Urkar"
 
 #: data/names.cfg:38
 msgid ""
@@ -4511,6 +4873,10 @@ msgid ""
 "Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
 "Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
+"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
+"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
+"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
+"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/names.cfg:42
 msgid ""
@@ -4525,6 +4891,16 @@ msgid ""
 "Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
 "Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 msgstr ""
+"Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
+"Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,Anexir,"
+"Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,Jezzix,"
+"Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,Flixta,"
+"Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,Xartrez,"
+"Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,Hesz,Xasz,"
+"Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,Ssorix,Ssexur,"
+"Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,Lixeez,Sklizle,"
+"Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
+"Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 
 #: data/names.cfg:46
 msgid ""
@@ -4538,6 +4914,15 @@ msgid ""
 "Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
 "Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 msgstr ""
+"Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
+"Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
+"Garadin,Krall Ohn,Merkush,Gridda,Garlan,Græt Ihn,Ka,Karron,Markinos,Gashöl,"
+"Grenn ohn,Gegchi,Gadé Ihn,Marrito,Grelnit,Kraslar,Marritos,Kran Kor,Kerath "
+"Kor,Kerath Ihn,Galsh,Garrutin,Gray,Garlin ohn,Merritos Gark,Gark,Gelknick,"
+"Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
+"Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
+"Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
+"Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 
 #: data/names.cfg:47
 msgid ""
@@ -4545,6 +4930,9 @@ msgid ""
 "Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
 "Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 msgstr ""
+"Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin Ka,"
+"Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
+"Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 
 #: data/names.cfg:51
 msgid ""
@@ -4585,14 +4973,13 @@ msgstr "2P - ブリッツ"
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid " Recommended setting of 2 gold per village."
-msgstr "2対2用の小さいマップ。 村あたり 2ゴールドの設定を推奨。"
+msgstr " 村あたり 2 ゴールドの設定を推奨。"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "特に早いプレー用の決闘マップ。"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:22
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
@@ -4771,7 +5158,6 @@ msgstr ""
 "(Turin がここに記す)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:136
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4785,8 +5171,8 @@ msgstr ""
 "は、 オーク族に急襲を仕掛けるためにこの邪悪な地にやってきた。 汚れた生物にい"
 "つの間にか捕らえられ、彼の仲間の多くが殺された。 しかし彼は果敢に戦い、敵の多"
 "くを倒した。 しかしなんということか！ 汚れたバジリスクが彼を石に変えてしまっ"
-"た。彼が最後のオークを倒したというのに。 こうしてかつて彼が非常に強かったこと"
-"の固い証として残されているだけである。\n"
+"た。彼が最後のオークを倒したまさにそのときに。 こうしてかつて彼が非常に強かっ"
+"たことの固い証として残されているだけである。\n"
 "(Fynmiir がここに記す)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:147
@@ -4823,7 +5209,6 @@ msgstr ""
 "(エルフの略奪者がここに記す)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -4843,8 +5228,8 @@ msgstr ""
 "Eloralduil に殺されたバジリスクの長老である。 伝説によれば、 その武器はまさに"
 "この湖 （Ruaskkolin湖。 ここを本拠地にしていた 有名なシーサーパントの名前か"
 "ら とられた） の底のどこかにあると言われている。 彼がサーペントとの 戦いの準"
-"備をしていたとき、 Rilhon に 2 つのより大きな驚くべきことが起こった。 ひとつ"
-"はサーペント Ruaskkolin が石化していたことだった。 もうひとつはまさに生きてい"
+"備をしていたとき、 Rilhon にたいへん驚くべきことがふたつ起こった。 ひとつは"
+"サーペント Ruaskkolin が石化していたことだった。 もうひとつはまさに生きてい"
 "る Chak'kso Ney'yks であり、 とても奇妙なことに、彼のすべての歯はそろっていた"
 "のだ。\n"
 "(Paterson がここに記す)"
@@ -4892,32 +5277,27 @@ msgid "2p - Cynsaun Battlefield"
 msgstr "2P - Cynsaun の戦場"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid " Recommended settings of 150 gold and 1 gold per village."
-msgstr "2対2用の小さいマップ。 村あたり 2ゴールドの設定を推奨。"
+msgstr " 150 ゴールドと村あたり 1 ゴールドの設定を推奨。"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr ""
 "この広大な前線には征服すべきところがたくさんある。 最高に大規模な決闘が好きな"
-"プレイヤーのためにデザインされている。 所持金 150 ゴールドと、村あたり 1 ゴー"
-"ルドの設定を推奨。"
+"プレイヤーのためにデザインされている。"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
 msgstr "2P - オニスの巣窟"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet."
 msgstr ""
-"この地下戦場では各コーナーに危険が潜む、力とごまかしが出会う戦闘マップ。 村あ"
-"たり2ゴールドの設定を推奨。"
+"この地下戦場では各コーナーに危険が潜む、力とごまかしが出会う戦闘マップ。"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
@@ -4925,39 +5305,32 @@ msgstr "2P - 小集落"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
-msgstr ""
-"戦争が、平和な地域の農村を巧妙に区画された戦地へと変えてしまう。 村あたり2"
-"ゴールドの設定を推奨。"
+msgstr "戦争が、平和な地域の農村を巧妙に区画された戦地へと変えてしまう。"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
 msgstr "2P - ネコザメ島"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
 "プレイヤーはこの小さいが地形的に密集した島の分散した地形を進まなければならな"
-"い。 村あたり2ゴールドの設定を推奨。"
+"い。"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
 msgstr "2P - 流星湖"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region."
-msgstr ""
-"その昔天から落ちた巨大な流星が、この針葉樹地帯に痕跡を残した。 村あたり2ゴー"
-"ルドの設定を推奨。"
+msgstr "その昔天から落ちた巨大な流星が、この針葉樹地帯に痕跡を残した。"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:18
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:18
@@ -5001,52 +5374,47 @@ msgid "2p - Sablestone Delta"
 msgstr "2P - セーブルストーンの三角州"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
-"2つの軍隊が、この隔たれた隠された洞窟とぎざぎざの川の沿岸地形の上で衝突す"
-"る。 村あたり 2ゴールドの設定を推奨。"
+"2つの軍隊が、この隔たれた隠された洞窟とぎざぎざの川の沿岸地形の上で衝突する。"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
 msgstr "2P - シルバーヘッドの十字路"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
-"プレイヤーは、この多面の戦闘マップにおける勝利を求めて、 全ての種類の地形を通"
-"過していかなければならない。 村あたり2ゴールドの設定を推奨。"
+"プレイヤーは、この多面の決闘マップにおける勝利を求めて、 全ての種類の地形を通"
+"過していかなければならない。"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "状態"
+msgstr "像"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "これは石で作られた彫像だ。"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
 msgstr "2P - サラスの廃墟"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:34
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
 "海に飲まれ冬の力にいためつけられ、 今ではただ廃墟と海と氷のみが かつての大帝"
-"国の面影に残っている。 村あたり2ゴールドの設定を推奨。"
+"国の面影に残っている。"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Sulla の像"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:74
 msgid ""
@@ -5056,38 +5424,42 @@ msgid ""
 "Leveling Flame, Sulla the Incinerator, Sulla the Proud and Sulla the "
 "Righteous."
 msgstr ""
+"偉大なる Sulla に似せた石像である。彼女は公正なる Sulla、暴君なる Sulla、沈み"
+"ゆく塔の女帝、気性の激しい Gales の子孫、歩く氷河のような女性、燃え盛る波動の"
+"持ち主、冷静なる炎の女王、焼却の Sulla、高慢なる Sulla、正義の Sulla としても"
+"知られている。"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Lhun-dup の像"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Sulla の家来、Lhun-dup に似せた石像である。"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Ri-nzen の像"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Sulla の家来、Ri-nzen に似せた石像である。"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Ten-zin の像"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Sulla の家来、Ten-zin に似せた石像である。"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Lo-bsang の像"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Sulla の家来、Lo-bsang に似せた石像である。"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -5165,44 +5537,38 @@ msgid "3p - Island of the Horatii"
 msgstr "3P - Horatiiの島"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
 "中央の島を統制することが、この21x21ヘクスの3人プレイ用フリーマップでの勝利の"
-"鍵となる。 村あたり2ゴールドの設定を推奨。 "
+"鍵となる。"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "3P - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr ""
-"このはっきりと境界づけられた3人プレイ用マップから、ただ一つの党派のみが勝利を"
-"つかむことができる。 村あたり2ゴールドの設定を推奨。"
+"このはっきりと境界づけられた3人プレイ用マップの中で、ただ一つの党派のみが勝利"
+"をつかむことができる。"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
 msgstr "3P - トリプルブリッツ"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid "Three players come head to head on this water-cut battlefield."
-msgstr ""
-"この水で分けられた戦場で3人のプレイヤーが顔を突き合わせる。 村あたり 2ゴール"
-"ドの設定を推奨。"
+msgstr "この水で分けられた戦場で3人のプレイヤーが顔を突き合わせる。"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
 msgstr "4P - 碧海地方"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -5211,7 +5577,7 @@ msgid ""
 msgstr ""
 "碧海地方では二十何回も破壊と再建が繰り返されてきたと言われる。 今、この小さな"
 "地方の岩がちな流れと雪の積もった山において再び軍隊が結集しているが、村人達は"
-"気づいていないようだ。 村あたり 2ゴールドの設定を推奨。"
+"気づいていないようだ。"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:18
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:48
@@ -5248,11 +5614,8 @@ msgid "4p - Castle Hopping Isle"
 msgstr "4P - 島越えの城"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
-"2つの軍隊が、この隔たれた隠された洞窟とぎざぎざの川の沿岸地形の上で衝突す"
-"る。 村あたり 2ゴールドの設定を推奨。"
+msgstr "中央の島で戦っている間は城から城へと動き回れ。"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
@@ -5260,19 +5623,17 @@ msgstr "4P - 衝突"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "2 対 2 のための小さなマップ。"
 
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:3
-#, fuzzy
 msgid "4p - Hamlets"
-msgstr "2P - 小集落"
+msgstr "4P - 小集落"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
 msgstr "4P - Isar の十字"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -5314,19 +5675,16 @@ msgstr "4P - 丘の王"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
-msgstr "2対2用の小さいマップ。 村あたり 2ゴールドの設定を推奨。"
+msgstr " 150 ゴールドでの開始と村あたり 2 ゴールドの設定を推奨。"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "中央の主塔の周辺を統制することが、この36x36の4人プレイ用フリーマップでは非常"
-"に有益となる。 2対2でも同様に楽しめる。 36の村がある。 村あたり2ゴールドの設"
-"定を推奨。"
+"に有益となる。 2対2でも同様に楽しめる。 36の村がある。"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:29
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:34
@@ -5353,87 +5711,73 @@ msgstr "4P - ラグーン"
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid " Recommended setting of 1 gold per village."
-msgstr "2対2用の小さいマップ。 村あたり 2ゴールドの設定を推奨。"
+msgstr " 村あたり 1 ゴールドの設定を推奨。"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid "Four factions contend for dominance over this watery settlement."
-msgstr ""
-"4つの党派がこの水がちな居留地の支配を求めて争う。 村あたり 1ゴールドの設定を"
-"推奨。"
+msgstr "4つの党派がこの水がちな居留地の支配を求めて争う。"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
 msgid "4p - Loris River"
 msgstr "4P - Loris 川"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
 "25x25 の 2 対 2 のマップで中央に川があり、反対側の角に主塔がある。 1 と 4 対 "
-"2 と 3 でプレイするようデザインされている。 28 個の村がある。村あたり 2 ゴー"
-"ルドを推奨。"
+"2 と 3 でプレイするようデザインされている。 28 個の村がある。"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
 msgstr "4P - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
-"この危険な戦場の境界から誰が抜け出せるだろう？ 村あたり 2 ゴールドの設定を推"
-"奨。"
+msgstr "この危険な戦場の境界から誰が抜け出せるだろう？"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
 msgstr "4P - 敵意の通り道"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr "2対2用の小さいマップ。 村あたり 2ゴールドの設定を推奨。"
+msgstr " 村あたり 2 ゴールドの設定を推奨。28 の村がある。"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
 "35x27 で 2 対 2 のマップ。 交戦には 5 つの別々の通り道がある。 東軍 対 西軍"
 "（1 と 4 対 2 と 3）でプレイするように調整されているが、どんなチーム戦でもフ"
-"リーでも楽しめる。 村あたり 2 ゴールド。28 つの村。"
+"リーでも楽しめる。"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4P - 城壁包囲"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 "40x30 の 4 プレイヤー用マップ。 4 つの巨大な城が 2 つの川の合流点で向かい合っ"
-"ている。 2 対 2 あるいはフリー対戦に使うとよい。 およそ 45 の村がある。村あた"
-"り 2 ゴールドを推奨。"
+"ている。 2 対 2 あるいはフリー対戦に使うとよい。 およそ 45 の村がある。"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
 msgstr "4P - ワイルダーランド"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
-#, fuzzy
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 "自然のまま手つかずの荒野の巨大な地域、その地形に森林と洞窟と川と古代の要塞の"
-"廃墟が点在する。 村あたり 1ゴールドの設定を推奨。"
+"廃墟が点在する。"
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
@@ -5448,28 +5792,26 @@ msgid "6p - Amohsad Caldera"
 msgstr "6P - Amohsad のカルデラ"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head."
 msgstr ""
 "6つの箱詰めにされた軍隊が危機に直面するこの死の狭い戦地では、真の戦略家のみが"
-"生き残るであろう。村あたり 2ゴールドの設定を推奨。"
+"生き残るであろう。"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
 msgstr "6P - 十字軍兵士の戦場"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
 "through the mountains, trees and rivers."
 msgstr ""
-"戦いによるときの声が再びこの使い古された戦場に聞こえる。ここには、何千人もの"
-"勇敢な兵士たちの幽霊が浮かんでいる。彼らは目に見えないが、山々、木々、川に存"
-"在している。村あたり 1 ゴールドの設定を推奨。"
+"戦いによるときの声が再びこの使い古された戦場に聞こえる。 ここには、何千人もの"
+"勇敢な兵士たちの幽霊が浮かんでいる。 彼らは目に見えないが、山々、木々、川に存"
+"在している。"
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -5481,27 +5823,25 @@ msgstr "2対2、 あるいは、 3対3のチーム戦。"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6P - Manzivan の罠"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
-#, fuzzy
 msgid ""
 "A 40X20 3 vs. 3 map. The Mazivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
-"とても小さな 2 対 2 のマップ。 非常に接近した戦いになるため、うまくユニットを"
-"交代させ、移動の計画を立てることが重要になる。 チームはプレイヤー 1 と 4 対 "
-"2 と 3（北東 対 南西）に設定されている。 所持金 75 ゴールドでプレイするように"
-"デザインされており、20 の村がある。"
+"40x20 の 3 対 3 のマップ。 Mazivan の罠は地形が難しく紛らわしい領域として広く"
+"知られている。 このため、すぐに適所を外れてしまったり陣形が広がりすぎてしま"
+"う。 チームは 145 対 236 (東軍 対 西軍) に設定されている。 開始時 100 ゴール"
+"ドにデザインされており、33 の村がある。"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
 msgstr "6P - ワーテルローの日没"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
 "avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
@@ -5510,28 +5850,26 @@ msgid ""
 msgstr ""
 "40x30 で 3 対 3 のマップ。 数で圧倒されないようにするため、同盟軍との柔軟な調"
 "整が要求される。 チームはプレイヤー 145 対 236 （北軍 対 南軍）に設定されてい"
-"るが、プレイヤー 146 対 136 の側面でもおもしろい。 所持金 150 ゴールドにデザ"
-"インされており、44 の村がある。"
+"るが、プレイヤー 146 対 136 でもおもしろい。 所持金 150 ゴールドにデザインさ"
+"れており、44 の村がある。"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
 msgstr "8P - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
 msgstr ""
 "チームワークと戦略が、8つの軍隊が最後まで戦うこの異常な戦場における勝利の鍵と"
-"なる。 村あたり 2ゴールドの設定を推奨。"
+"なる。 "
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
 msgstr "9P - 奇妙な愛情"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
-#, fuzzy
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
 "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
@@ -5694,8 +6032,8 @@ msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"このユニットの統率力により、隣接する友好的なユニットは戦闘においてより大きな "
-"ダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
+" このユニットの統率力により、隣接する友好的なユニットは戦闘においてより大き"
+"な ダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
 "す。"
 
 #: data/special-notes.cfg:23
@@ -6452,14 +6790,14 @@ msgid "Pirate Galleon"
 msgstr "海賊ガレオン船"
 
 #: data/units/Boat_Pirate_Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them to "
 "avoid being sunk from overloading..."
 msgstr ""
-"海賊ガレオン船は輸送船であり、品物を満載した船が 重量超過によって 沈むのを防"
-"ぐために 単独でいることはありません。"
+"海賊ガレオン船は輸送船にとって、羊に対する狼のようなものです。貨物を満載した"
+"船は陸地から遠く離れて単独でいるべきではありません。重量超過によって沈むのを"
+"防ぐために……"
 
 #: data/units/Boat_Pirate_Galleon.cfg:19
 #: data/units/Boat_Transport_Galleon.cfg:20
@@ -7204,6 +7542,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"エルフ族の魔法は人間の魔法とはまったく異なっています。このため、人間にはほと"
+"んどその魔法を普遍的に理解することはおろか、使うことすらもできません。同様"
+"に、その魔法を習得している者についても不可解なものです。彼らが彼らの一族に崇"
+"拝されていると言われることはあっても、その社会の中での彼らの実際の役割や目的"
+"について語られることはほとんどありません。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Elvish_Enchantress.cfg:69 data/units/Elvish_Shaman.cfg:67
 #: data/units/Elvish_Sorceress.cfg:76
@@ -7474,6 +7819,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"妖精の世界は物質的な世界よりもはるかに強力です。この世界の何らかのものを我々"
+"の世界にただ持ってくるだけで、恐ろしいことが起こるでしょう。悪意で使用される"
+"ことは滅多にありませんが、エルフ族はこのことをよく理解しています。それは簡単"
+"なことではなく、その力の使い方としては非常に不適切なものです。\n"
+"\n"
+"それができる者たちのことを他の種族から大雑把に「女魔術師」と呼ばれます。そし"
+"て、彼らは確かにその能力を持っています。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
@@ -7488,6 +7842,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"滅多に見られませんが、賢者にも似たシルフは妖精と現世の本質を習得した者です。"
+"彼らは驚くべき、そしてしばしば恐ろしい力を持っていて、その伝説によってエルフ"
+"族は他の種族にかなり恐れられています。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
@@ -7856,16 +8215,14 @@ msgid "Cavalier"
 msgstr "精鋭竜騎士"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
 "their mobility, and such mettle is the subject of tale and song."
 msgstr ""
-"戦場での勝利を呼び込む精鋭竜騎士は馬上での剣とクロスボウの両方の使用法を 習得"
-"しており、彼らの投射武器は彼らの剣を免れた多くの敵に命中します。 歴史上知られ"
-"ている偉大な戦いには、彼らの勇猛さによって、戦いの流れが変わった ものがいくつ"
-"かあります。"
+"戦場での勝利を呼び込む精鋭竜騎士は馬上での剣とクロスボウの両方の使用法を習得"
+"しています。これらの能力が彼らの機動性と組み合わされるととても恐ろしいものに"
+"なります。そしてそのような気質は物語や詩の対象となります。"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:103
 #: data/units/Human_Loyalist_Dragoon.cfg:102
@@ -7959,7 +8316,6 @@ msgid "Fencer"
 msgstr "剣術士"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -7974,16 +8330,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"ほとんどの兵士が戦闘において着用する鎧は彼等自身の最悪の敵であるという 考えを"
-"もつ道場に、剣術士は所属しています。鎧は殴打をやわらげるだけですが、 それを巧"
-"みにかわすことができれば完全に悪影響を打ち消すことができるでしょう。 攻撃的な"
-"動きを頼もしくよけることが可能となれば、ぜいたくは身体に ぴったり合うものだけ"
-"でよくなり、その時は厳格な訓練に耐えられる者のみとなります。\n"
+"剣術士が所属している道場では、ほとんどの兵士が戦闘において着用する鎧は彼等自"
+"身の最悪の敵であるという 考えをもっています。 鎧は殴打をやわらげるだけです"
+"が、 殴打を巧みにかわすことができれば完全に無傷でいられるでしょう。 攻撃的な"
+"動きを確実によけることができれば、その能力こそが身体に身につけられる唯一の贅"
+"沢品となります。 そしてその能力を身につけられるのは厳格な訓練に耐えられる者の"
+"みです。\n"
 "\n"
 "短刀とレイピアのみを装備しているため、剣術士は足取りも軽く、鎧に拘束された 仲"
-"間達が不利となる多くの状況において役に立ちます。彼等は、しばしば文字通り 踊り"
-"ながら、重歩兵のような部隊の回りを、その全身板金装備に払う代償を 冷やかしなが"
-"ら一回りすることを好みます。\n"
+"間達が不利となる多くの状況において役に立ちます。 彼等は、しばしば文字通り 踊"
+"りながら、重歩兵のような部隊の回りを、その全身板金装備に払う代償を 冷やかしな"
+"がら一回りすることを好みます。\n"
 "\n"
 "特記事項:"
 
@@ -8289,7 +8646,6 @@ msgid "Shock Trooper"
 msgstr "破砕兵"
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:15
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and half of their use in "
 "war is simply a matter of intimidation. The only men who can enter their "
@@ -8354,7 +8710,6 @@ msgid "Mage"
 msgstr "魔術師"
 
 #: data/units/Human_Mage.cfg:24
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -8377,17 +8732,21 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"人間はしばしば自分達の生きている世界の作用について思案します。ある者は、 これ"
-"を無意味な黙想以上のものととらえて、人生の第一の事業と定めようと努力 します。"
-"魔術師は研究に何年も費やして、彼等をかけ離れたものにする知識の全てを 貯えてき"
-"ました。読み書きできる者がほとんどいない世界では、こういった男女は 知識の追及"
-"に完全に傾倒してきました。彼等の階級は、有望な貴族の子供達か、 肉体労働の人生"
-"によって生じる知的空虚感からの脱出を求める者達で、 満たされています。\n"
+"人間はしばしば自分達の生きている世界の作用について思案します。 ある者は、 こ"
+"れを無意味な黙想以上のものととらえて、人生の第一の事業と定めようと努力 しま"
+"す。 魔術師は研究に何年も費やして、彼等をかけ離れたものにする知識の全てを 貯"
+"えてきました。 読み書きできる者がほとんどいない世界では、こういった男女は 知"
+"識の追及に完全に傾倒してきました。 彼等の階級は、有望な貴族の子供達か、 肉体"
+"労働の人生によって生じる知的空虚感からの脱出を求める者達で、 満たされていま"
+"す。\n"
 "\n"
 "皮肉にも、彼等が蓄積した知識とそれに対する謙遜した独占により、魔術師の 集団組"
-"織は社会を支配できそうでしたし、試みようとしてきました。しかしながら 彼等の真"
-"の愛は金でも力でもなく、魔術師の研究をそのような終わりの手段だと みなす者は、"
-"真の熟達が必要であるという大切な確信をしばしば欠いています。\n"
+"織は社会を支配できそうでしたし、試みようとしてきました。 しかしながら 彼等の"
+"真の愛は金でも力でもなく、魔術師の研究をそのような終わりの手段だと みなす者"
+"は、 真の熟達が必要であるという大切な確信をしばしば欠いています。\n"
+"\n"
+"身体的に弱く、戦闘に慣れていませんが、魔術師は戦闘において大変有用なある種の"
+"魔法を使うことができます。\n"
 "\n"
 "特記事項:"
 
@@ -8400,7 +8759,6 @@ msgid "Arch Mage"
 msgstr "熟練魔術師"
 
 #: data/units/Human_Mage_Arch.cfg:21
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -8417,13 +8775,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"熟練魔術師の称号はそれに見合うだけの一生をかけた研究と業績の後でのみ 贈られ"
-"る。熟練魔術師はしばしば教育の地位か、彼等の知恵の成果を求めるほど 賢い者達へ"
-"の顧問として雇われます。\n"
-"多くの場合は、裕福な後援者か、もうけの多い企業で、ひっきりなしの仕事や 助言か"
-"ら離れて、その魔法使いは妨げられることなく研究に従事することになります。\n"
-"またある者は、文明を避け隠匿者として、しばしば多くの人達がまゆをしかめそうな "
-"ことの研究に時を費やします。\n"
+"熟練魔術師の称号はそれに見合うだけの一生をかけた研究と業績の後でのみ 贈られる"
+"ものです。 熟練魔術師はしばしば教育の地位か、彼等の知恵の成果を求めるほど 賢"
+"い者達への顧問として雇われます。 多くの場合は、裕福な後援者か、もうけの多い企"
+"業で、ひっきりなしの仕事や 助言から離れて、その魔法使いは妨げられることなく研"
+"究に従事することになります。 このことが人間の知識の大部分に流れています。 科"
+"学や哲学、世界中に美を提供する芸術といった知識に。\n"
 "\n"
 "戦闘に関してはどのような訓練も受けていませんが、必要があれば熟練魔術師は  容"
 "易には対処できない彼等の術を最大限の力まで解放することができます。\n"
@@ -8467,7 +8824,6 @@ msgid "Red Mage"
 msgstr "赤魔術師"
 
 #: data/units/Human_Mage_Red.cfg:21
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice, and given the ruddy cloak of a master. "
@@ -8484,16 +8840,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"見習いの期間を無事終えると、魔術師は見習いの青いローブを脱ぎ、師匠から 赤い"
-"ローブを与えられます。この変化の意味はしばしば農民階級では失われていて、 間"
-"違って熟練魔術師を「赤魔術師」と呼んでいます。同様に、色の変化の象徴的意味は "
-"しばしば魔術師の何もないところから火を作り出す能力を意味するものだと誤解され"
-"ます。 このトリックはまぎれもなく有用ですが、彼らが苦労して手に入れた知恵の "
-"応用として見られます。\n"
+"見習いの期間を無事終えると、魔術師は見習いの茶色のローブを脱ぎ、師匠から 赤い"
+"ローブを与えられます。 この変化の意味はしばしば農民階級では失われていて、 間"
+"違って熟練魔術師を「赤魔術師」と呼んでいます。 同様に、色の変化の象徴的意味"
+"は しばしば何もないところから火を作り出す魔術師の能力を意味するものだと誤解さ"
+"れます。 このトリックはまぎれもなく有用ですが、彼らが苦労して手に入れた知恵"
+"の おろかな利用と見なされています。\n"
 "\n"
-"身体的に弱く、戦士として鍛えられていませんが、「赤魔術師」はいくつかの トリッ"
-"クを用意しています。これには、彼らの口語的な名前と結びつけられた火の 塊も含ま"
-"れています。\n"
+"体力的には弱く、戦士として鍛えられていませんが、「赤魔術師」はいくつかの ト"
+"リックを用意しています。 これには、彼らの口語的な名前と結びつけられた火の 塊"
+"も含まれています。\n"
 "\n"
 "特記事項:"
 
@@ -8502,7 +8858,6 @@ msgid "Silver Mage"
 msgstr "銀魔術師"
 
 #: data/units/Human_Mage_Silver.cfg:24
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -8645,7 +9000,6 @@ msgid "Assassin"
 msgstr "暗殺者"
 
 #: data/units/Human_Outlaw_Assassin.cfg:21
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -8657,11 +9011,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "盗賊の中でも最も偉大な者達は犠牲者の所持品よりもはるかに大きな物を奪う 仕事を"
-"与えられます。\n"
-"ナイフ戦と超人的に軽い忍び足の達人として、このおそろしい人影は犠牲者の 命を静"
-"かに奪うために、遠くから投げつけられる毒のナイフや背後から、背後から 突き立て"
-"られる短剣など、いかなる手段をも用います。夜間は致命的ですが、 こういった暗殺"
-"者は明るい太陽の下で戦うのはいくぶん苦手です。\n"
+"与えられます。 ナイフ戦と超人的に軽い忍び足の達人として、このおそろしい人影は"
+"犠牲者の 命を静かに奪うために、 遠くから投げつけられる毒のナイフや背後から、"
+"背後から 突き立てられる短剣など、いかなる手段をも用います。 夜間は致命的です"
+"が、 こういった暗殺者は明るい太陽の下で戦うのはいくぶん苦手です。\n"
 "\n"
 "特記事項:"
 
@@ -8735,6 +9088,13 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"戦士として鍛えられてはいませんが、狩人が持つ能力、特に弓の能力は戦闘において"
+"有用です。この能力を彼らの仲間の人間に対して使うことがいろいろな理由から起こ"
+"りえます。彼らが実際に傭兵か自警団かに関わらず。どんな山賊のグループも数人の"
+"密猟者を雇う必要があるでしょう。彼らは周辺の農地から夕食を集めてきます。そし"
+"てしばしば、彼らは本格的な戦いにおいて手を貸します。\n"
+"\n"
+"彼らの経験によって、狩人は夜間、森や沼地において非常に有能です。"
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
@@ -8823,6 +9183,14 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"熟練した森の住人はどんな軍隊においても役に立つ仲間です。 また、大規模な山賊の"
+"グループにおいては不可欠な存在です。 彼らは人間と獣の双方を追跡することがで"
+"き、他の者は見過ごしてしまうようなことにも気がつきます。 そして、彼らはしばし"
+"ば食料を見つけることができる唯一の存在です。 それが動物か果物かにかかわら"
+"ず。\n"
+"\n"
+"彼らの狩猟能力は戦闘においてとても有用です。また、その能力のおかげで、夜間、"
+"森や沼地の中で非常に有能です。"
 
 #: data/units/Human_Peasant.cfg:3
 msgid "Peasant"
@@ -9615,6 +9983,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"トカゲ族は素早く、彼らの敵を困らせような地形を進むのが非常に得意です。 経験や"
+"強さ、装備を得れば、彼らの戦士は戦闘において特に脅威となるでしょう。 というの"
+"は、彼らを閉じ込めることは他の敵よりも非常に難しいからです。 防具をつけていて"
+"も、トカゲの戦士は敵の前線の最も小さな隙間をたくみに利用し、 敵に過ちを後悔さ"
+"せる優れた能力を持っています。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
@@ -9628,6 +10003,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"トカゲ族は人間が魔法と呼んでいる何らかの能力を持っています。 そのひとつは占い"
+"を思わせるもので、すべて不快な魔術です。 それはたいしたことのないものと理解さ"
+"れるかもしれませんが、それを使われるものにとっては恐怖と見なされます。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -9643,6 +10023,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"トカゲの戦士はたいてい、エルフ族や人間の戦士よりも体格的に弱いです。もちろん"
+"これは相対的な話であり、彼らはそれでも相当強力です。彼らがもともと持っている"
+"機動性をまったく失っていないのですから。これは戦闘においてとても危険です。な"
+"ぜなら、敵が不注意でいると、彼らの支援部隊の側面からすぐにこの生物の攻撃を受"
+"けることになってしまうからです。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
@@ -9659,6 +10046,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"一部のトカゲ族は、重要な王権の象徴として、頭からつま先まで、塗料と入れ墨で描"
+"かれた恐ろしい、秘密の形や模様に覆われています。ある者は彼らを空想家、あるい"
+"は彼らの種族の中の神官だろうと考えています。しかし、彼らが持っている「社会的"
+"な」機能がなんであれ、彼らはまぎれもなく強力です。彼らの種族の持つ奇妙な魔法"
+"のために。そして彼らはいつでも警戒すべき存在です。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
@@ -9677,6 +10071,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"トカゲ族は体格がとても小さく、そのためにいくぶん弱いのですが、彼らは大変機敏"
+"です。 戦闘においては、その大きさのおかげで、人間の大人も寄せつけないような防"
+"御を素早く通り抜けることができます。 これにより、彼らに対処する者にとって油断"
+"のならない敵となっています。\n"
+"\n"
+"彼らは槍を好みます。 それは彼らの強力な後ろ足によって大きなダメージを与えるた"
+"めの十分な力を槍に与えることができるからです。 槍を手に持って使うかにしても、"
+"投げるにしても。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
@@ -9691,6 +10095,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"トカゲ族はある奇妙な能力を持っていることが知られています。その能力は不思議で"
+"神秘的な技術です。彼らの一部は一種の薬品の扱いに特に長けているのは明らかで"
+"す。戦闘に巻き込まれたときにはいつでも、薬はすばらしい利益となります。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -10541,13 +10950,11 @@ msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
 #: src/actions.cpp:2074
-#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見"
 
 #: src/actions.cpp:2076
-#, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！"
@@ -10555,17 +10962,16 @@ msgstr[0] "敵ユニット発見！"
 #: src/actions.cpp:2080
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
+msgstr[0] "Part of 'ユニット発見！ (...)' sentence^1 friendly"
 
 #: src/actions.cpp:2081
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
+msgstr[0] "Part of 'ユニット発見！ (...)' sentence^1 enemy"
 
 #: src/actions.cpp:2082
-#, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "ユニットを発見！ (仲間$friends、敵$enemies )"
+msgstr "ユニットを発見！ ($friendphrase、$enemyphrase )"
 
 #: src/actions.cpp:2090
 msgid "(press $hotkey to continue)"
@@ -11025,12 +11431,11 @@ msgstr "必要経験値: "
 
 #: src/help.cpp:1170
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "攻撃"
 
 #: src/help.cpp:1177
-#, fuzzy
 msgid "unit help^Name"
-msgstr "ゲームを終了します"
+msgstr "名前"
 
 #: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:708
 msgid "Type"
@@ -11238,7 +11643,7 @@ msgstr "統計情報"
 
 #: src/menu_events.cpp:236
 msgid "unit list^Traits"
-msgstr ""
+msgstr "特性"
 
 #: src/menu_events.cpp:237 src/unit.cpp:2580
 msgid "Moves"
@@ -11272,7 +11677,7 @@ msgstr "村の数"
 
 #: src/menu_events.cpp:302
 msgid "status^Units"
-msgstr ""
+msgstr "ユニット"
 
 #: src/menu_events.cpp:303
 msgid "Upkeep"
@@ -11334,7 +11739,6 @@ msgid "Send to allies only"
 msgstr "同盟者にのみ送る"
 
 #: src/menu_events.cpp:588
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "ゴールド"
@@ -11380,10 +11784,9 @@ msgid "Recall"
 msgstr "召還"
 
 #: src/menu_events.cpp:760
-#, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "１ユニット召還するのに 少なくとも $cost ゴールド必要です。"
+msgstr[0] "１ユニット召還するのに 少なくとも 1 ゴールド必要です。"
 
 #: src/menu_events.cpp:1083
 msgid ""
@@ -11499,9 +11902,8 @@ msgid "Defender"
 msgstr "防御側"
 
 #: src/mouse_events.cpp:209
-#, fuzzy
 msgid "Expected Battle Result (HP)"
-msgstr "想定される戦闘結果 (hp)"
+msgstr "想定される戦闘結果 (HP)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
@@ -11998,14 +12400,12 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "このシナリオのリプレイを保存しますか？"
 
 #: src/playcampaign.cpp:334
-#, fuzzy
 msgid "Receiving data..."
-msgstr "ゲームデータ入手中..."
+msgstr "データ受信中..."
 
 #: src/playcampaign.cpp:336
-#, fuzzy
 msgid "Downloading next scenario..."
-msgstr "次のレベルをダウンロード中..."
+msgstr "次のシナリオをダウンロード中..."
 
 #: src/playcampaign.cpp:421
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
@@ -12157,15 +12557,14 @@ msgid "stone: "
 msgstr "石化: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "総ダメージ"
+msgstr[0] "ダメージ"
 
 #: src/reports.cpp:256
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] ""
+msgstr[0] "攻撃"
 
 #: src/reports.cpp:266
 msgid "weapon range: "
