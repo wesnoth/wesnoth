@@ -182,7 +182,7 @@ const int BUILDER_SHIFT = 8;
 // defined here. The other masks are only used without
 // other functions knowing their value, so they're not
 // defined here
-const t_letter WILDCARD_NONE = 0xFFFFFFFFFFFFFFFFLL;
+const t_letter WILDCARD_NONE = 0xFFFFFFFFFFFFFFFFi64;
 
 /***************************************************************************************/	
 
@@ -888,8 +888,8 @@ bool match_ignore_layer_(const t_letter& src, const t_letter& dest)
 	// our caller makes sure one of the 2 has a wildcard
 	
 	// mask out the part before the caret
-	t_letter src_lo = src & 0x00000000FFFFFFFFLL;
-	t_letter dest_lo = dest & 0x00000000FFFFFFFFLL;
+	t_letter src_lo = src & 0x00000000FFFFFFFFi64;
+	t_letter dest_lo = dest & 0x00000000FFFFFFFFi64;
 
 	// if the part after the caret is 0 in one and all F in the 
 	// other we have our special case
@@ -897,8 +897,8 @@ bool match_ignore_layer_(const t_letter& src, const t_letter& dest)
 			(dest_lo == 0x00000000 && src_lo == 0xFFFFFFFF)) {
 
 		// force both to have a caret
-		src_lo = src & 0xFFFFFFFF00000000LL;
-		dest_lo = dest & 0xFFFFFFFF00000000LL;
+		src_lo = src & 0xFFFFFFFF00000000i64;
+		dest_lo = dest & 0xFFFFFFFF00000000i64;
 
 		// match again
 		return terrain_matches(src_lo, dest_lo);
@@ -954,8 +954,8 @@ t_letter string_to_number_(std::string str, int& start_position)
 	// split on the caret
 	offset = str.find('^', 0);
 	if(offset !=  std::string::npos) {
-		convert_string_to_number_(std::string(str, 0, offset), result);
-		const std::string layer(str, offset + 1);
+		convert_string_to_number_(std::string(str, 0, offset).c_str(), result);
+		const std::string layer(str.c_str(), offset + 1);
 		if(layer == "" ) {
 			// set layer to empty
 			result <<= 32;
@@ -990,14 +990,14 @@ std::string number_to_string_(t_letter terrain, const int start_position)
 	
 	//insert the terrain letter
 	unsigned char letter[8];
-	letter[0] = ((terrain & 0xFF00000000000000LL) >> 56);
-	letter[1] = ((terrain & 0x00FF000000000000LL) >> 48);
-	letter[2] = ((terrain & 0x0000FF0000000000LL) >> 40);
-	letter[3] = ((terrain & 0x000000FF00000000LL) >> 32);
-	letter[4] = ((terrain & 0x00000000FF000000LL) >> 24);
-	letter[5] = ((terrain & 0x0000000000FF0000LL) >> 16);
-	letter[6] = ((terrain & 0x000000000000FF00LL) >> 8);
-	letter[7] =  (terrain & 0x00000000000000FFLL);
+	letter[0] = ((terrain & 0xFF00000000000000i64) >> 56);
+	letter[1] = ((terrain & 0x00FF000000000000i64) >> 48);
+	letter[2] = ((terrain & 0x0000FF0000000000i64) >> 40);
+	letter[3] = ((terrain & 0x000000FF00000000i64) >> 32);
+	letter[4] = ((terrain & 0x00000000FF000000i64) >> 24);
+	letter[5] = ((terrain & 0x0000000000FF0000i64) >> 16);
+	letter[6] = ((terrain & 0x000000000000FF00i64) >> 8);
+	letter[7] =  (terrain & 0x00000000000000FFi64);
 		
 	for(int i = 0; i < 8; ++i) {
 		if(letter[i] != 0 && letter[i] != 0xFF) {

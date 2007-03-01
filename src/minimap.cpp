@@ -64,8 +64,8 @@ surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).symbol_image() + ".png",image::UNSCALED));
 
 					if(tile == NULL) {
-						ERR_DP << "could not get image for terrrain '"
-						          << terrain << "'\n";
+						ERR_DP << "could not get image for terrrain '" 
+							<< output_terrain(terrain) << "'\n";
 						continue;
 					}
 

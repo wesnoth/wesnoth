@@ -2066,7 +2066,7 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 
 	if(movement_costs != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
+			LOG_STREAM(err, config) << "terrain '" << output_terrain(terrain) << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return impassable;
@@ -2147,7 +2147,7 @@ int unit::defense_modifier(t_translation::t_letter terrain, int recurse_count) c
 
 	if(defense != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
+			LOG_STREAM(err, config) << "terrain '" << output_terrain(terrain) << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return 100;

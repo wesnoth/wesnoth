@@ -35,8 +35,12 @@
 // also miss this header add them to the ifdef
 #ifdef _MSC_VER
 #include "stdint/pstdint.h"
+#define output_terrain(Num) ((Uint32)((Num)>>32)) << ((Uint32)(Num))
+//comment this operator<< part out for now, since it doesn't work
+/*ostream& operator << (ostream& os, const uint64_t num);*/
 #else
 #include <stdint.h>
+#define output_terrain(Num) Num
 #endif
 
 namespace t_translation {
