@@ -620,7 +620,7 @@ private:
 	 * @return returns true if "letter" matches the list or the list is empty, else false.
 	 */
 	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_match &terrain) const
-		{ return terrain.terrain.empty()? true : t_translation::terrain_matches(letter, terrain); }
+		{ return terrain.is_empty ? true : t_translation::terrain_matches(letter, terrain); }
 
 	/**
 	 * Checks whether a rule matches a given location in the map.

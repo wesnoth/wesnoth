@@ -65,6 +65,7 @@ namespace t_translation {
 		t_list mask;
 		t_list masked_terrain;
 		bool has_wildcard;
+        bool is_empty;
 	};
 	
 	/** 

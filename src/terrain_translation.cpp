@@ -192,6 +192,7 @@ t_match::t_match(const std::string& str):
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
 	has_wildcard = t_translation::has_wildcard(terrain);
+    is_empty = terrain.empty();
 
 	for(size_t i = 0; i < terrain.size(); i++) {
 		mask[i] = t_translation::get_mask_(terrain[i]);
@@ -205,6 +206,7 @@ t_match::t_match(const t_letter letter):
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
 	has_wildcard = t_translation::has_wildcard(terrain);
+    is_empty = terrain.empty();
 
 	for(size_t i = 0; i < terrain.size(); i++) {
 		mask[i] = t_translation::get_mask_(terrain[i]);
@@ -502,7 +504,7 @@ bool terrain_matches(const t_letter src, const t_list& dest)
 
 bool terrain_matches(const t_letter src, const t_match& dest)
 {
-	if(dest.terrain.empty()) {
+	if(dest.is_empty) {
 		return false;
 	}
 
@@ -516,26 +518,29 @@ bool terrain_matches(const t_letter src, const t_match& dest)
 	bool result = true;
 
 	// try to match the terrains if matched jump out of the loop.
-	for(size_t i = 0; i < dest.terrain.size(); ++i) {
+    int i = -1;
+    t_list::const_iterator end = dest.terrain.end();
+	for(t_list::const_iterator it = dest.terrain.begin(); it != end; it++) {
+        ++i;
 
 		// match wildcard 
-		if(dest.terrain[i] == star) {
+		if(*it == star) {
 			return result;
 		}
 
 		// match inverse symbol
-		if(dest.terrain[i] == inverse) {
+		if(*it == inverse) {
 			result = !result;
 			continue;
 		}
 
 		// full match 
-		if(dest.terrain[i] == src) {
+		if(*it == src) {
 			return result;
 		}
 		
 		// does the source wildcard match
-		if(src_has_wildcard && (dest.terrain[i] & src_mask) == masked_src) {
+		if(src_has_wildcard && (*it & src_mask) == masked_src) {
 			return result;
 		}
 		
@@ -546,8 +551,8 @@ bool terrain_matches(const t_letter src, const t_match& dest)
 		
 		// if one of the 2 has a caret and we use a wildcard in the first part
 		// we fail eg *^ != A without wildcards no problem occurs eg A^ == A
-		if(src_has_wildcard || has_wildcard(dest.terrain[i])) {
-			if(match_ignore_layer_(src, dest.terrain[i])) {
+		if(src_has_wildcard || has_wildcard(*it)) {
+			if(match_ignore_layer_(src, *it)) {
 				return result;
 			}
 		}
@@ -559,7 +564,9 @@ bool terrain_matches(const t_letter src, const t_match& dest)
 
 bool has_wildcard(const t_letter letter) 
 {
-	return has_wildcard(t_list(1, letter));
+    if (get_mask_(letter) != WILDCARD_NONE)
+        return true;
+    return false;
 }
 
 bool has_wildcard(const t_list& list)

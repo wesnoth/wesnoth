@@ -258,7 +258,7 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 	}
 }
 
-gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
+gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1), x_(-1), y_(-1)
 {
 	LOG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
@@ -302,6 +302,8 @@ void gamemap::read(const std::string& data)
 	// post processing on the map
 	const int width = tiles_.size();
 	const int height = tiles_[0].size();
+    x_ = width;
+    y_ = height;
 	for(int x = 0; x < width; ++x) {
 		for(int y = 0; y < height; ++y) {
 			

@@ -130,8 +130,8 @@ public:
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
 
 	//dimensions of the map.
-	int x() const { return tiles_.size(); }
-	int y() const { return tiles_.empty() ? 0 : tiles_.front().size(); }
+	int x() const { return x_; }
+	int y() const { return y_; }
 
 	//allows lookup of terrain at a particular location.
 	const t_translation::t_list& operator[](int index) const 
@@ -215,6 +215,9 @@ private:
 
 	mutable std::map<location, t_translation::t_letter> borderCache_;
 	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;
+
+    int x_;
+    int y_;
 };
 
 //a utility function which parses ranges of locations
