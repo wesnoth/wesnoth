@@ -40,7 +40,7 @@
 /*ostream& operator << (ostream& os, const uint64_t num);*/
 #else
 #include <stdint.h>
-#define output_terrain(Num) Num
+#define output_terrain(Num) (Num)
 #endif
 
 namespace t_translation {
