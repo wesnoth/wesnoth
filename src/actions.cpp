@@ -1059,7 +1059,7 @@ attack::attack(display& gui, const gamemap& map,
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(dies) {
-				unit_display::unit_die(gui_,attacker_,d_->second,a_stats_->weapon,d_stats_->weapon, &(d_->second));
+				unit_display::unit_die(gui_,attacker_,a_->second,a_stats_->weapon,d_stats_->weapon, &(d_->second));
 			}
 			if(ran_results == NULL) {
 				config cfg;
