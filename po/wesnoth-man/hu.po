@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-02-06 15:13+0100\n"
+"POT-Creation-Date: 2007-03-02 22:06+0100\n"
 "PO-Revision-Date: 2006-08-22 00:23+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -249,11 +249,24 @@ msgstr ""
 # type: TP
 #: ../../doc/man/wesnoth.6:83
 #, fuzzy, no-wrap
+msgid "B<--max-fps>"
+msgstr "B<--fps>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:87
+msgid ""
+"the number of frames per second the game can show, the value should be "
+"between the 1 and 1000, the default is 50."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:87
+#, fuzzy, no-wrap
 msgid "B<--multiplayer>"
 msgstr "B<--multiplayer>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:89
+#: ../../doc/man/wesnoth.6:93
 #, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
@@ -263,37 +276,37 @@ msgstr ""
 "használható egyéb opciókat bõvebben lásd lent."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:89
+#: ../../doc/man/wesnoth.6:93
 #, fuzzy, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:92
+#: ../../doc/man/wesnoth.6:96
 #, fuzzy
 msgid "disables caching of game data."
 msgstr "letiltja a játék gyorsítótárát (cache)."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:92
+#: ../../doc/man/wesnoth.6:96
 #, fuzzy, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:95
+#: ../../doc/man/wesnoth.6:99
 #, fuzzy
 msgid "runs the game without sounds and music."
 msgstr "elindítja a játékot hangok és zene nélkül."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:95 ../../doc/man/wesnoth_editor.6:43
+#: ../../doc/man/wesnoth.6:99 ../../doc/man/wesnoth_editor.6:43
 #, fuzzy, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:98 ../../doc/man/wesnoth_editor.6:46
+#: ../../doc/man/wesnoth.6:102 ../../doc/man/wesnoth_editor.6:46
 #, fuzzy
 msgid "prints the name of the game data directory and exits."
 msgstr ""
@@ -303,61 +316,61 @@ msgstr ""
 "kiírja a felhasználandó adatkönyvtár nevét és kilép."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:98
+#: ../../doc/man/wesnoth.6:102
 #, fuzzy, no-wrap
 msgid "B<-r>, B<--resolution>\\ I<XxY>"
 msgstr "B<-r>,B<\\ --resolution>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:101
+#: ../../doc/man/wesnoth.6:105
 #, fuzzy
 msgid "sets the screen resolution. Example: -r 800x600"
 msgstr "beállítja a képernyõ felbontását. Például: -r 800x600"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:101
+#: ../../doc/man/wesnoth.6:105
 #, fuzzy, no-wrap
 msgid "B<-t>, B<--test>"
 msgstr "B<-t>,B<\\ --test>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:104
+#: ../../doc/man/wesnoth.6:108
 #, fuzzy
 msgid "runs the game in a small test scenario."
 msgstr "elindítja a játékot, és betölt egy kis teszt-csatát."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:104
+#: ../../doc/man/wesnoth.6:108
 #, fuzzy, no-wrap
 msgid "B<-v>, B<--version>"
 msgstr "B<-v>,B<\\ --version>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:107
+#: ../../doc/man/wesnoth.6:111
 #, fuzzy
 msgid "shows the version number and exits."
 msgstr "kiírja a játék verziószámát és kilép."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:107
+#: ../../doc/man/wesnoth.6:111
 #, fuzzy, no-wrap
 msgid "B<-w>, B<--windowed>"
 msgstr "B<-w>,B<\\ --windowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:110
+#: ../../doc/man/wesnoth.6:114
 #, fuzzy
 msgid "runs the game in windowed mode."
 msgstr "elindítja a játékot ablakos módban."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:110
+#: ../../doc/man/wesnoth.6:114
 #, fuzzy, no-wrap
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:113
+#: ../../doc/man/wesnoth.6:117
 #, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
@@ -367,13 +380,13 @@ msgstr ""
 "automatically enabled by --nogui."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:113
+#: ../../doc/man/wesnoth.6:117
 #, fuzzy, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:116
+#: ../../doc/man/wesnoth.6:120
 #, fuzzy
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
@@ -385,13 +398,13 @@ msgstr ""
 "benchmarking."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:117
+#: ../../doc/man/wesnoth.6:121
 #, fuzzy, no-wrap
 msgid "Options for --multiplayer"
 msgstr "OPCIÓK --multiplayer MÓDBAN"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:122
+#: ../../doc/man/wesnoth.6:126
 #, fuzzy
 msgid ""
 "The side-specific multiplayer options are marked with E<lt>numberE<gt>. "
@@ -403,13 +416,13 @@ msgstr ""
 "de függ a kiválasztott pályán lévõ lehetséges játékosok számától."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:122
+#: ../../doc/man/wesnoth.6:126
 #, fuzzy, no-wrap
 msgid "B<--algorithmE<lt>numberE<gt>=value>"
 msgstr "B<--algorithmE<lt>numberE<gt>=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:126
+#: ../../doc/man/wesnoth.6:130
 #, fuzzy
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
@@ -419,13 +432,13 @@ msgstr ""
 "side. Available values: \"idle_ai\" and \"sample_ai\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:126
+#: ../../doc/man/wesnoth.6:130
 #, fuzzy, no-wrap
 msgid "B<--controllerE<lt>numberE<gt>=value>"
 msgstr "B<--controllerE<lt>numberE<gt>=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:129
+#: ../../doc/man/wesnoth.6:133
 #, fuzzy
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
@@ -433,13 +446,13 @@ msgstr ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:129
+#: ../../doc/man/wesnoth.6:133
 #, fuzzy, no-wrap
 msgid "B<--era=value>"
 msgstr "B<--era=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:134
+#: ../../doc/man/wesnoth.6:138
 #, fuzzy
 msgid ""
 "use this option to play in the selected era instead of the \"Default\" era. "
@@ -451,13 +464,13 @@ msgstr ""
 "A korszakok a data/multiplayer.cfg fájlban vannak leírva."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:134
+#: ../../doc/man/wesnoth.6:138
 #, fuzzy, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:139
+#: ../../doc/man/wesnoth.6:143
 #, fuzzy
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
@@ -467,13 +480,13 @@ msgstr ""
 "multiplayer> opció elõtt kell beírnod, hogy a kívánt hatást elérd."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:139
+#: ../../doc/man/wesnoth.6:143
 #, fuzzy, no-wrap
 msgid "B<--parmE<lt>numberE<gt>=name:value>"
 msgstr "B<--scenario=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:148
+#: ../../doc/man/wesnoth.6:152
 #, fuzzy
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
@@ -484,13 +497,13 @@ msgstr ""
 "\"multiplayer_test\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:148
+#: ../../doc/man/wesnoth.6:152
 #, fuzzy, no-wrap
 msgid "B<--scenario=value>"
 msgstr "B<--algorithmE<lt>számE<gt>=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:155
 #, fuzzy
 msgid ""
 "selects a multiplayer scenario. The default scenario is \"multiplayer_Charge"
@@ -500,13 +513,13 @@ msgstr ""
 "Rendelkezésre álló értékek: \"idle_ai\" és \"sample_ai\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:155
 #, fuzzy, no-wrap
 msgid "B<--sideE<lt>numberE<gt>=value>"
 msgstr "B<--controllerE<lt>számE<gt>=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:156
+#: ../../doc/man/wesnoth.6:160
 #, fuzzy
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
@@ -516,13 +529,13 @@ msgstr ""
 "\"ai\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:156
+#: ../../doc/man/wesnoth.6:160
 #, fuzzy, no-wrap
 msgid "B<--turns=value>"
 msgstr "B<--parmE<lt>számE<gt>=name:value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:159
+#: ../../doc/man/wesnoth.6:163
 #, fuzzy
 msgid ""
 "sets the number of turns for the chosen scenario. The default is \"50\"."
@@ -533,13 +546,13 @@ msgstr ""
 "dokumentálva)."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:159
+#: ../../doc/man/wesnoth.6:163
 #, fuzzy, no-wrap
 msgid "Example to test your own AI: "
 msgstr "B<--sideE<lt>számE<gt>=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:162
+#: ../../doc/man/wesnoth.6:166
 #, fuzzy
 msgid ""
 "wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
@@ -550,20 +563,20 @@ msgstr ""
 "vannak leírva."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:163 ../../doc/man/wesnoth_editor.6:63
+#: ../../doc/man/wesnoth.6:167 ../../doc/man/wesnoth_editor.6:63
 #: ../../doc/man/wesnothd.6:138
 #, fuzzy, no-wrap
 msgid "AUTHOR"
 msgstr "SZERZÕK"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:166
+#: ../../doc/man/wesnoth.6:170
 #, fuzzy
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Írta: David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:168
+#: ../../doc/man/wesnoth.6:172
 #, fuzzy
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
@@ -573,7 +586,7 @@ msgstr ""
 "E<lt>ott@gaon.netE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:174
 #, fuzzy
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
@@ -583,21 +596,21 @@ msgstr ""
 "orgE<gt> írta.  Magyarra forította: Gilluin (gilluin@citromail.hu)."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:172 ../../doc/man/wesnoth_editor.6:69
+#: ../../doc/man/wesnoth.6:176 ../../doc/man/wesnoth_editor.6:69
 #: ../../doc/man/wesnothd.6:145
 #, fuzzy
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:173 ../../doc/man/wesnoth_editor.6:70
+#: ../../doc/man/wesnoth.6:177 ../../doc/man/wesnoth_editor.6:70
 #: ../../doc/man/wesnothd.6:146
 #, fuzzy, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:176 ../../doc/man/wesnoth_editor.6:72
+#: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:72
 #: ../../doc/man/wesnothd.6:149
 #, fuzzy
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -605,7 +618,7 @@ msgstr ""
 "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:179 ../../doc/man/wesnoth_editor.6:75
+#: ../../doc/man/wesnoth.6:183 ../../doc/man/wesnoth_editor.6:75
 #: ../../doc/man/wesnothd.6:152
 #, fuzzy
 msgid ""
@@ -621,14 +634,14 @@ msgstr ""
 "származtatott garanciát is beleértve."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:76
+#: ../../doc/man/wesnoth.6:184 ../../doc/man/wesnoth_editor.6:76
 #: ../../doc/man/wesnothd.6:153
 #, fuzzy, no-wrap
 msgid "SEE ALSO"
 msgstr "LÁSD MÉG"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:187
 #, fuzzy
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
