@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-02-06 15:13+0100\n"
-"PO-Revision-Date: 2006-08-22 00:18+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2007-03-02 17:58+0200\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -18,61 +18,61 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "WESNOTH"
-msgstr ""
+msgstr "WESNOTH"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2006"
-msgstr ""
+msgstr "2006"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "wesnoth"
-msgstr ""
+msgstr "wesnoth"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr ""
+msgstr "Slaget om Wesnoth"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
 #: ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
-msgstr ""
+msgstr "NAVN"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr ""
+msgstr "wesnoth - Slaget om Wesnoth, et rundebaseret fantasi strategispil"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
 #: ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr ""
+msgstr "SYNOPSIS"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr ""
+msgstr "B<wesnoth> [I<INDSTILLINGER>] [I<STI_TIL_DATA>]"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
 #: ../../doc/man/wesnothd.6:37
 #, no-wrap
 msgid "DESCRIPTION"
-msgstr ""
+msgstr "BESKRIVELSE"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr ""
+msgstr "Kampen om B<Wesnoth> er et rundebaseret fantasi strategispil."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:42
@@ -86,43 +86,51 @@ msgid ""
 "Wesnoth's large community of on-line players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
+"Besejr alle fjendtlige ledere med en velvalgt skare af tropper, sørg for at "
+"bruge dine ressourcer af guld og landsbyer. Alle enheder har deres styrker "
+"og svagheder; for at vinde så sæt dine tropper ind hvor de kan bruge deres "
+"fordele mens du forhindrer din modstander i at gøre det samme. Efterhånden "
+"som enheder opnår erfaring, så opnår de nye evner og bliver mere magtfulde. "
+"Spil på dit eget sprog og test dig selv mod computeren eller tilslut dig de "
+"mange andre spillere der spiller på nettet mod hinanden. Skab dine egne "
+"enheder, scenarier eller kampagner, og del dem med andre."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:29
 #: ../../doc/man/wesnothd.6:42
 #, no-wrap
 msgid "OPTIONS"
-msgstr ""
+msgstr "INDSTILLINGER"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--bpp>I<\\ number>"
-msgstr ""
+msgstr "B<--bpp>I<\\ nummer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:48 ../../doc/man/wesnoth_editor.6:54
 msgid "sets BitsPerPixel value. Example: --bpp 32"
-msgstr ""
+msgstr "Indstiller BitsPerPixel værdien. Eksempel: --bpp32"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:48
 #, no-wrap
 msgid "B<--compress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
-msgstr ""
+msgstr "B<--pak>I<\\ E<lt>valgtfilE<gt>>B<\\ >I<E<lt>nyfilE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:51
 msgid ""
 "compresses a savefile (infile) that is in text WML format into binary WML "
 "format (outfile)."
-msgstr ""
+msgstr "Komprimerer en gemt fil fra formatet WML til det bineære format WML."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:51
 #, no-wrap
 msgid "B<-d>, B<--debug>"
-msgstr ""
+msgstr "B<-d>, B<--fejlsøge>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:56
@@ -131,12 +139,15 @@ msgid ""
 "options in-game (see the Wiki at http://www.wesnoth.org/ for more "
 "information about command mode)."
 msgstr ""
+"viser ekstra fejlsøgningsinformation og slår ekstra kommandoer til i selve "
+"spillet (se http://www.wesnoth.org/ (engelsk) for flere oplysninger om "
+"kommandoerne."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:56
 #, no-wrap
 msgid "B<--decompress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
-msgstr ""
+msgstr "B<--udpak>I<\\ E<lt>valgtfilE<gt>>B<\\ >I<E<lt>nyfilE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -144,23 +155,25 @@ msgid ""
 "decompresses a savefile (infile) that is in binary WML format into text WML "
 "format (outfile)."
 msgstr ""
+"udpakker en gemtfil (valgtfil) som er i det binære format WML til tekst WML "
+"format (nyfil)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
 #, no-wrap
 msgid "B<-f>, B<--fullscreen>"
-msgstr ""
+msgstr "B<-f>, B<--fuldskærm>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:63
 msgid "runs the game in full screen mode."
-msgstr ""
+msgstr "afvikler spillet i fuldskærm."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:63
 #, no-wrap
 msgid "B<--fps>"
-msgstr ""
+msgstr "B<--fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:67
@@ -168,35 +181,39 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
+"Viser antallet af rammer per sekund spilles afvikles med i et hjørne af "
+"skærmen."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
 #, no-wrap
 msgid "B<-h>, B<--help>"
-msgstr ""
+msgstr "B<-h>, B<--hjælp>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:70
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr ""
+"viser et overblik af kommandolinje muligheder til standard uddata, og "
+"afslutter."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--load>I<\\ savegame>"
-msgstr ""
+msgstr "B<--hent>I<\\ gemtspil>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "loads the file savegame from the standard save game directory."
-msgstr ""
+msgstr "Henter det gemte spil fra standardkataloget for gemte spil."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73
 #, no-wrap
 msgid "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
-msgstr ""
+msgstr "B<--log-fejl=\"domæne1,domæne2,...\">, B<--log-advarsel=\"...\">, B<--log-info=\"...\">"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:83
@@ -205,12 +222,15 @@ msgid ""
 "any debug domain.  B<--log-info> shows all messages, B<--log-warning> only "
 "warnings and errors, and B<--log-error> just errors."
 msgstr ""
+"indstiller strenghedsniveauet på fejlsøgningsdomænerne. \"all\" kan bruges "
+"til alle fejlsøgningsdomæner. B<--log-info> viser alle beskeder, B<--log-"
+"advarsel> viser kun advarsler og fejl og B<--log-fejl> kun fejl."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:83
 #, no-wrap
 msgid "B<--multiplayer>"
-msgstr ""
+msgstr "B<--flerspiller>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:89
@@ -218,89 +238,93 @@ msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
+"afvikler et flerspiller spil. Der er ekstra indstillinger som kan bruges med "
+"B<--flerspiller> som forklaret nedenfor."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:89
 #, no-wrap
 msgid "B<--nocache>"
-msgstr ""
+msgstr "B<--intet mellemlager>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:92
 msgid "disables caching of game data."
-msgstr ""
+msgstr "slår mellemlager af spildata fra."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:92
 #, no-wrap
 msgid "B<--nosound>"
-msgstr ""
+msgstr "B<--ingenlyd>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:95
 msgid "runs the game without sounds and music."
-msgstr ""
+msgstr "afvikler spillet uden lyd eller musik."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:95 ../../doc/man/wesnoth_editor.6:43
 #, no-wrap
 msgid "B<--path>"
-msgstr ""
+msgstr "B<--sti>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:98 ../../doc/man/wesnoth_editor.6:46
 msgid "prints the name of the game data directory and exits."
-msgstr ""
+msgstr "udskriver navnet på spilkataloget for gemt spil og afslutter."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:98
 #, no-wrap
 msgid "B<-r>, B<--resolution>\\ I<XxY>"
-msgstr ""
+msgstr "B<-r>, B<--opløsning>\\ I<XxY>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:101
 msgid "sets the screen resolution. Example: -r 800x600"
-msgstr ""
+msgstr "indstiller skærmopløsningen. Eksempel: -r 800x600"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:101
 #, no-wrap
 msgid "B<-t>, B<--test>"
-msgstr ""
+msgstr "B<-t>, B<--test>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:104
 msgid "runs the game in a small test scenario."
-msgstr ""
+msgstr "afvikler spillet i et lille testscenarie."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:104
 #, no-wrap
 msgid "B<-v>, B<--version>"
-msgstr ""
+msgstr "B<-v>, B<--version>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:107
 msgid "shows the version number and exits."
-msgstr ""
+msgstr "viser versionnummeret og afslutter."
 
+# Forslag til dansk navn for windowed modtages meget gerne
 # type: TP
 #: ../../doc/man/wesnoth.6:107
 #, no-wrap
 msgid "B<-w>, B<--windowed>"
-msgstr ""
+msgstr "B<-w>, B<--windowed>"
 
+# Forslag til dansk navn for windowed modtages meget gerne
 # type: Plain text
 #: ../../doc/man/wesnoth.6:110
 msgid "runs the game in windowed mode."
-msgstr ""
+msgstr "afvikler spillet i indstilling windowed."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:110
 #, no-wrap
 msgid "B<--no-delay>"
-msgstr ""
+msgstr "B<--ingen-ventetid>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:113
@@ -308,12 +332,14 @@ msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by --nogui."
 msgstr ""
+"afvikler spillet uden forsinkelser på grund af grafiske sammenligninger. "
+"Dette sættes automatisk på ved hjælp af --nogui."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:113
 #, no-wrap
 msgid "B<--exit-at-end>"
-msgstr ""
+msgstr "B<--afslut-ved-slutning>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:116
@@ -322,12 +348,14 @@ msgid ""
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
+"afslutter når scenariet er slut, uden at vise sejr/nederlag vinduet, som "
+"kræver at brugeren klikker o.k. Dette gælder også for skript sammenligning."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:117
 #, no-wrap
 msgid "Options for --multiplayer"
-msgstr ""
+msgstr "Indstillinger for --flerspiller"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:122
@@ -336,12 +364,15 @@ msgid ""
 "E<lt>numberE<gt> has to be replaced by a side number. It usually is 1 or 2 "
 "but depends on the number of players possible in the chosen scenario."
 msgstr ""
+"Denne sideafhængig flerspiller indstilling er markeret E<lt>nummerE<gt>. "
+"E<lt>nummerE<gt> skal erstattes af et sidenummer. Det er normalt 1 eller 2 "
+"men er afhængig af antallet af mulige spillere i det valgte scenarie."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:122
 #, no-wrap
 msgid "B<--algorithmE<lt>numberE<gt>=value>"
-msgstr ""
+msgstr "B<--algoritmeE<lt>nummerE<gt>=værdi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:126
@@ -349,24 +380,28 @@ msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: \"idle_ai\" and \"sample_ai\"."
 msgstr ""
+"vælger en ikke standard algoritme som bruges af computeren for denne "
+"spiller. Mulige værdier: \"idle_ai\" and \"sample_ai\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:126
 #, no-wrap
 msgid "B<--controllerE<lt>numberE<gt>=value>"
-msgstr ""
+msgstr "B<--controllerE<lt>nummerE<gt>=værdi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:129
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
 msgstr ""
+"Vælg bruger af denne side. Tilgængelige værdier: \"menneske\" og \"computer"
+"\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:129
 #, no-wrap
 msgid "B<--era=value>"
-msgstr ""
+msgstr "B<--æra=værdi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:134
@@ -375,12 +410,15 @@ msgid ""
 "The era is chosen by an id. Eras are described in the data/multiplayer.cfg "
 "file."
 msgstr ""
+"Brug denne mulighed for at spille i den valgte ære fremfor i \"Standard\" "
+"æraen. Æra vælges via dens id. Æraerne er beskrevet i data/multiplayer.cfg "
+"filen."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:134
 #, no-wrap
 msgid "B<--nogui>"
-msgstr ""
+msgstr "B<--nogui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:139
@@ -388,12 +426,14 @@ msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
 msgstr ""
+"Afvikler spillet uden GUI. Skal fremgå før B<--flerspiller> for at have den "
+"ønskede effekt."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<--parmE<lt>numberE<gt>=name:value>"
-msgstr ""
+msgstr "B<--parmE<lt>nummerE<gt>=navn:værdi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:148
@@ -402,12 +442,16 @@ msgid ""
 "options used with B<--controller> and B<--algorithm.> It should only be "
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
+"Sætter yderligere indstillinger for denne side. Denne indstilling er "
+"afhænigig af valgene for B<--controller> og B<--algoritme.> Den er beregnet "
+"for folk der selv designer deres egen computerspiller. (ikke dokumenteret "
+"ordentlig endnu)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:148
 #, no-wrap
 msgid "B<--scenario=value>"
-msgstr ""
+msgstr "B<--scenarie=værdi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:151
@@ -415,12 +459,13 @@ msgid ""
 "selects a multiplayer scenario. The default scenario is \"multiplayer_Charge"
 "\"."
 msgstr ""
+"vælger et flerspiller scenarie. Standardscenariet er \"flerspiller_Charge\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:151
 #, no-wrap
 msgid "B<--sideE<lt>numberE<gt>=value>"
-msgstr ""
+msgstr "B<--sideE<lt>nummerE<gt>=værdi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:156
@@ -428,24 +473,27 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
+"vælger en fraktion for den nuværende æra til denne side. Fraktionen vælges "
+"via en id. Fraktioner er beskrevet i data/multiplayer.cfg filen."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:156
 #, no-wrap
 msgid "B<--turns=value>"
-msgstr ""
+msgstr "B<--runder=værdi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:159
 msgid ""
 "sets the number of turns for the chosen scenario. The default is \"50\"."
 msgstr ""
+"indstiller antallet af runder for det valgte scenarie. Standarden er \"50\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:159
 #, no-wrap
 msgid "Example to test your own AI: "
-msgstr ""
+msgstr "Eksempel som kan teste din egen computerspiller: "
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:162
@@ -453,18 +501,20 @@ msgid ""
 "wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
 "parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
 msgstr ""
+"wesnoth --flerspiller --controller2=python_ai --algorithm2=python_ai --"
+"parm2=python_script:py/my_own_python_ai.py --side2=Rebeller"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:163 ../../doc/man/wesnoth_editor.6:63
 #: ../../doc/man/wesnothd.6:138
 #, no-wrap
 msgid "AUTHOR"
-msgstr ""
+msgstr "FORFATTER"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:166
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
-msgstr ""
+msgstr "Skrevet af David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:168
@@ -472,6 +522,8 @@ msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 msgstr ""
+"Redigeret af Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:170
@@ -479,25 +531,28 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Denne manual blev først skrevet af Cyril Bouthors E<lt>cyril@bouthors."
+"orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:172 ../../doc/man/wesnoth_editor.6:69
 #: ../../doc/man/wesnothd.6:145
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr ""
+msgstr "Besøg den officielle hjemmeside: http://www.wesnoth.org/"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:173 ../../doc/man/wesnoth_editor.6:70
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "COPYRIGHT"
-msgstr ""
+msgstr "OPHAVSRET"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:176 ../../doc/man/wesnoth_editor.6:72
 #: ../../doc/man/wesnothd.6:149
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
+"Ophavsret \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:179 ../../doc/man/wesnoth_editor.6:75
@@ -507,124 +562,127 @@ msgid ""
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
+"Dette er fri programmel; programmellet er udgivet under GPL version 2, der "
+"er offentliggjort af Free Software Foundation. Der er ingen garanti; selv "
+"ikke for at spillet virker eller kan bruges til en konkret formål."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:76
 #: ../../doc/man/wesnothd.6:153
 #, no-wrap
 msgid "SEE ALSO"
-msgstr ""
+msgstr "SE OGSÅ"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-msgstr ""
+msgstr "B<wesnoth_kortredigering>(6), B<wesnothd>(6)"
 
 # type: TH
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "WESNOTH_EDITOR"
-msgstr ""
+msgstr "WESNOTH_KORTREDIGERING"
 
 # type: TH
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "June 2005"
-msgstr ""
+msgstr "Juni 2005"
 
 # type: TH
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "wesnoth_editor"
-msgstr ""
+msgstr "wesnoth_kortredigering"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:16 ../../doc/man/wesnoth_editor.6:20
 #, no-wrap
 msgid "Battle for Wesnoth map editor"
-msgstr ""
+msgstr "Slaget om Wesnoths kortredigering"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:23
 msgid "B<wesnoth_editor>"
-msgstr ""
+msgstr "B<wesnoth_kortredigering>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:28
 msgid "Battle for B<Wesnoth> map editor."
-msgstr ""
+msgstr "Slaget om B<Wesnoth>s kortredigering."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:31
 #, no-wrap
 msgid "B<--datadir>"
-msgstr ""
+msgstr "B<--datadir>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:34
 msgid "selects the data directory to use."
-msgstr ""
+msgstr "vælg kataloget som skal anvendes."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:35
 #, no-wrap
 msgid "B<-f>,B<\\ --fullscreen>"
-msgstr ""
+msgstr "B<-f>,B<\\ --fuldskærm>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:38
 msgid "runs the editor in full screen mode."
-msgstr ""
+msgstr "afvikler kortredigering i fuldskærm indstilling"
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:39
 #, no-wrap
 msgid "B<-h>,B<\\ --help>"
-msgstr ""
+msgstr "B<-h>,B<\\ --hjælp>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:42 ../../doc/man/wesnothd.6:55
 msgid "tells you what the command line options do."
-msgstr ""
+msgstr "fortæller dig hvad kommandolinjen gør."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:47
 #, no-wrap
 msgid "B<-r>,B<\\ --resolution>"
-msgstr ""
+msgstr "B<-r>,B<\\ --opløsning>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:50
 msgid "sets screen resolution. Example: -r 800x600"
-msgstr ""
+msgstr "indstiller skærmopløsningen. Eksempel: -r 800x600"
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:51
 #, no-wrap
 msgid "B<--bpp>"
-msgstr ""
+msgstr "B<--bpp>"
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:55
 #, no-wrap
 msgid "B<-v>,B<\\ --version>"
-msgstr ""
+msgstr "B<-v>,B<\\ --version>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:58
 msgid "prints version number and exits."
-msgstr ""
+msgstr "printer versionnummer og afslutter."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:59
 #, no-wrap
 msgid "B<-w>,B<\\ --windowed>"
-msgstr ""
+msgstr "B<-w>,B<\\ --windowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:62
 msgid "runs the editor in windowed mode."
-msgstr ""
+msgstr "afvikler kortredigering i indstiling windowed."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:67
@@ -634,34 +692,38 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Skrevet af David White E<lt>davidnwhite@verizon.netE<gt>.  Redigeret af Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> og ott E<lt>ott@gaon.netE<gt>.  "
+"Denne manualside blev først skrevet af Cyril Bouthors E<lt>cyril@bouthors."
+"orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:77
 msgid "wesnoth(6), wesnothd(6)"
-msgstr ""
+msgstr "wesnoth(6), wesnothd(6)"
 
 # type: TH
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "WESNOTHD"
-msgstr ""
+msgstr "WESNOTHD"
 
 # type: TH
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "wesnothd"
-msgstr ""
+msgstr "wesnothd"
 
 # type: TH
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr ""
+msgstr "Kampen om Wesnoth flerspiller netværksdæmon"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr ""
+msgstr "wesnothhd - Kampen om B<Wesnoth> flerspiller netværksdæmon"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
@@ -669,6 +731,8 @@ msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<sti>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<nummer>\\|] [\\|B<-T> I<nummer>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:41
@@ -677,12 +741,15 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client or the socket."
 msgstr ""
+"Håndterer Kampen om Wesnoths under flerspiller. Se http://www.wesnoth.org/"
+"wiki/ServerAdministration for hvilke kommandoer serveren accepterer via "
+"wesnoth-klienten eller soklen."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:44
 #, no-wrap
 msgid "B<-c,\\ --config>I<\\ path>"
-msgstr ""
+msgstr "B<-c,\\ --indstil>I<\\ sti>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
@@ -690,29 +757,31 @@ msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax."
 msgstr ""
+"fortæller wesnothd hvor den skal finde konfigurationsfilen. Se afsnittet "
+"B<SERVER INDSTILLING> nedenfor for syntaks."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
 #, no-wrap
 msgid "B<-d,\\ --daemon>"
-msgstr ""
+msgstr "B<-d,\\ --dæmon>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:52
 msgid "runs wesnothd as a daemon."
-msgstr ""
+msgstr "kør wesnothd som en dæmon."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:52
 #, no-wrap
 msgid "B<-h,\\ --help>"
-msgstr ""
+msgstr "B<-h,\\ --hjælp>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-p,\\ --port>I<\\ port>"
-msgstr ""
+msgstr "B<-p,\\ --port>I<\\ port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
@@ -720,12 +789,14 @@ msgid ""
 "binds the server to the specified port. If no port is specified, port 15000 "
 "will be used."
 msgstr ""
+"Tildeler serveren til den specificerede port. Hvis ingen port er "
+"specificeret vil port 15000 blive anvendt."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59
 #, no-wrap
 msgid "B<-t,\\ --threads>I<\\ number>"
-msgstr ""
+msgstr "B<-t,\\ --tråde>I<\\ nummer>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:62
@@ -733,12 +804,14 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: 5, max: 30)."
 msgstr ""
+"indstiller det maksimale antal af ventende tråde til netværk I/O til n "
+"(standard: 5, maks: 30)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:62
 #, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
-msgstr ""
+msgstr "B<-T,\\ --maks-tråde>I<\\ nummer>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:66
@@ -746,84 +819,87 @@ msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
 "there will be no limit (default: 0)."
 msgstr ""
+"indstiller det maksimale antal af tråde som bliver lavet. Hvis den sættes "
+"til 0 vil der ikke være en begrænsning (standard: 0)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:66
 #, no-wrap
 msgid "B<-V,\\ --version>"
-msgstr ""
+msgstr "B<-V,\\ --version>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:69
 msgid "shows version number and exits."
-msgstr ""
+msgstr "viser versionnummer og afslutter."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:69
 #, no-wrap
 msgid "B<-v,\\ --verbose>"
-msgstr ""
+msgstr "B<-v,\\ --uddybende>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:72
 msgid "turns on more verbose logging."
-msgstr ""
+msgstr "tænder for mere uddybende log"
 
 # type: SH
 #: ../../doc/man/wesnothd.6:73
 #, no-wrap
 msgid "SERVER CONFIG"
-msgstr ""
+msgstr "SERVER INDSTILLING"
 
 # type: SS
 #: ../../doc/man/wesnothd.6:75
 #, no-wrap
 msgid "The general syntax is:"
-msgstr ""
+msgstr "Den generelle syntaks er:"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:79
 msgid "[I<tag>]"
-msgstr ""
+msgstr "[I<tag>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:81
 msgid "key=\"I<value>\""
-msgstr ""
+msgstr "nøgle=\"I<værdi>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:83
 msgid "key=\"I<value>,I<value>,...\""
-msgstr ""
+msgstr "nøgle=\"I<værdi>,I<værdi>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:85
 msgid "[/I<tag>]"
-msgstr ""
+msgstr "[/I<tag>]"
 
 # type: SS
 #: ../../doc/man/wesnothd.6:86
 #, no-wrap
 msgid "Global keys:"
-msgstr ""
+msgstr "Globale nøgler:"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:88
 #, no-wrap
 msgid "B<connections_allowed>"
-msgstr ""
+msgstr "B<forbindelser_tilladt>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
 msgid "The number of allowed connections from the same IP."
-msgstr ""
+msgstr "Antallet af tilladte forbindelser fra samme IP."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:91
 #, no-wrap
 msgid "B<disallow_names>"
-msgstr ""
+msgstr "B<forbyd_navne>"
 
+# dansk navn for wildcard patterns ?
 # type: Plain text
 #: ../../doc/man/wesnothd.6:97
 msgid ""
@@ -832,45 +908,50 @@ msgid ""
 "(used if nothing is specified) are: `server,ai,player,network,human,admin,"
 "computer'."
 msgstr ""
+"Navne som ikke accepteres af serveren. '*' og `?' fra wildcard patterns er "
+"understøttet. Se B<glob>(7)  for flere detaljer.  Standardværdier (anvendes "
+"hvis intet er anført) er: `server,computerspiller,spiller,netværk,menneske,"
+"admin,computer'."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:97
 #, no-wrap
 msgid "B<max_messages>"
-msgstr ""
+msgstr "B<maks_beskeder>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:100
 msgid "The number of allowed messages in B<messages_time_period>."
-msgstr ""
+msgstr "Antallet af tilladte beskeder i B<beskeder_tids_periode>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:100
 #, no-wrap
 msgid "B<messages_time_period>"
-msgstr ""
+msgstr "B<beskeder_tids_periode>"
 
+# Dansk navn for flooding ?
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
 msgid "The time period (in seconds) message flooding is detected in."
-msgstr ""
+msgstr "Tidsperioden (i sekunder) hvor beskeders flooding registreres."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
 #, no-wrap
 msgid "B<motd>"
-msgstr ""
+msgstr "B<motd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:106
 msgid "The message of the day."
-msgstr ""
+msgstr "Dagens besked"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:106
 #, no-wrap
 msgid "B<passwd>"
-msgstr ""
+msgstr "B<adgangskode>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:109
@@ -878,12 +959,14 @@ msgid ""
 "The password used to gain admin privileges. Usually it starts with \"admin "
 "\"."
 msgstr ""
+"Adgangskoden der giver administratorrettigheder. Starter normalt med \"admin "
+"\"."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:109
 #, no-wrap
 msgid "B<versions_accepted>"
-msgstr ""
+msgstr "B<versions_accepterede>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:112
@@ -891,17 +974,19 @@ msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported."
 msgstr ""
+"En kommasepareret liste af versionsstrenge som accepteres af serveren. `*' "
+"og `?' er understøttet."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
 msgid "Example: versions_accepted=\"*\" accepts any version string."
-msgstr ""
+msgstr "Eksempel: versioner_accepteret=\"*\" acceptere enhver versionsstreng."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:115
 #, no-wrap
 msgid "Global tags:"
-msgstr ""
+msgstr "Globale mærker:"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:120
@@ -909,34 +994,36 @@ msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr ""
+"B<[omdiriger]> Et mærke som specificerer, at en server skal omdirigere visse "
+"klientversioner til."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
 #, no-wrap
 msgid "B<host>"
-msgstr ""
+msgstr "B<vært>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:124
 msgid "The address of the server to redirect to."
-msgstr ""
+msgstr "Adressen på serveren der omdirigeres til."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
 #, no-wrap
 msgid "B<port>"
-msgstr ""
+msgstr "B<port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:127
 msgid "The port to connect to."
-msgstr ""
+msgstr "Forbindelsesport."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:127
 #, no-wrap
 msgid "B<version>"
-msgstr ""
+msgstr "B<version>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:132
@@ -944,6 +1031,8 @@ msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
+"En kommasepareret liste af versioner som omdirigeres. Fungerer på samme måde "
+"som B<versioner_accepteret> i forhold til wildcard patterns."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:137
@@ -952,6 +1041,9 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as [redirect]."
 msgstr ""
+"B<[proxy]> Et mærke som fortæller serveren den skal fungere som en proxy og "
+"og videresende den forbundne klients forespørgsler til den specificerede "
+"server. Accepterer de samme nøgler som [omdiriger]."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -961,8 +1053,12 @@ msgid ""
 "Soliton E<lt>soliton@sonnenkinder.orgE<gt>.  This manual page was originally "
 "written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Skrevet af David White E<lt>davidnwhite@verizon.netE<gt>.  Redigeret af Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> og "
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt>.  Denne manualside blev først "
+"skrevet af Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:156
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-msgstr ""
+msgstr "B<wesnoth>(6), B<wesnoth_kortredigering>(6)"

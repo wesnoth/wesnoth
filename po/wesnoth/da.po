@@ -1,4 +1,4 @@
-# ----wesnoth.cpp1.po (Battle for Wesnoth 0.9.5+CVS)  ----Danish translation of Battle for Wesnoth.
+# (Battle for Wesnoth) Danish translation of Battle for Wesnoth.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Anders K. Madsen (madsen@lillesvin.linux.dk), 2005
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-25 12:30+0100\n"
-"PO-Revision-Date: 2007-02-14 17:58+0200\n"
+"PO-Revision-Date: 2007-03-02 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -318,7 +318,7 @@ msgstr ""
 
 #: data/abilities.cfg:493
 msgid "swarm"
-msgstr ""
+msgstr "sværm"
 
 #: data/abilities.cfg:495
 msgid ""
@@ -328,10 +328,15 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
+"Antallet af denne slags angreb falder når enheden er såret. Antallet af "
+"angreb er proportionalt med % af liv/maksimal liv enheden har. For eksempel "
+"vil en enhed der har 3/4 af sit maksimale liv have 3/4 af sine normale "
+"angreb."
 
+# kan også være angrib
 #: data/abilities.cfg:502
 msgid "charge"
-msgstr "angrib"
+msgstr "storm"
 
 #: data/abilities.cfg:504
 msgid ""
@@ -339,6 +344,8 @@ msgid ""
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
+"Dette angreb giver dobbelt skade til modstanderen. Det gør også, at enheden "
+"selv modtager dobbelt skade fra modstanderens modangreb."
 
 #: data/abilities.cfg:514
 msgid "drains"
@@ -1196,6 +1203,16 @@ msgid ""
 "it, selecting Unit Description, and then looking at <italic>text='Terrain "
 "Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Hver enhed at et fast antal bevægelsespoint som opbruges når enheden flytter "
+"sig ind i et andet felt. Forbruget er afhængig af terrænet. For eksempel "
+"koster en græseng næsten altid 1 bevægelsespoint. Præcist hvor mange "
+"bevægelsespoint der anvendes er afhængig af enhedstypen - i skove anvender "
+"elver kun 1 bevægelsespoint, de fleste mennesker og orker anvender 2, mens "
+"ryttere anvender 3. Du kan se hvor mange bevægelsespoint en enhed anvender "
+"ved at højreklikke på enheden, vælge enhedsbeskrivelse og herefter kigge på "
+"<italic>tekst='Terrænpåvirkninger'</italic>."
 
 #: data/help.cfg:141
 msgid ""
@@ -1272,6 +1289,15 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"Slag i Kampen om Wesnoth foregår altid mellem enheder, i felter der har "
+"forbindelse med hinanden. Klik på din enhed og og klik på den fjende du "
+"ønsker at angribe; din enhed vil flytte henimod den fjendtlige enhed og når "
+"de er op ad hinanden vil slaget begynde. Angriberen og forsvareren "
+"fortsætter deres angreb, indtil de har forbrugt det antal de har mulighed "
+"for at forbruge. Angriberen vælger et af sine våben til at angribe med og "
+"forsvareren svarer igen med et våben af samme slags. Der er to typer angreb; "
+"nærkamp som normalt inkluderer våben som sværd, økse eller hugtand; eller "
+"afstandskamp som normalt inkluderer våben som bue, spyd og ildkugler."
 
 #: data/help.cfg:159
 msgid ""
@@ -1856,6 +1882,7 @@ msgstr "Frygløs"
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
+# kan også være trofast
 #: data/help.cfg:314
 msgid "Loyal"
 msgstr "Loyal"
@@ -1866,6 +1893,9 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"Loyale enheder koster ikke vedligeholdelse. De fleste enheder koster "
+"vedligeholdelse ved afslutning af hver runde, som svarer til deres niveau. "
+"Loyale enheder har ikke denne omkostning."
 
 #: data/help.cfg:317
 msgid ""
@@ -1878,6 +1908,15 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"I kampagner kan udvalgte enheder finde på at tilslutte sig dine styrker af "
+"egen fri vilje. Disse enheder er markeret med loyal karakteregenskaben. "
+"Selvom de kan kræve penge for at blive tilkaldt, som har de ingen "
+"vedligeholdelsesomkostning. Dette kan gøre dem uvurderlige i en lang "
+"kampagne, hvor der ikke er adgang til store mængder guld. Denne egenskab "
+"gives aldrig til rekrutterede enheder, så det er uklogt at fjerne sådanne "
+"enheder eller at sende dem ud i en tåbelig død."
 
 #: data/help.cfg:322
 msgid "trait^Undead"
@@ -1939,9 +1978,10 @@ msgstr ""
 "Kendt for deres vitalitet, nogle dværge er mere solid end andre og kommer "
 "hurtigere over deres sår, når de hviler."
 
+# kunne også være græs 
 #: data/help.cfg:345 data/terrain.cfg:473 data/terrain.cfg:482
 msgid "Grassland"
-msgstr "Græs"
+msgstr "Græseng"
 
 #: data/help.cfg:350
 msgid ""
@@ -1953,6 +1993,13 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"En græseng repræsenter åbne stepper, enten de er kultiverede, gjort til "
+"græsningsarealer eller er naturlige. Da det er et åbent landskab, er "
+"græsenge meget nemme at forcere, men det er også svært at forsvare sig i "
+"dette terræn. Typisk er de bedste enheder på græseng enten kavaleri eller "
+"meget hurtige enheder som har fordel af det åbne terræn.\n"
+"\n"
+"De fleste enheder har på græseng et forsvar på 30-40 %."
 
 #: data/help.cfg:355 data/terrain.cfg:611
 msgid "Road"
@@ -1964,9 +2011,9 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
-"Veje er stampede jord-stier, gået til af de mange rejsende der har vandret "
-"på dem. Hvad angår gameplay, så er veje identiske med "
-"<ref>dst=terrain_grassland text=Græs</ref>."
+"Veje er stampede jordstier, gået til af de mange rejsende der har vandret på "
+"dem. Hvad angår gameplay, så er veje identiske med "
+"<ref>dst=terrain_grassland text=Græseng</ref>."
 
 #: data/help.cfg:363 data/terrain.cfg:450
 msgid "Forest"
@@ -1989,6 +2036,20 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
+"Skove repræsenterer alle slags skovområder med tilpas megen bevoksning ved "
+"jorden som forhindrer en fri passage. Selv om alle har mindre bevægelighed i "
+"skoven, så yder den også bedre forsvar end den enheder har i det åbne. "
+"Kavaleri har så store problemer i en skov at enhver stealth evne ikke gør "
+"sig gældende. Elvere er en undtagelse til denne regel. De har ikke alene "
+"fuld bevægelighed i skoven, men opnår også en betydelig forsvarsbonus. "
+"Dværge er en anden undtagelse, selv om de er i stand til at trænge igennem "
+"skoven uden væsentlig nedsættelse af hastigheden, så opnår de ingen "
+"forsvarsbonus.\n"
+"\n"
+"De fleste enheder har en 50 % forsvarsbonus i skoven, men kavaleri er "
+"begrænset til 40 %. Elver har 60 % eller 70 %, selv når de er til hest. "
+"Dværge har kun 30 % i skove.\n"
+"\n"
 
 #: data/help.cfg:375 data/terrain.cfg:528
 msgid "Hills"
