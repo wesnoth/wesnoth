@@ -2571,7 +2571,12 @@ void unit::add_modification(const std::string& type, const config& mod,
 			if (ap) {
 				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
 			}
-		}else if (apply_to == "image_mod") {
+		} else if (apply_to == "zoc") {
+			const std::string& zoc_value = (**i.first)["value"];
+			if(!zoc_value.empty()) {
+				emit_zoc_ = lexical_cast_default<int>(zoc_value);
+			}
+		} else if (apply_to == "image_mod") {
 			LOG_UT << "applying image_mod \n";
 			std::string mod = (**i.first)["replace"];
 			if (!mod.empty()){
