@@ -156,7 +156,6 @@ bool conditional_passed(const unit_map* units,
 
 		std::string side = (*v)["side"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const int side_index = lexical_cast_default<int>(side,1)-1;
 		
 		int x = lexical_cast_default((*v)["x"], 0) - 1;
@@ -232,7 +231,7 @@ bool conditional_passed(const unit_map* units,
 		}
 	}
 
-	return !have_unit.empty() || !!own_village.empty() || variables.empty() || !not_statements.empty() || !and_statements.empty();
+	return !have_unit.empty() || !own_village.empty() || !variables.empty() || !not_statements.empty() || !and_statements.empty();
 }
 
 } //end namespace game_events
@@ -357,7 +356,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
@@ -433,15 +431,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "allow_recruit") {
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
 		if(index >= teams->size())
 			return rval;
 
-		const std::string& type = utils::interpolate_variables_into_string(
-			cfg.get_attribute("type"), *state_of_game);
+		const std::string& type = cfg["type"];
 
 		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
@@ -459,15 +455,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "disallow_recruit") {
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
 		if(index >= teams->size())
 			return rval;
 
-		const std::string& type = utils::interpolate_variables_into_string(
-			cfg.get_attribute("type"), *state_of_game);
+		const std::string& type = cfg["type"];
 		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*teams)[index].recruits().erase(*i);
@@ -482,15 +476,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "set_recruit") {
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
 		if(index >= teams->size())
 			return rval;
 
-		std::vector<std::string> recruit = utils::split(utils::interpolate_variables_into_string(
-			cfg.get_attribute("recruit"), *state_of_game));
+		std::vector<std::string> recruit = utils::split(cfg["recruit"]);
 		if(recruit.size() == 1 && recruit.back() == "")
 			recruit.clear();
 
@@ -511,7 +503,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "sound") {
 		std::string sound = cfg["name"];
 		wassert(state_of_game != NULL);
-		sound = utils::interpolate_variables_into_string(sound, *state_of_game);
 		sound::play_sound(sound);
 	}
 
@@ -520,9 +511,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string green = cfg["green"];
 		std::string blue = cfg["blue"];
 		wassert(state_of_game != NULL);
-		red = utils::interpolate_variables_into_string(red, *state_of_game);
-		green = utils::interpolate_variables_into_string(green, *state_of_game);
-		blue = utils::interpolate_variables_into_string(blue, *state_of_game);
 		const int r = atoi(red.c_str());
 		const int g = atoi(green.c_str());
 		const int b = atoi(blue.c_str());
@@ -534,7 +522,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "delay") {
 		std::string delay_string = cfg["time"];
 		wassert(state_of_game != NULL);
-		delay_string = utils::interpolate_variables_into_string(delay_string, *state_of_game);
 		const int delay_time = atoi(delay_string.c_str());
 		screen->delay(delay_time);
 	}
@@ -543,8 +530,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		wassert(state_of_game != NULL);
-		x = utils::interpolate_variables_into_string(x, *state_of_game);
-		y = utils::interpolate_variables_into_string(y, *state_of_game);
 		const int xoff = atoi(x.c_str());
 		const int yoff = atoi(y.c_str());
 		screen->scroll(xoff,yoff);
@@ -556,9 +541,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string y = cfg["y"];
 		std::string check_fogged = cfg["check_fogged"];
 		wassert(state_of_game != NULL);
-		x = utils::interpolate_variables_into_string(x, *state_of_game);
-		y = utils::interpolate_variables_into_string(y, *state_of_game);
-		check_fogged = utils::interpolate_variables_into_string(check_fogged, *state_of_game);
 		const int xpos = atoi(x.c_str());
 		const int ypos = atoi(y.c_str());
 		screen->scroll_to_tile(xpos,ypos,display::SCROLL,utils::string_bool(check_fogged,false));
@@ -571,7 +553,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				break;
 		}
 		std::string check_fogged = cfg["check_fogged"];
-		check_fogged = utils::interpolate_variables_into_string(check_fogged, *state_of_game);
 		if(u != units->end()) {
 			screen->scroll_to_tile(u->first.x,u->first.y,display::SCROLL,utils::string_bool(check_fogged,false));
 		}
@@ -582,8 +563,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string side = cfg["side"];
 		std::string amount = cfg["amount"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
-		amount = utils::interpolate_variables_into_string(amount, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const int amount_num = atoi(amount.c_str());
 		const size_t team_index = side_num-1;
@@ -601,10 +580,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string user_team_name = cfg["user_team_name"];
 		std::string gold = cfg["gold"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
-		income = utils::interpolate_variables_into_string(income, *state_of_game);
-		team_name = utils::interpolate_variables_into_string(team_name, *state_of_game);
-		gold = utils::interpolate_variables_into_string(gold, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 
@@ -633,8 +608,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			var_name = "side";
 		}
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
-		var_name = utils::interpolate_variables_into_string(var_name, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 		if(team_index < teams->size()) {
@@ -648,9 +621,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string value = cfg["value"];
 		std::string add = cfg["add"];
 		wassert(state_of_game != NULL);
-		value = utils::interpolate_variables_into_string(value, *state_of_game);
-		add = utils::interpolate_variables_into_string(add, *state_of_game);
-
 		wassert(status_ptr != NULL);
 		if(add != "") {
 			status_ptr->modify_turns(add);
@@ -669,8 +639,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			var_name = "gold";
 		}
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
-		var_name = utils::interpolate_variables_into_string(var_name, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 		if(team_index < teams->size()) {
@@ -690,11 +658,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		wassert(state_of_game != NULL);
-		type = utils::interpolate_variables_into_string(type, *state_of_game);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
-		gender_string = utils::interpolate_variables_into_string(gender_string, *state_of_game);
-		x = utils::interpolate_variables_into_string(x, *state_of_game);
-		y = utils::interpolate_variables_into_string(y, *state_of_game);
 
 		size_t side_num = lexical_cast_default<int>(side,1)-1;
 		if (side_num >= teams->size()) side_num = 0;
@@ -791,13 +754,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string lose_str = "#";
 
 		wassert(state_of_game != NULL);
-		const t_string& summary = utils::interpolate_variables_into_string(
-			cfg.get_attribute("summary"), *state_of_game);
-		const t_string& note = utils::interpolate_variables_into_string(
-			cfg.get_attribute("note"), *state_of_game);
+		const t_string summary = cfg["summary"];
+		const t_string note = cfg["note"];
 		std::string side = cfg["side"];
 		bool silent = utils::string_bool(cfg["silent"]);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const size_t side_num = lexical_cast_default<size_t>(side,0);
 
 		if(side_num != 0 && (side_num - 1) >= teams->size()) {
@@ -805,12 +765,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			return rval;
 		}
 
-		t_string win_string = utils::interpolate_variables_into_string(
-			cfg.get_attribute("victory_string"), *state_of_game);
+		t_string win_string = cfg["victory_string"];
 		if(win_string.empty())
 			win_string = t_string(N_("Victory:"), "wesnoth");
-		t_string lose_string = utils::interpolate_variables_into_string(
-			cfg.get_attribute("defeat_string"), *state_of_game);
+		t_string lose_string = cfg["defeat_string"];
 		if(lose_string.empty())
 			lose_string = t_string(N_("Defeat:"), "wesnoth");
 
@@ -823,8 +781,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			t_string description = (*obj_it)["description"];
 			std::string condition = (*obj_it)["condition"];
-			description = utils::interpolate_variables_into_string(description, *state_of_game);
-			condition = utils::interpolate_variables_into_string(condition, *state_of_game);
 			LOG_NG << condition << " objective: " << description << "\n";
 			if(condition == "win") {
 				win_objectives += "\n";
@@ -869,23 +825,25 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "set_variable") {
 		wassert(state_of_game != NULL);
 
-		const std::string& name = utils::interpolate_variables_into_string(
-			cfg.get_attribute("name"), *state_of_game);
+		const std::string name = cfg["name"];
 		t_string& var = state_of_game->get_variable(name);
 
-		const t_string& value = cfg["value"];
+		const t_string& literal = cfg.get_attribute("literal"); //no $var substitution
+		if(literal.empty() == false) {
+			var = literal;
+		}
+
+		const t_string value = cfg["value"];
 		if(value.empty() == false) {
 			var = value;
 		}
 
-		const std::string& format = utils::interpolate_variables_into_string(
-			cfg.get_attribute("format"), *state_of_game);
+		const t_string format = cfg["format"]; //deprecated, use value
 		if(format.empty() == false) {
 			var = format;
 		}
 
-		const std::string& to_variable = utils::interpolate_variables_into_string(
-			cfg.get_attribute("to_variable"), *state_of_game);
+		const std::string to_variable = cfg["to_variable"];
 		if(to_variable.empty() == false) {
 			var = state_of_game->get_variable(to_variable);
 		}
@@ -1143,8 +1101,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "unit_overlay") {
 		std::string img = cfg["image"];
 		wassert(state_of_game != NULL);
-		img = utils::interpolate_variables_into_string(img, *state_of_game);
-
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.add_overlay(img);
@@ -1156,8 +1112,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "remove_unit_overlay") {
 		std::string img = cfg["image"];
 		wassert(state_of_game != NULL);
-		img = utils::interpolate_variables_into_string(img, *state_of_game);
-
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.remove_overlay(img);
@@ -1194,9 +1148,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string img = cfg["image"];
 		std::string halo = cfg["halo"];
 		wassert(state_of_game != NULL);
-		img = utils::interpolate_variables_into_string(img, *state_of_game);
-		halo = utils::interpolate_variables_into_string(halo, *state_of_game);
-
 		if(!img.empty() || !halo.empty()) {
 			screen->add_overlay(loc,img,halo);
 			screen->invalidate(loc);
@@ -1214,12 +1165,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string y = cfg["y"];
 
 		wassert(state_of_game != NULL);
-
-		sounds = utils::interpolate_variables_into_string(sounds, *state_of_game);
-		delay = utils::interpolate_variables_into_string(delay, *state_of_game);
-		chance = utils::interpolate_variables_into_string(chance, *state_of_game);
-		x = utils::interpolate_variables_into_string(x, *state_of_game);
-		y = utils::interpolate_variables_into_string(y, *state_of_game);
 
 		if(!sounds.empty() && !delay.empty() && !chance.empty()) {
 			const std::vector<std::string>& vx = utils::split(x);
@@ -1244,7 +1189,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		
 		std::string terrain_type = cfg["letter"];
 		wassert(state_of_game != NULL);
-		terrain_type = utils::interpolate_variables_into_string(terrain_type, *state_of_game);
 		
 		//At this point terrain_type contains the letter as known in WML
 		//convert to an internal number
@@ -1379,7 +1323,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		std::string id = cfg["id"];
 		wassert(state_of_game != NULL);
-		id = utils::interpolate_variables_into_string(id, *state_of_game);
 
 		//if this item has already been used
 		if(id != "" && used_items.count(id))
@@ -1387,10 +1330,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		std::string image = cfg["image"];
 		std::string caption = cfg["name"];
-
-		image = utils::interpolate_variables_into_string(image, *state_of_game);
-		caption = utils::interpolate_variables_into_string(caption, *state_of_game);
-
 		std::string text;
 
 		gamemap::location loc;
@@ -1413,7 +1352,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		if(u != units->end() && (filter.null() || game_events::unit_matches_filter(u, filter))) {
 			text = cfg["description"];
-			text = utils::interpolate_variables_into_string(text, *state_of_game);
 
 			u->second.add_modification("object", cfg.get_parsed_config());
 
@@ -1424,8 +1362,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			used_items.insert(id);
 		} else {
 			text = cfg["cannot_use_message"];
-			text = utils::interpolate_variables_into_string(text, *state_of_game);
-
 			command_type = "else";
 		}
 
@@ -1439,7 +1375,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			//this will redraw the unit, with its new stats
 			screen->draw();
 
-			const std::string duration_str = utils::interpolate_variables_into_string(cfg["duration"], *state_of_game);
+			const std::string duration_str = cfg["duration"];
 			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
 			message_dialog to_show(*screen,((surface.null())? caption : ""),text);
 			if(!surface.null()) {
@@ -1465,13 +1401,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string blue_str = cfg["blue"];
 
 		wassert(state_of_game != NULL);
-		text = utils::interpolate_variables_into_string(text, *state_of_game);
-		size_str = utils::interpolate_variables_into_string(size_str, *state_of_game);
-		duration_str = utils::interpolate_variables_into_string(duration_str, *state_of_game);
-		red_str = utils::interpolate_variables_into_string(red_str, *state_of_game);
-		green_str = utils::interpolate_variables_into_string(green_str, *state_of_game);
-		blue_str = utils::interpolate_variables_into_string(blue_str, *state_of_game);
-
 		const int size = lexical_cast_default<int>(size_str,font::SIZE_SMALL);
 		const int lifetime = lexical_cast_default<int>(duration_str,50);
 		const int red = lexical_cast_default<int>(red_str,0);
@@ -1499,8 +1428,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		std::string speaker_str = cfg["speaker"];
 		wassert(state_of_game != NULL);
-		speaker_str = utils::interpolate_variables_into_string(speaker_str, *state_of_game);
-
 		if(speaker_str == "unit") {
 			speaker = units->find(event_info.loc1);
 		} else if(speaker_str == "second_unit") {
@@ -1526,15 +1453,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 
 		std::string sfx = cfg["sound"];
-		sfx = utils::interpolate_variables_into_string(sfx, *state_of_game);
 		if(sfx != "") {
 			sound::play_sound(sfx);
 		}
 
 		std::string image = cfg["image"];
 		std::string caption = cfg["caption"];
-		image = utils::interpolate_variables_into_string(image, *state_of_game);
-		caption = utils::interpolate_variables_into_string(caption, *state_of_game);
 
 		if(speaker != units->end()) {
 			LOG_DP << "scrolling to speaker..\n";
@@ -1574,7 +1498,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			std::string msg_str = (*mi)["message"];
 			if(!(*mi).has_child("show_if") 
 				|| game_events::conditional_passed(units,(*mi).child("show_if"))) {
-            	msg_str = utils::interpolate_variables_into_string(msg_str, *state_of_game);
 				options.push_back(msg_str);
 				option_events.push_back((*mi).get_children("command"));
             }
@@ -1592,8 +1515,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		//if we're not replaying, or if we are replaying and there is no choice
 		//to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
-			const std::string msg = utils::interpolate_variables_into_string(cfg["message"], *state_of_game);
-			const std::string duration_str = utils::interpolate_variables_into_string(cfg["duration"], *state_of_game);
+			const t_string msg = cfg["message"];
+			const std::string duration_str = cfg["duration"];
 			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
 			const SDL_Rect& map_area = screen->map_area();
 
@@ -1779,9 +1702,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	
 	else if(cmd == "unstore_unit") {
 		wassert(state_of_game != NULL);
-		const config& var = state_of_game->get_variable_cfg(
-			utils::interpolate_variables_into_string(cfg.get_attribute("variable"),
-				*state_of_game));
+		const config& var = state_of_game->get_variable_cfg(cfg["variable"]);
 
 		try {
 			wassert(game_data_ptr != NULL);
@@ -1800,17 +1721,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				units->add(new std::pair<gamemap::location,unit>(loc,u));
 
 				std::string text = cfg["text"];
-				text = utils::interpolate_variables_into_string(text, *state_of_game);
-
 				if(!text.empty())
 				{
 					//Print floating label
 					std::string red_str = cfg["red"];
 					std::string green_str = cfg["green"];
 					std::string blue_str = cfg["blue"];
-					red_str = utils::interpolate_variables_into_string(red_str, *state_of_game);
-					green_str = utils::interpolate_variables_into_string(green_str, *state_of_game);
-					blue_str = utils::interpolate_variables_into_string(blue_str, *state_of_game);
 					const int red = lexical_cast_default<int>(red_str,0);
 					const int green = lexical_cast_default<int>(green_str,0);
 					const int blue = lexical_cast_default<int>(blue_str,0);
@@ -1850,8 +1766,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			variable="location";
 		}
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
-		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 
 		const gamemap::location& loc = game_map->starting_position(side_num);
@@ -1876,9 +1790,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 		std::string wml_terrain = cfg["terrain"];
 		wassert(state_of_game != NULL);
-		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
-		wml_terrain = utils::interpolate_variables_into_string(wml_terrain, *state_of_game);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const int side_index = lexical_cast_default<int>(side,1)-1;
 		//convertert the terrain to a internal vector
 		//FIXME: once the terrain backwards compability layer is gone we can load the string
@@ -1915,17 +1826,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string y = cfg["y"];
 		std::string radius_str = cfg["radius"];
 		wassert(state_of_game != NULL);
-		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
-		wml_terrain = utils::interpolate_variables_into_string(wml_terrain, *state_of_game);
 		//convertert the terrain to a internal vector
 		//FIXME: once the terrain backwards compability layer is gone we can load the string
 		// in a t_match structure and use the optimized match routine in the loop
 		const t_translation::t_list& terrain = 
 			t_translation::read_list(wml_terrain, 0, t_translation::T_FORMAT_AUTO);
 
-		x = utils::interpolate_variables_into_string(x, *state_of_game);
-		y = utils::interpolate_variables_into_string(y, *state_of_game);
-		radius_str = utils::interpolate_variables_into_string(radius_str, *state_of_game);
 		const vconfig unit_filter = cfg.child("filter");
 
 		state_of_game->clear_variable_cfg(variable);
@@ -1962,7 +1868,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "capture_village") {
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side);
 		//if 'side' is 0, then it will become an invalid index, and so
 		//the village will become neutral.
@@ -1979,20 +1884,17 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//command to remove a variable
 	else if(cmd == "clear_variable") {
-		const std::string& name = utils::interpolate_variables_into_string(
-			cfg.get_attribute("name"), *state_of_game);
+		const std::string name = cfg["name"];
 		state_of_game->clear_variable(name);
 	}
 
 	else if(cmd == "endlevel") {
-		const std::string& next_scenario = utils::interpolate_variables_into_string(
-			cfg.get_attribute("next_scenario"), *state_of_game);
+		const std::string next_scenario = cfg["next_scenario"];
 		if(next_scenario.empty() == false) {
 			state_of_game->scenario = next_scenario;
 		}
 
-		const std::string& result = utils::interpolate_variables_into_string(
-			cfg.get_attribute("result"), *state_of_game);
+		const std::string result = cfg["result"].value(); //do not translate
 		if(result.empty() || result == "victory") {
 			const bool bonus = utils::string_bool(cfg["bonus"],true);
 			throw end_level_exception(VICTORY,bonus);
@@ -2009,7 +1911,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "redraw") {
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
-		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		if(side != "") {
 			const int side_num = lexical_cast_default<int>(side);
 			recalculate_fog(*game_map,*status_ptr,*game_data_ptr,*units,*teams,side_num-1);
