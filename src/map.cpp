@@ -451,7 +451,7 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 
 	//count all the terrain types found, and see which one
 	//is the most common, and use it.
-	t_translation::t_letter used_terrain = 0;
+	t_translation::t_letter used_terrain;
 	int terrain_count = 0;
 	for(int i = 0; i != nitems; ++i) {
 		if(items[i] != used_terrain && !is_village(items[i]) && !is_keep(items[i])) {

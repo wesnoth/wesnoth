@@ -570,19 +570,17 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 	int lineno = (map[0][0] == t_translation::NONE_TERRAIN) ? 1 : 0;
 	int x = lineno;
 	int y = 0;
-	
 	for(size_t y_off = 0; y_off < map.size(); ++y_off) {
 		for(size_t x_off = x; x_off < map[y_off].size(); ++x_off) {
 
 			const t_translation::t_letter terrain = map[y_off][x_off];
-			const int  anchor = t_translation::cast_to_builder_number(terrain);
 
-			if(terrain == t_translation::TB_DOT) {
+			if(terrain.base == t_translation::TB_DOT) {
 				// Dots are simple placeholders, which do not
 				// represent actual terrains.
-			} else if (anchor != 0 ) {
-				anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, y)));
-			} else if (terrain == t_translation::TB_STAR) {
+			} else if (terrain.overlay != 0 ) {
+				anchors.insert(std::pair<int, gamemap::location>(terrain.overlay, gamemap::location(x, y)));
+			} else if (terrain.base == t_translation::TB_STAR) {
 				add_constraints(br.constraints, gamemap::location(x, y), t_translation::STAR, global_images);
 			} else {
 					ERR_NG << "Invalid terrain (" << t_translation::write_letter(terrain) << ") in builder map\n";

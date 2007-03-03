@@ -624,7 +624,7 @@ bool terrain_converter::convert_terrain(const t_translation::t_letter terrain,
 		const int height, const int temperature) const
 {
 	return std::find(from.begin(),from.end(),terrain) != from.end() && height >= min_height && height <= max_height &&
-	       temperature >= min_temp && temperature <= max_temp && to != 0;
+	       temperature >= min_temp && temperature <= max_temp && to != t_translation::NONE_TERRAIN;
 }
 
 t_translation::t_letter terrain_converter::convert_to() const

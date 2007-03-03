@@ -35,8 +35,41 @@
 
 namespace t_translation {
 
-	//The definitions for a terrain
-	typedef Uint32 t_letter;
+	// The definitions for a terrain
+	/**
+	 * A terrain string which is converted to a terrain is a string with 1 or 2 layers
+	 * the layers are separated by a caret and each group consists of 2 to 4 characters
+	 * if no second layer is defined it is stored as 0xFFFFFFFF, if the second layer 
+	 * is empty (needed for matching) the layer has the value 0.
+	 */
+	struct t_letter {
+		t_letter(const std::string& b);
+		t_letter(const std::string& b, const std::string& o);
+		t_letter(const Uint32& b, const Uint32& o) : base(b), overlay(o) {};
+		t_letter() : base(0), overlay(0xFFFFFFFF) {}
+
+		Uint32 base;
+		Uint32 overlay;
+	};
+	const t_letter NONE_TERRAIN = t_letter();
+
+	inline bool operator<(const t_letter& a, const t_letter& b) 
+		{ return a.base < b.base ||  (a.base == b.base && a.overlay < b.overlay); } 
+	
+	inline bool operator==(const t_letter& a, const t_letter& b) 
+		{ return a.base == b.base && a.overlay == b.overlay; }
+	
+	inline bool operator!=(const t_letter& a, const t_letter& b) 
+		{ return a.base != b.base || a.overlay != b.overlay; }
+
+	inline t_letter operator&(const t_letter& a, const t_letter& b)
+		{ return t_letter(a.base & b.base, a.overlay & b.overlay); }
+
+	inline t_letter operator|(const t_letter& a, const t_letter& b)
+		{ return t_letter(a.base | b.base, a.overlay | b.overlay); }
+
+	// operator<< is defined later
+	
 	typedef std::vector<t_letter> t_list;
 	typedef std::vector<std::vector<t_letter> > t_map;
 
@@ -48,7 +81,7 @@ namespace t_translation {
 	struct t_match{
 		t_match(){};
 		t_match(const std::string& str);
-		t_match(const t_letter letter);
+		t_match(const t_letter& letter);
 		~t_match(){};
 
 		t_list terrain;	
@@ -101,7 +134,6 @@ namespace t_translation {
 	extern const t_letter MINUS; 	// -
 	extern const t_letter NOT;		// !
 	extern const t_letter STAR; 	// *
-	const t_letter NONE_TERRAIN = 0;
 		
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	//the terrain format lets the terrain functions know what to expect
@@ -123,7 +155,9 @@ namespace t_translation {
 	 * 					[a-Z][A-Z]/|\_ The underscore is intended for internal
 	 * 					use. Other letters and characters are not validated but
 	 * 					users of these letters can get nasty surprices. The * 
-	 * 					is used as wildcard in some cases.
+	 * 					is used as wildcard in some cases. This letter can
+	 * 					be two groups separated by a caret, the first group
+	 * 					is the base terrain, the second the overlay terrain.
 	 * 
 	 * @param t_format	The format to read
 	 *
@@ -139,7 +173,9 @@ namespace t_translation {
 	 *
 	 * @return			A string containing the letter
 	 */
-	std::string write_letter(const t_letter letter);
+	std::string write_letter(const t_letter& letter);
+	inline std::ostream &operator<<(std::ostream &s, const t_letter &a)
+		{ s << write_letter(a); return s; }
 	
 	/** 
 	 * Reads a list of terrain from a string, when reading the 
@@ -226,12 +262,23 @@ namespace t_translation {
 	 * W*, {!, Ww}	does match and returns false (due to the !)
 	 * Ww, WW		doesn't match and return false
 	 *
-	 * @param src	the value to match (may also contain the wildcard)
-	 * @param dest the list of values to match against
+	 * Multilayer rules:
+	 * If a terrain has multiple layers a wildcard on the first layer also
+	 * matches the following layer unless a caret is used, in this case 
+	 * there is no need to put anything behind the caret
 	 *
-	 * @returns	the result of the match (depending on the !'s)
+	 * Example:
+	 * A*       matches Abcd but also Abcd^Abcd
+	 * A*^*     matches Abcd but also Abcd^Abcd
+	 * A*^      matches Abcd but *not* Abcd^Abcd
+	 * A*^Abcd  does not match Abcd but matches Abcd^Abcd
+	 *
+	 * @param src	the value to match (may also contain the wildcard)
+	 * @param dest	the list of values to match against
+	 *
+	 * @returns		the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_letter src, const t_list& dest);
+	bool terrain_matches(const t_letter& src, const t_list& dest);
 
 	/** 
 	 * Tests whether a certain terrain matches another terrain, for matching 
@@ -240,9 +287,9 @@ namespace t_translation {
 	 * @param src	the value to match (may also contain the wildcard)
 	 * @param dest 	the value to match against
 	 *
-	 * @returns	the result of the match (depending on the !'s)
+	 * @returns		the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_letter src, const t_letter dest);
+	bool terrain_matches(const t_letter& src, const t_letter& dest);
 	
 	/** 
 	 * Tests whether a certain terrain matches another terrain, for matching 
@@ -255,7 +302,7 @@ namespace t_translation {
 	 *
 	 * @returns	the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_letter src, const t_match& dest);
+	bool terrain_matches(const t_letter& src, const t_match& dest);
 
 	/** 
 	 * Tests wither a terrain contains a wildcard
@@ -264,7 +311,7 @@ namespace t_translation {
 	 *
 	 *  @returns	true if wildcard found else false
 	 */
-	bool has_wildcard(const t_letter letter);
+	bool has_wildcard(const t_letter& letter);
 
 	/** 
 	 * Tests wither a terrain list contains at least
@@ -278,34 +325,31 @@ namespace t_translation {
 
 	// these terrain letters are in the builder format, and 
 	// not usable in other parts of the engine
-	const t_letter TB_STAR = '*'; //it can be assumed this is the equivalent of STAR
-	const t_letter TB_DOT = '.';
+	const Uint32 TB_STAR = '*' << 24; //it can be assumed this is the equivalent of STAR
+	const Uint32 TB_DOT = '.' << 24;
 	
 	/** 
 	 * Reads a builder map, a builder map differs much from a normal map hence
 	 * the different functions
 	 *
-	 * @param str		The map data, the exact rules are not stated yet since still 
-	 * 					in development
+	 * @param str		The map data, a terrain letter is either a * or a . or a number as
+	 * 					anchor. The star or dot are stored in the base part of the terrain
+	 * 					and the anchor in the overlay part. If more letters are allowed as
+	 * 					special case they will be stored in the base part. Anchor 0 is no 
+	 * 					anchor
 	 *
 	 * @returns			A 2D vector with the data found the vector data is stored
 	 * 					like result[y][x] where x the column number is and y the row number.
 	 */
 	t_map read_builder_map(const std::string& str); 
 
-	/** 
-	 * Translates a terrain number to the map number, since
-	 * there are some differences between the two
-	 */
-	t_letter cast_to_builder_number(const t_letter terrain); 
-	
 /***************************************************************************************/
 	
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 	// The terrain letter is an old letter and will be converted with get_letter
-	void add_translation(const std::string& letter, const t_letter number);
+	void add_translation(const std::string& letter, const t_letter& number);
 
-	std::string get_old_letter(const t_letter number);
+	std::string get_old_letter(const t_letter& number);
 #endif	
 
 };

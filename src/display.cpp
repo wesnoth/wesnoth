@@ -1706,7 +1706,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	t_translation::t_letter tiles[6];
 	
 	static const t_translation::t_letter terrain_types[] = 
-		{ t_translation::FOGGED, t_translation::VOID_TERRAIN, 0 };
+		{ t_translation::FOGGED, t_translation::VOID_TERRAIN, t_translation::NONE_TERRAIN };
 
 	for(int i = 0; i != 6; ++i) {
 		if(shrouded(adjacent[i].x,adjacent[i].y)) {
@@ -1720,7 +1720,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 
 
 	for(const t_translation::t_letter *terrain = terrain_types; 
-			*terrain != 0; terrain ++) {
+			*terrain != t_translation::NONE_TERRAIN; terrain ++) {
 
 		//find somewhere that doesn't have overlap to use as a starting point
 		int start;
