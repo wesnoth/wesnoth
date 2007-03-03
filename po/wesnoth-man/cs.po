@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "POT-Creation-Date: 2007-03-02 22:06+0100\n"
-"PO-Revision-Date: 2007-02-09 17:50+0100\n"
+"PO-Revision-Date: 2007-03-03 15:10+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -232,9 +232,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:83
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--max-fps>"
-msgstr "B<--fps>"
+msgstr "B<--max-fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:87
@@ -242,6 +242,8 @@ msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is 50."
 msgstr ""
+"počet snímků za sekundu které může hra zobrazit, hodnota by měla náležet do "
+"rozsahu 1 až 1000, implicitně 50."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:87
@@ -474,7 +476,8 @@ msgid ""
 "selects a multiplayer scenario. The default scenario is \"multiplayer_Charge"
 "\"."
 msgstr ""
-"vybírá scénář pro hru více hráčů. Defaultní scénář je \"multiplayer_Charge\"."
+"vybírá scénář pro hru více hráčů. Implicitní scénář je \"multiplayer_Charge"
+"\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:155
