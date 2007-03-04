@@ -967,7 +967,9 @@ t_letter string_to_number_(std::string str, int& start_position)
 
     offset = str.find('^', 0);
     if(offset !=  std::string::npos) {
-		result = t_letter(std::string(str, 0, offset), std::string(str, offset + 1));
+		const std::string base_str(str, 0, offset);
+		const std::string overlay_str(str, offset + 1, str.size());
+		result = t_letter(base_str, overlay_str);
 	} else {
 		result = t_letter(str);
 	}	
