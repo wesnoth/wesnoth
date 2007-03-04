@@ -26,8 +26,8 @@ wesnothd \- deamon de rede para jogos multijogadores de Battle for \fBWesnoth\fP
 .
 .SH SINOPSE
 .
-\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIcaminho\fP\|] [\|\fB\-p\fP \fIporta\fP\|]
+[\|\fB\-t\fP \fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
 .
 .SH DESCRIÇÃO
 .
@@ -53,12 +53,12 @@ conecta o servidor à porta escolhida. Se nenhum número de porta for
 escolhido, porta 15000 será usada.
 .TP 
 \fB\-t,\ \-\-threads\fP\fI\ número\fP
-sets the maximum number of waiting worker threads for network I/O to n
-(default: 5, max: 30).
+muda para 'n' o número máximo de threads em espera para a entrada e saida da
+rede. (padrão: 5, máximo: 30).
 .TP 
-\fB\-T,\ \-\-max\-threads\fP\fI\ number\fP
-sets the maximum number of worker threads that will be created if set to 0
-there will be no limit (default: 0).
+\fB\-T,\ \-\-max\-threads\fP\fI\ número\fP
+configura o número máximo de threads de trabalho que serão criadas. Se 0,
+não há limite (padrão: 0).
 .TP 
 \fB\-V,\ \-\-version\fP
 mostra o número da versão e termina.
