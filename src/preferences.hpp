@@ -84,6 +84,9 @@ namespace preferences {
 	int bell_volume();
 	void set_bell_volume(int vol);
 
+	int UI_volume();
+	void set_UI_volume(int vol);
+
 	bool music_on();
 	bool set_music(bool ison);
 
@@ -127,7 +130,10 @@ namespace preferences {
 	void enable_mouse_scroll(bool value);
 
 	bool turn_bell();
-	void set_turn_bell(bool ison);
+	bool set_turn_bell(bool ison);
+
+	bool UI_sound_on();
+	bool set_UI_sound(bool ison);
 
 	bool message_bell();
 

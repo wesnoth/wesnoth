@@ -206,6 +206,7 @@ protected:
 	virtual void draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
 	style *style_;
+	bool silent_;
 private:
 	size_t max_items_onscreen() const;
 

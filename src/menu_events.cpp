@@ -215,6 +215,7 @@ namespace events{
 			items.push_back(str.str());
 		}
 
+		input_blocker *button_flush = NULL;
 		for(;;) {
 			//add player's name to title of dialog
 			std::stringstream str;
@@ -225,11 +226,13 @@ namespace events{
 
 			statistics_dialog stats_dialog(*gui_, str.str());
 			stats_dialog.set_menu(items);
-			const int res = stats_dialog.show();
+			delete button_flush;
+			button_flush = NULL;
+			stats_dialog.show();
 			std::string title;
 			std::vector<std::string> items_sub;
 
-			switch(res) {
+			switch(stats_dialog.result()) {
 			case gui::CLOSE_DIALOG:
 				return;
 			case 0:
@@ -256,8 +259,10 @@ namespace events{
 				break;
 			}
 
-			if (items_sub.empty() == false)
-				gui::show_dialog2(*gui_, NULL, "", title, gui::OK_ONLY, &items_sub);
+			if (items_sub.empty() == false) {
+				gui::show_dialog2(*gui_, NULL, "", title, gui::CLOSE_ONLY, &items_sub);
+				button_flush = new input_blocker();
+			}
 		}
 	}
 

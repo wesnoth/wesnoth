@@ -217,8 +217,8 @@ private:
 
 //	
 	// change
-	gui::slider music_slider_, sound_slider_, bell_slider_, scroll_slider_, gamma_slider_,
-				chat_lines_slider_, buffer_size_slider_;
+	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_, scroll_slider_,
+				gamma_slider_, chat_lines_slider_, buffer_size_slider_;
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, show_grid_button_,
 				lobby_minimaps_button_, show_lobby_joins_button1_, show_lobby_joins_button2_, show_lobby_joins_button3_, sort_list_by_group_button_,
@@ -226,9 +226,9 @@ private:
 				turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 				show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
 				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_,
-				advanced_sound_button_, normal_sound_button_,
+				advanced_sound_button_, normal_sound_button_, UI_sound_button_,
 				sample_rate_button1_, sample_rate_button2_, sample_rate_button3_, confirm_sound_button_;
-	gui::label music_label_, sound_label_, bell_label_, scroll_label_,
+	gui::label music_label_, sound_label_, bell_label_, UI_sound_label_, scroll_label_,
 				gamma_label_, chat_lines_label_, turbo_slider_label_,
 				sample_rate_label_, buffer_size_label_;
 	gui::textbox sample_rate_input_, friends_input_;
@@ -249,7 +249,8 @@ private:
 //change
 preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
-	  music_slider_(disp.video()), sound_slider_(disp.video()), bell_slider_(disp.video()),
+	  music_slider_(disp.video()), sound_slider_(disp.video()), UI_sound_slider_(disp.video()),
+	  bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()), chat_lines_slider_(disp.video()),
 	  buffer_size_slider_(disp.video()), turbo_slider_(disp.video()), 
 
@@ -263,7 +264,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_lobby_joins_button3_(disp.video(), _("Show All Lobby Joins"), gui::button::TYPE_CHECK),
 	  sort_list_by_group_button_(disp.video(), _("Sort Lobby List"), gui::button::TYPE_CHECK),
 	  iconize_list_button_(disp.video(), _("Iconize Lobby List"), gui::button::TYPE_CHECK),
-	  friends_list_button_(disp.video(), _("Your Friends List")),
+	  friends_list_button_(disp.video(), _("Friends List")),
 	  friends_back_button_(disp.video(), _("Multiplayer Options")),
 	  friends_add_friend_button_(disp.video(), _("Add As Friend")),
 	  friends_add_ignore_button_(disp.video(), _("Add As Ignore")),
@@ -285,12 +286,14 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  chat_timestamp_button_(disp.video(), _("Chat Timestamping"), gui::button::TYPE_CHECK),
 	  advanced_sound_button_(disp.video(), _("Advanced Mode")),
 	  normal_sound_button_(disp.video(), _("Normal Mode")),
+	  UI_sound_button_(disp.video(), _("User Interface Sounds"), gui::button::TYPE_CHECK),
 	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_CHECK),
 	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_CHECK),
 	  sample_rate_button3_(disp.video(), _("Custom"), gui::button::TYPE_CHECK),
 	  confirm_sound_button_(disp.video(), _("Apply")),
 
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
+	  UI_sound_label_(disp.video(), _("UI Sound Volume:")),
 	  bell_label_(disp.video(), _("Bell Volume:")), scroll_label_(disp.video(), _("Scroll Speed:")),
 	  gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(), ""),
 	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
@@ -335,6 +338,13 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	bell_slider_.set_max(128);
 	bell_slider_.set_value(bell_volume());
 	bell_slider_.set_help_string(_("Change the bell volume"));
+
+	UI_sound_button_.set_check(UI_sound_on());
+	UI_sound_button_.set_help_string(_("Turn menu and button sounds on/off"));
+	UI_sound_slider_.set_min(0);
+	UI_sound_slider_.set_max(128);
+	UI_sound_slider_.set_value(UI_volume());
+	UI_sound_slider_.set_help_string(_("Change the sound volume for button clicks, etc."));
 
 	sample_rate_label_.set_help_string(_("Change the sample rate"));
 	std::string rate = lexical_cast<std::string>(sample_rate());
@@ -470,7 +480,8 @@ handler_vector preferences_dialog::handler_members()
 	handler_vector h;
 	h.push_back(&music_slider_);
 	h.push_back(&sound_slider_);
-	h.push_back(&bell_slider_); //change
+	h.push_back(&bell_slider_);
+	h.push_back(&UI_sound_slider_);
 	h.push_back(&scroll_slider_);
 	h.push_back(&gamma_slider_);
 	h.push_back(&chat_lines_slider_);
@@ -495,6 +506,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
 	h.push_back(&turn_bell_button_);
+	h.push_back(&UI_sound_button_);
 	h.push_back(&show_team_colours_button_);
 	h.push_back(&show_colour_cursors_button_);
 	h.push_back(&show_haloing_button_);
@@ -516,6 +528,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&music_label_);
 	h.push_back(&sound_label_);
 	h.push_back(&bell_label_);
+	h.push_back(&UI_sound_label_);
 	h.push_back(&scroll_label_);
 	h.push_back(&gamma_label_);
 	h.push_back(&turbo_slider_label_);
@@ -537,13 +550,16 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	const int horizontal_padding = 25;
 #if USE_TINY_GUI
 	const int top_border = 14;
+	const int bottom_border = 0;
 	const int short_interline = 20;
 	const int item_interline = 20;
 #else
 	const int top_border = 28;
+	const int bottom_border = 40;
 	const int short_interline = 20;
 	const int item_interline = 50;
 #endif
+	const int bottom_row_y = rect.y + rect.h - bottom_border;
 
 	// General tab
 	int ypos = rect.y + top_border;
@@ -561,7 +577,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; turn_dialog_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
-	ypos += item_interline; hotkeys_button_.set_location(rect.x, ypos);
+	hotkeys_button_.set_location(rect.x, bottom_row_y - hotkeys_button_.height());
 
 	// Display tab
 	ypos = rect.y + top_border;
@@ -580,11 +596,13 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	theme_button_.set_location(rect.x+video_mode_button_.width()+10, ypos);
 
 	// Sound tab
-	slider_label_width_ = maximum<unsigned>(maximum<unsigned>(music_label_.width(), sound_label_.width()), bell_label_.width());
+	slider_label_width_ = maximum<unsigned>(music_label_.width(), sound_label_.width());
+	slider_label_width_ = maximum<unsigned>(slider_label_width_, bell_label_.width());
+	slider_label_width_ = maximum<unsigned>(slider_label_width_, UI_sound_label_.width());
 	ypos = rect.y + top_border;
 	sound_button_.set_location(rect.x, ypos);
 
-	ypos += item_interline;
+	ypos += short_interline;
 	sound_label_.set_location(rect.x, ypos);
 	const SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
 								rect.w - slider_label_width_ - right_border, 0 };
@@ -593,7 +611,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline;
 	music_button_.set_location(rect.x, ypos);
 
-	ypos += item_interline;
+	ypos += short_interline;
 	music_label_.set_location(rect.x, ypos);
 	const SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
 								rect.w - slider_label_width_ - right_border, 0 };
@@ -601,14 +619,20 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	ypos += item_interline; //Bell slider
 	turn_bell_button_.set_location(rect.x, ypos);
-	ypos += item_interline;
+	ypos += short_interline;
 	bell_label_.set_location(rect.x, ypos);
 	const SDL_Rect bell_rect = {rect.x + slider_label_width_, ypos,
 								rect.w - slider_label_width_ - right_border, 0 };
 	bell_slider_.set_location(bell_rect);
-	ypos += item_interline;
-	const int asb_x = rect.x + rect.w - advanced_sound_button_.width() - right_border;
-	advanced_sound_button_.set_location(asb_x, ypos);
+
+	ypos += item_interline; //UI sound slider
+	UI_sound_button_.set_location(rect.x, ypos);
+	ypos += short_interline;
+	UI_sound_label_.set_location(rect.x, ypos);
+	const SDL_Rect UI_sound_rect = {rect.x + slider_label_width_, ypos,
+								rect.w - slider_label_width_ - right_border, 0 };
+	UI_sound_slider_.set_location(UI_sound_rect);
+	advanced_sound_button_.set_location(rect.x, bottom_row_y - advanced_sound_button_.height());
 
 
 	//Advanced Sound tab
@@ -653,8 +677,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += short_interline; show_lobby_joins_button2_.set_location(rect.x, ypos);
 	ypos += short_interline; show_lobby_joins_button3_.set_location(rect.x, ypos);
 	
-	const int flb_x = rect.x + rect.w - friends_list_button_.width() - right_border;
-	ypos += short_interline; friends_list_button_.set_location(flb_x, ypos);
+	friends_list_button_.set_location(rect.x, bottom_row_y - friends_list_button_.height());
 
 	//Friends tab
 	ypos = rect.y + top_border;
@@ -691,8 +714,11 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 void preferences_dialog::process_event()
 {
 	if (tab_ == GENERAL_TAB) {
-		if (turbo_button_.pressed())
+		if (turbo_button_.pressed()) {
 			set_turbo(turbo_button_.checked());
+			turbo_slider_.enable(turbo());
+			turbo_slider_label_.enable(turbo());
+		}
 		if (show_ai_moves_button_.pressed())
 			set_show_ai_moves(!show_ai_moves_button_.checked());
 		if (show_grid_button_.pressed())
@@ -745,18 +771,33 @@ void preferences_dialog::process_event()
 
 
 	if (tab_ == SOUND_TAB) {
-		if (turn_bell_button_.pressed())
-			set_turn_bell(turn_bell_button_.checked());
+		if (turn_bell_button_.pressed()) {
+			if(!set_turn_bell(turn_bell_button_.checked()))
+				turn_bell_button_.set_check(false);
+			bell_slider_.enable(turn_bell());
+			bell_label_.enable(turn_bell());
+		}
 		if (sound_button_.pressed()) {
 			if(!set_sound(sound_button_.checked()))
 				sound_button_.set_check(false);
+			sound_slider_.enable(sound_on());
+			sound_label_.enable(sound_on());
+		}
+		if (UI_sound_button_.pressed()) {
+			if(!set_UI_sound(UI_sound_button_.checked()))
+				UI_sound_button_.set_check(false);
+			UI_sound_slider_.enable(UI_sound_on());
+			UI_sound_label_.enable(UI_sound_on());
 		}
 		set_sound_volume(sound_slider_.value());
+		set_UI_volume(UI_sound_slider_.value());
 		set_bell_volume(bell_slider_.value());
 
 		if (music_button_.pressed()) {
 			if(!set_music(music_button_.checked()))
 				music_button_.set_check(false);
+			music_slider_.enable(music_on());
+			music_label_.enable(music_on());
 		}
 		set_music_volume(music_slider_.value());
 
@@ -1009,6 +1050,8 @@ void preferences_dialog::set_selection(int index)
 	turbo_button_.hide(hide_general);
 	turbo_slider_label_.hide(hide_general);
 	turbo_slider_.hide(hide_general);
+	turbo_slider_label_.enable(turbo());
+	turbo_slider_.enable(turbo());
 	show_ai_moves_button_.hide(hide_general);
 	turn_dialog_button_.hide(hide_general);
 	hotkeys_button_.hide(hide_general);
@@ -1036,9 +1079,20 @@ void preferences_dialog::set_selection(int index)
 	sound_button_.hide(hide_sound);
 	sound_label_.hide(hide_sound);
 	sound_slider_.hide(hide_sound);
+	UI_sound_button_.hide(hide_sound);
+	UI_sound_label_.hide(hide_sound);
+	UI_sound_slider_.hide(hide_sound);
 	turn_bell_button_.hide(hide_sound);
 	bell_label_.hide(hide_sound);
 	bell_slider_.hide(hide_sound);
+	music_slider_.enable(music_on());
+	bell_slider_.enable(turn_bell());
+	sound_slider_.enable(sound_on());
+	UI_sound_slider_.enable(UI_sound_on());
+	music_label_.enable(music_on());
+	bell_label_.enable(turn_bell());
+	sound_label_.enable(sound_on());
+	UI_sound_label_.enable(UI_sound_on());
 	advanced_sound_button_.hide(hide_sound);
 
 	const bool hide_advanced_sound = tab_ != ADVANCED_SOUND_TAB;

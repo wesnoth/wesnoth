@@ -25,6 +25,7 @@
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
+#include "sound.hpp"
 #include "show_dialog.hpp"
 #include "unit.hpp"
 #include "util.hpp"
@@ -1432,6 +1433,7 @@ help_menu::help_menu(CVideo &video, section const &toplevel, int max_height)
 : gui::menu(video, empty_string_vector, true, max_height, -1, NULL, &gui::menu::bluebg_style),
 	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "")
 {
+	silent_ = true; //silence the default menu sounds
 	update_visible_items(toplevel_);
 	display_visible_items();
 	if (!visible_items_.empty())
@@ -1447,12 +1449,14 @@ void help_menu::expand(const section &sec)
 {
 	if (sec.id != "toplevel") {
 		expanded_.insert(&sec);
+		sound::play_UI_sound(game_config::sounds::menu_expand);
 	}
 }
 
 void help_menu::contract(const section &sec)
 {
 	expanded_.erase(&sec);
+	sound::play_UI_sound(game_config::sounds::menu_contract);
 }
 
 void help_menu::update_visible_items(const section &sec, unsigned level)
@@ -1534,6 +1538,7 @@ void help_menu::select_topic(const topic &t)
 			 it != visible_items_.end(); it++) {
 			if (*it == t) {
 				selected_item_ = *it;
+				sound::play_UI_sound(game_config::sounds::menu_select);
 				break;
 			}
 		}

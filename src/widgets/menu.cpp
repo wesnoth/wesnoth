@@ -15,10 +15,12 @@
 
 #include "widgets/menu.hpp"
 
-#include "language.hpp"
+#include "game_config.hpp"
 #include "font.hpp"
 #include "image.hpp"
+#include "language.hpp"
 #include "marked-up_text.hpp"
+#include "sound.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
 #include "video.hpp"
@@ -148,7 +150,7 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 menu::menu(CVideo& video, const std::vector<std::string>& items,
            bool click_selects, int max_height, int max_width,
 		   const sorter* sorter_obj, style *menu_style, const bool auto_join)
-        : scrollarea(video, auto_join),
+        : scrollarea(video, auto_join), silent_(false),
           max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
 		  heading_height_(-1),
 	  cur_help_(-1,-1), help_string_(-1),
@@ -489,6 +491,9 @@ void menu::set_selection_pos(size_t new_selected, SELECTION_MOVE_VIEWPORT move_v
 
 	if(move_viewport == MOVE_VIEWPORT) {
 		adjust_viewport_to_selection();
+		if(!silent_) {
+			sound::play_UI_sound(game_config::sounds::menu_select);
+		}
 	}
 }
 

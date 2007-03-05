@@ -14,8 +14,10 @@
 #include "global.hpp"
 
 #include "widgets/slider.hpp"
+#include "game_config.hpp"
 #include "font.hpp"
 #include "image.hpp"
+#include "sound.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -179,6 +181,9 @@ void slider::mouse_motion(const SDL_MouseMotionEvent& event)
 	} else if (state_ == CLICKED || state_ == DRAGGED) {
 		state_ = DRAGGED;
 		set_slider_position(event.x);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		}
 	}
 }
 
@@ -190,6 +195,11 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 	state_ = CLICKED;
 	set_focus(true);
 	set_slider_position(event.x);
+	if(value_change_) {
+		sound::play_UI_sound(game_config::sounds::slider_adjust);
+	} else {
+		sound::play_UI_sound(game_config::sounds::button_press);
+	}
 }
 
 bool slider::requires_event_focus(const SDL_Event* event) const
@@ -238,8 +248,10 @@ void slider::handle_event(const SDL_Event& event)
 			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 			const int c = key.sym;
 			if(c == SDLK_LEFT) {
+				sound::play_UI_sound(game_config::sounds::slider_adjust);
 				set_value(value_ - increment_);
 			} else if(c == SDLK_RIGHT) {
+				sound::play_UI_sound(game_config::sounds::slider_adjust);
 				set_value(value_ + increment_);
 			}
 		}

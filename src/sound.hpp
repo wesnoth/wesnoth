@@ -30,6 +30,7 @@ void reset_sound();
 
 void stop_music();
 void stop_sound();
+void stop_UI_sound();
 void stop_bell();
 
 // Read config entry, alter track list accordingly.
@@ -65,6 +66,9 @@ void play_sound_positioned(const std::string &files, int id, unsigned int distan
 // Play sound, or random one of comma-separated sounds in bell channel
 void play_bell(const std::string& files);
 
+// Play user-interface sound, or random one of comma-separated sounds.
+void play_UI_sound(const std::string& files);
+
 // Called from event loop to see if we need new music track.
 void think_about_music(void);
 
@@ -74,6 +78,7 @@ void write_music_play_list(config& snapshot);
 void set_music_volume(int vol);
 void set_sound_volume(int vol);
 void set_bell_volume(int vol);
+void set_UI_volume(int vol);
 
 }
 

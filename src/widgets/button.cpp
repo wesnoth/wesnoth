@@ -14,10 +14,12 @@
 #include "global.hpp"
 
 #include "widgets/button.hpp"
+#include "game_config.hpp"
 #include "font.hpp"
 #include "marked-up_text.hpp"
 #include "image.hpp"
 #include "log.hpp"
+#include "sound.hpp"
 #include "util.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
@@ -271,6 +273,7 @@ void button::mouse_down(SDL_MouseButtonEvent const &event)
 {
 	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT && type_ != TYPE_CHECK){
 		state_ = PRESSED;
+		sound::play_UI_sound(game_config::sounds::button_press);
 	}
 }
 
@@ -288,6 +291,7 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 	case TYPE_CHECK:
 		state_ = state_ == ACTIVE ? PRESSED_ACTIVE : ACTIVE;
 		pressed_ = true;
+		sound::play_UI_sound(game_config::sounds::checkbox_release);
 		break;
 	case TYPE_PRESS:
 		if (state_ == PRESSED) {

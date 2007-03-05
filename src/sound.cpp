@@ -37,12 +37,20 @@ namespace {
 bool mix_ok = false;
 unsigned music_start_time = 0;
 unsigned bell_volume;
+
 const size_t n_of_channels = 16;	// number of allocated channels
+const size_t bell_channel = 0;
+const size_t source_channel_start = 1;
 const size_t source_channels = n_of_channels - 6;	// number of channels reserved for sound sources
+const size_t UI_sound_channel = source_channels + 1;
+const size_t n_reserved_channels = source_channels + 2; // sources, bell, and UI
 
 enum channel_groups {
+	NULL_CHANNEL = -1,
 	SOUND_SOURCES = 0,
-	OTHER
+	SOUND_BELL,
+	SOUND_UI,
+	SOUND_FX
 };
 
 // Max number of sound chunks that we want to cache
@@ -262,14 +270,19 @@ bool init_sound() {
 
 		mix_ok = true;
 		Mix_AllocateChannels(n_of_channels);
-		Mix_ReserveChannels(source_channels);
+		Mix_ReserveChannels(n_reserved_channels);
 
 		channel_chunks.resize(n_of_channels, 0);
 		channel_ids.resize(source_channels, -1);
 
-		Mix_GroupChannels(1, source_channels, SOUND_SOURCES);
+		const size_t source_channel_last = source_channels - source_channel_start + 1;
+		Mix_GroupChannels(source_channel_start, source_channel_last, SOUND_SOURCES);
+		Mix_GroupChannel(bell_channel, SOUND_BELL);
+		Mix_GroupChannel(UI_sound_channel, SOUND_UI);
+		Mix_GroupChannels(n_reserved_channels, n_of_channels-1, SOUND_FX);
 
 		set_sound_volume(preferences::sound_volume());
+		set_UI_volume(preferences::UI_volume());
 		set_music_volume(preferences::music_volume());
 		set_bell_volume(preferences::bell_volume());
 
@@ -287,6 +300,7 @@ void close_sound() {
 	Uint16 format;
 	if(mix_ok) {
 		stop_bell();
+		stop_UI_sound();
 		stop_sound();
 		stop_music();
 		mix_ok = false;
@@ -309,14 +323,17 @@ void close_sound() {
 void reset_sound() {
 	bool music = preferences::music_on();
 	bool sound = preferences::sound_on();
+	bool UI_sound = preferences::UI_sound_on();
 	bool bell = preferences::turn_bell();
-	if (music || sound || bell) {
+	if (music || sound || bell || UI_sound) {
 		sound::close_sound();
 		sound::init_sound();
 		if (!music)
 			sound::stop_music();
 		if (!sound)
 			sound::stop_sound();
+		if (!UI_sound)
+			sound::stop_UI_sound();
 		if (!bell)
 			sound::stop_bell();
 	}
@@ -336,8 +353,8 @@ void stop_music() {
 void stop_sound() {
 	if(mix_ok) {
 		{
-			for (unsigned i = 0; i < n_of_channels; i++)
-				Mix_HaltChannel(i);
+			Mix_HaltGroup(SOUND_SOURCES);
+			Mix_HaltGroup(SOUND_FX);
 		}
 
 		std::map<std::string,Mix_Chunk*>::iterator i;
@@ -349,7 +366,12 @@ void stop_sound() {
 
 void stop_bell() {
 	if(mix_ok)
-		Mix_HaltChannel(15);
+		Mix_HaltGroup(SOUND_BELL);
+}
+
+void stop_UI_sound() {
+	if(mix_ok)
+		Mix_HaltGroup(SOUND_UI);
 }
 
 void think_about_music(void)
@@ -556,11 +578,11 @@ void play_sound_positioned(const std::string &files, int id, unsigned int distan
 	play_sound(files, channel);
 }
 
-void play_sound(const std::string& files, int channel)
+void play_sound_internal(const std::string& files, int channel, bool sound_on)
 {
 	if(files.empty()) return;
 
-	if(preferences::sound_on() && mix_ok) {
+	if(sound_on && mix_ok) {
 		std::string file = pick_one(files);
 
 		// remove a random chunk from cache if it's full
@@ -633,14 +655,23 @@ void play_sound(const std::string& files, int channel)
 	}
 }
 
+void play_sound(const std::string& files, int channel)
+{
+	play_sound_internal(files, channel, preferences::sound_on());
+}
+
 // Play bell on separate volume than sound
 void play_bell(const std::string& files)
 {
-	if(files.empty()) return;
-
-	if(preferences::turn_bell() && mix_ok)
-		play_sound(files, 0);
+	play_sound_internal(files, bell_channel, preferences::turn_bell());
 }
+
+// Play UI sounds on separate volume than soundfx
+void play_UI_sound(const std::string& files)
+{
+	play_sound_internal(files, UI_sound_channel, preferences::UI_sound_on());
+}
+
 
 void set_music_volume(int vol)
 {
@@ -658,8 +689,10 @@ void set_sound_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 
 		// Bell has separate channel which we can't set up from this
-		for (unsigned i = 1; i < n_of_channels; i++){
-			Mix_Volume(i, vol);
+		for (unsigned i = 0; i < n_of_channels; i++){
+			if(i != UI_sound_channel && i != bell_channel) {
+				Mix_Volume(i, vol);
+			}
 		}
 	}
 }
@@ -670,7 +703,17 @@ void set_bell_volume(int vol)
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
 
-		Mix_Volume(0, vol);
+		Mix_Volume(bell_channel, vol);
+	}
+}
+
+void set_UI_volume(int vol)
+{
+	if(mix_ok && vol >= 0) {
+		if(vol > MIX_MAX_VOLUME)
+			vol = MIX_MAX_VOLUME;
+
+		Mix_Volume(UI_sound_channel, vol);
 	}
 }
 

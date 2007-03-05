@@ -84,6 +84,12 @@ namespace game_config
 		                  receive_message = "receive.wav",
 						  user_arrive = "arrive.wav",
 						  user_leave = "leave.wav";
+		const std::string button_press = "UI/button.wav",
+		                  checkbox_release = "UI/checkbox.wav",
+						  slider_adjust = "UI/slider.wav",
+						  menu_expand = "UI/expand.wav",
+						  menu_contract = "UI/contract.wav",
+						  menu_select = "UI/select.wav";
 	}
 
 
