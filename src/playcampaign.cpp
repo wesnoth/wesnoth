@@ -66,13 +66,14 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	//'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
+	if (gamestate.starting_pos.empty()){
+		//backwards compatibility code for 1.2 and 1.2.1
+		scenario = game_config.find_child(type,"id",gamestate.scenario);
+		gamestate.starting_pos = *scenario;
+	}
 	recorder.set_save_info(gamestate);
 	starting_pos = gamestate.starting_pos;
 	scenario = &starting_pos;
-
-	controller_map controllers;
-
-	const std::string current_scenario = gamestate.scenario;
 
 	try {
 		// preserve old label eg. replay
