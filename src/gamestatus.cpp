@@ -431,6 +431,8 @@ game_state read_game(const game_data& data, const config* cfg)
 	res.scenario = (*cfg)["scenario"];
 	res.campaign = (*cfg)["campaign"];
 
+	const config* snapshot = cfg->child("snapshot");
+
 	const config::child_list& players = cfg->get_children("player");
 
 	if(players.empty()) {
@@ -452,6 +454,53 @@ game_state read_game(const game_data& data, const config* cfg)
 	} else {
 		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
 			std::string save_id = (**i)["save_id"];
+
+			//backwards compatibility for 1.2 and 1.2.1,
+			//------------------------------------------
+			//add recall list units to the snapshot so they don't get lost
+			if (!snapshot->empty())
+			{
+				//find the side of this player in the snapshot
+				config* current_side = NULL;
+				const std::vector<config*>& side_cfg = snapshot->get_children("side");
+				for (std::vector<config*>::const_iterator side = side_cfg.begin(); side != side_cfg.end(); side++){
+					if ((**side)["save_id"] == save_id){
+						current_side = *side;
+						break;
+					}
+				}
+				if (!current_side){
+					std::cerr << "Could not find side " << save_id << " in the snapshot!";
+					throw game::load_game_failed();
+				}
+				//add available units of this player to the snapshot
+				const config::child_list& unit_cfg = (*i)->get_children("unit");
+				for (config::child_list::const_iterator u = unit_cfg.begin(); u != unit_cfg.end(); u++){
+					//we don't want the leader to show up in the recall list
+					if ((**u)["canrecruit"].empty()){
+						//we also don't want units to show up in the recall list if they have been recalled
+						//already by WML events. However, since available units might be in the snapshot already
+						//we better check that before adding them
+						bool found_unit_in_snapshot = false;
+						const config::child_list& snapshot_units = current_side->get_children("unit");
+						for (config::child_list::const_iterator su = snapshot_units.begin(); 
+						su != snapshot_units.end(); su++){
+							//experience / hitpoints and such are not sufficient to identify a unit since
+							//they are subject to change if fighting or leveling happens. Therefore identification
+							//is achieved by the user_description. If the "x"-attribute is filled it means this is
+							//one of the units originally contained in the snapshot (and not added here).
+							if ( ((**su)["user_description"] == (**u)["user_description"]) && (!(**su)["x"].empty()) ){
+								found_unit_in_snapshot = true;
+							}
+						}
+						if (!found_unit_in_snapshot){
+							//Add this unit to the snapshot. Missing "x"- and "y"-attributes will later cause it to go
+							//into the available_units vector (recall list)
+							current_side->add_child("unit", **u);
+						}
+					}
+				}
+			}
 
 			if(save_id.empty()) {
 				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
@@ -483,8 +532,6 @@ game_state read_game(const game_data& data, const config* cfg)
 	if(replay != NULL) {
 		res.replay_data = *replay;
 	}
-
-	const config* snapshot = cfg->child("snapshot");
 
 	//older save files used to use 'start', so still support that for now
 	if(snapshot == NULL) {
