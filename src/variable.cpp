@@ -91,13 +91,11 @@ bool vconfig::has_child(const std::string& key) const
 const t_string vconfig::expand(const std::string& key) const
 {
 	const t_string& val = (*cfg_)[key];
-	const t_string::walker domain_walker(val);
 	if(repos != NULL && !val.str().empty()) {
 		std::string interp = utils::interpolate_variables_into_string(val.str(), *repos);
-		if(domain_walker.translatable()) {
-			return t_string(interp, domain_walker.textdomain());
+		if(val.str() != interp) {
+			return interp;
 		}
-		return t_string(interp);
 	}
 	return t_string(val);
 }
