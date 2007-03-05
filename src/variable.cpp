@@ -99,7 +99,7 @@ const t_string vconfig::expand(const std::string& key) const
 		}
 		return t_string(interp);
 	}
-	return val;
+	return t_string(val);
 }
 
 namespace variable
