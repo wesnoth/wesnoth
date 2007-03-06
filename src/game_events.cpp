@@ -221,6 +221,11 @@ bool conditional_passed(const unit_map* units,
 		if(values.get_attribute("less_than_equal_to") != "" && atof(less_than_equal_to.c_str()) < num_value) {
 			return false;
 		}
+		const std::string& boolean_equals = values["boolean_equals"];
+		if(values.get_attribute("boolean_equals") != "" 
+		&& (utils::string_bool(value) != utils::string_bool(boolean_equals))) {
+			return false;
+		}
 	}
 
 	const vconfig::child_list& not_statements = cond.get_children("not");
