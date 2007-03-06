@@ -181,8 +181,8 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
-"mostra, in un angolo dello schermo, il numero di schermate per secondo che "
-"il gioco sta generando attualmente."
+"mostra, in un angolo dello schermo, il numero di quadri per secondo che il "
+"gioco sta generando attualmente."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
@@ -225,9 +225,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:83
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--max-fps>"
-msgstr "B<--fps>"
+msgstr "B<--max-fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:87
@@ -235,6 +235,8 @@ msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is 50."
 msgstr ""
+"il numero di quadri al secondo che il gioco può mostrare, il valore dovrebbe "
+"essere compreso tra 1 e 1000; il valore predefinito è 50."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:87
@@ -383,6 +385,8 @@ msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: \"idle_ai\" and \"sample_ai\"."
 msgstr ""
+"seleziona un algoritmo non standard per il controllo dell'IA di questa "
+"fazione. Valori disponibili: \"idle_ai\" e \"sample_ai\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:130
@@ -395,6 +399,8 @@ msgstr "B<--controllerE<lt>numberE<gt>=value>"
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
 msgstr ""
+"seleziona il tipo di controllo per questa fazione. Valori disponibili: "
+"\"human\" e \"ai\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:133
@@ -920,6 +926,8 @@ msgstr "B<messages_time_period>"
 #: ../../doc/man/wesnothd.6:103
 msgid "The time period (in seconds) message flooding is detected in."
 msgstr ""
+"Il periodo di tempo (in secondi) entro il quale rilevare un'inondazione di "
+"messaggi."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
@@ -980,6 +988,8 @@ msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr ""
+"B<[redirect]> Un tag per specificare un server a cui redirigere certe "
+"versioni di client."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -1015,6 +1025,8 @@ msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
+"Una lista separata da virgole delle versioni daredirigere. Si comporta come "
+"B<versions_accepted> per quello che riguarda lo schema dei caratteri jolly."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:137
@@ -1023,6 +1035,9 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as [redirect]."
 msgstr ""
+"B<[proxy]> Un tag che indica al server di fare da proxy e di inoltrare le "
+"richieste dei client connessi al server specificato. Accetta le stesse "
+"parole chiave di [redirect]."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
