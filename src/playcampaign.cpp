@@ -157,14 +157,32 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		if (!state.snapshot["label"].empty()){
 			state.label = state.snapshot["label"];
 		}
-		//get the current gold values of players so they don't start with the amount
-		//they had at the start of the scenario
-		const std::vector<config*>& player_cfg = state.snapshot.get_children("player");
-		for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
-			std::string save_id = (**p)["save_id"];
-			player_info* player = state.get_player(save_id);
-			if (player != NULL){
-				player->gold = lexical_cast <int> ((**p)["gold"]);
+		{
+			//get the current gold values of players so they don't start with the amount
+			//they had at the start of the scenario
+			const std::vector<config*>& player_cfg = state.snapshot.get_children("player");
+			for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
+				std::string save_id = (**p)["save_id"];
+				player_info* player = state.get_player(save_id);
+				if (player != NULL){
+					player->gold = lexical_cast <int> ((**p)["gold"]);
+				}
+			}
+		}
+		{
+			//also get the recruitment list if there are some specialties in this scenario
+			const std::vector<config*>& player_cfg = state.snapshot.get_children("side");
+			for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
+				std::string save_id = (**p)["save_id"];
+				player_info* player = state.get_player(save_id);
+				if (player != NULL){
+					const std::string& can_recruit_str = (**p)["recruit"];
+					if(can_recruit_str != "") {
+						player->can_recruit.clear();
+						const std::vector<std::string> can_recruit = utils::split(can_recruit_str);
+						std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(player->can_recruit,player->can_recruit.end()));
+					}
+				}
 			}
 		}
 	}
