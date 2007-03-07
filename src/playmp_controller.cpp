@@ -141,7 +141,12 @@ void playmp_controller::play_human_turn(){
 				cur_ticks = ticks;
 				if ( current_team().countdown_time() <= beep_warning_time_){
 					beep_warning_time_ = beep_warning_time_ - 1000;
-					sound::play_sound("bell.wav");
+					const bool bell_on = preferences::turn_bell();
+					if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
+						preferences::set_turn_bell(true);
+						sound::play_bell("bell.wav");
+						preferences::set_turn_bell(bell_on);
+					}
 				}
 			} else {
 				// Clock time ended

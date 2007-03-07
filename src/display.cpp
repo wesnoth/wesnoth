@@ -2425,7 +2425,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 		std::string msg;
 
 		if (bell) {
-			sound::play_sound(game_config::sounds::receive_message);
+			sound::play_UI_sound(game_config::sounds::receive_message);
 		}
 
 		if(message.find("/me ") == 0) {

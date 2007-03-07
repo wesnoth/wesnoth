@@ -69,7 +69,7 @@ void turn_info::send_data()
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, network::connection from, std::deque<config>& backlog, bool skip_replay)
 {
 	if(cfg.child("whisper") != NULL && is_observer()){
-		sound::play_sound(game_config::sounds::receive_message);
+		sound::play_UI_sound(game_config::sounds::receive_message);
 
 		const config& cwhisper = *cfg.child("whisper");
 		gui_.add_chat_message("whisper: "+cwhisper["sender"],0,cwhisper["message"], display::MESSAGE_PRIVATE, preferences::message_bell());

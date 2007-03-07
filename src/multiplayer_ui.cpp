@@ -469,7 +469,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			}
 
 			if (!ignored){
-				sound::play_sound(game_config::sounds::receive_message);
+				sound::play_UI_sound(game_config::sounds::receive_message);
 
 				chat_.add_message(msg["sender"], msg["message"]);
 				chat_.update_textbox(chat_textbox_);
@@ -493,7 +493,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			}
 
 			if (!ignored){
-				sound::play_sound(game_config::sounds::receive_message);
+				sound::play_UI_sound(game_config::sounds::receive_message);
 				chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
 				chat_.update_textbox(chat_textbox_);
 			}
@@ -689,9 +689,9 @@ void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 {
 	if(!silent) {
 		if(list.size() < user_list_.size()) {
-			sound::play_sound(game_config::sounds::user_leave);
+			sound::play_UI_sound(game_config::sounds::user_leave);
 		} else if(list.size() > user_list_.size()) {
-			sound::play_sound(game_config::sounds::user_arrive);
+			sound::play_UI_sound(game_config::sounds::user_arrive);
 		}
 	}
 
