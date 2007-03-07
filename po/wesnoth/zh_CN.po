@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-02 22:17+0100\n"
+"POT-Creation-Date: 2007-03-07 13:32+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -10206,7 +10206,7 @@ msgid ""
 msgstr "创建安装这个战役所需文件有问题。"
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:357
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:376
 msgid "Connection timed out"
 msgstr "连接超时"
 
@@ -10277,15 +10277,15 @@ msgid ""
 "characters"
 msgstr ""
 
-#: src/game.cpp:1229 src/playcampaign.cpp:89 src/playcampaign.cpp:329
+#: src/game.cpp:1229 src/playcampaign.cpp:90 src/playcampaign.cpp:348
 msgid "The game could not be loaded: "
 msgstr "游戏不能被加载： "
 
-#: src/game.cpp:1231 src/playcampaign.cpp:91 src/playcampaign.cpp:332
+#: src/game.cpp:1231 src/playcampaign.cpp:92 src/playcampaign.cpp:351
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1243 src/playcampaign.cpp:93 src/playcampaign.cpp:335
+#: src/game.cpp:1243 src/playcampaign.cpp:94 src/playcampaign.cpp:354
 msgid "The game map could not be loaded: "
 msgstr "游戏地图不能加载： "
 
@@ -10342,7 +10342,7 @@ msgstr "胜利："
 msgid "Defeat:"
 msgstr "失败："
 
-#: src/gamestatus.cpp:583
+#: src/gamestatus.cpp:630
 msgid "Could not write to file"
 msgstr "不能写入文件"
 
@@ -10626,7 +10626,7 @@ msgstr "维护费"
 msgid "Income"
 msgstr "收入"
 
-#: src/menu_events.cpp:390 src/playcampaign.cpp:300 src/playcampaign.cpp:436
+#: src/menu_events.cpp:390 src/playcampaign.cpp:319 src/playcampaign.cpp:455
 msgid "Name:"
 msgstr "名字："
 
@@ -10649,12 +10649,12 @@ msgstr "以存储"
 msgid "The game has been saved"
 msgstr "游戏以存储"
 
-#: src/menu_events.cpp:408 src/playcampaign.cpp:308 src/playcampaign.cpp:446
+#: src/menu_events.cpp:408 src/playcampaign.cpp:327 src/playcampaign.cpp:465
 msgid "The game could not be saved"
 msgstr "游戏不能被保存"
 
 #: src/menu_events.cpp:498 src/menu_events.cpp:500 src/play_controller.cpp:678
-#: src/playcampaign.cpp:100
+#: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "自动存档"
 
@@ -11339,38 +11339,38 @@ msgstr ""
 msgid "Back to turn "
 msgstr ""
 
-#: src/playcampaign.cpp:277
+#: src/playcampaign.cpp:296
 msgid "Defeat"
 msgstr "失败"
 
-#: src/playcampaign.cpp:278
+#: src/playcampaign.cpp:297
 msgid "You have been defeated!"
 msgstr "你被打败了！"
 
-#: src/playcampaign.cpp:291
+#: src/playcampaign.cpp:310
 msgid " replay"
 msgstr " 游戏录像"
 
-#: src/playcampaign.cpp:299
+#: src/playcampaign.cpp:318
 msgid "Do you want to save a replay of this scenario?"
 msgstr "你想保存这个剧本的游戏录像吗？"
 
-#: src/playcampaign.cpp:348
+#: src/playcampaign.cpp:367
 #, fuzzy
 msgid "Receiving data..."
 msgstr "读取游戏数据..."
 
-#: src/playcampaign.cpp:350
+#: src/playcampaign.cpp:369
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "下载下个等级..."
 
-#: src/playcampaign.cpp:435
+#: src/playcampaign.cpp:454
 #, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "你想保存游戏吗？"
 
-#: src/playcampaign.cpp:462
+#: src/playcampaign.cpp:481
 msgid "Unknown scenario: '"
 msgstr "未知剧本： '"
 

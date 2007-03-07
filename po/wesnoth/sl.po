@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-02 22:17+0100\n"
+"POT-Creation-Date: 2007-03-07 13:32+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -9658,7 +9658,7 @@ msgid ""
 msgstr "Namestitev kampanje ni uspela; nekaj datotek ni bilo mogoče ustvariti."
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:357
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:376
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
@@ -9729,15 +9729,15 @@ msgid ""
 msgstr ""
 "Izbrano prijavno ime je predolgo, prosimo uporabite ime krajše od 18 znakov,"
 
-#: src/game.cpp:1229 src/playcampaign.cpp:89 src/playcampaign.cpp:329
+#: src/game.cpp:1229 src/playcampaign.cpp:90 src/playcampaign.cpp:348
 msgid "The game could not be loaded: "
 msgstr "Igre ni bilo možno naložiti: "
 
-#: src/game.cpp:1231 src/playcampaign.cpp:91 src/playcampaign.cpp:332
+#: src/game.cpp:1231 src/playcampaign.cpp:92 src/playcampaign.cpp:351
 msgid "Error while playing the game: "
 msgstr "Napaka med igranjem: "
 
-#: src/game.cpp:1243 src/playcampaign.cpp:93 src/playcampaign.cpp:335
+#: src/game.cpp:1243 src/playcampaign.cpp:94 src/playcampaign.cpp:354
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
@@ -9793,7 +9793,7 @@ msgstr "Zmaga:"
 msgid "Defeat:"
 msgstr "Poraz:"
 
-#: src/gamestatus.cpp:583
+#: src/gamestatus.cpp:630
 msgid "Could not write to file"
 msgstr "Ni bilo mogoče pisati v datoteko."
 
@@ -10075,7 +10075,7 @@ msgstr "Plače"
 msgid "Income"
 msgstr "Prihodki"
 
-#: src/menu_events.cpp:390 src/playcampaign.cpp:300 src/playcampaign.cpp:436
+#: src/menu_events.cpp:390 src/playcampaign.cpp:319 src/playcampaign.cpp:455
 msgid "Name:"
 msgstr "Ime:"
 
@@ -10100,12 +10100,12 @@ msgstr "Shranjeno"
 msgid "The game has been saved"
 msgstr "Igra je bila shranjena"
 
-#: src/menu_events.cpp:408 src/playcampaign.cpp:308 src/playcampaign.cpp:446
+#: src/menu_events.cpp:408 src/playcampaign.cpp:327 src/playcampaign.cpp:465
 msgid "The game could not be saved"
 msgstr "Igre ni bilo možno shraniti"
 
 #: src/menu_events.cpp:498 src/menu_events.cpp:500 src/play_controller.cpp:678
-#: src/playcampaign.cpp:100
+#: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Samodejno shranjen položaj"
 
@@ -10777,37 +10777,37 @@ msgstr "Nazaj na začetek"
 msgid "Back to turn "
 msgstr "Nazaj k potezi "
 
-#: src/playcampaign.cpp:277
+#: src/playcampaign.cpp:296
 msgid "Defeat"
 msgstr "Poraz"
 
-#: src/playcampaign.cpp:278
+#: src/playcampaign.cpp:297
 msgid "You have been defeated!"
 msgstr "Bili ste poraženi!"
 
-#: src/playcampaign.cpp:291
+#: src/playcampaign.cpp:310
 msgid " replay"
 msgstr "vnovično predvajanje"
 
-#: src/playcampaign.cpp:299
+#: src/playcampaign.cpp:318
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Ali želite shraniti posnetek igranja scenarija?"
 
-#: src/playcampaign.cpp:348
+#: src/playcampaign.cpp:367
 #, fuzzy
 msgid "Receiving data..."
 msgstr "Pridobivanje podatkov o igri..."
 
-#: src/playcampaign.cpp:350
+#: src/playcampaign.cpp:369
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Prenašam naslednjo stopnjo..."
 
-#: src/playcampaign.cpp:435
+#: src/playcampaign.cpp:454
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Ali želite shraniti igro? (zbriše avtomatsko shranjene položaje)"
 
-#: src/playcampaign.cpp:462
+#: src/playcampaign.cpp:481
 msgid "Unknown scenario: '"
 msgstr "Neznan scenarij: '"
 

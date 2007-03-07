@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-02 22:17+0100\n"
+"POT-Creation-Date: 2007-03-07 13:32+0100\n"
 "PO-Revision-Date: 2007-02-24 11:26+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -11269,7 +11269,7 @@ msgstr ""
 "た。"
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:357
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:376
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
@@ -11341,15 +11341,15 @@ msgstr ""
 "あなたが選んだログイン名は長すぎます。 18文字未満のログイン名を使用して下さ"
 "い。"
 
-#: src/game.cpp:1229 src/playcampaign.cpp:89 src/playcampaign.cpp:329
+#: src/game.cpp:1229 src/playcampaign.cpp:90 src/playcampaign.cpp:348
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1231 src/playcampaign.cpp:91 src/playcampaign.cpp:332
+#: src/game.cpp:1231 src/playcampaign.cpp:92 src/playcampaign.cpp:351
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1243 src/playcampaign.cpp:93 src/playcampaign.cpp:335
+#: src/game.cpp:1243 src/playcampaign.cpp:94 src/playcampaign.cpp:354
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
@@ -11405,7 +11405,7 @@ msgstr "勝利条件:"
 msgid "Defeat:"
 msgstr "敗北条件:"
 
-#: src/gamestatus.cpp:583
+#: src/gamestatus.cpp:630
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
@@ -11688,7 +11688,7 @@ msgstr "維持"
 msgid "Income"
 msgstr "収入"
 
-#: src/menu_events.cpp:390 src/playcampaign.cpp:300 src/playcampaign.cpp:436
+#: src/menu_events.cpp:390 src/playcampaign.cpp:319 src/playcampaign.cpp:455
 msgid "Name:"
 msgstr "名前:"
 
@@ -11713,12 +11713,12 @@ msgstr "保存された"
 msgid "The game has been saved"
 msgstr "ゲームを保存しました。"
 
-#: src/menu_events.cpp:408 src/playcampaign.cpp:308 src/playcampaign.cpp:446
+#: src/menu_events.cpp:408 src/playcampaign.cpp:327 src/playcampaign.cpp:465
 msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
 #: src/menu_events.cpp:498 src/menu_events.cpp:500 src/play_controller.cpp:678
-#: src/playcampaign.cpp:100
+#: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "自動保存"
 
@@ -12383,35 +12383,35 @@ msgstr "最初に戻る"
 msgid "Back to turn "
 msgstr "戻るターン : "
 
-#: src/playcampaign.cpp:277
+#: src/playcampaign.cpp:296
 msgid "Defeat"
 msgstr "敗北"
 
-#: src/playcampaign.cpp:278
+#: src/playcampaign.cpp:297
 msgid "You have been defeated!"
 msgstr "あなたは敗れました！"
 
-#: src/playcampaign.cpp:291
+#: src/playcampaign.cpp:310
 msgid " replay"
 msgstr "リプレイ"
 
-#: src/playcampaign.cpp:299
+#: src/playcampaign.cpp:318
 msgid "Do you want to save a replay of this scenario?"
 msgstr "このシナリオのリプレイを保存しますか？"
 
-#: src/playcampaign.cpp:348
+#: src/playcampaign.cpp:367
 msgid "Receiving data..."
 msgstr "データ受信中..."
 
-#: src/playcampaign.cpp:350
+#: src/playcampaign.cpp:369
 msgid "Downloading next scenario..."
 msgstr "次のシナリオをダウンロード中..."
 
-#: src/playcampaign.cpp:435
+#: src/playcampaign.cpp:454
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "このゲームを保存しますか？（この操作は自動保存ファイルを消去します）"
 
-#: src/playcampaign.cpp:462
+#: src/playcampaign.cpp:481
 msgid "Unknown scenario: '"
 msgstr "不明のシナリオ: '"
 

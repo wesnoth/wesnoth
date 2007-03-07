@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-02 22:17+0100\n"
+"POT-Creation-Date: 2007-03-07 13:32+0100\n"
 "PO-Revision-Date: 2006-12-22 20:35+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
@@ -11162,7 +11162,7 @@ msgstr ""
 "campanya."
 
 #: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:357
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:376
 msgid "Connection timed out"
 msgstr "Connexió perduda."
 
@@ -11234,15 +11234,15 @@ msgstr ""
 "Heu triat un nom d'usuari massa llarg, si us plau empreu-ne un amb menys de "
 "18 caràcters."
 
-#: src/game.cpp:1229 src/playcampaign.cpp:89 src/playcampaign.cpp:329
+#: src/game.cpp:1229 src/playcampaign.cpp:90 src/playcampaign.cpp:348
 msgid "The game could not be loaded: "
 msgstr "No ha estat possible desar la partida:"
 
-#: src/game.cpp:1231 src/playcampaign.cpp:91 src/playcampaign.cpp:332
+#: src/game.cpp:1231 src/playcampaign.cpp:92 src/playcampaign.cpp:351
 msgid "Error while playing the game: "
 msgstr "S'ha produït un error durant la partida: "
 
-#: src/game.cpp:1243 src/playcampaign.cpp:93 src/playcampaign.cpp:335
+#: src/game.cpp:1243 src/playcampaign.cpp:94 src/playcampaign.cpp:354
 msgid "The game map could not be loaded: "
 msgstr "No ha estat possible carregar la partida:"
 
@@ -11300,7 +11300,7 @@ msgstr "Victòria:"
 msgid "Defeat:"
 msgstr "Derrota:"
 
-#: src/gamestatus.cpp:583
+#: src/gamestatus.cpp:630
 msgid "Could not write to file"
 msgstr "No ha estat possible escriure al fitxer."
 
@@ -11584,7 +11584,7 @@ msgstr "Manteniment"
 msgid "Income"
 msgstr "Beneficis"
 
-#: src/menu_events.cpp:390 src/playcampaign.cpp:300 src/playcampaign.cpp:436
+#: src/menu_events.cpp:390 src/playcampaign.cpp:319 src/playcampaign.cpp:455
 msgid "Name:"
 msgstr "Nom:"
 
@@ -11608,12 +11608,12 @@ msgstr "Partida desada"
 msgid "The game has been saved"
 msgstr "La partida ha estat desada."
 
-#: src/menu_events.cpp:408 src/playcampaign.cpp:308 src/playcampaign.cpp:446
+#: src/menu_events.cpp:408 src/playcampaign.cpp:327 src/playcampaign.cpp:465
 msgid "The game could not be saved"
 msgstr "No s'ha pogut desar la partida."
 
 #: src/menu_events.cpp:498 src/menu_events.cpp:500 src/play_controller.cpp:678
-#: src/playcampaign.cpp:100
+#: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Partida desada automàticament"
 
@@ -12277,39 +12277,39 @@ msgstr "Torna al principi"
 msgid "Back to turn "
 msgstr "Torna al torn "
 
-#: src/playcampaign.cpp:277
+#: src/playcampaign.cpp:296
 msgid "Defeat"
 msgstr "Derrota"
 
-#: src/playcampaign.cpp:278
+#: src/playcampaign.cpp:297
 msgid "You have been defeated!"
 msgstr "Heu estat derrotat!"
 
-#: src/playcampaign.cpp:291
+#: src/playcampaign.cpp:310
 msgid " replay"
 msgstr " repetició"
 
-#: src/playcampaign.cpp:299
+#: src/playcampaign.cpp:318
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Voleu desar la repetició d'aquest escenari?"
 
-#: src/playcampaign.cpp:348
+#: src/playcampaign.cpp:367
 #, fuzzy
 msgid "Receiving data..."
 msgstr "Rebent les dades de la partida..."
 
-#: src/playcampaign.cpp:350
+#: src/playcampaign.cpp:369
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "S'està descarregant el següent nivell..."
 
-#: src/playcampaign.cpp:435
+#: src/playcampaign.cpp:454
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
 "Voleu desar la partida? (També s'esborraran les partides desades "
 "automàticament.)"
 
-#: src/playcampaign.cpp:462
+#: src/playcampaign.cpp:481
 msgid "Unknown scenario: '"
 msgstr "Escenari desconegut: '"
 
