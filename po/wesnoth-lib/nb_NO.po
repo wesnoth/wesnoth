@@ -4,11 +4,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1.1-SVN\n"
+"Project-Id-Version: Battle for Wesnoth 1.3.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-02 22:05+0100\n"
-"PO-Revision-Date: 2006-07-02 00:33+0100\n"
-"Last-Translator: Gaute Storli <gauteamus@gmail.com>\n"
+"PO-Revision-Date: 2007-02-16 19:40+0100\n"
+"Last-Translator: Gauteamus <gauteamusATgmailDOTcom>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,7 +45,7 @@ msgstr "Hjelp"
 
 #: src/editor/editor_dialogs.cpp:50
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Endringene i kartet vil gå tapt. Fortsette?"
+msgstr "Endringene i kartet vil gå tapt. Fortsette likevel?"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:189
 msgid "Create New Map"
@@ -111,7 +111,7 @@ msgstr "Hurtigtaster"
 #: src/editor/editor_dialogs.cpp:432 src/editor/editor_dialogs.cpp:492
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
-msgstr "Omform kartet"
+msgstr "Endre kartstørrelse "
 
 #: src/editor/editor_dialogs.cpp:535
 msgid "X-Axis"
@@ -123,11 +123,11 @@ msgstr "Y-akse"
 
 #: src/editor/editor_dialogs.cpp:537
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Speilvend (dette kan komme til å endre kartets dimensjoner):"
+msgstr "Vend om en akse (dette kan komme til å endre kartets dimensjoner):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Fil: "
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -135,7 +135,7 @@ msgstr "Slett fil"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Ny mappe"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
@@ -143,12 +143,11 @@ msgstr "Filsletting mislykket."
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Navn: "
 
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Filsletting mislykket."
+msgstr "Oppretting av mappe var mislykket."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -192,7 +191,7 @@ msgstr "Standard panorering"
 
 #: src/hotkeys.cpp:60
 msgid "Screenshot"
-msgstr "Skjermbilde"
+msgstr "Øyeblikksbilde"
 
 #: src/hotkeys.cpp:61
 msgid "Accelerated"
@@ -204,16 +203,15 @@ msgstr "Enhetsbeskrivelse"
 
 #: src/hotkeys.cpp:63
 msgid "Rename Unit"
-msgstr "Navngi enheten"
+msgstr "Gi enheten nytt navn"
 
 #: src/hotkeys.cpp:64
 msgid "Save Game"
 msgstr "Lagre spill"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
-msgstr "Lagre kart"
+msgstr "Lagre kartet"
 
 #: src/hotkeys.cpp:66
 msgid "Load Game"
@@ -280,17 +278,16 @@ msgid "Quit Game"
 msgstr "Avslutt spill"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Sett merkelapp"
+msgstr "Sett merkelapp (lag)"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
-msgstr "Sett merkelapp"
+msgstr "Sett merkelapp (alle)"
 
 #: src/hotkeys.cpp:85
 msgid "Clear Labels"
-msgstr "Slett merkelapper"
+msgstr "Fjern merkelapper"
 
 #: src/hotkeys.cpp:86
 msgid "Show Enemy Moves"
@@ -465,9 +462,8 @@ msgid "Villages:"
 msgstr "Landsbyer:"
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Maks utstrekning åser:"
+msgstr "Slottstørrelse:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -505,65 +501,59 @@ msgid ""
 msgstr ""
 "Videomodusen kunne ikke endres. Vindumanageren din må settes til 16 bits per "
 "pixel for å kjøre dette spillet i vindumodus. Displayet må støtte "
-"1024x768x16 for å kunne kjøre spillet med full skjerm."
+"1024x768x16 for å kunne kjøre spillet med fullskjerm."
 
 #: src/preferences_display.cpp:257
 msgid "Accelerated Speed"
-msgstr "Akselererte trekk"
+msgstr "Akselerert hastighet"
 
 #: src/preferences_display.cpp:258
 msgid "Skip AI Moves"
 msgstr "Ignorer AI-trekk"
 
 #: src/preferences_display.cpp:260
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Vis inntredende spillere"
+msgstr "Vis minikart i vestibyle"
 
 #: src/preferences_display.cpp:261
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Vis inntredende spillere"
+msgstr "Ikke vis nyankomne spillere"
 
 #: src/preferences_display.cpp:262
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Vis inntredende spillere"
+msgstr "Vis kun nyankomne på vennelisten"
 
 #: src/preferences_display.cpp:263
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Vis inntredende spillere"
+msgstr "Vis alle nyankomne spillere"
 
 #: src/preferences_display.cpp:264
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Vis inntredende spillere"
+msgstr "Sorter vestibyleliste"
 
 #: src/preferences_display.cpp:265
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Spillerliste som ikon"
 
 #: src/preferences_display.cpp:266
 msgid "Your Friends List"
-msgstr ""
+msgstr "Din venneliste"
 
 #: src/preferences_display.cpp:267
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Valg for gruppespill"
 
 #: src/preferences_display.cpp:268
 msgid "Add As Friend"
-msgstr ""
+msgstr "Legg til venn"
 
 #: src/preferences_display.cpp:269
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Legg til ignorert"
 
 #: src/preferences_display.cpp:270
-#, fuzzy
 msgid "Remove"
-msgstr "Gjør igjen"
+msgstr "Fjern"
 
 #: src/preferences_display.cpp:271
 msgid "Show Floating Labels"
@@ -571,11 +561,11 @@ msgstr "Vis flytende merkelapper"
 
 #: src/preferences_display.cpp:272
 msgid "Turn Dialog"
-msgstr "Dialogboks på ny runde"
+msgstr "Dialogboks ved ny runde"
 
 #: src/preferences_display.cpp:273
 msgid "Turn Bell"
-msgstr "Lydsignal ved ny runde"
+msgstr "Klokkeslag ved ny runde"
 
 #: src/preferences_display.cpp:274
 msgid "Show Team Colors"
@@ -611,25 +601,23 @@ msgstr "Musikk"
 
 #: src/preferences_display.cpp:285
 msgid "Chat Timestamping"
-msgstr "Tidsur på meldingslogg"
+msgstr "Tidsstempling i meldingslogg"
 
 #: src/preferences_display.cpp:286
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Advansert"
+msgstr "Avansert modus"
 
 #: src/preferences_display.cpp:287
 msgid "Normal Mode"
-msgstr ""
+msgstr "Normalmodus"
 
 #: src/preferences_display.cpp:290
-#, fuzzy
 msgid "Custom"
-msgstr "Klipp ut"
+msgstr "Tilpasset"
 
 #: src/preferences_display.cpp:291
 msgid "Apply"
-msgstr ""
+msgstr "Bruk"
 
 #: src/preferences_display.cpp:293
 msgid "Music Volume:"
@@ -640,9 +628,8 @@ msgid "SFX Volume:"
 msgstr "Effektvolum:"
 
 #: src/preferences_display.cpp:294
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Effektvolum:"
+msgstr "Klokkevolum:"
 
 #: src/preferences_display.cpp:295
 msgid "Gamma:"
@@ -650,11 +637,11 @@ msgstr "Gamma:"
 
 #: src/preferences_display.cpp:297
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Avspillingsrate (Hz):"
 
 #: src/preferences_display.cpp:320
 msgid "Sound effects on/off"
-msgstr "Effekter av/på"
+msgstr "Lydeffekter av/på"
 
 #: src/preferences_display.cpp:324
 msgid "Change the sound effects volume"
@@ -669,27 +656,24 @@ msgid "Change the music volume"
 msgstr "Endre musikkvolum"
 
 #: src/preferences_display.cpp:337
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Endre musikkvolum"
+msgstr "Endre klokkevolum"
 
 #: src/preferences_display.cpp:339
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Endre språk"
+msgstr "Endre avspillingsrate"
 
 #: src/preferences_display.cpp:348
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Brukerdefinert avspillingsrate"
 
 #: src/preferences_display.cpp:357 src/preferences_display.cpp:361
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Endre musikkvolum"
+msgstr "Endre bufferstørrelse"
 
 #: src/preferences_display.cpp:359 src/preferences_display.cpp:816
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Bufferstørrelse: "
 
 #: src/preferences_display.cpp:366
 msgid "Change the speed of scrolling around the map"
@@ -701,7 +685,7 @@ msgstr "Angi antall viste meldingslinjer"
 
 #: src/preferences_display.cpp:376
 msgid "Add a timestamp to chat messages"
-msgstr "Legg tidsur til meldingslogg"
+msgstr "Bru tidsstempling i meldingslogg"
 
 #: src/preferences_display.cpp:379 src/preferences_display.cpp:384
 msgid "Change the brightness of the display"
@@ -709,16 +693,15 @@ msgstr "Endre lysstyrke"
 
 #: src/preferences_display.cpp:387
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Velg om spillet skal kjøres med full skjerm eller i vindu"
+msgstr "Velg om spillet skal kjøres i fullskjerm eller vindu"
 
 #: src/preferences_display.cpp:390
 msgid "Make units move and fight faster"
-msgstr "Enheter sloss og beveger seg raskere"
+msgstr "Enhetene sloss og beveger seg raskere"
 
 #: src/preferences_display.cpp:405
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Enheter sloss og beveger seg raskere"
+msgstr "Bevegelseshastighet for enhetene"
 
 #: src/preferences_display.cpp:408
 msgid "Do not animate AI units moving"
@@ -729,83 +712,78 @@ msgid "Overlay a grid onto the map"
 msgstr "Legg et nett over kartet"
 
 #: src/preferences_display.cpp:414
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr "Vis meldinger om inntredende spillere i lobbyen"
+msgstr "Vis minikart i vestibylen for gruppespill"
 
 #: src/preferences_display.cpp:417
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Sorter spillerlisten etter spillergrupper"
 
 #: src/preferences_display.cpp:420
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Vis ikoner foran spillernavnene"
 
 #: src/preferences_display.cpp:423
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Vis meldinger om inntredende spillere i lobbyen"
+msgstr "Ikke vis meldinger om nyankomne spillere i vestibylen"
 
 #: src/preferences_display.cpp:425
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Vis meldinger om inntredende spillere i lobbyen"
+msgstr "Vis meldinger om nyankomne venner i vestibylen"
 
 #: src/preferences_display.cpp:427
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Vis meldinger om inntredende spillere i lobbyen"
+msgstr "Vis meldinger om alle nyankomne spillere i vestibylen"
 
 #: src/preferences_display.cpp:429
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Se eller endre lister over venner og ignorerte"
 
 #: src/preferences_display.cpp:430
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Tilbake til valg for gruppespill"
 
 #: src/preferences_display.cpp:431
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Legg brukernavnet til listen over venner"
 
 #: src/preferences_display.cpp:432
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Legg brukernavnet til listen over ignorerte"
 
 #: src/preferences_display.cpp:433
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Fjern dette brukernavnet fra listen"
 
 #: src/preferences_display.cpp:436
 msgid "Insert a username"
-msgstr ""
+msgstr "Oppgi et brukernavn"
 
 #: src/preferences_display.cpp:439
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Vis tekst over en truffet enhet for å vise påført skade"
+msgstr "Vis tekst med påført skade over enheter som blir skadet"
 
 #: src/preferences_display.cpp:441
 msgid "Change the resolution the game runs at"
-msgstr "Endre oppløsningsgraden spillet kjører på"
+msgstr "Endre skjermoppløsningen spillet kjører med"
 
 #: src/preferences_display.cpp:442
 msgid "Change the theme the game runs with"
-msgstr "Endre temaet spillet kjører med"
+msgstr "Endre det grafiske temaet spillet kjører med"
 
 #: src/preferences_display.cpp:445
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Vis dialogboks hver gang det blir din tur"
+msgstr "Vis dialogboks hver gang din tur starter"
 
 #: src/preferences_display.cpp:448
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Gi lydsignal hver gang det blir din tur"
+msgstr "Gi et klokkeslag hver gang din tur starter"
 
 #: src/preferences_display.cpp:451
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
-msgstr ""
-"Vis lagfarget oval rundt hver enhet for å vise hvilken side den tilhører"
+msgstr "Vis ring med lagets farge rundt hver enhet for å vise denstilhørighet"
 
 #: src/preferences_display.cpp:454
 msgid "Choose whether the sun moves left-to-right or right-to-left"
@@ -824,9 +802,8 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Se over og/eller endre hurtigtaster"
 
 #: src/preferences_display.cpp:711
-#, fuzzy
 msgid "Speed: "
-msgstr "Panoreringsfart:"
+msgstr "Hastighet: "
 
 #: src/preferences_display.cpp:861
 msgid "Chat Lines: "
@@ -858,11 +835,11 @@ msgstr "Gruppespill"
 
 #: src/preferences_display.cpp:1092
 msgid "Advanced section^Advanced"
-msgstr "Advansert"
+msgstr "Avansert"
 
 #: src/preferences_display.cpp:1157
 msgid "There are no alternative video modes available"
-msgstr "Ingen tilgjengelige alternativer for videomodus"
+msgstr "Ingen alternativer for videomodus er tilgjenglige"
 
 #: src/preferences_display.cpp:1186
 msgid "Choose Resolution"
