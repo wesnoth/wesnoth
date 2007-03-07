@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
-"POT-Creation-Date: 2007-03-02 22:06+0100\n"
+"POT-Creation-Date: 2007-03-07 14:54+0100\n"
 "PO-Revision-Date: 2007-02-11 22:29+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -524,7 +524,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:167 ../../doc/man/wesnoth_editor.6:63
-#: ../../doc/man/wesnothd.6:138
+#: ../../doc/man/wesnothd.6:139
 #, no-wrap
 msgid "AUTHOR"
 msgstr "FÖRFATTARE"
@@ -554,27 +554,27 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:176 ../../doc/man/wesnoth_editor.6:69
-#: ../../doc/man/wesnothd.6:145
+#: ../../doc/man/wesnothd.6:146
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Besök den officiella hemsidan: http://www.wesnoth.org/"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:177 ../../doc/man/wesnoth_editor.6:70
-#: ../../doc/man/wesnothd.6:146
+#: ../../doc/man/wesnothd.6:147
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:72
-#: ../../doc/man/wesnothd.6:149
+#: ../../doc/man/wesnothd.6:150
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183 ../../doc/man/wesnoth_editor.6:75
-#: ../../doc/man/wesnothd.6:152
+#: ../../doc/man/wesnothd.6:153
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -586,7 +586,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:184 ../../doc/man/wesnoth_editor.6:76
-#: ../../doc/man/wesnothd.6:153
+#: ../../doc/man/wesnothd.6:154
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SE ÄVEN"
@@ -908,7 +908,8 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
-msgid "The number of allowed connections from the same IP."
+#, fuzzy
+msgid "The number of allowed connections from the same IP. (default: 5)"
 msgstr "Antal tillåtna anslutningar från samma värd (IP)."
 
 # type: TP
@@ -937,7 +938,8 @@ msgstr "B<max_messages>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:100
-msgid "The number of allowed messages in B<messages_time_period>."
+#, fuzzy
+msgid "The number of allowed messages in B<messages_time_period>. (default: 4)"
 msgstr "Antal tillåtna meddelanden inom B<messages_time_period>."
 
 # type: TP
@@ -948,7 +950,10 @@ msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-msgid "The time period (in seconds) message flooding is detected in."
+#, fuzzy
+msgid ""
+"The time period (in seconds) message flooding is detected in. (default: 10 "
+"seconds)"
 msgstr ""
 "Tidsperioden (i sekunder) under vilken meddelandeöversvämning detekteras."
 
@@ -984,27 +989,29 @@ msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:112
+#: ../../doc/man/wesnothd.6:113
+#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
-"and `?' from wildcard patterns are supported."
+"and `?' from wildcard patterns are supported.  (defaults to the "
+"corresponding wesnoth version)"
 msgstr ""
 "En komma-separerad lista med versionssträngar som accepteras av servern. '*' "
 "och '?' är tillåtna för att matcha flera tecken."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:114
+#: ../../doc/man/wesnothd.6:115
 msgid "Example: versions_accepted=\"*\" accepts any version string."
 msgstr "Exempel: versions_accepted=\"*\" accepterar alla versionssträngar."
 
 # type: SS
-#: ../../doc/man/wesnothd.6:115
+#: ../../doc/man/wesnothd.6:116
 #, no-wrap
 msgid "Global tags:"
 msgstr "Globala taggar:"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:120
+#: ../../doc/man/wesnothd.6:121
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
@@ -1013,35 +1020,35 @@ msgstr ""
 "klientversioner."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:121
+#: ../../doc/man/wesnothd.6:122
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:124
+#: ../../doc/man/wesnothd.6:125
 msgid "The address of the server to redirect to."
 msgstr "Värdadressen att omdirigera till."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:124
+#: ../../doc/man/wesnothd.6:125
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:127
+#: ../../doc/man/wesnothd.6:128
 msgid "The port to connect to."
 msgstr "Porten att ansluta till."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:127
+#: ../../doc/man/wesnothd.6:128
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:132
+#: ../../doc/man/wesnothd.6:133
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -1050,7 +1057,7 @@ msgstr ""
 "som B<versions_accepted> vad gäller strängmatchning."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:137
+#: ../../doc/man/wesnothd.6:138
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1061,7 +1068,7 @@ msgstr ""
 "parametrar som [redirect]."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:143
+#: ../../doc/man/wesnothd.6:144
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
@@ -1074,6 +1081,6 @@ msgstr ""
 "orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:156
+#: ../../doc/man/wesnothd.6:157
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"

@@ -83,7 +83,7 @@ parameter="\fIvärde\fP,\fIvärde\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-Antal tillåtna anslutningar från samma värd (IP).
+The number of allowed connections from the same IP. (default: 5)
 .TP 
 \fBdisallow_names\fP
 Spelarnamn som ej accepteras av servern. '*' och '?' är tillåtna för att
@@ -91,10 +91,11 @@ matcha flera tecken. Se \fBglob\fP (7) för detaljer. Standardvärden (som
 används om inget anges) är 'server,ai,player,network,human,admin,computer'.
 .TP 
 \fBmax_messages\fP
-Antal tillåtna meddelanden inom \fBmessages_time_period\fP.
+The number of allowed messages in \fBmessages_time_period\fP. (default: 4)
 .TP 
 \fBmessages_time_period\fP
-Tidsperioden (i sekunder) under vilken meddelandeöversvämning detekteras.
+The time period (in seconds) message flooding is detected in. (default: 10
+seconds)
 .TP 
 \fBmotd\fP
 Meddelandet för dagen.
@@ -103,8 +104,9 @@ Meddelandet för dagen.
 Lösenordet för administrationsrättigheter. Börjar ofta med "admin ".
 .TP 
 \fBversions_accepted\fP
-En komma\-separerad lista med versionssträngar som accepteras av servern. '*'
-och '?' är tillåtna för att matcha flera tecken.
+A comma separated list of version strings to be accepted by the server. `*'
+and `?' from wildcard patterns are supported.  (defaults to the
+corresponding wesnoth version)
 .br
 Exempel: versions_accepted="*" accepterar alla versionssträngar.
 .

@@ -83,7 +83,7 @@ sleutel="\fIwaarde\fP,\fIwaarde\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-Het aantal toegestane verbindingen van hetzelfde IP.
+The number of allowed connections from the same IP. (default: 5)
 .TP 
 \fBdisallow_names\fP
 Namen die niet geaccepteerd worden door de sever. `*' en `?' als jokertekens
@@ -92,10 +92,11 @@ zijn toegestaan. Bekijk \fBglob\fP(7) voor meer details. Standaard waarden
 `server,ai,player,network,human,admin,computer'.
 .TP 
 \fBmax_messages\fP
-Het aantal toegestane berichten in \fBmessages_time_period\fP.
+The number of allowed messages in \fBmessages_time_period\fP. (default: 4)
 .TP 
 \fBmessages_time_period\fP
-De tijdsperiode (in seconden)
+The time period (in seconds) message flooding is detected in. (default: 10
+seconds)
 .TP 
 \fBmotd\fP
 Bericht van de dag.
@@ -104,8 +105,9 @@ Bericht van de dag.
 Het wachtwoord om admin rechten te krijgen. Meestal begint het met "admin ".
 .TP 
 \fBversions_accepted\fP
-Een comma gescheiden lijst van versies die door de server geaccepteerd dient
-te worden. `*' en `?' zijn als jokertekens toegestaan.
+A comma separated list of version strings to be accepted by the server. `*'
+and `?' from wildcard patterns are supported.  (defaults to the
+corresponding wesnoth version)
 .br
 Voorbeeld: versions_accepted="*" accepteerd elke versie.
 .
