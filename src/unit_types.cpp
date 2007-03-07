@@ -78,15 +78,6 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 	teams_=NULL;
 	other_attack_=NULL;
 
-	// BACKWARDS COMPATIBILITY
-	const std::string& set_special = cfg["special"];
-	if(set_special != "") {
-		LOG_STREAM(err, config) << "[attack] uses special=" << set_special <<", which is now deprecated. Use the macros provided in abilities.cfg.\n";
-		config new_specials;
-
-		new_specials["set_special"] = set_special;
-		apply_modification(new_specials,NULL);
-	}
 }
 
 const attack_animation& attack_type::animation(const display& disp, const gamemap::location& loc,const unit* my_unit,
@@ -141,7 +132,6 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const std::string& set_type = cfg["set_type"];
 	const std::string& del_specials = cfg["remove_specials"];
 	const config* set_specials = cfg.child("set_specials");
-	const std::string& set_special = cfg["set_special"];
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
 	const std::string& set_attack_weight = cfg["attack_weight"];
@@ -192,6 +182,8 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		}
 	}
 
+	// v1.2 backward compatibility (should be removed in a few v1.3.x releases
+	const std::string& set_special = cfg["set_special"];
 	if(set_special.empty() == false) {
 		LOG_STREAM(err, config) << "[effect] uses set_special=" << set_special <<", which is now deprecated. Use [set_specials] instead.\n";
 		cfg_.clear_children("specials");
@@ -269,7 +261,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			sp["description"] = t_string("Poison:\nThis attack poisons the target. Poisoned units lose 8 HP every turn until they are cured or are reduced to 1 HP.","wesnoth");
 		}
 		cfg_.add_child("specials",new_specials);
-	}
+	} // end of backward compatibility block
 
 	if(increase_damage.empty() == false) {
 		damage_ = utils::apply_modifier(damage_, increase_damage, 1);

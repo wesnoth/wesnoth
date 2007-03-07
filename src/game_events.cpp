@@ -635,24 +635,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 
 	}
-	//command to store gold into a variable
-	else if(cmd == "store_gold") {
-		WRN_NG << "[store_gold] tag is now deprecated; use [store_side] instead.\n";
-		std::string side = cfg["side"];
-		std::string var_name = cfg["variable"];
-		if(var_name.empty()) {
-			var_name = "gold";
-		}
-		wassert(state_of_game != NULL);
-		const int side_num = lexical_cast_default<int>(side,1);
-		const size_t team_index = side_num-1;
-		if(team_index < teams->size()) {
-			char value[50];
-			snprintf(value,sizeof(value),"%d",(*teams)[team_index].gold());
-			wassert(state_of_game != NULL);
-			state_of_game->set_variable(var_name,value);
-		}
-	}
 
 	//moving a 'unit' - i.e. a dummy unit that is just moving for
 	//the visual effect
