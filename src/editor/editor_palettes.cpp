@@ -70,9 +70,15 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	// add the groups for all terrains to the map
 	t_translation::t_list::const_iterator t_itor = terrains_.begin();
 	for(; t_itor != terrains_.end(); ++t_itor) {
+        const terrain_type& t_info = map_.get_terrain_info(*t_itor);
+
+        // don't display terrains that were automatically created from base+overlay
+        if (t_info.is_combined())
+            continue;
+
 		// add the terrain to the requested groups
 		const std::vector<std::string>& key = 
-			utils::split(map_.get_terrain_info(*t_itor).editor_group());
+			utils::split(t_info.editor_group());
 		
 		for(std::vector<std::string>::const_iterator k_itor = key.begin(); 
 				k_itor != key.end(); ++k_itor)

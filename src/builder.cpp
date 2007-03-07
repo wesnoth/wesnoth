@@ -749,6 +749,19 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 		return false;
 	}
 
+	if(rule.probability != -1) {
+		unsigned int a = (loc.x + 92872973) ^ 918273;
+		unsigned int b = (loc.y + 1672517) ^ 128123;
+		unsigned int c = (rule_index + 127390) ^ 13923787;
+		unsigned int random = a*b*c + a*b + b*c + a*c + a + b + c;
+
+		random %= 100;
+
+		if(random > (unsigned int)rule.probability) {
+			return false;
+		}
+	}
+
 
 	if(check_loc) {
 		for(constraint_set::const_iterator cons = rule.constraints.begin();
@@ -767,18 +780,6 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 		}
 	}
 
-	if(rule.probability != -1) {
-		unsigned int a = (loc.x + 92872973) ^ 918273;
-		unsigned int b = (loc.y + 1672517) ^ 128123;
-		unsigned int c = (rule_index + 127390) ^ 13923787;
-		unsigned int random = a*b*c + a*b + b*c + a*c + a + b + c;
-
-		random %= 100;
-
-		if(random > (unsigned int)rule.probability) {
-			return false;
-		}
-	}
 
 	for(constraint_set::const_iterator cons = rule.constraints.begin();
 			cons != rule.constraints.end(); ++cons) {

@@ -32,7 +32,9 @@ terrain_type::terrain_type() : symbol_image_("void"),
 			       def_type_(1, t_translation::VOID_TERRAIN),
 			       union_type_(1, t_translation::VOID_TERRAIN),
                    height_adjust_(0), submerge_(0.0), light_modification_(0),
-                   heals_(false), village_(false), castle_(false), keep_(false) 
+                   heals_(false), village_(false), castle_(false), keep_(false),
+				   overlay_(false), combined_(false)
+                               
 {}
 
 terrain_type::terrain_type(const config& cfg)
@@ -54,9 +56,13 @@ terrain_type::terrain_type(const config& cfg)
 	if(terrain_char != "") {
 		t_translation::add_translation(terrain_char, number_);
 	}
+
 #else
 	number_ = t_translation::read_letter(terrain_string);
 #endif
+
+	combined_ = false;
+	overlay_ = (number_.base == 0) ? true : false; 
 
 
 	mvt_type_.push_back(number_);
@@ -132,6 +138,52 @@ terrain_type::terrain_type(const config& cfg)
 
 	editor_group_ = cfg["editor_group"]; 
 }
+
+terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay) : overlay_(false), combined_(true)
+{
+	number_ = t_translation::t_letter(base.number_.base, overlay.number_.overlay);
+
+	symbol_image_ = overlay.symbol_image_;
+
+	name_ = overlay.name_+ "(" + base.name_ +")";
+	id_ = base.id_+"^"+overlay.id_;
+
+
+	//use overlay movement/defense values for now!
+
+	mvt_type_ = overlay.mvt_type_;
+	def_type_ = overlay.def_type_;
+	union_type_ = overlay.union_type_;
+
+
+	height_adjust_ = overlay.height_adjust_;
+	submerge_ = overlay.submerge_;
+	light_modification_ = overlay.light_modification_;
+
+	heals_ = maximum<int>(base.heals_, overlay.heals_);
+
+	village_ = base.village_ | overlay.village_;
+	castle_ = base.castle_ | overlay.castle_;
+	keep_ = base.castle_ | overlay.castle_;
+
+	//mouse over message are only shown on villages
+	if(base.village_) {
+		income_description_ = base.income_description_;
+		income_description_ally_ = base.income_description_ally_;
+		income_description_enemy_ = base.income_description_enemy_;
+		income_description_own_ = base.income_description_own_;
+	}
+	else if (overlay.village_) {
+		income_description_ = overlay.income_description_;
+		income_description_ally_ = overlay.income_description_ally_;
+		income_description_enemy_ = overlay.income_description_enemy_;
+		income_description_own_ = overlay.income_description_own_;
+	}
+
+	editor_group_ = ""; 
+	
+}
+
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          t_translation::t_list& terrain_list,

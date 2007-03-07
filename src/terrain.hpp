@@ -27,6 +27,7 @@ public:
 
 	terrain_type();
 	terrain_type(const config& cfg);
+	terrain_type(const terrain_type& base, const terrain_type& overlay);
 
 	const std::string& symbol_image() const { return symbol_image_; }
 	const t_string& name() const { return name_; }
@@ -61,6 +62,9 @@ public:
 
 	const std::string& editor_group() const { return editor_group_; }
 
+	bool is_overlay() const { return overlay_; }
+	bool is_combined() const { return combined_; }
+
 private:
 	std::string symbol_image_;
 	std::string id_;
@@ -89,6 +93,7 @@ private:
 	t_string income_description_own_;
 
 	std::string editor_group_;
+    bool overlay_, combined_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

@@ -609,7 +609,10 @@ void map_editor::edit_fill_selection() {
 		 it != selected_hexes_.end(); it++) {
 		if (map_.on_board(*it)) {
 			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_fg_terrain(), *it);
-			map_.set_terrain(*it, palette_.selected_fg_terrain());
+			if (palette_.selected_fg_terrain().base == 0)
+				map_.set_overlay(*it, palette_.selected_fg_terrain());
+			else
+				map_.set_terrain(*it, palette_.selected_fg_terrain());
 		}
 	}
 	terrain_changed(selected_hexes_, undo_action);
@@ -1064,7 +1067,10 @@ void map_editor::draw_on_mouseover_hexes(const t_translation::t_letter terrain) 
 				if(terrain != map_[it->x][it->y]) {
 					to_invalidate.push_back(*it);
 					action.add_terrain(map_.get_terrain(*it), terrain, *it);
-					map_.set_terrain(*it, terrain);
+					if (terrain.base == 0)
+						map_.set_overlay(*it, terrain);
+					else
+						map_.set_terrain(*it, terrain);
 					gui_.rebuild_terrain(*it);
 				}
 			}
@@ -1122,7 +1128,10 @@ void map_editor::draw_terrain(const t_translation::t_letter terrain,
 	map_undo_action undo_action;
 	undo_action.add_terrain(current_terrain, terrain, hex);
 	terrain_changed(hex, undo_action);
-	map_.set_terrain(hex, terrain);
+	if (terrain.base == 0)
+		map_.set_overlay(hex, terrain);
+	else
+		map_.set_terrain(hex, terrain);
 	gui_.rebuild_terrain(hex);
 	save_undo_action(undo_action);
 }

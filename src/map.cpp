@@ -309,9 +309,23 @@ void gamemap::read(const std::string& data)
 			
 			// is the terrain valid? 
 			if(letterToTerrain_.count(tiles_[x][y]) == 0) {
-				ERR_CF << "Illegal character in map: (" << t_translation::write_letter(tiles_[x][y]) 
-					<< ") '" << tiles_[x][y] << "'\n"; 
-				throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
+                //try to combine two terrains
+				const std::map<t_translation::t_letter, terrain_type>::const_iterator base_iter = 
+					letterToTerrain_.find(t_translation::t_letter(tiles_[x][y].base, 0xFFFFFFFF));
+				const std::map<t_translation::t_letter, terrain_type>::const_iterator overlay_iter = 
+					letterToTerrain_.find(t_translation::t_letter(0, tiles_[x][y].overlay));
+
+				if(base_iter == letterToTerrain_.end() || overlay_iter == letterToTerrain_.end()) {
+                
+					ERR_CF << "Illegal character in map: (" << t_translation::write_letter(tiles_[x][y]) 
+						   << ") '" << tiles_[x][y] << "'\n"; 
+					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
+				}
+
+				terrain_type new_terrain(base_iter->second, overlay_iter->second); 
+				terrainList_.push_back(new_terrain.number());
+				letterToTerrain_.insert(std::pair<t_translation::t_letter, terrain_type>(
+											new_terrain.number(), new_terrain));
 			} 
 			
 			// is it a village
@@ -651,6 +665,35 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_l
 
 	for(int n = 0; n < 6; ++n)
 		remove_from_border_cache(adj[n]);
+}
+
+void gamemap::set_overlay(const gamemap::location& loc, const t_translation::t_letter terrain)
+{
+	if(!on_board(loc))
+		return;
+	
+	//check if base is a valid terrain
+	const std::map<t_translation::t_letter, terrain_type>::const_iterator base_iter = 
+		letterToTerrain_.find(t_translation::t_letter(tiles_[loc.x][loc.y].base, 0xFFFFFFFF));
+	//check if base^overlay is a valid terrain
+	const std::map<t_translation::t_letter, terrain_type>::const_iterator all_iter = 
+		letterToTerrain_.find(t_translation::t_letter(tiles_[loc.x][loc.y].base, terrain.overlay));
+	
+	if (base_iter == letterToTerrain_.end() && all_iter == letterToTerrain_.end())
+		return;
+
+	//Create new terrain
+	if (all_iter == letterToTerrain_.end()) {
+		const std::map<t_translation::t_letter, terrain_type>::const_iterator overlay_iter = 
+			letterToTerrain_.find(terrain);
+		terrain_type new_terrain(base_iter->second, overlay_iter->second); 
+		terrainList_.push_back(new_terrain.number());
+		letterToTerrain_.insert(std::pair<t_translation::t_letter, terrain_type>(
+									new_terrain.number(), new_terrain));
+	}
+
+	set_terrain(loc, t_translation::t_letter(tiles_[loc.x][loc.y].base, terrain.overlay));
+
 }
 
 std::vector<gamemap::location> parse_location_range(const std::string& x, const std::string& y)

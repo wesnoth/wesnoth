@@ -187,6 +187,11 @@ public:
 	//clobbers over the terrain at location 'loc', with the given terrain
 	void set_terrain(const location& loc, const t_translation::t_letter terrain);
 
+	//clobbers over the overlay terrain at location 'loc', with the given terrain
+	//this method checks if either the base part is a valid terrain by itself or if 
+	// base+new overlay are valid, if it isn't it will fail silently.
+	void set_overlay(const location& loc, const t_translation::t_letter terrain);
+
 	//function which returns a list of the frequencies of different terrain
 	//types on the map, with terrain nearer the center getting weighted higher
 	const std::map<t_translation::t_letter, size_t>& get_weighted_terrain_frequencies() const;
