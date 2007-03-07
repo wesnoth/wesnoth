@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-02 22:04+0100\n"
+"POT-Creation-Date: 2007-03-07 13:30+0100\n"
 "PO-Revision-Date: 2006-09-05 20:50+0200\n"
 "Last-Translator: Margarita Manterola <marga@debian.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -5071,13 +5071,13 @@ msgid "End Turn"
 msgstr "Fin de turno"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:291 src/unit.cpp:2474
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:296 src/unit.cpp:2474
 msgid "HP"
 msgstr "pv"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:165 src/menu_events.cpp:292
-#: src/menu_events.cpp:829
+#: data/themes/experimental.cfg:165 src/menu_events.cpp:297
+#: src/menu_events.cpp:834
 msgid "XP"
 msgstr "PX"
 
@@ -5762,7 +5762,7 @@ msgstr "balista"
 #: data/units/Human_Peasant.cfg:67 data/units/Merman_Entangler.cfg:25
 #: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:23 data/units/Merman_Hunter.cfg:174
-#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:134
+#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:154
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:22
 #: data/units/Merman_Spearman.cfg:173 data/units/Merman_Triton.cfg:23
 #: data/units/Merman_Warrior.cfg:22 data/units/Monster_Cuttle_Fish.cfg:197
@@ -6018,7 +6018,7 @@ msgstr ""
 #: data/units/Human_Loyalist_Spearman.cfg:62
 #: data/units/Merman_Entangler.cfg:24 data/units/Merman_Hunter.cfg:22
 #: data/units/Merman_Hunter.cfg:173 data/units/Merman_Javelineer.cfg:22
-#: data/units/Merman_Javelineer.cfg:133 data/units/Merman_Netcaster.cfg:23
+#: data/units/Merman_Javelineer.cfg:153 data/units/Merman_Netcaster.cfg:23
 #: data/units/Merman_Spearman.cfg:21 data/units/Merman_Spearman.cfg:172
 #: data/units/Saurian_Ambusher.cfg:27 data/units/Saurian_Ambusher.cfg:70
 #: data/units/Saurian_Flanker.cfg:28 data/units/Saurian_Flanker.cfg:71
@@ -10369,7 +10369,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:168 src/help.cpp:2628 src/menu_events.cpp:68
+#: src/about.cpp:168 src/help.cpp:2633 src/menu_events.cpp:68
 msgid "Close"
 msgstr "Cerrar"
 
@@ -10498,7 +10498,7 @@ msgstr "Tutorial"
 msgid "replay"
 msgstr "repetición"
 
-#: src/dialogs.cpp:460 src/menu_events.cpp:444 src/multiplayer_lobby.cpp:417
+#: src/dialogs.cpp:460 src/menu_events.cpp:449 src/multiplayer_lobby.cpp:417
 msgid "Turn"
 msgstr "Turno"
 
@@ -10550,8 +10550,8 @@ msgstr "Borrar partida"
 msgid "Date"
 msgstr "Fecha"
 
-#: src/dialogs.cpp:550 src/game.cpp:933 src/menu_events.cpp:290
-#: src/menu_events.cpp:827 src/multiplayer_lobby.cpp:34
+#: src/dialogs.cpp:550 src/game.cpp:933 src/menu_events.cpp:295
+#: src/menu_events.cpp:832 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Nombre"
 
@@ -10572,12 +10572,12 @@ msgstr "Escoja partida a cargar"
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/dialogs.cpp:702 src/help.cpp:1079
+#: src/dialogs.cpp:702 src/help.cpp:1080
 msgid "level"
 msgstr "nivel"
 
 # Aquí queda muy mal poner pv en minúscula.
-#: src/dialogs.cpp:724 src/help.cpp:1137
+#: src/dialogs.cpp:724 src/help.cpp:1138
 msgid "HP: "
 msgstr "PV: "
 
@@ -10585,7 +10585,7 @@ msgstr "PV: "
 msgid "XP: "
 msgstr "PX: "
 
-#: src/dialogs.cpp:741 src/help.cpp:1138
+#: src/dialogs.cpp:741 src/help.cpp:1139
 msgid "Moves: "
 msgstr "Movimiento: "
 
@@ -10753,7 +10753,7 @@ msgstr ""
 "Hubo un problema al crear los ficheros necesarios para instalar esta campaña."
 
 #: src/game.cpp:1128 src/game.cpp:1167 src/game.cpp:1192
-#: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:65 src/playcampaign.cpp:356
+#: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:65 src/playcampaign.cpp:375
 msgid "Connection timed out"
 msgstr "Conexión terminada"
 
@@ -10817,15 +10817,15 @@ msgstr "Jugar una partida contra oponentes con IA"
 msgid "Login: "
 msgstr "Usuario: "
 
-#: src/game.cpp:1279 src/playcampaign.cpp:89 src/playcampaign.cpp:328
+#: src/game.cpp:1279 src/playcampaign.cpp:90 src/playcampaign.cpp:347
 msgid "The game could not be loaded: "
 msgstr "La partida no se ha podido cargar: "
 
-#: src/game.cpp:1281 src/playcampaign.cpp:91 src/playcampaign.cpp:331
+#: src/game.cpp:1281 src/playcampaign.cpp:92 src/playcampaign.cpp:350
 msgid "Error while playing the game: "
 msgstr "Error durante el juego: "
 
-#: src/game.cpp:1293 src/playcampaign.cpp:93 src/playcampaign.cpp:334
+#: src/game.cpp:1293 src/playcampaign.cpp:94 src/playcampaign.cpp:353
 msgid "The game map could not be loaded: "
 msgstr "El mapa del juego no se ha podido cargar: "
 
@@ -10875,112 +10875,112 @@ msgstr "Reiniciando tipografías para el idioma actual."
 msgid "Loading title screen."
 msgstr "Cargando pantalla inicial."
 
-#: src/game_events.cpp:811
+#: src/game_events.cpp:775
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:815
+#: src/game_events.cpp:778
 msgid "Defeat:"
 msgstr "Derrota:"
 
-#: src/gamestatus.cpp:751
+#: src/gamestatus.cpp:798
 msgid "Could not write to file"
 msgstr "No ha sido posible escribir en el fichero."
 
-#: src/help.cpp:1099
+#: src/help.cpp:1100
 msgid "Advances to: "
 msgstr "Puede convertirse en: "
 
-#: src/help.cpp:1120
+#: src/help.cpp:1121
 msgid "Abilities: "
 msgstr "Habilidades: "
 
-#: src/help.cpp:1139
+#: src/help.cpp:1140
 msgid "Cost: "
 msgstr "Coste: "
 
-#: src/help.cpp:1140
+#: src/help.cpp:1141
 msgid "Alignment: "
 msgstr "Alineamiento: "
 
-#: src/help.cpp:1146
+#: src/help.cpp:1147
 msgid "Required XP: "
 msgstr "PX requeridos: "
 
-#: src/help.cpp:1155
+#: src/help.cpp:1156
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1162
+#: src/help.cpp:1163
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Salir del juego"
 
-#: src/help.cpp:1163 src/menu_events.cpp:289 src/menu_events.cpp:826
+#: src/help.cpp:1164 src/menu_events.cpp:294 src/menu_events.cpp:831
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help.cpp:1164
+#: src/help.cpp:1165
 msgid "Strikes"
 msgstr "Ataques"
 
-#: src/help.cpp:1165
+#: src/help.cpp:1166
 msgid "Range"
 msgstr "Alcance"
 
-#: src/help.cpp:1166
+#: src/help.cpp:1167
 msgid "Special"
 msgstr "Especial"
 
-#: src/help.cpp:1216
+#: src/help.cpp:1217
 msgid "Resistances"
 msgstr "Resistencias"
 
-#: src/help.cpp:1220
+#: src/help.cpp:1221
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
-#: src/help.cpp:1221
+#: src/help.cpp:1222
 msgid "Resistance"
 msgstr "Resistencia"
 
-#: src/help.cpp:1246
+#: src/help.cpp:1247
 msgid "Terrain Modifiers"
 msgstr "Modificadores por terreno"
 
-#: src/help.cpp:1250
+#: src/help.cpp:1251
 msgid "Terrain"
 msgstr "Terreno"
 
-#: src/help.cpp:1251
+#: src/help.cpp:1252
 msgid "Defense"
 msgstr "Defensa"
 
-#: src/help.cpp:1252
+#: src/help.cpp:1253
 msgid "Movement Cost"
 msgstr "Coste de movimiento"
 
-#: src/help.cpp:2143
+#: src/help.cpp:2148
 msgid " < Back"
 msgstr " < Atrás"
 
-#: src/help.cpp:2144
+#: src/help.cpp:2149
 msgid "Forward >"
 msgstr "Adelante >"
 
-#: src/help.cpp:2256
+#: src/help.cpp:2261
 msgid "Reference to unknown topic: "
 msgstr "Referencia a apartado desconocido: "
 
-#: src/help.cpp:2516
+#: src/help.cpp:2521
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2631
+#: src/help.cpp:2636
 msgid "The Battle for Wesnoth Help"
 msgstr "Sección de ayuda de La Batalla por Wesnoth"
 
-#: src/help.cpp:2679
+#: src/help.cpp:2684
 msgid "Parse error when parsing help text: "
 msgstr "Error durante el procesado de la ayuda: "
 
@@ -11049,23 +11049,23 @@ msgstr "ella"
 msgid "him"
 msgstr "él"
 
-#: src/menu_events.cpp:164 src/menu_events.cpp:237
+#: src/menu_events.cpp:164 src/menu_events.cpp:240
 msgid "Recruits"
 msgstr "Reclutas"
 
-#: src/menu_events.cpp:170 src/menu_events.cpp:241
+#: src/menu_events.cpp:170 src/menu_events.cpp:244
 msgid "Recalls"
 msgstr "Veteranos"
 
-#: src/menu_events.cpp:176 src/menu_events.cpp:245
+#: src/menu_events.cpp:176 src/menu_events.cpp:248
 msgid "Advancements"
 msgstr "Avances"
 
-#: src/menu_events.cpp:182 src/menu_events.cpp:249
+#: src/menu_events.cpp:182 src/menu_events.cpp:252
 msgid "Losses"
 msgstr "Pérdidas"
 
-#: src/menu_events.cpp:188 src/menu_events.cpp:253
+#: src/menu_events.cpp:188 src/menu_events.cpp:256
 msgid "Kills"
 msgstr "Muertos"
 
@@ -11085,67 +11085,67 @@ msgstr "Daño infligido (VE)"
 msgid "Damage Taken (EV)"
 msgstr "Daño recibido (VE)"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:222
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: src/menu_events.cpp:293
+#: src/menu_events.cpp:298
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:294 src/unit.cpp:2505
+#: src/menu_events.cpp:299 src/unit.cpp:2505
 msgid "Moves"
 msgstr "Movimientos"
 
-#: src/menu_events.cpp:295
+#: src/menu_events.cpp:300
 msgid "Location"
 msgstr "Lugar"
 
-#: src/menu_events.cpp:340
+#: src/menu_events.cpp:345
 msgid "Unit List"
 msgstr "Lista de unidades"
 
-#: src/menu_events.cpp:358
+#: src/menu_events.cpp:363
 msgid "Leader"
 msgstr "Líder"
 
-#: src/menu_events.cpp:359 src/multiplayer_connect.cpp:741
+#: src/menu_events.cpp:364 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
 msgid "Team"
 msgstr "Equipo"
 
-#: src/menu_events.cpp:360 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:365 src/multiplayer_connect.cpp:752
 #: src/multiplayer_wait.cpp:440
 msgid "Gold"
 msgstr "Oro"
 
-#: src/menu_events.cpp:361
+#: src/menu_events.cpp:366
 msgid "Villages"
 msgstr "Aldeas"
 
-#: src/menu_events.cpp:362
+#: src/menu_events.cpp:367
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:363
+#: src/menu_events.cpp:368
 msgid "Upkeep"
 msgstr "Mantenimiento"
 
-#: src/menu_events.cpp:364 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:369 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:444
 msgid "Income"
 msgstr "Ingresos"
 
-#: src/menu_events.cpp:453 src/playcampaign.cpp:299 src/playcampaign.cpp:435
+#: src/menu_events.cpp:458 src/playcampaign.cpp:318 src/playcampaign.cpp:454
 msgid "Name:"
 msgstr "Nombre:"
 
-#: src/menu_events.cpp:458 src/menu_events.cpp:471
+#: src/menu_events.cpp:463 src/menu_events.cpp:476
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Error"
 
-#: src/menu_events.cpp:458
+#: src/menu_events.cpp:463
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -11153,87 +11153,87 @@ msgstr ""
 "El nombre de la partida guardada no puede contener dos puntos, o barras "
 "inclinadas. Por favor, escoja un nombre diferente."
 
-#: src/menu_events.cpp:468
+#: src/menu_events.cpp:473
 msgid "Saved"
 msgstr "Guardado"
 
-#: src/menu_events.cpp:468
+#: src/menu_events.cpp:473
 msgid "The game has been saved"
 msgstr "El juego ha sido guardado."
 
-#: src/menu_events.cpp:471 src/playcampaign.cpp:445
+#: src/menu_events.cpp:476 src/playcampaign.cpp:464
 msgid "The game could not be saved"
 msgstr "La partida no se ha podido guardar."
 
-#: src/menu_events.cpp:485
+#: src/menu_events.cpp:490
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Compartir mapas"
 
-#: src/menu_events.cpp:490
+#: src/menu_events.cpp:495
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "La partida ya existe. ¿Quiere sobreescribirla?"
 
-#: src/menu_events.cpp:502
+#: src/menu_events.cpp:507
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:507
+#: src/menu_events.cpp:512
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:597 src/menu_events.cpp:599 src/play_controller.cpp:713
-#: src/playcampaign.cpp:100
+#: src/menu_events.cpp:602 src/menu_events.cpp:604 src/play_controller.cpp:713
+#: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Autoguardado"
 
-#: src/menu_events.cpp:602
+#: src/menu_events.cpp:607
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "El juego no se ha podido guardar automáticamente. Por favor, guárdelo "
 "manualmente."
 
-#: src/menu_events.cpp:626
+#: src/menu_events.cpp:631
 msgid "Chat Log"
 msgstr "Registro de conversaciones"
 
-#: src/menu_events.cpp:636
+#: src/menu_events.cpp:641
 msgid "Message:"
 msgstr "Mensaje:"
 
-#: src/menu_events.cpp:637
+#: src/menu_events.cpp:642
 msgid "Send to allies only"
 msgstr "Mandarlo sólo a aliados"
 
-#: src/menu_events.cpp:704
+#: src/menu_events.cpp:709
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Oro"
 msgstr[1] "Oro"
 
-#: src/menu_events.cpp:711
+#: src/menu_events.cpp:716
 msgid "You have no units available to recruit."
 msgstr "No tiene unidades disponibles para reclutar."
 
-#: src/menu_events.cpp:722
+#: src/menu_events.cpp:727
 msgid "Recruit"
 msgstr "Reclutar"
 
-#: src/menu_events.cpp:723 src/menu_events.cpp:872
+#: src/menu_events.cpp:728 src/menu_events.cpp:877
 msgid "Select unit:"
 msgstr "Seleccionar unidad:"
 
-#: src/menu_events.cpp:763
+#: src/menu_events.cpp:768
 msgid "You don't have enough gold to recruit that unit"
 msgstr "No tiene suficiente oro para reclutar a esta unidad."
 
-#: src/menu_events.cpp:819
+#: src/menu_events.cpp:824
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Está separado de sus soldados y no puede reincorporarlos."
 
-#: src/menu_events.cpp:821
+#: src/menu_events.cpp:826
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11241,19 +11241,19 @@ msgstr ""
 "No hay tropas disponibles para reincorporar.\n"
 "(Debe tener veteranos supervivientes de un escenario previo)."
 
-#: src/menu_events.cpp:828
+#: src/menu_events.cpp:833
 msgid "Level"
 msgstr "Nivel"
 
-#: src/menu_events.cpp:860
+#: src/menu_events.cpp:865
 msgid "Dismiss Unit"
 msgstr "Licenciar unidad"
 
-#: src/menu_events.cpp:871
+#: src/menu_events.cpp:876
 msgid "Recall"
 msgstr "Reincorporar"
 
-#: src/menu_events.cpp:883
+#: src/menu_events.cpp:888
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -11262,48 +11262,48 @@ msgstr[0] ""
 msgstr[1] ""
 "Ha de tener por lo menos $cost piezas de oro para reincorporar a una unidad."
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1214
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Aún no ha hecho nada en este turno. ¿Está seguro de que quiere terminar el "
 "turno?"
 
-#: src/menu_events.cpp:1217 src/menu_events.cpp:1222
+#: src/menu_events.cpp:1222 src/menu_events.cpp:1227
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algunas unidades todavía tienen puntos de movimiento. ¿Quiere finalizar su "
 "turno?"
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1268
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/menu_events.cpp:1358
+#: src/menu_events.cpp:1363
 #, fuzzy
 msgid "Team only"
 msgstr "Turquesa"
 
-#: src/menu_events.cpp:1363
+#: src/menu_events.cpp:1368
 msgid "Place Label"
 msgstr "Poner etiqueta"
 
-#: src/menu_events.cpp:1364
+#: src/menu_events.cpp:1369
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: src/menu_events.cpp:1470
+#: src/menu_events.cpp:1475
 msgid "Search"
 msgstr "Búsqueda"
 
-#: src/menu_events.cpp:1513
+#: src/menu_events.cpp:1518
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Órdenes: whisper ignore emote. Escriba /help [orden] si desea ayuda "
 "específica."
 
-#: src/menu_events.cpp:1564
+#: src/menu_events.cpp:1569
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -11311,21 +11311,21 @@ msgstr ""
 "Envía un mensaje privado. No se pueden enviar mensajes a jugadores que "
 "controlen cualquier bando del juego. Uso: /whisper [apodo] [mensaje]"
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1573
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Añade un jugador a su lista de jugadores ignorados. Uso: /ignore add "
 "[argumento]"
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1575
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Añade un jugador a su lista de jugadores ignorados. Uso: /ignore add "
 "[argumento]"
 
-#: src/menu_events.cpp:1572
+#: src/menu_events.cpp:1577
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -11334,21 +11334,21 @@ msgstr ""
 "Elimina un jugador de su lista de jugadores ignorados. Uso: /ignore remove "
 "[argumento]"
 
-#: src/menu_events.cpp:1574
+#: src/menu_events.cpp:1579
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Borra su lista de jugadores ignorados. Uso: /ignore clear"
 
-#: src/menu_events.cpp:1576
+#: src/menu_events.cpp:1581
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Muestra su lista de jugadores ignorados. Uso: /ignore list"
 
-#: src/menu_events.cpp:1578
+#: src/menu_events.cpp:1583
 msgid "Unknown subcommand"
 msgstr "Suborden desconocida"
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1586
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -11356,56 +11356,56 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1589
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Enviar un «emoticono» o acción personal a través de texto. Uso: /emote "
 "[mensaje]"
 
-#: src/menu_events.cpp:1586
+#: src/menu_events.cpp:1591
 msgid "Unknown command"
 msgstr "Orden desconocida"
 
-#: src/menu_events.cpp:1598
+#: src/menu_events.cpp:1603
 msgid "Added to ignore list: "
 msgstr "Añadido a lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1600 src/menu_events.cpp:1607 src/menu_events.cpp:1614
+#: src/menu_events.cpp:1605 src/menu_events.cpp:1612 src/menu_events.cpp:1619
 msgid "Invalid username: "
 msgstr "Nombre de usuario inválido"
 
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1610
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Añadido a lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1612
+#: src/menu_events.cpp:1617
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Eliminado de lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1638
+#: src/menu_events.cpp:1643
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1648
+#: src/menu_events.cpp:1653
 msgid "Removed from ignore list: "
 msgstr "Eliminado de lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1656
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Eliminado de lista de usuarios a ignorar"
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1663
 msgid "Unknown command: "
 msgstr "Orden desconocida: "
 
-#: src/menu_events.cpp:1759
+#: src/menu_events.cpp:1764
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "No se encontró una etiquieta o unidad con la cadena «$search»."
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1908
 msgid "prompt^Command:"
 msgstr "Orden:"
 
@@ -11527,12 +11527,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2604
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2609
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2611
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2616
 msgid ")"
 msgstr ")"
 
@@ -11933,52 +11933,52 @@ msgstr "Volver a empezar"
 msgid "Back to turn "
 msgstr "Volver al turno "
 
-#: src/playcampaign.cpp:276
+#: src/playcampaign.cpp:295
 msgid "Defeat"
 msgstr "Derrota"
 
-#: src/playcampaign.cpp:277
+#: src/playcampaign.cpp:296
 msgid "You have been defeated!"
 msgstr "¡Has sido derrotado!"
 
-#: src/playcampaign.cpp:290
+#: src/playcampaign.cpp:309
 msgid " replay"
 msgstr " repetición"
 
-#: src/playcampaign.cpp:298
+#: src/playcampaign.cpp:317
 msgid "Do you want to save a replay of this scenario?"
 msgstr "¿Quiere guardar la repetición de este escenario?"
 
-#: src/playcampaign.cpp:300
+#: src/playcampaign.cpp:319
 #, fuzzy
 msgid "Save Replay"
 msgstr "Repetición"
 
-#: src/playcampaign.cpp:307
+#: src/playcampaign.cpp:326
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "La partida no se ha podido guardar."
 
-#: src/playcampaign.cpp:347
+#: src/playcampaign.cpp:366
 #, fuzzy
 msgid "Receiving data..."
 msgstr "Obteniendo datos de la partida..."
 
-#: src/playcampaign.cpp:349
+#: src/playcampaign.cpp:368
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Descargando próximo nivel..."
 
-#: src/playcampaign.cpp:434
+#: src/playcampaign.cpp:453
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
 "¿Quiere guardar el juego? (Esto también borrará los ficheros de autoguardado)"
 
-#: src/playcampaign.cpp:461
+#: src/playcampaign.cpp:480
 msgid "Unknown scenario: '"
 msgstr "Escenario desconocido: '"
 
-#: src/playmp_controller.cpp:274
+#: src/playmp_controller.cpp:279
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -12322,7 +12322,7 @@ msgstr "Ayuda"
 msgid "Help Wesnoth by sending us information"
 msgstr "Ayude a Wesnoth enviándonos información"
 
-#: src/unit.cpp:2440 src/unit.cpp:2609
+#: src/unit.cpp:2440 src/unit.cpp:2614
 msgid "; "
 msgstr "; "
 
@@ -12330,7 +12330,7 @@ msgstr "; "
 msgid "XP to advance"
 msgstr "PX para subir de nivel"
 
-#: src/unit.cpp:2600
+#: src/unit.cpp:2605
 msgid ": "
 msgstr ": "
 
@@ -12383,898 +12383,916 @@ msgstr "Puede ver los resultados en:"
 msgid "Help us make Wesnoth better for you!"
 msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 
-msgid "Scenario Designers"
-msgstr "Diseñadores de escenarios"
+#~ msgid "Scenario Designers"
+#~ msgstr "Diseñadores de escenarios"
 
-msgid "Multiplayer Developers"
-msgstr "Desarrolladores del juego multijugador"
+#~ msgid "Multiplayer Developers"
+#~ msgstr "Desarrolladores del juego multijugador"
 
-msgid "+Developers"
-msgstr "+Desarrolladores"
-
-#, fuzzy
-msgid "$friends Friendly unit sighted"
-msgid_plural "$friends Friendly units sighted"
-msgstr[0] "$friends unidades aliadas avistadas"
-msgstr[1] "$friends unidades aliadas avistadas"
+#~ msgid "+Developers"
+#~ msgstr "+Desarrolladores"
 
 #, fuzzy
-msgid "$enemies Enemy unit sighted!"
-msgid_plural "$enemies Enemy units sighted!"
-msgstr[0] "¡$enemies unidades enemigas avistadas!"
-msgstr[1] "¡$enemies unidades enemigas avistadas!"
-
-msgid "attacks"
-msgstr "ataques"
-
-msgid ""
-"A duel map for super fast play. Recommended setting of 2 gold per village."
-msgstr ""
-"Un mapa para duelos extremadamente rápido. Se recomienda la opción de 2 "
-"piezas de oro por aldea."
-
-msgid "or"
-msgstr "o"
-
-msgid "This terrain acts as $terrains for movement purposes."
-msgstr "Este terreno actúa como $terrains a efectos de movimiento."
-
-msgid "The terrain with the best modifier is chosen automatically."
-msgstr "Se escoge automáticamente el terreno con el mejor modificador."
-
-msgid "The terrain with the worst modifier is chosen automatically."
-msgstr "Se escoge automáticamente el terreno con el peor modificador."
-
-msgid "This terrain acts as $terrains for defense purposes."
-msgstr "Este terreno actúa como $terrains a efectos de defensa."
-
-msgid ""
-"This terrain acts as a keep, i.e., you can recruit units when a leader is in "
-"a location with this terrain."
-msgstr ""
-"Este terreno actúa como un torreón, es decir, se pueden reclutar unidades si "
-"se sitúa un líder en él."
-
-msgid ""
-"This terrain acts as a castle, i.e., you can recruit units onto a location "
-"with this terrain."
-msgstr ""
-"Este terreno actúa como un castillo, es decir, que podrá reclutar unidades y "
-"que aparezcan en este terreno."
-
-msgid "This terrain gives healing."
-msgstr "Este terreno proporciona sanación."
-
-msgid "Horse Lord"
-msgstr "Señor caballero"
-
-msgid ""
-"The greatest of the men of the plains, Horse Lords are heads of their houses "
-"and are respected by all, friend or foe. Their sword can kill most ordinary "
-"enemies, and their morning star crushes those who are left."
-msgstr ""
-"Los señores caballeros, los mejores de los hombres de las llanuras, lideran "
-"sus clanes y tienen el respeto de amigos y enemigos. Su espada puede acabar "
-"con la mayoría de enemigos ordinarios, y su maza de jinete puede encargarse "
-"del resto."
-
-msgid "Mounted Fighter"
-msgstr "Luchador montado"
-
-msgid ""
-"The nobles of the men of the plains are trained with the rest of the "
-"horsemen to become great warriors. However, they are also trained in "
-"commanding their comrades, and they are the ones that become captains of the "
-"armies of the Clans."
-msgstr ""
-"La nobleza de los hombres de las llanuras recibe entrenamiento con los demás "
-"jinetes para convertirse en grandes guerreros. Sin embargo, también reciben "
-"entrenamiento para liderar a sus compatriotas, y son ellos los que se "
-"convierten en los capitanes de los ejércitos de los clanes."
-
-msgid "Mounted Warrior"
-msgstr "Guerrero montado"
-
-msgid ""
-"Leaders of the plains, Mounted Warriors are skilled with the use of the "
-"sword and the morning star. Riding horses, they are able to move around the "
-"battlefield with great speed, and can provide much needed assistance to "
-"different fronts."
-msgstr ""
-"Los guerreros montados, dueños de las llanuras, conocen el uso de la espada "
-"y la maza de jinete. A lomos de sus caballos son capaces de moverse por el "
-"campo de batalla a gran velocidad, y ofrecer su ayuda en diferentes frentes."
-
-msgid "Skeletal Dragon"
-msgstr "Dragón esquelético"
-
-msgid ""
-"Long ago one of the mightiest living creatures, the feared Dragon has become "
-"only bones and dark sinew. Long after its death, it was raised through the "
-"dark powers of necromancy, which it now serves. The Skeletal Dragon may look "
-"like nothing more than a pile of bones, but few people who thought that way "
-"lived long enough to change their minds."
-msgstr ""
-"Habiendo sido una de las criaturas vivientes más poderosas, este temido "
-"dragón se ha convertido en sólo una masa de huesos y oscuros tendones. Mucho "
-"después de morir, fue alzado por los oscuros poderes de la necromancia, a "
-"quienes ahora sirve. El dragón esquelético puede parecer una simple pila de "
-"huesos, pero muy pocos de los que así pensaron han vivido lo suficiente como "
-"para darse cuenta de su error."
-
-msgid "jaw"
-msgstr "mordisco"
-
-msgid "Current Maintainer"
-msgstr "Mantenedor actual"
-
-msgid "female^Battle Princess"
-msgstr "Princesa guerrera"
-
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals, and battle tactics with the greatest sages, making her both a "
-"great combatant and leader. Now battle-hardened and strong of will, she can "
-"now aid those around her in the art of combat."
-msgstr ""
-"Noble de nacimiento, la princesa ha aprendido esgrima con los más grandes "
-"generales, y tácticas de combate con los más grandes sabios, convirtiéndola "
-"en una gran luchadora y líder. Curtida en la batalla y de voluntad fuerte, "
-"puede ayudar a aquellos que la rodean a combatir mejor gracias a su "
-"presencia."
-
-msgid "scepter of fire"
-msgstr "cetro de fuego"
-
-msgid "Cockatrice"
-msgstr "Basilisco"
-
-msgid ""
-"Sometimes known as 'basilisks', these mystical creatures are said to be able "
-"to turn the living to stone. Needless to say, this makes them extremely "
-"dangerous."
-msgstr ""
-"A veces conocidos como «cocatrices», se dice que estas criaturas míticas son "
-"capaces de convertir a los vivos en piedra. No hace falta decir que esto las "
-"hace tremendamente peligrosas."
-
-msgid "gaze"
-msgstr "mirada"
-
-msgid "Commander"
-msgstr "Comandante"
-
-msgid ""
-"The rank of Commander is held by those who lead battle groups into combat. "
-"Possessing leadership skills, they give lower-level units in adjacent hexes "
-"improved performance in combat. Commanders are best skilled with the sword, "
-"although they also carry a bow to use when necessary. If the Commander is "
-"lost, so is the battle."
-msgstr ""
-"Aquellos que lideran escuadras de hombres en la batalla ostentan el rango de "
-"comandante. Gracias a sus habilidades de liderazgo, las unidades de menor "
-"nivel que se encuentren en los hexágonos adyacentes ven aumentada su "
-"capacidad de combate. Los comandantes se sienten más cómodos con la espada, "
-"aunque a pesar de todo llevan un arco para usarlo cuando es necesario. Si el "
-"comandante muere, se acabó la batalla."
-
-msgid "female^Dark Queen"
-msgstr "Reina oscura"
-
-msgid ""
-"The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
-"knowledge of magic makes her a worthy foe in combat, although her power is "
-"mostly derived from those she commands."
-msgstr ""
-"Asheviere, la malvada reina madre, ha aterrorizado Wesnoth durante muchos "
-"años. Su conocimiento de la magia la hace una oponente temible en combate, "
-"aunque su poder realmente deriva de aquellos a quienes manda."
-
-msgid "scepter"
-msgstr "cetro"
-
-msgid "Elder Mage"
-msgstr "Mago anciano"
-
-msgid ""
-"Once great, Elder Magi have seen their power a little diminished from "
-"wearying years of battle. Nevertheless they remain feared on the battlefield "
-"on account of their powerful lightning bolts."
-msgstr ""
-"El que una vez fue un gran mago, este anciano aún conserva gran parte de sus "
-"poderes, aunque han disminuido ligeramente durante todos estos años de "
-"combates. Aún así, en el campo de batalla se lo sigue temiendo por sus "
-"potentes relámpagos."
-
-msgid "lightning"
-msgstr "relámpago"
-
-msgid "Elvish High Lord"
-msgstr "Alto Señor elfo"
-
-msgid ""
-"The leaders of the elves do not fall sallow and frail with age. Rather, it "
-"is then that they grow to their true potential. Quiet and contemplative in "
-"times of peace, a High Lord in the full of his wrath is an awesome sight "
-"indeed."
-msgstr ""
-"Los líderes de los elfos no se vuelven melancólicos y frágiles con la edad. "
-"Al contrario, es en este momento cuando desarrollan todo su verdadero "
-"potencial. Silenciosos y contemplativos en tiempos de paz, un Alto Señor "
-"encolerizado es una visión sobrecogedora."
-
-msgid "female^Elvish Lady"
-msgstr "Dama elfa"
-
-msgid ""
-"Elves choose their leaders for their power and wisdom; foresight is what has "
-"protected them in times of uncertainty. Their just reign is rewarded by the "
-"unflagging fealty of their people, which is the greatest gift any ruler "
-"could ask for."
-msgstr ""
-"Los elfos escogen a sus líderes por su poder y sabiduría: la prudencia es lo "
-"que los ha protegido en tiempos de incertidumbre. Su justo reinado es "
-"recompensado por la lealtad incondicional de su gente, que es el mayor "
-"regalo al que cualquier dirigente puede aspirar."
-
-msgid "shove"
-msgstr "empujón"
-
-msgid "Elvish Lord"
-msgstr "Señor elfo"
-
-msgid ""
-"The nobility of the elves are possessed of merit to match their standing in "
-"society. Elvish Lords are the wisest and strongest of their people, and are "
-"fearsome in their command of magic."
-msgstr ""
-"Los nobles elfos no carecen de méritos para disfrutar de su status social. "
-"Los señores elfos son los más sabios y fuertes de entre su gente, y su "
-"dominio de las artes mágicas es verdaderamente temible."
-
-msgid "Fighter"
-msgstr "Luchador"
-
-msgid ""
-"Young and brash, Fighters fight with a sword, and are vulnerable to attack "
-"from enemies. However they have the potential to become great warriors one "
-"day."
-msgstr ""
-"El luchador ha sido entrenado en el uso de la espada. Joven e inexperto, es "
-"vulnerable a los ataques enemigos. Sin embargo, tiene el potencial para "
-"convertirse en un gran guerrero algún día."
-
-msgid "Lord"
-msgstr "Señor"
-
-msgid ""
-"The noble leaders of many troops, Lords are especially strong in melee "
-"combat, and also possess skill with the bow. Like Commanders, Lords possess "
-"leadership skills, and improve the fighting ability of all adjacent lower-"
-"level units."
-msgstr ""
-"Un noble líder de muchas tropas, un señor es especialmente fuerte en combate "
-"cuerpo a cuerpo, pero también posee habilidad para tirar con el arco. Como "
-"los comandantes, los señores tienen un buen liderazgo, y mejoran las "
-"habilidades de lucha de todas las unidades adyacentes de nivel inferior."
-
-msgid "female^Princess"
-msgstr "Princesa"
-
-msgid ""
-"A noble by birth, the Princess has learnt swordplay with the greatest "
-"generals and battle tactics with the greatest sages, making her both a great "
-"combatant and leader. The units of lower level around the Princess will "
-"fight better due to her presence. The Princess is also nimble and dextrous, "
-"having skills like that of a thief."
-msgstr ""
-"Noble de nacimiento, la princesa ha aprendido a luchar con los más grandes "
-"generales y ha aprendido estrategia con los más grandes sabios, "
-"convirtiéndola tanto en una gran combatiente como en una gran líder. Las "
-"unidades de nivel más bajo que la rodeen lucharán mejor gracias a su "
-"presencia. La princesa es además ágil y diestra, teniendo habilidades casi "
-"de ladrón."
-
-msgid "Princess"
-msgstr "Princesa"
-
-msgid "Sea Orc"
-msgstr "Orco marino"
-
-msgid ""
-"While often viewed as inferior to their land loving counterparts, Sea Orcs "
-"represent a great leap for all goblinoids as they have adapted to aquatic "
-"environments. With their curved swords they are competent fighters, although "
-"their lack of a ranged attack and poor defence on land do represent "
-"strategic weaknesses."
-msgstr ""
-"A pesar de que a menudo se los ve como el pariente inferior de los orcos "
-"terrestres, los orcos marinos representan un gran salto evolutivo en los "
-"goblinoides, ya que han conseguido adaptarse a entornos acuáticos. Luchan "
-"con gran habilidad con sus características espadas curvas, aunque su falta "
-"de ataques a distancia y vulnerabilidad en tierra representan una gran "
-"debilidad estratégica."
-
-msgid "Sleeping Gryphon"
-msgstr "Grifo durmiente"
-
-msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "¡Shhhh! ¡El grifo duerme! ¡Más te vale no despertarlo!"
-
-msgid "Youth"
-msgstr "Joven"
-
-msgid ""
-"Today almost a boy, by his devotion to the crown he is seeking to become a "
-"Lord -- to join the elite of human fighters."
-msgstr ""
-"Hoy casi un niño, busca convertirse en Señor por su devoción a la Corona, "
-"para unirse a la elite de luchadores humanos."
-
-msgid "training sword"
-msgstr "espada de entrenamiento"
-
-msgid "Fire Dragon"
-msgstr "Dragón de fuego"
-
-msgid ""
-"A fire dragon is an ancient and horrifying being that normally lives only in "
-"hushed rumor and fantastic stories. It is normal for centuries to pass "
-"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
-"form flying in the distance. Legends are very specific about the ravages of "
-"fire dragons: hideously swift in flight, leathery wings spread over one "
-"hundred feet in width, they swoop in and blast their prey with inferno jets "
-"of flame. Anything escaping the dragon's fire breath must beware its "
-"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
-"often take underlings whom they lead to victory."
-msgstr ""
-"Un dragón de fuego es un ser antiguo y horrible que normalmente sólo existe "
-"en las leyendas y las historias fantásticas. Es muy normal que no se vea en "
-"Wesnoth ninguno en varios siglos, y cuando lo es, tan sólo suele ser una "
-"sombra ominosa volando en la lejanía. Las leyendas son en cambio muy "
-"específicas cuando hablan de las habilidades en combate de los dragones de "
-"fuego: vuelan como auténticos demonios, sus alas miden 30 metros de punta a "
-"punta, pican desde lo alto para cazar y exhalan un flamígero aliento. "
-"Cualquiera que escape a una de sus deflagraciones debe además enfrentarse a "
-"su boca, llena de afilados colmillos, y la cola que esgrime como un látigo "
-"gigantesco. Los dragones de fuego son listos y crueles, y a menudo utilizan "
-"subordinados para conseguir sus propósitos."
-
-msgid "bite"
-msgstr "mordisco"
-
-msgid "tail"
-msgstr "cola"
-
-msgid "Fireball"
-msgstr "Bola de fuego"
-
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr ""
-"Una bola de fuego. ¡No está pensado para nada más que un "
-"«Mover_Unidad_falsa»!"
-
-msgid "Noble Commander"
-msgstr "Comandante noble"
-
-msgid ""
-"The rank of a noble Commander is held by those who lead battle groups into "
-"combat. Possessing leadership skills, they give lower-level units in "
-"adjacent hexes improved performance in combat. Commanders are best skilled "
-"with the sword, although they also carry a bow to use when necessary. If the "
-"Commander is lost, so is the battle."
-msgstr ""
-"Aquellos que lideran escuadras de hombres en la batalla ostentan el rango de "
-"comandante noble. Gracias a sus habilidades de liderazgo, las unidades de "
-"menor nivel que se encuentren en los hexágonos adyacentes ven aumentada su "
-"capacidad de combate. Los comandantes se sienten más cómodos con la espada, "
-"aunque a pesar de todo llevan un arco para usarlo cuando es necesario. Si el "
-"comandante muere, se acabó la batalla."
-
-msgid "Noble Fighter"
-msgstr "Luchador noble"
-
-msgid ""
-"Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
-"attacks from enemies. However they have the potential to become great "
-"Commanders one day."
-msgstr ""
-"Este luchador es hábil en el uso de la espada. Joven e inexperto, es "
-"vulnerable a los ataques enemigos. Sin embargo, tiene el potencial para "
-"convertirse en un gran guerrero algún día."
-
-msgid "Noble Lord"
-msgstr "Señor noble"
-
-msgid "Noble Youth"
-msgstr "Joven noble"
-
-msgid ""
-"Today he is a young man, by his devotion to the crown he is seeking to "
-"become a Lord -- to join the elite of humanity."
-msgstr ""
-"Hoy es tan sólo un joven, pero su devoción a la corona lo llevará a "
-"convertirse en un señor; a convertirse en la élite de la humanidad."
-
-msgid "female^Outlaw Princess"
-msgstr "Princesa forajida"
-
-msgid ""
-"A noble by birth, the Outlaw Princess has learnt swordplay with the greatest "
-"generals, but she is the product of a failed aristocracy who has opted for "
-"the life of an Outlaw. She dreams of founding her own Queendom with the "
-"plunder she finds on the road."
-msgstr ""
-"Noble de nacimiento, la princesa ha aprendido a luchar con los más grandes "
-"generales, pero es el producto de una aristocracia caída en desgracia, y ha "
-"escogido vivir fuera de la ley. Sueña con fundar su propio reinado con lo "
-"que obtiene de sus víctimas en los caminos."
-
-msgid "female^Outlaw Queen"
-msgstr "Reina forajida"
-
-msgid ""
-"A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
-"generals and battle tactics with the greatest sages, making her both a great "
-"combatant and leader. However, she is the product of a failed aristocracy "
-"who has opted for the life of an Outlaw. She dreams of founding her own "
-"Queendom with the plunder she finds on the road, and she is ever so close to "
-"that goal."
-msgstr ""
-"Noble de nacimiento, la reina forajida ha aprendido a luchar con los más "
-"grandes generales y ha aprendido estrategia con los más grandes sabios, "
-"convirtiéndola tanto en una gran combatiente como en una gran líder. Sin "
-"embargo, es el producto de una aristocracia caída en desgracia y que ha "
-"escogido vivir fuera de la ley. Sueña con fundar su propio reinado con lo "
-"que obtiene de sus víctimas en los caminos, y está muy cerca de conseguirlo."
-
-msgid "female^Vampire Lady"
-msgstr "Dama vampiro"
-
-msgid ""
-"Cold and beautiful, she maintains her eternal youthful appearance drinking "
-"the blood of the living."
-msgstr ""
-"Fría y bella, mantiene su eterna juventud bebiendo la sangre de los vivos."
-
-msgid "blood kiss"
-msgstr "beso de sangre"
-
-msgid "Warrior King"
-msgstr "Rey guerrero"
-
-msgid ""
-"As the leaders of the human Kingdoms, Kings are responsible for ruling and "
-"protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
-"units, thereby increasing their fighting efficiency."
-msgstr ""
-"Como líderes de los reinos humanos, los reyes son responsables de gobernar y "
-"proteger a sus súbditos. Asimismo, los reyes pueden coordinar los ataques de "
-"unidades cercanas de nivel 1 y 2 para que mejore su eficiencia en combate."
-
-msgid "Wose Sapling"
-msgstr "Wose joven"
-
-msgid ""
-"Rarely seen, even by elves, a Wose is an order of creature about which "
-"little is known. The elves are the source of most of this knowledge; they "
-"know that these beings are not descended from trees, despite the similarity "
-"in form, and they know that a wose is more closely tied to the faerie world "
-"than the elves themselves, though in a different way. The motives and "
-"workings of their kind are unknown, though most posit the obvious idea that "
-"woses are wardens of the natural world.\n"
-"\n"
-"Woses are utterly unwarlike, but possess a great strength. They are, "
-"however, neither used to, nor quick at moving around.\n"
-"\n"
-"Special Notes: Woses regenerate by using natural resources around them, "
-"without needing to huddle in villages to obtain sustenance and aid."
-msgstr ""
-"Un wose es una criatura sobre la que se sabe muy poco, muy difícil de ver, "
-"incluso para los elfos. Ellos son los que más saben sobre los woses: que no "
-"descienden de los árboles, a pesar del parecido en la forma, y que están más "
-"atados al mundo faérico e imaginario que los propios elfos, aunque de una "
-"manera diferente. Los motivos y objetivos de esta raza se desconocen, aunque "
-"muchos suponen que obviamente los woses son guardianes del mundo natural.\n"
-"\n"
-"Los woses son absolutamente pacíficos, pero poseen una gran fuerza. Sin "
-"embargo, no están acostumbrados a moverse, ni lo hacen rápido.\n"
-"\n"
-"Notas especiales: los woses se regeneran usando los recursos naturales que "
-"hay a su alrededor, sin que necesiten entrar en aldeas para obtener sustento "
-"y ayuda."
-
-msgid "Demilich"
-msgstr "Semicadáver"
-
-msgid ""
-"After too much time dabbling with forbidden magics and dark arts, these magi "
-"have begun to pay a heavy price. Demiliches have started losing their "
-"bodies, becoming undead themselves. With time, they may become fully undead, "
-"and feared by all alike."
-msgstr ""
-"Demasiado tiempo investigando la senda de las magias prohibidas y artes "
-"oscuras tiene sus consecuencias para un mago: un semicadáver está perdiendo "
-"inexorablemente su cuerpo, y convirtiéndose en un no muerto. En poco tiempo "
-"será por entero un no muerto, y será temible."
-
-msgid ""
-"The title of Arch Mage is conferred only after a lifetime of study and "
-"achievement to match. Arch Magi are often employed in positions of "
-"education, or as advisors to those wise enough to seek the fruits of their "
-"wisdom. Many tend to wealthy patrons, a profitable enterprise for both as, "
-"outside of the occasional task or word of advice, it gives the mage leave to "
-"pursue their research undisturbed. Certain others shun civilization, "
-"spending their days as hermits, often to study something which most would "
-"tend to frown upon.\n"
-"\n"
-"Though not trained for any sort of combat, if need arises an Arch Mage can "
-"unleash the full power of their art, something which is not to be taken "
-"lightly.\n"
-"\n"
-"Special Notes: the arch mage's fireballs are magical, and always have a high "
-"chance of hitting an opponent."
-msgstr ""
-"El título de Archimago se confiere sólo después de una vida dedicada por "
-"completo al estudio, un logro difícil de conseguir. Los archimagos a menudo "
-"encuentran trabajo como profesores, o como consejeros de aquellos "
-"suficientemente sabios como para escuchar sus enseñanzas. Muchos tienden a "
-"buscar un patrono rico, lo cual es una empresa rentable para ambos, ya que "
-"aparte de los trabajos ocasionales o consejos que se le pidan, el mago tiene "
-"la mayoría del tiempo disponible para proseguir sus investigaciones "
-"tranquilo. Otros abandonan la civilización, y pasan sus días como eremitas, "
-"a menudo para estudiar algo que muchos desaprobarían.\n"
-"\n"
-"Aunque no reciben entrenamiento particular para el combate, si es necesario "
-"un archimago puede desatar todo el poder de su artes mágicas, lo cual no es "
-"algo para tomarse a la ligera.\n"
-"\n"
-"Notas especiales: las bolas de fuego del archimago son mágicas, y siempre "
-"tienen una alta probabilidad de impactar a un oponente."
-
-msgid ""
-"Any person who is even considered for the title of Great Mage is quite "
-"nearly a legend in their own time, and town criers have forcibly learnt "
-"discretion in applying the title. Merit for the title is carefully "
-"considered by a council of the leading magi of the age, and the conferment "
-"of the title is given only by a majority vote. Regardless, anyone who is "
-"seriously nominated for the honor of being called a Great Mage is, without "
-"question, a master of their art, and has surpassed almost any of their peers "
-"in skill.\n"
-"\n"
-"Though they are not warriors, by any means, the application of their art to "
-"combat is something that often causes other soldiers to stand aside in awe.\n"
-"\n"
-"Special Notes: the great mage's fireballs are magical, and always have a "
-"high chance of hitting an opponent."
-msgstr ""
-"Cualquier persona que es sugerida para el título de gran mago constituye una "
-"leyenda viva de su tiempo. Antes de otorgar este título, los méritos del "
-"candidato son meticulosamente analizados por un tribunal formado por los más "
-"destacados magos del momento, y sólo es concedido si lo considera oportuno "
-"la mayoría del consejo. Sin embargo, cualquiera que es propuesto para "
-"ostentar el honor de ser nombrado gran mago es, sin duda alguna, un maestro "
-"en el arte de la magia y su habilidad supera con creces la de cualquier otro "
-"mago.\n"
-"\n"
-"Aunque no son guerreros, la aplicación de su magia en combate suele mantener "
-"a los soldados alejados, en una mezcla de temor, respeto y pruedencia.\n"
-"\n"
-"Notas especiales:las bolas de fuego de un gran mago son mágicas, y la "
-"probabilidad de que alcancen su objetivo es siempre muy elevada. "
-
-msgid ""
-"Upon the successful termination of their apprenticeship, a mage is stripped "
-"of the blue robes of an apprentice, and given the red robes of a master. The "
-"significance of this change is often lost on the peasantry, who mistakenly "
-"title Master Magi as 'Red Magi'. Likewise, the symbolism of the change in "
-"colors is often mistaken to signify the mage's ability to seemingly conjure "
-"fire from nothing but thin air, a trick which, although undeniably useful, "
-"is viewed as a crass application of the knowledge which they have "
-"painstakingly accrued.\n"
-"\n"
-"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
-"number of tricks up their sleeves, including the gouts of fire which may "
-"have cemented their colloquial name.\n"
-"\n"
-"Special Notes: the red mage's fireballs are magical, and always have a high "
-"chance of hitting an opponent."
-msgstr ""
-"Tras culminar satisfactoriamente su aprendizaje, los magos cambian sus togas "
-"azules de aprendices por togas rojas de maestros. El significado de este "
-"cambio suele pasar desapercibido por los campesinos, que llaman "
-"inapropiadamente magos rojos a los maestros magos. De la misma forma, el "
-"simbolismo del cambio de colores suele ser malinterpretado, entendiendo que "
-"el color rojo hace referencia a la capacidad para crear fuego a partir de la "
-"nada, un truco que, aunque es innegablemente útil, es una mera aplicación "
-"del conocimiento duramente adquirido.\n"
-"\n"
-"A pesar de su fragilidad física y de carecer de entrenamiento como "
-"guerreros, los magos rojos disponen de una serie de útiles hechizos, como "
-"las bolas de fuego que han contribuido a establecer su sobrenombre.\n"
-"\n"
-"Notas especiales: las bolas de fuego de los magos rojos son mágicas, por lo "
-"que la probabilidad de que alcancen su objetivo es siempre muy elevada."
-
-msgid ""
-"The many paths that a mage can take in study lead to strikingly different "
-"ends. Silver magi have devoted themselves to a study of the forces that bind "
-"reality together, and have managed, somewhat, to unravel the mysteries of a "
-"world far more vast than most would ever imagine. Often viewed as sages, or "
-"wandering mystics, silver magi act under an agenda which is obscure even to "
-"their own colleagues. Though helpful to the magisteriums which often employ "
-"them in the field, they remain somewhat aloof.\n"
-"\n"
-"They have, in fact, their own order amongst the ranks of magi, an order "
-"which withholds certain secrets from their peers. One of these is an "
-"apparent ability to cross great distances, faster than one could possibly "
-"travel on foot. Members of the silver order ardently refuse to discuss the "
-"workings of this with any of their fellow magi, and on those rare occasions "
-"when others have pried into their work, they have abandoned the endeavor, "
-"never to speak of it again.\n"
-"\n"
-"Silver magi are often more physically adept than other magi, and their "
-"skills are of undeniable use on the battlefield, if one can manage to coerce "
-"the mage into applying them.\n"
-"\n"
-"Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
-"magical natures and are highly resistant to non-physical damage. They can "
-"also teleport between any two villages instantly, though the player must "
-"control both, and the destination village must be unoccupied."
-msgstr ""
-"Las múltiples ramas de estudio que componen las artes mágicas dan lugar a "
-"resultados totalmente diferentes. Los magos de plata se han consagrado al "
-"estudio de las fuerzas que mantienen unida la realidad, y han logrado, de "
-"alguna forma, desentrelazar los misterios de un mundo muchísimo más grande "
-"de lo que la mayoría podía imaginar. Los magos de plata son considerados "
-"sabios y místicos y sus propósitos son desconocidos incluso para sus propios "
-"compañeros. Aunque son muy útiles para quien contrata sus servicios, suelen "
-"mantenerse un tanto alejados.\n"
-"\n"
-"De hecho, los magos de plata tienen su propia orden entre los distintos "
-"rangos de magos, que les ayuda a ocultar ciertos secretos a sus semejantes. "
-"Uno de ellos es la aparente habilidad de cruzar grandes distancias, mucho "
-"más rápido de lo que podría hacerse a pie. Los miembros de la orden de plata "
-"se guardan mucho de discutir sobre ello, y en las raras ocasiones en que "
-"algñun otro ha intentado adentrarse en sus secretos, no ha tardado en "
-"abandonar sus intenciones para nunca más volver a hablar de ello.\n"
-"\n"
-"Los magos de plata son a menudo más hábiles físicamente que otros magos y "
-"poseen incuestionables habilidades para aplicar en el campo de batalla, que "
-"resultarán de gran utilidad para aquél que logre convencerlos para luchar de "
-"su parte.\n"
-"\n"
-"Notas especiales: el ataque a distancia de los magos de plata es mágico, por "
-"lo que poseen una alta probabilidad de alcanzar siempre su objetivo. Los "
-"magos de plata son altamente resistentes a muchas formas de daño mágico. "
-"Además, pueden teletransportarse instantáneamente entre dos aldeas, siempre "
-"y cuando ambas pertenezcan a su bando y la de destino no esté ya ocupada."
-
-msgid "female^Fighter"
-msgstr "Luchadora"
-
-msgid "Quintain"
-msgstr "Estafermo"
-
-msgid "flail"
-msgstr "mayal"
+#~ msgid "$friends Friendly unit sighted"
+#~ msgid_plural "$friends Friendly units sighted"
+#~ msgstr[0] "$friends unidades aliadas avistadas"
+#~ msgstr[1] "$friends unidades aliadas avistadas"
 
 #, fuzzy
-msgid "Yes"
-msgstr "¡Sí!"
+#~ msgid "$enemies Enemy unit sighted!"
+#~ msgid_plural "$enemies Enemy units sighted!"
+#~ msgstr[0] "¡$enemies unidades enemigas avistadas!"
+#~ msgstr[1] "¡$enemies unidades enemigas avistadas!"
 
-msgid ""
-"You can come if you wish, but the leader is only interested in speaking to "
-"Baldras."
-msgstr ""
-"Puedes venir si lo deseas, pero el líder sólo está interesado en hablar con "
-"Baldras."
+#~ msgid "attacks"
+#~ msgstr "ataques"
+
+#~ msgid ""
+#~ "A duel map for super fast play. Recommended setting of 2 gold per village."
+#~ msgstr ""
+#~ "Un mapa para duelos extremadamente rápido. Se recomienda la opción de 2 "
+#~ "piezas de oro por aldea."
+
+#~ msgid "or"
+#~ msgstr "o"
+
+#~ msgid "This terrain acts as $terrains for movement purposes."
+#~ msgstr "Este terreno actúa como $terrains a efectos de movimiento."
+
+#~ msgid "The terrain with the best modifier is chosen automatically."
+#~ msgstr "Se escoge automáticamente el terreno con el mejor modificador."
+
+#~ msgid "The terrain with the worst modifier is chosen automatically."
+#~ msgstr "Se escoge automáticamente el terreno con el peor modificador."
+
+#~ msgid "This terrain acts as $terrains for defense purposes."
+#~ msgstr "Este terreno actúa como $terrains a efectos de defensa."
+
+#~ msgid ""
+#~ "This terrain acts as a keep, i.e., you can recruit units when a leader is "
+#~ "in a location with this terrain."
+#~ msgstr ""
+#~ "Este terreno actúa como un torreón, es decir, se pueden reclutar unidades "
+#~ "si se sitúa un líder en él."
+
+#~ msgid ""
+#~ "This terrain acts as a castle, i.e., you can recruit units onto a "
+#~ "location with this terrain."
+#~ msgstr ""
+#~ "Este terreno actúa como un castillo, es decir, que podrá reclutar "
+#~ "unidades y que aparezcan en este terreno."
+
+#~ msgid "This terrain gives healing."
+#~ msgstr "Este terreno proporciona sanación."
+
+#~ msgid "Horse Lord"
+#~ msgstr "Señor caballero"
+
+#~ msgid ""
+#~ "The greatest of the men of the plains, Horse Lords are heads of their "
+#~ "houses and are respected by all, friend or foe. Their sword can kill most "
+#~ "ordinary enemies, and their morning star crushes those who are left."
+#~ msgstr ""
+#~ "Los señores caballeros, los mejores de los hombres de las llanuras, "
+#~ "lideran sus clanes y tienen el respeto de amigos y enemigos. Su espada "
+#~ "puede acabar con la mayoría de enemigos ordinarios, y su maza de jinete "
+#~ "puede encargarse del resto."
+
+#~ msgid "Mounted Fighter"
+#~ msgstr "Luchador montado"
+
+#~ msgid ""
+#~ "The nobles of the men of the plains are trained with the rest of the "
+#~ "horsemen to become great warriors. However, they are also trained in "
+#~ "commanding their comrades, and they are the ones that become captains of "
+#~ "the armies of the Clans."
+#~ msgstr ""
+#~ "La nobleza de los hombres de las llanuras recibe entrenamiento con los "
+#~ "demás jinetes para convertirse en grandes guerreros. Sin embargo, también "
+#~ "reciben entrenamiento para liderar a sus compatriotas, y son ellos los "
+#~ "que se convierten en los capitanes de los ejércitos de los clanes."
+
+#~ msgid "Mounted Warrior"
+#~ msgstr "Guerrero montado"
+
+#~ msgid ""
+#~ "Leaders of the plains, Mounted Warriors are skilled with the use of the "
+#~ "sword and the morning star. Riding horses, they are able to move around "
+#~ "the battlefield with great speed, and can provide much needed assistance "
+#~ "to different fronts."
+#~ msgstr ""
+#~ "Los guerreros montados, dueños de las llanuras, conocen el uso de la "
+#~ "espada y la maza de jinete. A lomos de sus caballos son capaces de "
+#~ "moverse por el campo de batalla a gran velocidad, y ofrecer su ayuda en "
+#~ "diferentes frentes."
+
+#~ msgid "Skeletal Dragon"
+#~ msgstr "Dragón esquelético"
+
+#~ msgid ""
+#~ "Long ago one of the mightiest living creatures, the feared Dragon has "
+#~ "become only bones and dark sinew. Long after its death, it was raised "
+#~ "through the dark powers of necromancy, which it now serves. The Skeletal "
+#~ "Dragon may look like nothing more than a pile of bones, but few people "
+#~ "who thought that way lived long enough to change their minds."
+#~ msgstr ""
+#~ "Habiendo sido una de las criaturas vivientes más poderosas, este temido "
+#~ "dragón se ha convertido en sólo una masa de huesos y oscuros tendones. "
+#~ "Mucho después de morir, fue alzado por los oscuros poderes de la "
+#~ "necromancia, a quienes ahora sirve. El dragón esquelético puede parecer "
+#~ "una simple pila de huesos, pero muy pocos de los que así pensaron han "
+#~ "vivido lo suficiente como para darse cuenta de su error."
+
+#~ msgid "jaw"
+#~ msgstr "mordisco"
+
+#~ msgid "Current Maintainer"
+#~ msgstr "Mantenedor actual"
+
+#~ msgid "female^Battle Princess"
+#~ msgstr "Princesa guerrera"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals, and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. Now battle-hardened and strong of will, she "
+#~ "can now aid those around her in the art of combat."
+#~ msgstr ""
+#~ "Noble de nacimiento, la princesa ha aprendido esgrima con los más grandes "
+#~ "generales, y tácticas de combate con los más grandes sabios, "
+#~ "convirtiéndola en una gran luchadora y líder. Curtida en la batalla y de "
+#~ "voluntad fuerte, puede ayudar a aquellos que la rodean a combatir mejor "
+#~ "gracias a su presencia."
+
+#~ msgid "scepter of fire"
+#~ msgstr "cetro de fuego"
+
+#~ msgid "Cockatrice"
+#~ msgstr "Basilisco"
+
+#~ msgid ""
+#~ "Sometimes known as 'basilisks', these mystical creatures are said to be "
+#~ "able to turn the living to stone. Needless to say, this makes them "
+#~ "extremely dangerous."
+#~ msgstr ""
+#~ "A veces conocidos como «cocatrices», se dice que estas criaturas míticas "
+#~ "son capaces de convertir a los vivos en piedra. No hace falta decir que "
+#~ "esto las hace tremendamente peligrosas."
+
+#~ msgid "gaze"
+#~ msgstr "mirada"
+
+#~ msgid "Commander"
+#~ msgstr "Comandante"
+
+#~ msgid ""
+#~ "The rank of Commander is held by those who lead battle groups into "
+#~ "combat. Possessing leadership skills, they give lower-level units in "
+#~ "adjacent hexes improved performance in combat. Commanders are best "
+#~ "skilled with the sword, although they also carry a bow to use when "
+#~ "necessary. If the Commander is lost, so is the battle."
+#~ msgstr ""
+#~ "Aquellos que lideran escuadras de hombres en la batalla ostentan el rango "
+#~ "de comandante. Gracias a sus habilidades de liderazgo, las unidades de "
+#~ "menor nivel que se encuentren en los hexágonos adyacentes ven aumentada "
+#~ "su capacidad de combate. Los comandantes se sienten más cómodos con la "
+#~ "espada, aunque a pesar de todo llevan un arco para usarlo cuando es "
+#~ "necesario. Si el comandante muere, se acabó la batalla."
+
+#~ msgid "female^Dark Queen"
+#~ msgstr "Reina oscura"
+
+#~ msgid ""
+#~ "The evil queen mother Asheviere has terrorized Wesnoth for many years. "
+#~ "Her knowledge of magic makes her a worthy foe in combat, although her "
+#~ "power is mostly derived from those she commands."
+#~ msgstr ""
+#~ "Asheviere, la malvada reina madre, ha aterrorizado Wesnoth durante muchos "
+#~ "años. Su conocimiento de la magia la hace una oponente temible en "
+#~ "combate, aunque su poder realmente deriva de aquellos a quienes manda."
+
+#~ msgid "scepter"
+#~ msgstr "cetro"
+
+#~ msgid "Elder Mage"
+#~ msgstr "Mago anciano"
+
+#~ msgid ""
+#~ "Once great, Elder Magi have seen their power a little diminished from "
+#~ "wearying years of battle. Nevertheless they remain feared on the "
+#~ "battlefield on account of their powerful lightning bolts."
+#~ msgstr ""
+#~ "El que una vez fue un gran mago, este anciano aún conserva gran parte de "
+#~ "sus poderes, aunque han disminuido ligeramente durante todos estos años "
+#~ "de combates. Aún así, en el campo de batalla se lo sigue temiendo por sus "
+#~ "potentes relámpagos."
+
+#~ msgid "lightning"
+#~ msgstr "relámpago"
+
+#~ msgid "Elvish High Lord"
+#~ msgstr "Alto Señor elfo"
+
+#~ msgid ""
+#~ "The leaders of the elves do not fall sallow and frail with age. Rather, "
+#~ "it is then that they grow to their true potential. Quiet and "
+#~ "contemplative in times of peace, a High Lord in the full of his wrath is "
+#~ "an awesome sight indeed."
+#~ msgstr ""
+#~ "Los líderes de los elfos no se vuelven melancólicos y frágiles con la "
+#~ "edad. Al contrario, es en este momento cuando desarrollan todo su "
+#~ "verdadero potencial. Silenciosos y contemplativos en tiempos de paz, un "
+#~ "Alto Señor encolerizado es una visión sobrecogedora."
+
+#~ msgid "female^Elvish Lady"
+#~ msgstr "Dama elfa"
+
+#~ msgid ""
+#~ "Elves choose their leaders for their power and wisdom; foresight is what "
+#~ "has protected them in times of uncertainty. Their just reign is rewarded "
+#~ "by the unflagging fealty of their people, which is the greatest gift any "
+#~ "ruler could ask for."
+#~ msgstr ""
+#~ "Los elfos escogen a sus líderes por su poder y sabiduría: la prudencia es "
+#~ "lo que los ha protegido en tiempos de incertidumbre. Su justo reinado es "
+#~ "recompensado por la lealtad incondicional de su gente, que es el mayor "
+#~ "regalo al que cualquier dirigente puede aspirar."
+
+#~ msgid "shove"
+#~ msgstr "empujón"
+
+#~ msgid "Elvish Lord"
+#~ msgstr "Señor elfo"
+
+#~ msgid ""
+#~ "The nobility of the elves are possessed of merit to match their standing "
+#~ "in society. Elvish Lords are the wisest and strongest of their people, "
+#~ "and are fearsome in their command of magic."
+#~ msgstr ""
+#~ "Los nobles elfos no carecen de méritos para disfrutar de su status "
+#~ "social. Los señores elfos son los más sabios y fuertes de entre su gente, "
+#~ "y su dominio de las artes mágicas es verdaderamente temible."
+
+#~ msgid "Fighter"
+#~ msgstr "Luchador"
+
+#~ msgid ""
+#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#~ "attack from enemies. However they have the potential to become great "
+#~ "warriors one day."
+#~ msgstr ""
+#~ "El luchador ha sido entrenado en el uso de la espada. Joven e inexperto, "
+#~ "es vulnerable a los ataques enemigos. Sin embargo, tiene el potencial "
+#~ "para convertirse en un gran guerrero algún día."
+
+#~ msgid "Lord"
+#~ msgstr "Señor"
+
+#~ msgid ""
+#~ "The noble leaders of many troops, Lords are especially strong in melee "
+#~ "combat, and also possess skill with the bow. Like Commanders, Lords "
+#~ "possess leadership skills, and improve the fighting ability of all "
+#~ "adjacent lower-level units."
+#~ msgstr ""
+#~ "Un noble líder de muchas tropas, un señor es especialmente fuerte en "
+#~ "combate cuerpo a cuerpo, pero también posee habilidad para tirar con el "
+#~ "arco. Como los comandantes, los señores tienen un buen liderazgo, y "
+#~ "mejoran las habilidades de lucha de todas las unidades adyacentes de "
+#~ "nivel inferior."
+
+#~ msgid "female^Princess"
+#~ msgstr "Princesa"
+
+#~ msgid ""
+#~ "A noble by birth, the Princess has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. The units of lower level around the Princess "
+#~ "will fight better due to her presence. The Princess is also nimble and "
+#~ "dextrous, having skills like that of a thief."
+#~ msgstr ""
+#~ "Noble de nacimiento, la princesa ha aprendido a luchar con los más "
+#~ "grandes generales y ha aprendido estrategia con los más grandes sabios, "
+#~ "convirtiéndola tanto en una gran combatiente como en una gran líder. Las "
+#~ "unidades de nivel más bajo que la rodeen lucharán mejor gracias a su "
+#~ "presencia. La princesa es además ágil y diestra, teniendo habilidades "
+#~ "casi de ladrón."
+
+#~ msgid "Princess"
+#~ msgstr "Princesa"
+
+#~ msgid "Sea Orc"
+#~ msgstr "Orco marino"
+
+#~ msgid ""
+#~ "While often viewed as inferior to their land loving counterparts, Sea "
+#~ "Orcs represent a great leap for all goblinoids as they have adapted to "
+#~ "aquatic environments. With their curved swords they are competent "
+#~ "fighters, although their lack of a ranged attack and poor defence on land "
+#~ "do represent strategic weaknesses."
+#~ msgstr ""
+#~ "A pesar de que a menudo se los ve como el pariente inferior de los orcos "
+#~ "terrestres, los orcos marinos representan un gran salto evolutivo en los "
+#~ "goblinoides, ya que han conseguido adaptarse a entornos acuáticos. Luchan "
+#~ "con gran habilidad con sus características espadas curvas, aunque su "
+#~ "falta de ataques a distancia y vulnerabilidad en tierra representan una "
+#~ "gran debilidad estratégica."
+
+#~ msgid "Sleeping Gryphon"
+#~ msgstr "Grifo durmiente"
+
+#~ msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
+#~ msgstr "¡Shhhh! ¡El grifo duerme! ¡Más te vale no despertarlo!"
+
+#~ msgid "Youth"
+#~ msgstr "Joven"
+
+#~ msgid ""
+#~ "Today almost a boy, by his devotion to the crown he is seeking to become "
+#~ "a Lord -- to join the elite of human fighters."
+#~ msgstr ""
+#~ "Hoy casi un niño, busca convertirse en Señor por su devoción a la Corona, "
+#~ "para unirse a la elite de luchadores humanos."
+
+#~ msgid "training sword"
+#~ msgstr "espada de entrenamiento"
+
+#~ msgid "Fire Dragon"
+#~ msgstr "Dragón de fuego"
+
+#~ msgid ""
+#~ "A fire dragon is an ancient and horrifying being that normally lives only "
+#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
+#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
+#~ "shadowy form flying in the distance. Legends are very specific about the "
+#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
+#~ "over one hundred feet in width, they swoop in and blast their prey with "
+#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
+#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
+#~ "cruel and often take underlings whom they lead to victory."
+#~ msgstr ""
+#~ "Un dragón de fuego es un ser antiguo y horrible que normalmente sólo "
+#~ "existe en las leyendas y las historias fantásticas. Es muy normal que no "
+#~ "se vea en Wesnoth ninguno en varios siglos, y cuando lo es, tan sólo "
+#~ "suele ser una sombra ominosa volando en la lejanía. Las leyendas son en "
+#~ "cambio muy específicas cuando hablan de las habilidades en combate de los "
+#~ "dragones de fuego: vuelan como auténticos demonios, sus alas miden 30 "
+#~ "metros de punta a punta, pican desde lo alto para cazar y exhalan un "
+#~ "flamígero aliento. Cualquiera que escape a una de sus deflagraciones debe "
+#~ "además enfrentarse a su boca, llena de afilados colmillos, y la cola que "
+#~ "esgrime como un látigo gigantesco. Los dragones de fuego son listos y "
+#~ "crueles, y a menudo utilizan subordinados para conseguir sus propósitos."
+
+#~ msgid "bite"
+#~ msgstr "mordisco"
+
+#~ msgid "tail"
+#~ msgstr "cola"
+
+#~ msgid "Fireball"
+#~ msgstr "Bola de fuego"
+
+#~ msgid ""
+#~ "A Fireball. This is not to be used for anything else than a "
+#~ "'Move_Unit_Fake'!"
+#~ msgstr ""
+#~ "Una bola de fuego. ¡No está pensado para nada más que un "
+#~ "«Mover_Unidad_falsa»!"
+
+#~ msgid "Noble Commander"
+#~ msgstr "Comandante noble"
+
+#~ msgid ""
+#~ "The rank of a noble Commander is held by those who lead battle groups "
+#~ "into combat. Possessing leadership skills, they give lower-level units in "
+#~ "adjacent hexes improved performance in combat. Commanders are best "
+#~ "skilled with the sword, although they also carry a bow to use when "
+#~ "necessary. If the Commander is lost, so is the battle."
+#~ msgstr ""
+#~ "Aquellos que lideran escuadras de hombres en la batalla ostentan el rango "
+#~ "de comandante noble. Gracias a sus habilidades de liderazgo, las unidades "
+#~ "de menor nivel que se encuentren en los hexágonos adyacentes ven "
+#~ "aumentada su capacidad de combate. Los comandantes se sienten más cómodos "
+#~ "con la espada, aunque a pesar de todo llevan un arco para usarlo cuando "
+#~ "es necesario. Si el comandante muere, se acabó la batalla."
+
+#~ msgid "Noble Fighter"
+#~ msgstr "Luchador noble"
+
+#~ msgid ""
+#~ "Young and brash, Fighters fight with a sword, and are vulnerable to "
+#~ "ranged attacks from enemies. However they have the potential to become "
+#~ "great Commanders one day."
+#~ msgstr ""
+#~ "Este luchador es hábil en el uso de la espada. Joven e inexperto, es "
+#~ "vulnerable a los ataques enemigos. Sin embargo, tiene el potencial para "
+#~ "convertirse en un gran guerrero algún día."
+
+#~ msgid "Noble Lord"
+#~ msgstr "Señor noble"
+
+#~ msgid "Noble Youth"
+#~ msgstr "Joven noble"
+
+#~ msgid ""
+#~ "Today he is a young man, by his devotion to the crown he is seeking to "
+#~ "become a Lord -- to join the elite of humanity."
+#~ msgstr ""
+#~ "Hoy es tan sólo un joven, pero su devoción a la corona lo llevará a "
+#~ "convertirse en un señor; a convertirse en la élite de la humanidad."
+
+#~ msgid "female^Outlaw Princess"
+#~ msgstr "Princesa forajida"
+
+#~ msgid ""
+#~ "A noble by birth, the Outlaw Princess has learnt swordplay with the "
+#~ "greatest generals, but she is the product of a failed aristocracy who has "
+#~ "opted for the life of an Outlaw. She dreams of founding her own Queendom "
+#~ "with the plunder she finds on the road."
+#~ msgstr ""
+#~ "Noble de nacimiento, la princesa ha aprendido a luchar con los más "
+#~ "grandes generales, pero es el producto de una aristocracia caída en "
+#~ "desgracia, y ha escogido vivir fuera de la ley. Sueña con fundar su "
+#~ "propio reinado con lo que obtiene de sus víctimas en los caminos."
+
+#~ msgid "female^Outlaw Queen"
+#~ msgstr "Reina forajida"
+
+#~ msgid ""
+#~ "A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
+#~ "generals and battle tactics with the greatest sages, making her both a "
+#~ "great combatant and leader. However, she is the product of a failed "
+#~ "aristocracy who has opted for the life of an Outlaw. She dreams of "
+#~ "founding her own Queendom with the plunder she finds on the road, and she "
+#~ "is ever so close to that goal."
+#~ msgstr ""
+#~ "Noble de nacimiento, la reina forajida ha aprendido a luchar con los más "
+#~ "grandes generales y ha aprendido estrategia con los más grandes sabios, "
+#~ "convirtiéndola tanto en una gran combatiente como en una gran líder. Sin "
+#~ "embargo, es el producto de una aristocracia caída en desgracia y que ha "
+#~ "escogido vivir fuera de la ley. Sueña con fundar su propio reinado con lo "
+#~ "que obtiene de sus víctimas en los caminos, y está muy cerca de "
+#~ "conseguirlo."
+
+#~ msgid "female^Vampire Lady"
+#~ msgstr "Dama vampiro"
+
+#~ msgid ""
+#~ "Cold and beautiful, she maintains her eternal youthful appearance "
+#~ "drinking the blood of the living."
+#~ msgstr ""
+#~ "Fría y bella, mantiene su eterna juventud bebiendo la sangre de los vivos."
+
+#~ msgid "blood kiss"
+#~ msgstr "beso de sangre"
+
+#~ msgid "Warrior King"
+#~ msgstr "Rey guerrero"
+
+#~ msgid ""
+#~ "As the leaders of the human Kingdoms, Kings are responsible for ruling "
+#~ "and protecting their subjects. Kings can coordinate the attacks of level "
+#~ "1 and 2 units, thereby increasing their fighting efficiency."
+#~ msgstr ""
+#~ "Como líderes de los reinos humanos, los reyes son responsables de "
+#~ "gobernar y proteger a sus súbditos. Asimismo, los reyes pueden coordinar "
+#~ "los ataques de unidades cercanas de nivel 1 y 2 para que mejore su "
+#~ "eficiencia en combate."
+
+#~ msgid "Wose Sapling"
+#~ msgstr "Wose joven"
+
+#~ msgid ""
+#~ "Rarely seen, even by elves, a Wose is an order of creature about which "
+#~ "little is known. The elves are the source of most of this knowledge; they "
+#~ "know that these beings are not descended from trees, despite the "
+#~ "similarity in form, and they know that a wose is more closely tied to the "
+#~ "faerie world than the elves themselves, though in a different way. The "
+#~ "motives and workings of their kind are unknown, though most posit the "
+#~ "obvious idea that woses are wardens of the natural world.\n"
+#~ "\n"
+#~ "Woses are utterly unwarlike, but possess a great strength. They are, "
+#~ "however, neither used to, nor quick at moving around.\n"
+#~ "\n"
+#~ "Special Notes: Woses regenerate by using natural resources around them, "
+#~ "without needing to huddle in villages to obtain sustenance and aid."
+#~ msgstr ""
+#~ "Un wose es una criatura sobre la que se sabe muy poco, muy difícil de "
+#~ "ver, incluso para los elfos. Ellos son los que más saben sobre los woses: "
+#~ "que no descienden de los árboles, a pesar del parecido en la forma, y que "
+#~ "están más atados al mundo faérico e imaginario que los propios elfos, "
+#~ "aunque de una manera diferente. Los motivos y objetivos de esta raza se "
+#~ "desconocen, aunque muchos suponen que obviamente los woses son guardianes "
+#~ "del mundo natural.\n"
+#~ "\n"
+#~ "Los woses son absolutamente pacíficos, pero poseen una gran fuerza. Sin "
+#~ "embargo, no están acostumbrados a moverse, ni lo hacen rápido.\n"
+#~ "\n"
+#~ "Notas especiales: los woses se regeneran usando los recursos naturales "
+#~ "que hay a su alrededor, sin que necesiten entrar en aldeas para obtener "
+#~ "sustento y ayuda."
+
+#~ msgid "Demilich"
+#~ msgstr "Semicadáver"
+
+#~ msgid ""
+#~ "After too much time dabbling with forbidden magics and dark arts, these "
+#~ "magi have begun to pay a heavy price. Demiliches have started losing "
+#~ "their bodies, becoming undead themselves. With time, they may become "
+#~ "fully undead, and feared by all alike."
+#~ msgstr ""
+#~ "Demasiado tiempo investigando la senda de las magias prohibidas y artes "
+#~ "oscuras tiene sus consecuencias para un mago: un semicadáver está "
+#~ "perdiendo inexorablemente su cuerpo, y convirtiéndose en un no muerto. En "
+#~ "poco tiempo será por entero un no muerto, y será temible."
+
+#~ msgid ""
+#~ "The title of Arch Mage is conferred only after a lifetime of study and "
+#~ "achievement to match. Arch Magi are often employed in positions of "
+#~ "education, or as advisors to those wise enough to seek the fruits of "
+#~ "their wisdom. Many tend to wealthy patrons, a profitable enterprise for "
+#~ "both as, outside of the occasional task or word of advice, it gives the "
+#~ "mage leave to pursue their research undisturbed. Certain others shun "
+#~ "civilization, spending their days as hermits, often to study something "
+#~ "which most would tend to frown upon.\n"
+#~ "\n"
+#~ "Though not trained for any sort of combat, if need arises an Arch Mage "
+#~ "can unleash the full power of their art, something which is not to be "
+#~ "taken lightly.\n"
+#~ "\n"
+#~ "Special Notes: the arch mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "El título de Archimago se confiere sólo después de una vida dedicada por "
+#~ "completo al estudio, un logro difícil de conseguir. Los archimagos a "
+#~ "menudo encuentran trabajo como profesores, o como consejeros de aquellos "
+#~ "suficientemente sabios como para escuchar sus enseñanzas. Muchos tienden "
+#~ "a buscar un patrono rico, lo cual es una empresa rentable para ambos, ya "
+#~ "que aparte de los trabajos ocasionales o consejos que se le pidan, el "
+#~ "mago tiene la mayoría del tiempo disponible para proseguir sus "
+#~ "investigaciones tranquilo. Otros abandonan la civilización, y pasan sus "
+#~ "días como eremitas, a menudo para estudiar algo que muchos "
+#~ "desaprobarían.\n"
+#~ "\n"
+#~ "Aunque no reciben entrenamiento particular para el combate, si es "
+#~ "necesario un archimago puede desatar todo el poder de su artes mágicas, "
+#~ "lo cual no es algo para tomarse a la ligera.\n"
+#~ "\n"
+#~ "Notas especiales: las bolas de fuego del archimago son mágicas, y siempre "
+#~ "tienen una alta probabilidad de impactar a un oponente."
+
+#~ msgid ""
+#~ "Any person who is even considered for the title of Great Mage is quite "
+#~ "nearly a legend in their own time, and town criers have forcibly learnt "
+#~ "discretion in applying the title. Merit for the title is carefully "
+#~ "considered by a council of the leading magi of the age, and the "
+#~ "conferment of the title is given only by a majority vote. Regardless, "
+#~ "anyone who is seriously nominated for the honor of being called a Great "
+#~ "Mage is, without question, a master of their art, and has surpassed "
+#~ "almost any of their peers in skill.\n"
+#~ "\n"
+#~ "Though they are not warriors, by any means, the application of their art "
+#~ "to combat is something that often causes other soldiers to stand aside in "
+#~ "awe.\n"
+#~ "\n"
+#~ "Special Notes: the great mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "Cualquier persona que es sugerida para el título de gran mago constituye "
+#~ "una leyenda viva de su tiempo. Antes de otorgar este título, los méritos "
+#~ "del candidato son meticulosamente analizados por un tribunal formado por "
+#~ "los más destacados magos del momento, y sólo es concedido si lo considera "
+#~ "oportuno la mayoría del consejo. Sin embargo, cualquiera que es propuesto "
+#~ "para ostentar el honor de ser nombrado gran mago es, sin duda alguna, un "
+#~ "maestro en el arte de la magia y su habilidad supera con creces la de "
+#~ "cualquier otro mago.\n"
+#~ "\n"
+#~ "Aunque no son guerreros, la aplicación de su magia en combate suele "
+#~ "mantener a los soldados alejados, en una mezcla de temor, respeto y "
+#~ "pruedencia.\n"
+#~ "\n"
+#~ "Notas especiales:las bolas de fuego de un gran mago son mágicas, y la "
+#~ "probabilidad de que alcancen su objetivo es siempre muy elevada. "
+
+#~ msgid ""
+#~ "Upon the successful termination of their apprenticeship, a mage is "
+#~ "stripped of the blue robes of an apprentice, and given the red robes of a "
+#~ "master. The significance of this change is often lost on the peasantry, "
+#~ "who mistakenly title Master Magi as 'Red Magi'. Likewise, the symbolism "
+#~ "of the change in colors is often mistaken to signify the mage's ability "
+#~ "to seemingly conjure fire from nothing but thin air, a trick which, "
+#~ "although undeniably useful, is viewed as a crass application of the "
+#~ "knowledge which they have painstakingly accrued.\n"
+#~ "\n"
+#~ "Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+#~ "number of tricks up their sleeves, including the gouts of fire which may "
+#~ "have cemented their colloquial name.\n"
+#~ "\n"
+#~ "Special Notes: the red mage's fireballs are magical, and always have a "
+#~ "high chance of hitting an opponent."
+#~ msgstr ""
+#~ "Tras culminar satisfactoriamente su aprendizaje, los magos cambian sus "
+#~ "togas azules de aprendices por togas rojas de maestros. El significado de "
+#~ "este cambio suele pasar desapercibido por los campesinos, que llaman "
+#~ "inapropiadamente magos rojos a los maestros magos. De la misma forma, el "
+#~ "simbolismo del cambio de colores suele ser malinterpretado, entendiendo "
+#~ "que el color rojo hace referencia a la capacidad para crear fuego a "
+#~ "partir de la nada, un truco que, aunque es innegablemente útil, es una "
+#~ "mera aplicación del conocimiento duramente adquirido.\n"
+#~ "\n"
+#~ "A pesar de su fragilidad física y de carecer de entrenamiento como "
+#~ "guerreros, los magos rojos disponen de una serie de útiles hechizos, como "
+#~ "las bolas de fuego que han contribuido a establecer su sobrenombre.\n"
+#~ "\n"
+#~ "Notas especiales: las bolas de fuego de los magos rojos son mágicas, por "
+#~ "lo que la probabilidad de que alcancen su objetivo es siempre muy elevada."
+
+#~ msgid ""
+#~ "The many paths that a mage can take in study lead to strikingly different "
+#~ "ends. Silver magi have devoted themselves to a study of the forces that "
+#~ "bind reality together, and have managed, somewhat, to unravel the "
+#~ "mysteries of a world far more vast than most would ever imagine. Often "
+#~ "viewed as sages, or wandering mystics, silver magi act under an agenda "
+#~ "which is obscure even to their own colleagues. Though helpful to the "
+#~ "magisteriums which often employ them in the field, they remain somewhat "
+#~ "aloof.\n"
+#~ "\n"
+#~ "They have, in fact, their own order amongst the ranks of magi, an order "
+#~ "which withholds certain secrets from their peers. One of these is an "
+#~ "apparent ability to cross great distances, faster than one could possibly "
+#~ "travel on foot. Members of the silver order ardently refuse to discuss "
+#~ "the workings of this with any of their fellow magi, and on those rare "
+#~ "occasions when others have pried into their work, they have abandoned the "
+#~ "endeavor, never to speak of it again.\n"
+#~ "\n"
+#~ "Silver magi are often more physically adept than other magi, and their "
+#~ "skills are of undeniable use on the battlefield, if one can manage to "
+#~ "coerce the mage into applying them.\n"
+#~ "\n"
+#~ "Special Notes: the ranged attack of a silver mage is magical, and always "
+#~ "has a high chance of hitting an opponent. Silver Magi are well-attuned to "
+#~ "their magical natures and are highly resistant to non-physical damage. "
+#~ "They can also teleport between any two villages instantly, though the "
+#~ "player must control both, and the destination village must be unoccupied."
+#~ msgstr ""
+#~ "Las múltiples ramas de estudio que componen las artes mágicas dan lugar a "
+#~ "resultados totalmente diferentes. Los magos de plata se han consagrado al "
+#~ "estudio de las fuerzas que mantienen unida la realidad, y han logrado, de "
+#~ "alguna forma, desentrelazar los misterios de un mundo muchísimo más "
+#~ "grande de lo que la mayoría podía imaginar. Los magos de plata son "
+#~ "considerados sabios y místicos y sus propósitos son desconocidos incluso "
+#~ "para sus propios compañeros. Aunque son muy útiles para quien contrata "
+#~ "sus servicios, suelen mantenerse un tanto alejados.\n"
+#~ "\n"
+#~ "De hecho, los magos de plata tienen su propia orden entre los distintos "
+#~ "rangos de magos, que les ayuda a ocultar ciertos secretos a sus "
+#~ "semejantes. Uno de ellos es la aparente habilidad de cruzar grandes "
+#~ "distancias, mucho más rápido de lo que podría hacerse a pie. Los miembros "
+#~ "de la orden de plata se guardan mucho de discutir sobre ello, y en las "
+#~ "raras ocasiones en que algñun otro ha intentado adentrarse en sus "
+#~ "secretos, no ha tardado en abandonar sus intenciones para nunca más "
+#~ "volver a hablar de ello.\n"
+#~ "\n"
+#~ "Los magos de plata son a menudo más hábiles físicamente que otros magos y "
+#~ "poseen incuestionables habilidades para aplicar en el campo de batalla, "
+#~ "que resultarán de gran utilidad para aquél que logre convencerlos para "
+#~ "luchar de su parte.\n"
+#~ "\n"
+#~ "Notas especiales: el ataque a distancia de los magos de plata es mágico, "
+#~ "por lo que poseen una alta probabilidad de alcanzar siempre su objetivo. "
+#~ "Los magos de plata son altamente resistentes a muchas formas de daño "
+#~ "mágico. Además, pueden teletransportarse instantáneamente entre dos "
+#~ "aldeas, siempre y cuando ambas pertenezcan a su bando y la de destino no "
+#~ "esté ya ocupada."
+
+#~ msgid "female^Fighter"
+#~ msgstr "Luchadora"
+
+#~ msgid "Quintain"
+#~ msgstr "Estafermo"
+
+#~ msgid "flail"
+#~ msgstr "mayal"
 
 #, fuzzy
-msgid "Potion of bleach"
-msgstr "Poción de debilidad"
+#~ msgid "Yes"
+#~ msgstr "¡Sí!"
 
-msgid "Sulla's statue"
-msgstr "estatua de Sulla"
+#~ msgid ""
+#~ "You can come if you wish, but the leader is only interested in speaking "
+#~ "to Baldras."
+#~ msgstr ""
+#~ "Puedes venir si lo deseas, pero el líder sólo está interesado en hablar "
+#~ "con Baldras."
 
-msgid ""
-"Many closely placed and strategically located castles. Which one will you "
-"hop to? Small map for fast play. Recommended setting of 2 gold per village."
-msgstr ""
-"Muchos castillos cercanos unos de otros, y estratégicamente colocados. ¿A "
-"cuál saltarás? Es un mapa pequeño para partidas rápidas. Se recomienda la "
-"opción de 2 piezas de oro por aldea."
+#, fuzzy
+#~ msgid "Potion of bleach"
+#~ msgstr "Poción de debilidad"
 
-msgid ""
-"The Elven Enchantresses are masters of offensive magic, striking at their "
-"enemies both with blasts of icy wind drawn from the ethereal plane, and "
-"magically animating roots with which they bind their enemies in place.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Las encantadoras elfas son maestras de la magia ofensiva: pueden atacar a "
-"sus enemigos tanto con chorros de viento helado extraído del plano etéreo, o "
-"raíces animadas mágicamente con las que atraparlos y dejarlos retenidos.\n"
-"\n"
-"Notas especiales:"
+#~ msgid "Sulla's statue"
+#~ msgstr "estatua de Sulla"
 
-msgid ""
-"Eschewing the study of healing in favor of more aggressive uses of magic, "
-"Elvish Sorceresses have become quite proficient at ranged combat. Their "
-"entangling attack is notably more effective than that of the Elvish Shaman, "
-"and they can call upon bursts of chilling ethereal wind to smite those who "
-"oppose them.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Dejando a un lado los estudios de curación en favor de usos más agresivos de "
-"la magia, las conjuradoras elfas se han vuelto muy eficientes en el combate "
-"a distancia. Su ataque enredador es notablemente más efectivo que antes, y "
-"pueden invocar ráfagas de viento etéreo helado para castigar a quienes se "
-"enfrentan a ellas.\n"
-"\n"
-"Notas especiales:"
+#~ msgid ""
+#~ "Many closely placed and strategically located castles. Which one will you "
+#~ "hop to? Small map for fast play. Recommended setting of 2 gold per "
+#~ "village."
+#~ msgstr ""
+#~ "Muchos castillos cercanos unos de otros, y estratégicamente colocados. ¿A "
+#~ "cuál saltarás? Es un mapa pequeño para partidas rápidas. Se recomienda la "
+#~ "opción de 2 piezas de oro por aldea."
 
-msgid ""
-"Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
-"developed their faerie side, they transform into creatures of both worlds, "
-"wielding powerful magic against their enemies.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Las sílfides elfas son la materialización de la belleza en el plano mortal."
-"Han desarrollado completamente su lado faérico, convirtiéndose en criaturas "
-"de ambos mundos, con grandes poderes mágicos con los que combatir a sus "
-"enemigos.\n"
-"\n"
-"Notas especiales:"
+#~ msgid ""
+#~ "The Elven Enchantresses are masters of offensive magic, striking at their "
+#~ "enemies both with blasts of icy wind drawn from the ethereal plane, and "
+#~ "magically animating roots with which they bind their enemies in place.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Las encantadoras elfas son maestras de la magia ofensiva: pueden atacar a "
+#~ "sus enemigos tanto con chorros de viento helado extraído del plano "
+#~ "etéreo, o raíces animadas mágicamente con las que atraparlos y dejarlos "
+#~ "retenidos.\n"
+#~ "\n"
+#~ "Notas especiales:"
 
-msgid ""
-"Poachers rely on their hunting experience and are most valuable at night and "
-"in forests and swamps."
-msgstr ""
-"Los cazadores furtivos confían en su experiencia en la caza y son más "
-"valiosos en bosques y pantanos, y por la noche."
+#~ msgid ""
+#~ "Eschewing the study of healing in favor of more aggressive uses of magic, "
+#~ "Elvish Sorceresses have become quite proficient at ranged combat. Their "
+#~ "entangling attack is notably more effective than that of the Elvish "
+#~ "Shaman, and they can call upon bursts of chilling ethereal wind to smite "
+#~ "those who oppose them.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Dejando a un lado los estudios de curación en favor de usos más agresivos "
+#~ "de la magia, las conjuradoras elfas se han vuelto muy eficientes en el "
+#~ "combate a distancia. Su ataque enredador es notablemente más efectivo que "
+#~ "antes, y pueden invocar ráfagas de viento etéreo helado para castigar a "
+#~ "quienes se enfrentan a ellas.\n"
+#~ "\n"
+#~ "Notas especiales:"
 
-msgid ""
-"Trappers usually work supplying food for bandits and outlaws. Their hunting "
-"experience makes them most valuable at night and in forests and swamps."
-msgstr ""
-"Los tramperos normalmente trabajan consiguiendo comida para los bandidos. Su "
-"experiencia en la caza los hace mejores de noche y en bosques y pantanos."
+#~ msgid ""
+#~ "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
+#~ "developed their faerie side, they transform into creatures of both "
+#~ "worlds, wielding powerful magic against their enemies.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Las sílfides elfas son la materialización de la belleza en el plano "
+#~ "mortal.Han desarrollado completamente su lado faérico, convirtiéndose en "
+#~ "criaturas de ambos mundos, con grandes poderes mágicos con los que "
+#~ "combatir a sus enemigos.\n"
+#~ "\n"
+#~ "Notas especiales:"
 
-msgid ""
-"Saurian Ambushers are highly skilled in the use of the spear. Despite their "
-"lethargic cold blooded heritage, and their relative frailty, they are highly "
-"valued as scouts as they can navigate through rough terrain and around "
-"opponents. Saurian Ambushers possess the strength to take full advantage of "
-"this fact. The best Ambushers go on to become Saurian Flankers.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Los emboscadores saurios tienen una gran habilidad utilizando la lanza. A "
-"pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
-"fría, y de su relativa fragilidad, tienen un gran valor como exploradores, "
-"ya que pueden moverse bien a través de terreno difícil y alrededor de sus "
-"oponentes. Los emboscadores saurios poseen la fuerza necesaria para "
-"aprovecharse de ello. Los mejores emboscadores siguen su carrera "
-"convirtiéndose en flanqueadores.\n"
-"\n"
-"Notas especiales:"
+#~ msgid ""
+#~ "Poachers rely on their hunting experience and are most valuable at night "
+#~ "and in forests and swamps."
+#~ msgstr ""
+#~ "Los cazadores furtivos confían en su experiencia en la caza y son más "
+#~ "valiosos en bosques y pantanos, y por la noche."
 
-msgid ""
-"Despite their lethargic cold blooded heritage, and their relative frailty, "
-"Saurian Augurs are valued as healers because they can provide aid to their "
-"allies regardless of terrain or opposition. In addition to healing they "
-"possess knowledge of cold magic.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"A pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
-"fría, de a su relativa fragilidad, los auguradores saurios tienen un gran "
-"valor como sanadores, ya que pueden ayudar a sus compañeros "
-"independientemente del terreno y los oponentes. Además de curación, poseen "
-"conocimientos de magia de frío.\n"
-"\n"
-"Notas especiales:"
+#~ msgid ""
+#~ "Trappers usually work supplying food for bandits and outlaws. Their "
+#~ "hunting experience makes them most valuable at night and in forests and "
+#~ "swamps."
+#~ msgstr ""
+#~ "Los tramperos normalmente trabajan consiguiendo comida para los bandidos. "
+#~ "Su experiencia en la caza los hace mejores de noche y en bosques y "
+#~ "pantanos."
 
-msgid ""
-"Saurian Flankers are highly skilled in the use of the spear. Despite their "
-"lethargic cold blooded heritage, and their relative frailty, they are highly "
-"valued as scouts as they can navigate through rough terrain and around "
-"opponents. Saurian Flankers possess the strength to take full advantage of "
-"this fact.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Los flanqueadores saurios tienen una gran habilidad utilizando la lanza. A "
-"pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
-"fría, y de su relativa fragilidad, tienen un gran valor como exploradores, "
-"ya que pueden moverse bien a través de terreno difícil y alrededor de sus "
-"oponentes. Los flanqueadores saurios poseen la fuerza necesaria para "
-"aprovecharse de ello.\n"
-"\n"
-"Notas especiales:"
+#~ msgid ""
+#~ "Saurian Ambushers are highly skilled in the use of the spear. Despite "
+#~ "their lethargic cold blooded heritage, and their relative frailty, they "
+#~ "are highly valued as scouts as they can navigate through rough terrain "
+#~ "and around opponents. Saurian Ambushers possess the strength to take full "
+#~ "advantage of this fact. The best Ambushers go on to become Saurian "
+#~ "Flankers.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Los emboscadores saurios tienen una gran habilidad utilizando la lanza. A "
+#~ "pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
+#~ "fría, y de su relativa fragilidad, tienen un gran valor como "
+#~ "exploradores, ya que pueden moverse bien a través de terreno difícil y "
+#~ "alrededor de sus oponentes. Los emboscadores saurios poseen la fuerza "
+#~ "necesaria para aprovecharse de ello. Los mejores emboscadores siguen su "
+#~ "carrera convirtiéndose en flanqueadores.\n"
+#~ "\n"
+#~ "Notas especiales:"
 
-msgid ""
-"Saurian Oracles have eschewed any further training in healing and curing in "
-"order to refine their skills with the dark arts. While frail, they can call "
-"forth the magic of the cold north, and they do retain their basic healing "
-"ability.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Los hechiceros de hielo saurios han evitado continuar con cualquier "
-"entrenamiento en sanación y curación para refinar sus habilidades en artes "
-"oscuras. Aunque son frágiles, pueden convocar la magia del norte helado, y "
-"aún así retienen sus habilidades básicas de sanación.\n"
-"\n"
-"Notas especiales:"
+#~ msgid ""
+#~ "Despite their lethargic cold blooded heritage, and their relative "
+#~ "frailty, Saurian Augurs are valued as healers because they can provide "
+#~ "aid to their allies regardless of terrain or opposition. In addition to "
+#~ "healing they possess knowledge of cold magic.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "A pesar de sus costumbres letárgicas, herencia de sus antepasados de "
+#~ "sangre fría, de a su relativa fragilidad, los auguradores saurios tienen "
+#~ "un gran valor como sanadores, ya que pueden ayudar a sus compañeros "
+#~ "independientemente del terreno y los oponentes. Además de curación, "
+#~ "poseen conocimientos de magia de frío.\n"
+#~ "\n"
+#~ "Notas especiales:"
 
-msgid ""
-"Saurian Skirmishers are skilled in the use of the spear. Despite their "
-"lethargic cold blooded heritage, and their relative frailty, they are highly "
-"valued as scouts as they can navigate through rough terrain and around "
-"opponents. The best Skirmishers go on to become Saurian Ambushers.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Los merodeadores saurios tienen una gran habilidad utilizando la lanza. A "
-"pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
-"fría, y de su relativa fragilidad, tienen un gran valor como exploradores, "
-"ya que pueden moverse bien a través de terreno difícil y alrededor de sus "
-"oponentes. Los mejores merodeadores siguen su carrera convirtiéndose en "
-"emboscadores.\n"
-"\n"
-"Notas especiales:"
+#~ msgid ""
+#~ "Saurian Flankers are highly skilled in the use of the spear. Despite "
+#~ "their lethargic cold blooded heritage, and their relative frailty, they "
+#~ "are highly valued as scouts as they can navigate through rough terrain "
+#~ "and around opponents. Saurian Flankers possess the strength to take full "
+#~ "advantage of this fact.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Los flanqueadores saurios tienen una gran habilidad utilizando la lanza. "
+#~ "A pesar de sus costumbres letárgicas, herencia de sus antepasados de "
+#~ "sangre fría, y de su relativa fragilidad, tienen un gran valor como "
+#~ "exploradores, ya que pueden moverse bien a través de terreno difícil y "
+#~ "alrededor de sus oponentes. Los flanqueadores saurios poseen la fuerza "
+#~ "necesaria para aprovecharse de ello.\n"
+#~ "\n"
+#~ "Notas especiales:"
 
-msgid ""
-"Saurian Soothsayers are highly valued as healers because they can provide "
-"aid to their friends regardless of terrain or opposition. In addition to "
-"curing their allies they possess knowledge of cold magic.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Los saurios videntes tienen un gran valor como sanadores, ya que pueden "
-"ayudar a sus compañeros independientemente del terreno o la posición. Además "
-"de curación, poseen conocimientos de magia de frío.\n"
-"\n"
-"Notas especiales"
+#~ msgid ""
+#~ "Saurian Oracles have eschewed any further training in healing and curing "
+#~ "in order to refine their skills with the dark arts. While frail, they can "
+#~ "call forth the magic of the cold north, and they do retain their basic "
+#~ "healing ability.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Los hechiceros de hielo saurios han evitado continuar con cualquier "
+#~ "entrenamiento en sanación y curación para refinar sus habilidades en "
+#~ "artes oscuras. Aunque son frágiles, pueden convocar la magia del norte "
+#~ "helado, y aún así retienen sus habilidades básicas de sanación.\n"
+#~ "\n"
+#~ "Notas especiales:"
 
-msgid "Computer vs Computer"
-msgstr "Ordenador contra Ordenador"
+#~ msgid ""
+#~ "Saurian Skirmishers are skilled in the use of the spear. Despite their "
+#~ "lethargic cold blooded heritage, and their relative frailty, they are "
+#~ "highly valued as scouts as they can navigate through rough terrain and "
+#~ "around opponents. The best Skirmishers go on to become Saurian "
+#~ "Ambushers.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Los merodeadores saurios tienen una gran habilidad utilizando la lanza. A "
+#~ "pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
+#~ "fría, y de su relativa fragilidad, tienen un gran valor como "
+#~ "exploradores, ya que pueden moverse bien a través de terreno difícil y "
+#~ "alrededor de sus oponentes. Los mejores merodeadores siguen su carrera "
+#~ "convirtiéndose en emboscadores.\n"
+#~ "\n"
+#~ "Notas especiales:"
 
-msgid "+Core Developers"
-msgstr "+Cuerpo principal de desarrolladores"
+#~ msgid ""
+#~ "Saurian Soothsayers are highly valued as healers because they can provide "
+#~ "aid to their friends regardless of terrain or opposition. In addition to "
+#~ "curing their allies they possess knowledge of cold magic.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Los saurios videntes tienen un gran valor como sanadores, ya que pueden "
+#~ "ayudar a sus compañeros independientemente del terreno o la posición. "
+#~ "Además de curación, poseen conocimientos de magia de frío.\n"
+#~ "\n"
+#~ "Notas especiales"
 
-msgid "+  Main Developer"
-msgstr "+  Desarrollador principal"
+#~ msgid "Computer vs Computer"
+#~ msgstr "Ordenador contra Ordenador"
 
-msgid "+  Artwork and graphics designer"
-msgstr "+  Diseñador gráfico y artístico"
+#~ msgid "+Core Developers"
+#~ msgstr "+Cuerpo principal de desarrolladores"
 
-msgid "Import Saved Games"
-msgstr "Importar partidas grabadas"
+#~ msgid "+  Main Developer"
+#~ msgstr "+  Desarrollador principal"
 
-msgid ""
-"Your saves directory contains some files from an old version of Battle for "
-"Wesnoth. Would you like to update these to the latest version? This may take "
-"some time."
-msgstr ""
-"Su directorio de partidas grabadas contiene algunos ficheros de una versión "
-"anterior de la Batalla de Wesnoth. ¿Desea actualizarlos? Esto puede llevar "
-"algo de tiempo..."
+#~ msgid "+  Artwork and graphics designer"
+#~ msgstr "+  Diseñador gráfico y artístico"
 
-msgid ""
-"Your saves directory contains some files that don't appear to have been "
-"generated by this version of Battle for Wesnoth. Would you like to register "
-"these files with the game?"
-msgstr ""
-"Su directorio de partidas grabadas contiene algunos ficheros que parece que "
-"no hayan sido generados por esta versión del juego. ¿Desea registrar estos "
-"ficheros dentro del juego?"
+#~ msgid "Import Saved Games"
+#~ msgstr "Importar partidas grabadas"
+
+#~ msgid ""
+#~ "Your saves directory contains some files from an old version of Battle "
+#~ "for Wesnoth. Would you like to update these to the latest version? This "
+#~ "may take some time."
+#~ msgstr ""
+#~ "Su directorio de partidas grabadas contiene algunos ficheros de una "
+#~ "versión anterior de la Batalla de Wesnoth. ¿Desea actualizarlos? Esto "
+#~ "puede llevar algo de tiempo..."
+
+#~ msgid ""
+#~ "Your saves directory contains some files that don't appear to have been "
+#~ "generated by this version of Battle for Wesnoth. Would you like to "
+#~ "register these files with the game?"
+#~ msgstr ""
+#~ "Su directorio de partidas grabadas contiene algunos ficheros que parece "
+#~ "que no hayan sido generados por esta versión del juego. ¿Desea registrar "
+#~ "estos ficheros dentro del juego?"
 
 #~ msgid ""
 #~ "One of the greatest circles of what is considered 'black magic' is the "

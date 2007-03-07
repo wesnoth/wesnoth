@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-02 22:05+0100\n"
+"POT-Creation-Date: 2007-03-07 13:31+0100\n"
 "PO-Revision-Date: 2005-08-31 08:00+0300\n"
 "Last-Translator: santi <at@i.gr>\n"
 "Language-Team:  <en@li.org>\n"
@@ -82,33 +82,33 @@ msgid "Map creation failed."
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:241 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:1214
+#: src/preferences_display.cpp:1268
 msgid "Close Window"
 msgstr "Κλείσιμο Παραθύρου"
 
 #: src/editor/editor_dialogs.cpp:247 src/editor/editor_dialogs.cpp:349
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:1100
+#: src/hotkeys.cpp:78 src/preferences_display.cpp:1154
 msgid "Preferences"
 msgstr "Προτιμήσεις"
 
-#: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:294
+#: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:297
 msgid "Scroll Speed:"
 msgstr "Ταχύτητα Κύλισης:"
 
 #: src/editor/editor_dialogs.cpp:306 src/hotkeys.cpp:59
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:257
 msgid "Toggle Full Screen"
 msgstr "Λειτουργία πλήρους οθόνης"
 
-#: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:259
+#: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:260
 msgid "Show Grid"
 msgstr "Εμφάνιση Πλέγματος"
 
-#: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:277
+#: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:278
 msgid "Video Mode"
 msgstr "Ανάλυση Βίντεο"
 
-#: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:279
+#: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:280
 msgid "Hotkeys"
 msgstr "Συντομεύσεις Πληκτρολογίου"
 
@@ -501,7 +501,7 @@ msgstr ""
 msgid "Island"
 msgstr "Νησί"
 
-#: src/preferences.cpp:425
+#: src/preferences.cpp:437
 msgid "player"
 msgstr "παίκτης"
 
@@ -516,292 +516,309 @@ msgstr ""
 "σας πρέπει να υποστηρίζει 1024x768x16 για να τρέξει το παιχνίδι σε ολόκληρη "
 "την οθόνη."
 
-#: src/preferences_display.cpp:257
+#: src/preferences_display.cpp:258
 msgid "Accelerated Speed"
 msgstr "Αυξημένη Ταχύτητα"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:259
 msgid "Skip AI Moves"
 msgstr "Προσπεράστε Κινήσεις Υπολογιστη"
 
-#: src/preferences_display.cpp:260
+#: src/preferences_display.cpp:261
 msgid "Show Lobby Minimaps"
 msgstr ""
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:262
 msgid "Do Not Show Lobby Joins"
 msgstr ""
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:263
 msgid "Show Lobby Joins Of Friends Only"
 msgstr ""
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:264
 msgid "Show All Lobby Joins"
 msgstr ""
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:265
 msgid "Sort Lobby List"
 msgstr ""
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:266
 msgid "Iconize Lobby List"
 msgstr ""
 
-#: src/preferences_display.cpp:266
-msgid "Your Friends List"
-msgstr ""
-
 #: src/preferences_display.cpp:267
-msgid "Multiplayer Options"
+msgid "Friends List"
 msgstr ""
 
 #: src/preferences_display.cpp:268
-msgid "Add As Friend"
+msgid "Multiplayer Options"
 msgstr ""
 
 #: src/preferences_display.cpp:269
-msgid "Add As Ignore"
+msgid "Add As Friend"
 msgstr ""
 
 #: src/preferences_display.cpp:270
+msgid "Add As Ignore"
+msgstr ""
+
+#: src/preferences_display.cpp:271
 #, fuzzy
 msgid "Remove"
 msgstr "Ακύρωση Αναίρεσης"
 
-#: src/preferences_display.cpp:271
+#: src/preferences_display.cpp:272
 msgid "Show Floating Labels"
 msgstr "Εμφάνιση ετικετών"
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:273
 msgid "Turn Dialog"
 msgstr "Προειδοποίηση Νέου Γύρου"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:274
 msgid "Turn Bell"
 msgstr "Ήχος Νέου Γύρου"
 
-#: src/preferences_display.cpp:274
+#: src/preferences_display.cpp:275
 msgid "Show Team Colors"
 msgstr "Εμφάνιση Χρωμάτων Ομάδων"
 
-#: src/preferences_display.cpp:275
+#: src/preferences_display.cpp:276
 msgid "Show Color Cursors"
 msgstr "Εμφάνιση Έγχρωμων Δρομέων"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:277
 msgid "Show Haloing Effects"
 msgstr "Εμφάνιση Ειδικών Εφέ"
 
-#: src/preferences_display.cpp:278
+#: src/preferences_display.cpp:279
 msgid "Theme"
 msgstr ""
 
-#: src/preferences_display.cpp:280
+#: src/preferences_display.cpp:281
 msgid "Adjust Gamma"
 msgstr "Ρύθμιση Γάμμα"
 
-#: src/preferences_display.cpp:281
+#: src/preferences_display.cpp:282
 msgid "Reverse Time Graphics"
 msgstr "Αντιστροφή γραφικών χρόνου"
 
-#: src/preferences_display.cpp:283
+#: src/preferences_display.cpp:284
 msgid "Sound effects"
 msgstr "Εμφάνιση Ειδικών Εφέ Ηχου"
 
-#: src/preferences_display.cpp:284
+#: src/preferences_display.cpp:285
 msgid "Music"
 msgstr "Μουσική"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:286
 msgid "Chat Timestamping"
 msgstr ""
 
-#: src/preferences_display.cpp:286
+#: src/preferences_display.cpp:287
 #, fuzzy
 msgid "Advanced Mode"
 msgstr "Γιά προχωρημένους"
 
-#: src/preferences_display.cpp:287
+#: src/preferences_display.cpp:288
 msgid "Normal Mode"
 msgstr ""
 
-#: src/preferences_display.cpp:290
+#: src/preferences_display.cpp:289
+msgid "User Interface Sounds"
+msgstr ""
+
+#: src/preferences_display.cpp:292
 #, fuzzy
 msgid "Custom"
 msgstr "Αποκοπή"
 
-#: src/preferences_display.cpp:291
+#: src/preferences_display.cpp:293
 msgid "Apply"
 msgstr ""
 
-#: src/preferences_display.cpp:293
+#: src/preferences_display.cpp:295
 msgid "Music Volume:"
 msgstr "Ένταση Μουσικής:"
 
-#: src/preferences_display.cpp:293
+#: src/preferences_display.cpp:295
 msgid "SFX Volume:"
 msgstr "Ένταση Ηχητικών Εφέ:"
 
-#: src/preferences_display.cpp:294
+#: src/preferences_display.cpp:296
+#, fuzzy
+msgid "UI Sound Volume:"
+msgstr "Ένταση Ηχητικών Εφέ:"
+
+#: src/preferences_display.cpp:297
 #, fuzzy
 msgid "Bell Volume:"
 msgstr "Ένταση Ηχητικών Εφέ:"
 
-#: src/preferences_display.cpp:295
+#: src/preferences_display.cpp:298
 msgid "Gamma:"
 msgstr "Διώρθωση Γάμμα"
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:300
 msgid "Sample Rate (Hz):"
 msgstr ""
 
-#: src/preferences_display.cpp:320
+#: src/preferences_display.cpp:323
 msgid "Sound effects on/off"
 msgstr "Ενεργοποίηση/απενεργοποίηση αποτελεσμάτων ήχου(sound effects)"
 
-#: src/preferences_display.cpp:324
+#: src/preferences_display.cpp:327
 msgid "Change the sound effects volume"
 msgstr "Μετατροπή έντασης ηχητικών εφέ"
 
-#: src/preferences_display.cpp:327
+#: src/preferences_display.cpp:330
 msgid "Music on/off"
 msgstr "Ενεργοποίηση/απενεργοποίηση μουσικής"
 
-#: src/preferences_display.cpp:331
+#: src/preferences_display.cpp:334
 msgid "Change the music volume"
 msgstr "Μετατροπή έντασης μουσικής"
 
-#: src/preferences_display.cpp:337
+#: src/preferences_display.cpp:340
 #, fuzzy
 msgid "Change the bell volume"
 msgstr "Μετατροπή έντασης μουσικής"
 
-#: src/preferences_display.cpp:339
+#: src/preferences_display.cpp:343
+msgid "Turn menu and button sounds on/off"
+msgstr ""
+
+#: src/preferences_display.cpp:347
+msgid "Change the sound volume for button clicks, etc."
+msgstr ""
+
+#: src/preferences_display.cpp:349
 #, fuzzy
 msgid "Change the sample rate"
 msgstr "'Αλλαξε τη γλώσσα"
 
-#: src/preferences_display.cpp:348
+#: src/preferences_display.cpp:358
 msgid "User defined sample rate"
 msgstr ""
 
-#: src/preferences_display.cpp:357 src/preferences_display.cpp:361
+#: src/preferences_display.cpp:367 src/preferences_display.cpp:371
 #, fuzzy
 msgid "Change the buffer size"
 msgstr "Μετατροπή έντασης μουσικής"
 
-#: src/preferences_display.cpp:359 src/preferences_display.cpp:816
+#: src/preferences_display.cpp:369 src/preferences_display.cpp:857
 msgid "Buffer Size: "
 msgstr ""
 
-#: src/preferences_display.cpp:366
+#: src/preferences_display.cpp:376
 msgid "Change the speed of scrolling around the map"
 msgstr "Μετατροπή της ταχύτητας κύλισης στο παιχνίδι"
 
-#: src/preferences_display.cpp:371 src/preferences_display.cpp:373
+#: src/preferences_display.cpp:381 src/preferences_display.cpp:383
 msgid "Set the amount of chat lines shown"
 msgstr ""
 
-#: src/preferences_display.cpp:376
+#: src/preferences_display.cpp:386
 msgid "Add a timestamp to chat messages"
 msgstr ""
 
-#: src/preferences_display.cpp:379 src/preferences_display.cpp:384
+#: src/preferences_display.cpp:389 src/preferences_display.cpp:394
 msgid "Change the brightness of the display"
 msgstr "Μετατροπή φωτεινότητας της εικόνας"
 
-#: src/preferences_display.cpp:387
+#: src/preferences_display.cpp:397
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Επιλογή εκτέλεσης παιχνιδιού σε πλήρη οθόνη ή σε παράθυρο"
 
-#: src/preferences_display.cpp:390
+#: src/preferences_display.cpp:400
 msgid "Make units move and fight faster"
 msgstr "Οι μονάδες κινούνται και πολεμάνε γρηγορότερα"
 
-#: src/preferences_display.cpp:405
+#: src/preferences_display.cpp:415
 #, fuzzy
 msgid "Units move and fight speed"
 msgstr "Οι μονάδες κινούνται και πολεμάνε γρηγορότερα"
 
-#: src/preferences_display.cpp:408
+#: src/preferences_display.cpp:418
 msgid "Do not animate AI units moving"
 msgstr "Η μετακίνηση των μονάδων του υπολογιστή δεν είναι πλέον ορατή"
 
-#: src/preferences_display.cpp:411
+#: src/preferences_display.cpp:421
 msgid "Overlay a grid onto the map"
 msgstr "Εμφάνιση πλέγματος πάνω στο χάρτη"
 
-#: src/preferences_display.cpp:414
+#: src/preferences_display.cpp:424
 msgid "Show minimaps in the multiplayer lobby"
 msgstr ""
 
-#: src/preferences_display.cpp:417
+#: src/preferences_display.cpp:427
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
-#: src/preferences_display.cpp:420
+#: src/preferences_display.cpp:430
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 
-#: src/preferences_display.cpp:423
+#: src/preferences_display.cpp:433
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 
-#: src/preferences_display.cpp:425
+#: src/preferences_display.cpp:435
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 
-#: src/preferences_display.cpp:427
+#: src/preferences_display.cpp:437
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 
-#: src/preferences_display.cpp:429
+#: src/preferences_display.cpp:439
 msgid "View and edit your friends and ignores list"
 msgstr ""
 
-#: src/preferences_display.cpp:430
+#: src/preferences_display.cpp:440
 msgid "Back to the multiplayer options"
 msgstr ""
 
-#: src/preferences_display.cpp:431
+#: src/preferences_display.cpp:441
 msgid "Add this username to your friends list"
 msgstr ""
 
-#: src/preferences_display.cpp:432
+#: src/preferences_display.cpp:442
 msgid "Add this username to your ignores list"
 msgstr ""
 
-#: src/preferences_display.cpp:433
+#: src/preferences_display.cpp:443
 msgid "Remove this username from your list"
 msgstr ""
 
-#: src/preferences_display.cpp:436
+#: src/preferences_display.cpp:446
 msgid "Insert a username"
 msgstr ""
 
-#: src/preferences_display.cpp:439
+#: src/preferences_display.cpp:449
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Εμφάνιση ζημιάς πάνω από τη μονάδα που χτυπήθηκε"
 
-#: src/preferences_display.cpp:441
+#: src/preferences_display.cpp:451
 msgid "Change the resolution the game runs at"
 msgstr "Μετατροπή της ανάλυσης του παιχνιδιού"
 
-#: src/preferences_display.cpp:442
+#: src/preferences_display.cpp:452
 #, fuzzy
 msgid "Change the theme the game runs with"
 msgstr "Μετατροπή της ανάλυσης του παιχνιδιού"
 
-#: src/preferences_display.cpp:445
+#: src/preferences_display.cpp:455
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Εμφάνιση κειμένου στην αρχή κάθε γύρου"
 
-#: src/preferences_display.cpp:448
+#: src/preferences_display.cpp:458
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Ενεργοποίηση ήχου κουδουνιού στην αρχή κάθε γύρου"
 
-#: src/preferences_display.cpp:451
+#: src/preferences_display.cpp:461
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -809,108 +826,108 @@ msgstr ""
 "Εμφάνιση έγχρωμου κύκλου στη βάση κάθε μονάδας ως ένδειξη της ομάδας στην "
 "οποία ανήκει"
 
-#: src/preferences_display.cpp:454
+#: src/preferences_display.cpp:464
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Επιλογή αν ο ήλιος κινείται από αριστερά στά δεξιά η δεξιά πρός τά αριστερά"
 
-#: src/preferences_display.cpp:457
+#: src/preferences_display.cpp:467
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Χρήση ένχρωμων δρομέων (πιθανή καθυστέρηση)"
 
-#: src/preferences_display.cpp:460
+#: src/preferences_display.cpp:470
 msgid "Use graphical special effects (may be slower)"
 msgstr "Χρήση οπτικών εφέ (πιθανή καθυστέρηση)"
 
-#: src/preferences_display.cpp:462
+#: src/preferences_display.cpp:472
 msgid "View and configure keyboard shortcuts"
 msgstr "Εμφάνιση και τροποποίηση συντομεύσεων πληκτρολογίου"
 
-#: src/preferences_display.cpp:711
+#: src/preferences_display.cpp:737
 #, fuzzy
 msgid "Speed: "
 msgstr "Ταχύτητα Κύλισης:"
 
-#: src/preferences_display.cpp:861
+#: src/preferences_display.cpp:902
 msgid "Chat Lines: "
 msgstr ""
 
-#: src/preferences_display.cpp:957
+#: src/preferences_display.cpp:998
 msgid "yes"
 msgstr "ναι"
 
-#: src/preferences_display.cpp:959
+#: src/preferences_display.cpp:1000
 msgid "no"
 msgstr "όχι"
 
-#: src/preferences_display.cpp:1088
+#: src/preferences_display.cpp:1142
 msgid "Prefs section^General"
 msgstr "Γενικές"
 
-#: src/preferences_display.cpp:1089
+#: src/preferences_display.cpp:1143
 msgid "Prefs section^Display"
 msgstr "Εικόνας"
 
-#: src/preferences_display.cpp:1090
+#: src/preferences_display.cpp:1144
 msgid "Prefs section^Sound"
 msgstr "Ήχου"
 
-#: src/preferences_display.cpp:1091
+#: src/preferences_display.cpp:1145
 #, fuzzy
 msgid "Prefs section^Multiplayer"
 msgstr "Εικόνας"
 
-#: src/preferences_display.cpp:1092
+#: src/preferences_display.cpp:1146
 msgid "Advanced section^Advanced"
 msgstr "Γιά προχωρημένους"
 
-#: src/preferences_display.cpp:1157
+#: src/preferences_display.cpp:1211
 msgid "There are no alternative video modes available"
 msgstr "Δεν υπάρχουν διαθέσιμες εναλλακτικές αναλύσεις"
 
-#: src/preferences_display.cpp:1186
+#: src/preferences_display.cpp:1240
 msgid "Choose Resolution"
 msgstr "Επιλέξτε Ανάλυση"
 
-#: src/preferences_display.cpp:1219
+#: src/preferences_display.cpp:1273
 msgid "Hotkey Settings"
 msgstr "Ρυθμίσεις Συντομεύσεων Πληκτρολογίου"
 
-#: src/preferences_display.cpp:1223 src/preferences_display.cpp:1276
+#: src/preferences_display.cpp:1277 src/preferences_display.cpp:1330
 #, fuzzy
 msgid "Press desired Hotkey"
 msgstr "Πατήστε τη Συντόμευση Πληκτρολογίου που επιθυμείτε"
 
-#: src/preferences_display.cpp:1241
+#: src/preferences_display.cpp:1295
 msgid "Action"
 msgstr "Ενέργεια"
 
-#: src/preferences_display.cpp:1241
+#: src/preferences_display.cpp:1295
 msgid "Binding"
 msgstr "Συνδέσεις"
 
-#: src/preferences_display.cpp:1253
+#: src/preferences_display.cpp:1307
 msgid "Change Hotkey"
 msgstr "Αλλαγή Συντόμευσης Πληκτρολογίου"
 
-#: src/preferences_display.cpp:1256
+#: src/preferences_display.cpp:1310
 msgid "Save Hotkeys"
 msgstr "Αποθήκευση Συντομεύσεων Πληκτρολογίου"
 
-#: src/preferences_display.cpp:1303
+#: src/preferences_display.cpp:1357
 #, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Αυτή η Συντόμευση Πληκτρολογίου έχει ήδη χρησιμοποιηθεί"
 
-#: src/preferences_display.cpp:1336
+#: src/preferences_display.cpp:1390
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/preferences_display.cpp:1342
+#: src/preferences_display.cpp:1396
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/preferences_display.cpp:1346
+#: src/preferences_display.cpp:1400
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 
