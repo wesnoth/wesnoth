@@ -446,6 +446,9 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 	if(on_board(loc))
 		return tiles_[loc.x][loc.y];
 
+	//proof of concept to test with special none terrain transition
+	return t_translation::OFF_MAP;
+#if 0
 	const std::map<location, t_translation::t_letter>::const_iterator itor = borderCache_.find(loc);
 	if(itor != borderCache_.end())
 		return itor->second;
@@ -479,6 +482,7 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 
 	borderCache_.insert(std::pair<location, t_translation::t_letter>(loc,used_terrain));
 	return used_terrain;
+#endif	
 }
 
 const gamemap::location& gamemap::starting_position(int n) const

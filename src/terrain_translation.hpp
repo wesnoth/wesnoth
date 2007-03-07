@@ -118,6 +118,7 @@ namespace t_translation {
 	//configuration file.
 	extern const t_letter VOID_TERRAIN;
 	extern const t_letter FOGGED;
+	extern const t_letter OFF_MAP;
 
 	extern const t_letter HUMAN_CASTLE;
 	extern const t_letter HUMAN_KEEP;

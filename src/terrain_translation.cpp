@@ -152,6 +152,7 @@ namespace t_translation {
 
 /***************************************************************************************/	
 
+const t_letter OFF_MAP = string_to_number_("_off");
 const t_letter VOID_TERRAIN = string_to_number_("_s");
 const t_letter FOGGED = string_to_number_("_f");
 
