@@ -30,6 +30,11 @@ const int terrain_builder::rule_image::TILEWIDTH = 72;
 const int terrain_builder::rule_image::UNITPOS = 36 + 18;
 const int terrain_builder::tile::BASE_Y_INTERVAL = 100000;
 
+namespace {
+	// the wildcard used for the builder rules
+	const t_translation::t_layer WILDCARD = 0x2A000000;
+}
+
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image) :
 	layer(layer), basex(x), basey(y), global_image(global_image)
 {}
@@ -534,7 +539,7 @@ void terrain_builder::add_constraints(
 
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints, const gamemap::location& loc, const config& cfg, const config& global_images)
 {
-	add_constraints(constraints, loc, t_translation::t_match(cfg["type"]), global_images);
+	add_constraints(constraints, loc, t_translation::t_match(cfg["type"], WILDCARD), global_images);
 
 	terrain_constraint& constraint = constraints[loc];
 
@@ -999,7 +1004,7 @@ void terrain_builder::build_terrains()
 				if(cons != rule->second.constraints.end()) {
 					adjacent_types[i] = cons->second.terrain_types_match.terrain;
 				} else {
-					adjacent_types[i] = t_translation::read_list("", -1, t_translation::T_FORMAT_STRING);
+					adjacent_types[i] = t_translation::read_list("", -1, t_translation::T_FORMAT_STRING, WILDCARD);
 				}
 			}
 

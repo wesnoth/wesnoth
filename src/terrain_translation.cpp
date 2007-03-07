@@ -76,11 +76,13 @@ namespace t_translation {
 	 * This is the new convertor converts a single line
 	 * and only acceptes the new terrain string format
 	 *
-	 * @param str	the terrain string in new format
+	 * @param str		the terrain string in new format
+	 * @param filler	if the terrain has only 1 layer then the filler will be used
+	 * 					as the second layer
 	 *
-	 * @return 		the list of converted terrains
+	 * @return 			the list of converted terrains
 	 */
-	t_list string_to_vector_(const std::string& str);
+	t_list string_to_vector_(const std::string& str, const t_layer filler);
 	
 	/**
 	 * Get the mask for a single layer
@@ -89,7 +91,7 @@ namespace t_translation {
 	 *
 	 * @return			mask for that layer
 	 */
-	Uint32 get_layer_mask_(Uint32 terrain); //inlined
+	t_layer get_layer_mask_(t_layer terrain); //inlined
 	
 	/**
 	 * Gets a mask for a terrain, this mask is used for wildcard matching
@@ -108,19 +110,21 @@ namespace t_translation {
 	 * 					
 	 * @return			the converted layer
 	 */
-	Uint32 string_to_layer_(const std::string& str);
+	t_layer string_to_layer_(const std::string& str);
 	
 	/**
 	 * converts a terrain string to a number
 	 * @param str 				the terrain string with an optional number
-	 * 
 	 * @param start_position	returns the start_position, the caller should set it on -1
 	 * 					    	and it's only changed it there is a starting position found
+	 * @param filler			if the terrain has only 1 layer then the filler will be used
+	 * 							as the second layer
 	 *
 	 * @return					the letter found in the string
 	 */ 					
-	t_letter string_to_number_(const std::string& str);
-	t_letter string_to_number_(std::string str, int& start_position);
+//	t_letter string_to_number_(const std::string& str, const t_layer filler = 0xFFFFFFFF);
+	t_letter string_to_number_(const std::string& str, const t_layer filler = 0x2A000000);
+	t_letter string_to_number_(std::string str, int& start_position, const t_layer filler);
 
 	/**
 	 * converts a terrain number to a string
@@ -174,15 +178,20 @@ const t_letter STAR = string_to_number_("*");
 /***************************************************************************************/	
 
 t_letter::t_letter(const std::string& b) : 
-	base(string_to_layer_(b)), overlay(0xFFFFFFFF)
+//	base(string_to_layer_(b)), overlay(0xFFFFFFFF)
+	base(string_to_layer_(b)), overlay(0x2A000000)
+{}
+
+t_letter::t_letter(const std::string& b, const t_layer o) : 
+	base(string_to_layer_(b)), overlay(o)
 {}
 
 t_letter::t_letter(const std::string& b, const std::string& o) : 
 	base(string_to_layer_(b)), overlay(string_to_layer_(o)) 
 {}
 
-t_match::t_match(const std::string& str):
-	terrain(t_translation::read_list(str, -1, t_translation::T_FORMAT_STRING)) 
+t_match::t_match(const std::string& str, const t_layer filler):
+	terrain(t_translation::read_list(str, -1, t_translation::T_FORMAT_STRING, filler)) 
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
@@ -209,12 +218,12 @@ t_match::t_match(const t_letter& letter):
 	}
 }
 
-t_letter read_letter(const std::string& str, const int t_format)
+t_letter read_letter(const std::string& str, const int t_format, const t_layer filler)
 {
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 	if(t_format == T_FORMAT_STRING ||
 			(t_format == T_FORMAT_AUTO && map_format_ == 2)) {
-		return string_to_number_(str);
+		return string_to_number_(str, filler);
 		
 	} else if(t_format == T_FORMAT_LETTER ||
 			(t_format == T_FORMAT_AUTO && map_format_ == 1)) {
@@ -224,7 +233,7 @@ t_letter read_letter(const std::string& str, const int t_format)
 		throw error("Invalid case in read_letter");
 	}
 #else
-		return string_to_number_(str);
+		return string_to_number_(str, filler);
 #endif
 }
 
@@ -233,12 +242,12 @@ std::string write_letter(const t_letter& letter)
 	return number_to_string_(letter);
 }
 
-t_list read_list(const std::string& str, const int separated, const int t_format)
+t_list read_list(const std::string& str, const int separated, const int t_format, const t_layer filler)
 {
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 	if(t_format == T_FORMAT_STRING ||
 			(t_format == T_FORMAT_AUTO && map_format_ == 2)) {
-		return string_to_vector_(str);
+		return string_to_vector_(str, filler);
 		
 	} else if(t_format == T_FORMAT_LETTER ||
 			(t_format == T_FORMAT_AUTO && map_format_ == 1)) {
@@ -248,7 +257,7 @@ t_list read_list(const std::string& str, const int separated, const int t_format
 		throw error("Invalid case in read_list");
 	}
 #else
-		return string_to_vector_(str);
+		return string_to_vector_(str, filler);
 #endif
 }
 
@@ -309,7 +318,8 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		const std::string terrain = str.substr(offset, pos_separator - offset);
 
 		// process the chunk
-		int starting_position = -1; 
+		int starting_position = -1;
+		// the gamemap never has a wildcard so no filler defined
 		const t_letter tile = string_to_number_(terrain, starting_position);
 
 		// add to the resulting starting position
@@ -848,7 +858,7 @@ t_map read_game_map_old_(const std::string& str, std::map<int, coordinate>& star
 
 #endif
 
-t_list string_to_vector_(const std::string& str)
+t_list string_to_vector_(const std::string& str, const t_layer filler)
 {
 	// handle an empty string
 	t_list result;
@@ -866,7 +876,7 @@ t_list string_to_vector_(const std::string& str)
 		const std::string terrain = str.substr(offset, pos_separator - offset);
 
 		// process the chunk
-		const t_letter tile = string_to_number_(terrain);
+		const t_letter tile = string_to_number_(terrain, filler);
 
 		// add the resulting terrain number
 		result.push_back(tile);
@@ -882,7 +892,7 @@ t_list string_to_vector_(const std::string& str)
 	return result;
 }
 
-inline Uint32 get_layer_mask_(Uint32 terrain)
+inline t_layer get_layer_mask_(t_layer terrain)
 {
 	// test for the star 0x2A in every postion and return the
 	// appropriate mask
@@ -916,9 +926,9 @@ t_letter get_mask_(const t_letter& terrain)
 	}
 }
 
-Uint32 string_to_layer_(const std::string& str)
+t_layer string_to_layer_(const std::string& str)
 {
-	Uint32 result = 0;
+	t_layer result = 0;
 
 	//validate the string
 	wassert(str.size() <= 4);
@@ -940,12 +950,12 @@ Uint32 string_to_layer_(const std::string& str)
 	return result;
 }
 
-t_letter string_to_number_(const std::string& str) {
+t_letter string_to_number_(const std::string& str, const t_layer filler) {
 	int dummy = -1;
-	return string_to_number_(str, dummy);
+	return string_to_number_(str, dummy, filler);
 }
 
-t_letter string_to_number_(std::string str, int& start_position)
+t_letter string_to_number_(std::string str, int& start_position, const t_layer filler)
 {
 	t_letter result;
 
@@ -971,7 +981,7 @@ t_letter string_to_number_(std::string str, int& start_position)
 		const std::string overlay_str(str, offset + 1, str.size());
 		result = t_letter(base_str, overlay_str);
 	} else {
-		result = t_letter(str);
+		result = t_letter(str, filler);
 	}	
 
 #ifndef TERRAIN_TRANSLATION_COMPATIBLE 
