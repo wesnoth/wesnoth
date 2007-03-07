@@ -2068,8 +2068,8 @@ bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
 
 bool filter_loc(const gamemap::location& loc, const vconfig cfg)
 {
-	const std::string& xloc = cfg["x"];
-	const std::string& yloc = cfg["y"];
+	const std::string xloc = cfg["x"];
+	const std::string yloc = cfg["y"];
 
 	return filter_loc_impl(loc,xloc,yloc);
 }
