@@ -25,13 +25,13 @@ public:
 		walker(const t_string& string);
 		walker(const std::string&);
 
-		void next();
-		bool eos() const;
-		bool last() const;
-		bool translatable() const;
-		const std::string& textdomain() const;
-		std::string::const_iterator begin() const;
-		std::string::const_iterator end() const;
+		void next()                               { begin_ = end_; update(); }
+		bool eos() const                          { return begin_ == string_.size(); }
+		bool last() const                         { return end_ == string_.size(); }
+		bool translatable() const                 { return translatable_; }
+		const std::string& textdomain() const     { return textdomain_; }
+		std::string::const_iterator begin() const { return string_.begin() + begin_; }
+		std::string::const_iterator end() const   { return string_.begin() + end_; }
 	private:
 		void update(void);
 
@@ -65,23 +65,24 @@ public:
 	t_string& operator+=(const std::string&);
 	t_string& operator+=(const char*);
 
-	bool operator==(const t_string&) const;
-	bool operator==(const std::string&) const;
-	bool operator==(const char*) const;
-	bool operator!=(const t_string&) const;
-	bool operator!=(const std::string&) const;
-	bool operator!=(const char*) const;
-	bool operator<(const t_string&) const;
+	bool operator==(const t_string& string) const    { return string.translatable_ == translatable_ && string.value_ == value_; }
+	bool operator==(const std::string& string) const { return !translatable_ && value_ == string; }
+	bool operator==(const char* string) const        { return !translatable_ && value_ == string; }
+	bool operator!=(const t_string& string) const    { return !(*this == string); }
+	bool operator!=(const std::string& string) const { return !(*this == string); }
+	bool operator!=(const char* string) const        { return !(*this == string); }
 
-	bool empty() const;
-	std::string::size_type size() const;
+	bool operator<(const t_string& string) const     { return value_ < string.value_; }
 
-	operator const std::string&() const;
+	bool empty() const                               { return value_.empty(); }
+	std::string::size_type size() const              { return str().size(); }
+
+	operator const std::string&() const              { return str(); }
 	const std::string& str() const;
-	const char* c_str() const;
-	const std::string& value() const;
+	const char* c_str() const                        { return str().c_str(); }
+	const std::string& value() const                 { return value_; }
 
-	void reset_translation() const;
+	void reset_translation() const                   { translated_value_ = ""; }
 
 	static void add_textdomain(const std::string& name, const std::string& path);
 private:
@@ -91,12 +92,12 @@ private:
 };
 
 std::ostream& operator<<(std::ostream&, const t_string&);
-bool operator==(const std::string& a, const t_string& b);
-bool operator==(const char* a, const t_string& b);
-bool operator!=(const std::string& a, const t_string& b);
-bool operator!=(const char* a, const t_string& b);
-t_string operator+(const std::string& a, const t_string& b);
-t_string operator+(const char*, const t_string& b);
+inline bool operator==(const std::string& a, const t_string& b)    { return a == b.str(); }
+inline bool operator==(const char* a, const t_string& b)           { return b == a; }
+inline bool operator!=(const std::string& a, const t_string& b)    { return a != b.str(); }
+inline bool operator!=(const char* a, const t_string& b)           { return b != a; }
+inline t_string operator+(const std::string& a, const t_string& b) { return t_string(a + b.str()); }
+inline t_string operator+(const char* a, const t_string& b)        { return t_string(a) + b; }
 
 #endif
 

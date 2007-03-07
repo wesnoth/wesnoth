@@ -56,42 +56,6 @@ t_string::walker::walker(const std::string& string) :
 	update();
 }
 
-void t_string::walker::next()
-{
-	begin_ = end_;
-	update();
-}
-
-bool t_string::walker::eos() const
-{
-	return begin_ == string_.size();
-}
-
-bool t_string::walker::last() const
-{
-	return end_ == string_.size();
-}
-
-bool t_string::walker::translatable() const
-{
-	return translatable_;
-}
-
-const std::string& t_string::walker::textdomain() const
-{
-	return textdomain_;
-}
-
-std::string::const_iterator t_string::walker::begin() const
-{
-	return string_.begin() + begin_;
-}
-
-std::string::const_iterator t_string::walker::end() const
-{
-	return string_.begin() + end_;
-}
-
 void t_string::walker::update()
 {
 	unsigned int id;
@@ -293,21 +257,6 @@ t_string& t_string::operator=(const char* string)
 	return *this;
 }
 
-bool t_string::operator==(const t_string& string) const
-{
-	return string.translatable_ == translatable_ && string.value_ == value_;
-}
-
-bool t_string::operator==(const std::string& string) const
-{
-	return !translatable_ && value_ == string;
-}
-
-bool t_string::operator==(const char* string) const
-{
-	return !translatable_ && value_ == string;
-}
-
 t_string t_string::operator+(const t_string& string) const
 {
 	t_string res(*this);
@@ -411,29 +360,6 @@ t_string& t_string::operator+=(const char* string)
 	return *this;
 }
 
-bool t_string::operator!=(const t_string& string) const { return !(*this == string); }
-bool t_string::operator!=(const std::string& string) const { return !(*this == string); }
-bool t_string::operator!=(const char* string) const { return !(*this == string); }
-
-bool t_string::operator<(const t_string& string) const
-{
-	return value_ < string.value_;
-}
-
-bool t_string::empty() const
-{
-	return value_.empty();
-}
-
-std::string::size_type t_string::size() const
-{
-	return str().size();
-}
-
-t_string::operator const std::string&() const
-{
-	return str();
-}
 
 const std::string& t_string::str() const
 {
@@ -456,20 +382,6 @@ const std::string& t_string::str() const
 	return translated_value_;
 }
 
-const char* t_string::c_str() const
-{
-	return str().c_str();
-}
-
-const std::string& t_string::value() const
-{
-	return value_;
-}
-
-void t_string::reset_translation() const
-{
-	translated_value_ = "";
-}
 
 void t_string::add_textdomain(const std::string& name, const std::string& path)
 {
@@ -484,35 +396,5 @@ std::ostream& operator<<(std::ostream& stream, const t_string& string)
 {
 	stream << string.str();
 	return stream;
-}
-
-bool operator==(const std::string& a, const t_string& b)
-{
-	return b == a;
-}
-
-bool operator==(const char* a, const t_string& b)
-{
-	return b == a;
-}
-
-bool operator!=(const std::string& a, const t_string& b)
-{
-	return b != a;
-}
-
-bool operator!=(const char* a, const t_string& b)
-{
-	return b != a;
-}
-
-t_string operator+(const std::string& a, const t_string& b)
-{
-	return t_string(a) + b;
-}
-
-t_string operator+(const char*a, const t_string& b)
-{
-	return t_string(a) + b;
 }
 
