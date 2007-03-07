@@ -72,7 +72,7 @@ void t_string::walker::update()
 			string_.find(TEXTDOMAIN_SEPARATOR, begin_ + 1);
 
 		if(textdomain_end == std::string::npos || textdomain_end >= string_.size() - 1) {
-			ERR_CF << "Error: invalid string\n";
+			ERR_CF << "Error: invalid string: " << string_ << "\n";
 			begin_ = string_.size();
 			return;
 		}
@@ -89,7 +89,7 @@ void t_string::walker::update()
 	}
 	case ID_TRANSLATABLE_PART:
 		if(begin_ + 3 >= string_.size()) {
-			ERR_CF << "Error: invalid string\n";
+			ERR_CF << "Error: invalid string: " << string_ << "\n";
 			begin_ = string_.size();
 			return;
 		}
@@ -99,7 +99,7 @@ void t_string::walker::update()
 
 		id = string_[begin_ + 1] + string_[begin_ + 2] * 256;
 		if(id >= id_to_textdomain.size()) {
-			ERR_CF << "Error: invalid string\n";
+			ERR_CF << "Error: invalid string: " << string_ << "\n";
 			begin_ = string_.size();
 			return;
 		}
@@ -115,7 +115,7 @@ void t_string::walker::update()
 			end_ = string_.size();
 
 		if(end_ <= begin_ + 1) {
-			ERR_CF << "Error: invalid string\n";
+			ERR_CF << "Error: invalid string: " << string_ << "\n";
 			begin_ = string_.size();
 			return;
 		}
