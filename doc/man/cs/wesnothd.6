@@ -82,7 +82,7 @@ klíè="\fIhodnota\fP,\fIhodnota\fP"
 .
 .TP 
 \fBconnections_allowed\fP
-The number of allowed connections from the same IP. (default: 5)
+Poèet povolených spojení z jedné IP adresy. (implicitnì 5)
 .TP 
 \fBdisallow_names\fP
 Jména/pøezdívky, které nejsou serverem akceptována. Je mo¾no pou¾ít znaky
@@ -90,11 +90,12 @@ Jména/pøezdívky, které nejsou serverem akceptována. Je mo¾no pou¾ít znaky
 `server,ai,player,network,human,admin,computer'.
 .TP 
 \fBmax_messages\fP
-The number of allowed messages in \fBmessages_time_period\fP. (default: 4)
+Maximální poèet zpráv, které jsou pøijaty bìhem
+\fBmessages_time_period\fP. (implicitnì 4)
 .TP 
 \fBmessages_time_period\fP
-The time period (in seconds) message flooding is detected in. (default: 10
-seconds)
+Èasová perioda (ve vteøinách), po které se nuluje poèítadlo pøjatých
+zpráv. (implicitnì 10 sekund)
 .TP 
 \fBmotd\fP
 Zpráva dne.
@@ -103,9 +104,9 @@ Zpráva dne.
 Heslo pro získání administrátorských práv. Obvykle zaèíná "admin ".
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. `*'
-and `?' from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Seznam èárkou oddìlených øetìzcù verzí Wesnothu, které jsou serverem
+akceptovány. Je mo¾no pou¾ít zástupné znaky `*' a `?'. Implicitní hodnota
+odpovídá pøíslu¹né verzi wesnothu.
 .br
 Pøíklad: versions_accepted="*" akceptuje v¹echny verze.
 .
