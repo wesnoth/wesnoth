@@ -12,13 +12,20 @@ Version 1.3.1+svn:
     * Added the --max-fps command line switch.
     * Improved the look of the main menu and tips of the day boxes in the title
       screen.
+  * Units changes and balancing:
+    * Converted the cold resistance of the Elvish Sorceress line to a holy
+      resistance.
+    * Decreased the holy resistance of the Orcish Assassin line to 0%.
+  * User interface:
+    * Interface actions such as pressing a button, toggling a checkbox or
+      opening a menu (among others) will now emit small sounds.
   * Language and translations
     * Updated translations: Bulgarian, Czech, Danish, Dutch, German, Italian,
       Norwegian, Portuguese (Brazil).
     * New translations: Indonesian
-  * Misceleanous bugs
-    * Units that die while attacking are now correctly playing their death sound
-      insteand of their oponent's
+  * Miscellaneous bugfixes
+    * Fixed a bug that caused the killing unit's death sound to play instead of
+      the death sound of the killed unit.
 
 Version 1.3.1:
   * Campaigns
