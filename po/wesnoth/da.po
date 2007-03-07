@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-07 13:30+0100\n"
-"PO-Revision-Date: 2007-03-02 17:58+0200\n"
+"PO-Revision-Date: 2007-03-07 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -266,7 +266,6 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:452
-#, fuzzy
 msgid "slows"
 msgstr "langsom"
 
@@ -1385,6 +1384,14 @@ msgid ""
 "modified by the circumstances, select <italic>text='Damage Calculations'</"
 "italic> in the attack selection menu."
 msgstr ""
+"\n"
+"\n"
+"Hvert angreb som rammer medfører en skade som afhænger af angrebstypen. For "
+"eksempel: En elverkæmper med et 5-4 angreb medfører 5 baseskade. Dette tal "
+"modificeres normalt af to ting: <ref>dst=damage_types_and_resistance "
+"text=Resistance</ref> og <ref>dst=time_of_day text='Tid på dagen'</ref>. For "
+"at se hvor hvordan baseskadener modificeret af omstændighederne så vælg "
+"<italic>text='Skadeberegninger'</italic> i angrebsmenuen."
 
 #: data/help.cfg:173
 msgid ""
@@ -1614,8 +1621,8 @@ msgid ""
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneration</ref>: Visse enheder (som f."
-"eks. trolde) får automatisk helbredt 8 HP i starten af hver tur."
+"<ref>dst=ability_regenerates text=Regeneration</ref>: Visse enheder (som for "
+"eksempel trolde) får automatisk helbredt 8 liv i starten af hver runde."
 
 #: data/help.cfg:227
 msgid ""
@@ -2483,6 +2490,11 @@ msgid ""
 "'1' is assumed.\n"
 "\n"
 msgstr ""
+"\n"
+"Skift spilleren mellem menneske og computer. Spilleren/klienten som "
+"kontrollerer denne side må give denne kommando. Hvis du ikke angiver side "
+"antages »1« som værende gældende.\n"
+"\n"
 
 #: data/help.cfg:620
 msgid ""
@@ -3834,7 +3846,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
-msgstr ""
+msgstr "2p - Hamlets"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:4
@@ -4848,9 +4860,8 @@ msgid "Cave Lit"
 msgstr "Hulelys"
 
 #: data/terrain.cfg:701
-#, fuzzy
 msgid "Rockbound Cave Lit"
-msgstr "Hule"
+msgstr "Stenfast hulelys"
 
 #: data/terrain.cfg:955
 msgid "Impassable Mountains"
@@ -6096,6 +6107,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Ståldværgesoldater har efter år i kamp fremstillet nye skjolde og stærke "
+"rustninger fra deres fjender. Langsomme men alligevel frygtet for deres evne "
+"til at komme igen og deres styrke.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -6123,6 +6139,12 @@ msgid ""
 "make any of their own, realized they were lucky to no longer be fighting the "
 "dwarves, and vowed never to do so again."
 msgstr ""
+"Da Wesnoths mænd først mødte dværgene, blev de mystificeret af magten hos "
+"tordendværgene, som var i stand til at sprede død fra lang afstand igennem "
+"disse aparte ... »stave« som de bar i kamp. Efter at freden indstiftet af "
+"Ka'lian trådte i effekt erkendte Haldrics folk at de, som ikke forstod disse "
+"våben, var heldige at de ikke længere kæmpede imod dværgen og de sværgede "
+"aldrig at ville gøre det igen."
 
 #: data/units/Dwarvish_Thunderer.cfg:87
 #: data/units/Dwarvish_Thunderguard.cfg:71
@@ -6236,6 +6258,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Elvere, til forskel fra mange andre racer, vil hurtig anerkende og følge "
+"enhver af deres egne som har erfaring i kamp. Dette er i stor modsætning til "
+"menneske hvor lederskab ofte er et sammensurium af overbevisning og trusler. "
+"Kombinationen af deres villighed til at acceptere den viden deres ledere "
+"har, og tendensen til at vælge ledere ud fra erfaring er en af de stille "
+"styrker blandt elverne.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -6346,6 +6376,9 @@ msgid ""
 "fighter into a master of combat. Those who are honored as heroes are strong "
 "with both sword and bow, skills that never fade for lack of practice."
 msgstr ""
+"En forholdsvis lille mængde af erfaring vil forvandle en elver fra en "
+"kompetent kæmper til en mester i kamp. Dem som bliver æret som helte er "
+"stærke både med buen og med sværdet. En evne som de bevarer igennem træning."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -7246,7 +7279,6 @@ msgstr ""
 # færeste spillere der gør det...
 #
 #: data/units/Human_Mage.cfg:103 data/units/Human_Mage_Silver.cfg:83
-#, fuzzy
 msgid "missile"
 msgstr "missil"
 
@@ -8300,7 +8332,6 @@ msgid "cold"
 msgstr "kulde"
 
 #: data/units/Saurian_Flanker.cfg:3
-#, fuzzy
 msgid "Saurian Flanker"
 msgstr "Øglekriger"
 
@@ -8316,9 +8347,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr "Øglekriger"
+msgstr "Øgleorakel"
 
 #: data/units/Saurian_Oracle.cfg:22
 msgid ""
@@ -8428,9 +8458,8 @@ msgstr ""
 "Specielle bemærkninger:"
 
 #: data/units/Troll_Rocklobber.cfg:3
-#, fuzzy
 msgid "Troll Rocklobber"
-msgstr "Troldehelt"
+msgstr "Troldestenslynger"
 
 #: data/units/Troll_Rocklobber.cfg:21
 msgid ""
@@ -8605,7 +8634,6 @@ msgstr ""
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:68
 #: data/units/Undead_Necro_Lich.cfg:73
-#, fuzzy
 msgid "chill tempest"
 msgstr "kuldebølge"
 
@@ -8798,7 +8826,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Undead_Skele_Revenant.cfg:3
-#, fuzzy
 msgid "Revenant"
 msgstr "Revenant"
 
@@ -9715,15 +9742,16 @@ msgid "Reading files and creating cache."
 msgstr "Læser filer og opretter mellemlager."
 
 #: src/menu_events.cpp:66
-#, fuzzy
 msgid "Detail"
-msgstr "hale"
+msgstr "Detalje"
 
 #: src/menu_events.cpp:101
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
+"Min herre, denne enhed er erfaren med et højt niveau! Vil du virkelig "
+"afskedige $noun?"
 
 #: src/menu_events.cpp:103
 msgid ""
@@ -9742,7 +9770,7 @@ msgstr "ham"
 
 #: src/menu_events.cpp:164 src/menu_events.cpp:240
 msgid "Recruits"
-msgstr "Rekruteringer"
+msgstr "Rekrutteringer"
 
 #: src/menu_events.cpp:170 src/menu_events.cpp:244
 msgid "Recalls"
@@ -10526,17 +10554,15 @@ msgstr "Ugyldig farve"
 
 #: src/multiplayer_ui.cpp:338
 msgid "Send a private message to "
-msgstr ""
+msgstr "Send en privat besked til "
 
 #: src/multiplayer_ui.cpp:339
-#, fuzzy
 msgid "Whisper"
-msgstr "Hvid"
+msgstr "Hvisken"
 
 #: src/multiplayer_ui.cpp:340
-#, fuzzy
 msgid "Message: "
-msgstr "Besked:"
+msgstr "Besked: "
 
 #: src/multiplayer_wait.cpp:123
 msgid "Leader: "
@@ -11021,12 +11047,3 @@ msgstr "Du kan se resultaterne her:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
-
-#~ msgid "Scenario Designers"
-#~ msgstr "Scenariedesignere"
-
-#~ msgid "Multiplayer Developers"
-#~ msgstr "flerspillerudviklere"
-
-#~ msgid "+Developers"
-#~ msgstr "+Udviklere"
