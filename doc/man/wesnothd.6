@@ -87,7 +87,7 @@ key="\fIvalue\fR,\fIvalue\fR,..."
 .
 .TP
 .B connections_allowed
-The number of allowed connections from the same IP.
+The number of allowed connections from the same IP. (default: 5)
 .TP
 .B disallow_names
 Names/nicks that are not accepted by the server. `*' and `?' from wildcard patterns are supported. See 
@@ -96,10 +96,10 @@ for more details.
 Default values (used if nothing is specified) are: `server,ai,player,network,human,admin,computer'.
 .TP
 .B max_messages
-The number of allowed messages in \fBmessages_time_period\fR.
+The number of allowed messages in \fBmessages_time_period\fR. (default: 4)
 .TP
 .B messages_time_period
-The time period (in seconds) message flooding is detected in.
+The time period (in seconds) message flooding is detected in. (default: 10 seconds)
 .TP
 .B motd
 The message of the day.
@@ -109,6 +109,7 @@ The password used to gain admin privileges. Usually it starts with "admin ".
 .TP
 .B versions_accepted
 A comma separated list of version strings to be accepted by the server. `*' and `?' from wildcard patterns are supported.
+(defaults to the corresponding wesnoth version)
 .br
 Example: versions_accepted="*" accepts any version string.
 .
