@@ -1332,11 +1332,11 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		unit_ability_list heal = i->second.get_abilities("heals",i->first);
 		// Only consider healers on side which is starting now
-		// remove all healers not on this side
+		// remove all healers enemy of this side
 		for(std::vector<std::pair<config*,gamemap::location> >::iterator h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
 			unit_map::iterator potential_healer = units.find(h_it->second);
 			wassert(potential_healer != units.end());
-			if(potential_healer->second.side()!=side) {
+			if(teams[potential_healer->second.side()-1].is_enemy(side)) {
 				heal.cfgs.erase(h_it);
 			} else {
 				++h_it;
