@@ -658,6 +658,9 @@ bool game_controller::load_game()
 		if(campaign_define.empty() == false) {
 			defines_map_[campaign_define] = preproc_define();
 		}
+		if (campaign_define.empty() && (cfg["campaign_type"] == "multiplayer")){
+			defines_map_["MULTIPLAYER"] = preproc_define();
+		}
 
 		refresh_game_cfg();
 
