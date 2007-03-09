@@ -737,13 +737,13 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, bool use_flat_tod) const
 {
-	scoped_wml_variable* auto_store = NULL;
-	if(map_ != NULL && loc.valid() && units_ != NULL) {
-		auto_store = new scoped_xy_unit("this_unit", loc.x, loc.y, *units_);
+	if(loc.valid()) {
+		wassert(units_ != NULL);
+		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, *units_);
+		return internal_matches_filter(orig_cfg, loc, use_flat_tod);
 	}
-	bool to_return = internal_matches_filter(orig_cfg, loc, use_flat_tod);
-	delete auto_store;
-	return to_return;
+	//if loc is invalid, then this is a recall list unit which should have already been scoped
+	return internal_matches_filter(orig_cfg, loc, use_flat_tod);
 }
 
 bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::location& loc, bool use_flat_tod) const
