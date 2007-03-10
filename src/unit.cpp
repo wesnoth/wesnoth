@@ -1741,6 +1741,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		unit_halo_ = 0;
 		if(unit_anim_halo_) halo::remove(unit_anim_halo_);
 		unit_anim_halo_ = 0;
+		if(anim_) anim_->update_last_draw_time();
 		return;
 	}
 	if(refreshing_) return;
