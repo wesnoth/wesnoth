@@ -1538,6 +1538,7 @@ void unit::set_extra_anim(const display &disp,const gamemap::location& loc, std:
 	draw_bars_ = false;
 
 	delete anim_;
+	anim_ = NULL;
 
 	if(!extra_animation(disp,loc,flag)) {
 		set_standing(disp,loc);
