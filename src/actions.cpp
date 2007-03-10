@@ -666,7 +666,18 @@ void attack::fire_event(const std::string& n)
 			(*(dat.child("first")))["weapon"]=a_stats_->weapon->name();
 		}
 		if(d_ != units_.end()) {
-			(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->name() : "none";
+			config *tempcfg = dat.child("second");
+			t_string d_weap = "none";
+			if(d_stats_->weapon != NULL) {
+				if(a_ != units_.end()) {
+					d_weap = d_stats_->weapon->name();
+				} else {
+					//the weapon choice will be invalid since the attacker was removed
+					d_weap = "invalid";
+				}
+			}
+			std::pair<std::string,t_string> to_insert("weapon", d_weap);
+			tempcfg->values.insert(to_insert);
 		}
 		game_events::fire(n,attacker_,defender_,dat);
 		a_ = units_.find(attacker_);
