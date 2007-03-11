@@ -691,6 +691,25 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			state_of_game->get_variable(var_name+".team_name") = (*teams)[team_index].team_name();
 		}
 	}
+	//command to store gold into a variable
+    else if(cmd == "store_gold") {
+		lg::wml_error << "[store_gold] tag is now deprecated; use [store_side] instead. "
+			<< "Support will be removed in version 1.3.3\n";
+		std::string side = cfg["side"];
+		std::string var_name = cfg["variable"];
+		if(var_name.empty()) {
+			var_name = "gold";
+		}
+		wassert(state_of_game != NULL);
+		const int side_num = lexical_cast_default<int>(side,1);
+		const size_t team_index = side_num-1;
+		if(team_index < teams->size()) {
+			char value[50];			
+			snprintf(value,sizeof(value),"%d",(*teams)[team_index].gold());
+			wassert(state_of_game != NULL);
+			state_of_game->set_variable(var_name,value);
+		}
+	}
 	else if(cmd == "modify_turns") {
 		std::string value = cfg["value"];
 		std::string add = cfg["add"];
