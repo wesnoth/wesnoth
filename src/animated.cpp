@@ -212,7 +212,7 @@ const int animated<T,T_void_value>::get_current_frame_time() const
 {
 	if(frames_.empty() )
 		return 0;
-	return maximum<int>(get_current_frame_begin_time(),get_animation_time() - get_current_frame_begin_time());
+	return maximum<int>(0,get_animation_time() - get_current_frame_begin_time());
 }
 
 template<typename T,  typename T_void_value>
