@@ -124,4 +124,6 @@ void scope_logger::do_indent() const
 		output_ << "  ";
 }
 
+std::stringstream wml_error;
+
 } // namespace lg

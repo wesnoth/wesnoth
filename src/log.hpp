@@ -55,6 +55,16 @@ public:
 	void do_indent() const;
 };
 
+/** 
+ * Use this logger to send errors due to deprecated WML the preferred format is
+ * xxx is deprecated, support will be removed in version X. or
+ * xxx is deprecated, support has been removed in version X.
+ *
+ * After every wml event the errors are shown to the user so they can inform
+ * the campaign maintainer
+ */
+extern std::stringstream wml_error;
+
 } // namespace lg
 
 #define log_scope(a) lg::scope_logger scope_logging_object__(lg::general, a);

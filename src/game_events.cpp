@@ -33,6 +33,7 @@
 #include "gettext.hpp"
 #include "variable.hpp"
 #include "serialization/string_utils.hpp"
+#include "wesconfig.h"
 
 #include <cstdlib>
 #include <deque>
@@ -95,6 +96,68 @@ message_dialog::~message_dialog()
 {
 }
 
+// std::getline might be broken in Visual Studio so show a warning
+#ifdef _MSC_VER
+#warning your compiler's std::getline might be broken see http://support.microsoft.com/default.aspx?scid=kb;EN-US;q240015
+#endif
+/**
+ * shows the errors encountered in WML thusfar, to avoid a lot of the same messages
+ * to be shown, identical messages are shown once with the between braces the number
+ * of times that message was encountered. The order in which the messages are shown
+ * does not need to be the order in which these messages are encountered.
+ * Messages are always written to std::cerr
+ */
+void show_wml_errors()
+{
+	// Get all unique messages in messages with the number of encounters for
+	// these messages
+	std::map<std::string, int> messages;
+	while(true) {
+		std::string msg;
+		std::getline(lg::wml_error, msg);
+
+		if(lg::wml_error.eof()) {
+			break;
+		}
+	
+		if(msg == "") { 
+			continue;
+		}
+
+		if(messages.find(msg) == messages.end()) {
+			messages[msg] = 1;
+		} else {
+			messages[msg]++;
+		}
+	}
+	// make sure the eof flag is cleared otherwise no new messages are shown
+	lg::wml_error.clear();
+
+	// show the messages collected
+	std::string caption = "Deprecated WML found";
+	for(std::map<std::string, int>::const_iterator itor = messages.begin();
+			itor != messages.end(); ++itor) {
+				
+		std::stringstream msg; 
+		msg << itor->first;
+		if(itor->second > 1) {
+			msg << " (" << itor->second << ")";
+		}
+					
+		if(WML_ERROR_DIALOG == 1) {
+			// show in a dialog
+			gui::dialog msg_dlg(*screen, caption, msg.str(), gui::OK_ONLY);
+			msg_dlg.show(-1 ,-1);
+			
+		} else {
+			// show as chat message
+			screen->add_chat_message(caption, 0, msg.str(), display::MESSAGE_PUBLIC, false);
+		}
+			
+		std::cerr << caption << ": " << msg << '\n';
+	}
+}
+		
 } //end anonymous namespace
 
 namespace game_events {
@@ -2345,6 +2408,11 @@ bool pump()
 			if(process_event(handler, ev))
 				result = true;
 			++i.first;
+		}
+
+		// dialogs can only be shown if the display is not locked
+		if(! screen->update_locked()) {
+			show_wml_errors();
 		}
 	}
 
