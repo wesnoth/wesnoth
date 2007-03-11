@@ -98,7 +98,7 @@ message_dialog::~message_dialog()
 
 // std::getline might be broken in Visual Studio so show a warning
 #ifdef _MSC_VER
-#warning your compiler's std::getline might be broken see http://support.microsoft.com/default.aspx?scid=kb;EN-US;q240015
+#warning the std::getline implementation in your compiler might be broken see http://support.microsoft.com/default.aspx?scid=kb;EN-US;q240015
 #endif
 /**
  * shows the errors encountered in WML thusfar, to avoid a lot of the same messages
