@@ -882,6 +882,8 @@ void ai::do_move()
 	LOG_AI << "retreat phase\n";
 
 	LOG_AI << "retreating...\n";
+
+	leader = find_leader(units_,team_num_);
 	const bool retreated_unit = retreat_units(possible_moves,srcdst,dstsrc,enemy_dstsrc,leader);
 	if(retreated_unit) {
 		do_move();
@@ -1203,6 +1205,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 			if(units_.count(i->first) == 0) {
 				const location loc = move_unit(i->second,i->first,possible_moves);
 				++moves_made;
+				leader = units_.find(loc);
 
 				//if we didn't make it to the destination, it means we were ambushed.
 				if(loc != i->first) {
