@@ -1624,7 +1624,24 @@ game_controller::~game_controller()
 	delete gui::empty_menu;
 	threading::lock l(sound::channel_mutex);
 	{
-		delete sound::channel_chunks;
+		int deletion_errs = 0;
+		while (sound::channel_chunks->size() > deletion_errs) {
+			try {
+				sound::channel_chunks->erase(sound::channel_chunks->end() - deletion_errs - 1);
+			} catch(...) {
+				++deletion_errs;
+			}
+		}
+		if(deletion_errs > 0)
+		{
+			std::cerr << "Unable to delete some Mix_Chunk*, count was " << deletion_errs << ".\n";
+		} else {
+			try {
+				delete sound::channel_chunks;
+			} catch(...) {
+				std::cerr << "Unable to delete empty std::vector<Mix_Chunk*> sound::channel_chunks.\n";
+			}
+		}
 		sound::channel_chunks = NULL;
 	}
 }

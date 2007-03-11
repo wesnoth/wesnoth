@@ -242,7 +242,7 @@ void channel_finished_hook(int channel)
 {
 	threading::lock l(channel_mutex);
 	if(channel_chunks) {
-		(*channel_chunks)[channel] = 0;
+		(*channel_chunks)[channel] = NULL;
 	}
 
 	if(channel < source_channels) {
@@ -656,7 +656,7 @@ void play_sound_internal(const std::string& files, int channel, bool sound_on)
 		threading::lock l(channel_mutex);
 		if(res < 0) {
 			if(channel_chunks) {
-				(*channel_chunks)[res] = 0;
+				(*channel_chunks)[res] = NULL;
 			}
 			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		}
