@@ -244,8 +244,10 @@ int dialog::show(int xloc, int yloc)
 
 int dialog::show(const dimension_measurements &dim)
 {
-	if(disp_.update_locked())
+	if(disp_.update_locked()) {
+		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'\n";
 		return CLOSE_DIALOG;
+	}
 
 	LOG_DP << "showing dialog '" << title_ << "' '" << message_->get_text() << "'\n";
 
