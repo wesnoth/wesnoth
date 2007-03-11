@@ -32,6 +32,18 @@
 #define LOG_AUDIO LOG_STREAM(info, audio)
 #define ERR_AUDIO LOG_STREAM(err, audio)
 
+namespace sound {
+// Channel-chunk mapping lets us know, if we can safely free a given chunk
+std::vector<Mix_Chunk*> *channel_chunks;
+
+// Channel-id mapping for use with sound sources (to check if given source 
+// is playing on a channel for fading/panning)
+std::vector<int> channel_ids;
+
+// Mutex syncing access to channel_chunks and channel_ids vectors
+threading::mutex channel_mutex;
+}
+
 namespace {
 
 bool mix_ok = false;
@@ -63,17 +75,6 @@ unsigned max_cached_chunks = 256;
 
 std::map<std::string,Mix_Chunk*> sound_cache;
 std::map<std::string,Mix_Music*> music_cache;
-
-// Channel-chunk mapping lets us know, if we can safely free a given chunk
-std::vector<Mix_Chunk*> channel_chunks;
-
-// Channel-id mapping for use with sound sources (to check if given source 
-// is playing on a channel for fading/panning)
-std::vector<int> channel_ids;
-
-// Mutex syncing access to channel_chunks and channel_ids vectors
-threading::mutex channel_mutex;
-
 
 struct music_track
 {
@@ -231,20 +232,24 @@ std::string pick_one(const std::string &files)
 	return names[choice];
 }
 
-// Removes channel-chunk and channel-id mapping
-void channel_finished_hook(int channel)
-{
-	threading::lock l(channel_mutex);
-	channel_chunks[channel] = 0;
-
-	if(channel < source_channels)
-		channel_ids[channel] = -1;
-}
-
 } // end of anonymous namespace
 
 
 namespace sound {
+
+// Removes channel-chunk and channel-id mapping
+void channel_finished_hook(int channel)
+{
+	threading::lock l(channel_mutex);
+	if(channel_chunks) {
+		(*channel_chunks)[channel] = 0;
+	}
+
+	if(channel < source_channels) {
+		channel_ids[channel] = -1;
+	}
+}
+
 	
 manager::manager()
 {
@@ -272,7 +277,7 @@ bool init_sound() {
 		Mix_AllocateChannels(n_of_channels);
 		Mix_ReserveChannels(n_reserved_channels);
 
-		channel_chunks.resize(n_of_channels, 0);
+		channel_chunks = new std::vector<Mix_Chunk*>(n_of_channels, 0);
 		channel_ids.resize(source_channels, -1);
 
 		const size_t source_channel_last = source_channels - source_channel_start + 1;
@@ -603,8 +608,11 @@ void play_sound_internal(const std::string& files, int channel, bool sound_on)
 
 				Mix_Chunk *c = (*i).second;
 
+				if(channel_chunks == NULL)
+					return;
+
 				// if it's being played - try again
-				if(std::find(channel_chunks.begin(), channel_chunks.end(), c) != channel_chunks.end())
+				if(std::find((*channel_chunks).begin(), (*channel_chunks).end(), c) != (*channel_chunks).end())
 					continue;
 
 				Mix_FreeChunk(c);
@@ -647,11 +655,14 @@ void play_sound_internal(const std::string& files, int channel, bool sound_on)
 
 		threading::lock l(channel_mutex);
 		if(res < 0) {
-			channel_chunks[res] = 0;
+			if(channel_chunks) {
+				(*channel_chunks)[res] = 0;
+			}
 			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		}
-		else
-			channel_chunks[res] = cache;
+		else if(channel_chunks) {
+			(*channel_chunks)[res] = cache;
+		}
 	}
 }
 

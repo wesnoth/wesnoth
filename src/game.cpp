@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "SDL.h"
+#include "SDL_mixer.h"
 
 #include "about.hpp"
 #include "config.hpp"
@@ -1614,9 +1615,18 @@ void game_controller::play_replay()
 	}
 }
 
+namespace sound {
+extern std::vector<Mix_Chunk*> *channel_chunks;
+extern threading::mutex channel_mutex;
+}
 game_controller::~game_controller()
 {
 	delete gui::empty_menu;
+	threading::lock l(sound::channel_mutex);
+	{
+		delete sound::channel_chunks;
+		sound::channel_chunks = NULL;
+	}
 }
 
 int play_game(int argc, char** argv)
