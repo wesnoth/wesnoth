@@ -1205,7 +1205,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 			if(units_.count(i->first) == 0) {
 				const location loc = move_unit(i->second,i->first,possible_moves);
 				++moves_made;
-				leader = units_.find(loc);
+				leader = find_leader(units_, team_num_);
 
 				//if we didn't make it to the destination, it means we were ambushed.
 				if(loc != i->first) {
