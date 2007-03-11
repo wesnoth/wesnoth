@@ -11,7 +11,6 @@
 #  define LOCALEDIR "translations"
 # endif
 #endif
-
 /**
  * WML errors can be shown in 2 ways, as dialog or as chat message
  * if WML_ERROR_DIALOG == 1 it's shown as dialog else as chat message
@@ -19,5 +18,4 @@
  * releases the chat messages
  */
 #define WML_ERROR_DIALOG 1
-
 #endif
