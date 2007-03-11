@@ -270,14 +270,20 @@ std::string write_list(const t_list& list)
 
 t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_positions)
 {
+	t_map result;
+
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
+	// the test here is too avoid deprecated warning
+	if(str.empty()) {
+		return result;
+	}
 
 	// process the data, polls for the format. NOTE we test for a comma
 	// so an empty map or a map with 1 letter is doomed to be the old
 	// format. Shouldn't hurt
 	if(str.find(',') == std::string::npos) {
 		//old format
-		ERR_G << "Using the single letter map format is deprecated\n";
+		lg::wml_error << "Using the single letter map format is deprecated, support will be removed in version 1.3.3\n";
 		map_format_ = 1;
 		return read_game_map_old_(str, starting_positions);
 	}
@@ -289,7 +295,6 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	
 	size_t offset = 0;
 	size_t x = 0, y = 0, width = 0;
-	t_map result;
 
 	// skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
@@ -976,7 +981,7 @@ t_letter string_to_number_(std::string str, int& start_position)
 
 #ifndef TERRAIN_TRANSLATION_COMPATIBLE 
 	if(result == OBSOLETE_KEEP) {
-		ERR_G << "Using _K for a keep is deprecated, support will be removed shortly\n";
+		lg::wml_error << "Using _K for a keep is deprecated, support will be removed in version 1.3.5\n";
 		result = HUMAN_KEEP;
 	}
 #endif

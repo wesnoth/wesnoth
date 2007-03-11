@@ -532,7 +532,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 */	
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	if(terrain_format == 0 || terrain_format == -1 && !cfg["terrain"].empty()) {
-		std::cerr << "Warning deprecated terrain format in filter_location \n";
+		lg::wml_error << "Warning deprecated terrain format in filter_location, support will be removed in version 1.3.3\n";
 		const std::string& terrain = cfg["terrain"];
 		// Any of these may be a CSV
 		std::string terrain_letter;

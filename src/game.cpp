@@ -269,7 +269,7 @@ display& game_controller::disp()
 
 		static unit_map dummy_umap;
 		static config dummy_cfg;
-		static gamemap dummy_map(dummy_cfg, "1");
+		static gamemap dummy_map(dummy_cfg, "");
 		static gamestatus dummy_status(dummy_cfg, 0);
 		static std::vector<team> dummy_teams;
 		disp_.assign(new display(dummy_umap, video_, dummy_map, dummy_status,
