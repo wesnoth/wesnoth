@@ -32,7 +32,7 @@ terrain_type::terrain_type() : symbol_image_("void"),
 			       def_type_(1, t_translation::VOID_TERRAIN),
 			       union_type_(1, t_translation::VOID_TERRAIN),
                    height_adjust_(0), submerge_(0.0), light_modification_(0),
-                   heals_(false), village_(false), castle_(false), keep_(false) 
+                   heals_(0), village_(false), castle_(false), keep_(false) 
 {}
 
 terrain_type::terrain_type(const config& cfg)
@@ -98,7 +98,7 @@ terrain_type::terrain_type(const config& cfg)
 	light_modification_ = atoi(cfg["light"].c_str());
 
 	if (cfg["heals"] == "true") {
-		LOG_STREAM(err, config) << "terrain " << id() << " uses heals=true which is deprecated (use number)\n";
+		lg::wml_error << "terrain " << id() << " uses heals=true which is deprecated (use number), support will be removed in version 1.3.4\n";
 		heals_ = 8;
 	} else {
 		heals_ = lexical_cast_default<int>(cfg["heals"], 0);
