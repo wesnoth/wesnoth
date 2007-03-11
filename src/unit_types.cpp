@@ -185,7 +185,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	// v1.2 backward compatibility (should be removed in a few v1.3.x releases
 	const std::string& set_special = cfg["set_special"];
 	if(set_special.empty() == false) {
-		LOG_STREAM(err, config) << "[effect] uses set_special=" << set_special <<", which is now deprecated. Use [set_specials] instead.\n";
+		lg::wml_error << "[effect] uses set_special=" << set_special <<", which is now deprecated. Use [set_specials] instead. Support will be removed in version 1.3.4\n";
 		cfg_.clear_children("specials");
 		config new_specials;
 		if(set_special == "berserk") {
