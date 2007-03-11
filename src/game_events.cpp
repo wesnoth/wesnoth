@@ -96,10 +96,16 @@ message_dialog::~message_dialog()
 {
 }
 
-// std::getline might be broken in Visual Studio so show a warning
 #ifdef _MSC_VER
-#warning the std::getline implementation in your compiler might be broken see http://support.microsoft.com/default.aspx?scid=kb;EN-US;q240015
+// std::getline might be broken in Visual Studio so show a warning
+ #if _MSC_VER < 1300
+  #ifndef GETLINE_PATCHED
+   #pragma message("warning: the std::getline implementation in your compiler might be broken.")
+   #pragma message(" http://support.microsoft.com/default.aspx?scid=kb;EN-US;q240015")
+  #endif
+ #endif
 #endif
+
 /**
  * shows the errors encountered in WML thusfar, to avoid a lot of the same messages
  * to be shown, identical messages are shown once with the between braces the number
