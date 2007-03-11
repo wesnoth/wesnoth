@@ -34,7 +34,7 @@
 
 namespace sound {
 // Channel-chunk mapping lets us know, if we can safely free a given chunk
-std::vector<Mix_Chunk*> *channel_chunks;
+std::vector<Mix_Chunk*> *channel_chunks = NULL;
 
 // Channel-id mapping for use with sound sources (to check if given source 
 // is playing on a channel for fading/panning)
