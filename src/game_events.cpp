@@ -154,7 +154,7 @@ void show_wml_errors()
 			screen->add_chat_message(caption, 0, msg.str(), display::MESSAGE_PUBLIC, false);
 		}
 			
-		std::cerr << caption << ": " << msg << '\n';
+		std::cerr << caption << ": " << msg.str() << '\n';
 	}
 }
 		
