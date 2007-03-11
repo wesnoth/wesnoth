@@ -134,7 +134,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 
 	/* warn on deprecated WML */
 	if(cfg.child("sound")) {
-		LOG_STREAM(err, config) << "an animation uses the deprecated [sound] tag, please include sound in the [frame] tag\n";
+		lg::wml_error << "an animation uses the deprecated [sound] tag, please include sound in the [frame] tag, support will be removed in version 1.3.4\n";
 
 	}
 }
