@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-07 13:30+0100\n"
+"POT-Creation-Date: 2007-03-12 15:45+0100\n"
 "PO-Revision-Date: 2007-03-03 18:28+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -5347,7 +5347,7 @@ msgid "End Turn"
 msgstr "Ukonči kolo"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:296 src/unit.cpp:2474
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:296 src/unit.cpp:2476
 msgid "HP"
 msgstr "Životů"
 
@@ -5882,7 +5882,7 @@ msgstr "fiktivní"
 
 #: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:99
 #: data/units/Drake_Gladiator.cfg:151 data/units/Drake_Glider.cfg:77
-#: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
+#: data/units/Drake_Hurricane.cfg:93 data/units/Drake_Sky.cfg:92
 #: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
 #: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
 #: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
@@ -6127,8 +6127,8 @@ msgstr "čepel"
 #: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
 #: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
 #: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
-#: data/units/Drake_Hurricane.cfg:149 data/units/Drake_Inferno.cfg:117
-#: data/units/Drake_Sky.cfg:176 data/units/Drake_Warrior.cfg:118
+#: data/units/Drake_Hurricane.cfg:150 data/units/Drake_Inferno.cfg:117
+#: data/units/Drake_Sky.cfg:177 data/units/Drake_Warrior.cfg:118
 msgid "fire breath"
 msgstr "ohnivý dech"
 
@@ -6136,8 +6136,8 @@ msgstr "ohnivý dech"
 #: data/units/Drake_Burner.cfg:111 data/units/Drake_Fighter.cfg:113
 #: data/units/Drake_Fire.cfg:118 data/units/Drake_Flameheart.cfg:156
 #: data/units/Drake_Flare.cfg:137 data/units/Drake_Glider.cfg:131
-#: data/units/Drake_Hurricane.cfg:151 data/units/Drake_Inferno.cfg:119
-#: data/units/Drake_Sky.cfg:178 data/units/Drake_Warrior.cfg:120
+#: data/units/Drake_Hurricane.cfg:152 data/units/Drake_Inferno.cfg:119
+#: data/units/Drake_Sky.cfg:179 data/units/Drake_Warrior.cfg:120
 #: data/units/Dwarvish_Runemaster.cfg:63 data/units/Goblin_Pillager.cfg:36
 #: data/units/Human_Mage.cfg:105 data/units/Human_Mage_Arch.cfg:77
 #: data/units/Human_Mage_Great.cfg:78 data/units/Human_Mage_Red.cfg:99
@@ -6393,8 +6393,8 @@ msgstr ""
 "\n"
 "Zvláštní rysy:"
 
-#: data/units/Drake_Glider.cfg:76 data/units/Drake_Hurricane.cfg:91
-#: data/units/Drake_Sky.cfg:90
+#: data/units/Drake_Glider.cfg:76 data/units/Drake_Hurricane.cfg:92
+#: data/units/Drake_Sky.cfg:91
 msgid "slam"
 msgstr "úder"
 
@@ -10550,55 +10550,55 @@ msgstr "Musíš mít hrdinu v tvrzi, abys mohl někoho naverbovat nebo přivolat
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nejsou žádné volné hrady, ve kterých by se daly verbovat jednotky."
 
-#: src/actions.cpp:969 src/actions.cpp:1170
+#: src/actions.cpp:980 src/actions.cpp:1181
 msgid "poisoned"
 msgstr "otrávený"
 
-#: src/actions.cpp:977 src/actions.cpp:1178
+#: src/actions.cpp:988 src/actions.cpp:1189
 msgid "slowed"
 msgstr "zpomalený"
 
-#: src/actions.cpp:988 src/actions.cpp:1190
+#: src/actions.cpp:999 src/actions.cpp:1201
 msgid "stone"
 msgstr "zkamenění"
 
-#: src/actions.cpp:1998
+#: src/actions.cpp:2009
 msgid "Ambushed!"
 msgstr "Přepadení!"
 
-#: src/actions.cpp:2038
+#: src/actions.cpp:2049
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Spatřena spřátelená jednotka"
 msgstr[1] "Spatřeny $friends spřátelené jednotky"
 msgstr[2] "Spatřeno $friends spřátelených jednotek"
 
-#: src/actions.cpp:2041
+#: src/actions.cpp:2052
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Nepřátelská jednotka na dohled!"
 msgstr[1] "$enemies nepřátelské jednotky na dohled!"
 msgstr[2] "$enemies nepřátelských jednotek na dohled!"
 
-#: src/actions.cpp:2046
+#: src/actions.cpp:2057
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 spřátelená"
 msgstr[1] "$friends spřátelené"
 msgstr[2] "$friends spřátelených"
 
-#: src/actions.cpp:2047
+#: src/actions.cpp:2058
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 nepřátelská"
 msgstr[1] "$enemies nepřátelské"
 msgstr[2] "$enemies nepřátelských"
 
-#: src/actions.cpp:2048
+#: src/actions.cpp:2059
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Jednotky na dohled! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2057
+#: src/actions.cpp:2068
 msgid "(press $hotkey to continue)"
 msgstr "(stiskni $hotkey k pokračování)"
 
@@ -10646,11 +10646,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Neplatné)"
 
-#: src/dialogs.cpp:446 src/game.cpp:796
+#: src/dialogs.cpp:446 src/game.cpp:800
 msgid "Campaign"
 msgstr "Tažení"
 
-#: src/dialogs.cpp:448 src/game.cpp:1238
+#: src/dialogs.cpp:448 src/game.cpp:1242
 msgid "Multiplayer"
 msgstr "Hra více hráčů"
 
@@ -10714,7 +10714,7 @@ msgstr "Smaž pozici"
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:550 src/game.cpp:933 src/menu_events.cpp:295
+#: src/dialogs.cpp:550 src/game.cpp:937 src/menu_events.cpp:295
 #: src/menu_events.cpp:832 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "Jméno"
@@ -10756,287 +10756,287 @@ msgstr "kroků: "
 msgid "Screenshot"
 msgstr "sejmutý obrázek"
 
-#: src/game.cpp:418 src/game.cpp:1325
+#: src/game.cpp:419 src/game.cpp:1329
 msgid "The Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
-#: src/game.cpp:666
+#: src/game.cpp:667
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Upozornění: Soubor, který ses snažil načíst, je poškozený. Pokouším se "
 "pokračovat.\n"
 
-#: src/game.cpp:688 src/multiplayer_connect.cpp:1256
+#: src/game.cpp:692 src/multiplayer_connect.cpp:1256
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Tato uložená pozice je z jiné verze hry. Chceš se ji opravdu pokusit nahrát?"
 
-#: src/game.cpp:696 src/game.cpp:699 src/multiplayer_connect.cpp:1241
+#: src/game.cpp:700 src/game.cpp:703 src/multiplayer_connect.cpp:1241
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Soubor, který ses snažil načíst, je poškozený: '"
 
-#: src/game.cpp:702
+#: src/game.cpp:706
 msgid "File I/O Error while reading the game"
 msgstr "Vstupně výstupní chyba souboru při načítání hry"
 
-#: src/game.cpp:797
+#: src/game.cpp:801
 msgid "Choose the campaign you want to play:"
 msgstr "Vyber si, které tažení chceš hrát:"
 
-#: src/game.cpp:820
+#: src/game.cpp:824
 msgid "Difficulty"
 msgstr "Obtížnost"
 
-#: src/game.cpp:821
+#: src/game.cpp:825
 msgid "Select difficulty level:"
 msgstr "Vyber si obtížnost:"
 
-#: src/game.cpp:849
+#: src/game.cpp:853
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:852
+#: src/game.cpp:856
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:855
+#: src/game.cpp:859
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:882
+#: src/game.cpp:886
 msgid "Connect to Server"
 msgstr "Připoj se na server"
 
-#: src/game.cpp:883
+#: src/game.cpp:887
 msgid "You will now connect to a server to download add-ons."
 msgstr "Nyní se připojíš na server s rozšířeními, abys nějaké stáhl."
 
-#: src/game.cpp:884
+#: src/game.cpp:888
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:899 src/multiplayer.cpp:127 src/multiplayer.cpp:164
+#: src/game.cpp:903 src/multiplayer.cpp:127 src/multiplayer.cpp:164
 msgid "Connecting to Server..."
 msgstr "Připojuji se na server...."
 
-#: src/game.cpp:902
+#: src/game.cpp:906
 msgid "Could not connect to host."
 msgstr "Spojení s hostitelem se nezdařilo."
 
-#: src/game.cpp:911
+#: src/game.cpp:915
 msgid "Asking for list of add-ons"
 msgstr "Získávám seznam rozšíření"
 
-#: src/game.cpp:924
+#: src/game.cpp:928
 msgid "Error communicating with the server."
 msgstr "Chyba při komunikaci se serverem."
 
-#: src/game.cpp:933 src/titlescreen.cpp:237
+#: src/game.cpp:937 src/titlescreen.cpp:237
 msgid "Version"
 msgstr "Verze"
 
-#: src/game.cpp:934
+#: src/game.cpp:938
 msgid "Author"
 msgstr "Autor"
 
-#: src/game.cpp:934
+#: src/game.cpp:938
 msgid "Downloads"
 msgstr "Věci ke stažení"
 
-#: src/game.cpp:934
+#: src/game.cpp:938
 msgid "Size"
 msgstr "Velikost"
 
-#: src/game.cpp:992
+#: src/game.cpp:996
 msgid "Publish add-on: "
 msgstr "Zveřejni rozšíření: "
 
-#: src/game.cpp:996
+#: src/game.cpp:1000
 msgid "Delete add-on: "
 msgstr "Vymaž rozšíření: "
 
-#: src/game.cpp:1000
+#: src/game.cpp:1004
 msgid "There are no add-ons available for download from this server."
 msgstr "Na tomto serveru nejsou k dispozici žádná rozšíření ke stažení."
 
-#: src/game.cpp:1007
+#: src/game.cpp:1011
 msgid "Choose the add-on to download."
 msgstr "Vyber si rozšíření ke stažení."
 
-#: src/game.cpp:1007
+#: src/game.cpp:1011
 msgid "Get Add-ons"
 msgstr "Získat rozšíření"
 
-#: src/game.cpp:1048
+#: src/game.cpp:1052
 msgid "Dependencies"
 msgstr "Závislosti"
 
-#: src/game.cpp:1049
+#: src/game.cpp:1053
 msgid "This add-on requires the following additional dependencies:"
 msgstr "Toto rozšíření je závislé na následujících rozšířeních:"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1055
 msgid "Do you still want to download it?"
 msgstr "Chceš jej i přesto stáhnout?"
 
-#: src/game.cpp:1060
+#: src/game.cpp:1064
 msgid "Downloading add-on..."
 msgstr "Stahuji rozšíření..."
 
 # před změnou: "znovunačíst"
-#: src/game.cpp:1084
+#: src/game.cpp:1088
 msgid "Cannot rescan the filesystem"
 msgstr "Nemohu přezkoumat souborový systém"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1113
 msgid "Add-on Installed"
 msgstr "Rozšíření nainstalováno"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1113
 msgid "The add-on has been installed."
 msgstr "Rozšíření bylo nainstalováno."
 
-#: src/game.cpp:1112
+#: src/game.cpp:1116
 msgid "Network communication error."
 msgstr "Chyba při síťové komunikaci."
 
-#: src/game.cpp:1114
+#: src/game.cpp:1118
 msgid "Remote host disconnected."
 msgstr "Vzdálený hostitel se odpojil."
 
-#: src/game.cpp:1116
+#: src/game.cpp:1120
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Vytvoření souborů potřebných k instalaci tažení neproběhlo v pořádku."
 
-#: src/game.cpp:1128 src/game.cpp:1167 src/game.cpp:1192
+#: src/game.cpp:1132 src/game.cpp:1171 src/game.cpp:1196
 #: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:65 src/playcampaign.cpp:375
 msgid "Connection timed out"
 msgstr "Časový limit pro připojení vypršel"
 
-#: src/game.cpp:1131 src/game.cpp:1169 src/game.cpp:1194
+#: src/game.cpp:1135 src/game.cpp:1173 src/game.cpp:1198
 msgid "The server responded with an error: \""
 msgstr "Server odpověděl chybou: \""
 
-#: src/game.cpp:1135
+#: src/game.cpp:1139
 msgid "Terms"
 msgstr "Podmínky"
 
-#: src/game.cpp:1165
+#: src/game.cpp:1169
 msgid "Sending add-on"
 msgstr "Odesílání rozšíření"
 
-#: src/game.cpp:1172 src/game.cpp:1197 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1176 src/game.cpp:1201 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr "Odpověď"
 
-#: src/game.cpp:1219
+#: src/game.cpp:1223
 msgid "Join Official Server"
 msgstr "Připoj se na oficiální server"
 
-#: src/game.cpp:1220
+#: src/game.cpp:1224
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Připoj se na oficiální herní server Wesnothu"
 
-#: src/game.cpp:1222 src/multiplayer_lobby.cpp:541
+#: src/game.cpp:1226 src/multiplayer_lobby.cpp:541
 msgid "Join Game"
 msgstr "Přidej se ke hře"
 
-#: src/game.cpp:1223
+#: src/game.cpp:1227
 msgid "Join a server or hosted game"
 msgstr "Připoj se k serveru nebo hostované hře"
 
-#: src/game.cpp:1225
+#: src/game.cpp:1229
 msgid "Host Networked Game"
 msgstr "Hostuj síťovou hru"
 
-#: src/game.cpp:1226
+#: src/game.cpp:1230
 msgid "Host a game without using a server"
 msgstr "Hostuj hru bez použití serveru"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1232
 msgid "Hotseat Game"
 msgstr "Horké křeslo"
 
-#: src/game.cpp:1229
+#: src/game.cpp:1233
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Hra více hráčů na jednom PC"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1235
 msgid "Human vs AI"
 msgstr "Člověk proti PC"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1236
 msgid "Play a game against AI opponents"
 msgstr "Hraj proti UI protivníkům"
 
-#: src/game.cpp:1240 src/multiplayer.cpp:191
+#: src/game.cpp:1244 src/multiplayer.cpp:191
 msgid "Login: "
 msgstr "Přihlášení: "
 
-#: src/game.cpp:1279 src/playcampaign.cpp:90 src/playcampaign.cpp:347
+#: src/game.cpp:1283 src/playcampaign.cpp:90 src/playcampaign.cpp:347
 msgid "The game could not be loaded: "
 msgstr "Hru se nepodařilo nahrát: "
 
-#: src/game.cpp:1281 src/playcampaign.cpp:92 src/playcampaign.cpp:350
+#: src/game.cpp:1285 src/playcampaign.cpp:92 src/playcampaign.cpp:350
 msgid "Error while playing the game: "
 msgstr "Během hraní hry se vyskytla chyba: "
 
-#: src/game.cpp:1293 src/playcampaign.cpp:94 src/playcampaign.cpp:353
+#: src/game.cpp:1297 src/playcampaign.cpp:94 src/playcampaign.cpp:353
 msgid "The game map could not be loaded: "
 msgstr "Nepodařilo se nahrát herní mapu: "
 
-#: src/game.cpp:1317
+#: src/game.cpp:1321
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/game.cpp:1318
+#: src/game.cpp:1322
 msgid "Choose your preferred language:"
 msgstr "Vyber si preferovaný jazyk:"
 
-#: src/game.cpp:1466
+#: src/game.cpp:1470
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Následující přídavná tažení obsahovala chybu a nemohly být nahrány:"
 
-#: src/game.cpp:1471
+#: src/game.cpp:1475
 msgid "ERROR DETAILS:"
 msgstr "POPIS CHYBY:"
 
-#: src/game.cpp:1485
+#: src/game.cpp:1489
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Upozornění: Při načítání konfiguračních souborů se vyskytly chyby."
 
-#: src/game.cpp:1535
+#: src/game.cpp:1539
 msgid "Error loading game configuration files: '"
 msgstr "Chyba při nahrávání konfiguračních souborů: '"
 
-#: src/game.cpp:1536
+#: src/game.cpp:1540
 msgid "' (The game will now exit)"
 msgstr "' (Hra se ukončí)"
 
-#: src/game.cpp:1679
+#: src/game.cpp:1709
 msgid "Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
-#: src/game.cpp:1799
+#: src/game.cpp:1829
 msgid "Loading game configuration."
 msgstr "Nahrávání konfigurace."
 
-#: src/game.cpp:1805
+#: src/game.cpp:1835
 msgid "Re-initialize fonts for the current language."
 msgstr "Probíhá přenastavení písma pro současný jazyk."
 
-#: src/game.cpp:1821
+#: src/game.cpp:1851
 msgid "Loading title screen."
 msgstr "Načítám hlavní obrazovku."
 
-#: src/game_events.cpp:775
+#: src/game_events.cpp:845
 msgid "Victory:"
 msgstr "Vítězství:"
 
-#: src/game_events.cpp:778
+#: src/game_events.cpp:848
 msgid "Defeat:"
 msgstr "Prohra:"
 
@@ -11250,7 +11250,7 @@ msgstr "Statistiky"
 msgid "unit list^Traits"
 msgstr "Vlastnosti"
 
-#: src/menu_events.cpp:299 src/unit.cpp:2505
+#: src/menu_events.cpp:299 src/unit.cpp:2507
 msgid "Moves"
 msgstr "Kroků"
 
@@ -11662,12 +11662,12 @@ msgid "Normal"
 msgstr "Normální"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2609
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2611
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2616
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2618
 msgid ")"
 msgstr ")"
 
@@ -12451,35 +12451,35 @@ msgstr "Nápověda"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomozte Wesnothu tím, že nám odešlete informace"
 
-#: src/unit.cpp:2440 src/unit.cpp:2614
+#: src/unit.cpp:2442 src/unit.cpp:2616
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2522
+#: src/unit.cpp:2524
 msgid "XP to advance"
 msgstr "zkušenostních bodů k postupu"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2607
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:278
+#: src/unit_types.cpp:270
 msgid "damage"
 msgstr "poškození"
 
-#: src/unit_types.cpp:286
+#: src/unit_types.cpp:278
 msgid "strikes"
 msgstr "úderů"
 
-#: src/unit_types.cpp:981
+#: src/unit_types.cpp:973
 msgid "chaotic"
 msgstr "chaotická"
 
-#: src/unit_types.cpp:981
+#: src/unit_types.cpp:973
 msgid "lawful"
 msgstr "zákonná"
 
-#: src/unit_types.cpp:981
+#: src/unit_types.cpp:973
 msgid "neutral"
 msgstr "neutrální"
 

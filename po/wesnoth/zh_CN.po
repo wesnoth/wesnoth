@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-07 13:30+0100\n"
+"POT-Creation-Date: 2007-03-12 15:45+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -4552,7 +4552,7 @@ msgid "End Turn"
 msgstr "结束回合"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:156 src/menu_events.cpp:296 src/unit.cpp:2474
+#: data/themes/experimental.cfg:156 src/menu_events.cpp:296 src/unit.cpp:2476
 msgid "HP"
 msgstr "HP"
 
@@ -5057,7 +5057,7 @@ msgstr "傀儡"
 
 #: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:99
 #: data/units/Drake_Gladiator.cfg:151 data/units/Drake_Glider.cfg:77
-#: data/units/Drake_Hurricane.cfg:92 data/units/Drake_Sky.cfg:91
+#: data/units/Drake_Hurricane.cfg:93 data/units/Drake_Sky.cfg:92
 #: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
 #: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
 #: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
@@ -5296,8 +5296,8 @@ msgstr "剑"
 #: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
 #: data/units/Drake_Fire.cfg:116 data/units/Drake_Flameheart.cfg:154
 #: data/units/Drake_Flare.cfg:135 data/units/Drake_Glider.cfg:129
-#: data/units/Drake_Hurricane.cfg:149 data/units/Drake_Inferno.cfg:117
-#: data/units/Drake_Sky.cfg:176 data/units/Drake_Warrior.cfg:118
+#: data/units/Drake_Hurricane.cfg:150 data/units/Drake_Inferno.cfg:117
+#: data/units/Drake_Sky.cfg:177 data/units/Drake_Warrior.cfg:118
 msgid "fire breath"
 msgstr "火息术"
 
@@ -5305,8 +5305,8 @@ msgstr "火息术"
 #: data/units/Drake_Burner.cfg:111 data/units/Drake_Fighter.cfg:113
 #: data/units/Drake_Fire.cfg:118 data/units/Drake_Flameheart.cfg:156
 #: data/units/Drake_Flare.cfg:137 data/units/Drake_Glider.cfg:131
-#: data/units/Drake_Hurricane.cfg:151 data/units/Drake_Inferno.cfg:119
-#: data/units/Drake_Sky.cfg:178 data/units/Drake_Warrior.cfg:120
+#: data/units/Drake_Hurricane.cfg:152 data/units/Drake_Inferno.cfg:119
+#: data/units/Drake_Sky.cfg:179 data/units/Drake_Warrior.cfg:120
 #: data/units/Dwarvish_Runemaster.cfg:63 data/units/Goblin_Pillager.cfg:36
 #: data/units/Human_Mage.cfg:105 data/units/Human_Mage_Arch.cfg:77
 #: data/units/Human_Mage_Great.cfg:78 data/units/Human_Mage_Red.cfg:99
@@ -5547,8 +5547,8 @@ msgstr ""
 "成为战士，且有内在遗传下的运用火的能力。他们也能有效的利用速度给予敌人致命般"
 "的猛击。最好的滑翔龙战士能加入䒈高级飞龙精英部队。"
 
-#: data/units/Drake_Glider.cfg:76 data/units/Drake_Hurricane.cfg:91
-#: data/units/Drake_Sky.cfg:90
+#: data/units/Drake_Glider.cfg:76 data/units/Drake_Hurricane.cfg:92
+#: data/units/Drake_Sky.cfg:91
 msgid "slam"
 msgstr "猛击"
 
@@ -9318,54 +9318,54 @@ msgstr "你需要让领袖在要塞来征兵或召回单位。"
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有足够的地方用来征募更多单位。"
 
-#: src/actions.cpp:969 src/actions.cpp:1170
+#: src/actions.cpp:980 src/actions.cpp:1181
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:977 src/actions.cpp:1178
+#: src/actions.cpp:988 src/actions.cpp:1189
 msgid "slowed"
 msgstr "减速"
 
-#: src/actions.cpp:988 src/actions.cpp:1190
+#: src/actions.cpp:999 src/actions.cpp:1201
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:1998
+#: src/actions.cpp:2009
 msgid "Ambushed!"
 msgstr "伏击！"
 
-#: src/actions.cpp:2038
+#: src/actions.cpp:2049
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "友好单位可见"
 msgstr[1] "友好单位可见"
 
-#: src/actions.cpp:2041
+#: src/actions.cpp:2052
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敌人单位可见！"
 msgstr[1] "敌人单位可见！"
 
-#: src/actions.cpp:2046
+#: src/actions.cpp:2057
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2047
+#: src/actions.cpp:2058
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2048
+#: src/actions.cpp:2059
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "单位可见！ ($friends 友好 $enemies 敌人)"
 
-#: src/actions.cpp:2057
+#: src/actions.cpp:2068
 msgid "(press $hotkey to continue)"
 msgstr "(按 $hotkey 继续)"
 
@@ -9414,11 +9414,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(无效的)"
 
-#: src/dialogs.cpp:446 src/game.cpp:796
+#: src/dialogs.cpp:446 src/game.cpp:800
 msgid "Campaign"
 msgstr "战役"
 
-#: src/dialogs.cpp:448 src/game.cpp:1238
+#: src/dialogs.cpp:448 src/game.cpp:1242
 msgid "Multiplayer"
 msgstr "多人游戏"
 
@@ -9482,7 +9482,7 @@ msgstr "删除存档"
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:550 src/game.cpp:933 src/menu_events.cpp:295
+#: src/dialogs.cpp:550 src/game.cpp:937 src/menu_events.cpp:295
 #: src/menu_events.cpp:832 src/multiplayer_lobby.cpp:34
 msgid "Name"
 msgstr "名字"
@@ -9524,295 +9524,295 @@ msgstr "移动： "
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/game.cpp:418 src/game.cpp:1325
+#: src/game.cpp:419 src/game.cpp:1329
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:666
+#: src/game.cpp:667
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告： 你试图载入的文件是错误的。仍然载入。\n"
 
-#: src/game.cpp:688 src/multiplayer_connect.cpp:1256
+#: src/game.cpp:692 src/multiplayer_connect.cpp:1256
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "这个存档来至于不同版本的游戏。你仍然想载入吗？"
 
-#: src/game.cpp:696 src/game.cpp:699 src/multiplayer_connect.cpp:1241
+#: src/game.cpp:700 src/game.cpp:703 src/multiplayer_connect.cpp:1241
 msgid "The file you have tried to load is corrupt: '"
 msgstr "你试图载入的文件是错误的： '"
 
-#: src/game.cpp:702
+#: src/game.cpp:706
 msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时文件I/O错误。"
 
-#: src/game.cpp:797
+#: src/game.cpp:801
 msgid "Choose the campaign you want to play:"
 msgstr "选择你想玩得战役："
 
-#: src/game.cpp:820
+#: src/game.cpp:824
 msgid "Difficulty"
 msgstr "难易度"
 
-#: src/game.cpp:821
+#: src/game.cpp:825
 msgid "Select difficulty level:"
 msgstr "选择难易度级别："
 
-#: src/game.cpp:849
+#: src/game.cpp:853
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:852
+#: src/game.cpp:856
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:855
+#: src/game.cpp:859
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:882
+#: src/game.cpp:886
 msgid "Connect to Server"
 msgstr "连接服务器"
 
-#: src/game.cpp:883
+#: src/game.cpp:887
 #, fuzzy
 msgid "You will now connect to a server to download add-ons."
 msgstr "你将连接至战役服务器去下载新的战役。"
 
-#: src/game.cpp:884
+#: src/game.cpp:888
 msgid "Server: "
 msgstr "服务器： "
 
-#: src/game.cpp:899 src/multiplayer.cpp:127 src/multiplayer.cpp:164
+#: src/game.cpp:903 src/multiplayer.cpp:127 src/multiplayer.cpp:164
 msgid "Connecting to Server..."
 msgstr "连接服务器中..."
 
-#: src/game.cpp:902
+#: src/game.cpp:906
 msgid "Could not connect to host."
 msgstr "不能连接至主机。"
 
-#: src/game.cpp:911
+#: src/game.cpp:915
 msgid "Asking for list of add-ons"
 msgstr ""
 
-#: src/game.cpp:924
+#: src/game.cpp:928
 msgid "Error communicating with the server."
 msgstr "与服务器错误通讯"
 
-#: src/game.cpp:933 src/titlescreen.cpp:237
+#: src/game.cpp:937 src/titlescreen.cpp:237
 msgid "Version"
 msgstr "版本"
 
-#: src/game.cpp:934
+#: src/game.cpp:938
 msgid "Author"
 msgstr "作者"
 
-#: src/game.cpp:934
+#: src/game.cpp:938
 msgid "Downloads"
 msgstr "下载"
 
-#: src/game.cpp:934
+#: src/game.cpp:938
 msgid "Size"
 msgstr "大小"
 
-#: src/game.cpp:992
+#: src/game.cpp:996
 #, fuzzy
 msgid "Publish add-on: "
 msgstr "发布战役： "
 
-#: src/game.cpp:996
+#: src/game.cpp:1000
 #, fuzzy
 msgid "Delete add-on: "
 msgstr "删除战役： "
 
-#: src/game.cpp:1000
+#: src/game.cpp:1004
 #, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无新的战役可供下载。"
 
-#: src/game.cpp:1007
+#: src/game.cpp:1011
 #, fuzzy
 msgid "Choose the add-on to download."
 msgstr "选择战役下载。"
 
-#: src/game.cpp:1007
+#: src/game.cpp:1011
 msgid "Get Add-ons"
 msgstr ""
 
-#: src/game.cpp:1048
+#: src/game.cpp:1052
 #, fuzzy
 msgid "Dependencies"
 msgstr "公主"
 
-#: src/game.cpp:1049
+#: src/game.cpp:1053
 msgid "This add-on requires the following additional dependencies:"
 msgstr ""
 
-#: src/game.cpp:1051
+#: src/game.cpp:1055
 #, fuzzy
 msgid "Do you still want to download it?"
 msgstr "你真的想删除这个游戏？"
 
-#: src/game.cpp:1060
+#: src/game.cpp:1064
 #, fuzzy
 msgid "Downloading add-on..."
 msgstr "下载战役中..."
 
-#: src/game.cpp:1084
+#: src/game.cpp:1088
 msgid "Cannot rescan the filesystem"
 msgstr "不能扫描文件系统"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1113
 #, fuzzy
 msgid "Add-on Installed"
 msgstr "战役已安装"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1113
 #, fuzzy
 msgid "The add-on has been installed."
 msgstr "这个战役已被安装。"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1116
 msgid "Network communication error."
 msgstr "网络通讯错误。"
 
-#: src/game.cpp:1114
+#: src/game.cpp:1118
 msgid "Remote host disconnected."
 msgstr "远程主机关闭。"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1120
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "创建安装这个战役所需文件有问题。"
 
-#: src/game.cpp:1128 src/game.cpp:1167 src/game.cpp:1192
+#: src/game.cpp:1132 src/game.cpp:1171 src/game.cpp:1196
 #: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:65 src/playcampaign.cpp:375
 msgid "Connection timed out"
 msgstr "连接超时"
 
-#: src/game.cpp:1131 src/game.cpp:1169 src/game.cpp:1194
+#: src/game.cpp:1135 src/game.cpp:1173 src/game.cpp:1198
 msgid "The server responded with an error: \""
 msgstr "服务器响应错误： \""
 
-#: src/game.cpp:1135
+#: src/game.cpp:1139
 msgid "Terms"
 msgstr "条件"
 
-#: src/game.cpp:1165
+#: src/game.cpp:1169
 #, fuzzy
 msgid "Sending add-on"
 msgstr "下载战役中..."
 
-#: src/game.cpp:1172 src/game.cpp:1197 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1176 src/game.cpp:1201 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr "回应"
 
-#: src/game.cpp:1219
+#: src/game.cpp:1223
 msgid "Join Official Server"
 msgstr "加入官方服务器"
 
-#: src/game.cpp:1220
+#: src/game.cpp:1224
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "登入官方韦诺多人服务器"
 
-#: src/game.cpp:1222 src/multiplayer_lobby.cpp:541
+#: src/game.cpp:1226 src/multiplayer_lobby.cpp:541
 msgid "Join Game"
 msgstr "加入游戏"
 
-#: src/game.cpp:1223
+#: src/game.cpp:1227
 msgid "Join a server or hosted game"
 msgstr "加入一个服务器或已建游戏"
 
-#: src/game.cpp:1225
+#: src/game.cpp:1229
 msgid "Host Networked Game"
 msgstr "主建局域网游戏"
 
-#: src/game.cpp:1226
+#: src/game.cpp:1230
 msgid "Host a game without using a server"
 msgstr "无须服务器主建游戏"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1232
 msgid "Hotseat Game"
 msgstr "热座游戏"
 
-#: src/game.cpp:1229
+#: src/game.cpp:1233
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "共享同台主机进行多人游戏"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1235
 msgid "Human vs AI"
 msgstr "人 vs AI"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1236
 msgid "Play a game against AI opponents"
 msgstr "与敌人AI作战"
 
-#: src/game.cpp:1240 src/multiplayer.cpp:191
+#: src/game.cpp:1244 src/multiplayer.cpp:191
 msgid "Login: "
 msgstr "登入： "
 
-#: src/game.cpp:1279 src/playcampaign.cpp:90 src/playcampaign.cpp:347
+#: src/game.cpp:1283 src/playcampaign.cpp:90 src/playcampaign.cpp:347
 msgid "The game could not be loaded: "
 msgstr "游戏不能被加载： "
 
-#: src/game.cpp:1281 src/playcampaign.cpp:92 src/playcampaign.cpp:350
+#: src/game.cpp:1285 src/playcampaign.cpp:92 src/playcampaign.cpp:350
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1293 src/playcampaign.cpp:94 src/playcampaign.cpp:353
+#: src/game.cpp:1297 src/playcampaign.cpp:94 src/playcampaign.cpp:353
 msgid "The game map could not be loaded: "
 msgstr "游戏地图不能加载： "
 
-#: src/game.cpp:1317
+#: src/game.cpp:1321
 msgid "Language"
 msgstr "语言"
 
-#: src/game.cpp:1318
+#: src/game.cpp:1322
 msgid "Choose your preferred language:"
 msgstr "选择你最爱的语言："
 
-#: src/game.cpp:1466
+#: src/game.cpp:1470
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "以下附加的战役有错误并不能加载："
 
-#: src/game.cpp:1471
+#: src/game.cpp:1475
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1485
+#: src/game.cpp:1489
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "警告：载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1535
+#: src/game.cpp:1539
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1536
+#: src/game.cpp:1540
 msgid "' (The game will now exit)"
 msgstr "' (现在将退出游戏)"
 
-#: src/game.cpp:1679
+#: src/game.cpp:1709
 msgid "Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:1799
+#: src/game.cpp:1829
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1805
+#: src/game.cpp:1835
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1821
+#: src/game.cpp:1851
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:775
+#: src/game_events.cpp:845
 msgid "Victory:"
 msgstr "胜利："
 
-#: src/game_events.cpp:778
+#: src/game_events.cpp:848
 msgid "Defeat:"
 msgstr "失败："
 
@@ -10025,7 +10025,7 @@ msgstr "统计"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:299 src/unit.cpp:2505
+#: src/menu_events.cpp:299 src/unit.cpp:2507
 msgid "Moves"
 msgstr "移动"
 
@@ -10436,12 +10436,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2609
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2611
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2616
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2618
 msgid ")"
 msgstr ")"
 
@@ -11235,35 +11235,35 @@ msgstr ""
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2440 src/unit.cpp:2614
+#: src/unit.cpp:2442 src/unit.cpp:2616
 msgid "; "
 msgstr "； "
 
-#: src/unit.cpp:2522
+#: src/unit.cpp:2524
 msgid "XP to advance"
 msgstr "XP去升级"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2607
 msgid ": "
 msgstr "： "
 
-#: src/unit_types.cpp:278
+#: src/unit_types.cpp:270
 msgid "damage"
 msgstr "伤害"
 
-#: src/unit_types.cpp:286
+#: src/unit_types.cpp:278
 msgid "strikes"
 msgstr "打击"
 
-#: src/unit_types.cpp:981
+#: src/unit_types.cpp:973
 msgid "chaotic"
 msgstr "混乱的"
 
-#: src/unit_types.cpp:981
+#: src/unit_types.cpp:973
 msgid "lawful"
 msgstr "善良的"
 
-#: src/unit_types.cpp:981
+#: src/unit_types.cpp:973
 msgid "neutral"
 msgstr "中立的"
 
