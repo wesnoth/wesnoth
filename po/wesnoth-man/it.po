@@ -472,6 +472,8 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
+"seleziona una fazione dell'era attuale per questa squadra. La fazione è "
+"scelta per ID. Le fazioni sono descritte nel file data/multiplayer.cfg."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:160
@@ -743,6 +745,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client or the socket."
 msgstr ""
+"Gestisce le partite multigiocatore di Battle for Wesnoth. Vedi http://www."
+"wesnoth.org/wiki/ServerAdministration per sapere quali comandi sono "
+"accettati dal server attraverso il client di wesnoth o il socket."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:44
@@ -803,6 +808,8 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: 5, max: 30)."
 msgstr ""
+"imposta il numero massimo di thread da usare per l'I/O (valore predefinito: "
+"5, massimo: 30)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:62
@@ -816,6 +823,8 @@ msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
 "there will be no limit (default: 0)."
 msgstr ""
+"imposta il numero massimo di thread da creare. Se vale 0 non c'è limite "
+"(valore predefinito: 0)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:66
@@ -885,9 +894,9 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
-#, fuzzy
 msgid "The number of allowed connections from the same IP. (default: 5)"
-msgstr "Il numero di connessioni permesse dallo stesso IP."
+msgstr ""
+"Il numero di connessioni permesse dallo stesso IP (valore predefinito: 5)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:91
@@ -912,11 +921,10 @@ msgstr "B<max_messages>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:100
-#, fuzzy
 msgid "The number of allowed messages in B<messages_time_period>. (default: 4)"
 msgstr ""
-"Il numero di messaggi permessi in un periodo di B<messages_time_period>.Il "
-"numero di messaggi permessi in un periodo di B<messages_time_period>."
+"Il numero di messaggi permessi in un periodo di B<messages_time_period> "
+"(valore predefinito: 4)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:100
@@ -926,13 +934,12 @@ msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: 10 "
 "seconds)"
 msgstr ""
 "Il periodo di tempo (in secondi) entro il quale rilevare un'inondazione di "
-"messaggi."
+"messaggi (valore predefinito: 10 secondi)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
@@ -968,14 +975,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Un elenco separato da virgole delle stringhe di versione che il server deve "
-"accettare. I caratteri jolly `*' e `?' sono ammessi."
+"accettare. I caratteri jolly `*' e `?' sono ammessi (il valore predefinito è "
+"lo stesso della versione di wesnoth corrispondente)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:115
