@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-07 13:32+0100\n"
+"POT-Creation-Date: 2007-03-12 15:44+0100\n"
 "PO-Revision-Date: 2006-12-22 20:35+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
@@ -10906,11 +10906,11 @@ msgstr "%a %d %b %Y %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Invàlid)"
 
-#: src/dialogs.cpp:397 src/game.cpp:776
+#: src/dialogs.cpp:397 src/game.cpp:779
 msgid "Campaign"
 msgstr "Campanya"
 
-#: src/dialogs.cpp:399 src/game.cpp:1188
+#: src/dialogs.cpp:399 src/game.cpp:1191
 msgid "Multiplayer"
 msgstr "Multijugador"
 
@@ -10974,7 +10974,7 @@ msgstr "Suprimeix partida"
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:501 src/game.cpp:913 src/menu_events.cpp:233
+#: src/dialogs.cpp:501 src/game.cpp:916 src/menu_events.cpp:233
 #: src/menu_events.cpp:709 src/multiplayer_lobby.cpp:33
 msgid "Name"
 msgstr "Nom"
@@ -11016,7 +11016,7 @@ msgstr "Moviments: "
 msgid "Screenshot"
 msgstr "captura"
 
-#: src/game.cpp:398 src/game.cpp:1275
+#: src/game.cpp:398 src/game.cpp:1278
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
@@ -11026,7 +11026,7 @@ msgstr ""
 "Avís: el fitxer que heu intentat carregar està corromput. S'intentarà "
 "carregar de totes maneres.\n"
 
-#: src/game.cpp:668 src/multiplayer_connect.cpp:1271
+#: src/game.cpp:671 src/multiplayer_connect.cpp:1271
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -11034,199 +11034,199 @@ msgstr ""
 "Aquesta partida és d'una versió diferent del joc. Voleu intentar carregar-la "
 "igualment?"
 
-#: src/game.cpp:676 src/game.cpp:679 src/multiplayer_connect.cpp:1256
+#: src/game.cpp:679 src/game.cpp:682 src/multiplayer_connect.cpp:1256
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El fitxer que heu intentat carregar està corromput: '"
 
-#: src/game.cpp:682
+#: src/game.cpp:685
 msgid "File I/O Error while reading the game"
 msgstr "Error d'E/S en el fitxer mentre es llegia la partida"
 
-#: src/game.cpp:777
+#: src/game.cpp:780
 msgid "Choose the campaign you want to play:"
 msgstr "Trieu la campanya que voleu jugar:"
 
-#: src/game.cpp:800
+#: src/game.cpp:803
 msgid "Difficulty"
 msgstr "Dificultat"
 
-#: src/game.cpp:801
+#: src/game.cpp:804
 msgid "Select difficulty level:"
 msgstr "Seleccioneu el nivell de dificultat:"
 
-#: src/game.cpp:829
+#: src/game.cpp:832
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:832
+#: src/game.cpp:835
 msgid "KB"
 msgstr "KiB"
 
-#: src/game.cpp:835
+#: src/game.cpp:838
 msgid "MB"
 msgstr "MiB"
 
-#: src/game.cpp:862
+#: src/game.cpp:865
 msgid "Connect to Server"
 msgstr "Connecta amb el servidor"
 
-#: src/game.cpp:863
+#: src/game.cpp:866
 msgid "You will now connect to a server to download add-ons."
 msgstr "Ara us connectareu amb el servidor per descarregar extensions."
 
-#: src/game.cpp:864
+#: src/game.cpp:867
 msgid "Server: "
 msgstr "Servidor: "
 
-#: src/game.cpp:879 src/multiplayer.cpp:126 src/multiplayer.cpp:163
+#: src/game.cpp:882 src/multiplayer.cpp:126 src/multiplayer.cpp:163
 msgid "Connecting to Server..."
 msgstr "Connectant amb el servidor..."
 
-#: src/game.cpp:882
+#: src/game.cpp:885
 msgid "Could not connect to host."
 msgstr "No ha estat possible connectar al servidor."
 
-#: src/game.cpp:891
+#: src/game.cpp:894
 msgid "Asking for list of add-ons"
 msgstr "S'està sol·licitant la llista d'extensions"
 
-#: src/game.cpp:904
+#: src/game.cpp:907
 msgid "Error communicating with the server."
 msgstr "Error de comunicació amb el servidor."
 
-#: src/game.cpp:913 src/titlescreen.cpp:237
+#: src/game.cpp:916 src/titlescreen.cpp:237
 msgid "Version"
 msgstr "Versió"
 
-#: src/game.cpp:914
+#: src/game.cpp:917
 msgid "Author"
 msgstr "Autor"
 
-#: src/game.cpp:914
+#: src/game.cpp:917
 msgid "Downloads"
 msgstr "Descàrregues "
 
-#: src/game.cpp:914
+#: src/game.cpp:917
 msgid "Size"
 msgstr "Mida"
 
-#: src/game.cpp:975
+#: src/game.cpp:978
 msgid "Publish add-on: "
 msgstr "Publica extensió: "
 
-#: src/game.cpp:979
+#: src/game.cpp:982
 msgid "Delete add-on: "
 msgstr "Esborra extensió: "
 
-#: src/game.cpp:983
+#: src/game.cpp:986
 msgid "There are no add-ons available for download from this server."
 msgstr "No hi ha extensions disponibles per a descarregar en aquest servidor."
 
-#: src/game.cpp:990
+#: src/game.cpp:993
 msgid "Choose the add-on to download."
 msgstr "Trieu l'extensió que voleu descarregar."
 
-#: src/game.cpp:990
+#: src/game.cpp:993
 msgid "Get Add-ons"
 msgstr "Obté extensions"
 
-#: src/game.cpp:1010
+#: src/game.cpp:1013
 msgid "Downloading add-on..."
 msgstr "S'està descarregant l'extensió..."
 
-#: src/game.cpp:1034
+#: src/game.cpp:1037
 msgid "Cannot rescan the filesystem"
 msgstr "No ha estat possible tornar a examinar el sistema de fitxers."
 
-#: src/game.cpp:1059
+#: src/game.cpp:1062
 msgid "Add-on Installed"
 msgstr "Extensió instal·lada"
 
-#: src/game.cpp:1059
+#: src/game.cpp:1062
 msgid "The add-on has been installed."
 msgstr "L'extensió ha estat instal·lada correctament."
 
-#: src/game.cpp:1062
+#: src/game.cpp:1065
 msgid "Network communication error."
 msgstr "Error de comunicació a la xarxa."
 
-#: src/game.cpp:1064
+#: src/game.cpp:1067
 msgid "Remote host disconnected."
 msgstr "Servidor remot desconnectat."
 
-#: src/game.cpp:1066
+#: src/game.cpp:1069
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "S'ha produït un error creant els fitxers necessaris per instal·lar aquesta "
 "campanya."
 
-#: src/game.cpp:1078 src/game.cpp:1117 src/game.cpp:1142
+#: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
 #: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:376
 msgid "Connection timed out"
 msgstr "Connexió perduda."
 
-#: src/game.cpp:1081 src/game.cpp:1119 src/game.cpp:1144
+#: src/game.cpp:1084 src/game.cpp:1122 src/game.cpp:1147
 msgid "The server responded with an error: \""
 msgstr "El servidor ha respòs amb un error: \""
 
-#: src/game.cpp:1085
+#: src/game.cpp:1088
 msgid "Terms"
 msgstr "Termes"
 
-#: src/game.cpp:1115
+#: src/game.cpp:1118
 msgid "Sending add-on"
 msgstr "S'està descarregant l'extensió..."
 
-#: src/game.cpp:1122 src/game.cpp:1147 src/multiplayer_wait.cpp:333
+#: src/game.cpp:1125 src/game.cpp:1150 src/multiplayer_wait.cpp:333
 msgid "Response"
 msgstr "Resposta"
 
-#: src/game.cpp:1169
+#: src/game.cpp:1172
 msgid "Join Official Server"
 msgstr "Unir-se al servidor oficial"
 
-#: src/game.cpp:1170
+#: src/game.cpp:1173
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Entra al servidor oficial de Wesnoth per partides multijugador"
 
-#: src/game.cpp:1172 src/multiplayer_lobby.cpp:522
+#: src/game.cpp:1175 src/multiplayer_lobby.cpp:522
 msgid "Join Game"
 msgstr "Unir-se"
 
-#: src/game.cpp:1173
+#: src/game.cpp:1176
 msgid "Join a server or hosted game"
 msgstr "Uneix-te a un servidor o una partida"
 
-#: src/game.cpp:1175
+#: src/game.cpp:1178
 msgid "Host Networked Game"
 msgstr "Servir partida en xarxa"
 
-#: src/game.cpp:1176
+#: src/game.cpp:1179
 msgid "Host a game without using a server"
 msgstr "Serveix una partida sense usar el servidor"
 
-#: src/game.cpp:1178
+#: src/game.cpp:1181
 msgid "Hotseat Game"
 msgstr "Tots a una"
 
-#: src/game.cpp:1179
+#: src/game.cpp:1182
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Juga una partida multijugador comparint la mateixa màquina"
 
-#: src/game.cpp:1181
+#: src/game.cpp:1184
 msgid "Human vs AI"
 msgstr "Humans contra IA"
 
-#: src/game.cpp:1182
+#: src/game.cpp:1185
 msgid "Play a game against AI opponents"
 msgstr "Juga una partida contra la màquina"
 
-#: src/game.cpp:1190 src/multiplayer.cpp:190
+#: src/game.cpp:1193 src/multiplayer.cpp:190
 msgid "Login: "
 msgstr "Nom: "
 
-#: src/game.cpp:1192 src/multiplayer.cpp:195
+#: src/game.cpp:1195 src/multiplayer.cpp:195
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -11234,61 +11234,61 @@ msgstr ""
 "Heu triat un nom d'usuari massa llarg, si us plau empreu-ne un amb menys de "
 "18 caràcters."
 
-#: src/game.cpp:1229 src/playcampaign.cpp:90 src/playcampaign.cpp:348
+#: src/game.cpp:1232 src/playcampaign.cpp:90 src/playcampaign.cpp:348
 msgid "The game could not be loaded: "
 msgstr "No ha estat possible desar la partida:"
 
-#: src/game.cpp:1231 src/playcampaign.cpp:92 src/playcampaign.cpp:351
+#: src/game.cpp:1234 src/playcampaign.cpp:92 src/playcampaign.cpp:351
 msgid "Error while playing the game: "
 msgstr "S'ha produït un error durant la partida: "
 
-#: src/game.cpp:1243 src/playcampaign.cpp:94 src/playcampaign.cpp:354
+#: src/game.cpp:1246 src/playcampaign.cpp:94 src/playcampaign.cpp:354
 msgid "The game map could not be loaded: "
 msgstr "No ha estat possible carregar la partida:"
 
-#: src/game.cpp:1267
+#: src/game.cpp:1270
 msgid "Language"
 msgstr "Idioma"
 
-#: src/game.cpp:1268
+#: src/game.cpp:1271
 msgid "Choose your preferred language:"
 msgstr "Trieu el vostre idioma:"
 
-#: src/game.cpp:1413
+#: src/game.cpp:1416
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "S'ha produït un error en carregar les següents campanyes addicionals:"
 
-#: src/game.cpp:1418
+#: src/game.cpp:1421
 msgid "ERROR DETAILS:"
 msgstr "DETALLS DE L'ERROR:"
 
-#: src/game.cpp:1432
+#: src/game.cpp:1435
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Avís: s'ha produït un error en carregar els fitxers de configuració del joc: "
 "'"
 
-#: src/game.cpp:1482
+#: src/game.cpp:1485
 msgid "Error loading game configuration files: '"
 msgstr "Error carregant els fitxers de configuració del joc: '"
 
-#: src/game.cpp:1483
+#: src/game.cpp:1486
 msgid "' (The game will now exit)"
 msgstr "' (ara es tancarà el joc)."
 
-#: src/game.cpp:1618
+#: src/game.cpp:1621
 msgid "Battle for Wesnoth"
 msgstr "Batalla per Wesnoth"
 
-#: src/game.cpp:1738
+#: src/game.cpp:1741
 msgid "Loading game configuration."
 msgstr "S'està carregant la configuració del joc."
 
-#: src/game.cpp:1744
+#: src/game.cpp:1747
 msgid "Re-initialize fonts for the current language."
 msgstr "S'està tornant a inicialitzar la font per a l'idioma actual."
 
-#: src/game.cpp:1760
+#: src/game.cpp:1763
 msgid "Loading title screen."
 msgstr "S'està carregant la pantalla principal."
 
