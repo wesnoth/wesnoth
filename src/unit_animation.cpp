@@ -219,7 +219,7 @@ fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg)
 		if(*hit == "no" || *hit == "miss") {
 			hits.push_back(MISS);
 		}
-		if(*hit == "kill" ) {
+		if(*hit == "yes" || *hit == "kill" ) {
 			hits.push_back(KILL);
 		}
 	}
