@@ -55,11 +55,7 @@ int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
 std::string image_mask;
 
-#ifdef USE_TINY_GUI
-const int tile_size = 36;
-#else
 const int tile_size = 72;
-#endif
 int zoom = tile_size;
 
 //The "pointer to surfaces" vector is not cleared anymore (the surface are
