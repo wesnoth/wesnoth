@@ -1,22 +1,25 @@
+# translation of hu-lib.po to Hungarian
 # Hungarian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+#
 # Automatically generated, 2004.
 # Automatically generated <krics@linuxforum.hu>, 2004.
-#
-#
+# Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
+"Project-Id-Version: hu-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-12 15:46+0100\n"
-"PO-Revision-Date: 2006-07-02 14:39+0200\n"
-"Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
-"Language-Team: none <hu@gnome.hu>\n"
+"PO-Revision-Date: 2007-03-11 15:42+0100\n"
+"Last-Translator: Széll Tamás <tomi A digiflex POINT hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: src/construct_dialog.cpp:119 src/construct_dialog.cpp:126
 #: src/editor/editor_dialogs.cpp:452
@@ -129,7 +132,7 @@ msgstr "Tükrözés (ez megváltoztathatja a pálya méreteit):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Fájl:"
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -137,7 +140,7 @@ msgstr "Fájl törlése"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Új mappa létrehozása"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
@@ -145,12 +148,11 @@ msgstr "A fájl törlése sikertelen"
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Név:"
 
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "A fájl törlése sikertelen"
+msgstr "Nem sikerült létrehozni a könyvtárat"
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -213,7 +215,6 @@ msgid "Save Game"
 msgstr "Állás mentése"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
 msgstr "Pálya mentése"
 
@@ -282,9 +283,8 @@ msgid "Quit Game"
 msgstr "Kilépés a játékból"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Címke megadása"
+msgstr "Csapat címkéjének megadása"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
@@ -467,9 +467,8 @@ msgid "Villages:"
 msgstr "Falvak:"
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Dombok maximális magassága:"
+msgstr "Vár mérete:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -519,54 +518,48 @@ msgid "Skip AI Moves"
 msgstr "MI lépések átugrása"
 
 #: src/preferences_display.cpp:261
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "Értesítés a játékcsarnokba lépőkről"
+msgstr "Pályák mutatása a játékcsarnokban"
 
 #: src/preferences_display.cpp:262
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Értesítés a játékcsarnokba lépőkről"
+msgstr "Nincs értesítés a játékcsarnokba lépőkről"
 
 #: src/preferences_display.cpp:263
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Értesítés a játékcsarnokba lépőkről"
+msgstr "Értesítés csak akkor, ha barátok lépnek a játékcsarnokba"
 
 #: src/preferences_display.cpp:264
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Értesítés a játékcsarnokba lépőkről"
+msgstr "Értesítés akkor, ha új játékos lép a játékcsarnokba"
 
 #: src/preferences_display.cpp:265
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Értesítés a játékcsarnokba lépőkről"
+msgstr "A játékcsarnok listájának csoportosítása"
 
 #: src/preferences_display.cpp:266
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Ikonok mutatása a játékcsarnok listáján"
 
 #: src/preferences_display.cpp:267
 msgid "Friends List"
-msgstr ""
+msgstr "Barátok listája"
 
 #: src/preferences_display.cpp:268
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Többjátékos beállítások"
 
 #: src/preferences_display.cpp:269
 msgid "Add As Friend"
-msgstr ""
+msgstr "Felvétel a barátok közé"
 
 #: src/preferences_display.cpp:270
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Felhasználó figyelmen kívül hagyása"
 
 #: src/preferences_display.cpp:271
-#, fuzzy
 msgid "Remove"
-msgstr "Megismétlés"
+msgstr "Eltávolítás"
 
 #: src/preferences_display.cpp:272
 msgid "Show Floating Labels"
@@ -617,26 +610,24 @@ msgid "Chat Timestamping"
 msgstr "Csevegés sorainak időbélyegzése"
 
 #: src/preferences_display.cpp:287
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Haladó"
+msgstr "Szakértői mód"
 
 #: src/preferences_display.cpp:288
 msgid "Normal Mode"
-msgstr ""
+msgstr "Normál mód"
 
 #: src/preferences_display.cpp:289
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Kezelői felület hangjai"
 
 #: src/preferences_display.cpp:292
-#, fuzzy
 msgid "Custom"
-msgstr "Kivágás"
+msgstr "Tetszőleges"
 
 #: src/preferences_display.cpp:293
 msgid "Apply"
-msgstr ""
+msgstr "Alkalmaz"
 
 #: src/preferences_display.cpp:295
 msgid "Music Volume:"
@@ -647,14 +638,12 @@ msgid "SFX Volume:"
 msgstr "Hanghatások ereje"
 
 #: src/preferences_display.cpp:296
-#, fuzzy
 msgid "UI Sound Volume:"
-msgstr "Hanghatások ereje"
+msgstr "Kezelői felület hanghatásainak ereje:"
 
 #: src/preferences_display.cpp:297
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Hanghatások ereje"
+msgstr "Csengő hangereje"
 
 #: src/preferences_display.cpp:298
 msgid "Gamma:"
@@ -662,7 +651,7 @@ msgstr "Gamma:"
 
 #: src/preferences_display.cpp:300
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Mintavételi frekvencia (Hz):"
 
 #: src/preferences_display.cpp:323
 msgid "Sound effects on/off"
@@ -681,35 +670,32 @@ msgid "Change the music volume"
 msgstr "A zene hangerejének megváltoztatása"
 
 #: src/preferences_display.cpp:340
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "A zene hangerejének megváltoztatása"
+msgstr "A csengő hangerejének megváltoztatása"
 
 #: src/preferences_display.cpp:343
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Menü és gomb hangok be/ki"
 
 #: src/preferences_display.cpp:347
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "A gombnyomások és egyéb események hangerejének megváltoztatása"
 
 #: src/preferences_display.cpp:349
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Nyelv megváltoztatása"
+msgstr "Mintavételi frekvencia megváltoztatása"
 
 #: src/preferences_display.cpp:358
 msgid "User defined sample rate"
-msgstr ""
+msgstr "A felhasználó által megadott mintavételi frekvencia"
 
 #: src/preferences_display.cpp:367 src/preferences_display.cpp:371
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "A zene hangerejének megváltoztatása"
+msgstr "Pufferméret megváltoztatása"
 
 #: src/preferences_display.cpp:369 src/preferences_display.cpp:857
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Pufferméret: "
 
 #: src/preferences_display.cpp:376
 msgid "Change the speed of scrolling around the map"
@@ -736,9 +722,8 @@ msgid "Make units move and fight faster"
 msgstr "Az egységek gyorsabban mozognak és harcolnak"
 
 #: src/preferences_display.cpp:415
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Az egységek gyorsabban mozognak és harcolnak"
+msgstr "Az egységek mozgásának és küzdelmének sebessége"
 
 #: src/preferences_display.cpp:418
 msgid "Do not animate AI units moving"
@@ -749,56 +734,62 @@ msgid "Overlay a grid onto the map"
 msgstr "Fektessen egy rácsot a térképre"
 
 #: src/preferences_display.cpp:424
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr "Tájékoztató üzenet mutatása a többjátékos csarnokba lépő játékosokról"
+msgstr "Pályák képének mutatása a játékcsarnokban"
 
 #: src/preferences_display.cpp:427
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
+"A játékcsarnokban lévő játékosok listájának mutatása a játékosok csoportjai "
+"szerint"
 
 #: src/preferences_display.cpp:430
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Ikonok feltüntetése a játékcsarnokban lévő játékosok neve előtt"
 
 #: src/preferences_display.cpp:433
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Tájékoztató üzenet mutatása a többjátékos csarnokba lépő játékosokról"
+msgstr ""
+"Tájékoztató üzenetek kikapcsolása, amelyek új játékos játékcsarnokba "
+"lépésekor jelennek meg"
 
 #: src/preferences_display.cpp:435
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Tájékoztató üzenet mutatása a többjátékos csarnokba lépő játékosokról"
+msgstr ""
+"Tájékoztató üzenetek bekapcsolása, amelyek barátaim játékcsarnokba lépésekor "
+"jelennek meg"
 
 #: src/preferences_display.cpp:437
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Tájékoztató üzenet mutatása a többjátékos csarnokba lépő játékosokról"
+msgstr ""
+"Tájékoztató üzenetek bekapcsolása, amelyek minden játékos játékcsarnokba "
+"lépésekor jelennek meg"
 
 #: src/preferences_display.cpp:439
 msgid "View and edit your friends and ignores list"
 msgstr ""
+"Barátaim és a figyelmen kívül hagyottak listájának megtekintése és "
+"szerkesztése"
 
 #: src/preferences_display.cpp:440
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Visszalépés a többjátékos beállításokhoz"
 
 #: src/preferences_display.cpp:441
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "A megadott felhasználó felvétele a barátaim közé"
 
 #: src/preferences_display.cpp:442
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "A megadott felhasználó felvétele a figyelmen kívül hagyottak közé"
 
 #: src/preferences_display.cpp:443
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "A megadott felhasználó eltávolítása a listáról"
 
 #: src/preferences_display.cpp:446
 msgid "Insert a username"
-msgstr ""
+msgstr "Erre a helyre  írd be a felhasznó nevét"
 
 #: src/preferences_display.cpp:449
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -847,9 +838,8 @@ msgid "View and configure keyboard shortcuts"
 msgstr "A gyorsbillentyűk megtekintése és beállítása"
 
 #: src/preferences_display.cpp:737
-#, fuzzy
 msgid "Speed: "
-msgstr "Görgetés sebessége:"
+msgstr "Sebesség: "
 
 #: src/preferences_display.cpp:902
 msgid "Chat Lines: "
@@ -941,12 +931,3 @@ msgstr "Hiba"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Receiving data..."
-#~ msgstr "Adatok fogadása..."
-
-#~ msgid "Downloading..."
-#~ msgstr "Letöltés..."
-
-#~ msgid "Set Player Start Position"
-#~ msgstr "Játékos kezdőhely megadása"
