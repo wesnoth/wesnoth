@@ -355,7 +355,7 @@ void gamestatus::set_start_ToD(config &level, game_state* s_o_g)
 	{
 		// We have to set right ToD for oldsaves 
 		
-		set_time_of_day(turn() % times_.size());
+		set_time_of_day((turn() - 1) % times_.size());
 	}
 	// Setting tod to level data
 
