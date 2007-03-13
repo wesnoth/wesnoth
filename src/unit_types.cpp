@@ -128,7 +128,8 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	if(!matches_filter(cfg,0))
 		return false;
 
-	const t_string& set_name = cfg["set_name"];
+	const std::string& set_name = cfg["set_name"];
+	const t_string& set_desc = cfg["set_description"];
 	const std::string& set_type = cfg["set_type"];
 	const std::string& del_specials = cfg["remove_specials"];
 	const config* set_specials = cfg.child("set_specials");
@@ -140,8 +141,11 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	std::stringstream desc;
 
 	if(set_name.empty() == false) {
-		description_ = set_name;
 		id_ = set_name;
+	}
+
+	if(set_desc.empty() == false) {
+		description_ = set_desc;
 	}
 
 	if(set_type.empty() == false) {
