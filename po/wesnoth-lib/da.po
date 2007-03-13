@@ -4,7 +4,6 @@
 # Bjarke Sørensen <bs@wasd.dk>, 2005.
 # Joe Hansen <joedalton2@yahoo.dk>, 2007.
 #
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
@@ -12,10 +11,11 @@ msgstr ""
 "POT-Creation-Date: 2007-03-12 15:46+0100\n"
 "PO-Revision-Date: 2007-02-13 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
-"Language-Team: Dansk-gruppen <    >\n"
+"Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/construct_dialog.cpp:119 src/construct_dialog.cpp:126
 #: src/editor/editor_dialogs.cpp:452
@@ -541,9 +541,8 @@ msgid "Iconize Lobby List"
 msgstr "Vis Lobby-listen med ikoner"
 
 #: src/preferences_display.cpp:267
-#, fuzzy
 msgid "Friends List"
-msgstr "Din venneliste"
+msgstr "Venneliste"
 
 #: src/preferences_display.cpp:268
 msgid "Multiplayer Options"
@@ -619,11 +618,11 @@ msgstr "Normal tilstand"
 
 #: src/preferences_display.cpp:289
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Brugergrænseflade lydsæt"
 
 #: src/preferences_display.cpp:292
 msgid "Custom"
-msgstr "tilpasset"
+msgstr "Tilpasset"
 
 #: src/preferences_display.cpp:293
 msgid "Apply"
@@ -638,9 +637,8 @@ msgid "SFX Volume:"
 msgstr "Lydeffekter styrke:"
 
 #: src/preferences_display.cpp:296
-#, fuzzy
 msgid "UI Sound Volume:"
-msgstr "Lydeffekter styrke:"
+msgstr "UI-lydstyrke:"
 
 #: src/preferences_display.cpp:297
 msgid "Bell Volume:"
@@ -676,11 +674,11 @@ msgstr "Indstil klokkens lydstyrke"
 
 #: src/preferences_display.cpp:343
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Sæt menu- og tastelyde til/fra"
 
 #: src/preferences_display.cpp:347
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "Ændre lydstyrken for tastetryk, etcetera"
 
 #: src/preferences_display.cpp:349
 msgid "Change the sample rate"
