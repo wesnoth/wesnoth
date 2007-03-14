@@ -87,7 +87,7 @@ msgstr ""
 
 #: data/abilities.cfg:74
 msgid "steadfast"
-msgstr ""
+msgstr "fasthed"
 
 #: data/abilities.cfg:76
 msgid ""
@@ -95,6 +95,9 @@ msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
+"Fasthed:\n"
+"Denne enheds modstandskraft fordobles, op til et maksimum af 50 %, når den "
+"forsvarer. Sårbarheder påvirkes ikke."
 
 #: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
 #: data/abilities.cfg:183 data/abilities.cfg:239
@@ -131,6 +134,9 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"Stifinder:\n"
+"Denne enhed er uddannet i at bevæge sig forbi fjender hurtigt, og den "
+"ignorerer alle fjenders kontrolzoner."
 
 #: data/abilities.cfg:318
 msgid "illuminates"
@@ -186,9 +192,11 @@ msgstr ""
 "opholder sig i skoven, med undtagelse for ture umiddelbart efter enheden har "
 "angrebet eller hvis der står en fjendtlig enhed ved siden af den."
 
+# Har ikke kunnet finde et dansk ord for denne evne. Camouflage er ikke helt
+# godt for det er jo også tilfældet om dagen! (måske natcamouflage)
 #: data/abilities.cfg:362 data/abilities.cfg:367
 msgid "nightstalk"
-msgstr ""
+msgstr "natsløring"
 
 #: data/abilities.cfg:366 data/abilities.cfg:371
 msgid ""
@@ -199,6 +207,12 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
+"Natsløring:\n"
+"Denne enhed bliver usynlig om natten.\n"
+"\n"
+"Fjendtlige enheder kan ikke se eller angribe denne enhed om natten, undtagen "
+"for enhver runde umiddelbart efter at denne enhed har angrebet, eller hvis "
+"der er fjendligt enheder tæt på denne enhed."
 
 #: data/abilities.cfg:384 data/abilities.cfg:389
 msgid "submerge"
@@ -264,6 +278,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
+"Pest:\n"
+"Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af en "
+"enhed der er identisk med og på den samme side som enheden der har "
+"pestangrebet. (Dette gælder ikke for udøde eller enheder i landsbyer.)"
 
 #: data/abilities.cfg:452
 msgid "slows"
@@ -276,6 +294,10 @@ msgid ""
 "caused by attacks and slowed units move at half the normal speed (rounded "
 "up)."
 msgstr ""
+"Langsom:\n"
+"Dette angreb gør ofret langsomt indtil det afslutter en runde. Langsom "
+"halverer den skade der medfølger af et angreb og et offer bevæger sig alene "
+"med halvdelen af den normale fart (afrundet opad)."
 
 #: data/abilities.cfg:461
 msgid "stones"
@@ -301,7 +323,7 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Skarpskytte:\n"
-"Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60%."
+"Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60 %."
 
 #: data/abilities.cfg:482
 msgid "magical"
@@ -313,7 +335,7 @@ msgid ""
 "This attack always has a 70% chance to hit."
 msgstr ""
 "Magisk:\n"
-"Dette angreb har altid en træfsikkerhed på 70%."
+"Dette angreb har altid en træfsikkerhed på 70 %."
 
 #: data/abilities.cfg:493
 msgid "swarm"
@@ -343,6 +365,7 @@ msgid ""
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
+"Storm:\n"
 "Dette angreb giver dobbelt skade til modstanderen. Det gør også, at enheden "
 "selv modtager dobbelt skade fra modstanderens modangreb."
 
@@ -371,7 +394,7 @@ msgid ""
 msgstr ""
 "Initiativ:\n"
 "Denne enhed angriber først - har initiativet - med dette angreb, også selv "
-"om de forsvarer sig."
+"om den forsvarer sig."
 
 #: data/abilities.cfg:532
 msgid "poison"
@@ -1271,6 +1294,23 @@ msgid ""
 "next randomized event or a manual update via 'update shroud now' (or the end "
 "of your turn) and thereby perserve your ability to undo movement."
 msgstr ""
+"I nogle scenarier vil dele af kortet være skjult. Der er to mekanismer som "
+"kan bruges hver for sig eller sammen. Sløring dækker både terrænet og alle "
+"enheder på en lokation. Når først området er afdækket vil du dog altid kunne "
+"se lokationen. Krigståge skjuler kun enheder og ejerskab af landsbyer (andre "
+"end dine og dine allieredes). Krigståge afdækkes midlertidigt når du har "
+"enheder i området, men returnerer når du forlader området. Både sløring og "
+"krigståge afdækkes af enhedr. Hver enhed afdækker felter der er inden for en "
+"rundes bevægelesmulighed (ignorerer kontrolzoner og fjendtlige enheder).\n"
+"\n"
+"Normalt kan du fortryde en enheds bevægelse, så længe at en begivenhed med "
+"et tilfældigt resultat ikke er foregået, så som en kamp eller en "
+"rekruttering. Opdagelsen af skjult terræn fra sløring og krigståge vil også "
+"forhindre fortrydmuligheden. Du kan slå »forsink sløring opdatering« i "
+"menuen. Dette vil forhindre enheder fra at afdække sløring eller krigståge "
+"indtil den næste tilfældige begivenhed eller en manuel opdatering via "
+"»opdater sløring nu« (eller afslutningen af din runde) og dermed bevare din "
+"mulighed for at fortryde et ryk."
 
 #: data/help.cfg:156
 msgid "Combat"
@@ -1320,6 +1360,15 @@ msgid ""
 "5 damage, while an Orcish Grunt with a 9-2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
+"\n"
+"\n"
+"Angriberen får initiativet, herefter slå forsvareren tilbage. Hvert angreb "
+"enten rammmer, og giver skade, eller fejler, og gør ingen skade overhovedet. "
+"Angrebene skifter mellem angriber og forsvarer indtil de er brugt op. "
+"Antallet af angreb varierer fra enhed til enhed; for eksempel har en "
+"elverkæmper med et 5-4 angreb 4 angreb som hvis de alle er succesfulde giver "
+"5 skade per angreb i alt 20, mens en orkergrunt med et 9-2 angreb kun kan "
+"angribe 2 gange (men med 9 skade for hver succesfuldt angreb i alt 18)."
 
 #: data/help.cfg:163
 msgid ""
@@ -1858,6 +1907,13 @@ msgid ""
 "defense, or high resistances. Resilient units are especially useful for "
 "holding strategic positions against opponents."
 msgstr ""
+"\n"
+"\n"
+"Ukuelige enheder er brugbare på alle tidspunkter i en kampagne, og det er et "
+"nyttig karaktertræk for alle enheder. Ukuelig er ofte mest egnet som et "
+"karaktertræk når den indgår hos en enhed som har en kombination af få liv, "
+"godt forsvar, eller høj modstandskraft. Ukuelige enheder er specielt egnet "
+"til at holde strategiske positioner over for modstanderne."
 
 #: data/help.cfg:300
 msgid "Strong"
@@ -1888,6 +1944,7 @@ msgstr "Frygløs"
 #: data/help.cfg:309
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
+"Aversion mod lys eller mørke betyder ikke noget for disse modige individer."
 
 # kan også være trofast
 #: data/help.cfg:314
@@ -2212,6 +2269,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"Sands ustabilitet gør det sværere for enheder at forcere dem og gør dem "
+"sårbare over for angreb. De brede fødder og slangeagtige kroppe gør enheder "
+"fra øglernes race i stand til at navigere i dette terræn.\n"
+"\n"
+"De fleste enheder har 20-40 % forsvar i sand."
 
 #: data/help.cfg:465 data/terrain.cfg:381
 msgid "Desert"
@@ -2223,6 +2285,8 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
+"Ørken har en noget andet sammensætning end sand eller strande, men i spillet "
+"er de identiske. Se <ref>dst=terrain_sand text=Sand</ref>."
 
 #: data/help.cfg:473 data/terrain.cfg:650
 msgid "Cave"
@@ -2243,7 +2307,7 @@ msgstr ""
 
 #: data/help.cfg:483 data/terrain.cfg:690
 msgid "Rockbound Cave"
-msgstr ""
+msgstr "Stenhule"
 
 #: data/help.cfg:488
 msgid ""
@@ -2261,7 +2325,7 @@ msgstr ""
 
 #: data/help.cfg:493
 msgid "Illuminated Cave"
-msgstr "oplyst hule"
+msgstr "Oplyst hule"
 
 #: data/help.cfg:496
 msgid ""
@@ -2274,7 +2338,7 @@ msgstr ""
 
 #: data/help.cfg:501 data/terrain.cfg:670
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "Champignonskov"
 
 #: data/help.cfg:506
 msgid ""
@@ -2299,6 +2363,9 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"Savanne er stepper af højt græs som kan ses i varmere områder af verden. I "
+"spillet er området identisk med <ref>dst=terrain_grassland text=Græseng</"
+"ref>."
 
 #: data/help.cfg:519 data/terrain.cfg:719 data/terrain.cfg:731
 #: data/terrain.cfg:745 data/terrain.cfg:758 data/terrain.cfg:773
@@ -2307,7 +2374,7 @@ msgstr ""
 #: data/terrain.cfg:858 data/terrain.cfg:872 data/terrain.cfg:888
 #: data/terrain.cfg:900 src/terrain.cpp:114
 msgid "Village"
-msgstr "Landsy"
+msgstr "Landsby"
 
 #: data/help.cfg:526
 msgid ""
@@ -2322,6 +2389,16 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
+"Landsbyer repræsenterer en gruppe af bygninger under kontrol af mennesker "
+"eller andre. Næsten alle enheder, selv kavaleri kan nemt navigere i "
+"landsbyer og de fleste enheder opnår en forsvarsbonus når de er placeret i "
+"en landsby. Landsbyer gør det muligt for enheder at se til deres sår, og de "
+"kan derfor få helbredt 8 liv hver runde de er i en landsby, eller blive "
+"helbredt for gift.\n"
+"\n"
+"De fleste enheder har 50-60 % forsvarsbonus i landsbyer, mens kavaleri kun "
+"har 40 %.\n"
+"\n"
 
 #: data/help.cfg:531
 msgid "Submerged Village"
@@ -2410,6 +2487,8 @@ msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Hulemure er lavet af solide sten, kendt for deres evne til at modstå selv "
+"den mest ivrige rejsende."
 
 #: data/help.cfg:583
 msgid "Impassable Mountain"
@@ -2476,7 +2555,7 @@ msgstr ""
 
 #: data/help.cfg:608
 msgid "Bring up theme selection menu."
-msgstr ""
+msgstr "Hent temaudvælgelsesmenuen."
 
 #: data/help.cfg:613
 msgid "Multiplayer commands"
@@ -3822,7 +3901,7 @@ msgstr "2p - Angrib!"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2p - Cynsaun slagmarken"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid " Recommended settings of 150 gold and 1 gold per village."
@@ -3833,6 +3912,8 @@ msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr ""
+"Der er meget at udforske i denne udbredte krigsfront, designet for spillere "
+"som er til episke, store duel kampe."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -4930,10 +5011,10 @@ msgstr "bevægelse"
 msgid "Act."
 msgstr "Handl."
 
+# Den tyske er oversat sådan her msgstr "E."
 #: data/themes/default.cfg:569
-#, fuzzy
 msgid "short end-turn^E."
-msgstr "Afslut"
+msgstr "E."
 
 #: data/themes/dfool.cfg:218
 msgid "MP"
@@ -8773,6 +8854,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Ridende på de strudselignende store fugle som tidligere blev brugt af en "
+"forsvundet civilisation som heste, kan skeletchocobonerne bevæge sig "
+"hurtigere end de fleste kavalerienheder./n\n"
+"Specielle bemærkninger:"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
@@ -10842,27 +10927,27 @@ msgstr "Ikke afsluttet [element] markering"
 
 #: src/serialization/parser.cpp:150 src/serialization/parser.cpp:186
 msgid "Invalid tag name"
-msgstr "Ugyldig markeringsnavn"
+msgstr "Ugyldig mærkenavn"
 
 #: src/serialization/parser.cpp:153
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Uafsluttet [+element] mærke"
 
 #: src/serialization/parser.cpp:169
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Invalid slutmærkenavn"
 
 #: src/serialization/parser.cpp:172
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Uafsluttet slutmærke"
 
 #: src/serialization/parser.cpp:174
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Uventet slutmærke"
 
 #: src/serialization/parser.cpp:180
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr ""
+msgstr "Fandt invalid slutmærke $tag2 for mærke $tag (åbnet ved $pos)"
 
 #: src/serialization/parser.cpp:205 src/serialization/parser.cpp:217
 msgid "Empty variable name"
@@ -10870,11 +10955,11 @@ msgstr "Tom variabelnavn"
 
 #: src/serialization/parser.cpp:211
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Uventede karakter efter variabelnavn (forventede , eller =)"
 
 #: src/serialization/parser.cpp:246 src/serialization/parser.cpp:270
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Uafsluttet citatstreng"
 
 #: src/serialization/parser.cpp:293
 msgid " included from "
@@ -10902,15 +10987,15 @@ msgstr "-- Krøniker fra Wesnoth"
 
 #: src/titlescreen.cpp:254
 msgid "TitleScreen button^Tutorial"
-msgstr "Vejledning"
+msgstr "TitleScreen button^Vejledning"
 
 #: src/titlescreen.cpp:255
 msgid "TitleScreen button^Campaign"
-msgstr "Kampagne"
+msgstr "TitleScreen button^Kampagne"
 
 #: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
-msgstr "Flerspiller"
+msgstr "itleScreen button^Flerspiller"
 
 #: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
@@ -10994,7 +11079,7 @@ msgstr "; "
 
 #: src/unit.cpp:2524
 msgid "XP to advance"
-msgstr "XP til forfremmelse"
+msgstr "Erfaring til forfremmelse"
 
 #: src/unit.cpp:2607
 msgid ": "
