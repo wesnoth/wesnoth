@@ -130,7 +130,6 @@ private:
 
 	const font::manager font_manager_;
 	const preferences::manager prefs_manager_;
-	const sound::manager sound_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
@@ -1622,26 +1621,13 @@ extern threading::mutex channel_mutex;
 game_controller::~game_controller()
 {
 	delete gui::empty_menu;
-	threading::lock l(sound::channel_mutex);
+	sound::close_sound();
 	{
-		int deletion_errs = 0;
-		while (sound::channel_chunks->size() > deletion_errs) {
-			try {
-				sound::channel_chunks->erase(sound::channel_chunks->end() - deletion_errs - 1);
-			} catch(...) {
-				++deletion_errs;
-			}
-		}
-		if(deletion_errs > 0)
-		{
-			std::cerr << "Unable to delete some Mix_Chunk*, count was " << deletion_errs << ".\n";
-		} else {
-			try {
-				delete sound::channel_chunks;
-			} catch(...) {
-				std::cerr << "Unable to delete empty std::vector<Mix_Chunk*> sound::channel_chunks.\n";
-			}
-		}
+		threading::lock l(sound::channel_mutex);
+		sound::channel_chunks->clear();
+		/*
+		delete sound::channel_chunks; //FIXME: sometimes crashes
+		*/
 		sound::channel_chunks = NULL;
 	}
 }

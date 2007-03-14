@@ -250,16 +250,6 @@ void channel_finished_hook(int channel)
 	}
 }
 
-	
-manager::manager()
-{
-}
-
-manager::~manager()
-{
-	close_sound();
-}
-
 bool init_sound() {
 
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0)
@@ -277,7 +267,7 @@ bool init_sound() {
 		Mix_AllocateChannels(n_of_channels);
 		Mix_ReserveChannels(n_reserved_channels);
 
-		channel_chunks = new std::vector<Mix_Chunk*>(n_of_channels, 0);
+		channel_chunks = new std::vector<Mix_Chunk*>(n_of_channels, NULL);
 		channel_ids.resize(source_channels, -1);
 
 		const size_t source_channel_last = source_channels - source_channel_start + 1;

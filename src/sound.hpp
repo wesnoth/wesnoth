@@ -19,11 +19,6 @@
 
 namespace sound {
 
-struct manager {
-	manager();
-	~manager();
-};
-
 bool init_sound();
 void close_sound();
 void reset_sound();
