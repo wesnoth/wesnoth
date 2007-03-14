@@ -496,7 +496,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if (current_team.countdown_time() > 0){
 			sec = current_team.countdown_time() / 1000;
 
-			str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP);
+			str << (current_side != playing_side ? font::GRAY_TEXT : font::NORMAL_TEXT);
 
 			if(sec < 60)
 				str << "<200,0,0>";
