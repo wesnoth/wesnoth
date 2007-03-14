@@ -18,6 +18,7 @@ class gamemap;
 
 #include "generic_event.hpp"
 #include "pathfind.hpp"
+#include "gamestatus.hpp"
 
 class ai_interface {
 public:

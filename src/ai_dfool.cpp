@@ -6,7 +6,8 @@ namespace dfool {
     info info_ = get_info();
     int team_num=get_info().team_num;
     const config& parms = current_team().ai_parameters();
-    config ai_mem=current_team().ai_memory();
+    config ai_mem = current_team().ai_memory();
+    
     const config::child_list& orders = parms.get_children("order");
     LOG_STREAM(info, ai)<<"dfool side:"<<team_num<<" of "<<current_team().nteams()<<std::endl;
 
@@ -47,6 +48,8 @@ namespace dfool {
 	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
+
+	unit_memory_.add_unit_sighting(u->second, u->first, get_info().state.turn());
       }
     }
 
@@ -140,6 +143,9 @@ namespace dfool {
         }
       }
     }
+
+    unit_memory_.write(ai_mem);    
+    current_team().set_ai_memory(ai_mem);
 
     return;  
   }
@@ -236,4 +242,82 @@ namespace dfool {
     //    LOG_STREAM(info, ai)<<"nounit:"<<std::endl;
     return(um.end());
   }
+
+  unit_memory::unit_memory(const game_data& gamedata, const config& cfg){
+    const config::child_list mem_list=cfg.get_children("unit_memory");
+    for(config::child_list::const_iterator mem = mem_list.begin(); mem != mem_list.end(); ++mem) {
+      config unit_cfg = *((*mem)->child("unit"));
+
+      unit u(gamedata , unit_cfg);
+
+      int t = atoi((**mem)["turn"].c_str());
+
+      gamemap::location l(atoi((**mem)["x"].c_str())-1,atoi((**mem)["y"].c_str())-1);
+      add_unit_sighting(u,l,t);
+    }
+  }
+
+  void unit_memory::add_unit_sighting(unit u, gamemap::location l, size_t t){
+    std::string unit_id= u.underlying_description();
+    //check if this unit has already been seen 
+    size_t i;
+    for(i=0; i < ids_.size();i++){
+      if(unit_id == ids_[i]){break;}
+    }
+
+    if(i == ids_.size()){    
+      //unit has not been seen
+      units_.push_back(u);
+      ids_.push_back(unit_id);
+      turns_.push_back(t);
+      locations_.push_back(l);
+    }else{
+      //update unit info
+      units_[i]=u;
+      turns_[i]=t;
+      locations_[i]=l;
+    }
+
+  }
+
+  void unit_memory::remove_unit_sighting(std::string id){
+    size_t i;
+    for(i=0;i<ids_.size();i++){
+      if(id == ids_[i]){break;}
+    }
+
+    if(i == ids_.size()){    
+      //unit not in memory
+    }else{
+      //remove unit info
+      units_.erase(units_.begin()+i);
+      ids_.erase(ids_.begin()+i);
+      locations_.erase(locations_.begin()+i);
+      turns_.erase(turns_.begin()+i);
+    }
+  }
+
+  void unit_memory::write(config& temp){
+    //    std::cout<<"ai_write:\n";
+    for(size_t i = 0; i < units_.size(); i++){
+      config element;
+      write_element(i, element);
+      temp.add_child("unit_memory",element);
+    }
+  }
+
+  void unit_memory::write_element(int i, config &temp){
+    config temp_unit;
+    std::stringstream ts,xs,ys;
+    ts << turns_[i];;
+    temp["turn"] = ts.str();
+    xs << locations_[i].x;
+    temp["x"] = xs.str();
+    ys << locations_[i].y;
+    temp["y"] = ys.str();
+    units_[i].write(temp_unit); 
+    temp.add_child("unit",temp_unit);
+    //    std::cout<<"ai write: "<<temp_unit["description"]<<"\n";
+  }
+
 }//end namespace dfool
