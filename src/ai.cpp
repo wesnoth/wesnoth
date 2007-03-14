@@ -437,8 +437,11 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 								steps.erase(i,steps.end());
 								break;
 							} else {
-								if (!ignore_zocs)
-									LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
+							  if (!ignore_zocs){
+							    LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
+							    to = *i;
+							    steps.erase(i,steps.end());
+							  }
 							}
 						}
 					}
