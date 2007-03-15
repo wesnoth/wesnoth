@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-12 15:46+0100\n"
-"PO-Revision-Date: 2007-02-02 22:40+0100\n"
+"PO-Revision-Date: 2007-03-12 16:48+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -136,7 +136,6 @@ msgstr "Klikni levým tlačítkem na Konráda"
 msgid "Left click on Li'sar"
 msgstr "Klikni levým tlačítkem na Lisar"
 
-# myslím, že proměnná končí buď whitespace nebo rourou |, a ta tečka se mi nezdá
 #: data/tutorial/scenarios/1_Tutorial.cfg:223
 msgid ""
 "*You have selected Konrad.\n"
@@ -145,7 +144,6 @@ msgstr ""
 "*Vybral jsi Konráda.\n"
 "Místa, kam můžeš jít, jsou vyznačena."
 
-# myslím, že proměnná končí buď whitespace nebo rourou |, a ta tečka se mi nezdá
 #: data/tutorial/scenarios/1_Tutorial.cfg:229
 msgid ""
 "*You have selected Li'sar.\n"
@@ -717,16 +715,15 @@ msgid "Ouch! I could use some healing in a village."
 msgstr "Au! Docela rád bych se uzdravil ve vesnici."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:232
-#, fuzzy
 msgid "I have $side.gold gold: enough to recruit!"
-msgstr "Mám $gold zlatých, dostatek k verbování!"
+msgstr "Mám $side.gold zlatých, dostatek k verbování!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:233
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr ""
 "Ano, pokračuj ve verbování dalších jednotek; myslím, že je budeš potřebovat!"
 
-# odděleno: "druhá část"
+# alt.: "druhá část"
 #: data/tutorial/scenarios/2_Tutorial.cfg:244
 msgid "Wesnoth Tutorial Part II"
 msgstr "Wesnoth Tutoriál, kapitola II"
