@@ -26,7 +26,7 @@
 //
 ///images come in a number of varieties:
 /// - unscaled: no modifications have been done on the image.
-/// - scaled: images are scaled to the size of a tile
+/// - scaled_to_hex: images are scaled to the size of a tile
 /// - unmasked: images are scaled, but have no time of day masking applied to them
 /// - brightened: images are scaled and brighter than normal.
 namespace image {
@@ -175,15 +175,15 @@ namespace image {
 	void set_zoom(int zoom);
 
 	// unscaled : image will be drawn "as is" without changing size, even in case of redraw
-	// scaled : image will be scaled to fit into a hex, taking zoom into account
-	enum TYPE { UNSCALED, SCALED, UNMASKED,  BRIGHTENED, SEMI_BRIGHTENED };
+	// scaled_to_hex : image will be scaled to fit into a hex, taking zoom into account
+	enum TYPE { UNSCALED, SCALED_TO_HEX, UNMASKED,  BRIGHTENED, SEMI_BRIGHTENED };
 
 	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR };
 
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling
 	///SDL_FreeSurface()
-	surface get_image(const locator& i_locator,TYPE type=SCALED, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR,bool add_to_cache = true);
+	surface get_image(const locator& i_locator,TYPE type=SCALED_TO_HEX, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR,bool add_to_cache = true);
 
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()

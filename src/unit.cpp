@@ -1927,7 +1927,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			disp.draw_bar(*energy_file,x,y-height_adjust,max_experience()/(level*2),filled,colour,bar_alpha);
 		}
 		if (can_recruit()) {
-			surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
+			surface crown(image::get_image("misc/leader-crown.png",image::SCALED_TO_HEX,image::NO_ADJUST_COLOUR));
 			if(!crown.null()) {
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
