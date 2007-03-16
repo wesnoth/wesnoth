@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-12 15:45+0100\n"
-"PO-Revision-Date: 2007-02-19 15:53+0100\n"
+"PO-Revision-Date: 2007-03-16 13:35+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -415,36 +415,31 @@ msgstr ""
 
 #: data/about.cfg:6
 msgid "Programming"
-msgstr ""
+msgstr "Programowanie"
 
 #: data/about.cfg:56
-#, fuzzy
 msgid "General Purpose Administration and Coordination"
-msgstr "+Administratorzy ogólni"
+msgstr "Ogólne administrowanie i koordynacja"
 
 #: data/about.cfg:66
-#, fuzzy
 msgid "Artwork and Graphics"
-msgstr "Projektanci grafiki"
+msgstr "Grafika i rysunki"
 
 #: data/about.cfg:173
 msgid "Music"
 msgstr "Muzyka"
 
 #: data/about.cfg:184
-#, fuzzy
 msgid "Sound Effects"
 msgstr "Efekty dźwiękowe"
 
 #: data/about.cfg:193
-#, fuzzy
 msgid "Campaign Design"
-msgstr "Twórca kampanii"
+msgstr "Projektowanie kampanii"
 
 #: data/about.cfg:217
-#, fuzzy
 msgid "Multiplayer Maps and Balancing"
-msgstr "Mapy do gry wieloosobowej"
+msgstr "Mapy wieloosobowe i równoważenie"
 
 #: data/about.cfg:232
 msgid "Packagers"
@@ -1278,7 +1273,6 @@ msgid "Shroud and Fog of War"
 msgstr "Całun i Mgła wojny"
 
 #: data/help.cfg:151
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1306,7 +1300,17 @@ msgstr ""
 "jednostki oraz posiadaczy wiosek (innych niż twoi sojusznicy). Zarówno "
 "Całun, jak i Mgła wojny są usuwane przez jednostki. Każda jednostka odkrywa "
 "miejsca przyległe do pól, które znajdują się w zasięgu jednego jej ruchu "
-"(strefy kontroli i jednostki przeciwnika nie są uwzględniane)."
+"(strefy kontroli i jednostki przeciwnika nie są uwzględniane).\n"
+"\n"
+"Na ogół możliwe jest cofnięcie ruchu jednostki, pod warunkiem, że nie miało "
+"miejsca zdarzenie z elementem losowym, na przykład walka lub rekrutacja. "
+"Zbadanie przed jednostkę ukrytego terenu poprzez odsłonięcie Całunu lub Mgły "
+"wojny również uniemożliwi cofnięcie ruchu. Istnieje możliwość włączenia w "
+"menu Akcje opcji 'Opóźniaj odsłanianie całunu'. Po włączeniu tej opcji, "
+"jednostki nie będą odsłaniać Całunu ani Mgły wojny aż do wystąpienia "
+"zdarzenia z elementem losowym lub ręcznej aktualizacji za pomocą komendy "
+"'Odsłoń całun teraz' (lub końca tury), co pozwoli zachować możliwość "
+"cofnięcia ruchu."
 
 #: data/help.cfg:156
 msgid "Combat"
@@ -2012,6 +2016,8 @@ msgstr "Nieustraszony"
 #: data/help.cfg:309
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
+"Obawa przed światłem lub ciemnością jest uczuciem zupełnie nieznanym tym "
+"dzielnym wojownikom."
 
 #: data/help.cfg:314
 msgid "Loyal"
@@ -2111,6 +2117,9 @@ msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and "
 "recover more quickly when resting."
 msgstr ""
+"Niektóre krasnoludy wyróżniają się niezwykłą nawet jak na swoją rasę "
+"żywotnością, dzięki której podczas odpoczynku odzyskują siły szybciej od "
+"innych jednostek."
 
 #: data/help.cfg:345 data/terrain.cfg:473 data/terrain.cfg:482
 msgid "Grassland"
@@ -2405,7 +2414,6 @@ msgid "Cave"
 msgstr "Jaskinia"
 
 #: data/help.cfg:478
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2423,7 +2431,8 @@ msgstr ""
 "osłabione. Krasnoludy i trolle zamieszkują jaskinie, więc nie mają problemów "
 "z poruszaniem się w nich. Dotyczy to w szczególności krasnoludów, które "
 "dzięki niewielkiemu wzrostowi mogą pokonywać przeszkody nie do przebycia dla "
-"innych ras.\n"
+"innych ras. Jaskinie bywają też <ref>dst=terrain_illuminated_cave "
+"text=oświetlone</ref>.\n"
 "\n"
 "Większość jednostek otrzymuje w jaskiniach obronę na poziomie od 20 do 40%, "
 "a krasnoludy 50%."
@@ -2433,7 +2442,6 @@ msgid "Rockbound Cave"
 msgstr "Kamienista jaskinia"
 
 #: data/help.cfg:488
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2451,7 +2459,8 @@ msgstr ""
 "efektywność większości jednostek, ale podnosi ich obronę. Krasnoludy i "
 "trolle, które są głównymi mieszkańcami jaskiń, poruszają się w tym terenie "
 "ze względną łatwością. Ponadto krasnoludy dzięki swojemu małemu wzrostowi "
-"czerpią pełne korzyści z takiego ukształtowania terenu.\n"
+"czerpią pełne korzyści z takiego ukształtowania terenu. Jaskinie bywają "
+"niekiedy <ref>dst=terrain_illuminated_cave text=oświetlone</ref>.\n"
 "\n"
 "Większość jednostek ma w kamienistych jaskiniach obronę na poziomie 50%, zaś "
 "kawaleria ograniczona jest do 40%. Krasnoludy korzystają z obrony 60%."
@@ -2461,7 +2470,6 @@ msgid "Illuminated Cave"
 msgstr "Oświetlona jaskinia"
 
 #: data/help.cfg:496
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness.  This provides an attack "
@@ -2469,14 +2477,11 @@ msgid ""
 "all other regards this terrain is functionally identical to normal cave "
 "terrains."
 msgstr ""
-"Oświetlona jaskinia to kawałek gruntu, na który padają przebijające się z "
-"powierzchni promienie światła rozpraszające ciemność. Zapewnia to "
-"praworządnym jednostkom premię do ataku i odbiera tę premię jednostkom "
-"chaotycznym. Pod innymi względami teren ten nie różni się od zwykłej "
-"jaskini.\n"
-"\n"
-"Większość jednostek ma w jaskini obronę na poziomie od 20 do 40%, zaś "
-"krasnoludy 50%."
+"Oświetlona jaskinia to nieczęsto spotykany skrawek podziemnego świata, na "
+"który padają przebijające się z powierzchni promienie światła rozpraszające "
+"ciemność. Zapewnia to praworządnym jednostkom premię do ataku i odbiera tę "
+"premię jednostkom chaotycznym. Pod innymi względami teren ten nie różni się "
+"od zwykłej jaskini."
 
 #: data/help.cfg:501 data/terrain.cfg:670
 msgid "Mushroom Grove"
@@ -2553,9 +2558,8 @@ msgstr ""
 "\n"
 
 #: data/help.cfg:531
-#, fuzzy
 msgid "Submerged Village"
-msgstr "Pustynna wioska"
+msgstr "Wodna wioska"
 
 #: data/help.cfg:536
 msgid ""
@@ -2569,6 +2573,15 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defence."
 msgstr ""
+"W wodnych wioskach mieszkają mermeni i nagi. Choć stworzenia wodne czują się "
+"tam jak w domu, jednostki lądowe mają w takich wioskach duże trudności z "
+"poruszaniem się i obroną. Jak wszystkie wioski, również i te pozwalają "
+"leczyć rany wszystkim jednostkom, niezależnie od rasy. Każda jednostka "
+"stacjonująca w wiosce odzyska osiem punktów życia na turę lub zostanie "
+"uzdrowiona z trucizny.\n"
+"\n"
+"Mermeni i Nagi mają w wodnych wioskach obronę 60%, ale większość jednostek "
+"lądowych ma obronę znacznie niższą."
 
 #: data/help.cfg:541 data/terrain.cfg:565
 msgid "Chasm"
@@ -2631,7 +2644,6 @@ msgid "Bridge"
 msgstr "Most"
 
 #: data/help.cfg:570
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2647,8 +2659,8 @@ msgid ""
 msgstr ""
 "Umiejętność budowania mostów pozwala na uwolnienie się od kaprysów natury, "
 "za których sprawą brody rzeczne pojawiają się i znikają wraz ze zmianą "
-"poziomu wód. Nie można pogardzić luksusem przekraczania przeszkód wodnych "
-"suchą stopą, szczególnie w zimnych porach roku.\n"
+"poziomu wód. Nie można też pogardzić luksusem przekraczania przeszkód "
+"wodnych suchą stopą, szczególnie w zimnych porach roku.\n"
 "\n"
 "Dla tych, którzy poruszają się po lądzie lub morzu, na potrzeby rozgrywki "
 "most zawiera sobie najlepsze z obu tych światów i jest traktowany jak łąka "
@@ -2670,9 +2682,8 @@ msgstr ""
 "zatrzymywania nawet najbardziej zdeterminowanych podróżnych."
 
 #: data/help.cfg:583
-#, fuzzy
 msgid "Impassable Mountain"
-msgstr "Nieprzebyte góry"
+msgstr "Nieprzebyta góra"
 
 #: data/help.cfg:586
 msgid ""
@@ -2680,6 +2691,9 @@ msgid ""
 "in cloud.  To cross such moutains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
+"Nieprzebyte góry są tak wysokie i strome, że ich wierzchołki są zawsze "
+"spowite chmurami. Przejście takich gór jest praktycznie niemożliwe. Nawet "
+"stworzenia latające nie są w stanie pokonać ich niebotycznych grani."
 
 #: data/help.cfg:591
 msgid "General commands"
@@ -4781,10 +4795,12 @@ msgstr "6g - Przeżycie zespołowe"
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:302
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
+"Celem scenariusza jest przetrwanie tak długo, jak tylko jest to możliwe."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
+"Podpowiedź: Bardzo pomaga poznanie typów i miejsc wylęgania jednostek wroga."
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:309
 msgid "Survive for 32 turns."
@@ -5225,9 +5241,8 @@ msgid "Encampment"
 msgstr "Obóz"
 
 #: data/terrain.cfg:180
-#, fuzzy
 msgid "Elven Castle"
-msgstr "Krasnoludzki zamek"
+msgstr "Elficki zamek"
 
 #: data/terrain.cfg:191
 msgid "Dwarven Castle"
@@ -5254,9 +5269,8 @@ msgid "Encampment keep"
 msgstr "Twierdza polowa"
 
 #: data/terrain.cfg:296
-#, fuzzy
 msgid "Elven Keep"
-msgstr "Krasnoludzka twierdza"
+msgstr "Elficka twierdza"
 
 #: data/terrain.cfg:308
 msgid "Dwarven keep"
@@ -5323,9 +5337,8 @@ msgid "Cave Lit"
 msgstr "Rozświetlona jaskinia"
 
 #: data/terrain.cfg:701
-#, fuzzy
 msgid "Rockbound Cave Lit"
-msgstr "Kamienista jaskinia"
+msgstr "Kamienista oświetlona jaskinia"
 
 #: data/terrain.cfg:955
 msgid "Impassable Mountains"
@@ -6026,7 +6039,7 @@ msgstr ""
 
 #: data/units/Drake_Armageddon.cfg:3
 msgid "Armageddon Drake"
-msgstr ""
+msgstr "Smok zagłady"
 
 #: data/units/Drake_Armageddon.cfg:19
 msgid ""
@@ -6038,6 +6051,13 @@ msgid ""
 "it is made out off extremely tough minerals and rocks at the bottom of magma "
 "rivers."
 msgstr ""
+"Smoki zagłady należą do najbardziej odpornych przedstawicieli smoczej rasy. "
+"Ponieważ na co dzień żyją pośród ognia, wykształciły na niego niemal "
+"całkowitą odporność, do tego stopnia, że nawet poduszka jest przeciwko nim "
+"skuteczniejszą bronią od pochodni. Ich potężny pancerz jest wyznacznikiem "
+"wysokiego statusu społecznego i podobnie jak pancerz nieco słabszych Smoków "
+"piekielnych powstaje z niezwykle twardych skał i minerałów tworzących koryta "
+"strumieni magmy."
 
 #: data/units/Drake_Armageddon.cfg:75 data/units/Drake_Burner.cfg:61
 #: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
@@ -6403,7 +6423,7 @@ msgstr "uderzenie"
 
 #: data/units/Drake_Hurricane.cfg:3
 msgid "Hurricane Drake"
-msgstr "Huraganowy smok"
+msgstr "Smok huraganowy"
 
 #: data/units/Drake_Hurricane.cfg:30
 msgid ""
@@ -6422,7 +6442,7 @@ msgstr ""
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
-msgstr "Piekielny smok"
+msgstr "Smok piekielny"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -11248,7 +11268,7 @@ msgstr "Odczytywanie plików i tworzenie pamięci podręcznej."
 
 #: src/menu_events.cpp:66
 msgid "Detail"
-msgstr ""
+msgstr "Szczegóły"
 
 #: src/menu_events.cpp:101
 msgid ""
@@ -11495,7 +11515,7 @@ msgstr "Przemianuj jednostkę"
 
 #: src/menu_events.cpp:1363
 msgid "Team only"
-msgstr ""
+msgstr "Tylko drużyna"
 
 #: src/menu_events.cpp:1368
 msgid "Place Label"
@@ -11512,6 +11532,8 @@ msgstr "Szukaj"
 #: src/menu_events.cpp:1518
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
+"Komendy: whisper list emote. Wpisz /help [komenda], aby uzyskać więcej "
+"informacji."
 
 #: src/menu_events.cpp:1569
 msgid ""
@@ -11523,25 +11545,27 @@ msgstr ""
 
 #: src/menu_events.cpp:1573
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
-msgstr ""
+msgstr "Dodanie gracza do listy przyjaciół. Użycie: /list addfriend [argument]"
 
 #: src/menu_events.cpp:1575
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
-msgstr ""
+msgstr "Dodanie gracza do listy ignorowanych. Użycie: /list ignore [argument]"
 
 #: src/menu_events.cpp:1577
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
+"Usunięcie gracza z listy ignorowanych lub przyjaciół. Użycie: /list remove "
+"[argument]"
 
 #: src/menu_events.cpp:1579
 msgid "Clear your ignore and friends list. Usage: /list clear"
-msgstr ""
+msgstr "Wyczyszczenie listy ignorowanych i przyjaciół. Użycie: /list clear"
 
 #: src/menu_events.cpp:1581
 msgid "Show your ignore and friends list. Usage: /list display"
-msgstr ""
+msgstr "Wyświetlenie listy ignorowanych i przyjaciół. Użycie: /list display"
 
 #: src/menu_events.cpp:1583
 msgid "Unknown subcommand"
@@ -11554,6 +11578,11 @@ msgid ""
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
+"Ignorowanie wiadomości od graczy znajdujących się na liście ignorowanych i "
+"podświetlanie wiadomości od graczy znajdujących się na liście przyjaciół. "
+"Użycie: /list [podkomenda] [argument](opcjonalnie) Podkomendy: addfriend "
+"addignore remove display clear. Aby uzyskać więcej informacji, wpisz: /help "
+"list [podkomenda]."
 
 #: src/menu_events.cpp:1589
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
@@ -11573,15 +11602,15 @@ msgstr "Zła nazwa użytkownika: "
 
 #: src/menu_events.cpp:1610
 msgid "Added to friends list: "
-msgstr ""
+msgstr "Dodano do listy przyjaciół: "
 
 #: src/menu_events.cpp:1617
 msgid "Removed from list: "
-msgstr ""
+msgstr "Usunięto z listy: "
 
 #: src/menu_events.cpp:1643
 msgid "There are no players on your friends or ignore list."
-msgstr ""
+msgstr "Na liście ignorowanych lub przyjaciół nie ma żadnych graczy."
 
 #: src/menu_events.cpp:1653
 msgid "Removed from ignore list: "
@@ -11589,7 +11618,7 @@ msgstr "Usunięto z listy ignorowanych: "
 
 #: src/menu_events.cpp:1656
 msgid "Removed from friends list: "
-msgstr ""
+msgstr "Usunięto z listy przyjaciół: "
 
 #: src/menu_events.cpp:1663
 msgid "Unknown command: "
@@ -11847,7 +11876,7 @@ msgstr "Użyj ustawień mapy"
 
 #: src/multiplayer_create.cpp:67
 msgid "Random start time"
-msgstr ""
+msgstr "Losowy czas rozpoczęcia"
 
 #: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
@@ -11907,7 +11936,7 @@ msgstr "Użyj ustawień scenariusza"
 
 #: src/multiplayer_create.cpp:164
 msgid "Randomize time of day in begin"
-msgstr ""
+msgstr "Losowy wybór początkowej pory dnia"
 
 #: src/multiplayer_create.cpp:167
 msgid "Enemy units cannot be seen unless they are in range of your units"
@@ -11985,7 +12014,7 @@ msgstr "Złoto z wiosek:"
 
 #: src/multiplayer_create.cpp:361
 msgid "Exp. Mod.: "
-msgstr ""
+msgstr "Mod. dośw.:"
 
 #: src/multiplayer_create.cpp:363
 msgid "Experience Modifier: "
@@ -12061,15 +12090,13 @@ msgstr "Błędny kolor"
 
 #: src/multiplayer_ui.cpp:338
 msgid "Send a private message to "
-msgstr ""
+msgstr "Wyślij prywatną wiadomość do "
 
 #: src/multiplayer_ui.cpp:339
-#, fuzzy
 msgid "Whisper"
-msgstr "Biały"
+msgstr "Szept"
 
 #: src/multiplayer_ui.cpp:340
-#, fuzzy
 msgid "Message: "
 msgstr "Wiadomość:"
 
