@@ -1809,16 +1809,22 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						screen->float_label(loc,text,red,green,blue);
 					}
 				}
-				if(utils::string_bool(cfg["advance"],true)) {
-					// try to advance the unit, the code in dialogs tests whether the 
-					// unit can advance, whether or not to show a dialog depends on 
-					// who's turn it is. Only shown if the side is the playing side 
-					// and the current player is a human. (The parameter is random
-					// so needs to be inverted.)
-					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, 
-							! (lexical_cast<size_t>(state_of_game->get_variable("side_number")) == u.side() &&
-							(*teams)[u.side()-1].is_human()));
+				/*
+				if(utils::string_bool(cfg["advance"],true) && get_replay_source().at_end()) {
+					//Try to advance the unit
+
+					//FIXME: get player_number_ from the play_controller not from the WML vars
+					const t_string& side_str = state_of_game->get_variable("side_number");
+					const int side = lexical_cast_default<int>(side_str.value(), -1);
+
+					//Select advancement if it is on the playing side and the player is a human
+					const bool sel = (side == u.side() && (*teams)[side-1].is_human());
+
+					//The code in dialogs::advance_unit tests whether the unit can advance
+					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel);
+					recorder.add_advancement(); //FIXME: not yet implemented
 				}
+				*/
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
 
