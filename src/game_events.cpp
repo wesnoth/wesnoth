@@ -2246,7 +2246,7 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 
 bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc)
 {
-	const bool res = u.matches_filter(filter.get_parsed_config(),loc);
+	const bool res = u.matches_filter(filter.get_config(),loc);
 	if(res == true) {
 		const vconfig::child_list& nots = filter.get_children("not");
 		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
@@ -2261,7 +2261,7 @@ bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::loca
 
 bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 {
-	const bool res = filter_loc(itor->first,filter) && itor->second.matches_filter(filter.get_parsed_config(),itor->first);
+	const bool res = filter_loc(itor->first,filter) && itor->second.matches_filter(filter.get_config(),itor->first);
 	if(res == true) {
 		const vconfig::child_list& nots = filter.get_children("not");
 		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
