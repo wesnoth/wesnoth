@@ -115,8 +115,6 @@ typedef std::list<topic> topic_list;
 
 /// A section contains topics and sections along with title and ID.
 struct section {
-	section(const std::string &_title, const std::string &_id, const topic_list &_topics,
-			const std::vector<section> &_sections);
 	section() : title(""), id("") {}
 	section(const section&);
 	section& operator=(const section&);
@@ -1373,15 +1371,6 @@ bool topic::operator==(const topic &t) const
 bool topic::operator<(const topic &t) const
 {
 	return id < t.id;
-}
-
-
-section::section(const std::string &_title, const std::string &_id, const topic_list &_topics,
-		const std::vector<section> &_sections)
-	: title(_title), id(_id), topics(_topics)
-{
-	std::transform(_sections.begin(), _sections.end(), std::back_inserter(sections),
-				   create_section());
 }
 
 section::~section()
