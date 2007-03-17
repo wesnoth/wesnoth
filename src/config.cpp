@@ -566,8 +566,21 @@ bool config::matches(const config &filter) const
 	// first match values. all values should match
 	for(string_map::const_iterator j = filter.values.begin(); j != filter.values.end(); ++j) {
 		if(!this->values.count(j->first)) return false; 
-		if(this->values.find(j->first)->second != j->second) return false;
-
+		const t_string& test_val = this->values.find(j->first)->second;
+		if(test_val != j->second) {
+			const std::string& boolcheck = j->second.value();
+			if(boolcheck == "yes" || boolcheck == "true" || boolcheck == "on") {
+				if(!utils::string_bool(test_val.value(), false)) {
+					return false;
+				}
+			} else if(boolcheck == "no" || boolcheck == "false" || boolcheck == "off") {
+				if(utils::string_bool(test_val.value(), true)) {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
 	}
 	
 	//now, match the kids

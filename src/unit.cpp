@@ -871,7 +871,7 @@ bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::locatio
 		return false;
 	}
 
-	if (canrecruit.empty() == false && (canrecruit == "1") != can_recruit()) {
+	if (canrecruit.empty() == false && utils::string_bool(canrecruit) != can_recruit()) {
 		return false;
 	}
 
