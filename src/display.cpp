@@ -1681,20 +1681,21 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 	if(str.empty() == false) {
 		const SDL_Rect& rect = map_area();
 
-		const SDL_Rect& text_area = font::text_area(str,font::SIZE_PLUS);
+		const int font_size = font::SIZE_PLUS * zoom_ / DefaultZoom;
+		const SDL_Rect& text_area = font::text_area(str,font_size);
 		const int x = xloc + zoom_/2 - text_area.w/2;
 		const int y = yloc + zoom_/2 - text_area.h/2;
 
 		//draw the text with a black outline
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x-1,y-1);
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x-1,y);
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x-1,y+1);
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x,y-1);
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x+1,y-1);
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x+1,y);
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x+1,y+1);
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x,y+1);
-		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::YELLOW_COLOUR,str,x,y);
+		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x-1,y-1);
+		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x-1,y);
+		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x-1,y+1);
+		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x,y-1);
+		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x+1,y-1);
+		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x+1,y);
+		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x+1,y+1);
+		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x,y+1);
+		font::draw_text(&screen_,rect,font_size,font::YELLOW_COLOUR,str,x,y);
 	}
 }
 
