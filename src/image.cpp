@@ -40,7 +40,7 @@ typedef std::pair<image::locator::value, int> locator_finder_pair;
 locator_finder_t locator_finder;
 
 // Definition of all image maps
-image::image_cache images_,scaled_images_,unmasked_images_;
+image::image_cache images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
 image::image_cache brightened_images_,semi_brightened_images_;
 
 image::locator_cache alternative_images_;
@@ -82,7 +82,8 @@ mini_terrain_cache_map mini_terrain_cache;
 void flush_cache()
 {
 	reset_cache(images_);
-	reset_cache(scaled_images_);
+	reset_cache(scaled_to_hex_images_);
+	reset_cache(scaled_to_zoom_);
 	reset_cache(unmasked_images_);
 	reset_cache(brightened_images_);
 	reset_cache(semi_brightened_images_);
@@ -102,7 +103,8 @@ void locator::init_index()
 		locator_finder.insert(locator_finder_pair(val_, index_));
 
 		images_.push_back(cache_item<surface>());
-		scaled_images_.push_back(cache_item<surface>());
+		scaled_to_hex_images_.push_back(cache_item<surface>());
+		scaled_to_zoom_.push_back(cache_item<surface>());
 		unmasked_images_.push_back(cache_item<surface>());
 		brightened_images_.push_back(cache_item<surface>());
 		semi_brightened_images_.push_back(cache_item<surface>());
@@ -451,7 +453,8 @@ void set_colour_adjustment(int r, int g, int b)
 		red_adjust = r;
 		green_adjust = g;
 		blue_adjust = b;
-		reset_cache(scaled_images_);
+		reset_cache(scaled_to_hex_images_);
+		reset_cache(scaled_to_zoom_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(alternative_images_);
@@ -463,7 +466,8 @@ void set_image_mask(const std::string& image)
 {
 	if(image_mask != image) {
 		image_mask = image;
-		reset_cache(scaled_images_);
+		reset_cache(scaled_to_hex_images_);
+		reset_cache(scaled_to_zoom_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(alternative_images_);
@@ -476,7 +480,8 @@ void set_zoom(int amount)
 {
 	if(amount != zoom) {
 		zoom = amount;
-		reset_cache(scaled_images_);
+		reset_cache(scaled_to_hex_images_);
+		reset_cache(scaled_to_zoom_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(unmasked_images_);
@@ -503,7 +508,7 @@ surface get_unmasked(const locator i_locator)
 	return res;
 }
 
-surface get_scaled(const locator i_locator, COLOUR_ADJUSTMENT adj)
+surface get_scaled_to_hex(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface res(get_image(i_locator, UNMASKED, adj));
 
@@ -525,6 +530,19 @@ surface get_scaled(const locator i_locator, COLOUR_ADJUSTMENT adj)
 	return res;
 }
 
+surface get_scaled_to_zoom(const locator i_locator)
+{
+	wassert(zoom != tile_size);
+	wassert(tile_size != 0);
+
+	surface res(get_image(i_locator, UNSCALED));
+	// for some reason haloes seems to have invalid images, protect against crashing
+	if(!res.null()) {
+		return scale_surface(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
+	} else {
+		return surface(NULL);
+	}
+}
 
 surface get_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
@@ -546,12 +564,24 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 	if(i_locator.is_void())
 		return surface(NULL);
 
+	bool is_unscaled = false;
+
 	switch(type) {
 	case UNSCALED:
+		is_unscaled = true;
 		imap = &images_;
 		break;
 	case SCALED_TO_HEX:
-		imap = &scaled_images_;
+		imap = &scaled_to_hex_images_;
+		break;
+	case SCALED_TO_ZOOM:
+		// only use separate cache if scaled
+		if(zoom != tile_size) {
+			imap = &scaled_to_zoom_;
+		} else {
+			is_unscaled = true;
+			imap = &images_;
+		}
 		break;
 	case UNMASKED:
 		imap = &unmasked_images_;
@@ -571,7 +601,7 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 
 	// If type is unscaled, directly load the image from the disk. Else,
 	// create it from the unscaled image
-	if(type == UNSCALED) {
+	if(is_unscaled) {
 		res = i_locator.load_from_disk();
 
 		if(res == NULL) {
@@ -584,7 +614,10 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 
 		switch(type) {
 		case SCALED_TO_HEX:
-			res = get_scaled(i_locator, adj);
+			res = get_scaled_to_hex(i_locator, adj);
+			break;
+		case SCALED_TO_ZOOM:
+			res = get_scaled_to_zoom(i_locator);
 			break;
 		case UNMASKED:
 			res = get_unmasked(i_locator);

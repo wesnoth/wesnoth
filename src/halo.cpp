@@ -52,16 +52,12 @@ public:
 private:
 
 	const std::string& current_image() { return images_.get_current_frame(); }
-	void rezoom();
 
 	animated<std::string> images_;
 
-	std::string current_image_;
-
 	ORIENTATION orientation_;
 
-	int origx_, origy_, x_, y_;
-	double origzoom_, zoom_;
+	int x_, y_;
 	surface surf_, buffer_;
 	SDL_Rect rect_;
 
@@ -96,8 +92,7 @@ std::set<int> changing_haloes;
 	
 effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
 	const gamemap::location& loc, ORIENTATION orientation, bool infinite) :
-		images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), 
-		x_(xpos), y_(ypos), origzoom_(disp->zoom()), zoom_(disp->zoom()), 
+		images_(img), orientation_(orientation), x_(xpos), y_(ypos),
 		surf_(NULL), buffer_(NULL), rect_(empty_rect), loc_(loc)
 {
 	wassert(disp != NULL);
@@ -109,40 +104,13 @@ effect::effect(int xpos, int ypos, const animated<std::string>::anim_description
 	if(!images_.animation_finished()) {
 		images_.update_last_draw_time();
 	}
-
-	current_image_ = "";
-	rezoom();
 }
 
 void effect::set_location(int x, int y)
 {
 	const gamemap::location zero_loc(0,0);
-	x_ = origx_ = x - disp->get_location_x(zero_loc);
-	y_ = origy_ = y - disp->get_location_y(zero_loc);
-	origzoom_ = disp->zoom();
-
-	if(zoom_ != origzoom_) {
-		rezoom();
-	}
-}
-
-void effect::rezoom()
-{
-	zoom_ = disp->zoom();
-	x_ = int((origx_*zoom_)/origzoom_);
-	y_ = int((origy_*zoom_)/origzoom_);
-
-	surf_.assign(image::get_image(current_image_,image::UNSCALED));
-	if(surf_ != NULL && (orientation_ == HREVERSE || orientation_ == HVREVERSE)) {
-		surf_.assign(image::reverse_image(surf_));
-	}
-	if(surf_ != NULL && (orientation_ == VREVERSE || orientation_ == HVREVERSE)) {
-		surf_.assign(flop_surface(surf_));
-	}
-
-	if(surf_ != NULL && zoom_ != 1.0) {
-		surf_.assign(scale_surface(surf_,int(surf_->w*zoom_),int(surf_->h*zoom_)));
-	}
+	x_ = x - disp->get_location_x(zero_loc);
+	y_ = y - disp->get_location_y(zero_loc);
 }
 
 bool effect::render()
@@ -156,14 +124,15 @@ bool effect::render()
 	}
 
 	images_.update_last_draw_time();
-	const std::string& img = current_image();
-	if(surf_ == NULL || zoom_ != disp->zoom() || current_image_ != img) {
-		current_image_ = img;
-		rezoom();
-	}
-
+	surf_.assign(image::get_image(current_image(),image::SCALED_TO_ZOOM));
 	if(surf_ == NULL) {
 		return false;
+	}
+	if(orientation_ == HREVERSE || orientation_ == HVREVERSE) {
+		surf_.assign(image::reverse_image(surf_));
+	}
+	if(orientation_ == VREVERSE || orientation_ == HVREVERSE) {
+		surf_.assign(flop_surface(surf_));
 	}
 
 	const gamemap::location zero_loc(0,0);
@@ -388,7 +357,6 @@ void unrender(std::set<gamemap::location> invalidated_locations)
 
 void render()
 {
-
 	if(preferences::show_haloes() == false || haloes.size() == 0 ||
 			(new_haloes.size() == 0 && invalidated_haloes.size() == 0)) {
 		return;

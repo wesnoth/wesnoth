@@ -27,6 +27,7 @@
 ///images come in a number of varieties:
 /// - unscaled: no modifications have been done on the image.
 /// - scaled_to_hex: images are scaled to the size of a tile
+/// - scaled_to_zoom: images are scaled to the zoom factor, factor 1 is same as unscaled no other modifications are done
 /// - unmasked: images are scaled, but have no time of day masking applied to them
 /// - brightened: images are scaled and brighter than normal.
 namespace image {
@@ -176,7 +177,7 @@ namespace image {
 
 	// unscaled : image will be drawn "as is" without changing size, even in case of redraw
 	// scaled_to_hex : image will be scaled to fit into a hex, taking zoom into account
-	enum TYPE { UNSCALED, SCALED_TO_HEX, UNMASKED,  BRIGHTENED, SEMI_BRIGHTENED };
+	enum TYPE { UNSCALED, SCALED_TO_HEX, SCALED_TO_ZOOM, UNMASKED,  BRIGHTENED, SEMI_BRIGHTENED };
 
 	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR };
 

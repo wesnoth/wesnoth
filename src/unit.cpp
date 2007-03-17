@@ -1490,7 +1490,7 @@ const surface unit::still_image() const
 	}
 #endif
 
-	surface unit_image(image::get_image(loc,image::UNSCALED));
+	surface unit_image(image::get_image(loc,image::SCALED_TO_ZOOM));
 	return unit_image;
 }
 
@@ -1807,7 +1807,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 #endif
 
 	surface image(image::get_image(loc,
-				image::UNSCALED,image::ADJUST_COLOUR,
+				image::SCALED_TO_ZOOM,image::ADJUST_COLOUR,
 #ifndef LOW_MEM
 				true
 #else
