@@ -28,14 +28,6 @@ struct help_manager {
 };
 
 struct section;
-
-/// Open a help dialog showing the topics with ids topics_to_show and
-/// the sections with ids sections_to_show. Subsections and subtopics of
-/// the sections will be added recursively according to the help config.
-void show_help(display &disp, const std::vector<std::string> &topics_to_show,
-			   const std::vector<std::string> &sections_to_show, const std::string show_topic="",
-			   int xloc=-1, int yloc=-1);
-
 /// Open a help dialog using a toplevel other than the default. This
 /// allows for complete customization of the contents, although not in a
 /// very easy way.

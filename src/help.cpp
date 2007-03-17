@@ -2575,36 +2575,6 @@ void show_help(display &disp, std::string show_topic, int xloc, int yloc)
 	show_help(disp, toplevel, show_topic, xloc, yloc);
 }
 
-void show_help(display &disp, const std::vector<std::string> &topics_to_show,
-			   const std::vector<std::string> &sections_to_show, const std::string show_topic,
-			   int xloc, int yloc)
-{
-	section to_show;
-	std::vector<std::string>::const_iterator it;
-	for (it = topics_to_show.begin(); it != topics_to_show.end(); it++) {
-		// Check both the visible toplevel and the hidden sections.
-		const topic *t = find_topic(toplevel, *it);
-		t = t == NULL ? find_topic(hidden_sections, *it) : t;
-		if (t != NULL) {
-			to_show.topics.push_back(*t);
-		}
-		else {
-			std::cerr << "Warning: topic with id " << *it << " does not exist." << std::endl;
-		}
-	}
-	for (it = sections_to_show.begin(); it != sections_to_show.end(); it++) {
-		const section *s = find_section(toplevel, *it);
-		s = s == NULL ? find_section(hidden_sections, *it) : s;
-		if (s != NULL) {
-			to_show.add_section(*s);
-		}
-		else {
-			std::cerr << "Warning: section with id " << *it << " does not exist." << std::endl;
-		}
-	}
-	show_help(disp, to_show, show_topic, xloc, yloc);
-}
-
 /// Open a help dialog using a toplevel other than the default.
 void show_help(display &disp, const section &toplevel_sec, const std::string show_topic,
 			   int xloc, int yloc)
