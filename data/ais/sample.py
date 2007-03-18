@@ -1,5 +1,4 @@
 #!WPY
-import wesnoth, heapq, random
 
 """This is a rather simple minded example of a python AI."""
 
@@ -162,10 +161,10 @@ class AI:
             score = -score
 
             if unit in units and enemy in enemies:
-                try:
-                    loc = wesnoth.move_unit(unit, tile)
-                except ValueError:
-                    loc = None
+                #try:
+                loc = wesnoth.move_unit(unit, tile)
+                #except ValueError:
+                #    loc = None
                 if loc == tile:
                     e = wesnoth.get_units()[enemy]
                     wesnoth.attack_unit(tile, enemy)

@@ -11,6 +11,22 @@
    See the COPYING file for more details.
 */
 
+/* Note about Python exceptions:
+
+   Originally, runtime exceptions were used for things like using out of bounds
+   coordinates or moving a unit which already got killed, and were supposed to
+   be catched by scripts. The subset of the Python language allowed in
+   scripts now has no exceptions anymore, to keep things simple. Therefore the
+   API was changed so scripts are not supposed to catch exceptions anymore.
+
+   This means, invalid positions or units will now only be indicated by things
+   like return  values, but are ignored otherwise.
+
+   Most API functions still will cause exceptions (like if the game ends, or
+   the wrong number of parameters is passed to a function) - but those are not
+   supposed to be catched by user scripts.
+*/
+
 #ifdef HAVE_PYTHON
 
 #include "global.hpp"
@@ -33,18 +49,15 @@ static python_ai* running_instance;
 bool python_ai::init_ = false;
 PyObject* python_ai::python_error_ = NULL;
 
-#define MSG_UNIT "Invalid unit"
-void python_ai::set_error(const char *fmt, ...)
-{
-	char buf[1024];
-	va_list arg;
+#define return_none do {Py_INCREF(Py_None); return Py_None;} while(false)
 
-	va_start(arg, fmt);
-	vsnprintf(buf, sizeof(buf), fmt, arg);
-	va_end(arg);
-
-	PyErr_SetString(PyExc_ValueError, buf);
-}
+#define wrap(code) \
+    try { code } \
+    catch(end_level_exception& e) { \
+        running_instance->exception = e; \
+        PyErr_SetString(PyExc_RuntimeError, "C++ exception!"); \
+        return NULL; \
+    }
 
 static PyObject* wrap_unittype(const unit_type& type);
 static PyObject* wrap_attacktype(const attack_type& type);
@@ -121,7 +134,7 @@ static PyGetSetDef unittype_getseters[] = {
 
 PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* args )
 {
-	if ( !PyArg_ParseTuple( args, "" ) )
+	if (!PyArg_ParseTuple(args, "" ))
 		return NULL;
 
 	PyObject* list = PyList_New(type->unit_type_->advances_to().size());
@@ -416,135 +429,96 @@ static PyObject* wrap_attacktype(const attack_type& type)
 	return (PyObject*)attack;
 }
 
+#define u_check if (!running_instance->is_unit_valid(unit->unit_)) return_none
 
-bool python_ai::is_unit_valid(const unit* unit, bool do_set_error)
+bool python_ai::is_unit_valid(const unit* unit)
 {
 	if (!unit)
 	{
-		if (do_set_error)
-			set_error("Undefined unit.");
 		return false;
 	}
 	for(unit_map::const_iterator i = running_instance->get_info().units.begin(); i != running_instance->get_info().units.end(); ++i) {
 		if (unit == &i->second)
 			return true;
 	}
-	if (do_set_error)
-		set_error("Unit was destroyed.");
 	return false;
 }
 
 static PyObject* unit_get_name(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-	return Py_BuildValue("s",( const char* )unit->unit_->name().c_str());
+    u_check;
+    return Py_BuildValue("s",( const char* )unit->unit_->name().c_str());
 }
 
 static PyObject* unit_is_enemy(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-	return Py_BuildValue("i",running_instance->current_team().is_enemy(unit->unit_->side()) == true ? 1 : 0);
+    u_check;
+    return Py_BuildValue("i", running_instance->current_team().is_enemy(unit->unit_->side()) == true ? 1 : 0);
 }
 
 static PyObject* unit_can_recruit(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-	return Py_BuildValue("i",unit->unit_->can_recruit() == true ? 1 : 0);
+    u_check;
+    return Py_BuildValue("i", unit->unit_->can_recruit() == true ? 1 : 0);
 }
 
 static PyObject* unit_side(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-	return Py_BuildValue("i",unit->unit_->side());
+    u_check;
+    return Py_BuildValue("i", unit->unit_->side());
 }
 
 static PyObject* unit_movement_left(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-	return Py_BuildValue("i",unit->unit_->movement_left());
+    u_check;
+    return Py_BuildValue("i", unit->unit_->movement_left());
 }
 
 static PyObject* unit_can_attack(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-	return Py_BuildValue("i",unit->unit_->attacks_left());
+    u_check;
+    return Py_BuildValue("i", unit->unit_->attacks_left());
 }
 
 static PyObject* unit_hitpoints(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-	return Py_BuildValue("i",(int)unit->unit_->hitpoints());
+    u_check;
+    return Py_BuildValue("i", (int)unit->unit_->hitpoints());
 }
 
 static PyObject* unit_max_hitpoints(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-        return Py_BuildValue("i",(int)unit->unit_->max_hitpoints());
+    u_check;
+    return Py_BuildValue("i", (int)unit->unit_->max_hitpoints());
 }
 
 static PyObject* unit_experience(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-	return Py_BuildValue("i",(int)unit->unit_->experience());
+    u_check;
+    return Py_BuildValue("i", (int)unit->unit_->experience());
 }
 
 static PyObject* unit_max_experience(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-       return Py_BuildValue("i",(int)unit->unit_->max_experience());
+    u_check;
+    return Py_BuildValue("i", (int)unit->unit_->max_experience());
 }
 
 static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-    return Py_BuildValue("i",utils::string_bool(unit->unit_->get_state("poisoned")));
+    u_check;
+    return Py_BuildValue("i", utils::string_bool(unit->unit_->get_state("poisoned")));
 }
 
 static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
 {
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
-    return Py_BuildValue("i",utils::string_bool(unit->unit_->get_state("stoned")));
+    u_check;
+    return Py_BuildValue("i", utils::string_bool(unit->unit_->get_state("stoned")));
 }
 
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
-	return Py_BuildValue("i",running_instance->is_unit_valid(unit->unit_, false) == true ? 1 : 0);
+    return Py_BuildValue("i", running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
 }
 
 static PyGetSetDef unit_getseters[] = {
@@ -580,24 +554,18 @@ static PyGetSetDef unit_getseters[] = {
 
 static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
 {
-	if ( !PyArg_ParseTuple( args, "" ) )
-		return NULL;
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
+    if (!PyArg_ParseTuple(args, ""))
+        return NULL;
+    u_check;
 	wassert(unit->unit_->type());
 	return wrap_unittype(*unit->unit_->type());
 }
 
 static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
 {
-	if ( !PyArg_ParseTuple( args, "" ) )
-		return NULL;
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
+    if (!PyArg_ParseTuple(args, ""))
+        return NULL;
+    u_check;
 	PyObject* list = PyList_New(unit->unit_->attacks().size());
 	for ( size_t attack = 0; attack < unit->unit_->attacks().size(); attack++)
 		PyList_SetItem(list,attack,wrap_attacktype(unit->unit_->attacks()[attack]));
@@ -609,10 +577,7 @@ static PyObject* wrapper_unit_damage_from( wesnoth_unit* unit, PyObject* args )
 	wesnoth_attacktype* attack;
 	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_attacktype_type, &attack ) )
 		return NULL;
-	if (!running_instance->is_unit_valid(unit->unit_)){
-		running_instance->set_error(MSG_UNIT);
-		return NULL;
-	}
+    u_check;
 	static gamemap::location no_loc;
 	return Py_BuildValue("i",unit->unit_->damage_from(*attack->attack_type_,true,no_loc));
 }
@@ -620,7 +585,7 @@ static PyObject* wrapper_unit_damage_from( wesnoth_unit* unit, PyObject* args )
 static PyObject* wrapper_unittype_resistance_against( wesnoth_unittype* type, PyObject* args )
 {
 	wesnoth_attacktype* attack;
-	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_attacktype_type, &attack ) )
+	if (!PyArg_ParseTuple(args, "O!", &wesnoth_attacktype_type, &attack))
 		return NULL;
 	return Py_BuildValue("i",type->unit_type_->movement_type().resistance_against(*attack->attack_type_));
 }
@@ -1311,26 +1276,20 @@ PyObject* python_ai::wrapper_get_units(PyObject* /*self*/, PyObject* args)
 
 PyObject* python_ai::wrapper_get_location(PyObject* /*self*/, PyObject* args)
 {
-	int x, y;
-    if ( !PyArg_ParseTuple( args, "ii", &x, &y ) )
+    int x, y;
+    if (!PyArg_ParseTuple( args, "ii", &x, &y ))
         return NULL;
-    if(x < 0 || x >= running_instance->get_info().map.x()){
-	running_instance->set_error("Invalid x value %d", x);
-	return NULL;
-    }
-    if(y < 0 || y >= running_instance->get_info().map.y()){
-	running_instance->set_error("Invalid y value %d", y);
-	return NULL;
-    }
-    
+    if (x < 0 || x >= running_instance->get_info().map.x()) return_none;
+    if (y < 0 || y >= running_instance->get_info().map.y()) return_none;
+
     gamemap::location loc(x,y);
-	return wrap_location(loc);
+    return wrap_location(loc);
 }
 
 PyObject* python_ai::wrapper_get_map(PyObject* /*self*/, PyObject* args)
 {
-    if ( !PyArg_ParseTuple( args, "" ) )
-        return NULL;
+    if (!PyArg_ParseTuple(args, "" )) return NULL;
+
 	wesnoth_gamemap* map = (wesnoth_gamemap*)PyObject_NEW(wesnoth_gamemap, &wesnoth_gamemap_type);
 	map->map_ = &running_instance->get_info().map;
 	return (PyObject*)map;
@@ -1338,8 +1297,7 @@ PyObject* python_ai::wrapper_get_map(PyObject* /*self*/, PyObject* args)
 
 PyObject* python_ai::wrapper_get_teams(PyObject* /*self*/, PyObject* args)
 {
-    if ( !PyArg_ParseTuple( args, "" ) )
-        return NULL;
+    if (!PyArg_ParseTuple(args, "" )) return NULL;
 
 	PyObject* list = PyList_New(running_instance->get_info().teams.size());
 	wesnoth_team* the_team;
@@ -1386,8 +1344,9 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* from;
 	wesnoth_location* to;
-	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_location_type, &from, &wesnoth_location_type, &to ) )
-		return NULL;
+    if (!PyArg_ParseTuple( args, "O!O!", &wesnoth_location_type, &from,
+        &wesnoth_location_type, &to ) )
+        return NULL;
 
 	bool valid = false;
 	ai_interface::move_map::const_iterator pos;
@@ -1400,36 +1359,30 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 				break;
 		}
 	}
-	if (!valid)
-	{
-		set_error("No unit at specified position.");
-		return NULL;
-	}
-	if (pos == running_instance->src_dst_.end())
-	{
-		set_error("This unit can't go to specified destination.");
-		return NULL;
-	}
+	if (!valid) return_none;
+	if (pos == running_instance->src_dst_.end()) return_none;
 
     location location;
-    try {
+    wrap(
         location = running_instance->move_unit_partial(
             *from->location_, *to->location_, running_instance->possible_moves_);
-    }
-    catch(end_level_exception& e) {
-        running_instance->exception = e;
-        PyErr_SetString(PyExc_RuntimeError, "Game aborted!");
-        return NULL;
-    }
+    )
+
     PyObject* loc = wrap_location(location);
 	running_instance->src_dst_.clear();
 	running_instance->dst_src_.clear();
 	running_instance->possible_moves_.clear();
-	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
+	running_instance->calculate_possible_moves(
+        running_instance->possible_moves_,
+        running_instance->src_dst_,
+        running_instance->dst_src_,false);
 	running_instance->enemy_src_dst_.clear();
 	running_instance->enemy_dst_src_.clear();
 	running_instance->enemy_possible_moves_.clear();
-	running_instance->calculate_possible_moves(running_instance->enemy_possible_moves_,running_instance->enemy_src_dst_,running_instance->enemy_dst_src_,true);
+    running_instance->calculate_possible_moves(
+        running_instance->enemy_possible_moves_,
+        running_instance->enemy_src_dst_,
+        running_instance->enemy_dst_src_,true);
 	return loc;
 }
 
@@ -1438,16 +1391,15 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 	wesnoth_location* from;
 	wesnoth_location* to;
 	int weapon = -1; // auto-choose
-	if ( !PyArg_ParseTuple( args, "O!O!|i", &wesnoth_location_type, &from, &wesnoth_location_type, &to, &weapon ) )
-		return NULL;
+    if (!PyArg_ParseTuple( args, "O!O!|i", &wesnoth_location_type, &from,
+        &wesnoth_location_type, &to, &weapon ) )
+        return NULL;
 
     // FIXME: Remove this check and let the C++ code do the check if the attack
     // is valid at all (there may be ranged attacks or similar later, and then
     // the below will horribly fail).
-    if (!tiles_adjacent(*from->location_, *to->location_)) {
-        Py_INCREF(Py_None);
-        return Py_None;
-    }
+    if (!tiles_adjacent(*from->location_, *to->location_))
+        return_none;
 
     info& inf = running_instance->get_info();
 
@@ -1461,16 +1413,12 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
         *to->location_,
         weapon);
 
-    try {
+    wrap(
         running_instance->attack_enemy(*from->location_,*to->location_,
             bc.get_attacker_stats().attack_num,
             bc.get_defender_stats().attack_num);
-    }
-    catch(end_level_exception& e) {
-        running_instance->exception = e;
-        PyErr_SetString(PyExc_RuntimeError, "Game is won!");
-        return NULL;
-    }
+    )
+
 	running_instance->src_dst_.clear();
 	running_instance->dst_src_.clear();
 	running_instance->possible_moves_.clear();
@@ -1487,8 +1435,8 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* where;
-	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &where ) )
-		return NULL;
+	if (!PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &where))
+		 return NULL;
 
     gamemap const &map = running_instance->get_info().map;
 	PyObject* list = PyList_New(0);
@@ -1504,14 +1452,16 @@ PyObject* python_ai::wrapper_recruit_unit(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* where;
 	const char* name;
-	if ( !PyArg_ParseTuple( args, "sO!", &name, &wesnoth_location_type, &where ) )
-		return NULL;
-	return Py_BuildValue("i", running_instance->recruit(name,*where->location_) == true ? 1 : 0);
+    if (!PyArg_ParseTuple( args, "sO!", &name, &wesnoth_location_type, &where))
+        return NULL;
+    wrap(
+        return Py_BuildValue("i", running_instance->recruit(name,*where->location_) == true ? 1 : 0);
+    )
 }
 
 PyObject* python_ai::wrapper_get_gamestatus(PyObject* /*self*/, PyObject* args)
 {
-	if ( !PyArg_ParseTuple( args, "" ) )
+	if (!PyArg_ParseTuple(args, ""))
 		return NULL;
 	wesnoth_gamestatus* status;
 	status = (wesnoth_gamestatus*)PyObject_NEW(wesnoth_gamestatus, &wesnoth_gamestatus_type);
@@ -1553,14 +1503,13 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 	wesnoth_location* to;
 	int weapon = -1;
 
-	if ( !PyArg_ParseTuple( args, "O!O!|i", &wesnoth_location_type, &from,
-        &wesnoth_location_type, &to, &weapon) )
-		return NULL;
-	if (!running_instance->is_unit_valid(self->unit_))
-		return NULL;
+    if (!PyArg_ParseTuple(args, "O!O!|i", &wesnoth_location_type, &from,
+        &wesnoth_location_type, &to, &weapon))
+        return NULL;
+    if (!running_instance->is_unit_valid(self->unit_))
+        return_none;
 	if (weapon < -1 || weapon >= (int) self->unit_->attacks().size()){
-		set_error("Invalid weapon %d", weapon);
-		return NULL;
+		return_none;
 	}
 
     info& inf = running_instance->get_info();
@@ -1783,8 +1732,10 @@ void python_ai::play_turn()
             python_code += "'" + *i + "ais', ";
     }
     python_code += "])\n"
+        "import wesnoth, safe, heapq, random\n"
         "try:\n"
-        "    execfile(\"" + script + "\")\n"
+        "    code = file(\"" + script + "\").read()\n"
+        "    safe.safe_exec(code, {\"wesnoth\" : wesnoth, \"heapq\" : heapq, \"random\" : random})\n"
         "finally:\n"
         "    sys.path = backup\n";
     PyObject *ret = PyRun_String(python_code.c_str(), Py_file_input,
@@ -1794,7 +1745,8 @@ void python_ai::play_turn()
     Py_DECREF(globals);
 
     if (PyErr_Occurred()) {
-        // RuntimeError is the game-won exception, no need to print it
+        // RuntimeError is the game-won exception, no need to print it.
+        // Anything else likely is a mistake by the script author.
         if (!PyErr_ExceptionMatches(PyExc_RuntimeError)) {
             LOG_AI << "Python script has crashed.\n";
             PyErr_Print();
