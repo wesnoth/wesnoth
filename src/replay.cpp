@@ -1055,7 +1055,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			for(config::child_list::const_iterator v = child->get_children("set_variable").begin(); v != child->get_children("set_variable").end(); ++v) {
 				state_of_game.set_variable((**v)["name"],(**v)["value"]);
 			}
-			game_events::fire((*child)["raise"]);
+			const std::string event = (*child)["raise"];
+			//exclude these events here, because in a replay proper time of execution can't be
+			//established and therefore we fire those events inside play_controller::init_side
+			if ((event != "side turn") && (event != "turn 1") && (event != "new_turn")){
+				game_events::fire(event);
+			}
 		} else {
 			if(! cfg->child("checksum")) {
 				replay::throw_error("unrecognized action\n");

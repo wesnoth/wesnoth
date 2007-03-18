@@ -321,35 +321,23 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	player_number_str << player_number_;
 	gamestate_.set_variable("side_number",player_number_str.str());
 
+	/*  
+		normally, events must not be actively fired through replays, because they have been 
+		recorded previously and therefore will get executed anyway. Firing them in the normal
+		code would lead to double execution.
+		However, the following events are different in that they need to be executed _now_ 
+		(before calculation of income and healing) or we will risk OOS errors if we manipulate 
+		these informations inside the events and in the replay have a different order of execution.
+	*/
 	if(first_turn_) {
-		if(!current_team.is_network()) {
-			if(!is_replay) {
-				recorder.add_event("turn 1");
-				recorder.add_event("new turn");
-				recorder.add_event("side turn");
-				/* events must not be actively fired through replays, because they have been recorded 
-				   previously and therefore will get executed anyway. If we put this outside the "if", 
-				   those events will be fired two times
-				*/
-				game_events::fire("turn 1");
-				game_events::fire("new turn");
-				game_events::fire("side turn");
-			}
-		}
+		game_events::fire("turn 1");
+		game_events::fire("new turn");
+		game_events::fire("side turn");
 		first_turn_ = false;
 	} else
 	//fire side turn event only if real side change occurs not counting changes from void to a side
 	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
-		if(!current_team.is_network()) {
-			if(!is_replay) {
-				recorder.add_event("side turn");
-				/* events must not be actively fired through replays, because they have been recorded 
-				   previously and therefore will get executed anyway. If we put this outside the "if", 
-				   those events will be fired two times
-				*/
-				game_events::fire("side turn");
-			}
-		}
+		game_events::fire("side turn");
 	}
 
 	//we want to work out if units for this player should get healed, and the
