@@ -782,6 +782,12 @@ bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::locatio
 			return false;
 		}
 	}
+	//Also allow filtering on location ranges outside of the location filter
+	if(!cfg["x"].empty() || !cfg["y"].empty()){
+		if(!loc.matches_range(cfg["x"], cfg["y"])) {
+			return false;
+		}
+	}
 
 	const std::string& this_type = id();
 

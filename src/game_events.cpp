@@ -2086,60 +2086,7 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
                                                    const std::string& yloc)
 {
-	if(std::find(xloc.begin(),xloc.end(),',') != xloc.end()) {
-		std::vector<std::string> xlocs = utils::split(xloc);
-		std::vector<std::string> ylocs = utils::split(yloc);
-
-		const int size = xlocs.size() < ylocs.size()?xlocs.size():ylocs.size();
-		for(int i = 0; i != size; ++i) {
-			if(filter_loc_impl(loc,xlocs[i],ylocs[i]))
-				return true;
-		}
-
-		return false;
-	}
-
-	if(!xloc.empty()) {
-		const std::string::const_iterator dash =
-		             std::find(xloc.begin(),xloc.end(),'-');
-
-		if(dash != xloc.end()) {
-			const std::string beg(xloc.begin(),dash);
-			const std::string end(dash+1,xloc.end());
-
-			const int bot = atoi(beg.c_str()) - 1;
-			const int top = atoi(end.c_str()) - 1;
-
-			if(loc.x < bot || loc.x > top)
-				return false;
-		} else {
-			const int xval = atoi(xloc.c_str()) - 1;
-			if(xval != loc.x)
-				return false;
-		}
-	}
-
-	if(!yloc.empty()) {
-		const std::string::const_iterator dash =
-		             std::find(yloc.begin(),yloc.end(),'-');
-
-		if(dash != yloc.end()) {
-			const std::string beg(yloc.begin(),dash);
-			const std::string end(dash+1,yloc.end());
-
-			const int bot = atoi(beg.c_str()) - 1;
-			const int top = atoi(end.c_str()) - 1;
-
-			if(loc.y < bot || loc.y > top)
-				return false;
-		} else {
-			const int yval = atoi(yloc.c_str()) - 1;
-			if(yval != loc.y)
-				return false;
-		}
-	}
-
-	return true;
+	return loc.matches_range(xloc, yloc);
 }
 
 bool filter_loc(const gamemap::location& loc, const vconfig cfg)

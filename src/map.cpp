@@ -514,6 +514,59 @@ const terrain_type& gamemap::get_terrain_info(const t_translation::t_letter terr
 		return default_terrain;
 }
 
+bool gamemap::location::matches_range(const std::string& xloc, const std::string &yloc) const
+{
+	if(std::find(xloc.begin(),xloc.end(),',') != xloc.end()) {
+		std::vector<std::string> xlocs = utils::split(xloc);
+		std::vector<std::string> ylocs = utils::split(yloc);
+
+		const int size = xlocs.size() < ylocs.size()?xlocs.size():ylocs.size();
+		for(int i = 0; i != size; ++i) {
+			if(matches_range(xlocs[i],ylocs[i]))
+				return true;
+		}
+		return false;
+	}
+	if(!xloc.empty()) {
+		const std::string::const_iterator dash =
+		             std::find(xloc.begin(),xloc.end(),'-');
+		if(dash != xloc.end()) {
+			const std::string beg(xloc.begin(),dash);
+			const std::string end(dash+1,xloc.end());
+
+			const int bot = atoi(beg.c_str()) - 1;
+			const int top = atoi(end.c_str()) - 1;
+
+			if(x < bot || x > top)
+				return false;
+		} else {
+			const int xval = atoi(xloc.c_str()) - 1;
+			if(xval != x)
+				return false;
+		}
+	}
+	if(!yloc.empty()) {
+		const std::string::const_iterator dash =
+		             std::find(yloc.begin(),yloc.end(),'-');
+
+		if(dash != yloc.end()) {
+			const std::string beg(yloc.begin(),dash);
+			const std::string end(dash+1,yloc.end());
+
+			const int bot = atoi(beg.c_str()) - 1;
+			const int top = atoi(end.c_str()) - 1;
+
+			if(y < bot || y > top)
+				return false;
+		} else {
+			const int yval = atoi(yloc.c_str()) - 1;
+			if(yval != y)
+				return false;
+		}
+	}
+	return true;
+}
+
 bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod) const
 {
@@ -567,16 +620,10 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 #endif
 	
 	//Allow filtering on location ranges 
-	if(!cfg["x"].empty() && !cfg["y"].empty()){
-	  bool found=false;
-	  std::vector<gamemap::location> locs = parse_location_range(cfg["x"],cfg["y"]);
-	  for(std::vector<gamemap::location>::iterator ll = locs.begin(); ll != locs.end(); ll++){
-	    if((*ll)==loc){
-	      found=true;
-	      break;
-	    }
-	  }
-	  if(!found)return(false);
+	if(!cfg["x"].empty() || !cfg["y"].empty()){
+		if(!loc.matches_range(cfg["x"], cfg["y"])) {
+			return false;
+		}
 	}
 
 	const std::string& tod_type = cfg["time_of_day"];

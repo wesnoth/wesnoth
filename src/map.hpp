@@ -71,6 +71,7 @@ public:
 		}
 
 		int x, y;
+		bool matches_range(const std::string& xloc, const std::string& yloc) const;
 
 		// Inlining those for performance reasons
 		bool operator<(const location& a) const { return x < a.x || x == a.x && y < a.y; }
