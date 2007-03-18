@@ -92,14 +92,15 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 	return expanded_animations;
 }
 
-unit_animation::unit_animation(int start_time,const unit_frame & frame ):animated<unit_frame>(start_time)
+unit_animation::unit_animation(int start_time,const unit_frame & frame ):
+	animated<unit_frame>(start_time), frequency_(0)
 {
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
 
-unit_animation::unit_animation(const config& cfg,const std::string frame_string )
-//this format hasn't been used yet, so force the new terrain format
-:terrain_types_(t_translation::read_list(cfg["terrain"], -1, t_translation::T_FORMAT_STRING))
+unit_animation::unit_animation(const config& cfg,const std::string frame_string ) :
+	//this format hasn't been used yet, so force the new terrain format
+	terrain_types_(t_translation::read_list(cfg["terrain"], -1, t_translation::T_FORMAT_STRING))
 {
 	config::const_child_itors range = cfg.child_range(frame_string);
 	if(cfg["start_time"].empty() &&range.first != range.second) {

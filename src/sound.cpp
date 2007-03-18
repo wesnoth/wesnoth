@@ -645,9 +645,12 @@ void play_sound_internal(const std::string& files, int channel, bool sound_on)
 
 		threading::lock l(channel_mutex);
 		if(res < 0) {
+		// This is not the solution, but using a negative array index is evil -- Mordante
+/*		
 			if(channel_chunks) {
 				(*channel_chunks)[res] = NULL;
 			}
+*/			
 			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		}
 		else if(channel_chunks) {

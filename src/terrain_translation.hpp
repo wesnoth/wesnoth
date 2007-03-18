@@ -79,16 +79,15 @@ namespace t_translation {
 	 * and caches the wildcard info required for matching
 	 */
 	struct t_match{
-		t_match(){};
+		t_match();
 		t_match(const std::string& str);
 		t_match(const t_letter& letter);
-		~t_match(){};
 
 		t_list terrain;	
 		t_list mask;
 		t_list masked_terrain;
 		bool has_wildcard;
-        bool is_empty;
+		bool is_empty;
 	};
 	
 	/** 

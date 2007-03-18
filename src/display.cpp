@@ -90,7 +90,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	turbo_speed_(1), turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
-	tod_hex_mask1(NULL), tod_hex_mask2(NULL),
+	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
 	diagnostic_label_(0), fps_handle_(0)
 {
 	if(non_interactive()) {

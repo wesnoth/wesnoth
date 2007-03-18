@@ -531,7 +531,10 @@ void combatant::adjust_hitchance()
 
 	unsigned int i;
 	for (i = 1; i <= u_.max_hp; i++) {
-		double prob = summary[0][i];
+		double prob = 0.0;
+		if(i < summary[0].size()) {
+			prob = summary[0][i];
+		}
 		if (!summary[1].empty())
 			prob += summary[1][i];
 		for (unsigned int j = 0; j < u_.swarm_min + (u_.swarm_max - (double)u_.swarm_min) * u_.hp / u_.max_hp; j++)
