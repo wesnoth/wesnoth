@@ -314,6 +314,15 @@ namespace {
 
 std::set<std::string> used_items;
 
+/*
+jhinrichs, 12.11.2006:
+This variable controls the maximum number of hexes in a map, that can be parsed by an event.
+It was set to 1024 before and for larger maps this could become a problem. So it is raised to 
+65536 now, which can feature a map of size 256*256 (maps really shouldn't be bigger than that :-).
+This constant also controls the maximum number of loops for a WML while loop (hence its name).
+If this is felt to be too high now, we must split it into two constants, but i don't feel the need
+at the moment.
+*/
 const size_t MaxLoop = 65536;
 
 bool events_init() { return screen != NULL; }
