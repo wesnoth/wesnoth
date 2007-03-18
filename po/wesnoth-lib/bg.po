@@ -1,23 +1,26 @@
+# translation of bg.po to Български
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
 #
+# Automatically generated, 2004.
+# Nikolay Vladimirov <nikolay@vladimiroff.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
+"Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-12 15:46+0100\n"
-"PO-Revision-Date: 2005-09-08 20:55+0200\n"
-"Last-Translator: Georgi Dimitrov <oblak@gbg.bg>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2007-03-18 12:16+0200\n"
+"Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
+"Language-Team: Български\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: src/construct_dialog.cpp:119 src/construct_dialog.cpp:126
 #: src/editor/editor_dialogs.cpp:452
 msgid "OK"
-msgstr "Окей"
+msgstr "ОК "
 
 #: src/construct_dialog.cpp:122
 msgid "Yes"
@@ -35,7 +38,7 @@ msgstr "Отказ"
 
 #: src/construct_dialog.cpp:133
 msgid "Close"
-msgstr "Затвори"
+msgstr "Затваряне"
 
 #: src/construct_dialog.cpp:764 src/hotkeys.cpp:122
 msgid "Help"
@@ -43,53 +46,51 @@ msgstr "Помощ"
 
 #: src/editor/editor_dialogs.cpp:50
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr ""
+msgstr "Промените ви на картата ще бъдат загубени. Ще продължите ли?"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:189
-#, fuzzy
 msgid "Create New Map"
-msgstr "Нова карта"
+msgstr "Създаване на нова карта"
 
 #: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:434
 #: src/mapgen_dialog.cpp:110
 msgid "Width:"
-msgstr ""
+msgstr "Ширина"
 
 #: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:435
 #: src/mapgen_dialog.cpp:111
 msgid "Height:"
-msgstr ""
+msgstr "Височина"
 
 #: src/editor/editor_dialogs.cpp:96
-#, fuzzy
 msgid "Generate New Map"
-msgstr "Нова карта"
+msgstr "Генериране на нова карта"
 
 #: src/editor/editor_dialogs.cpp:97
 msgid "Generate Random Map"
-msgstr ""
+msgstr "Генериране на произволна карта"
 
 #: src/editor/editor_dialogs.cpp:98
 msgid "Random Generator Settings"
-msgstr ""
+msgstr "Настройки на генераторът"
 
 #: src/editor/editor_dialogs.cpp:175
 msgid "Map creation failed."
-msgstr ""
+msgstr "Създаването на картата се провали"
 
 #: src/editor/editor_dialogs.cpp:241 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1268
 msgid "Close Window"
-msgstr "Затвори прозореца"
+msgstr "Затваряне."
 
 #: src/editor/editor_dialogs.cpp:247 src/editor/editor_dialogs.cpp:349
 #: src/hotkeys.cpp:78 src/preferences_display.cpp:1154
 msgid "Preferences"
-msgstr "Предпочитания"
+msgstr "Настройки"
 
 #: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:297
 msgid "Scroll Speed:"
-msgstr "Скорост на скролиране:"
+msgstr "Скорост на местене на изгледа:"
 
 #: src/editor/editor_dialogs.cpp:306 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:257
@@ -98,11 +99,11 @@ msgstr "Цял екран"
 
 #: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:260
 msgid "Show Grid"
-msgstr "Покажи координатна мрежа"
+msgstr "Координатна мрежа"
 
 #: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:278
 msgid "Video Mode"
-msgstr "Вид на видеото"
+msgstr "Графичен режим"
 
 #: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:280
 msgid "Hotkeys"
@@ -111,66 +112,63 @@ msgstr "Горещи клавиши"
 #: src/editor/editor_dialogs.cpp:432 src/editor/editor_dialogs.cpp:492
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
-msgstr "Оразмеряване на карта"
+msgstr "Размер на картата"
 
 #: src/editor/editor_dialogs.cpp:535
 msgid "X-Axis"
-msgstr ""
+msgstr "Х-оста"
 
 #: src/editor/editor_dialogs.cpp:536
 msgid "Y-Axis"
-msgstr ""
+msgstr "Y-оста"
 
 #: src/editor/editor_dialogs.cpp:537
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr ""
+msgstr "Обръщане(това може да промени измеренията на картата):"
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Файл:"
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
-msgstr "Изтрий файла"
+msgstr "Изтриване"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:166
 msgid "New Folder"
-msgstr ""
+msgstr "Нова папка"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
-msgstr "Файлът не можа да бъде изтрит"
+msgstr "Файлът не може да се изтрие"
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr ""
+msgstr "Име:"
 
 #: src/filechooser.cpp:172
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Файлът не можа да бъде изтрит"
+msgstr "Директорията не може да се създаде"
 
 #: src/hotkeys.cpp:49
-#, fuzzy
 msgid "Next Unit"
 msgstr "Следваща единица"
 
 #: src/hotkeys.cpp:50
-#, fuzzy
 msgid "Previous Unit"
 msgstr "Предишна единица"
 
 #: src/hotkeys.cpp:51
 msgid "Hold Position"
-msgstr "Разполагане на войската"
+msgstr "Задържане на позицията"
 
 #: src/hotkeys.cpp:52
 msgid "End Unit Turn"
-msgstr "Прекрати хода на единица"
+msgstr "Край на хода на единицата"
 
 #: src/hotkeys.cpp:53
 msgid "Leader"
-msgstr "Лидер"
+msgstr "Водач"
 
 #: src/hotkeys.cpp:54
 msgid "Undo"
@@ -178,19 +176,19 @@ msgstr "Отмяна"
 
 #: src/hotkeys.cpp:55
 msgid "Redo"
-msgstr "Преправяне"
+msgstr "Възстановяване"
 
 #: src/hotkeys.cpp:56
 msgid "Zoom In"
-msgstr "Приближи изгледа"
+msgstr "Приближаване на изгледа"
 
 #: src/hotkeys.cpp:57
 msgid "Zoom Out"
-msgstr "Отдалечи изгледа"
+msgstr "Отдалечаване на изгледа"
 
 #: src/hotkeys.cpp:58
 msgid "Default Zoom"
-msgstr "Липса на посочен изглед"
+msgstr "Изглед по подразбиране"
 
 #: src/hotkeys.cpp:60
 msgid "Screenshot"
@@ -202,24 +200,23 @@ msgstr "Ускорено"
 
 #: src/hotkeys.cpp:62
 msgid "Unit Description"
-msgstr "Описание на единица"
+msgstr "Описание на единицата"
 
 #: src/hotkeys.cpp:63
 msgid "Rename Unit"
-msgstr "Преименувай единица"
+msgstr "Преименуване на единица"
 
 #: src/hotkeys.cpp:64
 msgid "Save Game"
-msgstr "Запази игра"
+msgstr "Запис"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
-msgstr "Запази карта"
+msgstr "Запис на картата"
 
 #: src/hotkeys.cpp:66
 msgid "Load Game"
-msgstr "Зареди игра"
+msgstr "Зареждане "
 
 #: src/hotkeys.cpp:67
 msgid "Recruit"
@@ -227,7 +224,7 @@ msgstr "Набор"
 
 #: src/hotkeys.cpp:68
 msgid "Repeat Recruit"
-msgstr "Повтори набор"
+msgstr "Повтаряне на набора"
 
 #: src/hotkeys.cpp:69
 msgid "Recall"
@@ -235,7 +232,7 @@ msgstr "Привикване"
 
 #: src/hotkeys.cpp:70
 msgid "End Turn"
-msgstr "Прекрати хода"
+msgstr "Край на хода"
 
 #: src/hotkeys.cpp:71
 msgid "Toggle Grid"
@@ -243,108 +240,103 @@ msgstr "Координатна мрежа"
 
 #: src/hotkeys.cpp:72
 msgid "Mouse Scrolling"
-msgstr ""
+msgstr "Местене на изгледа с мишката"
 
 #: src/hotkeys.cpp:73
 msgid "Status Table"
-msgstr "Таблица с положението"
+msgstr "Състояние"
 
 #: src/hotkeys.cpp:74
 msgid "Mute"
-msgstr "Обеззвучаване"
+msgstr "Без звук"
 
 #: src/hotkeys.cpp:75
 msgid "Speak"
-msgstr "Говорене"
+msgstr "Говор"
 
 #: src/hotkeys.cpp:76
 msgid "Create Unit (Debug!)"
-msgstr "Създай единица (отстраняване на/отстранени дефекти!)"
+msgstr "Създаване на единица(Debug!)"
 
 #: src/hotkeys.cpp:77
 msgid "Change Unit Side (Debug!)"
-msgstr "Смени страната на единица (отстраняване на/отстранени дефекти!)"
+msgstr "Смяна страната на единица(Debug!)"
 
 #: src/hotkeys.cpp:79
 msgid "Scenario Objectives"
-msgstr "Цел на сценария"
+msgstr "Цел на мисията"
 
 #: src/hotkeys.cpp:80
 msgid "Unit List"
-msgstr "Лист с единици"
+msgstr "Списък с единици"
 
 #: src/hotkeys.cpp:81
 msgid "Statistics"
-msgstr "Статистики"
+msgstr "Статистика"
 
 #: src/hotkeys.cpp:82
 msgid "Quit Game"
 msgstr "Изход от играта"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Слагане на надпис"
+msgstr "Надпис на отбор"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
 msgstr "Слагане на надпис"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Clear Labels"
-msgstr "Слагане на надпис"
+msgstr "Изчистване на надписите"
 
 #: src/hotkeys.cpp:86
 msgid "Show Enemy Moves"
-msgstr "Покажи ходовете на противника"
+msgstr "Ходове на противника"
 
 #: src/hotkeys.cpp:87
 msgid "Best Possible Enemy Moves"
 msgstr "Най-добри възможни ходове на противника"
 
 #: src/hotkeys.cpp:88
-#, fuzzy
 msgid "Play"
-msgstr "играч"
+msgstr "Изпълнение"
 
 #: src/hotkeys.cpp:89
 msgid "Reset"
-msgstr ""
+msgstr "Отначало"
 
 #: src/hotkeys.cpp:90
 msgid "Stop"
-msgstr ""
+msgstr "Спиране"
 
 #: src/hotkeys.cpp:91
-#, fuzzy
 msgid "Next Turn"
-msgstr "Следваща единица"
+msgstr "Следващ ход"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
 msgid "Next Side"
-msgstr "Следваща единица"
+msgstr "Следваща страна"
 
 #: src/hotkeys.cpp:93
 msgid "Shroud"
-msgstr ""
+msgstr "Було"
 
 #: src/hotkeys.cpp:94
 msgid "Fog"
-msgstr ""
+msgstr "Мъгла"
 
 #: src/hotkeys.cpp:95
 msgid "Skip animation"
-msgstr ""
+msgstr "Прескачане на анимацията"
 
 #: src/hotkeys.cpp:97
 msgid "Set Terrain"
-msgstr "Фиксиране на терен"
+msgstr "Определяне на терен"
 
 #: src/hotkeys.cpp:98
 msgid "Quit Editor"
-msgstr "Изход от едитора"
+msgstr "Изход от редактора"
 
 #: src/hotkeys.cpp:99
 msgid "New Map"
@@ -352,19 +344,19 @@ msgstr "Нова карта"
 
 #: src/hotkeys.cpp:100
 msgid "Load Map"
-msgstr "Зареди карта"
+msgstr "Зареждане на карта"
 
 #: src/hotkeys.cpp:101
 msgid "Save Map"
-msgstr "Запази карта"
+msgstr "Запис на карта"
 
 #: src/hotkeys.cpp:102
 msgid "Save As"
-msgstr "Запази като"
+msgstr "Запис като"
 
 #: src/hotkeys.cpp:103
 msgid "Set Player's keep"
-msgstr "Фиксиране"
+msgstr "Определяне крепостта на играча"
 
 #: src/hotkeys.cpp:104
 msgid "Flood Fill"
@@ -384,7 +376,7 @@ msgstr "Копиране"
 
 #: src/hotkeys.cpp:108
 msgid "Paste"
-msgstr "Отпечатване"
+msgstr "Поставяне"
 
 #: src/hotkeys.cpp:109
 msgid "Revert from Disk"
@@ -392,27 +384,27 @@ msgstr "Връщане от диск"
 
 #: src/hotkeys.cpp:111
 msgid "Flip Map"
-msgstr "Завърти картата"
+msgstr "Завъртане на картата"
 
 #: src/hotkeys.cpp:112
 msgid "Select All"
-msgstr "Избери всичко"
+msgstr "Избор на всичко"
 
 #: src/hotkeys.cpp:113
 msgid "Draw Terrain"
-msgstr "Изравняване на терена"
+msgstr "Пречертаване на терена"
 
 #: src/hotkeys.cpp:114
 msgid "Refresh Image Cache"
-msgstr "Презареди изображенията"
+msgstr "Обновяване кеша на картинките"
 
 #: src/hotkeys.cpp:116
 msgid "Delay Shroud Updates"
-msgstr "Забавяне на промените във видимостта в мъглата"
+msgstr "Забавяне на промените във видимостта "
 
 #: src/hotkeys.cpp:117
 msgid "Update Shroud Now"
-msgstr "Промяна на видимостта в мъглата веднага"
+msgstr "Обновяване на видимостта"
 
 #: src/hotkeys.cpp:118
 msgid "Continue Move"
@@ -420,23 +412,23 @@ msgstr "Продължаване на хода"
 
 #: src/hotkeys.cpp:119
 msgid "Find Label or Unit"
-msgstr "Намери надпис или единица"
+msgstr "Търсене на надпис или единица"
 
 #: src/hotkeys.cpp:120
 msgid "Speak to Ally"
-msgstr "Говори на съюзник"
+msgstr "Говорене със съюзник"
 
 #: src/hotkeys.cpp:121
 msgid "Speak to All"
-msgstr "Говори на всички"
+msgstr "Говорене на всички"
 
 #: src/hotkeys.cpp:123
 msgid "View Chat Log"
-msgstr "Виж записа с разговора"
+msgstr "Преглед на дневника на разговорите"
 
 #: src/hotkeys.cpp:124
 msgid "Enter user command"
-msgstr "Въведи командите на потребителя"
+msgstr "Въведете потребителска команда"
 
 #: src/hotkeys.cpp:126
 msgid "Change the language"
@@ -444,7 +436,7 @@ msgstr "Смяна на езика"
 
 #: src/hotkeys.cpp:468 src/hotkeys.cpp:701
 msgid "Do you really want to quit?"
-msgstr "Наистина ли искаш да излезеш от играта?"
+msgstr "Наистина ли искате да излезете от играта?"
 
 #: src/hotkeys.cpp:468 src/hotkeys.cpp:701
 msgid "Quit"
@@ -452,32 +444,31 @@ msgstr "Изход"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Map Generator"
-msgstr ""
+msgstr "Генератор на карти"
 
 #: src/mapgen_dialog.cpp:109
-#, fuzzy
 msgid "Players:"
-msgstr "играч"
+msgstr "Играчи:"
 
 #: src/mapgen_dialog.cpp:112
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Брой хълмове:"
 
 #: src/mapgen_dialog.cpp:113
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Максимален размер на хълмовете:"
 
 #: src/mapgen_dialog.cpp:114
 msgid "Villages:"
-msgstr ""
+msgstr "Селища:"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Castle Size:"
-msgstr ""
+msgstr "Размер на замъците:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
-msgstr ""
+msgstr "Вид на земята:"
 
 #: src/mapgen_dialog.cpp:236
 msgid "Roads Between Castles"
@@ -485,7 +476,7 @@ msgstr "Пътища между замъците"
 
 #: src/mapgen_dialog.cpp:296
 msgid "/1000 tiles"
-msgstr "/1000 квадратчета"
+msgstr "/1000 полета"
 
 #: src/mapgen_dialog.cpp:306
 msgid "Coastal"
@@ -493,7 +484,7 @@ msgstr "Крайбрежна"
 
 #: src/mapgen_dialog.cpp:306
 msgid "Inland"
-msgstr "Нормална"
+msgstr "Континентална"
 
 #: src/mapgen_dialog.cpp:306
 msgid "Island"
@@ -509,38 +500,38 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"Видът на видеото не може да бъде сменен. Вашият екранен менажер трябва да "
-"бъде с 16 бита за пиксел за да може играта да стартира в отделен прозорец. "
-"Вашият екран трябва да поддържа 1024х768х16 за да може играта да стартира на "
-"цял екран."
+"Видео режимът не може да бъде сменен. Диспечера на прозорците ви трябва да "
+"бъде настроен на 16 бита за пиксел, за да пуснете играта в прозорец. Екранът "
+"ви трябва да поддържа разделителна способност 1024х768 и 16 битов цвят, за "
+"да пуснете играта на пълен екран."
 
 #: src/preferences_display.cpp:258
 msgid "Accelerated Speed"
-msgstr "Ускорение на скоростта"
+msgstr "Ускорена скорост"
 
 #: src/preferences_display.cpp:259
 msgid "Skip AI Moves"
-msgstr "Пропусни движенията на изкуствения интелект"
+msgstr "Пропускате ходовете на компютъра"
 
 #: src/preferences_display.cpp:261
 msgid "Show Lobby Minimaps"
-msgstr ""
+msgstr "Показване на миникарти в чакалнята"
 
 #: src/preferences_display.cpp:262
 msgid "Do Not Show Lobby Joins"
-msgstr ""
+msgstr "Скриване на влизанията в чакалнята"
 
 #: src/preferences_display.cpp:263
 msgid "Show Lobby Joins Of Friends Only"
-msgstr ""
+msgstr "Показване на влизанията в чакалнята само на приятели"
 
 #: src/preferences_display.cpp:264
 msgid "Show All Lobby Joins"
-msgstr ""
+msgstr "Показване на всички влизания в чакалнята"
 
 #: src/preferences_display.cpp:265
 msgid "Sort Lobby List"
-msgstr ""
+msgstr "Сортиране на списъка на чакалнята"
 
 #: src/preferences_display.cpp:266
 msgid "Iconize Lobby List"
@@ -548,60 +539,59 @@ msgstr ""
 
 #: src/preferences_display.cpp:267
 msgid "Friends List"
-msgstr ""
+msgstr "Списък с приятели"
 
 #: src/preferences_display.cpp:268
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Настройки на мрежовата игра"
 
 #: src/preferences_display.cpp:269
 msgid "Add As Friend"
-msgstr ""
+msgstr "Добавяне като приятел"
 
 #: src/preferences_display.cpp:270
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Добавяне в черният списък"
 
 #: src/preferences_display.cpp:271
-#, fuzzy
 msgid "Remove"
-msgstr "Преправяне"
+msgstr "Премахване"
 
 #: src/preferences_display.cpp:272
 msgid "Show Floating Labels"
-msgstr "Покажи плаващи надписи"
+msgstr "Показване на летящи надписи"
 
 #: src/preferences_display.cpp:273
 msgid "Turn Dialog"
-msgstr "Включи диалога"
+msgstr "Диалог в началото на ход"
 
 #: src/preferences_display.cpp:274
 msgid "Turn Bell"
-msgstr "Включи звънец"
+msgstr "Ходов звънец"
 
 #: src/preferences_display.cpp:275
 msgid "Show Team Colors"
-msgstr "Покажи цветове на отборите"
+msgstr "Показване цветовете на отборите"
 
 #: src/preferences_display.cpp:276
 msgid "Show Color Cursors"
-msgstr "Покажи цветни курсори"
+msgstr "Показване на цветни курсори"
 
 #: src/preferences_display.cpp:277
 msgid "Show Haloing Effects"
-msgstr "Покажи повикващите ефекти"
+msgstr "Ефекти "
 
 #: src/preferences_display.cpp:279
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #: src/preferences_display.cpp:281
 msgid "Adjust Gamma"
-msgstr "Пригоди цветната гама"
+msgstr "Настройка на гамата"
 
 #: src/preferences_display.cpp:282
 msgid "Reverse Time Graphics"
-msgstr "Обърни графиките на деня и нощта"
+msgstr "Обръщане графиките на деня и нощта"
 
 #: src/preferences_display.cpp:284
 msgid "Sound effects"
@@ -613,47 +603,43 @@ msgstr "Музика"
 
 #: src/preferences_display.cpp:286
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Времеви маркери на разговорите"
 
 #: src/preferences_display.cpp:287
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "Напреднал"
+msgstr "Режим за напреднали"
 
 #: src/preferences_display.cpp:288
 msgid "Normal Mode"
-msgstr ""
+msgstr "Нормален режим"
 
 #: src/preferences_display.cpp:289
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Звуци в потребителският интерфейс "
 
 #: src/preferences_display.cpp:292
-#, fuzzy
 msgid "Custom"
-msgstr "Отрязване"
+msgstr ""
 
 #: src/preferences_display.cpp:293
 msgid "Apply"
-msgstr ""
+msgstr "Прилагане"
 
 #: src/preferences_display.cpp:295
 msgid "Music Volume:"
-msgstr "Звук на музиката:"
+msgstr "Музика:"
 
 #: src/preferences_display.cpp:295
 msgid "SFX Volume:"
-msgstr "Сила на звуковите ефекти:"
+msgstr "Звукови ефекти:"
 
 #: src/preferences_display.cpp:296
-#, fuzzy
 msgid "UI Sound Volume:"
 msgstr "Сила на звуковите ефекти:"
 
 #: src/preferences_display.cpp:297
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Сила на звуковите ефекти:"
+msgstr "Камбанка:"
 
 #: src/preferences_display.cpp:298
 msgid "Gamma:"
@@ -661,240 +647,235 @@ msgstr "Гама:"
 
 #: src/preferences_display.cpp:300
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Честота на обновяване (Hz):"
 
 #: src/preferences_display.cpp:323
 msgid "Sound effects on/off"
-msgstr "Звукови ефекти включени/изключени"
+msgstr "Звукови ефекти "
 
 #: src/preferences_display.cpp:327
 msgid "Change the sound effects volume"
-msgstr "Промени силата на звуковите ефекти"
+msgstr "Промяна силата на звуковите ефекти"
 
 #: src/preferences_display.cpp:330
 msgid "Music on/off"
-msgstr "Музика включена/изключена"
+msgstr "Музика "
 
 #: src/preferences_display.cpp:334
 msgid "Change the music volume"
-msgstr "Промени силата на музиката"
+msgstr "Сила на музиката"
 
 #: src/preferences_display.cpp:340
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Промени силата на музиката"
+msgstr "Сила на камбанката"
 
 #: src/preferences_display.cpp:343
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Включване/Изключване на звуците в менюто и на бутоните"
 
 #: src/preferences_display.cpp:347
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "Промяна на силата на звука на щракания на бутони и др. "
 
 #: src/preferences_display.cpp:349
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Смяна на езика"
+msgstr "Настройка на честота на дискретизация "
 
 #: src/preferences_display.cpp:358
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Честота на дискретизация "
 
 #: src/preferences_display.cpp:367 src/preferences_display.cpp:371
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Промени силата на музиката"
+msgstr "Промяна размера на буфера"
 
 #: src/preferences_display.cpp:369 src/preferences_display.cpp:857
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Размер на буфера"
 
 #: src/preferences_display.cpp:376
 msgid "Change the speed of scrolling around the map"
-msgstr "Промени скоростта на скролиране около картата"
+msgstr "Промяна скоростта на местенето на изгледа из картата"
 
 #: src/preferences_display.cpp:381 src/preferences_display.cpp:383
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Настройка на броят на редовете в разговор, които се показват"
 
 #: src/preferences_display.cpp:386
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Добавяне на времеви маркер в разроворите"
 
 #: src/preferences_display.cpp:389 src/preferences_display.cpp:394
 msgid "Change the brightness of the display"
-msgstr "Промени светлостта на екрана"
+msgstr "Промяна на светлостта на екрана"
 
 #: src/preferences_display.cpp:397
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Избери дали играта да стартира в цял екран или в отделен прозорец"
+msgstr "Дали играта ще върви на пълен екран или в прозорец"
 
 #: src/preferences_display.cpp:400
 msgid "Make units move and fight faster"
-msgstr "Накарай единиците да се движат и бият по-бързо"
+msgstr "Кара единиците да се движат и бият по-бързо"
 
 #: src/preferences_display.cpp:415
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Накарай единиците да се движат и бият по-бързо"
+msgstr "Скорост на движение и бой на единиците"
 
 #: src/preferences_display.cpp:418
 msgid "Do not animate AI units moving"
-msgstr "Не показвай анимираните движения на единиците"
+msgstr "Спиране на анимациите на движение на единиците на компютъра"
 
 #: src/preferences_display.cpp:421
 msgid "Overlay a grid onto the map"
-msgstr "Покрий с координатна мрежа картата"
+msgstr "Покриване картата с координатна мрежа"
 
 #: src/preferences_display.cpp:424
 msgid "Show minimaps in the multiplayer lobby"
-msgstr ""
+msgstr "Показване на малки карти в чакалнята за мрежова игра"
 
 #: src/preferences_display.cpp:427
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Сортиране на списъка с играчите в чакалнята по групи"
 
 #: src/preferences_display.cpp:430
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Показване на иконките на потребителите пред имената им в чакалнята."
 
 #: src/preferences_display.cpp:433
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
+"Скриване на съобщенията за присъединяване на потребители към чакалнята за "
+"мрежова игра"
 
 #: src/preferences_display.cpp:435
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr ""
+msgstr "Показване на съобщения за приятели, които влизат в чакалнята"
 
 #: src/preferences_display.cpp:437
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr ""
+msgstr "Показване на съобщения за всички играчи, които влизат в чакалнята"
 
 #: src/preferences_display.cpp:439
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Преглед и редакция на списъка с приятелите и черният списък"
 
 #: src/preferences_display.cpp:440
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Назад към настройки на мрежова игра"
 
 #: src/preferences_display.cpp:441
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Добавяне на този потребител към списъка с приятели"
 
 #: src/preferences_display.cpp:442
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Добавяне на този потребител към черният списък"
 
 #: src/preferences_display.cpp:443
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Премахване на този потребител от списъка"
 
 #: src/preferences_display.cpp:446
 msgid "Insert a username"
-msgstr ""
+msgstr "Добавяне на потребител"
 
 #: src/preferences_display.cpp:449
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
-"Покажи текст над единица когато е ранена за да покаже нанесените поражения"
+"Показване текст над единица когато бъде ударена, показващ понесеното "
+"поражение"
 
 #: src/preferences_display.cpp:451
 msgid "Change the resolution the game runs at"
-msgstr "Промени резолюцията в която играта върви"
+msgstr "Промяна на разделителната способност"
 
 #: src/preferences_display.cpp:452
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Промени резолюцията в която играта върви"
+msgstr "Промяна на темата на играта"
 
 #: src/preferences_display.cpp:455
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Покажи диалог в началото на твоя ход"
+msgstr "Показване на диалог в началото на хода "
 
 #: src/preferences_display.cpp:458
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Пусни звук от звънец в началото на твоя ход"
+msgstr "Звън на камбанка в началото на хода"
 
 #: src/preferences_display.cpp:461
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Покажи цветен кръг около базата на всяка единица за да показва на коя страна "
-"е"
+"Показване на цветен кръг в основата на всяка единица, за да покаже на коя "
+"страна е"
 
 #: src/preferences_display.cpp:464
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr "Избери дали слънцето да се движи отляво надясно или отдясно наляво"
+msgstr "Избор дали слънцето се движи от ляво на дясно или от дясно на ляво"
 
 #: src/preferences_display.cpp:467
 msgid "Use colored mouse cursors (may be slower)"
-msgstr "Използвай цветни курсори на мишката (може би по-бавно)"
+msgstr "Използване не цветни курсори на мишката(може да забавя)"
 
 #: src/preferences_display.cpp:470
 msgid "Use graphical special effects (may be slower)"
-msgstr "Използвай графични специални ефекти (може би по-бавно)"
+msgstr "Използване не графични специални ефекти(може да забавя)"
 
 #: src/preferences_display.cpp:472
 msgid "View and configure keyboard shortcuts"
-msgstr "Виж и конфигурирай клавишните кратки процедури"
+msgstr "Преглед и настройка на горещите клавиши"
 
 #: src/preferences_display.cpp:737
-#, fuzzy
 msgid "Speed: "
-msgstr "Скорост на скролиране:"
+msgstr "Скорост:"
 
 #: src/preferences_display.cpp:902
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Редове:"
 
 #: src/preferences_display.cpp:998
 msgid "yes"
-msgstr "Да"
+msgstr "да"
 
 #: src/preferences_display.cpp:1000
 msgid "no"
-msgstr "Не"
+msgstr "не"
 
 #: src/preferences_display.cpp:1142
 msgid "Prefs section^General"
-msgstr "Главно меню"
+msgstr "Общи"
 
 #: src/preferences_display.cpp:1143
 msgid "Prefs section^Display"
-msgstr "Екран"
+msgstr "Графика"
 
 #: src/preferences_display.cpp:1144
 msgid "Prefs section^Sound"
 msgstr "Звук"
 
 #: src/preferences_display.cpp:1145
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Екран"
+msgstr "Мрежова игра"
 
 #: src/preferences_display.cpp:1146
 msgid "Advanced section^Advanced"
-msgstr "Напреднал"
+msgstr "Допълнителни"
 
 #: src/preferences_display.cpp:1211
 msgid "There are no alternative video modes available"
-msgstr "Няма алтернативни видове на видеото на разположение"
+msgstr "Няма други графични режими"
 
 #: src/preferences_display.cpp:1240
 msgid "Choose Resolution"
-msgstr "Избери резолюция"
+msgstr "Избор на резолюция"
 
 #: src/preferences_display.cpp:1273
 msgid "Hotkey Settings"
-msgstr "Определяне на горещите клавиши"
+msgstr "Настройка на горещите клавиши"
 
 #: src/preferences_display.cpp:1277 src/preferences_display.cpp:1330
-#, fuzzy
 msgid "Press desired Hotkey"
-msgstr "Натисни желаният горещ клавиш"
+msgstr "Натиснете желаният клавиш"
 
 #: src/preferences_display.cpp:1295
 msgid "Action"
@@ -902,20 +883,20 @@ msgstr "Действие"
 
 #: src/preferences_display.cpp:1295
 msgid "Binding"
-msgstr "Свързване"
+msgstr "Връзка"
 
 #: src/preferences_display.cpp:1307
 msgid "Change Hotkey"
-msgstr "Смени горещия клавиш"
+msgstr "Смяна на горещия клавиш"
 
 #: src/preferences_display.cpp:1310
 msgid "Save Hotkeys"
-msgstr "Запази горещия клавиш"
+msgstr "Запис"
 
 #: src/preferences_display.cpp:1357
 #, fuzzy
 msgid "This Hotkey is already in use."
-msgstr "Този горещ клавиш е вече в употреба"
+msgstr "Горещият клавиш е вече в употреба."
 
 #: src/preferences_display.cpp:1390
 msgid "Saved Theme Preference: "
@@ -923,11 +904,11 @@ msgstr ""
 
 #: src/preferences_display.cpp:1396
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Новата тема ще влезе в действие в следващата нова или заредена игра."
 
 #: src/preferences_display.cpp:1400
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Няма намерени теми. Пробвайте да смените тема в съществуваща игра."
 
 #: src/show_dialog.cpp:314
 msgid "Error"
@@ -935,7 +916,7 @@ msgstr "Грешка"
 
 #: src/show_dialog.cpp:425
 msgid "KB"
-msgstr "Килобайти"
+msgstr "кБ"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Получаване на данни..."
