@@ -222,7 +222,9 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 				  std::string* fname, gui::DIALOG_TYPE dialog_type, const std::string& title,
 				  const bool has_exit_button)
 {
+	static int quit_prompt = 0;
 	const std::string& tmp_title = (title.empty()) ? _("Save Game") : title;
+	bool ignore_opt = false;
     int overwrite=0;
     int res=0;
     do {
@@ -231,8 +233,24 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 		if(has_exit_button) {
 			d.add_button( new gui::dialog_button(disp.video(), _("Quit Game"),
 				gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_STANDARD);
+			if(quit_prompt < 0) {
+				res = 1;
+			} else if(quit_prompt > 5) {
+				d.add_button( new gui::dialog_button(disp.video(), _("Ignore All"),
+					gui::button::TYPE_CHECK), gui::dialog::BUTTON_CHECKBOX);
+				res = d.show();
+				ignore_opt = d.option_checked();
+			} else {
+				res = d.show();
+				if(res == 1) {
+					++quit_prompt;
+				} else {
+					quit_prompt = 0;
+				}
+			}
+		} else {
+			res = d.show();
 		}
-		res = d.show();
 		*fname = d.textbox_text();
 		if (res == 0 && save_game_exists(*fname)) {
 			overwrite = gui::show_dialog(disp,NULL,_("Overwrite?"),
@@ -241,6 +259,9 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 			overwrite = 0;
 		}
     } while ((res==0)&&(overwrite!=0));
+	if(ignore_opt) {
+		quit_prompt = -1;
+	}
 	return res;
 }
 
