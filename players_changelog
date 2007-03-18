@@ -8,39 +8,53 @@ Version 1.3.1+svn:
       * In 'Home of the North Elves', Eonihar the rider will join you
         permanently and all the other riders that find you will be
         computer-controlled.
+
   * Graphics
     * Added the --max-fps command line switch.
     * Improved the look of the main menu and tips of the day boxes in the title
       screen.
-    * Added new experimental new unit location in the hex.
+    * Added new experimental unit location in the hex (the units will be
+      standing in the center of the hex, instead of near the bottom).
     * Added some more speed optimizations.
-    * Units and movement text are scaled properly when zooming, also with tiny gui.
-    * Haloes in tiny gui are now scaled (before unscaled, thus a factor 2 bigger as intended).
-* Units changes and balancing:
+    * Units and movement text are scaled properly when zooming, also with tiny
+      gui.
+    * Haloes in tiny gui are now scaled (before unscaled, thus a factor 2 bigger
+      as intended).
+
+  * Units changes and balancing:
     * Converted the cold resistance of the Elvish Sorceress line to a holy
       resistance.
-    * Decreased the holy resistance of the Orcish Assassin line to 0%.
+    * Decreased the holy resistance of the Orcish Assassin line from 20% to 0%.
+    * Decreased the holy resistance of the Sky Drake from 20% to -30%.
+    * Decreased the holy resistance of the Hurricane Drake from 20% to -30%.
+    * Decreased the holy resistance of the Mermaid Priestess from 40% to 20%.
+    * Decreased the holy resistance of the Mermaid Diviner from 60% to 40%.
+
   * User interface:
     * Interface actions such as pressing a button, toggling a checkbox or
       opening a menu (among others) will now emit small sounds.
     * If deprecated WML is being encountered and error message will be shown,
-      this way creators of WML code can be easier informed about the problems.
+      this way creators of WML code can be easily informed about the problems.
+
   * Language and translations
     * Updated translations: Bulgarian, Czech, Danish, Dutch, French, German,
       Hungarian, Italian, Norwegian, Portuguese (Brazil).
     * New translations: Indonesian
- * Multiplayer:
+
+  * Multiplayer:
     * Maps
       * Revised maps: Castle Hopping Isle
-    * The countdown timer is now coloured properly when the remaining time is 
+    * The countdown timer is now coloured properly when the remaining time is
       less than 2 minutes.
+
   * Miscellaneous bugfixes
     * Fixed a bug that caused the killing unit's death sound to play instead of
       the death sound of the killed unit.
     * Fixed a bug that prevented dead units from fading out at the end of their
-      death animation
+      death animation.
     * The first turns starts with the proper time of day again.
-    * Units won't slide past their opponant on finishing blows
+    * Fixed a bug that caused units to slide past their opponent on (melee)
+      finishing blows.
 
 Version 1.3.1:
   * Campaigns
