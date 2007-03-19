@@ -38,7 +38,7 @@ AC_CONFIG_COMMANDS([src/wesconfig.h],
  * for development versions the dialog should be used for the stable
  * releases the chat messages
  */
-#define WML_ERROR_DIALOG 1
+#define WML_ERROR_DIALOG 0
 #endif
 EOF
 ])
