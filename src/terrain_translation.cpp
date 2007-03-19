@@ -898,20 +898,20 @@ inline Uint32 get_layer_mask_(Uint32 terrain)
 /*	
  *	This is what the code intents to do, but in order to gain some more
  *	speed it's changed to the code below, which does the same but faster.
- *	This routine is used often in the builder and the speedup is noticable.
+ *	This routine is used often in the builder and the speedup is noticable. */
 	if((terrain & 0xFF000000) == 0x2A000000) return 0x00000000;
 	if((terrain & 0x00FF0000) == 0x002A0000) return 0xFF000000;
 	if((terrain & 0x0000FF00) == 0x00002A00) return 0xFFFF0000;
 	if((terrain & 0x000000FF) == 0x0000002A) return 0xFFFFFF00;
-*/
+
 	
 	Uint8 *ptr = (Uint8 *) &terrain;
 
-	if(ptr[3] == 0x2A) return 0x00000000;
+/*	if(ptr[3] == 0x2A) return 0x00000000;
 	if(ptr[2] == 0x2A) return 0xFF000000;
 	if(ptr[1] == 0x2A) return 0xFFFF0000;
 	if(ptr[0] == 0x2A) return 0xFFFFFF00;
-
+*/
 	// no star found return the default
 	return 0xFFFFFFFF;
 }
