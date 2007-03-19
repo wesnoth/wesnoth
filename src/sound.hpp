@@ -19,6 +19,14 @@
 
 namespace sound {
 
+enum channel_group {
+	NULL_CHANNEL = -1,
+	SOUND_SOURCES = 0,
+	SOUND_BELL,
+	SOUND_UI,
+	SOUND_FX
+};
+
 bool init_sound();
 void close_sound();
 void reset_sound();
@@ -52,7 +60,7 @@ bool is_sound_playing(int id);
 void stop_sound(int id);
 
 // Play sound, or random one of comma-separated sounds.
-void play_sound(const std::string& files, int channel = -1);
+void play_sound(const std::string& files, channel_group group = SOUND_FX);
 
 // Play sound, or random one of comma-separated sounds. Use specified
 // distance and associate it with specified id (of a sound source).

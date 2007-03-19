@@ -133,7 +133,7 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 		// If no locations have been specified, treat the source as if 
 		// it was present everywhere on the map
 		if(_locations.size() == 0) {
-			sound::play_sound(_files, 0);	// max volume
+			sound::play_sound_positioned(_files, last_id, 0);	// max volume
 			return;
 		}
 
