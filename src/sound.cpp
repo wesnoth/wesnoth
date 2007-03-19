@@ -283,14 +283,11 @@ void channel_finished_hook(int channel)
 	if(channel_chunks) {
 		(*channel_chunks)[channel] = NULL;
 	}
-
-	if(channel < source_channels) {
-		channel_ids[channel] = -1;
-	}
+	channel_ids[channel] = -1;
 }
 
 bool init_sound() {
-
+	threading::lock l(channel_mutex);
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
 			return false;
@@ -306,8 +303,9 @@ bool init_sound() {
 		Mix_AllocateChannels(n_of_channels);
 		Mix_ReserveChannels(n_reserved_channels);
 
+		delete channel_chunks;
 		channel_chunks = new std::vector<Mix_Chunk*>(n_of_channels, NULL);
-		channel_ids.resize(source_channels, -1);
+		channel_ids.resize(n_of_channels, -1);
 
 		const size_t source_channel_last = source_channels - source_channel_start + 1;
 		Mix_GroupChannels(source_channel_start, source_channel_last, SOUND_SOURCES);
@@ -632,38 +630,36 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 	if(channel_chunks == NULL) {
 		return false;
 	}
-
 	// find a free channel in the desired group
 	int channel = Mix_GroupAvailable(group);
 	if(channel == -1) {
 		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
 		return false;
 	}
-	if (group == SOUND_SOURCES) {
-		channel_ids[channel] = id;
-		Mix_SetDistance(channel, distance);
-	}
-	sound_cache_chunk temp_chunk(file);
+	channel_ids[channel] = id;
+	Mix_SetDistance(channel, distance);
+
+	sound_cache_chunk temp_chunk(file); //search the sound cache on this key
 	sound_cache_iterator it_bgn = sound_cache.begin(), it_end = sound_cache.end();
 	sound_cache_iterator it = std::find(it_bgn, it_end, temp_chunk);
 
 	if (it != it_end) {
 		if(it->group != group) {
+			//cached item has been used in multiple sound groups
 			it->group = NULL_CHANNEL;
 		}
+		//splice the most recently used chunk to the front of the cache
 		sound_cache.splice(it_bgn, sound_cache, it);
 	} else {
 		// remove the least recently used chunk from cache if it's full
 		bool cache_full = (sound_cache.size() == max_cached_chunks);
 		while( cache_full && it != it_bgn ) {
-			--it;
-			Mix_Chunk *c = it->get_data();
-			// if it's being played - try again
-			if(std::find((*channel_chunks).begin(), (*channel_chunks).end(), c) != (*channel_chunks).end())
-				continue;
-			sound_cache.erase(it);
-			cache_full = false;
-			break;
+			// make sure this chunk is not being played before freeing it
+			std::vector<Mix_Chunk*>::iterator ch_end = channel_chunks->end();
+			if(std::find(channel_chunks->begin(), ch_end, (--it)->get_data()) == ch_end) {
+				sound_cache.erase(it);
+				cache_full = false;
+			}
 		}
 		if(cache_full) {
 			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.\n";
@@ -690,13 +686,13 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		sound_cache.push_front(temp_chunk);
 		it = sound_cache.begin();
 	}
-
-	//if channel=-1, play on the first available (non-reserved) channel
 	const int res = Mix_PlayChannel(channel, it->get_data(), 0);
 	if(res < 0) {
 		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
+		//still keep it in the sound cache, in case we want to try again later
 		return false;
 	}
+	//reserve the channel's chunk from being freed, since it is playing
 	(*channel_chunks)[res] = it->get_data();
 	return true;
 }
