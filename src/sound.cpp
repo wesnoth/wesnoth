@@ -585,19 +585,17 @@ void write_music_play_list(config& snapshot)
 void reposition_sound(int id, unsigned int distance)
 {
 	threading::lock l(channel_mutex);
-	std::vector<int>::iterator it = std::find(channel_ids.begin(), channel_ids.end(), id);
-
-	while(it != channel_ids.end()) {
-		const int ch = it - channel_ids.begin();
-
-		if(distance >= 255) {
-			Mix_FadeOutChannel(ch, 100);
-			channel_ids[ch] = -1;
+	for(int ch = 0; ch < channel_ids.size(); ++ch) {
+		int& ch_id = channel_ids[ch];
+		if(ch_id == id) {
+			if(distance >= DISTANCE_SILENT) {
+				Mix_FadeOutChannel(ch, 100);
+				ch_id = -1;
+			}
+			else {
+				Mix_SetDistance(ch, distance);
+			}
 		}
-		else
-			Mix_SetDistance(ch, distance);
-
-		it = std::find(++it, channel_ids.end(), id);
 	}
 }
 
@@ -609,10 +607,7 @@ bool is_sound_playing(int id)
 
 void stop_sound(int id)
 {
-	threading::lock l(channel_mutex);
-	std::vector<int>::iterator i = std::find(channel_ids.begin(), channel_ids.end(), id);
-	if(i != channel_ids.end())
-		Mix_FadeOutChannel(i - channel_ids.begin(), 100);
+	reposition_sound(id, DISTANCE_SILENT);
 }
 
 void play_sound_positioned(const std::string &files, int id, unsigned int distance)
@@ -622,7 +617,7 @@ void play_sound_positioned(const std::string &files, int id, unsigned int distan
 
 bool play_sound_internal(const std::string& files, channel_group group, bool sound_on, unsigned int distance, int id)
 {
-	if(files.empty() || distance >= 255 || !sound_on || !mix_ok) {
+	if(files.empty() || distance >= DISTANCE_SILENT || !sound_on || !mix_ok) {
 		return false;
 	}
 	std::string file = pick_one(files);

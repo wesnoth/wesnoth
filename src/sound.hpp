@@ -52,6 +52,7 @@ void play_music();
 
 // Change parameters of a playing sound, given its id
 void reposition_sound(int id, unsigned int distance);
+#define DISTANCE_SILENT		255
 
 // Check if there's a sound associated with given id playing
 bool is_sound_playing(int id);
