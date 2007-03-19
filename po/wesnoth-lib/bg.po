@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-12 15:46+0100\n"
-"PO-Revision-Date: 2007-03-18 12:16+0200\n"
+"PO-Revision-Date: 2007-03-18 15:00+0200\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
 "MIME-Version: 1.0\n"
@@ -55,12 +55,12 @@ msgstr "Създаване на нова карта"
 #: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:434
 #: src/mapgen_dialog.cpp:110
 msgid "Width:"
-msgstr "Ширина"
+msgstr "Ширина:"
 
 #: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:435
 #: src/mapgen_dialog.cpp:111
 msgid "Height:"
-msgstr "Височина"
+msgstr "Височина:"
 
 #: src/editor/editor_dialogs.cpp:96
 msgid "Generate New Map"
@@ -76,12 +76,12 @@ msgstr "Настройки на генераторът"
 
 #: src/editor/editor_dialogs.cpp:175
 msgid "Map creation failed."
-msgstr "Създаването на картата се провали"
+msgstr "Създаването на картата се провали."
 
 #: src/editor/editor_dialogs.cpp:241 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1268
 msgid "Close Window"
-msgstr "Затваряне."
+msgstr "Затваряне"
 
 #: src/editor/editor_dialogs.cpp:247 src/editor/editor_dialogs.cpp:349
 #: src/hotkeys.cpp:78 src/preferences_display.cpp:1154
@@ -99,7 +99,7 @@ msgstr "Цял екран"
 
 #: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:260
 msgid "Show Grid"
-msgstr "Координатна мрежа"
+msgstr "Мрежа"
 
 #: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:278
 msgid "Video Mode"
@@ -128,7 +128,7 @@ msgstr "Обръщане(това може да промени измерени�
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr "Файл:"
+msgstr "Файл: "
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -140,15 +140,15 @@ msgstr "Нова папка"
 
 #: src/filechooser.cpp:154
 msgid "Deletion of the file failed."
-msgstr "Файлът не може да се изтрие"
+msgstr "Файлът не може да се изтрие."
 
 #: src/filechooser.cpp:167
 msgid "Name: "
-msgstr "Име:"
+msgstr "Име: "
 
 #: src/filechooser.cpp:172
 msgid "Creation of the directory failed."
-msgstr "Директорията не може да се създаде"
+msgstr "Директорията не може да се създаде."
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -188,7 +188,7 @@ msgstr "Отдалечаване на изгледа"
 
 #: src/hotkeys.cpp:58
 msgid "Default Zoom"
-msgstr "Изглед по подразбиране"
+msgstr "Стандартен изглед"
 
 #: src/hotkeys.cpp:60
 msgid "Screenshot"
@@ -216,7 +216,7 @@ msgstr "Запис на картата"
 
 #: src/hotkeys.cpp:66
 msgid "Load Game"
-msgstr "Зареждане "
+msgstr "Зареждане"
 
 #: src/hotkeys.cpp:67
 msgid "Recruit"
@@ -236,7 +236,7 @@ msgstr "Край на хода"
 
 #: src/hotkeys.cpp:71
 msgid "Toggle Grid"
-msgstr "Координатна мрежа"
+msgstr "Мрежа"
 
 #: src/hotkeys.cpp:72
 msgid "Mouse Scrolling"
@@ -364,7 +364,7 @@ msgstr "Запълване изцяло"
 
 #: src/hotkeys.cpp:105
 msgid "Fill Selection"
-msgstr "Запълване селекцията"
+msgstr "Запълване на селекцията"
 
 #: src/hotkeys.cpp:106
 msgid "Cut"
@@ -380,7 +380,7 @@ msgstr "Поставяне"
 
 #: src/hotkeys.cpp:109
 msgid "Revert from Disk"
-msgstr "Връщане от диск"
+msgstr "Възстановяване от записа "
 
 #: src/hotkeys.cpp:111
 msgid "Flip Map"
@@ -392,7 +392,7 @@ msgstr "Избор на всичко"
 
 #: src/hotkeys.cpp:113
 msgid "Draw Terrain"
-msgstr "Пречертаване на терена"
+msgstr "Начертаване на терена"
 
 #: src/hotkeys.cpp:114
 msgid "Refresh Image Cache"
@@ -917,9 +917,3 @@ msgstr "Грешка"
 #: src/show_dialog.cpp:425
 msgid "KB"
 msgstr "кБ"
-
-#~ msgid "Receiving data..."
-#~ msgstr "Получаване на данни..."
-
-#~ msgid "Ok"
-#~ msgstr "Приеми"
