@@ -27,7 +27,6 @@ namespace dfool {
     unit_list all = all_units();
     unit_list my_units=filter_units(side_filter, all,get_info().units);
     unit_list v_units=visible_units();
-
     
     //    LOG_STREAM(info, ai)<<"My Units"<<std::endl;
     //    for(unit_list::iterator ui = all.begin(); ui != all.end(); ++ui) {
@@ -40,7 +39,8 @@ namespace dfool {
     //	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
     //      }
     //    }
-        LOG_STREAM(info, ai)<<"Visible Units"<<std::endl;
+    
+    LOG_STREAM(info, ai)<<"Visible Units"<<std::endl;
     for(unit_list::iterator ui = v_units.begin(); ui != v_units.end(); ++ui) {
       unit_map::iterator u = unit(*ui,get_info().units);
       if(u!=get_info().units.end()){
@@ -48,7 +48,7 @@ namespace dfool {
 	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
-
+	
 	unit_memory_.add_unit_sighting(u->second, u->first, get_info().state.turn());
       }
     }
@@ -205,7 +205,11 @@ namespace dfool {
       if(m->second.movement_left()){
 	std::map<location,paths> possible_moves;
 	move_map srcdst, dstsrc;
-	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
+	unit_map known_units;
+	
+	unit_memory_.known_map(known_units,0);
+
+	calculate_moves(known_units,possible_moves,srcdst,dstsrc,false);
 	
 	int closest_distance = -1;
 	std::pair<location,location> closest_move;
@@ -320,4 +324,21 @@ namespace dfool {
     //    std::cout<<"ai write: "<<temp_unit["description"]<<"\n";
   }
 
+  void unit_memory::known_map(unit_map& u, size_t turn){
+    size_t i;
+    std::map<gamemap::location,size_t> turn_used;
+    for(i=0;i<units_.size();i++){
+      gamemap::location l = locations_[i];
+      size_t t = turn_used[l]; 
+      //      std::cout<<"turn: "<< t <<"\n";
+      if(turns_[i] >= turn && turns_[i] >= t){
+	  turn_used[l] = t;
+	  if(t != 0){
+	    u.replace(new std::pair<gamemap::location,unit>(l,units_[i]));
+	  }else{
+	    u.add(new std::pair<gamemap::location,unit>(l,units_[i]));
+	  }
+      }
+    }
+  }
 }//end namespace dfool

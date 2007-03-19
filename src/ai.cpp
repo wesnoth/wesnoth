@@ -620,6 +620,14 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const std::set<gamemap::location>* remove_destinations)
 {
+  unit_map units=info_.units;
+  calculate_moves(units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
+}
+
+void ai_interface::calculate_moves(unit_map units, std::map<location,paths>& res, move_map& srcdst,
+		move_map& dstsrc, bool enemy, bool assume_full_movement,
+		const std::set<gamemap::location>* remove_destinations)
+{
 	for(unit_map::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
 		//if we are looking for the movement of enemies, then this unit must be an enemy unit
 		//if we are looking for movement of our own units, it must be on our side.

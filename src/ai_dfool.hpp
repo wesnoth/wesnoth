@@ -33,6 +33,8 @@ namespace dfool {
     void remove_unit_sighting(std::string id);
     //void purge(int turn = -1); //clean outdated entries
     void write(config& temp);
+    //create a map based upon units seen since turn
+    void known_map(unit_map& units, size_t turn=0); 
   private: 
     void write_element(int i, config& temp);
     //could replace these with a single vector of memory elements
@@ -58,7 +60,9 @@ namespace dfool {
     unit_map::iterator unit(std::string unit_id, unit_map& um);
 
     unit_memory unit_memory_;
+
   };
+
 
 }//end namespace dfool
 #endif
