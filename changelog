@@ -1,10 +1,19 @@
 Version 1.2.3+svn:
- * graphics
+ * graphics:
+   * fixed a missing frame for the white mage
+   * improved the mage of light melee animation and changed its melee attack to
+     "morning star"
+   * improved the look of the main menu and tips of the day boxes in the
+     title screen
    * tiles with overlays are also properly shown if compiled with
      --enable-tinygui (bug #8720 patch #697)
-   * fixed a missing frame for the white mage
  * language and i18n:
    * updated translations: Dutch, Esperanto, Serbian, Swedish
+ * WML:
+   * fixed the fire dragon die sound in TROW
+   * fixed many agression->aggression typos
+ * misc:
+   * fixed beginning-of-scenario saves containing scenario WML (bug #8698)
 
 Version 1.2.3:
  * campaigns:
