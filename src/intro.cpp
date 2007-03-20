@@ -232,7 +232,7 @@ bool show_intro_part(display &disp, const config& part,
 
 					int a, b;
 					const int mouse_flags = SDL_GetMouseState(&a,&b);
-					if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
+					if(key[SDLK_RETURN] || key[SDLK_KP_ENTER] || key[SDLK_SPACE] || mouse_flags) {
 						pass = true;
 						continue;
 					}
@@ -307,7 +307,7 @@ bool show_intro_part(display &disp, const config& part,
 
 		}
 
-		const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN];
+		const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN] || key[SDLK_KP_ENTER];
 
 		if(keydown && !last_key || next_button.pressed()) {
 			if(skip == true || itor == utils::utf8_iterator::end(story)) {

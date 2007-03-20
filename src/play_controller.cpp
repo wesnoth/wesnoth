@@ -573,7 +573,7 @@ void play_controller::handle_event(const SDL_Event& event)
 				menu_handler_.get_textbox().close(*gui_);
 			} else if(event.key.keysym.sym == SDLK_TAB) {
 				menu_handler_.get_textbox().tab(teams_, units_, *gui_);
-			} else if(event.key.keysym.sym == SDLK_RETURN) {
+			} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
 				enter_textbox();
 			}
 			break;

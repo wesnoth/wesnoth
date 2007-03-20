@@ -74,7 +74,7 @@ bool fade_logo(display& screen, int xpos, int ypos)
 
 		if(!faded_in && (x%5) == 0) {
 
-			const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE] || key[SDLK_RETURN];
+			const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE] || key[SDLK_RETURN] || key[SDLK_KP_ENTER] ;
 			if(new_button && !last_button) {
 				faded_in = true;
 			}

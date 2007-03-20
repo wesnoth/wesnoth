@@ -615,12 +615,12 @@ int dialog::process(dialog_process_info &info)
 	const bool new_right_button = (mouse_flags&SDL_BUTTON_RMASK) != 0;
 	const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
 	const bool new_key_down = info.key[SDLK_SPACE] || info.key[SDLK_RETURN] ||
-							  info.key[SDLK_ESCAPE];
+					info.key[SDLK_ESCAPE] || info.key[SDLK_KP_ENTER];
 	info.double_clicked = menu_->double_clicked();
 	get_menu();
 	const bool use_menu = (menu_ != empty_menu);
 
-	if((!info.key_down && info.key[SDLK_RETURN] || info.double_clicked) &&
+	if((!info.key_down && info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER] || info.double_clicked) &&
 	   (type_ == YES_NO || type_ == OK_CANCEL || type_ == OK_ONLY || type_ == CLOSE_ONLY)) {
 
 		return (use_menu ? menu_->selection() : 0);

@@ -382,7 +382,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 {
 #ifndef USE_TINY_GUI
 	//On enter, adds the current chat message to the chat textbox.
-	if(event.keysym.sym == SDLK_RETURN && !entry_textbox_.text().empty()) {
+	if((event.keysym.sym == SDLK_RETURN || event.keysym.sym == SDLK_KP_ENTER) && !entry_textbox_.text().empty()) {
 
 		chat_handler::do_speak(entry_textbox_.text());
 		entry_textbox_.clear();
