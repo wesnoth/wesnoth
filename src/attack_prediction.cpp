@@ -180,8 +180,13 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 		}
 		debug(("B has fought before\n"));
 		dump();
-	} else
+	} else {
+		// if a unit has drain it might end with more HP than before
+		// make sure we don't access the matrix in invalid positions
+		a_hp = minimum(a_hp, rows - 1);
+		b_hp = minimum(b_hp, cols - 1);
 		val(NEITHER_SLOWED, a_hp, b_hp) = 1.0;
+	}
 }
 
 prob_matrix::~prob_matrix()
@@ -202,11 +207,15 @@ double *prob_matrix::new_arr(unsigned int size)
 
 double &prob_matrix::val(unsigned p, unsigned row, unsigned col)
 {
+	wassert(row < rows);
+	wassert(col < cols);
 	return plane[p][row * cols + col];
 }
 
 const double &prob_matrix::val(unsigned p, unsigned row, unsigned col) const
 {
+	wassert(row < rows);
+	wassert(col < cols);
 	return plane[p][row * cols + col];
 }
 
