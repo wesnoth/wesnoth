@@ -61,12 +61,12 @@ void manager::handle_generic_event(const std::string &event_name)
 		update_positions();
 }
 
-void manager::add(const std::string &name, const std::string &files, int min_delay, int chance, bool play_fogged)
+void manager::add(const std::string &id, const std::string &files, int min_delay, int chance, bool play_fogged)
 {
 	positional_source_iterator it;
 
-	if((it = _sources.find(name)) == _sources.end()) {
-		_sources[name] = new positional_source(files, min_delay, chance, play_fogged);
+	if((it = _sources.find(id)) == _sources.end()) {
+		_sources[id] = new positional_source(files, min_delay, chance, play_fogged);
 	}
 	else {
 		delete (*it).second;
@@ -74,11 +74,11 @@ void manager::add(const std::string &name, const std::string &files, int min_del
 	}
 }
 
-void manager::remove(const std::string &name)
+void manager::remove(const std::string &id)
 {
 	positional_source_iterator it;
 
-	if((it = _sources.find(name)) == _sources.end())
+	if((it = _sources.find(id)) == _sources.end())
 		return;
 	else {
 		delete (*it).second;
@@ -102,9 +102,9 @@ void manager::update_positions()
 		(*it).second->update_positions(time, _disp);
 }
 
-void manager::add_location(const std::string &name, const gamemap::location &loc)
+void manager::add_location(const std::string &id, const gamemap::location &loc)
 {
-	positional_source_iterator it = _sources.find(name);
+	positional_source_iterator it = _sources.find(id);
 
 	if(it == _sources.end())
 		return;

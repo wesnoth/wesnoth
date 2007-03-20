@@ -80,11 +80,11 @@ public:
 	void handle_generic_event(const std::string &event_name);
 
 	// add or replace a soundsource
-	void add(const std::string &name, const std::string &files, int min_delay, int chance, bool play_fogged = false);
-	void remove(const std::string &name);
+	void add(const std::string &id, const std::string &files, int min_delay, int chance, bool play_fogged = false);
+	void remove(const std::string &id);
 	void update();
 
-	void add_location(const std::string &name, const gamemap::location &loc);
+	void add_location(const std::string &id, const gamemap::location &loc);
 };
 
 } // namespce soundsource

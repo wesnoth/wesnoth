@@ -1267,6 +1267,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
+	else if(cmd == "remove_sound_source") {
+		soundsources->remove(cfg["id"]);
+	}
+
 	//changing the terrain
 	else if(cmd == "terrain") {
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
