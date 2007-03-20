@@ -280,6 +280,19 @@ std::string pick_one(const std::string &files)
 	return names[choice];
 }
 
+struct audio_lock
+{
+	audio_lock()
+	{
+		SDL_LockAudio();
+	}
+
+	~audio_lock()
+	{
+		SDL_UnlockAudio();
+	}
+};
+
 } // end of anonymous namespace
 
 
@@ -591,7 +604,7 @@ void write_music_play_list(config& snapshot)
 
 void reposition_sound(int id, unsigned int distance)
 {
-	SDL_LockAudio();
+	audio_lock lock();
 	for(int ch = 0; ch < channel_ids.size(); ++ch) {
 		int& ch_id = channel_ids[ch];
 		if(ch_id == id) {
@@ -604,17 +617,12 @@ void reposition_sound(int id, unsigned int distance)
 			}
 		}
 	}
-	SDL_UnlockAudio();
 }
 
 bool is_sound_playing(int id)
-{	bool value;
-
-	SDL_LockAudio();
-	value = std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
-	SDL_UnlockAudio();
-
-	return value;
+{
+	audio_lock lock();
+	return std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
 }
 
 void stop_sound(int id)
@@ -638,13 +646,12 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 	sound_cache_iterator it;
 	int channel;
 
-	SDL_LockAudio();
+	audio_lock lock();
 
 	// find a free channel in the desired group
 	channel = Mix_GroupAvailable(group);
 	if(channel == -1) {
 		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
-		SDL_UnlockAudio();
 		return false;
 	}
 	channel_ids[channel] = id;
@@ -674,7 +681,6 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		}
 		if(cache_full) {
 			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.\n";
-			SDL_UnlockAudio();
 			return false;
 		}
 		temp_chunk.group = group;
@@ -693,7 +699,6 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		if (temp_chunk.get_data() == NULL) {
 			ERR_AUDIO << "Could not load sound file '" << filename << "': "
 				<< Mix_GetError() << "\n";
-			SDL_UnlockAudio();
 			return false;
 		}
 		sound_cache.push_front(temp_chunk);
@@ -703,16 +708,12 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 	const int res = Mix_PlayChannel(channel, it->get_data(), 0);
 	if(res < 0) {
 		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
-		SDL_UnlockAudio();
 		//still keep it in the sound cache, in case we want to try again later
 		return false;
 	}
 
 	//reserve the channel's chunk from being freed, since it is playing
 	channel_chunks[res] = it->get_data();
-
-	SDL_UnlockAudio();
-
 	return true;
 }
 
