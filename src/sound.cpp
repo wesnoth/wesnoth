@@ -19,7 +19,6 @@
 #include "preferences.hpp"
 #include "random.hpp"
 #include "sound.hpp"
-#include "thread.hpp"
 #include "wassert.hpp"
 #include "wesconfig.h"
 
@@ -40,9 +39,6 @@ std::vector<Mix_Chunk*> channel_chunks;
 // Channel-id mapping for use with sound sources (to check if given source 
 // is playing on a channel for fading/panning)
 std::vector<int> channel_ids;
-
-// Mutex syncing access to channel_chunks and channel_ids vectors
-threading::mutex channel_mutex;
 
 bool play_sound_internal(const std::string& files, channel_group group, bool sound_on,
 						 unsigned int distance=0, int id=-1);
@@ -292,13 +288,11 @@ namespace sound {
 // Removes channel-chunk and channel-id mapping
 void channel_finished_hook(int channel)
 {
-	threading::lock l(channel_mutex);
 	channel_chunks[channel] = NULL;
 	channel_ids[channel] = -1;
 }
 
 bool init_sound() {
-//	threading::lock l(channel_mutex);
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
 			return false;
@@ -597,7 +591,7 @@ void write_music_play_list(config& snapshot)
 
 void reposition_sound(int id, unsigned int distance)
 {
-	threading::lock l(channel_mutex);
+	SDL_LockAudio();
 	for(int ch = 0; ch < channel_ids.size(); ++ch) {
 		int& ch_id = channel_ids[ch];
 		if(ch_id == id) {
@@ -610,12 +604,17 @@ void reposition_sound(int id, unsigned int distance)
 			}
 		}
 	}
+	SDL_UnlockAudio();
 }
 
 bool is_sound_playing(int id)
-{
-	threading::lock l(channel_mutex);
-	return std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
+{	bool value;
+
+	SDL_LockAudio();
+	value = std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
+	SDL_UnlockAudio();
+
+	return value;
 }
 
 void stop_sound(int id)
@@ -639,14 +638,13 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 	sound_cache_iterator it;
 	int channel;
 
-	// lock scope, no audio functions here!
-	{
-	threading::lock l(channel_mutex);
+	SDL_LockAudio();
 
 	// find a free channel in the desired group
 	channel = Mix_GroupAvailable(group);
 	if(channel == -1) {
 		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
+		SDL_UnlockAudio();
 		return false;
 	}
 	channel_ids[channel] = id;
@@ -676,6 +674,7 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		}
 		if(cache_full) {
 			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.\n";
+			SDL_UnlockAudio();
 			return false;
 		}
 		temp_chunk.group = group;
@@ -694,28 +693,25 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		if (temp_chunk.get_data() == NULL) {
 			ERR_AUDIO << "Could not load sound file '" << filename << "': "
 				<< Mix_GetError() << "\n";
+			SDL_UnlockAudio();
 			return false;
 		}
 		sound_cache.push_front(temp_chunk);
 		it = sound_cache.begin();
 	}
-	} // end of lock scope
 
 	const int res = Mix_PlayChannel(channel, it->get_data(), 0);
 	if(res < 0) {
 		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
+		SDL_UnlockAudio();
 		//still keep it in the sound cache, in case we want to try again later
 		return false;
 	}
 
-	// lock scope, no audio functions here!
-	{
-		threading::lock l(channel_mutex);
+	//reserve the channel's chunk from being freed, since it is playing
+	channel_chunks[res] = it->get_data();
 
-		//reserve the channel's chunk from being freed, since it is playing
-		channel_chunks[res] = it->get_data();
-	} 
-	// end of lock scope
+	SDL_UnlockAudio();
 
 	return true;
 }
