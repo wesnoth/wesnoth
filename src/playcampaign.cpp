@@ -443,7 +443,16 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 			//if this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
-				state.starting_pos = *scenario;
+				//For multiplayer, we want the save to contain the starting position.
+				//For campaings however, this is the start-of-scenario save and the
+				//starting position needs to be empty to force a reload of the scenario
+				//config.
+				if (state.campaign_type == "multiplayer"){
+					state.starting_pos = *scenario;
+				}
+				else{
+					state.starting_pos = config();
+				}
 
 				bool retry = true;
 
@@ -469,9 +478,9 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				}
 			}
 
-			//update the replay start
-			//FIXME: this should only be done if the scenario was not tweaked.
-			//state.starting_pos = *scenario;
+			if (state.campaign_type != "multiplayer"){
+				state.starting_pos = *scenario;
+			}
 		}
 
 		recorder.set_save_info(state);
