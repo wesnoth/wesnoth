@@ -349,7 +349,18 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		break;
 	case VILLAGES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.villages;
+		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.villages << "/";
+		if (current_team.uses_shroud()) {
+			int unshrouded_villages = 0;
+			std::vector<gamemap::location>::const_iterator i = map.villages().begin();
+			for (; i != map.villages().end(); i++) {
+				if (!current_team.shrouded(i->x,i->y))
+					 unshrouded_villages++;
+			}
+			str << unshrouded_villages;
+		} else {
+			str << map.villages().size();
+		}
 		break;
 	}
 	case NUM_UNITS: {
