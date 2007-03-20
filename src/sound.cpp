@@ -35,7 +35,7 @@
 
 namespace sound {
 // Channel-chunk mapping lets us know, if we can safely free a given chunk
-std::vector<Mix_Chunk*> *channel_chunks = NULL;
+std::vector<Mix_Chunk*> channel_chunks;
 
 // Channel-id mapping for use with sound sources (to check if given source 
 // is playing on a channel for fading/panning)
@@ -73,40 +73,53 @@ std::map< Mix_Chunk*, int > chunk_usage;
 void increment_chunk_usage(Mix_Chunk* mcp) {
 	++(chunk_usage[mcp]);
 }
+
 void decrement_chunk_usage(Mix_Chunk* mcp) {
 	if(mcp && --(chunk_usage[mcp]) == 0) {
 		Mix_FreeChunk(mcp);
 	}
 }
+
 class sound_cache_chunk {
 public:
 	sound_cache_chunk(const std::string& f) : group(sound::NULL_CHANNEL), file(f), data_(NULL) {}
 	sound_cache_chunk(const sound_cache_chunk& scc) 
-		: group(scc.group), file(scc.file), data_(scc.data_) {
+		: group(scc.group), file(scc.file), data_(scc.data_) 
+	{
 		increment_chunk_usage(data_);
 	}
-	~sound_cache_chunk() {
+
+	~sound_cache_chunk() 
+	{
 		decrement_chunk_usage(data_);
 	}
+
 	sound::channel_group group;
 	std::string file;
+
 	void set_data(Mix_Chunk* d) {
 		increment_chunk_usage(d);
 		decrement_chunk_usage(data_);
 		data_ = d;
 	}
+
 	Mix_Chunk* get_data() const {
 		return data_;
 	}
+
 	bool operator==(sound_cache_chunk const &scc) const {
 		return file == scc.file;
 	}
+
 	bool operator!=(sound_cache_chunk const &scc) const { return !operator==(scc); }
+
 	sound_cache_chunk& operator=(const sound_cache_chunk& scc) {
 		file = scc.file;
 		group = scc.group;
 		set_data(scc.get_data());
+		return *this;
 	}
+
 private:
 	Mix_Chunk* data_;
 };
@@ -280,14 +293,12 @@ namespace sound {
 void channel_finished_hook(int channel)
 {
 	threading::lock l(channel_mutex);
-	if(channel_chunks) {
-		(*channel_chunks)[channel] = NULL;
-	}
+	channel_chunks[channel] = NULL;
 	channel_ids[channel] = -1;
 }
 
 bool init_sound() {
-	threading::lock l(channel_mutex);
+//	threading::lock l(channel_mutex);
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
 			return false;
@@ -303,8 +314,8 @@ bool init_sound() {
 		Mix_AllocateChannels(n_of_channels);
 		Mix_ReserveChannels(n_reserved_channels);
 
-		delete channel_chunks;
-		channel_chunks = new std::vector<Mix_Chunk*>(n_of_channels, NULL);
+		channel_chunks.clear();
+		channel_chunks.resize(n_of_channels, NULL);
 		channel_ids.resize(n_of_channels, -1);
 
 		const size_t source_channel_last = source_channels - source_channel_start + 1;
@@ -330,6 +341,7 @@ bool init_sound() {
 void close_sound() {
 	int numtimesopened, frequency, channels;
 	Uint16 format;
+
 	if(mix_ok) {
 		stop_bell();
 		stop_UI_sound();
@@ -358,6 +370,7 @@ void reset_sound() {
 	bool sound = preferences::sound_on();
 	bool UI_sound = preferences::UI_sound_on();
 	bool bell = preferences::turn_bell();
+
 	if (music || sound || bell || UI_sound) {
 		sound::close_sound();
 		sound::init_sound();
@@ -620,13 +633,18 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 	if(files.empty() || distance >= DISTANCE_SILENT || !sound_on || !mix_ok) {
 		return false;
 	}
+
 	std::string file = pick_one(files);
+	sound_cache_iterator it_bgn, it_end;
+	sound_cache_iterator it;
+	int channel;
+
+	// lock scope, no audio functions here!
+	{
 	threading::lock l(channel_mutex);
-	if(channel_chunks == NULL) {
-		return false;
-	}
+
 	// find a free channel in the desired group
-	int channel = Mix_GroupAvailable(group);
+	channel = Mix_GroupAvailable(group);
 	if(channel == -1) {
 		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
 		return false;
@@ -634,13 +652,13 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 	channel_ids[channel] = id;
 	Mix_SetDistance(channel, distance);
 
-	sound_cache_chunk temp_chunk(file); //search the sound cache on this key
-	sound_cache_iterator it_bgn = sound_cache.begin(), it_end = sound_cache.end();
-	sound_cache_iterator it = std::find(it_bgn, it_end, temp_chunk);
+	sound_cache_chunk temp_chunk(file); // search the sound cache on this key
+	it_bgn = sound_cache.begin(), it_end = sound_cache.end();
+	it = std::find(it_bgn, it_end, temp_chunk);
 
 	if (it != it_end) {
 		if(it->group != group) {
-			//cached item has been used in multiple sound groups
+			// cached item has been used in multiple sound groups
 			it->group = NULL_CHANNEL;
 		}
 		//splice the most recently used chunk to the front of the cache
@@ -650,8 +668,8 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		bool cache_full = (sound_cache.size() == max_cached_chunks);
 		while( cache_full && it != it_bgn ) {
 			// make sure this chunk is not being played before freeing it
-			std::vector<Mix_Chunk*>::iterator ch_end = channel_chunks->end();
-			if(std::find(channel_chunks->begin(), ch_end, (--it)->get_data()) == ch_end) {
+			std::vector<Mix_Chunk*>::iterator ch_end = channel_chunks.end();
+			if(std::find(channel_chunks.begin(), ch_end, (--it)->get_data()) == ch_end) {
 				sound_cache.erase(it);
 				cache_full = false;
 			}
@@ -681,14 +699,24 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		sound_cache.push_front(temp_chunk);
 		it = sound_cache.begin();
 	}
+	} // end of lock scope
+
 	const int res = Mix_PlayChannel(channel, it->get_data(), 0);
 	if(res < 0) {
 		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		//still keep it in the sound cache, in case we want to try again later
 		return false;
 	}
-	//reserve the channel's chunk from being freed, since it is playing
-	(*channel_chunks)[res] = it->get_data();
+
+	// lock scope, no audio functions here!
+	{
+		threading::lock l(channel_mutex);
+
+		//reserve the channel's chunk from being freed, since it is playing
+		channel_chunks[res] = it->get_data();
+	} 
+	// end of lock scope
+
 	return true;
 }
 

@@ -1617,24 +1617,10 @@ void game_controller::play_replay()
 	}
 }
 
-namespace sound {
-extern std::vector<Mix_Chunk*> *channel_chunks;
-extern threading::mutex channel_mutex;
-}
 game_controller::~game_controller()
 {
 	delete gui::empty_menu;
 	sound::close_sound();
-	{
-		threading::lock l(sound::channel_mutex);
-		if(sound::channel_chunks != NULL) {
-			sound::channel_chunks->clear();
-			/*
-			delete sound::channel_chunks; //FIXME: sometimes crashes
-			*/
-			sound::channel_chunks = NULL;
-		}
-	}
 }
 
 int play_game(int argc, char** argv)
