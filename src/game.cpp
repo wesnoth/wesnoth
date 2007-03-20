@@ -227,6 +227,8 @@ game_controller::game_controller(int argc, char** argv)
 			game_config::no_delay = true;
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
+			preferences::set_turn_bell(false);
+			preferences::set_UI_sound(false);
 			preferences::set_sound(false);
 			preferences::set_music(false);
 		} else if(val[0] == '-') {
@@ -249,11 +251,12 @@ game_controller::game_controller(int argc, char** argv)
 		}
 	}
 
-	if (preferences::sound_on() || preferences::music_on() || preferences::turn_bell()) {
+	if (preferences::sound_on() || preferences::music_on() || preferences::turn_bell() || preferences::UI_sound_on()) {
 		if(!sound::init_sound()) {
 			preferences::set_sound(false);
 			preferences::set_music(false);
 			preferences::set_turn_bell(false);
+			preferences::set_UI_sound(false);
 		}
 	}
 }
@@ -1625,9 +1628,7 @@ game_controller::~game_controller()
 	{
 		threading::lock l(sound::channel_mutex);
 		sound::channel_chunks->clear();
-		/*
 		delete sound::channel_chunks; //FIXME: sometimes crashes
-		*/
 		sound::channel_chunks = NULL;
 	}
 }
