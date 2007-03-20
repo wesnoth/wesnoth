@@ -1627,9 +1627,13 @@ game_controller::~game_controller()
 	sound::close_sound();
 	{
 		threading::lock l(sound::channel_mutex);
-		sound::channel_chunks->clear();
-		delete sound::channel_chunks; //FIXME: sometimes crashes
-		sound::channel_chunks = NULL;
+		if(sound::channel_chunks != NULL) {
+			sound::channel_chunks->clear();
+			/*
+			delete sound::channel_chunks; //FIXME: sometimes crashes
+			*/
+			sound::channel_chunks = NULL;
+		}
 	}
 }
 
