@@ -1231,11 +1231,8 @@ bool game_controller::play_multiplayer()
 		+ sep1 + _("Host Networked Game")
 		+ sep2 + _("Host a game without using a server"));
 	host_or_join.push_back(pre + "hotseat.png"
-		+ sep1 + _("Hotseat Game")
-		+ sep2 + _("Play a multiplayer game sharing the same machine"));
-	host_or_join.push_back(pre + "ai.png"
-		+ sep1 + _("Human vs AI")
-		+ sep2 + _("Play a game against AI opponents"));
+		+ sep1 + _("Local Game")
+		+ sep2 + _("Play a multiplayer game with AI or humans sharing the same machine"));
 
 	std::string login = preferences::login();
 
@@ -1266,9 +1263,7 @@ bool game_controller::play_multiplayer()
 			std::vector<std::string> chat;
 			config game_data;
 
-			const mp::controller cntr = (res == 2 ?
-					mp::CNTR_NETWORK :
-					(res == 3 ? mp::CNTR_LOCAL : mp::CNTR_COMPUTER ));
+			const mp::controller cntr = (res == 2 ?	mp::CNTR_NETWORK : mp::CNTR_LOCAL );
 			const bool is_server = res == 2;
 
 			mp::start_server(disp(), game_config_, units_data_, cntr, is_server);
