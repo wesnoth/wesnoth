@@ -65,13 +65,15 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 	//'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
+	if (state.starting_pos.empty()){
+		//backwards compatibility code for 1.2 and 1.2.1
+		scenario = game_config.find_child(type,"id",state.scenario);
+		state.starting_pos = *scenario;
+	}
+
 	recorder.set_save_info(state);
 	starting_pos = state.starting_pos;
 	scenario = &starting_pos;
-
-	controller_map controllers;
-
-	const std::string current_scenario = state.scenario;
 
 	try {
 		// preserve old label eg. replay
@@ -149,6 +151,34 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		// no variables which leads to a segfault
 		if(state.snapshot.child("variables") != NULL) {
 			state.variables = *state.snapshot.child("variables");
+		}
+		{
+			//get the current gold values of players so they don't start with the amount
+			//they had at the start of the scenario
+			const std::vector<config*>& player_cfg = state.snapshot.get_children("player");
+			for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
+				std::string save_id = (**p)["save_id"];
+				player_info* player = state.get_player(save_id);
+				if (player != NULL){
+					player->gold = lexical_cast <int> ((**p)["gold"]);
+				}
+			}
+		}
+		{
+			//also get the recruitment list if there are some specialties in this scenario
+			const std::vector<config*>& player_cfg = state.snapshot.get_children("side");
+			for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
+				std::string save_id = (**p)["save_id"];
+				player_info* player = state.get_player(save_id);
+				if (player != NULL){
+					const std::string& can_recruit_str = (**p)["recruit"];
+					if(can_recruit_str != "") {
+						player->can_recruit.clear();
+						const std::vector<std::string> can_recruit = utils::split(can_recruit_str);
+						std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(player->can_recruit,player->can_recruit.end()));
+					}
+				}
+			}
 		}
 	}
 
@@ -285,7 +315,16 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 			//if this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
-				state.starting_pos = *scenario;
+				//For multiplayer, we want the save to contain the starting position.
+				//For campaings however, this is the start-of-scenario save and the
+				//starting position needs to be empty to force a reload of the scenario
+				//config.
+				if (state.campaign_type == "multiplayer"){
+					state.starting_pos = *scenario;
+				}
+				else{
+					state.starting_pos = config();
+				}
 
 				bool retry = true;
 
@@ -311,9 +350,9 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				}
 			}
 
-			//update the replay start
-			//FIXME: this should only be done if the scenario was not tweaked.
-			//state.starting_pos = *scenario;
+			if (state.campaign_type != "multiplayer") {
+				state.starting_pos = *scenario;
+			}
 		}
 
 		recorder.set_save_info(state);

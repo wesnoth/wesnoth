@@ -958,6 +958,7 @@ void attack(display& gui, const gamemap& map,
 				if (update_display){
 					recalculate_fog(map,state,info,units,teams,defender_side-1);
 					gui.recalculate_minimap();
+					gui.invalidate_all();
 					gui.draw();
 				}
 				break;
@@ -1196,9 +1197,10 @@ void attack(display& gui, const gamemap& map,
 					}
 				}
 				if (update_display){
-					gui.recalculate_minimap();
-					gui.draw();
 					recalculate_fog(map,state,info,units,teams,attacker_side-1);
+					gui.recalculate_minimap();
+					gui.invalidate_all();
+					gui.draw();
 				}
 				break;
 			} else if(hits) {

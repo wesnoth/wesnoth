@@ -54,11 +54,7 @@ int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
 std::string image_mask;
 
-#ifdef USE_TINY_GUI
-const int tile_size = 36;
-#else
 const int tile_size = 72;
-#endif
 int zoom = tile_size;
 
 //The "pointer to surfaces" vector is not cleared anymore (the surface are
@@ -549,27 +545,27 @@ surface get_scaled(const locator i_locator, COLOUR_ADJUSTMENT adj)
 
 surface get_greyed(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
-	surface image(get_image(i_locator, SCALED, adj));
+	surface image(get_image(i_locator, SCALED_TO_HEX, adj));
 
 	return surface(greyscale_image(image));
 }
 
 surface get_darkened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
-	surface image(get_image(i_locator, SCALED, adj));
+	surface image(get_image(i_locator, SCALED_TO_HEX, adj));
 
 	return surface(darken_image(image));
 }
 
 surface get_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
-	surface image(get_image(i_locator, SCALED, adj));
+	surface image(get_image(i_locator, SCALED_TO_HEX, adj));
 	return surface(brighten_image(image, ftofxp(1.5)));
 }
 
 surface get_semi_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
-	surface image(get_image(i_locator, SCALED, adj));
+	surface image(get_image(i_locator, SCALED_TO_HEX, adj));
 	return surface(brighten_image(image, ftofxp(1.25)));
 }
 
@@ -585,7 +581,7 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 	case UNSCALED:
 		imap = &images_;
 		break;
-	case SCALED:
+	case SCALED_TO_HEX:
 		imap = &scaled_images_;
 		break;
 	case UNMASKED:
@@ -624,7 +620,7 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 		// surface base_image(get_image(i_locator, UNSCALED));
 
 		switch(type) {
-		case SCALED:
+		case SCALED_TO_HEX:
 			res = get_scaled(i_locator, adj);
 			break;
 		case UNMASKED:

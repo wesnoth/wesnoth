@@ -26,7 +26,7 @@
 //
 ///images come in a number of varieties:
 /// - unscaled: no modifications have been done on the image.
-/// - scaled: images are scaled to the size of a tile
+/// - scaled_to_hex: images are scaled to the size of a tile
 /// - unmasked: images are scaled, but have no time of day masking applied to them
 /// - greyed: images are scaled and in greyscale
 /// - brightened: images are scaled and brighter than normal.
@@ -175,14 +175,14 @@ namespace image {
 	///scaled images.
 	void set_zoom(int zoom);
 
-	enum TYPE { UNSCALED, SCALED, UNMASKED, GREYED, DARKENED, BRIGHTENED, SEMI_BRIGHTENED };
+	enum TYPE { UNSCALED, SCALED_TO_HEX, UNMASKED, GREYED, DARKENED, BRIGHTENED, SEMI_BRIGHTENED };
 
 	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR };
 
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling
 	///SDL_FreeSurface()
-	surface get_image(const locator& i_locator,TYPE type=SCALED, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR);
+	surface get_image(const locator& i_locator,TYPE type=SCALED_TO_HEX, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR);
 
 	///function to get a scaled image, but scale it to specific dimensions.
 	///if you later try to get the same image using get_image() the image will

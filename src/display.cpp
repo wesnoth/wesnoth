@@ -90,7 +90,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
-	tod_hex_mask1(NULL), tod_hex_mask2(NULL),
+	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
 	diagnostic_label_(0), fps_handle_(0)
 {
 	if(non_interactive()) {
@@ -206,6 +206,9 @@ void display::new_turn()
 
 	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
 	image::set_image_mask(tod.image_mask);
+
+	invalidate_all();
+	draw();
 }
 
 void display::adjust_colours(int r, int g, int b)
@@ -1278,7 +1281,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
 
-	surface surf(image::get_image(image,image::SCALED,image::NO_ADJUST_COLOUR));
+	surface surf(image::get_image(image,image::SCALED_TO_HEX,image::NO_ADJUST_COLOUR));
 	surface unmoved_surf(image::get_image("misc/bar-energy-unmoved.png",image::UNSCALED,image::NO_ADJUST_COLOUR));
 	if(surf == NULL || unmoved_surf == NULL) {
 		return;
@@ -1384,7 +1387,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		terrain = map_.get_terrain(loc);
 	}
 
-	image::TYPE image_type = image::SCALED;
+	image::TYPE image_type = image::SCALED_TO_HEX;
 
 	const time_of_day& tod = status_.get_time_of_day();
 	const time_of_day& tod_at = timeofday_at(status_,units_,loc,map_);
