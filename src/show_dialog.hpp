@@ -16,10 +16,10 @@
 
 class config;
 class CVideo;
-class display;
 
 #include "cursor.hpp"
 #include "font.hpp"
+#include "halo.hpp"
 #include "network.hpp"
 #include "tooltips.hpp"
 
@@ -46,7 +46,7 @@ enum DIALOG_RESULT {
 
 bool in_dialog();
 
-struct dialog_manager : private cursor::setter, private font::floating_label_context {
+struct dialog_manager : private cursor::setter, private font::floating_label_context, private halo::halo_hider {
 	dialog_manager();
 	~dialog_manager();
 

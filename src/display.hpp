@@ -417,8 +417,6 @@ public:
 	bool in_game() const { return in_game_; }
 	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
-	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
-
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -435,6 +433,8 @@ private:
 	reports::report reports_[reports::NUM_REPORTS];
 
 	void bounds_check_position();
+
+	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
 
 	// std::vector<surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 	std::vector<surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);

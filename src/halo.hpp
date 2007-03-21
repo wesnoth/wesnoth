@@ -17,7 +17,6 @@
 class display;
 
 #include "map.hpp"
-#include <set>
 #include <string>
 
 namespace halo
@@ -30,6 +29,14 @@ struct manager
 
 private:
 	display* const old;
+};
+
+struct halo_hider
+{
+	halo_hider();
+	~halo_hider();
+private:
+	bool old;
 };
 
 enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
@@ -57,11 +64,10 @@ struct remover
 	void operator()(int handle) const { remove(handle); }
 };
 
-///functions to render and unrender haloes. Which haloes are rendered 
-// is determined by invalidated_locations and the internal state in
-// the control sets (in halo.cpp)
-void unrender(std::set<gamemap::location> invalidated_locations);
+///functions to render and unrender all haloes. Should
+///be called immediately before/after flipping the screen
 void render();
+void unrender();
 
 }
 
