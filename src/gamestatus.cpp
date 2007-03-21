@@ -1155,7 +1155,8 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 		if(explicit_index == false && sub_key == "length") {
 			if(items.empty()) {
 				if(varout != NULL) {
-					static t_string zero_str = "";
+					static t_string zero_str;
+					zero_str = "";
 					*varout = &zero_str;
 				}
 			} else {
@@ -1192,12 +1193,7 @@ t_string& game_state::get_variable(const std::string& key)
 	t_string* res = NULL;
 	activate_scope_variable(key);
 	get_variable_internal(key, variables, &res, NULL);
-	if(res != NULL) {
-		return *res;
-	}
-
-	static t_string empty_string;
-	return empty_string;
+	return *res;
 }
 
 const t_string& game_state::get_variable_const(const std::string& key) const
@@ -1218,19 +1214,20 @@ config& game_state::get_variable_cfg(const std::string& key)
 	config* res = NULL;
 	activate_scope_variable(key);
 	get_variable_internal(key + ".", variables, NULL, &res);
-
 	if(res != NULL) {
 		return *res;
 	}
-
-	static config empty_cfg;
-	return empty_cfg;
+	static config illegal_key_cfg;
+	LOG_NG << "get_variable_cfg: illegal name \"" << key << "\" used for WML array.";
+	return illegal_key_cfg;
 }
 
 void game_state::set_variable(const std::string& key, const t_string& value)
 {
+	t_string* res = NULL;
 	activate_scope_variable(key);
-	variables[key] = value;
+	get_variable_internal(key, variables, &res, NULL);
+	*res = value;
 }
 
 config& game_state::add_variable_cfg(const std::string& key, const config& value)
