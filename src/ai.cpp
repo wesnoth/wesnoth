@@ -620,15 +620,14 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const std::set<gamemap::location>* remove_destinations)
 {
-  unit_map units=info_.units;
-  calculate_moves(units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
+  calculate_moves(info_.units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
-void ai_interface::calculate_moves(unit_map units, std::map<location,paths>& res, move_map& srcdst,
+void ai_interface::calculate_moves(const unit_map& units, std::map<location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const std::set<gamemap::location>* remove_destinations)
 {
-	for(unit_map::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
+	for(unit_map::const_iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
 		//if we are looking for the movement of enemies, then this unit must be an enemy unit
 		//if we are looking for movement of our own units, it must be on our side.
 		//if we are assuming full movement, then it may be a unit on our side, or allied
@@ -649,7 +648,8 @@ void ai_interface::calculate_moves(unit_map units, std::map<location,paths>& res
 		}
 
 		//if it's an enemy unit, reset its moves while we do the calculations
-		const unit_movement_resetter move_resetter(un_it->second,enemy || assume_full_movement);
+		unit* held_unit = const_cast<unit*>(&(un_it->second));
+		const unit_movement_resetter move_resetter(*held_unit,enemy || assume_full_movement);
 
 		//insert the trivial moves of staying on the same location
 		if(un_it->second.movement_left() == un_it->second.total_movement()) {
