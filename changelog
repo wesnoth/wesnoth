@@ -1,24 +1,75 @@
-Version 1.2.1+svn:
+Version 1.2.3+svn:
+ * campaigns:
+   * Heir to the Throne
+     * updated images for Delfador
+   * Tutorial
+     * merged all unit images used in the tutorial from httt
+ * graphics:
+   * fixed a missing frame for the white mage
+   * improved the mage of light melee animation and changed its melee attack to
+     "morning star"
+   * improved the look of the main menu and tips of the day boxes in the
+     title screen
+   * tiles with overlays are also properly shown if compiled with
+     --enable-tinygui (bug #8720 patch #697)
+ * language and i18n:
+   * updated translations: Dutch, Esperanto, Greek, Serbian, Swedish
+ * WML:
+   * fixed the fire dragon die sound in TROW
+   * fixed many agression->aggression typos
+ * misc:
+   * fixed beginning-of-scenario saves containing scenario WML (bug #8698)
+
+Version 1.2.3:
+ * campaigns:
+   * Heir to the Throne:
+     * The Elvish Lord and Elvish High Lord have halo's again (patch #682)
+ * graphics
+   * items with a halo have their halo hidden when under a shroud (bug #8523)
+   * updates the invisible icon of an unit when moving or moving the mouse 
+     over the unit, then selecting the location to move to there are still
+     glitches (partial fix for bug #8107)	 
+   * fixed some cases where fog was updated without being redrawn
+ * user interface:
+   * made some tooltips visible again (bug #6702 and bug #8380)
+ * multiplayer maps:
+   * revised maps: Castle Hopping Isle
+   * Wesbowl: the respawned units are fully healed again (bug #7776)
+ * language and i18n:
+   * udated translations: Czech, Danish, Dutch, Esperanto, French, German,
+     Hungarian, Italian, Japanese, Polish, Portuguese (Brazil), Serbian, Slovak
+   * new translations: Indonesian
+ * WML engine
+   * fixed era events not working on non hosts
+
+Version 1.2.2:
  * campaigns:
    * Eastern Invasion:
      * The Crossing, fixed a bug which prevented the undead leader spawned 
        at turn 8 to have a keep
    * The South Guard:
      * fixed some pink unit images being shown in some scenario texts
+   * Two Brothers
+     * updated the portrait of Bjarn to match the new mage colors
  * editor
    * added the paste option to the edit menu
  * graphics
-   * new attack icon for undead axes, undead crossbow, pick axe & glaive
-   * new baseframes: White Mage
+   * new attack icons: undead axe, undead crossbow, pick axe, glaive, elven
+     staff
+   * new baseframes: Mage line, Footpad
+   * new new death animations: Orcish Assassin, Grunt, Undead Ghoul, Ancient
+     Wose, Elder Wose, Thieves
+   * updated portraits: Troll
  * language and i18n:
    * fixed spelling mistakes in the en_US version
    * updated translations: Czech, Danish, Dutch, Estonian, Esperanto, French,
-     German, Italian, Polish, Portuguese (Brazil), Russian, Serbian, Slovak, Swedish
-   * updated DejaVuSans font to 2.14
+     German, Greek, Italian, Polish, Portuguese (Brazil), Russian, Serbian,
+     Slovak, Swedish
+   * updated DejaVuSans font to 2.15
  * multiplayer maps:
     * new maps: The Manzivan Traps, 4p Hamlets
-    * revised maps: Blitz, Charge, Den of Onis, Hamlets, Meteor Lake, Sablestone Delta, 
-      Sulla's Ruins
+    * revised maps: Blitz, Charge, Den of Onis, Hamlets, Meteor Lake, Sablestone
+      Delta, Sulla's Ruins
  * multiplayer
     * sped up the lobby, the lag is much lower now (patch #676 and patch #677)
  * units:
@@ -26,7 +77,8 @@ Version 1.2.1+svn:
     * Complete rewrite of saurian and poacher line descriptions, as well as
       some minor edits to a few other human units.
     * fixed a bug which caused the slow effect being applied twice (bug #8458)
-    * death animations for Wose Ancient and Elder, Human Outlaw Thief Male and Female
+    * death animations for Wose Ancient and Elder, Human Outlaw Thief Male
+      and Female
  * user interface:
     * smarter focus handling when user input is irrelevant to the current focus
       but relevant to another widget
@@ -35,6 +87,10 @@ Version 1.2.1+svn:
     * scrolling performance improved
     * selecting a units is faster now, especially switching between two units
     * overall game performance improved when many units are visible
+    * better performance when mouse is over a unit that sees many enemy units
+    * show side and team in the status table
+    * animations draw faster now and the speed is independent of the resolution
+    * fog/shroud is cleared after attack-move (bug #7131)
  * WML engine
     * fixed a bug which returned wrong values if a random number was negative
 
