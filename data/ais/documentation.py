@@ -80,16 +80,11 @@ def output(topics, level):
                     (doc and doc.replace("\n", "\n\n") or "..."))
 
 if __name__ == "__main__":
-    # If we are run as script, start a scenario with this python AI and a single turn,
-    # so the documentation will gets printed.
-    import os, sys
-    scenario = "multiplayer_Blitz" # doesn't matter, just needs to be valid
-    controllers = "--controller1=ai --algorithm1=python_ai " +\
-        "--parm1=python_script:documentation.py --controller2=ai"
-    os.system("src/wesnoth --nogui --multiplayer --turns=1 --scenario=%s %s" %
-        (scenario, controllers))
+    import os
+    # If we are run as script, run wesnoth with the --python-api switch.
+    os.system("src/wesnoth --python-api")
 else:
-    # If we are run as a python AI, simply output the documentation to stdout.
+    # If we are run as a python script, output the documentation to stdout.
     import wesnoth
     topics = []
     myhelp("wesnoth", topics)

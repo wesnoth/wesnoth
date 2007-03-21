@@ -52,6 +52,7 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "ai_python.hpp"
 
 #include "wesconfig.h"
 
@@ -1655,6 +1656,7 @@ int play_game(int argc, char** argv)
 			<< "  --max-fps                    the maximum fps the game tries to run at the value\n"
 			<< "                               should be between the 1 and 1000, the default is 50.\n"
 			<< "  --path                       prints the name of the game data directory and exits.\n"
+			<< "  --python-api                 prints the runtime documentation for the python API.\n"
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  -t, --test                   runs the game in a small test scenario.\n"
 			<< "  -v, --version                prints the game's version number and exits.\n"
@@ -1684,6 +1686,9 @@ int play_game(int argc, char** argv)
 		} else if(val == "--path") {
 			std::cout <<  game_config::path
 			          << "\n";
+			return 0;
+                } else if(val == "--python-api") {
+			python_ai::invoke("documentation.py");
 			return 0;
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');

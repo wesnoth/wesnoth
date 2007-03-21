@@ -56,14 +56,14 @@ public:
 	static PyObject* wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args );
 	static PyObject* wrapper_unit_attack_statistics(wesnoth_unit* unit, PyObject* args);
 
-	static void set_error(const char *fmt, ...);
-
 	static bool is_unit_valid(const unit* unit);
 	std::vector<team>& get_teams() { return get_info().teams; }
     static std::vector<std::string> get_available_scripts();
-protected:
-	static bool init_;
-	static PyObject* python_error_;
+
+    static void initialize_python();
+    static void invoke(std::string name);
+private:
+    static bool init_;
     end_level_exception exception;
 	ai_interface::move_map src_dst_;
 	ai_interface::move_map dst_src_;

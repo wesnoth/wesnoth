@@ -47,7 +47,6 @@
 
 static python_ai* running_instance;
 bool python_ai::init_ = false;
-PyObject* python_ai::python_error_ = NULL;
 
 #define return_none do {Py_INCREF(Py_None); return Py_None;} while(false)
 
@@ -1667,28 +1666,50 @@ static PyMethodDef wesnoth_python_methods[] = {
 	PyObject* pyob = reinterpret_cast<PyObject *>(type); \
 	PyModule_AddObject(module, const_cast<char *>(n), pyob); }
 
+void python_ai::initialize_python()
+{
+    if (init_) return;
+        init_ = true;
+    Py_Initialize( );
+    PyObject* module = Py_InitModule3("wesnoth", wesnoth_python_methods,
+        "This is the wesnoth AI module. "
+        "The python script will be executed once for each turn of the side with the "
+        "python AI using the script.");
+    Py_Register(wesnoth_unit_type, "unit");
+    Py_Register(wesnoth_location_type, "location");
+    Py_Register(wesnoth_gamemap_type, "gamemap");
+    Py_Register(wesnoth_unittype_type, "unittype");
+    Py_Register(wesnoth_team_type, "team");
+    Py_Register(wesnoth_attacktype_type, "attacktype");
+    Py_Register(wesnoth_gamestatus_type, "gamestatus");
+}
+
+void python_ai::invoke(std::string name)
+{
+    initialize_python();
+    PyErr_Clear();
+    PyObject* globals = PyDict_New();
+    PyDict_SetItemString(globals, "__builtins__", PyEval_GetBuiltins());
+    std::string python_code;
+    python_code +=
+        "import sys\n"
+        "backup = sys.path[:]\n"
+        "sys.path.append(\"" + game_config::path + "/data/ais\")\n"
+        "try:\n"
+        "    import " + name + "\n"
+        "finally:\n"
+        "    sys.path = backup\n";
+    PyObject *ret = PyRun_String(python_code.c_str(), Py_file_input, globals,
+        globals);
+    Py_XDECREF(ret);
+    Py_DECREF(globals);
+}
+
 python_ai::python_ai(ai_interface::info& info) : ai_interface(info), exception(QUIT)
 {
     LOG_AI << "Running Python instance.\n";
 	running_instance = this;
-	if ( !init_ )
-	{
-		Py_Initialize( );
-		PyObject* module = Py_InitModule3("wesnoth", wesnoth_python_methods,
-            "A script must call 'import wesnoth' to import all Wesnoth-related objects. "
-            "The python script will be executed once for each turn of the side with the "
-            "python AI using the script.");
-		Py_Register(wesnoth_unit_type, "unit");
-		Py_Register(wesnoth_location_type, "location");
-		Py_Register(wesnoth_gamemap_type, "gamemap");
-		Py_Register(wesnoth_unittype_type, "unittype");
-		Py_Register(wesnoth_team_type, "team");
-		Py_Register(wesnoth_attacktype_type, "attacktype");
-		Py_Register(wesnoth_gamestatus_type, "gamestatus");
-		python_error_ = PyErr_NewException("wesnoth.error",NULL,NULL);
-		PyDict_SetItemString(PyModule_GetDict(module),"error",python_error_);
-		init_ = true;
-	}
+    initialize_python();
 	calculate_possible_moves(possible_moves_,src_dst_,dst_src_,false);
 	calculate_possible_moves(enemy_possible_moves_,enemy_src_dst_,enemy_dst_src_,true);
 }
@@ -1721,21 +1742,20 @@ void python_ai::play_turn()
 
     LOG_AI << "Executing Python script \"" << script << "\".\n";
     // Run the python script. We actually execute a short inline python
-    // script, which sets up the module search path to the current binary
-    // pathes, runs the script with execfile, and then resets the path.
+    // script, which sets up the module search path to the data path,
+    // runs the script, and then resets the path.
     std::string python_code;
-    python_code += "import sys\n"
-        "backup = sys.path[:]; sys.path.extend([";
-        const std::vector<std::string>& paths = get_binary_paths("data");
-        std::vector<std::string>::const_iterator i;
-        for (i = paths.begin(); i != paths.end(); ++i) {
-            python_code += "'" + *i + "ais', ";
-    }
-    python_code += "])\n"
-        "import wesnoth, safe, heapq, random\n"
+    python_code +=
+        "import sys\n"
+        "backup = sys.path[:]\n"
+        "sys.path.append(\"" + game_config::path + "/data/ais\")\n"
         "try:\n"
-        "    code = file(\"" + script + "\").read()\n"
-        "    safe.safe_exec(code, {\"wesnoth\" : wesnoth, \"heapq\" : heapq, \"random\" : random})\n"
+        "    import wesnoth, parse, safe, heapq, random\n"
+        "    code = parse.parse(\"" + script + "\")\n"
+        "    safe.safe_exec(code, {\n"
+        "    \"wesnoth\" : wesnoth,\n"
+        "    \"heapq\" : heapq,\n"
+        "    \"random\" : random})\n"
         "finally:\n"
         "    sys.path = backup\n";
     PyObject *ret = PyRun_String(python_code.c_str(), Py_file_input,
