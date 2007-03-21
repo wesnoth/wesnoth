@@ -10,16 +10,17 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-02-17 20:06+0100\n"
-"PO-Revision-Date: 2004-10-03 14:33+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2007-03-21 15:18+0200\n"
+"Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/themes/editor.cfg:461
+#, fuzzy
 msgid "File"
-msgstr ""
+msgstr "Γέμισμα"
 
 #: data/themes/editor.cfg:470
 msgid "Edit"
@@ -31,47 +32,47 @@ msgstr ""
 
 #: src/editor/editor.cpp:235
 msgid "Draw tiles"
-msgstr ""
+msgstr "Σχεδίαση εδαφών"
 
 #: src/editor/editor.cpp:237
 msgid "Fill"
-msgstr ""
+msgstr "Γέμισμα"
 
 #: src/editor/editor.cpp:239
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Θέστε αρχική θέση παίκτη"
 
 #: src/editor/editor.cpp:241
 msgid "Zoom in"
-msgstr ""
+msgstr "Μεγέθυνση"
 
 #: src/editor/editor.cpp:243
 msgid "Zoom out"
-msgstr ""
+msgstr "Σμίκρυνση"
 
 #: src/editor/editor.cpp:245
 msgid "Undo"
-msgstr ""
+msgstr "Αναίρεση"
 
 #: src/editor/editor.cpp:247
 msgid "Redo"
-msgstr ""
+msgstr "Ακύρωση αναίρεσης"
 
 #: src/editor/editor.cpp:249
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Προεπιλεγμένη εστίαση"
 
 #: src/editor/editor.cpp:251
 msgid "Toggle grid"
-msgstr ""
+msgstr "Εμφάνιση/εξαφάνιση πλέγματος"
 
 #: src/editor/editor.cpp:253
 msgid "Resize the map"
-msgstr ""
+msgstr "Αυξομειώστε το μέγεθος του χάρτη"
 
 #: src/editor/editor.cpp:255
 msgid "Flip map"
-msgstr ""
+msgstr "Αναποδογύρισμα χάρτη"
 
 #: src/editor/editor.cpp:456
 msgid "Language"
@@ -83,65 +84,67 @@ msgstr "Επιλέξτε τη γλώσσα που προτιμάτε:"
 
 #: src/editor/editor.cpp:471 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Επεξεργαστής Χάρτων του Battle for Wesnoth"
 
 #: src/editor/editor.cpp:495
 msgid "Save the Map As"
-msgstr ""
+msgstr "Αποθήκευση χάρτη ως"
 
 #: src/editor/editor.cpp:506
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Ο χάρτης υπάρχει ήδη. Θέλετε να αντικατασταθεί ο παλιός;"
 
 #: src/editor/editor.cpp:529 src/editor/editor.cpp:1348
 msgid "Player"
-msgstr ""
+msgstr "Παίκτης"
 
 #: src/editor/editor.cpp:532
 msgid "Which Player?"
-msgstr ""
+msgstr "Ποιός παίκτης;"
 
 #: src/editor/editor.cpp:533
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Ποιός παίκτης θα ξεκινάει από εδώ;"
 
 #: src/editor/editor.cpp:584
 msgid "Choose a Map to Load"
-msgstr ""
+msgstr "Επιλέξτε χάρτη για φόρτωση"
 
 #: src/editor/editor.cpp:588
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
+"Προειδοποίηση: Μη έγκυροι χαρακτήρες βρέθηκαν στο όνομα του χάρτη. Παρακαλώ "
+"αποθηκεύστε με άλλο όνομα"
 
 #: src/editor/editor.cpp:601 src/editor/editor.cpp:675
 msgid "The file does not contain a valid map."
-msgstr ""
+msgstr "Αυτό το αρχείο δεν περιέχει έγκυρο χάρτη"
 
 #: src/editor/editor.cpp:958
 msgid "You must have a hex selected on the board."
-msgstr ""
+msgstr "Πρέπει να έχετε επιλέξει ένα δεκαεξαδικό νούμερο στον πίνακα"
 
 #: src/editor/editor.cpp:1215
 msgid "Quit Editor"
-msgstr ""
+msgstr "Έξοδος από Επεξεργαστή"
 
 #: src/editor/editor.cpp:1220
 msgid "Do you want to save the map before quitting?"
-msgstr ""
+msgstr "Θέλετε να αποθηκεύσετε το χάρτη πριν την έξοδο;"
 
 #: src/editor/editor.cpp:1268
 msgid "Map saved."
-msgstr ""
+msgstr "Ο χάρτης αποθηκεύτηκε"
 
 #: src/editor/editor.cpp:1277
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης: $msg"
 
 #: src/editor/editor.cpp:1292
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Σφάλμα: Μη έγκυρος χαρακτήρας στο όνομα του αρχείου"
 
 #: src/editor/editor_palettes.cpp:423
 msgid "FG"
