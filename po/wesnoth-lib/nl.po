@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-12 15:46+0100\n"
-"PO-Revision-Date: 2007-03-19 13:06+0100\n"
+"PO-Revision-Date: 2007-03-22 13:03+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -519,12 +519,14 @@ msgid "Show Lobby Minimaps"
 msgstr "Toon lobbyminikaarten"
 
 #: src/preferences_display.cpp:262
+#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr ""
+msgstr "Toon geen lobby"
 
 #: src/preferences_display.cpp:263
+#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr ""
+msgstr "Toon enkel lobby van vrienden"
 
 #: src/preferences_display.cpp:264
 #, fuzzy
@@ -537,7 +539,7 @@ msgstr "Sorteer lobbylijst"
 
 #: src/preferences_display.cpp:266
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Iconiseer lobbylijst"
 
 #: src/preferences_display.cpp:267
 msgid "Friends List"
@@ -554,7 +556,7 @@ msgstr "Voeg toe als vriend"
 #: src/preferences_display.cpp:270
 #, fuzzy
 msgid "Add As Ignore"
-msgstr "Voeg toe aan "
+msgstr "Negeer"
 
 #: src/preferences_display.cpp:271
 msgid "Remove"
@@ -736,9 +738,8 @@ msgid "Overlay a grid onto the map"
 msgstr "Een raster op de kaart weergeven"
 
 #: src/preferences_display.cpp:424
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr "Toon minikaart in de multiplayer"
+msgstr "Toon minikaart in de multiplayerlobby"
 
 #: src/preferences_display.cpp:427
 msgid "Sort the player list in the lobby by player groups"
@@ -746,24 +747,26 @@ msgstr "Sorteer de spelerslijst in de lobby per spelergroepen"
 
 #: src/preferences_display.cpp:430
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Toon iconen voor de spelersnamen in de lobby."
 
 #: src/preferences_display.cpp:433
+#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Toon geen berichten over spelers die de multiplayer lobby binnenkomen"
 
 #: src/preferences_display.cpp:435
+#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr ""
+msgstr "Toon berichten over je vrienden die de multiplayer lobby binnenkomen"
 
 #: src/preferences_display.cpp:437
+#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr ""
+msgstr "Toon berichten over alle spelers die de multiplayer lobby binnenkomen"
 
 #: src/preferences_display.cpp:439
-#, fuzzy
 msgid "View and edit your friends and ignores list"
-msgstr "Bekijk en bewerk je vrienden en lijst"
+msgstr "Bekijk en bewerk je vrienden- en negeerlijst"
 
 #: src/preferences_display.cpp:440
 msgid "Back to the multiplayer options"
@@ -774,9 +777,8 @@ msgid "Add this username to your friends list"
 msgstr "Voeg deze gebruikersnaam toe aan je vriendenlijst"
 
 #: src/preferences_display.cpp:442
-#, fuzzy
 msgid "Add this username to your ignores list"
-msgstr "Voeg deze gebruikersnaam toe aan je lijst"
+msgstr "Voeg deze gebruikersnaam toe aan je negeerlijst"
 
 #: src/preferences_display.cpp:443
 msgid "Remove this username from your list"
