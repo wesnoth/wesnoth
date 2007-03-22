@@ -230,6 +230,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		bool save_game_after_scenario = true;
 
 		const set_random_generator generator_setter(&recorder);
+		LEVEL_RESULT res;
 
 		try {
 			// preserve old label eg. replay
@@ -272,7 +273,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 			sound::play_no_music();
 
-			LEVEL_RESULT res;
 			switch (io_type){
 			case IO_NONE:
 				res = playsingle_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
@@ -342,8 +342,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				res = VICTORY;
 				save_game_after_scenario = false;
 			}
-			if(res != VICTORY)
-				return res;
 		} catch(game::load_game_failed& e) {
 			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
 			return QUIT;
@@ -354,6 +352,19 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
 			return QUIT;
 		}
+
+		//This is the end either of the multiplayer scenario or the last campaign mission
+		//or the user has been defeated. Make sure he gets an opportunity to delete the autosaves.
+		if ((next_scenario == "") || (res != VICTORY)){
+			const int autosave_res = gui::show_dialog(disp, NULL, _("Autosaves"), 
+				_("Do you want to delete the autosaves of this scenario?"), gui::YES_NO);
+			if (autosave_res == 0){
+				clean_autosaves(state.label);
+			}
+		}
+
+		if(res != VICTORY)
+			return res;
 
 		//if the scenario hasn't been set in-level, set it now.
 		if(state.scenario == current_scenario)
