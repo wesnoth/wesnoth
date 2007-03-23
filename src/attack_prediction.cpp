@@ -183,8 +183,8 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 	} else {
 		// if a unit has drain it might end with more HP than before
 		// make sure we don't access the matrix in invalid positions
-		a_hp = minimum(a_hp, rows - 1);
-		b_hp = minimum(b_hp, cols - 1);
+		a_hp = minimum<unsigned int>(a_hp, rows - 1);
+		b_hp = minimum<unsigned int>(b_hp, cols - 1);
 		val(NEITHER_SLOWED, a_hp, b_hp) = 1.0;
 	}
 }
