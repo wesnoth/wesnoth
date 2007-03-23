@@ -16,6 +16,7 @@
 
 #include <map>
 #include <vector>
+#include "config.hpp"
 
 #include "SDL_net.h"
 
@@ -42,9 +43,9 @@ private:
 //function to asynchronously received data to the given socket
 void receive_data(TCPsocket sock);
 
-TCPsocket get_received_data(TCPsocket sock, std::vector<char>& buf);
+TCPsocket get_received_data(TCPsocket sock, config& cfg);
 
-void queue_data(TCPsocket sock, std::vector<char>& buf);
+void queue_data(TCPsocket sock, const config& buf);
 bool socket_locked(TCPsocket sock);
 bool close_socket(TCPsocket sock);
 std::pair<unsigned int,size_t> thread_state();

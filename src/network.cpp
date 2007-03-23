@@ -49,7 +49,8 @@
 #define SOCKET int
 #endif
 
-#define LOG_NW LOG_STREAM(info, network)
+//#define LOG_NW LOG_STREAM(info, network)
+#define LOG_NW std::cerr
 #define WRN_NW LOG_STREAM(warn, network)
 // only warnings and not errors to avoid DoS by log flooding
 
@@ -135,14 +136,6 @@ std::set<network::connection> waiting_sockets;
 typedef std::vector<network::connection> sockets_list;
 sockets_list sockets;
 
-struct schema_pair
-{
-	compression_schema incoming, outgoing;
-};
-
-typedef std::map<network::connection,schema_pair> schema_map;
-
-schema_map schemas;
 
 struct partial_buffer {
 	partial_buffer() : upto(0) {}
@@ -382,8 +375,6 @@ void connect_operation::run()
 	waiting_sockets.insert(connect_);
 
 	sockets.push_back(connect_);
-	wassert(schemas.count(connect_) == 0);
-	schemas.insert(std::pair<network::connection,schema_pair>(connect_,schema_pair()));
 
 	while(!notify_finished());
 }
@@ -495,8 +486,6 @@ connection accept_connection()
 
 		waiting_sockets.insert(connect);
 		sockets.push_back(connect);
-		wassert(schemas.count(connect) == 0);
-		schemas.insert(std::pair<network::connection,schema_pair>(connect,schema_pair()));
 		return connect;
 	}
 
@@ -524,7 +513,6 @@ bool disconnect(connection s)
 		}
 	}
 
-	schemas.erase(s);
 	bad_sockets.erase(s);
 
 	std::deque<network::connection>::iterator dqi = std::find(disconnection_queue.begin(),disconnection_queue.end(),s);
@@ -630,9 +618,8 @@ connection receive_data(config& cfg, connection connection_num)
 		}
 	}
 
-	std::vector<char> buf;
 	TCPsocket sock = connection_num == 0 ? 0 : get_socket(connection_num);
-	sock = network_worker_pool::get_received_data(sock,buf);
+	sock = network_worker_pool::get_received_data(sock,cfg);
 	if(sock == NULL) {
 		return 0;
 	}
@@ -652,13 +639,6 @@ connection receive_data(config& cfg, connection connection_num)
 		return result;
 	}
 	waiting_sockets.insert(result);
-
-	const schema_map::iterator schema = schemas.find(result);
-	wassert(schema != schemas.end());
-
-	std::string buffer(buf.begin(), buf.end());
-	std::istringstream stream(buffer);
-	read_compressed(cfg, stream, schema->second.incoming);
 
 	return result;
 }
@@ -686,23 +666,11 @@ void send_data(const config& cfg, connection connection_num)
 		return;
 	}
 
-	const schema_map::iterator schema = schemas.find(connection_num);
-	wassert(schema != schemas.end());
-
-	std::ostringstream compressor;
-	write_compressed(compressor, cfg, schema->second.outgoing);
-	std::string const &value = compressor.str();
-
-//	std::cerr << "--- SEND DATA to " << ((int)connection_num) << ": '"
-//	          << cfg.write() << "'\n--- END SEND DATA\n";
-
-	std::vector<char> buf( value.size());
-	std::copy(value.begin(),value.end(),buf.begin());
 
 	const connection_map::iterator info = connections.find(connection_num);
 	wassert(info != connections.end());
 
-	network_worker_pool::queue_data(info->second.sock,buf);
+	network_worker_pool::queue_data(info->second.sock,cfg);
 }
 
 void queue_data(const config& cfg, connection connection_num)

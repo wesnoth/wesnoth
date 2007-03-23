@@ -290,7 +290,7 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 {
 	mp::ui::result res;
 	game_state state;
-	const network::manager net_manager;
+	const network::manager net_manager(1,1);
 	const network::server_manager serv_manager(15000, is_server ?
 			network::server_manager::TRY_CREATE_SERVER :
 			network::server_manager::NO_SERVER);
@@ -442,7 +442,7 @@ void start_client(display& disp, const config& game_config, game_data& data,
 		const std::string host)
 {
 	const set_random_generator generator_setter(&recorder);
-	const network::manager net_manager;
+	const network::manager net_manager(1,1);
 
 	mp::chat chat;
 	config gamelist;

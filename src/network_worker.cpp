@@ -19,6 +19,7 @@
 #include "thread.hpp"
 #include "wassert.hpp"
 #include "wesconfig.h"
+#include "serialization/binary_wml.hpp"
 
 #include <algorithm>
 #include <cerrno>
@@ -87,12 +88,21 @@ struct buffer {
 	explicit buffer(TCPsocket sock) : sock(sock) {}
 
 	TCPsocket sock;
-	mutable std::vector<char> buf;
+	mutable config config_buf;
 };
 
 bool managed = false;
 typedef std::vector< buffer * > buffer_set;
 buffer_set bufs;
+
+struct schema_pair
+{
+	compression_schema incoming, outgoing;
+};
+
+typedef std::map<TCPsocket,schema_pair> schema_map;
+
+schema_map schemas;
 
 //a queue of sockets that we are waiting to receive on
 typedef std::vector<TCPsocket> receive_list;
@@ -115,16 +125,19 @@ threading::condition* cond = NULL;
 std::map<Uint32,threading::thread*> threads;
 std::vector<Uint32> to_clear;
 
-SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf2) {
-	std::vector<char> buf(4 + buf2.size() + 1);
-	SDLNet_Write32(buf2.size()+1,&buf[0]);
-	std::copy(buf2.begin(),buf2.end(),buf.begin()+4);
-	buf.back() = 0;
-
+SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif
 	size_t upto = 0;
+	compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.outgoing;
+	std::ostringstream compressor;
+	write_compressed(compressor, config_in, compress);
+	std::string const &value = compressor.str();
+	std::vector<char> buf(4 + value.size() + 1);
+	SDLNet_Write32(value.size()+1,&buf[0]);
+	std::copy(value.begin(),value.end(),buf.begin()+4);
+	buf.back() = 0;
 	size_t size = buf.size();
 	{
 		const threading::lock lock(*global_mutex);
@@ -371,7 +384,7 @@ int process_queue(void*)
 		std::vector<char> buf;
 
 		if(sent_buf != NULL) {
-			result = send_buf(sent_buf->sock, sent_buf->buf);
+			result = send_buf(sent_buf->sock, sent_buf->config_buf);
 			delete sent_buf;
 			sent_buf = NULL;
 		} else {
@@ -390,7 +403,10 @@ int process_queue(void*)
 			//if we received data, add it to the queue
 			if(result == SOCKET_READY && buf.empty() == false) {
 				received_data_queue.push_back(buffer(sock));
-				received_data_queue.back().buf.swap(buf);
+				std::string buffer(buf.begin(), buf.end());
+				std::istringstream stream(buffer);
+				compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
+				read_compressed(received_data_queue.back().config_buf, stream, compress);
 			}
 		}
 	}
@@ -467,7 +483,7 @@ void receive_data(TCPsocket sock)
 	cond->notify_one();
 }
 
-TCPsocket get_received_data(TCPsocket sock, std::vector<char>& buf)
+TCPsocket get_received_data(TCPsocket sock, config& cfg)
 {
 	const threading::lock lock(*global_mutex);
 	received_queue::iterator itor = received_data_queue.begin();
@@ -482,22 +498,22 @@ TCPsocket get_received_data(TCPsocket sock, std::vector<char>& buf)
 	if(itor == received_data_queue.end()) {
 		return NULL;
 	} else {
-		buf.swap(itor->buf);
+		cfg = itor->config_buf;
 		const TCPsocket res = itor->sock;
 		received_data_queue.erase(itor);
 		return res;
 	}
 }
 
-void queue_data(TCPsocket sock, std::vector<char>& buf)
+void queue_data(TCPsocket sock,const  config& buf)
 {
-	LOG_NW << "queuing " << buf.size() << " bytes of data...\n";
+	LOG_NW << "queuing  data...\n";
 
 	{
 		const threading::lock lock(*global_mutex);
 
 		buffer *queued_buf = new buffer(sock);
-		queued_buf->buf.swap(buf);
+		queued_buf->config_buf = buf;
 		bufs.push_back(queued_buf);
 
 		sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY));
@@ -538,6 +554,8 @@ bool close_socket(TCPsocket sock)
 
 	pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
 
+	schemas.erase(sock);
+
 	const socket_state_map::iterator lock_it = sockets_locked.find(sock);
 	if(lock_it == sockets_locked.end()) {
 		remove_buffers(sock);
@@ -563,6 +581,7 @@ TCPsocket detect_error()
 				--socket_errors;
 				const TCPsocket sock = i->first;
 				sockets_locked.erase(i);
+				schemas.erase(sock);
 				remove_buffers(sock);
 				pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
 				return sock;
