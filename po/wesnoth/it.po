@@ -1322,11 +1322,12 @@ msgstr ""
 "L'oscurità nasconde i terreni e qualsiasi unità che si trova in un luogo. "
 "Anche se, dopo che vi è passata una propria unità, sarà sempre possibile "
 "vedere quella posizione. La nebbia di guerra invece nasconde solo le unità e "
-"il proprietario di un villaggio (che non sia tu o i tuoi alleati). La nebbia "
+"la proprietà di un villaggio (che non sia tua o dei tuoi alleati). La nebbia "
 "di guerra viene diradata al tuo passaggio, ma quando lasci la zona ritorna a "
 "ricoprirla. Sia l'oscurità che la nebbia di guerra vengono diradate dalle "
 "unità. Ogni unità dirada i luoghi adiacenti quando si sposta (ignorando le "
-"zone di controllo e le unità nemiche)."
+"zone di controllo e le unità nemiche).\n"
+"\n"
 
 #: data/help.cfg:156
 msgid "Combat"
@@ -11863,8 +11864,8 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
-"Il server necessita la versione '$version1' mentre tu utilizzi la versione "
-"'$version2'"
+"Il server richiede la versione «$version1» mentre tu hai la versione "
+"«$version2»"
 
 #: src/multiplayer.cpp:158
 msgid "Server-side redirect loop"
@@ -12332,14 +12333,12 @@ msgid "The replay could not be saved"
 msgstr "Il replay non può essere salvato"
 
 #: src/playcampaign.cpp:358
-#, fuzzy
 msgid "Autosaves"
-msgstr "Salvataggio automatico"
+msgstr "Salvataggi automatici"
 
 #: src/playcampaign.cpp:359
-#, fuzzy
 msgid "Do you want to delete the autosaves of this scenario?"
-msgstr "Vuoi salvare un replay di questo scenario?"
+msgstr "Vuoi eliminare i salvataggi automatici di questo scenario?"
 
 #: src/playcampaign.cpp:377
 msgid "Receiving data..."
