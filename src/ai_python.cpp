@@ -75,7 +75,7 @@ static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* /*closu
 #define ut_get_ability( x ) \
 static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* /*closure*/ ) \
 {	\
-	return Py_BuildValue("i",type->unit_type_->has_ability("##x##"));	\
+	return Py_BuildValue("i",type->unit_type_->has_ability(#x));	\
 }
 
 ut_get_ability( heals )
