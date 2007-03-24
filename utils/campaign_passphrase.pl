@@ -4,7 +4,7 @@ use wml;
 use wml_net;
 use strict;
 
-my ($host, $port) = ("campaigns.wesnoth.org", 15002);
+my ($host, $port) = ("campaigns.wesnoth.org", 15003);
 
 $| = 1;
 
