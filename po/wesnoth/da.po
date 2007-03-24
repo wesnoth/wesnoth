@@ -1455,7 +1455,7 @@ msgstr ""
 "\n"
 "Nogle få enheder har specielle <ref>dst=abilities text=abilities</ref> som "
 "påvirker deres skadevirkning i kamp. Den udbredste af disse er "
-"<ref>dst=weaponspecial_charge text=Charge</ref>, som fordobler skaden "
+"<ref>dst=weaponspecial_charge text=Storm</ref>, som fordobler skaden "
 "forvoldt af både angriber og forsvarer når enheden med charge angriber."
 
 #: data/help.cfg:178
@@ -1484,6 +1484,13 @@ msgid ""
 "unit has -100% resistance against a damage type, it will suffer 100% more "
 "damage when hit by that type."
 msgstr ""
+"\n"
+"\n"
+"Modstandskraft virker meget simpelt: Hvis en enhed har 40 % modstandskraft "
+"mod en skadestype, så modtager den 40 % mindre skade når den rammes af en "
+"sådan skadestype. Det er også muligt for en enhed at være sårbar over for "
+"bestemte skadestyper. Hvis en enhed har -100 % modstandskraft mod en "
+"skadestype, så vil den modtage 100 % mere skade når den rammes af denne type."
 
 #: data/help.cfg:183
 msgid ""
@@ -1495,9 +1502,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"For eksempel er skeleter meget resistente overfor klinge- og stik-våben, men "
-"sårbare overfor slag- og ild-våben og ekstremt sårbare over for hellige "
-"våben."
+"For eksempel er skeleter meget resistente overfor klinge- og stikvåben, men "
+"sårbare overfor slag- og ildvåben og ekstremt sårbare over for hellige våben."
 
 #: data/help.cfg:185
 msgid ""
@@ -7545,6 +7551,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Efter års erfaring opnår de meste dedikerede hvide troldmænd mægtige "
+"spirituelle kræfter. Med ensidig fokusering på lysets vej kan de tilkalde "
+"lysets hjælp for at fjerne nattens skygger.\n"
+"\n"
+"Levende efter en streng kodeks for nøjsomhed og ære arbejder disse mænd og "
+"kvinder utrættelig for at skabe liv og orden til den urolige verden, de er "
+"en del af.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Human_Mage_of_Light.cfg:231
 msgid "female^Mage of Light"
@@ -7564,6 +7579,12 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
+"Efter nogle års service stiger tidligere landevejstyve i rang blandt deres "
+"egne. Når de har bevidst deres værd i kamp får de farligere opgaver, og en "
+"større andel af byttet. Selv om mange modstandere ser ned på deres valg af "
+"våben er de fredløse helt klar over dets dødelige muligheder, og også om den "
+"nemt tilgængelige ammunition. Fredløse er noget kede af at kæmpe om dagen og "
+"foretrækker nattens dække."
 
 #: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
 #: data/units/Troll_Rocklobber.cfg:65
@@ -7591,6 +7612,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"De største tyve får undertiden opgaven at tage meget mere end ofrets "
+"ejendele. Mestre i knivkamp og utrolig hurtig på deres fødder gør at disse "
+"snigmordere kan bruge mange måder at ombringe deres ofre på; om det er "
+"forgiftede knive fra afstand eller en daggert i ryggen gør ingen forskel for "
+"ofret. Snigmordere er dødelige om natten ikke, men er ikke komfortable med "
+"at kæmpe under åben sol.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Human_Outlaw_Assassin.cfg:109
 #: data/units/Human_Outlaw_Rogue.cfg:68
@@ -7613,6 +7642,11 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Banditter er en blandet samling af mænd, de fleste med tvivlsom baggrund. De "
+"er musklerne i enhver organiseret gruppe af kriminelle, og selv om de har "
+"mangler i finesse eller intelligens, er de fremragende i deres foretrukne "
+"erhverv med at tryne ofre til undertrykkelse. Som andre fredløse er de ikke "
+"glade for at kæmpe i dagslys, da de normalt arbejder om natten."
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
@@ -7627,6 +7661,11 @@ msgid ""
 "despite their pitiable weaponry, they are quite good at harrying their "
 "enemies, especially under cover of darkness."
 msgstr ""
+"Disse ynkelige kriminelle kaldes ofte for landevejstyve af deres "
+"overordnede, for de har jobbet med at løbe landevejene tynde. De bliver ofte "
+"anvendt som kurerer eller spejdere. Udholdenheden og evnerne til fods kommer "
+"dem ofte til gavn i kamp, og på trods af deres ynkelige våben er de ganske "
+"gode til at genere deres fjender, specielt i ly af natten."
 
 #: data/units/Human_Outlaw_Footpad.cfg:22 data/units/Human_Outlaw_Thug.cfg:22
 #: data/units/Troll.cfg:26 data/units/Troll_Hero.cfg:25
@@ -7639,7 +7678,7 @@ msgstr "Landevejstyv"
 
 #: data/units/Human_Outlaw_Poacher.cfg:3
 msgid "Poacher"
-msgstr ""
+msgstr "Krybskytte"
 
 #: data/units/Human_Outlaw_Poacher.cfg:21
 msgid ""
@@ -7653,6 +7692,16 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"Selvom de ikke er trænet som krigere, er evnerne hos en jæger, specielt "
+"indenfor buen brugbare i kamp. En anvendelse af disse evner mod andre "
+"mennesker kan ske af en række grunde, det være sig som lejesvend eller for "
+"anden vindings skyld. Enhver gruppe af banditter kan bruge et par "
+"krybskytter i deres sold der kan indsamle nattens måltid i det "
+"omkringliggende landskab og ofte også give en hånd med i de mere alvorlige "
+"kampe.\n"
+"\n"
+"Med baggrund i deres erfaring er disse krybskyttere effektive om natten i "
+"skove og sumpe."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
@@ -8210,6 +8259,9 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but that is of little "
 "concern given their strength."
 msgstr ""
+"Mens de stadig er små indfanges ogretrolde og bruges i hærens træning. De "
+"kan ikke anvende våben effektivt, men det betyder ikke så meget når man "
+"tænker på deres styrke."
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
@@ -8222,6 +8274,9 @@ msgid ""
 "since most orcs won't learn how to handle a bow, he is an indispensable part "
 "of the orcish army."
 msgstr ""
+"Orkerbueskytten anses af mange af sine egne for at tilhøre en lavere kaste "
+"af krigere fordi han angriber fjenden på afstand. Da de fleste orker ikke "
+"ønsker at bruge en bue er han derfor en nødvendig del af enhver hær af orker."
 
 # > to assassin eller a assassin?
 # Det er "assassinate"... Det her er "an assassin". :-)
@@ -8262,7 +8317,7 @@ msgstr "kortsværd"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "Orkersoldat"
 
 #: data/units/Orcish_Grunt.cfg:18
 msgid ""
@@ -8270,6 +8325,9 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Orkersoldater udgør kernen af orkernes styrke. Selvom de er langsommere end "
+"deres menneskelige og elviske modparter kan de alligevel yde kraftfulde "
+"angreb, og de kan modstå flere træffere før de falder."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
@@ -8315,7 +8373,7 @@ msgstr "kæmpesværd"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "Orkermorder"
 
 #: data/units/Orcish_Slayer.cfg:23
 msgid ""
@@ -9019,6 +9077,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Det er et af de største undere, at den menneskelige sjæl er uforanderlig og "
+"ikke kan ødelægges. De mange ting en åndemaner kan gøre i forhold til dette "
+"faktum er dog frygtelige.\n"
+"\n"
+"Fanget i en sky af ond magi kan en sjæl gøres til en villig tjener. "
+"Konsekvenserne af sit fængsel er en betingelsesløs tjener, som kan bruges "
+"til ethvert formål, dens herre måtte ønske.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:63
 #: data/units/Undead_Spirit_Spectre.cfg:85
@@ -9253,14 +9320,14 @@ msgstr[1] "$enemies fjendtlige enheder i syne!"
 #: src/actions.cpp:2057
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 venlig"
+msgstr[1] "$friends venlige"
 
 #: src/actions.cpp:2058
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 fjende"
+msgstr[1] "$enemies fjendtlige"
 
 #: src/actions.cpp:2059
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -9292,7 +9359,7 @@ msgstr "Afslut spillet"
 
 #: src/dialogs.cpp:239
 msgid "Ignore All"
-msgstr ""
+msgstr "Ignorer alle"
 
 #: src/dialogs.cpp:256
 msgid "Overwrite?"
@@ -9332,7 +9399,7 @@ msgstr "Vejledning"
 
 #: src/dialogs.cpp:479
 msgid "replay"
-msgstr ""
+msgstr "omspil"
 
 #: src/dialogs.cpp:481 src/menu_events.cpp:449 src/multiplayer_lobby.cpp:417
 msgid "Turn"
@@ -9393,7 +9460,7 @@ msgstr "Navn"
 
 #: src/dialogs.cpp:597
 msgid "Show replay"
-msgstr ""
+msgstr "Vis omspil"
 
 #: src/dialogs.cpp:600 src/multiplayer_create.cpp:88
 #: src/multiplayer_create.cpp:89
@@ -9587,7 +9654,7 @@ msgstr ""
 #: src/game.cpp:1138 src/game.cpp:1177 src/game.cpp:1202
 #: src/multiplayer.cpp:211 src/multiplayer_ui.cpp:65 src/playcampaign.cpp:386
 msgid "Connection timed out"
-msgstr ""
+msgstr "Forbindelsen afbrudt"
 
 #: src/game.cpp:1141 src/game.cpp:1179 src/game.cpp:1204
 msgid "The server responded with an error: \""
@@ -9835,7 +9902,7 @@ msgstr "Læser mellemlager."
 
 #: src/loadscreen.cpp:198
 msgid "Reading unit files."
-msgstr ""
+msgstr "Læser enhedsfiler."
 
 #: src/loadscreen.cpp:217
 msgid "Reading files and creating cache."
@@ -9969,6 +10036,8 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Navnet på et gemt spil må ikke indeholde kolon, skråstreg eller omvendt "
+"skråstreg. Vælge venligst et andet navn."
 
 #: src/menu_events.cpp:473
 msgid "Saved"
@@ -10105,6 +10174,7 @@ msgstr "Søg"
 #: src/menu_events.cpp:1518
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
+"Kommandoer: whisper list emote. Skriv /help [kommando] for yderlige hjælp."
 
 #: src/menu_events.cpp:1569
 msgid ""
@@ -10148,10 +10218,14 @@ msgid ""
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
+"Ignorer beskeder fra spillere på ignorerlisten og fremhæv spillere på "
+"vennelisten. Brug: /list [underkommando] [argument] (valgfri) "
+"Underkommandoer: addfriend addignore remove display clear. Tast /help list "
+"[underkommando] for yderligere information."
 
 #: src/menu_events.cpp:1589
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
-msgstr ""
+msgstr "Send en følelsesmæssig eller personlig besked. Anvend: /emote [besked]"
 
 #: src/menu_events.cpp:1591
 msgid "Unknown command"
@@ -10239,7 +10313,7 @@ msgstr "Intet brugbar våben"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Risiko for at være uskadt"
 
 #: src/mouse_events.cpp:649 src/mouse_events.cpp:1259
 msgid "Damage Calculations"
@@ -10275,9 +10349,10 @@ msgid ""
 "'$version2'"
 msgstr "Serveren kræver version '$version1', men du kører '$version2'"
 
+# Ikke en nem en den her.
 #: src/multiplayer.cpp:158
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Serversiden viderestilling loop"
 
 #: src/multiplayer.cpp:190
 msgid "You must log in to this server"
@@ -10485,7 +10560,7 @@ msgstr "Tid for generelle opgaver hver runde (sekunder)"
 
 #: src/multiplayer_create.cpp:148
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Tid for hver angreb, rekrutteirng og tilfangetagelse"
 
 #: src/multiplayer_create.cpp:153
 msgid "The amount of income each village yields per turn"
@@ -10686,7 +10761,7 @@ msgstr "Vælg side:"
 
 #: src/network.cpp:94
 msgid "invalid network handle"
-msgstr ""
+msgstr "ugyldig netværkskommando"
 
 #: src/network.cpp:127
 msgid "Client disconnected"
@@ -10738,14 +10813,12 @@ msgid "The replay could not be saved"
 msgstr "Omspillet kunne ikke gemmes"
 
 #: src/playcampaign.cpp:358
-#, fuzzy
 msgid "Autosaves"
-msgstr "Auto-gem"
+msgstr "Autogemninger"
 
 #: src/playcampaign.cpp:359
-#, fuzzy
 msgid "Do you want to delete the autosaves of this scenario?"
-msgstr "Ønsker du at gemme et omspil for dette scenarie?"
+msgstr "Ønsker du at slette et automatisk gemt spil for dette scenarie?"
 
 #: src/playcampaign.cpp:377
 msgid "Receiving data..."
