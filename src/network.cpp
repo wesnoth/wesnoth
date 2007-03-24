@@ -49,8 +49,7 @@
 #define SOCKET int
 #endif
 
-//#define LOG_NW LOG_STREAM(info, network)
-#define LOG_NW std::cerr
+#define LOG_NW LOG_STREAM(info, network)
 #define WRN_NW LOG_STREAM(warn, network)
 // only warnings and not errors to avoid DoS by log flooding
 
