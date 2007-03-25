@@ -48,6 +48,15 @@ struct time_of_day
 	int red, green, blue;
 };
 
+struct wml_menu_item
+{
+	std::string id;
+	std::string image;
+	t_string description;
+	config show_if;
+	config location_filter;
+};
+
 /** Information on a particular player of the game. */
 struct player_info
 {
@@ -82,12 +91,8 @@ public:
 	// Return the Nth player, or NULL if no such player exists
 	player_info* get_player(const std::string& id);
 
-private:
-	mutable config variables; //mutable due to lazy-evaluation
-	void activate_scope_variable(std::string var_name) const;
-	mutable bool recursive_; //checks for recursion in activate_scope_variable()
-public:
 	std::vector<scoped_wml_variable*> scoped_variables;
+	std::vector<wml_menu_item> wml_menu_items;
 
 	const config& get_variables() const { return variables; }
 	void set_variables(const config& vars) { variables = vars; }
@@ -123,6 +128,9 @@ private:
 			t_string** varout, config** cfgout);
 	void get_variable_internal_const(const std::string& key, const config& cfg,
 			const t_string** varout) const;
+	mutable config variables; //mutable due to lazy-evaluation
+	void activate_scope_variable(std::string var_name) const;
+	mutable bool recursive_; //checks for recursion in activate_scope_variable()
 };
 
 
