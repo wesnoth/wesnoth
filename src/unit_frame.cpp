@@ -11,9 +11,13 @@
    See the COPYING file for more details.
 */
 
-#include <global.hpp>
-#include <unit_frame.hpp>
-#include <display.hpp>
+
+#include "display.hpp"
+#include "halo.hpp"
+#include "global.hpp"
+#include "unit_frame.hpp"
+
+
 progressive_string::progressive_string(const std::string & data,int duration)
 {
 		const std::vector<std::string> first_pass = utils::split(data);
@@ -44,14 +48,14 @@ const std::string grr;
 const std::string& progressive_string::get_current_element( int current_time)const
 {
 	int time = 0;
-	unsigned int sub_halo = 0;
+	unsigned int sub_halo = halo::NO_HALO;
 	if(data_.empty()) return grr;
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		sub_halo++;
 
 	}
-	if(sub_halo > 0) sub_halo --;
+	if(sub_halo != halo::NO_HALO) sub_halo--;
 	if(sub_halo >= data_.size()) sub_halo = data_.size();
 	return data_[sub_halo].first;
 }
@@ -91,14 +95,14 @@ progressive_double::progressive_double(const std::string &data, int duration)
 const double progressive_double::get_current_element(int current_time)const
 {
 	int time = 0;
-	unsigned int sub_halo = 0;
+	unsigned int sub_halo = halo::NO_HALO;
 	if(data_.empty()) return 0;
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		sub_halo++;
 
 	}
-	if(sub_halo > 0) {
+	if(sub_halo != halo::NO_HALO) {
 		sub_halo--;
 		time -= data_[sub_halo].second;
 	}
@@ -163,14 +167,14 @@ progressive_int::progressive_int(const std::string &data, int duration)
 const int progressive_int::get_current_element(int current_time)const
 {
 	int time = 0;
-	unsigned int sub_halo = 0;
+	unsigned int sub_halo = halo::NO_HALO;
 	if(data_.empty()) return 0;
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		sub_halo++;
 
 	}
-	if(sub_halo > 0) {
+	if(sub_halo != halo::NO_HALO) {
 		sub_halo--;
 		time -= data_[sub_halo].second;
 	}

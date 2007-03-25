@@ -710,7 +710,6 @@ void display::flip()
 
 	const surface frameBuffer = get_video_surface();
 
-	halo::render();
 	font::draw_floating_labels(frameBuffer);
 	events::raise_volatile_draw_event();
 	cursor::draw(frameBuffer);
@@ -720,7 +719,6 @@ void display::flip()
 	cursor::undraw(frameBuffer);
 	events::raise_volatile_undraw_event();
 	font::undraw_floating_labels(frameBuffer);
-	halo::unrender();
 }
 
 namespace {
@@ -851,6 +849,8 @@ void display::draw(bool update,bool force)
 
 	if(!map_.empty() && !invalidated_.empty()) {
 		changed = true;
+		
+		halo::unrender(invalidated_);
 
 		// Units can overlap multiple hexes, so we need to (1) redraw
 		// them last, and (2) redraw them if they are adjacent existing hexes.
@@ -879,7 +879,16 @@ void display::draw(bool update,bool force)
 		if (temp_unit_ && invalidated_.find(temp_unit_loc_) != invalidated_.end()) {
 			temp_unit_->redraw_unit(*this, temp_unit_loc_);
 		}
+
+		halo::render();
+		
 		invalidated_.clear();
+	} else if (!map_.empty()) {
+		// if no hexes are invalidated we still need to update the haloes since
+		// there might be animated or expired haloes
+		wassert(invalidated_.empty());
+		halo::unrender(invalidated_);
+		halo::render();
 	}
 
 	if(redrawMinimap_) {
@@ -909,6 +918,7 @@ void display::draw(bool update,bool force)
 			}
 			update_display();
 		}
+		
 		// set the theortical next draw time
 		nextDraw_ += time_between_draws;
 		

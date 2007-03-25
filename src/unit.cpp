@@ -181,8 +181,8 @@ unit::unit(const unit& o):
 		teams_(o.teams_)
 {
 	next_idling_ = 0;
-	unit_halo_ = 0;
-	unit_anim_halo_ = 0;
+	unit_halo_ = halo::NO_HALO;
+	unit_anim_halo_ = halo::NO_HALO;
 }
 
 // Initilizes a unit from a config
@@ -190,9 +190,9 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
      const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) :
 	movement_(0), hold_position_(false),resting_(false),state_(STATE_STANDING),
 	 facing_(gamemap::location::NORTH_EAST),flying_(false),
-	 anim_(NULL),next_idling_(0),frame_begin_time_(0),unit_halo_(0),unit_anim_halo_(0),
-	 draw_bars_(false),gamedata_(gamedata), units_(unitmap), map_(map),
-	 gamestatus_(game_status),teams_(teams)
+	 anim_(NULL),next_idling_(0),frame_begin_time_(0),unit_halo_(halo::NO_HALO),
+	 unit_anim_halo_(halo::NO_HALO), draw_bars_(false),gamedata_(gamedata), 
+	 units_(unitmap), map_(map), gamestatus_(game_status),teams_(teams)
 {
 	read(cfg);
 	getsHit_=0;
@@ -210,8 +210,8 @@ unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 			hold_position_(false), resting_(false), state_(STATE_STANDING),
 			facing_(gamemap::location::NORTH_EAST),
 			flying_(false),anim_(NULL),next_idling_(0),frame_begin_time_(0),
-			unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(&gamedata),
-			units_(NULL),map_(NULL), gamestatus_(NULL)
+			unit_halo_(halo::NO_HALO),unit_anim_halo_(halo::NO_HALO),draw_bars_(false),
+			gamedata_(&gamedata), units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg);
 	getsHit_=0;
@@ -285,8 +285,8 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	offset_ = 0;
 	next_idling_ = 0;
 	frame_begin_time_ = 0;
-	unit_halo_ = 0;
-	unit_anim_halo_ = 0;
+	unit_halo_ = halo::NO_HALO;
+	unit_anim_halo_ = halo::NO_HALO;
 }
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
            gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
@@ -331,10 +331,10 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 
 unit::~unit()
 {
-	if(unit_halo_) {
+	if(unit_halo_ != halo::NO_HALO)  {
 		halo::remove(unit_halo_);
 	}
-	if(unit_anim_halo_) {
+	if(unit_anim_halo_ != halo::NO_HALO) {
 		halo::remove(unit_anim_halo_);
 	}
 
@@ -1740,14 +1740,18 @@ void unit::set_facing(gamemap::location::DIRECTION dir) {
 void unit::redraw_unit(display& disp,gamemap::location hex)
 {
 	const gamemap & map = disp.get_map();
-	if(hidden_ ||
-	disp.fogged(hex.x,hex.y) ||
-	(invisible(hex,disp.get_units(),disp.get_teams()) &&
+	if(hidden_ || disp.fogged(hex.x,hex.y) ||
+			(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			disp.get_teams()[disp.viewing_team()].is_enemy(side())) ){
-		if(unit_halo_) halo::remove(unit_halo_);
-		unit_halo_ = 0;
-		if(unit_anim_halo_) halo::remove(unit_anim_halo_);
-		unit_anim_halo_ = 0;
+
+		if(unit_halo_ != halo::NO_HALO) {
+			halo::remove(unit_halo_);
+			unit_halo_ = halo::NO_HALO;
+		}
+		if(unit_anim_halo_ != halo::NO_HALO) {
+			halo::remove(unit_anim_halo_);
+			unit_anim_halo_ = halo::NO_HALO;
+		}
 		if(anim_) anim_->update_last_draw_time();
 		return;
 	}
@@ -1781,8 +1785,10 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		}
 
 	}
-	if(unit_anim_halo_) halo::remove(unit_anim_halo_);
-	unit_anim_halo_ = 0;
+	if(unit_anim_halo_ != halo::NO_HALO) {
+		halo::remove(unit_anim_halo_);
+		unit_anim_halo_ = halo::NO_HALO;
+	}
 	if(!current_frame.halo(anim_->get_current_frame_time()).empty()) {
 
 		if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
@@ -1887,10 +1893,10 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 
 	disp.draw_unit(tmp_x, tmp_y -height_adjust, image, false, highlight_ratio,
 			blend_with, blend_ratio, submerge,ellipse_back,ellipse_front);
-	if(!unit_halo_ && !image_halo().empty()) {
+	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
 		unit_halo_ = halo::add(0, 0, image_halo(), gamemap::location(-1, -1));
 	}
-	if(unit_halo_) {
+	if(unit_halo_ != halo::NO_HALO) {
 		const int d = disp.hex_size() / 2;
 		halo::set_location(unit_halo_, x+ d, y -height_adjust+ d);
 	}

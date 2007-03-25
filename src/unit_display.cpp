@@ -297,8 +297,8 @@ void unit_attack_ranged(display& disp, unit_map& units,
 	attacker.restart_animation(disp,start_time);
 	animation_time = defender.get_animation()->get_animation_time();
 	bool sound_played = false ;
-	int missile_frame_halo =0;
-	int missile_halo =0;
+	int missile_frame_halo = halo::NO_HALO;
+	int missile_halo = halo::NO_HALO;
 	while(!hide && (
 		!attacker.get_animation()->animation_would_finish() ||
 		!defender.get_animation()->animation_would_finish() ||
@@ -316,8 +316,8 @@ void unit_attack_ranged(display& disp, unit_map& units,
 		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		halo::remove(missile_halo);
 		halo::remove(missile_frame_halo);
-		missile_halo = 0;
-		missile_frame_halo = 0;
+		missile_halo = halo::NO_HALO;
+		missile_frame_halo = halo::NO_HALO;
 		if(animation_time > missile_animation.get_begin_time() &&
 				animation_time < missile_animation.get_end_time() &&
 				(!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
@@ -374,9 +374,9 @@ void unit_attack_ranged(display& disp, unit_map& units,
 		disp.invalidate_unit();
 	}
 	halo::remove(missile_halo);
-	missile_halo = 0;
+	missile_halo = halo::NO_HALO;
 	halo::remove(missile_frame_halo);
-	missile_frame_halo = 0;
+	missile_frame_halo = halo::NO_HALO;
 
 	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
 	att->second.set_standing(disp,a);
