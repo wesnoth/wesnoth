@@ -50,11 +50,11 @@ struct time_of_day
 
 struct wml_menu_item
 {
-	std::string id;
 	std::string image;
 	t_string description;
 	config show_if;
 	config location_filter;
+	config command;
 };
 
 /** Information on a particular player of the game. */
@@ -92,7 +92,7 @@ public:
 	player_info* get_player(const std::string& id);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
-	std::vector<wml_menu_item> wml_menu_items;
+	std::map<std::string, wml_menu_item> wml_menu_items;
 
 	const config& get_variables() const { return variables; }
 	void set_variables(const config& vars) { variables = vars; }

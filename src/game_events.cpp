@@ -1700,6 +1700,44 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		events_map.insert(std::pair<std::string,event_handler>(new_handler.name(),new_handler));
 	}
 
+	//setting of menu items
+	else if(cmd == "set_menu_item") {
+		/* 
+		[set_menu_item]
+			id=test1
+			image="buttons/group_all.png"
+			description="Summon Troll"
+			[show_if]
+				[not]
+					[have_unit]
+						x,y=$menu_x,$menu_y
+					[/have_unit]
+				[/not]
+			[/show_if]
+			[location_filter]
+			[/location_filter]
+			[command]
+				{UNIT (Troll) (Myname) ( _ "Myname") $side_number $menu_x $menu_y}
+			[/command]
+		[/set_menu_item]
+		*/
+		wml_menu_item& mref = state_of_game->wml_menu_items[cfg["id"]];
+		if(cfg.has_attribute("image")) {
+			mref.image = cfg["image"];
+		}
+		if(cfg.has_attribute("description")) {
+			mref.description = cfg["description"];
+		}
+		if(cfg.has_child("show_if")) {
+			mref.show_if = cfg.child("show_if").get_config();
+		}
+		if(cfg.has_child("location_filter")) {
+			mref.location_filter = cfg.child("location_filter").get_config();
+		}
+		if(cfg.has_child("command")) {
+			mref.command = cfg.child("command").get_config();
+		}
+	}
 	//unit serialization to and from variables
 	// FIXME: Check that store is automove bug safe
 	else if(cmd == "store_unit") {
