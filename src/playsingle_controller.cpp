@@ -566,7 +566,7 @@ void playsingle_controller::check_time_over(){
 	}
 }
 
-bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
+bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	bool res = true;
 	switch (command){
@@ -607,7 +607,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) 
 			if (i == units_.end()) return false;
 			return i->second.move_interrupted();
 		}
-		default: return play_controller::can_execute_command(command);
+		default: return play_controller::can_execute_command(command, index);
 	}
 	return res;
 }

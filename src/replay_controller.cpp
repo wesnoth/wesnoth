@@ -353,9 +353,9 @@ void replay_controller::show_statistics(){
 	menu_handler_.show_statistics(gui_->playing_team()+1);
 }
 
-bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
+bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
 {
-	bool result = play_controller::can_execute_command(command);
+	bool result = play_controller::can_execute_command(command,index);
 
 	switch(command) {
 

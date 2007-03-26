@@ -226,7 +226,7 @@ public:
 	//Returns a vector of images for a given menu
 	std::vector<std::string> get_menu_images(const std::vector<std::string>& items_arg);
 
-	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui,const std::vector<std::string>& savenames = std::vector<std::string>());
+	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(HOTKEY_COMMAND command, int index=-1) const = 0;
 	virtual bool execute_command(HOTKEY_COMMAND command, int index=-1);

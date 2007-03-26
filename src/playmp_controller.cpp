@@ -305,7 +305,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 	}
 }
 
-bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
+bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	bool res = true;
 	switch (command){
@@ -317,7 +317,7 @@ bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) cons
 			res = res && network::nconnections() > 0;
 			break;
 	    default:
-			return playsingle_controller::can_execute_command(command);
+			return playsingle_controller::can_execute_command(command, index);
 	}
 	return res;
 }

@@ -38,7 +38,7 @@ public:
 		const int ticks, const int num_turns, const config& game_config, CVideo& video);
 	~replay_controller();
 
-	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
+	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 
 	std::vector<team>& get_teams();
 	unit_map get_units();

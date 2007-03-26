@@ -35,7 +35,7 @@ protected:
 
 	virtual void speak();
 	virtual void clear_labels();
-	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
+	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 
 	virtual void play_side(const unsigned int team_index, bool save);
 	virtual void before_human_turn(bool save);
