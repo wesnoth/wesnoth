@@ -451,7 +451,7 @@ void display::scroll(int xmove, int ymove)
 	if (dy != 0) {
 		SDL_Rect r = map_area();
 		if (dy < 0) {
-			r.y += r.h-abs(dy);
+			r.y = r.h-abs(dy);
 		}
 		r.h = abs(dy);
 		invalidate_locations_in_rect(r);
@@ -459,7 +459,7 @@ void display::scroll(int xmove, int ymove)
 	if (dx != 0) {
 		SDL_Rect r = map_area();
 		if (dx < 0) {
-			r.x += r.w-abs(dx);
+			r.x = r.w-abs(dx);
 		}
 		r.w = abs(dx);
 		invalidate_locations_in_rect(r);
