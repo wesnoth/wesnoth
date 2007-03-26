@@ -4,6 +4,8 @@ Version 1.3.1+svn:
      * In Home of the North Elves, Eonihar the rider will join you permanently
        and the other riders that find you will be controlled by the AI
      * updated images for Delfador
+     * made the narrator talk about gryphons at the end of Northern Winter only
+       if the player has actually gotten the eggs
    * Tutorial
      * merged all unit images used in the tutorial from httt
      * increased number of turns from 20 to 26 in the 2nd scenario
@@ -19,7 +21,7 @@ Version 1.3.1+svn:
    * added new experimental new unit location in the hex
    * tiles with overlays are also properly shown if compiled with
      --enable-tinygui (bug #8720 patch #697)
-   * rewrote the halo render engine which solves a few minor glitches but 
+   * rewrote the halo render engine which solves a few minor glitches but
      most importantly speeds up the drawing of the halos.
    * units are scaled properly when zooming also with tiny gui (bug #8703 and
      bug #6570)
@@ -32,7 +34,7 @@ Version 1.3.1+svn:
    * new translations: Indonesian
  * multiplayer:
    * revised maps: Castle Hopping Isle
-   * The countdown timer is now coloured properly when the remaining time is 
+   * The countdown timer is now coloured properly when the remaining time is
      less than 2 minutes.
  * units:
     * balancing changes:
@@ -54,7 +56,7 @@ Version 1.3.1+svn:
    * [effect] can now toggle the zoc
    * new key for [variable], boolean_equals=, to test boolean equality
    * remove some old backward compatibility support
-   * set_name in attack modification [effect] no longer change the weapon's 
+   * set_name in attack modification [effect] no longer change the weapon's
      description, use the new set_description instead
    * hit=yes in anim is now an alias of hit=hit,kill instead of hit=hit
      this should fix the sliding bug and fix more bugs than it creates
@@ -75,7 +77,7 @@ Version 1.3.1+svn:
      now protected by asserts so there might be more crashes instead of silent
      memory corruptions (bug #8715 and bug #8756)
    * fixed beginning-of-scenario saves containing scenario WML (bug #8698)
-   * fixed autosaves not getting deleted for last campaign scenario and 
+   * fixed autosaves not getting deleted for last campaign scenario and
      multiplayer (bug #8762)
    * Performance : wml compression is done in the helper threads instead of
      the main thread
