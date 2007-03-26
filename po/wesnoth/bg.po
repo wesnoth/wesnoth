@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-03-22 22:56+0100\n"
-"PO-Revision-Date: 2007-03-18 13:40+0200\n"
+"PO-Revision-Date: 2007-03-21 16:46+0200\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
 "MIME-Version: 1.0\n"
@@ -690,7 +690,6 @@ msgid "race^Goblins"
 msgstr "Гоблини"
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
 msgstr "Влечуги"
 
@@ -719,7 +718,6 @@ msgid "race^Trolls"
 msgstr "Тролове "
 
 #: data/english.cfg:30
-#, fuzzy
 msgid "race^Woses"
 msgstr "Узи"
 
@@ -741,41 +739,41 @@ msgstr "$name гора,Гората на $name"
 
 #: data/english.cfg:37
 msgid "$name Lake"
-msgstr "$name Езеро"
+msgstr "Езеро $name "
 
 #: data/english.cfg:38
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr ""
+msgstr "$name|бъри,$name|хем,$name|тън"
 
 #: data/english.cfg:39
 msgid "$name|harbor,$name|port"
-msgstr "$name|пристанище,$name|пристанищен град"
+msgstr "$name|харбър,$name|порт"
 
 #: data/english.cfg:40
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
+msgstr "$name|хем,$name|форд,$name|крос,$river|форд,$river|крос"
 
 #: data/english.cfg:41
-#, fuzzy
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "$river|мост,$river|мост,$river|мост,$name|ham,$name|bridge"
+msgstr "$river|бридж,$river|бридж,$river|бридж,$name|хем,$name|бридж"
 
 #: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "$name|хем,$name|тън,$name|фийлд"
 
 #: data/english.cfg:43
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "$name|хем,$name|тън,$name|ууд,$name гора"
 
 #: data/english.cfg:44
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "$name|хем,$name|бъри,$name|тън,$name|хил,$name|крест"
 
 #: data/english.cfg:45
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
+"$name|хем,$name|бъри,$name|тън,$name|монт,$name|монт,$name|клиф,$name|клиф"
 
 #: data/english.cfg:48
 msgid "melee"
@@ -3701,7 +3699,6 @@ msgstr ""
 "(надпис от Флеймтрупър)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:107
-#, fuzzy
 msgid ""
 "Slim of Stature, dexterous Hands\n"
 "- - Seven Stones and Eleven\n"
@@ -3790,7 +3787,6 @@ msgstr ""
 "(надпис от Финмир)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:147
-#, fuzzy
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -4002,7 +3998,6 @@ msgstr ""
 "и прорязан от речни корита."
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
-#, fuzzy
 msgid "2p - Silverhead Crossing"
 msgstr "2 играча - Проходът Силвърхед "
 
@@ -4903,7 +4898,6 @@ msgid "Brown"
 msgstr "Кафяв"
 
 #: data/team-colors.cfg:52
-#, fuzzy
 msgid "Teal"
 msgstr "Синьо-зелено"
 
@@ -5038,7 +5032,7 @@ msgstr "Действия"
 
 #: data/themes/default.cfg:113 data/themes/dfool.cfg:127
 msgid "End Turn"
-msgstr ""
+msgstr "Край на хода"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
 #: data/themes/experimental.cfg:156 src/menu_events.cpp:296 src/unit.cpp:2482
@@ -5135,7 +5129,7 @@ msgstr "Следващ ход"
 
 #: data/themes/macros.cfg:110
 msgid "play turn"
-msgstr ""
+msgstr "изиграване на ход"
 
 #: data/themes/macros.cfg:123
 msgid "Next Side"
@@ -5143,7 +5137,7 @@ msgstr "Следваща страна"
 
 #: data/themes/macros.cfg:124
 msgid "play side turn"
-msgstr ""
+msgstr "изиграване на хода на страната "
 
 #: data/themes/macros.cfg:160
 msgid "Skip animation"
@@ -5585,8 +5579,9 @@ msgstr ""
 "различни задачи."
 
 #: data/units/Boat_Galleon.cfg:21
+#, fuzzy
 msgid "dummy"
-msgstr ""
+msgstr "чучело "
 
 #: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:99
 #: data/units/Drake_Gladiator.cfg:151 data/units/Drake_Glider.cfg:77
@@ -5631,9 +5626,8 @@ msgstr ""
 #: data/units/Undead_Necromancer.cfg:27
 #: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
 #: data/units/Wose_Ancient.cfg:94 data/units/Wose_Elder.cfg:93
-#, fuzzy
 msgid "impact"
-msgstr "удар"
+msgstr "сблъсък"
 
 #: data/units/Boat_Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
@@ -5969,12 +5963,10 @@ msgid "spear"
 msgstr "копие"
 
 #: data/units/Drake_Enforcer.cfg:3
-#, fuzzy
 msgid "Drake Enforcer"
 msgstr "Титаничен Дракон"
 
 #: data/units/Drake_Enforcer.cfg:20
-#, fuzzy
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
 "hours at the forge have provided them with a bristling array of weaponry, "
@@ -6024,7 +6016,6 @@ msgstr ""
 "им, демонстрирайки силата и величието на своя вид."
 
 #: data/units/Drake_Flameheart.cfg:3
-#, fuzzy
 msgid "Drake Flameheart"
 msgstr "Дракон с огнено сърце"
 
@@ -6116,7 +6107,6 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:76 data/units/Drake_Hurricane.cfg:92
 #: data/units/Drake_Sky.cfg:91
-#, fuzzy
 msgid "slam"
 msgstr "тръшване"
 
@@ -6213,7 +6203,6 @@ msgid "halberd"
 msgstr "алебарда"
 
 #: data/units/Drake_Warden.cfg:3
-#, fuzzy
 msgid "Drake Warden"
 msgstr "Дракон Страж"
 
@@ -6414,7 +6403,6 @@ msgid "Lightning bolt"
 msgstr "Мълния"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
-#, fuzzy
 msgid "Dwarvish Sentinel"
 msgstr "Джудже Пазител"
 
@@ -6431,7 +6419,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Dwarvish_Stalwart.cfg:3
-#, fuzzy
 msgid "Dwarvish Stalwart"
 msgstr "Мощно Джудже"
 
@@ -6518,7 +6505,6 @@ msgstr ""
 "според джуджетата резултата от изстрела си струва чакането."
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
-#, fuzzy
 msgid "Dwarvish Ulfserker"
 msgstr "Джудже Вълкодав "
 
@@ -6728,7 +6714,6 @@ msgstr ""
 
 #: data/units/Elvish_Enchantress.cfg:69 data/units/Elvish_Shaman.cfg:67
 #: data/units/Elvish_Sorceress.cfg:76
-#, fuzzy
 msgid "entangle"
 msgstr "впримчване"
 
@@ -6837,7 +6822,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Elvish_Outrider.cfg:3
-#, fuzzy
 msgid "Elvish Outrider"
 msgstr "Елф Вестоносец"
 
@@ -6886,7 +6870,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Elvish_Ranger.cfg:167
-#, fuzzy
 msgid "female^Elvish Ranger"
 msgstr "Горски елф"
 
@@ -6961,7 +6944,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Elvish_Sharpshooter.cfg:3
-#, fuzzy
 msgid "Elvish Sharpshooter"
 msgstr "Елф Ястребово око"
 
@@ -6986,7 +6968,6 @@ msgid "female^Elvish Sharpshooter"
 msgstr "Елф Ястребово око"
 
 #: data/units/Elvish_Shyde.cfg:3
-#, fuzzy
 msgid "female^Elvish Shyde"
 msgstr "Елфическа фея"
 
@@ -7101,7 +7082,6 @@ msgid "fangs"
 msgstr "зъби"
 
 #: data/units/Goblin_Impaler.cfg:3
-#, fuzzy
 msgid "Goblin Impaler"
 msgstr "Гоблин фронтовак"
 
@@ -7675,7 +7655,6 @@ msgstr ""
 "ситуации, в които тези неудобства се оказват оправдани."
 
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:3
-#, fuzzy
 msgid "Iron Mauler"
 msgstr "Титаничен войн"
 
@@ -8783,7 +8762,6 @@ msgstr ""
 "стрелите."
 
 #: data/units/Merman_Triton.cfg:3
-#, fuzzy
 msgid "Merman Triton"
 msgstr "Тритон"
 
@@ -9227,7 +9205,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Orcish_Slurbow.cfg:3
-#, fuzzy
 msgid "Orcish Slurbow"
 msgstr "Оркски Подсилен арбалет"
 
@@ -9268,7 +9245,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Orcish_Warlord.cfg:3
-#, fuzzy
 msgid "Orcish Warlord"
 msgstr "Оркски Военен Лорд"
 
@@ -9632,7 +9608,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
-#, fuzzy
 msgid "Ghoul"
 msgstr "Зомби"
 
@@ -9973,7 +9948,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Undead_Skele_Draug.cfg:3
-#, fuzzy
 msgid "Draug"
 msgstr "Спящ"
 
@@ -9998,7 +9972,6 @@ msgstr ""
 "Бележки:"
 
 #: data/units/Undead_Skele_Revenant.cfg:3
-#, fuzzy
 msgid "Revenant"
 msgstr "Призован"
 
@@ -10413,7 +10386,6 @@ msgid "Save Game"
 msgstr "Запис"
 
 #: src/dialogs.cpp:234
-#, fuzzy
 msgid "Quit Game"
 msgstr "Изход от играта"
 
@@ -10439,11 +10411,11 @@ msgstr "Искате ли да изтриете записа?"
 
 #: src/dialogs.cpp:445
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:462
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Невалидно)"
 
 #: src/dialogs.cpp:467 src/game.cpp:806
 msgid "Campaign"
@@ -10479,19 +10451,19 @@ msgstr "Версия: "
 
 #: src/dialogs.cpp:512 src/dialogs.cpp:528
 msgid "%b %d %y"
-msgstr ""
+msgstr "%b %d %y"
 
 #: src/dialogs.cpp:518
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:521
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:524
 msgid "%b %d"
-msgstr ""
+msgstr "%b %d"
 
 #: src/dialogs.cpp:548
 msgid "No Saved Games"
@@ -10671,9 +10643,8 @@ msgid "Dependencies"
 msgstr "Зависимости"
 
 #: src/game.cpp:1059
-#, fuzzy
 msgid "This add-on requires the following additional dependencies:"
-msgstr "Допълнението изисква следните зависимости:"
+msgstr "Допълнението има следните зависимости:"
 
 #: src/game.cpp:1061
 msgid "Do you still want to download it?"
@@ -10746,7 +10717,7 @@ msgstr "Влизане в игра"
 #: src/game.cpp:1233
 #, fuzzy
 msgid "Join a server or hosted game"
-msgstr "Присъединяване към сървър "
+msgstr "Присъединяване към сървър"
 
 #: src/game.cpp:1235
 msgid "Host Networked Game"
@@ -10777,7 +10748,7 @@ msgstr "Играта не може да се зареди: "
 #: src/game.cpp:1286 src/playcampaign.cpp:92 src/playcampaign.cpp:348
 #, fuzzy
 msgid "Error while playing the game: "
-msgstr "Грешка : "
+msgstr "Грешка по време на игра : "
 
 #: src/game.cpp:1298 src/playcampaign.cpp:94 src/playcampaign.cpp:351
 msgid "The game map could not be loaded: "
@@ -10797,7 +10768,7 @@ msgstr "Следните кампании имаха грешки и не бях
 
 #: src/game.cpp:1476
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "ПОДРОБНОСТИ ЗА ГРЕШКАТА: "
 
 #: src/game.cpp:1490
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -10898,7 +10869,7 @@ msgstr "Устойчивост"
 #: src/help.cpp:1245
 #, fuzzy
 msgid "Terrain Modifiers"
-msgstr "Множители на терена "
+msgstr "Множители на терена"
 
 #: src/help.cpp:1249
 msgid "Terrain"
@@ -10909,9 +10880,8 @@ msgid "Defense"
 msgstr "Защита"
 
 #: src/help.cpp:1251
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Движение "
+msgstr "Движение"
 
 #: src/help.cpp:2137
 msgid " < Back"
@@ -10923,7 +10893,7 @@ msgstr "Напред >"
 
 #: src/help.cpp:2250
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Препратка към непозната тема: "
 
 #: src/help.cpp:2510
 msgid "corrupted original file"
@@ -11184,7 +11154,6 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "Разделени сте от вашите войници и не можете да ги привиквате "
 
 #: src/menu_events.cpp:826
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11212,11 +11181,9 @@ msgstr[0] "Трябва да имате поне $cost златни монети
 msgstr[1] "Трябва да имате поне $cost златни монети за да привикате единица"
 
 #: src/menu_events.cpp:1214
-#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr ""
-"Все още не сте извършили нищо този ход. Наистина ли искате да прекратите?"
+msgstr "Все още не сте започнали хода си. Наистина ли искате да го прекратите?"
 
 #: src/menu_events.cpp:1222 src/menu_events.cpp:1227
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -11229,9 +11196,8 @@ msgid "Rename Unit"
 msgstr "Преименувай единица"
 
 #: src/menu_events.cpp:1363
-#, fuzzy
 msgid "Team only"
-msgstr "Отбор"
+msgstr ""
 
 #: src/menu_events.cpp:1368
 #, fuzzy
@@ -11286,7 +11252,7 @@ msgstr "Показване на черният списък и списъка с
 
 #: src/menu_events.cpp:1583
 msgid "Unknown subcommand"
-msgstr ""
+msgstr "Непозната подкоманда "
 
 #: src/menu_events.cpp:1586
 msgid ""
@@ -11303,42 +11269,43 @@ msgstr ""
 #: src/menu_events.cpp:1589
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
+"Пращане на емоция или действие в разговор. Употреба /emote [ съобщение]"
 
 #: src/menu_events.cpp:1591
 msgid "Unknown command"
-msgstr ""
+msgstr "Непозната команда"
 
 #: src/menu_events.cpp:1603
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Добавен към черният списък: "
 
 #: src/menu_events.cpp:1605 src/menu_events.cpp:1612 src/menu_events.cpp:1619
 msgid "Invalid username: "
-msgstr ""
+msgstr "Невалиден потребител: "
 
 #: src/menu_events.cpp:1610
 msgid "Added to friends list: "
-msgstr ""
+msgstr "Добавен към списъка с приятели: "
 
 #: src/menu_events.cpp:1617
 msgid "Removed from list: "
-msgstr ""
+msgstr "Премахнат от списъка с приятели: "
 
 #: src/menu_events.cpp:1643
 msgid "There are no players on your friends or ignore list."
-msgstr ""
+msgstr "Няма играчи в списъка с приятели или черният списък."
 
 #: src/menu_events.cpp:1653
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Премахнат от черният списък: "
 
 #: src/menu_events.cpp:1656
 msgid "Removed from friends list: "
-msgstr ""
+msgstr "Премахнат от списъка с приятели: "
 
 #: src/menu_events.cpp:1663
 msgid "Unknown command: "
-msgstr ""
+msgstr "Непозната команда: "
 
 #: src/menu_events.cpp:1764
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -11358,39 +11325,35 @@ msgstr "Защитаващ се"
 
 #: src/mouse_events.cpp:209
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "Очакван резултат(Здраве)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
-msgstr ""
+msgstr " устойчивост с/у "
 
 #: src/mouse_events.cpp:302
 msgid " vulnerability vs "
-msgstr ""
+msgstr " уязвимост с/у "
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid "Slowed"
-msgstr "забавя"
+msgstr "Забавен"
 
 #: src/mouse_events.cpp:319
 msgid "Time of day"
-msgstr ""
+msgstr "Време на деня"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
-msgstr "Лидер"
+msgstr "Водачество"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
-msgstr "щети"
+msgstr "Общо поражение"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Избор на оръжие"
+msgstr "Няма използваемо оръжие"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
@@ -11402,7 +11365,7 @@ msgstr "Пресмятания за щетите"
 
 #: src/mouse_events.cpp:1242 src/reports.cpp:282
 msgid "vs"
-msgstr "срещу"
+msgstr "с/у "
 
 #: src/mouse_events.cpp:1270
 msgid "Attack Enemy"
@@ -11417,19 +11380,19 @@ msgid "Connect to Host"
 msgstr "Свързване към сървър"
 
 #: src/multiplayer.cpp:98
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Изберете сървър към които да се вържете"
+msgstr "Изберете сървър към който да се вържете: "
 
 #: src/multiplayer.cpp:137
 msgid "Reading from Server..."
-msgstr ""
+msgstr "Четене от сървъра..."
 
 #: src/multiplayer.cpp:146
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"Сървъра изисква версия '$version1' , докато вие използвате версия '$version2'"
 
 #: src/multiplayer.cpp:158
 msgid "Server-side redirect loop"
@@ -11437,34 +11400,35 @@ msgstr ""
 
 #: src/multiplayer.cpp:190
 msgid "You must log in to this server"
-msgstr ""
+msgstr "Трябва да влезете в сървъра"
 
 #: src/multiplayer.cpp:196
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
+"Потребителското име, което сте избрали е прекалено дълго. Моля, използвайте "
+"потребителско име с по-малко от 18 знака"
 
 #: src/multiplayer.cpp:374 src/multiplayer.cpp:389
 #: src/multiplayer_wait.cpp:199
-#, fuzzy
 msgid "No multiplayer sides available in this game"
 msgstr "Няма свободни страни в играта"
 
 #: src/multiplayer.cpp:375 src/multiplayer.cpp:390
 #: src/multiplayer_wait.cpp:236
 msgid "Era not available"
-msgstr ""
+msgstr "Ерата е недостъпна"
 
 #: src/multiplayer.cpp:376 src/multiplayer.cpp:391
 #: src/multiplayer_wait.cpp:241
 msgid "No multiplayer sides found"
-msgstr ""
+msgstr "Няма намерени страни"
 
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:357
 #: src/multiplayer_connect.cpp:454
 msgid "Normal"
-msgstr ""
+msgstr "Нормално"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
 #: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2617
@@ -11478,7 +11442,7 @@ msgstr ")"
 
 #: src/multiplayer_connect.cpp:428
 msgid "Default AI"
-msgstr ""
+msgstr "Стандартен ИИ "
 
 #: src/multiplayer_connect.cpp:480
 msgid "(Vacant slot)"
@@ -11601,7 +11565,7 @@ msgstr "Произволно начално време"
 
 #: src/multiplayer_create.cpp:68
 msgid "Fog Of War"
-msgstr ""
+msgstr "Мъгла "
 
 #: src/multiplayer_create.cpp:70
 msgid "Observers"
@@ -11685,7 +11649,7 @@ msgstr "Споделяне на карта"
 
 #: src/multiplayer_create.cpp:179
 msgid "Share None"
-msgstr ""
+msgstr "Без споделяне"
 
 #: src/multiplayer_create.cpp:190
 msgid "No multiplayer sides."
@@ -11787,7 +11751,7 @@ msgstr "Празни места:"
 
 #: src/multiplayer_lobby.cpp:446
 msgid "none"
-msgstr ""
+msgstr "няма"
 
 #: src/multiplayer_lobby.cpp:540
 msgid "Observe Game"
@@ -11987,7 +11951,6 @@ msgid "Scenario Report"
 msgstr "Доклад от мисията"
 
 #: src/playsingle_controller.cpp:357
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
