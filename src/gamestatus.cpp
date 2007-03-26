@@ -1304,3 +1304,11 @@ void game_state::clear_variable(const std::string& varname)
 		vars->clear_children(key);
 	}
 }
+
+game_state::~game_state() {
+	std::map<std::string, wml_menu_item*>::iterator itor;
+	std::map<std::string, wml_menu_item*>& gs_wmi = wml_menu_items;
+	for (itor = gs_wmi.begin(); itor != gs_wmi.end(); ++itor) {
+		delete itor->second;
+	}
+}

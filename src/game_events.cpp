@@ -1721,21 +1721,24 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			[/command]
 		[/set_menu_item]
 		*/
-		wml_menu_item& mref = state_of_game->wml_menu_items[cfg["id"]];
+		wml_menu_item*& mref = state_of_game->wml_menu_items[cfg["id"]];
+		if(mref == NULL) {
+			mref = new wml_menu_item();
+		}
 		if(cfg.has_attribute("image")) {
-			mref.image = cfg["image"];
+			mref->image = cfg["image"];
 		}
 		if(cfg.has_attribute("description")) {
-			mref.description = cfg["description"];
+			mref->description = cfg["description"];
 		}
 		if(cfg.has_child("show_if")) {
-			mref.show_if = cfg.child("show_if").get_config();
+			mref->show_if = cfg.child("show_if").get_config();
 		}
 		if(cfg.has_child("location_filter")) {
-			mref.location_filter = cfg.child("location_filter").get_config();
+			mref->location_filter = cfg.child("location_filter").get_config();
 		}
 		if(cfg.has_child("command")) {
-			mref.command = cfg.child("command").get_config();
+			mref->command = cfg.child("command").get_config();
 		}
 	}
 	//unit serialization to and from variables

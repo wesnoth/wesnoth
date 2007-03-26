@@ -73,6 +73,7 @@ class game_state : public variable_set
 {
 public:
 	game_state() : recursive_(false), difficulty("NORMAL") {}
+	~game_state();
 	std::string label; //name of the game (e.g. name of save file)
 	std::string version; //version game was created with.
 	std::string campaign_type; //type of the game - campaign, multiplayer etc
@@ -92,7 +93,7 @@ public:
 	player_info* get_player(const std::string& id);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
-	std::map<std::string, wml_menu_item> wml_menu_items;
+	std::map<std::string, wml_menu_item*> wml_menu_items;
 
 	const config& get_variables() const { return variables; }
 	void set_variables(const config& vars) { variables = vars; }

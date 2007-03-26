@@ -121,11 +121,9 @@ const struct {
 	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false },
 	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false },
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false },
-	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
-	{ hotkey::HOTKEY_WML_CMD, "wml", N_("Execute WML command"), true },
-
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true },
 
+	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
 	{ hotkey::HOTKEY_NULL, NULL, NULL, true }
 };
 

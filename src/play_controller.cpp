@@ -15,10 +15,12 @@
 #include "dialogs.hpp"
 #include "config_adapter.hpp"
 #include "game_errors.hpp"
+#include "game_events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "variable.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -755,7 +757,40 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 void play_controller::expand_wml_commands(std::vector<std::string>& items)
 {
 	wml_commands_.clear();
-	//TODO: insert WML commands here
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "wml") {
+			items.erase(items.begin() + i);
+			std::map<std::string, wml_menu_item*>& gs_wmi = gamestate_.wml_menu_items;
+			if(gs_wmi.empty())
+				break;
+			std::vector<std::string> newitems;
+
+			char buf[50];
+			const gamemap::location& hex = mouse_handler_.get_last_hex();
+			snprintf(buf,sizeof(buf),"%d",hex.x+1);
+			gamestate_.set_variable("x1", buf);
+			snprintf(buf,sizeof(buf),"%d",hex.y+1);
+			gamestate_.set_variable("y1", buf);
+
+			std::map<std::string, wml_menu_item*>::iterator itor;
+			for (itor = gs_wmi.begin(); itor != gs_wmi.end()
+				&& newitems.size() < MAX_WML_COMMANDS; ++itor) {
+				config& show_if = itor->second->show_if;
+				config& location_filter = itor->second->location_filter;
+				if ((show_if.empty() 
+					|| game_events::conditional_passed(&units_, &show_if))
+				&& (location_filter.empty() 
+					|| map_.terrain_matches_filter(hex, location_filter, status_, units_)))
+				{
+					wml_commands_.push_back(itor->second);
+					newitems.push_back(itor->second->description);
+				}
+			}
+			items.insert(items.begin()+i, newitems.begin(), newitems.end());
+			break;
+		}
+		wml_commands_.push_back(NULL);
+	}
 }
 
 void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)

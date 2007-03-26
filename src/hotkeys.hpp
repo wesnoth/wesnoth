@@ -58,7 +58,6 @@ enum HOTKEY_COMMAND {
 
 	//misc.
 	HOTKEY_USER_CMD,
-	HOTKEY_WML_CMD,
 	HOTKEY_NULL
 };
 
