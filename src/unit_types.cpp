@@ -215,14 +215,14 @@ int attack_type::attack_animation::matches(bool hit,gamemap::location::DIRECTION
 bool attack_type::matches_filter(const config& cfg,bool self) const
 {
 	const std::string& filter_range = cfg["range"];
-	const t_string& filter_name = cfg["name"];
+	const std::string& filter_name = cfg["name"];
 	const std::string& filter_type = cfg["type"];
 	const std::string& filter_special = cfg["special"];
 
 	if(filter_range.empty() == false && filter_range != range())
 			return false;
 
-	if(filter_name.empty() == false && filter_name != name())
+	if(filter_name.empty() == false && filter_name != id())
 		return false;
 
 	if(filter_type.empty() == false && filter_type != type())
