@@ -74,22 +74,23 @@ namespace game_config
 	std::string level_image;
 	std::string ellipsis_image;
 
-     std::map<std::string, color_range > team_rgb_range;
-     std::map<std::string, std::string > team_rgb_name;
+	std::map<std::string, color_range > team_rgb_range;
+	std::map<std::string, std::string > team_rgb_name;
 	
 	std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 	
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
-		                  receive_message = "receive.wav",
-						  user_arrive = "arrive.wav",
-						  user_leave = "leave.wav";
+		receive_message = "receive.wav",
+		user_arrive = "arrive.wav",
+		user_leave = "leave.wav";
+		
 		const std::string button_press = "UI/button.wav",
-		                  checkbox_release = "UI/checkbox.wav",
-						  slider_adjust = "UI/slider.wav",
-						  menu_expand = "UI/expand.wav",
-						  menu_contract = "UI/contract.wav",
-						  menu_select = "UI/select.wav";
+		checkbox_release = "UI/checkbox.wav",
+		slider_adjust = "UI/slider.wav",
+		menu_expand = "UI/expand.wav",
+		menu_contract = "UI/contract.wav",
+		menu_select = "UI/select.wav";
 	}
 
 

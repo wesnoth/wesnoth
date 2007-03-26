@@ -584,15 +584,15 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 			analysis.vulnerability = 0.0;
 			analysis.support = 0.0;
 
-			const int ticks = SDL_GetTicks();
+//			const int ticks = SDL_GetTicks();
 
 			do_attack_analysis(j->first,srcdst,dstsrc,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc,
 			            adjacent,used_locations,unit_locs,res,analysis);
 
-			const int time_taken = SDL_GetTicks() - ticks;
-			static int max_time = 0;
-			if(time_taken > max_time)
-				max_time = time_taken;
+//			const int time_taken = SDL_GetTicks() - ticks;
+//			static int max_time = 0;
+//			if(time_taken > max_time)
+//				max_time = time_taken;
 		}
 	}
 
