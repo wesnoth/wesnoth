@@ -311,7 +311,7 @@ void gamemap::read(const std::string& data)
 			if(letterToTerrain_.count(tiles_[x][y]) == 0) {
                 //try to combine two terrains
 				const std::map<t_translation::t_letter, terrain_type>::const_iterator base_iter = 
-					letterToTerrain_.find(t_translation::t_letter(tiles_[x][y].base, 0xFFFFFFFF));
+					letterToTerrain_.find(t_translation::t_letter(tiles_[x][y].base, 0x2A000000));
 				const std::map<t_translation::t_letter, terrain_type>::const_iterator overlay_iter = 
 					letterToTerrain_.find(t_translation::t_letter(0, tiles_[x][y].overlay));
 
@@ -678,7 +678,7 @@ void gamemap::set_overlay(const gamemap::location& loc, const t_translation::t_l
 	
 	//check if base is a valid terrain
 	const std::map<t_translation::t_letter, terrain_type>::const_iterator base_iter = 
-		letterToTerrain_.find(t_translation::t_letter(tiles_[loc.x][loc.y].base, 0xFFFFFFFF));
+		letterToTerrain_.find(t_translation::t_letter(tiles_[loc.x][loc.y].base, 0x2A000000));
 	//check if base^overlay is a valid terrain
 	const std::map<t_translation::t_letter, terrain_type>::const_iterator all_iter = 
 		letterToTerrain_.find(t_translation::t_letter(tiles_[loc.x][loc.y].base, terrain.overlay));
