@@ -752,7 +752,7 @@ void map_editor::insert_selection_in_clipboard() {
 }
 
 
-bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
+bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command, int) const {
 	switch (command) {
 	case hotkey::HOTKEY_UNDO:
 	case hotkey::HOTKEY_REDO:

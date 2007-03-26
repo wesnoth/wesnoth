@@ -130,7 +130,7 @@ public:
 	void perform_paste();
 	void perform_set_starting_pos();
 
-	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
+	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int) const;
 
 	/// Exception thrown when new map is to be loaded.
 	struct new_map_exception {
