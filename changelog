@@ -13,13 +13,15 @@ Version 1.2.3+svn:
    * tiles with overlays are also properly shown if compiled with
      --enable-tinygui (bug #8720 patch #697)
  * language and i18n:
-   * updated translations: Dutch, Esperanto, Greek, Italian, Serbian, Swedish
+   * updated translations: Bulgarian, Dutch, Esperanto, Greek, Italian, Serbian,
+     Swedish
  * WML:
    * fixed the fire dragon die sound in TROW
    * fixed many agression->aggression typos
  * misc:
    * fixed beginning-of-scenario saves containing scenario WML (bug #8698)
-   * fixed autosaves not getting deleted for last campaign scenario and multiplayer (bug #8762)
+   * fixed autosaves not getting deleted for last campaign scenario and
+     multiplayer (bug #8762)
    * used valgrind to find some memory problems and fix bug #8715 and bug #8756
 
 Version 1.2.3:
