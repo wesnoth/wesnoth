@@ -663,14 +663,14 @@ void attack::fire_event(const std::string& n)
 		dat.add_child("first");
 		dat.add_child("second");
 		if(a_ != units_.end()) {
-			(*(dat.child("first")))["weapon"]=a_stats_->weapon->name();
+			(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
 		}
 		if(d_ != units_.end()) {
 			config *tempcfg = dat.child("second");
 			t_string d_weap = "none";
 			if(d_stats_->weapon != NULL) {
 				if(a_ != units_.end()) {
-					d_weap = d_stats_->weapon->name();
+					d_weap = d_stats_->weapon->id();
 				} else {
 					//the weapon choice will be invalid since the attacker was removed
 					d_weap = "invalid";
@@ -689,8 +689,8 @@ void attack::fire_event(const std::string& n)
 	config dat;
 	dat.add_child("first");
 	dat.add_child("second");
-	(*(dat.child("first")))["weapon"]=a_stats_->weapon->name();
-	(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->name() : "none";
+	(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
+	(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
 	game_events::fire(n,attacker_,defender_,dat);
 	//the event could have killed either the attacker or
 	//defender, so we have to make sure they still exist

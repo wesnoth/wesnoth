@@ -111,7 +111,7 @@ bool attack_type::matches_filter(const config& cfg,bool self) const
 	if(filter_range.empty() == false && std::find(filter_range.begin(),filter_range.end(),range()) == filter_range.end())
 			return false;
 
-	if(filter_name.empty() == false && std::find(filter_name.begin(),filter_name.end(),name()) == filter_name.end())
+	if(filter_name.empty() == false && std::find(filter_name.begin(),filter_name.end(),id()) == filter_name.end())
 		return false;
 
 	if(filter_type.empty() == false && std::find(filter_type.begin(),filter_type.end(),type()) == filter_type.end())
