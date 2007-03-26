@@ -1721,9 +1721,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			[/command]
 		[/set_menu_item]
 		*/
-		wml_menu_item*& mref = state_of_game->wml_menu_items[cfg["id"]];
+		std::string id = cfg["id"];
+		wml_menu_item*& mref = state_of_game->wml_menu_items[id];
 		if(mref == NULL) {
-			mref = new wml_menu_item();
+			mref = new wml_menu_item(id);
 		}
 		if(cfg.has_attribute("image")) {
 			mref->image = cfg["image"];
@@ -1739,6 +1740,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 		if(cfg.has_child("command")) {
 			mref->command = cfg.child("command").get_config();
+			mref->command["name"] = mref->name;
+			mref->command["first_time_only"] = "no";
+			event_handler new_handler(mref->command); 
+			events_map.insert(std::pair<std::string,event_handler>(
+					new_handler.name(), new_handler));
 		}
 	}
 	//unit serialization to and from variables

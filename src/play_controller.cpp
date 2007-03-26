@@ -460,7 +460,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			throw game::load_game_exception(savenames_[i],false);
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
-			//TODO: wml command execute
+			game_events::fire(wml_commands_[i]->name, mouse_handler_.get_last_hex());
 			return true;
 		}
 	}

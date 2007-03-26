@@ -50,6 +50,15 @@ struct time_of_day
 
 struct wml_menu_item
 {
+	wml_menu_item(const std::string& id) {
+		std::stringstream temp;
+		temp << "menu item";
+		if(!id.empty()) {
+			temp << ' ' << id;
+		}
+		name = temp.str();
+	}
+	std::string name;
 	std::string image;
 	t_string description;
 	config show_if;
