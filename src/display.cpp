@@ -2381,7 +2381,7 @@ void display::begin_game()
 
 void display::create_buttons()
 {
-	buttons_.clear();
+	std::vector<gui::button> work;
 
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
@@ -2396,8 +2396,13 @@ void display::create_buttons()
 			b.set_volatile(true);
 		}
 
-		buttons_.push_back(b);
+		gui::button* b_prev = find_button(b.id());
+		if(b_prev) b.enable(b_prev->enabled());
+
+		work.push_back(b);
 	}
+
+	buttons_.swap(work);
 }
 
 gui::button::TYPE display::string_to_button_type(std::string type)
