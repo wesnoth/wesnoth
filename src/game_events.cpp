@@ -1710,14 +1710,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			[show_if]
 				[not]
 					[have_unit]
-						x,y=$menu_x,$menu_y
+						x,y=$x1,$y1
 					[/have_unit]
 				[/not]
 			[/show_if]
 			[location_filter]
 			[/location_filter]
 			[command]
-				{UNIT (Troll) (Myname) ( _ "Myname") $side_number $menu_x $menu_y}
+				{UNIT (Troll) (Myname) ( _ "Myname") $side_number $x1 $y1}
 			[/command]
 		[/set_menu_item]
 		*/

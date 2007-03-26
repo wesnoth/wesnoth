@@ -55,7 +55,10 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDIT_PASTE, HOTKEY_EDIT_REVERT, HOTKEY_EDIT_RESIZE,
 	HOTKEY_EDIT_FLIP, HOTKEY_EDIT_SELECT_ALL, HOTKEY_EDIT_DRAW,
 	HOTKEY_EDIT_REFRESH,
+
+	//misc.
 	HOTKEY_USER_CMD,
+	HOTKEY_WML_CMD,
 	HOTKEY_NULL
 };
 
@@ -226,7 +229,8 @@ public:
 
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui,const std::vector<std::string>& savenames = std::vector<std::string>());
 
-	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
+	virtual bool can_execute_command(HOTKEY_COMMAND command, int index=-1) const = 0;
+	virtual bool execute_command(HOTKEY_COMMAND command, int index=-1);
 };
 
 //function to be called every time a key event is intercepted. Will
@@ -237,7 +241,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 
 void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 
-void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor);
+void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index=-1);
 
 //object which will ensure that basic keyboard events like escape
 //are handled properly for the duration of its lifetime

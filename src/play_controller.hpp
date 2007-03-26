@@ -78,7 +78,8 @@ public:
 protected:
 	void handle_event(const SDL_Event& event);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
-	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
+	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
+	virtual bool execute_command(hotkey::HOTKEY_COMMAND command, int index=-1);
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
@@ -145,8 +146,13 @@ protected:
 	bool first_turn_;
 
 private:
-	// Expand AUTOSAVES in the menu items, returning real names.
-	std::vector<std::string> expand_menu(std::vector<std::string>& items);
+	// Expand AUTOSAVES in the menu items, setting the real savenames.
+	void expand_autosaves(std::vector<std::string>& items);
+	std::vector<std::string> savenames_;
+
+	void expand_wml_commands(std::vector<std::string>& items);
+	std::vector<wml_menu_item *> wml_commands_;
+
 };
 
 

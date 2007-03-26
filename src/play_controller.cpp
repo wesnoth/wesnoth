@@ -14,6 +14,7 @@
 #include "play_controller.hpp"
 #include "dialogs.hpp"
 #include "config_adapter.hpp"
+#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "replay.hpp"
@@ -448,8 +449,31 @@ bool play_controller::enemies_visible() const
 	return false;
 }
 
-bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
+bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 {
+	if(index >= 0) {
+		unsigned i = static_cast<unsigned>(index);
+		if(i < savenames_.size() && !savenames_[i].empty()) {
+			//load the game by throwing load_game_exception
+			throw game::load_game_exception(savenames_[i],false);
+
+		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
+			//TODO: wml command execute
+			return true;
+		}
+	}
+	return command_executor::execute_command(command, index);
+}
+
+bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
+{
+	if(index >= 0) {
+		unsigned i = static_cast<unsigned>(index);
+		if((i < savenames_.size() && !savenames_[i].empty())
+		|| (i < wml_commands_.size() && wml_commands_[i] != NULL)) {
+			return true;
+		}
+	}
 	switch(command) {
 
 	//commands we can always do
@@ -689,10 +713,10 @@ void play_controller::play_slice()
 	}
 }
 
-std::vector<std::string> play_controller::expand_menu(std::vector<std::string>& items)
+void play_controller::expand_autosaves(std::vector<std::string>& items)
 {
-	std::vector<std::string> savenames;
-	for (unsigned int i = 0; i < items.size(); i++) {
+	savenames_.clear();
+	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "AUTOSAVES") {
 			items.erase(items.begin() + i);
 			std::vector<std::string> newitems;
@@ -700,7 +724,7 @@ std::vector<std::string> play_controller::expand_menu(std::vector<std::string>& 
 			for (unsigned int turn = status_.turn(); turn != 0; turn--) {
 				std::string name = gamestate_.label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 				if (save_game_exists(name)) {
-					savenames.push_back(name);
+					savenames_.push_back(name);
 					if (turn == 1) {
 						newitems.push_back(_("Back to start"));
 					} else {
@@ -724,33 +748,41 @@ std::vector<std::string> play_controller::expand_menu(std::vector<std::string>& 
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
 			break;
 		}
-		savenames.push_back("");
+		savenames_.push_back("");
 	}
-	return savenames;
+}
+
+void play_controller::expand_wml_commands(std::vector<std::string>& items)
+{
+	wml_commands_.clear();
+	//TODO: insert WML commands here
 }
 
 void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	std::vector<std::string> items = items_arg;
 	hotkey::HOTKEY_COMMAND command;
-	for(std::vector<std::string>::iterator i = items.begin(); i != items.end();){
+	for(std::vector<std::string>::iterator i = items.begin(); i != items.end();) {
 		if (*i == "AUTOSAVES") {
 			// If load is inactive, don't show these.
 			command = hotkey::HOTKEY_LOAD_GAME;
 		} else {
 			command = hotkey::get_hotkey(*i).get_id();
 		}
-		if (!can_execute_command(command) || (context_menu && !in_context_menu(command))){
+
+		if (!can_execute_command(command) || (context_menu && !in_context_menu(command))) {
 			i = items.erase(i);
+		} else {
+			++i;
 		}
-		else{ i++; }
 	}
 
-	std::vector<std::string> savenames = expand_menu(items);
+	expand_autosaves(items);
+	expand_wml_commands(items);
 	if(items.empty())
 		return;
 
-	command_executor::show_menu(items, xloc, yloc, context_menu, *gui_, savenames);
+	command_executor::show_menu(items, xloc, yloc, context_menu, *gui_);
 }
 
 // Indicates whether the command should be in the context menu or not.

@@ -122,6 +122,7 @@ const struct {
 	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false },
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false },
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
+	{ hotkey::HOTKEY_WML_CMD, "wml", N_("Execute WML command"), true },
 
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true },
 
@@ -494,13 +495,223 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 	execute_command(disp,hk->get_id(),executor);
 }
 
-void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor)
+bool command_executor::execute_command(HOTKEY_COMMAND command, int index)
+{
+	switch(command) {
+		case HOTKEY_CYCLE_UNITS:
+			cycle_units();
+			break;
+		case HOTKEY_CYCLE_BACK_UNITS:
+			cycle_back_units();
+			break;
+		case HOTKEY_ENDTURN:
+			end_turn();
+			break;
+		case HOTKEY_UNIT_HOLD_POSITION:
+			unit_hold_position();
+			break;
+		case HOTKEY_END_UNIT_TURN:
+			end_unit_turn();
+			break;
+		case HOTKEY_LEADER:
+			goto_leader();
+			break;
+		case HOTKEY_UNDO:
+			undo();
+			break;
+		case HOTKEY_REDO:
+			redo();
+			break;
+		case HOTKEY_UNIT_DESCRIPTION:
+			unit_description();
+			break;
+		case HOTKEY_RENAME_UNIT:
+			rename_unit();
+			break;
+		case HOTKEY_SAVE_GAME:
+			save_game();
+			break;
+		case HOTKEY_SAVE_MAP:
+			save_map();
+			break;
+		case HOTKEY_LOAD_GAME:
+			load_game();
+			break;
+		case HOTKEY_TOGGLE_GRID:
+			toggle_grid();
+			break;
+		case HOTKEY_STATUS_TABLE:
+			status_table();
+			break;
+		case HOTKEY_RECALL:
+			recall();
+			break;
+		case HOTKEY_RECRUIT:
+			recruit();
+			break;
+		case hotkey::HOTKEY_REPEAT_RECRUIT:
+			repeat_recruit();
+			break;
+		case HOTKEY_SPEAK:
+			speak();
+			break;
+		case HOTKEY_SPEAK_ALLY:
+			preferences::set_message_private(true);
+			speak();
+			break;
+		case HOTKEY_SPEAK_ALL:
+			preferences::set_message_private(false);
+			speak();
+			break;
+		case HOTKEY_CREATE_UNIT:
+			create_unit();
+			break;
+		case HOTKEY_CHANGE_UNIT_SIDE:
+			change_unit_side();
+			break;
+		case HOTKEY_PREFERENCES:
+			preferences();
+			break;
+		case HOTKEY_OBJECTIVES:
+			objectives();
+			break;
+		case HOTKEY_UNIT_LIST:
+			unit_list();
+			break;
+		case HOTKEY_STATISTICS:
+			show_statistics();
+			break;
+		case HOTKEY_LABEL_TEAM_TERRAIN:
+			label_terrain(true);
+			break;
+		case HOTKEY_LABEL_TERRAIN:
+			label_terrain(false);
+			break;
+		case HOTKEY_CLEAR_LABELS:
+			clear_labels();
+			break;
+		case HOTKEY_SHOW_ENEMY_MOVES:
+			show_enemy_moves(false);
+			break;
+		case HOTKEY_BEST_ENEMY_MOVES:
+			show_enemy_moves(true);
+			break;
+		case HOTKEY_DELAY_SHROUD:
+			toggle_shroud_updates();
+			break;
+		case HOTKEY_UPDATE_SHROUD:
+			update_shroud_now();
+			break;
+		case HOTKEY_CONTINUE_MOVE:
+			continue_move();
+			break;
+		case HOTKEY_SEARCH:
+			search();
+			break;
+		case HOTKEY_HELP:
+			show_help();
+			break;
+		case HOTKEY_CHAT_LOG:
+			show_chat_log();
+			break;
+		case HOTKEY_USER_CMD:
+			user_command();
+			break;
+		case HOTKEY_EDIT_SET_TERRAIN:
+			edit_set_terrain();
+			break;
+		case HOTKEY_EDIT_QUIT:
+			edit_quit();
+			break;
+		 case HOTKEY_EDIT_NEW_MAP:
+			edit_new_map();
+			break;
+		 case HOTKEY_EDIT_LOAD_MAP:
+			edit_load_map();
+			break;
+		 case HOTKEY_EDIT_SAVE_MAP:
+			edit_save_map();
+			break;
+		 case HOTKEY_EDIT_SAVE_AS:
+			edit_save_as();
+			break;
+		 case HOTKEY_EDIT_SET_START_POS:
+			edit_set_start_pos();
+			break;
+		 case HOTKEY_EDIT_FLOOD_FILL:
+			edit_flood_fill();
+			break;
+		 case HOTKEY_EDIT_FILL_SELECTION:
+			edit_fill_selection();
+			break;
+		 case HOTKEY_EDIT_CUT:
+			edit_cut();
+			break;
+		 case HOTKEY_EDIT_PASTE:
+			edit_paste();
+			break;
+		 case HOTKEY_EDIT_COPY:
+			edit_copy();
+			break;
+		 case HOTKEY_EDIT_REVERT:
+			edit_revert();
+			break;
+		 case HOTKEY_EDIT_RESIZE:
+			edit_resize();
+			break;
+		 case HOTKEY_EDIT_FLIP:
+			edit_flip();
+			break;
+		 case HOTKEY_EDIT_SELECT_ALL:
+			edit_select_all();
+			break;
+		 case HOTKEY_EDIT_DRAW:
+			edit_draw();
+			break;
+		 case HOTKEY_EDIT_REFRESH:
+			edit_refresh();
+			break;
+		 case HOTKEY_LANGUAGE:
+			change_language();
+			break;
+		 case HOTKEY_PLAY_REPLAY:
+			play_replay();
+			 break;
+		 case HOTKEY_RESET_REPLAY:
+			reset_replay();
+			 break;
+		 case HOTKEY_STOP_REPLAY:
+			 stop_replay();
+			 break;
+		 case HOTKEY_REPLAY_NEXT_TURN:
+			replay_next_turn();
+			 break;
+		 case HOTKEY_REPLAY_NEXT_SIDE:
+			replay_next_side();
+			 break;
+		 case HOTKEY_REPLAY_SHROUD:
+			replay_switch_shroud();
+			 break;
+		 case HOTKEY_REPLAY_FOG:
+			replay_switch_fog();
+			 break;
+		 case HOTKEY_REPLAY_SKIP_ANIMATION:
+			replay_skip_animation();
+			 break;
+		 default:
+			 return false;
+	}
+	return true;
+}
+
+void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index)
 {
 	const int zoom_amount = 4;
 
-	if(executor != NULL && executor->can_execute_command(command) == false)
+	if(executor != NULL) {
+		if(!executor->can_execute_command(command) || executor->execute_command(command, index))
 		return;
-
+	}
 	switch(command) {
 		case HOTKEY_ZOOM_IN:
 			disp.zoom(zoom_amount);
@@ -513,6 +724,9 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		case HOTKEY_FULLSCREEN:
 			preferences::set_fullscreen(!preferences::fullscreen());
+			break;
+		case HOTKEY_MOUSE_SCROLL:
+			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
 			break;
 		case HOTKEY_SCREENSHOT:
 			disp.screenshot();
@@ -544,157 +758,6 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				}
 			}
 			break;
-		case HOTKEY_CYCLE_UNITS:
-			if(executor)
-				executor->cycle_units();
-			break;
-		case HOTKEY_CYCLE_BACK_UNITS:
-			if(executor)
-				executor->cycle_back_units();
-			break;
-		case HOTKEY_ENDTURN:
-			if(executor)
-				executor->end_turn();
-			break;
-		case HOTKEY_UNIT_HOLD_POSITION:
-			if(executor)
-                executor->unit_hold_position();
-			break;
-		case HOTKEY_END_UNIT_TURN:
-			if(executor)
-				executor->end_unit_turn();
-			break;
-		case HOTKEY_LEADER:
-			if(executor)
-				executor->goto_leader();
-			break;
-		case HOTKEY_UNDO:
-			if(executor)
-				executor->undo();
-			break;
-		case HOTKEY_REDO:
-			if(executor)
-				executor->redo();
-			break;
-		case HOTKEY_UNIT_DESCRIPTION:
-			if(executor)
-				executor->unit_description();
-			break;
-		case HOTKEY_RENAME_UNIT:
-			if(executor)
-				executor->rename_unit();
-			break;
-		case HOTKEY_SAVE_GAME:
-			if(executor)
-				executor->save_game();
-			break;
-		case HOTKEY_SAVE_MAP:
-			if(executor)
-				executor->save_map();
-			break;
-		case HOTKEY_LOAD_GAME:
-			if(executor)
-				executor->load_game();
-			break;
-		case HOTKEY_TOGGLE_GRID:
-			if(executor)
-				executor->toggle_grid();
-			break;
-		case HOTKEY_MOUSE_SCROLL:
-			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
-			break;
-		case HOTKEY_STATUS_TABLE:
-			if(executor)
-				executor->status_table();
-			break;
-		case HOTKEY_RECALL:
-			if(executor)
-				executor->recall();
-			break;
-		case HOTKEY_RECRUIT:
-			if(executor)
-				executor->recruit();
-			break;
-		case hotkey::HOTKEY_REPEAT_RECRUIT:
-			if(executor)
-				executor->repeat_recruit();
-			break;
-		case HOTKEY_SPEAK:
-			if(executor)
-				executor->speak();
-			break;
-		case HOTKEY_SPEAK_ALLY:
-			if(executor) {
-				preferences::set_message_private(true);
-				executor->speak();
-			}
-			break;
-		case HOTKEY_SPEAK_ALL:
-			if(executor) {
-				preferences::set_message_private(false);
-				executor->speak();
-			}
-			break;
-		case HOTKEY_CREATE_UNIT:
-			if(executor)
-				executor->create_unit();
-			break;
-		case HOTKEY_CHANGE_UNIT_SIDE:
-			if(executor)
-				executor->change_unit_side();
-			break;
-		case HOTKEY_PREFERENCES:
-			if(executor)
-				executor->preferences();
-			break;
-		case HOTKEY_OBJECTIVES:
-			if(executor)
-				executor->objectives();
-			break;
-		case HOTKEY_UNIT_LIST:
-			if(executor)
-				executor->unit_list();
-			break;
-		case HOTKEY_STATISTICS:
-			if(executor)
-				executor->show_statistics();
-			break;
-		case HOTKEY_LABEL_TEAM_TERRAIN:
-			if(executor)
-				executor->label_terrain(true);
-			break;
-		case HOTKEY_LABEL_TERRAIN:
-			if(executor)
-				executor->label_terrain(false);
-			break;
-		case HOTKEY_CLEAR_LABELS:
-			if(executor)
-				executor->clear_labels();
-			break;
-		case HOTKEY_SHOW_ENEMY_MOVES:
-			if(executor)
-				executor->show_enemy_moves(false);
-			break;
-		case HOTKEY_BEST_ENEMY_MOVES:
-			if(executor)
-				executor->show_enemy_moves(true);
-			break;
-		case HOTKEY_DELAY_SHROUD:
-			if(executor)
-				executor->toggle_shroud_updates();
-			break;
-		case HOTKEY_UPDATE_SHROUD:
-			if(executor)
-				executor->update_shroud_now();
-			break;
-		case HOTKEY_CONTINUE_MOVE:
-			if(executor)
-				executor->continue_move();
-			break;
-		case HOTKEY_SEARCH:
-			if(executor)
-				executor->search();
-			break;
 		case HOTKEY_QUIT_GAME: {
 			if(disp.in_game()) {
 				std::cerr << "is in game -- showing quit message\n";
@@ -706,130 +769,6 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 
 			break;
 		}
-		case HOTKEY_HELP:
-			if(executor) {
-				executor->show_help();
-			}
-			break;
-		case HOTKEY_CHAT_LOG:
-			if(executor) {
-				executor->show_chat_log();
-			}
-			break;
-		case HOTKEY_USER_CMD:
-			if(executor) {
-				executor->user_command();
-			}
-			break;
-		case HOTKEY_EDIT_SET_TERRAIN:
-			if(executor)
-				executor->edit_set_terrain();
-			break;
-		case HOTKEY_EDIT_QUIT:
-			if(executor)
-				executor->edit_quit();
-			break;
-		 case HOTKEY_EDIT_NEW_MAP:
-			if(executor)
-				executor->edit_new_map();
-			break;
-		 case HOTKEY_EDIT_LOAD_MAP:
-			if(executor)
-				executor->edit_load_map();
-			break;
-		 case HOTKEY_EDIT_SAVE_MAP:
-			if(executor)
-				executor->edit_save_map();
-			break;
-		 case HOTKEY_EDIT_SAVE_AS:
-			if(executor)
-				executor->edit_save_as();
-			break;
-		 case HOTKEY_EDIT_SET_START_POS:
-			if(executor)
-				executor->edit_set_start_pos();
-			break;
-		 case HOTKEY_EDIT_FLOOD_FILL:
-			if(executor)
-				executor->edit_flood_fill();
-			break;
-
-		 case HOTKEY_EDIT_FILL_SELECTION:
-			if(executor)
-				executor->edit_fill_selection();
-			break;
-		 case HOTKEY_EDIT_CUT:
-			if(executor)
-				executor->edit_cut();
-			break;
-		 case HOTKEY_EDIT_PASTE:
-			if(executor)
-				executor->edit_paste();
-			break;
-		 case HOTKEY_EDIT_COPY:
-			if(executor)
-				executor->edit_copy();
-			break;
-		 case HOTKEY_EDIT_REVERT:
-			if(executor)
-				executor->edit_revert();
-			break;
-		 case HOTKEY_EDIT_RESIZE:
-			if(executor)
-				executor->edit_resize();
-			break;
-		 case HOTKEY_EDIT_FLIP:
-			if(executor)
-				executor->edit_flip();
-			break;
-		 case HOTKEY_EDIT_SELECT_ALL:
-			if(executor)
-				executor->edit_select_all();
-			break;
-		 case HOTKEY_EDIT_DRAW:
-			if(executor)
-				executor->edit_draw();
-			break;
-		 case HOTKEY_EDIT_REFRESH:
-			if(executor)
-				executor->edit_refresh();
-			break;
-		 case HOTKEY_LANGUAGE:
-			if(executor)
-				executor->change_language();
-			break;
-		 case HOTKEY_PLAY_REPLAY:
-			 if (executor)
-				 executor->play_replay();
-			 break;
-		 case HOTKEY_RESET_REPLAY:
-			 if (executor)
-				 executor->reset_replay();
-			 break;
-		 case HOTKEY_STOP_REPLAY:
-			 if (executor)
-				executor->stop_replay();
-			 break;
-		 case HOTKEY_REPLAY_NEXT_TURN:
-			 if (executor)
-				 executor->replay_next_turn();
-			 break;
-		 case HOTKEY_REPLAY_NEXT_SIDE:
-			 if (executor)
-				 executor->replay_next_side();
-			 break;
-		 case HOTKEY_REPLAY_SHROUD:
-			 if (executor)
-				 executor->replay_switch_shroud();
-			 break;
-		 case HOTKEY_REPLAY_FOG:
-			 if (executor)
-				 executor->replay_switch_fog();
-			 break;
-		 case HOTKEY_REPLAY_SKIP_ANIMATION:
-			 if (executor)
-				 executor->replay_skip_animation();
-			 break;
 		default:
 			std::cerr << "command_executor: unknown command number " << command << ", ignoring.\n";
 			break;
@@ -855,12 +794,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 			return;
 
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
-		// Fake entries: they want us to load a specific autosave.
-		if (cmd == hotkey::HOTKEY_NULL && (unsigned)res < savenames.size() && !savenames[(unsigned)res].empty()) {
-			throw game::load_game_exception(savenames[(unsigned)res],false);
-		}
-
-		hotkey::execute_command(gui,cmd,this);
+		hotkey::execute_command(gui,cmd,this,res);
 	}
 }
 
