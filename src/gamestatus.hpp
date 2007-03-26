@@ -81,7 +81,7 @@ struct player_info
 class game_state : public variable_set
 {
 public:
-	game_state() : recursive_(false), difficulty("NORMAL") {}
+	game_state() :  difficulty("NORMAL"), recursive_(false) {}
 	~game_state();
 	std::string label; //name of the game (e.g. name of save file)
 	std::string version; //version game was created with.
