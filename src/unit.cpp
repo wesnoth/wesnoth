@@ -1875,9 +1875,9 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		std::string tc=team::get_side_colour_index(side_);
 
 		snprintf(buf,sizeof(buf),"%s-%stop.png~RC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
-		ellipse_back.assign(image::get_image(image::locator(buf)));
+		ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM, image::NO_ADJUST_COLOUR));
 		snprintf(buf,sizeof(buf),"%s-%sbottom.png~RC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
-		ellipse_front.assign(image::get_image(image::locator(buf)));
+		ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM, image::NO_ADJUST_COLOUR));
 	}
 
 
@@ -1939,7 +1939,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			disp.draw_bar(*energy_file,x,y-height_adjust,max_experience()/(level*2),filled,colour,bar_alpha);
 		}
 		if (can_recruit()) {
-			surface crown(image::get_image("misc/leader-crown.png",image::SCALED_TO_HEX,image::NO_ADJUST_COLOUR));
+			surface crown(image::get_image("misc/leader-crown.png",image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
 			if(!crown.null()) {
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
