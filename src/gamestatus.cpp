@@ -1305,10 +1305,51 @@ void game_state::clear_variable(const std::string& varname)
 	}
 }
 
-game_state::~game_state() {
+namespace {
+void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 	std::map<std::string, wml_menu_item*>::iterator itor;
-	std::map<std::string, wml_menu_item*>& gs_wmi = wml_menu_items;
 	for (itor = gs_wmi.begin(); itor != gs_wmi.end(); ++itor) {
 		delete itor->second;
 	}
+}
+} //end anon namespace
+
+game_state::game_state(const game_state& state)
+{
+	*this = state;
+}
+
+game_state& game_state::operator=(const game_state& state)
+{
+	if(this == &state) {
+		return *this;
+	}
+
+	label = state.label;
+	version = state.version;
+	campaign_type = state.campaign_type;
+	campaign_define = state.campaign_define;
+	campaign = state.campaign;
+	scenario = state.scenario;
+	players = state.players;
+	scoped_variables = state.scoped_variables;
+	
+	clear_wmi(wml_menu_items);
+	std::map<std::string, wml_menu_item*>::const_iterator itor;
+	for (itor = state.wml_menu_items.begin(); itor != state.wml_menu_items.end(); ++itor) {
+		wml_menu_item*& mref = wml_menu_items[itor->first];
+		mref = new wml_menu_item(*(itor->second));
+	}
+
+	difficulty = state.difficulty;
+	replay_data = state.replay_data;
+	starting_pos = state.starting_pos;
+	snapshot = state.snapshot;
+	recursive_ = state.recursive_;
+
+	return *this;
+}
+
+game_state::~game_state() {
+	clear_wmi(wml_menu_items);
 }

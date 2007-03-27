@@ -82,7 +82,11 @@ class game_state : public variable_set
 {
 public:
 	game_state() :  difficulty("NORMAL"), recursive_(false) {}
+	game_state(const game_state& state);
+
 	~game_state();
+	game_state& operator=(const game_state& state);
+
 	std::string label; //name of the game (e.g. name of save file)
 	std::string version; //version game was created with.
 	std::string campaign_type; //type of the game - campaign, multiplayer etc
