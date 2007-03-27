@@ -809,7 +809,7 @@ std::vector<std::string> command_executor::get_menu_images(const std::vector<std
 	bool has_image = false;
 
 	for(int i = 0; i < items.size(); ++i) {
-		std::string &item = items[i];
+		std::string const& item = items[i];
 		const hotkey::hotkey_item hk = hotkey::get_hotkey(item);
 
 		std::stringstream str;
@@ -821,7 +821,7 @@ std::vector<std::string> command_executor::get_menu_images(const std::vector<std
 		}
 
 		if (hk.get_id() == hotkey::HOTKEY_NULL) {
-			str << utils::strip(item) << COLUMN_SEPARATOR;
+			str << item.substr(0, item.find_last_not_of(' ') + 1) << COLUMN_SEPARATOR;
 		} else {
 			str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
 		}

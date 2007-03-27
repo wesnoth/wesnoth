@@ -868,9 +868,11 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 
 std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, int index) const
 {
-	wml_menu_item* const& wmi = wml_commands_[index];
-	if(wmi != NULL) {
-		return wmi->image.empty() ? game_config::wml_menu_image : wmi->image;
+	if(index < wml_commands_.size()) {
+		wml_menu_item* const& wmi = wml_commands_[index];
+		if(wmi != NULL) {
+			return wmi->image.empty() ? game_config::wml_menu_image : wmi->image;
+		}
 	}
 	return command_executor::get_action_image(command, index);
 }
