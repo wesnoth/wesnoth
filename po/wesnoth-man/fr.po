@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-03-07 14:54+0100\n"
-"PO-Revision-Date: 2007-02-10 17:18+0100\n"
+"PO-Revision-Date: 2007-03-27 17:43+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Language fr <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -238,9 +238,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:83
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--max-fps>"
-msgstr "B<--fps>"
+msgstr "B<--max-fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:87
@@ -248,6 +248,8 @@ msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is 50."
 msgstr ""
+"Nombre d'images par seconde que le jeu peut afficher. La valeur doit être "
+"comprise entre 1 et 1000, la valeur par défaut est 50."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:87
@@ -913,9 +915,9 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
-#, fuzzy
 msgid "The number of allowed connections from the same IP. (default: 5)"
-msgstr "Nombre maximum de connexions ayant la même adresse IP."
+msgstr ""
+"Nombre maximum de connexions ayant la même adresse IP. (par défaut : 5)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:91
@@ -944,9 +946,10 @@ msgstr "B<max_messages>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:100
-#, fuzzy
 msgid "The number of allowed messages in B<messages_time_period>. (default: 4)"
-msgstr "Le nombre maximum de messages permis en B<messages_time_period>."
+msgstr ""
+"Le nombre maximum de messages permis en B<messages_time_period>. (par "
+"défaut : 4)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:100
@@ -956,12 +959,12 @@ msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: 10 "
 "seconds)"
 msgstr ""
-"Période, en secondes, après laquelle une avalanche de messages est détectée."
+"Période, en secondes, après laquelle une avalanche de messages est détectée. "
+"(par défaut : 10 secondes)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
@@ -997,14 +1000,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Liste des versions acceptées par le serveur, séparées par des virgules. Les "
-"caractères génériques `*' et `?' sont acceptés."
+"caractères génériques `*' et `?' sont acceptés. (part défaut : version "
+"correspondant au à celle du serveur)"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:115
