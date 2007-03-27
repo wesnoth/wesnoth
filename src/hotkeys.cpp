@@ -796,11 +796,11 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 	}
 }
 
-std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command) const {
+std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int index) const {
 	switch(get_action_state(command)) {
 		case ACTION_ON: return game_config::checked_menu_image;
 		case ACTION_OFF: return game_config::unchecked_menu_image;
-		default: return get_action_image(command);
+		default: return get_action_image(command, index);
 	}
 }
 
@@ -808,19 +808,20 @@ std::vector<std::string> command_executor::get_menu_images(const std::vector<std
 	std::vector<std::string> result;
 	bool has_image = false;
 
-	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const hotkey::hotkey_item hk = hotkey::get_hotkey(*i);
+	for(int i = 0; i < items.size(); ++i) {
+		std::string &item = items[i];
+		const hotkey::hotkey_item hk = hotkey::get_hotkey(item);
 
 		std::stringstream str;
 		//see if this menu item has an associated image
-		std::string img(get_menu_image(hk.get_id()));
+		std::string img(get_menu_image(hk.get_id(), i));
 		if(img.empty() == false) {
 			has_image = true;
 			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
 		}
 
 		if (hk.get_id() == hotkey::HOTKEY_NULL) {
-			str << *i << COLUMN_SEPARATOR;
+			str << utils::strip(item) << COLUMN_SEPARATOR;
 		} else {
 			str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
 		}

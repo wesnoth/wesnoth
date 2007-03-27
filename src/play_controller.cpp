@@ -715,6 +715,20 @@ void play_controller::play_slice()
 	}
 }
 
+namespace {
+void trim_items(std::vector<std::string>& newitems) {
+	if (newitems.size() > 5) {
+		std::vector<std::string> subitems;
+		subitems.push_back(newitems[0]);
+		subitems.push_back(newitems[1]);
+		subitems.push_back(newitems[newitems.size() / 3]);
+		subitems.push_back(newitems[newitems.size() * 2 / 3]);
+		subitems.push_back(newitems.back());
+		newitems = subitems;
+	}
+}
+} //end anon namespace
+
 void play_controller::expand_autosaves(std::vector<std::string>& items)
 {
 	savenames_.clear();
@@ -722,11 +736,11 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 		if (items[i] == "AUTOSAVES") {
 			items.erase(items.begin() + i);
 			std::vector<std::string> newitems;
-
+			std::vector<std::string> newsaves;
 			for (unsigned int turn = status_.turn(); turn != 0; turn--) {
 				std::string name = gamestate_.label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 				if (save_game_exists(name)) {
-					savenames_.push_back(name);
+					newsaves.push_back(name);
 					if (turn == 1) {
 						newitems.push_back(_("Back to start"));
 					} else {
@@ -737,17 +751,11 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 
 			// Make sure list doesn't get too long: keep top two,
 			// midpoint and bottom.
-			if (newitems.size() > 5) {
-				std::vector<std::string> subitems;
-				subitems.push_back(newitems[0]);
-				subitems.push_back(newitems[1]);
-				subitems.push_back(newitems[newitems.size() / 3]);
-				subitems.push_back(newitems[newitems.size() * 2 / 3]);
-				subitems.push_back(newitems.back());
-				newitems = subitems;
-			}
+			trim_items(newitems);
+			trim_items(newsaves);
 
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
+			savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
 			break;
 		}
 		savenames_.push_back("");
@@ -783,7 +791,11 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 					|| map_.terrain_matches_filter(hex, vconfig(&location_filter).get_parsed_config(), status_, units_)))
 				{
 					wml_commands_.push_back(itor->second);
-					newitems.push_back(itor->second->description);
+					std::string newitem = itor->second->description;
+
+					//prevent accidental hotkey binding by appending a space
+					push_back<std::string, char>(newitem, ' '); 
+					newitems.push_back(newitem);
 				}
 			}
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
@@ -797,23 +809,34 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 {
 	std::vector<std::string> items = items_arg;
 	hotkey::HOTKEY_COMMAND command;
-	for(std::vector<std::string>::iterator i = items.begin(); i != items.end();) {
+	std::vector<std::string>::iterator i = items.begin();
+	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
-			// If load is inactive, don't show these.
+			//autosave visibility is similar to LOAD_GAME hotkey
 			command = hotkey::HOTKEY_LOAD_GAME;
 		} else {
 			command = hotkey::get_hotkey(*i).get_id();
 		}
-
-		if (!can_execute_command(command) || (context_menu && !in_context_menu(command))) {
+		//remove WML commands if they would not be allowed here
+		if(*i == "wml") {
+			if(!context_menu || gui_->viewing_team() != gui_->playing_team()
+			|| events::commands_disabled || !teams_[gui_->viewing_team()].is_human()) {
+				i = items.erase(i);
+				continue;
+			}
+		//remove commands that can't be executed or don't belong in this type of menu
+		} else if(!can_execute_command(command)
+		|| (context_menu && !in_context_menu(command))) {
 			i = items.erase(i);
-		} else {
-			++i;
+			continue;
 		}
+		++i;
 	}
 
+	//add special non-hotkey items to the menu and remember their indeces
 	expand_autosaves(items);
 	expand_wml_commands(items);
+
 	if(items.empty())
 		return;
 
@@ -841,6 +864,15 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	default:
 		return true;
 	}
+}
+
+std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, int index) const
+{
+	wml_menu_item* const& wmi = wml_commands_[index];
+	if(wmi != NULL) {
+		return wmi->image.empty() ? game_config::wml_menu_image : wmi->image;
+	}
+	return command_executor::get_action_image(command, index);
 }
 
 hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND command) const

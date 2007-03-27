@@ -1739,12 +1739,17 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			mref->location_filter = cfg.child("location_filter").get_config();
 		}
 		if(cfg.has_child("command")) {
+			const bool no_current_handler = mref->command.empty();
 			mref->command = cfg.child("command").get_config();
-			mref->command["name"] = mref->name;
-			mref->command["first_time_only"] = "no";
-			event_handler new_handler(mref->command); 
-			events_map.insert(std::pair<std::string,event_handler>(
+			if(no_current_handler) {
+				mref->command["name"] = mref->name;
+				mref->command["first_time_only"] = "no";
+				event_handler new_handler(mref->command); 
+				events_map.insert(std::pair<std::string,event_handler>(
 					new_handler.name(), new_handler));
+			} else if(mref->command.empty()) {
+				mref->command.add_child("allow_undo");
+			}
 		}
 	}
 	//unit serialization to and from variables

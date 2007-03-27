@@ -77,6 +77,7 @@ public:
 
 protected:
 	void handle_event(const SDL_Event& event);
+	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 	virtual bool execute_command(hotkey::HOTKEY_COMMAND command, int index=-1);

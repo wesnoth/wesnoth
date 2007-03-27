@@ -68,6 +68,7 @@ namespace game_config
 
 	std::string unchecked_menu_image = "buttons/checkbox.png";
 	std::string checked_menu_image = "buttons/checkbox-pressed.png";
+	std::string wml_menu_image = "buttons/WML-custom.png";
 
 	std::string download_campaign_image;
 

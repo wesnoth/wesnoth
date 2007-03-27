@@ -45,7 +45,7 @@ namespace game_config
 	  flag_image, dot_image, cross_image,
 	  missile_n_image, missile_ne_image,
 	  terrain_mask_image, observer_image, download_campaign_image,
-	  checked_menu_image, unchecked_menu_image, level_image,ellipsis_image;
+	  checked_menu_image, unchecked_menu_image, wml_menu_image, level_image, ellipsis_image;
 
   	extern std::string flag_rgb;
 
