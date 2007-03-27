@@ -454,7 +454,6 @@ void set_colour_adjustment(int r, int g, int b)
 		green_adjust = g;
 		blue_adjust = b;
 		reset_cache(scaled_to_hex_images_);
-		reset_cache(scaled_to_zoom_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(alternative_images_);
