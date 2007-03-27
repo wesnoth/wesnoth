@@ -64,8 +64,8 @@ namespace {
 	int MinZoom(const gamemap& map, const SDL_Rect& viewport)
 	{
 		if(map.x()<4 || !map.y() ) return DefaultZoom;
-		const int min_zoom1 = viewport.w/((map.x()*3)/4);
-		const int min_zoom2 = viewport.h/map.y();
+		const int min_zoom1 = ceil(double(viewport.w) / (double(map.x()*3)/4.0));
+		const int min_zoom2 = ceil(double(viewport.h) / double(map.y()));
 		int zoom = maximum<int>(min_zoom1,min_zoom2);
 		return minimum<int>(zoom,DefaultZoom);
 	}
