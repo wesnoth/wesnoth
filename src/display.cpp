@@ -450,17 +450,15 @@ void display::scroll(int xmove, int ymove)
 
 	if (dy != 0) {
 		SDL_Rect r = map_area();
-		if (dy < 0) {
-			r.y = r.h-abs(dy);
-		}
+		r.x = 0;
+		r.y = dy < 0 ? r.h+dy : 0;
 		r.h = abs(dy);
 		invalidate_locations_in_rect(r);
 	}
 	if (dx != 0) {
 		SDL_Rect r = map_area();
-		if (dx < 0) {
-			r.x = r.w-abs(dx);
-		}
+		r.x = dx < 0 ? r.w+dx : 0;
+		r.y = 0;
 		r.w = abs(dx);
 		invalidate_locations_in_rect(r);
 	}
@@ -1955,6 +1953,14 @@ void display::set_route(const paths::route* route)
 	}
 
 	invalidate_route();
+}
+
+void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
+{
+	SDL_Rect r = map_area();
+	r.x=0;
+	r.y=0;
+	get_rect_hex_bounds(r, topleft, bottomright);
 }
 
 void display::remove_footstep(const gamemap::location& loc)

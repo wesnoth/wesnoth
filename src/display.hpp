@@ -189,8 +189,7 @@ public:
 		{ return map_area().y + loc.y*zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
 
 	//returns the locations of 2 hexes that bind the visible area of the map.
-	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
-		{ get_rect_hex_bounds(map_area(), topleft, bottomright); }
+	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
 
 	//function to remove a footstep from a specific location
 	void remove_footstep(const gamemap::location& loc);
