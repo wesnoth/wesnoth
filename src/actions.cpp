@@ -1602,9 +1602,10 @@ void check_victory(unit_map& units,
 		if(non_interactive()) {
 			std::cout << "winner: ";
 			for(std::vector<int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
-				std::cout << *i << " ";
+				std::string ai = teams[*i - 1].ai_algorithm();
+				if (ai == "") ai = "default ai";
+				std::cout << *i << " (using " << ai << ") ";
 			}
-
 			std::cout << "\n";
 		}
 
