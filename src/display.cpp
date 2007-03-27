@@ -1402,7 +1402,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	const time_of_day& tod_at = timeofday_at(status_,units_,loc,map_);
 	std::string mask = tod_at.image_mask;
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL || tod.image_mask != tod_at.image_mask) {
-		image_type = image::UNMASKED;
+		image_type = image::SCALED_TO_HEX;
 		mask = tod_at.image_mask;
 	}
 
