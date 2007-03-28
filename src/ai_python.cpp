@@ -835,6 +835,22 @@ static PyTypeObject wesnoth_location_type = {
 	NULL
 };
 
+void recalculate_movemaps()
+{
+    python_ai *ai = running_instance;
+    ai->src_dst_.clear();
+    ai->dst_src_.clear();
+    ai->possible_moves_.clear();
+    ai->calculate_possible_moves(ai->possible_moves_,
+        ai->src_dst_, ai->dst_src_, false);
+
+    ai->enemy_src_dst_.clear();
+    ai->enemy_dst_src_.clear();
+    ai->enemy_possible_moves_.clear();
+    ai->calculate_possible_moves(ai->enemy_possible_moves_,
+        ai->enemy_src_dst_, ai->enemy_dst_src_, true);
+}
+
 static PyObject* wrapper_location_adjacent_to( wesnoth_location* left, PyObject* args )
 {
 	wesnoth_location* right;
@@ -1421,15 +1437,10 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
         return NULL;
     }
     PyObject* loc = wrap_location(location);
-	running_instance->src_dst_.clear();
-	running_instance->dst_src_.clear();
-	running_instance->possible_moves_.clear();
-	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
-	running_instance->enemy_src_dst_.clear();
-	running_instance->enemy_dst_src_.clear();
-	running_instance->enemy_possible_moves_.clear();
-	running_instance->calculate_possible_moves(running_instance->enemy_possible_moves_,running_instance->enemy_src_dst_,running_instance->enemy_dst_src_,true);
-	return loc;
+
+    recalculate_movemaps();
+
+    return loc;
 }
 
 PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
@@ -1470,14 +1481,8 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
         PyErr_SetString(PyExc_RuntimeError, "Game is won!");
         return NULL;
     }
-	running_instance->src_dst_.clear();
-	running_instance->dst_src_.clear();
-	running_instance->possible_moves_.clear();
-	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
-	running_instance->enemy_src_dst_.clear();
-	running_instance->enemy_dst_src_.clear();
-	running_instance->enemy_possible_moves_.clear();
-	running_instance->calculate_possible_moves(running_instance->enemy_possible_moves_,running_instance->enemy_src_dst_,running_instance->enemy_dst_src_,true);
+
+    recalculate_movemaps();
 
 	Py_INCREF(Py_None);
 	return Py_None;
@@ -1505,7 +1510,12 @@ PyObject* python_ai::wrapper_recruit_unit(PyObject* /*self*/, PyObject* args)
 	const char* name;
 	if ( !PyArg_ParseTuple( args, "sO!", &name, &wesnoth_location_type, &where ) )
 		return NULL;
-	return Py_BuildValue("i", running_instance->recruit(name,*where->location_) == true ? 1 : 0);
+
+    int r = running_instance->recruit(name,*where->location_) == true ? 1 : 0;
+
+    recalculate_movemaps();
+
+    return Py_BuildValue("i", r);
 }
 
 PyObject* python_ai::wrapper_get_gamestatus(PyObject* /*self*/, PyObject* args)
