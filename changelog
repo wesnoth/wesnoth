@@ -19,6 +19,12 @@ Version 1.2.3+svn:
    * fixed the fire dragon die sound in TROW
    * fixed many agression->aggression typos
    * fixed [special_filter] not working properly (#8212)
+ * Python AI:
+   * backported safe AI from 1.3, so you can no longer use import, builtin
+     statements, or access to internal variables in AI scripts
+   * fixed bugs where movement maps weren't updated after recruiting (bug #8802)
+     and where some unit type properties where always false (like regenerate or
+     heals)
  * misc:
    * fixed beginning-of-scenario saves containing scenario WML (bug #8698)
    * fixed autosaves not getting deleted for last campaign scenario and
