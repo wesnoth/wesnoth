@@ -59,11 +59,13 @@ public:
 	static bool is_unit_valid(const unit* unit);
 	std::vector<team>& get_teams() { return get_info().teams; }
     static std::vector<std::string> get_available_scripts();
-
     static void initialize_python();
     static void invoke(std::string name);
+
+    friend void recalculate_movemaps();
 private:
     static bool init_;
+
     end_level_exception exception;
 	ai_interface::move_map src_dst_;
 	ai_interface::move_map dst_src_;
