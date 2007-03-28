@@ -1307,9 +1307,10 @@ void game_state::clear_variable(const std::string& varname)
 
 namespace {
 void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
-	std::map<std::string, wml_menu_item*>::iterator itor;
-	for (itor = gs_wmi.begin(); itor != gs_wmi.end(); ++itor) {
+	std::map<std::string, wml_menu_item*>::iterator itor = gs_wmi.begin();
+	while(itor != gs_wmi.end()) {
 		delete itor->second;
+		itor = gs_wmi.erase(itor);
 	}
 }
 } //end anon namespace
