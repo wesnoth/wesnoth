@@ -1,5 +1,8 @@
 import re, os, safe
 
+whitelisted = ["wesnoth", "heapq", "random"]
+rex = re.compile(r"^import\s+(.*)", re.M)
+
 def include(matchob):
     """
     Regular expression callback. Handles a single import statement, returning
@@ -8,6 +11,7 @@ def include(matchob):
     names = [x.strip() for x in matchob.group(1).split(",")]
     r = ""
     for name in names:
+        if name in whitelisted: continue
         for path in pathes:
             includefile = os.path.join(path, name)
             try:
@@ -28,8 +32,8 @@ def parse_file(name):
     abspath = os.path.abspath(name)
     if abspath in already: return ""
     already[abspath] = 1
-    code = file(abspath).read()
-    code = re.sub(r"^import\s+(.*)", include, code, re.M)
+    code = file(abspath).read().replace(chr(13), "")
+    code = rex.sub(include, code)
     return code
 
 def parse(name):
