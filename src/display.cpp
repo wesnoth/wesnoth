@@ -65,15 +65,14 @@ namespace {
 	{
 		if(map.x()<4 || !map.y() ) return DefaultZoom;
 		// These ugly formulas try to give the optimal and mathematically exact minimal zoom
-		const double min_zoom1 = 4.0/3.0 * ceil(static_cast<double>(viewport.w)/static_cast<double>(map.x()-1)) ;
-		const double min_zoom2 = static_cast<double>(viewport.h)/static_cast<double>(map.y()-1);
+		const double min_zoom1 = 4.0/3.0 * ceil(static_cast<double>(viewport.w)/static_cast<double>(map.x())) ;
+		const double min_zoom2 = static_cast<double>(viewport.h)/static_cast<double>(map.y());
 		int zoom = static_cast<int>(ceil( maximum<double>(min_zoom1,min_zoom2) ));
-		/*
-		NOTE: zoom not multiple of 4 causes some bugs, use the next line if unfixed.
+		//NOTE: keep zoom (and so tile_size) divisible by 4: stay even, prevent some precision bugs (the hexagonal engine uses many integer division by 4), don't quit the 72+4n scale and maybe help processor's optimisation (ask Torangan).
 		if (zoom % 4 != 0) {
-			zoom = zoom - zoom % 4 + 4
+			zoom = zoom - zoom % 4 + 4;
 		}
-		*/
+		//FIXME: the next minimum cause some problem with large screen or small map. But don't use it cause a forced zoom on these.
 		return minimum<int>(zoom,DefaultZoom);
 	}
 
