@@ -2506,6 +2506,9 @@ msgid ""
 "in cloud.  To cross such moutains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
+"Ufremkommelige bjerge er så høje og stejle at de konstant er omgivet af "
+"skyer. At krydse sådanne bjerge er så godt som umuligt. Selv ikke flyvende "
+"væsner kan navigere blandt bjergenes tinder på grund af højden."
 
 #: data/help.cfg:591
 msgid "General commands"
@@ -4249,9 +4252,11 @@ msgstr "4p - Sammenstød"
 msgid "Small map for 2 vs. 2."
 msgstr "Lille kort for 2 vs. 2"
 
+# en hamlet er i britisk en mindre landsby uden egen kirke, men hørende under en anden
+# landsby eller by.
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:3
 msgid "4p - Hamlets"
-msgstr ""
+msgstr "4p - Landsbyer"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
@@ -4412,6 +4417,8 @@ msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head."
 msgstr ""
+"Kun en sand taktiker vil overleve i denne dødelige og afgrænsede slagmark, "
+"hvor seks indelukkede hære møder hinanden ansigt til ansigt."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
@@ -4561,6 +4568,8 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
+"Tilfældig kort. Bemærk: Tilfældige kort er ofte ikke afbalancerede men hvis "
+"du har tiden kan du genskabe dem til du får et godt kort."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:10
@@ -4741,17 +4750,21 @@ msgstr ""
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr ""
+" Fjender som mister deres liv til pesten vil genopstå i livet efter døden."
 
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
+" Denne enhed kan gøre sine modstandere langsomme, bevægelsen bliver halveret "
+"og det samme gør angrebsskaden indtil de afslutter en runde."
 
 #: data/special-notes.cfg:53
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
+" Evnen til at forvandle de levende til sten gør denne enhed ekstrem farlig."
 
 #: data/special-notes.cfg:56
 msgid ""
@@ -4764,6 +4777,8 @@ msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
+" Afstandsvåbenet på denne enhed er magisk og har derfor altid en høj chance "
+"for at ramme en modstander."
 
 #: data/special-notes.cfg:62
 msgid ""
@@ -4904,7 +4919,7 @@ msgstr "Krater"
 
 #: data/terrain.cfg:392
 msgid "Rubble"
-msgstr ""
+msgstr "Murbrok"
 
 #: data/terrain.cfg:411
 msgid "Oasis"
@@ -5091,6 +5106,8 @@ msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
+"I en kampagne kan du bruge veteranenheder fra et tidligere scenarie ved at "
+"anvende »tilbagekald« indstillingen."
 
 #: data/tips.cfg:3
 msgid ""
@@ -5327,6 +5344,8 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
+"»langsom« angrebsevnen gør fjendtlige enheder langsommere og halverer skaden "
+"de uddeler i alle angreb indtil de afslutter en runde."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5345,6 +5364,8 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
+"Enheder med storm bruges bedst mod fjender som de kan dræbe i et enkelt "
+"angreb."
 
 #: data/tips.cfg:33
 msgid ""
@@ -5549,7 +5570,7 @@ msgstr ""
 #: data/units/Boat_Pirate_Galleon.cfg:19
 #: data/units/Boat_Transport_Galleon.cfg:20
 msgid "ballista"
-msgstr ""
+msgstr "ballist"
 
 #: data/units/Boat_Pirate_Galleon.cfg:21
 #: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:119
@@ -5624,6 +5645,8 @@ msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Transportgaleoner er veludrustede skibe som kan transportere tropper. Hvis "
+"de når stranden kan de placere tropperne i angrebsposition."
 
 #: data/units/Drake_Armageddon.cfg:3
 msgid "Armageddon Drake"
@@ -5953,10 +5976,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
+# konteks ikke afklaret (andre muligheder = smæld, brag, smadre, smække)
 #: data/units/Drake_Glider.cfg:76 data/units/Drake_Hurricane.cfg:92
 #: data/units/Drake_Sky.cfg:91
 msgid "slam"
-msgstr ""
+msgstr "hamre"
 
 #: data/units/Drake_Hurricane.cfg:3
 msgid "Hurricane Drake"
@@ -5970,10 +5994,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Mestre i luften har gjordt orkanhestedragerne til eliten blandt de "
+"hestedragere som kan flyve. Højt i luften kan de se igennem det meste "
+"forsvar og sprede deres ild blandt deres fjender uden nåde.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
-msgstr ""
+msgstr "Infernohestedrage"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -6421,7 +6450,7 @@ msgstr "stav"
 
 #: data/units/Elvish_Druid.cfg:65 data/units/Elvish_Shyde.cfg:56
 msgid "ensnare"
-msgstr ""
+msgstr "fange"
 
 #: data/units/Elvish_Druid.cfg:143 data/units/Elvish_Shyde.cfg:135
 msgid "thorns"
@@ -6770,9 +6799,10 @@ msgstr "fakkel"
 msgid "net"
 msgstr "net"
 
+# Erfaren kriger som sætter gang i de andre (hmm, mon ikke indpisker kan bruges)
 #: data/units/Goblin_Rouser.cfg:3
 msgid "Goblin Rouser"
-msgstr ""
+msgstr "Goblinindpisker"
 
 #: data/units/Goblin_Rouser.cfg:27
 msgid ""
@@ -7133,7 +7163,7 @@ msgstr ""
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "Tung infanterist"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:16
 msgid ""
@@ -7147,9 +7177,10 @@ msgid ""
 "in certain situations, these troops are well worth the trade-offs."
 msgstr ""
 
+# Er en person men mon ikke jernhammer kan gå alligevel?
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:3
 msgid "Iron Mauler"
-msgstr ""
+msgstr "Jernhammer"
 
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:18
 msgid ""
@@ -7263,6 +7294,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Lovende spydmænd i Wesnoths hær forfremmes ofte til pikener, og udrustes med "
+"et langt bedre udstyr end den blandede læderrustning de bar som rekrutter. "
+"En pike er et langt længere våben end et spyd og bruges derfor med en anden "
+"krigsstrategi. En mur af pikenerer er en trussel for enhvert kavaleriangreb "
+"og med den rette disciplin kan de også holde infanteri på afstand.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:53
 msgid "pike"
@@ -8148,9 +8186,8 @@ msgstr ""
 "Søslanger er gigantiske monstre, der selv er i stand til at erobre både."
 
 #: data/units/Monster_Skeletal_Dragon.cfg:3
-#, fuzzy
 msgid "Skeletal Dragon"
-msgstr "Skelet"
+msgstr "Skeletdrage"
 
 #: data/units/Monster_Skeletal_Dragon.cfg:25
 msgid ""
@@ -8163,7 +8200,7 @@ msgstr ""
 
 #: data/units/Monster_Skeletal_Dragon.cfg:28
 msgid "jaw"
-msgstr ""
+msgstr "kæbe"
 
 #: data/units/Monster_Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -8176,6 +8213,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Tentakler i dybet er de synlige tegn på et større monster som ligger på lur "
+"under vandoverfladen.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Monster_Yeti.cfg:3
 msgid "Yeti"
@@ -8203,6 +8244,11 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Den maritime naga er en af de få racer som har en godt fungerende mobilitet "
+"i vand, hvilket har givet dem en hel verden hvor landfolkene ikke har "
+"adgang. De er dog stadig ikke ægte vandskabninger og deres manglende evne "
+"til at ånde i vand gør, at de er afgrænset fra dybderne. De er små og noget "
+"skrøbelige i form men ofte mere behændige end deres modstandere."
 
 #: data/units/Naga_Fighter.cfg:61
 msgid "Nagini Fighter"
