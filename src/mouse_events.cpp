@@ -908,6 +908,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
+		left_click(event, browse);
 	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
