@@ -1,0 +1,160 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2006 wesnothd "Demonio para juego en red multijugador de La Batalla por Wesnoth"
+.
+.SH NOMBRE
+.
+wesnothd \- Demonio para juego en red multijugador de La Batalla por
+\fBWesnoth\fP
+.
+.SH SINOPSIS
+.
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIruta\fP\|] [\|\fB\-p\fP \fIpuerto\fP\|] [\|\fB\-t\fP
+\fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
+.
+.SH DESCRIPCIÓN
+.
+Administra juegos multijugador de La Batalla por Wesnoth. Vea
+http://www.wesnoth.org/wiki/ServerAdministration para saber que órdenes
+acepta el servidor a través del cliente de wesnoth o del socket.
+.
+.SH OPCIONES
+.
+.TP 
+\fB\-c,\ \-\-config\fP\fI\ ruta\fP
+indica a wesnothd donde encontrar el fichero de configuración que debe
+usar. Vea la sección \fBSERVER CONFIG\fP más abajo para conocer la sintaxis.
+.TP 
+\fB\-d,\ \-\-daemon\fP
+ejecuta wesnothd como demonio.
+.TP 
+\fB\-h,\ \-\-help\fP
+muestra las opciones de línea de órdenes.
+.TP 
+\fB\-p,\ \-\-port\fP\fI\ puerto\fP
+conecta al servidor al puerto especificado. Si no se especifica ningún
+puerto, se usará el puerto 15000.
+.TP 
+\fB\-t,\ \-\-threads\fP\fI\ número\fP
+establece el número máximo de hilos efectivos en espera para la entrada y
+salida de red a n (por defecto: 5, máximo: 30).
+.TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ número\fP
+establece el número máximo de hilos efectivos que se crearán, si se
+establece a 0 no habrá ningún límite (por defecto: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
+muestra el número de versión y finaliza.
+.TP 
+\fB\-v,\ \-\-verbose\fP
+activa un registro más prolijo.
+.
+.SH "CONFIGURACIÓN DEL SERVIDOR"
+.
+.SS "La sintaxis general es:"
+.
+.P
+[\fIetiqueta\fP]
+.IP
+clave="\fIvalor\fP"
+.IP
+clave="\fIvalor\fP,\fIvalor\fP,..."
+.P
+[/\fIetiqueta\fP]
+.
+.SS "Claves globales:"
+.
+.TP 
+\fBconnections_allowed\fP
+El número máximo de conexiones permitidas desde la misma IP. (por defecto:
+5)
+.TP 
+\fBdisallow_names\fP
+Nombres o apodos que no son permitidos por el servidor. `*' y `?' pueden
+usarse como comodín. Vea \fBglob\fP(7)  para más detalles.  Los valores por
+defecto (usados si no se especifica nada) son:
+`server,ai,player,network,human,admin,computer'.
+.TP 
+\fBmax_messages\fP
+El número de mensajes permitidos en un lapso de tiempo definido por
+\fBmessages_time_period\fP. (por defecto: 4)
+.TP 
+\fBmessages_time_period\fP
+El lapso de tiempo (en segundos) usado para detectar una inundación de
+mensajes. (por defecto: 10 segundos)
+.TP 
+\fBmotd\fP
+El mensaje del día.
+.TP 
+\fBpasswd\fP
+La contraseña utilizada para obtener privilegios de
+administrador. Habitualmente empieza por "admin ".
+.TP 
+\fBversions_accepted\fP
+Una lista separada por comas de cadenas de versión que serán admitidas por
+el servidor. `*' y `?' pueden usarse como comodín. (por defecto es la
+versión de wesnoth correspondiente)
+.br
+Ejemplo: versions_accepted="*" acepta cualquier cadena de versión.
+.
+.SS "Etiquetas globales:"
+.
+.P
+\fB[redirect]\fP Una etiqueta para especificar un servidor al que se
+redirigirán ciertas versiones de clientes.
+.RS
+.TP 
+\fBhost\fP
+La dirección del servidor hacia el que se hará la redirección.
+.TP 
+\fBport\fP
+El puerto al que se hará la conexión.
+.TP 
+\fBversion\fP
+Una lista separada por comas de las versiones a redirigir. Se usa la misma
+sintaxis que para \fBversions_accepted\fP en lo relativo a comodines.
+.RE
+.P
+\fB[proxy]\fP Una etiqueta para indicar al servidor que actúe de proxy y
+reenvíe las peticiones de los clientes conectados al servidor especificad. 
+Acepta las mismas claves que [redirect].
+.
+.SH AUTOR
+.
+Escrito por David White <davidnwhite@verizon.net>.  Editado por Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> y
+Soliton <soliton@sonnenkinder.org>.  Esta página de manual fue
+escrita inicialmente por Cyril Bouthors <cyril@bouthors.org>.
+.br
+Visite la página web oficial: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br
+Esto es Software Libre; este software está licenciado bajo la GPL versión 2,
+tal y como ha sido publicada por la Free Software Foundation.  No existe
+NINGUNA garantía; ni siquiera para SU USO COMERCIAL o ADECUACIÓN A UN
+PROPÓSITO PARTICULAR.
+.
+.SH "VÉASE TAMBIÉN"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

@@ -1,0 +1,155 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2006 wesnothd "Kampen om Wesnoth flerspiller netværksdæmon"
+.
+.SH NAVN
+.
+wesnothhd \- Kampen om \fBWesnoth\fP flerspiller netværksdæmon
+.
+.SH SYNOPSIS
+.
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIsti\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInummer\fP\|] [\|\fB\-T\fP \fInummer\fP\|]
+.
+.SH BESKRIVELSE
+.
+Håndterer Kampen om Wesnoths under flerspiller. Se
+http://www.wesnoth.org/wiki/ServerAdministration for hvilke kommandoer
+serveren accepterer via wesnoth\-klienten eller soklen.
+.
+.SH INDSTILLINGER
+.
+.TP 
+\fB\-c,\ \-\-indstil\fP\fI\ sti\fP
+fortæller wesnothd hvor den skal finde konfigurationsfilen. Se afsnittet
+\fBSERVER INDSTILLING\fP nedenfor for syntaks.
+.TP 
+\fB\-d,\ \-\-dæmon\fP
+kør wesnothd som en dæmon.
+.TP 
+\fB\-h,\ \-\-hjælp\fP
+fortæller dig hvad kommandolinjen gør.
+.TP 
+\fB\-p,\ \-\-port\fP\fI\ port\fP
+Tildeler serveren til den specificerede port. Hvis ingen port er
+specificeret vil port 15000 blive anvendt.
+.TP 
+\fB\-t,\ \-\-tråde\fP\fI\ nummer\fP
+indstiller det maksimale antal af ventende tråde til netværk I/O til n
+(standard: 5, maks: 30).
+.TP 
+\fB\-T,\ \-\-maks\-tråde\fP\fI\ nummer\fP
+indstiller det maksimale antal af tråde som bliver lavet. Hvis den sættes
+til 0 vil der ikke være en begrænsning (standard: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
+viser versionnummer og afslutter.
+.TP 
+\fB\-v,\ \-\-uddybende\fP
+tænder for mere uddybende log
+.
+.SH "SERVER INDSTILLING"
+.
+.SS "Den generelle syntaks er:"
+.
+.P
+[\fItag\fP]
+.IP
+nøgle="\fIværdi\fP"
+.IP
+nøgle="\fIværdi\fP,\fIværdi\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Globale nøgler:"
+.
+.TP 
+\fBforbindelser_tilladt\fP
+Antallet af tilladte forbindelser fra samme IP. (standard: 5)
+.TP 
+\fBforbyd_navne\fP
+Navne som ikke accepteres af serveren. '*' og `?' fra wildcard patterns er
+understøttet. Se \fBglob\fP(7)  for flere detaljer.  Standardværdier (anvendes
+hvis intet er anført) er:
+`server,computerspiller,spiller,netværk,menneske,admin,computer'.
+.TP 
+\fBmaks_beskeder\fP
+Antallet af tilladte beskeder i \fBbeskeder_tids_periode\fP. (Standard: 4)
+.TP 
+\fBbeskeder_tids_periode\fP
+Tidsperioden (i sekunder) hvor beskeders flooding registreres. (Standard: 10
+sekunder)
+.TP 
+\fBmotd\fP
+Dagens besked
+.TP 
+\fBadgangskode\fP
+Adgangskoden der giver administratorrettigheder. Starter normalt med "admin
+".
+.TP 
+\fBversions_accepterede\fP
+En kommasepareret liste af versionsstrenge som accepteres af serveren. `*'
+og `?' er understøttet.  (standarder for de tilsvarende wesnoth versioner)
+.br
+Eksempel: versioner_accepteret="*" acceptere enhver versionsstreng.
+.
+.SS "Globale mærker:"
+.
+.P
+\fB[omdiriger]\fP Et mærke som specificerer, at en server skal omdirigere visse
+klientversioner til.
+.RS
+.TP 
+\fBvært\fP
+Adressen på serveren der omdirigeres til.
+.TP 
+\fBport\fP
+Forbindelsesport.
+.TP 
+\fBversion\fP
+En kommasepareret liste af versioner som omdirigeres. Fungerer på samme måde
+som \fBversioner_accepteret\fP i forhold til wildcard patterns.
+.RE
+.P
+\fB[proxy]\fP Et mærke som fortæller serveren den skal fungere som en proxy og
+og videresende den forbundne klients forespørgsler til den specificerede
+server. Accepterer de samme nøgler som [omdiriger].
+.
+.SH FORFATTER
+.
+Skrevet af David White <davidnwhite@verizon.net>.  Redigeret af Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> og
+Soliton <soliton@sonnenkinder.org>.  Denne manualside blev først
+skrevet af Cyril Bouthors <cyril@bouthors.org>.
+.br
+Besøg den officielle hjemmeside: http://www.wesnoth.org/
+.
+.SH OPHAVSRET
+.
+Ophavsret \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br
+Dette er fri programmel; programmellet er udgivet under GPL version 2, der
+er offentliggjort af Free Software Foundation. Der er ingen garanti; selv
+ikke for at spillet virker eller kan bruges til en konkret formål.
+.
+.SH "SE OGSÅ"
+.
+\fBwesnoth\fP(6), \fBwesnoth_kortredigering\fP(6)

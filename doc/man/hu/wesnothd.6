@@ -1,0 +1,164 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2006 wesnothd "Harc Wesnoth\-ért többjátékos hálózati démon"
+.
+.SH NÉV
+.
+wesnothd \- Harc Wesnoth\-ért többjátékos hálózati démon
+.
+.SH ÁTTEKINTÉS
+.
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIútvonal\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+[\|\fB\-t\fP \fIszám\fP\|] [\|\fB\-T\fP \fIszám\fP\|]
+.
+.SH LEÍRÁS
+.
+A Harc Wesnoth\-ért többjátékos mérk?zéseit kezeli. A kiszolgáló által a
+klienst?l vagy máshonnan fogadható parancsokról itt tájékozódhatsz:
+http://www.wesnoth.org/wiki/ServerAdministration
+.
+.SH OPCIÓK
+.
+.TP 
+\fB\-c,\ \-\-config\fP\fI\ útvonal\fP
+megadja a wesnothd programnak, hogy hol keresse a konfigurációs fájlt. A
+szintakszisról lásd a \fBKISZOLGÁLÓ BEÁLLÍTÁSA\fP részt lentebb.
+.TP 
+\fB\-d,\ \-\-daemon\fP
+démon szolgáltatásként futtatja a wesnothd programot.
+.TP 
+\fB\-h,\ \-\-help\fP
+kiírja, hogy mire jók az egyes parancssori opciók.
+.TP 
+\fB\-p,\ \-\-port\fP\fI\ port\fP
+a megadott portra köti a kiszolgálót. Ha más nincsen meghatározva, akkor a
+15000 lesz használatban.
+.TP 
+\fB\-t,\ \-\-threads\fP\fI\ szám\fP
+meghatározza a teljesülésre váró hálózati I/O folyamatok maximális számát
+n\-nek (alapértelmezett: 5, legfeljebb: 30)
+.TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ szám\fP
+meghatározza a teljesülésre váró folyamatok maximális számát, 0 esetén
+korlátlan (alapértelmezett: 0)
+.TP 
+\fB\-V,\ \-\-version\fP
+kiírja a verziószámot és kilép.
+.TP 
+\fB\-v,\ \-\-verbose\fP
+részletesebb parancssori naplózást kapcsol be
+.
+.SH "KISZOLGÁLÓ BEÁLLÍTÁSA"
+.
+.SS "Az általános szintakszis a következ?:"
+.
+.P
+[\fInyitó tag\fP]
+.IP
+key="\fIérték\fP"
+.IP
+key="\fIérrték\fP,\fIérték\fP,..."
+.P
+[/\fIzáró tag\fP]
+.
+.SS "Globális kapcsolók:"
+.
+.TP 
+\fBconnections_allowed\fP
+Az azonos IP címr?l engedélyezett párhuzamos kapcsolatok
+száma. (alapártelmezett: 5)
+.TP 
+\fBdisallow_names\fP
+Nevek és becenevek, amelyeket nem fogad el a kiszolgáló. A `*' és `?'
+jelzések is használhatóak. Lásd a \fBglob\fP(7) részt a
+részletekért. Alapértlmezett értékek (ha más nincsen megadva):
+`server,ai,player,network,human,admin,computer'.
+.TP 
+\fBmax_messages\fP
+A megadott id?táv (\fBmessages_time_period\fP) alatt küldhet? üzenetek
+száma. (alapértelmezett: 4)
+.TP 
+\fBmessages_time_period\fP
+Az id?táv (másodpercekben), ami alatt az elárasztó üzenetek vizsgálatának
+alapja. (alapértelmezett: 10 másodperc)
+.TP 
+\fBmotd\fP
+A napi üzenet.
+.TP 
+\fBpasswd\fP
+A jelszó, amivel adminisztrátori jogok nyerhet?ek. Általában az "admin "
+szóval kezd?dik.
+.TP 
+\fBversions_accepted\fP
+Egy vessz?kkel elválasztott lista a verziószámokról, amelyeket a kiszolgáló
+elfogad. A `*' és `?' jelzések is használhatóak. (alapértelmezetten csak az
+adott verzióéval megegyez?)
+.br
+Példa: versions_accepted="*" \-> ez bármilyen verziót elfogad.
+.
+.SS "Globális tag\-ek:"
+.
+.P
+\fB[redirect]\fP Bizonyos kliens verziók átirányítása a megadott kiszolgálóra.
+.RS
+.TP 
+\fBhost\fP
+A kiszolgáló címe, ahova az átirányítás mutat.
+.TP 
+\fBport\fP
+A port, amelyen csatlakozni lehet hozzá.
+.TP 
+\fBverzió\fP
+Egy vessz?kkel elválasztott lista a verziószámokról, amelyeket a kiszolgáló
+átirányít. A különleges jelzések a \fBversions_accepted\fP\-hez hasonlóan
+használhatóak.
+.RE
+.P
+\fB[proxy]\fP Proxy\-ként való viselkedés, azaz a bejöv? kliens kapcsolatok
+továbbítása a megadott kiszolgáló felé. Ugyanazokat az értékeket fogadja el,
+mint a [redirect].
+.
+.SH SZERZ?
+.
+Írta: David White <davidnwhite@verizon.net>.  Szerkesztették: Nils
+Kneuper <crazy\-ivanovic@gmx.net> és ott <ott@gaon.net>. 
+Ennek a dokumentumnak az eredetijét Cyril Bouthors
+<cyril@bouthors.org> írta. Magyarra forította: Gilluin
+<gilluin@citromail.hu> és Széll Tamás<tomi@digiflex.hu>.
+.br
+Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar
+közösségi portált: http://wesnoth.fw.hu/
+.
+.SH "SZERZ?I JOGOK"
+.
+A szerz?i jogok \(co 2003\-2006 David White\-ot
+<davidnwhite@verizon.net> illetik meg
+.br
+Ez egy szabad szoftver; terjeszthet? illetve módosítható a GNU Általános
+Közreadási Feltételek dokumentumában leírtak szerint \-\- 2. vagy késõbbi
+verzió \-\-, melyet a Szabad Szoftver Alapítvány ad ki.  Ez a program abban a
+reményben kerül közreadásra, hogy hasznos lesz, de minden egyéb GARANCIA
+NÉLKÜL, az eladhatóságra vagy valamely célra való alkalmazhatóságra való
+származtatott garanciát is beleértve.
+.
+.SH "LÁSD MÉG"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

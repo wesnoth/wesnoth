@@ -1,77 +1,80 @@
+# translation of wesnoth-man.po to Български
 # Bulgarian translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
+#
 # Automatically generated, 2006.
-# 
+# Nikolay Vladimirov <nikolay@vladimiroff.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
+"Project-Id-Version: wesnoth-man\n"
 "POT-Creation-Date: 2007-03-07 14:54+0100\n"
-"PO-Revision-Date: 2006-08-22 00:17+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2007-03-29 23:50+0300\n"
+"Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
+"Language-Team: Български\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "WESNOTH"
-msgstr ""
+msgstr "WESNOTH"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2006"
-msgstr ""
+msgstr "2006"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "wesnoth"
-msgstr ""
+msgstr "wesnoth"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr ""
+msgstr "Битката за Уеснот"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
 #: ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
-msgstr ""
+msgstr "ИМЕ"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr ""
+msgstr "wesnoth - Битката за Уеснот, походова фентъзи стратегическа игра"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
 #: ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr ""
+msgstr "ОБЗОР"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr ""
+msgstr "B<wesnoth> [I<ПАРАМЕТРИ>] [I<ПЪТ_КЪМ_ДАННИТЕ>]"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
 #: ../../doc/man/wesnothd.6:37
 #, no-wrap
 msgid "DESCRIPTION"
-msgstr ""
+msgstr "ОПИСАНИЕ"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr ""
+msgstr "Битката за B<Уеснот> е походова фентъзи стратегическа игра."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:42
@@ -85,30 +88,39 @@ msgid ""
 "Wesnoth's large community of on-line players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
+"Победете всички вражески водачи, използвайки добре избрани единици, и "
+"грижейки се за управлението на наличностите си на злато и селища. Всички "
+"единици имат свои силни и слаби страни, за да спечелите, разположете силите "
+"си, така че да използват всяко преимущество, и същевременно пречете на "
+"враговете си да правят това. Всички единици трупат опит, получават нови "
+"възможности и стават по-силни. Играйте на собственият си език и проверете "
+"уменията си срещу умен компютърен противник или се присъединете към "
+"огромната общност на онлайн играчи. Създайте свои единици, мисии и кампании "
+"и ги споделете с другите."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:29
 #: ../../doc/man/wesnothd.6:42
 #, no-wrap
 msgid "OPTIONS"
-msgstr ""
+msgstr "НАСТРОЙКИ"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--bpp>I<\\ number>"
-msgstr ""
+msgstr "B<--bpp>I<\\ число>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:48 ../../doc/man/wesnoth_editor.6:54
 msgid "sets BitsPerPixel value. Example: --bpp 32"
-msgstr ""
+msgstr "определя стойността на BitsPerPixel . Пример: --bpp 32"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:48
 #, no-wrap
 msgid "B<--compress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
-msgstr ""
+msgstr "B<--compress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:51
@@ -116,12 +128,14 @@ msgid ""
 "compresses a savefile (infile) that is in text WML format into binary WML "
 "format (outfile)."
 msgstr ""
+"архивира запис на игра(infile) който е в текстов WML формат в двоичен WML "
+"формат(outfile)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:51
 #, no-wrap
 msgid "B<-d>, B<--debug>"
-msgstr ""
+msgstr "B<-d>, B<--debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:56
@@ -130,12 +144,15 @@ msgid ""
 "options in-game (see the Wiki at http://www.wesnoth.org/ for more "
 "information about command mode)."
 msgstr ""
+"показва допълнителна информация и включва допълнителен команден режим в "
+"играта(виж Уикито на  http://www.wesnoth.org/ за повече информация за "
+"командният режим)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:56
 #, no-wrap
 msgid "B<--decompress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
-msgstr ""
+msgstr "B<--decompress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -143,23 +160,25 @@ msgid ""
 "decompresses a savefile (infile) that is in binary WML format into text WML "
 "format (outfile)."
 msgstr ""
+"разархивира запис на игра(infile) който е в двоичен WML формат в текстов WML "
+"формат(outfile)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
 #, no-wrap
 msgid "B<-f>, B<--fullscreen>"
-msgstr ""
+msgstr "B<-f>, B<--fullscreen>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:63
 msgid "runs the game in full screen mode."
-msgstr ""
+msgstr "пуска играта на пълен екран"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:63
 #, no-wrap
 msgid "B<--fps>"
-msgstr ""
+msgstr "B<--fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:67
@@ -167,35 +186,37 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
+"показва броят на кадрите в секунда, които играта сменя, в ъгъла на екрана."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
 #, no-wrap
 msgid "B<-h>, B<--help>"
-msgstr ""
+msgstr "B<-h>, B<--help>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:70
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr ""
+"показва обобщено опциите за командният ред на стандартният изход и излиза."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--load>I<\\ savegame>"
-msgstr ""
+msgstr "B<--load>I<\\ savegame>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "loads the file savegame from the standard save game directory."
-msgstr ""
+msgstr "зарежда файлът savegame от стандартната директория със записи. "
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73
 #, no-wrap
 msgid "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
-msgstr ""
+msgstr "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:83
@@ -204,12 +225,15 @@ msgid ""
 "any debug domain.  B<--log-info> shows all messages, B<--log-warning> only "
 "warnings and errors, and B<--log-error> just errors."
 msgstr ""
+"определя нивото не сериозността на дебъг домейните. \"all\" съответства на "
+"всички домейни. B<--log-info> показва всички съобщения,  B<--log-warning> "
+"само предупреждения и грешки и B<--log-error> - само грешки."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:83
 #, no-wrap
 msgid "B<--max-fps>"
-msgstr ""
+msgstr "B<--max-fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:87
@@ -217,12 +241,14 @@ msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is 50."
 msgstr ""
+"броят на кадри в секунда, които играта може да показва; стойността трябва да "
+"е между 1 и 1000, по подразбиране е 50."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:87
 #, no-wrap
 msgid "B<--multiplayer>"
-msgstr ""
+msgstr "B<--multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:93
@@ -230,89 +256,91 @@ msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
+"пуска игра в мрежа. Има няколко допълнителни настройки, които може да се "
+"използват заедно с B<--multiplayer> , както е обяснено долу:"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:93
 #, no-wrap
 msgid "B<--nocache>"
-msgstr ""
+msgstr "B<--nocache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:96
 msgid "disables caching of game data."
-msgstr ""
+msgstr "изключва кеширането на данните от играта."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:96
 #, no-wrap
 msgid "B<--nosound>"
-msgstr ""
+msgstr "B<--nosound>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:99
 msgid "runs the game without sounds and music."
-msgstr ""
+msgstr "пуска играта без звук."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:99 ../../doc/man/wesnoth_editor.6:43
 #, no-wrap
 msgid "B<--path>"
-msgstr ""
+msgstr "B<--path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:102 ../../doc/man/wesnoth_editor.6:46
 msgid "prints the name of the game data directory and exits."
-msgstr ""
+msgstr "извежда името на директорията с информацията на играта и излиза."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:102
 #, no-wrap
 msgid "B<-r>, B<--resolution>\\ I<XxY>"
-msgstr ""
+msgstr "B<-r>, B<--resolution>\\ I<XxY>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:105
 msgid "sets the screen resolution. Example: -r 800x600"
-msgstr ""
+msgstr "определя разделителната способност. Пример: -r 800x600"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:105
 #, no-wrap
 msgid "B<-t>, B<--test>"
-msgstr ""
+msgstr "B<-t>, B<--test>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
 msgid "runs the game in a small test scenario."
-msgstr ""
+msgstr "играта се пуска в малка пробна мисия."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:108
 #, no-wrap
 msgid "B<-v>, B<--version>"
-msgstr ""
+msgstr "B<-v>, B<--version>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:111
 msgid "shows the version number and exits."
-msgstr ""
+msgstr "показва номера на версията и излиза."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:111
 #, no-wrap
 msgid "B<-w>, B<--windowed>"
-msgstr ""
+msgstr "B<-w>, B<--windowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:114
 msgid "runs the game in windowed mode."
-msgstr ""
+msgstr "пуска играта в прозорец."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:114
 #, no-wrap
 msgid "B<--no-delay>"
-msgstr ""
+msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:117
@@ -320,12 +348,14 @@ msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by --nogui."
 msgstr ""
+"пуска играта без никакви забавяния за графични тестове на "
+"производителността.  Това се включва автоматично с --nogui. "
 
 # type: TP
 #: ../../doc/man/wesnoth.6:117
 #, no-wrap
 msgid "B<--exit-at-end>"
-msgstr ""
+msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:120
@@ -334,12 +364,15 @@ msgid ""
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
+"излиза щом мисията свърши, без да показва диалога за победа/загуба, който "
+"изисква от потребителят да натисне ОК. Това също се използва за скриптирано "
+"тестване."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:121
 #, no-wrap
 msgid "Options for --multiplayer"
-msgstr ""
+msgstr "Настройки за --multiplayer"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:126
@@ -348,12 +381,16 @@ msgid ""
 "E<lt>numberE<gt> has to be replaced by a side number. It usually is 1 or 2 "
 "but depends on the number of players possible in the chosen scenario."
 msgstr ""
+"Настройките специфични за страна в мрежова игра са отбелязани с  "
+"E<lt>числаE<gt>. E<lt>ЧислоE<gt> трябва да се замени с номер на страна. "
+"Обикновено е 1 или 2, но зависи от броя на възможните играчи в избраната "
+"мисия. "
 
 # type: TP
 #: ../../doc/man/wesnoth.6:126
 #, no-wrap
 msgid "B<--algorithmE<lt>numberE<gt>=value>"
-msgstr ""
+msgstr "B<--algorithmE<lt>числоE<gt>=стойност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:130
@@ -361,24 +398,27 @@ msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: \"idle_ai\" and \"sample_ai\"."
 msgstr ""
+"избира ползването на нестандартен алгоритъм от компютъра контролиращ тази "
+"страна. Възможни стойности: \"idle_ai\" and \"sample_ai\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:130
 #, no-wrap
 msgid "B<--controllerE<lt>numberE<gt>=value>"
-msgstr ""
+msgstr "B<--controllerE<lt>числоE<gt>=стойност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:133
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
 msgstr ""
+"избира контролиращият тази страна. Възможни стойности: \"human\" and \"ai\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:133
 #, no-wrap
 msgid "B<--era=value>"
-msgstr ""
+msgstr "B<--era=стойност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:138
@@ -387,12 +427,14 @@ msgid ""
 "The era is chosen by an id. Eras are described in the data/multiplayer.cfg "
 "file."
 msgstr ""
+"използвайте тази настройка за да играете в избрана ера, вместо в  \"Default"
+"\" ера. Ерата се избира по id. Ерите са описани в файла data/multiplayer.cfg."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
 #, no-wrap
 msgid "B<--nogui>"
-msgstr ""
+msgstr "B<--nogui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:143
@@ -400,12 +442,14 @@ msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
 msgstr ""
+"пуска играта бе ГПИ. Трябва да е преди  B<--multiplayer> за да има желаният "
+"ефект."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:143
 #, no-wrap
 msgid "B<--parmE<lt>numberE<gt>=name:value>"
-msgstr ""
+msgstr "B<--parmE<lt>числоE<gt>=name:стойност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:152
@@ -414,12 +458,16 @@ msgid ""
 "options used with B<--controller> and B<--algorithm.> It should only be "
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
+"определя допълнителни параметри за тази страна. Този параметър зависи от "
+"опциите използвани с B<--controller> и  B<--algorithm> . Трябва да е полезно "
+"за хора създаващи, техен собствен изкуствен интелект(не напълно "
+"документирано)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:152
 #, no-wrap
 msgid "B<--scenario=value>"
-msgstr ""
+msgstr "B<--scenario=стойност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:155
@@ -427,12 +475,13 @@ msgid ""
 "selects a multiplayer scenario. The default scenario is \"multiplayer_Charge"
 "\"."
 msgstr ""
+"избира мисия за игра в мрежа. Стандартната мисия е \"multiplayer_Charge\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:155
 #, no-wrap
 msgid "B<--sideE<lt>numberE<gt>=value>"
-msgstr ""
+msgstr "B<--sideE<lt>числоE<gt>=стойност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:160
@@ -440,24 +489,26 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
+"настройва фракция от текущата ера за тази страна. Фракцията се избира по id. "
+"Фракциите са описани в файла data/multiplayer.cfg ."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:160
 #, no-wrap
 msgid "B<--turns=value>"
-msgstr ""
+msgstr "B<--turns=стойност>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:163
 msgid ""
 "sets the number of turns for the chosen scenario. The default is \"50\"."
-msgstr ""
+msgstr "определя броят ходове в избраната мисия. Стандартно са \"50\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:163
 #, no-wrap
 msgid "Example to test your own AI: "
-msgstr ""
+msgstr "Пример за проба на ваш собствен ИИ: "
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:166
@@ -465,18 +516,20 @@ msgid ""
 "wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
 "parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
 msgstr ""
+"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
+"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:167 ../../doc/man/wesnoth_editor.6:63
 #: ../../doc/man/wesnothd.6:139
 #, no-wrap
 msgid "AUTHOR"
-msgstr ""
+msgstr "АВТОР"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:170
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
-msgstr ""
+msgstr "Написано от Дейвид Уайт  E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:172
@@ -484,6 +537,8 @@ msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 msgstr ""
+"Редактирано от Нийлс Нопър E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:174
@@ -491,25 +546,28 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Тази страница е първоначално написана от Сирил Боуторс E<lt>cyril@bouthors."
+"orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:176 ../../doc/man/wesnoth_editor.6:69
 #: ../../doc/man/wesnothd.6:146
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr ""
+msgstr "Посетете официалната страница: http://www.wesnoth.org/"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:177 ../../doc/man/wesnoth_editor.6:70
 #: ../../doc/man/wesnothd.6:147
 #, no-wrap
 msgid "COPYRIGHT"
-msgstr ""
+msgstr "КОПИРАЙТ"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:72
 #: ../../doc/man/wesnothd.6:150
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
+"Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183 ../../doc/man/wesnoth_editor.6:75
@@ -519,124 +577,127 @@ msgid ""
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
+"Това е Свободен софтуер; лицензиран е под GPL версия 2, както е публикуван "
+"от Free Software Foundation. НЯМА никаква гаранция, дори за ПРОДАВАЕМОСТ или "
+"ПРИЛАГАНЕ ЗА ОПРЕДЕЛЕНА ЦЕЛ."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:184 ../../doc/man/wesnoth_editor.6:76
 #: ../../doc/man/wesnothd.6:154
 #, no-wrap
 msgid "SEE ALSO"
-msgstr ""
+msgstr "ВИЖТЕ СЪЩО"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:187
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-msgstr ""
+msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
 
 # type: TH
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "WESNOTH_EDITOR"
-msgstr ""
+msgstr "WESNOTH_EDITOR"
 
 # type: TH
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "June 2005"
-msgstr ""
+msgstr "Юни 2005"
 
 # type: TH
 #: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "wesnoth_editor"
-msgstr ""
+msgstr "wesnoth_editor"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:16 ../../doc/man/wesnoth_editor.6:20
 #, no-wrap
 msgid "Battle for Wesnoth map editor"
-msgstr ""
+msgstr "Редактор за карти на Битката за Уеснот"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:23
 msgid "B<wesnoth_editor>"
-msgstr ""
+msgstr "B<wesnoth_editor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:28
 msgid "Battle for B<Wesnoth> map editor."
-msgstr ""
+msgstr "Битката за B<Уеснот> редактор на карти."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:31
 #, no-wrap
 msgid "B<--datadir>"
-msgstr ""
+msgstr "B<--datadir>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:34
 msgid "selects the data directory to use."
-msgstr ""
+msgstr "избира директория с данни, която да се ползва. "
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:35
 #, no-wrap
 msgid "B<-f>,B<\\ --fullscreen>"
-msgstr ""
+msgstr "B<-f>,B<\\ --fullscreen>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:38
 msgid "runs the editor in full screen mode."
-msgstr ""
+msgstr "пуска редактора на пълен екран."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:39
 #, no-wrap
 msgid "B<-h>,B<\\ --help>"
-msgstr ""
+msgstr "B<-h>,B<\\ --help>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:42 ../../doc/man/wesnothd.6:55
 msgid "tells you what the command line options do."
-msgstr ""
+msgstr "показва, какво правят параметрите за командният ред."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:47
 #, no-wrap
 msgid "B<-r>,B<\\ --resolution>"
-msgstr ""
+msgstr "B<-r>,B<\\ --resolution>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:50
 msgid "sets screen resolution. Example: -r 800x600"
-msgstr ""
+msgstr "определя разделителната способност. Пример: -r 800x600"
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:51
 #, no-wrap
 msgid "B<--bpp>"
-msgstr ""
+msgstr "B<--bpp>"
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:55
 #, no-wrap
 msgid "B<-v>,B<\\ --version>"
-msgstr ""
+msgstr "B<-v>,B<\\ --version>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:58
 msgid "prints version number and exits."
-msgstr ""
+msgstr "извежда версията и излиза."
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:59
 #, no-wrap
 msgid "B<-w>,B<\\ --windowed>"
-msgstr ""
+msgstr "B<-w>,B<\\ --windowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:62
 msgid "runs the editor in windowed mode."
-msgstr ""
+msgstr "пуска редактора в прозорец."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:67
@@ -646,34 +707,38 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Написано от Дейвид Уайт E<lt>davidnwhite@verizon.netE<gt>. Редактирано от "
+"Нийлс Нопър E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> и "
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt>. Тази страница е първоначално "
+"написана от Сирил Боуторс E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:77
 msgid "wesnoth(6), wesnothd(6)"
-msgstr ""
+msgstr "wesnoth(6), wesnothd(6)"
 
 # type: TH
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "WESNOTHD"
-msgstr ""
+msgstr "WESNOTHD"
 
 # type: TH
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "wesnothd"
-msgstr ""
+msgstr "wesnothd"
 
 # type: TH
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr ""
+msgstr "Битката за Уеснот сървър за мрежова игра"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr ""
+msgstr "wesnothd - Битката за B<Wesnoth> сървър за мрежова игра"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
@@ -681,6 +746,8 @@ msgid ""
 "B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<път>\\|] [\\|B<-p> I<порт>\\|] [\\|"
+"B<-t> I<число>\\|] [\\|B<-T> I<число>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:41
@@ -689,12 +756,15 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client or the socket."
 msgstr ""
+"Управлява мрежови игри на Битката за Уеснот. Вижте http://www.wesnoth.org/"
+"wiki/ServerAdministration , за това какви команди се приемат през уеснот "
+"клиента или сокета."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:44
 #, no-wrap
 msgid "B<-c,\\ --config>I<\\ path>"
-msgstr ""
+msgstr "B<-c,\\ --config>I<\\ път>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
@@ -702,29 +772,31 @@ msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax."
 msgstr ""
+"показва на wesnothd , къде да намери файл с настройки, който да използва. "
+"Вижте долу частта B<НАСТРОЙКА НА СЪРВЪРА> за синтаксис."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
 #, no-wrap
 msgid "B<-d,\\ --daemon>"
-msgstr ""
+msgstr "B<-d,\\ --daemon>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:52
 msgid "runs wesnothd as a daemon."
-msgstr ""
+msgstr "пуска wesnothd , като демон"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:52
 #, no-wrap
 msgid "B<-h,\\ --help>"
-msgstr ""
+msgstr "B<-h,\\ --help>"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-p,\\ --port>I<\\ port>"
-msgstr ""
+msgstr "B<-p,\\ --port>I<\\ порт>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
@@ -732,12 +804,14 @@ msgid ""
 "binds the server to the specified port. If no port is specified, port 15000 "
 "will be used."
 msgstr ""
+"прикача сървъра към определен порт. Ако не се определи, се използва порт "
+"15000 ."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59
 #, no-wrap
 msgid "B<-t,\\ --threads>I<\\ number>"
-msgstr ""
+msgstr "B<-t,\\ --threads>I<\\ число>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:62
@@ -745,12 +819,14 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: 5, max: 30)."
 msgstr ""
+"настройва максималният чакащи работни нишки за мрежов Вход/Изход на n (по "
+"подрабиране: 5, максимално: 30)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:62
 #, no-wrap
 msgid "B<-T,\\ --max-threads>I<\\ number>"
-msgstr ""
+msgstr "B<-T,\\ --max-threads>I<\\ число>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:66
@@ -758,83 +834,86 @@ msgid ""
 "sets the maximum number of worker threads that will be created if set to 0 "
 "there will be no limit (default: 0)."
 msgstr ""
+"определя максималният брой на работни нишки, които да се създадат, ако е 0, "
+"то няма да има граниза(по подразбиране: 0)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:66
 #, no-wrap
 msgid "B<-V,\\ --version>"
-msgstr ""
+msgstr "B<-V,\\ --version>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:69
 msgid "shows version number and exits."
-msgstr ""
+msgstr "показва версията и излиза."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:69
 #, no-wrap
 msgid "B<-v,\\ --verbose>"
-msgstr ""
+msgstr "B<-v,\\ --verbose>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:72
 msgid "turns on more verbose logging."
-msgstr ""
+msgstr "включва по-подробен дневник."
 
 # type: SH
 #: ../../doc/man/wesnothd.6:73
 #, no-wrap
 msgid "SERVER CONFIG"
-msgstr ""
+msgstr "НАСТРОЙКА НА СЪРВЪРА"
 
 # type: SS
 #: ../../doc/man/wesnothd.6:75
 #, no-wrap
 msgid "The general syntax is:"
-msgstr ""
+msgstr "Общият синтаксис е:"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:79
 msgid "[I<tag>]"
-msgstr ""
+msgstr "[I<етикет>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:81
 msgid "key=\"I<value>\""
-msgstr ""
+msgstr "key=\"I<стойност>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:83
 msgid "key=\"I<value>,I<value>,...\""
-msgstr ""
+msgstr "key=\"I<стойност>,I<стойност>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:85
 msgid "[/I<tag>]"
-msgstr ""
+msgstr "[/I<етикет>]"
 
 # type: SS
 #: ../../doc/man/wesnothd.6:86
 #, no-wrap
 msgid "Global keys:"
-msgstr ""
+msgstr "Глобални ключове"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:88
 #, no-wrap
 msgid "B<connections_allowed>"
-msgstr ""
+msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
+#, fuzzy
 msgid "The number of allowed connections from the same IP. (default: 5)"
-msgstr ""
+msgstr "Броят позволени връзки от един и същ IP адрес."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:91
 #, no-wrap
 msgid "B<disallow_names>"
-msgstr ""
+msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:97
@@ -844,47 +923,54 @@ msgid ""
 "(used if nothing is specified) are: `server,ai,player,network,human,admin,"
 "computer'."
 msgstr ""
+"Имена/Псевдоними които не се приемат от сървъра.Поддържат се `*' и `?' за "
+"създаване на шаблони. Вижте B<glob>(7) за повече информация. Стандартните "
+"стойности(използвани ако други не са посочени) са:  `server,ai,player,"
+"network,human,admin,computer'."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:97
 #, no-wrap
 msgid "B<max_messages>"
-msgstr ""
+msgstr "B<max_messages>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:100
+#, fuzzy
 msgid "The number of allowed messages in B<messages_time_period>. (default: 4)"
-msgstr ""
+msgstr "Броят позволени съобщения за  B<messages_time_period>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:100
 #, no-wrap
 msgid "B<messages_time_period>"
-msgstr ""
+msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
+#, fuzzy
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: 10 "
 "seconds)"
 msgstr ""
+"Периода от време(в секунди) за който се засича наводнение от съобщения."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
 #, no-wrap
 msgid "B<motd>"
-msgstr ""
+msgstr "B<motd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:106
 msgid "The message of the day."
-msgstr ""
+msgstr "Съобщението на деня."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:106
 #, no-wrap
 msgid "B<passwd>"
-msgstr ""
+msgstr "B<passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:109
@@ -892,31 +978,36 @@ msgid ""
 "The password used to gain admin privileges. Usually it starts with \"admin "
 "\"."
 msgstr ""
+"Паролата, използвана за да се придобият администраторски права. Обикновено "
+"започва с  \"admin \"."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:109
 #, no-wrap
 msgid "B<versions_accepted>"
-msgstr ""
+msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
+#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
+"Списък на разделени с запетая версии, които са позволени от сървъра. "
+"Поддържат се `*' и `?' за създаване на шаблони. "
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:115
 msgid "Example: versions_accepted=\"*\" accepts any version string."
-msgstr ""
+msgstr "Пример: versions_accepted=\"*\" приема всяка версия."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:116
 #, no-wrap
 msgid "Global tags:"
-msgstr ""
+msgstr "Глобални етикети:"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
@@ -924,34 +1015,36 @@ msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr ""
+"B<[redirect]> Етикет, с който се определя сървър на който да се препращат "
+"клиенти с определени версии."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:122
 #, no-wrap
 msgid "B<host>"
-msgstr ""
+msgstr "B<host>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:125
 msgid "The address of the server to redirect to."
-msgstr ""
+msgstr "Адресът на сървъра на който да се препращат."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:125
 #, no-wrap
 msgid "B<port>"
-msgstr ""
+msgstr "B<port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
 msgid "The port to connect to."
-msgstr ""
+msgstr "Порт за връзка."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
 #, no-wrap
 msgid "B<version>"
-msgstr ""
+msgstr "B<version>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:133
@@ -959,6 +1052,8 @@ msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
+"Списък на разделени с запетая версии за препращане. Държи се по същият "
+"начин, като B<versions_accepted> по отношение на шаблоните."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:138
@@ -967,6 +1062,9 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as [redirect]."
 msgstr ""
+"B<[proxy]> Таг, който казва на сървъра да се държи като прокси и да препраща "
+"заявките на закачените клиенти към определен сървър. Приема същите ключове "
+"като [redirect]."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:144
@@ -976,8 +1074,12 @@ msgid ""
 "Soliton E<lt>soliton@sonnenkinder.orgE<gt>.  This manual page was originally "
 "written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Написано от Дейвид Уайт E<lt>davidnwhite@verizon.netE<gt>. Редактирано от "
+"Нийлс Нопър E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> и "
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt>. Тази страница е първоначално "
+"написана от Сирил Боуторс E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:157
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-msgstr ""
+msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"

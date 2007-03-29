@@ -1,0 +1,195 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2006 wesnoth "Harc Wesnoth\-ért"
+.
+.SH NÉV
+wesnoth \- Harc Wesnoth\-ért, egy körökre osztott stratégiai játék
+.
+.SH ÁTTEKINTÉS
+.
+\fBwesnoth\fP [\fIOPCIÓ\fP] [\fIADATELÉRÉS_ÚTVONALA\fP]
+.
+.SH LEÍRÁS
+.
+A Harc \fBWesnoth\fP\-ért egy körökre osztott stratégiai játék.
+
+Gyõzd le az összes ellenséges vezért egy jól megválasztott csapattal,
+figyelve közben az aranyra és a falu er?forrásokra! Minden egységnek
+megvannak a maga erõsségei és gyengeségei; ahhoz, hogy nyerj úgy kell
+vezetned csapataidat, hogy kihozhassák magukból a legjobbat, miközben nem
+szabad ellenfeleidnek megadni az esélyt, hogy ugyanezt õk is
+megtehessék. Ahogy az egységek tapasztalatot szereznek, új képességekre
+tesznek szert, és egyre erõsebbé válnak. Játszhatsz a saját nyelveden, s?t
+akár létrehozhatod a saját egységeidet, csatáidat vagy hadjárataidat. 
+Mérettesd meg képességeidet az okos számítógépes ellenfél ellen, vagy
+csatlakozz a Wesnoth\-ot játszó on\-line játékosok nagy közösségéhez.
+.
+.SH OPCIÓK
+.
+.TP 
+\fB\-\-bpp\fP\fI\ szám\fP
+meghatározza az egy képpontra jutó bitek számát. Példa: \-\-bpp 32
+.TP 
+\fB\-\-compress\fP\fI\ <befájl>\fP\fB\ \fP\fI<kifájl>\fP
+betömörít egy szöveges WML formátumú mentett állást (befájl) bináris WML
+formátumba (kifájl).
+.TP 
+\fB\-d\fP, \fB\-\-debug\fP
+extra hibakeresési információkat jelenít meg és újabb beállításokat
+engedélyez a parancssori módban (lásd a Wikit a http://www.wesnoth.org/
+címen további információkért a parancssori módról).
+.TP 
+\fB\-\-decompress\fP\fI\ <befájl>\fP\fB\ \fP\fI<kifájl>\fP
+kitömörít egy bináris WML formátumú menetett állást (befájl) szöveges WML
+formátumba (kifájl).
+.TP 
+\fB\-f\fP, \fB\-\-fullscreen\fP
+a játékot teljes képerny?s módban indítja el.
+.TP 
+\fB\-\-fps\fP
+a képerny? sarkában megjeleníti az aktuális fps\-t (frames per second\-ot,
+azaz a képerny?frissítések másodpercenkénti számát).
+.TP 
+\fB\-h\fP, \fB\-\-help\fP
+megjeleníti a parancssori opciók rövid leírását és kilép.
+.TP 
+\fB\-\-load\fP\fI\ mentett_állás\fP
+A mentett_állás néven elmentett játékot tölti be a mentéseket tároló
+könyvtárból.
+.TP 
+\fB\-\-log\-error="tartomány1,tartomány2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+beállítja a hibakeresési tartomány szintjét. Az "all" minden hibakeresési
+tartományra illeszkedik.  \fB\-\-log\-info\fP megmutat minden üzenetet. 
+\fB\-\-log\-warning\fP csak a figyelmeztetéseket (warning) és a hibákat (error). 
+\fB\-\-log\-error\fP csak a hibákat (error).
+.TP 
+\fB\-\-max\-fps\fP
+a másodpercenkénti képerny?frissítések (fps) száma, ennek értéke 1 és 1000
+között kell legyen, alapértelmezetten 50
+.TP 
+\fB\-\-multiplayer\fP
+elindítja a játékot többjátékos üzemmódban. A \fB\-\-multiplayer\fP opcióval
+használható egyéb opciókat b?vebben lásd lent.
+.TP 
+\fB\-\-nocache\fP
+letiltja a játék gyorsítótárát (cache).
+.TP 
+\fB\-\-nosound\fP
+a játékot hangok és zene nélkül indítja el.
+.TP 
+\fB\-\-path\fP
+kiírja a játék adatkönyvtárának nevét és kilép.
+.TP 
+\fB\-r\fP, \fB\-\-resolution\fP\ \fIXxY\fP
+beállítja a képerny? felbontását. Példa: \-r 800x600
+.TP 
+\fB\-t\fP, \fB\-\-test\fP
+elindítja a játékot, és betölt egy kis teszt\-csatát.
+.TP 
+\fB\-v\fP, \fB\-\-version\fP
+kiírja a játék verziószámát és kilép.
+.TP 
+\fB\-w\fP, \fB\-\-windowed\fP
+a játékot ablakos módban indítja el.
+.TP 
+\fB\-\-no\-delay\fP
+a játékot minden grafikai késleltetés nélkül indítja el, tesztelési
+célból. Ez önm?köd?en bekapcsolódik a \-\-nogui kapcsoló használatakor is.
+.TP 
+\fB\-\-exit\-at\-end\fP
+a mérk?zés után azonnal kilép, nem jelenít meg semmilyen gy?zelmi vagy
+vereséget jelz? üzenetet, ami a felhasználótól az Oké gomb megnyomását várná
+el. Ez szkriptelt teljesítménymérés esetén lehet hasznos.
+.
+.SH "Opciók \-\-multiplayer módban"
+.
+A csapat\-specifikus többjátékos opciókat <szám>mal jelöljük. Ahol
+<szám> helyére a csapat számát kell beírni. Ez általában 1 vagy 2,
+de függ a kiválasztott pályán lév? lehetséges játékosok számától.
+.TP 
+\fB\-\-algorithm<szám>=érték\fP
+kiválaszt egy nem szabványos MI algoritmust a csapat
+irányítására. Lehetséges értékek: "idle_ai" és "sample_ai".
+.TP  
+\fB\-\-controller<szám>=érték\fP
+megadja az adott csapat irányítóját. Lehetséges értékek: "human" (ember) és
+"ai" (mesterséges intelligencia).
+.TP  
+\fB\-\-era=érték\fP
+ezzel az opcióval kiválaszthatod, hogy melyik korszakban szeretnél játszani
+az "Alapértelmezett" korszak helyett. A korszakot egy azonosíthatóval
+adhatod meg.  A korszakok a data/multiplayer.cfg fájlban vannak leírva.
+.TP 
+\fB\-\-nogui\fP
+elindítja a játékot grafikus felhasználói interfész (GUI) nélkül. A
+\fB\-\-multiplayer\fP opció el?tt kell beírnod, hogy a kívánt hatást érd el.
+.TP 
+\fB\-\-parm<szám>=név:érték\fP
+további paramétereket ad meg az adott csapatnak. Ez a paraméter függ a
+\fB\-\-controller\fP és a \fB\-\-algorithm\fP kapcsolónak megadott értékekt?l. Ezt
+általában csak a saját mesterséges intelligenciát fejleszt?k
+használják. (még nem készült hozzá dokumentáció)
+.TP 
+\fB\-\-scenario=érték\fP
+kiválaszt egy többjátékos pályát. Az alapérttelmezett pálya a
+"multiplayer_Charge" (Lerohanás).
+.TP 
+\fB\-\-side<szám>=érték\fP
+az adott korszak megadott faját állítja be a csapatnak. A fajokat egy
+azonosító jelöli. Ezek a data/multiplayer.cfg fájlban vannak leírva.
+.TP 
+\fB\-\-turns=érték\fP
+megadja a mérk?zésnek a maximális körök számát. Alapérttelmezetten "50".
+.TP 
+Pálda a saját lészítés? MI tesztelésére: 
+wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
+\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+.
+.SH SZERZ?
+.
+Írta: David White <davidnwhite@verizon.net>.
+.br
+Szerkesztették: Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> és Soliton
+<soliton@sonnenkinder.org>. Magyarra forította: Gilluin
+<gilluin@citromail.hu> és Széll Tamás<tomi@digiflex.hu>.
+.br
+Ennek a dokumentumnak az eredetijét Cyril Bouthors
+<cyril@bouthors.org> írta.
+.br
+Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar
+közösségi portált: http://wesnoth.fw.hu/
+.
+.SH "SZERZ?I JOGOK"
+.
+A szerz?i jogok \(co 2003\-2006 David White\-ot
+<davidnwhite@verizon.net> illetik meg
+.br
+Ez egy szabad szoftver; terjeszthet? illetve módosítható a GNU Általános
+Közreadási Feltételek dokumentumában leírtak szerint \-\- 2. vagy késõbbi
+verzió \-\-, melyet a Szabad Szoftver Alapítvány ad ki.  Ez a program abban a
+reményben kerül közreadásra, hogy hasznos lesz, de minden egyéb GARANCIA
+NÉLKÜL, az eladhatóságra vagy valamely célra való alkalmazhatóságra való
+származtatott garanciát is beleértve.
+.
+.SH "LÁSD MÉG"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

@@ -82,7 +82,7 @@ clé="\fIvaleur\fP,\fIvaleur\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-The number of allowed connections from the same IP. (default: 5)
+Nombre maximum de connexions ayant la même adresse IP. (par défaut : 5)
 .TP 
 \fBdisallow_names\fP
 Noms/surnoms non acceptés par le serveur. Les caractères génériques `*' et
@@ -91,11 +91,12 @@ défaut (utilisées si rien n'est précisé) sont\ :
 `server,ai,player,network,human,admin,computer'
 .TP 
 \fBmax_messages\fP
-The number of allowed messages in \fBmessages_time_period\fP. (default: 4)
+Nombre maximum de messages permis en \fBmessages_time_period\fP. (par défaut :
+4)
 .TP 
 \fBmessages_time_period\fP
-The time period (in seconds) message flooding is detected in. (default: 10
-seconds)
+Période, en secondes, après laquelle un surnombre de messages est
+détectée. (par défaut : 10 secondes)
 .TP 
 \fBmotd\fP
 Le message du jour.
@@ -105,9 +106,9 @@ Mot de passe des habilitations de l'administrateur. Commence souvent par «
 admin ».
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. `*'
-and `?' from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Liste des versions acceptées par le serveur, séparées par des virgules. Les
+caractères génériques `*' et `?' sont acceptés. (par défaut : version
+correspondant au à celle du serveur)
 .br
 Exemple\ : versions_accepted="*" autorise tout type de version.
 .

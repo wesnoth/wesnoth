@@ -1,0 +1,182 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2006 wesnoth "Kampen om Wesnoth"
+.
+.SH NAVN
+wesnoth \- Kampen om Wesnoth, et rundebaseret fantasi strategispil
+.
+.SH SYNOPSIS
+.
+\fBwesnoth\fP [\fIINDSTILLINGER\fP] [\fISTI_TIL_DATA\fP]
+.
+.SH BESKRIVELSE
+.
+Kampen om \fBWesnoth\fP er et rundebaseret fantasi strategispil.
+
+Besejr alle fjendtlige ledere med en velvalgt skare af tropper, sørg for at
+bruge dine ressourcer af guld og landsbyer. Alle enheder har deres styrker
+og svagheder; for at vinde så sæt dine tropper ind hvor de kan bruge deres
+fordele mens du forhindrer din modstander i at gøre det samme. Efterhånden
+som enheder opnår erfaring, så opnår de nye evner og bliver mere
+magtfulde. Spil på dit eget sprog og test dig selv mod computeren eller
+tilslut dig de mange andre spillere der spiller på nettet mod hinanden. Skab
+dine egne enheder, scenarier eller kampagner, og del dem med andre.
+.
+.SH INDSTILLINGER
+.
+.TP 
+\fB\-\-bpp\fP\fI\ nummer\fP
+Indstiller BitsPerPixel værdien. Eksempel: \-\-bpp32
+.TP 
+\fB\-\-pak\fP\fI\ <valgtfil>\fP\fB\ \fP\fI<nyfil>\fP
+Komprimerer en gemt fil fra formatet WML til det bineære format WML.
+.TP 
+\fB\-d\fP, \fB\-\-fejlsøge\fP
+viser ekstra fejlsøgningsinformation og slår ekstra kommandoer til i selve
+spillet (se http://www.wesnoth.org/ (engelsk) for flere oplysninger om
+kommandoerne.
+.TP 
+\fB\-\-udpak\fP\fI\ <valgtfil>\fP\fB\ \fP\fI<nyfil>\fP
+udpakker en gemtfil (valgtfil) som er i det binære format WML til tekst WML
+format (nyfil).
+.TP 
+\fB\-f\fP, \fB\-\-fuldskærm\fP
+afvikler spillet i fuldskærm.
+.TP 
+\fB\-\-fps\fP
+Viser antallet af rammer per sekund spilles afvikles med i et hjørne af
+skærmen.
+.TP 
+\fB\-h\fP, \fB\-\-hjælp\fP
+viser et overblik af kommandolinje muligheder til standard uddata, og
+afslutter.
+.TP 
+\fB\-\-hent\fP\fI\ gemtspil\fP
+Henter det gemte spil fra standardkataloget for gemte spil.
+.TP 
+\fB\-\-log\-fejl="domæne1,domæne2,..."\fP, \fB\-\-log\-advarsel="..."\fP, \fB\-\-log\-info="..."\fP
+indstiller strenghedsniveauet på fejlsøgningsdomænerne. "all" kan bruges til
+alle fejlsøgningsdomæner. \fB\-\-log\-info\fP viser alle beskeder,
+\fB\-\-log\-advarsel\fP viser kun advarsler og fejl og \fB\-\-log\-fejl\fP kun fejl.
+.TP 
+\fB\-\-maks\-fps\fP
+antallet af frame per sekund som spillet kan vise, værdien bør være mellem 1
+og 1000, standard er 50.
+.TP 
+\fB\-\-flerspiller\fP
+afvikler et flerspiller spil. Der er ekstra indstillinger som kan bruges med
+\fB\-\-flerspiller\fP som forklaret nedenfor.
+.TP 
+\fB\-\-intet mellemlager\fP
+slår mellemlager af spildata fra.
+.TP 
+\fB\-\-ingenlyd\fP
+afvikler spillet uden lyd eller musik.
+.TP 
+\fB\-\-sti\fP
+udskriver navnet på spilkataloget for gemt spil og afslutter.
+.TP 
+\fB\-r\fP, \fB\-\-opløsning\fP\ \fIXxY\fP
+indstiller skærmopløsningen. Eksempel: \-r 800x600
+.TP 
+\fB\-t\fP, \fB\-\-test\fP
+afvikler spillet i et lille testscenarie.
+.TP 
+\fB\-v\fP, \fB\-\-version\fP
+viser versionnummeret og afslutter.
+.TP 
+\fB\-w\fP, \fB\-\-windowed\fP
+afvikler spillet i indstilling windowed.
+.TP 
+\fB\-\-ingen\-ventetid\fP
+afvikler spillet uden forsinkelser på grund af grafiske
+sammenligninger. Dette sættes automatisk på ved hjælp af \-\-nogui.
+.TP 
+\fB\-\-afslut\-ved\-slutning\fP
+afslutter når scenariet er slut, uden at vise sejr/nederlag vinduet, som
+kræver at brugeren klikker o.k. Dette gælder også for skript sammenligning.
+.
+.SH "Indstillinger for \-\-flerspiller"
+.
+Denne sideafhængig flerspiller indstilling er markeret
+<nummer>. <nummer> skal erstattes af et sidenummer. Det er
+normalt 1 eller 2 men er afhængig af antallet af mulige spillere i det
+valgte scenarie.
+.TP 
+\fB\-\-algoritme<nummer>=værdi\fP
+vælger en ikke standard algoritme som bruges af computeren for denne
+spiller. Mulige værdier: "idle_ai" and "sample_ai".
+.TP  
+\fB\-\-controller<nummer>=værdi\fP
+Vælg bruger af denne side. Tilgængelige værdier: "menneske" og "computer".
+.TP  
+\fB\-\-æra=værdi\fP
+Brug denne mulighed for at spille i den valgte ære fremfor i "Standard"
+æraen. Æra vælges via dens id. Æraerne er beskrevet i data/multiplayer.cfg
+filen.
+.TP 
+\fB\-\-nogui\fP
+Afvikler spillet uden GUI. Skal fremgå før \fB\-\-flerspiller\fP for at have den
+ønskede effekt.
+.TP 
+\fB\-\-parm<nummer>=navn:værdi\fP
+Sætter yderligere indstillinger for denne side. Denne indstilling er
+afhænigig af valgene for \fB\-\-controller\fP og \fB\-\-algoritme.\fP Den er beregnet
+for folk der selv designer deres egen computerspiller. (ikke dokumenteret
+ordentlig endnu).
+.TP 
+\fB\-\-scenarie=værdi\fP
+vælger et flerspiller scenarie. Standardscenariet er "flerspiller_Charge".
+.TP 
+\fB\-\-side<nummer>=værdi\fP
+vælger en fraktion for den nuværende æra til denne side. Fraktionen vælges
+via en id. Fraktioner er beskrevet i data/multiplayer.cfg filen.
+.TP 
+\fB\-\-runder=værdi\fP
+indstiller antallet af runder for det valgte scenarie. Standarden er "50".
+.TP 
+Eksempel som kan teste din egen computerspiller: 
+wesnoth \-\-flerspiller \-\-controller2=python_ai \-\-algorithm2=python_ai
+\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebeller
+.
+.SH FORFATTER
+.
+Skrevet af David White <davidnwhite@verizon.net>.
+.br
+Redigeret af Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> and Soliton <soliton@sonnenkinder.org>.
+.br
+Denne manual blev først skrevet af Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Besøg den officielle hjemmeside: http://www.wesnoth.org/
+.
+.SH OPHAVSRET
+.
+Ophavsret \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br
+Dette er fri programmel; programmellet er udgivet under GPL version 2, der
+er offentliggjort af Free Software Foundation. Der er ingen garanti; selv
+ikke for at spillet virker eller kan bruges til en konkret formål.
+.
+.SH "SE OGSÅ"
+.
+\fBwesnoth_kortredigering\fP(6), \fBwesnothd\fP(6)
