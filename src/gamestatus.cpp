@@ -627,7 +627,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 	cfg["campaign_define"] = gamestate.campaign_define;
 
 	cfg.add_child("variables",gamestate.get_variables());
-	cfg.add_child("menu_items",gamestate.get_variables());
+
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
 	    j!=gamestate.wml_menu_items.end(); ++j) {
 		config new_cfg;
@@ -640,7 +640,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 			new_cfg.add_child("location_filter", j->second->location_filter);
 		if(!j->second->command.empty())
 			new_cfg.add_child("command", j->second->command);
-		cfg.add_child("set_menu_item", new_cfg);
+		cfg.add_child("menu_item", new_cfg);
 	}
 
 	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
@@ -676,7 +676,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	out.write_child("variables", gamestate.get_variables());
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
 	    j!=gamestate.wml_menu_items.end(); ++j) {
-		out.open_child("set_menu_item");
+		out.open_child("menu_item");
 		out.write_key_val("id", j->first);
 		out.write_key_val("image", j->second->image);
 		out.write_key_val("description", j->second->description);
@@ -686,7 +686,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 			out.write_child("location_filter", j->second->location_filter);
 		if(!j->second->command.empty())
 			out.write_child("command", j->second->command);
-		out.close_child("set_menu_item");
+		out.close_child("menu_item");
 	}
 
 	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
