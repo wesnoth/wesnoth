@@ -691,7 +691,7 @@ bool game_controller::load_game()
 
 		refresh_game_cfg();
 
-		state_ = read_game(units_data_,&cfg);
+		state_ = game_state(units_data_,cfg);
 
 		if(state_.version != game_config::version) {
 			const int res = gui::show_dialog(disp(),NULL,"",

@@ -83,6 +83,7 @@ class game_state : public variable_set
 public:
 	game_state() :  difficulty("NORMAL"), recursive_(false) {}
 	game_state(const game_state& state);
+	game_state(const game_data& data, const config& cfg);
 
 	~game_state();
 	game_state& operator=(const game_state& state);
@@ -109,7 +110,7 @@ public:
 	std::map<std::string, wml_menu_item*> wml_menu_items;
 
 	const config& get_variables() const { return variables; }
-	void set_variables(const config& vars) { variables = vars; }
+	void set_variables(const config& vars);
 
 	//Variable access
 
@@ -209,7 +210,6 @@ enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
 
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
-game_state read_game(const game_data& data, const config* cfg);
 void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 

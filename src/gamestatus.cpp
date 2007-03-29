@@ -422,23 +422,22 @@ player_info read_player(const game_data& data, const config* cfg)
 	return res;
 }
 
-game_state read_game(const game_data& data, const config* cfg)
+game_state::game_state(const game_data& data, const config& cfg) : difficulty("NORMAL"), recursive_(false)
 {
 	log_scope("read_game");
-	game_state res;
-	res.label = (*cfg)["label"];
-	res.version = (*cfg)["version"];
-	res.scenario = (*cfg)["scenario"];
-	res.campaign = (*cfg)["campaign"];
+	label = cfg["label"];
+	version = cfg["version"];
+	scenario = cfg["scenario"];
+	campaign = cfg["campaign"];
 
-	const config* snapshot = cfg->child("snapshot");
+	const config* snapshot = cfg.child("snapshot");
 
-	const config::child_list& players = cfg->get_children("player");
+	const config::child_list& players = cfg.get_children("player");
 
 	if(players.empty()) {
 		//backwards compatibility code: assume that there is player data
 		//in the file itself, which corresponds to the leader of side 1
-		const config::child_list& units = cfg->get_children("unit");
+		const config::child_list& units = cfg.get_children("unit");
 		config::child_list::const_iterator i;
 		for(i = units.begin(); i != units.end(); ++i) {
 			if((**i)["side"] == "1" && (**i)["canrecruit"] == "1") {
@@ -448,8 +447,8 @@ game_state read_game(const game_data& data, const config* cfg)
 
 		if(i != units.end()) {
 			std::cerr << "backwards compatibility: loading player '" << (**i)["description"] << "'\n";
-			player_info player = read_player(data,cfg);
-			res.players.insert(std::pair<std::string,player_info>((**i)["description"],player));
+			player_info player = read_player(data,&cfg);
+			this->players.insert(std::pair<std::string,player_info>((**i)["description"],player));
 		}
 	} else {
 		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
@@ -458,7 +457,7 @@ game_state read_game(const game_data& data, const config* cfg)
 			//backwards compatibility for 1.2 and 1.2.1,
 			//------------------------------------------
 			//add recall list units to the snapshot so they don't get lost
-			if (!snapshot->empty() && (res.version < "1.2.2") )
+			if (!snapshot->empty() && (version < "1.2.2") )
 			{
 				//find the side of this player in the snapshot
 				config* current_side = NULL;
@@ -506,53 +505,51 @@ game_state read_game(const game_data& data, const config* cfg)
 				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
 			} else {
 				player_info player = read_player(data, *i);
-				res.players.insert(std::pair<std::string, player_info>(save_id,player));
+				this->players.insert(std::pair<std::string, player_info>(save_id,player));
 			}
 		}
 	}
 
-	std::cerr << "scenario: '" << res.scenario << "'\n";
+	std::cerr << "scenario: '" << scenario << "'\n";
 
-	res.difficulty = (*cfg)["difficulty"];
-	if(res.difficulty.empty())
-		res.difficulty = "NORMAL";
+	difficulty = cfg["difficulty"];
+	if(difficulty.empty())
+		difficulty = "NORMAL";
 
-	res.campaign_define = (*cfg)["campaign_define"];
+	campaign_define = cfg["campaign_define"];
 
-	res.campaign_type = (*cfg)["campaign_type"];
-	if(res.campaign_type.empty())
-		res.campaign_type = "scenario";
+	campaign_type = cfg["campaign_type"];
+	if(campaign_type.empty())
+		campaign_type = "scenario";
 
-	const config* const vars = cfg->child("variables");
+	const config* const vars = cfg.child("variables");
 	if(vars != NULL) {
-		res.set_variables(*vars);
+		set_variables(*vars);
 	}
 
-	const config* const replay = cfg->child("replay");
+	const config* const replay = cfg.child("replay");
 	if(replay != NULL) {
-		res.replay_data = *replay;
+		replay_data = *replay;
 	}
 
 	//older save files used to use 'start', so still support that for now
 	if(snapshot == NULL) {
-		snapshot = cfg->child("start");
+		snapshot = cfg.child("start");
 	}
 
 	if(snapshot != NULL) {
-		res.snapshot = *snapshot;
+		this->snapshot = *snapshot;
 	}
 
-	const config* replay_start = cfg->child("replay_start");
+	const config* replay_start = cfg.child("replay_start");
 	if(replay_start != NULL) {
-		res.starting_pos = *replay_start;
+		starting_pos = *replay_start;
 	}
 
-	if(cfg->child("statistics")) {
+	if(cfg.child("statistics")) {
 		statistics::fresh_stats();
-		statistics::read_stats(*cfg->child("statistics"));
+		statistics::read_stats(*cfg.child("statistics"));
 	}
-
-	return res;
 }
 
 void write_player(const player_info& player, config& cfg)
@@ -762,7 +759,7 @@ void load_game(const game_data& data, const std::string& name, game_state& games
 	config cfg;
 	read_save_file(name,cfg,error_log);
 
-	gamestate = read_game(data,&cfg);
+	gamestate = game_state(data,cfg);
 }
 
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log){
@@ -1308,7 +1305,7 @@ void game_state::clear_variable(const std::string& varname)
 namespace {
 void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 	std::map<std::string, wml_menu_item*>::iterator itor = gs_wmi.begin();
-	while(itor != gs_wmi.end()) {
+	for(itor = gs_wmi.begin(); itor != gs_wmi.end(); ++itor) {
 		delete itor->second;
 	}
 	gs_wmi.clear();
@@ -1346,6 +1343,7 @@ game_state& game_state::operator=(const game_state& state)
 	replay_data = state.replay_data;
 	starting_pos = state.starting_pos;
 	snapshot = state.snapshot;
+	set_variables(state.get_variables());
 	recursive_ = state.recursive_;
 
 	return *this;
@@ -1353,4 +1351,12 @@ game_state& game_state::operator=(const game_state& state)
 
 game_state::~game_state() {
 	clear_wmi(wml_menu_items);
+}
+
+void game_state::set_variables(const config& vars) {
+	if(!variables.empty()) {
+		WRN_NG << "Warning: clobbering the game_state variables";
+		variables.debug(WRN_NG);
+	}
+	variables = vars;
 }

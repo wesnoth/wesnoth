@@ -390,7 +390,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			if(cfg.child("next_scenario")) {
 				starting_pos = (*cfg.child("next_scenario"));
 				scenario = &starting_pos;
-				gamestate = read_game(units_data, scenario);
+				gamestate = game_state(units_data, starting_pos);
 			} else if(scenario->child("end_scenarios")) {
 				scenario = NULL;
 				gamestate.scenario = "null";

@@ -27,6 +27,7 @@
 #include "replay.hpp"
 #include "wml_separators.hpp"
 
+#define LOG_NG lg::info(lg::engine)
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
 
@@ -101,20 +102,24 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 	state.campaign_type = "multiplayer";
 	state.version = level["version"];
 
+	const config* const vars = level.child("variables");
+	if(vars != NULL) {
+		state.set_variables(*vars);
+	}
+
 	//If we start a fresh game, there won't be any snapshot information. If however this
 	//is a savegame, we got a valid snapshot here.
 	if (saved_game){
 		state.snapshot = *(level.child("snapshot"));
-
-		const config* const vars = level.child("variables");
-		if(vars != NULL) {
-			state.set_variables(*vars);
+		if (state.snapshot.child("variables") != NULL){
+			state.set_variables(*state.snapshot.child("variables"));
 		}
-		else{
-			if (state.snapshot.child("variables") != NULL){
-				state.set_variables(*state.snapshot.child("variables"));
-			}
-		}
+	}
+	if(state.get_variables().empty()) {
+		LOG_NG << "No variables were found for the game_state." << std::endl;
+	} else {
+		LOG_NG << "Variables found and loaded into game_state:" << std::endl;
+		state.get_variables().debug(LOG_NG);
 	}
 }
 
