@@ -26,7 +26,7 @@ struct manager
 	~manager();
 };
 
-enum CURSOR_TYPE { NORMAL, WAIT, MOVE, ATTACK, HYPERLINK, NUM_CURSORS };
+enum CURSOR_TYPE { NORMAL, WAIT, MOVE, ATTACK, HYPERLINK, MOVE_DRAG, ATTACK_DRAG, NUM_CURSORS };
 
 void use_colour(bool value);
 

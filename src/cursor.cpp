@@ -85,13 +85,13 @@ SDL_Cursor* create_cursor(surface surf)
 	return SDL_CreateCursor(&data[0],&mask[0],cursor_width,nsurf->h,0,0);
 }
 
-SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL };
+SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
 
 //this array must have members corresponding to cursor::CURSOR_TYPE enum members
 #ifdef __APPLE__
-const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png" };
+const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag.png" , "attack_drag.png" };
 #else
-const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png" };
+const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png"  };
 #endif
 
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;

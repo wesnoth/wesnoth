@@ -671,6 +671,7 @@ gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(g
 undo_stack_(undo_stack), redo_stack_(redo_stack)
 {
 	minimap_scrolling_ = false;
+	dragging_ = false;
 	last_nearest_ = gamemap::location::NORTH;
 	last_second_nearest_ = gamemap::location::NORTH;
 	enemy_paths_ = false;
@@ -740,9 +741,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		if(selected_unit != units_.end() && (current_paths_.routes.count(new_hex) ||
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
-				cursor::set(cursor::MOVE);
+				dragging_ ? cursor::set(cursor::MOVE_DRAG) : cursor::set(cursor::MOVE);
 			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.incapacitated()) {
-				cursor::set(cursor::ATTACK);
+				dragging_ ? cursor::set(cursor::ATTACK_DRAG) : cursor::set(cursor::ATTACK) ;
 			} else {
 				cursor::set(cursor::NORMAL);
 			}
@@ -908,10 +909,12 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
+		dragging_ = false;
 		left_click(event, browse);
 	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
+		dragging_ = true;
 		left_click(event, browse);
 	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
 		// FIXME: when it's not our turn, movement gets highlighted
