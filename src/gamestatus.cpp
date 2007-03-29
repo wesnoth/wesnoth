@@ -1310,8 +1310,8 @@ void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 	std::map<std::string, wml_menu_item*>::iterator itor = gs_wmi.begin();
 	while(itor != gs_wmi.end()) {
 		delete itor->second;
-		itor = gs_wmi.erase(itor);
 	}
+	gs_wmi.clear();
 }
 } //end anon namespace
 
