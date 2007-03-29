@@ -790,9 +790,16 @@ void ai::find_threats()
 
 void ai::play_turn()
 {
-	consider_combat_ = true;
-	game_events::fire("ai turn");
-	do_move();
+	// protect against a memory over commitment, for some reason -1 hitpoints
+	// cause a segmentation fault. Not in the mood to figure out the exact cause.
+	// If -1 hitpoints are send we crash :/
+	try {
+		consider_combat_ = true;
+		game_events::fire("ai turn");
+		do_move();
+	} catch(std::bad_alloc) {
+		lg::wml_error << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
+	}
 }
 
 void ai::do_move()

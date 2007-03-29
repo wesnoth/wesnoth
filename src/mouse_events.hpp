@@ -70,7 +70,10 @@ private:
 	void left_click(const SDL_MouseButtonEvent& event, const bool browse);
 	void clear_undo_stack();
 	bool move_unit_along_current_route(bool check_shroud=true);
+	// wrapper to catch bad_alloc so this should be called
 	bool attack_enemy(unit_map::iterator attacker, unit_map::iterator defender);
+	// the real function but can throw bad_alloc
+	bool attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender);
 	void show_attack_options(unit_map::const_iterator u);
 	gamemap::location current_unit_attacks_from(const gamemap::location& loc, const gamemap::location::DIRECTION preferred, const gamemap::location::DIRECTION second_preferred);
 	unit_map::const_iterator find_unit(const gamemap::location& hex) const;
