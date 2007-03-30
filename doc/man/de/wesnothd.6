@@ -83,7 +83,8 @@ Schlüssel="\fIWert\fP,\fIWert\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-The number of allowed connections from the same IP. (default: 5)
+Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. (Standard:
+5)
 .TP 
 \fBdisallow_names\fP
 Namen/Spitznamen die der Server nicht akzeptiert. '*' und '?' sind als
@@ -92,11 +93,12 @@ Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
 \&'server,ai,player,network,human,admin,computer'.
 .TP 
 \fBmax_messages\fP
-The number of allowed messages in \fBmessages_time_period\fP. (default: 4)
+Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
+4)
 .TP 
 \fBmessages_time_period\fP
-The time period (in seconds) message flooding is detected in. (default: 10
-seconds)
+Der Zeitraum (in Sekunden) in dem "message flooding" erkannt
+wird. (Standard: 10)
 .TP 
 \fBmotd\fP
 Die "Nachricht des Tages".
@@ -106,9 +108,9 @@ Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt
 per Konvention mit "admin ".
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. `*'
-and `?' from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Eine durch Komma getrennte Liste der Programmversionen, die der Server
+zulässt. `*' und `?' sind erlaubt. (Standard: Die aktuell installierte
+Wesnoth Version)
 .br
 Beispiel: versions_accepted="*" akzeptiert alle Versionen.
 .
