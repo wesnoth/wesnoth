@@ -526,6 +526,7 @@ game_state::game_state(const game_data& data, const config& cfg) : difficulty("N
 	if(vars != NULL) {
 		set_variables(*vars);
 	}
+	set_menu_items(cfg.get_children("menu_item"));
 
 	const config* const replay = cfg.child("replay");
 	if(replay != NULL) {
@@ -1384,8 +1385,38 @@ game_state::~game_state() {
 
 void game_state::set_variables(const config& vars) {
 	if(!variables.empty()) {
-		WRN_NG << "Warning: clobbering the game_state variables";
+		WRN_NG << "clobbering the game_state variables\n";
 		variables.debug(WRN_NG);
 	}
 	variables = vars;
+}
+
+void game_state::set_menu_items(const config::child_list& menu_items) {
+	clear_wmi(wml_menu_items);
+	for(config::const_child_iterator i=menu_items.begin(); i != menu_items.end(); ++i) {
+		const std::string& id = (**i)["id"].value();
+		wml_menu_item*& mref = wml_menu_items[id];
+		if(mref == NULL) {
+			mref = new wml_menu_item(id, *i);
+		} else {
+			WRN_NG << "duplicate menu item (" << id << ") while loading gamestate\n";
+		}
+	}
+}
+
+wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) {
+	std::stringstream temp;
+	temp << "menu item";
+	if(!id.empty()) {
+		temp << ' ' << id;
+	}
+	name = temp.str();
+	if(cfg != NULL) {
+		image = (*cfg)["image"];
+		description = (*cfg)["description"];
+		config const* temp;
+		if((temp = (*cfg).child("show_if")) != NULL) show_if = *temp;
+		if((temp = (*cfg).child("location_filter")) != NULL) location_filter = *temp;
+		if((temp = (*cfg).child("command")) != NULL) command = *temp;
+	}
 }

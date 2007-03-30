@@ -366,6 +366,18 @@ public:
 	void disable() { disabled_ = true; }
 	bool disabled() const { return disabled_; }
 
+	bool is_menu_item() const {
+		wassert(state_of_game != NULL);
+		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
+		while(itor != state_of_game->wml_menu_items.end()) {
+			if(&cfg_.get_config() == &itor->second->command) {
+				return true;
+			}
+			++itor;
+		}
+		return false;
+	}
+
 	const vconfig::child_list first_arg_filters()
 	{
 		return cfg_.get_children("filter");
@@ -2323,12 +2335,26 @@ manager::manager(const config& cfg, display& gui_, gamemap& map_,
 			used_items.insert(*i);
 		}
 	}
+	int wmi_count = 0;
+	std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
+	while(itor != state_of_game->wml_menu_items.end()) {
+		if(!itor->second->command.empty()) {
+			event_handler new_handler(itor->second->command); 
+			events_map.insert(std::pair<std::string,event_handler>(
+				new_handler.name(), new_handler));
+		}
+		++itor;
+		++wmi_count;
+	}
+	if(wmi_count > 0) {
+		LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
+	}
 }
 
 void write_events(config& cfg)
 {
 	for(std::multimap<std::string,event_handler>::const_iterator i = events_map.begin(); i != events_map.end(); ++i) {
-		if(!i->second.disabled()) {
+		if(!i->second.disabled() && !i->second.is_menu_item()) {
 			i->second.write(cfg.add_child("event"));
 		}
 	}

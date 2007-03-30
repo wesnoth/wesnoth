@@ -106,6 +106,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 	if(vars != NULL) {
 		state.set_variables(*vars);
 	}
+	state.set_menu_items(level.get_children("menu_item"));
 
 	//If we start a fresh game, there won't be any snapshot information. If however this
 	//is a savegame, we got a valid snapshot here.
@@ -114,6 +115,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 		if (state.snapshot.child("variables") != NULL){
 			state.set_variables(*state.snapshot.child("variables"));
 		}
+		state.set_menu_items(state.snapshot.get_children("menu_item"));
 	}
 	if(state.get_variables().empty()) {
 		LOG_NG << "No variables were found for the game_state." << std::endl;

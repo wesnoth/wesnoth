@@ -50,14 +50,7 @@ struct time_of_day
 
 struct wml_menu_item
 {
-	wml_menu_item(const std::string& id) {
-		std::stringstream temp;
-		temp << "menu item";
-		if(!id.empty()) {
-			temp << ' ' << id;
-		}
-		name = temp.str();
-	}
+	wml_menu_item(const std::string& id, const config* cfg=NULL);
 	std::string name;
 	std::string image;
 	t_string description;
@@ -111,6 +104,8 @@ public:
 
 	const config& get_variables() const { return variables; }
 	void set_variables(const config& vars);
+
+	void set_menu_items(const config::child_list& menu_items);
 
 	//Variable access
 

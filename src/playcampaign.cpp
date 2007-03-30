@@ -153,6 +153,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if(gamestate.snapshot.child("variables") != NULL) {
 			gamestate.set_variables(*gamestate.snapshot.child("variables"));
 		}
+		gamestate.set_menu_items(gamestate.snapshot.get_children("menu_item"));
 		//Replace game label with that from snapshot
 		if (!gamestate.snapshot["label"].empty()){
 			gamestate.label = gamestate.snapshot["label"];
