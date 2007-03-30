@@ -1793,21 +1793,18 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		unit_anim_halo_ = halo::NO_HALO;
 	}
 	if(!current_frame.halo(anim_->get_current_frame_time()).empty()) {
-
-		if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
-			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x(anim_->get_current_frame_time())*disp.zoom()),
-					y+d+static_cast<int>(current_frame.halo_y(anim_->get_current_frame_time())*disp.zoom()),
-					current_frame.halo(anim_->get_current_frame_time()),
-					gamemap::location(-1, -1),
-					halo::HREVERSE);
-		} else {
-			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x(anim_->get_current_frame_time())*disp.zoom()),
-					y+d+static_cast<int>(current_frame.halo_y(anim_->get_current_frame_time())*disp.zoom()),
-					current_frame.halo(anim_->get_current_frame_time()),
-					gamemap::location(-1, -1));
-		}
+		int d = disp.hex_size() / 2;
+		int ft = anim_->get_current_frame_time();
+		int dx = int(current_frame.halo_x(ft) * disp.zoom());
+		int hy = y + d - height_adjust + int(current_frame.halo_y(ft) * disp.zoom());
+		if (facing_ == gamemap::location::NORTH_WEST ||
+		    facing_ == gamemap::location::SOUTH_WEST)
+			unit_anim_halo_ = halo::add(x + d - dx, hy,
+				current_frame.halo(ft), gamemap::location(-1, -1),
+				halo::HREVERSE);
+		else
+			unit_anim_halo_ = halo::add(x + d + dx, hy,
+				current_frame.halo(ft), gamemap::location(-1, -1));
 	}
 	image::locator loc;
 	loc = current_frame.image();
