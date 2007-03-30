@@ -674,6 +674,8 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 	dragging_ = false;
 	dragging_started_ = false;
 	update_cursor_ = false;
+	drag_from_x_ = 0;
+	drag_from_y_ = 0;
 	last_nearest_ = gamemap::location::NORTH;
 	last_second_nearest_ = gamemap::location::NORTH;
 	enemy_paths_ = false;
@@ -722,16 +724,12 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 	// Fire the drag & drop only after minimal drag distance
 	// or when we quit the initial hex.
-	int drag_distance = maximum<int>(abs(drag_from_x_- x), abs(drag_from_y_- y));
+	const int drag_distance = maximum<int>(abs(drag_from_x_- x), abs(drag_from_y_- y));
 	if (dragging_ && !dragging_started_ && (drag_distance > 3 || new_hex != last_hex_)) {
 		dragging_started_ = true;
-	}
-	// Do a systematic update of the cursor only when
-	// we are near this limit
-	if (dragging_ && drag_distance < 10) {
 		update_cursor_ = true;
 	}
-	
+
 	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_ || update_cursor_) {
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
