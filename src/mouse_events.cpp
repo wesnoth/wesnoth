@@ -672,6 +672,8 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 {
 	minimap_scrolling_ = false;
 	dragging_ = false;
+	dragging_started_ = false;
+	update_cursor_ = false;
 	last_nearest_ = gamemap::location::NORTH;
 	last_second_nearest_ = gamemap::location::NORTH;
 	enemy_paths_ = false;
@@ -718,7 +720,19 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	gamemap::location::DIRECTION second_nearest_hex = gamemap::location::NDIRECTIONS;
 	const gamemap::location new_hex = (*gui_).hex_clicked_on(x,y,&nearest_hex,&second_nearest_hex);
 
-	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_) {
+	// Fire the drag & drop only after minimal drag distance
+	// or when we quit the initial hex.
+	int drag_distance = maximum<int>(abs(drag_from_x_- x), abs(drag_from_y_- y));
+	if (dragging_ && !dragging_started_ && (drag_distance > 3 || new_hex != last_hex_)) {
+		dragging_started_ = true;
+	}
+	// Do a systematic update of the cursor only when
+	// we are near this limit
+	if (dragging_ && drag_distance < 10) {
+		update_cursor_ = true;
+	}
+	
+	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_ || update_cursor_) {
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
 			(*gui_).set_route(NULL);
@@ -741,11 +755,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		if(selected_unit != units_.end() && (current_paths_.routes.count(new_hex) ||
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
-				dragging_ ? cursor::set(cursor::MOVE_DRAG) : cursor::set(cursor::MOVE);
+				cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
 			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.incapacitated()) {
-				dragging_ ? cursor::set(cursor::ATTACK_DRAG) : cursor::set(cursor::ATTACK) ;
-			} else {
-				cursor::set(cursor::NORMAL);
+				cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK) ;
+			} else  {
+				cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::NORMAL);
 			}
 		} else {
 			cursor::set(cursor::NORMAL);
@@ -808,6 +822,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	last_hex_ = new_hex;
 	last_nearest_ = nearest_hex;
 	last_second_nearest_ = second_nearest_hex;
+	update_cursor_ = false;
 }
 
 unit_map::iterator mouse_handler::selected_unit()
@@ -910,16 +925,21 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 		dragging_ = false;
-		left_click(event, browse);
+		if (dragging_started_) {
+			left_click(event, browse);
+		}
 	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
 		dragging_ = true;
+		drag_from_x_ = event.x;
+		drag_from_y_ = event.y;
 		left_click(event, browse);
 	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
 		// FIXME: when it's not our turn, movement gets highlighted
 		// merely by mousing over.  This hack means we don't require a
 		// two clicks to access right menu.
+		dragging_ = false;
 		if (gui_->viewing_team() == team_num_-1 && !current_paths_.routes.empty()) {
 			selected_hex_ = gamemap::location();
 			gui_->select_hex(gamemap::location());
@@ -945,7 +965,6 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 			minimap_scrolling_ = true;
 			last_hex_ = loc;
 			gui_->scroll_to_tile(loc.x,loc.y,display::WARP,false);
-			return;
 		} else {
 		const SDL_Rect& rect = gui_->map_area();
 		const int centerx = (rect.x + rect.w)/2;
@@ -971,6 +990,13 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 			gui_->scroll(speed,0);
 		else
 			gui_->scroll(0,speed);
+	}
+
+	// call mouse_motion to update the cursor if dragging end
+	if (!dragging_ && dragging_started_) {
+		dragging_started_ = false;
+		update_cursor_ = true;
+		mouse_motion(event.x, event.y, browse);
 	}
 }
 
