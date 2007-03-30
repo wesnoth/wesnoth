@@ -1348,7 +1348,7 @@ void calculate_healing(display& disp, const gamemap& map,
 			unit_map::iterator potential_healer = units.find(h_it->second);
 			wassert(potential_healer != units.end());
 			if(teams[potential_healer->second.side()-1].is_enemy(side)) {
-				heal.cfgs.erase(h_it);
+				h_it = heal.cfgs.erase(h_it);
 			} else {
 				++h_it;
 			}
