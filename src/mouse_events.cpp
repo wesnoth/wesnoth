@@ -745,6 +745,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		const unit_map::const_iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::const_iterator mouseover_unit = find_unit(new_hex);
 
+		// scroll the map if a empty tile is selected
+		// if it use too much CPU add a condition "drag_distance > step"
+		if (dragging_started_ && selected_unit == units_.end()) {
+			gui_->scroll(drag_from_x_ - x, drag_from_y_ - y);
+			drag_from_x_ = x;
+			drag_from_y_ = y;
+		}
+
 		gamemap::location attack_from;
 		if(selected_unit != units_.end() && mouseover_unit != units_.end()) {
 			attack_from = current_unit_attacks_from(new_hex, nearest_hex, second_nearest_hex);
