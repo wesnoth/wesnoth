@@ -356,7 +356,7 @@ namespace {
 		int move_left,
 		std::map<gamemap::location,paths::route>& routes,
 		std::vector<team> const &teams,
-		bool ignore_zocs, bool allow_teleport, int turns_left,
+		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 	    bool starting_pos, const team &viewing_team)
 	{
 		if(size_t(u.side()-1) >= teams.size()) {
@@ -428,8 +428,8 @@ namespace {
 				if(rtit != routes.end() && rtit->second.move_left >= total_movement)
 					continue;
 
-				const bool zoc = !ignore_zocs && enemy_zoc(map,units,teams,currentloc,
-														   viewing_team,u.side());
+				const bool skirmisher = force_ignore_zocs | u.get_ability_bool("skirmisher",currentloc);
+				const bool zoc = !skirmisher && enemy_zoc(map,units,teams,currentloc, viewing_team,u.side());
 				paths::route new_route = routes[loc];
 				new_route.steps.push_back(loc);
 
@@ -439,7 +439,7 @@ namespace {
 
 				if (new_route.move_left > 0) {
 					find_routes(map, status, gamedata, units, u, currentloc,
-					            zoc_move_left, routes, teams, ignore_zocs,
+					            zoc_move_left, routes, teams, force_ignore_zocs,
 					            allow_teleport, new_turns_left, false, viewing_team);
 				}
 			}
@@ -453,7 +453,8 @@ paths::paths(gamemap const &map, gamestatus const &status,
              unit_map const &units,
              gamemap::location const &loc,
              std::vector<team> const &teams,
-             bool ignore_zocs, bool allow_teleport, const team &viewing_team,
+	     bool force_ignore_zoc,
+             bool allow_teleport, const team &viewing_team,
 			 int additional_turns)
 {
 	const unit_map::const_iterator i = units.find(loc);
@@ -464,8 +465,8 @@ paths::paths(gamemap const &map, gamestatus const &status,
 
 	routes[loc].move_left = i->second.movement_left();
 	find_routes(map,status,gamedata,units,i->second,loc,
-		i->second.movement_left(),routes,teams,
-		ignore_zocs,allow_teleport,additional_turns,true,viewing_team);
+		i->second.movement_left(),routes,teams,force_ignore_zoc,
+		allow_teleport,additional_turns,true,viewing_team);
 }
 
 int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt)
@@ -535,7 +536,7 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
 		return getNoPathValue();
 
-	if (!isDst && !unit_.get_ability_bool("skirmisher",src)) {
+	if (!isDst && !unit_.get_ability_bool("skirmisher",loc)) {
 		gamemap::location adj[6];
 		get_adjacent_tiles(loc, adj);
 

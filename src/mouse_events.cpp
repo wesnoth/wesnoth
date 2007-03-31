@@ -806,10 +806,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 				//unit under cursor is not on our team, highlight reach
 				unit_movement_resetter move_reset(un->second);
 
-				const bool ignore_zocs = un->second.get_ability_bool("skirmisher",un->first);
 				const bool teleport = un->second.get_ability_bool("teleport",un->first);
 				current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
-									ignore_zocs,teleport,viewing_team(),path_turns_);
+									false,teleport,viewing_team(),path_turns_);
 				gui_->highlight_reach(current_paths_);
 				enemy_paths_ = true;
 			} else {
@@ -1150,10 +1149,9 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		const unit_map::iterator it = find_unit(hex);
 
 		if(it != units_.end() && it->second.side() == team_num_ && !gui_->fogged(it->first.x,it->first.y)) {
-			const bool ignore_zocs = it->second.get_ability_bool("skirmisher",it->first);
 			const bool teleport = it->second.get_ability_bool("teleport",it->first);
 			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
-								   ignore_zocs,teleport,viewing_team(),path_turns_);
+								   false,teleport,viewing_team(),path_turns_);
 
 			next_unit_ = it->first;
 
@@ -1443,9 +1441,8 @@ void mouse_handler::cycle_back_units()
 inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
 									   const unit_map::const_iterator &itx) {
 	if (it != itx && !gui_->fogged(it->first.x,it->first.y)) {
-		const bool ignore_zocs = it->second.get_ability_bool("skirmisher",it->first);
 		const bool teleport = it->second.get_ability_bool("teleport",it->first);
-		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,viewing_team(),path_turns_);
+		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,false,teleport,viewing_team(),path_turns_);
 		gui_->highlight_reach(current_paths_);
 
 		gui_->scroll_to_tile(it->first.x,it->first.y,display::WARP);

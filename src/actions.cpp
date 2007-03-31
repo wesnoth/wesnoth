@@ -1816,7 +1816,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	const size_t team_num = ui->second.side()-1;
 
-	const bool skirmisher = ui->second.get_ability_bool("skirmisher",ui->first);
 
 	team& team = teams[team_num];
 	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
@@ -1844,6 +1843,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		const t_translation::t_letter terrain = map[step->x][step->y];
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
+		const bool skirmisher = ui->second.get_ability_bool("skirmisher",*step);
 
 		const int mv = ui->second.movement_cost(terrain);
 		if(discovered_unit || continue_move == false && seen_units.empty() == false ||

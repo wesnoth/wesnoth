@@ -397,10 +397,9 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 
 	const bool show_move = preferences::show_ai_moves();
 
-	const bool ignore_zocs = u_it->second.get_ability_bool("skirmisher",u_it->first);
 	const bool teleport = u_it->second.get_ability_bool("teleport",u_it->first);
 	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,
-			info_.teams,ignore_zocs,teleport,current_team());
+			info_.teams,false,teleport,current_team());
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
@@ -437,7 +436,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 								steps.erase(i,steps.end());
 								break;
 							} else {
-							  if (!ignore_zocs){
+							  if (!u_it->second.get_ability_bool("skirmisher",*i)){
 							    LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
 							    to = *i;
 							    steps.erase(i,steps.end());
@@ -658,11 +657,10 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			dstsrc.insert(trivial_mv);
 		}
 
-		const bool ignore_zocs = un_it->second.get_ability_bool("skirmisher",un_it->first);
 		const bool teleports = un_it->second.get_ability_bool("teleport",un_it->first);
 		res.insert(std::pair<gamemap::location,paths>(
 		                un_it->first,paths(info_.map,info_.state,info_.gameinfo,info_.units,
-					    un_it->first,info_.teams,ignore_zocs,teleports,current_team())));
+					    un_it->first,info_.teams,false,teleports,current_team())));
 	}
 
 	for(std::map<location,paths>::iterator m = res.begin(); m != res.end(); ++m) {

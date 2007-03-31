@@ -74,7 +74,7 @@ struct paths
 	paths() {}
 
 	//construct a list of paths for the unit at loc.
-	//ignore_zocs: determines whether unit has to stop upon entering an ezoc
+	//force_ignore_zocs: find the path ignoring ZOC entirely, if false will use the unit on the loc's ability
 	//allow_teleport: indicates whether unit teleports between villages
 	//additional_turns: if 0, paths for how far the unit can move this turn
 	//will be calculated. If 1, paths for how far the unit can move by the
@@ -84,8 +84,8 @@ struct paths
 	      game_data const &gamedata,
 	      unit_map const &units,
 	      gamemap::location const &loc, std::vector<team> const &teams,
-	      bool ignore_zocs, bool allow_teleport,
-		  const team &viewing_team, int additional_turns = 0);
+	      bool force_ignore_zocs,bool allow_teleport,
+		  const team &viewing_team,int additional_turns = 0);
 
 	//structure which holds a single route between one location and another.
 	struct route
