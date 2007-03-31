@@ -922,15 +922,17 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 		dragging_ = false;
-		if (dragging_started_) {
+		if (dragging_started_ && !browse && !commands_disabled) {
 			left_click(event, browse);
 		}
 	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
-		dragging_ = true;
-		drag_from_x_ = event.x;
-		drag_from_y_ = event.y;
+		if (!browse && !commands_disabled) {
+			dragging_ = true;
+			drag_from_x_ = event.x;
+			drag_from_y_ = event.y;
+		}
 		left_click(event, browse);
 	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
 		// FIXME: when it's not our turn, movement gets highlighted
@@ -1094,7 +1096,10 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 											}
 									 }
 								}
-								game_events::pump();
+								if (game_events::pump()) {
+									dragging_ = false;
+									update_cursor_ = true;
+								}
 								return;
 							}
 						}
@@ -1157,7 +1162,10 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 				paths::route route = get_route(it, go_to, current_team());
 				gui_->set_route(&route);
 			}
-			game_events::fire("select",hex);
+			if (game_events::fire("select",hex)) {
+				dragging_ = false;
+				update_cursor_ = true;
+			}
 		}
 	}
 }
@@ -1454,7 +1462,10 @@ inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
 		SDL_GetMouseState(&mousex, &mousey);
 		mouse_motion(mousex, mousey, true);
 		show_attack_options(it);
-		game_events::fire("select",selected_hex_);
+		if (game_events::fire("select",selected_hex_)) {
+			dragging_ = false;
+			update_cursor_ = true;
+		}
 	}
 }
 
