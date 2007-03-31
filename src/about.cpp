@@ -293,7 +293,7 @@ void show_about(display &disp, std::string campaign)
 		} while(y<map_rect.y + map_rect.h - bottom_margin);
 
 		// performs the actual scrolling
-		const int scroll_speed = 4;		// scroll_speed*50 = speed of scroll in pixel per second
+		const int scroll_speed = 2;		// scroll_speed*50 = speed of scroll in pixel per second
 
 		offset += scroll_speed;
 		if(offset>=first_line_height) {
