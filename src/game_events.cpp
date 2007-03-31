@@ -1154,8 +1154,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
-			const bool show = screen != NULL && !screen->turbo() &&
-				!screen->fogged(loc.x,loc.y) && cfg["animate"] != "";
+			const bool show = screen != NULL && !screen->fogged(loc.x,loc.y);
+			const bool animated = show && !screen->turbo() && cfg["animate"] != "";
 			if (show) {
 				screen->draw(true,true);
 			}
@@ -1170,7 +1170,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			unit_map::iterator un = units->find(loc);
 
-			if(show) {
+			if(animated) {
 				un->second.set_hidden(true);
 				screen->scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
 				un->second.set_hidden(false);
@@ -1181,8 +1181,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					events::pump();
 					screen->delay(10);
 				}
-				un->second.set_standing(*screen,un->first);
+				un->second.set_standing(*screen, un->first);
 			}
+			else if(show)
+				un->second.redraw_unit(*screen, loc);
 		} else {
 			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 
