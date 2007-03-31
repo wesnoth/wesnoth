@@ -1388,7 +1388,9 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 	surface const dst(screen_.getSurface());
 
-	const bool is_shrouded = shrouded(loc.x, loc.y);
+	//FIXME : maybe move the "out if the map" cases in shrouded()
+	// but for the moment it's used here only for graphical purposes (border map glitches)
+	const bool is_shrouded = shrouded(loc.x, loc.y) || loc.x > map_.x() || loc.y > map_.y();
 	t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
 
 	if(!is_shrouded) {
