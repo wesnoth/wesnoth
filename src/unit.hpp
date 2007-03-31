@@ -171,7 +171,7 @@ class unit
 		int damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const { return resistance_against(attack,attacker,loc); }
 
 		// a sdl surface, ready for display for place where we need a fix image of the unit
-		const surface still_image() const;
+		const surface still_image(bool scaled = false) const;
 		void redraw_unit(display& disp,gamemap::location hex);
 
 		void set_standing(const display& disp,const gamemap::location& loc, bool with_bars = true);

@@ -1480,7 +1480,7 @@ void unit::write(config& cfg) const
 }
 
 
-const surface unit::still_image() const
+const surface unit::still_image(bool scaled) const
 {
 	image::locator  loc;
 
@@ -1496,7 +1496,7 @@ const surface unit::still_image() const
 	}
 #endif
 
-	surface unit_image(image::get_image(loc,image::SCALED_TO_ZOOM));
+	surface unit_image(image::get_image(loc, scaled ? image::SCALED_TO_ZOOM : image::UNSCALED));
 	return unit_image;
 }
 
@@ -1828,7 +1828,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 				));
 
 	if(image == NULL) {
-		image = still_image();
+		image = still_image(true);
 	}
 	if(utils::string_bool(get_state("stoned"))) {
 		image = greyscale_image(image);
