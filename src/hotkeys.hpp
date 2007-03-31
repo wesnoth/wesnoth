@@ -79,7 +79,7 @@ public:
 	enum type {
 		UNBOUND,
 		BY_KEYCODE,
-		BY_CHARACTER,
+		BY_CHARACTER
 	};
 
 	enum type get_type() const { return type_; }

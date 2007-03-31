@@ -18,9 +18,8 @@
 #include <string>
 #include <vector>
 
-class config;
-
 #include "SDL.h"
+#include "config.hpp"
 
 typedef struct { size_t x1,y1,x2,y2; } _rect;
 

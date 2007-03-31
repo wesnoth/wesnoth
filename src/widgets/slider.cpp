@@ -302,7 +302,7 @@ const T& list_slider<T>::item_selected() const
 template<typename T>
 bool list_slider<T>::select_item(const T& item)
 {
-	for(int i=0; i < items_.size(); i++)
+	for(unsigned i = 0, nb = items_.size(); i < nb; ++i)
 	{
 		if(item == items_[i])
 		{

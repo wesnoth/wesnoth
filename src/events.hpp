@@ -47,7 +47,7 @@ public:
 	virtual void volatile_draw() {}
 	virtual void volatile_undraw() {}
 
-	virtual bool requires_event_focus(const SDL_Event *event=NULL) const { return false; }
+	virtual bool requires_event_focus(const SDL_Event * = NULL) const { return false; }
 
 	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
 

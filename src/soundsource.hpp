@@ -21,6 +21,7 @@
 #include "generic_event.hpp"
 #include "map.hpp"
 
+class display;
 
 namespace soundsource {
 

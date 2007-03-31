@@ -14,11 +14,13 @@
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
 #define UNIT_DISPLAY_HPP_INCLUDED
 
+#include "map.hpp"
+
+class attack_type;
 class display;
+class team;
 class unit;
 class unit_map;
-
-#include "map.hpp"
 
 ///the unit_display namespace contains a number of free functions
 ///which display units performing various on-screen actions - moving,

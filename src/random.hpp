@@ -14,6 +14,8 @@
 #ifndef RANDOM_H_INCLUDED
 #define RANDOM_H_INCLUDED
 
+#include "SDL_types.h"
+
 class config;
 
 int get_random();

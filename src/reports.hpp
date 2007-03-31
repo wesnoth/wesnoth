@@ -18,11 +18,12 @@
 #include <string>
 #include <vector>
 
-class gamestatus;
-class unit_map;
-
+#include "image.hpp"
 #include "map.hpp"
 #include "team.hpp"
+
+class gamestatus;
+class unit_map;
 
 
 //this module is responsible for outputting textual reports of

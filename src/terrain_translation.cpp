@@ -904,10 +904,10 @@ inline Uint32 get_layer_mask_(Uint32 terrain)
 	if((terrain & 0x0000FF00) == 0x00002A00) return 0xFFFF0000;
 	if((terrain & 0x000000FF) == 0x0000002A) return 0xFFFFFF00;
 
-	
+/*	
 	Uint8 *ptr = (Uint8 *) &terrain;
 
-/*	if(ptr[3] == 0x2A) return 0x00000000;
+	if(ptr[3] == 0x2A) return 0x00000000;
 	if(ptr[2] == 0x2A) return 0xFF000000;
 	if(ptr[1] == 0x2A) return 0xFFFF0000;
 	if(ptr[0] == 0x2A) return 0xFFFFFF00;

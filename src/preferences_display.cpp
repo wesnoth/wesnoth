@@ -228,7 +228,7 @@ private:
 				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_,
 				advanced_sound_button_, normal_sound_button_, UI_sound_button_,
 				sample_rate_button1_, sample_rate_button2_, sample_rate_button3_, confirm_sound_button_;
-	gui::label music_label_, sound_label_, bell_label_, UI_sound_label_, scroll_label_,
+	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_, scroll_label_,
 				gamma_label_, chat_lines_label_, turbo_slider_label_,
 				sample_rate_label_, buffer_size_label_;
 	gui::textbox sample_rate_input_, friends_input_;
@@ -236,7 +236,7 @@ private:
 	unsigned slider_label_width_;
 
 	gui::menu advanced_, friends_;
-	int advanced_selection_, friends_selection_;;
+	int advanced_selection_, friends_selection_;
 
 	enum TAB {	GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB,
 				/*extra tab*/

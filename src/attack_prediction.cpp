@@ -83,7 +83,7 @@ struct prob_matrix
 		NEITHER_SLOWED,
 		A_SLOWED,
 		B_SLOWED,
-		BOTH_SLOWED,
+		BOTH_SLOWED
 	};
 
 private:
@@ -477,7 +477,7 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 	}
 }
 
-};
+}
 
 unsigned combatant::hp_dist_size(const battle_context::unit_stats &u, const combatant *prev)
 {

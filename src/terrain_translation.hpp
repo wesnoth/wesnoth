@@ -351,5 +351,5 @@ namespace t_translation {
 	std::string get_old_letter(const t_letter& number);
 #endif	
 
-};
+}
 #endif

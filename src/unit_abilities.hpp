@@ -16,8 +16,9 @@
 #ifndef UNIT_ABILITIES_HPP_INCLUDED
 #define UNIT_ABILITIES_HPP_INCLUDED
 
+#include "map.hpp"
 
-
+class unit_ability_list;
 
 namespace unit_abilities
 {
