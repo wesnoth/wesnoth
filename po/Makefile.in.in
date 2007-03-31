@@ -43,7 +43,7 @@ mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
 GMSGFMT = @GMSGFMT@
 MSGFMT = @MSGFMT@
 XGETTEXT = @XGETTEXT@
-WMLXGETTEXT := $(top_srcdir)/utils/wmlxgettext
+WMLXGETTEXT = $(top_srcdir)/utils/wmlxgettext
 MSGMERGE = msgmerge
 MSGMERGE_UPDATE = @MSGMERGE@ --update
 MSGINIT = msginit
@@ -77,7 +77,7 @@ CATALOGS = @CATALOGS@
 	@lang=`echo $* | sed -e 's,.*/,,'`; \
 	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
 	echo "$${cdcmd}rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o $${lang}.gmo $${lang}.po"; \
-	cd $(srcdir) && rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o t-$${lang}.gmo $${lang}.po && if test -e t-$${lang}.gmo; then mv t-$${lang}.gmo $${lang}.gmo; fi
+	cd $(srcdir) && rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o t-$${lang}.gmo $${lang}.po && if test -f t-$${lang}.gmo; then mv t-$${lang}.gmo $${lang}.gmo; fi
 
 .sin.sed:
 	sed -e '/^#/d' $< > t-$@
