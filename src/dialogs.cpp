@@ -691,7 +691,9 @@ void unit_preview_pane::draw_contents()
 	const clip_rect_setter clipper(screen,clip_area);
 
 	surface unit_image = u.still_image();
-
+	if (!left_) 
+		unit_image = image::reverse_image(unit_image);
+	
 	SDL_Rect image_rect = {area.x,area.y,0,0};
 
 	if(unit_image != NULL) {
