@@ -1,0 +1,42 @@
+Battle for Wesnoth for GP2x, pre-Alpha
+-------------------------------------------------------------------------
+ 
+This is a very early pre-alpha release of Battle for Wesnoth for the GP2X. 
+It's not really playable. Here is a list of some known and still existing 
+problems, though there is a lot more:
+
+- sound can be jittery (disabled now; it slows everything down considerably)
+- very slow when starting a campaign (might take several mins)
+- slow in general
+- game might crash in complex scenarios due too much mem usage
+- team color disabled, many units will have pink cloths
+- no language selection (functionality removed)
+- no networking (functionality removed)
+- no language switching (funtionality remove)
+ 
+What to do with the archive:
+-------------------------------------------------------------------------
+Have all the content from this archive in a folder named 'wesnoth' on the 
+root of your sd-card (/mnt/sd/). Start the game via the startscript named
+wesnoth.gpe. The first start of the game may take several minutes because 
+of the cache generation. Starting a campaign will take a long time, too, 
+because of the campaign specific cache generation. There will be *no* 
+loadscreen while this cache is being created. Remember that this is a very 
+early alpha. ;-)
+
+Button mappings:
+-------------------------------------------------------------------------
+Since there's no keyboard-only (or rather: joystick-only) interface, one
+has to move the mouse cursor using joystick. Also, the following buttons
+have predefined special functions:
+
+	A	- left mouse click
+	B	- right mouse click
+	RIGHT 	- skip to next unit
+	LEFT	- skip to previous unit
+	X	- select the leader
+	Y	- "show enemy moves"
+	STICK	- undo the previous move
+	START	- use accelerated mode
+	SELECT	- recruit
+
