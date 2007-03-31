@@ -287,16 +287,7 @@ std::string get_intl_dir()
 	return get_cwd() + "/po";
 #endif
 
-#ifdef USE_INTERNAL_DATA
-	return get_cwd() + "/" LOCALEDIR;
-#endif
-
-#if HAS_RELATIVE_LOCALEDIR
-	std::string res = game_config::path + "/" LOCALEDIR;
-#else
-	std::string res = LOCALEDIR;
-#endif
-
+	std::string res = "dummy";
 	return res;
 }
 

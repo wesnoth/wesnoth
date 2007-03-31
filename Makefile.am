@@ -1,8 +1,6 @@
 ISUBDIRS = icons
-SUBDIRS = po m4 src doc $(ISUBDIRS)
+SUBDIRS = m4 src doc $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
-
-bin_SCRIPTS = utils/wmlxgettext
 
 findfilterflags=-name .svn -prune -o -name ".\#*" -o -type d
 
@@ -52,16 +50,6 @@ if INSTALLDATA
 	  echo $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
-if DUMMYLOCALES
-	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
-	if test -d "$(DESTDIR)$(pkgdatadir)/locales/C" ; then rm -r "$(DESTDIR)$(pkgdatadir)/locales/C" ; fi
-	echo | localedef --force "$(DESTDIR)$(pkgdatadir)/locales/C" 2> /dev/null; \
-	for loc in `ls data/languages/*.cfg | sed -e's/data\/languages\/\(.*\)\.cfg/\1/'`; do \
-	  loclnk="$(DESTDIR)$(pkgdatadir)/locales/$$loc"@wesnoth; \
-	  if test -L "$$loclnk" ; then rm "$$loclnk" ; fi; \
-	  ln -s C "$$loclnk"; done; \
-	true
-endif
 if TINYGUI
 	(cd $(top_srcdir) && find data/campaigns data/tutorial images images/terrain \( $(findfilterflags) -o -name '*.png' -and -not -name 'bar-energy-unmoved.png' -print \) ) | while read p; do \
 	  $(w_preparefileinstall) \

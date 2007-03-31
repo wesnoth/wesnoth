@@ -28,9 +28,6 @@ AC_CONFIG_COMMANDS([src/wesconfig.h],
 # define VERSION "]WESNOTH_VERSION["
 # define WESNOTH_DEFAULT_SERVER "]DEFAULT_SERVER["
 # define PACKAGE "wesnoth"
-# ifndef LOCALEDIR
-#  define LOCALEDIR "translations"
-# endif
 #endif
 
 #endif
@@ -46,7 +43,6 @@ AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([1.9 tar-ustar foreign])
-AM_GNU_GETTEXT([external])
 AC_PROG_RANLIB
 
 #######################################################################
@@ -130,30 +126,6 @@ AC_ARG_WITH([datadir-name],
 		esac])
 AC_SUBST([DATADIR])
 
-#LOCALEDIR="$datadir/locale"
-LOCALEDIR=translations
-AC_ARG_WITH([localedir],
-            AS_HELP_STRING([--with-localedir@<:@=DIR@:>@], [install locale data under dir @<:@translations@:>@]),
-	      [case "${withval}" in
-	       yes)
-			LOCALEDIR="translations"
-			;;
-		no)
-			;;
-		*)
-			LOCALEDIR="${withval}"
-			;;
-		esac])
-AC_SUBST([LOCALEDIR])
-
-case "`eval echo \"$LOCALEDIR\"`" in
-/*) FULLLOCALEDIR="$LOCALEDIR"; HAS_RELATIVE_LOCALEDIR=0 ;;
-*)  FULLLOCALEDIR='${datadir}/${DATADIR}/${LOCALEDIR}'; HAS_RELATIVE_LOCALEDIR=1 ;;
-esac
-AC_SUBST([FULLLOCALEDIR])
-AC_SUBST([HAS_RELATIVE_LOCALEDIR])
-
-
 AC_ARG_ENABLE([game],
               AS_HELP_STRING([--disable-game], [disable compilation of game]),
 	      [game=$enableval],
@@ -222,11 +194,6 @@ AC_ARG_ENABLE([gnome2],
 		  [gnome2=$enableval],
 		  [gnome2=yes])
 
-AC_ARG_ENABLE([dummy-locales],
-              AS_HELP_STRING([--enable-dummy-locales], [enable installation of Wesnoth own private locales]),
-              [dummylocales=$enableval],
-              [dummylocales=no])
-
 AC_ARG_WITH([preferences-dir],
               AS_HELP_STRING([--with-preferences-dir], [use a non-default preferences directory (.wesnoth on unix)]),
               [prefsdir=$withval
@@ -247,13 +214,7 @@ AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
-AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes])
-AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
-
-if test x$dummylocales = xyes; then
-  AC_DEFINE([USE_DUMMYLOCALES],,[Define if the game should not use system locales])
-fi
 
 if test x$internaldata = xyes; then
   AC_DEFINE([USE_INTERNAL_DATA],[],[Define if translations should be placed inside app, for Mac OS X])
@@ -809,42 +770,6 @@ fi
 
 
 #######################################################################
-# Tune gettext stuff for our needs                                    #
-#######################################################################
-
-case $srcdir in
-/*) topdir=$srcdir ;;
-*)  topdir=`pwd`/$srcdir ;;
-esac
-for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
-do
-    # Symlinks to the single copy of Makefile.in.in
-    echo "creating po/$domain/Makefile.in.in"
-    mkdir -p po/$domain
-    rm -f po/$domain/Makefile.in.in
-    ln -s "$topdir/po/Makefile.in.in" "po/$domain/Makefile.in.in"
-done
-
-AC_CONFIG_COMMANDS([translations],
-[rm -rf translations
-case $srcdir in
-/*) topdir=$srcdir ;;
-*)  topdir=`pwd`/$srcdir ;;
-esac
-for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
-do
-    # Symlinks that allow message catalogs to be used from build tree
-    if test -w $srcdir; then
-	for lang in `cat $srcdir/po/$domain/LINGUAS`
-	do
-	    mkdir -p $srcdir/translations/$lang/LC_MESSAGES
-	    rm -f $srcdir/translations/$lang/LC_MESSAGES/$domain.mo
-	    ln -s $topdir/po/$domain/$lang.gmo $srcdir/translations/$lang/LC_MESSAGES/$domain.mo
-	done
-    fi
-done])
-
-#######################################################################
 # Data file substitution.                                             #
 #######################################################################
 
@@ -860,17 +785,6 @@ AC_SUBST([SOUND_FILES])
 
 
 AC_CONFIG_FILES([Makefile
-		 po/Makefile
-		 po/wesnoth/Makefile.in
-		 po/wesnoth-editor/Makefile.in
-		 po/wesnoth-lib/Makefile.in
-		 po/wesnoth-tutorial/Makefile.in
-		 po/wesnoth-httt/Makefile.in
-		 po/wesnoth-ei/Makefile.in
-		 po/wesnoth-trow/Makefile.in
-		 po/wesnoth-tb/Makefile.in
-                 po/wesnoth-tsg/Makefile.in
-		 po/wesnoth-utbs/Makefile.in
 		 m4/Makefile
 		 icons/Makefile
 		 src/Makefile

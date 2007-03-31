@@ -254,14 +254,12 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	static const char* button_labels[] = { N_("TitleScreen button^Tutorial"),
 					       N_("TitleScreen button^Campaign"),
 					       N_("TitleScreen button^Load"),
-					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
 					       N_("About"),
 						   N_("TitleScreen button^Quit") };
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
 						    N_("Load a single player saved game"),
-						    N_("Change the language"),
 						    N_("Configure the game's settings"),
 						    N_("View the credits"),
 						    N_("Quit the game") };

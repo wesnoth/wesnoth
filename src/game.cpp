@@ -1164,12 +1164,6 @@ int play_game(int argc, char** argv)
 			if(game.new_campaign() == false) {
 				continue;
 			}
-		} else if(res == gui::CHANGE_LANGUAGE) {
-			if(game.change_language() == false) {
-				tips_of_day.clear();
-				continue;
-			}
-			tips_of_day.clear();
 		} else if(res == gui::EDIT_PREFERENCES) {
 			game.show_preferences();
 			continue;
