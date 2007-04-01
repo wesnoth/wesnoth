@@ -787,8 +787,6 @@ AC_SUBST([SOUND_FILES])
 AC_CONFIG_FILES([Makefile
 		 m4/Makefile
 		 icons/Makefile
-		 src/Makefile
-		 doc/Makefile
-		 doc/man/Makefile])
+		 src/Makefile])
 
 AC_OUTPUT
