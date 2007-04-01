@@ -71,8 +71,12 @@ void increment_chunk_usage(Mix_Chunk* mcp) {
 }
 
 void decrement_chunk_usage(Mix_Chunk* mcp) {
-	if(mcp && --(chunk_usage[mcp]) == 0) {
+	if(mcp == NULL) return;
+	std::map< Mix_Chunk*, int >::iterator this_usage = chunk_usage.find(mcp);
+	wassert(this_usage != chunk_usage.end());
+	if(--(this_usage->second) == 0) {
 		Mix_FreeChunk(mcp);
+		chunk_usage.erase(this_usage);
 	}
 }
 
