@@ -144,7 +144,7 @@ void playmp_controller::play_human_turn(){
 					const bool bell_on = preferences::turn_bell();
 					if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
 						preferences::set_turn_bell(true);
-						sound::play_bell("bell.wav");
+						sound::play_bell(game_config::sounds::turn_bell);
 						preferences::set_turn_bell(bell_on);
 					}
 				}
