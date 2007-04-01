@@ -345,8 +345,7 @@ public:
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	//function which returns true if location (x,y) is covered in shroud.
-	bool shrouded(int x, int y) const
-		{ return team_valid() ? teams_[currentTeam_].shrouded(x,y) : false; }
+	bool shrouded(int x, int y) const;
 
 	bool fogged(int x, int y) const
 		{ return team_valid() ? teams_[currentTeam_].fogged(x,y) : false; }

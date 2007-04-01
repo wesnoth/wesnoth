@@ -2346,6 +2346,15 @@ void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 	debugHighlights_[loc] += amount;
 }
 
+bool display::shrouded(int x, int y) const
+{
+	if (x <= map_.x() && y <= map_.y()) {
+		return team_valid() ? teams_[currentTeam_].shrouded(x,y) : false;
+	} else {
+		return true;
+	}
+}
+
 gui::button* display::find_button(const std::string& id)
 {
 	for (size_t i = 0; i < buttons_.size(); ++i) {
