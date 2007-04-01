@@ -46,6 +46,10 @@ struct time_of_day
 	//the colour modifications that should
 	//be made to the game board to reflect the time of day.
 	int red, green, blue;
+
+	// list of "ambient" sounds associated with this time_of_day,
+	// played at the beginning of turn
+	std::string sounds;
 };
 
 struct wml_menu_item

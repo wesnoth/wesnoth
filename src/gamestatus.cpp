@@ -127,7 +127,8 @@ time_of_day::time_of_day(const config& cfg)
 			       image_mask(cfg["mask"]),
                    red(atoi(cfg["red"].c_str())),
                    green(atoi(cfg["green"].c_str())),
-                   blue(atoi(cfg["blue"].c_str()))
+                   blue(atoi(cfg["blue"].c_str())),
+		   sounds(cfg["sound"])
 {
 }
 
@@ -162,11 +163,9 @@ void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 		normal_times.push_back(time_of_day(**t));
 	}
 
-
-	if ( normal_times.empty() )
+	if(normal_times.empty())
 	{
 		// Makeing sure we have at least default time
-
 		config dummy_cfg;
 		normal_times.push_back(time_of_day(dummy_cfg));
 	}
@@ -244,7 +243,6 @@ void gamestatus::write(config& cfg) const
 
 /// returns time of day object in the turn 
 /// Correct time is calculated from current time.
-
 time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 {
 	wassert(!times_.empty());
