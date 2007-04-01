@@ -93,7 +93,7 @@ bool show_intro_part(display &disp, const config& part,
 	gui::button next_button(video,_("Next") + std::string(">>>"));
 	gui::button skip_button(video,_("Skip"));
 
-	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
+	draw_solid_tinted_rectangle(0,0,video.getx(),video.gety(),
 			0,0,0,1.0,video.getSurface());
 
 
