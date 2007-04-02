@@ -72,7 +72,6 @@ namespace {
 		if (zoom % 4 != 0) {
 			zoom = zoom - zoom % 4 + 4;
 		}
-		//FIXME: the next minimum cause some problem with large screen or small map. But don't use it cause a forced zoom on these.
 		return minimum<int>(zoom,DefaultZoom);
 	}
 
@@ -1388,9 +1387,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 	surface const dst(screen_.getSurface());
 
-	//FIXME : maybe move the "out if the map" cases in shrouded()
-	// but for the moment it's used here only for graphical purposes (border map glitches)
-	const bool is_shrouded = shrouded(loc.x, loc.y) || loc.x > map_.x() || loc.y > map_.y();
+	const bool is_shrouded = shrouded(loc.x, loc.y);
 	t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
 
 	if(!is_shrouded) {
@@ -2346,9 +2343,11 @@ void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 	debugHighlights_[loc] += amount;
 }
 
+//NOTE : Hex outside the map are displayed as shrouded.
+//So they are updated and the shroud-transition soften the edge of the map
 bool display::shrouded(int x, int y) const
 {
-	if (x <= map_.x() && y <= map_.y()) {
+	if (x >= -1 && y >= -1 && x <= map_.x() && y <= map_.y()) {
 		return team_valid() ? teams_[currentTeam_].shrouded(x,y) : false;
 	} else {
 		return true;
