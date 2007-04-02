@@ -512,7 +512,7 @@ double display::zoom(int amount)
 		draw();
 	}
 
-	return double(zoom_)/double(DefaultZoom);
+	return double(zoom_)/double(image::tile_size);
 }
 
 void display::screenshot()
@@ -1684,7 +1684,7 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 	if(str.empty() == false) {
 		const SDL_Rect& rect = map_area();
 
-		const int font_size = font::SIZE_PLUS * zoom_ / DefaultZoom;
+		const int font_size = static_cast<int>(font::SIZE_PLUS * zoom());
 		const SDL_Rect& text_area = font::text_area(str,font_size);
 		const int x = xloc + zoom_/2 - text_area.w/2;
 		const int y = yloc + zoom_/2 - text_area.h/2;

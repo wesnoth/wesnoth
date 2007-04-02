@@ -55,8 +55,7 @@ int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
 std::string image_mask;
 
-const int tile_size = 72;
-int zoom = tile_size;
+int zoom = image::tile_size;
 
 //The "pointer to surfaces" vector is not cleared anymore (the surface are
 //still freed, of course.) I do not think it is a problem, as the number of

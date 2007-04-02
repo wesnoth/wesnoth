@@ -31,6 +31,8 @@
 /// - unmasked: images are scaled, but have no time of day masking applied to them
 /// - brightened: images are scaled and brighter than normal.
 namespace image {
+	const int tile_size = 72;
+
 	template<typename T>
 	struct cache_item {
 		cache_item() : loaded(false), item() {}
