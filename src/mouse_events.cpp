@@ -673,9 +673,10 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 	minimap_scrolling_ = false;
 	dragging_ = false;
 	dragging_started_ = false;
-	update_cursor_ = false;
+	update_cursor_ = true;
 	drag_from_x_ = 0;
 	drag_from_y_ = 0;
+	last_hex_ = gamemap::location();
 	last_nearest_ = gamemap::location::NORTH;
 	last_second_nearest_ = gamemap::location::NORTH;
 	enemy_paths_ = false;
@@ -725,7 +726,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	// Fire the drag & drop only after minimal drag distance
 	// or when we quit the initial hex.
 	const int drag_distance = maximum<int>(abs(drag_from_x_- x), abs(drag_from_y_- y));
-	if (dragging_ && !dragging_started_ && (drag_distance > 3 || new_hex != last_hex_)) {
+	if (dragging_ && !dragging_started_ && drag_distance > 3) {
 		dragging_started_ = true;
 		update_cursor_ = true;
 	}
