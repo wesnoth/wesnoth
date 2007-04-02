@@ -1683,8 +1683,14 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 
 	if(str.empty() == false) {
 		const SDL_Rect& rect = map_area();
-
+#ifdef USE_TINY_GUI
+		// FIXME: This 16/9 must be defined elsewhere,
+		// It's the ratio of the font size bewteen the two gui.
+		// It makes the text fill the hex like it does in the normal gui.
+		const int font_size = static_cast<int>(font::SIZE_PLUS * zoom() * 16/9);
+#else
 		const int font_size = static_cast<int>(font::SIZE_PLUS * zoom());
+#endif
 		const SDL_Rect& text_area = font::text_area(str,font_size);
 		const int x = xloc + zoom_/2 - text_area.w/2;
 		const int y = yloc + zoom_/2 - text_area.h/2;
