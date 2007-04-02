@@ -108,6 +108,14 @@ void clean_autosaves(const std::string &label)
 	}
 }
 
+void ask_about_autosaves(display& disp, std::string& label){
+	const int autosave_res = gui::show_dialog(disp, NULL, _("Autosaves"), 
+		_("Do you want to delete the autosaves of this scenario?"), gui::YES_NO);
+	if (autosave_res == 0){
+		clean_autosaves(label);
+	}
+}
+
 LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_config,
 		const game_data& units_data, CVideo& video,
 		upload_log &log,
@@ -296,6 +304,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				                 _("Defeat"),
 				                 _("You have been defeated!"),
 				                 gui::OK_ONLY);
+				//Make sure the user gets an opportunity to delete his autosaves
+				ask_about_autosaves(disp, state.label);
 			}
 			if(res == QUIT && io_type == IO_SERVER) {
 					config end;
@@ -342,6 +352,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				res = VICTORY;
 				save_game_after_scenario = false;
 			}
+			if(res != VICTORY)
+				return res;
 		} catch(game::load_game_failed& e) {
 			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
 			return QUIT;
@@ -352,19 +364,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
 			return QUIT;
 		}
-
-		//This is the end either of the multiplayer scenario or the last campaign mission
-		//or the user has been defeated. Make sure he gets an opportunity to delete the autosaves.
-		if ((next_scenario == "") || (res != VICTORY)){
-			const int autosave_res = gui::show_dialog(disp, NULL, _("Autosaves"), 
-				_("Do you want to delete the autosaves of this scenario?"), gui::YES_NO);
-			if (autosave_res == 0){
-				clean_autosaves(state.label);
-			}
-		}
-
-		if(res != VICTORY)
-			return res;
 
 		//if the scenario hasn't been set in-level, set it now.
 		if(state.scenario == current_scenario)
@@ -415,7 +414,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 						continue;
 					}
 
-					/*Upadate side info to match current_player info to
+					/*Update side info to match current_player info to
 					  allow it taking the side in next scenario and to be
 					  set in the players list on side server */
 					controller_map::const_iterator ctr = controllers.find(id);
@@ -502,6 +501,11 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		return QUIT;
 	}
 
+	if (state.campaign_type == "scenario"){
+		//This is the last scenario of the campaign.
+		//Make sure the user gets an opportunity to delete his autosaves
+		ask_about_autosaves(disp, state.label);
+	}
 	return VICTORY;
 }
 
