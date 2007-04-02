@@ -83,6 +83,23 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 				state.variables = *state.snapshot.child("variables");
 			}
 		}
+
+		//We also need to take into account, that the reload could take place with different players.
+		//If so, they are substituted now.
+		const config::child_list& snapshot_sides = state.snapshot.get_children("side");
+		const config::child_list& level_sides = level.get_children("side");
+		for(config::child_list::const_iterator side = snapshot_sides.begin(); side != snapshot_sides.end(); ++side) {
+			for(config::child_list::const_iterator lside = level_sides.begin(); lside != level_sides.end(); ++lside) {
+				if ( ((**side)["side"] == (**lside)["side"]) 
+					&& ((**side)["current_player"] != (**lside)["current_player"]) ){
+					(**side)["current_player"] = (**lside)["current_player"];
+					(**side)["description"] = (**lside)["description"];
+					(**side)["save_id"] = (**lside)["save_id"];
+					(**side)["controller"] = (**lside)["controller"];
+					break;
+				}
+			}
+		}
 	}
 
 }
