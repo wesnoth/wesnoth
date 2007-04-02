@@ -85,13 +85,13 @@ SDL_Cursor* create_cursor(surface surf)
 	return SDL_CreateCursor(&data[0],&mask[0],cursor_width,nsurf->h,0,0);
 }
 
-SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
 
 //this array must have members corresponding to cursor::CURSOR_TYPE enum members
 #ifdef __APPLE__
-const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png" };
+const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
 #else
-const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png"  };
+const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
 #endif
 
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
@@ -141,10 +141,19 @@ manager::~manager()
 	SDL_ShowCursor(SDL_ENABLE);
 }
 
+// Use a transparent cursor to hide it
+void hide_cursor()
+{
+	SDL_Cursor* const cursor = get_cursor(cursor::NO_CURSOR);
+	SDL_SetCursor(cursor);
+}
+
 void use_colour(bool value)
 {
+	// NOTE: Disable the cursor seems to cause slow mouse in fullscreen.
 	if(game_config::editor == false) {
-		SDL_ShowCursor(value ? SDL_DISABLE : SDL_ENABLE);
+		//SDL_ShowCursor(value ? SDL_DISABLE : SDL_ENABLE);
+		value ?	hide_cursor() : set(current_cursor);
 	}
 }
 
@@ -155,11 +164,15 @@ void set(CURSOR_TYPE type)
 	if(type == NUM_CURSORS) {
 		return;
 	}
-
-	SDL_Cursor* const cursor = get_cursor(type);
-	if(cursor != NULL) {
-		SDL_SetCursor(cursor);
+	if (use_colour_cursors()) {
+		hide_cursor();
+	} else {
+		SDL_Cursor* const cursor = get_cursor(type);
+		if(cursor != NULL) {
+			SDL_SetCursor(cursor);
+		}
 	}
+	
 }
 
 void set_focus(bool focus)
