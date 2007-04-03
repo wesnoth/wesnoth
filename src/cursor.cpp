@@ -99,6 +99,7 @@ cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
 int cursor_x = -1, cursor_y = -1;
 surface cursor_buf = NULL;
 bool have_focus = true;
+bool hide_bw = false;
 
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
@@ -141,19 +142,14 @@ manager::~manager()
 	SDL_ShowCursor(SDL_ENABLE);
 }
 
-// Use a transparent cursor to hide it
-void hide_cursor()
-{
-	SDL_Cursor* const cursor = get_cursor(cursor::NO_CURSOR);
-	SDL_SetCursor(cursor);
-}
-
 void use_colour(bool value)
 {
 	// NOTE: Disable the cursor seems to cause slow mouse in fullscreen.
+	// So we just use a transparent one
 	if(game_config::editor == false) {
 		//SDL_ShowCursor(value ? SDL_DISABLE : SDL_ENABLE);
-		value ?	hide_cursor() : set(current_cursor);
+		hide_bw = value;
+		set(current_cursor);
 	}
 }
 
@@ -164,15 +160,10 @@ void set(CURSOR_TYPE type)
 	if(type == NUM_CURSORS) {
 		return;
 	}
-	if (use_colour_cursors()) {
-		hide_cursor();
-	} else {
-		SDL_Cursor* const cursor = get_cursor(type);
-		if(cursor != NULL) {
-			SDL_SetCursor(cursor);
-		}
+	SDL_Cursor* cursor = get_cursor(hide_bw ? cursor::NO_CURSOR : type);
+	if (cursor != NULL) {
+		SDL_SetCursor(cursor);
 	}
-	
 }
 
 void set_focus(bool focus)
