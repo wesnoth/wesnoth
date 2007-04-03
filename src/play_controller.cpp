@@ -525,6 +525,11 @@ void play_controller::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_KEYDOWN:
+		if(menu_handler_.get_textbox().active() == false) {
+			hotkey::key_event(*gui_,event.key,this);
+	}
+
+	// fall-through
 	case SDL_KEYUP:
 
 		//if the user has pressed 1 through 9, we want to show how far
