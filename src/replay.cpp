@@ -405,14 +405,22 @@ void replay::end_turn()
 	config* const cmd = add_command();
 	cmd->add_child("end_turn");
 }
+
 void replay::add_event(const std::string& name, const gamemap::location& loc)
 {
 	config* const cmd = add_command();
 	config& ev = cmd->add_child("fire_event");
 	ev["raise"] = name;
-	loc.write(ev);
+	if(loc.valid()) {
+		char buf[50];
+		snprintf(buf,sizeof(buf),"%d", loc.x+1);
+		ev["x1"] = buf;
+		snprintf(buf,sizeof(buf),"%d", loc.y+1);
+		ev["y1"] = buf;
+	}
 	(*cmd)["undo"] = "no";
 }
+
 void replay::add_checksum_check(const gamemap::location& loc)
 {
 	if(! game_config::mp_debug) {
@@ -1060,8 +1068,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			//established and therefore we fire those events inside play_controller::init_side
 			if ((event != "side turn") && (event != "turn 1") && (event != "new_turn")){
 				gamemap::location ev1;
-				ev1.x = lexical_cast_default<int>((*child)["x"].value(), -1);
-				ev1.y = lexical_cast_default<int>((*child)["y"].value(), -1);
+				ev1.x = lexical_cast_default<int>((*child)["x1"].value(), 0) - 1;
+				ev1.y = lexical_cast_default<int>((*child)["y1"].value(), 0) - 1;
 				game_events::fire(event, ev1);
 			}
 		} else {
