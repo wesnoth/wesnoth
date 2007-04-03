@@ -405,11 +405,12 @@ void replay::end_turn()
 	config* const cmd = add_command();
 	cmd->add_child("end_turn");
 }
-void replay::add_event(const std::string& name)
+void replay::add_event(const std::string& name, const gamemap::location& loc)
 {
 	config* const cmd = add_command();
 	config& ev = cmd->add_child("fire_event");
 	ev["raise"] = name;
+	loc.write(ev);
 	(*cmd)["undo"] = "no";
 }
 void replay::add_checksum_check(const gamemap::location& loc)
@@ -1058,7 +1059,10 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			//exclude these events here, because in a replay proper time of execution can't be
 			//established and therefore we fire those events inside play_controller::init_side
 			if ((event != "side turn") && (event != "turn 1") && (event != "new_turn")){
-				game_events::fire(event);
+				gamemap::location ev1;
+				ev1.x = lexical_cast_default<int>((*child)["x"].value(), -1);
+				ev1.y = lexical_cast_default<int>((*child)["y"].value(), -1);
+				game_events::fire(event, ev1);
 			}
 		} else {
 			if(! cfg->child("checksum")) {

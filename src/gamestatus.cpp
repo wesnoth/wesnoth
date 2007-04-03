@@ -420,7 +420,8 @@ player_info read_player(const game_data& data, const config* cfg)
 	return res;
 }
 
-game_state::game_state(const game_data& data, const config& cfg) : difficulty("NORMAL"), recursive_(false)
+game_state::game_state(const game_data& data, const config& cfg) 
+: difficulty("NORMAL"), last_selected(gamemap::location::null_location), recursive_(false)
 {
 	log_scope("read_game");
 	label = cfg["label"];
@@ -1371,6 +1372,7 @@ game_state& game_state::operator=(const game_state& state)
 	replay_data = state.replay_data;
 	starting_pos = state.starting_pos;
 	snapshot = state.snapshot;
+	last_selected = state.last_selected;
 	set_variables(state.get_variables());
 	recursive_ = state.recursive_;
 

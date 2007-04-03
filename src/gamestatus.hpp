@@ -78,7 +78,8 @@ struct player_info
 class game_state : public variable_set
 {
 public:
-	game_state() :  difficulty("NORMAL"), recursive_(false) {}
+	game_state() : difficulty("NORMAL"), last_selected(gamemap::location::null_location),
+		recursive_(false) {}
 	game_state(const game_state& state);
 	game_state(const game_data& data, const config& cfg);
 
@@ -137,6 +138,8 @@ public:
 	//to view a replay, the game's settings are read in from this object
 	config snapshot;
 
+	//the last location where a select event fired.
+	gamemap::location last_selected;
 private:
 	void get_variable_internal(const std::string& key, config& cfg,
 			t_string** varout, config** cfgout);

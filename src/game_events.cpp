@@ -59,6 +59,7 @@ game_state* state_of_game = NULL;
 const game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
 int floating_label = 0;
+
 typedef Uint32 msecs;
 const msecs prevent_misclick_duration = 10;
 const msecs average_frame_time = 30;
@@ -2468,6 +2469,10 @@ bool pump()
 
 			snprintf(buf,sizeof(buf),"%d",ev.loc2.y+1);
 			state_of_game->set_variable("y2", buf);
+
+			if(event_name == "select") {
+				state_of_game->last_selected = ev.loc1;
+			}
 		}
 
 		while(i.first != i.second) {

@@ -60,7 +60,8 @@ public:
 	void clear_labels(const std::string&);
 	void add_rename(const std::string& name, const gamemap::location& loc);
 	void end_turn();
-	void add_event(const std::string& name);
+	void add_event(const std::string& name,
+		const gamemap::location& loc=gamemap::location::null_location);
 	void add_unit_checksum(const gamemap::location& loc,config* const cfg);
 	void add_checksum_check(const gamemap::location& loc);
 
