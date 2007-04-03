@@ -1354,12 +1354,36 @@ void calculate_healing(display& disp, const gamemap& map,
 		std::string curing;
 
 		unit_ability_list heal = i->second.get_abilities("heals",i->first);
-		// Only consider healers on side which is starting now
+
+		const bool is_poisoned = utils::string_bool(i->second.get_state("poisoned"));
+		if(is_poisoned && i->second.side() == side) {
+			// Remove the enemies' healers to determine if poison is slowed or cured
+			for(std::vector<std::pair<config*,gamemap::location> >::iterator h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
+				unit_map::iterator potential_healer = units.find(h_it->second);
+				wassert(potential_healer != units.end());
+				if(teams[potential_healer->second.side()-1].is_enemy(side)) {
+					h_it = heal.cfgs.erase(h_it);
+				} else {
+					++h_it;
+				}
+			}
+			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
+				if((*heal_it->first)["poison"] == "cured") {
+					curer = units.find(heal_it->second);
+					curing = "cured";
+				} else if(curing != "cured" && (*heal_it->first)["poison"] == "slowed") {
+					curer = units.find(heal_it->second);
+					curing = "slowed";
+				}
+			}
+		}
+		
+		// For heal amounts, only consider healers on side which is starting now
 		// remove all healers not on this side
 		for(std::vector<std::pair<config*,gamemap::location> >::iterator h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
 			unit_map::iterator potential_healer = units.find(h_it->second);
 			wassert(potential_healer != units.end());
-			if(potential_healer->second.side()!=side) {
+			if(potential_healer->second.side() != side) {
 				h_it = heal.cfgs.erase(h_it);
 			} else {
 				++h_it;
@@ -1368,16 +1392,6 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		unit_abilities::effect heal_effect(heal,0,false);
 		healing = heal_effect.get_composite_value();
-
-		for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
-			if((*heal_it->first)["poison"] == "cured") {
-				curer = units.find(heal_it->second);
-				curing = "cured";
-			} else if(curing != "cured" && (*heal_it->first)["poison"] == "slowed") {
-				curer = units.find(heal_it->second);
-				curing = "slowed";
-			}
-		}
 
 		for(std::vector<unit_abilities::individual_effect>::const_iterator heal_loc = heal_effect.begin(); heal_loc != heal_effect.end(); ++heal_loc) {
 			healers.push_back(units.find(heal_loc->loc));
@@ -1417,7 +1431,7 @@ void calculate_healing(display& disp, const gamemap& map,
 				}
 			}
 		}
-		if(utils::string_bool(i->second.get_state("poisoned"))) {
+		if(is_poisoned) {
 			if(curing == "cured") {
 				i->second.set_state("poisoned","");
 				healing = 0;
