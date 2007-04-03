@@ -31,6 +31,7 @@ enum CURSOR_TYPE { NORMAL, WAIT, MOVE, ATTACK, HYPERLINK, MOVE_DRAG, ATTACK_DRAG
 void use_colour(bool value);
 
 void set(CURSOR_TYPE type);
+void set_dragging(bool drag);
 
 void draw(surface screen);
 void undraw(surface screen);

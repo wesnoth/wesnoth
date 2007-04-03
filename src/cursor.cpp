@@ -89,10 +89,13 @@ SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, N
 
 //this array must have members corresponding to cursor::CURSOR_TYPE enum members
 #ifdef __APPLE__
-const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
+const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
 #else
-const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
+const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
 #endif
+
+const std::string colour_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
+
 
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
 
@@ -105,7 +108,7 @@ SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
 	if(cache[type] == NULL) {
 		static const std::string prefix = "cursors-bw/";
-		const surface surf(image::get_image(prefix + images[type],image::UNSCALED));
+		const surface surf(image::get_image(prefix + bw_images[type],image::UNSCALED));
 		cache[type] = create_cursor(surf);
 	}
 
@@ -166,6 +169,26 @@ void set(CURSOR_TYPE type)
 	}
 }
 
+void set_dragging(bool drag)
+{
+	switch(current_cursor) {
+		case MOVE:
+			if (drag) cursor::set(MOVE_DRAG);
+			break;
+		case ATTACK:
+			if (drag) cursor::set(ATTACK_DRAG);
+			break;
+		case MOVE_DRAG:
+			if (!drag) cursor::set(MOVE);
+			break;
+		case ATTACK_DRAG:
+			if (!drag) cursor::set(ATTACK);
+			break;
+		default:
+			break;
+	}
+}
+
 void set_focus(bool focus)
 {
 	have_focus = focus;
@@ -196,14 +219,8 @@ void draw(surface screen)
 		return;
 	}
 
-	int new_cursor_x, new_cursor_y;
-	SDL_GetMouseState(&new_cursor_x,&new_cursor_y);
-
-	const bool must_update = new_cursor_x != cursor_x || new_cursor_y != cursor_y;
-	cursor_x = new_cursor_x;
-	cursor_y = new_cursor_y;
-
-	const surface surf(image::get_image("cursors/" + images[current_cursor],image::UNSCALED));
+	//FIXME: don't parse the file path every time
+	const surface surf(image::get_image("cursors/" + colour_images[current_cursor],image::UNSCALED));
 	if(surf == NULL) {
 		//fall back to b&w cursors
 		std::cerr << "could not load colour cursors. Falling back to hardware cursors\n";
@@ -222,6 +239,12 @@ void draw(surface screen)
 			return;
 		}
 	}
+
+	int new_cursor_x, new_cursor_y;
+	SDL_GetMouseState(&new_cursor_x,&new_cursor_y);
+	const bool must_update = new_cursor_x != cursor_x || new_cursor_y != cursor_y;
+	cursor_x = new_cursor_x;
+	cursor_y = new_cursor_y;
 
 	//save the screen area where the cursor is being drawn onto the back buffer
 	SDL_Rect area = {cursor_x,cursor_y,surf->w,surf->h};
