@@ -610,17 +610,11 @@ void check_checksums(display& disp,const unit_map& units,const config& cfg)
 		gamemap::location loc(**ci);
 		unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
-			std::stringstream message;
-			message << "non existant unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
-			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE,false);
 			continue;
 		}
 		std::string check;
 		u->second.write_checksum(check);
 		if(check != (**ci)["value"]) {
-			std::stringstream message;
-			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE,false);
 		}
 	}
 }
@@ -701,10 +695,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				bool is_lobby_join = (speaker_name == "server"
 							&& (*child)["message"].value().find("has logged into the lobby") != std::string::npos);
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
-				if((!replayer.is_skipping() || is_whisper) && (!is_lobby_join || preferences::lobby_joins())) {
+				if((!replayer.is_skipping() || is_whisper) && (!is_lobby_join)) {
 					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
-					disp.add_chat_message(speaker_name,side,(*child)["message"],
-										  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE, preferences::message_bell());
 				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {

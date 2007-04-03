@@ -153,11 +153,6 @@ void set_grid(bool ison)
 	}
 }
 
-void set_lobby_joins(bool ison)
-{
-	_set_lobby_joins(ison);
-}
-
 void set_colour_cursors(bool value)
 {
 	_set_colour_cursors(value);
@@ -193,17 +188,14 @@ private:
 	const config* get_advanced_pref() const;
 	void set_advanced_menu();
 
-	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_, chat_lines_slider_,
-	            buffer_size_slider_;
+	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_, buffer_size_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
-	            show_grid_button_, show_lobby_joins_button_, show_floating_labels_button_, turn_dialog_button_,
+	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 	            show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
-	            flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_,
-	            advanced_sound_button_, normal_sound_button_,
+	            flip_time_button_, advanced_button_, sound_button_, music_button_, advanced_sound_button_, normal_sound_button_,
 	            sample_rate_button1_, sample_rate_button2_, sample_rate_button3_, confirm_sound_button_;
-	gui::label music_label_, sound_label_, scroll_label_, gamma_label_, chat_lines_label_,
-	           sample_rate_label_, buffer_size_label_;
+	gui::label music_label_, sound_label_, scroll_label_, gamma_label_,  sample_rate_label_, buffer_size_label_;
 	gui::textbox sample_rate_input_;
 
 	unsigned slider_label_width_;
@@ -211,7 +203,7 @@ private:
 	gui::menu advanced_;
 	int advanced_selection_;
 
-	enum TAB { GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB,
+	enum TAB { GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, ADVANCED_TAB,
 	           /*extra tab*/
 	           ADVANCED_SOUND_TAB};
 	TAB tab_;
@@ -222,13 +214,12 @@ private:
 preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
 	  music_slider_(disp.video()), sound_slider_(disp.video()),
-	  scroll_slider_(disp.video()), gamma_slider_(disp.video()), chat_lines_slider_(disp.video()),
+	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
 	  buffer_size_slider_(disp.video()),
 	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
-	  show_lobby_joins_button_(disp.video(), _("Show Lobby Joins"), gui::button::TYPE_CHECK),
 	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
@@ -243,7 +234,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
-	  chat_timestamp_button_(disp.video(), _("Chat Timestamping"), gui::button::TYPE_CHECK),
 	  advanced_sound_button_(disp.video(), _("Advanced Mode")),
 	  normal_sound_button_(disp.video(), _("Normal Mode")),
 	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_CHECK),
@@ -252,7 +242,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  confirm_sound_button_(disp.video(), _("Apply")),
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")),
-	  chat_lines_label_(disp.video(), ""),
 	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(),""),
 	  sample_rate_input_(disp.video(), 70),
 	  slider_label_width_(0), advanced_(disp.video(),
@@ -311,16 +300,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	scroll_slider_.set_value(scroll_speed());
 	scroll_slider_.set_help_string(_("Change the speed of scrolling around the map"));
 
-        chat_lines_slider_.set_min(1);
-        chat_lines_slider_.set_max(20);
-        chat_lines_slider_.set_value(chat_lines());
-        chat_lines_slider_.set_help_string(_("Set the amount of chat lines shown"));
-        // Have the tooltip appear over the static "Chat lines" label, too.
-        chat_lines_label_.set_help_string(_("Set the amount of chat lines shown"));
-
-        chat_timestamp_button_.set_check(chat_timestamp());
-        chat_timestamp_button_.set_help_string(_("Add a timestamp to chat messages"));
-
 	gamma_button_.set_check(adjust_gamma());
 	gamma_button_.set_help_string(_("Change the brightness of the display"));
 
@@ -340,9 +319,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
-
-	show_lobby_joins_button_.set_check(lobby_joins());
-	show_lobby_joins_button_.set_help_string(_("Show messages about players joining the multiplayer lobby"));
 
 	show_floating_labels_button_.set_check(show_floating_labels());
 	show_floating_labels_button_.set_help_string(_("Show text above a unit when it is hit to display damage inflicted"));
@@ -383,13 +359,11 @@ void preferences_dialog::join()
 	sound_slider_.join();
 	scroll_slider_.join();
 	gamma_slider_.join();
-	chat_lines_slider_.join();
 	buffer_size_slider_.join();
 	fullscreen_button_.join();
 	turbo_button_.join();
 	show_ai_moves_button_.join();
 	show_grid_button_.join();
-	show_lobby_joins_button_.join();
 	show_floating_labels_button_.join();
 	turn_dialog_button_.join();
 	turn_bell_button_.join();
@@ -404,7 +378,6 @@ void preferences_dialog::join()
 	advanced_button_.join();
 	sound_button_.join();
 	music_button_.join();
-	chat_timestamp_button_.join();
 	advanced_sound_button_.join();
 	normal_sound_button_.join();
 	sample_rate_button1_.join();
@@ -415,7 +388,6 @@ void preferences_dialog::join()
 	sound_label_.join();
 	scroll_label_.join();
 	gamma_label_.join();
-	chat_lines_label_.join();
 	sample_rate_label_.join();
 	buffer_size_label_.join();
 	sample_rate_input_.join();
@@ -512,16 +484,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	const int nsb_x = rect.x + rect.w - normal_sound_button_.width() - 20;
 	normal_sound_button_.set_location(nsb_x, ypos);
 
-	// Multiplayer tab
-	ypos = rect.y + top_border;
-	chat_lines_label_.set_location(rect.x, ypos);
-	ypos += 20;
-	SDL_Rect chat_lines_rect = { rect.x + 25, ypos,
-									rect.w - 25 - right_border, 0 };
-	chat_lines_slider_.set_location(chat_lines_rect);
-	ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
-	ypos += item_interline;	show_lobby_joins_button_.set_location(rect.x, ypos);
-
 	//Advanced tab
 	ypos = rect.y + top_border;
 	advanced_.set_location(rect.x,ypos);
@@ -542,8 +504,6 @@ void preferences_dialog::process_event()
 		set_show_ai_moves(!show_ai_moves_button_.checked());
 	if (show_grid_button_.pressed())
 		set_grid(show_grid_button_.checked());
-	if (show_lobby_joins_button_.pressed())
-		set_lobby_joins(show_lobby_joins_button_.checked());
 	if (show_floating_labels_button_.pressed())
 		set_show_floating_labels(show_floating_labels_button_.checked());
 	if (video_mode_button_.pressed())
@@ -646,17 +606,8 @@ void preferences_dialog::process_event()
 	if (flip_time_button_.pressed())
 		set_flip_time(flip_time_button_.checked());
 
-        if (chat_timestamp_button_.pressed())
-                set_chat_timestamp(chat_timestamp_button_.checked());
-
 	set_scroll_speed(scroll_slider_.value());
 	set_gamma(gamma_slider_.value());
-        set_chat_lines(chat_lines_slider_.value());
-
-        // display currently select amount of chat lines
-        std::stringstream buf;
-        buf << _("Chat Lines: ") << chat_lines_slider_.value();
-        chat_lines_label_.set_text(buf.str());
 
 	if(advanced_.selection() != advanced_selection_) {
 		advanced_selection_ = advanced_.selection();
@@ -770,12 +721,6 @@ void preferences_dialog::set_selection(int index)
 	buffer_size_slider_.hide(hide_advanced_sound);
 	normal_sound_button_.hide(hide_advanced_sound);
 
-        const bool hide_multiplayer = tab_ != MULTIPLAYER_TAB;
-        chat_lines_label_.hide(hide_multiplayer);
-        chat_lines_slider_.hide(hide_multiplayer);
-        chat_timestamp_button_.hide(hide_multiplayer);
-	show_lobby_joins_button_.hide(hide_multiplayer);
-
 	const bool hide_advanced = tab_ != ADVANCED_TAB;
 	advanced_.hide(hide_advanced);
 	advanced_button_.hide(hide_advanced);
@@ -792,7 +737,6 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 	items.push_back(pre + "general.png" + sep + sgettext("Prefs section^General"));
 	items.push_back(pre + "display.png" + sep + sgettext("Prefs section^Display"));
 	items.push_back(pre + "music.png" + sep + sgettext("Prefs section^Sound"));
-	items.push_back(pre + "multiplayer.png" + sep + sgettext("Prefs section^Multiplayer"));
 	items.push_back(pre + "advanced.png" + sep + sgettext("Advanced section^Advanced"));
 
 	for(;;) {

@@ -88,9 +88,6 @@ namespace preferences {
 	bool grid();
 	void _set_grid(bool ison);
 
-	bool lobby_joins();
-	void _set_lobby_joins(bool show);
-
 	const std::string& login();
 	void set_login(const std::string& username);
 
@@ -183,13 +180,6 @@ namespace preferences {
 
 	bool flip_time();
 	void set_flip_time(bool value);
-
-	// Multiplayer functions
-	bool chat_timestamp();
-	void set_chat_timestamp(bool value);
-
-	int chat_lines();
-	void set_chat_lines(int lines);
 
 	bool compress_saves();
 

@@ -287,20 +287,6 @@ void _set_grid(bool ison)
 	prefs["grid"] = (ison ? "true" : "false");
 }
 
-bool lobby_joins()
-{
-	return prefs["lobby_joins"] != "no";
-}
-
-
-void _set_lobby_joins(bool show)
-{
-	if(show)
-		prefs["lobby_joins"] = "yes";
-	else
-		prefs["lobby_joins"] = "no";
-}
-
 const std::string& login()
 {
 	t_string& res = prefs["login"];
@@ -841,34 +827,6 @@ void set_show_fps(bool value)
 bool compress_saves()
 {
 	return prefs["compress_saves"] != "no";
-}
-
-bool chat_timestamp()
-{
-	return prefs["chat_timestamp"] == "yes";
-}
-
-void set_chat_timestamp(bool value)
-{
-	prefs["chat_timestamp"] = value ? "yes" : "no";
-}
-
-int chat_lines()
-{
-	// defaults to 6 chat log lines displayed
-	static const int default_value = 6;
-	const string_map::const_iterator lines = prefs.values.find("chat_lines");
-	if(lines != prefs.values.end() && lines->second.empty() == false)
-		return atoi(lines->second.c_str());
-	else
-		return default_value;
-}
-
-void set_chat_lines(int lines)
-{
-	std::stringstream stream;
-	stream << lines;
-	prefs["chat_lines"] = stream.str();
 }
 
 std::set<std::string> &encountered_units() {

@@ -181,7 +181,6 @@ namespace gui{
 						completion_list += " ";
 						completion_list += *it;
 					}
-					gui.add_chat_message("",0,completion_list,display::MESSAGE_PRIVATE,false);
 				}
 				box_->set_text(text);
 			}

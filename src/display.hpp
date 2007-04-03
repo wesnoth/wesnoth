@@ -348,10 +348,6 @@ public:
 
 	void set_diagnostic(const std::string& msg);
 
-	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
-	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type, bool bell);
-	void clear_chat_messages() { prune_chat_messages(true); }
-
 	//function to draw the image of a unit at a certain location
 	//x,y: pixel location on screen to draw the unit
 	//image: the image of the unit
@@ -492,20 +488,6 @@ private:
 	std::set<std::string> observers_;
 
 	map_labels map_labels_;
-
-	struct chat_message
-	{
-		chat_message(int speaker, int h) : speaker_handle(speaker), handle(h), created_at(SDL_GetTicks())
-		{}
-
-		int speaker_handle;
-		int handle;
-		Uint32 created_at;
-	};
-
-	void prune_chat_messages(bool remove_all=false);
-
-	std::vector<chat_message> chat_messages_;
 
 	//if we're transitioning from one time of day to the next,
 	//then we will use these two masks on top of all hexes when we blit
