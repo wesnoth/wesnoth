@@ -726,7 +726,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	// Fire the drag & drop only after minimal drag distance
 	// or when we quit the initial hex.
 	const int drag_distance = maximum<int>(abs(drag_from_x_- x), abs(drag_from_y_- y));
-	if (dragging_ && !dragging_started_ && drag_distance > 3) {
+	if (dragging_ && !dragging_started_ && drag_distance > 10 && (SDL_GetMouseState(NULL,NULL) & SDL_BUTTON(1) != 0)) {
 		dragging_started_ = true;
 		update_cursor_ = true;
 	}
@@ -758,7 +758,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.incapacitated()) {
 				cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK) ;
 			} else  {
-				cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::NORMAL);
+				cursor::set(cursor::NORMAL);
 			}
 		} else {
 			cursor::set(cursor::NORMAL);
@@ -923,23 +923,26 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 		dragging_ = false;
+		cursor::set_dragging(false);
 		if (dragging_started_ && !browse && !commands_disabled) {
 			left_click(event, browse);
 		}
 	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
+		left_click(event, browse);
 		if (!browse && !commands_disabled) {
 			dragging_ = true;
 			drag_from_x_ = event.x;
 			drag_from_y_ = event.y;
 		}
-		left_click(event, browse);
 	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
 		// FIXME: when it's not our turn, movement gets highlighted
 		// merely by mousing over.  This hack means we don't require a
 		// two clicks to access right menu.
 		dragging_ = false;
+		dragging_started_ = false;
+		cursor::set_dragging(false);
 		if (gui_->viewing_team() == team_num_-1 && !current_paths_.routes.empty()) {
 			selected_hex_ = gamemap::location();
 			gui_->select_hex(gamemap::location());
@@ -991,12 +994,9 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		else
 			gui_->scroll(0,speed);
 	}
-
-	// call mouse_motion to update the cursor if dragging end
 	if (!dragging_ && dragging_started_) {
 		dragging_started_ = false;
-		update_cursor_ = true;
-		mouse_motion(event.x, event.y, browse);
+		cursor::set_dragging(false);
 	}
 }
 
@@ -1017,6 +1017,9 @@ bool mouse_handler::is_right_click(const SDL_MouseButtonEvent& event)
 
 void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool browse)
 {
+	dragging_ = false;
+	dragging_started_ = false;
+	cursor::set_dragging(false);
 	undo_ = false;
 	bool check_shroud = teams_[team_num_ - 1].auto_shroud_updates();
 
@@ -1099,7 +1102,8 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 								}
 								if (game_events::pump()) {
 									dragging_ = false;
-									update_cursor_ = true;
+									dragging_started_ = false;
+									cursor::set_dragging(false);
 								}
 								return;
 							}
@@ -1123,6 +1127,9 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	   hex != selected_hex_ && !browse &&
 	   enemy->second.side() != u->second.side() &&
 	   current_team().is_enemy(enemy->second.side())) {
+		dragging_ = false;
+		dragging_started_ = false;
+		cursor::set_dragging(false);
 		attack_enemy(u,enemy);
 	}
 
@@ -1131,11 +1138,17 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		     units_.count(selected_hex_) && !enemy_paths_ &&
 		     enemy == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
+		dragging_ = false;
+		dragging_started_ = false;
+		cursor::set_dragging(false);
 		move_unit_along_current_route(check_shroud);
 		if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
 			clear_undo_stack();
 		}
 	} else {
+		dragging_ = false;
+		dragging_started_ = false;
+		cursor::set_dragging(false);
 		gui_->unhighlight_reach();
 		current_paths_ = paths();
 
@@ -1165,7 +1178,8 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			}
 			if (game_events::fire("select",hex)) {
 				dragging_ = false;
-				update_cursor_ = true;
+				dragging_started_ = false;
+				cursor::set_dragging(false);
 			}
 		}
 	}
@@ -1465,7 +1479,8 @@ inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
 		show_attack_options(it);
 		if (game_events::fire("select",selected_hex_)) {
 			dragging_ = false;
-			update_cursor_ = true;
+			dragging_started_ = false;
+			cursor::set_dragging(false);
 		}
 	}
 }
