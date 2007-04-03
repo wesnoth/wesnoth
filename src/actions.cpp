@@ -1356,7 +1356,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		unit_ability_list heal = i->second.get_abilities("heals",i->first);
 
 		const bool is_poisoned = utils::string_bool(i->second.get_state("poisoned"));
-		if(is_poisoned && i->second.side() == side) {
+		if(is_poisoned) {
 			// Remove the enemies' healers to determine if poison is slowed or cured
 			for(std::vector<std::pair<config*,gamemap::location> >::iterator h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
 				unit_map::iterator potential_healer = units.find(h_it->second);
@@ -1370,7 +1370,12 @@ void calculate_healing(display& disp, const gamemap& map,
 			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
 				if((*heal_it->first)["poison"] == "cured") {
 					curer = units.find(heal_it->second);
-					curing = "cured";
+					//full curing only occurs on the healer turn (may be changed)
+					if(curer->second.side() == side) {
+						curing = "cured";
+					} else if(curing != "cured") {
+						curing = "slowed";
+					}
 				} else if(curing != "cured" && (*heal_it->first)["poison"] == "slowed") {
 					curer = units.find(heal_it->second);
 					curing = "slowed";
