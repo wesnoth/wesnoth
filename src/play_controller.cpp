@@ -374,7 +374,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	current_team.set_time_of_day(int(status_.turn()), tod);
 
 	if(team_index == first_player_ - 1)
-		sound::play_sound(tod.sounds, sound::SOUND_FX);
+		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!recorder.is_skipping()){
 		::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_index);
