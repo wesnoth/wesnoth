@@ -1296,8 +1296,8 @@ msgstr ""
 msgid "Shroud and Fog of War"
 msgstr "Oscurità e nebbia di guerra"
 
+# XXX Valutare se tradurre "shroud" come "cortina".
 #: data/help.cfg:151
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1328,6 +1328,15 @@ msgstr ""
 "unità. Ogni unità dirada i luoghi adiacenti quando si sposta (ignorando le "
 "zone di controllo e le unità nemiche).\n"
 "\n"
+"Normalmente puoi annullare il movimento di un'unità, a patto che non si sia "
+"verificato un evento dal risultato generato in modo casuale, come un "
+"combattimento o il reclutamento. Anche 'esplorazione di terreno nascosto "
+"dall'oscurità o dalla nebbia impedisce di annullare una mossa per tornare "
+"allo stato precedente. Potresti voler attivare gli «aggiornamenti ritardati "
+"dell'oscurità» dal menu delle azioni. Ciò impedisce alle unità di diradare "
+"l'oscurità o la nebbia fino al prossimo evento casuale o ad un aggiornamento "
+"manuale (effettuabile con «aggiorna oscurità ora» (o fino allla fine del "
+"turno) e quindi ti lascia la libertà di annullare la mossa."
 
 #: data/help.cfg:156
 msgid "Combat"
@@ -4779,7 +4788,6 @@ msgstr ""
 "fiumi e rovine di fortezze antiche."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:58
-#, fuzzy
 msgid "Monsters"
 msgstr "Mostri"
 
@@ -9379,6 +9387,12 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Anticamente una delle più possenti creature viventi, questo tremendo drago "
+"si è divenuto solo di ossa e tendini anneriti. Molto dopo la sua morte, è "
+"stato riportato in vita grazie agli oscuri poteri della negromanzia. Il "
+"drago scheletrico può sembrare null'altro che un mucchio di ossa, ma pochi "
+"di chi vi si sono avvicinati con tale idea hanno vissuto abbastanza a lungo "
+"per cambiare idea."
 
 #: data/units/Monster_Skeletal_Dragon.cfg:28
 msgid "jaw"
