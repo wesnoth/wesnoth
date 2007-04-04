@@ -31,7 +31,11 @@
 /// - unmasked: images are scaled, but have no time of day masking applied to them
 /// - brightened: images are scaled and brighter than normal.
 namespace image {
+#ifdef USE_TINY_GUI
+	const int tile_size = 36;
+#else
 	const int tile_size = 72;
+#endif
 
 	template<typename T>
 	struct cache_item {
