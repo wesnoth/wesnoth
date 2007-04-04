@@ -95,6 +95,9 @@ terrain_type::terrain_type(const config& cfg)
 
 	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str()) + 16;
 	submerge_ = atof(cfg["submerge"].c_str());
+#ifdef USE_TINY_GUI
+	height_adjust_ /= 2;
+#endif
 	light_modification_ = atoi(cfg["light"].c_str());
 
 	if (cfg["heals"] == "true") {
