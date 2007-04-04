@@ -1748,6 +1748,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(cfg.has_attribute("description")) {
 			mref->description = cfg["description"];
 		}
+		if(cfg.has_attribute("needs_select")) {
+			mref->needs_select = utils::string_bool(cfg["needs_select"], false);
+		}
 		if(cfg.has_child("show_if")) {
 			mref->show_if = cfg.child("show_if").get_config();
 		}
@@ -2229,6 +2232,9 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 	//the event hasn't been filtered out, so execute the handler
 	const bool res = handler.handle_event(ev);
+	if(ev.name == "select") {
+		state_of_game->last_selected = ev.loc1;
+	}
 
 	if(handler.rebuild_screen()) {
 		handler.rebuild_screen() = false;
@@ -2469,10 +2475,6 @@ bool pump()
 
 			snprintf(buf,sizeof(buf),"%d",ev.loc2.y+1);
 			state_of_game->set_variable("y2", buf);
-
-			if(event_name == "select") {
-				state_of_game->last_selected = ev.loc1;
-			}
 		}
 
 		while(i.first != i.second) {

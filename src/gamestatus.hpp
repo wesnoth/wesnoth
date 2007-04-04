@@ -58,6 +58,7 @@ struct wml_menu_item
 	std::string name;
 	std::string image;
 	t_string description;
+	bool needs_select;
 	config show_if;
 	config location_filter;
 	config command;

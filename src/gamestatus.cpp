@@ -634,6 +634,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 		new_cfg["id"]=j->first;
 		new_cfg["image"]=j->second->image;
 		new_cfg["description"]=j->second->description;
+		new_cfg["needs_select"]= (j->second->needs_select) ? "yes" : "no";
 		if(!j->second->show_if.empty())
 			new_cfg.add_child("show_if", j->second->show_if);
 		if(!j->second->location_filter.empty())
@@ -680,6 +681,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 		out.write_key_val("id", j->first);
 		out.write_key_val("image", j->second->image);
 		out.write_key_val("description", j->second->description);
+		out.write_key_val("needs_select", (j->second->needs_select) ? "yes" : "no");
 		if(!j->second->show_if.empty())
 			out.write_child("show_if", j->second->show_if);
 		if(!j->second->location_filter.empty())
@@ -1404,7 +1406,8 @@ void game_state::set_menu_items(const config::child_list& menu_items) {
 	}
 }
 
-wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) {
+wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) : needs_select(false)
+{
 	std::stringstream temp;
 	temp << "menu item";
 	if(!id.empty()) {
@@ -1414,6 +1417,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) {
 	if(cfg != NULL) {
 		image = (*cfg)["image"];
 		description = (*cfg)["description"];
+		needs_select = utils::string_bool((*cfg)["needs_select"], false);
 		config const* temp;
 		if((temp = (*cfg).child("show_if")) != NULL) show_if = *temp;
 		if((temp = (*cfg).child("location_filter")) != NULL) location_filter = *temp;
