@@ -87,7 +87,7 @@ AC_ARG_ENABLE([lite],
 	      [lite=no])
 
 AC_ARG_ENABLE([tinygui],
-              AS_HELP_STRING([--enable-tinygui], [enable GUI reductions for resolutions down to 320x240 (PDAs)]),
+              AS_HELP_STRING([--enable-tinygui], [enable GUI reductions for resolutions down to 320x240 (PDAs), resize images before installing]),
 	      [tinygui=$enableval],
 	      [tinygui=no])
 
