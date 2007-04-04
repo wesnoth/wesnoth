@@ -1767,7 +1767,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	if(!anim_) set_standing(disp,hex);
 	const t_translation::t_letter terrain = map.get_terrain(hex);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
-	const double submerge = is_flying() ? 0.0 : terrain_info.unit_submerge() * disp.zoom();
+	const double submerge = is_flying() ? 0.0 : terrain_info.unit_submerge();
 	int height_adjust = terrain_info.unit_height_adjust();
 	if (is_flying() && height_adjust <= 0) height_adjust = 0;
 	else height_adjust = int(height_adjust * disp.zoom());
