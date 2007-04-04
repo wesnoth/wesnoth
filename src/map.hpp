@@ -27,6 +27,8 @@ class unit_map;
 #include <string>
 #include <vector>
 
+#define MAX_MAP_AREA	65536
+
 //class which encapsulates the map of the game. Although the game is hexagonal,
 //the map is stored as a grid. Each type of terrain is represented by a letter.
 class gamemap
@@ -178,8 +180,9 @@ public:
 	const terrain_type& get_terrain_info(const location &loc) const
 		{ return get_terrain_info(get_terrain(loc)); }
 	//
-	bool terrain_matches_filter(const location& loc, const config& cfg, 
-			const gamestatus& game_status, const unit_map& units, const bool flat_tod=false) const;
+	bool terrain_matches_filter(const location& loc, const vconfig& cfg, 
+			const gamestatus& game_status, const unit_map& units,
+			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
 
 	//gets the list of terrains
 	const t_translation::t_list& get_terrain_list() const
@@ -207,6 +210,8 @@ protected:
 	location startingPositions_[STARTING_POSITIONS];
 	
 private:
+	bool terrain_matches_internal(const location& loc, const vconfig& cfg, 
+			const gamestatus& game_status, const unit_map& units, const bool flat_tod=false) const;
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 

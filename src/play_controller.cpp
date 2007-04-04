@@ -796,7 +796,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 				if ((show_if.empty() 
 					|| game_events::conditional_passed(&units_, &show_if))
 				&& (location_filter.empty() 
-					|| map_.terrain_matches_filter(hex, vconfig(&location_filter).get_parsed_config(), status_, units_)))
+					|| map_.terrain_matches_filter(hex, &location_filter, status_, units_)))
 				{
 					wml_commands_.push_back(itor->second);
 					std::string newitem = itor->second->description;

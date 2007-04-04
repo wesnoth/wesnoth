@@ -18,7 +18,7 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "pathutils.hpp"
+#include "pathfind.hpp"
 #include "util.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
@@ -567,7 +567,37 @@ bool gamemap::location::matches_range(const std::string& xloc, const std::string
 	return true;
 }
 
-bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, 
+bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig& cfg, 
+		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
+		const size_t max_loop) const
+{
+	//handle radius
+	const size_t radius = minimum<size_t>(max_loop,
+		lexical_cast_default<size_t>(cfg["radius"]));
+	std::set<gamemap::location> hexes;
+	std::vector<gamemap::location> loc_vec(1, loc);
+	get_tiles_radius(*this, loc_vec, radius, hexes);
+
+	size_t loop_count = 0;
+	bool matches = false;
+	std::set<gamemap::location>::const_iterator i;
+	for(i = hexes.begin(); i != hexes.end() && loop_count <= max_loop && !matches; ++i) {
+		matches = terrain_matches_internal(*i, cfg, game_status, units, flat_tod);
+		++loop_count;
+	}
+	if(!matches) return false;
+
+	//handle [not]
+	const vconfig::child_list& nots = cfg.get_children("not");
+	for(vconfig::child_list::const_iterator j = nots.begin(); j != nots.end(); ++j) {
+		if(terrain_matches_filter(loc, *j, game_status, units, flat_tod, max_loop)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod) const
 {
 	/* *
@@ -624,6 +654,14 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 		if(!loc.matches_range(cfg["x"], cfg["y"])) {
 			return false;
 		}
+	}
+
+	//Allow filtering on unit
+	if(cfg.has_child("filter")) {
+		const config& unit_filter = cfg.child("filter").get_config();
+		const unit_map::const_iterator u = units.find(loc);
+		if (u == units.end() || !u->second.matches_filter(unit_filter, loc, flat_tod))
+			return false;
 	}
 
 	const std::string& tod_type = cfg["time_of_day"];

@@ -14,9 +14,10 @@
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 
-#include "wassert.hpp"
 #include "log.hpp"
 #include "pathutils.hpp"
+#include "variable.hpp"
+#include "wassert.hpp"
 
 #include <deque>
 
@@ -322,7 +323,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 				if(index != gamemap::location::NDIRECTIONS) {
 					wassert(map_ != NULL);
 					wassert(gamestatus_ != NULL);
-					if(!map_->terrain_matches_filter(adjacent[index],**i,*gamestatus_,*units_,ability=="illuminates")) {
+					if(!map_->terrain_matches_filter(adjacent[index],*i,*gamestatus_,*units_,ability=="illuminates",0)) {
 						return false;
 					}
 				}
@@ -749,7 +750,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				if(index != gamemap::location::NDIRECTIONS) {
 					wassert(map_ != NULL);
 					wassert(game_status_ != NULL);
-					if(!map_->terrain_matches_filter(adjacent[index],**i,*game_status_,*unitmap_)) {
+					if(!map_->terrain_matches_filter(adjacent[index],*i,*game_status_,*unitmap_,false,0)) {
 						return false;
 					}
 				}
