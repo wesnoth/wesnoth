@@ -124,9 +124,7 @@ class dialog {
 public:
 	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT };
 	struct dimension_measurements {
-		dimension_measurements() : x(-1), y(-1),
-			frame(empty_rect), message(empty_rect), textbox(empty_rect)
-		{}
+		dimension_measurements();
 		int x, y;
 		SDL_Rect frame, message, textbox;
 		unsigned int menu_width;

@@ -99,6 +99,14 @@ private:
 
 namespace gui {
 
+dialog::dimension_measurements::dimension_measurements() :
+	x(-1), y(-1), frame(empty_rect), message(empty_rect), textbox(empty_rect)
+{
+	//note: this is not defined in the header file to C++ ODR (one-definition rule)
+	//since each inclusion of the header file uses a different version of empty_rect 
+	//(unnamed namespace and/or const object defined at declaration time). 
+} 
+
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
 				const DIALOG_TYPE type, const std::string& dialog_style,
 				const std::string& help_topic) : disp_(disp), image_(NULL),
