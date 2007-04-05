@@ -103,6 +103,7 @@ int cursor_x = -1, cursor_y = -1;
 surface cursor_buf = NULL;
 bool have_focus = true;
 bool hide_bw = false;
+bool colour_ready = false;
 
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
@@ -156,6 +157,12 @@ void use_colour(bool value)
 	}
 }
 
+void temporary_use_bw()
+{
+	colour_ready = false;
+	set(current_cursor);
+}
+
 void set(CURSOR_TYPE type)
 {
 	current_cursor = type;
@@ -163,7 +170,7 @@ void set(CURSOR_TYPE type)
 	if(type == NUM_CURSORS) {
 		return;
 	}
-	SDL_Cursor* cursor = get_cursor(hide_bw ? cursor::NO_CURSOR : type);
+	SDL_Cursor* cursor = get_cursor(hide_bw && colour_ready ? cursor::NO_CURSOR : type);
 	if (cursor != NULL) {
 		SDL_SetCursor(cursor);
 	}
@@ -208,6 +215,14 @@ void draw(surface screen)
 {
 	if(use_colour_cursors() == false) {
 		return;
+	}
+	
+	if (!colour_ready) {
+		// display start to draw cursor
+		// so it can now display colour cursor
+		colour_ready = true;
+		// just reset the cursor will hide the b&w
+		set(current_cursor);
 	}
 
 	if(current_cursor == NUM_CURSORS) {
