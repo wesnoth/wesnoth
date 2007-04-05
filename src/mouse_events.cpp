@@ -673,7 +673,6 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 	minimap_scrolling_ = false;
 	dragging_ = false;
 	dragging_started_ = false;
-	update_cursor_ = true;
 	drag_from_x_ = 0;
 	drag_from_y_ = 0;
 	last_hex_ = gamemap::location();
@@ -728,10 +727,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	const int drag_distance = maximum<int>(abs(drag_from_x_- x), abs(drag_from_y_- y));
 	if (dragging_ && !dragging_started_ && drag_distance > 10 && (SDL_GetMouseState(NULL,NULL) & SDL_BUTTON(1) != 0)) {
 		dragging_started_ = true;
-		update_cursor_ = true;
+		cursor::set_dragging(true);
 	}
 
-	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_ || update_cursor_) {
+	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_) {
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
 			(*gui_).set_route(NULL);
@@ -820,7 +819,6 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	last_hex_ = new_hex;
 	last_nearest_ = nearest_hex;
 	last_second_nearest_ = second_nearest_hex;
-	update_cursor_ = false;
 }
 
 unit_map::iterator mouse_handler::selected_unit()
