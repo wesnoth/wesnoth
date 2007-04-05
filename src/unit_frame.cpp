@@ -66,7 +66,7 @@ bool progressive_string::does_not_change() const
 }
 
 
-progressive_double::progressive_double(const std::string &data, int duration) 
+progressive_double::progressive_double(const std::string &data, int duration)
 {
 	const std::vector<std::string> first_split = utils::split(data);
 	const int time_chunk = maximum<int>(duration / (first_split.size()?first_split.size():1),1);
@@ -138,7 +138,7 @@ return data_.empty() ||
 	( data_.size() == 1 && data_[0].first.first == data_[0].first.second);
 }
 
-progressive_int::progressive_int(const std::string &data, int duration) 
+progressive_int::progressive_int(const std::string &data, int duration)
 {
 	const std::vector<std::string> first_split = utils::split(data);
 	const int time_chunk = maximum<int>(duration / (first_split.size()?first_split.size():1),1);
@@ -208,7 +208,7 @@ return data_.empty() ||
 
 
 
-unit_frame::unit_frame() : 
+unit_frame::unit_frame() :
 	 image_(), image_diagonal_(),halo_(), sound_(),
 	halo_x_(), halo_y_(), duration_(0),
 	blend_with_(0),blend_ratio_(),
@@ -226,7 +226,7 @@ unit_frame::unit_frame(const image::locator& image, int duration,
 	halo_(in_halo,duration),
 	halo_x_(halox,duration),
 	halo_y_(haloy,duration),
-	duration_(duration), 
+	duration_(duration),
 	blend_with_(blend_color), blend_ratio_(blend_rate,duration),
 	highlight_ratio_(highlight,duration)
 {
@@ -262,33 +262,33 @@ unit_frame::unit_frame(const config& cfg)
 
 }
 
-		
-const std::string &unit_frame::halo(int current_time) const 
+
+const std::string &unit_frame::halo(int current_time) const
 {
 	return halo_.get_current_element(current_time);
 }
 
-double unit_frame::blend_ratio(int current_time) const 
+double unit_frame::blend_ratio(int current_time) const
 {
 	return blend_ratio_.get_current_element(current_time);
 }
 
-fixed_t unit_frame::highlight_ratio(int current_time) const 
+fixed_t unit_frame::highlight_ratio(int current_time) const
 {
 	return ftofxp(highlight_ratio_.get_current_element(current_time));
 }
 
-double unit_frame::offset(int current_time) const 
+double unit_frame::offset(int current_time) const
 {
 	return offset_.get_current_element(current_time);
 }
 
-int unit_frame::halo_x(int current_time) const 
+int unit_frame::halo_x(int current_time) const
 {
 	return halo_x_.get_current_element(current_time);
 }
 
-int unit_frame::halo_y(int current_time) const 
+int unit_frame::halo_y(int current_time) const
 {
 	return halo_y_.get_current_element(current_time);
 }
