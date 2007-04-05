@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-02 21:53+0200\n"
-"PO-Revision-Date: 2007-03-07 17:58+0200\n"
+"PO-Revision-Date: 2007-04-04 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -2328,6 +2328,16 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
+"Stenhuleterrænet er skabt af vand og vind der har bragt partikler hen over "
+"stenene og skabt dem igennem en nedbrydningsproces. Det ligner et arret "
+"området og stenhuleterræn reducerer derfor effektiviteten for de fleste "
+"enheder, men øger forsvarsevnen. Dværge og trolde som er de væsentligste "
+"indbyggere i hulerne kan nemt navigere igennem terrænet. Dværge som har "
+"fordel af deres lave højde i dette terræn har fulde navigationsmuligheder. "
+"Undertiden er hulerne <ref>dst=terrain_illuminated_cave text=Oplyst</ref>\n"
+"\n"
+"De fleste enheder har cirka 50 % forsvar i stenhuleterræn, mens kavaleri er "
+"begrænset til 40 %. Dværge har 60 %."
 
 #: data/help.cfg:493
 msgid "Illuminated Cave"
@@ -2341,6 +2351,10 @@ msgid ""
 "all other regards this terrain is functionally identical to normal cave "
 "terrains."
 msgstr ""
+"Sjældne stier i den underjordiske verden er oplyst af lys fra overfladen der "
+"skinner ned i mørket.  Dette giver en angrebsbonus for hæderlige enheder og "
+"fjerner angrebsbonussen fra kaotiske enheder. I alle andre henseender "
+"opfører dette terræn sig på samme måde som normalt huleterræn."
 
 #: data/help.cfg:501 data/terrain.cfg:670
 msgid "Mushroom Grove"
@@ -3759,6 +3773,9 @@ msgid ""
 "victory is punctuated by the petrified forms of some of Wesnoth's greatest "
 "heroes."
 msgstr ""
+"Spillerne skal navigere deres enheder igennem forskellige terræn i denne "
+"frygtede region, tidligere hjem for den legendariske ældre basilisk. Vejen "
+"til sejr er brolagt med nogle af de største forstenede helte fra Wesnoth."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:92
 msgid ""
@@ -4392,16 +4409,17 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:12
 msgid "4p - The Wilderlands"
-msgstr ""
+msgstr "4p - Ødemarken"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:13
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
+"En stor vil region af utømmet ødemark, terrænet har enkelte træer, huler "
+"floder og ruinerne fra ældgamle fæstningsværker."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:58
-#, fuzzy
 msgid "Monsters"
 msgstr "Monstre"
 
@@ -9235,6 +9253,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Disse torturerede individer, der en gang var store krigere, er blandt de "
+"mest frygtede skabninger en åndemaner kan frembringe, da et sværd vil gå "
+"lige igennem dem, på samme måde som igennem luft. Frygten kommer fra "
+"oplevelsen af at disse skabninger er usynlige, en sandhed som dog langfra er "
+"sand.\n"
+"\n"
+" På grund af dette, blev en metode fremstillet hvorved dem fortryllelse som "
+"driver disse skabinger kunne holde sig i live igennem dem som truer "
+"dobbeltgængerne.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -9382,7 +9411,7 @@ msgstr "Baghold!"
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Vendig enhed i syne!"
-msgstr[1] "$friends vendlige enheder i syne!"
+msgstr[1] "$friends venlige enheder i syne!"
 
 #: src/actions.cpp:2065
 msgid "Enemy unit sighted!"
@@ -10605,7 +10634,7 @@ msgstr "O.k."
 
 #: src/multiplayer_create.cpp:73
 msgid "Regenerate"
-msgstr ""
+msgstr "Genskabe"
 
 #: src/multiplayer_create.cpp:74
 msgid "Settings..."
