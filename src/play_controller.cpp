@@ -323,6 +323,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	std::stringstream player_number_str;
 	player_number_str << player_number_;
 	gamestate_.set_variable("side_number",player_number_str.str());
+	gamestate_.last_selected = gamemap::location::null_location;
 
 	/*  
 		normally, events must not be actively fired through replays, because they have been 
@@ -792,11 +793,13 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			for (itor = gs_wmi.begin(); itor != gs_wmi.end()
 				&& newitems.size() < MAX_WML_COMMANDS; ++itor) {
 				config& show_if = itor->second->show_if;
-				config location_filter = itor->second->location_filter;
+				config filter_location = itor->second->filter_location;
 				if ((show_if.empty() 
 					|| game_events::conditional_passed(&units_, &show_if))
-				&& (location_filter.empty() 
-					|| map_.terrain_matches_filter(hex, &location_filter, status_, units_)))
+				&& (filter_location.empty() 
+					|| map_.terrain_matches_filter(hex, &filter_location, status_, units_))
+				&& (!itor->second->needs_select
+					|| gamestate_.last_selected.valid()))
 				{
 					wml_commands_.push_back(itor->second);
 					std::string newitem = itor->second->description;

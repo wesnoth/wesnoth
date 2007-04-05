@@ -60,7 +60,7 @@ struct wml_menu_item
 	t_string description;
 	bool needs_select;
 	config show_if;
-	config location_filter;
+	config filter_location;
 	config command;
 };
 

@@ -314,7 +314,6 @@ bool conditional_passed(const unit_map* units,
 namespace {
 
 std::set<std::string> used_items;
-
 /*
 jhinrichs, 12.11.2006:
 This variable controls the maximum number of hexes in a map, that can be parsed by an event.
@@ -402,9 +401,13 @@ public:
 
 	bool& rebuild_screen() {return rebuild_screen_;}
 
+	void commit_wmi_commands();
+
 private:
 	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated);
 
+	typedef std::pair< std::string, config* > wmi_command_change;
+	std::vector< wmi_command_change > wmi_command_changes_;
 	std::string name_;
 	bool first_time_only_;
 	bool disabled_;
@@ -1730,8 +1733,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					[/have_unit]
 				[/not]
 			[/show_if]
-			[location_filter]
-			[/location_filter]
+			[filter_location]
+			[/filter_location]
 			[command]
 				{UNIT (Troll) (Myname) ( _ "Myname") $side_number $x1 $y1}
 			[/command]
@@ -1754,23 +1757,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(cfg.has_child("show_if")) {
 			mref->show_if = cfg.child("show_if").get_config();
 		}
-		if(cfg.has_child("location_filter")) {
-			mref->location_filter = cfg.child("location_filter").get_config();
+		if(cfg.has_child("filter_location")) {
+			mref->filter_location = cfg.child("filter_location").get_config();
 		}
 		if(cfg.has_child("command")) {
-			const bool no_current_handler = mref->command.empty();
-			mref->command = cfg.child("command").get_config();
-			if(no_current_handler) {
-				if(!mref->command.empty()) {
-					mref->command["name"] = mref->name;
-					mref->command["first_time_only"] = "no";
-					event_handler new_handler(mref->command); 
-					events_map.insert(std::pair<std::string,event_handler>(
-						new_handler.name(), new_handler));
-				}
-			} else if(mref->command.empty()) {
-				mref->command.add_child("allow_undo");
-			}
+			config* new_command = new config(cfg.child("command").get_config());
+			wmi_command_changes_.push_back(wmi_command_change(id, new_command));
 		}
 	}
 	//unit serialization to and from variables
@@ -2127,16 +2119,42 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	return rval;
 }
 
+void event_handler::commit_wmi_commands() {
+	//commit WML Menu Item command changes
+	while(wmi_command_changes_.size() > 0) {
+		wmi_command_change wcc = wmi_command_changes_.back();
+		wml_menu_item*& mref = state_of_game->wml_menu_items[wcc.first];
+		const bool no_current_handler = mref->command.empty();
+		mref->command = *(wcc.second);
+		if(no_current_handler) {
+			if(!mref->command.empty()) {
+				mref->command["name"] = mref->name;
+				mref->command["first_time_only"] = "no";
+				event_handler new_handler(mref->command); 
+				events_map.insert(std::pair<std::string,event_handler>(
+					new_handler.name(), new_handler));
+			}
+		} else if(mref->command.empty()) {
+			mref->command["name"] = mref->name;
+			mref->command["first_time_only"] = "no";
+			mref->command.add_child("allow_undo");
+		}
+		LOG_NG << "setting command for " << name_ << "\n";
+		wcc.second->debug(lg::info(lg::engine));
+		delete wcc.second;
+		wmi_command_changes_.pop_back();
+	}
+}
+
 bool event_handler::handle_event(const queued_event& event_info, const vconfig conf)
 {
-	vconfig cfg = conf;
-
-	if(cfg.null())
-		cfg = cfg_;
-
 	bool mutated = true;
-
 	bool skip_messages = false;
+
+	vconfig cfg = conf;
+	if(cfg.null()) {
+		cfg = cfg_;
+	}
 	for(config::all_children_iterator i = cfg.get_config().ordered_begin();
 			i != cfg.get_config().ordered_end(); ++i) {
 
@@ -2160,6 +2178,7 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 
 	// We do this once event has completed any music alterations
 	sound::commit_music_changes();
+
 	return mutated;
 }
 
@@ -2235,6 +2254,9 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	if(ev.name == "select") {
 		state_of_game->last_selected = ev.loc1;
 	}
+
+	//wait until the handler finishes processing before changing menu items
+	handler.commit_wmi_commands();
 
 	if(handler.rebuild_screen()) {
 		handler.rebuild_screen() = false;
