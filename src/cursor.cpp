@@ -96,8 +96,10 @@ const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "
 
 const std::string colour_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
 
-
+// The cursor wanted
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
+// The cursor used by SDL
+cursor::CURSOR_TYPE current_SDL_cursor = cursor::NUM_CURSORS;
 
 int cursor_x = -1, cursor_y = -1;
 surface cursor_buf = NULL;
@@ -170,9 +172,13 @@ void set(CURSOR_TYPE type)
 	if(type == NUM_CURSORS) {
 		return;
 	}
-	SDL_Cursor* cursor = get_cursor(hide_bw && colour_ready ? cursor::NO_CURSOR : type);
-	if (cursor != NULL) {
-		SDL_SetCursor(cursor);
+	const CURSOR_TYPE new_cursor = hide_bw && colour_ready ? cursor::NO_CURSOR : type;
+	if (new_cursor != current_SDL_cursor) {
+		SDL_Cursor * cursor_image = get_cursor(new_cursor);
+		if (cursor_image != NULL) {
+			SDL_SetCursor(cursor_image);
+			current_SDL_cursor = new_cursor;
+		}
 	}
 }
 
