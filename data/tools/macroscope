@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+#
+# macroscope -- generate cross-reference listing of WML macro usage
+#
+# By Eric S. Raymond April 2007.
+# (Yes, this *is* named after an ancient Piers Anthony novel.)
+
+import os, time, re
+
+print "Macroscope cross-reference report on %s" % time.ctime() 
+
+# This assumes we're being called from our source-tree location
+datadir = os.path.join(*os.path.split(os.getcwd())[:-1])
+print "Data directory is: %s" % datadir
+os.chdir(datadir)
+
+definitions = map(lambda x: os.path.join("utils", x),
+                  filter(lambda x: x.endswith(".cfg"), 
+                         os.listdir(os.path.join(datadir, "utils"))))
+#print "Definition files: %s" % `definitions`[1:-1]
+
+# Gather definition locations from the definition files
+xref = {}
+for filename in definitions:
+    dfp = open(os.path.join(datadir, filename))
+    for (n, line) in enumerate(dfp):
+        if line.startswith("#define"):
+            tokens = line.split()
+            name = tokens[1]
+            if name in xref:
+                print "*** Warning: duplicate definition of %s from %s:%d at %s:%d\n" \
+                      % (xref[name][0], xref[name][1], name, filename, n+1)
+            xref[name] = (filename, n+1, {})
+    dfp.close()
+
+# Get the names of the files we need to check
+cfgfiles = []
+os.path.walk(".",
+             lambda arg, dir, names: cfgfiles.extend(map(lambda x: os.path.join(dir,x), names)),
+             None)
+cfgfiles = filter(lambda x: x.endswith(".cfg"), cfgfiles)
+
+# Now build the cross-reference
+for filename in cfgfiles:
+    rfp = open(filename)
+    for (n, line) in enumerate(rfp):
+        if "{" not in line:
+            continue
+        for name in xref:
+            if re.search("{" + name + r"\b", line):
+                namedict = xref[name][2]
+                if filename not in namedict:
+                    namedict[filename] = []
+                namedict[filename].append(n+1)
+    rfp.close()
+
+# Dump it.
+for (name, (filename, n, references)) in xref.items():
+     print "Macro %s is defined at %s:%d, used in %d files:" % (name, filename, n, len(references))
+     for (file, linenumbers) in references.items():
+         print "    %s: %s" % (file, `linenumbers`[1:-1])
+
