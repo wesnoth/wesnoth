@@ -44,7 +44,7 @@ cfgfiles = filter(lambda x: x.endswith(".cfg"), cfgfiles)
 for filename in cfgfiles:
     rfp = open(filename)
     for (n, line) in enumerate(rfp):
-        if "{" not in line:
+        if line[0] == "#" or "{" not in line:
             continue
         for name in xref:
             if re.search("{" + name + r"\b", line):
