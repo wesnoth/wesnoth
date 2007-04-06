@@ -383,11 +383,8 @@ void replay::add_event(const std::string& name, const gamemap::location& loc)
 	config& ev = cmd->add_child("fire_event");
 	ev["raise"] = name;
 	if(loc.valid()) {
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d", loc.x+1);
-		ev["x1"] = buf;
-		snprintf(buf,sizeof(buf),"%d", loc.y+1);
-		ev["y1"] = buf;
+		config& source = ev.add_child("source");
+		loc.write(source);
 	}
 	(*cmd)["undo"] = "no";
 }
@@ -1036,10 +1033,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			//exclude these events here, because in a replay proper time of execution can't be
 			//established and therefore we fire those events inside play_controller::init_side
 			if ((event != "side turn") && (event != "turn 1") && (event != "new_turn")){
-				gamemap::location ev1;
-				ev1.x = lexical_cast_default<int>((*child)["x1"].value(), 0) - 1;
-				ev1.y = lexical_cast_default<int>((*child)["y1"].value(), 0) - 1;
-				game_events::fire(event, ev1);
+				const config* const source = child->child("source");
+				if(source != NULL) {
+					game_events::fire(event, gamemap::location(*source));
+				} else {
+					game_events::fire(event);
+				}
 			}
 		} else {
 			if(! cfg->child("checksum")) {
