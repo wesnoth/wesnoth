@@ -60,6 +60,11 @@ const game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
 int floating_label = 0;
 
+class event_handler;
+std::vector< event_handler > new_handlers;
+typedef std::pair< std::string, config* > wmi_command_change;
+std::vector< wmi_command_change > wmi_command_changes;
+
 typedef Uint32 msecs;
 const msecs prevent_misclick_duration = 10;
 const msecs average_frame_time = 30;
@@ -401,13 +406,9 @@ public:
 
 	bool& rebuild_screen() {return rebuild_screen_;}
 
-	void commit_wmi_commands();
-
 private:
 	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated);
 
-	typedef std::pair< std::string, config* > wmi_command_change;
-	std::vector< wmi_command_change > wmi_command_changes_;
 	std::string name_;
 	bool first_time_only_;
 	bool disabled_;
@@ -1715,8 +1716,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//adding of new events
 	else if(cmd == "event") {
-		event_handler new_handler(cfg.get_config());
-		events_map.insert(std::pair<std::string,event_handler>(new_handler.name(),new_handler));
+		new_handlers.push_back(event_handler(cfg.get_config()));
 	}
 
 	//setting of menu items
@@ -1762,7 +1762,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 		if(cfg.has_child("command")) {
 			config* new_command = new config(cfg.child("command").get_config());
-			wmi_command_changes_.push_back(wmi_command_change(id, new_command));
+			wmi_command_changes.push_back(wmi_command_change(id, new_command));
 		}
 	}
 	//unit serialization to and from variables
@@ -2119,10 +2119,21 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	return rval;
 }
 
-void event_handler::commit_wmi_commands() {
+static void commit_new_handlers() {
+	//commit any spawned events-within-events
+	while(new_handlers.size() > 0) {
+		event_handler& new_handler = new_handlers.back();
+		events_map.insert(std::pair<std::string,event_handler>(new_handler.name(),new_handler));
+		LOG_NG << "spawning new handler for event " << new_handler.name() << "\n";
+		//new_handler.cfg_->debug(lg::info(lg::engine));
+		new_handlers.pop_back();
+	}
+}
+
+static void commit_wmi_commands() {
 	//commit WML Menu Item command changes
-	while(wmi_command_changes_.size() > 0) {
-		wmi_command_change wcc = wmi_command_changes_.back();
+	while(wmi_command_changes.size() > 0) {
+		wmi_command_change wcc = wmi_command_changes.back();
 		wml_menu_item*& mref = state_of_game->wml_menu_items[wcc.first];
 		const bool no_current_handler = mref->command.empty();
 		mref->command = *(wcc.second);
@@ -2139,10 +2150,10 @@ void event_handler::commit_wmi_commands() {
 			mref->command["first_time_only"] = "no";
 			mref->command.add_child("allow_undo");
 		}
-		LOG_NG << "setting command for " << name_ << "\n";
+		LOG_NG << "setting command for " << mref->name << "\n";
 		wcc.second->debug(lg::info(lg::engine));
 		delete wcc.second;
-		wmi_command_changes_.pop_back();
+		wmi_command_changes.pop_back();
 	}
 }
 
@@ -2254,9 +2265,6 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	if(ev.name == "select") {
 		state_of_game->last_selected = ev.loc1;
 	}
-
-	//wait until the handler finishes processing before changing menu items
-	handler.commit_wmi_commands();
 
 	if(handler.rebuild_screen()) {
 		handler.rebuild_screen() = false;
@@ -2506,6 +2514,9 @@ bool pump()
 				result = true;
 			++i.first;
 		}
+
+		commit_wmi_commands();
+		commit_new_handlers();
 
 		// dialogs can only be shown if the display is not locked
 		if(! screen->update_locked()) {
