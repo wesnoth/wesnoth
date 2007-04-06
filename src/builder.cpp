@@ -545,7 +545,7 @@ void terrain_builder::add_constraints(
 
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints, const gamemap::location& loc, const config& cfg, const config& global_images)
 {
-	add_constraints(constraints, loc, t_translation::t_match(cfg["type"]), global_images);
+	add_constraints(constraints, loc, t_translation::t_match(cfg["type"], t_translation::WILDCARD), global_images);
 
 	terrain_constraint& constraint = constraints[loc];
 
@@ -1009,7 +1009,7 @@ void terrain_builder::build_terrains()
 				if(cons != rule->second.constraints.end()) {
 					adjacent_types[i] = cons->second.terrain_types_match.terrain;
 				} else {
-					adjacent_types[i] = t_translation::read_list("", -1, t_translation::T_FORMAT_STRING);
+					adjacent_types[i] = t_translation::read_list("", -1, t_translation::T_FORMAT_STRING, t_translation::WILDCARD);
 				}
 			}
 
