@@ -29,32 +29,24 @@ class progressive_string {
 		progressive_string(const std::string& data = "",int duration = 0);
 		int duration() const;
 		const std::string & get_current_element(int time) const;
-		bool does_not_change() const;
+		bool does_not_change() const { return data_.size() <= 1; }
 	private:
 		std::vector<std::pair<std::string,int> > data_;
 };
 
-class progressive_double {
-	public:
-		progressive_double(const std::string& data = "",int duration = 0);
-		int duration() const;
-		const double get_current_element(int time) const;
-		bool does_not_change() const;
-	private:
-		std::vector<std::pair<std::pair<double,double>,int> > data_;
+template <class T>
+class progressive_
+{
+	std::vector<std::pair<std::pair<T, T>, int> > data_;
+public:
+	progressive_(const std::string& data = "", int duration = 0);
+	int duration() const;
+	const T get_current_element(int time) const;
+	bool does_not_change() const;
 };
 
-
-class progressive_int {
-	public:
-		progressive_int(const std::string& data = "",int duration = 0);
-		int duration() const;
-		const int get_current_element(int time) const;
-		bool does_not_change() const;
-	private:
-		std::vector<std::pair<std::pair<int,int>,int> > data_;
-};
-
+typedef progressive_<int> progressive_int;
+typedef progressive_<double> progressive_double;
 
 //a class to describe a unit's animation sequence
 class unit_frame {
@@ -68,18 +60,25 @@ class unit_frame {
 				const std::string & halox = "",const std::string & haloy = "",
 				const image::locator & diag ="");
 		explicit unit_frame(const config& cfg);
-
 		image::locator image() const { return image_ ;}
 		image::locator image_diagonal() const { return image_diagonal_ ; }
-		const std::string &halo(int current_time) const;
+		const std::string &halo(int current_time) const  
+			{ return halo_.get_current_element(current_time); }
+
 		std::string sound() const { return sound_ ; };
-		int halo_x(int current_time) const;
-		int halo_y(int current_time) const;
+		int halo_x(int current_time) const { return halo_x_.get_current_element(current_time); }
+		int halo_y(int current_time) const { return halo_y_.get_current_element(current_time); }
 		int duration() const { return duration_; }
 		Uint32 blend_with() const { return blend_with_; }
-		double blend_ratio(int current_time) const;
-		fixed_t highlight_ratio(int current_time) const;
-		double offset(int current_time) const;
+		double blend_ratio(int current_time) const
+			{ return blend_ratio_.get_current_element(current_time); }
+
+		fixed_t highlight_ratio(int current_time) const
+			{  return ftofxp(highlight_ratio_.get_current_element(current_time)); }
+
+		double offset(int current_time) const
+			{ return offset_.get_current_element(current_time); }
+
 		bool does_not_change() const;
 	private:
 		image::locator image_;
