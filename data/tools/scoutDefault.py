@@ -1,4 +1,6 @@
 #!/bin/env python
+#
+# Automagically set the village_per_scout parameters in MP scenarios.
 
 import sys
 import os
@@ -223,7 +225,7 @@ def printUsage():
     print "scoutDefault.py [-hRO] [-d directory] [-f file] [-x extension]"
     print "-h : print this message"
     print "-R : recursively parse directories"
-    print "-O : overwrite village_per_scout vaue in scenario"
+    print "-O : overwrite village_per_scout value in scenario"
     print "-d : directory to look for file to parse"
     print "-f : name of the file to parse"
     print "-x : suffix to append to filename"
