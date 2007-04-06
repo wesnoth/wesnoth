@@ -34,6 +34,16 @@ def initialize(verbose):
 
     return (datafiles, cfgfiles, utilsfiles)
 
+class reference:
+    "Describes a location in the data tree."
+    def __init__(self, filename, line=None):
+        self.filename = filename
+        self.line = line
+    def __str__(self):
+        if self.line:
+            return self.filename + ":" + `self.line`
+        else:
+            return self.filebame
 
 class macro_cross_reference:
     def __init__(self, filelist):
@@ -47,10 +57,11 @@ class macro_cross_reference:
                 if line.startswith("#define"):
                     tokens = line.split()
                     name = tokens[1]
+                    here = reference(filename, n+1)
                     if name in self.xref:
-                        print >>sys.stderr, "*** Warning: duplicate definition of %s from %s:%d at %s:%d\n" \
-                              % (name, self.xref[name][0], self.xref[name][1], filename, n+1)
-                    self.xref[name] = (filename, n+1, {})
+                        print >>sys.stderr, "*** Warning: duplicate definition of %s from %s, at %s\n" \
+                              % (name, self.xref[name][0], here)
+                    self.xref[name] = (here, {})
             dfp.close()
         return self.xref
     def check_macro_references(self, filelist):
@@ -64,20 +75,23 @@ class macro_cross_reference:
                 for match in re.finditer(r"\{([A-Z][A-Z0-9_]+)\b", line):
                     name = match.group(1)
                     if name in self.xref:
-                        namedict = self.xref[name][2]
+                        namedict = self.xref[name][1]
                         if filename not in namedict:
                             namedict[filename] = []
                         namedict[filename].append(n+1)
                     else:
-                        self.unresolved.append((name, filename, n+1))
+                        self.unresolved.append((name, reference(filename,n+1)))
             rfp.close()
     def xrefdump(self, threshold=9999):
         "Report resolved references."
-        for (name, (filename, n, references)) in self.xref.items():
+        for (name, (defloc, references)) in self.xref.items():
             nrefs = len(references)
             if nrefs > threshold:
                 continue
-            print "Macro %s is defined at %s:%d, used in %d files:" % (name, filename, n, nrefs)
+            if nrefs == 0:
+                print "Macro %s defined at %s is unused" % (name, defloc)
+            else:
+                print "Macro %s defined at %s is used in %d files:" % (name, defloc, nrefs)
             for (file, linenumbers) in references.items():
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
     def unrefdump(self):
@@ -86,8 +100,8 @@ class macro_cross_reference:
             print "# No unresolved references"
         else:
             print "# Dangling references:"
-            for (name, filename, n) in self.unresolved:
-                print "%s at %s:%d" % (name, filename, n)
+            for (name, reference) in self.unresolved:
+                print "%s at %s" % (name, reference)
 
 if __name__ == "__main__":
     print "# Macroscope reporting on %s" % time.ctime() 
@@ -99,10 +113,13 @@ if __name__ == "__main__":
             print "# Checking macro definitions from anywhere"
             print "# against macro references from anywhere."
             print "# Output will list unused macros and undefined references."
+            print "# Unused macros:"
             (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
             xref = macro_cross_reference(cfgfiles)
             xref.check_macro_references(cfgfiles)
-            xref.xrefdump(threshold=0)
+            for (name, (defloc, references)) in xref.xref.items():
+                if len(references) == 0:
+                    print "%s at %s" % (name, defloc)
             xref.unrefdump()
             sys.exit(0)
         elif (switch == '-u'):
