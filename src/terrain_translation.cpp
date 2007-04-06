@@ -37,7 +37,7 @@ namespace t_translation {
 	// this will convert UNIX, Mac and Windows end of line types
 	// this due to the fact they all have a different idea of EOL
 	// Note this also eats all blank lines so the sequence "\n\n\n" will become just 1 EOL
-	t_list string_to_vector_(const std::string& str, const bool convert_eol, const int separated);
+	static t_list string_to_vector_(const std::string& str, const bool convert_eol, const int separated);
 
 	// When the terrain is loaded it sends all letter, string combinations
 	// to add_translation. This way the translation table is build.
@@ -56,10 +56,10 @@ namespace t_translation {
 	static int map_format_ = 0;
 
 	//old low level converters
-	t_letter letter_to_number_(const TERRAIN_LETTER terrain); 
+	static t_letter letter_to_number_(const TERRAIN_LETTER terrain); 
 
 	// reads old maps
-	t_map read_game_map_old_(const std::string& map,std::map<int, coordinate>& starting_positions); 
+	static t_map read_game_map_old_(const std::string& map,std::map<int, coordinate>& starting_positions); 
 
 	//this is used for error messages used in string_to_number_ 
 	//so we can't use this function to convert us. So we do the conversion here 
@@ -82,7 +82,7 @@ namespace t_translation {
 	 *
 	 * @return 			the list of converted terrains
 	 */
-	t_list string_to_vector_(const std::string& str, const t_layer filler);
+	static t_list string_to_vector_(const std::string& str, const t_layer filler);
 	
 	/**
 	 * Get the mask for a single layer
@@ -91,7 +91,7 @@ namespace t_translation {
 	 *
 	 * @return			mask for that layer
 	 */
-	t_layer get_layer_mask_(t_layer terrain); //inlined
+	static t_layer get_layer_mask_(t_layer terrain); //inlined
 	
 	/**
 	 * Gets a mask for a terrain, this mask is used for wildcard matching
@@ -100,7 +100,7 @@ namespace t_translation {
 	 *
 	 * @return 			the mask for this terrain
 	 */
-	t_letter get_mask_(const t_letter& terrain);
+	static t_letter get_mask_(const t_letter& terrain);
 
 	/**
 	 * converts a string to a layer
@@ -110,7 +110,7 @@ namespace t_translation {
 	 * 					
 	 * @return			the converted layer
 	 */
-	t_layer string_to_layer_(const std::string& str);
+	static t_layer string_to_layer_(const std::string& str);
 	
 	/**
 	 * converts a terrain string to a number
@@ -122,8 +122,8 @@ namespace t_translation {
 	 *
 	 * @return					the letter found in the string
 	 */ 					
-	t_letter string_to_number_(const std::string& str, const t_layer filler = WILDCARD);
-	t_letter string_to_number_(std::string str, int& start_position, const t_layer filler);
+	static t_letter string_to_number_(const std::string& str, const t_layer filler = WILDCARD);
+	static t_letter string_to_number_(std::string str, int& start_position, const t_layer filler);
 
 	/**
 	 * converts a terrain number to a string
@@ -136,8 +136,8 @@ namespace t_translation {
 	 * @return						the converted string, if no starting position 
 	 * 								given it's padded to 4 chars else padded to 7 chars
 	 */
-	std::string number_to_string_(t_letter terrain, const int start_position = -1);
-	std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size);
+	static std::string number_to_string_(t_letter terrain, const int start_position = -1);
+	static std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size);
 
 	/**
 	 * converts a terrain string to a letter for the builder the translation 
@@ -147,7 +147,7 @@ namespace t_translation {
 	 *
 	 * @return		number for the builder map
 	 */
-	t_letter string_to_builder_number_(std::string str);
+	static t_letter string_to_builder_number_(std::string str);
 
 /***************************************************************************************/	
 
@@ -723,7 +723,7 @@ std::string get_old_letter(const t_letter& number)
 
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE 
 
-t_list string_to_vector_(const std::string& str, const bool convert_eol, const int separated)
+static t_list string_to_vector_(const std::string& str, const bool convert_eol, const int separated)
 {
 	// only used here so define here
 	const t_letter EOL(7, NO_LAYER);
@@ -755,7 +755,7 @@ t_list string_to_vector_(const std::string& str, const bool convert_eol, const i
 	return result;
 }
 
-t_letter letter_to_number_(const TERRAIN_LETTER terrain)
+static t_letter letter_to_number_(const TERRAIN_LETTER terrain)
 {
 	std::map<TERRAIN_LETTER, t_letter>::const_iterator itor = lookup_table_.find(terrain);
 
@@ -767,7 +767,7 @@ t_letter letter_to_number_(const TERRAIN_LETTER terrain)
 	return itor->second;
 }
 
-t_map read_game_map_old_(const std::string& str, std::map<int, coordinate>& starting_positions) 
+static t_map read_game_map_old_(const std::string& str, std::map<int, coordinate>& starting_positions) 
 {
 	size_t offset = 0;
 	size_t x = 0, y = 0, width = 0;
@@ -865,7 +865,7 @@ t_map read_game_map_old_(const std::string& str, std::map<int, coordinate>& star
 
 #endif
 
-t_list string_to_vector_(const std::string& str, const t_layer filler)
+static t_list string_to_vector_(const std::string& str, const t_layer filler)
 {
 	// handle an empty string
 	t_list result;
@@ -924,7 +924,7 @@ inline t_layer get_layer_mask_(t_layer terrain)
 	return 0xFFFFFFFF;
 }
 
-t_letter get_mask_(const t_letter& terrain)
+static t_letter get_mask_(const t_letter& terrain)
 {
 	if(terrain.overlay == NO_LAYER) {
 		return t_letter(get_layer_mask_(terrain.base), 0);
@@ -933,7 +933,7 @@ t_letter get_mask_(const t_letter& terrain)
 	}
 }
 
-t_layer string_to_layer_(const std::string& str)
+static t_layer string_to_layer_(const std::string& str)
 {
 	t_layer result = 0;
 
@@ -957,12 +957,12 @@ t_layer string_to_layer_(const std::string& str)
 	return result;
 }
 
-t_letter string_to_number_(const std::string& str, const t_layer filler) {
+static t_letter string_to_number_(const std::string& str, const t_layer filler) {
 	int dummy = -1;
 	return string_to_number_(str, dummy, filler);
 }
 
-t_letter string_to_number_(std::string str, int& start_position, const t_layer filler)
+static t_letter string_to_number_(std::string str, int& start_position, const t_layer filler)
 {
 	t_letter result;
 
@@ -1001,7 +1001,7 @@ t_letter string_to_number_(std::string str, int& start_position, const t_layer f
 	return result;
 }
 
-std::string number_to_string_(t_letter terrain, const int start_position)
+static std::string number_to_string_(t_letter terrain, const int start_position)
 {
 	std::string result = "";
 
@@ -1042,7 +1042,7 @@ std::string number_to_string_(t_letter terrain, const int start_position)
 	return result;
 }
 
-std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size)
+static std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size)
 {
 	std::string result = number_to_string_(terrain, start_position);
 	if(result.size() < min_size) {
@@ -1052,7 +1052,7 @@ std::string number_to_string_(t_letter terrain, const int start_position, const 
 	return result;
 }
 
-t_letter string_to_builder_number_(std::string str)
+static t_letter string_to_builder_number_(std::string str)
 {
 	//strip the spaces around us
 	const std::string& whitespace = " \t";
