@@ -52,7 +52,7 @@ namespace help {
 
 /// Generate the help contents from the configurations given to the
 /// manager.
-void generate_contents();
+static void generate_contents();
 
 struct section;
 
@@ -419,74 +419,74 @@ private:
 // see.
 
 /// Dispatch generators to their appropriate functions.
-std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-std::string generate_topic_text(const std::string &generator);
-std::string generate_about_text();
-std::vector<topic> generate_unit_topics(const bool);
+static std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
+static std::string generate_topic_text(const std::string &generator);
+static std::string generate_about_text();
+static std::vector<topic> generate_unit_topics(const bool);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
 /// Return the type of description that should be shown for a unit of
 /// the given kind. This method is intended to filter out information
 /// about units that should not be shown, for example due to not being
 /// encountered.
-UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
-std::vector<topic> generate_ability_topics(const bool);
-std::vector<topic> generate_weapon_special_topics(const bool);
+static UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
+static std::vector<topic> generate_ability_topics(const bool);
+static std::vector<topic> generate_weapon_special_topics(const bool);
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
-section parse_config(const config *cfg);
+static section parse_config(const config *cfg);
 /// Recursive function used by parse_config.
-void parse_config_internal(const config *help_cfg, const config *section_cfg,
+static void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level=0);
 
 /// Return true if the section with id section_id is referenced from
 /// another section in the config, or the toplevel.
-bool section_is_referenced(const std::string &section_id, const config &cfg);
+static bool section_is_referenced(const std::string &section_id, const config &cfg);
 /// Return true if the topic with id topic_id is referenced from
 /// another section in the config, or the toplevel.
-bool topic_is_referenced(const std::string &topic_id, const config &cfg);
+static bool topic_is_referenced(const std::string &topic_id, const config &cfg);
 
 /// Search for the topic with the specified identifier in the section
 /// and its subsections. Return the found topic, or NULL if none could
 /// be found.
-const topic *find_topic(const section &sec, const std::string &id);
+static const topic *find_topic(const section &sec, const std::string &id);
 
 /// Search for the section with the specified identifier in the section
 /// and its subsections. Return the found section or NULL if none could
 /// be found.
-const section *find_section(const section &sec, const std::string &id);
+static const section *find_section(const section &sec, const std::string &id);
 
 /// Parse a text string. Return a vector with the different parts of the
 /// text. Each markup item is a separate part while the text between
 /// markups are separate parts.
-std::vector<std::string> parse_text(const std::string &text);
+static std::vector<std::string> parse_text(const std::string &text);
 
 /// Convert the contents to wml attributes, surrounded within
 /// [element_name]...[/element_name]. Return the resulting WML.
-std::string convert_to_wml(const std::string &element_name, const std::string &contents);
+static std::string convert_to_wml(const std::string &element_name, const std::string &contents);
 
 /// Return true if s is a representation of a truth value
 /// (yes/true/...), otherwise false.
-bool get_bool(const std::string &s);
+static bool get_bool(const std::string &s);
 
 /// Return the color the string represents. Return font::NORMAL_COLOUR if
 /// the string is empty or can't be matched against any other color.
-SDL_Color string_to_color(const std::string &s);
+static SDL_Color string_to_color(const std::string &s);
 
 /// Make a best effort to word wrap s. All parts are less than width.
-std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
+static std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
 
-std::string remove_first_space(const std::string& text);
+static std::string remove_first_space(const std::string& text);
 
 /// Return a lowercase copy of s.
-std::string to_lower(const std::string &s);
+static std::string to_lower(const std::string &s);
 
 /// Prepend all chars with meaning inside attributes with a backslash.
-std::string escape(const std::string &s);
+static std::string escape(const std::string &s);
 
 /// Return the first word in s, not removing any spaces in the start of
 /// it.
-std::string get_first_word(const std::string &s);
+static std::string get_first_word(const std::string &s);
 
 } // namespace help
 
@@ -517,10 +517,12 @@ namespace {
 	// The topic to open by default when opening the help dialog.
 	const std::string default_show_topic = "introduction_topic";
 
+}
+
 	/// Return true if the id is valid for user defined topics and
 	/// sections. Some IDs are special, such as toplevel and may not be
 	/// be defined in the config.
-	bool is_valid_id(const std::string &id) {
+static bool is_valid_id(const std::string &id) {
 		if (id == "toplevel") {
 			return false;
 		}
@@ -539,6 +541,8 @@ namespace {
 		return true;
 	}
 
+namespace {
+
 	/// Class to be used as a function object when generating the about
 	/// text. Translate the about dialog formatting to format suitable
 	/// for the help dialog.
@@ -555,22 +559,24 @@ namespace {
 		}
 	};
 
+}
+
 	// Helpers for making generation of topics easier.
-	std::string jump_to(const unsigned pos)
+static std::string jump_to(const unsigned pos)
 	{
 		std::stringstream ss;
 		ss << "<jump>to=" << pos << "</jump>";
 		return ss.str();
 	}
 
-	std::string jump(const unsigned amount)
+static std::string jump(const unsigned amount)
 	{
 		std::stringstream ss;
 		ss << "<jump>amount=" << amount << "</jump>";
 		return ss.str();
 	}
 
-	std::string bold(const std::string &s)
+static std::string bold(const std::string &s)
 	{
 		std::stringstream ss;
 		ss << "<bold>text='" << help::escape(s) << "'</bold>";
@@ -582,7 +588,7 @@ namespace {
 	// that create a table. The table spec contains a vector with
 	// vectors with pairs. The pairs are the markup string that should
 	// be in a cell, and the width of that cell.
-  std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20))
+static std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20))
   {
 		table_spec::const_iterator row_it;
 		std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
@@ -625,7 +631,7 @@ namespace {
 	}
 
 	// Return the width for the image with filename.
-	unsigned image_width(const std::string &filename)
+static unsigned image_width(const std::string &filename)
 	{
 		image::locator loc(filename);
 		surface surf(image::get_image(loc, image::UNSCALED));
@@ -635,11 +641,10 @@ namespace {
 		return 0;
 	}
 
-	void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s)
+static void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s)
 	{
 		v.push_back(std::make_pair(s, font::line_width(s, normal_font_size)));
 	}
-}
 
 namespace help {
 

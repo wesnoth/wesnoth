@@ -20,9 +20,8 @@
 #include <vector>
 
 #define ERR_G LOG_STREAM(err, general)
-namespace {
 
-int run_async_operation(void* data)
+static int run_async_operation(void* data)
 {
 	threading::async_operation* const op = reinterpret_cast<threading::async_operation*>(data);
 	op->run();
@@ -43,6 +42,8 @@ int run_async_operation(void* data)
 
 	return 0;
 }
+
+namespace {
 
 std::vector<SDL_Thread*> detached_threads;
 

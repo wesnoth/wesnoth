@@ -230,9 +230,7 @@ bool button::hit(int x, int y) const
 	return point_in_rect(x,y,location());
 }
 
-namespace {
-	bool not_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
-}
+static bool not_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
 
 void button::set_label(const std::string& val)
 {

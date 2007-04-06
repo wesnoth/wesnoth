@@ -23,7 +23,9 @@ namespace {
 
 config::child_list empty_traits;
 
-void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
+}
+
+static void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
 {
 	for(size_t i = 0; i <= str.size(); ++i) {
 		const size_t start = i > length ? i - length : 0;
@@ -33,7 +35,7 @@ void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
 	}
 }
 
-markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t length)
+static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t length)
 {
 	markov_prefix_map res;
 
@@ -44,7 +46,7 @@ markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t 
 	return res;
 }
 
-wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain_size, size_t max_len)
+static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain_size, size_t max_len)
 {
 	if(chain_size == 0)
 		return wide_string();
@@ -104,8 +106,6 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 	// maximum length is very small. Return the originally generated
 	// name, it's not much we can do about it.
 	return originalRes;
-}
-
 }
 
 unit_race::unit_race() : ntraits_(0), chain_size_(0), not_living_(false), traits_(&empty_traits), global_traits_(true)

@@ -446,7 +446,6 @@ void sort_units(std::vector< unit > &);
 int team_units(const unit_map& units, unsigned int team_num);
 int team_upkeep(const unit_map& units, unsigned int team_num);
 unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
-std::string team_name(int side, const unit_map& units);
 unit_map::iterator find_visible_unit(unit_map& units,
 		const gamemap::location loc,
 		const gamemap& map,

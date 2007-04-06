@@ -23,9 +23,9 @@
 namespace about
 {
 
-  config about_list = config();
-  std::map<std::string , std::string> images;
-  std::string images_default;
+	static config about_list = config();
+	static std::map<std::string , std::string> images;
+	static std::string images_default;
 
 std::vector<std::string> get_text(std::string campaign) {
 	std::vector< std::string > res;

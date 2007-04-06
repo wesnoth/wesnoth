@@ -216,8 +216,7 @@ label_AStarSearch_end:
 	return locRoute;
 }
 
-namespace {
-	gamemap::location find_vacant(const gamemap& map,
+static gamemap::location find_vacant(const gamemap& map,
 		const unit_map& units,
 		const gamemap::location& loc, int depth,
 		VACANT_TILE_TYPE vacancy,
@@ -251,8 +250,6 @@ namespace {
 		}
 	}
 
-}
-
 gamemap::location find_vacant_tile(const gamemap& map,
 																	 const unit_map& units,
 																	 const gamemap::location& loc,
@@ -268,9 +265,7 @@ gamemap::location find_vacant_tile(const gamemap& map,
 	return gamemap::location();
 }
 
-namespace {
-
-	void get_tiles_radius_internal(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited)
+static void get_tiles_radius_internal(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited)
 	{
 		visited[a] = radius;
 		res.insert(a);
@@ -287,8 +282,6 @@ namespace {
 			}
 		}
 	}
-
-}
 
 void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res)
 {
@@ -346,9 +339,7 @@ bool enemy_zoc(gamemap const &map,
 	return false;
 }
 
-namespace {
-
-	void find_routes(const gamemap& map, const gamestatus& status,
+static void find_routes(const gamemap& map, const gamestatus& status,
 		const game_data& gamedata,
 		const unit_map& units,
 		const unit& u,
@@ -445,8 +436,6 @@ namespace {
 			}
 		}
 	}
-
-} //end anon namespace
 
 paths::paths(gamemap const &map, gamestatus const &status,
              game_data const &gamedata,

@@ -37,7 +37,7 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-bool show_intro_part(display &disp, const config& part,
+static bool show_intro_part(display &disp, const config& part,
 		const std::string& scenario);
 
 void show_intro(display &disp, const config& data, const config& level)

@@ -31,11 +31,9 @@ variable_set::~variable_set()
 {
 }
 
-namespace {
+static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 
-bool two_dots(char a, char b) { return a == '.' && b == '.'; }
-
-std::string do_interpolation(const std::string &str, const variable_set& set)
+static std::string do_interpolation(const std::string &str, const variable_set& set)
 {
 	std::string res = str;
 	//this needs to be able to store negative numbers to check for the while's condition
@@ -123,8 +121,6 @@ std::string do_interpolation(const std::string &str, const variable_set& set)
 	}
 
 	return res;
-}
-
 }
 
 namespace utils {
@@ -655,48 +651,6 @@ wide_string string_to_wstring(const std::string &src)
 	}
 
 	return res;
-}
-
-ucs2_string utf8_string_to_ucs2_string(const utf8_string& src)
-{
-	ucs2_string res;
-	try {
-		utf8_iterator i1(src);
-		const utf8_iterator i2(utf8_iterator::end(src));
-		while(i1 != i2) {
-			push_back(res, *i1);
-			++i1;
-		}
-	}
-	catch(invalid_utf8_exception e) {
-		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"\n";
-		return res;
-	}
-	return res;
-}
-
-utf8_string ucs2_string_to_utf8_string(const ucs2_string& src)
-{
-	utf8_string dst;
-	dst.reserve(src.size());
-	ucs2_string::const_iterator itor = src.begin();
-	for(;itor != src.end(); ++itor) {
-		if(*itor < 0x0080) {
-			push_back(dst,*itor);
-			continue;
-		}
-		if(0x0080 <= *itor && *itor < 0x0800) {
-			push_back(dst,(*itor >> 6) | 0xC0);
-			push_back(dst,(*itor & 0x003F) | 0x80);
-			continue;
-		}
-		if((0x0800 <= *itor && *itor < 0xD800) || (0xDFFF < *itor && *itor < 0xFFFE)) {
-			push_back(dst,(*itor >> 12) | 0xE0);
-			push_back(dst,((*itor >> 6) & 0x003F) | 0x80);
-			push_back(dst,(*itor & 0x003F) | 0x80);
-		}
-	}
-	return dst;
 }
 
 utf8_string capitalize(const utf8_string& s)

@@ -67,7 +67,6 @@ std::istream *istream_file(std::string const &fname);
 std::ostream *ostream_file(std::string const &fname);
 //throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data);
-std::string read_stdin();
 
 std::string read_map(const std::string& name);
 
@@ -95,10 +94,6 @@ struct file_tree_checksum
 bool operator==(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
 bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
 
-
-//function to get the time at which the most recently modified file
-//in a directory tree was modified at
-file_tree_checksum get_file_tree_checksum(const std::string& path);
 
 //function to get the time at which the data/ tree was last modified at
 const file_tree_checksum& data_tree_checksum();

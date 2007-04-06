@@ -101,6 +101,8 @@ void message_dialog::action(gui::dialog_process_info &dp_info)
 message_dialog::~message_dialog()
 {
 }
+		
+} //end anonymous namespace
 
 #ifdef _MSC_VER
 // std::getline might be broken in Visual Studio so show a warning
@@ -119,7 +121,7 @@ message_dialog::~message_dialog()
  * does not need to be the order in which these messages are encountered.
  * Messages are always written to std::cerr
  */
-void show_wml_errors()
+static void show_wml_errors()
 {
 	// Get all unique messages in messages with the number of encounters for
 	// these messages
@@ -169,10 +171,11 @@ void show_wml_errors()
 		std::cerr << caption << ": " << msg.str() << '\n';
 	}
 }
-		
-} //end anonymous namespace
 
 namespace game_events {
+
+static bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc);
+static bool matches_special_filter(const config* cfg, const vconfig filter);
 
 game_state* get_state_of_game()
 {
@@ -330,7 +333,11 @@ at the moment.
 */
 const size_t MaxLoop = 65536;
 
-bool events_init() { return screen != NULL; }
+}
+
+static bool events_init() { return screen != NULL; }
+
+namespace {
 
 struct queued_event {
 	queued_event(const std::string& name, const gamemap::location& loc1,
@@ -416,8 +423,9 @@ private:
 	vconfig cfg_;
 };
 
+}
 
-gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
+static gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
 {
 	int x = lexical_cast_default(cfg["x"], defaultx) - 1;
 	int y = lexical_cast_default(cfg["y"], defaulty) - 1;
@@ -425,10 +433,12 @@ gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 
 	return gamemap::location(x, y);
 }
 
-std::vector<gamemap::location> multiple_locs(const vconfig cfg)
+static std::vector<gamemap::location> multiple_locs(const vconfig cfg)
 {
 	return parse_location_range(cfg["x"],cfg["y"]);
 }
+
+namespace {
 
 std::multimap<std::string,event_handler> events_map;
 
@@ -2193,13 +2203,15 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 	return mutated;
 }
 
-bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
+}
+
+static bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
                                                    const std::string& yloc)
 {
 	return loc.matches_range(xloc, yloc);
 }
 
-bool filter_loc(const gamemap::location& loc, const vconfig cfg)
+static bool filter_loc(const gamemap::location& loc, const vconfig cfg)
 {
 	const std::string xloc = cfg["x"];
 	const std::string yloc = cfg["y"];
@@ -2207,7 +2219,7 @@ bool filter_loc(const gamemap::location& loc, const vconfig cfg)
 	return filter_loc_impl(loc,xloc,yloc);
 }
 
-bool process_event(event_handler& handler, const queued_event& ev)
+static bool process_event(event_handler& handler, const queued_event& ev)
 {
 	if(handler.disabled())
 		return false;
@@ -2280,8 +2292,6 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	return res;
 }
 
-} //end anonymous namespace
-
 namespace game_events {
 
 bool matches_special_filter(const config* cfg, const vconfig filter)
@@ -2334,8 +2344,8 @@ bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 	return res;
 }
 
-config::child_list unit_wml_configs;
-std::set<std::string> unit_wml_ids;
+static config::child_list unit_wml_configs;
+static std::set<std::string> unit_wml_ids;
 
 manager::manager(const config& cfg, display& gui_, gamemap& map_,
 		 soundsource::manager& sndsources_,

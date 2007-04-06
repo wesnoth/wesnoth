@@ -32,17 +32,6 @@ struct manager {
 	struct error {};
 };
 
-//structure used to describe a font, and the subset of the Unicode character
-//set it covers.
-struct subset_descriptor
-{
-	std::string name;
-	std::vector<std::pair<size_t, size_t> > present_codepoints;
-};
-
-//sets the font list to be used.
-void set_font_list(const std::vector<subset_descriptor>& fontlist);
-
 //various standard colours
 extern const SDL_Color NORMAL_COLOUR, GRAY_COLOUR, LOBBY_COLOUR, GOOD_COLOUR, BAD_COLOUR,
                        BLACK_COLOUR, DARK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR,
@@ -92,9 +81,6 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 SDL_Rect draw_text_line(CVideo* gui, const SDL_Rect& area, int size,
                         const SDL_Color& colour, const std::string& text,
                         int x, int y, bool use_tooltips, int style);
-
-//measures the width and height of a single ucs2 text line
-SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::const_iterator last, int font_size = SIZE_NORMAL, int style = TTF_STYLE_NORMAL);
 
 // Returns the maximum height of a font, in pixels
 int get_max_height(int size);
@@ -156,8 +142,6 @@ void remove_floating_label(int handle);
 
 /// hides or shows a floating label
 void show_floating_label(int handle, bool show);
-
-const std::string& get_floating_label_text(int handle);
 
 SDL_Rect get_floating_label_rect(int handle);
 

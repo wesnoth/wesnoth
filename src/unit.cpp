@@ -2376,9 +2376,8 @@ size_t unit::modification_count(const std::string& type, const std::string& id) 
 	return res;
 }
 
-namespace {
 /* Helper function for add_modifications */
-void mod_mdr_merge(config& dst, const config& mod, bool delta)
+static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 {
 	string_map::const_iterator iter = mod.values.begin();
 	string_map::const_iterator end = mod.values.end();
@@ -2389,7 +2388,6 @@ void mod_mdr_merge(config& dst, const config& mod, bool delta)
 				+ lexical_cast_default<int>(iter->second)
 				);
 	}
-}
 }
 
 void unit::add_modification(const std::string& type, const config& mod,
@@ -3092,15 +3090,6 @@ unit_map::const_iterator team_leader(unsigned int side, const unit_map& units)
 	}
 
 	return units.end();
-}
-
-std::string team_name(int side, const unit_map& units)
-{
-	const unit_map::const_iterator i = team_leader(side,units);
-	if(i != units.end())
-		return i->second.description();
-	else
-		return "-";
 }
 
 unit_map::iterator find_visible_unit(unit_map& units,

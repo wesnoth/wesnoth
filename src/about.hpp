@@ -24,8 +24,6 @@ class display;
 namespace about
 {
 
-extern config about_list;
-
 void show_about(display &disp, std::string campaign="");
 void set_about(const config& cfg);
 std::vector<std::string> get_text(std::string campaign="");

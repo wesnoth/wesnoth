@@ -163,17 +163,6 @@ public:
 		 */
 		int basex, basey;
 
-		/** The tile width used when using basex and basey. This is not,
-		 * necessarily, the tile width in pixels, this is totally
-		 * arbitrary. However, it will be set to 72 for convenience.
-		 */
-		static const int TILEWIDTH;
-		/** The position of unit graphics in a tile. Graphics whose y
-		 * position is below this value are considered background for
-		 * this tile; graphics whose y position is above this value are
-		 * considered foreground. */
-		static const int UNITPOS;
-
 		/** Set to true if the image was defined as a child of the
 		 * [terrain_graphics] tag, set to false if it was defined as a
 		 * child of a [tile] tag */
@@ -250,11 +239,6 @@ public:
 			layer first and base-y position second.
 		 */
 		ordered_ri_list images;
-
-		/** The allowed interval for the base-y position. The possible values are from 
-		 * -BASE_Y_INTERVAL to BASE_Y_INTERVAL-1
-		 */
-		static const int BASE_Y_INTERVAL;
 
 		/** The list of images which are in front of the unit sprites,
 		 * attached to this tile. This member is considered a cache: it

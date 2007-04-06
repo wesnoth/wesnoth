@@ -125,7 +125,7 @@ threading::condition* cond = NULL;
 std::map<Uint32,threading::thread*> threads;
 std::vector<Uint32> to_clear;
 
-SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
+static SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif
@@ -213,7 +213,7 @@ SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
 	}
 }
 
-SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
+static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 {
 	char num_buf[4];
 	int len = SDLNet_TCP_Recv(sock,num_buf,4);
@@ -295,7 +295,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	return SOCKET_READY;
 }
 
-int process_queue(void*)
+static int process_queue(void*)
 {
 	LOG_NW << "thread started...\n";
 	for(;;) {
@@ -525,7 +525,7 @@ void queue_data(TCPsocket sock,const  config& buf)
 namespace
 {
 
-void remove_buffers(TCPsocket sock)
+static void remove_buffers(TCPsocket sock)
 {
 	buffer_set new_bufs;
 	new_bufs.reserve(bufs.size());

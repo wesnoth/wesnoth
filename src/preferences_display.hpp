@@ -26,9 +26,6 @@ namespace preferences {
 	void set_fullscreen(bool ison);
 	void set_resolution(const std::pair<int,int>& res);
 	void set_turbo(bool ison);
-	void set_turbo_speed(const double speed);
-	void set_adjust_gamma(bool val);
-	void set_gamma(int gamma);
 	void set_grid(bool ison);
 	void set_colour_cursors(bool value);
 

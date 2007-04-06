@@ -36,8 +36,9 @@ namespace {
         const Uint32 DefaultFontRGB = 0x00C8C8C8;
 
 	_rect ref_rect = { 0, 0, 0, 0 };
+}
 
-	size_t compute(std::string expr, size_t ref1, size_t ref2=0 ) {
+static size_t compute(std::string expr, size_t ref1, size_t ref2=0 ) {
 		size_t ref = 0;
 		if (expr[0] == '=') {
 		  ref = ref1;
@@ -50,7 +51,7 @@ namespace {
 	}
 
 	// if x2 or y2 are not specified, use x1 and y1 values
-	_rect read_rect(const config& cfg) {
+static _rect read_rect(const config& cfg) {
 		_rect rect = { 0, 0, 0, 0 };
 		const std::vector<std::string> items = utils::split(cfg["rect"].c_str());
 		if(items.size() >= 1)
@@ -72,7 +73,7 @@ namespace {
 		return rect;
 	}
 
-	SDL_Rect read_sdl_rect(const config& cfg) {
+static SDL_Rect read_sdl_rect(const config& cfg) {
 		SDL_Rect sdlrect;
 		const _rect rect = read_rect(cfg);
 		sdlrect.x = rect.x1;
@@ -83,7 +84,7 @@ namespace {
 		return sdlrect;
 	}
 
-	std::string resolve_rect(const std::string& rect_str) {
+static std::string resolve_rect(const std::string& rect_str) {
 		_rect rect = { 0, 0, 0, 0 };
 		std::stringstream resolved;
 		const std::vector<std::string> items = utils::split(rect_str.c_str());
@@ -110,9 +111,11 @@ namespace {
 		return resolved.str();
 	}
 
+namespace {
 	config empty_config = config();
+}
 
-	config& find_ref(const std::string& id, config& cfg, bool remove = false) {
+static config& find_ref(const std::string& id, config& cfg, bool remove = false) {
 		for(config::child_map::const_iterator i = cfg.all_children().begin();
 		    i != cfg.all_children().end(); i++) {
 			for (config::child_list::const_iterator j = i->second.begin();
@@ -148,7 +151,7 @@ namespace {
 	}
 #endif
 
-	void expand_partialresolution(config& dst_cfg, const config& top_cfg)
+static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 	{
 		std::vector<config> res_cfgs_;
 		// resolve all the partialresolutions
@@ -218,7 +221,7 @@ namespace {
 		return;
 	}
 
-	void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
+static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
 
 		// recursively resolve children
 		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
@@ -255,7 +258,6 @@ namespace {
 			resolved_config.values["rect"] = resolve_rect(cfg["rect"]);
 		}
 	}
-}
 
 theme::object::object() : location_modified_(false), loc_(empty_rect), relative_loc_(empty_rect),
                           last_screen_(empty_rect), xanchor_(object::FIXED), yanchor_(object::FIXED)

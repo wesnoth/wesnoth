@@ -41,7 +41,7 @@ command_disabler::~command_disabler()
 	--commands_disabled;
 }
 
-bool command_active()
+static bool command_active()
 {
 #ifdef __APPLE__
 	return (SDL_GetModState()&KMOD_META) != 0;

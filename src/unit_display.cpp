@@ -30,10 +30,7 @@
 
 #define LOG_DP LOG_STREAM(info, display)
 
-namespace
-{
-
-void teleport_unit_between(display& disp, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
+static void teleport_unit_between(display& disp, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
 		return;
@@ -66,7 +63,7 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 	events::pump();
 }
 
-void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
+static void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
 		return;
@@ -101,8 +98,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		events::pump();
 
 	}
-}
-
 }
 
 namespace unit_display
@@ -212,9 +207,7 @@ const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 	}
 }
 
-namespace {
-
-void unit_attack_ranged(display& disp, unit_map& units,
+static void unit_attack_ranged(display& disp, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
 			int damage, const attack_type& attack, const attack_type* secondary_attack,bool update_display, int swing)
 
@@ -383,8 +376,6 @@ void unit_attack_ranged(display& disp, unit_map& units,
 	def->second.set_standing(disp,b);
 
 }
-
-} //end anon namespace
 
 void unit_attack(display& disp, unit_map& units,
                  const gamemap::location& a, const gamemap::location& b, int damage,

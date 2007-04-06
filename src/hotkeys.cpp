@@ -134,6 +134,9 @@ hotkey::hotkey_item null_hotkey_;
 
 namespace hotkey {
 
+static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
+
+
 hotkey_item::hotkey_item(HOTKEY_COMMAND id, const std::string& command, const std::string& description, bool hidden)
 	: id_(id), command_(command), description_(description), type_(UNBOUND),
 	  ctrl_(false), alt_(false), cmd_(false), shift_(false), hidden_(hidden)

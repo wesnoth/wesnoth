@@ -122,7 +122,7 @@ namespace events{
 		}
 	}
 
-	bool is_illegal_file_char(char c)
+	static bool is_illegal_file_char(char c)
 	{
 		return c == '/' || c == '\\' || c == ':';
 	}
@@ -351,10 +351,6 @@ namespace events{
 			const gamemap::location& loc = locations_list[selected];
 			gui_->scroll_to_tile(loc.x,loc.y,display::WARP);
 		}
-	}
-
-	bool is_player_char(char c){
-		return (isalpha(c) != 0);
 	}
 
 	void menu_handler::status_table()

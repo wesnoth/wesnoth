@@ -130,7 +130,7 @@ void play_controller::init_managers(){
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
-int placing_score(const config& side, const gamemap& map, const gamemap::location& pos)
+static int placing_score(const config& side, const gamemap& map, const gamemap::location& pos)
 {
 	int positions = 0, liked = 0;
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE	
@@ -165,8 +165,7 @@ struct placing_info {
 	gamemap::location pos;
 };
 
-bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
-bool operator==(const placing_info& a, const placing_info& b) { return a.score == b.score; }
+static bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
 
 void play_controller::place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides)
 {
@@ -724,8 +723,7 @@ void play_controller::play_slice()
 	}
 }
 
-namespace {
-void trim_items(std::vector<std::string>& newitems) {
+static void trim_items(std::vector<std::string>& newitems) {
 	if (newitems.size() > 5) {
 		std::vector<std::string> subitems;
 		subitems.push_back(newitems[0]);
@@ -736,7 +734,6 @@ void trim_items(std::vector<std::string>& newitems) {
 		newitems = subitems;
 	}
 }
-} //end anon namespace
 
 void play_controller::expand_autosaves(std::vector<std::string>& items)
 {

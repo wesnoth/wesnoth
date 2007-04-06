@@ -69,8 +69,9 @@ int main( int argc, char** argv )
 
 namespace {
 bool fullScreen = false;
+}
 
-unsigned int get_flags(unsigned int flags)
+static unsigned int get_flags(unsigned int flags)
 {
 	//SDL under Windows doesn't seem to like hardware surfaces for
 	//some reason.
@@ -83,18 +84,22 @@ unsigned int get_flags(unsigned int flags)
 	return flags;
 }
 
+namespace {
 std::vector<SDL_Rect> update_rects;
 bool update_all = false;
+}
 
-bool rect_contains(const SDL_Rect& a, const SDL_Rect& b) {
+static bool rect_contains(const SDL_Rect& a, const SDL_Rect& b) {
 	return a.x <= b.x && a.y <= b.y && a.x+a.w >= b.x+b.w && a.y+a.h >= b.y+b.h;
 }
 
-void clear_updates()
+static void clear_updates()
 {
 	update_all = false;
 	update_rects.clear();
 }
+
+namespace {
 
 surface frameBuffer = NULL;
 

@@ -21,9 +21,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace {
-
-const std::string& campaign_dir()
+static const std::string& campaign_dir()
 {
 	#ifdef __amigaos4__
 	static const std::string res = "data/campaigns";
@@ -33,12 +31,10 @@ const std::string& campaign_dir()
 	return res;
 }
 
-void setup_dirs()
+static void setup_dirs()
 {
 	make_directory(get_user_data_dir() + "/data");
 	make_directory(campaign_dir());
-}
-
 }
 
 void get_campaign_info(const std::string& campaign_name, config& cfg)
@@ -119,9 +115,12 @@ std::vector<config *> find_scripts(const config &cfg, std::string extension)
 namespace {
 
 const char escape_char = 1;
-bool needs_escaping(char c) { return c == 0 || c == escape_char; }
 
-std::string encode_binary(const std::string& str)
+}
+
+static bool needs_escaping(char c) { return c == 0 || c == escape_char; }
+
+static std::string encode_binary(const std::string& str)
 {
 	std::string res;
 	res.resize(str.size());
@@ -139,7 +138,7 @@ std::string encode_binary(const std::string& str)
 	return res;
 }
 
-std::string unencode_binary(const std::string& str)
+static std::string unencode_binary(const std::string& str)
 {
 	std::string res;
 	res.resize(str.size());
@@ -158,13 +157,13 @@ std::string unencode_binary(const std::string& str)
 	return res;
 }
 
-void archive_file(const std::string& path, const std::string& fname, config& cfg)
+static void archive_file(const std::string& path, const std::string& fname, config& cfg)
 {
 	cfg["name"] = fname;
 	cfg["contents"] = encode_binary(read_file(path + '/' + fname));
 }
 
-void archive_dir(const std::string& path, const std::string& dirname, config& cfg)
+static void archive_dir(const std::string& path, const std::string& dirname, config& cfg)
 {
 	cfg["name"] = dirname;
 	const std::string dir = path + '/' + dirname;
@@ -180,22 +179,18 @@ void archive_dir(const std::string& path, const std::string& dirname, config& cf
 	}
 }
 
-}
-
 void archive_campaign(const std::string& campaign_name, config& cfg)
 {
 	archive_file(campaign_dir(),campaign_name + ".cfg",cfg.add_child("file"));
 	archive_dir(campaign_dir(),campaign_name,cfg.add_child("dir"));
 }
 
-namespace {
-
-void unarchive_file(const std::string& path, const config& cfg)
+static void unarchive_file(const std::string& path, const config& cfg)
 {
 	write_file(path + '/' + cfg["name"].str(), unencode_binary(cfg["contents"]));
 }
 
-void unarchive_dir(const std::string& path, const config& cfg)
+static void unarchive_dir(const std::string& path, const config& cfg)
 {
 	std::string dir;
 	if (cfg["name"].empty())
@@ -216,17 +211,13 @@ void unarchive_dir(const std::string& path, const config& cfg)
 	}
 }
 
-}
-
 void unarchive_campaign(const config& cfg)
 {
 	setup_dirs();
 	unarchive_dir(campaign_dir(),cfg);
 }
 
-namespace {
-	bool two_dots(char a, char b) { return a == '.' && b == '.'; }
-}
+static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 
 bool campaign_name_legal(const std::string& name)
 {

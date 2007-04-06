@@ -77,7 +77,9 @@ void scenario_stats::write(config_writer &out) const
 
 std::vector<scenario_stats> master_stats;
 
-stats& get_stats(int team)
+}
+
+static stats& get_stats(int team)
 {
 	if(master_stats.empty()) {
 		master_stats.push_back(scenario_stats(""));
@@ -92,7 +94,7 @@ stats& get_stats(int team)
 	return team_stats[index];
 }
 
-config write_str_int_map(const stats::str_int_map& m)
+static config write_str_int_map(const stats::str_int_map& m)
 {
 	config res;
 	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
@@ -104,7 +106,7 @@ config write_str_int_map(const stats::str_int_map& m)
 	return res;
 }
 
-void write_str_int_map(config_writer &out, const stats::str_int_map& m)
+static void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 {
 	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
 		char buf[50];
@@ -113,7 +115,7 @@ void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 	}
 }
 
-stats::str_int_map read_str_int_map(const config& cfg)
+static stats::str_int_map read_str_int_map(const config& cfg)
 {
 	stats::str_int_map m;
 	for(string_map::const_iterator i = cfg.values.begin(); i != cfg.values.end(); ++i) {
@@ -123,7 +125,7 @@ stats::str_int_map read_str_int_map(const config& cfg)
 	return m;
 }
 
-config write_battle_result_map(const stats::battle_result_map& m)
+static config write_battle_result_map(const stats::battle_result_map& m)
 {
 	config res;
 	for(stats::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i) {
@@ -138,7 +140,7 @@ config write_battle_result_map(const stats::battle_result_map& m)
 	return res;
 }
 
-void write_battle_result_map(config_writer &out, const stats::battle_result_map& m)
+static void write_battle_result_map(config_writer &out, const stats::battle_result_map& m)
 {
 	for(stats::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i) {
 		out.open_child("sequence");
@@ -151,7 +153,7 @@ void write_battle_result_map(config_writer &out, const stats::battle_result_map&
 	}
 }
 
-stats::battle_result_map read_battle_result_map(const config& cfg)
+static stats::battle_result_map read_battle_result_map(const config& cfg)
 {
 	stats::battle_result_map m;
 	const config::child_list c = cfg.get_children("sequence");
@@ -165,21 +167,21 @@ stats::battle_result_map read_battle_result_map(const config& cfg)
 	return m;
 }
 
-void merge_str_int_map(stats::str_int_map& a, const stats::str_int_map& b)
+static void merge_str_int_map(stats::str_int_map& a, const stats::str_int_map& b)
 {
 	for(stats::str_int_map::const_iterator i = b.begin(); i != b.end(); ++i) {
 		a[i->first] += i->second;
 	}
 }
 
-void merge_battle_result_maps(stats::battle_result_map& a, const stats::battle_result_map& b)
+static void merge_battle_result_maps(stats::battle_result_map& a, const stats::battle_result_map& b)
 {
 	for(stats::battle_result_map::const_iterator i = b.begin(); i != b.end(); ++i) {
 		merge_str_int_map(a[i->first],i->second);
 	}
 }
 
-void merge_stats(stats& a, const stats& b)
+static void merge_stats(stats& a, const stats& b)
 {
 	merge_str_int_map(a.recruits,b.recruits);
 	merge_str_int_map(a.recalls,b.recalls);
@@ -196,8 +198,6 @@ void merge_stats(stats& a, const stats& b)
 	a.damage_taken += b.damage_taken;
 	a.expected_damage_inflicted += b.expected_damage_inflicted;
 	a.expected_damage_taken += b.expected_damage_taken;
-}
-
 }
 
 namespace statistics
@@ -464,17 +464,6 @@ void advance_unit(const unit& u)
 
 	stats& s = get_stats(u.side());
 	s.advanced_to[u.id()]++;
-}
-
-std::vector<std::string> get_categories()
-{
-	std::vector<std::string> res;
-	res.push_back("all_statistics");
-	for(std::vector<scenario_stats>::const_iterator i = master_stats.begin(); i != master_stats.end(); ++i) {
-		res.push_back(i->scenario_name);
-	}
-
-	return res;
 }
 
 stats calculate_stats(int category, int side)

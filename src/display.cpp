@@ -60,8 +60,9 @@ namespace {
 #endif
 
 	const int MaxZoom = 200;
+}
 
-	int MinZoom(const gamemap& map, const SDL_Rect& viewport)
+static int MinZoom(const gamemap& map, const SDL_Rect& viewport)
 	{
 		if(map.x()<4 || !map.y() ) return DefaultZoom;
 		// These ugly formulas try to give the optimal and mathematically exact minimal zoom
@@ -75,6 +76,7 @@ namespace {
 		return minimum<int>(zoom,DefaultZoom);
 	}
 
+namespace {
 	const size_t SideBarGameStatus_x = 16;
 	const size_t SideBarGameStatus_y = 220;
 }
@@ -724,9 +726,7 @@ void display::flip()
 	font::undraw_floating_labels(frameBuffer);
 }
 
-namespace {
-
-void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
+static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
 {
 	//log_scope("draw panel");
 	surface surf(image::get_image(panel.image(),image::UNSCALED));
@@ -759,7 +759,7 @@ void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::butto
 	}
 }
 
-void draw_label(CVideo& video, surface target, const theme::label& label)
+static void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
@@ -802,8 +802,6 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
 
 
 	update_rect(loc);
-}
-
 }
 
 void display::draw(bool update,bool force)
@@ -1708,13 +1706,10 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 	}
 }
 
-namespace {
-const std::string& get_direction(size_t n)
+static const std::string& get_direction(size_t n)
 {
 	static std::string const dirs[6] = { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
-}
-
 }
 
 std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
@@ -2325,7 +2320,7 @@ void display::delay(unsigned int milliseconds) const
 
 // timestring() returns the current date as a string.
 // Uses preferences::clock_format() for formatting.
-std::string timestring ( void )
+static std::string timestring ()
 {
     #define TIME_SIZE 10
     time_t now = time ( NULL );

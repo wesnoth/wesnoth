@@ -95,7 +95,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	}
 }
 
-void clean_autosaves(const std::string &label)
+static void clean_autosaves(const std::string &label)
 {
 	std::vector<save_info> games = get_saves_list();
 	std::string prefix = label + "-" + _("Auto-Save");

@@ -488,7 +488,7 @@ void set_zoom(int amount)
 	}
 }
 
-surface get_unmasked(const locator i_locator)
+static surface get_unmasked(const locator i_locator)
 {
 	surface image(get_image(i_locator, UNSCALED));
 
@@ -506,7 +506,7 @@ surface get_unmasked(const locator i_locator)
 	return res;
 }
 
-surface get_scaled_to_hex(const locator i_locator, COLOUR_ADJUSTMENT adj)
+static surface get_scaled_to_hex(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface res(get_image(i_locator, UNMASKED, adj));
 
@@ -528,7 +528,7 @@ surface get_scaled_to_hex(const locator i_locator, COLOUR_ADJUSTMENT adj)
 	return res;
 }
 
-surface get_scaled_to_zoom(const locator i_locator)
+static surface get_scaled_to_zoom(const locator i_locator)
 {
 	wassert(zoom != tile_size);
 	wassert(tile_size != 0);
@@ -542,13 +542,13 @@ surface get_scaled_to_zoom(const locator i_locator)
 	}
 }
 
-surface get_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
+static surface get_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface image(get_image(i_locator, SCALED_TO_HEX, adj));
 	return surface(brighten_image(image, ftofxp(1.5)));
 }
 
-surface get_semi_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
+static surface get_semi_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface image(get_image(i_locator, SCALED_TO_HEX, adj));
 	return surface(brighten_image(image, ftofxp(1.25)));

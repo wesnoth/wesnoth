@@ -253,32 +253,6 @@ void ai::do_attack_analysis(
 }
 
 
-struct battle_type {
-	battle_type(const gamemap::location& a, const gamemap::location& d,
-	            t_translation::t_letter t)
-	         : attacker(a),defender(d),terrain(t),weapon(-1)
-	{}
-
-	const gamemap::location attacker;
-	const gamemap::location defender;
-	const t_translation::t_letter terrain;
-	int weapon;
-};
-
-bool operator<(const battle_type& a, const battle_type& b)
-{
-	return a.attacker < b.attacker ||
-	       a.attacker == b.attacker && a.defender < b.defender ||
-		   a.attacker == b.attacker && a.defender == b.defender &&
-		   a.terrain < b.terrain;
-}
-
-bool operator==(const battle_type& a, const battle_type& b)
-{
-	return a.attacker == b.attacker && a.defender == b.defender &&
-	       a.terrain == b.terrain;
-}
-
 void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
 								  const gamestatus& status, const game_data& gamedata,

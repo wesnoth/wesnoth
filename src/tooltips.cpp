@@ -21,9 +21,7 @@
 
 #include <vector>
 
-namespace {
-
-bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
+static bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
 {
 	const bool xoverlap = a.x >= b.x && a.x < b.x + b.w ||
 	                      b.x >= a.x && b.x < a.x + a.w;
@@ -33,6 +31,8 @@ bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
 
 	return xoverlap && yoverlap;
 }
+
+namespace {
 
 CVideo* video_ = NULL;
 
@@ -56,13 +56,9 @@ int tooltip_handle = 0;
 SDL_Rect current_rect;
 surface current_background = NULL;
 
-SDL_Rect get_text_size(const std::string& msg)
-{
-	SDL_Rect area = {0,0,10000,10000};
-	return font::draw_text(NULL,area,font_size,font::BLACK_COLOUR,msg,0,0);
 }
 
-void clear_tooltip()
+static void clear_tooltip()
 {
 	if(tooltip_handle != 0) {
 		font::remove_floating_label(tooltip_handle);
@@ -70,7 +66,7 @@ void clear_tooltip()
 	}
 }
 
-void show_tooltip(const tooltip& tip)
+static void show_tooltip(const tooltip& tip)
 {
 	if(video_ == NULL) {
 		return;
@@ -107,8 +103,6 @@ void show_tooltip(const tooltip& tip)
 	}
 
 	font::move_floating_label(tooltip_handle,rect.x,rect.y);
-}
-
 }
 
 namespace tooltips {
@@ -174,13 +168,6 @@ void process(int mousex, int mousey)
 
 	clear_tooltip();
 	current_tooltip = tips.end();
-}
-
-SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
-                   const SDL_Color& colour, const std::string& text,
-                   int x, int y)
-{
-	return font::draw_text(gui, area, size, colour, text, x, y, true);
 }
 
 }

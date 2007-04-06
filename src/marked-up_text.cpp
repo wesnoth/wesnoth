@@ -24,11 +24,8 @@ const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',
            NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&',
            COLOR_TEXT='<', NULL_MARKUP='^', GRAY_TEXT='|';
 
-namespace {
-
-
 //function which will parse the markup tags at the front of a string
-std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
+static std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
 					 int* font_size, SDL_Color* colour, int* style)
 {
 	if(font_size == NULL || colour == NULL) {
@@ -137,8 +134,6 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		++i1;
 	}
 	return i1;
-}
-
 }
 
 
@@ -253,9 +248,7 @@ bool is_format_char(char c)
 	}
 }
 
-namespace {
-
-void cut_word(std::string& line, std::string& word, int size, int max_width)
+static void cut_word(std::string& line, std::string& word, int size, int max_width)
 {
 	std::string tmp = line;
 	utils::utf8_iterator tc(word);
@@ -279,6 +272,7 @@ void cut_word(std::string& line, std::string& word, int size, int max_width)
 	}
 }
 
+namespace {
 
 /*
  * According to Kinsoku-Shori, Japanese rules about line-breaking:

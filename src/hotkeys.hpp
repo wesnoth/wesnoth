@@ -238,8 +238,6 @@ public:
 //is still meaningful to call with executor=NULL
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 
-void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
-
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index=-1);
 
 //object which will ensure that basic keyboard events like escape

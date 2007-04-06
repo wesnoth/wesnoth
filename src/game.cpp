@@ -68,13 +68,13 @@
 #include <sstream>
 #include <string>
 
-namespace {
 
-
-bool less_campaigns_rank(const config* a, const config* b) {
+static bool less_campaigns_rank(const config* a, const config* b) {
 	return lexical_cast_default<int>((*a)["rank"],1000) <
 	       lexical_cast_default<int>((*b)["rank"],1000);
 }
+
+namespace {
 
 class game_controller
 {
@@ -847,10 +847,9 @@ bool game_controller::new_campaign()
 	return true;
 }
 
-namespace
-{
+}
 
-std::string format_file_size(const std::string& size_str)
+static std::string format_file_size(const std::string& size_str)
 {
 	double size = lexical_cast_default<double>(size_str,0.0);
 
@@ -883,7 +882,8 @@ std::string format_file_size(const std::string& size_str)
 	}
 }
 
-}
+namespace
+{
 
 void game_controller::download_campaigns()
 {
@@ -1622,7 +1622,7 @@ game_controller::~game_controller()
 	sound::close_sound();
 }
 
-int play_game(int argc, char** argv)
+static int play_game(int argc, char** argv)
 {
 	const int start_ticks = SDL_GetTicks();
 

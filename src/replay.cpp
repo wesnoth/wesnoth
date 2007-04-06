@@ -46,9 +46,8 @@
 std::string replay::last_replay_error;
 
 //functions to verify that the unit structure on both machines is identical
-namespace {
 
-	void verify(const unit_map& units, const config& cfg)
+static void verify(const unit_map& units, const config& cfg)
 	{
 		std::stringstream errbuf;
 		LOG_NW << "verifying unit structure...\n";
@@ -116,44 +115,16 @@ namespace {
 		LOG_NW << "verification passed\n";
 	}
 
-	config create_verification(const unit_map& units)
-	{
-		config res;
-		std::stringstream buf;
-		buf << units.size();
-		res["num_units"] = buf.str();
-
-		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			config u;
-			i->first.write(u);
-
-			static const std::string fields[] = {"type","hitpoints","experience","side",""};
-			config tmp;
-			i->second.write(tmp);
-			for(const std::string* f = fields; f->empty() == false; ++f) {
-				u[*f] = tmp[*f];
-			}
-
-			res.add_child("unit",u);
-		}
-
-		return res;
-	}
-
+namespace {
 	const unit_map* unit_map_ref = NULL;
+}
 
-	void verify_units(const config& cfg)
+static void verify_units(const config& cfg)
 	{
 		if(unit_map_ref != NULL) {
 			verify(*unit_map_ref,cfg);
 		}
 	}
-
-	config make_verify_units()
-	{
-		return create_verification(*unit_map_ref);
-	}
-}
 
 verification_manager::verification_manager(const unit_map& units)
 {
@@ -622,8 +593,7 @@ replay& get_replay_source()
 	}
 }
 
-namespace {
-void check_checksums(display& disp,const unit_map& units,const config& cfg)
+static void check_checksums(display& disp,const unit_map& units,const config& cfg)
 {
 	if(! game_config::mp_debug) {
 		return;
@@ -645,7 +615,6 @@ void check_checksums(display& disp,const unit_map& units,const config& cfg)
 			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE,false);
 		}
 	}
-}
 }
 
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,

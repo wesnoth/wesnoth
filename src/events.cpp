@@ -37,6 +37,8 @@ unsigned input_blocker::instance_count = 0; //static initialization
 namespace events
 {
 
+void raise_help_string_event(int mousex, int mousey);
+
 namespace {
 	int disallow_resize = 0;
 }
@@ -216,13 +218,6 @@ void focus_handler(const handler* ptr)
 {
 	if(event_contexts.empty() == false) {
 		event_contexts.back().set_focus(ptr);
-	}
-}
-
-void cycle_focus()
-{
-	if(event_contexts.empty() == false) {
-		event_contexts.back().cycle_focus();
 	}
 }
 

@@ -35,6 +35,10 @@
 
 namespace preferences {
 
+static void set_gamma(int gamma);
+static void set_turbo_speed(double speed);
+
+
 display* disp = NULL;
 
 display_manager::display_manager(display* d)
@@ -125,7 +129,7 @@ void set_turbo(bool ison)
 	}
 }
 
-void set_turbo_speed(const double speed)
+static void set_turbo_speed(double speed)
 {
 	save_turbo_speed(speed);
 
@@ -134,7 +138,7 @@ void set_turbo_speed(const double speed)
 	}
 }
 
-void set_adjust_gamma(bool val)
+static void set_adjust_gamma(bool val)
 {
 	//if we are turning gamma adjustment off, then set it to '1.0'
 	if(val == false && adjust_gamma()) {
@@ -145,7 +149,7 @@ void set_adjust_gamma(bool val)
 	_set_adjust_gamma(val);
 }
 
-void set_gamma(int gamma)
+static void set_gamma(int gamma)
 {
 	_set_gamma(gamma);
 
@@ -164,17 +168,17 @@ void set_grid(bool ison)
 	}
 }
 
-void set_lobby_joins(int ison)
+static void set_lobby_joins(int ison)
 {
 	_set_lobby_joins(ison);
 }
 
-void set_sort_list(bool ison)
+static void set_sort_list(bool ison)
 {
 	_set_sort_list(ison);
 }
 
-void set_iconize_list(bool ison)
+static void set_iconize_list(bool ison)
 {
 	_set_iconize_list(ison);
 }

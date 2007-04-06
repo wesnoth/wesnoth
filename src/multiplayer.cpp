@@ -56,8 +56,9 @@ public:
 	};
 };
 
+}
 
-void run_lobby_loop(display& disp, mp::ui& ui)
+static void run_lobby_loop(display& disp, mp::ui& ui)
 {
 	disp.video().modeChanged();
 	bool first = true;
@@ -81,13 +82,17 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 	font::cache_mode(font::CACHE_GAME);
 }
 
+namespace {
+
 enum server_type {
 	ABORT_SERVER,
 	WESNOTHD_SERVER,
 	SIMPLE_SERVER
 };
 
-server_type open_connection(display& disp, const std::string& original_host)
+}
+
+static server_type open_connection(display& disp, const std::string& original_host)
 {
 	std::string h = original_host;
 
@@ -240,7 +245,7 @@ server_type open_connection(display& disp, const std::string& original_host)
 // creating the dialogs, then, according to the dialog result, of calling other
 // of those screen functions.
 
-void enter_wait_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, bool observe)
+static void enter_wait_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, bool observe)
 {
 	mp::ui::result res;
 	game_state state;
@@ -284,7 +289,7 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 	}
 }
 
-void enter_connect_mode(display& disp, const config& game_config, game_data& data,
+static void enter_connect_mode(display& disp, const config& game_config, game_data& data,
 		mp::chat& chat, config& gamelist, const mp::create::parameters& params,
 		mp::controller default_controller, bool is_server)
 {
@@ -328,7 +333,7 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 	}
 }
 
-void enter_create_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server)
+static void enter_create_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server)
 {
 	mp::ui::result res;
 	mp::create::parameters params;
@@ -354,7 +359,7 @@ void enter_create_mode(display& disp, const config& game_config, game_data& data
 	}
 }
 
-void enter_lobby_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist)
+static void enter_lobby_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist)
 {
 	mp::ui::result res;
 
@@ -422,8 +427,6 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 			return;
 		}
 	}
-}
-
 }
 
 namespace mp {

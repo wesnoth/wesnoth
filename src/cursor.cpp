@@ -26,15 +26,12 @@
 #include <iostream>
 #include <vector>
 
-namespace
-{
-
-bool use_colour_cursors()
+static bool use_colour_cursors()
 {
 	return game_config::editor == false && preferences::use_colour_cursors();
 }
 
-SDL_Cursor* create_cursor(surface surf)
+static SDL_Cursor* create_cursor(surface surf)
 {
 	const surface nsurf(make_neutral_surface(surf));
 	if(nsurf == NULL) {
@@ -85,6 +82,8 @@ SDL_Cursor* create_cursor(surface surf)
 	return SDL_CreateCursor(&data[0],&mask[0],cursor_width,nsurf->h,0,0);
 }
 
+namespace {
+
 SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
 
 //this array must have members corresponding to cursor::CURSOR_TYPE enum members
@@ -107,7 +106,9 @@ bool have_focus = true;
 bool hide_bw = false;
 bool colour_ready = false;
 
-SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
+}
+
+static SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
 	if(cache[type] == NULL) {
 		static const std::string prefix = "cursors-bw/";
@@ -118,7 +119,7 @@ SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 	return cache[type];
 }
 
-void clear_cache()
+static void clear_cache()
 {
 	for(size_t n = 0; n != cursor::NUM_CURSORS; ++n) {
 		if(cache[n] != NULL) {
@@ -130,8 +131,6 @@ void clear_cache()
 	if(cursor_buf != NULL) {
 		cursor_buf = NULL;
 	}
-}
-
 }
 
 namespace cursor

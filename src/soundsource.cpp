@@ -20,9 +20,7 @@
 #include "soundsource.hpp"
 
 
-namespace {
-
-int calculate_volume(int x, int y, const display &disp)
+static int calculate_volume(int x, int y, const display &disp)
 {
 	SDL_Rect area = disp.map_area();
 
@@ -33,8 +31,6 @@ int calculate_volume(int x, int y, const display &disp)
 	// distance from screen's center
 	return maximum<int>(0, 128 * static_cast<int>(sqrt(dx + dy) / (sqrt(area.w*area.w + area.h * area.h))));
 }
-
-} // end of namespace
 
 namespace soundsource {
 

@@ -239,16 +239,6 @@ void handle_system_event(const SDL_Event& event)
 	}
 }
 
-void copy_ucs2_to_clipboard(const ucs2_string& text)
-{
-	if(text.empty())
-		return;
-	clipboard_string = utils::ucs2_string_to_utf8_string(text);
-	UseX x11;
-	XSetSelectionOwner(x11->dpy(), XA_PRIMARY, x11->window(), CurrentTime);
-	XSetSelectionOwner(x11->dpy(), x11->XA_CLIPBOARD(), x11->window(), CurrentTime);
-}
-
 void copy_to_clipboard(const std::string& text)
 {
 	if (text.empty()) {
@@ -324,24 +314,6 @@ static bool try_grab_target(Atom target, std::string& ret)
 	return false;
 }
 
-ucs2_string copy_ucs2_from_clipboard()
-{
-	if(!clipboard_string.empty())
-		return utils::utf8_string_to_ucs2_string(clipboard_string);
-	utf8_string text;
-
-	UseX x11;
-	if(try_grab_target(x11->UTF8_STRING(), text))
-		return utils::utf8_string_to_ucs2_string(text);
-	if(try_grab_target(x11->XA_COMPOUND_TEXT(), text))
-		return utils::utf8_string_to_ucs2_string(text);
-	if(try_grab_target(x11->XA_TEXT(), text))
-		return utils::utf8_string_to_ucs2_string(text);
-	if(try_grab_target(XA_STRING, text))
-		return utils::utf8_string_to_ucs2_string(text);
-	return ucs2_string();
-}
-
 std::string copy_from_clipboard()
 {
 	if (!clipboard_string.empty())
@@ -376,43 +348,6 @@ std::string copy_from_clipboard()
 void handle_system_event(const SDL_Event& )
 {}
 
-void copy_ucs2_to_clipboard(const ucs2_string& text)
-{
-	if(text.empty())
-		return;
-	if(!OpenClipboard(NULL))
-		return;
-	EmptyClipboard();
-
-	//convert newlines
-	ucs2_string str;
-	str.reserve(text.size() + 1);
-	ucs2_string::const_iterator first = text.begin();
-	ucs2_string::const_iterator last = text.begin();
-	do {
-		if(*last != '\n') {
-			++last;
-			continue;
-		}
-		str.insert(str.end(), first, last);
-		str.push_back('\r');
-		str.push_back('\n');
-		first = ++last;
-	} while(last != text.end());
-	str.push_back('\0');
-
-	HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, str.size() * sizeof(Uint16));
-	if(hglb == NULL) {
-		CloseClipboard();
-		return;
-	}
-	Uint16* const buffer = reinterpret_cast<Uint16* const>(GlobalLock(hglb));
-	memcpy(buffer, (Uint16 const *)&str.front(), str.size() * sizeof(Uint16));
-	GlobalUnlock(hglb);
-	SetClipboardData(CF_UNICODETEXT, hglb);
-	CloseClipboard();
-}
-
 void copy_to_clipboard(const std::string& text)
 {
 	if(text.empty())
@@ -446,36 +381,6 @@ void copy_to_clipboard(const std::string& text)
 	GlobalUnlock(hglb);
 	SetClipboardData(CF_TEXT, hglb);
 	CloseClipboard();
-}
-
-ucs2_string copy_ucs2_from_clipboard()
-{
-	if(!IsClipboardFormatAvailable(CF_UNICODETEXT))
-		return ucs2_string();
-	if(!OpenClipboard(NULL))
-		return ucs2_string();
-
-	HGLOBAL hglb = GetClipboardData(CF_UNICODETEXT);
-	if(hglb == NULL) {
-		CloseClipboard();
-		return ucs2_string();
-	}
-	Uint16 const * buffer = reinterpret_cast<Uint16 const *>(GlobalLock(hglb));
-	if(buffer == NULL) {
-		CloseClipboard();
-		return ucs2_string();
-	}
-
-	//convert newlines
-	ucs2_string str;
-	while(*buffer != '\0') {
-		if(*buffer != '\r')
-			str.push_back(*buffer);
-		++buffer;
-	}
-	GlobalUnlock(hglb);
-	CloseClipboard();
-	return str;
 }
 
 std::string copy_from_clipboard()
@@ -548,51 +453,6 @@ std::string copy_from_clipboard()
 #define CLIPBOARD_FUNCS_DEFINED
 
 #include <Carbon/Carbon.h>
-void copy_ucs2_to_clipboard(const ucs2_string& text) {
-	ucs2_string str;
-	str.reserve(text.size() + 1);
-	for(int i = 0; i < text.size(); ++i) {
-		if(text[i] == '\n')
-			str.push_back('\r');
-		else
-			str.push_back(text[i]);
-	}
-	str.push_back(0);
-	OSStatus err = noErr;
-	ScrapRef scrap = kScrapRefNone;
-	err = ClearCurrentScrap();
-	if(err != noErr)
-		return;
-	err = GetCurrentScrap(&scrap);
-	if(err != noErr)
-		return;
-	PutScrapFlavor(scrap, kScrapFlavorTypeUnicode, kScrapFlavorMaskNone, str.size(), &str.front());
-}
-
-ucs2_string copy_ucs2_from_clipboard() {
-	ucs2_string str;
-	OSStatus err = noErr;
-	ScrapRef scrap = kScrapRefNone;
-	err = GetCurrentScrap(&scrap);
-	if(err != noErr)
-		return str;
-	Size scrapsize;
-	err = GetScrapFlavorSize(scrap, kScrapFlavorTypeUnicode, &scrapsize);
-	if(err != noErr)
-		return str;
-	str.reserve(scrapsize);
-	str.resize(scrapsize);
-	err = GetScrapFlavorData(scrap, kScrapFlavorTypeUnicode, &scrapsize, const_cast<Uint16*>(&str.front()));
-	if(err != noErr) {
-		str.clear();
-		return str;
-	}
-	for(int i = 0; i < str.size(); ++i) {
-		if(str[i] == '\r')
-			str[i] = '\n';
-	}
-	return str;
-}
 
 void copy_to_clipboard(const std::string& text)
 {

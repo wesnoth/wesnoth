@@ -38,9 +38,7 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_DP LOG_STREAM(err, display)
 
-namespace {
-
-bool fade_logo(display& screen, int xpos, int ypos)
+static bool fade_logo(display& screen, int xpos, int ypos)
 {
 	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
 	if(logo == NULL) {
@@ -100,7 +98,7 @@ bool fade_logo(display& screen, int xpos, int ypos)
 	return true;
 }
 
-const std::string& get_tip_of_day(const config& tips,int* ntip)
+static const std::string& get_tip_of_day(const config& tips,int* ntip)
 {
 	static const std::string empty_string;
 	string_map::const_iterator it;
@@ -134,7 +132,7 @@ const std::string& get_tip_of_day(const config& tips,int* ntip)
 	return it->second;
 }
 
-const config get_tips_of_day()
+static const config get_tips_of_day()
 {
 	config cfg;
 
@@ -151,7 +149,7 @@ const config get_tips_of_day()
 
 
 
-void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std::string& style, gui::button* const next_tip_button, gui::button* const help_tip_button, const SDL_Rect* const main_dialog_area, surface_restorer& tip_of_day_restorer)
+static void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std::string& style, gui::button* const next_tip_button, gui::button* const help_tip_button, const SDL_Rect* const main_dialog_area, surface_restorer& tip_of_day_restorer)
 {
 
     // Restore the previous tip of day area to its old state (section of the title image).
@@ -202,8 +200,6 @@ void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std:
 
     LOG_DP << "drew tip of day\n";
 }
-
-} //end anonymous namespace
 
 namespace gui {
 

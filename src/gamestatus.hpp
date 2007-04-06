@@ -232,13 +232,8 @@ void save_game(const game_state& gamestate);
 //function to delete a save
 void delete_game(const std::string& name);
 
-config& save_index();
 config& save_summary(const std::string& save);
-void delete_save_summary(const std::string& save);
 
 void write_save_index();
-
-void extract_summary_data_from_save(const game_state& gamestate, config& out);
-void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 
 #endif

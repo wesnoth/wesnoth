@@ -40,7 +40,7 @@ std::vector<Mix_Chunk*> channel_chunks;
 // is playing on a channel for fading/panning)
 std::vector<int> channel_ids;
 
-bool play_sound_internal(const std::string& files, channel_group group, bool sound_on,
+static bool play_sound_internal(const std::string& files, channel_group group, bool sound_on,
 						 unsigned int distance=0, int id=-1);
 }
 
@@ -66,11 +66,14 @@ unsigned max_cached_chunks = 256;
 #endif
 
 std::map< Mix_Chunk*, int > chunk_usage;
-void increment_chunk_usage(Mix_Chunk* mcp) {
+
+}
+
+static void increment_chunk_usage(Mix_Chunk* mcp) {
 	++(chunk_usage[mcp]);
 }
 
-void decrement_chunk_usage(Mix_Chunk* mcp) {
+static void decrement_chunk_usage(Mix_Chunk* mcp) {
 	if(mcp == NULL) return;
 	std::map< Mix_Chunk*, int >::iterator this_usage = chunk_usage.find(mcp);
 	wassert(this_usage != chunk_usage.end());
@@ -79,6 +82,8 @@ void decrement_chunk_usage(Mix_Chunk* mcp) {
 		chunk_usage.erase(this_usage);
 	}
 }
+
+namespace {
 
 class sound_cache_chunk {
 public:
@@ -177,7 +182,9 @@ void music_track::write(config &snapshot, bool append)
 std::vector<music_track> current_track_list;
 struct music_track current_track("");
 
-bool track_ok(const std::string &name)
+}
+
+static bool track_ok(const std::string &name)
 {
 	LOG_AUDIO << "Considering " << name << "\n";
 
@@ -235,7 +242,7 @@ bool track_ok(const std::string &name)
 }
 
 
-const struct music_track &choose_track()
+static const music_track &choose_track()
 {
 	wassert(!current_track_list.empty());
 
@@ -253,7 +260,7 @@ const struct music_track &choose_track()
 	return current_track_list[track];
 }
 
-std::string pick_one(const std::string &files)
+static std::string pick_one(const std::string &files)
 {
 	std::vector<std::string> names = utils::split(files);
 
@@ -284,6 +291,8 @@ std::string pick_one(const std::string &files)
 	return names[choice];
 }
 
+namespace {
+
 struct audio_lock
 {
 	audio_lock()
@@ -303,7 +312,7 @@ struct audio_lock
 namespace sound {
 
 // Removes channel-chunk and channel-id mapping
-void channel_finished_hook(int channel)
+static void channel_finished_hook(int channel)
 {
 	channel_chunks[channel] = NULL;
 	channel_ids[channel] = -1;

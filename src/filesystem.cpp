@@ -510,16 +510,11 @@ std::string get_user_data_dir()
 #endif
 }
 
-std::string read_stream(std::istream& s)
+static std::string read_stream(std::istream& s)
 {
 	std::stringstream ss;
 	ss << s.rdbuf();
 	return ss.str();
-}
-
-std::string read_stdin()
-{
-	return read_stream(std::cin);
 }
 
 std::istream *istream_file(std::string const &fname)
@@ -599,9 +594,7 @@ std::string read_map(const std::string& name)
 	return res;
 }
 
-namespace {
-
-bool is_directory_internal(const std::string& fname)
+static bool is_directory_internal(const std::string& fname)
 {
 #ifdef _WIN32
 	_finddata_t info;
@@ -621,8 +614,6 @@ bool is_directory_internal(const std::string& fname)
 
 	return S_ISDIR(dir_stat.st_mode);
 #endif
-}
-
 }
 
 bool is_directory(const std::string& fname)
@@ -726,9 +717,7 @@ bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
 	return !operator==(lhs,rhs);
 }
 
-namespace {
-
-void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)
+static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)
 {
 	std::vector<std::string> files, dirs;
 	get_files_in_dir(path,&files,&dirs,ENTIRE_FILE_PATH);
@@ -749,15 +738,6 @@ void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum
 	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 		get_file_tree_checksum_internal(*j,res);
 	}
-}
-
-} //end anonymous namespace
-
-file_tree_checksum get_file_tree_checksum(const std::string& path)
-{
-	file_tree_checksum res;
-	get_file_tree_checksum_internal(path,res);
-	return res;
 }
 
 const file_tree_checksum& data_tree_checksum()
@@ -824,13 +804,13 @@ std::set<std::string> binary_paths;
 typedef std::map<std::string,std::vector<std::string> > paths_map;
 paths_map binary_paths_cache;
 
-void init_binary_paths()
+}
+
+static void init_binary_paths()
 {
 	if(binary_paths.empty()) {
 		binary_paths.insert("");
 	}
-}
-
 }
 
 binary_paths_manager::binary_paths_manager()

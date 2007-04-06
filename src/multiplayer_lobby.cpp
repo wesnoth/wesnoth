@@ -27,15 +27,6 @@
 
 namespace {
 std::vector<std::string> empty_string_vector;
-
-std::string games_menu_heading()
-{
-	std::ostringstream str;
-	str << HEADING_PREFIX << _("Map") << COLUMN_SEPARATOR << _("Name")
-		<< COLUMN_SEPARATOR << _("Status") << COLUMN_SEPARATOR << _("Settings");
-	return str.str();
-}
-
 }
 
 namespace mp {

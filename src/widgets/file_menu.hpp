@@ -24,8 +24,6 @@ class file_menu : public menu {
 public:
 	//Static members
 	static const char path_delim;
-	static const std::string dir_picture;
-	static const std::string path_up;
 
 	/// Initialize the file menu. start_file is the file that will be
 	/// selected initially. The current directory will be

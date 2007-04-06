@@ -82,8 +82,7 @@ bool operator<(const surface& a, const surface& b)
 	return a.get() < b.get();
 }
 
-namespace {
-	SDL_PixelFormat& get_neutral_pixel_format()
+static SDL_PixelFormat& get_neutral_pixel_format()
 	{
 		static bool first_time = true;
 		static SDL_PixelFormat format;
@@ -97,8 +96,6 @@ namespace {
 
 		return format;
 	}
-
-}
 
 surface make_neutral_surface(surface const &surf)
 {

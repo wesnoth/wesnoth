@@ -85,7 +85,7 @@ void conv_ansi_utf8(std::string &name, bool a2u) {
 	return;
 }
 
-void replace_underbar2space(std::string &name) {
+static void replace_underbar2space(std::string &name) {
     LOG_NG << "conv(A2U)-from:[" << name << "]" << std::endl;
     conv_ansi_utf8(name, true);
     LOG_NG << "conv(A2U)-to:[" << name << "]" << std::endl;
@@ -94,7 +94,7 @@ void replace_underbar2space(std::string &name) {
     LOG_NG << "replace_underbar2space-to:[" << name << "]" << std::endl;
 }
 
-void replace_space2underbar(std::string &name) {
+static void replace_space2underbar(std::string &name) {
     LOG_NG << "conv(U2A)-from:[" << name << "]" << std::endl;
     conv_ansi_utf8(name, false);
     LOG_NG << "conv(U2A)-to:[" << name << "]" << std::endl;
@@ -103,13 +103,16 @@ void replace_space2underbar(std::string &name) {
     LOG_NG << "replace_underbar2space-to:[" << name << "]" << std::endl;
 }
 #else /* ! _WIN32 */
-void replace_underbar2space(std::string &name) {
+static void replace_underbar2space(std::string &name) {
     std::replace(name.begin(),name.end(),'_',' ');
 }
-void replace_space2underbar(std::string &name) {
+static void replace_space2underbar(std::string &name) {
     std::replace(name.begin(),name.end(),' ','_');
 }
 #endif /* _WIN32 */
+
+static void extract_summary_from_config(config& cfg_save, config& cfg_summary);
+static void extract_summary_data_from_save(const game_state& gamestate, config& out);
 
 player_info* game_state::get_player(const std::string& id) {
 	std::map< std::string, player_info >::iterator found = players.find(id);
@@ -153,9 +156,7 @@ void time_of_day::write(config& cfg) const
 	cfg["mask"] = image_mask;
 }
 
-namespace {
-
-void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
+static void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 {
 	const config::child_list& times = cfg.get_children("time");
 	config::child_list::const_iterator t;
@@ -171,7 +172,6 @@ void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 	}
 }
 
-}
 /// Reads turns and time information from parameters
 /// It sets random starting ToD and current_tod to config
 ///
@@ -396,7 +396,7 @@ bool gamestatus::next_turn()
 	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
-player_info read_player(const game_data& data, const config* cfg)
+static player_info read_player(const game_data& data, const config* cfg)
 {
 	player_info res;
 
@@ -552,7 +552,7 @@ game_state::game_state(const game_data& data, const config& cfg)
 	}
 }
 
-void write_player(const player_info& player, config& cfg)
+static void write_player(const player_info& player, config& cfg)
 {
 	cfg["name"] = player.name;
 
@@ -580,7 +580,7 @@ void write_player(const player_info& player, config& cfg)
 	cfg["can_recruit"] = can_recruit_str;
 }
 
-void write_player(config_writer &out, const player_info& player)
+static void write_player(config_writer &out, const player_info& player)
 {
 	out.write_key_val("name", player.name);
 
@@ -850,7 +850,7 @@ bool save_index_loaded = false;
 config save_index_cfg;
 }
 
-config& save_index()
+static config& save_index()
 {
 	if(save_index_loaded == false) {
 		try {
@@ -879,17 +879,6 @@ config& save_summary(const std::string& save)
 	}
 
 	return *res;
-}
-
-void delete_save_summary(const std::string& save)
-{
-	config& cfg = save_index();
-	const config* const res = cfg.find_child("save","save",save);
-	if(res != NULL) {
-		const config::child_list& children = cfg.get_children("save");
-		const size_t index = std::find(children.begin(),children.end(),res) - children.begin();
-		cfg.remove_child("save",index);
-	}
 }
 
 void write_save_index()
@@ -1333,15 +1322,13 @@ void game_state::clear_variable(const std::string& varname)
 	}
 }
 
-namespace {
-void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
+static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 	std::map<std::string, wml_menu_item*>::iterator itor = gs_wmi.begin();
 	for(itor = gs_wmi.begin(); itor != gs_wmi.end(); ++itor) {
 		delete itor->second;
 	}
 	gs_wmi.clear();
 }
-} //end anon namespace
 
 game_state::game_state(const game_state& state)
 {

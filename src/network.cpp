@@ -81,13 +81,15 @@ connection_map connections;
 
 network::connection connection_id = 1;
 
-int create_connection(TCPsocket sock, const std::string& host, int port)
+}
+
+static int create_connection(TCPsocket sock, const std::string& host, int port)
 {
 	connections.insert(std::pair<network::connection,connection_details>(connection_id,connection_details(sock,host,port)));
 	return connection_id++;
 }
 
-connection_details& get_connection_details(network::connection handle)
+static connection_details& get_connection_details(network::connection handle)
 {
 	const connection_map::iterator i = connections.find(handle);
 	if(i == connections.end()) {
@@ -97,28 +99,28 @@ connection_details& get_connection_details(network::connection handle)
 	return i->second;
 }
 
-TCPsocket get_socket(network::connection handle)
+static TCPsocket get_socket(network::connection handle)
 {
 	return get_connection_details(handle).sock;
 }
 
-void remove_connection(network::connection handle)
+static void remove_connection(network::connection handle)
 {
 	connections.erase(handle);
 }
 
-bool is_pending_remote_handle(network::connection handle)
+static bool is_pending_remote_handle(network::connection handle)
 {
 	const connection_details& details = get_connection_details(handle);
 	return details.host != "" && details.remote_handle == 0;
 }
 
-void set_remote_handle(network::connection handle, int remote_handle)
+static void set_remote_handle(network::connection handle, int remote_handle)
 {
 	get_connection_details(handle).remote_handle = remote_handle;
 }
 
-void check_error()
+static void check_error()
 {
 	const TCPsocket sock = network_worker_pool::detect_error();
 	if(sock) {
@@ -129,6 +131,8 @@ void check_error()
 		}
 	}
 }
+
+namespace {
 
 SDLNet_SocketSet socket_set = 0;
 std::set<network::connection> waiting_sockets;

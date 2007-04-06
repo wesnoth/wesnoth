@@ -25,17 +25,16 @@
 
 namespace {
 	const size_t max_label_size = 64;
+}
 
 //our definition of map labels being obscured is if the tile is obscured,
 //or the tile below is obscured. This is because in the case where the tile
 //itself is visible, but the tile below is obscured, the bottom half of the
 //tile will still be shrouded, and the label being drawn looks weird
-	bool is_shrouded(const display& disp, const gamemap::location& loc)
+static bool is_shrouded(const display& disp, const gamemap::location& loc)
 	{
 		return disp.shrouded(loc.x,loc.y) || disp.shrouded(loc.x,loc.y+1);
 	}
-
-}
 
 map_labels::map_labels(const display& disp, 
 					   const gamemap& map, 

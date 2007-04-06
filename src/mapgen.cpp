@@ -44,8 +44,6 @@ config map_generator::create_scenario(const std::vector<std::string>& args)
 	return res;
 }
 
-namespace {
-
 typedef std::vector<std::vector<int> > height_map;
 typedef t_translation::t_map terrain_map;
 
@@ -60,7 +58,7 @@ typedef gamemap::location location;
 //so, how large the island should be. Hills with centers that are more than 'island_size'
 //away from the center of the map will be inverted (i.e. be valleys).
 //'island_size' as 0 indicates no island
-height_map generate_height_map(size_t width, size_t height,
+static height_map generate_height_map(size_t width, size_t height,
                                size_t iterations, size_t hill_size,
 							   size_t island_size, size_t island_off_center)
 {
@@ -180,7 +178,7 @@ height_map generate_height_map(size_t width, size_t height,
 //'lake_fall_off' % chance to make another water tile in each of the directions n,s,e,w.
 //In each of the directions it does make another water tile, it will have 'lake_fall_off'/2 %
 //chance to make another water tile in each of the directions. This will continue recursively.
-bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<location>& locs_touched)
+static bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<location>& locs_touched)
 {
 	if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size()) {
 		return false;
@@ -220,7 +218,7 @@ typedef gamemap::location location;
 //path that can be found that makes the river flow into another body of water or off the map
 //will be used. If no path can be found, then the river's generation will be aborted, and
 //false will be returned. true is returned if the river is generated successfully.
-bool generate_river_internal(const height_map& heights, terrain_map& terrain, int x, int y, std::vector<location>& river, std::set<location>& seen_locations, int river_uphill)
+static bool generate_river_internal(const height_map& heights, terrain_map& terrain, int x, int y, std::vector<location>& river, std::set<location>& seen_locations, int river_uphill)
 {
 	const bool on_map = x >= 0 && y >= 0 && x < (long)heights.size() && y < (long)heights.back().size();
 
@@ -270,7 +268,7 @@ bool generate_river_internal(const height_map& heights, terrain_map& terrain, in
 	return false;
 }
 
-std::vector<location> generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill)
+static std::vector<location> generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill)
 {
 	std::vector<location> river;
 	std::set<location> seen_locations;
@@ -284,7 +282,7 @@ std::vector<location> generate_river(const height_map& heights, terrain_map& ter
 
 //function to return a random tile at one of the borders of a map that is
 //of the given dimensions.
-location random_point_at_side(size_t width, size_t height)
+static location random_point_at_side(size_t width, size_t height)
 {
 	const int side = rand()%4;
 	if(side < 2) {
@@ -299,7 +297,7 @@ location random_point_at_side(size_t width, size_t height)
 }
 
 //function which, given the map will output it in a valid format.
-std::string output_map(const terrain_map& terrain, 
+static std::string output_map(const terrain_map& terrain, 
 		std::map<int, t_translation::coordinate> starting_positions)
 {
 	//remember that we only want the middle 1/9th of the map. All other
@@ -331,6 +329,8 @@ std::string output_map(const terrain_map& terrain,
 
 	return t_translation::write_game_map(map, starting_positions);
 }
+
+namespace {
 
 //an object that will calculate the cost of building a road over terrain
 //for use in the a_star_search algorithm.
@@ -413,7 +413,9 @@ bool is_valid_terrain::operator()(int x, int y) const
 	return std::find(terrain_.begin(),terrain_.end(),map_[x][y]) != terrain_.end();
 }
 
-int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, int min_x, int max_x, int min_y, int max_y,
+}
+
+static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, int min_x, int max_x, int min_y, int max_y,
 						 size_t min_distance, const std::vector<gamemap::location>& other_castles, int highest_ranking)
 {
 	const gamemap::location loc(x,y);
@@ -478,7 +480,7 @@ int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, in
 	return surrounding_ranking + current_ranking;
 }
 
-gamemap::location place_village(const t_translation::t_map& map,
+static gamemap::location place_village(const t_translation::t_map& map,
 	const size_t x, const size_t y, const size_t radius, const config& cfg)
 {
 	const gamemap::location loc(x,y);
@@ -520,7 +522,7 @@ gamemap::location place_village(const t_translation::t_map& map,
 	return best_loc;
 }
 
-std::string generate_name(const unit_race& name_generator, const std::string& id,
+static std::string generate_name(const unit_race& name_generator, const std::string& id,
 		std::string* base_name=NULL,
 		utils::string_map* additional_symbols=NULL)
 {
@@ -549,6 +551,8 @@ std::string generate_name(const unit_race& name_generator, const std::string& id
 
 	return "";
 }
+
+namespace {
 
 //the configuration file should contain a number of [height] tags:
 //[height]

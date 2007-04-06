@@ -105,7 +105,6 @@ namespace statistics
 	void fresh_stats();
 	void clear_current_scenario();
 
-	std::vector<std::string> get_categories();
 	stats calculate_stats(int category, int side);
 }
 

@@ -26,9 +26,21 @@
 #define ERR_NG LOG_STREAM(err, engine)
 #define DEBUG_NG LOG_STREAM(info, engine) 
 
-const int terrain_builder::rule_image::TILEWIDTH = 72;
-const int terrain_builder::rule_image::UNITPOS = 36 + 18;
-const int terrain_builder::tile::BASE_Y_INTERVAL = 100000;
+/** The tile width used when using basex and basey. This is not,
+ * necessarily, the tile width in pixels, this is totally
+ * arbitrary. However, it will be set to 72 for convenience.
+ */
+static const int TILEWIDTH = 72;
+/** The position of unit graphics in a tile. Graphics whose y
+ * position is below this value are considered background for
+ * this tile; graphics whose y position is above this value are
+ * considered foreground.
+ */
+static const int UNITPOS = 36 + 18;
+/** The allowed interval for the base-y position. The possible values are from 
+ * -BASE_Y_INTERVAL to BASE_Y_INTERVAL-1
+ */
+static const int BASE_Y_INTERVAL = 100000;
 
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image) :
 	layer(layer), basex(x), basey(y), global_image(global_image)
@@ -57,7 +69,7 @@ void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_r
 		else
 			basey -= BASE_Y_INTERVAL/2;
 
-		if(layer < 0 || (layer == 0 && basey < rule_image::UNITPOS)) {
+		if(layer < 0 || (layer == 0 && basey < UNITPOS)) {
 			images_background.push_back(tod_variant->second.image);
 		} else {
 			images_foreground.push_back(tod_variant->second.image);
@@ -348,14 +360,14 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 
 		double vx, vy, rx, ry;
 
-		vx = double(itor->basex) - double(rule_image::TILEWIDTH)/2;
-		vy = double(itor->basey) - double(rule_image::TILEWIDTH)/2;
+		vx = double(itor->basex) - double(TILEWIDTH)/2;
+		vy = double(itor->basey) - double(TILEWIDTH)/2;
 
 		rx = xyrotations[angle].xx * vx + xyrotations[angle].xy * vy;
 		ry = xyrotations[angle].yx * vx + xyrotations[angle].yy * vy;
 
-		itor->basex = int(rx + rule_image::TILEWIDTH/2);
-		itor->basey = int(ry + rule_image::TILEWIDTH/2);
+		itor->basex = int(rx + TILEWIDTH/2);
+		itor->basey = int(ry + TILEWIDTH/2);
 
 		//std::cerr << "Rotation: from " << vx << ", " << vy << " to " << itor->basex <<
 		//	", " << itor->basey << "\n";
@@ -481,8 +493,8 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		int basex = 0, basey = 0;
 		if((**img)["base"].empty()) {
-			basex = rule_image::TILEWIDTH / 2 + dx;
-			basey = rule_image::TILEWIDTH / 2 + dy;
+			basex = TILEWIDTH / 2 + dx;
+			basey = TILEWIDTH / 2 + dy;
 		} else {
 			std::vector<std::string> base = utils::split((**img)["base"]);
 
@@ -526,9 +538,8 @@ void terrain_builder::add_constraints(
 		constraints[loc].terrain_types_match = type;
 	}
 
-	int x = loc.x * rule_image::TILEWIDTH * 3 / 4;
-	int y = loc.y * rule_image::TILEWIDTH + (loc.x % 2) *
-		rule_image::TILEWIDTH / 2;
+	int x = loc.x * TILEWIDTH * 3 / 4;
+	int y = loc.y * TILEWIDTH + (loc.x % 2) * TILEWIDTH / 2;
 	add_images_from_config(constraints[loc].images, global_images, true, x, y);
 }
 
@@ -827,7 +838,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 		// Thus, allowed values for basey are from -50000 to 49999
 		for(img = constraint->second.images.begin(); img != constraint->second.images.end(); ++img) {
 			btile.images.insert(std::pair<int, const rule_image*>(
-									img->layer*tile::BASE_Y_INTERVAL + tile::BASE_Y_INTERVAL/2 + img->basey, &*img));
+									img->layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + img->basey, &*img));
 		}
 
 		// Sets flags

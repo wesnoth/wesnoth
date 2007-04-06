@@ -107,8 +107,10 @@ typedef std::map<std::string,SDL_Rect> line_size_cache_map;
 //map of styles -> sizes -> cache
 std::map<int,std::map<int,line_size_cache_map> > line_size_cache;
 
+}
+
 //Splits the UTF-8 text into text_chunks using the same font.
-std::vector<text_chunk> split_text(std::string const & utf8_text) {
+static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 	text_chunk current_chunk(0);
 	std::vector<text_chunk> chunks;
 
@@ -144,7 +146,7 @@ std::vector<text_chunk> split_text(std::string const & utf8_text) {
 	return chunks;
 }
 
-TTF_Font* open_font(const std::string& fname, int size)
+static TTF_Font* open_font(const std::string& fname, int size)
 {
 	std::string name;
 	if(!game_config::path.empty()) {
@@ -180,7 +182,7 @@ TTF_Font* open_font(const std::string& fname, int size)
 	return font;
 }
 
-TTF_Font* get_font(font_id id)
+static TTF_Font* get_font(font_id id)
 {
 	const std::map<font_id, TTF_Font*>::iterator it = font_table.find(id);
 	if(it != font_table.end())
@@ -201,7 +203,7 @@ TTF_Font* get_font(font_id id)
 	return font;
 }
 
-void clear_fonts()
+static void clear_fonts()
 {
 	for(std::map<font_id,TTF_Font*>::iterator i = font_table.begin(); i != font_table.end(); ++i) {
 		TTF_CloseFont(i->second);
@@ -212,6 +214,8 @@ void clear_fonts()
 	font_map.clear();
 	line_size_cache.clear();
 }
+
+namespace {
 
 struct font_style_setter
 {
@@ -276,7 +280,16 @@ manager::~manager()
 	TTF_Quit();
 }
 
-void set_font_list(const std::vector<subset_descriptor>& fontlist)
+//structure used to describe a font, and the subset of the Unicode character
+//set it covers.
+struct subset_descriptor
+{
+	std::string name;
+	std::vector<std::pair<size_t, size_t> > present_codepoints;
+};
+
+//sets the font list to be used.
+static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 {
 	clear_fonts();
 	font_map.reserve(0x10000);
@@ -553,7 +566,7 @@ text_surface &text_cache::find(text_surface const &t)
 
 }
 
-surface render_text(const std::string& text, int fontsize, const SDL_Color& colour, int style)
+static surface render_text(const std::string& text, int fontsize, const SDL_Color& colour, int style)
 {
 	const std::vector<std::string> lines = utils::split(text, '\n', utils::REMOVE_EMPTY);
 	std::vector<std::vector<surface> > surfaces;
@@ -613,85 +626,6 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 {
 	return render_text(str, size, colour, style);
 }
-
-//Measure a single line of ucs2 text with a specific font_size and
-//style without newline chars.
-//
-//This is INSECURE with lines which are WIDER than UINT16_MAX pixels.
-//
-//It is intended for the command_line widget only which has a line
-//length restriction and small font size.
-SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::const_iterator last, int font_size, int style) {
-	wassert(last - first >= 0);
-
-	SDL_Rect rect;
-	rect.w = 0;
-	rect.h = 0;
-
-	ucs2_string chunk((last - first ) + 2);
-	ucs2_string::iterator chunk_itor = chunk.begin();
-	*chunk_itor = 0;
-
-	int current_font = 0;
-
-	//set the font for the first char
-	if(*first < font_map.size() && font_map[*first] >= 0) {
-		current_font = font_map[*first];
-	}
-
-	for(;first != last; ++first) {
-		if(*first < font_map.size() && font_map[*first] >= 0 && font_map[*first] != current_font) {
-			TTF_Font* ttfont = get_font(font_id(current_font, font_size));
-			if(ttfont == NULL) {
-				chunk_itor = chunk.begin();
-				*(chunk_itor++) = *first;
-				current_font = font_map[*first];
-				continue;
-			}
-			*(chunk_itor++) = 0;
-
-			font_style_setter const style_setter(ttfont, style);
-
-			int x, y;
-			TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), &x, &y);
-			rect.x = x;
-			rect.y = y;
-
-			rect.w += rect.x;
-			rect.h = maximum<Sint16>(rect.h, rect.y);
-
-			chunk_itor = chunk.begin();
-
-			current_font = font_map[*first];
-		}
-		*(chunk_itor++) = *first;
-	}
-	if (chunk_itor != chunk.begin()) {
-		TTF_Font* ttfont = get_font(font_id(current_font, font_size));
-		if(ttfont == NULL) {
-			rect.x = 0;
-			rect.y = 0;
-			return rect;
-		}
-		*(chunk_itor++) = 0;
-
-		font_style_setter const style_setter(ttfont, style);
-
-		int x, y;
-		TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), &x, &y);
-		rect.x = x;
-		rect.y = y;
-
-		rect.w += rect.x;
-		rect.h = maximum<Sint16>(rect.h, rect.y);
-	}
-	//reset rect.x and rec.y because we abused it to store the area
-	//of the last chunk
-	rect.x = 0;
-	rect.y = 0;
-	return rect;
-}
-
 
 SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& colour, const std::string& text,
@@ -779,15 +713,6 @@ int get_max_height(int size)
 	if(font == NULL)
 		return 0;
 	return TTF_FontHeight(font);
-}
-
-std::string remove_first_space(const std::string& text)
-{
-  if (text.length() > 0 && text[0] == ' ') {
-    return text.substr(1);
-  }
-
-  return text;
 }
 
 int line_width(const std::string& line, int font_size, int style)
@@ -1089,17 +1014,6 @@ void show_floating_label(int handle, bool value)
 	}
 }
 
-const std::string& get_floating_label_text(int handle)
-{
-	const label_map::iterator i = labels.find(handle);
-	if(i != labels.end()) {
-		return i->second.text();
-	} else {
-		static const std::string empty_str;
-		return empty_str;
-	}
-}
-
 SDL_Rect get_floating_label_rect(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
@@ -1185,8 +1099,7 @@ void undraw_floating_labels(surface screen)
 
 }
 
-namespace {
-	bool add_font_to_fontlist(config* fonts_config, std::vector<font::subset_descriptor>& fontlist, const std::string& name)
+static bool add_font_to_fontlist(config* fonts_config, std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 	{
 		config* font = fonts_config->find_child("font", "name", name);
 		if(font == NULL)
@@ -1213,7 +1126,6 @@ namespace {
 
 		return true;
 	}
-}
 
 namespace font {
 

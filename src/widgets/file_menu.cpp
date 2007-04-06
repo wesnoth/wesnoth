@@ -33,8 +33,8 @@ namespace {
 
 namespace gui {
 
-const std::string file_menu::dir_picture("misc/folder-icon.png");
-const std::string file_menu::path_up("..");
+static const std::string dir_picture("misc/folder-icon.png");
+static const std::string path_up("..");
 const char file_menu::path_delim('/');
 
 file_menu::file_menu(CVideo &disp, std::string start_file)
