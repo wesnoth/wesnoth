@@ -723,11 +723,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	const gamemap::location new_hex = (*gui_).hex_clicked_on(x,y,&nearest_hex,&second_nearest_hex);
 
 	// Fire the drag & drop only after minimal drag distance
-	// or when we quit the initial hex.
-	const int drag_distance = maximum<int>(abs(drag_from_x_- x), abs(drag_from_y_- y));
-	if (dragging_ && !dragging_started_ && drag_distance > 10 && (SDL_GetMouseState(NULL,NULL) & SDL_BUTTON(1) != 0)) {
-		dragging_started_ = true;
-		cursor::set_dragging(true);
+	// While we check the mouse buttons state, we also grab fresh position data.
+	int mx,my;
+	if (dragging_ && !dragging_started_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON(1) != 0)) {
+		const int drag_distance = maximum<int>(abs(drag_from_x_- mx), abs(drag_from_y_- my));
+	 	if (drag_distance > 10) {
+			dragging_started_ = true;
+			cursor::set_dragging(true);
+		}
 	}
 
 	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_) {

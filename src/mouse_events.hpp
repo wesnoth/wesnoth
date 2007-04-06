@@ -91,7 +91,6 @@ private:
 	undo_list& redo_stack_;
 
 	bool minimap_scrolling_;
-	bool update_cursor_;
 	bool dragging_;
 	bool dragging_started_;
 	int drag_from_x_;
