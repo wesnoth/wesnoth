@@ -5,7 +5,35 @@
 # By Eric S. Raymond April 2007.
 # (Yes, this *is* named after an ancient Piers Anthony novel.)
 
-import sys, os, time, re
+import sys, os, time, re, getopt
+
+def initialize(verbose):
+    "Prepare for crosschecks."
+    # This assumes we're being called from our source-tree location
+    datadir = os.path.join(*os.path.split(os.getcwd())[:-1])
+    if verbose:
+        print "# Data directory is: %s" % datadir
+
+    # Get the names of all files in the data subdirectory.
+    # Chdir to there first so we can deal in relative pathnames.
+    datafiles = []
+    os.chdir(datadir)
+    os.path.walk(".",
+                 lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir,x)), names)),
+                 None)
+    datafiles = filter(lambda x: ".svn" not in x, datafiles)
+    #print "Data files: %s" % `datafiles`[1:-1]
+
+    # Get the names of all WML files.
+    cfgfiles = filter(lambda x: x.endswith(".cfg"), datafiles)
+
+    # Get the names of all utility-macro definition files
+    utilsfiles = filter(lambda x: x.startswith("utils"), cfgfiles) 
+    if verbose:
+        print "Definition files: %s" % `utilsfiles`[1:-1]
+
+    return (datafiles, cfgfiles, utilsfiles)
+
 
 class macro_cross_reference:
     def __init__(self, filelist):
@@ -27,6 +55,7 @@ class macro_cross_reference:
         return self.xref
     def check_macro_references(self, filelist):
         "Decorate definitions with all references from a specified filelist."
+        self.unresolved = []
         for filename in filelist:
             rfp = open(filename)
             for (n, line) in enumerate(rfp):
@@ -39,38 +68,52 @@ class macro_cross_reference:
                             namedict[filename] = []
                         namedict[filename].append(n+1)
             rfp.close()
-    def dump(self):
-        "Report the crossreference."
+    def xrefdump(self, threshold=9999):
+        "Report the crossreferences."
         for (name, (filename, n, references)) in self.xref.items():
-             print "Macro %s is defined at %s:%d, used in %d files:" % (name, filename, n, len(references))
-             for (file, linenumbers) in references.items():
+            nrefs = len(references)
+            if nrefs > threshold:
+                continue
+            print "Macro %s is defined at %s:%d, used in %d files:" % (name, filename, n, nrefs)
+            for (file, linenumbers) in references.items():
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
+    def unrefdump(self):
+        "Report dangling references"
+        pass
 
-print "# Macroscope reporting on %s" % time.ctime() 
-
-# This assumes we're being called from our source-tree location
-datadir = os.path.join(*os.path.split(os.getcwd())[:-1])
-print "Data directory is: %s" % datadir
-
-# Get the names of all files in the data subdirectory.
-# Chdir to there first so we can deal in relative pathnames.
-datafiles = []
-os.chdir(datadir)
-os.path.walk(".",
-             lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir,x)), names)),
-             None)
-datafiles = filter(lambda x: ".svn" not in x, datafiles)
-#print "Data files: %s" % `datafiles`[1:-1]
-
-# Get the names of all WML files.
-cfgfiles = filter(lambda x: x.endswith(".cfg"), datafiles)
-
-# Get the names of all utility-macro definition files
-utilsfiles = filter(lambda x: x.startswith("utils"), cfgfiles) 
-print "Definition files: %s" % `utilsfiles`[1:-1]
-
-# Check definitions in the utils directory against references everywhere
-xref = macro_cross_reference(utilsfiles)
-xref.check_macro_references(cfgfiles)
-xref.dump()
+if __name__ == "__main__":
+    print "# Macroscope reporting on %s" % time.ctime() 
+    # Process options
+    (options, arguments) = getopt.getopt(sys.argv[1:], "mu")
+    verbose = False
+    for (switch, val) in options:
+        if (switch == '-m'):
+            print "# Checking macro definitions from anywhere"
+            print "# against macro references from anywhere."
+            print "# Output will list unused macros and undefined references."
+            (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
+            xref = macro_cross_reference(cfgfiles)
+            xref.check_macro_references(cfgfiles)
+            xref.xrefdump(threshold=0)
+            xref.unrefdump()
+            sys.exit(0)
+        elif (switch == '-u'):
+            print "# Checking macro definitions in the utils directory"
+            print "# against macro references from anywhere."
+            print "# Output will be a full reference report."
+            (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
+            xref = macro_cross_reference(utilsfiles)
+            xref.check_macro_references(cfgfiles)
+            xref.xrefdump()
+            sys.exit(0)
+        elif (switch == '-u'):
+            verbose = True
+    # We get here if user didn't pick a valid mode option
+    print """
+Usage: macroscope [-v] {-m | -u}
+    -v = set verbose mode, dumping some intermediate results
+    -m = Report unused macros and undefined references.
+    -u = Full reference report on utils macros
+"""
+    sys.exit(1)
 
