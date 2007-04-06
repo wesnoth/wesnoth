@@ -791,9 +791,14 @@ void combatant::fight(combatant &opp)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 
+	// make sure we don't try to access the vectors out of bounds, drain increases hps
+	// so we determine the number of hp here and make sure it stays within bounds
+	const unsigned int hp = minimum<unsigned int>(u_.hp, hp_dist.size() - 1);
+	const unsigned int opp_hp = minimum<unsigned int>(opp.u_.hp, opp.hp_dist.size() - 1);
+
 	// Chance that we / they were touched this time.
-	double touched = untouched - hp_dist[u_.hp];
-	double opp_touched = opp.untouched - opp.hp_dist[opp.u_.hp];
+	double touched = untouched - hp_dist[hp];
+	double opp_touched = opp.untouched - opp.hp_dist[opp_hp];
 	if (opp.u_.poisons)
 		poisoned += (1 - poisoned) * touched;
 	if (u_.poisons)
@@ -805,8 +810,8 @@ void combatant::fight(combatant &opp)
 		opp.slowed += (1 - opp.slowed) * opp_touched;
 
 	// FIXME: This is approximate: we could drain, then get hit.
-	untouched = hp_dist[u_.hp];
-	opp.untouched = opp.hp_dist[opp.u_.hp];
+	untouched = hp_dist[hp];
+	opp.untouched = opp.hp_dist[opp_hp];
 }
 
 double combatant::average_hp(unsigned int healing) const
