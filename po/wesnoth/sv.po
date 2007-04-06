@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-02 21:53+0200\n"
-"PO-Revision-Date: 2007-02-11 22:21+0100\n"
+"PO-Revision-Date: 2007-04-06 18:12+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -413,36 +413,31 @@ msgstr ""
 
 #: data/about.cfg:6
 msgid "Programming"
-msgstr ""
+msgstr "Programmering"
 
 #: data/about.cfg:58
-#, fuzzy
 msgid "General Purpose Administration and Coordination"
-msgstr "+Administratörer"
+msgstr "Administratörer och koordinatörer"
 
 #: data/about.cfg:68
-#, fuzzy
 msgid "Artwork and Graphics"
-msgstr "Grafik"
+msgstr "Grafik och illustrationer"
 
 #: data/about.cfg:177
 msgid "Music"
 msgstr "Musik"
 
 #: data/about.cfg:188
-#, fuzzy
 msgid "Sound Effects"
 msgstr "Ljudeffekter"
 
 #: data/about.cfg:197
-#, fuzzy
 msgid "Campaign Design"
-msgstr "Kampanj"
+msgstr "Kampanjdesign"
 
 #: data/about.cfg:221
-#, fuzzy
 msgid "Multiplayer Maps and Balancing"
-msgstr "Gruppspelskartor"
+msgstr "Gruppspelskartor och -balansering"
 
 #: data/about.cfg:236
 msgid "Packagers"
@@ -1272,7 +1267,6 @@ msgid "Shroud and Fog of War"
 msgstr "Slöja och stridsdimma"
 
 #: data/help.cfg:151
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1300,7 +1294,16 @@ msgstr ""
 "har trupper i närheten, men återvänder när man ger sig av från platsen. Både "
 "slöja och stridsdimma lyfts av trupper. Alla trupper lyfter slöjan eller "
 "stridsdimman på det område som truppen kan nå på ett drag, oavsett "
-"kontrollzoner och fiender."
+"kontrollzoner och fiender.\n"
+"\n"
+"Normalt kan man ångra en trupps förflyttning så länge ingen slumpmässigt "
+"avgjord händelse ägt rum, såsom strid eller rekrytering. Detta gäller även "
+"vid utforskning av terräng täckt av slöja eller stridsdimma. För att ändra "
+"detta, kan inställningen \"Fördröj slöjuppdateringarna\" i menyn Handlingar "
+"aktiveras. Detta gör att slöjan eller stridsdimman inte lyfts av trupper "
+"förrän nästa slumpmässigt avgjorda händelse äger rum eller om man väljer att "
+"uppdatera slöjan själv (eller vid dragets slut). Därigenom behålls "
+"möjligheten att ångra sina förflyttningar så länge som möjligt."
 
 #: data/help.cfg:156
 msgid "Combat"
@@ -2399,7 +2402,6 @@ msgid "Cave"
 msgstr "Grotta"
 
 #: data/help.cfg:478
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2416,7 +2418,8 @@ msgstr ""
 "har således svårigheter både ur förflyttnings- och försvarssynpunkt. Dvärgar "
 "och troll, som bor i grottor, har båda fördelar i denna terräng. Detta "
 "gäller särskilt dvärgar som genom sin mindre storlek kan ta sig förbi många "
-"hinder som andra raser inte kan forcera.\n"
+"hinder som andra raser inte kan forcera. Somliga grottor är "
+"<ref>dst=terrain_illuminated_cave text=upplysta</ref>.\n"
 "\n"
 "De flesta trupper har 20-40% försvar i denna terräng, medan dvärgar har 50%."
 
@@ -2425,7 +2428,6 @@ msgid "Rockbound Cave"
 msgstr "Klippgrotta"
 
 #: data/help.cfg:488
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2443,7 +2445,8 @@ msgstr ""
 "minskar de flesta truppslags effektivitet, men skapar goda "
 "försvarsmöjligheter. Dvärgar och troll, som är grottornas naturliga "
 "innevånare, har inga större svårigheter med denna sorts terräng. Dvärgar kan "
-"dra fördel av sin ringa storlek och manövrerar med lätthet denna terräng.\n"
+"dra fördel av sin ringa storlek och manövrerar med lätthet denna terräng. "
+"Somliga grottor är <ref>dst=terrain_illuminated_cave text=upplysta</ref>.\n"
 "\n"
 "De flesta truppslag har omkring 50% försvar i klippgrottor, medan kavalleri "
 "är begränsat till 40%. Dvärgar har 60% försvar i klippgrottor."
@@ -2453,7 +2456,6 @@ msgid "Illuminated Cave"
 msgstr "Upplyst grotta"
 
 #: data/help.cfg:496
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness.  This provides an attack "
@@ -2461,13 +2463,10 @@ msgid ""
 "all other regards this terrain is functionally identical to normal cave "
 "terrains."
 msgstr ""
-"En upplyst grotta är ett område där ljus från ytan skiner ner i mörkret. "
-"Detta ger redbara trupper en bonus och ljusskygga trupper ett avdrag på "
-"attacker. I alla andra avseenden är denna terräng ekvivalent med en normal "
-"grotta.\n"
-"\n"
-"De flesta truppslag har 20% till 40% försvar i grottor, medan dvärgar har "
-"50%."
+"Sällsynta områden i den underjordiska världen är upplysta av ljus från ytan "
+"som skiner ner i mörkret. Detta ger redbara trupper en bonus och ljusskygga "
+"trupper ett avdrag på attacker. I alla andra avseenden är denna terräng "
+"ekvivalent med en normal grotta."
 
 #: data/help.cfg:501 data/terrain.cfg:670
 msgid "Mushroom Grove"
@@ -2542,9 +2541,8 @@ msgstr ""
 "\n"
 
 #: data/help.cfg:531
-#, fuzzy
 msgid "Submerged Village"
-msgstr "Kontrollerad by"
+msgstr "Undervattensby"
 
 #: data/help.cfg:536
 msgid ""
@@ -2618,7 +2616,6 @@ msgid "Bridge"
 msgstr "Bro"
 
 #: data/help.cfg:570
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2655,7 +2652,6 @@ msgstr ""
 "emot även den mest bestämda av färdmän."
 
 #: data/help.cfg:583
-#, fuzzy
 msgid "Impassable Mountain"
 msgstr "Obestigbara berg"
 
@@ -4673,7 +4669,6 @@ msgstr ""
 "och uråldriga ruiner."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:58
-#, fuzzy
 msgid "Monsters"
 msgstr "Monster"
 
@@ -5185,9 +5180,8 @@ msgid "Encampment"
 msgstr "Läger"
 
 #: data/terrain.cfg:180
-#, fuzzy
 msgid "Elven Castle"
-msgstr "Dvärgborg"
+msgstr "Alvslott"
 
 #: data/terrain.cfg:191
 msgid "Dwarven Castle"
@@ -5214,9 +5208,8 @@ msgid "Encampment keep"
 msgstr "Kommendörstält"
 
 #: data/terrain.cfg:296
-#, fuzzy
 msgid "Elven Keep"
-msgstr "Dvärgfästning"
+msgstr "Alvkärntorn"
 
 #: data/terrain.cfg:308
 msgid "Dwarven keep"
@@ -5283,9 +5276,8 @@ msgid "Cave Lit"
 msgstr "Upplyst grotta"
 
 #: data/terrain.cfg:701
-#, fuzzy
 msgid "Rockbound Cave Lit"
-msgstr "Klippgrotta"
+msgstr "Upplyst klippgrotta"
 
 #: data/terrain.cfg:955
 msgid "Impassable Mountains"
@@ -5990,7 +5982,6 @@ msgid "Armageddon Drake"
 msgstr "Harmageddondrake"
 
 #: data/units/Drake_Armageddon.cfg:19
-#, fuzzy
 msgid ""
 "The Armageddon Drakes truely are amongst the toughest of all drakes, they "
 "are so incredibly used to living near fire that they've grown to be "
@@ -6006,8 +5997,7 @@ msgstr ""
 "effektivt vapen mot dem än en fackla. Deras rustning är till stor del en "
 "statussymbol, på samma sätt som för deras svagare kusiner infernodrakarna; "
 "den är gjord av extremt härdiga mineraler och sten från botten av "
-"magmafloder, och ger dem ett bättre försvar mot frostattacker än de flesta "
-"andra bland drakfolket har."
+"magmafloder."
 
 #: data/units/Drake_Armageddon.cfg:75 data/units/Drake_Burner.cfg:61
 #: data/units/Drake_Fire.cfg:68 data/units/Drake_Inferno.cfg:69
@@ -9151,9 +9141,8 @@ msgstr ""
 "fartyg."
 
 #: data/units/Monster_Skeletal_Dragon.cfg:3
-#, fuzzy
 msgid "Skeletal Dragon"
-msgstr "Skelett"
+msgstr "Skelettdrake"
 
 #: data/units/Monster_Skeletal_Dragon.cfg:25
 msgid ""
@@ -9166,7 +9155,7 @@ msgstr ""
 
 #: data/units/Monster_Skeletal_Dragon.cfg:28
 msgid "jaw"
-msgstr ""
+msgstr "käke"
 
 #: data/units/Monster_Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -10581,7 +10570,7 @@ msgstr "Avsluta spelet"
 
 #: src/dialogs.cpp:239
 msgid "Ignore All"
-msgstr ""
+msgstr "Ignorera alla"
 
 #: src/dialogs.cpp:256
 msgid "Overwrite?"
@@ -10919,12 +10908,10 @@ msgid "Host a game without using a server"
 msgstr "Var värd för ett spel utan att använda en server"
 
 #: src/game.cpp:1238
-#, fuzzy
 msgid "Local Game"
-msgstr "Sparade spel"
+msgstr "Lokalt spel"
 
 #: src/game.cpp:1239
-#, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Spela ett gruppspel med en och samma dator"
 
@@ -11384,7 +11371,7 @@ msgstr "Döp om truppen"
 
 #: src/menu_events.cpp:1362
 msgid "Team only"
-msgstr ""
+msgstr "Endast laget"
 
 #: src/menu_events.cpp:1367
 msgid "Place Label"
@@ -11962,15 +11949,13 @@ msgstr "Ogiltig färg"
 
 #: src/multiplayer_ui.cpp:345
 msgid "Send a private message to "
-msgstr ""
+msgstr "Skicka ett privat meddelande till "
 
 #: src/multiplayer_ui.cpp:346
-#, fuzzy
 msgid "Whisper"
-msgstr "Vit"
+msgstr "Viskning"
 
 #: src/multiplayer_ui.cpp:347
-#, fuzzy
 msgid "Message: "
 msgstr "Meddelande: "
 
@@ -12048,14 +12033,12 @@ msgid "The replay could not be saved"
 msgstr "Reprisen kunde inte sparas"
 
 #: src/playcampaign.cpp:359
-#, fuzzy
 msgid "Autosaves"
-msgstr "Autosparat"
+msgstr "Autosparade spel"
 
 #: src/playcampaign.cpp:360
-#, fuzzy
 msgid "Do you want to delete the autosaves of this scenario?"
-msgstr "Vill du spara en repris för detta scenario?"
+msgstr "Vill de radera de autosparade utgångspunkterna för detta scenario?"
 
 #: src/playcampaign.cpp:378
 msgid "Receiving data..."
@@ -12474,21 +12457,3 @@ msgstr "Du kan se resultaten på:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#~ msgid "Hotseat Game"
-#~ msgstr "Heta stolen-spel"
-
-#~ msgid "Human vs AI"
-#~ msgstr "Människa mot dator"
-
-#~ msgid "Play a game against AI opponents"
-#~ msgstr "Spela mot datorn"
-
-#~ msgid "Scenario Designers"
-#~ msgstr "Scenarioförfattare"
-
-#~ msgid "Multiplayer Developers"
-#~ msgstr "Gruppspelsutvecklare"
-
-#~ msgid "+Developers"
-#~ msgstr "+Utvecklare"
