@@ -85,10 +85,12 @@ size_t min_threads = 0;
 size_t max_threads = 0;
 
 struct buffer {
-	explicit buffer(TCPsocket sock) : sock(sock) {}
+	explicit buffer(TCPsocket sock) : sock(sock),config_error("") {}
 
 	TCPsocket sock;
 	mutable config config_buf;
+	std::string config_error;
+
 };
 
 bool managed = false;
@@ -406,7 +408,13 @@ static int process_queue(void*)
 				std::string buffer(buf.begin(), buf.end());
 				std::istringstream stream(buffer);
 				compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
-				read_compressed(received_data_queue.back().config_buf, stream, compress);
+				try {
+					read_compressed(received_data_queue.back().config_buf, stream, compress);
+				} catch(config::error &e) {
+					//throw back the error in the parent thread
+					received_data_queue.back().config_error =e.message;
+					
+				}
 			}
 		}
 	}
@@ -497,6 +505,9 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 
 	if(itor == received_data_queue.end()) {
 		return NULL;
+	} else if (!itor->config_error.empty()){
+		// throw the error in parent thread
+		throw config::error(itor->config_error);
 	} else {
 		cfg = itor->config_buf;
 		const TCPsocket res = itor->sock;
