@@ -91,12 +91,12 @@ class macro_cross_reference:
                     else:
                         self.unresolved.append((name, reference(filename,n+1)))
             rfp.close()
-    def xrefdump(self, threshold=9999):
+    def xrefdump(self, pred=None):
         "Report resolved references."
         for (name, (defloc, references)) in self.xref.items():
-            nrefs = len(references)
-            if nrefs > threshold:
+            if pred and not pred(name, defloc, references):
                 continue
+            nrefs = len(references)
             if nrefs == 0:
                 print "Macro %s defined at %s is unused" % (name, defloc)
             else:
@@ -115,21 +115,39 @@ class macro_cross_reference:
 if __name__ == "__main__":
     print "# Macroscope reporting on %s" % time.ctime() 
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "mu")
+    (options, arguments) = getopt.getopt(sys.argv[1:], "mn:N:uv")
     verbose = False
     for (switch, val) in options:
         if (switch == '-m'):
             print "# Checking macro definitions from anywhere"
             print "# against macro references from anywhere."
             print "# Output will list unused macros and undefined references."
-            print "# Unused macros:"
             (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
             xref = macro_cross_reference(cfgfiles)
             xref.check_macro_references(cfgfiles)
-            for (name, (defloc, references)) in xref.xref.items():
-                if len(references) == 0:
-                    print "%s at %s" % (name, defloc)
+            print "# Unused macros:"
+            xref.xrefdump(lambda n, d, r: len(r) == 0)             
             xref.unrefdump()
+            sys.exit(0)
+        elif (switch == '-n'):
+            print "# Checking macro definitions in the utils directory"
+            print "# against macro references from anywhere."
+            c = int(val)
+            print "# Output reports on util macros used in only %d file(s)."% c
+            (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
+            xref = macro_cross_reference(utilsfiles)
+            xref.check_macro_references(cfgfiles)
+            xref.xrefdump(lambda n, d, r: len(r) == c)             
+            sys.exit(0)
+        elif (switch == '-N'):
+            print "# Checking macro definitions anywhere"
+            print "# against macro references from anywhere."
+            c = int(val)
+            print "# Output reports on all macros used in only %d file(s)."% c
+            (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
+            xref = macro_cross_reference(cfgfiles)
+            xref.check_macro_references(cfgfiles)
+            xref.xrefdump(lambda n, d, r: len(r) == c)             
             sys.exit(0)
         elif (switch == '-u'):
             print "# Checking macro definitions in the utils directory"
@@ -145,9 +163,11 @@ if __name__ == "__main__":
     # We get here if user didn't pick a valid mode option
     print """
 Usage: macroscope [-v] {-m | -u}
-    -v = set verbose mode, dumping some intermediate results
-    -m = Report unused macros and undefined references.
-    -u = Full reference report on utils macros
+    -m     = Report unused macros and undefined references.
+    -n ddd = Report on util macros used exactly a specified number of times
+    -N ddd = Report on any macros used exactly a specified number of times
+    -u     = Full reference report on utils macros
+    -v     = set verbose mode, dumping some intermediate results
 """
     sys.exit(1)
 
