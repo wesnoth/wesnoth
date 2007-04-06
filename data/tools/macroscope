@@ -79,7 +79,7 @@ class macro_cross_reference:
                     line = line.split('#')[0]
                 if not line or "{" not in line:
                     continue
-                for match in re.finditer(r"\{([A-Z][A-Z0-9_:]*[A-Z0-9_])\b", line):
+                for match in re.finditer(r"\{([A-Z_][A-Z0-9_:]*[A-Z0-9_])\b", line):
                     name = match.group(1)
                     if name in formals:
                         continue
