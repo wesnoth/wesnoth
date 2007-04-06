@@ -49,7 +49,7 @@ class macro_cross_reference:
                     name = tokens[1]
                     if name in self.xref:
                         print >>sys.stderr, "*** Warning: duplicate definition of %s from %s:%d at %s:%d\n" \
-                              % (self.xref[name][0], self.xref[name][1], name, filename, n+1)
+                              % (name, self.xref[name][0], self.xref[name][1], filename, n+1)
                     self.xref[name] = (filename, n+1, {})
             dfp.close()
         return self.xref
@@ -61,15 +61,18 @@ class macro_cross_reference:
             for (n, line) in enumerate(rfp):
                 if line[0] == "#" or "{" not in line:
                     continue
-                for name in self.xref:
-                    if re.search("{" + name + r"\b", line):
+                for match in re.finditer(r"\{([A-Z][A-Z0-9_]+)\b", line):
+                    name = match.group(1)
+                    if name in self.xref:
                         namedict = self.xref[name][2]
                         if filename not in namedict:
                             namedict[filename] = []
                         namedict[filename].append(n+1)
+                    else:
+                        self.unresolved.append((name, filename, n+1))
             rfp.close()
     def xrefdump(self, threshold=9999):
-        "Report the crossreferences."
+        "Report resolved references."
         for (name, (filename, n, references)) in self.xref.items():
             nrefs = len(references)
             if nrefs > threshold:
@@ -78,8 +81,13 @@ class macro_cross_reference:
             for (file, linenumbers) in references.items():
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
     def unrefdump(self):
-        "Report dangling references"
-        pass
+        "Report dangling references."
+        if len(self.unresolved) == 0:
+            print "# No unresolved references"
+        else:
+            print "# Dangling references:"
+            for (name, filename, n) in self.unresolved:
+                print "%s at %s:%d" % (name, filename, n)
 
 if __name__ == "__main__":
     print "# Macroscope reporting on %s" % time.ctime() 
