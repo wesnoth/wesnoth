@@ -67,14 +67,21 @@ class macro_cross_reference:
     def check_macro_references(self, filelist):
         "Decorate definitions with all references from a specified filelist."
         self.unresolved = []
+        formals = []
         for filename in filelist:
             rfp = open(filename)
             for (n, line) in enumerate(rfp):
+                if line.startswith("#define"):
+                    formals = line.split()[2:]
+                elif line.startswith("#enddef"):
+                    formals = []
                 if line[0] == "#" or "{" not in line:
                     continue
-                for match in re.finditer(r"\{([A-Z][A-Z0-9_]+)\b", line):
+                for match in re.finditer(r"\{([A-Z][A-Z0-9_:]*[A-Z0-9])\b", line):
                     name = match.group(1)
-                    if name in self.xref:
+                    if name in formals:
+                        continue
+                    elif name in self.xref:
                         namedict = self.xref[name][1]
                         if filename not in namedict:
                             namedict[filename] = []
