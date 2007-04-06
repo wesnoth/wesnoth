@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+#
+# Delete a specified campaign from the campaign server.
 
 use wml;
 use wml_net;

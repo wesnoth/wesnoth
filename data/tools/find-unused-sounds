@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# NOTE: THIS TOOL IS DEPRECATED.  DO NOT RELY ON IT.
+
+# Find sound files that are shipped but not used in mainline campaigns.
+
 # Changing the commas to newlines is a hack to handle the lists used in data/sound-utils.cfg.
 find -name '*.cfg' | xargs egrep '\.wav|\.ogg' | tr ',' '\n' | perl -e 'while(<>){/([a-zA-Z0-9_-]*(\.ogg|\.wav))/; print "$1\n";}' | sort | uniq > tmp-referenced-sounds-list
 

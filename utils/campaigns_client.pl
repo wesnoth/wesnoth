@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+#
+# List and download campaigns from the Wesnoth command server.
 
 use wml;
 use wml_net;

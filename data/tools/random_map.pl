@@ -4,10 +4,10 @@
 # Copyright 2003 J.R. Blain
 # Released under the gnu gpl v2 or later.
 # 
-# Todo: Insert proper gpl notice here.
-#
-# 
-# todo: clean it up some, add some comments, make it produce
+# Todo: 
+# Insert proper gpl notice here.
+# Make it do the new map multi-letter map format
+# clean it up some, add some comments, make it produce
 # WML for the map, some form of interface (perl-gtk?) to allow
 # setting map parameters.
 # Reorganize settings variables to make more sense, remove

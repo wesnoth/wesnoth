@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+#
+# Set the passphrase for a campaign on the Wesnoth campaign server.
+# You must know the old passphrase.
 
 use wml;
 use wml_net;
