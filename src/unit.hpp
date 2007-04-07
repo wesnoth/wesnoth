@@ -449,11 +449,13 @@ unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
 unit_map::iterator find_visible_unit(unit_map& units,
 		const gamemap::location loc,
 		const gamemap& map,
-		const std::vector<team>& teams, const team& current_team);
+		const std::vector<team>& teams, const team& current_team, 
+		bool see_all=false);
 unit_map::const_iterator find_visible_unit(const unit_map& units,
 		const gamemap::location loc,
 		const gamemap& map,
-		const std::vector<team>& teams, const team& current_team);
+		const std::vector<team>& teams, const team& current_team,
+		bool see_all=false);
 
 struct team_data
 {

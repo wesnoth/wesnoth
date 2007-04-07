@@ -322,18 +322,19 @@ void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &
 bool enemy_zoc(gamemap const &map,
                unit_map const &units,
                std::vector<team> const &teams,
-               gamemap::location const &loc, team const &viewing_team, unsigned int side)
+               gamemap::location const &loc, team const &viewing_team, unsigned int side, bool see_all)
 {
 	gamemap::location locs[6];
 	const team &current_team = teams[side-1];
 	get_adjacent_tiles(loc,locs);
 	for(int i = 0; i != 6; ++i) {
-		const unit_map::const_iterator it
-			= find_visible_unit(units, locs[i], map, teams, viewing_team);
-		if (it != units.end() && it->second.side() != side &&
-		    current_team.is_enemy(it->second.side()) && it->second.emits_zoc()) {
-			return true;
-		}
+	  unit_map::const_iterator it;	     
+	  it = find_visible_unit(units, locs[i], map, teams, viewing_team,see_all);
+
+	  if (it != units.end() && it->second.side() != side &&
+		 current_team.is_enemy(it->second.side()) && it->second.emits_zoc()) {
+	    return true;
+	  }
 	}
 
 	return false;
@@ -348,7 +349,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 		std::map<gamemap::location,paths::route>& routes,
 		std::vector<team> const &teams,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
-	    bool starting_pos, const team &viewing_team)
+		  bool starting_pos, const team &viewing_team, bool see_all)
 	{
 		if(size_t(u.side()-1) >= teams.size()) {
 			return;
@@ -365,7 +366,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 		if (allow_teleport && map.is_village(loc) &&
 		    current_team.owns_village(loc) &&
 			(starting_pos || find_visible_unit(units, loc, map,
-											   teams, viewing_team) == units.end())) {
+										teams, viewing_team,see_all) == units.end())) {
 			const std::vector<gamemap::location>& villages = map.villages();
 
 			//if we are on a village, see all friendly villages that we can
@@ -390,7 +391,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 
 			//see if the tile is on top of an enemy unit
 			const unit_map::const_iterator unit_it =
-				find_visible_unit(units, locs[i], map, teams, viewing_team);
+			  find_visible_unit(units, locs[i], map, teams, viewing_team,see_all);
 
 			if (unit_it != units.end() &&
 			    current_team.is_enemy(unit_it->second.side()))
@@ -420,7 +421,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 					continue;
 
 				const bool skirmisher = force_ignore_zocs | u.get_ability_bool("skirmisher",currentloc);
-				const bool zoc = !skirmisher && enemy_zoc(map,units,teams,currentloc, viewing_team,u.side());
+				const bool zoc = !skirmisher && enemy_zoc(map,units,teams,currentloc, viewing_team,u.side(),see_all);
 				paths::route new_route = routes[loc];
 				new_route.steps.push_back(loc);
 
@@ -431,7 +432,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 				if (new_route.move_left > 0) {
 					find_routes(map, status, gamedata, units, u, currentloc,
 					            zoc_move_left, routes, teams, force_ignore_zocs,
-					            allow_teleport, new_turns_left, false, viewing_team);
+					            allow_teleport, new_turns_left, false, viewing_team, see_all);
 				}
 			}
 		}
@@ -444,7 +445,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
              std::vector<team> const &teams,
 	     bool force_ignore_zoc,
              bool allow_teleport, const team &viewing_team,
-			 int additional_turns)
+		   int additional_turns, bool see_all)
 {
 	const unit_map::const_iterator i = units.find(loc);
 	if(i == units.end()) {
@@ -455,7 +456,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
 	routes[loc].move_left = i->second.movement_left();
 	find_routes(map,status,gamedata,units,i->second,loc,
 		i->second.movement_left(),routes,teams,force_ignore_zoc,
-		allow_teleport,additional_turns,true,viewing_team);
+		allow_teleport,additional_turns,true,viewing_team, see_all);
 }
 
 int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt)

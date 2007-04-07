@@ -1,6 +1,8 @@
 #include "global.hpp"
 #include "ai_dfool.hpp"
 
+#include <set>
+
 namespace dfool {
   void dfool_ai::play_turn(){
     info info_ = get_info();
@@ -207,10 +209,10 @@ namespace dfool {
 	move_map srcdst, dstsrc;
 	unit_map known_units;
 	
-	unit_memory_.known_map(known_units,0);
+	//	unit_memory_.known_map(known_units, get_info().state.turn());
+	unit_memory_.known_map(known_units, 0);
 
-	calculate_moves(known_units,possible_moves,srcdst,dstsrc,false);
-	
+	calculate_moves(known_units,possible_moves,srcdst,dstsrc,false,false,NULL,true);
 	int closest_distance = -1;
 	std::pair<location,location> closest_move;
 
@@ -264,7 +266,7 @@ namespace dfool {
   void unit_memory::add_unit_sighting(unit u, gamemap::location l, size_t t){
     std::string unit_id= u.underlying_description();
     //check if this unit has already been seen 
-    size_t i;
+    size_t i,j;
     for(i=0; i < ids_.size();i++){
       if(unit_id == ids_[i]){break;}
     }
@@ -280,8 +282,18 @@ namespace dfool {
       units_[i]=u;
       turns_[i]=t;
       locations_[i]=l;
-    }
+    }    
 
+    //remove units that are co-located units 
+    std::set<size_t> remove_list;
+    for(j=0; j < ids_.size();j++){
+      if(j!=i && locations_[j] == locations_[i]){
+	  remove_list.insert(j);
+      }
+    }
+    for(std::set<size_t>::const_iterator k=remove_list.begin();k!=remove_list.end();k++){
+      remove_unit_sighting(ids_[*k]);
+    }
   }
 
   void unit_memory::remove_unit_sighting(std::string id){
@@ -330,12 +342,15 @@ namespace dfool {
     for(i=0;i<units_.size();i++){
       gamemap::location l = locations_[i];
       size_t t = turn_used[l]; 
-      //      std::cout<<"turn: "<< t <<"\n";
       if(turns_[i] >= turn && turns_[i] >= t){
+	   //      std::cout<<"turn_used: "<< t <<"\n";
+	 //      std::cout<<"turn: "<< turns_[i] <<"\n";
 	  turn_used[l] = t;
 	  if(t != 0){
 	    u.replace(new std::pair<gamemap::location,unit>(l,units_[i]));
 	  }else{
+	    std::cout<<"id: "<< ids_[i] <<"\n";
+
 	    u.add(new std::pair<gamemap::location,unit>(l,units_[i]));
 	  }
       }

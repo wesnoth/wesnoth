@@ -58,7 +58,7 @@ gamemap::location find_vacant_tile(const gamemap& map,
 bool enemy_zoc(gamemap const &map,
                unit_map const &units,
                std::vector<team> const &teams, gamemap::location const &loc,
-               team const &viewing_team, unsigned int side);
+               team const &viewing_team, unsigned int side, bool see_all=false);
 
 struct cost_calculator
 {
@@ -85,7 +85,8 @@ struct paths
 	      unit_map const &units,
 	      gamemap::location const &loc, std::vector<team> const &teams,
 	      bool force_ignore_zocs,bool allow_teleport,
-		  const team &viewing_team,int additional_turns = 0);
+		 const team &viewing_team,int additional_turns = 0,
+		 bool see_all = false);
 
 	//structure which holds a single route between one location and another.
 	struct route

@@ -374,10 +374,11 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 		std::map<location,paths>& possible_moves)
 {
 	LOG_AI << "ai_interface::move_unit " << from << " -> " << to << '\n';
+
 	//stop the user from issuing any commands while the unit is moving
 	const events::command_disabler disable_commands;
 
-	wassert(info_.units.find(to) == info_.units.end() || from == to);
+	//wassert(info_.units.find(to) == info_.units.end() || from == to);
 
 	info_.disp.select_hex(from);
 	info_.disp.update_display();
@@ -412,12 +413,23 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 			}
 		}
 
-		if(rt != p.routes.end()) {
+		if(rt != p.routes.end()) {		  
 			u_it->second.set_movement(rt->second.move_left);
 
 			std::vector<location> steps = rt->second.steps;
 
+			while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
+				    LOG_AI << "AI attempting illegal move.  Attempting to move onto existing unit\n";
+				    LOG_AI << "\t" << info_.units.find(to)->second.underlying_description() <<" already on " << to << "\n";
+				    LOG_AI <<"\tremoving "<<*(steps.end()-1)<<"\n";
+				    to = *(steps.end()-1);
+				    steps.pop_back();
+				    LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
+	
+			}
+
 			if(steps.empty() == false) {
+
 				//check if there are any invisible units that we uncover
 				for(std::vector<location>::iterator i = steps.begin()+1; i != steps.end(); ++i) {
 					location adj[6];
@@ -428,6 +440,8 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 						//see if there is an enemy unit next to this tile.  If it's invisible,
 						//we need to stop: we're ambushed.  If it's not, we must be a skirmisher,
 						//otherwise AI wouldn't try.
+
+					     //or would it?  If it doesn't cheat, it might...
 						const unit_map::const_iterator u = info_.units.find(adj[n]);
 						if (u != info_.units.end() && u->second.emits_zoc()
 							&& current_team().is_enemy(u->second.side())) {
@@ -438,8 +452,17 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 							} else {
 							  if (!u_it->second.get_ability_bool("skirmisher",*i)){
 							    LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
+							    LOG_AI << "\tresetting destination from " <<to;
 							    to = *i;
+							    LOG_AI << " to " << to;
 							    steps.erase(i,steps.end());
+							    while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
+								 to = *(steps.end()-1);
+								 steps.pop_back();
+								 LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
+							    }
+
+							    break;
 							  }
 							}
 						}
@@ -624,9 +647,12 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 
 void ai_interface::calculate_moves(const unit_map& units, std::map<location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
-		const std::set<gamemap::location>* remove_destinations)
+	     const std::set<gamemap::location>* remove_destinations, 
+		bool see_all
+          )
 {
-	for(unit_map::const_iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
+
+	for(unit_map::const_iterator un_it = units.begin(); un_it != units.end(); ++un_it) {
 		//if we are looking for the movement of enemies, then this unit must be an enemy unit
 		//if we are looking for movement of our own units, it must be on our side.
 		//if we are assuming full movement, then it may be a unit on our side, or allied
@@ -635,17 +661,15 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		   !enemy && assume_full_movement && current_team().is_enemy(un_it->second.side())) {
 			continue;
 		}
-
 		//discount incapacitated units
 		if(un_it->second.incapacitated()) {
 			continue;
 		}
 
 		//we can't see where invisible enemy units might move
-		if(enemy && un_it->second.invisible(un_it->first,info_.units,info_.teams)) {
+		if(enemy && un_it->second.invisible(un_it->first,units,info_.teams) && !see_all) {
 			continue;
 		}
-
 		//if it's an enemy unit, reset its moves while we do the calculations
 		unit* held_unit = const_cast<unit*>(&(un_it->second));
 		const unit_movement_resetter move_resetter(*held_unit,enemy || assume_full_movement);
@@ -656,11 +680,11 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			srcdst.insert(trivial_mv);
 			dstsrc.insert(trivial_mv);
 		}
-
 		const bool teleports = un_it->second.get_ability_bool("teleport",un_it->first);
 		res.insert(std::pair<gamemap::location,paths>(
-		                un_it->first,paths(info_.map,info_.state,info_.gameinfo,info_.units,
-					    un_it->first,info_.teams,false,teleports,current_team())));
+		                un_it->first,paths(info_.map,info_.state,info_.gameinfo,units,
+					 un_it->first,info_.teams,false,teleports,
+									current_team(),0,see_all)));
 	}
 
 	for(std::map<location,paths>::iterator m = res.begin(); m != res.end(); ++m) {
@@ -692,7 +716,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 				continue;
 			}
 
-			if(src != dst && info_.units.find(dst) == info_.units.end()) {
+			if(src != dst && units.find(dst) == units.end()) {
 				srcdst.insert(std::pair<location,location>(src,dst));
 				dstsrc.insert(std::pair<location,location>(dst,src));
 			}
