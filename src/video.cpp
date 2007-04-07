@@ -265,6 +265,7 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags )
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
 	update_rects.clear();
+	if (fake_screen) return 0;
 	mode_changed_ = true;
 
 	flags = get_flags(flags);

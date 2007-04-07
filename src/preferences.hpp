@@ -47,6 +47,8 @@ namespace preferences {
 	void set(std::string key, std::string value);
 	std::string get(const std::string key);
 
+	void disable_preferences_save();
+
 	config* get_prefs();
 
 	bool fullscreen();

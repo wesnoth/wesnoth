@@ -164,6 +164,7 @@ game_controller::game_controller(int argc, char** argv)
      no_gui_(false), use_caching_(true), force_valid_cache_(false),
      force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false)
 {
+	bool no_sound = false;
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
 		if(val.empty()) {
@@ -215,6 +216,8 @@ game_controller::game_controller(int argc, char** argv)
 			}
 		} else if(val == "--nogui") {
 			no_gui_ = true;
+			no_sound = true;
+			preferences::disable_preferences_save();
 		} else if(val == "--windowed" || val == "-w") {
 			preferences::set_fullscreen(false);
 		} else if(val == "--fullscreen" || val == "-f") {
@@ -231,10 +234,7 @@ game_controller::game_controller(int argc, char** argv)
 			game_config::no_delay = true;
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
-			preferences::set_turn_bell(false);
-			preferences::set_UI_sound(false);
-			preferences::set_sound(false);
-			preferences::set_music(false);
+			no_sound = true;
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -255,13 +255,14 @@ game_controller::game_controller(int argc, char** argv)
 		}
 	}
 
-	if (preferences::sound_on() || preferences::music_on() || preferences::turn_bell() || preferences::UI_sound_on()) {
-		if(!sound::init_sound()) {
-			preferences::set_sound(false);
-			preferences::set_music(false);
-			preferences::set_turn_bell(false);
-			preferences::set_UI_sound(false);
-		}
+	// disable sound in nosound mode, or when sound engine failed to initialize
+	if (no_sound || ((preferences::sound_on() || preferences::music_on() ||
+	                  preferences::turn_bell() || preferences::UI_sound_on()) &&
+	                 !sound::init_sound())) {
+		preferences::set_sound(false);
+		preferences::set_music(false);
+		preferences::set_turn_bell(false);
+		preferences::set_UI_sound(false);
 	}
 }
 

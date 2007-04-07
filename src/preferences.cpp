@@ -52,6 +52,8 @@ int draw_delay_ = 20;
 
 bool lobby_minimaps = true;
 
+bool no_preferences_save = false;
+
 std::set<std::string> encountered_units_set;
 std::set<t_translation::t_letter> encountered_terrains_set;
 
@@ -96,6 +98,8 @@ manager::~manager()
 
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
+
+	if (no_preferences_save) return;
 	try {
 		scoped_ostream prefs_file = ostream_file(get_prefs_file());
 		write(*prefs_file, prefs);
@@ -110,6 +114,10 @@ void set(const std::string key, std::string value) {
 
 std::string get(const std::string key) {
 	return prefs[key];
+}
+
+void disable_preferences_save() {
+	no_preferences_save = true;
 }
 
 config* get_prefs(){
