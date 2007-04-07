@@ -1526,6 +1526,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			                         0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
 		}
 	}
+				
+	else if(cmd == "deprecated_message") {
+		// note since only used for deprecated things no need to translate the string
+		const std::string message = cfg["message"];
+		lg::wml_error << message << '\n';
+	}
 
 	//displaying a message dialog
 	else if(cmd == "message") {
