@@ -7,34 +7,16 @@
 
 import sys, os, time, re, getopt
 
-def allfiles(dir):
-    "Get the names of all files under dir, ignoring .svn directories."
+def allfiles(dirpath):
+    "Get the names of all files under dirpath, ignoring .svn directories."
     datafiles = []
-    os.chdir(dir)	# So we can deal in relative pathnames.
-    os.path.walk(".",
-                 lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir,x)), names)),
-                 None)
-    return filter(lambda x: ".svn" not in x, datafiles)
-
-def initialize(verbose):
-    "Prepare for crosschecks."
-    # This assumes we're being called from our source-tree location
-    datadir = os.path.join(*os.path.split(os.getcwd())[:-1])
-    if verbose:
-        print "# Data directory is: %s" % datadir
-
-    datafiles = allfiles(datadir)
-    #print "Data files: %s" % `datafiles`[1:-1]
-
-    # Get the names of all WML files.
-    cfgfiles = filter(lambda x: x.endswith(".cfg"), datafiles)
-
-    # Get the names of all utility-macro definition files
-    utilsfiles = filter(lambda x: x.startswith("utils"), cfgfiles) 
-    if verbose:
-        print "Definition files: %s" % `utilsfiles`[1:-1]
-
-    return (datafiles, cfgfiles, utilsfiles)
+    for dir in dirpath:
+        os.path.walk(dir,
+                     lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir,x)), names)),
+                     None)
+    datafiles = filter(lambda x: ".svn" not in x, datafiles)
+    datafiles = filter(lambda x: not os.path.isdir(x), datafiles)
+    return datafiles
 
 class reference:
     "Describes a location by file and line."
@@ -48,11 +30,8 @@ class reference:
             return self.filebame
 
 class macro_cross_reference:
-    def __init__(self, fromlist, tolist):
-        self.gather_macro_definitions(fromlist)
-        self.check_macro_references(tolist)
-    def gather_macro_definitions(self, filelist):
-        "Collect macro definitions from a specified filelist."
+    def __init__(self, filelist):
+        # First, collect macro definitions from the specified filelist."
         self.xref = {}
         for filename in filelist:
             dfp = open(filename)
@@ -62,16 +41,16 @@ class macro_cross_reference:
                     name = tokens[1]
                     here = reference(filename, n+1)
                     if name in self.xref:
-                        print >>sys.stderr, "*** Warning: duplicate definition of %s from %s, at %s\n" \
+                        print >>sys.stderr, "*** Warning: duplicate definition of %s from %s, at %s" \
                               % (name, self.xref[name][0], here)
                     self.xref[name] = (here, {})
             dfp.close()
-        return self.xref
-    def check_macro_references(self, filelist):
-        "Decorate definitions with all references from a specified filelist."
+        # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         formals = []
         for filename in filelist:
+            if not filename.endswith(".cfg"):
+                continue
             rfp = open(filename)
             for (n, line) in enumerate(rfp):
                 if line.startswith("#define"):
@@ -106,7 +85,7 @@ class macro_cross_reference:
                 print "Macro %s defined at %s is used in %d files:" % (name, defloc, nrefs)
             for (file, linenumbers) in references.items():
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
-    def unrefdump(self):
+    def unresdump(self):
         "Report dangling references."
         if len(self.unresolved) == 0:
             print "# No unresolved references"
@@ -116,57 +95,56 @@ class macro_cross_reference:
                 print "%s at %s" % (name, reference)
 
 if __name__ == "__main__":
-    print "# Macroscope reporting on %s" % time.ctime() 
+    def help():
+        sys.stderr.write("""\
+Usage: macroscope [options] sourcedirpath targetdirpath
+    Options may be any of these:
+    -h, --help              Emit this help message
+    -b dir, --basedir=dir   Set base directory for relative paths
+    -c, --crossreference    Report target-to-source references
+    -u, --unresolved      Report sourcepath macros unresolved in targetpath
+    -r ddd, --refcount=ddd  Report only on macros w/refs in ddd files 
+""")
+
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "mn:N:uv")
-    verbose = False
+    (options, arguments) = getopt.getopt(sys.argv[1:], "cf:hr:u",
+                                         ['help',
+                                          'crossreference', 'unresolved',
+                                          'from=', 'refcount='])
+    crossreference = unresolved = False
+    from_restrict = None
+    refcount_restrict = None
     for (switch, val) in options:
-        if (switch == '-m'):
-            print "# Checking macro definitions from anywhere"
-            print "# against macro references from anywhere."
-            print "# Output will list unused macros and undefined references."
-            (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
-            xref = macro_cross_reference(cfgfiles, cfgfiles)
-            print "# Unused macros:"
-            xref.xrefdump(lambda n, d, r: len(r) == 0)             
-            xref.unrefdump()
+        if switch in ('-h', '--help'):
+            help()
             sys.exit(0)
-        elif (switch == '-n'):
-            print "# Checking macro definitions in the utils directory"
-            print "# against macro references from anywhere."
-            c = int(val)
-            print "# Output reports on util macros used in only %d file(s)."% c
-            (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
-            xref = macro_cross_reference(utilsfiles, cfgfiles)
-            xref.xrefdump(lambda n, d, r: len(r) == c)             
-            sys.exit(0)
-        elif (switch == '-N'):
-            print "# Checking macro definitions anywhere"
-            print "# against macro references from anywhere."
-            c = int(val)
-            print "# Output reports on all macros used in only %d file(s)."% c
-            (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
-            xref = macro_cross_reference(cfgfiles, cfgfiles)
-            xref.xrefdump(lambda n, d, r: len(r) == c)             
-            sys.exit(0)
-        elif (switch == '-u'):
-            print "# Checking macro definitions in the utils directory"
-            print "# against macro references from anywhere."
-            print "# Output will be a full reference report."
-            (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
-            xref = macro_cross_reference(utilsfiles, cfgfiles)
-            xref.xrefdump()
-            sys.exit(0)
-        elif (switch == '-u'):
-            verbose = True
-    # We get here if user didn't pick a valid mode option
-    print """
-Usage: macroscope [-v] {-m | -n | -N ddd | -u ddd}
-    -m     = Report unused macros and undefined references.
-    -n ddd = Report on util macros used exactly a specified number of times
-    -N ddd = Report on any macros used exactly a specified number of times
-    -u     = Full reference report on utils macros
-    -v     = set verbose mode, dumping some intermediate results
-"""
-    sys.exit(1)
+        if switch in ('-f', '--from'):
+            from_restrict = val
+        elif switch in ('-c', '--crossreference'):
+            crossreference = True
+        elif switch in ('-u', '--unresolved'):
+            unresolved = True
+        elif switch in ('-r', '--refcount'):
+            refcount_restrict = 0
+
+    if len(arguments) != 1:
+        help()
+        sys.exit(1)
+    dirpath = arguments[0].split(";")
+    print "# Macroscope reporting on %s" % time.ctime()
+    print "# Working directory: %s" % os.getcwd()
+    print "# Directory path:    %s" % dirpath
+    files = allfiles(dirpath)
+    if crossreference or unresolved:
+        xref = macro_cross_reference(allfiles(dirpath))
+        def predicate(name, defloc, references):
+            if from_restrict and not defloc.filename.startswith(from_restrict):
+                return False
+            if refcount_restrict!=None and len(references)!=refcount_restrict:
+                return False
+            return True
+        if crossreference:
+            xref.xrefdump(predicate)
+        if unresolved:
+            xref.unresdump()
 
