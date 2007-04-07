@@ -744,7 +744,16 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			status_ptr->add_turns(-status_ptr->number_of_turns());
 			status_ptr->add_turns(lexical_cast_default<int>(value,50));
 		}
-
+	}
+	else if(cmd == "store_turns") {
+		std::string var_name = cfg["variable"];
+		if(var_name.empty()) {
+			var_name = cmd.substr(cmd.find_first_of('_') + 1);
+		}
+		wassert(state_of_game != NULL);
+		wassert(status_ptr != NULL);
+		int turns = status_ptr->number_of_turns();
+		state_of_game->get_variable(var_name) = lexical_cast_default<std::string>(turns,"");
 	}
 
 	//moving a 'unit' - i.e. a dummy unit that is just moving for
