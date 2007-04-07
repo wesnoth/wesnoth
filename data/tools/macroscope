@@ -18,6 +18,10 @@ def allfiles(dirpath):
     datafiles = filter(lambda x: not os.path.isdir(x), datafiles)
     return datafiles
 
+def iswml(filename):
+    "Is the specified filename WML?"
+    return filename.endswith(".cfg")
+
 class reference:
     "Describes a location by file and line."
     def __init__(self, filename, line=None):
@@ -49,8 +53,6 @@ class macro_cross_reference:
         self.unresolved = []
         formals = []
         for filename in filelist:
-            if not filename.endswith(".cfg"):
-                continue
             rfp = open(filename)
             for (n, line) in enumerate(rfp):
                 if line.startswith("#define"):
@@ -97,13 +99,14 @@ class macro_cross_reference:
 if __name__ == "__main__":
     def help():
         sys.stderr.write("""\
-Usage: macroscope [options] sourcedirpath targetdirpath
+Usage: macroscope [options] dirpath
     Options may be any of these:
-    -h, --help              Emit this help message
-    -b dir, --basedir=dir   Set base directory for relative paths
-    -c, --crossreference    Report target-to-source references
-    -u, --unresolved      Report sourcepath macros unresolved in targetpath
-    -r ddd, --refcount=ddd  Report only on macros w/refs in ddd files 
+    -h, --help              Emit this help message and quit
+    -c, --crossreference    Report resolved macro references
+    -u, --unresolved        Report unresolved macro references
+    -f dir, --from dir      Report only on macros defined under dir
+    -r ddd, --refcount=ddd  Report only on macros w/references in ddd files 
+   The required dirpath argument may be a colon-separated directory list.
 """)
 
     # Process options
@@ -136,7 +139,7 @@ Usage: macroscope [options] sourcedirpath targetdirpath
     print "# Directory path:    %s" % dirpath
     files = allfiles(dirpath)
     if crossreference or unresolved:
-        xref = macro_cross_reference(allfiles(dirpath))
+        xref = macro_cross_reference(filter(iswml, allfiles(dirpath)))
         def predicate(name, defloc, references):
             if from_restrict and not defloc.filename.startswith(from_restrict):
                 return False
