@@ -146,11 +146,6 @@ namespace {
 			verify(*unit_map_ref,cfg);
 		}
 	}
-
-	config make_verify_units()
-	{
-		return create_verification(*unit_map_ref);
-	}
 }
 
 verification_manager::verification_manager(const unit_map& units)

@@ -387,17 +387,6 @@ void advance_unit(const unit& u)
 	s.advanced_to[u.id()]++;
 }
 
-std::vector<std::string> get_categories()
-{
-	std::vector<std::string> res;
-	res.push_back("all_statistics");
-	for(std::vector<scenario_stats>::const_iterator i = master_stats.begin(); i != master_stats.end(); ++i) {
-		res.push_back(i->scenario_name);
-	}
-
-	return res;
-}
-
 stats calculate_stats(int category, int side)
 {
 	if(category == 0) {

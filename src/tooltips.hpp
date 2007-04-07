@@ -33,13 +33,6 @@ void clear_tooltips(const SDL_Rect& rect);
 void add_tooltip(const SDL_Rect& rect, const std::string& message);
 void process(int mousex, int mousey);
 
-
-//a function exactly the same as font::draw_text, but will also register
-//a tooltip
-SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
-                   const SDL_Color& colour, const std::string& text,
-                   int x, int y);
-
 }
 
 #endif

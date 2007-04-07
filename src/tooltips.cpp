@@ -56,12 +56,6 @@ int tooltip_handle = 0;
 SDL_Rect current_rect;
 surface current_background = NULL;
 
-SDL_Rect get_text_size(const std::string& msg)
-{
-	SDL_Rect area = {0,0,10000,10000};
-	return font::draw_text(NULL,area,font_size,font::BLACK_COLOUR,msg,0,0);
-}
-
 void clear_tooltip()
 {
 	if(tooltip_handle != 0) {
@@ -174,13 +168,6 @@ void process(int mousex, int mousey)
 
 	clear_tooltip();
 	current_tooltip = tips.end();
-}
-
-SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
-                   const SDL_Color& colour, const std::string& text,
-                   int x, int y)
-{
-	return font::draw_text(gui, area, size, colour, text, x, y, true);
 }
 
 }

@@ -50,8 +50,8 @@ image::locator locator_string_initializer::operator()(const std::string &s) cons
 
 }
 
-const int terrain_builder::rule_image::TILEWIDTH = 72;
-const int terrain_builder::rule_image::UNITPOS = 36 + 18;
+static const int TILEWIDTH = 72;
+static const int UNITPOS = 36 + 18;
 
 terrain_builder::rule_image::rule_image(int layer, bool global_image) :
 	position(HORIZONTAL), layer(layer),
@@ -363,14 +363,14 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 
 		double vx, vy, rx, ry;
 
-		vx = double(itor->basex) - double(rule_image::TILEWIDTH)/2;
-		vy = double(itor->basey) - double(rule_image::TILEWIDTH)/2;
+		vx = double(itor->basex) - double(TILEWIDTH)/2;
+		vy = double(itor->basey) - double(TILEWIDTH)/2;
 
 		rx = xyrotations[angle].xx * vx + xyrotations[angle].xy * vy;
 		ry = xyrotations[angle].yx * vx + xyrotations[angle].yy * vy;
 
-		itor->basex = int(rx + rule_image::TILEWIDTH/2);
-		itor->basey = int(ry + rule_image::TILEWIDTH/2);
+		itor->basex = int(rx + TILEWIDTH/2);
+		itor->basey = int(ry + TILEWIDTH/2);
 
 		//std::cerr << "Rotation: from " << vx << ", " << vy << " to " << itor->basex <<
 		//	", " << itor->basey << "\n";
@@ -547,9 +547,8 @@ void terrain_builder::add_constraints(
 	if(!type.empty())
 		constraints[loc].terrain_types = type;
 
-	int x = loc.x * rule_image::TILEWIDTH * 3 / 4;
-	int y = loc.y * rule_image::TILEWIDTH + (loc.x % 2) *
-		rule_image::TILEWIDTH / 2;
+	int x = loc.x * TILEWIDTH * 3 / 4;
+	int y = loc.y * TILEWIDTH + (loc.x % 2) * TILEWIDTH / 2;
 	add_images_from_config(constraints[loc].images, global_images, true, x, y);
 
 }
@@ -877,7 +876,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 							img->layer, &*img));
 			} else if(img->position == rule_image::VERTICAL) {
 				btile.vertical_images.insert(std::pair<int, const rule_image*>(
-						img->basey - rule_image::UNITPOS, &*img));
+						img->basey - UNITPOS, &*img));
 			}
 		}
 

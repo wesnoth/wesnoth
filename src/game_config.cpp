@@ -28,7 +28,6 @@ namespace game_config
 	int rest_heal_amount= 2;
 	int recall_cost = 20;
 	int kill_experience = 8;
-	int leadership_bonus = 25;
 	const std::string version = VERSION;
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false;
 	
@@ -39,18 +38,13 @@ namespace game_config
 		bool disable_autosave = false;
 	#endif
 
-	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, anonymous_music,
-			victory_music, defeat_music;
+	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
-	    title_tip_x = 0, title_tip_y = 0, title_tip_width = 0, title_tip_padding = 0;
+	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;
 
 	std::string missile_n_image, missile_ne_image;
 
 	std::string terrain_mask_image = "terrain/alphamask.png";
-
-	std::string map_image = "maps/wesnoth.png";
-	std::string rightside_image = "misc/rightside.png";
-	std::string rightside_image_bot = "misc/rightside-bottom.png";
 
 	std::string energy_image = "misc/bar-energy.png";
 	std::string moved_ball_image = "misc/ball-moved.png";
@@ -59,9 +53,8 @@ namespace game_config
 	std::string enemy_ball_image = "misc/ball-enemy.png";
 	std::string ally_ball_image = "misc/ball-ally.png";
 	std::string flag_image = "terrain/flag-1.png:150,terrain/flag-2.png:150";
-  std::vector<Uint32> flag_rgb;
+	std::vector<Uint32> flag_rgb;
 
-	std::string dot_image = "misc/dot.png";
 	std::string cross_image = "misc/cross.png";
 
 	std::vector<std::string> foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
@@ -116,16 +109,12 @@ namespace game_config
 		game_title = v["title"];
 		game_logo = v["logo"];
 		title_music = v["title_music"];
-		anonymous_music = v["anonymous_music"];
-		victory_music = v["victory_music"];
-		defeat_music = v["defeat_music"];
 
 		title_logo_x = atoi(v["logo_x"].c_str());
 		title_logo_y = atoi(v["logo_y"].c_str());
 		title_buttons_x = atoi(v["buttons_x"].c_str());
 		title_buttons_y = atoi(v["buttons_y"].c_str());
 		title_tip_x = atoi(v["tip_x"].c_str());
-		title_tip_y = atoi(v["tip_y"].c_str());
 		title_tip_width = atoi(v["tip_width"].c_str());
 
 #ifdef USE_TINY_GUI
@@ -136,10 +125,6 @@ namespace game_config
 		title_buttons_padding = atoi(v["buttons_padding"].c_str());
 #endif
 
-		map_image = v["map_image"];
-		rightside_image = v["sidebar_image"];
-		rightside_image_bot = v["sidebar_image_bottom"];
-
 		energy_image = v["energy_image"];
 		moved_ball_image = v["moved_ball_image"];
 		unmoved_ball_image = v["unmoved_ball_image"];
@@ -148,7 +133,6 @@ namespace game_config
 		ally_ball_image = v["ally_ball_image"];
 		flag_image = v["flag_image"];
 		cross_image = v["cross_image"];
-		dot_image = v["dot_image"];
 
 		foot_left_nw = utils::split(v["footprint_left_nw"]);
 		foot_left_n = utils::split(v["footprint_left_n"]);

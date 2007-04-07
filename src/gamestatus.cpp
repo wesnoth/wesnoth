@@ -82,7 +82,7 @@ void conv_ansi_utf8(std::string &name, bool a2u) {
 	return;
 }
 
-void replace_underbar2space(std::string &name) {
+static void replace_underbar2space(std::string &name) {
 LOG_NG << "conv(A2U)-from:[" << name << "]" << std::endl;
     conv_ansi_utf8(name, true);
 LOG_NG << "conv(A2U)-to:[" << name << "]" << std::endl;
@@ -91,7 +91,7 @@ LOG_NG << "replace_underbar2space-from:[" << name << "]" << std::endl;
 LOG_NG << "replace_underbar2space-to:[" << name << "]" << std::endl;
 }
 
-void replace_space2underbar(std::string &name) {
+static void replace_space2underbar(std::string &name) {
 LOG_NG << "conv(U2A)-from:[" << name << "]" << std::endl;
     conv_ansi_utf8(name, false);
 LOG_NG << "conv(U2A)-to:[" << name << "]" << std::endl;
@@ -100,13 +100,16 @@ LOG_NG << "replace_underbar2space-from:[" << name << "]" << std::endl;
 LOG_NG << "replace_underbar2space-to:[" << name << "]" << std::endl;
 }
 #else /* ! _WIN32 */
-void replace_underbar2space(std::string &name) {
+static void replace_underbar2space(std::string &name) {
     std::replace(name.begin(),name.end(),'_',' ');
 }
-void replace_space2underbar(std::string &name) {
+static void replace_space2underbar(std::string &name) {
     std::replace(name.begin(),name.end(),' ','_');
 }
 #endif /* _WIN32 */
+
+static void extract_summary_data_from_save(const game_state& state, config& out);
+static void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 
 player_info* game_state::get_player(const std::string& id) {
 	std::map< std::string, player_info >::iterator found = players.find(id);
@@ -149,17 +152,13 @@ void time_of_day::write(config& cfg) const
 	cfg["mask"] = image_mask;
 }
 
-namespace {
-
-void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
+static void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 {
 	const config::child_list& times = cfg.get_children("time");
 	config::child_list::const_iterator t;
 	for(t = times.begin(); t != times.end(); ++t) {
 		normal_times.push_back(time_of_day(**t));
 	}
-
-}
 
 }
 
@@ -298,7 +297,7 @@ bool gamestatus::next_turn()
 	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
-player_info read_player(const game_data& data, const config* cfg)
+static player_info read_player(const game_data& data, const config* cfg)
 {
 	player_info res;
 
@@ -455,7 +454,7 @@ game_state read_game(const game_data& data, const config* cfg)
 	return res;
 }
 
-void write_player(const player_info& player, config& cfg)
+static void write_player(const player_info& player, config& cfg)
 {
 	cfg["name"] = player.name;
 
@@ -648,7 +647,7 @@ bool save_index_loaded = false;
 config save_index_cfg;
 }
 
-config& save_index()
+static config& save_index()
 {
 	if(save_index_loaded == false) {
 		try {
@@ -677,17 +676,6 @@ config& save_summary(const std::string& save)
 	}
 
 	return *res;
-}
-
-void delete_save_summary(const std::string& save)
-{
-	config& cfg = save_index();
-	const config* const res = cfg.find_child("save","save",save);
-	if(res != NULL) {
-		const config::child_list& children = cfg.get_children("save");
-		const size_t index = std::find(children.begin(),children.end(),res) - children.begin();
-		cfg.remove_child("save",index);
-	}
 }
 
 void write_save_index()

@@ -38,8 +38,6 @@ struct language_def
 };
 
 std::string languagedef_name (const language_def& def);
-bool languagedef_rtl (const language_def& def);
-bool languagedef_lessthan_p (const language_def& def1, const language_def& def2);
 
 struct symbol_table
 {

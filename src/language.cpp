@@ -38,26 +38,16 @@ namespace {
 	string_map strings_;
 }
 
-std::vector<language_def> known_languages;
+static std::vector<language_def> known_languages;
 
 std::string languagedef_name (const language_def& def)
 {
 	return def.language;
 }
 
-bool languagedef_rtl (const language_def& def)
-{
-	return def.rtl;
-}
-
 bool current_language_rtl()
 {
 	return get_language().rtl;
-}
-
-bool languagedef_lessthan_p (const language_def& def1, const language_def& def2)
-{
-	return (def1.language < def2.language);
 }
 
 bool language_def::operator== (const language_def& a) const

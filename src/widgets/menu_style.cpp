@@ -34,16 +34,13 @@
 
 namespace gui {
 
-	//static initializations
-menu::imgsel_style menu::slateborder_style("misc/selection", false,
-										   0x000000, 0x4a4440, 0x999999,
-										   0.0, 0.2, 0.2);
+//static initializations
 menu::imgsel_style menu::bluebg_style("misc/selection2", true,
 										   0x000000, 0x000000, 0x333333,
 										   0.35, 0.0, 0.3);
 menu::style &menu::default_style = menu::bluebg_style;
 
-	//constructors
+//constructors
 menu::style::style() : font_size_(font::SIZE_NORMAL),
 		cell_padding_(font::SIZE_NORMAL * 3/5), thickness_(0),
 		normal_rgb_(0x000000), selected_rgb_(0x000099), heading_rgb_(0x333333),
