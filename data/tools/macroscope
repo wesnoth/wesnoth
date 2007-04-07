@@ -1,11 +1,20 @@
 #!/usr/bin/env python
 #
-# macroscope -- generate cross-reference listing of WML macro usage
+# macroscope -- generate cross-reference listings of WML macro usage
 #
 # By Eric S. Raymond April 2007.
 # (Yes, this *is* named after an ancient Piers Anthony novel.)
 
 import sys, os, time, re, getopt
+
+def allfiles(dir):
+    "Get the names of all files under dir, ignoring .svn directories."
+    datafiles = []
+    os.chdir(dir)	# So we can deal in relative pathnames.
+    os.path.walk(".",
+                 lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir,x)), names)),
+                 None)
+    return filter(lambda x: ".svn" not in x, datafiles)
 
 def initialize(verbose):
     "Prepare for crosschecks."
@@ -14,14 +23,7 @@ def initialize(verbose):
     if verbose:
         print "# Data directory is: %s" % datadir
 
-    # Get the names of all files in the data subdirectory.
-    # Chdir to there first so we can deal in relative pathnames.
-    datafiles = []
-    os.chdir(datadir)
-    os.path.walk(".",
-                 lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir,x)), names)),
-                 None)
-    datafiles = filter(lambda x: ".svn" not in x, datafiles)
+    datafiles = allfiles(datadir)
     #print "Data files: %s" % `datafiles`[1:-1]
 
     # Get the names of all WML files.
@@ -35,7 +37,7 @@ def initialize(verbose):
     return (datafiles, cfgfiles, utilsfiles)
 
 class reference:
-    "Describes a location in the data tree."
+    "Describes a location by file and line."
     def __init__(self, filename, line=None):
         self.filename = filename
         self.line = line
@@ -46,8 +48,9 @@ class reference:
             return self.filebame
 
 class macro_cross_reference:
-    def __init__(self, filelist):
-        self.gather_macro_definitions(filelist)
+    def __init__(self, fromlist, tolist):
+        self.gather_macro_definitions(fromlist)
+        self.check_macro_references(tolist)
     def gather_macro_definitions(self, filelist):
         "Collect macro definitions from a specified filelist."
         self.xref = {}
@@ -123,8 +126,7 @@ if __name__ == "__main__":
             print "# against macro references from anywhere."
             print "# Output will list unused macros and undefined references."
             (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
-            xref = macro_cross_reference(cfgfiles)
-            xref.check_macro_references(cfgfiles)
+            xref = macro_cross_reference(cfgfiles, cfgfiles)
             print "# Unused macros:"
             xref.xrefdump(lambda n, d, r: len(r) == 0)             
             xref.unrefdump()
@@ -135,8 +137,7 @@ if __name__ == "__main__":
             c = int(val)
             print "# Output reports on util macros used in only %d file(s)."% c
             (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
-            xref = macro_cross_reference(utilsfiles)
-            xref.check_macro_references(cfgfiles)
+            xref = macro_cross_reference(utilsfiles, cfgfiles)
             xref.xrefdump(lambda n, d, r: len(r) == c)             
             sys.exit(0)
         elif (switch == '-N'):
@@ -145,8 +146,7 @@ if __name__ == "__main__":
             c = int(val)
             print "# Output reports on all macros used in only %d file(s)."% c
             (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
-            xref = macro_cross_reference(cfgfiles)
-            xref.check_macro_references(cfgfiles)
+            xref = macro_cross_reference(cfgfiles, cfgfiles)
             xref.xrefdump(lambda n, d, r: len(r) == c)             
             sys.exit(0)
         elif (switch == '-u'):
@@ -154,15 +154,14 @@ if __name__ == "__main__":
             print "# against macro references from anywhere."
             print "# Output will be a full reference report."
             (datafiles, cfgfiles, utilsfiles) = initialize(verbose)
-            xref = macro_cross_reference(utilsfiles)
-            xref.check_macro_references(cfgfiles)
+            xref = macro_cross_reference(utilsfiles, cfgfiles)
             xref.xrefdump()
             sys.exit(0)
         elif (switch == '-u'):
             verbose = True
     # We get here if user didn't pick a valid mode option
     print """
-Usage: macroscope [-v] {-m | -u}
+Usage: macroscope [-v] {-m | -n | -N ddd | -u ddd}
     -m     = Report unused macros and undefined references.
     -n ddd = Report on util macros used exactly a specified number of times
     -N ddd = Report on any macros used exactly a specified number of times
