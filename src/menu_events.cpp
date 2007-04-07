@@ -1167,7 +1167,7 @@ namespace events{
 				const bool teleports = u->second.get_ability_bool("teleport",u->first);
 				unit_map units(u->first, u->second);
 				const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
-										  u->first,teams_,false,teleports,teams_[gui_->viewing_team()],NULL);
+										  u->first,teams_,false,teleports,teams_[gui_->viewing_team()]);
 
 				gui_->highlight_another_reach(path);
 			}

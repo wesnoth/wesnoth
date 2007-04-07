@@ -889,7 +889,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			const bool teleport = u->second.get_ability_bool("teleport",u->first);
 
-			paths paths_list(map,state,gameinfo,units,src,teams,false,teleport,current_team,NULL);
+			paths paths_list(map,state,gameinfo,units,src,teams,false,teleport,current_team);
 
 			std::map<gamemap::location,paths::route>::iterator rt = paths_list.routes.find(dst);
 			if(rt == paths_list.routes.end()) {
