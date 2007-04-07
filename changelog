@@ -92,9 +92,14 @@ Version 1.3.1+svn:
    * added the "ignore all" option to continue observing during massive OOS
    * show total amount of visible villages (patch #698)
    * added drag & drop to move units
- * misceleanous changes and bug fixes
-   * an friendly healer hill now stop poisoned unit to lose HP
-   * a unit that dies while attacking will now correctly play it's own death
+ * WML tools and scripts:
+   * Reorganized: these now live in data/tools/
+   * The Perl random map generator (unmaintained since 2003, only
+     generated old-style single-letter maps) has been removed.
+   * New tool, macroscope, generates cross-reference reports on macro usage.
+ * miscellanous changes and bug fixes
+   * a friendly healer will now stop poisoned unit to lose HP
+   * a unit that dies while attacking will now correctly play its own death
    * turn bell can sound if other soundFX are turned off
    * the first turn starts again with the proper time of day (bug 8637)
    * removes the scaling handling in the halo, removing quite some code
