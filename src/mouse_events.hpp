@@ -39,6 +39,8 @@ public:
 		gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack);
 	void set_team(const int team_number);
 	void mouse_motion(const SDL_MouseMotionEvent& event, const bool browse);
+	// update the mouse with a fake mouse motion
+	void mouse_update(const bool browse);
 	void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
 	void cycle_units();
 	void cycle_back_units();

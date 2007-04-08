@@ -696,6 +696,13 @@ void mouse_handler::mouse_motion(const SDL_MouseMotionEvent& event, const bool b
 	mouse_motion(event.x,event.y, browse);
 }
 
+void mouse_handler::mouse_update(const bool browse)
+{
+	int x, y;
+	SDL_GetMouseState(&x,&y);
+	mouse_motion(x, y, browse);
+}
+
 void mouse_handler::mouse_motion(int x, int y, const bool browse)
 {
 	if(minimap_scrolling_) {
@@ -919,7 +926,7 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
 {
 	show_menu_ = false;
-	mouse_motion(event.x, event.y, browse);
+	mouse_update(browse);
 
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
@@ -979,6 +986,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		const int ydisp = event.y - centery;
 
 		gui_->scroll(xdisp,ydisp);
+		mouse_update(browse);
 		}
 	} else if((event.button == SDL_BUTTON_WHEELUP ||
 		event.button == SDL_BUTTON_WHEELDOWN) && !commands_disabled) {
@@ -995,6 +1003,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 			gui_->scroll(speed,0);
 		else
 			gui_->scroll(0,speed);
+		mouse_update(browse);
 	}
 	if (!dragging_ && dragging_started_) {
 		dragging_started_ = false;
@@ -1458,9 +1467,7 @@ inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
 		current_route_.steps.clear();
 		gui_->set_route(NULL);
 		last_hex_=gamemap::location(-1,-1);
-		int mousex, mousey;
-		SDL_GetMouseState(&mousex, &mousey);
-		mouse_motion(mousex, mousey, true);
+		mouse_update(true);
 		show_attack_options(it);
 		game_events::fire("select",selected_hex_);
 	}
