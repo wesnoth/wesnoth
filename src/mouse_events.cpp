@@ -993,16 +993,14 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		const int speed = preferences::scroll_speed() *
 			(event.button == SDL_BUTTON_WHEELUP ? -1:1);
 
-		const int centerx = gui_->mapx()/2;
-		const int centery = gui_->y()/2;
-
-		const int xdisp = abs(centerx - event.x);
-		const int ydisp = abs(centery - event.y);
-
-		if(xdisp > ydisp)
+		struct CKey pressed;
+		// Shift + mousewheel do a horizontal scroll
+		// This emulates normal-outside-of-SDL Mac OS X behavior
+		if (pressed[SDLK_LSHIFT] || pressed[SDLK_RSHIFT])
 			gui_->scroll(speed,0);
 		else
 			gui_->scroll(0,speed);
+	
 		mouse_update(browse);
 	}
 	if (!dragging_ && dragging_started_) {
