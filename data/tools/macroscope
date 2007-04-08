@@ -7,6 +7,8 @@
 
 import sys, os, time, re, getopt
 
+resource_extensions = ("png", "jpg", "ogg", "wav")
+
 def allfiles(dirpath):
     "Get the names of all files under dirpath, ignoring .svn directories."
     datafiles = []
@@ -35,13 +37,13 @@ class reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Z0-9_])\b")
-    file_reference =  re.compile(r"[A-Za-z0-9.-_/]*\.(png|jpg|ogg)")
+    file_reference =  re.compile(r"(?<==)[^=]*\.{" + "|".join(resource_extensions) + "}")
     def __init__(self, filelist):
         # First, collect macro definitions from the specified filelist."
         self.xref = {}
         self.fileref = {}
         for filename in filelist:
-            if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".ogg"):
+            if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
                 self.fileref[filename] = {} 
             elif iswml(filename):
                 dfp = open(filename)
@@ -112,7 +114,7 @@ class CrossRef:
             print "# No unresolved references"
         else:
             print "# Unresolved references:"
-            for (name, reference) in self.unresolved:
+            for (name, reference) in self.unresolved + self.missing:
                 print "%s at %s" % (name, reference)
 
 if __name__ == "__main__":
