@@ -33,50 +33,69 @@ class reference:
         else:
             return self.filebame
 
-class macro_cross_reference:
+class CrossRef:
+    macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Z0-9_])\b")
+    file_reference =  re.compile(r"[A-Za-z0-9.-_/]*\.(png|jpg|ogg)")
     def __init__(self, filelist):
         # First, collect macro definitions from the specified filelist."
         self.xref = {}
+        self.fileref = {}
         for filename in filelist:
-            dfp = open(filename)
-            for (n, line) in enumerate(dfp):
-                if line.startswith("#define"):
-                    tokens = line.split()
-                    name = tokens[1]
-                    here = reference(filename, n+1)
-                    if name in self.xref:
-                        print >>sys.stderr, "*** Warning: duplicate definition of %s from %s, at %s" \
-                              % (name, self.xref[name][0], here)
-                    self.xref[name] = (here, {})
-            dfp.close()
+            if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".ogg"):
+                self.fileref[filename] = {} 
+            elif iswml(filename):
+                dfp = open(filename)
+                for (n, line) in enumerate(dfp):
+                    if line.startswith("#define"):
+                        tokens = line.split()
+                        name = tokens[1]
+                        here = reference(filename, n+1)
+                        if name in self.xref:
+                            print >>sys.stderr, "*** Warning: duplicate definition of %s from %s, at %s" \
+                                  % (name, self.xref[name][0], here)
+                        self.xref[name] = (here, {})
+                dfp.close()
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
+        self.missing = []
         formals = []
-        for filename in filelist:
-            rfp = open(filename)
-            for (n, line) in enumerate(rfp):
-                if line.startswith("#define"):
-                    formals = line.split()[2:]
-                elif line.startswith("#enddef"):
-                    formals = []
-                if '#' in line:
-                    line = line.split('#')[0]
-                if not line or "{" not in line:
-                    continue
-                for match in re.finditer(r"\{([A-Z_][A-Z0-9_:]*[A-Z0-9_])\b", line):
-                    name = match.group(1)
-                    if name in formals:
+        for fn in filelist:
+            if iswml(fn):
+                rfp = open(fn)
+                for (n, line) in enumerate(rfp):
+                    if line.startswith("#define"):
+                        formals = line.split()[2:]
+                    elif line.startswith("#enddef"):
+                        formals = []
+                    if '#' in line:
+                        line = line.split('#')[0]
+                    if not line or "{" not in line:
                         continue
-                    elif name in self.xref:
-                        namedict = self.xref[name][1]
-                        if filename not in namedict:
-                            namedict[filename] = []
-                        namedict[filename].append(n+1)
-                    else:
-                        self.unresolved.append((name, reference(filename,n+1)))
-            rfp.close()
+                    # Find references to macros
+                    for match in re.finditer(CrossRef.macro_reference, line):
+                        name = match.group(1)
+                        if name in formals:
+                            continue
+                        elif name in self.xref:
+                            namedict = self.xref[name][1]
+                            if fn not in namedict:
+                                namedict[fn] = []
+                            namedict[fn].append(n+1)
+                        else:
+                            self.unresolved.append((name, reference(fn,n+1)))
+                    # Find references to resource files
+                    for match in re.finditer(CrossRef.file_reference, line):
+                        name = match.group(0)
+                        if name in self.fileref:
+                            namedict = self.xref[name]
+                            if fn not in namedict:
+                                namedict[fn] = []
+                            namedict[fn].append(n+1)
+                        else:
+                            self.missing.append((name, reference(fn,n+1)))
+                rfp.close()
     def xrefdump(self, pred=None):
-        "Report resolved references."
+        "Report resolved macro references."
         for (name, (defloc, references)) in self.xref.items():
             if pred and not pred(name, defloc, references):
                 continue
@@ -88,11 +107,11 @@ class macro_cross_reference:
             for (file, linenumbers) in references.items():
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
     def unresdump(self):
-        "Report dangling references."
-        if len(self.unresolved) == 0:
+        "Report unresolved references."
+        if len(self.unresolved) == 0 and len(self.missing) == 0:
             print "# No unresolved references"
         else:
-            print "# Dangling references:"
+            print "# Unresolved references:"
             for (name, reference) in self.unresolved:
                 print "%s at %s" % (name, reference)
 
@@ -139,7 +158,7 @@ Usage: macroscope [options] dirpath
     print "# Directory path:    %s" % dirpath
     files = allfiles(dirpath)
     if crossreference or unresolved:
-        xref = macro_cross_reference(filter(iswml, allfiles(dirpath)))
+        xref = CrossRef(allfiles(dirpath))
         def predicate(name, defloc, references):
             if from_restrict and not defloc.filename.startswith(from_restrict):
                 return False
