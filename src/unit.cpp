@@ -598,15 +598,6 @@ SDL_Colour unit::xp_color() const
   return(colour);
 }
 
-std::vector<Uint32> unit::team_rgb_range() const
-{
-  std::vector<Uint32> temp;
-  temp.push_back(team::get_side_rgb(side()));
-  temp.push_back(team::get_side_rgb_max(side()));
-  temp.push_back(team::get_side_rgb_min(side()));
-  return(temp);
-}
-
 const std::vector<Uint32>& unit::flag_rgb() const {
   return game_config::tc_info(flag_rgb_);
 }
