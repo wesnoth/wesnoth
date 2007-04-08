@@ -7,7 +7,8 @@
 
 import sys, os, time, re, getopt
 
-resource_extensions = ("png", "jpg", "ogg", "wav")
+#resource_extensions = ("png", "jpg", "ogg", "wav")
+resource_extensions = ("ogg", "wav")
 
 def allfiles(dirpath):
     "Get the names of all files under dirpath, ignoring .svn directories."
@@ -33,7 +34,7 @@ class reference:
         if self.line:
             return self.filename + ":" + `self.line`
         else:
-            return self.filebame
+            return self.filename
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Z0-9_])\b")
@@ -44,6 +45,12 @@ class CrossRef:
         self.fileref = {}
         for filename in filelist:
             if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
+                name = os.path.basename(filename)
+                if name in self.fileref:
+                    print >>sys.stderr, "*** Warning: file stem %s from %s is duplicated at %s" \
+                                  % (name, self.fileref[name][0], filename)
+
+
                 self.fileref[os.path.basename(filename)] = (reference(filename), {}) 
             elif iswml(filename):
                 dfp = open(filename)
@@ -71,7 +78,7 @@ class CrossRef:
                         formals = []
                     if '#' in line:
                         line = line.split('#')[0]
-                    if not line or "{" not in line:
+                    if not line:
                         continue
                     # Find references to macros
                     for match in re.finditer(CrossRef.macro_reference, line):
@@ -87,7 +94,7 @@ class CrossRef:
                             self.unresolved.append((name, reference(fn,n+1)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
-                        name = match.group(0)
+                        name = os.path.basename(match.group(0))
                         if name in self.fileref:
                             namedict = self.fileref[name][1]
                             if fn not in namedict:
@@ -108,15 +115,23 @@ class CrossRef:
                 print "Macro %s defined at %s is used in %d files:" % (name, defloc, nrefs)
             for (file, linenumbers) in references.items():
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
+        for (name, (defloc, references)) in self.fileref.items():
+            if pred and not pred(name, defloc, references):
+                continue
+            nrefs = len(references)
+            if nrefs == 0:
+                print "Resource %s defined at %s is unused" % (name, defloc)
+            else:
+                print "Resource %s defined at %s is used in %d files:" % (name, defloc, nrefs)
+            for (file, linenumbers) in references.items():
+                 print "    %s: %s" % (file, `linenumbers`[1:-1])
     def unresdump(self):
         "Report unresolved references."
-        #if len(self.unresolved) == 0 and len(self.missing) == 0:
-        if len(self.unresolved) == 0:
+        if len(self.unresolved) == 0 and len(self.missing) == 0:
             print "# No unresolved references"
         else:
             print "# Unresolved references:"
-            #for (name, reference) in self.unresolved + self.missing:
-            for (name, reference) in self.unresolved:
+            for (name, reference) in self.unresolved + self.missing:
                 print "%s at %s" % (name, reference)
 
 if __name__ == "__main__":
@@ -153,10 +168,10 @@ Usage: macroscope [options] dirpath
         elif switch in ('-r', '--refcount'):
             refcount_restrict = 0
 
-    if len(arguments) != 1:
-        help()
-        sys.exit(1)
-    dirpath = arguments[0].split(";")
+    if len(arguments):
+        dirpath = arguments[0].split(":")
+    else:
+        dirpath = ['.']
     print "# Macroscope reporting on %s" % time.ctime()
     print "# Working directory: %s" % os.getcwd()
     print "# Directory path:    %s" % dirpath
