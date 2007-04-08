@@ -118,6 +118,9 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 		}
 	}
 
+	if(units_== NULL) std::cout<<"ability:"<<ability<<"\n";
+
+
 	wassert(units_ != NULL);
 	wassert(teams_ != NULL);
 	gamemap::location adjacent[6];

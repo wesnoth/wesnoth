@@ -419,7 +419,6 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 				//if a better route to that tile has already been found
 				if(rtit != routes.end() && rtit->second.move_left >= total_movement)
 					continue;
-
 				const bool skirmisher = force_ignore_zocs | u.get_ability_bool("skirmisher",currentloc);
 				const bool zoc = !skirmisher && enemy_zoc(map,units,teams,currentloc, viewing_team,u.side(),see_all);
 				paths::route new_route = routes[loc];
@@ -459,7 +458,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
 		allow_teleport,additional_turns,true,viewing_team, see_all);
 }
 
-int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt)
+int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt,unit_map units, const std::vector<team>& teams)
 {
 	if(rt.steps.empty())
 		return 0;
@@ -470,6 +469,7 @@ int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt)
 		wassert(map.on_board(*i));
 		const int move_cost = u.movement_cost(map[i->x][i->y]);
 		movement -= move_cost;
+
 		if (movement < 0) {
 			++turns;
 			rt.turn_waypoints.insert(std::make_pair(*(i-1), turns));
@@ -478,6 +478,30 @@ int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt)
 				return -1;
 			}
 		}
+
+		if (!u.get_ability_bool("skirmisher",*i)) {
+		  gamemap::location adj[6];
+		  get_adjacent_tiles(*i, adj);
+		  
+		  for (size_t j = 0; j != 6; ++j) {
+		    unit_map::const_iterator
+			 enemy_unit = find_visible_unit(units, adj[j], map, teams, teams[u.side()-1]),
+			 units_end = units.end();
+		    
+		    if (enemy_unit != units_end && teams[u.side()-1].is_enemy(enemy_unit->second.side()) &&
+			   enemy_unit->second.emits_zoc()){
+
+			 ++turns;
+			 rt.turn_waypoints.insert(std::make_pair(*(i), turns));
+			 movement = u.total_movement() - move_cost;
+			 if(movement < 0) {
+			   return -1;
+			}
+
+		    }
+		  }
+		}
+
 	}
 
 	//add "end-of-path" to waypoints.
@@ -507,9 +531,11 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 	//the location is not valid
 	//1. if the loc is shrouded, or
 	//2. if moving in it costs more than the total movement of the unit, or
-	//3. if there is a visible enemy on the hex, or
+	//3. if there is a visible enemy on the hex, or	
 	//4. if the unit is not a skirmisher and there is a visible enemy with
 	//   a ZoC on an adjacent hex in the middle of the route
+	// #4 is a bad criteria!  It should be that moving into a ZOC uses up
+	// the rest of your moves
 
 	if (team_.shrouded(loc.x, loc.y))
 		return getNoPathValue();
@@ -526,18 +552,6 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
 		return getNoPathValue();
 
-	if (!isDst && !unit_.get_ability_bool("skirmisher",loc)) {
-		gamemap::location adj[6];
-		get_adjacent_tiles(loc, adj);
-
-		for (size_t i = 0; i != 6; ++i) {
-			enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, team_);
-
-			if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
-			    enemy_unit->second.emits_zoc())
-				return getNoPathValue();
-		}
-	}
 
 	//compute how many movement points are left in the game turn needed to
 	//reach the previous hex
@@ -550,6 +564,22 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 	//takes 3 movement, it's going to cost us 5 movement in total, since we
 	//sacrifice this turn's movement. Take that into account here.
 	int additional_cost = base_cost > remaining_movement ? remaining_movement : 0;
+
+	if (!isDst && !unit_.get_ability_bool("skirmisher",loc)) {
+		gamemap::location adj[6];
+		get_adjacent_tiles(loc, adj);
+
+		for (size_t i = 0; i != 6; ++i) {
+			enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, team_);
+
+			if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
+			    enemy_unit->second.emits_zoc())
+			  //				return getNoPathValue();
+			  //should cost us all are remaining movement.
+			  return total_movement_ + additional_cost;
+		}
+	}
+
 	return base_cost + additional_cost;
 }
 

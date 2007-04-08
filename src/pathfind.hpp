@@ -110,7 +110,8 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 //return the number of turns it will take the unit to traverse the route.
 //adds "turn waypoints" to rt.turn_waypoints. note that "end of path" is also added.
 int route_turns_to_complete(const unit& u, const gamemap& map,
-                            paths::route& rt);
+                            paths::route& rt, unit_map units,
+					   const std::vector<team>& teams);
 
 struct shortest_path_calculator : cost_calculator
 {
