@@ -2632,15 +2632,6 @@ const t_string& unit::modification_description(const std::string& type) const
 	}
 }
 
-
-const std::string& unit::image_profile() const
-{
-	const std::string& val = cfg_["profile"];
-	if(val.size() == 0)
-		return absolute_image();
-	else
-		return val;
-}
 const std::string& unit::image_fighting(attack_type::RANGE range) const
 {
 	static const std::string short_range("image_short");

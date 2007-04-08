@@ -245,7 +245,6 @@ class unit
 		//the name of the file to display (used in menus
 		const std::string& absolute_image() const { return cfg_["image"]; }
 		const std::string& image_halo() const { return cfg_["halo"]; }
-		const std::string& image_profile() const;
 		const std::string& image_fighting(attack_type::RANGE range) const;
 		const std::string& image_healing() const;
 		const std::string& image_halo_healing() const { return cfg_["image_halo_healing"]; }
