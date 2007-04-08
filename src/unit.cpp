@@ -618,16 +618,6 @@ void unit::set_movement(int moves)
 	movement_ = maximum<int>(0,minimum<int>(moves,max_movement_));
 }
 
-void unit::end_unit_turn()
-{
-//	wassert("not done" == "done");
-	if(movement_ == total_movement()) {
-		movement_ = 0;
-		set_state("not_moved","yes");
-	} else if(movement_ >= 0) {
-		movement_ = 0;
-	}
-}
 void unit::new_turn()
 {
 	end_turn_ = false;

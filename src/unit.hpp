@@ -118,7 +118,6 @@ class unit
 		void set_movement(int moves);
 		void set_attacks(int left) { attacks_left_ = maximum<int>(0,minimum<int>(left,max_attacks_)); }
 		void unit_hold_position() { hold_position_ = end_turn_ = true; }
-		void end_unit_turn();
 		void new_turn();
 		void end_turn();
 		void new_level();
