@@ -27,6 +27,14 @@
 #include "wassert.hpp"
 #include "wml_separators.hpp"
 
+#ifndef SDL_BUTTON_WHEELLEFT
+#define SDL_BUTTON_WHEELLEFT 6
+#endif
+
+#ifndef SDL_BUTTON_WHEELRIGHT
+#define SDL_BUTTON_WHEELRIGHT 7
+#endif
+
 namespace events{
 
 int commands_disabled = 0;
@@ -927,6 +935,8 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 {
 	show_menu_ = false;
 	mouse_update(browse);
+	int scrollx = 0;
+	int scrolly = 0;
 
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
@@ -988,21 +998,27 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		gui_->scroll(xdisp,ydisp);
 		mouse_update(browse);
 		}
-	} else if((event.button == SDL_BUTTON_WHEELUP ||
-		event.button == SDL_BUTTON_WHEELDOWN) && !commands_disabled) {
-		const int speed = preferences::scroll_speed() *
-			(event.button == SDL_BUTTON_WHEELUP ? -1:1);
-
+	} else if (event.button == SDL_BUTTON_WHEELUP) {
+		scrolly = - preferences::scroll_speed();
+	} else if (event.button == SDL_BUTTON_WHEELDOWN) {
+		scrolly = preferences::scroll_speed();
+ 	} else if (event.button == SDL_BUTTON_WHEELLEFT) {
+		scrollx = - preferences::scroll_speed();
+  	} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
+		scrollx = preferences::scroll_speed();
+	}
+	
+	if (scrollx != 0 || scrolly != 0) {
 		struct CKey pressed;
-		// Shift + mousewheel do a horizontal scroll
-		// This emulates normal-outside-of-SDL Mac OS X behavior
+		// Alt + mousewheel do an 90° rotation on the scroll direction
 		if (pressed[SDLK_LALT] || pressed[SDLK_RALT])
-			gui_->scroll(speed,0);
+			gui_->scroll(scrolly,scrollx);
 		else
-			gui_->scroll(0,speed);
+			gui_->scroll(scrollx,scrolly);
 	
 		mouse_update(browse);
 	}
+	
 	if (!dragging_ && dragging_started_) {
 		dragging_started_ = false;
 		cursor::set_dragging(false);

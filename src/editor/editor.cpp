@@ -47,6 +47,14 @@
 #include <string>
 #include <cmath>
 
+#ifndef SDL_BUTTON_WHEELLEFT
+#define SDL_BUTTON_WHEELLEFT 6
+#endif
+
+#ifndef SDL_BUTTON_WHEELRIGHT
+#define SDL_BUTTON_WHEELRIGHT 7
+#endif
+
 namespace {
 	const int num_players = gamemap::STARTING_POSITIONS - 1;
 	// Milliseconds to sleep in every iteration of the main loop.
@@ -324,6 +332,8 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
                                            const int mousex, const int mousey) {
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		const Uint8 button = event.button;
+		int scrollx = 0;
+		int scrolly = 0;
 		if (button == SDL_BUTTON_RIGHT) {
 			selected_hex_ = gui_.hex_clicked_on(mousex, mousey);
 			const theme::menu* const m = gui_.get_theme().context_menu();
@@ -356,24 +366,25 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 			const int ydisp = mousey - centery;
 			gui_.scroll(xdisp, ydisp);
 		}
-		if(button == SDL_BUTTON_WHEELUP ||
-		   button == SDL_BUTTON_WHEELDOWN) {
-			if (point_in_rect(mousex, mousey, gui_.map_area())) {
-				const int speed = preferences::scroll_speed() *
-					(button == SDL_BUTTON_WHEELUP ? -1 : 1);
-
-				const int centerx = gui_.mapx() / 2;
-				const int centery = gui_.y() / 2;
-
-				const int xdisp = abs(centerx - mousex);
-				const int ydisp = abs(centery - mousey);
-
-				if(xdisp > ydisp)
-					gui_.scroll(speed,0);
-				else
-					gui_.scroll(0,speed);
-			}
+		if (event.button == SDL_BUTTON_WHEELUP) {
+			scrolly = - preferences::scroll_speed();
+		} else if (event.button == SDL_BUTTON_WHEELDOWN) {
+			scrolly = preferences::scroll_speed();
+ 		} else if (event.button == SDL_BUTTON_WHEELLEFT) {
+			scrollx = - preferences::scroll_speed();
+  		} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
+			scrollx = preferences::scroll_speed();
 		}
+
+		if (scrollx != 0 || scrolly != 0) {
+		struct CKey pressed;
+		// Alt + mousewheel do an 90° rotation on the scroll direction
+		if (pressed[SDLK_LALT] || pressed[SDLK_RALT])
+			gui_.scroll(scrolly,scrollx);
+		else
+			gui_.scroll(scrollx,scrolly);
+		}
+		
 	}
 	if (event.type == SDL_MOUSEBUTTONUP) {
 		// If we miss the mouse up event we need to perform the actual
