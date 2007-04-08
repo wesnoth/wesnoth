@@ -690,30 +690,35 @@ void play_controller::play_slice()
 	tooltips::process(mousex, mousey);
 
 	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
-	bool scrolling = false;
+	bool was_scrolling = scrolling_;
+	scrolling_ = false;
 
 	if((key[SDLK_UP] && !menu_handler_.get_textbox().active()) || mousey < scroll_threshold) {
 		gui_->scroll(0,-preferences::scroll_speed());
-		scrolling = true;
+		scrolling_ = true;
 	}
 
 	if((key[SDLK_DOWN] && !menu_handler_.get_textbox().active()) || mousey > gui_->y()-scroll_threshold) {
 		gui_->scroll(0,preferences::scroll_speed());
-		scrolling = true;
+		scrolling_ = true;
 	}
 
 	if((key[SDLK_LEFT] && !menu_handler_.get_textbox().active()) || mousex < scroll_threshold) {
 		gui_->scroll(-preferences::scroll_speed(),0);
-		scrolling = true;
+		scrolling_ = true;
 	}
 
 	if((key[SDLK_RIGHT] && !menu_handler_.get_textbox().active()) || mousex > gui_->x()-scroll_threshold) {
 		gui_->scroll(preferences::scroll_speed(),0);
-		scrolling = true;
+		scrolling_ = true;
 	}
 
 	gui_->draw();
-	if(! scrolling) {
+	if (!scrolling_) {
+		if (was_scrolling) {
+			// scrolling ended, update the cursor and the brightened hex
+			mouse_handler_.mouse_update(browse_);	
+		}
 		gui_->delay(20);
 	}
 
