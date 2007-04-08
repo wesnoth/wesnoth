@@ -37,14 +37,14 @@ class reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Z0-9_])\b")
-    file_reference =  re.compile(r"(?<==)[^=]*\.{" + "|".join(resource_extensions) + "}")
+    file_reference =  re.compile(r"\b[A-Za-z0-9][A-Za-z0-9/-]*\.(" + "|".join(resource_extensions) + ")")
     def __init__(self, filelist):
         # First, collect macro definitions from the specified filelist."
         self.xref = {}
         self.fileref = {}
         for filename in filelist:
             if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
-                self.fileref[filename] = {} 
+                self.fileref[os.path.basename(filename)] = (reference(filename), {}) 
             elif iswml(filename):
                 dfp = open(filename)
                 for (n, line) in enumerate(dfp):
@@ -89,7 +89,7 @@ class CrossRef:
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
                         if name in self.fileref:
-                            namedict = self.xref[name]
+                            namedict = self.fileref[name][1]
                             if fn not in namedict:
                                 namedict[fn] = []
                             namedict[fn].append(n+1)
@@ -110,11 +110,13 @@ class CrossRef:
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
     def unresdump(self):
         "Report unresolved references."
-        if len(self.unresolved) == 0 and len(self.missing) == 0:
+        #if len(self.unresolved) == 0 and len(self.missing) == 0:
+        if len(self.unresolved) == 0:
             print "# No unresolved references"
         else:
             print "# Unresolved references:"
-            for (name, reference) in self.unresolved + self.missing:
+            #for (name, reference) in self.unresolved + self.missing:
+            for (name, reference) in self.unresolved:
                 print "%s at %s" % (name, reference)
 
 if __name__ == "__main__":
