@@ -996,7 +996,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		struct CKey pressed;
 		// Shift + mousewheel do a horizontal scroll
 		// This emulates normal-outside-of-SDL Mac OS X behavior
-		if (pressed[SDLK_LSHIFT] || pressed[SDLK_RSHIFT])
+		if (pressed[SDLK_LALT] || pressed[SDLK_RALT])
 			gui_->scroll(speed,0);
 		else
 			gui_->scroll(0,speed);
