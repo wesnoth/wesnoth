@@ -712,8 +712,8 @@ void attack(display& gui, const gamemap& map,
 		LOG_NG << "firing attack event\n";
 		dat.add_child("first");
 		dat.add_child("second");
-		(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
-		(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
+		(*(dat.child("first")))["weapon"]=a_stats.weapon->id();
+		(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->id() : "none";
 		game_events::fire("attack",attacker,defender,dat);
 		//the event could have killed either the attacker or
 		//defender, so we have to make sure they still exist
@@ -730,8 +730,8 @@ void attack(display& gui, const gamemap& map,
 	dat.clear();
 	dat.add_child("first");
 	dat.add_child("second");
-	(*(dat.child("first")))["weapon"]=a_stats->weapon->name();
-	(*(dat.child("second")))["weapon"]=d_stats->weapon != NULL ? d_stats->weapon->name() : "none";
+	(*(dat.child("first")))["weapon"]=a_stats->weapon->id();
+	(*(dat.child("second")))["weapon"]=d_stats->weapon != NULL ? d_stats->weapon->id() : "none";
 
 	LOG_NG << "getting attack statistics\n";
 

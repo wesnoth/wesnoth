@@ -375,7 +375,7 @@ int show_dialog(display& disp, surface image,
 	}
 
 #ifdef USE_TINY_GUI
-	const int max_menu_width = 150;
+	const int max_menu_width = 300;
 #else
 	const int max_menu_width = -1;
 #endif

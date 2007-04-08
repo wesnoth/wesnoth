@@ -1026,8 +1026,10 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		const gamemap::location& attack_from = current_unit_attacks_from(hex, nearest_hex, second_nearest_hex);
 		if(attack_from.valid()) {
 			if(move_unit_along_current_route(false)) { //move the unit without updating shroud
+				// a WML event could have invalidated both attacker and defender
+				// so make sure they're valid before attacking 
 				u = find_unit(attack_from);
-				// enemy = find_unit(hex);
+				enemy = find_unit(hex);
 				if(u != units_.end() && u->second.side() == team_num_ &&
 					enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
 					//if shroud or fog is active, rememember nits a and after attack check if someone isn`t seen

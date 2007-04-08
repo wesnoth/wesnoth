@@ -55,6 +55,7 @@ int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 std::string image_mask;
 
 #ifdef USE_TINY_GUI
+// images in tiny-gui will be scaled at install time
 const int tile_size = 36;
 #else
 const int tile_size = 72;
