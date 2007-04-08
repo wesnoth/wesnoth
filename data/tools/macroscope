@@ -38,20 +38,26 @@ class reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Z0-9_])\b")
-    file_reference =  re.compile(r"\b[A-Za-z0-9][A-Za-z0-9/-]*\.(" + "|".join(resource_extensions) + ")")
+    file_reference =  re.compile(r"\b[A-Za-z0-9][A-Za-z0-9/+-]*\.(" + "|".join(resource_extensions) + ")")
     def __init__(self, filelist):
         # First, collect macro definitions from the specified filelist."
         self.xref = {}
         self.fileref = {}
         for filename in filelist:
             if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
-                name = os.path.basename(filename)
-                if name in self.fileref:
-                    print >>sys.stderr, "*** Warning: file stem %s from %s is duplicated at %s" \
-                                  % (name, self.fileref[name][0], filename)
-
-
-                self.fileref[os.path.basename(filename)] = (reference(filename), {}) 
+                # The rule we're applying here is:
+                # 1) If it's a sound file, its name is the part of
+                #    the path after "sound/" or "music/".
+                # 2) If it's an image file, its name is the part of
+                #    the path after "images/".
+                (root, ext) = os.path.splitext(filename)
+                if ext in (".ogg", ".wav"):
+                    for superdir in ("music", "sounds"):
+                        foundit = filename.find(superdir)
+                        if foundit > -1:
+                            name = filename[foundit:]
+                            name = name[len(superdir)+1:]
+                self.fileref[name] = (reference(filename), {}) 
             elif iswml(filename):
                 dfp = open(filename)
                 for (n, line) in enumerate(dfp):
@@ -94,7 +100,7 @@ class CrossRef:
                             self.unresolved.append((name, reference(fn,n+1)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
-                        name = os.path.basename(match.group(0))
+                        name = match.group(0)
                         if name in self.fileref:
                             namedict = self.fileref[name][1]
                             if fn not in namedict:
