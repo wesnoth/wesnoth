@@ -7,8 +7,7 @@
 
 import sys, os, time, re, getopt
 
-#resource_extensions = ("png", "jpg", "ogg", "wav")
-resource_extensions = ("ogg", "wav")
+resource_extensions = ("png", "jpg", "ogg", "wav")
 
 def allfiles(dirpath):
     "Get the names of all files under dirpath, ignoring .svn directories."
@@ -37,8 +36,8 @@ class reference:
             return self.filename
 
 class CrossRef:
-    macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Z0-9_])\b")
-    file_reference =  re.compile(r"\b[A-Za-z0-9][A-Za-z0-9/+-]*\.(" + "|".join(resource_extensions) + ")")
+    macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Za-z0-9_])\b")
+    file_reference =  re.compile(r"[A-Za-z0-9{}][A-Za-z0-9_/+{}-]*\.(" + "|".join(resource_extensions) + ")")
     def __init__(self, filelist):
         # First, collect macro definitions from the specified filelist."
         self.xref = {}
@@ -47,7 +46,7 @@ class CrossRef:
             if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
                 # The rule we're applying here is:
                 # 1) If it's a sound file, its name is the part of
-                #    the path after "sound/" or "music/".
+                #    the path after "sounds/" or "music/".
                 # 2) If it's an image file, its name is the part of
                 #    the path after "images/".
                 (root, ext) = os.path.splitext(filename)
@@ -57,6 +56,11 @@ class CrossRef:
                         if foundit > -1:
                             name = filename[foundit:]
                             name = name[len(superdir)+1:]
+                elif ext in (".png", ".jpg"):
+                    foundit = filename.find("images")
+                    if foundit > -1:
+                        name = filename[foundit:]
+                        name = name[len("images")+1:]                    
                 self.fileref[name] = (reference(filename), {}) 
             elif iswml(filename):
                 dfp = open(filename)
@@ -101,8 +105,22 @@ class CrossRef:
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
+                        key = None
                         if name in self.fileref:
-                            namedict = self.fileref[name][1]
+                            key = name
+                        else:
+                            # Here is where we implement the funky rules
+                            # for image resolution.  If we can't identify
+                            # a reference to the image name under an image
+                            # directory, look for it under an image/units
+                            # or image/terrain directory.
+                            for super in ("units", "terrain", "portraits", "items"):
+                                trial = os.path.join(super, name)
+                                if trial in self.fileref:
+                                    key = trial
+                                    break
+                        if key:
+                            namedict = self.fileref[key][1]
                             if fn not in namedict:
                                 namedict[fn] = []
                             namedict[fn].append(n+1)
@@ -136,6 +154,7 @@ class CrossRef:
         if len(self.unresolved) == 0 and len(self.missing) == 0:
             print "# No unresolved references"
         else:
+            #print self.fileref.keys()
             print "# Unresolved references:"
             for (name, reference) in self.unresolved + self.missing:
                 print "%s at %s" % (name, reference)
