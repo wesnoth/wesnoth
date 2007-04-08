@@ -98,7 +98,6 @@ class unit
 		bool unrenamable() const { return unrenamable_; }
 		unsigned int side() const { return side_; }
 		Uint32 team_rgb() const { return(team::get_side_rgb(side())); }
-		const std::vector<Uint32>& flag_rgb() const;
 		const std::string& team_color() const { return flag_rgb_; }
 		unit_race::GENDER gender() const { return gender_; }
 		void set_side(unsigned int new_side) { side_ = new_side; }

@@ -598,10 +598,6 @@ SDL_Colour unit::xp_color() const
   return(colour);
 }
 
-const std::vector<Uint32>& unit::flag_rgb() const {
-  return game_config::tc_info(flag_rgb_);
-}
-
 void unit::set_movement(int moves)
 {
 	hold_position_ = false;
