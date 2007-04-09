@@ -2149,22 +2149,19 @@ void display::invalidate_all()
 void display::invalidate_animations()
 {
 	new_animation_frame();
-	bool animate_flags = false;
 	gamemap::location topleft;
 	gamemap::location bottomright;
 	get_visible_hex_bounds(topleft, bottomright);
 
-	for(size_t i = 0; i < flags_.size(); ++i) {
-		if(flags_[i].need_update()) {
-			animate_flags = true;
-		}
-	}
-
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
 			gamemap::location loc(x,y);
-			if(builder_.update_animation(loc) || (map_.is_village(loc) && animate_flags && player_teams::village_owner(loc) != -1)) {
+			if (builder_.update_animation(loc))
 				invalidate(loc);
+			if (map_.is_village(loc)) {
+				const int owner = player_teams::village_owner(loc);
+				if (owner >= 0 && flags_[owner].need_update())
+					invalidate(loc);
 			}
 		}
 	}
