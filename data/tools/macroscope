@@ -21,7 +21,7 @@
 # in the set of input trees.
 #
 # (3) A reference with embedded {}s in a macro will have the macro's
-# formal args subtituted in at WML evaluation time.  Instead, this
+# formal args substituted in at WML evaluation time.  Instead, this
 # tool treats each {} as a .* wildcard and considers the reference to
 # match *every* resource filename that matches that pattern.  Under
 # appropriate circumstances this might report a resource filename
