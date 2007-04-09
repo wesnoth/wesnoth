@@ -2155,13 +2155,15 @@ void display::invalidate_animations()
 
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
-			gamemap::location loc(x,y);
-			if (builder_.update_animation(loc))
-				invalidate(loc);
-			if (map_.is_village(loc)) {
-				const int owner = player_teams::village_owner(loc);
-				if (owner >= 0 && flags_[owner].need_update())
+			if (!shrouded(x,y)) {
+				gamemap::location loc(x,y);
+				if (builder_.update_animation(loc)) {
 					invalidate(loc);
+				} else if (map_.is_village(loc)) {
+					const int owner = player_teams::village_owner(loc);
+					if (owner >= 0 && flags_[owner].need_update())
+						invalidate(loc);
+				}
 			}
 		}
 	}
