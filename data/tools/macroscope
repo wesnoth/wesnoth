@@ -4,6 +4,34 @@
 #
 # By Eric S. Raymond April 2007.
 # (Yes, this *is* named after an ancient Piers Anthony novel.)
+#
+# The reference-checking done by this tool has a couple of flaws:
+#
+# (1) It doesn't know about the specialness of utils directories.
+# Properly speaking, at any given point macroexpansion should be able
+# to see only definitions already seen in in the current file or in
+# files under a relevant utils directory (and I'm not actually sure of
+# the rules about which utils files are supposed to be visible when).
+# Instead, any macro definition from anywhere in the set of input
+# trees can be used to satisfy a reference.
+#
+# (2) It doesn't read [binary_path] tags, as this would require
+# implementing a WML parser.  Instead, it assumes that a resource-file
+# reference can be satisfied by any matching image file from anywhere
+# in the set of input trees.
+#
+# (3) A reference with embedded {}s in a macro will have the macro's
+# formal args subtituted in at WML evaluation time.  Instead, this
+# tool treats each {} as a .* wildcard and considers the reference to
+# match *every* resource filename that matches that pattern.  Under
+# appropriate circumstances this might report a resource filename
+# statically matching the pattern as having been referenced even
+# though none of the actual macro calls would actually generate it.
+#
+# Problems (1) and (2) imply that this tool might conceivably report
+# that a reference has been satisfied when under actual
+# WML-interpreter rules it has not.  The reverse will not occur.
+#
 
 import sys, os, time, re, getopt
 
@@ -118,37 +146,47 @@ class CrossRef:
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
-                        key = None
+                        # If name is already in our resource list, it's easy.
                         if name in self.fileref:
-                            key = name
+                            self.fileref[name].append(fn, n+1)
+                            continue
+                        # If the name contains subtitutable parts, count
+                        # it as a reference to everything the substitutions
+                        # could potentially match.
+                        elif '{' in name:
+                            pattern = re.sub(r"\{[^}]*\}", '.*', name)
+                            pattern = re.compile("^" + pattern + "$")
+                            key = None
+                            for trial in self.fileref:
+                                if pattern.match(trial):
+                                    key = trial
+                                    self.fileref[key].append(fn, n+1)
                         else:
                             key = self.imagesearch(name)
-                        if key:
-                            self.fileref[key].append(fn, n+1)
-                        else:
+                        if not key:
                             self.missing.append((name, reference(fn,n+1)))
                 rfp.close()
     def xrefdump(self, pred=None):
         "Report resolved macro references."
-        for (name, (defloc, references)) in self.xref.items():
-            if pred and not pred(name, defloc, references):
+        for (name, defloc) in self.xref.items():
+            if pred and not pred(name, defloc):
                 continue
-            nrefs = len(references)
+            nrefs = len(defloc.references)
             if nrefs == 0:
                 print "Macro %s defined at %s is unused" % (name, defloc)
             else:
                 print "Macro %s defined at %s is used in %d files:" % (name, defloc, nrefs)
-            for (file, linenumbers) in references.items():
+            for (file, linenumbers) in defloc.references.items():
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
-        for (name, (defloc, references)) in self.fileref.items():
-            if pred and not pred(name, defloc, references):
+        for (name, defloc) in self.fileref.items():
+            if pred and not pred(name, defloc):
                 continue
-            nrefs = len(references)
+            nrefs = len(defloc.references)
             if nrefs == 0:
                 print "Resource %s defined at %s is unused" % (name, defloc)
             else:
                 print "Resource %s defined at %s is used in %d files:" % (name, defloc, nrefs)
-            for (file, linenumbers) in references.items():
+            for (file, linenumbers) in defloc.references.items():
                  print "    %s: %s" % (file, `linenumbers`[1:-1])
     def unresdump(self):
         "Report unresolved references."
@@ -204,10 +242,10 @@ Usage: macroscope [options] dirpath
     files = allfiles(dirpath)
     if crossreference or unresolved:
         xref = CrossRef(allfiles(dirpath))
-        def predicate(name, defloc, references):
+        def predicate(name, defloc):
             if from_restrict and not defloc.filename.startswith(from_restrict):
                 return False
-            if refcount_restrict!=None and len(references)!=refcount_restrict:
+            if refcount_restrict!=None and len(defloc.references)!=refcount_restrict:
                 return False
             return True
         if crossreference:
