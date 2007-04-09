@@ -212,7 +212,13 @@ namespace dfool {
 	//	unit_memory_.known_map(known_units, get_info().state.turn());
 	unit_memory_.known_map(known_units, 0);
 
+	std::cout<<"known units:\n";
+	for(unit_map::const_iterator uu = known_units.begin();uu!=known_units.end();uu++){
+	  std::cout<<"\t"<<uu->second.underlying_description()<<" "<<uu->first<<"\n";
+	}
+
 	calculate_moves(known_units,possible_moves,srcdst,dstsrc,false,false,NULL,true);
+
 	int closest_distance = -1;
 	std::pair<location,location> closest_move;
 
@@ -221,13 +227,26 @@ namespace dfool {
 	  //must restrict move_map to only unit that is moving.
 	  if(i->second==m->first){
 	    const int distance = distance_between(target,i->first);
+	    //	    int distance=10000; 
+	    //	    std::cout<<"got here\n";
+	    //	    const shortest_path_calculator calc(m->second, current_team(),known_units,get_info().teams,get_info().map);
+	    //std::cout<<"got here2\n";
+	    //paths::route route = a_star_search(m->first, target, 1000.0, &calc,
+	    //get_info().map.x(), get_info().map.y());
+	    //	    std::cout<<"got here3\n";
+	    
+	    //	    distance = route_turns_to_complete(m->second, get_info().map, route, known_units, get_info().teams) + distance_between(target,i->first)/100;
+	    
 	    if(closest_distance == -1 || distance < closest_distance) {
-	      closest_distance = distance;
-	      closest_move = *i;
+			  closest_distance = distance;
+			  closest_move = *i;
 	    }
-	    //            LOG_STREAM(info, ai)<<"\tmoving: "<<distance<<" from ("<<i->first.x<<","<<i->first.y<<")"<<" to ("<<target.x<<","<<target.y<<")"<<std::endl;
 	  }
 	}
+	
+	LOG_STREAM(info, ai)<<"\tmoving : "<< m->second.underlying_description() <<" "<<" from ("<<closest_move.first.x<<","<<closest_move.first.y<<")"<<" to ("<<target.x<<","<<target.y<<")"<<std::endl;
+	LOG_STREAM(info, ai)<<"\tdistance: "<<closest_distance<<"\n";
+
 	if(closest_distance != -1) {
 	  gamemap::location to = move_unit_partial(closest_move.second,closest_move.first,possible_moves);
 	  if(to != closest_move.second)

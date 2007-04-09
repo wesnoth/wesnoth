@@ -264,16 +264,18 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 		//units, so they shouldn't get a description either.
 		custom_unit_description_ = generate_description();
 		generate_traits();
-		underlying_description_ = description_;
 	}else{
-		underlying_description_ = id();
 		if (race_->name() == "undead") {
 			generate_traits();
 		}
 	}
 	if(underlying_description_.empty()){
 	  char buf[80];
-	  sprintf(buf,"%s-%d",type()->id().c_str(),(SDL_GetTicks()));
+	  if(custom_unit_description_.empty()){
+	    sprintf(buf,"%s-%d-%s",type()->id().c_str(),(SDL_GetTicks()), custom_unit_description_.c_str());
+	  }else{
+	    sprintf(buf,"%s-%d",type()->id().c_str(),(SDL_GetTicks()));
+	  }
 	  underlying_description_ = buf;
 	}
 
@@ -306,16 +308,18 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 		//units, so they shouldn't get a description either.
 		custom_unit_description_ = generate_description();
 		generate_traits();
-		underlying_description_ = description_;
 	}else{
-		underlying_description_ = id();
 		if (race_->name() == "undead") {
 			generate_traits();
 		}
 	}
 	if(underlying_description_.empty()){
 	  char buf[80];
-	  sprintf(buf,"%s-%d",type()->id().c_str(),(SDL_GetTicks()));
+	  if(custom_unit_description_.empty()){
+	    sprintf(buf,"%s-%d-%s",type()->id().c_str(),(SDL_GetTicks()), custom_unit_description_.c_str());
+	  }else{
+	    sprintf(buf,"%s-%d",type()->id().c_str(),(SDL_GetTicks()));
+	  }
 	  underlying_description_ = buf;
 	}
 

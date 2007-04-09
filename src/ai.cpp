@@ -425,15 +425,20 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 				    to = *(steps.end()-1);
 				    steps.pop_back();
 				    LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
-	
 			}
 
 			if(steps.empty() == false) {
-
+			  unit_map::const_iterator utest=info_.units.find(*(steps.begin()+1));
+			  if(utest != info_.units.end() && current_team().is_enemy(utest->second.side())){
+			    LOG_STREAM(err, ai) << "AI tried to move onto existing enemy unit at"<<*(steps.begin())<<"\n";
+			    //			    return(from);
+			  }
+			  
 				//check if there are any invisible units that we uncover
 				for(std::vector<location>::iterator i = steps.begin()+1; i != steps.end(); ++i) {
 					location adj[6];
 					get_adjacent_tiles(*i,adj);
+
 					size_t n;
 					for(n = 0; n != 6; ++n) {
 

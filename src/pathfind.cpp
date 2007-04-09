@@ -410,8 +410,11 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 					--new_turns_left;
 					new_move_left = u.total_movement() - move_cost;
 				}
+				const bool skirmisher = force_ignore_zocs | u.get_ability_bool("skirmisher",currentloc);
+				const bool zoc = !skirmisher && enemy_zoc(map,units,teams,currentloc, viewing_team,u.side(),see_all);
 
-				const int total_movement = new_turns_left * u.total_movement() + new_move_left;
+				const int zoc_move_left = zoc ? 0 : new_move_left;
+				const int total_movement = new_turns_left * u.total_movement() + zoc_move_left;
 
 				const std::map<gamemap::location,paths::route>::const_iterator
 					rtit = routes.find(currentloc);
@@ -419,12 +422,9 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 				//if a better route to that tile has already been found
 				if(rtit != routes.end() && rtit->second.move_left >= total_movement)
 					continue;
-				const bool skirmisher = force_ignore_zocs | u.get_ability_bool("skirmisher",currentloc);
-				const bool zoc = !skirmisher && enemy_zoc(map,units,teams,currentloc, viewing_team,u.side(),see_all);
 				paths::route new_route = routes[loc];
 				new_route.steps.push_back(loc);
 
-				const int zoc_move_left = zoc ? 0 : new_move_left;
 				new_route.move_left = u.total_movement() * new_turns_left + zoc_move_left;
 				routes[currentloc] = new_route;
 
@@ -552,7 +552,6 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
 		return getNoPathValue();
 
-
 	//compute how many movement points are left in the game turn needed to
 	//reach the previous hex
 	//total_movement_ is not zero, thanks to the pathfinding heuristic
@@ -566,18 +565,18 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 	int additional_cost = base_cost > remaining_movement ? remaining_movement : 0;
 
 	if (!isDst && !unit_.get_ability_bool("skirmisher",loc)) {
-		gamemap::location adj[6];
-		get_adjacent_tiles(loc, adj);
-
-		for (size_t i = 0; i != 6; ++i) {
-			enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, team_);
-
-			if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
-			    enemy_unit->second.emits_zoc())
-			  //				return getNoPathValue();
-			  //should cost us all are remaining movement.
-			  return total_movement_ + additional_cost;
-		}
+	  gamemap::location adj[6];
+	  get_adjacent_tiles(loc, adj);
+	  
+	  for (size_t i = 0; i != 6; ++i) {
+	    enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, team_);
+	    if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
+		   enemy_unit->second.emits_zoc()){
+		 //should cost us remaining movement.
+		 //		 return getNoPathValue();
+		 return total_movement_ + additional_cost;
+	    }
+	  }
 	}
 
 	return base_cost + additional_cost;
