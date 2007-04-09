@@ -153,10 +153,10 @@ namespace{
 		Uint32 blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop);
 	};
 
-	const int battle_prediction_pane::inter_line_gap_ = 3;
-	const int battle_prediction_pane::inter_column_gap_ = 30;
-	const int battle_prediction_pane::inter_units_gap_ = 30;
-	const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
+	const int battle_prediction_pane::inter_line_gap_ = 2;
+	const int battle_prediction_pane::inter_column_gap_ = 10;
+	const int battle_prediction_pane::inter_units_gap_ = 10;
+	const int battle_prediction_pane::max_hp_distrib_rows_ = 5;
 
 	battle_prediction_pane::battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
 												   const std::vector<team>& teams, const unit_map& units,
@@ -189,8 +189,8 @@ namespace{
 
 		attacker_label_ = _("Attacker");
 		defender_label_ = _("Defender");
-		attacker_label_width_ = font::line_width(attacker_label_, font::SIZE_PLUS, TTF_STYLE_BOLD);
-		defender_label_width_ = font::line_width(defender_label_, font::SIZE_PLUS, TTF_STYLE_BOLD);
+		attacker_label_width_ = font::line_width(attacker_label_, font::SIZE_SMALL, TTF_STYLE_BOLD);
+		defender_label_width_ = font::line_width(defender_label_, font::SIZE_SMALL, TTF_STYLE_BOLD);
 
 		// Get the units strings.
 		get_unit_strings(attacker_stats, attacker_, attacker_loc_, attacker_combatant.untouched,
@@ -204,7 +204,7 @@ namespace{
 						 defender_left_strings_width_, defender_right_strings_width_, defender_strings_width_);
 
 		units_strings_height_ = maximum<int>(attacker_left_strings_.size(), defender_left_strings_.size())
-							    * (font::SIZE_NORMAL + inter_line_gap_) + 14;
+							    * (font::SIZE_SMALL + inter_line_gap_) + 14;
 
 		hp_distrib_string_ = _("Expected Battle Result (HP)");
 		hp_distrib_string_width_ = font::line_width(hp_distrib_string_, font::SIZE_SMALL);
@@ -333,7 +333,7 @@ namespace{
 			}
 
 			// Total damage.
-			left_strings.push_back(_("Total damage"));
+			left_strings.push_back(_("Total"));
 			str.str("");
 			str << stats.damage << "-" << stats.num_blows << " (" << stats.chance_to_hit << "%)";
 			right_strings.push_back(str.str());
@@ -345,7 +345,7 @@ namespace{
 		}
 
 		// Unscathed probability.
-		left_strings.push_back(_("Chance of being unscathed"));
+		left_strings.push_back(_("Unscathed"));
 		snprintf(str_buf, 10, "%.1f%%", (float) (u_unscathed * 100.0));
 		str_buf[9] = '\0';  //prevents _snprintf error
 		right_strings.push_back(str_buf);
@@ -439,46 +439,46 @@ namespace{
 		int y_off = 15;
 
 		// Draw unit label.
-		font::draw_text_line(&screen, clip_rect, font::SIZE_15, font::NORMAL_COLOUR, label,
+		font::draw_text_line(&screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, label,
 							 clip_rect.x + x_off + (units_width_ - label_width) / 2, clip_rect.y + y_off, 0, TTF_STYLE_BOLD);
 
-		y_off += 24;
+		y_off += 14;
 
 		// Draw unit left and right strings except the last two (total damage and unscathed probability).
 		for(i = 0; i < (int) left_strings.size() - 2; i++) {
-			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_strings[i],
-								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
+			font::draw_text_line(&screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, left_strings[i],
+								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_SMALL + inter_line_gap_) * i,
 								 0, TTF_STYLE_NORMAL);
 
-			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_strings[i],
+			font::draw_text_line(&screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, right_strings[i],
 								 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
-								 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
+								 clip_rect.y + y_off + (font::SIZE_SMALL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
 		}
 
 		// Ensure both damage lines are aligned.
-		y_off += damage_line_skip * (font::SIZE_NORMAL + inter_line_gap_) + 14;
+		y_off += damage_line_skip * (font::SIZE_SMALL + inter_line_gap_) + 14;
 
 		// Draw total damage and unscathed probability.
 		for(i = 0; i < 2; i++) {
 			const std::string& left_string = left_strings[left_strings.size() - 2 + i];
 			const std::string& right_string = right_strings[right_strings.size() - 2 + i];
 
-			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_string,
-								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
+			font::draw_text_line(&screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, left_string,
+								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_SMALL + inter_line_gap_) * i,
 								 0, TTF_STYLE_NORMAL);
 
-			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_string,
+			font::draw_text_line(&screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, right_string,
 								 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
-								 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
+								 clip_rect.y + y_off + (font::SIZE_SMALL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
 		}
 
-		y_off += 2 * (font::SIZE_NORMAL + inter_line_gap_) + 14;
+		y_off += 2 * (font::SIZE_SMALL+ inter_line_gap_) + 5;
 
 		// Draw hitpoints distribution string.
 		font::draw_text(&screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, hp_distrib_string_,
 						clip_rect.x + x_off + (units_width_ - hp_distrib_string_width_) / 2, clip_rect.y + y_off);
 
-		y_off += 19;
+		y_off += 10;
 
 		// Draw hitpoints distributions.
 		video().blit_surface(clip_rect.x + x_off + (units_width_ - hp_distrib_width) / 2, clip_rect.y + y_off, hp_distrib);
@@ -496,13 +496,13 @@ namespace{
 		int hp_sep = 24 + 6;
 
 		// Bar space between both separators.
-		int bar_space = 150;
+		int bar_space = 50;
 
 		// Space after percentage separator.
 		int percent_sep = 43 + 6;
 
 		// Surface width and height.
-		width = 30 + 2 + bar_space + 2 + percent_sep;
+		width = 2 + bar_space + 2 + percent_sep;
 		height = 5 + (fs + 2) * hp_prob_vector.size();
 
 		// Create the surface.
