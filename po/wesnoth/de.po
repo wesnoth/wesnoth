@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-02 22:38+0200\n"
+"POT-Creation-Date: 2007-04-10 23:00+0200\n"
 "PO-Revision-Date: 2007-02-14 18:48+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -12118,7 +12118,7 @@ msgstr ""
 "benötigten Dateien."
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:387
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Zeitlimit der Verbindung überschritten"
 
@@ -12190,15 +12190,15 @@ msgstr ""
 "Euer gewählter Name ist zu lang. Bitte wählt einen Namen, der weniger als 18 "
 "Zeichen lang ist."
 
-#: src/game.cpp:1232 src/playcampaign.cpp:90 src/playcampaign.cpp:346
+#: src/game.cpp:1232 src/playcampaign.cpp:90 src/playcampaign.cpp:358
 msgid "The game could not be loaded: "
 msgstr "Der Spielstand konnte nicht geladen werden: "
 
-#: src/game.cpp:1234 src/playcampaign.cpp:92 src/playcampaign.cpp:349
+#: src/game.cpp:1234 src/playcampaign.cpp:92 src/playcampaign.cpp:361
 msgid "Error while playing the game: "
 msgstr "Fehler beim Spielen: "
 
-#: src/game.cpp:1246 src/playcampaign.cpp:94 src/playcampaign.cpp:352
+#: src/game.cpp:1246 src/playcampaign.cpp:94 src/playcampaign.cpp:364
 msgid "The game map could not be loaded: "
 msgstr "Die Karte konnte nicht geladen werden: "
 
@@ -12543,7 +12543,7 @@ msgstr "Ausgaben"
 msgid "Income"
 msgstr "Einkommen"
 
-#: src/menu_events.cpp:390 src/playcampaign.cpp:319 src/playcampaign.cpp:475
+#: src/menu_events.cpp:390 src/playcampaign.cpp:329 src/playcampaign.cpp:474
 msgid "Name:"
 msgstr "Name:"
 
@@ -12568,11 +12568,11 @@ msgstr "Gespeichert"
 msgid "The game has been saved"
 msgstr "Der Spielstand wurde gespeichert"
 
-#: src/menu_events.cpp:408 src/playcampaign.cpp:327 src/playcampaign.cpp:485
+#: src/menu_events.cpp:408 src/playcampaign.cpp:337 src/playcampaign.cpp:484
 msgid "The game could not be saved"
 msgstr "Der Spielstand konnte nicht gespeichert werden"
 
-#: src/menu_events.cpp:498 src/menu_events.cpp:500 src/play_controller.cpp:666
+#: src/menu_events.cpp:498 src/menu_events.cpp:500 src/play_controller.cpp:667
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Autospeichern"
@@ -12812,19 +12812,19 @@ msgstr "Keine verwendbare Waffe"
 msgid "Chance of being unscathed"
 msgstr "Chance, ungeschoren davonzukommen"
 
-#: src/mouse_events.cpp:649 src/mouse_events.cpp:1259
+#: src/mouse_events.cpp:649 src/mouse_events.cpp:1261
 msgid "Damage Calculations"
 msgstr "Schadensberechnung"
 
-#: src/mouse_events.cpp:1242 src/reports.cpp:282
+#: src/mouse_events.cpp:1244 src/reports.cpp:282
 msgid "vs"
 msgstr "gegen"
 
-#: src/mouse_events.cpp:1270
+#: src/mouse_events.cpp:1272
 msgid "Attack Enemy"
 msgstr "Gegner angreifen"
 
-#: src/mouse_events.cpp:1271
+#: src/mouse_events.cpp:1273
 msgid "Choose weapon:"
 msgstr "Waffe auswählen:"
 
@@ -13211,7 +13211,7 @@ msgstr "Beenden"
 msgid "Skip quickly to the active turn when observing"
 msgstr "Springt im Beobachtermodus schnellstmöglich zur aktiven Runde"
 
-#: src/multiplayer_ui.cpp:98
+#: src/multiplayer_ui.cpp:115
 msgid "Invalid Color"
 msgstr "Ungültige Farbe"
 
@@ -13251,60 +13251,60 @@ msgstr "Der Sockel konnte zum Sockelsatz nicht hinzugefügt werden."
 msgid "Could not send initial handshake"
 msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
-#: src/play_controller.cpp:375 src/playsingle_controller.cpp:348
+#: src/play_controller.cpp:376 src/playsingle_controller.cpp:348
 #: src/playsingle_controller.cpp:394
 msgid "The file you have tried to load is corrupt"
 msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
 
-#: src/play_controller.cpp:670
+#: src/play_controller.cpp:671
 msgid "Back to start"
 msgstr "Zurück zum Anfang"
 
-#: src/play_controller.cpp:672
+#: src/play_controller.cpp:673
 msgid "Back to turn "
 msgstr "Zurück zu Runde "
 
-#: src/playcampaign.cpp:296
-msgid "Defeat"
-msgstr "Niederlage"
-
-#: src/playcampaign.cpp:297
-msgid "You have been defeated!"
-msgstr "Ihr wurdet vernichtend geschlagen!"
-
-#: src/playcampaign.cpp:310
-msgid " replay"
-msgstr " Spielverlauf"
-
-#: src/playcampaign.cpp:318
-msgid "Do you want to save a replay of this scenario?"
-msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
-
-#: src/playcampaign.cpp:359
+#: src/playcampaign.cpp:112
 msgid "Autosaves"
 msgstr "Automatisch gespeicherte Spielstände"
 
-#: src/playcampaign.cpp:360
+#: src/playcampaign.cpp:113
 msgid "Do you want to delete the autosaves of this scenario?"
 msgstr ""
 "Möchtet Ihr die automatisch gespeicherten Spielstände dieses Szenarios "
 "löschen?"
 
-#: src/playcampaign.cpp:378
+#: src/playcampaign.cpp:304
+msgid "Defeat"
+msgstr "Niederlage"
+
+#: src/playcampaign.cpp:305
+msgid "You have been defeated!"
+msgstr "Ihr wurdet vernichtend geschlagen!"
+
+#: src/playcampaign.cpp:320
+msgid " replay"
+msgstr " Spielverlauf"
+
+#: src/playcampaign.cpp:328
+msgid "Do you want to save a replay of this scenario?"
+msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
+
+#: src/playcampaign.cpp:377
 msgid "Receiving data..."
 msgstr "Empfange Spieldaten..."
 
-#: src/playcampaign.cpp:380
+#: src/playcampaign.cpp:379
 msgid "Downloading next scenario..."
 msgstr "Nächstes Szenario wird geladen..."
 
-#: src/playcampaign.cpp:474
+#: src/playcampaign.cpp:473
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
 "Möchtet Ihr diesen Spielstand abspeichern? (Überschreibt automatisch "
 "gespeicherte Spielstände)"
 
-#: src/playcampaign.cpp:501
+#: src/playcampaign.cpp:500
 msgid "Unknown scenario: '"
 msgstr "Unbekanntes Szenario: '"
 

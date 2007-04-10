@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-02 22:38+0200\n"
+"POT-Creation-Date: 2007-04-10 23:00+0200\n"
 "PO-Revision-Date: 2007-04-06 17:22+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -11436,7 +11436,7 @@ msgstr ""
 "kampanj."
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:387
+#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
@@ -11508,15 +11508,15 @@ msgstr ""
 "Loginnamnet du har valt är för långt. Var snäll och välj ett namn med färre "
 "än 18 tecken"
 
-#: src/game.cpp:1232 src/playcampaign.cpp:90 src/playcampaign.cpp:346
+#: src/game.cpp:1232 src/playcampaign.cpp:90 src/playcampaign.cpp:358
 msgid "The game could not be loaded: "
 msgstr "Spelet kunde inte öppnas: "
 
-#: src/game.cpp:1234 src/playcampaign.cpp:92 src/playcampaign.cpp:349
+#: src/game.cpp:1234 src/playcampaign.cpp:92 src/playcampaign.cpp:361
 msgid "Error while playing the game: "
 msgstr "Fel under spel: "
 
-#: src/game.cpp:1246 src/playcampaign.cpp:94 src/playcampaign.cpp:352
+#: src/game.cpp:1246 src/playcampaign.cpp:94 src/playcampaign.cpp:364
 msgid "The game map could not be loaded: "
 msgstr "Kartan kunde inte öppnas: "
 
@@ -11855,7 +11855,7 @@ msgstr "Underhåll"
 msgid "Income"
 msgstr "Inkomst"
 
-#: src/menu_events.cpp:390 src/playcampaign.cpp:319 src/playcampaign.cpp:475
+#: src/menu_events.cpp:390 src/playcampaign.cpp:329 src/playcampaign.cpp:474
 msgid "Name:"
 msgstr "Namn:"
 
@@ -11880,11 +11880,11 @@ msgstr "Sparat"
 msgid "The game has been saved"
 msgstr "Spelet har sparats"
 
-#: src/menu_events.cpp:408 src/playcampaign.cpp:327 src/playcampaign.cpp:485
+#: src/menu_events.cpp:408 src/playcampaign.cpp:337 src/playcampaign.cpp:484
 msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
-#: src/menu_events.cpp:498 src/menu_events.cpp:500 src/play_controller.cpp:666
+#: src/menu_events.cpp:498 src/menu_events.cpp:500 src/play_controller.cpp:667
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Autosparat"
@@ -12107,19 +12107,19 @@ msgstr "Inget användbart vapen"
 msgid "Chance of being unscathed"
 msgstr "Chans att komma oskadad undan"
 
-#: src/mouse_events.cpp:649 src/mouse_events.cpp:1259
+#: src/mouse_events.cpp:649 src/mouse_events.cpp:1261
 msgid "Damage Calculations"
 msgstr "Skadeberäkning"
 
-#: src/mouse_events.cpp:1242 src/reports.cpp:282
+#: src/mouse_events.cpp:1244 src/reports.cpp:282
 msgid "vs"
 msgstr "mot"
 
-#: src/mouse_events.cpp:1270
+#: src/mouse_events.cpp:1272
 msgid "Attack Enemy"
 msgstr "Anfall fiende"
 
-#: src/mouse_events.cpp:1271
+#: src/mouse_events.cpp:1273
 msgid "Choose weapon:"
 msgstr "Välj vapen: "
 
@@ -12501,7 +12501,7 @@ msgstr "Avsluta"
 msgid "Skip quickly to the active turn when observing"
 msgstr "Hoppa till aktivt drag som observatör"
 
-#: src/multiplayer_ui.cpp:98
+#: src/multiplayer_ui.cpp:115
 msgid "Invalid Color"
 msgstr "Ogiltig färg"
 
@@ -12541,56 +12541,56 @@ msgstr "Kunde inte lägga till sockel till sockellistan"
 msgid "Could not send initial handshake"
 msgstr "Kunde inte utföra handskakning"
 
-#: src/play_controller.cpp:375 src/playsingle_controller.cpp:348
+#: src/play_controller.cpp:376 src/playsingle_controller.cpp:348
 #: src/playsingle_controller.cpp:394
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/play_controller.cpp:670
+#: src/play_controller.cpp:671
 msgid "Back to start"
 msgstr "Tillbaka till början"
 
-#: src/play_controller.cpp:672
+#: src/play_controller.cpp:673
 msgid "Back to turn "
 msgstr "Tillbaka till drag "
 
-#: src/playcampaign.cpp:296
-msgid "Defeat"
-msgstr "Nederlag"
-
-#: src/playcampaign.cpp:297
-msgid "You have been defeated!"
-msgstr "Du har förlorat!"
-
-#: src/playcampaign.cpp:310
-msgid " replay"
-msgstr " repris"
-
-#: src/playcampaign.cpp:318
-msgid "Do you want to save a replay of this scenario?"
-msgstr "Vill du spara en repris för detta scenario?"
-
-#: src/playcampaign.cpp:359
+#: src/playcampaign.cpp:112
 msgid "Autosaves"
 msgstr "Autosparade spel"
 
-#: src/playcampaign.cpp:360
+#: src/playcampaign.cpp:113
 msgid "Do you want to delete the autosaves of this scenario?"
 msgstr "Vill du radera de autosparade utgångspunkterna för detta scenario?"
 
-#: src/playcampaign.cpp:378
+#: src/playcampaign.cpp:304
+msgid "Defeat"
+msgstr "Nederlag"
+
+#: src/playcampaign.cpp:305
+msgid "You have been defeated!"
+msgstr "Du har förlorat!"
+
+#: src/playcampaign.cpp:320
+msgid " replay"
+msgstr " repris"
+
+#: src/playcampaign.cpp:328
+msgid "Do you want to save a replay of this scenario?"
+msgstr "Vill du spara en repris för detta scenario?"
+
+#: src/playcampaign.cpp:377
 msgid "Receiving data..."
 msgstr "Tar emot data..."
 
-#: src/playcampaign.cpp:380
+#: src/playcampaign.cpp:379
 msgid "Downloading next scenario..."
 msgstr "Hämtar nästa scenario..."
 
-#: src/playcampaign.cpp:474
+#: src/playcampaign.cpp:473
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Vill du spara ditt spel? (Detta raderar autosparade spel)"
 
-#: src/playcampaign.cpp:501
+#: src/playcampaign.cpp:500
 msgid "Unknown scenario: '"
 msgstr "Okänt scenario: '"
 
