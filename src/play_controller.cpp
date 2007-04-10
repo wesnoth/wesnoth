@@ -69,6 +69,7 @@ void play_controller::init(CVideo& video){
 	recorder.set_skip(false);
 
 	const config::child_list& unit_cfg = level_.get_children("side");
+	bool snapshot = level_["snapshot"] == "yes";
 
 	if(level_["modify_placing"] == "true") {
 		LOG_NG << "modifying placing...\n";
@@ -86,7 +87,7 @@ void play_controller::init(CVideo& video){
 		if (first_human_team_ == -1){
 			first_human_team_ = get_first_human_team(ui, unit_cfg);
 		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_, status_);
+		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_, status_, snapshot);
 	}
 
 	preferences::encounter_recruitable_units(teams_);

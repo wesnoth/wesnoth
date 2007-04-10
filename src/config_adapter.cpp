@@ -42,7 +42,7 @@ std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_sav
 	return save_id;
 }
 
-void get_player_info(const config& cfg, game_state& gamestate, std::string save_id, std::vector<team>& teams, const config& level, const game_data& gameinfo, gamemap& map, unit_map& units, gamestatus& game_status){
+void get_player_info(const config& cfg, game_state& gamestate, std::string save_id, std::vector<team>& teams, const config& level, const game_data& gameinfo, gamemap& map, unit_map& units, gamestatus& game_status, bool snapshot){
 	player_info *player = NULL;
 
 	if(cfg["controller"] == "human" ||
@@ -143,6 +143,14 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 
 	//if there are additional starting units on this side
 	const config::child_list& starting_units = cfg.get_children("unit");
+	//available_units has been filled by loading the [player]-section already. However, we need
+	//to get the information from the snapshot so we start from scratch here. This is rather a
+	//quick hack, originating from keeping changes as minimal as possible for 1.2. Moving [player]
+	//into [replay_start] should be the correct way to go.
+	if (player && snapshot){
+		player->available_units.clear();
+	}
+	//backwards compatibility code for 1.2/1.2.1
 	if ( (starting_units.begin() != starting_units.end()) && player && (gamestate.version < "1.2.2") ){
 		player->available_units.clear();
 	}
