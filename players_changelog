@@ -9,14 +9,23 @@ Version 1.3.1+svn:
         permanently and all the other riders that find you will be
         computer-controlled.
       * Updated images for Delfador.
+      * Added defense and melee attack animations for the Dark Queen.
       * Made the narrator talk about gryphons at the end of Northern Winter only
         if the player has actually gotten the eggs.
     * The Rise of Wesnoth
       * 'Temple in the Deep' often crashed when the Lich killed a unit.
+      * Added a hint about how to unstone the lich in 'Fallen Lich Point'.
+    * The South Guard
+      * Fixed a bug that caused some dialogue spoken by Mal M'Brin not appear.
+      * Changed the placement and duration of story images.
+      * Some graphical enhancements including a new portrait for Ethiliel.
+      * Fixed Ethiliel not showing up in 'Vengeance'.
     * Tutorial
       * Updated all unit images that are used in the tutorial to fit the
-        originals used in httt.
+        originals used in HttT.
       * Increased number of turns from 20 to 26 in the 2nd scenario.
+    * Made some bogus units, such as invisible helper units and duplicates of
+      the desert elves, not appear in the unit help anymore.
 
   * Graphics
     * Added the --max-fps command line switch.
@@ -43,20 +52,26 @@ Version 1.3.1+svn:
     * Decreased the holy resistance of the Hurricane Drake from 20% to -30%.
     * Decreased the holy resistance of the Mermaid Priestess from 40% to 20%.
     * Decreased the holy resistance of the Mermaid Diviner from 60% to 40%.
+    * Decreased the holy resistance of dwarves from 20% to 10%.
+    * Increased the holy resistance of the Ghost line from -60% to -30%.
+    * Enabled the Lich and Ancient Lich to move and submerge in in deep water.
 
   * User interface:
     * Interface actions such as pressing a button, toggling a checkbox or
       opening a menu (among others) will now emit small sounds.
     * If deprecated WML is being encountered and error message will be shown,
       this way creators of WML code can be easily informed about the problems.
-    * Show total amount of visible villages.
+    * Made the total amount of visible villages be shown in the villages panel.
     * The numeric pad Enter key should now behave exactly like Return.
-    * added drag & drop to move units
-    * mousewheel scroll vertically but horizontally if alt is pressed
+    * Enabled drag & drop to be used for moving units.
+    * Mousewheel now by default scrolls vertically, and horizontally if alt is
+      pressed.
+
   * Language and translations
     * Updated translations: Bulgarian, Czech, Danish, Dutch, French, German,
       Greek, Hungarian, Italian, Norwegian, Portuguese (Brazil).
     * New translations: Indonesian
+    * Observers can again save a replay of the observed game.
 
   * Multiplayer:
     * Maps
@@ -78,6 +93,7 @@ Version 1.3.1+svn:
     * Fixed autosaves not getting deleted for last campaign scenario and
       multiplayer.
     * Fixed beginning-of-scenario saves containing scenario WML.
+
 
 Version 1.3.1:
   * Campaigns
