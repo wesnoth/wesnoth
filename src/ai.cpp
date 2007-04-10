@@ -1542,10 +1542,12 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 	const std::map<t_translation::t_letter, size_t>& terrain = 
 		map_.get_weighted_terrain_frequencies();
 
-	for(std::map<t_translation::t_letter, size_t>::const_iterator j = terrain.begin(); 
-			j != terrain.end(); ++j) {
-
-		defense += a.movement_type().defense_modifier(map_,j->first)*j->second;
+	for (std::map<t_translation::t_letter, size_t>::const_iterator j = terrain.begin(),
+	     j_end = terrain.end(); j != j_end; ++j)
+	{
+		// Skip unreachable tiles when computing the average defense.
+		if (a.movement_type().movement_cost(map_, j->first) >= 10) continue;
+		defense += a.movement_type().defense_modifier(map_, j->first) * j->second;
 		weighting_sum += j->second;
 	}
 
@@ -1555,12 +1557,33 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 
 	int sum = 0, weight_sum = 0;
 
+	bool steadfast = a.has_ability_by_id("steadfast");
+	bool living = !a.not_living();
 	const std::vector<attack_type>& attacks = b.attacks();
-	for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
-		const int resistance = a.movement_type().resistance_against(*i);
-		const int weight = i->damage() * i->num_attacks();
-		sum += defense*resistance*weight;
+	for (std::vector<attack_type>::const_iterator i = attacks.begin(),
+	     i_end = attacks.end(); i != i_end; ++i)
+	{
+		int resistance = a.movement_type().resistance_against(*i);
+		// Apply steadfast resistance modifier.
+		if (steadfast && resistance < 100)
+			resistance = maximum<int>(resistance * 2 - 100, 50);
+		// Do not look for filters or values, simply assume 70% if CTH is customized.
+		int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
+		int weight = i->damage() * i->num_attacks();
+		sum += cth * resistance * weight;
 		weight_sum += weight;
+		if (living && i->get_special_bool("poison", true)) {
+			// Compute the probability of not poisoning the unit.
+			int prob = 10000; // directly with the same unit as "cth * resistance"
+			for (int j = 0; j < i->num_attacks(); ++j)
+				prob = prob * (100 - cth) / 100;
+			// Assume poison works one turn.
+			int poison_damage = game_config::poison_amount * (10000 - prob);
+			// As poison works irrespective of the resistance, its relative
+			// damage (and hence weight) is "poison_damage / (cth * resistance)".
+			sum += poison_damage;
+			weight_sum += poison_damage / (cth * resistance);
+		}
 	}
 
 	// catch division by zero here if the attacking unit
@@ -1611,9 +1634,11 @@ void ai::analyze_potential_recruit_combat()
 				continue;
 			}
 
-			weighting += j->second.cost();
+			unit const &un = j->second;
+			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
+			weighting += weight;
 			score += compare_unit_types(info->second,
-					gameinfo_.unit_types.find(j->second.id())->second)*j->second.cost();
+				gameinfo_.unit_types.find(un.id())->second) * weight;
 		}
 
 		if(weighting != 0) {
