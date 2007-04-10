@@ -1,4 +1,4 @@
-# translation of wesnoth-man.po to Български
+# translation of bg.po to Български
 # Bulgarian translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 #
@@ -6,15 +6,16 @@
 # Nikolay Vladimirov <nikolay@vladimiroff.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-man\n"
+"Project-Id-Version: bg\n"
 "POT-Creation-Date: 2007-03-07 14:54+0100\n"
-"PO-Revision-Date: 2007-03-29 23:50+0300\n"
+"PO-Revision-Date: 2007-04-10 22:16+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -905,9 +906,8 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
-#, fuzzy
 msgid "The number of allowed connections from the same IP. (default: 5)"
-msgstr "Броят позволени връзки от един и същ IP адрес."
+msgstr "Броят позволени връзки от един и същ IP адрес. (по подразбиране: 5)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:91
@@ -936,9 +936,9 @@ msgstr "B<max_messages>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:100
-#, fuzzy
 msgid "The number of allowed messages in B<messages_time_period>. (default: 4)"
-msgstr "Броят позволени съобщения за  B<messages_time_period>."
+msgstr ""
+"Броят позволени съобщения за  B<messages_time_period>. (по подразбиране: 4)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:100
@@ -948,12 +948,12 @@ msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: 10 "
 "seconds)"
 msgstr ""
-"Периода от време(в секунди) за който се засича наводнение от съобщения."
+"Периода от време(в секунди) за който се засича наводнение от съобщения. (по "
+"подразбиране 10 секунди)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
@@ -989,14 +989,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Списък на разделени с запетая версии, които са позволени от сървъра. "
-"Поддържат се `*' и `?' за създаване на шаблони. "
+"Поддържат се `*' и `?' за създаване на шаблони. (по подразбиране е "
+"съответстващата версия на уеснот)"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:115
