@@ -575,19 +575,28 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 
 double ai::power_projection(const gamemap::location& loc,  const move_map& dstsrc, bool use_terrain) const
 {
-	static gamemap::location used_locs[6];
-	static double ratings[6];
+	gamemap::location used_locs[6];
+	int ratings[6];
 	int num_used_locs = 0;
 
-	static gamemap::location locs[6];
+	gamemap::location locs[6];
 	get_adjacent_tiles(loc,locs);
 
 	const int lawful_bonus = state_.get_time_of_day().lawful_bonus;
 
-	double res = 0.0;
+	int res = 0;
 
-	for(int i = 0; i != 6; ++i) {
-		if(map_.on_board(locs[i]) == false) {
+	bool changed = false;
+	for (int i = 0;; ++i) {
+		if (i == 6) {
+			if (!changed) break;
+			// Loop once again, in case a unit found a better
+			// spot and freed the place for another unit.
+			changed = false;
+			i = 0;
+		}
+
+		if (map_.on_board(locs[i]) == false) {
 			continue;
 		}
 
@@ -600,87 +609,70 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 		gamemap::location* const beg_used = used_locs;
 		gamemap::location* end_used = used_locs + num_used_locs;
 
-		double best_rating = 0.0;
+		int best_rating = 0;
 		gamemap::location best_unit;
 
-		for(int n = 0; n != 2; ++n) {
-			for(Itor it = its.first; it != its.second; ++it) {
-				if(std::find(beg_used,end_used,it->second) != end_used) {
-					continue;
+		for(Itor it = its.first; it != its.second; ++it) {
+			const unit_map::const_iterator u = units_.find(it->second);
+
+			//unit might have been killed, and no longer exist
+			if(u == units_.end()) {
+				continue;
+			}
+
+			const unit& un = u->second;
+
+			int tod_modifier = 0;
+			if(un.alignment() == unit_type::LAWFUL) {
+				tod_modifier = lawful_bonus;
+			} else if(un.alignment() == unit_type::CHAOTIC) {
+				tod_modifier = -lawful_bonus;
+			}
+
+			int hp = un.hitpoints() * 1000 / un.max_hitpoints();
+			int most_damage = 0;
+			for(std::vector<attack_type>::const_iterator att =
+			    un.attacks().begin(); att != un.attacks().end(); ++att) {
+				int damage = att->damage() * att->num_attacks() *
+				             (100 + tod_modifier);
+				if(damage > most_damage) {
+					most_damage = damage;
 				}
+			}
 
-				const unit_map::const_iterator u = units_.find(it->second);
-
-				//unit might have been killed, and no longer exist
-				if(u == units_.end()) {
-					continue;
-				}
-
-				const unit& un = u->second;
-
-				int tod_modifier = 0;
-				if(un.alignment() == unit_type::LAWFUL) {
-					tod_modifier = lawful_bonus;
-				} else if(un.alignment() == unit_type::CHAOTIC) {
-					tod_modifier = -lawful_bonus;
-				}
-
-				const double hp = double(un.hitpoints())/
-				                  double(un.max_hitpoints());
-				int most_damage = 0;
-				for(std::vector<attack_type>::const_iterator att =
-				    un.attacks().begin(); att != un.attacks().end(); ++att) {
-					const int damage = (att->damage()*att->num_attacks()*(100+tod_modifier))/100;
-					if(damage > most_damage) {
-						most_damage = damage;
-					}
-				}
-
-				const bool village = map_.is_village(terrain);
-				const double village_bonus = (use_terrain && village) ? 1.5 : 1.0;
-
-				const double defense = use_terrain ? double(100 - un.defense_modifier(terrain))/100.0 : 0.5;
-				const double rating = village_bonus*hp*defense*double(most_damage);
-				if(rating > best_rating) {
+			int village_bonus = use_terrain && map_.is_village(terrain) ? 3 : 2;
+			int defense = use_terrain ? 100 - un.defense_modifier(terrain) : 50;
+			int rating = hp * defense * most_damage * village_bonus / 200;
+			if(rating > best_rating) {
+				gamemap::location *pos = std::find(beg_used, end_used, it->second);
+				// Check if the spot is the same or better than an older one.
+				if (pos == end_used || rating >= ratings[pos - beg_used]) {
 					best_rating = rating;
 					best_unit = it->second;
 				}
 			}
-
-			//if this is the second time through, then we are looking at a unit
-			//that has already been used, but for whom we may have found
-			//a better position to attack from
-			if(n == 1 && best_unit.valid()) {
-				end_used = beg_used + num_used_locs;
-				gamemap::location* const pos = std::find(beg_used,end_used,best_unit);
-				const int index = pos - beg_used;
-				if(best_rating >= ratings[index]) {
-					res -= ratings[index];
-					res += best_rating;
-					used_locs[index] = best_unit;
-					ratings[index] = best_rating;
-				}
-
-				best_unit = gamemap::location();
-				break;
-			}
-
-			if(best_unit.valid()) {
-				break;
-			}
-
-			end_used = beg_used;
 		}
 
-		if(best_unit.valid()) {
-			used_locs[num_used_locs] = best_unit;
-			ratings[num_used_locs] = best_rating;
+		if (!best_unit.valid()) continue;
+		gamemap::location *pos = std::find(beg_used, end_used, best_unit);
+		int index = pos - beg_used;
+		if (index == num_used_locs)
 			++num_used_locs;
-			res += best_rating;
+		else if (best_rating == ratings[index])
+			continue;
+		else {
+			// The unit was in another spot already, so remove its older
+			// rating from the final result and require a new run to fill
+			// its old spot.
+			res -= ratings[index];
+			changed = true;
 		}
+		used_locs[index] = best_unit;
+		ratings[index] = best_rating;
+		res += best_rating;
 	}
 
-	return res;
+	return res / 100000.;
 }
 
 // There is no real hope for us: we should try to do some damage to the enemy.
