@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-17 20:06+0100\n"
+"POT-Creation-Date: 2007-04-10 22:58+0200\n"
 "PO-Revision-Date: 2005-12-23 16:01+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -24,87 +24,87 @@ msgstr "Szerkeszt"
 msgid "Settings"
 msgstr "Beállítások"
 
-#: src/editor/editor.cpp:235
+#: src/editor/editor.cpp:243
 msgid "Draw tiles"
 msgstr "Megrajzolás"
 
-#: src/editor/editor.cpp:237
+#: src/editor/editor.cpp:245
 msgid "Fill"
 msgstr "Kitöltés"
 
-#: src/editor/editor.cpp:239
+#: src/editor/editor.cpp:247
 msgid "Set player's starting position"
 msgstr "Játékos kezdőhelyének megadása"
 
-#: src/editor/editor.cpp:241
+#: src/editor/editor.cpp:249
 msgid "Zoom in"
 msgstr "Ráközelítés"
 
-#: src/editor/editor.cpp:243
+#: src/editor/editor.cpp:251
 msgid "Zoom out"
 msgstr "Távolítás"
 
-#: src/editor/editor.cpp:245
+#: src/editor/editor.cpp:253
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: src/editor/editor.cpp:247
+#: src/editor/editor.cpp:255
 msgid "Redo"
 msgstr "Megismétlés"
 
-#: src/editor/editor.cpp:249
+#: src/editor/editor.cpp:257
 msgid "Zoom to default view"
 msgstr "Közelítés alapbeállításra"
 
-#: src/editor/editor.cpp:251
+#: src/editor/editor.cpp:259
 msgid "Toggle grid"
 msgstr "Rács átkapcsolása"
 
-#: src/editor/editor.cpp:253
+#: src/editor/editor.cpp:261
 msgid "Resize the map"
 msgstr "Pálya átméretezése"
 
-#: src/editor/editor.cpp:255
+#: src/editor/editor.cpp:263
 msgid "Flip map"
 msgstr "Pálya tükrözése"
 
-#: src/editor/editor.cpp:456
+#: src/editor/editor.cpp:467
 msgid "Language"
 msgstr "Nyelv"
 
-#: src/editor/editor.cpp:457
+#: src/editor/editor.cpp:468
 msgid "Choose your preferred language:"
 msgstr "Leginkább megfelelő nyelv kiválasztása:"
 
-#: src/editor/editor.cpp:471 src/editor/editor_main.cpp:253
+#: src/editor/editor.cpp:482 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Harc Wesnoth-ért Pályaszerkesztő"
 
-#: src/editor/editor.cpp:495
+#: src/editor/editor.cpp:506
 msgid "Save the Map As"
 msgstr "Mentés másként"
 
-#: src/editor/editor.cpp:506
+#: src/editor/editor.cpp:517
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "A pálya már létezik. Felül akarod írni?"
 
-#: src/editor/editor.cpp:529 src/editor/editor.cpp:1348
+#: src/editor/editor.cpp:540 src/editor/editor.cpp:1359
 msgid "Player"
 msgstr "Játékos"
 
-#: src/editor/editor.cpp:532
+#: src/editor/editor.cpp:543
 msgid "Which Player?"
 msgstr "Melyik játékos?"
 
-#: src/editor/editor.cpp:533
+#: src/editor/editor.cpp:544
 msgid "Which player should start here?"
 msgstr "Melyik játékos kezdjen itt?"
 
-#: src/editor/editor.cpp:584
+#: src/editor/editor.cpp:595
 msgid "Choose a Map to Load"
 msgstr "Válaszd ki a betöltendő pályát"
 
-#: src/editor/editor.cpp:588
+#: src/editor/editor.cpp:599
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -112,31 +112,31 @@ msgstr ""
 "Hiba: A pálya neve nem felhasználható karaktereket tartalmaz. Kérlek, "
 "válassz egy másik nevet!"
 
-#: src/editor/editor.cpp:601 src/editor/editor.cpp:675
+#: src/editor/editor.cpp:612 src/editor/editor.cpp:686
 msgid "The file does not contain a valid map."
 msgstr "A fájl nem tartalmaz érvényes pályát"
 
-#: src/editor/editor.cpp:958
+#: src/editor/editor.cpp:969
 msgid "You must have a hex selected on the board."
 msgstr "Ki kell jelölnöd egy hatszöget a táblán"
 
-#: src/editor/editor.cpp:1215
+#: src/editor/editor.cpp:1226
 msgid "Quit Editor"
 msgstr "Kilépés a szerkesztőből"
 
-#: src/editor/editor.cpp:1220
+#: src/editor/editor.cpp:1231
 msgid "Do you want to save the map before quitting?"
 msgstr "El akarod menteni a pályát kilépés előtt?"
 
-#: src/editor/editor.cpp:1268
+#: src/editor/editor.cpp:1279
 msgid "Map saved."
 msgstr "Pálya sikeresen elmentve"
 
-#: src/editor/editor.cpp:1277
+#: src/editor/editor.cpp:1288
 msgid "Could not save the map: $msg"
 msgstr "A pályát nem lehet elmenteni: $msg"
 
-#: src/editor/editor.cpp:1292
+#: src/editor/editor.cpp:1303
 msgid "Error: Illegal character in filename."
 msgstr "Hiba: A fájlnév érvénytelen karaktert tartalmaz."
 

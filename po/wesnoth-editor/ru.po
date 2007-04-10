@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-02-17 20:06+0100\n"
+"POT-Creation-Date: 2007-04-10 22:58+0200\n"
 "PO-Revision-Date: 2007-02-10 00:46+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -40,87 +40,87 @@ msgstr "Правка"
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/editor/editor.cpp:235
+#: src/editor/editor.cpp:243
 msgid "Draw tiles"
 msgstr "Рисовать ячейки"
 
-#: src/editor/editor.cpp:237
+#: src/editor/editor.cpp:245
 msgid "Fill"
 msgstr "Заполнить"
 
-#: src/editor/editor.cpp:239
+#: src/editor/editor.cpp:247
 msgid "Set player's starting position"
 msgstr "Установить начальные позиции игроков"
 
-#: src/editor/editor.cpp:241
+#: src/editor/editor.cpp:249
 msgid "Zoom in"
 msgstr "Увеличить"
 
-#: src/editor/editor.cpp:243
+#: src/editor/editor.cpp:251
 msgid "Zoom out"
 msgstr "Уменьшить"
 
-#: src/editor/editor.cpp:245
+#: src/editor/editor.cpp:253
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/editor/editor.cpp:247
+#: src/editor/editor.cpp:255
 msgid "Redo"
 msgstr "Повторить"
 
-#: src/editor/editor.cpp:249
+#: src/editor/editor.cpp:257
 msgid "Zoom to default view"
 msgstr "Размер по умолчанию"
 
-#: src/editor/editor.cpp:251
+#: src/editor/editor.cpp:259
 msgid "Toggle grid"
 msgstr "Включить сетку"
 
-#: src/editor/editor.cpp:253
+#: src/editor/editor.cpp:261
 msgid "Resize the map"
 msgstr "Изменить размер карты"
 
-#: src/editor/editor.cpp:255
+#: src/editor/editor.cpp:263
 msgid "Flip map"
 msgstr "Перебросить карту"
 
-#: src/editor/editor.cpp:456
+#: src/editor/editor.cpp:467
 msgid "Language"
 msgstr "Язык"
 
-#: src/editor/editor.cpp:457
+#: src/editor/editor.cpp:468
 msgid "Choose your preferred language:"
 msgstr "Выберите предпочтительный язык:"
 
-#: src/editor/editor.cpp:471 src/editor/editor_main.cpp:253
+#: src/editor/editor.cpp:482 src/editor/editor_main.cpp:253
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Битва за Веснот: Редактор карт"
 
-#: src/editor/editor.cpp:495
+#: src/editor/editor.cpp:506
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
-#: src/editor/editor.cpp:506
+#: src/editor/editor.cpp:517
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Карта уже существует. Вы хотите перезаписать её?"
 
-#: src/editor/editor.cpp:529 src/editor/editor.cpp:1348
+#: src/editor/editor.cpp:540 src/editor/editor.cpp:1359
 msgid "Player"
 msgstr "Игрок"
 
-#: src/editor/editor.cpp:532
+#: src/editor/editor.cpp:543
 msgid "Which Player?"
 msgstr "Какой игрок?"
 
-#: src/editor/editor.cpp:533
+#: src/editor/editor.cpp:544
 msgid "Which player should start here?"
 msgstr "Какой игрок должен начинать здесь?"
 
-#: src/editor/editor.cpp:584
+#: src/editor/editor.cpp:595
 msgid "Choose a Map to Load"
 msgstr "Выберите карту для загрузки"
 
-#: src/editor/editor.cpp:588
+#: src/editor/editor.cpp:599
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -128,31 +128,31 @@ msgstr ""
 "Внимание: Недопустимые символы в названии карты. Вы должны сохранить под "
 "другим именем."
 
-#: src/editor/editor.cpp:601 src/editor/editor.cpp:675
+#: src/editor/editor.cpp:612 src/editor/editor.cpp:686
 msgid "The file does not contain a valid map."
 msgstr "Файл не содержит карту."
 
-#: src/editor/editor.cpp:958
+#: src/editor/editor.cpp:969
 msgid "You must have a hex selected on the board."
 msgstr "У Вас должны быть веделенные ячейки."
 
-#: src/editor/editor.cpp:1215
+#: src/editor/editor.cpp:1226
 msgid "Quit Editor"
 msgstr "Выход из редактора"
 
-#: src/editor/editor.cpp:1220
+#: src/editor/editor.cpp:1231
 msgid "Do you want to save the map before quitting?"
 msgstr "Вы хотите сохранить карту перед выходом?"
 
-#: src/editor/editor.cpp:1268
+#: src/editor/editor.cpp:1279
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/editor/editor.cpp:1277
+#: src/editor/editor.cpp:1288
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/editor/editor.cpp:1292
+#: src/editor/editor.cpp:1303
 msgid "Error: Illegal character in filename."
 msgstr "Ошибка: Недопустимые символы в названии файла."
 

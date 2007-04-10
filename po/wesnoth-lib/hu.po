@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-03-28 13:47+0200\n"
+"POT-Creation-Date: 2007-04-10 22:58+0200\n"
 "PO-Revision-Date: 2007-03-11 15:42+0100\n"
 "Last-Translator: Széll Tamás <tomi A digiflex POINT hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -21,30 +21,30 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/construct_dialog.cpp:119 src/construct_dialog.cpp:126
+#: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
 #: src/editor/editor_dialogs.cpp:452
 msgid "OK"
 msgstr "Oké"
 
-#: src/construct_dialog.cpp:122
+#: src/construct_dialog.cpp:130
 msgid "Yes"
 msgstr "Igen"
 
-#: src/construct_dialog.cpp:123
+#: src/construct_dialog.cpp:131
 msgid "No"
 msgstr "Nem"
 
-#: src/construct_dialog.cpp:127 src/construct_dialog.cpp:130
+#: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
 #: src/editor/editor_dialogs.cpp:99 src/editor/editor_dialogs.cpp:451
 #: src/show_dialog.cpp:402 src/show_dialog.cpp:497
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/construct_dialog.cpp:133
+#: src/construct_dialog.cpp:141
 msgid "Close"
 msgstr "Bezár"
 
-#: src/construct_dialog.cpp:764 src/hotkeys.cpp:122
+#: src/construct_dialog.cpp:772 src/hotkeys.cpp:122
 msgid "Help"
 msgstr "Segítség"
 
@@ -83,33 +83,33 @@ msgid "Map creation failed."
 msgstr "A pályakészítés sikertelen"
 
 #: src/editor/editor_dialogs.cpp:241 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:1268
+#: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
 #: src/editor/editor_dialogs.cpp:247 src/editor/editor_dialogs.cpp:349
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:1154
+#: src/hotkeys.cpp:78 src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:297
+#: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "Görgetés sebessége:"
 
 #: src/editor/editor_dialogs.cpp:306 src/hotkeys.cpp:59
-#: src/preferences_display.cpp:257
+#: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
-#: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:260
+#: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "Rács megjelenítése"
 
-#: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:278
+#: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "Videó mód"
 
-#: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:280
+#: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "Gyorsbillentyűk"
 
@@ -438,11 +438,11 @@ msgstr "Nyelv megváltoztatása"
 msgid "Enter user command"
 msgstr "Felhasználói parancs megadása"
 
-#: src/hotkeys.cpp:467 src/hotkeys.cpp:762
+#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
 msgid "Do you really want to quit?"
 msgstr "Biztos ki akarsz lépni?"
 
-#: src/hotkeys.cpp:467 src/hotkeys.cpp:762
+#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -494,11 +494,11 @@ msgstr "Szárazföld"
 msgid "Island"
 msgstr "Sziget"
 
-#: src/preferences.cpp:437
+#: src/preferences.cpp:445
 msgid "player"
 msgstr "játékos"
 
-#: src/preferences_display.cpp:76 src/preferences_display.cpp:108
+#: src/preferences_display.cpp:80 src/preferences_display.cpp:112
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -509,311 +509,311 @@ msgstr ""
 "Emellett a képernyődnek támogatnia kell az 1024x768-as felbontást ahhoz, "
 "hogy a játék teljes képernyőn fusson."
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:262
 msgid "Accelerated Speed"
 msgstr "Megnövelt sebesség"
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:263
 msgid "Skip AI Moves"
 msgstr "MI lépések átugrása"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:265
 msgid "Show Lobby Minimaps"
 msgstr "Pályák mutatása a játékcsarnokban"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:266
 msgid "Do Not Show Lobby Joins"
 msgstr "Nincs értesítés a játékcsarnokba lépőkről"
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:267
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Értesítés csak akkor, ha barátok lépnek a játékcsarnokba"
 
-#: src/preferences_display.cpp:264
+#: src/preferences_display.cpp:268
 msgid "Show All Lobby Joins"
 msgstr "Értesítés akkor, ha új játékos lép a játékcsarnokba"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:269
 msgid "Sort Lobby List"
 msgstr "A játékcsarnok listájának csoportosítása"
 
-#: src/preferences_display.cpp:266
+#: src/preferences_display.cpp:270
 msgid "Iconize Lobby List"
 msgstr "Ikonok mutatása a játékcsarnok listáján"
 
-#: src/preferences_display.cpp:267
+#: src/preferences_display.cpp:271
 msgid "Friends List"
 msgstr "Barátok listája"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:272
 msgid "Multiplayer Options"
 msgstr "Többjátékos beállítások"
 
-#: src/preferences_display.cpp:269
+#: src/preferences_display.cpp:273
 msgid "Add As Friend"
 msgstr "Felvétel a barátok közé"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:274
 msgid "Add As Ignore"
 msgstr "Felhasználó figyelmen kívül hagyása"
 
-#: src/preferences_display.cpp:271
+#: src/preferences_display.cpp:275
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:276
 msgid "Show Floating Labels"
 msgstr "Szálló címkék megjelenítése"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:277
 msgid "Turn Dialog"
 msgstr "Párbeszédablak be"
 
-#: src/preferences_display.cpp:274
+#: src/preferences_display.cpp:278
 msgid "Turn Bell"
 msgstr "Csengő be"
 
-#: src/preferences_display.cpp:275
+#: src/preferences_display.cpp:279
 msgid "Show Team Colors"
 msgstr "Csapatszínek megjelenítése"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:280
 msgid "Show Color Cursors"
 msgstr "Színes kurzor megjelenítése"
 
-#: src/preferences_display.cpp:277
+#: src/preferences_display.cpp:281
 msgid "Show Haloing Effects"
 msgstr "Haloing effektusok mutatása"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:283
 msgid "Theme"
 msgstr "Téma"
 
-#: src/preferences_display.cpp:281
+#: src/preferences_display.cpp:285
 msgid "Adjust Gamma"
 msgstr "Gamma kezelés"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:286
 msgid "Reverse Time Graphics"
 msgstr "Napszakmegjelenítés megfordítása"
 
-#: src/preferences_display.cpp:284
+#: src/preferences_display.cpp:288
 msgid "Sound effects"
 msgstr "Hanghatások"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:289
 msgid "Music"
 msgstr "Zene"
 
-#: src/preferences_display.cpp:286
+#: src/preferences_display.cpp:290
 msgid "Chat Timestamping"
 msgstr "Csevegés sorainak időbélyegzése"
 
-#: src/preferences_display.cpp:287
+#: src/preferences_display.cpp:291
 msgid "Advanced Mode"
 msgstr "Szakértői mód"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:292
 msgid "Normal Mode"
 msgstr "Normál mód"
 
-#: src/preferences_display.cpp:289
+#: src/preferences_display.cpp:293
 msgid "User Interface Sounds"
 msgstr "Kezelői felület hangjai"
 
-#: src/preferences_display.cpp:292
+#: src/preferences_display.cpp:296
 msgid "Custom"
 msgstr "Tetszőleges"
 
-#: src/preferences_display.cpp:293
+#: src/preferences_display.cpp:297
 msgid "Apply"
 msgstr "Alkalmaz"
 
-#: src/preferences_display.cpp:295
+#: src/preferences_display.cpp:299
 msgid "Music Volume:"
 msgstr "Zene hangereje"
 
-#: src/preferences_display.cpp:295
+#: src/preferences_display.cpp:299
 msgid "SFX Volume:"
 msgstr "Hanghatások ereje"
 
-#: src/preferences_display.cpp:296
+#: src/preferences_display.cpp:300
 msgid "UI Sound Volume:"
 msgstr "Kezelői felület hanghatásainak ereje:"
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:301
 msgid "Bell Volume:"
 msgstr "Csengő hangereje"
 
-#: src/preferences_display.cpp:298
+#: src/preferences_display.cpp:302
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences_display.cpp:300
+#: src/preferences_display.cpp:304
 msgid "Sample Rate (Hz):"
 msgstr "Mintavételi frekvencia (Hz):"
 
-#: src/preferences_display.cpp:323
+#: src/preferences_display.cpp:327
 msgid "Sound effects on/off"
 msgstr "Hanghatások be/ki"
 
-#: src/preferences_display.cpp:327
+#: src/preferences_display.cpp:331
 msgid "Change the sound effects volume"
 msgstr "A hanghatások erejének megváltoztatása"
 
-#: src/preferences_display.cpp:330
+#: src/preferences_display.cpp:334
 msgid "Music on/off"
 msgstr "Zene be/ki"
 
-#: src/preferences_display.cpp:334
+#: src/preferences_display.cpp:338
 msgid "Change the music volume"
 msgstr "A zene hangerejének megváltoztatása"
 
-#: src/preferences_display.cpp:340
+#: src/preferences_display.cpp:344
 msgid "Change the bell volume"
 msgstr "A csengő hangerejének megváltoztatása"
 
-#: src/preferences_display.cpp:343
+#: src/preferences_display.cpp:347
 msgid "Turn menu and button sounds on/off"
 msgstr "Menü és gomb hangok be/ki"
 
-#: src/preferences_display.cpp:347
+#: src/preferences_display.cpp:351
 msgid "Change the sound volume for button clicks, etc."
 msgstr "A gombnyomások és egyéb események hangerejének megváltoztatása"
 
-#: src/preferences_display.cpp:349
+#: src/preferences_display.cpp:353
 msgid "Change the sample rate"
 msgstr "Mintavételi frekvencia megváltoztatása"
 
-#: src/preferences_display.cpp:358
+#: src/preferences_display.cpp:362
 msgid "User defined sample rate"
 msgstr "A felhasználó által megadott mintavételi frekvencia"
 
-#: src/preferences_display.cpp:367 src/preferences_display.cpp:371
+#: src/preferences_display.cpp:371 src/preferences_display.cpp:375
 msgid "Change the buffer size"
 msgstr "Pufferméret megváltoztatása"
 
-#: src/preferences_display.cpp:369 src/preferences_display.cpp:857
+#: src/preferences_display.cpp:373 src/preferences_display.cpp:861
 msgid "Buffer Size: "
 msgstr "Pufferméret: "
 
-#: src/preferences_display.cpp:376
+#: src/preferences_display.cpp:380
 msgid "Change the speed of scrolling around the map"
 msgstr "A térképen való görgetés sebességének megváltoztatása"
 
-#: src/preferences_display.cpp:381 src/preferences_display.cpp:383
+#: src/preferences_display.cpp:385 src/preferences_display.cpp:387
 msgid "Set the amount of chat lines shown"
 msgstr "Add meg a csevegés sorainak mennyiégét"
 
-#: src/preferences_display.cpp:386
+#: src/preferences_display.cpp:390
 msgid "Add a timestamp to chat messages"
 msgstr "Kerüljön a csevegés sorainak elé a küldés pontos ideje"
 
-#: src/preferences_display.cpp:389 src/preferences_display.cpp:394
+#: src/preferences_display.cpp:393 src/preferences_display.cpp:398
 msgid "Change the brightness of the display"
 msgstr "A képernyő fényesség megváltoztatása"
 
-#: src/preferences_display.cpp:397
+#: src/preferences_display.cpp:401
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "A játék teljes képernyőben vagy ablakban fusson-e"
 
-#: src/preferences_display.cpp:400
+#: src/preferences_display.cpp:404
 msgid "Make units move and fight faster"
 msgstr "Az egységek gyorsabban mozognak és harcolnak"
 
-#: src/preferences_display.cpp:415
+#: src/preferences_display.cpp:419
 msgid "Units move and fight speed"
 msgstr "Az egységek mozgásának és küzdelmének sebessége"
 
-#: src/preferences_display.cpp:418
+#: src/preferences_display.cpp:422
 msgid "Do not animate AI units moving"
 msgstr "Ne animálja a számítógép lépéseit"
 
-#: src/preferences_display.cpp:421
+#: src/preferences_display.cpp:425
 msgid "Overlay a grid onto the map"
 msgstr "Fektessen egy rácsot a térképre"
 
-#: src/preferences_display.cpp:424
+#: src/preferences_display.cpp:428
 msgid "Show minimaps in the multiplayer lobby"
 msgstr "Pályák képének mutatása a játékcsarnokban"
 
-#: src/preferences_display.cpp:427
+#: src/preferences_display.cpp:431
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 "A játékcsarnokban lévő játékosok listájának mutatása a játékosok csoportjai "
 "szerint"
 
-#: src/preferences_display.cpp:430
+#: src/preferences_display.cpp:434
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Ikonok feltüntetése a játékcsarnokban lévő játékosok neve előtt"
 
-#: src/preferences_display.cpp:433
+#: src/preferences_display.cpp:437
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 "Tájékoztató üzenetek kikapcsolása, amelyek új játékos játékcsarnokba "
 "lépésekor jelennek meg"
 
-#: src/preferences_display.cpp:435
+#: src/preferences_display.cpp:439
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 "Tájékoztató üzenetek bekapcsolása, amelyek barátaim játékcsarnokba lépésekor "
 "jelennek meg"
 
-#: src/preferences_display.cpp:437
+#: src/preferences_display.cpp:441
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 "Tájékoztató üzenetek bekapcsolása, amelyek minden játékos játékcsarnokba "
 "lépésekor jelennek meg"
 
-#: src/preferences_display.cpp:439
+#: src/preferences_display.cpp:443
 msgid "View and edit your friends and ignores list"
 msgstr ""
 "Barátaim és a figyelmen kívül hagyottak listájának megtekintése és "
 "szerkesztése"
 
-#: src/preferences_display.cpp:440
+#: src/preferences_display.cpp:444
 msgid "Back to the multiplayer options"
 msgstr "Visszalépés a többjátékos beállításokhoz"
 
-#: src/preferences_display.cpp:441
+#: src/preferences_display.cpp:445
 msgid "Add this username to your friends list"
 msgstr "A megadott felhasználó felvétele a barátaim közé"
 
-#: src/preferences_display.cpp:442
+#: src/preferences_display.cpp:446
 msgid "Add this username to your ignores list"
 msgstr "A megadott felhasználó felvétele a figyelmen kívül hagyottak közé"
 
-#: src/preferences_display.cpp:443
+#: src/preferences_display.cpp:447
 msgid "Remove this username from your list"
 msgstr "A megadott felhasználó eltávolítása a listáról"
 
-#: src/preferences_display.cpp:446
+#: src/preferences_display.cpp:450
 msgid "Insert a username"
 msgstr "Erre a helyre  írd be a felhasznó nevét"
 
-#: src/preferences_display.cpp:449
+#: src/preferences_display.cpp:453
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Szöveg megjelenítése az egység fölött, amikor megsebesül, hogy kiírja a "
 "veszteséget"
 
-#: src/preferences_display.cpp:451
+#: src/preferences_display.cpp:455
 msgid "Change the resolution the game runs at"
 msgstr "A játék felbontásának megváltoztatása"
 
-#: src/preferences_display.cpp:452
+#: src/preferences_display.cpp:456
 msgid "Change the theme the game runs with"
 msgstr "A játék által használt téma megváltoztatása"
 
-#: src/preferences_display.cpp:455
+#: src/preferences_display.cpp:459
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Egy párbeszédablakot dob fel, amikor a te köröd következik"
 
-#: src/preferences_display.cpp:458
+#: src/preferences_display.cpp:462
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Egy hangjelzést ad le a köröd kezdetekor"
 
-#: src/preferences_display.cpp:461
+#: src/preferences_display.cpp:465
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -821,105 +821,105 @@ msgstr ""
 "Egy színes kört rajzol minden egység körül amely azt jelzi melyik csapatban "
 "van az adott egység"
 
-#: src/preferences_display.cpp:464
+#: src/preferences_display.cpp:468
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Add meg, hogy a nap balról jobbra, vagy jobbról balra mozogjon"
 
-#: src/preferences_display.cpp:467
+#: src/preferences_display.cpp:471
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Színes egérkurzor használata (lassíthat)"
 
-#: src/preferences_display.cpp:470
+#: src/preferences_display.cpp:474
 msgid "Use graphical special effects (may be slower)"
 msgstr "Speciális megjelenítési hatások használata (lassíthat)"
 
-#: src/preferences_display.cpp:472
+#: src/preferences_display.cpp:476
 msgid "View and configure keyboard shortcuts"
 msgstr "A gyorsbillentyűk megtekintése és beállítása"
 
-#: src/preferences_display.cpp:737
+#: src/preferences_display.cpp:741
 msgid "Speed: "
 msgstr "Sebesség: "
 
-#: src/preferences_display.cpp:902
+#: src/preferences_display.cpp:906
 msgid "Chat Lines: "
 msgstr "Csevegés sorai: "
 
-#: src/preferences_display.cpp:998
+#: src/preferences_display.cpp:1002
 msgid "yes"
 msgstr "igen"
 
-#: src/preferences_display.cpp:1000
+#: src/preferences_display.cpp:1004
 msgid "no"
 msgstr "nem"
 
-#: src/preferences_display.cpp:1142
+#: src/preferences_display.cpp:1146
 msgid "Prefs section^General"
 msgstr "Általános"
 
-#: src/preferences_display.cpp:1143
+#: src/preferences_display.cpp:1147
 msgid "Prefs section^Display"
 msgstr "Képernyő"
 
-#: src/preferences_display.cpp:1144
+#: src/preferences_display.cpp:1148
 msgid "Prefs section^Sound"
 msgstr "Hang"
 
-#: src/preferences_display.cpp:1145
+#: src/preferences_display.cpp:1149
 msgid "Prefs section^Multiplayer"
 msgstr "Többjátékos"
 
-#: src/preferences_display.cpp:1146
+#: src/preferences_display.cpp:1150
 msgid "Advanced section^Advanced"
 msgstr "Haladó"
 
-#: src/preferences_display.cpp:1211
+#: src/preferences_display.cpp:1215
 msgid "There are no alternative video modes available"
 msgstr "Nincsennek más megjelenítési módok"
 
-#: src/preferences_display.cpp:1240
+#: src/preferences_display.cpp:1244
 msgid "Choose Resolution"
 msgstr "Felbontás kiválasztása"
 
-#: src/preferences_display.cpp:1273
+#: src/preferences_display.cpp:1277
 msgid "Hotkey Settings"
 msgstr "Gyorsbillentyűk beállításai"
 
-#: src/preferences_display.cpp:1277 src/preferences_display.cpp:1330
+#: src/preferences_display.cpp:1281 src/preferences_display.cpp:1334
 msgid "Press desired Hotkey"
 msgstr "Nyomd le a kívánt gyorsbillentyűt"
 
-#: src/preferences_display.cpp:1295
+#: src/preferences_display.cpp:1299
 msgid "Action"
 msgstr "Cselekvés"
 
-#: src/preferences_display.cpp:1295
+#: src/preferences_display.cpp:1299
 msgid "Binding"
 msgstr "Összekötés"
 
-#: src/preferences_display.cpp:1307
+#: src/preferences_display.cpp:1311
 msgid "Change Hotkey"
 msgstr "Gyorsbillentyű megváltoztatása"
 
-#: src/preferences_display.cpp:1310
+#: src/preferences_display.cpp:1314
 msgid "Save Hotkeys"
 msgstr "Gyorsbillentyűk mentése"
 
-#: src/preferences_display.cpp:1357
+#: src/preferences_display.cpp:1361
 msgid "This Hotkey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van."
 
-#: src/preferences_display.cpp:1390
+#: src/preferences_display.cpp:1394
 msgid "Saved Theme Preference: "
 msgstr "Elmentett téma beállításai: "
 
-#: src/preferences_display.cpp:1396
+#: src/preferences_display.cpp:1400
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Az új téma beállításai a következő új vagy betöltött játék indításakor "
 "fognak életbe lépni."
 
-#: src/preferences_display.cpp:1400
+#: src/preferences_display.cpp:1404
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 "Nincsenek ismert témák. Próbáld meg egy létező játékból megváltoztatni!"
