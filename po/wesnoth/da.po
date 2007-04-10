@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-02 21:53+0200\n"
-"PO-Revision-Date: 2007-04-04 17:58+0200\n"
+"PO-Revision-Date: 2007-04-10 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -1806,6 +1806,11 @@ msgid ""
 "everything you need to know to play the Heir to the Throne campaign. Have "
 "fun, and good luck!"
 msgstr ""
+"Dette afslutter det fundamentale i Wesnoth. Du har mulighed for at læse "
+"videre i Basisstrategi eller gøre dit bekendt med <ref>dst=traits "
+"text=Karaktertræk</ref> og <ref>dst=abilities text=Evner</ref>, men du ved "
+"nu alt du har behov forat kunne spille kampagnen Tronarvingen. Husk at have "
+"det sjovt og held og lykke!"
 
 #: data/help.cfg:260
 msgid "License"
@@ -2009,6 +2014,12 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"Udøde kroppe har normalt »udød« som deres eneste karaktertræk. Da udøde "
+"enheder er kroppen af døde, der er tilbagekaldt for at kæmpe igen har gift "
+"ingen effekt på dem. Det kan gøre dem uvurderlige når der skal håndteres "
+"fjender som bruger gift i forbindelse med deres angreb."
 
 #: data/help.cfg:330
 msgid "Dextrous"
@@ -2162,6 +2173,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Bjerge er så stejle at enheder ofte må kravle over objekter for at kunne "
+"bevæge sig frem. Denne natur giver en naturlig forsvarsbonus for de fleste "
+"tropper, men de forhindrer også enhver passage igennem dem. De fleste "
+"kavaleri enheder kan ikke flytte igennem bjergterræn; dog er elverkavaleri "
+"en undtagelse til denne regel og det er goblin ulveryttere også. Både dværge "
+"og trolde er vant til bjergrigt terræn og kan nemt flytte sig rundt i dette "
+"terræn.\n"
+"\n"
+"De fleste enheder har en 60 % forsvarsbonus i bjerge, mens dværge har 70 %."
 
 #: data/help.cfg:395 data/terrain.cfg:634
 msgid "Swamp"
@@ -2216,6 +2236,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"Dybt vand repræsenterer al slags vand som er dybt nok til at dække en mands "
+"hoved. De fleste enheder kan ikke gå ud i dybt vand: Det er for enheder som "
+"enten kan flyve eller er specielt stærke svømmere.\n"
+"\n"
+"Havmænd og nagaer har begge en 50 % forsvarsbonus i dybt vand og fuld "
+"bevægelse."
 
 #: data/help.cfg:425 data/terrain.cfg:48
 msgid "Snow"
@@ -2439,7 +2465,7 @@ msgstr ""
 
 #: data/help.cfg:541 data/terrain.cfg:565
 msgid "Chasm"
-msgstr ""
+msgstr "Kløft"
 
 #: data/help.cfg:544
 msgid ""
@@ -2448,6 +2474,9 @@ msgid ""
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 msgstr ""
+"En kløft er en revne i jorden som fører til undergrunden nedenfor. Kløfter "
+"er kendt for stejle vægge som det tager dage at forcere. I spillet kan kun "
+"enheder som er i stand til at flyve forcere denne terræntype."
 
 #: data/help.cfg:549 data/terrain.cfg:574
 msgid "Lava"
@@ -2464,7 +2493,7 @@ msgstr ""
 
 #: data/help.cfg:557 data/terrain.cfg:939
 msgid "River Ford"
-msgstr ""
+msgstr "Lavvandet flod"
 
 #: data/help.cfg:560
 msgid ""
@@ -2575,6 +2604,10 @@ msgid ""
 "off by quitting the game.\n"
 "\n"
 msgstr ""
+"\n"
+"Slå fejlsøgning til (virker ikke i flerspiller). Fejlsøgning slukkes når "
+"spillet forlades.\n"
+"\n"
 
 #: data/help.cfg:608
 msgid "Bring up theme selection menu."
@@ -2604,6 +2637,9 @@ msgid ""
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
+"\n"
+"Slå stilhed til/fra for alle observatører.\n"
+"\n"
 
 #: data/help.cfg:623
 msgid ""
@@ -2612,6 +2648,10 @@ msgid ""
 "displayed.\n"
 "\n"
 msgstr ""
+"\n"
+"Slå stilhed til for en specifik observatør. Hvis et brugernavn ikke angives "
+"bliver brugernavne med stilhed slået til vist.\n"
+"\n"
 
 #: data/help.cfg:626
 msgid ""
@@ -2634,6 +2674,9 @@ msgid ""
 "username.\n"
 "\n"
 msgstr ""
+"\n"
+"Smid en spiller i flerspiller ud og bandlys denne og dennes IP-adresse\n"
+"\n"
 
 #: data/help.cfg:632
 msgid ""
@@ -2642,6 +2685,10 @@ msgid ""
 "username (write here the nick of the player or observer).\n"
 "\n"
 msgstr ""
+"\n"
+"Ændr spiller for siden (skriv her nummeret på siden) til brugernavn (skriv "
+"her kaldenavnet på spiller eller observatør).\n"
+"\n"
 
 #: data/help.cfg:633
 msgid ""
@@ -3920,6 +3967,21 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Igennem bølger og sten\n"
+"blå og hvid\n"
+"hun trak og skubbede tidevandet\n"
+"og lærte fiskene at tale med planetens\n"
+"sølvgrønne\n"
+"hvide magi\n"
+"løbende fra hendes ånd ind i tangbælter og sneglehuse\n"
+"en ændring af hendes hale og hænder\n"
+"hun sang sine sange løbende på bare fødder i sandet\n"
+"og nu\n"
+"og nu den mærkeligste pause\n"
+"i århundreder\n"
+"har hun ikke blinket med øjnene\n"
+"\n"
+"(inskription af MJQ)"
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
@@ -3950,6 +4012,8 @@ msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet."
 msgstr ""
+"Farer lurer ved hvert hjørne på denne underjordiske slagmark, et kort for to "
+"hvor styrke og snuhed mødes."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
@@ -4031,6 +4095,8 @@ msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
+"To hære møder hinanden i dette kystlandskab bestående af skjulte huler og "
+"forrevne floder."
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
@@ -4076,6 +4142,11 @@ msgid ""
 "Leveling Flame, Sulla the Incinerator, Sulla the Proud and Sulla the "
 "Righteous."
 msgstr ""
+"En stenskabt efterligning af Sulla den Store, også kendt som Sulla den "
+"Retfærdige, Sulla Tyran, Kejser af det faldende tårn, arving af de knusende "
+"Gales, Kvinde over den gående gletsjer, Indehaver af den brændende bølge, "
+"Dronning af den lige flamme, Sulla den Brændende, Sulla den stolte og Sulla "
+"den Retfærdige."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
@@ -4083,7 +4154,7 @@ msgstr "Lhun-dup statuen"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "En stenskabt efterligning af Lhun-dup, tjener af Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
@@ -4091,7 +4162,7 @@ msgstr "Ri-nzen statuen"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "En stenskabt efterligning af Ri-nzen, tjener af Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
@@ -4099,7 +4170,7 @@ msgstr "Statue af Ten-zin"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "En stenskabt efterligning af Ten-zin, tjener af Sulla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Lo-bsang"
@@ -4107,7 +4178,7 @@ msgstr "Statue af Lo-bsang"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "En stenskabt efterligning af Lo-bsang, Tjener af Sulla."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4189,6 +4260,8 @@ msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
+"Kontrol med den centrale ø er ofte nøglen til sejr i dette 21 x 21 felt "
+"store 3 spiller frie kort."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
@@ -4213,7 +4286,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr "4p - Blå vand provins"
+msgstr "4p - Blå Vand Provins"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
 msgid ""
@@ -4222,6 +4295,10 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
+"Det er blevet sagt at Blå Vand Provinsen er blevet ødelagt og genopbygget en "
+"20 gange. Nu da hære igen møder hinanden i de stenfuldte strømme og "
+"snedækkede bjerg i denne lille provins, bemærker dens indbyggere det næsten "
+"ikke."
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:18
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:48
@@ -4286,6 +4363,10 @@ msgid ""
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
+"Et meget lille 2 versus 2 kort. Tæt kamp betyder at succesfuld rotation af "
+"enheder og planlægning af bevægelser er vigtig. Holdene sættes af spiller 1 "
+"& 4 versus 2 & 3 (nordøst versus sydvest). Designet til 75 start "
+"guldstykker, 20 landsbyer."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:18
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:51
@@ -4327,6 +4408,9 @@ msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
+"Kontrol med området omkring det centrale borgtårn er meget lukrativt i dette "
+"36 x 36 4 spiller FFA kort. Virker også fint som 2 versus 2. Der er 36 "
+"landsbyer."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:29
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:34
@@ -4406,6 +4490,8 @@ msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
+"40 x 30 4 spillerkort hvor 4 mægtige borge møder hinanden hvor to floder "
+"mødes. Virker godt som et 2 versus 2 eller FFA. Der er cirka 45 landsbyer."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:12
 msgid "4p - The Wilderlands"
@@ -4445,7 +4531,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6p - Korstogenes slagmark"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -4453,10 +4539,12 @@ msgid ""
 "of war, where the ghosts of thousands of brave warriors float invisibly "
 "through the mountains, trees and rivers."
 msgstr ""
+"Slagmarkens skrig kan igen høres på denne krigsscene hvor tusinder af "
+"spøgelser af modige krigere flyder igennem bjergene, træerne og floderne."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
-msgstr ""
+msgstr "6p - Hexcake"
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
@@ -4520,6 +4608,10 @@ msgid ""
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"Tillykke du har overlevet dette kort som så mange personer har erklæret for "
+"umuligt at vinde. For at sige det som det er så har jeg ingen anelse om "
+"hvordan du har båret dig ad så send mig spillets resume til: roze@roze.mine."
+"nu tak!"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:336
 msgid ""
@@ -4580,6 +4672,10 @@ msgid ""
 "vs. southeast vs. southwest). There are very few villages per player, so 3 "
 "gold per villages is recommended."
 msgstr ""
+"Et meget lille 3 versus 3 versus 3 kort. En 60 sekunder timer er anbefalet "
+"på grund af det store antal spillere. Holdene er spiller 159 versus 267 "
+"versus 348 (nord versus sydøst versus sydvest). Der er meget få landsbyer "
+"per spiller så 3 guld per landsby anbefales."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -4605,6 +4701,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Et tilfældig kort med sand som den primære terræntype. Bemærk: Tilfældige "
+"kort er ofte ubalanceret, men hvis du har tid, kan du gendanne indtil du får "
+"et godt kort."
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:9
@@ -4632,16 +4731,21 @@ msgid ""
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"Et tilfældig kort i perioden mellem forår og vinter, mest med snefyldt "
+"terræn. Bemærk: Tilfældige kort er ofte ubalancerede, men hvis du har tiden, "
+"kan du genskabe dem indtil du har et godt kort."
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Wesnoth Test: Computer"
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"En Wesnoth test, anvend --nogui --no-delay --multiplayer --"
+"scenario=wesbench_ai --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
@@ -4652,16 +4756,20 @@ msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"En Wesnoth test, anvend --no-delay --multiplayer --scenario=wesbench_scroll "
+"--exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Wesnoth test: Gående igennem skygge"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"En Wesnoth test, anvend --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
 
 #: data/schedules.cfg:83 data/schedules.cfg:91
 msgid "Underground"
@@ -4705,12 +4813,16 @@ msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
+" Denne enhed helbreder sig selv hvilket gør at den opnår liv som om den "
+"altid er placeret i en landsby."
 
 #: data/special-notes.cfg:17
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" Styrken hos denne enhed reducerer skade fra nogle angreb, men kun mens den "
+"forsvarer sig."
 
 #: data/special-notes.cfg:20
 msgid ""
@@ -8932,6 +9044,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Frygten fra sort magi kommer primært fra hvor lidt der vides om den af "
+"offentligheden. Mørke troldmænd er begyndt at afsløre hemmelighederne om liv "
+"og død, og dermed mestre i at påføre smerte og lidelse.\n"
+"\n"
+"Den ultimative gevinst ved mørk trolddom er total kontrol over død og liv. "
+"Mørke troldmænd kan til sidst lære hvordan liv og død kan manipuleres ved at "
+"genkalde lig, skeletter og ånder. De mest korrupte og magtbegærlige vil "
+"forsøge at erobre døden igennem en transformation til lich og opnåelse af "
+"udødelighed.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:62
 #: data/units/Undead_Necromancer.cfg:66
@@ -8956,6 +9079,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"En lich er en fysisk skal af den mørke magis mål: Missionen for at opnå "
+"udødelighed. Selv om der skal ydes store ofre i gendannelsen som lich så "
+"snydes døden hvilket i den grad gør lichen til en terrorfremkaldende "
+"skabning.Det er sindet som bevares og sjælen som følger efter, mens kroppen "
+"kan svinde bort.\n"
+"\n"
+"Det er ikke kendt måske med undtagelse af den inderste cirkel omkring "
+"åndemaneri om livet er forlænget evigt eller bare forlænges. Men bare at "
+"overveje en sådan ting viser omfanget af hvad de har opnået.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Undead_Necromancer.cfg:3
 msgid "Necromancer"
