@@ -218,7 +218,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			} else {
 				gui::show_dialog(*gui_, NULL, _("Game Over"),
 				                 _("The game is over."), gui::OK_ONLY);
-				return QUIT;
+				return OBSERVER_END;
 			}
 		}
 

@@ -24,7 +24,7 @@
 #include "statistics.hpp"
 #include "widgets/textbox.hpp"
 
-enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE };
+enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE, OBSERVER_END };
 
 struct end_level_exception {
 	end_level_exception(LEVEL_RESULT res, bool bonus=true)

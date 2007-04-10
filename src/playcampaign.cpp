@@ -313,7 +313,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 					network::send_data(end);
 			}
 			//ask to save a replay of the game
-			if(res == VICTORY || res == DEFEAT || ((res == QUIT) && (io_type == IO_CLIENT)) ) {
+			if(res == VICTORY || res == DEFEAT || res == OBSERVER_END) {
 				const std::string orig_scenario = state.scenario;
 				state.scenario = current_scenario;
 
