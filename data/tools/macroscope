@@ -1,19 +1,18 @@
 #!/usr/bin/env python
 #
-# macroscope -- generate cross-reference listings of WML macro usage
+# macroscope -- generate reports on WML macro and resource usage
 #
 # By Eric S. Raymond April 2007.
 # (Yes, this *is* named after an ancient Piers Anthony novel.)
 #
-# The reference-checking done by this tool has a couple of flaws:
+# This tool cross-references macro definitions with macro calls, and
+# resource (sound or image) files with uses of the resources in WML.
+# and generates various useful reports from such cross-references.
+# The checking done by this tool has a couple of flaws:
 #
-# (1) It doesn't know about the specialness of utils directories.
-# Properly speaking, at any given point macroexpansion should be able
-# to see only definitions already seen in in the current file or in
-# files under a relevant utils directory (and I'm not actually sure of
-# the rules about which utils files are supposed to be visible when).
-# Instead, any macro definition from anywhere in the set of input
-# trees can be used to satisfy a reference.
+# (1) It doesn't actually evaluate file inclusions.  Instead, any
+# macro definition from anywhere in the set of input trees can be used
+# to satisfy a macro call anywhere else.
 #
 # (2) It doesn't read [binary_path] tags, as this would require
 # implementing a WML parser.  Instead, it assumes that a resource-file
@@ -32,6 +31,7 @@
 # that a reference has been satisfied when under actual
 # WML-interpreter rules it has not.  The reverse will not occur.
 #
+# The reporting format is compoatible with GNU Emacs compile mode.
 
 import sys, os, time, re, getopt
 
