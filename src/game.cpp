@@ -601,10 +601,7 @@ bool game_controller::play_multiplayer_mode()
 
 		(*itors.first)->values["canrecruit"] = "1";
 
-
-		for(string_map::const_iterator i = side->values.begin(); i != side->values.end(); ++i) {
-			(*itors.first)->values[i->first] = i->second;
-		}
+		(*itors.first)->append(*side);
 
 		if(controller != side_controllers.end()) {
 			(*itors.first)->values["controller"] = controller->second;
