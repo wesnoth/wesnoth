@@ -1553,11 +1553,11 @@ void game_controller::reset_game_cfg()
 	defines_map_["APPLE"] = preproc_define();
 #endif
 
-	defines_map_["NORMAL"] = preproc_define();
-	defines_map_["MEDIUM"] = preproc_define();
-
 	if(multiplayer_mode_) {
 		defines_map_["MULTIPLAYER"] = preproc_define();
+	} else {
+		defines_map_["NORMAL"] = preproc_define();
+		defines_map_["MEDIUM"] = preproc_define();
 	}
 
 	refresh_game_cfg();
