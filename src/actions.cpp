@@ -1461,6 +1461,10 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		int pos_max = i->second.max_hitpoints() - i->second.hitpoints();
 		int neg_max = -(i->second.hitpoints() - 1);
+		if(healing > 0 && pos_max <= 0) {
+			// Do not try to "heal" if HP >= max HP
+			continue;
+		}
 		if(healing > pos_max) {
 			healing = pos_max;
 		} else if(healing < neg_max) {
