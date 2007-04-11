@@ -212,22 +212,24 @@ if __name__ == "__main__":
         sys.stderr.write("""\
 Usage: macroscope [options] dirpath
     Options may be any of these:
-    -h, --help              Emit this help message and quit
-    -c, --crossreference    Report resolved macro references
-    -u, --unresolved        Report unresolved macro references
-    -f dir, --from dir      Report only on macros defined under dir
-    -r ddd, --refcount=ddd  Report only on macros w/references in ddd files 
+    -h, --help                 Emit this help message and quit
+    -c, --crossreference       Report resolved macro references
+    -u, --unresolved           Report unresolved macro references
+    -f dir, --from dir         Report only on macros defined under dir
+    -r ddd, --refcount=ddd     Report only on macros w/references in ddd files
+    --forced-used reg          Ignore refcount 0 on names matching regexp
    The required dirpath argument may be a colon-separated directory list.
 """)
 
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cf:hr:u",
-                                         ['help',
+    (options, arguments) = getopt.getopt(sys.argv[1:], "chi:r:u",
+                                         ['help', 'force-used=',
                                           'crossreference', 'unresolved',
                                           'from=', 'refcount='])
     crossreference = unresolved = False
     from_restrict = None
     refcount_restrict = None
+    forceused = None
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -236,10 +238,12 @@ Usage: macroscope [options] dirpath
             from_restrict = val
         elif switch in ('-c', '--crossreference'):
             crossreference = True
+        elif switch == '--force-used':
+            forceused = val
         elif switch in ('-u', '--unresolved'):
             unresolved = True
         elif switch in ('-r', '--refcount'):
-            refcount_restrict = 0
+            refcount_restrict = int(val)
 
     if len(arguments):
         dirpath = arguments[0].split(":")
@@ -254,7 +258,9 @@ Usage: macroscope [options] dirpath
         def predicate(name, defloc):
             if from_restrict and not defloc.filename.startswith(from_restrict):
                 return False
-            if refcount_restrict!=None and len(defloc.references)!=refcount_restrict:
+            if refcount_restrict!=None \
+                   and len(defloc.references) != refcount_restrict \
+                   or (refcount_restrict == 0 and forceused and re.search(forceused, name)):
                 return False
             return True
         if crossreference:
