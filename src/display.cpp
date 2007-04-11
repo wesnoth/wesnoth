@@ -867,10 +867,6 @@ void display::draw(bool update,bool force)
 				unit_invals.insert(*it);
 			}
 			draw_tile(*it, clip_rect);
-			if(map_.is_village(*it) && player_teams::village_owner(*it) != -1) {
-				flags_[player_teams::village_owner(*it)].update_last_draw_time();
-			}
-
 		}
 
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
@@ -1847,11 +1843,8 @@ surface display::get_flag(t_translation::t_letter terrain, int x, int y)
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
-			if(image::get_image(flags_[i].get_current_frame())) {
-				return image::get_image(flags_[i].get_current_frame());
-			} else {
-				return image::get_image(flags_[i].get_first_frame());
-			}
+			flags_[i].update_last_draw_time();
+			return image::get_image(flags_[i].get_current_frame());
 		}
 	}
 
@@ -2161,7 +2154,7 @@ void display::invalidate_animations()
 					invalidate(loc);
 				} else if (map_.is_village(loc)) {
 					const int owner = player_teams::village_owner(loc);
-					if (owner >= 0 && flags_[owner].need_update())
+					if (owner >= 0 && flags_[owner].need_update() && (!fogged(x,y) || !teams_[currentTeam_].is_enemy(owner+1)))
 						invalidate(loc);
 				}
 			}
