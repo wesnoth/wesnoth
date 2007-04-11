@@ -62,6 +62,8 @@ public:
 	bool animation_would_finish() const;
 	int get_animation_time() const;
 	const T& get_current_frame() const;
+	// get the next frame (or the current + shift frames)
+	const T& get_next_frame(int shift = 1) const;
 	const int get_current_frame_begin_time() const;
 	const int get_current_frame_end_time() const;
 	const int get_current_frame_duration() const;

@@ -45,7 +45,7 @@ animated<T,T_void_value>::animated(int start_time) :
 	cycles_(false),
 	acceleration_(1),
 	last_update_tick_(0),
-	current_frame_key_(start_time)
+	current_frame_key_(0)
 {
 }
 
@@ -58,7 +58,7 @@ animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &cfg, in
 	cycles_(false),
 	acceleration_(1),
 	last_update_tick_(0),
-	current_frame_key_(start_time)
+	current_frame_key_(0)
 {
 
 	typename std::vector< std::pair<int,T> >::const_iterator itor = cfg.begin();
@@ -90,6 +90,7 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 	start_tick_ =  last_update_tick_ + ( starting_frame_time_ - start_time);
 	cycles_ = cycles;
 	acceleration_ = acceleration;
+	//FIXME: allow negative acceleration -> reverse animation
 	if(acceleration_ <=0) acceleration_ = 1;
 	current_frame_key_= 0;
 	update_last_draw_time();
@@ -181,6 +182,21 @@ const T& animated<T,T_void_value>::get_current_frame() const
 	if(frames_.empty() )
 		return void_value_;
 	return frames_[current_frame_key_].value_;
+}
+
+template<typename T,  typename T_void_value>
+const T& animated<T,T_void_value>::get_next_frame(int shift) const
+{
+	if(frames_.empty() )
+		return void_value_;
+	int next_frame_key = current_frame_key_ + shift;;
+	if (!cycles_) {
+		if (next_frame_key < 0)
+			return get_first_frame();
+		else if (next_frame_key >= get_frames_count())
+			return get_last_frame();
+	}
+	return frames_[next_frame_key % get_frames_count()].value_;
 }
 
 template<typename T,  typename T_void_value>
