@@ -2,9 +2,15 @@
 #
 # Hack this if our location in the Wesnoth source tree changes
 TOPDIR = ../..
+# References to terrain graphics go through so many layers of nasty
+# opaque macros that trying to reference-check them is hopeless.
+# So suppress reporting them unused even if they seem to have
+# no references.   Also, ignore graphics resources used only by the 
+# GUI code in C++.
+FAKE = --force-used "(terrain|buttons|cursors||cursors-bw|menu}icons)/"
 
 unresolved:
-	@echo "# Report on unresolved macro calls"
+	@echo "# Report on unresolved macro calls and resource references"
 	@macroscope --unresolved $(TOPDIR)
 
 all:
@@ -13,7 +19,11 @@ all:
 
 utils-unused:
 	@echo "# Report on unused utility macros"
-	@macroscope --crossreference --from data/utils --refcount 0  $(TOPDIR)
+	@macroscope --crossreference --from data/utils --refcount 0 $(FAKE) $(TOPDIR)
+
+all-unused:
+	@echo "# Report on unused resource files"
+	@macroscope --crossreference --refcount 0 $(FAKE) $(TOPDIR)
 
 utils-macros:
 	@echo "# Report on usage of utility macros"
