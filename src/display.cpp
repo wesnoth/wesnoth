@@ -109,6 +109,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	image::set_zoom(zoom_);
 
 	//inits the flag list
+	//Note the local shifts of flag animation will look better if the tempo is regular
 	flags_.reserve(teams_.size());
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		std::string flag;
@@ -149,7 +150,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		}
 		flags_.push_back(temp_anim);
 
-		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
+		//flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
+		flags_.back().start_animation(0, true);
 	}
 
 	//clear the screen contents
@@ -1844,7 +1846,9 @@ surface display::get_flag(t_translation::t_letter terrain, int x, int y)
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
 			flags_[i].update_last_draw_time();
-			return image::get_image(flags_[i].get_current_frame());
+			// we apply a frame shift to flag animation to avoid repetion
+			// x+y*2 garantee that adjacant villages have a 1-3 frames difference (on 4)
+			return image::get_image(flags_[i].get_next_frame(x+y*2));
 		}
 	}
 
@@ -2145,6 +2149,8 @@ void display::invalidate_animations()
 	gamemap::location topleft;
 	gamemap::location bottomright;
 	get_visible_hex_bounds(topleft, bottomright);
+	// flags are synchronized so we check only the first flag
+	bool update_flags = flags_[0].need_update();
 
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
@@ -2152,9 +2158,9 @@ void display::invalidate_animations()
 				gamemap::location loc(x,y);
 				if (builder_.update_animation(loc)) {
 					invalidate(loc);
-				} else if (map_.is_village(loc)) {
+				} else if (update_flags && map_.is_village(loc)) {
 					const int owner = player_teams::village_owner(loc);
-					if (owner >= 0 && flags_[owner].need_update() && (!fogged(x,y) || !teams_[currentTeam_].is_enemy(owner+1)))
+					if (owner >= 0 && (!fogged(x,y) || !teams_[currentTeam_].is_enemy(owner+1)))
 						invalidate(loc);
 				}
 			}
