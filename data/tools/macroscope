@@ -195,9 +195,9 @@ class CrossRef:
                 continue
             nrefs = len(defloc.references)
             if nrefs == 0:
-                print "Resource %s defined at %s is unused" % (name, defloc)
+                print "Resource %s is unused" % defloc
             else:
-                print "Resource %s defined at %s is used in %d files:" % (name, defloc, nrefs)
+                print "Resource %s is used in %d files:" % (defloc, nrefs)
             defloc.dump_references()
     def unresdump(self):
         "Report unresolved references."
