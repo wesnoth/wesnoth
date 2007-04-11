@@ -7,11 +7,13 @@ TOPDIR = ../..
 # So suppress reporting them unused even if they seem to have
 # no references.   Also, ignore graphics resources used only by the 
 # GUI code in C++.
-FAKE = --force-used "(terrain|buttons|cursors||cursors-bw|menu}icons)/"
+FAKE = --force-used "(terrain|buttons|cursors||cursors-bw|menu|icons)/"
+# Suppress meaningless errors about castle graphics.  
+EXCLUDE = --exclude exploder
 
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
-	@macroscope --unresolved $(TOPDIR)
+	@macroscope --unresolved $(EXCLUDE) $(TOPDIR)
 
 all:
 	@echo "# Report on usage of all macros and resources"

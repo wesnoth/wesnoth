@@ -37,7 +37,7 @@ import sys, os, time, re, getopt
 
 resource_extensions = ("png", "jpg", "ogg", "wav")
 
-def allfiles(dirpath):
+def allfiles(dirpath, exclude):
     "Get the names of all files under dirpath, ignoring .svn directories."
     datafiles = []
     for dir in dirpath:
@@ -46,6 +46,8 @@ def allfiles(dirpath):
                      None)
     datafiles = filter(lambda x: ".svn" not in x, datafiles)
     datafiles = filter(lambda x: not os.path.isdir(x), datafiles)
+    if exclude:
+        datafiles = filter(lambda x: not re.search(exclude, x), datafiles)
     return datafiles
 
 def iswml(filename):
@@ -214,6 +216,7 @@ Usage: macroscope [options] dirpath
     Options may be any of these:
     -h, --help                 Emit this help message and quit
     -c, --crossreference       Report resolved macro references
+    -e reg, --exclude reg      Ignore files matching 
     -u, --unresolved           Report unresolved macro references
     -f dir, --from dir         Report only on macros defined under dir
     -r ddd, --refcount=ddd     Report only on macros w/references in ddd files
@@ -222,14 +225,15 @@ Usage: macroscope [options] dirpath
 """)
 
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "chi:r:u",
-                                         ['help', 'force-used=',
+    (options, arguments) = getopt.getopt(sys.argv[1:], "che:f:r:u",
+                                         ['help', 'force-used=', 'exclude=',
                                           'crossreference', 'unresolved',
                                           'from=', 'refcount='])
     crossreference = unresolved = False
     from_restrict = None
     refcount_restrict = None
     forceused = None
+    exclude = None
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -238,6 +242,8 @@ Usage: macroscope [options] dirpath
             from_restrict = val
         elif switch in ('-c', '--crossreference'):
             crossreference = True
+        elif switch in ('-e', '--exclude'):
+            exclude = val
         elif switch == '--force-used':
             forceused = val
         elif switch in ('-u', '--unresolved'):
@@ -252,9 +258,8 @@ Usage: macroscope [options] dirpath
     print "# Macroscope reporting on %s" % time.ctime()
     print "# Invocation: %s" % " ".join(sys.argv)
     print "# Working directory: %s" % os.getcwd()
-    files = allfiles(dirpath)
     if crossreference or unresolved:
-        xref = CrossRef(allfiles(dirpath))
+        xref = CrossRef(allfiles(dirpath, exclude))
         def predicate(name, defloc):
             if from_restrict and not defloc.filename.startswith(from_restrict):
                 return False
