@@ -166,6 +166,8 @@ class CrossRef:
                                     self.fileref[key].append(fn, n+1)
                         else:
                             key = self.imagesearch(name)
+                            if key:
+                                self.fileref[key].append(fn, n+1)
                         if not key:
                             self.missing.append((name, reference(fn,n+1)))
                 rfp.close()
