@@ -2403,6 +2403,8 @@ void unit::add_modification(const std::string& type, const config& mod,
 			wassert(gamedata_ != NULL);
 			const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
 			advance_to(&var->second.get_variation(variation_));
+		} else if(apply_to == "portrait") {
+			cfg_["profile"] = (**i.first)["image"];
 		} else if(apply_to == "new_attack") {
 			attacks_.push_back(attack_type(**i.first,id(),image_fighting((**i.first)["range"]=="ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 		} else if(apply_to == "remove_attacks") {
