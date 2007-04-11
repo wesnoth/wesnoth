@@ -297,7 +297,7 @@ static bool cache_illuminates(int &cache, std::string const &ability)
 {
 	if (cache < 0)
 		cache = (ability == "illuminates");
-	return cache;
+	return (cache != 0);
 }
 
 bool unit::ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const

@@ -1009,7 +1009,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	}
 	
 	if (scrollx != 0 || scrolly != 0) {
-		struct CKey pressed;
+		CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
 		if (pressed[SDLK_LALT] || pressed[SDLK_RALT])
 			gui_->scroll(scrolly,scrollx);
