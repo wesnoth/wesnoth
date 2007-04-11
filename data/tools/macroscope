@@ -85,6 +85,15 @@ class CrossRef:
             if trial in self.fileref:
                 return trial
         return None
+    def mark_matching_resources(self, pattern, fn, n):
+        "Mark all definitions matching a specified pattern with a reference."
+        pattern = re.compile(pattern + "$")
+        key = None
+        for trial in self.fileref:
+            if pattern.match(trial):
+                key = trial
+                self.fileref[key].append(fn, n)
+        return key
     def __init__(self, filelist):
         # First, collect macro definitions from the specified filelist."
         self.xref = {}
@@ -157,13 +166,10 @@ class CrossRef:
                         # it as a reference to everything the substitutions
                         # could potentially match.
                         elif '{' in name:
-                            pattern = re.sub(r"\{[^}]*\}", '.*', name)
-                            pattern = re.compile("^" + pattern + "$")
-                            key = None
-                            for trial in self.fileref:
-                                if pattern.match(trial):
-                                    key = trial
-                                    self.fileref[key].append(fn, n+1)
+                            pattern = "^" + re.sub(r"\{[^}]*\}", '.*', name)
+                            key = self.mark_matching_resources(pattern, fn,n+1)
+                            if key:
+                                self.fileref[key].append(fn, n+1)
                         else:
                             key = self.imagesearch(name)
                             if key:
