@@ -506,6 +506,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				if(game_map->on_board(vacant_dst)) {
 					const int side = u->second.side();
 
+					screen->invalidate(u->first);
 					std::pair<gamemap::location,unit> *up = units->extract(u->first);
 					up->first = vacant_dst;
 					units->add(up);
@@ -517,6 +518,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					if(utils::string_bool(cfg["clear_shroud"],true)) {
 						clear_shroud(*screen,*status_ptr,*game_map,*game_data_ptr,*units,*teams,side-1);
 					}
+					
+					screen->invalidate(dst);
+					screen->draw();
 				}
 			}
 		}
