@@ -109,8 +109,14 @@ effect::effect(int xpos, int ypos, const animated<std::string>::anim_description
 void effect::set_location(int x, int y)
 {
 	const gamemap::location zero_loc(0,0);
-	x_ = x - disp->get_location_x(zero_loc);
-	y_ = y - disp->get_location_y(zero_loc);
+	int new_x = x - disp->get_location_x(zero_loc);
+	int new_y = y - disp->get_location_y(zero_loc);
+	if (new_x != x_ || new_y != y_) {
+		x_ = new_x;
+		y_ = new_y;
+		buffer_.assign(NULL);
+		overlayed_hexes_.clear();
+	}
 }
 
 bool effect::render()
@@ -145,10 +151,6 @@ bool effect::render()
 	SDL_Rect rect = {xpos,ypos,surf_->w,surf_->h};
 	rect_ = rect;
 	SDL_Rect clip_rect = disp->map_area();
-	if(rects_overlap(rect,clip_rect) == false) {
-		buffer_.assign(NULL);
-		return false;
-	}
 
 	// if rendered the first time need to detemine the area affected, if a halo
 	// changes size it's not updated.
@@ -160,6 +162,11 @@ bool effect::render()
 				overlayed_hexes_.push_back(gamemap::location(x, y));
 			}
 		}
+	}
+
+	if(rects_overlap(rect,clip_rect) == false) {
+		buffer_.assign(NULL);
+		return false;
 	}
 
 	surface const screen = disp->video().getSurface();
