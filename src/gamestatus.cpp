@@ -358,7 +358,7 @@ game_state read_game(const game_data& data, const config* cfg)
 			//backwards compatibility for 1.2 and 1.2.1,
 			//------------------------------------------
 			//add recall list units to the snapshot so they don't get lost
-			if (!snapshot->empty() && (res.version < "1.2.2") )
+			if (!snapshot->empty() && (!res.version.empty()) && (res.version < "1.2.2") )
 			{
 				//find the side of this player in the snapshot
 				config* current_side = NULL;
