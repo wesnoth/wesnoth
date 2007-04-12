@@ -105,7 +105,8 @@ bool load_language_list()
 	config::const_child_itors langs = cfg.child_range("locale");
 	for(;langs.first != langs.second; ++langs.first) {
 		known_languages.push_back(
-			language_def((**langs.first)["locale"], (**langs.first)["name"], (**langs.first)["dir"]));
+			language_def((**langs.first)["locale"], (**langs.first)["name"], (**langs.first)["dir"],
+				(**langs.first)["alternates"]));
 	}
 
 	return true;
@@ -116,7 +117,8 @@ std::vector<language_def> get_languages()
 	return known_languages;
 }
 
-static void wesnoth_setlocale(int category, std::string const &slocale)
+static void wesnoth_setlocale(int category, std::string const &slocale,
+	std::vector<std::string> const *alternates)
 {
 	char const *locale = slocale.c_str();
 	// FIXME: ideally we should check LANGUAGE and on first invocation
@@ -171,12 +173,29 @@ static void wesnoth_setlocale(int category, std::string const &slocale)
 		locale = xlocale.c_str();
 	}
 #endif
-	char* res = setlocale (category, locale);
+
+	char *res = NULL;
+	char const *try_loc = locale;
+	std::vector<std::string>::const_iterator i;
+	if (alternates) i = alternates->begin();
+	while (true) {
+		res = setlocale(category, try_loc);
+		if (res) break;
+		std::string utf8 = std::string(try_loc) + std::string(".utf8");
+		try_loc = utf8.c_str();
+		res = setlocale(category, try_loc);
+		if (res) break;
+		if (!alternates) break;
+		if (i == alternates->end()) break;
+		try_loc = i->c_str();
+		i++;
+	}
+
 	if (res == NULL)
 		std::cerr << "WARNING: setlocale() failed for "
 			  << locale << ".\n";
 	else
-		std::cerr << "set locale to " << locale << "\n";
+		std::cerr << "set locale to " << try_loc << "\n";
 }
 
 bool set_language(const language_def& locale)
@@ -190,7 +209,9 @@ bool set_language(const language_def& locale)
 	config cfg;
 
 	current_language = locale;
-	wesnoth_setlocale(LC_MESSAGES, locale.localename);
+
+	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);
+	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
 
 	// fill string_table (should be moved somwhere else some day)
 	try {
@@ -232,7 +253,7 @@ const language_def& get_locale()
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
-		wesnoth_setlocale(LC_MESSAGES, prefs_locale);
+		wesnoth_setlocale(LC_MESSAGES, prefs_locale, NULL);
 		for(std::vector<language_def>::const_iterator i = known_languages.begin();
 				i != known_languages.end(); ++i) {
 			if (prefs_locale == i->localename)

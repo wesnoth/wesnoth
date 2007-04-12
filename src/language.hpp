@@ -14,6 +14,7 @@
 #define LANGUAGE_HPP_INCLUDED
 
 #include "tstring.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <map>
 #include <string>
@@ -28,10 +29,14 @@ class config;
 struct language_def
 {
 	language_def() {}
-	language_def(const std::string& name, const t_string& lang, const std::string& dir) :
+	language_def(const std::string& name, const t_string& lang, const std::string& dir,
+	    const std::string &salternates = "") :
 		localename(name), language(lang), rtl(dir == "rtl")
-	{}
+	{
+            alternates = utils::split(salternates);
+        }
 	std::string localename;
+	std::vector<std::string> alternates;
 	t_string language;
 	bool rtl;		// A right to left language? (e.g: Hebrew)
 	bool operator== (const language_def&) const;
