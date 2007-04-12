@@ -151,7 +151,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 		player->available_units.clear();
 	}
 	//backwards compatibility code for 1.2/1.2.1
-	if ( (starting_units.begin() != starting_units.end()) && player && (gamestate.version < "1.2.2") ){
+	if ( (starting_units.begin() != starting_units.end()) && player && (!gamestate.version.empty()) && (gamestate.version < "1.2.2") ){
 		player->available_units.clear();
 	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
