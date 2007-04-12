@@ -87,13 +87,18 @@ namespace {
 SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
 
 //this array must have members corresponding to cursor::CURSOR_TYPE enum members
+//Apple need 16x16 b&w cursors
 #ifdef __APPLE__
 const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
 #else
 const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
 #endif
 
-const std::string colour_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
+const std::string colour_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
+
+// position of the click point from the normal topleft
+const int shift_x[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 2, 3, 0};
+const int shift_y[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 20, 22, 0};
 
 // The cursor wanted
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
@@ -267,7 +272,7 @@ void draw(surface screen)
 	cursor_y = new_cursor_y;
 
 	//save the screen area where the cursor is being drawn onto the back buffer
-	SDL_Rect area = {cursor_x,cursor_y,surf->w,surf->h};
+	SDL_Rect area = {cursor_x - shift_x[current_cursor], cursor_y - shift_y[current_cursor],surf->w,surf->h};
 	SDL_BlitSurface(screen,&area,cursor_buf,NULL);
 
 	//blit the surface
@@ -288,7 +293,7 @@ void undraw(surface screen)
 		return;
 	}
 
-	SDL_Rect area = {cursor_x,cursor_y,cursor_buf->w,cursor_buf->h};
+	SDL_Rect area = {cursor_x - shift_x[current_cursor], cursor_y - shift_y[current_cursor],cursor_buf->w,cursor_buf->h};
 	SDL_BlitSurface(cursor_buf,NULL,screen,&area);
 	update_rect(area);
 }
