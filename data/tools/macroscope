@@ -27,9 +27,14 @@
 # statically matching the pattern as having been referenced even
 # though none of the actual macro calls would actually generate it.
 #
+# (4) There are some implicit references.  Notably, if an attack name
+# is specified but no icon is given, the attack icon will default to
+# a name generated from the attack name,
+#
 # Problems (1) and (2) imply that this tool might conceivably report
 # that a reference has been satisfied when under actual
-# WML-interpreter rules it has not.  The reverse will not occur.
+# WML-interpreter rules it has not.  Problem (4) means the reverse
+# can also occur.
 #
 # The reporting format is compatible with GNU Emacs compile mode.
 
