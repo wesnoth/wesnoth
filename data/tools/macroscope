@@ -89,7 +89,7 @@ class CrossRef:
         return None
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
-        pattern = re.compile(pattern + "$")
+        pattern = re.compile(re.escape(pattern) + "$")
         key = None
         for trial in self.fileref:
             if pattern.match(trial):
@@ -129,7 +129,7 @@ class CrossRef:
                         here = reference(filename, n+1)
                         if name in self.xref:
                             print >>sys.stderr, "*** Warning: duplicate definition of %s from %s, at %s" \
-                                  % (name, self.xref[name][0], here)
+                                  % (name, self.xref[name], here)
                         self.xref[name] = here
                 dfp.close()
         # Next, decorate definitions with all references from the filelist.
