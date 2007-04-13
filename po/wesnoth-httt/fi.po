@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-10 22:59+0200\n"
+"POT-Creation-Date: 2007-04-13 10:47+0200\n"
 "PO-Revision-Date: 2006-06-16 22:18+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -6476,7 +6476,7 @@ msgid "flaming sword"
 msgstr "liekehtivä miekka"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:77
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:157
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:199
 msgid "No"
 msgstr "En"
 
@@ -6509,12 +6509,28 @@ msgstr ""
 "päällä hämmästyttävän mukava. Vastustuksesi kasvaa kaikkia fyysisiä "
 "vähinkotyyppejä vastaan!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:183
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:348
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:146
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:148
+#, fuzzy
+msgid "void armor"
+msgstr "Mahtipanssari"
+
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:155
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:161
+msgid ""
+"The Void Armor grants the following resistances:\n"
+"blade:  50%\n"
+"pierce: 50%\n"
+"impact: 60%\n"
+"fire:  +10%"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:225
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:390
 msgid "Scepter of Fire"
 msgstr "Tulinen valtikka"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:186
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:228
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
@@ -6523,8 +6539,8 @@ msgstr ""
 "Tämä ikiaikainen valtikka, Wesnothin kuninkuuden symboli, on kääpiöiden "
 "tekoa. Se on myös mahtava ase, jolla voi ampua tulipalloja!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:187
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:352
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:229
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:394
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
@@ -6532,7 +6548,7 @@ msgstr ""
 "Tämä on Tulinen valtikka. Vain todellinen valtaistuimen perillinen saattaa "
 "uskaltaa koskea tähän!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:351
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:393
 msgid ""
 "This ancient Scepter was forged by the great Dwarves of the Deep Mountains. "
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
@@ -6541,29 +6557,29 @@ msgstr ""
 "Tämä ikiaikainen valtikka, Wesnothin kuninkuuden symboli, on Syvävuorten "
 "kääpiöiden tekoa. Se on myös mahtava ase, jolla voi ampua tulipalloja!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:377
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:419
 msgid "Here it is at last, I have the Scepter!"
 msgstr "Tässä on vihdoinkin Tulinen valtikka!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:381
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:423
 msgid "So it is in our hands! Now let us leave this stinking pit."
 msgstr "Se on meillä! Nyt, lähtekäämme tästä haisevasta loukosta."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:385
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:427
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr "Luulen, että jos menemme vähän pohjoiseen, saatamme päästä ulos."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:406
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:448
 msgid "At last! I have the Scepter!"
 msgstr "Vihdoinkin minulla on valtikka!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:410
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:452
 msgid "Indeed. You managed to reach it Li'sar. I hope you shall use it wisely."
 msgstr ""
 "Todella. Onnistuit saamaan sen, Li'sar. Toivon, että käytät sitä viisaasti."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:414
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:456
 msgid ""
 "Well my first use for it is going to be to help us get out of this hole! I "
 "hope you consider that wise."
@@ -6571,7 +6587,7 @@ msgstr ""
 "Ensimmäiseksi aion käyttää sitä auttaakseni meidät ulos tästä loukosta! "
 "Toivoakseni pidät sitä viisaana."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:418
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:460
 msgid ""
 "The Scepter makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
@@ -6579,7 +6595,7 @@ msgstr ""
 "Valtikka tekee kantajastaan vahvan, mutta ei kuolematonta, lapsi. Käytä sitä "
 "viisaasti. Nyt, tulkaa, uskon, että pääsemme täältä ulos pohjoisen kautta."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:422
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:464
 msgid "I think I know what I'm doing. Come, let us go!"
 msgstr "Tiedän kyllä mitä teen. Tulkaa, mennään!"
 
