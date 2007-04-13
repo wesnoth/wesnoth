@@ -63,12 +63,6 @@ manager::manager()
 	set_sound_volume(sound_volume());
 
 	set_show_haloes(prefs["show_haloes"] != "no");
-	if(prefs["remember_timer_settings"] != "yes") {
-		prefs.values.erase("mp_countdown_init_time");
-		prefs.values.erase("mp_countdown_reservoir_time");
-		prefs.values.erase("mp_countdown_turn_bonus");
-		prefs.values.erase("mp_countdown_action_bonus");
-	}
 
 	std::vector<std::string> v;
 	v = utils::split(prefs["encountered_units"]);
@@ -502,94 +496,6 @@ bool skip_mp_replay()
 void set_skip_mp_replay(bool value)
 {
 	prefs["skip_mp_replay"] = value ? "yes" : "no";
-}
-
-
-bool countdown()
-{
-	return prefs["mp_countdown"] == "yes";
-}
-
-void set_countdown(bool value)
-{
-	prefs["mp_countdown"] = value ? "yes" : "no";
-}
-
-
-int countdown_init_time()
-{
-	static const int default_value = 270;
-	int value = 0;
-	const std::string& timer_init = prefs["mp_countdown_init_time"];
-	value = lexical_cast_default<int>(timer_init,default_value);
-
-	if(value < 0 || value > 1500) {
-		value = default_value;
-	}
-
-	return value;
-}
-
-void set_countdown_init_time(int value)
-{
-	prefs["mp_countdown_init_time"] = lexical_cast<std::string>(value);
-}
-
-int countdown_reservoir_time()
-{
-	static const int default_value = 330;
-	int value = 0;
-	const std::string& timer_init = prefs["mp_countdown_reservoir_time"];
-	value = lexical_cast_default<int>(timer_init,default_value);
-
-	if(value < 30 || value > 1500) {
-		value = default_value;
-	}
-
-	return value;
-}
-
-void set_countdown_reservoir_time(int value)
-{
-	prefs["mp_countdown_reservoir_time"] = lexical_cast<std::string>(value);
-}
-
-int countdown_turn_bonus()
-{
-	static const int default_value = 40;
-	int value = 0;
-	const std::string& timer_bonus = prefs["mp_countdown_turn_bonus"];
-	value = lexical_cast_default<int>(timer_bonus,default_value);
-
-	if(value <= 0 || value > 300) {
-		value = default_value;
-	}
-
-	return value;
-}
-
-void set_countdown_turn_bonus(int value)
-{
-	prefs["mp_countdown_turn_bonus"] =lexical_cast<std::string>(value);
-}
-
-int countdown_action_bonus()
-{
-	static const int default_value = 13;
-	int value = 0;
-	const std::string& timer_bonus = prefs["mp_countdown_action_bonus"];
-	value = lexical_cast_default<int>(timer_bonus,default_value);
-
-	if(value < 0 || value > 30) {
-		value = default_value;
-	}
-
-	return value;
-}
-
-void set_countdown_action_bonus(int value)
-{
-	prefs["mp_countdown_action_bonus"] =lexical_cast<std::string>(value);
 }
 
 int village_gold()

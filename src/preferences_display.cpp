@@ -166,17 +166,6 @@ class preferences_dialog : public gui::preview_pane
 {
 public:
 	preferences_dialog(display& disp, const config& game_cfg);
-
-	struct video_mode_change_exception
-	{
-		enum TYPE { CHANGE_RESOLUTION, MAKE_FULLSCREEN, MAKE_WINDOWED };
-
-		video_mode_change_exception(TYPE type) : type(type)
-		{}
-
-		TYPE type;
-	};
-
 	void join();
 
 private:
@@ -189,10 +178,10 @@ private:
 	void set_advanced_menu();
 
 	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_, buffer_size_slider_;
-	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
+	gui::button turbo_button_, show_ai_moves_button_,
 	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
-	            show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
+	            show_haloing_button_, gamma_button_,
 	            flip_time_button_, advanced_button_, sound_button_, music_button_, advanced_sound_button_, normal_sound_button_,
 	            sample_rate_button1_, sample_rate_button2_, sample_rate_button3_, confirm_sound_button_;
 	gui::label music_label_, sound_label_, scroll_label_, gamma_label_,  sample_rate_label_, buffer_size_label_;
@@ -216,7 +205,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  music_slider_(disp.video()), sound_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
 	  buffer_size_slider_(disp.video()),
-	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
@@ -226,9 +214,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_team_colours_button_(disp.video(), _("Show Team Colors"), gui::button::TYPE_CHECK),
 	  show_colour_cursors_button_(disp.video(), _("Show Color Cursors"), gui::button::TYPE_CHECK),
 	  show_haloing_button_(disp.video(), _("Show Haloing Effects"), gui::button::TYPE_CHECK),
-	  video_mode_button_(disp.video(), _("Video Mode")),
-	  theme_button_(disp.video(), _("Theme")),
-	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  gamma_button_(disp.video(), _("Adjust Gamma"), gui::button::TYPE_CHECK),
 	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
@@ -308,9 +293,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	gamma_slider_.set_value(gamma());
 	gamma_slider_.set_help_string(_("Change the brightness of the display"));
 
-	fullscreen_button_.set_check(fullscreen());
-	fullscreen_button_.set_help_string(_("Choose whether the game should run full screen or in a window"));
-
 	turbo_button_.set_check(turbo());
 	turbo_button_.set_help_string(_("Make units move and fight faster"));
 
@@ -322,9 +304,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	show_floating_labels_button_.set_check(show_floating_labels());
 	show_floating_labels_button_.set_help_string(_("Show text above a unit when it is hit to display damage inflicted"));
-
-	video_mode_button_.set_help_string(_("Change the resolution the game runs at"));
-	theme_button_.set_help_string(_("Change the theme the game runs with"));
 
 	turn_dialog_button_.set_check(turn_dialog());
 	turn_dialog_button_.set_help_string(_("Display a dialog at the beginning of your turn"));
@@ -344,8 +323,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_haloing_button_.set_check(show_haloes());
 	show_haloing_button_.set_help_string(_("Use graphical special effects (may be slower)"));
 
-	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
-
 	set_advanced_menu();
 }
 
@@ -360,7 +337,6 @@ void preferences_dialog::join()
 	scroll_slider_.join();
 	gamma_slider_.join();
 	buffer_size_slider_.join();
-	fullscreen_button_.join();
 	turbo_button_.join();
 	show_ai_moves_button_.join();
 	show_grid_button_.join();
@@ -370,9 +346,6 @@ void preferences_dialog::join()
 	show_team_colours_button_.join();
 	show_colour_cursors_button_.join();
 	show_haloing_button_.join();
-	video_mode_button_.join();
-	theme_button_.join();
-	hotkeys_button_.join();
 	gamma_button_.join();
 	flip_time_button_.join();
 	advanced_button_.join();
@@ -418,7 +391,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; turn_bell_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
-	ypos += item_interline; hotkeys_button_.set_location(rect.x, ypos);
 
 	// Display tab
 	ypos = rect.y + top_border;
@@ -432,9 +404,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
-	ypos += item_interline; fullscreen_button_.set_location(rect.x, ypos);
-	ypos += item_interline; video_mode_button_.set_location(rect.x, ypos);
-	theme_button_.set_location(rect.x+video_mode_button_.width()+10, ypos);
 
 	// Sound tab
 	slider_label_width_ = maximum<unsigned>(music_label_.width(), sound_label_.width());
@@ -506,22 +475,12 @@ void preferences_dialog::process_event()
 		set_grid(show_grid_button_.checked());
 	if (show_floating_labels_button_.pressed())
 		set_show_floating_labels(show_floating_labels_button_.checked());
-	if (video_mode_button_.pressed())
-		throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
-	if (theme_button_.pressed())
-	        show_theme_dialog(disp_);
-	if (fullscreen_button_.pressed())
-		throw video_mode_change_exception(fullscreen_button_.checked()
-		                                  ? video_mode_change_exception::MAKE_FULLSCREEN
-		                                  : video_mode_change_exception::MAKE_WINDOWED);
 	if (turn_bell_button_.pressed())
 		set_turn_bell(turn_bell_button_.checked());
 	if (turn_dialog_button_.pressed())
 		set_turn_dialog(turn_dialog_button_.checked());
 	if (show_team_colours_button_.pressed())
 		set_show_side_colours(show_team_colours_button_.checked());
-	if (hotkeys_button_.pressed())
-		show_hotkeys_dialog(disp_);
 	if (show_colour_cursors_button_.pressed())
 		set_colour_cursors(show_colour_cursors_button_.checked());
 	if (show_haloing_button_.pressed())
@@ -683,7 +642,6 @@ void preferences_dialog::set_selection(int index)
 	show_ai_moves_button_.hide(hide_general);
 	turn_dialog_button_.hide(hide_general);
 	turn_bell_button_.hide(hide_general);
-	hotkeys_button_.hide(hide_general);
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);
 
@@ -696,9 +654,6 @@ void preferences_dialog::set_selection(int index)
 	show_floating_labels_button_.hide(hide_display);
 	show_colour_cursors_button_.hide(hide_display);
 	show_haloing_button_.hide(hide_display);
-	fullscreen_button_.hide(hide_display);
-	video_mode_button_.hide(hide_display);
-	theme_button_.hide(hide_display);
 	flip_time_button_.hide(hide_display);
 
 	const bool hide_sound = tab_ != SOUND_TAB;
@@ -739,249 +694,12 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 	items.push_back(pre + "music.png" + sep + sgettext("Prefs section^Sound"));
 	items.push_back(pre + "advanced.png" + sep + sgettext("Advanced section^Advanced"));
 
-	for(;;) {
-		try {
-			preferences_dialog dialog(disp,game_cfg);
-			std::vector<gui::preview_pane*> panes;
-			panes.push_back(&dialog);
+	preferences_dialog dialog(disp,game_cfg);
+	std::vector<gui::preview_pane*> panes;
+	panes.push_back(&dialog);
 
-			gui::show_dialog2(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes);
-			return;
-		} catch(preferences_dialog::video_mode_change_exception& e) {
-			switch(e.type) {
-			case preferences_dialog::video_mode_change_exception::CHANGE_RESOLUTION:
-				show_video_mode_dialog(disp);
-				break;
-			case preferences_dialog::video_mode_change_exception::MAKE_FULLSCREEN:
-				set_fullscreen(true);
-				break;
-			case preferences_dialog::video_mode_change_exception::MAKE_WINDOWED:
-				set_fullscreen(false);
-				break;
-			}
-
-			if(items[1].empty() || items[1][0] != '*') {
-				items[1] = "*" + items[1];
-			}
-		}
-	}
-}
-
-bool show_video_mode_dialog(display& disp)
-{
-	const events::resize_lock prevent_resizing;
-	const events::event_context dialog_events_context;
-
-	CVideo& video = disp.video();
-
-	SDL_PixelFormat format = *video.getSurface()->format;
-	format.BitsPerPixel = video.getBpp();
-
-	const SDL_Rect* const * const modes = SDL_ListModes(&format,FULL_SCREEN);
-
-	//the SDL documentation says that a return value of -1 if no dimension
-	//is available.
-	if(modes == reinterpret_cast<SDL_Rect**>(-1) || modes == NULL) {
-		if(modes != NULL)
-			std::cerr << "Can support any video mode\n";
-		else
-			std::cerr << "No modes supported\n";
-		gui::show_dialog(disp,NULL,"",_("There are no alternative video modes available"));
-		return false;
-	}
-
-	std::vector<std::pair<int,int> > resolutions;
-
-	for(int i = 0; modes[i] != NULL; ++i) {
-		if(modes[i]->w >= min_allowed_width && modes[i]->h >= min_allowed_height) {
-			resolutions.push_back(std::pair<int,int>(modes[i]->w,modes[i]->h));
-		}
-	}
-
-	const std::pair<int,int> current_res(video.getSurface()->w,video.getSurface()->h);
-	resolutions.push_back(current_res);
-
-	std::sort(resolutions.begin(),resolutions.end(),compare_resolutions);
-	resolutions.erase(std::unique(resolutions.begin(),resolutions.end()),resolutions.end());
-
-	std::vector<std::string> options;
-	for(std::vector<std::pair<int,int> >::const_iterator j = resolutions.begin(); j != resolutions.end(); ++j) {
-		std::ostringstream option;
-		if (*j == current_res)
-			option << DEFAULT_ITEM;
-
-		option << j->first << "x" << j->second;
-		options.push_back(option.str());
-	}
-
-	const int result = gui::show_dialog2(disp,NULL,"",
-	                                    _("Choose Resolution"),
-	                                    gui::OK_CANCEL,&options);
-	if(size_t(result) < resolutions.size() && resolutions[result] != current_res) {
-		set_resolution(resolutions[result]);
-		return true;
-	} else {
-		return false;
-	}
-}
-
-void show_hotkeys_dialog (display & disp, config *save_config)
-{
-	log_scope ("show_hotkeys_dialog");
-
-	const events::event_context dialog_events_context;
-
-	const int centerx = disp.x()/2;
-	const int centery = disp.y()/2;
-#ifdef USE_TINY_GUI
-	const int width = 300;			  // FIXME: should compute this, but using what data ?
-	const int height = 220;
-#else
-	const int width = 700;
-	const int height = 500;
-#endif
-	const int xpos = centerx  - width/2;
-	const int ypos = centery  - height/2;
-
-	gui::button close_button (disp.video(), _("Close Window"));
-	std::vector<gui::button*> buttons;
-	buttons.push_back(&close_button);
-
-	surface_restorer restorer;
-	gui::draw_dialog(xpos,ypos,width,height,disp.video(),_("Hotkey Settings"),NULL,&buttons,&restorer);
-
-	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
-	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_PLUS,
-					     font::NORMAL_COLOUR,_("Press desired Hotkey"),
-					     0, 0);
-
-	std::vector<std::string> menu_items;
-
-	std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
-	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i) {
-		if(i->hidden())
-			continue;
-		std::stringstream str,name;
-		name << i->get_description();
-		str << name.str();
-		str << COLUMN_SEPARATOR;
-		str << i->get_name();
-		menu_items.push_back(str.str());
-	}
-
-	std::ostringstream heading;
-	heading << HEADING_PREFIX << _("Action") << COLUMN_SEPARATOR << _("Binding");
-	menu_items.push_back(heading.str());
-
-	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(0).set_alpha_sort(1);
-
-	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter, &gui::menu::bluebg_style);
-	menu_.sort_by(0);
-	menu_.reset_selection();
-	menu_.set_width(font::relative_size(400));
-	menu_.set_location(xpos + font::relative_size(20), ypos);
-
-	gui::button change_button (disp.video(), _("Change Hotkey"));
-	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30),ypos + font::relative_size(80));
-
-	gui::button save_button (disp.video(), _("Save Hotkeys"));
-	save_button.set_location(xpos + width - save_button.width () - font::relative_size(30),ypos + font::relative_size(130));
-
-	for(;;) {
-
-		if (close_button.pressed())
-			break;
-
-		if (change_button.pressed ()) {
-			// Lets change this hotkey......
-			SDL_Rect dlgr = {centerx-text_size.w/2 - 30,
-								centery-text_size.h/2 - 16,
-									text_size.w+60,
-									text_size.h+32};
-			surface_restorer restorer(&disp.video(),dlgr);
-			gui::draw_dialog_frame (centerx-text_size.w/2 - 20,
-									centery-text_size.h/2 - 6,
-									text_size.w+40,
-									text_size.h+12,disp.video());
-			font::draw_text (&disp.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOUR,
-				 _("Press desired Hotkey"),centerx-text_size.w/2-10,
-				 centery-text_size.h/2-3);
-			disp.update_display();
-			SDL_Event event;
-			event.type = 0;
-			int character=0,keycode=0; //just to avoid warning
-			int mod=0;
-			while (event.type!=SDL_KEYDOWN) SDL_PollEvent(&event);
-			do {
-				if (event.type==SDL_KEYDOWN)
-				{
-					keycode=event.key.keysym.sym;
-					character=event.key.keysym.unicode;
-					mod=event.key.keysym.mod;
-				};
-				SDL_PollEvent(&event);
-				disp.flip();
-				disp.delay(10);
-			} while (event.type!=SDL_KEYUP);
-			restorer.restore();
-			disp.update_display();
-
-			const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(character, keycode, (mod & KMOD_SHIFT) != 0,
-					(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
-			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
-
-			if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
-				gui::show_dialog(disp,NULL,"",_("This Hotkey is already in use."),gui::MESSAGE);
-			} else {
-				newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
-						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
-
-				menu_.change_item(menu_.selection(), 1, newhk.get_name());
-			};
-		}
-		if (save_button.pressed()) {
-			if (save_config == NULL) {
-				save_hotkeys();
-			} else {
-				hotkey::save_hotkeys(*save_config);
-			}
-		}
-
-		menu_.process();
-
-		events::pump();
-		events::raise_process_event();
-		events::raise_draw_event();
-
-		disp.update_display();
-
-		disp.delay(10);
-	}
-}
-
-bool show_theme_dialog(display& disp)
-{
-  int action = 0;
-  std::vector<std::string> options = disp.get_theme().get_known_themes();
-  if(options.size()){
-    std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
-    action = gui::show_dialog2(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
-    if(action >= 0){
-      preferences::set_theme(options[action]);
-      //it would be preferable for the new theme to take effect
-      //immediately, however, this will have to do for now.
-      gui::show_dialog(disp,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
-      return(1);
-    }
-  }else{
-      gui::show_dialog(disp,NULL,"",_("No known themes.  Try changing from within an existing game."),gui::MESSAGE);
-  }
-  return(0);
+	gui::show_dialog2(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes);
+	return;
 }
 
 }
-
-
-
-
