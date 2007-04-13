@@ -14,6 +14,7 @@
 
 #include "display.hpp"
 #include "global.hpp"
+#define UNIT_FRAME_H_PART2
 #include "unit_frame.hpp"
 
 
@@ -135,6 +136,9 @@ return data_.empty() ||
 // Force compilation of the following template instantiations
 template class progressive_<int>;
 template class progressive_<double>;
+
+#undef UNIT_FRAME_H_PART2
+#include "unit_frame.hpp"
 
 unit_frame::unit_frame() :
 	 image_(), image_diagonal_(),halo_(), sound_(),

@@ -48,6 +48,10 @@ public:
 typedef progressive_<int> progressive_int;
 typedef progressive_<double> progressive_double;
 
+#endif
+#ifndef UNIT_FRAME_H_PART2
+#define UNIT_FRAME_H_PART2
+
 //a class to describe a unit's animation sequence
 class unit_frame {
 	public:
