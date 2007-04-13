@@ -1409,6 +1409,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "recall") {
 		LOG_NG << "recalling unit...\n";
 		bool unit_recalled = false;
+		config unit_filter(cfg.get_config());
+		//prevent the recall unit filter from using the location as a criterion
+		// FIXME: we should design the WML to avoid these types of collisions;
+		// filters should be named consistently and always have a distinct scope
+		unit_filter["x"] = "";
+		unit_filter["y"] = "";
 		for(int index = 0; !unit_recalled && index < int(teams->size()); ++index) {
 			LOG_NG << "for side " << index << "...\n";
 			const std::string player_id = (*teams)[index].save_id();
@@ -1426,7 +1432,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				wassert(game_data_ptr != NULL);
 				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				scoped_recall_unit("this_unit", player_id, u - avail.begin());
-				if(game_events::unit_matches_filter(*u, cfg,gamemap::location())) {
+				if(game_events::unit_matches_filter(*u, &unit_filter, gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u); //erase before recruiting, since recruiting can fire more events
