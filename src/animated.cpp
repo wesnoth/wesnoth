@@ -177,6 +177,22 @@ int animated<T,T_void_value>::get_animation_time() const
 }
 
 template<typename T,  typename T_void_value>
+const int animated<T,T_void_value>::get_animation_duration() const
+{
+	int duration = 0;
+	for (size_t i=0; i!=frames_.size(); i++) {
+		duration += frames_[i].duration_;
+	}
+	return duration;
+}
+
+template<typename T,  typename T_void_value>
+const int animated<T,T_void_value>::get_animation_tempo() const
+{
+	return get_animation_duration() / get_frames_count();
+}
+
+template<typename T,  typename T_void_value>
 const T& animated<T,T_void_value>::get_current_frame() const
 {
 	if(frames_.empty() )

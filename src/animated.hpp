@@ -61,6 +61,9 @@ public:
 	bool animation_finished() const;
 	bool animation_would_finish() const;
 	int get_animation_time() const;
+	const int get_animation_duration() const;
+	// get the mean tempo (total duration / number of frames)
+	const int get_animation_tempo() const;
 	const T& get_current_frame() const;
 	// get the next frame (or the current + shift frames)
 	const T& get_next_frame(int shift = 1) const;
