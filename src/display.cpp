@@ -1653,7 +1653,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		image.assign(image::reverse_image(image));
 	}
 
-	draw_unit(xloc,yloc,image,vflip,ftofxp(0.5));
+	draw_unit(xloc,yloc,image,vflip);
 }
 
 void display::draw_movement_info(const gamemap::location& loc, int xloc, int yloc)
