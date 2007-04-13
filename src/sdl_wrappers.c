@@ -116,16 +116,6 @@ static unsigned int surface_size(const SDL_Surface *s)
 /*
  * Actual wrappers for SDL surface manipulating functions start here
  */
-SDL_Surface *IMG_Load(const char *s)
-{
-	SDL_Surface *tmp = (SDL_Surface *) Load(s);
-
-	if(s)
-		allocated += surface_size(tmp);
-
-	return tmp;
-}
-
 void SDL_FreeSurface(SDL_Surface *s)
 {
 	if(s && s->refcount == 1)
@@ -134,6 +124,19 @@ void SDL_FreeSurface(SDL_Surface *s)
 	FreeSurface(s);
 }
 
+SDL_Surface *SDL_CreateRGBSurface(Uint32 flags, int width, int height, int depth, Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
+{
+	SDL_Surface *tmp = CreateRGBSurface(flags, width, height, depth, Rmask, Gmask, Bmask, Amask);
+	allocated += surface_size(tmp);
+	return tmp;
+}
+
+/*
+ * These, as it turns out, use SDL_CreateRGBSurface internally, so counting
+ * memory allocated by "them" would cause it being counted twice...
+ *
+ * Commented out, at least for now.
+ *
 SDL_Surface *SDL_ConvertSurface(SDL_Surface *src, SDL_PixelFormat *fmt, Uint32 flags)
 {
 	SDL_Surface *tmp = ConvertSurface(src, fmt, flags);
@@ -141,10 +144,13 @@ SDL_Surface *SDL_ConvertSurface(SDL_Surface *src, SDL_PixelFormat *fmt, Uint32 f
 	return tmp;
 }
 
-SDL_Surface *SDL_CreateRGBSurface(Uint32 flags, int width, int height, int depth, Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
+SDL_Surface *IMG_Load(const char *s)
 {
-	SDL_Surface *tmp = CreateRGBSurface(flags, width, height, depth, Rmask, Gmask, Bmask, Amask);
-	allocated += surface_size(tmp);
+	SDL_Surface *tmp = (SDL_Surface *) Load(s);
+
+//	if(s)
+//		allocated += surface_size(tmp);
+
 	return tmp;
 }
 
@@ -168,5 +174,6 @@ SDL_Surface *SDL_DisplayFormatAlpha(SDL_Surface *surface)
 //	allocated += surface_size(tmp);
 	return tmp;
 }
+*/
 
 /* vim: set ts=4 sw=4: */
