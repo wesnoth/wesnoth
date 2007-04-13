@@ -717,6 +717,16 @@ void display::flip()
 
 	const surface frameBuffer = get_video_surface();
 
+	// use this bit of code to see how the view is updated
+	// change the frequency for keeping a good framerate
+	/*if (rand()%100 <= 10) {
+		SDL_Rect r = map_area(); //use frameBuffer to also test the UI
+		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
+		// adjust the alpha if you want progressive (or not) steps
+		fill_rect_alpha(r, color, 1, frameBuffer);
+		update_rect(r);
+	}*/
+
 	font::draw_floating_labels(frameBuffer);
 	events::raise_volatile_draw_event();
 	cursor::draw(frameBuffer);
