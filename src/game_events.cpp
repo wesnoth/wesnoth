@@ -1164,7 +1164,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 							ui != player->available_units.end(); ++ui) {
 						wassert(game_data_ptr != NULL);
 						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
-						scoped_recall_unit("this_unit", player_id,
+						scoped_recall_unit auto_store("this_unit", player_id,
 							(ui - player->available_units.begin()));
 						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
 							ui->assign_role(cfg["role"]);
@@ -1183,7 +1183,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 							ui != pi->second.available_units.end(); ++ui) {
 						wassert(game_data_ptr != NULL);
 						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
-						scoped_recall_unit("this_unit", pi->first,
+						scoped_recall_unit auto_store("this_unit", pi->first,
 							(ui - pi->second.available_units.begin()));
 						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
 							ui->assign_role(cfg["role"]);
@@ -1431,7 +1431,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				LOG_NG << "checking unit against filter...\n";
 				wassert(game_data_ptr != NULL);
 				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
-				scoped_recall_unit("this_unit", player_id, u - avail.begin());
+				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 				if(game_events::unit_matches_filter(*u, &unit_filter, gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
@@ -1738,7 +1738,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
 				wassert(game_data_ptr != NULL);
 				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
-				scoped_recall_unit("this_unit", pi->first, j - avail_units.begin());
+				scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
 				if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
                             j = avail_units.erase(j);
                           } else {
@@ -1850,7 +1850,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
 				wassert(game_data_ptr != NULL);
 				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
-				scoped_recall_unit("this_unit", pi->first, j - avail_units.begin());
+				scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
 				if(game_events::unit_matches_filter(*j, filter,gamemap::location()) == false) {
 						++j;
 						continue;
