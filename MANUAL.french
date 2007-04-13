@@ -1,47 +1,47 @@
 
-LE MANUEL DE BATTLE FOR WESNOTH
+MANUEL DE BATTLE FOR WESNOTH
 
-Si vous débutez à Battle for Wesnoth vous devriez d'abord lire le guide Démarrer
-(http://wesnoth.slack.it/?GettingStarted).
+Si vous débutez à Battle for Wesnoth, vous devriez commencer par lire 
+le guide de démarrage : http://www.wesnoth.org/wiki/GettingStarted.
 
 
-CONTRÔLES
+RACCOURCIS CLAVIER
 
-F1             Aide de Battle for Wesnoth
+F1             Aide
 Flèches        Défilement
 Clic gauche    Sélection d'une unité, déplacement d'une unité
 Clic droit     Menu principal, annulation d'une action
 Clic milieu    Centrage sur la position du pointeur
 Échap          Quitter le jeu, quitter le menu, annuler un message
 ctrl-r         Recrutement d'une unité
-ctrl-shift-r   Répétition du dernier recrutement
+ctrl-alt-r     Répétition du dernier recrutement
 alt-r          Rappel d'une unité
 u              Annulation du dernier déplacement (seuls les déplacements
                déterministes peuvent être annulés)
 r              Refaire le déplacement
-m              Rédiger un message pour un autre joueur (en mode multi-joueurs)
-M              Rédiger un message pour vos alliés (en mode multi-joueurs)
-alt-m          Rédiger un message pour tout le monde dans le jeu (en mode
-               multi-joueurs)
+m              Rédiger un message pour un autre joueur (en mode multijoueurs)
+M              Rédiger un message pour vos alliés (en mode multijoueurs)
+alt-m          Rédiger un message pour tout le monde dans le jeu (en mode 
+               multijoueurs)
 n              Parcourir les unités qui ont encore un déplacement possible
 N              Parcourir les unités qui ont encore un déplacement possible, dans
                l'ordre inverse
 espace         Finir le tour de l'unité et aller à la prochaine unité qui a
-               encore un déplacement possibles
-alt-espace     Finir le tour de ce joueur
+               encore un déplacement possible
+ctrl-espace    Finir le tour de ce joueur
 shift-espace   Tenir la position de l'unité ; ignorer cette unité en parcourant
                les unités
-ctrl-v         Montrer les mouvements de l'ennemi (où l'ennemi peut se déplacer
-               au prochain tour)
+ctrl-v         Montrer les mouvements de l'ennemi (là où il peut se déplacer au
+               prochain tour)
 ctrl-b         Montrer les mouvements possibles de l'ennemi, si vos unités
                n'étaient pas sur la carte
-ctrl-f         Alterner mode plein écran/fenêtré
-ctrl-a         Alterner le mode de jeu accéléré
+ctrl-f         Alterner mode plein écran / mode fenêtré
+ctrl-a         Alterner mode de jeu accéléré / mode de jeu normal
 ctrl-s         Sauvegarder le jeu
 ctrl-o         Charger un jeu
 
-/              Rechercher
-t              Continuer le mouvement interrompu de l'unité
+/              Rechercher une note ou une unité
+t              Continuer le mouvement de l'unité
 z              Zoom avant
 x              Zoom arrière
 c              Remettre le zoom par défaut
@@ -50,16 +50,18 @@ ctrl-n         Renommer l'unité
                nombre de tours
 l              Se déplacer à l'unité du chef
 d              Décrire l'unité
-ctrl-d         Voir le taux de défense de l'unité contre les attaques
-ctrl-g         Alterner l'affichage de la grille
-alt-k          Alterner l'affichage de la brume
-ctrl-k         Mettre à jour la brume
-alt-l          Lier une étiquette de texte à un hexagone du terrain
-alt-s          Montrer la table des états
-ctrl-t         Montrer la table du terrain
-ctrl-m         Alterner l'activation des sons du jeu
-ctrl-j         Montrer les objectifs du scénario
-:              Mode commande, voir http://wesnoth.slack.it/?CommandMode
+ctrl-g         Afficher / masquer la grille
+S              Mettre à jour la voile
+D              Différer la mise à jour du voile
+alt-l          Associer une note à un hexagone du terrain
+ctrl-c         Effacer les notes
+alt-s          Afficher la table des états
+ctrl-m         Activer / Désactiver les sons du jeu
+ctrl-j         Afficher les objectifs du scénario
+s              Afficher les statistiques
+alt-u          Afficher la liste des unités
+alt-c          Afficher l'historique de discussion
+:              Mode commande, voir http://www.wesnoth.org/wiki/CommandMode
 
 Pour Mac OS X, la touche Cmd est utilisée à la place de Ctrl, et Opt à la place
 de Alt.
@@ -67,15 +69,14 @@ de Alt.
 
 ORBES
 
-Au sommet de la barre d'énergie des unités se trouve une orbe. Cette orbe est :
+Il y a un orbe au sommet de la barre d'énergie des unités. Cet orbe est :
 
-    * verte si vous contrôlez cette unité et qu'elle n'a pas encore bougé ce
-      tour-ci,
-    * jaune si vous contrôlez cette unité et qu'elle a déja bougé ce tour ci
-      mais qu'elle peut encore se déplacer ou attaquer,
-    * rouge si vous contrôlez cette unité mais qu'elle ne peut plus se déplacer
-      ce tour-ci,
-    * bleue s'il s'agit d'une unité alliée mais que vous ne contrôlez pas.
+   * vert si vous contrôlez l'unité et qu'elle n'a pas encore bougé ce tour-ci,
+   * jaune si vous contrôlez l'unité et qu'elle a déja bougé ce tour ci
+     mais qu'elle peut encore se déplacer ou attaquer,
+   * rouge si vous contrôlez l'unité mais qu'elle ne peut plus se déplacer
+     ce tour-ci,
+   * bleu s'il s'agit d'une unité alliée que vous ne contrôlez pas.
 
 Les unités ennemies n'ont pas d'orbe sur leur barre d'énergie.
 
@@ -83,29 +84,28 @@ Les unités ennemies n'ont pas d'orbe sur leur barre d'énergie.
 DESCRIPTION
 
 Le jeu donne lieu à une succession de batailles, ou scénarios. Chaque scénario
-mettra en jeu vos unités contre des troupes d'un ou plusieurs adversaires.
+mettra en prise vos unités avec des troupes d'un ou plusieurs adversaires.
 Chaque camp commence avec un chef dans son donjon.
 
 
 OR
 
-Chaque camp débutera avec une certaine somme d'argent (d'or en réalité ;-) ), et
-recevra 2 pièces d'or par tour, plus 1 pièce d'or supplémentaire pour chaque
-village contrôlé.
+Chaque camp débutera avec une certaine somme d'or et recevra 2 pièces d'or par 
+tour, plus 1 pièce d'or supplémentaire pour chaque village contrôlé.
 
-Chaque unité a aussi un coût d'entretien. Le coût d'entretien est en général
-égal au niveau de l'unité, à moins que l'unité ait le trait Loyal (voir plus
-bas). Les unités qui ne sont pas rappelées ou recrutées - c'est-à-dire qui
+Chaque unité a aussi un coût d'entretien, en général égal au niveau de l'unité,
+à moins que l'unité ait le trait Fidèle (voir plus bas).
+Les unités qui ne sont pas rappelées ou recrutées - c'est-à-dire qui
 mènent le camp ou rejoignent le camp volontairement - ont généralement le trait
-Loyal. L'entretien n'est payé que si l'entretien total des unités d'un camp est
-supérieur au nombre de villages que ce camp contrôle. L'entretien payé est la
-différence entre le nombre de villages et le coût d'entretien.
+fidèle. L'entretien n'est payé que si l'entretien total des unités d'un camp
+est supérieur au nombre de villages que ce camp contrôle. L'entretien payé est
+la différence entre le nombre de villages et le coût d'entretien.
 
-Ainsi, la formule pour déterminer le revenu par tour est :
+La formule pour déterminer le revenu par tour est :
 
   2 + villages - maximum(0, entretien - villages)
 
-où entretien est égal à la somme des niveaux de toutes vos unités non loyales.
+où entretien est égal à la somme des niveaux de toutes vos unités non fidèles.
 
 
 RECRUTEMENT ET RAPPEL
@@ -114,13 +114,13 @@ Les unités peuvent être recrutées avec de l'or, tant que votre chef se trouve
 sur un donjon, et qu'il reste au moins une case de château libre dans le château
 où se trouve votre chef. Faites un clic-droit et sélectionnez "Recruter" pour
 recruter de nouvelles unités de la liste qui est présentée. Le coût du
-recrutement dépend de l'unité, mais est en général entre 10 et 20 pièces d'or.
+recrutement dépend de l'unité, mais est en général de 10 à 20 pièces d'or.
 
 Après avoir terminé un scénario, toutes les unités survivantes seront
 disponibles pour votre prochain scénario. Faites un clic-droit et sélectionnez
 "Rappeler" pour recruter une unité de vos précédents scénarios. Le rappel d'une
-unité coûte 20 pièces d'or. Une unité rappelée garde son Niveau, ses Points
-d'Expérience, et (parfois) les objets magiques qu'elle a pris, mais arrivera
+unité coûte 20 pièces d'or. Une unité rappelée garde son niveau, ses points
+d'expérience, et (parfois) les objets magiques qu'elle a obtenus, et arrivera
 avec tous ses points de vie.
 
 Vous ne pouvez pas déplacer ou attaquer avec une unité recrutée ou rappelée
@@ -129,49 +129,49 @@ durant le même tour.
 
 SPÉCIALITÉS DES UNITÉS
 
-Les spécialités des unités sont décrites dans la rubrique "Décrire l'unité" dans
-le menu principal.
+Les spécialités des unités sont décrites dans le jeu, dans la rubrique
+de description de l'unité.
 
 
 TRAITS
 
 Les unités ont des traits de caractère qui reflètent des aspects de leur
-personnage. Les traits sont assignés aléatoirement aux unités quand elles sont
-créées. La plupart des unités reçoivent deux traits. Les traits possibles sont
-les suivants :
+personnage. Les traits sont attribués aléatoirement aux unités à leur création.
+La plupart des unités reçoivent deux traits.
+Les traits possibles sont les suivants :
 
- Fort         fait 1 point de dégâts en plus par coup au corps-à-corps, et a 2
+ Fort         fait 1 point de dégâts en plus par coup au corps-à-corps, et a 1
               points de vie en plus
  Rapide       a un point de mouvement en plus, mais 10 % de points de vie en
               moins
- Robuste      a 7 points de vie en plus
- Intelligent  nécessite 20 % d'expérience en moins pour évoluer d'un niveau (pas
-              les Trolls)
+ Robuste      possède 10 % de points de vie en plus et y ajoute 3 points
+ Intelligent  nécessite 20 % d'expérience en moins passer d'un niveau (pas
+              les trolls)
 
 Il y a aussi des traits qui ne sont pas assignés aléatoirement :
 
- Loyal        n'a pas de coût d'entretien
+ Fidèle       n'a pas de coût d'entretien
  Habile       fait 1 point de dégâts en plus par coup au combat à distance
-              (Elfes seulement)
- Mort-vivant  immunisé contre le poison (Morts-vivants seulement)
+              (elfes seulement)
+ Mort-vivant  immunisé contre le poison (morts-vivants seulement)
 
 
 DÉPLACEMENT
 
-Quand une unité est sélectionnée, toutes les cases sur lesquelles elle peut se
-déplacer s'éclairciront, alors que celles où elle ne peut pas se déplacer
-s'obscurciront. Vous pouvez dès lors cliquer sur la case où vous souhaitez
+Les cases claires sont celles sur lesquelles une unité sélectionnée peut se 
+déplacer, alors que les cases grisées sont celles sur lesquelles elle ne peut
+pas aller. Vous pouvez dès lors cliquer sur l'hexagone où vous souhaitez
 déplacer votre unité. Se déplacer dans un village neutre ou possédé par l'ennemi
 vous fera prendre le contrôle de celui-ci. Si vous choisissez une destination
 qui se trouve en dehors de votre zone de déplacement, votre unité se déplacera
-du maximum possible durant ce tour et continuera au tour suivant
-automatiquement. Vous pouvez facilement annuler ces déplacements automatiques au
-début de votre tour en tapant la touche "u", ainsi qu'en sélectionnant l'unité
-en cause et en lui réaffectant une nouvelle destination.
+du maximum possible durant ce tour et continuera automatiquement au tour
+suivant. Vous pouvez facilement annuler ces déplacements automatiques au
+début de votre tour en tapant la touche "u", ou en sélectionnant l'unité
+et en lui donnant une nouvelle destination.
 
 Vous ne pouvez pas vous déplacer dans les cases adjacentes aux unités ennemies
-(leur Zone de Contrôle) sans être obligé de vous arrêter. Cependant, les unités
-de niveau 0 n'ont pas de Zone de Contrôle.
+(leur Zone de Contrôle) sans être obligé de vous arrêter. Les unités de
+niveau 0 n'ont pas de zone de contrôle.
 
 
 COMBAT
@@ -185,30 +185,30 @@ distance.
 
 Si vous attaquez avec une arme de corps à corps, l'ennemi sera en mesure de
 riposter avec une arme de corps à corps. Si vous attaquez avec une arme à
-distance, l'ennemi pourra risposter avec une arme à distance s'il en possède
+distance, l'ennemi pourra riposter avec une arme à distance s'il en possède
 une.
 
-Différents types d'attaques génèrent différentes quantités de dégâts, et un
-certain nombre de coups est disponible avec chaque arme. Par example, un
-guerrier elfe fait 5 points de dégâts avec son épée à chaque fois qu'il touche
-un adversaire, et il peut frapper 4 fois sa cible durant le combat. Cela est
-noté 5-4, ce qui signifie 5 points de dégâts par coup, et 4 coups.
+Des types différents d'attaques génèrent des quantités différentes de dégâts,
+et il n'est possible de ne faire qu'un certain nombre de coups avec chaque arme.
+Par exemple, un guerrier elfe fait 5 points de dégâts avec son épée à chaque
+fois qu'il touche un adversaire, et il peut frapper 4 fois sa cible durant le 
+combat. Cela est noté 5-4 ; cela signifie 5 points de dégâts par coup, 4 coups.
 
-Chaque unité a un risque plus ou moins grand de se faire toucher suivant le type
-de terrain sur lequel elle se trouve. Par exemple, les unités dans les châteaux
-ou les villages ont moins de risques de se faire toucher, et les Elfes en forêt
-ont une faible probabilité de se faire toucher. Pour voir les taux de défense
-d'une unité (c'est-à-dire la probabilité de ne pas être touchée) dans un
-terrain, cliquez sur l'unité puis amenez la souris sur le terrain qui vous
-intéresse, et le taux de défense s'affichera comme une valeur en pourcentage
-dans le panneau d'état, ainsi que sur la case de terrain.
+Chaque unité a une chance plus ou moins grande de se faire toucher suivant le 
+type de terrain sur lequel elle se trouve. Par exemple, les unités dans les
+châteaux ou les villages ont moins de risques de se faire toucher, et les elfes
+en forêt ont une faible probabilité de se faire toucher. Pour voir les taux de 
+défense d'une unité (c'est-à-dire la probabilité de ne pas être touchée) sur
+un terrain, cliquez sur l'unité puis amenez la souris sur le terrain qui vous
+intéresse, et le pourcentage de défense s'affichera sur le panneau d'état et 
+en superposition sur la case de terrain.
 
 
-CARACTÈRE
+ALIGNEMENT
 
-Chaque unité possède son propre caractère : juste, neutre, ou chaotique. Le
-caractère affecte leur performance selon le moment de la journée. Les unités
-neutres ne sont pas affectées par le moment de la journée. Les unités justes
+Chaque unité possède son propre alignement : loyal, neutre, ou chaotique.
+L'alignement affecte leur performance selon le moment de la journée. Les unités
+neutres ne sont pas affectées par le moment de la journée. Les unités loyales
 font plus de dégâts le jour et moins la nuit. Les unités chaotiques font plus de
 dégâts la nuit et moins le jour.
 
@@ -217,9 +217,9 @@ Après-midi, et Premier Quart, Deuxième Quart, par les positions du soleil et d
 la lune dans l'image du moment de la journée.
 
 Le tableau suivant montre l'influence des différents moments de la journée sur
-les dégâts infligés par les unités justes et chaotiques :
+les dégâts infligés par les unités loyales et chaotiques :
 
- | Tour	|  phase du jour         |  juste  | chaotique |
+ | Tour	|  phase du jour         |  loyal  | chaotique |
  -------------------------------------------------------
  |  1   |  aurore                |   -     |     -     |
  |  2   |  jour (Matinée)        | + 25 %  |   - 25 %  |
@@ -228,12 +228,12 @@ les dégâts infligés par les unités justes et chaotiques :
  |  5   |  nuit (Premier Quart)  | - 25 %  |   + 25 %  |
  |  6   |  nuit (Deuxième Quart) | - 25 %  |   + 25 %  |
 
-Par exemple : considérons un combat entre une unité juste et une unité chaotique
-alors que les deux ont des dégâts de base de 12 points. À l'aurore et au
+Par exemple, prenons un combat entre une unité loyale et une unité chaotique
+alors que les deux font des dégâts de base de 12 points. À l'aurore et au
 crépuscule, elles feront toutes deux 12 points de dégâts si leur coup porte. Le
-matin ou l'après-midi, l'unité juste fera (12 * 1,25) soit 15 points, tandis que
-l'unité chaotique fera (12 * 0,75 ) soit 9 points. Pendant le premier ou le
-second quart, l'unité juste ferait 9 points en comparaison avec les 15 points de
+matin ou l'après-midi, l'unité loyale fera (12 * 1,25) soit 15 points, tandis
+que l'unité chaotique fera (12 * 0,75 ) soit 9 points. Pendant le premier ou le
+second quart, l'unité loyale ferait 9 points à comparer avec les 15 points de
 l'unité chaotique.
 
 Si une unité neutre équivalente combattait, elle infligerait toujours 12 points
@@ -242,36 +242,25 @@ de dégâts quel que soit le moment de la journée.
 
 SOINS
 
-Les unités blessées se trouvant dans un village récupéreront 8 points de vie par
-tour. Les unités blessées se trouvant sur une case adjacente à une unité
-possèdant la capacité "soin" ou "guérison" récupéreront également.Une unité qui
-ne se déplace pas ni ne combat pendant un tour se "repose" et récupérera 2
-points de vie. Les points de vie récupérés par le "repos" s'ajoutent à ceux
-récupérés par le soin ou la régénération.
+Les unités blessées se trouvant dans un village ou à côté d'une unité possédant
+la capacité "soin" récupéreront 8 points de vie par tour.
+Une unité qui ne se déplace pas et ne combat pas pendant un tour se "repose" et
+récupérera encore 2 points de vie en plus.
 
-Une unité possédant la capacité de "soin" récupérera un maximum de 4 points de
-vie par tour ; les unités sur une case adjacente à une ou plusieurs unités
-possédant la capacité de "soin" récupérera un maximum de 8 points de vie par
-tour. Plus il y a d'unités autour d'une unité qui peut soigner, moins chacune
-sera soignée.
+Une unité possédant la capacité "soins" pourra, au début du tour, soit soigner
+les unités à ses côtés au début du tour, soit les empêcher de subir les effets
+du poison.
 
-Un exemple de "soin" avec plusieurs unités adjacentes :
+Une unité possédant la capacité "guérison" pourra, au début du tour, guérir une
+unité empoisonnée, qui ne recevra alors pas de soins supplémentaires.
+Une unité avec la capacité "guérison" possède souvent la capacité "soins", 
+mais guérit d'abord du poison avant de soigner.
 
-  Deux unités proches d'un "soigneur" recevront 4 points de vie chacune.
-
-  Trois unités proches d'un "soigneur" ne recevront pas 4 points de vie
-  chacune ; à la place, deux recevront 3 points de vie chacune et une recevra 2
-  points de vie.
-
-Une unité peut être soignée d'un maximum de 8 points de vie par tour, avec
-éventuellement 2 points de vie supplémentaires si elle se repose. Les Trolls,
-qui ont la capacité de régénération, ne récupéreront que 8 points de vie en
-résidant dans un village, et non 16. Une unité dans un village ne récupérera pas
-non plus de soin supplémentaire des soigneurs adjacents.
-
-Le "soin" empêche le poison de provoquer des dégâts tandis que la "guérison"
-retire le poison. Quand le poison est soigné ou que ses dégâts sont empêchés
-l'unité de gagne ni ne perd de points de vie dus au soin et à l'empoisonnement.
+Une unité de peut pas être soignée plus d'une fois par tour : les effets ne
+sont pas cumulatifs (sauf en cas de repos). La meilleur méthode de soin est
+toujours choisie. Par exemple, une unité dans un village ne gagne pas de points
+supplémentaires si un soigneur est à ses côtés ; une unité près de trois 
+soigneurs ne bénéficiera des soins que du plus puissant d'entre eux.
 
 Pour plus d'informations voir l'aide du jeu.
 
@@ -279,27 +268,28 @@ Pour plus d'informations voir l'aide du jeu.
 EXPÉRIENCE
 
 Les unités acquièrent de l'expérience lors des combats. Arrivées à un certain
-seuil, elles avanceront d'un niveau en devenant plus puissantes. La quantité
+seuil, elles avanceront d'un niveau, devenant plus puissantes. La quantité
 d'expérience acquise dépend du niveau de l'unité ennemie et de l'issue du
 combat : si une unité tue son adversaire, elle reçoit 8 points d'expérience par
 niveau de l'ennemi (4 si l'ennemi est de niveau 0), tandis que les unités qui
 survivent à un combat sans tuer leurs ennemis reçoivent 1 point d'expérience par
-niveau de l'ennemi. En d'autres mots :
+niveau de l'ennemi. En résumé :
 
-| niveau de l'ennemi | bonus du meurtre | bonus du combat |
------------------------------------------------------------
-| 0                  | 4                | 0               |
-| 1                  | 8                | 1               |
-| 2                  | 16               | 2               |
-| 3                  | 24               | 3               |
-| 4                  | 32               | 4               |
-| 5                  | 40               | 5               |
-| 6                  | 48               | 6               |
+| niveau de l'ennemi | bonus si l'ennemi | bonus du combat |
+|                    |       meurt       |                 |
+------------------------------------------------------------
+| 0                  | 4                 | 0               |
+| 1                  | 8                 | 1               |
+| 2                  | 16                | 2               |
+| 3                  | 24                | 3               |
+| 4                  | 32                | 4               |
+| 5                  | 40                | 5               |
+| 6                  | 48                | 6               |
 
 
-MULTI-JOUEURS
+MULTIJOUEURS
 
-Vous pouvez héberger une partie multi-joueurs avec votre client ou vous
+Vous pouvez héberger une partie multijoueurs avec votre client ou vous
 connectez au serveur de jeu wesnoth et y configurer votre partie. Si vous
 hébergez une partie avec votre client, d'autres joueurs doivent pouvoir se
 connecter au port 15000 de votre ordinateur par TCP. Si vous êtes derrière un
@@ -316,35 +306,35 @@ Serveurs publics :
   devsrv.wesnoth.org        version SVN à jour du jeu
 
 Des serveurs supplémentaires sont listés dans
-http://wesnoth.slack.it/?MultiplayerServers
+http://www.wesnoth.org/wiki/MultiplayerServers
 
-Configurer une partie multi-joueurs
+Configurer une partie multijoueurs
 
-  Étape 1 : sélectionnez multi-joueurs dans l'écran principal et choisissez
+  Étape 1 : sélectionnez multijoueurs dans le menu principal et choisissez
   soit :
     a) de rejoindre le serveur officiel et de créer une partie,
     b) de rejoindre un autre serveur ou une partie hébergée par un autre
     joueur,
     c) d'héberger une partie sur votre client,
-    d) de créer un jeu multi-joueurs sur votre ordinateur en chaise tournante,
+    d) de créer un jeu multijoueurs sur votre ordinateur en chaise tournante,
     ou
     e) de jouer contre l'ordinateur.
 
   Étape 2 : sélectionnez la carte et configurez les paramètres du jeu
-  (brouillard de guerre, brume, or par village).
+  (brouillard de guerre, voile, or par village).
 
-  Étape 3 : configurez les joueurs (équipes/alliances, or de départ, faction)
-  et attendez que tous les joueurs rejoignent le jeu. Vous verrez les "joueurs
-  réseau" se remplacer par leurs pseudonymes lorsqu'ils se connecteront.
+  Étape 3 : configurez les joueurs (équipes / alliances, or de départ, faction)
+  et attendez que tous les joueurs rejoignent le jeu. Les mentions "joueurs
+  réseau" seront remplacées par des pseudonymes lors des connexions des joueurs.
 
   Étape 4 : cliquez sur [Je suis prêt].
 
 
-SERVEUR DE CAMPAGNES
+SERVEUR D'EXTENSIONS
 
-Vous pouvez récupérer des campagnes supplémentaires en choisissant Campagne
-dans l'écran-titre, et "Récupérer d'autres campagnes" dans le menu de campagne.
-Une tentative de connexion TCP au port 15002 du serveur de campagnes
+Vous pouvez récupérer des campagnes supplémentaires en choisissant Extension
+dans l'écran principal, et "Récupérer d'autres campagnes" dans le menu de
+campagne. Une tentative de connexion TCP au port 15003 du serveur de campagnes
 (campaigns.wesnoth.org) sera effectuée, donc vous aurez besoin de vous assurer
 que votre pare-feu le permet. Les campagnes sont des contributions
 d'utilisateurs et toutes ne fonctionneront pas correctement avec la version
@@ -353,16 +343,16 @@ actuelle du jeu -- vérifiez sur les forums si vous rencontrez des problèmes.
 
 AUTRES SOURCES D'INFORMATIONS
 
-L'Aide du jeu est disponible dans les scénarions, pressez la touche d'accès à
-l'Aide ou sélectionnez Aide dans le menu. La page d'accueil générale du projet
-est http://www.wesnoth.org/ et elle comprend des liens vers beaucoup d'autres
+L'aide du jeu est disponible dans les scénarios, pressez la touche d'accès à
+l'aide ou sélectionnez Aide dans le menu. La page d'accueil générale du projet
+est http://www.wesnoth.org/ et elle contient des liens vers beaucoup d'autres
 pages liées au jeu. Parmi celles-ci, notre wiki à http://wiki.wesnoth.org/
 contient des guides et des astuces pour le jeu, l'arbre d'évolution des unités,
-des informations sur comment faire vos propres scénarios et campagnes, comment
+des informations pour faire vos propres scénarios et campagnes, comment
 contribuer en tant que développeur ou traducteur, et plus encore. Vous pouvez
 aussi nous rejoindre pour discuter sur IRC sur irc.wesnoth.org dans le canal
 #wesnoth ou rejoindre notre communauté de forum sur http://forum.wesnoth.org/
-où vous pouvez parler du jeu avec plus de 2000 membres. Les forums contiennent
+où vous pouvez parler du jeu avec plus de 4000 membres. Les forums contiennent
 aussi une archive dans laquelle vous pouvez effectuer des recherches de
 plusieurs dizaines de milliers de messages, sur plus de deux ans -- une source
 considérable d'informations.
