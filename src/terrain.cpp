@@ -31,7 +31,7 @@ terrain_type::terrain_type() : symbol_image_("void"),
 			       mvt_type_(1, t_translation::VOID_TERRAIN),
 			       def_type_(1, t_translation::VOID_TERRAIN),
 			       union_type_(1, t_translation::VOID_TERRAIN),
-                   height_adjust_(16), submerge_(0.0), light_modification_(0),
+                   height_adjust_(0), submerge_(0.0), light_modification_(0),
                    heals_(0), village_(false), castle_(false), keep_(false) 
 {}
 
@@ -93,7 +93,7 @@ terrain_type::terrain_type(const config& cfg)
 	std::sort(union_type_.begin(),union_type_.end());
 	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
 
-	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str()) + 16;
+	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
 	submerge_ = atof(cfg["submerge"].c_str());
 #ifdef USE_TINY_GUI
 	height_adjust_ /= 2;
