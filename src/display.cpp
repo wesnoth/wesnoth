@@ -2149,18 +2149,16 @@ void display::invalidate_animations()
 	gamemap::location topleft;
 	gamemap::location bottomright;
 	get_visible_hex_bounds(topleft, bottomright);
-	// flags are synchronized so we check only the first flag
-	bool update_flags = flags_[0].need_update();
-
+	
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
 			if (!shrouded(x,y)) {
 				gamemap::location loc(x,y);
 				if (builder_.update_animation(loc)) {
 					invalidate(loc);
-				} else if (update_flags && map_.is_village(loc)) {
+				} else if (map_.is_village(loc)) {
 					const int owner = player_teams::village_owner(loc);
-					if (owner >= 0 && (!fogged(x,y) || !teams_[currentTeam_].is_enemy(owner+1)))
+					if (owner >= 0 && flags_[owner].need_update() && (!fogged(x,y) || !teams_[currentTeam_].is_enemy(owner+1)))
 						invalidate(loc);
 				}
 			}
