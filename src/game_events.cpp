@@ -1884,12 +1884,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			wassert(units != NULL);
 			wassert(game_map != NULL);
 			wassert(status_ptr != NULL);
-			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var);
+			unit u(game_data_ptr,units,game_map,status_ptr,teams,var);
 			if(u.hitpoints() < 0) {
-				// NOTE the message will show up twice in the logs but the wml_error
-				// can be removed in version 1.3.4.
-				lg::wml_error << "Unstoring a unit with a negative number of hitpoints isn't supported.\n";
-				throw game::load_game_failed("Unstoring a unit with a negative number of hitpoints isn't supported.\n");
+				u.heal(-u.hitpoints());
+				ERR_NG << "Unstoring a unit with a negative number of hitpoints isn't supported.\n";
 			}
 
 			preferences::encountered_units().insert(u.id());
