@@ -38,7 +38,7 @@
 #
 # The reporting format is compatible with GNU Emacs compile mode.
 
-import sys, os, time, re, getopt
+import sys, os, time, re, getopt, sre_constants
 
 resource_extensions = ("png", "jpg", "ogg", "wav")
 
@@ -47,7 +47,7 @@ def allfiles(dirpath, exclude):
     datafiles = []
     for dir in dirpath:
         os.path.walk(dir,
-                     lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir,x)), names)),
+                     lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
                      None)
     datafiles = filter(lambda x: ".svn" not in x, datafiles)
     datafiles = filter(lambda x: not os.path.isdir(x), datafiles)
@@ -94,7 +94,12 @@ class CrossRef:
         return None
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
-        pattern = re.compile("^" + pattern + "$")
+        pattern = pattern.replace("+", r"\+")
+        try:
+            pattern = re.compile("^" + pattern + "$")
+        except sre_constants.error:
+            print >>sys.stderr, "macroscope: confused by %s" % pattern
+            return None
         key = None
         for trial in self.fileref:
             if pattern.match(trial):
@@ -243,15 +248,16 @@ Usage: macroscope [options] dirpath
     -c, --crossreference       Report resolved macro references
     -d, --deflist              Make definition list
     -e reg, --exclude reg      Ignore files matching 
-    -u, --unresolved           Report unresolved macro references
     -f dir, --from dir         Report only on macros defined under dir
+    -l, --listfiles            List files that will be processed
     -r ddd, --refcount=ddd     Report only on macros w/references in ddd files
+    -u, --unresolved           Report unresolved macro references
     --forced-used reg          Ignore refcount 0 on names matching regexp
    The required dirpath argument may be a colon-separated directory list.
 """)
 
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cdhe:f:r:u",
+    (options, arguments) = getopt.getopt(sys.argv[1:], "cdhe:f:lr:u",
                                          [
                                           'crossreference',
                                           'definitions',
@@ -259,10 +265,11 @@ Usage: macroscope [options] dirpath
                                           'force-used=',
                                           'from=',
         				  'help',
+                                          'listfiles',
                                           'refcount=',
                                           'unresolved',
                                           ])
-    crossreference = definitions = unresolved = False
+    crossreference = definitions = listfiles = unresolved = False
     from_restrict = None
     refcount_restrict = None
     forceused = None
@@ -281,10 +288,12 @@ Usage: macroscope [options] dirpath
             exclude.append(val)
         elif switch == '--force-used':
             forceused = val
-        elif switch in ('-u', '--unresolved'):
-            unresolved = True
+        elif switch in ('-l', '--listfiles'):
+            listfiles = True
         elif switch in ('-r', '--refcount'):
             refcount_restrict = int(val)
+        elif switch in ('-u', '--unresolved'):
+            unresolved = True
 
     if len(arguments):
         dirpath = arguments[0].split(":")
@@ -293,8 +302,12 @@ Usage: macroscope [options] dirpath
     print "# Macroscope reporting on %s" % time.ctime()
     print "# Invocation: %s" % " ".join(sys.argv)
     print "# Working directory: %s" % os.getcwd()
-    if crossreference or definitions or unresolved:
-        xref = CrossRef(allfiles(dirpath, "|".join(exclude)))
+    if crossreference or definitions or listfiles or unresolved:
+        filelist = allfiles(dirpath, "|".join(exclude))
+        if listfiles:
+            for filename in filelist:
+                print filename
+        xref = CrossRef(filelist)
         def predicate(name, defloc):
             if from_restrict and not defloc.filename.startswith(from_restrict):
                 return False
