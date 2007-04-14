@@ -94,7 +94,6 @@ public:
 
 	int ncommands();
 
-	void mark_current();
 	static void throw_error(const std::string& msg);
 
 	struct error {

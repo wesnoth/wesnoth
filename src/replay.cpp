@@ -468,13 +468,6 @@ int replay::ncommands()
 	return commands().size();
 }
 
-void replay::mark_current()
-{
-	if(current_ != NULL) {
-		(*current_)["mark"] = "yes";
-	}
-}
-
 config* replay::add_command(bool update_random_context)
 {
 	pos_ = ncommands()+1;
