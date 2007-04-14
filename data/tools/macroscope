@@ -102,11 +102,14 @@ class CrossRef:
                 self.fileref[key].append(fn, n)
         return key
     def __init__(self, filelist):
-        # First, collect macro definitions from the specified filelist."
+        "Build cross-reference object from the specified filelist."
         self.xref = {}
         self.fileref = {}
+        self.noxref = False
         for filename in filelist:
             if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
+                # It's a resource file of some sort.
+                #
                 # The rule we're applying here is:
                 # 1) If it's a sound file, its name is the part of
                 #    the path after "sounds/" or "music/".
@@ -126,6 +129,7 @@ class CrossRef:
                         name = name[len("images")+1:]                    
                 self.fileref[name] = reference(filename) 
             elif iswml(filename):
+                # It's a WML file, scan for macro defitions
                 dfp = open(filename)
                 for (n, line) in enumerate(dfp):
                     if line.startswith("#define"):
@@ -137,6 +141,14 @@ class CrossRef:
                                   % (name, self.xref[name], here)
                         self.xref[name] = here
                 dfp.close()
+            elif filename.endswith(".def"):
+                # It's a list of names to be considered defined
+                self.noxref = True
+                dfp = open(filename)
+                for line in dfp:
+                    self.xref[line.strip()] = True
+                dfp.close()
+            
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         self.missing = []
@@ -215,7 +227,6 @@ class CrossRef:
                 print "%s -> %s" % (reference, name)
     def deflist(self, pred=None):
         "List all resource definitions."
-        print "#% definitions"
         for (name, defloc) in self.xref.items() + self.fileref.items():
             if pred and not pred(name, defloc):
                 continue
@@ -248,7 +259,7 @@ Usage: macroscope [options] dirpath
                                           'force-used=',
                                           'from=',
         				  'help',
-                                          'refcount='
+                                          'refcount=',
                                           'unresolved',
                                           ])
     crossreference = definitions = unresolved = False
@@ -293,7 +304,10 @@ Usage: macroscope [options] dirpath
                 return False
             return True
         if crossreference:
-            xref.xrefdump(predicate)
+            if xref.noxref:
+                print >>sys.stderr, "macroscope: can't make cross-reference, input included a definitions file."
+            else:
+                xref.xrefdump(predicate)
         if definitions:
             xref.deflist(predicate)
         if unresolved:
