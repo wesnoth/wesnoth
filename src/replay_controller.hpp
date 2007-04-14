@@ -40,8 +40,6 @@ public:
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 
-	unit_map get_units();
-
 	//event handlers
 	virtual void preferences();
 	virtual void show_statistics();

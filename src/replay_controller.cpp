@@ -127,10 +127,6 @@ void replay_controller::init_replay_display(){
 	LOG_NG << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
-unit_map replay_controller::get_units(){
-	return units_;
-}
-
 void replay_controller::reset_replay(){
 	gui::button* b = gui_->find_button("button-playreplay");
 	if (b != NULL) { b->release(); }
