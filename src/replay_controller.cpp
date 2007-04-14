@@ -135,10 +135,6 @@ unit_map replay_controller::get_units(){
 	return units_;
 }
 
-gamemap& replay_controller::get_map(){
-	return map_;
-}
-
 void replay_controller::reset_replay(){
 	gui::button* b = gui_->find_button("button-playreplay");
 	if (b != NULL) { b->release(); }
