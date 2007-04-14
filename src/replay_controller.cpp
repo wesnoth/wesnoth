@@ -147,10 +147,6 @@ const int replay_controller::get_player_number(){
 	return player_number_;
 }
 
-const bool replay_controller::is_loading_game(){
-	return loading_game_;
-}
-
 void replay_controller::reset_replay(){
 	gui::button* b = gui_->find_button("button-playreplay");
 	if (b != NULL) { b->release(); }

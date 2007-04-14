@@ -45,7 +45,6 @@ public:
 	display& get_gui();
 	gamemap& get_map();
 	const int get_player_number();
-	const bool is_loading_game();
 
 	//event handlers
 	virtual void preferences();
