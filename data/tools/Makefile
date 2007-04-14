@@ -31,4 +31,7 @@ utils-macros:
 	@echo "# Report on usage of utility macros"
 	@macroscope --crossreference --from data/utils $(EXCLUDE) $(TOPDIR)
 
+definitions:
+	@macroscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
+
 

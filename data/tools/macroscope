@@ -213,6 +213,15 @@ class CrossRef:
             print "# Unresolved references:"
             for (name, reference) in self.unresolved + self.missing:
                 print "%s -> %s" % (reference, name)
+    def deflist(self, pred=None):
+        "List all resource definitions."
+        print "#% definitions"
+        for (name, defloc) in self.xref.items() + self.fileref.items():
+            if pred and not pred(name, defloc):
+                continue
+            nrefs = len(defloc.references)
+            if nrefs:
+                print name
 
 if __name__ == "__main__":
     def help():
@@ -221,6 +230,7 @@ Usage: macroscope [options] dirpath
     Options may be any of these:
     -h, --help                 Emit this help message and quit
     -c, --crossreference       Report resolved macro references
+    -d, --deflist              Make definition list
     -e reg, --exclude reg      Ignore files matching 
     -u, --unresolved           Report unresolved macro references
     -f dir, --from dir         Report only on macros defined under dir
@@ -230,15 +240,22 @@ Usage: macroscope [options] dirpath
 """)
 
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "che:f:r:u",
-                                         ['help', 'force-used=', 'exclude=',
-                                          'crossreference', 'unresolved',
-                                          'from=', 'refcount='])
-    crossreference = unresolved = False
+    (options, arguments) = getopt.getopt(sys.argv[1:], "cdhe:f:r:u",
+                                         [
+                                          'crossreference',
+                                          'definitions',
+                                          'exclude=',
+                                          'force-used=',
+                                          'from=',
+        				  'help',
+                                          'refcount='
+                                          'unresolved',
+                                          ])
+    crossreference = definitions = unresolved = False
     from_restrict = None
     refcount_restrict = None
     forceused = None
-    exclude = None
+    exclude = []
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -247,8 +264,10 @@ Usage: macroscope [options] dirpath
             from_restrict = val
         elif switch in ('-c', '--crossreference'):
             crossreference = True
+        elif switch in ('-d', '--definitions'):
+            definitions = True
         elif switch in ('-e', '--exclude'):
-            exclude = val
+            exclude.append(val)
         elif switch == '--force-used':
             forceused = val
         elif switch in ('-u', '--unresolved'):
@@ -263,8 +282,8 @@ Usage: macroscope [options] dirpath
     print "# Macroscope reporting on %s" % time.ctime()
     print "# Invocation: %s" % " ".join(sys.argv)
     print "# Working directory: %s" % os.getcwd()
-    if crossreference or unresolved:
-        xref = CrossRef(allfiles(dirpath, exclude))
+    if crossreference or definitions or unresolved:
+        xref = CrossRef(allfiles(dirpath, "|".join(exclude)))
         def predicate(name, defloc):
             if from_restrict and not defloc.filename.startswith(from_restrict):
                 return False
@@ -275,6 +294,8 @@ Usage: macroscope [options] dirpath
             return True
         if crossreference:
             xref.xrefdump(predicate)
+        if definitions:
+            xref.deflist(predicate)
         if unresolved:
             xref.unresdump()
 
