@@ -90,7 +90,6 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 	start_tick_ =  last_update_tick_ + ( starting_frame_time_ - start_time);
 	cycles_ = cycles;
 	acceleration_ = acceleration;
-	//FIXME: allow negative acceleration -> reverse animation
 	if(acceleration_ <=0) acceleration_ = 1;
 	current_frame_key_= 0;
 	update_last_draw_time();
@@ -116,7 +115,7 @@ void animated<T,T_void_value>::update_last_draw_time()
 	if(cycles_) {
 		while(get_animation_time() > get_end_time()){  // cut extra time
 			start_tick_ +=(int)(get_end_time()/acceleration_);
-			current_frame_key_ =starting_frame_time_;
+			current_frame_key_ = 0;
 		}
 	}
 	while(get_current_frame_end_time() < get_animation_time() &&  // catch up
@@ -179,17 +178,7 @@ int animated<T,T_void_value>::get_animation_time() const
 template<typename T,  typename T_void_value>
 const int animated<T,T_void_value>::get_animation_duration() const
 {
-	int duration = 0;
-	for (size_t i=0; i!=frames_.size(); i++) {
-		duration += frames_[i].duration_;
-	}
-	return duration;
-}
-
-template<typename T,  typename T_void_value>
-const int animated<T,T_void_value>::get_animation_tempo() const
-{
-	return get_animation_duration() / get_frames_count();
+	return get_end_time() - get_begin_time();
 }
 
 template<typename T,  typename T_void_value>
@@ -244,6 +233,7 @@ const int animated<T,T_void_value>::get_current_frame_time() const
 {
 	if(frames_.empty() )
 		return 0;
+	//FIXME: get_animation_time() use acceleration but get_current_frame_begin_time() doesn't ?
 	return maximum<int>(0,get_animation_time() - get_current_frame_begin_time());
 }
 

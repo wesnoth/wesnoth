@@ -47,13 +47,12 @@ public:
 	void add_frame(int duration, const T& value,bool force_change =false);
 
 	//Starts an animation cycle. The first frame of the animation to start
-	//may be set to any value
+	//may be set to any value by using a start_time different to 0
 	void start_animation(int start_time, bool cycles=false, double acceleration=1);
 
 	int get_begin_time() const;
 	int get_end_time() const;
 
-	//inlined for performance
 	void update_last_draw_time();
 	bool need_update() const;
 
@@ -61,9 +60,8 @@ public:
 	bool animation_finished() const;
 	bool animation_would_finish() const;
 	int get_animation_time() const;
+	//For the moment, all the following functions dont't use (or incorrectly) acceleration
 	const int get_animation_duration() const;
-	// get the mean tempo (total duration / number of frames)
-	const int get_animation_tempo() const;
 	const T& get_current_frame() const;
 	// get the next frame (or the current + shift frames)
 	const T& get_next_frame(int shift = 1) const;
