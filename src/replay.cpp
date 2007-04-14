@@ -159,11 +159,6 @@ void replay::set_save_info(const game_state& save)
 	saveInfo_ = save;
 }
 
-const game_state& replay::get_save_info() const
-{
-	return saveInfo_;
-}
-
 void replay::set_skip(bool skip)
 {
 	skip_ = skip;

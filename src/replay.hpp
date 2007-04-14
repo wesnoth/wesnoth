@@ -36,7 +36,6 @@ public:
 	explicit replay(const config& cfg);
 
 	void set_save_info(const game_state& save);
-	const game_state& get_save_info() const;
 
 	void set_skip(bool skip);
 	bool is_skipping() const;
