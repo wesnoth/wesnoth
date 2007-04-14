@@ -25,8 +25,7 @@
 #define LOG_NG LOG_STREAM(info, engine)
 
 play_controller::play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-								 int ticks, int num_turns, const config& game_config, CVideo& video,
-								 bool skip_replay) :
+	int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay) :
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(),
 	help_manager_(&game_config, &gameinfo, &map_),
 	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo, undo_stack_, redo_stack_),
@@ -36,14 +35,10 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	map_(game_config, level["map_data"]), ticks_(ticks),
 	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
 	loading_game_(level["playing_team"].empty() == false),
-	first_human_team_(-1)
+	first_human_team_(-1), player_number_(1), 
+	first_player_ (lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1),
+	start_turn_(status_.turn()), skip_replay_(skip_replay), browse_(false), scrolling_(false)
 {
-	player_number_ = 1;
-	start_turn_ = status_.turn();
-	first_player_ = lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1;
-	skip_replay_ = skip_replay;
-	browse_ = false;
-
 	game_config::add_color_info(level);
 
 	init(video);
