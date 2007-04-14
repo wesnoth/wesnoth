@@ -49,6 +49,7 @@ typedef progressive_<int> progressive_int;
 typedef progressive_<double> progressive_double;
 
 #endif
+//This hack prevents MSVC++ 6 to issue several warnings 
 #ifndef UNIT_FRAME_H_PART2
 #define UNIT_FRAME_H_PART2
 
