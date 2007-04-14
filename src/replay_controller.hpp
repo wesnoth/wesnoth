@@ -40,7 +40,6 @@ public:
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 
-	std::vector<team>& get_teams();
 	unit_map get_units();
 
 	//event handlers

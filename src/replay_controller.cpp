@@ -127,10 +127,6 @@ void replay_controller::init_replay_display(){
 	LOG_NG << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
-std::vector<team>& replay_controller::get_teams(){
-	return teams_;
-}
-
 unit_map replay_controller::get_units(){
 	return units_;
 }
