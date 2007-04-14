@@ -135,10 +135,6 @@ unit_map replay_controller::get_units(){
 	return units_;
 }
 
-display& replay_controller::get_gui(){
-	return *gui_;
-}
-
 gamemap& replay_controller::get_map(){
 	return map_;
 }

@@ -42,7 +42,6 @@ public:
 
 	std::vector<team>& get_teams();
 	unit_map get_units();
-	display& get_gui();
 	gamemap& get_map();
 
 	//event handlers
