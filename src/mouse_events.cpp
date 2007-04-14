@@ -1256,11 +1256,6 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 
 bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator defender)
 {
-	// protect against a memory over commitment, for some reason -1 hitpoints
-	// cause a segmentation fault so just abort in that case. Not in the mood
-	// to figure out the exact cause.
-	wassert (attacker->second.hitpoints() != -1);
-	wassert (defender->second.hitpoints() != -1);
 	try {
 		return attack_enemy_(attacker, defender);
 	} catch(std::bad_alloc) {
