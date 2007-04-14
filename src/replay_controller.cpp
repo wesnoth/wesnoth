@@ -143,10 +143,6 @@ gamemap& replay_controller::get_map(){
 	return map_;
 }
 
-const gamestatus& replay_controller::get_status(){
-	return status_;
-}
-
 const int replay_controller::get_player_number(){
 	return player_number_;
 }

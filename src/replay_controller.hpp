@@ -44,7 +44,6 @@ public:
 	unit_map get_units();
 	display& get_gui();
 	gamemap& get_map();
-	const gamestatus& get_status();
 	const int get_player_number();
 	const bool is_loading_game();
 
