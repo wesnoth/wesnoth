@@ -44,7 +44,6 @@ public:
 	unit_map get_units();
 	display& get_gui();
 	gamemap& get_map();
-	const int get_player_number();
 
 	//event handlers
 	virtual void preferences();
