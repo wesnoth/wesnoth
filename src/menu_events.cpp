@@ -293,6 +293,7 @@ namespace events{
 		const std::string heading = std::string(1,HEADING_PREFIX) +
 									_("Type") + COLUMN_SEPARATOR +
 									_("Name") + COLUMN_SEPARATOR +
+									_("Level") + COLUMN_SEPARATOR +
 									_("HP") + COLUMN_SEPARATOR +
 									_("XP") + COLUMN_SEPARATOR +
 									_("unit list^Traits") + COLUMN_SEPARATOR +
@@ -315,6 +316,7 @@ namespace events{
 			std::stringstream row;
 			row << i->second.language_name() << COLUMN_SEPARATOR
 				<< i->second.description() << COLUMN_SEPARATOR
+				<< i->second.level() << COLUMN_SEPARATOR
 				<< i->second.hitpoints() << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR
 				<< i->second.experience() << "/";
 
