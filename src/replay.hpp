@@ -35,8 +35,6 @@ public:
 	replay();
 	explicit replay(const config& cfg);
 
-	config& get_config();
-
 	void set_save_info(const game_state& save);
 	const game_state& get_save_info() const;
 

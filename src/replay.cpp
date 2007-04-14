@@ -154,12 +154,6 @@ void replay::throw_error(const std::string& msg)
 	if (!game_config::ignore_replay_errors) throw replay::error(msg);
 }
 
-
-config& replay::get_config()
-{
-	return cfg_;
-}
-
 void replay::set_save_info(const game_state& save)
 {
 	saveInfo_ = save;
