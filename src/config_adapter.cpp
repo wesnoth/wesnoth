@@ -64,7 +64,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 	LOG_NG << "found gold: '" << gold << "'\n";
 
 	int ngold = lexical_cast_default<int>(gold);
-	if(player != NULL && player->gold >= ngold) {
+	if ( (player != NULL && player->gold >= ngold) || snapshot) {
 		ngold = player->gold;
 	}
 
