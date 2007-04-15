@@ -214,6 +214,12 @@ void dialog::add_button(dialog_button_info btn_info, BUTTON_LOCATION loc)
 	add_button(btn, loc);
 }
 
+void dialog::add_option(const std::string& label, bool checked, BUTTON_LOCATION loc)
+{
+	gui::dialog_button *btn = new dialog_button(disp_.video(), label, button::TYPE_CHECK);
+	btn->set_check(checked);
+	add_button(btn, loc);
+}
 
 void dialog::set_textbox(const std::string& text_widget_label,
 				const std::string& text_widget_text,

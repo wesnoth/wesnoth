@@ -105,10 +105,9 @@ struct dialog_button_info
 enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY, CLOSE_ONLY, NULL_DIALOG };
 
 struct check_item {
-	check_item(const std::string& label, bool checked) : label(label), checked(checked), align(RIGHT_ALIGN) {}
+	check_item(const std::string& label, bool checked) : label(label), checked(checked) {}
 	std::string label;
 	bool checked;
-	ALIGN align;
 };
 
 //an interface for a 'preview pane'. A preview pane is shown beside a dialog created

@@ -352,10 +352,8 @@ int show_dialog(display& screen, surface image,
 	}
 	if(options) {
 		for(unsigned int i=0; i < options->size(); ++i) {
-			gui::dialog_button *btn = new gui::dialog_button(disp,(*options)[i].label,gui::button::TYPE_CHECK);
-			gui::dialog::BUTTON_LOCATION loc = ((*options)[i].align == LEFT_ALIGN)? gui::dialog::BUTTON_CHECKBOX_LEFT : gui::dialog::BUTTON_CHECKBOX;
-			btn->set_check((*options)[i].checked);
-			d.add_button(btn, loc);
+			check_item& item = (*options)[i];
+			d.add_option(item.label, item.checked);
 		}
 	}
 	if(action_buttons) {

@@ -1344,48 +1344,30 @@ namespace events{
 		if(map_.on_board(mousehandler.get_last_hex()) == false) {
 			return;
 		}
+		gui::dialog d(*gui_, _("Place Label"), "", gui::OK_CANCEL);
 		const terrain_label* old_label = gui_->labels().get_label(mousehandler.get_last_hex());
-
-		std::string label;
-
-		if (old_label)
-		{
-			label = old_label->text();
+		if (old_label) {
+			d.set_textbox(_("Label:"), old_label->text(), map_labels::get_max_chars());
 			team_only = !old_label->team_name().empty();
+		} else {
+			d.set_textbox(_("Label:"), "", map_labels::get_max_chars());
 		}
-
-		std::vector<gui::check_item> options;
-		if (has_team() || (old_label && team_only))
-		{
-			gui::check_item team_only_chk = gui::check_item(_("Team only"),
-					team_only);
-			team_only_chk.align = gui::LEFT_ALIGN;
-			options.push_back(team_only_chk);
+		if (has_team() || (old_label && team_only)) {
+			d.add_option(_("Team only"), team_only, gui::dialog::BUTTON_CHECKBOX_LEFT);
 		}
-		const int res = gui::show_dialog(*gui_,NULL,_("Place Label"),"",gui::OK_CANCEL,
-										 NULL,NULL,_("Label:"),&label,
-						 map_labels::get_max_chars(), NULL, &options);
-		if(res == 0) {
+		if(!d.show()) {
 			std::string team_name;
 			SDL_Color colour = font::LABEL_COLOUR;
 			const std::string last_team_id = "9";
 			std::map<std::string, color_range>::iterator gp = game_config::team_rgb_range.find(last_team_id);
 
-
-
-
-			if ((has_team() || (old_label && team_only)) && options.front().checked)
-			{
+			if ((has_team() || (old_label && team_only)) && d.option_checked()) {
 				team_name = gui_->labels().team_name();
-
 			}
-			else
-			{
-				colour = team::get_side_colour( gui_->viewing_team() + 1);
+			else {
+				colour = team::get_side_colour(gui_->viewing_team() + 1);
 			}
-
-			gui_->labels().set_label(mousehandler.get_last_hex(),label,&recorder, team_name, colour);
-
+			gui_->labels().set_label(mousehandler.get_last_hex(), d.textbox_text(), &recorder, team_name, colour);
 		}
 	}
 

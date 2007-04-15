@@ -26,14 +26,14 @@ widget::widget(const widget &o)
 	: events::handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
 	   needs_restore_(o.needs_restore_), state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
-	  help_text_(o.help_text_), help_string_(o.help_string_), align_(o.align_), id_(o.id_)
+	  help_text_(o.help_text_), help_string_(o.help_string_), id_(o.id_)
 {
 }
 
 widget::widget(CVideo& video, const bool auto_join)
 	: handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
 	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
-	  clip_rect_(EmptyRect), volatile_(false), help_string_(0), align_(RIGHT_ALIGN)
+	  clip_rect_(EmptyRect), volatile_(false), help_string_(0)
 {
 }
 
@@ -97,20 +97,10 @@ void widget::set_height(unsigned h)
 	set_location(rect);
 }
 
-void widget::set_align(ALIGN a)
-{
-	align_ = a;
-}
-
 void widget::set_measurements(unsigned w, unsigned h)
 {
 	SDL_Rect rect = { rect_.x, rect_.y, w, h };
 	set_location(rect);
-}
-
-ALIGN widget::align() const
-{
-	return align_;
 }
 
 unsigned widget::width() const

@@ -14,12 +14,12 @@
 
 #define GETTEXT_DOMAIN "wesnoth"
 
+#include "construct_dialog.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "preferences.hpp"
 #include "serialization/parser.hpp"
-#include "show_dialog.hpp"
 #include "upload_log.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"
@@ -280,23 +280,15 @@ void upload_log::quit(int turn)
 
 void upload_log_dialog::show_beg_dialog(display& disp)
 {
-	std::vector<gui::check_item> options;
-	gui::check_item beg_check = gui::check_item(_("Enable summary uploads"),
-									  preferences::upload_log());
-	beg_check.align = gui::LEFT_ALIGN;
-	options.push_back(beg_check);
-
 	std::string msg = std::string(_("Wesnoth relies on volunteers like yourself for feedback, especially beginners and new players.  Wesnoth keeps summaries of your games: you can help us improve game play by giving permission to send these summaries (anonymously) to wesnoth.org.\n"))
 		+ " \n`" + _("Summaries are stored here:")
 		+ " \n`~" + get_upload_dir() + "\n \n`"
 		+ _("You can view the results at:") + "\n`~"
 		+ "http://stats.wesnoth.org/?" + preferences::upload_id() + "\n \n";
+	gui::dialog d(disp, _("Help us make Wesnoth better for you!"), msg, gui::OK_ONLY);
 
-
-	gui::show_dialog(disp, NULL,
-					 _("Help us make Wesnoth better for you!"),
-					 msg,
-					 gui::OK_ONLY,
-					 NULL, NULL, "", NULL, 0, NULL, &options);
-	preferences::set_upload_log(options.front().checked);
+	d.add_option(_("Enable summary uploads"), 
+		preferences::upload_log(), gui::dialog::BUTTON_CHECKBOX_LEFT);
+	d.show();
+	preferences::set_upload_log(d.option_checked());
 }

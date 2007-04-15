@@ -183,6 +183,7 @@ public:
 				const unsigned int text_box_width = font::relative_size(350));
 	void add_button(dialog_button *const btn, BUTTON_LOCATION loc);
 	void add_button(dialog_button_info btn_info, BUTTON_LOCATION loc=BUTTON_EXTRA);
+	void add_option(const std::string& label, bool checked=false, BUTTON_LOCATION loc=BUTTON_CHECKBOX);
 
 	//Specific preparations
 	//layout - determines dialog measurements based on all components

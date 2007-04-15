@@ -26,8 +26,6 @@ class CVideo;
 
 namespace gui {
 
-enum ALIGN { LEFT_ALIGN, CENTER_ALIGN, RIGHT_ALIGN };
-
 class widget : public events::handler
 {
 public:
@@ -37,11 +35,9 @@ public:
 	void set_width(unsigned w);
 	void set_height(unsigned h);
 	void set_measurements(unsigned w, unsigned h);
-	void set_align(ALIGN a);
 
 	unsigned width() const;
 	unsigned height() const;
-	ALIGN align() const;
 
 	//focus() may gain the focus if the currently focused handler doesn't require this event
 	bool focus(const SDL_Event* event);
@@ -119,7 +115,6 @@ private:
 
 	std::string help_text_;
 	int help_string_;
-	ALIGN align_; //limited support, use position
 	std::string id_;
 
 	friend class scrollpane;
