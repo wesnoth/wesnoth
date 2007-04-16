@@ -109,7 +109,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	image::set_zoom(zoom_);
 
 	//inits the flag list
-	//Note the local shifts of flag animation will look better if the tempo is regular
 	flags_.reserve(teams_.size());
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		std::string flag;
@@ -150,8 +149,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		}
 		flags_.push_back(temp_anim);
 
-		//flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
-		flags_.back().start_animation(0, true);
+		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
 	}
 
 	//clear the screen contents
@@ -1856,9 +1854,7 @@ surface display::get_flag(t_translation::t_letter terrain, int x, int y)
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
 			flags_[i].update_last_draw_time();
-			// we apply a frame shift to flag animation to avoid repetion
-			// x+y*2 garantee that adjacant villages have a 1-3 frames difference (on 4)
-			return image::get_image(flags_[i].get_next_frame(x+y*2));
+			return image::get_image(flags_[i].get_current_frame());
 		}
 	}
 
