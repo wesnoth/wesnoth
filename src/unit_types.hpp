@@ -161,7 +161,7 @@ public:
 
 	unsigned int num_traits() const { return (cfg_["num_traits"].size() ? atoi(cfg_["num_traits"].c_str()) : race_->num_traits()); }
 
-	std::string generate_description() const { return race_->generate_name(cfg_["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE); }
+	std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }
 
 	//the name of the unit in the current language setting
 	const t_string& language_name() const { return cfg_["name"]; }

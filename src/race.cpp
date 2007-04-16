@@ -147,3 +147,24 @@ const config::child_list& unit_race::additional_traits() const
 unsigned int unit_race::num_traits() const { return ntraits_; }
 
 bool unit_race::not_living() const { return not_living_; }
+
+std::string const& gender_string(unit_race::GENDER gender) {
+	static const std::string female_string = "female";
+	static const std::string male_string = "male";
+	switch(gender) {
+	case unit_race::FEMALE:
+		return female_string;
+	default:
+	case unit_race::MALE:
+		return male_string;
+	}
+}
+
+unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
+	if(str == gender_string(unit_race::MALE)) {
+		return unit_race::MALE;
+	} else if(str == gender_string(unit_race::FEMALE)) {
+		return unit_race::FEMALE;
+	}
+	return def;
+}

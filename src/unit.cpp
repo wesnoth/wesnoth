@@ -814,8 +814,7 @@ bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::locatio
 	}
 
 	if(gender.empty() == false) {
-		const unit_race::GENDER gender_type = gender == "female" ? unit_race::FEMALE : unit_race::MALE;
-		if(gender_type != this->gender()) {
+		if(string_gender(gender) != this->gender()) {
 			return false;
 		}
 	}
@@ -920,12 +919,7 @@ void unit::read(const config& cfg)
 	max_experience_=0;
 	/* */
 
-	const std::string& gender = cfg["gender"];
-	if(gender == "female") {
-		gender_ = unit_race::FEMALE;
-	} else {
-		gender_ = unit_race::MALE;
-	}
+	gender_ = string_gender(cfg["gender"]);
 
 	variation_ = cfg["variation"];
 
@@ -1383,8 +1377,8 @@ void unit::write(config& cfg) const
 	sd << side_;
 	cfg["side"] = sd.str();
 
-	cfg["gender"] = gender_ == unit_race::MALE ? "male" : "female";
-	cfg["gender_id"] = gender_ == unit_race::MALE ? "male" : "female";
+	cfg["gender"] = gender_string(gender_);
+	cfg["gender_id"] = gender_string(gender_);
 
 	cfg["variation"] = variation_;
 
@@ -2388,6 +2382,15 @@ void unit::add_modification(const std::string& type, const config& mod,
 		if(type_filter.empty() == false) {
 			const std::vector<std::string>& types = utils::split(type_filter);
 			if(std::find(types.begin(),types.end(),id()) == types.end()) {
+				continue;
+			}
+		}
+		//see if the effect only applies to certain genders
+		const std::string& gender_filter = (**i.first)["unit_gender"];
+		if(gender_filter.empty() == false) {
+			const std::string& gender = gender_string(gender_);
+			const std::vector<std::string>& genders = utils::split(gender_filter);
+			if(std::find(genders.begin(),genders.end(),gender) == genders.end()) {
 				continue;
 			}
 		}

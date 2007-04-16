@@ -594,15 +594,9 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 
 	const std::vector<std::string> genders = utils::split(cfg["gender"]);
-	for(std::vector<std::string>::const_iterator i = genders.begin();
-	    i != genders.end(); ++i) {
-		if(*i == "male") {
-			genders_.push_back(unit_race::MALE);
-		} else if(*i == "female") {
-			genders_.push_back(unit_race::FEMALE);
-		}
+	for(std::vector<std::string>::const_iterator i = genders.begin(); i != genders.end(); ++i) {
+		genders_.push_back(string_gender(*i));
 	}
-
 	if(genders_.empty()) {
 		genders_.push_back(unit_race::MALE);
 	}

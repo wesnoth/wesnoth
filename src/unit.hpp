@@ -285,7 +285,7 @@ class unit
 		void remove_temporary_modifications();
 		void generate_traits();
 		void generate_traits_description();
-		std::string generate_description() const { return race_->generate_name(cfg_["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE); }
+		std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }
 
 		bool invisible(const gamemap::location& loc,
 			const unit_map& units,const std::vector<team>& teams) const;

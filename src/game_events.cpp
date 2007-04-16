@@ -765,7 +765,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "move_unit_fake") {
 		std::string type = cfg["type"];
 		std::string side = cfg["side"];
-		std::string gender_string = cfg["gender"];
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		wassert(state_of_game != NULL);
@@ -773,7 +772,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		size_t side_num = lexical_cast_default<int>(side,1)-1;
 		if (side_num >= teams->size()) side_num = 0;
 
-		const unit_race::GENDER gender = gender_string == "female" ? unit_race::FEMALE : unit_race::MALE;
+		const unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
 		if(itor != game_data_ptr->unit_types.end()) {
 			wassert(game_data_ptr != NULL);
