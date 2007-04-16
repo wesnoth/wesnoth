@@ -61,10 +61,11 @@ def iswml(filename):
 
 class reference:
     "Describes a location by file and line."
-    def __init__(self, filename, line=None):
+    def __init__(self, filename, line=None, docstring=None):
         self.filename = filename
         self.line = line
         self.references = {}
+        self.docstring = docstring
     def append(self, fn, n):
         if fn not in self.references:
             self.references[fn] = []
@@ -136,15 +137,22 @@ class CrossRef:
             elif iswml(filename):
                 # It's a WML file, scan for macro defitions
                 dfp = open(filename)
+                here = None
                 for (n, line) in enumerate(dfp):
                     if line.startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
-                        here = reference(filename, n+1)
+                        here = reference(filename, n+1, line)
                         if name in self.xref:
                             print >>sys.stderr, "*** Warning: duplicate definition of %s from %s, at %s" \
                                   % (name, self.xref[name], here)
                         self.xref[name] = here
+                        here.docstring = line[8:]	# Strip off #define_
+                    elif here:
+                        if line[0] == "#":
+                            here.docstring += line[1:]
+                        else:
+                            here = None
                 dfp.close()
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
@@ -238,6 +246,60 @@ class CrossRef:
             nrefs = len(defloc.references)
             if nrefs:
                 print name
+    def extracthelp(self, fp):
+        "Deliver all macro help comments in HTML form."
+        doclist = self.xref.keys()
+        def defcmp(s, t):
+            "Compare two documentation objects for place in the sort order."
+            # Major sort by file, minor by name.  This presumes that the
+            # files correspond to coherent topics.
+            byfile = cmp(self.xref[s].filename, self.xref[t].filename)
+            if byfile:
+                return byfile
+            else:
+                return cmp(s, t)
+        doclist.sort(defcmp)
+        outstr = ""
+        for name in doclist:
+            if self.xref[name].docstring:
+                lines = self.xref[name].docstring.split("\n")
+                header = lines.pop(0).split()
+                if lines and not lines[-1]:	# Ignore trailing blank lines
+                    lines.pop()
+                if not lines:	# Ignore definitions without a docstring
+                    continue
+                outstr += "\n<dt>\n"
+                outstr += "<emphasis role='bold'>" + header[0] + "</emphasis>"
+                if header[1:]:
+                    outstr += "<emphasis>"+" ".join(header[1:])+"</emphasis>"
+                outstr += "\n</dt>\n"
+                outstr += "<dd>\n<p>"
+                inlisting = False
+                for line in lines:
+                    line = line.rstrip()
+                    if not inlisting and not line:
+                        outstr += "</p><p>"
+                        continue
+                    if not inlisting and line[0] == '!':
+                        outstr += "</p>\n<listing>\n"
+                        inlisting = True
+                        bracketdepth = curlydepth = 0
+                    if inlisting:
+                        outstr += line[1:] + "\n"
+                    else:
+                        outstr += line + "\n"
+                    if inlisting:
+                        if line and line[0] != '!':
+                            outstr += "</listing>\n<p>"
+                            inlisting = False
+                if not inlisting:
+                    outstr += "</p>\n"
+                else:
+                    outstr += "</listing>\n"
+                outstr += "</dd>\n"
+        outstr = outstr.replace("<p></p>", "")
+        outstr = outstr.replace("\n\n</listing>", "\n</listing>")
+        fp.write(outstr)
 
 if __name__ == "__main__":
     def help():
@@ -253,6 +315,7 @@ Usage: macroscope [options] dirpath
     -r ddd, --refcount=ddd     Report only on macros w/references in ddd files
     -u, --unresolved           Report unresolved macro references
     --forced-used reg          Ignore refcount 0 on names matching regexp
+    --extracthelp              Extract help from macro definition comments.
    The required dirpath argument may be a colon-separated directory list.
 """)
 
@@ -262,6 +325,7 @@ Usage: macroscope [options] dirpath
                                           'crossreference',
                                           'definitions',
                                           'exclude=',
+                                          'extracthelp',
                                           'force-used=',
                                           'from=',
         				  'help',
@@ -269,7 +333,7 @@ Usage: macroscope [options] dirpath
                                           'refcount=',
                                           'unresolved',
                                           ])
-    crossreference = definitions = listfiles = unresolved = False
+    crossreference = definitions = listfiles = unresolved = extracthelp = False
     from_restrict = None
     refcount_restrict = None
     forceused = None
@@ -286,6 +350,8 @@ Usage: macroscope [options] dirpath
             definitions = True
         elif switch in ('-e', '--exclude'):
             exclude.append(val)
+        elif switch == '--extracthelp':
+            extracthelp = True
         elif switch == '--force-used':
             forceused = val
         elif switch in ('-l', '--listfiles'):
@@ -302,7 +368,7 @@ Usage: macroscope [options] dirpath
     print "# Macroscope reporting on %s" % time.ctime()
     print "# Invocation: %s" % " ".join(sys.argv)
     print "# Working directory: %s" % os.getcwd()
-    if crossreference or definitions or listfiles or unresolved:
+    if crossreference or definitions or listfiles or unresolved or extracthelp:
         filelist = allfiles(dirpath, "|".join(exclude))
         if listfiles:
             for filename in filelist:
@@ -325,4 +391,7 @@ Usage: macroscope [options] dirpath
             xref.deflist(predicate)
         if unresolved:
             xref.unresdump()
+        if extracthelp:
+            xref.extracthelp(sys.stdout)
+    
 

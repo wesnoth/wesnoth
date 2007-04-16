@@ -34,4 +34,5 @@ utils-macros:
 definitions:
 	@./macroscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
 
-
+help:
+	@./macroscope --extracthelp --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
