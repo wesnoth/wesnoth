@@ -837,7 +837,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 
-	individual_effect set_effect(NOT_USED,0,NULL,gamemap::location());
+	individual_effect set_effect;
 
 	for (std::vector< std::pair<config*, gamemap::location> >::const_iterator
 	     i = list.cfgs.begin(), i_end = list.cfgs.end(); i != i_end; ++i) {
