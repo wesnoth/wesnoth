@@ -1,7 +1,7 @@
 # Recipes for various sanity checks.
 #
 # Hack this if our location in the Wesnoth source tree changes
-TOPDIR = ../..
+TOPDIR = ../../
 # References to terrain graphics go through so many layers of nasty
 # opaque macros that trying to reference-check them is hopeless.
 # So suppress reporting them unused even if they seem to have
@@ -36,6 +36,6 @@ definitions:
 
 macro-reference.xhtml:
 	@cat helpheader.xhtml >macro-reference.xhtml
-	@./macroscope --extracthelp --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR) >>macro-reference.xhtml
+	@./macroscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(EXCLUDE) $(TOPDIR) >>macro-reference.xhtml
 	@cat helptrailer.xhtml >>macro-reference.xhtml
 
