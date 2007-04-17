@@ -88,16 +88,16 @@ bool vconfig::has_child(const std::string& key) const
 	return (cfg_->child(key) != NULL);
 }
 
-t_string vconfig::expand(const std::string& key) const
+const t_string vconfig::expand(const std::string& key) const
 {
 	const t_string& val = (*cfg_)[key];
 	if(repos != NULL && !val.str().empty()) {
 		std::string interp = utils::interpolate_variables_into_string(val.str(), *repos);
 		if(val.str() != interp) {
-			return interp;
+			return t_string(interp);
 		}
 	}
-	return val;
+	return t_string(val);
 }
 
 namespace variable
