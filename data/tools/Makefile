@@ -34,5 +34,8 @@ utils-macros:
 definitions:
 	@./macroscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
 
-help:
-	@./macroscope --extracthelp --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
+macro-reference.xhtml:
+	@cat helpheader.xhtml >macro-reference.xhtml
+	@./macroscope --extracthelp --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR) >>macro-reference.xhtml
+	@cat helptrailer.xhtml >>macro-reference.xhtml
+
