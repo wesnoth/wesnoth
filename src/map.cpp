@@ -573,7 +573,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig
 {
 	//handle radius
 	const size_t radius = minimum<size_t>(max_loop,
-		lexical_cast_default<size_t>(cfg["radius"]));
+		lexical_cast_default<size_t>(cfg["radius"], 0));
 	std::set<gamemap::location> hexes;
 	std::vector<gamemap::location> loc_vec(1, loc);
 	get_tiles_radius(*this, loc_vec, radius, hexes);
