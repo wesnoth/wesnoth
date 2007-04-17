@@ -21,7 +21,7 @@ all:
 
 utils-unused:
 	@echo "# Report on unused utility macros"
-	@./macroscope --crossreference --from data/utils --refcount 0 $(FAKE) $(EXCLUDE) $(TOPDIR)
+	@./macroscope --crossreference --from $(TOPDIR)/data/utils --refcount 0 $(FAKE) $(EXCLUDE) $(TOPDIR)
 
 all-unused:
 	@echo "# Report on unused resource files"
@@ -29,7 +29,7 @@ all-unused:
 
 utils-macros:
 	@echo "# Report on usage of utility macros"
-	@./macroscope --crossreference --from data/utils $(EXCLUDE) $(TOPDIR)
+	@./macroscope --crossreference --from $(TOPDIR)data/utils $(EXCLUDE) $(TOPDIR)
 
 definitions:
 	@./macroscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
