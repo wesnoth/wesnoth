@@ -658,7 +658,7 @@ bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconf
 
 	//Allow filtering on unit
 	if(cfg.has_child("filter")) {
-		const config& unit_filter = cfg.child("filter").get_config();
+		const vconfig& unit_filter = cfg.child("filter");
 		const unit_map::const_iterator u = units.find(loc);
 		if (u == units.end() || !u->second.matches_filter(unit_filter, loc, flat_tod))
 			return false;

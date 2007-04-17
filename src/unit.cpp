@@ -716,21 +716,19 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-bool unit::matches_filter(const config& orig_cfg,const gamemap::location& loc, bool use_flat_tod) const
+bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
 {
 	if(loc.valid()) {
 		wassert(units_ != NULL);
 		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, *units_);
-		return internal_matches_filter(orig_cfg, loc, use_flat_tod);
+		return internal_matches_filter(cfg, loc, use_flat_tod);
 	}
 	//if loc is invalid, then this is a recall list unit which should have already been scoped
-	return internal_matches_filter(orig_cfg, loc, use_flat_tod);
+	return internal_matches_filter(cfg, loc, use_flat_tod);
 }
 
-bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::location& loc, bool use_flat_tod) const
+bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
 {
-	vconfig tmp_vconf(&orig_cfg);
-	config cfg = tmp_vconf.get_parsed_config();
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
 	const std::string& type = cfg["type"];
@@ -753,12 +751,11 @@ bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::locatio
 		return false;
 	}
 
-	const config* filter_location = cfg.child("filter_location");
-	if(filter_location) {
+	if(cfg.has_child("filter_location")) {
 		wassert(map_ != NULL);
 		wassert(gamestatus_ != NULL);
 		wassert(units_ != NULL);
-		bool res = map_->terrain_matches_filter(loc,filter_location,*gamestatus_,*units_,use_flat_tod);
+		bool res = map_->terrain_matches_filter(loc, cfg.child("filter_location"), *gamestatus_, *units_, use_flat_tod);
 		if(res == false) {
 			return false;
 		}
@@ -867,9 +864,9 @@ bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::locatio
 
 	//if there are [not] tags below this tag, it means that the filter
 	//should not match if what is in the [not] tag does match
-	const config::child_list& negatives = cfg.get_children("not");
-	for(config::child_list::const_iterator not_it = negatives.begin(); not_it != negatives.end(); ++not_it) {
-		if(internal_matches_filter(**not_it,loc,use_flat_tod)) {
+	const vconfig::child_list& negatives = cfg.get_children("not");
+	for(vconfig::child_list::const_iterator not_it = negatives.begin(); not_it != negatives.end(); ++not_it) {
+		if(internal_matches_filter(*not_it,loc,use_flat_tod)) {
 			return false;
 		}
 	}
@@ -878,13 +875,13 @@ bool unit::internal_matches_filter(const config& orig_cfg,const gamemap::locatio
 	// if a key is in the unit and in the filter, they should match
 	// filter only => not for us
 	// unit only => not filtered
-	config::const_child_itors my_range = cfg.child_range("wml_filter");
-	if (my_range.first != my_range.second) {
+	const vconfig::child_list& wmlcfgs = cfg.get_children("wml_filter");
+	if (!wmlcfgs.empty()) {
 		config unit_cfg;
 		write(unit_cfg);
 		//now, match the kids, WML based
-		for(config::const_child_iterator i = my_range.first; i != my_range.second; ++i) {
-			if(!unit_cfg.matches(**i)) {
+		for(int i=0; i < wmlcfgs.size(); ++i) {
+			if(!unit_cfg.matches(wmlcfgs[i].get_parsed_config())) {
 				return false;
 			}
 		}

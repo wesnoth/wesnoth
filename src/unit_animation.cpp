@@ -13,18 +13,19 @@
 
 #include "global.hpp"
 
+#include "color_range.hpp"
+#include "display.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "pathutils.hpp"
+#include "unit.hpp"
 #include "unit_animation.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"
+#include "variable.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
-#include "color_range.hpp"
-#include "unit.hpp"
-#include "display.hpp"
-#include "pathutils.hpp"
 
 
 #include <algorithm>
@@ -161,7 +162,7 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 		}
 		std::vector<config>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); myitor++) {
-			if(!my_unit->matches_filter(*myitor,loc)) return -1;
+			if(!my_unit->matches_filter(&(*myitor),loc)) return -1;
 			result++;
 		}
 		if(!secondary_unit_filter_.empty()) {
@@ -171,7 +172,7 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 				if(unit->first == facing_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); second_itor++) {
-						if(!unit->second.matches_filter(*second_itor,facing_loc)) return -1;
+						if(!unit->second.matches_filter(&(*second_itor),facing_loc)) return -1;
 						result++;
 					}
 
@@ -190,7 +191,7 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 				for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; unit++) {
 					for(int dir =0; dir < 6 ;dir++) {
 						if(unit->first == neighbour_loc[dir]) {
-							if(unit->second.matches_filter(*second_itor,neighbour_loc[dir])) {
+							if(unit->second.matches_filter(&(*second_itor),neighbour_loc[dir])) {
 								result++;
 								found=true;
 							}

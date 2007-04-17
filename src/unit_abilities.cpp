@@ -304,7 +304,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 {
 	int illuminates = -1;
 	if (config const *filter = cfg.child("filter_self")) {
-		if (!matches_filter(*filter, loc, cache_illuminates(illuminates, ability)))
+		if (!matches_filter(filter, loc, cache_illuminates(illuminates, ability)))
 			return false;
 	}
 	wassert(units_ && map_ && gamestatus_);
@@ -323,7 +323,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 			unit_map::const_iterator unit = units_->find(adjacent[index]);
 			if (unit == units_->end())
 				return false;
-			if (!unit->second.matches_filter(**i, unit->first,
+			if (!unit->second.matches_filter(*i, unit->first,
 				cache_illuminates(illuminates, ability)))
 				return false;
 		}
@@ -359,7 +359,7 @@ bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
 			if (config const *filter = (*i)->child("filter")) {
-				if (matches_filter(*filter, loc,
+				if (matches_filter(filter, loc,
 					cache_illuminates(illuminates, ability)))
 					return true;
 			} else
@@ -378,7 +378,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	config const *filter = cfg.child("filter");
 	bool affect_self = utils::string_bool(cfg["affect_self"], true);
 	if (filter == NULL || !affect_self) return affect_self;
-	return matches_filter(*filter, loc, ability == "illuminates");
+	return matches_filter(filter, loc, ability == "illuminates");
 }
 
 bool unit::has_ability_type(const std::string& ability) const
@@ -626,7 +626,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		}
 		if (config const *filter_self = cfg.child("filter_self")) {
 			if (att == unitmap_->end() ||
-			    !att->second.matches_filter(*filter_self, aloc_))
+			    !att->second.matches_filter(filter_self, aloc_))
 				return false;
 			if (config const *filter_weapon = filter_self->child("filter_weapon")) {
 				if (!matches_filter(*filter_weapon, true))
@@ -635,7 +635,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		}
 		if (config const *filter_opponent = cfg.child("filter_opponent")) {
 			if (def == unitmap_->end() ||
-			    !def->second.matches_filter(*filter_opponent, dloc_))
+			    !def->second.matches_filter(filter_opponent, dloc_))
 				return false;
 			if (config const *filter_weapon = filter_opponent->child("filter_weapon")) {
 				if (!other_attack_ ||
@@ -651,7 +651,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		}
 		if (config const *filter_self = cfg.child("filter_self")) {
 			if (def == unitmap_->end() ||
-			    !def->second.matches_filter(*filter_self, dloc_))
+			    !def->second.matches_filter(filter_self, dloc_))
 				return false;
 			if (config const *filter_weapon = filter_self->child("filter_weapon")) {
 				if (!matches_filter(*filter_weapon, true))
@@ -660,7 +660,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		}
 		if (config const *filter_opponent = cfg.child("filter_opponent")) {
 			if (att == unitmap_->end() ||
-			    !att->second.matches_filter(*filter_opponent, aloc_))
+			    !att->second.matches_filter(filter_opponent, aloc_))
 				return false;
 			if (config const *filter_weapon = filter_opponent->child("filter_weapon")) {
 				if (!other_attack_ ||
@@ -671,7 +671,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 	}
 	if (config const *filter_attacker = cfg.child("filter_attacker")) {
 		if (att == unitmap_->end() ||
-		    !att->second.matches_filter(*filter_attacker, aloc_))
+		    !att->second.matches_filter(filter_attacker, aloc_))
 			return false;
 		if (config const *filter_weapon = filter_attacker->child("filter_weapon")) {
 			if (attacker_) {
@@ -686,7 +686,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 	}
 	if (config const *filter_defender = cfg.child("filter_defender")) {
 		if (def == unitmap_->end() ||
-		    !def->second.matches_filter(*filter_defender, dloc_))
+		    !def->second.matches_filter(filter_defender, dloc_))
 			return false;
 		if (config const *filter_weapon = filter_defender->child("filter_weapon")) {
 			if (!attacker_) {
@@ -717,7 +717,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				continue;
 			unit_map::const_iterator unit = unitmap_->find(adjacent[index]);
 			if (unit == unitmap_->end() ||
-			    !unit->second.matches_filter(**i, unit->first))
+			    !unit->second.matches_filter(*i, unit->first))
 				return false;
 		}
 	}

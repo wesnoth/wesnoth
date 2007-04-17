@@ -146,7 +146,7 @@ class unit
 		bool has_goto() const { return get_goto().valid(); }
 		int emits_zoc() const { return (incapacitated()) ? false : emit_zoc_; }
 		/* cfg: standard unit filter */
-		bool matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod=false) const;
+		bool matches_filter(const vconfig& cfg,const gamemap::location& loc,bool use_flat_tod=false) const;
 		void add_overlay(const std::string& overlay) { overlays_.push_back(overlay); }
 		void remove_overlay(const std::string& overlay) { overlays_.erase(std::remove(overlays_.begin(),overlays_.end(),overlay),overlays_.end()); }
 		const std::vector<std::string>& overlays() const { return overlays_; }
@@ -295,7 +295,7 @@ class unit
 		
 	private:
 
-		bool internal_matches_filter(const config& cfg,const gamemap::location& loc,
+		bool internal_matches_filter(const vconfig& cfg,const gamemap::location& loc,
 			bool use_flat_tod) const;
 		/*
 		 * cfg: an ability WML structure

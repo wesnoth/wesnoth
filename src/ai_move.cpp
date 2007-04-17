@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "util.hpp"
+#include "variable.hpp"
 #include "wassert.hpp"
 
 #include <iostream>
@@ -153,7 +154,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		//explicit targets for this team
 		for(std::vector<team::target>::iterator j = team_targets.begin();
 		    j != team_targets.end(); ++j) {
-			if(u->second.matches_filter(j->criteria,u->first)) {
+			if(u->second.matches_filter(&(j->criteria),u->first)) {
 				LOG_AI << "found explicit target..." << j->value << "\n";
 				targets.push_back(target(u->first,j->value,target::EXPLICIT));
 			}
