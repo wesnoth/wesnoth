@@ -127,21 +127,11 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 	//yes => this must be a savegame
 	//no  => we are starting a fresh scenario
 	if(state.snapshot.child("side") == NULL || !recorder.at_end()) {
-		//campaign or multiplayer?
-		//if the gamestate already contains a starting_pos, then we are 
-		//starting a fresh multiplayer game. Otherwise this is the start
-		//of a campaign scenario.
-		if(state.starting_pos.empty() == false) {
-			LOG_G << "loading starting position...\n";
-			starting_pos = state.starting_pos;
-			scenario = &starting_pos;
-		} else {
-			LOG_G << "loading scenario: '" << state.scenario << "'\n";
-			scenario = game_config.find_child(type,"id",state.scenario);
-			starting_pos = *scenario;
-			state.starting_pos = *scenario;
-			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
-		}
+		LOG_G << "loading scenario: '" << state.scenario << "'\n";
+		scenario = game_config.find_child(type,"id",state.scenario);
+		starting_pos = *scenario;
+		state.starting_pos = *scenario;
+		LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 	} else {
 		//This game was started from a savegame
 		LOG_G << "loading snapshot...\n";
@@ -315,16 +305,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 			//if this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
-				//For multiplayer, we want the save to contain the starting position.
-				//For campaings however, this is the start-of-scenario save and the
-				//starting position needs to be empty to force a reload of the scenario
-				//config.
-				if (state.campaign_type == "multiplayer"){
-					state.starting_pos = *scenario;
-				}
-				else{
-					state.starting_pos = config();
-				}
+				state.starting_pos = config();
 
 				bool retry = true;
 
@@ -350,9 +331,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				}
 			}
 
-			if (state.campaign_type != "multiplayer") {
-				state.starting_pos = *scenario;
-			}
+			state.starting_pos = *scenario;
 		}
 
 		recorder.set_save_info(state);
