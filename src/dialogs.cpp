@@ -778,7 +778,7 @@ namespace {
 campaign_preview_pane::campaign_preview_pane(CVideo &video,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(video),descriptions_(desc),index_(0)
 {
 #ifdef USE_TINY_GUI
-	set_measurements(150, 200);
+	set_measurements(130, 200);
 #else
 	set_measurements(350, 400);
 #endif
@@ -804,9 +804,9 @@ void campaign_preview_pane::draw_contents()
 
 	const SDL_Rect area = {
 		location().x+campaign_preview_border,
-		location().y+campaign_preview_border*5,
+		location().y+campaign_preview_border,
 		location().w-campaign_preview_border*2,
-		location().h-campaign_preview_border*6 };
+		location().h-campaign_preview_border*2 };
 
 	/* background frame */
 	static const std::string default_style("mainmenu");
