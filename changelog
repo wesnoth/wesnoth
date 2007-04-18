@@ -42,6 +42,9 @@ Version 1.3.1+svn:
      * added animated windmill, fancy and damaged tents, icepack, and shipwreck
    * fix problems with colour cursor in fullscreen (slow speed, bug #7555 and bug #6052).
    * new color cursors
+ * sound
+   * new or improved sounds: hatchet
+   * sounds for user interface events
  * language and i18n:
    * updated manual: French
    * updated translations: Bulgarian, Czech, Danish, Dutch, French, German,
@@ -94,9 +97,9 @@ Version 1.3.1+svn:
      which the attack engine didn't expect (bug #8814)
    * new key for [time], sound=, to specify a list of sounds that can play
      when ToD changes
-   * more powerful [filter_location], now accepts radius=, [not], and 
+   * more powerful [filter_location], now accepts radius=, [not], and
      [filter] to match units at the location
-   * added [deprecated_message] so WML can also trigger the deprecated 
+   * added [deprecated_message] so WML can also trigger the deprecated
      messages; used to tag macros scheduled for removal
  * user interface:
    * new sounds for user interface events
@@ -131,8 +134,8 @@ Version 1.3.1+svn:
      multiplayer (bug #8762)
    * Performance : wml compression is done in the helper threads instead of
      the main thread
-   * Added some protection against crashing when attacking with units with 
-     a high or negative amount of hitpoints (bug #6154, bug #7955, bug #8541) 
+   * Added some protection against crashing when attacking with units with
+     a high or negative amount of hitpoints (bug #6154, bug #7955, bug #8541)
    * fix skirmisher filtered by terrain not working properly.
    * fixed Ethiliel not showing up in the scenario "Vengeance" of TSG
    * with a move attack action if the moveto event moves the defender Wesnoth
