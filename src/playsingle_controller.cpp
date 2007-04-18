@@ -186,14 +186,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		} //end for loop
 
 	} catch(end_level_exception& end_level) {
-		bool obs = team_manager_.is_observer();
 		if (game_config::exit_at_end) {
 			exit(0);
-		}
-		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
-			gui::show_dialog(*gui_, NULL, _("Game Over"),
-					 _("The game is over."), gui::OK_ONLY);
-			return QUIT;
 		}
 
 		if(end_level.result == QUIT) {
@@ -201,13 +195,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		} else if(end_level.result == DEFEAT) {
 			try {
 				game_events::fire("defeat");
-			} catch(end_level_exception&) {
-			}
+			} catch(end_level_exception&) {	}
 
-			if (!obs)
-				return DEFEAT;
-			else
-				return QUIT;
+			return DEFEAT;
+
 		} else if (end_level.result == VICTORY || end_level.result == LEVEL_CONTINUE ||
 		           end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 			try {
@@ -220,8 +211,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				gamestate_.scenario = (level_)["next_scenario"];
 			}
 
-			const bool has_next_scenario = !gamestate_.scenario.empty() &&
-											gamestate_.scenario != "null";
+			const bool has_next_scenario = !gamestate_.scenario.empty() && gamestate_.scenario != "null";
 
 			//save current_player name to reuse it when setting next_scenario side info
 			std::vector<team>::iterator i;
@@ -303,9 +293,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				}
 			}
 
-			if (!obs)
-				gui::show_dialog(*gui_, NULL, _("Victory"),
-				                 _("You have emerged victorious!"), gui::OK_ONLY);
+			gui::show_dialog(*gui_, NULL, _("Victory"), _("You have emerged victorious!"), gui::OK_ONLY);
 
 			if (gamestate_.players.size() > 0 && has_next_scenario ||
 					gamestate_.campaign_type == "test")
@@ -313,7 +301,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 			return VICTORY;
 		}
+
 		image::flush_cache();
+
 	} //end catch
 	catch(replay::error&) {
 		gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),
