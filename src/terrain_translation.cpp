@@ -122,7 +122,7 @@ namespace t_translation {
 	 *
 	 * @return					the letter found in the string
 	 */ 					
-	static t_letter string_to_number_(const std::string& str, const t_layer filler = WILDCARD);
+	static t_letter string_to_number_(const std::string& str, const t_layer filler = NO_LAYER);
 	static t_letter string_to_number_(std::string str, int& start_position, const t_layer filler);
 
 	/**
@@ -547,9 +547,9 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 	for(t_list::const_iterator terrain_itor = dest.terrain.begin();
 			terrain_itor != end; 
 			++i, ++terrain_itor) {
-
+		
 		// match wildcard 
-		if(*terrain_itor ==  STAR) {
+		if(*terrain_itor == STAR) {
 			return result;
 		}
 
@@ -989,6 +989,11 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		result = t_letter(base_str, overlay_str);
 	} else {
 		result = t_letter(str, filler);
+
+		//ugly hack 
+		if(filler == WILDCARD && (result.base == NOT.base || result.base == STAR.base)) {
+			result.overlay = NO_LAYER;
+		}
 	}	
 
 #ifndef TERRAIN_TRANSLATION_COMPATIBLE 
