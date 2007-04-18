@@ -277,6 +277,7 @@ at_get_ability_by_id( "i", marksman )
 at_get_ability_by_id( "i", magical )
 at_get_ability_by_id( "i", charge )
 at_get_ability_by_id( "i", drains )
+at_get_ability_by_id( "i", poison )
 
 at_get_string_prop( name )
 at_get_string_prop( range )
@@ -305,6 +306,7 @@ static PyGetSetDef attacktype_getseters[] = {
 	at_gs( magical,			"This attack is magical." )
 	at_gs( charge,			"This attack has the 'charge' special." )
 	at_gs( drains,			"This attack has the 'drains' special." )
+	at_gs( poison,			"This attack has the 'poison' special." )
 	at_gs( range,			"String with the name of the attack range." )
 	{ NULL, NULL, NULL, NULL, NULL }
 };
