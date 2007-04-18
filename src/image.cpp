@@ -574,7 +574,7 @@ surface get_semi_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 	return surface(brighten_image(image, ftofxp(1.25)));
 }
 
-surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT adj)
+surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT adj, bool one_time)
 {
 	surface res(NULL);
 	image_cache *imap;
@@ -617,7 +617,9 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 		res = i_locator.load_from_disk();
 
 		if(res == NULL) {
-			i_locator.add_to_cache(*imap, surface(NULL));
+			if(!one_time)
+				i_locator.add_to_cache(*imap, surface(NULL));
+
 			return surface(NULL);
 		}
 	} else {
@@ -650,18 +652,22 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 
 	// optimizes surface before storing it
 	res = create_optimized_surface(res);
-	i_locator.add_to_cache(*imap, res);
+	if(!one_time)
+		i_locator.add_to_cache(*imap, res);
+
 	return res;
 }
 
-surface get_image_dim(const image::locator& i_locator, size_t x, size_t y)
+surface get_image_dim(const image::locator& i_locator, size_t x, size_t y, bool one_time)
 {
 	const surface surf(get_image(i_locator,UNSCALED));
 
 	if(surf != NULL && (size_t(surf->w) != x || size_t(surf->h) != y)) {
 		const surface new_image(scale_surface(surf,x,y));
 
-		i_locator.add_to_cache(images_, new_image);
+		if(!one_time)
+			i_locator.add_to_cache(images_, new_image);
+
 		return new_image;
 	}
 

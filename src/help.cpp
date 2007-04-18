@@ -2075,7 +2075,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 void help_text_area::add_img_item(const std::string path, const std::string alignment,
 								  const bool floating, const bool box)
 {
-	surface surf(image::get_image(path, image::UNSCALED));
+	surface surf(image::get_image(path, image::UNSCALED, image::ADJUST_COLOUR, true));
 	if (surf.null())
 		return;
 	ALIGNMENT align = str_to_align(alignment);

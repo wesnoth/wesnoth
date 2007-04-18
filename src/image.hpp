@@ -182,13 +182,13 @@ namespace image {
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling
 	///SDL_FreeSurface()
-	surface get_image(const locator& i_locator,TYPE type=SCALED_TO_HEX, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR);
+	surface get_image(const locator& i_locator,TYPE type=SCALED_TO_HEX, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR, bool one_time = false);
 
 	///function to get a scaled image, but scale it to specific dimensions.
 	///if you later try to get the same image using get_image() the image will
 	///have the dimensions specified here.
 	///Note that this surface must be freed by the user by calling SDL_FreeSurface
-	surface get_image_dim(const locator& i_locator, size_t x, size_t y);
+	surface get_image_dim(const locator& i_locator, size_t x, size_t y, bool one_time = false);
 
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()

@@ -315,7 +315,7 @@ void save_preview_pane::draw_contents()
 
 	const game_data::unit_type_map::const_iterator leader = data_->unit_types.find(summary["leader"]);
 	if(leader != data_->unit_types.end()) {
-		const surface image(image::get_image(leader->second.image() + "~TC(1," + leader->second.flag_rgb() + ")",image::UNSCALED));
+		const surface image(image::get_image(leader->second.image() + "~TC(1," + leader->second.flag_rgb() + ")",image::UNSCALED, image::ADJUST_COLOUR, true));
 		if(image != NULL) {
 			SDL_Rect image_rect = {area.x,area.y,image->w,image->h};
 			ypos += image_rect.h + save_preview_border;
@@ -552,7 +552,7 @@ void unit_speak(const config& message_info, display& disp, const unit_map& units
 		if(i->second.matches_filter(message_info,i->first)) {
 
 			disp.scroll_to_tile(i->first.x,i->first.y);
-			const surface surface(image::get_image(i->second.profile(),image::UNSCALED));
+			const surface surface(image::get_image(i->second.profile(),image::UNSCALED,image::ADJUST_COLOUR, true));
 			gui::show_dialog(disp,surface,i->second.underlying_description(),message_info["message"],gui::MESSAGE);
 		}
 	}
@@ -827,7 +827,7 @@ void campaign_preview_pane::draw_contents()
 	surface img(NULL);
 	const std::string desc_img_name = (*descriptions_)[index_].second;
 	if(!desc_img_name.empty()) {
-		img.assign(image::get_image(desc_img_name,image::UNSCALED));
+		img.assign(image::get_image(desc_img_name,image::UNSCALED, image::ADJUST_COLOUR, true));
 	}
 	if (!img.null()) {
 		SDL_Rect src_rect,dst_rect;
