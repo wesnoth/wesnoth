@@ -287,6 +287,12 @@ std::string file_chooser::get_path_up(const std::string path, const unsigned lev
 		}
 		curr_path = strip_last_delim(curr_path);
 		size_t index = curr_path.find_last_of(path_delim_);
+#ifdef __AMIGAOS4__
+		if (index == std::string::npos) {
+			index = curr_path.find_last_of(':');
+			if (index != std::string::npos) index++;
+		}
+#endif
 		if (index != std::string::npos) {
 			curr_path = curr_path.substr(0, index);
 		}
@@ -310,12 +316,25 @@ std::string file_chooser::strip_last_delim(const std::string path) const {
 }
 
 bool file_chooser::is_root(const std::string path) const {
+#ifdef __AMIGAOS4__
+	return path.size() == 0 || path[path.size()-1] == ':';
+#else
 	return path.size() == 0 || path.size() == 1 && path[0] == path_delim_;
+#endif
 }
 
 std::string file_chooser::add_path(const std::string path, const std::string to_add) {
 	std::string joined_path = strip_last_delim(path);
 	if (to_add.size() > 0) {
+#ifdef __AMIGAOS4__
+		if (joined_path.empty() || joined_path[joined_path.size()-1] == ':') {
+			if (to_add[0] == path_delim_)
+				joined_path += to_add.substr(1);
+			else
+				joined_path += to_add;
+		}
+		else
+#endif
 		if (to_add[0] == path_delim_) {
 			joined_path += to_add;
 		}
