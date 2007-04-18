@@ -741,7 +741,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx,my;
+	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
+	int my = drag_from_y_;
 	if (dragging_ && !dragging_started_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON(1) != 0)) {
 		const int drag_distance = maximum<int>(abs(drag_from_x_- mx), abs(drag_from_y_- my));
 	 	if (drag_distance > 10) {
