@@ -741,7 +741,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	// While we check the mouse buttons state, we also grab fresh position data.
 	int mx,my;
 	if (dragging_ && !dragging_started_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON(1) != 0)) {
-		const int drag_distance = maximum<int>(abs(drag_from_x_- mx), abs(drag_from_y_- my));
+		int abs1 = drag_from_x_- mx;
+		int abs2 = drag_from_y_- my;
+		abs1 = (abs1>0) ? abs1 : abs1 * -1;
+		abs2 = (abs2>0) ? abs2 : abs2 * -1;
+		const int drag_distance = maximum<int>(abs1, abs2);
 	 	if (drag_distance > 10) {
 			dragging_started_ = true;
 			cursor::set_dragging(true);
