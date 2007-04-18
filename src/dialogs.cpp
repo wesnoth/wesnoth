@@ -574,7 +574,7 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 	unsigned h = font::relative_size(weapons_ ? 370 : 140);
 #else
 	unsigned w = 100;
-	unsigned h = 180;
+	unsigned h = weapons_ ? 180 : 80;
 
 #endif
 	set_measurements(w, h);
@@ -592,7 +592,7 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, std::vec
 	unsigned h = font::relative_size(weapons_ ? 370 : 140);
 #else
 	unsigned w = 100;
-	unsigned h = 180;
+	unsigned h = weapons_ ? 180 : 80;
 
 #endif
 	set_measurements(w, h);
