@@ -517,7 +517,8 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 	is_poisoned = utils::string_bool(u.get_state("poisoned"));
 	is_slowed = utils::string_bool(u.get_state("slowed"));
 	if(u.hitpoints() < 0) {
-		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
+//FIXME enable after 1.3.2 and find out why this happens -- Mordante
+//		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
 		hp = 0;
 	} else {
 		hp = u.hitpoints();
