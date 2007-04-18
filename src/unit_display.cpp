@@ -79,7 +79,7 @@ static void move_unit_between(display& disp, const gamemap& map, const gamemap::
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	const int total_mvt_time = 150 * temp_unit.movement_cost(dst_terrain)/acceleration;
+	const int total_mvt_time = (int)150 * temp_unit.movement_cost(dst_terrain)/acceleration;
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = 1;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
@@ -192,7 +192,7 @@ const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 		}
 	return;
 	}
-	winner->set_victorious(disp,loc);
+	winner->set_victorious(disp,loc,attack,secondary_attack);
 	int start_time = minimum<int>(loser.get_animation()->get_begin_time(),winner->get_animation()->get_begin_time());
 
 	winner->restart_animation(disp,start_time);

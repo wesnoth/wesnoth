@@ -127,19 +127,22 @@ class leading_animation:public unit_animation
 class healing_animation:public unit_animation
 {
 	public:
-		explicit healing_animation(const config& cfg):unit_animation(cfg){};
+		explicit healing_animation(const config& cfg);
 		explicit healing_animation(int start_time,const unit_frame &frame):
 			unit_animation(start_time,frame){};
+		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
 
 	private:
+		std::vector<int> damage_;
+
 };
 
-class victory_animation:public unit_animation
+class victory_animation:public fighting_animation
 {
 	public:
-		explicit victory_animation(const config& cfg):unit_animation(cfg){};
+		explicit victory_animation(const config& cfg):fighting_animation(cfg){};
 		explicit victory_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
+			fighting_animation(start_time,frame){};
 
 	private:
 };

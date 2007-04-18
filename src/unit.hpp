@@ -174,7 +174,7 @@ class unit
 		void set_standing(const display& disp,const gamemap::location& loc, bool with_bars = true);
 		void set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num);
 		void set_leading(const display& disp,const gamemap::location& loc);
-		void set_healing(const display& disp,const gamemap::location& loc);
+		void set_healing(const display& disp,const gamemap::location& loc,int damage);
 		void set_leveling_in(const display& disp,const gamemap::location& loc);
 		void set_leveling_out(const display& disp,const gamemap::location& loc);
 		void set_teleporting (const display& disp,const gamemap::location& loc);
@@ -184,7 +184,7 @@ class unit
 		const unit_animation & set_attacking( const display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num);
 		void set_recruited(const display& disp,const gamemap::location& loc);
 		void set_healed(const display& disp,const gamemap::location& loc,int healing);
-		void set_victorious(const display &disp,const gamemap::location& loc);
+		void set_victorious(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
 		void set_poisoned(const display& disp,const gamemap::location& loc,int damage);
 		void set_idling(const display& disp,const gamemap::location& loc);
 		void restart_animation(const display& disp,int start_time);
@@ -264,8 +264,9 @@ class unit
 		const movement_animation& move_animation(const display& disp, const gamemap::location& loc) const;
 		const standing_animation& stand_animation(const display& disp, const gamemap::location& loc) const;
 		const leading_animation& lead_animation(const display& disp, const gamemap::location& loc) const;
-		const healing_animation& heal_animation(const display& disp, const gamemap::location& loc) const;
-		const victory_animation& victorious_animation(const display& disp, const gamemap::location& loc) const;
+		const healing_animation& heal_animation(const display& disp, const gamemap::location& loc,int damage) const;
+		const victory_animation& victorious_animation(const display& disp, const gamemap::location& loc,
+				fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
 		const recruit_animation& recruiting_animation(const display& disp, const gamemap::location& loc) const;
 		const idle_animation* idling_animation(const display& disp, const gamemap::location& loc) const;
 		const levelin_animation& levelingin_animation(const display& disp, const gamemap::location& loc) const;

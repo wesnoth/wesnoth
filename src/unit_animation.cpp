@@ -250,6 +250,7 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 		hit_type hit,const attack_type* attack, const attack_type* secondary_attack,int swing,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
+	if(result == -1) return -1;
 	if(hits.empty() == false ) {
 		if (std::find(hits.begin(),hits.end(),hit)== hits.end()) {
 			return -1;
@@ -277,6 +278,7 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 	}
 	std::vector<config>::const_iterator myitor;
 	for(myitor = primary_filter.begin(); myitor != primary_filter.end(); myitor++) {
+		myitor->debug();
 		if(!attack->matches_filter(*myitor)) return -1;
 		result++;
 	}
@@ -285,6 +287,7 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 			return -1;
 	}
 	for(myitor = secondary_filter.begin(); myitor != secondary_filter.end(); myitor++) {
+		myitor->debug();
 		if(!secondary_attack->matches_filter(*myitor)) return -1;
 		result++;
 	}
@@ -295,6 +298,7 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 int poison_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
+	if(result == -1) return -1;
 	if(damage_.empty() == false ) {
 		if (std::find(damage_.begin(),damage_.end(),damage)== damage_.end()) {
 			return -1;
@@ -308,8 +312,23 @@ int poison_animation::matches(const display& disp, const gamemap::location & loc
 int healed_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int healing) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
+	if(result == -1) return -1;
 	if(healing_.empty() == false ) {
 		if (std::find(healing_.begin(),healing_.end(),healing)== healing_.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
+	}
+	return result;
+}
+
+int healing_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
+{
+	int result = unit_animation::matches(disp,loc,my_unit);
+	if(result == -1) return -1;
+	if(damage_.empty() == false ) {
+		if (std::find(damage_.begin(),damage_.end(),damage)== damage_.end()) {
 			return -1;
 		} else {
 			result ++;
@@ -335,3 +354,13 @@ healed_animation::healed_animation(const config& cfg) :unit_animation(cfg)
 		healing_.push_back(atoi(damage->c_str()));
 	}
 }
+
+healing_animation::healing_animation(const config& cfg) :unit_animation(cfg) 
+{
+	std::vector<std::string> damage_str = utils::split(cfg["damage"]);
+	std::vector<std::string>::iterator damage;
+	for(damage=damage_str.begin() ; damage != damage_str.end() ; damage++) {
+		damage_.push_back(atoi(damage->c_str()));
+	}
+}
+

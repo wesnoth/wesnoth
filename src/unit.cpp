@@ -880,7 +880,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		config unit_cfg;
 		write(unit_cfg);
 		//now, match the kids, WML based
-		for(int i=0; i < wmlcfgs.size(); ++i) {
+		for(unsigned int i=0; i < wmlcfgs.size(); ++i) {
 			if(!unit_cfg.matches(wmlcfgs[i].get_parsed_config())) {
 				return false;
 			}
@@ -1640,25 +1640,25 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 }
-void unit::set_healing(const display &disp,const gamemap::location& loc)
+void unit::set_healing(const display &disp,const gamemap::location& loc,int healing)
 {
 	state_ = STATE_HEALING;
 	draw_bars_ = true;
 
 	delete anim_;
 
-	anim_ = new healing_animation(heal_animation(disp,loc));
+	anim_ = new healing_animation(heal_animation(disp,loc,healing));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 }
-void unit::set_victorious(const display &disp,const gamemap::location& loc)
+void unit::set_victorious(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_VICTORIOUS;
 	draw_bars_ = false;
 
 	delete anim_;
 
-	anim_ = new victory_animation(victorious_animation(disp,loc));
+	anim_ = new victory_animation(victorious_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack));
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 }
@@ -2797,13 +2797,14 @@ const leading_animation& unit::lead_animation(const display& disp, const gamemap
 }
 
 
-const victory_animation& unit::victorious_animation(const display& disp, const gamemap::location& loc) const
+const victory_animation& unit::victorious_animation(const display& disp, const gamemap::location& loc,
+		fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
 {
 	//select one of the matching animations at random
 	std::vector<const victory_animation*> options;
 	int max_val = -1;
 	for(std::vector<victory_animation>::const_iterator i = victory_animations_.begin(); i != victory_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this);
+		int matching = i->matches(disp,loc,this,hits,attack,secondary_attack,0,0);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {
@@ -2817,13 +2818,13 @@ const victory_animation& unit::victorious_animation(const display& disp, const g
 	return *options[rand()%options.size()];
 }
 
-const healing_animation& unit::heal_animation(const display& disp, const gamemap::location& loc) const
+const healing_animation& unit::heal_animation(const display& disp, const gamemap::location& loc,int damage) const
 {
 	//select one of the matching animations at random
 	std::vector<const healing_animation*> options;
 	int max_val = -1;
 	for(std::vector<healing_animation>::const_iterator i = healing_animations_.begin(); i != healing_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this);
+		int matching = i->matches(disp,loc,this,damage);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {
