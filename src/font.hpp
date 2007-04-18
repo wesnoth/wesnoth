@@ -56,7 +56,7 @@ inline int relative_size(int size)
         SIZE_15         = 9,
         SIZE_PLUS       = 9,
         SIZE_LARGE      = 10,
-        SIZE_XLARGE     = 10
+        SIZE_XLARGE     = 12
   ;
 #else
 const int
