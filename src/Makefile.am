@@ -1,3 +1,7 @@
+SVNREV = $(shell svnversion -n $(topdir))
+CFLAGS += "-DSVNREV=\"$(SVNREV)\""
+CXXFLAGS += "-DSVNREV=\"$(SVNREV)\""
+
 AUTOMAKE_OPTIONS = subdir-objects
 
 bin_PROGRAMS =
