@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-13 10:46+0200\n"
+"POT-Creation-Date: 2007-04-18 08:31+0200\n"
 "PO-Revision-Date: 2006-09-20 18:34+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -21,11 +21,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: data/abilities.cfg:8
+#: data/abilities.cfg:9
 msgid "heals +4"
 msgstr "回復 +4"
 
-#: data/abilities.cfg:13
+#: data/abilities.cfg:14
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -44,11 +44,11 @@ msgstr ""
 "毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
 "ユニットを捜して下さい。"
 
-#: data/abilities.cfg:27
+#: data/abilities.cfg:30
 msgid "heals +8"
 msgstr "回復 +8"
 
-#: data/abilities.cfg:32
+#: data/abilities.cfg:35
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -68,11 +68,11 @@ msgstr ""
 "毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
 "ユニットを捜して下さい。"
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:45
 msgid "cures"
 msgstr "治療"
 
-#: data/abilities.cfg:44
+#: data/abilities.cfg:47
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -82,11 +82,11 @@ msgstr ""
 "治療者は、毒を受けたユニットを治療することができる。ただし、毒から治療された"
 "そのターン内には、さらなる回復は受けられない。"
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:62
 msgid "regenerates"
 msgstr "再生"
 
-#: data/abilities.cfg:59
+#: data/abilities.cfg:64
 #, fuzzy
 msgid ""
 "Regenerates:\n"
@@ -97,11 +97,11 @@ msgstr ""
 "このユニットはターンごとに自身のHPを8回復します。 毒を受けているなら、 回復す"
 "る代わりに毒を取り除きます。"
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:81
 msgid "steadfast"
 msgstr "装甲"
 
-#: data/abilities.cfg:76
+#: data/abilities.cfg:83
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -111,13 +111,13 @@ msgstr ""
 "防御時、このユニットの抵抗力は最大で50%まで倍増します。弱点には影響がありませ"
 "ん。"
 
-#: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
-#: data/abilities.cfg:183 data/abilities.cfg:239
+#: data/abilities.cfg:96 data/abilities.cfg:118 data/abilities.cfg:152
+#: data/abilities.cfg:198 data/abilities.cfg:256
 msgid "leadership"
 msgstr "統率"
 
-#: data/abilities.cfg:91 data/abilities.cfg:111 data/abilities.cfg:143
-#: data/abilities.cfg:187 data/abilities.cfg:243
+#: data/abilities.cfg:100 data/abilities.cfg:122 data/abilities.cfg:156
+#: data/abilities.cfg:202 data/abilities.cfg:260
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -136,11 +136,11 @@ msgstr ""
 "うになります。 このユニットとのレベルの差に応じて、 与えるダメージが25%ずつ増"
 "加します。"
 
-#: data/abilities.cfg:305
+#: data/abilities.cfg:324
 msgid "skirmisher"
 msgstr "散兵"
 
-#: data/abilities.cfg:307
+#: data/abilities.cfg:326
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -150,11 +150,11 @@ msgstr ""
 "このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配ゾー"
 "ンを無視できます。"
 
-#: data/abilities.cfg:318
+#: data/abilities.cfg:339
 msgid "illuminates"
 msgstr "照明"
 
-#: data/abilities.cfg:322
+#: data/abilities.cfg:343
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -168,11 +168,11 @@ msgstr ""
 "いにくくします。 すべての隣接ユニットは夜には夕方として、 夕方には昼として戦"
 "うようになります。"
 
-#: data/abilities.cfg:330
+#: data/abilities.cfg:353
 msgid "teleport"
 msgstr "瞬間移動"
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:355
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -182,11 +182,11 @@ msgstr ""
 "このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
 "できます。"
 
-#: data/abilities.cfg:339 data/abilities.cfg:340
+#: data/abilities.cfg:364 data/abilities.cfg:365
 msgid "ambush"
 msgstr "伏兵"
 
-#: data/abilities.cfg:344 data/abilities.cfg:348
+#: data/abilities.cfg:369 data/abilities.cfg:373
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -202,11 +202,11 @@ msgstr ""
 "のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
 "きません。"
 
-#: data/abilities.cfg:362 data/abilities.cfg:367
+#: data/abilities.cfg:389 data/abilities.cfg:394
 msgid "nightstalk"
 msgstr "隠密"
 
-#: data/abilities.cfg:366 data/abilities.cfg:371
+#: data/abilities.cfg:393 data/abilities.cfg:398
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -221,11 +221,11 @@ msgstr ""
 "このユニットが攻撃した直後のターンか、 敵がこのユニットの隣にいる場合を除い"
 "て、 夜には敵ユニットはこのユニットが見えないし攻撃できません。"
 
-#: data/abilities.cfg:384 data/abilities.cfg:389
+#: data/abilities.cfg:413 data/abilities.cfg:418
 msgid "submerge"
 msgstr "潜水"
 
-#: data/abilities.cfg:388 data/abilities.cfg:393
+#: data/abilities.cfg:417 data/abilities.cfg:422
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -241,11 +241,11 @@ msgstr ""
 "がこのユニットの隣にいる場合を除いて、敵のユニットはこのユニットを見たり攻撃"
 "したりできません。"
 
-#: data/abilities.cfg:412
+#: data/abilities.cfg:443
 msgid "berserk"
 msgstr "狂戦"
 
-#: data/abilities.cfg:414
+#: data/abilities.cfg:445
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -255,11 +255,11 @@ msgstr ""
 "攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘ユ"
 "ニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるまで。"
 
-#: data/abilities.cfg:422
+#: data/abilities.cfg:455
 msgid "backstab"
 msgstr "奇襲"
 
-#: data/abilities.cfg:424
+#: data/abilities.cfg:457
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -271,11 +271,11 @@ msgstr ""
 "り、さらにこのユニットは能力を奪われることはありません （例えば、石化するな"
 "ど）"
 
-#: data/abilities.cfg:434 data/abilities.cfg:443
+#: data/abilities.cfg:469 data/abilities.cfg:481
 msgid "plague"
 msgstr "疫病"
 
-#: data/abilities.cfg:436 data/abilities.cfg:445
+#: data/abilities.cfg:471 data/abilities.cfg:483
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -287,11 +287,11 @@ msgstr ""
 "ラスで同じ陣営のユニットに置き換えられます。 この攻撃はアンデッドや村にいるユ"
 "ニットには効果がありません。"
 
-#: data/abilities.cfg:452
+#: data/abilities.cfg:492
 msgid "slows"
 msgstr "遅化"
 
-#: data/abilities.cfg:454
+#: data/abilities.cfg:494
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -302,11 +302,11 @@ msgstr ""
 "この攻撃は、ターンが終わるまでターゲットを遅くします。遅化は攻撃によるダメー"
 "ジを半減させ、遅化されたユニットは通常の半分の速度（切り上げ）で動きます。"
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:503
 msgid "stones"
 msgstr "石化"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:505
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -315,11 +315,11 @@ msgstr ""
 "石化:\n"
 "この攻撃は攻撃目標を石にします。 石化したユニットは移動や攻撃はできません。"
 
-#: data/abilities.cfg:470
+#: data/abilities.cfg:514
 msgid "marksman"
 msgstr "射撃"
 
-#: data/abilities.cfg:472
+#: data/abilities.cfg:516
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -327,11 +327,11 @@ msgstr ""
 "射撃:\n"
 "攻撃時に使用され、 この攻撃は命中率が最低60%はあるようになります。"
 
-#: data/abilities.cfg:482
+#: data/abilities.cfg:528
 msgid "magical"
 msgstr "魔法"
 
-#: data/abilities.cfg:484
+#: data/abilities.cfg:530
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -339,11 +339,11 @@ msgstr ""
 "魔法:\n"
 "この攻撃は常に命中率が70%となります。"
 
-#: data/abilities.cfg:493
+#: data/abilities.cfg:541
 msgid "swarm"
 msgstr "群れ"
 
-#: data/abilities.cfg:495
+#: data/abilities.cfg:543
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -356,11 +356,11 @@ msgstr ""
 "持つ HP/最大 HP の割合に比例します。例えばユニットの HP がその最大 HP の 3/4 "
 "だった場合、攻撃回数も 3/4 になります。"
 
-#: data/abilities.cfg:502
+#: data/abilities.cfg:552
 msgid "charge"
 msgstr "突撃"
 
-#: data/abilities.cfg:504
+#: data/abilities.cfg:554
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -370,11 +370,11 @@ msgstr ""
 "この攻撃は攻撃目標への与えるダメージが２倍となります。 攻撃目標からの反撃の与"
 "えられるダメージも２倍となります。"
 
-#: data/abilities.cfg:514
+#: data/abilities.cfg:566
 msgid "drains"
 msgstr "生命吸収"
 
-#: data/abilities.cfg:516
+#: data/abilities.cfg:568
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -384,11 +384,11 @@ msgstr ""
 "このユニットは生者から生命力を奪って、 与えたダメージの半分だけ自分のHPを回復"
 "させます（切り下げ）。"
 
-#: data/abilities.cfg:523
+#: data/abilities.cfg:577
 msgid "firststrike"
 msgstr "先制"
 
-#: data/abilities.cfg:525
+#: data/abilities.cfg:579
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -396,11 +396,11 @@ msgstr ""
 "先制:\n"
 "このユニットは、 たとえ防御時であっても常にこの攻撃で先に攻撃します。"
 
-#: data/abilities.cfg:532
+#: data/abilities.cfg:588
 msgid "poison"
 msgstr "毒"
 
-#: data/abilities.cfg:534
+#: data/abilities.cfg:590
 #, fuzzy
 msgid ""
 "Poison:\n"
@@ -3327,10 +3327,10 @@ msgstr ""
 
 #: data/names.cfg:38
 msgid ""
-"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
-"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
-"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
-"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
+"Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
+"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
 
 #: data/names.cfg:42
@@ -3357,7 +3357,7 @@ msgid ""
 "Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
 "Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
 "Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
-"Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
+"Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 msgstr ""
 
 #: data/names.cfg:47
@@ -4714,39 +4714,39 @@ msgstr ""
 " このユニットの毒による犠牲者は、村か治療能力のあるユニットによって治療される"
 "まで 継続的にダメージを受けるでしょう。"
 
-#: data/team-colors.cfg:4
+#: data/team-colors.cfg:10
 msgid "Red"
 msgstr "赤"
 
-#: data/team-colors.cfg:10
+#: data/team-colors.cfg:16
 msgid "Blue"
 msgstr "青"
 
-#: data/team-colors.cfg:16
+#: data/team-colors.cfg:22
 msgid "Green"
 msgstr "緑"
 
-#: data/team-colors.cfg:22
+#: data/team-colors.cfg:28
 msgid "Purple"
 msgstr "紫"
 
-#: data/team-colors.cfg:28
+#: data/team-colors.cfg:34
 msgid "Orange"
 msgstr "橙"
 
-#: data/team-colors.cfg:34
+#: data/team-colors.cfg:40
 msgid "Black"
 msgstr "黒"
 
-#: data/team-colors.cfg:40
+#: data/team-colors.cfg:46
 msgid "White"
 msgstr "白"
 
-#: data/team-colors.cfg:46
+#: data/team-colors.cfg:52
 msgid "Brown"
 msgstr "茶"
 
-#: data/team-colors.cfg:52
+#: data/team-colors.cfg:58
 msgid "Teal"
 msgstr "青緑"
 
@@ -4894,13 +4894,13 @@ msgid "End Turn"
 msgstr "ターン終了"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:296 src/unit.cpp:2469
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2473
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:297
-#: src/menu_events.cpp:830
+#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
+#: src/menu_events.cpp:832
 msgid "XP"
 msgstr "経験"
 
@@ -5316,101 +5316,101 @@ msgstr ""
 "の要約を送ることができます。  この情報はキャンペーンの難しさを調整するのに不"
 "可欠です。"
 
-#: data/traits.cfg:6
+#: data/traits.cfg:9
 msgid "loyal"
 msgstr "忠義"
 
-#: data/traits.cfg:7
+#: data/traits.cfg:10
 #, fuzzy
 msgid "female^loyal"
 msgstr "女無法者"
 
-#: data/traits.cfg:8
+#: data/traits.cfg:11
 msgid "Zero upkeep"
 msgstr "維持費なし"
 
-#: data/traits.cfg:18
+#: data/traits.cfg:22
 msgid "undead"
 msgstr "アンデッド"
 
-#: data/traits.cfg:19
+#: data/traits.cfg:23
 #, fuzzy
 msgid "female^undead"
 msgstr "女熟練盗賊"
 
-#: data/traits.cfg:20
+#: data/traits.cfg:24
 msgid "Immune to poison"
 msgstr "毒への耐性"
 
-#: data/traits.cfg:27
+#: data/traits.cfg:32
 msgid "strong"
 msgstr "強力"
 
-#: data/traits.cfg:28
+#: data/traits.cfg:33
 #, fuzzy
 msgid "female^strong"
 msgstr "女熟練盗賊"
 
-#: data/traits.cfg:44
+#: data/traits.cfg:50
 msgid "dextrous"
 msgstr "器用"
 
-#: data/traits.cfg:45
+#: data/traits.cfg:51
 #, fuzzy
 msgid "female^dextrous"
 msgstr "器用"
 
-#: data/traits.cfg:57
+#: data/traits.cfg:64
 msgid "quick"
 msgstr "敏捷"
 
-#: data/traits.cfg:58
+#: data/traits.cfg:65
 #, fuzzy
 msgid "female^quick"
 msgstr "王女"
 
-#: data/traits.cfg:73
+#: data/traits.cfg:81
 msgid "intelligent"
 msgstr "知的"
 
-#: data/traits.cfg:74
+#: data/traits.cfg:82
 #, fuzzy
 msgid "female^intelligent"
 msgstr "知的"
 
-#: data/traits.cfg:85
+#: data/traits.cfg:94
 msgid "resilient"
 msgstr "頑強"
 
-#: data/traits.cfg:86
+#: data/traits.cfg:95
 #, fuzzy
 msgid "female^resilient"
 msgstr "頑強"
 
-#: data/traits.cfg:101
+#: data/traits.cfg:111
 msgid "healthy"
 msgstr ""
 
-#: data/traits.cfg:102
+#: data/traits.cfg:112
 #, fuzzy
 msgid "female^healthy"
 msgstr "女盗賊"
 
-#: data/traits.cfg:103
+#: data/traits.cfg:113
 msgid "Heals faster if resting"
 msgstr ""
 
-#: data/traits.cfg:114
+#: data/traits.cfg:125
 #, fuzzy
 msgid "fearless"
 msgstr "王女"
 
-#: data/traits.cfg:115
+#: data/traits.cfg:126
 #, fuzzy
 msgid "female^fearless"
 msgstr "王女"
 
-#: data/traits.cfg:116
+#: data/traits.cfg:127
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
@@ -5437,7 +5437,7 @@ msgstr "模造"
 #: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:99
 #: data/units/Drake_Gladiator.cfg:151 data/units/Drake_Glider.cfg:77
 #: data/units/Drake_Hurricane.cfg:93 data/units/Drake_Sky.cfg:92
-#: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
+#: data/units/Dwarvish_Fighter.cfg:85 data/units/Dwarvish_Lord.cfg:67
 #: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
 #: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
 #: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:70
@@ -5454,8 +5454,9 @@ msgstr "模造"
 #: data/units/Human_Mage_White.cfg:119 data/units/Human_Mage_of_Light.cfg:99
 #: data/units/Human_Outlaw.cfg:23 data/units/Human_Outlaw.cfg:60
 #: data/units/Human_Outlaw_Bandit.cfg:35
-#: data/units/Human_Outlaw_Footpad.cfg:23
-#: data/units/Human_Outlaw_Footpad.cfg:70 data/units/Human_Outlaw_Thug.cfg:23
+#: data/units/Human_Outlaw_Footpad.cfg:24
+#: data/units/Human_Outlaw_Footpad.cfg:71
+#: data/units/Human_Outlaw_Ruffian.cfg:36 data/units/Human_Outlaw_Thug.cfg:23
 #: data/units/Mermaid_Diviner.cfg:69 data/units/Mermaid_Enchantress.cfg:26
 #: data/units/Mermaid_Enchantress.cfg:64 data/units/Mermaid_Initiate.cfg:29
 #: data/units/Mermaid_Initiate.cfg:67 data/units/Mermaid_Priestess.cfg:66
@@ -5612,7 +5613,7 @@ msgstr "かぎ爪"
 #: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
 #: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
 #: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
-#: data/units/Dwarvish_Fighter.cfg:27 data/units/Dwarvish_Lord.cfg:29
+#: data/units/Dwarvish_Fighter.cfg:33 data/units/Dwarvish_Lord.cfg:29
 #: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
 #: data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:25
@@ -6132,7 +6133,7 @@ msgstr "竜の杖"
 msgid "Dwarvish Fighter"
 msgstr "ドワーフの戦士"
 
-#: data/units/Dwarvish_Fighter.cfg:22
+#: data/units/Dwarvish_Fighter.cfg:19
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
 "feared opponents in close range combat. They are excellent in mountainous "
@@ -6143,14 +6144,14 @@ msgstr ""
 "せます。彼らは山岳や地下の地形で優れています。俊敏ではありませんが 頑健で、彼"
 "らの耐久力は鈍足であることを十分補います。"
 
-#: data/units/Dwarvish_Fighter.cfg:26
+#: data/units/Dwarvish_Fighter.cfg:32
 #: data/units/Undead_Skele_Deathblade.cfg:42
 #: data/units/Undead_Skele_Draug.cfg:42
 #: data/units/Undead_Skele_Revenant.cfg:41 data/units/Undead_Skeleton.cfg:106
 msgid "axe"
 msgstr "斧"
 
-#: data/units/Dwarvish_Fighter.cfg:63 data/units/Dwarvish_Lord.cfg:66
+#: data/units/Dwarvish_Fighter.cfg:84 data/units/Dwarvish_Lord.cfg:66
 #: data/units/Dwarvish_Steelclad.cfg:65 data/units/Troll_Warrior.cfg:27
 msgid "hammer"
 msgstr "ハンマー"
@@ -7997,7 +7998,7 @@ msgstr ""
 "しょうが、無法者は武器の致命的な許容量や攻撃手段の有効性をよく心得ています。 "
 "無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包まれるのを好みます。"
 
-#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
+#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:70
 #: data/units/Troll_Rocklobber.cfg:65
 msgid "sling"
 msgstr "スリング"
@@ -8076,12 +8077,14 @@ msgstr ""
 "は戦闘においても同様に活躍し、みじめな武器しかないにも関わらず、彼等は、 特に"
 "闇に隠れて、敵を悩ますのが極めて得意です。"
 
-#: data/units/Human_Outlaw_Footpad.cfg:22 data/units/Human_Outlaw_Thug.cfg:22
+#: data/units/Human_Outlaw_Footpad.cfg:22
+#: data/units/Human_Outlaw_Ruffian.cfg:33
+#: data/units/Human_Outlaw_Ruffian.cfg:34 data/units/Human_Outlaw_Thug.cfg:22
 #: data/units/Troll.cfg:26 data/units/Troll_Hero.cfg:25
 msgid "club"
 msgstr "棍棒"
 
-#: data/units/Human_Outlaw_Footpad.cfg:107
+#: data/units/Human_Outlaw_Footpad.cfg:108
 msgid "female^Footpad"
 msgstr "追いはぎ女"
 
@@ -8128,6 +8131,19 @@ msgstr ""
 #: data/units/Human_Outlaw_Rogue.cfg:107
 msgid "female^Rogue"
 msgstr "女熟練盗賊"
+
+#: data/units/Human_Outlaw_Ruffian.cfg:3
+#, fuzzy
+msgid "Ruffian"
+msgstr "廃墟"
+
+#: data/units/Human_Outlaw_Ruffian.cfg:17
+msgid ""
+"Some men without particular skills cannot or will not make an honest living. "
+"Those that attempt to make their way through life by the heavy end of a "
+"stick, are known as 'Ruffians'.  With enough experience they can learn to "
+"swing a bigger club or throw things, but not both."
+msgstr ""
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
@@ -9982,50 +9998,50 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "ユニットを雇用するための 城タイルの空きがありません。"
 
-#: src/actions.cpp:986 src/actions.cpp:1193
+#: src/actions.cpp:991 src/actions.cpp:1198
 msgid "poisoned"
 msgstr "毒を受けた"
 
-#: src/actions.cpp:994 src/actions.cpp:1201
+#: src/actions.cpp:999 src/actions.cpp:1206
 msgid "slowed"
 msgstr "遅くなった"
 
-#: src/actions.cpp:1005 src/actions.cpp:1213
+#: src/actions.cpp:1010 src/actions.cpp:1218
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2045
+#: src/actions.cpp:2050
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
-#: src/actions.cpp:2085
+#: src/actions.cpp:2090
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2093
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！"
 
-#: src/actions.cpp:2093
+#: src/actions.cpp:2098
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 
-#: src/actions.cpp:2094
+#: src/actions.cpp:2099
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 
-#: src/actions.cpp:2095
+#: src/actions.cpp:2100
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "ユニットを発見！ (仲間$friends、敵$enemies )"
 
-#: src/actions.cpp:2104
+#: src/actions.cpp:2109
 msgid "(press $hotkey to continue)"
 msgstr "(続けるには $hotkey を押して下さい)"
 
@@ -10094,7 +10110,7 @@ msgstr "チュートリアル"
 msgid "replay"
 msgstr "リプレイ"
 
-#: src/dialogs.cpp:481 src/menu_events.cpp:445 src/multiplayer_lobby.cpp:408
+#: src/dialogs.cpp:481 src/menu_events.cpp:447 src/multiplayer_lobby.cpp:408
 msgid "Turn"
 msgstr "ターン"
 
@@ -10147,7 +10163,7 @@ msgid "Date"
 msgstr "日付"
 
 #: src/dialogs.cpp:571 src/game.cpp:941 src/menu_events.cpp:295
-#: src/menu_events.cpp:828
+#: src/menu_events.cpp:830
 msgid "Name"
 msgstr "名前"
 
@@ -10184,7 +10200,7 @@ msgstr "経験: "
 msgid "Moves: "
 msgstr "移動: "
 
-#: src/display.cpp:531
+#: src/display.cpp:529
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
@@ -10458,11 +10474,11 @@ msgstr "現在の言語でフォントを再初期化します。"
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
-#: src/game_events.cpp:881
+#: src/game_events.cpp:880
 msgid "Victory:"
 msgstr "勝利条件:"
 
-#: src/game_events.cpp:884
+#: src/game_events.cpp:883
 msgid "Defeat:"
 msgstr "敗北条件:"
 
@@ -10499,7 +10515,7 @@ msgstr ""
 msgid "unit help^Name"
 msgstr "ゲームを終了します"
 
-#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:827
+#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:829
 msgid "Type"
 msgstr "型"
 
@@ -10672,63 +10688,67 @@ msgstr "受けたダメージ (EV)"
 msgid "Statistics"
 msgstr "統計情報"
 
-#: src/menu_events.cpp:298
+#: src/menu_events.cpp:296 src/menu_events.cpp:831
+msgid "Level"
+msgstr "レベル"
+
+#: src/menu_events.cpp:299
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:299 src/unit.cpp:2500
+#: src/menu_events.cpp:300 src/unit.cpp:2504
 msgid "Moves"
 msgstr "移動"
 
-#: src/menu_events.cpp:300
+#: src/menu_events.cpp:301
 msgid "Location"
 msgstr "位置"
 
-#: src/menu_events.cpp:345
+#: src/menu_events.cpp:347
 msgid "Unit List"
 msgstr "ユニット一覧"
 
-#: src/menu_events.cpp:359
+#: src/menu_events.cpp:361
 msgid "Leader"
 msgstr "リーダー"
 
-#: src/menu_events.cpp:360 src/multiplayer_connect.cpp:741
+#: src/menu_events.cpp:362 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
 msgid "Team"
 msgstr "チーム"
 
-#: src/menu_events.cpp:361 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:363 src/multiplayer_connect.cpp:752
 #: src/multiplayer_wait.cpp:440
 msgid "Gold"
 msgstr "所持金"
 
-#: src/menu_events.cpp:362
+#: src/menu_events.cpp:364
 msgid "Villages"
 msgstr "村の数"
 
-#: src/menu_events.cpp:363
+#: src/menu_events.cpp:365
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:364
+#: src/menu_events.cpp:366
 msgid "Upkeep"
 msgstr "維持"
 
-#: src/menu_events.cpp:365 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:444
 msgid "Income"
 msgstr "収入"
 
-#: src/menu_events.cpp:454 src/playcampaign.cpp:329 src/playcampaign.cpp:474
+#: src/menu_events.cpp:456 src/playcampaign.cpp:329 src/playcampaign.cpp:474
 msgid "Name:"
 msgstr "名前:"
 
-#: src/menu_events.cpp:459 src/menu_events.cpp:472
+#: src/menu_events.cpp:461 src/menu_events.cpp:474
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "エラー"
 
-#: src/menu_events.cpp:459
+#: src/menu_events.cpp:461
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -10736,84 +10756,84 @@ msgstr ""
 "保存名は、コロン(:)、スラッシュ(/)、バックスラッシュ(\\)を 含んではいけませ"
 "ん。 違う名前をつけて下さい。"
 
-#: src/menu_events.cpp:469
+#: src/menu_events.cpp:471
 msgid "Saved"
 msgstr "保存された"
 
-#: src/menu_events.cpp:469
+#: src/menu_events.cpp:471
 msgid "The game has been saved"
 msgstr "ゲームを保存しました。"
 
-#: src/menu_events.cpp:472 src/playcampaign.cpp:484
+#: src/menu_events.cpp:474 src/playcampaign.cpp:484
 msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
-#: src/menu_events.cpp:486
+#: src/menu_events.cpp:488
 #, fuzzy
 msgid "Save the Map As"
 msgstr "マップを共有"
 
-#: src/menu_events.cpp:491
+#: src/menu_events.cpp:493
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "保存データは既に存在します。 上書きしますか？"
 
-#: src/menu_events.cpp:503
+#: src/menu_events.cpp:505
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:508
+#: src/menu_events.cpp:510
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:598 src/menu_events.cpp:600 src/play_controller.cpp:753
+#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:748
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "自動保存"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:605
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "ゲームを 自動保存できませんでした。 手動で 保存して下さい。"
 
-#: src/menu_events.cpp:627
+#: src/menu_events.cpp:629
 msgid "Chat Log"
 msgstr "チャットログ"
 
-#: src/menu_events.cpp:637
+#: src/menu_events.cpp:639
 msgid "Message:"
 msgstr "メッセージ: "
 
-#: src/menu_events.cpp:638
+#: src/menu_events.cpp:640
 msgid "Send to allies only"
 msgstr "同盟者にのみ送る"
 
-#: src/menu_events.cpp:705
+#: src/menu_events.cpp:707
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "ゴールド"
 
-#: src/menu_events.cpp:712
+#: src/menu_events.cpp:714
 msgid "You have no units available to recruit."
 msgstr "雇用できるユニットがいない。"
 
-#: src/menu_events.cpp:723
+#: src/menu_events.cpp:725
 msgid "Recruit"
 msgstr "雇用する"
 
-#: src/menu_events.cpp:724 src/menu_events.cpp:873
+#: src/menu_events.cpp:726 src/menu_events.cpp:875
 msgid "Select unit:"
 msgstr "ユニットを選択してください:"
 
-#: src/menu_events.cpp:764
+#: src/menu_events.cpp:766
 msgid "You don't have enough gold to recruit that unit"
 msgstr "そのユニットを雇用できるだけのお金が ありません。"
 
-#: src/menu_events.cpp:820
+#: src/menu_events.cpp:822
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "あなたは 戦士達から離れてしまい、 彼等を召還することはできない。"
 
-#: src/menu_events.cpp:822
+#: src/menu_events.cpp:824
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10821,65 +10841,61 @@ msgstr ""
 "召還可能な部隊がありません\n"
 "(以前のシナリオからの老練な生存者がいなければなりません)"
 
-#: src/menu_events.cpp:829
-msgid "Level"
-msgstr "レベル"
-
-#: src/menu_events.cpp:861
+#: src/menu_events.cpp:863
 msgid "Dismiss Unit"
 msgstr "ユニットを解雇する"
 
-#: src/menu_events.cpp:872
+#: src/menu_events.cpp:874
 msgid "Recall"
 msgstr "召還"
 
-#: src/menu_events.cpp:884
+#: src/menu_events.cpp:886
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "１ユニット召還するのに 少なくとも $cost ゴールド必要です。"
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1211
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "このターンではまだ行動を開始していません。 本当に自分のターンを終了しますか？"
 
-#: src/menu_events.cpp:1217 src/menu_events.cpp:1222
+#: src/menu_events.cpp:1219 src/menu_events.cpp:1224
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "まだ移動可能な ユニットが 残っています。 本当にターンを 終了して よろしいです"
 "か？"
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1265
 msgid "Rename Unit"
 msgstr "ユニット名変更"
 
-#: src/menu_events.cpp:1358
+#: src/menu_events.cpp:1347
+msgid "Place Label"
+msgstr "ラベルをつける"
+
+#: src/menu_events.cpp:1350 src/menu_events.cpp:1353
+msgid "Label:"
+msgstr "ラベル:"
+
+#: src/menu_events.cpp:1356
 #, fuzzy
 msgid "Team only"
 msgstr "青緑"
 
-#: src/menu_events.cpp:1363
-msgid "Place Label"
-msgstr "ラベルをつける"
-
-#: src/menu_events.cpp:1364
-msgid "Label:"
-msgstr "ラベル:"
-
-#: src/menu_events.cpp:1470
+#: src/menu_events.cpp:1454
 msgid "Search"
 msgstr "検索"
 
-#: src/menu_events.cpp:1513
+#: src/menu_events.cpp:1497
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "コマンド: whisper ignore emote。詳しいヘルプは /help [コマンド] と入力してく"
 "ださい。"
 
-#: src/menu_events.cpp:1564
+#: src/menu_events.cpp:1548
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -10888,38 +10904,38 @@ msgstr ""
 "ヤーにはメッセージを送ることができません。使い方: /whisper [ニックネーム] "
 "[メッセージ]"
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1552
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "無視リストにプレイヤーを追加します。使い方: /ignore add [引数]"
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1554
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "無視リストにプレイヤーを追加します。使い方: /ignore add [引数]"
 
-#: src/menu_events.cpp:1572
+#: src/menu_events.cpp:1556
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr "無視リストからプレイヤーを削除します。使い方: /ignore remove [引数]"
 
-#: src/menu_events.cpp:1574
+#: src/menu_events.cpp:1558
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "無視リストを消去します。使い方: /ignore clear"
 
-#: src/menu_events.cpp:1576
+#: src/menu_events.cpp:1560
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "無視リストを表示します。使い方: /ignore list"
 
-#: src/menu_events.cpp:1578
+#: src/menu_events.cpp:1562
 msgid "Unknown subcommand"
 msgstr "不明のサブコマンド"
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1565
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -10931,54 +10947,54 @@ msgstr ""
 "ignore [サブコマンド] [引数](オプション) サブコマンド: add remove list "
 "clear。詳しくは /help ignore [サブコマンド] と入力してください。"
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1568
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "チャットで、感情や個人的な行動を送る。 使い方: /emote [メッセージ]"
 
-#: src/menu_events.cpp:1586
+#: src/menu_events.cpp:1570
 msgid "Unknown command"
 msgstr "不明のコマンド"
 
-#: src/menu_events.cpp:1598
+#: src/menu_events.cpp:1582
 msgid "Added to ignore list: "
 msgstr "無視リストに追加されました:"
 
-#: src/menu_events.cpp:1600 src/menu_events.cpp:1607 src/menu_events.cpp:1614
+#: src/menu_events.cpp:1584 src/menu_events.cpp:1591 src/menu_events.cpp:1598
 msgid "Invalid username: "
 msgstr "無効なユーザ名:"
 
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1589
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "無視リストに追加されました:"
 
-#: src/menu_events.cpp:1612
+#: src/menu_events.cpp:1596
 #, fuzzy
 msgid "Removed from list: "
 msgstr "無視リストから削除されました:"
 
-#: src/menu_events.cpp:1638
+#: src/menu_events.cpp:1622
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1648
+#: src/menu_events.cpp:1632
 msgid "Removed from ignore list: "
 msgstr "無視リストから削除されました:"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1635
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "無視リストから削除されました:"
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1642
 msgid "Unknown command: "
 msgstr "不明のコマンド:"
 
-#: src/menu_events.cpp:1759
+#: src/menu_events.cpp:1743
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "文字「 $search 」を含む ラベル名や ユニットは見つかりませんでした。"
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1887
 msgid "prompt^Command:"
 msgstr "コマンド:"
 
@@ -11027,19 +11043,19 @@ msgstr "使用できる武器がありません"
 msgid "Chance of being unscathed"
 msgstr "無傷でいられる可能性"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1334
+#: src/mouse_events.cpp:657 src/mouse_events.cpp:1333
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
-#: src/mouse_events.cpp:1317 src/reports.cpp:282
+#: src/mouse_events.cpp:1316 src/reports.cpp:282
 msgid "vs"
 msgstr "対"
 
-#: src/mouse_events.cpp:1345
+#: src/mouse_events.cpp:1344
 msgid "Attack Enemy"
 msgstr "敵を攻撃する"
 
-#: src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:1345
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
@@ -11100,12 +11116,12 @@ msgid "Normal"
 msgstr "ノーマル"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2604
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2608
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2611
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2615
 msgid ")"
 msgstr "）"
 
@@ -11479,16 +11495,16 @@ msgstr "ホストに接続できませんでした"
 msgid "Could not send initial handshake"
 msgstr "初期応答確認を送れませんでした"
 
-#: src/play_controller.cpp:404 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:399 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは 壊れています。"
 
-#: src/play_controller.cpp:757
+#: src/play_controller.cpp:752
 msgid "Back to start"
 msgstr "最初に戻る"
 
-#: src/play_controller.cpp:759
+#: src/play_controller.cpp:754
 msgid "Back to turn "
 msgstr "戻るターン : "
 
@@ -11883,15 +11899,15 @@ msgstr "ヘルプ"
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 
-#: src/unit.cpp:2435 src/unit.cpp:2609
+#: src/unit.cpp:2439 src/unit.cpp:2613
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2517
+#: src/unit.cpp:2521
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2600
+#: src/unit.cpp:2604
 msgid ": "
 msgstr ": "
 
@@ -11903,23 +11919,19 @@ msgstr "ダメージ"
 msgid "strikes"
 msgstr "回数"
 
-#: src/unit_types.cpp:977
+#: src/unit_types.cpp:971
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:977
+#: src/unit_types.cpp:971
 msgid "lawful"
 msgstr "秩序"
 
-#: src/unit_types.cpp:977
+#: src/unit_types.cpp:971
 msgid "neutral"
 msgstr "中立"
 
-#: src/upload_log.cpp:284
-msgid "Enable summary uploads"
-msgstr "サマリのアップロードを有効にする"
-
-#: src/upload_log.cpp:289
+#: src/upload_log.cpp:283
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -11931,17 +11943,21 @@ msgstr ""
 "マリを保持しています。これらのサマリを（匿名で）wesnoth.org に送信することを"
 "許可することにより、ゲームの改良に寄与することができるのです。\n"
 
-#: src/upload_log.cpp:290
+#: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
 msgstr "サマリはここに保存されています:"
 
-#: src/upload_log.cpp:292
+#: src/upload_log.cpp:286
 msgid "You can view the results at:"
 msgstr "結果をここで見ることができます:"
 
-#: src/upload_log.cpp:297
+#: src/upload_log.cpp:288
 msgid "Help us make Wesnoth better for you!"
 msgstr "Wesnoth をもっとよくするために協力してください！"
+
+#: src/upload_log.cpp:290
+msgid "Enable summary uploads"
+msgstr "サマリのアップロードを有効にする"
 
 #~ msgid "Map"
 #~ msgstr "マップ"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-13 10:46+0200\n"
+"POT-Creation-Date: 2007-04-18 08:31+0200\n"
 "PO-Revision-Date: 2007-02-12 23:13+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -26,11 +26,11 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 
-#: data/abilities.cfg:8
+#: data/abilities.cfg:9
 msgid "heals +4"
 msgstr "целитель +4"
 
-#: data/abilities.cfg:13
+#: data/abilities.cfg:14
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -50,11 +50,11 @@ msgstr ""
 "Отравленное соединение не может быть полностью излечено целителем от яда и "
 "должно найти деревню или лекаря."
 
-#: data/abilities.cfg:27
+#: data/abilities.cfg:30
 msgid "heals +8"
 msgstr "целитель +8"
 
-#: data/abilities.cfg:32
+#: data/abilities.cfg:35
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -74,11 +74,11 @@ msgstr ""
 "Отравленное соединение не может быть полностью излечено целителем от яда и "
 "должно найти деревню или лекаря."
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:45
 msgid "cures"
 msgstr "лекарь"
 
-#: data/abilities.cfg:44
+#: data/abilities.cfg:47
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -88,11 +88,11 @@ msgstr ""
 "Лекарь способен лечить яд, при этом излечиваемый не получит дополнительного "
 "здоровья в этом ходу."
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:62
 msgid "regenerates"
 msgstr "возрождающийся"
 
-#: data/abilities.cfg:59
+#: data/abilities.cfg:64
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
@@ -102,11 +102,11 @@ msgstr ""
 "Это соединение лечит себя на 8 ЗД каждый ход. Если оно отравлено, оно "
 "удаляет яд вместо лечения."
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:81
 msgid "steadfast"
 msgstr "стойкий"
 
-#: data/abilities.cfg:76
+#: data/abilities.cfg:83
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -116,13 +116,13 @@ msgstr ""
 "Сопротивляемость такого соединения удваивается, но не более чем до величины "
 "в 50%, когда соединение защищается."
 
-#: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
-#: data/abilities.cfg:183 data/abilities.cfg:239
+#: data/abilities.cfg:96 data/abilities.cfg:118 data/abilities.cfg:152
+#: data/abilities.cfg:198 data/abilities.cfg:256
 msgid "leadership"
 msgstr "лидер"
 
-#: data/abilities.cfg:91 data/abilities.cfg:111 data/abilities.cfg:143
-#: data/abilities.cfg:187 data/abilities.cfg:243
+#: data/abilities.cfg:100 data/abilities.cfg:122 data/abilities.cfg:156
+#: data/abilities.cfg:202 data/abilities.cfg:260
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -142,11 +142,11 @@ msgstr ""
 "той же стороне, что и соединение-лидер, то такому соединения в бою "
 "добавляется до 25% дополнительного урона в зависимости от его уровня."
 
-#: data/abilities.cfg:305
+#: data/abilities.cfg:324
 msgid "skirmisher"
 msgstr "застрельщик"
 
-#: data/abilities.cfg:307
+#: data/abilities.cfg:326
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -156,11 +156,11 @@ msgstr ""
 "Это соединение способно быстро перемещаться между противниками, игнорируя их "
 "Зоны контроля."
 
-#: data/abilities.cfg:318
+#: data/abilities.cfg:339
 msgid "illuminates"
 msgstr "освещающий"
 
-#: data/abilities.cfg:322
+#: data/abilities.cfg:343
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -176,11 +176,11 @@ msgstr ""
 "Любое находящееся рядом соединение дерется ночью так, если бы оно дралось в "
 "сумерки, и дерется в сумерки так, если бы дралось днем."
 
-#: data/abilities.cfg:330
+#: data/abilities.cfg:353
 msgid "teleport"
 msgstr "телепорт"
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:355
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -190,11 +190,11 @@ msgstr ""
 "Данное соединение может мгновенно телепортироваться между двумя "
 "дружественными деревнями, используя один из своих ходов."
 
-#: data/abilities.cfg:339 data/abilities.cfg:340
+#: data/abilities.cfg:364 data/abilities.cfg:365
 msgid "ambush"
 msgstr "скрытный"
 
-#: data/abilities.cfg:344 data/abilities.cfg:348
+#: data/abilities.cfg:369 data/abilities.cfg:373
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -210,11 +210,11 @@ msgstr ""
 "в лесу, кроме тех случаев, когда любого хода оно было атаковано или "
 "находится рядом с вражеским соединением."
 
-#: data/abilities.cfg:362 data/abilities.cfg:367
+#: data/abilities.cfg:389 data/abilities.cfg:394
 msgid "nightstalk"
 msgstr "невидимка"
 
-#: data/abilities.cfg:366 data/abilities.cfg:371
+#: data/abilities.cfg:393 data/abilities.cfg:398
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -230,11 +230,11 @@ msgstr ""
 "кроме тех случаев, когда после любого хода оно было атаковано или находится "
 "рядом с вражеским соединением."
 
-#: data/abilities.cfg:384 data/abilities.cfg:389
+#: data/abilities.cfg:413 data/abilities.cfg:418
 msgid "submerge"
 msgstr "подводник"
 
-#: data/abilities.cfg:388 data/abilities.cfg:393
+#: data/abilities.cfg:417 data/abilities.cfg:422
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -251,11 +251,11 @@ msgstr ""
 "его, за исключением тех случаев, когда они будут им атакованы или окажутся "
 "рядом с ним."
 
-#: data/abilities.cfg:412
+#: data/abilities.cfg:443
 msgid "berserk"
 msgstr "берсерк"
 
-#: data/abilities.cfg:414
+#: data/abilities.cfg:445
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -265,11 +265,11 @@ msgstr ""
 "Используется в наступлении или обороне, эта атака продолжает битву, пока "
 "один из бойцов не погибнет или пока не пройдут 30 раундов атаки."
 
-#: data/abilities.cfg:422
+#: data/abilities.cfg:455
 msgid "backstab"
 msgstr "исподтишка"
 
-#: data/abilities.cfg:424
+#: data/abilities.cfg:457
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -280,11 +280,11 @@ msgstr ""
 "Эта атака наносит двойной урон, если враг находится напротив дружественного "
 "соединения или беспомощно (например превращено в камень)."
 
-#: data/abilities.cfg:434 data/abilities.cfg:443
+#: data/abilities.cfg:469 data/abilities.cfg:481
 msgid "plague"
 msgstr "чума"
 
-#: data/abilities.cfg:436 data/abilities.cfg:445
+#: data/abilities.cfg:471 data/abilities.cfg:483
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -296,11 +296,11 @@ msgstr ""
 "убившего, и переходит на его сторону. (Это не работает на мертвецов или на "
 "соединения, находящиеся в деревнях)"
 
-#: data/abilities.cfg:452
+#: data/abilities.cfg:492
 msgid "slows"
 msgstr "замедление"
 
-#: data/abilities.cfg:454
+#: data/abilities.cfg:494
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -312,11 +312,11 @@ msgstr ""
 "будет наносить лишь половину атак и перемещаться в два раза медленнее (с "
 "округлением в большую сторону)."
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:503
 msgid "stones"
 msgstr "камень"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:505
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -326,11 +326,11 @@ msgstr ""
 "Данный вид атаки превращает цель в камень. Соединения, превращенные в "
 "камень, не могут перемещаться и атаковать."
 
-#: data/abilities.cfg:470
+#: data/abilities.cfg:514
 msgid "marksman"
 msgstr "снайпер"
 
-#: data/abilities.cfg:472
+#: data/abilities.cfg:516
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -338,11 +338,11 @@ msgstr ""
 "Снайпер:\n"
 "В наступлении данная атака всегда имеет шанс не менее 60% нанести ущерб."
 
-#: data/abilities.cfg:482
+#: data/abilities.cfg:528
 msgid "magical"
 msgstr "магия"
 
-#: data/abilities.cfg:484
+#: data/abilities.cfg:530
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -350,11 +350,11 @@ msgstr ""
 "Магия:\n"
 "Данный тип атаки всегда имеет 70% шанс нанести ущерб."
 
-#: data/abilities.cfg:493
+#: data/abilities.cfg:541
 msgid "swarm"
 msgstr "рой"
 
-#: data/abilities.cfg:495
+#: data/abilities.cfg:543
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -368,11 +368,11 @@ msgstr ""
 "максимального ЗД соединения. Например, соединение, имеющее 3/4 от "
 "максимального ЗД, сможет наносить только 3/4 от числа возможных ударов."
 
-#: data/abilities.cfg:502
+#: data/abilities.cfg:552
 msgid "charge"
 msgstr "бросок"
 
-#: data/abilities.cfg:504
+#: data/abilities.cfg:554
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -382,11 +382,11 @@ msgstr ""
 "Эта атака наносит двойной урон цели. Соединение также будет получать двойной "
 "урон при ответном ударе цели."
 
-#: data/abilities.cfg:514
+#: data/abilities.cfg:566
 msgid "drains"
 msgstr "осушающий"
 
-#: data/abilities.cfg:516
+#: data/abilities.cfg:568
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -396,11 +396,11 @@ msgstr ""
 "Это соединение высасывает здоровье из живых соединений, получая для себя "
 "половину нанесенного количества ущерба (округляется вниз)."
 
-#: data/abilities.cfg:523
+#: data/abilities.cfg:577
 msgid "firststrike"
 msgstr "первый удар"
 
-#: data/abilities.cfg:525
+#: data/abilities.cfg:579
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -409,11 +409,11 @@ msgstr ""
 "Данное соединение всегда атакует первым с данной атакой, даже если "
 "соединение защищается."
 
-#: data/abilities.cfg:532
+#: data/abilities.cfg:588
 msgid "poison"
 msgstr "яд"
 
-#: data/abilities.cfg:534
+#: data/abilities.cfg:590
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -3768,11 +3768,12 @@ msgstr ""
 "Кайрак,Уркар"
 
 #: data/names.cfg:38
+#, fuzzy
 msgid ""
-"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
-"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
-"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
-"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
+"Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
+"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
 "Гарк,Трок,Нук Кар,Ка,Хак,Тух,Тур,Рук,Дак,Труф,Фрок,Кух,Тук Рух,Грар,Шуф,Стун,"
 "Хот,Нак,Урк,Лок,Ху Ках,Лук,Хаск,Гулк,Тог,Ург,Торг,Тарг,Борб,Угг,Сарк,Дрог,"
@@ -3804,6 +3805,7 @@ msgstr ""
 "Сейлик,Саланикс,Клизи,Калиез,Фриззл,Чамил,Зандлер,Сандикс"
 
 #: data/names.cfg:46
+#, fuzzy
 msgid ""
 "Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
 "Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
@@ -3813,7 +3815,7 @@ msgid ""
 "Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
 "Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
 "Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
-"Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
+"Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 msgstr ""
 "Крааг,Гиллан,Гишарри,Кариган,Грон,Их,Кренли,Кегрид,Ма Тоа,Гриш,Гаруши,Гаушии,"
 "Мурр,Гакре,Охм,Кан Ух,Гарчин,Оматаке,Краш,Града,Моруст,Гарадин,Кралл Он,"
@@ -5134,39 +5136,39 @@ msgstr ""
 " Жертвы от яда этого соединения будут постоянно терять здоровье, пока не "
 "будут излечены в деревне или лекарем."
 
-#: data/team-colors.cfg:4
+#: data/team-colors.cfg:10
 msgid "Red"
 msgstr "Красный"
 
-#: data/team-colors.cfg:10
+#: data/team-colors.cfg:16
 msgid "Blue"
 msgstr "Синий"
 
-#: data/team-colors.cfg:16
+#: data/team-colors.cfg:22
 msgid "Green"
 msgstr "Зеленый"
 
-#: data/team-colors.cfg:22
+#: data/team-colors.cfg:28
 msgid "Purple"
 msgstr "Фиолетовый"
 
-#: data/team-colors.cfg:28
+#: data/team-colors.cfg:34
 msgid "Orange"
 msgstr "Оранжевый"
 
-#: data/team-colors.cfg:34
+#: data/team-colors.cfg:40
 msgid "Black"
 msgstr "Черный"
 
-#: data/team-colors.cfg:40
+#: data/team-colors.cfg:46
 msgid "White"
 msgstr "Белый"
 
-#: data/team-colors.cfg:46
+#: data/team-colors.cfg:52
 msgid "Brown"
 msgstr "Коричневый"
 
-#: data/team-colors.cfg:52
+#: data/team-colors.cfg:58
 msgid "Teal"
 msgstr "Голубой"
 
@@ -5307,13 +5309,13 @@ msgid "End Turn"
 msgstr "Закончить ход"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:296 src/unit.cpp:2469
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2473
 msgid "HP"
 msgstr "ЗД"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:297
-#: src/menu_events.cpp:830
+#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
+#: src/menu_events.cpp:832
 msgid "XP"
 msgstr "ОП"
 
@@ -5741,91 +5743,91 @@ msgstr ""
 "кнопку \"Помочь Весноту\". Благодаря этой информации мы сможем изменить "
 "сложность кампаний."
 
-#: data/traits.cfg:6
+#: data/traits.cfg:9
 msgid "loyal"
 msgstr "преданный"
 
-#: data/traits.cfg:7
+#: data/traits.cfg:10
 msgid "female^loyal"
 msgstr "преданная"
 
-#: data/traits.cfg:8
+#: data/traits.cfg:11
 msgid "Zero upkeep"
 msgstr "Нулевое содержание"
 
-#: data/traits.cfg:18
+#: data/traits.cfg:22
 msgid "undead"
 msgstr "мертвец"
 
-#: data/traits.cfg:19
+#: data/traits.cfg:23
 msgid "female^undead"
 msgstr "нежить"
 
-#: data/traits.cfg:20
+#: data/traits.cfg:24
 msgid "Immune to poison"
 msgstr "Устойчив к отравлению"
 
-#: data/traits.cfg:27
+#: data/traits.cfg:32
 msgid "strong"
 msgstr "сильный"
 
-#: data/traits.cfg:28
+#: data/traits.cfg:33
 msgid "female^strong"
 msgstr "сильная"
 
-#: data/traits.cfg:44
+#: data/traits.cfg:50
 msgid "dextrous"
 msgstr "ловкий"
 
-#: data/traits.cfg:45
+#: data/traits.cfg:51
 msgid "female^dextrous"
 msgstr "ловкая"
 
-#: data/traits.cfg:57
+#: data/traits.cfg:64
 msgid "quick"
 msgstr "быстрый"
 
-#: data/traits.cfg:58
+#: data/traits.cfg:65
 msgid "female^quick"
 msgstr "быстрая"
 
-#: data/traits.cfg:73
+#: data/traits.cfg:81
 msgid "intelligent"
 msgstr "умный"
 
-#: data/traits.cfg:74
+#: data/traits.cfg:82
 msgid "female^intelligent"
 msgstr "умная"
 
-#: data/traits.cfg:85
+#: data/traits.cfg:94
 msgid "resilient"
 msgstr "неунывающий"
 
-#: data/traits.cfg:86
+#: data/traits.cfg:95
 msgid "female^resilient"
 msgstr "неунывающая"
 
-#: data/traits.cfg:101
+#: data/traits.cfg:111
 msgid "healthy"
 msgstr "здоровяк"
 
-#: data/traits.cfg:102
+#: data/traits.cfg:112
 msgid "female^healthy"
 msgstr "здоровячка"
 
-#: data/traits.cfg:103
+#: data/traits.cfg:113
 msgid "Heals faster if resting"
 msgstr "Во время отдыха восстанавливается быстрее"
 
-#: data/traits.cfg:114
+#: data/traits.cfg:125
 msgid "fearless"
 msgstr "бесстрашный"
 
-#: data/traits.cfg:115
+#: data/traits.cfg:126
 msgid "female^fearless"
 msgstr "бесстрашная"
 
-#: data/traits.cfg:116
+#: data/traits.cfg:127
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Бьется нормально во время неблагоприятного времени суток"
 
@@ -5852,7 +5854,7 @@ msgstr "ложный"
 #: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:99
 #: data/units/Drake_Gladiator.cfg:151 data/units/Drake_Glider.cfg:77
 #: data/units/Drake_Hurricane.cfg:93 data/units/Drake_Sky.cfg:92
-#: data/units/Dwarvish_Fighter.cfg:64 data/units/Dwarvish_Lord.cfg:67
+#: data/units/Dwarvish_Fighter.cfg:85 data/units/Dwarvish_Lord.cfg:67
 #: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
 #: data/units/Elvish_Druid.cfg:28 data/units/Elvish_Druid.cfg:66
 #: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:70
@@ -5869,8 +5871,9 @@ msgstr "ложный"
 #: data/units/Human_Mage_White.cfg:119 data/units/Human_Mage_of_Light.cfg:99
 #: data/units/Human_Outlaw.cfg:23 data/units/Human_Outlaw.cfg:60
 #: data/units/Human_Outlaw_Bandit.cfg:35
-#: data/units/Human_Outlaw_Footpad.cfg:23
-#: data/units/Human_Outlaw_Footpad.cfg:70 data/units/Human_Outlaw_Thug.cfg:23
+#: data/units/Human_Outlaw_Footpad.cfg:24
+#: data/units/Human_Outlaw_Footpad.cfg:71
+#: data/units/Human_Outlaw_Ruffian.cfg:36 data/units/Human_Outlaw_Thug.cfg:23
 #: data/units/Mermaid_Diviner.cfg:69 data/units/Mermaid_Enchantress.cfg:26
 #: data/units/Mermaid_Enchantress.cfg:64 data/units/Mermaid_Initiate.cfg:29
 #: data/units/Mermaid_Initiate.cfg:67 data/units/Mermaid_Priestess.cfg:66
@@ -6036,7 +6039,7 @@ msgstr "когти"
 #: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
 #: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
 #: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
-#: data/units/Dwarvish_Fighter.cfg:27 data/units/Dwarvish_Lord.cfg:29
+#: data/units/Dwarvish_Fighter.cfg:33 data/units/Dwarvish_Lord.cfg:29
 #: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
 #: data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:25
@@ -6565,7 +6568,7 @@ msgstr "посох дракона"
 msgid "Dwarvish Fighter"
 msgstr "Гном боец"
 
-#: data/units/Dwarvish_Fighter.cfg:22
+#: data/units/Dwarvish_Fighter.cfg:19
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
 "feared opponents in close range combat. They are excellent in mountainous "
@@ -6577,14 +6580,14 @@ msgstr ""
 "местности и под землей. Они не очень ловки, но их сила и выносливость с "
 "лихвой это компенсирует."
 
-#: data/units/Dwarvish_Fighter.cfg:26
+#: data/units/Dwarvish_Fighter.cfg:32
 #: data/units/Undead_Skele_Deathblade.cfg:42
 #: data/units/Undead_Skele_Draug.cfg:42
 #: data/units/Undead_Skele_Revenant.cfg:41 data/units/Undead_Skeleton.cfg:106
 msgid "axe"
 msgstr "топор"
 
-#: data/units/Dwarvish_Fighter.cfg:63 data/units/Dwarvish_Lord.cfg:66
+#: data/units/Dwarvish_Fighter.cfg:84 data/units/Dwarvish_Lord.cfg:66
 #: data/units/Dwarvish_Steelclad.cfg:65 data/units/Troll_Warrior.cfg:27
 msgid "hammer"
 msgstr "молот"
@@ -8493,7 +8496,7 @@ msgstr ""
 "боеприпасов. Изгои несколько хуже бьются днем, предпочитая скрываться под "
 "покровом ночи."
 
-#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:69
+#: data/units/Human_Outlaw.cfg:59 data/units/Human_Outlaw_Footpad.cfg:70
 #: data/units/Troll_Rocklobber.cfg:65
 msgid "sling"
 msgstr "праща"
@@ -8574,12 +8577,14 @@ msgstr ""
 "позволяют им быть полезными в бою, они очень хороши для разорения "
 "противников, особенно под покровом темноты."
 
-#: data/units/Human_Outlaw_Footpad.cfg:22 data/units/Human_Outlaw_Thug.cfg:22
+#: data/units/Human_Outlaw_Footpad.cfg:22
+#: data/units/Human_Outlaw_Ruffian.cfg:33
+#: data/units/Human_Outlaw_Ruffian.cfg:34 data/units/Human_Outlaw_Thug.cfg:22
 #: data/units/Troll.cfg:26 data/units/Troll_Hero.cfg:25
 msgid "club"
 msgstr "дубинка"
 
-#: data/units/Human_Outlaw_Footpad.cfg:107
+#: data/units/Human_Outlaw_Footpad.cfg:108
 msgid "female^Footpad"
 msgstr "Разбойник"
 
@@ -8637,6 +8642,19 @@ msgstr ""
 #: data/units/Human_Outlaw_Rogue.cfg:107
 msgid "female^Rogue"
 msgstr "Бестия"
+
+#: data/units/Human_Outlaw_Ruffian.cfg:3
+#, fuzzy
+msgid "Ruffian"
+msgstr "Руины"
+
+#: data/units/Human_Outlaw_Ruffian.cfg:17
+msgid ""
+"Some men without particular skills cannot or will not make an honest living. "
+"Those that attempt to make their way through life by the heavy end of a "
+"stick, are known as 'Ruffians'.  With enough experience they can learn to "
+"swing a bigger club or throw things, but not both."
+msgstr ""
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
@@ -10576,55 +10594,55 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr ""
 "Нет свободных ячеек в замке, куда можно было бы поставить новое соединение."
 
-#: src/actions.cpp:986 src/actions.cpp:1193
+#: src/actions.cpp:991 src/actions.cpp:1198
 msgid "poisoned"
 msgstr "отравлен"
 
-#: src/actions.cpp:994 src/actions.cpp:1201
+#: src/actions.cpp:999 src/actions.cpp:1206
 msgid "slowed"
 msgstr "замедлен"
 
-#: src/actions.cpp:1005 src/actions.cpp:1213
+#: src/actions.cpp:1010 src/actions.cpp:1218
 msgid "stone"
 msgstr "камень"
 
-#: src/actions.cpp:2045
+#: src/actions.cpp:2050
 msgid "Ambushed!"
 msgstr "Попал в засаду!"
 
-#: src/actions.cpp:2085
+#: src/actions.cpp:2090
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Замечено $friends дружественное соединение"
 msgstr[1] "Замечено $friends дружественных соединения"
 msgstr[2] "Замечено $friends дружественных соединений"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2093
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Замечено $enemies вражеское соединение!"
 msgstr[1] "Замечено $enemies вражеских соединения!"
 msgstr[2] "Замечено $enemies вражеских соединений!"
 
-#: src/actions.cpp:2093
+#: src/actions.cpp:2098
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends дружественное, "
 msgstr[1] "$friends дружественных, "
 msgstr[2] "$friends дружественных, "
 
-#: src/actions.cpp:2094
+#: src/actions.cpp:2099
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies вражеское"
 msgstr[1] "$enemies вражеских"
 msgstr[2] "$enemies вражеских"
 
-#: src/actions.cpp:2095
+#: src/actions.cpp:2100
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Замечены соединения! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2104
+#: src/actions.cpp:2109
 msgid "(press $hotkey to continue)"
 msgstr "(нажмите $hotkey для продолжения)"
 
@@ -10692,7 +10710,7 @@ msgstr "Обучение"
 msgid "replay"
 msgstr "повтор"
 
-#: src/dialogs.cpp:481 src/menu_events.cpp:445 src/multiplayer_lobby.cpp:408
+#: src/dialogs.cpp:481 src/menu_events.cpp:447 src/multiplayer_lobby.cpp:408
 msgid "Turn"
 msgstr "Шаг"
 
@@ -10745,7 +10763,7 @@ msgid "Date"
 msgstr "Дата"
 
 #: src/dialogs.cpp:571 src/game.cpp:941 src/menu_events.cpp:295
-#: src/menu_events.cpp:828
+#: src/menu_events.cpp:830
 msgid "Name"
 msgstr "Название"
 
@@ -10782,7 +10800,7 @@ msgstr "ОП: "
 msgid "Moves: "
 msgstr "Ходов: "
 
-#: src/display.cpp:531
+#: src/display.cpp:529
 msgid "Screenshot"
 msgstr "Скриншот"
 
@@ -11056,11 +11074,11 @@ msgstr "Реинициализация шрифтов для текущего я
 msgid "Loading title screen."
 msgstr "Загрузка заглавного изображения."
 
-#: src/game_events.cpp:881
+#: src/game_events.cpp:880
 msgid "Victory:"
 msgstr "Победа:"
 
-#: src/game_events.cpp:884
+#: src/game_events.cpp:883
 msgid "Defeat:"
 msgstr "Поражение:"
 
@@ -11096,7 +11114,7 @@ msgstr "Атаки"
 msgid "unit help^Name"
 msgstr "Имя"
 
-#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:827
+#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:829
 msgid "Type"
 msgstr "Тип"
 
@@ -11268,63 +11286,67 @@ msgstr "Получено ущерба (в среднем)"
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/menu_events.cpp:298
+#: src/menu_events.cpp:296 src/menu_events.cpp:831
+msgid "Level"
+msgstr "Уровень"
+
+#: src/menu_events.cpp:299
 msgid "unit list^Traits"
 msgstr "Особенности"
 
-#: src/menu_events.cpp:299 src/unit.cpp:2500
+#: src/menu_events.cpp:300 src/unit.cpp:2504
 msgid "Moves"
 msgstr "Ходы"
 
-#: src/menu_events.cpp:300
+#: src/menu_events.cpp:301
 msgid "Location"
 msgstr "Позиция"
 
-#: src/menu_events.cpp:345
+#: src/menu_events.cpp:347
 msgid "Unit List"
 msgstr "Список соединений"
 
-#: src/menu_events.cpp:359
+#: src/menu_events.cpp:361
 msgid "Leader"
 msgstr "Лидер"
 
-#: src/menu_events.cpp:360 src/multiplayer_connect.cpp:741
+#: src/menu_events.cpp:362 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
 msgid "Team"
 msgstr "Команда"
 
-#: src/menu_events.cpp:361 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:363 src/multiplayer_connect.cpp:752
 #: src/multiplayer_wait.cpp:440
 msgid "Gold"
 msgstr "Золото"
 
-#: src/menu_events.cpp:362
+#: src/menu_events.cpp:364
 msgid "Villages"
 msgstr "Деревни"
 
-#: src/menu_events.cpp:363
+#: src/menu_events.cpp:365
 msgid "status^Units"
 msgstr "Соединения"
 
-#: src/menu_events.cpp:364
+#: src/menu_events.cpp:366
 msgid "Upkeep"
 msgstr "Содержание"
 
-#: src/menu_events.cpp:365 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:444
 msgid "Income"
 msgstr "Доход"
 
-#: src/menu_events.cpp:454 src/playcampaign.cpp:329 src/playcampaign.cpp:474
+#: src/menu_events.cpp:456 src/playcampaign.cpp:329 src/playcampaign.cpp:474
 msgid "Name:"
 msgstr "Название:"
 
-#: src/menu_events.cpp:459 src/menu_events.cpp:472
+#: src/menu_events.cpp:461 src/menu_events.cpp:474
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/menu_events.cpp:459
+#: src/menu_events.cpp:461
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -11332,83 +11354,83 @@ msgstr ""
 "Сохранение не должно содержать двоеточий, слэшей и обратных слэшей. Выберите "
 "другое имя."
 
-#: src/menu_events.cpp:469
+#: src/menu_events.cpp:471
 msgid "Saved"
 msgstr "Сохранено"
 
-#: src/menu_events.cpp:469
+#: src/menu_events.cpp:471
 msgid "The game has been saved"
 msgstr "Игра успешно сохранена"
 
-#: src/menu_events.cpp:472 src/playcampaign.cpp:484
+#: src/menu_events.cpp:474 src/playcampaign.cpp:484
 msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
-#: src/menu_events.cpp:486
+#: src/menu_events.cpp:488
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
-#: src/menu_events.cpp:491
+#: src/menu_events.cpp:493
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Карта уже существует. Перезаписать ее?"
 
-#: src/menu_events.cpp:503
+#: src/menu_events.cpp:505
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/menu_events.cpp:508
+#: src/menu_events.cpp:510
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/menu_events.cpp:598 src/menu_events.cpp:600 src/play_controller.cpp:753
+#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:748
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "автосохр"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:605
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Автосохранение игры невозможно. Сохраните игру вручную."
 
-#: src/menu_events.cpp:627
+#: src/menu_events.cpp:629
 msgid "Chat Log"
 msgstr "Лог чата"
 
-#: src/menu_events.cpp:637
+#: src/menu_events.cpp:639
 msgid "Message:"
 msgstr "Сообщение:"
 
-#: src/menu_events.cpp:638
+#: src/menu_events.cpp:640
 msgid "Send to allies only"
 msgstr "Отправить только союзникам"
 
-#: src/menu_events.cpp:705
+#: src/menu_events.cpp:707
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "золотой"
 msgstr[1] "золотых"
 msgstr[2] "золотых"
 
-#: src/menu_events.cpp:712
+#: src/menu_events.cpp:714
 msgid "You have no units available to recruit."
 msgstr "Нет соединений для вербовки."
 
-#: src/menu_events.cpp:723
+#: src/menu_events.cpp:725
 msgid "Recruit"
 msgstr "Завербовать"
 
-#: src/menu_events.cpp:724 src/menu_events.cpp:873
+#: src/menu_events.cpp:726 src/menu_events.cpp:875
 msgid "Select unit:"
 msgstr "Выберите соединение:"
 
-#: src/menu_events.cpp:764
+#: src/menu_events.cpp:766
 msgid "You don't have enough gold to recruit that unit"
 msgstr "У вас недостаточно золота для покупки данного соединения"
 
-#: src/menu_events.cpp:820
+#: src/menu_events.cpp:822
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Вы изолированы от ваших солдат и не можете призвать их"
 
-#: src/menu_events.cpp:822
+#: src/menu_events.cpp:824
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11416,19 +11438,15 @@ msgstr ""
 "Нет соединений для призыва\n"
 "(У вас должны быть уцелевшие с прошлого сценария соединения)"
 
-#: src/menu_events.cpp:829
-msgid "Level"
-msgstr "Уровень"
-
-#: src/menu_events.cpp:861
+#: src/menu_events.cpp:863
 msgid "Dismiss Unit"
 msgstr "Распустить соединение"
 
-#: src/menu_events.cpp:872
+#: src/menu_events.cpp:874
 msgid "Recall"
 msgstr "Призвать"
 
-#: src/menu_events.cpp:884
+#: src/menu_events.cpp:886
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
@@ -11440,43 +11458,43 @@ msgstr[1] ""
 msgstr[2] ""
 "У вас должно быть по крайней мере $cost золотых монет для вербовки соединения"
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1211
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Вы еще не начинали свой ход. Вы действительно хотите завершить свой ход?"
 
-#: src/menu_events.cpp:1217 src/menu_events.cpp:1222
+#: src/menu_events.cpp:1219 src/menu_events.cpp:1224
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Некоторые соединения еще не сделали ход. Вы действительно хотите завершить "
 "свой ход?"
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1265
 msgid "Rename Unit"
 msgstr "Переименовать соединение"
 
-#: src/menu_events.cpp:1358
-msgid "Team only"
-msgstr "Только для команд"
-
-#: src/menu_events.cpp:1363
+#: src/menu_events.cpp:1347
 msgid "Place Label"
 msgstr "Поставить метку"
 
-#: src/menu_events.cpp:1364
+#: src/menu_events.cpp:1350 src/menu_events.cpp:1353
 msgid "Label:"
 msgstr "Метка:"
 
-#: src/menu_events.cpp:1470
+#: src/menu_events.cpp:1356
+msgid "Team only"
+msgstr "Только для команд"
+
+#: src/menu_events.cpp:1454
 msgid "Search"
 msgstr "Поиск"
 
-#: src/menu_events.cpp:1513
+#: src/menu_events.cpp:1497
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Команды: whisper list emote. Наберите /help [команда] для подсказки."
 
-#: src/menu_events.cpp:1564
+#: src/menu_events.cpp:1548
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -11484,18 +11502,18 @@ msgstr ""
 "Отправить приватное сообщение. Вы не можете отправлять сообщения игроку, "
 "участвующему в игре. Использование:  /whisper [ник] [сообщение]"
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1552
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Добавить игрока в список друзей. Использование: /list addfriend [аргумент]"
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1554
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Добавить игрока в список игнорирования. Использование: /list ignore "
 "[аргумент]"
 
-#: src/menu_events.cpp:1572
+#: src/menu_events.cpp:1556
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -11503,19 +11521,19 @@ msgstr ""
 "Удалить игрока из списка игнорирования. Использование: /list remove "
 "[аргумент]"
 
-#: src/menu_events.cpp:1574
+#: src/menu_events.cpp:1558
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Очистить список игнорирования. Использование: /list clear"
 
-#: src/menu_events.cpp:1576
+#: src/menu_events.cpp:1560
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Показать список игнорирования. Использование: /list display"
 
-#: src/menu_events.cpp:1578
+#: src/menu_events.cpp:1562
 msgid "Unknown subcommand"
 msgstr "Неизвестная подкоманда"
 
-#: src/menu_events.cpp:1581
+#: src/menu_events.cpp:1565
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -11527,52 +11545,52 @@ msgstr ""
 "(необязательно) Подкоманды: addfriend addignore remove display clear. "
 "Наберите /help list [подкоманда] для подсказки."
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1568
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Отправить эмоцию или действие в чате. Использование: /emote [сообщение]"
 
-#: src/menu_events.cpp:1586
+#: src/menu_events.cpp:1570
 msgid "Unknown command"
 msgstr "Неизвестная команда"
 
-#: src/menu_events.cpp:1598
+#: src/menu_events.cpp:1582
 msgid "Added to ignore list: "
 msgstr "Добавлен в игнор-лист: "
 
-#: src/menu_events.cpp:1600 src/menu_events.cpp:1607 src/menu_events.cpp:1614
+#: src/menu_events.cpp:1584 src/menu_events.cpp:1591 src/menu_events.cpp:1598
 msgid "Invalid username: "
 msgstr "Неправильный ник: "
 
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1589
 msgid "Added to friends list: "
 msgstr "Добавлен в список друзей: "
 
-#: src/menu_events.cpp:1612
+#: src/menu_events.cpp:1596
 msgid "Removed from list: "
 msgstr "Удален из списка: "
 
-#: src/menu_events.cpp:1638
+#: src/menu_events.cpp:1622
 msgid "There are no players on your friends or ignore list."
 msgstr "В ваших списках друзей или игнорирования нет игроков."
 
-#: src/menu_events.cpp:1648
+#: src/menu_events.cpp:1632
 msgid "Removed from ignore list: "
 msgstr "Удален из игнор-листа: "
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1635
 msgid "Removed from friends list: "
 msgstr "Удален из списка друзей: "
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1642
 msgid "Unknown command: "
 msgstr "Неизвестная команда: "
 
-#: src/menu_events.cpp:1759
+#: src/menu_events.cpp:1743
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Не могу найти метку или соединение, содержащую текст \"$search\"."
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1887
 msgid "prompt^Command:"
 msgstr "Команда:"
 
@@ -11620,19 +11638,19 @@ msgstr "Нет подходящего оружия"
 msgid "Chance of being unscathed"
 msgstr "Шанс быть не ударенным"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1334
+#: src/mouse_events.cpp:657 src/mouse_events.cpp:1333
 msgid "Damage Calculations"
 msgstr "Вычисление ущерба"
 
-#: src/mouse_events.cpp:1317 src/reports.cpp:282
+#: src/mouse_events.cpp:1316 src/reports.cpp:282
 msgid "vs"
 msgstr "против"
 
-#: src/mouse_events.cpp:1345
+#: src/mouse_events.cpp:1344
 msgid "Attack Enemy"
 msgstr "Атаковать противника"
 
-#: src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:1345
 msgid "Choose weapon:"
 msgstr "Выберите оружие:"
 
@@ -11692,12 +11710,12 @@ msgid "Normal"
 msgstr "Нормально"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2604
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2608
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2611
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2615
 msgid ")"
 msgstr ")"
 
@@ -12072,16 +12090,16 @@ msgstr "Не могу добавить сокет к набору сокетов
 msgid "Could not send initial handshake"
 msgstr "Не могу отправить данные для инициализации"
 
-#: src/play_controller.cpp:404 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:399 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
-#: src/play_controller.cpp:757
+#: src/play_controller.cpp:752
 msgid "Back to start"
 msgstr "Назад к старту"
 
-#: src/play_controller.cpp:759
+#: src/play_controller.cpp:754
 msgid "Back to turn "
 msgstr "Назад к ходу "
 
@@ -12477,15 +12495,15 @@ msgstr "Помощь"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогите Весноту, отправив нам информацию"
 
-#: src/unit.cpp:2435 src/unit.cpp:2609
+#: src/unit.cpp:2439 src/unit.cpp:2613
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2517
+#: src/unit.cpp:2521
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2600
+#: src/unit.cpp:2604
 msgid ": "
 msgstr ": "
 
@@ -12497,23 +12515,19 @@ msgstr "ущерб"
 msgid "strikes"
 msgstr "ударов"
 
-#: src/unit_types.cpp:977
+#: src/unit_types.cpp:971
 msgid "chaotic"
 msgstr "хаотичный"
 
-#: src/unit_types.cpp:977
+#: src/unit_types.cpp:971
 msgid "lawful"
 msgstr "порядочный"
 
-#: src/unit_types.cpp:977
+#: src/unit_types.cpp:971
 msgid "neutral"
 msgstr "нейтральный"
 
-#: src/upload_log.cpp:284
-msgid "Enable summary uploads"
-msgstr "Включить отправку итогов"
-
-#: src/upload_log.cpp:289
+#: src/upload_log.cpp:283
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -12524,17 +12538,21 @@ msgstr ""
 "сохраняет результаты ваших игр. Вы можете помочь нам улучшить игровой "
 "процесс, разрешив отправлять эти результаты (анонимно) на сайт wesnoth.org.\n"
 
-#: src/upload_log.cpp:290
+#: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
 msgstr "Итоги сохраняются здесь:"
 
-#: src/upload_log.cpp:292
+#: src/upload_log.cpp:286
 msgid "You can view the results at:"
 msgstr "Вы можете просмотреть результаты в:"
 
-#: src/upload_log.cpp:297
+#: src/upload_log.cpp:288
 msgid "Help us make Wesnoth better for you!"
 msgstr "Помогите нам сделать Веснот лучше!"
+
+#: src/upload_log.cpp:290
+msgid "Enable summary uploads"
+msgstr "Включить отправку итогов"
 
 #~ msgid "Map"
 #~ msgstr "Карта"
