@@ -35,10 +35,6 @@
 
 namespace t_translation {
 
-	typedef Uint32 t_layer;
-	const t_layer WILDCARD = 0x2A000000;
-	const t_layer NO_LAYER = 0xFFFFFFFF;
-	
 	// The definitions for a terrain
 	/**
 	 * A terrain string which is converted to a terrain is a string with 1 or 2 layers
@@ -49,12 +45,11 @@ namespace t_translation {
 	struct t_letter {
 		t_letter(const std::string& b);
 		t_letter(const std::string& b, const std::string& o);
-		t_letter(const std::string& b, const t_layer o);
-		t_letter(const t_layer& b, const t_layer& o) : base(b), overlay(o) {};
-		t_letter() : base(0), overlay(NO_LAYER) {}
+		t_letter(const Uint32& b, const Uint32& o) : base(b), overlay(o) {};
+		t_letter() : base(0), overlay(0xFFFFFFFF) {}
 
-		t_layer base;
-		t_layer overlay;
+		Uint32 base;
+		Uint32 overlay;
 	};
 	const t_letter NONE_TERRAIN = t_letter();
 
@@ -85,7 +80,7 @@ namespace t_translation {
 	 */
 	struct t_match{
 		t_match();
-		t_match(const std::string& str, const t_layer filler = NO_LAYER);
+		t_match(const std::string& str);
 		t_match(const t_letter& letter);
 
 		t_list terrain;	
@@ -164,11 +159,10 @@ namespace t_translation {
 	 * 					is the base terrain, the second the overlay terrain.
 	 * 
 	 * @param t_format	The format to read
-	 * @param filler	if there's no layer this value will be used as the second layer
 	 *
 	 * @return			A single terrain letter
 	 */
-	t_letter read_letter(const std::string& str, const int t_format, const t_layer filler = NO_LAYER);
+	t_letter read_letter(const std::string& str, const int t_format);
 	
 	/** 
 	 * Writes a single letter to a string.
@@ -195,11 +189,10 @@ namespace t_translation {
 	 *						0 = no
 	 *						1 = yes
 	 * @param t_format	The format to read.
-	 * @param filler	if there's no layer this value will be used as the second layer
 	 *
 	 * @returns			A vector which contains the letters found in the string
 	 */
-	 t_list read_list(const std::string& str, const int separated, const int t_format, const t_layer filler = NO_LAYER);
+	 t_list read_list(const std::string& str, const int separated, const int t_format);
 
 	/** 
 	 * Writes a list of terrains to a string, only writes the new format.
@@ -331,8 +324,8 @@ namespace t_translation {
 
 	// these terrain letters are in the builder format, and 
 	// not usable in other parts of the engine
-	const t_layer TB_STAR = '*' << 24; //it can be assumed this is the equivalent of STAR
-	const t_layer TB_DOT = '.' << 24;
+	const Uint32 TB_STAR = '*' << 24; //it can be assumed this is the equivalent of STAR
+	const Uint32 TB_DOT = '.' << 24;
 	
 	/** 
 	 * Reads a builder map, a builder map differs much from a normal map hence
