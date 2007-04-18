@@ -569,8 +569,14 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 				      map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
 				      weapons_(type == SHOW_ALL)
 {
+#ifndef USE_TINY_GUI
 	unsigned w = font::relative_size(weapons_ ? 200 : 190);
 	unsigned h = font::relative_size(weapons_ ? 370 : 140);
+#else
+	unsigned w = 100;
+	unsigned h = 180;
+
+#endif
 	set_measurements(w, h);
 	unit_store_.push_back(u);
 }
@@ -581,7 +587,15 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, std::vec
 				      map_(map), units_(&units), index_(0), left_(on_left_side),
 				      weapons_(type == SHOW_ALL)
 {
-	set_measurements(font::relative_size(200), font::relative_size(370));
+#ifndef USE_TINY_GUI
+	unsigned w = font::relative_size(weapons_ ? 200 : 190);
+	unsigned h = font::relative_size(weapons_ ? 370 : 140);
+#else
+	unsigned w = 100;
+	unsigned h = 180;
+
+#endif
+	set_measurements(w, h);
 }
 
 void unit_preview_pane::join()
@@ -764,7 +778,7 @@ namespace {
 campaign_preview_pane::campaign_preview_pane(CVideo &video,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(video),descriptions_(desc),index_(0)
 {
 #ifdef USE_TINY_GUI
-	set_measurements(160, 200);
+	set_measurements(150, 200);
 #else
 	set_measurements(350, 400);
 #endif
