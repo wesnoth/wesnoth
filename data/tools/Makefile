@@ -21,7 +21,7 @@ all:
 
 utils-unused:
 	@echo "# Report on unused utility macros"
-	@./macroscope --crossreference --from $(TOPDIR)/data/utils --refcount 0 $(FAKE) $(EXCLUDE) $(TOPDIR)
+	@./macroscope --crossreference --from $(TOPDIR)data/utils --refcount 0 $(FAKE) $(EXCLUDE) $(TOPDIR)
 
 all-unused:
 	@echo "# Report on unused resource files"
