@@ -71,6 +71,8 @@ void show_intro(display &disp, const config& data, const config& level)
 		}
 	}
 
+	image::flush_cache();
+
 	LOG_NG << "intro sequence finished...\n";
 }
 
