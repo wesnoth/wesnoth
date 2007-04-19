@@ -34,7 +34,9 @@ namespace game_config
 	int kill_experience = 8;
 	int lobby_refresh = 2000;
 	const std::string version = VERSION;
-        const std::string svnrev = SVNREV;
+#ifdef SVNREV
+	const std::string svnrev = SVNREV;
+#endif
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
 	
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
