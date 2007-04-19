@@ -33,12 +33,6 @@ pkgdatadir=$(datadir)/@DATADIR@
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL)
 
-# Should be touched each time the SVN revision number goes up 
-version-stamp: FORCE
-	if [ x"$(SVNREV)" != x`cat version-stamp 2>/dev/null` ]; then echo -n $(SVNREV) >version-stamp; fi
-
-FORCE:
-
 #############################################################################
 #    Wesnoth                                                                #
 #############################################################################
@@ -477,6 +471,17 @@ libwesnoth_core_a_SOURCES = \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp
+
+# Until game_config.cpp is removed, this will be needed to ensure that the
+# SVNVER constant gets updated correctly.  If and when that definition is
+# moved elsewhere, this dependency must follow it.
+game_config.o: revision-stamp 
+
+# Should be touched each time the SVN revision number goes up 
+revision-stamp: FORCE
+	if [ x"$(SVNREV)" != x`cat revision-stamp 2>/dev/null` ]; then echo -n $(SVNREV) >revision-stamp; fi
+
+FORCE:
 
 AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ @PYTHON_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"
