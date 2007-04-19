@@ -766,8 +766,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		//see if we should show the normal cursor, the movement cursor, or
 		//the attack cursor
 
-		const unit_map::const_iterator selected_unit = find_unit(selected_hex_);
-		const unit_map::const_iterator mouseover_unit = find_unit(new_hex);
+		const unit_map::iterator selected_unit = find_unit(selected_hex_);
+		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
 		gamemap::location attack_from;
 		if(selected_unit != units_.end() && mouseover_unit != units_.end()) {
@@ -797,15 +797,23 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			(*gui_).set_route(NULL);
 		}
 
-		const gamemap::location& dest = attack_from.valid() ? attack_from : new_hex;
-		const unit_map::const_iterator dest_un = find_unit(dest);
+		gamemap::location dest;
+		unit_map::const_iterator dest_un;
+		if (attack_from.valid()) {
+			dest = attack_from;
+			dest_un = find_unit(dest);
+		}	else {
+		 	dest = new_hex;
+			dest_un = mouseover_unit;
+		}
+
 		if(dest == selected_hex_ || dest_un != units_.end()) {
 			current_route_.steps.clear();
 			(*gui_).set_route(NULL);
 		} else if(!current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
 
-			unit_map::const_iterator un = find_unit(selected_hex_);
+			unit_map::const_iterator un = selected_unit;
 
 			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.incapacitated()) {
 				current_route_ = get_route(un, dest, current_team());
@@ -815,7 +823,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			}
 		}
 
-		unit_map::iterator un = find_unit(new_hex);
+		unit_map::iterator un = mouseover_unit;
 
 		if(un != units_.end() && current_paths_.routes.empty() && !(*gui_).fogged(un->first.x,un->first.y)) {
 			if (un->second.side() != team_num_) {
