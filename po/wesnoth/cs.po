@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:31+0200\n"
+"POT-Creation-Date: 2007-04-19 21:44+0200\n"
 "PO-Revision-Date: 2007-04-13 11:23+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1466,11 +1466,12 @@ msgid "Damage Types and Resistance"
 msgstr "Typy zranění a odolnost"
 
 #: data/help.cfg:179
+#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
 "further types of damage usually associated with magical attacks: Fire, Cold "
-"and Holy attacks. Different units may have resistances which alter the "
+"and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
 "Ve Wesnothu jsou 3 typy poškození obvykle související s fyzickými útoky: "
@@ -1498,11 +1499,12 @@ msgstr ""
 "utrpí o 100% větší zranění."
 
 #: data/help.cfg:183
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "For example, Skeletons are highly resistant to Blade and Pierce damage, but "
-"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Arcane "
 "damage."
 msgstr ""
 "\n"
@@ -5008,9 +5010,10 @@ msgstr ""
 "velmi pomalu, pohybovat v hlubokých vodách."
 
 #: data/special-notes.cfg:5
+#, fuzzy
 msgid ""
-" This unit's holy attack deals tremendous damage to the undead, and even "
-"some to living creatures."
+" This unit's arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 msgstr ""
 "Svatý útok této jednotky působí zničující zranění jak nemrtvým, tak také "
 "některým živým stvořením."
@@ -5479,10 +5482,11 @@ msgstr ""
 "'Přivolej'."
 
 #: data/tips.cfg:3
+#, fuzzy
 msgid ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
-"Different units have weaknesses against different types of attacks. Right-"
-"click on a unit, and then select 'Unit Description', and then click "
+"There are six types of attacks: pierce, blade, impact, fire, cold, and "
+"arcane. Different units have weaknesses against different types of attacks. "
+"Right-click on a unit, and then select 'Unit Description', and then click "
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
@@ -5645,9 +5649,10 @@ msgstr ""
 "abys odtamtud mohl verbovat."
 
 #: data/tips.cfg:20
+#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and holy attacks."
+"impact, fire, and arcane attacks."
 msgstr ""
 "Kostlivci jsou odolní vůči útokům čepelí a bodání, ale zranitelní údery, "
 "ohněm a svatými útoky."
@@ -5719,7 +5724,8 @@ msgstr ""
 "konce kola."
 
 #: data/tips.cfg:30
-msgid "Holy attacks are very powerful against undead."
+#, fuzzy
+msgid "Arcane attacks are very powerful against undead."
 msgstr "Svaté útoky jsou velmi účinné proti nemrtvým."
 
 #: data/tips.cfg:31
@@ -7012,8 +7018,9 @@ msgstr "kouzelný oheň"
 #: data/units/Undead_Spirit_Ghost.cfg:26
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "holy"
-msgstr "svatý"
+#, fuzzy
+msgid "arcane"
+msgstr "na dálku"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -10614,55 +10621,55 @@ msgstr "Musíš mít hrdinu v tvrzi, abys mohl někoho naverbovat nebo přivolat
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nejsou žádné volné hrady, ve kterých by se daly verbovat jednotky."
 
-#: src/actions.cpp:991 src/actions.cpp:1198
+#: src/actions.cpp:992 src/actions.cpp:1199
 msgid "poisoned"
 msgstr "otrávený"
 
-#: src/actions.cpp:999 src/actions.cpp:1206
+#: src/actions.cpp:1000 src/actions.cpp:1207
 msgid "slowed"
 msgstr "zpomalený"
 
-#: src/actions.cpp:1010 src/actions.cpp:1218
+#: src/actions.cpp:1011 src/actions.cpp:1219
 msgid "stone"
 msgstr "zkamenění"
 
-#: src/actions.cpp:2050
+#: src/actions.cpp:2051
 msgid "Ambushed!"
 msgstr "Přepadení!"
 
-#: src/actions.cpp:2090
+#: src/actions.cpp:2091
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Spatřena spřátelená jednotka"
 msgstr[1] "Spatřeny $friends spřátelené jednotky"
 msgstr[2] "Spatřeno $friends spřátelených jednotek"
 
-#: src/actions.cpp:2093
+#: src/actions.cpp:2094
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Nepřátelská jednotka na dohled!"
 msgstr[1] "$enemies nepřátelské jednotky na dohled!"
 msgstr[2] "$enemies nepřátelských jednotek na dohled!"
 
-#: src/actions.cpp:2098
+#: src/actions.cpp:2099
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 spřátelená"
 msgstr[1] "$friends spřátelené"
 msgstr[2] "$friends spřátelených"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2100
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 nepřátelská"
 msgstr[1] "$enemies nepřátelské"
 msgstr[2] "$enemies nepřátelských"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2101
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Jednotky na dohled! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2109
+#: src/actions.cpp:2110
 msgid "(press $hotkey to continue)"
 msgstr "(stiskni $hotkey k pokračování)"
 
@@ -11607,64 +11614,64 @@ msgstr "Nenašel jsem popisek ani jednotku obsahující řetězec „$search“.
 msgid "prompt^Command:"
 msgstr "Příkaz:"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "Útočník"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "Obránce"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 msgid "Expected Battle Result (HP)"
 msgstr "Očekávaný výsledek boje (hp)"
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr " odolnost vůči "
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr " zranitelnost útočníka vůči "
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "zpomalený"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 msgid "Time of day"
 msgstr "Denní doba"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "velení"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "celkové poškození"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "Žádná použitelná zbraň"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "Šance přečkat bez zranění"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1333
+#: src/mouse_events.cpp:659 src/mouse_events.cpp:1344
 msgid "Damage Calculations"
 msgstr "Výpočet poškození"
 
 # pův.: "vs."
-#: src/mouse_events.cpp:1316 src/reports.cpp:282
+#: src/mouse_events.cpp:1327 src/reports.cpp:282
 msgid "vs"
 msgstr "proti"
 
-#: src/mouse_events.cpp:1344
+#: src/mouse_events.cpp:1355
 msgid "Attack Enemy"
 msgstr "Napadni nepřítele"
 
-#: src/mouse_events.cpp:1345
+#: src/mouse_events.cpp:1356
 msgid "Choose weapon:"
 msgstr "Vyber si zbraň:"
 
@@ -12168,7 +12175,7 @@ msgstr "Přeješ si uložit hru? (Smaže také všechna automatická uložení)"
 msgid "Unknown scenario: '"
 msgstr "Neznámý scénář: '"
 
-#: src/playmp_controller.cpp:279
+#: src/playmp_controller.cpp:276
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -12236,7 +12243,7 @@ msgid ""
 msgstr ""
 "Síťové spojení bylo přerušeno a hra nemůže pokračovat. Chcete ji uložit?"
 
-#: src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:476
 msgid "It is now your turn"
 msgstr "Jsi na tahu"
 
@@ -12421,90 +12428,90 @@ msgstr "Vlastní vesnice"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- kroniky Wesnothu"
 
-#: src/titlescreen.cpp:250
+#: src/titlescreen.cpp:254
 msgid "TitleScreen button^Tutorial"
 msgstr "Výcvik"
 
-#: src/titlescreen.cpp:251
+#: src/titlescreen.cpp:255
 msgid "TitleScreen button^Campaign"
 msgstr "Tažení"
 
-#: src/titlescreen.cpp:252
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
 msgstr "Hra více hráčů"
 
-#: src/titlescreen.cpp:253
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
 msgstr "Načíst hru"
 
-#: src/titlescreen.cpp:254
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Získat rozšíření"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
 msgstr "Jazyk"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Preferences"
 msgstr "Nastavení "
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:261
 msgid "About"
 msgstr "O hře"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Quit"
 msgstr "Konec"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Výcvik, který tě seznámí s ovládáním hry"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
 msgstr "Začni novou hru pro jednoho hráče"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:265
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
 "Hrej hru více hráčů (horké křeslo, LAN nebo Internet) nebo proti počítači"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:266
 msgid "Load a single player saved game"
 msgstr "Načtení hry pro jednoho hráče"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Stažení dalších tažení, ér či balíčků map vytvořených uživateli"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:268
 msgid "Change the language"
 msgstr "Změnit používaný jazyk"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:269
 msgid "Configure the game's settings"
 msgstr "Změnit nastavení hry"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:270
 msgid "View the credits"
 msgstr "Kdo se na hře podílel"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:271
 msgid "Quit the game"
 msgstr "Ukončit hru"
 
-#: src/titlescreen.cpp:302
+#: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Více"
 
-#: src/titlescreen.cpp:303
+#: src/titlescreen.cpp:307
 msgid "Help"
 msgstr "Nápověda"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:310
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomozte Wesnothu tím, že nám odešlete informace"
 
@@ -12567,6 +12574,9 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
+
+#~ msgid "holy"
+#~ msgstr "svatý"
 
 #~ msgid "Map"
 #~ msgstr "Mapa:"

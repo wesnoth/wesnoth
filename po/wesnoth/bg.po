@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:31+0200\n"
+"POT-Creation-Date: 2007-04-19 21:44+0200\n"
 "PO-Revision-Date: 2007-04-18 23:08+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -1482,11 +1482,12 @@ msgid "Damage Types and Resistance"
 msgstr "Видове поражения и Устойчивост"
 
 #: data/help.cfg:179
+#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
 "further types of damage usually associated with magical attacks: Fire, Cold "
-"and Holy attacks. Different units may have resistances which alter the "
+"and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
 "В Уеснот има три вида поражения, обикновено свързвани с физическите атаки - "
@@ -1515,11 +1516,12 @@ msgstr ""
 "такова поражение със 100% по-тежко."
 
 #: data/help.cfg:183
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "For example, Skeletons are highly resistant to Blade and Pierce damage, but "
-"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Arcane "
 "damage."
 msgstr ""
 "\n"
@@ -5030,9 +5032,10 @@ msgstr ""
 "бавно над открити водни пространства."
 
 #: data/special-notes.cfg:5
+#, fuzzy
 msgid ""
-" This unit's holy attack deals tremendous damage to the undead, and even "
-"some to living creatures."
+" This unit's arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 msgstr ""
 "Святата атака на тази единица нанася огромни поражения на немъртвите, а дори "
 "и на някои живи същества."
@@ -5499,10 +5502,11 @@ msgstr ""
 "сценарии, чрез опцията “привикване”."
 
 #: data/tips.cfg:3
+#, fuzzy
 msgid ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
-"Different units have weaknesses against different types of attacks. Right-"
-"click on a unit, and then select 'Unit Description', and then click "
+"There are six types of attacks: pierce, blade, impact, fire, cold, and "
+"arcane. Different units have weaknesses against different types of attacks. "
+"Right-click on a unit, and then select 'Unit Description', and then click "
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
@@ -5674,9 +5678,10 @@ msgstr ""
 "войски оттам."
 
 #: data/tips.cfg:20
+#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and holy attacks."
+"impact, fire, and arcane attacks."
 msgstr ""
 "Скелетите са устойчиви на прободни и прорезни атаки, но са уязвими от "
 "ударни, огнени и свещени атаки."
@@ -5751,7 +5756,8 @@ msgstr ""
 "намалява на половина пораженията от атаките им до края на хода."
 
 #: data/tips.cfg:30
-msgid "Holy attacks are very powerful against undead."
+#, fuzzy
+msgid "Arcane attacks are very powerful against undead."
 msgstr "Свещените атаки са особено мощни срещу немъртвите."
 
 #: data/tips.cfg:31
@@ -7073,8 +7079,9 @@ msgstr "магически огън"
 #: data/units/Undead_Spirit_Ghost.cfg:26
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "holy"
-msgstr "свещен"
+#, fuzzy
+msgid "arcane"
+msgstr "бой от разстояние"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -10719,51 +10726,51 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Няма свободни полета замък в които да наберете единица."
 
-#: src/actions.cpp:991 src/actions.cpp:1198
+#: src/actions.cpp:992 src/actions.cpp:1199
 msgid "poisoned"
 msgstr "отровен"
 
-#: src/actions.cpp:999 src/actions.cpp:1206
+#: src/actions.cpp:1000 src/actions.cpp:1207
 msgid "slowed"
 msgstr "забавен"
 
-#: src/actions.cpp:1010 src/actions.cpp:1218
+#: src/actions.cpp:1011 src/actions.cpp:1219
 msgid "stone"
 msgstr "камък"
 
-#: src/actions.cpp:2050
+#: src/actions.cpp:2051
 msgid "Ambushed!"
 msgstr "Засада!"
 
-#: src/actions.cpp:2090
+#: src/actions.cpp:2091
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Забелязана приятелска единица"
 msgstr[1] "$friends приятелски единици забелязани"
 
-#: src/actions.cpp:2093
+#: src/actions.cpp:2094
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Забелязана вражеска единица!"
 msgstr[1] "$enemies вражески единици забелязани"
 
-#: src/actions.cpp:2098
+#: src/actions.cpp:2099
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "Част единици забелязани. (...)'1 приятелска"
 msgstr[1] "$friends приятелски"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2100
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "Част единици забелязани. (...)'1 враг"
 msgstr[1] "$enemies врагове"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2101
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Забелязани единици! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2109
+#: src/actions.cpp:2110
 msgid "(press $hotkey to continue)"
 msgstr "(натиснете $hotkey , за да продължите)"
 
@@ -11705,63 +11712,63 @@ msgstr "Не бе открит знак или единица съдържащ/�
 msgid "prompt^Command:"
 msgstr "Команда:"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "Атакуващ"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "Защитаващ се"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 msgid "Expected Battle Result (HP)"
 msgstr "Очакван резултат(Здраве)"
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr " устойчивост с/у "
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr " уязвимост с/у "
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "Забавен"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 msgid "Time of day"
 msgstr "Време на деня"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "Водачество"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "Общо поражение"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "Няма използваемо оръжие"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "Шанс да бъде невредим"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1333
+#: src/mouse_events.cpp:659 src/mouse_events.cpp:1344
 msgid "Damage Calculations"
 msgstr "Пресмятания за щетите"
 
-#: src/mouse_events.cpp:1316 src/reports.cpp:282
+#: src/mouse_events.cpp:1327 src/reports.cpp:282
 msgid "vs"
 msgstr "с/у "
 
-#: src/mouse_events.cpp:1344
+#: src/mouse_events.cpp:1355
 msgid "Attack Enemy"
 msgstr "Атакувай противника"
 
-#: src/mouse_events.cpp:1345
+#: src/mouse_events.cpp:1356
 msgid "Choose weapon:"
 msgstr "Избор на оръжие:"
 
@@ -12267,7 +12274,7 @@ msgstr ""
 msgid "Unknown scenario: '"
 msgstr "Непозната мисия: '"
 
-#: src/playmp_controller.cpp:279
+#: src/playmp_controller.cpp:276
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -12335,7 +12342,7 @@ msgid ""
 msgstr ""
 "Мрежата бе прекъсната и играта не може да продължи. Искате ли да я запазите?"
 
-#: src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:476
 msgid "It is now your turn"
 msgstr "Сега е ваш ход"
 
@@ -12514,89 +12521,89 @@ msgstr "Притежавано селище"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Книгата на Уеснот"
 
-#: src/titlescreen.cpp:250
+#: src/titlescreen.cpp:254
 msgid "TitleScreen button^Tutorial"
 msgstr "Обучение "
 
-#: src/titlescreen.cpp:251
+#: src/titlescreen.cpp:255
 msgid "TitleScreen button^Campaign"
 msgstr "Кампания"
 
-#: src/titlescreen.cpp:252
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
 msgstr "Игра в мрежа"
 
-#: src/titlescreen.cpp:253
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
 msgstr "Зареждане на игра"
 
-#: src/titlescreen.cpp:254
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Зареждане на допълнения"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
 msgstr "Език"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Preferences"
 msgstr "Настройки"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:261
 msgid "About"
 msgstr "Относно"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Quit"
 msgstr "Изход"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Начално запознаване с играта"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
 msgstr "Нова кампания"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:265
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "Мрежова игра (Hotseat, LAN, Internet) или игра срещу компютър"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:266
 msgid "Load a single player saved game"
 msgstr "Зареждане на игра"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Сваляне на направени от потребители кампании, ери или пакети с карти "
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:268
 msgid "Change the language"
 msgstr "Смяна на езика"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:269
 msgid "Configure the game's settings"
 msgstr "Настройки за играта"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:270
 msgid "View the credits"
 msgstr "Преглед на заслугите "
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:271
 msgid "Quit the game"
 msgstr "Изход от играта"
 
-#: src/titlescreen.cpp:302
+#: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Още"
 
-#: src/titlescreen.cpp:303
+#: src/titlescreen.cpp:307
 msgid "Help"
 msgstr "Помощ"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:310
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогнете на Уеснот, като ни пращате информация"
 
@@ -12659,3 +12666,6 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Качване на обобщения"
+
+#~ msgid "holy"
+#~ msgstr "свещен"

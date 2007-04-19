@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:31+0200\n"
+"POT-Creation-Date: 2007-04-19 21:44+0200\n"
 "PO-Revision-Date: 2007-04-13 17:08+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1503,11 +1503,12 @@ msgid "Damage Types and Resistance"
 msgstr "Tipo di danno e resistenza"
 
 #: data/help.cfg:179
+#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
 "further types of damage usually associated with magical attacks: Fire, Cold "
-"and Holy attacks. Different units may have resistances which alter the "
+"and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
 "In Wesnoth, ci sono tre tipi di danno solitamente connessi agli attacchi "
@@ -1535,11 +1536,12 @@ msgstr ""
 "il 100% di danni in più se colpita da quel tipo di attacco."
 
 #: data/help.cfg:183
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "For example, Skeletons are highly resistant to Blade and Pierce damage, but "
-"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Arcane "
 "damage."
 msgstr ""
 "\n"
@@ -5083,9 +5085,10 @@ msgstr ""
 "lentamente sull'acqua più profonda."
 
 #: data/special-notes.cfg:5
+#, fuzzy
 msgid ""
-" This unit's holy attack deals tremendous damage to the undead, and even "
-"some to living creatures."
+" This unit's arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 msgstr ""
 " L'attacco sacro di questa unità infligge danni tremendi ai non-morti e "
 "talvolta anche ad alcune creature viventi."
@@ -5560,10 +5563,11 @@ msgstr ""
 "utilizzando l'opzione \"richiama\"."
 
 #: data/tips.cfg:3
+#, fuzzy
 msgid ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
-"Different units have weaknesses against different types of attacks. Right-"
-"click on a unit, and then select 'Unit Description', and then click "
+"There are six types of attacks: pierce, blade, impact, fire, cold, and "
+"arcane. Different units have weaknesses against different types of attacks. "
+"Right-click on a unit, and then select 'Unit Description', and then click "
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
@@ -5737,9 +5741,10 @@ msgstr ""
 "unità."
 
 #: data/tips.cfg:20
+#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and holy attacks."
+"impact, fire, and arcane attacks."
 msgstr ""
 "Gli scheletri sono resistenti contro gli attacchi da perforazione e da "
 "taglio, ma vulnerabili alle armi da impatto, fuoco e attacchi sacri."
@@ -5811,7 +5816,8 @@ msgstr ""
 "danno che essi causano a ogni attacco."
 
 #: data/tips.cfg:30
-msgid "Holy attacks are very powerful against undead."
+#, fuzzy
+msgid "Arcane attacks are very powerful against undead."
 msgstr "L'attacco sacro è molto potente contro i non-morti."
 
 #: data/tips.cfg:31
@@ -7142,8 +7148,9 @@ msgstr "fuoco fatato"
 #: data/units/Undead_Spirit_Ghost.cfg:26
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "holy"
-msgstr "sacro"
+#, fuzzy
+msgid "arcane"
+msgstr "a distanza"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -10862,51 +10869,51 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Non ci sono spazi vuoti nel castello per reclutare un'unità."
 
-#: src/actions.cpp:991 src/actions.cpp:1198
+#: src/actions.cpp:992 src/actions.cpp:1199
 msgid "poisoned"
 msgstr "avvelenato"
 
-#: src/actions.cpp:999 src/actions.cpp:1206
+#: src/actions.cpp:1000 src/actions.cpp:1207
 msgid "slowed"
 msgstr "rallentato"
 
-#: src/actions.cpp:1010 src/actions.cpp:1218
+#: src/actions.cpp:1011 src/actions.cpp:1219
 msgid "stone"
 msgstr "pietrifica"
 
-#: src/actions.cpp:2050
+#: src/actions.cpp:2051
 msgid "Ambushed!"
 msgstr "Imboscata!"
 
-#: src/actions.cpp:2090
+#: src/actions.cpp:2091
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Avvistata un'unità alleata."
 msgstr[1] "Avvistate $friend unità alleate."
 
-#: src/actions.cpp:2093
+#: src/actions.cpp:2094
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Avvistata un'unità nemica!"
 msgstr[1] "Avvistate $enemies unità nemiche!"
 
-#: src/actions.cpp:2098
+#: src/actions.cpp:2099
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "(una amica"
 msgstr[1] "($friends amiche"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2100
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] " una nemica"
 msgstr[1] " $enemies nemiche"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2101
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unità avvistate! $friendphrase,$enemyphrase)"
 
-#: src/actions.cpp:2109
+#: src/actions.cpp:2110
 msgid "(press $hotkey to continue)"
 msgstr "(premi $hotkey per continuare)"
 
@@ -11861,63 +11868,63 @@ msgstr "Non ho trovato nessuna etichetta contente '$search'."
 msgid "prompt^Command:"
 msgstr "Comando:"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "Attaccante"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "Difensore"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 msgid "Expected Battle Result (HP)"
 msgstr "Probabile esito della battaglia (PF)"
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr " resistenza a "
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr " vulnerabilità a "
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "Rallentato"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 msgid "Time of day"
 msgstr "Periodo del giorno"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "Comando"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "Danno totale"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "Arma non utilizzabile"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "Probabilità di essere indenne"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1333
+#: src/mouse_events.cpp:659 src/mouse_events.cpp:1344
 msgid "Damage Calculations"
 msgstr "Calcolo dei danni"
 
-#: src/mouse_events.cpp:1316 src/reports.cpp:282
+#: src/mouse_events.cpp:1327 src/reports.cpp:282
 msgid "vs"
 msgstr "contro"
 
-#: src/mouse_events.cpp:1344
+#: src/mouse_events.cpp:1355
 msgid "Attack Enemy"
 msgstr "Attacca il nemico"
 
-#: src/mouse_events.cpp:1345
+#: src/mouse_events.cpp:1356
 msgid "Choose weapon:"
 msgstr "Scegli l'arma:"
 
@@ -12418,7 +12425,7 @@ msgstr "Vuoi salvare la partita? (cancella anche i salvataggi automatici)"
 msgid "Unknown scenario: '"
 msgstr "Scenario sconosciuto: '"
 
-#: src/playmp_controller.cpp:279
+#: src/playmp_controller.cpp:276
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -12487,7 +12494,7 @@ msgstr ""
 "Si è verificata una disconnessione dalla rete e la partita non potrà "
 "proseguire. Vuoi salvare la partita?"
 
-#: src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:476
 msgid "It is now your turn"
 msgstr "Adesso è il tuo turno"
 
@@ -12671,51 +12678,51 @@ msgstr "-- Il Tomo di Wesnoth"
 
 # Il carattere ^ separa la descrizione per i traduttore (commento) dal testo da
 # tradurre.  Bisogna tradurre SOLO quello che segue il carattere "^".
-#: src/titlescreen.cpp:250
+#: src/titlescreen.cpp:254
 msgid "TitleScreen button^Tutorial"
 msgstr "Tutorial"
 
-#: src/titlescreen.cpp:251
+#: src/titlescreen.cpp:255
 msgid "TitleScreen button^Campaign"
 msgstr "Campagna"
 
-#: src/titlescreen.cpp:252
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
 msgstr "Multigiocatore"
 
-#: src/titlescreen.cpp:253
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
 msgstr "Carica"
 
-#: src/titlescreen.cpp:254
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Estensioni"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
 msgstr "Lingua"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Preferences"
 msgstr "Preferenze"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:261
 msgid "About"
 msgstr "Informazioni"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Quit"
 msgstr "Esci"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Inizia il corso per familiarizzare con il gioco"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
 msgstr "Inizia una campagna a giocatore singolo"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:265
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -12723,39 +12730,39 @@ msgstr ""
 "Partita multigiocatore (stessa postazione, LAN o Internet) o uno scenario "
 "singolo contro l'AI"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:266
 msgid "Load a single player saved game"
 msgstr "Carica una partita a giocatore singolo"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Scarica campagne, ere o mappe non ufficiali"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:268
 msgid "Change the language"
 msgstr "Cambia la lingua"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:269
 msgid "Configure the game's settings"
 msgstr "Configura le impostazioni del gioco"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:270
 msgid "View the credits"
 msgstr "Guarda i riconoscimenti"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:271
 msgid "Quit the game"
 msgstr "Esci dal gioco"
 
-#: src/titlescreen.cpp:302
+#: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Altro"
 
-#: src/titlescreen.cpp:303
+#: src/titlescreen.cpp:307
 msgid "Help"
 msgstr "Aiuto"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:310
 msgid "Help Wesnoth by sending us information"
 msgstr "Aiuta Wesnoth mandandoci un rapporto"
 
@@ -12818,6 +12825,9 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
+
+#~ msgid "holy"
+#~ msgstr "sacro"
 
 #~ msgid "Map"
 #~ msgstr "Mappa"

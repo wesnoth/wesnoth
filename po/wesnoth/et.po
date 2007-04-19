@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:31+0200\n"
+"POT-Creation-Date: 2007-04-19 21:44+0200\n"
 "PO-Revision-Date: 2007-01-13 00:26+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -1268,7 +1268,7 @@ msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
 "further types of damage usually associated with magical attacks: Fire, Cold "
-"and Holy attacks. Different units may have resistances which alter the "
+"and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
 
@@ -1288,7 +1288,7 @@ msgid ""
 "\n"
 "\n"
 "For example, Skeletons are highly resistant to Blade and Pierce damage, but "
-"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Arcane "
 "damage."
 msgstr ""
 
@@ -3797,8 +3797,8 @@ msgstr ""
 
 #: data/special-notes.cfg:5
 msgid ""
-" This unit's holy attack deals tremendous damage to the undead, and even "
-"some to living creatures."
+" This unit's arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 msgstr ""
 
 #: data/special-notes.cfg:8
@@ -4240,9 +4240,9 @@ msgstr ""
 
 #: data/tips.cfg:3
 msgid ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
-"Different units have weaknesses against different types of attacks. Right-"
-"click on a unit, and then select 'Unit Description', and then click "
+"There are six types of attacks: pierce, blade, impact, fire, cold, and "
+"arcane. Different units have weaknesses against different types of attacks. "
+"Right-click on a unit, and then select 'Unit Description', and then click "
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
@@ -4360,7 +4360,7 @@ msgstr ""
 #: data/tips.cfg:20
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and holy attacks."
+"impact, fire, and arcane attacks."
 msgstr ""
 
 #: data/tips.cfg:21
@@ -4415,7 +4415,7 @@ msgid ""
 msgstr ""
 
 #: data/tips.cfg:30
-msgid "Holy attacks are very powerful against undead."
+msgid "Arcane attacks are very powerful against undead."
 msgstr ""
 
 #: data/tips.cfg:31
@@ -5514,8 +5514,9 @@ msgstr "haldjatuli"
 #: data/units/Undead_Spirit_Ghost.cfg:26
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "holy"
-msgstr "püha"
+#, fuzzy
+msgid "arcane"
+msgstr "kauge"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -8133,54 +8134,54 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Lossis ei ole vaba ruumi, kuhu värvatud üksusi paigutada."
 
-#: src/actions.cpp:991 src/actions.cpp:1198
+#: src/actions.cpp:992 src/actions.cpp:1199
 msgid "poisoned"
 msgstr "mürgitatud"
 
-#: src/actions.cpp:999 src/actions.cpp:1206
+#: src/actions.cpp:1000 src/actions.cpp:1207
 msgid "slowed"
 msgstr "aeglustatud"
 
-#: src/actions.cpp:1010 src/actions.cpp:1218
+#: src/actions.cpp:1011 src/actions.cpp:1219
 msgid "stone"
 msgstr "kivi"
 
-#: src/actions.cpp:2050
+#: src/actions.cpp:2051
 msgid "Ambushed!"
 msgstr "Varitsus!"
 
-#: src/actions.cpp:2090
+#: src/actions.cpp:2091
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "$friends sõbralikku üksust märgatud"
 msgstr[1] "$friends sõbralikku üksust märgatud"
 
-#: src/actions.cpp:2093
+#: src/actions.cpp:2094
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "$enemies vaenlase üksust märgatud!"
 msgstr[1] "$enemies vaenlase üksust märgatud!"
 
-#: src/actions.cpp:2098
+#: src/actions.cpp:2099
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2100
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2101
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Märkasime üksusi! ($friends sõbralikke, $enemies vaenulikke)"
 
-#: src/actions.cpp:2109
+#: src/actions.cpp:2110
 msgid "(press $hotkey to continue)"
 msgstr "(jätkamiseks vajuta $hotkey)"
 
@@ -9130,64 +9131,64 @@ msgstr "Ei leindud silti ega üksust mille nimes sisalduks tekst '$search'."
 msgid "prompt^Command:"
 msgstr "Käsk:"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "Ründaja"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "Kaitsja"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 msgid "Expected Battle Result (HP)"
 msgstr ""
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr "vastupidavus vs"
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr "nõrkus vs"
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "Aeglustatud"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 #, fuzzy
 msgid "Time of day"
 msgstr "Aeg"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "Juhtimisvõime"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "Kogukahju"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "Kasutatavat relva ei ole"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "Terve nahaga pääsemise võimalus"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1333
+#: src/mouse_events.cpp:659 src/mouse_events.cpp:1344
 msgid "Damage Calculations"
 msgstr "Kahju arvutamine"
 
-#: src/mouse_events.cpp:1316 src/reports.cpp:282
+#: src/mouse_events.cpp:1327 src/reports.cpp:282
 msgid "vs"
 msgstr "vs"
 
-#: src/mouse_events.cpp:1344
+#: src/mouse_events.cpp:1355
 msgid "Attack Enemy"
 msgstr "Ründa vaenlast"
 
-#: src/mouse_events.cpp:1345
+#: src/mouse_events.cpp:1356
 msgid "Choose weapon:"
 msgstr "Vali relv:"
 
@@ -9698,7 +9699,7 @@ msgstr ""
 msgid "Unknown scenario: '"
 msgstr "Tundmatu stsenaarium: '"
 
-#: src/playmp_controller.cpp:279
+#: src/playmp_controller.cpp:276
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -9766,7 +9767,7 @@ msgid ""
 msgstr ""
 "Võrguühendus katkes ja mäng ei saa jätkuda. Kas soovid seda mängu salvestada?"
 
-#: src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:476
 msgid "It is now your turn"
 msgstr "Sinu käik"
 
@@ -9945,89 +9946,89 @@ msgstr "Oma külad"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothi Suur Raamat"
 
-#: src/titlescreen.cpp:250
+#: src/titlescreen.cpp:254
 msgid "TitleScreen button^Tutorial"
 msgstr "Õpetus"
 
-#: src/titlescreen.cpp:251
+#: src/titlescreen.cpp:255
 msgid "TitleScreen button^Campaign"
 msgstr "Sõjakäigud"
 
-#: src/titlescreen.cpp:252
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
 msgstr "Mitu mängijat"
 
-#: src/titlescreen.cpp:253
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
 msgstr "Laadimine"
 
-#: src/titlescreen.cpp:254
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Lisade allalaadimine"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
 msgstr "Keel"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Preferences"
 msgstr "Eelistused"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:261
 msgid "About"
 msgstr "Info"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Quit"
 msgstr "Välju"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Mänguga tutvumiseks alusta õpetusest"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
 msgstr "Alusta uut üksikmängija sõjakäiku"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:265
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "Mängige mitmekesi (ühe arvuti taga, kohtvõrgus, Internetis...)"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:266
 msgid "Load a single player saved game"
 msgstr "Lae üksikmängija salvestatud mäng"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:268
 msgid "Change the language"
 msgstr "Muuda kasutatavat keelt"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:269
 msgid "Configure the game's settings"
 msgstr "Muuda mängu seadeid"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:270
 msgid "View the credits"
 msgstr "Vaata tiitreid"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:271
 msgid "Quit the game"
 msgstr "Välju mängust"
 
-#: src/titlescreen.cpp:302
+#: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Veel"
 
-#: src/titlescreen.cpp:303
+#: src/titlescreen.cpp:307
 msgid "Help"
 msgstr "Abiteave"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:310
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
@@ -10086,6 +10087,9 @@ msgstr ""
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr ""
+
+#~ msgid "holy"
+#~ msgstr "püha"
 
 #~ msgid "Map"
 #~ msgstr "Kaart"

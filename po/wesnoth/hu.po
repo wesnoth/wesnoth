@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:31+0200\n"
+"POT-Creation-Date: 2007-04-19 21:44+0200\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -1482,11 +1482,12 @@ msgid "Damage Types and Resistance"
 msgstr "Sebzéstípusok és Ellenállás"
 
 #: data/help.cfg:179
+#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
 "further types of damage usually associated with magical attacks: Fire, Cold "
-"and Holy attacks. Different units may have resistances which alter the "
+"and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
 "A Wesnothban a sebzésnek három típusa van, amelyeket általában fizikai "
@@ -1514,11 +1515,12 @@ msgstr ""
 "elszenvedni egy ilyen típusú találatnál."
 
 #: data/help.cfg:183
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "For example, Skeletons are highly resistant to Blade and Pierce damage, but "
-"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Arcane "
 "damage."
 msgstr ""
 "\n"
@@ -4576,9 +4578,10 @@ msgstr ""
 "nyílt vízfelszín fölött csak lassan repülhetnek."
 
 #: data/special-notes.cfg:5
+#, fuzzy
 msgid ""
-" This unit's holy attack deals tremendous damage to the undead, and even "
-"some to living creatures."
+" This unit's arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 msgstr ""
 " Ennek az egységnek a szent támadása óriási sebzést okoz az élőholtaknak, de "
 "néhány még élőnek is."
@@ -5069,10 +5072,11 @@ msgstr ""
 "pályákon harcoltak, a 'Veteránok visszahívása' paranccsal."
 
 #: data/tips.cfg:3
+#, fuzzy
 msgid ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
-"Different units have weaknesses against different types of attacks. Right-"
-"click on a unit, and then select 'Unit Description', and then click "
+"There are six types of attacks: pierce, blade, impact, fire, cold, and "
+"arcane. Different units have weaknesses against different types of attacks. "
+"Right-click on a unit, and then select 'Unit Description', and then click "
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
@@ -5242,9 +5246,10 @@ msgstr ""
 "tarthat neked fenn helyet a várában, hogy ott vegyél fel új egységeket."
 
 #: data/tips.cfg:20
+#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and holy attacks."
+"impact, fire, and arcane attacks."
 msgstr ""
 "A csontvázak ellenállnak a páncéltörő és a pengés támadásoknak, de "
 "sebezhetőek ütő, tűz és szent támadásokkal."
@@ -5318,7 +5323,8 @@ msgstr ""
 "általa kifejthető sebzést is, amíg az be nem fejezi saját körét."
 
 #: data/tips.cfg:30
-msgid "Holy attacks are very powerful against undead."
+#, fuzzy
+msgid "Arcane attacks are very powerful against undead."
 msgstr "A szent támadások kifejezetten hatékonyak élőholt egységek ellen."
 
 #: data/tips.cfg:31
@@ -6592,8 +6598,9 @@ msgstr "mesebeli tűz"
 #: data/units/Undead_Spirit_Ghost.cfg:26
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "holy"
-msgstr "szentség"
+#, fuzzy
+msgid "arcane"
+msgstr "távolsági harc"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -9928,50 +9935,50 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nincs több üres hely a várban, ahova az új egységeket toborozhatnánk."
 
-#: src/actions.cpp:991 src/actions.cpp:1198
+#: src/actions.cpp:992 src/actions.cpp:1199
 msgid "poisoned"
 msgstr "megmérgezett"
 
-#: src/actions.cpp:999 src/actions.cpp:1206
+#: src/actions.cpp:1000 src/actions.cpp:1207
 msgid "slowed"
 msgstr "lelassított"
 
-#: src/actions.cpp:1010 src/actions.cpp:1218
+#: src/actions.cpp:1011 src/actions.cpp:1219
 msgid "stone"
 msgstr "kővéváltoztatás"
 
-#: src/actions.cpp:2050
+#: src/actions.cpp:2051
 msgid "Ambushed!"
 msgstr "Rajtaütés!"
 
-#: src/actions.cpp:2090
+#: src/actions.cpp:2091
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Szövetséges egység a láthatáron"
 
-#: src/actions.cpp:2093
+#: src/actions.cpp:2094
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Ellenséges egység a láthatáron!"
 
-#: src/actions.cpp:2098
+#: src/actions.cpp:2099
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2100
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2101
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Egységek a láthatáron! ($friends szövetséges, $enemies ellenséges)"
 
-#: src/actions.cpp:2109
+#: src/actions.cpp:2110
 msgid "(press $hotkey to continue)"
 msgstr "(a folytatáshoz nyomd le ezt: $hotkey)"
 
@@ -10936,64 +10943,64 @@ msgstr ""
 msgid "prompt^Command:"
 msgstr "Parancs:"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "Támadó"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "Védekező"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 #, fuzzy
 msgid "Expected Battle Result (HP)"
 msgstr "Összecsapás várt kimenetele (ÉP)"
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr " ellenállás kontra "
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr " sebezhetőség kontra "
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "Lelassított"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 msgid "Time of day"
 msgstr "Napszak"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "Hadvezetés"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "Összsebzés"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "Nincsen használható fegyver"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "Sértetlenül maradás esélye"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1333
+#: src/mouse_events.cpp:659 src/mouse_events.cpp:1344
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
-#: src/mouse_events.cpp:1316 src/reports.cpp:282
+#: src/mouse_events.cpp:1327 src/reports.cpp:282
 msgid "vs"
 msgstr "kontra"
 
-#: src/mouse_events.cpp:1344
+#: src/mouse_events.cpp:1355
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/mouse_events.cpp:1345
+#: src/mouse_events.cpp:1356
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
@@ -11504,7 +11511,7 @@ msgstr ""
 msgid "Unknown scenario: '"
 msgstr "Ismeretlen pálya: '"
 
-#: src/playmp_controller.cpp:279
+#: src/playmp_controller.cpp:276
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -11571,7 +11578,7 @@ msgid ""
 "want to save the game?"
 msgstr "A hálózat megszakadt, így a játék nem folytatható. Elmented az állást?"
 
-#: src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:476
 msgid "It is now your turn"
 msgstr "A te köröd következik"
 
@@ -11754,90 +11761,90 @@ msgstr "Elfoglalt falu"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth kódexe "
 
-#: src/titlescreen.cpp:250
+#: src/titlescreen.cpp:254
 msgid "TitleScreen button^Tutorial"
 msgstr "Gyakorlás"
 
-#: src/titlescreen.cpp:251
+#: src/titlescreen.cpp:255
 msgid "TitleScreen button^Campaign"
 msgstr "Hadjárat"
 
-#: src/titlescreen.cpp:252
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
 msgstr "Többjátékos"
 
-#: src/titlescreen.cpp:253
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
 msgstr "Betölt"
 
-#: src/titlescreen.cpp:254
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Kiegészítések"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
 msgstr "Nyelv"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Preferences"
 msgstr "Beállítások"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:261
 msgid "About"
 msgstr "Készítők"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Quit"
 msgstr "Kilép"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Gyakorlópályák indítása, a játékkal való ismerkedéshez"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
 msgstr "Új egyjátékos hadjárat indítása"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:265
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
 "Többjátékos (hotseat, LAN vagy internet), vagy MI elleni összecsapás játszása"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:266
 msgid "Load a single player saved game"
 msgstr "Egyjátékos mentett állás betöltése"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Játékosok által készített hadjáratok, korszakok, pályák letöltése"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:268
 msgid "Change the language"
 msgstr "Nyelv megváltoztatása"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:269
 msgid "Configure the game's settings"
 msgstr "Játék beállításainak áttekintése"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:270
 msgid "View the credits"
 msgstr "Közreműködők listájának megtekintése"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:271
 msgid "Quit the game"
 msgstr "Kilépés a játékból"
 
-#: src/titlescreen.cpp:302
+#: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Tovább"
 
-#: src/titlescreen.cpp:303
+#: src/titlescreen.cpp:307
 msgid "Help"
 msgstr "Súgó"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:310
 msgid "Help Wesnoth by sending us information"
 msgstr "Segítsd a Wesnoth fejlesztőit azzal, hogy információt küldesz!"
 
@@ -11900,6 +11907,9 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
+
+#~ msgid "holy"
+#~ msgstr "szentség"
 
 #~ msgid "Map"
 #~ msgstr "Térkép"

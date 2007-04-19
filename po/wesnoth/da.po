@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:31+0200\n"
+"POT-Creation-Date: 2007-04-19 21:44+0200\n"
 "PO-Revision-Date: 2007-04-17 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -1463,11 +1463,12 @@ msgid "Damage Types and Resistance"
 msgstr "Skadestyper og Modstand"
 
 #: data/help.cfg:179
+#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
 "further types of damage usually associated with magical attacks: Fire, Cold "
-"and Holy attacks. Different units may have resistances which alter the "
+"and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
 "I Wesnoth er der tre skadestyper, der forbindes med fysiske angreb: Klinge, "
@@ -1493,11 +1494,12 @@ msgstr ""
 "skadestype, så vil den modtage 100 % mere skade når den rammes af denne type."
 
 #: data/help.cfg:183
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "For example, Skeletons are highly resistant to Blade and Pierce damage, but "
-"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Arcane "
 "damage."
 msgstr ""
 "\n"
@@ -4790,9 +4792,10 @@ msgstr ""
 "vand."
 
 #: data/special-notes.cfg:5
+#, fuzzy
 msgid ""
-" This unit's holy attack deals tremendous damage to the undead, and even "
-"some to living creatures."
+" This unit's arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
 msgstr ""
 " Denne enheds hellige angreb gør umådelig skade til udøde, og også til nogle "
 "levende skabninger."
@@ -5248,9 +5251,9 @@ msgstr ""
 
 #: data/tips.cfg:3
 msgid ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
-"Different units have weaknesses against different types of attacks. Right-"
-"click on a unit, and then select 'Unit Description', and then click "
+"There are six types of attacks: pierce, blade, impact, fire, cold, and "
+"arcane. Different units have weaknesses against different types of attacks. "
+"Right-click on a unit, and then select 'Unit Description', and then click "
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
@@ -5409,9 +5412,10 @@ msgstr ""
 "dig og lade dig bruge deres tårn til at rekruttere fra."
 
 #: data/tips.cfg:20
+#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and holy attacks."
+"impact, fire, and arcane attacks."
 msgstr ""
 "Skeletter er modstandsdygtige overfor pile og æggede angreb men sårbare "
 "overfor slag, ild og hellige angreb."
@@ -5485,7 +5489,8 @@ msgstr ""
 "de uddeler i alle angreb indtil de afslutter en runde."
 
 #: data/tips.cfg:30
-msgid "Holy attacks are very powerful against undead."
+#, fuzzy
+msgid "Arcane attacks are very powerful against undead."
 msgstr "Hellige angreb er meget stærke overfor udøde."
 
 #: data/tips.cfg:31
@@ -6627,8 +6632,9 @@ msgstr "fe-ild"
 #: data/units/Undead_Spirit_Ghost.cfg:26
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-msgid "holy"
-msgstr "hellig"
+#, fuzzy
+msgid "arcane"
+msgstr "afstands"
 
 # fighter -> soldat eller kæmper, warrior -> kriger
 #: data/units/Elvish_Fighter.cfg:3
@@ -9569,51 +9575,51 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Der er ikke plads på borgen til at rekrutere en enhed."
 
-#: src/actions.cpp:991 src/actions.cpp:1198
+#: src/actions.cpp:992 src/actions.cpp:1199
 msgid "poisoned"
 msgstr "forgiftet"
 
-#: src/actions.cpp:999 src/actions.cpp:1206
+#: src/actions.cpp:1000 src/actions.cpp:1207
 msgid "slowed"
 msgstr "langsom"
 
-#: src/actions.cpp:1010 src/actions.cpp:1218
+#: src/actions.cpp:1011 src/actions.cpp:1219
 msgid "stone"
 msgstr "sten"
 
-#: src/actions.cpp:2050
+#: src/actions.cpp:2051
 msgid "Ambushed!"
 msgstr "Baghold!"
 
-#: src/actions.cpp:2090
+#: src/actions.cpp:2091
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Vendig enhed i syne!"
 msgstr[1] "$friends venlige enheder i syne!"
 
-#: src/actions.cpp:2093
+#: src/actions.cpp:2094
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Fjendtlig enhed i syne!"
 msgstr[1] "$enemies fjendtlige enheder i syne!"
 
-#: src/actions.cpp:2098
+#: src/actions.cpp:2099
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 venlig"
 msgstr[1] "$friends venlige"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2100
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 fjende"
 msgstr[1] "$enemies fjendtlige"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2101
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enheder i syne! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2109
+#: src/actions.cpp:2110
 msgid "(press $hotkey to continue)"
 msgstr "(tryk $hotkey for at fortsætte)"
 
@@ -10551,63 +10557,63 @@ msgstr "Kunne ikke finde mærkat eller enhed med strengen '$search'."
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "Angriber"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "Forsvarer"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 msgid "Expected Battle Result (HP)"
 msgstr "Forventet kampresultat (L)"
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr " modstandskraft vs "
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr " sårbarhed vs "
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "Gjort langsom"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 msgid "Time of day"
 msgstr "Tid på døgnet"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "lederskab"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "Total skade"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "Intet brugbar våben"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "Risiko for at være uskadt"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1333
+#: src/mouse_events.cpp:659 src/mouse_events.cpp:1344
 msgid "Damage Calculations"
 msgstr "Skadesudregninger"
 
-#: src/mouse_events.cpp:1316 src/reports.cpp:282
+#: src/mouse_events.cpp:1327 src/reports.cpp:282
 msgid "vs"
 msgstr "vs."
 
-#: src/mouse_events.cpp:1344
+#: src/mouse_events.cpp:1355
 msgid "Attack Enemy"
 msgstr "Angrib fjende"
 
-#: src/mouse_events.cpp:1345
+#: src/mouse_events.cpp:1356
 msgid "Choose weapon:"
 msgstr "Vælg våben:"
 
@@ -11104,7 +11110,7 @@ msgstr "Ønsker du at gemme dit spil? (Sletter også de automatisk gemte filer)"
 msgid "Unknown scenario: '"
 msgstr "Ukendt scenarie: '"
 
-#: src/playmp_controller.cpp:279
+#: src/playmp_controller.cpp:276
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -11172,7 +11178,7 @@ msgstr ""
 "En netværksfejl er opstået og spillet kan ikke fortsættes. Ønsker du at "
 "gemme spillet?"
 
-#: src/playsingle_controller.cpp:477
+#: src/playsingle_controller.cpp:476
 msgid "It is now your turn"
 msgstr "Det er din tur"
 
@@ -11351,51 +11357,51 @@ msgstr "Egen landssby"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Krøniker fra Wesnoth"
 
-#: src/titlescreen.cpp:250
+#: src/titlescreen.cpp:254
 msgid "TitleScreen button^Tutorial"
 msgstr "Vejledning"
 
-#: src/titlescreen.cpp:251
+#: src/titlescreen.cpp:255
 msgid "TitleScreen button^Campaign"
 msgstr "Kampagne"
 
-#: src/titlescreen.cpp:252
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
 msgstr "Flerspiller"
 
-#: src/titlescreen.cpp:253
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
 msgstr "Indlæs"
 
-#: src/titlescreen.cpp:254
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Hent ekstra ting"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
 msgstr "Sprog"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Preferences"
 msgstr "Indstillinger"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:261
 msgid "About"
 msgstr "Om"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Quit"
 msgstr "Afslut"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Start vejledningen og bliv introduceret for spillet."
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
 msgstr "Start en ny single player kampagne."
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:265
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -11403,39 +11409,39 @@ msgstr ""
 "Spil multiplayer (hotseat eller over netværk), eller et enkelt scenarie mod "
 "computeren."
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:266
 msgid "Load a single player saved game"
 msgstr "Indlæs et gemt single player spil"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Hent brugerudarbejdede kampagner, æraer eller kortsamlinger"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:268
 msgid "Change the language"
 msgstr "Skift sprog"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:269
 msgid "Configure the game's settings"
 msgstr "Konfigurér spil-indstillingerne"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:270
 msgid "View the credits"
 msgstr "Vis krediteringerne"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:271
 msgid "Quit the game"
 msgstr "Afslut spillet"
 
-#: src/titlescreen.cpp:302
+#: src/titlescreen.cpp:306
 msgid "More"
 msgstr "Mere"
 
-#: src/titlescreen.cpp:303
+#: src/titlescreen.cpp:307
 msgid "Help"
 msgstr "Hjælp"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:310
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjælp Wesnoth ved at sende os information"
 
@@ -11498,6 +11504,9 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
+
+#~ msgid "holy"
+#~ msgstr "hellig"
 
 #~ msgid "Map"
 #~ msgstr "Kort"

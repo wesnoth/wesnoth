@@ -1,0 +1,191 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2006 wesnoth "Battle for Wesnoth"
+.
+.SH NOME
+wesnoth \- Battle for Wesnoth, un gioco strategico a turni con ambientazione
+fantasy
+.
+.SH SYNOPSIS
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH DESCRIZIONE
+.
+Battle for \fBWesnoth\fP è un gioco strategico a turni con ambientazione
+fantasy.
+
+Defeat all enemy leaders using a well\-chosen cadre of troops, taking care to
+manage your resources of gold and villages. All units have their own
+strengths and weaknesses; to win, deploy your forces to their best advantage
+while denying your foes the chance to do the same. As units gain experience,
+they acquire new abilities and become more powerful. Play in your own
+language and test your skill against a smart computer opponent, or join
+Wesnoth's large community of on\-line players. Create your own custom units,
+scenarios or campaigns, and share them with others.
+.
+.SH OPZIONI
+.
+.TP 
+\fB\-\-bpp\fP\fI\ number\fP
+imposta il numero di bit per pixel. Esempio: \-\-bpp 32
+.TP 
+\fB\-\-compress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
+comprime un file di salvataggio (infile) in formato WML testuale in formato
+WML binario (outfile).comprime un file di salvataggio (infile) in formato
+WML testuale in formato WML binario (outfile).
+.TP 
+\fB\-d\fP, \fB\-\-debug\fP
+mostra delle informazioni aggiuntive per il debug ed abilita delle opzioni
+aggiuntive shell di comando interna al gioco (Controlla la sezione wiki sul
+sito http://www.wesnoth.org/ per avere maggiori informazioni sulla shell di
+comando).
+.TP 
+\fB\-\-decompress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
+decomprime un file di salvataggio (infile) in formato WML binario in formato
+WML testuale (outfile).
+.TP 
+\fB\-f\fP, \fB\-\-fullscreen\fP
+esegue il gioco a tutto schermo.
+.TP 
+\fB\-\-fps\fP
+mostra, in un angolo dello schermo, il numero di quadri per secondo che il
+gioco sta generando attualmente.
+.TP 
+\fB\-h\fP, \fB\-\-help\fP
+mostra un riepilogo delle opzioni tramite riga di comando verso un output
+standard ed esce.
+.TP 
+\fB\-\-load\fP\fI\ savegame\fP
+carica il file savegame dalla cartella standard di salvataggio.
+.TP 
+\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain.  \fB\-\-log\-info\fP shows all messages, \fB\-\-log\-warning\fP only
+warnings and errors, and \fB\-\-log\-error\fP just errors.
+.TP 
+\fB\-\-max\-fps\fP
+il numero di quadri al secondo che il gioco può mostrare, il valore dovrebbe
+essere compreso tra 1 e 1000; il valore predefinito è 50.
+.TP 
+\fB\-\-multiplayer\fP
+esegue una partita multigiocatore. Ci sono opzioni aggiuntive che possono
+essere usate con \fB\-\-mutiplayer\fP, come spiegato di seguito.
+.TP 
+\fB\-\-nocache\fP
+disabilita la cache dei dati di gioco.
+.TP 
+\fB\-\-nosound\fP
+esegue il gioco senza suono e musica.
+.TP 
+\fB\-\-path\fP
+stampa il nome della cartella contenente i dati del gioco ed esce.
+.TP 
+\fB\-r\fP, \fB\-\-resolution\fP\ \fIXxY\fP
+imposta la risoluzione dello schermo. Esempio: \-r 800x600
+.TP 
+\fB\-t\fP, \fB\-\-test\fP
+esegue il gioco con un piccolo scenario di test.
+.TP 
+\fB\-v\fP, \fB\-\-version\fP
+visualizza il numero di versione ed esci
+.TP 
+\fB\-w\fP, \fB\-\-windowed\fP
+Carica il gioco in una finestra.
+.TP 
+\fB\-\-no\-delay\fP
+esegue il gioco senza ritardi per stabilire le prestazioni del
+sistema. Questa opzione è abilitata automaticamente da \-\-nogui.
+.TP 
+\fB\-\-exit\-at\-end\fP
+esce quando lo scenario è finito, senza mostrare la finestra delle
+vittorie/sconfitte, che richiede che l'utente prema il pulsante OK. Anche
+questa opzione è usata per eseguire dei benchmark con script.
+.
+.SH "opzioni per \-\-multiplayer"
+.
+The side\-specific multiplayer options are marked with
+<number>. <number> has to be replaced by a side number. It
+usually is 1 or 2 but depends on the number of players possible in the
+chosen scenario.
+.TP 
+\fB\-\-algorithm<number>=value\fP
+seleziona un algoritmo non standard per il controllo dell'IA di questa
+fazione. Valori disponibili: "idle_ai" e "sample_ai".
+.TP  
+\fB\-\-controller<number>=value\fP
+seleziona il tipo di controllo per questa fazione. Valori disponibili:
+"human" e "ai".
+.TP  
+\fB\-\-era=value\fP
+usa questa opzione per giocare nell'era selezionata invece che in quella
+predefinita. L'era è scelta per ID. Le ere sono descritte nel file
+data/multiplayer.cfg.
+.TP 
+\fB\-\-nogui\fP
+esegue il gioco senza GUI. Deve apparire prima di \fB\-\-multiplayer\fP per avere
+l'effetto desiderato.
+.TP 
+\fB\-\-parm<number>=name:value\fP
+sets additional parameters for this side. This parameter depends on the
+options used with \fB\-\-controller\fP and \fB\-\-algorithm.\fP It should only be
+useful for people designing their own AI. (not yet documented completely)
+.TP 
+\fB\-\-scenario=value\fP
+seleziona uno scenario multigiocatore. lo scenario predefinito è
+"multiplayer_Charge".
+.TP 
+\fB\-\-side<number>=value\fP
+seleziona una fazione dell'era attuale per questa squadra. La fazione è
+scelta per ID. Le fazioni sono descritte nel file data/multiplayer.cfg.
+.TP 
+\fB\-\-turns=value\fP
+imposta il numero di turni per lo scenario scelto. L'impostazione standard è
+"50"
+.TP 
+Esempio per verificare il funzionamento della tua IA: 
+wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
+\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+.
+.SH AUTORE
+.
+Scritto da David White <davidnwhite@verizon.net>.
+.br
+Edito da Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> e Soliton <soliton@sonnenkinder.org>.
+.br
+Questa pagina di manuale è stata scritta in origine da Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Visita la pagina home ufficiale: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br
+Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
+termini della licenza GPL versione 2 come pubblicata dalla Free Software
+Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né
+per l'ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
+.
+.SH "SEE ALSO"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

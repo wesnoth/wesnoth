@@ -1,0 +1,160 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2006 wesnothd "Demone di rete per multigiocatore di Battle for Wesnoth"
+.
+.SH NOME
+.
+wesnothd \- Demone di rete per multigiocatore di Battle for
+\fBWesnoth\fPwesnothd \- Demone di rete per multigiocatore di Battle for
+\fBWesnoth\fP
+.
+.SH SYNOPSIS
+.
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIpercorso\fP\|] [\|\fB\-p\fP \fIporta\fP\|]
+[\|\fB\-t\fP \fInumero\fP\|] [\|\fB\-T\fP \fInumero\fP\|]
+.
+.SH DESCRIZIONE
+.
+Gestisce le partite multigiocatore di Battle for Wesnoth. Vedi
+http://www.wesnoth.org/wiki/ServerAdministration per sapere quali comandi
+sono accettati dal server attraverso il client di wesnoth o il socket.
+.
+.SH OPZIONI
+.
+.TP 
+\fB\-c,\ \-\-config\fP\fI\ percorso\fP
+indica a wesnothd dove trovare il file di configurazione da usare. Vedi la
+sezione \fBSERVER CONFIG\fP più avanti per la sintassi.
+.TP 
+\fB\-d,\ \-\-daemon\fP
+carica wesnothd come demone.
+.TP 
+\fB\-h,\ \-\-help\fP
+spiega che cosa fanno le opzioni da linea di comando
+.TP 
+\fB\-p,\ \-\-port\fP\fI\ porta\fP
+lega il server ad una porta specifica. Se non viene specificata una porta,
+sarà usata la porta 15000.
+.TP 
+\fB\-t,\ \-\-threads\fP\fI\ numero\fP
+imposta il numero massimo di thread da usare per l'I/O (valore predefinito:
+5, massimo: 30).
+.TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ numero\fP
+imposta il numero massimo di thread da creare. Se vale 0 non c'è limite
+(valore predefinito: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
+visualizza il numero di versione ed esce.
+.TP 
+\fB\-v,\ \-\-verbose\fP
+rende più prolisso il log.
+.
+.SH "SERVER CONFIG"
+.
+.SS "La sintassi generale è:"
+.
+.P
+[\fItag\fP]
+.IP
+key="\fIvalue\fP"
+.IP
+key="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Caratteri globali:"
+.
+.TP 
+\fBconnections_allowed\fP
+Il numero di connessioni permesse dallo stesso IP (valore predefinito: 5).
+.TP 
+\fBdisallow_names\fP
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`server,ai,player,network,human,admin,computer'.
+.TP 
+\fBmax_messages\fP
+Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP
+(valore predefinito: 4).
+.TP 
+\fBmessages_time_period\fP
+Il periodo di tempo (in secondi) entro il quale rilevare un'inondazione di
+messaggi (valore predefinito: 10 secondi).
+.TP 
+\fBmotd\fP
+Il messaggio del giorno.
+.TP 
+\fBpasswd\fP
+La password da usare per dare i privilegi di amministratore. Di solito
+inizia con "admin ".
+.TP 
+\fBversions_accepted\fP
+Un elenco separato da virgole delle stringhe di versione che il server deve
+accettare. I caratteri jolly `*' e `?' sono ammessi (il valore predefinito è
+lo stesso della versione di wesnoth corrispondente).
+.br
+Esempio: versions_accepted="*" accetta tutte le stringhe di versione.
+.
+.SS "Tag globali:"
+.
+.P
+\fB[redirect]\fP Un tag per specificare un server a cui redirigere certe
+versioni di client.
+.RS
+.TP 
+\fBhost\fP
+Indirizzo del server a cui reindirizzre i collegamenti
+.TP 
+\fBport\fP
+Porta su cui connettersi
+.TP 
+\fBversion\fP
+Una lista separata da virgole delle versioni daredirigere. Si comporta come
+\fBversions_accepted\fP per quello che riguarda lo schema dei caratteri jolly.
+.RE
+.P
+\fB[proxy]\fP Un tag che indica al server di fare da proxy e di inoltrare le
+richieste dei client connessi al server specificato. Accetta le stesse
+parole chiave di [redirect].
+.
+.SH AUTORE
+.
+Scritto David White <davidnwhite@verizon.net>.  Modificato da Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> e
+Soliton <soliton@sonnenkinder.org>.  Questo manuale è stato scritto
+in origine da Cyril Bouthors <cyril@bouthors.org>.
+.br
+Visita la pagina home ufficiale: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br
+Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
+termini della licenza GPL versione 2 come pubblicata dalla Free Software
+Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né
+per l'ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
+.
+.SH "SEE ALSO"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
