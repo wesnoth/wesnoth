@@ -52,6 +52,9 @@ filemoves = {
         {"red-mage+female-attack-staff1.png": "red-mage+female-attack-staff-1.png"},
         {"red-mage+female-attack-staff2.png": "red-mage+female-attack-staff-2.png"},
     ),
+    # An empty sentinel value at end is required.
+    # Always have the current version here.
+    "1.3.2" : (),
 }
 
 def allcfgfiles(dir):
@@ -70,6 +73,7 @@ Usage: upconvert [options]
     Convert Battle of Wesnoth WML from older versions to newer ones.
     Options may be any of these:
     -h, --help                 Emit this help message and quit
+    -d, --dryrun               List changes but don't perform them.
     -o, --oldversion           Specify version to begin with. 
    The required dirpath argument may be a colon-separated directory list.
 """)
@@ -79,14 +83,56 @@ if __name__ == '__main__':
         "oldversion=",
         ])
     oldversion = 'older'
+    dryrun = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
             sys.exit(0)
         elif switch in ('-o', '--oldversion'):
             oldversion = val
+        elif switch in ('-d', '--dryrun'):
+            dryrun = True
 
-    datafiles = allcfgfiles(".")
+    # Compute the series of version upgrades to perform, and describe it.
+    versions = filemoves.keys()
+    versions.sort()
+    versions = [versions[-1]] + versions[:-1]	# Move 'older' to front
+    if oldversion in versions:
+        versions = versions[versions.index(oldversion):]
+    else:
+        print >>sys.stderr, "upconvert: unrecognized version."
+        sys.exit(1)
+    explain = "Performing upgrades for:"
+    for i in range(len(versions)-1):
+        explain += " %s -> %s," % (versions[i],  versions[i+1])
+    sys.stdout.write(explain[:-1] + ".\n")
+    conversions = map(lambda x: filemoves[x], versions[:-1])
 
-    # More to go here
-    print datafiles
+    # Perform resource file substitutions
+    ofp = None
+    for fn in allcfgfiles("."):
+        if dryrun:
+            ifp = open(fn)
+        else:
+            os.rename(fn, fn + "-bak")
+            ifp = open(fn + "-bak")
+            ofp = open(fn, "w")
+        modified = False
+        for enumerate(i, line) in :
+            transformed = line
+            for step in conversions:
+                for (old, new) in step.items():
+                    transformed = transformed.replace(old, new)
+            if ofp:
+                ofp.write(transformed)
+            if transformed != line:
+                print "%s, line %d: %s -> %s" % \
+                      (fn, i+1, line.strip(), transformed.strip())
+                modified = True
+        if ofp:
+            ofp.close()
+            if not modified:
+                # Nothing changed, move the backup file back into place.
+                os.rename(fn + "-bak", fn)
+
+# upconvert ends here
