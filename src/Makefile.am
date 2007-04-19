@@ -33,6 +33,12 @@ pkgdatadir=$(datadir)/@DATADIR@
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL)
 
+# Should be touched each time the SVN revision number goes up 
+version-stamp: FORCE
+	if [ x"$(SVNREV)" != x`cat version-stamp 2>/dev/null` ]; then echo -n $(SVNREV) >version-stamp; fi
+
+FORCE:
+
 #############################################################################
 #    Wesnoth                                                                #
 #############################################################################
