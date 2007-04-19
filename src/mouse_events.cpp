@@ -747,6 +747,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		const int abs1 = abs(drag_from_x_- mx);
 		const int abs2 = abs(drag_from_y_- my);
 		//don't use int __cdecl ::abs() as direct parameter to maximum<int>()
+		//it gives problems with MSVC++ 6
 		const int drag_distance = maximum<int>(abs1, abs2);
 	 	if (drag_distance > 10) {
 			dragging_started_ = true;
