@@ -231,8 +231,11 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	LOG_DP << "faded logo\n";
 
 	const std::string& version_str = _("Version") + std::string(" ") +
-	                                 game_config::version +
-	  " (" + game_config::svnrev + ")";
+		game_config::version
+#ifdef SVNREV
+       		+ " (" + game_config::svnrev + ")"
+#endif /* SVNREV */
+       	;
 
 	const SDL_Rect version_area = font::draw_text(NULL,screen_area(),
 						      font::SIZE_TINY,

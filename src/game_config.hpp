@@ -32,7 +32,9 @@ namespace game_config
 	extern int kill_experience;
 	extern int lobby_refresh;
 	extern const std::string version;
+#ifdef SVNREV
 	extern const std::string svnrev;
+#endif /* SVNREV */
 
 	extern bool debug, editor, ignore_replay_errors, mp_debug, exit_at_end, no_delay, disable_autosave;
 

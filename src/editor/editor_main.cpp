@@ -67,7 +67,9 @@ int main(int argc, char** argv)
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth " 
 				  << game_config::version
+#ifdef SVNREV
 				  << " (" << game_config::svnrev << ")"
+#endif /* SVNREV */
 			          << "\n";
 			return 0;
 		} else if(val == "--path") {
