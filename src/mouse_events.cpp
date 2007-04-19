@@ -744,7 +744,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
 	int my = drag_from_y_;
 	if (dragging_ && !dragging_started_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON(1) != 0)) {
-		const int drag_distance = maximum<int>(abs(drag_from_x_- mx), abs(drag_from_y_- my));
+		const int abs1 = abs(drag_from_x_- mx);
+		const int abs2 = abs(drag_from_y_- my);
+		//don't use int __cdecl ::abs() as direct parameter to maximum<int>()
+		const int drag_distance = maximum<int>(abs1, abs2);
 	 	if (drag_distance > 10) {
 			dragging_started_ = true;
 			cursor::set_dragging(true);
