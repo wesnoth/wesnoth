@@ -54,46 +54,43 @@ void playmp_controller::speak(){
 }
 
 void playmp_controller::play_side(const unsigned int team_index, bool save){
-//goto this label if the type of a team (human/ai/networked) has changed mid-turn
-redo_turn:
-	player_type_changed_ = false;
-	end_turn_ = false;
+	do {
+		player_type_changed_ = false;
+		end_turn_ = false;
 
-	// we can't call playsingle_controller::play_side because
-	// we need to catch exception here
-	if(current_team().is_human()) {
-		LOG_NG << "is human...\n";
-		try{
-			before_human_turn(save);
-			play_human_turn();
-			after_human_turn();
-		} catch(end_turn_exception& end_turn) {
-			if (end_turn.redo == team_index) {
-				player_type_changed_ = true;
-				// if new controller is not human,
-				// reset gui to prev human one
-				if (!teams_[team_index-1].is_human()) {
-					int t = find_human_team_before(team_index);
-					if (t > 0) {
-						gui_->set_team(t-1);
-						gui_->recalculate_minimap();
-						gui_->invalidate_all();
-						gui_->draw();
-						gui_->update_display();
+		// we can't call playsingle_controller::play_side because
+		// we need to catch exception here
+		if(current_team().is_human()) {
+			LOG_NG << "is human...\n";
+			try{
+				before_human_turn(save);
+				play_human_turn();
+				after_human_turn();
+			} catch(end_turn_exception& end_turn) {
+				if (end_turn.redo == team_index) {
+					player_type_changed_ = true;
+					// if new controller is not human,
+					// reset gui to prev human one
+					if (!teams_[team_index-1].is_human()) {
+						int t = find_human_team_before(team_index);
+						if (t > 0) {
+							gui_->set_team(t-1);
+							gui_->recalculate_minimap();
+							gui_->invalidate_all();
+							gui_->draw();
+							gui_->update_display();
+						}
 					}
 				}
 			}
+			LOG_NG << "human finished turn...\n";
+		} else if(current_team().is_ai()) {
+			play_ai_turn();
+		} else if(current_team().is_network()) {
+			play_network_turn();
 		}
-		LOG_NG << "human finished turn...\n";
-	} else if(current_team().is_ai()) {
-		play_ai_turn();
-	} else if(current_team().is_network()) {
-		play_network_turn();
-	}
-
-	if (player_type_changed_) {
-		goto redo_turn;
-	}
+	} while (player_type_changed_);
+	//keep looping if the type of a team (human/ai/networked) has changed mid-turn
 }
 
 void playmp_controller::before_human_turn(bool save){

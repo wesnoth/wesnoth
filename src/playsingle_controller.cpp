@@ -412,46 +412,45 @@ void playsingle_controller::play_turn(bool save)
 
 void playsingle_controller::play_side(const unsigned int team_index, bool save)
 {
-//goto this label if the type of a team (human/ai/networked) has changed mid-turn
-redo_turn:
-	//although this flag is used only in this method it has to be a class member
-	//since derived classes rely on it
-	player_type_changed_ = false;
-	end_turn_ = false;
+	do {
+		//although this flag is used only in this method it has to be a class member
+		//since derived classes rely on it
+		player_type_changed_ = false;
+		end_turn_ = false;
 
-	if(current_team().is_human()) {
-		LOG_NG << "is human...\n";
-		try{
-			before_human_turn(save);
-			play_human_turn();
-			after_human_turn();
-		} catch(end_turn_exception& end_turn) {
-			if (end_turn.redo == team_index) {
-				player_type_changed_ = true;
-				// if new controller is not human,
-				// reset gui to prev human one
-				if (!teams_[team_index-1].is_human()) {
-					int t = find_human_team_before(team_index);
-					if (t > 0) {
-						gui_->set_team(t-1);
-						gui_->recalculate_minimap();
-						gui_->invalidate_all();
-						gui_->draw();
-						gui_->update_display();
+		if(current_team().is_human()) {
+			LOG_NG << "is human...\n";
+			try{
+				before_human_turn(save);
+				play_human_turn();
+				after_human_turn();
+			} catch(end_turn_exception& end_turn) {
+				if (end_turn.redo == team_index) {
+					player_type_changed_ = true;
+					// if new controller is not human,
+					// reset gui to prev human one
+					if (!teams_[team_index-1].is_human()) {
+						int t = find_human_team_before(team_index);
+						if (t > 0) {
+							gui_->set_team(t-1);
+							gui_->recalculate_minimap();
+							gui_->invalidate_all();
+							gui_->draw();
+							gui_->update_display();
+						}
 					}
 				}
 			}
+
+			if(game_config::debug)
+				display::clear_debug_highlights();
+
+			LOG_NG << "human finished turn...\n";
+		} else if(current_team().is_ai()) {
+			play_ai_turn();
 		}
-
-		if(game_config::debug)
-			display::clear_debug_highlights();
-
-		LOG_NG << "human finished turn...\n";
-	} else if(current_team().is_ai()) {
-		play_ai_turn();
-	}
-
-	if (player_type_changed_) { goto redo_turn; }
+	} while (player_type_changed_);
+	//keep looping if the type of a team (human/ai/networked) has changed mid-turn
 }
 
 void playsingle_controller::before_human_turn(bool save)
