@@ -465,7 +465,12 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			}
 			gamemap::location const& menu_hex = mouse_handler_.get_last_hex();
 			recorder.add_event(wml_commands_[i]->name, menu_hex);
-			game_events::fire(wml_commands_[i]->name, menu_hex);
+			if(game_events::fire(wml_commands_[i]->name, menu_hex)) {
+				//the event has mutated the gamestate
+				apply_shroud_changes(undo_stack_, gui_, status_, map_, gameinfo_,
+					units_, teams_, (player_number_ - 1));
+				undo_stack_.clear();
+			}
 			return true;
 		}
 	}
