@@ -1930,7 +1930,11 @@ int main(int argc, char** argv)
 #endif
 
 	try {
-	  std::cerr << "Battle for Wesnoth v" << VERSION << " (" << SVNREV << ")\n";
+		std::cerr << "Battle for Wesnoth v" << VERSION
+#ifdef SVNREV
+			<< " (" << SVNREV << ')'
+#endif
+			<< '\n';
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
