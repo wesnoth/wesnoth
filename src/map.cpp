@@ -616,7 +616,8 @@ bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconf
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	if(terrain_format == 0 || terrain_format == -1 && !cfg["terrain"].empty()) {
 		lg::wml_error << "Warning deprecated terrain format in filter_location, support will be removed in version 1.3.3\n";
-		const std::string& terrain = cfg["terrain"];
+		const t_string& t_terrain = cfg["terrain"];
+		const std::string& terrain = t_terrain;
 		// Any of these may be a CSV
 		std::string terrain_letter;
 		terrain_letter += t_translation::get_old_letter(get_terrain_info(loc).number());
@@ -664,8 +665,10 @@ bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconf
 			return false;
 	}
 
-	const std::string& tod_type = cfg["time_of_day"];
-	const std::string& tod_id = cfg["time_of_day_id"];
+	const t_string& t_tod_type = cfg["time_of_day"];
+	const t_string& t_tod_id = cfg["time_of_day_id"];
+	const std::string& tod_type = t_tod_type;
+	const std::string& tod_id = t_tod_id;
 	static config const dummy_cfg;
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {

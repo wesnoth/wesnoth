@@ -729,18 +729,31 @@ bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool
 
 bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
 {
-	const std::string& description = cfg["description"];
-	const std::string& speaker = cfg["speaker"];
-	const std::string& type = cfg["type"];
-	const std::string& ability = cfg["ability"];
-	const std::string& side = cfg["side"];
-	const std::string& weapon = cfg["has_weapon"];
-	const std::string& role = cfg["role"];
-	const std::string& ai_special = cfg["ai_special"];
-	const std::string& race = cfg["race"];
-	const std::string& gender = cfg["gender"];
-	const std::string& canrecruit = cfg["canrecruit"];
-	const std::string& level = cfg["level"];
+	const t_string& t_description = cfg["description"];
+	const t_string& t_speaker = cfg["speaker"];
+	const t_string& t_type = cfg["type"];
+	const t_string& t_ability = cfg["ability"];
+	const t_string& t_side = cfg["side"];
+	const t_string& t_weapon = cfg["has_weapon"];
+	const t_string& t_role = cfg["role"];
+	const t_string& t_ai_special = cfg["ai_special"];
+	const t_string& t_race = cfg["race"];
+	const t_string& t_gender = cfg["gender"];
+	const t_string& t_canrecruit = cfg["canrecruit"];
+	const t_string& t_level = cfg["level"];
+
+	const std::string& description = t_description;
+	const std::string& speaker = t_speaker;
+	const std::string& type = t_type;
+	const std::string& ability = t_ability;
+	const std::string& side = t_side;
+	const std::string& weapon = t_weapon;
+	const std::string& role = t_role;
+	const std::string& ai_special = t_ai_special;
+	const std::string& race = t_race;
+	const std::string& gender = t_gender;
+	const std::string& canrecruit = t_canrecruit;
+	const std::string& level = t_level;
 
 	if(description.empty() == false && description != this->underlying_description()) {
 		return false;
