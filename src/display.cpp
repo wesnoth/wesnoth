@@ -557,34 +557,54 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 		return;
 	}
 
-	const int xpos = get_location_x(loc);
-	const int ypos = get_location_y(loc);
-	if ((scroll_type == ONSCREEN) && !outside_area(map_area(),xpos,ypos)) {
+	// current position of target (upper left tile corner) in screen coordinates
+	const int screenxpos = get_location_x(loc);
+	const int screenypos = get_location_y(loc);
+
+	if (scroll_type == ONSCREEN) {
+		// the tile must be fully visible
+		SDL_Rect r = map_area();
+		r.w -= hex_width();
+		r.h -= zoom_;
+
+		if (!outside_area(r,screenxpos,screenypos)) {
+			return;
+		}
+	}
+
+	const SDL_Rect area = map_area();
+	const int xmove_expected = (screenxpos + hex_width()/2) - (area.x + area.w/2 - zoom_/2);
+	const int ymove_expected = (screenypos + zoom_/2)       - (area.y + area.h/2 - zoom_/2);
+
+	int xpos = xpos_ + xmove_expected;
+	int ypos = ypos_ + ymove_expected;
+	bounds_check_position(xpos, ypos);
+	int xmove = xpos - xpos_;
+	int ymove = ypos - ypos_;
+
+	const int speed = preferences::scroll_speed()*2;
+	
+	int num_moves = (int)hypot(xmove, ymove)/speed;
+
+	if(scroll_type == WARP || turbo() || num_moves == 0) {
+		scroll(xmove,ymove);
+		draw();
 		return;
 	}
 
-	const int speed = preferences::scroll_speed()*2;
-
-	const SDL_Rect& area = map_area();
-	const int desiredxpos = area.w/2 - zoom_/2;
-	const int desiredypos = area.h/2 - zoom_/2;
-
-	const int xmove = xpos - desiredxpos;
-	const int ymove = ypos - desiredypos;
-
-	int num_moves = (abs(xmove) > abs(ymove) ? abs(xmove):abs(ymove))/speed;
-
-	if(scroll_type == WARP || turbo() || num_moves == 0) {
-		num_moves = 1;
-	}
-
-	for(int i = 0; i != num_moves; ++i) {
+	while (num_moves > 0) {
 		events::pump();
 
-		scroll(xmove/num_moves,ymove/num_moves);
+		int dx = xmove / num_moves;
+		int dy = ymove / num_moves;
+
+		scroll(dx, dy);
+		xmove -= dx;
+		ymove -= dy;
+		num_moves--;
 
 		//accelerate scroll rate if either shift key is held down
-		if((i%4) != 0 && i != num_moves-1 && turbo()) {
+		if((num_moves%4) != 0 && num_moves != 0 && turbo()) {
 			continue;
 		}
 
@@ -602,9 +622,9 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	const int ypos2 = get_location_y(loc2);;
 
 	const int minx = minimum<int>(xpos1,xpos2);
-	const int maxx = maximum<int>(xpos1,xpos2);
+	const int maxx = maximum<int>(xpos1,xpos2) + hex_width();
 	const int miny = minimum<int>(ypos1,ypos2);
-	const int maxy = maximum<int>(ypos1,ypos2);
+	const int maxy = maximum<int>(ypos1,ypos2) + zoom_;
 	const int diffx = maxx - minx;
 	const int diffy = maxy - miny;
 
@@ -652,29 +672,34 @@ void display::bounds_check_position()
 		zoom_ = MaxZoom;
 	}
 
+	bounds_check_position(xpos_, ypos_);
+
+	if(zoom_ != orig_zoom) {
+		image::set_zoom(zoom_);
+	}
+}
+
+void display::bounds_check_position(int& xpos, int& ypos)
+{
 	const int tile_width = hex_width();
 
 	const int xend = tile_width*map_.x() + tile_width/3;
 	const int yend = zoom_*map_.y() + zoom_/2;
 
-	if(xpos_ > xend - map_area().w) {
-		xpos_ = xend - map_area().w;
+	if(xpos > xend - map_area().w) {
+		xpos = xend - map_area().w;
 	}
 
-	if(ypos_ > yend - map_area().h) {
-		ypos_ = yend - map_area().h;
+	if(ypos > yend - map_area().h) {
+		ypos = yend - map_area().h;
 	}
 
-	if(xpos_ < 0) {
-		xpos_ = 0;
+	if(xpos < 0) {
+		xpos = 0;
 	}
 
-	if(ypos_ < 0) {
-		ypos_ = 0;
-	}
-
-	if(zoom_ != orig_zoom) {
-		image::set_zoom(zoom_);
+	if(ypos < 0) {
+		ypos = 0;
 	}
 }
 

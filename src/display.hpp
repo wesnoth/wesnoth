@@ -433,6 +433,7 @@ private:
 	reports::report reports_[reports::NUM_REPORTS];
 
 	void bounds_check_position();
+	void bounds_check_position(int& xpos, int& ypos);
 
 	// std::vector<surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 	std::vector<surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
