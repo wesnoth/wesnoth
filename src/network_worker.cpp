@@ -507,6 +507,7 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 		return NULL;
 	} else if (!itor->config_error.empty()){
 		// throw the error in parent thread
+		received_data_queue.erase(itor);
 		throw config::error(itor->config_error);
 	} else {
 		cfg = itor->config_buf;
