@@ -334,7 +334,7 @@ void game::update_side_data()
 		}
 	}
 
-	std::cerr << debug_player_info();
+	LOG_SERVER << debug_player_info();
 }
 
 const std::string& game::transfer_side_control(const config& cfg)
