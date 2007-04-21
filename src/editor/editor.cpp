@@ -377,7 +377,7 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 		}
 
 		if (scrollx != 0 || scrolly != 0) {
-		struct CKey pressed;
+		CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
 		if (pressed[SDLK_LALT] || pressed[SDLK_RALT])
 			gui_.scroll(scrolly,scrollx);
