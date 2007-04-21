@@ -427,7 +427,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 				    LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
 			}
 
-			if(steps.empty() == false) {
+			if(steps.size()>1) { //first step is starting hex
 			  unit_map::const_iterator utest=info_.units.find(*(steps.begin()+1));
 			  if(utest != info_.units.end() && current_team().is_enemy(utest->second.side())){
 			    LOG_STREAM(err, ai) << "AI tried to move onto existing enemy unit at"<<*(steps.begin())<<"\n";
