@@ -235,8 +235,8 @@ namespace {
 							campaign_list.add_child("campaign", (**i));
 						}
 						cmps = campaign_list.get_children("campaign");
-						for(config::child_list::iterator i = cmps.begin(); i != cmps.end(); ++i) {
-							(**i)["passphrase"] = "";
+						for(config::child_list::iterator j = cmps.begin(); j != cmps.end(); ++j) {
+							(**j)["passphrase"] = "";
 						}
 
 						config response;
@@ -399,7 +399,7 @@ namespace {
 					LOG_CS <<"client disconnect : "<<e.message<<" " << network::ip_address(e.socket) << "\n";
 					e.disconnect();
 				}
-			} catch(config::error& e) {
+			} catch(config::error& /*e*/) {
 				LOG_CS << "error in receiving data...\n";
 			}
 
@@ -419,9 +419,12 @@ int main(int argc, char**argv)
 		}else {
 			campaign_server("server.cfg").run();
 		}
-	} catch(config::error& e) {
+	} catch(config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
-	} catch(io_exception& e) {
+		return 1;
+	} catch(io_exception& /*e*/) {
 		std::cerr << "File I/O error\n";
+		return 2;
 	}
+	return 0;
 }
