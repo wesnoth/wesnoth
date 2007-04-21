@@ -151,23 +151,23 @@ namespace t_translation {
 
 /***************************************************************************************/	
 
-const t_letter VOID_TERRAIN = string_to_number_("_s", NO_LAYER);
-const t_letter FOGGED = string_to_number_("_f", NO_LAYER);
+const t_letter VOID_TERRAIN = string_to_number_("_s");
+const t_letter FOGGED = string_to_number_("_f");
 
-const t_letter HUMAN_CASTLE = string_to_number_("Ch", NO_LAYER);
-const t_letter HUMAN_KEEP = string_to_number_("Kh", NO_LAYER);
-const t_letter SHALLOW_WATER = string_to_number_("Ww", NO_LAYER);
-const t_letter DEEP_WATER = string_to_number_("Wo", NO_LAYER);
-const t_letter GRASS_LAND = string_to_number_("Gg", NO_LAYER);
-const t_letter FOREST = string_to_number_("Ff", NO_LAYER);
-const t_letter MOUNTAIN = string_to_number_("Mm", NO_LAYER);
-const t_letter HILL = string_to_number_("Hh", NO_LAYER);
+const t_letter HUMAN_CASTLE = string_to_number_("Ch");
+const t_letter HUMAN_KEEP = string_to_number_("Kh");
+const t_letter SHALLOW_WATER = string_to_number_("Ww");
+const t_letter DEEP_WATER = string_to_number_("Wo");
+const t_letter GRASS_LAND = string_to_number_("Gg");
+const t_letter FOREST = string_to_number_("Ff");
+const t_letter MOUNTAIN = string_to_number_("Mm");
+const t_letter HILL = string_to_number_("Hh");
 
-const t_letter CAVE_WALL = string_to_number_("Xu", NO_LAYER);
-const t_letter CAVE = string_to_number_("Uu", NO_LAYER);
-const t_letter UNDERGROUND_VILLAGE = string_to_number_("Vu", NO_LAYER);
-const t_letter DWARVEN_CASTLE = string_to_number_("Cud", NO_LAYER);
-const t_letter DWARVEN_KEEP = string_to_number_("Kud", NO_LAYER);
+const t_letter CAVE_WALL = string_to_number_("Xu");
+const t_letter CAVE = string_to_number_("Uu");
+const t_letter UNDERGROUND_VILLAGE = string_to_number_("Vu");
+const t_letter DWARVEN_CASTLE = string_to_number_("Cud");
+const t_letter DWARVEN_KEEP = string_to_number_("Kud");
 
 const t_letter PLUS = string_to_number_("+");
 const t_letter MINUS = string_to_number_("-");
