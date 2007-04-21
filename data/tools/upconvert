@@ -7,50 +7,55 @@ import sys, os, getopt
 filemoves = {
     # Older includes all previous to 1.3.1.
     "older" : (
-    	{"creepy.ogg": "underground.ogg"},
-        {"eagle.wav": "gryphon-shriek-1.ogg"},
-        {"lightning.wav": "lightning.ogg"},	# Bug fix
+    	("creepy.ogg", "underground.ogg"),
+        ("eagle.wav", "gryphon-shriek-1.ogg"),
+        ("lightning.wav", "lightning.ogg"),	# Bug fix
     ),
     "1.3.1" : (
         # Peasant images moved to a new directory
-        {"human-loyalists/peasant.png": "human-peasants/peasant.png"},
-        {"human-loyalists/peasant-attack.png": "human-peasants/peasant-attack.png"},
-        {"human-loyalists/peasant-attack2.png": "human-peasants/peasant-attack2.png"},
-        {"human-loyalists/peasant-ranged.png": "human-peasants/peasant-ranged.png"},
-        {"human-loyalists/peasant-idle-1.png": "human-peasants/peasant-idle-1.png"},
-        {"human-loyalists/peasant-idle-2.png": "human-peasants/peasant-idle-2.png"},
-        {"human-loyalists/peasant-idle-3.png": "human-peasants/peasant-idle-3.png"},
-        {"human-loyalists/peasant-idle-4.png": "human-peasants/peasant-idle-4.png"},
-        {"human-loyalists/peasant-idle-5.png": "human-peasants/peasant-idle-5.png"},
-        {"human-loyalists/peasant-idle-6.png": "human-peasants/peasant-idle-6.png"},
-        {"human-loyalists/peasant-idle-7.png": "human-peasants/peasant-idle-7.png"},
+        ("human-loyalists/peasant.png", "human-peasants/peasant.png"),
+        ("human-loyalists/peasant-attack.png", "human-peasants/peasant-attack.png"),
+        ("human-loyalists/peasant-attack2.png", "human-peasants/peasant-attack2.png"),
+        ("human-loyalists/peasant-ranged.png", "human-peasants/peasant-ranged.png"),
+        ("human-loyalists/peasant-idle-1.png", "human-peasants/peasant-idle-1.png"),
+        ("human-loyalists/peasant-idle-2.png", "human-peasants/peasant-idle-2.png"),
+        ("human-loyalists/peasant-idle-3.png", "human-peasants/peasant-idle-3.png"),
+        ("human-loyalists/peasant-idle-4.png", "human-peasants/peasant-idle-4.png"),
+        ("human-loyalists/peasant-idle-5.png", "human-peasants/peasant-idle-5.png"),
+        ("human-loyalists/peasant-idle-6.png", "human-peasants/peasant-idle-6.png"),
+        ("human-loyalists/peasant-idle-7.png", "human-peasants/peasant-idle-7.png"),
         # All Great Mage attacks were renamed
-        {"great-mage-attack-magic1.png": "great-mage-attack-magic-1.png"},
-        {"great-mage-attack-magic2.png": "great-mage-attack-magic-2.png"},
-        {"great-mage+female-attack-magic1.png": "great-mage+female-attack-magic-1.png"},
-        {"great-mage+female-attack-magic2.png": "great-mage+female-attack-magic-2.png"},
-        {"great-mage-attack-staff1.png": "great-mage-attack-staff-1.png"},
-        {"great-mage-attack-staff2.png": "great-mage-attack-staff-2.png"},
-        {"great-mage+female-attack-staff1.png": "great-mage+female-attack-staff-1.png"},
-        {"great-mage+female-attack-staff2.png": "great-mage+female-attack-staff-2.png"},
+        ("great-mage-attack-magic1.png", "great-mage-attack-magic-1.png"),
+        ("great-mage-attack-magic2.png", "great-mage-attack-magic-2.png"),
+        ("great-mage+female-attack-magic1.png", "great-mage+female-attack-magic-1.png"),
+        ("great-mage+female-attack-magic2.png", "great-mage+female-attack-magic-2.png"),
+        ("great-mage-attack-staff1.png", "great-mage-attack-staff-1.png"),
+        ("great-mage-attack-staff2.png", "great-mage-attack-staff-2.png"),
+        ("great-mage+female-attack-staff1.png", "great-mage+female-attack-staff-1.png"),
+        ("great-mage+female-attack-staff2.png", "great-mage+female-attack-staff-2.png"),
         # All Arch Mage attacks were renamed
-        {"arch-mage-attack-magic1.png": "arch-mage-attack-magic-1.png"},
-        {"arch-mage-attack-magic2.png": "arch-mage-attack-magic-2.png"},
-        {"arch-mage+female-attack-magic1.png": "arch-mage+female-attack-magic-1.png"},
-        {"arch-mage+female-attack-magic2.png": "arch-mage+female-attack-magic-2.png"},
-        {"arch-mage-attack-staff1.png": "arch-mage-attack-staff-1.png"},
-        {"arch-mage-attack-staff2.png": "arch-mage-attack-staff-2.png"},
-        {"arch-mage+female-attack-staff1.png": "arch-mage+female-attack-staff-1.png"},
-        {"arch-mage+female-attack-staff2.png": "arch-mage+female-attack-staff-2.png"},
+        ("arch-mage-attack-magic1.png", "arch-mage-attack-magic-1.png"),
+        ("arch-mage-attack-magic2.png", "arch-mage-attack-magic-2.png"),
+        ("arch-mage+female-attack-magic1.png", "arch-mage+female-attack-magic-1.png"),
+        ("arch-mage+female-attack-magic2.png", "arch-mage+female-attack-magic-2.png"),
+        ("arch-mage-attack-staff1.png", "arch-mage-attack-staff-1.png"),
+        ("arch-mage-attack-staff2.png", "arch-mage-attack-staff-2.png"),
+        ("arch-mage+female-attack-staff1.png", "arch-mage+female-attack-staff-1.png"),
+        ("arch-mage+female-attack-staff2.png", "arch-mage+female-attack-staff-2.png"),
         # All Red Mage attacks were renamed
-        {"red-mage-attack-magic1.png": "red-mage-attack-magic-1.png"},
-        {"red-mage-attack-magic2.png": "red-mage-attack-magic-2.png"},
-        {"red-mage+female-attack-magic1.png": "red-mage+female-attack-magic-1.png"},
-        {"red-mage+female-attack-magic2.png": "red-mage+female-attack-magic-2.png"},
-        {"red-mage-attack-staff1.png": "red-mage-attack-staff-1.png"},
-        {"red-mage-attack-staff2.png": "red-mage-attack-staff-2.png"},
-        {"red-mage+female-attack-staff1.png": "red-mage+female-attack-staff-1.png"},
-        {"red-mage+female-attack-staff2.png": "red-mage+female-attack-staff-2.png"},
+        ("red-mage-attack-magic1.png", "red-mage-attack-magic-1.png"),
+        ("red-mage-attack-magic2.png", "red-mage-attack-magic-2.png"),
+        ("red-mage+female-attack-magic1.png", "red-mage+female-attack-magic-1.png"),
+        ("red-mage+female-attack-magic2.png", "red-mage+female-attack-magic-2.png"),
+        ("red-mage-attack-staff1.png", "red-mage-attack-staff-1.png"),
+        ("red-mage-attack-staff2.png", "red-mage-attack-staff-2.png"),
+        ("red-mage+female-attack-staff1.png", "red-mage+female-attack-staff-1.png"),
+        ("red-mage+female-attack-staff2.png", "red-mage+female-attack-staff-2.png"),
+	# Timothy Pinkham supplied titles for two of his music files.
+	# gameplay03.ogg already had a title.
+	("gameplay01.ogg", "knolls.ogg"),
+	("gameplay02.ogg", "wanderer.ogg"),
+	("gameplay03.ogg", "battle.ogg"),
     ),
     # An empty sentinel value at end is required.
     # Always have the current version here.
@@ -75,12 +80,13 @@ Usage: upconvert [options]
     -h, --help                 Emit this help message and quit
     -d, --dryrun               List changes but don't perform them.
     -o, --oldversion           Specify version to begin with. 
-   The required dirpath argument may be a colon-separated directory list.
 """)
 
 if __name__ == '__main__':
     (options, arguments) = getopt.getopt(sys.argv[1:], "o:", [
+	"help",
         "oldversion=",
+	"dryrun",
         ])
     oldversion = 'older'
     dryrun = False
@@ -118,10 +124,10 @@ if __name__ == '__main__':
             ifp = open(fn + "-bak")
             ofp = open(fn, "w")
         modified = False
-        for enumerate(i, line) in :
+        for (i, line) in enumerate(ifp):
             transformed = line
             for step in conversions:
-                for (old, new) in step.items():
+                for (old, new) in step:
                     transformed = transformed.replace(old, new)
             if ofp:
                 ofp.write(transformed)
