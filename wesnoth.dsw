@@ -1,5 +1,5 @@
 Microsoft Developer Studio Workspace File, Format Version 6.00
-# WARNUNG: DIESE ARBEITSBEREICHSDATEI DARF NICHT BEARBEITET ODER GELÖSCHT WERDEN!
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
 
 ###############################################################################
 
@@ -15,7 +15,7 @@ Package=<4>
 
 ###############################################################################
 
-Project: "wesnoth"=.\wesnoth.dsp - Package Owner=<4>
+Project: "campaign_server"=.\campaign_server\campaign_server.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
@@ -27,7 +27,19 @@ Package=<4>
 
 ###############################################################################
 
-Project: "wesnothd"=.\wesnothd\wesnothd.dsp - Package Owner=<4>
+Project: "server"=.\server.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "wesnoth"=.\wesnoth.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

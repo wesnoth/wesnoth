@@ -1,24 +1,24 @@
 # Microsoft Developer Studio Project File - Name="wesnoth" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
-# ** NICHT BEARBEITEN **
+# ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
 CFG=wesnoth - Win32 Release
-!MESSAGE Dies ist kein gültiges Makefile. Zum Erstellen dieses Projekts mit NMAKE
-!MESSAGE verwenden Sie den Befehl "Makefile exportieren" und führen Sie den Befehl
+!MESSAGE This is not a valid makefile. To build this project using NMAKE,
+!MESSAGE use the Export Makefile command and run
 !MESSAGE 
 !MESSAGE NMAKE /f "wesnoth.mak".
 !MESSAGE 
-!MESSAGE Sie können beim Ausführen von NMAKE eine Konfiguration angeben
-!MESSAGE durch Definieren des Makros CFG in der Befehlszeile. Zum Beispiel:
+!MESSAGE You can specify a configuration when running NMAKE
+!MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
 !MESSAGE NMAKE /f "wesnoth.mak" CFG="wesnoth - Win32 Release"
 !MESSAGE 
-!MESSAGE Für die Konfiguration stehen zur Auswahl:
+!MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "wesnoth - Win32 Debug" (basierend auf  "Win32 (x86) Application")
-!MESSAGE "wesnoth - Win32 Release" (basierend auf  "Win32 (x86) Application")
+!MESSAGE "wesnoth - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "wesnoth - Win32 Release" (based on "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /Gm /GR /GX /Zi /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /Gm /GR /GX /Zi /Od /I "c:/projects/wesnoth/wesnothd/src" /I "c:/projects/wesnoth/include/SDL-1.2.9/include" /I "c:/projects/wesnoth/include" /I "c:/projects/wesnoth/wesnothd/src/sdl_ttf" /I "c:/program files/python 2.4/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include/freetype" /I "c:/projects/wesnoth/include/SDL_image-1.2.4" /I "c:/projects/wesnoth/include/SDL_mixer-1.2.6" /I "c:/projects/wesnoth/include/SDL_net-1.2.5" /I "src/sdl_ttf" /I "c:/projects/wesnoth/include/libintl-devel/include" /I "c:/usr/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "NOT_HAVE_FRIBIDI" /FAs /Fa"" /FR"" /Fp"Release/wesnoth.pch" /YX /Fo"Release/" /Fd"Release/" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -53,7 +53,8 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib python24.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept /libpath:"c:\projects\wesnoth\yogilib"
+# SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "wesnoth - Win32 Release"
 
@@ -70,18 +71,17 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /D "HAVE_PYTHON" /FR /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /GR /GX /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /D "HAVE_PYTHON" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /GR /GX /Zi /O2 /I "c:/projects/wesnoth/wesnothd/src" /I "c:/projects/wesnoth/include/SDL-1.2.9/include" /I "c:/projects/wesnoth/include" /I "c:/projects/wesnoth/wesnothd/src/sdl_ttf" /I "c:/program files/python 2.4/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include/freetype" /I "c:/projects/wesnoth/include/SDL_image-1.2.4" /I "c:/projects/wesnoth/include/SDL_mixer-1.2.6" /I "c:/projects/wesnoth/include/SDL_net-1.2.5" /I "src/sdl_ttf" /I "c:/projects/wesnoth/include/libintl-devel/include" /I "c:/usr/include" /D "WIN32" /D "_NODEBUG" /D "_WINDOWS" /D "_MBCS" /D "NOT_HAVE_FRIBIDI" /D "NODEBUG_CONFIG" /FR"" /YX /FD /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
-# ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
+# ADD MTL /nologo /D "_NODEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
-# ADD RSC /l 0x409 /d "_DEBUG"
+# ADD RSC /l 0x409 /d "_NODEBUG"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib /nologo /subsystem:windows /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
-# SUBTRACT LINK32 /debug
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib /nologo /subsystem:windows /incremental:yes /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept /libpath:"c:\projects\wesnoth\yogilib"
 
 !ENDIF 
 
@@ -182,6 +182,10 @@ SOURCE=.\src\config_adapter.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\construct_dialog.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\cursor.cpp
 # End Source File
 # Begin Source File
@@ -198,7 +202,7 @@ SOURCE=.\src\events.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\widgets\file_chooser.cpp
+SOURCE=.\src\widgets\file_menu.cpp
 # End Source File
 # Begin Source File
 
@@ -234,6 +238,10 @@ SOURCE=.\src\gamestatus.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\generic_event.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\gettext.cpp
 # End Source File
 # Begin Source File
@@ -251,10 +259,6 @@ SOURCE=.\src\hotkeys.cpp
 # Begin Source File
 
 SOURCE=.\src\image.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\widgets\image_button.cpp
 # End Source File
 # Begin Source File
 
@@ -323,10 +327,6 @@ SOURCE=.\src\widgets\menu_style.cpp
 # Begin Source File
 
 SOURCE=.\src\minimap.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\mouse.cpp
 # End Source File
 # Begin Source File
 
@@ -470,6 +470,10 @@ SOURCE=.\src\sound.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\soundsource.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\statistics.cpp
 # End Source File
 # Begin Source File
@@ -483,6 +487,10 @@ SOURCE=.\src\team.cpp
 # Begin Source File
 
 SOURCE=.\src\terrain.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\terrain_translation.cpp
 # End Source File
 # Begin Source File
 
@@ -527,6 +535,14 @@ SOURCE=.\src\unit_animation.cpp
 # Begin Source File
 
 SOURCE=.\src\unit_display.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\unit_frame.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\unit_map.cpp
 # End Source File
 # Begin Source File
 
@@ -654,7 +670,15 @@ SOURCE=.\src\config_adapter.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\construct_dialog.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\cursor.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\dialog_view.hpp
 # End Source File
 # Begin Source File
 
@@ -667,6 +691,10 @@ SOURCE=.\src\display.hpp
 # Begin Source File
 
 SOURCE=.\src\events.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\widgets\file_menu.hpp
 # End Source File
 # Begin Source File
 
@@ -719,10 +747,6 @@ SOURCE=.\src\hotkeys.hpp
 # Begin Source File
 
 SOURCE=.\src\image.hpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\widgets\image_button.hpp
 # End Source File
 # Begin Source File
 
@@ -918,6 +942,10 @@ SOURCE=.\src\widgets\scrollbar.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\widgets\scrollpane.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\sdl_utils.hpp
 # End Source File
 # Begin Source File
@@ -938,6 +966,10 @@ SOURCE=.\src\sound.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\soundsource.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\statistics.hpp
 # End Source File
 # Begin Source File
@@ -951,6 +983,10 @@ SOURCE=.\src\team.hpp
 # Begin Source File
 
 SOURCE=.\src\terrain.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\terrain_translation.hpp
 # End Source File
 # Begin Source File
 
@@ -982,6 +1018,10 @@ SOURCE=.\src\tstring.hpp
 # End Source File
 # Begin Source File
 
+SOURCE="..\include\freetype-2.1.9\include\freetype\ttnameid.h"
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\unit.hpp
 # End Source File
 # Begin Source File
@@ -995,6 +1035,14 @@ SOURCE=.\src\unit_animation.hpp
 # Begin Source File
 
 SOURCE=.\src\unit_display.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\unit_frame.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\unit_map.hpp
 # End Source File
 # Begin Source File
 
