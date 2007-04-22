@@ -1020,12 +1020,14 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		lookup_table_131.insert(std::make_pair(t_letter("Dc"), t_letter("Dd","Dc")));
 		lookup_table_131.insert(std::make_pair(t_letter("Dr"), t_letter("Dd","Dr")));
 		lookup_table_131.insert(std::make_pair(t_letter("Do"), t_letter("Dd","Do")));
-		lookup_table_131.insert(std::make_pair(t_letter("Fa"), t_letter("Aa","Fa")));
+		lookup_table_131.insert(std::make_pair(t_letter("Fa"), t_letter("Aa","Fpa")));
 		lookup_table_131.insert(std::make_pair(t_letter("Fet"), t_letter("Gg","Fet")));
-		lookup_table_131.insert(std::make_pair(t_letter("Ff"), t_letter("Gg","Ff")));
+		lookup_table_131.insert(std::make_pair(t_letter("Ff"), t_letter("Gs","Fp")));
 		lookup_table_131.insert(std::make_pair(t_letter("Ft"), t_letter("Gs","Ft")));
 		lookup_table_131.insert(std::make_pair(t_letter("Rfvs"), t_letter("Re","Gvs")));
 		lookup_table_131.insert(std::make_pair(t_letter("Uf"), t_letter("Uu","Uf")));
+		lookup_table_131.insert(std::make_pair(t_letter("Uui"), t_letter("Uu","Ii")));
+		lookup_table_131.insert(std::make_pair(t_letter("Uhi"), t_letter("Uh","Ii")));
 		lookup_table_131.insert(std::make_pair(t_letter("Vda"), t_letter("Dd","Vda")));
 		lookup_table_131.insert(std::make_pair(t_letter("Vdt"), t_letter("Dd","Vdt")));
 		lookup_table_131.insert(std::make_pair(t_letter("Vea"), t_letter("Aa","Vea")));
