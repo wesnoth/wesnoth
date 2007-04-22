@@ -775,17 +775,19 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			attack_from = current_unit_attacks_from(new_hex, nearest_hex, second_nearest_hex);
 		}
 
-		if(selected_unit != units_.end() && (current_paths_.routes.count(new_hex) ||
-		                                     attack_from.valid())) {
-			if(mouseover_unit == units_.end()) {
-				cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
-			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.incapacitated()) {
-				cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK) ;
-			} else  {
+		if (cursor::get() != cursor::WAIT) {
+			if(selected_unit != units_.end() &&
+				 	(current_paths_.routes.count(new_hex) || attack_from.valid())) {
+				if(mouseover_unit == units_.end()) {
+					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
+				} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.incapacitated()) {
+					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK) ;
+				} else  {
+					cursor::set(cursor::NORMAL);
+				}
+			} else {
 				cursor::set(cursor::NORMAL);
 			}
-		} else {
-			cursor::set(cursor::NORMAL);
 		}
 
 		if(enemy_paths_) {
