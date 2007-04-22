@@ -1,6 +1,25 @@
 # vi: syntax=python
 import glob
 
+"""
+Runs this as:
+
+scons -f utils/SConstruct
+
+from within the wesnoth toplevel directory. It expects to have all kinds of
+windows dependencies in the parent directory, like this:
+
+../wesnoth/(you are here)
+../win-deps/...
+
+and it will create/use a build directory in the parent folder as well:
+
+../build/...
+
+For details see the cross-compiling instructions on the Wiki.
+
+"""
+
 sources = glob.glob("src/*.cpp") +\
           glob.glob("src/widgets/*.cpp") +\
           glob.glob("src/serialization/*.cpp") +\
