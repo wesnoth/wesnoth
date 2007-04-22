@@ -582,32 +582,68 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	int xmove = xpos - xpos_;
 	int ymove = ypos - ypos_;
 
-	const int speed = preferences::scroll_speed()*2;
-	
-	int num_moves = (int)hypot(xmove, ymove)/speed;
-
-	if(scroll_type == WARP || turbo() || num_moves == 0) {
+	if(scroll_type == WARP || turbo()) {
 		scroll(xmove,ymove);
 		draw();
 		return;
 	}
 
-	while (num_moves > 0) {
+	// doing an animated scroll, with acceleration etc.
+
+	int x_old = 0;
+	int y_old = 0;
+
+	const double dist_total = hypot(xmove, ymove);
+	double dist_moved = 0.0;
+
+	int t_prev = SDL_GetTicks();
+	
+	// those values might need some fine-tuning:
+	const double accel_time = 0.5; // seconds
+	const double decel_time = 0.6; // seconds
+
+	double velocity = 0.0;
+	while (dist_moved < dist_total) {
 		events::pump();
+		
+		int t = SDL_GetTicks();
+		double dt = (t - t_prev) / 1000.0;
+		if (dt > 0.200) {
+			// do not skip too many frames on slow pcs
+			dt = 0.200;
+		}
+		t_prev = t;
 
-		int dx = xmove / num_moves;
-		int dy = ymove / num_moves;
+		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
 
-		scroll(dx, dy);
-		xmove -= dx;
-		ymove -= dy;
-		num_moves--;
+		double velocity_max = preferences::scroll_speed() * 80.0;
+		if (turbo()) velocity_max *= 4.0;
+		double accel = velocity_max / accel_time;
+		double decel = velocity_max / decel_time;
 
-		//accelerate scroll rate if either shift key is held down
-		if((num_moves%4) != 0 && num_moves != 0 && turbo()) {
-			continue;
+		// If we started to decelerate now, where would we stop?
+		double stop_time = velocity / decel;
+		double dist_stop = dist_moved + velocity*stop_time - 0.5*decel*stop_time*stop_time;
+		if (dist_stop > dist_total || velocity > velocity_max) {
+			velocity -= decel * dt;
+			if (velocity < 1.0) velocity = 1.0;
+		} else {
+			velocity += accel * dt;
+			if (velocity > velocity_max) velocity = velocity_max;
 		}
 
+		dist_moved += velocity * dt;
+		if (dist_moved > dist_total) dist_moved = dist_total;
+
+		int x_new = (int)round(xmove * (dist_moved/dist_total));
+		int y_new = (int)round(ymove * (dist_moved/dist_total));
+		
+		int dx = x_new - x_old;
+		int dy = y_new - y_old;
+
+		scroll(dx,dy);
+		x_old += dx;
+		y_old += dy;
 		draw();
 	}
 }
@@ -847,6 +883,8 @@ void display::draw(bool update,bool force)
 
 	process_reachmap_changes();
 
+	int simulate_delay = 0;
+
 	if(!panelsDrawn_) {
 		surface const screen(screen_.getSurface());
 
@@ -902,11 +940,13 @@ void display::draw(bool update,bool force)
 				unit_invals.insert(*it);
 			}
 			draw_tile(*it, clip_rect);
+			simulate_delay += 1;
 		}
 
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
 			unit &u = units_.find(*it)->second;
 			u.redraw_unit(*this, *it);
+			simulate_delay += 1;
 		}
 		if (temp_unit_ && invalidated_.find(temp_unit_loc_) != invalidated_.end()) {
 			temp_unit_->redraw_unit(*this, temp_unit_loc_);
@@ -941,6 +981,9 @@ void display::draw(bool update,bool force)
 	static const int time_between_draws = preferences::draw_delay();
 	const int current_time = SDL_GetTicks();
 	const int wait_time = nextDraw_ - current_time;
+
+	// simulate slow pc
+	//SDL_Delay(2*simulate_delay + rand() % 20);
 
 	if(update) {
 		if(force || changed) {
