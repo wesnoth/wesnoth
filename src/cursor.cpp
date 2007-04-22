@@ -206,6 +206,11 @@ void set_dragging(bool drag)
 	}
 }
 
+CURSOR_TYPE get()
+{
+	return current_cursor;
+}
+
 void set_focus(bool focus)
 {
 	have_focus = focus;

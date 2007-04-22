@@ -35,6 +35,7 @@ void temporary_use_bw();
 
 void set(CURSOR_TYPE type);
 void set_dragging(bool drag);
+CURSOR_TYPE get();
 
 void draw(surface screen);
 void undraw(surface screen);
