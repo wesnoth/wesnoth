@@ -1121,7 +1121,7 @@ int play_game(int argc, char** argv)
 
 	for(;;) {
 		//make sure the game config is always set to how it should be at the title screen
-		game.reset_game_cfg();
+		//game.reset_game_cfg();
 
 		statistics::fresh_stats();
 
