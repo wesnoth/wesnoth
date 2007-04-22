@@ -1174,7 +1174,6 @@ static PyTypeObject wesnoth_gamestatus_type = {
 	NULL
 };
 
-
 static PyObject* wrap_move_map(const ai_interface::move_map& wrap)
 {
 	PyObject* dict = PyDict_New();
@@ -1691,44 +1690,57 @@ void python_ai::play_turn()
 	PyObject* globals = PyDict_New();
 	PyDict_SetItemString(globals, "__builtins__", PyEval_GetBuiltins());
 
+	std::string path(".");
+	if (!game_config::path.empty()) path = game_config::path;
 	LOG_AI << "Executing Python script \"" << script << "\".\n";
+	LOG_AI << " Python path: \"" << path << "/data/ais" << "\"\n";
 	// Run the python script. We actually execute a short inline python
 	// script, which sets up the module search path to the data path,
 	// runs the script, and then resets the path.
 	std::string python_code;
 	python_code +=
-		"import sys\n"
-		"backup = sys.path[:]\n"
-		"sys.path.append(\"" + game_config::path + "/data/ais\")\n"
+		"err = \"\"\n"
 		"try:\n"
-		"\timport wesnoth, parse, safe, heapq, random\n"
-		"\tcode = parse.parse(\"" + script + "\")\n"
-		"\tsafe.safe_exec(code, {\n"
-		"\t\"wesnoth\" : wesnoth,\n"
-		"\t\"heapq\" : heapq,\n"
-		"\t\"random\" : random})\n"
+		"\timport sys, traceback\n"
+		"\tbackup = sys.path[:]\n"
+		"\tsys.path.append(\"" + path + "/data/ais\")\n"
+		"\ttry:\n"
+		"\t\timport wesnoth, parse, safe, heapq, random\n"
+		"\t\tcode = parse.parse(\"" + script + "\")\n"
+		"\t\tsafe.safe_exec(code, {\n"
+		"\t\t\"wesnoth\" : wesnoth,\n"
+		"\t\t\"heapq\" : heapq,\n"
+		"\t\t\"random\" : random})\n"
+		"\texcept:\n"
+		"\t\terr = str(traceback.format_exc())\n"
+		"\t\traise\n"
 		"finally:\n"
 		"\tsys.path = backup\n";
 	PyObject *ret = PyRun_String(python_code.c_str(), Py_file_input,
 		globals, globals);
-
-	Py_XDECREF(ret);
-	Py_DECREF(globals);
 
 	if (PyErr_Occurred()) {
 		// RuntimeError is the game-won exception, no need to print it.
 		// Anything else likely is a mistake by the script author.
 		if (!PyErr_ExceptionMatches(PyExc_RuntimeError)) {
 			LOG_AI << "Python script has crashed.\n";
-			PyErr_Print();
+			std::cerr << "Python version: " << Py_GetVersion() << "\n";
+			PyObject *err = PyDict_GetItemString(globals, "err");
+			std::cerr << (err ? PyString_AsString(err) :
+				std::string("internal error (wrong python version?)")) <<
+				std::endl;
 		}
 		// Otherwise, re-throw the exception here, so it will get handled
 		// properly further up.
 		else {
 			LOG_AI << "Python script has been interrupted.\n";
+			Py_XDECREF(ret);
+			Py_DECREF(globals);
 			throw exception;
 		}
 	}
+	Py_XDECREF(ret);
+	Py_DECREF(globals);
 }
 
 // Finds all python AI scripts available in the current binary path.
