@@ -1198,8 +1198,6 @@ int main(int argc, char** argv)
 #endif
 
 #ifdef GP2X
-	gp2x::mmu_hack::instance();
-
         atexit(gp2x::return_to_menu);
 
         if(gp2x::init_joystick() < 0) {
