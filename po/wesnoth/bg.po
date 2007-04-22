@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-19 21:44+0200\n"
-"PO-Revision-Date: 2007-04-18 23:08+0300\n"
+"PO-Revision-Date: 2007-04-22 22:43+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
 "MIME-Version: 1.0\n"
@@ -1482,7 +1482,6 @@ msgid "Damage Types and Resistance"
 msgstr "Видове поражения и Устойчивост"
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1492,7 +1491,7 @@ msgid ""
 msgstr ""
 "В Уеснот има три вида поражения, обикновено свързвани с физическите атаки - "
 "прорезни, прободни и поражения от удар. Други три типа поражение се свързват "
-"с магическите атаки с Огън, Студ и Свещените атаки. Отделните единици могат "
+"с магическите атаки с Огън, Студ и Мистични атаки. Отделните единици могат "
 "да имат съпротивителни способности, които влияят на тежестта на всяко от "
 "тези поражения."
 
@@ -1516,7 +1515,6 @@ msgstr ""
 "такова поражение със 100% по-тежко."
 
 #: data/help.cfg:183
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1528,7 +1526,7 @@ msgstr ""
 "\n"
 "Например Скелетите имат високи съпротивителни способности към прорезни и "
 "прободни поражения, но са уязвими за поражения от Удар и Огън и особено "
-"уязвими за Свещените атаки."
+"уязвими за Мистични атаки."
 
 #: data/help.cfg:185
 msgid ""
@@ -5032,13 +5030,12 @@ msgstr ""
 "бавно над открити водни пространства."
 
 #: data/special-notes.cfg:5
-#, fuzzy
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-"Святата атака на тази единица нанася огромни поражения на немъртвите, а дори "
-"и на някои живи същества."
+"Мистичната атака на тази единица нанася огромни поражения магически "
+"същества, а дори и на някои нормални същества."
 
 #: data/special-notes.cfg:8
 msgid ""
@@ -5502,7 +5499,6 @@ msgstr ""
 "сценарии, чрез опцията “привикване”."
 
 #: data/tips.cfg:3
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -5511,7 +5507,7 @@ msgid ""
 "types."
 msgstr ""
 "Има шест вида атаки: прободна, прорезна, ударна, огнена, смразяваща и "
-"свещена. Различните единици са уязвими за различни атаки. Щракнете с десен "
+"мистична. Различните единици са уязвими за различни атаки. Щракнете с десен "
 "бутон върху дадена единица, изберете \"Описание на единицата\" и после "
 "щракнете на “Устойчивост”, за да видите какво е нивото на устойчивост на "
 "единицата срещу различните атаки."
@@ -5678,13 +5674,12 @@ msgstr ""
 "войски оттам."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and arcane attacks."
 msgstr ""
 "Скелетите са устойчиви на прободни и прорезни атаки, но са уязвими от "
-"ударни, огнени и свещени атаки."
+"ударни, огнени и мистични атаки."
 
 #: data/tips.cfg:21
 msgid ""
@@ -5756,9 +5751,8 @@ msgstr ""
 "намалява на половина пораженията от атаките им до края на хода."
 
 #: data/tips.cfg:30
-#, fuzzy
 msgid "Arcane attacks are very powerful against undead."
-msgstr "Свещените атаки са особено мощни срещу немъртвите."
+msgstr "Мистичните атаки са особено мощни срещу немъртвите."
 
 #: data/tips.cfg:31
 msgid ""
@@ -7079,9 +7073,8 @@ msgstr "магически огън"
 #: data/units/Undead_Spirit_Ghost.cfg:26
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-#, fuzzy
 msgid "arcane"
-msgstr "бой от разстояние"
+msgstr "мистична"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -12666,6 +12659,3 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Качване на обобщения"
-
-#~ msgid "holy"
-#~ msgstr "свещен"
