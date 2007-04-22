@@ -390,7 +390,7 @@ bool game_controller::init_video()
 		return false;
 	}
 
-	cursor::set(cursor::NORMAL);
+	cursor::set(cursor::WAIT);
 
 	return true;
 }

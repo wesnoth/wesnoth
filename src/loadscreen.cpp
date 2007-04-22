@@ -16,7 +16,6 @@
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
-#include "cursor.hpp"
 
 #include <iostream>
 
@@ -39,7 +38,6 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 			std::cerr << "loadscreen: Failed to load the logo: " << path << std::endl;
 		}
 	textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
-	cursor::set(cursor::WAIT);
 }
 void loadscreen::set_progress(const int percentage, const std::string &text, const bool commit)
 {
