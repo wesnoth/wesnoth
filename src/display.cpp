@@ -134,7 +134,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 			time = atoi(items.back().c_str());
 		  } else {
 		    str = *itor;
-		    time = 100;
+		    time = 600;
 		  }
 
 		  image::locator flag_image(str, new_rgb, old_rgb);
