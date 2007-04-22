@@ -40,7 +40,7 @@ extern const SDL_Color NORMAL_COLOUR, LOBBY_COLOUR, GOOD_COLOUR, BAD_COLOUR,
 // font sizes, to be made theme parameters
 #ifdef USE_TINY_GUI
 // this is not meant for normal play, just for checking other dimensions get adapted accordingly
-const int SIZE_NORMAL = 9;
+const int SIZE_NORMAL = 10;
 #else
 const int SIZE_NORMAL = 14;
 #endif
