@@ -599,8 +599,8 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	int t_prev = SDL_GetTicks();
 	
 	// those values might need some fine-tuning:
-	const double accel_time = 0.5; // seconds
-	const double decel_time = 0.6; // seconds
+	const double accel_time = 0.3; // seconds
+	const double decel_time = 0.4; // seconds
 
 	double velocity = 0.0;
 	while (dist_moved < dist_total) {
