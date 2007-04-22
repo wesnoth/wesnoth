@@ -985,7 +985,6 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		lookup_table_131.insert(std::make_pair(t_letter("Bss|"), t_letter("Ss","Bw|")));
 		lookup_table_131.insert(std::make_pair(t_letter("Bss/"), t_letter("Ss","Bw/")));
 		lookup_table_131.insert(std::make_pair(t_letter("Bss\\"), t_letter("Ss","Bw\\")));
-		lookup_table_131.insert(std::make_pair(t_letter("Chs"), t_letter("Chs","Sr")));
 		lookup_table_131.insert(std::make_pair(t_letter("Dc"), t_letter("Dd","Dc")));
 		lookup_table_131.insert(std::make_pair(t_letter("Dr"), t_letter("Dd","Dr")));
 		lookup_table_131.insert(std::make_pair(t_letter("Do"), t_letter("Dd","Do")));

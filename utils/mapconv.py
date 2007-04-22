@@ -12,7 +12,6 @@ replacements = {
     "Bss|" : "Ss^Bw|",
     "Bss/" : "Ss^Bw/",
     "Bss\\" : "Ss^Bw\\",
-    "Chs" : "Chs^Sr",
     "Dc" : "Dd^Dc",
     "Dr" : "Dd^Dr",
     "Do" : "Dd^Do",
