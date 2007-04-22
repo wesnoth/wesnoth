@@ -154,15 +154,12 @@ namespace t_translation {
 //short transition code to add code support for the 1.3.2 and 1.3.1 format
 //the ifdef should be removed before tagging 1.3.2
 
-//define NEW_FORMAT	
-#ifdef NEW_FORMAT	
 // Hack to allow an automatic translation from 1.3.1 letters to 1.3.2 letter
 // this support will be removed in 1.3.4
 #define TERRAIN_TRANSLATION_COMPATIBLE_2
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE_2
 static std::map<t_letter, t_letter> lookup_table_131;
 #endif
-
 
 const t_letter VOID_TERRAIN = string_to_number_("_s");
 const t_letter FOGGED = string_to_number_("_f");
@@ -186,33 +183,6 @@ const t_letter PLUS = string_to_number_("+");
 const t_letter MINUS = string_to_number_("-");
 const t_letter NOT = string_to_number_("!");
 const t_letter STAR = string_to_number_("*");
-
-#else
-
-const t_letter VOID_TERRAIN = string_to_number_("_s");
-const t_letter FOGGED = string_to_number_("_f");
-
-const t_letter HUMAN_CASTLE = string_to_number_("Ch");
-const t_letter HUMAN_KEEP = string_to_number_("Kh");
-const t_letter SHALLOW_WATER = string_to_number_("Ww");
-const t_letter DEEP_WATER = string_to_number_("Wo");
-const t_letter GRASS_LAND = string_to_number_("Gg");
-const t_letter FOREST = string_to_number_("Ff");
-const t_letter MOUNTAIN = string_to_number_("Mm");
-const t_letter HILL = string_to_number_("Hh");
-
-const t_letter CAVE_WALL = string_to_number_("Xu");
-const t_letter CAVE = string_to_number_("Uu");
-const t_letter UNDERGROUND_VILLAGE = string_to_number_("Vu");
-const t_letter DWARVEN_CASTLE = string_to_number_("Cud");
-const t_letter DWARVEN_KEEP = string_to_number_("Kud");
-
-const t_letter PLUS = string_to_number_("+");
-const t_letter MINUS = string_to_number_("-");
-const t_letter NOT = string_to_number_("!");
-const t_letter STAR = string_to_number_("*");
-
-#endif
 
 /***************************************************************************************/	
 
@@ -1004,7 +974,6 @@ static t_letter string_to_number_(const std::string& str, const t_layer filler) 
 
 static t_letter string_to_number_(std::string str, int& start_position, const t_layer filler)
 {
-#ifdef NEW_FORMAT
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE_2
 	if(lookup_table_131.empty()) {
 		lookup_table_131.insert(std::make_pair(t_letter("Bww|"), t_letter("Ww","Bw|")));	
@@ -1045,7 +1014,6 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		lookup_table_131.insert(std::make_pair(t_letter("Vsm"), t_letter("Ss","Vm")));
 		lookup_table_131.insert(std::make_pair(t_letter("Xm"), t_letter("Mm","Xm")));
 	}
-#endif 
 #endif
 	t_letter result;
 
@@ -1079,14 +1047,12 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		}
 	}	
 
-#ifdef NEW_FORMAT
 #ifdef TERRAIN_TRANSLATION_COMPATIBLE_2
 	std::map<t_letter, t_letter>::const_iterator itor = lookup_table_131.find(result);
 	if(itor != lookup_table_131.end()) {
 		lg::wml_error << "1.3.1 letter '" << itor->first << "' found should be '" << itor->second << "' for 1.3.2, support will be removed in version 1.3.4\n";
 		result = itor->second;
 	}
-#endif
 #endif
 	
 #ifndef TERRAIN_TRANSLATION_COMPATIBLE 
