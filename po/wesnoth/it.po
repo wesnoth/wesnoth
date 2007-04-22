@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-19 21:44+0200\n"
+"POT-Creation-Date: 2007-04-22 22:34+0200\n"
 "PO-Revision-Date: 2007-04-13 17:08+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -305,11 +305,11 @@ msgid "slows"
 msgstr "rallenta"
 
 #: data/abilities.cfg:494
+#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and slowed units move at half the normal speed (rounded "
-"up)."
+"caused by attacks and the movement cost for a slowed unit is doubled."
 msgstr ""
 "Rallenta:\n"
 "Questo attacco rallenta il bersaglio. Rallentare dimezza il danno causato "
@@ -2158,7 +2158,7 @@ msgstr ""
 "Rinomati per la loro vitalità, alcuni nani sono più robusti di altri e "
 "recuperano più velocemente con il riposo."
 
-#: data/help.cfg:345 data/terrain.cfg:473 data/terrain.cfg:482
+#: data/help.cfg:345 data/terrain.cfg:480 data/terrain.cfg:489
 msgid "Grassland"
 msgstr "Prateria"
 
@@ -2182,7 +2182,7 @@ msgstr ""
 "La maggior parte delle unità hanno una percentuale di difesa che va dal 30% "
 "al 40% sulla prateria."
 
-#: data/help.cfg:355 data/terrain.cfg:611
+#: data/help.cfg:355 data/terrain.cfg:618
 msgid "Road"
 msgstr "Strada"
 
@@ -2196,7 +2196,7 @@ msgstr ""
 "passaggio di molti viaggiatori su di essi. Nel gioco esse hanno le stesse "
 "caratteristiche della <ref>dst=terrain_grassland text=prateria</ref>."
 
-#: data/help.cfg:363 data/terrain.cfg:450
+#: data/help.cfg:363 data/terrain.cfg:457
 msgid "Forest"
 msgstr "Foresta"
 
@@ -2234,7 +2234,7 @@ msgstr ""
 "foreste.\n"
 "\n"
 
-#: data/help.cfg:375 data/terrain.cfg:528
+#: data/help.cfg:375 data/terrain.cfg:535
 msgid "Hills"
 msgstr "Colline"
 
@@ -2261,7 +2261,7 @@ msgstr ""
 "Gran parte delle unità hanno il 50% di difesa sulle colline, mentre la "
 "cavalleria solo il 40%. I nani godono di una difesa pari al 60% su di esse."
 
-#: data/help.cfg:385 data/terrain.cfg:541 data/terrain.cfg:551
+#: data/help.cfg:385 data/terrain.cfg:548 data/terrain.cfg:558
 msgid "Mountains"
 msgstr "Montagne"
 
@@ -2289,7 +2289,7 @@ msgstr ""
 "Quasi tutte le unità ricevono circa il 60% di difesa nelle montagne mentre i "
 "nani giungono sino al 70%."
 
-#: data/help.cfg:395 data/terrain.cfg:634
+#: data/help.cfg:395 data/terrain.cfg:641
 msgid "Swamp"
 msgstr "Palude"
 
@@ -2314,7 +2314,7 @@ msgstr ""
 "Gran parte delle unità hanno il 30% di difesa nelle paludi. Nereidi, naga e "
 "sauri godono generalmente del 60%."
 
-#: data/help.cfg:405 data/terrain.cfg:927
+#: data/help.cfg:405 data/terrain.cfg:934
 msgid "Shallow Water"
 msgstr "Acque basse"
 
@@ -2341,7 +2341,7 @@ msgstr ""
 "La maggior parte delle unità ricevono dal 20 al 30% di difesa nell'acqua "
 "bassa, mentre sia naga che nereidi ricevono il 60%."
 
-#: data/help.cfg:415 data/terrain.cfg:916
+#: data/help.cfg:415 data/terrain.cfg:923
 msgid "Deep Water"
 msgstr "Acque profonde"
 
@@ -2361,7 +2361,7 @@ msgstr ""
 "I nereidi ed i naga ricevono ambedue il 50% di difesa nelle acque profonde e "
 "hanno massima libertà di movimento."
 
-#: data/help.cfg:425 data/terrain.cfg:48
+#: data/help.cfg:425 data/terrain.cfg:55
 msgid "Snow"
 msgstr "Neve"
 
@@ -2381,7 +2381,7 @@ msgstr ""
 "\n"
 "La maggior parte delle unità hanno dal 20% al 40% di difesa nella neve."
 
-#: data/help.cfg:435 data/terrain.cfg:37
+#: data/help.cfg:435 data/terrain.cfg:44
 msgid "Ice"
 msgstr "Ghiaccio"
 
@@ -2396,7 +2396,7 @@ msgstr ""
 "che le unità che nuotano, anche quelle che respirano sott'acqua, non possono "
 "nuotare al di sotto del ghiaccio."
 
-#: data/help.cfg:443 data/terrain.cfg:169
+#: data/help.cfg:443 data/terrain.cfg:176
 msgid "Castle"
 msgstr "Castello"
 
@@ -2423,7 +2423,7 @@ msgstr ""
 "La maggior parte delle unità ha circa il 60% di difesa nel castello.\n"
 "\n"
 
-#: data/help.cfg:455 data/terrain.cfg:402
+#: data/help.cfg:455 data/terrain.cfg:409
 msgid "Sand"
 msgstr "Sabbia"
 
@@ -2442,7 +2442,7 @@ msgstr ""
 "\n"
 "La maggior parte delle unità hanno dal 20% al 40% di difesa sulla sabbia."
 
-#: data/help.cfg:465 data/terrain.cfg:381
+#: data/help.cfg:465 data/terrain.cfg:388
 msgid "Desert"
 msgstr "Deserto"
 
@@ -2456,7 +2456,7 @@ msgstr ""
 "cumuli si sabbia o alle spiagge, comunque influiscono in maniera identica "
 "sul gioco. Leggi <ref>dst=terrain_sand text=sabbia</ref> per saperne di più."
 
-#: data/help.cfg:473 data/terrain.cfg:650
+#: data/help.cfg:473 data/terrain.cfg:657
 msgid "Cave"
 msgstr "Caverna"
 
@@ -2484,7 +2484,7 @@ msgstr ""
 "La maggior parte delle unità riceve dal 20 al 40% di difesa nelle caverne, "
 "mentre i nani hanno il 50%."
 
-#: data/help.cfg:483 data/terrain.cfg:690
+#: data/help.cfg:483 data/terrain.cfg:697
 msgid "Rockbound Cave"
 msgstr "Breccia di cava"
 
@@ -2532,7 +2532,7 @@ msgstr ""
 "legali e azzera quello delle unità caotiche. Per il resto questo terreno "
 "identico al terreno normale della caverna."
 
-#: data/help.cfg:501 data/terrain.cfg:670
+#: data/help.cfg:501 data/terrain.cfg:677
 msgid "Mushroom Grove"
 msgstr "Campo di funghi"
 
@@ -2560,7 +2560,7 @@ msgstr ""
 "La maggior parte delle unità riceve dal 50% al 60% di difesa nei campi di "
 "funghi, mentre la cavalleria ne riceve solo il 20%."
 
-#: data/help.cfg:511 data/terrain.cfg:491
+#: data/help.cfg:511 data/terrain.cfg:498
 msgid "Savanna"
 msgstr "Savana"
 
@@ -2574,12 +2574,12 @@ msgstr ""
 "mondo. Ai fini del gioco, la savana è identica alla "
 "<ref>dst=terrain_grassland text=prateria</ref>."
 
-#: data/help.cfg:519 data/terrain.cfg:719 data/terrain.cfg:731
-#: data/terrain.cfg:745 data/terrain.cfg:758 data/terrain.cfg:773
-#: data/terrain.cfg:785 data/terrain.cfg:796 data/terrain.cfg:808
-#: data/terrain.cfg:820 data/terrain.cfg:832 data/terrain.cfg:846
-#: data/terrain.cfg:858 data/terrain.cfg:872 data/terrain.cfg:888
-#: data/terrain.cfg:900 src/terrain.cpp:117
+#: data/help.cfg:519 data/terrain.cfg:726 data/terrain.cfg:738
+#: data/terrain.cfg:752 data/terrain.cfg:765 data/terrain.cfg:780
+#: data/terrain.cfg:792 data/terrain.cfg:803 data/terrain.cfg:815
+#: data/terrain.cfg:827 data/terrain.cfg:839 data/terrain.cfg:853
+#: data/terrain.cfg:865 data/terrain.cfg:879 data/terrain.cfg:895
+#: data/terrain.cfg:907 src/terrain.cpp:117
 msgid "Village"
 msgstr "Villaggio"
 
@@ -2633,7 +2633,7 @@ msgstr ""
 "I nereidi e le naga hanno il 60% di difesa nei villaggi sommersi, mentre le "
 "unità terricole hanno normalmente una bassa difesa."
 
-#: data/help.cfg:541 data/terrain.cfg:565
+#: data/help.cfg:541 data/terrain.cfg:572
 msgid "Chasm"
 msgstr "Abisso"
 
@@ -2649,7 +2649,7 @@ msgstr ""
 "impossibile l'attraversamento. Per quanto riguarda il gioco, solo le unità "
 "capaci di volare possono attraversare questo terreno."
 
-#: data/help.cfg:549 data/terrain.cfg:574
+#: data/help.cfg:549 data/terrain.cfg:581
 msgid "Lava"
 msgstr "Lava"
 
@@ -2668,7 +2668,7 @@ msgstr ""
 "vantaggio per l'attacco delle unità legali e rimuove il vantaggio per le "
 "unità caotiche."
 
-#: data/help.cfg:557 data/terrain.cfg:939
+#: data/help.cfg:557 data/terrain.cfg:946
 msgid "River Ford"
 msgstr "Guado sul fiume"
 
@@ -2688,10 +2688,10 @@ msgstr ""
 "quello che offre la migliore difesa e la maggiore mobilità per le unità su "
 "di esso."
 
-#: data/help.cfg:565 data/terrain.cfg:62 data/terrain.cfg:72
-#: data/terrain.cfg:82 data/terrain.cfg:93 data/terrain.cfg:103
-#: data/terrain.cfg:113 data/terrain.cfg:124 data/terrain.cfg:134
-#: data/terrain.cfg:144
+#: data/help.cfg:565 data/terrain.cfg:69 data/terrain.cfg:79
+#: data/terrain.cfg:89 data/terrain.cfg:100 data/terrain.cfg:110
+#: data/terrain.cfg:120 data/terrain.cfg:131 data/terrain.cfg:141
+#: data/terrain.cfg:151
 msgid "Bridge"
 msgstr "Ponte"
 
@@ -2722,7 +2722,7 @@ msgstr ""
 "trovano sopra. Ricorda che le unità nuotatrici e le unità terrestri non "
 "possono occupare un esagono allo stesso tempo."
 
-#: data/help.cfg:575 data/terrain.cfg:965
+#: data/help.cfg:575 data/terrain.cfg:972
 msgid "Cave Wall"
 msgstr "Parete di caverna"
 
@@ -5303,122 +5303,127 @@ msgstr "Marrone"
 msgid "Teal"
 msgstr "Squadra"
 
-#: data/terrain.cfg:21 data/themes/macros.cfg:136
+#: data/terrain.cfg:21
+#, fuzzy
+msgid "None"
+msgstr "nessuno"
+
+#: data/terrain.cfg:28 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
 #: src/multiplayer_lobby.cpp:433
 msgid "Shroud"
 msgstr "Oscurità"
 
-#: data/terrain.cfg:29 data/themes/macros.cfg:148
+#: data/terrain.cfg:36 data/themes/macros.cfg:148
 #: src/multiplayer_lobby.cpp:423
 msgid "Fog"
 msgstr "Nebbia"
 
-#: data/terrain.cfg:157
+#: data/terrain.cfg:164
 msgid "Encampment"
 msgstr "Accampamento"
 
-#: data/terrain.cfg:180
+#: data/terrain.cfg:187
 msgid "Elven Castle"
 msgstr "Castello degli elfi"
 
-#: data/terrain.cfg:191
+#: data/terrain.cfg:198
 msgid "Dwarven Castle"
 msgstr "Castello dei nani"
 
-#: data/terrain.cfg:204
+#: data/terrain.cfg:211
 msgid "Ruin"
 msgstr "Rovine"
 
-#: data/terrain.cfg:216
+#: data/terrain.cfg:223
 msgid "Sunken Ruin"
 msgstr "Rovine sommerse"
 
-#: data/terrain.cfg:229
+#: data/terrain.cfg:236
 msgid "Swamp Ruin"
 msgstr "Rovine paludose"
 
-#: data/terrain.cfg:258 data/terrain.cfg:284
+#: data/terrain.cfg:265 data/terrain.cfg:291
 msgid "Keep"
 msgstr "Fortezza"
 
-#: data/terrain.cfg:272
+#: data/terrain.cfg:279
 msgid "Encampment keep"
 msgstr "Fortezza di accampamento"
 
-#: data/terrain.cfg:296
+#: data/terrain.cfg:303
 msgid "Elven Keep"
 msgstr "Fortezza degli elfi"
 
-#: data/terrain.cfg:308
+#: data/terrain.cfg:315
 msgid "Dwarven keep"
 msgstr "Fortezza dei nani"
 
-#: data/terrain.cfg:320
+#: data/terrain.cfg:327
 msgid "Ruined keep"
 msgstr "Fortezza in rovina"
 
-#: data/terrain.cfg:332
+#: data/terrain.cfg:339
 msgid "Sunken keep"
 msgstr "Fortezza sommersa"
 
-#: data/terrain.cfg:344
+#: data/terrain.cfg:351
 msgid "Swamp keep"
 msgstr "Fortezza di palude"
 
-#: data/terrain.cfg:371
+#: data/terrain.cfg:378
 msgid "Crater"
 msgstr "Cratere"
 
-#: data/terrain.cfg:392
+#: data/terrain.cfg:399
 msgid "Rubble"
 msgstr "Macerie"
 
-#: data/terrain.cfg:411
+#: data/terrain.cfg:418
 msgid "Oasis"
 msgstr "Oasi"
 
-#: data/terrain.cfg:428
+#: data/terrain.cfg:435
 msgid "Snow Forest"
 msgstr "Foresta innevata"
 
-#: data/terrain.cfg:440
+#: data/terrain.cfg:447
 msgid "Great Tree"
 msgstr "Grande albero"
 
-#: data/terrain.cfg:459
+#: data/terrain.cfg:466
 msgid "Tropical Forest"
 msgstr "Foresta tropicale"
 
-#: data/terrain.cfg:506
+#: data/terrain.cfg:513
 msgid "Snow Hills"
 msgstr "Colline innevate"
 
-#: data/terrain.cfg:517
+#: data/terrain.cfg:524
 msgid "Dunes"
 msgstr "Dune"
 
-#: data/terrain.cfg:591
+#: data/terrain.cfg:598
 msgid "Desert road"
 msgstr "Strada del deserto"
 
-#: data/terrain.cfg:601
+#: data/terrain.cfg:608
 msgid "Dirt"
 msgstr "Terreno arido"
 
-#: data/terrain.cfg:621
+#: data/terrain.cfg:628
 msgid "Farmland"
 msgstr "Terra agricola"
 
-#: data/terrain.cfg:659
+#: data/terrain.cfg:666
 msgid "Cave Lit"
 msgstr "Caverna illuminata"
 
-#: data/terrain.cfg:701
+#: data/terrain.cfg:708
 msgid "Rockbound Cave Lit"
 msgstr "Breccia di cava illuminata"
 
-#: data/terrain.cfg:955
+#: data/terrain.cfg:962
 msgid "Impassable Mountains"
 msgstr "Montagne invalicabili"
 
@@ -5437,7 +5442,7 @@ msgid "End Turn"
 msgstr "Fine turno"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2473
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2486
 msgid "HP"
 msgstr "PF"
 
@@ -5987,8 +5992,8 @@ msgstr ""
 msgid "dummy"
 msgstr "fantoccio"
 
-#: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:99
-#: data/units/Drake_Gladiator.cfg:151 data/units/Drake_Glider.cfg:77
+#: data/units/Boat_Galleon.cfg:22 data/units/Drake_Enforcer.cfg:103
+#: data/units/Drake_Gladiator.cfg:155 data/units/Drake_Glider.cfg:77
 #: data/units/Drake_Hurricane.cfg:93 data/units/Drake_Sky.cfg:92
 #: data/units/Dwarvish_Fighter.cfg:85 data/units/Dwarvish_Lord.cfg:67
 #: data/units/Dwarvish_Runemaster.cfg:23 data/units/Dwarvish_Steelclad.cfg:66
@@ -6054,9 +6059,9 @@ msgid "ballista"
 msgstr "balista"
 
 #: data/units/Boat_Pirate_Galleon.cfg:21
-#: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:119
-#: data/units/Drake_Enforcer.cfg:132 data/units/Drake_Gladiator.cfg:108
-#: data/units/Drake_Slasher.cfg:118 data/units/Drake_Warden.cfg:124
+#: data/units/Boat_Transport_Galleon.cfg:22 data/units/Drake_Clasher.cfg:123
+#: data/units/Drake_Enforcer.cfg:136 data/units/Drake_Gladiator.cfg:112
+#: data/units/Drake_Slasher.cfg:122 data/units/Drake_Warden.cfg:128
 #: data/units/Dwarvish_Dragonguard.cfg:62 data/units/Dwarvish_Guardsman.cfg:33
 #: data/units/Dwarvish_Guardsman.cfg:81 data/units/Dwarvish_Sentinel.cfg:41
 #: data/units/Dwarvish_Sentinel.cfg:89 data/units/Dwarvish_Stalwart.cfg:36
@@ -6166,12 +6171,12 @@ msgid "claws"
 msgstr "artigli"
 
 #: data/units/Drake_Armageddon.cfg:77 data/units/Drake_Blademaster.cfg:67
-#: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:76
-#: data/units/Drake_Enforcer.cfg:66 data/units/Drake_Fighter.cfg:64
+#: data/units/Drake_Burner.cfg:63 data/units/Drake_Clasher.cfg:80
+#: data/units/Drake_Enforcer.cfg:70 data/units/Drake_Fighter.cfg:64
 #: data/units/Drake_Fire.cfg:70 data/units/Drake_Flameheart.cfg:79
-#: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:65
-#: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:70
-#: data/units/Drake_Warden.cfg:76 data/units/Drake_Warrior.cfg:71
+#: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:69
+#: data/units/Drake_Inferno.cfg:71 data/units/Drake_Slasher.cfg:74
+#: data/units/Drake_Warden.cfg:80 data/units/Drake_Warrior.cfg:71
 #: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Dragonguard.cfg:25
 #: data/units/Dwarvish_Fighter.cfg:33 data/units/Dwarvish_Lord.cfg:29
 #: data/units/Dwarvish_Lord.cfg:104 data/units/Dwarvish_Steelclad.cfg:29
@@ -6273,9 +6278,9 @@ msgstr ""
 "speciale. Il loro marchio è la pittura bianca e nera che mostrano in "
 "battaglia."
 
-#: data/units/Drake_Blademaster.cfg:66 data/units/Drake_Clasher.cfg:75
-#: data/units/Drake_Enforcer.cfg:65 data/units/Drake_Flameheart.cfg:78
-#: data/units/Drake_Flare.cfg:82 data/units/Drake_Gladiator.cfg:64
+#: data/units/Drake_Blademaster.cfg:66 data/units/Drake_Clasher.cfg:79
+#: data/units/Drake_Enforcer.cfg:69 data/units/Drake_Flameheart.cfg:78
+#: data/units/Drake_Flare.cfg:82 data/units/Drake_Gladiator.cfg:68
 #: data/units/Drake_Warrior.cfg:70 data/units/Elvish_Archer.cfg:22
 #: data/units/Elvish_Avenger.cfg:61 data/units/Elvish_Captain.cfg:35
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:22
@@ -6322,7 +6327,7 @@ msgstr ""
 msgid "Drake Clasher"
 msgstr "Drago corazzato"
 
-#: data/units/Drake_Clasher.cfg:20
+#: data/units/Drake_Clasher.cfg:24
 msgid ""
 "A Drake Clasher is incapable of both flight and fire-breathing, and most "
 "assume their relegation to melee combat is because of disability - an "
@@ -6354,8 +6359,8 @@ msgstr ""
 "alcune delle debolezze tipiche della loro razza, come la forte vulnerabilità "
 "alle lance e alle frecce."
 
-#: data/units/Drake_Clasher.cfg:118 data/units/Drake_Enforcer.cfg:131
-#: data/units/Drake_Gladiator.cfg:107 data/units/Dwarvish_Guardsman.cfg:31
+#: data/units/Drake_Clasher.cfg:122 data/units/Drake_Enforcer.cfg:135
+#: data/units/Drake_Gladiator.cfg:111 data/units/Dwarvish_Guardsman.cfg:31
 #: data/units/Dwarvish_Sentinel.cfg:39 data/units/Dwarvish_Stalwart.cfg:34
 #: data/units/Goblin_Impaler.cfg:24 data/units/Goblin_Impaler.cfg:206
 #: data/units/Goblin_Rouser.cfg:41 data/units/Goblin_Spearman.cfg:23
@@ -6377,7 +6382,7 @@ msgstr "arpione"
 msgid "Drake Enforcer"
 msgstr "Drago vigilante"
 
-#: data/units/Drake_Enforcer.cfg:20
+#: data/units/Drake_Enforcer.cfg:24
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
 "hours at the forge have provided them with a bristling array of weaponry, "
@@ -6387,7 +6392,7 @@ msgstr ""
 "Lunghe ore nella forgia hanno procurato loro un ben fornito dispiegamento di "
 "armi e li ha rivestiti da capo a piedi di scintillanti armature."
 
-#: data/units/Drake_Enforcer.cfg:98 data/units/Drake_Gladiator.cfg:150
+#: data/units/Drake_Enforcer.cfg:102 data/units/Drake_Gladiator.cfg:154
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:21
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:23 data/units/Human_Outlaw.cfg:22
 #: data/units/Human_Outlaw_Bandit.cfg:34 data/units/Troll_Great.cfg:26
@@ -6470,7 +6475,7 @@ msgstr ""
 msgid "Drake Gladiator"
 msgstr "Drago gladiatore"
 
-#: data/units/Drake_Gladiator.cfg:18
+#: data/units/Drake_Gladiator.cfg:22
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
 "Rather than emphasize training, they have chosen to focus on the craft of "
@@ -6586,7 +6591,7 @@ msgstr ""
 msgid "Drake Slasher"
 msgstr "Drago sventratore"
 
-#: data/units/Drake_Slasher.cfg:20
+#: data/units/Drake_Slasher.cfg:24
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -6606,8 +6611,8 @@ msgstr ""
 "\n"
 "Note speciali:"
 
-#: data/units/Drake_Slasher.cfg:69 data/units/Drake_Slasher.cfg:117
-#: data/units/Drake_Warden.cfg:75 data/units/Drake_Warden.cfg:123
+#: data/units/Drake_Slasher.cfg:73 data/units/Drake_Slasher.cfg:121
+#: data/units/Drake_Warden.cfg:79 data/units/Drake_Warden.cfg:127
 #: data/units/Human_Loyalist_Halberdier.cfg:29
 #: data/units/Human_Loyalist_Halberdier.cfg:213
 msgid "halberd"
@@ -6617,7 +6622,7 @@ msgstr "alabarda"
 msgid "Drake Warden"
 msgstr "Drago custode"
 
-#: data/units/Drake_Warden.cfg:21
+#: data/units/Drake_Warden.cfg:25
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -7145,7 +7150,7 @@ msgstr "fuoco fatato"
 #: data/units/Elvish_Sylph.cfg:128 data/units/Human_Horse_Paladin.cfg:33
 #: data/units/Human_Mage_White.cfg:176 data/units/Human_Mage_of_Light.cfg:147
 #: data/units/Mermaid_Diviner.cfg:106 data/units/Mermaid_Priestess.cfg:81
-#: data/units/Undead_Spirit_Ghost.cfg:26
+#: data/units/Undead_Spirit_Ghost.cfg:40
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
 #, fuzzy
@@ -9865,7 +9870,7 @@ msgstr "maledizione"
 #: data/units/Undead_Necro_Dark_Adept.cfg:32
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:63
 #: data/units/Undead_Necro_Lich.cfg:36 data/units/Undead_Necro_Lich.cfg:76
-#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:64
+#: data/units/Undead_Necromancer.cfg:67 data/units/Undead_Spirit_Ghost.cfg:78
 #: data/units/Undead_Spirit_Spectre.cfg:86
 #: data/units/Undead_Spirit_Wraith.cfg:68
 msgid "cold"
@@ -10216,7 +10221,7 @@ msgstr ""
 #: data/units/Undead_Corpse_Soulless.cfg:46
 #: data/units/Undead_Corpse_Walking.cfg:48
 #: data/units/Undead_Necro_Ancient_Lich.cfg:29
-#: data/units/Undead_Necro_Lich.cfg:34 data/units/Undead_Spirit_Ghost.cfg:24
+#: data/units/Undead_Necro_Lich.cfg:34 data/units/Undead_Spirit_Ghost.cfg:38
 msgid "touch"
 msgstr "tocco"
 
@@ -10631,7 +10636,7 @@ msgstr ""
 "\n"
 "Note speciali:"
 
-#: data/units/Undead_Spirit_Ghost.cfg:63
+#: data/units/Undead_Spirit_Ghost.cfg:77
 #: data/units/Undead_Spirit_Spectre.cfg:85
 #: data/units/Undead_Spirit_Wraith.cfg:67
 msgid "wail"
@@ -11571,7 +11576,7 @@ msgstr "Livello"
 msgid "unit list^Traits"
 msgstr "Caratteristiche"
 
-#: src/menu_events.cpp:300 src/unit.cpp:2504
+#: src/menu_events.cpp:300 src/unit.cpp:2517
 msgid "Moves"
 msgstr "Mosse"
 
@@ -11659,7 +11664,7 @@ msgstr "Mappa salvata."
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:748
+#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:753
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Salvataggio automatico"
@@ -11912,19 +11917,19 @@ msgstr "Arma non utilizzabile"
 msgid "Chance of being unscathed"
 msgstr "Probabilità di essere indenne"
 
-#: src/mouse_events.cpp:659 src/mouse_events.cpp:1344
+#: src/mouse_events.cpp:659 src/mouse_events.cpp:1346
 msgid "Damage Calculations"
 msgstr "Calcolo dei danni"
 
-#: src/mouse_events.cpp:1327 src/reports.cpp:282
+#: src/mouse_events.cpp:1329 src/reports.cpp:282
 msgid "vs"
 msgstr "contro"
 
-#: src/mouse_events.cpp:1355
+#: src/mouse_events.cpp:1357
 msgid "Attack Enemy"
 msgstr "Attacca il nemico"
 
-#: src/mouse_events.cpp:1356
+#: src/mouse_events.cpp:1358
 msgid "Choose weapon:"
 msgstr "Scegli l'arma:"
 
@@ -11985,12 +11990,12 @@ msgid "Normal"
 msgstr "Normale"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2608
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2621
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2615
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2628
 msgid ")"
 msgstr ")"
 
@@ -12369,11 +12374,11 @@ msgstr "Impossibile inviare l'handshake iniziale"
 msgid "The file you have tried to load is corrupt"
 msgstr "Il file che hai provato a caricare è corrotto"
 
-#: src/play_controller.cpp:752
+#: src/play_controller.cpp:757
 msgid "Back to start"
 msgstr "Torna all'inizio"
 
-#: src/play_controller.cpp:754
+#: src/play_controller.cpp:759
 msgid "Back to turn "
 msgstr "Torno al turno"
 
@@ -12766,15 +12771,15 @@ msgstr "Aiuto"
 msgid "Help Wesnoth by sending us information"
 msgstr "Aiuta Wesnoth mandandoci un rapporto"
 
-#: src/unit.cpp:2439 src/unit.cpp:2613
+#: src/unit.cpp:2452 src/unit.cpp:2626
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2521
+#: src/unit.cpp:2534
 msgid "XP to advance"
 msgstr "PE per avanzare"
 
-#: src/unit.cpp:2604
+#: src/unit.cpp:2617
 msgid ": "
 msgstr ": "
 
