@@ -658,9 +658,9 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	const int ypos2 = get_location_y(loc2);;
 
 	const int minx = minimum<int>(xpos1,xpos2);
-	const int maxx = maximum<int>(xpos1,xpos2) + hex_width();
+	const int maxx = maximum<int>(xpos1,xpos2);
 	const int miny = minimum<int>(ypos1,ypos2);
-	const int maxy = maximum<int>(ypos1,ypos2) + zoom_;
+	const int maxy = maximum<int>(ypos1,ypos2);
 	const int diffx = maxx - minx;
 	const int diffy = maxy - miny;
 
