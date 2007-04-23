@@ -40,9 +40,11 @@ Version 1.3.1+svn:
    * Submerged units are no longer drowned when zooming.
    * scenery
      * added animated windmill, fancy and damaged tents, icepack, and shipwreck
-   * fix problems with colour cursor in fullscreen (slow speed, bug #7555 and bug #6052).
+   * fix problems with colour cursor in fullscreen (slow speed, bug #7555 and
+     bug #6052)
    * new color cursors
-   * fixed some scrolling corner cases (eg. fights happening partially offscreen)
+   * fixed some scrolling corner cases (eg. fights happening partially
+     offscreen)
    * automatic scrolling accelerates now (like a physical mass would)
  * sound
    * new or improved sounds: hatchet
@@ -60,7 +62,7 @@ Version 1.3.1+svn:
    * The countdown timer is now coloured properly when the remaining time is
      less than 2 minutes.
    * observer can save a replay of the game again
-* units:
+ * units:
     * balancing changes:
       * converted the cold resistance of the Elvish Sorceress line to a holy
         resistance
@@ -147,6 +149,9 @@ Version 1.3.1+svn:
      would crash (part 1 of bug #8882)
    * fix missing filterings on some animations
    * renamed holy damage type to arcane
+   * increased required version of python from >=2.3 to >=2.4
+   * fixed detection of installed python versions to work on systems that do
+     not have python installed at /usr/ (like MocOSX using fink)
 
 Version 1.3.1:
  * Campaignd
