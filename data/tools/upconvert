@@ -52,10 +52,12 @@ filemoves = {
         ("red-mage+female-attack-staff1.png", "red-mage+female-attack-staff-1.png"),
         ("red-mage+female-attack-staff2.png", "red-mage+female-attack-staff-2.png"),
 	# Timothy Pinkham supplied titles for two of his music files.
-	# gameplay03.ogg, wesnoth-2.ogg, and wesnoth-5.ogg already had titles.
+        # Zhaytee supplied a title for wesnoth-1.ogg
+	# gameplay03.ogg, and and wesnoth-[25].ogg already had titles.
 	("gameplay01.ogg", "knolls.ogg"),
 	("gameplay02.ogg", "wanderer.ogg"),
 	("gameplay03.ogg", "battle.ogg"),
+        ("wesnoth-1.ogg", "revelation.ogg"),
         ("wesnoth-2.ogg", "loyalists.ogg"),
         ("wesnoth-5.ogg", "northerners.ogg"),
     ),
@@ -111,7 +113,7 @@ def allcfgfiles(dir):
                  lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
                  None)
     datafiles = filter(lambda x: ".svn" not in x, datafiles)
-    datafiles = filter(lambda x: x.endswith(".cfg") or 'maps' in x, datafiles)
+    datafiles = filter(lambda x: x.endswith(".cfg") or ('maps' in x and os.path.isfile(x)), datafiles)
     return datafiles
 
     def help():
