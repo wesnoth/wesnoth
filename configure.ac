@@ -377,7 +377,7 @@ if test "x$python" = "xyes"; then
 
 	found=no
 	for pylibpath in '/usr/lib' $PYTHON_PREFIX/lib $PYTHON_PREFIX/lib/python$PYTHON_VERSION/config; do
-		eval `echo unset ac_cv_lib_python$PYTHON_VERSION'_'Py_Finalize | tr '.' '_'`
+		eval `echo unset ac_cv_lib_python$PYTHON_VERSION'___'Py_Finalize | tr '.' '_'`
 
 		save_LIBS=$LIBS
 		LIBS="$LIBS -L$pylibpath"
