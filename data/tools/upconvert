@@ -200,7 +200,7 @@ if __name__ == '__main__':
             if not modified:
                 # Nothing changed, move the backup file back into place.
                 os.rename(fn + "-bak", fn)
-            elif 'maps' in fn:
-                print "%s modified."
+        if modified and 'maps' in fn:
+            print "%s modified." % fn
 
 # upconvert ends here
