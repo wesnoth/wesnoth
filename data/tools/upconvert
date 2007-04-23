@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 #
 # Up-convert UMC between versions.
+#
+# Note about the 1.3.1 -> 1.3.2 map conversion: terrain codes will only be
+# spotted and converted when preceded by space, comma, or equal sign.
 
 import sys, os, re, getopt
 
@@ -68,42 +71,36 @@ filemoves = {
 
 # 1.3.1 -> 1.3.2 terrain conversions
 terrain_conversions = {
-    "Bww|" : "Ww^Bw|",
-    "Bww/" : "Ww^Bw/",
-    "Bww\\" : "Ww^Bw\\",
-    "Bwo|" : "Wo^Bw|",
-    "Bwo/" : "Wo^Bw/",
-    "Bwo\\" : "Wo^Bw\\",
-    "Bss|" : "Ss^Bw|",
-    "Bss/" : "Ss^Bw/",
-    "Bss\\" : "Ss^Bw\\",
-    "Dc" : "Dd^Dc",
-    "Dr" : "Dd^Dr",
-    "Do" : "Dd^Do",
-    "Fa" : "Aa^Fpa",
-    "Fet" : "Gg^Fet",
-    "Ff" : "Gs^Fp",
-    "Ft" : "Gs^Ft",
-    "Rfvs" : "Re^Gvs",
-    "Uf" : "Uu^Uf",
-    "Uui" : "Uu^Ii",
-    "Uhi" : "Uh^Ii",
-    "Vda" : "Dd^Vda",
-    "Vdt" : "Dd^Vdt",
-    "Vea" : "Aa^Vea",
-    "Veg" : "Gg^Ve",
-    "Vha" : "Aa^Vha",
-    "Vhg" : "Gg^Vh",
-    "Vhh" : "Hh^Vhh",
-    "Vhha" : "Ha^Vhha",
-    "Vhm" : "Mm^Vhh",
-    "Vht" : "Gs^Vht",
-    "Vu" : "Uu^Vu",
-    "Vud" : "Uu^Vud",
-    "Vwm" : "Ww^Vm",
-    "Vs" : "Ss^Vhs",
-    "Vsm" : "Ss^Vm",
-    "Xm" : "Mm^Xm"
+    re.compile(r"(?<=[ ,=])Bww([|/\\])\b") : "Ww^Bw\\1",
+    re.compile(r"(?<=[ ,=])Bwo([|/\\])\b") : "Wo^Bw\\1",
+    re.compile(r"(?<=[ ,=])Bss([|/\\])\b") : "Ss^Bw\\1",
+    re.compile(r"(?<=[ ,=])Dc\b") : "Dd^Dc",
+    re.compile(r"(?<=[ ,=])Dr\b") : "Dd^Dr",
+    re.compile(r"(?<=[ ,=])Do\b") : "Dd^Do",
+    re.compile(r"(?<=[ ,=])Fa\b") : "Aa^Fpa",
+    re.compile(r"(?<=[ ,=])Fet\b") : "Gg^Fet",
+    re.compile(r"(?<=[ ,=])Ff\b") : "Gs^Fp",
+    re.compile(r"(?<=[ ,=])Ft\b") : "Gs^Ft",
+    re.compile(r"(?<=[ ,=])Rfvs\b") : "Re^Gvs",
+    re.compile(r"(?<=[ ,=])Uf\b") : "Uu^Uf",
+    re.compile(r"(?<=[ ,=])Uui\b") : "Uu^Ii",
+    re.compile(r"(?<=[ ,=])Uhi\b") : "Uh^Ii",
+    re.compile(r"(?<=[ ,=])Vda\b") : "Dd^Vda",
+    re.compile(r"(?<=[ ,=])Vdt\b") : "Dd^Vdt",
+    re.compile(r"(?<=[ ,=])Vea\b") : "Aa^Vea",
+    re.compile(r"(?<=[ ,=])Veg\b") : "Gg^Ve",
+    re.compile(r"(?<=[ ,=])Vha\b") : "Aa^Vha",
+    re.compile(r"(?<=[ ,=])Vhg\b") : "Gg^Vh",
+    re.compile(r"(?<=[ ,=])Vhh\b") : "Hh^Vhh",
+    re.compile(r"(?<=[ ,=])Vhha\b") : "Ha^Vhha",
+    re.compile(r"(?<=[ ,=])Vhm\b") : "Mm^Vhh",
+    re.compile(r"(?<=[ ,=])Vht\b") : "Gs^Vht",
+    re.compile(r"(?<=[ ,=])Vu\b") : "Uu^Vu",
+    re.compile(r"(?<=[ ,=])Vud\b") : "Uu^Vud",
+    re.compile(r"(?<=[ ,=])Vwm\b") : "Ww^Vm",
+    re.compile(r"(?<=[ ,=])Vs\b") : "Ss^Vhs",
+    re.compile(r"(?<=[ ,=])Vsm\b") : "Ss^Vm",
+    re.compile(r"(?<=[ ,=])Xm\b") : "Mm^Xm"
     }
 
 def allcfgfiles(dir):
@@ -123,29 +120,34 @@ Usage: upconvert [options]
     Options may be any of these:
     -h, --help                 Emit this help message and quit
     -d, --dryrun               List changes but don't perform them.
-    -o, --oldversion           Specify version to begin with. 
+    -o, --oldversion           Specify version to begin with.
+    -v, --verbose              List files as they are examined.
 """)
 
 def mapconvert2(mapline):
     "Convert a map line from 1.3.1 multiletter format to 1.3.2 format."
     for (old, new) in terrain_conversions.items():
-        mapline = re.sub(r"\b" + re.escape(old) + r"\b", new, mapline)
+        mapline = old.sub(new, mapline)
     return mapline
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "o:", [
+    (options, arguments) = getopt.getopt(sys.argv[1:], "dho:v", [
 	"help",
         "oldversion=",
 	"dryrun",
+        "verbose",
         ])
     oldversion = 'older'
     dryrun = False
+    verbose = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
             sys.exit(0)
         elif switch in ('-o', '--oldversion'):
             oldversion = val
+        elif switch in ('-v', '--verbose'):
+            verbose = True
         elif switch in ('-d', '--dryrun'):
             dryrun = True
 
@@ -167,6 +169,8 @@ if __name__ == '__main__':
     # Perform resource file substitutions
     ofp = None
     for fn in allcfgfiles("."):
+        if verbose:
+            print fn
         if dryrun:
             ifp = open(fn)
         else:
@@ -181,9 +185,9 @@ if __name__ == '__main__':
                 for step in fileconversions:
                     for (old, new) in step:
                         transformed = transformed.replace(old, new)
-            # Map-format conversions (not yet ready for production)
-            #if "1.3.2" in versions:
-            #    transformed = mapconvert2(transformed)
+            # Map-format conversions
+            if "1.3.1" in versions and 'message' not in transformed:
+                transformed = mapconvert2(transformed)
             if ofp:
                 ofp.write(transformed)
             if transformed != line:
