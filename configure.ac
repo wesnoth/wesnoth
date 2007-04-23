@@ -352,10 +352,10 @@ if test "x$python" = "xyes"; then
 	PYTHON_VERSION="${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}"
 	AC_MSG_RESULT([$PYTHON, $PYTHON_VERSION, $PYTHON_PREFIX])
 
-	AC_MSG_CHECKING(whether Python is at least 2.3)
-	if test $PYTHON_VERSION_MAJOR -lt 2 -o $PYTHON_VERSION_MAJOR -eq 2 -a $PYTHON_VERSION_MINOR -lt 3; then
+	AC_MSG_CHECKING(whether Python is at least 2.4)
+	if test $PYTHON_VERSION_MAJOR -lt 2 -o $PYTHON_VERSION_MAJOR -eq 2 -a $PYTHON_VERSION_MINOR -lt 4; then
 		AC_MSG_RESULT(no)
-		AC_ERROR(Wesnoth requires at least Python 2.3)
+		AC_ERROR(Wesnoth requires at least Python 2.4)
 	fi
 	AC_MSG_RESULT(yes)
 
