@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-22 22:34+0200\n"
-"PO-Revision-Date: 2007-04-20 21:16+0100\n"
+"PO-Revision-Date: 2007-04-23 17:57+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -299,7 +299,6 @@ msgid "slows"
 msgstr "zpomalení"
 
 #: data/abilities.cfg:494
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -307,7 +306,8 @@ msgid ""
 msgstr ""
 "Zpomalení:\n"
 "Tento útok zpomalí cílovou jednotku do konce kola. Zpomalení sníží na "
-"polovinu zranění způsobené jednotkou a počet pohybů (zaokrouhleno nahoru)."
+"polovinu zranění způsobené jednotkou a zdvojnásobí pro ni cenu pohybu po "
+"všech terénech."
 
 #: data/abilities.cfg:503
 msgid "stones"
@@ -5217,9 +5217,8 @@ msgid "Teal"
 msgstr "Azurová"
 
 #: data/terrain.cfg:21
-#, fuzzy
 msgid "None"
-msgstr "žádná"
+msgstr "Nic"
 
 #: data/terrain.cfg:28 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427

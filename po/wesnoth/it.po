@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-22 22:34+0200\n"
-"PO-Revision-Date: 2007-04-13 17:08+0200\n"
+"PO-Revision-Date: 2007-04-23 11:22+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -305,7 +305,6 @@ msgid "slows"
 msgstr "rallenta"
 
 #: data/abilities.cfg:494
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -313,8 +312,8 @@ msgid ""
 msgstr ""
 "Rallenta:\n"
 "Questo attacco rallenta il bersaglio. Rallentare dimezza il danno causato "
-"dagli attacchi e le unità rallentate si muovono a metà movimento "
-"(Arrotondato per eccesso)."
+"dagli attacchi ed il costo per il movimento delle unità rallentate è "
+"raddoppiato."
 
 #: data/abilities.cfg:503
 msgid "stones"
@@ -1424,7 +1423,7 @@ msgstr ""
 "Ogni unità ha una una probabilità di essere colpita in base al terreno su "
 "cui si trova. Questa probabilità viene visualizzata sul pannello di stato e "
 "può essere visualizzata anche facendo clic con il destro sull'unità, "
-"selezionando 'descrizione dell'unità' e infine guardando i "
+"selezionando \"Descrizione dell'unità\" e infine guardando i "
 "<italic>text='modificatori del terreno'</italic>. Per esempio gli elfi hanno "
 "una percentuale di difesa del 70% nella foresta, ciò vuol dire che un'unità "
 "che li attacca ha solo il 30% di probabilità di colpirli. Allo stesso modo, "
@@ -1503,7 +1502,6 @@ msgid "Damage Types and Resistance"
 msgstr "Tipo di danno e resistenza"
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1514,8 +1512,8 @@ msgstr ""
 "In Wesnoth, ci sono tre tipi di danno solitamente connessi agli attacchi "
 "fisici: taglio, perforazione e impatto. A questi si aggiungono tre altri "
 "tipi di danno generalmente associati agli attacchi magici: fuoco, freddo e "
-"sacro. Le diverse unità possono avere delle resistenze che alterano il danno "
-"derivato da un certo tipo di attacco."
+"arcano. Le diverse unità possono avere delle resistenze che alterano il "
+"danno derivato da un certo tipo di attacco."
 
 #: data/help.cfg:181
 msgid ""
@@ -1536,7 +1534,6 @@ msgstr ""
 "il 100% di danni in più se colpita da quel tipo di attacco."
 
 #: data/help.cfg:183
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1548,7 +1545,7 @@ msgstr ""
 "\n"
 "Per esempio gli scheletri sono molto resistenti nei confronti di attacchi da "
 "taglio e da perforazione, ma sono vulnerabili al danno causato da impatto e "
-"da fuoco ed estremamente vulnerabili al danno sacro."
+"da fuoco ed estremamente vulnerabili al danno arcano."
 
 #: data/help.cfg:185
 msgid ""
@@ -3853,17 +3850,16 @@ msgstr ""
 "Urkar"
 
 #: data/names.cfg:38
-#, fuzzy
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
 "Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
-"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
-"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
-"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
-"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
+"Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
+"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/names.cfg:42
 msgid ""
@@ -3890,7 +3886,6 @@ msgstr ""
 "Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 
 #: data/names.cfg:46
-#, fuzzy
 msgid ""
 "Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
 "Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
@@ -3910,7 +3905,7 @@ msgstr ""
 "Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
 "Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
 "Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
-"Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
+"Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 
 #: data/names.cfg:47
 msgid ""
@@ -5085,12 +5080,11 @@ msgstr ""
 "lentamente sull'acqua più profonda."
 
 #: data/special-notes.cfg:5
-#, fuzzy
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" L'attacco sacro di questa unità infligge danni tremendi ai non-morti e "
+" L'attacco arcano di questa unità infligge danni tremendi ai non-morti e "
 "talvolta anche ad alcune creature viventi."
 
 #: data/special-notes.cfg:8
@@ -5098,8 +5092,8 @@ msgid ""
 " This unit is capable of basic healing, though it can only delay the effects "
 "of poison, not cure them entirely."
 msgstr ""
-" Questa unità è in grado di alcune ferite, tuttavia può solo rallentare gli "
-"effetti del veleno, non può curarlo del tutto."
+" Questa unità è in grado di offrire cure di base, tuttavia può solo "
+"rallentare gli effetti del veleno, non può curarlo del tutto."
 
 #: data/special-notes.cfg:11
 msgid ""
@@ -5113,7 +5107,7 @@ msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-" Questa unità rigenera, ciò le permette di guarire come se si trovasse "
+" Questa unità si rigenera, ciò le permette di guarire come se si trovasse "
 "sempre in un villaggio."
 
 #: data/special-notes.cfg:17
@@ -5301,12 +5295,11 @@ msgstr "Marrone"
 
 #: data/team-colors.cfg:58
 msgid "Teal"
-msgstr "Squadra"
+msgstr "Verde-azzurro"
 
 #: data/terrain.cfg:21
-#, fuzzy
 msgid "None"
-msgstr "nessuno"
+msgstr "Nessuno"
 
 #: data/terrain.cfg:28 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
@@ -5568,7 +5561,6 @@ msgstr ""
 "utilizzando l'opzione \"richiama\"."
 
 #: data/tips.cfg:3
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -5577,9 +5569,10 @@ msgid ""
 "types."
 msgstr ""
 "Ci sono sei tipi di attacco: perforazione, taglio, impatto, fuoco, freddo e "
-"sacro. Le diverse unità sono deboli contro alcuni tipi di attacco. Fai un "
-"clic destro su un'unità e seleziona \"descrivi unità\", poi \"resistenza\" "
-"per vedere quanto è resistente contro i differenti tipi di attacco."
+"arcano. Le diverse unità hanno punti deboli per tipi di attacco diversi. Fai "
+"un clic col tasto destro su un'unità e seleziona \"Descrizione dell'unità\", "
+"poi \"Resistenza\" per vedere quanto è resistente contro i differenti tipi "
+"di attacco."
 
 #: data/tips.cfg:4
 msgid ""
@@ -5653,7 +5646,7 @@ msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"Le unità che non si muovono o attaccono durante il loro turno riposano e "
+"Le unità che non si muovono o attaccano durante il loro turno riposano e "
 "recuperano 2 punti ferita all'inizio del loro turno successivo."
 
 #: data/tips.cfg:11
@@ -5746,13 +5739,12 @@ msgstr ""
 "unità."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and arcane attacks."
 msgstr ""
 "Gli scheletri sono resistenti contro gli attacchi da perforazione e da "
-"taglio, ma vulnerabili alle armi da impatto, fuoco e attacchi sacri."
+"taglio, ma vulnerabili alle armi da impatto, fuoco o arcane."
 
 #: data/tips.cfg:21
 msgid ""
@@ -5821,9 +5813,8 @@ msgstr ""
 "danno che essi causano a ogni attacco."
 
 #: data/tips.cfg:30
-#, fuzzy
 msgid "Arcane attacks are very powerful against undead."
-msgstr "L'attacco sacro è molto potente contro i non-morti."
+msgstr "L'attacco arcano è molto potente contro i non-morti."
 
 #: data/tips.cfg:31
 msgid ""
@@ -7153,9 +7144,8 @@ msgstr "fuoco fatato"
 #: data/units/Undead_Spirit_Ghost.cfg:40
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-#, fuzzy
 msgid "arcane"
-msgstr "a distanza"
+msgstr "arcano"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -9834,7 +9824,7 @@ msgstr ""
 "territori che confondono i loro nemici. Se combinata ciò con l'esperienza, "
 "la forza e l'equipaggiamento, uno dei loro guerrieri può divenire "
 "particolarmente pericoloso in battagia, soprattutto perché è così difficile "
-"trattenerlo rispetto ad altri avversari. Anche con un armatura un guerriero "
+"trattenerlo rispetto ad altri avversari. Anche con un'armatura un guerriero "
 "sauro può sfruttare anche i più piccoli spazi fra le linee nemiche, ed ha i "
 "mezzi per far pentire il nemico di questo sbaglio.\n"
 "\n"
@@ -9966,7 +9956,7 @@ msgstr ""
 "I sauri sono noti per avere delle strane abilità, arti che confinano con la "
 "magia e il mistero. È chiaro che alcuni di essi sono particolarmente abili "
 "in una specie di medicina, che è di grande aiuto quando vengono coinvolti in "
-"comattimenti.\n"
+"combattimenti.\n"
 "\n"
 "Note speciali:"
 
@@ -10546,7 +10536,7 @@ msgstr ""
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
-msgstr "Soul Shooter"
+msgstr "Cacciatore d'anime"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:19
 msgid ""
@@ -10558,7 +10548,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"I più forti arcieri non-morto sono coloro che erano arcieri nella loro vita "
+"I più forti arcieri non-morti sono coloro che erano arcieri nella loro vita "
 "precedente. Adesso vagano sul campo di battaglia guidati da un fievole "
 "ricordo delle loro passate abilità, senza sapere chi sono, qual è il loro "
 "obiettivo e chi sono i loro nemici. Sono guidati solo dal desiderio di far "
