@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-22 22:34+0200\n"
-"PO-Revision-Date: 2007-04-17 17:58+0200\n"
+"PO-Revision-Date: 2007-04-20 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -1463,7 +1463,6 @@ msgid "Damage Types and Resistance"
 msgstr "Skadestyper og Modstand"
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1473,7 +1472,9 @@ msgid ""
 msgstr ""
 "I Wesnoth er der tre skadestyper, der forbindes med fysiske angreb: Klinge, "
 "stik og slag. Derudover er der tre skadestyper der forbindes med magiske "
-"angreb: Ild, kulde og hellige angreb."
+"angreb: Ild, kulde og hellige angreb. Forskellige enheder kan have "
+"modstandskraft som ændrer den skade som de ellers modtager fra specifikke "
+"skadestyper."
 
 #: data/help.cfg:181
 msgid ""
@@ -1494,7 +1495,6 @@ msgstr ""
 "skadestype, så vil den modtage 100 % mere skade når den rammes af denne type."
 
 #: data/help.cfg:183
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1505,7 +1505,7 @@ msgstr ""
 "\n"
 "\n"
 "For eksempel er skeleter meget resistente overfor klinge- og stikvåben, men "
-"sårbare overfor slag- og ildvåben og ekstremt sårbare over for hellige våben."
+"sårbare overfor slag- og ildvåben og ekstremt sårbare over for magisk skade."
 
 #: data/help.cfg:185
 msgid ""
@@ -3658,17 +3658,16 @@ msgstr ""
 "Urkar"
 
 #: data/names.cfg:38
-#, fuzzy
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
 "Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
-"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
-"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
-"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
-"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
+"Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
+"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/names.cfg:42
 msgid ""
@@ -4792,13 +4791,12 @@ msgstr ""
 "vand."
 
 #: data/special-notes.cfg:5
-#, fuzzy
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Denne enheds hellige angreb gør umådelig skade til udøde, og også til nogle "
-"levende skabninger."
+" Denne enheds magiske angreb gør umådelig skade til magiske skabninger, og "
+"også til nogle levende skabninger."
 
 #: data/special-notes.cfg:8
 msgid ""
@@ -5417,13 +5415,12 @@ msgstr ""
 "dig og lade dig bruge deres tårn til at rekruttere fra."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and arcane attacks."
 msgstr ""
 "Skeletter er modstandsdygtige overfor pile og æggede angreb men sårbare "
-"overfor slag, ild og hellige angreb."
+"overfor slag, ild og magiske angreb."
 
 #: data/tips.cfg:21
 msgid ""
@@ -5494,9 +5491,8 @@ msgstr ""
 "de uddeler i alle angreb indtil de afslutter en runde."
 
 #: data/tips.cfg:30
-#, fuzzy
 msgid "Arcane attacks are very powerful against undead."
-msgstr "Hellige angreb er meget stærke overfor udøde."
+msgstr "Magiske angreb er meget stærke overfor udøde."
 
 #: data/tips.cfg:31
 msgid ""
@@ -6637,9 +6633,8 @@ msgstr "fe-ild"
 #: data/units/Undead_Spirit_Ghost.cfg:40
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-#, fuzzy
 msgid "arcane"
-msgstr "afstands"
+msgstr "magisk"
 
 # fighter -> soldat eller kæmper, warrior -> kriger
 #: data/units/Elvish_Fighter.cfg:3
@@ -7918,9 +7913,8 @@ msgid "female^Rogue"
 msgstr "Kæltring"
 
 #: data/units/Human_Outlaw_Ruffian.cfg:3
-#, fuzzy
 msgid "Ruffian"
-msgstr "Ruin"
+msgstr "Bandit"
 
 #: data/units/Human_Outlaw_Ruffian.cfg:17
 msgid ""
@@ -7929,6 +7923,10 @@ msgid ""
 "stick, are known as 'Ruffians'.  With enough experience they can learn to "
 "swing a bigger club or throw things, but not both."
 msgstr ""
+"Nogle mænd uden specielle evner kan ikke eller vil ikke leve et ærligt liv. "
+"Dem som forsøger at skabe et levebrød ved at genere andre kendes som "
+"banditter eller bøller. Med erfaring kan de lære at bruge større kølle eller "
+"kaste med objekter, men ikke begge dele."
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
@@ -8364,6 +8362,8 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
+"Dyndspringere er magiske skabninger af ler og vand. De angriber ved at kaste "
+"store klumper af mudder mod deres fjender."
 
 #: data/units/Monster_Sea_Serpent.cfg:3
 msgid "Sea Serpent"
@@ -8372,8 +8372,7 @@ msgstr "Søslange"
 #: data/units/Monster_Sea_Serpent.cfg:19
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"Søslanger er gigantiske monstre, der selv er i stand til at erobre både."
+msgstr "Søslanger er gigantiske monstre, der er i stand til at erobre både."
 
 #: data/units/Monster_Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -8387,6 +8386,12 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"For lang tid siden blev et af de stærkeste levende skabninger, den frygtede "
+"drage, reduceret til kun ben og mørk livsnerve. Lang tid efter dens død, "
+"blev den genskabt igennem mørk magi, som den nu er loyal over for. "
+"Skeletdragen ser ikke ud af meget andet end en bunke af ben, men meget få "
+"personer som så den sådan levede i så lang tid, at de kunne nå at ændre "
+"deres opfattelse."
 
 #: data/units/Monster_Skeletal_Dragon.cfg:28
 msgid "jaw"
@@ -8456,6 +8461,10 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"De mest øvede af nagaerne bliver indlemmet i logen Myrmidon, mestre i deres "
+"våbenbrug. De angriber lige så hurtigt som de slanger de ligner og undviger "
+"fra angreb med stor behændighed. De er ikke kun farlige fjender på alle åbne "
+"terræner, men deres evne til at svømme giver dem en livsfarlig mobilitet."
 
 #: data/units/Naga_Myrmidon.cfg:65
 msgid "Nagini Myrmidon"
@@ -8469,6 +8478,11 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"De mest øvede af naginierne bliver indlemmet i logen Myrmidon, mestre i "
+"deres våbenbrug. De angriber lige så hurtigt som de slanger de ligner og "
+"undviger fra angreb med stor behændighed. De er ikke kun farlige fjender på "
+"alle åbne terræner, men deres evne til at svømme giver dem en livsfarlig "
+"mobilitet."
 
 #: data/units/Naga_Warrior.cfg:3
 msgid "Naga Warrior"
@@ -8483,6 +8497,12 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"Mange af de unge krigere fra naga ser frem til den dag de får deres 2. "
+"klinge. Deres krigstræning med to klinger er meget forskellig fra metoden "
+"hos orker eller andre racer, for de er begyndt at lære kunsten at bruge "
+"deres kropsform til bedste evne, drejende og vendende for at undgå slag. "
+"Dette gør dem stærke på land, men friktionen fra vand øger væsentlig denne "
+"evne."
 
 #: data/units/Naga_Warrior.cfg:64
 msgid "Nagini Warrior"
@@ -8552,6 +8572,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Selvom nogle anser det for kujonagtigt at bruge gift, er det et våben som er "
+"velanset blandt orker, specielt blandt de svagere individer. "
+"Orkersnigmordere som bruger giften på kasteknive, er typisk en smule "
+"svagelige, men overraskende behændige. Selv om de sjældent er dem som giver "
+"et dræbende slag, så er deres taktik en væsentlig hjælp for deres større og "
+"mere brutale artsfæller.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Orcish_Assassin.cfg:108 data/units/Orcish_Slayer.cfg:118
 msgid "throwing knives"
@@ -8568,6 +8596,10 @@ msgid ""
 "Marksmen in long-range combat, they are sturdier and can handle themselves a "
 "little better than the Elves in close combat."
 msgstr ""
+"Orkerarmbrøstskytter forsøger at kompensere for deres manglende evner med "
+"den rå kraft fra deres våben. Selv om de ikke er så effektive som "
+"elverskarpskytter i afstandskrig, så er de bedre bygget og de kan forsvare "
+"sig en smule bedre end elverne i nærkamp."
 
 #: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:22
 msgid "short sword"
@@ -8682,6 +8714,9 @@ msgid ""
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
+"Kun orker som har stor udspekulerethed og uovertruffen styrke kan blive "
+"krigsherrer. De er mestre med sværdet og har endda evner med buen, disse "
+"bæstkrigere anfører deres art med jernhånd."
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
@@ -8987,7 +9022,7 @@ msgstr ""
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
-msgstr ""
+msgstr "Nekrofag"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
 msgid ""
@@ -8998,6 +9033,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Drevet af en vild sult efter dødt kød angriber nekrofagen sin - ønskede - "
+"mad med et dyrs vildskab. Når de er mætte af kødet fra deres ofre så fjernes "
+"al skade de blev påført som om de lige er blevet magisk fremkaldt. Herefter "
+"fortsætter jagten efter nyt kød igen.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"

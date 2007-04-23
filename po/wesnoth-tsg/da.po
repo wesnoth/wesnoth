@@ -4,12 +4,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Joe Hansen <joedalton2@yahoo.dk>, 2007.
 #
+# Konventioner
+# "female^strong" oversættes som "stærk"  Delen foran ^ og ^ skal ikke oversættes.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-19 21:46+0200\n"
-"PO-Revision-Date: 2007-03-07 13:15+0200\n"
+"PO-Revision-Date: 2007-04-20 13:15+0200\n"
 "Last-Translator: Joe Hansen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -2859,7 +2862,6 @@ msgstr ""
 "voldsomme, og dine spydmænd kan om dagen hurtigt ordne dem."
 
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:111
-#, fuzzy
 msgid ""
 "Skeletons are the bones of fallen warriors raised by some dark magic.  They "
 "are almost immune to piercing weapons like arrows and spears.  Bladed "
@@ -2867,9 +2869,9 @@ msgid ""
 "deadly against them.  Like the rest of the bandits, they are more dangerous "
 "at night!"
 msgstr ""
-"Skeletter er benene fra en dræbt kriger som er genrejst af mørk magi. De er "
-"immune over for stikvåben som bile og spyd. Sværd vil såre dem og minister "
-"Hylas hellige angreb er dødeligt for dem. Som resten af banditterne er de "
+"Skeletter er benene fra en dræbt kriger som er genrejst af mørk magi.  De er "
+"immune over for stikvåben som pile og spyd.  Sværd vil såre dem og minister "
+"Hylas magiske angreb er dødeligt for dem.  Som resten af banditterne er de "
 "mere farlige om natten!"
 
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:138
@@ -3159,19 +3161,19 @@ msgstr "Tilføj en ekstra bevægelse til dit angreb"
 
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:137
 msgid "female^strong"
-msgstr "female^stærk"
+msgstr "stærk"
 
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:155
 msgid "female^resilient"
-msgstr "female^fleksibel"
+msgstr "fleksibel"
 
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:169
 msgid "female^quick"
-msgstr "female^hurtig"
+msgstr "hurtig"
 
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:186
 msgid "female^intelligent"
-msgstr "female^intelligent"
+msgstr "intelligent"
 
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:197
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:212
@@ -3180,16 +3182,7 @@ msgstr "loyal"
 
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:198
 msgid "female^loyal"
-msgstr "female^loyal"
-
-#~ msgid "Summer"
-#~ msgstr "Sommer"
-
-#~ msgid "Winter"
-#~ msgstr "Vinter"
-
-#~ msgid "Fall"
-#~ msgstr "Nederlag"
+msgstr "loyal"
 
 #~ msgid ""
 #~ "The men of the South Guard followed Ethiliel for days through the forests "
