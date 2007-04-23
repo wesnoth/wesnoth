@@ -2,13 +2,15 @@
 #
 # Up-convert WML and maps between versions.
 #
+# By Eric S. Raymond April 2007.
+#
 # All conversion logic for lifting WML and maps from older versions of the
 # markup to newer ones should live here.  This includes resource path changes
 # and renames, also map format conversions.
 #
 # The recommended procedure is this:
 # 1. Run it with --dryrun first to see what it will do.
-# 2. If the messages look good, run without .dryrun; the old content
+# 2. If the messages look good, run without --dryrun; the old content
 #    will be left in backup files with a -bak extension.
 # 3. Test the conversion.
 # 4. Use either --clean to remove the -bak files or --revert to
