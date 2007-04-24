@@ -35,6 +35,7 @@ void stop_music();
 void stop_sound();
 void stop_UI_sound();
 void stop_bell();
+void stop_sound_sources();
 
 // Read config entry, alter track list accordingly.
 void play_music_config(const config &music);
@@ -83,6 +84,7 @@ void set_music_volume(int vol);
 void set_sound_volume(int vol);
 void set_bell_volume(int vol);
 void set_UI_volume(int vol);
+void set_sound_sources_volume(int vol);
 
 }
 

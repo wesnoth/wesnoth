@@ -221,7 +221,7 @@ private:
 
 //	
 	// change
-	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_, scroll_slider_,
+	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_, sound_sources_slider_, scroll_slider_,
 				gamma_slider_, chat_lines_slider_, buffer_size_slider_;
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, show_grid_button_,
@@ -230,9 +230,9 @@ private:
 				turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 				show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
 				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_,
-				advanced_sound_button_, normal_sound_button_, UI_sound_button_,
+				advanced_sound_button_, normal_sound_button_, UI_sound_button_, sound_sources_button_,
 				sample_rate_button1_, sample_rate_button2_, sample_rate_button3_, confirm_sound_button_;
-	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_, scroll_label_,
+	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_, scroll_label_, sound_sources_label_, 
 				gamma_label_, chat_lines_label_, turbo_slider_label_,
 				sample_rate_label_, buffer_size_label_;
 	gui::textbox sample_rate_input_, friends_input_;
@@ -254,7 +254,7 @@ private:
 preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
 	  music_slider_(disp.video()), sound_slider_(disp.video()), UI_sound_slider_(disp.video()),
-	  bell_slider_(disp.video()),
+	  bell_slider_(disp.video()), sound_sources_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()), chat_lines_slider_(disp.video()),
 	  buffer_size_slider_(disp.video()), turbo_slider_(disp.video()), 
 
@@ -291,6 +291,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  advanced_sound_button_(disp.video(), _("Advanced Mode")),
 	  normal_sound_button_(disp.video(), _("Normal Mode")),
 	  UI_sound_button_(disp.video(), _("User Interface Sounds"), gui::button::TYPE_CHECK),
+	  sound_sources_button_(disp.video(), _("Environmental Sounds"), gui::button::TYPE_CHECK),
 	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_CHECK),
 	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_CHECK),
 	  sample_rate_button3_(disp.video(), _("Custom"), gui::button::TYPE_CHECK),
@@ -299,6 +300,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  UI_sound_label_(disp.video(), _("UI Sound Volume:")),
 	  bell_label_(disp.video(), _("Bell Volume:")), scroll_label_(disp.video(), _("Scroll Speed:")),
+	  sound_sources_label_(disp.video(), _("Environmental Volume:")),
 	  gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(), ""),
 	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
 	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(), ""),
@@ -349,6 +351,13 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	UI_sound_slider_.set_max(128);
 	UI_sound_slider_.set_value(UI_volume());
 	UI_sound_slider_.set_help_string(_("Change the sound volume for button clicks, etc."));
+
+	sound_sources_button_.set_check(sound_sources_on());
+	sound_sources_button_.set_help_string(_("Turn menu and button environmental sound sources on/off"));
+	sound_sources_slider_.set_min(0);
+	sound_sources_slider_.set_max(128);
+	sound_sources_slider_.set_value(sound_sources_volume());
+	sound_sources_slider_.set_help_string(_("Change the sound volume for environmental sounds"));
 
 	sample_rate_label_.set_help_string(_("Change the sample rate"));
 	std::string rate = lexical_cast<std::string>(sample_rate());
@@ -486,6 +495,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&sound_slider_);
 	h.push_back(&bell_slider_);
 	h.push_back(&UI_sound_slider_);
+	h.push_back(&sound_sources_slider_);
 	h.push_back(&scroll_slider_);
 	h.push_back(&gamma_slider_);
 	h.push_back(&chat_lines_slider_);
@@ -511,6 +521,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turn_dialog_button_);
 	h.push_back(&turn_bell_button_);
 	h.push_back(&UI_sound_button_);
+	h.push_back(&sound_sources_button_);
 	h.push_back(&show_team_colours_button_);
 	h.push_back(&show_colour_cursors_button_);
 	h.push_back(&show_haloing_button_);
@@ -533,6 +544,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&sound_label_);
 	h.push_back(&bell_label_);
 	h.push_back(&UI_sound_label_);
+	h.push_back(&sound_sources_label_);
 	h.push_back(&scroll_label_);
 	h.push_back(&gamma_label_);
 	h.push_back(&turbo_slider_label_);
@@ -636,6 +648,15 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	const SDL_Rect UI_sound_rect = {rect.x + slider_label_width_, ypos,
 								rect.w - slider_label_width_ - right_border, 0 };
 	UI_sound_slider_.set_location(UI_sound_rect);
+
+	ypos += item_interline; //sound sources slider
+	sound_sources_button_.set_location(rect.x, ypos);
+	ypos += short_interline;
+	sound_sources_label_.set_location(rect.x, ypos);
+	const SDL_Rect sound_sources_rect = {rect.x + slider_label_width_, ypos,
+								rect.w - slider_label_width_ - right_border, 0 };
+	sound_sources_slider_.set_location(sound_sources_rect);
+
 	advanced_sound_button_.set_location(rect.x, bottom_row_y - advanced_sound_button_.height());
 
 
@@ -793,9 +814,17 @@ void preferences_dialog::process_event()
 			UI_sound_slider_.enable(UI_sound_on());
 			UI_sound_label_.enable(UI_sound_on());
 		}
+		if (sound_sources_button_.pressed()) {
+			if(!set_sound_sources(sound_sources_button_.checked()))
+				sound_sources_button_.set_check(false);
+			sound_sources_slider_.enable(sound_sources_on());
+			sound_sources_label_.enable(sound_sources_on());
+		}
 		set_sound_volume(sound_slider_.value());
 		set_UI_volume(UI_sound_slider_.value());
 		set_bell_volume(bell_slider_.value());
+		set_sound_sources_volume(sound_sources_slider_.value());
+		std::cerr << sound_sources_slider_.value() << std::endl;
 
 		if (music_button_.pressed()) {
 			if(!set_music(music_button_.checked()))
@@ -1086,6 +1115,9 @@ void preferences_dialog::set_selection(int index)
 	UI_sound_button_.hide(hide_sound);
 	UI_sound_label_.hide(hide_sound);
 	UI_sound_slider_.hide(hide_sound);
+	sound_sources_slider_.hide(hide_sound);
+	sound_sources_label_.hide(hide_sound);
+	sound_sources_button_.hide(hide_sound);
 	turn_bell_button_.hide(hide_sound);
 	bell_label_.hide(hide_sound);
 	bell_slider_.hide(hide_sound);

@@ -89,6 +89,11 @@ namespace preferences {
 	int UI_volume();
 	void set_UI_volume(int vol);
 
+	bool sound_sources_on();
+	bool set_sound_sources(bool ison);
+	int sound_sources_volume();
+	void set_sound_sources_volume(int vol);
+
 	bool music_on();
 	bool set_music(bool ison);
 

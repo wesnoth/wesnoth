@@ -67,6 +67,9 @@ manager::manager()
 	read(prefs, *stream);
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
+	set_UI_volume(UI_volume());
+	set_bell_volume(bell_volume());
+	set_sound_sources_volume(sound_sources_volume());
 
 	set_show_haloes(prefs["show_haloes"] != "no");
 	if(prefs["remember_timer_settings"] != "yes") {
@@ -301,6 +304,40 @@ void set_UI_volume(int vol)
 	sound::set_UI_volume(UI_volume());
 }
 
+int sound_sources_volume()
+{
+	return lexical_cast_default<int>(prefs["sound_sources_volume"], 100);
+}
+
+void set_sound_sources_volume(int vol)
+{
+	prefs["sound_sources_volume"] = lexical_cast_default<std::string>(vol, "100");
+	sound::set_sound_sources_volume(sound_sources_volume());
+}
+
+bool sound_sources_on()
+{
+	return prefs["sound_sources"] != "no";
+}
+
+bool set_sound_sources(bool ison)
+{
+	if(!sound_sources_on() && ison) {
+		prefs["sound_sources"] = "yes";
+		if(!sound_on() && !music_on() && !turn_bell() && !UI_sound_on()) {
+			if(!sound::init_sound()) {
+				prefs["sound_sources"] = "no";
+				return false;
+			}
+		}
+	} else if(sound_sources_on() && !ison) {
+		prefs["sound_sources"] = "no";
+		sound::stop_sound_sources();
+		if(!music_on() && !sound_on() && !turn_bell() && !UI_sound_on)
+			sound::close_sound();
+	}
+	return true;
+}
 
 bool adjust_gamma()
 {
@@ -493,7 +530,7 @@ bool set_turn_bell(bool ison)
 {
 	if(!turn_bell() && ison) {
 		prefs["turn_bell"] = "yes";
-		if(!music_on() && !sound_on() && !UI_sound_on()) {
+		if(!music_on() && !sound_on() && !sound_sources_on() && !UI_sound_on()) {
 			if(!sound::init_sound()) {
 				prefs["turn_bell"] = "no";
 				return false;
@@ -502,7 +539,7 @@ bool set_turn_bell(bool ison)
 	} else if(turn_bell() && !ison) {
 		prefs["turn_bell"] = "no";
 		sound::stop_bell();
-		if(!music_on() && !sound_on() && !UI_sound_on())
+		if(!music_on() && !sound_on() && !sound_sources_on() && !UI_sound_on())
 			sound::close_sound();
 	}
 	return true;
@@ -517,7 +554,7 @@ bool set_UI_sound(bool ison)
 {
 	if(!UI_sound_on() && ison) {
 		prefs["UI_sound"] = "yes";
-		if(!music_on() && !sound_on() && !turn_bell()) {
+		if(!music_on() && !sound_on() && !turn_bell() && !sound_sources_on()) {
 			if(!sound::init_sound()) {
 				prefs["UI_sound"] = "no";
 				return false;
@@ -526,7 +563,7 @@ bool set_UI_sound(bool ison)
 	} else if(UI_sound_on() && !ison) {
 		prefs["UI_sound"] = "no";
 		sound::stop_UI_sound();
-		if(!music_on() && !sound_on() && !turn_bell())
+		if(!music_on() && !sound_on() && !turn_bell() && !sound_sources_on())
 			sound::close_sound();
 	}
 	return true;
@@ -549,7 +586,7 @@ bool sound_on() {
 bool set_sound(bool ison) {
 	if(!sound_on() && ison) {
 		prefs["sound"] = "yes";
-		if(!music_on() && !turn_bell() && !UI_sound_on()) {
+		if(!music_on() && !turn_bell() && !UI_sound_on() && !sound_sources_on()) {
 			if(!sound::init_sound()) {
 				prefs["sound"] = "no";
 				return false;
@@ -558,7 +595,7 @@ bool set_sound(bool ison) {
 	} else if(sound_on() && !ison) {
 		prefs["sound"] = "no";
 		sound::stop_sound();
-		if(!music_on() && !turn_bell() && !UI_sound_on())
+		if(!music_on() && !turn_bell() && !UI_sound_on() && !sound_sources_on())
 			sound::close_sound();
 	}
 	return true;
@@ -571,7 +608,7 @@ bool music_on() {
 bool set_music(bool ison) {
 	if(!music_on() && ison) {
 		prefs["music"] = "yes";
-		if(!sound_on() && !turn_bell() && !UI_sound_on()) {
+		if(!sound_on() && !turn_bell() && !UI_sound_on() && !sound_sources_on()) {
 			if(!sound::init_sound()) {
 				prefs["music"] = "no";
 				return false;
@@ -581,7 +618,7 @@ bool set_music(bool ison) {
 			sound::play_music();
 	} else if(music_on() && !ison) {
 		prefs["music"] = "no";
-		if(!sound_on() && !turn_bell() && !UI_sound_on())
+		if(!sound_on() && !turn_bell() && !UI_sound_on() && !sound_sources_on())
 			sound::close_sound();
 		else
 			sound::stop_music();
