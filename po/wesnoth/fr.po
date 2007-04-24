@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-22 22:34+0200\n"
-"PO-Revision-Date: 2007-04-18 22:33+0200\n"
+"PO-Revision-Date: 2007-04-24 21:43+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -299,7 +299,6 @@ msgid "slows"
 msgstr "ralentissement"
 
 #: data/abilities.cfg:494
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -307,8 +306,8 @@ msgid ""
 msgstr ""
 "Ralentissement:\n"
 "Cette attaque ralentit la cible jusqu'à la fin de son tour. Une unité "
-"ralentie inflige moitié moins de dégâts et voit son mouvement diminé par "
-"deux (arrondi au supérieur)."
+"ralentie inflige moitié moins de dégâts et voit son coût de mouvement "
+"multiplié par deux."
 
 #: data/abilities.cfg:503
 msgid "stones"
@@ -1519,7 +1518,6 @@ msgid "Damage Types and Resistance"
 msgstr "Types de dégâts et résistance"
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1554,7 +1552,6 @@ msgstr ""
 "sur une attaque de ce type."
 
 #: data/help.cfg:183
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -5078,13 +5075,12 @@ msgstr ""
 "assez lentement sur l'eau."
 
 #: data/special-notes.cfg:5
-#, fuzzy
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
 " L'attaque sacrée de cette unité provoque des dégâts considérables sur les "
-"morts-vivants et aussi sur certaines créatures vivantes."
+"créatures magiques, et encore quelques dégats sur les créatures non magiques."
 
 #: data/special-notes.cfg:8
 msgid ""
@@ -5295,10 +5291,10 @@ msgstr "Marron"
 msgid "Teal"
 msgstr "Turquoise"
 
+# Il s'agit du terrain affiché quand on est en dehhors de la carte
 #: data/terrain.cfg:21
-#, fuzzy
 msgid "None"
-msgstr "aucune"
+msgstr "Vide"
 
 #: data/terrain.cfg:28 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
@@ -5560,7 +5556,6 @@ msgstr ""
 "scénarios en utilisant l'option « rappeler »."
 
 #: data/tips.cfg:3
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -5740,7 +5735,6 @@ msgstr ""
 "vous puissiez recruter de là."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and arcane attacks."
@@ -5819,7 +5813,6 @@ msgstr ""
 "pour toutes les attaques jusqu'à la fin de leur tour."
 
 #: data/tips.cfg:30
-#, fuzzy
 msgid "Arcane attacks are very powerful against undead."
 msgstr "Les attaques sacrées sont très puissantes contre les morts-vivants."
 
@@ -7140,9 +7133,8 @@ msgstr "feu féerique"
 #: data/units/Undead_Spirit_Ghost.cfg:40
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-#, fuzzy
 msgid "arcane"
-msgstr "à distance"
+msgstr "sacré"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
