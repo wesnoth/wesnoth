@@ -102,14 +102,25 @@ def get_adjacent(x, y, map):
 
 width = max_len+2
 
+class maptransform_error:
+    "Error object to be thrown by maptransform."
+    def __init__(self, infile, inline, imap, x, y, type):
+        self.infile = infile
+        self.inline = inline
+        self.x = x
+        self.y = y
+        self.type = type
+    def __str__(self):
+        return '"%s", line %d: %s at (%d, %d)\n' % \
+                   (self.input, self.inline, self.type, self.x, self.y)
+
 def maptransform(input, baseline, inmap, y):
     "Transform a map line from 1.2.x to 1.3.x format."
     format = "%%%d.%ds" % (width, max_len)
     x = 0
     if "," in inmap[y]:
-        sys.stderr.write("mapconvert map file %s appears "
-                         "to be converted already\n" % input)
-        sys.exit(1)
+        raise maptransform_error(input, baseline, x, y,
+                                 "map file appears to be converted already")
     line = ''
     for char in inmap[y]:
         ohex = ''
@@ -118,8 +129,8 @@ def maptransform(input, baseline, inmap, y):
         elif char in conversion:
             ohex = format % conversion[char] + ','
         else:
-            sys.stderr.write('map_convert: "%s", line %d: unrecognized character %s (%d) at (%d, %d)\n' % \
-                             (input, baseline+y+1, `char`, ord(char), x, y))
+            raise maptransform_error(input, baseline+y+1, x, y,
+                                     "unrecognized character %s (%d)" % (`char`, ord(char)))
             # ohex = format % char
             sys.exit(1)
         if "_K" in ohex:
@@ -131,8 +142,8 @@ def maptransform(input, baseline, inmap, y):
                 # Intentionally skipping 0 as it is original hex
                 a = adj[i];
                 if not a in conversion:
-                    sys.stderr.write('map_convert: "%s", line %d: error in adjacent hexes at (%d, %d).\n' % \
-                             (input, baseline+y+1, x, y))
+                    raise maptransform_error(input, baseline, x, y,
+                                 "error in adjacent hexes")
                     sys.exit(1)
                 ca = conversion[a]
                 if ca.startswith("C"): #this is a castle hex	
@@ -256,13 +267,17 @@ if __name__ == '__main__':
         sys.stderr.write("can not read map file: %s\n" % map_file)
         sys.exit(1)
 
-    changed = translator(map_file, new_map_file, maptransform, texttransform)
-    if changed == None:
-        shutil.copy(map_file, new_map_file)
-    else:
-        ofp = open(new_map_file, "w");
-        ofp.write(changed)
-        ofp.close()
+    try:
+        changed=translator(map_file, new_map_file, maptransform, texttransform)
+        if changed == None:
+            shutil.copy(map_file, new_map_file)
+        else:
+            ofp = open(new_map_file, "w");
+            ofp.write(changed)
+            ofp.close()
+    except maptransform_error, e:
+        sys.stderr.write("map_convert.py: " + `e` + "\n")
+        sys.exit(1)
 
 # map_convert ends here.
 
