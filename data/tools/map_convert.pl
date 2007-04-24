@@ -146,7 +146,11 @@ close(TERRAIN);
 $width=$max_len+2;
 open(MAP, "<$map_file");
 @mfile=();
-$map_only=1;
+if ($map_file=~/.cfg$/) {
+    $map_only=0;
+} else {
+    $map_only=1;
+}
 while($line=<MAP>){
     push(@mfile,$line);
     if($line=~/map_data/){
@@ -160,9 +164,14 @@ push(@mfile,"\n");
 @map=();
 close(MAP);
 
+$lineno = $baseline = 0;
 while($#mfile){
     $line=shift(@mfile);
-    if($map_only || $line=~/map_data/){
+    $lineno++;
+    # Don't start parsing on map_data="{, let the WML preprocessor have it
+    # Non-alphanumerics that can appear are / | \ & _ ~ ? [ ]'
+    if($map_only || ($line=~/map_data=\"[A-Za-z0-9\/|\\&_~?\[\]]{2,}\r?/)){
+	$baseline = $lineno;
 	$cont=1;
 #read map assumes map is more than 1 line long.
 	if(!$map_only){
@@ -172,6 +181,11 @@ while($#mfile){
 #	 print "$line\n";
 	 while(($cont) && ($#mfile)){
 	     $line=shift(@mfile);
+	     $lineno++;
+	     if($line=~/^#/) {
+		push(@newfile,$line);
+		next;
+	    }
 	     if($line=~/\"/){
 		 $cont=0;
 		($line,$dummy)=split('"',$line);
@@ -184,6 +198,7 @@ while($#mfile){
 	    push(@newfile,$line);
 	}
 	$y=0;
+	$format="%${width}.${max_len}s";
 	 foreach(@map){
 	     chomp;
 	     if($_=~/,/){die "map file appears to be converted already\n";}
@@ -192,12 +207,15 @@ while($#mfile){
 		 $hex='';
 		 $char=substr($_,$x,1);
 #		 print "$char";
-		 $format="%${width}.${max_len}s";
-		 if(defined($conversion{$char})){
+		 if ($char=~/\r/) {
+		     $hex="\r"
+		 }elsif(defined($conversion{$char})){
 		     $hex=sprintf($format,$conversion{$char});
 		 }else{
 		     $ord=ord($char);
-		     die "error, unrecognized map character at ($x,$y):[$ord]$char";
+		     $errline = $baseline + $y + 1;
+		     print "mapconvert.pl: \"$map_file\", line $errline: unrecognized map character '$char' ($ord) at ($x,$y)\n";
+		     exit 1;
 #		     $hex=sprintf($format,$char);
 		 }
 		 if($hex=~/_K/){
@@ -211,8 +229,8 @@ while($#mfile){
 			 $ca=$conversion{$a};
 			 if(!defined($ca)){
 			     $ord=ord($a);
-			     print "error in adjacent hexes:\n";
-			     print "($x,$y,$i)[$ord]:$a\n";
+			     $errline = $baseline + $y + 1;
+			     print "mapconvert.pl: \"$map_file\", line $errline: error in adjacent hexes: ($x,$y,$i)[$ord]:$a\n";
 			 }
 			 if($ca=~/^C/){ #this is a castle hex	
 			     $hexcount{$ca}++;
