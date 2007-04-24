@@ -941,7 +941,7 @@ attack::attack(display& gui, const gamemap& map,
 				fire_event("attack_end");
 				game_events::fire("die",loc,attacker_loc);
 				
-				//WML can invalidate the attacker or defender if it does that abort and invalidate the unit in questoion
+				//WML can invalidate the attacker or defender if it does that abort and invalidate the unit in question
 				if(units_.find(attacker_) != a_) a_ = units_.end();
 				if(units_.find(defender_) != d_) d_ = units_.end();
 				if(a_ == units_.end() || d_ == units_.end()) break;
@@ -1150,7 +1150,7 @@ attack::attack(display& gui, const gamemap& map,
 				fire_event("attack_end");
 				game_events::fire("die",loc,defender_loc);
 
-				//WML can invalidate the attacker or defender if it does that abort and invalidate the unit in questoion
+				//WML can invalidate the attacker or defender if it does that abort and invalidate the unit in question
 				if(units_.find(attacker_) != a_) a_ = units_.end();
 				if(units_.find(defender_) != d_) d_ = units_.end();
 				if(a_ == units_.end() || d_ == units_.end()) break;
