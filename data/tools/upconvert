@@ -12,9 +12,11 @@
 # 1. Run it with --dryrun first to see what it will do.
 # 2. If the messages look good, run without --dryrun; the old content
 #    will be left in backup files with a -bak extension.
-# 3. Test the conversion.
-# 4. Use either --clean to remove the -bak files or --revert to
+# 3. Eyeball the changes with the --diff option.
+# 4. Test the conversion.
+# 5. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
+#
 #
 # Note about the 1.3.1 -> 1.3.2 map conversion: terrain codes will only be
 # spotted and converted when preceded by space, comma, or equal sign.  This
@@ -241,36 +243,36 @@ def maptransform1(input, baseline, inmap, y):
 
 # 1.3.1 -> 1.3.2 terrain conversions
 conversion2 = {
-    re.compile(r"(?<=[ ,=])Bww([|/\\])\b") : "Ww^Bw\\1",
-    re.compile(r"(?<=[ ,=])Bwo([|/\\])\b") : "Wo^Bw\\1",
-    re.compile(r"(?<=[ ,=])Bss([|/\\])\b") : "Ss^Bw\\1",
-    re.compile(r"(?<=[ ,=])Dc\b") : "Dd^Dc",
-    re.compile(r"(?<=[ ,=])Dr\b") : "Dd^Dr",
-    re.compile(r"(?<=[ ,=])Do\b") : "Dd^Do",
-    re.compile(r"(?<=[ ,=])Fa\b") : "Aa^Fpa",
-    re.compile(r"(?<=[ ,=])Fet\b") : "Gg^Fet",
-    re.compile(r"(?<=[ ,=])Ff\b") : "Gs^Fp",
-    re.compile(r"(?<=[ ,=])Ft\b") : "Gs^Ft",
-    re.compile(r"(?<=[ ,=])Rfvs\b") : "Re^Gvs",
-    re.compile(r"(?<=[ ,=])Uf\b") : "Uu^Uf",
-    re.compile(r"(?<=[ ,=])Uui\b") : "Uu^Ii",
-    re.compile(r"(?<=[ ,=])Uhi\b") : "Uh^Ii",
-    re.compile(r"(?<=[ ,=])Vda\b") : "Dd^Vda",
-    re.compile(r"(?<=[ ,=])Vdt\b") : "Dd^Vdt",
-    re.compile(r"(?<=[ ,=])Vea\b") : "Aa^Vea",
-    re.compile(r"(?<=[ ,=])Veg\b") : "Gg^Ve",
-    re.compile(r"(?<=[ ,=])Vha\b") : "Aa^Vha",
-    re.compile(r"(?<=[ ,=])Vhg\b") : "Gg^Vh",
-    re.compile(r"(?<=[ ,=])Vhh\b") : "Hh^Vhh",
-    re.compile(r"(?<=[ ,=])Vhha\b") : "Ha^Vhha",
-    re.compile(r"(?<=[ ,=])Vhm\b") : "Mm^Vhh",
-    re.compile(r"(?<=[ ,=])Vht\b") : "Gs^Vht",
-    re.compile(r"(?<=[ ,=])Vu\b") : "Uu^Vu",
-    re.compile(r"(?<=[ ,=])Vud\b") : "Uu^Vud",
-    re.compile(r"(?<=[ ,=])Vwm\b") : "Ww^Vm",
-    re.compile(r"(?<=[ ,=])Vs\b") : "Ss^Vhs",
-    re.compile(r"(?<=[ ,=])Vsm\b") : "Ss^Vm",
-    re.compile(r"(?<=[ ,=])Xm\b") : "Mm^Xm"
+    re.compile(r"Bww([|/\\])\b") : "Ww^Bw\\1",
+    re.compile(r"Bwo([|/\\])\b") : "Wo^Bw\\1",
+    re.compile(r"Bss([|/\\])\b") : "Ss^Bw\\1",
+    re.compile(r"Dc\b") : "Dd^Dc",
+    re.compile(r"Dr\b") : "Dd^Dr",
+    re.compile(r"Do\b") : "Dd^Do",
+    re.compile(r"Fa\b") : "Aa^Fpa",
+    re.compile(r"Fet\b") : "Gg^Fet",
+    re.compile(r"Ff\b") : "Gs^Fp",
+    re.compile(r"Ft\b") : "Gs^Ft",
+    re.compile(r"Rfvs\b") : "Re^Gvs",
+    re.compile(r"Uf\b") : "Uu^Uf",
+    re.compile(r"Uui\b") : "Uu^Ii",
+    re.compile(r"Uhi\b") : "Uh^Ii",
+    re.compile(r"Vda\b") : "Dd^Vda",
+    re.compile(r"Vdt\b") : "Dd^Vdt",
+    re.compile(r"Vea\b") : "Aa^Vea",
+    re.compile(r"Veg\b") : "Gg^Ve",
+    re.compile(r"Vha\b") : "Aa^Vha",
+    re.compile(r"Vhg\b") : "Gg^Vh",
+    re.compile(r"Vhh\b") : "Hh^Vhh",
+    re.compile(r"Vhha\b") : "Ha^Vhha",
+    re.compile(r"Vhm\b") : "Mm^Vhh",
+    re.compile(r"Vht\b") : "Gs^Vht",
+    re.compile(r"Vu\b") : "Uu^Vu",
+    re.compile(r"Vud\b") : "Uu^Vud",
+    re.compile(r"Vwm\b") : "Ww^Vm",
+    re.compile(r"Vs\b") : "Ss^Vhs",
+    re.compile(r"Vsm\b") : "Ss^Vm",
+    re.compile(r"Xm\b") : "Mm^Xm",
     }
 
 def maptransform2(input, baseline, inmap, y):
@@ -384,22 +386,25 @@ Usage: upconvert [options]
     -o, --oldversion           Specify version to begin with.
     -v, --verbose              List files as they are examined.
     -c, --clean                Clean up -bak files
+    -D, --diff                 Display diffs
     -r, --revert               Revert the conversion from the -bak files
 """)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cdho:rv", [
+    (options, arguments) = getopt.getopt(sys.argv[1:], "cdDho:rv", [
 	"help",
         "oldversion=",
 	"dryrun",
         "verbose",
         "clean",
         "revert",
+        "diffs",
         ])
     oldversion = 'older'
     dryrun = False
     verbose = False
     clean = False
+    diffs = False
     revert = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
@@ -413,6 +418,8 @@ if __name__ == '__main__':
             dryrun = True
         elif switch in ('-c', '--clean'):
             clean = True
+        elif switch in ('-d', '--diffs'):
+            diffs = True
         elif switch in ('-r', '--revert'):
             revert = True
 
@@ -468,6 +475,11 @@ if __name__ == '__main__':
                     print "Reverting %s" % backup
                     if not dryrun:
                         os.rename(backup, fn)
+        elif diffs:
+            # Display diffs
+            if os.path.exists(backup):
+                print fn
+                os.system("diff -u %s %s" % (backup, fn))
         else:
             # Do file conversions
             try:
