@@ -116,6 +116,7 @@ while True:
 			conversion[char] = string;
 tfp.close()
 width = max_len+2
+
 #keys = conversion.keys()
 #keys.sort()
 #for k in keys:
@@ -188,7 +189,7 @@ while mfile:
                 if "_K" in ohex:
                     # Convert keeps according to adjacent hexes
                     adj = get_adjacent(x,y, outmap)
-                    # print "adjacent: adj\n";
+                    # print "adjacent: %s" % adj
                     hexcount = {}
                     for i in range(1, len(adj)):
                         # Intentionally skipping 0 as it is original hex
@@ -202,10 +203,18 @@ while mfile:
 			     hexcount[ca] = hexcount.get(ca, 0) + 1
                     maxc = 0;
                     maxk = "Ch";
-                    for k in hexcount:
+                    # Next line is a hack to make this code pass regression
+                    # testing against the Perl original. Without the sort, when
+                    # there are two terrain types that occur in equal numbers
+                    # greater than any others, which one gets picked will be
+                    # randomly dependent on Python's dictionary hash function.
+                    sorted = hexcount.keys()
+                    sorted.sort()
+                    for k in sorted:
                         if hexcount[k] > maxc:
                             maxc = hexcount[k]
                             maxk = k
+                    #print "Dominated by %s" % maxk
                     maxk = re.sub("^C", "K", maxk)
                     ohex = ohex.replace("_K", maxk)
                 line += ohex

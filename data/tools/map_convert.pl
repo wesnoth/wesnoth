@@ -143,6 +143,10 @@ while($line=<TERRAIN>){
 }
 close(TERRAIN);
 
+#while (($k, $v) = each(%conversion)) {
+#    print "$k -> $v\n";
+#}
+
 $width=$max_len+2;
 open(MAP, "<$map_file");
 @mfile=();
@@ -221,7 +225,7 @@ while($#mfile){
 		 if($hex=~/_K/){
 		     #convert keeps according to adjacent hexes
 		     $adj=get_adjacent($x,$y,@map);
-#		     print "adjacent: $adj\n";
+		     # print "adjacent: $adj\n";
 		     %hexcount=();
 		     for($i=1;$i<length($adj);$i++){
 			 #intentionally skipping 0 as it is original hex
@@ -238,13 +242,20 @@ while($#mfile){
 		     }
 		     $maxc=0;
 		     $maxk="Ch";
-		     foreach(keys(%hexcount)){
+		     # Next line is a hack to make this code pass regression
+		     # testing against the Python port.  Without the sort, when
+		     # there are two terrain types that occur in equal numbers
+		     # greater than any others, which one gets picked will be
+		     # randomly dependent on Perl's dictionary hash function.
+		     @sorted = sort keys(%hexcount);
+		     foreach(@sorted){
 			 if($hexcount{$_}>$maxc){
 			     $maxc=$hexcount{$_};
 			     $maxk=$_;
 			 }
 #			 print "$_ $hexcount{$_}\n";
 		     }
+		     # print "Dominated by $maxk\n";
 		     $maxk=~s/^C/K/;
 		     $hex=~s/_K/$maxk/;
 		 }
