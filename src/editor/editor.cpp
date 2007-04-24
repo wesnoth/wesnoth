@@ -170,7 +170,7 @@ int map_editor::old_brush_size_;
 
 map_editor::map_editor(display &gui, editormap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
-	  theme_(theme), game_config_(game_config), map_dirty_(false), l_button_palette_dirty_(true),
+	  theme_(theme), game_config_(game_config), map_dirty_(false),  auto_update_(true), l_button_palette_dirty_(true),
 	  everything_dirty_(false), palette_(gui, size_specs_, map, game_config), brush_(gui, size_specs_),
 	  l_button_held_func_(NONE), tooltip_manager_(gui_.video()), floating_label_manager_(),
 	  mouse_moved_(false),
@@ -261,6 +261,10 @@ void map_editor::load_tooltips()
 				text = _("Resize the map");
 			else if(menu_items.back() == "editflip")
 				text = _("Flip map");
+			else if(menu_items.back() == "editupdate")
+				text = _("Update transitions");
+			else if(menu_items.back() == "editautoupdate")
+				text = _("Delay transitions update");
 		}
 
 		if(text != "")
@@ -738,6 +742,20 @@ void map_editor::edit_refresh() {
 	redraw_everything();
 }
 
+void map_editor::edit_update() {
+	if (map_dirty_) {
+		map_dirty_ = false;
+		gui_.rebuild_all();
+		gui_.invalidate_all();
+		recalculate_starting_pos_labels();
+		gui_.recalculate_minimap();
+	}
+}
+
+void map_editor::edit_auto_update() {
+	auto_update_ = !auto_update_;
+}
+
 void map_editor::insert_selection_in_clipboard() {
 	if (selected_hexes_.empty()) {
 		return;
@@ -792,6 +810,8 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command, int) const 
 	case hotkey::HOTKEY_EDIT_SELECT_ALL:
 	case hotkey::HOTKEY_EDIT_DRAW:
 	case hotkey::HOTKEY_EDIT_REFRESH:
+	case hotkey::HOTKEY_EDIT_UPDATE:
+	case hotkey::HOTKEY_EDIT_AUTO_UPDATE:
 	case hotkey::HOTKEY_LANGUAGE:
 		return true;
 	default:
@@ -1529,7 +1549,7 @@ void map_editor::main_loop() {
 		// When the map has changed, wait until the left mouse button is
 		// not held down and then update the minimap and the starting
 		// position labels.
-		if (map_dirty_) {
+		if (map_dirty_ && auto_update_) {
 			if (!l_button_down && !r_button_down) {
 				map_dirty_ = false;
 				gui_.rebuild_all();

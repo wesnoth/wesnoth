@@ -112,6 +112,8 @@ const struct {
 	{ hotkey::HOTKEY_EDIT_SELECT_ALL, "editselectall", N_("Select All"),true },
 	{ hotkey::HOTKEY_EDIT_DRAW, "editdraw", N_("Draw Terrain"),true },
 	{ hotkey::HOTKEY_EDIT_REFRESH, "editrefresh", N_("Refresh Image Cache"), true },
+	{ hotkey::HOTKEY_EDIT_AUTO_UPDATE, "editautoupdate", N_("Delay transitions updates"), true },
+	{ hotkey::HOTKEY_EDIT_UPDATE, "editupdate", N_("Update transitions"), true },
 
 	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false },
 	{ hotkey::HOTKEY_UPDATE_SHROUD, "updateshroud", N_("Update Shroud Now"), false },
@@ -671,6 +673,12 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int index)
 			break;
 		 case HOTKEY_EDIT_REFRESH:
 			edit_refresh();
+			break;
+		 case HOTKEY_EDIT_UPDATE:
+			edit_update();
+			break;
+		 case HOTKEY_EDIT_AUTO_UPDATE:
+			edit_auto_update();
 			break;
 		 case HOTKEY_LANGUAGE:
 			change_language();

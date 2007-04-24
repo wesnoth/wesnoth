@@ -125,6 +125,8 @@ public:
 	virtual void edit_select_all();
 	virtual void edit_draw();
 	virtual void edit_refresh();
+	virtual void edit_update();
+	virtual void edit_auto_update();
 
 	void perform_flood_fill();
 	void perform_paste();
@@ -320,8 +322,9 @@ private:
 	gamemap::location selected_hex_;
 	// When map_dirty_ is true, schedule redraw of the minimap and
 	// perform some updates like recalculating labels of starting
-	// positions.
+	// positions. But only it the option auto_update is enabled 
 	bool map_dirty_;
+	bool auto_update_;
 	bool l_button_palette_dirty_;
 	bool everything_dirty_;
 	terrain_palette palette_;
