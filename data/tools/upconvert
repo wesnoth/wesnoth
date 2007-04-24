@@ -20,6 +20,8 @@
 # spotted and converted when preceded by space, comma, or equal sign.  This
 # will handle maps (either in their own files or included as a WML attribute)
 # and the most common cases in WML (e.g. filters and unit declarations).  
+#
+# This script will barf on maps with custom terrains.
 
 import sys, os, re, getopt
 
