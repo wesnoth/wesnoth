@@ -4,7 +4,7 @@
 # regression-testing against the Perl version; the final version of the
 # conversion logic will be folded into upconvert.
 
-import sys, os, re
+import sys, os, re, shutil
 
 # These are the final translations from 1.2.x to 1.3.2
 conversion = {
@@ -165,22 +165,21 @@ def texttransform(input, lineno, line):
 
 def translator(input, output, mapxform, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
+    modified = False
     # This hairy regexp excludes map_data lines that contain {} file
     # references, also lines that are empty or hold just one keep
     # character (somewhat pathological, but not handling these will
     # make the regression tests break).
     mapdata = re.compile(r'map_data="[A-Za-z0-9\/|\\&_~?\[\]\']{2,}') 
-
     mfile = []
     map_only = not input.endswith(".cfg")
     for line in open(input):
         mfile.append(line);
         if mapdata.search(line):
             map_only = False
-
     cont = False
     outmap = []
-    newfile = []
+    newdata = []
     lineno = baseline = 0
     while mfile:
         line = mfile.pop(0)
@@ -197,7 +196,7 @@ def translator(input, output, mapxform, textxform):
                 line = mfile.pop(0)
                 lineno += 1
                 if line and line[0] == '#':
-                    newfile.append(line)
+                    newdata.append(line)
                     continue
                 if '"' in line:
                     cont = False
@@ -208,21 +207,29 @@ def translator(input, output, mapxform, textxform):
                     outmap.append(line)
             if not map_only: 
                 line="map_data=\"\n";
-                newfile.append(line)
+                newdata.append(line)
             for y in range(len(outmap)):
-                newfile.append(mapxform(input, baseline, outmap, y))
+                newline = mapxform(input, baseline, outmap, y)
+                newdata.append(newline)
+                if newline != outmap[y]:
+                    modified = True
             # All lines of the map are processed, add the appropriate trailer
             if map_only:
                 line="\n"
             else:
                 line="\"\n"
-            newfile.append(line)
+            newdata.append(line)
         else:
-            newfile.append(textxform(input, lineno, line))
-
-    ofp = open(output, "w");
-    ofp.writelines(newfile)
-    ofp.close()
+            # Handle text (non-map) lines
+            newline = textxform(input, lineno, line)
+            newdata.append(newline)
+            if newline != line:
+                modified = True
+    # Return None if the transformation functions made no changes.
+    if modified:
+        return "".join(newdata)
+    else:
+        return None
 
 if __name__ == '__main__':
     if len(sys.argv) < 3 or len(sys.argv) > 4:
@@ -249,7 +256,13 @@ if __name__ == '__main__':
         sys.stderr.write("can not read map file: %s\n" % map_file)
         sys.exit(1)
 
-    translator(map_file, new_map_file, maptransform, texttransform)
+    changed = translator(map_file, new_map_file, maptransform, texttransform)
+    if changed == None:
+        shutil.copy(map_file, new_map_file)
+    else:
+        ofp = open(new_map_file, "w");
+        ofp.write(changed)
+        ofp.close()
 
 # map_convert ends here.
 
