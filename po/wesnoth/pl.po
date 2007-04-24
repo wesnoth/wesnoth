@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-22 22:35+0200\n"
-"PO-Revision-Date: 2007-02-16 23:39+0100\n"
+"PO-Revision-Date: 2007-04-24 20:02+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -291,7 +291,6 @@ msgid "slows"
 msgstr "spowalnia"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -300,7 +299,7 @@ msgstr ""
 "Spowolnienie:\n"
 "Ten atak spowalnia cel do końca jego tury. Spowolnienie zmniejsza o połowę "
 "obrażenia zadawane przez ataki, a spowolniona jednostka porusza się z połową "
-"swojej normalnej szybkości (zaokrąglając w górę)."
+"swojej normalnej szybkości."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -12706,14 +12705,12 @@ msgid "Back to turn "
 msgstr "Do tury "
 
 #: src/playcampaign.cpp:112
-#, fuzzy
 msgid "Autosaves"
-msgstr "Autozapis"
+msgstr "Autozapisy"
 
 #: src/playcampaign.cpp:113
-#, fuzzy
 msgid "Do you want to delete the autosaves of this scenario?"
-msgstr "Czy zapisać powtórkę tego scenariusza?"
+msgstr "Czy usunąć autozapisy tego scenariusza?"
 
 #: src/playcampaign.cpp:304
 msgid "Defeat"
