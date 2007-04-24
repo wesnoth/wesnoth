@@ -85,8 +85,160 @@ filemoves = {
     "1.3.2" : (),
 }
 
+# 1.2.x to 1.3.2 terrain conversion
+conversion1 = {
+    " " : "_s",
+    "&" : "Mm^Xm",
+    "'" : "Uu^Ii",
+    "/" : "Ww^Bw/",
+    "1" : "1 _K",
+    "2" : "2 _K",
+    "3" : "3 _K",
+    "4" : "4 _K",
+    "5" : "5 _K",
+    "6" : "6 _K",
+    "7" : "7 _K",
+    "8" : "8 _K",
+    "9" : "9 _K",
+    "?" : "Gg^Fet",
+    "A" : "Ha^Vhha",
+    "B" : "Dd^Vda",
+    "C" : "Ch",
+    "D" : "Uu^Vu",
+    "E" : "Rd",
+    "F" : "Aa^Fpa",
+    "G" : "Gs",
+    "H" : "Ha",
+    "I" : "Dd",
+    "J" : "Hd",
+    "K" : "_K",
+    "L" : "Gs^Vht",
+    "M" : "Md",
+    "N" : "Chr",
+    "P" : "Dd^Do",
+    "Q" : "Chw",
+    "R" : "Rr",
+    "S" : "Aa",
+    "T" : "Gs^Ft",
+    "U" : "Dd^Vdt",
+    "V" : "Aa^Vha",
+    "W" : "Xu",
+    "X" : "Qxu",
+    "Y" : "Ss^Vhs",
+    "Z" : "Ww^Vm",
+    "[" : "Uh",
+    "\\": "Ww^Bw\\",
+    "]" : "Uu^Uf",
+    "a" : "Hh^Vhh",
+    "b" : "Mm^Vhh",
+    "c" : "Ww",
+    "d" : "Ds",
+    "e" : "Aa^Vea",
+    "f" : "Gs^Fp",
+    "g" : "Gg",
+    "h" : "Hh",
+    "i" : "Ai",
+    "k" : "Wwf",
+    "l" : "Ql",
+    "m" : "Mm",
+    "n" : "Ce",
+    "o" : "Cud",
+    "p" : "Uu^Vud",
+    "q" : "Chs",
+    "r" : "Re",
+    "s" : "Wo",
+    "t" : "Gg^Ve",
+    "u" : "Uu",
+    "v" : "Gg^Vh",
+    "w" : "Ss",
+    "|" : "Ww^Bw|",
+    "~" : "_f",
+}
+max_len = max(*map(len, conversion1.values()))
+
+def get_adjacent(x, y, map):
+    "Returns string of original location+adjacent locations on hex 1-char map"
+    odd = (x) % 2
+    adj = map[y][x];
+    if x > 0:
+	adj += map[y][x-1]
+    if x < len(map[y])-1:
+	adj += map[y][x+1]
+    if y > 0:
+	adj += map[y-1][x]
+    if y < len(map)-1:
+	adj += map[y+1][x]
+    if x > 0 and y > 0 and not odd:
+	adj += map[y-1][x-1]
+    if x < len(map[y])-1 and y > 0 and not odd:
+	adj += map[y-1][x+1];
+    if x > 0 and y < len(map)-1 and odd:
+	adj += map[y+1][x-1]
+    if x < len(map[y])-1 and y < len(map)-1 and odd:
+	adj += map[y+1][x+1]
+    adj = adj.replace("\n", "").replace("\r", "")
+    return adj
+
+width = max_len+2
+
+def maptransform1(input, baseline, inmap, y):
+    "Transform a map line from 1.2.x to 1.3.x format."
+    format = "%%%d.%ds" % (width, max_len)
+    x = 0
+    if "," in inmap[y]:
+        raise maptransform_error(input, baseline, x, y,
+                                 "map file appears to be converted already")
+    line = ''
+    for char in inmap[y]:
+        ohex = ''
+        if char in ('\n', '\r'):
+            ohex += char
+        elif char in conversion1:
+            ohex = format % conversion1[char] + ','
+        else:
+            raise maptransform_error(input, baseline+y+1, x, y,
+                                     "unrecognized character %s (%d)" % (`char`, ord(char)))
+            # ohex = format % char
+            sys.exit(1)
+        if "_K" in ohex:
+            # Convert keeps according to adjacent hexes
+            adj = get_adjacent(x, y, inmap)
+            # print "adjacent: %s" % adj
+            hexcount = {}
+            for i in range(1, len(adj)):
+                # Intentionally skipping 0 as it is original hex
+                a = adj[i];
+                if not a in conversion1:
+                    raise maptransform_error(input, baseline, x, y,
+                                 "error in adjacent hexes")
+                    sys.exit(1)
+                ca = conversion1[a]
+                if ca.startswith("C"): #this is a castle hex	
+                     hexcount[ca] = hexcount.get(ca, 0) + 1
+            maxc = 0;
+            maxk = "Ch";
+            # Next line is a hack to make this code pass
+            # regression testing against the Perl
+            # original. Without the sort, when there are
+            # two terrain types that occur in equal
+            # numbers greater than any others, which one
+            # gets picked will be randomly dependent on
+            # Python's dictionary hash function.
+            sorted = hexcount.keys()
+            sorted.sort()
+            for k in sorted:
+                if hexcount[k] > maxc:
+                    maxc = hexcount[k]
+                    maxk = k
+            #print "Dominated by %s" % maxk
+            maxk = re.sub("^C", "K", maxk)
+            ohex = ohex.replace("_K", maxk)
+        line += ohex
+        x += 1
+    return line.replace(",\n", "\n")
+
 # 1.3.1 -> 1.3.2 terrain conversions
-terrain_conversions = {
+conversion2 = {
     re.compile(r"(?<=[ ,=])Bww([|/\\])\b") : "Ww^Bw\\1",
     re.compile(r"(?<=[ ,=])Bwo([|/\\])\b") : "Wo^Bw\\1",
     re.compile(r"(?<=[ ,=])Bss([|/\\])\b") : "Ss^Bw\\1",
@@ -119,17 +271,26 @@ terrain_conversions = {
     re.compile(r"(?<=[ ,=])Xm\b") : "Mm^Xm"
     }
 
+def maptransform2(input, baseline, inmap, y):
+    "Convert a map line from 1.3.1 multiletter format to 1.3.2 format."
+    mapline = inmap[y]
+    for (old, new) in conversion2.items():
+        mapline = old.sub(new, mapline)
+    return mapline
+
+# Generic machinery starts here
+
 class maptransform_error:
     "Error object to be thrown by maptransform."
-    def __init__(self, infile, inline, imap, x, y, type):
+    def __init__(self, infile, inline, x, y, type):
         self.infile = infile
         self.inline = inline
         self.x = x
         self.y = y
         self.type = type
-    def __str__(self):
-        return '"%s", line %d: %s at (%d, %d)\n' % \
-                   (self.input, self.inline, self.type, self.x, self.y)
+    def __repr__(self):
+        return '"%s", line %d: %s at (%d, %d)' % \
+                   (self.infile, self.inline, self.type, self.x, self.y)
 
 def translator(input, mapxform, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
@@ -199,6 +360,8 @@ def translator(input, mapxform, textxform):
     else:
         return None
 
+ignore = (".tgz", ".png", ".jpg")
+
 def allcfgfiles(dir):
     "Get the names of all .cfg files under dir, ignoring .svn directories."
     datafiles = []
@@ -206,10 +369,10 @@ def allcfgfiles(dir):
                  lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
                  None)
     datafiles = filter(lambda x: ".svn" not in x, datafiles)
-    datafiles = filter(lambda x: x.endswith(".cfg") or ('maps' in x and os.path.isfile(x)), datafiles)
+    datafiles = filter(lambda x: x.endswith(".cfg") or ('maps' in x and os.path.isfile(x) and x[-4:] not in ignore), datafiles)
     return datafiles
 
-    def help():
+def help():
         sys.stderr.write("""\
 Usage: upconvert [options]
     Convert Battle of Wesnoth WML from older versions to newer ones.
@@ -221,24 +384,6 @@ Usage: upconvert [options]
     -c, --clean                Clean up -bak files
     -r, --revert               Revert the conversion from the -bak files
 """)
-
-def texttransform(input, lineno, line):
-    "Resource-name transformation on text lines."
-    transformed = line
-    for step in fileconversions:
-        for (old, new) in step:
-            transformed = transformed.replace(old, new)
-    if transformed != line:
-        print "%s, line %d: %s -> %s" % \
-              (input, lineno+1, line.strip(), transformed.strip())
-    return transformed
-
-def maptransform(input, baseline, inmap, y):
-    "Convert a map line from 1.3.1 multiletter format to 1.3.2 format."
-    mapline = inmap[y]
-    for (old, new) in terrain_conversions.items():
-        mapline = old.sub(new, mapline)
-    return mapline
 
 if __name__ == '__main__':
     (options, arguments) = getopt.getopt(sys.argv[1:], "cdho:rv", [
@@ -288,6 +433,22 @@ if __name__ == '__main__':
     sys.stdout.write(explain[:-1] + ".\n")
     fileconversions = map(lambda x: filemoves[x], versions[:-1])
 
+    def texttransform(input, lineno, line):
+        "Resource-name transformation on text lines."
+        transformed = line
+        for step in fileconversions:
+            for (old, new) in step:
+                transformed = transformed.replace(old, new)
+        if transformed != line:
+            print "%s, line %d: %s -> %s" % \
+                  (input, lineno+1, line.strip(), transformed.strip())
+        return transformed
+
+    if "1.3.1" in versions and "older" not in versions:
+        maptransform = maptransform2
+    else:
+        maptransform = maptransform1
+
     # Perform resource file substitutions
     ofp = None
     for fn in allcfgfiles("."):
@@ -318,6 +479,5 @@ if __name__ == '__main__':
                         ofp.close()
             except maptransform_error, e:
                 sys.stderr.write("upconvert: " + `e` + "\n")
-                sys.exit(1)
 
 # upconvert ends here
