@@ -353,7 +353,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	UI_sound_slider_.set_help_string(_("Change the sound volume for button clicks, etc."));
 
 	sound_sources_button_.set_check(sound_sources_on());
-	sound_sources_button_.set_help_string(_("Turn menu and button environmental sound sources on/off"));
+	sound_sources_button_.set_help_string(_("Turn environmental sound sources on/off"));
 	sound_sources_slider_.set_min(0);
 	sound_sources_slider_.set_max(128);
 	sound_sources_slider_.set_value(sound_sources_volume());
