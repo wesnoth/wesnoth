@@ -159,8 +159,8 @@ while mfile:
             if '"' in line:
                 cont = False
 		line = line.split('"')[0]
-                if line and not line.endswith("\n"):
-                    line += "\n"
+            if line and not line.endswith("\n"):
+                line += "\n"
             if line:
                 outmap.append(line)
 	if not map_only: 

@@ -194,6 +194,9 @@ while($#mfile){
 		 $cont=0;
 		($line,$dummy)=split('"',$line);
 	     }
+	     if (!$line=~/\n/){
+		 $line.="\n"
+	     }
 	     if(defined($line) && length($line)){push(@map,$line)};
        	 }
 
