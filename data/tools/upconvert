@@ -119,6 +119,86 @@ terrain_conversions = {
     re.compile(r"(?<=[ ,=])Xm\b") : "Mm^Xm"
     }
 
+class maptransform_error:
+    "Error object to be thrown by maptransform."
+    def __init__(self, infile, inline, imap, x, y, type):
+        self.infile = infile
+        self.inline = inline
+        self.x = x
+        self.y = y
+        self.type = type
+    def __str__(self):
+        return '"%s", line %d: %s at (%d, %d)\n' % \
+                   (self.input, self.inline, self.type, self.x, self.y)
+
+def translator(input, mapxform, textxform):
+    "Apply mapxform to map lines and textxform to non-map lines."
+    modified = False
+    # This hairy regexp excludes map_data lines that contain {} file
+    # references, also lines that are empty or hold just one keep
+    # character (somewhat pathological, but not handling these will
+    # make the regression tests break).
+    mapdata = re.compile(r'map_data="[A-Za-z0-9\/|\\&_~?\[\]\']{2,}') 
+    mfile = []
+    map_only = not input.endswith(".cfg")
+    for line in open(input):
+        mfile.append(line);
+        if mapdata.search(line):
+            map_only = False
+    cont = False
+    outmap = []
+    newdata = []
+    lineno = baseline = 0
+    while mfile:
+        line = mfile.pop(0)
+        lineno += 1
+        if map_only or mapdata.search(line):
+            baseline = 0
+            cont = True
+            # Assumes map is more than 1 line long.
+            if not map_only:
+                line = line.split('"')[1]
+            if line:
+                outmap.append(line)
+            while cont and mfile:
+                line = mfile.pop(0)
+                lineno += 1
+                if line and line[0] == '#':
+                    newdata.append(line)
+                    continue
+                if '"' in line:
+                    cont = False
+                    line = line.split('"')[0]
+                if line and not line.endswith("\n"):
+                    line += "\n"
+                if line:
+                    outmap.append(line)
+            if not map_only: 
+                line="map_data=\"\n";
+                newdata.append(line)
+            for y in range(len(outmap)):
+                newline = mapxform(input, baseline, outmap, y)
+                newdata.append(newline)
+                if newline != outmap[y]:
+                    modified = True
+            # All lines of the map are processed, add the appropriate trailer
+            if map_only:
+                line="\n"
+            else:
+                line="\"\n"
+            newdata.append(line)
+        else:
+            # Handle text (non-map) lines
+            newline = textxform(input, lineno, line)
+            newdata.append(newline)
+            if newline != line:
+                modified = True
+    # Return None if the transformation functions made no changes.
+    if modified:
+        return "".join(newdata)
+    else:
+        return None
+
 def allcfgfiles(dir):
     "Get the names of all .cfg files under dir, ignoring .svn directories."
     datafiles = []
@@ -142,8 +222,20 @@ Usage: upconvert [options]
     -r, --revert               Revert the conversion from the -bak files
 """)
 
-def mapconvert2(mapline):
+def texttransform(input, lineno, line):
+    "Resource-name transformation on text lines."
+    transformed = line
+    for step in fileconversions:
+        for (old, new) in step:
+            transformed = transformed.replace(old, new)
+    if transformed != line:
+        print "%s, line %d: %s -> %s" % \
+              (input, lineno+1, line.strip(), transformed.strip())
+    return transformed
+
+def maptransform(input, baseline, inmap, y):
     "Convert a map line from 1.3.1 multiletter format to 1.3.2 format."
+    mapline = inmap[y]
     for (old, new) in terrain_conversions.items():
         mapline = old.sub(new, mapline)
     return mapline
@@ -215,36 +307,17 @@ if __name__ == '__main__':
                         os.rename(backup, fn)
         else:
             # Do file conversions
-            if dryrun:
-                ifp = open(fn)
-            else:
-                os.rename(fn, backup)
-                ifp = open(backup)
-                ofp = open(fn, "w")
-            modified = False
-            for (i, line) in enumerate(ifp):
-                transformed = line
-                # Filename conversions
-                if ".cfg" in fn:
-                    for step in fileconversions:
-                        for (old, new) in step:
-                            transformed = transformed.replace(old, new)
-                # Map-format conversions
-                if "1.3.1" in versions and 'message' not in transformed:
-                    transformed = mapconvert2(transformed)
-                if ofp:
-                    ofp.write(transformed)
-                if transformed != line:
-                    if not 'maps' in fn:
-                        print "%s, line %d: %s -> %s" % \
-                              (fn, i+1, line.strip(), transformed.strip())
-                    modified = True
-            if ofp:
-                ofp.close()
-                if not modified:
-                    # Nothing changed, move the backup file back into place.
-                    os.rename(backup, fn)
-            if modified and 'maps' in fn:
-                print "%s modified." % fn
+            try:
+                changed = translator(fn, maptransform, texttransform)
+                if changed:
+                    print "%s modified." % fn
+                    if not dryrun:
+                        os.rename(fn, backup)
+                        ofp = open(fn, "w")
+                        ofp.write(changed)
+                        ofp.close()
+            except maptransform_error, e:
+                sys.stderr.write("upconvert: " + `e` + "\n")
+                sys.exit(1)
 
 # upconvert ends here
