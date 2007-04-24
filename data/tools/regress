@@ -16,7 +16,7 @@ do
 	file=`echo $file | tr '$' ' '`
 	if map_convert.pl ${TERRAIN} "${file}" "${file}-pl"
 	then
-		if map_convert.py ${TERRAIN} "${file}" "${file}-py"
+		if map_convert.py "${file}" "${file}-py"
 		then
 			if diff -u "${file}-pl" "${file}-py"
 			then

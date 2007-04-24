@@ -6,8 +6,79 @@
 
 import sys, os, re
 
+# These are the final translations from 1.2.x to 1.3.2
+conversion = {
+    " " : "_s",
+    "&" : "Mm^Xm",
+    "'" : "Uu^Ii",
+    "/" : "Ww^Bw/",
+    "1" : "1 _K",
+    "2" : "2 _K",
+    "3" : "3 _K",
+    "4" : "4 _K",
+    "5" : "5 _K",
+    "6" : "6 _K",
+    "7" : "7 _K",
+    "8" : "8 _K",
+    "9" : "9 _K",
+    "?" : "Gg^Fet",
+    "A" : "Ha^Vhha",
+    "B" : "Dd^Vda",
+    "C" : "Ch",
+    "D" : "Uu^Vu",
+    "E" : "Rd",
+    "F" : "Aa^Fpa",
+    "G" : "Gs",
+    "H" : "Ha",
+    "I" : "Dd",
+    "J" : "Hd",
+    "K" : "_K",
+    "L" : "Gs^Vht",
+    "M" : "Md",
+    "N" : "Chr",
+    "P" : "Dd^Do",
+    "Q" : "Chw",
+    "R" : "Rr",
+    "S" : "Aa",
+    "T" : "Gs^Ft",
+    "U" : "Dd^Vdt",
+    "V" : "Aa^Vha",
+    "W" : "Xu",
+    "X" : "Qxu",
+    "Y" : "Ss^Vhs",
+    "Z" : "Ww^Vm",
+    "[" : "Uh",
+    "\\": "Ww^Bw\\",
+    "]" : "Uu^Uf",
+    "a" : "Hh^Vhh",
+    "b" : "Mm^Vhh",
+    "c" : "Ww",
+    "d" : "Ds",
+    "e" : "Aa^Vea",
+    "f" : "Gs^Fp",
+    "g" : "Gg",
+    "h" : "Hh",
+    "i" : "Ai",
+    "k" : "Wwf",
+    "l" : "Ql",
+    "m" : "Mm",
+    "n" : "Ce",
+    "o" : "Cud",
+    "p" : "Uu^Vud",
+    "q" : "Chs",
+    "r" : "Re",
+    "s" : "Wo",
+    "t" : "Gg^Ve",
+    "u" : "Uu",
+    "v" : "Gg^Vh",
+    "w" : "Ss",
+    "|" : "Ww^Bw|",
+    "~" : "_f",
+}
+max_len = max(*map(len, conversion.values()))
+
 def printUsage():
-    print "map_convert.pl terrain.cfg map_file.cfg [new_map_file.cfg]\n"
+    print "map_convert.pl map_file.cfg [new_map_file.cfg]\n"
 
 def get_adjacent(x, y, map):
     "Returns string of original location+adjacent locations on hex 1-char map"
@@ -37,7 +108,6 @@ if len(sys.argv) < 3 or len(sys.argv) > 4:
     sys.exit(1)
 
 sys.argv.pop(0)
-terrain_file = sys.argv.pop(0)
 map_file = sys.argv.pop(0)
 if not sys.argv:
     new_map_file = map_file;
@@ -53,74 +123,11 @@ else:
         sys.stderr.write("map_convert: new map file already exists: %s\n" %new_map_file)
         sys.exit(1)
 
-if not os.path.exists(terrain_file):
-    sys.stderr.write("map_convert: can not read terrain file: %s\n"%terrain_file)
-    sys.exit(1)
-
 if not os.path.exists(map_file):
     sys.stderr.write("can not read map file: %s\n" % map_file)
     sys.exit(1)
 
-conversion = {}
-conversion["1"] = '1 _K'
-conversion["2"] = '2 _K'
-conversion["3"] = '3 _K'
-conversion["4"] = '4 _K'
-conversion["5"] = '5 _K'
-conversion["6"] = '6 _K'
-conversion["7"] = '7 _K'
-conversion["8"] = '8 _K'
-conversion["9"] = '9 _K'
-conversion[" "] = '_s'
-
-# Parse terrain_file
-tfp = open(terrain_file)
-countdef = 0
-max_len = 0
-while True:
-    line = tfp.readline()
-    if not line:
-        break
-
-    # Skip ifdef'd comments
-    if line.startswith("#ifdef"):
-	countdef +=1;
-    if line.startswith("#endif"):
-	countdef -=1;
-    elif not line.startswith("#") and countdef == 0:
-        # Parse [terrain] blocks
-        if "[terrain]" in line:
-	    char = ''
-	    string = ''
-	    inside = True
-            while inside:
-                line = tfp.readline()
-                if not line:
-                    break
-		line = line.strip().replace(" ", "").replace("\t", "")
-                if line.startswith("char"):
-                    char = line[4:]
-		    (dummy, char) = char.split('=');
-		    char = char.replace('"', '')
-                    if char:
-                        char = char[0]
-		elif line.startswith("string"):
-                    string=line[6:]
-		    (dummy, string) = string.split('=')
-		    string = string.replace('"', '')
-		elif line.startswith("[/terrain]"):
-		    inside = False
-                    if char and len(char) == 1 and string:
-                        if len(string) > max_len:
-			    max_len = len(string)
-			conversion[char] = string;
-tfp.close()
 width = max_len+2
-
-#keys = conversion.keys()
-#keys.sort()
-#for k in keys:
-#    print "%s -> %s" % (k, conversion[k])
 
 # This hairy regexp excludes map_data lines that contain {} file references,
 # also lines that are empty or hold just one keep character (somewhat
