@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# Test map_convert.py against map_convert.pl.
+# If these scripts are really equivalent, we should see no diffs.
+
+# UMC should point at a mirror of the campaign server
+UMC=../../umc
+TERRAIN=../terrain.cfg
+
+cleanup() {
+    find $UMC -type f -regex '.*-p[ly]' -exec rm {} \;
+}
+
+cleanup;
+
+# The enumeration relies on $ not being in any filename
+for file in `find $UMC -name '*.cfg' | tr ' ' '$'; find $UMC -type f -wholename '*/maps/*'`
+do
+	file=`echo $file | tr '$' ' '`
+	echo "${file}"
+	if map_convert.pl ${TERRAIN} "${file}" "${file}-pl"
+	then
+		if map_convert.py ${TERRAIN} "${file}" "${file}-py"
+		then
+			diff -u "${file}-pl" "${file}-py"
+		else
+			echo "Python conversion failed"
+			exit 1
+		fi
+	else
+		echo "Perl conversion failed"
+		continue
+		#exit 1
+	fi
+done
+
+# -pl and -py files are left in place only if something failed
+cleanup;
+exit 0
