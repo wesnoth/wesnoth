@@ -52,6 +52,15 @@ inline int round_damage(int base_damage, int bonus, int divisor) {
 	return maximum<int>(1, (base_damage * bonus + rounding) / divisor);
 }
 
+// not guaranteed to have exactly the same result on different platforms
+inline int round_double(double d) {
+#ifdef _MSC_VER
+	return static_cast<int>((d >= 0.0)? floor(d + 0.5) : ceil(d - 0.5));
+#else
+	return static_cast<int>(round(d));
+#endif
+}
+
 struct bad_lexical_cast {};
 
 template<typename To, typename From>

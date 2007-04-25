@@ -635,9 +635,9 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 		dist_moved += velocity * dt;
 		if (dist_moved > dist_total) dist_moved = dist_total;
 
-		int x_new = (int)round(xmove * (dist_moved/dist_total));
-		int y_new = (int)round(ymove * (dist_moved/dist_total));
-		
+		int x_new = round_double(xmove * dist_moved / dist_total);
+		int y_new = round_double(ymove * dist_moved / dist_total);
+
 		int dx = x_new - x_old;
 		int dy = y_new - y_old;
 
