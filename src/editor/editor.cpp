@@ -370,14 +370,16 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 			const int ydisp = mousey - centery;
 			gui_.scroll(xdisp, ydisp);
 		}
-		if (event.button == SDL_BUTTON_WHEELUP) {
-			scrolly = - preferences::scroll_speed();
-		} else if (event.button == SDL_BUTTON_WHEELDOWN) {
-			scrolly = preferences::scroll_speed();
- 		} else if (event.button == SDL_BUTTON_WHEELLEFT) {
-			scrollx = - preferences::scroll_speed();
-  		} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
-			scrollx = preferences::scroll_speed();
+		if (point_in_rect(mousex, mousey, gui_.map_area())) {
+			if (event.button == SDL_BUTTON_WHEELUP) {
+				scrolly = - preferences::scroll_speed();
+			} else if (event.button == SDL_BUTTON_WHEELDOWN) {
+				scrolly = preferences::scroll_speed();
+			} else if (event.button == SDL_BUTTON_WHEELLEFT) {
+				scrollx = - preferences::scroll_speed();
+			} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
+				scrollx = preferences::scroll_speed();
+			}
 		}
 
 		if (scrollx != 0 || scrolly != 0) {
