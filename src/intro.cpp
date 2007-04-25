@@ -331,7 +331,7 @@ bool show_intro_part(display &disp, const config& part,
 			disp.delay(20);
 	}
 
-	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,0,0,0,1.0,
+	draw_solid_tinted_rectangle(0,0,video.getx(),video.gety(),0,0,0,1.0,
                                      video.getSurface());
 
 	return true;
