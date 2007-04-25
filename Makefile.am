@@ -111,7 +111,7 @@ dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	( $(finddata); $(findnoinst) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
-dist_noinst_DATA = copyright changelog wesnoth.dsp wesnoth.dsw
+dist_noinst_DATA = copyright changelog players_changelog wesnoth.dev editor.dev server.dev wesnoth.kdevelop campaign_server.dsp map_editor.dsp server.dsp wesnoth.dsp wesnoth.dsw
 
 uninstall-hook:
 	if test -d $(pkgdatadir) ; then rm -r $(pkgdatadir) ; fi
