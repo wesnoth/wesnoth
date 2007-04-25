@@ -196,6 +196,11 @@ map_editor::map_editor(display &gui, editormap &map, config &theme, config &game
 	}
 	else {
 		hotkey::load_hotkeys(hotkeys_);
+
+		//FIXME: saved hotkeys doesn't reload correctly,
+		// so we just reread the theme hotkeys every time
+		hotkey::load_hotkeys(theme_);
+		
 		palette_.select_fg_terrain(old_fg_terrain_);
 		palette_.select_bg_terrain(old_bg_terrain_);
 		brush_.select_brush_size(old_brush_size_);
