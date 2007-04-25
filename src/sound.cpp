@@ -346,7 +346,6 @@ bool init_sound() {
 
 		set_sound_volume(preferences::sound_volume());
 		set_UI_volume(preferences::UI_volume());
-		set_sound_sources_volume(preferences::sound_sources_volume());
 		set_music_volume(preferences::music_volume());
 		set_bell_volume(preferences::bell_volume());
 
@@ -457,21 +456,6 @@ void stop_UI_sound() {
 		while(itor != sound_cache.end())
 		{
 			if(itor->group == SOUND_UI) {
-				itor = sound_cache.erase(itor);
-			} else {
-				++itor;
-			}
-		}
-	}
-}
-
-void stop_sound_sources() {
-	if(mix_ok) {
-		Mix_HaltGroup(SOUND_SOURCES);
-		sound_cache_iterator itor = sound_cache.begin();
-		while(itor != sound_cache.end())
-		{
-			if(itor->group == SOUND_SOURCES) {
 				itor = sound_cache.erase(itor);
 			} else {
 				++itor;
@@ -634,8 +618,8 @@ void write_music_play_list(config& snapshot)
 void reposition_sound(int id, unsigned int distance)
 {
 	audio_lock lock();
-	for(unsigned int ch = 0; ch < channel_ids.size(); ++ch) {
-		int & ch_id = channel_ids[ch];
+	for(int ch = 0; ch < channel_ids.size(); ++ch) {
+		int& ch_id = channel_ids[ch];
 		if(ch_id == id) {
 			if(distance >= DISTANCE_SILENT) {
 				Mix_FadeOutChannel(ch, 100);
@@ -779,8 +763,7 @@ void set_sound_volume(int vol)
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
 
-		// Bell, UI and sound sources have separate channels which we 
-		// can't set up from this
+		// Bell has separate channel which we can't set up from this
 		for (unsigned i = 0; i < n_of_channels; i++){
 			if(i != UI_sound_channel && i != bell_channel) {
 				Mix_Volume(i, vol);
@@ -806,18 +789,6 @@ void set_UI_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 
 		Mix_Volume(UI_sound_channel, vol);
-	}
-}
-
-void set_sound_sources_volume(int vol)
-{
-	if(mix_ok && vol >= 0) {
-		if(vol > MIX_MAX_VOLUME)
-			vol = MIX_MAX_VOLUME;
-
-		for (unsigned i = source_channel_start; i - source_channel_start < source_channels; i++) {
-			Mix_Volume(i, vol);
-		}
 	}
 }
 
