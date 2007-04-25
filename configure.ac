@@ -237,6 +237,11 @@ AC_ARG_ENABLE([internal-data],
 		[internaldata=$enableval],
 		[internaldata=no])
 
+AC_ARG_ENABLE([display-revision],
+              AS_HELP_STRING([--display-revisiion], [enable svn revision display]),
+	      [svnrev=$enableval],
+	      [svnrev=no])
+
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
@@ -254,6 +259,10 @@ fi
 
 if test x$internaldata = xyes; then
   AC_DEFINE([USE_INTERNAL_DATA],[],[Define if translations should be placed inside app, for Mac OS X])
+fi
+
+if test x$svnrev = xyes; then
+  AC_DEFINE([DO_DISPLAY_REVISION],[],[Define if SVN revision should be displayed when querying the version])
 fi
 
 AC_ARG_ENABLE([desktop-entry],

@@ -232,9 +232,9 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	const std::string& version_str = _("Version") + std::string(" ") +
 		game_config::version
-#ifdef SVNREV
+#if defined(SVNREV) and defined(DO_DISPLAY_REVISION)
        		+ " (" + game_config::svnrev + ")"
-#endif /* SVNREV */
+#endif /* defined(SVNREV) and defined(DO_DISPLAY_REVISION) */
        	;
 
 	const SDL_Rect version_area = font::draw_text(NULL,screen_area(),
