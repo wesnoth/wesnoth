@@ -87,6 +87,7 @@ def allfiles(dirpath, exclude):
     datafiles = filter(lambda x: not os.path.isdir(x), datafiles)
     if exclude:
         datafiles = filter(lambda x: not re.search(exclude, x), datafiles)
+    datafiles = filter(lambda x: not x.endswith("-bak"), datafiles)
     return datafiles
 
 def iswml(filename):

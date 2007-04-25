@@ -30,9 +30,30 @@ import sys, os, re, getopt
 filemoves = {
     # Older includes all previous to 1.3.1.
     "older" : (
-    	("creepy.ogg", "underground.ogg"),
-        ("eagle.wav", "gryphon-shriek-1.ogg"),
-        ("lightning.wav", "lightning.ogg"),	# Bug fix
+        # These are picked to cover as many as possible of the broken
+        # references in UMC on the campaign server.
+    	("creepy.ogg",           "underground.ogg"),
+        ("eagle.wav",            "gryphon-shriek-1.ogg"),
+        ("lightning.wav",        "lightning.ogg"),	# Bug fix
+        ("items/monolith1.png",  "scenery/monolith1.png"),
+        ("items/monolith2.png",  "scenery/monolith2.png"),
+        ("items/monolith3.png",  "scenery/monolith3.png"),
+        ("items/monolith4.png",  "scenery/monolith4.png"),
+        ("items/rock1.png",      "scenery/rock1.png"),
+        ("items/rock2.png",      "scenery/rock2.png"),
+        ("items/rock3.png",      "scenery/rock3.png"),
+        ("items/rock4.png",      "scenery/rock4.png"),
+        ("items/castle-ruins",   "scenery/castle-ruins.png"),
+        ("items/well.png",           "scenery/well.png"),
+        ("terrain/flag-1.png",   "flags/flag-1.png"),
+        ("terrain/flag-2.png",   "flags/flag-2.png"),
+        ("terrain/flag-3.png",   "flags/flag-3.png"),
+        ("terrain/flag-4.png",   "flags/flag-4.png"),
+        ("terrain/village-dwarven-tile.png","terrain/village/dwarven-tile.png"),
+        ("terrain/village-cave-tile.png","terrain/village/cave-tile.png"),
+        ("misc/dwarven-doors.png", "scenery/dwarven-doors-closed.png"),
+        ("sword-swish.wav",       "sword-1.ogg"),
+        ("attacks/darkstaff.png", "attacks/staff-necromantic.png"),
     ),
     "1.3.1" : (
         # Peasant images moved to a new directory
@@ -374,6 +395,7 @@ def allcfgfiles(dir):
                  None)
     datafiles = filter(lambda x: ".svn" not in x, datafiles)
     datafiles = filter(lambda x: x.endswith(".cfg") or ('maps' in x and os.path.isfile(x) and x[-4:] not in ignore), datafiles)
+    datafiles = filter(lambda x: not x.endswith("-bak"), datafiles)
     return datafiles
 
 def help():
