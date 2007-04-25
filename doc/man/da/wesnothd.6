@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2006 wesnothd "Kampen om Wesnoth flerspiller netværksdæmon"
+.TH WESNOTHD 6 2006 wesnothd "Kampen om Wesnoth flerspiller\-netværksdæmon"
 .
 .SH NAVN
 .
@@ -31,42 +31,42 @@ wesnothhd \- Kampen om \fBWesnoth\fP flerspiller netværksdæmon
 .
 .SH BESKRIVELSE
 .
-Håndterer Kampen om Wesnoths under flerspiller. Se
+Håndterer flerspillers\-sessioner af Kampen om Wesnoth. Se
 http://www.wesnoth.org/wiki/ServerAdministration for hvilke kommandoer
 serveren accepterer via wesnoth\-klienten eller soklen.
 .
-.SH INDSTILLINGER
+.SH TILVALG
 .
 .TP 
-\fB\-c,\ \-\-indstil\fP\fI\ sti\fP
+\fB\-c,\ \-\-config\fP\fI\ sti\fP
 fortæller wesnothd hvor den skal finde konfigurationsfilen. Se afsnittet
-\fBSERVER INDSTILLING\fP nedenfor for syntaks.
+\fBSERVERINDSTILLING\fP nedenfor for syntaks.
 .TP 
-\fB\-d,\ \-\-dæmon\fP
+\fB\-d,\ \-\-daemon\fP
 kør wesnothd som en dæmon.
 .TP 
-\fB\-h,\ \-\-hjælp\fP
-fortæller dig hvad kommandolinjen gør.
+\fB\-h,\ \-\-help\fP
+fortæller dig hvad kommandolinje\-tilvalgene gør.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
-Tildeler serveren til den specificerede port. Hvis ingen port er
+tildeler serveren til den specificerede port. Hvis ingen port er
 specificeret vil port 15000 blive anvendt.
 .TP 
-\fB\-t,\ \-\-tråde\fP\fI\ nummer\fP
+\fB\-t,\ \-\-threads\fP\fI\ nummer\fP
 indstiller det maksimale antal af ventende tråde til netværk I/O til n
 (standard: 5, maks: 30).
 .TP 
-\fB\-T,\ \-\-maks\-tråde\fP\fI\ nummer\fP
+\fB\-T,\ \-\-max\-threads\fP\fI\ nummer\fP
 indstiller det maksimale antal af tråde som bliver lavet. Hvis den sættes
 til 0 vil der ikke være en begrænsning (standard: 0).
 .TP 
 \fB\-V,\ \-\-version\fP
-viser versionnummer og afslutter.
+viser versionsnummer og afslutter.
 .TP 
-\fB\-v,\ \-\-uddybende\fP
+\fB\-v,\ \-\-verbose\fP
 tænder for mere uddybende log
 .
-.SH "SERVER INDSTILLING"
+.SH SERVERINDSTILLING
 .
 .SS "Den generelle syntaks er:"
 .
@@ -82,43 +82,42 @@ nøgle="\fIværdi\fP,\fIværdi\fP,..."
 .SS "Globale nøgler:"
 .
 .TP 
-\fBforbindelser_tilladt\fP
+\fBconnections_allowed\fP
 Antallet af tilladte forbindelser fra samme IP. (standard: 5)
 .TP 
-\fBforbyd_navne\fP
-Navne som ikke accepteres af serveren. '*' og `?' fra wildcard patterns er
+\fBdisallow_names\fP
+Navne som ikke accepteres af serveren. '*' og `?' fra wildcard mønstre er
 understøttet. Se \fBglob\fP(7)  for flere detaljer.  Standardværdier (anvendes
-hvis intet er anført) er:
-`server,computerspiller,spiller,netværk,menneske,admin,computer'.
+hvis intet er anført) er: `server,ai,player,netværk,human,admin,computer'.
 .TP 
-\fBmaks_beskeder\fP
-Antallet af tilladte beskeder i \fBbeskeder_tids_periode\fP. (Standard: 4)
+\fBmax_messages\fP
+Antallet af tilladte beskeder i \fBmessages_time_period\fP. (Standard: 4)
 .TP 
-\fBbeskeder_tids_periode\fP
+\fBmessages_time_period\fP
 Tidsperioden (i sekunder) hvor beskeders flooding registreres. (Standard: 10
 sekunder)
 .TP 
 \fBmotd\fP
-Dagens besked
+Dagens besked.
 .TP 
-\fBadgangskode\fP
+\fBpasswd\fP
 Adgangskoden der giver administratorrettigheder. Starter normalt med "admin
 ".
 .TP 
-\fBversions_accepterede\fP
+\fBversions_accepted\fP
 En kommasepareret liste af versionsstrenge som accepteres af serveren. `*'
 og `?' er understøttet.  (standarder for de tilsvarende wesnoth versioner)
 .br
-Eksempel: versioner_accepteret="*" acceptere enhver versionsstreng.
+Eksempel: versions_accepted="*" acceptere enhver versionsstreng.
 .
 .SS "Globale mærker:"
 .
 .P
-\fB[omdiriger]\fP Et mærke som specificerer, at en server skal omdirigere visse
-klientversioner til.
+\fB[redirect]\fP Et mærke som specificerer en anden server hvortil visse
+klientversioner omdirigeres.
 .RS
 .TP 
-\fBvært\fP
+\fBhost\fP
 Adressen på serveren der omdirigeres til.
 .TP 
 \fBport\fP
@@ -126,12 +125,12 @@ Forbindelsesport.
 .TP 
 \fBversion\fP
 En kommasepareret liste af versioner som omdirigeres. Fungerer på samme måde
-som \fBversioner_accepteret\fP i forhold til wildcard patterns.
+som \fBversions_accepted\fP i forhold til wildcard patterns.
 .RE
 .P
 \fB[proxy]\fP Et mærke som fortæller serveren den skal fungere som en proxy og
 og videresende den forbundne klients forespørgsler til den specificerede
-server. Accepterer de samme nøgler som [omdiriger].
+server. Accepterer de samme nøgler som [redirect].
 .
 .SH FORFATTER
 .
@@ -152,4 +151,4 @@ ikke for at spillet virker eller kan bruges til en konkret formål.
 .
 .SH "SE OGSÅ"
 .
-\fBwesnoth\fP(6), \fBwesnoth_kortredigering\fP(6)
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
