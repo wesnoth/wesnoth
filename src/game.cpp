@@ -1931,9 +1931,9 @@ int main(int argc, char** argv)
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << VERSION
-#if defined(SVNREV) and defined(DO_DISPLAY_REVISION)
+#if defined(SVNREV) && defined(DO_DISPLAY_REVISION)
 			<< " (" << game_config::svnrev << ")"
-#endif /* defined(SVNREV) and defined(DO_DISPLAY_REVISION) */
+#endif /* defined(SVNREV) && defined(DO_DISPLAY_REVISION) */
 			<< '\n';
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";

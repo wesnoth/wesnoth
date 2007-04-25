@@ -1,4 +1,4 @@
-SVNREV = $(shell svnversion -n $(topdir))
+SVNREV = $(shell svnversion -n $(topdir) 2>/dev/null)
 CFLAGS += "-DSVNREV=\"$(SVNREV)\""
 CXXFLAGS += "-DSVNREV=\"$(SVNREV)\""
 
@@ -472,6 +472,7 @@ libwesnoth_core_a_SOURCES = \
 	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp
 
+if USESVN
 # Until game_config.cpp is removed, this will be needed to ensure that the
 # SVNVER constant gets updated correctly.  If and when that definition is
 # moved elsewhere, this dependency must follow it.
@@ -482,6 +483,7 @@ revision-stamp: FORCE
 	if [ x"$(SVNREV)" != x`cat revision-stamp 2>/dev/null` ]; then echo -n $(SVNREV) >revision-stamp; fi
 
 FORCE:
+endif
 
 AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ @PYTHON_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"

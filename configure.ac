@@ -238,7 +238,7 @@ AC_ARG_ENABLE([internal-data],
 		[internaldata=no])
 
 AC_ARG_ENABLE([display-revision],
-              AS_HELP_STRING([--display-revisiion], [enable svn revision display]),
+              AS_HELP_STRING([--enable-display-revision], [enable svn revision display]),
 	      [svnrev=$enableval],
 	      [svnrev=no])
 
@@ -247,6 +247,7 @@ AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
+AM_CONDITIONAL([USESVN], [test x$svnrev = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
