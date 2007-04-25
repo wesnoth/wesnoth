@@ -152,12 +152,14 @@ class CrossRef:
                 key = trial
                 self.fileref[key].append(fn, n)
         return key
-    def __init__(self, filelist):
+    def __init__(self, dirpath, exclude=""):
         "Build cross-reference object from the specified filelist."
+        self.dirpath = dirpath
+        self.filelist = allfiles(dirpath, exclude)
         self.xref = {}
         self.fileref = {}
         self.noxref = False
-        for filename in filelist:
+        for filename in self.filelist:
             if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
                 # It's a resource file of some sort.
                 #
@@ -211,7 +213,7 @@ class CrossRef:
         self.unresolved = []
         self.missing = []
         formals = []
-        for fn in filelist:
+        for fn in self.filelist:
             if iswml(fn):
                 rfp = open(fn)
                 for (n, line) in enumerate(rfp):
@@ -405,12 +407,11 @@ Usage: macroscope [options] dirpath
         dirpath = arguments[0].split(":")
     else:
         dirpath = ['.']
-    filelist = allfiles(dirpath, "|".join(exclude))
-    xref = CrossRef(filelist)
+    xref = CrossRef(dirpath, "|".join(exclude))
     if extracthelp:
         xref.extracthelp(dirpath[0], sys.stdout)
     elif listfiles:
-        for filename in filelist:
+        for filename in xref.filelist:
             print filename
     elif crossreference or definitions or listfiles or unresolved:
         print "# Macroscope reporting on %s" % time.ctime()
