@@ -17,13 +17,8 @@
 # 5. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
 #
-#
-# Note about the 1.3.1 -> 1.3.2 map conversion: terrain codes will only be
-# spotted and converted when preceded by space, comma, or equal sign.  This
-# will handle maps (either in their own files or included as a WML attribute)
-# and the most common cases in WML (e.g. filters and unit declarations).  
-#
-# This script will barf on maps with custom terrains.
+# This script presently makes no effort to fix terrain codes outside of maps,
+# e.g. in terrain filters. It will barf on maps with custom terrains.
 
 import sys, os, re, getopt
 
@@ -31,29 +26,37 @@ filemoves = {
     # Older includes all previous to 1.3.1.
     "older" : (
         # These are picked to cover as many as possible of the broken
-        # references in UMC on the campaign server.
-    	("creepy.ogg",           "underground.ogg"),
-        ("eagle.wav",            "gryphon-shriek-1.ogg"),
-        ("lightning.wav",        "lightning.ogg"),	# Bug fix
-        ("items/monolith1.png",  "scenery/monolith1.png"),
-        ("items/monolith2.png",  "scenery/monolith2.png"),
-        ("items/monolith3.png",  "scenery/monolith3.png"),
-        ("items/monolith4.png",  "scenery/monolith4.png"),
-        ("items/rock1.png",      "scenery/rock1.png"),
-        ("items/rock2.png",      "scenery/rock2.png"),
-        ("items/rock3.png",      "scenery/rock3.png"),
-        ("items/rock4.png",      "scenery/rock4.png"),
-        ("items/castle-ruins",   "scenery/castle-ruins.png"),
-        ("items/well.png",           "scenery/well.png"),
-        ("terrain/flag-1.png",   "flags/flag-1.png"),
-        ("terrain/flag-2.png",   "flags/flag-2.png"),
-        ("terrain/flag-3.png",   "flags/flag-3.png"),
-        ("terrain/flag-4.png",   "flags/flag-4.png"),
-        ("terrain/village-dwarven-tile.png","terrain/village/dwarven-tile.png"),
+        # references in UMC on the campaign server.  Some things we
+        # don't try to fix include:
+        # - attack/staff.png may map to one of several staves
+        ("SOUND_LIST:DAGGER_SWISH", "SOUND_LIST:SWORD_SWISH"),
+    	("creepy.ogg",              "underground.ogg"),
+        ("attacks/darkstaff.png",   "attacks/staff-necromantic.png"),
+        ("eagle.wav",               "gryphon-shriek-1.ogg"),
+        ("items/castle-ruins",      "scenery/castle-ruins.png"),
+        ("items/monolith1.png",     "scenery/monolith1.png"),
+        ("items/monolith2.png",     "scenery/monolith2.png"),
+        ("items/monolith3.png",     "scenery/monolith3.png"),
+        ("items/monolith4.png",     "scenery/monolith4.png"),
+        ("items/ring1.png",         "items/ring-silver.png"),	# Is this right?
+        ("items/ring2.png",         "items/ring-gold.png"),	# Is this right?
+        ("items/rock1.png",         "scenery/rock1.png"),
+        ("items/rock2.png",         "scenery/rock2.png"),
+        ("items/rock3.png",         "scenery/rock3.png"),
+        ("items/rock4.png",         "scenery/rock4.png"),
+        ("items/signpost.png",      "scenery/signpost.png"),
+        ("items/well.png",          "scenery/well.png"),
+        ("lightning.wav",           "lightning.ogg"),
+        ("misc/dwarven-doors.png",  "scenery/dwarven-doors-closed.png"),
+        ("misc/chest.png",          "items/chest.png"),
+        ("misc/temple.png",         "scenery/temple1.png"),
+        ("sword-swish.wav",         "sword-1.ogg"),
+        ("terrain/flag-1.png",      "flags/flag-1.png"),
+        ("terrain/flag-2.png",      "flags/flag-2.png"),
+        ("terrain/flag-3.png",      "flags/flag-3.png"),
+        ("terrain/flag-4.png",      "flags/flag-4.png"),
         ("terrain/village-cave-tile.png","terrain/village/cave-tile.png"),
-        ("misc/dwarven-doors.png", "scenery/dwarven-doors-closed.png"),
-        ("sword-swish.wav",       "sword-1.ogg"),
-        ("attacks/darkstaff.png", "attacks/staff-necromantic.png"),
+        ("terrain/village-dwarven-tile.png","terrain/village/dwarven-tile.png"),
     ),
     "1.3.1" : (
         # Peasant images moved to a new directory
@@ -407,6 +410,7 @@ Usage: upconvert [options]
     -d, --dryrun               List changes but don't perform them.
     -o, --oldversion           Specify version to begin with.
     -v, --verbose              List files as they are examined.
+    -q, --quiet                Suppress non-error messages
     -c, --clean                Clean up -bak files
     -D, --diff                 Display diffs
     -r, --revert               Revert the conversion from the -bak files
@@ -418,6 +422,7 @@ if __name__ == '__main__':
         "oldversion=",
 	"dryrun",
         "verbose",
+        "quiet",
         "clean",
         "revert",
         "diffs",
@@ -425,6 +430,7 @@ if __name__ == '__main__':
     oldversion = 'older'
     dryrun = False
     verbose = False
+    quiet = False
     clean = False
     diffs = False
     revert = False
@@ -436,6 +442,8 @@ if __name__ == '__main__':
             oldversion = val
         elif switch in ('-v', '--verbose'):
             verbose = True
+        elif switch in ('-q', '--quiet'):
+            quiet = True
         elif switch in ('-d', '--dryrun'):
             dryrun = True
         elif switch in ('-c', '--clean'):
@@ -470,7 +478,7 @@ if __name__ == '__main__':
         for step in fileconversions:
             for (old, new) in step:
                 transformed = transformed.replace(old, new)
-        if transformed != line:
+        if not quiet and transformed != line:
             print "%s, line %d: %s -> %s" % \
                   (input, lineno+1, line.strip(), transformed.strip())
         return transformed
@@ -507,7 +515,8 @@ if __name__ == '__main__':
             try:
                 changed = translator(fn, maptransform, texttransform)
                 if changed:
-                    print "%s modified." % fn
+                    if not quiet:
+                        print "%s modified." % fn
                     if not dryrun:
                         os.rename(fn, backup)
                         ofp = open(fn, "w")

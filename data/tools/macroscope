@@ -184,8 +184,8 @@ class CrossRef:
                 dfp = open(filename)
                 here = None
                 for (n, line) in enumerate(dfp):
-                    if line.startswith("#define"):
-                        tokens = line.split()
+                    if line.strip().startswith("#define"):
+                        tokens = line.strip().split()
                         name = tokens[1]
                         here = reference(filename, n+1, line)
                         if name in self.xref:
