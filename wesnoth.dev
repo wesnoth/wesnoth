@@ -2428,7 +2428,19 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit239]
+<<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
+FileName=src\construct_dialog.cpp
+=======
 FileName=src\soundsource.hpp
+=======
+FileName=src\widgets\file_menu.hpp
+=======
+FileName=src\soundsource.hpp
+>>>>>>> .r16869
+>>>>>>> .r16794
+>>>>>>> .r16874
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2438,7 +2450,19 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit240]
+<<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
+FileName=src\construct_dialog.hpp
+=======
 FileName=src\soundsource.cpp
+=======
+FileName=src\unit_frame.cpp
+=======
+FileName=src\soundsource.cpp
+>>>>>>> .r16869
+>>>>>>> .r16794
+>>>>>>> .r16874
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2448,7 +2472,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit241]
-FileName=src\construct_dialog.cpp
+FileName=src\soundsource.hpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2458,7 +2482,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit242]
-FileName=src\construct_dialog.hpp
+FileName=src\terrain_translation.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2466,6 +2490,28 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+<<<<<<< .mine
+
+[Unit243]
+FileName=src\terrain_translation.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit244]
+FileName=src\soundsource.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+=======
 
 [Unit241]
 FileName=src\construct_dialog.hpp
@@ -2505,5 +2551,14 @@ Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
+<<<<<<< .mine
+<<<<<<< .mine
 BuildCmd=
+>>>>>>> .r16874
+=======
+BuildCmd=
+>>>>>>> .r16794
+=======
+BuildCmd=
+>>>>>>> .r16869
 
