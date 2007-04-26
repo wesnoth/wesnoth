@@ -43,7 +43,7 @@ filemoves = {
         ("arrow-miss.wav",          "bow-miss.ogg"),
         ("attacks/animal-fangs.png","attacks/fangs-animal.png"),
         ("attacks/crossbow.png",    "attacks/human-crossbow.png"),        #*
-        ("attacks/dagger.png",      "attacks/human-dagger.png"),        #*
+        ("attacks/dagger.png",      "attacks/human-dagger.png"),          #*
         ("attacks/darkstaff.png",   "attacks/staff-necromantic.png"),
         ("attacks/human-fist.png",  "attacks/fist-human.png"),
         ("attacks/human-mace.png",  "attacks/mace.png"),
@@ -519,7 +519,7 @@ Usage: upconvert [options]
                                -v -v -v    names each file before it's processed.
                                -v -v -v -v shows verbose parse details.
     -c, --clean                Clean up -bak files.
-    -D, --diff                 Display diffs.
+    -D, --diff                 Display diffs between unconverted and unconverted files.
     -r, --revert               Revert the conversion from the -bak files.
 """)
 
