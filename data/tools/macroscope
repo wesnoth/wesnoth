@@ -160,6 +160,8 @@ class CrossRef:
         self.fileref = {}
         self.noxref = False
         for filename in self.filelist:
+            if warnlevel > 1:
+                print filename + ":"
             if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
                 # It's a resource file of some sort.
                 #
@@ -186,6 +188,8 @@ class CrossRef:
                 dfp = open(filename)
                 state = "outside"
                 for (n, line) in enumerate(dfp):
+                    if warnlevel > 1:
+                        print `line`[1:-1]
                     line = line.strip()
                     if line.startswith("#define"):
                         tokens = line.split()
@@ -195,7 +199,7 @@ class CrossRef:
                         here.docstring = line[8:]	# Strip off #define_
                         state = "macro_header"
                         continue
-                    elif line.endswith("#enddef"):
+                    elif state != 'outside' and line.endswith("#enddef"):
                         here.hash.update(line)
                         here.hash = here.hash.digest()
                         if name in self.xref:
