@@ -394,7 +394,7 @@ class maptransform_error:
             errmsg += " at %s" % (self.loc,)
         return errmsg
 
-def translator(input, mapxform, textxform):
+def translator(filename, mapxform, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
     # This hairy regexp excludes map_data lines that contain {} file
     # references, also lines that are empty or hold just one keep
@@ -403,8 +403,8 @@ def translator(input, mapxform, textxform):
     mapdata = re.compile(r'map_data="[A-Za-z0-9\/|\\&_~?\[\]\']{2,}') 
     modified = False
     mfile = []
-    map_only = not input.endswith(".cfg")
-    for line in open(input):
+    map_only = not filename.endswith(".cfg")
+    for line in open(filename):
         mfile.append(line);
         if mapdata.search(line):
             map_only = False
@@ -454,7 +454,7 @@ def translator(input, mapxform, textxform):
                 line="map_data=\"\n";
                 newdata.append(line)
             for y in range(len(outmap)):
-                newline = mapxform(input, baseline, outmap, y)
+                newline = mapxform(filename, baseline, outmap, y)
                 newdata.append(newline)
                 if newline != outmap[y]:
                     modified = True
@@ -464,11 +464,14 @@ def translator(input, mapxform, textxform):
             else:
                 line="\"\n"
             newdata.append(line)
+        elif "map_data=" in line and line.count("{") or line.count("}"):
+            newdata.append(line)
         elif "map_data=" in line and line.count('"') > 1:
-            raise maptransform_error(0, input, lineno, None, "one-line map data.")
+            print >>sys.stderr, '"%s", line %d: one-line map data.' % (filename, lineno)
+            newdata.append(line)
         else:
             # Handle text (non-map) lines
-            newline = textxform(input, lineno, line)
+            newline = textxform(filename, lineno, line)
             newdata.append(newline)
             if newline != line:
                 modified = True
@@ -562,7 +565,7 @@ if __name__ == '__main__':
     sys.stdout.write(explain[:-1] + ".\n")
     fileconversions = map(lambda x: filemoves[x], versions[:-1])
 
-    def texttransform(input, lineno, line):
+    def texttransform(filename, lineno, line):
         "Resource-name transformation on text lines."
         transformed = line
         for step in fileconversions:
@@ -570,7 +573,7 @@ if __name__ == '__main__':
                 transformed = transformed.replace(old, new)
         if verbose > 0 and transformed != line:
             print "%s, line %d: %s -> %s" % \
-                  (input, lineno+1, line.strip(), transformed.strip())
+                  (filename, lineno+1, line.strip(), transformed.strip())
         return transformed
 
     if "1.3.1" in versions and "older" not in versions:
