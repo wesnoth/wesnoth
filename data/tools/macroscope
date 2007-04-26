@@ -38,7 +38,7 @@
 #
 # The reporting format is compatible with GNU Emacs compile mode.
 
-import sys, os, time, re, getopt, sre_constants
+import sys, os, time, re, getopt, sre_constants, md5
 
 resource_extensions = ("png", "jpg", "ogg", "wav")
 
@@ -152,7 +152,7 @@ class CrossRef:
                 key = trial
                 self.fileref[key].append(fn, n)
         return key
-    def __init__(self, dirpath, exclude=""):
+    def __init__(self, dirpath, exclude="", warnlevel=0):
         "Build cross-reference object from the specified filelist."
         self.dirpath = dirpath
         self.filelist = allfiles(dirpath, exclude)
@@ -184,22 +184,38 @@ class CrossRef:
             elif iswml(filename):
                 # It's a WML file, scan for macro defitions
                 dfp = open(filename)
-                here = None
+                state = "outside"
                 for (n, line) in enumerate(dfp):
-                    if line.strip().startswith("#define"):
-                        tokens = line.strip().split()
+                    line = line.strip()
+                    if line.startswith("#define"):
+                        tokens = line.split()
                         name = tokens[1]
                         here = reference(filename, n+1, line)
-                        if name in self.xref:
-                            print >>sys.stderr, "*** Warning: duplicate definition of %s from %s, at %s" \
-                                  % (name, self.xref[name], here)
-                        self.xref[name] = here
+                        here.hash = md5.new()
                         here.docstring = line[8:]	# Strip off #define_
-                    elif here:
-                        if line[0] == "#":
-                            here.docstring += line[1:]
+                        state = "macro_header"
+                        continue
+                    elif line.endswith("#enddef"):
+                        here.hash.update(line)
+                        here.hash = here.hash.digest()
+                        if name in self.xref:
+                            if self.xref[name].hash != here.hash:
+                                print >>sys.stderr, "*** Warning: different " \
+                            		"definition of %s from %s, at %s" \
+                                  	% (name, self.xref[name], here)
+                            elif warnlevel > 0:
+                                print >>sys.stderr, "*** Warning: duplicate " \
+                            		"definition of %s from %s, at %s" \
+                                  	% (name, self.xref[name], here)
                         else:
-                            here = None
+                            self.xref[name] = here
+                        state = "outside"
+                    elif state == "macro_header" and line and line[0] != "#":
+                        state = "macro_body"
+                    if state == "macro_header":
+                        here.docstring += line[1:]
+                    if state in ("macro_header", "macro_body"):
+                        here.hash.update(line)
                 dfp.close()
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
@@ -349,20 +365,21 @@ if __name__ == "__main__":
 Usage: macroscope [options] dirpath
     Options may be any of these:
     -h, --help                 Emit this help message and quit
-    -c, --crossreference       Report resolved macro references
+    -c, --crossreference       Report resolved macro references (implies -w 1)
     -d, --deflist              Make definition list
     -e reg, --exclude reg      Ignore files matching 
     -f dir, --from dir         Report only on macros defined under dir
     -l, --listfiles            List files that will be processed
     -r ddd, --refcount=ddd     Report only on macros w/references in ddd files
     -u, --unresolved           Report unresolved macro references
+    -w, --warnlevel            Set to 1 to warn of duplicate definitions
     --forced-used reg          Ignore refcount 0 on names matching regexp
     --extracthelp              Extract help from macro definition comments.
    The required dirpath argument may be a colon-separated directory list.
 """)
 
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cdhe:f:lr:u",
+    (options, arguments) = getopt.getopt(sys.argv[1:], "cdhe:f:lr:uw:",
                                          [
                                           'crossreference',
                                           'definitions',
@@ -374,12 +391,14 @@ Usage: macroscope [options] dirpath
                                           'listfiles',
                                           'refcount=',
                                           'unresolved',
+                                          'warnlevel=',
                                           ])
     crossreference = definitions = listfiles = unresolved = extracthelp = False
     from_restrict = None
     refcount_restrict = None
     forceused = None
     exclude = []
+    warnlevel = 0
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -388,6 +407,7 @@ Usage: macroscope [options] dirpath
             from_restrict = val
         elif switch in ('-c', '--crossreference'):
             crossreference = True
+            warnlevel = 1
         elif switch in ('-d', '--definitions'):
             definitions = True
         elif switch in ('-e', '--exclude'):
@@ -402,12 +422,14 @@ Usage: macroscope [options] dirpath
             refcount_restrict = int(val)
         elif switch in ('-u', '--unresolved'):
             unresolved = True
+        elif switch in ('-w', '--warnlevel'):
+            warnlevel = int(val)
 
     if len(arguments):
         dirpath = arguments[0].split(":")
     else:
         dirpath = ['.']
-    xref = CrossRef(dirpath, "|".join(exclude))
+    xref = CrossRef(dirpath, "|".join(exclude), warnlevel)
     if extracthelp:
         xref.extracthelp(dirpath[0], sys.stdout)
     elif listfiles:
