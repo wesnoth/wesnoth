@@ -460,14 +460,14 @@ def translator(filename, mapxform, textxform):
                     modified = True
             # All lines of the map are processed, add the appropriate trailer
             if map_only:
-                line="\n"
+                newline="\n"
             else:
-                line="\"\n"
-            newdata.append(line)
-        elif "map_data=" in line and line.count("{") or line.count("}"):
+                newline="\"\n"
+            newdata.append(newline)
+        elif "map_data=" in line and (line.count("{") or line.count("}")):
             newdata.append(line)
         elif "map_data=" in line and line.count('"') > 1:
-            print >>sys.stderr, 'upconvert: "%s", line %d: one-line map data.' % (filename, lineno)
+            print >>sys.stderr, 'upconvert: "%s", line %d: one-line map.' % (filename, lineno)
             newdata.append(line)
         else:
             # Handle text (non-map) lines
