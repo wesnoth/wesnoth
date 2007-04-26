@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:33+0200\n"
+"POT-Creation-Date: 2007-04-26 17:57+0200\n"
 "PO-Revision-Date: 2006-09-14 11:28+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -42,7 +42,7 @@ msgstr "キャンセル"
 msgid "Close"
 msgstr "閉じる"
 
-#: src/construct_dialog.cpp:778 src/hotkeys.cpp:122
+#: src/construct_dialog.cpp:778 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -403,47 +403,56 @@ msgstr "地形を描く"
 msgid "Refresh Image Cache"
 msgstr "イメージキャッシュを更新"
 
+#: src/hotkeys.cpp:115
+#, fuzzy
+msgid "Delay transitions updates"
+msgstr "重なりの更新を遅らせる"
+
 #: src/hotkeys.cpp:116
+msgid "Update transitions"
+msgstr ""
+
+#: src/hotkeys.cpp:118
 msgid "Delay Shroud Updates"
 msgstr "重なりの更新を遅らせる"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Update Shroud Now"
 msgstr "重なりを今すぐ更新する"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 msgid "Continue Move"
 msgstr "移動を続ける"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:121
 msgid "Find Label or Unit"
 msgstr "ラベルとユニットの検索"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Speak to Ally"
 msgstr "同盟軍に話す"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123
 msgid "Speak to All"
 msgstr "全員に話す"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125
 msgid "View Chat Log"
 msgstr "チャットログ表示"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 msgid "Change the language"
 msgstr "言語を変更します"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Enter user command"
 msgstr "ユーザーコマンドを入力してください"
 
-#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
+#: src/hotkeys.cpp:472 src/hotkeys.cpp:773
 msgid "Do you really want to quit?"
 msgstr "本当に終了しますか？"
 
-#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
+#: src/hotkeys.cpp:472 src/hotkeys.cpp:773
 msgid "Quit"
 msgstr "終了"
 

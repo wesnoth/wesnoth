@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-19 21:46+0200\n"
+"POT-Creation-Date: 2007-04-26 17:57+0200\n"
 "PO-Revision-Date: 2007-02-09 13:27+0200\n"
 "Last-Translator: Joe Hansen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -18,100 +18,108 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/themes/editor.cfg:461
+#: data/themes/editor.cfg:494
 msgid "File"
 msgstr "Fil"
 
-#: data/themes/editor.cfg:470
+#: data/themes/editor.cfg:503
 msgid "Edit"
 msgstr "Rediger"
 
-#: data/themes/editor.cfg:477
+#: data/themes/editor.cfg:510
 msgid "Settings"
 msgstr "Indstillinger"
 
-#: src/editor/editor.cpp:243
+#: src/editor/editor.cpp:248
 msgid "Draw tiles"
 msgstr "Tegn fliser"
 
-#: src/editor/editor.cpp:245
+#: src/editor/editor.cpp:250
 msgid "Fill"
 msgstr "Fyld"
 
-#: src/editor/editor.cpp:247
+#: src/editor/editor.cpp:252
 msgid "Set player's starting position"
 msgstr "Angiv spillernes start placering"
 
-#: src/editor/editor.cpp:249
+#: src/editor/editor.cpp:254
 msgid "Zoom in"
 msgstr "Forstør"
 
-#: src/editor/editor.cpp:251
+#: src/editor/editor.cpp:256
 msgid "Zoom out"
 msgstr "Formindsk"
 
-#: src/editor/editor.cpp:253
+#: src/editor/editor.cpp:258
 msgid "Undo"
 msgstr "Genskab"
 
-#: src/editor/editor.cpp:255
+#: src/editor/editor.cpp:260
 msgid "Redo"
 msgstr "Omgøre"
 
 # Burde vel egentlig være forstør, men her kan den både være forstør og formindsk
-#: src/editor/editor.cpp:257
+#: src/editor/editor.cpp:262
 msgid "Zoom to default view"
 msgstr "Zoom til standard-visning"
 
-#: src/editor/editor.cpp:259
+#: src/editor/editor.cpp:264
 msgid "Toggle grid"
 msgstr "Til/fra gitter"
 
-#: src/editor/editor.cpp:261
+#: src/editor/editor.cpp:266
 msgid "Resize the map"
 msgstr "Ny kortstørrelse"
 
-#: src/editor/editor.cpp:263
+#: src/editor/editor.cpp:268
 msgid "Flip map"
 msgstr "Vend kort"
 
-#: src/editor/editor.cpp:467
+#: src/editor/editor.cpp:270
+msgid "Update transitions"
+msgstr ""
+
+#: src/editor/editor.cpp:272
+msgid "Delay transitions update"
+msgstr ""
+
+#: src/editor/editor.cpp:478
 msgid "Language"
 msgstr "Sprog"
 
-#: src/editor/editor.cpp:468
+#: src/editor/editor.cpp:479
 msgid "Choose your preferred language:"
 msgstr "Vælg dit foretrukne sprog:"
 
-#: src/editor/editor.cpp:482 src/editor/editor_main.cpp:257
+#: src/editor/editor.cpp:493 src/editor/editor_main.cpp:257
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Kortredigering til Slaget om Wesnoth"
 
-#: src/editor/editor.cpp:506
+#: src/editor/editor.cpp:517
 msgid "Save the Map As"
 msgstr "Gem kortet som"
 
-#: src/editor/editor.cpp:517
+#: src/editor/editor.cpp:528
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kortet eksisterer allerede. Ønsker du at overskrive?"
 
-#: src/editor/editor.cpp:540 src/editor/editor.cpp:1359
+#: src/editor/editor.cpp:551 src/editor/editor.cpp:1386
 msgid "Player"
 msgstr "Spiller"
 
-#: src/editor/editor.cpp:543
+#: src/editor/editor.cpp:554
 msgid "Which Player?"
 msgstr "Hvilken spiller?"
 
-#: src/editor/editor.cpp:544
+#: src/editor/editor.cpp:555
 msgid "Which player should start here?"
 msgstr "Hvilken spiller skal starte her?"
 
-#: src/editor/editor.cpp:595
+#: src/editor/editor.cpp:606
 msgid "Choose a Map to Load"
 msgstr "Vælg et kort til indlæsning"
 
-#: src/editor/editor.cpp:599
+#: src/editor/editor.cpp:610
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -119,31 +127,31 @@ msgstr ""
 "Advarsel: Der er ugyldige tegn i kortnavnet. Gem venligst under et andet "
 "navn."
 
-#: src/editor/editor.cpp:612 src/editor/editor.cpp:686
+#: src/editor/editor.cpp:623 src/editor/editor.cpp:697
 msgid "The file does not contain a valid map."
 msgstr "Filen indeholder ikke et brugbart kort."
 
-#: src/editor/editor.cpp:969
+#: src/editor/editor.cpp:996
 msgid "You must have a hex selected on the board."
 msgstr "Du skal have markeret et felt på kortet."
 
-#: src/editor/editor.cpp:1226
+#: src/editor/editor.cpp:1253
 msgid "Quit Editor"
 msgstr "Luk program"
 
-#: src/editor/editor.cpp:1231
+#: src/editor/editor.cpp:1258
 msgid "Do you want to save the map before quitting?"
 msgstr "Ønsker du at gemme kortet før lukning?"
 
-#: src/editor/editor.cpp:1279
+#: src/editor/editor.cpp:1306
 msgid "Map saved."
 msgstr "Kort gemt."
 
-#: src/editor/editor.cpp:1288
+#: src/editor/editor.cpp:1315
 msgid "Could not save the map: $msg"
 msgstr "Kunne ikke gemme kortet: $msg"
 
-#: src/editor/editor.cpp:1303
+#: src/editor/editor.cpp:1330
 msgid "Error: Illegal character in filename."
 msgstr "Fejl: Ugyldig tegn i filnavn."
 

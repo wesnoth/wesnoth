@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor-sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-19 21:46+0200\n"
+"POT-Creation-Date: 2007-04-26 17:57+0200\n"
 "PO-Revision-Date: 2007-02-03 03:32+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -19,99 +19,107 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: data/themes/editor.cfg:461
+#: data/themes/editor.cfg:494
 msgid "File"
 msgstr "Датотека"
 
-#: data/themes/editor.cfg:470
+#: data/themes/editor.cfg:503
 msgid "Edit"
 msgstr "Уређивање"
 
-#: data/themes/editor.cfg:477
+#: data/themes/editor.cfg:510
 msgid "Settings"
 msgstr "Подешавања"
 
-#: src/editor/editor.cpp:243
+#: src/editor/editor.cpp:248
 msgid "Draw tiles"
 msgstr "Цртај плочице"
 
-#: src/editor/editor.cpp:245
+#: src/editor/editor.cpp:250
 msgid "Fill"
 msgstr "Попуни"
 
-#: src/editor/editor.cpp:247
+#: src/editor/editor.cpp:252
 msgid "Set player's starting position"
 msgstr "Подеси почетну позицију играча"
 
-#: src/editor/editor.cpp:249
+#: src/editor/editor.cpp:254
 msgid "Zoom in"
 msgstr "Увећај"
 
-#: src/editor/editor.cpp:251
+#: src/editor/editor.cpp:256
 msgid "Zoom out"
 msgstr "Умањи"
 
-#: src/editor/editor.cpp:253
+#: src/editor/editor.cpp:258
 msgid "Undo"
 msgstr "Опозови"
 
-#: src/editor/editor.cpp:255
+#: src/editor/editor.cpp:260
 msgid "Redo"
 msgstr "Понови"
 
-#: src/editor/editor.cpp:257
+#: src/editor/editor.cpp:262
 msgid "Zoom to default view"
 msgstr "Увећај на подразумевано"
 
-#: src/editor/editor.cpp:259
+#: src/editor/editor.cpp:264
 msgid "Toggle grid"
 msgstr "Обрни мрежу"
 
-#: src/editor/editor.cpp:261
+#: src/editor/editor.cpp:266
 msgid "Resize the map"
 msgstr "Промени величину мапе"
 
-#: src/editor/editor.cpp:263
+#: src/editor/editor.cpp:268
 msgid "Flip map"
 msgstr "Преврни мапу"
 
-#: src/editor/editor.cpp:467
+#: src/editor/editor.cpp:270
+msgid "Update transitions"
+msgstr ""
+
+#: src/editor/editor.cpp:272
+msgid "Delay transitions update"
+msgstr ""
+
+#: src/editor/editor.cpp:478
 msgid "Language"
 msgstr "Језик"
 
-#: src/editor/editor.cpp:468
+#: src/editor/editor.cpp:479
 msgid "Choose your preferred language:"
 msgstr "Изаберите жељени језик:"
 
-#: src/editor/editor.cpp:482 src/editor/editor_main.cpp:257
+#: src/editor/editor.cpp:493 src/editor/editor_main.cpp:257
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Бој за Веснот — уређивач мапа"
 
-#: src/editor/editor.cpp:506
+#: src/editor/editor.cpp:517
 msgid "Save the Map As"
 msgstr "Сачувај мапу као"
 
-#: src/editor/editor.cpp:517
+#: src/editor/editor.cpp:528
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Мапа већ постоји. Желите ли да је пребришете?"
 
-#: src/editor/editor.cpp:540 src/editor/editor.cpp:1359
+#: src/editor/editor.cpp:551 src/editor/editor.cpp:1386
 msgid "Player"
 msgstr "Играч"
 
-#: src/editor/editor.cpp:543
+#: src/editor/editor.cpp:554
 msgid "Which Player?"
 msgstr "Који играч?"
 
-#: src/editor/editor.cpp:544
+#: src/editor/editor.cpp:555
 msgid "Which player should start here?"
 msgstr "Који играч треба да пође одавде?"
 
-#: src/editor/editor.cpp:595
+#: src/editor/editor.cpp:606
 msgid "Choose a Map to Load"
 msgstr "Изаберите мапу за учитавање"
 
-#: src/editor/editor.cpp:599
+#: src/editor/editor.cpp:610
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -119,31 +127,31 @@ msgstr ""
 "Упозорење: Неисправи знакови нађени у имену мапе. Сачувајте мапу под другим "
 "именом."
 
-#: src/editor/editor.cpp:612 src/editor/editor.cpp:686
+#: src/editor/editor.cpp:623 src/editor/editor.cpp:697
 msgid "The file does not contain a valid map."
 msgstr "Датотека не садржи исправну мапу."
 
-#: src/editor/editor.cpp:969
+#: src/editor/editor.cpp:996
 msgid "You must have a hex selected on the board."
 msgstr "Морате прво изабрати хекс на табли."
 
-#: src/editor/editor.cpp:1226
+#: src/editor/editor.cpp:1253
 msgid "Quit Editor"
 msgstr "Напусти уређивач"
 
-#: src/editor/editor.cpp:1231
+#: src/editor/editor.cpp:1258
 msgid "Do you want to save the map before quitting?"
 msgstr "Желите ли да сачувате мапу пре напуштања?"
 
-#: src/editor/editor.cpp:1279
+#: src/editor/editor.cpp:1306
 msgid "Map saved."
 msgstr "Мапа је сачувана."
 
-#: src/editor/editor.cpp:1288
+#: src/editor/editor.cpp:1315
 msgid "Could not save the map: $msg"
 msgstr "Не могу да сачувам мапу: $msg"
 
-#: src/editor/editor.cpp:1303
+#: src/editor/editor.cpp:1330
 msgid "Error: Illegal character in filename."
 msgstr "Грешка: Неисправан знак у имену датотеке."
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:33+0200\n"
+"POT-Creation-Date: 2007-04-26 17:57+0200\n"
 "PO-Revision-Date: 2007-03-24 09:39+0100\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -44,7 +44,7 @@ msgstr "Cancelar"
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/construct_dialog.cpp:778 src/hotkeys.cpp:122
+#: src/construct_dialog.cpp:778 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Ayuda"
 
@@ -403,47 +403,56 @@ msgstr "Dibujar terreno"
 msgid "Refresh Image Cache"
 msgstr "Refrescar caché de imagen"
 
+#: src/hotkeys.cpp:115
+#, fuzzy
+msgid "Delay transitions updates"
+msgstr "Retardar refresco de zonas oscuras"
+
 #: src/hotkeys.cpp:116
+msgid "Update transitions"
+msgstr ""
+
+#: src/hotkeys.cpp:118
 msgid "Delay Shroud Updates"
 msgstr "Retardar refresco de zonas oscuras"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Update Shroud Now"
 msgstr "Actualizar zonas oscuras"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 msgid "Continue Move"
 msgstr "Continuar moviendo"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:121
 msgid "Find Label or Unit"
 msgstr "Buscar etiqueta o unidad"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Speak to Ally"
 msgstr "Hablar con aliados"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123
 msgid "Speak to All"
 msgstr "Hablar con todos"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125
 msgid "View Chat Log"
 msgstr "Ver el registro de conversaciones"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 msgid "Change the language"
 msgstr "Cambia el idioma"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Enter user command"
 msgstr "Introduzca una orden"
 
-#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
+#: src/hotkeys.cpp:472 src/hotkeys.cpp:773
 msgid "Do you really want to quit?"
 msgstr "¿Está seguro de que quiere salir?"
 
-#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
+#: src/hotkeys.cpp:472 src/hotkeys.cpp:773
 msgid "Quit"
 msgstr "Salir"
 

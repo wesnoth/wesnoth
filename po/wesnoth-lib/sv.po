@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:33+0200\n"
+"POT-Creation-Date: 2007-04-26 17:57+0200\n"
 "PO-Revision-Date: 2007-03-27 13:53+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -41,7 +41,7 @@ msgstr "Avbryt"
 msgid "Close"
 msgstr "Stäng"
 
-#: src/construct_dialog.cpp:778 src/hotkeys.cpp:122
+#: src/construct_dialog.cpp:778 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Hjälp"
 
@@ -399,47 +399,56 @@ msgstr "Rita terräng"
 msgid "Refresh Image Cache"
 msgstr "Uppdatera bildcache"
 
+#: src/hotkeys.cpp:115
+#, fuzzy
+msgid "Delay transitions updates"
+msgstr "Fördröj slöjuppdateringarna"
+
 #: src/hotkeys.cpp:116
+msgid "Update transitions"
+msgstr ""
+
+#: src/hotkeys.cpp:118
 msgid "Delay Shroud Updates"
 msgstr "Fördröj slöjuppdateringarna"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Update Shroud Now"
 msgstr "Uppdatera slöjan nu"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 msgid "Continue Move"
 msgstr "Fortsätt draget"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:121
 msgid "Find Label or Unit"
 msgstr "Sök efter etikett eller trupp"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Speak to Ally"
 msgstr "Tala med allierad"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123
 msgid "Speak to All"
 msgstr "Tala med alla"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125
 msgid "View Chat Log"
 msgstr "Se chattloggen"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 msgid "Change the language"
 msgstr "Byt språk"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Enter user command"
 msgstr "Ange användarkommando"
 
-#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
+#: src/hotkeys.cpp:472 src/hotkeys.cpp:773
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen sluta?"
 
-#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
+#: src/hotkeys.cpp:472 src/hotkeys.cpp:773
 msgid "Quit"
 msgstr "Avsluta"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-18 08:33+0200\n"
+"POT-Creation-Date: 2007-04-26 17:57+0200\n"
 "PO-Revision-Date: 2007-03-22 13:03+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -41,7 +41,7 @@ msgstr "Annuleren"
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/construct_dialog.cpp:778 src/hotkeys.cpp:122
+#: src/construct_dialog.cpp:778 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Help"
 
@@ -399,47 +399,56 @@ msgstr "Terrein tekenen"
 msgid "Refresh Image Cache"
 msgstr "Cache afbeelding vernieuwen"
 
+#: src/hotkeys.cpp:115
+#, fuzzy
+msgid "Delay transitions updates"
+msgstr "Sluier achteraf bijwerken"
+
 #: src/hotkeys.cpp:116
+msgid "Update transitions"
+msgstr ""
+
+#: src/hotkeys.cpp:118
 msgid "Delay Shroud Updates"
 msgstr "Sluier achteraf bijwerken"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Update Shroud Now"
 msgstr "Sluier nu bijwerken"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 msgid "Continue Move"
 msgstr "Ga door met zet"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:121
 msgid "Find Label or Unit"
 msgstr "Label of eenheid vinden"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Speak to Ally"
 msgstr "Met bondgenoot praten"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123
 msgid "Speak to All"
 msgstr "Met iedereen praten"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125
 msgid "View Chat Log"
 msgstr "Chat-log bekijken"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 msgid "Change the language"
 msgstr "De taal veranderen"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Enter user command"
 msgstr "Typ gebruikerscommando in"
 
-#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
+#: src/hotkeys.cpp:472 src/hotkeys.cpp:773
 msgid "Do you really want to quit?"
 msgstr "Weet je zeker dat je het spel wilt verlaten?"
 
-#: src/hotkeys.cpp:470 src/hotkeys.cpp:765
+#: src/hotkeys.cpp:472 src/hotkeys.cpp:773
 msgid "Quit"
 msgstr "Verlaten"
 
