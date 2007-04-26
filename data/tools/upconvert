@@ -28,55 +28,106 @@ filemoves = {
         # These are picked to cover as many as possible of the broken
         # references in UMC on the campaign server.  Some things we
         # don't try to fix include:
-        # - attack/staff.png may map to one of several staves
-        ("SOUND_LIST:DAGGER_SWISH", "SOUND_LIST:SWORD_SWISH"),
+        # - attack/staff.png may map to one of several staves.
+        # - magic.wav may map to one of several sounds depending on the init.
+        # Some other assumption sound in current UMC as of April 2007
+        # but theoretically dubious are marked with *.
+    	("creepy.ogg",              "underground.ogg"),
+        ("../music/defeat.ogg",     "music/defeat.ogg"),
+        ("../music/victory.ogg",    "music/victory.ogg"),
         ("AMLA_TOUGH_2",            "AMLA_TOUGH 2"),
         ("AMLA_TOUGH_3",            "AMLA_TOUGH 3"),
-        ("bow-hit.ogg",             "bow.ogg"),
-    	("creepy.ogg",              "underground.ogg"),
-        ("arrow-miss.wav",          "bow-miss.ogg"),
+        ("SOUND_LIST:DAGGER_SWISH", "SOUND_LIST:SWORD_SWISH"),
         ("arrow-hit.wav",           "bow.ogg"),
-        ("bow-hit.wav",             "bow.ogg"),
+        ("arrow-miss.wav",          "bow-miss.ogg"),
+        ("attacks/animal-fangs.png","attacks/fangs-animal.png"),
+        ("attacks/crossbow.png",    "attacks/human-crossbow.png"),	#*
+        ("attacks/dagger.png",      "attacks/human-dagger.png"),	#*
         ("attacks/darkstaff.png",   "attacks/staff-necromantic.png"),
-        ("attacks/sword.png",       "attacks/human-sword.png"),
+        ("attacks/human-fist.png",  "attacks/fist-human.png"),
+        ("attacks/human-mace.png",  "attacks/mace.png"),
+        ("attacks/human-sabre.png", "attacks/sabre-human.png"),
+        ("attacks/icebolt.png",     "attacks/iceball.png"),    # Is this right?
+        ("attacks/lightingbolt.png", "attacks/lightning.png"),
+        ("attacks/missile.png",     "attacks/magic-missile.png"),
+        ("attacks/morning_star.png","attacks/morning_star.png"),
+        ("attacks/plaguestaff.png", "attacks/staff-plague.png"),
+        ("attacks/slam.png",        "attacks/slam-drake.png"),
+        ("attacks/staff-magical.png","attacks/staff-magic.png"),
+        ("attacks/sword-paladin.png","attacks/sword-holy.png"),
+        ("attacks/sword.png",       "attacks/human-sword.png"),		#*
+        ("attacks/sword_holy.png",  "attacks/sword-holy.png"),
+        ("attacks/throwing-dagger-human.png", "attacks/dagger-thrown-human.png"),
+        ("bow-hit.ogg",             "bow.ogg"),
+        ("bow-hit.wav",             "bow.ogg"),
+        ("dwarves/warrior.png",     "dwarves/fighter.png"),
         ("eagle.wav",               "gryphon-shriek-1.ogg"),
+        ("elfland.ogg",             "elf-land.ogg"),
+        ("elvish-fighter.png",      "elves-wood/fighter.png"),
+        ("elvish-hero.png",         "elves-wood/hero.png"),
         ("fist.wav",                "fist.ogg"),
-        ("knife.wav",               "dagger-swish.wav"),	# Is this right?
-        ("miss.wav",                "miss-1.ogg"),
-        ("wolf-attack.wav",         "wolf-bite.ogg"),
-        ("wolf-cry.wav",            "wolf-die.ogg"),
+        ("flame-miss.ogg",          "flame-big-miss.ogg"),
+        ("flame.ogg",               "flame-big.ogg"),
+        ("goblin-hit2.ogg",         "goblin-hit-2.ogg"),
+        ("hatchet-miss-1.ogg",      "hatchet-miss.wav"),
+        ("heal.ogg",                "heal.wav"),
+        ("hiss-big.ogg",            "hiss-big.wav"),
+        ("human-male-die.ogg",      "human-die-1.ogg"),
+        ("human-male-hit.ogg",      "human-hit-1.ogg"),
+        ("human-male-weak-die.ogg", "human-old-die-1.ogg"),
+        ("human-male-weak-hit.ogg", "human-old-hit-1.ogg"),
         ("items/castle-ruins",      "scenery/castle-ruins.png"),
-        ("items/leanto",            "scenery/leanto.png"),
         ("items/fire1.png",         "scenery/fire1.png"),
         ("items/fire2.png",         "scenery/fire2.png"),
         ("items/fire3.png",         "scenery/fire3.png"),
         ("items/fire4.png",         "scenery/fire4.png"),
+        ("items/leanto",            "scenery/leanto.png"),
         ("items/monolith1.png",     "scenery/monolith1.png"),
         ("items/monolith2.png",     "scenery/monolith2.png"),
         ("items/monolith3.png",     "scenery/monolith3.png"),
         ("items/monolith4.png",     "scenery/monolith4.png"),
-        ("items/ring1.png",         "items/ring-silver.png"),	# Is this right?
-        ("items/ring2.png",         "items/ring-gold.png"),	# Is this right?
+        ("items/ring1.png",         "items/ring-silver.png"),  # Is this right?
+        ("items/ring2.png",         "items/ring-gold.png"),    # Is this right?
         ("items/rock1.png",         "scenery/rock1.png"),
         ("items/rock2.png",         "scenery/rock2.png"),
         ("items/rock3.png",         "scenery/rock3.png"),
         ("items/rock4.png",         "scenery/rock4.png"),
         ("items/signpost.png",      "scenery/signpost.png"),
-        ("terrain/signpost.png",    "scenery/signpost.png"),
-        ("terrain/rocks.png",       "scenery/rock2.png"),
+        ("items/slab.png",          "scenery/slab-1.png"),
         ("items/well.png",          "scenery/well.png"),
+        ("knife.ogg",               "dagger-swish.wav"),       # Is this right?
+        ("knife.wav",               "dagger-swish.wav"),       # Is this right?
         ("lightning.wav",           "lightning.ogg"),
-        ("misc/dwarven-doors.png",  "scenery/dwarven-doors-closed.png"),
         ("misc/chest.png",          "items/chest.png"),
+        ("misc/dwarven-doors.png",  "scenery/dwarven-doors-closed.png"),
+        ("misc/mine.png",           "scenery/mine-abandoned.png"),
+        ("misc/nest-empty.png",     "scenery/nest-empty.png"),
         ("misc/temple.png",         "scenery/temple1.png"),
+        ("miss.wav",                "miss-1.ogg"),
+        ("orc-die.wav",             "orc-die-1.ogg"),
+        ("orc-hit.wav",             "orc-hit-1.ogg"),
+        ("ork-die-2.ogg",           "orc-die-2.ogg"),
+        ("pistol.wav",              "gunshot.wav"),
+        ("spear-miss-1.ogg",        "spear-miss.ogg"),
+        ("squishy-miss-1.ogg",      "squishy-miss.wav"),
         ("sword-swish.wav",         "sword-1.ogg"),
         ("sword.wav",               "sword-1.ogg"),
         ("terrain/flag-1.png",      "flags/flag-1.png"),
         ("terrain/flag-2.png",      "flags/flag-2.png"),
         ("terrain/flag-3.png",      "flags/flag-3.png"),
         ("terrain/flag-4.png",      "flags/flag-4.png"),
+        ("terrain/rocks.png",       "scenery/rock2.png"),
+        ("terrain/signpost.png",    "scenery/signpost.png"),
         ("terrain/village-cave-tile.png","terrain/village/cave-tile.png"),
         ("terrain/village-dwarven-tile.png","terrain/village/dwarven-tile.png"),
+        ("terrain/village-human.png","terrain/village/human.png"),
+        ("throwing-dagger-swish.wav","dagger-swish.wav"),      # Is this right?
+        ("units/undead/ghost-attack.png", "units/undead/ghost-attack-2.png"),
+        ("units/undead/ghost-attack1.png", "units/undead/ghost-attack-1.png"),
+        ("wolf-attack.wav",         "wolf-bite.ogg"),
+        ("wolf-cry.wav",            "wolf-die.wav"),
+        ("wose-attack.wav",	    "wose.attack.ogg"),
+        ("wose.attack.ogg",	    "wose.attack.ogg"),
     ),
     "1.3.1" : (
         # Peasant images moved to a new directory
@@ -234,7 +285,7 @@ def maptransform1(input, baseline, inmap, y):
     format = "%%%d.%ds" % (width, max_len)
     x = 0
     if "," in inmap[y]:
-        raise maptransform_error(input, baseline, x, y,
+        raise maptransform_error(0, input, baseline, None,
                                  "map file appears to be converted already")
     line = ''
     for char in inmap[y]:
@@ -244,7 +295,7 @@ def maptransform1(input, baseline, inmap, y):
         elif char in conversion1:
             ohex = format % conversion1[char] + ','
         else:
-            raise maptransform_error(input, baseline+y+1, x, y,
+            raise maptransform_error(0, input, baseline+y+1, (x, y),
                                      "unrecognized character %s (%d)" % (`char`, ord(char)))
             # ohex = format % char
             sys.exit(1)
@@ -257,7 +308,7 @@ def maptransform1(input, baseline, inmap, y):
                 # Intentionally skipping 0 as it is original hex
                 a = adj[i];
                 if not a in conversion1:
-                    raise maptransform_error(input, baseline, x, y,
+                    raise maptransform_error(0, input, baseline, (x, y),
                                  "error in adjacent hexes")
                     sys.exit(1)
                 ca = conversion1[a]
@@ -330,15 +381,17 @@ def maptransform2(input, baseline, inmap, y):
 
 class maptransform_error:
     "Error object to be thrown by maptransform."
-    def __init__(self, infile, inline, x, y, type):
+    def __init__(self, level, infile, inline, loc, type):
+        self.level = level
         self.infile = infile
         self.inline = inline
-        self.x = x
-        self.y = y
+        self.loc = loc
         self.type = type
     def __repr__(self):
-        return '"%s", line %d: %s at (%d, %d)' % \
-                   (self.infile, self.inline, self.type, self.x, self.y)
+        errmsg = '"%s", line %d: %s' % (self.infile, self.inline, self.type)
+        if self.loc:
+            errmsg += " at %s" % (self.loc,)
+        return errmsg
 
 def translator(input, mapxform, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
@@ -543,6 +596,7 @@ if __name__ == '__main__':
                         ofp.write(changed)
                         ofp.close()
             except maptransform_error, e:
-                sys.stderr.write("upconvert: " + `e` + "\n")
+                if e.level == 0 or verbose:
+                    sys.stderr.write("upconvert: " + `e` + "\n")
 
 # upconvert ends here
