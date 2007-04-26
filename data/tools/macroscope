@@ -126,7 +126,7 @@ class reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Za-z0-9_])\b")
-    file_reference =  re.compile(r"[A-Za-z0-9{}][A-Za-z0-9_/+{}-]*\.(" + "|".join(resource_extensions) + ")")
+    file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}-]*\.(" + "|".join(resource_extensions) + ")")
     def imagesearch(self, name):
         # Here is where we implement the funky rules for image
         # resolution.  If we can't identify a reference to the image
