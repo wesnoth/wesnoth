@@ -121,6 +121,7 @@ filemoves = {
         ("terrain/village-cave-tile.png","terrain/village/cave-tile.png"),
         ("terrain/village-dwarven-tile.png","terrain/village/dwarven-tile.png"),
         ("terrain/village-human.png","terrain/village/human.png"),
+        ("terrain/village-human-snow.png", "terrain/village/human-snow.png"),
         ("throwing-dagger-swish.wav","dagger-swish.wav"),      # Is this right?
         ("units/undead/ghost-attack.png", "units/undead/ghost-attack-2.png"),
         ("units/undead/ghost-attack1.png", "units/undead/ghost-attack-1.png"),
@@ -285,7 +286,7 @@ def maptransform1(input, baseline, inmap, y):
     format = "%%%d.%ds" % (width, max_len)
     x = 0
     if "," in inmap[y]:
-        raise maptransform_error(0, input, baseline, None,
+        raise maptransform_error(2, input, baseline, None,
                                  "map file appears to be converted already")
     line = ''
     for char in inmap[y]:
@@ -395,12 +396,12 @@ class maptransform_error:
 
 def translator(input, mapxform, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
-    modified = False
     # This hairy regexp excludes map_data lines that contain {} file
     # references, also lines that are empty or hold just one keep
     # character (somewhat pathological, but not handling these will
     # make the regression tests break).
     mapdata = re.compile(r'map_data="[A-Za-z0-9\/|\\&_~?\[\]\']{2,}') 
+    modified = False
     mfile = []
     map_only = not input.endswith(".cfg")
     for line in open(input):
@@ -413,10 +414,20 @@ def translator(input, mapxform, textxform):
     lineno = baseline = 0
     while mfile:
         line = mfile.pop(0)
+        if verbose >= 4:
+            sys.stdout.write(line)
         lineno += 1
-        if map_only or mapdata.search(line):
+        # Exclude map_data= lines that are just 1 line without continuation, or which contain {}.
+        # The former are pathological and the parse won't handle them, the latter refer to map
+        # files which will be checked separately.
+        if map_only or ("map_data=" in line
+                        and line.count('"') == 1
+                        and line.count("{") == 0
+                        and  line.count("}") == 0):
             baseline = 0
             cont = True
+            if verbose >= 4:
+                print "*** Entering map mode."
             # Assumes map is more than 1 line long.
             if not map_only:
                 line = line.split('"')[1]
@@ -424,12 +435,16 @@ def translator(input, mapxform, textxform):
                 outmap.append(line)
             while cont and mfile:
                 line = mfile.pop(0)
+                if verbose >= 4:
+                    sys.stdout.write(line)
                 lineno += 1
                 if line and line[0] == '#':
                     newdata.append(line)
                     continue
                 if '"' in line:
                     cont = False
+                    if verbose >= 4:
+                        print "*** Exiting map mode."
                     line = line.split('"')[0]
                 if line and not line.endswith("\n"):
                     line += "\n"
@@ -449,6 +464,8 @@ def translator(input, mapxform, textxform):
             else:
                 line="\"\n"
             newdata.append(line)
+        elif "map_data=" in line and line.count('"') > 1:
+            raise maptransform_error(0, input, lineno, None, "one-line map data.")
         else:
             # Handle text (non-map) lines
             newline = textxform(input, lineno, line)
@@ -472,6 +489,7 @@ def allcfgfiles(dir):
     datafiles = filter(lambda x: ".svn" not in x, datafiles)
     datafiles = filter(lambda x: x.endswith(".cfg") or ('maps' in x and os.path.isfile(x) and x[-4:] not in ignore), datafiles)
     datafiles = filter(lambda x: not x.endswith("-bak"), datafiles)
+    datafiles.sort()	# So changes and diffs for the same campaigns will cluster in the report
     return datafiles
 
 def help():
@@ -482,8 +500,10 @@ Usage: upconvert [options]
     -h, --help                 Emit this help message and quit
     -d, --dryrun               List changes but don't perform them.
     -o, --oldversion           Specify version to begin with.
-    -v, --verbose              List files as they are examined.
-    -q, --quiet                Suppress non-error messages
+    -v, --verbose              -v          lists changes.
+                               -v -v       warns of maps already converted.
+                               -v -v -v    names each file before it's processed
+                               -v -v -v -v shows verbose parse details.
     -c, --clean                Clean up -bak files
     -D, --diff                 Display diffs
     -r, --revert               Revert the conversion from the -bak files
@@ -495,15 +515,13 @@ if __name__ == '__main__':
         "oldversion=",
 	"dryrun",
         "verbose",
-        "quiet",
         "clean",
         "revert",
         "diffs",
         ])
     oldversion = 'older'
     dryrun = False
-    verbose = False
-    quiet = False
+    verbose = 0
     clean = False
     diffs = False
     revert = False
@@ -514,11 +532,10 @@ if __name__ == '__main__':
         elif switch in ('-o', '--oldversion'):
             oldversion = val
         elif switch in ('-v', '--verbose'):
-            verbose = True
-        elif switch in ('-q', '--quiet'):
-            quiet = True
+            verbose += 1
         elif switch in ('-d', '--dryrun'):
             dryrun = True
+            verbose = max(1, verbose)
         elif switch in ('-c', '--clean'):
             clean = True
         elif switch in ('-d', '--diffs'):
@@ -551,7 +568,7 @@ if __name__ == '__main__':
         for step in fileconversions:
             for (old, new) in step:
                 transformed = transformed.replace(old, new)
-        if not quiet and transformed != line:
+        if verbose > 0 and transformed != line:
             print "%s, line %d: %s -> %s" % \
                   (input, lineno+1, line.strip(), transformed.strip())
         return transformed
@@ -564,8 +581,8 @@ if __name__ == '__main__':
     # Perform resource file substitutions
     ofp = None
     for fn in allcfgfiles("."):
-        if verbose:
-            print fn
+        if verbose >= 3:
+            print fn + ":"
         backup = fn + "-bak"
         if clean or revert:
             # Do housekeeping
@@ -588,7 +605,7 @@ if __name__ == '__main__':
             try:
                 changed = translator(fn, maptransform, texttransform)
                 if changed:
-                    if not quiet:
+                    if verbose > 0:
                         print "%s modified." % fn
                     if not dryrun:
                         os.rename(fn, backup)
@@ -596,7 +613,7 @@ if __name__ == '__main__':
                         ofp.write(changed)
                         ofp.close()
             except maptransform_error, e:
-                if e.level == 0 or verbose:
+                if e.level <= verbose:
                     sys.stderr.write("upconvert: " + `e` + "\n")
 
 # upconvert ends here
