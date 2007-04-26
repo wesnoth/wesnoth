@@ -379,18 +379,18 @@ if __name__ == "__main__":
         sys.stderr.write("""\
 Usage: macroscope [options] dirpath
     Options may be any of these:
-    -h, --help                 Emit this help message and quit
-    -c, --crossreference       Report resolved macro references (implies -w 1)
-    -C, --collisions           Report duplicate resource files   
-    -d, --deflist              Make definition list
-    -e reg, --exclude reg      Ignore files matching 
-    -f dir, --from dir         Report only on macros defined under dir
-    -l, --listfiles            List files that will be processed
-    -r ddd, --refcount=ddd     Report only on macros w/references in ddd files
-    -u, --unresolved           Report unresolved macro references
-    -w, --warnlevel            Set to 1 to warn of duplicate definitions
-    --forced-used reg          Ignore refcount 0 on names matching regexp
-    --extracthelp              Extract help from macro definition comments.
+    -h, --help                   Emit this help message and quit
+    -c, --crossreference         Report resolved macro references (implies -w 1)
+    -C, --collisions             Report duplicate resource files   
+    -d, --deflist                Make definition list
+    -e regexp, --exclude regexp  Ignore files matching the specified regular expression
+    -f dir, --from dir           Report only on macros defined under dir
+    -l, --listfiles              List files that will be processed
+    -r ddd, --refcount=ddd       Report only on macros w/references in ddd files
+    -u, --unresolved             Report unresolved macro references
+    -w, --warnlevel              Set to 1 to warn of duplicate macro definitions
+    --forced-used regexp         Ignore refcount 0 on names matching regexp
+    --extracthelp                Extract help from macro definition comments.
    The required dirpath argument may be a colon-separated directory list.
 """)
 

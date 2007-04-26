@@ -13,8 +13,10 @@
 # 2. If the messages look good, run without --dryrun; the old content
 #    will be left in backup files with a -bak extension.
 # 3. Eyeball the changes with the --diff option.
-# 4. Test the conversion.
-# 5. Use either --clean to remove the -bak files or --revert to
+# 4. Use macroscope, with a directory path including the Wesnoth mainline WML,
+#    to check that you have no unresolved references.
+# 5. Test the conversion.
+# 6. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
 #
 # This script presently makes no effort to fix terrain codes outside of maps,
@@ -509,16 +511,16 @@ def help():
 Usage: upconvert [options]
     Convert Battle of Wesnoth WML from older versions to newer ones.
     Options may be any of these:
-    -h, --help                 Emit this help message and quit
+    -h, --help                 Emit this help message and quit.
     -d, --dryrun               List changes but don't perform them.
     -o, --oldversion           Specify version to begin with.
     -v, --verbose              -v          lists changes.
                                -v -v       warns of maps already converted.
-                               -v -v -v    names each file before it's processed
+                               -v -v -v    names each file before it's processed.
                                -v -v -v -v shows verbose parse details.
-    -c, --clean                Clean up -bak files
-    -D, --diff                 Display diffs
-    -r, --revert               Revert the conversion from the -bak files
+    -c, --clean                Clean up -bak files.
+    -D, --diff                 Display diffs.
+    -r, --revert               Revert the conversion from the -bak files.
 """)
 
 if __name__ == '__main__':

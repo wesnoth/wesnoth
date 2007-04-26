@@ -38,6 +38,7 @@ collisions:
 	@echo "# Report on duplicate resource files."
 	@./macroscope --collisions $(EXCLUDE) $(TOPDIR)
 
+# Generate a reference page for the utility macros.
 macro-reference.xhtml:
 	@cat helpheader.xhtml >macro-reference.xhtml
 	@./macroscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(EXCLUDE) $(TOPDIR) >>macro-reference.xhtml
