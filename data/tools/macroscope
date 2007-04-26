@@ -274,6 +274,15 @@ class CrossRef:
                             key = self.imagesearch(name)
                             if key:
                                 self.fileref[key].append(fn, n+1)
+                        # Or a sound search. In some UMC the sound file names
+                        # are given with a 'sounds' or 'music' prefix.  Strip that.
+                        elif name.endswith(".ogg") or name.endswith(".wav"):
+                            dirname = os.path.dirname(name)
+                            if dirname in ("sounds", "music"):
+                                basename = os.path.basename(name)
+                                if basename in self.fileref:
+                                    key = basename
+                                    self.fileref[basename].append(fn, n+1)
                         if not key:
                             self.missing.append((name, reference(fn,n+1)))
                 rfp.close()

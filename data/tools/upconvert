@@ -32,34 +32,34 @@ filemoves = {
         # - magic.wav may map to one of several sounds depending on the init.
         # Some other assumption sound in current UMC as of April 2007
         # but theoretically dubious are marked with *.
-    	("creepy.ogg",              "underground.ogg"),
-        ("../music/defeat.ogg",     "music/defeat.ogg"),
-        ("../music/victory.ogg",    "music/victory.ogg"),
+        ("../music/defeat.ogg",     "defeat.ogg"),
+        ("../music/victory.ogg",    "victory.ogg"),
         ("AMLA_TOUGH_2",            "AMLA_TOUGH 2"),
         ("AMLA_TOUGH_3",            "AMLA_TOUGH 3"),
         ("SOUND_LIST:DAGGER_SWISH", "SOUND_LIST:SWORD_SWISH"),
         ("arrow-hit.wav",           "bow.ogg"),
         ("arrow-miss.wav",          "bow-miss.ogg"),
         ("attacks/animal-fangs.png","attacks/fangs-animal.png"),
-        ("attacks/crossbow.png",    "attacks/human-crossbow.png"),	#*
-        ("attacks/dagger.png",      "attacks/human-dagger.png"),	#*
+        ("attacks/crossbow.png",    "attacks/human-crossbow.png"),        #*
+        ("attacks/dagger.png",      "attacks/human-dagger.png"),        #*
         ("attacks/darkstaff.png",   "attacks/staff-necromantic.png"),
         ("attacks/human-fist.png",  "attacks/fist-human.png"),
         ("attacks/human-mace.png",  "attacks/mace.png"),
         ("attacks/human-sabre.png", "attacks/sabre-human.png"),
         ("attacks/icebolt.png",     "attacks/iceball.png"),    # Is this right?
-        ("attacks/lightingbolt.png", "attacks/lightning.png"),
+        ("attacks/lightingbolt.png","attacks/lightning.png"),
         ("attacks/missile.png",     "attacks/magic-missile.png"),
-        ("attacks/morning_star.png","attacks/morning_star.png"),
+        ("attacks/morning_star.png","attacks/morning-star.png"),
         ("attacks/plaguestaff.png", "attacks/staff-plague.png"),
         ("attacks/slam.png",        "attacks/slam-drake.png"),
         ("attacks/staff-magical.png","attacks/staff-magic.png"),
         ("attacks/sword-paladin.png","attacks/sword-holy.png"),
-        ("attacks/sword.png",       "attacks/human-sword.png"),		#*
+        ("attacks/sword.png",       "attacks/human-sword.png"),                #*
         ("attacks/sword_holy.png",  "attacks/sword-holy.png"),
         ("attacks/throwing-dagger-human.png", "attacks/dagger-thrown-human.png"),
         ("bow-hit.ogg",             "bow.ogg"),
         ("bow-hit.wav",             "bow.ogg"),
+        ("creepy.ogg",              "underground.ogg"),
         ("dwarves/warrior.png",     "dwarves/fighter.png"),
         ("eagle.wav",               "gryphon-shriek-1.ogg"),
         ("elfland.ogg",             "elf-land.ogg"),
@@ -68,20 +68,25 @@ filemoves = {
         ("fist.wav",                "fist.ogg"),
         ("flame-miss.ogg",          "flame-big-miss.ogg"),
         ("flame.ogg",               "flame-big.ogg"),
+        ("gameplay2.ogg",           "gameplay02.ogg"),                    # Changes in 1.3.2
         ("goblin-hit2.ogg",         "goblin-hit-2.ogg"),
         ("hatchet-miss-1.ogg",      "hatchet-miss.wav"),
         ("heal.ogg",                "heal.wav"),
         ("hiss-big.ogg",            "hiss-big.wav"),
+        ("human-dagger.png",        "dagger-human.png"),
         ("human-male-die.ogg",      "human-die-1.ogg"),
         ("human-male-hit.ogg",      "human-hit-1.ogg"),
         ("human-male-weak-die.ogg", "human-old-die-1.ogg"),
         ("human-male-weak-hit.ogg", "human-old-hit-1.ogg"),
-        ("items/castle-ruins",      "scenery/castle-ruins.png"),
+        ("items/castle-ruins.png",   "scenery/castle-ruins.png"),
+        ("items/fire.png",          "scenery/fire1.png"),
         ("items/fire1.png",         "scenery/fire1.png"),
         ("items/fire2.png",         "scenery/fire2.png"),
         ("items/fire3.png",         "scenery/fire3.png"),
         ("items/fire4.png",         "scenery/fire4.png"),
-        ("items/leanto",            "scenery/leanto.png"),
+        ("items/hero-icon.png",     "misc/hero-icon.png"),
+        ("items/leanto.png",        "scenery/leanto.png"),
+        ("items/lighthouse.png",    "scenery/lighthouse.png"),
         ("items/monolith1.png",     "scenery/monolith1.png"),
         ("items/monolith2.png",     "scenery/monolith2.png"),
         ("items/monolith3.png",     "scenery/monolith3.png"),
@@ -102,6 +107,8 @@ filemoves = {
         ("misc/dwarven-doors.png",  "scenery/dwarven-doors-closed.png"),
         ("misc/mine.png",           "scenery/mine-abandoned.png"),
         ("misc/nest-empty.png",     "scenery/nest-empty.png"),
+        ("misc/rocks.png",          "scenery/rubble.png"),
+        ("misc/snowbits.png",       "scenery/snowbits.png"),
         ("misc/temple.png",         "scenery/temple1.png"),
         ("miss.wav",                "miss-1.ogg"),
         ("orc-die.wav",             "orc-die-1.ogg"),
@@ -120,15 +127,17 @@ filemoves = {
         ("terrain/signpost.png",    "scenery/signpost.png"),
         ("terrain/village-cave-tile.png","terrain/village/cave-tile.png"),
         ("terrain/village-dwarven-tile.png","terrain/village/dwarven-tile.png"),
-        ("terrain/village-human.png","terrain/village/human.png"),
+        ("terrain/village-elven4.png","terrain/village/elven4.png"),
         ("terrain/village-human-snow.png", "terrain/village/human-snow.png"),
+        ("terrain/village-human.png","terrain/village/human.png"),
+        ("terrain/village-human4.png","terrain/village/human4.png"),
         ("throwing-dagger-swish.wav","dagger-swish.wav"),      # Is this right?
         ("units/undead/ghost-attack.png", "units/undead/ghost-attack-2.png"),
         ("units/undead/ghost-attack1.png", "units/undead/ghost-attack-1.png"),
         ("wolf-attack.wav",         "wolf-bite.ogg"),
         ("wolf-cry.wav",            "wolf-die.wav"),
-        ("wose-attack.wav",	    "wose.attack.ogg"),
-        ("wose.attack.ogg",	    "wose.attack.ogg"),
+        ("wose-attack.wav",            "wose.attack.ogg"),
+        ("wose.attack.ogg",            "wose.attack.ogg"),
     ),
     "1.3.1" : (
         # Peasant images moved to a new directory
@@ -170,12 +179,12 @@ filemoves = {
         ("red-mage-attack-staff2.png", "red-mage-attack-staff-2.png"),
         ("red-mage+female-attack-staff1.png", "red-mage+female-attack-staff-1.png"),
         ("red-mage+female-attack-staff2.png", "red-mage+female-attack-staff-2.png"),
-	# Timothy Pinkham supplied titles for two of his music files.
+        # Timothy Pinkham supplied titles for two of his music files.
         # Zhaytee supplied a title for wesnoth-1.ogg
-	# gameplay03.ogg, and and wesnoth-[25].ogg already had titles.
-	("gameplay01.ogg", "knolls.ogg"),
-	("gameplay02.ogg", "wanderer.ogg"),
-	("gameplay03.ogg", "battle.ogg"),
+        # gameplay03.ogg, and and wesnoth-[25].ogg already had titles.
+        ("gameplay01.ogg", "knolls.ogg"),
+        ("gameplay02.ogg", "wanderer.ogg"),
+        ("gameplay03.ogg", "battle.ogg"),
         ("wesnoth-1.ogg", "revelation.ogg"),
         ("wesnoth-2.ogg", "loyalists.ogg"),
         ("wesnoth-5.ogg", "northerners.ogg"),
@@ -565,6 +574,12 @@ if __name__ == '__main__':
     sys.stdout.write(explain[:-1] + ".\n")
     fileconversions = map(lambda x: filemoves[x], versions[:-1])
 
+    def hasdigit(str):
+        for c in str:
+            if c in "0123456789":
+                return True
+        return False
+
     def texttransform(filename, lineno, line):
         "Resource-name transformation on text lines."
         transformed = line
@@ -572,8 +587,11 @@ if __name__ == '__main__':
             for (old, new) in step:
                 transformed = transformed.replace(old, new)
         if verbose > 0 and transformed != line:
-            print "%s, line %d: %s -> %s" % \
+            msg = "%s, line %d: %s -> %s" % \
                   (filename, lineno+1, line.strip(), transformed.strip())
+            if not hasdigit(os.path.basename(old)) and hasdigit(new):
+                msg += " (check manually, alternatives may be better)"
+            print msg
         return transformed
 
     if "1.3.1" in versions and "older" not in versions:
