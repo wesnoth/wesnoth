@@ -366,6 +366,7 @@ Usage: macroscope [options] dirpath
     Options may be any of these:
     -h, --help                 Emit this help message and quit
     -c, --crossreference       Report resolved macro references (implies -w 1)
+    -C, --collisions           Report duplicate resource files   
     -d, --deflist              Make definition list
     -e reg, --exclude reg      Ignore files matching 
     -f dir, --from dir         Report only on macros defined under dir
@@ -379,9 +380,10 @@ Usage: macroscope [options] dirpath
 """)
 
     # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cdhe:f:lr:uw:",
+    (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lr:uw:",
                                          [
                                           'crossreference',
+                                          'collisions',
                                           'definitions',
                                           'exclude=',
                                           'extracthelp',
@@ -399,6 +401,7 @@ Usage: macroscope [options] dirpath
     forceused = None
     exclude = []
     warnlevel = 0
+    collisions = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -408,6 +411,8 @@ Usage: macroscope [options] dirpath
         elif switch in ('-c', '--crossreference'):
             crossreference = True
             warnlevel = 1
+        elif switch in ('-C', '--collisions'):
+            collisions = True
         elif switch in ('-d', '--definitions'):
             definitions = True
         elif switch in ('-e', '--exclude'):
@@ -435,6 +440,24 @@ Usage: macroscope [options] dirpath
     elif listfiles:
         for filename in xref.filelist:
             print filename
+    if collisions:
+        collisions = []
+        for filename in xref.filelist:
+            ifp = open(filename)
+            collisions.append(md5.new(ifp.read()).digest())
+            ifp.close()
+        collisions = zip(xref.filelist, collisions)
+        hashcounts = {}
+        for (n, h) in collisions:
+            hashcounts[h] = hashcounts.get(h, 0) + 1
+        collisions = filter(lambda (n, h): hashcounts[h] > 1, collisions)
+        collisions.sort(lambda (n1, h1), (n2, h2): cmp(h1, h2))
+        lasthash = None
+        for (n, h) in collisions:
+            if h != lasthash:
+                print "%%"
+                lasthash = h
+            print n
     elif crossreference or definitions or listfiles or unresolved:
         print "# Macroscope reporting on %s" % time.ctime()
         print "# Invocation: %s" % " ".join(sys.argv)

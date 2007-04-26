@@ -9,7 +9,7 @@ TOPDIR = ../../
 FAKE = --force-used "(terrain|buttons|cursors|cursors-bw|menu|icons)/"
 # Suppress meaningless errors about castle graphics and about resources 
 # used only by the GUI code in C++
-EXCLUDE = --exclude "(exploder|castle-cutter|UI)"
+EXCLUDE = --exclude ".dirstamp|po/|translations/|exploder/|castle-cutter/|UI/"
 
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
@@ -33,6 +33,10 @@ utils-macros:
 
 definitions:
 	@./macroscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
+
+collisions:
+	@echo "# Report on duplicate resource files."
+	@./macroscope --collisions $(EXCLUDE) $(TOPDIR)
 
 macro-reference.xhtml:
 	@cat helpheader.xhtml >macro-reference.xhtml
