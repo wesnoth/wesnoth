@@ -431,7 +431,7 @@ def translator(filename, mapxform, textxform):
             # Assumes map is more than 1 line long.
             if not map_only:
                 line = line.split('"')[1]
-            if line:
+            if line.strip():
                 outmap.append(line)
             while cont and mfile:
                 line = mfile.pop(0)
@@ -467,7 +467,7 @@ def translator(filename, mapxform, textxform):
         elif "map_data=" in line and line.count("{") or line.count("}"):
             newdata.append(line)
         elif "map_data=" in line and line.count('"') > 1:
-            print >>sys.stderr, '"%s", line %d: one-line map data.' % (filename, lineno)
+            print >>sys.stderr, 'upconvert: "%s", line %d: one-line map data.' % (filename, lineno)
             newdata.append(line)
         else:
             # Handle text (non-map) lines
@@ -591,11 +591,11 @@ if __name__ == '__main__':
             # Do housekeeping
             if os.path.exists(backup):
                 if clean:
-                    print "Removing %s" % backup
+                    print "upconvert: removing %s" % backup
                     if not dryrun:
                         os.remove(backup)
                 elif revert:
-                    print "Reverting %s" % backup
+                    print "upconvert: reverting %s" % backup
                     if not dryrun:
                         os.rename(backup, fn)
         elif diffs:
@@ -608,8 +608,7 @@ if __name__ == '__main__':
             try:
                 changed = translator(fn, maptransform, texttransform)
                 if changed:
-                    if verbose > 0:
-                        print "%s modified." % fn
+                    print "upconvert: converting", fn
                     if not dryrun:
                         os.rename(fn, backup)
                         ofp = open(fn, "w")
@@ -618,5 +617,9 @@ if __name__ == '__main__':
             except maptransform_error, e:
                 if e.level <= verbose:
                     sys.stderr.write("upconvert: " + `e` + "\n")
+            except:
+                sys.stderr.write("upconvert: internal error on %s\n" % fn)
+                (exc_type, exc_value, exc_traceback) = sys.exc_info()
+                raise exc_type, exc_value, exc_traceback
 
 # upconvert ends here
