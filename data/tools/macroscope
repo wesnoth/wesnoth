@@ -162,14 +162,12 @@ class CrossRef:
         for filename in self.filelist:
             if warnlevel > 1:
                 print filename + ":"
-            if filter(lambda x: x, map(lambda x: filename.endswith("." + x), resource_extensions)):
-                # It's a resource file of some sort.
+            if filter(lambda x: x, map(lambda x: filename.endswith("."+x), resource_extensions)):
+                # It's a resource file of some sort. The rule we're applying here is:
                 #
-                # The rule we're applying here is:
-                # 1) If it's a sound file, its name is the part of
-                #    the path after "sounds/" or "music/".
-                # 2) If it's an image file, its name is the part of
-                #    the path after "images/".
+                # 1) If it's a sound file, its name is the part of the path after "sounds/" or
+                # "music/".  It has to be this way because we may not have a copy of mainline
+                # handy to fill in the missing directory with.
                 (root, ext) = os.path.splitext(filename)
                 if ext in (".ogg", ".wav"):
                     for superdir in ("music", "sounds"):
@@ -177,11 +175,15 @@ class CrossRef:
                         if foundit > -1:
                             name = filename[foundit:]
                             name = name[len(superdir)+1:]
+                # 2) If it's an image file, its name is the part of the path after "images/".
                 elif ext in (".png", ".jpg"):
                     foundit = filename.find("images")
                     if foundit > -1:
                         name = filename[foundit:]
-                        name = name[len("images")+1:]                    
+                        name = name[len("images")+1:]
+                if name in self.fileref:
+                    print >>sys.stderr, "*** Warning: %s meant %s, will now mean %s." \
+                          % (name, self.fileref[name].filename, filename)
                 self.fileref[name] = reference(filename) 
             elif iswml(filename):
                 # It's a WML file, scan for macro defitions
