@@ -163,11 +163,13 @@ class CrossRef:
             if warnlevel > 1:
                 print filename + ":"
             if filter(lambda x: x, map(lambda x: filename.endswith("."+x), resource_extensions)):
-                # It's a resource file of some sort. The rule we're applying here is:
+                # It's a resource file of some sort. The rule we're
+                # applying here is:
                 #
-                # 1) If it's a sound file, its name is the part of the path after "sounds/" or
-                # "music/".  It has to be this way because we may not have a copy of mainline
-                # handy to fill in the missing directory with.
+                # 1) If it's a sound file, its name is the part of the
+                # path after "sounds/" or "music/".  It has to be this
+                # way because we may not have a copy of mainline handy
+                # to fill in the missing directory with.
                 (root, ext) = os.path.splitext(filename)
                 name = filename
                 if ext in (".ogg", ".wav"):
@@ -176,7 +178,8 @@ class CrossRef:
                         if foundit > -1:
                             name = filename[foundit + len(superdir) + 1:]
                             break
-                # 2) If it's an image file, its name is the part of the path after "images/".
+                # 2) If it's an image file, its name is the part of the
+                # path after "images/".
                 elif ext in (".png", ".jpg"):
                     foundit = filename.find("images")
                     if foundit > -1:
@@ -192,16 +195,15 @@ class CrossRef:
                 for (n, line) in enumerate(dfp):
                     if warnlevel > 1:
                         print `line`[1:-1]
-                    line = line.strip()
-                    if line.startswith("#define"):
+                    if line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
                         here = reference(filename, n+1, line)
                         here.hash = md5.new()
-                        here.docstring = line[8:]	# Strip off #define_
+                        here.docstring = line.lstrip()[8:]	# Strip off #define_
                         state = "macro_header"
                         continue
-                    elif state != 'outside' and line.endswith("#enddef"):
+                    elif state != 'outside' and line.strip().endswith("#enddef"):
                         here.hash.update(line)
                         here.hash = here.hash.digest()
                         if name in self.xref:
@@ -449,9 +451,10 @@ Usage: macroscope [options] dirpath
         dirpath = arguments[0].split(":")
     else:
         dirpath = ['.']
-    print "# Macroscope reporting on %s" % time.ctime()
-    print "# Invocation: %s" % " ".join(sys.argv)
-    print "# Working directory: %s" % os.getcwd()
+    if not extracthelp:
+        print "# Macroscope reporting on %s" % time.ctime()
+        print "# Invocation: %s" % " ".join(sys.argv)
+        print "# Working directory: %s" % os.getcwd()
     xref = CrossRef(dirpath, "|".join(exclude), warnlevel)
     if extracthelp:
         xref.extracthelp(dirpath[0], sys.stdout)
