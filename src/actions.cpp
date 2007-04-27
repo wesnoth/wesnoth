@@ -971,6 +971,7 @@ attack::attack(display& gui, const gamemap& map,
 							newunit.heal_all();
 						}
 						units_.add(new std::pair<gamemap::location,unit>(loc,newunit));
+						preferences::encountered_units().insert(newunit.id());
 						if (update_display_){
 							gui_.invalidate(loc);
 						}
