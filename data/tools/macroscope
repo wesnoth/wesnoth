@@ -169,18 +169,18 @@ class CrossRef:
                 # "music/".  It has to be this way because we may not have a copy of mainline
                 # handy to fill in the missing directory with.
                 (root, ext) = os.path.splitext(filename)
+                name = filename
                 if ext in (".ogg", ".wav"):
                     for superdir in ("music", "sounds"):
                         foundit = filename.find(superdir)
                         if foundit > -1:
-                            name = filename[foundit:]
-                            name = name[len(superdir)+1:]
+                            name = filename[foundit + len(superdir) + 1:]
+                            break
                 # 2) If it's an image file, its name is the part of the path after "images/".
                 elif ext in (".png", ".jpg"):
                     foundit = filename.find("images")
                     if foundit > -1:
-                        name = filename[foundit:]
-                        name = name[len("images")+1:]
+                        name = filename[foundit + len("images") + 1:]
                 if name in self.fileref:
                     print >>sys.stderr, "*** Warning: %s meant %s, will now mean %s." \
                           % (name, self.fileref[name].filename, filename)
