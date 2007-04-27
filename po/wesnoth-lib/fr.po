@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-26 17:57+0200\n"
-"PO-Revision-Date: 2007-03-28 14:39+0200\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
-"Language-Team: Language fr\n"
+"PO-Revision-Date: 2007-04-28 00:57+0100\n"
+"Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
+"Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -280,15 +280,15 @@ msgstr "Quitter la partie"
 
 #: src/hotkeys.cpp:83
 msgid "Set Team Label"
-msgstr "Placer une étiquette pour l'équipe"
+msgstr "Placer une note pour l'équipe"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
-msgstr "Placer une étiquette"
+msgstr "Placer une note"
 
 #: src/hotkeys.cpp:85
 msgid "Clear Labels"
-msgstr "Effacer les étiquettes"
+msgstr "Effacer les notes"
 
 #: src/hotkeys.cpp:86
 msgid "Show Enemy Moves"
@@ -399,13 +399,13 @@ msgid "Refresh Image Cache"
 msgstr "Rafraîchir le cache des images"
 
 #: src/hotkeys.cpp:115
-#, fuzzy
 msgid "Delay transitions updates"
-msgstr "Différer les mises à jour du voile"
+msgstr "Différer les mises à jour des transitions entre terrains"
 
+# Damien : les transitions sont entre terrains ; c'est pas dans la VO, mais je le rappelle.
 #: src/hotkeys.cpp:116
 msgid "Update transitions"
-msgstr ""
+msgstr "Mettre à jour les transitions entre terrains"
 
 #: src/hotkeys.cpp:118
 msgid "Delay Shroud Updates"
@@ -421,7 +421,7 @@ msgstr "Continuer le déplacement"
 
 #: src/hotkeys.cpp:121
 msgid "Find Label or Unit"
-msgstr "Chercher une étiquette ou une unité"
+msgstr "Chercher une note ou une unité"
 
 #: src/hotkeys.cpp:122
 msgid "Speak to Ally"
@@ -530,11 +530,11 @@ msgstr "Sauter les déplacements de l'IA"
 
 #: src/preferences_display.cpp:265
 msgid "Show Lobby Minimaps"
-msgstr "Aperçu des cartes du vestibule."
+msgstr "Voir les cartes du vestibule."
 
 #: src/preferences_display.cpp:266
 msgid "Do Not Show Lobby Joins"
-msgstr "Masque les arrivées au vestibule"
+msgstr "Masquer les arrivées au vestibule"
 
 #: src/preferences_display.cpp:267
 msgid "Show Lobby Joins Of Friends Only"
@@ -546,11 +546,11 @@ msgstr "Afficher toutes les arrivées au vestibule"
 
 #: src/preferences_display.cpp:269
 msgid "Sort Lobby List"
-msgstr "Trie la liste des connectés au vestibule"
+msgstr "Trier la liste des connectés au vestibule"
 
 #: src/preferences_display.cpp:270
 msgid "Iconize Lobby List"
-msgstr "Iconifie la liste des connectés au vestibule"
+msgstr "Iconifier la liste des connectés au vestibule"
 
 #: src/preferences_display.cpp:271
 msgid "Friends List"
@@ -574,7 +574,7 @@ msgstr "Enlever"
 
 #: src/preferences_display.cpp:276
 msgid "Show Floating Labels"
-msgstr "Afficher les étiquettes"
+msgstr "Afficher les notes"
 
 #: src/preferences_display.cpp:277
 msgid "Turn Dialog"
@@ -746,36 +746,37 @@ msgstr "Afficher une grille en surimpression sur la carte"
 
 #: src/preferences_display.cpp:428
 msgid "Show minimaps in the multiplayer lobby"
-msgstr "Affiche l'aperçu des cartes dans le vestibule"
+msgstr "Afficher l'aperçu des cartes dans le vestibule"
 
 #: src/preferences_display.cpp:431
 msgid "Sort the player list in the lobby by player groups"
-msgstr "Trie la liste des joueurs du vestibule par groupe de joueurs"
+msgstr "Trier la liste des joueurs du vestibule par groupe de joueurs"
 
 #: src/preferences_display.cpp:434
 msgid "Show icons in front of the player names in the lobby."
-msgstr "Affiche une icône devant le nom des joueurs connectés."
+msgstr "Afficher une icône devant le nom des joueurs connectés."
 
 #: src/preferences_display.cpp:437
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Masque les messages des joueurs rejoignant le vestibule."
+msgstr "Masquer les messages des joueurs rejoignant le vestibule."
 
 #: src/preferences_display.cpp:439
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Affiche les messages des joueurs amis rejoignant le vestibule."
+msgstr "Afficher les messages des joueurs amis rejoignant le vestibule."
 
 #: src/preferences_display.cpp:441
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
-"Affiche les messages concernant tous les joueurs qui rejoignent le vestibule."
+"Afficher les messages concernant tous les joueurs qui rejoignent le "
+"vestibule."
 
 #: src/preferences_display.cpp:443
 msgid "View and edit your friends and ignores list"
-msgstr "Affiche et modifie la liste des amis et des ignorés"
+msgstr "Afficher et modifier la liste des amis et des ignorés"
 
 #: src/preferences_display.cpp:444
 msgid "Back to the multiplayer options"
-msgstr "Retour aux options multijoueurs"
+msgstr "Retourner aux options multijoueurs"
 
 #: src/preferences_display.cpp:445
 msgid "Add this username to your friends list"
@@ -821,8 +822,7 @@ msgstr "Afficher sous l'unité un cercle de la couleur de son camp"
 
 #: src/preferences_display.cpp:468
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
-"Choisissez si le soleil évolue de gauche à droite ou de droite à gauche"
+msgstr "Choisir si le soleil évolue de gauche à droite ou de droite à gauche"
 
 #: src/preferences_display.cpp:471
 msgid "Use colored mouse cursors (may be slower)"
@@ -882,7 +882,7 @@ msgstr "Choisissez une résolution"
 
 #: src/preferences_display.cpp:1277
 msgid "Hotkey Settings"
-msgstr "Configuration des raccourcis clavier"
+msgstr "Configurer les raccourcis clavier"
 
 #: src/preferences_display.cpp:1281 src/preferences_display.cpp:1334
 msgid "Press desired Hotkey"
