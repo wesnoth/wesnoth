@@ -449,6 +449,9 @@ Usage: macroscope [options] dirpath
         dirpath = arguments[0].split(":")
     else:
         dirpath = ['.']
+    print "# Macroscope reporting on %s" % time.ctime()
+    print "# Invocation: %s" % " ".join(sys.argv)
+    print "# Working directory: %s" % os.getcwd()
     xref = CrossRef(dirpath, "|".join(exclude), warnlevel)
     if extracthelp:
         xref.extracthelp(dirpath[0], sys.stdout)
@@ -474,9 +477,6 @@ Usage: macroscope [options] dirpath
                 lasthash = h
             print n
     elif crossreference or definitions or listfiles or unresolved:
-        print "# Macroscope reporting on %s" % time.ctime()
-        print "# Invocation: %s" % " ".join(sys.argv)
-        print "# Working directory: %s" % os.getcwd()
         def predicate(name, defloc):
             if from_restrict and not defloc.filename.startswith(from_restrict):
                 return False
