@@ -9,7 +9,7 @@ TOPDIR = ../../
 FAKE = --force-used "(terrain|buttons|cursors|cursors-bw|menu|icons)/"
 # Suppress meaningless errors about castle graphics and about resources 
 # used only by the GUI code in C++
-EXCLUDE = --exclude ".dirstamp|po/|translations/|exploder/|castle-cutter/|UI/"
+EXCLUDE = --exclude ".dirstamp|po/|translations/|exploder/|castle-cutter/|UI/|tutorial/"
 
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
