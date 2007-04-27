@@ -9,6 +9,9 @@ TOPDIR = ../../
 FAKE = --force-used "(terrain|buttons|cursors|cursors-bw|menu|icons)/"
 # Suppress meaningless errors about castle graphics and about resources 
 # used only by the GUI code in C++
+# FIXME: This also suppresses all checking of the tutorial files.
+# Otherwise we get warnings about duplicated resource files that are 
+# copies of stuff in HttT.  It's not clear what the right permanent fix is.
 EXCLUDE = --exclude ".dirstamp|po/|translations/|exploder/|castle-cutter/|UI/|tutorial/"
 
 unresolved:
@@ -31,12 +34,13 @@ utils-macros:
 	@echo "# Report on usage of utility macros"
 	@./macroscope --crossreference --from $(TOPDIR)data/utils $(EXCLUDE) $(TOPDIR)
 
-definitions:
-	@./macroscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
-
 collisions:
 	@echo "# Report on duplicate resource files."
 	@./macroscope --collisions $(EXCLUDE) $(TOPDIR)
+
+# Report a list of symbols and resources defined in mainline.
+definitions:
+	@./macroscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
 
 # Generate a reference page for the utility macros.
 macro-reference.xhtml:
