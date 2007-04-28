@@ -78,19 +78,41 @@ def interpret(lines, css):
     outstr = outstr.replace("\n\n</pre>", "\n</pre>")
     return outstr
 
-def allfiles(dirpath, exclude):
-    "Get the names of all files under dirpath, ignoring .svn directories."
-    datafiles = []
-    for dir in dirpath:
-        os.path.walk(dir,
-                     lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
-                     None)
-    datafiles = filter(lambda x: ".svn" not in x, datafiles)
-    datafiles = filter(lambda x: not os.path.isdir(x), datafiles)
-    if exclude:
-        datafiles = filter(lambda x: not re.search(exclude, x), datafiles)
-    datafiles = filter(lambda x: not x.endswith("-bak"), datafiles)
-    return datafiles
+class Forest:
+    "Return an iterable directory forest object."
+    def __init__(self, dirpath, exclude=None):
+        "Get the names of all files under dirpath, ignoring .svn directories."
+        self.forest = []
+        for dir in dirpath:
+            os.path.walk(dir,
+                         lambda arg, dir, names: self.forest.append(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
+                         None)
+        for i in range(len(self.forest)):
+            self.forest[i] = filter(lambda x: ".svn" not in x, self.forest[i])
+            self.forest[i] = filter(lambda x: not os.path.isdir(x), self.forest[i])
+            if exclude:
+                self.forest[i] = filter(lambda x: not re.search(exclude, x), self.forest[i])
+            self.forest[i] = filter(lambda x: not x.endswith("-bak"), self.forest[i])
+        # Compute cliques (will be used later for visibility checks) 
+        self.clique = {}
+        counter = 0
+        for tree in self.forest:
+            counter += 1
+            for filename in tree:
+                self.clique[filename] = counter
+    def neighbors(fn1, fn2):
+        "Are two files from the same tree?"
+        return self.clique[fn1] == self.clique[fn2]
+    def flatten(self):
+        allfiles = []
+        for tree in self.forest:
+            allfiles += tree
+        return allfiles
+    def iterator(self):
+        "Return the next file in the forest."
+        for tree in self.forest:
+            for filename in tree:
+                yield filename
 
 def iswml(filename):
     "Is the specified filename WML?"
@@ -168,11 +190,11 @@ class CrossRef:
     def __init__(self, dirpath, exclude="", warnlevel=0):
         "Build cross-reference object from the specified filelist."
         self.dirpath = dirpath
-        self.filelist = allfiles(dirpath, exclude)
+        self.filelist = Forest(dirpath, exclude)
         self.xref = {}
         self.fileref = {}
         self.noxref = False
-        for filename in self.filelist:
+        for filename in self.filelist.iterator():
             if warnlevel > 1:
                 print filename + ":"
             if filter(lambda x: x, map(lambda x: filename.endswith("."+x), resource_extensions)):
@@ -262,7 +284,7 @@ class CrossRef:
         self.unresolved = []
         self.missing = []
         formals = []
-        for fn in self.filelist:
+        for fn in self.filelist.iterator():
             if iswml(fn):
                 rfp = open(fn)
                 for (n, line) in enumerate(rfp):
@@ -498,15 +520,15 @@ Usage: macroscope [options] dirpath
     if extracthelp:
         xref.extracthelp(dirpath[0], sys.stdout)
     elif listfiles:
-        for filename in xref.filelist:
+        for filename in xref.filelist.iterator():
             print filename
     if collisions:
         collisions = []
-        for filename in xref.filelist:
+        for filename in xref.filelist.iterator():
             ifp = open(filename)
             collisions.append(md5.new(ifp.read()).digest())
             ifp.close()
-        collisions = zip(xref.filelist, collisions)
+        collisions = zip(xref.filelist.flatten(), collisions)
         hashcounts = {}
         for (n, h) in collisions:
             hashcounts[h] = hashcounts.get(h, 0) + 1
