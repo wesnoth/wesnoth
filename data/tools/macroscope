@@ -244,8 +244,11 @@ class CrossRef:
                     elif line.strip().startswith("#undef"):
                         tokens = line.split()
                         name = tokens[1]
-                        # Potential bug here on unbalanced #undef
-                        self.xref[name][-1].undef = n
+                        if name in self.xref and self.xref[name]:
+                            self.xref[name][-1].undef = n
+                        else:
+                            print "%s: unbalanced #undef on %s" \
+                                  % (reference(filename, n), name)
                 dfp.close()
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
@@ -429,7 +432,7 @@ Usage: macroscope [options] dirpath
     --forced-used regexp         Ignore refcount 0 on names matching regexp
     --extracthelp                Extract help from macro definition comments.
    Options may be followed by any number of directiories to check.  If no
-   directories are given, all files under the current directory are checked
+   directories are given, all files under the current directory are checked.
 """)
 
     # Process options
@@ -534,4 +537,4 @@ Usage: macroscope [options] dirpath
         if unresolved:
             xref.unresdump()
     
-
+# macroscope ends here
