@@ -12,7 +12,9 @@
 #
 # (1) It doesn't actually evaluate file inclusions.  Instead, any
 # macro definition from anywhere in the set of input trees can be used
-# to satisfy a macro call anywhere else.
+# to satisfy a macro call anywhere else.  Exception: when an #undef is
+# detected, the macro is tagged local and not visible outside the
+# span of lines where it's defined.
 #
 # (2) It doesn't read [binary_path] tags, as this would require
 # implementing a WML parser.  Instead, it assumes that a resource-file
@@ -426,7 +428,8 @@ Usage: macroscope [options] dirpath
     -w, --warnlevel              Set to 1 to warn of duplicate macro definitions
     --forced-used regexp         Ignore refcount 0 on names matching regexp
     --extracthelp                Extract help from macro definition comments.
-   The required dirpath argument may be a colon-separated directory list.
+   Options may be followed by any number of directiories to check.  If no
+   directories are given, all files under the current directory are checked
 """)
 
     # Process options
@@ -481,7 +484,7 @@ Usage: macroscope [options] dirpath
             warnlevel = int(val)
 
     if len(arguments):
-        dirpath = arguments[0].split(":")
+        dirpath = arguments
     else:
         dirpath = ['.']
     if not extracthelp:
