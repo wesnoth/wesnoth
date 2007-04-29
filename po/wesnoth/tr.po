@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-26 17:57+0200\n"
+"POT-Creation-Date: 2007-04-29 21:39+0200\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -2468,7 +2468,7 @@ msgstr ""
 #: data/terrain.cfg:803 data/terrain.cfg:814 data/terrain.cfg:826
 #: data/terrain.cfg:838 data/terrain.cfg:850 data/terrain.cfg:864
 #: data/terrain.cfg:876 data/terrain.cfg:890 data/terrain.cfg:906
-#: data/terrain.cfg:918 src/terrain.cpp:117
+#: data/terrain.cfg:918 src/terrain.cpp:98
 msgid "Village"
 msgstr "Kasaba"
 
@@ -5261,11 +5261,13 @@ msgstr ""
 "vardır. Bir açıklama veya tanım almak için fare işaretçini bunların üzerine "
 "götür."
 
-#: data/tips.cfg:37
+#: data/tips.cfg:36
+#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
-"the Help Wesnoth button.  This information is vital so we can adjust "
-"campaign difficulty."
+"the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
+"hand corner of the game main screen).  This information is vital so we can "
+"adjust campaign difficulty."
 msgstr ""
 "Wesnoth'a yardım düğmesiyle Wesnoth projesine anonim bir istatistik "
 "gönderebilirsiniz. Bu bilgi kampanya zorluğunu ayarlama işine yarar. "
@@ -10168,50 +10170,50 @@ msgstr "Birim askere almak veya tekrar çağırmak için liderin iç kalede olma
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "İçinde birim askere alabileceğin boş kale bölümü yok."
 
-#: src/actions.cpp:992 src/actions.cpp:1199
+#: src/actions.cpp:993 src/actions.cpp:1200
 msgid "poisoned"
 msgstr "zehirli"
 
-#: src/actions.cpp:1000 src/actions.cpp:1207
+#: src/actions.cpp:1001 src/actions.cpp:1208
 msgid "slowed"
 msgstr "yavaş"
 
-#: src/actions.cpp:1011 src/actions.cpp:1219
+#: src/actions.cpp:1012 src/actions.cpp:1220
 msgid "stone"
 msgstr "taş"
 
-#: src/actions.cpp:2051
+#: src/actions.cpp:2052
 msgid "Ambushed!"
 msgstr "Pusuya düştü!"
 
-#: src/actions.cpp:2091
+#: src/actions.cpp:2092
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Arkadaş birim göründü"
 
-#: src/actions.cpp:2094
+#: src/actions.cpp:2095
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Düşman birimi göründü!"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2100
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2101
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 
-#: src/actions.cpp:2101
+#: src/actions.cpp:2102
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Birim göründü! ($friends dostça, $enemies düşmanca)"
 
-#: src/actions.cpp:2110
+#: src/actions.cpp:2111
 msgid "(press $hotkey to continue)"
 msgstr "(devam etmek için $hotkey bas)"
 
@@ -10264,11 +10266,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Geçersiz)"
 
-#: src/dialogs.cpp:467 src/game.cpp:804
+#: src/dialogs.cpp:467 src/game.cpp:809
 msgid "Campaign"
 msgstr "Kampanya"
 
-#: src/dialogs.cpp:469 src/game.cpp:1243
+#: src/dialogs.cpp:469 src/game.cpp:1248
 msgid "Multiplayer"
 msgstr "Çokoyuncu"
 
@@ -10332,7 +10334,7 @@ msgstr "Kaydı sil"
 msgid "Date"
 msgstr "Tarih"
 
-#: src/dialogs.cpp:571 src/game.cpp:941 src/menu_events.cpp:295
+#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:295
 #: src/menu_events.cpp:830
 msgid "Name"
 msgstr "İsim"
@@ -10374,7 +10376,7 @@ msgstr "Hareket: "
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: src/game.cpp:426 src/game.cpp:1328
+#: src/game.cpp:426 src/game.cpp:1333
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -10383,265 +10385,271 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Uyarı: Yüklemeye çalıştığın dosya bozuk. Yıne de yükleniyor.\n"
 
 #: src/game.cpp:696 src/multiplayer_connect.cpp:1256
+#, fuzzy
+msgid "This save is from a version too old to be loaded."
+msgstr ""
+"Bu kayıt oyunun farklı bir versiyonundan. Yüklemeyi denemek istiyor musun?"
+
+#: src/game.cpp:701 src/multiplayer_connect.cpp:1262
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Bu kayıt oyunun farklı bir versiyonundan. Yüklemeyi denemek istiyor musun?"
 
-#: src/game.cpp:704 src/game.cpp:707 src/multiplayer_connect.cpp:1241
+#: src/game.cpp:709 src/game.cpp:712 src/multiplayer_connect.cpp:1241
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Yüklemeye çalıştığın dosya bozuk: "
 
-#: src/game.cpp:710
+#: src/game.cpp:715
 msgid "File I/O Error while reading the game"
 msgstr "Oyunu okurken dosya I/O hatası"
 
-#: src/game.cpp:805
+#: src/game.cpp:810
 msgid "Choose the campaign you want to play:"
 msgstr "Oynamak istediğin kampanyayı seç:"
 
-#: src/game.cpp:828
+#: src/game.cpp:833
 msgid "Difficulty"
 msgstr "Zorluk"
 
-#: src/game.cpp:829
+#: src/game.cpp:834
 msgid "Select difficulty level:"
 msgstr "Zorluk seviyesini seç:"
 
-#: src/game.cpp:856
+#: src/game.cpp:861
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:859
+#: src/game.cpp:864
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:862
+#: src/game.cpp:867
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:890
+#: src/game.cpp:895
 msgid "Connect to Server"
 msgstr "Suncuya bağlan"
 
-#: src/game.cpp:891
+#: src/game.cpp:896
 msgid "You will now connect to a server to download add-ons."
 msgstr "Şimdi eklentileri indirmek üzere bir eklenti sunucusuna bağlanacaksın."
 
-#: src/game.cpp:892
+#: src/game.cpp:897
 msgid "Server: "
 msgstr "Sunucu: "
 
-#: src/game.cpp:907 src/multiplayer.cpp:132 src/multiplayer.cpp:169
+#: src/game.cpp:912 src/multiplayer.cpp:132 src/multiplayer.cpp:169
 msgid "Connecting to Server..."
 msgstr "Sunucuya bağlanılıyor..."
 
-#: src/game.cpp:910
+#: src/game.cpp:915
 msgid "Could not connect to host."
 msgstr "Sunucuya bağlanılamadı"
 
-#: src/game.cpp:919
+#: src/game.cpp:924
 msgid "Asking for list of add-ons"
 msgstr "Eklentiler listesi soruluyor"
 
-#: src/game.cpp:932
+#: src/game.cpp:937
 msgid "Error communicating with the server."
 msgstr "Sunucu ile iletişim hatası."
 
-#: src/game.cpp:941 src/titlescreen.cpp:234
+#: src/game.cpp:946 src/titlescreen.cpp:234
 msgid "Version"
 msgstr "Versiyon"
 
-#: src/game.cpp:942
+#: src/game.cpp:947
 msgid "Author"
 msgstr "Yazar"
 
-#: src/game.cpp:942
+#: src/game.cpp:947
 msgid "Downloads"
 msgstr "İndirmeler"
 
-#: src/game.cpp:942
+#: src/game.cpp:947
 msgid "Size"
 msgstr "Boyut"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1005
 msgid "Publish add-on: "
 msgstr "Eklenti yayınla: "
 
-#: src/game.cpp:1004
+#: src/game.cpp:1009
 msgid "Delete add-on: "
 msgstr "Eklenti sil: "
 
-#: src/game.cpp:1008
+#: src/game.cpp:1013
 msgid "There are no add-ons available for download from this server."
 msgstr "Bu serverdan indirilebilecek bir eklenti yok."
 
-#: src/game.cpp:1015
+#: src/game.cpp:1020
 msgid "Choose the add-on to download."
 msgstr "İndirilecek eklentiyi seç"
 
-#: src/game.cpp:1015
+#: src/game.cpp:1020
 msgid "Get Add-ons"
 msgstr "Eklentiler al"
 
-#: src/game.cpp:1056
+#: src/game.cpp:1061
 #, fuzzy
 msgid "Dependencies"
 msgstr "Tercihler"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1062
 msgid "This add-on requires the following additional dependencies:"
 msgstr ""
 
-#: src/game.cpp:1059
+#: src/game.cpp:1064
 #, fuzzy
 msgid "Do you still want to download it?"
 msgstr "Bu oyunu gerçekten silmek istiyor musun?"
 
-#: src/game.cpp:1068
+#: src/game.cpp:1073
 msgid "Downloading add-on..."
 msgstr "Eklenti yükleniyor..."
 
-#: src/game.cpp:1092
+#: src/game.cpp:1097
 msgid "Cannot rescan the filesystem"
 msgstr "Dosya sistemi tekrar taranamıyor"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1122
 msgid "Add-on Installed"
 msgstr "Eklenti yüklendi"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1122
 msgid "The add-on has been installed."
 msgstr "Eklenti yüklendi."
 
-#: src/game.cpp:1120
+#: src/game.cpp:1125
 msgid "Network communication error."
 msgstr "Network iletişim hatası"
 
-#: src/game.cpp:1122
+#: src/game.cpp:1127
 msgid "Remote host disconnected."
 msgstr "Uzak sunucuyla bağlantı koptu"
 
-#: src/game.cpp:1124
+#: src/game.cpp:1129
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Bu kampanyayı yüklemek için gerekli dosyaları oluşturmada bir hata oldu."
 
-#: src/game.cpp:1136 src/game.cpp:1175 src/game.cpp:1200
+#: src/game.cpp:1141 src/game.cpp:1180 src/game.cpp:1205
 #: src/multiplayer.cpp:216 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Bağlantı süresi aşıldı"
 
-#: src/game.cpp:1139 src/game.cpp:1177 src/game.cpp:1202
+#: src/game.cpp:1144 src/game.cpp:1182 src/game.cpp:1207
 msgid "The server responded with an error: \""
 msgstr "Server bir hata ile karşılık verdi: "
 
-#: src/game.cpp:1143
+#: src/game.cpp:1148
 msgid "Terms"
 msgstr "Şartlar"
 
-#: src/game.cpp:1173
+#: src/game.cpp:1178
 msgid "Sending add-on"
 msgstr "Eklenti gönderiliyor "
 
-#: src/game.cpp:1180 src/game.cpp:1205 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1185 src/game.cpp:1210 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr "Karşılık"
 
-#: src/game.cpp:1227
+#: src/game.cpp:1232
 msgid "Join Official Server"
 msgstr "Resmi sunucuya gir"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1233
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Resmi Wesnoth multiplayer sunucusuna gir"
 
-#: src/game.cpp:1230 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1235 src/multiplayer_lobby.cpp:532
 msgid "Join Game"
 msgstr "Oyuna gir"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1236
 msgid "Join a server or hosted game"
 msgstr "Bir sunucuya veya sunulu oyuna gir"
 
-#: src/game.cpp:1233
+#: src/game.cpp:1238
 msgid "Host Networked Game"
 msgstr "Network üzeri oyun host et"
 
-#: src/game.cpp:1234
+#: src/game.cpp:1239
 msgid "Host a game without using a server"
 msgstr "Bir server kullanmaksızın bir oyun host et"
 
-#: src/game.cpp:1236
+#: src/game.cpp:1241
 #, fuzzy
 msgid "Local Game"
 msgstr "Oyun yükle"
 
-#: src/game.cpp:1237
+#: src/game.cpp:1242
 #, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Aynı makina üzerinde bir çok oyunculu oyun oyna."
 
-#: src/game.cpp:1245 src/multiplayer.cpp:196
+#: src/game.cpp:1250 src/multiplayer.cpp:196
 msgid "Login: "
 msgstr "Giriş: "
 
-#: src/game.cpp:1282 src/playcampaign.cpp:90 src/playcampaign.cpp:358
+#: src/game.cpp:1287 src/playcampaign.cpp:90 src/playcampaign.cpp:358
 msgid "The game could not be loaded: "
 msgstr "Oyun yüklenemedi: "
 
-#: src/game.cpp:1284 src/playcampaign.cpp:92 src/playcampaign.cpp:361
+#: src/game.cpp:1289 src/playcampaign.cpp:92 src/playcampaign.cpp:361
 msgid "Error while playing the game: "
 msgstr "Oyunu oynarken hata: "
 
-#: src/game.cpp:1296 src/playcampaign.cpp:94 src/playcampaign.cpp:364
+#: src/game.cpp:1301 src/playcampaign.cpp:94 src/playcampaign.cpp:364
 msgid "The game map could not be loaded: "
 msgstr "Oyun haritası yüklenemedi: "
 
-#: src/game.cpp:1320
+#: src/game.cpp:1325
 msgid "Language"
 msgstr "Dil"
 
-#: src/game.cpp:1321
+#: src/game.cpp:1326
 msgid "Choose your preferred language:"
 msgstr "Tercih ettiğin dili seç:"
 
-#: src/game.cpp:1469
+#: src/game.cpp:1474
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Şu ek kampanya(lar) hatalı ve yüklenemedi: "
 
-#: src/game.cpp:1474
+#: src/game.cpp:1479
 msgid "ERROR DETAILS:"
 msgstr "HATA DETAYLARI:"
 
-#: src/game.cpp:1488
+#: src/game.cpp:1493
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Uyarı : Oyun konfigürasyon dosyalarını yüklerken hata oluştu : '"
 
-#: src/game.cpp:1538
+#: src/game.cpp:1543
 msgid "Error loading game configuration files: '"
 msgstr "Oyun konfigürasyon dosyalarını yüklerken Hata: '"
 
-#: src/game.cpp:1539
+#: src/game.cpp:1544
 msgid "' (The game will now exit)"
 msgstr "' (Oyun şimdi bitiyor)"
 
-#: src/game.cpp:1686
+#: src/game.cpp:1691
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:1811
+#: src/game.cpp:1816
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Oyun konfigürasyon dosyalarını yüklerken Hata: '"
 
-#: src/game.cpp:1817
+#: src/game.cpp:1822
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1833
+#: src/game.cpp:1838
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
@@ -10957,7 +10965,7 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:753
+#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:743
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Otomatik Kayıt"
@@ -11367,11 +11375,11 @@ msgstr "Boş"
 msgid "This is not a multiplayer save"
 msgstr "Bu bir çok oyunculu oyun kaydı değil"
 
-#: src/multiplayer_connect.cpp:1323
+#: src/multiplayer_connect.cpp:1329
 msgid "Cannot find era $era"
 msgstr "$era devri bulunamıyor"
 
-#: src/multiplayer_connect.cpp:1342
+#: src/multiplayer_connect.cpp:1348
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -11379,7 +11387,7 @@ msgstr ""
 "Galibiyet\n"
 "@Düşman lider(ler)ini yen"
 
-#: src/multiplayer_connect.cpp:1401
+#: src/multiplayer_connect.cpp:1407
 msgid "Waiting for players to join..."
 msgstr "Oyuncuların katılması bekleniyor..."
 
@@ -11659,16 +11667,16 @@ msgstr "Soket, soket setine eklenemedi"
 msgid "Could not send initial handshake"
 msgstr "İlk el tokuşma gönderilemedi"
 
-#: src/play_controller.cpp:399 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Yüklemeye çalıştığın dosya bozuk"
 
-#: src/play_controller.cpp:757
+#: src/play_controller.cpp:747
 msgid "Back to start"
 msgstr "Başa geri dön"
 
-#: src/play_controller.cpp:759
+#: src/play_controller.cpp:749
 msgid "Back to turn "
 msgstr "sıraya geri dön"
 
@@ -11959,15 +11967,15 @@ msgstr " içerildiği yer: "
 msgid "$error at $pos"
 msgstr "$pos pozisyonunda $error"
 
-#: src/terrain.cpp:122
+#: src/terrain.cpp:103
 msgid "Allied village"
 msgstr "Müttefik köyü"
 
-#: src/terrain.cpp:127
+#: src/terrain.cpp:108
 msgid "Enemy village"
 msgstr "Düşman köyü"
 
-#: src/terrain.cpp:132
+#: src/terrain.cpp:113
 msgid "Owned village"
 msgstr "Sahipli köy"
 
@@ -12075,23 +12083,23 @@ msgstr "terfi için gerekli TP"
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:274
+#: src/unit_types.cpp:193
 msgid "damage"
 msgstr "hasar"
 
-#: src/unit_types.cpp:282
+#: src/unit_types.cpp:201
 msgid "strikes"
 msgstr "vuruş"
 
-#: src/unit_types.cpp:971
+#: src/unit_types.cpp:890
 msgid "chaotic"
 msgstr "kaotik"
 
-#: src/unit_types.cpp:971
+#: src/unit_types.cpp:890
 msgid "lawful"
 msgstr "adaletli"
 
-#: src/unit_types.cpp:971
+#: src/unit_types.cpp:890
 msgid "neutral"
 msgstr "tarafsız"
 

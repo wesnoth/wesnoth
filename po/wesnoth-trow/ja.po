@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-10 22:59+0200\n"
+"POT-Creation-Date: 2007-04-29 21:41+0200\n"
 "PO-Revision-Date: 2006-08-31 21:52+0900\n"
 "Last-Translator: Takanobu Hirai <airhead@users.sourceforge.jp>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -1914,10 +1914,11 @@ msgstr "やれやれ、やっとこの森から抜けられるぞ！"
 msgid "Clearwater Port"
 msgstr "Clearwater 港"
 
-# #unit
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:625
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:55
-msgid "Lieutenant Aethyr"
-msgstr "Aethyr 大尉"
+#, fuzzy
+msgid "Commander Aethyr"
+msgstr "指揮官"
 
 # #unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:79
@@ -1982,7 +1983,9 @@ msgstr "Lady Jessicaの死"
 
 # #cond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:261
-msgid "Death of Lieutenant Aethyr"
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:205
+#, fuzzy
+msgid "Death of Commander Aethyr"
 msgstr "Aethyr 大尉の死"
 
 # #cond
@@ -2115,7 +2118,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:345
 #, fuzzy
 msgid ""
-"To your posts men! We should be able to evacuate everyone in three more "
+"To your posts, men! We should be able to evacuate everyone in three more "
 "boatloads. Until then, let us make those orcs pay dearly for every inch of "
 "our land. For our homes, for our people, for our fallen King!"
 msgstr ""
@@ -2309,8 +2312,9 @@ msgstr ""
 "の近くに街の下水道入り口があります。"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1021
+#, fuzzy
 msgid ""
-"Wow, this is beginning to sound dangerously like a plan. Lieutenant Aethyr, "
+"Wow, this is beginning to sound dangerously like a plan. Commander Aethyr, "
 "will you join us?"
 msgstr ""
 "やれやれ、危なっかしい話の発端は決まってこんな感じなんだよな。Aethyr 大尉、君"
@@ -4093,28 +4097,25 @@ msgstr ""
 "う。違うかね？ 今後それらは自衛のための君たちの資源だ。将来我々が君たちと交易"
 "しようということにもなるだろう。"
 
-# #unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:625
-msgid "Lt. Aethyr"
-msgstr "Aethyr 大尉"
-
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:629
 msgid "Who is this?"
 msgstr "この者は何者だ？"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:634
+#, fuzzy
 msgid ""
-"It's Lieutenant Aethyr, of Clearwater Port. I was sure you perished in the "
+"It's Commander Aethyr, of Clearwater Port. I was sure you perished in the "
 "fighting there?"
 msgstr ""
 "Clearwater 港の Aethyr 大尉です。僕は君があそこでの戦いで命を落としたとばかり"
 "思ってた。"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:639
+#, fuzzy
 msgid ""
-"No Sir. I was leading the final survivors of Clearwater Port. We were making "
-"our last stand at the lighthouse when one of your ships came. One of my men "
-"conked me on the head, then I woke up at sea."
+"No, sir. I was leading the final survivors of Clearwater Port. We were "
+"making our last stand at the lighthouse when one of your ships came. One of "
+"my men conked me on the head, then I woke up at sea."
 msgstr ""
 "いいえ、閣下。私は Clearwater 港の最後の生存者を率いていました。我々が灯台で"
 "最後の抵抗をしていたちょうどそのとき、あなたの船がやって来たのです。部下の誰"
@@ -4659,12 +4660,6 @@ msgstr "Tan-Gagar"
 msgid "Thruf"
 msgstr "Thruf"
 
-# #cond
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:211
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:205
-msgid "Death of Lt. Aethyr"
-msgstr "Aethyr 大尉の死"
-
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:219
 msgid ""
 "Haldric and his companions race across the plains to confront the resurgent "
@@ -4734,9 +4729,10 @@ msgid "Just do it."
 msgstr "いいから、言うとおりにしてくれよ。"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:260
+#, fuzzy
 msgid ""
-"Lt. Aethyr, did these orcs come on our ships? Did they capture the fleet we "
-"sent out?"
+"Commander Aethyr, did these orcs come on our ships? Did they capture the "
+"fleet we sent out?"
 msgstr ""
 "Aethyr 大尉、オークは僕たちの船で来たのか？ 僕たちが送り出した艦隊は捕えられ"
 "てしまったのか？"
@@ -4857,6 +4853,12 @@ msgstr "Tan-Halg"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:120
 msgid "Tan-Rinak"
 msgstr "Tan-Rinak"
+
+# #cond
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:211
+#, fuzzy
+msgid "Death of Aethyr"
+msgstr "Aethyr 大尉の死"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:225
 msgid ""
@@ -5285,7 +5287,8 @@ msgstr "Tan-Prodash"
 
 # #cond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:277
-msgid "Lt. Aethyr sacrifices himself to Lich-Lord Jevyan and"
+#, fuzzy
+msgid "Commander Aethyr sacrifices himself to Lich-Lord Jevyan and"
 msgstr "Aethyr 大尉が自らを犠牲にしてリッチ君主 Jevyan に倒される なおかつ"
 
 # #cond
@@ -5300,7 +5303,8 @@ msgstr "一体だけ敵リーダーを残して他をすべて倒す"
 
 # #cond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:297
-msgid "Death of Lt. Aethyr by somebody other than Jevyan"
+#, fuzzy
+msgid "Death of Commander Aethyr by somebody other than Jevyan"
 msgstr "Jevyan 以外の者による Aethyr 大尉の死"
 
 # #cond
@@ -5413,7 +5417,8 @@ msgid "We shall soon see if you have the Ruby of Fire!"
 msgstr "お前たちが炎のルビーを持っているか、どうせすぐに判るさ！"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:388
-msgid "<Whispering> Lieutenant, you remember the plan right?"
+#, fuzzy
+msgid "<Whispering> Commander, you remember the plan right?"
 msgstr "（ささやく） 大尉、作戦はわかってるな？"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:392
@@ -5449,7 +5454,8 @@ msgid "For the Wesfolk!"
 msgstr "Wesfolk のために！"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:466
-msgid "Be careful, Lieutenant!"
+#, fuzzy
+msgid "Be careful, Commander!"
 msgstr "気をつけて、大尉！"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:523
@@ -5524,9 +5530,10 @@ msgid "My love, my family, I'll be there soo-"
 msgstr "愛する人よ、我が家族よ、私は今そこに――"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:673
+#, fuzzy
 msgid ""
-"Lieutenant Aethyr! No! He was critical for convincing Jevyan that the elves "
-"have the Ruby of Fire."
+"Aethyr! No! He was critical for convincing Jevyan that the elves have the "
+"Ruby of Fire."
 msgstr ""
 "Aethyr 大尉！ だめだ！ 炎のルビーはエルフが持っていると Jevyan に確信させるた"
 "めには、彼が欠かせなかったのに。"
@@ -5557,7 +5564,8 @@ msgstr ""
 "だ。"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:708
-msgid "We'll see about that. For the honor of Lieutenant Aethyr, forward!"
+#, fuzzy
+msgid "We'll see about that. For the honor of Commander Aethyr, forward!"
 msgstr "そうはいくか。Aethyr 大尉の栄誉のため、進め！"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:719
@@ -5656,8 +5664,9 @@ msgid "We did it! We won!"
 msgstr "やった！ アタシたちは勝ったわ！"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1194
+#, fuzzy
 msgid ""
-"Jevyan is destroyed, but at a terrible price. Let's put Lieutenant Aethyr to "
+"Jevyan is destroyed, but at a terrible price. Let's put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
 msgstr ""
 "Jevyan は倒したが、大変な代償を支払ってのことだった。ともかく Aethyr 大尉を眠"
@@ -5678,8 +5687,9 @@ msgid "Epilogue"
 msgstr "エピローグ"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:156
+#, fuzzy
 msgid ""
-"May Lieutenant Aethyr have a peaceful journey into the next world, where he "
+"May Commander Aethyr have a peaceful journey into the next world, where he "
 "has been preceded by his wife and loving daughters. For his heroism in the "
 "face of adversity a place of glory is assured to him in the Halls of Light..."
 msgstr ""
@@ -5687,11 +5697,12 @@ msgstr ""
 "逆境で見せた勇敢さにより、光の殿堂での栄誉の地位が約束されよう…"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:160
+#, fuzzy
 msgid ""
-"Without the Lieutenant's noble sacrifice we would have never carried the "
-"day. We have won a great victory here today but much has been lost. My "
-"father Eldaric and King Addroran have fallen, and with them many other good "
-"people. However, there is hope, and a new land is open before us!"
+"Without the Commander's noble sacrifice we would have never carried the day. "
+"We have won a great victory here today but much has been lost. My father "
+"Eldaric and King Addroran have fallen, and with them many other good people. "
+"However, there is hope, and a new land is open before us!"
 msgstr ""
 "大尉の高貴な犠牲なしには、決してここまでやって来れなかっただろう。僕たちは大"
 "勝利を収めたが、多くのものを失った。我が父 Eldaric や Addroran 王、そして多く"
@@ -6525,3 +6536,15 @@ msgstr ""
 "はゆっくりと海中に沈んでいくところのようだ。好戦的な性分を持つ爬虫類が棲処と"
 "しているにもかかわらず、Southbay の第一皇太子は何とかこの島に足がかりを築いて"
 "いた。その足がかりも今となってはほとんど残っていないに違いない。"
+
+# #unit
+#~ msgid "Lieutenant Aethyr"
+#~ msgstr "Aethyr 大尉"
+
+# #cond
+#~ msgid "Death of Lieutenant Aethyr"
+#~ msgstr "Aethyr 大尉の死"
+
+# #unit
+#~ msgid "Lt. Aethyr"
+#~ msgstr "Aethyr 大尉"

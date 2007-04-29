@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-26 17:57+0200\n"
+"POT-Creation-Date: 2007-04-29 21:39+0200\n"
 "PO-Revision-Date: 2007-03-04 21:00+0900\n"
 "Last-Translator: Claudio Terra <cbterra@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -2546,7 +2546,7 @@ msgstr ""
 #: data/terrain.cfg:803 data/terrain.cfg:814 data/terrain.cfg:826
 #: data/terrain.cfg:838 data/terrain.cfg:850 data/terrain.cfg:864
 #: data/terrain.cfg:876 data/terrain.cfg:890 data/terrain.cfg:906
-#: data/terrain.cfg:918 src/terrain.cpp:117
+#: data/terrain.cfg:918 src/terrain.cpp:98
 msgid "Village"
 msgstr "Vila"
 
@@ -5427,11 +5427,13 @@ msgstr ""
 "instantânea. Coloque o ponteiro do mouse sobre um desses para ver uma "
 "explicação ou descrição."
 
-#: data/tips.cfg:37
+#: data/tips.cfg:36
+#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
-"the Help Wesnoth button.  This information is vital so we can adjust "
-"campaign difficulty."
+"the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
+"hand corner of the game main screen).  This information is vital so we can "
+"adjust campaign difficulty."
 msgstr ""
 "Você pode enviar um sumário anônimo de seu progresso para o Projeto Wesnoth, "
 "utilizando o botão \"Ajude Wesnoth\". Essa informação é vital para podermos "
@@ -10293,51 +10295,51 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Não há lugar vago no castelo no qual recrutar uma unidade."
 
-#: src/actions.cpp:992 src/actions.cpp:1199
+#: src/actions.cpp:993 src/actions.cpp:1200
 msgid "poisoned"
 msgstr "envenenado"
 
-#: src/actions.cpp:1000 src/actions.cpp:1207
+#: src/actions.cpp:1001 src/actions.cpp:1208
 msgid "slowed"
 msgstr "lento"
 
-#: src/actions.cpp:1011 src/actions.cpp:1219
+#: src/actions.cpp:1012 src/actions.cpp:1220
 msgid "stone"
 msgstr "petrifica"
 
-#: src/actions.cpp:2051
+#: src/actions.cpp:2052
 msgid "Ambushed!"
 msgstr "Emboscada!"
 
-#: src/actions.cpp:2091
+#: src/actions.cpp:2092
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unidade aliada à vista"
 msgstr[1] "$friend unidades aliadas à vista"
 
-#: src/actions.cpp:2094
+#: src/actions.cpp:2095
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unidade inimiga à vista!"
 msgstr[1] "$enemies unidades inimigas à vista!"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2100
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 aliada"
 msgstr[1] "$friends aliadas"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2101
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 inimiga"
 msgstr[1] "$enemies inimigas"
 
-#: src/actions.cpp:2101
+#: src/actions.cpp:2102
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unidades vistas! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2110
+#: src/actions.cpp:2111
 msgid "(press $hotkey to continue)"
 msgstr "(aperte $hotkey para continuar)"
 
@@ -10389,11 +10391,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Invalid)"
 
-#: src/dialogs.cpp:467 src/game.cpp:804
+#: src/dialogs.cpp:467 src/game.cpp:809
 msgid "Campaign"
 msgstr "Campanha"
 
-#: src/dialogs.cpp:469 src/game.cpp:1243
+#: src/dialogs.cpp:469 src/game.cpp:1248
 msgid "Multiplayer"
 msgstr "Multijogador"
 
@@ -10457,7 +10459,7 @@ msgstr "Apagar jogo salvo"
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:571 src/game.cpp:941 src/menu_events.cpp:295
+#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:295
 #: src/menu_events.cpp:830
 msgid "Name"
 msgstr "Nome"
@@ -10499,7 +10501,7 @@ msgstr "Movimento: "
 msgid "Screenshot"
 msgstr "Imagem"
 
-#: src/game.cpp:426 src/game.cpp:1328
+#: src/game.cpp:426 src/game.cpp:1333
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -10510,6 +10512,13 @@ msgstr ""
 "carregar mesmo assim.\n"
 
 #: src/game.cpp:696 src/multiplayer_connect.cpp:1256
+#, fuzzy
+msgid "This save is from a version too old to be loaded."
+msgstr ""
+"Este jogo salvo é de uma versão diferente do jogo. Você quer tentar carregá-"
+"lo?"
+
+#: src/game.cpp:701 src/multiplayer_connect.cpp:1262
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -10517,256 +10526,256 @@ msgstr ""
 "Este jogo salvo é de uma versão diferente do jogo. Você quer tentar carregá-"
 "lo?"
 
-#: src/game.cpp:704 src/game.cpp:707 src/multiplayer_connect.cpp:1241
+#: src/game.cpp:709 src/game.cpp:712 src/multiplayer_connect.cpp:1241
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O Arquivo que você tentou carregar está corrompido: '"
 
-#: src/game.cpp:710
+#: src/game.cpp:715
 msgid "File I/O Error while reading the game"
 msgstr "Erro de E/S ao ler o jogo"
 
-#: src/game.cpp:805
+#: src/game.cpp:810
 msgid "Choose the campaign you want to play:"
 msgstr "Escolha a campanha que você quer jogar:"
 
-#: src/game.cpp:828
+#: src/game.cpp:833
 msgid "Difficulty"
 msgstr "Dificuldade"
 
-#: src/game.cpp:829
+#: src/game.cpp:834
 msgid "Select difficulty level:"
 msgstr "Escolha o nível de dificuldade"
 
-#: src/game.cpp:856
+#: src/game.cpp:861
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:859
+#: src/game.cpp:864
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:862
+#: src/game.cpp:867
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:890
+#: src/game.cpp:895
 msgid "Connect to Server"
 msgstr "Conectar-se ao servidor"
 
-#: src/game.cpp:891
+#: src/game.cpp:896
 msgid "You will now connect to a server to download add-ons."
 msgstr "Você vai agora se conectar a um servidor de extras."
 
-#: src/game.cpp:892
+#: src/game.cpp:897
 msgid "Server: "
 msgstr "Servidor: "
 
-#: src/game.cpp:907 src/multiplayer.cpp:132 src/multiplayer.cpp:169
+#: src/game.cpp:912 src/multiplayer.cpp:132 src/multiplayer.cpp:169
 msgid "Connecting to Server..."
 msgstr "Conectando ao servidor..."
 
-#: src/game.cpp:910
+#: src/game.cpp:915
 msgid "Could not connect to host."
 msgstr "Não foi possível se conectar ao host remoto"
 
-#: src/game.cpp:919
+#: src/game.cpp:924
 msgid "Asking for list of add-ons"
 msgstr "Pegando a lista de extras"
 
-#: src/game.cpp:932
+#: src/game.cpp:937
 msgid "Error communicating with the server."
 msgstr "Erro ao se comunicar com o servidor."
 
-#: src/game.cpp:941 src/titlescreen.cpp:234
+#: src/game.cpp:946 src/titlescreen.cpp:234
 msgid "Version"
 msgstr "Versão"
 
-#: src/game.cpp:942
+#: src/game.cpp:947
 msgid "Author"
 msgstr "Autor"
 
-#: src/game.cpp:942
+#: src/game.cpp:947
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/game.cpp:942
+#: src/game.cpp:947
 msgid "Size"
 msgstr "Tamanho"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1005
 msgid "Publish add-on: "
 msgstr "Publicar extra: "
 
-#: src/game.cpp:1004
+#: src/game.cpp:1009
 msgid "Delete add-on: "
 msgstr "Apagar extra: "
 
-#: src/game.cpp:1008
+#: src/game.cpp:1013
 msgid "There are no add-ons available for download from this server."
 msgstr "Não há extras disponíveis para pegar deste servidor."
 
-#: src/game.cpp:1015
+#: src/game.cpp:1020
 msgid "Choose the add-on to download."
 msgstr "Escolha a extra para pegar."
 
-#: src/game.cpp:1015
+#: src/game.cpp:1020
 msgid "Get Add-ons"
 msgstr "Pegar Extras"
 
-#: src/game.cpp:1056
+#: src/game.cpp:1061
 msgid "Dependencies"
 msgstr "Dependências"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1062
 msgid "This add-on requires the following additional dependencies:"
 msgstr ""
 
-#: src/game.cpp:1059
+#: src/game.cpp:1064
 msgid "Do you still want to download it?"
 msgstr "Você ainda deseja baixá-lo?"
 
-#: src/game.cpp:1068
+#: src/game.cpp:1073
 msgid "Downloading add-on..."
 msgstr "Pegando o extra..."
 
-#: src/game.cpp:1092
+#: src/game.cpp:1097
 msgid "Cannot rescan the filesystem"
 msgstr "Não pode reler o sistema de arquivos"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1122
 msgid "Add-on Installed"
 msgstr "Extra instalado"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1122
 msgid "The add-on has been installed."
 msgstr "O extra foi instalado."
 
-#: src/game.cpp:1120
+#: src/game.cpp:1125
 msgid "Network communication error."
 msgstr "Erro de comunicação com a rede."
 
-#: src/game.cpp:1122
+#: src/game.cpp:1127
 msgid "Remote host disconnected."
 msgstr "O servidor remoto se desconectou"
 
-#: src/game.cpp:1124
+#: src/game.cpp:1129
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Houve um problema criando os arquivos necessários para instalar a campanha."
 
-#: src/game.cpp:1136 src/game.cpp:1175 src/game.cpp:1200
+#: src/game.cpp:1141 src/game.cpp:1180 src/game.cpp:1205
 #: src/multiplayer.cpp:216 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Time out na conexão"
 
-#: src/game.cpp:1139 src/game.cpp:1177 src/game.cpp:1202
+#: src/game.cpp:1144 src/game.cpp:1182 src/game.cpp:1207
 msgid "The server responded with an error: \""
 msgstr "O servidor respondeu com um erro: \""
 
-#: src/game.cpp:1143
+#: src/game.cpp:1148
 msgid "Terms"
 msgstr "Termos"
 
-#: src/game.cpp:1173
+#: src/game.cpp:1178
 msgid "Sending add-on"
 msgstr "Enviando extra"
 
-#: src/game.cpp:1180 src/game.cpp:1205 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1185 src/game.cpp:1210 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr "Resposta"
 
-#: src/game.cpp:1227
+#: src/game.cpp:1232
 msgid "Join Official Server"
 msgstr "Entrar no Servidor Oficial"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1233
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Conectar no servidor oficial de multijogadores de Wesnoth"
 
-#: src/game.cpp:1230 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1235 src/multiplayer_lobby.cpp:532
 msgid "Join Game"
 msgstr "Entrar no jogo"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1236
 msgid "Join a server or hosted game"
 msgstr "Entrar em um servidor ou jogo hospedado"
 
-#: src/game.cpp:1233
+#: src/game.cpp:1238
 msgid "Host Networked Game"
 msgstr "Criar jogo em rede"
 
-#: src/game.cpp:1234
+#: src/game.cpp:1239
 msgid "Host a game without using a server"
 msgstr "Hospedar um jogo sem usar um servidor"
 
-#: src/game.cpp:1236
+#: src/game.cpp:1241
 #, fuzzy
 msgid "Local Game"
 msgstr "Continuar um Jogo"
 
-#: src/game.cpp:1237
+#: src/game.cpp:1242
 #, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Jogar com vários jogadores no mesmo computador"
 
-#: src/game.cpp:1245 src/multiplayer.cpp:196
+#: src/game.cpp:1250 src/multiplayer.cpp:196
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1282 src/playcampaign.cpp:90 src/playcampaign.cpp:358
+#: src/game.cpp:1287 src/playcampaign.cpp:90 src/playcampaign.cpp:358
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
-#: src/game.cpp:1284 src/playcampaign.cpp:92 src/playcampaign.cpp:361
+#: src/game.cpp:1289 src/playcampaign.cpp:92 src/playcampaign.cpp:361
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
-#: src/game.cpp:1296 src/playcampaign.cpp:94 src/playcampaign.cpp:364
+#: src/game.cpp:1301 src/playcampaign.cpp:94 src/playcampaign.cpp:364
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
-#: src/game.cpp:1320
+#: src/game.cpp:1325
 msgid "Language"
 msgstr "Idioma"
 
-#: src/game.cpp:1321
+#: src/game.cpp:1326
 msgid "Choose your preferred language:"
 msgstr "Escolha o idioma preferido:"
 
-#: src/game.cpp:1469
+#: src/game.cpp:1474
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "A seguinte campanha tem um erro e não pode ser carregada:"
 
-#: src/game.cpp:1474
+#: src/game.cpp:1479
 msgid "ERROR DETAILS:"
 msgstr "DETALHES DO ERRO:"
 
-#: src/game.cpp:1488
+#: src/game.cpp:1493
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Aviso: Erros ocorreram enquanto carregava o arquivo de configuração: '"
 
-#: src/game.cpp:1538
+#: src/game.cpp:1543
 msgid "Error loading game configuration files: '"
 msgstr "Erro carregando arquivo de configuração do jogo: '"
 
-#: src/game.cpp:1539
+#: src/game.cpp:1544
 msgid "' (The game will now exit)"
 msgstr "' (O programa vai terminar agora)"
 
-#: src/game.cpp:1686
+#: src/game.cpp:1691
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:1811
+#: src/game.cpp:1816
 msgid "Loading game configuration."
 msgstr "Carregando a configuração do jogo."
 
-#: src/game.cpp:1817
+#: src/game.cpp:1822
 msgid "Re-initialize fonts for the current language."
 msgstr "Re-inicializa as fontes para o idioma atual."
 
-#: src/game.cpp:1833
+#: src/game.cpp:1838
 msgid "Loading title screen."
 msgstr "Carregando a tela inicial."
 
@@ -11078,7 +11087,7 @@ msgstr "Mapa salvo."
 msgid "Could not save the map: $msg"
 msgstr "Não consegui salvar o mapa: $msg"
 
-#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:753
+#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:743
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Salvo-automaticamente"
@@ -11496,11 +11505,11 @@ msgstr "Vazio"
 msgid "This is not a multiplayer save"
 msgstr "Este não é um jogo salvo de multijogadores"
 
-#: src/multiplayer_connect.cpp:1323
+#: src/multiplayer_connect.cpp:1329
 msgid "Cannot find era $era"
 msgstr "Não consegui achar a era $era"
 
-#: src/multiplayer_connect.cpp:1342
+#: src/multiplayer_connect.cpp:1348
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -11508,7 +11517,7 @@ msgstr ""
 "Vitória:\n"
 "@Derrotar o(s) lídere(s) inimigo(s)"
 
-#: src/multiplayer_connect.cpp:1401
+#: src/multiplayer_connect.cpp:1407
 msgid "Waiting for players to join..."
 msgstr "Esperando outros jogadores conectarem..."
 
@@ -11790,16 +11799,16 @@ msgstr "Não foi possível adicionar o socket ao grupo de sockets"
 msgid "Could not send initial handshake"
 msgstr "Não pode enviar mensagem inicial"
 
-#: src/play_controller.cpp:399 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:389 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "O Arquivo que você tentou carregar está corrompido"
 
-#: src/play_controller.cpp:757
+#: src/play_controller.cpp:747
 msgid "Back to start"
 msgstr "Voltar ao início"
 
-#: src/play_controller.cpp:759
+#: src/play_controller.cpp:749
 msgid "Back to turn "
 msgstr "Voltar ao turno "
 
@@ -12090,15 +12099,15 @@ msgstr " incluído a partir de "
 msgid "$error at $pos"
 msgstr "$error em $pos"
 
-#: src/terrain.cpp:122
+#: src/terrain.cpp:103
 msgid "Allied village"
 msgstr "Vila Aliada"
 
-#: src/terrain.cpp:127
+#: src/terrain.cpp:108
 msgid "Enemy village"
 msgstr "Vila Inimiga"
 
-#: src/terrain.cpp:132
+#: src/terrain.cpp:113
 msgid "Owned village"
 msgstr "Vila Dominada"
 
@@ -12206,23 +12215,23 @@ msgstr "XP para avançar"
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:274
+#: src/unit_types.cpp:193
 msgid "damage"
 msgstr "dano"
 
-#: src/unit_types.cpp:282
+#: src/unit_types.cpp:201
 msgid "strikes"
 msgstr "golpeia"
 
-#: src/unit_types.cpp:971
+#: src/unit_types.cpp:890
 msgid "chaotic"
 msgstr "caótico"
 
-#: src/unit_types.cpp:971
+#: src/unit_types.cpp:890
 msgid "lawful"
 msgstr "ordeiro"
 
-#: src/unit_types.cpp:971
+#: src/unit_types.cpp:890
 msgid "neutral"
 msgstr "neutro"
 

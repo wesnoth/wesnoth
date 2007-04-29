@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-10 22:59+0200\n"
+"POT-Creation-Date: 2007-04-29 21:41+0200\n"
 "PO-Revision-Date: 2007-02-16 01:00+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -1816,9 +1816,11 @@ msgstr "Eindelijk gaan we uit dit bos!"
 msgid "Clearwater Port"
 msgstr "Klaarwaterhaven"
 
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:625
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:55
-msgid "Lieutenant Aethyr"
-msgstr "Luitenant Aethyr"
+#, fuzzy
+msgid "Commander Aethyr"
+msgstr "Aanvoerder"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:79
 msgid "Tan-Vragar"
@@ -1873,8 +1875,10 @@ msgid "Death of Lady Jessica"
 msgstr "Dood van vrouwe Jessica"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:261
-msgid "Death of Lieutenant Aethyr"
-msgstr "Dood van luitenant Aethyr"
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:205
+#, fuzzy
+msgid "Death of Commander Aethyr"
+msgstr "Dood van Lt. Aethyr"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:265
 msgid "Miss the Last Ship"
@@ -2006,8 +2010,9 @@ msgstr ""
 "de orcs zullen helpen mijn gedachten van die dingen af te houden."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:345
+#, fuzzy
 msgid ""
-"To your posts men! We should be able to evacuate everyone in three more "
+"To your posts, men! We should be able to evacuate everyone in three more "
 "boatloads. Until then, let us make those orcs pay dearly for every inch of "
 "our land. For our homes, for our people, for our fallen King!"
 msgstr ""
@@ -2202,8 +2207,9 @@ msgstr ""
 "rioolingang ligt dicht bij dat fossiel van een Lich."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1021
+#, fuzzy
 msgid ""
-"Wow, this is beginning to sound dangerously like a plan. Lieutenant Aethyr, "
+"Wow, this is beginning to sound dangerously like a plan. Commander Aethyr, "
 "will you join us?"
 msgstr ""
 "Wow, het begint gevaarlijk veel op een plan te lijken. Luitenant Aethyr wil "
@@ -3935,27 +3941,25 @@ msgstr ""
 "mijnen. Is het niet? We moet nu op onze voorraden letten. In de toekomst "
 "zouden we graag met jullie handelen."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:625
-msgid "Lt. Aethyr"
-msgstr "Lt. Aethyr"
-
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:629
 msgid "Who is this?"
 msgstr "Wie is dit?"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:634
+#, fuzzy
 msgid ""
-"It's Lieutenant Aethyr, of Clearwater Port. I was sure you perished in the "
+"It's Commander Aethyr, of Clearwater Port. I was sure you perished in the "
 "fighting there?"
 msgstr ""
 "Dit is luitenant Aethyr van Klaarwaterhaven. Maar, jij was toch in het "
 "gevecht omgekomen?"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:639
+#, fuzzy
 msgid ""
-"No Sir. I was leading the final survivors of Clearwater Port. We were making "
-"our last stand at the lighthouse when one of your ships came. One of my men "
-"conked me on the head, then I woke up at sea."
+"No, sir. I was leading the final survivors of Clearwater Port. We were "
+"making our last stand at the lighthouse when one of your ships came. One of "
+"my men conked me on the head, then I woke up at sea."
 msgstr ""
 "Nee heer, ik was de laatste overlevenden van Klaarwaterhaven aan het leiden, "
 "we waren de vuurtoren nog aan het verdedigen. Toen kwam Ã(c)Ã(c)n van uw "
@@ -4460,11 +4464,6 @@ msgstr "Tan-Gagar"
 msgid "Thruf"
 msgstr "Thruf"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:211
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:205
-msgid "Death of Lt. Aethyr"
-msgstr "Dood van Lt. Aethyr"
-
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:219
 msgid ""
 "Haldric and his companions race across the plains to confront the resurgent "
@@ -4533,9 +4532,10 @@ msgid "Just do it."
 msgstr "Doe het gewoon."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:260
+#, fuzzy
 msgid ""
-"Lt. Aethyr, did these orcs come on our ships? Did they capture the fleet we "
-"sent out?"
+"Commander Aethyr, did these orcs come on our ships? Did they capture the "
+"fleet we sent out?"
 msgstr ""
 "Lt. Aethyr, kwamen deze Orks op onze schepen? Hebben ze de vloot veroverd "
 "die we uitstuurden?"
@@ -4652,6 +4652,11 @@ msgstr "Tan-Halg"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:120
 msgid "Tan-Rinak"
 msgstr "Tan-Rinak"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:211
+#, fuzzy
+msgid "Death of Aethyr"
+msgstr "Dood van Lt. Aethyr"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:225
 msgid ""
@@ -5071,7 +5076,8 @@ msgid "Tan-Prodash"
 msgstr "Tan-Prodash"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:277
-msgid "Lt. Aethyr sacrifices himself to Lich-Lord Jevyan and"
+#, fuzzy
+msgid "Commander Aethyr sacrifices himself to Lich-Lord Jevyan and"
 msgstr "Lt. Aethyr offert zichzelf op voor Lich-Heer Jevyan en"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:281
@@ -5083,7 +5089,8 @@ msgid "Defeat all enemy leaders except for one"
 msgstr "Versla alle vijandige leiders, een uitgezonderd"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:297
-msgid "Death of Lt. Aethyr by somebody other than Jevyan"
+#, fuzzy
+msgid "Death of Commander Aethyr by somebody other than Jevyan"
 msgstr "Dood van Lt. Aethyr of iemand anders dan Jevyan"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:301
@@ -5196,7 +5203,8 @@ msgid "We shall soon see if you have the Ruby of Fire!"
 msgstr "We zullen direct zien of je de Vuurrobijn hebt!"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:388
-msgid "<Whispering> Lieutenant, you remember the plan right?"
+#, fuzzy
+msgid "<Whispering> Commander, you remember the plan right?"
 msgstr "<Fluisterend>Luitenant, herinner je ons plan nog?"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:392
@@ -5230,7 +5238,8 @@ msgid "For the Wesfolk!"
 msgstr "Voor Wesfolk!"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:466
-msgid "Be careful, Lieutenant!"
+#, fuzzy
+msgid "Be careful, Commander!"
 msgstr "Wees voorzichtig luitenant!"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:523
@@ -5303,9 +5312,10 @@ msgid "My love, my family, I'll be there soo-"
 msgstr "Ik houd van mijn familie. Ik zal daar nu snel zijn-"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:673
+#, fuzzy
 msgid ""
-"Lieutenant Aethyr! No! He was critical for convincing Jevyan that the elves "
-"have the Ruby of Fire."
+"Aethyr! No! He was critical for convincing Jevyan that the elves have the "
+"Ruby of Fire."
 msgstr ""
 "Luitenant Aethyr! Neee! Umm, hij was de beste persoon om Jevyan te "
 "overtuigen dat de elven de Vuurrobijn hadden."
@@ -5336,7 +5346,8 @@ msgstr ""
 "met de elven."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:708
-msgid "We'll see about that. For the honor of Lieutenant Aethyr, forward!"
+#, fuzzy
+msgid "We'll see about that. For the honor of Commander Aethyr, forward!"
 msgstr "We zullen zien. Voor de eer van luitenant Aethyr, voorwaarts!"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:719
@@ -5432,8 +5443,9 @@ msgid "We did it! We won!"
 msgstr "We hebben het gedaan! We zijn gewonnen!"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1194
+#, fuzzy
 msgid ""
-"Jevyan is destroyed, but at a terrible price. Let's put Lieutenant Aethyr to "
+"Jevyan is destroyed, but at a terrible price. Let's put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
 msgstr ""
 "Jevyan is vernietigd, maar door een slechte prins. Laten we Luitenant Aether "
@@ -5452,8 +5464,9 @@ msgid "Epilogue"
 msgstr "Epiloog"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:156
+#, fuzzy
 msgid ""
-"May Lieutenant Aethyr have a peaceful journey into the next world, where he "
+"May Commander Aethyr have a peaceful journey into the next world, where he "
 "has been preceded by his wife and loving daughters. For his heroism in the "
 "face of adversity a place of glory is assured to him in the Halls of Light..."
 msgstr ""
@@ -5463,11 +5476,12 @@ msgstr ""
 "voorzien in de Hallen van het licht. . ."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:160
+#, fuzzy
 msgid ""
-"Without the Lieutenant's noble sacrifice we would have never carried the "
-"day. We have won a great victory here today but much has been lost. My "
-"father Eldaric and King Addroran have fallen, and with them many other good "
-"people. However, there is hope, and a new land is open before us!"
+"Without the Commander's noble sacrifice we would have never carried the day. "
+"We have won a great victory here today but much has been lost. My father "
+"Eldaric and King Addroran have fallen, and with them many other good people. "
+"However, there is hope, and a new land is open before us!"
 msgstr ""
 "Zonder de nobele opoffering van de Luitenant zouden we de dag nooit gehaald "
 "hebben. We hebben hier een grote overwinning gehaald maar veel is verloren, "
@@ -6280,3 +6294,12 @@ msgstr ""
 "Zuidbaai slaagde erin hier een kolonie te stichten ondanks de vriendelijke "
 "natuur van de reptielen op het eiland. Er blijft waarschijnlijk niet veel "
 "van over."
+
+#~ msgid "Lieutenant Aethyr"
+#~ msgstr "Luitenant Aethyr"
+
+#~ msgid "Death of Lieutenant Aethyr"
+#~ msgstr "Dood van luitenant Aethyr"
+
+#~ msgid "Lt. Aethyr"
+#~ msgstr "Lt. Aethyr"
