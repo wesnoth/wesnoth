@@ -8,18 +8,29 @@
 # This tool cross-references macro definitions with macro calls, and
 # resource (sound or image) files with uses of the resources in WML.
 # and generates various useful reports from such cross-references.
+#
+#
+# It takes a list of directories as arguments; if none is given, it
+# behaves as though the current directory had been specified as a
+# single argument.  Each directory is treated as a separate domain for
+# macro and resource visibility purposes, except that macros and resources
+# under the first directory are made visible in all later ones.  (Typically
+# the first directory should point at a copy of mainline and all later
+# ones at UMC.)
+#
 # The checking done by this tool has a couple of flaws:
 #
 # (1) It doesn't actually evaluate file inclusions.  Instead, any
-# macro definition from anywhere in the set of input trees can be used
-# to satisfy a macro call anywhere else.  Exception: when an #undef is
-# detected, the macro is tagged local and not visible outside the
-# span of lines where it's defined.
+# macro definition satisfies any macro call made under the same
+# directory.  Exception: when an #undef is detected, the macro is
+# tagged local and not visible outside the span of lines where it's
+# defined.
 #
 # (2) It doesn't read [binary_path] tags, as this would require
 # implementing a WML parser.  Instead, it assumes that a resource-file
 # reference can be satisfied by any matching image file from anywhere
-# in the set of input trees.
+# in the same directory it came from.  The resources under the *first*
+# directory argument (only) are visible everywhere.
 #
 # (3) A reference with embedded {}s in a macro will have the macro's
 # formal args substituted in at WML evaluation time.  Instead, this
@@ -83,10 +94,14 @@ class Forest:
     def __init__(self, dirpath, exclude=None):
         "Get the names of all files under dirpath, ignoring .svn directories."
         self.forest = []
+        self.dirpath = dirpath
         for dir in dirpath:
-            os.path.walk(dir,
-                         lambda arg, dir, names: self.forest.append(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
+            subtree = []
+            if os.path.isdir(dir):	# So we skip .cfgs in a UMC mirror
+                os.path.walk(dir,
+                         lambda arg, dir, names: subtree.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
                          None)
+            self.forest.append(subtree)
         for i in range(len(self.forest)):
             self.forest[i] = filter(lambda x: ".svn" not in x, self.forest[i])
             self.forest[i] = filter(lambda x: not os.path.isdir(x), self.forest[i])
@@ -97,10 +112,13 @@ class Forest:
         self.clique = {}
         counter = 0
         for tree in self.forest:
-            counter += 1
             for filename in tree:
                 self.clique[filename] = counter
-    def neighbors(fn1, fn2):
+            counter += 1
+    def parent(self, filename):
+        "Return the directory root that caused this path to be included."
+        return self.dirpath[self.clique[filename]]
+    def neighbors(self, fn1, fn2):
         "Are two files from the same tree?"
         return self.clique[fn1] == self.clique[fn2]
     def flatten(self):
@@ -108,8 +126,8 @@ class Forest:
         for tree in self.forest:
             allfiles += tree
         return allfiles
-    def iterator(self):
-        "Return the next file in the forest."
+    def generator(self):
+        "Return a generator that walks through all files."
         for tree in self.forest:
             for filename in tree:
                 yield filename
@@ -130,16 +148,6 @@ class reference:
         if fn not in self.references:
             self.references[fn] = []
         self.references[fn].append(n+1)
-    def visible_from(self, fn, n):
-        "Is this definition visible from the specified file and line?"
-        if self.undef != None:
-            return self.filename == fn
-        else:
-            # Sigh.  This doesn't match the actual preprocessor semantics.
-            # It means any macro without an undef is visible anywhere.
-            # We can't do better than this without a lot of hairy graph-
-            # coloring logic to simulate include path interpretation.
-            return True
     def dump_references(self):
         for (file, linenumbers) in self.references.items():
             print "    %s: %s" % (file, `linenumbers`[1:-1])
@@ -187,6 +195,28 @@ class CrossRef:
                 key = trial
                 self.fileref[key].append(fn, n)
         return key
+    def visible_from(self, defn, fn, n):
+        "Is specified definition visible from the specified file and line?"
+        if defn.undef != None:
+            # Local macros are only visible in the file where they were defined
+            # FIXME: we should check line spans here.
+            return defn.filename == fn
+        elif defn.filename in self.filelist.forest[0]:
+            # Macros in the first subtree are visible everywhere.
+            return True
+        elif not self.filelist.neighbors(defn.filename, fn):
+            # Otherwise, must be in the same subtree.
+            return False
+        else:
+            # If the two files are in the same subtree, assume visibility.
+            # This doesn't match the actual preprocessor semantics.
+            # It means any macro without an undef is visible anywhere in the
+            # same argument directory.
+            #
+            # We can't do better than this without a lot of hairy graph-
+            # coloring logic to simulate include path interpretation.
+            # If that logic ever gets built, it will go here.
+            return True
     def __init__(self, dirpath, exclude="", warnlevel=0):
         "Build cross-reference object from the specified filelist."
         self.dirpath = dirpath
@@ -194,7 +224,7 @@ class CrossRef:
         self.xref = {}
         self.fileref = {}
         self.noxref = False
-        for filename in self.filelist.iterator():
+        for filename in self.filelist.generator():
             if warnlevel > 1:
                 print filename + ":"
             if filter(lambda x: x, map(lambda x: filename.endswith("."+x), resource_extensions)):
@@ -243,7 +273,7 @@ class CrossRef:
                         here.hash = here.hash.digest()
                         if name in self.xref:
                             for defn in self.xref[name]:
-                                if not defn.visible_from(filename, n):
+                                if not self.visible_from(defn, filename, n):
                                     continue
                                 elif defn.hash != here.hash:
                                     print >>sys.stderr, \
@@ -284,7 +314,7 @@ class CrossRef:
         self.unresolved = []
         self.missing = []
         formals = []
-        for fn in self.filelist.iterator():
+        for fn in self.filelist.generator():
             if iswml(fn):
                 rfp = open(fn)
                 for (n, line) in enumerate(rfp):
@@ -303,14 +333,14 @@ class CrossRef:
                         if name in formals:
                             continue
                         elif name in self.xref:
-                             for defn in self.xref[name]:
-                                if defn.visible_from(fn, n):
+                            for defn in self.xref[name]:
+                                if self.visible_from(defn, fn, n+1):
                                     candidates += 1
                                     defn.append(fn, n+1)
                                     if candidates > 1:
                                         print "%s: more than one definition of %s is visible here." % (reference(fn, n), name)
-                        if candidates == 0:
-                            self.unresolved.append((name, reference(fn,n+1)))
+                            if candidates == 0:
+                                 self.unresolved.append((name, reference(fn,n+1)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
@@ -520,11 +550,11 @@ Usage: macroscope [options] dirpath
     if extracthelp:
         xref.extracthelp(dirpath[0], sys.stdout)
     elif listfiles:
-        for filename in xref.filelist.iterator():
+        for filename in xref.filelist.generator():
             print filename
     if collisions:
         collisions = []
-        for filename in xref.filelist.iterator():
+        for filename in xref.filelist.generator():
             ifp = open(filename)
             collisions.append(md5.new(ifp.read()).digest())
             ifp.close()
