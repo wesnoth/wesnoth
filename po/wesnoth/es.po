@@ -1,3 +1,4 @@
+# translation of es.po to Spanish
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004,2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -9,19 +10,20 @@
 # Héctor García Álvarez <hector@debian.org>, 2005.
 # Iván Herrero Bartolomé <navitux@gmail.com>, 2005.
 # Isaac Clerencia <isaac@warp.es>, 2006.
+# Roberto Romero <sildurin@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-26 18:20+0200\n"
-"PO-Revision-Date: 2007-03-26 10:34+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2007-04-23 15:51+0200\n"
+"Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KWrite 3.5.3\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: data/abilities.cfg:8
 msgid "heals +4"
@@ -171,8 +173,8 @@ msgstr ""
 "Esta unidad ilumina el área que la rodea, haciendo que las unidades legales "
 "luchen mejor, y las caóticas peor.\n"
 "\n"
-"Cualquier unidad adyacente a ésta luchará como si estuviera anocheciendo "
-"cuando es de noche, y como si fuera de día cuando está anocheciendo."
+"Cualquier unidad adyacente a ésta luchará como si estuviera atardeciendo "
+"cuando es de noche, y como si fuera de día cuando está atardeciendo."
 
 #: data/abilities.cfg:328
 msgid "teleport"
@@ -190,7 +192,7 @@ msgstr ""
 
 #: data/abilities.cfg:336 data/abilities.cfg:337
 msgid "ambush"
-msgstr "embosca"
+msgstr "emboscar"
 
 #: data/abilities.cfg:341 data/abilities.cfg:345
 msgid ""
@@ -223,8 +225,7 @@ msgid ""
 "to this unit."
 msgstr ""
 "Acecho nocturno:\n"
-"Esta unidad puede ocultarse en el bosque, y no ser detectada por sus "
-"enemigos.\n"
+"Esta unidad se vuelve invisible durante la noche.\n"
 "\n"
 "Las unidades enemigas no pueden ver o atacar esta unidad cuando es de noche, "
 "excepto en el turno inmediatamente después de que haya atacado, o si hay "
@@ -267,7 +268,7 @@ msgstr ""
 
 #: data/abilities.cfg:415
 msgid "backstab"
-msgstr "puñalada"
+msgstr "apuñalar por la espalda"
 
 #: data/abilities.cfg:417
 msgid ""
@@ -276,9 +277,9 @@ msgid ""
 "opposite side of the target, and that unit is not incapacitated (e.g. turned "
 "to stone)."
 msgstr ""
-"Puñalada:\n"
+"Apuñalar por la espalda:\n"
 "Este ataque causa el doble de daño si una unidad amiga está en el extremo "
-"opuesto del objetivo y esa unidad no está incapacitada (p.e., convertida en "
+"opuesto del objetivo y esa unidad no está incapacitada (p.ej., convertida en "
 "piedra)"
 
 #: data/abilities.cfg:426 data/abilities.cfg:434
@@ -302,16 +303,15 @@ msgid "slows"
 msgstr "ralentiza"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled."
 msgstr ""
-"Ralentiza:\n"
+"Ralentizar:\n"
 "Este ataque ralentiza al objetivo hasta que acabe el turno. Una unidad "
-"afectada inflige la mitad del daño normal con sus ataques y se mueve a la "
-"mitad de velocidad (redondeando hacia arriba)."
+"afectada inflige la mitad del daño normal con sus ataques ve duplicado su "
+"coste de movimiento."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -323,7 +323,7 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
-"Petrifica:\n"
+"Petrificar:\n"
 "Este ataque convierte al objetivo en piedra. Las unidades afectadas por la "
 "petrificación no podrán moverse ni atacar."
 
@@ -381,8 +381,8 @@ msgid ""
 "take double damage from the target's counterattack."
 msgstr ""
 "Carga:\n"
-"Este ataque causa el doble de daño al enemigo. También hace que los "
-"contraataques enemigos sean el doble de fuertes."
+"Este ataque causa el doble de daño al enemigo. También hace que esta unidad "
+"reciba el doble de daño de los contraataques enemigos."
 
 #: data/abilities.cfg:503
 msgid "drains"
@@ -394,7 +394,7 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Drena:\n"
+"Drenar:\n"
 "Esta unidad drena la vitalidad de unidades vivas, curándose a sí misma la "
 "mitad del daño que ha infligido (redondeado hacía abajo)."
 
@@ -408,7 +408,7 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Ataca primero:\n"
-"Esta unidad siempre ataca primero, aún cuando defiende."
+"Esta unidad siempre golpea primero, aún cuando defiende."
 
 #: data/abilities.cfg:520
 msgid "poison"
@@ -468,7 +468,7 @@ msgstr "Responsables de internacionalización"
 
 #: data/about.cfg:159
 msgid "Afrikaans Translation"
-msgstr "Traducción sudafricana"
+msgstr "Traducción afrikáans"
 
 #: data/about.cfg:169
 msgid "Basque Translation"
@@ -787,7 +787,7 @@ msgstr "espada"
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
 msgid "blade"
-msgstr "de filo"
+msgstr "de corte"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:57
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:65
@@ -864,7 +864,7 @@ msgstr "maza de jinete"
 #: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
 #: data/units/Wose_Ancient.cfg:108 data/units/Wose_Elder.cfg:107
 msgid "impact"
-msgstr "impacto"
+msgstr "de impacto"
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:3
 msgid "Mounted Fighter"
@@ -1008,7 +1008,7 @@ msgstr "cetro de fuego"
 #: data/units/Human_Mage_Silver.cfg:85 data/units/Orcish_Archer.cfg:345
 #: data/units/Orcish_Crossbowman.cfg:117 data/units/Orcish_Slurbow.cfg:158
 msgid "fire"
-msgstr "fuego"
+msgstr "de fuego"
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:3
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:3
@@ -1123,7 +1123,7 @@ msgstr "lanza"
 #: data/units/Undead_Skele_Soul_Shooter.cfg:79
 #: data/units/Undead_Skeleton_Archer.cfg:79
 msgid "pierce"
-msgstr "perforante"
+msgstr "de penetración"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -1164,7 +1164,7 @@ msgstr "mirada"
 #: data/units/Undead_Spirit_Spectre.cfg:94
 #: data/units/Undead_Spirit_Wraith.cfg:81
 msgid "cold"
-msgstr "frío"
+msgstr "de frío"
 
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:186
@@ -1300,7 +1300,7 @@ msgstr ""
 #: data/units/Elvish_Enchantress.cfg:145 data/units/Elvish_Sorceress.cfg:152
 #: data/units/Elvish_Sylph.cfg:127
 msgid "faerie fire"
-msgstr "fuego faérico"
+msgstr "fuego feérico"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
@@ -1656,7 +1656,7 @@ msgstr ""
 "Un wose es una criatura sobre la que se sabe muy poco, muy difícil de ver, "
 "incluso para los elfos. Ellos son los que más saben sobre los woses: que no "
 "descienden de los árboles, a pesar del parecido en la forma, y que están más "
-"atados al mundo faérico e imaginario que los propios elfos, aunque de una "
+"atados al mundo feérico e imaginario que los propios elfos, aunque de una "
 "manera diferente. Los motivos y objetivos de esta raza se desconocen, aunque "
 "muchos suponen que obviamente los woses son guardianes del mundo natural.\n"
 "\n"
@@ -1675,7 +1675,7 @@ msgstr "aplastar"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:3
 msgid "Demilich"
-msgstr "Semicadáver"
+msgstr "Semiliche"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:20
 msgid ""
@@ -1685,7 +1685,7 @@ msgid ""
 "and feared by all alike."
 msgstr ""
 "Demasiado tiempo investigando la senda de las magias prohibidas y artes "
-"oscuras tiene sus consecuencias para un mago: un semicadáver está perdiendo "
+"oscuras tiene sus consecuencias para un mago: un semiliche está perdiendo "
 "inexorablemente su cuerpo, y convirtiéndose en un no muerto. En poco tiempo "
 "será por entero un no muerto, y será temible."
 
@@ -1930,9 +1930,9 @@ msgstr ""
 "Esta habilidad, en todos sus aspectos, es el primer paso hacia quitarle a la "
 "muerte el premio último. Es el más alto poder que un mago oscuro puede "
 "llegar a obtener sin dejar de ser humano, pero no se compara con el poder "
-"letal que manejan los Cadáveres. Sus cuerpos mortales se vuelven más "
+"letal que manejan los liches. Sus cuerpos mortales se vuelven más "
 "resistentes debido a su magia, en contraste con la frágil y decadente "
-"existencia de un Cadáver.\n"
+"existencia de un liche.\n"
 "Nota: los ataque a distancia del nigromante son mágicos y siempre tienen una "
 "alta probabilidad de dar en el blanco. El bastón del nigromante está marcado "
 "por la plaga, y cualquier enemigo que sea aniquilado por él volverá de la "
@@ -1951,7 +1951,7 @@ msgstr "Fácil"
 
 #: data/english.cfg:3
 msgid "Medium"
-msgstr "Medio"
+msgstr "Media"
 
 #: data/english.cfg:4
 msgid "Hard"
@@ -2006,54 +2006,44 @@ msgid "race^Undead"
 msgstr "No muertos"
 
 #: data/english.cfg:21
-#, fuzzy
 msgid "race^Dwarves"
-msgstr "race^Enanos"
+msgstr "Enanos"
 
 #: data/english.cfg:22
-#, fuzzy
 msgid "race^Goblins"
-msgstr "race^Goblins"
+msgstr "Goblins"
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
-msgstr "race^Lagartos"
+msgstr "Lagartos"
 
 #: data/english.cfg:24
-#, fuzzy
 msgid "race^Mechanical"
-msgstr "race^Mecánico"
+msgstr "Mecánicos"
 
 #: data/english.cfg:25
-#, fuzzy
 msgid "race^Mermen"
-msgstr "race^Merman"
+msgstr "Sirénidos"
 
 #: data/english.cfg:26
-#, fuzzy
 msgid "race^Monsters"
-msgstr "race^Monstruos"
+msgstr "Monstruos"
 
 #: data/english.cfg:27
-#, fuzzy
 msgid "race^Nagas"
-msgstr "race^Nagas"
+msgstr "Nagas"
 
 #: data/english.cfg:28
-#, fuzzy
 msgid "race^Ogres"
-msgstr "race^Ogros"
+msgstr "Ogros"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Trolls"
-msgstr "race^Trolls"
+msgstr "Trolls"
 
 #: data/english.cfg:30
-#, fuzzy
 msgid "race^Woses"
-msgstr "race^Woses"
+msgstr "Woses"
 
 #: data/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
@@ -2115,7 +2105,7 @@ msgstr "cuerpo a cuerpo"
 
 #: data/english.cfg:49
 msgid "ranged"
-msgstr "distancia"
+msgstr "a distancia"
 
 #: data/english.cfg:52
 msgid "Wesnoth unit list"
@@ -2130,7 +2120,6 @@ msgid "Race"
 msgstr "Raza"
 
 #: data/english.cfg:55
-#, fuzzy
 msgid "Advance from:"
 msgstr "Puede convertirse en: "
 
@@ -2204,7 +2193,7 @@ msgstr "Habilidades"
 
 #: data/help.cfg:45
 msgid "Weapon Specials"
-msgstr "Habilidades especiales de armas"
+msgstr "Habilidades especiales"
 
 #: data/help.cfg:52
 msgid "Terrains"
@@ -4337,6 +4326,65 @@ msgid ""
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
 "Amithrarion,Cálad,Legilad"
 msgstr ""
+"Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
+"Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
+"Amowyn,Háriand,Beliril,Mylith,Giombor,Fer,Roldur,Cithraldur,Elvaramir,Sénd,"
+"Cylas,Thrilmandel,Rorfindil,Uradrielas,Sénd,Hil-Garion,Fithraril,Unorfiril,"
+"Eäryldur,Eärithrandil,Cithrand,Unálas,Elyrion,Glul,Vebrilas,Lómorfindil,"
+"Hithrandel,Gil-Gang,Hilas,Gil-Gandel,Eowarar,Carang,Lómariand,Isilmandel,"
+"Uril-Gambor,Hénduil,Unaraldur,Galithrariand,Hirion,Anilmambor,Celadrieriand,"
+"Róldur,Eärérion,Calónduil,Anerion,Elvélith,Eliondil,Lómebrind,Isándir,"
+"Eowówyn,Belel,Cáldur,Tadriendir,Vunduil,Belólad,Thrélad,Isadrieng,Eowil-"
+"Garion,Tinyl,Tinun,Lómémbor,Urálith,Celong,Horfilad,Iselas,Galálad,Norfildor,"
+"Thrithran,Unil-Gan,Gloldor,Celarandil,Delánd,Maldur,Celyndel,Ról,Vandir,"
+"Glómir,Unadrieldor,Elvandir,Vebril,Unólith,Maraldur,Elvilmaril,Isól,Legaran,"
+"Farandir,Nél,Glandil,Galalith,Galálas,Elebrildor,Sóriand,Elvóriand,Pindir,"
+"Anán,Amiorion,Amorfimir,Isarandel,Thril-Gamir,Taraldur,Amundil,Unorfildor,"
+"Glararil,Sólad,Fáwyn,Tinarambor,Tinil-Ganduil,Padrieriand,Ameldor,Gyl,"
+"Unebrind,Celebririon,Corfildur,Canduil,Glámbor,Urul,Elran,Glilmal,Porfildur,"
+"Cadrieriand,Delaraldur,Galelas,Hebril,Varalas,Celér,Nóndel,Eladrieng,"
+"Elvorfiriand,Delandel,Delorfilad,Méng,Lómowyn,Elélas,Unebrin,Anithranduil,"
+"Celáriand,Threbring,Belyrion,Belilmand,Numbor,Vóldur,Tinorfind,Gambor,"
+"Thrambor,Táriand,Eäradriendel,Rówyn,Elvémir,Elvorfiril,Calioriand,Delóldor,"
+"Tinóriand,Eowaraldor,Vel,Galémbor,Elrithralith,Elánd,Fadriendel,Deláril,"
+"Fandel,Cindil,Unalas,Delawyn,Fyrion,Eowylas,Eowithrawyn,Elvombor,Vuldur,"
+"Legorfindil,Unombor,Gadrieng,Amilmandir,Elrioldor,Calil-Gawyn,Eäréldor,"
+"Glólas,Norfindir,Unorfiwyn,Amind,Sóriand,Isóndel,Caliril,Eowaran,Elolas,"
+"Fendel,Tówyn,Hiong,Elvebrindel,Eowar,Vulas,Legémir,Torfildur,Col,Isorfilad,"
+"Elilmaldur,Celuwyn,Gymbor,Hundel,Elen,Isarar,Delán,Thrimir,Tinilmand,"
+"Tinithrar,Elvioldur,Tendel,Harariand,Rithrandil,Garaldor,Lómarand,Celór,"
+"Elvorfimir,Galar,Paraldor,Morfiriand,Celang,Amóldor,Vararion,Belondel,Hywyn,"
+"Legiondel,Elyldor,Eärorfiriand,Glarang,Gor,Throlas,Gararil,Norfilith,Deliwyn,"
+"Nyldur,Vólas,Isér,Eowanduil,Eowiomir,Belithraldor,Elemir,Amiol,Urálas,Belil-"
+"Gandil,Nalith,Thréldur,Gán,Eowimbor,Padrieril,Anorfing,Rebrir,Anilmariand,"
+"Rilmandil,Thryriand,Isyndel,Celorion,Isóng,Sadrielas,Pór,Thraral,Miolith,"
+"Elil-Garil,Vándel,Cówyn,Unóndel,Uniolith,Legówyn,Vylas,Unulad,Legal,Celelas,"
+"Galeldur,Amendel,Amorfir,Elvilmaldur,Eäránduil,Til-Gan,Nilmar,Eäradrier,"
+"Celior,Sebrin,Pyldur,Urér,Fioril,Anebrin,Hemir,Thrón,Glal,Mondir,Cénduil,"
+"Galur,Glimir,Anior,Tinoldor,Ván,Hilmariand,Lómebrilad,Gyn,Legyn,Vol,Cun,"
+"Lómadrieril,Amadrieriand,Eowémir,Belómir,Elrithranduil,Gumbor,Célad,Anebrir,"
+"Téwyn,Táriand,Géril,Elreldur,Legil-Gal,Eärebrindel,Elvund,Unil,Pilmalad,"
+"Deléng,Tinowyn,Cundir,Gadriendil,Eowariand,Ciong,Morfin,Nadrieldor,Elrorfir,"
+"Hymir,Elvebrind,Urambor,Thrund,Anénduil,Anon,Elrilmand,Cithraril,Mithrand,"
+"Caraldur,Eowóldur,Glior,Elváwyn,Legithralith,Vólas,Calándel,Caldur,Lómariand,"
+"Elebriril,Celundir,Eoworfildor,Celiorion,Elor,Elváwyn,Lómilmaril,Delilmaldor,"
+"Amelad,Tion,Unál,Calebrindel,Amilmalith,Eäryriand,Unondir,Isuwyn,Elralith,"
+"Belilmang,Eowarar,Sil-Gal,Calil-Gandir,Glon,Deliol,Sebriril,Elémbor,"
+"Calebrindir,Celilmalas,Elverion,Cithrandel,Anémbor,Uradrierion,Ganduil,"
+"Parariand,Pumbor,Githral,Galoldur,Rorfilad,Tinorfiriand,Vondel,Tinimir,"
+"Sorfind,Uróldor,Delithrar,Galurion,Elval,Tinond,Delorion,Taral,Thróng,"
+"Madrieril,Isithral,Belarandel,Celendel,Gladriendil,Lómiriand,Legéril,Nán,"
+"Vilith,Belén,Elriolith,Delundil,Anilad,Celaral,Ameng,Mérion,Eowarion,"
+"Tilmalad,Elvil-Garion,Cithralad,Ryn,Tinén,Elólas,Belandil,Golad,Miomir,Tolas,"
+"Urilmalith,Norfindil,Mánduil,Githralad,Legorfirion,Móndir,Hyrion,Anundil,"
+"Tinilmawyn,Legyl,Elradrien,Anil-Gawyn,Tinandir,Uneldor,Amulas,Válad,Amulas,"
+"Celiondir,Thradrieriand,Réndir,Elvónduil,Urorfildor,Vyldor,Galelith,Caloril,"
+"Amáril,Belithrawyn,Cadriembor,Tilmalas,Thril-Gar,Elálith,Vorfin,Eowebrind,"
+"Nil-Galas,Eowambor,Morfilas,Thrion,Róldor,Filman,Unioril,Forfilas,"
+"Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
+"Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
+"Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
+"Amithrarion,Cálad,Legilad"
 
 #: data/names.cfg:3
 msgid ""
@@ -4406,6 +4454,71 @@ msgid ""
 "Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
 "Eowathiel,Iséng,Legondra,Celorfilindë"
 msgstr ""
+"Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
+"Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
+"Belaraviel,Vódia,Vadriewen,Legadien,Glithiel,Nowen,Elviondra,Cithrania,"
+"Isithradien,Legithrandra,Tilmaclya,Galadriethien,Rorfiviel,Thryng,Unindra,"
+"Lómeniel,Deliowen,Corfiviel,Eärániel,Eärélia,Feclya,Vorfing,Tinóng,Celith,"
+"Celelith,Sadrienia,Deléthien,Uradriedia,Pulia,Lómuthiel,Elvyniel,Réviel,"
+"Parandra,Galaraniel,Til-Gandra,Isilindë,Belendra,Galorfiwiel,Mil-Gathien,"
+"Lómilindë,Elvithrang,Uránia,Cádë,Eäradriedien,Belarania,Legelith,Lómythien,"
+"Legethiel,Godien,Goclya,Elywen,Githrawiel,Galowen,Glilmawiel,Fadrielia,"
+"Galedien,Miowen,Tinorfilith,Amuwen,Silmathiel,Hódia,Hiwien,Anilmarith,Sáng,"
+"Amionia,Miowiel,Gadrieclya,Celódith,Amorith,Amodë,Thrália,Fil-Gathiel,"
+"Eäréwiel,Delil-Ganiel,Unynia,Belithraniel,Caladrieng,Eäriolith,Celarandra,"
+"Elorfing,Sothien,Amiwen,Deloviel,Celália,Glália,Anaraclya,Mithradë,Eowylia,"
+"Celindë,Legádë,Amiolith,Urilmawiel,Elvil-Gawien,Thrulith,Padriedith,Viowiel,"
+"Elrithradith,Elvánia,Violindë,Lómániel,Pong,Mithralindë,Amithrawien,Mil-"
+"Gathiel,Celioniel,Uryrith,Soniel,Lómulindë,Eärilmathien,Hódia,Tithrathien,"
+"Tówiel,Glowiel,Aniorith,Uniong,Tinorfithien,Madrieclya,Sadrierith,Vówien,"
+"Reniel,Legil-Galindë,Amewien,Nithrarith,Vebrithien,Ril-Gawien,Fólindë,"
+"Galebrindra,Pilindë,Nithraniel,Gólia,Medien,Munia,Cithralith,Eärithrang,"
+"Throng,Eledë,Cithrawen,Thrithradia,Calóniel,Elilmalia,Rindra,Eladriedë,"
+"Lómebriniel,Ceclya,Calówien,Hiodë,Calewen,Gebririth,Tinerith,Sarandra,"
+"Eowebridith,Eärarawien,Eluviel,Sendra,Héclya,Sálindë,Fódë,Throlith,Varawiel,"
+"Elrithiel,Celebriniel,Hythien,Myndra,Urithralindë,Calándra,Delorfilindë,Fil-"
+"Galia,Gloviel,Eowidien,Delebrinia,Puthien,Elvádia,Elrilindë,Legadriedë,"
+"Vithraniel,Módia,Lómithradë,Elradrierith,Hythiel,Glilmadien,Thradia,"
+"Vadrierith,Beliolia,Gil-Gawien,Lómuniel,Milindë,Elóndra,Elvyviel,Glorfilith,"
+"Pebridien,Galándra,Fulindë,Galiothiel,Gléndra,Calánia,Eowedith,Elrebridith,"
+"Anuthiel,Gioviel,Mywiel,Tinawiel,Hedia,Amebrilindë,Eärewen,Isendra,Lómudia,"
+"Tiorith,Lómorfing,Anythien,Eowil-Galindë,Thrithraniel,Amil-Garith,Belowen,"
+"Elynia,Elvithrathien,Tinálindë,Helith,Beladriewien,Fáwien,Lómithrarith,"
+"Calorfiniel,Galéwiel,Lómebriclya,Lómolith,Anáthien,Módë,Hunia,Tinaraniel,"
+"Vithrang,Pil-Gadia,Eluviel,Fáthiel,Elarawiel,Unénia,Sithrang,Celadë,"
+"Beladrielith,Elriwen,Meclya,Pádia,Lómóndra,Elvil-Gawien,Tiniolith,Elelith,"
+"Thraraviel,Eowarawien,Giowen,Eärorfiwien,Amarang,Newen,Náviel,Amithrawien,"
+"Caluclya,Galothiel,Paralindë,Celorfing,Elránia,Mebriwiel,Anebriniel,"
+"Tilmaviel,Fadriendra,Unulindë,Haviel,Elilmawien,Celylia,Thrithrandra,"
+"Lómiclya,Féthiel,Celália,Eowalia,Huclya,Horfiwien,Elrilmathien,Unionia,"
+"Gioniel,Elrilmandra,Delararith,Uraclya,Huthien,Celéng,Isil-Garith,Lómudia,"
+"Thrérith,Amadrielindë,Eladrielia,Amuviel,Legadrieclya,Legilmadith,"
+"Belebrindra,Lómódë,Uniolia,Gadrieviel,Galilmadia,Filmaclya,Naraniel,"
+"Calilmalith,Hil-Gania,Anuthien,Elviniel,Elebrindra,Legadrieniel,Galundra,"
+"Anylindë,Celówien,Thridith,Niolia,Falindë,Milith,Anundra,Lómorith,Delararith,"
+"Anywien,Saradith,Galédë,Háwien,Celérith,Niothien,Elvilmathiel,Hewen,Isóthien,"
+"Hóthiel,Celebriviel,Moniel,Elithradien,Vorficlya,Glebrithien,Golindë,Viwiel,"
+"Sethien,Sioclya,Hodia,Taradien,Fadrienia,Githrania,Calil-Galith,Elréthiel,"
+"Legithrania,Calewiel,Isebridien,Thredien,Tinudia,Tinadriethien,Galithrathien,"
+"Mádia,Isadrieng,Celárith,Isebrinia,Amorfilith,Sédith,Eärudë,Eärenia,"
+"Belithrawien,Amil-Gadith,Vadrieviel,Lómilmathiel,Tinebrithiel,Eowilindë,"
+"Terith,Calang,Celararith,Glodith,Siorith,Beladriewen,Fioniel,Amulia,Nydith,"
+"Lómilmawiel,Gáviel,Belulindë,Legorfidë,Unáthien,Porfindra,Calithraclya,"
+"Celorfiwien,Analia,Elithraclya,Delóndra,Unóndra,Nilmadia,Riothien,Guviel,"
+"Elrorfidia,Horfinia,Uriolia,Delithrathiel,Legéniel,Calebriwien,Delorfithien,"
+"Unebridë,Legeng,Thrinia,Galolindë,Galyniel,Vorfirith,Syniel,Harawiel,"
+"Vorfiwiel,Porfiwien,Isithrarith,Maraclya,Amadriendra,Gilia,Fadriedith,Amedë,"
+"Celidien,Legolith,Unuviel,Nil-Gang,Celithradith,Pindra,Póviel,Elil-Gang,"
+"Galebrilia,Tathiel,Unadrieng,Isithrawiel,Amadrielia,Nawen,Tang,Cydia,"
+"Silmaclya,Cadriewen,Threbriniel,Urilmadia,Thruthien,Ureclya,Galólia,"
+"Sithrawen,Elródith,Throthiel,Lómedia,Pawen,Legilmawiel,Legebrilia,Urárith,"
+"Unilmadia,Morfilindë,Iseviel,Améthien,Gloclya,Cing,Legithralindë,Isáwen,"
+"Sothiel,Eowiowien,Uruthien,Amadriewen,Vóng,Róng,Eärilmadë,Anówien,Tuniel,"
+"Tarathiel,Lómynia,Celiodë,Pil-Gadien,Belithrawiel,Gathien,Anang,Vorfing,"
+"Tinarathien,Fil-Gawien,Amilmadia,Amithraniel,Cethien,Gloclya,Hyclya,"
+"Isithradë,Legidia,Celálindë,Galil-Gania,Tinil-Gania,Eowyniel,Cólindë,"
+"Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
+"Eowathiel,Iséng,Legondra,Celorfilindë"
 
 #: data/names.cfg:7
 msgid ""
@@ -4460,6 +4573,56 @@ msgid ""
 "Cubryn,Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
 "Gwaeddyn,Saenvan,Todd,Tegwyn"
 msgstr ""
+"Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,Owaecyn,"
+"Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,Yryrcyn,Glynvan,"
+"Ryddry,Saemyr,Dibryn,Owuddry,Gloddyn,Gladoc,Yroddry,Bladoc,Addreonyc,Rheoran,"
+"Tiryn,Glynry,Rhaemyr,Gweddyn,Cemyr,Mimyr,Caraennyn,Careorraent,Gwor,Cin,Goc,"
+"Glydd,Oweomyr,Carraent,Gubryn,Gannyn,Aethadry,Aethonnyn,Blygwyn,Laellyn,"
+"Carudoc,Ladoc,Blercyn,Carocyn,Aetheoc,Rumyr,Gaercyn,Careogwyn,Caryn,Careddry,"
+"Owarcyn,Daeddry,Mubryn,Gwymyr,Blaedry,Owaryn,Addreddry,Owaryn,Taedoc,"
+"Addraecyn,Morcyn,Vugwyn,Rhenry,Blullyn,Dycyn,Daeddry,Blydd,Seddyn,Teoddyn,"
+"Gwaec,Rycyn,Rhobryn,Gwyddry,Tudoc,Roddyn,Oweran,Ceoddyn,Blubryn,Glonry,Sedry,"
+"Owecyn,Blydd,Owinyc,Gwuran,Yryllyn,Tunvan,Gwan,Carac,Cebryn,Murcyn,Ronry,"
+"Geodry,Midry,Gweogwyn,Aethec,Blinvan,Rhyrraent,Aethaeryn,Seoddry,Caradoc,"
+"Aethenvan,Sanyc,Aethaec,Gwumyr,Teorcyn,Lenvan,Rabryn,Yrynyc,Murcyn,Mydoc,"
+"Yrannyn,Rhobryn,Oworraent,Owac,Vuddyn,Gwellyn,Glaercyn,Yregwyn,Oweorcyn,"
+"Addrenyc,Rhaedoc,Carocyn,Rhonvan,Owercyn,Dadd,Corcyn,Addrocyn,Yreryn,Tinry,"
+"Rharcyn,Rar,Addroryn,Tabryn,Blinvan,Addrunvan,Derraent,Leogwyn,Virraent,"
+"Gwudoc,Lercyn,Glarraent,Caren,Liryn,Gwegwyn,Ligwyn,Gwybryn,Lin,Veoddyn,Owodd,"
+"Cariddry,Glonvan,Gymyr,Aethuc,Careonvan,Aethudry,Addreoddyn,Gweocyn,Vonry,"
+"Rhygwyn,Rhyrcyn,Rhur,Deonyc,Veocyn,Siryn,Teobryn,Yraec,Gweodry,Caroran,"
+"Caraedry,Vaennyn,Moddry,Vaeddyn,Caredd,Siddry,Aethacyn,Rheorraent,Rhubryn,"
+"Addrurcyn,Sodry,Rhunyc,Gweodd,Reoddyn,Vinyc,Glydoc,Sodd,Dyddyn,Dinnyn,Ruddry,"
+"Addraryn,Gwollyn,Rurcyn,Glinry,Blyr,Aetharcyn,Blybryn,Addraercyn,Cararyn,"
+"Carygwyn,Menvan,Caric,Turraent,Oworcyn,Gwennyn,Meorraent,Ludoc,Aethoddyn,"
+"Glyc,Oworan,Simyr,Aethugwyn,Gwynnyn,Glunry,Cynyc,Addregwyn,Maddyn,Gecyn,"
+"Deollyn,Gwidoc,Meon,Goc,Sudd,Yredd,Addredry,Caeran,Vobryn,Saellyn,Surcyn,"
+"Taercyn,Labryn,Yran,Ceomyr,Caroddyn,Deodd,Glunvan,Gwoddyn,Addrocyn,Aethydry,"
+"Carygwyn,Aethynyc,Aetheorcyn,Taec,Rocyn,Laellyn,Tinvan,Owaedry,Teor,Ceonnyn,"
+"Rynry,Lunnyn,Myn,Rynnyn,Dac,Owaddyn,Vyc,Bliddry,Gur,Gwumyr,Owinvan,Maennyn,"
+"Veogwyn,Blenvan,Owur,Curyn,Gleoddyn,Aethec,Aethanry,Lec,Blanry,Vaddyn,Modd,"
+"Gaddry,Yrinvan,Blidd,Rheran,Veomyr,Owadd,Saran,Gullyn,Owollyn,Aethiddry,"
+"Gloddry,Carullyn,Secyn,Manyc,Romyr,Vinvan,Careoryn,Gegwyn,Gleddry,Tennyn,"
+"Manry,Syran,Gor,Ceoddry,Aethobryn,Yrunvan,Yraryn,Oweor,Daellyn,Mec,Lannyn,"
+"Owyran,Lemyr,Rhaedoc,Yrullyn,Syryn,Bludry,Bledoc,Caregwyn,Tuddry,Careobryn,"
+"Addrenyc,Aethellyn,Veodry,Meonnyn,Myrraent,Addraer,Aethun,Coc,Sarraent,"
+"Rheollyn,Reodry,Blucyn,Caedry,Mudoc,Sydd,Carygwyn,Cadry,Gwucyn,Ten,Ron,Lan,"
+"Owoddry,Owugwyn,Tarcyn,Owuddyn,Rhenvan,Tanry,Aetheonyc,Caraddry,Blaec,"
+"Yrunnyn,Glircyn,Aetherraent,Rheoddyn,Cennyn,Ginvan,Gweoran,Gumyr,Blymyr,"
+"Rygwyn,Gagwyn,Addrynvan,Rherraent,Yrymyr,Laran,Rubryn,Ceoc,Gwodd,Gwadoc,"
+"Gwenyc,Corcyn,Gaebryn,Gwydoc,Yrumyr,Caregwyn,Rheollyn,Rhollyn,Gliddyn,Owedry,"
+"Aethercyn,Caryn,Saec,Vogwyn,Lorraent,Mygwyn,Cac,Mac,Tarcyn,Tenvan,Ronry,"
+"Gwaec,Seorcyn,Soran,Luddry,Addreran,Yranvan,Gwidoc,Ceonry,Glacyn,Varcyn,"
+"Vyrcyn,Terraent,Blillyn,Run,Ligwyn,Rhyllyn,Sercyn,Denvan,Convan,Owogwyn,Gar,"
+"Glumyr,Rheodd,Cicyn,Blac,Daedoc,Gweodoc,Addreorcyn,Caercyn,Rhynyc,Lunnyn,"
+"Dadoc,Sellyn,Aethaeran,Gydoc,Sodry,Tyddyn,Rhaerraent,Gan,Lunvan,Saercyn,"
+"Gaedry,Rhodry,Taenvan,Radd,Caror,Monry,Mugwyn,Meollyn,Glun,Moran,Rybryn,"
+"Aethibryn,Gwaec,Addryllyn,Caebryn,Cinry,Ranvan,Blemyr,Addriddyn,Rhugwyn,"
+"Gwycyn,Blebryn,Yranvan,Teddyn,Vaedry,Addreoddry,Taedd,Cyryn,Yrirraent,"
+"Aethercyn,Middry,Lurraent,Bleollyn,Aethircyn,Ven,Modd,Ceoryn,Carercyn,Lonnyn,"
+"Car,Taemyr,Owidry,Geddyn,Aethunry,Yreddyn,Addribryn,Suc,Gleran,Addredry,"
+"Cubryn,Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
+"Gwaeddyn,Saenvan,Todd,Tegwyn"
 
 #: data/names.cfg:8
 msgid ""
@@ -4514,6 +4677,56 @@ msgid ""
 "Deassa,Jovyan,Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,"
 "Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 msgstr ""
+"Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
+"Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
+"Clarka,Clwlla,Cira,Lylla,Elavyan,Meroniver,Lwlla,Reacla,Neallyra,Mudda,"
+"Brirka,Alyryan,Reangwen,Sorka,Nalyan,Ysilyan,Realla,Lyna,Rwllyra,Elyrka,Nera,"
+"Gwwcla,Caella,Gwwvyan,Nuvyan,Sona,Merolla,Nyssa,Sera,Lwryan,Ysell,Elulonna,"
+"Raerka,Saell,Dwnoic,Clissa,Medda,Lessa,Rwllyra,Ledda,Jeabrylla,Brera,Meanoic,"
+"Lelyan,Clobrylla,Brellyra,Nucla,Jalyan,Dydda,Cyvyan,Revyan,Nyll,Clillyra,"
+"Langwen,Jyvyan,Saellyra,Sera,Sara,Rucla,Ryngwen,Cicla,Lolonna,Lycla,Merydda,"
+"Naecla,Aleara,Rwlla,Curyan,Lina,Mylla,Rarka,Merubrylla,Clwdda,Gwerka,Saessa,"
+"Brungwen,Jonoic,Elalonna,Elwlonna,Lidda,Dyssa,Cassa,Relyan,Gworyan,Dwdda,"
+"Alengwen,Lill,Raebrylla,Elwra,Joll,Brerka,Mengwen,Caevyan,Mwnoic,Nivyan,"
+"Merina,Rilonna,Gwangwen,Gwussa,Lealonna,Cwdda,Jaerka,Jassa,Sassa,Elerka,"
+"Elaedda,Sull,Elyngwen,Mwbrylla,Livyan,Maecla,Cwlonna,Ysodda,Elurka,Clylla,"
+"Clilyan,Daenoic,Naell,Brynoic,Syssa,Nulla,Merebrylla,Breabrylla,Call,Jycla,"
+"Dulonna,Gwirka,Dollyra,Alybrylla,Elaell,Jura,Dalla,Mereangwen,Cinoic,Naell,"
+"Ysyrka,Alearka,Jiryan,Ysonoic,Ysycla,Merilyan,Brorka,Jull,Alwllyra,Cealonna,"
+"Gwonoic,Gwobrylla,Brellyra,Curyan,Moniver,Cleall,Elara,Lylyan,Daelyan,Relyan,"
+"Sallyra,Cleacla,Alalonna,Elealla,Ysyssa,Clacla,Rilyan,Jeniver,Aleaniver,"
+"Meraelyan,Gweacla,Jwll,Elealla,Lirka,Milonna,Lealyan,Messa,Nabrylla,Lollyra,"
+"Merona,Meressa,Bravyan,Elaevyan,Ceryan,Mereaniver,Ysaenoic,Gwaessa,Alearka,"
+"Myra,Nobrylla,Jona,Jyrka,Cyniver,Lulyan,Rerka,Swlla,Nybrylla,Yswniver,"
+"Dangwen,Gwicla,Yseacla,Eleanoic,Mwngwen,Neavyan,Larka,Brealonna,Gwycla,"
+"Aluryan,Meacla,Brona,Jyvyan,Brwra,Coryan,Cudda,Elivyan,Nyryan,Alyra,Alilonna,"
+"Merana,Merylyan,Cydda,Diniver,Merolyan,Myll,Rwlonna,Gweacla,Ysylla,"
+"Alaebrylla,Naebrylla,Clenoic,Daengwen,Reana,Alynoic,Jissa,Myvyan,Brora,"
+"Alaryan,Rengwen,Clavyan,Ryna,Jull,Brollyra,Brobrylla,Ysedda,Alingwen,Ysell,"
+"Jealla,Liryan,Merurka,Elallyra,Clinoic,Ninoic,Merudda,Gwongwen,Jacla,Nungwen,"
+"Clalla,Gwona,Gwaera,Rora,Ninoic,Brycla,Clwvyan,Clurka,Clill,Merella,Ysylyan,"
+"Rwdda,Lelonna,Yselonna,Claella,Clallyra,Dassa,Clealyan,Merydda,Cibrylla,"
+"Deanoic,Claenoic,Rassa,Gwwvyan,Cucla,Lwnoic,Aluniver,Dwbrylla,Dybrylla,"
+"Merissa,Ysealyan,Clydda,Maeniver,Dallyra,Nessa,Gwydda,Merall,Clill,Clungwen,"
+"Ysongwen,Cucla,Jora,Elyniver,Meana,Sallyra,Ysinoic,Clara,Meradda,Dwra,Nolla,"
+"Nera,Merealonna,Clibrylla,Alaeniver,Nonoic,Jacla,Jorana,Cwngwen,Dara,Ysura,"
+"Sulonna,Dissa,Clona,Ralonna,Cwvyan,Mulyan,Lungwen,Mwlyan,Meralonna,Lerka,"
+"Noryan,Curyan,Mealyan,Nera,Sylyan,Merivyan,Lwnoic,Sanoic,Ysanoic,Cyllyra,"
+"Ysyrka,Cleanoic,Bronoic,Devyan,Ysaerka,Rwngwen,Nwllyra,Ysycla,Swngwen,Nyvyan,"
+"Cleana,Merylyan,Alwlyan,Lassa,Locla,Meniver,Laenoic,Mullyra,Judda,Mycla,"
+"Clelora,Ysacla,Elacla,Muryan,Clollyra,Ysanoic,Senoic,Rwngwen,Merwlla,Brera,"
+"Saeniver,Deassa,Meranoic,Bronoic,Aleacla,Mavyan,Alora,Jarka,Elaelonna,"
+"Merwryan,Lengwen,Alilonna,Meangwen,Claelyan,Silonna,Ysealyan,Alora,Revyan,"
+"Cylara,Merwnoic,Dicla,Laeryan,Alubrylla,Lycla,Mavyan,Jull,Syllyra,Swlyan,"
+"Elaessa,Caena,Cluvyan,Breryan,Laeniver,Jorka,Raera,Gwedda,Lodda,Brell,"
+"Rybrylla,Meanoic,Niryan,Cylla,Bricla,Cudda,Alabrylla,Nealonna,Alolla,Rirka,"
+"Jyniver,Elearka,Jaevyan,Melonna,Alengwen,Sura,Cissa,Mossa,Norka,Nangwen,"
+"Saerka,Elycla,Della,Merallyra,Elyllyra,Elenoic,Alussa,Elwngwen,Calla,"
+"Meriella,Jynoic,Ysealonna,Sussa,Sulyan,Mossa,Dissa,Daedda,Merinoic,Searka,"
+"Rella,Sira,Clillyra,Alwna,Lulla,Nulyan,Jwlyan,Swnoic,Clongwen,Alalla,Siryan,"
+"Braedda,Jealla,Gwwna,Gwullyra,Merengwen,Molyan,Dwna,Lunoic,Brealla,Ruryan,"
+"Alabrylla,Deassa,Jovyan,Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,"
+"Cora,Luryan,Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 
 #: data/names.cfg:12
 msgid ""
@@ -4525,6 +4738,13 @@ msgid ""
 "Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimmud,"
 "Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 msgstr ""
+"Neptuno,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
+"Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
+"Barinthus,Llyr,Lir,Aigaion,Melicertes,Dylan,Tanaoa,Nunlau,Alastyn,Apam,Natat,"
+"Vourukasa,Vodnik,Ansu,Nun,Habaek,Apsu,Abzu,Absu,Sisiutl,Atlaua,Atlahua,Jamm,"
+"Vizi,Ember,Toniwha,Apalala,Dhakhan,Nechtan,Elcmar,Mimlala,Enki,Makara,"
+"Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimmud,"
+"Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 
 #: data/names.cfg:13
 msgid ""
@@ -4533,6 +4753,10 @@ msgid ""
 "Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
 "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 msgstr ""
+"Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,Rân,"
+"Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
+"Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
+"Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 
 #: data/names.cfg:17
 msgid ""
@@ -4580,6 +4804,49 @@ msgid ""
 "Varag,Huurk,Vadush,Grok,Rank,Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,"
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 msgstr ""
+"Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,Goshnak,"
+"Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,Hunk,Goshnak,"
+"Bogor,Varbag,Hort,Graol,Gork,Vrugdush,Gagor,Gadash,Prong,Prodush,Pidush,"
+"Grorag,Grolg,Pung,Hurbag,Bink,Grort,Erugar,Vilo,Pagor,Vak,Prarg,Hurag,"
+"Eragdush,Gulg,Pragdush,Grugdush,Erirg,Gridush,Hulo,Vrogar,Eronk,Erulo,Rok,"
+"Prurk,Prurg,Grulo,Prirg,Prugar,Bogar,Prudish,Prunk,Groshnak,Eronk,Prilg,Erik,"
+"Rodush,Vulo,Pork,Prilo,Horbag,Bong,Prarag,Vourk,Vrik,Boshnak,Prong,Rugdish,"
+"Erulo,Paurk,Vrik,Hak,Vrurg,Gurbag,Vrang,Pilg,Bogdush,Erurag,Vadush,Eruurk,"
+"Vank,Ruk,Vrogor,Vrurg,Bagar,Vink,Prinak,Vraurk,Prarbag,Hidush,Ruol,Grugdish,"
+"Prodash,Gridish,Pulo,Bik,Rinak,Halg,Erudish,Pirbag,Gank,Gaunk,Burk,Hunk,"
+"Bagdish,Pink,Bort,Gridash,Valo,Eruol,Radash,Erarg,Vidash,Vudish,Vak,Grirg,"
+"Groshnak,Pronak,Puddush,Grigar,Prolg,Pigdush,Ging,Vong,Hulg,Bashnak,Vork,"
+"Ruol,Vogdish,Rinak,Gagar,Bonak,Virt,Bunak,Hushnak,Ganak,Barbag,Vralo,Hidash,"
+"Vrirt,Gurt,Erarag,Rugar,Pridish,Prugdish,Eruol,Vriurk,Grudash,Vurg,Eriol,Bok,"
+"Granak,Vrodish,Hoshnak,Grogdish,Bork,Hushnak,Hagdush,Parag,Eriurk,Vuk,Rirg,"
+"Rok,Bolg,Vrishnak,Vidush,Vragar,Budush,Gruk,Bidish,Praurk,Gunak,Hinak,Hak,"
+"Grork,Grong,Erogdish,Rogdish,Vadash,Pulg,Vilg,Vrodash,Vurg,Gink,Grilg,Birt,"
+"Biol,Vrudish,Hagor,Vragdush,Vogor,Vulg,Erong,Rashnak,Garag,Grink,Vogdish,"
+"Badush,Rodish,Gradash,Erart,Purbag,Pralo,Grigar,Badush,Priurk,Rink,Puurk,"
+"Vonak,Eradish,Vridash,Podush,Pruurk,Pronk,Hiol,Gushnak,Gugdish,Hashnak,"
+"Eragor,Rarbag,Gagdush,Granak,Budush,Vilg,Hort,Pulg,Gaol,Podash,Punak,Gogdush,"
+"Porg,Pogdish,Prigar,Gushnak,Prarbag,Gagar,Bogor,Gogdish,Eranak,Gralo,Palg,"
+"Virag,Grishnak,Rank,Hing,Grak,Pirbag,Prarag,Virag,Hink,Buk,Burg,Prodish,"
+"Prashnak,Ragar,Purag,Bugdish,Vigdish,Grogdish,Huol,Hank,Gruurk,Rak,Rudash,"
+"Ginak,Huol,Erigdush,Vraurk,Prool,Pragor,Grirag,Vishnak,Grorg,Eronk,Vraurk,"
+"Erishnak,Erunk,Bilo,Hodush,Vrork,Eriurk,Vrarbag,Hagar,Vorg,Pidush,Pigdish,"
+"Bidush,Prashnak,Virag,Bunk,Vrurg,Hong,Rik,Hirg,Rushnak,Gink,Hadish,Vilo,"
+"Vrork,Rak,Huk,Ronak,Vrulg,Vilg,Rogdish,Prodash,Erirt,Gragar,Gigor,Burag,"
+"Priol,Rodush,Rirg,Vruurk,Barag,Podish,Vunak,Hork,Grilg,Bogdish,Vadash,Raurk,"
+"Puurk,Rark,Ronak,Grogar,Hashnak,Bink,Grodish,Hidish,Bagar,Erinak,Vrugdush,"
+"Rarag,Eragdish,Hirag,Vrolo,Hogor,Erirbag,Vruol,Gulg,Pralo,Hognash,Hadush,"
+"Budush,Hadash,Gigor,Goshnak,Hugor,Hudash,Biol,Vrurg,Pradish,Pralg,Bilg,Vrart,"
+"Prunak,Prigdish,Vrung,Vrugdush,Grudash,Ging,Puk,Graol,Prigor,Buurk,Pagdish,"
+"Hirg,Prang,Eragor,Gralg,Prart,Vrolo,Prark,Pashnak,Pradish,Vilg,Pulo,Gunak,"
+"Paol,Gridash,Erirag,Bart,Burag,Vrinak,Vushnak,Prilo,Vragor,Rigor,Bung,Prourk,"
+"Vrork,Burg,Erugdush,Bogdish,Prurg,Prigor,Binak,Vadish,Grilo,Ruol,Vrodish,"
+"Pinak,Pradish,Eragor,Higdush,Parag,Pink,Vrong,Port,Bok,Porbag,Grilo,Bung,"
+"Grugar,Rak,Gulgar,Grork,Bik,Grodish,Polg,Pung,Grarbag,Vurg,Vurbag,Pung,Prolo,"
+"Voshnak,Ruk,Vigdish,Vradash,Vrarg,Gong,Gragor,Varbag,Erogdush,Erorbag,Bidish,"
+"Prirt,Hadush,Rirk,Vrurt,Hing,Gronk,Rung,Girt,Gronk,Vigar,Prugar,Raol,Eronk,"
+"Hurk,Purg,Hilg,Vrudish,Grurk,Gigor,Grurg,Polg,Erurag,Erudush,Vadush,Vrulg,"
+"Varag,Huurk,Vadush,Grok,Rank,Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,"
+"Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 
 #: data/names.cfg:21
 msgid ""
@@ -4648,6 +4915,70 @@ msgid ""
 "Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
 "Pelaithil,Gomaithsol,Augaithsil"
 msgstr ""
+"Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,Trithaithus,"
+"Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,Augaithing,Anthaas,"
+"Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,Trithdurol,Glamcatil,Augthail,"
+"Trithduril,Dulthalos,Glamthasol,Aldrsol,Glamaithol,Glamalil,Analus,Nardril,"
+"Augating,Dulaithsol,Aldrlos,Alalus,Aigcatsol,Ancatas,Trithdris,Pelatol,"
+"Aigthasil,Anthais,Narcatis,Trithatil,Aigaithing,Althail,Trithaithil,"
+"Naraithol,Duldrlos,Gomatas,Alcatis,Naraithsil,Althalos,Aigdursol,Glamalsil,"
+"Nardrus,Aigalis,Aldurlos,Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,"
+"Glamthaas,Dulcatsol,Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,"
+"Peldrsol,Pelalsol,Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,"
+"Augdris,Anthasol,Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,"
+"Pelalis,Gomatlos,Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,"
+"Gomcatil,Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
+"Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
+"Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,Trithdring,"
+"Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,Dulaithlos,"
+"Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,Trithcatlos,"
+"Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,Aldurol,Aigatsil,"
+"Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,Althaol,Aldrsol,"
+"Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,Glamthaol,Ancatus,"
+"Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,Naraithsil,Aldris,"
+"Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,Aigdurlos,Aigaithol,"
+"Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,Anthaing,Aigcatis,"
+"Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,Gomdursil,Nardras,"
+"Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,Anatol,Augdrsil,"
+"Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,Augaling,Alating,Glamatil,"
+"Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,Gomdursol,Naraithus,"
+"Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,Aigduras,Nardrol,Nardurol,"
+"Pelalil,Gomalil,Aigatis,Analil,Dulthaus,Gomaithil,Alduras,Trithduril,Ancatol,"
+"Alduras,Pelduril,Narcatsol,Pelating,Dulcatsil,Augatol,Glamthasil,Gomthasol,"
+"Naraithsil,Alatsil,Dulcatol,Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,"
+"Trithatas,Aigthais,Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,"
+"Gomdras,Naraithsol,Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,"
+"Gomating,Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
+"Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
+"Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,Augcatsil,"
+"Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,Pelaling,"
+"Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,Augthalos,"
+"Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,Triththail,"
+"Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,Glamalsil,"
+"Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,Dulatsol,Naralus,"
+"Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,Naraithil,Aigatsil,"
+"Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,Pelcatlos,Glamduris,"
+"Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,Pelthasil,Gomatis,Aldril,"
+"Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,Narduras,Dulaithlos,Duldris,"
+"Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,Anduril,Alaithol,Aigalis,"
+"Trithaithas,Aigcatil,Trithaithil,Naraithing,Augatsol,Trithaithol,Dulalsil,"
+"Dulthasol,Glamcatas,Glamthaol,Gomaithsol,Dulaithing,Naratlos,Naraithol,"
+"Gomthasol,Ancatas,Aigcatsil,Pelduris,Trithdrus,Andurus,Trithdring,Glamthaas,"
+"Aigcating,Nardrsol,Glamaithol,Dulaithsol,Althaus,Augduras,Aigaithas,"
+"Gomdurlos,Glamalus,Gomdrsil,Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,"
+"Glamaling,Dulduras,Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,"
+"Trithduring,Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,"
+"Naratlos,Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
+"Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
+"Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
+"Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
+"Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
+"Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
+"Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,Glamcatil,"
+"Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,Narcatis,"
+"Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,Aigatsil,"
+"Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
+"Pelaithil,Gomaithsol,Augaithsil"
 
 #: data/names.cfg:25
 msgid ""
@@ -4659,6 +4990,13 @@ msgid ""
 "Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
 "Klez,Zlek,Trixzed"
 msgstr ""
+"Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
+"Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
+"Inalisse,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,Sassalia,"
+"Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,Grissilai,"
+"Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,Zsekp,Kzap,"
+"Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
+"Klez,Zlek,Trixzed"
 
 #: data/names.cfg:26
 msgid ""
@@ -4669,6 +5007,12 @@ msgid ""
 "Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
 "Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 msgstr ""
+"Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,Saxrireii,"
+"Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,Vilail,Aleiss,"
+"Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,Ineii,Inaloss,"
+"Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,Slell,Soill,Sorkol,"
+"Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
+"Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 
 #: data/names.cfg:30
 msgid ""
@@ -4685,6 +5029,18 @@ msgid ""
 "Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,Boladrumbadrum,"
 "Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 msgstr ""
+"Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
+"Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
+"Munnamdulbon,Monlamwimdan,Dulwulmendom,Delmduelmdelom,Mundionalafla,"
+"Laffalialomdium,Rithramcamhan,Bregalad,Orofarnië,Lassemista,Carnimirië,"
+"Tumtonnongatum,Tumtentantarun,Tantondernintan,Bombempomgontor,"
+"Pomtamkomtrobum,Brommantendronnor,Dammantongonnur,Brumennarunom,"
+"Dumdumdumatum,Tumtumgamtomtom,Tondenkontenkon,Bumbadadabum,Dabumdabumtam,"
+"Bomtanbomkenton,Bomtanbomtonum,Brumbendublun,Brenbasnudnem,Temtunnongetem,"
+"Debundbemun,Diblembumnde,Bremdebubde,Pambedrumne,Drongnoblemdu,Bludebalmen,"
+"Temtundembenn,Lefnublemdde,Libleddnumm,Mundumblemdum,Brendumadoak,"
+"Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,Boladrumbadrum,"
+"Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 
 #: data/names.cfg:34
 msgid ""
@@ -4695,6 +5051,12 @@ msgid ""
 "Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
 "Urkar"
 msgstr ""
+"Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,Markaak,"
+"Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,Kingrok,"
+"Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,Borkuk,Orkut,"
+"Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,Kramak,Goruk,Krog,"
+"Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
+"Urkar"
 
 #: data/names.cfg:38
 msgid ""
@@ -4703,6 +5065,10 @@ msgid ""
 "Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
 "Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
+"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
+"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
+"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
+"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/names.cfg:42
 msgid ""
@@ -4717,6 +5083,16 @@ msgid ""
 "Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
 "Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 msgstr ""
+"Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
+"Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,Anexir,"
+"Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,Jezzix,"
+"Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,Flixta,"
+"Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,Xartrez,"
+"Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,Hesz,Xasz,"
+"Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,Ssorix,Ssexur,"
+"Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,Lixeez,Sklizle,"
+"Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
+"Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 
 #: data/names.cfg:46
 msgid ""
@@ -4730,6 +5106,15 @@ msgid ""
 "Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
 "Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 msgstr ""
+"Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
+"Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
+"Garadin,Krall Ohn,Merkush,Gridda,Garlan,Græt Ihn,Ka,Karron,Markinos,Gashöl,"
+"Grenn ohn,Gegchi,Gadé Ihn,Marrito,Grelnit,Kraslar,Marritos,Kran Kor,Kerath "
+"Kor,Kerath Ihn,Galsh,Garrutin,Gray,Garlin ohn,Merritos Gark,Gark,Gelknick,"
+"Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
+"Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
+"Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
+"Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 
 #: data/names.cfg:47
 msgid ""
@@ -4737,6 +5122,9 @@ msgid ""
 "Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
 "Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 msgstr ""
+"Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin Ka,"
+"Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
+"Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 
 #: data/names.cfg:51
 msgid ""
@@ -5211,7 +5599,6 @@ msgstr ""
 "este mapa para duelos con distintos frentes."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
 msgstr "estatua"
 
@@ -5437,11 +5824,8 @@ msgid "4p - Castle Hopping Isle"
 msgstr "4 jug. - Una isla de castillos escondidos"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
-"Dos ejércitos combaten en este escenario costero y fragmentado, de cavernas "
-"ocultas y ríos irregulares."
+msgstr "Ve de castillo en castillo mientras luchas en la isla central."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
@@ -5970,7 +6354,7 @@ msgid ""
 "of hitting an opponent."
 msgstr ""
 " Los ataques a distancia de esta unidad son mágicos, y siempre tienen una "
-"altra probabilidad de dar en el blanco."
+"alta probabilidad de dar en el blanco."
 
 #: data/special-notes.cfg:62
 msgid ""
@@ -6677,7 +7061,6 @@ msgid "Pirate Galleon"
 msgstr "Galeón pirata"
 
 #: data/units/Boat_Pirate_Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them to "
@@ -7060,7 +7443,7 @@ msgstr "furia berserker"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr "Guardia del Dragón enano"
+msgstr "Dracoguardia enano"
 
 #: data/units/Dwarvish_Dragonguard.cfg:17
 msgid ""
@@ -7073,14 +7456,14 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
-"No está claro por qué los Guardias del dragón se llaman así. Este nombre, "
-"que es como se refieren a ellos los de su raza, se ha especulado que "
-"proviene de sus armas, unas extrañas varas que vomitan fuego y muerte. Otros "
-"sostienen que es debido a que tales armas serían una amenaza incluso contra "
-"un dragón auténtico, en el caso de que tal cosa volviera a verse en el mundo "
-"conocido. Sea por lo que sea, debido a estas armas los guardianes de las "
-"ciudadelas enanas son admirados y temidos por igual: son capaces de partir "
-"en dos al guerrero más poderoso de un solo tiro."
+"No está claro por qué los dracoguardias se llaman así. Este nombre, que es "
+"como se refieren a ellos los de su raza, se ha especulado que proviene de "
+"sus armas, unas extrañas varas que vomitan fuego y muerte. Otros sostienen "
+"que es debido a que tales armas serían una amenaza incluso contra un dragón "
+"auténtico, en el caso de que tal cosa volviera a verse en el mundo conocido. "
+"Sea por lo que sea, debido a estas armas los guardianes de las ciudadelas "
+"enanas son admirados y temidos por igual: son capaces de partir en dos al "
+"guerrero más poderoso de un solo tiro."
 
 #: data/units/Dwarvish_Dragonguard.cfg:21 data/units/Dwarvish_Thunderer.cfg:38
 #: data/units/Dwarvish_Thunderguard.cfg:22
@@ -7147,7 +7530,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
-msgstr "Señor Enano"
+msgstr "Señor enano"
 
 #: data/units/Dwarvish_Lord.cfg:18
 msgid ""
@@ -7212,7 +7595,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr "Fornido enano"
+msgstr "Defensor enano"
 
 #: data/units/Dwarvish_Stalwart.cfg:19
 msgid ""
@@ -7222,7 +7605,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Los «fornidos», tras años de batalla, han ido haciéndose nuevos escudos y "
+"Los defensores, tras años de batalla, han ido haciéndose nuevos escudos y "
 "armaduras muy resistentes a partir de los restos de sus enemigos. Aunque son "
 "lentos, también son temidos por su resistencia y fuerza.\n"
 "\n"
@@ -7230,7 +7613,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
-msgstr "Guardián de Acero enano"
+msgstr "Guardia de acero enano"
 
 #: data/units/Dwarvish_Steelclad.cfg:17
 msgid ""
@@ -7238,7 +7621,7 @@ msgid ""
 "plate armor, for which they are rightly famous."
 msgstr ""
 "Los guerreros enanos más veteranos usan cotas de malla pesadas y armaduras "
-"de placas, por lo que se los conoce por el nombre de «guardianes de acero»."
+"de placas, por lo que se los conoce por el nombre de «guardias de acero»."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
@@ -7458,7 +7841,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Encantadora elfa"
 
 #: data/units/Elvish_Enchantress.cfg:19
-#, fuzzy
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "the latter is almost universally incapable of understanding it, let alone "
@@ -7682,7 +8064,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Siendo de naturaleza parcialmente faérica, los elfos poseen una capacidad "
+"Siendo de naturaleza parcialmente feérica, los elfos poseen una capacidad "
 "innata para la magia. La afinidad que tienen con la naturaleza hace posible "
 "que puedan invocarla como un aliado más en combate. Los enemigos que vagan "
 "por sus bosques pueden fácilmente encontrarse atrapados por las raíces sobre "
@@ -7731,7 +8113,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Mediante la devoción a su lado faérico, una dama elfa puede llegar a "
+"Mediante la devoción a su lado feérico, una dama elfa puede llegar a "
 "convertirse a una criatura de ambos mundos. Guiadas por una naturaleza "
 "incomprensible, estas hermosas damas de los bosques elfos personifican la "
 "gracia y el misterio de sus gentes.\n"
@@ -7740,14 +8122,13 @@ msgstr ""
 
 #: data/units/Elvish_Shyde.cfg:27 data/units/Elvish_Sylph.cfg:27
 msgid "faerie touch"
-msgstr "toque faérico"
+msgstr "toque feérico"
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
 msgstr "Conjuradora elfa"
 
 #: data/units/Elvish_Sorceress.cfg:21
-#, fuzzy
 msgid ""
 "The world of faerie is far more potent than the corporeal world. Simply "
 "bringing some of this world into our own can have violent results. This is "
@@ -7759,13 +8140,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"El mundo feérico es mucho más potente que el mundo corpóreo. Simplemente "
-"trayendo algo de ese mundo al nuestro puede tener consecuencias desastrosas. "
-"Esto es bien sabido por los elfos los cuales rara vez recurren a estos "
-"experimentos, no es una tarea fácil y requiere un completo uso de sus "
-"fuerzas.\n"
+"El mundo feérico es mucho más fuerte que el corpóreo. El traer algo de ese "
+"mundo al nuestro puede tener consecuencias desastrosas. Esto es bien sabido "
+"por los elfos los cuales rara vez recurren a estos experimentos, no es una "
+"tarea fácil y requiere un completo uso de sus fuerzas.\n"
 "\n"
-"Las capaces de hacer esto son toscamente llamados como 'brujas' por otras "
+"Aquellas capaces de hacer esto son toscamente llamadas 'brujas' por otras "
 "razas y ciertamente son capaces de marcar la diferencia.\n"
 "\n"
 "Notas especiales:"
@@ -7775,7 +8155,6 @@ msgid "female^Elvish Sylph"
 msgstr "Sílfide elfa"
 
 #: data/units/Elvish_Sylph.cfg:21
-#, fuzzy
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
 "mundane natures. They are possessed of wondrous, and sometimes terrifying "
@@ -8184,7 +8563,6 @@ msgid "Cavalier"
 msgstr "Coracero"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
@@ -9113,7 +9491,6 @@ msgid "Poacher"
 msgstr "Cazador furtivo"
 
 #: data/units/Human_Outlaw_Poacher.cfg:21
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter, especially "
 "those of archery, are useful in battle.  Turning these skills against their "
@@ -9221,7 +9598,6 @@ msgid "Trapper"
 msgstr "Trampero"
 
 #: data/units/Human_Outlaw_Trapper.cfg:21
-#, fuzzy
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
 "sizable group of bandits.  They can track both man and beast, notice things "
@@ -9231,10 +9607,11 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
-"Los rastreadores son aliados útiles para cualquier ejército e indispensables "
-"para cualquier grupo considerable de bandidos. Pueden rastrear animales y "
-"hombres, ven cosas que otros pasarían por alto y son generalmente los únicos "
-"que pueden encontrar comida para cenar, sea animal o vegetal.\n"
+"Los maestros leñadores son aliados útiles para cualquier ejército e "
+"indispensables para cualquier grupo considerable de bandidos. Pueden "
+"rastrear animales y hombres, ven cosas que otros pasarían por alto y son "
+"generalmente los únicos que pueden encontrar comida para cenar, sea animal o "
+"vegetal.\n"
 "\n"
 "Su habilidad de caza es muy útil en combate lo cual los hace también "
 "inusualmente competentes a la noche, en bosques o ciénagas."
@@ -9330,7 +9707,7 @@ msgstr ""
 "Las sirénidas jóvenes suelen estar iniciadas en la magia acuática, debido a "
 "que ésta constituye una tradición para su pueblo. Las asombrosas habilidades "
 "que esto les proporciona son inimitables por otras razas, una muestra de la "
-"naturaleza fantástica de estas criaturas.\n"
+"naturaleza feérica de estas criaturas.\n"
 "\n"
 "A pesar de su debilidad, su dominio de la magia las hace únicas en combate, "
 "al poder invocar al agua que las rodea para golpear violentamente a sus "
@@ -9383,7 +9760,7 @@ msgid ""
 "Special Notes: the attacks of a siren are magical in nature, and always have "
 "a high chance of hitting their opponents."
 msgstr ""
-"La naturaleza fantástica de las sirénidas se hace más fuerte en las sirenas, "
+"La naturaleza feérica de las sirénidas se hace más fuerte en las sirenas, "
 "cuyo parecido con las náyades suele provocar que se las confunda con ellas. "
 "Aunque no existe ningún nexo, el error es comprensible, ya que las náyades "
 "son difíciles de ver incluso para las sirénidas. La manifestación de su "
@@ -10026,7 +10403,7 @@ msgstr ""
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
-msgstr "Señor de la Guerra"
+msgstr "Señor de la guerra orco"
 
 #: data/units/Orcish_Warlord.cfg:18
 msgid ""
@@ -10035,7 +10412,7 @@ msgid ""
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
 "Sólo los orcos con gran talento y fuerza sin rival pueden ser Señores de la "
-"Guerra. Maestros con la espada, e incluso con cierta habilidad con el arco, "
+"guerra. Maestros con la espada, e incluso con cierta habilidad con el arco, "
 "estos guerreros más parecidos a bestias lideran a los suyos con mano de "
 "hierro."
 
@@ -10058,7 +10435,6 @@ msgid "Saurian Ambusher"
 msgstr "Emboscador saurio"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and considerably good at navigating "
 "terrain that confounds their enemies.  When this is combined with "
@@ -10085,7 +10461,6 @@ msgid "Saurian Augur"
 msgstr "Augurador saurio"
 
 #: data/units/Saurian_Augur.cfg:22
-#, fuzzy
 msgid ""
 "Saurians have some ability in what men call magic, but one which reeks of "
 "augury and all the unpleasantry of witchcraft.  As little as it may be "
@@ -10104,7 +10479,6 @@ msgid "Saurian Flanker"
 msgstr "Flanqueador saurio"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven, or human "
 "counterparts.  This is of course a relative term, and they can still become "
@@ -10127,7 +10501,6 @@ msgid "Saurian Oracle"
 msgstr "Oráculo saurio"
 
 #: data/units/Saurian_Oracle.cfg:22
-#, fuzzy
 msgid ""
 "Certain saurians are seen, dressed in considerable regalia, and covered head "
 "to toe in horrifing, esoteric shapes and markings, both with paint and "
@@ -10152,7 +10525,6 @@ msgid "Saurian Skirmisher"
 msgstr "Merodeador saurio"
 
 #: data/units/Saurian_Skirmisher.cfg:23
-#, fuzzy
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
 "of this, they are very, very agile.  In combat, their size allows them to "
@@ -10175,13 +10547,13 @@ msgstr ""
 "pueden dirigir una lanza con suficiente fuerza para hacer daño considerable, "
 "tanto en mano como arrojada.\n"
 "\n"
+"Notas especiales:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Saurio vidente"
 
 #: data/units/Saurian_Soothsayer.cfg:22
-#, fuzzy
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
 "magical and mysterious.  It is clear that some of them are particularly "
@@ -10463,7 +10835,7 @@ msgstr ""
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
-msgstr "Cadáver anciano"
+msgstr "Liche anciano"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:19
 msgid ""
@@ -10474,7 +10846,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Un ser de este orden es un heraldo de las eras antiguas. Cualquiera que se "
-"encuentre a un cadáver anciano probablemente tiene cosas mucho más terribles "
+"encuentre a un liche anciano probablemente tiene cosas mucho más terribles "
 "de las que preocuparse que de la muerte.\n"
 "\n"
 "Notas especiales:"
@@ -10547,13 +10919,13 @@ msgstr ""
 "muerte. Los hechiceros oscuros aprenderán cómo manipular la vida y la muerte "
 "reanimando cadáveres, esqueletos y espíritus. Los más corruptos y "
 "hambrientos de poder intentarán conquistar la muerte por completo, "
-"transformándose en un cadaver y logrando una terrorífica inmortalidad.\n"
+"transformándose en un liche y logrando una terrorífica inmortalidad.\n"
 "\n"
 "Notas especiales:"
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
-msgstr "Cadáver"
+msgstr "Liche"
 
 #: data/units/Undead_Necro_Lich.cfg:21
 msgid ""
@@ -10569,10 +10941,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Un cadáver es la personificación de la primera meta de la magia negra: la "
+"Un liche es la personificación de la primera meta de la magia negra: la "
 "búsqueda de la inmortalidad. Aunque el cambio implica un sacrificio "
-"considerable, al transformarse en un cadáver se le quita a la muerte lo que "
-"la hace tan aterradora. Porque la mente se mantiene y el espíritu la sigue, "
+"considerable, al transformarse en un liche se le quita a la muerte lo que la "
+"hace tan aterradora. Porque la mente se mantiene y el espíritu la sigue, "
 "aunque el cuerpo se corrompa.\n"
 "\n"
 "Aún no se sabe si se puede prolongar la vida de forma indefinida o sólo "
@@ -10605,9 +10977,10 @@ msgstr ""
 "Esta habilidad, en todos sus aspectos, es el primer paso hacia quitarle a la "
 "muerte el premio último. Es el más alto poder que un mago oscuro puede "
 "llegar a obtener sin dejar de ser humano, pero no se compara con el poder "
-"letal que manejan los Cadáveres. Sus cuerpos mortales se vuelven más "
+"letal que manejan los liches. Sus cuerpos mortales se vuelven más "
 "resistentes debido a su magia, en contraste con la frágil y decadente "
-"existencia de un Cadáver.\n"
+"existencia de un liche.\n"
+"\n"
 "Notas especiales:"
 
 #: data/units/Undead_Necromancer.cfg:25
@@ -10654,8 +11027,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Cuentan las historias que algunos de los mejores guerreros y generales, "
-"malditos por sus odios y traiciones, han vuelto a este mundo como Caballeros "
-"de la Muerte. En su búsqueda de venganza, lideran los ejércitos de no "
+"malditos por sus odios y traiciones, han vuelto a este mundo como caballeros "
+"de la muerte. En su búsqueda de venganza, lideran los ejércitos de no "
 "muertos, esgrimiendo las mismas armas que usaron en vida.\n"
 "\n"
 "Notas especiales:"
@@ -10953,7 +11326,7 @@ msgstr ""
 "Un wose es una criatura sobre la que se sabe muy poco, y muy difícil de ver, "
 "incluso para los elfos. Éstos son los que más saben sobre los woses: que no "
 "descienden de los árboles, a pesar del parecido en la forma, y que están más "
-"atados al mundo faérico e imaginario que los propios elfos, aunque de una "
+"atados al mundo feérico e imaginario que los propios elfos, aunque de una "
 "manera diferente. Los motivos y objetivos de esta raza se desconocen, aunque "
 "muchos suponen que los woses son obviamente guardianes del mundo natural.\n"
 "\n"
@@ -11079,37 +11452,32 @@ msgid "Ambushed!"
 msgstr "¡Emboscada!"
 
 #: src/actions.cpp:2077
-#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "¡Aliado avistado!"
 msgstr[1] "¡$friends unidades aliadas avistadas!"
 
 #: src/actions.cpp:2079
-#, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "¡Enemigo avistado!"
 msgstr[1] "¡$enemies unidades enemigas avistadas!"
 
 #: src/actions.cpp:2083
-#, fuzzy
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "Parte de '¡Unidades avistadas! (...)' sentence^1 aliado"
 msgstr[1] "$friends aliados"
 
 #: src/actions.cpp:2084
-#, fuzzy
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "Parte de '¡Unidades avistadas! (...)' sentence^1 enemigo"
-msgstr[1] "$enemies enemigo"
+msgstr[1] "$enemies enemigos"
 
 #: src/actions.cpp:2085
-#, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "¡Unidades avistadas! ($friends aliadas, $enemies enemigas)"
+msgstr "¡Unidades avistadas! ($friends aliados, $enemies enemigos)"
 
 #: src/actions.cpp:2093
 msgid "(press $hotkey to continue)"
@@ -11575,14 +11943,12 @@ msgid "Required XP: "
 msgstr "PX requeridos: "
 
 #: src/help.cpp:1170
-#, fuzzy
 msgid "unit help^Attacks"
-msgstr "unit help^Ataques"
+msgstr "Ataques"
 
 #: src/help.cpp:1177
-#, fuzzy
 msgid "unit help^Name"
-msgstr "unit help^Nombre"
+msgstr "Nombre"
 
 #: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:708
 msgid "Type"
@@ -11789,9 +12155,8 @@ msgid "Statistics"
 msgstr "Estadísticas"
 
 #: src/menu_events.cpp:236
-#, fuzzy
 msgid "unit list^Traits"
-msgstr "unit list^Rasgos"
+msgstr "Rasgos"
 
 #: src/menu_events.cpp:237 src/unit.cpp:2582
 msgid "Moves"
@@ -11824,9 +12189,8 @@ msgid "Villages"
 msgstr "Aldeas"
 
 #: src/menu_events.cpp:302
-#, fuzzy
 msgid "status^Units"
-msgstr "status^Unidades"
+msgstr "Unidades"
 
 #: src/menu_events.cpp:303
 msgid "Upkeep"
@@ -11890,11 +12254,10 @@ msgid "Send to allies only"
 msgstr "Mandarlo sólo a aliados"
 
 #: src/menu_events.cpp:588
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "unit^Oro"
-msgstr[1] "Oro"
+msgstr[0] "Pieza de oro"
+msgstr[1] "Piezas de oro"
 
 #: src/menu_events.cpp:594
 msgid "You have no units available to recruit."
@@ -12067,13 +12430,14 @@ msgstr "Defensor"
 msgid "Expected Battle Result (HP)"
 msgstr "Previsión del resultado del combate (pv)"
 
+# Se le añaden ':' para separarlo de la cadena anterior. Si esta cadena se usa en más de un sitio, sería conveniente revisarla.
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
-msgstr "resistencia a "
+msgstr ": resistencia a ataques "
 
 #: src/mouse_events.cpp:302
 msgid " vulnerability vs "
-msgstr "debilidad del atacante contra"
+msgstr ": vulnerabilidad a ataques "
 
 #: src/mouse_events.cpp:312
 msgid "Slowed"
@@ -12572,14 +12936,12 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "¿Quiere guardar la repetición de este escenario?"
 
 #: src/playcampaign.cpp:377
-#, fuzzy
 msgid "Receiving data..."
 msgstr "Obteniendo datos de la partida..."
 
 #: src/playcampaign.cpp:379
-#, fuzzy
 msgid "Downloading next scenario..."
-msgstr "Descargando próximo nivel..."
+msgstr "Descargando próximo escenario..."
 
 #: src/playcampaign.cpp:473
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
@@ -12733,17 +13095,15 @@ msgid "stone: "
 msgstr "petrificado: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "tooltip^daño"
-msgstr[1] "daño"
+msgstr[0] "daño"
+msgstr[1] "daños"
 
 #: src/reports.cpp:256
-#, fuzzy
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] "tooltip^ataque"
+msgstr[0] "ataque"
 msgstr[1] "ataques"
 
 #: src/reports.cpp:266
@@ -12884,7 +13244,7 @@ msgstr "Salir"
 
 #: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Juega un tutorial para familiarizarse con el juego"
+msgstr "Juega un tutorial para familiarizarte con el juego"
 
 #: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
@@ -12995,221 +13355,3 @@ msgstr "Puede ver los resultados en:"
 #: src/upload_log.cpp:297
 msgid "Help us make Wesnoth better for you!"
 msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
-
-#~ msgid ""
-#~ "The Elven Enchantresses are masters of offensive magic, striking at their "
-#~ "enemies both with blasts of icy wind drawn from the ethereal plane, and "
-#~ "magically animating roots with which they bind their enemies in place.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Las encantadoras elfas son maestras de la magia ofensiva: pueden atacar a "
-#~ "sus enemigos tanto con chorros de viento helado extraído del plano "
-#~ "etéreo, o raíces animadas mágicamente con las que atraparlos y dejarlos "
-#~ "retenidos.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Eschewing the study of healing in favor of more aggressive uses of magic, "
-#~ "Elvish Sorceresses have become quite proficient at ranged combat. Their "
-#~ "entangling attack is notably more effective than that of the Elvish "
-#~ "Shaman, and they can call upon bursts of chilling ethereal wind to smite "
-#~ "those who oppose them.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Dejando a un lado los estudios de curación en favor de usos más agresivos "
-#~ "de la magia, las conjuradoras elfas se han vuelto muy eficientes en el "
-#~ "combate a distancia. Su ataque enredador es notablemente más efectivo que "
-#~ "antes, y pueden invocar ráfagas de viento etéreo helado para castigar a "
-#~ "quienes se enfrentan a ellas.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
-#~ "developed their faerie side, they transform into creatures of both "
-#~ "worlds, wielding powerful magic against their enemies.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Las sílfides elfas son la materialización de la belleza en el plano "
-#~ "mortal.Han desarrollado completamente su lado faérico, convirtiéndose en "
-#~ "criaturas de ambos mundos, con grandes poderes mágicos con los que "
-#~ "combatir a sus enemigos.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Poachers rely on their hunting experience and are most valuable at night "
-#~ "and in forests and swamps."
-#~ msgstr ""
-#~ "Los cazadores furtivos confían en su experiencia en la caza y son más "
-#~ "valiosos en bosques y pantanos, y por la noche."
-
-#~ msgid ""
-#~ "Trappers usually work supplying food for bandits and outlaws. Their "
-#~ "hunting experience makes them most valuable at night and in forests and "
-#~ "swamps."
-#~ msgstr ""
-#~ "Los tramperos normalmente trabajan consiguiendo comida para los bandidos. "
-#~ "Su experiencia en la caza los hace mejores de noche y en bosques y "
-#~ "pantanos."
-
-#~ msgid ""
-#~ "Saurian Ambushers are highly skilled in the use of the spear. Despite "
-#~ "their lethargic cold blooded heritage, and their relative frailty, they "
-#~ "are highly valued as scouts as they can navigate through rough terrain "
-#~ "and around opponents. Saurian Ambushers possess the strength to take full "
-#~ "advantage of this fact. The best Ambushers go on to become Saurian "
-#~ "Flankers.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Los emboscadores saurios tienen una gran habilidad utilizando la lanza. A "
-#~ "pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
-#~ "fría, y de su relativa fragilidad, tienen un gran valor como "
-#~ "exploradores, ya que pueden moverse bien a través de terreno difícil y "
-#~ "alrededor de sus oponentes. Los emboscadores saurios poseen la fuerza "
-#~ "necesaria para aprovecharse de ello. Los mejores emboscadores siguen su "
-#~ "carrera convirtiéndose en flanqueadores.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Despite their lethargic cold blooded heritage, and their relative "
-#~ "frailty, Saurian Augurs are valued as healers because they can provide "
-#~ "aid to their allies regardless of terrain or opposition. In addition to "
-#~ "healing they possess knowledge of cold magic.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "A pesar de sus costumbres letárgicas, herencia de sus antepasados de "
-#~ "sangre fría, de a su relativa fragilidad, los auguradores saurios tienen "
-#~ "un gran valor como sanadores, ya que pueden ayudar a sus compañeros "
-#~ "independientemente del terreno y los oponentes. Además de curación, "
-#~ "poseen conocimientos de magia de frío.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Saurian Flankers are highly skilled in the use of the spear. Despite "
-#~ "their lethargic cold blooded heritage, and their relative frailty, they "
-#~ "are highly valued as scouts as they can navigate through rough terrain "
-#~ "and around opponents. Saurian Flankers possess the strength to take full "
-#~ "advantage of this fact.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Los flanqueadores saurios tienen una gran habilidad utilizando la lanza. "
-#~ "A pesar de sus costumbres letárgicas, herencia de sus antepasados de "
-#~ "sangre fría, y de su relativa fragilidad, tienen un gran valor como "
-#~ "exploradores, ya que pueden moverse bien a través de terreno difícil y "
-#~ "alrededor de sus oponentes. Los flanqueadores saurios poseen la fuerza "
-#~ "necesaria para aprovecharse de ello.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Saurian Oracles have eschewed any further training in healing and curing "
-#~ "in order to refine their skills with the dark arts. While frail, they can "
-#~ "call forth the magic of the cold north, and they do retain their basic "
-#~ "healing ability.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Los hechiceros de hielo saurios han evitado continuar con cualquier "
-#~ "entrenamiento en sanación y curación para refinar sus habilidades en "
-#~ "artes oscuras. Aunque son frágiles, pueden convocar la magia del norte "
-#~ "helado, y aún así retienen sus habilidades básicas de sanación.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Saurian Skirmishers are skilled in the use of the spear. Despite their "
-#~ "lethargic cold blooded heritage, and their relative frailty, they are "
-#~ "highly valued as scouts as they can navigate through rough terrain and "
-#~ "around opponents. The best Skirmishers go on to become Saurian "
-#~ "Ambushers.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Los merodeadores saurios tienen una gran habilidad utilizando la lanza. A "
-#~ "pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
-#~ "fría, y de su relativa fragilidad, tienen un gran valor como "
-#~ "exploradores, ya que pueden moverse bien a través de terreno difícil y "
-#~ "alrededor de sus oponentes. Los mejores merodeadores siguen su carrera "
-#~ "convirtiéndose en emboscadores.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Saurian Soothsayers are highly valued as healers because they can provide "
-#~ "aid to their friends regardless of terrain or opposition. In addition to "
-#~ "curing their allies they possess knowledge of cold magic.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Los saurios videntes tienen un gran valor como sanadores, ya que pueden "
-#~ "ayudar a sus compañeros independientemente del terreno o la posición. "
-#~ "Además de curación, poseen conocimientos de magia de frío.\n"
-#~ "\n"
-#~ "Notas especiales"
-
-#~ msgid "$friends Friendly units sighted"
-#~ msgstr "$friends unidades aliadas avistadas"
-
-#~ msgid "$enemies Enemy units sighted!"
-#~ msgstr "¡$enemies unidades enemigas avistadas!"
-
-#~ msgid "attacks"
-#~ msgstr "ataques"
-
-#~ msgid ""
-#~ "A duel map for super fast play. Recommended setting of 2 gold per village."
-#~ msgstr ""
-#~ "Un mapa para duelos extremadamente rápido. Se recomienda la opción de 2 "
-#~ "piezas de oro por aldea."
-
-#~ msgid "Sulla's statue"
-#~ msgstr "estatua de Sulla"
-
-#~ msgid ""
-#~ "Many closely placed and strategically located castles. Which one will you "
-#~ "hop to? Small map for fast play. Recommended setting of 2 gold per "
-#~ "village."
-#~ msgstr ""
-#~ "Muchos castillos cercanos unos de otros, y estratégicamente colocados. ¿A "
-#~ "cuál saltarás? Es un mapa pequeño para partidas rápidas. Se recomienda la "
-#~ "opción de 2 piezas de oro por aldea."
-
-#~ msgid "+Core Developers"
-#~ msgstr "+Cuerpo principal de desarrolladores"
-
-#~ msgid "+  Main Developer"
-#~ msgstr "+  Desarrollador principal"
-
-#~ msgid "+  Artwork and graphics designer"
-#~ msgstr "+  Diseñador gráfico y artístico"
-
-#~ msgid "Import Saved Games"
-#~ msgstr "Importar partidas grabadas"
-
-#~ msgid ""
-#~ "Your saves directory contains some files from an old version of Battle "
-#~ "for Wesnoth. Would you like to update these to the latest version? This "
-#~ "may take some time."
-#~ msgstr ""
-#~ "Su directorio de partidas grabadas contiene algunos ficheros de una "
-#~ "versión anterior de la Batalla de Wesnoth. ¿Desea actualizarlos? Esto "
-#~ "puede llevar algo de tiempo..."
-
-#~ msgid ""
-#~ "Your saves directory contains some files that don't appear to have been "
-#~ "generated by this version of Battle for Wesnoth. Would you like to "
-#~ "register these files with the game?"
-#~ msgstr ""
-#~ "Su directorio de partidas grabadas contiene algunos ficheros que parece "
-#~ "que no hayan sido generados por esta versión del juego. ¿Desea registrar "
-#~ "estos ficheros dentro del juego?"
