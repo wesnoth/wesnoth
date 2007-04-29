@@ -1908,7 +1908,11 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 				}
 			}
 		}
-		disp.draw_bar(*movement_file,x,y-height_adjust,0,0,hp_color(),bar_alpha);
+
+		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
+		if (orb != NULL) {
+			disp.video().blit_surface(x,y-height_adjust,orb);
+		}
 
 		double unit_energy = 0.0;
 		if(max_hitpoints() > 0) {
@@ -1923,15 +1927,14 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			SDL_Color colour=xp_color();
 			disp.draw_bar(*energy_file,x,y-height_adjust,max_experience()/(level*2),filled,colour,bar_alpha);
 		}
+
 		if (can_recruit()) {
 			surface crown(image::get_image("misc/leader-crown.png",image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
 			if(!crown.null()) {
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
-
-				SDL_Rect r = {0, 0, crown->w, crown->h};
-				disp.video().blit_surface(x,y-height_adjust,crown,&r);
+				disp.video().blit_surface(x,y-height_adjust,crown);
 			}
 		}
 
