@@ -14,24 +14,10 @@
 #ifndef TERRAIN_TRANSLATION_H_INCLUDED
 #define TERRAIN_TRANSLATION_H_INCLUDED
 
-//NOTE due to backwards compability some items are done in a
-// not so nice way. This will be corrected in version 1.3.3
-// These items are marked with "FIXME: remove"
-// Also the the next definition is used for the compatible
-// mode. Disabling this define should make wesnoth run in
-// non compatible mode. Using defines is not the most 
-// beautiful way to do things but this way both versions of
-// the code can be made. The callers should be fixed after
-// the undefing. The define is more a hint for me than
-// to really use -- Mordante
-#define TERRAIN_TRANSLATION_COMPATIBLE
-
 #include <SDL_types.h> //used for Uint32 definition
 #include <string>
 #include <vector>
 #include <map>
-
-//#include "variable.hpp"
 
 namespace t_translation {
 
@@ -139,21 +125,8 @@ namespace t_translation {
 	extern const t_letter NOT;		// !
 	extern const t_letter STAR; 	// *
 		
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE
-	//the terrain format lets the terrain functions know what to expect
-	// this is part of the backwards compability layer.
-	// T_FORMAT_LETTER the string is a terrain letter (single char)
-	// T_FORMAT_STRING the string is a terrain string (multiple chars)
-	// T_FORMAT_AUTO   uses map_format_ to determine the type
-	enum { T_FORMAT_LETTER = 1, T_FORMAT_STRING = 2, T_FORMAT_AUTO = 3 };
-	
-	extern const t_letter OBSOLETE_KEEP;
-#endif
-	
 	/** 
 	 * Reads a single terrain from a string
-	 * FIXME: remove t_format
-	 *
 	 * @param str		The string which should contain 1 letter the new format 
 	 * 					of a letter is 2 to 4 characters in the set
 	 * 					[a-Z][A-Z]/|\_ The underscore is intended for internal
@@ -163,12 +136,11 @@ namespace t_translation {
 	 * 					be two groups separated by a caret, the first group
 	 * 					is the base terrain, the second the overlay terrain.
 	 * 
-	 * @param t_format	The format to read
 	 * @param filler	if there's no layer this value will be used as the second layer
 	 *
 	 * @return			A single terrain letter
 	 */
-	t_letter read_letter(const std::string& str, const int t_format, const t_layer filler = NO_LAYER);
+	t_letter read_letter(const std::string& str, const t_layer filler = NO_LAYER);
 	
 	/** 
 	 * Writes a single letter to a string.
@@ -184,22 +156,12 @@ namespace t_translation {
 	
 	/** 
 	 * Reads a list of terrain from a string, when reading the 
-	 * old format the comma separator is optional the new format
-	 * only reads with a separator and ignores
-	 * FIXME: remove separated and t_format
-	 *
 	 * @param str		A string with one or more terrain letters (see read_letter)
-	 * @param separated	The old terrain format is optional separated by a comma
-	 *  				the new format is always separated by a comma and
-	 *  				ignores this parameter. Possible values:
-	 *						0 = no
-	 *						1 = yes
-	 * @param t_format	The format to read.
 	 * @param filler	if there's no layer this value will be used as the second layer
 	 *
 	 * @returns			A vector which contains the letters found in the string
 	 */
-	 t_list read_list(const std::string& str, const int separated, const int t_format, const t_layer filler = NO_LAYER);
+	 t_list read_list(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/** 
 	 * Writes a list of terrains to a string, only writes the new format.
@@ -348,15 +310,6 @@ namespace t_translation {
 	 * 					like result[y][x] where x the column number is and y the row number.
 	 */
 	t_map read_builder_map(const std::string& str); 
-
-/***************************************************************************************/
-	
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-	// The terrain letter is an old letter and will be converted with get_letter
-	void add_translation(const std::string& letter, const t_letter& number);
-
-	std::string get_old_letter(const t_letter& number);
-#endif	
 
 }
 #endif

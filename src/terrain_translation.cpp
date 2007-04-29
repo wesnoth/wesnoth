@@ -27,46 +27,12 @@ namespace t_translation {
 /***************************************************************************************/
 // forward declaration of internal functions
 	
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-
-	// the former terrain letter
-	typedef char TERRAIN_LETTER;
-
-	// This function can convert EOL's and converts them to EOL 
-	// which doesn't need to be and EOL char
-	// this will convert UNIX, Mac and Windows end of line types
-	// this due to the fact they all have a different idea of EOL
-	// Note this also eats all blank lines so the sequence "\n\n\n" will become just 1 EOL
-	static t_list string_to_vector_(const std::string& str, const bool convert_eol, const int separated);
-
-	// When the terrain is loaded it sends all letter, string combinations
-	// to add_translation. This way the translation table is build.
-	// This way it's possible to read old maps and convert them to
-	// the proper internal format
-	static std::map<TERRAIN_LETTER, t_letter> lookup_table_;
-	
-	// This value contains the map format used, when reading the main
-	// map this format should be set, don't know how we're going to do
-	// it but we will. This format determines whether the WML
-	// map and letter are read old or new format.
-	// formats
-	// 0 = unknown
-	// 1 = old single letter format
-	// 2 = new multi letter format
-	static int map_format_ = 0;
-
-	//old low level converters
-	static t_letter letter_to_number_(const TERRAIN_LETTER terrain); 
-
-	// reads old maps
-	static t_map read_game_map_old_(const std::string& map,std::map<int, coordinate>& starting_positions); 
 
 	//this is used for error messages used in string_to_number_ 
 	//so we can't use this function to convert us. So we do the conversion here 
 	//manually not the best solution but good enough for a tempory solution
 	const t_letter OBSOLETE_KEEP('_' << 24 | 'K' << 16, 0xFFFFFFFF);
 
-#endif
 
 	// the low level convertors, these function are the ones which
 	// now about the internal format. All other functions are unaware
@@ -203,7 +169,7 @@ t_match::t_match() :
 {}
 
 t_match::t_match(const std::string& str, const t_layer filler):
-	terrain(t_translation::read_list(str, -1, t_translation::T_FORMAT_STRING, filler)) 
+	terrain(t_translation::read_list(str, filler)) 
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
@@ -230,23 +196,9 @@ t_match::t_match(const t_letter& letter):
 	}
 }
 
-t_letter read_letter(const std::string& str, const int t_format, const t_layer filler)
+t_letter read_letter(const std::string& str, const t_layer filler)
 {
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-	if(t_format == T_FORMAT_STRING ||
-			(t_format == T_FORMAT_AUTO && map_format_ == 2)) {
-		return string_to_number_(str, filler);
-		
-	} else if(t_format == T_FORMAT_LETTER ||
-			(t_format == T_FORMAT_AUTO && map_format_ == 1)) {
-		return letter_to_number_(str[0]);
-		
-	} else {
-		throw error("Invalid case in read_letter");
-	}
-#else
-		return string_to_number_(str, filler);
-#endif
+	return string_to_number_(str, filler);
 }
 
 std::string write_letter(const t_letter& letter)
@@ -254,23 +206,9 @@ std::string write_letter(const t_letter& letter)
 	return number_to_string_(letter);
 }
 
-t_list read_list(const std::string& str, const int separated, const int t_format, const t_layer filler)
+t_list read_list(const std::string& str, const t_layer filler)
 {
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-	if(t_format == T_FORMAT_STRING ||
-			(t_format == T_FORMAT_AUTO && map_format_ == 2)) {
-		return string_to_vector_(str, filler);
-		
-	} else if(t_format == T_FORMAT_LETTER ||
-			(t_format == T_FORMAT_AUTO && map_format_ == 1)) {
-		return string_to_vector_(str, false, separated);
-		
-	} else {
-		throw error("Invalid case in read_list");
-	}
-#else
-		return string_to_vector_(str, filler);
-#endif
+	return string_to_vector_(str, filler);
 }
 
 std::string write_list(const t_list& list)
@@ -293,27 +231,6 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 {
 	t_map result;
 
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-	// the test here is too avoid deprecated warning
-	if(str.empty()) {
-		return result;
-	}
-
-	// process the data, polls for the format. NOTE we test for a comma
-	// so an empty map or a map with 1 letter is doomed to be the old
-	// format. Shouldn't hurt
-	if(str.find(',') == std::string::npos) {
-		//old format
-		lg::wml_error << "Using the single letter map format is deprecated, support will be removed in version 1.3.3\n";
-		map_format_ = 1;
-		return read_game_map_old_(str, starting_positions);
-	}
-
-	// at this point we're the new format, we also dissapear in the future so
-	// inside the ifdef
-	map_format_ = 2;
-#endif
-	
 	size_t offset = 0;
 	size_t x = 0, y = 0, width = 0;
 
@@ -709,171 +626,8 @@ t_map read_builder_map(const std::string& str)
 	return result;
 }
 
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-void add_translation(const std::string& str, const t_letter& number)
-{
-	lookup_table_[str[0]] = number;
-}
-
-std::string get_old_letter(const t_letter& number) 
-{
-	std::map<TERRAIN_LETTER, t_letter>::iterator itor = lookup_table_.begin();
-
-	for(; itor !=  lookup_table_.end(); ++itor) {
-		if(itor->second == number) return std::string(1, itor->first);
-	}
-
-	return "";
-	
-}
-#endif
-
 /***************************************************************************************/	
 //internal
-
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE 
-
-static t_list string_to_vector_(const std::string& str, const bool convert_eol, const int separated)
-{
-	// only used here so define here
-	const t_letter EOL(7, NO_LAYER);
-	bool last_eol = false;
-	t_list result;
-
-	std::string::const_iterator itor = str.begin();
-	for( ; itor != str.end(); ++itor) {
-		
-		if(separated == 1 && *itor == ',') {
-			//ignore the character
-			last_eol = false;
-			
-		} else if ((convert_eol) && (*itor == '\n' || *itor == '\r')) {
-			// end of line marker found
-			if(last_eol == false){
-				// last wasn't eol then add us
-				result.push_back(EOL);
-			}
-			last_eol = true;
-			
-		} else {
-			// normal just add
-			last_eol = false;
-			result.push_back(letter_to_number_(*itor));
-		}
-	}
-
-	return result;
-}
-
-static t_letter letter_to_number_(const TERRAIN_LETTER terrain)
-{
-	std::map<TERRAIN_LETTER, t_letter>::const_iterator itor = lookup_table_.find(terrain);
-
-	if(itor == lookup_table_.end()) {
-		ERR_G << "No translation found for old terrain letter " << terrain << "\n";
-		throw error("No translation found for old terrain letter");
-	}
-
-	return itor->second;
-}
-
-static t_map read_game_map_old_(const std::string& str, std::map<int, coordinate>& starting_positions) 
-{
-	size_t offset = 0;
-	size_t x = 0, y = 0, width = 0;
-	t_map result;
-	
-	// skip the leading newlines
-	while(offset < str.length() && utils::isnewline(str[offset])) {
-		++offset;
-	}
-
-	// did we get an empty map?
-	if((offset + 1) >= str.length()) {
-		WRN_G << "Empty map found\n";
-		return result;
-	}
-	
-	while(offset < str.length()) {
-
-		// handle newlines
-		if(utils::isnewline(str[offset])) {
-			// the first line we set the with the other lines we check the width
-			if(y == 0 ) { 
-				// note x has been increased to the new value at the end of 
-				// the loop so width = x and not x + 1
-				width = x;
-			} else {
-				if(x != width ) {
-					ERR_G << "Map not a rectangle error occured at line " << y << " position " << x << "\n"; 
-					throw error("Map not a rectangle.");
-				}
-			}
-
-			// prepare next itertration 
-			++y;
-			x = 0;
-			++offset;
-			
-			//skip the following newlines 
-			while(offset < str.length() && utils::isnewline(str[offset])) {
-				++offset;
-			}
-			
-			// stop if at end of file
-			if((offset + 1) >= str.length()) {
-				break;
-			}
-		}
-		
-		// get a terrain chunk
-		TERRAIN_LETTER terrain = str[offset];
-
-		// process the chunk
-		int starting_position = lexical_cast_default<int>(std::string(1, terrain), -1);
-		
-		// add to the resulting starting position
-		if(starting_position != -1) {
-			if(starting_positions.find(starting_position) != starting_positions.end()) {
-				// redefine existion position
-				WRN_G << "Starting position " << starting_position <<" redefined.\n";
-				starting_positions[starting_position].x = x;
-				starting_positions[starting_position].y = y;
-			} else {
-				// add new position
-				struct coordinate coord = {x, y};
-				starting_positions.insert(std::pair<int, coordinate>(starting_position, coord));
-			}
-			//the letter of the keep hardcoded, since this code is 
-			//scheduled for removal the hardcoded letter is oke
-			terrain = 'K';
-		} 
-		
-		// make space for the new item
-		if(result.size() <= x) {
-			result.resize(x + 1);
-		}
-		if(result[x].size() <= y) {
-			result[x].resize(y + 1);
-		}
-		
-		// add the resulting terrain number,
-		result[x][y] = letter_to_number_(terrain);
-
-		//set next value
-		++x; 
-		++offset;
-	}
-
-	if(x != 0 && x != width) {
-		ERR_G << "Map not a rectangle error occured at the end\n"; 
-		throw error("Map not a rectangle.");
-	}
-
-	return result;
-}
-
-#endif
 
 static t_list string_to_vector_(const std::string& str, const t_layer filler)
 {
@@ -1054,13 +808,10 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 	}
 #endif
 	
-#ifndef TERRAIN_TRANSLATION_COMPATIBLE 
 	if(result == OBSOLETE_KEEP) {
 		lg::wml_error << "Using _K for a keep is deprecated, support will be removed in version 1.3.5\n";
 		result = HUMAN_KEEP;
 	}
-#endif
-	
 	return result;
 }
 

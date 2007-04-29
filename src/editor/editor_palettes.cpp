@@ -29,8 +29,7 @@
 namespace map_editor {
 
 bool is_invalid_terrain(t_translation::t_letter c) {
-	return (c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED || 
-			c == t_translation::OBSOLETE_KEEP);
+	return (c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 
 terrain_group::terrain_group(const config& cfg, display& gui):

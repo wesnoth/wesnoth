@@ -100,8 +100,7 @@ unit_animation::unit_animation(int start_time,const unit_frame & frame ):
 }
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string ) :
-	//this format hasn't been used yet, so force the new terrain format
-	terrain_types_(t_translation::read_list(cfg["terrain"], -1, t_translation::T_FORMAT_STRING))
+	terrain_types_(t_translation::read_list(cfg["terrain"]))
 {
 	config::const_child_itors range = cfg.child_range(frame_string);
 	if(cfg["start_time"].empty() &&range.first != range.second) {

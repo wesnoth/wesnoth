@@ -41,41 +41,22 @@ terrain_type::terrain_type(const config& cfg)
 
 	name_ = cfg["name"];
 	id_ = cfg["id"];
-
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE
-	// load the old char and the new string part
-	std::string terrain_char = cfg["char"];
-	std::string terrain_string = cfg["string"];
-
-	wassert(terrain_string != "");
-	number_ = t_translation::read_letter(terrain_string, t_translation::T_FORMAT_STRING);
-	//if both a char and a string are defined load it in the translation 
-	//table. This to maintain backwards compability
-	if(terrain_char != "") {
-		t_translation::add_translation(terrain_char, number_);
-	}
-#else
-	number_ = t_translation::read_letter(terrain_string);
-#endif
-
+	number_ = t_translation::read_letter(cfg["string"]); 
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
-	const t_translation::t_list& alias = 
-		t_translation::read_list(cfg["aliasof"], -1, t_translation::T_FORMAT_STRING);
+	const t_translation::t_list& alias = t_translation::read_list(cfg["aliasof"]);
 	if(!alias.empty()) {
 		mvt_type_ = alias;
 		def_type_ = alias;
 	}
 
-	const t_translation::t_list& mvt_alias = 
-		t_translation::read_list(cfg["mvt_alias"], -1, t_translation::T_FORMAT_STRING);
+	const t_translation::t_list& mvt_alias = t_translation::read_list(cfg["mvt_alias"]);
 	if(!mvt_alias.empty()) {
 		mvt_type_ = mvt_alias;
 	}
 
-	const t_translation::t_list& def_alias = 
-		t_translation::read_list(cfg["def_alias"], -1, t_translation::T_FORMAT_STRING);
+	const t_translation::t_list& def_alias = t_translation::read_list(cfg["def_alias"]);
 	if(!def_alias.empty()) {
 		def_type_ = def_alias;
 	}

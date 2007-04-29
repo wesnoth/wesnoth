@@ -1027,7 +1027,7 @@ void terrain_builder::build_terrains()
 				if(cons != rule->second.constraints.end()) {
 					adjacent_types[i] = cons->second.terrain_types_match.terrain;
 				} else {
-					adjacent_types[i] = t_translation::read_list("", -1, t_translation::T_FORMAT_STRING, t_translation::WILDCARD);
+					adjacent_types[i] = t_translation::read_list("", t_translation::WILDCARD);
 				}
 			}
 

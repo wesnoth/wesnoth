@@ -369,31 +369,27 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 				static const std::string src_key = "old", src_not_key = "old_not",
 				                         dst_key = "new", dst_not_key = "new_not";
 				const config& cfg = **rule;
-				const t_translation::t_list& src = 
-					t_translation::read_list(cfg[src_key], 0, t_translation::T_FORMAT_AUTO);
+				const t_translation::t_list& src = t_translation::read_list(cfg[src_key]);
 
-				if(!src.empty() && std::find(src.begin(),src.end(),current) == src.end()) {
+				if(!src.empty() && t_translation::terrain_matches(current, src) == false) {
 					continue;
 				}
 
-				const t_translation::t_list& src_not = 
-					t_translation::read_list(cfg[src_not_key], 0, t_translation::T_FORMAT_AUTO);
+				const t_translation::t_list& src_not = t_translation::read_list(cfg[src_not_key]);
 
-				if(!src_not.empty() && std::find(src_not.begin(),src_not.end(),current) != src_not.end()) {
+				if(!src_not.empty() && t_translation::terrain_matches(current, src_not)) {
 					continue;
 				}
 
-				const t_translation::t_list& dst = 
-					t_translation::read_list(cfg[dst_key], 0, t_translation::T_FORMAT_AUTO);
+				const t_translation::t_list& dst = t_translation::read_list(cfg[dst_key]);
 
-				if(!dst.empty() && std::find(dst.begin(),dst.end(),t) == dst.end()) {
+				if(!dst.empty() && t_translation::terrain_matches(current, dst) == false) {
 					continue;
 				}
 
-				const t_translation::t_list& dst_not = 
-					t_translation::read_list(cfg[dst_not_key], 0, t_translation::T_FORMAT_AUTO);
+				const t_translation::t_list& dst_not = t_translation::read_list(cfg[dst_not_key]);
 
-				if(!dst_not.empty() && std::find(dst_not.begin(),dst_not.end(),t) != dst_not.end()) {
+				if(!dst_not.empty() && t_translation::terrain_matches(current, dst_not)) {
 					continue;
 				}
 
@@ -403,8 +399,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 
 			if(rule != rules.end()) {
 				const config& cfg = **rule;
-				const t_translation::t_list& terrain = 
-					t_translation::read_list(cfg["terrain"], 0, t_translation::T_FORMAT_AUTO);
+				const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
 
 				if(!terrain.empty()) {
 					set_terrain(location(x2,y2),terrain[0]);
@@ -600,55 +595,20 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig
 bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod) const
 {
-	/* *
-	 * The abilities use a comma separated list of terrains, this code has been
-	 * used and also needs to be backwards compatible. This should happen 
-	 * independant of the map so added this hack. Obiously it needs to be removed
-	 * as soon as possible.
-	 */
+
 	const int terrain_format = lexical_cast_default(cfg["terrain_format"], -1);
-
-/*  enable when the hack is no longer used	
 	if(terrain_format != -1) {
-		std::cerr << "key terrain_format in filter_location is obsolete old format no longer supported";
+		lg::wml_error << "key terrain_format in filter_location is no longer used, this message will disappear in 1.3.5\n";
 	}
-*/	
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE
-	if(terrain_format == 0 || terrain_format == -1 && !cfg["terrain"].empty()) {
-		lg::wml_error << "Warning deprecated terrain format in filter_location, support will be removed in version 1.3.3\n";
-		const t_string& t_terrain = cfg["terrain"];
-		const std::string& terrain = t_terrain;
-		// Any of these may be a CSV
-		std::string terrain_letter;
-		terrain_letter += t_translation::get_old_letter(get_terrain_info(loc).number());
-		if(!terrain.empty() && !terrain_letter.empty()) {
-			if(terrain != terrain_letter) {
-				if(std::find(terrain.begin(),terrain.end(),',') != terrain.end() &&
-					std::search(terrain.begin(),terrain.end(),
-					terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
-					const std::vector<std::string>& vals = utils::split(terrain);
-					if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
-						return false;
-					}
-				} else {
-					return false;
-				}
-			}
-		}
-	} else {
-#endif
-		const t_translation::t_list& terrain = 
-			t_translation::read_list(cfg["terrain"], -1, t_translation::T_FORMAT_STRING);
-		if(! terrain.empty()) {
 
-			const t_translation::t_letter letter = get_terrain_info(loc).number();
-			if(! t_translation::terrain_matches(letter, terrain)) {
-					return false;
-			}
+	const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
+	if(! terrain.empty()) {
+
+		const t_translation::t_letter letter = get_terrain_info(loc).number();
+		if(! t_translation::terrain_matches(letter, terrain)) {
+				return false;
 		}
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE
 	}
-#endif
 	
 	//Allow filtering on location ranges 
 	if(!cfg["x"].empty() || !cfg["y"].empty()){

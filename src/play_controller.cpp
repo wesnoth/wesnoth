@@ -129,17 +129,7 @@ void play_controller::init_managers(){
 static int placing_score(const config& side, const gamemap& map, const gamemap::location& pos)
 {
 	int positions = 0, liked = 0;
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE	
-	const std::string& terrain_liked = side["terrain_liked"]; 
-	t_translation::t_list terrain;
-	if(std::find(terrain_liked.begin(), terrain_liked.end(), ',') != terrain_liked.end()) {
-		terrain = t_translation::read_list(terrain_liked, -1, t_translation::T_FORMAT_STRING);
-	} else {
-		terrain = t_translation::read_list(terrain_liked, 0, t_translation::T_FORMAT_LETTER);
-	}
-#else
 	const t_translation::t_list terrain = t_translation::read_list(side["terrain_liked"]);
-#endif
 	
 	for(int i = pos.x-8; i != pos.x+8; ++i) {
 		for(int j = pos.y-8; j != pos.y+8; ++j) {

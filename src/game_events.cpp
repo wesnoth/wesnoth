@@ -1304,10 +1304,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string terrain_type = cfg["letter"];
 		wassert(state_of_game != NULL);
 		
-		//At this point terrain_type contains the letter as known in WML
-		//convert to an internal number
-		t_translation::t_letter terrain = 
-			t_translation::read_letter(terrain_type, t_translation::T_FORMAT_AUTO);
+		t_translation::t_letter terrain = t_translation::read_letter(terrain_type);
 
 		if(terrain != t_translation::NONE_TERRAIN) {
 			
@@ -1963,6 +1960,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	 * - terrain: if present, filter the village types against this list of terrain types 
 	 */
 	else if(cmd == "store_villages" ) {
+		//TODO - add wildcard support
 		log_scope("store_villages");
 		std::string side = cfg["side"];
 		std::string variable = cfg["variable"];
@@ -1972,11 +1970,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string wml_terrain = cfg["terrain"];
 		wassert(state_of_game != NULL);
 		const int side_index = lexical_cast_default<int>(side,1)-1;
-		//convertert the terrain to a internal vector
-		//FIXME: once the terrain backwards compability layer is gone we can load the string
-		// in a t_match structure and use the optimized match routine in the loop
-		const t_translation::t_list& terrain = 
-			t_translation::read_list(wml_terrain, 0, t_translation::T_FORMAT_AUTO);
+		const t_translation::t_list& terrain = t_translation::read_list(wml_terrain);
 
 		state_of_game->clear_variable_cfg(variable);
 
@@ -1997,6 +1991,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "store_locations" ) {
+		//TODO - add wildcard support
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
@@ -2007,11 +2002,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string y = cfg["y"];
 		std::string radius_str = cfg["radius"];
 		wassert(state_of_game != NULL);
-		//convertert the terrain to a internal vector
-		//FIXME: once the terrain backwards compability layer is gone we can load the string
-		// in a t_match structure and use the optimized match routine in the loop
-		const t_translation::t_list& terrain = 
-			t_translation::read_list(wml_terrain, 0, t_translation::T_FORMAT_AUTO);
+		const t_translation::t_list& terrain = t_translation::read_list(wml_terrain);
 
 		const vconfig unit_filter = cfg.child("filter");
 
