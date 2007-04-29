@@ -692,6 +692,11 @@ bool game_controller::load_game()
 		state_ = game_state(units_data_,cfg);
 
 		if(state_.version != game_config::version) {
+			if(state_.version < game_config::min_savegame_version) {
+				gui::show_dialog(disp(), NULL, "", _("This save is from a version too old to be loaded."), gui::OK_ONLY);
+				return false;
+			}
+
 			const int res = gui::show_dialog(disp(),NULL,"",
 			                      _("This save is from a different version of the game. Do you want to try to load it?"),
 			                      gui::YES_NO);

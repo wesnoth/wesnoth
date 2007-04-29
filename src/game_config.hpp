@@ -53,8 +53,8 @@ namespace game_config
 
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_width, title_tip_padding;
 
-     extern std::map<std::string, color_range> team_rgb_range;
-     extern std::map<std::string, std::string> team_rgb_name;
+	extern std::map<std::string, color_range> team_rgb_range;
+	extern std::map<std::string, std::string> team_rgb_name;
 	
 	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 	namespace sounds {
@@ -65,8 +65,34 @@ namespace game_config
 	
         void load_config(const config* cfg);
         
-     const void add_color_info(const config& v);
+	const void add_color_info(const config& v);
 	const std::vector<Uint32>& tc_info(const std::string& name);
+
+	struct game_version {
+		game_version(std::string str);
+	
+		//Note gcc 4.1.2(prerelease) as shipped in Debian etch doesn't 
+		//like the name major and minor :( so make gcc happy
+		unsigned int major_nr;
+		unsigned int minor_nr;
+		unsigned int patch;
+		std::string extra;
+
+		std::string full;
+	};
+
+	// Note the < <= > and >= operator ignore the extra version the == and != do
+	// use the extra version.
+	bool operator<(const struct game_version& a, const struct game_version& b); 
+	bool operator<=(const struct game_version& a, const struct game_version& b); 
+	bool operator>(const struct game_version& a, const struct game_version& b); 
+	bool operator>=(const struct game_version& a, const struct game_version& b); 
+	bool operator==(const struct game_version& a, const struct game_version& b);
+	bool operator!=(const struct game_version& a, const struct game_version& b);
+
+	extern const struct game_version wesnoth_version;
+	extern const struct game_version min_savegame_version;
+
 }
 
 #endif

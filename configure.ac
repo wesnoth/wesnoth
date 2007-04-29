@@ -39,6 +39,13 @@ AC_CONFIG_COMMANDS([src/wesconfig.h],
  * releases the chat messages
  */
 #define WML_ERROR_DIALOG 0
+
+/**
+ * Some older savegames of Wesnoth can't be loaded anymore this
+ * variable defines the minimum required version
+ */
+#define MIN_SAVEGAME_VERSION "1.3.1"
+
 #endif
 EOF
 ])

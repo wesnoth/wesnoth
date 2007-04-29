@@ -17,6 +17,7 @@
 #include "log.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
+#include "util.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
 
@@ -71,7 +72,10 @@ namespace game_config
 	std::map<std::string, std::string > team_rgb_name;
 	
 	std::map<std::string, std::vector<Uint32> > team_rgb_colors;
-	
+
+	const struct game_version wesnoth_version(VERSION);
+	const struct game_version min_savegame_version(MIN_SAVEGAME_VERSION); 
+
 	namespace sounds {
 		const std::string turn_bell = "UI/bell.wav",
 		receive_message = "UI/receive.wav",
@@ -219,4 +223,63 @@ namespace game_config
 		}
 		return i->second;
 	}
+
+game_version::game_version(std::string str) : 
+		major_nr(0), minor_nr(0), patch(0), full(str)  
+{
+
+	size_t offset = str.find_first_not_of("0123456789");
+	major_nr = lexical_cast_default<unsigned int>(std::string(str, 0, offset), 0);
+	str.erase(0, offset + 1);
+
+	if(! str.empty()) {
+		offset = str.find_first_not_of("0123456789");
+		minor_nr = lexical_cast_default<unsigned int>(std::string(str, 0, offset ), 0);
+		str.erase(0, offset + 1);
+	}
+
+	if(! str.empty()) {
+		offset = str.find_first_not_of("0123456789");
+		patch = lexical_cast_default<unsigned int>(std::string(str, 0, offset ), 0);
+		if(offset != std::string::npos) {
+			extra = std::string(str, offset);
+		}
+	}
+	
+
+
+}
+
+bool operator<(const struct game_version& a, const struct game_version& b)
+{
+	if(a.major_nr != b.major_nr) return a.major_nr < b.major_nr;
+	if(a.minor_nr != b.minor_nr) return a.minor_nr < b.minor_nr;
+	return a.patch < b.patch;
+}
+
+bool operator<=(const struct game_version& a, const struct game_version& b)
+{
+	return a < b || a == b;
+}
+
+bool operator>(const struct game_version& a, const struct game_version& b)
+{
+	return !(a <= b);
+}
+
+bool operator>=(const struct game_version& a, const struct game_version& b)
+{
+	return !(a < b);
+}
+
+bool operator==(const struct game_version& a, const struct game_version& b)
+{
+	return a.full == b.full;
+}
+
+bool operator!=(const struct game_version& a, const struct game_version& b)
+{
+	return a.full != b.full;
+}
+
 }
