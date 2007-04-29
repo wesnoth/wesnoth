@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-26 17:57+0200\n"
-"PO-Revision-Date: 2007-03-24 11:32+0100\n"
+"PO-Revision-Date: 2007-04-29 11:08+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -178,8 +178,8 @@ msgstr ""
 "Esta unidad ilumina el área que le rodea, haciendo que las unidades legales "
 "luchen mejor, y las caóticas peor.\n"
 "\n"
-"Cualquier unidad adyacente a ésta luchará como si estuviera anocheciendo "
-"cuando es de noche, y como si fuera de día cuando está anocheciendo."
+"Cualquier unidad adyacente a ésta luchará como si estuviera atardeciendo "
+"cuando es de noche, y como si fuera de día cuando está atardeciendo."
 
 #: data/abilities.cfg:353
 msgid "teleport"
@@ -209,7 +209,7 @@ msgid ""
 "units next to this unit."
 msgstr ""
 "Emboscar:\n"
-"Esta unidad puede ocultarse en el bosque, y que sus enemigos no le "
+"Esta unidad puede ocultarse en el bosque, y que sus enemigos no la "
 "detecten.\n"
 "\n"
 "Las unidades enemigas no pueden ver o atacar a esta unidad cuando se "
@@ -230,8 +230,7 @@ msgid ""
 "to this unit."
 msgstr ""
 "Acecho nocturno:\n"
-"Esta unidad puede ocultarse en el bosque, y que sus enemigos no le "
-"detecten.\n"
+"Esta unidad se vuelve invisible durante la noche.\n"
 "\n"
 "Las unidades enemigas no pueden ver o atacar a esta unidad cuando es de "
 "noche, excepto en el turno inmediatamente después de que haya atacado, o si "
@@ -309,16 +308,15 @@ msgid "slows"
 msgstr "ralentiza"
 
 #: data/abilities.cfg:494
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled."
 msgstr ""
-"Ralentiza:\n"
+"Ralentizar:\n"
 "Este ataque ralentiza al objetivo hasta que acabe el turno. Una unidad "
-"afectada inflige la mitad del daño normal con sus ataques y se mueve a la "
-"mitad de velocidad (redondeando hacia arriba)."
+"afectada inflige la mitad del daño normal con sus ataques y se duplica su "
+"coste de movimiento."
 
 #: data/abilities.cfg:503
 msgid "stones"
@@ -330,9 +328,9 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
-"Petrifica:\n"
-"Este ataque convierte al objetivo en piedra. Alguien afectado por la "
-"petrificación no puede moverse ni atacar."
+"Petrificar:\n"
+"Este ataque convierte al objetivo en piedra. Las unidades afectadas por la "
+"petrificación no podrán moverse ni atacar."
 
 #: data/abilities.cfg:514
 msgid "marksman"
@@ -388,8 +386,8 @@ msgid ""
 "take double damage from the target's counterattack."
 msgstr ""
 "Carga:\n"
-"Este ataque causa el doble de daño al enemigo. También hace que los "
-"contraataques enemigos sean el doble de fuertes."
+"Este ataque causa el doble de daño al enemigo. También hace que esta unidad "
+"reciba el doble de daño de los contraataques enemigos."
 
 #: data/abilities.cfg:566
 msgid "drains"
@@ -401,7 +399,7 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Drena:\n"
+"Drenar:\n"
 "Esta unidad drena la vitalidad de unidades vivas, sanándose a sí misma el "
 "equivalente a la mitad del daño que ha infligido (redondeado hacia abajo)."
 
@@ -415,7 +413,7 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Ataca primero:\n"
-"Esta unidad siempre ataca primero con este ataque, incluso cuando se "
+"Esta unidad siempre golpea primero con este ataque, incluso cuando se "
 "defiende."
 
 #: data/abilities.cfg:588
@@ -478,7 +476,7 @@ msgstr "Responsables de internacionalización"
 
 #: data/about.cfg:315
 msgid "Afrikaans Translation"
-msgstr "Traducción sudafricana"
+msgstr "Traducción afrikáans"
 
 #: data/about.cfg:325
 msgid "Basque Translation"
@@ -638,7 +636,7 @@ msgstr "Fácil"
 
 #: data/english.cfg:3
 msgid "Medium"
-msgstr "Medio"
+msgstr "Media"
 
 #: data/english.cfg:4
 msgid "Hard"
@@ -792,7 +790,7 @@ msgstr "cuerpo a cuerpo"
 
 #: data/english.cfg:49
 msgid "ranged"
-msgstr "distancia"
+msgstr "a distancia"
 
 #: data/english.cfg:52
 msgid "Wesnoth unit list"
@@ -880,7 +878,7 @@ msgstr "Habilidades"
 
 #: data/help.cfg:45
 msgid "Weapon Specials"
-msgstr "Habilidades especiales de armas"
+msgstr "Habilidades especiales"
 
 #: data/help.cfg:52
 msgid "Terrains"
@@ -1503,7 +1501,6 @@ msgid "Damage Types and Resistance"
 msgstr "Tipos de daño y resistencia"
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1512,9 +1509,9 @@ msgid ""
 "damage which they take from certain damage types."
 msgstr ""
 "En Wesnoth, hay tres tipos de daño asociados normalmente a ataques físicos: "
-"cortante (por filo), punzante y de impacto. A estos tipos hay que sumar "
-"otros tres asociados comúnmente con ataques mágicos: por fuego, por frío, y "
-"sagrados. Cada unidad puede tener resistencias especiales frente a los "
+"cortante (de corte), de penetración y de impacto. A estos tipos hay que "
+"sumar otros tres asociados comúnmente con ataques mágicos: de fuego, de "
+"frío, y arcano. Cada unidad puede tener resistencias especiales frente a los "
 "distintos tipos de ataques."
 
 #: data/help.cfg:181
@@ -1537,7 +1534,6 @@ msgstr ""
 "de daño adicional cuando sufra una herida de ese tipo."
 
 #: data/help.cfg:183
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1549,7 +1545,7 @@ msgstr ""
 "\n"
 "Por ejemplo, los esqueletos son muy resistentes a las armas de filo y "
 "punzantes, pero son vulnerables al daño por impacto y fuego, y "
-"extremadamente vulnerables al daño sagrado."
+"extremadamente vulnerables al daño arcano."
 
 #: data/help.cfg:185
 msgid ""
@@ -3860,17 +3856,16 @@ msgstr ""
 "Urkar"
 
 #: data/names.cfg:38
-#, fuzzy
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
 "Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
-"Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,Shuf,"
-"Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,Sark,"
-"Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,Tohg,"
-"Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
+"Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
+"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/names.cfg:42
 msgid ""
@@ -3897,7 +3892,6 @@ msgstr ""
 "Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 
 #: data/names.cfg:46
-#, fuzzy
 msgid ""
 "Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
 "Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
@@ -3917,7 +3911,7 @@ msgstr ""
 "Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
 "Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
 "Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
-"Gaust un,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
+"Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 
 #: data/names.cfg:47
 msgid ""
@@ -4789,7 +4783,6 @@ msgstr ""
 "las ruinas de antiguas fortalezas."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:58
-#, fuzzy
 msgid "Monsters"
 msgstr "Monstruos"
 
@@ -5083,13 +5076,12 @@ msgstr ""
 "bastante lentitud sobre agua abierta."
 
 #: data/special-notes.cfg:5
-#, fuzzy
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" El ataque sagrado de esta unidad inflige un tremendo daño a los no muertos "
-"y algo de daño a las criaturas vivas."
+" El ataque arcano de esta unidad inflige un tremendo daño a los no muertos y "
+"algo de daño a las criaturas vivas."
 
 #: data/special-notes.cfg:8
 msgid ""
@@ -5306,9 +5298,8 @@ msgid "Teal"
 msgstr "Verde azulado"
 
 #: data/terrain.cfg:22
-#, fuzzy
 msgid "None"
-msgstr "ninguna"
+msgstr "Nada"
 
 #: data/terrain.cfg:29 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
@@ -5430,9 +5421,8 @@ msgid "Impassable Mountains"
 msgstr "Montañas infranqueables"
 
 #: data/terrain.cfg:983
-#, fuzzy
 msgid "Impassable Desert Mountains"
-msgstr "Montañas infranqueables"
+msgstr "Montañas infranqueables desérticas"
 
 #: data/themes/default.cfg:80 data/themes/dfool.cfg:101
 #: data/themes/experimental.cfg:64
@@ -5575,7 +5565,6 @@ msgstr ""
 "usando la opción de «Reincorporar»."
 
 #: data/tips.cfg:3
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -5583,9 +5572,10 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
-"Hay seis tipos de ataques: de filo, de impacto, punzantes, de fuego, de frío "
-"y sagrado. Cada unidad tiene sus debilidades respecto a algunos ataques, "
-"para saberlo, seleccione «Descripción de unidad» y luego «Resistencia»."
+"Hay seis tipos de ataques: de corte, de impacto, de penetración, de fuego, "
+"de frío y arcano. Cada unidad tiene sus debilidades respecto a algunos "
+"ataques, para saberlo, seleccione «Descripción de unidad» y luego "
+"«Resistencia»."
 
 #: data/tips.cfg:4
 msgid ""
@@ -5748,13 +5738,12 @@ msgstr ""
 "el castillo para que pueda reclutar desde allí."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and arcane attacks."
 msgstr ""
-"Los esqueletos son resistentes a las armas de filo y que perforan, pero "
-"vulnerables a las de impacto, fuego y sagradas."
+"Los esqueletos son resistentes a los ataques perforantes y cortantes, pero "
+"vulnerables a los ataques de impacto, fuego y arcanos."
 
 #: data/tips.cfg:21
 msgid ""
@@ -5825,9 +5814,8 @@ msgstr ""
 "sus ataques hasta final de turno."
 
 #: data/tips.cfg:30
-#, fuzzy
 msgid "Arcane attacks are very powerful against undead."
-msgstr "Los ataques sagrados son muy poderosos contra los no muertos."
+msgstr "Los ataques arcanos son muy poderosos contra los no muertos."
 
 #: data/tips.cfg:31
 msgid ""
@@ -6043,7 +6031,7 @@ msgstr "ficticio"
 #: data/units/Undead_Skeleton_Archer.cfg:33 data/units/Wose.cfg:32
 #: data/units/Wose_Ancient.cfg:94 data/units/Wose_Elder.cfg:93
 msgid "impact"
-msgstr "impacto"
+msgstr "de impacto"
 
 #: data/units/Boat_Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
@@ -6127,7 +6115,7 @@ msgstr "balista"
 #: data/units/Undead_Skele_Soul_Shooter.cfg:71
 #: data/units/Undead_Skeleton_Archer.cfg:71
 msgid "pierce"
-msgstr "punzante"
+msgstr "de penetración"
 
 #: data/units/Boat_Transport_Galleon.cfg:3
 msgid "Transport Galleon"
@@ -6247,7 +6235,7 @@ msgstr "garras"
 #: data/units/Undead_Spirit_Nightgaunt.cfg:54
 #: data/units/Undead_Spirit_Shadow.cfg:28
 msgid "blade"
-msgstr "de filo"
+msgstr "de corte"
 
 #: data/units/Drake_Armageddon.cfg:121 data/units/Drake_Blademaster.cfg:114
 #: data/units/Drake_Burner.cfg:109 data/units/Drake_Fighter.cfg:111
@@ -6270,7 +6258,7 @@ msgstr "aliento de fuego"
 #: data/units/Human_Mage_Silver.cfg:85 data/units/Orcish_Archer.cfg:238
 #: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:121
 msgid "fire"
-msgstr "fuego"
+msgstr "de fuego"
 
 #: data/units/Drake_Blademaster.cfg:3
 msgid "Drake Blademaster"
@@ -6685,7 +6673,7 @@ msgstr "locura frenética"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr "Guardia del Dragón enano"
+msgstr "Dracoguardia enano"
 
 #: data/units/Dwarvish_Dragonguard.cfg:18
 msgid ""
@@ -6698,14 +6686,14 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
-"No está claro por qué los Guardias del dragón se llaman así. Este nombre, "
-"que es como se refieren a ellos los de su raza, se ha especulado que "
-"proviene de sus armas, unas extrañas varas que vomitan fuego y muerte. Otros "
-"sostienen que es debido a que tales armas serían una amenaza incluso contra "
-"un dragón auténtico, en el caso de que tal cosa volviera a verse en el mundo "
-"conocido. Sea por lo que sea, debido a estas armas los guardianes de las "
-"ciudadelas enanas son admirados y temidos por igual: son capaces de partir "
-"en dos al guerrero más poderoso de un solo tiro."
+"No está claro por qué los dracoguardias se llaman así. Este nombre, que es "
+"como se refieren a ellos los de su raza, se ha especulado que proviene de "
+"sus armas, unas extrañas varas que vomitan fuego y muerte. Otros sostienen "
+"que es debido a que tales armas serían una amenaza incluso contra un dragón "
+"auténtico, en el caso de que tal cosa volviera a verse en el mundo conocido. "
+"Sea por lo que sea, debido a estas armas los guardianes de las ciudadelas "
+"enanas son admirados y temidos por igual: son capaces de partir en dos al "
+"guerrero más poderoso de un solo tiro."
 
 #: data/units/Dwarvish_Dragonguard.cfg:23 data/units/Dwarvish_Thunderer.cfg:39
 #: data/units/Dwarvish_Thunderguard.cfg:23
@@ -6779,7 +6767,7 @@ msgstr "jabalina"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
-msgstr "Señor Enano"
+msgstr "Señor enano"
 
 #: data/units/Dwarvish_Lord.cfg:19
 msgid ""
@@ -6844,7 +6832,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr "Fornido enano"
+msgstr "Defensor enano"
 
 #: data/units/Dwarvish_Stalwart.cfg:20
 msgid ""
@@ -6854,7 +6842,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Los «fornidos», tras años de batalla, han ido haciéndose nuevos escudos y "
+"Los defensores, tras años de batalla, han ido haciéndose nuevos escudos y "
 "armaduras muy resistentes a partir de los restos de sus enemigos. Aunque son "
 "lentos, también son temidos por su resistencia y fuerza.\n"
 "\n"
@@ -6862,7 +6850,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
-msgstr "Guardián de Acero enano"
+msgstr "Guardia de acero enano"
 
 #: data/units/Dwarvish_Steelclad.cfg:18
 msgid ""
@@ -6870,7 +6858,7 @@ msgid ""
 "plate armor, for which they are rightly famous."
 msgstr ""
 "Los guerreros enanos más veteranos usan cotas de malla pesadas y armaduras "
-"de placas, por lo que se los conoce por el nombre de «guardianes de acero»."
+"de placas, por lo que se los conoce por el nombre de «guardias de acero»."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
@@ -7157,9 +7145,8 @@ msgstr "fuego feérico"
 #: data/units/Undead_Spirit_Ghost.cfg:26
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
-#, fuzzy
 msgid "arcane"
-msgstr "distancia"
+msgstr "arcano"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -7438,7 +7425,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"El mundo faérico es mucho más fuerte que el corpóreo. El mero hecho de traer "
+"El mundo feérico es mucho más fuerte que el corpóreo. El mero hecho de traer "
 "algo de ese mundo al nuestro puede tener violentos efectos.  Esto es bien "
 "sabido por los elfos, aunque rara vez se usa con intenciones malévolas; "
 "hacerlo no es tarea fácil, y es un muy mal visto uso de su fuerza.\n"
@@ -7854,7 +7841,7 @@ msgstr ""
 
 #: data/units/Human_Loyalist_Cavalier.cfg:3
 msgid "Cavalier"
-msgstr "Caballero"
+msgstr "Coracero"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
 msgid ""
@@ -7862,7 +7849,7 @@ msgid ""
 "both sword and crossbow from horseback. This is fearsome when combined with "
 "their mobility, and such mettle is the subject of tale and song."
 msgstr ""
-"Una visión triunfante en el campo de batalla, los caballeros son maestros en "
+"Una visión triunfante en el campo de batalla, los coraceros son maestros en "
 "el uso de la espada y la ballesta a caballo. Esto se vuelve temible cuando "
 "se combina con su movilidad, y su entereza es motivo de cuentos y canciones."
 
@@ -8874,9 +8861,8 @@ msgid "female^Rogue"
 msgstr "Pícara"
 
 #: data/units/Human_Outlaw_Ruffian.cfg:3
-#, fuzzy
 msgid "Ruffian"
-msgstr "Ruinas"
+msgstr "Rufián"
 
 #: data/units/Human_Outlaw_Ruffian.cfg:17
 msgid ""
@@ -8885,6 +8871,11 @@ msgid ""
 "stick, are known as 'Ruffians'.  With enough experience they can learn to "
 "swing a bigger club or throw things, but not both."
 msgstr ""
+"Algunos hombres sin ninguna habilidad en concreto no pueden o no quieren "
+"tener una vida honrada. A todos aquellos que intentan ganarse la vida "
+"mediante el duro extremo de un palo, se les conoce como «rufianes». Con la "
+"suficiente experiencia pueden aprender a manejar un garrote mayor o lanzar "
+"objetos, pero no ambas cosas a la vez."
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
@@ -8964,7 +8955,6 @@ msgid "Peasant"
 msgstr "Campesino"
 
 #: data/units/Human_Peasant.cfg:19
-#, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
@@ -8972,7 +8962,7 @@ msgid ""
 "of superior forces."
 msgstr ""
 "Los campesinos son la columna vertebral de la economía rural, y los soldados "
-"en una situación desesperada. Aunque no son especialmente temibles, "
+"en una situación desesperada. Aunque no son especialmente belicosos, "
 "defienden con uñas y dientes sus casas. De todas formas, si sus tropas son "
 "campesinos, es que definitivamente no tiene nada mejor."
 
@@ -8981,9 +8971,8 @@ msgid "pitchfork"
 msgstr "horca"
 
 #: data/units/Human_Woodsman.cfg:3
-#, fuzzy
 msgid "Woodsman"
-msgstr "Espadachín"
+msgstr "Leñador"
 
 #: data/units/Human_Woodsman.cfg:18
 msgid ""
@@ -8991,6 +8980,10 @@ msgid ""
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
+"Los leñadores saben cazar, cortar leña, hacer carbón, y otras cosas más que "
+"les permiten ganarse la vida allá donde el mundo humano linda con la "
+"espesura. El buen juicio y el conocimiento del bosque les sirven de ayuda "
+"como no lo hacen las armas."
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
@@ -9432,9 +9425,8 @@ msgstr ""
 "cualquier barco."
 
 #: data/units/Monster_Skeletal_Dragon.cfg:3
-#, fuzzy
 msgid "Skeletal Dragon"
-msgstr "Esqueleto"
+msgstr "Dragón esquelético"
 
 #: data/units/Monster_Skeletal_Dragon.cfg:25
 msgid ""
@@ -9444,10 +9436,16 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Habiendo sido una de las criaturas vivientes más poderosas, este temido "
+"dragón se ha convertido en sólo una masa de huesos y oscuros tendones. Mucho "
+"después de morir, fue alzado por los oscuros poderes de la necromancia, a "
+"quienes ahora sirve. El dragón esquelético puede parecer una simple pila de "
+"huesos, pero muy pocos de los que así pensaron han vivido lo suficiente como "
+"para darse cuenta de su error."
 
 #: data/units/Monster_Skeletal_Dragon.cfg:28
 msgid "jaw"
-msgstr ""
+msgstr "mordisco"
 
 #: data/units/Monster_Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -9789,7 +9787,7 @@ msgstr ""
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
-msgstr "Señor de la Guerra"
+msgstr "Señor de la Guerra orco"
 
 #: data/units/Orcish_Warlord.cfg:18
 msgid ""
@@ -9878,7 +9876,7 @@ msgstr "maldición"
 #: data/units/Undead_Spirit_Spectre.cfg:86
 #: data/units/Undead_Spirit_Wraith.cfg:68
 msgid "cold"
-msgstr "frío"
+msgstr "de frío"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -10466,7 +10464,7 @@ msgstr ""
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
-msgstr "Caballero de la Muerte"
+msgstr "Caballero de la muerte"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:26
 msgid ""
@@ -11204,7 +11202,7 @@ msgstr "Escoja la expansión que desea descargar."
 
 #: src/game.cpp:1015
 msgid "Get Add-ons"
-msgstr "Obtener expansiones"
+msgstr "Expansiones"
 
 #: src/game.cpp:1056
 msgid "Dependencies"
@@ -11895,13 +11893,14 @@ msgstr "Defensor"
 msgid "Expected Battle Result (HP)"
 msgstr "Previsión del resultado del combate (PV)"
 
+# Se le añaden ':' para separarlo de la cadena anterior. Si esta cadena se usa en más de un sitio, sería conveniente revisarla.
 #: src/mouse_events.cpp:311
 msgid " resistance vs "
-msgstr "resistencia a "
+msgstr ": resistencia a ataques "
 
 #: src/mouse_events.cpp:312
 msgid " vulnerability vs "
-msgstr "debilidad contra"
+msgstr ": vulnerabilidad a ataques "
 
 #: src/mouse_events.cpp:322
 msgid "Slowed"
@@ -12712,7 +12711,7 @@ msgstr "Cargar"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Obtener expansiones"
+msgstr "Expansiones"
 
 #: src/titlescreen.cpp:260
 msgid "TitleScreen button^Language"
@@ -12843,15 +12842,3 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
-
-#~ msgid "holy"
-#~ msgstr "sagrado"
-
-#~ msgid "Map"
-#~ msgstr "Mapa"
-
-#~ msgid "Settings"
-#~ msgstr "Ajustes"
-
-#~ msgid "Status"
-#~ msgstr "Estado"
