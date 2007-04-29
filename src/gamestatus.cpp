@@ -178,6 +178,7 @@ static void parse_times(const config& cfg, std::vector<time_of_day>& normal_time
 gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
                  turn_(1),numTurns_(num_turns),currentTime_(0)
 {
+	teams = NULL;
     std::string turn_at = time_cfg["turn_at"];
 	std::string current_tod = time_cfg["current_tod"];
 	std::string random_start_time = time_cfg["random_start_time"];

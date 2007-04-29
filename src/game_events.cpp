@@ -1962,27 +1962,27 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "store_villages" ) {
 		//TODO - add wildcard support
 		log_scope("store_villages");
-		std::string side = cfg["side"];
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
 			variable="location";
 		}
-		std::string wml_terrain = cfg["terrain"];
-		wassert(state_of_game != NULL);
-		const int side_index = lexical_cast_default<int>(side,1)-1;
-		const t_translation::t_list& terrain = t_translation::read_list(wml_terrain);
-
 		state_of_game->clear_variable_cfg(variable);
 
 		std::vector<gamemap::location> locs = game_map->villages();
 
 		for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
-			if (!terrain.empty()) {
-				const t_translation::t_letter c = game_map->get_terrain(*j);
-				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
-					continue;
+			bool matches = false;
+			if(cfg.has_attribute("side")) { //deprecated, use owner_side instead
+				lg::wml_error << "side key is no longer accepted in [store_villages],"
+					<< " use owner_side instead.\n";
+				config temp_cfg(cfg.get_config());
+				temp_cfg["owner_side"] = temp_cfg["side"];
+				temp_cfg["side"] = "";
+				matches = game_map->terrain_matches_filter(*j, &temp_cfg, *status_ptr, *units);
+			} else {
+				matches = game_map->terrain_matches_filter(*j, cfg, *status_ptr, *units);
 			}
-			if (side.empty() || village_owner(*j,*teams) == side_index) {
+			if(matches) {
 				config &loc_store = state_of_game->add_variable_cfg(variable);
 				j->write(loc_store);
 				game_map->write_terrain(*j, loc_store);

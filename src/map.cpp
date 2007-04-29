@@ -668,6 +668,17 @@ bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconf
 			}
 		}
 	}
+
+	//allow filtering on owner (for villages)
+	const t_string& t_owner_side = cfg["owner_side"];
+	const std::string& owner_side = t_owner_side;
+	if(!owner_side.empty()) {
+		const int side_index = lexical_cast_default<int>(owner_side,0) - 1;
+		wassert(game_status.teams != NULL);
+		if(village_owner(loc, *(game_status.teams)) != side_index) {
+			return false;
+		}
+	}
 	return true; 
 }
 

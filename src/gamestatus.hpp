@@ -14,10 +14,10 @@
 #define GAME_STATUS_HPP_INCLUDED
 
 #include "filesystem.hpp"
+#include "team.hpp"
 #include "unit.hpp"
 
 #include <time.h>
-
 #include <string>
 #include <vector>
 
@@ -157,7 +157,7 @@ private:
 class gamestatus
 {
 public:
-        gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g = 0);
+	gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g = 0);
 	void write(config& cfg) const;
 
 	time_of_day get_time_of_day() const;
@@ -175,6 +175,8 @@ public:
 	bool next_turn();
 	
 	static bool is_start_ToD(const std::string&);
+
+	std::vector<team> *teams;
 
 private:
 	void set_start_ToD(config&, game_state*);

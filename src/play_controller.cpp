@@ -39,6 +39,7 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	first_player_ (lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1),
 	start_turn_(status_.turn()), skip_replay_(skip_replay), browse_(false), scrolling_(false)
 {
+	status_.teams = &teams_;
 	game_config::add_color_info(level);
 
 	init(video);
