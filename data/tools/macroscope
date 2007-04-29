@@ -330,14 +330,14 @@ class CrossRef:
                             if key:
                                 self.fileref[key].append(fn, n+1)
                         else:
-                            candidates = 0
+                            candidates = []
                             for trial in self.fileref:
                                 if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
                                     key = trial
                                     self.fileref[trial].append(fn, n+1)
-                                    candidates += 1
-                            if candidates > 1:
-                                print "%s: more than one definition of %s is visible here." % (reference(fn, n), name)
+                                    candidates.append(trial)
+                            if len(candidates) > 1:
+                                print "%s: more than one definition of %s is visible here (%s)." % (reference(fn, n), name, ", ".join(candidates))
                         if not key:
                             self.missing.append((name, reference(fn,n+1)))
                 rfp.close()
