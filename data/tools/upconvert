@@ -428,9 +428,10 @@ def translator(filename, mapxform, textxform):
         if verbose >= 4:
             sys.stdout.write(line)
         lineno += 1
-        # Exclude map_data= lines that are just 1 line without continuation, or which contain {}.
-        # The former are pathological and the parse won't handle them, the latter refer to map
-        # files which will be checked separately.
+        # Exclude map_data= lines that are just 1 line without
+        # continuation, or which contain {}.  The former are
+        # pathological and the parse won't handle them, the latter
+        # refer to map files which will be checked separately.
         if map_only or ("map_data=" in line
                         and line.count('"') == 1
                         and line.count("{") == 0
@@ -495,7 +496,7 @@ def translator(filename, mapxform, textxform):
 ignore = (".tgz", ".png", ".jpg")
 
 def allcfgfiles(dir):
-    "Get the names of all .cfg files under dir, ignoring .svn directories."
+    "Get the names of all .cfg and map files under dir, ignoring .svn directories."
     datafiles = []
     os.path.walk(dir,
                  lambda arg, dir, names: datafiles.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
