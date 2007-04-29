@@ -136,6 +136,11 @@ def iswml(filename):
     "Is the specified filename WML?"
     return filename.endswith(".cfg")
 
+def isresource(filename):
+    "Is the specifired name a resource?"
+    (root, ext) = os.path.splitext(filename)
+    return ext and ext[1:] in resource_extensions
+
 class reference:
     "Describes a location by file and line."
     def __init__(self, filename, lineno=None, docstring=None):
@@ -227,7 +232,7 @@ class CrossRef:
         for filename in self.filelist.generator():
             if warnlevel > 1:
                 print filename + ":"
-            if filter(lambda x: x, map(lambda x: filename.endswith("."+x), resource_extensions)):
+            if isresource(filename):
                 # It's a resource file of some sort. The rule we're
                 # applying here is:
                 #
