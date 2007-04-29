@@ -35,9 +35,9 @@ my $translate = 1;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
 my $images = 1;
 # This option will determine if the html report on made animations is generated
-my $animations = 1;
+my $animations = 0;
 # This is the version number that will appear on the unit trees
-my $version = '1.3.1+svn';
+my $version = '1.3.2+svn';
 # If the script is run on Windows, set this option to 1
 my $windows = 1;
 
