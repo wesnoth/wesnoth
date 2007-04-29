@@ -175,33 +175,24 @@ class reference:
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Za-z0-9_])\b")
     file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(" + "|".join(resource_extensions) + ")")
-    def imagesearch(self, name):
-        # Here is where we implement the funky rules for image
-        # resolution.  If we can't identify a reference to the image
-        # name under an image directory, look for it under particular
-        # subdirectories.
-        for super in ("units", "terrain", "portraits", "items"):
-            trial = os.path.join(super, name)
-            for path in self.fileref:
-                if path == trial or path.endswith(os.sep + trial):
-                    return path
-        return None
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
         pattern = pattern.replace("+", r"\+")
         try:
-            pattern = re.compile("^" + pattern + "$")
+            pattern = re.compile(os.sep + pattern + "$")
         except sre_constants.error:
             print >>sys.stderr, "macroscope: confused by %s" % pattern
             return None
         key = None
         for trial in self.fileref:
-            if pattern.match(trial):
+            if pattern.search(trial) and self.visible_from(trial, fn, n):
                 key = trial
                 self.fileref[key].append(fn, n)
         return key
     def visible_from(self, defn, fn, n):
         "Is specified definition visible from the specified file and line?"
+        if type(defn) == type(""):
+            defn = self.fileref[defn]
         if defn.undef != None:
             # Local macros are only visible in the file where they were defined
             # FIXME: we should check line spans here.
@@ -233,31 +224,7 @@ class CrossRef:
             if warnlevel > 1:
                 print filename + ":"
             if isresource(filename):
-                # It's a resource file of some sort. The rule we're
-                # applying here is:
-                #
-                # 1) If it's a sound file, its name is the part of the
-                # path after "sounds/" or "music/".  It has to be this
-                # way because we may not have a copy of mainline handy
-                # to fill in the missing directory with.
-                (root, ext) = os.path.splitext(filename)
-                name = filename
-                if ext in (".ogg", ".wav"):
-                    for superdir in ("music", "sounds"):
-                        foundit = filename.find(superdir)
-                        if foundit > -1:
-                            name = filename[foundit + len(superdir) + 1:]
-                            break
-                # 2) If it's an image file, its name is the part of the
-                # path after "images/".
-                elif ext in (".png", ".jpg"):
-                    foundit = filename.find("images")
-                    if foundit > -1:
-                        name = filename[foundit + len("images") + 1:]
-                if name in self.fileref:
-                    print >>sys.stderr, "*** Warning: %s meant %s, will now mean %s." \
-                          % (name, self.fileref[name].filename, filename)
-                self.fileref[name] = reference(filename) 
+                self.fileref[filename] = reference(filename) 
             elif iswml(filename):
                 # It's a WML file, scan for macro defitions
                 dfp = open(filename)
@@ -342,16 +309,17 @@ class CrossRef:
                                 if self.visible_from(defn, fn, n+1):
                                     candidates += 1
                                     defn.append(fn, n+1)
-                                    if candidates > 1:
-                                        print "%s: more than one definition of %s is visible here." % (reference(fn, n), name)
+                            if candidates > 1:
+                                print "%s: more than one definition of %s is visible here." % (reference(fn, n), name)
                             if candidates == 0:
                                  self.unresolved.append((name, reference(fn,n+1)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
+                        key = None
                         # If name is already in our resource list, it's easy.
-                        if name in self.fileref:
-                            self.fileref[name].append(fn, n+1)
+                        if name in self.fileref and self.visible_from(name, fn, n):
+                            self.fileref[trial].append(fn, n+1)
                             continue
                         # If the name contains subtitutable parts, count
                         # it as a reference to everything the substitutions
@@ -361,20 +329,15 @@ class CrossRef:
                             key = self.mark_matching_resources(pattern, fn,n+1)
                             if key:
                                 self.fileref[key].append(fn, n+1)
-                        # Might be time to do an image path search
-                        elif name.endswith(".png") or name.endswith(".jpg"):
-                            key = self.imagesearch(name)
-                            if key:
-                                self.fileref[key].append(fn, n+1)
-                        # Or a sound search. In some UMC the sound file names
-                        # are given with a 'sounds' or 'music' prefix.  Strip that.
-                        elif name.endswith(".ogg") or name.endswith(".wav"):
-                            dirname = os.path.dirname(name)
-                            if dirname in ("sounds", "music"):
-                                basename = os.path.basename(name)
-                                if basename in self.fileref:
-                                    key = basename
-                                    self.fileref[basename].append(fn, n+1)
+                        else:
+                            candidates = 0
+                            for trial in self.fileref:
+                                if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
+                                    key = trial
+                                    self.fileref[trial].append(fn, n+1)
+                                    candidates += 1
+                            if candidates > 1:
+                                print "%s: more than one definition of %s is visible here." % (reference(fn, n), name)
                         if not key:
                             self.missing.append((name, reference(fn,n+1)))
                 rfp.close()

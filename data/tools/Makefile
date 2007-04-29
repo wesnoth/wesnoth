@@ -12,13 +12,13 @@ TOPDIR = ../../
 # opaque macros that trying to reference-check them is hopeless.
 # So suppress reporting them unused even if they seem to have
 # no references.  Likewise for resources used only by the C++ GUI.
-FAKE = --force-used "(terrain|buttons|cursors|cursors-bw|menu|icons)/"
+FAKE = --force-used "(terrain|buttons|cursors|cursors-bw|menu)/"
 # Suppress meaningless errors about castle graphics and about resources 
 # used only by the GUI code in C++
 # FIXME: This also suppresses all checking of the tutorial files.
 # Otherwise we get warnings about duplicated resource files that are 
 # copies of stuff in HttT.  It's not clear what the right permanent fix is.
-EXCLUDE = --exclude ".dirstamp|po/|translations/|exploder/|castle-cutter/|UI/|tutorial/"
+EXCLUDE = --exclude ".dirstamp|po/|translations/|exploder/|castle-cutter/|icons/|UI/|tutorial/"
 
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
