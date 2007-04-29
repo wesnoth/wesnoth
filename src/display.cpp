@@ -1356,13 +1356,14 @@ void display::draw_minimap(int x, int y, int w, int h)
 	update_rect(minimap_location);
 }
 
-
 void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
-
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
+	height = static_cast<size_t>(height*zoom());
 
-	surface surf(image::get_image(image,image::SCALED_TO_HEX,image::NO_ADJUST_COLOUR));
+	surface surf(image::get_image(image,image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
+	// we use UNSCALED because scaling (and bilinear interpolaion )
+	// is bad for calculate_energy_bar. But we will do a geometric scaling later
 	surface unmoved_surf(image::get_image("misc/bar-energy-unmoved.png",image::UNSCALED,image::NO_ADJUST_COLOUR));
 	if(surf == NULL || unmoved_surf == NULL) {
 		return;
@@ -1380,7 +1381,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	  const fixed_t yratio = fxpdiv(surf->h,unmoved_surf->h);
 	  const SDL_Rect scaled_bar_loc = {fxptoi(unscaled_bar_loc. x * xratio),
 					   fxptoi(unscaled_bar_loc. y * yratio + 127),
-					   fxptoi(unscaled_bar_loc. w * yratio + 255),
+					   fxptoi(unscaled_bar_loc. w * xratio + 255),
 					   fxptoi(unscaled_bar_loc. h * yratio + 255)};
 	  bar_loc = scaled_bar_loc;
 	}
