@@ -1960,7 +1960,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	 * - terrain: if present, filter the village types against this list of terrain types 
 	 */
 	else if(cmd == "store_villages" ) {
-		//TODO - add wildcard support
 		log_scope("store_villages");
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
@@ -1991,48 +1990,20 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "store_locations" ) {
-		//TODO - add wildcard support
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
 			variable="location";
 		}
-		std::string wml_terrain = cfg["terrain"];
-		std::string x = cfg["x"];
-		std::string y = cfg["y"];
-		std::string radius_str = cfg["radius"];
-		wassert(state_of_game != NULL);
-		const t_translation::t_list& terrain = t_translation::read_list(wml_terrain);
-
-		const vconfig unit_filter = cfg.child("filter");
-
 		state_of_game->clear_variable_cfg(variable);
 
-		std::vector<gamemap::location> locs = parse_location_range(x,y);
-		if(locs.size() > MaxLoop) {
-			locs.resize(MaxLoop);
-		}
-
-		const size_t radius = minimum<size_t>(MaxLoop,lexical_cast_default<size_t>(radius_str));
 		std::set<gamemap::location> res;
-		get_tiles_radius(*game_map, locs, radius, res);
+		game_map->get_locations(res, cfg, *status_ptr, *units, false, MaxLoop);
 
-		size_t added = 0;
-		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end() && added != MaxLoop; ++j) {
-			if (!terrain.empty()) {
-				const t_translation::t_letter c = game_map->get_terrain(*j);
-				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
-					continue;
-			}
-			if (!unit_filter.null()) {
-				const unit_map::const_iterator u = units->find(*j);
-				if (u == units->end() || !game_events::unit_matches_filter(u, unit_filter))
-					continue;
-			}
+		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end(); ++j) {
 			config &loc_store = state_of_game->add_variable_cfg(variable);
 			j->write(loc_store);
 			game_map->write_terrain(*j, loc_store);
-			++added;
 		}
 	}
 

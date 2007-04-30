@@ -26,6 +26,7 @@ class unit_map;
 #include <map>
 #include <string>
 #include <vector>
+#include <set>
 
 #define MAX_MAP_AREA	65536
 
@@ -179,8 +180,14 @@ public:
 	//shortcut to get_terrain_info(get_terrain(loc))
 	const terrain_type& get_terrain_info(const location &loc) const
 		{ return get_terrain_info(get_terrain(loc)); }
-	//
+
+	//the terrain filter, also known as "standard location filter" or SLF
 	bool terrain_matches_filter(const location& loc, const vconfig& cfg, 
+			const gamestatus& game_status, const unit_map& units,
+			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
+
+	//gets all locations that match a given terrain filter
+	void get_locations(std::set<location>& locs, const vconfig& filter, 
 			const gamestatus& game_status, const unit_map& units,
 			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
 
@@ -211,7 +218,8 @@ protected:
 	
 private:
 	bool terrain_matches_internal(const location& loc, const vconfig& cfg, 
-			const gamestatus& game_status, const unit_map& units, const bool flat_tod=false) const;
+			const gamestatus& game_status, const unit_map& units, 
+			const bool flat_tod=false, const bool ignore_xy=false) const;
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 

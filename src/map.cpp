@@ -593,7 +593,8 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig
 }
 
 bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconfig& cfg, 
-		const gamestatus& game_status, const unit_map& units, const bool flat_tod) const
+		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
+		const bool ignore_xy) const
 {
 
 	const int terrain_format = lexical_cast_default(cfg["terrain_format"], -1);
@@ -611,7 +612,7 @@ bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconf
 	}
 	
 	//Allow filtering on location ranges 
-	if(!cfg["x"].empty() || !cfg["y"].empty()){
+	if(!ignore_xy && !(cfg["x"].empty() && cfg["y"].empty())){
 		if(!loc.matches_range(cfg["x"], cfg["y"])) {
 			return false;
 		}
@@ -753,4 +754,52 @@ const std::map<t_translation::t_letter, size_t>& gamemap::get_weighted_terrain_f
 	}
 
 	return terrainFrequencyCache_;
+}
+
+void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& filter,
+		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
+		const size_t max_loop) const
+{
+	std::vector<gamemap::location> xy_locs = parse_location_range(filter["x"],filter["y"]);
+	if(xy_locs.empty()) {
+		//consider all locations on the map
+		for(int x=0; x < x_; x++) {
+			for(int y=0; y < y_; y++) {
+				locs.insert(location(x,y));
+			}
+		}
+	} else {
+		//handle radius
+		const size_t radius = minimum<size_t>(max_loop,
+			lexical_cast_default<size_t>(filter["radius"], 0));
+		get_tiles_radius(*this, xy_locs, radius, locs);
+	}
+	//handle [not]
+	if(filter.has_child("not")) {
+		const vconfig::child_list& nots = filter.get_children("not");
+		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
+			std::set<gamemap::location> removal_hexes;
+			get_locations(removal_hexes, *i, game_status, units, flat_tod, max_loop);
+			std::set<gamemap::location>::iterator erase_itor = removal_hexes.begin();
+			while(erase_itor != removal_hexes.end()) {
+				locs.erase(*erase_itor++);
+			}
+		}
+	}
+	//restrict the potential number of locations to be filtered
+	if(locs.size() > max_loop + 1) {
+		std::set<gamemap::location>::iterator erase_itor = locs.begin();
+		for(int i=0; i < max_loop + 1; ++i) {
+			++erase_itor;
+		}
+		locs.erase(erase_itor, locs.end());
+	}
+	std::set<gamemap::location>::iterator loc_itor = locs.begin();
+	while(loc_itor != locs.end()) {
+		if(terrain_matches_internal(*loc_itor, filter, game_status, units, flat_tod, true)) {
+			++loc_itor;
+		} else {
+			locs.erase(loc_itor++);
+		}
+	}
 }
