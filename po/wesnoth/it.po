@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-29 21:39+0200\n"
-"PO-Revision-Date: 2007-04-24 10:06+0200\n"
+"PO-Revision-Date: 2007-04-30 01:04+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1334,7 +1334,7 @@ msgstr ""
 "allo stato precedente. Potresti voler attivare gli «aggiornamenti ritardati "
 "dell'oscurità» dal menu delle azioni. Ciò impedisce alle unità di diradare "
 "l'oscurità o la nebbia fino al prossimo evento casuale o ad un aggiornamento "
-"manuale (effettuabile con «aggiorna oscurità ora» (o fino allla fine del "
+"manuale (effettuabile con «aggiorna oscurità ora» (o fino alla fine del "
 "turno) e quindi ti lascia la libertà di annullare la mossa."
 
 #: data/help.cfg:156
@@ -5421,9 +5421,8 @@ msgid "Impassable Mountains"
 msgstr "Montagne invalicabili"
 
 #: data/terrain.cfg:983
-#, fuzzy
 msgid "Impassable Desert Mountains"
-msgstr "Montagne invalicabili"
+msgstr "Montagne invalicabili del deserto"
 
 #: data/themes/default.cfg:80 data/themes/dfool.cfg:101
 #: data/themes/experimental.cfg:64
@@ -5870,7 +5869,6 @@ msgstr ""
 "menù a comparsa. Poni il mouse sopra qualcosa per ottenerne una descrizione."
 
 #: data/tips.cfg:36
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -5878,8 +5876,10 @@ msgid ""
 "adjust campaign difficulty."
 msgstr ""
 "Puoi mandare al progetto Wesnoth un rapporto anonimo dei tuoi progressi "
-"utilizzando il pulsante \"Aiuta Wesnoth\". Queste informazioni sono "
-"essenziali per permetterci di calibrare la difficoltà delle campagne."
+"utilizzando il pulsante \"Aiuta Wesnoth\" (indicato dall'icona di una busta "
+"nell'angolo in basso a destra della schermata iniziale del gioco). Queste "
+"informazioni sono essenziali per permetterci di calibrare la difficoltà "
+"delle campagne."
 
 #: data/traits.cfg:9
 msgid "loyal"
@@ -8862,9 +8862,8 @@ msgid "female^Rogue"
 msgstr "Furfantessa"
 
 #: data/units/Human_Outlaw_Ruffian.cfg:3
-#, fuzzy
 msgid "Ruffian"
-msgstr "Rovine"
+msgstr "Canaglia"
 
 #: data/units/Human_Outlaw_Ruffian.cfg:17
 msgid ""
@@ -8873,6 +8872,11 @@ msgid ""
 "stick, are known as 'Ruffians'.  With enough experience they can learn to "
 "swing a bigger club or throw things, but not both."
 msgstr ""
+"Alcuni uomini senza particolari qualità non possono o non vogliono fare una "
+"vita onesta. Quelli che cercano di farsi strada nella vita usando il lato "
+"pesante di un bastone sono noti come \"canaglie\". Con un po' di esperienza, "
+"potranno imparare a usare un bastone più grosso o a scagliare oggetti, ma "
+"non entrambe le cose."
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
@@ -11088,11 +11092,9 @@ msgstr ""
 "caricarlo comunque.\n"
 
 #: src/game.cpp:696 src/multiplayer_connect.cpp:1256
-#, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
-"Questo salvataggio è di una versione differente del gioco. Vuoi provare a "
-"caricarlo?"
+"Questo salvataggio è di una versione troppo vecchia per riuscire a caricarlo."
 
 #: src/game.cpp:701 src/multiplayer_connect.cpp:1262
 msgid ""
