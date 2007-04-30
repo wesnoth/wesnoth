@@ -713,15 +713,35 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_l
 		remove_from_border_cache(adj[n]);
 }
 
-std::vector<gamemap::location> parse_location_range(const std::string& x, const std::string& y)
+std::vector<gamemap::location> parse_location_range(const std::string& x, const std::string& y,
+													const gamemap *const map)
 {
 	std::vector<gamemap::location> res;
 	const std::vector<std::string> xvals = utils::split(x);
 	const std::vector<std::string> yvals = utils::split(y);
 
-	for(unsigned int i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
-		const std::pair<int,int> xrange = utils::parse_range(xvals[i]);
-		const std::pair<int,int> yrange = utils::parse_range(yvals[i]);
+	for(unsigned int i = 0; i < xvals.size() || i < yvals.size(); ++i) {
+		std::pair<int,int> xrange, yrange;
+
+		//x
+		if(i < xvals.size()) {
+			xrange = utils::parse_range(xvals[i]);
+		} else if (map != NULL) {
+			xrange.first = 1;
+			xrange.second = map->x();
+		} else {
+			break;
+		}
+
+		//y
+		if(i < yvals.size()) {
+			yrange = utils::parse_range(yvals[i]);
+		} else if (map != NULL) {
+			yrange.first = 1;
+			yrange.second = map->y();
+		} else {
+			break;
+		}
 
 		for(int x = xrange.first; x <= xrange.second; ++x) {
 			for(int y = yrange.first; y <= yrange.second; ++y) {
@@ -729,7 +749,6 @@ std::vector<gamemap::location> parse_location_range(const std::string& x, const 
 			}
 		}
 	}
-
 	return res;
 }
 
@@ -760,20 +779,31 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop) const
 {
-	std::vector<gamemap::location> xy_locs = parse_location_range(filter["x"],filter["y"]);
+	std::vector<gamemap::location> xy_locs = parse_location_range(filter["x"],filter["y"],this);
 	if(xy_locs.empty()) {
 		//consider all locations on the map
 		for(int x=0; x < x_; x++) {
 			for(int y=0; y < y_; y++) {
-				locs.insert(location(x,y));
+				xy_locs.push_back(location(x,y));
 			}
 		}
-	} else {
-		//handle radius
-		const size_t radius = minimum<size_t>(max_loop,
-			lexical_cast_default<size_t>(filter["radius"], 0));
-		get_tiles_radius(*this, xy_locs, radius, locs);
 	}
+
+	//handle filter
+	std::vector<gamemap::location>::iterator loc_itor = xy_locs.begin();
+	while(loc_itor != xy_locs.end()) {
+		if(terrain_matches_internal(*loc_itor, filter, game_status, units, flat_tod, true)) {
+			++loc_itor;
+		} else {
+			loc_itor = xy_locs.erase(loc_itor);
+		}
+	}
+
+	//handle radius
+	const size_t radius = minimum<size_t>(max_loop,
+		lexical_cast_default<size_t>(filter["radius"], 0));
+	get_tiles_radius(*this, xy_locs, radius, locs);
+
 	//handle [not]
 	if(filter.has_child("not")) {
 		const vconfig::child_list& nots = filter.get_children("not");
@@ -786,20 +816,13 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 			}
 		}
 	}
-	//restrict the potential number of locations to be filtered
+
+	//restrict the potential number of locations to be returned
 	if(locs.size() > max_loop + 1) {
 		std::set<gamemap::location>::iterator erase_itor = locs.begin();
 		for(int i=0; i < max_loop + 1; ++i) {
 			++erase_itor;
 		}
 		locs.erase(erase_itor, locs.end());
-	}
-	std::set<gamemap::location>::iterator loc_itor = locs.begin();
-	while(loc_itor != locs.end()) {
-		if(terrain_matches_internal(*loc_itor, filter, game_status, units, flat_tod, true)) {
-			++loc_itor;
-		} else {
-			locs.erase(loc_itor++);
-		}
 	}
 }

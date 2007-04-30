@@ -236,7 +236,9 @@ private:
 
 //a utility function which parses ranges of locations
 //into a vector of locations
-std::vector<gamemap::location> parse_location_range(const std::string& xvals, const std::string& yvals);
+std::vector<gamemap::location> parse_location_range(const std::string& xvals,
+													const std::string& yvals,
+													const gamemap *const map=NULL);
 
 //dump a position on a stream for debug purposes
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l);
