@@ -192,6 +192,9 @@ filemoves = {
         ("wesnoth-1.ogg", "revelation.ogg"),
         ("wesnoth-2.ogg", "loyalists.ogg"),
         ("wesnoth-5.ogg", "northerners.ogg"),
+        # And the holy->arcane change
+        ("type=holy", "type=arcane"),
+        ("holy=", "arcane=")
     ),
     # An empty sentinel value at end is required.
     # Always have the current version here.
