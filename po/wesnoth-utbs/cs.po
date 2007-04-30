@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-29 21:43+0200\n"
-"PO-Revision-Date: 2007-04-26 22:51+0100\n"
+"PO-Revision-Date: 2007-04-30 13:54+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -3171,15 +3171,13 @@ msgid "Maybe they're hiding in the stables. Let's go check."
 msgstr "Možná se skrývají ve stájích. Pojďme to zjistit."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/1_Morning_After.cfg:730
-#, fuzzy
 msgid "Hey Naru, the rocks have stopped falling. You can come out now!"
-msgstr "Hej, Niso, kamení už přestalo padat. Můžeš vyjít ven!"
+msgstr "Hej, Naru, kamení už přestalo padat. Můžeš vyjít ven!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/1_Morning_After.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/scenarios/1_Morning_After.cfg:749
-#, fuzzy
 msgid "Naru"
-msgstr "Narn"
+msgstr "Naru"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/1_Morning_After.cfg:738
 #: data/campaigns/Under_the_Burning_Suns/scenarios/1_Morning_After.cfg:805
@@ -3238,7 +3236,7 @@ msgstr "Hej, Niso, kamení už přestalo padat. Můžeš vyjít ven!"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/1_Morning_After.cfg:800
 #: data/campaigns/Under_the_Burning_Suns/scenarios/1_Morning_After.cfg:816
 msgid "Nisa"
-msgstr ""
+msgstr "Nisa"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/1_Morning_After.cfg:864
 msgid "Xanthos"
@@ -3725,7 +3723,6 @@ msgstr ""
 "předtím než přišly písky."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:335
-#, fuzzy
 msgid ""
 "I've seen the ancient remains of stone castles and markers in the sands. The "
 "paths of the ancients may serve us yet again. If we follow the paths from "
@@ -3736,7 +3733,8 @@ msgstr ""
 "Viděl jsem pozůstatky dávných kamenných hradů a značek v píscích. Cesty "
 "dávných předchůdců nám mohou opět posloužit. Pokud budeme sledovat stezku od "
 "oázy k oáze, mohli bychom dokázat přežít horko a žízeň pouště. Ale v těch "
-"píscích se ukrývají větší nebezpečí než žízeň."
+"píscích se ukrývají větší nebezpečí než žízeň; musíme opatrně prozkoumávat "
+"cestu před námi."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:340
 msgid ""
@@ -3753,7 +3751,6 @@ msgstr ""
 "denní výhní a nočním chladem."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:346
-#, fuzzy
 msgid ""
 "During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the end "
 "of each your turns, every unit in a sand, road, rubble or sand dune hex will "
@@ -3761,15 +3758,12 @@ msgid ""
 "At the start of your turn, each unit in an oasis (shallow water) hex will "
 "regain full attack strenght."
 msgstr ""
-"Během dne (svítání, dopoledne, poledne, odpoledne a soumraku) bude každá tvá "
-"jednotka stojící na konci kola na písku, cestě, smetí nebo pouštních dunách "
-"zraněna o $desert_damage životů. I když může dehydratace tvé jednotky "
-"ošklivě zranit, nikdy je neusmrtí, tzn. vždy jim zůstane alespoň 1 život. "
-"Každá jednotka stojící v oáze (mělká voda) se na začátku kola uzdraví o 8 "
-"životů."
+"Během dne (svítání, dopoledne, poledne, odpoledne a soumraku) poklesne každé "
+"tvé jednotce stojící na konci kola na písku, cestě, smetí nebo pouštních "
+"dunách zranění útoků; magické útoky však nebudou ovlivněny. Každé jednotce "
+"stojící v oáze (mělká voda) se na začátku kola útoky plně obnoví."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:353
-#, fuzzy
 msgid ""
 "Kaleh, be careful you don't recruit too many guards to go with us. I doubt "
 "we're going to find any other villages out in the sands, so the income that "
@@ -3808,21 +3802,25 @@ msgstr "Tato jednotka není na konci tahu zraňována pouštním horkem."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:472
 msgid "Wait. I think I spotted something ahead us..."
-msgstr ""
+msgstr "Počkat, myslím že před námi bylo něco vidět..."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:476
 msgid "What? I don't see a thing."
-msgstr ""
+msgstr "Co? Já nic nevidím."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:480
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgstr ""
+"Tamty lesklé flíčky před námi, vidíš? Škorpióni, a jací velcí! Je jich celé "
+"hnízdo."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:487
 msgid ""
 "Do you want us to fight? We can still avoid them, but they are between us "
 "and the next oasis."
 msgstr ""
+"Pustíme se do nich? Můžeme se jim stále vyhnout, ale jsou mezi námi a další "
+"oázou."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:504
 msgid "Scorpions! We must have stumbled across a nest of them."
@@ -3853,13 +3851,12 @@ msgstr ""
 "ve dne pouštním horkem."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:582
-#, fuzzy
 msgid ""
 "Look, an oasis! Its refreshing water will allow our people to regain "
 "strenght and rest safely on the grass during the heat of the day."
 msgstr ""
-"Podívejte, oáza! Její občerstvující voda uzdraví naše raněné, kteří do ní "
-"vejdou, a ostatní mohou během denního horka bezpečně odpočívat na trávě."
+"Podívejte, oáza! Její občerstvující voda nám umožní obnovit síly a "
+"odpočinout si bezpečně na trávě během denního horka."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:613
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:615
@@ -3869,7 +3866,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:633
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:642
 msgid "Hunting Ogre"
-msgstr ""
+msgstr "Lovící obr"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:692
 msgid "Ogre ambush!"
@@ -3888,43 +3885,46 @@ msgstr ""
 "drtivější pád."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:730
-#, fuzzy
 msgid ""
 "That's the last of them. This looks like a hunting party, they must have a "
 "camp around here somewhere."
 msgstr ""
-"To byl poslední. Zdá se, že to byla celá banda nájezdníků; někde poblíž musí "
-"ležet jejich tábor."
+"To byl poslední. Zdá se, že to byla banda lovců; někde poblíž musí ležet "
+"jejich tábor."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:744
 msgid ""
 "Hey! Look there, they dropped something... A stone bottle, sealed. I wonder "
 "what's inside..."
 msgstr ""
+"Podívejme, tady jim něco spadlo... kamenná lahvička, dobře zazátkovaná. "
+"Copak je asi uvnitř?"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:757
-#, fuzzy
 msgid "Nym! No! don't open..."
-msgstr "Ne, neod..."
+msgstr "Nym! Ne, neotevírej to..."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:767
 msgid ""
 "To late. And it's just a sand inside. Not worth... Whoa! What's happening?!"
 msgstr ""
+"Pozdě. Stejně je uvnitř jen písek. Proč se tak roz... Hej! Co se to děje?!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:774
 msgid "It's a dust devil, but I never seen one so small before."
-msgstr ""
+msgstr "To je prachový ďábel, ale maličký! Ještě jsem neviděl tak malého."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:781
 msgid "It seems to like you, looks like you just got yourself a pet."
-msgstr ""
+msgstr "Zdá se že tě má rád, teď máš svoje malé zvířátko."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:786
 msgid ""
 "No buts girl, I told you not to open it. Let's go I'd realy like to get to "
 "an oasis soon."
 msgstr ""
+"Žádné odmlouvání, děvče. Řekla jsem ti jasně že tu láhev nemáš otevírat. "
+"Pojďme, ráda bych se dostala do oázy co nejrychleji."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:826
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:828
@@ -3939,16 +3939,16 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:859
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:861
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:863
-#, fuzzy
 msgid "Black Hand Bandit"
-msgstr "Rváč Černé Ruky"
+msgstr "Bandita Černé Ruky"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:879
-#, fuzzy
 msgid ""
 "And I tought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
-msgstr "Tohle je naše oáza! Zavodníme ji vaší krví!"
+msgstr ""
+"A já myslel, že to bude další nudná hlídka. Ty elfe tam! Tohle je naše oáza! "
+"Zavodníme ji vaší krví!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:884
 #: data/campaigns/Under_the_Burning_Suns/scenarios/2_Harsh_Sands.cfg:909
@@ -14557,72 +14557,3 @@ msgstr "Dlouhá tma (4)"
 #~ msgstr ""
 #~ "Jak jen jsme ji mohli nechat zemřít? Nikdy předtím jsem neviděl takovou "
 #~ "ohnivou magii. Bude nám bolestivě scházet."
-
-# pův.: Odcházím za mými předky...
-#~ msgid "I go now to join my forefathers..."
-#~ msgstr "Odcházím přidat se ke předkům..."
-
-#~ msgid "No, $ally_name can't die now!"
-#~ msgstr "Ne, $ally_name nemá zemřít teď!"
-
-# pův.: Jak bez něj a jeho vedení unikneme z těchto pekelných jeskyní? Teď jsme ztraceni!
-#~ msgid ""
-#~ "Without his guidance, how can we escape from these infernal caves? We are "
-#~ "lost without him!"
-#~ msgstr ""
-#~ "Kdo nás vyvede z těchto pekelných jeskyní, když ne on? Bez něj odtud "
-#~ "neunikneme, jsme ztraceni!"
-
-#~ msgid "He was a brave warrior and a true ally. He will be missed."
-#~ msgstr "Byl to statečný válečník a opravdový přítel. Bude nám všem scházet."
-
-#~ msgid "Farewell Nym, I go to the sea god. You elves must go on without me."
-#~ msgstr ""
-#~ "Sbohem, Nym, odcházím k Bohu moří. Vy elfové budete muset pokračovat beze "
-#~ "mne."
-
-#~ msgid "Farewell Esanoo. You were my favorite of the merfolk."
-#~ msgstr "Sbohem, Esanoo. Byl jsi mým nejoblíbenějším mořským mužem."
-
-#~ msgid "Aaauurrrgghhh!!!"
-#~ msgstr "Aaauugrrrr!!!"
-
-#~ msgid "To die on the cusp of victory. Oh the irony!"
-#~ msgstr "Jaká ironie, zemřít, když vítězství je na dosah ruky!"
-
-#~ msgid "By Moradin, I have fallen!"
-#~ msgstr "U Moradina, já padl!"
-
-#~ msgid "Oasis"
-#~ msgstr "Oáza"
-
-#~ msgid "holy"
-#~ msgstr "svatý"
-
-#~ msgid ""
-#~ "Skilled in commanding other elves, Desert Captains provide a bonus to all "
-#~ "level 1 units on adjacent hexes. Desert Captains prefer engaging the "
-#~ "enemy in melee combat, but are trained in archery as well.\n"
-#~ "\n"
-#~ "Special Notes: the leadership of a Captain enables friendly units next to "
-#~ "it to deal more damage in combat, though this only applies to units of "
-#~ "lower level."
-#~ msgstr ""
-#~ "Pouštní kapitáni, zběhlí ve velení ostatním elfům, poskytují bonus v boji "
-#~ "jednotkám první úrovně na okolních políčkách. Kapitáni se raději pouštějí "
-#~ "do boje mečem, ale nepostrádají potřebné zkušenosti ani v zacházení s "
-#~ "lukem.\n"
-#~ "\n"
-#~ "Zvláštní rysy: velení kapitána umožňuje přátelským jednotkám vedle něj "
-#~ "způsobovat v boji větší zranění, i když to platí pouze pro jednotky nižší "
-#~ "úrovně."
-
-#~ msgid "Troll Zombie"
-#~ msgstr "Troll Zombie"
-
-#~ msgid ""
-#~ "These undead trolls fight again in death as they did in life, except this "
-#~ "time they smell much worse."
-#~ msgstr ""
-#~ "Tito velcí trollové bojují mrtví stejně jako za jejich života, jen teď "
-#~ "mnohem hůře páchnou."

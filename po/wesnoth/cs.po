@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-29 21:39+0200\n"
-"PO-Revision-Date: 2007-04-26 22:44+0100\n"
+"PO-Revision-Date: 2007-04-30 13:33+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -5777,7 +5777,6 @@ msgstr ""
 "Přesuň nad něj myš a dostaneš vyčerpávající popis."
 
 #: data/tips.cfg:36
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -5785,8 +5784,8 @@ msgid ""
 "adjust campaign difficulty."
 msgstr ""
 "Můžete poslat Projektu Wesnoth anonymní souhrn vašeho postupu ve hře "
-"použitím tlačítka 'Pomozte nám'. Tyto informace jsou důležité pro upravení "
-"obtížnosti kampaní."
+"použitím tlačítka 'Pomozte nám' (malá ikona obálky v pravém dolním rohu "
+"obrazovky). Tyto informace jsou důležité pro upravení obtížnosti kampaní."
 
 #: data/traits.cfg:9
 msgid "loyal"
@@ -10849,10 +10848,8 @@ msgstr ""
 "pokračovat.\n"
 
 #: src/game.cpp:696 src/multiplayer_connect.cpp:1256
-#, fuzzy
 msgid "This save is from a version too old to be loaded."
-msgstr ""
-"Tato uložená pozice je z jiné verze hry. Chceš se ji opravdu pokusit nahrát?"
+msgstr "Tato uložená pozice je z příliš staré verze hry a nelze ji nahrát."
 
 #: src/game.cpp:701 src/multiplayer_connect.cpp:1262
 msgid ""
