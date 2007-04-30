@@ -242,7 +242,7 @@ game_version::game_version(std::string str) :
 		offset = str.find_first_not_of("0123456789");
 		patch = lexical_cast_default<unsigned int>(std::string(str, 0, offset ), 0);
 		if(offset != std::string::npos) {
-			extra = std::string(str, offset);
+			extra = std::string(str, offset, std::string::npos);
 		}
 	}
 	
