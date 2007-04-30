@@ -226,26 +226,17 @@ bool conditional_passed(const unit_map* units,
 		}
 	}
 
-	//if the if statement requires we have a certain village, then
+	//if the if statement requires we have a certain location, then
 	//check for that.
-	const vconfig::child_list& own_village = cond.get_children("own_village");
+	const vconfig::child_list& have_location = cond.get_children("have_location");
 
-	for(vconfig::child_list::const_iterator v = own_village.begin(); v != own_village.end(); ++v) {
-
-		std::string side = (*v)["side"];
-		wassert(state_of_game != NULL);
-		const int side_index = lexical_cast_default<int>(side,1)-1;
-		
-		int x = lexical_cast_default((*v)["x"], 0) - 1;
-		int y = lexical_cast_default((*v)["y"], 0) - 1;
-
-		const gamemap::location vloc = gamemap::location(x, y);
-
-		if(game_map->is_village(vloc)) {
-			if (village_owner(vloc,*teams) == side_index)
-				break;
+	for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
+		std::set<gamemap::location> res;
+		wassert(game_map != NULL && units != NULL && status_ptr != NULL);
+		game_map->get_locations(res, *v, *status_ptr, *units);
+		if(res.empty()) {
+			return false;
 		}
-		return false;		
 	}
 
 	//check against each variable statement to see if the variable
@@ -314,7 +305,7 @@ bool conditional_passed(const unit_map* units,
 		}
 	}
 
-	return !have_unit.empty() || !own_village.empty() || !variables.empty() || !not_statements.empty() || !and_statements.empty();
+	return !have_unit.empty() || !have_location.empty() || !variables.empty() || !not_statements.empty() || !and_statements.empty();
 }
 
 } //end namespace game_events
