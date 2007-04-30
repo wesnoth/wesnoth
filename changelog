@@ -4,6 +4,9 @@ Version 1.3.2+svn:
  * WML engine
    * removed deprecated special= support in [effect]
    * removed deprecated 1.2 map format support
+   * [store_villages] and [store_locations] now use the standard location 
+     filter, meaning they accept all the possible keys of [filter_location]
+   * [store_villages] must now use owner_side= instead of side=
  * Miscellaneous and bugfixes
    * 1.2 savegames are no longer compatible and thus not loaded
 
