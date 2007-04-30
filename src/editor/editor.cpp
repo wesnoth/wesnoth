@@ -546,6 +546,14 @@ void map_editor::edit_save_as() {
 
 void map_editor::perform_set_starting_pos() {
 	std::vector<std::string> players;
+	const int current_side = starting_side_at(map_, selected_hex_);
+	// use the "none" item only when a start side is already here
+	if (current_side != -1) {
+		std::stringstream none_str;
+		none_str << _("None");
+		players.push_back(none_str.str());
+	}
+	
 	for (int i = 0; i < num_players; i++) {
 		std::stringstream str;
 		str << _("Player") << " " << i + 1;
@@ -554,9 +562,12 @@ void map_editor::perform_set_starting_pos() {
 	int res = gui::show_dialog(gui_, NULL, _("Which Player?"),
 	                                 _("Which player should start here?"),
 	                                 gui::OK_CANCEL, &players);
-	if (res >= 0) {
-		res++;
-		set_starting_position(res, selected_hex_);
+
+	if (current_side != -1 && res==0) {
+		set_starting_position(current_side, gamemap::location());
+	} else if (res >= 0) {
+		// We must take care of the possible presence of the "None" item
+		set_starting_position(current_side != -1 ? res : res+1 , selected_hex_);
 	}
 }
 
@@ -992,8 +1003,14 @@ void map_editor::set_starting_position(const int player, const gamemap::location
 		recalculate_starting_pos_labels();
 	}
 	else {
-		gui::show_dialog(gui_, NULL, "",
-		                 _("You must have a hex selected on the board."), gui::OK_ONLY);
+		// If you selected an off-board hex, we just use the standard invalid location
+		map_undo_action action;
+		action.add_starting_location(player, player, map_.starting_position(player), gamemap::location());
+		map_.set_starting_position(player, gamemap::location());
+		save_undo_action(action);
+		recalculate_starting_pos_labels();
+		//gui::show_dialog(gui_, NULL, "",
+		//		                 _("You must have a hex selected on the board."), gui::OK_ONLY);
 	}
 }
 
