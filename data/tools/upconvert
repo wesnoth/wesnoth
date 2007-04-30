@@ -22,9 +22,7 @@
 # 6. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
 #
-# This script presently makes no effort to fix terrain codes outside of maps,
-# e.g. in terrain filters, except that it does handle terrain_liked.
-# It will barf on maps with custom terrains.
+# This script will barf on maps with custom terrains.
 
 import sys, os, re, getopt, curses.ascii
 
@@ -587,6 +585,17 @@ if __name__ == '__main__':
                 return True
         return False
 
+    def parse_attribute(str):
+        "Parse a WML key-value pair from a line."
+        if '=' not in str:
+            return None
+        m = re.match(r"(^\s*[a-z0-9_]+\s*=\s*)(\S+)(\s*#?.*\s*)", str)
+        if not m:
+            return None
+        # Four fields: stripped key, part of line before value,
+        # value, trailing whitespace and comments
+        return (m.group(1).replace("=", "").strip(),) + m.groups()
+
     def texttransform(filename, lineno, line):
         "Resource-name transformation on text lines."
         transformed = line
@@ -594,20 +603,60 @@ if __name__ == '__main__':
         for step in fileconversions:
             for (old, new) in step:
                 transformed = transformed.replace(old, new)
-        # Now, handle terrain-liked=
-        if "terrain_liked=" in transformed:
-            (pre, terrain) = transformed.split("=")
-            newterrains = []
-            post = ""
-            for c in terrain:
-                if c in conversion1:
-                    newterrains.append(conversion1[c])
-                elif curses.ascii.isspace(c):
-                    post += c
-                else:
-                    print "%s, line %d: custom terrain %s ignored." \
-                          (filename, lineno+1, c)
-            transformed = pre + "=" + ",".join(newterrains) + post
+        # Handle terrain_liked=, terrain=, valid_terrain=
+        spaceless = transformed.replace(" ", "")
+        if "terrain_liked=" in spaceless or "terrain=" in spaceless:
+            (key, pre, value, post) = parse_attribute(transformed)
+            # We have to cope with the following cases...
+            # Old style:
+            #    terrain_liked=ghM
+            #    terrain_liked=BEITU
+            #    valid_terrain=gfh
+            #    terrain=AaBbDeLptUVvYZ
+            #    terrain=r
+            #    terrain={LETTERS}
+            #    terrain=""
+            #    terrain=s,c,w,k
+            # New style:
+            #    terrain=Mm
+            #    terrain=Gs^Fp
+            #    terrain=Hh, Gg^Vh, Mm
+            # The sticky part is that, while it never happens in the current
+            # corpus, terrain=Mm (capital letter followed by small) could be
+            # interpreted either way.
+            newstyle = len(value) > 1 \
+                       and value[0].isupper() and value[1].islower() \
+                       and (',' in value or len(value) == 2)
+            if newstyle:
+                if len(value) == 2:
+                    print "%s, line %d: ambiguous terrain value %s." \
+                          % (filename, lineno+1, value)
+                # 1.3.1 to 1.3.2 conversion
+                for (old, new) in conversion2.items():
+                    transformed = old.sub(new, transformed)
+            else:
+                # 1.2.x to 1.3.2 conversions
+                newterrains = ""
+                inmacro = False
+                for c in value:
+                    if not inmacro:
+                        if c == '{':
+                            inmacro = True
+                            newterrains += c                            
+                        elif c == ',':
+                            pass
+                        elif c.isspace():
+                            newterrains += c
+                        elif c in conversion1:
+                            newterrains += conversion1[c] + ","
+                        else:
+                            print "%s, line %d: custom terrain %s ignored." \
+                              % (filename, lineno+1, c)
+                    else: # inmacro == True
+                        if c == '}':
+                            inmacro = False
+                        newterrains += c
+                transformed = pre + newterrains[:-1] + post
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
