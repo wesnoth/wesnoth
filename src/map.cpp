@@ -613,8 +613,7 @@ bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconf
 
 	if(cfg.has_attribute("terrain")) {
 		if(parsed_terrain == NULL) {
-			t_translation::t_list& parsed_list = t_translation::read_list(cfg["terrain"]);
-			parsed_terrain = new t_translation::t_list(parsed_list);
+			parsed_terrain = new t_translation::t_list(t_translation::read_list(cfg["terrain"]));
 		}
 		if(!parsed_terrain->empty()) {
 			const t_translation::t_letter letter = get_terrain_info(loc).number();
