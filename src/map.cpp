@@ -566,7 +566,7 @@ namespace {
 	struct terrain_cache_manager {
 		terrain_cache_manager() : ptr(NULL) {}
 		~terrain_cache_manager() { delete ptr; }
-		t_translation::t_list *ptr;
+		t_translation::t_match *ptr;
 	};
 } //end anonymous namespace
 
@@ -603,7 +603,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig
 
 bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
-		const bool ignore_xy, t_translation::t_list*& parsed_terrain) const
+		const bool ignore_xy, t_translation::t_match*& parsed_terrain) const
 {
 
 	const int terrain_format = lexical_cast_default(cfg["terrain_format"], -1);
@@ -613,9 +613,9 @@ bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconf
 
 	if(cfg.has_attribute("terrain")) {
 		if(parsed_terrain == NULL) {
-			parsed_terrain = new t_translation::t_list(t_translation::read_list(cfg["terrain"]));
+			parsed_terrain = new t_translation::t_match(cfg["terrain"]);
 		}
-		if(!parsed_terrain->empty()) {
+		if(!parsed_terrain->is_empty) {
 			const t_translation::t_letter letter = get_terrain_info(loc).number();
 			if(!t_translation::terrain_matches(letter, *parsed_terrain)) {
 				return false;
