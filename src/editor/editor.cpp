@@ -585,7 +585,7 @@ void map_editor::perform_flood_fill() {
 		action.add_terrain((*it).second, palette_.selected_fg_terrain(),
 			   (*it).first);
 	}
-	terrain_changed(to_invalidate, action);
+	terrain_changed(to_invalidate);
 	save_undo_action(action);
 }
 
@@ -645,7 +645,7 @@ void map_editor::edit_fill_selection() {
 			map_.set_terrain(*it, palette_.selected_fg_terrain());
 		}
 	}
-	terrain_changed(selected_hexes_, undo_action);
+	terrain_changed(selected_hexes_);
 	save_undo_action(undo_action);
 }
 
@@ -686,7 +686,7 @@ void map_editor::perform_paste() {
 		}
 	}
 	undo_action.set_selection(selected_hexes_, filled);
-	terrain_changed(filled, undo_action);
+	terrain_changed(filled);
 	selected_hexes_ = filled;
 	save_undo_action(undo_action);
 }
@@ -1124,7 +1124,7 @@ void map_editor::draw_on_mouseover_hexes(const t_translation::t_letter terrain) 
 				}
 			}
 			if (!to_invalidate.empty()) {
-				terrain_changed(to_invalidate, action);
+				terrain_changed(to_invalidate);
 				save_undo_action(action);
 			}
 		}
@@ -1164,9 +1164,9 @@ void map_editor::perform_selection_move() {
 		}
 	}
 	undo_action.set_selection(selected_hexes_, new_selection);
-	terrain_changed(selected_hexes_, undo_action);
+	terrain_changed(selected_hexes_);
 	selected_hexes_ = new_selection;
-	terrain_changed(selected_hexes_, undo_action);
+	terrain_changed(selected_hexes_);
 	save_undo_action(undo_action);
 }
 
@@ -1176,29 +1176,27 @@ void map_editor::draw_terrain(const t_translation::t_letter terrain,
 	const t_translation::t_letter current_terrain = map_.get_terrain(hex);
 	map_undo_action undo_action;
 	undo_action.add_terrain(current_terrain, terrain, hex);
-	terrain_changed(hex, undo_action);
+	terrain_changed(hex);
 	map_.set_terrain(hex, terrain);
 	gui_.rebuild_terrain(hex);
 	save_undo_action(undo_action);
 }
 
-void map_editor::terrain_changed(const gamemap::location &hex, map_undo_action &undo_action) 
+void map_editor::terrain_changed(const gamemap::location &hex) 
 {
 	std::vector<gamemap::location> v(1, hex);
-	terrain_changed(v, undo_action);
+	terrain_changed(v);
 }
 
-void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes,
-								 map_undo_action &undo_action) 
+void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes) 
 {
 	invalidate_all_and_adjacent(hexes);
 }
 
-void map_editor::terrain_changed(const std::set<gamemap::location> &hexes,
-								 map_undo_action &undo_action) {
+void map_editor::terrain_changed(const std::set<gamemap::location> &hexes) {
 	std::vector<gamemap::location> v;
 	std::copy(hexes.begin(), hexes.end(), std::back_inserter(v));
-	terrain_changed(v, undo_action);
+	terrain_changed(v);
 }
 
 

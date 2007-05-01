@@ -253,16 +253,10 @@ private:
 	void reset_mouseover_overlay() { gui_.clear_mouseover_hex_overlay(); }
 
 	/// Terrain has changed at the specified hex through user drawing
-	/// (not undo/redo or other special things). If the hex was a
-	/// starting position, remove this position. Save additional
-	/// information in the undo_action and invalidate the hex and the
-	/// adjacent ones.
-	void terrain_changed(const gamemap::location &hex,
-						 map_undo_action &undo_action);
-	void terrain_changed(const std::vector<gamemap::location> &hexes,
-						 map_undo_action &undo_action);
-	void terrain_changed(const std::set<gamemap::location> &hexes,
-						 map_undo_action &undo_action);
+	/// (not undo/redo or other special things).
+	void terrain_changed(const gamemap::location &hex);
+	void terrain_changed(const std::vector<gamemap::location> &hexes);
+	void terrain_changed(const std::set<gamemap::location> &hexes);
 
 	/// Save an action so that it may be undone. Add an operation to the
 	/// number done since save.
