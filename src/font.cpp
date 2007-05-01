@@ -334,7 +334,7 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 }
 
 const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
-                GRAY_COLOUR   = {0x55,0x55,0x55,0},
+                GRAY_COLOUR   = {0x77,0x77,0x77,0},
                 LOBBY_COLOUR  = {0xBB,0xBB,0xBB,0},
                 GOOD_COLOUR   = {0x00,0xFF,0x00,0},
                 BAD_COLOUR    = {0xFF,0x00,0x00,0},
