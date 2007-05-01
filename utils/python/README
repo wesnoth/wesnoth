@@ -35,7 +35,14 @@ Most of them will not be generally useful. An example:
 for unit in  wmldata.get_all("unit"):
     print unit.get_text_val("id")
 
+=== campaign_client ===
+
+This has some functions to connect to the campaign server, and to convert
+between binary WML, WML objects, and WML on disk.
+
 == Standalone ==
+
+=== wmparser ===
 
 If called standalone, wmlparser.py will parse whatever you give it and dump back
 to stdout. For example:
@@ -44,3 +51,8 @@ python wmlparser.py -e {game.cfg} > game.dump
 
 Should produce a nice several 100000 lines file of the complete configuration
 with all included files and macros expanded to a single file.
+
+=== campaigns_client ===
+
+If called standalone, it can be used to list, download and upload campaigns.
+
