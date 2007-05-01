@@ -16,8 +16,8 @@
 # 2. If the messages look good, run without --dryrun; the old content
 #    will be left in backup files with a -bak extension.
 # 3. Eyeball the changes with the --diff option.
-# 4. Use macroscope, with a directory path including the Wesnoth mainline WML,
-#    to check that you have no unresolved references.
+# 4. Use macroscope, with a directory list including the Wesnoth mainline WML
+#    as first argument, to check that you have no unresolved references.
 # 5. Test the conversion.
 # 6. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
@@ -339,23 +339,17 @@ def maptransform1(input, baseline, inmap, y):
                 a = adj[i];
                 if not a in conversion1:
                     raise maptransform_error(0, input, baseline, (x, y),
-                                 "error in adjacent hexes")
+                                 "error, %s in adjacent hexes" % a)
                     sys.exit(1)
                 ca = conversion1[a]
                 if ca.startswith("C"): #this is a castle hex	
                      hexcount[ca] = hexcount.get(ca, 0) + 1
             maxc = 0;
             maxk = "Ch";
-            # Next line is a hack to make this code pass
-            # regression testing against the Perl
-            # original. Without the sort, when there are
-            # two terrain types that occur in equal
-            # numbers greater than any others, which one
-            # gets picked will be randomly dependent on
-            # Python's dictionary hash function.
-            sorted = hexcount.keys()
-            sorted.sort()
-            for k in sorted:
+            # Note: if two kinds of terrain tie for most instances adjacent,
+            # which one dominates will be a pseudorandom artifact of
+            # Python's hash function.
+            for k in hexcount.keys():
                 if hexcount[k] > maxc:
                     maxc = hexcount[k]
                     maxk = k
