@@ -219,7 +219,8 @@ protected:
 private:
 	bool terrain_matches_internal(const location& loc, const vconfig& cfg, 
 			const gamestatus& game_status, const unit_map& units, 
-			const bool flat_tod=false, const bool ignore_xy=false) const;
+			const bool flat_tod, const bool ignore_xy,
+			t_translation::t_list*& parsed_terrain) const;
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 

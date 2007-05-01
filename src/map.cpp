@@ -562,6 +562,14 @@ bool gamemap::location::matches_range(const std::string& xloc, const std::string
 	return true;
 }
 
+namespace {
+	struct terrain_cache_manager {
+		terrain_cache_manager() : ptr(NULL) {}
+		~terrain_cache_manager() { delete ptr; }
+		t_translation::t_list *ptr;
+	};
+} //end anonymous namespace
+
 bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop) const
@@ -576,8 +584,9 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig
 	size_t loop_count = 0;
 	bool matches = false;
 	std::set<gamemap::location>::const_iterator i;
+	terrain_cache_manager tcm;
 	for(i = hexes.begin(); i != hexes.end() && loop_count <= max_loop && !matches; ++i) {
-		matches = terrain_matches_internal(*i, cfg, game_status, units, flat_tod);
+		matches = terrain_matches_internal(*i, cfg, game_status, units, flat_tod, false, tcm.ptr);
 		++loop_count;
 	}
 	if(!matches) return false;
@@ -594,7 +603,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig
 
 bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
-		const bool ignore_xy) const
+		const bool ignore_xy, t_translation::t_list*& parsed_terrain) const
 {
 
 	const int terrain_format = lexical_cast_default(cfg["terrain_format"], -1);
@@ -602,12 +611,16 @@ bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconf
 		lg::wml_error << "key terrain_format in filter_location is no longer used, this message will disappear in 1.3.5\n";
 	}
 
-	const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
-	if(! terrain.empty()) {
-
-		const t_translation::t_letter letter = get_terrain_info(loc).number();
-		if(! t_translation::terrain_matches(letter, terrain)) {
+	if(cfg.has_attribute("terrain")) {
+		if(parsed_terrain == NULL) {
+			t_translation::t_list& parsed_list = t_translation::read_list(cfg["terrain"]);
+			parsed_terrain = new t_translation::t_list(parsed_list);
+		}
+		if(!parsed_terrain->empty()) {
+			const t_translation::t_letter letter = get_terrain_info(loc).number();
+			if(!t_translation::terrain_matches(letter, *parsed_terrain)) {
 				return false;
+			}
 		}
 	}
 	
@@ -783,9 +796,10 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 	}
 
 	//handle filter
+	terrain_cache_manager tcm;
 	std::vector<gamemap::location>::iterator loc_itor = xy_locs.begin();
 	while(loc_itor != xy_locs.end()) {
-		if(terrain_matches_internal(*loc_itor, filter, game_status, units, flat_tod, true)) {
+		if(terrain_matches_internal(*loc_itor, filter, game_status, units, flat_tod, true, tcm.ptr)) {
 			++loc_itor;
 		} else {
 			loc_itor = xy_locs.erase(loc_itor);
