@@ -697,13 +697,6 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_l
 		villages_.push_back(loc);
 	}
 
-	//If the terrain is set under a starting position, do also erase the
-	//starting position.
-	for(int i = 0; i < STARTING_POSITIONS; ++i) {
-		if(loc == startingPositions_[i])
-			startingPositions_[i] = location();
-	}
-
 	tiles_[loc.x][loc.y] = terrain;
 
 	location adj[6];

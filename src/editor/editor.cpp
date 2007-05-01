@@ -1191,16 +1191,6 @@ void map_editor::terrain_changed(const gamemap::location &hex, map_undo_action &
 void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes,
 								 map_undo_action &undo_action) 
 {
-	for (std::vector<gamemap::location>::const_iterator it = hexes.begin();
-		 it != hexes.end(); it++) {
-		const int start_side = starting_side_at(map_, *it);
-		if (start_side != -1) {
-			// A terrain which had a starting position has changed, save
-			// this position in the undo_action and unset it.
-			map_.set_starting_position(start_side, gamemap::location());
-			undo_action.add_starting_location(start_side, start_side, *it, gamemap::location());
-		}
-	}
 	invalidate_all_and_adjacent(hexes);
 }
 
