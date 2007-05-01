@@ -63,7 +63,7 @@ echo >po/%(textdomain)s/Makevars <<'EOF'
 DOMAIN = %(textdomain)s
 
 # These two variables depend on the location of this directory.
-subdir = po/%(textdomain)s
+subdir = po/$(DOMAIN)
 top_builddir = ../..
 
 # These options get passed to xgettext.
