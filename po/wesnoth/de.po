@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-04-30 19:29+0200\n"
-"PO-Revision-Date: 2007-04-23 15:53+0100\n"
+"PO-Revision-Date: 2007-05-01 12:20+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -5490,9 +5490,8 @@ msgid "Impassable Mountains"
 msgstr "Unpassierbare Berge"
 
 #: data/terrain.cfg:983
-#, fuzzy
 msgid "Impassable Desert Mountains"
-msgstr "Unpassierbare Berge"
+msgstr "Unpassierbare Wüstenberge"
 
 #: data/themes/default.cfg:80 data/themes/dfool.cfg:101
 #: data/themes/experimental.cfg:64
@@ -5950,7 +5949,6 @@ msgstr ""
 "über diese, um weitere Informationen oder Beschreibungen zu erhalten."
 
 #: data/tips.cfg:36
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -5958,9 +5956,10 @@ msgid ""
 "adjust campaign difficulty."
 msgstr ""
 "Ihr könnt dem Wesnoth-Projekt anonyme Statistken Eures Fortschritts zukommen "
-"lassen, indem Ihr den »Wesnoth helfen«-Knopf benutzt. Diese Informationen "
-"werden dazu verwendet werden, um den Schwierigkeitsgrad der Kampagnen "
-"anzupassen."
+"lassen, indem Ihr den »Wesnoth helfen«-Knopf benutzt (angedeutet durch das "
+"Briefsymbol in der unteren, rechten Ecke des Hauptmenüs). Diese "
+"Informationen werden dazu verwendet werden, um den Schwierigkeitsgrad der "
+"Kampagnen anzupassen."
 
 #: data/traits.cfg:9
 msgid "loyal"
@@ -7262,7 +7261,7 @@ msgstr "Feenfeuer"
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
 msgid "arcane"
-msgstr "heilig"
+msgstr "Heilig"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -11380,11 +11379,10 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Warnung: Die Datei ist beschädigt. Sie wird trotzdem geladen.\n"
 
 #: src/game.cpp:696 src/multiplayer_connect.cpp:1256
-#, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
-"Dieser Spielstand stammt aus einer früheren Version. Möchtet Ihr den "
-"Spielstand laden?"
+"Dieser Spielstand stammt aus einer zu alten Version und kann nicht geladen "
+"werden."
 
 #: src/game.cpp:701 src/multiplayer_connect.cpp:1262
 msgid ""
