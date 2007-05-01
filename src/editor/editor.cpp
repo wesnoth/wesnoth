@@ -546,13 +546,10 @@ void map_editor::edit_save_as() {
 
 void map_editor::perform_set_starting_pos() {
 	std::vector<std::string> players;
-	const int current_side = starting_side_at(map_, selected_hex_);
-	// use the "none" item only when a start side is already here
-	if (current_side != -1) {
-		std::stringstream none_str;
-		none_str << _("None");
-		players.push_back(none_str.str());
-	}
+	
+	std::stringstream none_str;
+	none_str << _("None");
+	players.push_back(none_str.str());
 	
 	for (int i = 0; i < num_players; i++) {
 		std::stringstream str;
@@ -563,11 +560,13 @@ void map_editor::perform_set_starting_pos() {
 	                                 _("Which player should start here?"),
 	                                 gui::OK_CANCEL, &players);
 
-	if (current_side != -1 && res==0) {
-		set_starting_position(current_side, gamemap::location());
-	} else if (res >= 0) {
-		// We must take care of the possible presence of the "None" item
-		set_starting_position(current_side != -1 ? res : res+1 , selected_hex_);
+	if (res > 0) {
+		set_starting_position(res, selected_hex_);
+	} else if (res==0) {
+		const int current_side = starting_side_at(map_, selected_hex_);
+		if (current_side != -1) {
+			set_starting_position(current_side, gamemap::location());
+		}
 	}
 }
 
