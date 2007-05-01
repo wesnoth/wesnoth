@@ -17,8 +17,6 @@ Usage: macroscope {-h | wescamp-path campaign-name textdomain}
     Call from the top level directory of mainline.
 """)
 
-    # Template campaign to copy boilerplate files from
-    template_campaign = "Heir_To_The_Throne"
 
     # Process options
     (options, arguments) = getopt.getopt(sys.argv[1:], "h", ['help',])
@@ -45,18 +43,40 @@ Usage: macroscope {-h | wescamp-path campaign-name textdomain}
     print """\
 # Generated script to do an import of %(textdomain)s from a WesCamp checkout
 #
+mkdir po/%(textdomain)s
 cp %(wescamp_path)s/%(campaign)s-po/po/*.po* po/%(textdomain)s
 
 cp po/wesnoth/LINGUAS po/%(textdomain)s/
 
-echo >po/%(textdomain)s/FINDCFG <<'EOF'
+cat > po/%(textdomain)s/FINDCFG <<'EOF'
 find data/campaigns/%(campaign)s -name '*.cfg' -print
 echo data/campaigns/%(campaign)s.cfg'
 EOF
 
-cp po/%(template_campaign)s/remove-potcdate.sin po/%(textdomain)s/
 
-echo >po/%(textdomain)s/Makevars <<'EOF'
+cat > po/%(textdomain)s/remove-potcdate.sin <<'EOF'
+#Sed script that remove the POT-Creation-Date line in the header entry
+# from a POT file.
+#
+# The distinction between the first and the following occurrences of the
+# pattern is achieved by looking at the hold space.
+/^"POT-Creation-Date: .*"$/{
+x
+# Test if the hold space is empty.
+s/P/P/
+ta
+# Yes it was empty. First occurrence. Remove the line.
+g
+d
+bb
+:a
+# The hold space was nonempty. Following occurrences. Do nothing.
+x
+:b
+}
+EOF
+
+cat > po/%(textdomain)s/Makevars <<'EOF'
 # Makefile variables for PO directory in any package using GNU gettext.
 
 # Usually the message domain is the same as the package name.
@@ -99,7 +119,7 @@ MSGID_BUGS_ADDRESS =http://bugs.wesnoth.org/
 # This is the list of locale categories, beyond LC_MESSAGES, for which the
 # message catalogs shall be used.  It is usually empty.
 EXTRA_LOCALE_CATEGORIES =
-'EOF'
+EOF
 
 touch po/%(textdomain)s/POTFILES.in
 
@@ -118,5 +138,7 @@ EOF
 
 svn add po/%(textdomain)s
 
-svn commit -m 'Wescamp import' configure.ac po/Makefile.am po/%(textdomain)s
+# To be able to review the commit before actually doing it
+# recommended commit-msg: Wescamp import
+svn commit configure.ac po/Makefile.am po/%(textdomain)s
 """ % locals()
