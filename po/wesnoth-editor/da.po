@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-29 21:40+0200\n"
+"POT-Creation-Date: 2007-05-01 18:23+0200\n"
 "PO-Revision-Date: 2007-04-28 13:27+0200\n"
 "Last-Translator: Joe Hansen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -103,23 +103,27 @@ msgstr "Gem kortet som"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kortet eksisterer allerede. Ønsker du at overskrive?"
 
-#: src/editor/editor.cpp:551 src/editor/editor.cpp:1386
+#: src/editor/editor.cpp:551
+msgid "None"
+msgstr ""
+
+#: src/editor/editor.cpp:556 src/editor/editor.cpp:1394
 msgid "Player"
 msgstr "Spiller"
 
-#: src/editor/editor.cpp:554
+#: src/editor/editor.cpp:559
 msgid "Which Player?"
 msgstr "Hvilken spiller?"
 
-#: src/editor/editor.cpp:555
+#: src/editor/editor.cpp:560
 msgid "Which player should start here?"
 msgstr "Hvilken spiller skal starte her?"
 
-#: src/editor/editor.cpp:606
+#: src/editor/editor.cpp:620
 msgid "Choose a Map to Load"
 msgstr "Vælg et kort til indlæsning"
 
-#: src/editor/editor.cpp:610
+#: src/editor/editor.cpp:624
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -127,31 +131,27 @@ msgstr ""
 "Advarsel: Der er ugyldige tegn i kortnavnet. Gem venligst under et andet "
 "navn."
 
-#: src/editor/editor.cpp:623 src/editor/editor.cpp:697
+#: src/editor/editor.cpp:637 src/editor/editor.cpp:711
 msgid "The file does not contain a valid map."
 msgstr "Filen indeholder ikke et brugbart kort."
 
-#: src/editor/editor.cpp:996
-msgid "You must have a hex selected on the board."
-msgstr "Du skal have markeret et felt på kortet."
-
-#: src/editor/editor.cpp:1253
+#: src/editor/editor.cpp:1261
 msgid "Quit Editor"
 msgstr "Luk program"
 
-#: src/editor/editor.cpp:1258
+#: src/editor/editor.cpp:1266
 msgid "Do you want to save the map before quitting?"
 msgstr "Ønsker du at gemme kortet før lukning?"
 
-#: src/editor/editor.cpp:1306
+#: src/editor/editor.cpp:1314
 msgid "Map saved."
 msgstr "Kort gemt."
 
-#: src/editor/editor.cpp:1315
+#: src/editor/editor.cpp:1323
 msgid "Could not save the map: $msg"
 msgstr "Kunne ikke gemme kortet: $msg"
 
-#: src/editor/editor.cpp:1330
+#: src/editor/editor.cpp:1338
 msgid "Error: Illegal character in filename."
 msgstr "Fejl: Ugyldig tegn i filnavn."
 
@@ -164,3 +164,6 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:424
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "You must have a hex selected on the board."
+#~ msgstr "Du skal have markeret et felt på kortet."

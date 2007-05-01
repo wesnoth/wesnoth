@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-29 21:40+0200\n"
+"POT-Creation-Date: 2007-05-01 18:23+0200\n"
 "PO-Revision-Date: 2005-12-13 22:24+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team: none\n"
@@ -100,23 +100,27 @@ msgstr "Zapisz Mapę Jako"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Mapa już istnieje. Czy chcesz ją nadpisać?"
 
-#: src/editor/editor.cpp:551 src/editor/editor.cpp:1386
+#: src/editor/editor.cpp:551
+msgid "None"
+msgstr ""
+
+#: src/editor/editor.cpp:556 src/editor/editor.cpp:1394
 msgid "Player"
 msgstr "Gracz"
 
-#: src/editor/editor.cpp:554
+#: src/editor/editor.cpp:559
 msgid "Which Player?"
 msgstr "Który Gracz?"
 
-#: src/editor/editor.cpp:555
+#: src/editor/editor.cpp:560
 msgid "Which player should start here?"
 msgstr "Który gracz powinien tutaj zaczynać?"
 
-#: src/editor/editor.cpp:606
+#: src/editor/editor.cpp:620
 msgid "Choose a Map to Load"
 msgstr "Wybierz mapę do załadowania"
 
-#: src/editor/editor.cpp:610
+#: src/editor/editor.cpp:624
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -124,31 +128,27 @@ msgstr ""
 "Ostrzeżenie: niewłaściwe znaki w nazwie mapy. Musisz zapisać ją pod inną "
 "nazwą."
 
-#: src/editor/editor.cpp:623 src/editor/editor.cpp:697
+#: src/editor/editor.cpp:637 src/editor/editor.cpp:711
 msgid "The file does not contain a valid map."
 msgstr "Plik nie zawiera prawidłowej mapy."
 
-#: src/editor/editor.cpp:996
-msgid "You must have a hex selected on the board."
-msgstr "Musisz mieć zaznaczone pole na planszy."
-
-#: src/editor/editor.cpp:1253
+#: src/editor/editor.cpp:1261
 msgid "Quit Editor"
 msgstr "Opuścić Edytor?"
 
-#: src/editor/editor.cpp:1258
+#: src/editor/editor.cpp:1266
 msgid "Do you want to save the map before quitting?"
 msgstr "Czy chcesz zapisać mapę przed wyjściem?"
 
-#: src/editor/editor.cpp:1306
+#: src/editor/editor.cpp:1314
 msgid "Map saved."
 msgstr "Mapa zapisana."
 
-#: src/editor/editor.cpp:1315
+#: src/editor/editor.cpp:1323
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
-#: src/editor/editor.cpp:1330
+#: src/editor/editor.cpp:1338
 msgid "Error: Illegal character in filename."
 msgstr "Błąd: niewłaściwy znak w nazwie pliku."
 
@@ -159,6 +159,9 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:424
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "You must have a hex selected on the board."
+#~ msgstr "Musisz mieć zaznaczone pole na planszy."
 
 #~ msgid "'$filename' does not exist or can not be read as a file."
 #~ msgstr "'$filename' nie istnieje lub nie może być odczytany jako plik."

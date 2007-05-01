@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-29 21:40+0200\n"
+"POT-Creation-Date: 2007-05-01 18:23+0200\n"
 "PO-Revision-Date: 2006-05-08 07:52-0000\n"
 "Last-Translator: Joset Anthony Zamora <eradicus_kee@yahoo.ca>\n"
 "Language-Team: none\n"
@@ -100,23 +100,27 @@ msgstr "I-seyb ang mapa sa ibang pangalan"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Ang mapang ito ay dati pa dito. Baguhin ito?"
 
-#: src/editor/editor.cpp:551 src/editor/editor.cpp:1386
+#: src/editor/editor.cpp:551
+msgid "None"
+msgstr ""
+
+#: src/editor/editor.cpp:556 src/editor/editor.cpp:1394
 msgid "Player"
 msgstr "Manlalaro"
 
-#: src/editor/editor.cpp:554
+#: src/editor/editor.cpp:559
 msgid "Which Player?"
 msgstr "Alin sa mga manlalaro?"
 
-#: src/editor/editor.cpp:555
+#: src/editor/editor.cpp:560
 msgid "Which player should start here?"
 msgstr "Alin sa mga manlalaro ang magsisimula dito?"
 
-#: src/editor/editor.cpp:606
+#: src/editor/editor.cpp:620
 msgid "Choose a Map to Load"
 msgstr "Pumili ng mapa para buksan"
 
-#: src/editor/editor.cpp:610
+#: src/editor/editor.cpp:624
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -124,31 +128,27 @@ msgstr ""
 "Paalala: May mga ilegal na karakters sa pangalan ng mapa. Paki-seyb ito sa "
 "ibang pangalan."
 
-#: src/editor/editor.cpp:623 src/editor/editor.cpp:697
+#: src/editor/editor.cpp:637 src/editor/editor.cpp:711
 msgid "The file does not contain a valid map."
 msgstr "Ang fayl ay hindi isang ganap na mapa."
 
-#: src/editor/editor.cpp:996
-msgid "You must have a hex selected on the board."
-msgstr "Dapat ay may napili kang hex sa bord."
-
-#: src/editor/editor.cpp:1253
+#: src/editor/editor.cpp:1261
 msgid "Quit Editor"
 msgstr "Umalis sa editor"
 
-#: src/editor/editor.cpp:1258
+#: src/editor/editor.cpp:1266
 msgid "Do you want to save the map before quitting?"
 msgstr "Gusto mo bang i-seyb ang mapa bago isarado ito?"
 
-#: src/editor/editor.cpp:1306
+#: src/editor/editor.cpp:1314
 msgid "Map saved."
 msgstr "Ang mapa ay na-seyb na."
 
-#: src/editor/editor.cpp:1315
+#: src/editor/editor.cpp:1323
 msgid "Could not save the map: $msg"
 msgstr "Hindi ma-seyb ang mapang: $msg"
 
-#: src/editor/editor.cpp:1330
+#: src/editor/editor.cpp:1338
 msgid "Error: Illegal character in filename."
 msgstr "Error: May ilegal na karakter sa faylneym."
 
@@ -159,6 +159,9 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:424
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "You must have a hex selected on the board."
+#~ msgstr "Dapat ay may napili kang hex sa bord."
 
 #~ msgid "'$filename' does not exist or can not be read as a file."
 #~ msgstr "'$filename' ay hindi makita o hindi mabasa bilang isang fayl."

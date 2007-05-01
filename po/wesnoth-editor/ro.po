@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-04-29 21:40+0200\n"
+"POT-Creation-Date: 2007-05-01 18:23+0200\n"
 "PO-Revision-Date: 2006-04-10 20:11+0100\n"
 "Last-Translator: Dex Stewart\n"
 "Language-Team: none\n"
@@ -101,23 +101,27 @@ msgstr "Salveaza ca"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Aceasta harta exista deja. Doriti sa suprascrieti?"
 
-#: src/editor/editor.cpp:551 src/editor/editor.cpp:1386
+#: src/editor/editor.cpp:551
+msgid "None"
+msgstr ""
+
+#: src/editor/editor.cpp:556 src/editor/editor.cpp:1394
 msgid "Player"
 msgstr "Jucator"
 
-#: src/editor/editor.cpp:554
+#: src/editor/editor.cpp:559
 msgid "Which Player?"
 msgstr "Care jucator?"
 
-#: src/editor/editor.cpp:555
+#: src/editor/editor.cpp:560
 msgid "Which player should start here?"
 msgstr "Care jucator incepe aici?"
 
-#: src/editor/editor.cpp:606
+#: src/editor/editor.cpp:620
 msgid "Choose a Map to Load"
 msgstr "Alegeti o harta de incarcat"
 
-#: src/editor/editor.cpp:610
+#: src/editor/editor.cpp:624
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -125,31 +129,27 @@ msgstr ""
 "Atnetie: Am gasit caractere in numele hartii pe care nu le pot folosi. "
 "Salvati sub alt nume."
 
-#: src/editor/editor.cpp:623 src/editor/editor.cpp:697
+#: src/editor/editor.cpp:637 src/editor/editor.cpp:711
 msgid "The file does not contain a valid map."
 msgstr "Acest fisier nu este o harta valida."
 
-#: src/editor/editor.cpp:996
-msgid "You must have a hex selected on the board."
-msgstr "Trebuie sa selectati un hexagon."
-
-#: src/editor/editor.cpp:1253
+#: src/editor/editor.cpp:1261
 msgid "Quit Editor"
 msgstr "Iesiti din editor"
 
-#: src/editor/editor.cpp:1258
+#: src/editor/editor.cpp:1266
 msgid "Do you want to save the map before quitting?"
 msgstr "Vreti sa salvati harta inainte sa iesiti?"
 
-#: src/editor/editor.cpp:1306
+#: src/editor/editor.cpp:1314
 msgid "Map saved."
 msgstr "Harta salvata."
 
-#: src/editor/editor.cpp:1315
+#: src/editor/editor.cpp:1323
 msgid "Could not save the map: $msg"
 msgstr "Nu am putut salva harta: $msg"
 
-#: src/editor/editor.cpp:1330
+#: src/editor/editor.cpp:1338
 msgid "Error: Illegal character in filename."
 msgstr "Eroare: Caracter nevalabil in numele fisierului."
 
@@ -162,6 +162,9 @@ msgstr "FG"
 #, fuzzy
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "You must have a hex selected on the board."
+#~ msgstr "Trebuie sa selectati un hexagon."
 
 #~ msgid "'$filename' does not exist or can not be read as a file."
 #~ msgstr "'$filename' nu exista sau nu poate fi citit ca fisier."
