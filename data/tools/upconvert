@@ -677,8 +677,6 @@ if __name__ == '__main__':
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
                   (filename, lineno+1, line.strip(), transformed.strip())
-            if not hasdigit(os.path.basename(old)) and hasdigit(new):
-                msg += " (check manually, alternatives may be better)"
             print msg
         return transformed
 
