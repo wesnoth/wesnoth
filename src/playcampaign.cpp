@@ -147,8 +147,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		} else {
 			LOG_G << "loading scenario: '" << gamestate.scenario << "'\n";
 			scenario = game_config.find_child(type,"id",gamestate.scenario);
-			starting_pos = *scenario;
-			gamestate.starting_pos = *scenario;
+			if(scenario) { 
+				starting_pos = *scenario;
+				gamestate.starting_pos = *scenario;
+			}
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
