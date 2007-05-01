@@ -560,12 +560,16 @@ void map_editor::perform_set_starting_pos() {
 	                                 _("Which player should start here?"),
 	                                 gui::OK_CANCEL, &players);
 
-	if (res > 0) {
-		set_starting_position(res, selected_hex_);
-	} else if (res==0) {
+	if (res >= 0) {
+		// we erase previous starting position on this hex
+		// this will prevent to cause a "stack" of these
+		// TODO: only use 1 undo to revert it (instead of 2)
 		const int current_side = starting_side_at(map_, selected_hex_);
 		if (current_side != -1) {
 			set_starting_position(current_side, gamemap::location());
+		}
+		if (res > 0) {
+			set_starting_position(res, selected_hex_);
 		}
 	}
 }
