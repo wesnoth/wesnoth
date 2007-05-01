@@ -45,7 +45,9 @@ Usage: macroscope {-h | wescamp-path campaign-name textdomain}
     print """\
 # Generated script to do an import of %(textdomain)s from a WesCamp checkout
 #
-cp %(wescamp_path)s/%(campaign)s/po/.po po/%(textdomain)s
+cp %(wescamp_path)s/%(campaign)s-po/po/*.po* po/%(textdomain)s
+
+cp po/wesnoth/LINGUAS po/%(textdomain)s/
 
 echo >po/%(textdomain)s/FINDCFG <<'EOF'
 find data/campaigns/%(campaign)s -name '*.cfg' -print
@@ -99,15 +101,15 @@ MSGID_BUGS_ADDRESS =http://bugs.wesnoth.org/
 EXTRA_LOCALE_CATEGORIES =
 'EOF'
 
-cp po/%(template_campaign)s/POTFILES po/%(textdomain)s/
+touch po/%(textdomain)s/POTFILES.in
 
 ed po/Makefile.am <<'EOF'
 /^SUBDIRS/s/$/ %(textdomain)s/
 wq
 EOF
 
-# Warning: this depends on m4/Makefile being in ther list of generated files
-ed po/configure.ac <<'EOF'
+# Warning: this depends on m4/Makefile being in the list of generated files
+ed configure.ac <<'EOF'
 /m4\/Makefile/-1a
 po/%(textdomain)s/Makefile.in
 .
