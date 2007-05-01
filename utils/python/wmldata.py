@@ -552,8 +552,8 @@ def read_file(filename, root_name = "WML"):
     Read in a file from disk and return a WML data object, with the WML in the
     file placed under an entry with the name root_name.
     """
-    wmlparser = Parser(path, options.userpath)
-    wmlparser.parse_file(filename)
-    data = wmldata.DataSub(root_name)
-    wmlparser.parse_top(data)
+    parser = wmlparser.Parser(None)
+    parser.parse_file(filename)
+    data = DataSub(root_name)
+    parser.parse_top(data)
     return data

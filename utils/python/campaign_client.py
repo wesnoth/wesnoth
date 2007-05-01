@@ -453,9 +453,11 @@ if __name__ == "__main__":
     elif options.upload:
         cs = CampaignServer(address)
         pbl = wmldata.read_file(options.upload, "PBL")
+        name = os.path.basename(options.upload)
+        name = os.path.splitext(name)[0]
         mythread = cs.put_campaign_async(
             pbl.get_text_val("title"),
-            os.path.basename(options.upload),
+            name,
             pbl.get_text_val("author"),
             pbl.get_text_val("passphrase"),
             pbl.get_text_val("description"),
