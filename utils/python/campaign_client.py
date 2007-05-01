@@ -3,7 +3,8 @@
 
 import socket, struct, sys, wmldata, glob, os.path, shutil, threading
 
-DEFAULT_PORT = "15004"
+# First port listed will bw used as default.
+portmap = (("15003", "1.3.x"), ("15004", "1.2.x"))
 
 class CampaignServer:
 
@@ -25,13 +26,18 @@ class CampaignServer:
                 self.host, self.port = s
             else:
                 self.host = s[0]
-                self.port = DEFAULT_PORT
+                self.port = portmap[0][0]
             self.port = int(self.port)
             self.canceled = False
             self.error = False
             addr = socket.getaddrinfo(self.host, self.port, socket.AF_INET,
                 socket.SOCK_STREAM, socket.IPPROTO_TCP)[0]
-            sys.stderr.write("Opening socket to %s.\n" % address)
+            sys.stderr.write("Opening socket to %s" % address)
+            bfwv = dict(portmap).get(str(self.port))
+            if bfwv:
+                sys.stderr.write(" for " + bfwv + "\n")
+            else:
+                sys.stderr.write("\n")
             self.sock = socket.socket(addr[0], addr[1], addr[2])
             self.sock.connect(addr[4])
             self.sock.send(struct.pack("!l", 0))
@@ -374,8 +380,8 @@ if __name__ == "__main__":
     optionparser = optparse.OptionParser()
     optionparser.add_option("-a", "--address", help = "specify server address",
         default = "campaigns.wesnoth.org")
-    optionparser.add_option("-p", "--port", help = "specify server port",
-        default = DEFAULT_PORT)
+    optionparser.add_option("-p", "--port", help = "specify server port or bfW version (%s)" % " or ".join(map(lambda x: x[1], portmap)),
+        default = portmap[0][0])
     optionparser.add_option("-l", "--list", help = "list available campaigns",
         action = "store_true",)
     optionparser.add_option("-w", "--wml",
@@ -392,7 +398,7 @@ if __name__ == "__main__":
     optionparser.add_option("-d", "--download",
         help = "download the named campaign " +
         "(specify the path where to put it with -c, " +
-        "current directoy will be used by default)")
+        "current directory will be used by default)")
     optionparser.add_option("-u", "--upload",
         help = "upload campaign " +
         "(UPLOAD specifies the path to the .pbl file)")
@@ -410,9 +416,19 @@ if __name__ == "__main__":
         "(specify the campaign path with -c)")
     options, args = optionparser.parse_args()
 
+    port = options.port
+    if "." in options.port:
+        for (portnum, version) in portmap:
+            if options.port == version:
+                port = portnum
+                break
+        else:
+            sys.stderr.write("Unknown BfW version %s\n" % options.port)
+            sys.exit(1)
+
     address = options.address
     if not ":" in address:
-        address += ":" + str(options.port)
+        address += ":" + str(port)
 
     if options.list:
         cs = CampaignServer(address)
