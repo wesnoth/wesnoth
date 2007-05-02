@@ -6,7 +6,7 @@ import socket, struct, sys, wmldata, glob, os.path, shutil, threading, re
 # First port listed will bw used as default.
 portmap = (("15003", "1.3.x"), ("15004", "1.2.x"))
 
-class CampaignServer:
+class CampaignBrowser:
 
     def __init__(self, address = None):
         """
@@ -432,7 +432,7 @@ if __name__ == "__main__":
         address += ":" + str(port)
 
     if options.list:
-        cs = CampaignServer(address)
+        cs = CampaignBrowser(address)
         data = cs.list_campaigns()
         if data:
             campaigns = data.get_or_create_sub("campaigns")
@@ -451,7 +451,7 @@ if __name__ == "__main__":
         else:
             sys.stderr.write("Could not connect.\n")
     elif options.download:
-        cs = CampaignServer(address)
+        cs = CampaignBrowser(address)
         if re.escape(options.download).replace("\\_", "_") == options.download:
             fetchlist = [options.download]
         else:
@@ -475,12 +475,12 @@ if __name__ == "__main__":
             for message in mythread.data.find_all("message", "error"):
                 print message.get_text_val("message")
     elif options.remove:
-        cs = CampaignServer(address)
+        cs = CampaignBrowser(address)
         data = cs.delete_campaign(options.remove, options.password)
         for message in data.find_all("message", "error"):
             print message.get_text_val("message")
     elif options.upload:
-        cs = CampaignServer(address)
+        cs = CampaignBrowser(address)
         pbl = wmldata.read_file(options.upload, "PBL")
         name = os.path.basename(options.upload)
         name = os.path.splitext(name)[0]
