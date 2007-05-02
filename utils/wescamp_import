@@ -9,7 +9,7 @@ import sys, os, getopt, shutil
 if __name__ == "__main__":
     def help():
         sys.stderr.write("""\
-Usage: macroscope {-h | wescamp-path campaign-name textdomain}
+Usage: wescamp_import {-h | wescamp-path campaign-name textdomain}
     Options may be any of these:
     -h, --help                   Emit this help message and quit
     Requires as first argument a path to  a WesCamp checkout
