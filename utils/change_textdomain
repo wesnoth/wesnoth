@@ -1,105 +1,78 @@
-#!/usr/bin/env python
+#!/bin/sh
 #
 # change-textdomain -- hack the text domain of a specified campaign 
 #
 # Code by Eric S. Raymond, May 2007.
-"""
-Ivanovic's original specification from FR #9039.
+#
+# Ivanovic's original specification from FR #9039.
+# 
+#  would be nice to have a tool maybe named utils/textdomain2textdomain
+#  that is able to change the textdomain of a given campaign. The params
+#  that the script should support are these: campaignname,
+#  oldtextdomain, newtextdomain
+# 
+#     * asumptions: campaign lies in data/campaigns, current textdomain
+#       is wesnoth-oldtextdomain, the translation files are existing
+#       (and maybe already uploaded) in the folder
+#       /po/wesnoth-oldtextdomain/.
+# 
+# Here is what is to be done for the campaign named 'foo' to move from
+# the textdomain wesnoth-oldtextdomain to wesnoth-newtextdomain:
+# 
+# 1) search in all files in data/campaigns/foo* (yes, the .cfg file, too)
+# for this string:
+# 
+# #textdomain wesnoth-oldtextdomain
+# 
+# 2) replace (be aware, there might be " " around the part after name=)
+# 
+# [textdomain]
+# name=wesnoth-oldtextdomain
+# [/textdomain]
+# 
+# with
+# 
+# [textdomain]
+# name=wesnoth-newtextdomain
+# [/textdomain]
+# 
+# 3) move the folder po/wesnoth-oldtextdomain to
+#    po/wesnoth-newtextdomain (svn mv if the file is already under
+#    version conrol, normal mv if it is not)
+# 
+# 4) move the file (folders are already changed)
+#    po/wesnoth-newtextdomain/wesnoth-oldtextdomain.pot to
+#    po/wesnoth-newtextdomain/wensoth-newtextdomain.pot (via svn mv if
+#    files are under version control already, --force will be needed,
+#    since it is a 2nd move)
+# 
+# 5) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in
+#    po/wesnoth-newtextdomain/Makevars
+# 
+# 6) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in po/Makefile.am
+# 
+# 7) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in configure.ac 
+#
 
- would be nice to have a tool maybe named utils/textdomain2textdomain
- that is able to change the textdomain of a given campaign. The params
- that the script should support are these: campaignname,
- oldtextdomain, newtextdomain
-
-    * asumptions: campaign lies in data/campaigns, current textdomain
-      is wesnoth-oldtextdomain, the translation files are existing
-      (and maybe already uploaded) in the folder
-      /po/wesnoth-oldtextdomain/.
-
-Here is what is too be done for the campaign named 'foo' to move from
-the textdomain wesnoth-oldtextdomain to wesnoth-newtextdomain:
-
-1) search in all files in data/campaigns/foo* (yes, the .cfg file, too) for this string:
-
-#textdomain wesnoth-oldtextdomain
-
-2) replace (be aware, there might be " " around the part after name=)
-
-[textdomain]
-name=wesnoth-oldtextdomain
-[/textdomain]
-
-with
-
-[textdomain]
-name=wesnoth-newtextdomain
-[/textdomain]
-
-3) move the folder po/wesnoth-oldtextdomain to
-   po/wesnoth-newtextdomain (svn mv if the file is already under
-   version conrol, normal mv if it is not)
-
-4) move the file (folders are already changed)
-   po/wesnoth-newtextdomain/wesnoth-oldtextdomain.pot to
-   po/wesnoth-newtextdomain/wensoth-newtextdomain.pot (via svn mv if
-   files are under version control already, --force will be needed,
-   since it is a 2nd move)
-
-5) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in
-   po/wesnoth-newtextdomain/Makevars
-
-6) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in po/Makefile.am
-
-7) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in configure.ac 
-"""
-
-import sys, os, getopt, re
-
-def hackfile(filename):
-    "Change text domain occurrences in a single file."
-    ifp = open(filename)
-    contents = ifp.read()
-    ifp.close()
-    if "wesnoth-" + oldtd in contents:
-        print "    %s \\" % (filename)
-
-if __name__ == "__main__":
-    def help():
-        sys.stderr.write("""\
+usage()
+{
+    cat <<EOF
 Usage: change_textdomain {-h | campaign-name oldtextdomain newtextdomain}
-    Options may be any of these:
+Options:
     -h, --help                   Emit this help message and quit
-    Requires as first argument a campaign name.
-    Requires as second and third arguments old and new text domain names. 
-    Call from the top-level directory of mainline.
-""")
+Requires as first argument a campaign name.
+Requires as second and third arguments old and new text domain names. 
+Call from the top-level directory of mainline.
+EOF
+}
 
-    # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h", ['help',])
-    for (switch, val) in options:
-        if switch in ('-h', '--help'):
-            help()
-            sys.exit(0)
-    if len(arguments) == 0:
-        sys.stderr.write("change_textdomain: a campaign name is required.\n")
-        sys.exit(1)
-    else:
-        campaign = arguments[0]
-    if len(arguments) == 1:
-        sys.stderr.write("change_textdomain: a textdomain name is required.\n")
-        sys.exit(1)
-    else:
-        oldtd = arguments[1]
-    if len(arguments) == 2:
-        sys.stderr.write("change_textdomain: a textdomain name is required.\n")
-        sys.exit(1)
-    else:
-        newtd = arguments[2]
+die()
+{
+    echo "change_textdomain: $1"
+    exit 1
+}
 
-    print '''#!/bin/sh
-# Generated script to change the text domain of %(campaign)s from %(oldtd)s to %(newtd)s
-
-function replace()
+replace()
 # Replace a specified string with another in any number of files
 {
     left="$1"; right="$2"; shift; shift;
@@ -113,7 +86,7 @@ function replace()
     done
 }
 
-function overwrite()
+overwrite()
 # Replace a file with itself filtered by a command
 {
     opath=$PATH
@@ -135,7 +108,7 @@ function overwrite()
     rm -f $new $old
 }
 
-function svnmove():
+svnmove()
 # Move a file, whether under version control or not
 {
     if svn mv --force $1 $2
@@ -146,16 +119,37 @@ function svnmove():
     fi
 }
 
-# First, hack scenario and autoconf files
-replace wesnoth-%(oldtd)s %(newtd)s \\
-    configure.ac \\
-    po/Makefile.am \\
-    po/wesnoth-%(oldtd)s/Makevars \\
-    data/%(campaign)s.cfg \\
-    `find data/%(campaign)s -name "*.cfg" -print`
+if [ "$1" = "-h" -o "$1" = "--help" ]
+then
+    usage
+    exit 1
+else
+    campaign=$2
+    old=$3
+    new=$4
+    if [ $campaign == "" ]
+    then
+	usage
+	die "a campaign name is required."
+    elif [ $old == "" ]
+    then
+	usage
+	die "an old textdomain name is required."
+    elif [ $new == "" ]
+    then
+	usage
+	die "a new textdomain name is required."
+    else
+	# First, hack scenario and autoconf files
+	replace wesnoth-${old} wesnoth-${new} \
+	    configure.ac \
+	    po/Makefile.am \
+	    po/wesnoth-${old}/Makevars \
+	    data/${campaign}.cfg \
+	    `find data/${campaign} -name "*.cfg" -print`
 
-# Then do the .pot and folder moves
-svnmove po/wesnoth-%(oldtd)s/%(oldtd)s.pot po/wesnoth-%(oldtd)s/%(newtd)s.pot
-svnmove po/wesnoth-%(oldtd)s po/wesnoth-%(newtd)s
-''' % locals()
-
+	# Then do the .pot and folder moves
+	svnmove po/wesnoth-${old}/${old}.pot po/wesnoth-${old}/${new}.pot
+	svnmove po/wesnoth-${old} po/wesnoth-${new}
+    fi
+fi
