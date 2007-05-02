@@ -95,7 +95,7 @@ overwrite()
 
     file=$1; shift
     new=/tmp/over$$; old=/tmp/under$$
-    trap \'rm -f $new $old ; exit 1\' 1 2 15
+    trap 'rm -f $new $old ; exit 1' 1 2 15
 
     if PATH=$opath "$@" >$new
     then
