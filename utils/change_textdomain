@@ -131,31 +131,31 @@ then
 fi
 
 campaign=$1
-old=$2
-new=$3
+oldtextdomain=$2
+newtextdomain=$3
 #echo "campaign=$campaign, ols=$old, new=$new"
 if [ "$campaign" = "" ]
 then
     usage
     die "a campaign name is required."
-elif [ "${old}" = "" ]
+elif [ "${oldtextdomain}" = "" ]
 then
     usage
     die "an old textdomain name is required."
-elif [ "${new}" = "" ]
+elif [ "${newtextdomain}" = "" ]
 then
     usage
     die "a new textdomain name is required."
 else
     # First, hack scenario and autoconf files
-    ${do} replace ${old} ${new} \
+    ${do} replace ${oldtextdomain} ${newtextdomain} \
 	configure.ac \
 	po/Makefile.am \
-	po/${old}/Makevars \
+	po/${oldtextdomain}/Makevars \
 	data/${campaign}.cfg \
 	`find data/campaigns/${campaign} -name "*.cfg" -print`
 
     # Then do the .pot and folder moves
-    ${do} svnmove po/${old}/${old}.pot po/${old}/${new}.pot
-    ${do} svnmove po/${old} po/${new}
+    ${do} svnmove po/${oldtextdomain}/${oldtextdomain}.pot po/${oldtextdomain}/${newtextdomain}.pot
+    ${do} svnmove po/${oldtextdomain} po/${newtextdomain}
 fi
