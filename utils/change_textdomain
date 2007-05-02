@@ -59,7 +59,8 @@ usage()
     cat <<EOF
 Usage: change_textdomain {-h | campaign-name oldtextdomain newtextdomain}
 Options:
-    -h, --help                   Emit this help message and quit
+    -h, --help                   Emit this help message and quit.
+    -d, --dryrun                 Echo shell actions without performing them.
 Requires as first argument a campaign name.
 Requires as second and third arguments old and new text domain names. 
 Call from the top-level directory of mainline.
@@ -123,33 +124,36 @@ if [ "$1" = "-h" -o "$1" = "--help" ]
 then
     usage
     exit 1
-else
-    campaign=$2
-    old=$3
-    new=$4
-    if [ $campaign == "" ]
-    then
-	usage
-	die "a campaign name is required."
-    elif [ $old = "" ]
-    then
-	usage
-	die "an old textdomain name is required."
-    elif [ $new = "" ]
-    then
-	usage
-	die "a new textdomain name is required."
-    else
-	# First, hack scenario and autoconf files
-	replace wesnoth-${old} wesnoth-${new} \
-	    configure.ac \
-	    po/Makefile.am \
-	    po/wesnoth-${old}/Makevars \
-	    data/${campaign}.cfg \
-	    `find data/${campaign} -name "*.cfg" -print`
+elif [ "$1" = "-d" -o "$1" = "--dryrun" ]
+then
+    do=echo
+fi
 
-	# Then do the .pot and folder moves
-	svnmove po/wesnoth-${old}/${old}.pot po/wesnoth-${old}/${new}.pot
-	svnmove po/wesnoth-${old} po/wesnoth-${new}
-    fi
+campaign=$2
+old=$3
+new=$4
+if [ $campaign = "" ]
+then
+    usage
+    die "a campaign name is required."
+elif [ ${old} = "" ]
+then
+    usage
+    die "an old textdomain name is required."
+elif [ ${new} = "" ]
+then
+    usage
+    die "a new textdomain name is required."
+else
+    # First, hack scenario and autoconf files
+    ${do} replace ${old} ${new} \
+	configure.ac \
+	po/Makefile.am \
+	po/${old}/Makevars \
+	data/${campaign}.cfg \
+	`find data/campaigns/${campaign} -name "*.cfg" -print`
+
+    # Then do the .pot and folder moves
+    ${do} svnmove po/${old}/${old}.pot po/${old}/${new}.pot
+    ${do} svnmove po/${old} po/${new}
 fi
