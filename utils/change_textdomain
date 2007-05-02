@@ -127,20 +127,22 @@ then
 elif [ "$1" = "-d" -o "$1" = "--dryrun" ]
 then
     do=echo
+    shift
 fi
 
-campaign=$2
-old=$3
-new=$4
-if [ $campaign = "" ]
+campaign=$1
+old=$2
+new=$3
+#echo "campaign=$campaign, ols=$old, new=$new"
+if [ "$campaign" = "" ]
 then
     usage
     die "a campaign name is required."
-elif [ ${old} = "" ]
+elif [ "${old}" = "" ]
 then
     usage
     die "an old textdomain name is required."
-elif [ ${new} = "" ]
+elif [ "${new}" = "" ]
 then
     usage
     die "a new textdomain name is required."
