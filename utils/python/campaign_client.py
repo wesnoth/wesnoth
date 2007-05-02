@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-import socket, struct, sys, wmldata, glob, os.path, shutil, threading
+import socket, struct, sys, wmldata, glob, os.path, shutil, threading, re
 
 # First port listed will bw used as default.
 portmap = (("15003", "1.3.x"), ("15004", "1.2.x"))
@@ -396,7 +396,8 @@ if __name__ == "__main__":
     optionparser.add_option("-P", "--password",
         help = "password to use")
     optionparser.add_option("-d", "--download",
-        help = "download the named campaign " +
+        help = "download the named campaign; " +
+        "name may be a Python regexp matched against all campaign names " +
         "(specify the path where to put it with -c, " +
         "current directory will be used by default)")
     optionparser.add_option("-u", "--upload",
@@ -451,16 +452,28 @@ if __name__ == "__main__":
             sys.stderr.write("Could not connect.\n")
     elif options.download:
         cs = CampaignServer(address)
-        mythread = cs.get_campaign_async(options.download)
+        if re.escape(options.download).replace("\\_", "_") == options.download:
+            fetchlist = [options.download]
+        else:
+            fetchlist = []
+            data = cs.list_campaigns()
+            if data:
+                campaigns = data.get_or_create_sub("campaigns")
+                for campaign in campaigns.get_all("campaign"):
+                    name = campaign.get_text_val("name", "?")
+                    if re.search(options.download, name):
+                        fetchlist.append(name)
+        for name in fetchlist:
+            mythread = cs.get_campaign_async(name)
 
-        while not mythread.event.isSet():
-            mythread.event.wait(1)
-            print "%d/%d" % (cs.counter, cs.length)
+            while not mythread.event.isSet():
+                mythread.event.wait(1)
+                print "%s: %d/%d" % (name, cs.counter, cs.length)
 
-        print "Unpacking data.."
-        cs.unpackdir(mythread.data, options.campaigns_dir)
-        for message in mythread.data.find_all("message", "error"):
-            print message.get_text_val("message")
+            print "Unpacking %s..." % name
+            cs.unpackdir(mythread.data, options.campaigns_dir)
+            for message in mythread.data.find_all("message", "error"):
+                print message.get_text_val("message")
     elif options.remove:
         cs = CampaignServer(address)
         data = cs.delete_campaign(options.remove, options.password)
