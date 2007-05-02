@@ -91,7 +91,7 @@ overwrite()
 # Replace a file with itself filtered by a command
 {
     opath=$PATH
-    PATH=/bin:usr/bin
+    PATH=/bin:/usr/bin
 
     file=$1; shift
     new=/tmp/over$$; old=/tmp/under$$
