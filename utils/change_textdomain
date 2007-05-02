@@ -131,11 +131,11 @@ else
     then
 	usage
 	die "a campaign name is required."
-    elif [ $old == "" ]
+    elif [ $old = "" ]
     then
 	usage
 	die "an old textdomain name is required."
-    elif [ $new == "" ]
+    elif [ $new = "" ]
     then
 	usage
 	die "a new textdomain name is required."
