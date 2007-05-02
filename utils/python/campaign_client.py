@@ -96,11 +96,27 @@ class CampaignBrowser:
         """
         Given a block of binary data, decode it as binary WML and return it
         as a WML object.
+
+        The binary WML format is a byte stream. The format is:
+        0 3 <name> means a new element <name> is opened
+        0 4..255 means the same as 0 3 but with a coded name
+        1 means the current element is closed
+        2 <name> means, add a new code for <name> to the dictionary
+        3 <name> <data> means, a new attribute <name> is added with <data>
+        4..255 <data> means, the same as above but with a coded name
+
+        For example if we got:
+        [message]text=blah[/message]
+        [message]text=bleh[/message]
+        It would look like:
+        0 2 message 4 2 text 5 blah 1 0 4 5 bleh 1
+        This would be the same: 
+        0 3 message 3 text blah 1 0 3 message 3 text bleh 1
         """
         WML = wmldata.DataSub("campaign_server")
         pos = [0]
         tag = [WML]
-        item = 0
+        pen_element = False
 
         def done():
             return pos[0] >= len(data)
@@ -125,27 +141,27 @@ class CampaignBrowser:
 
         while not done():
             code = ord(next())
-            if code == 0:
-                item = 1
-            elif code == 1:
+            if code == 0: # open element (name code follows)
+                open_element = True
+            elif code == 1: # close current element
                 tag.pop()
-            elif code == 2:
+            elif code == 2: # add code
                 self.words[self.wordcount] = literal()
                 self.wordcount += 1
             else:
-                if code == 3: word = literal()
-                else: word = self.words[code]
-                if item:
+                if code == 3: word = literal() # literal word
+                else: word = self.words[code] # code
+                if open_element: # we handle opening an element
                     element = wmldata.DataSub(word)
-                    tag[-1].insert(element)
-                    tag.append(element)
-                elif word == "contents":
+                    tag[-1].insert(element) # add it to the current one
+                    tag.append(element) # put to our stack to keep track
+                elif word == "contents": # detect any binary attributes
                     binary = wmldata.DataBinary(word, literal())
                     tag[-1].insert(binary)
-                else:
+                else: # others are text attributes
                     text = wmldata.DataText(word, literal())
                     tag[-1].insert(text)
-                item = 0
+                open_element = False
 
         return WML
 
@@ -165,11 +181,15 @@ class CampaignBrowser:
         def encode(name):
             #FIXME: actual encoding doesn't seem to work that way, only
             #sending uncompressed works for now.
-            #if name in self.codes:
-            #    return self.codes[name]
-            #self.codes[name] = chr(self.codescount)
-            #self.codescount += 1
-            return "\03" + literal(name) + "\00"
+            if name in self.codes:
+                return self.codes[name]
+            what = literal(name)
+            if len(what) <= 20 and self.codescount < 256:
+                data = "\02" + what + "\00" + chr(self.codescount)
+                self.codes[name] = chr(self.codescount)
+                self.codescount += 1
+                return data
+            return "\03" + what + "\00"
 
         if isinstance(data, wmldata.DataSub):
             packet += "\00" + encode(data.name)
@@ -347,7 +367,7 @@ class CampaignBrowser:
 
         return mythread
 
-    def unpackdir(self, data, path, i = 0):
+    def unpackdir(self, data, path, i = 0, verbose = False):
         """
         Call this to unpack a campaign contained in a WML object to the
         filesystem. The data parameter is the WML object, path is the path under
@@ -361,15 +381,17 @@ class CampaignBrowser:
             name = f.get_text_val("name", "?")
             contents = f.get_binary_val("contents")
             if contents:
-                print i * " " + name + " (" +\
-                    str(len(contents)) + ")"
+                if verbose:
+                    print i * " " + name + " (" +\
+                        str(len(contents)) + ")"
                 file(path + "/" + name, "wb").write(contents)
         for dir in data.get_all("dir"):
             name = dir.get_text_val("name", "?")
             shutil.rmtree(path + "/" + name, True)
             os.mkdir(path + "/" + name)
-            print i * " " + name
-            self.unpackdir(dir, path + "/" + name, i + 2)
+            if verbose:
+                print i * " " + name
+            self.unpackdir(dir, path + "/" + name, i + 2, verbose)
 
 if __name__ == "__main__":
     import optparse, subprocess
@@ -407,6 +429,9 @@ if __name__ == "__main__":
         help = "validate python scripts in a campaign " +
         "(VALIDATE specifies the name of the campaign, " +
         "set the password with -P)")
+    optionparser.add_option("-V", "--verbose",
+        help = "be even more verbose for everything",
+        action = "store_true",)
     optionparser.add_option("-r", "--remove",
         help = "remove the named campaign from the server, " +
         "set the password -P")
@@ -471,7 +496,8 @@ if __name__ == "__main__":
                 print "%s: %d/%d" % (name, cs.counter, cs.length)
 
             print "Unpacking %s..." % name
-            cs.unpackdir(mythread.data, options.campaigns_dir)
+            cs.unpackdir(mythread.data, options.campaigns_dir,
+                verbose = options.verbose)
             for message in mythread.data.find_all("message", "error"):
                 print message.get_text_val("message")
     elif options.remove:
