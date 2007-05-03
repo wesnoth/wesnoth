@@ -905,6 +905,7 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-tsg/Makefile.in
 		 po/wesnoth-utbs/Makefile.in
 		 po/wesnoth-nr/Makefile.in
+po/wesnoth-Son_Of_The_Black_Eye/Makefile.in
 		 m4/Makefile
 		 icons/Makefile
 		 src/Makefile
