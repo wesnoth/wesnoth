@@ -613,8 +613,8 @@ if __name__ == '__main__':
             for (old, new) in step:
                 transformed = transformed.replace(old, new)
         # Handle terrain_liked=, terrain=, valid_terrain=
-        spaceless = transformed.replace(" ", "")
-        if "terrain_liked=" in spaceless or "terrain=" in spaceless:
+        spaceless = transformed.replace(" ", "").replace("\t", "")
+        if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless):
             (key, pre, value, post) = parse_attribute(transformed)
             # We have to cope with the following cases...
             # Old style:
