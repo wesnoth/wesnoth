@@ -1,4 +1,7 @@
 Version 1.3.2+svn:
+* campaigns:
+   * Son of the Black Eye:
+     * Merged into mainline for testing.
  * language and i18n:
    * updated translations: Bulgarian, Chinese, Czech, Danish, French, German,
      Italian, Spanish, Swedish
@@ -14,6 +17,12 @@ Version 1.3.2+svn:
    * replace [own_village] with macro {OWN_VILLAGE X Y SIDE}
    * new conditional tag [have_location], tests true if any location passes
      the standard location filter provided inside the tag
+ * WML tools and scripts:
+   * New tool, wescamp_import, automates the shuffling of translation
+     files and textdomain strings need to import a comapigh from WesCamp
+     to mainline.
+   * New tool, change_textdomain, makes it easy to change the name of UMC
+     after import to mainline.
  * Miscellaneous and bugfixes
    * 1.2 savegames are no longer compatible and thus not loaded
    * fixed a crash if an invalid scenario was loaded (bug #9049)
@@ -39,8 +48,6 @@ Version 1.3.2:
      * Scenario 3: Made orc ambush happen on a random turn
    * Northern Rebirth
      * Version 18.6 merged in from WesCamp.
-   * Son of the Black Eye:
-     * Merged into mainline for testing.
  * graphics
    * added the --max-fps command line switch
    * changed the drawing logic so it no longer delays when the drawing is
