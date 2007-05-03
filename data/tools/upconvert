@@ -341,7 +341,7 @@ def maptransform1(filename, baseline, inmap, y):
                 inmap[y][x] = format % conversion1[field]
             else:
                 raise maptransform_error(filename, baseline+y+1,
-                                         "unrecognized map element %s at (x, y)" % (`field`, x, y))
+                                         "unrecognized map element %s at (%s, %s)" % (`field`, x, y))
 
 # 1.3.1 -> 1.3.2 terrain conversions
 conversion2 = {
@@ -414,7 +414,7 @@ class maptransform_error:
     "Error object to be thrown by maptransform."
     def __init__(self, infile, inline, type):
         self.infile = infile
-        self.line = line
+        self.inline = inline
         self.type = type
     def __repr__(self):
         return '"%s", line %d: %s' % (self.infile, self.inline, self.type)
@@ -747,8 +747,7 @@ if __name__ == '__main__':
                             ofp.write(changed)
                             ofp.close()
                 except maptransform_error, e:
-                    if e.level <= verbose:
-                        sys.stderr.write("upconvert: " + `e` + "\n")
+                    sys.stderr.write("upconvert: " + `e` + "\n")
                 except:
                     sys.stderr.write("upconvert: internal error on %s\n" % fn)
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
