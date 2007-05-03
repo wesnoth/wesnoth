@@ -22,7 +22,9 @@
 # 6. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
 #
-# This script will barf on maps with custom terrains.
+# This script will barf on maps with custom terrains.  Also, if you a single
+# subdirectory that mixes old-style and new-style terrain coding it might
+# get confused.
 
 import sys, os, re, getopt, curses.ascii, string, copy
 
@@ -316,10 +318,20 @@ def neighborhood(x, y, map):
 
 def maptransform1(filename, baseline, inmap, y):
     "Transform a map line from 1.2.x to 1.3.x format."
-    if len(inmap[y][0]) == 1:
+    global lock_terrain_coding
+    # The one truly ugly piece of implementation.
+    # We're relying here on maps being seen before scenario files.
+    # We notice whether the maps are oldstyle (single-letter codes)
+    # or newstyle (multiletter comma-seeparated fields) and retain that
+    # information to help with ambiguous cases later on.  We're also relying
+    # on terrain coding to be consistent within a single subdirectory. 
+    if len(inmap[y][0]) > 1:
+        lock_terrain_coding = "newstyle"
+    else:
         format = "%%%d.%ds" % (width, max_len)
         for (x, field) in enumerate(inmap[y]):
             if field in conversion1:
+                lock_terrain_coding = "oldstyle"
                 inmap[y][x] = format % conversion1[field]
             else:
                 raise maptransform_error(filename, baseline+y+1,
@@ -633,17 +645,27 @@ if __name__ == '__main__':
             # The sticky part is that, while it never happens in the current
             # corpus, terrain=Mm (capital letter followed by small) could be
             # interpreted either way.
+            #
+            # There are some unambiguous tests: 
+            oldstyle = (len(value) == 1 or len(value) > 6) and not ',' in value
             newstyle = len(value) > 1 \
                        and value[0].isupper() and value[1].islower() \
-                       and (',' in value or len(value) == 2)
-            if newstyle:
+                       and (',' in value \
+                            or len(value) == 2 \
+                            or (len(value) >= 3 and value[2] == "^"))
+            # See maptransform1() for explanation of this ugly hack.
+            oldstyle = oldstyle or lock_terrain_coding == "oldstyle"
+            newstyle = newstyle or lock_terrain_coding == "newstyle"
+            # Maybe we lose...
+            if not oldstyle and not newstyle:
+                print "%s, line %d: leaving ambiguous terrain value %s alone." \
+                      % (filename, lineno+1, value)
+            elif newstyle:
                 if len(value) == 2:
-                    print "%s, line %d: ambiguous terrain value %s." \
-                          % (filename, lineno+1, value)
-                # 1.3.1 to 1.3.2 conversion
-                for (old, new) in conversion2.items():
-                    transformed = old.sub(new, transformed)
-            else:
+                    # 1.3.1 to 1.3.2 conversion
+                    for (old, new) in conversion2.items():
+                        transformed = old.sub(new, transformed)
+            else: # oldstyle
                 # 1.2.x to 1.3.2 conversions
                 newterrains = ""
                 inmacro = False
@@ -683,6 +705,10 @@ if __name__ == '__main__':
 
     for dir in arguments:
         ofp = None
+        if "older" in versions:
+            lock_terrain_coding = None
+        else:
+            lock_terrain_coding = "newstyle"
         for fn in allcfgfiles(dir):
             if verbose >= 2:
                 print fn + ":"
