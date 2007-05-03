@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-01 18:18+0200\n"
-"PO-Revision-Date: 2007-04-22 22:43+0300\n"
+"PO-Revision-Date: 2007-05-02 22:35+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
 "MIME-Version: 1.0\n"
@@ -300,7 +300,6 @@ msgid "slows"
 msgstr "забавящ"
 
 #: data/abilities.cfg:492
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -308,8 +307,8 @@ msgid ""
 msgstr ""
 "Забавящ:\n"
 "Тази атака забавя целта до края на хода. Забавянето намалява наполовина "
-"пораженията, причинени от атаките на целта, и забавените единици се движат с "
-"половината от нормалната скорост (закръглена нагоре)."
+"пораженията, причинени от атаките на целта, и цената за движение на забавена "
+"единица е удвоена."
 
 #: data/abilities.cfg:501
 msgid "stones"
@@ -5241,9 +5240,8 @@ msgid "Teal"
 msgstr "Синьо-зелено"
 
 #: data/terrain.cfg:22
-#, fuzzy
 msgid "None"
-msgstr "няма"
+msgstr "Няма"
 
 #: data/terrain.cfg:29 data/themes/macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
@@ -5365,9 +5363,8 @@ msgid "Impassable Mountains"
 msgstr "Непроходими планини"
 
 #: data/terrain.cfg:983
-#, fuzzy
 msgid "Impassable Desert Mountains"
-msgstr "Непроходими планини"
+msgstr "Непроходими пустинни планини"
 
 #: data/themes/default.cfg:80 data/themes/dfool.cfg:101
 #: data/themes/experimental.cfg:64
@@ -5813,7 +5810,6 @@ msgstr ""
 "обяснението."
 
 #: data/tips.cfg:36
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -5821,7 +5817,8 @@ msgid ""
 "adjust campaign difficulty."
 msgstr ""
 "Можете да изпратите анонимно на Проекта Уеснот обобщение на своя прогрес с "
-"помощта на бутона Помогни на Уеснот. Тази информация е изключително важна, "
+"помощта на бутона Помогни на Уеснот(означен с иконката на плик близо до "
+"долният десен ъгъл на главният екран). Тази информация е изключително важна, "
 "за да можем да настроим трудността на кампаниите."
 
 #: data/traits.cfg:9
@@ -10022,7 +10019,6 @@ msgid "Ghoul"
 msgstr "Зомби"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:21
-#, fuzzy
 msgid ""
 "Only those with an ungainful knowledge of necromancy know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -10036,7 +10032,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Само онези, които са се посветили на некромантските учения знаят какво е "
+"Само онези, с неблагодарното познание на некромантството знаят какво е "
 "нужно, за да се превърне един обикновен човек в зомби, но те пазят тези "
 "знания за себе си. Каквито и да са ужасните ритуали, които го създават, "
 "резултатът е едно създание, което не помни нищо от дните на човешкия си "
@@ -10081,6 +10077,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Техниката на съживяване на мъртво тяло, за съжаление, е добре позната на "
+"тъмните изкуства; практикуващите често я използват, за да съживят слуги и "
+"войници от неволни трупове. Тези последователи, са често многобройни, но "
+"лесно раними; допир до битка може да ги събуди, правейки ги далеч по-"
+"предизвикателни.\n"
+"\n"
+"Бележки:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:46
 #: data/units/Undead_Corpse_Walking.cfg:48
@@ -10094,7 +10097,6 @@ msgid "Walking Corpse"
 msgstr "Ходещ Труп"
 
 #: data/units/Undead_Corpse_Walking.cfg:22
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -10102,10 +10104,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ходещите трупове са телата на мъртви хора, задвижвани от тъмна магия. Макар "
-"че не са особено силни по време на битка, те са заразни – проклятието им се "
-"разпространява върху тези, които убиват и така увеличават редиците на "
-"армията си.\n"
+"Ходещите трупове са телата на мъртви хора, задвижвани от тъмна магия. "
+"Въпреки, че не са особено опасни за опитен войник, самата гледка на бившите "
+"му другари сред тях е леко казано плашеща.\n"
 "\n"
 "Бележки:"
 
@@ -10114,7 +10115,6 @@ msgid "Ancient Lich"
 msgstr "Древен Лич"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:19
-#, fuzzy
 msgid ""
 "A being of this order is a herald of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death.\n"
@@ -10183,6 +10183,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Ужасът вдъхновен от черна магия идва главно от малкото познание на "
+"обикновеният човек за нея. Тъмните магьосници са започнали да отключват "
+"тайните на живота и смъртта и е ясно, че това знание ще бъде използвано за "
+"жестоки цели.\n"
+"\n"
+"Бележки:"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:60
 #: data/units/Undead_Necromancer.cfg:66
@@ -10224,7 +10230,6 @@ msgid "Necromancer"
 msgstr "Некромант"
 
 #: data/units/Undead_Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. This "
@@ -10237,17 +10242,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Некромантството е един от основните дялове от тъмната магия – това е "
-"ужасното умение да се събуждат мъртвите за лъжлив живот. Това е едно умение, "
-"което е донесло ужасяващи последици за човечеството и е причина тъмната "
-"магия да е забранена, защото прилагането му предоставя на тъмните сили цял "
-"нов арсенал.\n"
+"ужасното умение да се събуждат мъртвите за лъжлив живот. Единствено това "
+"умение довело до забраняването на тъмната магия от човечеството, заради "
+"кошмарните неща, които е направило реалност, давайки съвсем друго измерение "
+"на страхът.\n"
 "\n"
 "Това умение също е първата стъпка към избягването от неизбежността на "
-"смъртта. То е върхът на мощта, която тъмен маг може да придобие, без да е "
-"изгубил човешкия си облик, макар да е нищо в сравнение със способностите на "
-"един Лич. Друга разлика между маг и Лич се състои в това, че магията "
-"всъщност укрепва физическото тяло на магьосника, докато личът на практика "
-"обрича своето тяло на разруха.\n"
+"смъртта.\n"
 "\n"
 "Бележки:"
 
@@ -10260,7 +10261,6 @@ msgid "Bone Shooter"
 msgstr "Стрелец с кости"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:17
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -10274,8 +10274,8 @@ msgstr ""
 "Някои от творенията на тъмните магьосници са по-жизнени от други, на тях са "
 "дава и подходящо снаряжение. Стрелците, например често се сдобиват с доста "
 "зловещ арсенал. Техните колчани са пълни със стрели изработени не от дърво, "
-"а от костите на жертвите им. Наричани от враговете си просто стрелци с "
-"кости, тези извращения носят ужас за всичко живо.\n"
+"а от костите на жертвите им. От това идва и назоваването им от враговете си "
+"просто 'Стрелци с кости'.\n"
 "\n"
 "Бележки:"
 
@@ -10344,7 +10344,6 @@ msgid "Draug"
 msgstr "Спящ"
 
 #: data/units/Undead_Skele_Draug.cfg:19
-#, fuzzy
 msgid ""
 "There is little left in these towering ruins, of the men they once were.  "
 "Warriors at heart, they are lost in the dream of unlife, wandering through "
@@ -10354,12 +10353,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Извисяващи се останки на някога легендарни войни, спящите всяват страх у "
-"всеки, който ги види. Води ги не зла воля, а собствената им памет, която не "
-"иска да се откаже от спомена за велики битки и ги държи пленени в сън за "
-"отминало величие. Затова те отчаяно се борят да се отскубнат и да получат "
-"жадувано успокоение, достижимо само чрез силата на оръжия. Целта на борбата "
-"им и лицата на враговете им обаче отдавна са изчезнали в небитието.\n"
+"Малко е останало в тези извисяващи се останки на хората, които са били "
+"някога. Войни по сърце, загубени по блян за неживот, блуждаят из битките в "
+"паметта си и отчаяно се борят за освобождение, за мир, постижим само чрез "
+"силата на оръжие.  И така те се бият, без мисъл и съжаление.\n"
 "\n"
 "Бележки:"
 
@@ -10390,7 +10387,6 @@ msgid "Soul Shooter"
 msgstr "Душегубец"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:19
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -10403,8 +10399,8 @@ msgstr ""
 "Най-силните стрелци на неживите съвсем разбираемо са тези, които са били "
 "стрелци и приживе. Те обикалят бойните полета, водени от избледняващия "
 "спомен за предишното им умение, не знаят нито се интересуват каква е целта "
-"на съществуването им или кой е врагът им. Води ги единствено злобата, "
-"породена от страданието на неестественото им съществуване.\n"
+"на съществуването им или кой е врагът им. Води ги единствено злобата на "
+"празното им и неестествено съществуване.\n"
 "\n"
 "Бележки:"
 
@@ -10456,7 +10452,6 @@ msgid "Ghost"
 msgstr "Призрак"
 
 #: data/units/Undead_Spirit_Ghost.cfg:20
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -10473,8 +10468,8 @@ msgstr ""
 "нея са ужасяващи.\n"
 "\n"
 "Духът, впримчен в мрачно заклинание, прилича на вятъра уловен в корабните "
-"платна – и двамата се превръщат в послушни слуги на господари, които могат "
-"да ги използват, както намерят за добре.\n"
+"платна. Резултатът от този затвор е непреклонен слуга, който може да бъде "
+"свързан с каквато задача господарят им намери за подходяща.\n"
 "\n"
 "Бележки:"
 
@@ -10531,7 +10526,6 @@ msgid "Spectre"
 msgstr "Фантом"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. They are a rightful terror to the living, for they are quite "
@@ -10544,8 +10538,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Понякога наричани \"Кухи хора\", фантомите са в основата на мощта на на своя "
-"господар. Тези отвратителни създания са истински ужас за живите и "
-"непрестанно бдят над територията на господаря си.\n"
+"господар. Те са истински ужас за живите, защото са доста смъртоносни, както "
+"видът им подсказва.\n"
 "\n"
 "Създаването на тези същества не е шега работа, но истинската опасност при "
 "среща с тях, е, че те обикновено са предвестник на много по-опасна сила, "
@@ -10563,7 +10557,6 @@ msgid "Wraith"
 msgstr "Привидение"
 
 #: data/units/Undead_Spirit_Wraith.cfg:18
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them, as "
@@ -10573,14 +10566,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Тези измъчени останки от предишни войни са сред най-ужасяващите създания, "
-"които един некромант може да създаде, защото мечът преминава през тях като "
-"през въздух. Ужасът, който те вдъхват, се дължи на убеждението, че тези "
-"зверове са неуязвими. Това твърдение обаче е далеч от истината.\n"
-" \n"
-"Затова е било създадено средство, позволяващо на заклинанията, които "
-"поддържат тези същества, да се възобновяват посредством същия обект, който "
-"ги е заплашил.\n"
+"Тези сенки на предишни войни са сред най-ужасяващите създания, които един "
+"некромант може да създаде, защото мечът преминава през тях като през въздух. "
+"Ужасът, който те вдъхват, се дължи на убеждението, че тези зверове са "
+"неуязвими. Това твърдение за щастие е далеч от истината.\n"
+"\t\n"
 "\n"
 "Бележки:"
 
@@ -10928,9 +10918,8 @@ msgstr ""
 "Внимание: Файлът, който се опитвате да заредите е повреден. Зареждане. \n"
 
 #: src/game.cpp:696 src/multiplayer_connect.cpp:1256
-#, fuzzy
 msgid "This save is from a version too old to be loaded."
-msgstr "Записът е от друга версия на играта, Искате ли да го заредите?"
+msgstr "Записът е от прекалено стара версия на играта, за да бъде зареден. "
 
 #: src/game.cpp:701 src/multiplayer_connect.cpp:1262
 msgid ""
@@ -12657,41 +12646,3 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Качване на обобщения"
-
-#~ msgid ""
-#~ "These animated walking corpses have become strong from long experience "
-#~ "fighting the living.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Тези оживели трупове са калени в продължителни битки с живите.\n"
-#~ "\n"
-#~ "Бележки:"
-
-#~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it by the common man. Dark sorcerers have begun to unlock the "
-#~ "secrets of life and death, quickly becoming masters of inflicting pain "
-#~ "and anguish.\n"
-#~ "\n"
-#~ "The ultimate prize of the dark arts is complete domination of death and "
-#~ "life. Dark Sorcerers may eventually learn how to manipulate life and "
-#~ "death by reanimating corpses, skeletons, and spirits. The most corrupt "
-#~ "and power-hungry will attempt to completely conquer death through the "
-#~ "transformation to lichdom and attainment of a dreadful immortality.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Тъмната магия вдъхва ужас предимно, защото обикновените хора почти не я "
-#~ "познават. Тъмните магьосници, които са започнали да разгадават тайните на "
-#~ "живота и смъртта, бързо стават майстори на причиняването на болка и "
-#~ "страдание.\n"
-#~ "\n"
-#~ "Върховната награда, гарантирана от тъмните изкуства, е добиването на "
-#~ "господство над живота и смъртта. Тъмните магьосници в крайна сметка се "
-#~ "научават да манипулират живот и смърт, като призовават обратно трупове, "
-#~ "тела и духове. Най-покварените и жадни за власт магьосници се опитват "
-#~ "напълно да покорят смъртта, като се трансформират в личове и се сдобиват "
-#~ "с безсмъртие на ужасяваща цена.\n"
-#~ "\n"
-#~ "Бележки:"
