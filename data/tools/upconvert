@@ -319,11 +319,10 @@ def neighborhood(x, y, map):
 def maptransform1(input, baseline, inmap, y):
     "Transform a map line from 1.2.x to 1.3.x format."
     format = "%%%d.%ds" % (width, max_len)
-    x = 0
     if "," in inmap[y]:
-        raise maptransform_error(2, input, baseline, None,
-                                 "map file appears to be converted already")
+        return inmap[y]
     line = ''
+    x = 0
     for char in inmap[y]:
         ohex = ''
         if char in ('\n', '\r'):
@@ -331,7 +330,7 @@ def maptransform1(input, baseline, inmap, y):
         elif char in conversion1:
             ohex = format % conversion1[char] + ','
         else:
-            raise maptransform_error(0, input, baseline+y+1, (x, y),
+            raise maptransform_error(input, baseline+y+1, (x, y),
                                      "unrecognized character %s (%d)" % (`char`, ord(char)))
             # ohex = format % char
             sys.exit(1)
@@ -346,7 +345,7 @@ def maptransform1(input, baseline, inmap, y):
                 # Intentionally skipping 0 as it is original hex
                 a = adj[i];
                 if not a in conversion1:
-                    raise maptransform_error(0, input, baseline, (x, y),
+                    raise maptransform_error(input, baseline, (x, y),
                                  "error, %s in adjacent hexes" % a)
                     sys.exit(1)
                 ca = conversion1[a]
@@ -405,6 +404,7 @@ conversion2 = {
 def maptransform2(input, baseline, inmap, y):
     "Convert a map line from 1.3.1 multiletter format to 1.3.2 format."
     mapline = inmap[y]
+    print "Called on:", mapline
     for (old, new) in conversion2.items():
         mapline = old.sub(new, mapline)
     return mapline
@@ -413,8 +413,7 @@ def maptransform2(input, baseline, inmap, y):
 
 class maptransform_error:
     "Error object to be thrown by maptransform."
-    def __init__(self, level, infile, inline, loc, type):
-        self.level = level
+    def __init__(self, infile, inline, loc, type):
         self.infile = infile
         self.inline = inline
         self.loc = loc
@@ -445,7 +444,7 @@ def translator(filename, mapxform, textxform):
     lineno = baseline = 0
     while mfile:
         line = mfile.pop(0)
-        if verbose >= 4:
+        if verbose >= 3:
             sys.stdout.write(line)
         lineno += 1
         # Exclude map_data= lines that are just 1 line without
@@ -458,7 +457,7 @@ def translator(filename, mapxform, textxform):
                         and  line.count("}") == 0):
             baseline = 0
             cont = True
-            if verbose >= 4:
+            if verbose >= 3:
                 print "*** Entering map mode."
             # Assumes map is more than 1 line long.
             if not map_only:
@@ -467,7 +466,7 @@ def translator(filename, mapxform, textxform):
                 outmap.append(line)
             while cont and mfile:
                 line = mfile.pop(0)
-                if verbose >= 4:
+                if verbose >= 3:
                     sys.stdout.write(line)
                 lineno += 1
                 if line and line[0] == '#':
@@ -475,7 +474,7 @@ def translator(filename, mapxform, textxform):
                     continue
                 if '"' in line:
                     cont = False
-                    if verbose >= 4:
+                    if verbose >= 3:
                         print "*** Exiting map mode."
                     line = line.split('"')[0]
                 if line and not line.endswith("\n"):
@@ -533,7 +532,6 @@ def allcfgfiles(dir):
             for name in files:
                 if interesting(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
-    print datafiles
     datafiles.sort()	# So diffs for same campaigns will cluster in reports
     return datafiles
 
@@ -545,10 +543,9 @@ Usage: upconvert [options]
     -h, --help                 Emit this help message and quit.
     -d, --dryrun               List changes but don't perform them.
     -o, --oldversion           Specify version to begin with.
-    -v, --verbose              -v          lists changes.
-                               -v -v       warns of maps already converted.
-                               -v -v -v    names each file before it's processed.
-                               -v -v -v -v shows verbose parse details.
+    -v, --verbose              -v        lists changes.
+                               -v -v     names each file before it's processed.
+                               -v -v -v  shows verbose parse details.
     -c, --clean                Clean up -bak files.
     -D, --diff                 Display diffs between unconverted and unconverted files.
     -r, --revert               Revert the conversion from the -bak files.
@@ -695,7 +692,8 @@ if __name__ == '__main__':
     if "1.3.1" in versions and "older" not in versions:
         maptransform = maptransform2
     else:
-        maptransform = maptransform1
+        # Apply both map transforms. Haskell would be nice here...
+        maptransform = lambda input, baseline, inmap, y: maptransform2(maptransform1(input, baseline, inmap, y), baseline, inmap, y)
 
     if not arguments:
         arguments = ["."]
@@ -703,7 +701,7 @@ if __name__ == '__main__':
     for dir in arguments:
         ofp = None
         for fn in allcfgfiles(dir):
-            if verbose >= 3:
+            if verbose >= 2:
                 print fn + ":"
             backup = fn + "-bak"
             if clean or revert:
