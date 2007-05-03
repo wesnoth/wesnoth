@@ -2357,10 +2357,10 @@ bool display::turbo() const
 
 double display::turbo_speed() const
 {
-	if (turbo_ || keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT])
+	if (turbo())
 		return turbo_speed_;
 	else
-		return 1;
+		return 1.0;
 }
 
 void display::set_turbo_speed(const double speed)
