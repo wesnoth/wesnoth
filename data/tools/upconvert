@@ -26,9 +26,7 @@
 
 import sys, os, re, getopt, curses.ascii, string, copy
 
-def vcdir(filename):
-    "Predicate that tells us to ignore a file if it's part of the VCS state."
-    return ".svn" in filename	# Change if we move away from  Subversion
+vcdir = ".svn"		# Change if we move away from  Subversion
 
 filemoves = {
     # Older includes all previous to 1.3.1.
@@ -39,7 +37,7 @@ filemoves = {
         # references in UMC on the campaign server.  Some things we
         # don't try to fix include:
         # - attack/staff.png may map to one of several staves.
-        # - magic.wav may map to one of several sounds depending on the init.
+        # - magic.wav may map to one of several sounds depending on the unit.
         # Some other assumption sound in current UMC as of April 2007
         # but theoretically dubious are marked with *.
         ("../music/defeat.ogg",     "defeat.ogg"),
@@ -430,7 +428,7 @@ def translator(filename, mapxforms, textxform):
     while mfile:
         line = mfile.pop(0)
         if verbose >= 3:
-            sys.stdout.write(line)
+            sys.stdout.write(line + terminator)
         lineno += 1
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
@@ -452,10 +450,10 @@ def translator(filename, mapxforms, textxform):
             while cont and mfile:
                 line = mfile.pop(0)
                 if verbose >= 3:
-                    sys.stdout.write(line)
+                    sys.stdout.write(line + terminator)
                 lineno += 1
                 if len(line) == 0 or line[0] == '#':
-                    newdata.append(line)
+                    newdata.append(line + terminator)
                     continue
                 if '"' in line:
                     cont = False
@@ -469,8 +467,7 @@ def translator(filename, mapxforms, textxform):
                         fields = map(lambda x: x, line)
                     outmap.append(fields)
             if not map_only: 
-                line="map_data=\"\n";
-                newdata.append(line)
+                newdata.append("map_data=\"" + terminator)
             original = copy.deepcopy(outmap)
             for transform in mapxforms:
                 for y in range(len(outmap)):
@@ -481,16 +478,16 @@ def translator(filename, mapxforms, textxform):
                     modified = True
             # All lines of the map are processed, add the appropriate trailer
             if not map_only:
-                newdata.append("\"\n")
+                newdata.append("\"" + terminator)
         elif "map_data=" in line and (line.count("{") or line.count("}")):
-            newdata.append(line)
+            newdata.append(line + terminator)
         elif "map_data=" in line and line.count('"') > 1:
             print >>sys.stderr, 'upconvert: "%s", line %d: one-line map.' % (filename, lineno)
-            newdata.append(line)
+            newdata.append(line + terminator)
         else:
             # Handle text (non-map) lines
             newline = textxform(filename, lineno, line)
-            newdata.append(newline)
+            newdata.append(newline + terminator)
             if newline != line:
                 modified = True
     # Return None if the transformation functions made no changes.
@@ -514,8 +511,8 @@ def allcfgfiles(dir):
             datafiles.append(dir)
     else:
         for root, dirs, files in os.walk(dir):
-            if vcdir(dirs):
-                dirs.remove(dirs)
+            if vcdir in dirs:
+                dirs.remove(vcdir)
             for name in files:
                 if interesting(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
