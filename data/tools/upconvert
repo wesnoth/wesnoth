@@ -24,7 +24,7 @@
 #
 # This script will barf on maps with custom terrains.
 
-import sys, os, re, getopt, curses.ascii
+import sys, os, re, getopt, curses.ascii, string, copy
 
 def vcdir(filename):
     "Predicate that tells us to ignore a file if it's part of the VCS state."
@@ -316,56 +316,16 @@ def neighborhood(x, y, map):
 	adj.append(map[y+1][x+1])
     return adj
 
-def maptransform1(input, baseline, inmap, y):
+def maptransform1(filename, baseline, inmap, y):
     "Transform a map line from 1.2.x to 1.3.x format."
-    format = "%%%d.%ds" % (width, max_len)
-    if "," in inmap[y]:
-        return inmap[y]
-    line = ''
-    x = 0
-    for char in inmap[y]:
-        ohex = ''
-        if char in ('\n', '\r'):
-            ohex += char
-        elif char in conversion1:
-            ohex = format % conversion1[char] + ','
-        else:
-            raise maptransform_error(input, baseline+y+1, (x, y),
-                                     "unrecognized character %s (%d)" % (`char`, ord(char)))
-            # ohex = format % char
-            sys.exit(1)
-        if "_K" in ohex:
-            # Convert keeps according to adjacent hexes
-            adj = neighborhood(x, y, inmap)
-            adj = "".join(adj).replace("\n", "").replace("\r", "")
-
-            # print "adjacent: %s" % adj
-            hexcount = {}
-            for i in range(1, len(adj)):
-                # Intentionally skipping 0 as it is original hex
-                a = adj[i];
-                if not a in conversion1:
-                    raise maptransform_error(input, baseline, (x, y),
-                                 "error, %s in adjacent hexes" % a)
-                    sys.exit(1)
-                ca = conversion1[a]
-                if ca.startswith("C"): #this is a castle hex	
-                     hexcount[ca] = hexcount.get(ca, 0) + 1
-            maxc = 0;
-            maxk = "Ch";
-            # Note: if two kinds of terrain tie for most instances adjacent,
-            # which one dominates will be a pseudorandom artifact of
-            # Python's hash function.
-            for k in hexcount.keys():
-                if hexcount[k] > maxc:
-                    maxc = hexcount[k]
-                    maxk = k
-            #print "Dominated by %s" % maxk
-            maxk = re.sub("^C", "K", maxk)
-            ohex = ohex.replace("_K", maxk)
-        line += ohex
-        x += 1
-    return line.replace(",\n", "\n")
+    if len(inmap[y][0]) == 1:
+        format = "%%%d.%ds" % (width, max_len)
+        for (x, field) in enumerate(inmap[y]):
+            if field in conversion1:
+                inmap[y][x] = format % conversion1[field]
+            else:
+                raise maptransform_error(filename, baseline+y+1,
+                                         "unrecognized map element %s at (x, y)" % (`field`, x, y))
 
 # 1.3.1 -> 1.3.2 terrain conversions
 conversion2 = {
@@ -401,29 +361,49 @@ conversion2 = {
     re.compile(r"(?<!\^)Xm\b") : "Mm^Xm",
     }
 
-def maptransform2(input, baseline, inmap, y):
+def maptransform2(filename, baseline, inmap, y):
     "Convert a map line from 1.3.1 multiletter format to 1.3.2 format."
-    mapline = inmap[y]
-    for (old, new) in conversion2.items():
-        mapline = old.sub(new, mapline)
-    return mapline
+    for x in range(len(inmap[y])):
+        # General conversions
+        for (old, new) in conversion2.items():
+            inmap[y][x] = old.sub(new, inmap[y][x])
+        # Convert keeps according to adjacent hexes
+        if "_K" in inmap[y][x]:
+            adj = map(string.strip, neighborhood(x, y, inmap))
+
+            # print "adjacent: %s" % adj
+            hexcount = {}
+            # Intentionally skipping 0 as it is original hex
+            for i in range(1, len(adj)):
+                if adj[i].startswith("C"): # this is a castle hex
+                    # Magic: extract second character of each adjacent castle,
+                    # which is its base type.  Count occurrences of each type.
+                    basetype = adj[i][1]
+                    hexcount[basetype] = hexcount.get(basetype, 0) + 1
+            maxc = 0;
+            maxk = "h";
+            # Note: if two kinds of basetype tie for most instances adjacent,
+            # which one dominates will be a pseudorandom artifact of
+            # Python's hash function.
+            for k in hexcount.keys():
+                if hexcount[k] > maxc:
+                    maxc = hexcount[k]
+                    maxk = k
+            #print "Dominated by %s" % maxk
+            inmap[y][x] = inmap[y][x].replace("_K", "K" + maxk)
 
 # Generic machinery starts here
 
 class maptransform_error:
     "Error object to be thrown by maptransform."
-    def __init__(self, infile, inline, loc, type):
+    def __init__(self, infile, inline, type):
         self.infile = infile
-        self.inline = inline
-        self.loc = loc
+        self.line = line
         self.type = type
     def __repr__(self):
-        errmsg = '"%s", line %d: %s' % (self.infile, self.inline, self.type)
-        if self.loc:
-            errmsg += " at %s" % (self.loc,)
-        return errmsg
+        return '"%s", line %d: %s' % (self.infile, self.inline, self.type)
 
-def translator(filename, mapxform, textxform):
+def translator(filename, mapxforms, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
     # This hairy regexp excludes map_data lines that contain {} file
     # references, also lines that are empty or hold just one keep
@@ -433,8 +413,14 @@ def translator(filename, mapxform, textxform):
     modified = False
     mfile = []
     map_only = not filename.endswith(".cfg")
+    terminator = "\n"
     for line in open(filename):
-        mfile.append(line);
+        if line.endswith("\n"):
+            line = line[:-1]
+        if line.endswith("\r"):
+            line = line[:-1]
+            terminator = '\r\n'
+        mfile.append(line)
         if mapdata.search(line):
             map_only = False
     cont = False
@@ -462,13 +448,13 @@ def translator(filename, mapxform, textxform):
             if not map_only:
                 line = line.split('"')[1]
             if line.strip():
-                outmap.append(line)
+                mfile.insert(0, line)
             while cont and mfile:
                 line = mfile.pop(0)
                 if verbose >= 3:
                     sys.stdout.write(line)
                 lineno += 1
-                if line and line[0] == '#':
+                if len(line) == 0 or line[0] == '#':
                     newdata.append(line)
                     continue
                 if '"' in line:
@@ -476,24 +462,26 @@ def translator(filename, mapxform, textxform):
                     if verbose >= 3:
                         print "*** Exiting map mode."
                     line = line.split('"')[0]
-                if line and not line.endswith("\n"):
-                    line += "\n"
                 if line:
-                    outmap.append(line)
+                    if ',' in line:
+                        fields = line.split(",")
+                    else:
+                        fields = map(lambda x: x, line)
+                    outmap.append(fields)
             if not map_only: 
                 line="map_data=\"\n";
                 newdata.append(line)
+            original = copy.deepcopy(outmap)
+            for transform in mapxforms:
+                for y in range(len(outmap)):
+                    transform(filename, baseline, outmap, y)
             for y in range(len(outmap)):
-                newline = mapxform(filename, baseline, outmap, y)
-                newdata.append(newline)
-                if newline != outmap[y]:
+                newdata.append(",".join(outmap[y]) + terminator)
+                if original[y] != outmap[y]:
                     modified = True
             # All lines of the map are processed, add the appropriate trailer
-            if map_only:
-                newline="\n"
-            else:
-                newline="\"\n"
-            newdata.append(newline)
+            if not map_only:
+                newdata.append("\"\n")
         elif "map_data=" in line and (line.count("{") or line.count("}")):
             newdata.append(line)
         elif "map_data=" in line and line.count('"') > 1:
@@ -689,10 +677,9 @@ if __name__ == '__main__':
         return transformed
 
     if "1.3.1" in versions and "older" not in versions:
-        maptransform = maptransform2
+        maptransforms = [maptransform2]
     else:
-        # Apply both map transforms. Haskell would be nice here...
-        maptransform = lambda input, baseline, inmap, y: maptransform2(maptransform1(input, baseline, inmap, y), baseline, inmap, y)
+        maptransforms = [maptransform1, maptransform2]
 
     if not arguments:
         arguments = ["."]
@@ -722,7 +709,7 @@ if __name__ == '__main__':
             else:
                 # Do file conversions
                 try:
-                    changed = translator(fn, maptransform, texttransform)
+                    changed = translator(fn, maptransforms, texttransform)
                     if changed:
                         print "upconvert: converting", fn
                         if not dryrun:
