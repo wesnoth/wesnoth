@@ -157,8 +157,8 @@ filemoves = {
         ("units/undead/ghost-attack1.png", "units/undead/ghost-attack-1.png"),
         ("wolf-attack.wav",         "wolf-bite.ogg"),
         ("wolf-cry.wav",            "wolf-die.wav"),
-        ("wose-attack.wav",            "wose.attack.ogg"),
-        ("wose.attack.ogg",            "wose.attack.ogg"),
+        ("wose-attack.wav",         "wose-attack.ogg"),
+        (r"wose\.attack.ogg",       "wose-attack.ogg"),
     ),
     "1.3.1" : (
         # Peasant images moved to a new directory
@@ -221,6 +221,12 @@ filemoves = {
     # Always have the current version here.
     "1.3.3" : ()
 }
+
+# Turn all the filemove string substition pairs into nearly equivalent
+# regexp-substitution pairs, forbidding the match from being preceded
+# by a dash.  This prevents, e.g., "miss.ogg" false-matching on "big-miss.ogg".
+for (key, value) in filemoves.items():
+    filemoves[key] = map(lambda (old, new): (re.compile("(?<!-)"+old), new), value)
 
 # 1.2.x to 1.3.2 terrain conversion
 conversion1 = {
@@ -623,7 +629,7 @@ if __name__ == '__main__':
         # First, do resource-file moves
         for step in fileconversions:
             for (old, new) in step:
-                transformed = transformed.replace(old, new)
+                transformed = old.sub(new, transformed)
         # Handle terrain_liked=, terrain=, valid_terrain=
         spaceless = transformed.replace(" ", "").replace("\t", "")
         if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless):
