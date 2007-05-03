@@ -53,6 +53,9 @@
 # 
 # 7) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in configure.ac 
 #
+# Note: This script is rather sensitive to the current directory layout --
+# the campaigns directory is required to be under data, po directly under
+# toplevel, etc. It will silently break if these assumptions stop being true.
 
 usage()
 {
@@ -152,7 +155,7 @@ else
 	configure.ac \
 	po/Makefile.am \
 	po/${oldtextdomain}/Makevars \
-	data/${campaign}.cfg \
+	data/campaigns/${campaign}.cfg \
 	`find data/campaigns/${campaign} -name "*.cfg" -print`
 
     # Then do the .pot and folder moves
