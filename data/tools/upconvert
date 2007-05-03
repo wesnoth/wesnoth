@@ -369,9 +369,9 @@ def maptransform1(input, baseline, inmap, y):
 
 # 1.3.1 -> 1.3.2 terrain conversions
 conversion2 = {
-    re.compile(r"(?<!\^)Bww([|/\\])\b") : "Ww^Bw\\1",
-    re.compile(r"(?<!\^)Bwo([|/\\])\b") : "Wo^Bw\\1",
-    re.compile(r"(?<!\^)Bss([|/\\])\b") : "Ss^Bw\\1",
+    re.compile(r"(?<!\^)Bww([|/\\])") : "Ww^Bw\\1",
+    re.compile(r"(?<!\^)Bwo([|/\\])") : "Wo^Bw\\1",
+    re.compile(r"(?<!\^)Bss([|/\\])") : "Ss^Bw\\1",
     re.compile(r"(?<!\^)Dc\b") : "Dd^Dc",
     re.compile(r"(?<!\^)Dr\b") : "Dd^Dr",
     re.compile(r"(?<!\^)Do\b") : "Dd^Do",
@@ -404,7 +404,6 @@ conversion2 = {
 def maptransform2(input, baseline, inmap, y):
     "Convert a map line from 1.3.1 multiletter format to 1.3.2 format."
     mapline = inmap[y]
-    print "Called on:", mapline
     for (old, new) in conversion2.items():
         mapline = old.sub(new, mapline)
     return mapline
