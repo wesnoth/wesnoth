@@ -421,11 +421,6 @@ class maptransform_error:
 
 def translator(filename, mapxforms, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
-    # This hairy regexp excludes map_data lines that contain {} file
-    # references, also lines that are empty or hold just one keep
-    # character (somewhat pathological, but not handling these will
-    # make the regression tests break).
-    mapdata = re.compile(r'map_data="[A-Za-z0-9\/|\\&_~?\[\]\']{2,}') 
     modified = False
     mfile = []
     map_only = not filename.endswith(".cfg")
@@ -437,7 +432,7 @@ def translator(filename, mapxforms, textxform):
             line = line[:-1]
             terminator = '\r\n'
         mfile.append(line)
-        if mapdata.search(line):
+        if "map_data" in line:
             map_only = False
     cont = False
     outmap = []
@@ -453,18 +448,19 @@ def translator(filename, mapxforms, textxform):
         # pathological and the parse won't handle them, the latter
         # refer to map files which will be checked separately.
         if map_only or ("map_data=" in line
-                        and line.count('"') == 1
+                        and line.count('"') in (1, 2)
                         and line.count("{") == 0
                         and  line.count("}") == 0):
             baseline = 0
             cont = True
             if verbose >= 3:
                 print "*** Entering map mode."
-            # Assumes map is more than 1 line long.
             if not map_only:
-                line = line.split('"')[1]
-            if line.strip():
-                mfile.insert(0, line)
+                fields = line.split('"')
+                if fields[1].strip():
+                    mfile.insert(0, fields[1])
+                if len(fields) == 3:
+                    mfile.insert(1, '"')
             while cont and mfile:
                 line = mfile.pop(0)
                 if verbose >= 3:
