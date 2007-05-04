@@ -511,9 +511,10 @@ def translator(filename, mapxforms, textxform):
                 if not mapfile.endswith(".map") and modified_maps.get(mapfile)==False:
                     newline = newline.replace(mapfile, mapfile + ".map") 
             newdata.append(newline + terminator)
-            if verbose > 0  and newline != line:
-                print >>sys.stderr, 'upconvert: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
+            if newline != line:
                 modified = True
+                if verbose > 0:
+                    print >>sys.stderr, 'upconvert: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
         elif "map_data=" in line and line.count('"') > 1:
             print >>sys.stderr, 'upconvert: "%s", line %d: one-line map.' % (filename, lineno)
             newdata.append(line + terminator)
