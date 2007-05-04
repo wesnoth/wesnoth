@@ -1257,12 +1257,13 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 }
 
 bool map_editor::confirm_exit_and_save() {
+	if (!changed_since_save())
+		return true;
 	if (gui::show_dialog(gui_, NULL, "",
 	                     _("Quit Editor"), gui::YES_NO) != 0) {
 		return false;
 	}
-	if (changed_since_save() &&
-	    gui::show_dialog(gui_, NULL, "",
+	if (gui::show_dialog(gui_, NULL, "",
 		             _("Do you want to save the map before quitting?"), gui::YES_NO) == 0) {
 		if (!save_map("", false)) {
 			return false;
