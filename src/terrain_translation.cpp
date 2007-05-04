@@ -127,6 +127,7 @@ namespace t_translation {
 static std::map<t_letter, t_letter> lookup_table_131;
 #endif
 
+const t_letter OFF_MAP = string_to_number_("_off");
 const t_letter VOID_TERRAIN = string_to_number_("_s");
 const t_letter FOGGED = string_to_number_("_f");
 
@@ -902,11 +903,9 @@ int main(int argc, char** argv)
 	if(argc > 1) {
 	
 		if(std::string(argv[1]) == "match" && argc == 4) {
-			t_translation::t_letter src = 
-				t_translation::read_letter(std::string(argv[2]), t_translation::T_FORMAT_STRING);
+			t_translation::t_letter src = t_translation::read_letter(std::string(argv[2]));
 			
-			t_translation::t_list dest = 
-				t_translation::read_list(std::string(argv[3]), -1, t_translation::T_FORMAT_STRING);
+			t_translation::t_list dest = t_translation::read_list(std::string(argv[3]));
 
 			if(t_translation::terrain_matches(src, dest)) {
 				std::cout << "Match\n" ;
