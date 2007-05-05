@@ -352,7 +352,6 @@ class CrossRefLister(CrossRef):
             for defn in self.xref[name]:
                 if pred and not pred(name, defn):
                     continue
-                defn.dump_references()
                 if defn.undef:
                     type = "local"
                 else:
@@ -362,6 +361,7 @@ class CrossRefLister(CrossRef):
                     print "%s: %s macro %s is unused" % (defn, type, name)
                 else:
                     print "%s: %s macro %s is used in %d files:" % (defn, type, name, nrefs)
+                defn.dump_references()
         for (name, defloc) in self.fileref.items():
             if pred and not pred(name, defloc):
                 continue
