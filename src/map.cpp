@@ -779,7 +779,13 @@ const std::map<t_translation::t_letter, size_t>& gamemap::get_weighted_terrain_f
 
 	return terrainFrequencyCache_;
 }
-
+namespace {
+	struct cfg_isor {
+		bool operator() (std::pair<const std::string*,const config*> &val) {
+			return *(val.first) == "or";
+		}
+	};
+}
 void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& filter,
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop) const
@@ -794,7 +800,7 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 		}
 	}
 
-	//handle filter
+	//handle location filter
 	terrain_cache_manager tcm;
 	std::vector<gamemap::location>::iterator loc_itor = xy_locs.begin();
 	while(loc_itor != xy_locs.end()) {
@@ -810,17 +816,49 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 		lexical_cast_default<size_t>(filter["radius"], 0));
 	get_tiles_radius(*this, xy_locs, radius, locs);
 
-	//handle [not]
-	if(filter.has_child("not")) {
-		const vconfig::child_list& nots = filter.get_children("not");
-		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
+	config::all_children_iterator cond = filter.get_config().ordered_begin();
+	config::all_children_iterator cond_end = filter.get_config().ordered_end();
+	int ors_left = std::count_if(cond, cond_end, cfg_isor());
+	while(cond != cond_end)
+	{
+		const std::string& cond_name = *((*cond).first);
+		const vconfig cond_filter(&(*((*cond).second)));
+
+		//handle [and]
+		if(cond_name == "and") {
+			std::set<gamemap::location> intersect_hexes;
+			get_locations(intersect_hexes, cond_filter, game_status, units, flat_tod);
+			std::set<gamemap::location>::iterator intersect_itor = locs.begin();
+			while(intersect_itor != locs.end()) {
+				if(intersect_hexes.find(*intersect_itor) == locs.end()) {
+					locs.erase(*intersect_itor++);
+				} else {
+					++intersect_itor;
+				}
+			}
+		}
+		//handle [or]
+		else if(cond_name == "or") {
+			std::set<gamemap::location> union_hexes;
+			get_locations(union_hexes, cond_filter, game_status, units, flat_tod, max_loop);
+			//locs.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
+			std::set<gamemap::location>::iterator insert_itor = union_hexes.begin();
+			while(insert_itor != union_hexes.end()) {
+				locs.insert(*insert_itor++);
+			}
+		}
+		//handle [not]
+		else if(cond_name == "not") {
 			std::set<gamemap::location> removal_hexes;
-			get_locations(removal_hexes, *i, game_status, units, flat_tod, max_loop);
+			get_locations(removal_hexes, cond_filter, game_status, units, flat_tod);
 			std::set<gamemap::location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
 				locs.erase(*erase_itor++);
 			}
 		}
+
+		//if there are no locations or [or] conditions left, go ahead and return empty
+		++cond;
 	}
 
 	//restrict the potential number of locations to be returned
