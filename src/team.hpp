@@ -81,6 +81,7 @@ public:
 		int action_bonus_count;
 
 		std::string flag;
+		std::string flag_icon;
 
 		std::string description;
 
@@ -200,6 +201,7 @@ public:
 					 const std::string& user_name);
 
 	const std::string& flag() const { return info_.flag; }
+	const std::string& flag_icon() const { return info_.flag_icon; }
 
 	const std::string& ai_algorithm() const { return info_.ai_algorithm; }
 	const config& ai_parameters() const { return aiparams_; }

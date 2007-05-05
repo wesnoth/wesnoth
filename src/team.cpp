@@ -135,6 +135,7 @@ team::team_info::team_info(const config& cfg)
 	}
 
 	flag = cfg["flag"];
+	flag_icon = cfg["flag_icon"];
 
 	description = cfg["description"];
 	objectives = cfg["objectives"];
@@ -269,6 +270,7 @@ void team::team_info::write(config& cfg) const
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
+	cfg["flag_icon"] = flag_icon;
 	cfg["description"] = description;
 	cfg["objectives"] = objectives;
 	cfg["objectives_changed"] = objectives_changed ? "yes" : "no";
