@@ -175,6 +175,7 @@ public:
 	bool next_turn();
 	
 	static bool is_start_ToD(const std::string&);
+     const game_state& sog() const{return(*state_of_game_);}
 
 	std::vector<team> *teams;
 
@@ -196,6 +197,7 @@ private:
 	size_t turn_;
 	int numTurns_;
 	int currentTime_;
+     const game_state* state_of_game_;
 };
 
 //object which holds all the data needed to start a scenario.

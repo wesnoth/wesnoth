@@ -176,7 +176,7 @@ static void parse_times(const config& cfg, std::vector<time_of_day>& normal_time
 /// It sets random starting ToD and current_tod to config
 ///
 gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
-                 turn_(1),numTurns_(num_turns),currentTime_(0)
+  turn_(1),numTurns_(num_turns),currentTime_(0),state_of_game_(s_o_g)
 {
 	teams = NULL;
     std::string turn_at = time_cfg["turn_at"];
@@ -210,8 +210,6 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g)
 		areas_.push_back(area);
 	}
 }
-
-
 
 void gamestatus::write(config& cfg) const
 {

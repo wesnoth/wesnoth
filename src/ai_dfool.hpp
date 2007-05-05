@@ -7,7 +7,9 @@
 #include "map.hpp"
 #include "unit_map.hpp"
 #include "unit.hpp"
+
 #include <vector>
+#include <list>
 #include <map>
 #include <string>
 
@@ -44,8 +46,27 @@ namespace dfool {
     std::vector<gamemap::location> locations_;
   };
 
+  class evaluator{
+  public:
+    evaluator(const game_state& s, const std::map<std::string, evaluator*>* m):function_map_(m),state(s){};
+    virtual ~evaluator(){};
+    virtual std::string value(const std::string& s);
+  private:
+    const std::map<std::string, evaluator*>* function_map_;
+    const game_state& state;
+  };
+
+  class arithmetic_evaluator : public evaluator {
+  public:
+    arithmetic_evaluator(const game_state& s, const std::map<std::string, evaluator*>* m):evaluator(s,m){};
+    std::string value(const std::string& s);
+  private:
+    std::list<std::string> parse_tokens(const std::string&);
+    std::string evaluate_tokens(std::list<std::string>&);
+  };
+
   //an ai that keeps track of what it has "seen", does not target units
-  //that it has not "seen" and does not recruit based on unseen units.
+  //that it has not "seen" and does not make decisions based on unseen units.
   class dfool_ai : public ai_interface {
   public:
     dfool_ai(info& i) : ai_interface(i),unit_memory_(i.gameinfo , i.teams[i.team_num-1].ai_memory()){}

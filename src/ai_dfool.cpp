@@ -127,6 +127,11 @@ namespace dfool {
 
 	  if(found){
 	    std::string type=(**com)["type"];
+	    std::string e=(**com)["test"];
+	    std::map<std::string, evaluator*> function_map;
+	    arithmetic_evaluator eval(get_info().state.sog(),&function_map);
+	    std::cout<<"eval: "<<type<<":"<<e<<" = "<<eval.value(e)<<"\n";
+
 	    LOG_STREAM(info, ai)<<"\tcommand: "<<type<<std::endl;
 	    if(type=="moveto"){
 	      moveto(com,u);
@@ -376,4 +381,234 @@ namespace dfool {
       }
     }
   }
+
+  std::string evaluator::value(const std::string& val_string){
+    std::string temp_string=utils::interpolate_variables_into_string(val_string,state);
+    
+    std::vector<std::string> p=utils::paranthetical_split(temp_string,0,"(",")");
+
+    //find function calls designated by @ and evaluate values inside ()
+    std::string func;
+    std::stringstream tot;
+    std::cout<<"got here:"<<val_string<<"\n";
+    bool function=false;
+    for(size_t i=0;i!=p.size();i++){
+	 std::stringstream ptemp;
+	 if(i%2){
+	   if(function){
+		std::cout<<"function: "<<func<<"\n";
+		std::map<std::string, evaluator*>::const_iterator fmi = 
+		  function_map_->find(func);
+		if(fmi != function_map_->end()){//evaluate function
+		  ptemp<<fmi->second->value(p[i]);
+		  p[i]=ptemp.str();
+		}else{//error
+		  std::cout<<"function undefined: "<<func<<"\n";
+		  LOG_STREAM(info, ai)<<"error: evaluator function undefined: "<<func<<"\n";
+		  p[i]="ERR";
+		}
+	   }else if(p[i].size()>0 ){
+		p[i]="("+p[i]+")";
+	   }
+	   function=false;
+	 }else{
+	   std::string t=p[i];
+	   std::cout<<"got here: t :"<<t<<"\n";
+	   std::vector<std::string> temp=utils::split(t,'@');
+	   std::cout<<"got here: temp :"<<temp.size()<<"\n";
+
+	   if(find(t.begin(),t.end(),'@')!=t.end()){
+		function=true;
+	   }
+
+	   if(temp.size()>2){
+		LOG_STREAM(info, ai)<<"evaluator syntax error:\n\t" << val_string << std::endl;
+		std::cout<<"evaluator syntax error:\n\t" << val_string << std::endl;
+	   }
+	   std::cout<<"eval size:"<<temp.size()<<"\n";
+	   
+	   if(temp.size()>0){
+		p[i]=temp[0];
+		
+		if(temp.size()==2){
+		  func=temp[1];
+		}else{
+		  func="";
+		}
+	   }else{
+		p[i]="";
+	   }
+	 }
+	 tot<<p[i];
+    }
+    return(tot.str());
+  }
+
+  std::string arithmetic_evaluator::value(const std::string& val_string){
+    std::string temp = evaluator::value(val_string);//calculate wml variables
+    std::list<std::string> tokens = parse_tokens(temp);
+    std::cout<<"tokens:\n";
+    for(std::list<std::string>::const_iterator i=tokens.begin();i!=tokens.end();i++){
+	 std::cout<<"\t"<<(*i)<<"\n";
+    }
+    if(tokens.size()){
+	 std::cout<<"got here tokenless\n";
+	 temp=evaluate_tokens(tokens);
+    }
+    std::cout<<"temp:"<<temp<<"\n";
+    return temp;
+  }
+
+  std::string arithmetic_evaluator::evaluate_tokens(std::list<std::string> &tlist){
+    std::vector<std::string> op_priority;
+    op_priority.push_back("^");
+    op_priority.push_back("*/%");
+    op_priority.push_back("+-");
+    double temp=0;
+    std::cout<<"got here token\n";
+    for(size_t i=0;i<op_priority.size();i++){
+	 tlist.remove("");
+	 for(std::list<std::string>::iterator token = tlist.begin();token!=tlist.end();token++){
+	   for(size_t j=0;j<op_priority[i].size();j++){
+		std::string t;
+		t+=op_priority[i][j];
+		if((*token) == t){
+		  std::list<std::string>::iterator a=token;
+		  std::list<std::string>::iterator b=token;
+		  std::cout<<"got here token1\n";
+		  a--;
+		  b++;
+		  std::cout<<"atb:"<<*token<<"\n";
+		  //		  std::cout<<"atb:"<<*a<<*token<<*b<<"\n";
+		  if((*token)[0]=='*'){
+		    temp= atof((*a).c_str()) * atof((*b).c_str()); 
+		  }
+		  if((*token)[0]=='/'){
+		    temp= atof((*a).c_str()) / atof((*b).c_str()); 
+		  }
+		  if((*token)[0]=='%'){
+		    temp= fmod(atof((*a).c_str()), atof((*b).c_str())); 
+		  }
+		  if((*token)[0]=='+'){
+		    temp= atof((*a).c_str()) + atof((*b).c_str()); 
+		  }
+		  if((*token)[0]=='-'){
+		    temp= atof((*a).c_str()) - atof((*b).c_str()); 
+		  }
+		  if((*token)[0]=='^'){
+		    temp= pow(atof((*a).c_str()),atof((*b).c_str())); 
+		  }
+		  std::cout<<"got here token2:"<<temp<<"\n";
+		  std::stringstream r;
+		  r<<temp;
+		  *a="";
+		  *token="";
+		  *b=r.str();
+		  token++;
+		  //		  tlist.erase(a);
+		  //		  tlist.erase(b);
+		  break;
+		}
+	   }
+	 }
+    }
+    tlist.remove("");
+    return(*(tlist.begin()));
+  }
+
+  std::list<std::string> arithmetic_evaluator::parse_tokens(const std::string& s){
+    std::list<std::string> ret;
+    std::string temp;
+    std::string str="";
+    std::string operators = "^*/%+-";
+    std::string digits = "0123456789";
+    char dpoint='.';
+    std::string parenthesis="()";
+    int count=0;
+    size_t i;
+    
+    for(i=0;i!=s.size();i++){//strip out spaces
+	 if(s[i]!=' '){
+	   str+=s[i];
+	 }
+    }
+    
+    i=0;
+    while(i!=str.size()){
+	 std::cout<<"i:"<<i<<"\n";
+	 if(0==count){
+	   ret.push_back("");
+	 }
+	 char c=str[i];
+	 bool dpfound=false;
+	 bool found=false;  
+	 for(size_t j=0;j!=digits.size();j++){
+	   if(c==digits[j]){
+		found=true;
+		break;
+	   }
+	 }
+
+	 if(!found && !dpfound && c==dpoint){//check for decimal point
+	   dpfound=true;
+	   found=true;
+	 }
+
+	 if(found || (0==count && c=='-')){
+	   ret.back()+=c;
+	   count++;
+	 }else if(count){
+	   count=0;
+	   for(size_t j=0;j!=operators.size();j++){
+		if(c==operators[j]){
+		  found=true;
+		  break;
+		}
+	   }	  
+	   if(found){
+		ret.push_back("");
+		ret.back()+=c;
+	   }else{
+		std::cout<<"error in arithmetic operator:"<<c<<":\n\t"<<s<<"\n";
+		return(ret);
+	   }
+	 }else if(c==parenthesis[0]){
+	   std::vector<std::string> temp=utils::paranthetical_split(str.substr(i,str.size()-i),0);
+	   if(temp.size()%2==0){
+		std::cout<<"temp"<<temp[1]<<":"<<i<<"\n";
+		ret.back()+=value(temp[1]);
+		i+=temp[1].size()+2;
+		std::cout<<"\t"<<ret.back()<<"\n";
+		std::cout<<"temp 2:"<<i<<"\n";
+		count=0;
+		c=str[i];
+		for(size_t j=0;j!=operators.size();j++){
+		  if(c==operators[j]){
+		    found=true;
+		    break;
+		  }
+		}	  
+		if(found){
+		  ret.push_back("");
+		  ret.back()+=c;
+		}else if(i!=str.size()){
+		  std::cout<<"error in arithmetic operator:"<<str[i]<<":\n\t"<<s<<"\n\t"<<str.substr(0,i)<<"\n\t"<<str.substr(i,str.size()-i)<<"\n";
+		  return(ret);
+		}
+	   }else{
+		std::cout<<"error in paranthetical expression:\n\t"<<s<<"\n";
+	   }
+	 }else if(i!=str.size()){
+	   std::cout<<"error in arithmetic expression:\n\t"<<s<<":\n\t"<<str.substr(0,i)<<"\n\t:"<<s[i]<<":\n";
+	   std::cout<<i<<";"<<str.size()<<"\n";
+	   return(ret);
+	 }
+	 if(i!=str.size()){
+	   i++;
+	 }
+    }
+	 std::cout<<"got here 5\n";
+    return(ret);
+  }
+
 }//end namespace dfool

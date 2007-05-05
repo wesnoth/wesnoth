@@ -35,8 +35,7 @@ public:
 		info(display& disp, const gamemap& map, const game_data& gameinfo, unit_map& units,
 			std::vector<team>& teams, unsigned int team_num, const gamestatus& state, class turn_info& turn_data)
 			: disp(disp), map(map), gameinfo(gameinfo), units(units), teams(teams),
-			  team_num(team_num), state(state), turn_data_(turn_data)
-		{}
+			  team_num(team_num), state(state), turn_data_(turn_data)		{}
 
 		///the display object, used to draw the moves the AI makes.
 		display& disp;
