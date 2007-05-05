@@ -417,7 +417,7 @@ namespace dfool {
 	   std::vector<std::string> temp=utils::split(t,'@');
 	   std::cout<<"got here: temp :"<<temp.size()<<"\n";
 
-	   if(find(t.begin(),t.end(),'@')!=t.end()){
+	   if(std::find(t.begin(),t.end(),'@') != t.end()){
 		function=true;
 	   }
 
