@@ -563,11 +563,19 @@ bool gamemap::location::matches_range(const std::string& xloc, const std::string
 }
 
 namespace {
+
 	struct terrain_cache_manager {
 		terrain_cache_manager() : ptr(NULL) {}
 		~terrain_cache_manager() { delete ptr; }
 		t_translation::t_match *ptr;
 	};
+
+	struct cfg_isor {
+		bool operator() (std::pair<const std::string*,const config*> &val) {
+			return *(val.first) == "or";
+		}
+	};
+
 } //end anonymous namespace
 
 bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig& cfg, 
@@ -589,16 +597,45 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig
 		matches = terrain_matches_internal(*i, cfg, game_status, units, flat_tod, false, tcm.ptr);
 		++loop_count;
 	}
-	if(!matches) return false;
 
-	//handle [not]
-	const vconfig::child_list& nots = cfg.get_children("not");
-	for(vconfig::child_list::const_iterator j = nots.begin(); j != nots.end(); ++j) {
-		if(terrain_matches_filter(loc, *j, game_status, units, flat_tod, max_loop)) {
+	//handle [and], [or], and [not] with in-order precedence
+	config::all_children_iterator cond = cfg.get_config().ordered_begin();
+	config::all_children_iterator cond_end = cfg.get_config().ordered_end();
+	int ors_left = std::count_if(cond, cond_end, cfg_isor());
+	while(cond != cond_end)
+	{
+		//if there are no matches or [or] conditions left, go ahead and return false
+		if(!matches && ors_left <= 0) {
 			return false;
 		}
+
+		const std::string& cond_name = *((*cond).first);
+		const vconfig cond_filter(&(*((*cond).second)));
+
+		//handle [and]
+		if(cond_name == "and")
+		{
+			matches = matches &&
+				terrain_matches_filter(loc, cond_filter, game_status, units, flat_tod, max_loop);
+		}
+		//handle [or]
+		else if(cond_name == "or")
+		{
+			matches = matches ||
+				terrain_matches_filter(loc, cond_filter, game_status, units, flat_tod, max_loop);
+			--ors_left;
+		}
+		//handle [not]
+		else if(cond_name == "not")
+		{
+			matches = matches &&
+				!terrain_matches_filter(loc, cond_filter, game_status, units, flat_tod, max_loop);
+		}
+
+		++cond;
 	}
-	return true;
+
+	return matches;
 }
 
 bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconfig& cfg, 
@@ -779,13 +816,7 @@ const std::map<t_translation::t_letter, size_t>& gamemap::get_weighted_terrain_f
 
 	return terrainFrequencyCache_;
 }
-namespace {
-	struct cfg_isor {
-		bool operator() (std::pair<const std::string*,const config*> &val) {
-			return *(val.first) == "or";
-		}
-	};
-}
+
 void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& filter,
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop) const
@@ -833,7 +864,7 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 		//handle [and]
 		if(cond_name == "and") {
 			std::set<gamemap::location> intersect_hexes;
-			get_locations(intersect_hexes, cond_filter, game_status, units, flat_tod);
+			get_locations(intersect_hexes, cond_filter, game_status, units, flat_tod, max_loop);
 			std::set<gamemap::location>::iterator intersect_itor = locs.begin();
 			while(intersect_itor != locs.end()) {
 				if(intersect_hexes.find(*intersect_itor) == locs.end()) {
@@ -857,7 +888,7 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 		//handle [not]
 		else if(cond_name == "not") {
 			std::set<gamemap::location> removal_hexes;
-			get_locations(removal_hexes, cond_filter, game_status, units, flat_tod);
+			get_locations(removal_hexes, cond_filter, game_status, units, flat_tod, max_loop);
 			std::set<gamemap::location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
 				locs.erase(*erase_itor++);
