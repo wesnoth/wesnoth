@@ -157,7 +157,7 @@ private:
 class gamestatus
 {
 public:
-	gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g = 0);
+	gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g = NULL);
 	void write(config& cfg) const;
 
 	time_of_day get_time_of_day() const;
@@ -175,7 +175,10 @@ public:
 	bool next_turn();
 	
 	static bool is_start_ToD(const std::string&);
-     const game_state& sog() const{return(*state_of_game_);}
+
+	//FIXME: since gamestatus may be constructed with NULL game_state* (by default), 
+	//you should not rely on this function to return the current game_state
+	const game_state& sog() const{return(*state_of_game_);}
 
 	std::vector<team> *teams;
 
@@ -197,7 +200,7 @@ private:
 	size_t turn_;
 	int numTurns_;
 	int currentTime_;
-     const game_state* state_of_game_;
+	const game_state* state_of_game_;
 };
 
 //object which holds all the data needed to start a scenario.
