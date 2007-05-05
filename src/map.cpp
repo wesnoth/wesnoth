@@ -816,11 +816,17 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 		lexical_cast_default<size_t>(filter["radius"], 0));
 	get_tiles_radius(*this, xy_locs, radius, locs);
 
+	//handle [and], [or], and [not] with in-order precedence
 	config::all_children_iterator cond = filter.get_config().ordered_begin();
 	config::all_children_iterator cond_end = filter.get_config().ordered_end();
 	int ors_left = std::count_if(cond, cond_end, cfg_isor());
 	while(cond != cond_end)
 	{
+		//if there are no locations or [or] conditions left, go ahead and return empty
+		if(locs.empty() && ors_left <= 0) {
+			return;
+		}
+
 		const std::string& cond_name = *((*cond).first);
 		const vconfig cond_filter(&(*((*cond).second)));
 
@@ -846,6 +852,7 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 			while(insert_itor != union_hexes.end()) {
 				locs.insert(*insert_itor++);
 			}
+			--ors_left;
 		}
 		//handle [not]
 		else if(cond_name == "not") {
@@ -857,7 +864,6 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 			}
 		}
 
-		//if there are no locations or [or] conditions left, go ahead and return empty
 		++cond;
 	}
 
