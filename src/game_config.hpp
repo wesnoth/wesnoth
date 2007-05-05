@@ -43,7 +43,7 @@ namespace game_config
 	extern std::string game_icon, game_title, game_logo, title_music,
 	  moved_ball_image, unmoved_ball_image, partmoved_ball_image,
 	  enemy_ball_image, ally_ball_image, energy_image,
-	  flag_image, cross_image,
+	  flag_image, flag_icon_image, cross_image,
 	  terrain_mask_image, observer_image,
 	  checked_menu_image, unchecked_menu_image, wml_menu_image, level_image, ellipsis_image;
 

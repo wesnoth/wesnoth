@@ -52,8 +52,9 @@ namespace game_config
 	std::string partmoved_ball_image = "misc/ball-partmoved.png";
 	std::string enemy_ball_image = "misc/ball-enemy.png";
 	std::string ally_ball_image = "misc/ball-ally.png";
-	std::string flag_image = "terrain/flag-1.png:150,terrain/flag-2.png:150";
-  	std::string flag_rgb;
+	std::string flag_image = "flags/flag-1.png:150,flags/flag-2.png:150,flags/flag-3.png:150,flags/flag-4.png:150";
+	std::string flag_icon_image = "flags/flag_icon";
+  	std::string flag_rgb = "green";
 
 	std::string cross_image = "misc/cross.png";
 
@@ -144,6 +145,7 @@ namespace game_config
 		enemy_ball_image = v["enemy_ball_image"];
 		ally_ball_image = v["ally_ball_image"];
 		flag_image = v["flag_image"];
+		flag_icon_image = v["flag_icon_image"];
 		cross_image = v["cross_image"];
 
 		foot_left_nw = utils::split(v["footprint_left_nw"]);
