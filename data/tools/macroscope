@@ -53,41 +53,9 @@
 
 import sys, os, time, re, getopt, sre_constants, md5
 
+## Generic cross-referencer code begins here
+
 resource_extensions = ("png", "jpg", "ogg", "wav", "map")
-
-def htmlize(line):
-    "HTML-escape a text line"
-    return line.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;")
-
-def interpret(lines, css):
-    "Interpret the ! convention for .cfg comments."
-    inlisting = False
-    outstr = '<p class="%s">' % css
-    for line in lines:
-        line = line.rstrip()
-        if not inlisting and not line:
-            outstr += "</p><p>"
-            continue
-        if not inlisting and line[0] == '!':
-            outstr += "</p>\n<pre class='listing'>"
-            inlisting = True
-            bracketdepth = curlydepth = 0
-        line = htmlize(line)
-        if inlisting:
-            outstr += line[1:] + "\n"
-        else:
-            outstr += line + "\n"
-        if inlisting:
-            if line and line[0] != '!':
-                outstr += "</pre>\n<p>"
-                inlisting = False
-    if not inlisting:
-        outstr += "</p>\n"
-    else:
-        outstr += "</pre>\n"
-    outstr = outstr.replace("<p></p>", "")
-    outstr = outstr.replace("\n\n</pre>", "\n</pre>")
-    return outstr
 
 class Forest:
     "Return an iterable directory forest object."
@@ -343,6 +311,41 @@ class CrossRef:
                         if not key:
                             self.missing.append((name, reference(fn,n+1)))
                 rfp.close()
+
+## Generic cross-referencer code ends here
+
+def interpret(lines, css):
+    "Interpret the ! convention for .cfg comments."
+    inlisting = False
+    outstr = '<p class="%s">' % css
+    for line in lines:
+        line = line.rstrip()
+        if not inlisting and not line:
+            outstr += "</p><p>"
+            continue
+        if not inlisting and line[0] == '!':
+            outstr += "</p>\n<pre class='listing'>"
+            inlisting = True
+            bracketdepth = curlydepth = 0
+        line = line.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;")
+        if inlisting:
+            outstr += line[1:] + "\n"
+        else:
+            outstr += line + "\n"
+        if inlisting:
+            if line and line[0] != '!':
+                outstr += "</pre>\n<p>"
+                inlisting = False
+    if not inlisting:
+        outstr += "</p>\n"
+    else:
+        outstr += "</pre>\n"
+    outstr = outstr.replace("<p></p>", "")
+    outstr = outstr.replace("\n\n</pre>", "\n</pre>")
+    return outstr
+
+class CrossRefLister(CrossRef):
+    "Cross-reference generator with reporting functions"
     def xrefdump(self, pred=None):
         "Report resolved macro references."
         for name in self.xref:
@@ -516,7 +519,7 @@ Usage: macroscope [options] dirpath
         print "# Macroscope reporting on %s" % time.ctime()
         print "# Invocation: %s" % " ".join(sys.argv)
         print "# Working directory: %s" % os.getcwd()
-    xref = CrossRef(dirpath, "|".join(exclude), warnlevel)
+    xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel)
     if extracthelp:
         xref.extracthelp(dirpath[0], sys.stdout)
     elif listfiles:
