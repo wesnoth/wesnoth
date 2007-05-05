@@ -427,7 +427,8 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 		std::cerr << std::hex << "dest= " 
 			<< itor->base << "^" << itor->overlay  << "\t" 
 			<< dest_mask.base << "^" << dest_mask.overlay << "\t" 
-			<< masked_dest.base << "^" << masked_dest.overlay << "\n";
+			<< masked_dest.base << "^" << masked_dest.overlay << "\t"
+			<< dest_has_wildcard << "\n";
 #endif
 		if(dest_has_wildcard && 
 				(src.base & dest_mask.base) == masked_dest.base &&
@@ -444,7 +445,23 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 				((src.base & dest_mask.base) == masked_dest.base)) {
 			return result;
 		}
+/* Test code */ /*
+		if(src_has_wildcard && dest_has_wildcard && (
+				(
+					get_layer_mask_(itor->base) != NO_LAYER && 
+					get_layer_mask_(src.overlay) != NO_LAYER &&
+					(src.base & dest_mask.base) == masked_dest.base &&
+					(itor->overlay & src_mask.overlay) == masked_src.overlay
+				) || ( 
+					get_layer_mask_(itor->overlay) != NO_LAYER && 
+					get_layer_mask_(src.base) != NO_LAYER &&
+					(src.overlay & dest_mask.overlay) == masked_dest.overlay &&
+					(itor->base & src_mask.base) == masked_src.base
+				))) {
 
+			return result;
+		}
+*/		
 	}
 
 	// no match, return the inverse of the result
@@ -521,7 +538,23 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 				((src.base & dest.mask[i].base) == dest.masked_terrain[i].base)) {
 			return result;
 		}
-		
+/* Test code */ /*
+		if(src_has_wildcard && has_wildcard(*terrain_itor) && (
+				(
+					get_layer_mask_(terrain_itor->base) != NO_LAYER && 
+					get_layer_mask_(src.overlay) != NO_LAYER &&
+					(src.base & dest.mask[i].base) == dest.masked_terrain[i].base &&
+					(terrain_itor->overlay & src_mask.overlay) == masked_src.overlay
+				) || ( 
+					get_layer_mask_(terrain_itor->overlay) != NO_LAYER && 
+					get_layer_mask_(src.base) != NO_LAYER &&
+					(src.overlay & dest.mask[i].overlay) == dest.masked_terrain[i].overlay &&
+					(terrain_itor->base & src_mask.base) == masked_src.base
+				))) {
+
+			return result;
+		}
+*/		
 	}
 
 	// no match, return the inverse of the result
