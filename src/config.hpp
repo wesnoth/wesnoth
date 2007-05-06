@@ -103,6 +103,8 @@ public:
 		typedef std::pair<const std::string*,const config*> value_type;
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
+		typedef value_type* pointer;
+		typedef value_type& reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
 		explicit all_children_iterator(Itor i);
 

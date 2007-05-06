@@ -901,7 +901,7 @@ void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& fi
 	//restrict the potential number of locations to be returned
 	if(locs.size() > max_loop + 1) {
 		std::set<gamemap::location>::iterator erase_itor = locs.begin();
-		for(int i=0; i < max_loop + 1; ++i) {
+		for(unsigned i=0; i < max_loop + 1; ++i) {
 			++erase_itor;
 		}
 		locs.erase(erase_itor, locs.end());
