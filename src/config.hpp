@@ -100,13 +100,16 @@ public:
 	};
 
 	struct all_children_iterator {
+		typedef std::pair<const std::string*,const config*> value_type;
+		typedef std::forward_iterator_tag iterator_category;
+		typedef int difference_type;
 		typedef std::vector<child_pos>::const_iterator Itor;
 		explicit all_children_iterator(Itor i);
 
 		all_children_iterator operator++();
 		all_children_iterator operator++(int);
 
-		std::pair<const std::string*,const config*> operator*() const;
+		value_type operator*() const;
 
 		bool operator==(all_children_iterator i) const;
 		bool operator!=(all_children_iterator i) const;
