@@ -571,7 +571,7 @@ namespace {
 	};
 
 	struct cfg_isor {
-		bool operator() (std::pair<const std::string*,const config*> &val) {
+		bool operator() (std::pair<const std::string*,const config*> val) {
 			return *(val.first) == "or";
 		}
 	};
