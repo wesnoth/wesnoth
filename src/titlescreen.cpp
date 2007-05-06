@@ -259,7 +259,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 					       N_("TitleScreen button^Get Add-ons"),
 					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
-					       N_("About"),
+					       N_("Credits"),
 						   N_("TitleScreen button^Quit") };
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
