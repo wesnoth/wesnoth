@@ -944,15 +944,15 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &
 
 surface get_surface_portion(surface const &src, SDL_Rect &area)
 {
-	if(area.x >= src->w || area.y >= src->h) {
-		std::cerr << "illegal surface portion...\n";
+	// check if there is something in the portion
+	if(area.x >= src->w || area.y >= src->h || area.x + area.w < 0 || area.y + area.h < 0) {
+		//std::cerr << "illegal surface portion...\n";
 		return NULL;
 	}
 
 	if(area.x + area.w > src->w) {
 		area.w = src->w - area.x;
 	}
-
 	if(area.y + area.h > src->h) {
 		area.h = src->h - area.y;
 	}
@@ -963,9 +963,7 @@ surface get_surface_portion(surface const &src, SDL_Rect &area)
 		return NULL;
 	}
 
-	SDL_Rect dstarea = {0,0,0,0};
-
-	SDL_BlitSurface(src,&area,dst,&dstarea);
+	SDL_BlitSurface(src,&area,dst, NULL);
 
 	return dst;
 }

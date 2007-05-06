@@ -113,6 +113,7 @@ surface darken_image(surface const &surf);
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb);
 
 surface brighten_image(surface const &surf, fixed_t amount);
+// send NULL if the portion is outside of the surface 
 surface get_surface_portion(surface const &surf, SDL_Rect &rect);
 surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize=true);
 surface adjust_surface_alpha_add(surface const &surf, int amount);
