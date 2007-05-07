@@ -47,14 +47,6 @@
 #include <string>
 #include <cmath>
 
-#ifndef SDL_BUTTON_WHEELLEFT
-#define SDL_BUTTON_WHEELLEFT 6
-#endif
-
-#ifndef SDL_BUTTON_WHEELRIGHT
-#define SDL_BUTTON_WHEELRIGHT 7
-#endif
-
 namespace {
 	const int num_players = gamemap::STARTING_POSITIONS - 1;
 	// Milliseconds to sleep in every iteration of the main loop.

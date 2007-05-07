@@ -26,16 +26,9 @@
 #include "unit_abilities.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
+#include "sdl_utils.hpp"
 
 #include <cstdlib>
-
-#ifndef SDL_BUTTON_WHEELLEFT
-#define SDL_BUTTON_WHEELLEFT 6
-#endif
-
-#ifndef SDL_BUTTON_WHEELRIGHT
-#define SDL_BUTTON_WHEELRIGHT 7
-#endif
 
 namespace events{
 

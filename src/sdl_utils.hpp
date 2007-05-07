@@ -34,6 +34,14 @@
 #define SDL_BUTTON_WHEELDOWN 5
 #endif
 
+#ifndef SDL_BUTTON_WHEELLEFT
+#define SDL_BUTTON_WHEELLEFT 6
+#endif
+
+#ifndef SDL_BUTTON_WHEELRIGHT
+#define SDL_BUTTON_WHEELRIGHT 7
+#endif
+
 namespace {
 const SDL_Rect empty_rect = { 0, 0, 0, 0 };
 }
