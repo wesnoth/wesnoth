@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-05 08:55+0200\n"
+"POT-Creation-Date: 2007-05-07 10:29+0200\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -4415,6 +4415,36 @@ msgid ""
 "And again. *Muahahaha*"
 msgstr ""
 
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:352
+#: src/mouse_events.cpp:193 src/mouse_events.cpp:303
+msgid "Attacker"
+msgstr "Atakanto"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:356
+#, fuzzy
+msgid "North-West"
+msgstr "Norduloj"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:357
+msgid "North-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:358
+msgid "Middle-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:359
+msgid "South-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:360
+msgid "South-West"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:361
+msgid "Middle-West"
+msgstr ""
+
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
 msgstr ""
@@ -4762,13 +4792,13 @@ msgstr "Teamo"
 msgid "None"
 msgstr "nenio"
 
-#: data/terrain.cfg:29 data/themes/macros.cfg:136
+#: data/terrain.cfg:29 data/themes//macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
 #: src/multiplayer_lobby.cpp:433
 msgid "Shroud"
 msgstr "Malkovro de mapo"
 
-#: data/terrain.cfg:37 data/themes/macros.cfg:148
+#: data/terrain.cfg:37 data/themes//macros.cfg:148
 #: src/multiplayer_lobby.cpp:423
 msgid "Fog"
 msgstr "Nebulo"
@@ -4901,136 +4931,136 @@ msgstr "Dezert-montoj"
 msgid "Impassable Desert Mountains"
 msgstr "Dezert-montoj"
 
-#: data/themes/default.cfg:80 data/themes/dfool.cfg:101
-#: data/themes/experimental.cfg:64
+#: data/themes//default.cfg:80 data/themes//dfool.cfg:101
+#: data/themes//experimental.cfg:64
 msgid "Menu"
 msgstr "Menuo"
 
-#: data/themes/default.cfg:91 data/themes/dfool.cfg:112
-#: data/themes/experimental.cfg:75
+#: data/themes//default.cfg:91 data/themes//dfool.cfg:112
+#: data/themes//experimental.cfg:75
 msgid "Actions"
 msgstr "Ago"
 
-#: data/themes/default.cfg:113 data/themes/dfool.cfg:127
+#: data/themes//default.cfg:113 data/themes//dfool.cfg:127
 msgid "End Turn"
 msgstr "Fino de turno"
 
-#: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
+#: data/themes//default.cfg:171 data/themes//dfool.cfg:198
+#: data/themes//experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
 msgid "HP"
 msgstr "Vivoj"
 
-#: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
+#: data/themes//default.cfg:180 data/themes//dfool.cfg:208
+#: data/themes//experimental.cfg:158 src/menu_events.cpp:298
 #: src/menu_events.cpp:832
 msgid "XP"
 msgstr "Spertoj"
 
-#: data/themes/default.cfg:190 data/themes/dfool.cfg:227
-#: data/themes/experimental.cfg:167
+#: data/themes//default.cfg:190 data/themes//dfool.cfg:227
+#: data/themes//experimental.cfg:167
 msgid "gold"
 msgstr "oro"
 
-#: data/themes/default.cfg:199 data/themes/dfool.cfg:236
-#: data/themes/experimental.cfg:176
+#: data/themes//default.cfg:199 data/themes//dfool.cfg:236
+#: data/themes//experimental.cfg:176
 msgid "villages"
 msgstr "vilaĝoj"
 
-#: data/themes/default.cfg:208 data/themes/dfool.cfg:245
-#: data/themes/experimental.cfg:185
+#: data/themes//default.cfg:208 data/themes//dfool.cfg:245
+#: data/themes//experimental.cfg:185
 msgid "units"
 msgstr "milit-unuoj"
 
-#: data/themes/default.cfg:217 data/themes/dfool.cfg:254
-#: data/themes/experimental.cfg:194
+#: data/themes//default.cfg:217 data/themes//dfool.cfg:254
+#: data/themes//experimental.cfg:194
 msgid "upkeep"
 msgstr "soldo"
 
-#: data/themes/default.cfg:226 data/themes/dfool.cfg:263
-#: data/themes/experimental.cfg:203
+#: data/themes//default.cfg:226 data/themes//dfool.cfg:263
+#: data/themes//experimental.cfg:203
 msgid "income"
 msgstr "enspezo"
 
-#: data/themes/default.cfg:365 data/themes/dfool.cfg:416
-#: data/themes/experimental.cfg:329
+#: data/themes//default.cfg:365 data/themes//dfool.cfg:416
+#: data/themes//experimental.cfg:329
 msgid "statuspanel^level"
 msgstr "nivelo"
 
-#: data/themes/default.cfg:396 data/themes/experimental.cfg:360
+#: data/themes//default.cfg:396 data/themes//experimental.cfg:360
 msgid "statuspanel^movement"
 msgstr "movoj"
 
-#: data/themes/default.cfg:536
+#: data/themes//default.cfg:536
 msgid "Act."
 msgstr "Ludu"
 
-#: data/themes/default.cfg:569
+#: data/themes//default.cfg:569
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "Fino"
 
-#: data/themes/dfool.cfg:218
+#: data/themes//dfool.cfg:218
 msgid "MP"
 msgstr ""
 
-#: data/themes/macros.cfg:13
+#: data/themes//macros.cfg:13
 msgid "time left"
 msgstr ""
 
-#: data/themes/macros.cfg:52
+#: data/themes//macros.cfg:52
 #, fuzzy
 msgid "Replay"
 msgstr "registro"
 
-#: data/themes/macros.cfg:67
+#: data/themes//macros.cfg:67
 #, fuzzy
 msgid "Play"
 msgstr "Ludantoj:"
 
-#: data/themes/macros.cfg:68
+#: data/themes//macros.cfg:68
 #, fuzzy
 msgid "continous replay"
 msgstr " registrado"
 
-#: data/themes/macros.cfg:81
+#: data/themes//macros.cfg:81
 #, fuzzy
 msgid "Stop"
 msgstr "Forta"
 
-#: data/themes/macros.cfg:82
+#: data/themes//macros.cfg:82
 msgid "pause at end of turn"
 msgstr ""
 
-#: data/themes/macros.cfg:95
+#: data/themes//macros.cfg:95
 #, fuzzy
 msgid "Reset"
 msgstr "Dezerto"
 
-#: data/themes/macros.cfg:96
+#: data/themes//macros.cfg:96
 msgid "reset to beginning"
 msgstr ""
 
-#: data/themes/macros.cfg:109
+#: data/themes//macros.cfg:109
 #, fuzzy
 msgid "Next Turn"
 msgstr "turno"
 
-#: data/themes/macros.cfg:110
+#: data/themes//macros.cfg:110
 #, fuzzy
 msgid "play turn"
 msgstr "por turno"
 
-#: data/themes/macros.cfg:123
+#: data/themes//macros.cfg:123
 #, fuzzy
 msgid "Next Side"
 msgstr "Sekva"
 
-#: data/themes/macros.cfg:124
+#: data/themes//macros.cfg:124
 #, fuzzy
 msgid "play side turn"
 msgstr "por turno"
 
-#: data/themes/macros.cfg:160
+#: data/themes//macros.cfg:160
 #, fuzzy
 msgid "Skip animation"
 msgstr "+Slovaka traduko"
@@ -5545,12 +5575,12 @@ msgstr "ŝtonĵetilo"
 #: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
 #: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
 #: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
-#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:165
+#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:146
 #: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:81
 #: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
 #: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
 #: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
-#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:157
+#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:138
 #: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
 #: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
 #: data/units/Goblin_Spearman.cfg:160
@@ -6556,7 +6586,7 @@ msgstr "bastono"
 msgid "ensnare"
 msgstr "kapto"
 
-#: data/units/Elvish_Druid.cfg:164 data/units/Elvish_Shyde.cfg:156
+#: data/units/Elvish_Druid.cfg:145 data/units/Elvish_Shyde.cfg:137
 msgid "thorns"
 msgstr "dornoj"
 
@@ -6580,13 +6610,13 @@ msgstr ""
 msgid "entangle"
 msgstr "enplekto"
 
-#: data/units/Elvish_Enchantress.cfg:167 data/units/Elvish_Sorceress.cfg:175
-#: data/units/Elvish_Sylph.cfg:148
+#: data/units/Elvish_Enchantress.cfg:148 data/units/Elvish_Sorceress.cfg:156
+#: data/units/Elvish_Sylph.cfg:129
 msgid "faerie fire"
 msgstr "feina fairo"
 
-#: data/units/Elvish_Enchantress.cfg:168 data/units/Elvish_Sorceress.cfg:176
-#: data/units/Elvish_Sylph.cfg:149 data/units/Human_Horse_Paladin.cfg:33
+#: data/units/Elvish_Enchantress.cfg:149 data/units/Elvish_Sorceress.cfg:157
+#: data/units/Elvish_Sylph.cfg:130 data/units/Human_Horse_Paladin.cfg:33
 #: data/units/Human_Mage_White.cfg:176 data/units/Human_Mage_of_Light.cfg:147
 #: data/units/Mermaid_Diviner.cfg:106 data/units/Mermaid_Priestess.cfg:81
 #: data/units/Undead_Necro_Ancient_Lich.cfg:31
@@ -11244,70 +11274,66 @@ msgstr ""
 msgid "prompt^Command:"
 msgstr "Ordono:"
 
-#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
-msgid "Attacker"
-msgstr "Atakanto"
-
-#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
+#: src/mouse_events.cpp:194 src/mouse_events.cpp:302
 msgid "Defender"
 msgstr "Defendanto"
 
-#: src/mouse_events.cpp:219
+#: src/mouse_events.cpp:212
 msgid "Expected Battle Result (HP)"
 msgstr ""
 
-#: src/mouse_events.cpp:311
+#: src/mouse_events.cpp:304
 #, fuzzy
 msgid " resistance vs "
 msgstr "Rezistoj"
 
-#: src/mouse_events.cpp:312
+#: src/mouse_events.cpp:305
 #, fuzzy
 msgid " vulnerability vs "
 msgstr "vundeblecon de defendanto kontraŭ"
 
-#: src/mouse_events.cpp:322
+#: src/mouse_events.cpp:315
 #, fuzzy
 msgid "Slowed"
 msgstr "malrapidiga"
 
-#: src/mouse_events.cpp:329
+#: src/mouse_events.cpp:322
 #, fuzzy
 msgid "Time of day"
 msgstr "Taga tempo"
 
-#: src/mouse_events.cpp:339
+#: src/mouse_events.cpp:332
 #, fuzzy
 msgid "Leadership"
 msgstr "komandado"
 
-#: src/mouse_events.cpp:346
+#: src/mouse_events.cpp:339
 #, fuzzy
 msgid "Total damage"
 msgstr "tuta damaĝo"
 
-#: src/mouse_events.cpp:353
+#: src/mouse_events.cpp:346
 #, fuzzy
 msgid "No usable weapon"
 msgstr "Elektu armilojn:"
 
-#: src/mouse_events.cpp:358
+#: src/mouse_events.cpp:351
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:659 src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:652 src/mouse_events.cpp:1339
 msgid "Damage Calculations"
 msgstr "Vundiĝelkalkulo"
 
-#: src/mouse_events.cpp:1329 src/reports.cpp:282
+#: src/mouse_events.cpp:1322 src/reports.cpp:282
 msgid "vs"
 msgstr "kontraŭ"
 
-#: src/mouse_events.cpp:1357
+#: src/mouse_events.cpp:1350
 msgid "Attack Enemy"
 msgstr "Ataku malamikon"
 
-#: src/mouse_events.cpp:1358
+#: src/mouse_events.cpp:1351
 msgid "Choose weapon:"
 msgstr "Elektu armilojn:"
 
@@ -12002,7 +12028,7 @@ msgstr "Neŭtralaj milit-unuoj:"
 msgid "Chaotic units: "
 msgstr "Kaosaj milit-unuoj:"
 
-#: src/reports.cpp:476
+#: src/reports.cpp:474
 msgid "Observers:"
 msgstr "Spektantoj:"
 
@@ -12108,8 +12134,9 @@ msgid "TitleScreen button^Preferences"
 msgstr "Agordigoj"
 
 #: src/titlescreen.cpp:262
-msgid "About"
-msgstr "Pri la ludo"
+#, fuzzy
+msgid "Credits"
+msgstr "Ecoj"
 
 #: src/titlescreen.cpp:263
 msgid "TitleScreen button^Quit"
@@ -12222,6 +12249,9 @@ msgstr ""
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "Pri la ludo"
 
 #, fuzzy
 #~ msgid ""

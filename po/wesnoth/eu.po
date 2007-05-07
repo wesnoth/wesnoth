@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-05 08:55+0200\n"
+"POT-Creation-Date: 2007-05-07 10:29+0200\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -3704,6 +3704,36 @@ msgid ""
 "And again. *Muahahaha*"
 msgstr ""
 
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:352
+#: src/mouse_events.cpp:193 src/mouse_events.cpp:303
+msgid "Attacker"
+msgstr "Erasotzaile"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:356
+#, fuzzy
+msgid "North-West"
+msgstr "Basoa"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:357
+msgid "North-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:358
+msgid "Middle-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:359
+msgid "South-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:360
+msgid "South-West"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:361
+msgid "Middle-West"
+msgstr ""
+
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
 msgstr ""
@@ -4024,13 +4054,13 @@ msgstr "Taldea"
 msgid "None"
 msgstr "bat ere ez"
 
-#: data/terrain.cfg:29 data/themes/macros.cfg:136
+#: data/terrain.cfg:29 data/themes//macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
 #: src/multiplayer_lobby.cpp:433
 msgid "Shroud"
 msgstr "Ezkutua"
 
-#: data/terrain.cfg:37 data/themes/macros.cfg:148
+#: data/terrain.cfg:37 data/themes//macros.cfg:148
 #: src/multiplayer_lobby.cpp:423
 msgid "Fog"
 msgstr "Behelaino"
@@ -4162,136 +4192,136 @@ msgstr "Basamortu Mendiak"
 msgid "Impassable Desert Mountains"
 msgstr "Basamortu Mendiak"
 
-#: data/themes/default.cfg:80 data/themes/dfool.cfg:101
-#: data/themes/experimental.cfg:64
+#: data/themes//default.cfg:80 data/themes//dfool.cfg:101
+#: data/themes//experimental.cfg:64
 msgid "Menu"
 msgstr "Menua"
 
-#: data/themes/default.cfg:91 data/themes/dfool.cfg:112
-#: data/themes/experimental.cfg:75
+#: data/themes//default.cfg:91 data/themes//dfool.cfg:112
+#: data/themes//experimental.cfg:75
 msgid "Actions"
 msgstr "Ekintzak"
 
-#: data/themes/default.cfg:113 data/themes/dfool.cfg:127
+#: data/themes//default.cfg:113 data/themes//dfool.cfg:127
 msgid "End Turn"
 msgstr "Txanda Amaitu"
 
-#: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
+#: data/themes//default.cfg:171 data/themes//dfool.cfg:198
+#: data/themes//experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
 msgid "HP"
 msgstr "BP"
 
-#: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
+#: data/themes//default.cfg:180 data/themes//dfool.cfg:208
+#: data/themes//experimental.cfg:158 src/menu_events.cpp:298
 #: src/menu_events.cpp:832
 msgid "XP"
 msgstr "EP"
 
-#: data/themes/default.cfg:190 data/themes/dfool.cfg:227
-#: data/themes/experimental.cfg:167
+#: data/themes//default.cfg:190 data/themes//dfool.cfg:227
+#: data/themes//experimental.cfg:167
 msgid "gold"
 msgstr "urrea"
 
-#: data/themes/default.cfg:199 data/themes/dfool.cfg:236
-#: data/themes/experimental.cfg:176
+#: data/themes//default.cfg:199 data/themes//dfool.cfg:236
+#: data/themes//experimental.cfg:176
 msgid "villages"
 msgstr "herrixkak"
 
-#: data/themes/default.cfg:208 data/themes/dfool.cfg:245
-#: data/themes/experimental.cfg:185
+#: data/themes//default.cfg:208 data/themes//dfool.cfg:245
+#: data/themes//experimental.cfg:185
 msgid "units"
 msgstr "unitateak"
 
-#: data/themes/default.cfg:217 data/themes/dfool.cfg:254
-#: data/themes/experimental.cfg:194
+#: data/themes//default.cfg:217 data/themes//dfool.cfg:254
+#: data/themes//experimental.cfg:194
 msgid "upkeep"
 msgstr "gastuak"
 
-#: data/themes/default.cfg:226 data/themes/dfool.cfg:263
-#: data/themes/experimental.cfg:203
+#: data/themes//default.cfg:226 data/themes//dfool.cfg:263
+#: data/themes//experimental.cfg:203
 msgid "income"
 msgstr "irabaziak"
 
-#: data/themes/default.cfg:365 data/themes/dfool.cfg:416
-#: data/themes/experimental.cfg:329
+#: data/themes//default.cfg:365 data/themes//dfool.cfg:416
+#: data/themes//experimental.cfg:329
 msgid "statuspanel^level"
 msgstr "maila"
 
-#: data/themes/default.cfg:396 data/themes/experimental.cfg:360
+#: data/themes//default.cfg:396 data/themes//experimental.cfg:360
 msgid "statuspanel^movement"
 msgstr "mugimendua"
 
-#: data/themes/default.cfg:536
+#: data/themes//default.cfg:536
 msgid "Act."
 msgstr ""
 
-#: data/themes/default.cfg:569
+#: data/themes//default.cfg:569
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "Bukatu"
 
-#: data/themes/dfool.cfg:218
+#: data/themes//dfool.cfg:218
 msgid "MP"
 msgstr ""
 
-#: data/themes/macros.cfg:13
+#: data/themes//macros.cfg:13
 msgid "time left"
 msgstr ""
 
-#: data/themes/macros.cfg:52
+#: data/themes//macros.cfg:52
 #, fuzzy
 msgid "Replay"
 msgstr "errepikatu"
 
-#: data/themes/macros.cfg:67
+#: data/themes//macros.cfg:67
 #, fuzzy
 msgid "Play"
 msgstr "Jokalariak:"
 
-#: data/themes/macros.cfg:68
+#: data/themes//macros.cfg:68
 #, fuzzy
 msgid "continous replay"
 msgstr "errepikapena"
 
-#: data/themes/macros.cfg:81
+#: data/themes//macros.cfg:81
 #, fuzzy
 msgid "Stop"
 msgstr "Indartsua"
 
-#: data/themes/macros.cfg:82
+#: data/themes//macros.cfg:82
 msgid "pause at end of turn"
 msgstr ""
 
-#: data/themes/macros.cfg:95
+#: data/themes//macros.cfg:95
 #, fuzzy
 msgid "Reset"
 msgstr "Basamortua"
 
-#: data/themes/macros.cfg:96
+#: data/themes//macros.cfg:96
 msgid "reset to beginning"
 msgstr ""
 
-#: data/themes/macros.cfg:109
+#: data/themes//macros.cfg:109
 #, fuzzy
 msgid "Next Turn"
 msgstr "Unitate neutralak:"
 
-#: data/themes/macros.cfg:110
+#: data/themes//macros.cfg:110
 #, fuzzy
 msgid "play turn"
 msgstr "txandako"
 
-#: data/themes/macros.cfg:123
+#: data/themes//macros.cfg:123
 #, fuzzy
 msgid "Next Side"
 msgstr "Unitate neutralak:"
 
-#: data/themes/macros.cfg:124
+#: data/themes//macros.cfg:124
 #, fuzzy
 msgid "play side turn"
 msgstr "txandako"
 
-#: data/themes/macros.cfg:160
+#: data/themes//macros.cfg:160
 #, fuzzy
 msgid "Skip animation"
 msgstr "+Eslovakiera Itzulpena"
@@ -4730,12 +4760,12 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
 #: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
 #: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
-#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:165
+#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:146
 #: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:81
 #: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
 #: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
 #: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
-#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:157
+#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:138
 #: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
 #: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
 #: data/units/Goblin_Spearman.cfg:160
@@ -5557,7 +5587,7 @@ msgstr "Makulu"
 msgid "ensnare"
 msgstr ""
 
-#: data/units/Elvish_Druid.cfg:164 data/units/Elvish_Shyde.cfg:156
+#: data/units/Elvish_Druid.cfg:145 data/units/Elvish_Shyde.cfg:137
 #, fuzzy
 msgid "thorns"
 msgstr "Egilea"
@@ -5582,14 +5612,14 @@ msgstr ""
 msgid "entangle"
 msgstr "nahaspilatu"
 
-#: data/units/Elvish_Enchantress.cfg:167 data/units/Elvish_Sorceress.cfg:175
-#: data/units/Elvish_Sylph.cfg:148
+#: data/units/Elvish_Enchantress.cfg:148 data/units/Elvish_Sorceress.cfg:156
+#: data/units/Elvish_Sylph.cfg:129
 #, fuzzy
 msgid "faerie fire"
 msgstr "Suaren Zetroa"
 
-#: data/units/Elvish_Enchantress.cfg:168 data/units/Elvish_Sorceress.cfg:176
-#: data/units/Elvish_Sylph.cfg:149 data/units/Human_Horse_Paladin.cfg:33
+#: data/units/Elvish_Enchantress.cfg:149 data/units/Elvish_Sorceress.cfg:157
+#: data/units/Elvish_Sylph.cfg:130 data/units/Human_Horse_Paladin.cfg:33
 #: data/units/Human_Mage_White.cfg:176 data/units/Human_Mage_of_Light.cfg:147
 #: data/units/Mermaid_Diviner.cfg:106 data/units/Mermaid_Priestess.cfg:81
 #: data/units/Undead_Necro_Ancient_Lich.cfg:31
@@ -9199,70 +9229,66 @@ msgstr "Ezin izan da '$search' katea duen etiketa edo unitaterik aurkitu."
 msgid "prompt^Command:"
 msgstr "Komandoa:"
 
-#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
-msgid "Attacker"
-msgstr "Erasotzaile"
-
-#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
+#: src/mouse_events.cpp:194 src/mouse_events.cpp:302
 msgid "Defender"
 msgstr "Defentsari"
 
-#: src/mouse_events.cpp:219
+#: src/mouse_events.cpp:212
 msgid "Expected Battle Result (HP)"
 msgstr ""
 
-#: src/mouse_events.cpp:311
+#: src/mouse_events.cpp:304
 #, fuzzy
 msgid " resistance vs "
 msgstr "Erresistentzia"
 
-#: src/mouse_events.cpp:312
+#: src/mouse_events.cpp:305
 #, fuzzy
 msgid " vulnerability vs "
 msgstr "Gizakia vs AA"
 
-#: src/mouse_events.cpp:322
+#: src/mouse_events.cpp:315
 #, fuzzy
 msgid "Slowed"
 msgstr "mantsotua"
 
-#: src/mouse_events.cpp:329
+#: src/mouse_events.cpp:322
 #, fuzzy
 msgid "Time of day"
 msgstr "Eguneko Ordua"
 
-#: src/mouse_events.cpp:339
+#: src/mouse_events.cpp:332
 #, fuzzy
 msgid "Leadership"
 msgstr "buruzagia"
 
-#: src/mouse_events.cpp:346
+#: src/mouse_events.cpp:339
 #, fuzzy
 msgid "Total damage"
 msgstr "guztira kalteak"
 
-#: src/mouse_events.cpp:353
+#: src/mouse_events.cpp:346
 #, fuzzy
 msgid "No usable weapon"
 msgstr "Arma aukeratu:"
 
-#: src/mouse_events.cpp:358
+#: src/mouse_events.cpp:351
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:659 src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:652 src/mouse_events.cpp:1339
 msgid "Damage Calculations"
 msgstr "Kalte kalkuluak"
 
-#: src/mouse_events.cpp:1329 src/reports.cpp:282
+#: src/mouse_events.cpp:1322 src/reports.cpp:282
 msgid "vs"
 msgstr "vs"
 
-#: src/mouse_events.cpp:1357
+#: src/mouse_events.cpp:1350
 msgid "Attack Enemy"
 msgstr "Etsaia Eraso"
 
-#: src/mouse_events.cpp:1358
+#: src/mouse_events.cpp:1351
 msgid "Choose weapon:"
 msgstr "Arma aukeratu:"
 
@@ -9964,7 +9990,7 @@ msgstr "Unitate neutralak:"
 msgid "Chaotic units: "
 msgstr "Unitate kaotikoak:"
 
-#: src/reports.cpp:476
+#: src/reports.cpp:474
 msgid "Observers:"
 msgstr "Ikusleak:"
 
@@ -10070,8 +10096,9 @@ msgid "TitleScreen button^Preferences"
 msgstr "Hobespenak"
 
 #: src/titlescreen.cpp:262
-msgid "About"
-msgstr "Honi buruz"
+#, fuzzy
+msgid "Credits"
+msgstr "Berezitasunak"
 
 #: src/titlescreen.cpp:263
 msgid "TitleScreen button^Quit"
@@ -10182,6 +10209,9 @@ msgstr ""
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "Honi buruz"
 
 #~ msgid "holy"
 #~ msgstr "bedeinkatua"

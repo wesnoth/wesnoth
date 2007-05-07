@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-05 08:55+0200\n"
+"POT-Creation-Date: 2007-05-07 10:29+0200\n"
 "PO-Revision-Date: 2007-05-02 22:35+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -4856,6 +4856,39 @@ msgstr ""
 "Загубихте играта, но няма страшно. Можете да опитате отново. И отново. И "
 "отново. Муахахаха"
 
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:352
+#: src/mouse_events.cpp:193 src/mouse_events.cpp:303
+msgid "Attacker"
+msgstr "Атакуващ"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:356
+#, fuzzy
+msgid "North-West"
+msgstr "Северозападен отбор"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:357
+#, fuzzy
+msgid "North-East"
+msgstr "Североизточен отбор"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:358
+msgid "Middle-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:359
+#, fuzzy
+msgid "South-East"
+msgstr "Югоизточен отбор"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:360
+#, fuzzy
+msgid "South-West"
+msgstr "Югозападен отбор"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:361
+msgid "Middle-West"
+msgstr ""
+
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
 msgstr "6 играча - Клопките на Мансиван"
@@ -5243,13 +5276,13 @@ msgstr "Синьо-зелено"
 msgid "None"
 msgstr "Няма"
 
-#: data/terrain.cfg:29 data/themes/macros.cfg:136
+#: data/terrain.cfg:29 data/themes//macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
 #: src/multiplayer_lobby.cpp:433
 msgid "Shroud"
 msgstr "Було"
 
-#: data/terrain.cfg:37 data/themes/macros.cfg:148
+#: data/terrain.cfg:37 data/themes//macros.cfg:148
 #: src/multiplayer_lobby.cpp:423
 msgid "Fog"
 msgstr "Мъгла"
@@ -5366,126 +5399,126 @@ msgstr "Непроходими планини"
 msgid "Impassable Desert Mountains"
 msgstr "Непроходими пустинни планини"
 
-#: data/themes/default.cfg:80 data/themes/dfool.cfg:101
-#: data/themes/experimental.cfg:64
+#: data/themes//default.cfg:80 data/themes//dfool.cfg:101
+#: data/themes//experimental.cfg:64
 msgid "Menu"
 msgstr "Меню"
 
-#: data/themes/default.cfg:91 data/themes/dfool.cfg:112
-#: data/themes/experimental.cfg:75
+#: data/themes//default.cfg:91 data/themes//dfool.cfg:112
+#: data/themes//experimental.cfg:75
 msgid "Actions"
 msgstr "Действия"
 
-#: data/themes/default.cfg:113 data/themes/dfool.cfg:127
+#: data/themes//default.cfg:113 data/themes//dfool.cfg:127
 msgid "End Turn"
 msgstr "Край на хода"
 
-#: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
+#: data/themes//default.cfg:171 data/themes//dfool.cfg:198
+#: data/themes//experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
 msgid "HP"
 msgstr "Здраве"
 
-#: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
+#: data/themes//default.cfg:180 data/themes//dfool.cfg:208
+#: data/themes//experimental.cfg:158 src/menu_events.cpp:298
 #: src/menu_events.cpp:832
 msgid "XP"
 msgstr "Опит"
 
-#: data/themes/default.cfg:190 data/themes/dfool.cfg:227
-#: data/themes/experimental.cfg:167
+#: data/themes//default.cfg:190 data/themes//dfool.cfg:227
+#: data/themes//experimental.cfg:167
 msgid "gold"
 msgstr "злато"
 
-#: data/themes/default.cfg:199 data/themes/dfool.cfg:236
-#: data/themes/experimental.cfg:176
+#: data/themes//default.cfg:199 data/themes//dfool.cfg:236
+#: data/themes//experimental.cfg:176
 msgid "villages"
 msgstr "селища"
 
-#: data/themes/default.cfg:208 data/themes/dfool.cfg:245
-#: data/themes/experimental.cfg:185
+#: data/themes//default.cfg:208 data/themes//dfool.cfg:245
+#: data/themes//experimental.cfg:185
 msgid "units"
 msgstr "единици"
 
-#: data/themes/default.cfg:217 data/themes/dfool.cfg:254
-#: data/themes/experimental.cfg:194
+#: data/themes//default.cfg:217 data/themes//dfool.cfg:254
+#: data/themes//experimental.cfg:194
 msgid "upkeep"
 msgstr "издръжка"
 
-#: data/themes/default.cfg:226 data/themes/dfool.cfg:263
-#: data/themes/experimental.cfg:203
+#: data/themes//default.cfg:226 data/themes//dfool.cfg:263
+#: data/themes//experimental.cfg:203
 msgid "income"
 msgstr "приход"
 
-#: data/themes/default.cfg:365 data/themes/dfool.cfg:416
-#: data/themes/experimental.cfg:329
+#: data/themes//default.cfg:365 data/themes//dfool.cfg:416
+#: data/themes//experimental.cfg:329
 msgid "statuspanel^level"
 msgstr "ниво"
 
-#: data/themes/default.cfg:396 data/themes/experimental.cfg:360
+#: data/themes//default.cfg:396 data/themes//experimental.cfg:360
 msgid "statuspanel^movement"
 msgstr "движение"
 
-#: data/themes/default.cfg:536
+#: data/themes//default.cfg:536
 msgid "Act."
 msgstr "Действ."
 
-#: data/themes/default.cfg:569
+#: data/themes//default.cfg:569
 msgid "short end-turn^E."
 msgstr "К."
 
-#: data/themes/dfool.cfg:218
+#: data/themes//dfool.cfg:218
 msgid "MP"
 msgstr "Точки движение"
 
-#: data/themes/macros.cfg:13
+#: data/themes//macros.cfg:13
 msgid "time left"
 msgstr "оставащо време"
 
-#: data/themes/macros.cfg:52
+#: data/themes//macros.cfg:52
 msgid "Replay"
 msgstr "Повторение"
 
-#: data/themes/macros.cfg:67
+#: data/themes//macros.cfg:67
 msgid "Play"
 msgstr "Изпълнение"
 
-#: data/themes/macros.cfg:68
+#: data/themes//macros.cfg:68
 msgid "continous replay"
 msgstr "непрекъснато повторение"
 
-#: data/themes/macros.cfg:81
+#: data/themes//macros.cfg:81
 msgid "Stop"
 msgstr "Спри"
 
-#: data/themes/macros.cfg:82
+#: data/themes//macros.cfg:82
 msgid "pause at end of turn"
 msgstr "пауза в края на хода"
 
-#: data/themes/macros.cfg:95
+#: data/themes//macros.cfg:95
 msgid "Reset"
 msgstr "Рестартиране"
 
-#: data/themes/macros.cfg:96
+#: data/themes//macros.cfg:96
 msgid "reset to beginning"
 msgstr "отначало"
 
-#: data/themes/macros.cfg:109
+#: data/themes//macros.cfg:109
 msgid "Next Turn"
 msgstr "Следващ ход"
 
-#: data/themes/macros.cfg:110
+#: data/themes//macros.cfg:110
 msgid "play turn"
 msgstr "изиграване на ход"
 
-#: data/themes/macros.cfg:123
+#: data/themes//macros.cfg:123
 msgid "Next Side"
 msgstr "Следваща страна"
 
-#: data/themes/macros.cfg:124
+#: data/themes//macros.cfg:124
 msgid "play side turn"
 msgstr "изиграване на хода на страната "
 
-#: data/themes/macros.cfg:160
+#: data/themes//macros.cfg:160
 msgid "Skip animation"
 msgstr "Пропускане на анимацията"
 
@@ -6006,12 +6039,12 @@ msgstr "балиста"
 #: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
 #: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
 #: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
-#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:165
+#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:146
 #: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:81
 #: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
 #: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
 #: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
-#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:157
+#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:138
 #: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
 #: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
 #: data/units/Goblin_Spearman.cfg:160
@@ -7039,7 +7072,7 @@ msgstr "жезъл"
 msgid "ensnare"
 msgstr "омагьосване "
 
-#: data/units/Elvish_Druid.cfg:164 data/units/Elvish_Shyde.cfg:156
+#: data/units/Elvish_Druid.cfg:145 data/units/Elvish_Shyde.cfg:137
 msgid "thorns"
 msgstr "бодли "
 
@@ -7070,13 +7103,13 @@ msgstr ""
 msgid "entangle"
 msgstr "впримчване"
 
-#: data/units/Elvish_Enchantress.cfg:167 data/units/Elvish_Sorceress.cfg:175
-#: data/units/Elvish_Sylph.cfg:148
+#: data/units/Elvish_Enchantress.cfg:148 data/units/Elvish_Sorceress.cfg:156
+#: data/units/Elvish_Sylph.cfg:129
 msgid "faerie fire"
 msgstr "магически огън"
 
-#: data/units/Elvish_Enchantress.cfg:168 data/units/Elvish_Sorceress.cfg:176
-#: data/units/Elvish_Sylph.cfg:149 data/units/Human_Horse_Paladin.cfg:33
+#: data/units/Elvish_Enchantress.cfg:149 data/units/Elvish_Sorceress.cfg:157
+#: data/units/Elvish_Sylph.cfg:130 data/units/Human_Horse_Paladin.cfg:33
 #: data/units/Human_Mage_White.cfg:176 data/units/Human_Mage_of_Light.cfg:147
 #: data/units/Mermaid_Diviner.cfg:106 data/units/Mermaid_Priestess.cfg:81
 #: data/units/Undead_Necro_Ancient_Lich.cfg:31
@@ -11692,63 +11725,59 @@ msgstr "Не бе открит знак или единица съдържащ/�
 msgid "prompt^Command:"
 msgstr "Команда:"
 
-#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
-msgid "Attacker"
-msgstr "Атакуващ"
-
-#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
+#: src/mouse_events.cpp:194 src/mouse_events.cpp:302
 msgid "Defender"
 msgstr "Защитаващ се"
 
-#: src/mouse_events.cpp:219
+#: src/mouse_events.cpp:212
 msgid "Expected Battle Result (HP)"
 msgstr "Очакван резултат(Здраве)"
 
-#: src/mouse_events.cpp:311
+#: src/mouse_events.cpp:304
 msgid " resistance vs "
 msgstr " устойчивост с/у "
 
-#: src/mouse_events.cpp:312
+#: src/mouse_events.cpp:305
 msgid " vulnerability vs "
 msgstr " уязвимост с/у "
 
-#: src/mouse_events.cpp:322
+#: src/mouse_events.cpp:315
 msgid "Slowed"
 msgstr "Забавен"
 
-#: src/mouse_events.cpp:329
+#: src/mouse_events.cpp:322
 msgid "Time of day"
 msgstr "Време на деня"
 
-#: src/mouse_events.cpp:339
+#: src/mouse_events.cpp:332
 msgid "Leadership"
 msgstr "Водачество"
 
-#: src/mouse_events.cpp:346
+#: src/mouse_events.cpp:339
 msgid "Total damage"
 msgstr "Общо поражение"
 
-#: src/mouse_events.cpp:353
+#: src/mouse_events.cpp:346
 msgid "No usable weapon"
 msgstr "Няма използваемо оръжие"
 
-#: src/mouse_events.cpp:358
+#: src/mouse_events.cpp:351
 msgid "Chance of being unscathed"
 msgstr "Шанс да бъде невредим"
 
-#: src/mouse_events.cpp:659 src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:652 src/mouse_events.cpp:1339
 msgid "Damage Calculations"
 msgstr "Пресмятания за щетите"
 
-#: src/mouse_events.cpp:1329 src/reports.cpp:282
+#: src/mouse_events.cpp:1322 src/reports.cpp:282
 msgid "vs"
 msgstr "с/у "
 
-#: src/mouse_events.cpp:1357
+#: src/mouse_events.cpp:1350
 msgid "Attack Enemy"
 msgstr "Атакувай противника"
 
-#: src/mouse_events.cpp:1358
+#: src/mouse_events.cpp:1351
 msgid "Choose weapon:"
 msgstr "Избор на оръжие:"
 
@@ -12425,7 +12454,7 @@ msgstr "Неутрални единици: "
 msgid "Chaotic units: "
 msgstr "Хаотични единици: "
 
-#: src/reports.cpp:476
+#: src/reports.cpp:474
 msgid "Observers:"
 msgstr "Наблюдаващи:"
 
@@ -12530,8 +12559,9 @@ msgid "TitleScreen button^Preferences"
 msgstr "Настройки"
 
 #: src/titlescreen.cpp:262
-msgid "About"
-msgstr "Относно"
+#, fuzzy
+msgid "Credits"
+msgstr "Качества"
 
 #: src/titlescreen.cpp:263
 msgid "TitleScreen button^Quit"
@@ -12646,3 +12676,6 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Качване на обобщения"
+
+#~ msgid "About"
+#~ msgstr "Относно"

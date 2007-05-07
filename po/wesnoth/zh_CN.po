@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-05 08:55+0200\n"
+"POT-Creation-Date: 2007-05-07 10:29+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -4065,6 +4065,39 @@ msgid ""
 "And again. *Muahahaha*"
 msgstr ""
 
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:352
+#: src/mouse_events.cpp:193 src/mouse_events.cpp:303
+msgid "Attacker"
+msgstr "攻击者"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:356
+#, fuzzy
+msgid "North-West"
+msgstr "西北"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:357
+#, fuzzy
+msgid "North-East"
+msgstr "东北"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:358
+msgid "Middle-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:359
+#, fuzzy
+msgid "South-East"
+msgstr "东南"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:360
+#, fuzzy
+msgid "South-West"
+msgstr "西南"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:361
+msgid "Middle-West"
+msgstr ""
+
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
 msgstr "6p - Manzivan陷阱"
@@ -4418,13 +4451,13 @@ msgstr "青"
 msgid "None"
 msgstr "无"
 
-#: data/terrain.cfg:29 data/themes/macros.cfg:136
+#: data/terrain.cfg:29 data/themes//macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
 #: src/multiplayer_lobby.cpp:433
 msgid "Shroud"
 msgstr "覆盖物"
 
-#: data/terrain.cfg:37 data/themes/macros.cfg:148
+#: data/terrain.cfg:37 data/themes//macros.cfg:148
 #: src/multiplayer_lobby.cpp:423
 msgid "Fog"
 msgstr "迷雾"
@@ -4553,129 +4586,129 @@ msgstr "高不可攀的大山"
 msgid "Impassable Desert Mountains"
 msgstr "高不可攀的大山"
 
-#: data/themes/default.cfg:80 data/themes/dfool.cfg:101
-#: data/themes/experimental.cfg:64
+#: data/themes//default.cfg:80 data/themes//dfool.cfg:101
+#: data/themes//experimental.cfg:64
 msgid "Menu"
 msgstr "菜单"
 
-#: data/themes/default.cfg:91 data/themes/dfool.cfg:112
-#: data/themes/experimental.cfg:75
+#: data/themes//default.cfg:91 data/themes//dfool.cfg:112
+#: data/themes//experimental.cfg:75
 msgid "Actions"
 msgstr "动作"
 
-#: data/themes/default.cfg:113 data/themes/dfool.cfg:127
+#: data/themes//default.cfg:113 data/themes//dfool.cfg:127
 msgid "End Turn"
 msgstr "结束回合"
 
-#: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
+#: data/themes//default.cfg:171 data/themes//dfool.cfg:198
+#: data/themes//experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
 msgid "HP"
 msgstr "生命值"
 
-#: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
+#: data/themes//default.cfg:180 data/themes//dfool.cfg:208
+#: data/themes//experimental.cfg:158 src/menu_events.cpp:298
 #: src/menu_events.cpp:832
 msgid "XP"
 msgstr "经验值"
 
-#: data/themes/default.cfg:190 data/themes/dfool.cfg:227
-#: data/themes/experimental.cfg:167
+#: data/themes//default.cfg:190 data/themes//dfool.cfg:227
+#: data/themes//experimental.cfg:167
 msgid "gold"
 msgstr "金币"
 
-#: data/themes/default.cfg:199 data/themes/dfool.cfg:236
-#: data/themes/experimental.cfg:176
+#: data/themes//default.cfg:199 data/themes//dfool.cfg:236
+#: data/themes//experimental.cfg:176
 msgid "villages"
 msgstr "村庄"
 
-#: data/themes/default.cfg:208 data/themes/dfool.cfg:245
-#: data/themes/experimental.cfg:185
+#: data/themes//default.cfg:208 data/themes//dfool.cfg:245
+#: data/themes//experimental.cfg:185
 msgid "units"
 msgstr "单位"
 
-#: data/themes/default.cfg:217 data/themes/dfool.cfg:254
-#: data/themes/experimental.cfg:194
+#: data/themes//default.cfg:217 data/themes//dfool.cfg:254
+#: data/themes//experimental.cfg:194
 msgid "upkeep"
 msgstr "维护费用"
 
-#: data/themes/default.cfg:226 data/themes/dfool.cfg:263
-#: data/themes/experimental.cfg:203
+#: data/themes//default.cfg:226 data/themes//dfool.cfg:263
+#: data/themes//experimental.cfg:203
 msgid "income"
 msgstr "收入"
 
-#: data/themes/default.cfg:365 data/themes/dfool.cfg:416
-#: data/themes/experimental.cfg:329
+#: data/themes//default.cfg:365 data/themes//dfool.cfg:416
+#: data/themes//experimental.cfg:329
 msgid "statuspanel^level"
 msgstr "等级"
 
-#: data/themes/default.cfg:396 data/themes/experimental.cfg:360
+#: data/themes//default.cfg:396 data/themes//experimental.cfg:360
 msgid "statuspanel^movement"
 msgstr "移动点数"
 
 # havn't seen this in action
-#: data/themes/default.cfg:536
+#: data/themes//default.cfg:536
 #, fuzzy
 msgid "Act."
 msgstr "行动"
 
-#: data/themes/default.cfg:569
+#: data/themes//default.cfg:569
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "结束"
 
-#: data/themes/dfool.cfg:218
+#: data/themes//dfool.cfg:218
 msgid "MP"
 msgstr "移动点"
 
-#: data/themes/macros.cfg:13
+#: data/themes//macros.cfg:13
 msgid "time left"
 msgstr "剩余时间"
 
-#: data/themes/macros.cfg:52
+#: data/themes//macros.cfg:52
 msgid "Replay"
 msgstr "游戏录像"
 
-#: data/themes/macros.cfg:67
+#: data/themes//macros.cfg:67
 msgid "Play"
 msgstr "开始回放"
 
-#: data/themes/macros.cfg:68
+#: data/themes//macros.cfg:68
 msgid "continous replay"
 msgstr "连续回放"
 
-#: data/themes/macros.cfg:81
+#: data/themes//macros.cfg:81
 msgid "Stop"
 msgstr "停止回放"
 
-#: data/themes/macros.cfg:82
+#: data/themes//macros.cfg:82
 msgid "pause at end of turn"
 msgstr "回合结束时暂停"
 
-#: data/themes/macros.cfg:95
+#: data/themes//macros.cfg:95
 msgid "Reset"
 msgstr "重置"
 
-#: data/themes/macros.cfg:96
+#: data/themes//macros.cfg:96
 msgid "reset to beginning"
 msgstr "重置到开局"
 
-#: data/themes/macros.cfg:109
+#: data/themes//macros.cfg:109
 msgid "Next Turn"
 msgstr "下一回合"
 
-#: data/themes/macros.cfg:110
+#: data/themes//macros.cfg:110
 msgid "play turn"
 msgstr "播放该回合"
 
-#: data/themes/macros.cfg:123
+#: data/themes//macros.cfg:123
 msgid "Next Side"
 msgstr "下一边"
 
-#: data/themes/macros.cfg:124
+#: data/themes//macros.cfg:124
 msgid "play side turn"
 msgstr "播放本边回合"
 
-#: data/themes/macros.cfg:160
+#: data/themes//macros.cfg:160
 msgid "Skip animation"
 msgstr "省略动画"
 
@@ -5146,12 +5179,12 @@ msgstr "巨弩"
 #: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
 #: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
 #: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
-#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:165
+#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:146
 #: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:81
 #: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
 #: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
 #: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
-#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:157
+#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:138
 #: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
 #: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
 #: data/units/Goblin_Spearman.cfg:160
@@ -6095,7 +6128,7 @@ msgstr "法杖"
 msgid "ensnare"
 msgstr "诱捕"
 
-#: data/units/Elvish_Druid.cfg:164 data/units/Elvish_Shyde.cfg:156
+#: data/units/Elvish_Druid.cfg:145 data/units/Elvish_Shyde.cfg:137
 msgid "thorns"
 msgstr "荆棘"
 
@@ -6124,13 +6157,13 @@ msgstr ""
 msgid "entangle"
 msgstr "缠绕"
 
-#: data/units/Elvish_Enchantress.cfg:167 data/units/Elvish_Sorceress.cfg:175
-#: data/units/Elvish_Sylph.cfg:148
+#: data/units/Elvish_Enchantress.cfg:148 data/units/Elvish_Sorceress.cfg:156
+#: data/units/Elvish_Sylph.cfg:129
 msgid "faerie fire"
 msgstr "仙境之火"
 
-#: data/units/Elvish_Enchantress.cfg:168 data/units/Elvish_Sorceress.cfg:176
-#: data/units/Elvish_Sylph.cfg:149 data/units/Human_Horse_Paladin.cfg:33
+#: data/units/Elvish_Enchantress.cfg:149 data/units/Elvish_Sorceress.cfg:157
+#: data/units/Elvish_Sylph.cfg:130 data/units/Human_Horse_Paladin.cfg:33
 #: data/units/Human_Mage_White.cfg:176 data/units/Human_Mage_of_Light.cfg:147
 #: data/units/Mermaid_Diviner.cfg:106 data/units/Mermaid_Priestess.cfg:81
 #: data/units/Undead_Necro_Ancient_Lich.cfg:31
@@ -10413,65 +10446,61 @@ msgstr "不能找到含有“$search”的标签或单位。"
 msgid "prompt^Command:"
 msgstr "命令："
 
-#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
-msgid "Attacker"
-msgstr "攻击者"
-
-#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
+#: src/mouse_events.cpp:194 src/mouse_events.cpp:302
 msgid "Defender"
 msgstr "防御者"
 
-#: src/mouse_events.cpp:219
+#: src/mouse_events.cpp:212
 msgid "Expected Battle Result (HP)"
 msgstr "战斗结果期望（生命值）"
 
-#: src/mouse_events.cpp:311
+#: src/mouse_events.cpp:304
 #, fuzzy
 msgid " resistance vs "
 msgstr " vs"
 
-#: src/mouse_events.cpp:312
+#: src/mouse_events.cpp:305
 #, fuzzy
 msgid " vulnerability vs "
 msgstr " vs"
 
-#: src/mouse_events.cpp:322
+#: src/mouse_events.cpp:315
 msgid "Slowed"
 msgstr "减速"
 
-#: src/mouse_events.cpp:329
+#: src/mouse_events.cpp:322
 msgid "Time of day"
 msgstr "时刻"
 
-#: src/mouse_events.cpp:339
+#: src/mouse_events.cpp:332
 msgid "Leadership"
 msgstr "领导能力"
 
-#: src/mouse_events.cpp:346
+#: src/mouse_events.cpp:339
 msgid "Total damage"
 msgstr "总伤害输出"
 
-#: src/mouse_events.cpp:353
+#: src/mouse_events.cpp:346
 msgid "No usable weapon"
 msgstr "无可用武器"
 
-#: src/mouse_events.cpp:358
+#: src/mouse_events.cpp:351
 msgid "Chance of being unscathed"
 msgstr "不受伤的几率"
 
-#: src/mouse_events.cpp:659 src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:652 src/mouse_events.cpp:1339
 msgid "Damage Calculations"
 msgstr "攻击计算"
 
-#: src/mouse_events.cpp:1329 src/reports.cpp:282
+#: src/mouse_events.cpp:1322 src/reports.cpp:282
 msgid "vs"
 msgstr "vs"
 
-#: src/mouse_events.cpp:1357
+#: src/mouse_events.cpp:1350
 msgid "Attack Enemy"
 msgstr "攻击敌人"
 
-#: src/mouse_events.cpp:1358
+#: src/mouse_events.cpp:1351
 msgid "Choose weapon:"
 msgstr "选择武器："
 
@@ -11141,7 +11170,7 @@ msgstr "中立单位： "
 msgid "Chaotic units: "
 msgstr "混乱单位： "
 
-#: src/reports.cpp:476
+#: src/reports.cpp:474
 msgid "Observers:"
 msgstr "观察者："
 
@@ -11249,8 +11278,9 @@ msgid "TitleScreen button^Preferences"
 msgstr "设置"
 
 #: src/titlescreen.cpp:262
-msgid "About"
-msgstr "关于"
+#, fuzzy
+msgid "Credits"
+msgstr "特质"
 
 #: src/titlescreen.cpp:263
 msgid "TitleScreen button^Quit"
@@ -11364,6 +11394,9 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid "About"
+#~ msgstr "关于"
 
 #~ msgid ""
 #~ "These animated walking corpses have become strong from long experience "

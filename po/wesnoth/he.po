@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-05 08:55+0200\n"
+"POT-Creation-Date: 2007-05-07 10:29+0200\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -4197,6 +4197,36 @@ msgid ""
 "And again. *Muahahaha*"
 msgstr ""
 
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:352
+#: src/mouse_events.cpp:193 src/mouse_events.cpp:303
+msgid "Attacker"
+msgstr "תוקפת"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:356
+#, fuzzy
+msgid "North-West"
+msgstr "צפוניים"
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:357
+msgid "North-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:358
+msgid "Middle-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:359
+msgid "South-East"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:360
+msgid "South-West"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Team_Survival.cfg:361
+msgid "Middle-West"
+msgstr ""
+
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
 msgstr ""
@@ -4525,13 +4555,13 @@ msgstr "צוות"
 msgid "None"
 msgstr "אין"
 
-#: data/terrain.cfg:29 data/themes/macros.cfg:136
+#: data/terrain.cfg:29 data/themes//macros.cfg:136
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
 #: src/multiplayer_lobby.cpp:433
 msgid "Shroud"
 msgstr "ממוסך"
 
-#: data/terrain.cfg:37 data/themes/macros.cfg:148
+#: data/terrain.cfg:37 data/themes//macros.cfg:148
 #: src/multiplayer_lobby.cpp:423
 msgid "Fog"
 msgstr "ערפל"
@@ -4661,131 +4691,131 @@ msgstr "הרים"
 msgid "Impassable Desert Mountains"
 msgstr "הרים"
 
-#: data/themes/default.cfg:80 data/themes/dfool.cfg:101
-#: data/themes/experimental.cfg:64
+#: data/themes//default.cfg:80 data/themes//dfool.cfg:101
+#: data/themes//experimental.cfg:64
 msgid "Menu"
 msgstr "תפריט"
 
-#: data/themes/default.cfg:91 data/themes/dfool.cfg:112
-#: data/themes/experimental.cfg:75
+#: data/themes//default.cfg:91 data/themes//dfool.cfg:112
+#: data/themes//experimental.cfg:75
 msgid "Actions"
 msgstr "פעולות"
 
-#: data/themes/default.cfg:113 data/themes/dfool.cfg:127
+#: data/themes//default.cfg:113 data/themes//dfool.cfg:127
 msgid "End Turn"
 msgstr "סוף תור"
 
-#: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
+#: data/themes//default.cfg:171 data/themes//dfool.cfg:198
+#: data/themes//experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2489
 msgid "HP"
 msgstr "נק\"פ"
 
-#: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
+#: data/themes//default.cfg:180 data/themes//dfool.cfg:208
+#: data/themes//experimental.cfg:158 src/menu_events.cpp:298
 #: src/menu_events.cpp:832
 msgid "XP"
 msgstr "נק\"ן"
 
-#: data/themes/default.cfg:190 data/themes/dfool.cfg:227
-#: data/themes/experimental.cfg:167
+#: data/themes//default.cfg:190 data/themes//dfool.cfg:227
+#: data/themes//experimental.cfg:167
 msgid "gold"
 msgstr "זהב"
 
-#: data/themes/default.cfg:199 data/themes/dfool.cfg:236
-#: data/themes/experimental.cfg:176
+#: data/themes//default.cfg:199 data/themes//dfool.cfg:236
+#: data/themes//experimental.cfg:176
 msgid "villages"
 msgstr "כפרים"
 
-#: data/themes/default.cfg:208 data/themes/dfool.cfg:245
-#: data/themes/experimental.cfg:185
+#: data/themes//default.cfg:208 data/themes//dfool.cfg:245
+#: data/themes//experimental.cfg:185
 msgid "units"
 msgstr "יחידות"
 
-#: data/themes/default.cfg:217 data/themes/dfool.cfg:254
-#: data/themes/experimental.cfg:194
+#: data/themes//default.cfg:217 data/themes//dfool.cfg:254
+#: data/themes//experimental.cfg:194
 msgid "upkeep"
 msgstr "אחזקה"
 
-#: data/themes/default.cfg:226 data/themes/dfool.cfg:263
-#: data/themes/experimental.cfg:203
+#: data/themes//default.cfg:226 data/themes//dfool.cfg:263
+#: data/themes//experimental.cfg:203
 msgid "income"
 msgstr "הכנסה"
 
-#: data/themes/default.cfg:365 data/themes/dfool.cfg:416
-#: data/themes/experimental.cfg:329
+#: data/themes//default.cfg:365 data/themes//dfool.cfg:416
+#: data/themes//experimental.cfg:329
 msgid "statuspanel^level"
 msgstr "רמה"
 
-#: data/themes/default.cfg:396 data/themes/experimental.cfg:360
+#: data/themes//default.cfg:396 data/themes//experimental.cfg:360
 msgid "statuspanel^movement"
 msgstr "תנועה"
 
-#: data/themes/default.cfg:536
+#: data/themes//default.cfg:536
 msgid "Act."
 msgstr "פעל."
 
-#: data/themes/default.cfg:569
+#: data/themes//default.cfg:569
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "סוף"
 
-#: data/themes/dfool.cfg:218
+#: data/themes//dfool.cfg:218
 msgid "MP"
 msgstr ""
 
-#: data/themes/macros.cfg:13
+#: data/themes//macros.cfg:13
 #, fuzzy
 msgid "time left"
 msgstr "הגבלת זמן"
 
-#: data/themes/macros.cfg:52
+#: data/themes//macros.cfg:52
 msgid "Replay"
 msgstr "הקלטת משחק"
 
-#: data/themes/macros.cfg:67
+#: data/themes//macros.cfg:67
 msgid "Play"
 msgstr "הצג"
 
-#: data/themes/macros.cfg:68
+#: data/themes//macros.cfg:68
 #, fuzzy
 msgid "continous replay"
 msgstr " מהתחלה"
 
-#: data/themes/macros.cfg:81
+#: data/themes//macros.cfg:81
 msgid "Stop"
 msgstr "עצור"
 
-#: data/themes/macros.cfg:82
+#: data/themes//macros.cfg:82
 msgid "pause at end of turn"
 msgstr ""
 
-#: data/themes/macros.cfg:95
+#: data/themes//macros.cfg:95
 msgid "Reset"
 msgstr "התחל מחדש"
 
-#: data/themes/macros.cfg:96
+#: data/themes//macros.cfg:96
 msgid "reset to beginning"
 msgstr ""
 
-#: data/themes/macros.cfg:109
+#: data/themes//macros.cfg:109
 msgid "Next Turn"
 msgstr "התור הבא"
 
-#: data/themes/macros.cfg:110
+#: data/themes//macros.cfg:110
 #, fuzzy
 msgid "play turn"
 msgstr "לכל תור"
 
-#: data/themes/macros.cfg:123
+#: data/themes//macros.cfg:123
 msgid "Next Side"
 msgstr "הצד הבא"
 
-#: data/themes/macros.cfg:124
+#: data/themes//macros.cfg:124
 #, fuzzy
 msgid "play side turn"
 msgstr "לכל תור"
 
-#: data/themes/macros.cfg:160
+#: data/themes//macros.cfg:160
 msgid "Skip animation"
 msgstr "דלג על האנימציה"
 
@@ -5280,12 +5310,12 @@ msgstr "בליסטרה"
 #: data/units/Dwarvish_Stalwart.cfg:84 data/units/Dwarvish_Thunderer.cfg:88
 #: data/units/Dwarvish_Thunderguard.cfg:72 data/units/Elvish_Archer.cfg:77
 #: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:85
-#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:165
+#: data/units/Elvish_Champion.cfg:82 data/units/Elvish_Druid.cfg:146
 #: data/units/Elvish_Fighter.cfg:67 data/units/Elvish_Hero.cfg:81
 #: data/units/Elvish_Marksman.cfg:103 data/units/Elvish_Marshal.cfg:79
 #: data/units/Elvish_Outrider.cfg:81 data/units/Elvish_Ranger.cfg:108
 #: data/units/Elvish_Rider.cfg:83 data/units/Elvish_Scout.cfg:82
-#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:157
+#: data/units/Elvish_Sharpshooter.cfg:97 data/units/Elvish_Shyde.cfg:138
 #: data/units/Goblin_Impaler.cfg:25 data/units/Goblin_Impaler.cfg:207
 #: data/units/Goblin_Rouser.cfg:43 data/units/Goblin_Spearman.cfg:24
 #: data/units/Goblin_Spearman.cfg:160
@@ -6107,7 +6137,7 @@ msgstr "מקל"
 msgid "ensnare"
 msgstr "לכידה"
 
-#: data/units/Elvish_Druid.cfg:164 data/units/Elvish_Shyde.cfg:156
+#: data/units/Elvish_Druid.cfg:145 data/units/Elvish_Shyde.cfg:137
 msgid "thorns"
 msgstr "קוצים"
 
@@ -6131,13 +6161,13 @@ msgstr ""
 msgid "entangle"
 msgstr "סיבוך"
 
-#: data/units/Elvish_Enchantress.cfg:167 data/units/Elvish_Sorceress.cfg:175
-#: data/units/Elvish_Sylph.cfg:148
+#: data/units/Elvish_Enchantress.cfg:148 data/units/Elvish_Sorceress.cfg:156
+#: data/units/Elvish_Sylph.cfg:129
 msgid "faerie fire"
 msgstr "אש פיות"
 
-#: data/units/Elvish_Enchantress.cfg:168 data/units/Elvish_Sorceress.cfg:176
-#: data/units/Elvish_Sylph.cfg:149 data/units/Human_Horse_Paladin.cfg:33
+#: data/units/Elvish_Enchantress.cfg:149 data/units/Elvish_Sorceress.cfg:157
+#: data/units/Elvish_Sylph.cfg:130 data/units/Human_Horse_Paladin.cfg:33
 #: data/units/Human_Mage_White.cfg:176 data/units/Human_Mage_of_Light.cfg:147
 #: data/units/Mermaid_Diviner.cfg:106 data/units/Mermaid_Priestess.cfg:81
 #: data/units/Undead_Necro_Ancient_Lich.cfg:31
@@ -9817,70 +9847,66 @@ msgstr "לא ניתן למצוא תגית או יחידה שמכילים את ה
 msgid "prompt^Command:"
 msgstr "פקודה:"
 
-#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
-msgid "Attacker"
-msgstr "תוקפת"
-
-#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
+#: src/mouse_events.cpp:194 src/mouse_events.cpp:302
 msgid "Defender"
 msgstr "מגנה"
 
-#: src/mouse_events.cpp:219
+#: src/mouse_events.cpp:212
 msgid "Expected Battle Result (HP)"
 msgstr ""
 
-#: src/mouse_events.cpp:311
+#: src/mouse_events.cpp:304
 #, fuzzy
 msgid " resistance vs "
 msgstr "עמידויות"
 
-#: src/mouse_events.cpp:312
+#: src/mouse_events.cpp:305
 #, fuzzy
 msgid " vulnerability vs "
 msgstr "פגיעות התוקף מצד"
 
-#: src/mouse_events.cpp:322
+#: src/mouse_events.cpp:315
 #, fuzzy
 msgid "Slowed"
 msgstr "מואט"
 
-#: src/mouse_events.cpp:329
+#: src/mouse_events.cpp:322
 #, fuzzy
 msgid "Time of day"
 msgstr "זמן ביום"
 
-#: src/mouse_events.cpp:339
+#: src/mouse_events.cpp:332
 #, fuzzy
 msgid "Leadership"
 msgstr "מנהיגות"
 
-#: src/mouse_events.cpp:346
+#: src/mouse_events.cpp:339
 #, fuzzy
 msgid "Total damage"
 msgstr "נזק כולל"
 
-#: src/mouse_events.cpp:353
+#: src/mouse_events.cpp:346
 #, fuzzy
 msgid "No usable weapon"
 msgstr "בחירת נשק:"
 
-#: src/mouse_events.cpp:358
+#: src/mouse_events.cpp:351
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:659 src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:652 src/mouse_events.cpp:1339
 msgid "Damage Calculations"
 msgstr "חישובי נזק"
 
-#: src/mouse_events.cpp:1329 src/reports.cpp:282
+#: src/mouse_events.cpp:1322 src/reports.cpp:282
 msgid "vs"
 msgstr "לעומת"
 
-#: src/mouse_events.cpp:1357
+#: src/mouse_events.cpp:1350
 msgid "Attack Enemy"
 msgstr "יש לתקוף את האויב"
 
-#: src/mouse_events.cpp:1358
+#: src/mouse_events.cpp:1351
 msgid "Choose weapon:"
 msgstr "בחירת נשק:"
 
@@ -10562,7 +10588,7 @@ msgstr "יחידות נטרליות: "
 msgid "Chaotic units: "
 msgstr "יחידות תוהו: "
 
-#: src/reports.cpp:476
+#: src/reports.cpp:474
 msgid "Observers:"
 msgstr "צופים:"
 
@@ -10668,8 +10694,9 @@ msgid "TitleScreen button^Preferences"
 msgstr "העדפות"
 
 #: src/titlescreen.cpp:262
-msgid "About"
-msgstr "אודות"
+#, fuzzy
+msgid "Credits"
+msgstr "מאפיינים"
 
 #: src/titlescreen.cpp:263
 msgid "TitleScreen button^Quit"
@@ -10786,6 +10813,9 @@ msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבי
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "אודות"
 
 #~ msgid "holy"
 #~ msgstr "קדוש"
