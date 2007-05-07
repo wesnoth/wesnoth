@@ -61,6 +61,7 @@ AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([1.9 tar-ustar foreign])
 AM_GNU_GETTEXT([external])
 AC_PROG_RANLIB
+AM_PATH_PYTHON
 
 #######################################################################
 # Configuration options                                               #

@@ -142,7 +142,9 @@ data-dist:
 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = config/config.rpath config/mkinstalldirs
+EXTRA_DIST = config/config.rpath config/mkinstalldirs config/py-compile
+
+python_PYTHON = data/tools/wmltools.py
 
 update-po:
 	@cd po && make $@ || exit $?
