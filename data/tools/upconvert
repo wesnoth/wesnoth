@@ -417,6 +417,8 @@ def maptransform2(filename, baseline, inmap, y):
                     maxk = k
             #print "Dominated by %s" % maxk
             inmap[y][x] = inmap[y][x].replace("_K", "K" + maxk)
+            # There's only one kind of underground keep at present.
+            inmap[y][x] = inmap[y][x].replace("Ku", "Kud")
 
 # Generic machinery starts here
 
