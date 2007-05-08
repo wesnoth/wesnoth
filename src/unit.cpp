@@ -269,14 +269,18 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 			generate_traits();
 		}
 	}
-	if(underlying_description_.empty()){
+	if(!underlying_description_.empty()){
 	  char buf[80];
-	  if(custom_unit_description_.empty()){
+	  if(!custom_unit_description_.empty()){
 	    sprintf(buf,"%s-%d-%s",type()->id().c_str(),(SDL_GetTicks()), custom_unit_description_.c_str());
 	  }else{
 	    sprintf(buf,"%s-%d",type()->id().c_str(),(SDL_GetTicks()));
 	  }
 	  underlying_description_ = buf;
+	}
+
+	if(custom_unit_description_.empty()){
+	  custom_unit_description_=type()->language_name();
 	}
 
 	unrenamable_ = false;
@@ -315,12 +319,16 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	}
 	if(underlying_description_.empty()){
 	  char buf[80];
-	  if(custom_unit_description_.empty()){
+	  if(!custom_unit_description_.empty()){
 	    sprintf(buf,"%s-%d-%s",type()->id().c_str(),(SDL_GetTicks()), custom_unit_description_.c_str());
 	  }else{
 	    sprintf(buf,"%s-%d",type()->id().c_str(),(SDL_GetTicks()));
 	  }
 	  underlying_description_ = buf;
+	}
+
+	if(custom_unit_description_.empty()){
+	  custom_unit_description_=type()->language_name();
 	}
 
 	unrenamable_ = false;
