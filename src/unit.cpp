@@ -1449,7 +1449,7 @@ void unit::write(config& cfg) const
 	cfg["unrenamable"] = unrenamable_ ? "yes" : "no";
 	cfg["alpha"] = lexical_cast_default<std::string>(alpha_);
 
-	cfg["recuits"] = utils::join(recruits_);
+	cfg["recruits"] = utils::join(recruits_);
 	cfg["attacks_left"] = lexical_cast_default<std::string>(attacks_left_);
 	cfg["max_attacks"] = lexical_cast_default<std::string>(max_attacks_);
 	cfg["zoc"] = lexical_cast_default<std::string>(emit_zoc_);
