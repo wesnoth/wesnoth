@@ -860,7 +860,7 @@ void campaign_preview_pane::draw_contents()
 
 	/* description text */
 	const std::string& desc_text = font::word_wrap_text((*descriptions_)[index_].first,font::SIZE_SMALL,area.w-2*campaign_preview_border);
-	const std::vector<std::string> lines = utils::split(desc_text, '\n');
+	const std::vector<std::string> lines = utils::split(desc_text, '\n',utils::STRIP_SPACES);
 	SDL_Rect txt_area = { area.x+campaign_preview_border,area.y,0,0 };
 
 	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
