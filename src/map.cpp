@@ -383,13 +383,13 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 
 				const t_translation::t_list& dst = t_translation::read_list(cfg[dst_key]);
 
-				if(!dst.empty() && t_translation::terrain_matches(current, dst) == false) {
+				if(!dst.empty() && t_translation::terrain_matches(t, dst) == false) {
 					continue;
 				}
 
 				const t_translation::t_list& dst_not = t_translation::read_list(cfg[dst_not_key]);
 
-				if(!dst_not.empty() && t_translation::terrain_matches(current, dst_not)) {
+				if(!dst_not.empty() && t_translation::terrain_matches(t, dst_not)) {
 					continue;
 				}
 
