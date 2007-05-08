@@ -462,7 +462,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		//const std::vector<std::string> items = utils::split(flag);
 		//const std::vector<std::string> sub_items = utils::split(items[0], ':');
 
-		image::locator flag_icon_image(flag_icon);
+		image::locator flag_icon_image(flag_icon, mods);
 		return report("",flag_icon_image,teams[playing_side-1].current_player());
 	}
 
