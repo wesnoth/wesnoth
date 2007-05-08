@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-07 23:04+0200\n"
+"POT-Creation-Date: 2007-05-08 14:32+0200\n"
 "PO-Revision-Date: 2007-04-07 13:01+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: none\n"
@@ -105,7 +105,8 @@ msgid "Death of Haldric II"
 msgstr "Haldric II fällt in der Schlacht"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:118
-msgid "Capture (death) of a loaded caravan"
+#, fuzzy
+msgid "Capture (death) of a caravan"
 msgstr "Ihr verliert einen beladenen Wagen an den Feind"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:122
@@ -530,7 +531,8 @@ msgstr ""
 "die Höhlen erstürmen, um euch zu töten!"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:182
-msgid "*gulp*"
+#, fuzzy
+msgid " *gulp*"
 msgstr "*Schluck*"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:186
@@ -2315,7 +2317,8 @@ msgstr ""
 "mir von euch holen!"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:232
-msgid "*swoosh*"
+#, fuzzy
+msgid " *swoosh*"
 msgstr "*swoosh*"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:236
@@ -2347,7 +2350,8 @@ msgid "Never!"
 msgstr "Niemals!"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:253
-msgid "*thud*"
+#, fuzzy
+msgid " *thud*"
 msgstr "*thud*"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:262
@@ -3292,40 +3296,15 @@ msgid "quick, intelligent"
 msgstr "schnell, intelligent"
 
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:4
-msgid "Empty Caravan"
+#, fuzzy
+msgid "Caravan"
 msgstr "Leerer Wagen"
 
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:14
+#, fuzzy
 msgid ""
-"Caravans are used to carry gold or supplies over long distances. This one is "
-"waiting to be stocked."
-msgstr ""
-"Wagen werden benutzt, um Gold oder andere Güter über lange Stecken zu "
-"transportieren. Dieser wartet darauf, beladen zu werden."
-
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:17
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:42
-msgid "none"
-msgstr "keine"
-
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:18
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:43
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:45
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:43
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:41
-#: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
-msgid "impact"
-msgstr "Wucht"
-
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:28
-msgid "Loaded Caravan"
-msgstr "Beladener Wagen"
-
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:39
-msgid ""
-"Caravans are used to carry gold or supplies long distances. This caravan is "
-"already carrying cargo. Because of the immense weight of the cargo, it moves "
-"very slowly."
+"Caravans are used to carry gold or supplies long distances. Because of the "
+"immense weight of the cargo this caravan carries, it moves very slowly."
 msgstr ""
 "Wagen werden benutzt, um Gold oder andere Güter über lange Stecken zu "
 "transportieren. Dieser Wagen ist bereits beladen. Aufgrund des immensen "
@@ -3335,7 +3314,7 @@ msgstr ""
 msgid "Dwarvish Arcanister"
 msgstr "Runengroßmeister"
 
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:39
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:21
 msgid ""
 "The most powerful of all the runecrafters, the Dwarvish Arcanister destroys "
 "wounded enemies almost instantly, and rarely fails to cause a wound when "
@@ -3347,21 +3326,25 @@ msgstr ""
 "Seine Fähigkeiten im erschaffen von Runen ist unerreichbar und die Glyphen "
 "in seinen Waffen und seiner Rüstung wehren die Angriffe seiner Gegner ab."
 
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:44
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:42
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:40
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:25
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:26
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:26
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:27
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:28
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:29
 msgid "hammer"
 msgstr "Hammer"
 
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:46
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:44
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:42
-msgid "magical"
-msgstr "magisch"
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:27
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:28
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:30
+#: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:22
+msgid "impact"
+msgstr "Wucht"
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:4
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:40
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:76
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:41
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:78
 msgid "Dwarvish Miner"
 msgstr "Zwergen Bergmann"
 
@@ -3376,19 +3359,22 @@ msgstr ""
 "Artefakte."
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:17
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:53
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:89
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:18
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:54
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:55
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:91
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:92
 msgid "pick"
 msgstr "Spitzhacke"
 
-#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:27
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:18
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:54
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:90
+#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:29
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:19
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:56
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:93
 msgid "pierce"
 msgstr "Stich"
 
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:50
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:51
 msgid ""
 "Dwarvish miners are the grunt workers of Dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
@@ -3399,7 +3385,7 @@ msgstr ""
 "Kostbarkeiten aus dem Gestein, schmieden allerdings nie Waffen oder "
 "Artefakte. Dieser Zwerg bringt eine Ladung Kohle in das Lager."
 
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:86
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:88
 msgid ""
 "Dwarvish miners are the grunt workers of Dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
@@ -3414,11 +3400,7 @@ msgstr ""
 msgid "Dwarvish Runemaster"
 msgstr "Zwergen Runenmeister"
 
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:34
-msgid "tough"
-msgstr "wiederstandsfähig"
-
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:41
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:21
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
 "runecrafter can rise to is that of the Dwarvish Runemaster. Striking blows "
@@ -3439,7 +3421,7 @@ msgstr ""
 msgid "Dwarvish Runesmith"
 msgstr "Zwergen Runenschmied"
 
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:37
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:24
 msgid ""
 "Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
 "their weapons and armor. These runes infuse the runesmith's blows with power "
@@ -3457,10 +3439,11 @@ msgid "King"
 msgstr "Kinan"
 
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:17
-msgid "King of Wesnoth"
+msgid "King of Wesnoth."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:20
+#: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
 msgid "punch"
 msgstr ""
 
@@ -3468,17 +3451,38 @@ msgstr ""
 msgid "Wolf"
 msgstr "Wolf"
 
-#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:26
+#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:27
+#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:28
 msgid "bite"
 msgstr "Biss"
 
-#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:44
+#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:60
+#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:61
 msgid "claws"
 msgstr "Klauen"
 
-#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:45
+#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:62
 msgid "blade"
 msgstr "Klinge"
+
+#~ msgid ""
+#~ "Caravans are used to carry gold or supplies over long distances. This one "
+#~ "is waiting to be stocked."
+#~ msgstr ""
+#~ "Wagen werden benutzt, um Gold oder andere Güter über lange Stecken zu "
+#~ "transportieren. Dieser wartet darauf, beladen zu werden."
+
+#~ msgid "none"
+#~ msgstr "keine"
+
+#~ msgid "Loaded Caravan"
+#~ msgstr "Beladener Wagen"
+
+#~ msgid "magical"
+#~ msgstr "magisch"
+
+#~ msgid "tough"
+#~ msgstr "wiederstandsfähig"
 
 #~ msgid "The Sceptre of Fire"
 #~ msgstr "Das Zepter des Feuers"
