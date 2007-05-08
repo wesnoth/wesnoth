@@ -228,11 +228,6 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
 
 bool is_format_char(char c)
 {
-	//side coloring
-	if(c > 0 && c <= 10) {
-		return true;
-	}
-
 	switch(c) {
 	case LARGE_TEXT:
 	case SMALL_TEXT:
