@@ -36,17 +36,22 @@ namespace {
 
 CVideo* video_ = NULL;
 
+static const int font_size = font::SIZE_SMALL;
+#ifdef USE_TINY_GUI
+static const int text_width = 260;
+#else
+static const int text_width = 400;
+#endif
+
 struct tooltip
 {
 	tooltip(const SDL_Rect& r, const std::string& msg) : rect(r), message(msg)
 	{
-		font::text_to_lines(message,60);
+		message = font::word_wrap_text(message, font_size, text_width);
 	}
 	SDL_Rect rect;
 	std::string message;
 };
-
-static const int font_size = font::SIZE_SMALL;
 
 std::vector<tooltip> tips;
 std::vector<tooltip>::const_iterator current_tooltip = tips.end();
