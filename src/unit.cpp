@@ -269,7 +269,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 			generate_traits();
 		}
 	}
-	if(!underlying_description_.empty()){
+	if(underlying_description_.empty()){
 	  char buf[80];
 	  if(!custom_unit_description_.empty()){
 	    sprintf(buf,"%s-%d-%s",type()->id().c_str(),(SDL_GetTicks()), custom_unit_description_.c_str());
