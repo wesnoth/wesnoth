@@ -16,7 +16,7 @@ namespace dfool {
 
     config side_filter;
     char buf[80];
-    sprintf(buf,"%d",team_num);
+    snprintf(buf, sizeof(buf), "%d", team_num);
     side_filter["side"]=buf;
 
     LOG_STREAM(info, ai)<<"dfool sees:"<<std::endl;
