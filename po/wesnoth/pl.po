@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-08 14:28+0200\n"
-"PO-Revision-Date: 2007-04-24 21:25+0100\n"
+"PO-Revision-Date: 2007-05-05 18:19+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -5385,9 +5385,8 @@ msgid "Impassable Mountains"
 msgstr "Nieprzebyte góry"
 
 #: data/terrain.cfg:983
-#, fuzzy
 msgid "Impassable Desert Mountains"
-msgstr "Nieprzebyte góry"
+msgstr "Nieprzebyte góry pustynne"
 
 #: data/themes/default.cfg:80 data/themes/dfool.cfg:101
 #: data/themes/experimental.cfg:64
@@ -5823,16 +5822,16 @@ msgstr ""
 "wyjaśnienie lub opis."
 
 #: data/tips.cfg:36
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
 "hand corner of the game main screen).  This information is vital so we can "
 "adjust campaign difficulty."
 msgstr ""
-"Możesz przekazać Projektowi Wesnoth anonimowe zestawienie twoich postępów w "
-"grze przy użyciu przycisku \"Pomóż nam\". Informacje te są nam potrzebne do "
-"dopracowania poziomu trudności kampanii."
+"Możesz przekazać Projektowi Wesnoth anonimowe zestawienie swoich postępów w "
+"grze przy użyciu przycisku Pomóż nam (ikona koperty w prawym dolnym rogu "
+"głównego ekranu gry). Informacje te są nam potrzebne do dopracowania poziomu "
+"trudności kampanii."
 
 #: data/traits.cfg:9
 msgid "loyal"
@@ -10039,7 +10038,6 @@ msgid "Ghoul"
 msgstr "Ghul"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:21
-#, fuzzy
 msgid ""
 "Only those with an ungainful knowledge of necromancy know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -10098,6 +10096,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Technika ożywiania zwłok jest niestety dobrze znana adeptom mrocznych sztuk "
+"magicznych, którzy z jej pomocą często powołują do bezwolnego życia zastępy "
+"sług i wojowników. Ożywione w ten sposób istoty bywają liczne, ale są "
+"niezdarne i kruche. W wirze walki nierzadko nabierają jednak wigoru, stając "
+"się tym samym znacznie groźniejszymi przeciwnikami.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:46
 #: data/units/Undead_Corpse_Walking.cfg:48
@@ -10111,7 +10116,6 @@ msgid "Walking Corpse"
 msgstr "Chodzący trup"
 
 #: data/units/Undead_Corpse_Walking.cfg:22
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -10120,8 +10124,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Chodzące trupy to ciała zmarłych przywrócone do życia przez czarną magię. "
-"Choć są słabe w walce, jednostki te przenoszą swe przekleństwo na swoje "
-"ofiary, powiększając w ten sposób armię nieumarłych.\n"
+"Choć nie stanowią one w walce poważnego zagrożenia dla wyszkolonego "
+"żołnierza, widok poległych towarzyszy walczących w szeregach wroga "
+"przerażającym doznaniem.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -10130,7 +10135,6 @@ msgid "Ancient Lich"
 msgstr "Starożytny licz"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:19
-#, fuzzy
 msgid ""
 "A being of this order is a herald of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death.\n"
@@ -10201,6 +10205,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Groza, jaką owiane jest czarnoksięstwo, wynika przede wszystkim stąd, że "
+"zwykli ludzie wiedzą o czarnej magii bardzo niewiele. Czarnoksiężnicy "
+"zgłębiają tajemnice życia i śmierci, a wykorzystanie tej wiedzy dla celów "
+"wojennych jest niestety bardzo łatwe.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:60
 #: data/units/Undead_Necromancer.cfg:66
@@ -10242,7 +10252,6 @@ msgid "Necromancer"
 msgstr "Nekromanta"
 
 #: data/units/Undead_Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. This "
@@ -10260,11 +10269,7 @@ msgstr ""
 "ona stanowić potężny oręż w służbie zła.\n"
 "\n"
 "Umiejętność ta jest pod każdym względem pierwszym krokiem w stronę oszukania "
-"śmierci. Stanowi ona szczyt mocy, jaką mroczny mag może posiąść, nie tracąc "
-"przy tym swojego człowieczeństwa, ale blednie w porównaniu ze "
-"śmiercionośnymi mocami, którymi władają licze. Ponadto magia wzmacnia "
-"śmiertelne ciała magów, w przeciwieństwie do kruchych, rozkładającej się "
-"ciał liczy.\n"
+"śmierci.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -10277,7 +10282,6 @@ msgid "Bone Shooter"
 msgstr "Miotacz kości"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:17
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -10292,8 +10296,8 @@ msgstr ""
 "nadanego im fałszywego życia. Mocy nadanego im życia odpowiada ich "
 "ekwipunek. Zwłaszcza łucznicy wyposażani są w wyjątkowo odrażający arsenał: "
 "strzały wypełniające ich kołczany nie wykonane z drewna, lecz z kości ich "
-"ofiar. Przerażeni przeciwnicy nazywają te straszliwe i terroryzujące żywych "
-"istoty \"Miotaczami kości\".\n"
+"ofiar. Przerażeni przeciwnicy nazywają te straszliwe istoty \"Miotaczami "
+"kości\".\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -10361,7 +10365,6 @@ msgid "Draug"
 msgstr "Przeklęty"
 
 #: data/units/Undead_Skele_Draug.cfg:19
-#, fuzzy
 msgid ""
 "There is little left in these towering ruins, of the men they once were.  "
 "Warriors at heart, they are lost in the dream of unlife, wandering through "
@@ -10371,12 +10374,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Przeklęci to posępne widma legendarnych niegdyś wojowników. Sieją postrach w "
-"sercu każdego, kto im się przeciwstawi. Nie kieruje nimi nienawiść - zostali "
-"na zawsze uwięzieni w śnie nieżycia i pogrążeni w nim wędrują przez "
-"wspomnienia największych bitew, walcząc rozpaczliwie o uwolnienie i spokój, "
-"który osiągną tylko w boju. Wspomnienia wrogów, jak i cel ich walki, dawno "
-"odeszły w zapomnienie.\n"
+"Niewielo pozostało w tych posępnych widmach z ludzi, którymi niegdyś byli. "
+"Są to wojownicy, którzy zostali uwięzieni w śnie nieżycia i pogrążeni w nim "
+"wędrują przez wspomnienia największych bitew, walcząc rozpaczliwie o "
+"uwolnienie i spokój, który osiągną tylko w boju. Bezwiednie i bez "
+"wytchnienia toczą krwawe zmagania.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -10409,7 +10411,6 @@ msgid "Soul Shooter"
 msgstr "Miotacz dusz"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:19
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -10473,7 +10474,6 @@ msgid "Ghost"
 msgstr "Duch"
 
 #: data/units/Undead_Spirit_Ghost.cfg:20
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -10486,11 +10486,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Jedną z łask stworzenia jest to, że ludzka dusza jest niezmienna i nie da "
-"się jej zniszczyć. Na przekór temu nekromanta może uczynić wiele prawdziwie "
-"przerażających rzeczy.\n"
+"się jej zniszczyć. Na przekór temu nekromanta może jednak uczynić wiele "
+"prawdziwie przerażających rzeczy.\n"
 "\n"
 "Opleciona zasłoną odrażających zaklęć dusza upodabnia się do wiatru w "
-"żaglach okrętu. Rezultatem tego uwięzienia jest niezawodny sługa, któremu "
+"żaglach okrętu. Rezultatem tego uwięzienia jest niestrudzony sługa, któremu "
 "można zlecić każde zadanie, jakiego zażyczy sobie jego pan.\n"
 "\n"
 "Uwagi specjalne:"
@@ -10548,7 +10548,6 @@ msgid "Spectre"
 msgstr "Widmo"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. They are a rightful terror to the living, for they are quite "
@@ -10561,11 +10560,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Widma, zwane niekiedy \"chochołowymi ludźmi\", stanowią główną siłę zastępów "
-"mrocznego władcy. Te odrażające istoty sieją postrach wśród żywych i "
-"niestrudzenie czuwają nad krainami opanowanymi przez ich mistrza.\n"
+"mrocznego władcy. Nie bez powodu sieją one postrach wśród żywych, gdyż ich "
+"złowieszczy wygląd w pełni odpowiada zagrożeniu, które niosą.\n"
 "\n"
-"Przywołanie widma jest nie lada sztuką, a jego napotkanie o tyle groźne, że "
-"często zwiastuje nadejście znacznie bardziej niebezpiecznych mocy.\n"
+"Przywołanie widma jest nie lada sztuką, więc jego napotkanie o tyle groźne, "
+"że często zwiastuje nadejście znacznie bardziej niebezpiecznych mocy.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -10579,7 +10578,6 @@ msgid "Wraith"
 msgstr "Upiór"
 
 #: data/units/Undead_Spirit_Wraith.cfg:18
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them, as "
@@ -10592,10 +10590,7 @@ msgstr ""
 "Te umęczone postaci dawnych wojowników należą na najbardziej przerażających "
 "stworzeń w arsenale nekromanty, gdyż miecz przecina je jak powietrze, nie "
 "czyniąc żadnej szkody. Źródłem strachu przed upiorami jest przeświadczenie, "
-"że nie można ich pokonać, co wcale nie jest dalekie od prawdy.\n"
-"\n"
-"Upiory otrzymały broń, dzięki której zaklęcia podtrzymujące ich istnienie "
-"mogą się odnawiać kosztem atakujących je istot.\n"
+"że nie można ich pokonać, co na szczęście jest dalekie od prawdy.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -10947,11 +10942,9 @@ msgstr ""
 "Ostrzeżenie: wczytywany plik jest uszkodzony. Mimo to zostanie załadowany.\n"
 
 #: src/game.cpp:696 src/multiplayer_connect.cpp:1256
-#, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
-"Zapisana gra pochodzi z innej wersji Bitwy o Wesnoth. Czy spróbować ją "
-"wczytać?"
+"Zapisana gra pochodzi ze zbyt starej wersji. Jej wczytanie nie jest możliwe."
 
 #: src/game.cpp:701 src/multiplayer_connect.cpp:1262
 msgid ""
