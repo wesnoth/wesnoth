@@ -22,35 +22,35 @@ EXCLUDE = --exclude ".dirstamp|po/|translations/|exploder/|castle-cutter/|icons/
 
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
-	@./macroscope --unresolved $(EXCLUDE) $(TOPDIR) $(UMC)
+	@./wmlscope --unresolved $(EXCLUDE) $(TOPDIR) $(UMC)
 
 all:
 	@echo "# Report on usage of all macros and resources"
-	@./macroscope --crossreference $(EXCLUDE) $(TOPDIR) $(UMC)
+	@./wmlscope --crossreference $(EXCLUDE) $(TOPDIR) $(UMC)
 
 utils-unused:
 	@echo "# Report on unused utility macros"
-	@./macroscope --crossreference --from $(TOPDIR)data/utils --refcount 0 $(FAKE) $(EXCLUDE) $(TOPDIR) $(UMC)
+	@./wmlscope --crossreference --from $(TOPDIR)data/utils --refcount 0 $(FAKE) $(EXCLUDE) $(TOPDIR) $(UMC)
 
 all-unused:
 	@echo "# Report on unused resource files"
-	@./macroscope --crossreference --refcount 0 $(FAKE) $(EXCLUDE) $(TOPDIR) $(UMC)
+	@./wmlscope --crossreference --refcount 0 $(FAKE) $(EXCLUDE) $(TOPDIR) $(UMC)
 
 utils-macros:
 	@echo "# Report on usage of utility macros"
-	@./macroscope --crossreference --from $(TOPDIR)data/utils $(EXCLUDE) $(TOPDIR) $(UMC)
+	@./wmlscope --crossreference --from $(TOPDIR)data/utils $(EXCLUDE) $(TOPDIR) $(UMC)
 
 collisions:
 	@echo "# Report on duplicate resource files."
-	@./macroscope --collisions $(EXCLUDE) $(TOPDIR) $(UMC)
+	@./wmlscope --collisions $(EXCLUDE) $(TOPDIR) $(UMC)
 
 # Report a list of symbols and resources defined in mainline.
 definitions:
-	@./macroscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
+	@./wmlscope --definitions --exclude data/scenarios --exclude data/campaigns $(EXCLUDE) $(TOPDIR)
 
 # Generate a reference page for the utility macros.
 macro-reference.xhtml:
 	@cat helpheader.xhtml >macro-reference.xhtml
-	@./macroscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(EXCLUDE) $(TOPDIR) >>macro-reference.xhtml
+	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(EXCLUDE) $(TOPDIR) >>macro-reference.xhtml
 	@cat helptrailer.xhtml >>macro-reference.xhtml
 
