@@ -19,7 +19,7 @@ bin_PROGRAMS += campaignd
 endif
 
 if TOOLS
-bin_PROGRAMS += exploder cutter
+bin_PROGRAMS += exploder cutter macroscope upconvert
 endif
 
 if EDITOR
