@@ -46,9 +46,7 @@ static const int text_width = 400;
 struct tooltip
 {
 	tooltip(const SDL_Rect& r, const std::string& msg) : rect(r), message(msg)
-	{
-		message = font::word_wrap_text(message, font_size, text_width);
-	}
+	{}
 	SDL_Rect rect;
 	std::string message;
 };
@@ -88,7 +86,8 @@ static void show_tooltip(const tooltip& tip)
 	unsigned int border = 10;
 #endif
 
-	tooltip_handle = font::add_floating_label(tip.message,font_size,font::NORMAL_COLOUR,
+	const std::string wrapped_message = font::word_wrap_text(tip.message, font_size, text_width);
+	tooltip_handle = font::add_floating_label(wrapped_message,font_size,font::NORMAL_COLOUR,
 	                                          0,0,0,0,-1,area,font::LEFT_ALIGN,&bgcolour,border);
 
 	SDL_Rect rect = font::get_floating_label_rect(tooltip_handle);
