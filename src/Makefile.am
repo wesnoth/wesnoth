@@ -21,7 +21,7 @@ endif
 
 if TOOLS
 bin_PROGRAMS += exploder cutter
-bin_SCRIPTS += macroscope upconvert
+bin_SCRIPTS += wmlscope wmllint
 endif
 
 if EDITOR

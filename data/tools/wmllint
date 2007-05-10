@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Up-convert WML and maps between versions.
+# wmllint -- up-convert WML and maps between versions.
 #
 # By Eric S. Raymond April 2007.
 #
@@ -16,7 +16,7 @@
 # 2. If the messages look good, run without --dryrun; the old content
 #    will be left in backup files with a -bak extension.
 # 3. Eyeball the changes with the --diff option.
-# 4. Use macroscope, with a directory list including the Wesnoth mainline WML
+# 4. Use wmlscope, with a directory list including the Wesnoth mainline WML
 #    as first argument, to check that you have no unresolved references.
 # 5. Test the conversion.
 # 6. Use either --clean to remove the -bak files or --revert to
@@ -783,4 +783,4 @@ if __name__ == '__main__':
                 if not dryrun:
                     os.system(mover)
 
-# upconvert ends here
+# wmllint ends here

@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 #
-# macroscope -- generate reports on WML macro and resource usage
+# wmlscope -- generate reports on WML macro and resource usage
 #
-# By Eric S. Raymond April 2007.
-# (Yes, this *is* named after an ancient Piers Anthony novel.)
+# By Eric S. Raymond, April 2007.
 #
 # This tool cross-references macro definitions with macro calls, and
 # resource (sound or image) files with uses of the resources in WML.
 # and generates various useful reports from such cross-references.
-#
 #
 # It takes a list of directories as arguments; if none is given, it
 # behaves as though the current directory had been specified as a
@@ -302,4 +300,4 @@ Usage: macroscope [options] dirpath
         if unresolved:
             xref.unresdump()
     
-# macroscope ends here
+# wmlscope ends here
