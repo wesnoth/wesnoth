@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:30+0200\n"
+"POT-Creation-Date: 2007-05-10 22:41+0200\n"
 "PO-Revision-Date: 2006-06-17 23:14+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -22,7 +22,7 @@ msgid ""
 "Note:  This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players. \n"
 "\n"
-"(Novice level, 13 scenarios)"
+"(Novice level, 13 scenarios.)"
 msgstr ""
 "Nuori ritari, Deoran, lähetetään Eteläin vartioston johtoon... Huomio: Tämän "
 "kampanjan tarkoitus on johdattaa sinut Wesnothin maailmaan. 'Siviili'-"
@@ -33,10 +33,6 @@ msgid "Soldier"
 msgstr "Sotilas"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(simple)"
-msgstr "(yksinkertainen)"
-
-#: data/campaigns/The_South_Guard.cfg:21
 msgid "Civilian"
 msgstr "Siviili"
 
@@ -45,12 +41,18 @@ msgid "Recruit"
 msgstr "Alokas"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(normal)"
+#, fuzzy
+msgid "(Easy)"
+msgstr "(helppo)"
+
+#: data/campaigns/The_South_Guard.cfg:21
+#, fuzzy
+msgid "(Normal)"
 msgstr "(normaali)"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(easy)"
-msgstr "(helppo)"
+msgid "(Beginner)"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
@@ -3445,6 +3447,9 @@ msgstr "uskollinen"
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:198
 msgid "female^loyal"
 msgstr ""
+
+#~ msgid "(simple)"
+#~ msgstr "(yksinkertainen)"
 
 #~ msgid "Summer"
 #~ msgstr "Kesä"

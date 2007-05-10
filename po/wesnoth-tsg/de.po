@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:30+0200\n"
+"POT-Creation-Date: 2007-05-10 22:41+0200\n"
 "PO-Revision-Date: 2007-05-07 19:38+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -24,7 +24,7 @@ msgid ""
 "Note:  This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players. \n"
 "\n"
-"(Novice level, 13 scenarios)"
+"(Novice level, 13 scenarios.)"
 msgstr ""
 "Als Sohn eines Ritters, der unter Konrad dem I. gedient hatte, wurde Deoran "
 "entsandt, um das Kommando über die Südwacht zu übernehmen... Anmerkung: "
@@ -37,10 +37,6 @@ msgid "Soldier"
 msgstr "Soldat"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(simple)"
-msgstr "(simpel)"
-
-#: data/campaigns/The_South_Guard.cfg:21
 msgid "Civilian"
 msgstr "Bürger"
 
@@ -49,12 +45,18 @@ msgid "Recruit"
 msgstr "Rekrut"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(normal)"
+#, fuzzy
+msgid "(Easy)"
+msgstr "(einfach)"
+
+#: data/campaigns/The_South_Guard.cfg:21
+#, fuzzy
+msgid "(Normal)"
 msgstr "(normal)"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(easy)"
-msgstr "(einfach)"
+msgid "(Beginner)"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
@@ -3303,6 +3305,9 @@ msgstr "loyal"
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:198
 msgid "female^loyal"
 msgstr "loyal"
+
+#~ msgid "(simple)"
+#~ msgstr "(simpel)"
 
 #~ msgid "Summer"
 #~ msgstr "Sommer"

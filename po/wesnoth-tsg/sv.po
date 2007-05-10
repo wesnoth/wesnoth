@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:30+0200\n"
+"POT-Creation-Date: 2007-05-10 22:41+0200\n"
 "PO-Revision-Date: 2007-02-01 00:25+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -25,7 +25,7 @@ msgid ""
 "Note:  This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players. \n"
 "\n"
-"(Novice level, 13 scenarios)"
+"(Novice level, 13 scenarios.)"
 msgstr ""
 "Deoran, en ung riddare, sänds iväg för att ta befälet över Sydvakten... "
 "Denna kampanj är gjord som en introduktion till Wesnoth. Svårighetsgraden "
@@ -36,10 +36,6 @@ msgid "Soldier"
 msgstr "Soldat"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(simple)"
-msgstr "(enkel)"
-
-#: data/campaigns/The_South_Guard.cfg:21
 msgid "Civilian"
 msgstr "Civilist"
 
@@ -48,12 +44,18 @@ msgid "Recruit"
 msgstr "Rekryt"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(normal)"
+#, fuzzy
+msgid "(Easy)"
+msgstr "(lätt)"
+
+#: data/campaigns/The_South_Guard.cfg:21
+#, fuzzy
+msgid "(Normal)"
 msgstr "(normal)"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(easy)"
-msgstr "(lätt)"
+msgid "(Beginner)"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
@@ -3205,6 +3207,9 @@ msgstr "lojal"
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:198
 msgid "female^loyal"
 msgstr "lojal"
+
+#~ msgid "(simple)"
+#~ msgstr "(enkel)"
 
 #~ msgid "Summer"
 #~ msgstr "Sommar"

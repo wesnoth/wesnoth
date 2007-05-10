@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:29+0200\n"
+"POT-Creation-Date: 2007-05-10 22:40+0200\n"
 "PO-Revision-Date: 2007-04-22 22:43+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -20,20 +20,24 @@ msgid "The Eastern Invasion"
 msgstr "Източното нахлуване"
 
 #: data/campaigns/Eastern_Invasion.cfg:13
-msgid "(easiest)"
-msgstr "(най-лесно)"
+msgid "(Easy)"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:13
 msgid "Spearman"
 msgstr "Копиеносец"
 
 #: data/campaigns/Eastern_Invasion.cfg:14
+msgid "(Normal)"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion.cfg:14
 msgid "Swordsman"
 msgstr "Мечоносец"
 
 #: data/campaigns/Eastern_Invasion.cfg:15
-msgid "(hardest)"
-msgstr "(най-трудно)"
+msgid "(Challenging)"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:15
 msgid "Royal Guard"
@@ -46,7 +50,7 @@ msgid ""
 "officer in the Royal Army, have been sent to the eastern front to protect "
 "the villagers and find out what is happening.\n"
 "\n"
-"(Intermediate level, 20 scenarios)"
+"(Intermediate level, 20 scenarios.)"
 msgstr ""
 "Има слухове за нападения на немъртвите по източната граница на Уеснот. Вие, "
 "офицер в Кралската армия, сте изпратен на източният фронт, за да защитите "
@@ -1578,7 +1582,12 @@ msgstr "Намерихте 100 злато в укреплението."
 msgid "We have done it! The island is ours. Our journey is complete."
 msgstr "Успяхме! Островът е наш. Пътуването ни завърши."
 
-#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:209
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:179
+#, fuzzy
+msgid "Groog"
+msgstr "Гръг"
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:210
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "Не бърза много вие. Идва с наз."
 
@@ -2267,11 +2276,11 @@ msgstr ""
 "Мал-Рейванал, ако знаеше, че бях там когато атакува, той щеше да ни "
 "преследва много по-упорито."
 
-#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:145
 msgid "Sire, the undead armies are attacking!"
 msgstr "Сир, армията на немъртвите атакува!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:148
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:149
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "Е, това ще бъде краят на съветът ни. На бой!"
 
@@ -2743,3 +2752,9 @@ msgstr ""
 "След пристигането на силите на краля всичко изглежда добре. Няколко седмици "
 "няма нападения и Гуъдри става небрежен. Тогава, един ден по зазоряване, "
 "Гуъдри е събуден от ужасените викове на нощната стража..."
+
+#~ msgid "(easiest)"
+#~ msgstr "(най-лесно)"
+
+#~ msgid "(hardest)"
+#~ msgstr "(най-трудно)"

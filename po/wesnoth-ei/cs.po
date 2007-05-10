@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:29+0200\n"
+"POT-Creation-Date: 2007-05-10 22:40+0200\n"
 "PO-Revision-Date: 2007-05-08 15:10+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -27,20 +27,24 @@ msgid "The Eastern Invasion"
 msgstr "Invaze z východu"
 
 #: data/campaigns/Eastern_Invasion.cfg:13
-msgid "(easiest)"
-msgstr "(nejjednodušší)"
+msgid "(Easy)"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:13
 msgid "Spearman"
 msgstr "Kopiník"
 
 #: data/campaigns/Eastern_Invasion.cfg:14
+msgid "(Normal)"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion.cfg:14
 msgid "Swordsman"
 msgstr "Šermíř"
 
 #: data/campaigns/Eastern_Invasion.cfg:15
-msgid "(hardest)"
-msgstr "(nejobtížnější)"
+msgid "(Challenging)"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:15
 msgid "Royal Guard"
@@ -48,12 +52,13 @@ msgstr "Královská stráž"
 
 # pokročilý hráč?
 #: data/campaigns/Eastern_Invasion.cfg:18
+#, fuzzy
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
 "the villagers and find out what is happening.\n"
 "\n"
-"(Intermediate level, 20 scenarios)"
+"(Intermediate level, 20 scenarios.)"
 msgstr ""
 "Koluji zvěsti o útocích nemrtvých na východní hranici Wesnothu. Ty, "
 "důstojník královské armády, jsi byl vyslán na východní frontu, abys ochránil "
@@ -1562,7 +1567,12 @@ msgstr "V pevnosti jsi nalezl 100 zlaťáků!"
 msgid "We have done it! The island is ours. Our journey is complete."
 msgstr "Dokázali jsme to! Ostrov je náš. Naše cesta je u konce."
 
-#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:209
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:179
+#, fuzzy
+msgid "Groog"
+msgstr "Grug"
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:210
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "Nejít tak rychle. Jít s námi."
 
@@ -2247,11 +2257,11 @@ msgstr ""
 "a kdyby věděl, že jsem tam při jeho útoku byl, pronásledoval by nás mnohem "
 "důsledněji."
 
-#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:145
 msgid "Sire, the undead armies are attacking!"
 msgstr "Pane, armády nemrtvých útočí!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:148
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:149
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "Tak to tedy musíme ukončit naši radu. Do boje!"
 
@@ -2724,6 +2734,12 @@ msgstr ""
 "Všichni dorazili v pořádku spolu s královskou armádou. Po řadu týdnů se nic "
 "nedělo a Gweddryho muži přestali být ostražití. Pak, za úsvitu nového dne, "
 "byli Gweddryho muži probuzeni překvapeným křikem noční hlídky..."
+
+#~ msgid "(easiest)"
+#~ msgstr "(nejjednodušší)"
+
+#~ msgid "(hardest)"
+#~ msgstr "(nejobtížnější)"
 
 #~ msgid "Skeletal Dragon"
 #~ msgstr "Kostlivý drak"

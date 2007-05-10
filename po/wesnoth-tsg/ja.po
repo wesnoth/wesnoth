@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:30+0200\n"
+"POT-Creation-Date: 2007-05-10 22:41+0200\n"
 "PO-Revision-Date: 2006-09-21 16:43+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -30,7 +30,7 @@ msgid ""
 "Note:  This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players. \n"
 "\n"
-"(Novice level, 13 scenarios)"
+"(Novice level, 13 scenarios.)"
 msgstr ""
 "若い騎士 Deoran は南部防衛隊を指揮するために派遣された……。メモ：このキャン"
 "ペーンは Wesnoth の入門のためにデザインされました。「一般市民」の難易度は初め"
@@ -41,10 +41,6 @@ msgid "Soldier"
 msgstr "兵士"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(simple)"
-msgstr "(とても簡単)"
-
-#: data/campaigns/The_South_Guard.cfg:21
 msgid "Civilian"
 msgstr "一般市民"
 
@@ -53,12 +49,18 @@ msgid "Recruit"
 msgstr "新人の兵士"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(normal)"
+#, fuzzy
+msgid "(Easy)"
+msgstr "(簡単)"
+
+#: data/campaigns/The_South_Guard.cfg:21
+#, fuzzy
+msgid "(Normal)"
 msgstr "(普通)"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(easy)"
-msgstr "(簡単)"
+msgid "(Beginner)"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
@@ -3421,6 +3423,9 @@ msgstr "忠義"
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:198
 msgid "female^loyal"
 msgstr ""
+
+#~ msgid "(simple)"
+#~ msgstr "(とても簡単)"
 
 #~ msgid "Summer"
 #~ msgstr "夏"

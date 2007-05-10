@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:29+0200\n"
+"POT-Creation-Date: 2007-05-10 22:40+0200\n"
 "PO-Revision-Date: 2007-03-11 15:07+0100\n"
 "Last-Translator: Széll Tamás <tomi A digiflex POINT hu>\n"
 "Language-Team: \n"
@@ -25,20 +25,24 @@ msgid "The Eastern Invasion"
 msgstr "Betörés keleten"
 
 #: data/campaigns/Eastern_Invasion.cfg:13
-msgid "(easiest)"
-msgstr "(legkönnyebb)"
+msgid "(Easy)"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:13
 msgid "Spearman"
 msgstr "Dárdás"
 
 #: data/campaigns/Eastern_Invasion.cfg:14
+msgid "(Normal)"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion.cfg:14
 msgid "Swordsman"
 msgstr "Páncélos"
 
 #: data/campaigns/Eastern_Invasion.cfg:15
-msgid "(hardest)"
-msgstr "(legnehezebb)"
+msgid "(Challenging)"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:15
 msgid "Royal Guard"
@@ -51,7 +55,7 @@ msgid ""
 "officer in the Royal Army, have been sent to the eastern front to protect "
 "the villagers and find out what is happening.\n"
 "\n"
-"(Intermediate level, 20 scenarios)"
+"(Intermediate level, 20 scenarios.)"
 msgstr ""
 "Az a hír járja, hogy Wesnoth keleti határait élőholt támadások sértették "
 "meg. Téged, a Királyi Hadsereg egyik tisztjét, a helyszínre küldtek, hogy "
@@ -1615,7 +1619,12 @@ msgstr "100 aranyat találtál az erődben!"
 msgid "We have done it! The island is ours. Our journey is complete."
 msgstr "Megcsináltuk! A sziget a miénk. Az utazásunk a végéhez ért."
 
-#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:209
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:179
+#, fuzzy
+msgid "Groog"
+msgstr "Grug"
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:210
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "Ne menni túl gyors. Gyere te velünk."
 
@@ -2315,11 +2324,11 @@ msgstr ""
 "Ravanal nevére és ha tudta volna, hogy én ott voltam amikor támadott, akkor "
 "sokkal nagyobb hévvel követett volna minket."
 
-#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:145
 msgid "Sire, the undead armies are attacking!"
 msgstr "Uram, az élőholt seregek támadnak!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:148
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:149
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "A tanácskozást berekesztem. Harcoljunk!"
 
@@ -2800,6 +2809,12 @@ msgstr ""
 "újabb támadás, és Gweddry emberei kezdtek óvatlanná válni. Majd egy "
 "hajnalban Gweddry-t és embereit az éjszakai őr elkeseredett kiáltása "
 "riasztotta fel..."
+
+#~ msgid "(easiest)"
+#~ msgstr "(legkönnyebb)"
+
+#~ msgid "(hardest)"
+#~ msgstr "(legnehezebb)"
 
 #~ msgid "Skeletal Dragon"
 #~ msgstr "Csontsárkány"

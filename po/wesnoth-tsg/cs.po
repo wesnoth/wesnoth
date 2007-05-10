@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:30+0200\n"
+"POT-Creation-Date: 2007-05-10 22:41+0200\n"
 "PO-Revision-Date: 2007-05-08 15:11+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -20,12 +20,13 @@ msgid "The South Guard"
 msgstr "Jižní hlídka"
 
 #: data/campaigns/The_South_Guard.cfg:18
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note:  This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players. \n"
 "\n"
-"(Novice level, 13 scenarios)"
+"(Novice level, 13 scenarios.)"
 msgstr ""
 "Mladý rytíř, Deoran, je vyslán převzít velení nad Jižní hlídkou...  "
 "Poznámka: Toto tažení je navrženo jako úvod ke hraní Wesnothu. Obtížnost "
@@ -38,10 +39,6 @@ msgid "Soldier"
 msgstr "Voják"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(simple)"
-msgstr "(triviální)"
-
-#: data/campaigns/The_South_Guard.cfg:21
 msgid "Civilian"
 msgstr "Civilista"
 
@@ -50,12 +47,18 @@ msgid "Recruit"
 msgstr "Rekrut"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(normal)"
+#, fuzzy
+msgid "(Easy)"
+msgstr "(jednoduchá)"
+
+#: data/campaigns/The_South_Guard.cfg:21
+#, fuzzy
+msgid "(Normal)"
 msgstr "(běžná)"
 
 #: data/campaigns/The_South_Guard.cfg:21
-msgid "(easy)"
-msgstr "(jednoduchá)"
+msgid "(Beginner)"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
@@ -3141,6 +3144,9 @@ msgstr "věrný"
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:198
 msgid "female^loyal"
 msgstr "věrná"
+
+#~ msgid "(simple)"
+#~ msgstr "(triviální)"
 
 #~ msgid "Summer"
 #~ msgstr "Léto"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: blackeye-de\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:31+0200\n"
+"POT-Creation-Date: 2007-05-10 22:41+0200\n"
 "PO-Revision-Date: 2007-05-07 14:57+0100\n"
 "Last-Translator: Stefan von Halenbach <vonHalenbach at users dot sf .net>\n"
 "Language-Team: Deutsch\n"
@@ -37,8 +37,8 @@ msgstr "Besiegt Albert und seine Truppen"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:355
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:32
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:29
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:190
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:240
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:192
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:236
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:27
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:33
@@ -213,6 +213,11 @@ msgstr "Hurra! Der Sieg ist unser!"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:185
 msgid "Die, human-worm."
 msgstr "Stirb, Menschling."
+
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:197
+#, fuzzy
+msgid "Vrag"
+msgstr "Braga"
 
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:207
 msgid " *pant* Chief! Chief!"
@@ -420,15 +425,16 @@ msgstr ""
 "Gór im Land der freien Stämme leben. Wir sollten sie besuchen, und sie um "
 "ihre Hilfe bitten."
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:161
-msgid " $name.user_description!"
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:162
+#, fuzzy
+msgid " $stored_helper.user_description|!"
 msgstr " $name.user_description!"
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:166
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:167
 msgid "Yeah Chief?"
 msgstr "Wirklich Häuptling?"
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:171
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:172
 msgid ""
 "You, gather up our people and assemble them on the road some distance north "
 "of here. We will hold back the humans here until you are finished."
@@ -437,37 +443,37 @@ msgstr ""
 "hier Irgendwo auf den Weg befindet. Wir halten solange die Stellung gegen "
 "den Angriff der Menschen, bis du wieder zurück gekommen bist."
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:176
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:177
 msgid "Ok."
 msgstr "Ok."
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:186
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:188
 msgid "Resist until your people are ready to go"
 msgstr "Überlebe bis deine Leute bereit sind zu gehen"
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:225
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:221
 msgid "Chief, we have all our people ready to go. Come on, this way."
 msgstr ""
 "Häuptling! Unsere Leute sind nun bereit zu gehen. Kommt her, hier lang."
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:230
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:226
 msgid "Took you long enough. Let's go!"
 msgstr "Das hat aber auch lange genug gedauert. Aufgehts!"
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:236
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:232
 msgid "Move Kapou'e to the signpost in the Northeast"
 msgstr "Führt Kapou'e zum Wegweiser im Nordosten"
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:270
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:266
 msgid "We'll be back, foul mud-sucking humans!"
 msgstr "Wir kommen wieder ihr stinkenden Menschen!"
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:275
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:271
 msgid "Ha ha! Run, you cowardly orcs! This land now belongs to humans!"
 msgstr ""
 "Ha ha! Lauft nur, ihr feigen Orks! Dieses Gebiet gehört nun den Menschen!"
 
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:280
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:276
 msgid ""
 "In your dreams, human-worms. When the time comes you will pay for all this "
 "with your life!"
@@ -705,7 +711,8 @@ msgstr ""
 "ihr hiermit fertig seid."
 
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:378
-msgid "Sounds like fun. Alright boys, lets go!"
+#, fuzzy
+msgid "Sounds like fun. Alright boys, let's go!"
 msgstr "Hört sich nach einem Haufen Spass an. Alles Klar Jungs. Auf gehts!"
 
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:440
@@ -1289,11 +1296,12 @@ msgid "Do not grovel, just tell me what's going on here."
 msgstr "Ah, kümmert euch nicht darum, sagt mir nur, was hier los ist."
 
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:286
+#, fuzzy
 msgid ""
 "I don't really know, one day all was calm and peaceful and the next a fleet "
-"of human ships showed up and began spewing humans. We tried to hold them off "
-"as best we could, but they captured the Northern keep. And then human "
-"reinforcements arrived from their settlements to the South."
+"of human ships showed up and began spewing out human-worms. We tried to hold "
+"them off as best we could, but they captured the Northern keep. And then "
+"human reinforcements arrived from their settlements to the South."
 msgstr ""
 "Ich weiss es nicht wirklich, ein Tag war es ruhig und friedlich wie in "
 "Mutters Schoß und dann plötzlich taucht eine Flotte am Strand auf und spuckt "
@@ -1364,18 +1372,20 @@ msgid ""
 msgstr "Gratuliere zu deinem Sieg, Kapou'e. Du machst deinem Vater alle Ehre."
 
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:411
+#, fuzzy
 msgid ""
-"Thanks, but I have a news. Since the forces here were certain they were "
-"going to be defeated, they sent the shamans to the Mourned Hills. If we want "
-"to meet them, we must go after them."
+"Thanks, but I have news. Since the forces here were certain they were going "
+"to be defeated, they sent the shamans to the Mourned Hills. If we want to "
+"meet them, we must go after them."
 msgstr ""
 "Danke, abe ich bringe Neuigkeiten. Da die Streitkräfte hier sich der "
 "Niederlage sicher waren, haben sie die Schamanen nach Osten in die Nähe der "
 "Trauerhügel geschickt. Wenn wir sie treffen wollen, müssen wir ihnen folgen."
 
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:415
+#, fuzzy
 msgid ""
-"Oh great. That means we have to cross the Desert of Death which is full of "
+"Oh, great. That means we have to cross the Desert of Death which is full of "
 "poisonous giant scorpions and outlaws. And bypassing it would take ages! Not "
 "to mention after this desert, we'll have to cross the Silent Forest!"
 msgstr ""
@@ -3620,7 +3630,7 @@ msgstr "Galleone der Piraten"
 msgid "Novice Orcish Shaman"
 msgstr "Junger Orkschamane"
 
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
+#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:21
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -3639,40 +3649,40 @@ msgstr ""
 "durch ihre Fähigkeit Magie herauf zu beschwören und Ihren Feinden mit "
 "Flüchen die Lebensenergie Aus zu saugen, nicht zu verachten. "
 
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:24
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:25
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:24
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:26
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:25
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:25
+#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:26
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:26
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:27
 msgid "staff"
 msgstr "Stab"
 
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:26
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:26
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:27
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:27
+#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:27
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:28
 msgid "impact"
 msgstr "Stoss"
 
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:63
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:64
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:63
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:65
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:64
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:64
+#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:65
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:65
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:66
 msgid "curse"
 msgstr "Fluch"
 
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:65
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:66
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:24
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:65
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:66
+#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:66
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:67
 msgid "pierce"
 msgstr "Stichwaffe"
 
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:69
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:69
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:70
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:70
+#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:70
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:71
 msgid "drain"
 msgstr "Lebensentzug"
 
@@ -3680,7 +3690,7 @@ msgstr "Lebensentzug"
 msgid "Orcish Shaman"
 msgstr "Orkschamane"
 
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:20
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:21
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -3702,7 +3712,7 @@ msgstr ""
 msgid "Old Orcish Shaman"
 msgstr "Alter Orkschamane"
 
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:21
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman_Gork.cfg:22
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "

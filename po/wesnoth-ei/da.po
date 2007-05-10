@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-08 14:29+0200\n"
+"POT-Creation-Date: 2007-05-10 22:40+0200\n"
 "PO-Revision-Date: 2007-04-20 13:15+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -22,20 +22,24 @@ msgid "The Eastern Invasion"
 msgstr "Invasionen fra øst"
 
 #: data/campaigns/Eastern_Invasion.cfg:13
-msgid "(easiest)"
-msgstr "(nemmest)"
+msgid "(Easy)"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:13
 msgid "Spearman"
 msgstr "Spydmand"
 
 #: data/campaigns/Eastern_Invasion.cfg:14
+msgid "(Normal)"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion.cfg:14
 msgid "Swordsman"
 msgstr "Sværdmand"
 
 #: data/campaigns/Eastern_Invasion.cfg:15
-msgid "(hardest)"
-msgstr "(sværest)"
+msgid "(Challenging)"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:15
 msgid "Royal Guard"
@@ -48,7 +52,7 @@ msgid ""
 "officer in the Royal Army, have been sent to the eastern front to protect "
 "the villagers and find out what is happening.\n"
 "\n"
-"(Intermediate level, 20 scenarios)"
+"(Intermediate level, 20 scenarios.)"
 msgstr ""
 "Der er rygter om angreb fra udøde på den østlige grænse af Wesnoth. Du, en "
 "officer i den kongelige hær, er blevet sendt til den østlige front for at "
@@ -1589,7 +1593,12 @@ msgstr "Du finder 100 guld i fæstningen!"
 msgid "We have done it! The island is ours. Our journey is complete."
 msgstr "Vi har gjort det! Øen er vores. Vores rejse kan ende."
 
-#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:209
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:179
+#, fuzzy
+msgid "Groog"
+msgstr "Grug"
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:210
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "Ikke så hurtig. Du kommer med os."
 
@@ -2288,11 +2297,11 @@ msgstr ""
 "navnet Mal-Ravnal, og hvis han havde vidst at jeg var der da han angreb, "
 "ville hans forfølgelse have været meget mere omfattende."
 
-#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:145
 msgid "Sire, the undead armies are attacking!"
 msgstr "Herre, de udøde hære angriber!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:148
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:149
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "Det må så være slutningen på vores rådsmøde. Lad os kæmpe!"
 
@@ -2772,6 +2781,12 @@ msgstr ""
 "flere uger, og Gweddrys mænd begyndte at blive uforsigtige. Så skete det en "
 "dag ved solopgang, at Gweddry og hans mænd blev vækket af skrigene fra "
 "vagtposterne..."
+
+#~ msgid "(easiest)"
+#~ msgstr "(nemmest)"
+
+#~ msgid "(hardest)"
+#~ msgstr "(sværest)"
 
 # Er også med i Mystery campagin
 #~ msgid "Skeletal Dragon"
