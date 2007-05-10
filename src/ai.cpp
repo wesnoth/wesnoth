@@ -1551,8 +1551,22 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		weighting_sum += j->second;
 	}
 
-	if (weighting_sum != 0)
+	if (weighting_sum != 0) {
 		defense /= weighting_sum;
+	} else {
+		// This unit can't move on this map so just get the avarage weighted of all
+		// available terrains. This still is a kind of silly since the opponent 
+		// probably can't recruit this unit and it's a static unit.
+		for (std::map<t_translation::t_letter, size_t>::const_iterator jj = terrain.begin(), 
+				jj_end = terrain.end(); jj != jj_end; ++jj) {
+
+			defense += a.movement_type().defense_modifier(map_, jj->first) * jj->second;
+			weighting_sum += jj->second;
+		}
+
+		wassert(weighting_sum != 0);
+		defense /= weighting_sum;
+	}
 
 	LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
 
