@@ -5,6 +5,7 @@ CXXFLAGS += "-DSVNREV=\"$(SVNREV)\""
 AUTOMAKE_OPTIONS = subdir-objects
 
 bin_PROGRAMS =
+bin_SCRIPTS =
 
 if GAME
 bin_PROGRAMS += wesnoth
