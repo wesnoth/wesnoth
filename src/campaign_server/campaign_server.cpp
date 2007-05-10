@@ -19,10 +19,23 @@
 #include "util.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
+#include "wassert.hpp"
 
 #include "SDL.h"
 
 #include <iostream>
+#include <map>
+
+
+// the fork execute is unix specific only tested on Linux quite sure it won't 
+// work on Windows not sure which other platforms have a problem with it.
+#if !(defined(_WIN32))
+#include <errno.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#endif
 
 #define LOG_CS lg::err(lg::network, false)
 
@@ -49,6 +62,11 @@ namespace {
 			explicit campaign_server(const std::string& cfgfile,size_t min_thread = 10,size_t max_thread = 0);
 			void run();
 		private:
+			/**
+			 * Fires a script, if no script defined it will always return true
+			 * If a script is defined but can't be executed it will return false
+			 */
+			bool fire(const std::string& hook);
 			int load_config(); // return the server port
 			const config& campaigns() const { return *cfg_.child("campaigns"); }
 			config& campaigns() { return *cfg_.child("campaigns"); }
@@ -56,8 +74,85 @@ namespace {
 			const std::string file_;
 			const network::manager net_manager_;
 			const network::server_manager server_manager_;
+			std::map<std::string, std::string> hooks_;
 
+			// use a variable to store the output
+			std::string out_;
 	};
+
+	bool campaign_server::fire(const std::string& hook)
+	{
+		out_.clear();
+		
+		const std::map<std::string, std::string>::const_iterator itor = hooks_.find(hook);
+		if(itor == hooks_.end()) return true;
+
+		const std::string& script = itor->second;
+		if(script == "") return true;
+
+#if (defined(_WIN32))
+		construct_error("Tried to execute a script on a not supporting platform");
+		return false;
+#else		
+
+		int fd_out[2], fd_err[2];
+		pid_t childpid;
+
+		pipe(fd_out);
+		pipe(fd_err);
+        
+		if((childpid = fork()) == -1) {
+			construct_error("fork failed");
+			return false; 
+		}
+
+		if(childpid == 0) {
+			/*** We're the child process ***/
+
+			// close input side of pipe
+			close(fd_out[0]);
+			close(fd_err[0]);
+
+			// redirect stdout and stderr
+			dup2(fd_out[1], 1);
+			dup2(fd_err[1], 2);
+
+			// execute the script
+			execlp(script.c_str(), script.c_str(), (char *)NULL);
+
+			// exec() and family never return if they do we have a problem
+			std::cerr << "exec failed errno = " << errno << "\n";
+			exit(errno);
+
+		} else {
+
+			/*** We're the parent process ***/
+
+			// close the output side of the pipe
+			close(fd_out[1]);
+			close(fd_err[1]);
+
+			// wait for our child to finish
+			int status;
+			wait(&status);
+
+
+			// write the message for the log
+			char buf;
+			std::string error;
+
+			while (read(fd_err[0], &buf, 1) > 0) error += buf;
+			if(!error.empty()) construct_error(error);
+		
+			// read the message for the user
+			while (read(fd_out[0], &buf, 1) > 0) out_ += buf;
+
+			// if terminated with a error code of 0 we succeeded
+			return (status == 0);
+		}
+
+#endif
+	}
 
 	int campaign_server::load_config()
 	{
@@ -72,6 +167,10 @@ namespace {
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
 		}
+
+		// load the hooks
+		hooks_.insert(std::make_pair("hook_pre_upload", cfg_["hook_pre_upload"]));
+		hooks_.insert(std::make_pair("hook_post_upload", cfg_["hook_post_upload"]));
 	}
 
 	void find_translations(const config& cfg, config& campaign)
@@ -275,6 +374,12 @@ namespace {
 							network::send_data(construct_error("The name of the add-on is invalid"),sock);
 						} else if(check_names_legal(*data) == false) {
 							network::send_data(construct_error("The add-on contains an illegal file or directory name."),sock);
+						} else if(! fire("hook_pre_upload")) {  
+							if(out_ == "") {
+								network::send_data(construct_error("The add-on failed with unknown error in pre-upload hook."),sock);
+							} else {
+								network::send_data(construct_error("The add-on failed with error:" + out_),sock);
+							}
 						} else {
 							std::string message = "Add-on accepted.";
 							if(campaign == NULL) {
@@ -323,6 +428,8 @@ namespace {
 							scoped_ostream cfgfile = ostream_file(file_);
 							write(*cfgfile, cfg_);
 							network::send_data(construct_message(message),sock);
+
+							fire("hook_post_upload");
 						}
 					} else if(const config* erase = data.child("delete")) {
 						LOG_CS << "deleting campaign " << network::ip_address(sock) << "\n";
