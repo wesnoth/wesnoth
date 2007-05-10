@@ -59,7 +59,7 @@ def isresource(filename):
     (root, ext) = os.path.splitext(filename)
     return ext and ext[1:] in resource_extensions
 
-class reference:
+class Reference:
     "Describes a location by file and line."
     def __init__(self, filename, lineno=None, docstring=None):
         self.filename = filename
@@ -89,6 +89,7 @@ class reference:
             return '"%s", line %d' % (self.filename, self.lineno)
         else:
             return self.filename
+    __repr__ = __str__
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Z0-9_:]*[A-Za-z0-9_])\b")
@@ -115,7 +116,7 @@ class CrossRef:
             # Local macros are only visible in the file where they were defined
             return defn.filename == fn and n >= defn.lineno and n <= defn.undef
         elif defn.filename in self.filelist.forest[0]:
-            # Macros in the first subtree are visible everywhere.
+            # Macros and resources in the first subtree are visible everywhere.
             return True
         elif not self.filelist.neighbors(defn.filename, fn):
             # Otherwise, must be in the same subtree.
@@ -141,7 +142,7 @@ class CrossRef:
             if warnlevel > 1:
                 print filename + ":"
             if isresource(filename):
-                self.fileref[filename] = reference(filename) 
+                self.fileref[filename] = Reference(filename) 
             elif iswml(filename):
                 # It's a WML file, scan for macro defitions
                 dfp = open(filename)
@@ -152,7 +153,7 @@ class CrossRef:
                     if line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
-                        here = reference(filename, n+1, line)
+                        here = Reference(filename, n+1, line)
                         here.hash = md5.new()
                         here.docstring = line.lstrip()[8:]	# Strip off #define_
                         state = "macro_header"
@@ -189,7 +190,7 @@ class CrossRef:
                             self.xref[name][-1].undef = n
                         else:
                             print "%s: unbalanced #undef on %s" \
-                                  % (reference(filename, n), name)
+                                  % (Reference(filename, n), name)
                 dfp.close()
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
@@ -227,9 +228,9 @@ class CrossRef:
                                     candidates += 1
                                     defn.append(fn, n+1)
                             if candidates > 1:
-                                print "%s: more than one definition of %s is visible here." % (reference(fn, n), name)
+                                print "%s: more than one definition of %s is visible here." % (Reference(fn, n), name)
                             if candidates == 0:
-                                 self.unresolved.append((name, reference(fn,n+1)))
+                                 self.unresolved.append((name, Reference(fn,n+1)))
                     # Find references to resource files
                     for match in re.finditer(CrossRef.file_reference, line):
                         name = match.group(0)
@@ -257,9 +258,9 @@ class CrossRef:
                                     self.fileref[trial].append(fn, n+1)
                                     candidates.append(trial)
                             if len(candidates) > 1:
-                                print "%s: more than one definition of %s is visible here (%s)." % (reference(fn, n), name, ", ".join(candidates))
+                                print "%s: more than one definition of %s is visible here (%s)." % (Reference(fn, n), name, ", ".join(candidates))
                         if not key:
-                            self.missing.append((name, reference(fn,n+1)))
+                            self.missing.append((name, Reference(fn,n+1)))
                 rfp.close()
 
 # wmltools.py gends here
