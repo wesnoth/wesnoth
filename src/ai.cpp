@@ -1551,7 +1551,8 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		weighting_sum += j->second;
 	}
 
-	defense /= weighting_sum;
+	if (weighting_sum != 0)
+		defense /= weighting_sum;
 
 	LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
 
