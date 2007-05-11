@@ -986,7 +986,7 @@ private:
 
 }
 
-SDL_Rect get_non_transperant_portion(surface const &surf)
+SDL_Rect get_non_transparent_portion(surface const &surf)
 {
 	SDL_Rect res = {0,0,0,0};
 	const surface nsurf(make_neutral_surface(surf));

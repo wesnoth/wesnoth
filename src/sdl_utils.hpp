@@ -135,7 +135,7 @@ surface create_compatible_surface(surface const &surf, int width = -1, int heigh
 
 void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target);
 
-SDL_Rect get_non_transperant_portion(surface const &surf);
+SDL_Rect get_non_transparent_portion(surface const &surf);
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
