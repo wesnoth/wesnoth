@@ -120,7 +120,7 @@ uninstall-hook:
 	if test -d $(prefix) ; then echo `rmdir $(prefix)` ; fi
 
 clean-local:
-	rm -rf translations
+	rm -rf translations po/stamp* po/*/stamp*
 
 BINARY_STAGING=/tmp/$(PACKAGE)-$(VERSION)-staging
 BINARY_DIST=/tmp/$(PACKAGE)-binary-$(VERSION).tar.gz

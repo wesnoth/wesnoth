@@ -39,14 +39,22 @@ then
 
  $ cd wesnoth-x.y.z
 
-The usual
+Do this 
 
- $ ./configure
+ $ autogen.sh
  $ make
- $ make install
+ $ sudo make install
 
-only compiles the wesnoth binary and installs it along with the game
-data to the default prefix which is probably /usr/local.
+to compile the wesnoth binary and install it along with the game
+data to the default prefix, which is probably /usr/local.  You
+can pass configure options to the autogen.sh call
+
+After your first build, it should not be necessary to call autogen.sh 
+again.  You can do
+
+ $ configure
+ $ make
+ $ sudo make install
 
 If you see lots of messages like "Type 'svnversion --help' for usage.",
 you have a Subversion client installed but it is not implementing the 
