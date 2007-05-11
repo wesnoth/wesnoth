@@ -505,9 +505,9 @@ def translator(filename, mapxforms, textxform):
             if newline != line:
                 modified = True
                 if verbose > 0:
-                    print >>sys.stderr, 'upconvert: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
+                    print >>sys.stderr, 'wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline)
         elif "map_data=" in line and line.count('"') > 1:
-            print >>sys.stderr, 'upconvert: "%s", line %d: one-line map.' % (filename, lineno)
+            print >>sys.stderr, 'wmllint: "%s", line %d: one-line map.' % (filename, lineno)
             newdata.append(line + terminator)
         else:
             # Handle text (non-map) lines
@@ -550,7 +550,7 @@ def allcfgfiles(dir):
 
 def help():
         sys.stderr.write("""\
-Usage: upconvert [options]
+Usage: wmllint [options]
     Convert Battle of Wesnoth WML from older versions to newer ones.
     Options may be any of these:
     -h, --help                 Emit this help message and quit.
@@ -599,7 +599,7 @@ if __name__ == '__main__':
             revert = True
 
     if clean and revert:
-        sys.stderr.write("upconvert: can't do clean and revert together.\n")
+        sys.stderr.write("wmllint: can't do clean and revert together.\n")
         sys.exit(1)
 
     # Compute the series of version upgrades to perform, and describe it.
@@ -609,12 +609,13 @@ if __name__ == '__main__':
     if oldversion in versions:
         versions = versions[versions.index(oldversion):]
     else:
-        print >>sys.stderr, "upconvert: unrecognized version."
+        print >>sys.stderr, "wmllint: unrecognized version."
         sys.exit(1)
-    explain = "Performing upgrades for:"
-    for i in range(len(versions)-1):
-        explain += " %s -> %s," % (versions[i],  versions[i+1])
-    sys.stdout.write(explain[:-1] + ".\n")
+    if not clean and not revert:
+        explain = "Upgrades for:"
+        for i in range(len(versions)-1):
+            explain += " %s -> %s," % (versions[i],  versions[i+1])
+        sys.stdout.write(explain[:-1] + ".\n")
     fileconversions = map(lambda x: filemoves[x], versions[:-1])
 
     def hasdigit(str):
@@ -736,11 +737,11 @@ if __name__ == '__main__':
                 # Do housekeeping
                 if os.path.exists(backup):
                     if clean:
-                        print "upconvert: removing %s" % backup
+                        print "wmllint: removing %s" % backup
                         if not dryrun:
                             os.remove(backup)
                     elif revert:
-                        print "upconvert: reverting %s" % backup
+                        print "wmllint: reverting %s" % backup
                         if not dryrun:
                             os.rename(backup, fn)
             elif diffs:
@@ -753,16 +754,16 @@ if __name__ == '__main__':
                 try:
                     changed = translator(fn, maptransforms, texttransform)
                     if changed:
-                        print "upconvert: converting", fn
+                        print "wmllint: converting", fn
                         if not dryrun:
                             os.rename(fn, backup)
                             ofp = open(fn, "w")
                             ofp.write(changed)
                             ofp.close()
                 except maptransform_error, e:
-                    sys.stderr.write("upconvert: " + `e` + "\n")
+                    sys.stderr.write("wmllint: " + `e` + "\n")
                 except:
-                    sys.stderr.write("upconvert: internal error on %s\n" % fn)
+                    sys.stderr.write("wmllint: internal error on %s\n" % fn)
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
                     raise exc_type, exc_value, exc_traceback
             # Time for map file renames
