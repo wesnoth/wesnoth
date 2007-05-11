@@ -500,10 +500,7 @@ void textbox::handle_event(const SDL_Event& event)
 		if(is_selection()) {
 			erase_selection();
 		} else {
-			if(cursor_ == (int)text_.size()) {
-				text_.resize(text_.size()-1);
-				--cursor_;
-			} else {
+			if(cursor_ < (int)text_.size()) {
 				text_.erase(text_.begin()+cursor_);
 			}
 		}
