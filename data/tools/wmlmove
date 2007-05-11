@@ -1,0 +1,113 @@
+#!/usr/bin/env python
+'''\
+wmlmove -- generate commands to move a unit in the Wesnoth tree
+
+usage: wmlmove --help
+       wmlmove [--revert] {src...} {dst}
+
+This script facilitates moving units (referenced by their .cfg file) 
+along with all of their associated resources (images and sounds).
+It may be run from the Wesnoth top-level directory or anywhere beneath.
+
+The source unit must be specified as a pathname beginning with either
+data/ or a campaign subdirectory name.  The destination may be the
+name of a campaign or the special name "core", indicating the images
+and sounds directories immediately beneath data/. All resource files
+(images and sounds) referenced in the unit .cfg and included near it
+move with it.
+
+"Near" for a unit in the core data means anywhere in the core data,
+but not in a campaign directory.  "Near" for a unit under a
+data/campaign directory means anywhere in that same campaign
+directory, but not in core data or any other campaign directory.
+
+The script generates a sequence of shell commands.  These commands
+will move the unit and all its resources are moved to appropriate
+places under the target campaign or core directories.  Subversion move
+commands will be used on version-controlled files.
+
+The --revert option generates commands used to revert the result of a 
+previous move, undoing SVN add and delete operations as needed.
+
+Note: After performing a move generated with this command, use wmlscope
+to check that you have not left any references to the moved units dangling.
+''' 
+
+import sys, os, time, re, getopt, sre_constants, md5
+import wmltools
+
+if __name__ == "__main__":
+    # Process options
+    (options, arguments) = getopt.getopt(sys.argv[1:], "hl", ['help', 'list'])
+    listem = False
+    for (switch, val) in options:
+        if switch in ('-h', '--help'):
+            sys.stderr.write(__doc__)
+            sys.exit(0)
+        elif switch in ('-l', '--list'):
+            listem = True
+    if len(arguments) == 0:
+        sys.stderr.write("wmlmove: at least one path to a unit is required.\n")
+	sys.stderr.write(__doc__)
+        sys.exit(1)
+    else:
+        src = os.path.normpath(arguments[0])
+    if len(arguments) == 1:
+        sys.stderr.write("wmlmove: a campaign name or 'core' is required.\n")
+	sys.stderr.write(__doc__)
+        sys.exit(1)
+    else:
+        dst = arguments[1]
+
+    # First, pop upward to the top-level directory
+    upwards = os.getcwd().split(os.sep)
+    upwards.reverse()
+    for pathpart in upwards:
+        if pathpart == "wesnoth":
+            break
+        else:
+            os.chdir("..")
+    else:
+        sys.stderr.write("wmlmove: must be run from with a Battle "
+                         "for Wesnoth source tree.\n")
+        sys.exit(1)
+
+    # Locate the unit .cfgs to be moved.
+    srclist = []
+    for src in arguments[:-1]:
+        print "I see:", src
+        if not src.startswith("data"):
+            src = os.path.join("data", "campaigns", src)
+        elif not os.path.exists(src):
+            sys.stderr.write("wmlmove: can't find %s to move it.\n" % src)
+            sys.exit(1)
+        srclist.append(src)
+
+    # Validate the destination
+    dst = arguments[-1]
+    if dst == "core":
+        dst = ""
+    elif dst not in os.listdir(os.path.join("data", "campaigns")):
+        sys.stderr.write("wmlmove: invalid destination %s\n" % dst)
+        sys.exit(1)
+
+    # Cross-reference all files
+    cref = wmltools.CrossRef(".", exclude="icons/|tutorial/")
+
+    # Filter reference information on all files referenced in the source .cfgs
+    for name in cref.fileref.keys():
+        for referenced in cref.fileref[name].references:
+            if os.path.basename(referenced) in map(os.path.basename, srclist):
+                break
+        else:
+            del cref.fileref[name]
+
+    # List all relevant resources and their other references
+    if listem:
+        for (name, defloc) in cref.fileref.items():
+            print "Resource %s is used in %d files:" % \
+                  (defloc, len(defloc.references))
+            defloc.dump_references()
+
+# This tool is not finished.  More logic will go here.
+
