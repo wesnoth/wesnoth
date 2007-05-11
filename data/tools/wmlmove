@@ -95,16 +95,11 @@ if __name__ == "__main__":
     cref = wmltools.CrossRef(".", exclude="icons/|tutorial/")
 
     # Filter reference information on all files referenced in the source .cfgs
-    for name in cref.fileref.keys():
-        for referenced in cref.fileref[name].references:
-            if os.path.basename(referenced) in map(os.path.basename, srclist):
-                break
-        else:
-            del cref.fileref[name]
+    srcrefs = cref.subtract(filelist)
 
     # List all relevant resources and their other references
     if listem:
-        for (name, defloc) in cref.fileref.items():
+        for (name, defloc) in srcref.fileref.items():
             print "Resource %s is used in %d files:" % \
                   (defloc, len(defloc.references))
             defloc.dump_references()

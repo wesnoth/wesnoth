@@ -40,6 +40,7 @@ class Forest:
         "Are two files from the same tree?"
         return self.clique[fn1] == self.clique[fn2]
     def flatten(self):
+        "Return a flattened list of all files in the forest."
         allfiles = []
         for tree in self.forest:
             allfiles += tree
@@ -131,7 +132,7 @@ class CrossRef:
             # coloring logic to simulate include path interpretation.
             # If that logic ever gets built, it will go here.
             return True
-    def __init__(self, dirpath, exclude="", warnlevel=0):
+    def __init__(self, dirpath=[], exclude="", warnlevel=0):
         "Build cross-reference object from the specified filelist."
         self.dirpath = dirpath
         self.filelist = Forest(dirpath, exclude)
@@ -198,8 +199,7 @@ class CrossRef:
                 dfp = open(filename)
                 for line in dfp:
                     self.xref[line.strip()] = True
-                dfp.close()
-            
+                dfp.close()            
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         self.missing = []
@@ -262,6 +262,18 @@ class CrossRef:
                         if not key:
                             self.missing.append((name, Reference(fn,n+1)))
                 rfp.close()
+    def subtract(self, filelist):
+        "Remove file references in files in filelist."
+        smallref = CrossRef()
+        for filename in self.fileref:
+            for ref in self.fileref[filename]:
+                if ref.filename in filelist:
+                    if filename not in smallref.fileref:
+                        smallref.fileref[filename] = []
+                    smallref.fileref[filename].append(ref.filename)
+                    ref.filename = None
+            self.fileref[filename] = filter(lambda ref: ref.filename, self.fileref[filename])
+        return smallref
 
 ## Version-control hooks begin here.
 #
