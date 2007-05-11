@@ -1364,7 +1364,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	surface surf(image::get_image(image,image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
 	// we use UNSCALED because scaling (and bilinear interpolaion )
 	// is bad for calculate_energy_bar. But we will do a geometric scaling later
-	surface unmoved_surf(image::get_image("misc/bar-energy-unmoved.png",image::UNSCALED,image::NO_ADJUST_COLOUR));
+	surface unmoved_surf(image::get_image("misc/bar-energy.png",image::UNSCALED,image::NO_ADJUST_COLOUR));
 	if(surf == NULL || unmoved_surf == NULL) {
 		return;
 	}
