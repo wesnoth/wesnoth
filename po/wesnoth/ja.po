@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-10 22:39+0200\n"
+"POT-Creation-Date: 2007-05-12 01:26+0200\n"
 "PO-Revision-Date: 2006-09-20 18:34+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -21,614 +21,121 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: data/abilities.cfg:9
-msgid "heals +4"
-msgstr "回復 +4"
-
-#: data/abilities.cfg:14
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent friendly units at the beginning of each "
-"turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"回復 +4:\n"
-"このユニットは隣接した友好的なユニットをターン開始時に回復させます。\n"
-"\n"
-"このユニットに治療されるユニットは１ターンに最大でHPが４回復します。もしく"
-"は、そのターンに毒の効果が発動しないようにします。 \n"
-"毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
-"ユニットを捜して下さい。"
-
-#: data/abilities.cfg:30
-msgid "heals +8"
-msgstr "回復 +8"
-
-#: data/abilities.cfg:35
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"回復 +8:\n"
-"このユニットは薬草と魔法を組み合わせて、 戦場で通常可能であったよりも素早くユ"
-"ニットを回復します。\n"
-"\n"
-"このユニットに治癒されるユニットは１ターンに最大でHPが８回復します。もしく"
-"は、そのターンに毒の効果が発動しないようにします。 \n"
-"毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
-"ユニットを捜して下さい。"
-
-#: data/abilities.cfg:45
-msgid "cures"
-msgstr "治療"
-
-#: data/abilities.cfg:47
-msgid ""
-"Cures:\n"
-"A curer can cure a unit of poison, although that unit will receive no "
-"additional healing on the turn it is cured of the poison."
-msgstr ""
-"治療:\n"
-"治療者は、毒を受けたユニットを治療することができる。ただし、毒から治療された"
-"そのターン内には、さらなる回復は受けられない。"
-
-#: data/abilities.cfg:62
-msgid "regenerates"
-msgstr "再生"
-
-#: data/abilities.cfg:64
+#: data/campaigns/Descent_Into_Darkness.cfg:25
+#: data/campaigns/Eastern_Invasion.cfg:23
+#: data/campaigns/Heir_To_The_Throne.cfg:27
+#: data/campaigns/Northern_Rebirth.cfg:57
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:33
+#: data/campaigns/Son_Of_The_Black_Eye.cfg:22
+#: data/campaigns/The_Rise_Of_Wesnoth.cfg:23
+#: data/campaigns/The_South_Guard.cfg:27 data/campaigns/Two_Brothers.cfg:23
+#: data/campaigns/Under_the_Burning_Suns.cfg:30
 #, fuzzy
-msgid ""
-"Regenerates:\n"
-"The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
-"the poison instead of healing."
-msgstr ""
-"再生:\n"
-"このユニットはターンごとに自身のHPを8回復します。 毒を受けているなら、 回復す"
-"る代わりに毒を取り除きます。"
+msgid "Campaign Designer"
+msgstr "キャンペーンデザイナー"
 
-#: data/abilities.cfg:81
-msgid "steadfast"
-msgstr "装甲"
+#: data/campaigns/Descent_Into_Darkness.cfg:29
+#: data/campaigns/Heir_To_The_Throne.cfg:31
+#: data/campaigns/The_Rise_Of_Wesnoth.cfg:27
+#: data/campaigns/The_South_Guard.cfg:31 data/campaigns/Two_Brothers.cfg:28
+#: data/campaigns/Under_the_Burning_Suns.cfg:34
+msgid "Current Maintainer"
+msgstr "現在の管理者"
 
-#: data/abilities.cfg:83
-msgid ""
-"Steadfast:\n"
-"This unit's resistances are doubled, up to a maximum of 50%, when defending. "
-"Vulnerabilities are not affected."
-msgstr ""
-"装甲:\n"
-"防御時、このユニットの抵抗力は最大で50%まで倍増します。弱点には影響がありませ"
-"ん。"
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:28
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:27
+#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
+#: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:22
+msgid "short sword"
+msgstr "短剣"
 
-#: data/abilities.cfg:96 data/abilities.cfg:118 data/abilities.cfg:152
-#: data/abilities.cfg:198 data/abilities.cfg:256
-msgid "leadership"
-msgstr "統率"
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:54
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:55
+#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
+#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:60
+#: data/units/Undead_Necromancer.cfg:66
+msgid "chill wave"
+msgstr "冷気の嵐"
 
-#: data/abilities.cfg:100 data/abilities.cfg:122 data/abilities.cfg:156
-#: data/abilities.cfg:202 data/abilities.cfg:260
-msgid ""
-"Leadership:\n"
-"This unit can lead friendly units that are next to it, making them fight "
-"better.\n"
-"\n"
-"Adjacent friendly units of lower level will do more damage in battle. When a "
-"unit adjacent to, of a lower level than, and on the same side as a unit with "
-"Leadership engages in combat, its attacks do 25% more damage times the "
-"difference in their levels."
-msgstr ""
-"統率:\n"
-"このユニットは隣接した友好的なユニットを指揮し、 それらがうまく戦えるようにし"
-"ます。\n"
-"\n"
-"隣接している低レベルの友好的なユニットは戦闘時により多くのダメージを与えるよ"
-"うになります。 このユニットとのレベルの差に応じて、 与えるダメージが25%ずつ増"
-"加します。"
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
+#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
+#: data/units/Saurian_Augur.cfg:75 data/units/Saurian_Oracle.cfg:75
+#: data/units/Saurian_Soothsayer.cfg:75
+#: data/units/Undead_Necro_Ancient_Lich.cfg:71
+#: data/units/Undead_Necro_Dark_Adept.cfg:32
+#: data/units/Undead_Necro_Dark_Sorcerer.cfg:61
+#: data/units/Undead_Necro_Lich.cfg:76 data/units/Undead_Necromancer.cfg:67
+#: data/units/Undead_Spirit_Ghost.cfg:64
+#: data/units/Undead_Spirit_Spectre.cfg:86
+#: data/units/Undead_Spirit_Wraith.cfg:67
+msgid "cold"
+msgstr "冷気"
 
-#: data/abilities.cfg:324
-msgid "skirmisher"
-msgstr "散兵"
-
-#: data/abilities.cfg:326
-msgid ""
-"Skirmisher:\n"
-"This unit is skilled in moving past enemies quickly, and ignores all enemy "
-"Zones of Control."
-msgstr ""
-"散兵:\n"
-"このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配ゾー"
-"ンを無視できます。"
-
-#: data/abilities.cfg:339
-msgid "illuminates"
-msgstr "照明"
-
-#: data/abilities.cfg:343
-msgid ""
-"Illuminates:\n"
-"This unit illuminates the surrounding area, making lawful units fight "
-"better, and chaotic units fight worse.\n"
-"\n"
-"Any units adjacent to this unit will fight as if it were dusk when it is "
-"night, and as if it were day when it is dusk."
-msgstr ""
-"照明:\n"
-"このユニットは周囲を明るくして、 秩序ユニットを戦いやすく、 混沌ユニットを戦"
-"いにくくします。 すべての隣接ユニットは夜には夕方として、 夕方には昼として戦"
-"うようになります。"
-
-#: data/abilities.cfg:353
-msgid "teleport"
-msgstr "瞬間移動"
-
-#: data/abilities.cfg:355
-msgid ""
-"Teleport:\n"
-"This unit may teleport between any two friendly villages using one of its "
-"moves."
-msgstr ""
-"瞬間移動:\n"
-"このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
-"できます。"
-
-#: data/abilities.cfg:364 data/abilities.cfg:365
-msgid "ambush"
-msgstr "伏兵"
-
-#: data/abilities.cfg:369 data/abilities.cfg:373
-msgid ""
-"Ambush:\n"
-"This unit can hide in forest, and remain undetected by its enemies.\n"
-"\n"
-"Enemy units cannot see or attack this unit when it is in forest, except for "
-"any turn immediately after this unit has attacked, or if there are enemy "
-"units next to this unit."
-msgstr ""
-"伏兵:\n"
-"このユニットは森に隠れることができ、 敵に見つからなくなります。\n"
-"\n"
-"このユニットが森にいるときは、 このユニットが攻撃した直後のターンか、 敵がこ"
-"のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
-"きません。"
-
-#: data/abilities.cfg:388 data/abilities.cfg:393
-msgid "nightstalk"
-msgstr "隠密"
-
-#: data/abilities.cfg:392 data/abilities.cfg:397
-msgid ""
-"Nightstalk:\n"
-"The unit becomes invisible during night.\n"
-"\n"
-"Enemy units cannot see or attack this unit at night, except for any turn "
-"immediately after this unit has attacked, or if there are enemy units next "
-"to this unit."
-msgstr ""
-"隠密:\n"
-"このユニットは夜間は見えなくなります。\n"
-"\n"
-"このユニットが攻撃した直後のターンか、 敵がこのユニットの隣にいる場合を除い"
-"て、 夜には敵ユニットはこのユニットが見えないし攻撃できません。"
-
-#: data/abilities.cfg:412 data/abilities.cfg:417
-msgid "submerge"
-msgstr "潜水"
-
-#: data/abilities.cfg:416 data/abilities.cfg:421
-msgid ""
-"Submerge:\n"
-"This unit can hide in deep water, and remain undetected by its enemies.\n"
-"\n"
-"Enemy units cannot see or attack this unit when it is in deep water, except "
-"for any turn immediately after this unit has attacked, or if there are enemy "
-"units next to this unit."
-msgstr ""
-"潜水:\n"
-"このユニットは水中深くに隠れることができ、 敵に見つからなくなります。\n"
-"\n"
-"このユニットが深い水中にいるときは、このユニットが攻撃した直後のターンか、敵"
-"がこのユニットの隣にいる場合を除いて、敵のユニットはこのユニットを見たり攻撃"
-"したりできません。"
-
-#: data/abilities.cfg:441
-msgid "berserk"
-msgstr "狂戦"
-
-#: data/abilities.cfg:443
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"狂戦:\n"
-"攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘ユ"
-"ニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるまで。"
-
-#: data/abilities.cfg:453
-msgid "backstab"
-msgstr "奇襲"
-
-#: data/abilities.cfg:455
-msgid ""
-"Backstab:\n"
-"This attack deals double damage if there is an enemy of the target on the "
-"opposite side of the target, and that unit is not incapacitated (e.g. turned "
-"to stone)."
-msgstr ""
-"奇襲:\n"
-"もし攻撃対象の反対側にその対象の敵がいる場合、この攻撃は２倍のダメージとな"
-"り、さらにこのユニットは能力を奪われることはありません （例えば、石化するな"
-"ど）"
-
-#: data/abilities.cfg:467 data/abilities.cfg:479
-msgid "plague"
-msgstr "疫病"
-
-#: data/abilities.cfg:469 data/abilities.cfg:481
-msgid ""
-"Plague:\n"
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. (This "
-"doesn't work on Undead or units in villages.)"
-msgstr ""
-"疫病:\n"
-"疫病攻撃によってユニットが倒された場合は、 そのユニットは攻撃ユニットと同じク"
-"ラスで同じ陣営のユニットに置き換えられます。 この攻撃はアンデッドや村にいるユ"
-"ニットには効果がありません。"
-
-#: data/abilities.cfg:490
-msgid "slows"
-msgstr "遅化"
-
-#: data/abilities.cfg:492
-#, fuzzy
-msgid ""
-"Slow:\n"
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled."
-msgstr ""
-"遅化:\n"
-"この攻撃は、ターンが終わるまでターゲットを遅くします。遅化は攻撃によるダメー"
-"ジを半減させ、遅化されたユニットは通常の半分の速度（切り上げ）で動きます。"
-
-#: data/abilities.cfg:501
-msgid "stones"
-msgstr "石化"
-
-#: data/abilities.cfg:503
-msgid ""
-"Stone:\n"
-"This attack turns the target to stone. Units that have been turned to stone "
-"may not move or attack."
-msgstr ""
-"石化:\n"
-"この攻撃は攻撃目標を石にします。 石化したユニットは移動や攻撃はできません。"
-
-#: data/abilities.cfg:512
-msgid "marksman"
-msgstr "射撃"
-
-#: data/abilities.cfg:514
-msgid ""
-"Marksman:\n"
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"射撃:\n"
-"攻撃時に使用され、 この攻撃は命中率が最低60%はあるようになります。"
-
-#: data/abilities.cfg:526
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:59
+#: data/misc/abilities.cfg:526
 msgid "magical"
 msgstr "魔法"
 
-#: data/abilities.cfg:528
-msgid ""
-"Magical:\n"
-"This attack always has a 70% chance to hit."
-msgstr ""
-"魔法:\n"
-"この攻撃は常に命中率が70%となります。"
-
-#: data/abilities.cfg:539
-msgid "swarm"
-msgstr "群れ"
-
-#: data/abilities.cfg:541
-msgid ""
-"Swarm:\n"
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the % of HP/maximum HP the unit has. "
-"For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
-"strikes."
-msgstr ""
-"群れ:\n"
-"ユニットが傷ついているとこの攻撃の回数が減少します。攻撃回数はそのユニットが"
-"持つ HP/最大 HP の割合に比例します。例えばユニットの HP がその最大 HP の 3/4 "
-"だった場合、攻撃回数も 3/4 になります。"
-
-#: data/abilities.cfg:550
-msgid "charge"
-msgstr "突撃"
-
-#: data/abilities.cfg:552
-msgid ""
-"Charge:\n"
-"This attack deals double damage to the target. It also causes this unit to "
-"take double damage from the target's counterattack."
-msgstr ""
-"突撃:\n"
-"この攻撃は攻撃目標への与えるダメージが２倍となります。 攻撃目標からの反撃の与"
-"えられるダメージも２倍となります。"
-
-#: data/abilities.cfg:564
-msgid "drains"
-msgstr "生命吸収"
-
-#: data/abilities.cfg:566
-msgid ""
-"Drain:\n"
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"生命吸収:\n"
-"このユニットは生者から生命力を奪って、 与えたダメージの半分だけ自分のHPを回復"
-"させます（切り下げ）。"
-
-#: data/abilities.cfg:575
-msgid "firststrike"
-msgstr "先制"
-
-#: data/abilities.cfg:577
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"先制:\n"
-"このユニットは、 たとえ防御時であっても常にこの攻撃で先に攻撃します。"
-
-#: data/abilities.cfg:586
-msgid "poison"
-msgstr "毒"
-
-#: data/abilities.cfg:588
+#: data/campaigns/Eastern_Invasion.cfg:27
+#: data/campaigns/Heir_To_The_Throne.cfg:35
+#: data/campaigns/Northern_Rebirth.cfg:26
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:44
+#: data/campaigns/The_Rise_Of_Wesnoth.cfg:31
+#: data/campaigns/The_South_Guard.cfg:35 data/campaigns/Two_Brothers.cfg:32
+#: data/campaigns/Under_the_Burning_Suns.cfg:38
 #, fuzzy
-msgid ""
-"Poison:\n"
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. "
-msgstr ""
-"毒:\n"
-"この攻撃は攻撃目標を毒状態にします。 毒を受けているユニットは解毒するかHPが１"
-"になるまで、 毎ターンHPが８減っていきます。"
-
-#: data/about.cfg:6
-msgid "Programming"
-msgstr ""
-
-#: data/about.cfg:59
-#, fuzzy
-msgid "General Purpose Administration and Coordination"
-msgstr "+全般管理者"
-
-#: data/about.cfg:69
-#, fuzzy
-msgid "Artwork and Graphics"
+msgid "Artwork and Graphics Designers"
 msgstr "アートワークおよびグラフィクスデザイナー"
 
-#: data/about.cfg:182
-msgid "Music"
-msgstr "音楽"
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:525
+#: data/misc/schedules.cfg:83 data/misc/schedules.cfg:91
+msgid "Underground"
+msgstr "地下"
 
-#: data/about.cfg:193
-msgid "Sound Effects"
+#: data/campaigns/Northern_Rebirth.cfg:33
+#: data/campaigns/Son_Of_The_Black_Eye.cfg:26
+msgid "Prose, Grammatical and WML Assistance"
 msgstr ""
 
-#: data/about.cfg:202
+#: data/campaigns/Northern_Rebirth.cfg:37
 #, fuzzy
-msgid "Campaign Design"
-msgstr "キャンペーンデザイナー"
+msgid "Music Development"
+msgstr "マルチプレイヤー開発"
 
-#: data/about.cfg:228
+#: data/campaigns/Northern_Rebirth.cfg:41
 #, fuzzy
-msgid "Multiplayer Maps and Balancing"
-msgstr "マルチプレイヤーマップ"
+msgid "Translators"
+msgstr "チェコ語翻訳"
 
-#: data/about.cfg:243
-msgid "Packagers"
-msgstr "パッケージ作成"
+#: data/campaigns/Northern_Rebirth.cfg:50
+#, fuzzy
+msgid "Code and Translation Assistance"
+msgstr "韓国語翻訳"
 
-#: data/about.cfg:266 data/help.cfg:254
-msgid "Contributors"
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:37
+#, fuzzy
+msgid "WML Contributors"
 msgstr "貢献者"
 
-#: data/about.cfg:298
+#: data/campaigns/The_South_Guard.cfg:41 data/campaigns/Two_Brothers.cfg:37
+#: data/campaigns/Under_the_Burning_Suns.cfg:51 data/misc/about.cfg:298
 msgid "Miscellaneous"
 msgstr "その他"
 
-#: data/about.cfg:307
-msgid "Internationalization Managers"
-msgstr "国際化責任者"
-
-#: data/about.cfg:319
-msgid "Afrikaans Translation"
-msgstr "アフリカーンス語翻訳"
-
-#: data/about.cfg:329
-msgid "Basque Translation"
-msgstr "バスク語翻訳"
-
-#: data/about.cfg:338
-msgid "Bulgarian Translation"
-msgstr "ブルガリア語翻訳"
-
-#: data/about.cfg:349
-msgid "Catalan Translation"
-msgstr "カタロニア語翻訳"
-
-#: data/about.cfg:365
-msgid "Chinese Translation"
-msgstr "中国語翻訳"
-
-#: data/about.cfg:373
-msgid "Czech Translation"
-msgstr "チェコ語翻訳"
-
-#: data/about.cfg:392
-msgid "Danish Translation"
-msgstr "デンマーク語翻訳"
-
-#: data/about.cfg:407
-msgid "Dutch Translation"
-msgstr "オランダ語翻訳"
-
-#: data/about.cfg:425
-msgid "English (GB) Translation"
-msgstr "英語（イギリス）翻訳"
-
-#: data/about.cfg:433
-msgid "Esperanto Translation"
-msgstr "エスペラント語翻訳"
-
-#: data/about.cfg:444
-msgid "Estonian Translation"
-msgstr "エストニア語翻訳"
-
-#: data/about.cfg:451
-msgid "Filipino Translation"
-msgstr "フィリピン語翻訳"
-
-#: data/about.cfg:458
-msgid "Finnish Translation"
-msgstr "フィンランド語翻訳"
-
-#: data/about.cfg:470
-msgid "French Translation"
-msgstr "フランス語翻訳"
-
-#: data/about.cfg:505
-msgid "German Translation"
-msgstr "ドイツ語翻訳"
-
-#: data/about.cfg:523
-msgid "Greek Translation"
-msgstr "ギリシャ語翻訳"
-
-#: data/about.cfg:535
-msgid "Hebrew Translation"
-msgstr "ヘブライ語翻訳"
-
-#: data/about.cfg:543
-msgid "Hungarian Translation"
-msgstr "ハンガリー語翻訳"
-
-#: data/about.cfg:560
-msgid "Indonesian Translation"
-msgstr "インドネシア語翻訳"
-
-#: data/about.cfg:567
-msgid "Italian Translation"
-msgstr "イタリア語翻訳"
-
-#: data/about.cfg:582
-msgid "Japanese Translation"
-msgstr "日本語翻訳"
-
-#: data/about.cfg:594
-msgid "Korean Translation"
-msgstr "韓国語翻訳"
-
-#: data/about.cfg:601
-msgid "Latin Translation"
-msgstr "ラテン語翻訳"
-
-#: data/about.cfg:608
-msgid "Norwegian Translation"
-msgstr "ノルウェー語翻訳"
-
-#: data/about.cfg:620
-msgid "Polish Translation"
-msgstr "ポーランド語翻訳"
-
-#: data/about.cfg:638
-msgid "Portuguese Translation"
-msgstr "ポルトガル語翻訳"
-
-#: data/about.cfg:645
-msgid "Portuguese (Brazil) Translation"
-msgstr "ポルトガル語（ブラジル）翻訳"
-
-#: data/about.cfg:661
-msgid "Russian Translation"
-msgstr "ロシア語翻訳"
-
-#: data/about.cfg:675
-msgid "Serbian Translation"
-msgstr "セルビア語翻訳"
-
-#: data/about.cfg:684
-msgid "Slovak Translation"
-msgstr "スロバキア語翻訳"
-
-#: data/about.cfg:693
-msgid "Slovenian Translation"
-msgstr "スロベニア語翻訳"
-
-#: data/about.cfg:701
-msgid "Spanish Translation"
-msgstr "スペイン語翻訳"
-
-#: data/about.cfg:715
-msgid "Swedish Translation"
-msgstr "スウェーデン語翻訳"
-
-#: data/about.cfg:728
-msgid "Turkish Translation"
-msgstr "トルコ語翻訳"
-
-#: data/about.cfg:739
-#, fuzzy
-msgid "Valencian Translation"
-msgstr "スロベニア語翻訳"
-
-#: data/about.cfg:746
-msgid "Bots"
-msgstr "ボット"
-
-#: data/amla.cfg:9
-msgid ", MAX XP +25%"
-msgstr "、最大 XP +25%"
-
-#: data/amla.cfg:9
-msgid "Max HP bonus +"
-msgstr "最大HPボーナス +"
-
-#: data/amla.cfg:30
-msgid "Full Heal"
-msgstr "完全回復"
-
-#: data/english.cfg:2
+#: data/english.cfg:2 data/misc/english.cfg:2
 msgid "Easy"
 msgstr "易しい"
 
-#: data/english.cfg:3
+#: data/english.cfg:3 data/misc/english.cfg:3
 msgid "Medium"
 msgstr "普通"
 
-#: data/english.cfg:4
+#: data/english.cfg:4 data/misc/english.cfg:4
 msgid "Hard"
 msgstr "難しい"
 
-#: data/english.cfg:9
+#: data/english.cfg:9 data/misc/english.cfg:9
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -640,14 +147,14 @@ msgstr ""
 "日中： +25% ダメージ\n"
 "夜間： -25% ダメージ"
 
-#: data/english.cfg:10
+#: data/english.cfg:10 data/misc/english.cfg:10
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
 "中立ユニットは、 昼夜の影響を受けず、 どちらの条件下でも 同じ強さで戦う。"
 
-#: data/english.cfg:14
+#: data/english.cfg:14 data/misc/english.cfg:14
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -659,140 +166,140 @@ msgstr ""
 "日中： -25% ダメージ\n"
 "夜間： +25% ダメージ"
 
-#: data/english.cfg:17
+#: data/english.cfg:17 data/misc/english.cfg:17
 msgid "Elves"
 msgstr "エルフ族"
 
-#: data/english.cfg:18
+#: data/english.cfg:18 data/misc/english.cfg:18
 msgid "Humans"
 msgstr "人間族"
 
-#: data/english.cfg:19
+#: data/english.cfg:19 data/misc/english.cfg:19
 msgid "Orcs"
 msgstr "オーク族"
 
-#: data/english.cfg:20
+#: data/english.cfg:20 data/misc/english.cfg:20
 msgid "race^Undead"
 msgstr "アンデッド"
 
-#: data/english.cfg:21
+#: data/english.cfg:21 data/misc/english.cfg:21
 msgid "race^Dwarves"
 msgstr ""
 
-#: data/english.cfg:22
+#: data/english.cfg:22 data/misc/english.cfg:22
 msgid "race^Goblins"
 msgstr ""
 
-#: data/english.cfg:23
+#: data/english.cfg:23 data/misc/english.cfg:23
 #, fuzzy
 msgid "race^Lizards"
 msgstr "アンデッド"
 
-#: data/english.cfg:24
+#: data/english.cfg:24 data/misc/english.cfg:24
 msgid "race^Mechanical"
 msgstr ""
 
-#: data/english.cfg:25
+#: data/english.cfg:25 data/misc/english.cfg:25
 msgid "race^Mermen"
 msgstr ""
 
-#: data/english.cfg:26
+#: data/english.cfg:26 data/misc/english.cfg:26
 msgid "race^Monsters"
 msgstr ""
 
-#: data/english.cfg:27
+#: data/english.cfg:27 data/misc/english.cfg:27
 msgid "race^Nagas"
 msgstr ""
 
-#: data/english.cfg:28
+#: data/english.cfg:28 data/misc/english.cfg:28
 msgid "race^Ogres"
 msgstr ""
 
-#: data/english.cfg:29
+#: data/english.cfg:29 data/misc/english.cfg:29
 #, fuzzy
 msgid "race^Trolls"
 msgstr "トロル"
 
-#: data/english.cfg:30
+#: data/english.cfg:30 data/misc/english.cfg:30
 #, fuzzy
 msgid "race^Woses"
 msgstr "トロル"
 
-#: data/english.cfg:33
+#: data/english.cfg:33 data/misc/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name の橋, $name の渡"
 
-#: data/english.cfg:34
+#: data/english.cfg:34 data/misc/english.cfg:34
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name の高速道路, $name の通り, $name の道"
 
-#: data/english.cfg:35
+#: data/english.cfg:35 data/misc/english.cfg:35
 msgid "$name River,River $name"
 msgstr "$name 川,$name 河"
 
-#: data/english.cfg:36
+#: data/english.cfg:36 data/misc/english.cfg:36
 msgid "$name Forest,$name's Forest"
 msgstr "$name 森,$name の森"
 
-#: data/english.cfg:37
+#: data/english.cfg:37 data/misc/english.cfg:37
 msgid "$name Lake"
 msgstr "$name 湖"
 
-#: data/english.cfg:38
+#: data/english.cfg:38 data/misc/english.cfg:38
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|bury,$name|ham,$name|ton"
 
-#: data/english.cfg:39
+#: data/english.cfg:39 data/misc/english.cfg:39
 msgid "$name|harbor,$name|port"
 msgstr "$name|湾,$name|港"
 
-#: data/english.cfg:40
+#: data/english.cfg:40 data/misc/english.cfg:40
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
-#: data/english.cfg:41
+#: data/english.cfg:41 data/misc/english.cfg:41
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|橋,$river|橋,$river|橋,$name|大橋,$name|橋"
 
-#: data/english.cfg:42
+#: data/english.cfg:42 data/misc/english.cfg:42
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|ham,$name|ton,$name|field"
 
-#: data/english.cfg:43
+#: data/english.cfg:43 data/misc/english.cfg:43
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|森,$name|森,$name|森,$name 森"
 
-#: data/english.cfg:44
+#: data/english.cfg:44 data/misc/english.cfg:44
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
-#: data/english.cfg:45
+#: data/english.cfg:45 data/misc/english.cfg:45
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "$name|山,$name|山,$name|岳,$name|山脈,$name|山脈,$name|岳,$name|岳"
 
-#: data/english.cfg:48
+#: data/english.cfg:48 data/misc/english.cfg:48
 msgid "melee"
 msgstr "格闘"
 
-#: data/english.cfg:49
+#: data/english.cfg:49 data/misc/english.cfg:49
 msgid "ranged"
 msgstr "投射"
 
-#: data/english.cfg:52
+#: data/english.cfg:52 data/misc/english.cfg:52
 msgid "Wesnoth unit list"
 msgstr ""
 
-#: data/english.cfg:53
+#: data/english.cfg:53 data/misc/english.cfg:53
 msgid "Based on version"
 msgstr ""
 
-#: data/english.cfg:54
+#: data/english.cfg:54 data/misc/english.cfg:54
 #, fuzzy
 msgid "Race"
 msgstr "メイス"
 
-#: data/english.cfg:55
+#: data/english.cfg:55 data/misc/english.cfg:55
 #, fuzzy
 msgid "Advance from:"
 msgstr "クラスチェンジ先: "
@@ -829,59 +336,648 @@ msgstr "反乱軍"
 msgid "Undead"
 msgstr "アンデッド"
 
-#: data/fonts.cfg:6
+#: data/fonts.cfg:6 data/misc/fonts.cfg:6
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "sazanami-gothic.ttf,DejaVuSans.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:35
+#: data/game.cfg:15
 msgid "Binary Saves"
 msgstr "バイナリ保存"
 
-#: data/game.cfg:42
+#: data/game.cfg:22
 msgid "Show Combat"
 msgstr "戦闘を表示"
 
-#: data/game.cfg:49
+#: data/game.cfg:29
 msgid "Mouse Scrolling"
 msgstr "マウススクロール"
 
-#: data/help.cfg:9
+#: data/misc/abilities.cfg:9
+msgid "heals +4"
+msgstr "回復 +4"
+
+#: data/misc/abilities.cfg:14
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent friendly units at the beginning of each "
+"turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"回復 +4:\n"
+"このユニットは隣接した友好的なユニットをターン開始時に回復させます。\n"
+"\n"
+"このユニットに治療されるユニットは１ターンに最大でHPが４回復します。もしく"
+"は、そのターンに毒の効果が発動しないようにします。 \n"
+"毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
+"ユニットを捜して下さい。"
+
+#: data/misc/abilities.cfg:30
+msgid "heals +8"
+msgstr "回復 +8"
+
+#: data/misc/abilities.cfg:35
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"回復 +8:\n"
+"このユニットは薬草と魔法を組み合わせて、 戦場で通常可能であったよりも素早くユ"
+"ニットを回復します。\n"
+"\n"
+"このユニットに治癒されるユニットは１ターンに最大でHPが８回復します。もしく"
+"は、そのターンに毒の効果が発動しないようにします。 \n"
+"毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
+"ユニットを捜して下さい。"
+
+#: data/misc/abilities.cfg:45
+msgid "cures"
+msgstr "治療"
+
+#: data/misc/abilities.cfg:47
+msgid ""
+"Cures:\n"
+"A curer can cure a unit of poison, although that unit will receive no "
+"additional healing on the turn it is cured of the poison."
+msgstr ""
+"治療:\n"
+"治療者は、毒を受けたユニットを治療することができる。ただし、毒から治療された"
+"そのターン内には、さらなる回復は受けられない。"
+
+#: data/misc/abilities.cfg:62
+msgid "regenerates"
+msgstr "再生"
+
+#: data/misc/abilities.cfg:64
+#, fuzzy
+msgid ""
+"Regenerates:\n"
+"The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
+"the poison instead of healing."
+msgstr ""
+"再生:\n"
+"このユニットはターンごとに自身のHPを8回復します。 毒を受けているなら、 回復す"
+"る代わりに毒を取り除きます。"
+
+#: data/misc/abilities.cfg:81
+msgid "steadfast"
+msgstr "装甲"
+
+#: data/misc/abilities.cfg:83
+msgid ""
+"Steadfast:\n"
+"This unit's resistances are doubled, up to a maximum of 50%, when defending. "
+"Vulnerabilities are not affected."
+msgstr ""
+"装甲:\n"
+"防御時、このユニットの抵抗力は最大で50%まで倍増します。弱点には影響がありませ"
+"ん。"
+
+#: data/misc/abilities.cfg:96 data/misc/abilities.cfg:118
+#: data/misc/abilities.cfg:152 data/misc/abilities.cfg:198
+#: data/misc/abilities.cfg:256
+msgid "leadership"
+msgstr "統率"
+
+#: data/misc/abilities.cfg:100 data/misc/abilities.cfg:122
+#: data/misc/abilities.cfg:156 data/misc/abilities.cfg:202
+#: data/misc/abilities.cfg:260
+msgid ""
+"Leadership:\n"
+"This unit can lead friendly units that are next to it, making them fight "
+"better.\n"
+"\n"
+"Adjacent friendly units of lower level will do more damage in battle. When a "
+"unit adjacent to, of a lower level than, and on the same side as a unit with "
+"Leadership engages in combat, its attacks do 25% more damage times the "
+"difference in their levels."
+msgstr ""
+"統率:\n"
+"このユニットは隣接した友好的なユニットを指揮し、 それらがうまく戦えるようにし"
+"ます。\n"
+"\n"
+"隣接している低レベルの友好的なユニットは戦闘時により多くのダメージを与えるよ"
+"うになります。 このユニットとのレベルの差に応じて、 与えるダメージが25%ずつ増"
+"加します。"
+
+#: data/misc/abilities.cfg:324
+msgid "skirmisher"
+msgstr "散兵"
+
+#: data/misc/abilities.cfg:326
+msgid ""
+"Skirmisher:\n"
+"This unit is skilled in moving past enemies quickly, and ignores all enemy "
+"Zones of Control."
+msgstr ""
+"散兵:\n"
+"このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配ゾー"
+"ンを無視できます。"
+
+#: data/misc/abilities.cfg:339
+msgid "illuminates"
+msgstr "照明"
+
+#: data/misc/abilities.cfg:343
+msgid ""
+"Illuminates:\n"
+"This unit illuminates the surrounding area, making lawful units fight "
+"better, and chaotic units fight worse.\n"
+"\n"
+"Any units adjacent to this unit will fight as if it were dusk when it is "
+"night, and as if it were day when it is dusk."
+msgstr ""
+"照明:\n"
+"このユニットは周囲を明るくして、 秩序ユニットを戦いやすく、 混沌ユニットを戦"
+"いにくくします。 すべての隣接ユニットは夜には夕方として、 夕方には昼として戦"
+"うようになります。"
+
+#: data/misc/abilities.cfg:353
+msgid "teleport"
+msgstr "瞬間移動"
+
+#: data/misc/abilities.cfg:355
+msgid ""
+"Teleport:\n"
+"This unit may teleport between any two friendly villages using one of its "
+"moves."
+msgstr ""
+"瞬間移動:\n"
+"このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
+"できます。"
+
+#: data/misc/abilities.cfg:364 data/misc/abilities.cfg:365
+msgid "ambush"
+msgstr "伏兵"
+
+#: data/misc/abilities.cfg:369 data/misc/abilities.cfg:373
+msgid ""
+"Ambush:\n"
+"This unit can hide in forest, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see or attack this unit when it is in forest, except for "
+"any turn immediately after this unit has attacked, or if there are enemy "
+"units next to this unit."
+msgstr ""
+"伏兵:\n"
+"このユニットは森に隠れることができ、 敵に見つからなくなります。\n"
+"\n"
+"このユニットが森にいるときは、 このユニットが攻撃した直後のターンか、 敵がこ"
+"のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
+"きません。"
+
+#: data/misc/abilities.cfg:388 data/misc/abilities.cfg:393
+msgid "nightstalk"
+msgstr "隠密"
+
+#: data/misc/abilities.cfg:392 data/misc/abilities.cfg:397
+msgid ""
+"Nightstalk:\n"
+"The unit becomes invisible during night.\n"
+"\n"
+"Enemy units cannot see or attack this unit at night, except for any turn "
+"immediately after this unit has attacked, or if there are enemy units next "
+"to this unit."
+msgstr ""
+"隠密:\n"
+"このユニットは夜間は見えなくなります。\n"
+"\n"
+"このユニットが攻撃した直後のターンか、 敵がこのユニットの隣にいる場合を除い"
+"て、 夜には敵ユニットはこのユニットが見えないし攻撃できません。"
+
+#: data/misc/abilities.cfg:412 data/misc/abilities.cfg:417
+msgid "submerge"
+msgstr "潜水"
+
+#: data/misc/abilities.cfg:416 data/misc/abilities.cfg:421
+msgid ""
+"Submerge:\n"
+"This unit can hide in deep water, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see or attack this unit when it is in deep water, except "
+"for any turn immediately after this unit has attacked, or if there are enemy "
+"units next to this unit."
+msgstr ""
+"潜水:\n"
+"このユニットは水中深くに隠れることができ、 敵に見つからなくなります。\n"
+"\n"
+"このユニットが深い水中にいるときは、このユニットが攻撃した直後のターンか、敵"
+"がこのユニットの隣にいる場合を除いて、敵のユニットはこのユニットを見たり攻撃"
+"したりできません。"
+
+#: data/misc/abilities.cfg:441
+msgid "berserk"
+msgstr "狂戦"
+
+#: data/misc/abilities.cfg:443
+msgid ""
+"Berserk:\n"
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"狂戦:\n"
+"攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘ユ"
+"ニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるまで。"
+
+#: data/misc/abilities.cfg:453
+msgid "backstab"
+msgstr "奇襲"
+
+#: data/misc/abilities.cfg:455
+msgid ""
+"Backstab:\n"
+"This attack deals double damage if there is an enemy of the target on the "
+"opposite side of the target, and that unit is not incapacitated (e.g. turned "
+"to stone)."
+msgstr ""
+"奇襲:\n"
+"もし攻撃対象の反対側にその対象の敵がいる場合、この攻撃は２倍のダメージとな"
+"り、さらにこのユニットは能力を奪われることはありません （例えば、石化するな"
+"ど）"
+
+#: data/misc/abilities.cfg:467 data/misc/abilities.cfg:479
+msgid "plague"
+msgstr "疫病"
+
+#: data/misc/abilities.cfg:469 data/misc/abilities.cfg:481
+msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"identical to and on the same side as the unit with the Plague attack. (This "
+"doesn't work on Undead or units in villages.)"
+msgstr ""
+"疫病:\n"
+"疫病攻撃によってユニットが倒された場合は、 そのユニットは攻撃ユニットと同じク"
+"ラスで同じ陣営のユニットに置き換えられます。 この攻撃はアンデッドや村にいるユ"
+"ニットには効果がありません。"
+
+#: data/misc/abilities.cfg:490
+msgid "slows"
+msgstr "遅化"
+
+#: data/misc/abilities.cfg:492
+#, fuzzy
+msgid ""
+"Slow:\n"
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled."
+msgstr ""
+"遅化:\n"
+"この攻撃は、ターンが終わるまでターゲットを遅くします。遅化は攻撃によるダメー"
+"ジを半減させ、遅化されたユニットは通常の半分の速度（切り上げ）で動きます。"
+
+#: data/misc/abilities.cfg:501
+msgid "stones"
+msgstr "石化"
+
+#: data/misc/abilities.cfg:503
+msgid ""
+"Stone:\n"
+"This attack turns the target to stone. Units that have been turned to stone "
+"may not move or attack."
+msgstr ""
+"石化:\n"
+"この攻撃は攻撃目標を石にします。 石化したユニットは移動や攻撃はできません。"
+
+#: data/misc/abilities.cfg:512
+msgid "marksman"
+msgstr "射撃"
+
+#: data/misc/abilities.cfg:514
+msgid ""
+"Marksman:\n"
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"射撃:\n"
+"攻撃時に使用され、 この攻撃は命中率が最低60%はあるようになります。"
+
+#: data/misc/abilities.cfg:528
+msgid ""
+"Magical:\n"
+"This attack always has a 70% chance to hit."
+msgstr ""
+"魔法:\n"
+"この攻撃は常に命中率が70%となります。"
+
+#: data/misc/abilities.cfg:539
+msgid "swarm"
+msgstr "群れ"
+
+#: data/misc/abilities.cfg:541
+msgid ""
+"Swarm:\n"
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the % of HP/maximum HP the unit has. "
+"For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
+"strikes."
+msgstr ""
+"群れ:\n"
+"ユニットが傷ついているとこの攻撃の回数が減少します。攻撃回数はそのユニットが"
+"持つ HP/最大 HP の割合に比例します。例えばユニットの HP がその最大 HP の 3/4 "
+"だった場合、攻撃回数も 3/4 になります。"
+
+#: data/misc/abilities.cfg:550
+msgid "charge"
+msgstr "突撃"
+
+#: data/misc/abilities.cfg:552
+msgid ""
+"Charge:\n"
+"This attack deals double damage to the target. It also causes this unit to "
+"take double damage from the target's counterattack."
+msgstr ""
+"突撃:\n"
+"この攻撃は攻撃目標への与えるダメージが２倍となります。 攻撃目標からの反撃の与"
+"えられるダメージも２倍となります。"
+
+#: data/misc/abilities.cfg:564
+msgid "drains"
+msgstr "生命吸収"
+
+#: data/misc/abilities.cfg:566
+msgid ""
+"Drain:\n"
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"生命吸収:\n"
+"このユニットは生者から生命力を奪って、 与えたダメージの半分だけ自分のHPを回復"
+"させます（切り下げ）。"
+
+#: data/misc/abilities.cfg:575
+msgid "firststrike"
+msgstr "先制"
+
+#: data/misc/abilities.cfg:577
+msgid ""
+"First Strike:\n"
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"先制:\n"
+"このユニットは、 たとえ防御時であっても常にこの攻撃で先に攻撃します。"
+
+#: data/misc/abilities.cfg:586
+msgid "poison"
+msgstr "毒"
+
+#: data/misc/abilities.cfg:588
+#, fuzzy
+msgid ""
+"Poison:\n"
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. "
+msgstr ""
+"毒:\n"
+"この攻撃は攻撃目標を毒状態にします。 毒を受けているユニットは解毒するかHPが１"
+"になるまで、 毎ターンHPが８減っていきます。"
+
+#: data/misc/about.cfg:6
+msgid "Programming"
+msgstr ""
+
+#: data/misc/about.cfg:59
+#, fuzzy
+msgid "General Purpose Administration and Coordination"
+msgstr "+全般管理者"
+
+#: data/misc/about.cfg:69
+#, fuzzy
+msgid "Artwork and Graphics"
+msgstr "アートワークおよびグラフィクスデザイナー"
+
+#: data/misc/about.cfg:182
+msgid "Music"
+msgstr "音楽"
+
+#: data/misc/about.cfg:193
+msgid "Sound Effects"
+msgstr ""
+
+#: data/misc/about.cfg:202
+#, fuzzy
+msgid "Campaign Design"
+msgstr "キャンペーンデザイナー"
+
+#: data/misc/about.cfg:228
+#, fuzzy
+msgid "Multiplayer Maps and Balancing"
+msgstr "マルチプレイヤーマップ"
+
+#: data/misc/about.cfg:243
+msgid "Packagers"
+msgstr "パッケージ作成"
+
+#: data/misc/about.cfg:266 data/misc/help.cfg:254
+msgid "Contributors"
+msgstr "貢献者"
+
+#: data/misc/about.cfg:307
+msgid "Internationalization Managers"
+msgstr "国際化責任者"
+
+#: data/misc/about.cfg:319
+msgid "Afrikaans Translation"
+msgstr "アフリカーンス語翻訳"
+
+#: data/misc/about.cfg:329
+msgid "Basque Translation"
+msgstr "バスク語翻訳"
+
+#: data/misc/about.cfg:338
+msgid "Bulgarian Translation"
+msgstr "ブルガリア語翻訳"
+
+#: data/misc/about.cfg:349
+msgid "Catalan Translation"
+msgstr "カタロニア語翻訳"
+
+#: data/misc/about.cfg:365
+msgid "Chinese Translation"
+msgstr "中国語翻訳"
+
+#: data/misc/about.cfg:373
+msgid "Czech Translation"
+msgstr "チェコ語翻訳"
+
+#: data/misc/about.cfg:392
+msgid "Danish Translation"
+msgstr "デンマーク語翻訳"
+
+#: data/misc/about.cfg:407
+msgid "Dutch Translation"
+msgstr "オランダ語翻訳"
+
+#: data/misc/about.cfg:425
+msgid "English (GB) Translation"
+msgstr "英語（イギリス）翻訳"
+
+#: data/misc/about.cfg:433
+msgid "Esperanto Translation"
+msgstr "エスペラント語翻訳"
+
+#: data/misc/about.cfg:444
+msgid "Estonian Translation"
+msgstr "エストニア語翻訳"
+
+#: data/misc/about.cfg:451
+msgid "Filipino Translation"
+msgstr "フィリピン語翻訳"
+
+#: data/misc/about.cfg:458
+msgid "Finnish Translation"
+msgstr "フィンランド語翻訳"
+
+#: data/misc/about.cfg:470
+msgid "French Translation"
+msgstr "フランス語翻訳"
+
+#: data/misc/about.cfg:505
+msgid "German Translation"
+msgstr "ドイツ語翻訳"
+
+#: data/misc/about.cfg:523
+msgid "Greek Translation"
+msgstr "ギリシャ語翻訳"
+
+#: data/misc/about.cfg:535
+msgid "Hebrew Translation"
+msgstr "ヘブライ語翻訳"
+
+#: data/misc/about.cfg:543
+msgid "Hungarian Translation"
+msgstr "ハンガリー語翻訳"
+
+#: data/misc/about.cfg:560
+msgid "Indonesian Translation"
+msgstr "インドネシア語翻訳"
+
+#: data/misc/about.cfg:567
+msgid "Italian Translation"
+msgstr "イタリア語翻訳"
+
+#: data/misc/about.cfg:582
+msgid "Japanese Translation"
+msgstr "日本語翻訳"
+
+#: data/misc/about.cfg:594
+msgid "Korean Translation"
+msgstr "韓国語翻訳"
+
+#: data/misc/about.cfg:601
+msgid "Latin Translation"
+msgstr "ラテン語翻訳"
+
+#: data/misc/about.cfg:608
+msgid "Norwegian Translation"
+msgstr "ノルウェー語翻訳"
+
+#: data/misc/about.cfg:620
+msgid "Polish Translation"
+msgstr "ポーランド語翻訳"
+
+#: data/misc/about.cfg:638
+msgid "Portuguese Translation"
+msgstr "ポルトガル語翻訳"
+
+#: data/misc/about.cfg:645
+msgid "Portuguese (Brazil) Translation"
+msgstr "ポルトガル語（ブラジル）翻訳"
+
+#: data/misc/about.cfg:661
+msgid "Russian Translation"
+msgstr "ロシア語翻訳"
+
+#: data/misc/about.cfg:675
+msgid "Serbian Translation"
+msgstr "セルビア語翻訳"
+
+#: data/misc/about.cfg:684
+msgid "Slovak Translation"
+msgstr "スロバキア語翻訳"
+
+#: data/misc/about.cfg:693
+msgid "Slovenian Translation"
+msgstr "スロベニア語翻訳"
+
+#: data/misc/about.cfg:701
+msgid "Spanish Translation"
+msgstr "スペイン語翻訳"
+
+#: data/misc/about.cfg:715
+msgid "Swedish Translation"
+msgstr "スウェーデン語翻訳"
+
+#: data/misc/about.cfg:728
+msgid "Turkish Translation"
+msgstr "トルコ語翻訳"
+
+#: data/misc/about.cfg:739
+#, fuzzy
+msgid "Valencian Translation"
+msgstr "スロベニア語翻訳"
+
+#: data/misc/about.cfg:746
+msgid "Bots"
+msgstr "ボット"
+
+#: data/misc/amla.cfg:9
+msgid ", MAX XP +25%"
+msgstr "、最大 XP +25%"
+
+#: data/misc/amla.cfg:9
+msgid "Max HP bonus +"
+msgstr "最大HPボーナス +"
+
+#: data/misc/amla.cfg:30
+msgid "Full Heal"
+msgstr "完全回復"
+
+#: data/misc/help.cfg:9
 msgid "Introduction"
 msgstr "はじめに"
 
-#: data/help.cfg:15
+#: data/misc/help.cfg:15
 msgid "Gameplay"
 msgstr "ゲームの遊び方"
 
-#: data/help.cfg:21
+#: data/misc/help.cfg:21
 msgid "Traits"
 msgstr "特性"
 
-#: data/help.cfg:30
+#: data/misc/help.cfg:30
 msgid "Units"
 msgstr "ユニット"
 
-#: data/help.cfg:37
+#: data/misc/help.cfg:37
 msgid "Abilities"
 msgstr "能力"
 
-#: data/help.cfg:45
+#: data/misc/help.cfg:45
 msgid "Weapon Specials"
 msgstr "特殊武器"
 
-#: data/help.cfg:52
+#: data/misc/help.cfg:52
 msgid "Terrains"
 msgstr "地形"
 
-#: data/help.cfg:59
+#: data/misc/help.cfg:59
 msgid "Commands"
 msgstr "コマンド"
 
-#: data/help.cfg:65 data/help.cfg:71 data/help.cfg:266
+#: data/misc/help.cfg:65 data/misc/help.cfg:71 data/misc/help.cfg:266
 msgid "Overview"
 msgstr "概要"
 
-#: data/help.cfg:66
+#: data/misc/help.cfg:66
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -891,7 +987,7 @@ msgstr ""
 "ニットが他のユニットにどのように作用するかにおいてインパクトをもちます。 これ"
 "らの能力は遭遇した時にこのトピックの下に一覧表示されます。"
 
-#: data/help.cfg:74
+#: data/misc/help.cfg:74
 msgid ""
 "\n"
 "\n"
@@ -910,11 +1006,11 @@ msgstr ""
 "いうことではありません。 これらの単純なルールから、学ぶのは簡単でもマスターす"
 "るのが困難な豊富な戦術が生じるのです。"
 
-#: data/help.cfg:79
+#: data/misc/help.cfg:79
 msgid "Fundamentals of Gameplay"
 msgstr "遊び方の基礎"
 
-#: data/help.cfg:80
+#: data/misc/help.cfg:80
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -928,7 +1024,7 @@ msgstr ""
 "新しい情報がこれらのページに追加されます。 特殊な例外や状況におけるより詳細な"
 "情報については、そこからのリンクを辿って下さい。"
 
-#: data/help.cfg:82
+#: data/misc/help.cfg:82
 msgid ""
 "\n"
 "\n"
@@ -949,7 +1045,7 @@ msgstr ""
 "Wesnothはとても難しいため、<italic>text=簡単</italic>なレベルから始めたいと思"
 "うかもしれません。"
 
-#: data/help.cfg:85
+#: data/misc/help.cfg:85
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -961,11 +1057,11 @@ msgstr ""
 "覚えておきましょう。 これは、あなたが新しい<ref>dst=abilities text=能力</ref>"
 "を初めて発見する時には特に便利です。"
 
-#: data/help.cfg:90
+#: data/misc/help.cfg:90
 msgid "About the Game"
 msgstr "ゲームについて"
 
-#: data/help.cfg:91
+#: data/misc/help.cfg:91
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -982,7 +1078,7 @@ msgstr ""
 "続された他の人達と対戦することも可能です。 インターネット接続があれば、イン"
 "ターネットを越えて他の人達と戦うことができます。"
 
-#: data/help.cfg:93
+#: data/misc/help.cfg:93
 msgid ""
 "\n"
 "\n"
@@ -1000,7 +1096,7 @@ msgstr ""
 "地点に到達することであったり、誰かを助けたり、パズルを解いたり、あるいは何"
 "ターンかを生き残ることだけであったりもします。"
 
-#: data/help.cfg:95
+#: data/misc/help.cfg:95
 msgid ""
 "\n"
 "\n"
@@ -1015,11 +1111,11 @@ msgstr ""
 "す。 キャンペーンでは多くの場合、後のシナリオで再び仕えるように最高の軍隊達を"
 "生き残せるよう、より注意してプレイする必要があります。"
 
-#: data/help.cfg:100
+#: data/misc/help.cfg:100
 msgid "Recruiting and Recalling"
 msgstr "雇用と召還"
 
-#: data/help.cfg:101
+#: data/misc/help.cfg:101
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -1041,7 +1137,7 @@ msgstr ""
 "を見るにはユニットをクリックして、雇用するにはそれから「雇用する」ボタンを押"
 "して下さい。"
 
-#: data/help.cfg:103
+#: data/misc/help.cfg:103
 msgid ""
 "\n"
 "\n"
@@ -1057,7 +1153,7 @@ msgstr ""
 "スだけユニットを雇用することができます。雇用するときには所持金より多くのゴー"
 "ルドを消費することはできません。"
 
-#: data/help.cfg:105
+#: data/misc/help.cfg:105
 msgid ""
 "\n"
 "\n"
@@ -1069,7 +1165,7 @@ msgstr ""
 "雇用されたユニットは、その特性値を変化させる２つのランダムな<ref>dst=traits "
 "text=特性</ref>を持ちます。"
 
-#: data/help.cfg:107
+#: data/misc/help.cfg:107
 msgid ""
 "\n"
 "\n"
@@ -1082,7 +1178,7 @@ msgstr ""
 "後のシナリオでは、前の戦闘の生存者を召還することもできます。召還には通常20"
 "ゴールドかかり、前のシナリオからの全生存ユニットの一覧を示します。"
 
-#: data/help.cfg:109
+#: data/misc/help.cfg:109
 msgid ""
 "\n"
 "\n"
@@ -1096,11 +1192,11 @@ msgstr ""
 "り詳細な情報は、<ref>dst=income_and_upkeep text=収入と維持</ref>を参照してく"
 "ださい。"
 
-#: data/help.cfg:114
+#: data/misc/help.cfg:114
 msgid "Orbs"
 msgstr "宝珠"
 
-#: data/help.cfg:115
+#: data/misc/help.cfg:115
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -1108,31 +1204,31 @@ msgstr ""
 "各ユニットの隣に示される体力バーの上にあるのは宝珠です。 あなたが動かすユニッ"
 "トについて、宝珠は"
 
-#: data/help.cfg:116
+#: data/misc/help.cfg:116
 msgid "green if it hasn't moved this turn,"
 msgstr "このターンにまだ動いていないなら緑色、"
 
-#: data/help.cfg:117
+#: data/misc/help.cfg:117
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "移動したがまだ動いたり攻撃したりできるなら黄色、"
 
-#: data/help.cfg:118
+#: data/misc/help.cfg:118
 msgid "red if it has used all its movement this turn."
 msgstr "全ての行動が終わっているなら赤色、となります。"
 
-#: data/help.cfg:119
+#: data/misc/help.cfg:119
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "あなたが動かしていない同盟のユニットなら、宝珠は青色です。"
 
-#: data/help.cfg:120
+#: data/misc/help.cfg:120
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "敵ユニットには、体力バーの上に宝珠がありません。"
 
-#: data/help.cfg:125
+#: data/misc/help.cfg:125
 msgid "Hitpoints and Experience"
 msgstr "ヒットポイントと経験"
 
-#: data/help.cfg:126
+#: data/misc/help.cfg:126
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -1144,7 +1240,7 @@ msgstr ""
 "ポイントかの経験値(XP)も持っています。 新しく雇用されたユニットは経験なしから"
 "始まって、敵と戦うことで経験を得ます。"
 
-#: data/help.cfg:130
+#: data/misc/help.cfg:130
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1153,7 +1249,7 @@ msgstr ""
 "ヒットポイントと経験値は共にステータスペインに2つの数字(現在の値と、ユニット"
 "がもつ最大値)を使って表示されます。"
 
-#: data/help.cfg:131
+#: data/misc/help.cfg:131
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1165,11 +1261,11 @@ msgstr ""
 "ニットが<ref>dst=experience_and_advancement text=昇進</ref>する頃には白に変わ"
 "ります。"
 
-#: data/help.cfg:136
+#: data/misc/help.cfg:136
 msgid "Movement"
 msgstr "移動"
 
-#: data/help.cfg:137
+#: data/misc/help.cfg:137
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -1197,7 +1293,7 @@ msgstr ""
 "なたがまだ所有していない村で移動を終えることもまたユニットの移動を使い切るこ"
 "とになりますが、 さらにそれに攻撃させることは可能です。"
 
-#: data/help.cfg:139
+#: data/misc/help.cfg:139
 msgid ""
 "\n"
 "\n"
@@ -1221,7 +1317,7 @@ msgstr ""
 "力が必要かを知るには、ユニットをクリックして「ユニットの解説」を選択して "
 "<italic>text=地形修正</italic>を見てください。"
 
-#: data/help.cfg:141
+#: data/misc/help.cfg:141
 msgid ""
 "\n"
 "\n"
@@ -1240,7 +1336,7 @@ msgstr ""
 "部分であり、<ref>dst=ability_skirmisher text=散兵</ref>のみが支配ゾーンを無視"
 "できます。"
 
-#: data/help.cfg:143
+#: data/misc/help.cfg:143
 msgid ""
 "\n"
 "\n"
@@ -1254,11 +1350,11 @@ msgstr ""
 "い。 Ctrl-b か Cmd-b では、その敵が、進行をブロックするあなたのユニットがない"
 "としたら、どこまで動けるかを示します。"
 
-#: data/help.cfg:148
+#: data/misc/help.cfg:148
 msgid "Shroud and Fog of War"
 msgstr "幕と戦雲（霧）"
 
-#: data/help.cfg:151
+#: data/misc/help.cfg:151
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -1288,11 +1384,11 @@ msgstr ""
 "り除かれます。それぞれのユニットは 1 ターンで移動できる範囲を取り除きます（支"
 "配ゾーンや敵ユニットは無視して）。"
 
-#: data/help.cfg:156
+#: data/misc/help.cfg:156
 msgid "Combat"
 msgstr "戦闘"
 
-#: data/help.cfg:157
+#: data/misc/help.cfg:157
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -1312,7 +1408,7 @@ msgstr ""
 "を使って反撃します。 攻撃には2つのタイプ、剣や斧や刀などを使う格闘と、弓や槍"
 "や火炎を使う投射があります。"
 
-#: data/help.cfg:159
+#: data/misc/help.cfg:159
 msgid ""
 "\n"
 "\n"
@@ -1322,7 +1418,7 @@ msgstr ""
 "\n"
 "<header>text=順序と攻撃回数</header>"
 
-#: data/help.cfg:161
+#: data/misc/help.cfg:161
 msgid ""
 "\n"
 "\n"
@@ -1343,7 +1439,7 @@ msgstr ""
 "を与える攻撃を4回行いますが、一方で 9-2をもつオークの兵卒は2回しか攻撃できま"
 "せん(ひとふり9ダメージですが)。"
 
-#: data/help.cfg:163
+#: data/misc/help.cfg:163
 msgid ""
 "\n"
 "\n"
@@ -1353,7 +1449,7 @@ msgstr ""
 "\n"
 "<header>text=命中率</header>"
 
-#: data/help.cfg:165
+#: data/misc/help.cfg:165
 msgid ""
 "\n"
 "\n"
@@ -1374,7 +1470,7 @@ msgstr ""
 "ありません。 反対に、エルフが攻撃側に反撃するときの命中率は、攻撃ユニットのい"
 "る地形に依存します。"
 
-#: data/help.cfg:167
+#: data/misc/help.cfg:167
 msgid ""
 "\n"
 "\n"
@@ -1390,7 +1486,7 @@ msgstr ""
 "地形に関係なく常に命中率は70%になり、射撃は攻撃時に限り、地形に関わらす常に最"
 "低60%の命中率になります。"
 
-#: data/help.cfg:169
+#: data/misc/help.cfg:169
 msgid ""
 "\n"
 "\n"
@@ -1400,7 +1496,7 @@ msgstr ""
 "\n"
 "<header>text=ダメージ</header>"
 
-#: data/help.cfg:171
+#: data/misc/help.cfg:171
 msgid ""
 "\n"
 "\n"
@@ -1421,7 +1517,7 @@ msgstr ""
 "らの これらの状況によってどう修正されるかを見るには、攻撃選択メニューの"
 "<italic>text='ダメージ計算'</italic>を選択して下さい。"
 
-#: data/help.cfg:173
+#: data/misc/help.cfg:173
 msgid ""
 "\n"
 "\n"
@@ -1437,11 +1533,11 @@ msgstr ""
 "<ref>dst=weaponspecial_charge text=突撃</ref>です。 突撃をもつユニットが攻撃"
 "すると、攻撃側と防御側の両方のダメージ量が2倍となります。"
 
-#: data/help.cfg:178
+#: data/misc/help.cfg:178
 msgid "Damage Types and Resistance"
 msgstr "ダメージ型と抵抗値"
 
-#: data/help.cfg:179
+#: data/misc/help.cfg:179
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -1454,7 +1550,7 @@ msgstr ""
 "す。 追加として魔法的攻撃に関連する 火炎、冷気、神聖の3つのダメージ型がありま"
 "す。 ユニットごとにダメージ型によって、 異なる抵抗力を持ちます。"
 
-#: data/help.cfg:181
+#: data/misc/help.cfg:181
 msgid ""
 "\n"
 "\n"
@@ -1471,7 +1567,7 @@ msgstr ""
 "撃型に弱点を持つこともあります。 もしユニットがある攻撃型で-100%の抵抗力を"
 "持っているなら、その攻撃を受けたときにはダメージが100%増加します。"
 
-#: data/help.cfg:183
+#: data/misc/help.cfg:183
 #, fuzzy
 msgid ""
 "\n"
@@ -1485,7 +1581,7 @@ msgstr ""
 "例えば、スケルトンは斬撃と貫通に対しては高い抵抗力を持ちます。 しかし、打撃と"
 "火炎には弱く、さらに神聖に対しては非常に脆弱です。"
 
-#: data/help.cfg:185
+#: data/misc/help.cfg:185
 msgid ""
 "\n"
 "\n"
@@ -1499,11 +1595,11 @@ msgstr ""
 "は、例え防御側がそのダメージの種類に100%の耐性を持っていても、ということで"
 "す。"
 
-#: data/help.cfg:190
+#: data/misc/help.cfg:190
 msgid "Time of Day"
 msgstr "時刻"
 
-#: data/help.cfg:194
+#: data/misc/help.cfg:194
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1515,7 +1611,7 @@ msgstr ""
 " 混沌ユニットは夜間は+25%のダメージ、昼間は-25%のダメージを得る。\n"
 " 中立ユニットは時間の影響を受けない。"
 
-#: data/help.cfg:197
+#: data/misc/help.cfg:197
 msgid ""
 "\n"
 "\n"
@@ -1528,31 +1624,31 @@ msgstr ""
 "現在時刻はステータスペインの小マップの下で観察できます。 通常の昼と夜のサイク"
 "ルに対して、午前と午後は昼間と数え、一刻と二刻は夜間と数えます。\n"
 
-#: data/help.cfg:197 data/schedules.cfg:5
+#: data/misc/help.cfg:197 data/misc/schedules.cfg:5
 msgid "Dawn"
 msgstr "夜明け"
 
-#: data/help.cfg:198 data/schedules.cfg:18
+#: data/misc/help.cfg:198 data/misc/schedules.cfg:18
 msgid "Morning"
 msgstr "朝"
 
-#: data/help.cfg:199 data/schedules.cfg:30
+#: data/misc/help.cfg:199 data/misc/schedules.cfg:30
 msgid "Afternoon"
 msgstr "午後"
 
-#: data/help.cfg:200 data/schedules.cfg:41
+#: data/misc/help.cfg:200 data/misc/schedules.cfg:41
 msgid "Dusk"
 msgstr "夕方"
 
-#: data/help.cfg:201 data/schedules.cfg:54
+#: data/misc/help.cfg:201 data/misc/schedules.cfg:54
 msgid "First Watch"
 msgstr "夜"
 
-#: data/help.cfg:202 data/schedules.cfg:69
+#: data/misc/help.cfg:202 data/misc/schedules.cfg:69
 msgid "Second Watch"
 msgstr "深夜"
 
-#: data/help.cfg:204
+#: data/misc/help.cfg:204
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1560,11 +1656,11 @@ msgstr ""
 "地下で行われるシナリオがあることに気をつけましょう。 ここでは常に夜となりま"
 "す！"
 
-#: data/help.cfg:209
+#: data/misc/help.cfg:209
 msgid "Experience and Advancement"
 msgstr "経験と昇進"
 
-#: data/help.cfg:210
+#: data/misc/help.cfg:210
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1576,7 +1672,7 @@ msgstr ""
 "多くの経験値を得ます。 レベル0なら4、 レベル1なら8、 レベル2なら16、 レベル3"
 "なら24と なります(以下同様)。"
 
-#: data/help.cfg:212
+#: data/misc/help.cfg:212
 msgid ""
 "\n"
 "\n"
@@ -1592,7 +1688,7 @@ msgstr ""
 "直ちに次のレベルに上がり、 HPが最大まで回復します。場合によっては、 クラス"
 "チェンジ先の選択を行います。"
 
-#: data/help.cfg:216
+#: data/misc/help.cfg:216
 msgid ""
 "\n"
 "\n"
@@ -1627,11 +1723,11 @@ msgstr ""
 "際に回復することに注意して下さい。 ほとんどのユニットは最大HPへのボーナスを得"
 "るだけです。"
 
-#: data/help.cfg:221
+#: data/misc/help.cfg:221
 msgid "Healing"
 msgstr "回復"
 
-#: data/help.cfg:222
+#: data/misc/help.cfg:222
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1645,7 +1741,7 @@ msgstr ""
 "こります。その他にもWesnothではあなたのユニットを回復させるいくつかの方法があ"
 "ります。 これらは全て、あなたのターン開始時に行動を起こす前に起こります。"
 
-#: data/help.cfg:224
+#: data/misc/help.cfg:224
 msgid ""
 "\n"
 "\n"
@@ -1656,7 +1752,7 @@ msgstr ""
 "\n"
 "休息: 移動、攻撃をせず、攻撃もされなかったユニットは HPが2回復します。"
 
-#: data/help.cfg:225
+#: data/misc/help.cfg:225
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1665,7 +1761,7 @@ msgstr ""
 "\n"
 "村: ターン開始時に村にいるユニットはHPが8回復します。"
 
-#: data/help.cfg:226
+#: data/misc/help.cfg:226
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -1675,7 +1771,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=再生</ref>: (トロルのような)ある種類のユ"
 "ニットは 自動的に毎ターンHPが8回復します。"
 
-#: data/help.cfg:227
+#: data/misc/help.cfg:227
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1687,7 +1783,7 @@ msgstr ""
 "盟の隣接している各ユニットを各ターンで通常4か8HPを回復させ、毒を受けたユニッ"
 "トにダメージが与えられるのを防ぎます。"
 
-#: data/help.cfg:228
+#: data/misc/help.cfg:228
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1699,7 +1795,7 @@ msgstr ""
 "接する全ての同盟ユニットの毒を (もし回復の能力があったとしても、それをさしお"
 "いて)治療します。"
 
-#: data/help.cfg:230
+#: data/misc/help.cfg:230
 msgid ""
 "\n"
 "\n"
@@ -1713,11 +1809,11 @@ msgstr ""
 "み合わせることはできません。 最良のものが選択されます。 最後に、シナリオの間"
 "でユニットは完全に回復します。"
 
-#: data/help.cfg:235
+#: data/misc/help.cfg:235
 msgid "Income and Upkeep"
 msgstr "収入と維持費"
 
-#: data/help.cfg:236
+#: data/misc/help.cfg:236
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1728,7 +1824,7 @@ msgstr ""
 "ンペーンでは余分のゴールドを次に持ち越せるため、 所持金に注意するべきです。 "
 "これには収入と維持費という２つの側面があります。"
 
-#: data/help.cfg:238
+#: data/misc/help.cfg:238
 msgid ""
 "\n"
 "\n"
@@ -1744,7 +1840,7 @@ msgstr ""
 "ているなら、普通は毎ターン12ゴールド得ることになります。 この収入から、次に説"
 "明する維持費が引かれます。"
 
-#: data/help.cfg:240
+#: data/misc/help.cfg:240
 msgid ""
 "\n"
 "\n"
@@ -1764,7 +1860,7 @@ msgstr ""
 "例えば、12のレベル1ユニットと10の村がある場合には、維持費としてターン毎に２"
 "ゴールド払うことになります。"
 
-#: data/help.cfg:242
+#: data/misc/help.cfg:242
 msgid ""
 "\n"
 "\n"
@@ -1777,7 +1873,7 @@ msgstr ""
 "維持費は収入から差し引かれるため、ユニットレベルの合計が12で10個の村の場合に"
 "は、差し引き合計の収入は毎ターン10ゴールドとなります。"
 
-#: data/help.cfg:243
+#: data/misc/help.cfg:243
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -1791,11 +1887,11 @@ msgstr ""
 "シナリオの途中で加わるユニット(「王位継承者」のシナリオ２での騎兵など)は、通"
 "常この忠義特性を持っています。"
 
-#: data/help.cfg:248
+#: data/misc/help.cfg:248
 msgid "Wrap Up"
 msgstr "まとめ"
 
-#: data/help.cfg:249
+#: data/misc/help.cfg:249
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1808,11 +1904,11 @@ msgstr ""
 "いと思っているかもしれません。 しかし、この時点であなたは シナリオ「王位継承"
 "者」を遊ぶために 必要な知識をすべて得ました。 楽しんで下さい、そして幸運を！"
 
-#: data/help.cfg:260
+#: data/misc/help.cfg:260
 msgid "License"
 msgstr "ライセンス"
 
-#: data/help.cfg:267
+#: data/misc/help.cfg:267
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1824,7 +1920,7 @@ msgstr ""
 "ユニットの属性を変化させる修正です。それらは通常はユニットが雇用された時にラ"
 "ンダムに割り振られます。"
 
-#: data/help.cfg:269
+#: data/misc/help.cfg:269
 msgid ""
 "\n"
 "\n"
@@ -1840,7 +1936,7 @@ msgstr ""
 "<ref>dst=traits_resilient text=頑強</ref>、<ref>dst=traits_strong text=強力</"
 "ref>です。"
 
-#: data/help.cfg:271
+#: data/misc/help.cfg:271
 msgid ""
 "\n"
 "\n"
@@ -1854,15 +1950,15 @@ msgstr ""
 "ref>、<ref>dst=traits_loyal text=忠義</ref>、<ref>dst=traits_undead text=アン"
 "デッド</ref> があります。"
 
-#: data/help.cfg:276
+#: data/misc/help.cfg:276
 msgid "Intelligent"
 msgstr "知的"
 
-#: data/help.cfg:277
+#: data/misc/help.cfg:277
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "知的なユニットは通常よりもレベルアップに必要な経験が20%少なくすむ。"
 
-#: data/help.cfg:279
+#: data/misc/help.cfg:279
 msgid ""
 "\n"
 "\n"
@@ -1879,15 +1975,15 @@ msgstr ""
 "の後半では知的はそれほど有用ではなくなります。 もし多くの最高レベルユニットが"
 "いるなら、より望ましい特性をもつユニットを召還したほうがよいかもしれません。"
 
-#: data/help.cfg:284
+#: data/misc/help.cfg:284
 msgid "Quick"
 msgstr "敏捷"
 
-#: data/help.cfg:285
+#: data/misc/help.cfg:285
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgstr "敏捷なユニットは移動力が1つ多くなるが、HPが通常より10%少なくなる。"
 
-#: data/help.cfg:287
+#: data/misc/help.cfg:287
 msgid ""
 "\n"
 "\n"
@@ -1906,15 +2002,15 @@ msgstr ""
 "ニットは、この特性を持たないユニットよりも頑丈ではないため、戦闘の激しい場所"
 "を保持し続けることには向いていません。"
 
-#: data/help.cfg:292
+#: data/misc/help.cfg:292
 msgid "Resilient"
 msgstr "頑強"
 
-#: data/help.cfg:293
+#: data/misc/help.cfg:293
 msgid "Resilient units have 10% +3 more HP than usual."
 msgstr "頑強なユニットは通常より 10% + 3 だけHPが多い。"
 
-#: data/help.cfg:295
+#: data/misc/help.cfg:295
 msgid ""
 "\n"
 "\n"
@@ -1931,18 +2027,18 @@ msgstr ""
 "をもつようなユニットには、回復力は特性としてしばしば非常に助けとなります。頑"
 "強なユニットは、敵に対して戦略的な拠点を保持する上で、特に便利となります。"
 
-#: data/help.cfg:300
+#: data/misc/help.cfg:300
 msgid "Strong"
 msgstr "強力"
 
-#: data/help.cfg:301
+#: data/misc/help.cfg:301
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
 "強力なユニットは、格闘時に各命中毎に 1多いダメージを与え、 1 多いHPを持つ。"
 
-#: data/help.cfg:303
+#: data/misc/help.cfg:303
 msgid ""
 "\n"
 "\n"
@@ -1958,19 +2054,19 @@ msgstr ""
 "傷つけるだけの攻撃をとどめの一撃へと変えるような場合、強力なユニットは大変便"
 "利です。"
 
-#: data/help.cfg:308
+#: data/misc/help.cfg:308
 msgid "Fearless"
 msgstr ""
 
-#: data/help.cfg:309
+#: data/misc/help.cfg:309
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
-#: data/help.cfg:314
+#: data/misc/help.cfg:314
 msgid "Loyal"
 msgstr "忠義"
 
-#: data/help.cfg:315
+#: data/misc/help.cfg:315
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1979,7 +2075,7 @@ msgstr ""
 "忠義ユニットには維持費がかからない。ほとんどのユニットは、各ターンの終了時"
 "に、そのレベルに等しい維持費がかかるが、忠義ユニットはこの費用がかからない。"
 
-#: data/help.cfg:317
+#: data/misc/help.cfg:317
 msgid ""
 "\n"
 "\n"
@@ -1999,18 +2095,18 @@ msgstr ""
 "して与えられないため、このようなユニットを解雇したり、愚かな死においやること"
 "は、とても知恵がないといえる。"
 
-#: data/help.cfg:322
+#: data/misc/help.cfg:322
 msgid "trait^Undead"
 msgstr "アンデッド"
 
-#: data/help.cfg:323
+#: data/misc/help.cfg:323
 #, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "アンデッドユニットは毒に免疫がある。"
 
-#: data/help.cfg:325
+#: data/misc/help.cfg:325
 msgid ""
 "\n"
 "\n"
@@ -2026,16 +2122,16 @@ msgstr ""
 "ません。 このため、攻撃において毒を使う敵を相手にする場合に、貴重な存在となり"
 "ます。"
 
-#: data/help.cfg:330
+#: data/misc/help.cfg:330
 msgid "Dextrous"
 msgstr "器用"
 
-#: data/help.cfg:331
+#: data/misc/help.cfg:331
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr "器用なユニットは投射戦での各命中毎に 1多いダメージを与える。"
 
-#: data/help.cfg:333
+#: data/misc/help.cfg:333
 msgid ""
 "\n"
 "\n"
@@ -2051,21 +2147,21 @@ msgstr ""
 "胞を上回る天性の才能を与えられています。 これらのエルフは一矢毎に追加のダメー"
 "ジポイントを与えることができます。"
 
-#: data/help.cfg:338
+#: data/misc/help.cfg:338
 msgid "Healthy"
 msgstr ""
 
-#: data/help.cfg:339
+#: data/misc/help.cfg:339
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and "
 "recover more quickly when resting."
 msgstr ""
 
-#: data/help.cfg:345 data/terrain.cfg:444 data/terrain.cfg:452
+#: data/misc/help.cfg:345 data/misc/terrain.cfg:444 data/misc/terrain.cfg:452
 msgid "Grassland"
 msgstr "平原"
 
-#: data/help.cfg:350
+#: data/misc/help.cfg:350
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -2082,11 +2178,11 @@ msgstr ""
 "\n"
 "ほとんどのユニットは平原で 30から40%の防御を持ちます。"
 
-#: data/help.cfg:355 data/terrain.cfg:571
+#: data/misc/help.cfg:355 data/misc/terrain.cfg:571
 msgid "Road"
 msgstr "道路"
 
-#: data/help.cfg:358
+#: data/misc/help.cfg:358
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -2096,11 +2192,11 @@ msgstr ""
 "す。ゲームプレイに関する限り、道路は<ref>dst=terrain_grassland text=平原</"
 "ref>と同じになります。"
 
-#: data/help.cfg:363 data/terrain.cfg:423
+#: data/misc/help.cfg:363 data/misc/terrain.cfg:423
 msgid "Forest"
 msgstr "森"
 
-#: data/help.cfg:370
+#: data/misc/help.cfg:370
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -2130,11 +2226,11 @@ msgstr ""
 "乗馬中であっても60から70%の防御を享受します。ドワーフは一般的に森では30%の防"
 "御しか得られません。"
 
-#: data/help.cfg:375 data/terrain.cfg:495
+#: data/misc/help.cfg:375 data/misc/terrain.cfg:495
 msgid "Hills"
 msgstr "丘"
 
-#: data/help.cfg:380
+#: data/misc/help.cfg:380
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2154,11 +2250,11 @@ msgstr ""
 "ほとんどのユニットは丘で約50%の防御を持ちますが、騎兵は40%に抑えられます。ド"
 "ワーフは丘では60%の防御を享受します。"
 
-#: data/help.cfg:385 data/terrain.cfg:507 data/terrain.cfg:516
+#: data/misc/help.cfg:385 data/misc/terrain.cfg:507 data/misc/terrain.cfg:516
 msgid "Mountains"
 msgstr "山"
 
-#: data/help.cfg:390
+#: data/misc/help.cfg:390
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2178,11 +2274,11 @@ msgstr ""
 "\n"
 "多くのユニットは山で60%の防御になりますが、ドワーフは70%を享受します。"
 
-#: data/help.cfg:395 data/terrain.cfg:593
+#: data/misc/help.cfg:395 data/misc/terrain.cfg:593
 msgid "Swamp"
 msgstr "沼地"
 
-#: data/help.cfg:400
+#: data/misc/help.cfg:400
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2201,11 +2297,11 @@ msgstr ""
 "多くのユニットは沼地で30%の防御となります。 マーマン、ナーガ、トカゲ族は全て"
 "一般的に60%を享受します。"
 
-#: data/help.cfg:405 data/terrain.cfg:874
+#: data/misc/help.cfg:405 data/misc/terrain.cfg:874
 msgid "Shallow Water"
 msgstr "浅瀬"
 
-#: data/help.cfg:410
+#: data/misc/help.cfg:410
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2226,11 +2322,11 @@ msgstr ""
 "多くのユニットは浅瀬で20から30%の防御を持ち、ナーガとマーマンは共に60%を享受"
 "します。"
 
-#: data/help.cfg:415 data/terrain.cfg:864
+#: data/misc/help.cfg:415 data/misc/terrain.cfg:864
 msgid "Deep Water"
 msgstr "深水"
 
-#: data/help.cfg:420
+#: data/misc/help.cfg:420
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2244,11 +2340,11 @@ msgstr ""
 "\n"
 "深水でマーマンとナーガは共に50%の防御と完全な移動を行います。"
 
-#: data/help.cfg:425 data/terrain.cfg:57
+#: data/misc/help.cfg:425 data/misc/terrain.cfg:57
 msgid "Snow"
 msgstr "雪原"
 
-#: data/help.cfg:430
+#: data/misc/help.cfg:430
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -2262,11 +2358,11 @@ msgstr ""
 "\n"
 "ほとんどのユニットが雪原で20から40%の防御になります。"
 
-#: data/help.cfg:435 data/terrain.cfg:47
+#: data/misc/help.cfg:435 data/misc/terrain.cfg:47
 msgid "Ice"
 msgstr "氷"
 
-#: data/help.cfg:438
+#: data/misc/help.cfg:438
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -2276,11 +2372,11 @@ msgstr ""
 "text=雪原</ref>と同じ扱いです。泳ぐことのできるユニットは例え水の中で息ができ"
 "るとしても、氷の下を泳ぐことはできないことに注意して下さい。"
 
-#: data/help.cfg:443 data/terrain.cfg:168
+#: data/misc/help.cfg:443 data/misc/terrain.cfg:168
 msgid "Castle"
 msgstr "城"
 
-#: data/help.cfg:450
+#: data/misc/help.cfg:450
 #, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -2301,11 +2397,11 @@ msgstr ""
 "\n"
 "ほとんどのユニットは城で60%の防御になります。"
 
-#: data/help.cfg:455 data/terrain.cfg:379
+#: data/misc/help.cfg:455 data/misc/terrain.cfg:379
 msgid "Sand"
 msgstr "砂地"
 
-#: data/help.cfg:460
+#: data/misc/help.cfg:460
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2319,11 +2415,11 @@ msgstr ""
 "\n"
 "多くのユニットは砂地において20から40%の防御をもちます。"
 
-#: data/help.cfg:465 data/terrain.cfg:359
+#: data/misc/help.cfg:465 data/misc/terrain.cfg:359
 msgid "Desert"
 msgstr "砂漠"
 
-#: data/help.cfg:468
+#: data/misc/help.cfg:468
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -2332,11 +2428,11 @@ msgstr ""
 "砂漠は小さな砂の穴や砂浜とは少しばかり異なる性質ですが、ゲームプレイの目的で"
 "は同じ扱いです。<ref>dst=terrain_sand text=砂地</ref>を参照して下さい。"
 
-#: data/help.cfg:473 data/terrain.cfg:608
+#: data/misc/help.cfg:473 data/misc/terrain.cfg:608
 msgid "Cave"
 msgstr "洞窟"
 
-#: data/help.cfg:478
+#: data/misc/help.cfg:478
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -2357,11 +2453,11 @@ msgstr ""
 "\n"
 "多くのユニットは洞窟で20から40%の防御となり、ドワーフは50%です。"
 
-#: data/help.cfg:483 data/terrain.cfg:653
+#: data/misc/help.cfg:483 data/misc/terrain.cfg:653
 msgid "Rockbound Cave"
 msgstr "岩に囲まれた洞窟"
 
-#: data/help.cfg:488
+#: data/misc/help.cfg:488
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2384,11 +2480,11 @@ msgstr ""
 "ほとんどのユニットは岩の多い洞窟ではおよそ 50% の防御を得ます。一方騎兵は "
 "40% に制限されます。ドワーフ族は岩に囲まれた洞窟では 60% の防御を享受します。"
 
-#: data/help.cfg:493
+#: data/misc/help.cfg:493
 msgid "Illuminated Cave"
 msgstr "照らされた洞窟"
 
-#: data/help.cfg:496
+#: data/misc/help.cfg:496
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2404,11 +2500,11 @@ msgstr ""
 "ほとんどのユニットは洞窟では 20% から 40% の防御を得ます。一方、ドワーフ族は "
 "50% を得ます。"
 
-#: data/help.cfg:501 data/terrain.cfg:626 data/terrain.cfg:634
+#: data/misc/help.cfg:501 data/misc/terrain.cfg:626 data/misc/terrain.cfg:634
 msgid "Mushroom Grove"
 msgstr "キノコの森"
 
-#: data/help.cfg:506
+#: data/misc/help.cfg:506
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness.  Most units have trouble negotiating the spongy "
@@ -2430,11 +2526,11 @@ msgstr ""
 "ほとんどのユニットはキノコの森において 50% から 60% の防御を得ます。一方、騎"
 "兵は 20% しか得ることができません。"
 
-#: data/help.cfg:511 data/terrain.cfg:461
+#: data/misc/help.cfg:511 data/misc/terrain.cfg:461
 msgid "Savanna"
 msgstr "サバンナ"
 
-#: data/help.cfg:514
+#: data/misc/help.cfg:514
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -2443,16 +2539,18 @@ msgstr ""
 "サバンナは背の高い草で覆われた平地で、暖かい気候の世界で見られます。ゲームプ"
 "レイの目的では、<ref>dst=terrain_grassland text=草原</ref>と同じ扱いです。"
 
-#: data/help.cfg:519 data/terrain.cfg:681 data/terrain.cfg:692
-#: data/terrain.cfg:705 data/terrain.cfg:717 data/terrain.cfg:731
-#: data/terrain.cfg:742 data/terrain.cfg:752 data/terrain.cfg:763
-#: data/terrain.cfg:774 data/terrain.cfg:785 data/terrain.cfg:798
-#: data/terrain.cfg:809 data/terrain.cfg:822 data/terrain.cfg:837
-#: data/terrain.cfg:848 src/terrain.cpp:98
+#: data/misc/help.cfg:519 data/misc/terrain.cfg:681 data/misc/terrain.cfg:692
+#: data/misc/terrain.cfg:705 data/misc/terrain.cfg:717
+#: data/misc/terrain.cfg:731 data/misc/terrain.cfg:742
+#: data/misc/terrain.cfg:752 data/misc/terrain.cfg:763
+#: data/misc/terrain.cfg:774 data/misc/terrain.cfg:785
+#: data/misc/terrain.cfg:798 data/misc/terrain.cfg:809
+#: data/misc/terrain.cfg:822 data/misc/terrain.cfg:837
+#: data/misc/terrain.cfg:848 src/terrain.cpp:98
 msgid "Village"
 msgstr "村"
 
-#: data/help.cfg:526
+#: data/misc/help.cfg:526
 #, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -2474,12 +2572,12 @@ msgstr ""
 "\n"
 "ほとんどのユニットは50から60%の防御を村でもちますが、騎兵は40%のみです。"
 
-#: data/help.cfg:531
+#: data/misc/help.cfg:531
 #, fuzzy
 msgid "Submerged Village"
 msgstr "自軍所有の村"
 
-#: data/help.cfg:536
+#: data/misc/help.cfg:536
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2492,11 +2590,11 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
-#: data/help.cfg:541 data/terrain.cfg:529
+#: data/misc/help.cfg:541 data/misc/terrain.cfg:529
 msgid "Chasm"
 msgstr "深い割目"
 
-#: data/help.cfg:544
+#: data/misc/help.cfg:544
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2507,11 +2605,11 @@ msgstr ""
 "り立った壁になっています。ゲームプレイに関して言えば、深い割目を飛び越えられ"
 "る能力を持ったユニットのみがこの地形を通過できます。"
 
-#: data/help.cfg:549 data/terrain.cfg:537
+#: data/misc/help.cfg:549 data/misc/terrain.cfg:537
 msgid "Lava"
 msgstr "溶岩"
 
-#: data/help.cfg:552
+#: data/misc/help.cfg:552
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2525,11 +2623,11 @@ msgstr ""
 "は秩序ユニットに対して攻撃のボーナスを与え、 混沌ユニットからは攻撃ボーナスを"
 "奪います。"
 
-#: data/help.cfg:557 data/terrain.cfg:885
+#: data/misc/help.cfg:557 data/misc/terrain.cfg:885
 msgid "River Ford"
 msgstr "川の浅瀬"
 
-#: data/help.cfg:560
+#: data/misc/help.cfg:560
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2544,14 +2642,14 @@ msgstr ""
 "限り、川の浅瀬は草原か浅い水かで、そこにいるユニットにとって最も防御と移動力"
 "ボーナスの大きい方が選択されます。"
 
-#: data/help.cfg:565 data/terrain.cfg:70 data/terrain.cfg:79
-#: data/terrain.cfg:88 data/terrain.cfg:98 data/terrain.cfg:107
-#: data/terrain.cfg:116 data/terrain.cfg:126 data/terrain.cfg:135
-#: data/terrain.cfg:144
+#: data/misc/help.cfg:565 data/misc/terrain.cfg:70 data/misc/terrain.cfg:79
+#: data/misc/terrain.cfg:88 data/misc/terrain.cfg:98 data/misc/terrain.cfg:107
+#: data/misc/terrain.cfg:116 data/misc/terrain.cfg:126
+#: data/misc/terrain.cfg:135 data/misc/terrain.cfg:144
 msgid "Bridge"
 msgstr "橋"
 
-#: data/help.cfg:570
+#: data/misc/help.cfg:570
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2575,11 +2673,11 @@ msgstr ""
 "防御と移動力ボーナスの大きい方が選択されます。泳ぐユニットと歩行型ユニットは"
 "同時に橋ヘクスを占拠することができないことに注意して下さい。"
 
-#: data/help.cfg:575 data/terrain.cfg:918
+#: data/misc/help.cfg:575 data/misc/terrain.cfg:918
 msgid "Cave Wall"
 msgstr "洞窟の壁"
 
-#: data/help.cfg:578
+#: data/misc/help.cfg:578
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2587,23 +2685,23 @@ msgstr ""
 "洞窟の壁は硬い石でできており、どんなに決心の固い旅行者をも妨げることで有名で"
 "す。"
 
-#: data/help.cfg:583
+#: data/misc/help.cfg:583
 #, fuzzy
 msgid "Impassable Mountain"
 msgstr "通れない山"
 
-#: data/help.cfg:586
+#: data/misc/help.cfg:586
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such moutains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 
-#: data/help.cfg:591
+#: data/misc/help.cfg:591
 msgid "General commands"
 msgstr "一般的なコマンド"
 
-#: data/help.cfg:595
+#: data/misc/help.cfg:595
 #, fuzzy
 msgid ""
 "\n"
@@ -2613,7 +2711,7 @@ msgstr ""
 "\n"
 "シナリオを終了する（確認なし）"
 
-#: data/help.cfg:598
+#: data/misc/help.cfg:598
 #, fuzzy
 msgid ""
 "\n"
@@ -2623,7 +2721,7 @@ msgstr ""
 "\n"
 "ゲームを保存する（確認なし）"
 
-#: data/help.cfg:601
+#: data/misc/help.cfg:601
 #, fuzzy
 msgid ""
 "\n"
@@ -2633,7 +2731,7 @@ msgstr ""
 "\n"
 "ゲームを保存してシナリオを終了する（確認なし）"
 
-#: data/help.cfg:604
+#: data/misc/help.cfg:604
 #, fuzzy
 msgid ""
 "\n"
@@ -2643,7 +2741,7 @@ msgstr ""
 "\n"
 "画面を再描画する"
 
-#: data/help.cfg:607
+#: data/misc/help.cfg:607
 #, fuzzy
 msgid ""
 "\n"
@@ -2655,18 +2753,18 @@ msgstr ""
 "デバッグモードを有効にする（マルチプレイヤーでは使用不可）。デバッグモードは"
 "ゲームを終了すると無効になる。"
 
-#: data/help.cfg:608
+#: data/misc/help.cfg:608
 #, fuzzy
 msgid "Bring up theme selection menu."
 msgstr ""
 "\n"
 "テーマ選択メニューを呼び出す"
 
-#: data/help.cfg:613
+#: data/misc/help.cfg:613
 msgid "Multiplayer commands"
 msgstr "マルチプレイヤーコマンド"
 
-#: data/help.cfg:617
+#: data/misc/help.cfg:617
 #, fuzzy
 msgid ""
 "\n"
@@ -2680,7 +2778,7 @@ msgstr ""
 "ヤー／クライアントがこのコマンドを発行する必要がある。陣営を指定しなかった場"
 "合、「1」とみなされる。"
 
-#: data/help.cfg:620
+#: data/misc/help.cfg:620
 #, fuzzy
 msgid ""
 "\n"
@@ -2690,7 +2788,7 @@ msgstr ""
 "\n"
 "すべての観戦者が発言できないようにするかどうかを切り替える。"
 
-#: data/help.cfg:623
+#: data/misc/help.cfg:623
 #, fuzzy
 msgid ""
 "\n"
@@ -2702,7 +2800,7 @@ msgstr ""
 "指定した観戦者が発言できないようにする。ユーザー名が指定されなかった場合は発"
 "言できないユーザー名が表示される。"
 
-#: data/help.cfg:626
+#: data/misc/help.cfg:626
 #, fuzzy
 msgid ""
 "\n"
@@ -2716,7 +2814,7 @@ msgstr ""
 "加わることができる。通常、接続やその他の問題が起こっている人を排除するための"
 "友好的な手段である。"
 
-#: data/help.cfg:629
+#: data/misc/help.cfg:629
 #, fuzzy
 msgid ""
 "\n"
@@ -2728,7 +2826,7 @@ msgstr ""
 "マルチプレイヤーでユーザーの接続を切り、ゲームへの参加を禁止する。そのユー"
 "ザー名によって使われている IP アドレスからの接続が禁止される。"
 
-#: data/help.cfg:632
+#: data/misc/help.cfg:632
 #, fuzzy
 msgid ""
 "\n"
@@ -2740,7 +2838,7 @@ msgstr ""
 "陣営（ここに陣営の番号を記入）を操作する人をユーザー名（ここにプレイヤーもし"
 "くは観戦者のニックネームを記入）に変更する。"
 
-#: data/help.cfg:633
+#: data/misc/help.cfg:633
 msgid ""
 "\n"
 "Clear chat messages."
@@ -2748,7 +2846,7 @@ msgstr ""
 "\n"
 "チャットメッセージをクリアする"
 
-#: data/items.cfg:264
+#: data/misc/items.cfg:264
 msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
@@ -2756,157 +2854,157 @@ msgstr ""
 "願かけ井戸に遭遇しました。\n"
 "何を願いたいですか？"
 
-#: data/items.cfg:268
+#: data/misc/items.cfg:268
 msgid "A swift victory"
 msgstr "あっという間の勝利"
 
-#: data/items.cfg:276
+#: data/misc/items.cfg:276
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr "この金貨で、 私は即座に安全な勝利で この戦闘が終わることを 願います。"
 
-#: data/items.cfg:283
+#: data/misc/items.cfg:283
 msgid "Lots of gold"
 msgstr "大量の金"
 
-#: data/items.cfg:291
+#: data/misc/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "私はこの一枚の金貨が10倍になって返ってくる事を願います。"
 
-#: data/items.cfg:298
+#: data/misc/items.cfg:298
 msgid "Peace throughout Wesnoth."
 msgstr "Wesnoth全体の平和"
 
-#: data/items.cfg:306
+#: data/misc/items.cfg:306
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "この国家全体に広がる 平和のみが 祈るだけの価値があります。"
 
-#: data/items.cfg:313
+#: data/misc/items.cfg:313
 msgid "Don't make a wish."
 msgstr "願い事はしません。"
 
-#: data/items.cfg:336
+#: data/misc/items.cfg:336
 msgid "Potion of Healing"
 msgstr "回復の藥"
 
-#: data/items.cfg:339
+#: data/misc/items.cfg:339
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "酔っぱらいの気分"
 
-#: data/items.cfg:340
+#: data/misc/items.cfg:340
 msgid "You are not worthy of healing."
 msgstr "あなたは回復する必要がない"
 
-#: data/items.cfg:374
+#: data/misc/items.cfg:374
 msgid "Poison"
 msgstr "毒"
 
-#: data/items.cfg:377
+#: data/misc/items.cfg:377
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "まさにこの瞬間、 このユニットの血管から 毒がしみ出ている。"
 
-#: data/items.cfg:412
+#: data/misc/items.cfg:412
 msgid "Holy Water"
 msgstr "聖水"
 
-#: data/items.cfg:415
+#: data/misc/items.cfg:415
 msgid "This water will make melee weapons holy."
 msgstr "この水で格闘用の武器を清めます。"
 
-#: data/items.cfg:416
+#: data/misc/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "このアイテムを使うのにふさわしくない！ 他の人に使わせて下さい。"
 
-#: data/items.cfg:451
+#: data/misc/items.cfg:451
 msgid "Potion of Strength"
 msgstr "力の藥"
 
-#: data/items.cfg:454
+#: data/misc/items.cfg:454
 msgid "Strength is given to the drinker."
 msgstr "力が飲んだ者に与えられます。"
 
-#: data/items.cfg:495
+#: data/misc/items.cfg:495
 msgid "Potion of Decay"
 msgstr "腐敗の藥"
 
-#: data/items.cfg:498
+#: data/misc/items.cfg:498
 msgid "This poor unit drank something really bad."
 msgstr "この哀れなユニットは、 ひどく悪い何かを飲んでしまった。"
 
-#: data/items.cfg:533
+#: data/misc/items.cfg:533
 msgid "Ring of Regeneration"
 msgstr "再生の指輪"
 
-#: data/items.cfg:536
+#: data/misc/items.cfg:536
 msgid "This ring will heal the bearer a little each turn."
 msgstr "この指輪は、各ターンに 少しだけ 持ち主を回復させます。"
 
-#: data/items.cfg:555
+#: data/misc/items.cfg:555
 msgid "Can't set abilities yet, sorry."
 msgstr "申し訳ありませんが、 まだ能力を つけられません。"
 
-#: data/items.cfg:576
+#: data/misc/items.cfg:576
 msgid "Ring of Slowness"
 msgstr "鈍足の指輪"
 
-#: data/items.cfg:579
+#: data/misc/items.cfg:579
 msgid "The bearer of this ring is slowed."
 msgstr "この指輪の持ち主は遅くなります。"
 
-#: data/items.cfg:614
+#: data/misc/items.cfg:614
 msgid "Staff of Swiftness"
 msgstr "俊敏の杖"
 
-#: data/items.cfg:617
+#: data/misc/items.cfg:617
 msgid "This staff will grant the bearer swift movement."
 msgstr "この杖は持ち主に俊敏な動きを与えます。"
 
-#: data/items.cfg:618
+#: data/misc/items.cfg:618
 msgid "Only magical beings can wield such an object."
 msgstr "魔法を扱えるものだけが、 その物体を扱うことができます。"
 
-#: data/items.cfg:652
+#: data/misc/items.cfg:652
 msgid "Storm Trident"
 msgstr "ストームトライデント"
 
-#: data/items.cfg:655
+#: data/misc/items.cfg:655
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "このトライデントを持ったマーマンは、敵に電気の矢を放つことができる！"
 
-#: data/items.cfg:656
+#: data/misc/items.cfg:656
 msgid "Only the mermen can use this item!"
 msgstr "マーマンだけがこの道具を使用できる！"
 
-#: data/items.cfg:668
+#: data/misc/items.cfg:668
 msgid "storm trident"
 msgstr "ストームトライデント"
 
-#: data/items.cfg:742
+#: data/misc/items.cfg:742
 msgid "Zap"
 msgstr "ふるう"
 
-#: data/multiplayer.cfg:3
+#: data/misc/multiplayer.cfg:3
 msgid "User Map"
 msgstr "ユーザーマップ"
 
-#: data/multiplayer.cfg:17 src/leader_list.cpp:108
+#: data/misc/multiplayer.cfg:17 src/leader_list.cpp:108
 msgid "Random"
 msgstr "ランダム"
 
-#: data/multiplayer.cfg:24
+#: data/misc/multiplayer.cfg:24
 msgid "Default"
 msgstr "デフォルト"
 
-#: data/multiplayer.cfg:37
+#: data/misc/multiplayer.cfg:37
 msgid "Age of Heroes"
 msgstr "「英雄の時代」"
 
-#: data/multiplayer.cfg:50
+#: data/misc/multiplayer.cfg:50
 msgid "Great War"
 msgstr "「大いなる戦い」"
 
-#: data/names.cfg:2
+#: data/misc/names.cfg:2
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -2969,7 +3067,7 @@ msgid ""
 "Amithrarion,Cálad,Legilad"
 msgstr ""
 
-#: data/names.cfg:3
+#: data/misc/names.cfg:3
 msgid ""
 "Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
 "Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
@@ -3038,7 +3136,7 @@ msgid ""
 "Eowathiel,Iséng,Legondra,Celorfilindë"
 msgstr ""
 
-#: data/names.cfg:7
+#: data/misc/names.cfg:7
 msgid ""
 "Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,Owaecyn,"
 "Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,Yryrcyn,Glynvan,"
@@ -3092,7 +3190,7 @@ msgid ""
 "Gwaeddyn,Saenvan,Todd,Tegwyn"
 msgstr ""
 
-#: data/names.cfg:8
+#: data/misc/names.cfg:8
 msgid ""
 "Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
 "Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
@@ -3146,7 +3244,7 @@ msgid ""
 "Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 msgstr ""
 
-#: data/names.cfg:12
+#: data/misc/names.cfg:12
 msgid ""
 "Neptune,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
 "Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
@@ -3157,7 +3255,7 @@ msgid ""
 "Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 msgstr ""
 
-#: data/names.cfg:13
+#: data/misc/names.cfg:13
 msgid ""
 "Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,Rân,"
 "Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
@@ -3165,7 +3263,7 @@ msgid ""
 "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 msgstr ""
 
-#: data/names.cfg:17
+#: data/misc/names.cfg:17
 msgid ""
 "Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,Goshnak,"
 "Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,Hunk,Goshnak,"
@@ -3212,7 +3310,7 @@ msgid ""
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 msgstr ""
 
-#: data/names.cfg:21
+#: data/misc/names.cfg:21
 msgid ""
 "Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,Trithaithus,"
 "Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,Augaithing,Anthaas,"
@@ -3280,7 +3378,7 @@ msgid ""
 "Pelaithil,Gomaithsol,Augaithsil"
 msgstr ""
 
-#: data/names.cfg:25
+#: data/misc/names.cfg:25
 msgid ""
 "Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
 "Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
@@ -3291,7 +3389,7 @@ msgid ""
 "Klez,Zlek,Trixzed"
 msgstr ""
 
-#: data/names.cfg:26
+#: data/misc/names.cfg:26
 msgid ""
 "Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,Saxrireii,"
 "Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,Vilail,Aleiss,"
@@ -3301,7 +3399,7 @@ msgid ""
 "Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 msgstr ""
 
-#: data/names.cfg:30
+#: data/misc/names.cfg:30
 msgid ""
 "Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
 "Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
@@ -3317,7 +3415,7 @@ msgid ""
 "Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 msgstr ""
 
-#: data/names.cfg:34
+#: data/misc/names.cfg:34
 msgid ""
 "Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,Markaak,"
 "Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,Kingrok,"
@@ -3327,7 +3425,7 @@ msgid ""
 "Urkar"
 msgstr ""
 
-#: data/names.cfg:38
+#: data/misc/names.cfg:38
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
@@ -3335,7 +3433,7 @@ msgid ""
 "Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
 
-#: data/names.cfg:42
+#: data/misc/names.cfg:42
 msgid ""
 "Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
 "Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,Anexir,"
@@ -3349,7 +3447,7 @@ msgid ""
 "Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 msgstr ""
 
-#: data/names.cfg:46
+#: data/misc/names.cfg:46
 msgid ""
 "Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
 "Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
@@ -3362,25 +3460,813 @@ msgid ""
 "Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 msgstr ""
 
-#: data/names.cfg:47
+#: data/misc/names.cfg:47
 msgid ""
 "Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin Ka,"
 "Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
 "Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 msgstr ""
 
-#: data/names.cfg:51
+#: data/misc/names.cfg:51
 #, fuzzy
 msgid " "
 msgstr "; "
 
-#: data/names.cfg:56
+#: data/misc/names.cfg:56
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
+
+#: data/misc/schedules.cfg:100 data/misc/schedules.cfg:111
+msgid "Deep Underground"
+msgstr "深い地下"
+
+#: data/misc/special-notes.cfg:2
+msgid ""
+" Spirits have very unusual resistances to damage, and move quite slowly over "
+"open water."
+msgstr ""
+" 霊魂はダメージに対して飛び抜けた耐性があり、水の上をきわめてゆっくりと移動し"
+"ます。"
+
+#: data/misc/special-notes.cfg:5
+#, fuzzy
+msgid ""
+" This unit's arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
+msgstr ""
+" このユニットの神聖な攻撃はアンデッドに著しいダメージを与えます。 生きている"
+"生物にさえもかなりのダメージを与えます。"
+
+#: data/misc/special-notes.cfg:8
+msgid ""
+" This unit is capable of basic healing, though it can only delay the effects "
+"of poison, not cure them entirely."
+msgstr ""
+" このユニットは基本的な回復能力がありますが、毒の影響を遅らせることしかでき"
+"ず、 完全に治療することはできません。"
+
+#: data/misc/special-notes.cfg:11
+msgid ""
+" This unit is capable of healing those around it, and curing them of poison."
+msgstr ""
+" このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
+
+#: data/misc/special-notes.cfg:14
+msgid ""
+" This unit regenerates, which allows it to heal as though always stationed "
+"in a village."
+msgstr ""
+" このユニットは再生能力があり、これによって常に村にいるかのように回復すること"
+"ができます。"
+
+#: data/misc/special-notes.cfg:17
+msgid ""
+" The steadiness of this unit reduces damage from some attacks, but only "
+"while defending."
+msgstr ""
+" このユニットの堅実さのおかげで、ある種の攻撃によるダメージを減らすことができ"
+"ます。 しかし、防御時のみです。"
+
+#: data/misc/special-notes.cfg:20
+msgid ""
+" The leadership of this unit enables friendly units next to it to deal more "
+"damage in combat, though this only applies to units of lower level."
+msgstr ""
+"このユニットの統率力により、隣接する友好的なユニットは戦闘においてより大きな "
+"ダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
+"す。"
+
+#: data/misc/special-notes.cfg:23
+msgid ""
+" This unit's skill at skirmishing allows it to ignore enemies' zones of "
+"control and thus move unhindered around them."
+msgstr ""
+" このユニットの散兵能力により、敵の支配ゾーンを無視することができます。 その"
+"ため、敵に囲まれても移動が妨害されることはありません。"
+
+#: data/misc/special-notes.cfg:26
+msgid " Illumination increases the lighting level in adjacent areas."
+msgstr " 照明は隣接する領域を明るくします。"
+
+#: data/misc/special-notes.cfg:29
+msgid ""
+" This unit can teleport between any two villages instantly, though the "
+"player must control both, and the destination village must be unoccupied."
+msgstr ""
+" このユニットは瞬時に 2 つの村の間を瞬間移動することができます。しかしなが"
+"ら、 どちらの村もプレイヤーの支配下にあり、行き先の村があいている必要がありま"
+"す。"
+
+#: data/misc/special-notes.cfg:32
+msgid ""
+" In woodlands, this unit's ambush skill renders it invisible to enemies "
+"unless it is immediately adjacent or has revealed itself by attacking."
+msgstr ""
+" 森林地では、このユニットの伏兵能力によって敵から見えなくなります。 すぐ隣に"
+"いるか、攻撃することによって自らあらわれた場合を除いて。"
+
+#: data/misc/special-notes.cfg:35
+msgid " This unit is able to hide at night, leaving no trace of its presence."
+msgstr ""
+" このユニットは夜間に隠れることができ、ユニットが存在したという痕跡をまったく"
+"残しません。"
+
+#: data/misc/special-notes.cfg:38
+msgid ""
+" This unit can move unseen in deep water, requiring no air from the surface."
+msgstr ""
+" このユニットは深海では目に触れることなく移動することができます。 水面から空"
+"気を得る必要もありません。"
+
+#: data/misc/special-notes.cfg:41
+msgid ""
+" Whenever its berserk attack is used, this unit continues to push the attack "
+"until either it or its enemy lies dead."
+msgstr ""
+" このユニットの狂戦攻撃が使われた場合、このユニットはそのユニット自身か敵が倒"
+"れるまで攻撃し続けます。"
+
+#: data/misc/special-notes.cfg:44
+msgid ""
+"  If someone with the same allegiance distracts an enemy, this unit may "
+"backstab, inflicting double damage, by creeping around behind that enemy."
+msgstr ""
+"  同盟の誰かがユニットが敵の気を引いていれば、このユニットはその敵の背後に忍"
+"び寄ることで、 2倍のダメージを与えるふい打ちをくらわせます。"
+
+#: data/misc/special-notes.cfg:47
+msgid " Foes who lose their life to the plague will rise again in unlife."
+msgstr " 疫病で命を落とした敵は、死者としてよみがえるでしょう。"
+
+#: data/misc/special-notes.cfg:50
+msgid ""
+" This unit is able to slow its enemies, halving their movement speed and "
+"attack damage until they end a turn."
+msgstr ""
+" このユニットは敵を遅くすることができ、敵のターンが終わるまでの間、 敵の移動"
+"速度と攻撃ダメージを半減させることができます。"
+
+#: data/misc/special-notes.cfg:53
+msgid ""
+" The ability to turn the living to stone makes this unit extremely dangerous."
+msgstr ""
+" 生物を石に変えてしまう能力を持っているため、このユニットはきわめて危険です。"
+
+#: data/misc/special-notes.cfg:56
+msgid ""
+" This unit's marksmanship gives it a high chance of hitting targeted "
+"enemies, but only on the attack."
+msgstr ""
+" このユニットの射撃能力のおかげで目標とされた敵に高い確率で命中します。 しか"
+"し、攻撃側の場合だけです。"
+
+#: data/misc/special-notes.cfg:59
+msgid ""
+" The ranged attacks of this unit are magical, and always have a high chance "
+"of hitting an opponent."
+msgstr ""
+" このユニットの投射攻撃は魔法攻撃であり、常に高い確率で敵に命中します。"
+
+#: data/misc/special-notes.cfg:62
+msgid ""
+" The swarming attacks of this unit become less deadly whenever its members "
+"are wounded."
+msgstr ""
+" このユニットの群れによる攻撃はそのメンバーが傷つくと壊滅的に弱くなります。"
+
+#: data/misc/special-notes.cfg:65
+msgid ""
+" Using a charging attack doubles both damage dealt and received; this does "
+"not affect defensive retaliation."
+msgstr ""
+" 突撃を使うことで、与えるのと受けるのとの両方のダメージが倍となります。 これ"
+"は防御側での反撃には影響しません。"
+
+#: data/misc/special-notes.cfg:68
+msgid ""
+" During battle, this unit can drain life from victims to renew its own "
+"health."
+msgstr ""
+" 戦闘中、このユニットは犠牲者から体力を奪い、自身の健康を回復することができま"
+"す。"
+
+#: data/misc/special-notes.cfg:71
+msgid ""
+" The length of this unit's weapon allows it to strike first in melee, even "
+"in defense."
+msgstr ""
+" このユニットの武器の長さのおかげで、格闘攻撃で先に攻撃することができます。 "
+"防御時でさえも。"
+
+#: data/misc/special-notes.cfg:74
+msgid ""
+" The victims of this unit's poison will continually take damage until they "
+"can be cured in town or by a unit which cures."
+msgstr ""
+" このユニットの毒による犠牲者は、村か治療能力のあるユニットによって治療される"
+"まで 継続的にダメージを受けるでしょう。"
+
+#: data/misc/team-colors.cfg:10
+msgid "Red"
+msgstr "赤"
+
+#: data/misc/team-colors.cfg:16
+msgid "Blue"
+msgstr "青"
+
+#: data/misc/team-colors.cfg:22
+msgid "Green"
+msgstr "緑"
+
+#: data/misc/team-colors.cfg:28
+msgid "Purple"
+msgstr "紫"
+
+#: data/misc/team-colors.cfg:34
+msgid "Orange"
+msgstr "橙"
+
+#: data/misc/team-colors.cfg:40
+msgid "Black"
+msgstr "黒"
+
+#: data/misc/team-colors.cfg:46
+msgid "White"
+msgstr "白"
+
+#: data/misc/team-colors.cfg:52
+msgid "Brown"
+msgstr "茶"
+
+#: data/misc/team-colors.cfg:58
+msgid "Teal"
+msgstr "青緑"
+
+#: data/misc/terrain.cfg:22
+#, fuzzy
+msgid "None"
+msgstr "なし"
+
+#: data/misc/terrain.cfg:29 data/themes/macros.cfg:136
+#: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
+#: src/multiplayer_lobby.cpp:433
+msgid "Shroud"
+msgstr "幕"
+
+#: data/misc/terrain.cfg:36 data/themes/macros.cfg:148
+#: src/multiplayer_lobby.cpp:423
+msgid "Fog"
+msgstr "霧"
+
+#: data/misc/terrain.cfg:157
+msgid "Encampment"
+msgstr "野営地"
+
+#: data/misc/terrain.cfg:178
+#, fuzzy
+msgid "Elven Castle"
+msgstr "ドワーフの城"
+
+#: data/misc/terrain.cfg:189
+msgid "Dwarven Castle"
+msgstr "ドワーフの城"
+
+#: data/misc/terrain.cfg:201
+msgid "Ruin"
+msgstr "廃墟"
+
+#: data/misc/terrain.cfg:212
+msgid "Sunken Ruin"
+msgstr "水中の廃墟"
+
+#: data/misc/terrain.cfg:224
+msgid "Swamp Ruin"
+msgstr "沼の廃墟"
+
+#: data/misc/terrain.cfg:250
+#, fuzzy
+msgid "Encampment keep"
+msgstr "野営地"
+
+#: data/misc/terrain.cfg:262
+msgid "Keep"
+msgstr "主塔"
+
+#: data/misc/terrain.cfg:274
+#, fuzzy
+msgid "Elven Keep"
+msgstr "ドワーフの城"
+
+#: data/misc/terrain.cfg:286
+#, fuzzy
+msgid "Dwarven keep"
+msgstr "ドワーフの城"
+
+#: data/misc/terrain.cfg:298
+msgid "Ruined keep"
+msgstr ""
+
+#: data/misc/terrain.cfg:310
+#, fuzzy
+msgid "Sunken keep"
+msgstr "水中の廃墟"
+
+#: data/misc/terrain.cfg:322
+#, fuzzy
+msgid "Swamp keep"
+msgstr "沼地"
+
+#: data/misc/terrain.cfg:349
+#, fuzzy
+msgid "Crater"
+msgstr "城"
+
+#: data/misc/terrain.cfg:369
+msgid "Rubble"
+msgstr ""
+
+#: data/misc/terrain.cfg:387
+msgid "Oasis"
+msgstr "オアシス"
+
+#: data/misc/terrain.cfg:403
+msgid "Snow Forest"
+msgstr "雪の森"
+
+#: data/misc/terrain.cfg:414
+msgid "Great Tree"
+msgstr "大木"
+
+#: data/misc/terrain.cfg:431
+msgid "Tropical Forest"
+msgstr "熱帯林"
+
+#: data/misc/terrain.cfg:475
+msgid "Snow Hills"
+msgstr "雪丘"
+
+#: data/misc/terrain.cfg:485
+msgid "Dunes"
+msgstr "砂丘"
+
+#: data/misc/terrain.cfg:553
+#, fuzzy
+msgid "Desert road"
+msgstr "砂漠"
+
+#: data/misc/terrain.cfg:562
+msgid "Dirt"
+msgstr "荒地"
+
+#: data/misc/terrain.cfg:580
+#, fuzzy
+msgid "Farmland"
+msgstr "射撃"
+
+#: data/misc/terrain.cfg:616
+msgid "Cave Lit"
+msgstr "照らされた洞窟"
+
+#: data/misc/terrain.cfg:663
+#, fuzzy
+msgid "Rockbound Cave Lit"
+msgstr "岩に囲まれた洞窟"
+
+#: data/misc/terrain.cfg:900
+msgid "Impassable Mountains"
+msgstr "通れない山"
+
+#: data/misc/terrain.cfg:909
+#, fuzzy
+msgid "Impassable Desert Mountains"
+msgstr "通れない山"
+
+#: data/misc/tips.cfg:1
+msgid ""
+"Lawful units fight better at day, and chaotic units fight better at night. "
+"Neutral units are unaffected by day and night."
+msgstr ""
+"秩序ユニットは昼間の戦闘に強く、混沌ユニットは夜間の戦闘に強い。中立ユニット"
+"は昼夜の影響を受けない。"
+
+#: data/misc/tips.cfg:2
+msgid ""
+"In a campaign, you can use veteran units from previous scenarios by using "
+"the 'recall' option."
+msgstr ""
+"キャンペーンでは、「召還」オプションを使うことで、以前のシナリオから歴戦のユ"
+"ニットを使用することができる。"
+
+#: data/misc/tips.cfg:3
+#, fuzzy
+msgid ""
+"There are six types of attacks: pierce, blade, impact, fire, cold, and "
+"arcane. Different units have weaknesses against different types of attacks. "
+"Right-click on a unit, and then select 'Unit Description', and then click "
+"'Resistance' to see how much resistance a unit has against different attack "
+"types."
+msgstr ""
+"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして神聖の攻撃がある。それぞ"
+"れのユニットは攻撃の種類によってて異なる弱点を持っている。ユニットの上で右ク"
+"リックして、「ユニットの解説」を選択し、「耐性」をクリックすると、ユニットが"
+"それぞれの攻撃の種類に対してどのくらい抵抗力を持っているかを見ることができ"
+"る。"
+
+#: data/misc/tips.cfg:4
+msgid ""
+"The terrain your units are occupying determines the chance your opponents "
+"have of hitting them in battle. The defensive rating for the currently "
+"selected unit in the currently selected terrain is displayed in the top "
+"right corner of the screen."
+msgstr ""
+"ユニットが占領している地形によって、戦闘において敵がそれに命中できる確率が決"
+"定する。選択中のユニットの選択中の地形における防御率は、画面の右上の隅に表示"
+"されている。"
+
+#: data/misc/tips.cfg:5
+msgid ""
+"Poisoned units lose 8 hitpoints every turn, but they will not die from "
+"poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
+"be cured by moving them to a village, or placing them next to a unit with "
+"the 'cures' ability."
+msgstr ""
+"毒を受けているユニットは 毎ターン 8ヒットポイント失うが、毒で死ぬことはない。"
+"つまり、毒で 1ヒットポイント未満に下がることはない。毒を受けたユニットは、村"
+"か、「治療」能力をもつユニットの隣に置くことで、治療することができる。"
+
+#: data/misc/tips.cfg:6
+msgid ""
+"You can use units from a previous scenario by selecting 'Recall' in the game "
+"menu. By recalling the same units over and over, you can build up a powerful "
+"and experienced army."
+msgstr ""
+"ゲームメニューの「召還」を選択することで、前のシナリオからのユニットを使うこ"
+"とができる。同じユニットを何度も何度も召還することで、強力で経験を積んだ軍隊"
+"を築き上げることが可能となる。"
+
+#: data/misc/tips.cfg:7
+msgid ""
+"Units have a Zone of Control in each of the hexes next to them. If a unit "
+"moves into an enemy's Zone of Control, it may not move any further that "
+"turn. Level 0 units are too frail to control a zone; and skirmisher units "
+"are skilled enough to ignore these zones."
+msgstr ""
+"ユニットは隣接する各ヘクスに 「支配ゾーン」を持っている。 もしユニットが敵の"
+"支配ゾーンに入れば、 そのターンにそれ以上移動することはできない。 レベル0のユ"
+"ニットは 弱すぎて、 ゾーンを支配することはできず、 散兵ユニットは このゾーン"
+"を無視するスキルを持つ。"
+
+#: data/misc/tips.cfg:8
+msgid ""
+"The chance to hit a unit usually depends on how well that unit can defend "
+"itself in the terrain it is standing in, however magical attacks have a 70% "
+"chance to hit both when attacking and defending. Marksman attacks have at "
+"least 60% chance to hit when attacking."
+msgstr ""
+"ユニットに命中する確率は通常、 ユニットがいる地形で 自分をどれだけ守られるか"
+"によるが、 魔法攻撃は攻撃と防御時のどちらも 70% の確率となる。 射撃攻撃は攻撃"
+"時に最低60%の確率となる。"
+
+#: data/misc/tips.cfg:9
+msgid ""
+"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgstr ""
+"村に駐留したユニットは、 そのターンの開始時に、 8ヒットポイント回復する。"
+
+#: data/misc/tips.cfg:10
+msgid ""
+"Units rest if they do not move or attack during their turn.  They will "
+"recover 2 hitpoints at the beginning of their next turn."
+msgstr ""
+"自分のターンの間に移動や攻撃をしないと、ユニットは休むことになる。そのユニッ"
+"トは、次のターンの開始時に 2ヒットポイント回復する。"
+
+#: data/misc/tips.cfg:11
+msgid ""
+"Most foot units defend better in villages and castles than in most other "
+"terrain, while most mounted units don't get any defensive advantage in "
+"villages and castles."
+msgstr ""
+"ほとんどの徒歩ユニットは 村と城において、他のほとんどの地形におけるよりも防御"
+"が良くなるが、 乗馬ユニットは 村や城での防御上の利点は 全く得られない。"
+
+#: data/misc/tips.cfg:12
+msgid ""
+"Horse based units are generally resistant to attacks with bladed or impact "
+"weapons, but are vulnerable to attacks with piercing weapons, including bows "
+"and spears."
+msgstr ""
+"馬に乗ったユニットは全般的に、 斬撃や打撃の攻撃には耐えられるが、 弓や槍など"
+"の 貫通する武器での攻撃には弱い。"
+
+#: data/misc/tips.cfg:13
+msgid ""
+"Inflicting the killing blow on an enemy unit is the best way to gain "
+"experience. Units killing an enemy will gain 8 experience for every level of "
+"the unit they kill."
+msgstr ""
+"敵ユニットにとどめの一撃を与えることが、 経験を得る最も良い方法である。 敵を"
+"殺したユニットは、 その敵のレベルの 8倍の 経験値を得られる。"
+
+#: data/misc/tips.cfg:14
+msgid ""
+"Elvish units move and fight very well in forest. Dwarvish units move and "
+"fight very well in hills and mountains."
+msgstr ""
+"エルフのユニットは、 森における移動や戦闘が 得意である。 ドワーフのユニット"
+"は、 丘や山における移動や攻撃を 得意とする。"
+
+#: data/misc/tips.cfg:15
+msgid ""
+"Patience is often key. Rather than attacking in bad conditions, or with few "
+"troops, wait for better conditions and then attack."
+msgstr ""
+"忍耐はしばしば鍵となる。 悪条件や少数軍で攻撃するよりも、 より良い条件になる"
+"まで待ってから 攻撃するとよい。"
+
+#: data/misc/tips.cfg:16
+msgid ""
+"If you are attacked from several directions, it may be a good idea to send "
+"expendable units in some directions to delay enemy units."
+msgstr ""
+"もし多方面からの攻撃を受けたなら、 敵ユニットを遅らせるため、 何方向かに 損害"
+"覚悟のユニットを送るのも 良い考えかもしれない。"
+
+#: data/misc/tips.cfg:17
+msgid ""
+"Do not be afraid to retreat and regroup; it is often the key to victory."
+msgstr ""
+"退却や再編成することを怖れてはいけない。それは、しばしば勝利への鍵となる。"
+
+#: data/misc/tips.cfg:18
+msgid ""
+"In most campaigns you will receive a gold bonus for finishing early, "
+"depending on the number of villages on the map and the number of turns you "
+"finish early. You will always earn more gold this way than through capturing "
+"villages and waiting for turns to run out."
+msgstr ""
+"多くのキャンペーンにおいて、早期終了に対するボーナスゴールドを、 マップ上の村"
+"の数と、 早々に終了したターン数に応じて、受け取る。 こちらの方が、 村を占領し"
+"てターンがつきるまで待ったりするよりも 多くのゴールドを稼ぐことになるだろう。"
+
+#: data/misc/tips.cfg:19
+msgid ""
+"Your leader can recruit or recall units from any keep inside a castle, not "
+"just the keep they start on. You can capture a keep from an enemy and "
+"recruit from there. Also, some of your allies may be willing to make room "
+"for you on their keep so you can recruit there."
+msgstr ""
+"あなたのリーダーは、 スタート地点だけでなく、 城内のどの主塔からも ユニットを"
+"雇用したり召還することができる。 敵から主塔を奪って、 そこから雇用することも"
+"できる。 また、 あなたの同盟軍のあるものは、 主塔の場所をあなたのために空け"
+"て、 そこから雇用できるように してくれるかもしれない。"
+
+#: data/misc/tips.cfg:20
+#, fuzzy
+msgid ""
+"Skeletons are resistant to piercing and bladed attacks but vulnerable to "
+"impact, fire, and arcane attacks."
+msgstr ""
+"スケルトンは、貫通や斬撃での攻撃に耐性があるが、打撃、火炎、神聖の攻撃には弱"
+"い。"
+
+#: data/misc/tips.cfg:21
+msgid ""
+"Units with leadership ability make lower level adjacent units on the same "
+"side fight better."
+msgstr ""
+"リーダーシップ能力をもつユニットは、 同陣営で 自分より低レベルの 隣接するユ"
+"ニットの戦闘力を より良くしてくれる。"
+
+#: data/misc/tips.cfg:22
+msgid ""
+"Generally avoid moving next to an unoccupied village. An enemy unit may move "
+"onto the village and attack you, while enjoying the defense and healing of "
+"the village."
+msgstr ""
+"一般的に、未占拠の村の隣に移動することは避けた方がよい。 敵ユニットがその村に"
+"移動してきて、その村での防御力と回復効果を享受しながら、あなたを攻撃してくる"
+"かもしれない。"
+
+#: data/misc/tips.cfg:23
+msgid ""
+"Holding the mouse cursor on an ability or trait shows a description of that "
+"ability or trait."
+msgstr ""
+"能力や特性の上にマウスカーソルをのせると、 その能力や特性についての説明が 示"
+"される。"
+
+#: data/misc/tips.cfg:24
+msgid "Use lines of units to screen injured units to let them recover."
+msgstr ""
+"負傷したユニットを 回復のために ふるい分けるには、 ユニットのラインを 使うと"
+"よい。"
+
+#: data/misc/tips.cfg:25
+msgid "Read the hotkeys list in the preferences menu."
+msgstr "設定メニューのホットキーの一覧を 読んでみよ。"
+
+#: data/misc/tips.cfg:26
+msgid ""
+"If you move a unit, but don't attack or discover any additional information, "
+"you can undo your move by pressing 'u'."
+msgstr ""
+"もし、ユニットを動かしても、 攻撃をしたり、 何も追加情報を発見していないな"
+"ら、 'u'を押して その移動を元に戻す(アンドゥ)ことができる。"
+
+#: data/misc/tips.cfg:27
+msgid ""
+"You can see how far enemy units can move by moving the mouse cursor over "
+"them."
+msgstr ""
+"敵ユニットがどれだけの距離を移動できるかは、 マウスカーソルをそのユニットの上"
+"に 当てることで、 見ることができる。"
+
+#: data/misc/tips.cfg:28
+msgid ""
+"Use healers to support your attacks - they will win you battles without "
+"needing to attack anything themselves."
+msgstr ""
+"回復させる者を攻撃のサポートに用いよ - 彼等は自身では何も攻撃せずとも、 あな"
+"たを戦いに勝利させてくれるだろう。"
+
+#: data/misc/tips.cfg:29
+msgid ""
+"The 'slow' attack ability makes enemy units move slower and halves the "
+"damage they do on all attacks until they end a turn."
+msgstr ""
+"「遅化」攻撃の能力は敵ユニットを遅くし、彼らのターンが終わるまで敵ユニットの"
+"攻撃によるダメージを半減させる。"
+
+#: data/misc/tips.cfg:30
+#, fuzzy
+msgid "Arcane attacks are very powerful against undead."
+msgstr "神聖な攻撃はアンデッドに対して大変強力である。"
+
+#: data/misc/tips.cfg:31
+msgid ""
+"Units are healed when they advance a level. Used wisely, this can turn a "
+"fight."
+msgstr ""
+"ユニットはレベルが上がると回復する。 これを賢く使えば、 戦いに逆転することも"
+"できる。"
+
+#: data/misc/tips.cfg:32
+msgid ""
+"Charging units are best used against enemies they can kill with a single "
+"blow."
+msgstr "突撃ユニットは、 一撃で倒すことのできる 敵に対して 最も役立つ。"
+
+#: data/misc/tips.cfg:33
+msgid ""
+"Units can gain After Maximum Level Advancements (AMLAs), which usually "
+"increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
+"progressively harder for each AMLA the unit receives, however. Thus, it is "
+"often more useful to try to advance your lower level units."
+msgstr ""
+"ユニットは「最高レベルに達したあとの進歩 (AMLA)」を得ることができる。これは通"
+"常ユニットの最大 HP を 3 増加させる。しかしながら、ユニットが AMLA を得るたび"
+"に、AMLA を得ることがだんだん難しくなる。従って、低いレベルのユニットを成長さ"
+"せるようにする方がたいていは有益である。"
+
+#: data/misc/tips.cfg:34
+msgid ""
+"On maps where the shroud or fog of war has been enabled, a unit's sight is "
+"limited by its maximum movement. Remember this when deciding what unit is "
+"best to scout specific types of terrain."
+msgstr ""
+"幕や戦雲（霧）が有効になっているマップでは、ユニットの視界はそのユニットが最"
+"大で移動できる範囲に制限されている。特定の地形を偵察させるユニットを決めると"
+"きにこのことを覚えておくように。"
+
+#: data/misc/tips.cfg:35
+msgid ""
+"Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
+"your mouse pointer over one to get an explanation or description."
+msgstr ""
+"Wesntoh のゲーム画面にあるほとんどすべてのアイコンや単語にはツールティップが"
+"ある。マウスポインタをその上に置けば、説明や詳細を見ることができる。"
+
+#: data/misc/tips.cfg:36
+#, fuzzy
+msgid ""
+"You can send the Wesnoth Project an anonymous summary of your progress using "
+"the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
+"hand corner of the game main screen).  This information is vital so we can "
+"adjust campaign difficulty."
+msgstr ""
+"「ヘルプ Wesnoth」ボタンを押すことで、Wesnothプロジェクトに匿名のあなたの進捗"
+"の要約を送ることができます。  この情報はキャンペーンの難しさを調整するのに不"
+"可欠です。"
+
+#: data/misc/tips.cfg:37
+msgid ""
+"To advance low-level units quickly, team them with a veteran and use the "
+"veteran to damage a joint target heavily enough for the junior partner to "
+"get in the killing blow."
+msgstr ""
+
+#: data/misc/traits.cfg:9
+msgid "loyal"
+msgstr "忠義"
+
+#: data/misc/traits.cfg:10
+#, fuzzy
+msgid "female^loyal"
+msgstr "女無法者"
+
+#: data/misc/traits.cfg:11
+msgid "Zero upkeep"
+msgstr "維持費なし"
+
+#: data/misc/traits.cfg:22
+msgid "undead"
+msgstr "アンデッド"
+
+#: data/misc/traits.cfg:23
+#, fuzzy
+msgid "female^undead"
+msgstr "女熟練盗賊"
+
+#: data/misc/traits.cfg:24
+msgid "Immune to poison"
+msgstr "毒への耐性"
+
+#: data/misc/traits.cfg:32
+msgid "strong"
+msgstr "強力"
+
+#: data/misc/traits.cfg:33
+#, fuzzy
+msgid "female^strong"
+msgstr "女熟練盗賊"
+
+#: data/misc/traits.cfg:50
+msgid "dextrous"
+msgstr "器用"
+
+#: data/misc/traits.cfg:51
+#, fuzzy
+msgid "female^dextrous"
+msgstr "器用"
+
+#: data/misc/traits.cfg:64
+msgid "quick"
+msgstr "敏捷"
+
+#: data/misc/traits.cfg:65
+#, fuzzy
+msgid "female^quick"
+msgstr "王女"
+
+#: data/misc/traits.cfg:81
+msgid "intelligent"
+msgstr "知的"
+
+#: data/misc/traits.cfg:82
+#, fuzzy
+msgid "female^intelligent"
+msgstr "知的"
+
+#: data/misc/traits.cfg:94
+msgid "resilient"
+msgstr "頑強"
+
+#: data/misc/traits.cfg:95
+#, fuzzy
+msgid "female^resilient"
+msgstr "頑強"
+
+#: data/misc/traits.cfg:111
+msgid "healthy"
+msgstr ""
+
+#: data/misc/traits.cfg:112
+#, fuzzy
+msgid "female^healthy"
+msgstr "女盗賊"
+
+#: data/misc/traits.cfg:113
+msgid "Heals faster if resting"
+msgstr ""
+
+#: data/misc/traits.cfg:125
+#, fuzzy
+msgid "fearless"
+msgstr "王女"
+
+#: data/misc/traits.cfg:126
+#, fuzzy
+msgid "female^fearless"
+msgstr "王女"
+
+#: data/misc/traits.cfg:127
+msgid "Fights normally during unfavorable times of day/night"
+msgstr ""
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
@@ -4561,375 +5447,6 @@ msgstr ""
 "Wesnoth のベンチマークです。以下のオプションを使用します。--no-delay --"
 "multiplayer --scenario=wesbench_shroud_walk --exit-at-end"
 
-#: data/schedules.cfg:83 data/schedules.cfg:91
-msgid "Underground"
-msgstr "地下"
-
-#: data/schedules.cfg:100 data/schedules.cfg:111
-msgid "Deep Underground"
-msgstr "深い地下"
-
-#: data/special-notes.cfg:2
-msgid ""
-" Spirits have very unusual resistances to damage, and move quite slowly over "
-"open water."
-msgstr ""
-" 霊魂はダメージに対して飛び抜けた耐性があり、水の上をきわめてゆっくりと移動し"
-"ます。"
-
-#: data/special-notes.cfg:5
-#, fuzzy
-msgid ""
-" This unit's arcane attack deals tremendous damage to magical creatures, and "
-"even some to mundane creatures."
-msgstr ""
-" このユニットの神聖な攻撃はアンデッドに著しいダメージを与えます。 生きている"
-"生物にさえもかなりのダメージを与えます。"
-
-#: data/special-notes.cfg:8
-msgid ""
-" This unit is capable of basic healing, though it can only delay the effects "
-"of poison, not cure them entirely."
-msgstr ""
-" このユニットは基本的な回復能力がありますが、毒の影響を遅らせることしかでき"
-"ず、 完全に治療することはできません。"
-
-#: data/special-notes.cfg:11
-msgid ""
-" This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
-" このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
-
-#: data/special-notes.cfg:14
-msgid ""
-" This unit regenerates, which allows it to heal as though always stationed "
-"in a village."
-msgstr ""
-" このユニットは再生能力があり、これによって常に村にいるかのように回復すること"
-"ができます。"
-
-#: data/special-notes.cfg:17
-msgid ""
-" The steadiness of this unit reduces damage from some attacks, but only "
-"while defending."
-msgstr ""
-" このユニットの堅実さのおかげで、ある種の攻撃によるダメージを減らすことができ"
-"ます。 しかし、防御時のみです。"
-
-#: data/special-notes.cfg:20
-msgid ""
-" The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
-msgstr ""
-"このユニットの統率力により、隣接する友好的なユニットは戦闘においてより大きな "
-"ダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
-"す。"
-
-#: data/special-notes.cfg:23
-msgid ""
-" This unit's skill at skirmishing allows it to ignore enemies' zones of "
-"control and thus move unhindered around them."
-msgstr ""
-" このユニットの散兵能力により、敵の支配ゾーンを無視することができます。 その"
-"ため、敵に囲まれても移動が妨害されることはありません。"
-
-#: data/special-notes.cfg:26
-msgid " Illumination increases the lighting level in adjacent areas."
-msgstr " 照明は隣接する領域を明るくします。"
-
-#: data/special-notes.cfg:29
-msgid ""
-" This unit can teleport between any two villages instantly, though the "
-"player must control both, and the destination village must be unoccupied."
-msgstr ""
-" このユニットは瞬時に 2 つの村の間を瞬間移動することができます。しかしなが"
-"ら、 どちらの村もプレイヤーの支配下にあり、行き先の村があいている必要がありま"
-"す。"
-
-#: data/special-notes.cfg:32
-msgid ""
-" In woodlands, this unit's ambush skill renders it invisible to enemies "
-"unless it is immediately adjacent or has revealed itself by attacking."
-msgstr ""
-" 森林地では、このユニットの伏兵能力によって敵から見えなくなります。 すぐ隣に"
-"いるか、攻撃することによって自らあらわれた場合を除いて。"
-
-#: data/special-notes.cfg:35
-msgid " This unit is able to hide at night, leaving no trace of its presence."
-msgstr ""
-" このユニットは夜間に隠れることができ、ユニットが存在したという痕跡をまったく"
-"残しません。"
-
-#: data/special-notes.cfg:38
-msgid ""
-" This unit can move unseen in deep water, requiring no air from the surface."
-msgstr ""
-" このユニットは深海では目に触れることなく移動することができます。 水面から空"
-"気を得る必要もありません。"
-
-#: data/special-notes.cfg:41
-msgid ""
-" Whenever its berserk attack is used, this unit continues to push the attack "
-"until either it or its enemy lies dead."
-msgstr ""
-" このユニットの狂戦攻撃が使われた場合、このユニットはそのユニット自身か敵が倒"
-"れるまで攻撃し続けます。"
-
-#: data/special-notes.cfg:44
-msgid ""
-"  If someone with the same allegiance distracts an enemy, this unit may "
-"backstab, inflicting double damage, by creeping around behind that enemy."
-msgstr ""
-"  同盟の誰かがユニットが敵の気を引いていれば、このユニットはその敵の背後に忍"
-"び寄ることで、 2倍のダメージを与えるふい打ちをくらわせます。"
-
-#: data/special-notes.cfg:47
-msgid " Foes who lose their life to the plague will rise again in unlife."
-msgstr " 疫病で命を落とした敵は、死者としてよみがえるでしょう。"
-
-#: data/special-notes.cfg:50
-msgid ""
-" This unit is able to slow its enemies, halving their movement speed and "
-"attack damage until they end a turn."
-msgstr ""
-" このユニットは敵を遅くすることができ、敵のターンが終わるまでの間、 敵の移動"
-"速度と攻撃ダメージを半減させることができます。"
-
-#: data/special-notes.cfg:53
-msgid ""
-" The ability to turn the living to stone makes this unit extremely dangerous."
-msgstr ""
-" 生物を石に変えてしまう能力を持っているため、このユニットはきわめて危険です。"
-
-#: data/special-notes.cfg:56
-msgid ""
-" This unit's marksmanship gives it a high chance of hitting targeted "
-"enemies, but only on the attack."
-msgstr ""
-" このユニットの射撃能力のおかげで目標とされた敵に高い確率で命中します。 しか"
-"し、攻撃側の場合だけです。"
-
-#: data/special-notes.cfg:59
-msgid ""
-" The ranged attacks of this unit are magical, and always have a high chance "
-"of hitting an opponent."
-msgstr ""
-" このユニットの投射攻撃は魔法攻撃であり、常に高い確率で敵に命中します。"
-
-#: data/special-notes.cfg:62
-msgid ""
-" The swarming attacks of this unit become less deadly whenever its members "
-"are wounded."
-msgstr ""
-" このユニットの群れによる攻撃はそのメンバーが傷つくと壊滅的に弱くなります。"
-
-#: data/special-notes.cfg:65
-msgid ""
-" Using a charging attack doubles both damage dealt and received; this does "
-"not affect defensive retaliation."
-msgstr ""
-" 突撃を使うことで、与えるのと受けるのとの両方のダメージが倍となります。 これ"
-"は防御側での反撃には影響しません。"
-
-#: data/special-notes.cfg:68
-msgid ""
-" During battle, this unit can drain life from victims to renew its own "
-"health."
-msgstr ""
-" 戦闘中、このユニットは犠牲者から体力を奪い、自身の健康を回復することができま"
-"す。"
-
-#: data/special-notes.cfg:71
-msgid ""
-" The length of this unit's weapon allows it to strike first in melee, even "
-"in defense."
-msgstr ""
-" このユニットの武器の長さのおかげで、格闘攻撃で先に攻撃することができます。 "
-"防御時でさえも。"
-
-#: data/special-notes.cfg:74
-msgid ""
-" The victims of this unit's poison will continually take damage until they "
-"can be cured in town or by a unit which cures."
-msgstr ""
-" このユニットの毒による犠牲者は、村か治療能力のあるユニットによって治療される"
-"まで 継続的にダメージを受けるでしょう。"
-
-#: data/team-colors.cfg:10
-msgid "Red"
-msgstr "赤"
-
-#: data/team-colors.cfg:16
-msgid "Blue"
-msgstr "青"
-
-#: data/team-colors.cfg:22
-msgid "Green"
-msgstr "緑"
-
-#: data/team-colors.cfg:28
-msgid "Purple"
-msgstr "紫"
-
-#: data/team-colors.cfg:34
-msgid "Orange"
-msgstr "橙"
-
-#: data/team-colors.cfg:40
-msgid "Black"
-msgstr "黒"
-
-#: data/team-colors.cfg:46
-msgid "White"
-msgstr "白"
-
-#: data/team-colors.cfg:52
-msgid "Brown"
-msgstr "茶"
-
-#: data/team-colors.cfg:58
-msgid "Teal"
-msgstr "青緑"
-
-#: data/terrain.cfg:22
-#, fuzzy
-msgid "None"
-msgstr "なし"
-
-#: data/terrain.cfg:29 data/themes/macros.cfg:136
-#: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
-#: src/multiplayer_lobby.cpp:433
-msgid "Shroud"
-msgstr "幕"
-
-#: data/terrain.cfg:36 data/themes/macros.cfg:148
-#: src/multiplayer_lobby.cpp:423
-msgid "Fog"
-msgstr "霧"
-
-#: data/terrain.cfg:157
-msgid "Encampment"
-msgstr "野営地"
-
-#: data/terrain.cfg:178
-#, fuzzy
-msgid "Elven Castle"
-msgstr "ドワーフの城"
-
-#: data/terrain.cfg:189
-msgid "Dwarven Castle"
-msgstr "ドワーフの城"
-
-#: data/terrain.cfg:201
-msgid "Ruin"
-msgstr "廃墟"
-
-#: data/terrain.cfg:212
-msgid "Sunken Ruin"
-msgstr "水中の廃墟"
-
-#: data/terrain.cfg:224
-msgid "Swamp Ruin"
-msgstr "沼の廃墟"
-
-#: data/terrain.cfg:250
-#, fuzzy
-msgid "Encampment keep"
-msgstr "野営地"
-
-#: data/terrain.cfg:262
-msgid "Keep"
-msgstr "主塔"
-
-#: data/terrain.cfg:274
-#, fuzzy
-msgid "Elven Keep"
-msgstr "ドワーフの城"
-
-#: data/terrain.cfg:286
-#, fuzzy
-msgid "Dwarven keep"
-msgstr "ドワーフの城"
-
-#: data/terrain.cfg:298
-msgid "Ruined keep"
-msgstr ""
-
-#: data/terrain.cfg:310
-#, fuzzy
-msgid "Sunken keep"
-msgstr "水中の廃墟"
-
-#: data/terrain.cfg:322
-#, fuzzy
-msgid "Swamp keep"
-msgstr "沼地"
-
-#: data/terrain.cfg:349
-#, fuzzy
-msgid "Crater"
-msgstr "城"
-
-#: data/terrain.cfg:369
-msgid "Rubble"
-msgstr ""
-
-#: data/terrain.cfg:387
-msgid "Oasis"
-msgstr "オアシス"
-
-#: data/terrain.cfg:403
-msgid "Snow Forest"
-msgstr "雪の森"
-
-#: data/terrain.cfg:414
-msgid "Great Tree"
-msgstr "大木"
-
-#: data/terrain.cfg:431
-msgid "Tropical Forest"
-msgstr "熱帯林"
-
-#: data/terrain.cfg:475
-msgid "Snow Hills"
-msgstr "雪丘"
-
-#: data/terrain.cfg:485
-msgid "Dunes"
-msgstr "砂丘"
-
-#: data/terrain.cfg:553
-#, fuzzy
-msgid "Desert road"
-msgstr "砂漠"
-
-#: data/terrain.cfg:562
-msgid "Dirt"
-msgstr "荒地"
-
-#: data/terrain.cfg:580
-#, fuzzy
-msgid "Farmland"
-msgstr "射撃"
-
-#: data/terrain.cfg:616
-msgid "Cave Lit"
-msgstr "照らされた洞窟"
-
-#: data/terrain.cfg:663
-#, fuzzy
-msgid "Rockbound Cave Lit"
-msgstr "岩に囲まれた洞窟"
-
-#: data/terrain.cfg:900
-msgid "Impassable Mountains"
-msgstr "通れない山"
-
-#: data/terrain.cfg:909
-#, fuzzy
-msgid "Impassable Desert Mountains"
-msgstr "通れない山"
-
 #: data/themes/default.cfg:80 data/themes/dfool.cfg:101
 #: data/themes/experimental.cfg:64
 msgid "Menu"
@@ -5053,422 +5570,6 @@ msgstr "サイドのターンを再生"
 #: data/themes/macros.cfg:160
 msgid "Skip animation"
 msgstr "アニメーションを省略"
-
-#: data/tips.cfg:1
-msgid ""
-"Lawful units fight better at day, and chaotic units fight better at night. "
-"Neutral units are unaffected by day and night."
-msgstr ""
-"秩序ユニットは昼間の戦闘に強く、混沌ユニットは夜間の戦闘に強い。中立ユニット"
-"は昼夜の影響を受けない。"
-
-#: data/tips.cfg:2
-msgid ""
-"In a campaign, you can use veteran units from previous scenarios by using "
-"the 'recall' option."
-msgstr ""
-"キャンペーンでは、「召還」オプションを使うことで、以前のシナリオから歴戦のユ"
-"ニットを使用することができる。"
-
-#: data/tips.cfg:3
-#, fuzzy
-msgid ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and "
-"arcane. Different units have weaknesses against different types of attacks. "
-"Right-click on a unit, and then select 'Unit Description', and then click "
-"'Resistance' to see how much resistance a unit has against different attack "
-"types."
-msgstr ""
-"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして神聖の攻撃がある。それぞ"
-"れのユニットは攻撃の種類によってて異なる弱点を持っている。ユニットの上で右ク"
-"リックして、「ユニットの解説」を選択し、「耐性」をクリックすると、ユニットが"
-"それぞれの攻撃の種類に対してどのくらい抵抗力を持っているかを見ることができ"
-"る。"
-
-#: data/tips.cfg:4
-msgid ""
-"The terrain your units are occupying determines the chance your opponents "
-"have of hitting them in battle. The defensive rating for the currently "
-"selected unit in the currently selected terrain is displayed in the top "
-"right corner of the screen."
-msgstr ""
-"ユニットが占領している地形によって、戦闘において敵がそれに命中できる確率が決"
-"定する。選択中のユニットの選択中の地形における防御率は、画面の右上の隅に表示"
-"されている。"
-
-#: data/tips.cfg:5
-msgid ""
-"Poisoned units lose 8 hitpoints every turn, but they will not die from "
-"poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
-"be cured by moving them to a village, or placing them next to a unit with "
-"the 'cures' ability."
-msgstr ""
-"毒を受けているユニットは 毎ターン 8ヒットポイント失うが、毒で死ぬことはない。"
-"つまり、毒で 1ヒットポイント未満に下がることはない。毒を受けたユニットは、村"
-"か、「治療」能力をもつユニットの隣に置くことで、治療することができる。"
-
-#: data/tips.cfg:6
-msgid ""
-"You can use units from a previous scenario by selecting 'Recall' in the game "
-"menu. By recalling the same units over and over, you can build up a powerful "
-"and experienced army."
-msgstr ""
-"ゲームメニューの「召還」を選択することで、前のシナリオからのユニットを使うこ"
-"とができる。同じユニットを何度も何度も召還することで、強力で経験を積んだ軍隊"
-"を築き上げることが可能となる。"
-
-#: data/tips.cfg:7
-msgid ""
-"Units have a Zone of Control in each of the hexes next to them. If a unit "
-"moves into an enemy's Zone of Control, it may not move any further that "
-"turn. Level 0 units are too frail to control a zone; and skirmisher units "
-"are skilled enough to ignore these zones."
-msgstr ""
-"ユニットは隣接する各ヘクスに 「支配ゾーン」を持っている。 もしユニットが敵の"
-"支配ゾーンに入れば、 そのターンにそれ以上移動することはできない。 レベル0のユ"
-"ニットは 弱すぎて、 ゾーンを支配することはできず、 散兵ユニットは このゾーン"
-"を無視するスキルを持つ。"
-
-#: data/tips.cfg:8
-msgid ""
-"The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain it is standing in, however magical attacks have a 70% "
-"chance to hit both when attacking and defending. Marksman attacks have at "
-"least 60% chance to hit when attacking."
-msgstr ""
-"ユニットに命中する確率は通常、 ユニットがいる地形で 自分をどれだけ守られるか"
-"によるが、 魔法攻撃は攻撃と防御時のどちらも 70% の確率となる。 射撃攻撃は攻撃"
-"時に最低60%の確率となる。"
-
-#: data/tips.cfg:9
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
-msgstr ""
-"村に駐留したユニットは、 そのターンの開始時に、 8ヒットポイント回復する。"
-
-#: data/tips.cfg:10
-msgid ""
-"Units rest if they do not move or attack during their turn.  They will "
-"recover 2 hitpoints at the beginning of their next turn."
-msgstr ""
-"自分のターンの間に移動や攻撃をしないと、ユニットは休むことになる。そのユニッ"
-"トは、次のターンの開始時に 2ヒットポイント回復する。"
-
-#: data/tips.cfg:11
-msgid ""
-"Most foot units defend better in villages and castles than in most other "
-"terrain, while most mounted units don't get any defensive advantage in "
-"villages and castles."
-msgstr ""
-"ほとんどの徒歩ユニットは 村と城において、他のほとんどの地形におけるよりも防御"
-"が良くなるが、 乗馬ユニットは 村や城での防御上の利点は 全く得られない。"
-
-#: data/tips.cfg:12
-msgid ""
-"Horse based units are generally resistant to attacks with bladed or impact "
-"weapons, but are vulnerable to attacks with piercing weapons, including bows "
-"and spears."
-msgstr ""
-"馬に乗ったユニットは全般的に、 斬撃や打撃の攻撃には耐えられるが、 弓や槍など"
-"の 貫通する武器での攻撃には弱い。"
-
-#: data/tips.cfg:13
-msgid ""
-"Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain 8 experience for every level of "
-"the unit they kill."
-msgstr ""
-"敵ユニットにとどめの一撃を与えることが、 経験を得る最も良い方法である。 敵を"
-"殺したユニットは、 その敵のレベルの 8倍の 経験値を得られる。"
-
-#: data/tips.cfg:14
-msgid ""
-"Elvish units move and fight very well in forest. Dwarvish units move and "
-"fight very well in hills and mountains."
-msgstr ""
-"エルフのユニットは、 森における移動や戦闘が 得意である。 ドワーフのユニット"
-"は、 丘や山における移動や攻撃を 得意とする。"
-
-#: data/tips.cfg:15
-msgid ""
-"Patience is often key. Rather than attacking in bad conditions, or with few "
-"troops, wait for better conditions and then attack."
-msgstr ""
-"忍耐はしばしば鍵となる。 悪条件や少数軍で攻撃するよりも、 より良い条件になる"
-"まで待ってから 攻撃するとよい。"
-
-#: data/tips.cfg:16
-msgid ""
-"If you are attacked from several directions, it may be a good idea to send "
-"expendable units in some directions to delay enemy units."
-msgstr ""
-"もし多方面からの攻撃を受けたなら、 敵ユニットを遅らせるため、 何方向かに 損害"
-"覚悟のユニットを送るのも 良い考えかもしれない。"
-
-#: data/tips.cfg:17
-msgid ""
-"Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"退却や再編成することを怖れてはいけない。それは、しばしば勝利への鍵となる。"
-
-#: data/tips.cfg:18
-msgid ""
-"In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map and the number of turns you "
-"finish early. You will always earn more gold this way than through capturing "
-"villages and waiting for turns to run out."
-msgstr ""
-"多くのキャンペーンにおいて、早期終了に対するボーナスゴールドを、 マップ上の村"
-"の数と、 早々に終了したターン数に応じて、受け取る。 こちらの方が、 村を占領し"
-"てターンがつきるまで待ったりするよりも 多くのゴールドを稼ぐことになるだろう。"
-
-#: data/tips.cfg:19
-msgid ""
-"Your leader can recruit or recall units from any keep inside a castle, not "
-"just the keep they start on. You can capture a keep from an enemy and "
-"recruit from there. Also, some of your allies may be willing to make room "
-"for you on their keep so you can recruit there."
-msgstr ""
-"あなたのリーダーは、 スタート地点だけでなく、 城内のどの主塔からも ユニットを"
-"雇用したり召還することができる。 敵から主塔を奪って、 そこから雇用することも"
-"できる。 また、 あなたの同盟軍のあるものは、 主塔の場所をあなたのために空け"
-"て、 そこから雇用できるように してくれるかもしれない。"
-
-#: data/tips.cfg:20
-#, fuzzy
-msgid ""
-"Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and arcane attacks."
-msgstr ""
-"スケルトンは、貫通や斬撃での攻撃に耐性があるが、打撃、火炎、神聖の攻撃には弱"
-"い。"
-
-#: data/tips.cfg:21
-msgid ""
-"Units with leadership ability make lower level adjacent units on the same "
-"side fight better."
-msgstr ""
-"リーダーシップ能力をもつユニットは、 同陣営で 自分より低レベルの 隣接するユ"
-"ニットの戦闘力を より良くしてくれる。"
-
-#: data/tips.cfg:22
-msgid ""
-"Generally avoid moving next to an unoccupied village. An enemy unit may move "
-"onto the village and attack you, while enjoying the defense and healing of "
-"the village."
-msgstr ""
-"一般的に、未占拠の村の隣に移動することは避けた方がよい。 敵ユニットがその村に"
-"移動してきて、その村での防御力と回復効果を享受しながら、あなたを攻撃してくる"
-"かもしれない。"
-
-#: data/tips.cfg:23
-msgid ""
-"Holding the mouse cursor on an ability or trait shows a description of that "
-"ability or trait."
-msgstr ""
-"能力や特性の上にマウスカーソルをのせると、 その能力や特性についての説明が 示"
-"される。"
-
-#: data/tips.cfg:24
-msgid "Use lines of units to screen injured units to let them recover."
-msgstr ""
-"負傷したユニットを 回復のために ふるい分けるには、 ユニットのラインを 使うと"
-"よい。"
-
-#: data/tips.cfg:25
-msgid "Read the hotkeys list in the preferences menu."
-msgstr "設定メニューのホットキーの一覧を 読んでみよ。"
-
-#: data/tips.cfg:26
-msgid ""
-"If you move a unit, but don't attack or discover any additional information, "
-"you can undo your move by pressing 'u'."
-msgstr ""
-"もし、ユニットを動かしても、 攻撃をしたり、 何も追加情報を発見していないな"
-"ら、 'u'を押して その移動を元に戻す(アンドゥ)ことができる。"
-
-#: data/tips.cfg:27
-msgid ""
-"You can see how far enemy units can move by moving the mouse cursor over "
-"them."
-msgstr ""
-"敵ユニットがどれだけの距離を移動できるかは、 マウスカーソルをそのユニットの上"
-"に 当てることで、 見ることができる。"
-
-#: data/tips.cfg:28
-msgid ""
-"Use healers to support your attacks - they will win you battles without "
-"needing to attack anything themselves."
-msgstr ""
-"回復させる者を攻撃のサポートに用いよ - 彼等は自身では何も攻撃せずとも、 あな"
-"たを戦いに勝利させてくれるだろう。"
-
-#: data/tips.cfg:29
-msgid ""
-"The 'slow' attack ability makes enemy units move slower and halves the "
-"damage they do on all attacks until they end a turn."
-msgstr ""
-"「遅化」攻撃の能力は敵ユニットを遅くし、彼らのターンが終わるまで敵ユニットの"
-"攻撃によるダメージを半減させる。"
-
-#: data/tips.cfg:30
-#, fuzzy
-msgid "Arcane attacks are very powerful against undead."
-msgstr "神聖な攻撃はアンデッドに対して大変強力である。"
-
-#: data/tips.cfg:31
-msgid ""
-"Units are healed when they advance a level. Used wisely, this can turn a "
-"fight."
-msgstr ""
-"ユニットはレベルが上がると回復する。 これを賢く使えば、 戦いに逆転することも"
-"できる。"
-
-#: data/tips.cfg:32
-msgid ""
-"Charging units are best used against enemies they can kill with a single "
-"blow."
-msgstr "突撃ユニットは、 一撃で倒すことのできる 敵に対して 最も役立つ。"
-
-#: data/tips.cfg:33
-msgid ""
-"Units can gain After Maximum Level Advancements (AMLAs), which usually "
-"increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
-"progressively harder for each AMLA the unit receives, however. Thus, it is "
-"often more useful to try to advance your lower level units."
-msgstr ""
-"ユニットは「最高レベルに達したあとの進歩 (AMLA)」を得ることができる。これは通"
-"常ユニットの最大 HP を 3 増加させる。しかしながら、ユニットが AMLA を得るたび"
-"に、AMLA を得ることがだんだん難しくなる。従って、低いレベルのユニットを成長さ"
-"せるようにする方がたいていは有益である。"
-
-#: data/tips.cfg:34
-msgid ""
-"On maps where the shroud or fog of war has been enabled, a unit's sight is "
-"limited by its maximum movement. Remember this when deciding what unit is "
-"best to scout specific types of terrain."
-msgstr ""
-"幕や戦雲（霧）が有効になっているマップでは、ユニットの視界はそのユニットが最"
-"大で移動できる範囲に制限されている。特定の地形を偵察させるユニットを決めると"
-"きにこのことを覚えておくように。"
-
-#: data/tips.cfg:35
-msgid ""
-"Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
-"your mouse pointer over one to get an explanation or description."
-msgstr ""
-"Wesntoh のゲーム画面にあるほとんどすべてのアイコンや単語にはツールティップが"
-"ある。マウスポインタをその上に置けば、説明や詳細を見ることができる。"
-
-#: data/tips.cfg:36
-#, fuzzy
-msgid ""
-"You can send the Wesnoth Project an anonymous summary of your progress using "
-"the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
-"hand corner of the game main screen).  This information is vital so we can "
-"adjust campaign difficulty."
-msgstr ""
-"「ヘルプ Wesnoth」ボタンを押すことで、Wesnothプロジェクトに匿名のあなたの進捗"
-"の要約を送ることができます。  この情報はキャンペーンの難しさを調整するのに不"
-"可欠です。"
-
-#: data/traits.cfg:9
-msgid "loyal"
-msgstr "忠義"
-
-#: data/traits.cfg:10
-#, fuzzy
-msgid "female^loyal"
-msgstr "女無法者"
-
-#: data/traits.cfg:11
-msgid "Zero upkeep"
-msgstr "維持費なし"
-
-#: data/traits.cfg:22
-msgid "undead"
-msgstr "アンデッド"
-
-#: data/traits.cfg:23
-#, fuzzy
-msgid "female^undead"
-msgstr "女熟練盗賊"
-
-#: data/traits.cfg:24
-msgid "Immune to poison"
-msgstr "毒への耐性"
-
-#: data/traits.cfg:32
-msgid "strong"
-msgstr "強力"
-
-#: data/traits.cfg:33
-#, fuzzy
-msgid "female^strong"
-msgstr "女熟練盗賊"
-
-#: data/traits.cfg:50
-msgid "dextrous"
-msgstr "器用"
-
-#: data/traits.cfg:51
-#, fuzzy
-msgid "female^dextrous"
-msgstr "器用"
-
-#: data/traits.cfg:64
-msgid "quick"
-msgstr "敏捷"
-
-#: data/traits.cfg:65
-#, fuzzy
-msgid "female^quick"
-msgstr "王女"
-
-#: data/traits.cfg:81
-msgid "intelligent"
-msgstr "知的"
-
-#: data/traits.cfg:82
-#, fuzzy
-msgid "female^intelligent"
-msgstr "知的"
-
-#: data/traits.cfg:94
-msgid "resilient"
-msgstr "頑強"
-
-#: data/traits.cfg:95
-#, fuzzy
-msgid "female^resilient"
-msgstr "頑強"
-
-#: data/traits.cfg:111
-msgid "healthy"
-msgstr ""
-
-#: data/traits.cfg:112
-#, fuzzy
-msgid "female^healthy"
-msgstr "女盗賊"
-
-#: data/traits.cfg:113
-msgid "Heals faster if resting"
-msgstr ""
-
-#: data/traits.cfg:125
-#, fuzzy
-msgid "fearless"
-msgstr "王女"
-
-#: data/traits.cfg:126
-#, fuzzy
-msgid "female^fearless"
-msgstr "王女"
-
-#: data/traits.cfg:127
-msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -5713,7 +5814,7 @@ msgstr "かぎ爪"
 #: data/units/Naga_Myrmidon.cfg:29 data/units/Naga_Warrior.cfg:28
 #: data/units/Ogre.cfg:24 data/units/Ogre_Young.cfg:24
 #: data/units/Orcish_Archer.cfg:71 data/units/Orcish_Assassin.cfg:72
-#: data/units/Orcish_Assassin.cfg:110 data/units/Orcish_Crossbowman.cfg:24
+#: data/units/Orcish_Assassin.cfg:99 data/units/Orcish_Crossbowman.cfg:24
 #: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
 #: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:29
 #: data/units/Orcish_Slayer.cfg:120 data/units/Orcish_Slurbow.cfg:24
@@ -8910,7 +9011,7 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/units/Orcish_Assassin.cfg:108 data/units/Orcish_Slayer.cfg:118
+#: data/units/Orcish_Assassin.cfg:97 data/units/Orcish_Slayer.cfg:118
 msgid "throwing knives"
 msgstr "投げナイフ"
 
@@ -8928,10 +9029,6 @@ msgstr ""
 "オークのクロスボウ兵は技能の低さを補うのに十分な威力の武器を備えています。 エ"
 "ルフの射撃手と比べると投射攻撃において効果的ではありませんが、彼らは頑強で あ"
 "るため、格闘戦においてはエルフよりも少しだけ有利です。"
-
-#: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:22
-msgid "short sword"
-msgstr "短剣"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
@@ -9113,18 +9210,6 @@ msgstr ""
 #: data/units/Saurian_Soothsayer.cfg:74
 msgid "curse"
 msgstr "呪い"
-
-#: data/units/Saurian_Augur.cfg:75 data/units/Saurian_Oracle.cfg:75
-#: data/units/Saurian_Soothsayer.cfg:75
-#: data/units/Undead_Necro_Ancient_Lich.cfg:71
-#: data/units/Undead_Necro_Dark_Adept.cfg:32
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:61
-#: data/units/Undead_Necro_Lich.cfg:76 data/units/Undead_Necromancer.cfg:67
-#: data/units/Undead_Spirit_Ghost.cfg:64
-#: data/units/Undead_Spirit_Spectre.cfg:86
-#: data/units/Undead_Spirit_Wraith.cfg:67
-msgid "cold"
-msgstr "冷気"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -9525,11 +9610,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:60
-#: data/units/Undead_Necromancer.cfg:66
-msgid "chill wave"
-msgstr "冷気の嵐"
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
@@ -12002,6 +12082,39 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
 
+#~ msgid ""
+#~ "One of the greatest circles of what is considered 'black magic' is the "
+#~ "art of necromancy, the terrible ability to awaken the dead with false "
+#~ "life. It was a discovery that had terrible ramifications and caused "
+#~ "humanity's condemnation of black magic, for it has given fear a vast new "
+#~ "arsenal.\n"
+#~ "\n"
+#~ "This ability, in all aspects, is the first step towards cheating death of "
+#~ "its ultimate prize. It is the highest degree of power a dark mage can "
+#~ "attain without losing grip on humanity itself, but pales to the lethal "
+#~ "power wielded by Liches. Their mortal bodies are also made sturdier by "
+#~ "their magic, in contrast to the frail decayed form of a Lich.\n"
+#~ "\n"
+#~ "Special Notes: the necromancer's ranged attacks are magical and always "
+#~ "have a high chance of hitting an opponent. The staff of a necromancer is "
+#~ "marked with the plague, and any foe struck down by it will rise again in "
+#~ "unlife."
+#~ msgstr ""
+#~ "「黒魔術」だと考えられている最も偉大な領域のひとつは降霊術師の技術、 死者"
+#~ "を偽りの人生に目覚めさせる恐ろしい能力です。それは恐ろしい悪影響の発見で "
+#~ "あり、黒魔術に対する人間の非難を引き起こし、新しい大量兵器の保有という 恐"
+#~ "怖をもたらしました。\n"
+#~ "\n"
+#~ "この能力は、あらゆる面において、死者を究極のものに変える最初のステップでし"
+#~ "た。 それは闇の魔術師が人間性を失うことなく手に入れることができる最も高度"
+#~ "な 力ですが、リッチのもつ致命的な力に比べれば見劣りするものです。また、彼"
+#~ "らの 人間の体も魔法によって強化されており、リッチのもろく崩壊した姿とは対"
+#~ "照的です。\n"
+#~ "\n"
+#~ "特記事項:降霊術師の投射攻撃は魔法攻撃であり、いつも高い確率で敵に 命中しま"
+#~ "す。降霊術師の杖には疫病の印が付けられており、それによって 倒された敵はす"
+#~ "べて死者としてよみがえるでしょう。"
+
 #~ msgid "About"
 #~ msgstr "クレジット"
 
@@ -12063,9 +12176,6 @@ msgstr "サマリのアップロードを有効にする"
 
 #~ msgid "Scenario Designers"
 #~ msgstr "シナリオデザイナー"
-
-#~ msgid "Multiplayer Developers"
-#~ msgstr "マルチプレイヤー開発"
 
 #~ msgid "+Developers"
 #~ msgstr "+開発者"
@@ -12156,9 +12266,6 @@ msgstr "サマリのアップロードを有効にする"
 #~ "草原のリーダーである熟練乗馬戦士は剣とモーニングスターの使用に長けていま"
 #~ "す。 騎乗によって、彼らは素晴しい速度で戦場をあちこち移動することができ、"
 #~ "よって、 複数の前線へ必要な支援を行うことができます。"
-
-#~ msgid "Current Maintainer"
-#~ msgstr "現在の管理者"
 
 #~ msgid "female^Battle Princess"
 #~ msgstr "戦闘の王女"
@@ -12671,39 +12778,6 @@ msgstr "サマリのアップロードを有効にする"
 #~ "して高い 抵抗力があります。また彼らは 2 つの村の間を瞬間移動することができ"
 #~ "ますが、 プレイヤーが両方を支配していて、 移動先の村が空いていなければなり"
 #~ "ません。"
-
-#~ msgid ""
-#~ "One of the greatest circles of what is considered 'black magic' is the "
-#~ "art of necromancy, the terrible ability to awaken the dead with false "
-#~ "life. It was a discovery that had terrible ramifications and caused "
-#~ "humanity's condemnation of black magic, for it has given fear a vast new "
-#~ "arsenal.\n"
-#~ "\n"
-#~ "This ability, in all aspects, is the first step towards cheating death of "
-#~ "its ultimate prize. It is the highest degree of power a dark mage can "
-#~ "attain without losing grip on humanity itself, but pales to the lethal "
-#~ "power wielded by Liches. Their mortal bodies are also made sturdier by "
-#~ "their magic, in contrast to the frail decayed form of a Lich.\n"
-#~ "\n"
-#~ "Special Notes: the necromancer's ranged attacks are magical and always "
-#~ "have a high chance of hitting an opponent. The staff of a necromancer is "
-#~ "marked with the plague, and any foe struck down by it will rise again in "
-#~ "unlife."
-#~ msgstr ""
-#~ "「黒魔術」だと考えられている最も偉大な領域のひとつは降霊術師の技術、 死者"
-#~ "を偽りの人生に目覚めさせる恐ろしい能力です。それは恐ろしい悪影響の発見で "
-#~ "あり、黒魔術に対する人間の非難を引き起こし、新しい大量兵器の保有という 恐"
-#~ "怖をもたらしました。\n"
-#~ "\n"
-#~ "この能力は、あらゆる面において、死者を究極のものに変える最初のステップでし"
-#~ "た。 それは闇の魔術師が人間性を失うことなく手に入れることができる最も高度"
-#~ "な 力ですが、リッチのもつ致命的な力に比べれば見劣りするものです。また、彼"
-#~ "らの 人間の体も魔法によって強化されており、リッチのもろく崩壊した姿とは対"
-#~ "照的です。\n"
-#~ "\n"
-#~ "特記事項:降霊術師の投射攻撃は魔法攻撃であり、いつも高い確率で敵に 命中しま"
-#~ "す。降霊術師の杖には疫病の印が付けられており、それによって 倒された敵はす"
-#~ "べて死者としてよみがえるでしょう。"
 
 #~ msgid "female^Fighter"
 #~ msgstr "女戦士"

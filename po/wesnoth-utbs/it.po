@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-10 22:41+0200\n"
+"POT-Creation-Date: 2007-05-12 01:26+0200\n"
 "PO-Revision-Date: 2007-05-07 17:07+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -13272,6 +13272,7 @@ msgstr "raggio di energia"
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body2.cfg:56
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:57
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Spire.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/units/Haunt.cfg:69
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:63
@@ -13450,6 +13451,7 @@ msgstr "ragnatela"
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:66
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:84
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:67
 #: data/campaigns/Under_the_Burning_Suns/units/Flesh_Golem.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/Cave_Spider2.cfg:88
@@ -13832,6 +13834,8 @@ msgstr ""
 "dimezzando la loro velocità di movimento e il danno degli attacchi. Le "
 "driadi sono in grado di curare le unità adiacenti, e di guarirle dal veleno."
 
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:26
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:41
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:42
 #: data/campaigns/Under_the_Burning_Suns/units/Zhul_Druid.cfg:43
@@ -14811,6 +14815,33 @@ msgstr ""
 msgid "Naga Warden"
 msgstr "Capo guardiano naga"
 
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
+msgid "Necromancer"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:22
+msgid ""
+"One of the greatest circles of what is considered 'black magic' is the art "
+"of necromancy, the terrible ability to awaken the dead with false life. It "
+"was a discovery that had terrible ramifications and caused humanity's "
+"condemnation of black magic, for it has given fear a vast new arsenal.\n"
+"\n"
+"This ability, in all aspects, is the first step towards cheating death of "
+"its ultimate prize. It is the highest degree of power a dark mage can attain "
+"without losing grip on humanity itself, but pales to the lethal power "
+"wielded by Liches. Their mortal bodies are also made sturdier by their "
+"magic, in contrast to the frail decayed form of a Lich.\n"
+"\n"
+"Special Notes: the necromancer's ranged attacks are magical and always have "
+"a high chance of hitting an opponent. The staff of a necromancer is marked "
+"with the plague, and any foe struck down by it will rise again in unlife."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:50
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
+msgid "chill wave"
+msgstr ""
+
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:34
 msgid ""
 "Desert Prowlers sneak across the sands, searching out enemies and protecting "
@@ -14945,6 +14976,87 @@ msgstr ""
 "periodo del giorno è il crepuscolo, e come se fosse il crepuscolo se il "
 "periodo è notturno. Il potere di Eloh inoltre riduce le ferite subite dalle "
 "stelle del deserto quando vengono attaccate."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:18
+msgid "I'm too young to die. What will happen to my people?"
+msgstr "Sono troppo giovane per morire. Che sarà della mia gente?"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:36
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:243
+msgid "Save me Kaleh, I'm dying..."
+msgstr "Salvami, Kaleh, sto morendo..."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:267
+msgid "Eloh protect us, I have fallen."
+msgstr "Che Eloh ci protegga, sto morendo."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:73
+#, fuzzy
+msgid "Aaaargh! Curse you!"
+msgstr "Aaargh! Carne fresca!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:95
+msgid "This can't be the end, I have too much left to see."
+msgstr "Non può essere la fine, devo vedere ancora tante cose."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:100
+msgid ""
+"How could we have let her die? I've never seen fire magic like that before. "
+"She will be sorely missed."
+msgstr ""
+"Come abbiamo potuto lasciare che morisse? Non avevo mai visto prima magia "
+"del fuoco come la sua. Ci mancherà molto."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:126
+msgid "I go now to join my forefathers..."
+msgstr "Ora vado a unirmi ai miei avi..."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:135
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:309
+msgid "No, $ally_name can't die now!"
+msgstr "No, $ally_name non deve morire adesso!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:151
+msgid ""
+"Without his guidance, how can we escape from these infernal caves? We are "
+"lost without him!"
+msgstr ""
+"Senza la sua guida, come faremo a scappare da queste grotte infernali? Senza "
+"di lui siamo perduti!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:164
+msgid "He was a brave warrior and a true ally. He will be missed."
+msgstr "È stato un guerriero coraggioso ed un alleato leale. Ci mancherà."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:187
+msgid "Farewell Nym, I go to the sea god. You elves must go on without me."
+msgstr ""
+"Addio, Nym. Vado dal dio del mare. Voi elfi dovrete proseguire senza di me."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:192
+msgid "Farewell Esanoo. You were my favorite of the merfolk."
+msgstr "Addio, Esanoo. Fra i nereidi eri quello che amavo di più."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:206
+msgid "Aaauurrrgghhh!!!"
+msgstr "Aaauurrrgghhh!!!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:225
+msgid "To die on the cusp of victory. Oh the irony!"
+msgstr "Morire proprio all'apice della vittoria! Che ironia!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:300
+msgid "By Moradin, I have fallen!"
+msgstr "Per Moradin, sono perduto!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/macros.cfg:107
+msgid ""
+"These undead trolls fight again in death as they did in life, except this "
+"time they smell much worse."
+msgstr ""
+"Questi morti viventi sono troll che combattono nuovamente da morti come "
+"fecero in vita, con la differenza che ora puzzano anche di più."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:44
 msgid "Lava"
@@ -15094,58 +15206,6 @@ msgstr "La lunga oscurità (4)"
 #~ msgid "ink"
 #~ msgstr "inchiostro"
 
-#~ msgid "I'm too young to die. What will happen to my people?"
-#~ msgstr "Sono troppo giovane per morire. Che sarà della mia gente?"
-
-#~ msgid "Save me Kaleh, I'm dying..."
-#~ msgstr "Salvami, Kaleh, sto morendo..."
-
-#~ msgid "Eloh protect us, I have fallen."
-#~ msgstr "Che Eloh ci protegga, sto morendo."
-
-#~ msgid "This can't be the end, I have too much left to see."
-#~ msgstr "Non può essere la fine, devo vedere ancora tante cose."
-
-#~ msgid ""
-#~ "How could we have let her die? I've never seen fire magic like that "
-#~ "before. She will be sorely missed."
-#~ msgstr ""
-#~ "Come abbiamo potuto lasciare che morisse? Non avevo mai visto prima magia "
-#~ "del fuoco come la sua. Ci mancherà molto."
-
-#~ msgid "I go now to join my forefathers..."
-#~ msgstr "Ora vado a unirmi ai miei avi..."
-
-#~ msgid "No, $ally_name can't die now!"
-#~ msgstr "No, $ally_name non deve morire adesso!"
-
-#~ msgid ""
-#~ "Without his guidance, how can we escape from these infernal caves? We are "
-#~ "lost without him!"
-#~ msgstr ""
-#~ "Senza la sua guida, come faremo a scappare da queste grotte infernali? "
-#~ "Senza di lui siamo perduti!"
-
-#~ msgid "He was a brave warrior and a true ally. He will be missed."
-#~ msgstr "È stato un guerriero coraggioso ed un alleato leale. Ci mancherà."
-
-#~ msgid "Farewell Nym, I go to the sea god. You elves must go on without me."
-#~ msgstr ""
-#~ "Addio, Nym. Vado dal dio del mare. Voi elfi dovrete proseguire senza di "
-#~ "me."
-
-#~ msgid "Farewell Esanoo. You were my favorite of the merfolk."
-#~ msgstr "Addio, Esanoo. Fra i nereidi eri quello che amavo di più."
-
-#~ msgid "Aaauurrrgghhh!!!"
-#~ msgstr "Aaauurrrgghhh!!!"
-
-#~ msgid "To die on the cusp of victory. Oh the irony!"
-#~ msgstr "Morire proprio all'apice della vittoria! Che ironia!"
-
-#~ msgid "By Moradin, I have fallen!"
-#~ msgstr "Per Moradin, sono perduto!"
-
 #~ msgid "Oasis"
 #~ msgstr "Oasi"
 
@@ -15185,13 +15245,6 @@ msgstr "La lunga oscurità (4)"
 
 #~ msgid "Troll Zombie"
 #~ msgstr "Troll zombi"
-
-#~ msgid ""
-#~ "These undead trolls fight again in death as they did in life, except this "
-#~ "time they smell much worse."
-#~ msgstr ""
-#~ "Questi morti viventi sono troll che combattono nuovamente da morti come "
-#~ "fecero in vita, con la differenza che ora puzzano anche di più."
 
 #~ msgid "7"
 #~ msgstr "7"

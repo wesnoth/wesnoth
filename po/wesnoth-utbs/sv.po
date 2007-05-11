@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-10 22:41+0200\n"
+"POT-Creation-Date: 2007-05-12 01:26+0200\n"
 "PO-Revision-Date: 2007-02-11 22:23+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -12992,6 +12992,7 @@ msgstr "kraftstråle"
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body2.cfg:56
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:57
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Spire.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/units/Haunt.cfg:69
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:63
@@ -13169,6 +13170,7 @@ msgstr "spindelnät"
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:66
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:84
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:67
 #: data/campaigns/Under_the_Burning_Suns/units/Flesh_Golem.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/Cave_Spider2.cfg:88
@@ -13547,6 +13549,8 @@ msgstr ""
 "både deras förflyttning och vållad skada med hälften. Druider har förmågan "
 "att hela trupper i sin närhet och att bota dem från förgiftning."
 
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:26
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:41
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:42
 #: data/campaigns/Under_the_Burning_Suns/units/Zhul_Druid.cfg:43
@@ -14490,6 +14494,33 @@ msgstr ""
 msgid "Naga Warden"
 msgstr "Nagavakt"
 
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
+msgid "Necromancer"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:22
+msgid ""
+"One of the greatest circles of what is considered 'black magic' is the art "
+"of necromancy, the terrible ability to awaken the dead with false life. It "
+"was a discovery that had terrible ramifications and caused humanity's "
+"condemnation of black magic, for it has given fear a vast new arsenal.\n"
+"\n"
+"This ability, in all aspects, is the first step towards cheating death of "
+"its ultimate prize. It is the highest degree of power a dark mage can attain "
+"without losing grip on humanity itself, but pales to the lethal power "
+"wielded by Liches. Their mortal bodies are also made sturdier by their "
+"magic, in contrast to the frail decayed form of a Lich.\n"
+"\n"
+"Special Notes: the necromancer's ranged attacks are magical and always have "
+"a high chance of hitting an opponent. The staff of a necromancer is marked "
+"with the plague, and any foe struck down by it will rise again in unlife."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:50
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
+msgid "chill wave"
+msgstr ""
+
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:34
 msgid ""
 "Desert Prowlers sneak across the sands, searching out enemies and protecting "
@@ -14619,6 +14650,86 @@ msgstr ""
 "om det dag i gryning och skymning och under natten som i skymningen. Elohs "
 "makt minskar också skadorna som ökenstjärnorna ådrar sig när de blir "
 "attackerade."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:18
+msgid "I'm too young to die. What will happen to my people?"
+msgstr "Jag är för ung för att dö. Vad skall hända med mitt folk?"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:36
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:243
+msgid "Save me Kaleh, I'm dying..."
+msgstr "Rädda mig, Kaleh, jag dör..."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:267
+msgid "Eloh protect us, I have fallen."
+msgstr "Eloh, beskydda oss. Jag har fallit."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:73
+#, fuzzy
+msgid "Aaaargh! Curse you!"
+msgstr "Aaaargh! Färskt kött!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:95
+msgid "This can't be the end, I have too much left to see."
+msgstr "Detta kan inte vara slutet, jag har så mycket kvar att göra..."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:100
+msgid ""
+"How could we have let her die? I've never seen fire magic like that before. "
+"She will be sorely missed."
+msgstr ""
+"Hur kunde vi låta henne dö? Jag har aldrig tidigare sett en magisk eld som "
+"hennes. Vi kommer att sakna henne bittert."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:126
+msgid "I go now to join my forefathers..."
+msgstr "Jag ansluter mig till mina förfäder..."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:135
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:309
+msgid "No, $ally_name can't die now!"
+msgstr "Nej! $ally_name kan inte dö nu!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:151
+msgid ""
+"Without his guidance, how can we escape from these infernal caves? We are "
+"lost without him!"
+msgstr ""
+"Hur skall vi kunna ta oss ur de här infernaliska grottorna utan hans "
+"vägledning? Utan honom är vi förlorade!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:164
+msgid "He was a brave warrior and a true ally. He will be missed."
+msgstr "Han var en modig krigare och en sann vän. Vi kommer att sakna honom."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:187
+msgid "Farewell Nym, I go to the sea god. You elves must go on without me."
+msgstr "Farväl Nym, jag går till havsguden. Ni alver måste fortsätta utan mig."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:192
+msgid "Farewell Esanoo. You were my favorite of the merfolk."
+msgstr "Farväl Esanoo. Du var min favorit bland sjöfolket."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:206
+msgid "Aaauurrrgghhh!!!"
+msgstr "Aaauurrrgghhh!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:225
+msgid "To die on the cusp of victory. Oh the irony!"
+msgstr "Att dö så nära segern! Åh, denna ironi!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:300
+msgid "By Moradin, I have fallen!"
+msgstr "Vid Moradin, jag har fallit!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/macros.cfg:107
+msgid ""
+"These undead trolls fight again in death as they did in life, except this "
+"time they smell much worse."
+msgstr ""
+"Dessa vandöda troll slåss åter i döden såsom de än gång gjorde i livet, "
+"bortsett från att de nu luktar mycket värre."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:44
 msgid "Lava"
@@ -14763,58 +14874,6 @@ msgstr "Det långa mörkret (4)"
 #~ msgid "ink"
 #~ msgstr "bläck"
 
-#~ msgid "I'm too young to die. What will happen to my people?"
-#~ msgstr "Jag är för ung för att dö. Vad skall hända med mitt folk?"
-
-#~ msgid "Save me Kaleh, I'm dying..."
-#~ msgstr "Rädda mig, Kaleh, jag dör..."
-
-#~ msgid "Eloh protect us, I have fallen."
-#~ msgstr "Eloh, beskydda oss. Jag har fallit."
-
-#~ msgid "This can't be the end, I have too much left to see."
-#~ msgstr "Detta kan inte vara slutet, jag har så mycket kvar att göra..."
-
-#~ msgid ""
-#~ "How could we have let her die? I've never seen fire magic like that "
-#~ "before. She will be sorely missed."
-#~ msgstr ""
-#~ "Hur kunde vi låta henne dö? Jag har aldrig tidigare sett en magisk eld "
-#~ "som hennes. Vi kommer att sakna henne bittert."
-
-#~ msgid "I go now to join my forefathers..."
-#~ msgstr "Jag ansluter mig till mina förfäder..."
-
-#~ msgid "No, $ally_name can't die now!"
-#~ msgstr "Nej! $ally_name kan inte dö nu!"
-
-#~ msgid ""
-#~ "Without his guidance, how can we escape from these infernal caves? We are "
-#~ "lost without him!"
-#~ msgstr ""
-#~ "Hur skall vi kunna ta oss ur de här infernaliska grottorna utan hans "
-#~ "vägledning? Utan honom är vi förlorade!"
-
-#~ msgid "He was a brave warrior and a true ally. He will be missed."
-#~ msgstr ""
-#~ "Han var en modig krigare och en sann vän. Vi kommer att sakna honom."
-
-#~ msgid "Farewell Nym, I go to the sea god. You elves must go on without me."
-#~ msgstr ""
-#~ "Farväl Nym, jag går till havsguden. Ni alver måste fortsätta utan mig."
-
-#~ msgid "Farewell Esanoo. You were my favorite of the merfolk."
-#~ msgstr "Farväl Esanoo. Du var min favorit bland sjöfolket."
-
-#~ msgid "Aaauurrrgghhh!!!"
-#~ msgstr "Aaauurrrgghhh!"
-
-#~ msgid "To die on the cusp of victory. Oh the irony!"
-#~ msgstr "Att dö så nära segern! Åh, denna ironi!"
-
-#~ msgid "By Moradin, I have fallen!"
-#~ msgstr "Vid Moradin, jag har fallit!"
-
 #~ msgid "Oasis"
 #~ msgstr "Oas"
 
@@ -14851,13 +14910,6 @@ msgstr "Det långa mörkret (4)"
 
 #~ msgid "Troll Zombie"
 #~ msgstr "Trollzombie"
-
-#~ msgid ""
-#~ "These undead trolls fight again in death as they did in life, except this "
-#~ "time they smell much worse."
-#~ msgstr ""
-#~ "Dessa vandöda troll slåss åter i döden såsom de än gång gjorde i livet, "
-#~ "bortsett från att de nu luktar mycket värre."
 
 #~ msgid "7"
 #~ msgstr "7"

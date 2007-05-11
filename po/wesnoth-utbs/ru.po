@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-10 22:41+0200\n"
+"POT-Creation-Date: 2007-05-12 01:26+0200\n"
 "PO-Revision-Date: 2007-02-20 22:25+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -10859,6 +10859,7 @@ msgstr "энергетический луч"
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body2.cfg:56
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:57
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Spire.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/units/Haunt.cfg:69
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:63
@@ -11036,6 +11037,7 @@ msgstr "паутина"
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:66
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:84
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:67
 #: data/campaigns/Under_the_Burning_Suns/units/Flesh_Golem.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/Cave_Spider2.cfg:88
@@ -11396,6 +11398,8 @@ msgstr ""
 "двигаться в два раза медленнее и наносить лишь половину урона. Друиды "
 "способны исцелять соединения вокруг них, а также вылечивать их от яда."
 
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:26
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:41
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:42
 #: data/campaigns/Under_the_Burning_Suns/units/Zhul_Druid.cfg:43
@@ -12189,6 +12193,33 @@ msgstr ""
 msgid "Naga Warden"
 msgstr "Наг-смотритель"
 
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
+msgid "Necromancer"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:22
+msgid ""
+"One of the greatest circles of what is considered 'black magic' is the art "
+"of necromancy, the terrible ability to awaken the dead with false life. It "
+"was a discovery that had terrible ramifications and caused humanity's "
+"condemnation of black magic, for it has given fear a vast new arsenal.\n"
+"\n"
+"This ability, in all aspects, is the first step towards cheating death of "
+"its ultimate prize. It is the highest degree of power a dark mage can attain "
+"without losing grip on humanity itself, but pales to the lethal power "
+"wielded by Liches. Their mortal bodies are also made sturdier by their "
+"magic, in contrast to the frail decayed form of a Lich.\n"
+"\n"
+"Special Notes: the necromancer's ranged attacks are magical and always have "
+"a high chance of hitting an opponent. The staff of a necromancer is marked "
+"with the plague, and any foe struck down by it will rise again in unlife."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:50
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
+msgid "chill wave"
+msgstr ""
+
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:34
 msgid ""
 "Desert Prowlers sneak across the sands, searching out enemies and protecting "
@@ -12297,6 +12328,87 @@ msgid ""
 "dusk when it is night. Eloh's power also reduces the wounds that Desert "
 "Stars suffer when attacked. "
 msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:18
+msgid "I'm too young to die. What will happen to my people?"
+msgstr "Я слишком молод, чтобы умирать. Что будет с моим народом?"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:36
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:243
+msgid "Save me Kaleh, I'm dying..."
+msgstr "Кале, помоги... Я умираю..."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:267
+msgid "Eloh protect us, I have fallen."
+msgstr "Храни нас Эло, я умираю."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:73
+#, fuzzy
+msgid "Aaaargh! Curse you!"
+msgstr "Ага! Свежее мясо!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:95
+msgid "This can't be the end, I have too much left to see."
+msgstr "Этого не может быть, я еще многого не видела."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:100
+msgid ""
+"How could we have let her die? I've never seen fire magic like that before. "
+"She will be sorely missed."
+msgstr ""
+"Как мы могли позволить ей умереть? Я никогда до этого не видел магии огня. "
+"Ее будет очень не хватать."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:126
+msgid "I go now to join my forefathers..."
+msgstr "Теперь я присоединюсь к свом праотцам..."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:135
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:309
+msgid "No, $ally_name can't die now!"
+msgstr "Нет, $ally_name не может умереть!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:151
+msgid ""
+"Without his guidance, how can we escape from these infernal caves? We are "
+"lost without him!"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:164
+msgid "He was a brave warrior and a true ally. He will be missed."
+msgstr ""
+"Он был смелым воином и настоящим боевым товарищем. Нам будет его не хватать."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:187
+msgid "Farewell Nym, I go to the sea god. You elves must go on without me."
+msgstr ""
+"Прощай, Ним, я иду навстречу к морскому богу. Вы должны идти дальше без меня."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:192
+msgid "Farewell Esanoo. You were my favorite of the merfolk."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:206
+msgid "Aaauurrrgghhh!!!"
+msgstr "Аааурр!!!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:225
+msgid "To die on the cusp of victory. Oh the irony!"
+msgstr "Умереть за полшага от победа. Что за судьба!"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:300
+#, fuzzy
+msgid "By Moradin, I have fallen!"
+msgstr "Мыс Павшего Лича"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/macros.cfg:107
+msgid ""
+"These undead trolls fight again in death as they did in life, except this "
+"time they smell much worse."
+msgstr ""
+"Эти мертвые тролли бьются после смерти, как и при жизни, за тем лишь "
+"исключением, что воняют они еще хуже."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:44
 msgid "Lava"
@@ -12429,51 +12541,6 @@ msgstr "Длинная ночь (4)"
 #~ msgid "ink"
 #~ msgstr "тушь"
 
-#~ msgid "I'm too young to die. What will happen to my people?"
-#~ msgstr "Я слишком молод, чтобы умирать. Что будет с моим народом?"
-
-#~ msgid "Save me Kaleh, I'm dying..."
-#~ msgstr "Кале, помоги... Я умираю..."
-
-#~ msgid "Eloh protect us, I have fallen."
-#~ msgstr "Храни нас Эло, я умираю."
-
-#~ msgid "This can't be the end, I have too much left to see."
-#~ msgstr "Этого не может быть, я еще многого не видела."
-
-#~ msgid ""
-#~ "How could we have let her die? I've never seen fire magic like that "
-#~ "before. She will be sorely missed."
-#~ msgstr ""
-#~ "Как мы могли позволить ей умереть? Я никогда до этого не видел магии "
-#~ "огня. Ее будет очень не хватать."
-
-#~ msgid "I go now to join my forefathers..."
-#~ msgstr "Теперь я присоединюсь к свом праотцам..."
-
-#~ msgid "No, $ally_name can't die now!"
-#~ msgstr "Нет, $ally_name не может умереть!"
-
-#~ msgid "He was a brave warrior and a true ally. He will be missed."
-#~ msgstr ""
-#~ "Он был смелым воином и настоящим боевым товарищем. Нам будет его не "
-#~ "хватать."
-
-#~ msgid "Farewell Nym, I go to the sea god. You elves must go on without me."
-#~ msgstr ""
-#~ "Прощай, Ним, я иду навстречу к морскому богу. Вы должны идти дальше без "
-#~ "меня."
-
-#~ msgid "Aaauurrrgghhh!!!"
-#~ msgstr "Аааурр!!!"
-
-#~ msgid "To die on the cusp of victory. Oh the irony!"
-#~ msgstr "Умереть за полшага от победа. Что за судьба!"
-
-#, fuzzy
-#~ msgid "By Moradin, I have fallen!"
-#~ msgstr "Мыс Павшего Лича"
-
 #~ msgid "Oasis"
 #~ msgstr "Оазис"
 
@@ -12494,13 +12561,6 @@ msgstr "Длинная ночь (4)"
 
 #~ msgid "Troll Zombie"
 #~ msgstr "Тролль зомби"
-
-#~ msgid ""
-#~ "These undead trolls fight again in death as they did in life, except this "
-#~ "time they smell much worse."
-#~ msgstr ""
-#~ "Эти мертвые тролли бьются после смерти, как и при жизни, за тем лишь "
-#~ "исключением, что воняют они еще хуже."
 
 #~ msgid "7"
 #~ msgstr "7"
