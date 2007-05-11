@@ -282,7 +282,7 @@ def vcunmove(src, dst):
     (dir, base) = os.path.split(src)
     if os.path.exists(os.path.join(dir, ".svn")):
         return "svn revert %s" % dst	# Revert the add at the destination
-        return "rm %s" dst		# Remove the moved copy
+        return "rm %s" % dst		# Remove the moved copy
         return "svn revert %s" % src	# Revert the deletion
     else:
         return "mv %s %s" % (dst, src)
