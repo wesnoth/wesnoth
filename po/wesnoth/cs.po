@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-10 22:39+0200\n"
-"PO-Revision-Date: 2007-05-07 18:44+0100\n"
+"PO-Revision-Date: 2007-05-11 22:56+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -739,40 +739,47 @@ msgstr "Les $name,Les $name"
 msgid "$name Lake"
 msgstr "Jezero $name"
 
+# pův.: "$name|pochován,město|$name,tón|$name"
 #: data/english.cfg:38
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr "$name|pochován,město|$name,tón|$name"
+msgstr "$name|bury,$name|ham,$name|ton"
 
+# pův.: "přístav|$name,přístav|$name"
 #: data/english.cfg:39
 msgid "$name|harbor,$name|port"
-msgstr "přístav|$name,přístav|$name"
+msgstr "$name|harbor,$name|port"
 
+# pův.: "město|$name,brod|$name,křižovatka|$name,$river|brod,soutok|$river"
 #: data/english.cfg:40
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr "město|$name,brod|$name,křižovatka|$name,$river|brod,soutok|$river"
+msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
+# pův.: "most|$river,most|$river,most|$river,město|$name,most|$name"
 #: data/english.cfg:41
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "most|$river,most|$river,most|$river,město|$name,most|$name"
+msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 
+# pův.: "město|$name,tón|$name,pole|$name"
 #: data/english.cfg:42
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "město|$name,tón|$name,pole|$name"
+msgstr "$name|ham,$name|ton,$name|field"
 
+# pův.: "město|$name,tón|$name,háj|$name,Les $name"
 #: data/english.cfg:43
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "město|$name,tón|$name,háj|$name,Les $name"
+msgstr "$name|ham,$name|ton,$name|wood,$name Forest"
 
+# pův.: "město|$name,pochován|$name,tón|$name,vrch|$name,hřeben|$name"
 #: data/english.cfg:44
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "město|$name,pochován|$name,tón|$name,vrch|$name,hřeben|$name"
+msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
+# pův.: "město|$name,pochován|$name,tón|$name,vrchol|$name,vrchol|$name,sráz|$name,sráz|$name"
 #: data/english.cfg:45
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"město|$name,pochován|$name,tón|$name,vrchol|$name,vrchol|$name,sráz|$name,"
-"sráz|$name"
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 
 #: data/english.cfg:48
 msgid "melee"
@@ -817,7 +824,7 @@ msgstr "Knalganská aliance"
 
 #: data/factions/loyalists-aoh.cfg:4 data/factions/loyalists-default.cfg:4
 msgid "Loyalists"
-msgstr "Věrný"
+msgstr "Věrní"
 
 #: data/factions/northerners-aoh.cfg:4 data/factions/northerners-default.cfg:4
 msgid "Northerners"
@@ -825,7 +832,7 @@ msgstr "Seveřané"
 
 #: data/factions/rebels-aoh.cfg:4 data/factions/rebels-default.cfg:4
 msgid "Rebels"
-msgstr "Odbojný"
+msgstr "Odbojní"
 
 #: data/factions/undead-aoh.cfg:4 data/factions/undead-default.cfg:4
 msgid "Undead"
@@ -3842,9 +3849,8 @@ msgstr ""
 "Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 
 #: data/names.cfg:51
-#, fuzzy
 msgid " "
-msgstr "; "
+msgstr " "
 
 #: data/names.cfg:56
 msgid ""
@@ -5438,9 +5444,10 @@ msgstr "úroveň"
 msgid "statuspanel^movement"
 msgstr "pohyby"
 
+# pův.: "Hrát", což je blbost, protože je to místo "actions" pro malé rozlišení
 #: data/themes/default.cfg:536
 msgid "Act."
-msgstr "Hrát"
+msgstr "Akce"
 
 # v budoucnosti pozor na termíny ... možnost změn
 #: data/themes/default.cfg:569
@@ -10287,7 +10294,6 @@ msgid "Draug"
 msgstr "Draug"
 
 #: data/units/Undead_Skele_Draug.cfg:19
-#, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were.  "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
