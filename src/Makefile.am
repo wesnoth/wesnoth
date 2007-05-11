@@ -22,6 +22,7 @@ endif
 if TOOLS
 bin_PROGRAMS += exploder cutter
 bin_SCRIPTS += wmlscope wmllint
+CLEANFILES = $(bin_SCRIPTS)
 endif
 
 if EDITOR
@@ -536,3 +537,10 @@ else
 install-exec-hook:
 uninstall-hook:
 endif
+
+#############################################################################
+#    Scripts
+#############################################################################
+
+$(bin_SCRIPTS):
+	cp ../data/tools/$@ . 
