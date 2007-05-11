@@ -22,9 +22,9 @@
 # 6. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
 #
-# This script will barf on maps with custom terrains.  Also, if you a single
-# subdirectory that mixes old-style and new-style terrain coding it might
-# get confused.
+# This script will barf on maps with custom terrains.  Also, if you
+# have a single subdirectory that mixes old-style and new-style
+# terrain coding it might get confused.
 
 import sys, os, re, getopt, curses.ascii, string, copy
 from wmltools import *
