@@ -9,7 +9,7 @@
 # and renames, also map format conversions.
 #
 # Takes any number of directories as arguments.  Each directory is converted.
-# If no directiories are specified, acts on the current directory.
+# If no directories are specified, acts on the current directory.
 #
 # The recommended procedure is this:
 # 1. Run it with --dryrun first to see what it will do.
@@ -27,18 +27,7 @@
 # get confused.
 
 import sys, os, re, getopt, curses.ascii, string, copy
-
-## Version-control hooks begin here.
-#
-# Change these if we move away from  Subversion
-
-vcdir = ".svn"
-
-def vcmove(src, dst):
-    "Move a file under version control. Only applied to unmodified files."
-    return "svn mv %s %s" % (src, dst)
-
-## Version-control hooks end here
+from wmltools import *
 
 filemoves = {
     # Older includes all previous to 1.3.1.

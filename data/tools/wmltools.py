@@ -263,4 +263,31 @@ class CrossRef:
                             self.missing.append((name, Reference(fn,n+1)))
                 rfp.close()
 
-# wmltools.py gends here
+## Version-control hooks begin here.
+#
+# Change these if we move away from Subversion
+
+vcdir = ".svn"
+
+def vcmove(src, dst):
+    "Move a file under version control. Only applied to unmodified files."
+    (dir, base) = os.path.split(src)
+    if os.path.exists(os.path.join(dir, ".svn")):
+        return "svn mv %s %s" % (src, dst)
+    else:
+        return "mv %s %s" % (src, dst)
+
+def vcunmove(src, dst):
+    "Revert the result of a previous move (before commit)."
+    (dir, base) = os.path.split(src)
+    if os.path.exists(os.path.join(dir, ".svn")):
+        return "svn revert %s" % dst	# Revert the add at the destination
+        return "rm %s" dst		# Remove the moved copy
+        return "svn revert %s" % src	# Revert the deletion
+    else:
+        return "mv %s %s" % (dst, src)
+
+#
+## Version-control hooks end here
+
+# wmltools.py ends here
