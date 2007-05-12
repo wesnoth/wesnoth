@@ -83,7 +83,7 @@ report generate_report(TYPE type, const gamemap& map, unit_map& units,
 	unit_map::iterator u = units.end();
 	SDL_Color HPC;
 	SDL_Color XPC;
-
+	bool mouseover_unit = true;
 
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
 
@@ -91,6 +91,7 @@ report generate_report(TYPE type, const gamemap& map, unit_map& units,
 							  map,
 							  teams,current_team);
 		if(u == units.end()) {
+			mouseover_unit = false;
 			u = find_visible_unit(units,loc,
 								  map,
 								  teams,current_team);
@@ -435,10 +436,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const int move_cost = u->second.movement_cost(terrain);
 		const int defense = 100 - u->second.defense_modifier(terrain);
 
-		if(move_cost > 10) {
-			str << " (-)";
-		} else {
+		if(move_cost < 99) {
 			str << " (" << defense << "%," << move_cost << ")";
+		} else if (mouseover_unit) {
+			str << " (" << defense << "%,-)";
+		} else {
+			str << " (-)";	
 		}
 
 		break;
