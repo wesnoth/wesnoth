@@ -168,7 +168,7 @@ void display::new_turn()
 {
 	const time_of_day& tod = status_.get_time_of_day();
 
-	if(!turbo() && !first_turn_) {
+	if( !first_turn_) {
 		image::set_image_mask("");
 
 		const time_of_day& old_tod = status_.get_previous_time_of_day();
@@ -177,8 +177,8 @@ void display::new_turn()
 			const surface old_mask(image::get_image(old_tod.image_mask,image::UNMASKED));
 			const surface new_mask(image::get_image(tod.image_mask,image::UNMASKED));
 
-			const int niterations = 10;
-			const int frame_time = 30;
+			const int niterations = (int)(10/turbo_speed());
+			const int frame_time = (int)(30/turbo_speed());
 			const int starting_ticks = SDL_GetTicks();
 			for(int i = 0; i != niterations; ++i) {
 
@@ -582,7 +582,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	int xmove = xpos - xpos_;
 	int ymove = ypos - ypos_;
 
-	if(scroll_type == WARP || turbo()) {
+	if(scroll_type == WARP ) {
 		scroll(xmove,ymove);
 		draw();
 		return;
@@ -599,8 +599,8 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	int t_prev = SDL_GetTicks();
 	
 	// those values might need some fine-tuning:
-	const double accel_time = 0.3; // seconds
-	const double decel_time = 0.4; // seconds
+	const double accel_time = 0.3*turbo_speed(); // seconds
+	const double decel_time = 0.4*turbo_speed(); // seconds
 
 	double velocity = 0.0;
 	while (dist_moved < dist_total) {
@@ -617,7 +617,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
 
 		double velocity_max = preferences::scroll_speed() * 80.0;
-		if (turbo()) velocity_max *= 4.0;
+		 velocity_max *= turbo_speed();
 		double accel = velocity_max / accel_time;
 		double decel = velocity_max / decel_time;
 
@@ -2345,19 +2345,15 @@ void display::set_playing_team(size_t team)
 }
 
 
-bool display::turbo() const
+double display::turbo_speed() const
 {
 	bool res = turbo_;
 	if(keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT]) {
 		res = !res;
 	}
 
-	return res || screen_.faked();
-}
-
-double display::turbo_speed() const
-{
-	if (turbo())
+	res |= screen_.faked();
+	if (res)
 		return turbo_speed_;
 	else
 		return 1.0;
@@ -2365,23 +2361,10 @@ double display::turbo_speed() const
 
 void display::set_turbo_speed(const double speed)
 {
-#if 0
-	// speed < 2 don't make sense
-	if (speed < 2)
-		return;
-	if (speed > 20)
-		turbo_speed_ = 20;
-	else
-#endif
 		turbo_speed_ = speed;
 }
 
 //Delay routines: use these not SDL_Delay (for --nogui).
-void display::non_turbo_delay() const
-{
-	if (!turbo())
-		delay(10);
-}
 
 void display::delay(unsigned int milliseconds) const
 {

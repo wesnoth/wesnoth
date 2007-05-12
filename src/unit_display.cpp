@@ -27,51 +27,54 @@
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include  "play_controller.hpp"
 
 #define LOG_DP LOG_STREAM(info, display)
 
-static void teleport_unit_between(display& disp, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
+static void teleport_unit_between( const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
-	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
+	display* disp = play_controller::get_singleton()->get_display();
+	if(!disp || disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)) {
 		return;
 	}
 
-	temp_unit.set_teleporting(disp,a);
-	if (!disp.fogged(a.x, a.y)) { // teleport
-		disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
+	temp_unit.set_teleporting(*disp,a);
+	if (!disp->fogged(a.x, a.y)) { // teleport
+		disp->scroll_to_tile(a.x,a.y,display::ONSCREEN);
 		while(!temp_unit.get_animation()->animation_finished()  && temp_unit.get_animation()->get_animation_time() < 0) {
-			disp.invalidate(a);
-			disp.place_temporary_unit(temp_unit, a);
-			disp.draw();
+			disp->invalidate(a);
+			disp->place_temporary_unit(temp_unit, a);
+			disp->draw();
 			events::pump();
-			disp.delay(10);
+			disp->delay(10);
 		}
 	}
-	if (!disp.fogged(b.x, b.y)) { // teleport
-		temp_unit.restart_animation(disp,0);
-		disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
+	if (!disp->fogged(b.x, b.y)) { // teleport
+		temp_unit.restart_animation(*disp,0);
+		disp->scroll_to_tile(b.x,b.y,display::ONSCREEN);
 		while(!temp_unit.get_animation()->animation_finished()) {
-			disp.invalidate(b);
-			disp.place_temporary_unit(temp_unit, b);
-			disp.draw();
+			disp->invalidate(b);
+			disp->place_temporary_unit(temp_unit, b);
+			disp->draw();
 			events::pump();
-			disp.delay(10);
+			disp->delay(10);
 		}
 	}
-	temp_unit.set_standing(disp,b);
-	disp.update_display();
+	temp_unit.set_standing(*disp,b);
+	disp->update_display();
 	events::pump();
 }
 
-static void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
+static void move_unit_between( const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
-	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
+	display* disp = play_controller::get_singleton()->get_display();
+	if(!disp || disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)) {
 		return;
 	}
 
 	const t_translation::t_letter dst_terrain = map.get_terrain(b);
 
-	const double acceleration = disp.turbo_speed();
+	const double acceleration = disp->turbo_speed();
 
 	gamemap::location src_adjacent[6];
 	get_adjacent_tiles(a, src_adjacent);
@@ -79,22 +82,22 @@ static void move_unit_between(display& disp, const gamemap& map, const gamemap::
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	const int total_mvt_time = (int)150 * temp_unit.movement_cost(dst_terrain)/acceleration;
+	const int total_mvt_time = 150 * (int)(temp_unit.movement_cost(dst_terrain)/acceleration);
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = 1;
-	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
+	disp->scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
 
 	while(mvt_time < total_mvt_time-1) { // one draw in each hex at least
-		disp.delay(10);
+		disp->delay(10);
 		mvt_time = SDL_GetTicks() -start_time;
 		if(mvt_time >=total_mvt_time) mvt_time = total_mvt_time -1;
 		double pos =double(mvt_time)/total_mvt_time;
 		const gamemap::location& ref_loc =pos<0.5?a:b;
 		if(pos >= 0.5) pos = pos -1;
-		temp_unit.set_walking(disp,ref_loc);
+		temp_unit.set_walking(*disp,ref_loc);
 		temp_unit.set_offset(pos);
-		disp.place_temporary_unit(temp_unit,ref_loc);
-		disp.draw();
+		disp->place_temporary_unit(temp_unit,ref_loc);
+		disp->draw();
 		events::pump();
 
 	}
@@ -103,10 +106,12 @@ static void move_unit_between(display& disp, const gamemap& map, const gamemap::
 namespace unit_display
 {
 
-bool unit_visible_on_path(display& disp, const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
+bool unit_visible_on_path( const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
 {
+	display* disp = play_controller::get_singleton()->get_display();
+	wassert(disp);
 	for(size_t i = 0; i+1 < path.size(); ++i) {
-		const bool invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
+		const bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 	             u.invisible(path[i],units,teams) &&
 		         u.invisible(path[i+1],units,teams);
 		if(!invisible) {
@@ -117,9 +122,12 @@ bool unit_visible_on_path(display& disp, const std::vector<gamemap::location>& p
 	return false;
 }
 
-void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const unit_map& units, const std::vector<team>& teams)
+void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams)
 {
+	display* disp = play_controller::get_singleton()->get_display();
 	wassert(!path.empty());
+	wassert(disp);
+	const unit_map& units = disp->get_units();
 
 	bool previous_visible = false;
 	bool was_hidden = u.get_hidden();
@@ -131,48 +139,49 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		temp_unit.set_facing(path[i].get_relative_dir(path[i+1]));
 
-		disp.remove_footstep(path[i]);
+		disp->remove_footstep(path[i]);
 
-		bool invisible = teams[temp_unit.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
+		bool invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 				temp_unit.invisible(path[i],units,teams) &&
 				temp_unit.invisible(path[i+1],units,teams);
 
 		if(!invisible) {
 			if( !tiles_adjacent(path[i], path[i+1])) {
-				teleport_unit_between(disp,path[i],path[i+1],temp_unit);
+				teleport_unit_between(path[i],path[i+1],temp_unit);
 			} else {
-				move_unit_between(disp,map,path[i],path[i+1],temp_unit);
+				move_unit_between(map,path[i],path[i+1],temp_unit);
 			}
 			previous_visible = true;
 		} else if(previous_visible) {
 			gamemap::location arr[6];
-			disp.invalidate(path[i]);
+			disp->invalidate(path[i]);
 			get_adjacent_tiles(path[i], arr);
 			for (unsigned int i = 0; i < 6; i++) {
-				disp.invalidate(arr[i]);
+				disp->invalidate(arr[i]);
 			}
-			disp.draw();
+			disp->draw();
 			previous_visible = false;
 		} else {
 			previous_visible = false;
 		}
 
 	}
-	disp.remove_temporary_unit();
+	disp->remove_temporary_unit();
 	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
-	u.set_standing(disp,path[path.size()-1]);
+	u.set_standing(*disp,path[path.size()-1]);
 
 	//make sure the entire path is cleaned properly
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
-		disp.invalidate(*it);
+		disp->invalidate(*it);
 	}
 	u.set_hidden(was_hidden);
 }
 
-void unit_die(display& disp,const gamemap::location& loc, unit& loser,
+void unit_die(const gamemap::location& loc, unit& loser,
 const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 {
-	if(disp.update_locked() || disp.fogged(loc.x,loc.y) || preferences::show_combat() == false) {
+	display* disp = play_controller::get_singleton()->get_display();
+	if(!disp ||disp->update_locked() || disp->fogged(loc.x,loc.y) || preferences::show_combat() == false) {
 		return;
 	}
 		const std::string& die_sound = loser.die_sound();
@@ -180,41 +189,44 @@ const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 			sound::play_sound(die_sound);
 		}
 
-		loser.set_dying(disp,loc,attack,secondary_attack);
+		loser.set_dying(*disp,loc,attack,secondary_attack);
 	if(winner == NULL) { //test to see if there is no victor.
 
 		while(!loser.get_animation()->animation_finished()) {
 
-			disp.invalidate(loc);
-			disp.draw();
+			disp->invalidate(loc);
+			disp->draw();
 			events::pump();
-			disp.delay(10);
+			disp->delay(10);
 		}
 	return;
 	}
-	winner->set_victorious(disp,loc,attack,secondary_attack);
+	winner->set_victorious(*disp,loc,attack,secondary_attack);
 	int start_time = minimum<int>(loser.get_animation()->get_begin_time(),winner->get_animation()->get_begin_time());
 
-	winner->restart_animation(disp,start_time);
-	loser.restart_animation(disp,start_time);
+	winner->restart_animation(*disp,start_time);
+	loser.restart_animation(*disp,start_time);
 
 	while((!loser.get_animation()->animation_would_finish()) || ((!winner->get_animation()->animation_would_finish()))) {
 
-			disp.invalidate(loc);
-			disp.draw();
+			disp->invalidate(loc);
+			disp->draw();
 			events::pump();
-			disp.delay(10);
+			disp->delay(10);
 	}
 }
 
-static void unit_attack_ranged(display& disp, unit_map& units,
+static void unit_attack_ranged(
                         const gamemap::location& a, const gamemap::location& b,
-			int damage, const attack_type& attack, const attack_type* secondary_attack,bool update_display, int swing)
+			int damage, const attack_type& attack, const attack_type* secondary_attack, int swing,std::string hit_text)
 
 {
-	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
-		|| preferences::show_combat() == false || (!update_display);
+	display* disp = play_controller::get_singleton()->get_display();
+	if(!disp) return;
+	const bool hide = disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)
+		|| preferences::show_combat() == false ;
 
+	unit_map& units = disp->get_units();
 	log_scope("unit_attack_range");
 
 	const unit_map::iterator att = units.find(a);
@@ -223,16 +235,20 @@ static void unit_attack_ranged(display& disp, unit_map& units,
 
 	const unit_map::iterator def = units.find(b);
 	wassert(def != units.end());
-	unit& defender = def->second;
+	bool def_was_hidden = def->second.get_hidden();
+	def->second.set_hidden(true);
+	unit defender = def->second;
+	disp->place_temporary_unit(defender,b);
+	defender.set_hidden(false);
 
-	const double acceleration = disp.turbo_speed();
+	const double acceleration = disp->turbo_speed();
 
 
 	// more damage shown for longer, but 1s at most for this factor
-	const double xsrc = disp.get_location_x(a);
-	const double ysrc = disp.get_location_y(a) - (attacker.is_flying() ? 0 : disp.get_map().get_terrain_info(disp.get_map().get_terrain(a)).unit_height_adjust());
-	const double xdst = disp.get_location_x(b);
-	const double ydst = disp.get_location_y(b) -( defender.is_flying() ? 0 : disp.get_map().get_terrain_info(disp.get_map().get_terrain(b)).unit_height_adjust());
+	const double xsrc = disp->get_location_x(a);
+	const double ysrc = disp->get_location_y(a) - (attacker.is_flying() ? 0 : disp->get_map().get_terrain_info(disp->get_map().get_terrain(a)).unit_height_adjust());
+	const double xdst = disp->get_location_x(b);
+	const double ydst = disp->get_location_y(b) -( defender.is_flying() ? 0 : disp->get_map().get_terrain_info(disp->get_map().get_terrain(b)).unit_height_adjust());
 
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(b,update_tiles);
@@ -241,7 +257,7 @@ static void unit_attack_ranged(display& disp, unit_map& units,
 
 
 	// start leader and attacker animation, wait for attacker animation to end
-	unit_animation missile_animation = attacker.set_attacking(disp,a,damage,attack,secondary_attack,swing);
+	unit_animation missile_animation = attacker.set_attacking(*disp,a,damage,attack,secondary_attack,swing);
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){
@@ -249,7 +265,7 @@ static void unit_attack_ranged(display& disp, unit_map& units,
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
 		leader->second.set_facing(leader_loc.get_relative_dir(a));
-		leader->second.set_leading(disp,leader_loc);
+		leader->second.set_leading(*disp,leader_loc);
 	}
 	int animation_time;
 
@@ -279,15 +295,15 @@ static void unit_attack_ranged(display& disp, unit_map& units,
 	}
 	const bool vertical_dir = (a.x == b.x) ? true:false;
 
-	defender.set_defending(disp,b,damage,&attack,secondary_attack,swing);
+	defender.set_defending(*disp,b,damage,&attack,secondary_attack,swing);
 	// min of attacker, defender, missile and -200
 	int start_time = -200;
 	start_time = minimum<int>(start_time,defender.get_animation()->get_begin_time());
 	start_time = minimum<int>(start_time,missile_animation.get_begin_time());
 	start_time = minimum<int>(start_time,attacker.get_animation()->get_begin_time());
 	missile_animation.start_animation(start_time,false,acceleration);
-	defender.restart_animation(disp,start_time);
-	attacker.restart_animation(disp,start_time);
+	defender.restart_animation(*disp,start_time);
+	attacker.restart_animation(*disp,start_time);
 	animation_time = defender.get_animation()->get_animation_time();
 	bool sound_played = false ;
 	int missile_frame_halo = halo::NO_HALO;
@@ -296,7 +312,8 @@ static void unit_attack_ranged(display& disp, unit_map& units,
 		!attacker.get_animation()->animation_would_finish() ||
 		!defender.get_animation()->animation_would_finish() ||
 		!missile_animation.animation_finished()  ||
-		(leader_loc.valid() && !leader->second.get_animation()->animation_finished()))
+		(leader_loc.valid() && !leader->second.get_animation()->animation_finished()) ||
+		damage >0)
 	     ){
 		const unit_frame& missile_frame = missile_animation.get_current_frame();
 		double pos = missile_frame.offset(missile_animation.get_current_frame_time());
@@ -304,21 +321,21 @@ static void unit_attack_ranged(display& disp, unit_map& units,
 			pos = double(animation_time -missile_animation.get_begin_time())/
 				double(missile_animation.get_end_time()-missile_animation.get_begin_time());
 		}
-		disp.invalidate(b);
-		disp.invalidate(a);
-		if(leader_loc.valid()) disp.invalidate(leader_loc);
+		disp->invalidate(b);
+		disp->invalidate(a);
+		if(leader_loc.valid()) disp->invalidate(leader_loc);
 		halo::remove(missile_halo);
 		halo::remove(missile_frame_halo);
 		missile_halo = halo::NO_HALO;
 		missile_frame_halo = halo::NO_HALO;
 		if(animation_time > missile_animation.get_begin_time() &&
 				animation_time < missile_animation.get_end_time() &&
-				(!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
+				(!disp->fogged(b.x,b.y) || !disp->fogged(a.x,a.y))) {
 			const int posx = int(pos*xdst + (1.0-pos)*xsrc);
 			const int posy = int(pos*ydst + (1.0-pos)*ysrc);
 
 			image::locator missile_image= missile_frame.image();
-			const int d = disp.hex_size() / 2;
+			const int d = disp->hex_size() / 2;
 			if(vertical_dir) {
 				missile_image = missile_frame.image();
 			} else {
@@ -346,47 +363,54 @@ static void unit_attack_ranged(display& disp, unit_map& units,
 					orientation);
 
 		}
-		if(damage > 0 && animation_time > 0 && !sound_played) {
+		if(!sound_played && animation_time > 0) {
 			sound_played = true;
-			sound::play_sound(def->second.get_hit_sound());
-			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
-			disp.invalidate_unit();
+			std::string text ;
+			if(damage) text = lexical_cast<std::string>(damage);
+			if(!hit_text.empty()) text = text + "\n" + hit_text;
+			sound::play_sound(defender.get_hit_sound());
+			disp->float_label(b,text,255,0,0);
+			disp->invalidate_unit();
 		}
-		disp.draw();
+		if(damage > 0 && animation_time > 0) {
+			defender.take_hit(1);
+			damage--;
+			disp->invalidate_unit();
+		}
+		disp->draw();
 		events::pump();
 		missile_animation.update_last_draw_time();
-		disp.delay(10);
+		disp->delay(10);
 		// we use missile animation because it's the only one not reseted in the middle to go to standing
 		animation_time = missile_animation.get_animation_time();
 	}
-	// make sure get hit sound is always played and labels always displayed
-	if(damage > 0 && !hide  && !sound_played) {
-		sound_played = true;
-		sound::play_sound(def->second.get_hit_sound());
-		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
-		disp.invalidate_unit();
-	}
+
 	halo::remove(missile_halo);
 	missile_halo = halo::NO_HALO;
 	halo::remove(missile_frame_halo);
 	missile_frame_halo = halo::NO_HALO;
 
-	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
-	att->second.set_standing(disp,a);
-	def->second.set_standing(disp,b);
+	if(leader_loc.valid()) leader->second.set_standing(*disp,leader_loc);
+	att->second.set_standing(*disp,a);
+	def->second.set_standing(*disp,b);
+	def->second.set_hidden(def_was_hidden);
+	disp->remove_temporary_unit();
 
 }
 
-void unit_attack(display& disp, unit_map& units,
+void unit_attack(
                  const gamemap::location& a, const gamemap::location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
-		 bool update_display, int swing)
+		  int swing,std::string hit_text)
 {
-	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
-	                  || preferences::show_combat() == false || (!update_display);
+	display* disp = play_controller::get_singleton()->get_display();
+	if(!disp) return;
+	unit_map& units = disp->get_units();
+	const bool hide = disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)
+	                  || preferences::show_combat() == false;
 
 	if(!hide) {
-		disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
+		disp->scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
 	}
 
 	log_scope("unit_attack");
@@ -397,24 +421,29 @@ void unit_attack(display& disp, unit_map& units,
 
 	const unit_map::iterator def = units.find(b);
 	wassert(def != units.end());
-	unit& defender = def->second;
 
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
 	if(attack.range_type() == attack_type::LONG_RANGE) {
-		unit_attack_ranged(disp, units, a, b, damage, attack,secondary_attack, update_display, swing);
+		unit_attack_ranged(  a, b, damage, attack,secondary_attack, swing, hit_text);
 		return;
 	}
 
 	int start_time = 500;
 	int end_time = 0;
 
+	bool def_was_hidden = def->second.get_hidden();
+	def->second.set_hidden(true);
+	unit defender = def->second;
+	disp->place_temporary_unit(defender,b);
+	defender.set_hidden(false);
 
-	attacker.set_attacking(disp,a,damage,attack,secondary_attack,swing);
+
+	attacker.set_attacking(*disp,a,damage,attack,secondary_attack,swing);
 	start_time=minimum<int>(start_time,attacker.get_animation()->get_begin_time());
 	end_time=attacker.get_animation()->get_end_time();
 
-	defender.set_defending(disp,b,damage,&attack, secondary_attack, swing);
+	defender.set_defending(*disp,b,damage,&attack, secondary_attack, swing);
 	start_time=minimum<int>(start_time,defender.get_animation()->get_begin_time());
 
 
@@ -425,7 +454,7 @@ void unit_attack(display& disp, unit_map& units,
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
 		leader->second.set_facing(leader_loc.get_relative_dir(a));
-		leader->second.set_leading(disp,leader_loc);
+		leader->second.set_leading(*disp,leader_loc);
 		start_time=minimum<int>(start_time,leader->second.get_animation()->get_begin_time());
 	}
 
@@ -434,16 +463,17 @@ void unit_attack(display& disp, unit_map& units,
 	get_adjacent_tiles(b,update_tiles);
 
 
-	attacker.restart_animation(disp,start_time);
-	defender.restart_animation(disp,start_time);
-	if(leader_loc.valid()) leader->second.restart_animation(disp,start_time);
+	attacker.restart_animation(*disp,start_time);
+	defender.restart_animation(*disp,start_time);
+	if(leader_loc.valid()) leader->second.restart_animation(*disp,start_time);
 
 	int animation_time = start_time;
-	bool played_center = false;
+	bool sound_played = false;
 	while(!hide && (
 		!attacker.get_animation()->animation_would_finish()  ||
 		!defender.get_animation()->animation_would_finish()  ||
-		(leader_loc.valid() && !leader->second.get_animation()->animation_would_finish() ))
+		(leader_loc.valid() && !leader->second.get_animation()->animation_would_finish() ) ||
+		damage > 0)
 	     ){
 
 		double pos = 0.0;
@@ -457,31 +487,134 @@ void unit_attack(display& disp, unit_map& units,
 		if(attacker.state() != unit::STATE_STANDING && pos > 0.0) {
 			attacker.set_offset(pos*0.6);
 		}
-		if(!played_center && animation_time >= 0) {
-			played_center=true;
-			if(damage > 0 && !hide) {
-				sound::play_sound(def->second.get_hit_sound());
-				disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
-				disp.invalidate_unit();
-			}
+		if(!sound_played && animation_time > 0) {
+			sound_played = true;
+			std::string text ;
+			if(damage) text = lexical_cast<std::string>(damage);
+			if(!hit_text.empty()) text = text + "\n" + hit_text;
+			sound::play_sound(defender.get_hit_sound());
+			disp->float_label(b,text,255,0,0);
+			disp->invalidate_unit();
 		}
-		disp.invalidate(b);
-		disp.invalidate(a);
-		if(leader_loc.valid()) disp.invalidate(leader_loc);
-		disp.draw();
+		if(damage > 0 && animation_time > 0) {
+			defender.take_hit(1);
+			damage--;
+			disp->invalidate_unit();
+		}
+		disp->invalidate(b);
+		disp->invalidate(a);
+		if(leader_loc.valid()) disp->invalidate(leader_loc);
+		disp->draw();
 		events::pump();
 		if(attacker.get_animation()->animation_finished()) {
 		   attacker.set_offset(0.0);
 		}
-		disp.delay(10);
+		disp->delay(10);
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
 
-	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
-	att->second.set_standing(disp,a);
-	def->second.set_standing(disp,b);
+	if(leader_loc.valid()) leader->second.set_standing(*disp,leader_loc);
+	att->second.set_standing(*disp,a);
+	def->second.set_standing(*disp,b);
+	def->second.set_hidden(def_was_hidden);
+	disp->remove_temporary_unit();
 
 
 
+}
+
+
+void unit_recruited(gamemap::location& loc)
+{
+	display* disp = play_controller::get_singleton()->get_display();
+	if(!disp || disp->update_locked() ||disp->fogged(loc.x,loc.y)) return;
+	unit_map::iterator u = disp->get_units().find(loc);
+	if(u == disp->get_units().end()) return;
+
+	u->second.set_hidden(true);
+	disp->scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
+	disp->draw();
+	u->second.set_recruited(*disp,loc);
+	u->second.set_hidden(false);
+	while(!u->second.get_animation()->animation_finished()) {
+
+		disp->invalidate(loc);
+		disp->draw();
+		events::pump();
+		disp->delay(10);
+	}
+	u->second.set_standing(*disp,loc);
+}
+
+void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
+{
+	display* disp = play_controller::get_singleton()->get_display();
+	if(!disp || disp->update_locked() || disp->fogged(healed_loc.x,healed_loc.y)) return;
+	if(healing==0) return;
+	// This is all the pretty stuff.
+	int start_time = INT_MAX;
+	disp->scroll_to_tile(healed_loc.x, healed_loc.y, display::ONSCREEN);
+	disp->select_hex(healed_loc);
+	unit healed = healed_p;
+	bool was_hidden = healed.get_hidden();
+	healed_p.set_hidden(true);
+	disp->place_temporary_unit(healed,healed_loc);
+	healed.set_hidden(false);
+
+	for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
+		(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(healed_loc));
+		(*heal_anim_it)->second.set_healing(*disp,(*heal_anim_it)->first,healing);
+		start_time = minimum<int>((*heal_anim_it)->second.get_animation()->get_begin_time(),start_time);
+	}
+	if (healing < 0) {
+		healed.set_poisoned(*disp,healed_loc, -healing);
+		start_time = minimum<int>(start_time, healed.get_animation()->get_begin_time());
+		// FIXME
+		sound::play_sound("poison.ogg");
+		disp->float_label(healed_loc, lexical_cast<std::string>(-healing), 255,0,0);
+	} else {
+		healed.set_healed(*disp,healed_loc, healing);
+		start_time = minimum<int>(start_time, healed.get_animation()->get_begin_time());
+		sound::play_sound("heal.wav");
+		disp->float_label(healed_loc, lexical_cast<std::string>(healing), 0,255,0);
+	}
+	disp->draw();
+	events::pump();
+	// restart all anims in a synchronized way
+	healed.restart_animation(*disp, start_time);
+	for(std::vector<unit_map::iterator>::iterator heal_reanim_it = healers.begin(); heal_reanim_it != healers.end(); ++heal_reanim_it) {
+		(*heal_reanim_it)->second.restart_animation(*disp, start_time);
+	}
+
+	bool finished;
+	do {
+		finished = (healed.get_animation()->animation_finished() && healing==0);
+		disp->invalidate(healed_loc);
+		for(std::vector<unit_map::iterator>::iterator heal_fanim_it = healers.begin(); heal_fanim_it != healers.end(); ++heal_fanim_it) {
+			finished &= (*heal_fanim_it)->second.get_animation()->animation_finished();
+			disp->invalidate((*heal_fanim_it)->first);
+		}
+		// TODO : adapt HP change speed to turbo_speed
+		if(healing > 0) {
+			healed.heal(1);
+			healing--;
+		} else if (healing < 0) {
+			healed.take_hit(1);
+			healing++;
+		}
+		disp->draw();
+		events::pump();
+		disp->delay(10);
+	} while (!finished);
+
+	healed_p.set_standing(*disp,healed_loc);
+	healed_p.set_hidden(was_hidden);
+	disp->remove_temporary_unit();
+	for(std::vector<unit_map::iterator>::iterator heal_sanim_it = healers.begin(); heal_sanim_it != healers.end(); ++heal_sanim_it) {
+		(*heal_sanim_it)->second.set_standing(*disp,(*heal_sanim_it)->first);
+	}
+
+	disp->update_display();
+	events::pump();
 }
 } // end unit display namespace

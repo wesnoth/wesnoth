@@ -888,13 +888,13 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			rt->second.steps.push_back(dst);
 
-			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(disp,rt->second.steps,u->second,units,teams)) {
+			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(rt->second.steps,u->second,units,teams)) {
 
 				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
 			}
 
 			if(!replayer.is_skipping()) {
-				unit_display::move_unit(disp,map,rt->second.steps,u->second,units,teams);
+				unit_display::move_unit(map,rt->second.steps,u->second,teams);
 			}
 			else{
 				//unit location needs to be updated

@@ -21,6 +21,7 @@
 #include "replay.hpp"
 #include "sound.hpp"
 #include "variable.hpp"
+#include "wassert.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -43,6 +44,8 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	game_config::add_color_info(level);
 
 	init(video);
+	wassert(singleton_==NULL);
+	singleton_=this;
 }
 
 play_controller::~play_controller(){
@@ -52,6 +55,7 @@ play_controller::~play_controller(){
 	delete events_manager_;
 	delete soundsources_manager_;
 	delete gui_;
+	singleton_=NULL;
 }
 
 void play_controller::init(CVideo& video){
@@ -891,3 +895,5 @@ hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND co
 		return hotkey::ACTION_STATELESS;
 	}
 }
+
+play_controller* play_controller::singleton_ = NULL;

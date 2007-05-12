@@ -1318,7 +1318,7 @@ void unit::read(const config& cfg)
 				healed_animations_.push_back(healed_animation(**healed_anim));
 			}
 			if(healed_animations_.empty()) {
-				healed_animations_.push_back(healed_animation(0,unit_frame(absolute_image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30")));
+				healed_animations_.push_back(healed_animation(0,unit_frame(absolute_image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30")));
 				// always have a healed animation
 			}
 
@@ -1508,7 +1508,7 @@ void unit::set_standing(const display &disp,const gamemap::location& loc, bool w
 void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
 {
 	state_ =  STATE_DEFENDING;
-	draw_bars_ = false;
+	draw_bars_ = true;
 
 	delete anim_;
 
@@ -1551,7 +1551,7 @@ void unit::set_extra_anim(const display &disp,const gamemap::location& loc, std:
 const unit_animation & unit::set_attacking(const display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num)
 {
 	state_ =  STATE_ATTACKING;
-	draw_bars_ = false;
+	draw_bars_ = true;
 
 	delete anim_;
 
@@ -1609,7 +1609,6 @@ void unit::set_recruited(const display &disp,const gamemap::location& loc)
 	delete anim_;
 
 	anim_ = new recruit_animation(recruiting_animation(disp,loc));
-	// add a fade in effect
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 }
@@ -1651,7 +1650,7 @@ void unit::set_teleporting(const display &disp,const gamemap::location& loc)
 void unit::set_dying(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_DYING;
-	draw_bars_ = false;
+	draw_bars_ = true;
 
 	delete anim_;
 
@@ -1675,7 +1674,7 @@ void unit::set_healing(const display &disp,const gamemap::location& loc,int heal
 void unit::set_victorious(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_VICTORIOUS;
-	draw_bars_ = false;
+	draw_bars_ = true;
 
 	delete anim_;
 

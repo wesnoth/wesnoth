@@ -810,8 +810,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 										  game_map->x(), game_map->y());
 					wassert(route.steps.size() > 0);
 				}
-				unit_display::move_unit(*screen, *game_map, route.steps, dummy_unit,
-				                        *units, *teams);
+				unit_display::move_unit( *game_map, route.steps, dummy_unit, *teams);
 
 				src = dst;
 			}
@@ -1349,11 +1348,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
 			const bool show = screen != NULL && !screen->fogged(loc.x,loc.y);
-			const bool animate = show && !screen->turbo() && cfg["animate"] != "";
-
-			if (show) {
-				screen->draw(true,true);
-			}
+			const bool animate = show && cfg["animate"] != "";
 
 			units->erase(loc);
 			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
@@ -1366,17 +1361,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			unit_map::iterator un = units->find(loc);
 
 			if(animate) {
-				un->second.set_hidden(true);
-				screen->scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
-				un->second.set_hidden(false);
-				un->second.set_recruited(*screen,un->first);
-				while(!un->second.get_animation()->animation_finished()) {
-					screen->invalidate(loc);
-					screen->draw();
-					events::pump();
-					screen->delay(10);
-				}
-				un->second.set_standing(*screen, un->first);
+				unit_display::unit_recruited(loc);
 			}
 			else if(show)
 				un->second.redraw_unit(*screen, loc);
@@ -1423,7 +1408,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					gamemap::location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u); //erase before recruiting, since recruiting can fire more events
-					recruit_unit(*game_map,index+1,*units,to_recruit,loc,utils::string_bool(cfg["show"],true) ? NULL : screen,false,true);
+					recruit_unit(*game_map,index+1,*units,to_recruit,loc,utils::string_bool(cfg["show"],true),false,true);
 					unit_recalled = true;
 					break;
 				}
@@ -1696,7 +1681,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(utils::string_bool(cfg["animate"])) {
 					screen->scroll_to_tile(un->first.x,un->first.y);
-					unit_display::unit_die(*screen,un->first,un->second);
+					unit_display::unit_die(un->first,un->second);
 				}
 
 				if(utils::string_bool(cfg["fire_event"])) {

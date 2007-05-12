@@ -731,7 +731,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		healed_animations_.push_back(healed_animation(**healed_anim));
 	}
 	if(healed_animations_.empty()) {
-		healed_animations_.push_back(healed_animation(0,unit_frame(image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30")));
+		healed_animations_.push_back(healed_animation(0,unit_frame(image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30")));
 		// always have a healed animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");

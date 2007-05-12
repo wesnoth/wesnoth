@@ -92,7 +92,7 @@ bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const g
 
 std::string recruit_unit(const gamemap& map, int side,
        unit_map& units, unit new_unit,
-       gamemap::location& recruit_location, display* disp, bool need_castle, bool full_movement)
+       gamemap::location& recruit_location, bool show, bool need_castle, bool full_movement)
 {
 	const events::command_disabler disable_commands;
 
@@ -145,32 +145,12 @@ std::string recruit_unit(const gamemap& map, int side,
 	}
 	new_unit.heal_all();
 
-	const bool show = disp != NULL && !disp->turbo() &&
-	                  !disp->fogged(recruit_location.x,recruit_location.y);
-	if(show) {
-		disp->draw(true,true);
-	}
 
 	units.add(new std::pair<gamemap::location,unit>(recruit_location,new_unit));
 
 	LOG_NG << "firing prerecruit event\n";
 	game_events::fire("prerecruit",recruit_location);
-	if(show) {
-	    unit_map::iterator un = disp->get_units().find(recruit_location);
-	    if( un !=disp->get_units().end()) {
-			un->second.set_hidden(true);
-			disp->scroll_to_tile(recruit_location.x,recruit_location.y,display::ONSCREEN);
-			un->second.set_hidden(false);
-			un->second.set_recruited(*disp,recruit_location);
-			while(!un->second.get_animation()->animation_finished()) {
-				disp->invalidate(recruit_location);
-				disp->draw();
-				events::pump();
-				disp->delay(10);
-			}
-			un->second.set_standing(*disp,recruit_location);
-		}
-	}
+	if(show)unit_display::unit_recruited(recruit_location);
 	LOG_NG << "firing recruit event\n";
 	game_events::fire("recruit",recruit_location);
 
@@ -861,14 +841,34 @@ attack::attack(display& gui, const gamemap& map,
 				}
 			}
 
-			unit_display::unit_attack(gui_,units_,attacker_,defender_,
-					damage_defender_takes,
-					*a_stats_->weapon,d_stats_->weapon,
-					update_display_,abs_n_attack_);
+			if(update_display_) {
+				std::string float_text = "";
+				if(hits) {
+					if (a_stats_->poisons &&
+							!utils::string_bool(d_->second.get_state("poisoned"))) {
+						float_text = float_text + _("poisoned") + "\n";
+					}
+
+					if(a_stats_->slows && !utils::string_bool(d_->second.get_state("slowed"))) {
+						float_text = float_text + _("slowed") + "\n";
+					}
+
+					//if the defender is turned to stone, the fight stops immediately
+					static const std::string stone_string("stone");
+					if (a_stats_->stones) {
+						float_text = float_text + _("stone") + "\n";
+					}
+				}
+
+				unit_display::unit_attack(attacker_,defender_,
+						damage_defender_takes,
+						*a_stats_->weapon,d_stats_->weapon,
+						abs_n_attack_,float_text);
+			}
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			if(dies) {
-				unit_display::unit_die(gui_,defender_,d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
+				unit_display::unit_die(defender_,d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
 			}
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES, attacker_damage_);
@@ -989,17 +989,11 @@ attack::attack(display& gui, const gamemap& map,
 			} else if(hits) {
 				if (a_stats_->poisons &&
 				   !utils::string_bool(d_->second.get_state("poisoned"))) {
-					if (update_display_){
-						gui_.float_label(d_->first,_("poisoned"),255,0,0);
-					}
 					d_->second.set_state("poisoned","yes");
 					LOG_NG << "defender poisoned\n";
 				}
 
 				if(a_stats_->slows && !utils::string_bool(d_->second.get_state("slowed"))) {
-					if (update_display_){
-						gui_.float_label(d_->first,_("slowed"),255,0,0);
-					}
 					d_->second.set_state("slowed","yes");
 					defender_damage_ = d_stats_->slow_damage;
 					LOG_NG << "defender slowed\n";
@@ -1008,9 +1002,6 @@ attack::attack(display& gui, const gamemap& map,
 				//if the defender is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
 				if (a_stats_->stones) {
-					if (update_display_){
-						gui_.float_label(d_->first,_("stone"),255,0,0);
-					}
 					d_->second.set_state("stoned","yes");
 					n_defends_ = 0;
 					n_attacks_ = 0;
@@ -1076,14 +1067,33 @@ attack::attack(display& gui, const gamemap& map,
 				}
 			}
 
-			unit_display::unit_attack(gui_,units_,defender_,attacker_,
-					damage_attacker_takes,
-					*d_stats_->weapon,a_stats_->weapon,
-					update_display_,abs_n_defend_);
+			if(update_display_) {
+				std::string float_text = "";
+				if(hits) {
+					if (a_stats_->poisons &&
+							!utils::string_bool(d_->second.get_state("poisoned"))) {
+						float_text = float_text + _("poisoned") + "\n";
+					}
+
+					if(a_stats_->slows && !utils::string_bool(d_->second.get_state("slowed"))) {
+						float_text = float_text + _("slowed") + "\n";
+					}
+
+					//if the defender is turned to stone, the fight stops immediately
+					static const std::string stone_string("stone");
+					if (a_stats_->stones) {
+						float_text = float_text + _("stone") + "\n";
+					}
+				}
+				unit_display::unit_attack(defender_,attacker_,
+						damage_attacker_takes,
+						*d_stats_->weapon,a_stats_->weapon,
+						abs_n_defend_,float_text);
+			}
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(dies) {
-				unit_display::unit_die(gui_,attacker_,a_->second,a_stats_->weapon,d_stats_->weapon, &(d_->second));
+				unit_display::unit_die(attacker_,a_->second,a_stats_->weapon,d_stats_->weapon, &(d_->second));
 			}
 			if(ran_results == NULL) {
 				config cfg;
@@ -1196,17 +1206,11 @@ attack::attack(display& gui, const gamemap& map,
 			} else if(hits) {
 				if (d_stats_->poisons &&
 				   !utils::string_bool(a_->second.get_state("poisoned"))) {
-					if (update_display_){
-						gui_.float_label(a_->first,_("poisoned"),255,0,0);
-					}
 					a_->second.set_state("poisoned","yes");
 					LOG_NG << "attacker poisoned\n";
 				}
 
 				if(d_stats_->slows && !utils::string_bool(a_->second.get_state("slowed"))) {
-					if (update_display_){
-						gui_.float_label(a_->first,_("slowed"),255,0,0);
-					}
 					a_->second.set_state("slowed","yes");
 					attacker_damage_ = a_stats_->slow_damage;
 					LOG_NG << "attacker slowed\n";
@@ -1216,9 +1220,6 @@ attack::attack(display& gui, const gamemap& map,
 				//if the attacker is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
 				if (d_stats_->stones) {
-					if (update_display_){
-						gui_.float_label(a_->first,_("stone"),255,0,0);
-					}
 					a_->second.set_state("stoned","yes");
 					n_defends_ = 0;
 					n_attacks_ = 0;
@@ -1477,80 +1478,17 @@ void calculate_healing(display& disp, const gamemap& map,
 		} else if(healing < neg_max) {
 			healing = neg_max;
 		}
-		if(healing == 0) {
-			continue;
-		}
 
-		if (disp.turbo() || recorder.is_skipping()
-			|| disp.fogged(i->first.x, i->first.y)
-			|| !update_display
-			|| (i->second.invisible(i->first,units,teams) &&
+		if ( !recorder.is_skipping()
+			&& update_display
+			&& !(i->second.invisible(i->first,units,teams) &&
 				teams[disp.viewing_team()].is_enemy(side))) {
-			// Simple path.
-			if (healing > 0)
-				i->second.heal(healing);
-			else if (healing < 0)
-				i->second.take_hit(-healing);
-			continue;
+			unit_display::unit_healing(i->second,i->first,healers,healing);
 		}
-
-		if (update_display){
-			// This is all the pretty stuff.
-			int start_time = INT_MAX;
-			disp.scroll_to_tile(i->first.x, i->first.y, display::ONSCREEN);
-			disp.select_hex(i->first);
-
-			for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
-				(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(i->first));
-				(*heal_anim_it)->second.set_healing(disp,(*heal_anim_it)->first,healing);
-				start_time = (*heal_anim_it)->second.get_animation()->get_begin_time();
-			}
-			if (healing < 0) {
-				i->second.set_poisoned(disp,i->first, -healing);
-				start_time = minimum<int>(start_time, i->second.get_animation()->get_begin_time());
-				// FIXME
-				sound::play_sound("poison.ogg");
-				disp.float_label(i->first, lexical_cast<std::string>(-healing), 255,0,0);
-			} else {
-				i->second.set_healed(disp,i->first, healing);
-				start_time = minimum<int>(start_time, i->second.get_animation()->get_begin_time());
-				sound::play_sound("heal.wav");
-				disp.float_label(i->first, lexical_cast<std::string>(healing), 0,255,0);
-			}
-			// restart all anims in a synchronized way
-			i->second.restart_animation(disp, start_time);
-			for(std::vector<unit_map::iterator>::iterator heal_reanim_it = healers.begin(); heal_reanim_it != healers.end(); ++heal_reanim_it) {
-				(*heal_reanim_it)->second.restart_animation(disp, start_time);
-			}
-
-			bool finished;
-			do {
-				finished = (i->second.get_animation()->animation_finished());
-				disp.invalidate(i->first);
-				for(std::vector<unit_map::iterator>::iterator heal_fanim_it = healers.begin(); heal_fanim_it != healers.end(); ++heal_fanim_it) {
-					finished &= (*heal_fanim_it)->second.get_animation()->animation_finished();
-					disp.invalidate((*heal_fanim_it)->first);
-				}
-				if (healing > 0) {
-					i->second.heal(1);
-					--healing;
-				} else if (healing < 0) {
-					i->second.take_hit(1);
-					++healing;
-				}
-				finished &= (!healing);
-				disp.draw();
-				events::pump();
-				disp.delay(10);
-			} while (!finished);
-
-			i->second.set_standing(disp,i->first);
-			for(std::vector<unit_map::iterator>::iterator heal_sanim_it = healers.begin(); heal_sanim_it != healers.end(); ++heal_sanim_it) {
-				(*heal_sanim_it)->second.set_standing(disp,(*heal_sanim_it)->first);
-			}
-			disp.update_display();
-			events::pump();
-		}
+		if (healing > 0)
+			i->second.heal(healing);
+		else if (healing < 0)
+			i->second.take_hit(-healing);
 	}
 }
 
@@ -1988,9 +1926,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	//move the unit on the screen. Hide the unit in its current location, but don't actually
 	//remove it until the move is done, so that while the unit is moving status etc will
 	//still display the correct number of units.
-	if(disp != NULL) {
-		unit_display::move_unit(*disp,map,steps,ui->second,units,teams);
-	}
+	unit_display::move_unit(map,steps,ui->second,teams);
 
 	ui->second.set_movement(moves_left);
 
@@ -1998,12 +1934,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	p->first = steps.back();
 	units.add(p);
 	ui = units.find(p->first);
-	ui->second.set_standing(*disp,ui->first);
-	if(disp != NULL) {
-		disp->invalidate_unit();
-		disp->invalidate(steps.back());
-		disp->draw();
-	}
 
 	if(move_recorder != NULL) {
 		move_recorder->add_movement(steps.front(),steps.back());

@@ -325,14 +325,12 @@ public:
 
 	//functions to set/get whether 'turbo' mode is on. When turbo mode is on,
 	//everything moves much faster.
-	bool turbo() const;
 	void set_turbo(const bool turbo) { turbo_ = turbo; }
 
 	double turbo_speed() const;
 	void set_turbo_speed(const double speed);
 
 	//Delay routines: use these not SDL_Delay (for --nogui).
-	void non_turbo_delay() const;
 	void delay(unsigned int milliseconds) const;
 
 	//function which determines whether a grid should be overlayed on the
