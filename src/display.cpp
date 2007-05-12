@@ -2058,7 +2058,7 @@ void display::float_label(const gamemap::location& loc, const std::string& text,
 
 	const SDL_Color colour = {red,green,blue,255};
 	font::add_floating_label(text,font::SIZE_XLARGE,colour,get_location_x(loc)+zoom_/2,get_location_y(loc),
-	                         0,-2,60,screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);
+	                         0,-2*turbo_speed(),60/turbo_speed(),screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);
 }
 
 void display::clear_hex_overlay(const gamemap::location& loc)
