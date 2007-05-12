@@ -1545,28 +1545,27 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 	for (std::map<t_translation::t_letter, size_t>::const_iterator j = terrain.begin(),
 	     j_end = terrain.end(); j != j_end; ++j)
 	{
-		// Skip unreachable tiles when computing the average defense.
-		if (a.movement_type().movement_cost(map_, j->first) >= 10) continue;
-		defense += a.movement_type().defense_modifier(map_, j->first) * j->second;
-		weighting_sum += j->second;
+		// Use only reachable tiles when computing the average defense.
+		if (a.movement_type().movement_cost(map_, j->first) < 99) {
+			defense += a.movement_type().defense_modifier(map_, j->first) * j->second;
+			weighting_sum += j->second;
+		}
 	}
 
-	if (weighting_sum != 0) {
-		defense /= weighting_sum;
-	} else {
+	if (weighting_sum == 0) {
 		// This unit can't move on this map so just get the avarage weighted of all
 		// available terrains. This still is a kind of silly since the opponent 
 		// probably can't recruit this unit and it's a static unit.
 		for (std::map<t_translation::t_letter, size_t>::const_iterator jj = terrain.begin(), 
-				jj_end = terrain.end(); jj != jj_end; ++jj) {
-
+				jj_end = terrain.end(); jj != jj_end; ++jj)
+		{
 			defense += a.movement_type().defense_modifier(map_, jj->first) * jj->second;
 			weighting_sum += jj->second;
 		}
-
-		wassert(weighting_sum != 0);
-		defense /= weighting_sum;
 	}
+
+	wassert(weighting_sum != 0);
+	defense /= weighting_sum;
 
 	LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
 
