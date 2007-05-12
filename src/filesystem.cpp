@@ -170,6 +170,7 @@ void get_files_in_dir(const std::string& directory,
 
 		//if we have a path to find directories in, then convert relative
 		//pathnames to be rooted on the wesnoth path
+#ifndef __AMIGAOS4__
 		if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 			const std::string& dir = game_config::path + "/" + directory;
 			if(is_directory(dir)) {
@@ -177,6 +178,7 @@ void get_files_in_dir(const std::string& directory,
 				return;
 			}
 		}
+#endif
 
 #ifdef _WIN32
 		_finddata_t fileinfo;
@@ -236,7 +238,8 @@ void get_files_in_dir(const std::string& directory,
 			const std::string name((directory + "/") + filename);
 #else
 			std::string name;
-			if (directory.empty() || directory[directory.size()-1] == ':')
+			if (directory.empty() || (directory[directory.size()-1] == ':' ||
+				directory[directory.size()-1] == '/'))
 				name = directory + filename;
 			else
 				name = (directory + "/") + filename;
@@ -833,7 +836,8 @@ void binary_paths_manager::set_paths(const config& cfg)
 
 	const config::child_list& items = cfg.get_children("binary_path");
 	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const std::string path = (**i)["path"].str() + "/";
+		std::string path = (**i)["path"].str();
+		if (!path.empty() && path[path.size()-1] != '/') path += "/";
 		if(binary_paths.count(path) == 0) {
 			binary_paths.insert(path);
 			paths_.push_back(path);
