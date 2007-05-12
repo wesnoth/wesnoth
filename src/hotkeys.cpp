@@ -248,6 +248,10 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 			character += 96;
 		INFO_C << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
+	
+	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
+	if (cmd && character > 96 && character < 123 && shift)
+		character -= 32;
 
 	// We handle simple cases by character, others by the actual key.
 	if (isprint(character) && !isspace(character)) {
@@ -377,6 +381,10 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 			character += 96;
 		INFO_C << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
+	
+	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
+	if (cmd && character > 96 && character < 123 && shift)
+		character -= 32;
 
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
 		if (itor->get_type() == hotkey_item::BY_CHARACTER) {
