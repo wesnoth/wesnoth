@@ -291,16 +291,6 @@ public:
 	//function to serialize overlay data
 	void write_overlays(config& cfg) const;
 
-#if 0
-	//function which draws the details of the unit at the given location, at
-	//(x,y) on-screen. xprofile and yprofile are the size of the unit's image.
-	//this function is suitable for drawing a unit's details on the sidebar,
-	//but can also be used to draw the unit details on a dialog elsewhere on
-	//the screen.
-	void draw_unit_details(int x, int y, const gamemap::location& loc,
-	                       const unit& u, SDL_Rect& description_rect,
-	                       int xprofile,int yprofile,SDL_Rect* clip_rect=NULL);
-#endif
 
 	//function which copies the backbuffer to the framebuffer.
 	void update_display();
@@ -389,9 +379,7 @@ public:
 	void draw_unit(int x, int y, surface image,
 		        bool upside_down=false,fixed_t alpha=ftofxp(1.0),
 			Uint32 blendto=0, double blend_ratio=0,
-			double submerged=0.0,
-			surface ellipse_back=surface(NULL),
-			surface ellipse_front=surface(NULL));
+			double submerged=0.0);
 
 	//rebuild the dynamic terrain at the given location.
 	void rebuild_terrain(const gamemap::location &loc) 

@@ -1750,10 +1750,10 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	if(refreshing_) return;
 	refreshing_ = true;
 	const gamemap::location dst= hex.get_direction(facing());
-	const double xsrc = disp.get_location_x(hex);
-	const double ysrc = disp.get_location_y(hex);
-	const double xdst = disp.get_location_x(dst);
-	const double ydst = disp.get_location_y(dst);
+	const int xsrc = disp.get_location_x(hex);
+	const int ysrc = disp.get_location_y(hex);
+	const int xdst = disp.get_location_x(dst);
+	const int ydst = disp.get_location_y(dst);
 
 
 	if(!anim_) set_standing(disp,hex);
@@ -1771,8 +1771,8 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 
 	double tmp_offset = current_frame.offset(anim_->get_current_frame_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
-	const int x = int(tmp_offset*xdst + (1.0-tmp_offset)*xsrc);
-	const int y = int(tmp_offset*ydst + (1.0-tmp_offset)*ysrc);
+	const int x = int(tmp_offset*((double)xdst) + (1.0-tmp_offset)*((double)xsrc));
+	const int y = int(tmp_offset*((double)ydst) + (1.0-tmp_offset)*((double)ysrc));
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
 		frame_begin_time_ = anim_->get_current_frame_begin_time();
 		if(!current_frame.sound().empty()) {
@@ -1883,14 +1883,21 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		tmp_y += (disp.hex_size() - image.get()->h)/2;
 	}
 
+	const int ellipse_ypos = ysrc - (ellipse_back != NULL && submerge > 0.0 ? int(double(ellipse_back->h)*submerge) : 0)/2- height_adjust;
+	disp.video().blit_surface(xsrc,ellipse_ypos,ellipse_back);
+
+
 	disp.draw_unit(tmp_x, tmp_y -height_adjust, image, false, highlight_ratio,
-			blend_with, blend_ratio, submerge,ellipse_back,ellipse_front);
+			blend_with, blend_ratio, submerge);
+
+
+	disp.video().blit_surface(xsrc,ellipse_ypos,ellipse_front);
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
 		unit_halo_ = halo::add(0, 0, image_halo(), gamemap::location(-1, -1));
 	}
 	if(unit_halo_ != halo::NO_HALO) {
 		const int d = disp.hex_size() / 2;
-		halo::set_location(unit_halo_, x+ d, y -height_adjust+ d);
+		halo::set_location(unit_halo_, xsrc+ d, ysrc -height_adjust+ d);
 	}
 
 	if(draw_bars_) {
@@ -1918,21 +1925,21 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 
 		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
 		if (orb != NULL) {
-			disp.video().blit_surface(x,y-height_adjust,orb);
+			disp.video().blit_surface(xsrc,ysrc-height_adjust,orb);
 		}
 
 		double unit_energy = 0.0;
 		if(max_hitpoints() > 0) {
 			unit_energy = double(hitpoints())/double(max_hitpoints());
 		}
-		disp.draw_bar(*energy_file,x-static_cast<int>(5*disp.zoom()),y-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
+		disp.draw_bar(*energy_file,xsrc-static_cast<int>(5*disp.zoom()),ysrc-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
 			const int level = maximum<int>(level_,1);
 
 			SDL_Color colour=xp_color();
-			disp.draw_bar(*energy_file,x,y-height_adjust,max_experience()/(level*2),filled,colour,bar_alpha);
+			disp.draw_bar(*energy_file,xsrc,ysrc-height_adjust,max_experience()/(level*2),filled,colour,bar_alpha);
 		}
 
 		if (can_recruit()) {
@@ -1941,7 +1948,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
-				disp.video().blit_surface(x,y-height_adjust,crown);
+				disp.video().blit_surface(xsrc,ysrc-height_adjust,crown);
 			}
 		}
 
@@ -1949,7 +1956,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
 		const surface img(image::get_image(*ov));
 		if(img != NULL) {
-			disp.draw_unit(x,y-height_adjust,img);
+			disp.draw_unit(xsrc,ysrc-height_adjust,img);
 		}
 	}
 	refreshing_ = false;
