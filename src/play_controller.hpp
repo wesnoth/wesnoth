@@ -74,8 +74,6 @@ public:
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
 	const int get_ticks();
-	display * get_display() { return gui_; }
-	static play_controller * get_singleton() { return singleton_; }
 
 protected:
 	void handle_event(const SDL_Event& event);
@@ -156,7 +154,6 @@ private:
 
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<wml_menu_item *> wml_commands_;
-	static play_controller* singleton_;
 #define MAX_WML_COMMANDS 7
 
 };

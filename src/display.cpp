@@ -100,6 +100,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
 	diagnostic_label_(0), fps_handle_(0)
 {
+	singleton_ = this;
 	if(non_interactive()) {
 		screen_.lock_updates(true);
 	}
@@ -162,6 +163,7 @@ display::~display()
 {
 	// SDL_FreeSurface(minimap_);
 	prune_chat_messages(true);
+	singleton_ = NULL;
 }
 
 void display::new_turn()
@@ -2634,3 +2636,5 @@ void display::remove_highlighted_loc(const gamemap::location &hex)
 		invalidate(hex);
 	}
 }
+
+display *display::singleton_ = NULL;

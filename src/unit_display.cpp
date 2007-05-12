@@ -27,13 +27,12 @@
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
-#include  "play_controller.hpp"
 
 #define LOG_DP LOG_STREAM(info, display)
 
 static void teleport_unit_between( const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	if(!disp || disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)) {
 		return;
 	}
@@ -67,7 +66,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 
 static void move_unit_between( const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	if(!disp || disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)) {
 		return;
 	}
@@ -108,7 +107,7 @@ namespace unit_display
 
 bool unit_visible_on_path( const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	wassert(disp);
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		const bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
@@ -124,7 +123,7 @@ bool unit_visible_on_path( const std::vector<gamemap::location>& path, const uni
 
 void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams)
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	wassert(!path.empty());
 	wassert(disp);
 	const unit_map& units = disp->get_units();
@@ -180,7 +179,7 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 void unit_die(const gamemap::location& loc, unit& loser,
 const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	if(!disp ||disp->update_locked() || disp->fogged(loc.x,loc.y) || preferences::show_combat() == false) {
 		return;
 	}
@@ -221,7 +220,7 @@ static void unit_attack_ranged(
 			int damage, const attack_type& attack, const attack_type* secondary_attack, int swing,std::string hit_text)
 
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	if(!disp) return;
 	const bool hide = disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)
 		|| preferences::show_combat() == false ;
@@ -403,7 +402,7 @@ void unit_attack(
                  const attack_type& attack, const attack_type* secondary_attack,
 		  int swing,std::string hit_text)
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	if(!disp) return;
 	unit_map& units = disp->get_units();
 	const bool hide = disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)
@@ -526,7 +525,7 @@ void unit_attack(
 
 void unit_recruited(gamemap::location& loc)
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	if(!disp || disp->update_locked() ||disp->fogged(loc.x,loc.y)) return;
 	unit_map::iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
@@ -548,7 +547,7 @@ void unit_recruited(gamemap::location& loc)
 
 void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
 {
-	display* disp = play_controller::get_singleton()->get_display();
+	display* disp = display::get_singleton();
 	if(!disp || disp->update_locked() || disp->fogged(healed_loc.x,healed_loc.y)) return;
 	if(healing==0) return;
 	// This is all the pretty stuff.

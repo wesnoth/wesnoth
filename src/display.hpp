@@ -58,6 +58,7 @@ public:
 			const std::vector<team>& t, const config& theme_cfg,
 			const config& cfg, const config& level);
 	~display();
+	static display* get_singleton() { return singleton_ ;}
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
@@ -549,6 +550,7 @@ private:
 
 	//the handle for the label which displays fps
 	int fps_handle_;
+	static display * singleton_;
 };
 
 #endif
