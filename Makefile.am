@@ -2,7 +2,7 @@ ISUBDIRS = icons
 SUBDIRS = po m4 src doc $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 
-bin_SCRIPTS = utils/wmlxgettext
+bin_SCRIPTS = 
 
 findfilterflags=-name .svn -prune -o -name ".\#*" -o -type d
 
