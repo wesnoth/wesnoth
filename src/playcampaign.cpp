@@ -329,7 +329,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					const int should_save = dialogs::get_save_name(disp,
 							_("Do you want to save a replay of this scenario?"),
 							_("Name:"),
-							&label, gui::OK_CANCEL, _("Save Replay"));
+							&label, gui::YES_NO, _("Save Replay"));
 					if(should_save == 0) {
 						try {
 							config snapshot;
