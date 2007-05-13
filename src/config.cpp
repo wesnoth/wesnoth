@@ -633,22 +633,21 @@ void config::reset_translation() const
 	}
 }
 
-void config::debug(std::ostream& outstream) const{
+void config::debug(std::ostream& outstream) const
+{
 	static int i = 0;
 	i++;
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
 		for (int j = 0; j < i; j++){ outstream << char(9); }
-		outstream << val->first << ", " << val->second << "\n";
+		outstream << val->first << " = " << val->second << "\n";
 	}
 
-	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
+	for(all_children_iterator list = ordered_begin(); list != ordered_end(); ++list) {
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
-		outstream << "[" << list->first << "]\n";
-		for(child_list::const_iterator child = list->second.begin(); child != list->second.end(); ++child) {
-			(*child)->debug(outstream);
-		}
+		outstream << "[" << *(*list).first << "]\n";
+		(*list).second->debug(outstream);
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
-		outstream << "[/" << list->first << "]\n";
+		outstream << "[/" << *(*list).first << "]\n";
 	}
 	i--;
 }
