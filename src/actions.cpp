@@ -1069,7 +1069,6 @@ attack::attack(display& gui, const gamemap& map,
 
 			if(update_display_) {
 				std::string float_text = "";
-				BUG : here, we should switch attacker and defender
 				if(hits) {
 					if (d_stats_->poisons &&
 							!utils::string_bool(a_->second.get_state("poisoned"))) {
