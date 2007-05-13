@@ -1586,7 +1586,8 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		int weight = i->damage() * i->num_attacks();
 		sum += cth * resistance * weight;
 		weight_sum += weight;
-		if (living && i->get_special_bool("poison", true)) {
+		// if cth == 0 the division will do 0/0 so don't execute this part
+		if (living && cth != 0 && i->get_special_bool("poison", true)) {
 			// Compute the probability of not poisoning the unit.
 			int prob = 10000; // directly with the same unit as "cth * resistance"
 			for (int j = 0; j < i->num_attacks(); ++j)
