@@ -1069,19 +1069,20 @@ attack::attack(display& gui, const gamemap& map,
 
 			if(update_display_) {
 				std::string float_text = "";
+				BUG : here, we should switch attacker and defender
 				if(hits) {
-					if (a_stats_->poisons &&
-							!utils::string_bool(d_->second.get_state("poisoned"))) {
+					if (d_stats_->poisons &&
+							!utils::string_bool(a_->second.get_state("poisoned"))) {
 						float_text = float_text + _("poisoned") + "\n";
 					}
 
-					if(a_stats_->slows && !utils::string_bool(d_->second.get_state("slowed"))) {
+					if(d_stats_->slows && !utils::string_bool(a_->second.get_state("slowed"))) {
 						float_text = float_text + _("slowed") + "\n";
 					}
 
 					//if the defender is turned to stone, the fight stops immediately
 					static const std::string stone_string("stone");
-					if (a_stats_->stones) {
+					if (d_stats_->stones) {
 						float_text = float_text + _("stone") + "\n";
 					}
 				}
