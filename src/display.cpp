@@ -94,7 +94,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0),
-	turbo_speed_(1), turbo_(false), grid_(false), sidebarScaling_(1.0),
+	turbo_speed_(2), turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
@@ -601,8 +601,8 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	int t_prev = SDL_GetTicks();
 	
 	// those values might need some fine-tuning:
-	const double accel_time = 0.3*turbo_speed(); // seconds
-	const double decel_time = 0.4*turbo_speed(); // seconds
+	const double accel_time = 0.3; // seconds until full speed is reached 
+	const double decel_time = 0.4; // seconds from full speed to stop
 
 	double velocity = 0.0;
 	while (dist_moved < dist_total) {
@@ -618,8 +618,8 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 
 		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
 
-		double velocity_max = preferences::scroll_speed() * 80.0;
-		 velocity_max *= turbo_speed();
+		double velocity_max = preferences::scroll_speed() * 60.0;
+		velocity_max *= turbo_speed();
 		double accel = velocity_max / accel_time;
 		double decel = velocity_max / decel_time;
 

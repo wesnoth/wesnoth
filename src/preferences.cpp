@@ -181,12 +181,12 @@ void _set_turbo(bool ison)
 
 double turbo_speed()
 {
-	return lexical_cast_default<double>(prefs["turbo_speed"], 1);
+	return lexical_cast_default<double>(prefs["turbo_speed"], 2);
 }
 
 void save_turbo_speed(const double speed)
 {
-	prefs["turbo_speed"] = lexical_cast_default<std::string>(speed, "1");
+	prefs["turbo_speed"] = lexical_cast_default<std::string>(speed, "2");
 }
 
 bool show_lobby_minimaps()
