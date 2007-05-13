@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-12 02:15+0200\n"
+"POT-Creation-Date: 2007-05-13 13:39+0200\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:22
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:23
 #: data/campaigns/The_South_Guard.cfg:27 data/campaigns/Two_Brothers.cfg:23
-#: data/campaigns/Under_the_Burning_Suns.cfg:30
+#: data/campaigns/Under_the_Burning_Suns.cfg:33
 #, fuzzy
 msgid "Campaign Designer"
 msgstr "Razvijalci kampanj"
@@ -38,14 +38,14 @@ msgstr "Razvijalci kampanj"
 #: data/campaigns/Heir_To_The_Throne.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:27
 #: data/campaigns/The_South_Guard.cfg:31 data/campaigns/Two_Brothers.cfg:28
-#: data/campaigns/Under_the_Burning_Suns.cfg:34
+#: data/campaigns/Under_the_Burning_Suns.cfg:37
 msgid "Current Maintainer"
 msgstr "Trenutni vzdrževalec:"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:28
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:27
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-#: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:22
+#: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:25
 msgid "short sword"
 msgstr "kratki meč"
 
@@ -83,7 +83,7 @@ msgstr "čaroben"
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:31
 #: data/campaigns/The_South_Guard.cfg:35 data/campaigns/Two_Brothers.cfg:32
-#: data/campaigns/Under_the_Burning_Suns.cfg:38
+#: data/campaigns/Under_the_Burning_Suns.cfg:41
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Grafični oblikovalci"
@@ -119,7 +119,7 @@ msgid "WML Contributors"
 msgstr "Sodelavci"
 
 #: data/campaigns/The_South_Guard.cfg:41 data/campaigns/Two_Brothers.cfg:37
-#: data/campaigns/Under_the_Burning_Suns.cfg:51 data/misc/about.cfg:298
+#: data/campaigns/Under_the_Burning_Suns.cfg:54 data/misc/about.cfg:298
 msgid "Miscellaneous"
 msgstr "Razno"
 
@@ -5240,7 +5240,7 @@ msgid "End Turn"
 msgstr "Končaj potezo"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2497
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2503
 msgid "HP"
 msgstr "HP"
 
@@ -5480,7 +5480,7 @@ msgstr "balista"
 #: data/units/Monster_Giant_Scorpion.cfg:25
 #: data/units/Monster_Sea_Serpent.cfg:25 data/units/Orcish_Archer.cfg:179
 #: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
-#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
+#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:75
 #: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
 #: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
 #: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
@@ -5589,7 +5589,7 @@ msgstr "kremplji"
 #: data/units/Orcish_Assassin.cfg:99 data/units/Orcish_Crossbowman.cfg:24
 #: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
 #: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:29
-#: data/units/Orcish_Slayer.cfg:120 data/units/Orcish_Slurbow.cfg:24
+#: data/units/Orcish_Slayer.cfg:120 data/units/Orcish_Slurbow.cfg:27
 #: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
 #: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:53
 #: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:68
@@ -5625,7 +5625,7 @@ msgstr "ognjeni dih"
 #: data/units/Human_Mage.cfg:105 data/units/Human_Mage_Arch.cfg:77
 #: data/units/Human_Mage_Great.cfg:78 data/units/Human_Mage_Red.cfg:99
 #: data/units/Human_Mage_Silver.cfg:85 data/units/Orcish_Archer.cfg:238
-#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:121
+#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:114
 msgid "fire"
 msgstr "ognjen"
 
@@ -6806,7 +6806,7 @@ msgstr ""
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:186
 #: data/units/Human_Loyalist_Sergeant.cfg:80
 #: data/units/Orcish_Crossbowman.cfg:60 data/units/Orcish_Crossbowman.cfg:99
-#: data/units/Orcish_Slurbow.cfg:75 data/units/Orcish_Slurbow.cfg:119
+#: data/units/Orcish_Slurbow.cfg:73 data/units/Orcish_Slurbow.cfg:112
 #: data/units/Undead_Skele_Death_Knight.cfg:87
 msgid "crossbow"
 msgstr "samostrel"
@@ -8056,10 +8056,11 @@ msgstr "Orkovski lokostrelec"
 
 #: data/units/Orcish_Archer.cfg:18
 msgid ""
-"Orcish Archers are considered by many of their fellow orcs to be a lesser "
-"caste of warrior, for attacking their enemies from a distance. However, "
-"since most orcs won't learn how to handle a bow, he is an indispensable part "
-"of the orcish army."
+"Amongst orcs, bows are seen as a somewhat cowardly weapon; but even orcs, "
+"especially those of young age and slight build, are pragmatic enough to use "
+"them in spite of this.  Orcish archers come miserably equipped, and have no "
+"semblance of training.  As poorly handled as they may be, though, their "
+"weapons are still quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:3
@@ -8087,10 +8088,10 @@ msgstr "Orkovski samostrelec"
 
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
-"Orcish Crossbowmen try to compensate for their lack of skill with the raw "
-"power of their weapon. While they are not as effective as the Elvish "
-"Marksmen in long-range combat, they are sturdier and can handle themselves a "
-"little better than the Elves in close combat."
+"Orcish crossbows are crude imitations of human or dwarvish design; a "
+"crossbow of any make, though, is a fairly potent device.  The orcs "
+"privileged enough to wield them are capable warriors, and what they lack in "
+"finesse, they make up for in numbers."
 msgstr ""
 
 #: data/units/Orcish_Grunt.cfg:3
@@ -8158,13 +8159,17 @@ msgstr ""
 msgid "Orcish Slurbow"
 msgstr "Orkovski cevni samostrelec"
 
-#: data/units/Orcish_Slurbow.cfg:18
+#: data/units/Orcish_Slurbow.cfg:20
 msgid ""
-"Slurbowmen have managed to improve their crossbow with the addition of a "
-"cranequin and a metal barrel. As a result they are able to launch lead shot "
-"with deadly power and accuracy. Although they remain weaker in ranged combat "
-"than their Elven and Human counterparts, they still maintain an edge in "
-"melee strength and stamina."
+"The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
+"much more intricate device, complete with a hand-turned cranequin to recock "
+"the weapon, and often with a multi-ply arc, of laminate wood or bone, "
+"driving the projectile.  Such a device is much easier to work with, and much "
+"more powerful than simpler crossbows; it is also completely beyond orcish "
+"manufacture.\n"
+"\n"
+"Orcs prize any such weapons they can manage to plunder, and they invariably "
+"end up in the hands of their strongest and most cunning archers."
 msgstr ""
 
 #: data/units/Orcish_Sovereign.cfg:3
@@ -8906,23 +8911,23 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Na voljo ni prostih gradov, kjer bi lahko vpoklicovali."
 
-#: src/actions.cpp:993 src/actions.cpp:1200
+#: src/actions.cpp:849 src/actions.cpp:1075
 msgid "poisoned"
 msgstr "zastrupljen"
 
-#: src/actions.cpp:1001 src/actions.cpp:1208
+#: src/actions.cpp:853 src/actions.cpp:1079
 msgid "slowed"
 msgstr "upočasnjen"
 
-#: src/actions.cpp:1012 src/actions.cpp:1220
+#: src/actions.cpp:859 src/actions.cpp:1085
 msgid "stone"
 msgstr "okamèni"
 
-#: src/actions.cpp:2052
+#: src/actions.cpp:1982
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:2092
+#: src/actions.cpp:2022
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
@@ -8931,7 +8936,7 @@ msgstr[1] "Zavezniške enote opažene!"
 msgstr[2] "Zavezniške enote opažene!"
 msgstr[3] "Zavezniške enote opažene!"
 
-#: src/actions.cpp:2095
+#: src/actions.cpp:2025
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
@@ -8940,7 +8945,7 @@ msgstr[1] "Sovražne enote opažene!"
 msgstr[2] "Sovražne enote opažene!"
 msgstr[3] "Sovražne enote opažene!"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2030
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
@@ -8948,7 +8953,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions.cpp:2101
+#: src/actions.cpp:2031
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
@@ -8956,12 +8961,12 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions.cpp:2102
+#: src/actions.cpp:2032
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions.cpp:2111
+#: src/actions.cpp:2041
 msgid "(press $hotkey to continue)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
 
@@ -9120,7 +9125,7 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Premiki: "
 
-#: src/display.cpp:529
+#: src/display.cpp:531
 msgid "Screenshot"
 msgstr "Posnetek zaslona"
 
@@ -9402,11 +9407,11 @@ msgstr "Ponastavi pisave za trenutni jezik."
 msgid "Loading title screen."
 msgstr "Nalaganje uvodnega zaslona."
 
-#: src/game_events.cpp:871
+#: src/game_events.cpp:870
 msgid "Victory:"
 msgstr "Zmaga:"
 
-#: src/game_events.cpp:874
+#: src/game_events.cpp:873
 msgid "Defeat:"
 msgstr "Poraz:"
 
@@ -9624,7 +9629,7 @@ msgstr "Stopnja"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:300 src/unit.cpp:2528
+#: src/menu_events.cpp:300 src/unit.cpp:2534
 msgid "Moves"
 msgstr "Premiki"
 
@@ -9714,7 +9719,7 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:744
+#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:745
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Samodejno shranjen položaj"
@@ -9972,7 +9977,7 @@ msgstr "Verjetnost da se ne poškuduje"
 msgid "Damage Calculations"
 msgstr "Izračun škode"
 
-#: src/mouse_events.cpp:1322 src/reports.cpp:282
+#: src/mouse_events.cpp:1322 src/reports.cpp:283
 msgid "vs"
 msgstr "proti"
 
@@ -10040,12 +10045,12 @@ msgid "Normal"
 msgstr "Navadna"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2632
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2638
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2639
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2645
 msgid ")"
 msgstr ")"
 
@@ -10422,16 +10427,16 @@ msgstr "Ni bilo mogoče dodati vtičnice"
 msgid "Could not send initial handshake"
 msgstr "Ni bilo mogoče začeti rokovanja"
 
-#: src/play_controller.cpp:390 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:391 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
-#: src/play_controller.cpp:748
+#: src/play_controller.cpp:749
 msgid "Back to start"
 msgstr "Nazaj na začetek"
 
-#: src/play_controller.cpp:750
+#: src/play_controller.cpp:751
 msgid "Back to turn "
 msgstr "Nazaj k potezi "
 
@@ -10582,25 +10587,25 @@ msgstr "Zamenjaj z "
 msgid "has left the game. What do you want to do?"
 msgstr "je zapustil igro. Kaj boste storili?"
 
-#: src/reports.cpp:130
+#: src/reports.cpp:131
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "Ta enota je nevidna. Sovražniki je ne morejo niti videti niti napasti."
 
-#: src/reports.cpp:130
+#: src/reports.cpp:131
 msgid "invisible: "
 msgstr "nevidna: "
 
-#: src/reports.cpp:135
+#: src/reports.cpp:136
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr "Ta enota je upočasnjena. V boju bo naredila samo polovično škodo."
 
-#: src/reports.cpp:135
+#: src/reports.cpp:136
 msgid "slowed: "
 msgstr "upočasnjena: "
 
-#: src/reports.cpp:140
+#: src/reports.cpp:141
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10615,19 +10620,19 @@ msgstr ""
 "\n"
 "Sam strup enote ne more ubiti - ne more je poškodovati pod 1 HP."
 
-#: src/reports.cpp:140
+#: src/reports.cpp:141
 msgid "poisoned: "
 msgstr "zastrupljena: "
 
-#: src/reports.cpp:147
+#: src/reports.cpp:148
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Ta enota je okamenela. Ne more se ne premikati ne napadati."
 
-#: src/reports.cpp:147
+#: src/reports.cpp:148
 msgid "stone: "
 msgstr "okamenela: "
 
-#: src/reports.cpp:255
+#: src/reports.cpp:256
 #, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
@@ -10636,7 +10641,7 @@ msgstr[1] "Skupna škoda"
 msgstr[2] "Skupna škoda"
 msgstr[3] "Skupna škoda"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:257
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] ""
@@ -10644,27 +10649,27 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/reports.cpp:266
+#: src/reports.cpp:267
 msgid "weapon range: "
 msgstr "doseg orožja: "
 
-#: src/reports.cpp:267
+#: src/reports.cpp:268
 msgid "damage type: "
 msgstr "tip škode: "
 
-#: src/reports.cpp:329
+#: src/reports.cpp:330
 msgid "Lawful units: "
 msgstr "Zakonite enote: "
 
-#: src/reports.cpp:331
+#: src/reports.cpp:332
 msgid "Neutral units: "
 msgstr "Nevtralne enote: "
 
-#: src/reports.cpp:332
+#: src/reports.cpp:333
 msgid "Chaotic units: "
 msgstr "Kaotične enote: "
 
-#: src/reports.cpp:474
+#: src/reports.cpp:477
 msgid "Observers:"
 msgstr "Opazovalci:"
 
@@ -10831,15 +10836,15 @@ msgstr "Pomoč"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomagajte Wesnoth s pošiljanjem podatkov o igrah"
 
-#: src/unit.cpp:2463 src/unit.cpp:2637
+#: src/unit.cpp:2469 src/unit.cpp:2643
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2545
+#: src/unit.cpp:2551
 msgid "XP to advance"
 msgstr "XP do napredovanja"
 
-#: src/unit.cpp:2628
+#: src/unit.cpp:2634
 msgid ": "
 msgstr ": "
 

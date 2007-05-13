@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-12 02:15+0200\n"
+"POT-Creation-Date: 2007-05-13 13:39+0200\n"
 "PO-Revision-Date: 2007-05-01 22:30+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:22
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:23
 #: data/campaigns/The_South_Guard.cfg:27 data/campaigns/Two_Brothers.cfg:23
-#: data/campaigns/Under_the_Burning_Suns.cfg:30
+#: data/campaigns/Under_the_Burning_Suns.cfg:33
 #, fuzzy
 msgid "Campaign Designer"
 msgstr "Kampanjdesign"
@@ -31,14 +31,14 @@ msgstr "Kampanjdesign"
 #: data/campaigns/Heir_To_The_Throne.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:27
 #: data/campaigns/The_South_Guard.cfg:31 data/campaigns/Two_Brothers.cfg:28
-#: data/campaigns/Under_the_Burning_Suns.cfg:34
+#: data/campaigns/Under_the_Burning_Suns.cfg:37
 msgid "Current Maintainer"
 msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:28
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:27
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-#: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:22
+#: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:25
 msgid "short sword"
 msgstr "kortsvärd"
 
@@ -76,7 +76,7 @@ msgstr "magisk"
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:31
 #: data/campaigns/The_South_Guard.cfg:35 data/campaigns/Two_Brothers.cfg:32
-#: data/campaigns/Under_the_Burning_Suns.cfg:38
+#: data/campaigns/Under_the_Burning_Suns.cfg:41
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Grafik och illustrationer"
@@ -111,7 +111,7 @@ msgid "WML Contributors"
 msgstr "Bidrag"
 
 #: data/campaigns/The_South_Guard.cfg:41 data/campaigns/Two_Brothers.cfg:37
-#: data/campaigns/Under_the_Burning_Suns.cfg:51 data/misc/about.cfg:298
+#: data/campaigns/Under_the_Burning_Suns.cfg:54 data/misc/about.cfg:298
 msgid "Miscellaneous"
 msgstr "Diverse"
 
@@ -5865,7 +5865,7 @@ msgid "End Turn"
 msgstr "Avsluta draget"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2497
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2503
 msgid "HP"
 msgstr "HP"
 
@@ -6111,7 +6111,7 @@ msgstr "ballista"
 #: data/units/Monster_Giant_Scorpion.cfg:25
 #: data/units/Monster_Sea_Serpent.cfg:25 data/units/Orcish_Archer.cfg:179
 #: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
-#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
+#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:75
 #: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
 #: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
 #: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
@@ -6226,7 +6226,7 @@ msgstr "klor"
 #: data/units/Orcish_Assassin.cfg:99 data/units/Orcish_Crossbowman.cfg:24
 #: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
 #: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:29
-#: data/units/Orcish_Slayer.cfg:120 data/units/Orcish_Slurbow.cfg:24
+#: data/units/Orcish_Slayer.cfg:120 data/units/Orcish_Slurbow.cfg:27
 #: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
 #: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:53
 #: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:68
@@ -6262,7 +6262,7 @@ msgstr "spruta eld"
 #: data/units/Human_Mage.cfg:105 data/units/Human_Mage_Arch.cfg:77
 #: data/units/Human_Mage_Great.cfg:78 data/units/Human_Mage_Red.cfg:99
 #: data/units/Human_Mage_Silver.cfg:85 data/units/Orcish_Archer.cfg:238
-#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:121
+#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:114
 msgid "fire"
 msgstr "eld"
 
@@ -7828,7 +7828,7 @@ msgstr ""
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:186
 #: data/units/Human_Loyalist_Sergeant.cfg:80
 #: data/units/Orcish_Crossbowman.cfg:60 data/units/Orcish_Crossbowman.cfg:99
-#: data/units/Orcish_Slurbow.cfg:75 data/units/Orcish_Slurbow.cfg:119
+#: data/units/Orcish_Slurbow.cfg:73 data/units/Orcish_Slurbow.cfg:112
 #: data/units/Undead_Skele_Death_Knight.cfg:87
 msgid "crossbow"
 msgstr "armborst"
@@ -9495,14 +9495,12 @@ msgstr "Orchbågskytt"
 
 #: data/units/Orcish_Archer.cfg:18
 msgid ""
-"Orcish Archers are considered by many of their fellow orcs to be a lesser "
-"caste of warrior, for attacking their enemies from a distance. However, "
-"since most orcs won't learn how to handle a bow, he is an indispensable part "
-"of the orcish army."
+"Amongst orcs, bows are seen as a somewhat cowardly weapon; but even orcs, "
+"especially those of young age and slight build, are pragmatic enough to use "
+"them in spite of this.  Orcish archers come miserably equipped, and have no "
+"semblance of training.  As poorly handled as they may be, though, their "
+"weapons are still quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
-"Bågskytten anses av många orcher vara en sämre sorts krigare eftersom han "
-"attackerar på avstånd. Då många orcher vägrar lära sig hur man utnyttjar en "
-"båge så är han en oumbärlig komponent i många orcharméer."
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
@@ -9536,15 +9534,11 @@ msgstr "Armborstorch"
 
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
-"Orcish Crossbowmen try to compensate for their lack of skill with the raw "
-"power of their weapon. While they are not as effective as the Elvish "
-"Marksmen in long-range combat, they are sturdier and can handle themselves a "
-"little better than the Elves in close combat."
+"Orcish crossbows are crude imitations of human or dwarvish design; a "
+"crossbow of any make, though, is a fairly potent device.  The orcs "
+"privileged enough to wield them are capable warriors, and what they lack in "
+"finesse, they make up for in numbers."
 msgstr ""
-"Orchernas armborstskytt försöker kompensera sin bristande träffsäkerhet med "
-"den råa styrkan hos sitt vapen. Han är visserligen inte lika effektiv som "
-"alvernas prickskyttar, men i gengäld är han robustare och klarar sig något "
-"bättre i närstrid."
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
@@ -9634,18 +9628,18 @@ msgstr ""
 msgid "Orcish Slurbow"
 msgstr "Orchstorskytt"
 
-#: data/units/Orcish_Slurbow.cfg:18
+#: data/units/Orcish_Slurbow.cfg:20
 msgid ""
-"Slurbowmen have managed to improve their crossbow with the addition of a "
-"cranequin and a metal barrel. As a result they are able to launch lead shot "
-"with deadly power and accuracy. Although they remain weaker in ranged combat "
-"than their Elven and Human counterparts, they still maintain an edge in "
-"melee strength and stamina."
+"The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
+"much more intricate device, complete with a hand-turned cranequin to recock "
+"the weapon, and often with a multi-ply arc, of laminate wood or bone, "
+"driving the projectile.  Such a device is much easier to work with, and much "
+"more powerful than simpler crossbows; it is also completely beyond orcish "
+"manufacture.\n"
+"\n"
+"Orcs prize any such weapons they can manage to plunder, and they invariably "
+"end up in the hands of their strongest and most cunning archers."
 msgstr ""
-"Orchernas storskytt har lyckats förbättra sitt armborst genom att använda "
-"vinda och en stålpipa, vilket resulterar i bättre slagkraft och "
-"träffsäkerhet. De är fortfarande efter sina motsvarigheter bland alver och "
-"människor i distansstrid, men i närstrid och uthållighet står de sig väl."
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -10693,51 +10687,51 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Det finns inga lediga borgrutor för nya trupper."
 
-#: src/actions.cpp:993 src/actions.cpp:1200
+#: src/actions.cpp:849 src/actions.cpp:1075
 msgid "poisoned"
 msgstr "förgiftad"
 
-#: src/actions.cpp:1001 src/actions.cpp:1208
+#: src/actions.cpp:853 src/actions.cpp:1079
 msgid "slowed"
 msgstr "långsam"
 
-#: src/actions.cpp:1012 src/actions.cpp:1220
+#: src/actions.cpp:859 src/actions.cpp:1085
 msgid "stone"
 msgstr "förstena"
 
-#: src/actions.cpp:2052
+#: src/actions.cpp:1982
 msgid "Ambushed!"
 msgstr "Bakhåll!"
 
-#: src/actions.cpp:2092
+#: src/actions.cpp:2022
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Allierad trupp inom synhåll"
 msgstr[1] "$friends allierade trupper inom synhåll"
 
-#: src/actions.cpp:2095
+#: src/actions.cpp:2025
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Fiendetrupp inom synhåll!"
 msgstr[1] "$enemies fiendetrupper inom synhåll!"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2030
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 allierad trupp"
 msgstr[1] "$friends allierade trupper"
 
-#: src/actions.cpp:2101
+#: src/actions.cpp:2031
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 fiende"
 msgstr[1] "$enemies fiender"
 
-#: src/actions.cpp:2102
+#: src/actions.cpp:2032
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Trupper inom synhåll! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2111
+#: src/actions.cpp:2041
 msgid "(press $hotkey to continue)"
 msgstr "(Tryck på $hotkey för att fortsätta)"
 
@@ -10895,7 +10889,7 @@ msgstr "EP: "
 msgid "Moves: "
 msgstr "Förflyttning: "
 
-#: src/display.cpp:529
+#: src/display.cpp:531
 msgid "Screenshot"
 msgstr "Skärmdump"
 
@@ -11175,11 +11169,11 @@ msgstr "Ställer in typsnitt för aktuellt språk."
 msgid "Loading title screen."
 msgstr "Laddar titelsidan."
 
-#: src/game_events.cpp:871
+#: src/game_events.cpp:870
 msgid "Victory:"
 msgstr "Seger:"
 
-#: src/game_events.cpp:874
+#: src/game_events.cpp:873
 msgid "Defeat:"
 msgstr "Nederlag:"
 
@@ -11395,7 +11389,7 @@ msgstr "Nivå"
 msgid "unit list^Traits"
 msgstr "Karaktärsdrag"
 
-#: src/menu_events.cpp:300 src/unit.cpp:2528
+#: src/menu_events.cpp:300 src/unit.cpp:2534
 msgid "Moves"
 msgstr "Förflyttning"
 
@@ -11483,7 +11477,7 @@ msgstr "Kartan sparad."
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
-#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:744
+#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:745
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Autosparat"
@@ -11733,7 +11727,7 @@ msgstr "Chans att komma oskadad undan"
 msgid "Damage Calculations"
 msgstr "Skadeberäkning"
 
-#: src/mouse_events.cpp:1322 src/reports.cpp:282
+#: src/mouse_events.cpp:1322 src/reports.cpp:283
 msgid "vs"
 msgstr "mot"
 
@@ -11802,12 +11796,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2632
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2638
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2639
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2645
 msgid ")"
 msgstr ")"
 
@@ -12179,16 +12173,16 @@ msgstr "Kunde inte lägga till sockel till sockellistan"
 msgid "Could not send initial handshake"
 msgstr "Kunde inte utföra handskakning"
 
-#: src/play_controller.cpp:390 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:391 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/play_controller.cpp:748
+#: src/play_controller.cpp:749
 msgid "Back to start"
 msgstr "Tillbaka till början"
 
-#: src/play_controller.cpp:750
+#: src/play_controller.cpp:751
 msgid "Back to turn "
 msgstr "Tillbaka till drag "
 
@@ -12333,17 +12327,17 @@ msgstr "Ersätt med"
 msgid "has left the game. What do you want to do?"
 msgstr "har lämnat spelet. Vad vill du göra?"
 
-#: src/reports.cpp:130
+#: src/reports.cpp:131
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Den här truppen är osynlig. Den kan inte bli sedd eller attackeras av "
 "fiendetrupper"
 
-#: src/reports.cpp:130
+#: src/reports.cpp:131
 msgid "invisible: "
 msgstr "osynlig: "
 
-#: src/reports.cpp:135
+#: src/reports.cpp:136
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
@@ -12351,11 +12345,11 @@ msgstr ""
 "Denna trupp är nersaktad. Vid anfall kan den bara vålla halva nominella "
 "skadan."
 
-#: src/reports.cpp:135
+#: src/reports.cpp:136
 msgid "slowed: "
 msgstr "långsam: "
 
-#: src/reports.cpp:140
+#: src/reports.cpp:141
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -12371,52 +12365,52 @@ msgstr ""
 "Trupper kan inte dö av enbart förgiftning, så truppen kommer inte att få "
 "mindre än 1 HP."
 
-#: src/reports.cpp:140
+#: src/reports.cpp:141
 msgid "poisoned: "
 msgstr "förgiftad: "
 
-#: src/reports.cpp:147
+#: src/reports.cpp:148
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
 "Denna trupp har förstenats. Den kan inte förflytta sig eller attackera."
 
-#: src/reports.cpp:147
+#: src/reports.cpp:148
 msgid "stone: "
 msgstr "förstenad: "
 
-#: src/reports.cpp:255
+#: src/reports.cpp:256
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "skada"
 msgstr[1] "skada"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:257
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "attack"
 msgstr[1] "attacker"
 
-#: src/reports.cpp:266
+#: src/reports.cpp:267
 msgid "weapon range: "
 msgstr "vapenräckvidd: "
 
-#: src/reports.cpp:267
+#: src/reports.cpp:268
 msgid "damage type: "
 msgstr "skadetyp: "
 
-#: src/reports.cpp:329
+#: src/reports.cpp:330
 msgid "Lawful units: "
 msgstr "Redbara trupper: "
 
-#: src/reports.cpp:331
+#: src/reports.cpp:332
 msgid "Neutral units: "
 msgstr "Neutrala trupper: "
 
-#: src/reports.cpp:332
+#: src/reports.cpp:333
 msgid "Chaotic units: "
 msgstr "Ljusskygga trupper: "
 
-#: src/reports.cpp:474
+#: src/reports.cpp:477
 msgid "Observers:"
 msgstr "Åskådare: "
 
@@ -12581,15 +12575,15 @@ msgstr "Hjälp"
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjälp Wesnoth genom att skicka oss information"
 
-#: src/unit.cpp:2463 src/unit.cpp:2637
+#: src/unit.cpp:2469 src/unit.cpp:2643
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2545
+#: src/unit.cpp:2551
 msgid "XP to advance"
 msgstr "EP till befordran"
 
-#: src/unit.cpp:2628
+#: src/unit.cpp:2634
 msgid ": "
 msgstr ": "
 
@@ -12642,6 +12636,40 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
+
+#~ msgid ""
+#~ "Orcish Archers are considered by many of their fellow orcs to be a lesser "
+#~ "caste of warrior, for attacking their enemies from a distance. However, "
+#~ "since most orcs won't learn how to handle a bow, he is an indispensable "
+#~ "part of the orcish army."
+#~ msgstr ""
+#~ "Bågskytten anses av många orcher vara en sämre sorts krigare eftersom han "
+#~ "attackerar på avstånd. Då många orcher vägrar lära sig hur man utnyttjar "
+#~ "en båge så är han en oumbärlig komponent i många orcharméer."
+
+#~ msgid ""
+#~ "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
+#~ "power of their weapon. While they are not as effective as the Elvish "
+#~ "Marksmen in long-range combat, they are sturdier and can handle "
+#~ "themselves a little better than the Elves in close combat."
+#~ msgstr ""
+#~ "Orchernas armborstskytt försöker kompensera sin bristande träffsäkerhet "
+#~ "med den råa styrkan hos sitt vapen. Han är visserligen inte lika effektiv "
+#~ "som alvernas prickskyttar, men i gengäld är han robustare och klarar sig "
+#~ "något bättre i närstrid."
+
+#~ msgid ""
+#~ "Slurbowmen have managed to improve their crossbow with the addition of a "
+#~ "cranequin and a metal barrel. As a result they are able to launch lead "
+#~ "shot with deadly power and accuracy. Although they remain weaker in "
+#~ "ranged combat than their Elven and Human counterparts, they still "
+#~ "maintain an edge in melee strength and stamina."
+#~ msgstr ""
+#~ "Orchernas storskytt har lyckats förbättra sitt armborst genom att använda "
+#~ "vinda och en stålpipa, vilket resulterar i bättre slagkraft och "
+#~ "träffsäkerhet. De är fortfarande efter sina motsvarigheter bland alver "
+#~ "och människor i distansstrid, men i närstrid och uthållighet står de sig "
+#~ "väl."
 
 #~ msgid "About"
 #~ msgstr "Om"

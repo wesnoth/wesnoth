@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-12 02:15+0200\n"
+"POT-Creation-Date: 2007-05-13 13:39+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -27,7 +27,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:22
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:23
 #: data/campaigns/The_South_Guard.cfg:27 data/campaigns/Two_Brothers.cfg:23
-#: data/campaigns/Under_the_Burning_Suns.cfg:30
+#: data/campaigns/Under_the_Burning_Suns.cfg:33
 #, fuzzy
 msgid "Campaign Designer"
 msgstr "战役设计"
@@ -36,14 +36,14 @@ msgstr "战役设计"
 #: data/campaigns/Heir_To_The_Throne.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:27
 #: data/campaigns/The_South_Guard.cfg:31 data/campaigns/Two_Brothers.cfg:28
-#: data/campaigns/Under_the_Burning_Suns.cfg:34
+#: data/campaigns/Under_the_Burning_Suns.cfg:37
 msgid "Current Maintainer"
 msgstr "当前维护者"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:28
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:27
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-#: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:22
+#: data/units/Orcish_Crossbowman.cfg:22 data/units/Orcish_Slurbow.cfg:25
 msgid "short sword"
 msgstr "短剑"
 
@@ -81,7 +81,7 @@ msgstr "魔法"
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:31
 #: data/campaigns/The_South_Guard.cfg:35 data/campaigns/Two_Brothers.cfg:32
-#: data/campaigns/Under_the_Burning_Suns.cfg:38
+#: data/campaigns/Under_the_Burning_Suns.cfg:41
 msgid "Artwork and Graphics Designers"
 msgstr "艺术与图像设计"
 
@@ -116,7 +116,7 @@ msgid "WML Contributors"
 msgstr "贡献者"
 
 #: data/campaigns/The_South_Guard.cfg:41 data/campaigns/Two_Brothers.cfg:37
-#: data/campaigns/Under_the_Burning_Suns.cfg:51 data/misc/about.cfg:298
+#: data/campaigns/Under_the_Burning_Suns.cfg:54 data/misc/about.cfg:298
 msgid "Miscellaneous"
 msgstr "其它"
 
@@ -5078,7 +5078,7 @@ msgid "End Turn"
 msgstr "结束回合"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2497
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2503
 msgid "HP"
 msgstr "生命值"
 
@@ -5326,7 +5326,7 @@ msgstr "巨弩"
 #: data/units/Monster_Giant_Scorpion.cfg:25
 #: data/units/Monster_Sea_Serpent.cfg:25 data/units/Orcish_Archer.cfg:179
 #: data/units/Orcish_Crossbowman.cfg:62 data/units/Orcish_Leader.cfg:68
-#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:77
+#: data/units/Orcish_Ruler.cfg:66 data/units/Orcish_Slurbow.cfg:75
 #: data/units/Orcish_Sovereign.cfg:67 data/units/Orcish_Warlord.cfg:78
 #: data/units/Saurian_Ambusher.cfg:29 data/units/Saurian_Ambusher.cfg:72
 #: data/units/Saurian_Flanker.cfg:30 data/units/Saurian_Flanker.cfg:73
@@ -5435,7 +5435,7 @@ msgstr "爪"
 #: data/units/Orcish_Assassin.cfg:99 data/units/Orcish_Crossbowman.cfg:24
 #: data/units/Orcish_Grunt.cfg:76 data/units/Orcish_Leader.cfg:30
 #: data/units/Orcish_Ruler.cfg:28 data/units/Orcish_Slayer.cfg:29
-#: data/units/Orcish_Slayer.cfg:120 data/units/Orcish_Slurbow.cfg:24
+#: data/units/Orcish_Slayer.cfg:120 data/units/Orcish_Slurbow.cfg:27
 #: data/units/Orcish_Sovereign.cfg:29 data/units/Orcish_Warlord.cfg:25
 #: data/units/Orcish_Warrior.cfg:23 data/units/Undead_Bat_Blood.cfg:53
 #: data/units/Undead_Bat_Vampire.cfg:67 data/units/Undead_Corpse_Ghoul.cfg:68
@@ -5471,7 +5471,7 @@ msgstr "火焰呼吸"
 #: data/units/Human_Mage.cfg:105 data/units/Human_Mage_Arch.cfg:77
 #: data/units/Human_Mage_Great.cfg:78 data/units/Human_Mage_Red.cfg:99
 #: data/units/Human_Mage_Silver.cfg:85 data/units/Orcish_Archer.cfg:238
-#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:121
+#: data/units/Orcish_Crossbowman.cfg:101 data/units/Orcish_Slurbow.cfg:114
 msgid "fire"
 msgstr "火焰"
 
@@ -6910,7 +6910,7 @@ msgstr ""
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:186
 #: data/units/Human_Loyalist_Sergeant.cfg:80
 #: data/units/Orcish_Crossbowman.cfg:60 data/units/Orcish_Crossbowman.cfg:99
-#: data/units/Orcish_Slurbow.cfg:75 data/units/Orcish_Slurbow.cfg:119
+#: data/units/Orcish_Slurbow.cfg:73 data/units/Orcish_Slurbow.cfg:112
 #: data/units/Undead_Skele_Death_Knight.cfg:87
 msgid "crossbow"
 msgstr "弩"
@@ -8423,13 +8423,12 @@ msgstr "兽人弓箭手"
 
 #: data/units/Orcish_Archer.cfg:18
 msgid ""
-"Orcish Archers are considered by many of their fellow orcs to be a lesser "
-"caste of warrior, for attacking their enemies from a distance. However, "
-"since most orcs won't learn how to handle a bow, he is an indispensable part "
-"of the orcish army."
+"Amongst orcs, bows are seen as a somewhat cowardly weapon; but even orcs, "
+"especially those of young age and slight build, are pragmatic enough to use "
+"them in spite of this.  Orcish archers come miserably equipped, and have no "
+"semblance of training.  As poorly handled as they may be, though, their "
+"weapons are still quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
-"很多兽人认为弓箭手是比较低级的战士，因为他们总是躲在远处攻击。然而，很少有兽"
-"人受训于箭术，所以他们是兽人军队不可或缺的一部分。"
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
@@ -8462,13 +8461,11 @@ msgstr "兽人弩手"
 
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
-"Orcish Crossbowmen try to compensate for their lack of skill with the raw "
-"power of their weapon. While they are not as effective as the Elvish "
-"Marksmen in long-range combat, they are sturdier and can handle themselves a "
-"little better than the Elves in close combat."
+"Orcish crossbows are crude imitations of human or dwarvish design; a "
+"crossbow of any make, though, is a fairly potent device.  The orcs "
+"privileged enough to wield them are capable warriors, and what they lack in "
+"finesse, they make up for in numbers."
 msgstr ""
-"兽人弩手用这犀利的武器来弥补他们战斗技巧的不足。虽然不如精灵神射手那样善于远"
-"距离作战，但他们的体格却稍微强壮一些，在近战中略强于精灵。"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
@@ -8552,16 +8549,18 @@ msgstr ""
 msgid "Orcish Slurbow"
 msgstr "兽人重弩手"
 
-#: data/units/Orcish_Slurbow.cfg:18
+#: data/units/Orcish_Slurbow.cfg:20
 msgid ""
-"Slurbowmen have managed to improve their crossbow with the addition of a "
-"cranequin and a metal barrel. As a result they are able to launch lead shot "
-"with deadly power and accuracy. Although they remain weaker in ranged combat "
-"than their Elven and Human counterparts, they still maintain an edge in "
-"melee strength and stamina."
+"The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
+"much more intricate device, complete with a hand-turned cranequin to recock "
+"the weapon, and often with a multi-ply arc, of laminate wood or bone, "
+"driving the projectile.  Such a device is much easier to work with, and much "
+"more powerful than simpler crossbows; it is also completely beyond orcish "
+"manufacture.\n"
+"\n"
+"Orcs prize any such weapons they can manage to plunder, and they invariably "
+"end up in the hands of their strongest and most cunning archers."
 msgstr ""
-"重弩手用转盘和金属桶来改进弩弓，使得他们能造成精准射出致命的铅箭。虽然在远程"
-"战斗中仍然逊色于人类和精灵的弓箭手，他们在近战中的力量和耐力方面却能胜出。"
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -9536,53 +9535,53 @@ msgstr "您的领袖必须在要塞里才能征募或召回单位。"
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，无法征兵。"
 
-#: src/actions.cpp:993 src/actions.cpp:1200
+#: src/actions.cpp:849 src/actions.cpp:1075
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:1001 src/actions.cpp:1208
+#: src/actions.cpp:853 src/actions.cpp:1079
 msgid "slowed"
 msgstr "减速"
 
-#: src/actions.cpp:1012 src/actions.cpp:1220
+#: src/actions.cpp:859 src/actions.cpp:1085
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2052
+#: src/actions.cpp:1982
 msgid "Ambushed!"
 msgstr "遭到伏击！"
 
 # what is the plural form all about?
-#: src/actions.cpp:2092
+#: src/actions.cpp:2022
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友好单位"
 msgstr[1] "发现$friends个友好单位"
 
-#: src/actions.cpp:2095
+#: src/actions.cpp:2025
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌方单位！"
 msgstr[1] "发现$enemies个敌方单位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2100
+#: src/actions.cpp:2030
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1个友好单位"
 msgstr[1] "$friends个友好单位"
 
-#: src/actions.cpp:2101
+#: src/actions.cpp:2031
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌方单位"
 msgstr[1] "$enemies个敌方单位"
 
-#: src/actions.cpp:2102
+#: src/actions.cpp:2032
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2111
+#: src/actions.cpp:2041
 msgid "(press $hotkey to continue)"
 msgstr "（按$hotkey继续）"
 
@@ -9741,7 +9740,7 @@ msgstr "经验值："
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/display.cpp:529
+#: src/display.cpp:531
 msgid "Screenshot"
 msgstr "屏幕截图"
 
@@ -10019,11 +10018,11 @@ msgstr "为当前语言重绘字体。"
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
-#: src/game_events.cpp:871
+#: src/game_events.cpp:870
 msgid "Victory:"
 msgstr "胜利："
 
-#: src/game_events.cpp:874
+#: src/game_events.cpp:873
 msgid "Defeat:"
 msgstr "失败："
 
@@ -10237,7 +10236,7 @@ msgstr "等级"
 msgid "unit list^Traits"
 msgstr "特质"
 
-#: src/menu_events.cpp:300 src/unit.cpp:2528
+#: src/menu_events.cpp:300 src/unit.cpp:2534
 msgid "Moves"
 msgstr "移动"
 
@@ -10325,7 +10324,7 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:744
+#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:745
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "自动存档"
@@ -10576,7 +10575,7 @@ msgstr "不受伤的几率"
 msgid "Damage Calculations"
 msgstr "攻击计算"
 
-#: src/mouse_events.cpp:1322 src/reports.cpp:282
+#: src/mouse_events.cpp:1322 src/reports.cpp:283
 msgid "vs"
 msgstr "vs"
 
@@ -10641,12 +10640,12 @@ msgid "Normal"
 msgstr "普通"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2632
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2638
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2639
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2645
 msgid ")"
 msgstr "）"
 
@@ -11026,16 +11025,16 @@ msgstr "不能添加插口对插口组合"
 msgid "Could not send initial handshake"
 msgstr "不能发送初始化连接信息"
 
-#: src/play_controller.cpp:390 src/playsingle_controller.cpp:346
+#: src/play_controller.cpp:391 src/playsingle_controller.cpp:346
 #: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "您想载入的文件已损坏"
 
-#: src/play_controller.cpp:748
+#: src/play_controller.cpp:749
 msgid "Back to start"
 msgstr "回到开始"
 
-#: src/play_controller.cpp:750
+#: src/play_controller.cpp:751
 msgid "Back to turn "
 msgstr "回到回合"
 
@@ -11178,25 +11177,25 @@ msgstr "替换为 "
 msgid "has left the game. What do you want to do?"
 msgstr "已经离开游戏，您想做什么？"
 
-#: src/reports.cpp:130
+#: src/reports.cpp:131
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "本单位不可见。敌人看不见他，也不能攻击他。"
 
-#: src/reports.cpp:130
+#: src/reports.cpp:131
 msgid "invisible: "
 msgstr "隐形： "
 
-#: src/reports.cpp:135
+#: src/reports.cpp:136
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr "本单位被减速了，攻击输出因此减半。"
 
-#: src/reports.cpp:135
+#: src/reports.cpp:136
 msgid "slowed: "
 msgstr "减速： "
 
-#: src/reports.cpp:140
+#: src/reports.cpp:141
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -11210,51 +11209,51 @@ msgstr ""
 "\n"
 "单位不会因中毒而死。毒素影响不会让生命值降低到1点以下。"
 
-#: src/reports.cpp:140
+#: src/reports.cpp:141
 msgid "poisoned: "
 msgstr "中毒： "
 
-#: src/reports.cpp:147
+#: src/reports.cpp:148
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "本单位已石化。不能攻击或移动。"
 
-#: src/reports.cpp:147
+#: src/reports.cpp:148
 msgid "stone: "
 msgstr "石化： "
 
-#: src/reports.cpp:255
+#: src/reports.cpp:256
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "点伤害"
 msgstr[1] "点伤害"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:257
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "次攻击"
 msgstr[1] "次攻击"
 
-#: src/reports.cpp:266
+#: src/reports.cpp:267
 msgid "weapon range: "
 msgstr "武器攻击范围："
 
-#: src/reports.cpp:267
+#: src/reports.cpp:268
 msgid "damage type: "
 msgstr "伤害类型："
 
-#: src/reports.cpp:329
+#: src/reports.cpp:330
 msgid "Lawful units: "
 msgstr "善良单位： "
 
-#: src/reports.cpp:331
+#: src/reports.cpp:332
 msgid "Neutral units: "
 msgstr "中立单位： "
 
-#: src/reports.cpp:332
+#: src/reports.cpp:333
 msgid "Chaotic units: "
 msgstr "混乱单位： "
 
-#: src/reports.cpp:474
+#: src/reports.cpp:477
 msgid "Observers:"
 msgstr "观察者："
 
@@ -11420,15 +11419,15 @@ msgstr "帮助"
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:2463 src/unit.cpp:2637
+#: src/unit.cpp:2469 src/unit.cpp:2643
 msgid "; "
 msgstr "； "
 
-#: src/unit.cpp:2545
+#: src/unit.cpp:2551
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2628
+#: src/unit.cpp:2634
 msgid ": "
 msgstr "： "
 
@@ -11478,6 +11477,35 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid ""
+#~ "Orcish Archers are considered by many of their fellow orcs to be a lesser "
+#~ "caste of warrior, for attacking their enemies from a distance. However, "
+#~ "since most orcs won't learn how to handle a bow, he is an indispensable "
+#~ "part of the orcish army."
+#~ msgstr ""
+#~ "很多兽人认为弓箭手是比较低级的战士，因为他们总是躲在远处攻击。然而，很少有"
+#~ "兽人受训于箭术，所以他们是兽人军队不可或缺的一部分。"
+
+#~ msgid ""
+#~ "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
+#~ "power of their weapon. While they are not as effective as the Elvish "
+#~ "Marksmen in long-range combat, they are sturdier and can handle "
+#~ "themselves a little better than the Elves in close combat."
+#~ msgstr ""
+#~ "兽人弩手用这犀利的武器来弥补他们战斗技巧的不足。虽然不如精灵神射手那样善于"
+#~ "远距离作战，但他们的体格却稍微强壮一些，在近战中略强于精灵。"
+
+#~ msgid ""
+#~ "Slurbowmen have managed to improve their crossbow with the addition of a "
+#~ "cranequin and a metal barrel. As a result they are able to launch lead "
+#~ "shot with deadly power and accuracy. Although they remain weaker in "
+#~ "ranged combat than their Elven and Human counterparts, they still "
+#~ "maintain an edge in melee strength and stamina."
+#~ msgstr ""
+#~ "重弩手用转盘和金属桶来改进弩弓，使得他们能造成精准射出致命的铅箭。虽然在远"
+#~ "程战斗中仍然逊色于人类和精灵的弓箭手，他们在近战中的力量和耐力方面却能胜"
+#~ "出。"
 
 #~ msgid ""
 #~ "One of the greatest circles of what is considered 'black magic' is the "
