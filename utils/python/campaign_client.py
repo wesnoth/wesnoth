@@ -116,7 +116,7 @@ class CampaignBrowser:
         WML = wmldata.DataSub("campaign_server")
         pos = [0]
         tag = [WML]
-        pen_element = False
+        open_element = False
 
         def done():
             return pos[0] >= len(data)
@@ -519,7 +519,7 @@ if __name__ == "__main__":
             pbl.get_text_val("version"),
             pbl.get_text_val("icon"),
             options.upload.replace(".pbl", ".cfg"),
-            os.path.dirname(options.upload)
+            os.path.join(os.path.dirname(options.upload), name)
             )
         while not mythread.event.isSet():
             mythread.event.wait(1)
