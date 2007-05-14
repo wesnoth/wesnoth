@@ -160,6 +160,9 @@ static bool ends_with(const std::string& str, const std::string& suffix)
 	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
 }
 
+#define MAINCFG 	"%main.cfg"
+#define FINALCFG	"%final.cfg"
+
 void get_files_in_dir(const std::string& directory,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs,
@@ -253,12 +256,12 @@ void get_files_in_dir(const std::string& directory,
 			/* code for syntems conforming to POSIX */
 			struct stat st;
 			
-			if (reorder == DO_REORDER && ::stat((name + "/%main.cfg").c_str(), &st) != -1  && S_ISREG(st.st_mode)) {
+			if (reorder == DO_REORDER && ::stat((name + "/" + MAINCFG).c_str(), &st) != -1  && S_ISREG(st.st_mode)) {
 				if (files != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
-						files->push_back(name + "/%main.cfg");
+						files->push_back(name + "/" + MAINCFG);
 					else
-						files->push_back(std::string(filename) + "/%main.cfg");
+						files->push_back(std::string(filename) + "/" + MAINCFG);
 				}
 			}
 			else if (::stat(name.c_str(), &st) != -1) {
@@ -292,8 +295,7 @@ void get_files_in_dir(const std::string& directory,
 
 	if (files != NULL && reorder == DO_REORDER) {
 		for (unsigned int i = 0; i < files->size(); i++)
-			// Special handling of %final.cfg and %main.cfg
-			if (ends_with((*files)[i], "%final.cfg")) {
+			if (ends_with((*files)[i], FINALCFG)) {
 			    files->push_back((*files)[i]);
 			    files->erase(files->begin()+i);
 			    break;
