@@ -85,7 +85,7 @@ const attack_animation& attack_type::animation(const display& disp, const gamema
 {
 	//select one of the matching animations at random
 	std::vector<const attack_animation*>  options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
 		int matching = i->matches(disp,loc,my_unit,hit,this,secondary_attack,swing_num,damage);
 		if(matching == max_val) {

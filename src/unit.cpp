@@ -2692,7 +2692,7 @@ const defensive_animation& unit::defend_animation(const display& disp, const gam
 {
 	//select one of the matching animations at random
 	std::vector<const defensive_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this,hits,attack,secondary_attack,swing_num,damage);
 		if(matching == max_val) {
@@ -2711,7 +2711,7 @@ const unit_animation& unit::teleport_animation(const display& disp, const gamema
 {
 	//select one of the matching animations at random
 	std::vector<const unit_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<unit_animation>::const_iterator i = teleport_animations_.begin(); i != teleport_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -2730,7 +2730,7 @@ const unit_animation* unit::extra_animation(const display& disp, const gamemap::
 {
 	//select one of the matching animations at random
 	std::vector<const unit_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	std::multimap<std::string,unit_animation>::const_iterator i;
 	for(i = extra_animations_.lower_bound(flag); i != extra_animations_.upper_bound(flag); ++i) {
 		int matching = i->second.matches(disp,loc,this);
@@ -2751,7 +2751,7 @@ const death_animation& unit::die_animation(const display& disp, const gamemap::l
 {
 	//select one of the matching animations at random
 	std::vector<const death_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this,hits,attack,secondary_attack,0,0);
 		if(matching == max_val) {
@@ -2770,7 +2770,7 @@ const movement_animation& unit::move_animation(const display& disp, const gamema
 {
 	//select one of the matching animations at random
 	std::vector<const movement_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<movement_animation>::const_iterator i = movement_animations_.begin(); i != movement_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -2790,7 +2790,7 @@ const standing_animation& unit::stand_animation(const display& disp, const gamem
 {
 	//select one of the matching animations at random
 	std::vector<const standing_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<standing_animation>::const_iterator i = standing_animations_.begin(); i != standing_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -2810,7 +2810,7 @@ const leading_animation& unit::lead_animation(const display& disp, const gamemap
 {
 	//select one of the matching animations at random
 	std::vector<const leading_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<leading_animation>::const_iterator i = leading_animations_.begin(); i != leading_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -2832,7 +2832,7 @@ const victory_animation& unit::victorious_animation(const display& disp, const g
 {
 	//select one of the matching animations at random
 	std::vector<const victory_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<victory_animation>::const_iterator i = victory_animations_.begin(); i != victory_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this,hits,attack,secondary_attack,0,0);
 		if(matching == max_val) {
@@ -2852,7 +2852,7 @@ const healing_animation& unit::heal_animation(const display& disp, const gamemap
 {
 	//select one of the matching animations at random
 	std::vector<const healing_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<healing_animation>::const_iterator i = healing_animations_.begin(); i != healing_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this,damage);
 		if(matching == max_val) {
@@ -2872,7 +2872,7 @@ const recruit_animation& unit::recruiting_animation(const display& disp, const g
 {
 	//select one of the matching animations at random
 	std::vector<const recruit_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<recruit_animation>::const_iterator i = recruit_animations_.begin(); i != recruit_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -2892,7 +2892,7 @@ const idle_animation* unit::idling_animation(const display& disp, const gamemap:
 {
 	//select one of the matching animations at random
 	std::vector<const idle_animation*> options;
-	int max_val = 0;
+	int max_val = -3;
 	for(std::vector<idle_animation>::const_iterator i = idle_animations_.begin(); i != idle_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -2912,7 +2912,7 @@ const levelin_animation& unit::levelingin_animation(const display& disp, const g
 {
 	//select one of the matching animations at random
 	std::vector<const levelin_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<levelin_animation>::const_iterator i = levelin_animations_.begin(); i != levelin_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -2932,7 +2932,7 @@ const levelout_animation& unit::levelingout_animation(const display& disp, const
 {
 	//select one of the matching animations at random
 	std::vector<const levelout_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<levelout_animation>::const_iterator i = levelout_animations_.begin(); i != levelout_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this);
 		if(matching == max_val) {
@@ -2952,7 +2952,7 @@ const healed_animation& unit::get_healed_animation(const display& disp, const ga
 {
 	//select one of the matching animations at random
 	std::vector<const healed_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<healed_animation>::const_iterator i = healed_animations_.begin(); i != healed_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this,healing);
 		if(matching == max_val) {
@@ -2972,7 +2972,7 @@ const poison_animation& unit::poisoned_animation(const display& disp, const game
 {
 	//select one of the matching animations at random
 	std::vector<const poison_animation*> options;
-	int max_val = -1;
+	int max_val = -3;
 	for(std::vector<poison_animation>::const_iterator i = poison_animations_.begin(); i != poison_animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,this,damage);
 		if(matching == max_val) {

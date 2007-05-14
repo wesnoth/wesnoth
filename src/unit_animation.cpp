@@ -147,21 +147,21 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 		if(t_translation::terrain_matches(disp.get_map().get_terrain(loc), terrain_types_)) {	
 			result ++;
 		} else {
-			return -1;
+			return -2;
 		} 
 	}
 
 	if(my_unit) {
 		if(directions.empty()== false) {
 			if (std::find(directions.begin(),directions.end(),my_unit->facing())== directions.end()) {
-				return -1;
+				return -2;
 			} else {
 				result ++;
 			}
 		}
 		std::vector<config>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); myitor++) {
-			if(!my_unit->matches_filter(&(*myitor),loc)) return -1;
+			if(!my_unit->matches_filter(&(*myitor),loc)) return -2;
 			result++;
 		}
 		if(!secondary_unit_filter_.empty()) {
@@ -171,14 +171,14 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 				if(unit->first == facing_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); second_itor++) {
-						if(!unit->second.matches_filter(&(*second_itor),facing_loc)) return -1;
+						if(!unit->second.matches_filter(&(*second_itor),facing_loc)) return -2;
 						result++;
 					}
 
 					break;
 				}
 			}
-			if(unit == disp.get_const_units().end()) return -1;
+			if(unit == disp.get_const_units().end()) return -2;
 		}
 		if(!neighbour_unit_filter_.empty()) {
 			gamemap::location neighbour_loc[6] ;
@@ -197,12 +197,12 @@ int unit_animation::matches(const display& disp, const gamemap::location& loc,co
 						}
 					}
 				}
-				if(!found) return -1;
+				if(!found) return -2;
 			}
 		}
 
-	} else if (!unit_filter_.empty()) return -1;
-	if(frequency_ && !(rand()%frequency_)) return -1;
+	} else if (!unit_filter_.empty()) return -2;
+	if(frequency_ && !(rand()%frequency_)) return -2;
 
 	
 
@@ -249,45 +249,45 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 		hit_type hit,const attack_type* attack, const attack_type* secondary_attack,int swing,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
-	if(result == -1) return -1;
+	if(result == -2) return -2;
 	if(hits.empty() == false ) {
 		if (std::find(hits.begin(),hits.end(),hit)== hits.end()) {
-			return -1;
+			return -2;
 		} else {
 			result ++;
 		}
 	}
 	if(swing_num.empty() == false ) {
 		if (std::find(swing_num.begin(),swing_num.end(),swing)== swing_num.end()) {
-			return -1;
+			return -2;
 		} else {
 			result ++;
 		}
 	}
 	if(damage_.empty() == false ) {
 		if (std::find(damage_.begin(),damage_.end(),damage)== damage_.end()) {
-			return -1;
+			return -2;
 		} else {
 			result ++;
 		}
 	}
 	if(!attack) {
 		if(!primary_filter.empty())
-			return -1;
+			return -2;
 	}
 	std::vector<config>::const_iterator myitor;
 	for(myitor = primary_filter.begin(); myitor != primary_filter.end(); myitor++) {
 		myitor->debug();
-		if(!attack->matches_filter(*myitor)) return -1;
+		if(!attack->matches_filter(*myitor)) return -2;
 		result++;
 	}
 	if(!secondary_attack) {
 		if(!secondary_filter.empty())
-			return -1;
+			return -2;
 	}
 	for(myitor = secondary_filter.begin(); myitor != secondary_filter.end(); myitor++) {
 		myitor->debug();
-		if(!secondary_attack->matches_filter(*myitor)) return -1;
+		if(!secondary_attack->matches_filter(*myitor)) return -2;
 		result++;
 	}
 	return result;
@@ -297,10 +297,10 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 int poison_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
-	if(result == -1) return -1;
+	if(result == -2) return -2;
 	if(damage_.empty() == false ) {
 		if (std::find(damage_.begin(),damage_.end(),damage)== damage_.end()) {
-			return -1;
+			return -2;
 		} else {
 			result ++;
 		}
@@ -311,10 +311,10 @@ int poison_animation::matches(const display& disp, const gamemap::location & loc
 int healed_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int healing) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
-	if(result == -1) return -1;
+	if(result == -2) return -2;
 	if(healing_.empty() == false ) {
 		if (std::find(healing_.begin(),healing_.end(),healing)== healing_.end()) {
-			return -1;
+			return -2;
 		} else {
 			result ++;
 		}
@@ -325,10 +325,10 @@ int healed_animation::matches(const display& disp, const gamemap::location & loc
 int healing_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
-	if(result == -1) return -1;
+	if(result == -2) return -2;
 	if(damage_.empty() == false ) {
 		if (std::find(damage_.begin(),damage_.end(),damage)== damage_.end()) {
-			return -1;
+			return -2;
 		} else {
 			result ++;
 		}
