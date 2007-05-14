@@ -20,6 +20,7 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "wassert.hpp"
+#include "game_config.hpp"
 
 #include "SDL.h"
 
@@ -263,6 +264,11 @@ namespace {
 		config &copying = dir->add_child("file");
 		copying["name"] = "COPYING.txt";
 		copying["contents"] = contents;
+
+		if (contents.empty()) {
+			std::cerr << "Could not find " << "data/COPYING.txt" <<
+				", path is \"" << game_config::path << "\"\n";
+		}
 	}
 
 	void campaign_server::run()
