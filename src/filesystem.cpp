@@ -180,7 +180,7 @@ void get_files_in_dir(const std::string& directory,
 		if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 			const std::string& dir = game_config::path + "/" + directory;
 			if(is_directory(dir)) {
-				get_files_in_dir(dir,files,dirs,mode);
+				get_files_in_dir(dir,files,dirs,mode,reorder);
 				return;
 			}
 		}
