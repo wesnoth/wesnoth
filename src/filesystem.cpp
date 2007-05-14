@@ -250,9 +250,18 @@ void get_files_in_dir(const std::string& directory,
 			else
 				name = (directory + "/") + filename;
 #endif
-
+			/* code for syntems conforming to POSIX */
 			struct stat st;
-			if (::stat(name.c_str(), &st) != -1) {
+			
+			if (reorder == DO_REORDER && ::stat((name + "/%main.cfg").c_str(), &st) != -1  && S_ISREG(st.st_mode)) {
+				if (files != NULL) {
+					if (mode == ENTIRE_FILE_PATH)
+						files->push_back(name + "/%main.cfg");
+					else
+						files->push_back(std::string(filename) + "/%main.cfg");
+				}
+			}
+			else if (::stat(name.c_str(), &st) != -1) {
 				if (S_ISREG(st.st_mode)) {
 					if (files != NULL) {
 						if (mode == ENTIRE_FILE_PATH)
@@ -281,27 +290,14 @@ void get_files_in_dir(const std::string& directory,
 	if(dirs != NULL)
 		std::sort(dirs->begin(),dirs->end());
 
-	if (files != NULL && reorder == DO_REORDER) {std::cerr << "Before reordering: ";
-		for (unsigned int i = 0; i < files->size(); i++)
-			std::cerr << (*files)[i] << " ";
-		std::cerr << "\n";
-
+	if (files != NULL && reorder == DO_REORDER) {
 		for (unsigned int i = 0; i < files->size(); i++)
 			// Special handling of %final.cfg and %main.cfg
 			if (ends_with((*files)[i], "%final.cfg")) {
 			    files->push_back((*files)[i]);
 			    files->erase(files->begin()+i);
 			    break;
-		    } else if (ends_with((*files)[i], "%main.cfg")) {
-			    if (i > 0)
-				    files->erase(files->begin(), files->begin()+i-1);
-			    if (i < files->size() - 1)
-				    files->erase(files->begin()+i+1, files->end());
-		    }
-	    std::cerr << "After reordering: ";
-	    for (unsigned int i = 0; i < files->size(); i++)
-	            std::cerr << (*files)[i] << " ";
-	    std::cerr << "\n";
+			}
     }
 }
 
