@@ -31,6 +31,7 @@ private:
 };
 
 enum FILE_NAME_MODE { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
+enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
 
 //function which populates files with all the files and dirs
 //with all the directories in dir. If files or dirs are NULL
@@ -41,7 +42,8 @@ enum FILE_NAME_MODE { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
 void get_files_in_dir(const std::string& dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=NULL,
-                      FILE_NAME_MODE mode=FILE_NAME_ONLY);
+                      FILE_NAME_MODE mode=FILE_NAME_ONLY,
+                      FILE_REORDER_OPTION mode=DONT_REORDER);
 
 std::string get_dir(const std::string &dir);
 //the location of various important files

@@ -155,10 +155,16 @@ namespace {
 #include <CoreFoundation/CFBase.h>
 #endif
 
+static bool ends_with(const std::string& str, const std::string& suffix) 
+{
+	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
+}
+
 void get_files_in_dir(const std::string& directory,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs,
-                      FILE_NAME_MODE mode)
+                      FILE_NAME_MODE mode,
+                      FILE_REORDER_OPTION reorder)
 {
 #ifdef USE_ZIPIOS
 	if (the_collection->hasSubdir(directory)) {
@@ -274,6 +280,29 @@ void get_files_in_dir(const std::string& directory,
 
 	if(dirs != NULL)
 		std::sort(dirs->begin(),dirs->end());
+
+	if (files != NULL && reorder == DO_REORDER) {std::cerr << "Before reordering: ";
+		for (unsigned int i = 0; i < files->size(); i++)
+			std::cerr << (*files)[i] << " ";
+		std::cerr << "\n";
+
+		for (unsigned int i = 0; i < files->size(); i++)
+			// Special handling of %final.cfg and %main.cfg
+			if (ends_with((*files)[i], "%final.cfg")) {
+			    files->push_back((*files)[i]);
+			    files->erase(files->begin()+i);
+			    break;
+		    } else if (ends_with((*files)[i], "%main.cfg")) {
+			    if (i > 0)
+				    files->erase(files->begin(), files->begin()+i-1);
+			    if (i < files->size() - 1)
+				    files->erase(files->begin()+i+1, files->end());
+		    }
+	    std::cerr << "After reordering: ";
+	    for (unsigned int i = 0; i < files->size(); i++)
+	            std::cerr << (*files)[i] << " ";
+	    std::cerr << "\n";
+    }
 }
 
 std::string get_prefs_file()
