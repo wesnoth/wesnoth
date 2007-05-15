@@ -40,11 +40,11 @@
  */
 
 #if defined(__BORLANDC__)
-# define OPENDIR_PROVIDED_BY_COMPILER
+# define DIRENT_PROVIDED_BY_COMPILER
 #elif defined(__DMC__)
-# define OPENDIR_PROVIDED_BY_COMPILER
+# define DIRENT_PROVIDED_BY_COMPILER
 #elif defined(__GNUC__)
-# define OPENDIR_PROVIDED_BY_COMPILER
+# define DIRENT_PROVIDED_BY_COMPILER
 #elif defined(__INTEL_COMPILER)
 #elif defined(_MSC_VER)
 #elif defined(__MWERKS__)
@@ -53,7 +53,9 @@
 # error Compiler not discriminated
 #endif /* compiler */
 
-#if !defined(OPENDIR_PROVIDED_BY_COMPILER)
+#if defined(DIRENT_PROVIDED_BY_COMPILER)
+#include <dirent.h>
+#else
 /* /////////////////////////////////////////////////////////////////////////
  * Constants and definitions
  */
@@ -222,8 +224,8 @@ struct dirent *readdir(DIR *dir)
     }
 }
 
-#endif /* !OPENDIR_PROVIDED_BY_COMPILER */
-#else
+#endif /* !DIRENT_PROVIDED_BY_COMPILER */
+#else /* not Windows */
 
 #include <unistd.h>
 
