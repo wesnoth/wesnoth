@@ -156,16 +156,6 @@ DIR *opendir(char const *name)
         }
     }
 
-#if 0
-    if(NULL != dir)
-    {
-        struct dirent *readdir(DIR *dir)
-
-    }
-#endif /* 0 */
-
-
-
     return result;
 }
 
@@ -335,9 +325,9 @@ bool filesystem_init()
 
 void filesystem_close()
 {
-	#ifdef USE_ZIPIOS
+#ifdef USE_ZIPIOS
 	delete the_collection;
-	#endif
+#endif
 }
 
 namespace {
@@ -845,8 +835,8 @@ time_t file_create_time(const std::string& fname)
 	return buf.st_mtime;
 }
 
-//return the next ordered full filename within this directory
 std::string next_filename(const std::string &dirname, unsigned int max)
+//return the next ordered full filename within this directory
 {
 	std::vector<std::string> files;
 	std::stringstream fname;
@@ -954,6 +944,7 @@ int file_size(const std::string& fname)
 }
 
 std::string file_name(const std::string& file)
+// analogous to POSIX basename(3), but for C++ string-object pathnames
 {
 #ifdef _WIN32
 	static const std::string dir_separators = "\\/:";
@@ -972,6 +963,7 @@ std::string file_name(const std::string& file)
 }
 
 std::string directory_name(const std::string& file)
+// analogous to POSIX dirname(3), but for C++ string-object pathnames
 {
 #ifdef _WIN32
 	static const std::string dir_separators = "\\/:";
