@@ -288,6 +288,17 @@ class Parser:
             # If it is a directory, parse all cfg files within.
             if os.path.isdir(dirpath):
                 files = glob.glob(dirpath + "/*.cfg")
+                files.sort()
+                mc = dirpath + "/_main.cfg"
+                fc = dirpath + "/_final.cfg"
+                if mc in files:
+                    # If there's a file called _main.cfg, only parse that.
+                    files = [mc]
+                elif fc in files:
+                    # If there's a file called _final.cfg, parse it only after
+                    # all others.
+                    files.remove(fc)
+                    files.append(fc)
             else:
                 files = [dirpath]
             for path in files:
