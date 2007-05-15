@@ -1422,7 +1422,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				preproc_map defines_map(defines);
 
 				//read the file and then write to the cache
-				scoped_istream stream = preprocess_file("data/game.cfg", &defines_map);
+				scoped_istream stream = preprocess_file("data/", &defines_map);
 
 				//reset the parse counter before reading the game files
 				if (loadscreen::global_loadscreen) {
@@ -1513,7 +1513,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 	std::cerr << "caching cannot be done. Reading file\n";
 	preproc_map defines_map(defines);
-	scoped_istream stream = preprocess_file("data/game.cfg", &defines_map);
+	scoped_istream stream = preprocess_file("data/", &defines_map);
 	read(cfg, *stream);
 }
 
