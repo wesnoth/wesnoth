@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-13 13:39+0200\n"
-"PO-Revision-Date: 2007-05-02 22:35+0300\n"
+"PO-Revision-Date: 2007-05-15 02:45+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
 "MIME-Version: 1.0\n"
@@ -34,9 +34,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:23
 #: data/campaigns/The_South_Guard.cfg:27 data/campaigns/Two_Brothers.cfg:23
 #: data/campaigns/Under_the_Burning_Suns.cfg:33
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Кампания"
+msgstr "Дизайнер на кампания "
 
 #: data/campaigns/Descent_Into_Darkness.cfg:29
 #: data/campaigns/Heir_To_The_Throne.cfg:31
@@ -44,7 +43,7 @@ msgstr "Кампания"
 #: data/campaigns/The_South_Guard.cfg:31 data/campaigns/Two_Brothers.cfg:28
 #: data/campaigns/Under_the_Burning_Suns.cfg:37
 msgid "Current Maintainer"
-msgstr ""
+msgstr "Текущ Поддържащ "
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:28
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:27
@@ -88,7 +87,6 @@ msgstr "магическа"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:31
 #: data/campaigns/The_South_Guard.cfg:35 data/campaigns/Two_Brothers.cfg:32
 #: data/campaigns/Under_the_Burning_Suns.cfg:41
-#, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Графика и дизайн "
 
@@ -100,26 +98,23 @@ msgstr "Подземие"
 #: data/campaigns/Northern_Rebirth.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:26
 msgid "Prose, Grammatical and WML Assistance"
-msgstr ""
+msgstr "Езикова, граматическа и WML помощ"
 
 #: data/campaigns/Northern_Rebirth.cfg:37
 msgid "Music Development"
-msgstr ""
+msgstr "Разработка на музиката"
 
 #: data/campaigns/Northern_Rebirth.cfg:41
-#, fuzzy
 msgid "Translators"
-msgstr "Превод на чешки"
+msgstr "Преводачи"
 
 #: data/campaigns/Northern_Rebirth.cfg:50
-#, fuzzy
 msgid "Code and Translation Assistance"
-msgstr "Превод на корейски"
+msgstr "Програмиране и помощ при превода"
 
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:37
-#, fuzzy
 msgid "WML Contributors"
-msgstr "Сътрудници"
+msgstr "WML Сътрудници"
 
 #: data/campaigns/The_South_Guard.cfg:41 data/campaigns/Two_Brothers.cfg:37
 #: data/campaigns/Under_the_Burning_Suns.cfg:54 data/misc/about.cfg:298
@@ -283,11 +278,11 @@ msgstr ""
 
 #: data/english.cfg:48 data/misc/english.cfg:48
 msgid "melee"
-msgstr "близък бой"
+msgstr "близък"
 
 #: data/english.cfg:49 data/misc/english.cfg:49
 msgid "ranged"
-msgstr "бой от разстояние"
+msgstr "далечен "
 
 #: data/english.cfg:52 data/misc/english.cfg:52
 msgid "Wesnoth unit list"
@@ -3985,9 +3980,8 @@ msgstr ""
 "Ашижт,Ален Ка,Алинаш Мал,Ора Ка"
 
 #: data/misc/names.cfg:51
-#, fuzzy
 msgid " "
-msgstr "; "
+msgstr " "
 
 #: data/misc/names.cfg:56
 msgid ""
@@ -4685,6 +4679,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"За да повишавате единици от ниски нива по-бързо, съберете ги с ветеран и го "
+"използвайте, за да нараните обща цел, достатъчно тежко, че да може младшият "
+"партньор да нанесе фаталният удар."
 
 #: data/misc/traits.cfg:9
 msgid "loyal"
@@ -5741,32 +5738,28 @@ msgid "Attacker"
 msgstr "Атакуващ"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:356
-#, fuzzy
 msgid "North-West"
-msgstr "Северозападен отбор"
+msgstr "Северозападен"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:357
-#, fuzzy
 msgid "North-East"
-msgstr "Североизточен отбор"
+msgstr "Североизточен"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:358
 msgid "Middle-East"
-msgstr ""
+msgstr "Среден изток "
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:359
-#, fuzzy
 msgid "South-East"
-msgstr "Югоизточен отбор"
+msgstr "Югоизточен"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:360
-#, fuzzy
 msgid "South-West"
-msgstr "Югозападен отбор"
+msgstr "Югозападен"
 
 #: data/scenarios/multiplayer/6p_Team_Survival.cfg:361
 msgid "Middle-West"
-msgstr ""
+msgstr "Среден запад"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
@@ -8043,8 +8036,8 @@ msgstr ""
 "\n"
 "Фехтовчиците са въоръжени само с кинжал и рапира и пъргавината им е "
 "неоценима в множество ситуации, когато тежко бронираните им събратя са "
-"безполезни. Те самодоволно обикалят войските на тежковъоръжената пехота, "
-"като открито им се подиграват за недостатъците на тежката им броня.\n"
+"безполезни. Те самодоволно обикалят войските на тежка пехота, като открито "
+"им се подиграват за недостатъците на тежката им броня.\n"
 "\n"
 "Бележки:"
 
@@ -8124,7 +8117,7 @@ msgstr ""
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
-msgstr "Тежковъоръжена пехота"
+msgstr "Тежка пехота"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:16
 msgid ""
@@ -8140,11 +8133,11 @@ msgstr ""
 "Тежкото въоръжение е странен избор за пехотата. Те биха имали сериозни "
 "трудности на бойното поле и затова се използват предимно за защита на "
 "дворците и крепостите, в които са разположени. Покрити с броня от глава до "
-"пети и въоръжени с дълги боздугани, тежковъоръжените пехотинци са подходящи "
-"само за близък бой. Няколко от тях в средата на фронтовата линия, "
-"чувствително я подсилват. Недостатъците на тези войници са свързани очевидно "
-"с тежестта на бронята и с грижите, които трябва да полагат за нея, но има "
-"ситуации, в които тези неудобства се оказват оправдани."
+"пети и въоръжени с дълги боздугани, тежките пехотинци са подходящи само за "
+"близък бой. Няколко от тях в средата на фронтовата линия, чувствително я "
+"подсилват. Недостатъците на тези войници са свързани очевидно с тежестта на "
+"бронята и с грижите, които трябва да полагат за нея, но има ситуации, в "
+"които тези неудобства се оказват оправдани."
 
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:3
 msgid "Iron Mauler"
@@ -8371,14 +8364,14 @@ msgid ""
 "men. The drawback of such heavy armor is, of course, the time it takes to "
 "move into and out of combat."
 msgstr ""
-"Шоковите войски са елита на тежковъоръжената пехота и половината им функция "
-"по време на битка е чисто и просто да всяват страх у врага. В шоковите "
-"войски се набират само изключително едри мъже и, когато навлекат черните си "
-"осеяни с шипове брони, те са внушителна гледка. Когато шоковите войски "
-"разкъсват вражеската линията, това често съсипва бойния дух на противниците, "
-"които се чудят дали под броните се крият хора или зверове. Разбира се, "
-"недостатъка на толкова тежко въоръжени е времето, нужно на войските да се "
-"включат и изнесат от битката."
+"Шоковите войски са елита на тежката пехота и половината им функция по време "
+"на битка е чисто и просто да всяват страх у врага. В шоковите войски се "
+"набират само изключително едри мъже и, когато навлекат черните си осеяни с "
+"шипове брони, те са внушителна гледка. Когато шоковите войски разкъсват "
+"вражеската линията, това често съсипва бойния дух на противниците, които се "
+"чудят дали под броните се крият хора или зверове. Разбира се, недостатъка на "
+"толкова тежко въоръжени е времето, нужно на войските да се включат и изнесат "
+"от битката."
 
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:20
 #: data/units/Human_Mage_of_Light.cfg:98
@@ -8805,7 +8798,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
-msgstr "дребен престъпник"
+msgstr "Дребен престъпник"
 
 #: data/units/Human_Outlaw_Footpad.cfg:18
 msgid ""
@@ -8831,7 +8824,7 @@ msgstr "тояга"
 
 #: data/units/Human_Outlaw_Footpad.cfg:108
 msgid "female^Footpad"
-msgstr "дребна престъпница"
+msgstr "Дребна престъпница"
 
 #: data/units/Human_Outlaw_Poacher.cfg:3
 msgid "Poacher"
@@ -9613,6 +9606,11 @@ msgid ""
 "semblance of training.  As poorly handled as they may be, though, their "
 "weapons are still quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
+"Сред орките, лъковете се считат за оръжие за страхливци; но дори орките, "
+"особено младите и слабите, са достатъчно прагматични, да ги използват "
+"въпреки това. Оркските стрелци са мизерно оборудвани и нямат никаква "
+"тренировка. Колкото и да са необучени, техните оръжия са доста смъртоносни и "
+"тези които ги използват рядко маршируват сами. "
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
@@ -9652,6 +9650,10 @@ msgid ""
 "privileged enough to wield them are capable warriors, and what they lack in "
 "finesse, they make up for in numbers."
 msgstr ""
+"Оркските арбалети са груба имитация на човешкият или джуджешки модел; "
+"всякакъв арбалет, обаче, е достатъчно можещо устройство. Достатъчно "
+"привилегированите орки, да ги носят са умели войни, и това което им липсва "
+"като финес, наваксват с численост. "
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
@@ -9755,6 +9757,15 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"Основният дизайн на арбалета дава възможност на класическият арбалет и "
+"арбалетът с цев да съществуват; арбалетът с цев, далеч по-сложно устройство, "
+"има крик за презареждане на оръжието и често многослойна арка от ламинират "
+"или кост, изстрелващи снаряда. С такова устройство много по-лесно се работи, "
+"и е много по-мощно от обикновен арбалет и също така е отвъд възможностите на "
+"оркското производство.\n"
+"\n"
+"Орките ценят всякакви такива оръжия, които успеят да плячкосат и те винаги "
+"попадат в ръцете на най-силните и най-коварните стрелци."
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -10453,7 +10464,6 @@ msgid "Draug"
 msgstr "Спящ"
 
 #: data/units/Undead_Skele_Draug.cfg:19
-#, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were.  "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
@@ -12621,11 +12631,11 @@ msgstr "Игра в мрежа"
 
 #: src/titlescreen.cpp:258
 msgid "TitleScreen button^Load"
-msgstr "Зареждане на игра"
+msgstr "Зареждане"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Зареждане на допълнения"
+msgstr "Допълнения"
 
 #: src/titlescreen.cpp:260
 msgid "TitleScreen button^Language"
@@ -12636,9 +12646,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Настройки"
 
 #: src/titlescreen.cpp:262
-#, fuzzy
 msgid "Credits"
-msgstr "Качества"
+msgstr "Автори"
 
 #: src/titlescreen.cpp:263
 msgid "TitleScreen button^Quit"
@@ -12753,42 +12762,3 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Качване на обобщения"
-
-#~ msgid ""
-#~ "Orcish Archers are considered by many of their fellow orcs to be a lesser "
-#~ "caste of warrior, for attacking their enemies from a distance. However, "
-#~ "since most orcs won't learn how to handle a bow, he is an indispensable "
-#~ "part of the orcish army."
-#~ msgstr ""
-#~ "Орките смятат, че стрелците в армията им са по-низши от войните, защото "
-#~ "атакуват врага от разстояние. Все пак, като се има предвид, че повечето "
-#~ "орки изобщо не умеят да си служат с лък, стрелците са незаменима част от "
-#~ "армията им."
-
-#~ msgid ""
-#~ "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
-#~ "power of their weapon. While they are not as effective as the Elvish "
-#~ "Marksmen in long-range combat, they are sturdier and can handle "
-#~ "themselves a little better than the Elves in close combat."
-#~ msgstr ""
-#~ "Оркските стрелци с арбалет се опитват да компенсират липсата си на талант "
-#~ "със силата на оръжието си. В бой от разстояние те не са ефективни колкото "
-#~ "елфските майстори стрелци, но са много по-яки и в близък бой се справят "
-#~ "по-добре от елфите."
-
-#~ msgid ""
-#~ "Slurbowmen have managed to improve their crossbow with the addition of a "
-#~ "cranequin and a metal barrel. As a result they are able to launch lead "
-#~ "shot with deadly power and accuracy. Although they remain weaker in "
-#~ "ranged combat than their Elven and Human counterparts, they still "
-#~ "maintain an edge in melee strength and stamina."
-#~ msgstr ""
-#~ "Онези, които си служат с арбалет са успели да го подсилят като са му "
-#~ "добавили метално дуло и запъващ механизъм. В резултат те са в състояние "
-#~ "да изпратят изстрел със смъртоносна сила и точност. Въпреки, че си "
-#~ "остават по-малко умели от човешките и елфските си колеги, тези стрелци "
-#~ "все така добре се справят в близкия боя с помощта на силата и "
-#~ "издръжливостта си."
-
-#~ msgid "About"
-#~ msgstr "Относно"
