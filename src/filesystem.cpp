@@ -345,8 +345,9 @@ static bool ends_with(const std::string& str, const std::string& suffix)
 	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
 }
 
-#define MAINCFG 	"%main.cfg"
-#define FINALCFG	"%final.cfg"
+// These are the filenames that get special processing
+#define MAINCFG 	"_main.cfg"
+#define FINALCFG	"_final.cfg"
 
 void get_files_in_dir(const std::string& directory,
                       std::vector<std::string>* files,
