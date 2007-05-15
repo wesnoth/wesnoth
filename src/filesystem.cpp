@@ -23,7 +23,6 @@
 #include <sys/types.h>
 
 #ifdef _WIN32
-#define mkdir(a,b) (_mkdir(a))
 
 /* /////////////////////////////////////////////////////////////////////////
  * This code swiped from dirent.c in the unixem library, version 1.7.3.
@@ -55,6 +54,7 @@
 
 #if defined(DIRENT_PROVIDED_BY_COMPILER)
 #include <dirent.h>
+
 #else
 /* /////////////////////////////////////////////////////////////////////////
  * Constants and definitions
@@ -225,6 +225,9 @@ struct dirent *readdir(DIR *dir)
 }
 
 #endif /* !DIRENT_PROVIDED_BY_COMPILER */
+
+#define mkdir(a,b) (_mkdir(a))
+
 #else /* not Windows */
 
 #include <unistd.h>
