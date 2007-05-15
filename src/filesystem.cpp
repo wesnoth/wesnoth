@@ -23,15 +23,216 @@
 #include <sys/types.h>
 
 #ifdef _WIN32
+#define mkdir(a,b) (_mkdir(a))
 
-#include <direct.h>
+/* /////////////////////////////////////////////////////////////////////////
+ * This code swiped from dirent.c in the unixem library, version 1.7.3.
+ * See http://synesis.com.au/software/unixem.html for full sources.
+ * It's under BSD license.
+ */
 
-#include <io.h>
+#include <errno.h>
+#include <stdlib.h>
+#include <windows.h>
 
-//#define mkdir(a,b) (_mkdir(a))
+/* /////////////////////////////////////////////////////////////////////////
+ * Compiler differences
+ */
 
-#define mode_t int
+#if defined(__BORLANDC__)
+# define OPENDIR_PROVIDED_BY_COMPILER
+#elif defined(__DMC__)
+# define OPENDIR_PROVIDED_BY_COMPILER
+#elif defined(__GNUC__)
+# define OPENDIR_PROVIDED_BY_COMPILER
+#elif defined(__INTEL_COMPILER)
+#elif defined(_MSC_VER)
+#elif defined(__MWERKS__)
+#elif defined(__WATCOMC__)
+#else
+# error Compiler not discriminated
+#endif /* compiler */
 
+#if !defined(OPENDIR_PROVIDED_BY_COMPILER)
+/* /////////////////////////////////////////////////////////////////////////
+ * Constants and definitions
+ */
+
+#ifndef FILE_ATTRIBUTE_ERROR
+# define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
+#endif /* FILE_ATTRIBUTE_ERROR */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * Typedefs
+ */
+
+struct dirent_dir
+{
+    char                directory[_MAX_DIR + 1];    /* . */
+    WIN32_FIND_DATAA    find_data;                  /* The Win32 FindFile data. */
+    HANDLE              hFind;                      /* The Win32 FindFile handle. */
+    struct dirent       dirent;                     /* The handle's entry. */
+};
+
+struct wdirent_dir
+{
+    wchar_t             directory[_MAX_DIR + 1];    /* . */
+    WIN32_FIND_DATAW    find_data;                  /* The Win32 FindFile data. */
+    HANDLE              hFind;                      /* The Win32 FindFile handle. */
+    struct wdirent      dirent;                     /* The handle's entry. */
+};
+
+/* /////////////////////////////////////////////////////////////////////////
+ * Helper functions
+ */
+
+static HANDLE unixem__dirent__findfile_directory(char const *name, LPWIN32_FIND_DATAA data)
+{
+    char    search_spec[_MAX_PATH +1];
+
+    /* Simply add the *.*, ensuring the path separator is
+     * included.
+     */
+    (void)lstrcpyA(search_spec, name);
+    if( '\\' != search_spec[lstrlenA(search_spec) - 1] &&
+        '/' != search_spec[lstrlenA(search_spec) - 1])
+    {
+        (void)lstrcatA(search_spec, "\\*.*");
+    }
+    else
+    {
+        (void)lstrcatA(search_spec, "*.*");
+    }
+
+    return FindFirstFileA(search_spec, data);
+}
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
+DIR *opendir(char const *name)
+{
+    DIR     *result =   NULL;
+    DWORD   dwAttr;
+
+    /* Must be a valid name */
+    if( !name ||
+        !*name ||
+        (dwAttr = GetFileAttributes(name)) == 0xFFFFFFFF)
+    {
+        errno = ENOENT;
+    }
+    /* Must be a directory */
+    else if(!(dwAttr & FILE_ATTRIBUTE_DIRECTORY))
+    {
+        errno = ENOTDIR;
+    }
+    else
+    {
+        result = (DIR*)malloc(sizeof(DIR));
+
+        if(result == NULL)
+        {
+            errno = ENOMEM;
+        }
+        else
+        {
+            result->hFind = unixem__dirent__findfile_directory(name, &result->find_data);
+
+            if(result->hFind == INVALID_HANDLE_VALUE)
+            {
+                free(result);
+
+                result = NULL;
+            }
+            else
+            {
+                /* Save the directory, in case of rewind. */
+                (void)lstrcpyA(result->directory, name);
+                (void)lstrcpyA(result->dirent.d_name, result->find_data.cFileName);
+                result->dirent.d_mode   =   (int)result->find_data.dwFileAttributes;
+            }
+        }
+    }
+
+#if 0
+    if(NULL != dir)
+    {
+        struct dirent *readdir(DIR *dir)
+
+    }
+#endif /* 0 */
+
+
+
+    return result;
+}
+
+int closedir(DIR *dir)
+{
+    int ret;
+
+    if(dir == NULL)
+    {
+        errno = EBADF;
+
+        ret = -1;
+    }
+    else
+    {
+        /* Close the search handle, if not already done. */
+        if(dir->hFind != INVALID_HANDLE_VALUE)
+        {
+            (void)FindClose(dir->hFind);
+        }
+
+        free(dir);
+
+        ret = 0;
+    }
+
+    return ret;
+}
+
+struct dirent *readdir(DIR *dir)
+{
+    /* The last find exhausted the matches, so return NULL. */
+    if(dir->hFind == INVALID_HANDLE_VALUE)
+    {
+        if(FILE_ATTRIBUTE_ERROR == dir->find_data.dwFileAttributes)
+        {
+            errno = EBADF;
+        }
+        else
+        {
+            dir->find_data.dwFileAttributes = FILE_ATTRIBUTE_ERROR;
+        }
+
+        return NULL;
+    }
+    else
+    {
+        /* Copy the result of the last successful match to
+         * dirent.
+         */
+        (void)lstrcpyA(dir->dirent.d_name, dir->find_data.cFileName);
+
+        /* Attempt the next match. */
+        if(!FindNextFileA(dir->hFind, &dir->find_data))
+        {
+            /* Exhausted all matches, so close and null the
+             * handle.
+             */
+            (void)FindClose(dir->hFind);
+            dir->hFind = INVALID_HANDLE_VALUE;
+        }
+
+        return &dir->dirent;
+    }
+}
+
+#endif /* !OPENDIR_PROVIDED_BY_COMPILER */
 #else
 
 #include <unistd.h>
@@ -143,12 +344,6 @@ namespace {
 	const mode_t AccessMode = 00770;
 }
 
-#ifdef _WIN32
-#define DIR_INVALID(d) (d == -1)
-#else
-#define DIR_INVALID(d) (d == NULL)
-#endif
-
 #ifdef __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreFoundation/CFString.h>
@@ -190,42 +385,12 @@ void get_files_in_dir(const std::string& directory,
 		}
 #endif
 
-#ifdef _WIN32
-		_finddata_t fileinfo;
-		long dir = _findfirst((directory + "/*.*").c_str(),&fileinfo);
-#else
-
 		DIR* dir = opendir(directory.c_str());
-#endif
 
-		if(DIR_INVALID(dir)) {
+		if(dir == NULL) {
 			return;
 		}
 
-#ifdef _WIN32
-
-		int res = dir;
-		do {
-			if(fileinfo.name[0] != '.') {
-				const std::string path = (mode == ENTIRE_FILE_PATH ?
-							  directory + "/" : std::string("")) + fileinfo.name;
-
-				if(fileinfo.attrib&_A_SUBDIR) {
-					if(dirs != NULL)
-						dirs->push_back(path);
-				} else {
-					if(files != NULL)
-						files->push_back(path);
-				}
-			}
-
-			res = _findnext(dir,&fileinfo);
-		} while(!DIR_INVALID(res));
-
-		_findclose(dir);
-
-#else /* not Windows */
-		/* code for systems conforming to POSIX */
 		struct dirent* entry;
 		while((entry = readdir(dir)) != NULL) {
 			if(entry->d_name[0] == '.')
@@ -291,7 +456,6 @@ void get_files_in_dir(const std::string& directory,
 		}
 
 		closedir(dir);
-#endif /* not Windows */
 	}
 
 	if(files != NULL)
@@ -365,10 +529,6 @@ std::string get_upload_dir()
 
 std::string get_dir(const std::string& dir_path)
 {
-#ifdef _WIN32
-	_mkdir(dir_path.c_str());
-#else
-
 	DIR* dir = opendir(dir_path.c_str());
 	if(dir == NULL) {
 		const int res = mkdir(dir_path.c_str(),AccessMode);
@@ -383,20 +543,13 @@ std::string get_dir(const std::string& dir_path)
 		return "";
 
 	closedir(dir);
-#endif
 
 	return dir_path;
 }
 
 bool make_directory(const std::string& path)
 {
-	bool ret = true;
-#ifdef _WIN32
-	ret = (_mkdir(path.c_str()) == 0);
-#else
-	ret = (mkdir(path.c_str(),AccessMode) == 0);
-#endif
-	return ret;
+	return (mkdir(path.c_str(),AccessMode) == 0);
 }
 
 //this deletes a directory with no hidden files and subdirectories
