@@ -1364,23 +1364,24 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	height = static_cast<size_t>(height*zoom());
 
 	surface surf(image::get_image(image,image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
+
 	// we use UNSCALED because scaling (and bilinear interpolaion )
 	// is bad for calculate_energy_bar. But we will do a geometric scaling later
-	surface unmoved_surf(image::get_image("misc/bar-energy.png",image::UNSCALED,image::NO_ADJUST_COLOUR));
-	if(surf == NULL || unmoved_surf == NULL) {
+	surface bar_surf(image::get_image(image,image::UNSCALED,image::NO_ADJUST_COLOUR));
+	if(surf == NULL || bar_surf == NULL) {
 		return;
 	}
 
 	// calculate_energy_bar returns incorrect results if the surface colors
 	// have changed (for example, due to bilinear interpolaion)
-	const SDL_Rect& unscaled_bar_loc = calculate_energy_bar(unmoved_surf);
+	const SDL_Rect& unscaled_bar_loc = calculate_energy_bar(bar_surf);
 
 	SDL_Rect bar_loc;
-	if (surf->w == unmoved_surf->w && surf->h == unmoved_surf->h)
+	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
 	  bar_loc = unscaled_bar_loc;
 	else {
-	  const fixed_t xratio = fxpdiv(surf->w,unmoved_surf->w);
-	  const fixed_t yratio = fxpdiv(surf->h,unmoved_surf->h);
+	  const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
+	  const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
 	  const SDL_Rect scaled_bar_loc = {fxptoi(unscaled_bar_loc. x * xratio),
 					   fxptoi(unscaled_bar_loc. y * yratio + 127),
 					   fxptoi(unscaled_bar_loc. w * xratio + 255),
