@@ -177,8 +177,9 @@ void get_files_in_dir(const std::string& directory,
 #endif
 	{
 
-		//if we have a path to find directories in, then convert relative
-		//pathnames to be rooted on the wesnoth path
+		// if we have a path to find directories in, then
+		// convert relative pathnames to be rooted on the
+		// wesnoth path
 #ifndef __AMIGAOS4__
 		if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 			const std::string& dir = game_config::path + "/" + directory;
@@ -223,40 +224,46 @@ void get_files_in_dir(const std::string& directory,
 
 		_findclose(dir);
 
-#else
+#else /* not Windows */
+		/* code for systems conforming to POSIX */
 		struct dirent* entry;
 		while((entry = readdir(dir)) != NULL) {
 			if(entry->d_name[0] == '.')
 				continue;
 #ifdef __APPLE__
-		  /* HFS Mac OS X decompose filenames using combining unicode
-		  characters. Try to get the precomposed form.
-		  */
-		  char filename[MAXNAMLEN+1];
-		  CFStringRef cstr = CFStringCreateWithCString(NULL, entry->d_name,
-							       kCFStringEncodingUTF8);
-		  CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL, 0, cstr);
-		  CFStringNormalize(mut_str, kCFStringNormalizationFormC);
-		  CFStringGetCString(mut_str,filename,sizeof(filename)-1,kCFStringEncodingUTF8);
-		  CFRelease(cstr);
-		  CFRelease(mut_str);
+			/* HFS Mac OS X decompose filenames using combining unicode
+			characters. Try to get the precomposed form.
+			*/
+			char filename[MAXNAMLEN+1];
+			CFStringRef cstr = CFStringCreateWithCString(NULL, 
+							     entry->d_name,
+							     kCFStringEncodingUTF8);
+			CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL, 
+							     0, cstr);
+			CFStringNormalize(mut_str, kCFStringNormalizationFormC);
+			CFStringGetCString(mut_str,
+					filename,sizeof(filename)-1,
+					kCFStringEncodingUTF8);
+			CFRelease(cstr);
+			CFRelease(mut_str);
 #else
-		  char *filename = entry->d_name;
+			char *filename = entry->d_name;
 #endif
 #ifndef __AMIGAOS4__
 			const std::string name((directory + "/") + filename);
 #else
 			std::string name;
-			if (directory.empty() || (directory[directory.size()-1] == ':' ||
+			if (directory.empty() || (directory[directory.size()-1]==':' ||
 				directory[directory.size()-1] == '/'))
 				name = directory + filename;
 			else
 				name = (directory + "/") + filename;
 #endif
-			/* code for syntems conforming to POSIX */
 			struct stat st;
-			
-			if (reorder == DO_REORDER && ::stat((name + "/" + MAINCFG).c_str(), &st) != -1  && S_ISREG(st.st_mode)) {
+
+			if (reorder == DO_REORDER && 
+					::stat((name+"/"+MAINCFG).c_str(), &st)!=-1 && 
+					S_ISREG(st.st_mode)) {
 				if (files != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
 						files->push_back(name + "/" + MAINCFG);
@@ -284,7 +291,7 @@ void get_files_in_dir(const std::string& directory,
 		}
 
 		closedir(dir);
-#endif
+#endif /* not Windows */
 	}
 
 	if(files != NULL)
