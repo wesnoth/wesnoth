@@ -780,11 +780,10 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([
 int main(int argc, char **argv)
 {
 	SDL_RWops *src;
-	char *testimage = "images/button-pressed.png";
+	char *testimage = "images/buttons/button-pressed.png";
 
 	src = SDL_RWFromFile(testimage, "rb");
 	if (src == NULL) {
-		fprintf(stderr, "Can't find test image %s\n", testimage);
 		exit(2);
 	}
 	exit(!IMG_isPNG(src));
@@ -792,7 +791,7 @@ int main(int argc, char **argv)
 	])],
 	[AC_MSG_RESULT(yes)],
 	[AC_MSG_RESULT(no)] 
-	[AC_MSG_ERROR([*** SDL_image has no PNG support! You need SDL_image with PNG support])],
+	[AC_MSG_ERROR([*** Either your test image has vanished, or SDL_image has no PNG support!])],
 	[AC_MSG_RESULT([not tested in cross-compiling])])
 
 CPPFLAGS=$OLD_CPPFLAGS
