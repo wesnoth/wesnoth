@@ -143,7 +143,7 @@ class CrossRef:
             if warnlevel > 1:
                 print filename + ":"
             if isresource(filename):
-                self.fileref[filename] = Reference(filename) 
+                self.fileref[filename] = Reference(filename)
             elif iswml(filename):
                 # It's a WML file, scan for macro defitions
                 dfp = open(filename)
@@ -263,16 +263,15 @@ class CrossRef:
                             self.missing.append((name, Reference(fn,n+1)))
                 rfp.close()
     def subtract(self, filelist):
-        "Remove file references in files in filelist."
+        "Transplant file references in files from filelist to a new CrossRef."
         smallref = CrossRef()
         for filename in self.fileref:
-            for ref in self.fileref[filename]:
-                if ref.filename in filelist:
+            for (referrer, referlines) in self.fileref[filename].references.items():
+                if referrer in filelist:
                     if filename not in smallref.fileref:
-                        smallref.fileref[filename] = []
-                    smallref.fileref[filename].append(ref.filename)
-                    ref.filename = None
-            self.fileref[filename] = filter(lambda ref: ref.filename, self.fileref[filename])
+                        smallref.fileref[filename] = Reference(filename)
+                    smallref.fileref[filename].references[referrer] = referlines
+                    del self.fileref[filename].references[referrer]
         return smallref
 
 ## Version-control hooks begin here.

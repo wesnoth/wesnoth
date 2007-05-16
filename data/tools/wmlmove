@@ -12,9 +12,8 @@ It may be run from the Wesnoth top-level directory or anywhere beneath.
 The source unit must be specified as a pathname beginning with either
 data/ or a campaign subdirectory name.  The destination may be the
 name of a campaign or the special name "core", indicating the images
-and sounds directories immediately beneath data/. All resource files
-(images and sounds) referenced in the unit .cfg and included near it
-move with it.
+and sounds directories in data/core. All resource files (images and
+sounds) referenced in the unit .cfg and included near it move with it.
 
 "Near" for a unit in the core data means anywhere in the core data,
 but not in a campaign directory.  "Near" for a unit under a
@@ -33,11 +32,11 @@ Note: After performing a move generated with this command, use wmlscope
 to check that you have not left any references to the moved units dangling.
 ''' 
 
-import sys, os, time, re, getopt, sre_constants, md5
+import sys, os, time, re, glob, getopt, sre_constants, md5
 import wmltools
 
 if __name__ == "__main__":
-    # Process options
+    # Process options.
     (options, arguments) = getopt.getopt(sys.argv[1:], "hl", ['help', 'list'])
     listem = False
     for (switch, val) in options:
@@ -59,7 +58,7 @@ if __name__ == "__main__":
     else:
         dst = arguments[1]
 
-    # First, pop upward to the top-level directory
+    # First, pop upward to the top-level directory.
     upwards = os.getcwd().split(os.sep)
     upwards.reverse()
     for pathpart in upwards:
@@ -68,38 +67,44 @@ if __name__ == "__main__":
         else:
             os.chdir("..")
     else:
-        sys.stderr.write("wmlmove: must be run from with a Battle "
+        sys.stderr.write("wmlmove: must be run from within a Battle "
                          "for Wesnoth source tree.\n")
         sys.exit(1)
 
     # Locate the unit .cfgs to be moved.
     srclist = []
     for src in arguments[:-1]:
-        print "I see:", src
-        if not src.startswith("data"):
+        if src.startswith("core"):
+            src = os.path.join("data", src)
+        else:
             src = os.path.join("data", "campaigns", src)
-        elif not os.path.exists(src):
+        if not os.path.exists(src):
             sys.stderr.write("wmlmove: can't find %s to move it.\n" % src)
             sys.exit(1)
         srclist.append(src)
+    print "From:", srclist
 
-    # Validate the destination
+    # Validate the destination.
     dst = arguments[-1]
     if dst == "core":
-        dst = ""
-    elif dst not in os.listdir(os.path.join("data", "campaigns")):
+        dst = os.path.join("data", "core")
+    elif dst in os.listdir(os.path.join("data", "campaigns")):
+        dst = os.path.join("data", "campaigns", dst)
+
         sys.stderr.write("wmlmove: invalid destination %s\n" % dst)
         sys.exit(1)
+    print "To:", dst
 
-    # Cross-reference all files
-    cref = wmltools.CrossRef(".", exclude="icons/|tutorial/")
+    # Cross-reference all files.
+    # This wires in some knowledge of the shape of the tree.
+    cref = wmltools.CrossRef(["data/core"] + glob.glob("data/campaigns/*"))
 
     # Filter reference information on all files referenced in the source .cfgs
-    srcrefs = cref.subtract(filelist)
+    srcrefs = cref.subtract(srclist)
 
-    # List all relevant resources and their other references
+    # List all relevant resources and their other references.
     if listem:
-        for (name, defloc) in srcref.fileref.items():
+        for (name, defloc) in srcrefs.fileref.items():
             print "Resource %s is used in %d files:" % \
                   (defloc, len(defloc.references))
             defloc.dump_references()
