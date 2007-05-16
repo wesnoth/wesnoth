@@ -37,12 +37,16 @@ import wmltools
 
 if __name__ == "__main__":
     # Process options.
-    (options, arguments) = getopt.getopt(sys.argv[1:], "hl", ['help', 'list'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "hilr", ['help', 'imageclass', 'list', 'revertr'])
     listem = False
+    iclass = "monsters"
+    revert = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             sys.stderr.write(__doc__)
             sys.exit(0)
+        elif switch in ('-i', '--imageclass'):
+            iclass = True
         elif switch in ('-l', '--list'):
             listem = True
     if len(arguments) == 0:
@@ -88,15 +92,13 @@ if __name__ == "__main__":
             sys.stderr.write("wmlmove: can't find %s to move it.\n" % src)
             sys.exit(1)
         srclist.append(src)
-    print "From:", srclist
-
+  
     # Validate the destination.
-    dst = wmltools.namespace_directory(arguments[-1])
-    if dst == None:
-        sys.stderr.write("wmlmove: invalid destination %s\n" % dst)
+    dstdir = wmltools.namespace_directory(arguments[-1])
+    if dstdir == None:
+        sys.stderr.write("wmlmove: invalid namespace %s\n" % dst)
         sys.exit(1)
-    print "To:", dst
-
+  
     # Cross-reference all files.
     cref = wmltools.CrossRef(wmltools.scopelist())
 
@@ -110,7 +112,13 @@ if __name__ == "__main__":
                   (defloc, len(defloc.references))
             defloc.dump_references()
 
+    # Generate the actual move commands
+    for (name, defloc) in srcrefs.fileref.items():
+        if not wmltools.namespace_member(name, dst):
+            target = wmltools.resolve_unit_image(dst, iclass, os.path.basename(name))
+            if revert:
+                print wmltools.vcunmove(name, target)
+            else:
+                print wmltools.vcmove(name, target)
 
-
-# This tool is not finished.  More logic will go here.
-
+# wmlmove ends here
