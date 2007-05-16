@@ -78,17 +78,17 @@ namespace game_config
 	const struct game_version min_savegame_version(MIN_SAVEGAME_VERSION); 
 
 	namespace sounds {
-		const std::string turn_bell = "UI/bell.wav",
-		receive_message = "UI/receive.wav",
-		user_arrive = "UI/arrive.wav",
-		user_leave = "UI/leave.wav";
+		const std::string turn_bell = "bell.wav",
+		receive_message = "receive.wav",
+		user_arrive = "arrive.wav",
+		user_leave = "leave.wav";
 		
-		const std::string button_press = "UI/button.wav",
-		checkbox_release = "UI/checkbox.wav",
-		slider_adjust = "UI/slider.wav",
-		menu_expand = "UI/expand.wav",
-		menu_contract = "UI/contract.wav",
-		menu_select = "UI/select.wav";
+		const std::string button_press = "button.wav",
+		checkbox_release = "checkbox.wav",
+		slider_adjust = "slider.wav",
+		menu_expand = "expand.wav",
+		menu_contract = "contract.wav",
+		menu_select = "select.wav";
 	}
 
 
