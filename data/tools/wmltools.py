@@ -3,7 +3,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WMl tree
 
 """
 
-import sys, os, re, sre_constants, md5
+import sys, os, re, sre_constants, md5, glob
 
 resource_extensions = ("png", "jpg", "ogg", "wav", "map")
 
@@ -273,6 +273,48 @@ class CrossRef:
                     smallref.fileref[filename].references[referrer] = referlines
                     del self.fileref[filename].references[referrer]
         return smallref
+
+## Namespace management
+#
+# This is the only part of the code that actually knows about the
+# shape of the data tree.
+
+def scopelist():
+    "Return a list of (separate) package scopes, core first."
+    return ["data/core"] + glob.glob("data/campaigns/*")
+
+def is_namespace(name):
+    "Is the name either a valid campaign name or core?"
+    return name in map(os.path.basename, scopelist())
+
+def namespace_directory(name):
+    "Go from namespace to directory."
+    if name == "core":
+        return "data/core"
+    else:
+        return "data/campaigns/" + name + "/"
+
+def directory_namespace(path):
+    "Go from directory to namespace."
+    if path.startswith("data/core/"):
+        return "core"
+    elif path.startswith("data/campaigns/"):
+        return path.split("/")[2]
+    else:
+        return None
+
+def namespace_member(path, namespace):
+    "Is a path in a specified namespace?"
+    ns = directory_namespace(path)
+    return ns != None and ns == namespace
+
+def resolve_unit_cfg(namespace, resource):
+    "Get the location of a specified unit in a specified scope."
+    return namespace_directory(namespace) + "units/" + resource + ".cfg"
+
+def resolve_unit_image(namespace, subdir, resource):
+    "Construct a plausible location for given resource in specified namespace."
+    return os.path.join(namespace_directory(namespace), "images/units", subdir, resource)
 
 ## Version-control hooks begin here.
 #

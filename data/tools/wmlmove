@@ -32,7 +32,7 @@ Note: After performing a move generated with this command, use wmlscope
 to check that you have not left any references to the moved units dangling.
 ''' 
 
-import sys, os, time, re, glob, getopt, sre_constants, md5
+import sys, os, time, re, getopt, sre_constants, md5
 import wmltools
 
 if __name__ == "__main__":
@@ -74,10 +74,16 @@ if __name__ == "__main__":
     # Locate the unit .cfgs to be moved.
     srclist = []
     for src in arguments[:-1]:
-        if src.startswith("core"):
-            src = os.path.join("data", src)
-        else:
-            src = os.path.join("data", "campaigns", src)
+        try:
+            (namespace, resource) = src.split("::")
+        except ValueError:
+            sys.stderr.write("wmlmove: source name must be in the form "
+                             "namespace::resource.\n")
+            sys.exit(1)
+        if not wmltools.is_namespace(namespace):
+            sys.stderr.write("wmlmove: no such scope as %s.\n" % namespace)
+            sys.exit(1)
+        src = wmltools.resolve_unit_cfg(namespace, resource)
         if not os.path.exists(src):
             sys.stderr.write("wmlmove: can't find %s to move it.\n" % src)
             sys.exit(1)
@@ -85,19 +91,14 @@ if __name__ == "__main__":
     print "From:", srclist
 
     # Validate the destination.
-    dst = arguments[-1]
-    if dst == "core":
-        dst = os.path.join("data", "core")
-    elif dst in os.listdir(os.path.join("data", "campaigns")):
-        dst = os.path.join("data", "campaigns", dst)
-
+    dst = wmltools.namespace_directory(arguments[-1])
+    if dst == None:
         sys.stderr.write("wmlmove: invalid destination %s\n" % dst)
         sys.exit(1)
     print "To:", dst
 
     # Cross-reference all files.
-    # This wires in some knowledge of the shape of the tree.
-    cref = wmltools.CrossRef(["data/core"] + glob.glob("data/campaigns/*"))
+    cref = wmltools.CrossRef(wmltools.scopelist())
 
     # Filter reference information on all files referenced in the source .cfgs
     srcrefs = cref.subtract(srclist)
@@ -108,6 +109,8 @@ if __name__ == "__main__":
             print "Resource %s is used in %d files:" % \
                   (defloc, len(defloc.references))
             defloc.dump_references()
+
+
 
 # This tool is not finished.  More logic will go here.
 
