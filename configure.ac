@@ -780,10 +780,13 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([
 int main(int argc, char **argv)
 {
 	SDL_RWops *src;
+	char *testimage = "images/button-pressed.png";
 
-	src = SDL_RWFromFile("images/units/human-magi/mage.png", "rb");
-	if (src == NULL)
+	src = SDL_RWFromFile(testimage, "rb");
+	if (src == NULL) {
+		fprintf(stderr, "Can't find test image %s\n", testimage);
 		exit(2);
+	}
 	exit(!IMG_isPNG(src));
 }
 	])],
