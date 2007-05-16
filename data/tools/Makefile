@@ -8,11 +8,6 @@ TOPDIR = ../../data/core ../../data/campaigns/*
 # Note, this needs to expand to a list with one subdirectory per UMC campaign,
 # otherwise the visibility checks aren't going to work right.
 # UMC = ../../../umc/*
-# References to terrain graphics go through so many layers of nasty
-# opaque macros that trying to reference-check them is hopeless.
-# So suppress reporting them unused even if they seem to have
-# no references.  Likewise for resources used only by the C++ GUI.
-FAKE = --force-used "(terrain|buttons|cursors|cursors-bw|menu)/"
 
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
@@ -26,9 +21,13 @@ utils-unused:
 	@echo "# Report on unused utility macros"
 	@./wmlscope --crossreference --from $(TOPDIR)data/utils --refcount 0 $(FAKE) $(TOPDIR) $(UMC)
 
+# References to terrain graphics go through so many layers of nasty
+# opaque macros that trying to reference-check them is hopeless.
+# So suppress reporting them unused even if they seem to have
+# no references.
 all-unused:
 	@echo "# Report on unused resource files"
-	@./wmlscope --crossreference --refcount 0 $(FAKE) $(TOPDIR) $(UMC)
+	@./wmlscope --crossreference --refcount 0 --force-used "terrain/" $(TOPDIR) $(UMC)
 
 utils-macros:
 	@echo "# Report on usage of utility macros"
