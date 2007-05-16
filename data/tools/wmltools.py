@@ -71,7 +71,7 @@ class Reference:
     def append(self, fn, n):
         if fn not in self.references:
             self.references[fn] = []
-        self.references[fn].append(n+1)
+        self.references[fn].append(n)
     def dump_references(self):
         for (file, linenumbers) in self.references.items():
             print "    %s: %s" % (file, `linenumbers`[1:-1])
@@ -164,7 +164,7 @@ class CrossRef:
                         here.hash = here.hash.digest()
                         if name in self.xref:
                             for defn in self.xref[name]:
-                                if not self.visible_from(defn, filename, n):
+                                if not self.visible_from(defn, filename, n+1):
                                     continue
                                 elif defn.hash != here.hash:
                                     print >>sys.stderr, \
@@ -188,10 +188,10 @@ class CrossRef:
                         tokens = line.split()
                         name = tokens[1]
                         if name in self.xref and self.xref[name]:
-                            self.xref[name][-1].undef = n
+                            self.xref[name][-1].undef = n+1
                         else:
                             print "%s: unbalanced #undef on %s" \
-                                  % (Reference(filename, n), name)
+                                  % (Reference(filename, n+1), name)
                 dfp.close()
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
