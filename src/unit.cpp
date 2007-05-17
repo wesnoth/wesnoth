@@ -1932,7 +1932,12 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		if(max_hitpoints() > 0) {
 			unit_energy = double(hitpoints())/double(max_hitpoints());
 		}
-		disp.draw_bar(*energy_file,xsrc-static_cast<int>(5*disp.zoom()),ysrc-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
+#ifdef USE_TINY_GUI
+		const int bar_shift = static_cast<int>(-2.5*disp.zoom());
+#else
+		const int bar_shift = static_cast<int>(-5*disp.zoom());
+#endif
+		disp.draw_bar(*energy_file,xsrc+bar_shift,ysrc-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
