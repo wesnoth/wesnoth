@@ -1344,6 +1344,9 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 {
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
 	height = static_cast<size_t>(height*zoom());
+#ifdef USE_TINY_GUI
+	height /= 2;
+#endif
 
 	surface surf(image::get_image(image,image::SCALED_TO_HEX,image::NO_ADJUST_COLOUR));
 
