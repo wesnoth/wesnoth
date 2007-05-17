@@ -701,7 +701,9 @@ if __name__ == '__main__':
                             if c == '}':
                                 inmacro = False
                             newterrains += c
-                    transformed = pre + newterrains[:-1] + post
+                    if newterrains.endswith(","):
+                        newterrains = newterrains[:-1]
+                    transformed = pre + newterrains + post
                 if newstyle:
                     if len(value) == 2:
                         # 1.3.1 to 1.3.2 conversion

@@ -113,6 +113,9 @@ if __name__ == "__main__":
             defloc.dump_references()
 
     # Generate the actual move commands
+    print "# Generated script from", " ".join(sys.argv[1:])
+    print ""
+    print "# Image moves"
     for (name, defloc) in srcrefs.fileref.items():
         if not wmltools.namespace_member(name, dst):
             target = wmltools.resolve_unit_image(dst, iclass, os.path.basename(name))
@@ -120,5 +123,9 @@ if __name__ == "__main__":
                 print wmltools.vcunmove(name, target)
             else:
                 print wmltools.vcmove(name, target)
+    print ""
+    print "# .cfg moves"
+
+
 
 # wmlmove ends here
