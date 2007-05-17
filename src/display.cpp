@@ -1345,7 +1345,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
 	height = static_cast<size_t>(height*zoom());
 
-	surface surf(image::get_image(image,image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
+	surface surf(image::get_image(image,image::SCALED_TO_HEX,image::NO_ADJUST_COLOUR));
 
 	// we use UNSCALED because scaling (and bilinear interpolaion )
 	// is bad for calculate_energy_bar. But we will do a geometric scaling later
