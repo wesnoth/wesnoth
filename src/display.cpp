@@ -59,24 +59,9 @@ namespace {
 	const int DefaultZoom = 72;
 #endif
 
+	const int MinZoom = 4;
 	const int MaxZoom = 200;
-}
 
-static int MinZoom(const gamemap& map, const SDL_Rect& viewport)
-	{
-		if(map.x()<4 || !map.y() ) return DefaultZoom;
-		// These ugly formulas try to give the optimal and mathematically exact minimal zoom
-		const double min_zoom1 = 4.0/3.0 * ceil(static_cast<double>(viewport.w)/static_cast<double>(map.x())) ;
-		const double min_zoom2 = static_cast<double>(viewport.h)/static_cast<double>(map.y());
-		int zoom = static_cast<int>(ceil( maximum<double>(min_zoom1,min_zoom2) ));
-		//NOTE: keep zoom (and so tile_size) divisible by 4: stay even, prevent some precision bugs (the hexagonal engine uses many integer division by 4), don't quit the 72+4n scale and maybe help processor's optimisation (ask Torangan).
-		if (zoom % 4 != 0) {
-			zoom = zoom - zoom % 4 + 4;
-		}
-		return minimum<int>(zoom,DefaultZoom);
-	}
-
-namespace {
 	const size_t SideBarGameStatus_x = 16;
 	const size_t SideBarGameStatus_y = 220;
 }
@@ -493,9 +478,8 @@ void display::invalidate_locations_in_rect(SDL_Rect r)
 double display::zoom(int amount)
 {
 	int new_zoom = zoom_ + amount;
-	const int min_zoom = MinZoom(map_, map_area());
-	if (new_zoom < min_zoom) {
-		new_zoom = min_zoom;
+	if (new_zoom < MinZoom) {
+		new_zoom = MinZoom;
 	}
 	if (new_zoom > MaxZoom) {
 		new_zoom = MaxZoom;
@@ -698,12 +682,10 @@ void display::scroll_to_leader(unit_map& units, int side)
 
 void display::bounds_check_position()
 {
-	const int min_zoom = MinZoom(map_,map_area());
-
 	const int orig_zoom = zoom_;
 
-	if(zoom_ < min_zoom) {
-		zoom_ = min_zoom;
+	if(zoom_ < MinZoom) {
+		zoom_ = MinZoom;
 	}
 
 	if(zoom_ > MaxZoom) {
