@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-17 19:55+0200\n"
-"PO-Revision-Date: 2007-05-11 17:21+0100\n"
+"PO-Revision-Date: 2007-05-14 11:51+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,6 @@ msgstr "Mit der Maus scrollen"
 #: data/campaigns/The_South_Guard/_main.cfg:27
 #: data/campaigns/Two_Brothers/_main.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:33
-#, fuzzy
 msgid "Campaign Designer"
 msgstr "Kampagnengestaltung"
 
@@ -51,7 +50,7 @@ msgstr "Kampagnengestaltung"
 #: data/campaigns/Two_Brothers/_main.cfg:28
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:37
 msgid "Current Maintainer"
-msgstr ""
+msgstr "Betreuung"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:28
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:27
@@ -98,7 +97,6 @@ msgstr "magisch"
 #: data/campaigns/The_South_Guard/_main.cfg:35
 #: data/campaigns/Two_Brothers/_main.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:41
-#, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Grafik"
 
@@ -114,12 +112,11 @@ msgstr ""
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:37
 msgid "Music Development"
-msgstr ""
+msgstr "Musikkomposition"
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:41
-#, fuzzy
 msgid "Translators"
-msgstr "Tschechische Übersetzung"
+msgstr "Übersetzung"
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:50
 #, fuzzy
@@ -127,9 +124,8 @@ msgid "Code and Translation Assistance"
 msgstr "Koreanische Übersetzung"
 
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:37
-#, fuzzy
 msgid "WML Contributors"
-msgstr "Mitwirkende"
+msgstr "WML-Entwicklung"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:23
 msgid "Conception and Original Design"
@@ -8208,6 +8204,13 @@ msgid ""
 "semblance of training.  As poorly handled as they may be, though, their "
 "weapons are still quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
+"Weil sie ihre Gegner aus der Distanz angreifen, fristen die Schützen ein "
+"unglückliches Dasein im Schatten der orkischen Truppen und werden von diesen "
+"nur mit Herablassung behandelt. Ihnen ist es verwehrt, in eine höhere "
+"Kriegerkaste aufzusteigen. Trotz allem sind die Orkschützen ein wichtiger "
+"Bestandteil der orkischen Armee, da das Verwenden eines Bogens "
+"Geschicklichkeit voraussetzt, über die viele der orkischen Krieger nicht "
+"verfügen."
 
 #: data/core/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
@@ -8249,6 +8252,13 @@ msgid ""
 "privileged enough to wield them are capable warriors, and what they lack in "
 "finesse, they make up for in numbers."
 msgstr ""
+"Als eine Meute Orks ein Dorf der Menschen überfiel, erbeuteten sie neben "
+"vielen anderen Dingen eine Kiste mit Armbrüsten. Da sie damit nichts "
+"anfangen konnten, wurde diese Kiste achtlos eingelagert. Schließlich "
+"entdeckte einer der Orkschützen die darin enthaltenen Armbrüste und erprobte "
+"diese Schusswaffe. Er stellte fest, dass diese Waffe durchschlagskräftiger "
+"war, als ein einfacher Bogen. Jedem Orkschützen, der die Kunst des "
+"Bogenschießens gemeistert hat, wird seither eine Armbrust verliehen."
 
 #: data/core/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
@@ -8367,6 +8377,15 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"Die Orkarmbruster stellten relativ schnell fest, dass sie trotz ihrer neuen "
+"Schusswaffe, den Schützen der Menschen und Elfen unterlegen waren. Tuzzugh, "
+"ein orkischer Schmied, sah die Notwendigkeit, die Schusswaffen der "
+"Armbruster tödlicher zu machen, damit die Orks auch in dieser Disziplin "
+"ihren Gegnern gewachsen waren. Er fertigte eine neue Armbrust ganz aus "
+"Metall, die mittels eines Hebelmechanismus gespannt werden konnte. Dieser "
+"Waffe gab er den Namen Kharrasch, was so viel wie Hammer bedeutet und die "
+"verbesserte Durchschlagskraft dieser Waffe symbolisieren soll. Nur an die "
+"fähigsten Armbruster wird die Kharrasch ausgegeben."
 
 #: data/core/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -10050,6 +10069,10 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"Um unerfahrene Einheiten schnell an Erfahrung gewinnen zu lassen, stellt "
+"ihnen einen Veteranen zur Seite, der die gegnerischen Einheit schwer "
+"verwundet, so dass die unerfahrene Einheit den vernichtenden Schlag "
+"ausführen kann."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
@@ -13427,75 +13450,5 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 msgid "Enable summary uploads"
 msgstr "Erlauben, dass Zusammenfassungen übertragen werden dürfen"
 
-#, fuzzy
-#~ msgid "flat"
-#~ msgstr "Niederlage"
-
-#, fuzzy
-#~ msgid "desert"
-#~ msgstr "Wüste"
-
-#, fuzzy
-#~ msgid "forest"
-#~ msgstr "Wald"
-
-#, fuzzy
-#~ msgid "frozen"
-#~ msgstr "Feuer"
-
-#, fuzzy
-#~ msgid "rough"
-#~ msgstr "Berührung"
-
-#, fuzzy
-#~ msgid "cave"
-#~ msgstr "Höhle"
-
 #~ msgid "None"
 #~ msgstr "Nichts"
-
-#~ msgid ""
-#~ "Orcish Archers are considered by many of their fellow orcs to be a lesser "
-#~ "caste of warrior, for attacking their enemies from a distance. However, "
-#~ "since most orcs won't learn how to handle a bow, he is an indispensable "
-#~ "part of the orcish army."
-#~ msgstr ""
-#~ "Weil sie ihre Gegner aus der Distanz angreifen, fristen die Schützen ein "
-#~ "unglückliches Dasein im Schatten der orkischen Truppen und werden von "
-#~ "diesen nur mit Herablassung behandelt. In ist es verwehrt in eine höhere "
-#~ "Kriegerkaste aufzusteigen. Trotz allem sind die Orkschützen ein wichtiger "
-#~ "Bestandteil der orkischen Armee, da das Verwenden eines Bogens "
-#~ "Geschicklichkeit voraussetzt, über die viele der orkischen Krieger nicht "
-#~ "verfügen."
-
-#~ msgid ""
-#~ "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
-#~ "power of their weapon. While they are not as effective as the Elvish "
-#~ "Marksmen in long-range combat, they are sturdier and can handle "
-#~ "themselves a little better than the Elves in close combat."
-#~ msgstr ""
-#~ "Als eine Meute Orks ein Dorf der Menschen überfiel, erbeuteten sie neben "
-#~ "vielen anderen Dingen eine Kiste mit Armbrüsten. Da sie damit nichts "
-#~ "anfangen konnten, wurde diese Kiste achtlos eingelagert. Schließlich "
-#~ "entdeckte einer der Orkschützen die darin enthaltenen Armbrüste und "
-#~ "erprobte diese Schusswaffe. Er stellte fest, dass diese Waffe "
-#~ "durchschlagskräftiger war, als ein einfacher Bogen. Jedem Orkschützen, "
-#~ "der die Kunst des Bogenschießens gemeistert hat, wird seither eine "
-#~ "Armbrust verliehen."
-
-#~ msgid ""
-#~ "Slurbowmen have managed to improve their crossbow with the addition of a "
-#~ "cranequin and a metal barrel. As a result they are able to launch lead "
-#~ "shot with deadly power and accuracy. Although they remain weaker in "
-#~ "ranged combat than their Elven and Human counterparts, they still "
-#~ "maintain an edge in melee strength and stamina."
-#~ msgstr ""
-#~ "Die Orkarmbruster stellten relativ schnell fest, dass sie trotz ihrer "
-#~ "neuen Schusswaffe, den Schützen der Menschen und Elfen unterlegen waren. "
-#~ "Tuzzugh, ein orkischer Schmied, sah die Notwendigkeit, die Schusswaffen "
-#~ "der Armbruster tödlicher zu machen, damit die Orks auch in dieser "
-#~ "Disziplin ihren Gegnern gewachsen waren. Er fertigte eine neue Armbrust "
-#~ "ganz aus Metall, die mittels eines Hebelmechanismus gespannt werden "
-#~ "konnte. Dieser Waffe gab er den Namen Kharrasch, was so viel wie Hammer "
-#~ "bedeutet und die verbesserte Durchschlagskraft dieser Waffe symbolisieren "
-#~ "soll. Nur an die fähigsten Armbruster wird die Kharrasch ausgegeben."
