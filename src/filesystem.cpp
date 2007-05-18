@@ -28,10 +28,6 @@
  * This code swiped from dirent.c in the unixem library, version 1.7.3.
  * See http://synesis.com.au/software/unixem.html for full sources.
  * It's under BSD license.
- * YogiHH, 05/17/2007:
- * I added the include for dirent.h which originates from a port of a guy named 
- * Toni Ronkko (http://www.softagalleria.net/dirent/index.en.html) to make this
- * work with Windows.
  */
 
 #include <direct.h>
@@ -60,13 +56,82 @@
 
 #if defined(DIRENT_PROVIDED_BY_COMPILER)
 #include <dirent.h>
-
 #else
+
+
+/* ////////////////////////////////////////////////////////////////////// */
+
+#include <stddef.h>
+
 /* /////////////////////////////////////////////////////////////////////////
- * Constants and definitions
+ * Interface constants and definitions
  */
 
-#include "dirent_port.h"
+#ifndef NAME_MAX
+# define NAME_MAX   (260)
+#endif /* !NAME_MAX */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * Typedefs
+ */
+
+/** Results structure for readdir()
+ */
+struct dirent
+{
+    char    d_name[NAME_MAX + 1];      /*!< file name (null-terminated) */
+    int     d_mode;
+};
+
+/* /////////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+/** Returns a pointer to the next directory entry.
+ *
+ * This function opens the directory named by filename, and returns a
+ * directory to be used to in subsequent operations. NULL is returned
+ * if name cannot be accessed, or if resources cannot be acquired to
+ * process the request.
+ *
+ * name The name of the directory to search
+ * return The directory handle from which the entries are read or NULL
+ */
+DIR             *opendir(const char *name);
+
+/** Closes a directory handle
+ *
+ * This function closes a directory handle that was opened with opendir()
+ * and releases any resources associated with that directory handle.
+ *
+ * dir The directory handle from which the entries are read
+ * return 0 on success, or -1 to indicate error.
+ */
+int             closedir(DIR *dir);
+
+/** Returns a pointer to the next directory entry.
+ *
+ * This function returns a pointer to the next directory entry, or NULL upon
+ * reaching the end of the directory or detecting an invalid seekdir() operation
+ *
+ * \param dir The directory handle from which the entries are read
+ * \return A dirent structure or NULL
+ */
+struct dirent   *readdir(DIR *dir);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * Implementation constants and definitions
+ */
+
 #ifndef FILE_ATTRIBUTE_ERROR
 # define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
@@ -75,22 +140,12 @@
  * Typedefs
  */
 
-typedef int mode_t;
-
-struct dirent_dir
+struct DIR
 {
     char                directory[_MAX_DIR + 1];    /* . */
     WIN32_FIND_DATAA    find_data;                  /* The Win32 FindFile data. */
     HANDLE              hFind;                      /* The Win32 FindFile handle. */
     struct dirent       dirent;                     /* The handle's entry. */
-};
-
-struct wdirent_dir
-{
-    wchar_t             directory[_MAX_DIR + 1];    /* . */
-    WIN32_FIND_DATAW    find_data;                  /* The Win32 FindFile data. */
-    HANDLE              hFind;                      /* The Win32 FindFile handle. */
-    struct wdirent      dirent;                     /* The handle's entry. */
 };
 
 /* /////////////////////////////////////////////////////////////////////////
