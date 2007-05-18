@@ -59,6 +59,19 @@ prints version number and exits.
 .TP
 .BR -w , \ --windowed
 runs the editor in windowed mode.
+.TP
+.BR --log-error="domain1,domain2,..." ", " --log-warning="..." ", " --log-info="..."
+sets the severity level of the debug domains. "all" can be used to match
+any debug domain.
+.B --log-info
+shows all messages,
+.B --log-warning
+only warnings and errors, and
+.B --log-error
+just errors.
+.TP
+.B --logdomains
+Dumps a list of all log domains and exits.
 
 .SH AUTHOR
 Written by David White <davidnwhite@verizon.net>.
