@@ -1729,6 +1729,7 @@ static int play_game(int argc, char** argv)
 			// domain list is hardcoded here because I don't grok
 			// C++ well enough to add a log class hook to get it.
 			std::cerr << "general, ai, config, display, engine, network, filesystem, audio. paths\n";
+			return 0;
 		} else if(val == "--compress" || val == "--decompress") {
 			if(argc != arg+3) {
 				std::cerr << "format of " << val << " command: " << val << " <input file> <output file>\n";

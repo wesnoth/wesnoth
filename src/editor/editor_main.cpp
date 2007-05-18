@@ -170,6 +170,7 @@ int main(int argc, char** argv)
 			// domain list is hardcoded here because I don't grok
 			// C++ well enough to add a log class hook to get it.
 			std::cerr << "general, ai, config, display, engine, network, filesystem, audio. paths\n";
+			return 0;
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
