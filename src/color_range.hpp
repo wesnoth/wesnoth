@@ -13,6 +13,12 @@
 #ifndef COLOR_RANGE_H_INCLUDED
 #define COLOR_RANGE_H_INCLUDED
 
+//These macros interfere with MS VC++
+#ifdef _MSC_VER
+	#undef max
+	#undef min
+#endif
+
 #include "global.hpp"
 #include <map>
 #include <vector>
@@ -25,7 +31,7 @@ std::vector<Uint32> string2rgb(std::string s);
 class color_range
 {
 public:
-  color_range(Uint32 mid , Uint32 max , Uint32 min , Uint32 rep):mid_(mid),max_(max),min_(min),rep_(rep){};
+  color_range(Uint32 mid , Uint32 max = 0x00FFFFFF , Uint32 min = 0x00000000 , Uint32 rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){};
   color_range(const std::vector<Uint32>& v)
   {
     mid_ = v.size() ? v[0] : 0x00808080;

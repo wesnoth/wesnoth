@@ -28,8 +28,14 @@
  * This code swiped from dirent.c in the unixem library, version 1.7.3.
  * See http://synesis.com.au/software/unixem.html for full sources.
  * It's under BSD license.
+ * YogiHH, 05/17/2007:
+ * I added the include for dirent.h which originates from a port of a guy named 
+ * Toni Ronkko (http://www.softagalleria.net/dirent/index.en.html) to make this
+ * work with Windows.
  */
 
+#include <direct.h>
+#include <io.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -60,6 +66,7 @@
  * Constants and definitions
  */
 
+#include "dirent_port.h"
 #ifndef FILE_ATTRIBUTE_ERROR
 # define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
@@ -67,6 +74,8 @@
 /* /////////////////////////////////////////////////////////////////////////
  * Typedefs
  */
+
+typedef int mode_t;
 
 struct dirent_dir
 {

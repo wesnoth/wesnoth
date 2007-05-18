@@ -43,7 +43,7 @@ void get_files_in_dir(const std::string& dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=NULL,
                       FILE_NAME_MODE mode=FILE_NAME_ONLY,
-                      FILE_REORDER_OPTION mode=DONT_REORDER);
+                      FILE_REORDER_OPTION reorder=DONT_REORDER);
 
 std::string get_dir(const std::string &dir);
 //the location of various important files
