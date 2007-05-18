@@ -391,10 +391,10 @@ void get_files_in_dir(const std::string& directory,
 		if(entry->d_name[0] == '.')
 			continue;
 #ifdef __APPLE__
-		/* HFS Mac OS X decompose filenames using combining unicode
+		/* HFS Mac OS X decomposes filenames using combining unicode
 		characters. Try to get the precomposed form.
 		*/
-		char filename[MAXNAMLEN+1];
+		char basename[MAXNAMLEN+1];
 		CFStringRef cstr = CFStringCreateWithCString(NULL, 
 						     entry->d_name,
 						     kCFStringEncodingUTF8);
@@ -402,49 +402,50 @@ void get_files_in_dir(const std::string& directory,
 						     0, cstr);
 		CFStringNormalize(mut_str, kCFStringNormalizationFormC);
 		CFStringGetCString(mut_str,
-				filename,sizeof(filename)-1,
+				basename,sizeof(basename)-1,
 				kCFStringEncodingUTF8);
 		CFRelease(cstr);
 		CFRelease(mut_str);
 #else
-		char *filename = entry->d_name;
+		/* generic Unix */
+		char *basename = entry->d_name;
 #endif /* !APPLE */
 #ifndef __AMIGAOS4__
-		const std::string name((directory + "/") + filename);
+		const std::string fullname((directory + "/") + basename);
 #else
-		std::string name;
+		std::string fullname;
 		if (directory.empty() || (directory[directory.size()-1]==':' ||
 			directory[directory.size()-1] == '/'))
-			name = directory + filename;
+			fullname = directory + basename;
 		else
-			name = (directory + "/") + filename;
+			fullname = (directory + "/") + basename;
 #endif /* __AMIGAOS4__ */
 		struct stat st;
 
 		if (reorder == DO_REORDER && 
-				::stat((name+"/"+MAINCFG).c_str(), &st)!=-1 && 
+				::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 && 
 				S_ISREG(st.st_mode)) {
 			if (files != NULL) {
 				if (mode == ENTIRE_FILE_PATH)
-					files->push_back(name + "/" + MAINCFG);
+					files->push_back(fullname + "/" + MAINCFG);
 				else
-					files->push_back(std::string(filename) + "/" + MAINCFG);
+					files->push_back(std::string(basename) + "/" + MAINCFG);
 			}
 		}
-		else if (::stat(name.c_str(), &st) != -1) {
+		else if (::stat(fullname.c_str(), &st) != -1) {
 			if (S_ISREG(st.st_mode)) {
 				if (files != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
-						files->push_back(name);
+						files->push_back(fullname);
 					else
-						files->push_back(filename);
+						files->push_back(basename);
 				}
 			} else if (S_ISDIR(st.st_mode)) {
 				if (dirs != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
-						dirs->push_back(name);
+						dirs->push_back(fullname);
 					else
-						dirs->push_back(filename);
+						dirs->push_back(basename);
 				}
 			}
 		}
