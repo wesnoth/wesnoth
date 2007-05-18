@@ -67,6 +67,7 @@ class preprocessor_streambuf: public streambuf
 	std::string out_buffer_;
 	virtual int underflow();
 	std::ostringstream buffer_;
+    int buffer_size_;
 	preprocessor *current_;
 	preproc_map *defines_;
 	preproc_map default_defines_;
@@ -111,10 +112,11 @@ int preprocessor_streambuf::underflow()
 		}
 		buffer_.str(std::string());
 		buffer_ << out_buffer_;
+        buffer_size_ = out_buffer_.size();
 	}
 	while (current_) {
 		if (current_->get_chunk()) {
-			if (buffer_.str().size() >= 2000)
+			if (buffer_size_ >= 2000)
 				break;
 		} else {
 			 // automatically restore the previous preprocessor
@@ -147,11 +149,23 @@ preprocessor::~preprocessor()
 	target_.location_ = old_location_;
 	target_.linenum_ = old_linenum_;
 	target_.textdomain_ = old_textdomain_;
-	if (!old_location_.empty())
-		target_.buffer_ << "\376line " << old_linenum_
-		                << ' ' << old_location_ << '\n';
-	if (!old_textdomain_.empty())
-		target_.buffer_ << "\376textdomain " << old_textdomain_ << '\n';
+	if (!old_location_.empty()) {
+        std::ostringstream temp;
+		temp << "\376line " << old_linenum_
+             << ' ' << old_location_ << '\n';
+
+        std::string s = temp.str();
+        target_.buffer_ << s;
+        target_.buffer_size_ += s.size();
+    }
+	if (!old_textdomain_.empty()) {
+        std::ostringstream temp;
+		temp << "\376textdomain " << old_textdomain_ << '\n';
+
+        std::string s = temp.str();
+        target_.buffer_ << s;
+        target_.buffer_size_ += s.size();
+    }
 	--target_.depth_;
 }
 
@@ -238,8 +252,15 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
 	t.location_ = s.str();
 	t.linenum_ = linenum;
 	t.textdomain_ = domain;
-	t.buffer_ << "\376line " << linenum << ' ' << t.location_
+
+    std::ostringstream temp;
+	temp << "\376line " << linenum << ' ' << t.location_
 	          << "\n\376textdomain " << domain << '\n';
+
+    std::string ts = temp.str();
+    t.buffer_ << ts;
+    t.buffer_size_ += ts.size();
+
 	push_token('*');
 }
 
@@ -327,12 +348,20 @@ void preprocessor_data::put(char c)
 		target_.linenum_ = linenum_;
 		if (c == '\n')
 			--target_.linenum_;
-		target_.buffer_ << "\376line " << target_.linenum_
-		                << ' ' << target_.location_ << '\n';
+
+        std::ostringstream temp;
+		temp << "\376line " << target_.linenum_
+             << ' ' << target_.location_ << '\n';
+
+        std::string s = temp.str();
+        target_.buffer_ << s;
+        target_.buffer_size_ += s.size();
+
 	}
 	if (c == '\n')
 		++target_.linenum_;
 	target_.buffer_ << c;
+    target_.buffer_size_ += 1;
 }
 
 void preprocessor_data::put(std::string const &s)
@@ -344,6 +373,7 @@ void preprocessor_data::put(std::string const &s)
 		return;
 	}
 	target_.buffer_ << s;
+    target_.buffer_size_ += s.size();
 	target_.linenum_ += std::count(s.begin(), s.end(), '\n');
 	target_.linenum_ -= std::count(s.begin(), s.end(), '\376');
 }
