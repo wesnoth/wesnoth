@@ -363,101 +363,99 @@ void get_files_in_dir(const std::string& directory,
 #ifdef USE_ZIPIOS
 	if (the_collection->hasSubdir(directory)) {
 		the_collection->childrenOf(directory, files, dirs);
+		return;
 	}
-	else
-#endif
-	{
+#endif /* USE_ZIPIOS */
 
-		// if we have a path to find directories in, then
-		// convert relative pathnames to be rooted on the
-		// wesnoth path
+	// if we have a path to find directories in, then
+	// convert relative pathnames to be rooted on the
+	// wesnoth path
 #ifndef __AMIGAOS4__
-		if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
-			const std::string& dir = game_config::path + "/" + directory;
-			if(is_directory(dir)) {
-				get_files_in_dir(dir,files,dirs,mode,reorder);
-				return;
-			}
-		}
-#endif
-
-		DIR* dir = opendir(directory.c_str());
-
-		if(dir == NULL) {
+	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
+		const std::string& dir = game_config::path + "/" + directory;
+		if(is_directory(dir)) {
+			get_files_in_dir(dir,files,dirs,mode,reorder);
 			return;
 		}
+	}
+#endif /* __AMIGAOS4__ */
 
-		struct dirent* entry;
-		while((entry = readdir(dir)) != NULL) {
-			if(entry->d_name[0] == '.')
-				continue;
+	DIR* dir = opendir(directory.c_str());
+
+	if(dir == NULL) {
+		return;
+	}
+
+	struct dirent* entry;
+	while((entry = readdir(dir)) != NULL) {
+		if(entry->d_name[0] == '.')
+			continue;
 #ifdef __APPLE__
-			/* HFS Mac OS X decompose filenames using combining unicode
-			characters. Try to get the precomposed form.
-			*/
-			char filename[MAXNAMLEN+1];
-			CFStringRef cstr = CFStringCreateWithCString(NULL, 
-							     entry->d_name,
-							     kCFStringEncodingUTF8);
-			CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL, 
-							     0, cstr);
-			CFStringNormalize(mut_str, kCFStringNormalizationFormC);
-			CFStringGetCString(mut_str,
-					filename,sizeof(filename)-1,
-					kCFStringEncodingUTF8);
-			CFRelease(cstr);
-			CFRelease(mut_str);
+		/* HFS Mac OS X decompose filenames using combining unicode
+		characters. Try to get the precomposed form.
+		*/
+		char filename[MAXNAMLEN+1];
+		CFStringRef cstr = CFStringCreateWithCString(NULL, 
+						     entry->d_name,
+						     kCFStringEncodingUTF8);
+		CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL, 
+						     0, cstr);
+		CFStringNormalize(mut_str, kCFStringNormalizationFormC);
+		CFStringGetCString(mut_str,
+				filename,sizeof(filename)-1,
+				kCFStringEncodingUTF8);
+		CFRelease(cstr);
+		CFRelease(mut_str);
 #else
-			char *filename = entry->d_name;
-#endif
+		char *filename = entry->d_name;
+#endif /* !APPLE */
 #ifndef __AMIGAOS4__
-			const std::string name((directory + "/") + filename);
+		const std::string name((directory + "/") + filename);
 #else
-			std::string name;
-			if (directory.empty() || (directory[directory.size()-1]==':' ||
-				directory[directory.size()-1] == '/'))
-				name = directory + filename;
-			else
-				name = (directory + "/") + filename;
-#endif
-			struct stat st;
+		std::string name;
+		if (directory.empty() || (directory[directory.size()-1]==':' ||
+			directory[directory.size()-1] == '/'))
+			name = directory + filename;
+		else
+			name = (directory + "/") + filename;
+#endif /* __AMIGAOS4__ */
+		struct stat st;
 
-			if (reorder == DO_REORDER && 
-					::stat((name+"/"+MAINCFG).c_str(), &st)!=-1 && 
-					S_ISREG(st.st_mode)) {
+		if (reorder == DO_REORDER && 
+				::stat((name+"/"+MAINCFG).c_str(), &st)!=-1 && 
+				S_ISREG(st.st_mode)) {
+			if (files != NULL) {
+				if (mode == ENTIRE_FILE_PATH)
+					files->push_back(name + "/" + MAINCFG);
+				else
+					files->push_back(std::string(filename) + "/" + MAINCFG);
+			}
+		}
+		else if (::stat(name.c_str(), &st) != -1) {
+			if (S_ISREG(st.st_mode)) {
 				if (files != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
-						files->push_back(name + "/" + MAINCFG);
+						files->push_back(name);
 					else
-						files->push_back(std::string(filename) + "/" + MAINCFG);
+						files->push_back(filename);
 				}
-			}
-			else if (::stat(name.c_str(), &st) != -1) {
-				if (S_ISREG(st.st_mode)) {
-					if (files != NULL) {
-						if (mode == ENTIRE_FILE_PATH)
-							files->push_back(name);
-						else
-							files->push_back(filename);
-					}
-				} else if (S_ISDIR(st.st_mode)) {
-					if (dirs != NULL) {
-						if (mode == ENTIRE_FILE_PATH)
-							dirs->push_back(name);
-						else
-							dirs->push_back(filename);
-					}
+			} else if (S_ISDIR(st.st_mode)) {
+				if (dirs != NULL) {
+					if (mode == ENTIRE_FILE_PATH)
+						dirs->push_back(name);
+					else
+						dirs->push_back(filename);
 				}
 			}
 		}
-
-		closedir(dir);
 	}
+
+	closedir(dir);
 
 	if(files != NULL)
 		std::sort(files->begin(),files->end());
 
-	if(dirs != NULL)
+	if (dirs != NULL)
 		std::sort(dirs->begin(),dirs->end());
 
 	if (files != NULL && reorder == DO_REORDER) {
@@ -467,7 +465,7 @@ void get_files_in_dir(const std::string& directory,
 			    files->erase(files->begin()+i);
 			    break;
 			}
-    }
+	}
 }
 
 std::string get_prefs_file()
