@@ -58,101 +58,37 @@
 #include <dirent.h>
 #else
 
-
 /* ////////////////////////////////////////////////////////////////////// */
 
 #include <stddef.h>
-
-/* /////////////////////////////////////////////////////////////////////////
- * Interface constants and definitions
- */
 
 #ifndef NAME_MAX
 # define NAME_MAX   (260)
 #endif /* !NAME_MAX */
 
-/* /////////////////////////////////////////////////////////////////////////
- * Typedefs
- */
-
-/** Results structure for readdir()
- */
 struct dirent
 {
     char    d_name[NAME_MAX + 1];      /*!< file name (null-terminated) */
     int     d_mode;
 };
 
-/* /////////////////////////////////////////////////////////////////////////////
- * API functions
- */
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-/** Returns a pointer to the next directory entry.
- *
- * This function opens the directory named by filename, and returns a
- * directory to be used to in subsequent operations. NULL is returned
- * if name cannot be accessed, or if resources cannot be acquired to
- * process the request.
- *
- * name The name of the directory to search
- * return The directory handle from which the entries are read or NULL
- */
-DIR             *opendir(const char *name);
-
-/** Closes a directory handle
- *
- * This function closes a directory handle that was opened with opendir()
- * and releases any resources associated with that directory handle.
- *
- * dir The directory handle from which the entries are read
- * return 0 on success, or -1 to indicate error.
- */
-int             closedir(DIR *dir);
-
-/** Returns a pointer to the next directory entry.
- *
- * This function returns a pointer to the next directory entry, or NULL upon
- * reaching the end of the directory or detecting an invalid seekdir() operation
- *
- * \param dir The directory handle from which the entries are read
- * \return A dirent structure or NULL
- */
-struct dirent   *readdir(DIR *dir);
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
-
-/* /////////////////////////////////////////////////////////////////////////
- * Implementation constants and definitions
- */
+struct DIR
+{
+    char              directory[_MAX_DIR+1];   /* . */
+    WIN32_FIND_DATAA  find_data;               /* The Win32 FindFile data. */
+    HANDLE            hFind;                   /* The Win32 FindFile handle. */
+    struct dirent     dirent;                  /* The handle's entry. */
+};
 
 #ifndef FILE_ATTRIBUTE_ERROR
 # define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Typedefs
- */
-
-struct DIR
-{
-    char                directory[_MAX_DIR + 1];    /* . */
-    WIN32_FIND_DATAA    find_data;                  /* The Win32 FindFile data. */
-    HANDLE              hFind;                      /* The Win32 FindFile handle. */
-    struct dirent       dirent;                     /* The handle's entry. */
-};
-
-/* /////////////////////////////////////////////////////////////////////////
  * Helper functions
  */
 
-static HANDLE unixem__dirent__findfile_directory(char const *name, LPWIN32_FIND_DATAA data)
+static HANDLE dirent__findfile_directory(char const *name, LPWIN32_FIND_DATAA data)
 {
     char    search_spec[_MAX_PATH +1];
 
@@ -204,7 +140,7 @@ DIR *opendir(char const *name)
         }
         else
         {
-            result->hFind = unixem__dirent__findfile_directory(name, &result->find_data);
+            result->hFind=dirent__findfile_directory(name, &result->find_data);
 
             if(result->hFind == INVALID_HANDLE_VALUE)
             {
