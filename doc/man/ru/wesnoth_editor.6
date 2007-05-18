@@ -62,6 +62,15 @@
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 запустить редактор в оконном режиме.
+.TP 
+\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+установить уровень для отладочных доменов. "all" может соответствовать
+любому отладочному домену. \fB\-\-log\-info\fP отображает все сообщения,
+\fB\-\-log\-warning\fP только предупреждения и ошибки, \fB\-\-log\-error\fP только
+ошибки.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH АВТОР
 Написана Дэвидом Уайтом (David White)

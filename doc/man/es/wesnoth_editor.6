@@ -62,6 +62,15 @@ muestra el número de versión y finaliza.
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 ejecuta el juego en una ventana.
+.TP 
+\fB\-\-log\-error="dominio1,dominio2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+establece el nivel de gravedad de los dominios de depuración. "all" puede
+usarse para seleccionar todos los dominios.  \fB\-\-log\-info\fP muestra todos los
+mensajes, \fB\-\-log\-warning\fP sólo alertas y errores, y \fB\-\-log\-error\fP
+solamente errores.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH AUTOR
 Escrito por David White <davidnwhite@verizon.net>.  Editado por Nils

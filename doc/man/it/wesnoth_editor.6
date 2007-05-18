@@ -62,6 +62,15 @@ visualizza il numero di versione ed esci
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 Carica l'editor in una finestra
+.TP 
+\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+imposta il livello di severità dei domini di debug. Puoi usare "all" per
+qualsiasi dominio di debug. \fB\-\-log\-info\fP mostra tutti i messaggi,
+\fB\-\-log\-warning\fP solo gli avvertimenti e gli errori, e \fB\-\-log\-error\fP solo
+gli errori.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH AUTORE
 Scritto da David White <davidnwhite@verizon.net>. Edito da Nils

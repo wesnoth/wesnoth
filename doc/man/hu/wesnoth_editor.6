@@ -62,6 +62,15 @@ kiírja a verziószámot és kilép.
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 a pályaszerkeszt?t ablakos módban indítja el.
+.TP 
+\fB\-\-log\-error="tartomány1,tartomány2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+beállítja a hibakeresési tartomány szintjét. Az "all" minden hibakeresési
+tartományra illeszkedik.  \fB\-\-log\-info\fP megmutat minden üzenetet. 
+\fB\-\-log\-warning\fP csak a figyelmeztetéseket (warning) és a hibákat (error). 
+\fB\-\-log\-error\fP csak a hibákat (error).
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH SZERZ?
 Írta: David White <davidnwhite@verizon.net>.  Szerkesztették: Nils

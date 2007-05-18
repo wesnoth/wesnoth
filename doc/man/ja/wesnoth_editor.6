@@ -62,6 +62,13 @@ Battle for \fBWesnoth\fP マップ・エディター。
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 ウィンドウ化されたモードでゲームを実行する。
+.TP 
+\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+デバッグ領域(domain)の厳密さのレベルを設定する。 "all" は、どのデバッグ領域にも対応させるために利用できる。 \fB\-\-log\-info\fP
+は全てのメッセージを表示し、 \fB\-\-log\-warning\fP は警告とエラーだけを、そして \fB\-\-log\-error\fP はエラーのみを表示する。
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH 著者
 David White <davidnwhite@verizon.net> によって書かれた。 Nils Kneuper

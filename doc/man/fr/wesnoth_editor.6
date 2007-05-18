@@ -62,6 +62,15 @@ affiche le numéro de version et quitte le programme.
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 exécute l'éditeur dans une fenêtre séparée.
+.TP 
+\fB\-\-log\-error="domaine1,domaine2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+définit le niveau d'alerte du débogueur. "all" permet de suivre tous les
+niveaux. \fB\-\-log\-info\fP affiche tous les messages, \fB\-\-log\-warning\fP n'affiche
+que les avertissements et les erreurs et \fB\-\-log\-error\fP n'affiche que les
+erreurs.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH AUTEUR
 Écrit par David White <davidnwhite@verizon.net>. Édité par Nils

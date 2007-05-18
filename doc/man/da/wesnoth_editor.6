@@ -62,6 +62,14 @@ udskriver versionnummer og afslutter.
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 afvikler kortredigering i indstilling windowed.
+.TP 
+\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+indstiller strenghedsniveauet på fejlsøgningsdomænerne. "all" kan bruges til
+alle fejlsøgningsdomæner. \fB\-\-log\-info\fP viser alle beskeder,
+\fB\-\-log\-warning\fP viser kun advarsler og fejl og \fB\-\-log\-error\fP kun fejl.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH FORFATTER
 Skrevet af David White <davidnwhite@verizon.net>.  Redigeret af Nils

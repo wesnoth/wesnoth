@@ -63,6 +63,14 @@ Zeigt die Versionsnummer an und beendet das Programm.
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 Startet den Editor im Fenstermodus.
+.TP 
+\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche
+Meldungen auszugeben.  \fB\-\-log\-info\fP zeigt alle Meldungen, \fB\-\-log\-warning\fP
+zeigt nur Warnungen und Fehler und \fB\-\-log\-error\fP nur Fehler.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH AUTOR
 Geschrieben von David White <davidnwhite@verizon.net>.  Bearbeitet

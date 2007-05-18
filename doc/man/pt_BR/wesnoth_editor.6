@@ -62,6 +62,15 @@ imprime o número da versão e sai.
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 executa o editor em modo janela.
+.TP 
+\fB\-\-log\-error="domínio1,domínio2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+configura o nível de importância de cada domínios de debug. "all" pode ser
+usado para escolher todos os domínios. \fB\-\-log\-info\fP mostra todas as
+mensagens, <B\-\-log\-warning> mostra apenas avisos e erros, e \fB\-\-log\-error\fP
+mostra apenas os erros.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH AUTOR
 Escrito por David White <davidnwhite@verizon.net>. Editado por Nils

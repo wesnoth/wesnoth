@@ -62,6 +62,14 @@ prints version number and exits.
 .TP 
 \fB\-w\fP,\fB\ \-\-windowed\fP
 runs the editor in windowed mode.
+.TP 
+\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain.  \fB\-\-log\-info\fP shows all messages, \fB\-\-log\-warning\fP only
+warnings and errors, and \fB\-\-log\-error\fP just errors.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
 
 .SH AUTHOR
 Written by David White <davidnwhite@verizon.net>.  Edited by Nils
