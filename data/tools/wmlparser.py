@@ -53,7 +53,8 @@ class Parser:
 
         self.textdomain = ""
 
-        self.macro_callback = None
+        self.macro_not_found_callback = None
+        self.no_macros = False
 
         # If set, included files are only parsed when under the given directory.
         self.only_expand_pathes = []
@@ -79,14 +80,14 @@ class Parser:
         text = text.replace("\r\n", "\n").replace("\t", " ")
         return text
 
-    def set_macro_callback(self, callback):
+    def set_macro_not_found_callback(self, callback):
         """
         You can set a last-resort function which is called when a macro could
         not be resolved by the Parser. The calling format is:
 
         callback(wmlparser, name, params)
         """
-        self.macro_callback = callback
+        self.macro_not_found_callback = callback
 
     def parse_file(self, filename):
         """
@@ -266,28 +267,37 @@ class Parser:
             if self.user_dir:
                 dirpath = self.user_dir + "/" + macro[1:]
             else:
-                dirpath = ""
+                dirpath = None
         # If the macro starts with @, look first in data then in userdata.
         elif macro[0] == "@":
-            dirpath = self.data_dir + "/" + macro[1:]
-            if not os.path.exists(dirpath) and self.user_dir:
+            if self.data_dir:
+                dirpath = self.data_dir + "/" + macro[1:]
+                if not os.path.exists(dirpath): dirpath = None
+            else:
+                dirpath = None
+            if dirpath and self.user_dir:
                 dirpath = self.user_dir + "/" + macro[1:]
         # If the macro starts with ., look relative to the currently parsed
         # file.
         elif macro[0] == ".":
             dirpath = self.current_path + macro[1:]
         # Otherwise, try to interprete the macro as a filename in the data dir.
-        else:
+        elif self.data_dir != None:
             dirpath = self.data_dir + "/" + macro
+        else:
+            dirpath = None
 
-        if os.path.exists(dirpath):
+        if dirpath != None and os.path.exists(dirpath):
             dirpath = os.path.normpath(dirpath)
             if self.only_expand_pathes:
                 if not [x for x in self.only_expand_pathes if os.path.commonprefix([dirpath, x]) == x]:
                     return None
             # If it is a directory, parse all cfg files within.
             if os.path.isdir(dirpath):
+                # Execute all WML files in the directory.
                 files = glob.glob(dirpath + "/*.cfg")
+                # And also execute directories with a _main.cfg.
+                files += glob.glob(dirpath + "/*/_main.cfg")
                 files.sort()
                 mc = dirpath + "/_main.cfg"
                 fc = dirpath + "/_final.cfg"
@@ -360,6 +370,9 @@ class Parser:
                     params += [read]
                 self.read_while(" \n")
 
+        if self.no_macros:
+            return wmldata.DataMacro("macro", " ".join(params))
+
         name = params[0]
         if name in self.macros:
             macro = self.macros[name]
@@ -370,7 +383,8 @@ class Parser:
                         "%d given but %d needed %s." % (len(params) - 1,
                             len(macro.params), macro.params))
                 if self.verbose:
-                    print "Replacing {%s} with %s" % (macro.params[i], params[1 + i])
+                    s = "Replacing {%s} with %s" % (macro.params[i], params[1 + i])
+                    print s.encode("utf8")
                 text = text.replace("{%s}" % macro.params[i],
                     params[1 + i])
 
@@ -379,8 +393,8 @@ class Parser:
             else:
                 pass # empty macro, nothing to do
         else:
-            if self.macro_callback:
-                keep_macro = self.macro_callback(self, name, params)
+            if self.macro_not_found_callback:
+                keep_macro = self.macro_not_found_callback(self, name, params)
                 if keep_macro: return keep_macro
             sys.stderr.write("No macro %s.\n" % name)
             sys.stderr.write(" (%s:%d)\n" % (self.filename, self.line))
@@ -412,7 +426,12 @@ class Parser:
         spaces = ""
         while 1:
             if c == "{":
-                self.parse_macro()
+                keep_macro = self.parse_macro()
+                if keep_macro:
+                    if self.no_macros:
+                        values += [keep_macro.name]
+                    else:
+                        values += [keep_macro]
             elif c == "\n":
                 break
             elif c == "+":
@@ -540,7 +559,8 @@ class Parser:
                     line = self.read_until("\n")
                     comment = c + line
                     if self.verbose:
-                        print "Comment removed: " + comment,
+                        msg = "Comment removed: %s" % comment
+                        sys.stderr.write(msg.encode("utf8"))
             elif c == '[':
                 name = self.read_until("]")[:-1]
                 if name[0] == '/':
@@ -568,11 +588,14 @@ if __name__ == "__main__":
     optionparser = optparse.OptionParser()
     optionparser.set_usage("usage: %prog [options] [filename]")
     optionparser.add_option("-p", "--path",  help = "specify wesnoth data path")
-    optionparser.add_option("-C", "--color",  help = "use colored output")
+    optionparser.add_option("-C", "--color", action = "store_true",
+        help = "use colored output")
     optionparser.add_option("-u", "--userpath",  help = "specify userdata path")
     optionparser.add_option("-e", "--execute",  help = "execute given WML")
     optionparser.add_option("-v", "--verbose", action = "store_true",
         help = "make the parser very verbose")
+    optionparser.add_option("-n", "--no-macros", action = "store_true",
+        help = "do not expand any macros")
     optionparser.add_option("-c", "--contents", action = "store_true",
         help = "display contents of every tag")
     options, args = optionparser.parse_args()
@@ -586,8 +609,11 @@ if __name__ == "__main__":
             path = os.path.join(path, "data")
         except OSError:
             sys.stderr.write("Could not determine Wesnoth path.\n")
+            path = None
 
     wmlparser = Parser(path, options.userpath)
+    if options.no_macros:
+        wmlparser.no_macros = True
 
     if options.verbose:
         wmlparser.verbose = True
