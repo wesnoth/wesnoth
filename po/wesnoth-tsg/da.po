@@ -5,15 +5,15 @@
 # Joe Hansen <joedalton2@yahoo.dk>, 2007.
 #
 # Konventioner
-# "female^strong" oversættes som "stærk"  Delen foran ^ og ^ skal ikke oversættes.
+# "female^strong" oversættes som "stærk". Delen foran ^ skal ikke oversættes.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-17 19:44+0200\n"
-"PO-Revision-Date: 2007-04-20 13:15+0200\n"
-"Last-Translator: Joe Hansen\n"
+"PO-Revision-Date: 2007-05-17 13:15+0200\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,6 @@ msgid "The South Guard"
 msgstr "Den sydlige vagtforpost"
 
 #: data/campaigns/The_South_Guard/_main.cfg:18
-#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note:  This campaign is designed as an introduction to Wesnoth. The "
@@ -37,7 +36,8 @@ msgstr ""
 "En ung ridder, Deoran, sendes af sted for at overtage kommandoen over den "
 "sydlige vagtforpost... Bemærk: Denne kampagne er designet som en "
 "introduktion til Wesnoth. Sværhedsgraden »begynder« er rettet mod "
-"førstegangsspillere."
+"førstegangsspillere.\n"
+"(begynderniveau, 13 scenarier.)"
 
 #: data/campaigns/The_South_Guard/_main.cfg:21
 msgid "Soldier"
@@ -52,18 +52,16 @@ msgid "Recruit"
 msgstr "Rekruttér"
 
 #: data/campaigns/The_South_Guard/_main.cfg:21
-#, fuzzy
 msgid "(Easy)"
-msgstr "(let)"
+msgstr "(Let)"
 
 #: data/campaigns/The_South_Guard/_main.cfg:21
-#, fuzzy
 msgid "(Normal)"
-msgstr "(normal)"
+msgstr "(Normal)"
 
 #: data/campaigns/The_South_Guard/_main.cfg:21
 msgid "(Beginner)"
-msgstr ""
+msgstr "(Begynder)"
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
@@ -501,13 +499,12 @@ msgstr ""
 "Denne landsby er vores til plyndring! Forsvind eller jeg dræber jer alle!"
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:583
-#, fuzzy
 msgid ""
 "Do you not see the banners flying in the wind? The South Guard fights again. "
 "Flee while you can, or you will meet swift death on our spears!"
 msgstr ""
 "Ser du ikke banneret i vinden? Den sydlige forsvarspost kæmper igen. Flygt "
-"mens du kan, eller du vil få en hurtig død ved vores våben."
+"mens du kan, eller du vil få en hurtig død ved vores våben!"
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:608
 msgid ""
@@ -533,7 +530,6 @@ msgstr ""
 "Mine dage med plyndring og ødelæggelse er forbi! Mine brødre vil hævne mig..."
 
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:666
-#, fuzzy
 msgid ""
 "He is dead! Congratulations, commander. We thought we would never see "
 "reinforcements - Did Sir Loris send you from Westin?"
@@ -677,7 +673,6 @@ msgstr ""
 "konsekvenser."
 
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:321
-#, fuzzy
 msgid ""
 "It grieves me to learn of his death, foolish though he may have been! Now, "
 "though, there are more pressing matters. Rise, men of Wesnoth! We must drive "
@@ -749,7 +744,6 @@ msgstr ""
 "Haldric og fortælle ham om vores tab..."
 
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:460
-#, fuzzy
 msgid ""
 "Now the Guard will feel the wrath of my new friends! It is time for the dead "
 "to wage war! Rise, warriors!"
@@ -763,12 +757,11 @@ msgstr ""
 "Hvilken djævelskab er dette?! Det er ikke levende mænd der kæmper for ham!"
 
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:469
-#, fuzzy
 msgid ""
 "He has made some pact with the undead. How could a mere brigand have gained "
 "such great powers?"
 msgstr ""
-"Han har lavet en pagt med de udøde - hvordan kan en simpel røver have opnået "
+"Han har lavet en pagt med de udøde. Hvordan kan en simpel røver have opnået "
 "en sådan magt?"
 
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:473
@@ -979,7 +972,6 @@ msgid "Ethiliel"
 msgstr "Ethiliel"
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:285
-#, fuzzy
 msgid "Halt! Who has entered our citadel without leave?"
 msgstr "Stop! Hvem er kommet til vores kastel uden tilladelse?"
 
@@ -988,7 +980,6 @@ msgid "De..."
 msgstr "De..."
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:295
-#, fuzzy
 msgid ""
 "Speak carefully, for the penalty for trespass on our lands is death, and "
 "your life is thus forfeit."
@@ -1001,14 +992,13 @@ msgid "Deora..."
 msgstr "Deora..."
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:306
-#, fuzzy
 msgid ""
 "Stay a moment. This man wears the colors of Wesnoth, and Kalenz told us not "
 "all the folk of Wesnoth are foes of the elves. Tell us, then, what brings "
 "you to the hallowed citadel of Elrath?"
 msgstr ""
 "Vent et øjeblik. Denne mand bærer Wesnoths farver, og Kalenz fortalte os, at "
-"ikke alle fra Wesnoth var fjender af elverne. Så fortæl os hvad det er, der "
+"ikke alle fra Wesnoth er fjender af elverne. Så fortæl os hvad det er, der "
 "bringer dig til Elraths hellige kastel?"
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:311
@@ -1032,7 +1022,6 @@ msgstr ""
 "gang før. Hvad vil du gøre Deoran?"
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:321
-#, fuzzy
 msgid ""
 "I would lead my men south of the river to find the source of these beings of "
 "Darkness that we might destroy it. For surely, ere that be done, we cannot "
@@ -1345,7 +1334,6 @@ msgstr ""
 "og shamaner vil nu kæmpe på din kommando."
 
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:211
-#, fuzzy
 msgid ""
 "Elvish Fighters are at home in the thick forests. They have both a sword and "
 "a bow and are deadly with both. They are quick and can hold their own "
@@ -1655,7 +1643,6 @@ msgstr ""
 "stykket tid."
 
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:694
-#, fuzzy
 msgid ""
 "Do not be so hasty; great mages are no mere tricksters to be defeated so "
 "easily. I fear that there are tunnels and catacombs buried beneath his "
@@ -1663,11 +1650,11 @@ msgid ""
 "the land of his evil, we must enter the darkness and root him out from "
 "within."
 msgstr ""
-"Ikke så hurtig - Magtfulde troldmænd er ikke små magikere der hurtigt kan "
-"besejres. Jeg har en frygt for at der er tunneler og katakomber begravet "
-"under denne fæstning og vi kun har besejret en magisk kopi af troldmanden. "
-"Hvis vi skal rense dette land for hans ondskab, må vi ned i mørket og "
-"fordrive ham indefra."
+"Ikke så hurtig; magtfulde troldmænd er ikke små magikere der hurtigt kan "
+"besejres. Jeg har en frygt for at der er tunneler og katakomber under denne "
+"fæstning, og vi kun har besejret en magisk kopi af troldmanden. Hvis vi skal "
+"rense dette land for hans ondskab, må vi ned i mørket og fordrive ham "
+"indefra."
 
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:699
 msgid "My men are not dwarves! How are we to fight in catacombs and tunnels?"
@@ -1786,7 +1773,6 @@ msgstr ""
 "Hss..."
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:238
-#, fuzzy
 msgid "We have stumbled into a den of nagas!"
 msgstr "Vi har ramt en rede af nagaer!"
 
@@ -1802,9 +1788,8 @@ msgstr ""
 "Vi må rydde denne vej for Deoran og Ethiliel! Vi skal ødelægge nagaens hule!"
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:252
-#, fuzzy
 msgid "Hss... elves! Are they friends or enemies? Hss..."
-msgstr "Hss... Elvere! Er de venner eller fjender? Hss..."
+msgstr "Hss... elvere! Er de venner eller fjender? Hss..."
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:256
 msgid "We are weary travelers, seeking our homes. If you but let us pass..."
@@ -2040,7 +2025,6 @@ msgstr ""
 "Men vi har besejret de udøde - vi ønsker kun at returnere til vores hjem!"
 
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:424
-#, fuzzy
 msgid "Nevertheless, we will have vengeance for Mebrin!!"
 msgstr "Uanset hvad vil vi have hævn for Mebrin!!"
 
@@ -2057,7 +2041,6 @@ msgid "I can only hope for mercy when I return to Westin."
 msgstr "Jeg kan kun håbe for barmhjertelighed når jeg returnerer til Westin."
 
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:452
-#, fuzzy
 msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr "Men der var en mørk sky over Deoran og hans mænd..."
 
@@ -2521,16 +2504,14 @@ msgid "He just killed that innocent farmer! We must stop him!"
 msgstr "Han dræbte netop den uskyldige landmand! Vi må stoppe ham!"
 
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:227
-#, fuzzy
 msgid ""
 "Stop, Ithelden! I have traveled with these humans, and they are not the ones "
 "who harmed Mebrin. They are our allies!"
 msgstr ""
-"Stop Ithelden! Jeg har rejst med disse mennesker, og det er ikke dem som har "
-"skadet Mebrin. De er vores allierede!"
+"Stop Ithelden! Jeg har rejst med disse mennesker, og det er ikke dem, som "
+"har skadet Mebrin. De er vores allierede!"
 
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:231
-#, fuzzy
 msgid ""
 "You too, Ethiliel? All these menfolk are the same! They fell trees to till "
 "the earth; now they have felled our leader! We cannot brook such deeds! You "
@@ -2582,7 +2563,6 @@ msgstr "Måske ikke, men det er dit eneste håb. Jeg må nå Ithelden!"
 # Ikke helt nem den her. parlay skulle være noget med at vædde eller for 
 # eksempel få omdannet en mindre sum til et meget stort beløb.
 #: data/campaigns/The_South_Guard/scenarios/08a_Vengeance.cfg:332
-#, fuzzy
 msgid "Bring Ethiliel to the Great Tree and parlay with Ithelden"
 msgstr "Få Ethiliel til det store træ med Ithelden"
 
@@ -2614,7 +2594,6 @@ msgstr ""
 "fortabt!"
 
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:205
-#, fuzzy
 msgid ""
 "Since I was a boy, Gerrick was my leader, and there was no one braver. Today "
 "we shall defend our homes, and avenge him!"
@@ -2631,7 +2610,6 @@ msgstr ""
 "vores provins vagt!"
 
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:215
-#, fuzzy
 msgid "Indeed, Lord, we are ready to defend our homes!"
 msgstr "Rigtigt herre, vi er klar til at forsvare vores hjem!"
 
@@ -2816,10 +2794,9 @@ msgid "Now I will never see Westin free again..."
 msgstr "Nu vil jeg aldrig se Westin frit igen..."
 
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:82
-#, fuzzy
 msgid "Far from home I fall - but not in vain!  Guard our people, Deoran!"
 msgstr ""
-"Langt hjemmefra faldt jeg - men ikke forgæves! Vogt over vores folk Deoran!"
+"Langt hjemmefra faldt jeg - men ikke forgæves!  Vogt over vores folk Deoran!"
 
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:30
 msgid ""
@@ -2881,7 +2858,6 @@ msgstr ""
 "men de er mere farlige i grupper..."
 
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:7
-#, fuzzy
 msgid ""
 "During the reign of Haldric VII, Wesnoth was secure.  Konrad I had driven "
 "off the orcs in the north.  The eastern forts were quiet and almost "
