@@ -310,7 +310,10 @@ def namespace_member(path, namespace):
 
 def resolve_unit_cfg(namespace, resource):
     "Get the location of a specified unit in a specified scope."
-    return namespace_directory(namespace) + "units/" + resource + ".cfg"
+    loc = namespace_directory(namespace) + "units/" + resource
+    if not loc.endswith(".cfg"):
+        loc += ".cfg"
+    return loc
 
 def resolve_unit_image(namespace, subdir, resource):
     "Construct a plausible location for given resource in specified namespace."
@@ -336,6 +339,22 @@ def vcunmove(src, dst):
     if os.path.exists(os.path.join(dir, ".svn")):
         return "svn revert %s" % dst	# Revert the add at the destination
         return "rm %s" % dst		# Remove the moved copy
+        return "svn revert %s" % src	# Revert the deletion
+    else:
+        return "mv %s %s" % (dst, src)
+
+def vcdelete(src, dst):
+    "Delete a file under version control."
+    (dir, base) = os.path.split(src)
+    if os.path.exists(os.path.join(dir, ".svn")):
+        return "svn rm %s %s" % (src, dst)
+    else:
+        return "rm %s %s" % (src, dst)
+
+def vcundelete(src, dst):
+    "Revert the result of a previous delete (before commit)."
+    (dir, base) = os.path.split(src)
+    if os.path.exists(os.path.join(dir, ".svn")):
         return "svn revert %s" % src	# Revert the deletion
     else:
         return "mv %s %s" % (dst, src)

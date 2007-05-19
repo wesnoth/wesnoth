@@ -4,10 +4,12 @@ wmlmove -- generate commands to move a unit in the Wesnoth tree
 
 usage: wmlmove --help
        wmlmove [--revert] {src...} {dst}
+       wmlmove --delete src
 
-This script facilitates moving units (referenced by their .cfg file) 
-along with all of their associated resources (images and sounds).
-It may be run from the Wesnoth top-level directory or anywhere beneath.
+This script facilitates moving or deleting units (referenced by their
+.cfg file) along with all of their associated resources (images and
+sounds).  It may be run from the Wesnoth top-level directory or
+anywhere beneath.
 
 The source unit must be specified as a pathname beginning with either
 data/ or a campaign subdirectory name.  The destination may be the
@@ -26,10 +28,13 @@ places under the target campaign or core directories.  Subversion move
 commands will be used on version-controlled files.
 
 The --revert option generates commands used to revert the result of a 
-previous move, undoing SVN add and delete operations as needed.
+previous move, undoing version-control operations as needed.
 
 Note: After performing a move generated with this command, use wmlscope
 to check that you have not left any references to the moved units dangling.
+
+Also be aware that this tool does nothing to update the unit
+translation files.
 ''' 
 
 import sys, os, time, re, getopt, sre_constants, md5
@@ -37,14 +42,17 @@ import wmltools
 
 if __name__ == "__main__":
     # Process options.
-    (options, arguments) = getopt.getopt(sys.argv[1:], "hilr", ['help', 'imageclass', 'list', 'revertr'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "dhilr", ['delete', 'help', 'imageclass', 'list', 'revert'])
     listem = False
     iclass = "monsters"
+    delete = False
     revert = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             sys.stderr.write(__doc__)
             sys.exit(0)
+        elif switch in ('-d', '--delete'):
+            delete = True
         elif switch in ('-i', '--imageclass'):
             iclass = True
         elif switch in ('-l', '--list'):
@@ -53,7 +61,7 @@ if __name__ == "__main__":
         sys.stderr.write("wmlmove: at least one path to a unit is required.\n")
 	sys.stderr.write(__doc__)
         sys.exit(1)
-    else:
+    else if not delere:
         src = os.path.normpath(arguments[0])
     if len(arguments) == 1:
         sys.stderr.write("wmlmove: a campaign name or 'core' is required.\n")
@@ -94,10 +102,11 @@ if __name__ == "__main__":
         srclist.append(src)
   
     # Validate the destination.
-    dstdir = wmltools.namespace_directory(arguments[-1])
-    if dstdir == None:
-        sys.stderr.write("wmlmove: invalid namespace %s\n" % dst)
-        sys.exit(1)
+    if not delete:
+        dstdir = wmltools.namespace_directory(arguments[-1])
+        if dstdir == None:
+            sys.stderr.write("wmlmove: invalid namespace %s\n" % dst)
+            sys.exit(1)
   
     # Cross-reference all files.
     cref = wmltools.CrossRef(wmltools.scopelist())
@@ -114,18 +123,81 @@ if __name__ == "__main__":
 
     # Generate the actual move commands
     print "# Generated script from", " ".join(sys.argv[1:])
-    print ""
-    print "# Image moves"
-    for (name, defloc) in srcrefs.fileref.items():
-        if not wmltools.namespace_member(name, dst):
-            target = wmltools.resolve_unit_image(dst, iclass, os.path.basename(name))
+    if not delete:
+        print '''
+replace()
+# Replace a specified string with another in any number of files
+{
+    left="$1"; right="$2"; shift; shift;
+
+    for file in $*
+    do
+	if grep "$left" $file >/dev/null 2>&1
+	then
+	    overwrite $file sed "s@$left@$right@g" $file
+	fi
+    done
+}
+
+overwrite()
+# Replace a file with itself filtered by a command
+{
+    opath=$PATH
+    PATH=/bin:/usr/bin
+
+    file=$1; shift
+    new=/tmp/over$$; old=/tmp/under$$
+    trap \'rm -f $new $old ; exit 1\' 1 2 15
+
+    if PATH=$opath "$@" >$new
+    then
+            cp $file $old		# save the old file
+            trap "" 1 2 15		# We are committed; ignore signals
+            cp $new $file
+    else
+            echo "overwrite: $1 failed, $file unchanged" 1 >&2
+            exit 1
+    fi
+    rm -f $new $old
+}
+'''
+
+    if delete:
+        print "# Image deletions:"
+        for (name, defloc) in srcrefs.fileref.items():
             if revert:
-                print wmltools.vcunmove(name, target)
+                print wmltools.vcundelete(name)
             else:
-                print wmltools.vcmove(name, target)
-    print ""
-    print "# .cfg moves"
-
-
+                print wmltools.vcdelete(name)
+        print ""
+        print "# .cfg deletions"
+        for filename in srclist:
+            if revert:
+                print wmltools.vcundelete(filename)
+            else:
+                print wmltools.vcdelete(filename)
+    else:
+        print "# Image moves:"
+        for (name, defloc) in srcrefs.fileref.items():
+            if not wmltools.namespace_member(name, dst):
+                target = wmltools.resolve_unit_image(dst, iclass, os.path.basename(name))
+                if revert:
+                    print wmltools.vcunmove(name, target)
+                else:
+                    print wmltools.vcmove(name, target)
+        print ""
+        print "# .cfg moves and transformations"
+        for filename in srclist:
+            target = wmltools.resolve_unit_cfg(dst, os.path.basename(filename))
+            if revert:
+                print wmltools.vcunmove(filename, target)
+            else:
+                print wmltools.vcmove(filename, target)
+                if iclass:
+                    print "replace 'units/' 'units/%s' %s" % (iclass, target)
+                if dst == "core":
+                    print "replace '#textdomain wesnoth.*' '#textdomain wesnoth' target"
+                else:
+                    print "echo 'Warning: text domain will require manual change.'"
 
 # wmlmove ends here
