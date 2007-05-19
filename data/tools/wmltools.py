@@ -290,7 +290,7 @@ def is_namespace(name):
 def namespace_directory(name):
     "Go from namespace to directory."
     if name == "core":
-        return "data/core"
+        return "data/core/"
     else:
         return "data/campaigns/" + name + "/"
 
