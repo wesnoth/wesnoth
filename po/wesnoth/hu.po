@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-19 18:02+0200\n"
+"POT-Creation-Date: 2007-05-19 23:26+0200\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -3875,7 +3875,8 @@ msgstr "bábu"
 #: data/core/units/Elvish_Shyde.cfg:29 data/core/units/Elvish_Shyde.cfg:57
 #: data/core/units/Elvish_Sorceress.cfg:28
 #: data/core/units/Elvish_Sorceress.cfg:77 data/core/units/Elvish_Sylph.cfg:29
-#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Goblin_Pillager.cfg:73
+#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Fire_Dragon.cfg:77
+#: data/core/units/Goblin_Pillager.cfg:73
 #: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:22
 #: data/core/units/Human_Loyalist_Iron_Mauler.cfg:24
 #: data/core/units/Human_Loyalist_Shock_Trooper.cfg:22
@@ -4094,6 +4095,7 @@ msgstr "karmok"
 #: data/core/units/Elvish_Outrider.cfg:32 data/core/units/Elvish_Ranger.cfg:60
 #: data/core/units/Elvish_Rider.cfg:34 data/core/units/Elvish_Scout.cfg:33
 #: data/core/units/Elvish_Sharpshooter.cfg:49
+#: data/core/units/Fire_Dragon.cfg:27
 #: data/core/units/Goblin_Direwolf_Rider.cfg:35
 #: data/core/units/Goblin_Direwolf_Rider.cfg:83
 #: data/core/units/Goblin_Knight.cfg:35
@@ -4162,7 +4164,8 @@ msgstr "penge"
 #: data/core/units/Drake_Flare.cfg:135 data/core/units/Drake_Glider.cfg:129
 #: data/core/units/Drake_Hurricane.cfg:150
 #: data/core/units/Drake_Inferno.cfg:117 data/core/units/Drake_Sky.cfg:177
-#: data/core/units/Drake_Warrior.cfg:118
+#: data/core/units/Drake_Warrior.cfg:118 data/core/units/Fire_Dragon.cfg:113
+#: data/core/units/Fire_Dragon.cfg:114
 msgid "fire breath"
 msgstr "tűzokádás"
 
@@ -4175,8 +4178,8 @@ msgstr "tűzokádás"
 #: data/core/units/Drake_Inferno.cfg:119 data/core/units/Drake_Sky.cfg:179
 #: data/core/units/Drake_Warrior.cfg:120
 #: data/core/units/Dwarvish_Runemaster.cfg:63
-#: data/core/units/Goblin_Pillager.cfg:36 data/core/units/Human_Mage.cfg:105
-#: data/core/units/Human_Mage_Arch.cfg:77
+#: data/core/units/Fire_Dragon.cfg:116 data/core/units/Goblin_Pillager.cfg:36
+#: data/core/units/Human_Mage.cfg:105 data/core/units/Human_Mage_Arch.cfg:77
 #: data/core/units/Human_Mage_Great.cfg:78
 #: data/core/units/Human_Mage_Red.cfg:99
 #: data/core/units/Human_Mage_Silver.cfg:85
@@ -5352,6 +5355,42 @@ msgstr ""
 #: data/core/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
 msgstr "ökörnyál"
+
+#: data/core/units/Fire_Dragon.cfg:4
+msgid "Fire Dragon"
+msgstr "Tűzokádó sárkány"
+
+#: data/core/units/Fire_Dragon.cfg:21
+msgid ""
+"A fire dragon is an ancient and horrifying being that normally lives only in "
+"hushed rumor and fantastic stories. It is normal for centuries to pass "
+"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
+"form flying in the distance. Legends are very specific about the ravages of "
+"fire dragons: hideously swift in flight, leathery wings spread over one "
+"hundred feet in width, they swoop in and blast their prey with inferno jets "
+"of flame. Anything escaping the dragon's fire breath must beware its "
+"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
+"often take underlings whom they lead to victory."
+msgstr ""
+"A tűzokádó sárkányok borzalmas, ősi lények, melyek normális esetben csak a "
+"legendákban és a fantasztikus történetekben léteznek. Teljességgel rendjén "
+"való, ha évszázadok telnek el anélkül, hogy Wesnoth-ban bárki is találkozna "
+"egy sárkánnyal; sőt, olyankor is leginkább csak egy, a távolban repülő "
+"homályos alakot látnak. A legendák pontosan leírják a rendkívül gyorsan "
+"repülő sárkányokat, amint kitárják száz lábnál is szélesebb, bőrrel borított "
+"szárnyukat, lecsapnak, elragadják és megpörkölik zsákmányukat pokolian izzó "
+"kénköves tűzsugarakkal. Bárki, aki elkerüli a sárkány tüzes lehelletét, "
+"felkészülhet, hogy szembe kell néznie kegyetlen harapásával és megsemmisítő "
+"farokcsapásával. A tűzokádó sárkányok fortélyosak, kegyetlenek és gyakran "
+"folyamodnak alattvalóik segítségéhez, akiket aztán győzelemre vezetnek."
+
+#: data/core/units/Fire_Dragon.cfg:24 data/core/units/Fire_Dragon.cfg:25
+msgid "bite"
+msgstr "harapás"
+
+#: data/core/units/Fire_Dragon.cfg:73 data/core/units/Fire_Dragon.cfg:74
+msgid "tail"
+msgstr "farok"
 
 #: data/core/units/Goblin_Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -12740,39 +12779,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 
 #~ msgid "training sword"
 #~ msgstr "edzőkard"
-
-#~ msgid "Fire Dragon"
-#~ msgstr "Tűzokádó sárkány"
-
-#~ msgid ""
-#~ "A fire dragon is an ancient and horrifying being that normally lives only "
-#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
-#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
-#~ "shadowy form flying in the distance. Legends are very specific about the "
-#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
-#~ "over one hundred feet in width, they swoop in and blast their prey with "
-#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
-#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
-#~ "cruel and often take underlings whom they lead to victory."
-#~ msgstr ""
-#~ "A tűzokádó sárkányok borzalmas, ősi lények, melyek normális esetben csak "
-#~ "a legendákban és a fantasztikus történetekben léteznek. Teljességgel "
-#~ "rendjén való, ha évszázadok telnek el anélkül, hogy Wesnoth-ban bárki is "
-#~ "találkozna egy sárkánnyal; sőt, olyankor is leginkább csak egy, a "
-#~ "távolban repülő homályos alakot látnak. A legendák pontosan leírják a "
-#~ "rendkívül gyorsan repülő sárkányokat, amint kitárják száz lábnál is "
-#~ "szélesebb, bőrrel borított szárnyukat, lecsapnak, elragadják és "
-#~ "megpörkölik zsákmányukat pokolian izzó kénköves tűzsugarakkal. Bárki, aki "
-#~ "elkerüli a sárkány tüzes lehelletét, felkészülhet, hogy szembe kell "
-#~ "néznie kegyetlen harapásával és megsemmisítő farokcsapásával. A tűzokádó "
-#~ "sárkányok fortélyosak, kegyetlenek és gyakran folyamodnak alattvalóik "
-#~ "segítségéhez, akiket aztán győzelemre vezetnek."
-
-#~ msgid "bite"
-#~ msgstr "harapás"
-
-#~ msgid "tail"
-#~ msgstr "farok"
 
 #~ msgid "Fireball"
 #~ msgstr "Tűzlabda"

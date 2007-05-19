@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-19 18:02+0200\n"
+"POT-Creation-Date: 2007-05-19 23:26+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -3601,7 +3601,8 @@ msgstr "傀儡"
 #: data/core/units/Elvish_Shyde.cfg:29 data/core/units/Elvish_Shyde.cfg:57
 #: data/core/units/Elvish_Sorceress.cfg:28
 #: data/core/units/Elvish_Sorceress.cfg:77 data/core/units/Elvish_Sylph.cfg:29
-#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Goblin_Pillager.cfg:73
+#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Fire_Dragon.cfg:77
+#: data/core/units/Goblin_Pillager.cfg:73
 #: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:22
 #: data/core/units/Human_Loyalist_Iron_Mauler.cfg:24
 #: data/core/units/Human_Loyalist_Shock_Trooper.cfg:22
@@ -3818,6 +3819,7 @@ msgstr "爪"
 #: data/core/units/Elvish_Outrider.cfg:32 data/core/units/Elvish_Ranger.cfg:60
 #: data/core/units/Elvish_Rider.cfg:34 data/core/units/Elvish_Scout.cfg:33
 #: data/core/units/Elvish_Sharpshooter.cfg:49
+#: data/core/units/Fire_Dragon.cfg:27
 #: data/core/units/Goblin_Direwolf_Rider.cfg:35
 #: data/core/units/Goblin_Direwolf_Rider.cfg:83
 #: data/core/units/Goblin_Knight.cfg:35
@@ -3886,7 +3888,8 @@ msgstr "剑刃"
 #: data/core/units/Drake_Flare.cfg:135 data/core/units/Drake_Glider.cfg:129
 #: data/core/units/Drake_Hurricane.cfg:150
 #: data/core/units/Drake_Inferno.cfg:117 data/core/units/Drake_Sky.cfg:177
-#: data/core/units/Drake_Warrior.cfg:118
+#: data/core/units/Drake_Warrior.cfg:118 data/core/units/Fire_Dragon.cfg:113
+#: data/core/units/Fire_Dragon.cfg:114
 msgid "fire breath"
 msgstr "火焰呼吸"
 
@@ -3899,8 +3902,8 @@ msgstr "火焰呼吸"
 #: data/core/units/Drake_Inferno.cfg:119 data/core/units/Drake_Sky.cfg:179
 #: data/core/units/Drake_Warrior.cfg:120
 #: data/core/units/Dwarvish_Runemaster.cfg:63
-#: data/core/units/Goblin_Pillager.cfg:36 data/core/units/Human_Mage.cfg:105
-#: data/core/units/Human_Mage_Arch.cfg:77
+#: data/core/units/Fire_Dragon.cfg:116 data/core/units/Goblin_Pillager.cfg:36
+#: data/core/units/Human_Mage.cfg:105 data/core/units/Human_Mage_Arch.cfg:77
 #: data/core/units/Human_Mage_Great.cfg:78
 #: data/core/units/Human_Mage_Red.cfg:99
 #: data/core/units/Human_Mage_Silver.cfg:85
@@ -5068,6 +5071,38 @@ msgstr ""
 #: data/core/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
 msgstr "蛛丝"
+
+#: data/core/units/Fire_Dragon.cfg:4
+msgid "Fire Dragon"
+msgstr "火龙"
+
+#: data/core/units/Fire_Dragon.cfg:21
+msgid ""
+"A fire dragon is an ancient and horrifying being that normally lives only in "
+"hushed rumor and fantastic stories. It is normal for centuries to pass "
+"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
+"form flying in the distance. Legends are very specific about the ravages of "
+"fire dragons: hideously swift in flight, leathery wings spread over one "
+"hundred feet in width, they swoop in and blast their prey with inferno jets "
+"of flame. Anything escaping the dragon's fire breath must beware its "
+"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
+"often take underlings whom they lead to victory."
+msgstr ""
+"一般来说，火龙只存在于流言和故事中，是古老而恐怖的生物。在韦诺的大地上，连续"
+"几个世纪见不到一条龙也是正常的事。通常他们也不过是像影子一样从远方飞过。传说"
+"对火龙带来的破坏描述得十分具体。他们飞行的速度之快让人心中不适，他们那皮革的"
+"翅膀展开有100英尺宽；他们从空中俯冲下来，像猎物喷出地狱般的烈焰。从巨龙的火焰"
+"呼吸下逃脱的人还要小心他残暴的撕咬和能够粉碎一切的尾巴。火龙既狡诈又残酷，为"
+"了取胜常常还带着一群帮手。"
+
+#: data/core/units/Fire_Dragon.cfg:24 data/core/units/Fire_Dragon.cfg:25
+msgid "bite"
+msgstr "咬"
+
+#: data/core/units/Fire_Dragon.cfg:73 data/core/units/Fire_Dragon.cfg:74
+#, fuzzy
+msgid "tail"
+msgstr "尾"
 
 #: data/core/units/Goblin_Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -12107,30 +12142,6 @@ msgstr "开启摘要上传模式"
 
 #~ msgid "training sword"
 #~ msgstr "木剑"
-
-#~ msgid "Fire Dragon"
-#~ msgstr "火龙"
-
-#~ msgid ""
-#~ "A fire dragon is an ancient and horrifying being that normally lives only "
-#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
-#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
-#~ "shadowy form flying in the distance. Legends are very specific about the "
-#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
-#~ "over one hundred feet in width, they swoop in and blast their prey with "
-#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
-#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
-#~ "cruel and often take underlings whom they lead to victory."
-#~ msgstr ""
-#~ "一般来说，火龙只存在于流言和故事中，是古老而恐怖的生物。在韦诺的大地上，连"
-#~ "续几个世纪见不到一条龙也是正常的事。通常他们也不过是像影子一样从远方飞过。"
-#~ "传说对火龙带来的破坏描述得十分具体。他们飞行的速度之快让人心中不适，他们那"
-#~ "皮革的翅膀展开有100英尺宽；他们从空中俯冲下来，像猎物喷出地狱般的烈焰。从"
-#~ "巨龙的火焰呼吸下逃脱的人还要小心他残暴的撕咬和能够粉碎一切的尾巴。火龙既狡"
-#~ "诈又残酷，为了取胜常常还带着一群帮手。"
-
-#~ msgid "bite"
-#~ msgstr "咬"
 
 #~ msgid "Fireball"
 #~ msgstr "火球"

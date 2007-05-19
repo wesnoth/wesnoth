@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-17 19:43+0200\n"
+"POT-Creation-Date: 2007-05-19 23:27+0200\n"
 "PO-Revision-Date: 2007-01-08 22:59+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none <viliam@bur.sk>\n"
@@ -5702,72 +5702,6 @@ msgstr ""
 "Niektorí z nás si však zapamätajú skutočný príbeh o našom príchode na tento "
 "veľký kontinent. Pravý príbeh o vzostupe Wesnothu."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:4
-msgid "Fire Dragon"
-msgstr "Ohnivý drak"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:21
-msgid ""
-"A fire dragon is an ancient and horrifying being that normally lives only in "
-"hushed rumor and fantastic stories. It is normal for centuries to pass "
-"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
-"form flying in the distance. Legends are very specific about the ravages of "
-"fire dragons: hideously swift in flight, leathery wings spread over one "
-"hundred feet in width, they swoop in and blast their prey with inferno jets "
-"of flame. Anything escaping the dragon's fire breath must beware its "
-"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
-"often take underlings whom they lead to victory."
-msgstr ""
-"Ohnivý drak je starobylý a hrôzostrašný tvor, ktorý zvyčajne žije len v "
-"povestiach a fantastických príbehoch. Vo Wesnothe často nevidno draka celé "
-"stáročia, a zvyčajne je to iba tieň lietajúci v diaľke. Legendy presne "
-"popisujú útoky ohnivých drakov: zákerne vrtký let, kožovité krídla široké "
-"vyše sto stôp, rýchly útok na obeť pomocou pekelných plameňov. Kto sa "
-"zachráni pred drakovým ohnivým dychom, musí si dať pozor na jeho zúrivý hryz "
-"a švihajúci chvost. Ohniví draci sú prefíkaní a krutí, a svoje víťazstvá "
-"často dosahujú pomocou služobníkov."
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:25
-msgid "bite"
-msgstr "uhryznutie"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:32
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:31
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:27
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:27
-msgid "blade"
-msgstr "sečný"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:73
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:74
-msgid "tail"
-msgstr "chvost"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:32
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:33
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:28
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:93
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:142
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:96
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:145
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:77
-msgid "impact"
-msgstr "tupý"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:113
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:114
-msgid "fire breath"
-msgstr "ohnivý dych"
-
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:28
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:30
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:116
-msgid "fire"
-msgstr "oheň"
-
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:5
 msgid "Fireball"
 msgstr "Ohnivá guľa"
@@ -5777,6 +5711,12 @@ msgid ""
 "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr ""
 "Ohnivá guľa. (Za normálnych okolností by si tento text nemal vidieť...)"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:28
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:30
+msgid "fire"
+msgstr "oheň"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
@@ -5803,6 +5743,13 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:26
 msgid "sword"
 msgstr "meč"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:32
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:31
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:27
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:24
+msgid "blade"
+msgstr "sečný"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:69
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:70
@@ -5861,6 +5808,16 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:26
 msgid "training sword"
 msgstr "cvičný meč"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:32
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:33
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:28
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:93
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:142
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:96
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:145
+msgid "impact"
+msgstr "tupý"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
@@ -6270,6 +6227,38 @@ msgstr ""
 "zo Southbay na tomto ostrove vybudoval pevnosť, napriek bojovnej povahe "
 "miestych jašteričích obyvateľov. Teraz už ale z tej pevnosti sotva čo "
 "zostalo."
+
+#~ msgid "Fire Dragon"
+#~ msgstr "Ohnivý drak"
+
+#~ msgid ""
+#~ "A fire dragon is an ancient and horrifying being that normally lives only "
+#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
+#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
+#~ "shadowy form flying in the distance. Legends are very specific about the "
+#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
+#~ "over one hundred feet in width, they swoop in and blast their prey with "
+#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
+#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
+#~ "cruel and often take underlings whom they lead to victory."
+#~ msgstr ""
+#~ "Ohnivý drak je starobylý a hrôzostrašný tvor, ktorý zvyčajne žije len v "
+#~ "povestiach a fantastických príbehoch. Vo Wesnothe často nevidno draka "
+#~ "celé stáročia, a zvyčajne je to iba tieň lietajúci v diaľke. Legendy "
+#~ "presne popisujú útoky ohnivých drakov: zákerne vrtký let, kožovité krídla "
+#~ "široké vyše sto stôp, rýchly útok na obeť pomocou pekelných plameňov. Kto "
+#~ "sa zachráni pred drakovým ohnivým dychom, musí si dať pozor na jeho "
+#~ "zúrivý hryz a švihajúci chvost. Ohniví draci sú prefíkaní a krutí, a "
+#~ "svoje víťazstvá často dosahujú pomocou služobníkov."
+
+#~ msgid "bite"
+#~ msgstr "uhryznutie"
+
+#~ msgid "tail"
+#~ msgstr "chvost"
+
+#~ msgid "fire breath"
+#~ msgstr "ohnivý dych"
 
 #~ msgid "(easiest)"
 #~ msgstr "(ľahká)"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-19 18:02+0200\n"
+"POT-Creation-Date: 2007-05-19 23:26+0200\n"
 "PO-Revision-Date: 2006-09-20 18:34+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -3764,7 +3764,8 @@ msgstr "模造"
 #: data/core/units/Elvish_Shyde.cfg:29 data/core/units/Elvish_Shyde.cfg:57
 #: data/core/units/Elvish_Sorceress.cfg:28
 #: data/core/units/Elvish_Sorceress.cfg:77 data/core/units/Elvish_Sylph.cfg:29
-#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Goblin_Pillager.cfg:73
+#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Fire_Dragon.cfg:77
+#: data/core/units/Goblin_Pillager.cfg:73
 #: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:22
 #: data/core/units/Human_Loyalist_Iron_Mauler.cfg:24
 #: data/core/units/Human_Loyalist_Shock_Trooper.cfg:22
@@ -3981,6 +3982,7 @@ msgstr "かぎ爪"
 #: data/core/units/Elvish_Outrider.cfg:32 data/core/units/Elvish_Ranger.cfg:60
 #: data/core/units/Elvish_Rider.cfg:34 data/core/units/Elvish_Scout.cfg:33
 #: data/core/units/Elvish_Sharpshooter.cfg:49
+#: data/core/units/Fire_Dragon.cfg:27
 #: data/core/units/Goblin_Direwolf_Rider.cfg:35
 #: data/core/units/Goblin_Direwolf_Rider.cfg:83
 #: data/core/units/Goblin_Knight.cfg:35
@@ -4049,7 +4051,8 @@ msgstr "斬撃"
 #: data/core/units/Drake_Flare.cfg:135 data/core/units/Drake_Glider.cfg:129
 #: data/core/units/Drake_Hurricane.cfg:150
 #: data/core/units/Drake_Inferno.cfg:117 data/core/units/Drake_Sky.cfg:177
-#: data/core/units/Drake_Warrior.cfg:118
+#: data/core/units/Drake_Warrior.cfg:118 data/core/units/Fire_Dragon.cfg:113
+#: data/core/units/Fire_Dragon.cfg:114
 msgid "fire breath"
 msgstr "火炎のブレス"
 
@@ -4062,8 +4065,8 @@ msgstr "火炎のブレス"
 #: data/core/units/Drake_Inferno.cfg:119 data/core/units/Drake_Sky.cfg:179
 #: data/core/units/Drake_Warrior.cfg:120
 #: data/core/units/Dwarvish_Runemaster.cfg:63
-#: data/core/units/Goblin_Pillager.cfg:36 data/core/units/Human_Mage.cfg:105
-#: data/core/units/Human_Mage_Arch.cfg:77
+#: data/core/units/Fire_Dragon.cfg:116 data/core/units/Goblin_Pillager.cfg:36
+#: data/core/units/Human_Mage.cfg:105 data/core/units/Human_Mage_Arch.cfg:77
 #: data/core/units/Human_Mage_Great.cfg:78
 #: data/core/units/Human_Mage_Red.cfg:99
 #: data/core/units/Human_Mage_Silver.cfg:85
@@ -5271,6 +5274,40 @@ msgstr ""
 #: data/core/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
 msgstr "クモの巣"
+
+#: data/core/units/Fire_Dragon.cfg:4
+msgid "Fire Dragon"
+msgstr "ファイアドラゴン"
+
+#: data/core/units/Fire_Dragon.cfg:21
+msgid ""
+"A fire dragon is an ancient and horrifying being that normally lives only in "
+"hushed rumor and fantastic stories. It is normal for centuries to pass "
+"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
+"form flying in the distance. Legends are very specific about the ravages of "
+"fire dragons: hideously swift in flight, leathery wings spread over one "
+"hundred feet in width, they swoop in and blast their prey with inferno jets "
+"of flame. Anything escaping the dragon's fire breath must beware its "
+"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
+"often take underlings whom they lead to victory."
+msgstr ""
+"ファイアドラゴンは古代の恐ろしい生物であり、通常は静かなうわさや空想的な 物語"
+"のなかにしか登場しません。何世紀もの間 Wesnoth でドラゴンを見かけ なかったこ"
+"とは普通のことなのです。ドラゴンはたいてい、遠くで飛んでいる はっきりしない姿"
+"でしかないからです。ファイアドラゴンの被害についてはとても 詳しく伝えられてい"
+"ます。恐ろしいほどに素早く飛び、革のような翼は広げれば 幅 100 フィート（約 "
+"30m）にもなります。彼らは急降下し、火炎を放射しながら 餌食を襲います。ドラゴ"
+"ンのファイアブレスから逃れようとする者は、彼らの 獰猛なかぶりつきと破壊的な尾"
+"に気をつけなければなりません。ファイアドラゴンは ずる賢く、残酷であり、しばし"
+"ば彼らを勝利に導く手下を連れています。"
+
+#: data/core/units/Fire_Dragon.cfg:24 data/core/units/Fire_Dragon.cfg:25
+msgid "bite"
+msgstr "噛みつき"
+
+#: data/core/units/Fire_Dragon.cfg:73 data/core/units/Fire_Dragon.cfg:74
+msgid "tail"
+msgstr "尾"
 
 #: data/core/units/Goblin_Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -12795,36 +12832,6 @@ msgstr "サマリのアップロードを有効にする"
 
 #~ msgid "training sword"
 #~ msgstr "訓練用の剣"
-
-#~ msgid "Fire Dragon"
-#~ msgstr "ファイアドラゴン"
-
-#~ msgid ""
-#~ "A fire dragon is an ancient and horrifying being that normally lives only "
-#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
-#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
-#~ "shadowy form flying in the distance. Legends are very specific about the "
-#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
-#~ "over one hundred feet in width, they swoop in and blast their prey with "
-#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
-#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
-#~ "cruel and often take underlings whom they lead to victory."
-#~ msgstr ""
-#~ "ファイアドラゴンは古代の恐ろしい生物であり、通常は静かなうわさや空想的な "
-#~ "物語のなかにしか登場しません。何世紀もの間 Wesnoth でドラゴンを見かけ な"
-#~ "かったことは普通のことなのです。ドラゴンはたいてい、遠くで飛んでいる はっ"
-#~ "きりしない姿でしかないからです。ファイアドラゴンの被害についてはとても 詳"
-#~ "しく伝えられています。恐ろしいほどに素早く飛び、革のような翼は広げれば 幅 "
-#~ "100 フィート（約 30m）にもなります。彼らは急降下し、火炎を放射しながら 餌"
-#~ "食を襲います。ドラゴンのファイアブレスから逃れようとする者は、彼らの 獰猛"
-#~ "なかぶりつきと破壊的な尾に気をつけなければなりません。ファイアドラゴンは "
-#~ "ずる賢く、残酷であり、しばしば彼らを勝利に導く手下を連れています。"
-
-#~ msgid "bite"
-#~ msgstr "噛みつき"
-
-#~ msgid "tail"
-#~ msgstr "尾"
 
 #~ msgid "Fireball"
 #~ msgstr "幻火"

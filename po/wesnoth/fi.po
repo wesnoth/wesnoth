@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-19 18:02+0200\n"
+"POT-Creation-Date: 2007-05-19 23:26+0200\n"
 "PO-Revision-Date: 2006-09-01 19:23+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -3828,7 +3828,8 @@ msgstr "malli"
 #: data/core/units/Elvish_Shyde.cfg:29 data/core/units/Elvish_Shyde.cfg:57
 #: data/core/units/Elvish_Sorceress.cfg:28
 #: data/core/units/Elvish_Sorceress.cfg:77 data/core/units/Elvish_Sylph.cfg:29
-#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Goblin_Pillager.cfg:73
+#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Fire_Dragon.cfg:77
+#: data/core/units/Goblin_Pillager.cfg:73
 #: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:22
 #: data/core/units/Human_Loyalist_Iron_Mauler.cfg:24
 #: data/core/units/Human_Loyalist_Shock_Trooper.cfg:22
@@ -4046,6 +4047,7 @@ msgstr "kynnet"
 #: data/core/units/Elvish_Outrider.cfg:32 data/core/units/Elvish_Ranger.cfg:60
 #: data/core/units/Elvish_Rider.cfg:34 data/core/units/Elvish_Scout.cfg:33
 #: data/core/units/Elvish_Sharpshooter.cfg:49
+#: data/core/units/Fire_Dragon.cfg:27
 #: data/core/units/Goblin_Direwolf_Rider.cfg:35
 #: data/core/units/Goblin_Direwolf_Rider.cfg:83
 #: data/core/units/Goblin_Knight.cfg:35
@@ -4114,7 +4116,8 @@ msgstr "viilto"
 #: data/core/units/Drake_Flare.cfg:135 data/core/units/Drake_Glider.cfg:129
 #: data/core/units/Drake_Hurricane.cfg:150
 #: data/core/units/Drake_Inferno.cfg:117 data/core/units/Drake_Sky.cfg:177
-#: data/core/units/Drake_Warrior.cfg:118
+#: data/core/units/Drake_Warrior.cfg:118 data/core/units/Fire_Dragon.cfg:113
+#: data/core/units/Fire_Dragon.cfg:114
 msgid "fire breath"
 msgstr "tulihenkäys"
 
@@ -4127,8 +4130,8 @@ msgstr "tulihenkäys"
 #: data/core/units/Drake_Inferno.cfg:119 data/core/units/Drake_Sky.cfg:179
 #: data/core/units/Drake_Warrior.cfg:120
 #: data/core/units/Dwarvish_Runemaster.cfg:63
-#: data/core/units/Goblin_Pillager.cfg:36 data/core/units/Human_Mage.cfg:105
-#: data/core/units/Human_Mage_Arch.cfg:77
+#: data/core/units/Fire_Dragon.cfg:116 data/core/units/Goblin_Pillager.cfg:36
+#: data/core/units/Human_Mage.cfg:105 data/core/units/Human_Mage_Arch.cfg:77
 #: data/core/units/Human_Mage_Great.cfg:78
 #: data/core/units/Human_Mage_Red.cfg:99
 #: data/core/units/Human_Mage_Silver.cfg:85
@@ -5357,6 +5360,41 @@ msgstr ""
 #: data/core/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
 msgstr "seitti"
+
+#: data/core/units/Fire_Dragon.cfg:4
+msgid "Fire Dragon"
+msgstr "Lohikäärme"
+
+#: data/core/units/Fire_Dragon.cfg:21
+msgid ""
+"A fire dragon is an ancient and horrifying being that normally lives only in "
+"hushed rumor and fantastic stories. It is normal for centuries to pass "
+"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
+"form flying in the distance. Legends are very specific about the ravages of "
+"fire dragons: hideously swift in flight, leathery wings spread over one "
+"hundred feet in width, they swoop in and blast their prey with inferno jets "
+"of flame. Anything escaping the dragon's fire breath must beware its "
+"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
+"often take underlings whom they lead to victory."
+msgstr ""
+"Lohikäärmeet ovat muinaisia, kauheita hirviöitä, jotka yleensä elävät vain "
+"huhupuheissa ja taruissa. Ei ole lainkaan kummallista, vaikka Wesnothissa "
+"kuluisi vuosisatoja ilman vilaustakaan lohikäärmeestä. Näköhavainnotkin ovat "
+"yleensä vain epämääräisiä hahmoja taivaalla, hyvin korkealla. Legendoissa "
+"kerrotaan hyvin tarkasti lohikäärmeiden tuhoista: äärettömän nopeina "
+"lentäjinä (lohikäärmeiden sipiväli on yli 30 metriä) ne syöksyvät saaliinsa "
+"kimppuun ja hukuttavat sen liekkimereen. Jos saalis selviääkin "
+"tulihenkäyksestä, täytyy sen olla varuillaan lohikäärmeen terävien hampaiden "
+"ja murskaavan hännän varalta. Lohikäärmeet ovat ovelia ja julmia. Ne ottavat "
+"usein käskyläisiä, jotka johtavat voittoon."
+
+#: data/core/units/Fire_Dragon.cfg:24 data/core/units/Fire_Dragon.cfg:25
+msgid "bite"
+msgstr "puraisu"
+
+#: data/core/units/Fire_Dragon.cfg:73 data/core/units/Fire_Dragon.cfg:74
+msgid "tail"
+msgstr "häntä"
 
 #: data/core/units/Goblin_Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -13011,38 +13049,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 
 #~ msgid "training sword"
 #~ msgstr "harjoittelumiekka"
-
-#~ msgid "Fire Dragon"
-#~ msgstr "Lohikäärme"
-
-#~ msgid ""
-#~ "A fire dragon is an ancient and horrifying being that normally lives only "
-#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
-#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
-#~ "shadowy form flying in the distance. Legends are very specific about the "
-#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
-#~ "over one hundred feet in width, they swoop in and blast their prey with "
-#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
-#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
-#~ "cruel and often take underlings whom they lead to victory."
-#~ msgstr ""
-#~ "Lohikäärmeet ovat muinaisia, kauheita hirviöitä, jotka yleensä elävät "
-#~ "vain huhupuheissa ja taruissa. Ei ole lainkaan kummallista, vaikka "
-#~ "Wesnothissa kuluisi vuosisatoja ilman vilaustakaan lohikäärmeestä. "
-#~ "Näköhavainnotkin ovat yleensä vain epämääräisiä hahmoja taivaalla, hyvin "
-#~ "korkealla. Legendoissa kerrotaan hyvin tarkasti lohikäärmeiden tuhoista: "
-#~ "äärettömän nopeina lentäjinä (lohikäärmeiden sipiväli on yli 30 metriä) "
-#~ "ne syöksyvät saaliinsa kimppuun ja hukuttavat sen liekkimereen. Jos "
-#~ "saalis selviääkin tulihenkäyksestä, täytyy sen olla varuillaan "
-#~ "lohikäärmeen terävien hampaiden ja murskaavan hännän varalta. "
-#~ "Lohikäärmeet ovat ovelia ja julmia. Ne ottavat usein käskyläisiä, jotka "
-#~ "johtavat voittoon."
-
-#~ msgid "bite"
-#~ msgstr "puraisu"
-
-#~ msgid "tail"
-#~ msgstr "häntä"
 
 #~ msgid "Fireball"
 #~ msgstr "Tulipallo"

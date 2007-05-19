@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-19 18:02+0200\n"
+"POT-Creation-Date: 2007-05-19 23:26+0200\n"
 "PO-Revision-Date: 2007-01-05 12:22+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -3833,7 +3833,8 @@ msgstr "dummy"
 #: data/core/units/Elvish_Shyde.cfg:29 data/core/units/Elvish_Shyde.cfg:57
 #: data/core/units/Elvish_Sorceress.cfg:28
 #: data/core/units/Elvish_Sorceress.cfg:77 data/core/units/Elvish_Sylph.cfg:29
-#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Goblin_Pillager.cfg:73
+#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Fire_Dragon.cfg:77
+#: data/core/units/Goblin_Pillager.cfg:73
 #: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:22
 #: data/core/units/Human_Loyalist_Iron_Mauler.cfg:24
 #: data/core/units/Human_Loyalist_Shock_Trooper.cfg:22
@@ -4051,6 +4052,7 @@ msgstr "klauwen"
 #: data/core/units/Elvish_Outrider.cfg:32 data/core/units/Elvish_Ranger.cfg:60
 #: data/core/units/Elvish_Rider.cfg:34 data/core/units/Elvish_Scout.cfg:33
 #: data/core/units/Elvish_Sharpshooter.cfg:49
+#: data/core/units/Fire_Dragon.cfg:27
 #: data/core/units/Goblin_Direwolf_Rider.cfg:35
 #: data/core/units/Goblin_Direwolf_Rider.cfg:83
 #: data/core/units/Goblin_Knight.cfg:35
@@ -4119,7 +4121,8 @@ msgstr "scherp"
 #: data/core/units/Drake_Flare.cfg:135 data/core/units/Drake_Glider.cfg:129
 #: data/core/units/Drake_Hurricane.cfg:150
 #: data/core/units/Drake_Inferno.cfg:117 data/core/units/Drake_Sky.cfg:177
-#: data/core/units/Drake_Warrior.cfg:118
+#: data/core/units/Drake_Warrior.cfg:118 data/core/units/Fire_Dragon.cfg:113
+#: data/core/units/Fire_Dragon.cfg:114
 msgid "fire breath"
 msgstr "vuuradem"
 
@@ -4132,8 +4135,8 @@ msgstr "vuuradem"
 #: data/core/units/Drake_Inferno.cfg:119 data/core/units/Drake_Sky.cfg:179
 #: data/core/units/Drake_Warrior.cfg:120
 #: data/core/units/Dwarvish_Runemaster.cfg:63
-#: data/core/units/Goblin_Pillager.cfg:36 data/core/units/Human_Mage.cfg:105
-#: data/core/units/Human_Mage_Arch.cfg:77
+#: data/core/units/Fire_Dragon.cfg:116 data/core/units/Goblin_Pillager.cfg:36
+#: data/core/units/Human_Mage.cfg:105 data/core/units/Human_Mage_Arch.cfg:77
 #: data/core/units/Human_Mage_Great.cfg:78
 #: data/core/units/Human_Mage_Red.cfg:99
 #: data/core/units/Human_Mage_Silver.cfg:85
@@ -5362,6 +5365,38 @@ msgstr ""
 #: data/core/units/Elvish_Sylph.cfg:56
 msgid "gossamer"
 msgstr "spinrag"
+
+#: data/core/units/Fire_Dragon.cfg:4
+msgid "Fire Dragon"
+msgstr "Vuurdraak"
+
+#: data/core/units/Fire_Dragon.cfg:21
+msgid ""
+"A fire dragon is an ancient and horrifying being that normally lives only in "
+"hushed rumor and fantastic stories. It is normal for centuries to pass "
+"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
+"form flying in the distance. Legends are very specific about the ravages of "
+"fire dragons: hideously swift in flight, leathery wings spread over one "
+"hundred feet in width, they swoop in and blast their prey with inferno jets "
+"of flame. Anything escaping the dragon's fire breath must beware its "
+"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
+"often take underlings whom they lead to victory."
+msgstr ""
+"Een vuurdraak is een eeuwenoud en vreeswekkend wezen dat normaal gesproken "
+"alleen het onderwerp is van praatjes en fantastische verhalen. Er gaan vaak "
+"eeuwen overheen voor een draak zich weer eens laat zien in Wesnoth, en dan "
+"meestal alleen nog als een donkere schaduw in de verte. De legenden zijn erg "
+"duidelijk wat betreft de ravage die vuurdraken achterlaten. Vuurdraken zijn "
+"sluw en wreed en hebben vaak onderdanen die door hun naar de overwinning "
+"worden geleid."
+
+#: data/core/units/Fire_Dragon.cfg:24 data/core/units/Fire_Dragon.cfg:25
+msgid "bite"
+msgstr "bijt"
+
+#: data/core/units/Fire_Dragon.cfg:73 data/core/units/Fire_Dragon.cfg:74
+msgid "tail"
+msgstr "staart"
 
 #: data/core/units/Goblin_Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -12818,34 +12853,6 @@ msgstr "Samenvattingen uploaden aan"
 
 #~ msgid "training sword"
 #~ msgstr "oefenzwaard"
-
-#~ msgid "Fire Dragon"
-#~ msgstr "Vuurdraak"
-
-#~ msgid ""
-#~ "A fire dragon is an ancient and horrifying being that normally lives only "
-#~ "in hushed rumor and fantastic stories. It is normal for centuries to pass "
-#~ "without a dragon being seen in Wesnoth, and usually it is only as a "
-#~ "shadowy form flying in the distance. Legends are very specific about the "
-#~ "ravages of fire dragons: hideously swift in flight, leathery wings spread "
-#~ "over one hundred feet in width, they swoop in and blast their prey with "
-#~ "inferno jets of flame. Anything escaping the dragon's fire breath must "
-#~ "beware its ferocious bite and crushing tail. Fire dragons are cunning and "
-#~ "cruel and often take underlings whom they lead to victory."
-#~ msgstr ""
-#~ "Een vuurdraak is een eeuwenoud en vreeswekkend wezen dat normaal "
-#~ "gesproken alleen het onderwerp is van praatjes en fantastische verhalen. "
-#~ "Er gaan vaak eeuwen overheen voor een draak zich weer eens laat zien in "
-#~ "Wesnoth, en dan meestal alleen nog als een donkere schaduw in de verte. "
-#~ "De legenden zijn erg duidelijk wat betreft de ravage die vuurdraken "
-#~ "achterlaten. Vuurdraken zijn sluw en wreed en hebben vaak onderdanen die "
-#~ "door hun naar de overwinning worden geleid."
-
-#~ msgid "bite"
-#~ msgstr "bijt"
-
-#~ msgid "tail"
-#~ msgstr "staart"
 
 #~ msgid "Fireball"
 #~ msgstr "Vuurbal"
