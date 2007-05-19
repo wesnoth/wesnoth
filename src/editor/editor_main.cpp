@@ -88,6 +88,7 @@ int main(int argc, char** argv)
 	const font::manager font_manager;
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
+	binary_paths_manager paths_manager;
 	std::string filename = "";
 	std::string mapdata;
 	bool from_scenario;
@@ -299,6 +300,7 @@ int main(int argc, char** argv)
 		std::cerr << "Error when reading game config: '" << e.message << "'" << std::endl;
 	}
 	font::load_font_config();
+	paths_manager.set_paths(cfg);
 	::init_textdomains(cfg);
 
 	if(mapdata.empty()) {
