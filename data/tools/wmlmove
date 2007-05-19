@@ -63,15 +63,13 @@ if __name__ == "__main__":
         sys.stderr.write("wmlmove: at least one path to a unit is required.\n")
 	sys.stderr.write(__doc__)
         sys.exit(1)
-    else:
-        src = os.path.normpath(arguments[0])
     if not delete:
         if len(arguments) == 1:
             sys.stderr.write("wmlmove: a campaign name or 'core' is required.\n")
             sys.stderr.write(__doc__)
             sys.exit(1)
         else:
-            dst = arguments[1]
+            dst = arguments.pop()
 
     # First, pop upward to the top-level directory.
     upwards = os.getcwd().split(os.sep)
@@ -88,7 +86,7 @@ if __name__ == "__main__":
 
     # Locate the unit .cfgs to be moved.
     srclist = []
-    for src in arguments[:-1]:
+    for src in arguments:
         try:
             (namespace, resource) = src.split("::")
         except ValueError:
@@ -106,9 +104,9 @@ if __name__ == "__main__":
   
     # Validate the destination.
     if not delete:
-        dstdir = wmltools.namespace_directory(arguments[-1])
+        dstdir = wmltools.namespace_directory(arguments[dst])
         if dstdir == None:
-            sys.stderr.write("wmlmove: invalid namespace %s\n" % dst)
+            sys.stderr.write("wmlmove: invalid namespace %s\n" % dstdir)
             sys.exit(1)
   
     # Cross-reference all files.
@@ -170,10 +168,13 @@ overwrite()
     if delete:
         print "# Image deletions:"
         for (name, defloc) in srcrefs.fileref.items():
-            if revert:
-                print wmltools.vcundelete(name)
-            else:
-                print wmltools.vcdelete(name)
+                for namespace in map(wmltools.directory_namespace, srclist):
+                    if wmltools.namespace_member(name, namespace):
+                        if revert:
+                            print wmltools.vcundelete(name)
+                        else:
+                            print wmltools.vcdelete(name)
+                        break
         print ""
         print "# .cfg deletions"
         for filename in srclist:

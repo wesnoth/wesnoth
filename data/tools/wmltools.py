@@ -343,21 +343,21 @@ def vcunmove(src, dst):
     else:
         return "mv %s %s" % (dst, src)
 
-def vcdelete(src, dst):
+def vcdelete(src):
     "Delete a file under version control."
     (dir, base) = os.path.split(src)
     if os.path.exists(os.path.join(dir, ".svn")):
-        return "svn rm %s %s" % (src, dst)
+        return "svn rm %s" % src
     else:
-        return "rm %s %s" % (src, dst)
+        return "rm %s" % src
 
-def vcundelete(src, dst):
+def vcundelete(src):
     "Revert the result of a previous delete (before commit)."
     (dir, base) = os.path.split(src)
     if os.path.exists(os.path.join(dir, ".svn")):
         return "svn revert %s" % src	# Revert the deletion
     else:
-        return "mv %s %s" % (dst, src)
+        return "echo 'can't undelete %s, not under version control'" % src
 
 #
 ## Version-control hooks end here
