@@ -294,8 +294,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	unit new_unit(&info_.gameinfo,&info_.units,&info_.map,&info_.state,&info_.teams,&u->second,info_.team_num,true);
 
 	//see if we can actually recruit (i.e. have enough room etc)
-	if(recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,preferences::show_ai_moves() ? 
-				&info_.disp : NULL).empty()) {
+	if(recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,preferences::show_ai_moves()).empty()) {
 
 		statistics::recruit_unit(new_unit);
 		current_team().spend_gold(u->second.cost());
