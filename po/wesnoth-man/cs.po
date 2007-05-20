@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "POT-Creation-Date: 2007-05-18 18:38+0200\n"
-"PO-Revision-Date: 2007-03-07 19:27+0100\n"
+"PO-Revision-Date: 2007-05-18 23:22+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -225,21 +225,21 @@ msgid ""
 "any debug domain.  B<--log-info> shows all messages, B<--log-warning> only "
 "warnings and errors, and B<--log-error> just errors."
 msgstr ""
-"nastavuje úroveň závažnosti, od které se mají vypisovat logovací hlášky "
-"projednotlivé kategorie. \"all\" znamená, že bude vypisováno vše z dané "
+"nastavuje úroveň závažnosti, od které se mají vypisovat logovací hlášky pro "
+"jednotlivé kategorie. \"all\" znamená, že bude vypisováno vše z dané "
 "kategorie.B<--log-info> zobrazuje všechny hlášky, B<--log-warning> pouze "
 "varování a chyby, a B<--log-error> pouze chyby."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:83 ../../doc/man/wesnoth_editor.6:72
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--logdomains>"
-msgstr "B<--nogui>"
+msgstr "B<--logdomains>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:86 ../../doc/man/wesnoth_editor.6:75
 msgid "Dumps a list of all log domains and exits."
-msgstr ""
+msgstr "Vypíše seznam všech kategorií logování a skončí."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:86
