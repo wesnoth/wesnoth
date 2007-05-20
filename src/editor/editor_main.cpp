@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
 			<< "                               sets the severity level of the debug domains.\n"
 			<< "                               \"all\" can be used to match any debug domain.\n"
-			<< "  --logdomain       List defined log domains and exit.\n";
+			<< "  --logdomains      List defined log domains and exit.\n";
 			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth " 
@@ -79,6 +79,11 @@ int main(int argc, char** argv)
 		} else if(val == "--path") {
 			std::cout <<  game_config::path
 			          << "\n";
+			return 0;
+		} else if(val == "--logdomains") {
+			// domain list is hardcoded here because I don't grok
+			// C++ well enough to add a log class hook to get it.
+			std::cerr << "general, ai, config, display, engine, network, filesystem, audio, paths\n";
 			return 0;
 		}
 	}
@@ -167,11 +172,6 @@ int main(int argc, char** argv)
 				}
 				p = q;
 			}
-		} else if(val == "--logdomains") {
-			// domain list is hardcoded here because I don't grok
-			// C++ well enough to add a log class hook to get it.
-			std::cerr << "general, ai, config, display, engine, network, filesystem, audio. paths\n";
-			return 0;
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
