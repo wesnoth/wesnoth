@@ -273,6 +273,12 @@ class CrossRef:
                     smallref.fileref[filename].references[referrer] = referlines
                     del self.fileref[filename].references[referrer]
         return smallref
+    def refcount(self, name):
+        "Return a reference count for the specified resource."
+        try:
+            return len(self.fileref[name].references.keys())
+        except KeyError:
+            return 0
 
 ## Namespace management
 #

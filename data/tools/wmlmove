@@ -169,7 +169,7 @@ overwrite()
         print "# Image deletions:"
         for (name, defloc) in srcrefs.fileref.items():
                 for namespace in map(wmltools.directory_namespace, srclist):
-                    if wmltools.namespace_member(name, namespace):
+                    if wmltools.namespace_member(name, namespace) and cref.refcount(name) == 0:
                         if revert:
                             print wmltools.vcundelete(name)
                         else:
