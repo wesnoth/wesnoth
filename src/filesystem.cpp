@@ -224,7 +224,29 @@ struct dirent *readdir(DIR *dir)
     }
 }
 
-#endif /* !DIRENT_PROVIDED_BY_COMPILER */
+/*
+ * Microsoft C uses _stat instead of stat,
+ * for both the function name and the structure name.
+ * See <http://svn.ghostscript.com:8080/ghostscript/trunk/gs/src/stat_.h>
+ */
+#ifdef _MSC_VER
+#  define stat _stat
+#endif
+
+/*
+ * Because the phrase 'brain-dead Windows environment' is redundant...
+ */
+#ifndef S_ISREG
+#define S_ISREG(x) (((x) & S_IFMT) == S_IFREG)
+#endif
+#ifndef S_ISDIR
+#define S_ISDIR(x) (((x) & S_IFMT) == S_IFDIR)
+#endif
+#ifndef S_IFMT
+#define S_IFMT	(S_IFDIR|S_IFREG)
+#endif 
+
+/*#endif /* !DIRENT_PROVIDED_BY_COMPILER */
 
 #define mkdir(a,b) (_mkdir(a))
 
