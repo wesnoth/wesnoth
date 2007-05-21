@@ -179,11 +179,12 @@ class CampaignBrowser:
             return str(data)
 
         def encode(name):
-            #FIXME: actual encoding doesn't seem to work that way, only
-            #sending uncompressed works for now.
             if name in self.codes:
                 return self.codes[name]
             what = literal(name)
+            # Gah.. why didn't nobody tell me about the 20 characters limit?
+            # Without adhering to this (hardcoded in the C++ code) limit, the
+            # campaign server simply will crash if we talk to it.
             if len(what) <= 20 and self.codescount < 256:
                 data = "\02" + what + "\00" + chr(self.codescount)
                 self.codes[name] = chr(self.codescount)
