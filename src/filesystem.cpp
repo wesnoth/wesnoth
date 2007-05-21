@@ -36,6 +36,8 @@
 #include <stdlib.h>
 #include <windows.h>
 
+#endif /* win32 */
+
 /* /////////////////////////////////////////////////////////////////////////
  * Compiler differences
  */
@@ -246,11 +248,13 @@ struct dirent *readdir(DIR *dir)
 #define S_IFMT	(S_IFDIR|S_IFREG)
 #endif 
 
-#endif /* !DIRENT_PROVIDED_BY_COMPILER */
-
 #define mkdir(a,b) (_mkdir(a))
+namespace {
+	typedef int mode_t;
+}
 
-#else /* not Windows */
+#endif /* !DIRENT_PROVIDED_BY_COMPILER */
+#if defined(DIRENT_PROVIDED_BY_COMPILER)
 
 #include <unistd.h>
 
