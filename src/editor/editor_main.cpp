@@ -71,7 +71,7 @@ int main(int argc, char** argv)
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth " 
 				  << game_config::version
-#if defined(SVNREV) and defined(DO_DISPLAY_REVISION)
+#if defined(SVNREV) && defined(DO_DISPLAY_REVISION)
 				  << " (" << game_config::svnrev << ")"
 #endif /* defined(SVNREV) and defined(DO_DISPLAY_REVISION) */
 			          << "\n";
