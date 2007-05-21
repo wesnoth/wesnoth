@@ -154,7 +154,7 @@ preprocessor::~preprocessor()
 		temp << "\376line " << old_linenum_
              << ' ' << old_location_ << '\n';
 
-        std::string s = temp.str();
+        std::string const& s = temp.str();
         target_.buffer_ << s;
         target_.buffer_size_ += s.size();
     }
@@ -162,7 +162,7 @@ preprocessor::~preprocessor()
         std::ostringstream temp;
 		temp << "\376textdomain " << old_textdomain_ << '\n';
 
-        std::string s = temp.str();
+        std::string const& s = temp.str();
         target_.buffer_ << s;
         target_.buffer_size_ += s.size();
     }
@@ -257,7 +257,7 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
 	temp << "\376line " << linenum << ' ' << t.location_
 	          << "\n\376textdomain " << domain << '\n';
 
-    std::string ts = temp.str();
+    std::string const& ts = temp.str();
     t.buffer_ << ts;
     t.buffer_size_ += ts.size();
 
@@ -353,7 +353,7 @@ void preprocessor_data::put(char c)
 		temp << "\376line " << target_.linenum_
              << ' ' << target_.location_ << '\n';
 
-        std::string s = temp.str();
+        std::string const& s = temp.str();
         target_.buffer_ << s;
         target_.buffer_size_ += s.size();
 
@@ -453,7 +453,7 @@ bool preprocessor_data::get_chunk()
 		if (command == "define") {
 			skip_spaces();
 			int linenum = linenum_;
-			std::string s = read_line();
+			std::string const& s = read_line();
 			std::vector< std::string > items = utils::split(s, ' ');
 			if (items.empty()) {
 				std::ostringstream error;
@@ -462,7 +462,7 @@ bool preprocessor_data::get_chunk()
 				ERR_CF << error.str() << '\n';
 				throw preproc_config::error(error.str());
 			}
-			std::string symbol = items.front();
+			std::string const& symbol = items.front();
 			items.erase(items.begin());
 			int found_enddef = 0;
 			std::string buffer;
