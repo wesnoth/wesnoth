@@ -453,8 +453,7 @@ bool preprocessor_data::get_chunk()
 		if (command == "define") {
 			skip_spaces();
 			int linenum = linenum_;
-			std::string const& s = read_line();
-			std::vector< std::string > items = utils::split(s, ' ');
+			std::vector< std::string > items = utils::split(read_line(), ' ');
 			if (items.empty()) {
 				std::ostringstream error;
 				error << "no macro name found after #define directive at "
@@ -462,7 +461,7 @@ bool preprocessor_data::get_chunk()
 				ERR_CF << error.str() << '\n';
 				throw preproc_config::error(error.str());
 			}
-			std::string const& symbol = items.front();
+			std::string symbol = items.front();
 			items.erase(items.begin());
 			int found_enddef = 0;
 			std::string buffer;
