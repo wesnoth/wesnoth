@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-20 10:15+0200\n"
-"PO-Revision-Date: 2007-05-13 17:58+0200\n"
+"PO-Revision-Date: 2007-05-21 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -126,11 +126,11 @@ msgstr "WML-bidragere"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:23
 msgid "Conception and Original Design"
-msgstr ""
+msgstr "Ide og originalt design"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:31
 msgid "Completion and Maintenance"
-msgstr ""
+msgstr "Færdiggørelse og vedligeholdelse"
 
 #: data/campaigns/The_South_Guard/_main.cfg:41
 #: data/campaigns/Two_Brothers/_main.cfg:37
@@ -176,6 +176,14 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Helbreder +8:\n"
+"Denne enhed bruger magisk naturmedicin til at helbrede enheder hurtigereend "
+"det ellers normalt er muligt på slagmarken.\n"
+"\n"
+"En enhed som bliver behandlet af denne helbreder opnår op til 8 liv per "
+"runde, eller også stopper en forgiftnings effekt for den aktuelle runde.\n"
+"En forgiftet enhed kan helbredes for sin gift af en healer, og må søge "
+"behandling i en landsby eller fra en enhed som har denne evne."
 
 #: data/core/abilities.cfg:45
 msgid "cures"
@@ -2228,6 +2236,15 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
+"Borge er alle slags permanente fæstningsværker. Næsten alle enheder har en "
+"væsentlig forsvarsbonus når de er placeret i en borg. Alle enheder har fuld "
+"bevægelse i en borg. Placering af enheder i en borg repræsenterer dets "
+"forsvarsmuligheder. Uden en enhed i hvert felt kan en fjende nemt snige sig "
+"ind i borgen og opnå den samme forsvarsbonus som øvrige enheder i borgen "
+"har.\n"
+"\n"
+"De fleste enheder har en 60 % forsvarsbonus i en borg.\n"
+"\n"
 
 #: data/core/help.cfg:455 data/core/terrain.cfg:368
 msgid "Sand"
@@ -2276,6 +2293,15 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Huleterræn repræsenterer en underjordisk hule med tilpas plads til at en "
+"enhed kan passere. De fleste enheder er ikke tilpasset denne slags terræn, "
+"og de bliver derfor både langsommere og har et dårligere forsvar i dette "
+"terræn. Dværge og trolde som har deres hjem i huler, kan nemt navigere i "
+"dette terræn, specielt dværge som i kraft af deres mindre størrelse nemt kan "
+"omgå forhåndringer som andre racer ikke kan komme forbi. Undertiden er "
+"huler  <ref>dst=terrain_illuminated_cave text=oplyste</ref>.\n"
+"\n"
+"De fleste enheder har en 20-40 % forsvarsbonus i huler, mens dværge har 50 %."
 
 #: data/core/help.cfg:483 data/core/terrain.cfg:643
 msgid "Rockbound Cave"
@@ -2338,6 +2364,15 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"Champignonskove er store underjordiske skove af kæmpe store champignoner, "
+"som trives i det fugtige mørke. De fleste enheder har svært ved at navigere "
+"i dette svampemiljø, men har til gengæld stor nytte af skjulet bag de store "
+"champignoner. Beredne enheder har stor ulempe i dette terren og mangler den "
+"frie bevægelse i kamp. Udøde enheder har en naturlig præference for denne "
+"slags terræn og fungerer ganske godt i champignonskove.\n"
+"\n"
+"De fleste enheder har 50-60 % forsvar i champignonskove, mens kavaleri kun "
+"har 20 %."
 
 #: data/core/help.cfg:511 data/core/terrain.cfg:450
 msgid "Savanna"
@@ -2390,7 +2425,7 @@ msgstr ""
 
 #: data/core/help.cfg:531
 msgid "Submerged Village"
-msgstr "Undervandslandssby"
+msgstr "Undervandslandsby"
 
 #: data/core/help.cfg:536
 msgid ""
@@ -2404,6 +2439,15 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defence."
 msgstr ""
+"Undervandslandsbyer er hjem for havmænd og nagaer. Vandlevende skabninger "
+"føler sig hjemme her, mens landbaserede skabninger har det svært med "
+"navigation og forsvar af landsbyer i dette terræn. Som andre landsbyer er "
+"faciliteterne til stede så enheder kan få passet deres sår. Enhver enhed som "
+"er placeret i en landsby får 8 liv helbredt hver runde, eller kureres for "
+"gift.\n"
+"\n"
+"Havmænd og nagaer har 60 % forsvar i undervandslandsbyer, mens landbaserede "
+"enheder normalt har en lav forsvarsevne."
 
 #: data/core/help.cfg:541 data/core/terrain.cfg:518
 msgid "Chasm"
@@ -2432,10 +2476,15 @@ msgid ""
 "illuminating the area immediately above it. This provides an attack bonus "
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
+"Faren ved at forsøge at gå på lave er indlysende. Dette terræn kan kun "
+"krydses af enheder der er i stand til at flyve højt over lavaen. Den "
+"smeltede magma producerer også en glød, som oplyser området over den. Dette "
+"giver en angrebsbonus til hæderlige enheder og fjerne angrebsbonusen fra "
+"kaotiske enhder."
 
 #: data/core/help.cfg:557 data/core/terrain.cfg:875
 msgid "River Ford"
-msgstr "Lavvandet flod"
+msgstr "Vadested"
 
 #: data/core/help.cfg:560
 msgid ""
@@ -2446,6 +2495,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Når en flod er ekstremt lavvandet er det nemt for landbaserede enheder at "
+"krydse den. Enhver skabning som er i stand til at svømme har fuld bevægelse "
+"selv på steder som i floden. I spillet håndteres et vadested som enten "
+"græsland eller lavvandet vand alt efter hvad der giver enheden dens bedste "
+"defensive- og bevægelsesbonus."
 
 #: data/core/help.cfg:565 data/core/terrain.cfg:59 data/core/terrain.cfg:68
 #: data/core/terrain.cfg:77 data/core/terrain.cfg:87 data/core/terrain.cfg:96
@@ -2468,6 +2522,16 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"For dem i stand til at bygge en bro udgør muligheden en befrielse fra "
+"afhængigheden af naturens luner, hvor vadesteder kommer og går med "
+"stigningen og faldet i vandstanden. For ikke at tale om luksusen ved tørre "
+"fødder, specielt i de kolde måneder af året.\n"
+"\n"
+"For enheder som rejser over land eller hav er broen det bedste fra hvert "
+"sted - i spillet, håndteres en bro som enten græsland eller det "
+"underliggende vand, enheden får den bedst mulige bevægelses- og "
+"forsvarsbonus af disse to muligheder. Bemærk at en svømmende enhed og en "
+"landenhed ikke kan være på et brofelt på samme tid."
 
 #: data/core/help.cfg:575 data/core/terrain.cfg:908
 msgid "Cave Wall"
@@ -4182,14 +4246,13 @@ msgid "Pirate Galleon"
 msgstr "Piratgaleon"
 
 #: data/core/units/Boat_Pirate_Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them "
 "avoid sinking from overloading..."
 msgstr ""
 "Piratgaleoner er for transportskibe hvad ulve er for får. Skibe fulde af "
-"varer skal ikke være ensomme langt fra land. Det er bedre at hjælpe dem så "
+"varer skal ikke være ensomme langt fra land. Det er bedre at hjælpe dem, så "
 "de ikke synker på grund af for stor læs..."
 
 #: data/core/units/Boat_Pirate_Galleon.cfg:19
@@ -4301,7 +4364,6 @@ msgid "Armageddon Drake"
 msgstr "Ildhestedrage"
 
 #: data/core/units/Drake_Armageddon.cfg:19
-#, fuzzy
 msgid ""
 "The Armageddon Drakes truly are amongst the toughest of all drakes - so "
 "accustomed to living near fire as to be nearly immune to any fire based "
@@ -4450,18 +4512,17 @@ msgstr "ild"
 
 #: data/core/units/Drake_Blademaster.cfg:3
 msgid "Drake Blademaster"
-msgstr ""
+msgstr "Hestedragesværdmester"
 
 #: data/core/units/Drake_Blademaster.cfg:18
-#, fuzzy
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
-"Hestedragerne som mestrer brugen af et sværd indgår i en speciel orden efter "
-"at de har afgivet en ed. Markeringen af dette er en sort og hvid krigmaling "
-"som vises i kamp."
+"Hestedragerne som mestrer brugen af et sværd indgår i en speciel orden "
+"efter, at de har afgivet en ed. Markeringen af dette er en sort og hvid "
+"krigmaling som vises i kamp."
 
 #: data/core/units/Drake_Blademaster.cfg:66
 #: data/core/units/Drake_Clasher.cfg:79 data/core/units/Drake_Enforcer.cfg:69
@@ -4502,14 +4563,13 @@ msgid "Drake Burner"
 msgstr "Brændende hestedrage"
 
 #: data/core/units/Drake_Burner.cfg:18
-#, fuzzy
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
-"Brændende hestedrager er få og solte, dem som har arvet mest af den "
+"Brændende hestedrager er få og stolte. Det er dem, som har arvet mest af den "
 "oprindelige styrke fra dragerne, specielt evnen til at spy ild. Dette sammen "
 "med deres størrelse og krogede hænder gør dem til en frygtet modstander i "
 "kamp."
@@ -4687,7 +4747,6 @@ msgid "Hurricane Drake"
 msgstr "Orkanhestedrage"
 
 #: data/core/units/Drake_Hurricane.cfg:30
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
 "drakes which are gifted with flight. Soaring high in the air, they can see "
@@ -4719,7 +4778,6 @@ msgid "Sky Drake"
 msgstr "Lufthestedrage"
 
 #: data/core/units/Drake_Sky.cfg:29
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 "stooping dive and and their fire breath combine into a terrible weapon. By "
@@ -4743,7 +4801,6 @@ msgid "Drake Slasher"
 msgstr "Hestedrage hellebarder"
 
 #: data/core/units/Drake_Slasher.cfg:24
-#, fuzzy
 msgid ""
 "Slashers are Clashers who have chosen to master the use of a halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -4794,7 +4851,6 @@ msgid "Drake Warrior"
 msgstr "Hestedragekriger"
 
 #: data/core/units/Drake_Warrior.cfg:17
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
@@ -4803,7 +4859,7 @@ msgstr ""
 "Hestedragekrigere anvender deres sværd med stor dygtighed og har samtidig "
 "evnen til at spy ild fra deres forfædre. Deres races styrke gør dem i stand "
 "til at yde stor skade og samtidig også modstå en tilsvarende skade gjort mod "
-"dem. "
+"dem."
 
 #: data/core/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
@@ -4937,7 +4993,6 @@ msgid "Dwarvish Runemaster"
 msgstr "Runedværg"
 
 #: data/core/units/Dwarvish_Runemaster.cfg:18
-#, fuzzy
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
 "surface of an object, which by their mere presence somehow imbue it with "
@@ -5130,7 +5185,6 @@ msgid "Elvish Captain"
 msgstr "Elverkaptajn"
 
 #: data/core/units/Elvish_Captain.cfg:27
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. In this they differ greatly from "
@@ -5143,10 +5197,10 @@ msgid ""
 msgstr ""
 "Elvere, til forskel fra mange andre racer, vil hurtig anerkende og følge "
 "enhver af deres egne som har erfaring i kamp. Dette er i stor modsætning til "
-"menneske hvor lederskab ofte er et sammensurium af overbevisning og trusler. "
-"Kombinationen af deres villighed til at acceptere den viden deres ledere "
-"har, og tendensen til at vælge ledere ud fra erfaring er en af de stille "
-"styrker blandt elverne.\n"
+"menneskene, hvor lederskab ofte er et sammensurium af overbevisning og "
+"trusler. Kombinationen af deres villighed til at acceptere den viden deres "
+"ledere har, og tendensen til at vælge ledere ud fra erfaring er en af de "
+"stille styrker blandt elverne.\n"
 "\n"
 "Specielle bemærkninger:"
 
@@ -5268,7 +5322,6 @@ msgid "Elvish Hero"
 msgstr "Elverhelt"
 
 #: data/core/units/Elvish_Hero.cfg:18
-#, fuzzy
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
 "fighter into a master of combat. Those who are honored as heroes are strong "
@@ -5475,7 +5528,6 @@ msgid "gossamer"
 msgstr "flor"
 
 #: data/core/units/Fire_Dragon.cfg:4
-#, fuzzy
 msgid "Fire Dragon"
 msgstr "Ildhestedrage"
 
@@ -5493,14 +5545,12 @@ msgid ""
 msgstr ""
 
 #: data/core/units/Fire_Dragon.cfg:24 data/core/units/Fire_Dragon.cfg:25
-#, fuzzy
 msgid "bite"
-msgstr "Hvid"
+msgstr "bid"
 
 #: data/core/units/Fire_Dragon.cfg:73 data/core/units/Fire_Dragon.cfg:74
-#, fuzzy
 msgid "tail"
-msgstr "Detalje"
+msgstr "hale"
 
 #: data/core/units/Goblin_Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -5567,7 +5617,6 @@ msgid "Goblin Pillager"
 msgstr "Goblinplyndrer"
 
 #: data/core/units/Goblin_Pillager.cfg:20
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -5578,7 +5627,7 @@ msgid ""
 msgstr ""
 "Nogle gobliner træner deres ulve i at kunne modstå deres naturlige angst for "
 "ild. Under angreb har disse gobliner en støttefunktion; de sætter ild til "
-"hjem og afgrøder hos deres fjende. De har også net som kan skabe forvirring "
+"hjem og afgrøder hos deres fjende. De har også net, som kan skabe forvirring "
 "blandt dem som forsøger at etablere et forsvar eller et modangreb.\n"
 "\n"
 "Specielle bemærkninger:"
@@ -5662,7 +5711,6 @@ msgid "Gryphon Master"
 msgstr "Grifekspert"
 
 #: data/core/units/Gryphon_Master.cfg:18
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
@@ -5740,7 +5788,6 @@ msgid "Lancer"
 msgstr "lansenér"
 
 #: data/core/units/Human_Horse_Lancer.cfg:19
-#, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
 "in minimal armor, they free themselves to ride swiftly, faster than any of "
@@ -5750,11 +5797,11 @@ msgid ""
 "and in piercing defensive lines. However, they have limited use in defense."
 msgstr ""
 "Lansenér er nogle af de modigste og mest frygtede ryttere i hele Wesnoth. "
-"Klædt i en mininal rustning, er de i stand til at ride hurtigt, hurtigere "
-"end nogle andre i deres rækker. Den modige taktik de anvender er et tveægget "
-"sværd, som often enten fører til en gloværdig sejr eller en hurtig død. "
-"lansenér er eksperte i at ride infanterienheder ned, specielt hvis de er "
-"uden for deres formation, eller står i fastlåste defensive linjer. De har "
+"Klædt i en mininal rustning, er de i stand til at ride hurtigt; hurtigere "
+"end nogle andre i deres rækker. Den modige taktik, de anvender, er et "
+"tveægget sværd, som often enten fører til en gloværdig sejr eller en hurtig "
+"død. lansenér er eksperter i at ride infanterienheder ned, specielt hvis de "
+"er uden for deres formation, eller står i fastlåste defensive linjer. De har "
 "dog begrænsede evner i defensiven."
 
 #: data/core/units/Human_Horse_Paladin.cfg:3
@@ -5762,7 +5809,6 @@ msgid "Paladin"
 msgstr "Eventyrer"
 
 #: data/core/units/Human_Horse_Paladin.cfg:22
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to semi-"
 "monastic vows, pledging their might to the cause of righteousness. Though "
@@ -5775,7 +5821,7 @@ msgid ""
 msgstr ""
 "Riddere af den højeste dyd, eventyrer har lovet dem selv til en "
 "munketilværelse, givende alt til målet om retfærdighed. Selvom de ikke er "
-"nær så imponerende på slagmarken som en Storridder, er en eventyrer stadig "
+"nær så imponerende på slagmarken som en storridder, er en eventyrer stadig "
 "en magtfuld styrke at have i kamp, og deres hellighed giver dem andre evner. "
 "En eventyrer er en forbandelse for enheder ikke fra denne verden, og er "
 "trænet i at kunne helbrede sine kammerateres sår.\n"
@@ -5787,7 +5833,6 @@ msgid "Horseman"
 msgstr "Rytter"
 
 #: data/core/units/Human_Horseman.cfg:19
-#, fuzzy
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -5798,8 +5843,8 @@ msgid ""
 "provide inviting targets."
 msgstr ""
 "Ofte med baggrund i de mere utæmmede områder af Wesnoth er ryttere trænet "
-"fra barnsben af til jobbet som rytter og til at følge en striks kodeks. Et "
-"stormangreb fra en rytter er en magtfuldt men risikabel taktik. Værdien er "
+"fra barnsben af til jobbet som rytter og til at følge en streng kodeks. Et "
+"stormangreb fra en rytter er en magtfuld men risikabel taktik. Værdien er "
 "blevet bevidst gang på gang på slagmarken. Ryttere er overlegne over for de "
 "fleste infanterienheder, specielt dem som står alene, men ryttere skal dog "
 "være varsomme overfor både spydmænd og bueskytter, da deres store størrelse "
@@ -5810,7 +5855,6 @@ msgid "Bowman"
 msgstr "Bueskytte"
 
 #: data/core/units/Human_Loyalist_Bowman.cfg:20
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -5818,17 +5862,16 @@ msgid ""
 "woodsmen, bowmen are competent with both a bow and a short sword, and are "
 "very common on the battlefield."
 msgstr ""
-"Brugen af buen til andet end jagt blev opdaget allerede fra starten af og "
-"bueskytter har være uundværlige i krig siden forhistorisk tid. Normalt af "
-"simpel herkomst enten fra bønder eller fra skovarbejdere men med gode evner "
-"med buen og sværdet. De er ofte meget almindelige på slagmarken."
+"Brugen af buen til andet end jagt blev opdaget allerede fra starten af dens "
+"opdagelse, og bueskytter har være uundværlige i krig siden forhistorisk tid. "
+"Normalt af simpel herkomst enten fra bønder eller fra skovarbejdere men med "
+"gode evner med buen og sværdet. De er ofte meget almindelige på slagmarken."
 
 #: data/core/units/Human_Loyalist_Cavalier.cfg:3
 msgid "Cavalier"
 msgstr "Kavaler"
 
 #: data/core/units/Human_Loyalist_Cavalier.cfg:19
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
@@ -5936,7 +5979,6 @@ msgid "General"
 msgstr "General"
 
 #: data/core/units/Human_Loyalist_General.cfg:30
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn "
@@ -5945,13 +5987,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Som leder af hære, er generaler ansvarlig for beskyttelsen af store og "
-"vigtige områder i de kongedømmer som de har sværet troskab over for. Deres "
-"træning og erfaring gør at de kan leve op til dette ansvar.\n"
+"vigtige områder i de kongedømmer som de har sværet troskab over for.\n"
+"\n"
 "Specielle bemærkninger:"
 
 #: data/core/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Stormarskal"
 
 #: data/core/units/Human_Loyalist_Grand_Marshal.cfg:26
 msgid ""
@@ -5963,8 +6005,6 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-# http://img.photobucket.com/albums/v311/dpd/minis/halberdier01.jpg
-# http://www.morfars.dk/product_info.php?Hellebardist&products_id=743
 #: data/core/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Hellebardist"
@@ -6110,7 +6150,6 @@ msgid "Pikeman"
 msgstr "Pikener"
 
 #: data/core/units/Human_Loyalist_Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -6168,7 +6207,6 @@ msgid "Shock Trooper"
 msgstr "Stødtropper"
 
 #: data/core/units/Human_Loyalist_Shock_Trooper.cfg:15
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use in war is to intimidate the enemy. The only men who can enter "
@@ -6198,7 +6236,6 @@ msgid "Spearman"
 msgstr "Spydmand"
 
 #: data/core/units/Human_Loyalist_Spearman.cfg:20
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -6222,7 +6259,6 @@ msgid "Swordsman"
 msgstr "Sværdmand"
 
 #: data/core/units/Human_Loyalist_Swordsman.cfg:17
-#, fuzzy
 msgid ""
 "An experienced soldier will often save enough to equip himseld with a suit "
 "of scale or chain armor, and a sturdy broadsword. Though trading their "
@@ -6232,9 +6268,9 @@ msgid ""
 "a spear, and much better in close quarters."
 msgstr ""
 "En erfaren soldat vil ofte kunne udruste sig selv med en mere egnet "
-"kæderustning, og et sværd. Skifter til sværd fra spydet kan være en hård "
+"kæderustning, og et sværd. Skiftet til sværd fra spydet kan være en hård "
 "overgang, men de fleste spydmænd vil tage chancen idet de alt for godt "
-"kender til begrænsningerne i det våben de lader bag sig. Sværdet er ikke "
+"kender til begrænsningerne, i det våben de lader bag sig. Sværdet er ikke "
 "selv uden begrænsninger, men kan bruges i langt flere situationer og er "
 "langt bedre i nærkamp."
 
@@ -6429,7 +6465,6 @@ msgid "Mage of Light"
 msgstr "Lysets troldmand"
 
 #: data/core/units/Human_Mage_of_Light.cfg:23
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "spiritual powers. By strict devotion to the path of the light, they can call "
@@ -6493,7 +6528,6 @@ msgid "Assassin"
 msgstr "Snigmorder"
 
 #: data/core/units/Human_Outlaw_Assassin.cfg:21
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -6544,7 +6578,6 @@ msgid "Footpad"
 msgstr "Landevejstyv"
 
 #: data/core/units/Human_Outlaw_Footpad.cfg:18
-#, fuzzy
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -6553,7 +6586,7 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
-"Disse ynkelige kriminelle kaldes ofte for landevejstyve af deres "
+"Disse ynkelige kriminelle kaldes ofte for »landevejstyve« af deres "
 "overordnede, for de har jobbet med at løbe landevejene tynde. De bliver ofte "
 "anvendt som kurerer eller spejdere. Udholdenheden og evnerne til fods kommer "
 "dem ofte til gavn i kamp, og på trods af deres ynkelige våben er de ganske "
@@ -6576,7 +6609,6 @@ msgid "Poacher"
 msgstr "Krybskytte"
 
 #: data/core/units/Human_Outlaw_Poacher.cfg:21
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of bandits will need a few "
@@ -6587,9 +6619,9 @@ msgid ""
 "and in forests and swamps."
 msgstr ""
 "Selvom de ikke er trænet som krigere, er evnerne hos en jæger, specielt "
-"indenfor buen brugbare i kamp. En anvendelse af disse evner mod andre "
-"mennesker kan ske af en række grunde, det være sig som lejesvend eller for "
-"anden vindings skyld. Enhver gruppe af banditter kan bruge et par "
+"indenfor brugen af en bue brugbare i kamp. En anvendelse af disse evner mod "
+"andre mennesker kan ske af en række grunde, det være sig som lejesvend eller "
+"for anden vindings skyld. Enhver gruppe af banditter kan bruge et par "
 "krybskytter i deres sold der kan indsamle nattens måltid i det "
 "omkringliggende landskab og ofte også give en hånd med i de mere alvorlige "
 "kampe.\n"
@@ -6659,7 +6691,6 @@ msgid "Thug"
 msgstr "Bølle"
 
 #: data/core/units/Human_Outlaw_Thug.cfg:18
-#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -6743,7 +6774,6 @@ msgid "female^Mermaid Enchantress"
 msgstr "Havfrue fortryllerske"
 
 #: data/core/units/Mermaid_Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different than that of the elves. Those who master "
@@ -6858,7 +6888,6 @@ msgid "Merman Fighter"
 msgstr "Havmandkæmper"
 
 #: data/core/units/Merman_Fighter.cfg:18
-#, fuzzy
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
@@ -6878,7 +6907,6 @@ msgid "Merman Hoplite"
 msgstr "Havmandhoplit"
 
 #: data/core/units/Merman_Hoplite.cfg:21
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -6955,7 +6983,6 @@ msgid "Merman Triton"
 msgstr "Havmand triton"
 
 #: data/core/units/Merman_Triton.cfg:18
-#, fuzzy
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
@@ -7033,7 +7060,6 @@ msgid "Giant Mudcrawler"
 msgstr "Gigantdyndspringer"
 
 #: data/core/units/Monster_Giant_Mudcrawler.cfg:17
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
@@ -7063,7 +7089,6 @@ msgstr "Kæmpeskorpion"
 # Joe 14. februar 2007 (virker som om engelsk tekst er blevet misforstået, har rettet
 # en smule til ingen.
 #: data/core/units/Monster_Giant_Scorpion.cfg:20
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - the deadlliness of one the size of a "
 "man need little explanation.\n"
@@ -7132,14 +7157,13 @@ msgid "Tentacle of the Deep"
 msgstr "Tentakler i dybet"
 
 #: data/core/units/Monster_Tentacle.cfg:22
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Tentakler i dybet er de synlige tegn på et større monster som ligger på lur "
+"Tentakler i dybet er de synlige tegn, på et større monster som ligger på lur "
 "under vandoverfladen.\n"
 "\n"
 "Specielle bemærkninger:"
@@ -7185,7 +7209,6 @@ msgid "Naga Myrmidon"
 msgstr "Nagahåndlanger"
 
 #: data/core/units/Naga_Myrmidon.cfg:19
-#, fuzzy
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
 "the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
@@ -7221,7 +7244,6 @@ msgid "Naga Warrior"
 msgstr "Nagakriger"
 
 #: data/core/units/Naga_Warrior.cfg:18
-#, fuzzy
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
 "second blade. Their martial practice of using twin blades is wholly unlike "
@@ -7242,7 +7264,6 @@ msgid "Nagini Warrior"
 msgstr "Naginikriger"
 
 #: data/core/units/Naga_Warrior.cfg:67
-#, fuzzy
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -7251,7 +7272,7 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
-"Mange af de unge krigere fra naga ser frem til den dag de får deres 2. "
+"Mange af de unge krigere fra nagini ser frem til den dag de får deres 2. "
 "klinge. Deres krigstræning med to klinger er meget forskellig fra metoden "
 "hos orker eller andre racer, for de er begyndt at lære kunsten at bruge "
 "deres kropsform til bedste evne, drejende og vendende for at undgå slag. "
@@ -7282,14 +7303,13 @@ msgid "Young Ogre"
 msgstr "Ung ogretrold"
 
 #: data/core/units/Ogre_Young.cfg:20
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
 "Mens de stadig er små indfanges ogretrolde og bruges i hærens træning. De "
-"kan ikke anvende våben effektivt, men det betyder ikke så meget når man "
+"kan ikke anvende våben effektivt, men det betyder ikke så meget, når man "
 "tænker på deres styrke."
 
 #: data/core/units/Orcish_Archer.cfg:3
@@ -7313,7 +7333,6 @@ msgid "Orcish Assassin"
 msgstr "Orkersnigmorder"
 
 #: data/core/units/Orcish_Assassin.cfg:23
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7348,6 +7367,10 @@ msgid ""
 "privileged enough to wield them are capable warriors, and what they lack in "
 "finesse, they make up for in numbers."
 msgstr ""
+"Orkerarmbrøster er rå efterligninger af menneskenes og dværgenes armbrøster; "
+"uanset hvilket design en armbrøst er udarbejdet efter er det et kraftigt "
+"våben. Orker som bliver udnævnt til at bære en armbrøst er stærke krigere, "
+"og hvad de mangler i finesse udligner de i deres antal."
 
 #: data/core/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
@@ -7368,7 +7391,6 @@ msgid "Orcish Leader"
 msgstr "Orkerleder"
 
 #: data/core/units/Orcish_Leader.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Leaders are the leaders of orcish warrior bands. They carry a bow out "
 "of necessity, but are much more skilled with the sword; all in all, they are "
@@ -7377,11 +7399,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Orkregenter er stammeledere. De tager de vigtige beslutninger og anfører "
-"deres folk i kamp. De bærer en bue af nødvendighed, men har langt bedre "
-"evner med deres sværd; alt i alt er de magtfulde kæmpere. Deres naturlige "
-"lederskabsevner gør dem meget værdsat i kamp; hvis orkregenter dør, tabes "
-"slaget.\n"
+"Orkledere er stammeledere. De tager de vigtige beslutninger og anfører deres "
+"folk i kamp. De bærer en bue af nødvendighed, men har langt bedre evner med "
+"deres sværd; alt i alt er de magtfulde kæmpere. Deres naturlige "
+"lederskabsevner gør dem meget værdsat i kamp; hvis orklederen dør, tabes "
+"normalt også slaget.\n"
 "\n"
 "Specielle bemærkninger"
 
@@ -7390,7 +7412,6 @@ msgid "Orcish Ruler"
 msgstr "Orkregent"
 
 #: data/core/units/Orcish_Ruler.cfg:19
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chieftains of their tribes. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -7404,7 +7425,7 @@ msgstr ""
 "deres folk i kamp. De bærer en bue af nødvendighed, men har langt bedre "
 "evner med deres sværd; alt i alt er de magtfulde kæmpere. Deres naturlige "
 "lederskabsevner gør dem meget værdsat i kamp; hvis orkregenter dør, tabes "
-"slaget.\n"
+"normalt også slaget.\n"
 "\n"
 "Specielle bemærkninger"
 
@@ -7447,10 +7468,9 @@ msgstr ""
 
 #: data/core/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "Orkmonark"
 
 #: data/core/units/Orcish_Sovereign.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chieftains of the largest and most powerful "
 "tribes. They make the important decisions and lead their people into battle. "
@@ -7461,11 +7481,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Orkregenter er stammeledere. De tager de vigtige beslutninger og anfører "
+"Orkmonarker er stammeledere. De tager de vigtige beslutninger og anfører "
 "deres folk i kamp. De bærer en bue af nødvendighed, men har langt bedre "
 "evner med deres sværd; alt i alt er de magtfulde kæmpere. Deres naturlige "
-"lederskabsevner gør dem meget værdsat i kamp; hvis orkregenter dør, tabes "
-"slaget.\n"
+"lederskabsevner gør dem meget værdsat i kamp; hvis orkmonarken dør, tabes "
+"normalt også slaget.\n"
 "\n"
 "Specielle bemærkninger"
 
@@ -7516,7 +7536,6 @@ msgid "Saurian Augur"
 msgstr "Øgleaugur"
 
 #: data/core/units/Saurian_Augur.cfg:22
-#, fuzzy
 msgid ""
 "Saurians have some ability in what men call magic, but one which reeks of "
 "augury and all the unpleasantry of dark shamanism. As little as it may be "
@@ -7609,7 +7628,6 @@ msgid "Troll"
 msgstr "Trold"
 
 #: data/core/units/Troll.cfg:19
-#, fuzzy
 msgid ""
 "Trolls have long trouble the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -7621,9 +7639,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Trolde har været en kilde til bekymring for såvel mennesker som dværge som "
-"stadig ikke har afklaret hvor disse skabninger dog kommer fra, og måske "
-"endnu mere hvilken kraft der ligger bag deres unaturlige iver og styrke. En "
-"fuldtudvokset trold står over et menneskse, og, vil selv ubevæbnet være en "
+"stadig ikke har afklaret, hvor disse skabninger dog kommer fra, og måske "
+"endnu mere hvilken kraft der ligger bag deres unaturlige iver og styrke. Når "
+"en fuldtudvokset trold står over et menneske vil den selv ubevæbnet være en "
 "alvorlig trussel i kamp. Deres store køller fungerer som en forlængelse af "
 "deres arme og bruges til at knuse deres bytte.\n"
 "\n"
@@ -7656,7 +7674,6 @@ msgid "Troll Hero"
 msgstr "Troldehelt"
 
 #: data/core/units/Troll_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
@@ -7685,6 +7702,13 @@ msgid ""
 "Special Notes: though unwieldy, a stone thrown by one of these monsters is "
 "much more deadly than any arrow, if it manages to hit."
 msgstr ""
+"Tanken om at kaste med sten i kamp er faldet mange trolde ind, og nogle har "
+"gjort det til deres foretrukne våen. Da egnede stene ikke altid er nemme at "
+"finde, så bærer troldestenslyngeren dem i en sæk på deres skuldre. Læderet "
+"som sækken er fremstillet af kan nemt omformes til en primitiv slynge.\n"
+"\n"
+"Specielle bemærkninger: Selv om den ikke er præcis er en sten kastet af en "
+"af disse monstre meget mere dødelig end en pil, såfremt den rammer."
 
 #: data/core/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -7703,13 +7727,21 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Trolde behøver typisk ikke eller har ikke præference for en strærk armering "
+"under kamp, da »stave og sten« er lige så egnede for dem. Trolde er dog i "
+"flere omgange blever set med rå rustninger og metalhamre. Der spekuleres i "
+"at allierede orker er kilden og producenten til disse; ekspeditioner ind i "
+"flere trolde huller har ikke givet beviser for brug af værktøj, og slet ikke "
+"brugen af metal. Med tanke på hvor stærk en trold er i kamp er "
+"forestillingen om en trold i fuld rustning særdeles urovækkende.\n"
+"\n"
+"Spcielle bemærkninger:"
 
 #: data/core/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Troldehvalp"
 
 #: data/core/units/Troll_Whelp.cfg:20
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -7731,7 +7763,6 @@ msgid "Blood Bat"
 msgstr "Blodflagermus"
 
 #: data/core/units/Undead_Bat_Blood.cfg:19
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -7741,9 +7772,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Blodflagermus er hurtige og kan suge blod fra deres ofre, og dermed kan de "
-"genskabe noget af det liv de selv har mistet fra deres ofre. Deres "
+"genskabe noget af det liv, de selv har mistet fra deres ofre. Deres "
 "blodraseri er så stort, at skindet på disse udøde flyvende bæster er farvet "
-"rødt med ders ofres blod.\n"
+"rødt med deres ofres blod.\n"
 "\n"
 "Specielle bemærkninger:"
 
@@ -7783,6 +7814,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Kun personer med en indgående kendskab til åndemaneri ved hvad der skal "
+"gøres for at forvandle en person til en ond ånd, og det er en hemmelighed "
+"som de ikke deler med andre. Uanset hvad det har udtalt af trolddom er "
+"resultatet et bæst som ingen erindring har om sit liv som menneske, en "
+"skabning som vandrer omkring ligeså nøgen som den dag den blev født, og "
+"mætter sig selv med kødet af de døde.\n"
+"\n"
+"Det er på baggrund af sådanne skabninger at åndemaneri forbandes med stor "
+"had i hele den civiliserede verden.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
@@ -7850,6 +7892,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"En skabning af denne slags er fra en tid, der for længst er forbi. Enhver "
+"som møder en ældgammel lich har langt værre ting at bekymre sig om end "
+"døden.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/Undead_Necro_Ancient_Lich.cfg:70
 #: data/core/units/Undead_Necro_Lich.cfg:75
@@ -7858,7 +7905,7 @@ msgstr "kuldebølge"
 
 #: data/core/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr ""
+msgstr "Sortmagiekspert"
 
 #: data/core/units/Undead_Necro_Dark_Adept.cfg:27
 msgid ""
@@ -7875,6 +7922,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"For at tiltrække udøvere må gevinsten ved den sorte magi være stor da enhver "
+"som fanges i at udøve den i den civiliserede verden står over for en "
+"dødsdom. Og stadig er der dem som forsøger sig indenfor denne magiske "
+"retning, for gevinsten er ikke mindre end udødelighed. Gemt væk i hemmelige "
+"selskaber, eller igennem magiske ordener i underverden drives disse "
+"fanatikere ofte til grænse for deres formåen.\n"
+"\n"
+"Under disse forhold er deres eneste våben den iver de har lagt i deres søgen "
+"efter viden om sort magi.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/Undead_Necro_Dark_Adept.cfg:31
 msgid "shadow wave"
@@ -7897,13 +7955,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Frygten der dannes af den sorte magi kommer delvist fra den manglende viden "
+"om magien blandt det almindelige menneske. Mørke troldmænd er begyndt at "
+"løse hemmelighederne om liv og død, og det er særdeles nemt at bruge denne "
+"viden på voldelig vis.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Lich"
 
 #: data/core/units/Undead_Necro_Lich.cfg:24
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -7920,13 +7983,13 @@ msgid ""
 msgstr ""
 "En lich er en fysisk skal af den mørke magis mål: Missionen for at opnå "
 "udødelighed. Selv om der skal ydes store ofre i gendannelsen som lich så "
-"snydes døden hvilket i den grad gør lichen til en terrorfremkaldende "
-"skabning.Det er sindet som bevares og sjælen som følger efter, mens kroppen "
-"kan svinde bort.\n"
+"snydes døden, hvilket i den grad gør lichen til en terrorfremkaldende "
+"skabning. Det er sindet som bevares og sjælen som følger efter, mens kroppen "
+"svinder bort.\n"
 "\n"
-"Det er ikke kendt måske med undtagelse af den inderste cirkel omkring "
-"åndemaneri om livet er forlænget evigt eller bare forlænges. Men bare at "
-"overveje en sådan ting viser omfanget af hvad de har opnået.\n"
+"Det er ikke kendt, måske med undtagelse af den inderste cirkel omkring "
+"åndemaneri, om livet er forlænget evigt eller bare forlænges. Men bare at "
+"overveje en sådan ting viser omfanget af, hvad de har opnået.\n"
 "\n"
 "Specielle bemærkninger:"
 
@@ -7935,7 +7998,6 @@ msgid "Necromancer"
 msgstr "Åndemaner"
 
 #: data/core/units/Undead_Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -7976,6 +8038,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Blandt en sort magikers skabninger er der nogle som holder mere ved deres "
+"falske liv. De har udstyr, som kan matche bueskytter og de er specielt "
+"udstyret med deres eget arsenal. Deres pilekogger er fyldt med pile der ikke "
+"er fremstillet af træ, men af knoglerne fra deres ofre. De bliver derfor "
+"kaldt »knoglekastere« af deres uheldige fjender.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/Undead_Skele_Chocobone.cfg:3
 msgid "Chocobone"
@@ -7999,7 +8068,6 @@ msgid "Death Knight"
 msgstr "Dødsridder"
 
 #: data/core/units/Undead_Skele_Death_Knight.cfg:26
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and stung by betrayal, have come back to this world as Death Knights. "
@@ -8010,8 +8078,8 @@ msgid ""
 msgstr ""
 "Sagn fortælles om store krigere og generaler, som forbandet af had og en "
 "følelse af at være blevet forrådt, kom tilbage til denne verden som "
-"dødsriddere. Med de samme våben som i levende live, kommanderer de nu udøde "
-"i deres hævnmission.\n"
+"dødsriddere. Med de samme våben som i levende live, har de nu kommando over "
+"udøde i deres hævnmission.\n"
 "\n"
 "Specielle bemærkninger:"
 
@@ -8101,7 +8169,6 @@ msgid "Skeleton Archer"
 msgstr "Skeletbueskytte"
 
 #: data/core/units/Undead_Skeleton_Archer.cfg:18
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -8114,7 +8181,7 @@ msgstr ""
 "En skeletbueskytte er en lille smule forskellig fra skeletter som often ses "
 "i deres selskab - det er en synd imod naturen, en kriger rejst fra de døde "
 "for at kæmpe igen. I deres herres hænder vil disse soldater gøre alt for at "
-"nå de mål der bliver sat for dem. Døden er ikke en trussel for en som "
+"nå de mål, der bliver sat for dem. Døden er ikke en trussel for en som "
 "allerede er død.\n"
 "\n"
 "Specielle bemærkninger:"
@@ -8124,7 +8191,6 @@ msgid "Ghost"
 msgstr "Spøgelse"
 
 #: data/core/units/Undead_Spirit_Ghost.cfg:20
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -8208,7 +8274,6 @@ msgid "Wraith"
 msgstr "Dobbeltgænger"
 
 #: data/core/units/Undead_Spirit_Wraith.cfg:18
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them without "
@@ -8233,7 +8298,6 @@ msgid "Wose"
 msgstr "Træsjæl"
 
 #: data/core/units/Wose.cfg:21
-#, fuzzy
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -8301,7 +8365,6 @@ msgid "Elder Wose"
 msgstr "Træsjæl ældste"
 
 #: data/core/units/Wose_Elder.cfg:20
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -9674,29 +9737,24 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/5p_Auction-X.cfg:19
-#, fuzzy
 msgid "teamname^Northeast"
 msgstr "Nordøst"
 
 #: data/scenarios/multiplayer/5p_Auction-X.cfg:30
-#, fuzzy
 msgid "teamname^Southeast"
-msgstr "Sydvest"
+msgstr "Sydøst"
 
 #: data/scenarios/multiplayer/5p_Auction-X.cfg:41
-#, fuzzy
 msgid "teamname^Southwest"
 msgstr "Sydvest"
 
 #: data/scenarios/multiplayer/5p_Auction-X.cfg:52
-#, fuzzy
 msgid "teamname^Northwest"
 msgstr "Nordvest"
 
 #: data/scenarios/multiplayer/5p_Auction-X.cfg:63
-#, fuzzy
 msgid "teamname^Center"
-msgstr "Vest"
+msgstr "Midt"
 
 #: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
@@ -12069,33 +12127,6 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
-
-#, fuzzy
-#~ msgid "flat"
-#~ msgstr "Nederlag"
-
-#, fuzzy
-#~ msgid "desert"
-#~ msgstr "Ørken"
-
-#, fuzzy
-#~ msgid "forest"
-#~ msgstr "Skov"
-
-#, fuzzy
-#~ msgid "frozen"
-#~ msgstr "ild"
-
-#, fuzzy
-#~ msgid "rough"
-#~ msgstr "berøring"
-
-#, fuzzy
-#~ msgid "cave"
-#~ msgstr "Hule"
-
-#~ msgid "None"
-#~ msgstr "Ingen"
 
 #~ msgid ""
 #~ "Orcish Archers are considered by many of their fellow orcs to be a lesser "
