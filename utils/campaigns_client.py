@@ -244,6 +244,20 @@ class CampaignBrowser:
         data = self.decode_WML(packet)
         return data
 
+    def change_passphrase(self, name, old, new):
+        """
+        Changes the passphrase of a campaign on the server.
+        """
+        request = wmldata.DataSub("change_passphrase")
+        request.set_text_val("name", name)
+        request.set_text_val("passphrase", old)
+        request.set_text_val("new_passphrase", new)
+        packet = self.encode_WML(request)
+        self.send_packet(packet);
+        packet = self.read_packet()
+        data = self.decode_WML(packet)
+        return data
+
     def get_campaign_raw(self, name):
         """
         Downloads the named campaign and returns it as a raw binary WML packet.
@@ -441,6 +455,9 @@ if __name__ == "__main__":
     optionparser.add_option("-U", "--unpack",
         help = "unpack the file UNPACK as a binary WML packet " +
         "(specify the campaign path with -c)")
+    optionparser.add_option("--change-passphrase", nargs = 3,
+        metavar = "CAMPAIGN OLD NEW",
+        help = "Change the passphrase for CAMPAIGN from OLD to NEW")
     options, args = optionparser.parse_args()
 
     port = options.port
@@ -504,6 +521,11 @@ if __name__ == "__main__":
     elif options.remove:
         cs = CampaignBrowser(address)
         data = cs.delete_campaign(options.remove, options.password)
+        for message in data.find_all("message", "error"):
+            print message.get_text_val("message")
+    elif options.change_passphrase:
+        cs = CampaignBrowser(address)
+        data = cs.change_passphrase(*options.change_passphrase)
         for message in data.find_all("message", "error"):
             print message.get_text_val("message")
     elif options.upload:
