@@ -246,7 +246,7 @@ struct dirent *readdir(DIR *dir)
 #define S_IFMT	(S_IFDIR|S_IFREG)
 #endif 
 
-/*#endif /* !DIRENT_PROVIDED_BY_COMPILER */
+#endif /* !DIRENT_PROVIDED_BY_COMPILER */
 
 #define mkdir(a,b) (_mkdir(a))
 
@@ -402,6 +402,21 @@ void get_files_in_dir(const std::string& directory,
 	}
 #endif /* __AMIGAOS4__ */
 
+	struct stat st;
+
+	if (reorder == DO_REORDER) {
+		const char *maincfg = (directory + "/" + MAINCFG).c_str(); 
+		if (stat(maincfg, &st) == 0) {
+			if (files != NULL) {
+				if (mode == ENTIRE_FILE_PATH)
+					files->push_back(maincfg);
+				else
+					files->push_back(MAINCFG);
+			}
+			return;
+		}
+	}
+
 	DIR* dir = opendir(directory.c_str());
 
 	if(dir == NULL) {
@@ -442,24 +457,15 @@ void get_files_in_dir(const std::string& directory,
 		else
 			fullname = (directory + "/") + basename;
 #endif /* __AMIGAOS4__ */
-		struct stat st;
 
 		if (::stat(fullname.c_str(), &st) != -1) {
 			if (S_ISREG(st.st_mode)) {
-				if (reorder == DO_REORDER && strcmp(basename, MAINCFG)==0) {
-					if (files != NULL)
-						files->clear();
-					if (dirs != NULL)
-						dirs->clear();
-			  	}
 				if (files != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
 						files->push_back(fullname);
 					else
 						files->push_back(basename);
 				}
-				if (reorder == DO_REORDER && basename == MAINCFG)
-					break;				
 			} else if (S_ISDIR(st.st_mode)) {
 				if (reorder == DO_REORDER && 
 					    ::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 && 
