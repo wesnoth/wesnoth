@@ -78,6 +78,11 @@ Version 1.3.2+svn:
      to mainline.
    * New tool, change_textdomain, makes it easy to change the name of UMC
      after import to mainline.
+   * Old campaign_delete.pl and campaigns_client.pl have been replaced
+     with a new campaigns_client.py.  Main new features are (a) you can
+     download sets of campaigns using RE wildcards, and (b) It's possible
+     to give a BfW version in place of a port number and it will select
+     the right port.
  * Miscellaneous and bugfixes
    * 1.2 savegames are no longer compatible and thus not loaded
    * fixed a crash if an invalid scenario was loaded (bug #9049)
