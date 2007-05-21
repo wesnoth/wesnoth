@@ -1763,9 +1763,7 @@ static int play_game(int argc, char** argv)
 
 			return 0;
 		} else if(val == "--logdomains") {
-			// domain list is hardcoded here because I don't grok
-			// C++ well enough to add a log class hook to get it.
-			std::cerr << "general, ai, config, display, engine, network, filesystem, audio, paths\n";
+			std::cout << lg::list_logdomains() << "\n";
 			return 0;
 		}
 	}

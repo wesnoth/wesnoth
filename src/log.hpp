@@ -29,6 +29,7 @@ public:
 };
 
 bool set_log_domain_severity(std::string const &name, int severity);
+std::string list_logdomains();
 
 class logger {
 	char const *name_;

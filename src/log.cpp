@@ -78,6 +78,20 @@ bool set_log_domain_severity(std::string const &name, int severity)
 	return true;
 }
 
+std::string list_logdomains()
+{
+	std::vector< logd >::iterator
+		it_begin = log_domains.begin(),
+		it_end = log_domains.end(),
+		it;
+ 	std::string domainlist = "";
+	for(it = it_begin; it != it_end; ++it) {
+		if (it != it_begin)
+			domainlist += ", ";
+		domainlist += it->name_;
+	}
+	return domainlist;
+}
 
 bool logger::dont_log(log_domain const &domain) const
 {
