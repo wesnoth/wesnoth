@@ -412,7 +412,7 @@ void get_files_in_dir(const std::string& directory,
 		LOG_FS << "searching _main.cfg in directory " << directory << '\n';
 		const char *maincfg = (directory + "/" + MAINCFG).c_str(); 
 		if (stat(maincfg, &st) == 0) {
-			LOG_FS << "_main.cfg found at " << maincfg << '\n';
+			LOG_FS << "_main.cfg found : " << maincfg << '\n';
 			if (files != NULL) {
 				if (mode == ENTIRE_FILE_PATH)
 					files->push_back(maincfg);
@@ -476,13 +476,14 @@ void get_files_in_dir(const std::string& directory,
 				if (reorder == DO_REORDER && 
 					    ::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 && 
 					    S_ISREG(st.st_mode)) {
+					LOG_FS << "_main.cfg found : " << fullname << "/" << MAINCFG << '\n';
 					if (files != NULL) {
 						if (mode == ENTIRE_FILE_PATH)
 							files->push_back(fullname + "/" + MAINCFG);
 						else
 							files->push_back(std::string(basename) + "/" + MAINCFG);
 				    	}
-			    	} else if (dirs != NULL) {
+			    } else if (dirs != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
 						dirs->push_back(fullname);
 					else
