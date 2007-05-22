@@ -516,7 +516,7 @@ static surface get_scaled_to_hex(const locator i_locator, COLOUR_ADJUSTMENT adj)
 		res = surface(adjust_surface_colour(res,
 					red_adjust, green_adjust, blue_adjust));
 	}
-
+	/*
 	const surface mask(get_image(image_mask,UNMASKED,NO_ADJUST_COLOUR));
 	if(mask != NULL) {
 		SDL_SetAlpha(mask,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
@@ -524,7 +524,7 @@ static surface get_scaled_to_hex(const locator i_locator, COLOUR_ADJUSTMENT adj)
 
 		//commented out pending reply from SDL team about bug report
 		//SDL_BlitSurface(mask,NULL,result,NULL);
-	}
+	}*/
 	return res;
 }
 
