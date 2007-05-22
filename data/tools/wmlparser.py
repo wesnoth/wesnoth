@@ -275,7 +275,7 @@ class Parser:
                 if not os.path.exists(dirpath): dirpath = None
             else:
                 dirpath = None
-            if dirpath and self.user_dir:
+            if not dirpath and self.user_dir:
                 dirpath = self.user_dir + "/" + macro[1:]
         # If the macro starts with ., look relative to the currently parsed
         # file.
