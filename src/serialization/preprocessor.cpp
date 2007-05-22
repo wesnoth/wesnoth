@@ -87,12 +87,12 @@ public:
 
 preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 	: current_(NULL), defines_(def), textdomain_(PACKAGE),
-	  depth_(0), quoted_(false)
+	  depth_(0), quoted_(false), buffer_size_(0)
 {
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: streambuf(), current_(NULL), defines_(t.defines_),
+	: streambuf(), current_(NULL), defines_(t.defines_), buffer_size_(0),
 	  textdomain_(PACKAGE), depth_(t.depth_), quoted_(t.quoted_)
 {
 }
@@ -116,7 +116,8 @@ int preprocessor_streambuf::underflow()
 	}
 	while (current_) {
 		if (current_->get_chunk()) {
-			if (buffer_size_ >= 2000)
+			if (buffer_size_ >= 3000)
+				//FIXME: this maximum needs to be determined more precisely
 				break;
 		} else {
 			 // automatically restore the previous preprocessor
@@ -150,21 +151,22 @@ preprocessor::~preprocessor()
 	target_.linenum_ = old_linenum_;
 	target_.textdomain_ = old_textdomain_;
 	if (!old_location_.empty()) {
-        std::ostringstream temp;
-		temp << "\376line " << old_linenum_
-             << ' ' << old_location_ << '\n';
-
-        std::string const& s = temp.str();
-        target_.buffer_ << s;
-        target_.buffer_size_ += s.size();
+		target_.buffer_ << "\376line ";
+		std::stringstream numreader;
+		char numreader_c;
+		numreader << old_linenum_;
+		while(numreader.get(numreader_c)) {
+			target_.buffer_.put(numreader_c);
+			++target_.buffer_size_;
+		}
+		target_.buffer_ << ' ' << old_location_ << '\n';
+		const int fixed_char_count = 8;
+		target_.buffer_size_ += old_location_.size() + fixed_char_count;
     }
 	if (!old_textdomain_.empty()) {
-        std::ostringstream temp;
-		temp << "\376textdomain " << old_textdomain_ << '\n';
-
-        std::string const& s = temp.str();
-        target_.buffer_ << s;
-        target_.buffer_size_ += s.size();
+		target_.buffer_ << "\376textdomain " << old_textdomain_ << '\n';
+		const int fixed_char_count = 13;
+		target_.buffer_size_ += old_textdomain_.size() + fixed_char_count;
     }
 	--target_.depth_;
 }
@@ -253,13 +255,17 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
 	t.linenum_ = linenum;
 	t.textdomain_ = domain;
 
-    std::ostringstream temp;
-	temp << "\376line " << linenum << ' ' << t.location_
-	          << "\n\376textdomain " << domain << '\n';
-
-    std::string const& ts = temp.str();
-    t.buffer_ << ts;
-    t.buffer_size_ += ts.size();
+	t.buffer_ << "\376line ";
+	std::stringstream numreader;
+	char numreader_c;
+	numreader << linenum;
+	while(numreader.get(numreader_c)) {
+		t.buffer_.put(numreader_c);
+		++t.buffer_size_;
+	}
+	t.buffer_ << ' ' << t.location_ << "\n\376textdomain " << domain << '\n';
+	const int fixed_char_count = 21;
+	t.buffer_size_ += t.location_.size() + domain.size() + fixed_char_count;
 
 	push_token('*');
 }
@@ -349,14 +355,17 @@ void preprocessor_data::put(char c)
 		if (c == '\n')
 			--target_.linenum_;
 
-        std::ostringstream temp;
-		temp << "\376line " << target_.linenum_
-             << ' ' << target_.location_ << '\n';
-
-        std::string const& s = temp.str();
-        target_.buffer_ << s;
-        target_.buffer_size_ += s.size();
-
+		target_.buffer_ << "\376line ";
+		std::stringstream numreader;
+		char numreader_c;
+		numreader << target_.linenum_;
+		while(numreader.get(numreader_c)) {
+			target_.buffer_.put(numreader_c);
+			++target_.buffer_size_;
+		}
+		target_.buffer_ << ' ' << target_.location_ << '\n';
+		const int fixed_char_count = 8;
+		target_.buffer_size_ += target_.location_.size() + fixed_char_count;
 	}
 	if (c == '\n')
 		++target_.linenum_;
