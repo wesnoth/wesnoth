@@ -259,6 +259,9 @@ int main(int argc, char** argv)
 		return 0;
 	}
 	preproc_map defines_map;
+	// define editor to do conditionnal loading in the main cfg
+	defines_map["EDITOR"] = preproc_define();
+
 	defines_map["MEDIUM"] = preproc_define();
 	defines_map["NORMAL"] = preproc_define();
 	// Multiplayer define is needed to access the random map generator
