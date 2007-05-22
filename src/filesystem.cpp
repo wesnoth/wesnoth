@@ -409,8 +409,10 @@ void get_files_in_dir(const std::string& directory,
 	struct stat st;
 
 	if (reorder == DO_REORDER) {
+		LOG_FS << "searching _main.cfg in directory " << directory << '\n';
 		const char *maincfg = (directory + "/" + MAINCFG).c_str(); 
 		if (stat(maincfg, &st) == 0) {
+			LOG_FS << "_main.cfg found at " << maincfg << '\n';
 			if (files != NULL) {
 				if (mode == ENTIRE_FILE_PATH)
 					files->push_back(maincfg);
