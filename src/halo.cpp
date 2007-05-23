@@ -241,6 +241,11 @@ manager::manager(display& screen) : old(disp)
 manager::~manager()
 {
 	haloes.clear();
+	invalidated_haloes.clear(); 
+	new_haloes.clear();
+	deleted_haloes.clear();
+	changing_haloes.clear();
+
 	disp = old;
 }
 
