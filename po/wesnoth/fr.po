@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-17 11:50+0200\n"
-"PO-Revision-Date: 2007-03-28 14:22+0200\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
-"Language-Team:  <wesnoth@ml.free.fr>\n"
+"PO-Revision-Date: 2007-05-23 01:12+0100\n"
+"Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
+"Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,10 +41,10 @@ msgstr ""
 "Permet à cette unité de soigner les unités adjacentes au début de chaque "
 "tour.\n"
 "\n"
-"Une unité ainsi soignée pourra retrouver jusqu'à 4 points de vie par tour, "
-"ou empêcher le poison d'agir pendant ce tour.\n"
-"Une unité empoisonnée ne pourra pas être traitée par ce soigneur et devra se "
-"rendre à un village ou chercher une unité avec la capacité de guérison."
+"Une unité soignée peut soit regagner jusqu'à 4 points de vie, soit ne pas "
+"subir les effets du poison ce tour-ci.\n"
+"Une unité empoisonnée ne peut pas être traitée par un soigneur, mais devra "
+"trouver un village ou une unité avec la capacité de guérison."
 
 #: data/abilities.cfg:27
 msgid "heals +8"
@@ -66,10 +66,10 @@ msgstr ""
 "magiques pour soigner plus rapidement que la normale sur le champ de "
 "bataille.\n"
 "\n"
-"Une unité ainsi soignée pourra retrouver jusqu'à 8 points de vie par tour, "
-"ou empêcher le poison d'agir pendant ce tour.\n"
-"Une unité empoisonnée ne pourra pas être traitée par ce soigneur et devra se "
-"rendre à un village ou chercher une unité avec la capacité de guérison."
+"Une unité soignée peut soit regagner jusqu'à 8 points de vie, soit ne pas "
+"subir les effets du poison ce tour-ci.\n"
+"Une unité empoisonnée ne peut pas être traitée par un soigneur, mais devra "
+"trouver un village ou une unité avec la capacité de guérison."
 
 #: data/abilities.cfg:42
 msgid "cures"
@@ -82,8 +82,8 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 "Guérison : \n"
-"Un guérisseur peut guérir une unité empoisonnée. L'unité guérie ne reçoit "
-"pas de soins additionnels lorsqu'elle est guérie du poison."
+"Un guérisseur peut guérir une unité empoisonnée, qui ne recevra alors pas de "
+"soins supplémentaires."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -134,10 +134,9 @@ msgstr ""
 "Cette unité peut commander les unités alliées présentes à ses côtés, les "
 "rendant meilleures au combat.\n"
 "\n"
-"Les unités alliées de niveau inférieur feront plus de dégâts en combat. "
-"Quand une unité d'un niveau inférieur et dans la même armée qu'un commandant "
-"proche participe à un combat, ses attaques font 25 % de dégâts "
-"supplémentaires pour chaque niveau d'écart."
+"Les attaques des unités de niveau inférieur aux côtés du commandant et "
+"appartenant au même camp feront 25% de dégâts supplémentaires pour chaque "
+"niveau d'écart entre elles et lui."
 
 # FIXME: Skirmisher = tirailleur??
 # (breversa : skirmish = escarmouche)
@@ -173,7 +172,7 @@ msgstr ""
 "plus fortes et les unités chaotiques plus faibles.\n"
 "\n"
 "Toutes les unités adjacentes à cette unité combattront la nuit comme si "
-"c'était le crépuscule et comme s'il faisait jour au moment du crépuscule."
+"c'était le crépuscule, et comme s'il faisait jour au crépuscule."
 
 #: data/abilities.cfg:328
 msgid "teleport"
@@ -253,7 +252,7 @@ msgstr ""
 
 #: data/abilities.cfg:405
 msgid "berserk"
-msgstr "fureur berzerk"
+msgstr "fureur berserk"
 
 #: data/abilities.cfg:407
 msgid ""
@@ -261,9 +260,9 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Fureur berzerk :\n"
-"Offensivement et défensivement, cette attaque poursuit le combat jusqu'à ce "
-"que l'un des deux protagonistes meure, ou jusqu'à un maximum de 30 tours."
+"Fureur berserk :\n"
+"En attaque comme en défense, cette attaque force le combat jusqu'à la mort "
+"de l'un des deux protagonistes ou jusqu'à un maximum de 30 tours."
 
 #: data/abilities.cfg:415
 msgid "backstab"
@@ -293,26 +292,24 @@ msgid ""
 "doesn't work on Undead or units in villages.)"
 msgstr ""
 "Peste :\n"
-"Quand une unité est tuée par une telle attaque, elle est remplacée par une "
-"unité identique et dans la même armée que celle ayant porté l'attaque (cela "
-"ne marche pas contre les morts-vivants ou les unités stationnées dans les "
-"villages)."
+"Une unité tuée par une telle attaque est remplacée par une unité identique "
+"appartenant à la même armée que celle ayant la peste (Ne fonctionne pas sur "
+"les morts-vivants ou sur les unités situées dans les villages)."
 
 #: data/abilities.cfg:443
 msgid "slows"
 msgstr "ralentissement"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled."
 msgstr ""
 "Ralentissement:\n"
-"Cette attaque ralentit la cible jusqu'à la fin de son tour. Le "
-"ralentissement diminue de moitié les dégâts causés par les attaques de la "
-"cible et diminue de moitié le mouvement de celle-ci (arrondi au supérieur)."
+"Cette attaque ralentit la cible jusqu'à la fin de son tour. Une unité "
+"ralentie inflige moitié moins de dégâts et voit son coût de mouvement "
+"multiplié par deux."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -326,7 +323,7 @@ msgid ""
 msgstr ""
 "Pétrification :\n"
 "Cette attaque transforme la cible en pierre. Les unités ainsi pétrifiées ne "
-"peuvent plus ni se déplacer, ni attaquer."
+"peuvent plus se déplacer ou attaquer."
 
 #: data/abilities.cfg:460
 msgid "marksman"
@@ -353,10 +350,9 @@ msgstr ""
 "Magique :\n"
 "Cette attaque a toujours 70 % de chance d'atteindre sa cible."
 
-# FIXME : swarm c'est pas évident à traduire correctement
 #: data/abilities.cfg:482
 msgid "swarm"
-msgstr "assaut multiple"
+msgstr "déferlement"
 
 #: data/abilities.cfg:484
 msgid ""
@@ -366,7 +362,7 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
-"Assaut multiple:\n"
+"Déferlement :\n"
 "Le nombre de frappes de cette attaque diminue lorsque l'unité est blessée. "
 "La diminution est proportionnelle aux % de points de vie restant. Par "
 "exemple une unité avec 3/4 de ses points de vie aura 3/4 de ses frappes."
@@ -382,8 +378,8 @@ msgid ""
 "take double damage from the target's counterattack."
 msgstr ""
 "Charge :\n"
-"Cette attaque inflige le double de dégâts à la cible. Cependant cette unité "
-"recevra également le double de dégâts lors de la contre-attaque."
+"Cette attaque inflige le double de dégâts à la cible, mais l'attaquant "
+"recevra également le double de dégâts lors de la riposte."
 
 #: data/abilities.cfg:503
 msgid "drains"
@@ -396,8 +392,8 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "Drain :\n"
-"Cette unité draine la vie des unités vivantes, se régénérant ainsi de la "
-"moitié des dégâts causés (arrondis par défaut)."
+"Cette unité draine la vie des unités vivantes et se régénère de la moitié "
+"des dégâts causés (arrondis à l'inférieur)."
 
 #: data/abilities.cfg:511
 msgid "firststrike"
@@ -423,8 +419,8 @@ msgid ""
 msgstr ""
 "Empoisonnement :\n"
 "Cette attaque empoisonne la cible. Les unités empoisonnées perdent 8 points "
-"de vie à chaque tour jusqu'à ce qu'elles soient guéries, ou n'aient plus "
-"qu'un seul point de vie."
+"de vie à chaque tour jusqu'à ce qu'elles soient guéries ou qu'elles n'aient "
+"plus qu'un seul point de vie."
 
 #: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
 #: data/campaigns/Heir_To_The_Throne.cfg:33
@@ -432,11 +428,11 @@ msgstr ""
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
 msgid "Artwork and Graphics Designers"
-msgstr "Graphistes"
+msgstr "Illustrations et graphismes"
 
 #: data/about.cfg:63
 msgid "Music"
-msgstr "Musiciens"
+msgstr "Musique"
 
 #: data/about.cfg:75
 msgid "Sound effects"
@@ -448,11 +444,11 @@ msgstr "Scénaristes"
 
 #: data/about.cfg:101
 msgid "Multiplayer Developers"
-msgstr "Développeurs multi-joueurs"
+msgstr "Développeurs multijoueurs"
 
 #: data/about.cfg:111
 msgid "Multiplayer Maps"
-msgstr "Cartes multi-joueurs"
+msgstr "Cartes multijoueurs"
 
 #: data/about.cfg:121
 msgid "Packagers"
@@ -618,7 +614,7 @@ msgstr "Bots"
 
 #: data/amla.cfg:9
 msgid ", MAX XP +25%"
-msgstr ", XP MAX +25%"
+msgstr ", XP MAX + 25 %"
 
 #: data/amla.cfg:9
 msgid "Max HP bonus +"
@@ -646,10 +642,10 @@ msgid ""
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
 "enemies, and their morning star crushes those who are left."
 msgstr ""
-"Parmi les meilleurs des hommes des plaines, les seigneurs des chevaux sont à "
-"la tête de leurs clans et respectés de tous, amis comme ennemis. Leur épée "
-"peut tuer la plupart des ennemis ordinaires et leur étoile du matin écrase "
-"ceux qui restent."
+"Parmi les meilleurs des hommes des plaines, les seigneurs des chevaux "
+"dirigent leurs clans et sont respectés de tous, amis comme ennemis. Leur "
+"épée peut tuer la plupart des adversaires ordinaires et leur étoile du matin "
+"écrase ceux qui restent."
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:19
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:27
@@ -879,10 +875,9 @@ msgid ""
 "commanding their comrades, and they are the ones that become captains of the "
 "armies of the Clans."
 msgstr ""
-"Les nobles des plaines sont entraînés avec le reste de leurs cavaliers dans "
-"le but de devenir de grands guerriers. Toutefois, ils sont aussi entraînés à "
-"commander leurs camarades ; ce sont eux qui deviennent les capitaines des "
-"armées des clans."
+"Les nobles des plaines sont entraînés avec les autres cavaliers pour devenir "
+"de grands guerriers. Et ils sont aussi entraînés à commander leurs "
+"camarades ; ce sont eux qui deviennent les capitaines des armées des clans."
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
@@ -895,10 +890,9 @@ msgid ""
 "battlefield with great speed, and can provide much needed assistance to "
 "different fronts."
 msgstr ""
-"Commandants des plaines, les guerriers montés sont doués dans l'utilisation "
-"de l'épée et de l'étoile du matin. Montés à cheval, ils se déplacent à "
-"travers le champ de bataille avec célérité et peuvent fournir une assistance "
-"salutaire sur plusieurs fronts."
+"Commandants des plaines, les guerriers montés utilisent habilement l'épée et "
+"l'étoile du matin. Ils parcourent rapidement le champ de bataille sur leur "
+"cheval et peuvent fournir une assistance salutaire sur plusieurs fronts."
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:27
 #: data/units/Orcish_Ruler.cfg:26 data/units/Orcish_Sovereign.cfg:27
@@ -908,7 +902,7 @@ msgstr "grande épée"
 
 #: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr "Dragon squelettique"
+msgstr "Dragon squelette"
 
 #: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:25
 msgid ""
@@ -921,9 +915,9 @@ msgstr ""
 "Jadis une des plus puissantes des créatures vivantes, ce redoutable dragon "
 "n'est plus qu'os blanchis et tendons noircis. Longtemps après sa mort, il "
 "fut ressuscité par les sombres pouvoirs de la nécromancie, dont il est "
-"désormais le servant. Peut-être que le dragon squelettique n'est rien "
-"d'autres qu'un vieux tas d'os, mais peu parmi ceux qui ont pensé cela ont "
-"vécu suffisamment longtemps pour changer d'avis."
+"désormais le servant. Peut-être que le dragon squelette n'est rien d'autres "
+"qu'un vieux tas d'os, mais peu parmi ceux qui ont pensé cela ont vécu "
+"suffisamment longtemps pour changer d'avis."
 
 #: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:28
 msgid "jaw"
@@ -2164,7 +2158,7 @@ msgstr "Alliance de la lumière"
 
 #: data/factions/drakes-aoh.cfg:4 data/factions/drakes-default.cfg:4
 msgid "Drakes"
-msgstr "Drakes"
+msgstr "Dracans"
 
 #: data/factions/knalgans-aoh.cfg:4 data/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
@@ -4042,7 +4036,7 @@ msgid ""
 "off by quitting the game."
 msgstr ""
 "\n"
-"Passe en mode débug (cela ne fonctionne pas en mode multi-joueur). Le mode "
+"Passe en mode débug (cela ne fonctionne pas en mode multijoueur). Le mode "
 "débug est désactivé à la fin de la partie."
 
 #: data/help.cfg:570
@@ -4055,7 +4049,7 @@ msgstr ""
 
 #: data/help.cfg:575
 msgid "Multiplayer commands"
-msgstr "Commandes multi-joueurs"
+msgstr "Commandes multijoueurs"
 
 #: data/help.cfg:577
 msgid ""
@@ -4095,8 +4089,8 @@ msgid ""
 "difficulties."
 msgstr ""
 "\n"
-"Éjecte un utilisateur en mode multi-joueur. Il pourra rejoindre la partie. "
-"En général c'est un moyen amical d'enlever quelqu'un qui a des problèmes de "
+"Éjecte un utilisateur en mode multijoueur. Il pourra rejoindre la partie. En "
+"général c'est un moyen amical d'enlever quelqu'un qui a des problèmes de "
 "connexion ou d'autres problèmes."
 
 #: data/help.cfg:589
@@ -4105,8 +4099,8 @@ msgid ""
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
 "\n"
-"Éjecte et bannit un utilisateur en mode multi-joueur, ainsi que l'IP "
-"utilisée par cet utilisateur."
+"Éjecte et bannit un utilisateur en mode multijoueur, ainsi que l'IP utilisée "
+"par cet utilisateur."
 
 #: data/help.cfg:592
 msgid ""
@@ -5290,8 +5284,8 @@ msgid ""
 msgstr ""
 "Dans le ciel noir soufflaient les vents du nord,\n"
 "La lune luisait aux confins de l'aurore,\n"
-"Brave était le drake qui osa lâcher\n"
-"Son toit pour voler au Basilic l'or.\n"
+"Brave était le dracan qui osa lâcher\n"
+"Son toit pour voler au basilic l'or.\n"
 "\n"
 "Par cette nuit noire aux cieux si agités,\n"
 "Il renonça à tout ce qu'il savait,\n"
@@ -5305,7 +5299,7 @@ msgstr ""
 "\n"
 "Dans le ciel noir soufflaient les vents du nord,\n"
 "Les années ont passé, ces jours sont morts,\n"
-"Ici gît le drake qui osa lâcher\n"
+"Ici gît le dracan qui osa lâcher\n"
 "Son toit pour voler au Basilic l'or.\n"
 "(inscrit par Flametrooper)"
 
@@ -7103,19 +7097,19 @@ msgstr ""
 
 #: data/units/Drake_Blademaster.cfg:3
 msgid "Drake Blademaster"
-msgstr "Maître-lame drake"
+msgstr "Maître-lame dracan"
 
 #: data/units/Drake_Blademaster.cfg:18
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
 msgstr ""
-"Les drakes qui maîtrisent l'épée forment un ordre spécial, dont la marque "
-"est la peinture noire et blanche qu'ils arborent dans les batailles."
+"Les dracans qui maîtrisent l'épée forment un ordre spécial, reconnaissable à "
+"la peinture noire et blanche qu'ils arborent dans les batailles."
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
-msgstr "Drake ardent"
+msgstr "Pyrodracan"
 
 #: data/units/Drake_Burner.cfg:18
 msgid ""
@@ -7124,14 +7118,14 @@ msgid ""
 "This, coupled with their sheer size and clawed hands makes for a dangerous "
 "foe in combat."
 msgstr ""
-"Les drakes ardents forment la fière minorité qui a hérité des forces de "
-"leurs lointains ancêtres, particulièrement leur capacité de cracher du feu. "
-"Cela, ajouté à leur taille imposante et à leurs mains griffues, en font des "
+"Les pyrodracans forment la fière minorité qui a hérité des forces de leurs "
+"lointains ancêtres, particulièrement leur capacité de cracher du feu. Cela, "
+"ajouté à leur taille imposante et à leurs mains griffues, en font des "
 "ennemis redoutables en combat."
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
-msgstr "Cogneur drake"
+msgstr "Cogneur dracan"
 
 #: data/units/Drake_Clasher.cfg:20
 msgid ""
@@ -7150,25 +7144,25 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
-"Les cogneurs drakes ne sont ni capables de voler ni de cracher du feu, et "
+"Les cogneurs dracans ne sont ni capables de voler ni de cracher du feu, et "
 "nombreux sont ceux qui supposent que leur spécialisation dans le combat au "
 "corps à corps est une façon d'utiliser ceux qui, sinon, ne seraient qu'un "
-"poids pour la société drake. Il est sans doute vrai que les cogneurs drake "
+"poids pour la société des dracans. Il est sans doute vrai que ces cogneurs "
 "ont un handicap naturel dans ces domaines, mais ceux qui croient en cette "
-"théorie ne réalisent pas à quel point les cogneurs drakes sont efficaces "
-"quand il s'agit de combattre d'autres drakes.\n"
+"théorie ne réalisent pas à quel point ils sont efficaces quand il s'agit de "
+"combattre d'autres dracans.\n"
 "\n"
-"Ce sont eux qui forment la caste des juges dans la société drake. Bien que "
-"leur armement soit surtout cérémonial, leurs armes restent néanmoins très "
-"efficaces. Leurs rencontres avec d'autres races leur ont prouvé que leur "
-"taille et leur force étaient des armes à part entière, et que combiné avec "
-"les armes de leur caste, ils combattaient sans souffrir des faiblesses "
+"Ce sont eux qui forment la caste des juges dans la société dracanne. Bien "
+"que leur armement soit surtout cérémonial, leurs armes restent néanmoins "
+"très efficaces. Leurs rencontres avec d'autres races leur ont prouvé que "
+"leur taille et leur force étaient des armes à part entière, et que combiné "
+"avec les armes de leur caste, ils combattaient sans souffrir des faiblesses "
 "inhérentes à leur race et bénéficiaient d'une plus faible vulnérabilité aux "
 "lances et aux flèches."
 
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
-msgstr "Exécuteur drake"
+msgstr "Exécuteur dracan"
 
 #: data/units/Drake_Enforcer.cfg:20
 msgid ""
@@ -7176,13 +7170,13 @@ msgid ""
 "hours at the forge have provided them with a bristling array of weaponry, "
 "and have clad them head to toe in shining armor."
 msgstr ""
-"Les grands exécuteurs drakes incarnent la force brute de leur espèce. De "
-"longues heures à la forge leur ont fourni un arsenal impressionnant et les "
-"ont couverts d'une armure étincelante."
+"Les grands exécuteurs dracans incarnent la force brute propre à leur espèce. "
+"De longues heures à la forge leur ont fourni un arsenal impressionnant et "
+"les ont couverts d'une armure étincelante."
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
-msgstr "Combattant drake"
+msgstr "Combattant dracan"
 
 #: data/units/Drake_Fighter.cfg:18
 msgid ""
@@ -7190,10 +7184,10 @@ msgid ""
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
 "join the ranks of the elite Drake Warriors."
 msgstr ""
-"Non seulement les combattants drakes manient leurs cimeterres de façon "
+"Non seulement les combattants dracans manient leurs cimeterres de façon "
 "mortelle, mais ils sont également capables de souffler le feu légendaire de "
 "leurs lointains ancêtres. Les combattants les plus doués rejoignent les "
-"rangs des guerriers drakes d'élite."
+"rangs des guerriers dracans d'élite."
 
 #: data/units/Drake_Fighter.cfg:63
 msgid "scimitar"
@@ -7201,7 +7195,7 @@ msgstr "cimeterre"
 
 #: data/units/Drake_Fire.cfg:3
 msgid "Fire Drake"
-msgstr "Drake incendiaire"
+msgstr "Dracan incendiaire"
 
 #: data/units/Drake_Fire.cfg:17
 msgid ""
@@ -7209,14 +7203,14 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
-"Les grands drakes incendiaires sont les maîtres de leur feu intérieur. "
+"Les grands dracans incendiaires sont les maîtres de leur feu intérieur. "
 "Revêtus d'une armure étincelante, ils vomissent des colonnes de feu sur ceux "
 "qui s'opposent à eux, une démonstration de la force et de la majesté de leur "
 "espèce."
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
-msgstr "Drake cœur-de-flamme"
+msgstr "Dracan cœur-de-flamme"
 
 #: data/units/Drake_Flameheart.cfg:27
 msgid ""
@@ -7227,17 +7221,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"On raconte que les drakes les plus anciens - descendants directs des dragons "
-"eux-mêmes, ont des veines dans lesquelles circulent du feu plutôt que du "
-"sang. Qu'ils puissent cracher du feu comme ils le font rend cette croyance "
-"plus crédible, bien que pour quelque raison personne n'ait essayé d'en "
-"ouvrir un pour s'en assurer.\n"
+"On raconte que les dracans les plus anciens - descendants directs des "
+"dragons eux-mêmes, ont des veines dans lesquelles circulent du feu plutôt "
+"que du sang. Qu'ils puissent cracher du feu comme ils le font rend cette "
+"croyance plus crédible, bien que pour quelque raison personne n'ait essayé "
+"d'en ouvrir un pour s'en assurer.\n"
 "\n"
 "Remarque : "
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
-msgstr "Drake flamboyant"
+msgstr "Dracan flamboyant"
 
 #: data/units/Drake_Flare.cfg:26
 msgid ""
@@ -7247,15 +7241,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les drakes sont une race ancienne, assez sage pour écouter ses chefs "
-"naturels. Ceux appelés « flamboyants » par leurs ennemis sont les drakes qui "
-"aspirent à être de tels chefs, en temps de guerre ou de paix.\n"
+"Les dracans sont une race ancienne, assez avisée pour écouter ses chefs "
+"naturels. Ceux appelés « flamboyants » par leurs ennemis sont les dracans "
+"qui aspirent à être de tels chefs, en temps de guerre ou de paix.\n"
 "\n"
 "Remarque : "
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
-msgstr "Gladiateur drake"
+msgstr "Gladiateur dracan"
 
 #: data/units/Drake_Gladiator.cfg:18
 msgid ""
@@ -7269,14 +7263,14 @@ msgstr ""
 "Le gladiateur a pris un chemin complètement différent des tailladeurs. "
 "Plutôt que de s'appuyer sur l'entraînement, ils ont choisi de concentrer "
 "leurs efforts sur la fabrication de leur armement. Ils sont les forgerons de "
-"la société drake et par conséquent possèdent les meilleures armes - les "
+"la société dracanne et par conséquent possèdent les meilleures armes - les "
 "lames et les lances les plus tranchantes, et les massues qui complètent leur "
 "arsenal déjà impressionnant. L'attention intense qu'ils portent à leurs "
 "armes diminue légèrement leurs capacités défensives."
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
-msgstr "Drake tempête"
+msgstr "Dracan tempête"
 
 #: data/units/Drake_Glider.cfg:21
 msgid ""
@@ -7291,16 +7285,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les drakes tempête portent une armure aussi légère que possible, afin de "
+"Les dracans tempête portent une armure aussi légère que possible, afin de "
 "pouvoir échapper le plus vite possible à leurs ennemis lorsqu'ils quittent "
-"leurs cavernes. Ces drakes sont des combattants compétents et possèdent le "
-"feu intérieur qu'ils partagent avec les membres de leur espèce. Les drakes "
-"tempête peuvent utiliser leur grande vitesse pour se jeter violemment contre "
-"leurs ennemis. Les meilleurs d'entre eux peuvent espérer être acceptés parmi "
-"les rangs des drakes tornade. De leur point de vue aérien, ces drakes "
-"peuvent voir au travers de la plupart des lignes de défenses. Leur habileté "
-"au vol leur permet de viser avec précision des ennemis au travers de telles "
-"lignes.\n"
+"leurs cavernes. Ces dracans sont des combattants compétents et possèdent le "
+"feu intérieur commun aux membres de leur espèce ; ils peuvent utiliser leur "
+"grande vitesse pour se jeter violemment contre leurs ennemis. Les meilleurs "
+"d'entre eux peuvent espérer être acceptés parmi les rangs des dracans "
+"tornade. Du haut du ciel, ces dracans peuvent voir au travers de la plupart "
+"des lignes de défenses. Leur habileté au vol leur permet de viser avec "
+"précision des ennemis au travers de telles lignes.\n"
 "\n"
 "Remarque : "
 
@@ -7311,7 +7304,7 @@ msgstr "atterrissage"
 
 #: data/units/Drake_Hurricane.cfg:3
 msgid "Hurricane Drake"
-msgstr "Drake ouragan"
+msgstr "Dracan ouragan"
 
 #: data/units/Drake_Hurricane.cfg:30
 msgid ""
@@ -7321,16 +7314,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Maîtres du domaine aérien, les drakes ouragans forment l'élite des drakes "
-"ayant le don de voler. S'élevant haut dans les airs, ils peuvent voir au-"
-"delà de la plupart des couvertures défensives et cracher du feu sur leurs "
-"ennemis en toute impunité.\n"
+"Maîtres du ciel, les dracans ouragans forment l'élite des dracans pouvant "
+"voler. S'élevant haut dans les airs, ils peuvent voir au-delà de la plupart "
+"des couvertures défensives et cracher du feu sur leurs ennemis en toute "
+"impunité.\n"
 "\n"
 "Remarque : "
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
-msgstr "Drake infernal"
+msgstr "Dracan infernal"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -7340,7 +7333,7 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
-"Les silhouettes volantes connues sous le nom de drakes infernaux sont les "
+"Les silhouettes volantes connues sous le nom de dracans infernaux sont les "
 "maîtres du feu qu'ils crachent et rivalisent avec leurs prédécesseurs les "
 "dragons dans leur capacité de l'utiliser. Cette capacité naturelle les "
 "immunise presque au feu. Leur armure brillante couleur flamme est une marque "
@@ -7348,7 +7341,7 @@ msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
-msgstr "Drake tornade"
+msgstr "Dracan tornade"
 
 #: data/units/Drake_Sky.cfg:29
 msgid ""
@@ -7361,8 +7354,8 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les drakes tornade sont réellement les rois du ciel. Utilisant leur élan et "
-"leur souffle ardent, ces drakes sont un fléau pour beaucoup. Ils fondent "
+"Les dracans tornade sont réellement les rois du ciel. Utilisant leur élan et "
+"leur souffle ardent, ces dracans sont un fléau pour beaucoup. Ils fondent "
 "rapidement sur leurs proies et disparaissent bien avant que quiconque ne "
 "puisse les arrêter. En attaquant du ciel, ils peuvent tirer avec précision "
 "sur les positions de quiconque aurait un important avantage défensif contre "
@@ -7372,7 +7365,7 @@ msgstr ""
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
-msgstr "Tailladeur drake"
+msgstr "Tailladeur dracan"
 
 #: data/units/Drake_Slasher.cfg:20
 msgid ""
@@ -7402,7 +7395,7 @@ msgstr "hallebarde"
 
 #: data/units/Drake_Warden.cfg:3
 msgid "Drake Warden"
-msgstr "Gardien drake"
+msgstr "Gardien dracan"
 
 #: data/units/Drake_Warden.cfg:21
 msgid ""
@@ -7422,7 +7415,7 @@ msgstr ""
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
-msgstr "Guerrier drake"
+msgstr "Guerrier dracan"
 
 #: data/units/Drake_Warrior.cfg:17
 msgid ""
@@ -7430,7 +7423,7 @@ msgid ""
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike withering blows, and to withstand punishment in equal measure."
 msgstr ""
-"Les guerriers drakes manient leurs lames avec une grande habileté et sont "
+"Les guerriers dracans manient leurs lames avec une grande habileté et sont "
 "capables de souffler le feu légendaire de leurs lointains ancêtres. La "
 "grande force qui les caractérise leur permet de donner des coups "
 "dévastateurs et également de résister aux attaques punitives."
@@ -11545,7 +11538,7 @@ msgstr "Campagne"
 
 #: src/dialogs.cpp:399 src/game.cpp:1191
 msgid "Multiplayer"
-msgstr "Multi-joueurs"
+msgstr "Multijoueurs"
 
 #: src/dialogs.cpp:401
 msgid "Tutorial"
@@ -11832,7 +11825,7 @@ msgstr "Se connecter au serveur officiel"
 
 #: src/game.cpp:1173
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Se connecter sur le serveur multi-joueurs officiel de Wesnoth"
+msgstr "Se connecter sur le serveur multijoueurs officiel de Wesnoth"
 
 #: src/game.cpp:1175 src/multiplayer_lobby.cpp:522
 msgid "Join Game"
@@ -11856,7 +11849,7 @@ msgstr "Jeu en chaise tournante"
 
 #: src/game.cpp:1182
 msgid "Play a multiplayer game sharing the same machine"
-msgstr "Faire une partie multi-joueurs en partageant la même machine"
+msgstr "Faire une partie multijoueurs en partageant la même machine"
 
 #: src/game.cpp:1184
 msgid "Human vs AI"
@@ -11911,7 +11904,7 @@ msgstr "Détails des erreurs :"
 #: src/game.cpp:1435
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
-"Attention : Erreur lors du chargement des fichiers de configuration du jeu : "
+"Attention : erreur lors du chargement des fichiers de configuration du jeu : "
 "« "
 
 #: src/game.cpp:1485
@@ -12080,7 +12073,7 @@ msgstr "Aide de La bataille pour Wesnoth"
 
 #: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
-msgstr "Erreur d'analyse lors de l'analyse le texte d'aide :"
+msgstr "Erreur d'analyse lors de la lecture du texte d'aide :"
 
 #: src/intro.cpp:93
 msgid "Next"
@@ -12353,11 +12346,11 @@ msgstr "Renommer l'unité"
 
 #: src/menu_events.cpp:1221
 msgid "Place Label"
-msgstr "Placez l'étiquette"
+msgstr "Placez une note"
 
 #: src/menu_events.cpp:1222
 msgid "Label:"
-msgstr "Étiquette : "
+msgstr "Note : "
 
 #: src/menu_events.cpp:1307
 msgid "Search"
@@ -12436,8 +12429,7 @@ msgstr "Commande inconnue : "
 
 #: src/menu_events.cpp:1579
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
-"Impossible de trouver une étiquette ou une unité contenant : « $search »."
+msgstr "Impossible de trouver une note ou une unité contenant : « $search »."
 
 #: src/menu_events.cpp:1711
 msgid "prompt^Command:"
@@ -12544,7 +12536,7 @@ msgstr "Ère non disponible"
 #: src/multiplayer.cpp:375 src/multiplayer.cpp:390
 #: src/multiplayer_wait.cpp:234
 msgid "No multiplayer sides found"
-msgstr "Aucun camp multi-joueurs"
+msgstr "Aucun camp multijoueurs"
 
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:358
 #: src/multiplayer_connect.cpp:455
@@ -12592,7 +12584,7 @@ msgstr "Aucun chef pour la faction $faction n'est trouvable"
 #: src/multiplayer_connect.cpp:736 src/multiplayer_lobby.cpp:519
 #: src/multiplayer_wait.cpp:155
 msgid "Game Lobby"
-msgstr "Le Vestibule"
+msgstr "Vestibule"
 
 #: src/multiplayer_connect.cpp:749
 msgid "Player/Type"
@@ -12641,7 +12633,7 @@ msgstr "Vide"
 
 #: src/multiplayer_connect.cpp:1263
 msgid "This is not a multiplayer save"
-msgstr "Cette sauvegarde ne provient pas d'un jeu multi-joueurs"
+msgstr "Cette sauvegarde ne provient pas d'un jeu multijoueurs"
 
 #: src/multiplayer_connect.cpp:1325
 msgid "Cannot find era $era"
@@ -12706,7 +12698,7 @@ msgstr "Paramètres..."
 
 #: src/multiplayer_create.cpp:120
 msgid "The maximum number of turns the game can last"
-msgstr "Nombre maximal de tours que la partie peut durer"
+msgstr "Nombre maximal de tours de la partie"
 
 #: src/multiplayer_create.cpp:123
 msgid "Enables user time limit"
@@ -12714,7 +12706,7 @@ msgstr "Limite de temps"
 
 #: src/multiplayer_create.cpp:129
 msgid "Longest time allowed for first turn (seconds)"
-msgstr "Durée maximale du tour initial (secondes)"
+msgstr "Durée maximale du premier tour (secondes)"
 
 #: src/multiplayer_create.cpp:135
 msgid "Longest time possible for any turn (seconds)"
@@ -12734,7 +12726,7 @@ msgstr "Quantité d'or que chaque village rapporte par tour"
 
 #: src/multiplayer_create.cpp:157
 msgid "The amount of experience a unit needs to advance"
-msgstr "Quantité d'expérience requise aux unités pour avancer"
+msgstr "Quantité d'expérience nécessaire aux unités pour progresser"
 
 #: src/multiplayer_create.cpp:160
 msgid "Use scenario specific settings"
@@ -12742,9 +12734,7 @@ msgstr "Utiliser les paramètres du scénario"
 
 #: src/multiplayer_create.cpp:163
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
-"Les ennemis ne peuvent être vus à moins qu'ils ne soient à porté de vos "
-"unités"
+msgstr "Les ennemis ne peuvent être vus sauf s'ils sont à porté de vos unités"
 
 #: src/multiplayer_create.cpp:166
 msgid "The map is unknown until your units explore it"
@@ -12768,7 +12758,7 @@ msgstr "Pas de partage"
 
 #: src/multiplayer_create.cpp:186
 msgid "No multiplayer sides."
-msgstr "Aucun camp multi-joueurs."
+msgstr "Aucun camp multijoueurs."
 
 #: src/multiplayer_create.cpp:188
 msgid "No eras found"
@@ -12970,8 +12960,8 @@ msgstr "Téléchargement du prochain scénario..."
 #: src/playcampaign.cpp:473
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
-"Voulez-vous sauvegarder votre jeu ? (Supprime dans le même temps les "
-"sauvegardes automatiques)"
+"Voulez-vous sauvegarder votre jeu ? (Supprime aussi les sauvegardes "
+"automatiques)"
 
 #: src/playcampaign.cpp:500
 msgid "Unknown scenario: '"
@@ -13176,36 +13166,36 @@ msgstr "Caractères non attendus en début de ligne"
 
 #: src/serialization/parser.cpp:125
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr "Étiquette de fermeture manquante pour l'étiquette $tag en $pos"
+msgstr "Balise de fermeture manquante pour la balise $tag en $pos"
 
 #: src/serialization/parser.cpp:140
 msgid "Unterminated [element] tag"
-msgstr "Étiquette [element] non terminée"
+msgstr "Balise [element] non terminée"
 
 #: src/serialization/parser.cpp:150 src/serialization/parser.cpp:186
 msgid "Invalid tag name"
-msgstr "Nom d'étiquette incorrect"
+msgstr "Nom de balise incorrect"
 
 #: src/serialization/parser.cpp:153
 msgid "Unterminated [+element] tag"
-msgstr "Étiquette [+element] non terminée"
+msgstr "Balise [+element] non terminée"
 
 #: src/serialization/parser.cpp:169
 msgid "Invalid closing tag name"
-msgstr "Nom d'étiquette de fermeture invalide"
+msgstr "Nom de balise de fermeture invalide"
 
 #: src/serialization/parser.cpp:172
 msgid "Unterminated closing tag"
-msgstr "Étiquette de fermeture non terminée"
+msgstr "Balise de fermeture non terminée"
 
 #: src/serialization/parser.cpp:174
 msgid "Unexpected closing tag"
-msgstr "Étiquette de fermeture non attendue à cet endroit"
+msgstr "Balise de fermeture inattendue à cet endroit"
 
 #: src/serialization/parser.cpp:180
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
-"Étiquette de fermeture $tag2 invalide pour l'étiquette $tag (ouvert en $pos)"
+"Balise de fermeture $tag2 invalide pour la balise $tag (ouvert en $pos)"
 
 #: src/serialization/parser.cpp:205 src/serialization/parser.cpp:217
 msgid "Empty variable name"
@@ -13242,7 +13232,7 @@ msgstr "Campagne"
 
 #: src/titlescreen.cpp:256
 msgid "TitleScreen button^Multiplayer"
-msgstr "Multi-joueurs"
+msgstr "Multijoueurs"
 
 #: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
@@ -13282,7 +13272,7 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Jouer en multi-joueurs (chaise tournante, réseau local ou Internet) ou un "
+"Jouer en multijoueurs (chaise tournante, réseau local ou Internet) ou un "
 "simple scénario contre l'ordinateur"
 
 #: src/titlescreen.cpp:266
@@ -13295,7 +13285,7 @@ msgstr "Téléchargement de campagnes, ères ou pack de cartes additionnels"
 
 #: src/titlescreen.cpp:268
 msgid "Change the language"
-msgstr "Changer la langue"
+msgstr "Changer de langue"
 
 #: src/titlescreen.cpp:269
 msgid "Configure the game's settings"
@@ -13364,8 +13354,8 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
-"Wesnoth a besoin des retours de volontaires comme vous, particulièrement les "
-"débutants et les nouveaux joueurs.  Wesnoth garde un résumé de vos parties : "
+"Wesnoth a besoin des retours de volontaires comme vous, particulièrement des "
+"débutants et des nouveaux joueurs.  Wesnoth garde un résumé de vos parties : "
 "vous pouvez nous aidez à améliorer le jeu en autorisant l'envoi (anonyme) de "
 "ces résumés à wesnoth.org.\n"
 
