@@ -36,6 +36,8 @@
 #include <stdlib.h>
 #include <windows.h>
 
+#define mkdir(a,b) (_mkdir(a))
+
 #endif /* win32 */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -248,7 +250,6 @@ struct dirent *readdir(DIR *dir)
 #define S_IFMT	(S_IFDIR|S_IFREG)
 #endif 
 
-#define mkdir(a,b) (_mkdir(a))
 namespace {
 	typedef int mode_t;
 }
