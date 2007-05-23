@@ -781,13 +781,14 @@ namespace events{
 
 				redo_stack_.clear();
 				wassert(new_unit.type());
-				if(new_unit.type()->genders().size() > 1 || new_unit.type()->has_random_traits()) {
+
+				const bool shroud_cleared = clear_shroud(team_num);
+				if(shroud_cleared || new_unit.type()->genders().size() > 1 || new_unit.type()->has_random_traits()) {
 					clear_undo_stack(team_num);
 				} else {
 					undo_stack_.push_back(undo_action(new_unit,loc,RECRUIT_POS));
 				}
 
-				clear_shroud(team_num);
 
 				gui_->recalculate_minimap();
 				gui_->invalidate_game_status();
@@ -902,10 +903,14 @@ namespace events{
 						statistics::recall_unit(un);
 						current_team.spend_gold(game_config::recall_cost);
 
-						undo_stack_.push_back(undo_action(un,loc,res));
-						redo_stack_.clear();
+						const bool shroud_cleared = clear_shroud(team_num);
+						if (shroud_cleared) {
+							clear_undo_stack(team_num);
+						} else {
+							undo_stack_.push_back(undo_action(un,loc,res));
+						}	
 
-						clear_shroud(team_num);
+						redo_stack_.clear();
 
 						recall_list.erase(recall_list.begin()+res);
 						gui_->invalidate_game_status();
