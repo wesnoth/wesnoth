@@ -240,15 +240,15 @@ struct dirent *readdir(DIR *dir)
 /*
  * Because the phrase 'brain-dead Windows environment' is redundant...
  */
+#ifndef S_IFMT
+#define S_IFMT	(S_IFDIR|S_IFREG)
+#endif 
 #ifndef S_ISREG
 #define S_ISREG(x) (((x) & S_IFMT) == S_IFREG)
 #endif
 #ifndef S_ISDIR
 #define S_ISDIR(x) (((x) & S_IFMT) == S_IFDIR)
 #endif
-#ifndef S_IFMT
-#define S_IFMT	(S_IFDIR|S_IFREG)
-#endif 
 
 namespace {
 	typedef int mode_t;
