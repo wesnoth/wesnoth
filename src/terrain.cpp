@@ -41,7 +41,8 @@ terrain_type::terrain_type(const config& cfg)
 
 	name_ = cfg["name"];
 	id_ = cfg["id"];
-	number_ = t_translation::read_letter(cfg["string"]); 
+	number_ = t_translation::read_letter(cfg["string"]);
+	wassert(number_ != t_translation::NONE_TERRAIN);
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
