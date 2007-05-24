@@ -450,6 +450,7 @@ void get_files_in_dir(const std::string& directory,
 		/* generic Unix */
 		char *basename = entry->d_name;
 #endif /* !APPLE */
+
 		std::string fullname;
 		if (directory.empty() || directory[directory.size()-1] == '/'
 #ifdef __AMIGAOS4__
@@ -472,13 +473,19 @@ void get_files_in_dir(const std::string& directory,
 				if (reorder == DO_REORDER && 
 					    ::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 && 
 					    S_ISREG(st.st_mode)) {
-					LOG_FS << "_main.cfg found : " << fullname << "/" << MAINCFG << '\n';
+					LOG_FS << "_main.cfg found : ";
 					if (files != NULL) {
-						if (mode == ENTIRE_FILE_PATH)
+						if (mode == ENTIRE_FILE_PATH) {
 							files->push_back(fullname + "/" + MAINCFG);
-						else
+							LOG_FS << fullname << "/" << MAINCFG << '\n';
+						} else {
 							files->push_back(std::string(basename) + "/" + MAINCFG);
+							LOG_FS << std::string(basename) << "/" << MAINCFG << '\n';
 				    	}
+				    } else {
+				    	// show what I consider strange
+						LOG_FS << fullname << "/" << MAINCFG << " not used now but skip the directory \n";
+				    }
 			    } else if (dirs != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
 						dirs->push_back(fullname);
