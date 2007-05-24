@@ -1656,7 +1656,7 @@ static int play_game(int argc, char** argv)
 			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
 			<< "                               sets the severity level of the debug domains.\n"
 			<< "                               \"all\" can be used to match any debug domain.\n"
-			<< "  --logdomains                  List defined log domains and exit.\n"
+			<< "  --logdomains                 List defined log domains and exit.\n"
 			<< "  --nocache                    disables caching of game data.\n"
 			<< "  --validcache                 assume that cache is valid (dangerous)\n"
 			<< "  --nosound                    runs the game without sounds and music.\n"
