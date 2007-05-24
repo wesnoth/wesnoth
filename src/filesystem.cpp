@@ -417,7 +417,7 @@ void get_files_in_dir(const std::string& directory,
 		else
 			maincfg = (directory + "/") + MAINCFG;
 
-		if (stat(maincfg.c_str(), &st) == 0) {
+		if (::stat(maincfg.c_str(), &st) == 0) {
 			LOG_FS << "_main.cfg found : " << maincfg << '\n';
 			if (files != NULL) {
 				if (mode == ENTIRE_FILE_PATH)
