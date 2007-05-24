@@ -407,8 +407,17 @@ void get_files_in_dir(const std::string& directory,
 
 	if (reorder == DO_REORDER) {
 		LOG_FS << "searching _main.cfg in directory " << directory << '\n';
-		const char *maincfg = (directory + "/" + MAINCFG).c_str(); 
-		if (stat(maincfg, &st) == 0) {
+		std::string maincfg;
+		if (directory.empty() || directory[directory.size()-1] == '/'
+#ifdef __AMIGAOS4__
+			|| (directory[directory.size()-1]==':')
+#endif /* __AMIGAOS4__ */
+		)
+			maincfg = directory + MAINCFG;
+		else
+			maincfg = (directory + "/") + MAINCFG;
+
+		if (stat(maincfg.c_str(), &st) == 0) {
 			LOG_FS << "_main.cfg found : " << maincfg << '\n';
 			if (files != NULL) {
 				if (mode == ENTIRE_FILE_PATH)
