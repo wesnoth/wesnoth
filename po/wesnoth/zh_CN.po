@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-20 10:15+0200\n"
+"POT-Creation-Date: 2007-05-24 22:22+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -19,15 +19,15 @@ msgstr ""
 "X-Poedit-Bookmarks: 1407,1408,842,859,896,937,1003,1025,1091,1309\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 
-#: data/_main.cfg:12
+#: data/_main.cfg:18
 msgid "Binary Saves"
 msgstr "二进制存档"
 
-#: data/_main.cfg:19
+#: data/_main.cfg:25
 msgid "Show Combat"
 msgstr "显示战斗"
 
-#: data/_main.cfg:26
+#: data/_main.cfg:32
 msgid "Mouse Scrolling"
 msgstr "鼠标滚屏"
 
@@ -2223,7 +2223,7 @@ msgstr ""
 #: data/core/terrain.cfg:764 data/core/terrain.cfg:775
 #: data/core/terrain.cfg:788 data/core/terrain.cfg:799
 #: data/core/terrain.cfg:812 data/core/terrain.cfg:827
-#: data/core/terrain.cfg:838 src/terrain.cpp:98
+#: data/core/terrain.cfg:838 src/terrain.cpp:99
 msgid "Village"
 msgstr "村庄"
 
@@ -2646,26 +2646,6 @@ msgstr "风暴三叉戟"
 #: data/core/items.cfg:742
 msgid "Zap"
 msgstr "刷"
-
-#: data/core/multiplayer.cfg:3
-msgid "User Map"
-msgstr "玩家地图"
-
-#: data/core/multiplayer.cfg:17 src/leader_list.cpp:108
-msgid "Random"
-msgstr "随机"
-
-#: data/core/multiplayer.cfg:24
-msgid "Default"
-msgstr "缺省"
-
-#: data/core/multiplayer.cfg:37
-msgid "Age of Heroes"
-msgstr "英雄时代"
-
-#: data/core/multiplayer.cfg:50
-msgid "Great War"
-msgstr "伟大战争"
 
 # i have left the names untranslated at least for now. only the names of villages are translated so as to work with the suffix.
 #: data/core/names.cfg:2
@@ -8151,38 +8131,6 @@ msgstr ""
 "\n"
 "特别提示："
 
-#: data/factions/alliance_of_darkness.cfg:4
-msgid "Alliance of Darkness"
-msgstr "黑暗联盟"
-
-#: data/factions/alliance_of_light.cfg:4
-msgid "Alliance of Light"
-msgstr "光明联盟"
-
-#: data/factions/drakes-aoh.cfg:4 data/factions/drakes-default.cfg:4
-msgid "Drakes"
-msgstr "龙族"
-
-#: data/factions/knalgans-aoh.cfg:4 data/factions/knalgans-default.cfg:4
-msgid "Knalgan Alliance"
-msgstr "纳尔迦联盟"
-
-#: data/factions/loyalists-aoh.cfg:4 data/factions/loyalists-default.cfg:4
-msgid "Loyalists"
-msgstr "保皇派"
-
-#: data/factions/northerners-aoh.cfg:4 data/factions/northerners-default.cfg:4
-msgid "Northerners"
-msgstr "北方民族"
-
-#: data/factions/rebels-aoh.cfg:4 data/factions/rebels-default.cfg:4
-msgid "Rebels"
-msgstr "反叛者"
-
-#: data/factions/undead-aoh.cfg:4 data/factions/undead-default.cfg:4
-msgid "Undead"
-msgstr "不死族"
-
 #: data/hardwired/english.cfg:2
 msgid "Easy"
 msgstr "简单"
@@ -8640,93 +8588,151 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:7
+#: data/multiplayer/_main.cfg:4
+msgid "User Map"
+msgstr "玩家地图"
+
+#: data/multiplayer/eras.cfg:4 src/leader_list.cpp:108
+msgid "Random"
+msgstr "随机"
+
+#: data/multiplayer/eras.cfg:11
+msgid "Default"
+msgstr "缺省"
+
+#: data/multiplayer/eras.cfg:24
+msgid "Age of Heroes"
+msgstr "英雄时代"
+
+#: data/multiplayer/eras.cfg:37
+msgid "Great War"
+msgstr "伟大战争"
+
+#: data/multiplayer/factions/alliance_of_darkness.cfg:4
+msgid "Alliance of Darkness"
+msgstr "黑暗联盟"
+
+#: data/multiplayer/factions/alliance_of_light.cfg:4
+msgid "Alliance of Light"
+msgstr "光明联盟"
+
+#: data/multiplayer/factions/drakes-aoh.cfg:4
+#: data/multiplayer/factions/drakes-default.cfg:4
+msgid "Drakes"
+msgstr "龙族"
+
+#: data/multiplayer/factions/knalgans-aoh.cfg:4
+#: data/multiplayer/factions/knalgans-default.cfg:4
+msgid "Knalgan Alliance"
+msgstr "纳尔迦联盟"
+
+#: data/multiplayer/factions/loyalists-aoh.cfg:4
+#: data/multiplayer/factions/loyalists-default.cfg:4
+msgid "Loyalists"
+msgstr "保皇派"
+
+#: data/multiplayer/factions/northerners-aoh.cfg:4
+#: data/multiplayer/factions/northerners-default.cfg:4
+msgid "Northerners"
+msgstr "北方民族"
+
+#: data/multiplayer/factions/rebels-aoh.cfg:4
+#: data/multiplayer/factions/rebels-default.cfg:4
+msgid "Rebels"
+msgstr "反叛者"
+
+#: data/multiplayer/factions/undead-aoh.cfg:4
+#: data/multiplayer/factions/undead-default.cfg:4
+msgid "Undead"
+msgstr "不死族"
+
+#: data/multiplayer/scenarios/2p_Blitz.cfg:7
 msgid "2p - Blitz"
 msgstr "2p - 闪电战"
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:9
-#: data/scenarios/multiplayer/2p_Charge.cfg:9
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:34
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#: data/scenarios/multiplayer/4p_Clash.cfg:5
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:4
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
-#: data/scenarios/multiplayer/8p_Morituri.cfg:5
+#: data/multiplayer/scenarios/2p_Blitz.cfg:9
+#: data/multiplayer/scenarios/2p_Charge.cfg:9
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:4
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:4
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:4
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:4
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:4
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:4
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:34
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
+#: data/multiplayer/scenarios/3p_Morituri.cfg:4
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:4
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:4
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
+#: data/multiplayer/scenarios/4p_Clash.cfg:5
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:4
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:7
+#: data/multiplayer/scenarios/4p_Morituri.cfg:5
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:4
+#: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid " Recommended setting of 2 gold per village."
 msgstr " 建议设置每座村庄提供2个金币。"
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:9
-#: data/scenarios/multiplayer/2p_Charge.cfg:9
+#: data/multiplayer/scenarios/2p_Blitz.cfg:9
+#: data/multiplayer/scenarios/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
 msgstr "2v2对战地图，适合速战速决"
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:22
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
-#: data/scenarios/multiplayer/2p_Charge.cfg:22
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:22
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:29
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:18
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:18
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:18
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:59
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:20
-#: data/scenarios/multiplayer/3p_Morituri.cfg:18
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:18
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:19
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:52
-#: data/scenarios/multiplayer/4p_Morituri.cfg:16
-#: data/scenarios/multiplayer/4p_Morituri.cfg:46
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:28
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:38
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:18
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:29
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:40
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:73
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:25
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:65
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:105
+#: data/multiplayer/scenarios/2p_Blitz.cfg:22
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:46
+#: data/multiplayer/scenarios/2p_Charge.cfg:22
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:29
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:18
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:18
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:18
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:59
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
+#: data/multiplayer/scenarios/3p_Morituri.cfg:18
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:18
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:19
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:52
+#: data/multiplayer/scenarios/4p_Morituri.cfg:16
+#: data/multiplayer/scenarios/4p_Morituri.cfg:46
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:28
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:38
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:18
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:29
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:40
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:73
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:25
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:65
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:105
 msgid "teamname^North"
 msgstr "北部"
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:33
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:57
-#: data/scenarios/multiplayer/2p_Charge.cfg:33
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:34
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:18
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:29
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:29
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:29
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:48
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:30
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:41
-#: data/scenarios/multiplayer/4p_Morituri.cfg:26
-#: data/scenarios/multiplayer/4p_Morituri.cfg:36
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:18
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:48
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:58
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:18
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:51
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:62
+#: data/multiplayer/scenarios/2p_Blitz.cfg:33
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:57
+#: data/multiplayer/scenarios/2p_Charge.cfg:33
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:34
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:18
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:29
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:29
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:29
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:48
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:30
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:41
+#: data/multiplayer/scenarios/4p_Morituri.cfg:26
+#: data/multiplayer/scenarios/4p_Morituri.cfg:36
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:18
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:48
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:58
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:18
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:51
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:62
 msgid "teamname^South"
 msgstr "南部"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
 msgstr "2p - 蛇怪之穴"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
 "Players must maneuver their units through the divisive terrain of this long-"
 "feared region, once the home of a legendary Elder Basilisk. The road to "
@@ -8737,7 +8743,7 @@ msgstr ""
 "远古蛇怪的巢穴。在通往胜利的道路上时不时会碰到化为石头的韦诺英雄。"
 
 # verses are, in my opinion, untranslatable. anyone interested may want to give a try...
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:92
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:92
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -8761,7 +8767,7 @@ msgid ""
 "(inscribed by Flametrooper)"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:107
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:107
 msgid ""
 "Slim of Stature, dexterous Hands\n"
 "- - Seven Stones and Eleven\n"
@@ -8773,7 +8779,7 @@ msgid ""
 "(inscribed by Gauteamus)"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:118
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:118
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -8791,7 +8797,7 @@ msgid ""
 "(inscribed by Elvish Pillager)"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:127
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:127
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -8802,7 +8808,7 @@ msgid ""
 "(inscribed by Turin)"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:136
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:136
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -8813,7 +8819,7 @@ msgid ""
 "(inscribed by Fynmiir)"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:147
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -8832,7 +8838,7 @@ msgid ""
 "(inscribed by Elvish Pillager)"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -8847,7 +8853,7 @@ msgid ""
 "(inscribed by Paterson)"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:178
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:178
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -8866,147 +8872,147 @@ msgid ""
 "(inscribed by MJQ)"
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Charge.cfg:7
+#: data/multiplayer/scenarios/2p_Charge.cfg:7
 msgid "2p - Charge"
 msgstr "2p - 冲刺"
 
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Cynsaun战场"
 
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:9
 msgid " Recommended settings of 150 gold and 1 gold per village."
 msgstr " 建议设置150个金币的起始资源，每座村庄提供1个金币。"
 
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr "在广大的战场上您可以自由探索。专为喜爱大型史诗般2v2对战的玩家设计。"
 
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
 msgstr "2p - Onis的巢穴"
 
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:4
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet."
 msgstr ""
 "这是一幅供2人决斗的地图，危险隐藏于地下战场的每个角落，武力与诡计针锋相对。"
 
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:3
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
 msgstr "2p - 小村"
 
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:4
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:4
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:4
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr "战争把简单的农场和宁静的村庄化为精密分割的战场。"
 
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
 msgstr "2p - 角鲨之岛"
 
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:4
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr "玩家必须驾驭这座麻雀虽小、五脏俱全的岛屿上丰富的地形。"
 
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
 msgstr "2p - 流星湖"
 
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:4
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr "很久以前，一颗来自太空的大陨石落下来，在这片针叶林中留下了印记。"
 
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:18
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:18
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:20
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:40
-#: data/scenarios/multiplayer/3p_Morituri.cfg:38
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:38
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:30
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:40
-#: data/scenarios/multiplayer/4p_Clash.cfg:16
-#: data/scenarios/multiplayer/4p_Clash.cfg:36
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:18
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:48
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:28
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:29
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:40
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:73
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:18
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:18
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:20
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:40
+#: data/multiplayer/scenarios/3p_Morituri.cfg:38
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:38
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:30
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:40
+#: data/multiplayer/scenarios/4p_Clash.cfg:16
+#: data/multiplayer/scenarios/4p_Clash.cfg:36
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:18
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:48
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:28
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:29
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:40
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:73
 msgid "teamname^West"
 msgstr "西部"
 
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:29
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:29
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:27
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:30
-#: data/scenarios/multiplayer/3p_Morituri.cfg:28
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:28
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:20
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:50
-#: data/scenarios/multiplayer/4p_Clash.cfg:26
-#: data/scenarios/multiplayer/4p_Clash.cfg:46
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:28
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:38
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:18
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:51
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:62
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:29
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:29
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:27
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:30
+#: data/multiplayer/scenarios/3p_Morituri.cfg:28
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:28
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:50
+#: data/multiplayer/scenarios/4p_Clash.cfg:26
+#: data/multiplayer/scenarios/4p_Clash.cfg:46
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:28
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:38
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:18
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:51
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:62
 msgid "teamname^East"
 msgstr "东部"
 
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
 msgstr "2p - 黑石三角洲"
 
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:4
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr "两支军队在这个布满隐藏洞穴和锯齿状河流的海滩旁遭遇。"
 
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
 msgstr "2p - 银头渡口"
 
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:4
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr "在这幅战线众多的决斗地图上，玩家必须穿越各种地形来追寻胜利。"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:18
 msgid "statue"
 msgstr "雕像"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
 msgstr "这是一座石雕。"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
 msgstr "2p - Sullas遗迹"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:34
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:34
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
 "经过洪水和严冬的洗礼，这个曾经强大的王国长长的影子里只剩下废墟，水，还有冰。"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
 msgstr "Sulla之像"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:74
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:74
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
 "Sulla the Tyrant, Empress of the Sinking Tower, Scion of the Crushing Gales, "
@@ -9018,43 +9024,43 @@ msgstr ""
 "裔，冰川上的夫人，灼热浪潮的守护者，火焰女王，焚烧者苏拉，高傲的苏拉以及公正"
 "的苏拉。"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
 msgstr "Lhun-dup之像"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
 msgstr "Sulla的侍从Lhun-dup的石像。"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
 msgstr "Ri-nzen之像"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
 msgstr "Sulla的侍从Ri-nzen的石像。"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
 msgstr "Ten-zin之像"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
 msgstr "Sulla的侍从Ten-zin的石像。"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:89
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Lo-bsang"
 msgstr "Lo-bsang之像"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:90
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Sulla的侍从Lo-bsang的石像。"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
 msgstr "2p - 韦诺球"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:5
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:5
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
 "zone as often as possible. However, the other player can attack your units. "
@@ -9065,7 +9071,7 @@ msgstr ""
 "好。不过，别的玩家可以攻击您的单位。本游戏中使用的都是钝武器，单位有治疗者的"
 "支持，所以当单位被杀死后，会以受伤的惩罚形式回到玩家自己的终点区域中。"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:10
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:10
 msgid ""
 "\n"
 "Victory:\n"
@@ -9081,77 +9087,77 @@ msgstr ""
 "失败：\n"
 "#对手移动球到您的终点区域内的次数多于您移动过去的次数。"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:177
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:423
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:177
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:423
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "红队得分！当前比分是$redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:219
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:465
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:219
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:465
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "蓝队得分！当前比分是$redscore-$bluescore"
 
 # i haven't seen how this works yet. please tell me if anything is wrong with this translation
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:303
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:549
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:303
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:549
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "我该把球传到$passto$passto.type ($xloc,$yloc)里吗？"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:305
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:551
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:305
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:551
 msgid "Yes!"
 msgstr "是！"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:327
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:573
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:327
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:573
 msgid "No"
 msgstr "不"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:596
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:596
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "蓝队获胜！最终比分是：$redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:608
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:608
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "红队获胜！最终比分是：$redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:620
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:620
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "平局！最终比分是：$redscore-$bluescore"
 
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "3p - 荷拉斯兄弟之岛"
 
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr "在这幅21x21的3人自由对战地图上，掌控中央的岛屿常常是获得胜利的关键。"
 
-#: data/scenarios/multiplayer/3p_Morituri.cfg:3
+#: data/multiplayer/scenarios/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "3p - 濒临死亡"
 
-#: data/scenarios/multiplayer/3p_Morituri.cfg:4
+#: data/multiplayer/scenarios/3p_Morituri.cfg:4
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr "只有一个派别能够在这个紧凑的3人对战地图中取胜。"
 
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
 msgstr "3p - 三重闪电战"
 
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:4
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr "3位玩家在这个被水面割裂的战场上对峙。"
 
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
 msgstr "4p - 蓝水省"
 
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:4
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -9161,61 +9167,61 @@ msgstr ""
 "据说蓝水省曾被摧毁并重建了20多次。现在，军队再一次结集在这个小小的省份里岩石"
 "突兀的河流和白雪皑皑的山脉上，村民们似乎已不再在意。"
 
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:18
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:48
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:15
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:35
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:55
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:16
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:36
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:56
-#: data/scenarios/multiplayer/8p_Morituri.cfg:16
-#: data/scenarios/multiplayer/8p_Morituri.cfg:56
-#: data/scenarios/multiplayer/8p_Morituri.cfg:66
-#: data/scenarios/multiplayer/8p_Morituri.cfg:76
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:18
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:48
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:15
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:35
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:55
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:16
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:36
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:56
+#: data/multiplayer/scenarios/8p_Morituri.cfg:16
+#: data/multiplayer/scenarios/8p_Morituri.cfg:56
+#: data/multiplayer/scenarios/8p_Morituri.cfg:66
+#: data/multiplayer/scenarios/8p_Morituri.cfg:76
 msgid "teamname^Team 1"
 msgstr "队伍1"
 
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:28
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:38
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:25
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:45
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:65
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:26
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:46
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:66
-#: data/scenarios/multiplayer/8p_Morituri.cfg:26
-#: data/scenarios/multiplayer/8p_Morituri.cfg:36
-#: data/scenarios/multiplayer/8p_Morituri.cfg:46
-#: data/scenarios/multiplayer/8p_Morituri.cfg:86
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:28
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:38
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:25
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:45
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:65
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:26
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:46
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:66
+#: data/multiplayer/scenarios/8p_Morituri.cfg:26
+#: data/multiplayer/scenarios/8p_Morituri.cfg:36
+#: data/multiplayer/scenarios/8p_Morituri.cfg:46
+#: data/multiplayer/scenarios/8p_Morituri.cfg:86
 msgid "teamname^Team 2"
 msgstr "队伍2"
 
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:5
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
 msgstr "4p - 小岛与城堡"
 
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
 msgstr "从一座城堡赶往另一座城堡，为中央的岛屿而战。"
 
-#: data/scenarios/multiplayer/4p_Clash.cfg:3
+#: data/multiplayer/scenarios/4p_Clash.cfg:3
 msgid "4p - Clash"
 msgstr "4p - 冲突"
 
-#: data/scenarios/multiplayer/4p_Clash.cfg:5
+#: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
 msgstr "适合2v2对战的小型地图。"
 
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:3
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:3
 msgid "4p - Hamlets"
 msgstr "4p - 小村"
 
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
 msgstr "4p - Isar路口"
 
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -9226,40 +9232,40 @@ msgstr ""
 "得非常重要。队伍设定是1号和4号对2号和3号（东北对西南）。适合于75个金币的起始"
 "资源，图上有20个村庄。"
 
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:18
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:51
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:18
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:53
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:26
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:36
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:66
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:45
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:55
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:95
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:18
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:51
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:18
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:53
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:26
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:36
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:66
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:45
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:55
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:95
 msgid "teamname^South-West"
 msgstr "西南"
 
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:29
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:40
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:40
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:31
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:48
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:16
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:46
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:56
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:29
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:40
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:40
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:31
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:48
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:16
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:46
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:56
 msgid "teamname^North-East"
 msgstr "东北"
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
 msgstr "4p - 丘陵之王"
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr " 建议设置150个金币的起始资源，每座村庄提供2个金币。"
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
@@ -9267,43 +9273,43 @@ msgstr ""
 "在这幅36x36的4人自由对战地图上，控制中央的要塞有很大好处。也很适合2v2对战。图"
 "上有36座村庄。"
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:29
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:34
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:44
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:42
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:38
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:35
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:75
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:85
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:29
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:34
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:44
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:42
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:38
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:35
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:75
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:85
 msgid "teamname^South-East"
 msgstr "东南"
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:51
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:24
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:54
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:20
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:51
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:24
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:54
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:20
 msgid "teamname^North-West"
 msgstr "西北"
 
-#: data/scenarios/multiplayer/4p_Lagoon.cfg:3
+#: data/multiplayer/scenarios/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
 msgstr "4p - 环礁湖"
 
-#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:13
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
+#: data/multiplayer/scenarios/4p_Lagoon.cfg:4
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:13
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid " Recommended setting of 1 gold per village."
 msgstr " 推荐设置每座村庄提供1个金币。"
 
-#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
+#: data/multiplayer/scenarios/4p_Lagoon.cfg:4
 msgid "Four factions contend for dominance over this watery settlement."
 msgstr "4个派别为争夺这片水中的定居点而战。"
 
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:5
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:5
 msgid "4p - Loris River"
 msgstr "4p - Loris河"
 
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:7
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
@@ -9311,23 +9317,23 @@ msgstr ""
 "这是一幅25x25的2v2对战地图，中间是河流，双方的要塞处在对角线上。适合玩家1和玩"
 "家4对阵玩家2和玩家3。图上有28座村庄。"
 
-#: data/scenarios/multiplayer/4p_Morituri.cfg:3
+#: data/multiplayer/scenarios/4p_Morituri.cfg:3
 msgid "4p - Morituri"
 msgstr "4p - 濒临死亡"
 
-#: data/scenarios/multiplayer/4p_Morituri.cfg:5
+#: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "Who will emerge from the confines of this perilous battlefield?"
 msgstr "谁能从这片危险丛生的战场中胜出呢？"
 
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
 msgstr "4p - 匕首小道"
 
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid " Recommended setting of 2 gold per village, 28 villages."
 msgstr " 图上有28座村庄。建议设置每座村庄提供2个金币。"
 
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
@@ -9335,11 +9341,11 @@ msgstr ""
 "这是一幅35x27的2v2对战地图，有五条交战路线。从平衡考虑建议玩家组队为东部对阵"
 "西部（即玩家1、4对阵玩家2、3），但是其他组队方式或自由对战（FFA）也没有问题。"
 
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4p - 城堡围攻"
 
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
@@ -9347,37 +9353,37 @@ msgstr ""
 "这是一幅40x30的对战地图，四座伟岸的城堡对立于两条河流交汇之处。适合2v2或自由"
 "组队（FFA）。图上大约有45座村庄。"
 
-#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:12
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:12
 msgid "4p - The Wilderlands"
 msgstr "4p - 蛮荒之地"
 
-#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:13
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:13
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr "一大片布满野生动物、森林、洞穴、河流和古老关隘遗迹的区域。"
 
-#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:58
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:58
 #, fuzzy
 msgid "Monsters"
 msgstr "怪物"
 
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:5
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:5
 msgid "4p - Xanthe Chaos"
 msgstr ""
 
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:7
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:3
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:3
 #, fuzzy
 msgid "5p - Auction-X"
 msgstr "动作"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:5
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid ""
 "4 players surround a central keep, play vs the AI survival style, or as a "
 "FFA or 4 vs. 1.  The center player will need more gold in a 4 vs. 1 or FFA, "
@@ -9385,55 +9391,55 @@ msgid ""
 "is a very small map so 75 gold is recommended for the other players."
 msgstr ""
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:19
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:19
 #, fuzzy
 msgid "teamname^Northeast"
 msgstr "东北"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:30
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:30
 #, fuzzy
 msgid "teamname^Southeast"
 msgstr "西南"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:41
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:41
 #, fuzzy
 msgid "teamname^Southwest"
 msgstr "西南"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:52
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:52
 #, fuzzy
 msgid "teamname^Northwest"
 msgstr "西北"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:63
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:63
 #, fuzzy
 msgid "teamname^Center"
 msgstr "西部"
 
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
 msgstr "5p - 恐惧森林"
 
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:5
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "在这混合地图上，五支部队为争夺王位而战斗者。"
 
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
 msgstr "6p - Amohsad火山口"
 
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:4
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head."
 msgstr ""
 "六支军队争锋相向，只有真正的战术家才能在这个充满死亡和限制的战场上存活。"
 
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
 msgstr "6p - 十字军战场"
 
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
@@ -9442,121 +9448,121 @@ msgstr ""
 "在这片饱经风霜的战场上，战斗的呐喊声再次响起。数以千计的勇士们的阴魂飘荡于山"
 "岭、树林与河流之间。"
 
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:3
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
 msgstr "6p - 六角蛋糕"
 
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:5
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2v2或3v3团队对战。"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:166
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:166
 #, fuzzy
 msgid "Turn 2: Loyalists"
 msgstr "保皇派"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:167
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:167
 msgid "Turn 5: Knalgans"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:168
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:168
 #, fuzzy
 msgid "Turn 8: Rebels"
 msgstr "回合数： "
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:169
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:169
 #, fuzzy
 msgid "Turn 11: Northerners"
 msgstr "北方民族"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:170
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:170
 #, fuzzy
 msgid "Turn 14: Drakes"
 msgstr "飓风龙战士"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:171
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:171
 msgid "Turn 17: Undead"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:172
 msgid "Tower of Doom"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:303
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:303
 msgid "6p - Team Survival"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:306
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:306
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:313
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:313
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:313
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:313
 msgid "Survive for 32 turns."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:314
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:314
 msgid "Survive all enemy attacks."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:315
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:315
 msgid "Death of your team leaders."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:337
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:340
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:352
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:352
 #: src/mouse_events.cpp:193 src/mouse_events.cpp:303
 msgid "Attacker"
 msgstr "攻击者"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:356
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:356
 #, fuzzy
 msgid "North-West"
 msgstr "西北"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:357
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:357
 #, fuzzy
 msgid "North-East"
 msgstr "东北"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:358
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:358
 msgid "Middle-East"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:359
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:359
 #, fuzzy
 msgid "South-East"
 msgstr "东南"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:360
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
 #, fuzzy
 msgid "South-West"
 msgstr "西南"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:361
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:361
 msgid "Middle-West"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
 msgstr "6p - Manzivan陷阱"
 
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid ""
 "A 40X20 3 vs. 3 map. The Mazivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
@@ -9567,11 +9573,11 @@ msgstr ""
 "形上很容易失去位置或过分扩张。玩家1、4、5组队对阵玩家2、3、6（东部对阵西"
 "部）。适合100金币的起始资源。图上有33座村庄。"
 
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
 msgstr "6p - 滑铁卢之日落"
 
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
 "avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
@@ -9582,22 +9588,22 @@ msgstr ""
 "家1、4、5组队对阵玩家2、3、6（北部对阵南部），但是由玩家1、4、6或1、3、6组队"
 "也很有意思。适合150金币的起始资源。图上有44座村庄。"
 
-#: data/scenarios/multiplayer/8p_Morituri.cfg:3
+#: data/multiplayer/scenarios/8p_Morituri.cfg:3
 msgid "8p - Morituri"
 msgstr "8p - 濒临死亡"
 
-#: data/scenarios/multiplayer/8p_Morituri.cfg:5
+#: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
 msgstr ""
 "在这片非同一般的战场上，八支军队将对抗到底，团队合作与战术才是制胜关键。"
 
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
 msgstr "9p - 非常之恋"
 
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
 "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
@@ -9608,12 +9614,12 @@ msgstr ""
 "9一队，2、6、7一队，3、4、8一队（北部对东南对西南）。村庄数/玩家的比率很小，"
 "所以建议设定每座村庄提供3个金币。"
 
-#: data/scenarios/multiplayer/Random_Scenario.cfg:3
-#: data/scenarios/multiplayer/Random_Scenario.cfg:8
+#: data/multiplayer/scenarios/Random_Scenario.cfg:3
+#: data/multiplayer/scenarios/Random_Scenario.cfg:8
 msgid "Random map"
 msgstr "随机地图"
 
-#: data/scenarios/multiplayer/Random_Scenario.cfg:4
+#: data/multiplayer/scenarios/Random_Scenario.cfg:4
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -9621,12 +9627,12 @@ msgstr ""
 "随机生成地图。注意：随机地图常常不太平衡，但是如果您有足够的时间，能生成一个"
 "很平衡的地图。"
 
-#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:10
+#: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:4
+#: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
 msgstr "随机地图（沙漠）"
 
-#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:5
+#: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 msgid ""
 "A random map with sand as the primary terrain. Note: random maps are often "
 "unbalanced, but if you have time, you can regenerate them until you get a "
@@ -9635,12 +9641,12 @@ msgstr ""
 "一个以沙地作为主要地形的随机地图。注意：随机地图常常不太平衡，但是如果您有足"
 "够的时间，能生成一个很平衡的地图。"
 
-#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:9
+#: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:4
+#: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:9
 msgid "Random map (Marsh)"
 msgstr "随机地图（沼泽）"
 
-#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:5
+#: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 msgid ""
 "A random map with swamp as the primary terrain. Note: random maps are often "
 "unbalanced, but if you have time, you can regenerate them until you get a "
@@ -9649,12 +9655,12 @@ msgstr ""
 "一个以沼泽为主要地形的随机地图。注意：随机地图常常不太平衡，但是如果您有足够"
 "的时间，能生成一个很平衡的地图。"
 
-#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:9
+#: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:4
+#: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:9
 msgid "Random map (Winter)"
 msgstr "随机地图（冬天）"
 
-#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:5
+#: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 msgid ""
 "A random map set in the break between spring and winter, mainly with snowy "
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
@@ -9663,11 +9669,11 @@ msgstr ""
 "一个设定在冬去春来、以雪地为主要地形的随机地图。注意：随机地图常常不太平衡，"
 "但是如果您有足够的时间，能生成一个很平衡的地图。"
 
-#: data/scenarios/multiplayer/Wesbench_AI.cfg:6
+#: data/multiplayer/scenarios/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
 msgstr "韦诺测试标准图：AI"
 
-#: data/scenarios/multiplayer/Wesbench_AI.cfg:7
+#: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
@@ -9675,11 +9681,11 @@ msgstr ""
 "这是一幅韦诺测试标准图，用法 --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end。"
 
-#: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
+#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
 msgstr "韦诺测试标准图：滚屏"
 
-#: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
+#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
@@ -9687,11 +9693,11 @@ msgstr ""
 "这是一幅韦诺测试标准图，用法 --no-delay --multiplayer --"
 "scenario=wesbench_scroll --exit-at-end。"
 
-#: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
+#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
 msgstr "韦诺测试标准图：穿越覆盖物"
 
-#: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
+#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
@@ -9720,7 +9726,7 @@ msgstr "生命值"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
 #: data/themes/experimental.cfg:158 src/menu_events.cpp:298
-#: src/menu_events.cpp:832
+#: src/menu_events.cpp:833
 msgid "XP"
 msgstr "经验值"
 
@@ -10018,7 +10024,7 @@ msgid "Date"
 msgstr "日期"
 
 #: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:295
-#: src/menu_events.cpp:830
+#: src/menu_events.cpp:831
 msgid "Name"
 msgstr "名称"
 
@@ -10321,23 +10327,23 @@ msgstr "' （现在将退出游戏）"
 msgid "Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:1822
+#: src/game.cpp:1820
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:1828
+#: src/game.cpp:1826
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:1844
+#: src/game.cpp:1842
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
-#: src/game_events.cpp:870
+#: src/game_events.cpp:861
 msgid "Victory:"
 msgstr "胜利："
 
-#: src/game_events.cpp:873
+#: src/game_events.cpp:864
 msgid "Defeat:"
 msgstr "失败："
 
@@ -10373,7 +10379,7 @@ msgstr "攻击"
 msgid "unit help^Name"
 msgstr "名称"
 
-#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:829
+#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:830
 msgid "Type"
 msgstr "类型"
 
@@ -10543,7 +10549,7 @@ msgstr "受到伤害 （期望值）"
 msgid "Statistics"
 msgstr "统计"
 
-#: src/menu_events.cpp:296 src/menu_events.cpp:831
+#: src/menu_events.cpp:296 src/menu_events.cpp:832
 msgid "Level"
 msgstr "等级"
 
@@ -10674,7 +10680,7 @@ msgstr "您没有可供征募的单位。"
 msgid "Recruit"
 msgstr "征募"
 
-#: src/menu_events.cpp:726 src/menu_events.cpp:875
+#: src/menu_events.cpp:726 src/menu_events.cpp:876
 msgid "Select unit:"
 msgstr "选择单位："
 
@@ -10682,11 +10688,11 @@ msgstr "选择单位："
 msgid "You don't have enough gold to recruit that unit"
 msgstr "您没有足够的金币去征募该单位"
 
-#: src/menu_events.cpp:822
+#: src/menu_events.cpp:823
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "您与您的士兵已分离，因此不能召回他们。"
 
-#: src/menu_events.cpp:824
+#: src/menu_events.cpp:825
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10694,56 +10700,56 @@ msgstr ""
 "没有可供召回的单位\n"
 "（上个剧本里必须有存活下来的老兵）"
 
-#: src/menu_events.cpp:863
+#: src/menu_events.cpp:864
 msgid "Dismiss Unit"
 msgstr "解散单位"
 
-#: src/menu_events.cpp:874
+#: src/menu_events.cpp:875
 msgid "Recall"
 msgstr "召回"
 
-#: src/menu_events.cpp:886
+#: src/menu_events.cpp:887
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "要召回一个单位，您至少需要有1个金币"
 msgstr[1] "要召回一个单位，您至少需要有$cost个金币"
 
-#: src/menu_events.cpp:1211
+#: src/menu_events.cpp:1216
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "您在这回合还没进行操作。您真的想结束本回合吗？"
 
-#: src/menu_events.cpp:1219 src/menu_events.cpp:1224
+#: src/menu_events.cpp:1224 src/menu_events.cpp:1229
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些单位还可以移动。您真的要结束本回合吗？"
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1270
 msgid "Rename Unit"
 msgstr "重命名单位"
 
-#: src/menu_events.cpp:1347
+#: src/menu_events.cpp:1352
 msgid "Place Label"
 msgstr "设置标签"
 
-#: src/menu_events.cpp:1350 src/menu_events.cpp:1353
+#: src/menu_events.cpp:1355 src/menu_events.cpp:1358
 msgid "Label:"
 msgstr "标签："
 
-#: src/menu_events.cpp:1356
+#: src/menu_events.cpp:1361
 #, fuzzy
 msgid "Team only"
 msgstr "青"
 
-#: src/menu_events.cpp:1454
+#: src/menu_events.cpp:1459
 msgid "Search"
 msgstr "搜索"
 
-#: src/menu_events.cpp:1497
+#: src/menu_events.cpp:1502
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "指令：whisper ignore emote。输入/help [指令名]以显示相关帮助信息。 "
 
-#: src/menu_events.cpp:1548
+#: src/menu_events.cpp:1553
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -10751,38 +10757,38 @@ msgstr ""
 "发送私人消息。您不能发送消息给正在控制游戏中任何一方的玩家。用法：/whisper "
 "[玩家名] [消息内容]"
 
-#: src/menu_events.cpp:1552
+#: src/menu_events.cpp:1557
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "将玩家列入您的忽略名单。用法：/ignore add [表达式]"
 
-#: src/menu_events.cpp:1554
+#: src/menu_events.cpp:1559
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "将玩家列入您的忽略名单。用法：/ignore add [表达式]"
 
-#: src/menu_events.cpp:1556
+#: src/menu_events.cpp:1561
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr "将玩家从您的忽略名单中去除。用法：/ignore remove [表达式]"
 
-#: src/menu_events.cpp:1558
+#: src/menu_events.cpp:1563
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "清空您的忽略名单。用法：/ignore clear"
 
-#: src/menu_events.cpp:1560
+#: src/menu_events.cpp:1565
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "显示您的忽略名单。用法：/ignore list"
 
-#: src/menu_events.cpp:1562
+#: src/menu_events.cpp:1567
 msgid "Unknown subcommand"
 msgstr "未知的子命令"
 
-#: src/menu_events.cpp:1565
+#: src/menu_events.cpp:1570
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -10793,54 +10799,54 @@ msgstr ""
 "忽略在名单中的玩家发送的消息。用法：/ignore [子命令] [表达式]（可选）。子命令"
 "包括：add remove list clear。输入/help ignore [子命令]获取更多信息。"
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1573
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "在聊天中发送情感或个人讯号。用法：Usage: /emote [消息内容]"
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1575
 msgid "Unknown command"
 msgstr "未知命令"
 
-#: src/menu_events.cpp:1582
+#: src/menu_events.cpp:1587
 msgid "Added to ignore list: "
 msgstr "已加入忽略名单："
 
-#: src/menu_events.cpp:1584 src/menu_events.cpp:1591 src/menu_events.cpp:1598
+#: src/menu_events.cpp:1589 src/menu_events.cpp:1596 src/menu_events.cpp:1603
 msgid "Invalid username: "
 msgstr "无效的用户名："
 
-#: src/menu_events.cpp:1589
+#: src/menu_events.cpp:1594
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "已加入忽略名单："
 
-#: src/menu_events.cpp:1596
+#: src/menu_events.cpp:1601
 #, fuzzy
 msgid "Removed from list: "
 msgstr "从忽略名单中除去："
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1627
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1637
 msgid "Removed from ignore list: "
 msgstr "从忽略名单中除去："
 
-#: src/menu_events.cpp:1635
+#: src/menu_events.cpp:1640
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "从忽略名单中除去："
 
-#: src/menu_events.cpp:1642
+#: src/menu_events.cpp:1647
 msgid "Unknown command: "
 msgstr "未知命令："
 
-#: src/menu_events.cpp:1743
+#: src/menu_events.cpp:1748
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "不能找到含有“$search”的标签或单位。"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1892
 msgid "prompt^Command:"
 msgstr "命令："
 
@@ -11631,15 +11637,15 @@ msgstr " 包含 "
 msgid "$error at $pos"
 msgstr "在$pos处发生$error"
 
-#: src/terrain.cpp:103
+#: src/terrain.cpp:104
 msgid "Allied village"
 msgstr "盟友的村庄"
 
-#: src/terrain.cpp:108
+#: src/terrain.cpp:109
 msgid "Enemy village"
 msgstr "敌人的村庄"
 
-#: src/terrain.cpp:113
+#: src/terrain.cpp:114
 msgid "Owned village"
 msgstr "拥有的村庄"
 

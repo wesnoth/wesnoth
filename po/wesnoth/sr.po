@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-20 10:15+0200\n"
+"POT-Creation-Date: 2007-05-24 22:22+0200\n"
 "PO-Revision-Date: 2007-11-03 12:32+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: data/_main.cfg:12
+#: data/_main.cfg:18
 msgid "Binary Saves"
 msgstr "бинарни снимци"
 
-#: data/_main.cfg:19
+#: data/_main.cfg:25
 msgid "Show Combat"
 msgstr "приказ борбе"
 
-#: data/_main.cfg:26
+#: data/_main.cfg:32
 msgid "Mouse Scrolling"
 msgstr "панирање мишем"
 
@@ -2367,7 +2367,7 @@ msgstr ""
 #: data/core/terrain.cfg:764 data/core/terrain.cfg:775
 #: data/core/terrain.cfg:788 data/core/terrain.cfg:799
 #: data/core/terrain.cfg:812 data/core/terrain.cfg:827
-#: data/core/terrain.cfg:838 src/terrain.cpp:98
+#: data/core/terrain.cfg:838 src/terrain.cpp:99
 msgid "Village"
 msgstr "село"
 
@@ -2803,26 +2803,6 @@ msgstr "олујни трозубац"
 #: data/core/items.cfg:742
 msgid "Zap"
 msgstr "Зап"
-
-#: data/core/multiplayer.cfg:3
-msgid "User Map"
-msgstr "Корисничка мапа"
-
-#: data/core/multiplayer.cfg:17 src/leader_list.cpp:108
-msgid "Random"
-msgstr "насумично"
-
-#: data/core/multiplayer.cfg:24
-msgid "Default"
-msgstr "основна"
-
-#: data/core/multiplayer.cfg:37
-msgid "Age of Heroes"
-msgstr "Доба хероја"
-
-#: data/core/multiplayer.cfg:50
-msgid "Great War"
-msgstr "Велики рат"
 
 #: data/core/names.cfg:2
 msgid ""
@@ -9065,38 +9045,6 @@ msgstr ""
 "\n"
 "Посебне напомене:"
 
-#: data/factions/alliance_of_darkness.cfg:4
-msgid "Alliance of Darkness"
-msgstr "Савез тмине"
-
-#: data/factions/alliance_of_light.cfg:4
-msgid "Alliance of Light"
-msgstr "Савез светла"
-
-#: data/factions/drakes-aoh.cfg:4 data/factions/drakes-default.cfg:4
-msgid "Drakes"
-msgstr "Змагови"
-
-#: data/factions/knalgans-aoh.cfg:4 data/factions/knalgans-default.cfg:4
-msgid "Knalgan Alliance"
-msgstr "Кналгански савез"
-
-#: data/factions/loyalists-aoh.cfg:4 data/factions/loyalists-default.cfg:4
-msgid "Loyalists"
-msgstr "Лојалисти"
-
-#: data/factions/northerners-aoh.cfg:4 data/factions/northerners-default.cfg:4
-msgid "Northerners"
-msgstr "Северњаци"
-
-#: data/factions/rebels-aoh.cfg:4 data/factions/rebels-default.cfg:4
-msgid "Rebels"
-msgstr "Побуњеници"
-
-#: data/factions/undead-aoh.cfg:4 data/factions/undead-default.cfg:4
-msgid "Undead"
-msgstr "Немртви"
-
 #: data/hardwired/english.cfg:2
 msgid "Easy"
 msgstr "лако"
@@ -9601,93 +9549,151 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:7
+#: data/multiplayer/_main.cfg:4
+msgid "User Map"
+msgstr "Корисничка мапа"
+
+#: data/multiplayer/eras.cfg:4 src/leader_list.cpp:108
+msgid "Random"
+msgstr "насумично"
+
+#: data/multiplayer/eras.cfg:11
+msgid "Default"
+msgstr "основна"
+
+#: data/multiplayer/eras.cfg:24
+msgid "Age of Heroes"
+msgstr "Доба хероја"
+
+#: data/multiplayer/eras.cfg:37
+msgid "Great War"
+msgstr "Велики рат"
+
+#: data/multiplayer/factions/alliance_of_darkness.cfg:4
+msgid "Alliance of Darkness"
+msgstr "Савез тмине"
+
+#: data/multiplayer/factions/alliance_of_light.cfg:4
+msgid "Alliance of Light"
+msgstr "Савез светла"
+
+#: data/multiplayer/factions/drakes-aoh.cfg:4
+#: data/multiplayer/factions/drakes-default.cfg:4
+msgid "Drakes"
+msgstr "Змагови"
+
+#: data/multiplayer/factions/knalgans-aoh.cfg:4
+#: data/multiplayer/factions/knalgans-default.cfg:4
+msgid "Knalgan Alliance"
+msgstr "Кналгански савез"
+
+#: data/multiplayer/factions/loyalists-aoh.cfg:4
+#: data/multiplayer/factions/loyalists-default.cfg:4
+msgid "Loyalists"
+msgstr "Лојалисти"
+
+#: data/multiplayer/factions/northerners-aoh.cfg:4
+#: data/multiplayer/factions/northerners-default.cfg:4
+msgid "Northerners"
+msgstr "Северњаци"
+
+#: data/multiplayer/factions/rebels-aoh.cfg:4
+#: data/multiplayer/factions/rebels-default.cfg:4
+msgid "Rebels"
+msgstr "Побуњеници"
+
+#: data/multiplayer/factions/undead-aoh.cfg:4
+#: data/multiplayer/factions/undead-default.cfg:4
+msgid "Undead"
+msgstr "Немртви"
+
+#: data/multiplayer/scenarios/2p_Blitz.cfg:7
 msgid "2p - Blitz"
 msgstr "2и: Блиц"
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:9
-#: data/scenarios/multiplayer/2p_Charge.cfg:9
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:34
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#: data/scenarios/multiplayer/4p_Clash.cfg:5
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:4
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
-#: data/scenarios/multiplayer/8p_Morituri.cfg:5
+#: data/multiplayer/scenarios/2p_Blitz.cfg:9
+#: data/multiplayer/scenarios/2p_Charge.cfg:9
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:4
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:4
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:4
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:4
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:4
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:4
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:34
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
+#: data/multiplayer/scenarios/3p_Morituri.cfg:4
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:4
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:4
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
+#: data/multiplayer/scenarios/4p_Clash.cfg:5
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:4
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:7
+#: data/multiplayer/scenarios/4p_Morituri.cfg:5
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:4
+#: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid " Recommended setting of 2 gold per village."
 msgstr " Препоручује се 2 златника по селу."
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:9
-#: data/scenarios/multiplayer/2p_Charge.cfg:9
+#: data/multiplayer/scenarios/2p_Blitz.cfg:9
+#: data/multiplayer/scenarios/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
 msgstr "Мапа за брзи сукоб двају играча."
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:22
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
-#: data/scenarios/multiplayer/2p_Charge.cfg:22
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:22
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:29
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:18
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:18
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:18
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:59
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:20
-#: data/scenarios/multiplayer/3p_Morituri.cfg:18
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:18
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:19
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:52
-#: data/scenarios/multiplayer/4p_Morituri.cfg:16
-#: data/scenarios/multiplayer/4p_Morituri.cfg:46
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:28
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:38
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:18
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:29
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:40
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:73
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:25
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:65
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:105
+#: data/multiplayer/scenarios/2p_Blitz.cfg:22
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:46
+#: data/multiplayer/scenarios/2p_Charge.cfg:22
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:29
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:18
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:18
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:18
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:59
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
+#: data/multiplayer/scenarios/3p_Morituri.cfg:18
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:18
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:19
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:52
+#: data/multiplayer/scenarios/4p_Morituri.cfg:16
+#: data/multiplayer/scenarios/4p_Morituri.cfg:46
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:28
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:38
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:18
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:29
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:40
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:73
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:25
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:65
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:105
 msgid "teamname^North"
 msgstr "Север"
 
-#: data/scenarios/multiplayer/2p_Blitz.cfg:33
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:57
-#: data/scenarios/multiplayer/2p_Charge.cfg:33
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:34
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:18
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:29
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:29
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:29
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:48
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:30
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:41
-#: data/scenarios/multiplayer/4p_Morituri.cfg:26
-#: data/scenarios/multiplayer/4p_Morituri.cfg:36
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:18
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:48
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:58
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:18
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:51
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:62
+#: data/multiplayer/scenarios/2p_Blitz.cfg:33
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:57
+#: data/multiplayer/scenarios/2p_Charge.cfg:33
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:34
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:18
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:29
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:29
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:29
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:48
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:30
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:41
+#: data/multiplayer/scenarios/4p_Morituri.cfg:26
+#: data/multiplayer/scenarios/4p_Morituri.cfg:36
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:18
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:48
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:58
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:18
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:51
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:62
 msgid "teamname^South"
 msgstr "Југ"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
 msgstr "2и: Пећине Базилиска"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
 "Players must maneuver their units through the divisive terrain of this long-"
 "feared region, once the home of a legendary Elder Basilisk. The road to "
@@ -9698,7 +9704,7 @@ msgstr ""
 "области, некада дома легендарног Старог базилиска. Пут до победе начичкан је "
 "окамењеним облицима неких од највећих јунака Веснота."
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:92
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:92
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -9743,7 +9749,7 @@ msgstr ""
 " \n"
 "(урезао Пламенобојник)"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:107
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:107
 msgid ""
 "Slim of Stature, dexterous Hands\n"
 "- - Seven Stones and Eleven\n"
@@ -9764,7 +9770,7 @@ msgstr ""
 " \n"
 "(урезао Гватеамус)"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:118
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:118
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -9796,7 +9802,7 @@ msgstr ""
 " \n"
 "(урезао Вилењак-пљачкаш)"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:127
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:127
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -9814,7 +9820,7 @@ msgstr ""
 " \n"
 "(урезао Турин)"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:136
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:136
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -9833,7 +9839,7 @@ msgstr ""
 " \n"
 "(урезао Финмир)"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:147
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -9867,7 +9873,7 @@ msgstr ""
 " \n"
 "(урезао Вилењак-пљачкаш)"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -9892,7 +9898,7 @@ msgstr ""
 " \n"
 "(урезао Патерсон)"
 
-#: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:178
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:178
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -9926,19 +9932,19 @@ msgstr ""
 " \n"
 "(урезао МЈК)"
 
-#: data/scenarios/multiplayer/2p_Charge.cfg:7
+#: data/multiplayer/scenarios/2p_Charge.cfg:7
 msgid "2p - Charge"
 msgstr "2и: Јуриш"
 
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
 msgstr "2и: Бојиште Синсајн"
 
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:9
 msgid " Recommended settings of 150 gold and 1 gold per village."
 msgstr " Препоручене поставке су 150 златника и 1 златник по селу."
 
-#: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
+#: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
@@ -9946,11 +9952,11 @@ msgstr ""
 "Толико тога има да се истражи на овом непрегледном бојишту, дизајнираном за "
 "играче којима погодују епски двобоји широког опсега."
 
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
 msgstr "2и: Јазбина Ониса"
 
-#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:4
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet."
@@ -9958,12 +9964,12 @@ msgstr ""
 "Опасност вреба на сваком ћошку овог подземног бојишта, попришту двобоја у "
 "коме се сусрећу сила и завара."
 
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:3
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
 msgstr "2и: Сеоца"
 
-#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:4
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:4
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:4
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
@@ -9971,11 +9977,11 @@ msgstr ""
 "Ратовање претвара простодушне фарме и села мирољубиве области у препредено "
 "испарчано бојиште."
 
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
 msgstr "2и: Острво рог-ајкуле"
 
-#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:4
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
@@ -9983,11 +9989,11 @@ msgstr ""
 "Играчи се морају кретати разуђеним тереном овог малог, али топографски "
 "густог острва."
 
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
 msgstr "2и: Метеорско језеро"
 
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:4
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region."
@@ -9995,48 +10001,48 @@ msgstr ""
 "Некада давано, сручи се са небеса велики метеор, оставивши свој белег на "
 "овој зимзеленој земљи."
 
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:18
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:18
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:20
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:40
-#: data/scenarios/multiplayer/3p_Morituri.cfg:38
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:38
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:30
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:40
-#: data/scenarios/multiplayer/4p_Clash.cfg:16
-#: data/scenarios/multiplayer/4p_Clash.cfg:36
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:18
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:48
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:28
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:29
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:40
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:73
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:18
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:18
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:20
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:40
+#: data/multiplayer/scenarios/3p_Morituri.cfg:38
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:38
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:30
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:40
+#: data/multiplayer/scenarios/4p_Clash.cfg:16
+#: data/multiplayer/scenarios/4p_Clash.cfg:36
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:18
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:48
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:28
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:29
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:40
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:73
 msgid "teamname^West"
 msgstr "Запад"
 
-#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:29
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:29
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:27
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:30
-#: data/scenarios/multiplayer/3p_Morituri.cfg:28
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:28
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:20
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:50
-#: data/scenarios/multiplayer/4p_Clash.cfg:26
-#: data/scenarios/multiplayer/4p_Clash.cfg:46
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:28
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:38
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:18
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:51
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:62
+#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:29
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:29
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:27
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:30
+#: data/multiplayer/scenarios/3p_Morituri.cfg:28
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:28
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:50
+#: data/multiplayer/scenarios/4p_Clash.cfg:26
+#: data/multiplayer/scenarios/4p_Clash.cfg:46
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:28
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:38
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:18
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:51
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:62
 msgid "teamname^East"
 msgstr "Исток"
 
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
 msgstr "2и: Делта самуркамена"
 
-#: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:4
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
@@ -10044,11 +10050,11 @@ msgstr ""
 "Две армије се сударају на разуђеном обалском пејзажу скривених пећина и "
 "назупчених река."
 
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
 msgstr "2и: Раскршће Силверхед"
 
-#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:4
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
@@ -10056,19 +10062,19 @@ msgstr ""
 "Играчи морају газити преко сваквог терена у потери за победом на овој "
 "вишефронтовској мапи за двобој."
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:18
 msgid "statue"
 msgstr "кип"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
 msgstr "Скулптура начиња од камена."
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
 msgstr "2и: Рушевине Суле"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:34
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:34
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
@@ -10076,11 +10082,11 @@ msgstr ""
 "Плављене морима и ударане налетима зиме, само рушевине, вода и лед остају "
 "као сенка овога некада моћног царства."
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
 msgstr "Кип Суле"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:74
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:74
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
 "Sulla the Tyrant, Empress of the Sinking Tower, Scion of the Crushing Gales, "
@@ -10093,43 +10099,43 @@ msgstr ""
 "Глечера, Чуварка Горућег Таласа, Краљица Пламена До Темеља, Сула "
 "Сагоревачица, Сула Поносита и Сула Истинољубива."
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
 msgstr "Кип Лун-дупа"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
 msgstr "У камен уклесано наличје Лун-дупа, следбеника Сулиног."
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
 msgstr "Кип Ри-нзена"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
 msgstr "У камен уклесано наличје Ри-нзена, следбеника Сулиног."
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
 msgstr "Кип Тен-зина"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
 msgstr "У камен уклесно наличје Тен-зина, следбеника Сулиног."
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:89
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Lo-bsang"
 msgstr "Кип Ло-бсанга"
 
-#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:90
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "У камен уклесно наличје Ло-бсанга, следбеника Сулиног."
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
 msgstr "2и: Вескуглање"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:5
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:5
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
 "zone as often as possible. However, the other player can attack your units. "
@@ -10142,7 +10148,7 @@ msgstr ""
 "када јединица настрада, враћа се повређена у крајњу зону играча којем "
 "припада."
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:10
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:10
 msgid ""
 "\n"
 "Victory:\n"
@@ -10160,48 +10166,48 @@ msgstr ""
 "#Противник помери кугле у вашу крајњу зону више пута него што ви померите у "
 "његову."
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:177
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:423
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:177
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:423
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "Црвени поентира! Тренутни резултат је $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:219
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:465
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:219
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:465
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "Плави поентира! Тренутни резултат је $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:303
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:549
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:303
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:549
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "Треба ли да проследим лопту на $passto.type ($xloc,$yloc)?"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:305
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:551
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:305
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:551
 msgid "Yes!"
 msgstr "Да!"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:327
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:573
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:327
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:573
 msgid "No"
 msgstr "Не"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:596
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:596
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "Победа плавих! Крајњи резултат: $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:608
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:608
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "Победа црвених! Крајњи резултат: $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:620
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:620
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Нерешено! Крајњи резултат: $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "3и: Острво Хоратиј"
 
-#: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
@@ -10209,11 +10215,11 @@ msgstr ""
 "Владати средишњим острвом често је кључ победе на овој 21x21 мапи за три "
 "играча."
 
-#: data/scenarios/multiplayer/3p_Morituri.cfg:3
+#: data/multiplayer/scenarios/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "3и: Моритури"
 
-#: data/scenarios/multiplayer/3p_Morituri.cfg:4
+#: data/multiplayer/scenarios/3p_Morituri.cfg:4
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
@@ -10221,20 +10227,20 @@ msgstr ""
 "Само једна фракција може избити непобеђена из ове тесно ограђене мапе за три "
 "играча."
 
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
 msgstr "3и: Троструки блиц"
 
-#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
+#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:4
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr ""
 "Три играча суочавају се очи у очи на овом водом водом испресецаном бојишту."
 
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
 msgstr "4и: Плаводерна провинција"
 
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:4
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -10245,61 +10251,61 @@ msgstr ""
 "Сада, како се војске поново сустичу на каменитим токовима и снежним "
 "планинама ове мале провинције, тамошњи житељи то скоро и не примећују."
 
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:18
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:48
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:15
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:35
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:55
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:16
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:36
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:56
-#: data/scenarios/multiplayer/8p_Morituri.cfg:16
-#: data/scenarios/multiplayer/8p_Morituri.cfg:56
-#: data/scenarios/multiplayer/8p_Morituri.cfg:66
-#: data/scenarios/multiplayer/8p_Morituri.cfg:76
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:18
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:48
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:15
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:35
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:55
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:16
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:36
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:56
+#: data/multiplayer/scenarios/8p_Morituri.cfg:16
+#: data/multiplayer/scenarios/8p_Morituri.cfg:56
+#: data/multiplayer/scenarios/8p_Morituri.cfg:66
+#: data/multiplayer/scenarios/8p_Morituri.cfg:76
 msgid "teamname^Team 1"
 msgstr "Тим 1"
 
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:28
-#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:38
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:25
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:45
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:65
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:26
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:46
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:66
-#: data/scenarios/multiplayer/8p_Morituri.cfg:26
-#: data/scenarios/multiplayer/8p_Morituri.cfg:36
-#: data/scenarios/multiplayer/8p_Morituri.cfg:46
-#: data/scenarios/multiplayer/8p_Morituri.cfg:86
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:28
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:38
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:25
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:45
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:65
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:26
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:46
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:66
+#: data/multiplayer/scenarios/8p_Morituri.cfg:26
+#: data/multiplayer/scenarios/8p_Morituri.cfg:36
+#: data/multiplayer/scenarios/8p_Morituri.cfg:46
+#: data/multiplayer/scenarios/8p_Morituri.cfg:86
 msgid "teamname^Team 2"
 msgstr "Тим 2"
 
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:5
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
 msgstr "4и: Скакутање по замковима"
 
-#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
 msgstr "Скакутање од замка до замка у току борбе око средишњег острва."
 
-#: data/scenarios/multiplayer/4p_Clash.cfg:3
+#: data/multiplayer/scenarios/4p_Clash.cfg:3
 msgid "4p - Clash"
 msgstr "4и: Судар"
 
-#: data/scenarios/multiplayer/4p_Clash.cfg:5
+#: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
 msgstr "Мала мапа за 2 на 2."
 
-#: data/scenarios/multiplayer/4p_Hamlets.cfg:3
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:3
 msgid "4p - Hamlets"
 msgstr "4и: Сеоца"
 
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
 msgstr "4и: Изаров прелаз"
 
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -10310,40 +10316,40 @@ msgstr ""
 "јединица и прецизно планирање потеза. Тимови постављени за играче 1 и 4 пр. "
 "2 и 3 (североисток пр. југозапад). Дизајнирано за 75зл, 20 села."
 
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:18
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:51
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:18
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:53
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:26
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:36
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:66
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:45
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:55
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:95
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:18
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:51
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:18
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:53
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:26
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:36
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:66
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:45
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:55
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:95
 msgid "teamname^South-West"
 msgstr "Југозапад"
 
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:29
-#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:40
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:40
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:31
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:48
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:16
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:46
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:56
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:29
+#: data/multiplayer/scenarios/4p_Isars_Cross.cfg:40
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:40
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:31
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:48
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:16
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:46
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:56
 msgid "teamname^North-East"
 msgstr "Североисток"
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
 msgstr "4и: Господар брега"
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
 msgstr " Препоручене поставке су 2 златника по селу и 150 на почетку."
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
@@ -10351,43 +10357,43 @@ msgstr ""
 "Држање подручја око средишњег замка врло је уносно на овој 36x36 мапи за "
 "четири играча, сви против свих. Добра је и за 2 на 2. Постоји 36 села."
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:29
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:34
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:44
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:42
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:38
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:35
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:75
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:85
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:29
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:34
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:44
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:42
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:38
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:35
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:75
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:85
 msgid "teamname^South-East"
 msgstr "Југоисток"
 
-#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:51
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:24
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:54
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:20
+#: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:51
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:24
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:54
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:20
 msgid "teamname^North-West"
 msgstr "Северозапад"
 
-#: data/scenarios/multiplayer/4p_Lagoon.cfg:3
+#: data/multiplayer/scenarios/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
 msgstr "4и: Лагуна"
 
-#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:13
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
+#: data/multiplayer/scenarios/4p_Lagoon.cfg:4
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:13
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid " Recommended setting of 1 gold per village."
 msgstr " Препоручује се 1 златник по селу."
 
-#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
+#: data/multiplayer/scenarios/4p_Lagoon.cfg:4
 msgid "Four factions contend for dominance over this watery settlement."
 msgstr "Четири фракције боре се за превласт у овој водњикавој настамби."
 
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:5
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:5
 msgid "4p - Loris River"
 msgstr "4и: Река Лорис"
 
-#: data/scenarios/multiplayer/4p_Loris_River.cfg:7
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
@@ -10395,23 +10401,23 @@ msgstr ""
 "25x25, 2 на 2 мапа, усредсређена око реке са замковима у супротним угловима. "
 "Направљена за играче 1 и 4 пр. 2 и 3. Постоји 28 села."
 
-#: data/scenarios/multiplayer/4p_Morituri.cfg:3
+#: data/multiplayer/scenarios/4p_Morituri.cfg:3
 msgid "4p - Morituri"
 msgstr "4и: Моритури"
 
-#: data/scenarios/multiplayer/4p_Morituri.cfg:5
+#: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "Who will emerge from the confines of this perilous battlefield?"
 msgstr "Ко ће изађи окићен ловоровим венцом из теснаца овог oпасног бојишта?"
 
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
 msgstr "4и: Путеви ножева"
 
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid " Recommended setting of 2 gold per village, 28 villages."
 msgstr " Препоручене поставке су 2 златника по селу, 28 села."
 
-#: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
@@ -10420,11 +10426,11 @@ msgstr ""
 "исток пр. запада (1 и 4 пр. 2 и 3), али може и са другим распоредима, или "
 "сви против свих."
 
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4и: Опсадни замкови"
 
-#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
@@ -10432,11 +10438,11 @@ msgstr ""
 "40x30 мапа за 4 играча, где се 4 моћна замка сучељавају на ушћу двају река. "
 "Добра за 2 на 2 и сви против свих. Има око 45 села."
 
-#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:12
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:12
 msgid "4p - The Wilderlands"
 msgstr "4и: Дивљина"
 
-#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:13
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:13
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
@@ -10444,26 +10450,26 @@ msgstr ""
 "Непрегледна област дивље, неукроћене природе, терена посутог шумама, "
 "пећинама, рекама и остацима древних тврђава."
 
-#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:58
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:58
 #, fuzzy
 msgid "Monsters"
 msgstr "чудовишта"
 
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:5
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:5
 msgid "4p - Xanthe Chaos"
 msgstr ""
 
-#: data/scenarios/multiplayer/4p_Xanthe_Chaos.cfg:7
+#: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:3
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:3
 msgid "5p - Auction-X"
 msgstr ""
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:5
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid ""
 "4 players surround a central keep, play vs the AI survival style, or as a "
 "FFA or 4 vs. 1.  The center player will need more gold in a 4 vs. 1 or FFA, "
@@ -10471,44 +10477,44 @@ msgid ""
 "is a very small map so 75 gold is recommended for the other players."
 msgstr ""
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:19
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:19
 #, fuzzy
 msgid "teamname^Northeast"
 msgstr "Североисток"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:30
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:30
 #, fuzzy
 msgid "teamname^Southeast"
 msgstr "Југозапад"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:41
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:41
 #, fuzzy
 msgid "teamname^Southwest"
 msgstr "Југозапад"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:52
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:52
 #, fuzzy
 msgid "teamname^Northwest"
 msgstr "Северозапад"
 
-#: data/scenarios/multiplayer/5p_Auction-X.cfg:63
+#: data/multiplayer/scenarios/5p_Auction-X.cfg:63
 #, fuzzy
 msgid "teamname^Center"
 msgstr "Запад"
 
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
 msgstr "5и: Шума страха"
 
-#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:5
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "На овом мешаном пејзажу, пет војски се бори за премоћ."
 
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
 msgstr "6и: Амосадово гротло"
 
-#: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:4
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head."
@@ -10516,11 +10522,11 @@ msgstr ""
 "Само истински тактичар може преживети на овом смртоносном и тесном бојишту, "
 "где се судара шест притиснутих војски."
 
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
 msgstr "6и: Крсташево поље"
 
-#: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
@@ -10530,121 +10536,121 @@ msgstr ""
 "похабаном ратишту, где духови хиљада храбрих ратника невидљиво плове кроз "
 "планине, дрвећа и реке."
 
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:3
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
 msgstr "6и: Шестоколач"
 
-#: data/scenarios/multiplayer/6p_Hexcake.cfg:5
+#: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Тимска игра 2 на 2 или 3 на 3."
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:166
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:166
 #, fuzzy
 msgid "Turn 2: Loyalists"
 msgstr "Лојалисти"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:167
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:167
 msgid "Turn 5: Knalgans"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:168
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:168
 #, fuzzy
 msgid "Turn 8: Rebels"
 msgstr "Побуњеници"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:169
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:169
 #, fuzzy
 msgid "Turn 11: Northerners"
 msgstr "Северњаци"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:170
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:170
 #, fuzzy
 msgid "Turn 14: Drakes"
 msgstr "змаго-олујник"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:171
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:171
 msgid "Turn 17: Undead"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:172
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:172
 msgid "Tower of Doom"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:303
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:303
 msgid "6p - Team Survival"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:306
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:306
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:313
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:313
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:313
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:313
 msgid "Survive for 32 turns."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:314
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:314
 msgid "Survive all enemy attacks."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:315
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:315
 msgid "Death of your team leaders."
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:337
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:340
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:352
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:352
 #: src/mouse_events.cpp:193 src/mouse_events.cpp:303
 msgid "Attacker"
 msgstr "нападач"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:356
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:356
 #, fuzzy
 msgid "North-West"
 msgstr "Северозапад"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:357
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:357
 #, fuzzy
 msgid "North-East"
 msgstr "Североисток"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:358
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:358
 msgid "Middle-East"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:359
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:359
 #, fuzzy
 msgid "South-East"
 msgstr "Југоисток"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:360
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
 #, fuzzy
 msgid "South-West"
 msgstr "Југозапад"
 
-#: data/scenarios/multiplayer/6p_Team_Survival.cfg:361
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:361
 msgid "Middle-West"
 msgstr ""
 
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
 msgstr "6и: Замке Манзивана"
 
-#: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid ""
 "A 40X20 3 vs. 3 map. The Mazivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
@@ -10656,11 +10662,11 @@ msgstr ""
 "Тимови су подешени за играче 145 пр. 236 (истог пр. запада). Дизајнирано за "
 "100 злата на почетку, има 33 села."
 
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
 msgstr "6и: Сумрак Ватерлоа"
 
-#: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
+#: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
 "avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
@@ -10672,11 +10678,11 @@ msgstr ""
 "(север пр. југа), али занимљиво је и са тимовима 146 или 136. Дизајнирано за "
 "150 златника на почетку, има 44 села."
 
-#: data/scenarios/multiplayer/8p_Morituri.cfg:3
+#: data/multiplayer/scenarios/8p_Morituri.cfg:3
 msgid "8p - Morituri"
 msgstr "8и: Моритури"
 
-#: data/scenarios/multiplayer/8p_Morituri.cfg:5
+#: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
@@ -10684,11 +10690,11 @@ msgstr ""
 "Тимска игра и тактизирање кључ су победе на овом необичном бојном пољу, где "
 "се осам војски бори до краја."
 
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
 msgstr "9и: Чудновата привлачност"
 
-#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
+#: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
 "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
@@ -10700,12 +10706,12 @@ msgstr ""
 "пр. југозапада). Врло мало села по играчу, тако да се препоручује 3 златника "
 "по селу."
 
-#: data/scenarios/multiplayer/Random_Scenario.cfg:3
-#: data/scenarios/multiplayer/Random_Scenario.cfg:8
+#: data/multiplayer/scenarios/Random_Scenario.cfg:3
+#: data/multiplayer/scenarios/Random_Scenario.cfg:8
 msgid "Random map"
 msgstr "Насумично"
 
-#: data/scenarios/multiplayer/Random_Scenario.cfg:4
+#: data/multiplayer/scenarios/Random_Scenario.cfg:4
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -10713,12 +10719,12 @@ msgstr ""
 "Мапа се ствара насумично. Напомена: насумичне мапе су често неуравнотежене, "
 "али ако имате времена, можете их стварати док не добијете једну ваљану."
 
-#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:10
+#: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:4
+#: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
 msgstr "Насумично (пустиња)"
 
-#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:5
+#: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 msgid ""
 "A random map with sand as the primary terrain. Note: random maps are often "
 "unbalanced, but if you have time, you can regenerate them until you get a "
@@ -10728,12 +10734,12 @@ msgstr ""
 "често неуравнотежене, али ако имате времена, можете их стварати док не "
 "добијете једну ваљану."
 
-#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:9
+#: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:4
+#: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:9
 msgid "Random map (Marsh)"
 msgstr "Насумично (мочвара)"
 
-#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:5
+#: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 msgid ""
 "A random map with swamp as the primary terrain. Note: random maps are often "
 "unbalanced, but if you have time, you can regenerate them until you get a "
@@ -10743,12 +10749,12 @@ msgstr ""
 "често неуравнотежене, али ако имате времена, можете их стварати док не "
 "добијете једну ваљану."
 
-#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:9
+#: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:4
+#: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:9
 msgid "Random map (Winter)"
 msgstr "Насумично (зима)"
 
-#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:5
+#: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 msgid ""
 "A random map set in the break between spring and winter, mainly with snowy "
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
@@ -10758,11 +10764,11 @@ msgstr ""
 "тереном. Напомена: насумичне мапе су често неуравнотежене, али ако имате "
 "времена, можете их стварати док не добијете једну ваљану."
 
-#: data/scenarios/multiplayer/Wesbench_AI.cfg:6
+#: data/multiplayer/scenarios/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
 msgstr "Проба Веснота: ВИ"
 
-#: data/scenarios/multiplayer/Wesbench_AI.cfg:7
+#: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
@@ -10770,11 +10776,11 @@ msgstr ""
 "Проба перформанси, употребите: --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end"
 
-#: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
+#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
 msgstr "Проба Веснота: клизање"
 
-#: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
+#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
@@ -10782,11 +10788,11 @@ msgstr ""
 "Проба перформанси, употребите: --no-delay --multiplayer --"
 "scenario=wesbench_scroll --exit-at-end"
 
-#: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
+#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
 msgstr "Проба Веснота: шетање кроз покров"
 
-#: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
+#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
@@ -10815,7 +10821,7 @@ msgstr "УП"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
 #: data/themes/experimental.cfg:158 src/menu_events.cpp:298
-#: src/menu_events.cpp:832
+#: src/menu_events.cpp:833
 msgid "XP"
 msgstr "ИП"
 
@@ -11113,7 +11119,7 @@ msgid "Date"
 msgstr "датум"
 
 #: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:295
-#: src/menu_events.cpp:830
+#: src/menu_events.cpp:831
 msgid "Name"
 msgstr "име"
 
@@ -11425,23 +11431,23 @@ msgstr "' (игра ће се сад угасити)"
 msgid "Battle for Wesnoth"
 msgstr "Бој за Веснот"
 
-#: src/game.cpp:1822
+#: src/game.cpp:1820
 msgid "Loading game configuration."
 msgstr "Учитавам подешавања игре."
 
-#: src/game.cpp:1828
+#: src/game.cpp:1826
 msgid "Re-initialize fonts for the current language."
 msgstr "Васпостављам фонтове за текући језик."
 
-#: src/game.cpp:1844
+#: src/game.cpp:1842
 msgid "Loading title screen."
 msgstr "Учитавам насловни екран."
 
-#: src/game_events.cpp:870
+#: src/game_events.cpp:861
 msgid "Victory:"
 msgstr "победа:"
 
-#: src/game_events.cpp:873
+#: src/game_events.cpp:864
 msgid "Defeat:"
 msgstr "пораз:"
 
@@ -11477,7 +11483,7 @@ msgstr "Напади"
 msgid "unit help^Name"
 msgstr "назив"
 
-#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:829
+#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:830
 msgid "Type"
 msgstr "тип"
 
@@ -11650,7 +11656,7 @@ msgstr "примљена штета (ЕВ)"
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/menu_events.cpp:296 src/menu_events.cpp:831
+#: src/menu_events.cpp:296 src/menu_events.cpp:832
 msgid "Level"
 msgstr "ниво"
 
@@ -11784,7 +11790,7 @@ msgstr "Нема јединица спремних за унајмљивање."
 msgid "Recruit"
 msgstr "Унајми"
 
-#: src/menu_events.cpp:726 src/menu_events.cpp:875
+#: src/menu_events.cpp:726 src/menu_events.cpp:876
 msgid "Select unit:"
 msgstr "Изаберите јединицу:"
 
@@ -11792,11 +11798,11 @@ msgstr "Изаберите јединицу:"
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Немате довољно злата да унајмите ту јединицу"
 
-#: src/menu_events.cpp:822
+#: src/menu_events.cpp:823
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Растављени сте од својих војника и не можете их сазвати"
 
-#: src/menu_events.cpp:824
+#: src/menu_events.cpp:825
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11804,57 +11810,57 @@ msgstr ""
 "Нема ветерана које бисте могли сазвати.\n"
 "(Морате имати неке преживеле из претходног сценарија)"
 
-#: src/menu_events.cpp:863
+#: src/menu_events.cpp:864
 msgid "Dismiss Unit"
 msgstr "Отпусти јединицу"
 
-#: src/menu_events.cpp:874
+#: src/menu_events.cpp:875
 msgid "Recall"
 msgstr "Сазови"
 
-#: src/menu_events.cpp:886
+#: src/menu_events.cpp:887
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Морате имати барем $cost златник да бисте сазвали јединицу"
 msgstr[1] "Морате имати барем $cost златника да бисте сазвали јединицу"
 msgstr[2] "Морате имати барем $cost златника да бисте сазвали јединицу"
 
-#: src/menu_events.cpp:1211
+#: src/menu_events.cpp:1216
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Нисте ни започели свој потез, желите ли заиста већ да га окончате?"
 
-#: src/menu_events.cpp:1219 src/menu_events.cpp:1224
+#: src/menu_events.cpp:1224 src/menu_events.cpp:1229
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Неке јединице се још могу кретати. Желите ли заиста да завршите потез?"
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1270
 msgid "Rename Unit"
 msgstr "Преименуј јединицу"
 
-#: src/menu_events.cpp:1347
+#: src/menu_events.cpp:1352
 msgid "Place Label"
 msgstr "Постави етикету"
 
-#: src/menu_events.cpp:1350 src/menu_events.cpp:1353
+#: src/menu_events.cpp:1355 src/menu_events.cpp:1358
 msgid "Label:"
 msgstr "Етикета:"
 
-#: src/menu_events.cpp:1356
+#: src/menu_events.cpp:1361
 #, fuzzy
 msgid "Team only"
 msgstr "петролеј"
 
-#: src/menu_events.cpp:1454
+#: src/menu_events.cpp:1459
 msgid "Search"
 msgstr "Тражи"
 
-#: src/menu_events.cpp:1497
+#: src/menu_events.cpp:1502
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Наредбе: whisper ignore emote. Упишите /help [naredba] за помоћ."
 
-#: src/menu_events.cpp:1548
+#: src/menu_events.cpp:1553
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -11862,38 +11868,38 @@ msgstr ""
 "Шаље приватну поруку. Можете слати поруке играчима на било којој страни у "
 "игри. Употреба: /whisper [nadimak] [poruka]"
 
-#: src/menu_events.cpp:1552
+#: src/menu_events.cpp:1557
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Додаје играча на списак игнорисаних. Употреба: /ignore add [razlog]"
 
-#: src/menu_events.cpp:1554
+#: src/menu_events.cpp:1559
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Додаје играча на списак игнорисаних. Употреба: /ignore add [razlog]"
 
-#: src/menu_events.cpp:1556
+#: src/menu_events.cpp:1561
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr "Уклања играча са списка игнорисаних. Употреба: /ignore remove [razlog]"
 
-#: src/menu_events.cpp:1558
+#: src/menu_events.cpp:1563
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Чисти листу игнорисаних. Употреба: /ignore clear"
 
-#: src/menu_events.cpp:1560
+#: src/menu_events.cpp:1565
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Приказује листу игнорисаних. Употреба: /ignore list"
 
-#: src/menu_events.cpp:1562
+#: src/menu_events.cpp:1567
 msgid "Unknown subcommand"
 msgstr "Непозната поднаредба"
 
-#: src/menu_events.cpp:1565
+#: src/menu_events.cpp:1570
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -11905,54 +11911,54 @@ msgstr ""
 "[razlog](опционо) Поднаредбе: add remove list clear. Упишите /help ignore "
 "[podnaredba] за више детаља."
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1573
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Шаље емоцију или личну радњу у ћаскање. Употреба: /emote [poruka]"
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1575
 msgid "Unknown command"
 msgstr "Непозната наредба"
 
-#: src/menu_events.cpp:1582
+#: src/menu_events.cpp:1587
 msgid "Added to ignore list: "
 msgstr "Додат на списак игнорисаних: "
 
-#: src/menu_events.cpp:1584 src/menu_events.cpp:1591 src/menu_events.cpp:1598
+#: src/menu_events.cpp:1589 src/menu_events.cpp:1596 src/menu_events.cpp:1603
 msgid "Invalid username: "
 msgstr "Неисправно корисничко име: "
 
-#: src/menu_events.cpp:1589
+#: src/menu_events.cpp:1594
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Додат на списак игнорисаних: "
 
-#: src/menu_events.cpp:1596
+#: src/menu_events.cpp:1601
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Уклоњен са списка игнорисаних: "
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1627
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1637
 msgid "Removed from ignore list: "
 msgstr "Уклоњен са списка игнорисаних: "
 
-#: src/menu_events.cpp:1635
+#: src/menu_events.cpp:1640
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Уклоњен са списка игнорисаних: "
 
-#: src/menu_events.cpp:1642
+#: src/menu_events.cpp:1647
 msgid "Unknown command: "
 msgstr "Непозната наредба: "
 
-#: src/menu_events.cpp:1743
+#: src/menu_events.cpp:1748
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Нисам могао да нађем етикету или јединицу која садржи „$search“."
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1892
 msgid "prompt^Command:"
 msgstr "наредба:"
 
@@ -12742,15 +12748,15 @@ msgstr " укључено из "
 msgid "$error at $pos"
 msgstr "$error код $pos"
 
-#: src/terrain.cpp:103
+#: src/terrain.cpp:104
 msgid "Allied village"
 msgstr "савезничко село"
 
-#: src/terrain.cpp:108
+#: src/terrain.cpp:109
 msgid "Enemy village"
 msgstr "противничко село"
 
-#: src/terrain.cpp:113
+#: src/terrain.cpp:114
 msgid "Owned village"
 msgstr "запоседнуто село"
 
