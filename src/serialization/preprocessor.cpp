@@ -128,7 +128,7 @@ int preprocessor_streambuf::underflow()
 			delete current_;
 		}
 	}
-	//update the internal data and pointers
+	//update the internal state and data pointers
 	out_buffer_ = buffer_.str();
 	char *begin = &*out_buffer_.begin();
 	unsigned bs = out_buffer_.size();
@@ -150,7 +150,7 @@ preprocessor::preprocessor(preprocessor_streambuf &t)
 
 namespace {
 void count_extra_digits(int const& line_number, int& buffer_size) {
-	for(int digit_mark = 10; line_number >= digit_mark; ++digit_mark) {
+	for(int digit_mark = 10; line_number >= digit_mark; digit_mark *= 10) {
 		//the number is larger than one digit, calculate additional string size
 		++buffer_size;
 	}
