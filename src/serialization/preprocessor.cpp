@@ -97,12 +97,16 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
 {
 }
 
+//underflow is called when the internal buffer has been consumed so that more can be prepared
 int preprocessor_streambuf::underflow()
 {
 	unsigned sz = 0;
 	if (char *gp = gptr()) {
-		if (gp < egptr())
+		if (gp < egptr()) {
+			//sanity check: the internal buffer has not been totally consumed
+			//should we force the caller to use what remains first?
 			return *gp;
+		}
 		// the buffer has been completely read; fill it again
 		// keep part of the previous buffer, to ensure putback capabilities
 		sz = out_buffer_.size();
@@ -113,17 +117,18 @@ int preprocessor_streambuf::underflow()
 		buffer_.str(std::string());
 		buffer_ << out_buffer_;
         buffer_size_ = out_buffer_.size();
+	} else {
+		//the internal get-data pointer is null
 	}
-	while (current_) {
-		if (current_->get_chunk()) {
-			if (buffer_size_ >= 3000)
-				//FIXME: this maximum needs to be determined more precisely
-				break;
-		} else {
-			 // automatically restore the previous preprocessor
+	const int desired_fill_amount = 2000;
+	while (current_ && buffer_size_ < desired_fill_amount) {
+		//process files and data chunks until the desired buffer size is reached
+		if (!current_->get_chunk()) {
+			 //delete the current preprocessor item to restore its predecessor
 			delete current_;
 		}
 	}
+	//update the internal data and pointers
 	out_buffer_ = buffer_.str();
 	char *begin = &*out_buffer_.begin();
 	unsigned bs = out_buffer_.size();
@@ -143,6 +148,15 @@ preprocessor::preprocessor(preprocessor_streambuf &t)
 	target_.current_ = this;
 }
 
+namespace {
+void count_extra_digits(int const& line_number, int& buffer_size) {
+	for(int digit_mark = 10; line_number >= digit_mark; ++digit_mark) {
+		//the number is larger than one digit, calculate additional string size
+		++buffer_size;
+	}
+}
+} //end anonymous namespace
+
 preprocessor::~preprocessor()
 {
 	wassert(target_.current_ == this);
@@ -151,16 +165,9 @@ preprocessor::~preprocessor()
 	target_.linenum_ = old_linenum_;
 	target_.textdomain_ = old_textdomain_;
 	if (!old_location_.empty()) {
-		target_.buffer_ << "\376line ";
-		std::stringstream numreader;
-		char numreader_c;
-		numreader << old_linenum_;
-		while(numreader.get(numreader_c)) {
-			target_.buffer_.put(numreader_c);
-			++target_.buffer_size_;
-		}
-		target_.buffer_ << ' ' << old_location_ << '\n';
-		const int fixed_char_count = 8;
+		target_.buffer_ << "\376line " << old_linenum_ << ' ' << old_location_ << '\n';
+		const int fixed_char_count = 9;
+		count_extra_digits(old_linenum_, target_.buffer_size_);
 		target_.buffer_size_ += old_location_.size() + fixed_char_count;
     }
 	if (!old_textdomain_.empty()) {
@@ -255,16 +262,10 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
 	t.linenum_ = linenum;
 	t.textdomain_ = domain;
 
-	t.buffer_ << "\376line ";
-	std::stringstream numreader;
-	char numreader_c;
-	numreader << linenum;
-	while(numreader.get(numreader_c)) {
-		t.buffer_.put(numreader_c);
-		++t.buffer_size_;
-	}
-	t.buffer_ << ' ' << t.location_ << "\n\376textdomain " << domain << '\n';
-	const int fixed_char_count = 21;
+	t.buffer_ << "\376line " << linenum 
+		<< ' ' << t.location_ << "\n\376textdomain " << domain << '\n';
+	const int fixed_char_count = 22;
+	count_extra_digits(linenum, t.buffer_size_);
 	t.buffer_size_ += t.location_.size() + domain.size() + fixed_char_count;
 
 	push_token('*');
@@ -355,16 +356,10 @@ void preprocessor_data::put(char c)
 		if (c == '\n')
 			--target_.linenum_;
 
-		target_.buffer_ << "\376line ";
-		std::stringstream numreader;
-		char numreader_c;
-		numreader << target_.linenum_;
-		while(numreader.get(numreader_c)) {
-			target_.buffer_.put(numreader_c);
-			++target_.buffer_size_;
-		}
-		target_.buffer_ << ' ' << target_.location_ << '\n';
-		const int fixed_char_count = 8;
+		target_.buffer_ << "\376line " << target_.linenum_ 
+			<< ' ' << target_.location_ << '\n';
+		const int fixed_char_count = 9;
+		count_extra_digits(target_.linenum_, target_.buffer_size_);
 		target_.buffer_size_ += target_.location_.size() + fixed_char_count;
 	}
 	if (c == '\n')
