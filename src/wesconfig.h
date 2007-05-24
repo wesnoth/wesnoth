@@ -11,13 +11,6 @@
 #  define LOCALEDIR "translations"
 # endif
 #endif
-/**
- * WML errors can be shown in 2 ways, as dialog or as chat message
- * if WML_ERROR_DIALOG == 1 it's shown as dialog else as chat message
- * for development versions the dialog should be used for the stable
- * releases the chat messages
- */
-#define WML_ERROR_DIALOG 0
 
 /**
  * Some older savegames of Wesnoth can't be loaded anymore this

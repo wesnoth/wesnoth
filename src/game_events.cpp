@@ -158,16 +158,7 @@ static void show_wml_errors()
 			msg << " (" << itor->second << ")";
 		}
 					
-		if(WML_ERROR_DIALOG == 1) {
-			// show in a dialog
-			gui::dialog msg_dlg(*screen, caption, msg.str(), gui::OK_ONLY);
-			msg_dlg.show(-1 ,-1);
-			
-		} else {
-			// show as chat message
-			screen->add_chat_message(caption, 0, msg.str(), display::MESSAGE_PUBLIC, false);
-		}
-			
+		screen->add_chat_message(caption, 0, msg.str(), display::MESSAGE_PUBLIC, false);
 		std::cerr << caption << ": " << msg.str() << '\n';
 	}
 }
