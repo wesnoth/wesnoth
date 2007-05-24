@@ -450,16 +450,15 @@ void get_files_in_dir(const std::string& directory,
 		/* generic Unix */
 		char *basename = entry->d_name;
 #endif /* !APPLE */
-#ifndef __AMIGAOS4__
-		const std::string fullname((directory + "/") + basename);
-#else
 		std::string fullname;
-		if (directory.empty() || (directory[directory.size()-1]==':' ||
-			directory[directory.size()-1] == '/'))
+		if (directory.empty() || directory[directory.size()-1] == '/'
+#ifdef __AMIGAOS4__
+			|| (directory[directory.size()-1]==':')
+#endif /* __AMIGAOS4__ */
+		)
 			fullname = directory + basename;
 		else
 			fullname = (directory + "/") + basename;
-#endif /* __AMIGAOS4__ */
 
 		if (::stat(fullname.c_str(), &st) != -1) {
 			if (S_ISREG(st.st_mode)) {
