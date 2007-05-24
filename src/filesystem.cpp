@@ -36,9 +36,6 @@
 #include <stdlib.h>
 #include <windows.h>
 
-#define mkdir(a,b) (_mkdir(a))
-
-#endif /* win32 */
 
 /* /////////////////////////////////////////////////////////////////////////
  * Compiler differences
@@ -235,11 +232,11 @@ struct dirent *readdir(DIR *dir)
  */
 #ifdef _MSC_VER
 #  define stat _stat
+namespace {
+	typedef int mode_t;
+}
 #endif
 
-/*
- * Because the phrase 'brain-dead Windows environment' is redundant...
- */
 #ifndef S_IFMT
 #define S_IFMT	(S_IFDIR|S_IFREG)
 #endif 
@@ -250,18 +247,17 @@ struct dirent *readdir(DIR *dir)
 #define S_ISDIR(x) (((x) & S_IFMT) == S_IFDIR)
 #endif
 
-namespace {
-	typedef int mode_t;
-}
-
 #endif /* !DIRENT_PROVIDED_BY_COMPILER */
-#if defined(DIRENT_PROVIDED_BY_COMPILER)
+
+#define mkdir(a,b) (_mkdir(a))
+
+#else /* !_WIN32 */
 
 #include <unistd.h>
 
 #include <dirent.h>
 
-#endif
+#endif /* !_WIN32 */
 
 #ifdef __BEOS__
 #include <Directory.h>
