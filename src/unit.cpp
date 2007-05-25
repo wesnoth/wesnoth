@@ -1685,8 +1685,7 @@ void unit::set_victorious(const display &disp,const gamemap::location& loc,const
 
 void unit::set_walking(const display &disp,const gamemap::location& loc)
 {
-	movement_animation* const anim = dynamic_cast<movement_animation*>(anim_);
-	if(state_ == STATE_WALKING && anim != NULL && anim->matches(disp,loc,this) >=0) {
+	if(state_ == STATE_WALKING && anim_ != NULL && anim_->matches(disp,loc,this) >=0) {
 		return; // finish current animation, don't start a new one
 	}
 	state_ = STATE_WALKING;
