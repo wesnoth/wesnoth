@@ -456,10 +456,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		if(flag_icon.empty()) {
 			flag_icon = game_config::flag_icon_image;
-			old_rgb = game_config::flag_rgb;
-			new_rgb = team::get_side_colour_index(playing_side);
-			mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 		}
+		old_rgb = game_config::flag_rgb;
+		new_rgb =team::get_side_colour_index(playing_side);
+			mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 
 		// remove animation stuff we don't care about
 		//const std::vector<std::string> items = utils::split(flag);
