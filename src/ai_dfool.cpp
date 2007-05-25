@@ -130,6 +130,9 @@ namespace dfool {
 	    std::string e=(**com)["test"];
 	    std::map<std::string, evaluator*> function_map;
 	    arithmetic_evaluator eval(get_info().state.sog(),&function_map);
+	    distance_evaluator dist(get_info().state.sog(),&function_map);
+	    function_map["eval"]=&eval;
+	    function_map["distance"]=&dist;
 	    std::cout<<"eval: "<<type<<":"<<e<<" = "<<eval.value(e)<<"\n";
 
 	    LOG_STREAM(info, ai)<<"\tcommand: "<<type<<std::endl;
@@ -189,7 +192,6 @@ namespace dfool {
       bool hidden = i->second.invisible(i->first, um, get_info().teams);
       if((no_fog || !hidden_by_fog) && !hidden) {
 	  visible_units.push_back(i->second.underlying_description());
-	
       }
     }
     
@@ -383,24 +385,26 @@ namespace dfool {
   }
 
   std::string evaluator::value(const std::string& val_string){
-    std::string temp_string=utils::interpolate_variables_into_string(val_string,state);
+    std::string temp_string = val_string;
     
-    std::vector<std::string> p=utils::paranthetical_split(temp_string,0,"(",")");
+    std::vector<std::string> p = utils::paranthetical_split(val_string,0,"(",")");
 
     //find function calls designated by @ and evaluate values inside ()
     std::string func;
     std::stringstream tot;
-    std::cout<<"got here:"<<val_string<<"\n";
+    std::cout<<"got here eval:"<<val_string<<"\n";
     bool function=false;
     for(size_t i=0;i!=p.size();i++){
 	 std::stringstream ptemp;
 	 if(i%2){
 	   if(function){
 		std::cout<<"function: "<<func<<"\n";
-		std::map<std::string, evaluator*>::const_iterator fmi = 
+		std::map<std::string, evaluator*>::iterator fmi = 
 		  function_map_->find(func);
 		if(fmi != function_map_->end()){//evaluate function
-		  ptemp<<fmi->second->value(p[i]);
+		  std::cout<<"function ::: "<<func<<" ::: "<<fmi->first<<"\n";
+		  evaluator& f=*(fmi->second);
+		  ptemp<<f.value(p[i]);
 		  p[i]=ptemp.str();
 		}else{//error
 		  std::cout<<"function undefined: "<<func<<"\n";
@@ -427,21 +431,23 @@ namespace dfool {
 	   }
 	   std::cout<<"eval size:"<<temp.size()<<"\n";
 	   
-	   if(temp.size()>0){
-		p[i]=temp[0];
-		
+	   if(function && temp.size()>0){
+		std::cout<<"temp "<<temp[0]<<"\n";
 		if(temp.size()==2){
+		  p[i]=temp[0];
 		  func=temp[1];
 		}else{
-		  func="";
+		  std::cout<<"got lost::"<<temp[0]<<"\n";
+		  p[i]="";
+		  func=temp[0];
 		}
 	   }else{
-		p[i]="";
+		p[i]=temp[0];
 	   }
 	 }
 	 tot<<p[i];
     }
-    return(tot.str());
+    return(utils::interpolate_variables_into_string(tot.str(),state));
   }
 
   std::string arithmetic_evaluator::value(const std::string& val_string){
@@ -574,7 +580,7 @@ namespace dfool {
 	   }
 	 }else if(c==parenthesis[0]){
 	   std::vector<std::string> temp=utils::paranthetical_split(str.substr(i,str.size()-i),0);
-	   if(temp.size()%2==0){
+	   if(temp.size()%2!=0){
 		std::cout<<"temp"<<temp[1]<<":"<<i<<"\n";
 		ret.back()+=value(temp[1]);
 		i+=temp[1].size()+2;
@@ -596,7 +602,7 @@ namespace dfool {
 		  return(ret);
 		}
 	   }else{
-		std::cout<<"error in paranthetical expression:\n\t"<<s<<"\n";
+		std::cout<<"error in parenthetical expression:\n\t"<<s<<"\n";
 	   }
 	 }else if(i!=str.size()){
 	   std::cout<<"error in arithmetic expression:\n\t"<<s<<":\n\t"<<str.substr(0,i)<<"\n\t:"<<s[i]<<":\n";
@@ -607,8 +613,32 @@ namespace dfool {
 	   i++;
 	 }
     }
-	 std::cout<<"got here 5\n";
+    std::cout<<"got here 5\n";
     return(ret);
   }
 
+  std::string distance_evaluator::value(const std::string& val_string){
+    std::cout<<"got distance:"<<val_string<<"\n";
+    std::vector<std::string> vals = utils::split(val_string,',');    
+    if(vals.size()<4){
+	 std::cout<<"error in distance parameters\n";
+	 return("ERR");
+    }
+    std::vector<int> coord;
+    for(size_t i=0;i!=4;i++){
+	 vals[i] = arithmetic_evaluator::value(vals[i]);
+	 std::cout<<"vals["<<i<<"]:"<<vals[i]<<"\n";
+	 coord.push_back(atoi(vals[i].c_str()));
+    }
+    std::cout<<"coords:"<<coord[0]<<","<<coord[1]<<"\n";
+    std::cout<<"coords:"<<coord[2]<<","<<coord[3]<<"\n";
+    gamemap::location a(coord[0]-1,coord[1]-1);
+    gamemap::location b(coord[2]-1,coord[3]-1);
+    std::cout<<"a "<<a.x<<","<<a.y<<"\n";
+    std::cout<<"b "<<b.x<<","<<b.y<<"\n";
+    int distance = distance_between(a,b);
+    std::stringstream t;
+    t<<distance;
+    return(t.str());
+  }
 }//end namespace dfool

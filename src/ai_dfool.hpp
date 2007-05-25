@@ -48,17 +48,26 @@ namespace dfool {
 
   class evaluator{
   public:
-    evaluator(const game_state& s, const std::map<std::string, evaluator*>* m):function_map_(m),state(s){};
+    evaluator(const game_state& s, std::map<std::string, evaluator*>* m):function_map_(m),state(s){};
     virtual ~evaluator(){};
     virtual std::string value(const std::string& s);
   private:
-    const std::map<std::string, evaluator*>* function_map_;
+    std::map<std::string, evaluator*>* function_map_;
     const game_state& state;
   };
 
   class arithmetic_evaluator : public evaluator {
   public:
-    arithmetic_evaluator(const game_state& s, const std::map<std::string, evaluator*>* m):evaluator(s,m){};
+    arithmetic_evaluator(const game_state& s, std::map<std::string, evaluator*>* m):evaluator(s,m){};
+    std::string value(const std::string& s);
+  private:
+    std::list<std::string> parse_tokens(const std::string&);
+    std::string evaluate_tokens(std::list<std::string>&);
+  };
+
+  class distance_evaluator : public arithmetic_evaluator {
+  public:
+    distance_evaluator(const game_state& s, std::map<std::string, evaluator*>* m):arithmetic_evaluator(s,m){};
     std::string value(const std::string& s);
   private:
     std::list<std::string> parse_tokens(const std::string&);
