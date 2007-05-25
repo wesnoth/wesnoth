@@ -32,7 +32,7 @@ Version 1.3.2+svn:
    * hp/xp bars in tiny gui have better proportions
  * sound and music:
    * new or revised sounds: troll hit & die
-   * added a sound when a unit is slowed
+   * added sounds for when a unit is slowed or poisoned
    * added a music track containing only silence (for stopping all music instead
      of just changing it)
  * language and i18n:
@@ -98,7 +98,7 @@ Version 1.3.2+svn:
    * fixed bug 8522.  Units without a name will be named after the unit_type.
    * fixed bug #9103 (AI causes crash when using static units like towers)
    * fixed a crash if a units poison attack has a cth of 0 (bug #9020)
-   * no longer allow undo if a traitless unit reveals fogged and/or shrouded 
+   * no longer allow undo if a traitless unit reveals fogged and/or shrouded
      terrain (bug #9171, patch #739)
    * fixed a bug where loading didn't clear the halo data (bug #9144)
 
