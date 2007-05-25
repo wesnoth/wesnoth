@@ -1896,7 +1896,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	}
 	if(unit_halo_ != halo::NO_HALO) {
 		const int d = disp.hex_size() / 2;
-		halo::set_location(unit_halo_, xsrc+ d, ysrc -height_adjust+ d);
+		halo::set_location(unit_halo_, x+ d, y -height_adjust+ d);
 	}
 
 	if(draw_bars_) {
