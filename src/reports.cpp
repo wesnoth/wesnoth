@@ -448,25 +448,17 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 
 	case SIDE_PLAYING: {
-
 		std::string flag_icon = teams[playing_side-1].flag_icon();
-		std::string new_rgb;
-		std::string old_rgb;
-		std::string mods;
+		std::string old_rgb = game_config::flag_rgb;
+		std::string new_rgb = team::get_side_colour_index(playing_side);
+		std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 
 		if(flag_icon.empty()) {
 			flag_icon = game_config::flag_icon_image;
 		}
-		old_rgb = game_config::flag_rgb;
-		new_rgb =team::get_side_colour_index(playing_side);
-			mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 
-		// remove animation stuff we don't care about
-		//const std::vector<std::string> items = utils::split(flag);
-		//const std::vector<std::string> sub_items = utils::split(items[0], ':');
-
-		image::locator flag_icon_image(flag_icon, mods);
-		return report("",flag_icon_image,teams[playing_side-1].current_player());
+		image::locator flag_icon_img(flag_icon, mods);
+		return report("",flag_icon_img,teams[playing_side-1].current_player());
 	}
 
 	case OBSERVERS: {
