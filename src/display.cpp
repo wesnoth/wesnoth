@@ -97,16 +97,12 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	//inits the flag list
 	flags_.reserve(teams_.size());
 	for(size_t i = 0; i != teams_.size(); ++i) {
-		std::string flag;
-		std::string new_rgb;
-		std::string old_rgb;
+		std::string flag = teams_[i].flag();
+		std::string old_rgb = game_config::flag_rgb;
+		std::string new_rgb = team::get_side_colour_index(i+1);
 
-		if(teams_[i].flag().empty()) {
+		if(flag.empty()) {
 			flag = game_config::flag_image;
-			old_rgb = game_config::flag_rgb;
-			new_rgb = team::get_side_colour_index(i+1);
-		} else {
-			flag = teams_[i].flag();
 		}
 
 		LOG_STREAM(info, display) << "Adding flag for team " << i << " from animation " << flag << "\n";
