@@ -68,7 +68,7 @@ dialog_manager::~dialog_manager()
 {
 	is_in_dialog = reset_to;
 	int mousex, mousey;
-	int mouse_flags = SDL_GetMouseState(&mousex, &mousey);
+	SDL_GetMouseState(&mousex, &mousey);
 	SDL_Event pb_event;
 	pb_event.type = SDL_MOUSEMOTION;
 	pb_event.motion.state = 0;
@@ -76,15 +76,6 @@ dialog_manager::~dialog_manager()
 	pb_event.motion.y = mousey;
 	pb_event.motion.xrel = 0;
 	pb_event.motion.yrel = 0;
-	SDL_PushEvent(&pb_event);
-	if (!(mouse_flags & SDL_BUTTON_RMASK) || is_in_dialog)
-		return;
-	// based on krom's idea; remove if you don't like the "responsiveness"
-	pb_event.type = SDL_MOUSEBUTTONDOWN;
-	pb_event.button.button = SDL_BUTTON_RIGHT;
-	pb_event.button.state = SDL_PRESSED;
-	pb_event.button.x = mousex;
-	pb_event.button.y = mousey;
 	SDL_PushEvent(&pb_event);
 }
 
