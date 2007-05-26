@@ -76,12 +76,14 @@ public:
 	//redrawing will be scheduled.
 	void scroll(int xmov, int ymov);
 
-	//function which zooms the display by the specified amount. Negative
-	//values zoom out. Returns the current zoom ratio
-	double zoom(int amount=0);
+	// Zzooms the display by the specified amount. Negative values zoom out.
+	void set_zoom(int amount);
 
-	//function to take the zoom amount to the default.
-	void default_zoom();
+	// sets the zoom amount to the default.
+	void set_default_zoom();
+
+	// Returns the current zoom factor.
+	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
 
 	//function to make a screenshot and save it in a default location
 	void screenshot();

@@ -24,7 +24,6 @@
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "hotkeys.hpp"
-#include "image.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -479,7 +478,7 @@ void display::invalidate_locations_in_rect(SDL_Rect r)
 	}
 }
 
-double display::zoom(int amount)
+void display::set_zoom(int amount)
 {
 	int new_zoom = zoom_ + amount;
 	if (new_zoom < MinZoom) {
@@ -503,8 +502,11 @@ double display::zoom(int amount)
 		// Forces a redraw after zooming. This prevents some graphic glitches from occurring.
 		draw();
 	}
+}
 
-	return double(zoom_)/double(image::tile_size);
+void display::set_default_zoom()
+{ 
+	set_zoom(DefaultZoom - zoom_); 
 }
 
 void display::screenshot()
@@ -528,11 +530,6 @@ void display::screenshot()
 	} while(file_exists(name));
 
 	SDL_SaveBMP(screen_.getSurface().get(), name.c_str());
-}
-
-void display::default_zoom()
-{ 
-	zoom(DefaultZoom - zoom_); 
 }
 
 void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_fogged)
@@ -1348,7 +1345,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
-	height = static_cast<size_t>(height*zoom());
+	height = static_cast<size_t>(height*get_zoom_factor());
 #ifdef USE_TINY_GUI
 	height /= 2;
 #endif
@@ -1753,9 +1750,9 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 		// FIXME: This 16/9 must be defined elsewhere,
 		// It's the ratio of the font size bewteen the two gui.
 		// It makes the text fill the hex like it does in the normal gui.
-		const int font_size = static_cast<int>(font::SIZE_PLUS * zoom() * 16/9);
+		const int font_size = static_cast<int>(font::SIZE_PLUS * get_zoom_factor() * 16/9);
 #else
-		const int font_size = static_cast<int>(font::SIZE_PLUS * zoom());
+		const int font_size = static_cast<int>(font::SIZE_PLUS * get_zoom_factor());
 #endif
 		const SDL_Rect& text_area = font::text_area(str,font_size);
 		const int x = xloc + zoom_/2 - text_area.w/2;

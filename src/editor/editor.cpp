@@ -961,7 +961,7 @@ void map_editor::set_mouseover_overlay()
 	static const int quarter_size = size / 4;
 	static const int offset = 2;
 	static const int new_size = half_size - 2;
-	const int zoom = static_cast<int>(size * gui_.zoom());
+	const int zoom = static_cast<int>(size * gui_.get_zoom_factor());
 
 	// create a transparant surface of the right size, not sure
 	// what's the best way, but this works (but probably not efficient)

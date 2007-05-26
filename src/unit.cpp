@@ -1674,7 +1674,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	const double submerge = is_flying() ? 0.0 : terrain_info.unit_submerge();
 	int height_adjust = terrain_info.unit_height_adjust();
 	if (is_flying() && height_adjust <= 0) height_adjust = 0;
-	else height_adjust = int(height_adjust * disp.zoom());
+	else height_adjust = int(height_adjust * disp.get_zoom_factor());
 
 	unit_frame current_frame;
 	if(anim_->animation_finished()) current_frame = anim_->get_last_frame();
@@ -1699,8 +1699,8 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	if(!current_frame.halo(anim_->get_current_frame_time()).empty()) {
 		int d = disp.hex_size() / 2;
 		int ft = anim_->get_current_frame_time();
-		int dx = int(current_frame.halo_x(ft) * disp.zoom());
-		int hy = y + d - height_adjust + int(current_frame.halo_y(ft) * disp.zoom());
+		int dx = int(current_frame.halo_x(ft) * disp.get_zoom_factor());
+		int hy = y + d - height_adjust + int(current_frame.halo_y(ft) * disp.get_zoom_factor());
 		if (facing_ == gamemap::location::NORTH_WEST ||
 		    facing_ == gamemap::location::SOUTH_WEST)
 			unit_anim_halo_ = halo::add(x + d - dx, hy,
@@ -1845,9 +1845,9 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			unit_energy = double(hitpoints())/double(max_hitpoints());
 		}
 #ifdef USE_TINY_GUI
-		const int bar_shift = static_cast<int>(-2.5*disp.zoom());
+		const int bar_shift = static_cast<int>(-2.5*disp.get_zoom_factor());
 #else
-		const int bar_shift = static_cast<int>(-5*disp.zoom());
+		const int bar_shift = static_cast<int>(-5*disp.get_zoom_factor());
 #endif
 		disp.draw_bar(*energy_file,xsrc+bar_shift,ysrc-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
 

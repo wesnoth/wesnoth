@@ -731,13 +731,13 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 	}
 	switch(command) {
 		case HOTKEY_ZOOM_IN:
-			disp.zoom(zoom_amount);
+			disp.set_zoom(zoom_amount);
 			break;
 		case HOTKEY_ZOOM_OUT:
-			disp.zoom(-zoom_amount);
+			disp.set_zoom(-zoom_amount);
 			break;
 		case HOTKEY_ZOOM_DEFAULT:
-			disp.default_zoom();
+			disp.set_default_zoom();
 			break;
 		case HOTKEY_FULLSCREEN:
 			preferences::set_fullscreen(!preferences::fullscreen());
