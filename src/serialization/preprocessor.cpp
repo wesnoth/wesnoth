@@ -67,7 +67,6 @@ class preprocessor_streambuf: public streambuf
 	std::string out_buffer_;
 	virtual int underflow();
 	std::ostringstream buffer_;
-    int buffer_size_;
 	preprocessor *current_;
 	preproc_map *defines_;
 	preproc_map default_defines_;
@@ -75,6 +74,7 @@ class preprocessor_streambuf: public streambuf
 	std::string location_;
 	int linenum_;
 	int depth_;
+	int buffer_size_;
 	bool quoted_;
 	friend class preprocessor;
 	friend class preprocessor_file;
@@ -87,13 +87,14 @@ public:
 
 preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 	: current_(NULL), defines_(def), textdomain_(PACKAGE),
-	  depth_(0), quoted_(false), buffer_size_(0)
+	  depth_(0), buffer_size_(0), quoted_(false)
 {
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: streambuf(), current_(NULL), defines_(t.defines_), buffer_size_(0),
-	  textdomain_(PACKAGE), depth_(t.depth_), quoted_(t.quoted_)
+	: streambuf(), current_(NULL), defines_(t.defines_),
+	  textdomain_(PACKAGE), depth_(t.depth_),buffer_size_(0), 
+	  quoted_(t.quoted_)
 {
 }
 
