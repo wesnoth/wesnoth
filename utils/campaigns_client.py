@@ -333,14 +333,17 @@ class CampaignBrowser:
         data = self.decode_WML(packet)
         return data
 
-    def get_campaign_async(self, name):
+    def get_campaign_async(self, name, raw = False):
         """
         This is like get_campaign, but returns immediately, doing server
         communications in a background thread.
         """
         class MyThread(threading.Thread):
             def run(self):
-                data = self.cs.get_campaign(self.name)
+                if raw:
+                    data = self.cs.get_campaign_raw(self.name)
+                else:
+                    data = self.cs.get_campaign(self.name)
                 self.data = data
                 self.event.set()
 
@@ -451,7 +454,8 @@ if __name__ == "__main__":
         help = "remove the named campaign from the server, " +
         "set the password -P")
     optionparser.add_option("-R", "--raw-download",
-        help = "download the named campaign as a binary WML packet")
+        action = "store_true",
+        help = "download as a binary WML packet")
     optionparser.add_option("-U", "--unpack",
         help = "unpack the file UNPACK as a binary WML packet " +
         "(specify the campaign path with -c)")
@@ -507,17 +511,20 @@ if __name__ == "__main__":
                     if re.search(options.download, name):
                         fetchlist.append(name)
         for name in fetchlist:
-            mythread = cs.get_campaign_async(name)
+            mythread = cs.get_campaign_async(name, options.raw_download)
 
             while not mythread.event.isSet():
                 mythread.event.wait(1)
                 print "%s: %d/%d" % (name, cs.counter, cs.length)
 
-            print "Unpacking %s..." % name
-            cs.unpackdir(mythread.data, options.campaigns_dir,
-                verbose = options.verbose)
-            for message in mythread.data.find_all("message", "error"):
-                print message.get_text_val("message")
+            if options.raw_download:
+                file(name, "w").write(mythread.data)
+            else:
+                print "Unpacking %s..." % name
+                cs.unpackdir(mythread.data, options.campaigns_dir,
+                    verbose = options.verbose)
+                for message in mythread.data.find_all("message", "error"):
+                    print message.get_text_val("message")
     elif options.remove:
         cs = CampaignBrowser(address)
         data = cs.delete_campaign(options.remove, options.password)
