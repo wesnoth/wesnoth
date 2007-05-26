@@ -19,11 +19,11 @@ class team;
 class unit;
 class unit_map;
 
+#include "builder.hpp"
 #include "generic_event.hpp"
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
-#include "builder.hpp"
 #include "map_label.hpp"
 #include "pathfind.hpp"
 #include "reports.hpp"

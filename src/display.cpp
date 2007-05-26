@@ -36,7 +36,6 @@
 #include "tooltips.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
-#include "video.hpp"
 #include "wassert.hpp"
 
 #include "SDL_image.h"
