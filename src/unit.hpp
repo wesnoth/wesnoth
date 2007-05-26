@@ -238,7 +238,8 @@ class unit
 		STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
 		STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
 		STATE_RECRUITED, STATE_HEALED, STATE_POISONED, STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
-		STATE state() const { return (state_ == STATE_IDLING) ? STATE_STANDING : state_; }
+		//STATE state() const { return (state_ == STATE_IDLING) ? STATE_STANDING : state_; }
+		void start_animation(const display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars);
 
 		//the name of the file to display (used in menus
 		const std::string& absolute_image() const { return cfg_["image"]; }
@@ -254,25 +255,25 @@ class unit
 		unit_type::ALIGNMENT alignment() const { return alignment_; }
 		const std::string& race() const { return race_->name(); }
 
-		const defensive_animation& defend_animation(const display& disp, const gamemap::location& loc,
+		const defensive_animation* defend_animation(const display& disp, const gamemap::location& loc,
 				fighting_animation::hit_type hits,const attack_type* attack,
 				const attack_type* secondary_attack,int swing_num,int damage) const;
-		const unit_animation& teleport_animation(const display& disp, const gamemap::location& loc) const;
+		const unit_animation* teleport_animation(const display& disp, const gamemap::location& loc) const;
 		const unit_animation* extra_animation(const display& disp, const gamemap::location& loc,const std::string &flag) const;
-		const death_animation& die_animation(const display& disp, const gamemap::location& loc,
+		const death_animation* die_animation(const display& disp, const gamemap::location& loc,
 				fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
-		const movement_animation& move_animation(const display& disp, const gamemap::location& loc) const;
-		const standing_animation& stand_animation(const display& disp, const gamemap::location& loc) const;
-		const leading_animation& lead_animation(const display& disp, const gamemap::location& loc) const;
-		const healing_animation& heal_animation(const display& disp, const gamemap::location& loc,int damage) const;
-		const victory_animation& victorious_animation(const display& disp, const gamemap::location& loc,
+		const movement_animation* move_animation(const display& disp, const gamemap::location& loc) const;
+		const standing_animation* stand_animation(const display& disp, const gamemap::location& loc) const;
+		const leading_animation* lead_animation(const display& disp, const gamemap::location& loc) const;
+		const healing_animation* heal_animation(const display& disp, const gamemap::location& loc,int damage) const;
+		const victory_animation* victorious_animation(const display& disp, const gamemap::location& loc,
 				fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
-		const recruit_animation& recruiting_animation(const display& disp, const gamemap::location& loc) const;
+		const recruit_animation* recruiting_animation(const display& disp, const gamemap::location& loc) const;
 		const idle_animation* idling_animation(const display& disp, const gamemap::location& loc) const;
-		const levelin_animation& levelingin_animation(const display& disp, const gamemap::location& loc) const;
-		const levelout_animation& levelingout_animation(const display& disp, const gamemap::location& loc) const;
-		const healed_animation& get_healed_animation(const display& disp, const gamemap::location& loc,int healing) const;
-		const poison_animation& poisoned_animation(const display& disp, const gamemap::location& loc,int damage) const;
+		const levelin_animation* levelingin_animation(const display& disp, const gamemap::location& loc) const;
+		const levelout_animation* levelingout_animation(const display& disp, const gamemap::location& loc) const;
+		const healed_animation* get_healed_animation(const display& disp, const gamemap::location& loc,int healing) const;
+		const poison_animation* poisoned_animation(const display& disp, const gamemap::location& loc,int damage) const;
 
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;

@@ -483,7 +483,7 @@ void unit_attack(
 		} else {
 			pos = 1.0 - double(animation_time)/double(minimum<int>(attacker.get_animation()->get_begin_time(),-150));
 		}
-		if(attacker.state() != unit::STATE_STANDING && pos > 0.0) {
+		if(pos > 0.0) {
 			attacker.set_offset(pos*0.6);
 		}
 		if(!sound_played && animation_time > 0) {

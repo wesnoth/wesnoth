@@ -1496,19 +1496,12 @@ const surface unit::still_image(bool scaled) const
 void unit::set_standing(const display &disp,const gamemap::location& loc, bool with_bars)
 {
 	state_ = STATE_STANDING;
-	draw_bars_ = with_bars;
 	offset_=0;
-
-	delete anim_;
-	anim_ = new standing_animation(stand_animation(disp,loc));
-	anim_->start_animation(anim_->get_begin_time(),true,disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
-	next_idling_= get_current_animation_tick() +10000 +rand()%10000;
+	start_animation(disp,loc,stand_animation(disp,loc),with_bars);
 }
 void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
 {
 	state_ =  STATE_DEFENDING;
-	draw_bars_ = true;
 
 	delete anim_;
 
@@ -1520,41 +1513,25 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 	}else {
 		hit_type = fighting_animation::MISS;
 	}
-	anim_ =  new defensive_animation(defend_animation(disp,loc,hit_type,attack,secondary_attack,swing_num,damage));
+	start_animation(disp,loc,defend_animation(disp,loc,hit_type,attack,secondary_attack,swing_num,damage),true);
 
 	// add a blink on damage effect
 	const image::locator my_image = anim_->get_last_frame().image();
 	if(damage) {
 		anim_->add_frame(100,unit_frame(my_image,100,"1.0","",display::rgb(255,0,0),"0.5:50,0.0:50"));
 	}
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 void unit::set_extra_anim(const display &disp,const gamemap::location& loc, std::string flag)
 {
 	state_ =  STATE_EXTRA;
-	draw_bars_ = false;
+	start_animation(disp,loc,extra_animation(disp,loc,flag),false);
 
-	delete anim_;
-	anim_ = NULL;
-
-	if(!extra_animation(disp,loc,flag)) {
-		set_standing(disp,loc);
-		return;
-	}
-	anim_ =  new unit_animation(*(extra_animation(disp,loc,flag)));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 
 const unit_animation & unit::set_attacking(const display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num)
 {
 	state_ =  STATE_ATTACKING;
-	draw_bars_ = true;
-
-	delete anim_;
-
 	fighting_animation::hit_type hit_type;
 	if(damage >= hitpoints()) {
 		hit_type = fighting_animation::KILL;
@@ -1563,124 +1540,63 @@ const unit_animation & unit::set_attacking(const display &disp,const gamemap::lo
 	}else {
 		hit_type = fighting_animation::MISS;
 	}
-	anim_ =   new attack_animation(type.animation(disp,loc,this,hit_type,secondary_attack,swing_num,damage));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,type.animation(disp,loc,this,hit_type,secondary_attack,swing_num,damage),true);
+
 	return ((attack_animation*)anim_)->get_missile_anim();
 }
 void unit::set_leading(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEADING;
-	draw_bars_ = true;
-
-	delete anim_;
-
-	anim_ = new leading_animation(lead_animation(disp,loc));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,lead_animation(disp,loc),true);
 }
 void unit::set_leveling_in(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEVELIN;
-	draw_bars_ = false;
-
-	delete anim_;
-
-	anim_ = new levelin_animation(levelingin_animation(disp,loc));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,levelingin_animation(disp,loc),false);
 }
 void unit::set_leveling_out(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEVELOUT;
-	draw_bars_ = false;
-
-	delete anim_;
-
-	anim_ = new levelout_animation(levelingout_animation(disp,loc));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,levelingout_animation(disp,loc),false);
 }
 void unit::set_recruited(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_RECRUITED;
-	draw_bars_ = false;
-
-	delete anim_;
-
-	anim_ = new recruit_animation(recruiting_animation(disp,loc));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,recruiting_animation(disp,loc),false);
 }
 void unit::set_healed(const display &disp,const gamemap::location& loc, int healing)
 {
 	state_ = STATE_HEALED;
-	draw_bars_ = true;
-
-	delete anim_;
-
-	anim_ = new healed_animation(get_healed_animation(disp,loc,healing));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,get_healed_animation(disp,loc,healing),true);
 }
 void unit::set_poisoned(const display &disp,const gamemap::location& loc, int damage)
 {
 	state_ = STATE_POISONED;
-	draw_bars_ = true;
-
-	delete anim_;
-
-	anim_ = new poison_animation(poisoned_animation(disp,loc,damage));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,poisoned_animation(disp,loc,damage),true);
 }
 
 void unit::set_teleporting(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_TELEPORT;
-	draw_bars_ = false;
-
-	delete anim_;
-
-	anim_ =  new unit_animation(teleport_animation(disp,loc));
-	anim_->start_animation(anim_->get_begin_time(),false,disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,teleport_animation(disp,loc),false);
 }
 
 void unit::set_dying(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_DYING;
-	draw_bars_ = true;
-
-	delete anim_;
-
-	anim_ =  new death_animation(die_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack));
+	start_animation(disp,loc,die_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack),true);
 	image::locator tmp_image = anim_->get_last_frame().image();
 	anim_->add_frame(600,unit_frame(tmp_image,600,"1~0:600"));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
 }
 void unit::set_healing(const display &disp,const gamemap::location& loc,int healing)
 {
 	state_ = STATE_HEALING;
-	draw_bars_ = true;
-
-	delete anim_;
-
-	anim_ = new healing_animation(heal_animation(disp,loc,healing));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,heal_animation(disp,loc,healing),true);
 }
 void unit::set_victorious(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_VICTORIOUS;
-	draw_bars_ = true;
-
-	delete anim_;
-
-	anim_ = new victory_animation(victorious_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,victorious_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack),true);
 }
 
 void unit::set_walking(const display &disp,const gamemap::location& loc)
@@ -1689,33 +1605,30 @@ void unit::set_walking(const display &disp,const gamemap::location& loc)
 		return; // finish current animation, don't start a new one
 	}
 	state_ = STATE_WALKING;
-	draw_bars_ = false;
-
-	delete anim_;
-
-	anim_ = new movement_animation(move_animation(disp,loc));
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,move_animation(disp,loc),false);
 }
 
 
 void unit::set_idling(const display &disp,const gamemap::location& loc)
 {
-	const idle_animation * tmp = idling_animation(disp,loc);
-	if(!tmp) {
-		set_standing(disp,loc);
-		return;
-	}
 	state_ = STATE_IDLING;
-	draw_bars_ = true;
-
-	delete anim_;
-
-	anim_ = new idle_animation(*tmp);
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
-	frame_begin_time_ = anim_->get_begin_time() -1;
+	start_animation(disp,loc,idling_animation(disp,loc),true);
 }
 
+void unit::start_animation(const display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars)
+{
+	draw_bars_ =  with_bars;
+	if(anim_) delete anim_;
+	if(animation) {
+		anim_ = new unit_animation(*animation);
+	} else {
+		set_standing(disp,loc,with_bars);
+		return;
+	}
+	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
+	frame_begin_time_ = anim_->get_begin_time() -1;
+	next_idling_= get_current_animation_tick() +10000 +rand()%10000;
+}
 
 void unit::restart_animation(const display& disp,int start_time) {
 	if(!anim_) return;
@@ -2691,7 +2604,7 @@ const std::string& unit::image_healing() const
 }
 
 
-const defensive_animation& unit::defend_animation(const display& disp, const gamemap::location& loc,
+const defensive_animation* unit::defend_animation(const display& disp, const gamemap::location& loc,
 		fighting_animation::hit_type hits, const attack_type* attack,const attack_type* secondary_attack, int swing_num,int damage) const
 {
 	//select one of the matching animations at random
@@ -2708,10 +2621,10 @@ const defensive_animation& unit::defend_animation(const display& disp, const gam
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
-const unit_animation& unit::teleport_animation(const display& disp, const gamemap::location& loc) const
+const unit_animation* unit::teleport_animation(const display& disp, const gamemap::location& loc) const
 {
 	//select one of the matching animations at random
 	std::vector<const unit_animation*> options;
@@ -2727,8 +2640,9 @@ const unit_animation& unit::teleport_animation(const display& disp, const gamema
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 const unit_animation* unit::extra_animation(const display& disp, const gamemap::location& loc,const std::string &flag) const
 {
@@ -2750,7 +2664,7 @@ const unit_animation* unit::extra_animation(const display& disp, const gamemap::
 
 	return options[rand()%options.size()];
 }
-const death_animation& unit::die_animation(const display& disp, const gamemap::location& loc,
+const death_animation* unit::die_animation(const display& disp, const gamemap::location& loc,
 		fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
 {
 	//select one of the matching animations at random
@@ -2767,10 +2681,11 @@ const death_animation& unit::die_animation(const display& disp, const gamemap::l
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
-const movement_animation& unit::move_animation(const display& disp, const gamemap::location& loc) const
+const movement_animation* unit::move_animation(const display& disp, const gamemap::location& loc) const
 {
 	//select one of the matching animations at random
 	std::vector<const movement_animation*> options;
@@ -2786,11 +2701,11 @@ const movement_animation& unit::move_animation(const display& disp, const gamema
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
-const standing_animation& unit::stand_animation(const display& disp, const gamemap::location& loc) const
+const standing_animation* unit::stand_animation(const display& disp, const gamemap::location& loc) const
 {
 	//select one of the matching animations at random
 	std::vector<const standing_animation*> options;
@@ -2806,11 +2721,12 @@ const standing_animation& unit::stand_animation(const display& disp, const gamem
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
-const leading_animation& unit::lead_animation(const display& disp, const gamemap::location& loc) const
+const leading_animation* unit::lead_animation(const display& disp, const gamemap::location& loc) const
 {
 	//select one of the matching animations at random
 	std::vector<const leading_animation*> options;
@@ -2826,12 +2742,12 @@ const leading_animation& unit::lead_animation(const display& disp, const gamemap
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
 
-const victory_animation& unit::victorious_animation(const display& disp, const gamemap::location& loc,
+const victory_animation* unit::victorious_animation(const display& disp, const gamemap::location& loc,
 		fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
 {
 	//select one of the matching animations at random
@@ -2848,11 +2764,11 @@ const victory_animation& unit::victorious_animation(const display& disp, const g
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
-const healing_animation& unit::heal_animation(const display& disp, const gamemap::location& loc,int damage) const
+const healing_animation* unit::heal_animation(const display& disp, const gamemap::location& loc,int damage) const
 {
 	//select one of the matching animations at random
 	std::vector<const healing_animation*> options;
@@ -2868,11 +2784,11 @@ const healing_animation& unit::heal_animation(const display& disp, const gamemap
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
-const recruit_animation& unit::recruiting_animation(const display& disp, const gamemap::location& loc) const
+const recruit_animation* unit::recruiting_animation(const display& disp, const gamemap::location& loc) const
 {
 	//select one of the matching animations at random
 	std::vector<const recruit_animation*> options;
@@ -2888,8 +2804,8 @@ const recruit_animation& unit::recruiting_animation(const display& disp, const g
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
 const idle_animation* unit::idling_animation(const display& disp, const gamemap::location& loc) const
@@ -2912,7 +2828,7 @@ const idle_animation* unit::idling_animation(const display& disp, const gamemap:
 	return options[rand()%options.size()];
 }
 
-const levelin_animation& unit::levelingin_animation(const display& disp, const gamemap::location& loc) const
+const levelin_animation* unit::levelingin_animation(const display& disp, const gamemap::location& loc) const
 {
 	//select one of the matching animations at random
 	std::vector<const levelin_animation*> options;
@@ -2928,11 +2844,11 @@ const levelin_animation& unit::levelingin_animation(const display& disp, const g
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
-const levelout_animation& unit::levelingout_animation(const display& disp, const gamemap::location& loc) const
+const levelout_animation* unit::levelingout_animation(const display& disp, const gamemap::location& loc) const
 {
 	//select one of the matching animations at random
 	std::vector<const levelout_animation*> options;
@@ -2948,11 +2864,11 @@ const levelout_animation& unit::levelingout_animation(const display& disp, const
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
-const healed_animation& unit::get_healed_animation(const display& disp, const gamemap::location& loc,int healing) const
+const healed_animation* unit::get_healed_animation(const display& disp, const gamemap::location& loc,int healing) const
 {
 	//select one of the matching animations at random
 	std::vector<const healed_animation*> options;
@@ -2968,11 +2884,11 @@ const healed_animation& unit::get_healed_animation(const display& disp, const ga
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 
-const poison_animation& unit::poisoned_animation(const display& disp, const gamemap::location& loc,int damage) const
+const poison_animation* unit::poisoned_animation(const display& disp, const gamemap::location& loc,int damage) const
 {
 	//select one of the matching animations at random
 	std::vector<const poison_animation*> options;
@@ -2988,8 +2904,8 @@ const poison_animation& unit::poisoned_animation(const display& disp, const game
 		}
 	}
 
-	wassert(!options.empty());
-	return *options[rand()%options.size()];
+	if(options.empty()) return NULL;
+	return options[rand()%options.size()];
 }
 void unit::apply_modifications()
 {
