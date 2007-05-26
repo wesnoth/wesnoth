@@ -766,6 +766,7 @@ void display::flip()
 
 	// use this bit of code to see how the view is updated
 	// change the frequency for keeping a good framerate
+	// (specially if you use use --fps-max)
 	/*if (rand()%100 <= 10) {
 		SDL_Rect r = map_area(); //use frameBuffer to also test the UI
 		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
