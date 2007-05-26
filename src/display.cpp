@@ -2358,21 +2358,13 @@ void display::delay(unsigned int milliseconds) const
 // Uses preferences::clock_format() for formatting.
 static std::string timestring ()
 {
-    #define TIME_SIZE 10
-    time_t now = time ( NULL );
-    struct tm *lt = localtime( &now );
+    time_t now = time (NULL);
+    struct tm *lt = localtime(&now);
+    char buf[10];
+    strftime(buf,sizeof(buf),preferences::clock_format().c_str(),lt);
 
-    char *tstring;
-    tstring = new char[TIME_SIZE];
-    strftime(tstring,TIME_SIZE,preferences::clock_format().c_str(),lt);
-
-    std::stringstream time_stream;
-    time_stream << tstring;
-    delete[] tstring;
-    return time_stream.str();
-    #undef TIME_SIZE
+    return buf;
 }
-
 
 void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 {
