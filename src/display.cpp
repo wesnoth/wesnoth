@@ -241,7 +241,9 @@ void display::highlight_hex(gamemap::location hex)
 	}
 }
 
-gamemap::location display::hex_clicked_on(int xclick, int yclick, gamemap::location::DIRECTION* nearest_hex, gamemap::location::DIRECTION* second_nearest_hex)
+const gamemap::location display::hex_clicked_on(int xclick, int yclick, 
+		gamemap::location::DIRECTION* nearest_hex, 
+		gamemap::location::DIRECTION* second_nearest_hex) const
 {
 	const SDL_Rect& rect = map_area();
 	if(point_in_rect(xclick,yclick,rect) == false) {
@@ -254,7 +256,9 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick, gamemap::locat
 	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick, nearest_hex, second_nearest_hex);
 }
 
-gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex, gamemap::location::DIRECTION* second_nearest_hex)
+const gamemap::location display::pixel_position_to_hex(int x, int y, 
+		gamemap::location::DIRECTION* nearest_hex, 
+		gamemap::location::DIRECTION* second_nearest_hex) const
 {
 	const int s = hex_size();
 	const int tesselation_x_size = hex_width() * 2;
