@@ -591,7 +591,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			res = menu_handler_.has_team();
 		case hotkey::HOTKEY_LABEL_TERRAIN:
 			res = res && !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex())
-				&& !gui_->shrouded(mouse_handler_.get_last_hex().x, mouse_handler_.get_last_hex().y)
+				&& !gui_->shrouded(mouse_handler_.get_last_hex())
 				&& !is_observer();
 			break;
 

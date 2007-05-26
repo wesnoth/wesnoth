@@ -216,7 +216,7 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 
 void display::select_hex(gamemap::location hex)
 {
-	if(team_valid() && teams_[currentTeam_].fogged(hex.x,hex.y)) {
+	if(fogged(hex)) {
 		return;
 	}
 
@@ -534,11 +534,11 @@ void display::screenshot()
 
 void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_fogged)
 {
-	if(screen_.update_locked() || (check_fogged && fogged(x,y))) {
+	const gamemap::location loc(x,y);
+
+	if(screen_.update_locked() || (check_fogged && fogged(loc))) {
 		return;
 	}
-
-	const gamemap::location loc(x,y);
 
 	if(map_.on_board(loc) == false) {
 		return;
@@ -1247,7 +1247,9 @@ void display::draw_report(reports::TYPE report_num)
 					if(report_num == reports::TIME_OF_DAY && img != NULL) {
 						time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
 						// don't show illuminated time on fogged/shrouded tiles
-						if (teams_[viewing_team()].fogged(mouseoverHex_.x,mouseoverHex_.y) || teams_[viewing_team()].shrouded(mouseoverHex_.x,mouseoverHex_.y)) {
+						if (teams_[viewing_team()].fogged(mouseoverHex_.x, mouseoverHex_.y) || 
+								teams_[viewing_team()].shrouded(mouseoverHex_.x, mouseoverHex_.y)) {
+
 							tod = status_.get_time_of_day(false,mouseoverHex_);
 						}
 						if(tod.bonus_modified > 0) {
@@ -1310,7 +1312,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	int map_w = map_.x(), map_h = map_.y();
 
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(fogged(u->first.x,u->first.y) ||
+		if(fogged(u->first) ||
 				(teams_[currentTeam_].is_enemy(u->second.side()) &&
 				u->second.invisible(u->first,units_,teams_))) {
 			continue;
@@ -1450,7 +1452,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 	surface const dst(screen_.getSurface());
 
-	const bool is_shrouded = shrouded(loc.x, loc.y);
+	const bool is_shrouded = shrouded(loc);
 	t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
 
 	if(!is_shrouded) {
@@ -1521,7 +1523,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_FOREGROUND);
 	}
 
-	if(fogged(loc.x,loc.y) && shrouded(loc.x,loc.y) == false) {
+	if(fogged(loc) && shrouded(loc) == false) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -1529,7 +1531,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		}
 	}
 
-	if(!shrouded(loc.x,loc.y)) {
+	if(!shrouded(loc)) {
 		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_FOGSHROUD);
 	}
 
@@ -1789,9 +1791,9 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 		{ t_translation::FOGGED, t_translation::VOID_TERRAIN, t_translation::NONE_TERRAIN };
 
 	for(int i = 0; i != 6; ++i) {
-		if(shrouded(adjacent[i].x,adjacent[i].y)) {
+		if(shrouded(adjacent[i])) {
 			tiles[i] = t_translation::VOID_TERRAIN;
-		} else if(!fogged(loc.x,loc.y) && fogged(adjacent[i].x,adjacent[i].y)) {
+		} else if(!fogged(loc) && fogged(adjacent[i])) {
 			tiles[i] = t_translation::FOGGED;
 		} else {
 			tiles[i] = t_translation::NONE_TERRAIN; 
@@ -1911,7 +1913,7 @@ surface display::get_flag(t_translation::t_letter terrain, int x, int y)
 	const gamemap::location loc(x,y);
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
-		if(teams_[i].owns_village(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
+		if(teams_[i].owns_village(loc) && (!fogged(loc)) || !shrouded(loc) && !teams_[currentTeam_].is_enemy(i+1)) {
 			flags_[i].update_last_draw_time();
 			return image::get_image(flags_[i].get_current_frame());
 		}
@@ -2042,7 +2044,7 @@ void display::remove_footstep(const gamemap::location& loc)
 void display::float_label(const gamemap::location& loc, const std::string& text,
 						  int red, int green, int blue)
 {
-	if(preferences::show_floating_labels() == false || fogged(loc.x,loc.y)) {
+	if(preferences::show_floating_labels() == false || fogged(loc)) {
 		return;
 	}
 
@@ -2208,13 +2210,13 @@ void display::invalidate_animations()
 	
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
-			if (!shrouded(x,y)) {
-				gamemap::location loc(x,y);
+			const gamemap::location loc(x,y);
+			if (!shrouded(loc)) {
 				if (builder_.update_animation(loc)) {
 					invalidate(loc);
 				} else if (map_.is_village(loc)) {
 					const int owner = player_teams::village_owner(loc);
-					if (owner >= 0 && flags_[owner].need_update() && (!fogged(x,y) || !teams_[currentTeam_].is_enemy(owner+1)))
+					if (owner >= 0 && flags_[owner].need_update() && (!fogged(loc)) || !teams_[currentTeam_].is_enemy(owner+1))
 						invalidate(loc);
 				}
 			}
@@ -2373,10 +2375,10 @@ void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 
 //NOTE : Hex outside the map are displayed as shrouded.
 //So they are updated and the shroud-transition soften the edge of the map
-bool display::shrouded(int x, int y) const
+bool display::shrouded(const gamemap::location& loc) const
 {
-	if (x >= -1 && y >= -1 && x <= map_.x() && y <= map_.y()) {
-		return team_valid() ? teams_[currentTeam_].shrouded(x,y) : false;
+	if (loc.x >= -1 && loc.y >= -1 && loc.x <= map_.x() && loc.y <= map_.y()) {
+		return team_valid() ? teams_[currentTeam_].shrouded(loc.x, loc.y) : false;
 	} else {
 		return true;
 	}

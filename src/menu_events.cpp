@@ -1169,7 +1169,7 @@ namespace events{
 		for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
 			bool invisible = u->second.invisible(u->first, units_, teams_);
 
-			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first.x,u->first.y) && !u->second.incapacitated() && !invisible) {
+			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first) && !u->second.incapacitated() && !invisible) {
 				const unit_movement_resetter move_reset(u->second);
 				const bool teleports = u->second.get_ability_bool("teleport",u->first);
 				unit_map units(u->first, u->second);
@@ -1719,7 +1719,7 @@ namespace events{
 				if(std::search(label->text().begin(), label->text().end(),
 						last_search_.begin(), last_search_.end(),
 						chars_equal_insensitive) != label->text().end()) {
-					found = !gui_->shrouded(loc.x, loc.y);
+					found = !gui_->shrouded(loc);
 				}
 			}
 			//Search unit name
@@ -1729,7 +1729,7 @@ namespace events{
 				if(std::search(name.begin(), name.end(),
 						last_search_.begin(), last_search_.end(),
 						chars_equal_insensitive) != name.end()) {
-					found = !gui_->fogged(loc.x, loc.y);
+					found = !gui_->fogged(loc);
 				}
 			}
 			if(loc == start)

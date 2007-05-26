@@ -125,7 +125,7 @@ bool effect::render()
 		return false;
 	}
 	
-	if(loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_.x, loc_.y)) {
+	if(loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_)) {
 		return false;
 	}
 

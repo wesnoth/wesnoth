@@ -32,9 +32,9 @@ namespace {
 //itself is visible, but the tile below is obscured, the bottom half of the
 //tile will still be shrouded, and the label being drawn looks weird
 static bool is_shrouded(const display& disp, const gamemap::location& loc)
-	{
-		return disp.shrouded(loc.x,loc.y) || disp.shrouded(loc.x,loc.y+1);
-	}
+{
+	return disp.shrouded(loc) || disp.shrouded(gamemap::location(loc.x,loc.y+1));
+}
 
 map_labels::map_labels(const display& disp, 
 					   const gamemap& map, 

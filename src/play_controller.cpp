@@ -437,7 +437,7 @@ bool play_controller::enemies_visible() const
 
 	//See if any enemies are visible
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u)
-		if(current_team().is_enemy(u->second.side()) && !gui_->fogged(u->first.x,u->first.y))
+		if(current_team().is_enemy(u->second.side()) && !gui_->fogged(u->first))
 			return true;
 
 	return false;

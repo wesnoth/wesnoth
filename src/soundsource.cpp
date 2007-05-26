@@ -167,8 +167,8 @@ void manager::positional_source::update_positions(unsigned int time, const displ
 		int locx = disp.get_location_x(*i);
 		int locy = disp.get_location_y(*i);
 
-		if(disp.outside_area(area, locx, locy) || disp.shrouded((*i).x, (*i).y) 
-			|| (!_play_fogged && disp.fogged((*i).x, (*i).y)))
+		if(disp.outside_area(area, locx, locy) || disp.shrouded(*i) 
+			|| (!_play_fogged && disp.fogged(*i)))
 				continue;
 		else {
 			_visible = true;

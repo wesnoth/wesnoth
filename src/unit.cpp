@@ -1644,7 +1644,7 @@ void unit::set_facing(gamemap::location::DIRECTION dir) {
 void unit::redraw_unit(display& disp,gamemap::location hex)
 {
 	const gamemap & map = disp.get_map();
-	if(hidden_ || disp.fogged(hex.x,hex.y) ||
+	if(hidden_ || disp.fogged(hex) ||
 			(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			disp.get_teams()[disp.viewing_team()].is_enemy(side())) ){
 

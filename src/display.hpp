@@ -340,10 +340,10 @@ public:
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	//function which returns true if location (x,y) is covered in shroud.
-	bool shrouded(int x, int y) const;
+	bool shrouded(const gamemap::location& loc) const;
 
-	bool fogged(int x, int y) const
-		{ return team_valid() ? teams_[currentTeam_].fogged(x,y) : false; }
+	bool fogged(const gamemap::location& loc) const
+		{ return team_valid() ? teams_[currentTeam_].fogged(loc.x, loc.y) : false; }
 
 	//the viewing team is the team currently viewing the game. The playing team
 	//is the team whose turn it is

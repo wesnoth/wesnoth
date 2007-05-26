@@ -1338,7 +1338,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
-			const bool show = screen != NULL && !screen->fogged(loc.x,loc.y);
+			const bool show = screen != NULL && !screen->fogged(loc);
 			const bool animate = show && cfg["animate"] != "";
 
 			units->erase(loc);
@@ -2044,7 +2044,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 
 		//we have found a unit that matches the filter
-		if(u != units->end() && ! screen->fogged(u->first.x,u->first.y)) {
+		if(u != units->end() && ! screen->fogged(u->first)) {
 			screen->highlight_hex(u->first);
 			screen->scroll_to_tile(u->first.x,u->first.y);
 

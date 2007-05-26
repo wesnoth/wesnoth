@@ -33,12 +33,12 @@
 static void teleport_unit_between( const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	display* disp = display::get_singleton();
-	if(!disp || disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)) {
+	if(!disp || disp->update_locked() || disp->fogged(a) && disp->fogged(b)) {
 		return;
 	}
 
 	temp_unit.set_teleporting(*disp,a);
-	if (!disp->fogged(a.x, a.y)) { // teleport
+	if (!disp->fogged(a)) { // teleport
 		disp->scroll_to_tile(a.x,a.y,display::ONSCREEN);
 		while(!temp_unit.get_animation()->animation_finished()  && temp_unit.get_animation()->get_animation_time() < 0) {
 			disp->invalidate(a);
@@ -48,7 +48,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 			disp->delay(10);
 		}
 	}
-	if (!disp->fogged(b.x, b.y)) { // teleport
+	if (!disp->fogged(b)) { // teleport
 		temp_unit.restart_animation(*disp,0);
 		disp->scroll_to_tile(b.x,b.y,display::ONSCREEN);
 		while(!temp_unit.get_animation()->animation_finished()) {
@@ -67,7 +67,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 static void move_unit_between( const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	display* disp = display::get_singleton();
-	if(!disp || disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)) {
+	if(!disp || disp->update_locked() || disp->fogged(a) && disp->fogged(b)) {
 		return;
 	}
 
@@ -180,7 +180,7 @@ void unit_die(const gamemap::location& loc, unit& loser,
 const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 {
 	display* disp = display::get_singleton();
-	if(!disp ||disp->update_locked() || disp->fogged(loc.x,loc.y) || preferences::show_combat() == false) {
+	if(!disp ||disp->update_locked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
 		const std::string& die_sound = loser.die_sound();
@@ -222,7 +222,7 @@ static void unit_attack_ranged(
 {
 	display* disp = display::get_singleton();
 	if(!disp) return;
-	const bool hide = disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)
+	const bool hide = disp->update_locked() || disp->fogged(a) && disp->fogged(b)
 		|| preferences::show_combat() == false ;
 
 	unit_map& units = disp->get_units();
@@ -329,7 +329,7 @@ static void unit_attack_ranged(
 		missile_frame_halo = halo::NO_HALO;
 		if(animation_time > missile_animation.get_begin_time() &&
 				animation_time < missile_animation.get_end_time() &&
-				(!disp->fogged(b.x,b.y) || !disp->fogged(a.x,a.y))) {
+				(!disp->fogged(b) || !disp->fogged(a))) {
 			const int posx = int(pos*xdst + (1.0-pos)*xsrc);
 			const int posy = int(pos*ydst + (1.0-pos)*ysrc);
 
@@ -405,7 +405,7 @@ void unit_attack(
 	display* disp = display::get_singleton();
 	if(!disp) return;
 	unit_map& units = disp->get_units();
-	const bool hide = disp->update_locked() || disp->fogged(a.x,a.y) && disp->fogged(b.x,b.y)
+	const bool hide = disp->update_locked() || disp->fogged(a) && disp->fogged(b)
 	                  || preferences::show_combat() == false;
 
 	if(!hide) {
@@ -526,7 +526,7 @@ void unit_attack(
 void unit_recruited(gamemap::location& loc)
 {
 	display* disp = display::get_singleton();
-	if(!disp || disp->update_locked() ||disp->fogged(loc.x,loc.y)) return;
+	if(!disp || disp->update_locked() ||disp->fogged(loc)) return;
 	unit_map::iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
 
@@ -548,7 +548,7 @@ void unit_recruited(gamemap::location& loc)
 void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
 {
 	display* disp = display::get_singleton();
-	if(!disp || disp->update_locked() || disp->fogged(healed_loc.x,healed_loc.y)) return;
+	if(!disp || disp->update_locked() || disp->fogged(healed_loc)) return;
 	if(healing==0) return;
 	// This is all the pretty stuff.
 	int start_time = INT_MAX;

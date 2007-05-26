@@ -821,7 +821,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		unit_map::iterator un = mouseover_unit;
 
-		if(un != units_.end() && current_paths_.routes.empty() && !(*gui_).fogged(un->first.x,un->first.y)) {
+		if(un != units_.end() && current_paths_.routes.empty() && !(*gui_).fogged(un->first)) {
 			if (un->second.side() != team_num_) {
 				//unit under cursor is not on our team, highlight reach
 				unit_movement_resetter move_reset(un->second);
@@ -1183,7 +1183,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 
 		const unit_map::iterator it = find_unit(hex);
 
-		if(it != units_.end() && it->second.side() == team_num_ && !gui_->fogged(it->first.x,it->first.y)) {
+		if(it != units_.end() && it->second.side() == team_num_ && !gui_->fogged(it->first)) {
 			const bool teleport = it->second.get_ability_bool("teleport",it->first);
 			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
 								   false,teleport,viewing_team(),path_turns_);
@@ -1420,7 +1420,7 @@ void mouse_handler::show_attack_options(unit_map::const_iterator u)
 
 bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 {
-	if(it->second.side() == team_num_ && unit_can_move(it->first,units_,map_,teams_) && it->second.user_end_turn() == false && !gui_->fogged(it->first.x,it->first.y)) {
+	if(it->second.side() == team_num_ && unit_can_move(it->first,units_,map_,teams_) && it->second.user_end_turn() == false && !gui_->fogged(it->first)) {
 		bool is_enemy = current_team().is_enemy(int(gui_->viewing_team()+1));
 		return is_enemy == false || it->second.invisible(it->first,units_,teams_) == false;
 	}
@@ -1470,7 +1470,7 @@ void mouse_handler::cycle_back_units()
 
 inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
 									   const unit_map::const_iterator &itx) {
-	if (it != itx && !gui_->fogged(it->first.x,it->first.y)) {
+	if (it != itx && !gui_->fogged(it->first)) {
 		const bool teleport = it->second.get_ability_bool("teleport",it->first);
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,false,teleport,viewing_team(),path_turns_);
 		gui_->highlight_reach(current_paths_);
