@@ -60,9 +60,6 @@ namespace {
 
 	const int MinZoom = 4;
 	const int MaxZoom = 200;
-
-	const size_t SideBarGameStatus_x = 16;
-	const size_t SideBarGameStatus_y = 220;
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,

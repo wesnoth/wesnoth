@@ -76,7 +76,7 @@ public:
 	//redrawing will be scheduled.
 	void scroll(int xmov, int ymov);
 
-	// Zzooms the display by the specified amount. Negative values zoom out.
+	// Zooms the display by the specified amount. Negative values zoom out.
 	void set_zoom(int amount);
 
 	// sets the zoom amount to the default.
