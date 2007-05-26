@@ -370,6 +370,7 @@ void dialog::update_widget_positions(const dimension_measurements &dim)
 
 	message_->set_location(dim.message);
 	message_->join();
+	last_dimension_= dim;
 }
 
 void dialog::refresh()
@@ -695,6 +696,9 @@ int dialog::process(dialog_process_info &info)
 					new_right_button && !info.right_button
 				)
 			)
+		) || (
+			new_right_button && !info.right_button &&
+			!point_in_rect(mousex,mousey,last_dimension_.frame)
 		) || (
 			//any keypress should close a dialog if it has one standard button (or less)
 			//and no menu options.

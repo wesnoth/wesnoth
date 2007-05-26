@@ -252,6 +252,7 @@ private:
 	dialog_textbox *text_widget_;
 	dialog_action *action_;
 	surface_restorer *bg_restore_;
+	dimension_measurements last_dimension_;
 	int result_;
 //	INIT_STATE state_;
 };
