@@ -698,7 +698,10 @@ int dialog::process(dialog_process_info &info)
 			)
 		) || (
 			new_right_button && !info.right_button &&
-			!point_in_rect(mousex,mousey,last_dimension_.frame)
+			(type_ != OK_ONLY || !use_menu) &&
+			!point_in_rect(mousex,mousey,last_dimension_.frame) &&
+			!point_in_rect(mousex,mousey,last_dimension_.textbox) &&
+			!point_in_rect(mousex,mousey,last_dimension_.message)
 		) || (
 			//any keypress should close a dialog if it has one standard button (or less)
 			//and no menu options.
