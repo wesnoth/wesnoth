@@ -1481,7 +1481,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	if(!is_shrouded) {
 		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_BACKGROUND);
 
-		surface flag(get_flag(terrain,loc.x,loc.y));
+		surface flag(get_flag(terrain,loc));
 		if(flag != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(flag,NULL,dst,&dstrect);
@@ -1901,14 +1901,11 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 	return res;
 }
 
-surface display::get_flag(t_translation::t_letter terrain, int x, int y)
+surface display::get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc)
 {
-	const bool village = map_.is_village(terrain);
-	if(!village) {
+	if(!map_.is_village(terrain)) {
 		return surface(NULL);
 	}
-
-	const gamemap::location loc(x,y);
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) && (!fogged(loc)) || !shrouded(loc) && !teams_[currentTeam_].is_enemy(i+1)) {

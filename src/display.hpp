@@ -433,7 +433,7 @@ private:
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
 	//this surface must be freed by the caller
-	surface get_flag(t_translation::t_letter, int x, int y);
+	surface get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc);
 
 	//this surface must be freed by the caller
 	surface get_minimap(int w, int h);
