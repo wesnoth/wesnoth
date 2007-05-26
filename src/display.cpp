@@ -532,10 +532,8 @@ void display::screenshot()
 	SDL_SaveBMP(screen_.getSurface().get(), name.c_str());
 }
 
-void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_fogged)
+void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
 {
-	const gamemap::location loc(x,y);
-
 	if(screen_.update_locked() || (check_fogged && fogged(loc))) {
 		return;
 	}
@@ -654,7 +652,7 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	// if rectangle formed by corners (x1,y1) and (x2,y2) is larger
 	// than map area then just scroll to (x1,y1)
 	if(diffx > map_area().w || diffy > map_area().h) {
-		scroll_to_tile(x1,y1,scroll_type,check_fogged);
+		scroll_to_tile(gamemap::location(x1,y1),scroll_type,check_fogged);
 	} else {
 		// only scroll if rectangle is not completely inside map area
 		// assume most paths are within rectangle, sometimes
@@ -663,7 +661,7 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 		if (outside_area(map_area(),minx,miny) ||
 		    outside_area(map_area(),maxx,maxy)) {
 			// scroll to middle point of rectangle
-			scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type,check_fogged);
+			scroll_to_tile(gamemap::location((x1+x2)/2,(y1+y2)/2),scroll_type,check_fogged);
 		} // else don't scroll, rectangle is already on screen
 	}
 }
@@ -677,7 +675,7 @@ void display::scroll_to_leader(unit_map& units, int side)
 		i will comment it out
 		const hotkey::basic_handler key_events_handler(gui_);
 		*/
-		scroll_to_tile(leader->first.x,leader->first.y,ONSCREEN);
+		scroll_to_tile(leader->first, ONSCREEN);
 	}
 }
 

@@ -351,7 +351,7 @@ namespace events{
 
 		if(selected > 0 && selected < int(locations_list.size())) {
 			const gamemap::location& loc = locations_list[selected];
-			gui_->scroll_to_tile(loc.x,loc.y,display::WARP);
+			gui_->scroll_to_tile(loc,display::WARP);
 		}
 	}
 
@@ -1246,7 +1246,7 @@ namespace events{
 		const unit_map::const_iterator i = team_leader(team_num,units_);
 		if(i != units_.end()) {
 			clear_shroud(team_num);
-			gui_->scroll_to_tile(i->first.x,i->first.y,display::WARP);
+			gui_->scroll_to_tile(i->first,display::WARP);
 		}
 	}
 
@@ -1737,7 +1737,7 @@ namespace events{
 		}
 		if(found) {
 			last_search_hit_ = loc;
-			gui_->scroll_to_tile(loc.x,loc.y,display::ONSCREEN,false);
+			gui_->scroll_to_tile(loc,display::ONSCREEN,false);
 			gui_->highlight_hex(loc);
 		} else {
 			last_search_hit_ = gamemap::location();

@@ -50,10 +50,9 @@ void playsingle_controller::init_gui(){
 	play_controller::init_gui();
 
 	if(first_human_team_ != -1) {
-		gui_->scroll_to_tile(map_.starting_position(first_human_team_ + 1).x,
-			               map_.starting_position(first_human_team_ + 1).y, display::WARP);
+		gui_->scroll_to_tile(map_.starting_position(first_human_team_ + 1), display::WARP);
 	}
-	gui_->scroll_to_tile(map_.starting_position(1).x,map_.starting_position(1).y,display::WARP);
+	gui_->scroll_to_tile(map_.starting_position(1), display::WARP);
 
 	update_locker lock_display(gui_->video(),recorder.is_skipping());
 	events::raise_draw_event();

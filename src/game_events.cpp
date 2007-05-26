@@ -637,9 +637,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string y = cfg["y"];
 		std::string check_fogged = cfg["check_fogged"];
 		wassert(state_of_game != NULL);
-		const int xpos = atoi(x.c_str());
-		const int ypos = atoi(y.c_str());
-		screen->scroll_to_tile(xpos,ypos,display::SCROLL,utils::string_bool(check_fogged,false));
+		const gamemap::location loc(atoi(x.c_str()), atoi(y.c_str()));
+		screen->scroll_to_tile(loc,display::SCROLL,utils::string_bool(check_fogged,false));
 	}
 
 	else if(cmd == "scroll_to_unit") {
@@ -650,7 +649,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 		std::string check_fogged = cfg["check_fogged"];
 		if(u != units->end()) {
-			screen->scroll_to_tile(u->first.x,u->first.y,display::SCROLL,utils::string_bool(check_fogged,false));
+			screen->scroll_to_tile(u->first,display::SCROLL,utils::string_bool(check_fogged,false));
 		}
 	}
 
@@ -1556,7 +1555,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(speaker != units->end()) {
 			LOG_DP << "scrolling to speaker..\n";
 			screen->highlight_hex(speaker->first);
-			screen->scroll_to_tile(speaker->first.x,speaker->first.y-1);
+			// FIXME: Why is this y-1???
+			screen->scroll_to_tile(gamemap::location(speaker->first.x,speaker->first.y-1));
 
 			if(image.empty()) {
 				image = speaker->second.profile();
@@ -1671,7 +1671,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		while(un != units->end()) {
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(utils::string_bool(cfg["animate"])) {
-					screen->scroll_to_tile(un->first.x,un->first.y);
+					screen->scroll_to_tile(un->first);
 					unit_display::unit_die(un->first,un->second);
 				}
 
@@ -2046,7 +2046,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		//we have found a unit that matches the filter
 		if(u != units->end() && ! screen->fogged(u->first)) {
 			screen->highlight_hex(u->first);
-			screen->scroll_to_tile(u->first.x,u->first.y);
+			screen->scroll_to_tile(u->first);
 
 			u->second.set_extra_anim(*screen,u->first,cfg["flag"]);
 			while(!u->second.get_animation()->animation_finished()) {

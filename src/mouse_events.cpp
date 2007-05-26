@@ -718,7 +718,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			if(loc.valid()) {
 				if(loc != last_hex_) {
 					last_hex_ = loc;
-					(*gui_).scroll_to_tile(loc.x,loc.y,display::WARP,false);
+					(*gui_).scroll_to_tile(loc,display::WARP,false);
 				}
 			} else {
 				// clicking outside of the minimap will end minimap scrolling
@@ -996,7 +996,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		if(loc.valid()) {
 			minimap_scrolling_ = true;
 			last_hex_ = loc;
-			gui_->scroll_to_tile(loc.x,loc.y,display::WARP,false);
+			gui_->scroll_to_tile(loc,display::WARP,false);
 		} else {
 		const SDL_Rect& rect = gui_->map_area();
 		const int centerx = (rect.x + rect.w)/2;
@@ -1064,7 +1064,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	if(loc.valid()) {
 		minimap_scrolling_ = true;
 		last_hex_ = loc;
-		gui_->scroll_to_tile(loc.x,loc.y,display::WARP,false);
+		gui_->scroll_to_tile(loc,display::WARP,false);
 		return;
 	}
 
@@ -1475,7 +1475,7 @@ inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,false,teleport,viewing_team(),path_turns_);
 		gui_->highlight_reach(current_paths_);
 
-		gui_->scroll_to_tile(it->first.x,it->first.y,display::WARP);
+		gui_->scroll_to_tile(it->first,display::WARP);
 	}
 
 	if (it == itx) {

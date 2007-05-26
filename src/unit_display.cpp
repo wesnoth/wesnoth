@@ -39,7 +39,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 
 	temp_unit.set_teleporting(*disp,a);
 	if (!disp->fogged(a)) { // teleport
-		disp->scroll_to_tile(a.x,a.y,display::ONSCREEN);
+		disp->scroll_to_tile(a,display::ONSCREEN);
 		while(!temp_unit.get_animation()->animation_finished()  && temp_unit.get_animation()->get_animation_time() < 0) {
 			disp->invalidate(a);
 			disp->place_temporary_unit(temp_unit, a);
@@ -50,7 +50,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 	}
 	if (!disp->fogged(b)) { // teleport
 		temp_unit.restart_animation(*disp,0);
-		disp->scroll_to_tile(b.x,b.y,display::ONSCREEN);
+		disp->scroll_to_tile(b,display::ONSCREEN);
 		while(!temp_unit.get_animation()->animation_finished()) {
 			disp->invalidate(b);
 			disp->place_temporary_unit(temp_unit, b);
@@ -531,7 +531,7 @@ void unit_recruited(gamemap::location& loc)
 	if(u == disp->get_units().end()) return;
 
 	u->second.set_hidden(true);
-	disp->scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
+	disp->scroll_to_tile(loc,display::ONSCREEN);
 	disp->draw();
 	u->second.set_recruited(*disp,loc);
 	u->second.set_hidden(false);
@@ -552,7 +552,7 @@ void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit
 	if(healing==0) return;
 	// This is all the pretty stuff.
 	int start_time = INT_MAX;
-	disp->scroll_to_tile(healed_loc.x, healed_loc.y, display::ONSCREEN);
+	disp->scroll_to_tile(healed_loc, display::ONSCREEN);
 	disp->select_hex(healed_loc);
 	unit healed = healed_p;
 	bool was_hidden = healed.get_hidden();
