@@ -117,16 +117,6 @@ namespace t_translation {
 
 /***************************************************************************************/	
 
-//short transition code to add code support for the 1.3.2 and 1.3.1 format
-//the ifdef should be removed before tagging 1.3.2
-
-// Hack to allow an automatic translation from 1.3.1 letters to 1.3.2 letter
-// this support will be removed in 1.3.4
-#define TERRAIN_TRANSLATION_COMPATIBLE_2
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE_2
-static std::map<t_letter, t_letter> lookup_table_131;
-#endif
-
 const t_letter OFF_MAP = string_to_number_("_off^_off");
 const t_letter OFF_MAP_USER = string_to_number_("_off^_usr");
 const t_letter OFF_MAP_BORDER_LEFT = string_to_number_("_off^bl");
@@ -772,46 +762,6 @@ static t_letter string_to_number_(const std::string& str, const t_layer filler) 
 
 static t_letter string_to_number_(std::string str, int& start_position, const t_layer filler)
 {
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE_2
-	if(lookup_table_131.empty()) {
-		lookup_table_131.insert(std::make_pair(t_letter("Bww|"), t_letter("Ww","Bw|")));	
-		lookup_table_131.insert(std::make_pair(t_letter("Bww/"), t_letter("Ww","Bw/")));
-		lookup_table_131.insert(std::make_pair(t_letter("Bww\\"), t_letter("Ww","Bw\\")));
-		lookup_table_131.insert(std::make_pair(t_letter("Bwo|"), t_letter("Wo","Bw|")));
-		lookup_table_131.insert(std::make_pair(t_letter("Bwo/"), t_letter("Wo","Bw/")));
-		lookup_table_131.insert(std::make_pair(t_letter("Bwo\\"), t_letter("Wo","Bw\\")));
-		lookup_table_131.insert(std::make_pair(t_letter("Bss|"), t_letter("Ss","Bw|")));
-		lookup_table_131.insert(std::make_pair(t_letter("Bss/"), t_letter("Ss","Bw/")));
-		lookup_table_131.insert(std::make_pair(t_letter("Bss\\"), t_letter("Ss","Bw\\")));
-		lookup_table_131.insert(std::make_pair(t_letter("Dc"), t_letter("Dd","Dc")));
-		lookup_table_131.insert(std::make_pair(t_letter("Dr"), t_letter("Dd","Dr")));
-		lookup_table_131.insert(std::make_pair(t_letter("Do"), t_letter("Dd","Do")));
-		lookup_table_131.insert(std::make_pair(t_letter("Fa"), t_letter("Aa","Fpa")));
-		lookup_table_131.insert(std::make_pair(t_letter("Fet"), t_letter("Gg","Fet")));
-		lookup_table_131.insert(std::make_pair(t_letter("Ff"), t_letter("Gs","Fp")));
-		lookup_table_131.insert(std::make_pair(t_letter("Ft"), t_letter("Gs","Ft")));
-		lookup_table_131.insert(std::make_pair(t_letter("Rfvs"), t_letter("Re","Gvs")));
-		lookup_table_131.insert(std::make_pair(t_letter("Uf"), t_letter("Uu","Uf")));
-		lookup_table_131.insert(std::make_pair(t_letter("Uui"), t_letter("Uu","Ii")));
-		lookup_table_131.insert(std::make_pair(t_letter("Uhi"), t_letter("Uh","Ii")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vda"), t_letter("Dd","Vda")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vdt"), t_letter("Dd","Vdt")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vea"), t_letter("Aa","Vea")));
-		lookup_table_131.insert(std::make_pair(t_letter("Veg"), t_letter("Gg","Ve")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vha"), t_letter("Aa","Vha")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vhg"), t_letter("Gg","Vh")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vhh"), t_letter("Hh","Vhh")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vhha"), t_letter("Ha","Vhha")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vhm"), t_letter("Mm","Vhh")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vht"), t_letter("Gs","Vht")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vu"), t_letter("Uu","Vu")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vud"), t_letter("Uu","Vud")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vwm"), t_letter("Ww","Vm")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vs"), t_letter("Ss","Vhs")));
-		lookup_table_131.insert(std::make_pair(t_letter("Vsm"), t_letter("Ss","Vm")));
-		lookup_table_131.insert(std::make_pair(t_letter("Xm"), t_letter("Mm","Xm")));
-	}
-#endif
 	t_letter result;
 
 	//strip the spaces around us
@@ -844,14 +794,6 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		}
 	}	
 
-#ifdef TERRAIN_TRANSLATION_COMPATIBLE_2
-	std::map<t_letter, t_letter>::const_iterator itor = lookup_table_131.find(result);
-	if(itor != lookup_table_131.end()) {
-		lg::wml_error << "1.3.1 letter '" << itor->first << "' found should be '" << itor->second << "' for 1.3.2, support will be removed in version 1.3.4\n";
-		result = itor->second;
-	}
-#endif
-	
 	if(result == OBSOLETE_KEEP) {
 		lg::wml_error << "Using _K for a keep is deprecated, support will be removed in version 1.3.5\n";
 		result = HUMAN_KEEP;
