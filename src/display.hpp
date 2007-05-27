@@ -126,7 +126,6 @@ public:
 	//width of the portion of the display which shows the game area. Between
 	//mapx and x is the sidebar region.
 	int w() const { return screen_.getx(); }
-	int map_w() const { return w() - 140; }
 	int h() const { return screen_.gety(); }
 
 	const SDL_Rect& map_area() const 

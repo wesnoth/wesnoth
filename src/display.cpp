@@ -2488,7 +2488,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 			msg = message;
 			action = false;
 		}
-		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_w()*3/4);
+		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_area().w*3/4);
 
 		int ypos = chat_message_x;
 		for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
