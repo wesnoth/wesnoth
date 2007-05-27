@@ -1437,7 +1437,6 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		return;
 	}
 
-
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
 
@@ -1603,7 +1602,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	update_rect(xpos,ypos,zoom_,zoom_);
 }
 
-void display::draw_enemies_reach(unsigned int num, int xloc, int yloc)
+void display::draw_enemies_reach(const unsigned int num, const int xloc, const int yloc)
 {
 	// only one can reach, don't number it
 	if (num == 1)

@@ -233,12 +233,17 @@ private:
 	void draw_terrain_on_tile(const gamemap::location& loc, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
 
-
 	gui::button::TYPE string_to_button_type(std::string type);
 
-	// void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
-
-	void draw_enemies_reach(unsigned int num, int xloc, int yloc);
+	/**
+	 * Used to draw the number of enemies which can reach a location.
+	 *
+	 * @param num 		number of enemies which can reach the location
+	 * 					If num == 1 nothing is drawn
+	 * @paream xloc		the on screen x position in pixels
+	 * @param yloc		the on screen y position in pixels
+	 */
+	void draw_enemies_reach(const unsigned int num, const int xloc, const int yloc);
 
 	// event raised when the map is being scrolled
 	mutable events::generic_event _scroll_event;
