@@ -2596,18 +2596,6 @@ const std::string& unit::image_fighting(attack_type::RANGE range) const
 	}
 }
 
-
-const std::string& unit::image_healing() const
-{
-	const std::string& val = cfg_["image_healing"];
-	if(val.empty()) {
-		return absolute_image();
-	} else {
-		return val;
-	}
-}
-
-
 const defensive_animation* unit::defend_animation(const display& disp, const gamemap::location& loc,
 		fighting_animation::hit_type hits, const attack_type* attack,const attack_type* secondary_attack, int swing_num,int damage) const
 {
