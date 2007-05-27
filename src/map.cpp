@@ -422,11 +422,48 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 	}
 }
 
+// loc the location
+// w the width of the map in hexes
+// h the height of the map in hexes
+static t_translation::t_letter get_border_terrain(const gamemap::location& loc, 
+		const int w, const int h)
+{
+	if(loc.x == 0) {
+		if(loc.y == 0) return t_translation::OFF_MAP_BORDER_TOP_LEFT;
+		if(loc.y ==  h) return t_translation::OFF_MAP_BORDER_TOP_RIGHT;
+		return t_translation::OFF_MAP_BORDER_TOP;
+	}
+
+	if(loc.x == w) {
+		if(loc.y == 0) return t_translation::OFF_MAP_BORDER_BOTTOM_LEFT;
+		if(loc.y == h) return t_translation::OFF_MAP_BORDER_BOTTOM_RIGHT;
+		return t_translation::OFF_MAP_BORDER_BOTTOM;
+	}
+
+	if(loc.y == 0) return t_translation::OFF_MAP_BORDER_LEFT;
+	if(loc.y == h) return t_translation::OFF_MAP_BORDER_RIGHT;
+
+	return t_translation::OFF_MAP;
+}
+
 t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 {
-	if(on_board(loc))
+	if(on_board(loc)) {
 		return tiles_[loc.x][loc.y];
+	}
 
+	const std::map<location, t_translation::t_letter>::const_iterator itor = borderCache_.find(loc);
+	if(itor != borderCache_.end()) {
+		return itor->second;
+	}
+
+	const t_translation::t_letter result = get_border_terrain(loc, x(), y());
+	borderCache_.insert(std::pair<location, t_translation::t_letter>(loc, result));
+	return result;
+
+#if 0
+	// This code will be used for the editor to expand the map, thus keep it for now
+	
 	const std::map<location, t_translation::t_letter>::const_iterator itor = borderCache_.find(loc);
 	if(itor != borderCache_.end())
 		return itor->second;
@@ -460,6 +497,7 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 
 	borderCache_.insert(std::pair<location, t_translation::t_letter>(loc,used_terrain));
 	return used_terrain;
+#endif	
 }
 
 const gamemap::location& gamemap::starting_position(int n) const
