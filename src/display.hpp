@@ -331,7 +331,8 @@ public:
 	void set_turbo(const bool turbo) { turbo_ = turbo; }
 
 	double turbo_speed() const;
-	void set_turbo_speed(const double speed);
+
+	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
 
 	//Delay routines: use these not SDL_Delay (for --nogui).
 	void delay(unsigned int milliseconds) const;

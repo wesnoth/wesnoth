@@ -2327,11 +2327,6 @@ double display::turbo_speed() const
 		return 1.0;
 }
 
-void display::set_turbo_speed(const double speed)
-{
-		turbo_speed_ = speed;
-}
-
 //Delay routines: use these not SDL_Delay (for --nogui).
 
 void display::delay(unsigned int milliseconds) const
