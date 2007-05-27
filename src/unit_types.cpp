@@ -676,7 +676,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		healing_animations_.push_back(healing_animation(**healing_anim));
 	}
 	if(healing_animations_.empty()) {
-		healing_animations_.push_back(healing_animation(0,unit_frame(image::locator(cfg["image_healing"]),1,"1.0","",0,"",cfg["image_halo_healing"])));
+		healing_animations_.push_back(healing_animation(0,unit_frame(image(),500)));
 		// always have a healing animation
 	}
 

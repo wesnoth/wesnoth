@@ -1280,8 +1280,7 @@ void unit::read(const config& cfg)
 				healing_animations_.push_back(healing_animation(**healing_anim));
 			}
 			if(healing_animations_.empty()) {
-				healing_animations_.push_back(healing_animation(0,unit_frame(image_healing(),150,
-								"1.0","",0,"",image_halo_healing(),0,0)));
+				healing_animations_.push_back(healing_animation(0,unit_frame(absolute_image(),500)));
 				// always have a healing animation
 			}
 
