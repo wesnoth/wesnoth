@@ -33,19 +33,20 @@ fantasy
 Battle for \fBWesnoth\fP è un gioco strategico a turni con ambientazione
 fantasy.
 
-Defeat all enemy leaders using a well\-chosen cadre of troops, taking care to
-manage your resources of gold and villages. All units have their own
-strengths and weaknesses; to win, deploy your forces to their best advantage
-while denying your foes the chance to do the same. As units gain experience,
-they acquire new abilities and become more powerful. Play in your own
-language and test your skill against a smart computer opponent, or join
-Wesnoth's large community of on\-line players. Create your own custom units,
-scenarios or campaigns, and share them with others.
+Sconfiggi tutti i condottieri nemici usando un'oculata scelta di unità di
+combattimento, avendo cura di gestire le tue risorse di oro e villaggi. Ogni
+unità ha punti di forza e debolezze: per vincere, schiera le tue forze nel
+modo più vantaggioso impedendo al nemico di fare altrettanto. Le unità, con
+l'esperienza, acquistano nuove abilità e diventano più potenti. Gioca nella
+tua lingua e metti alla prova le tue capacità contro un abile nemico
+controllato dal computer, o unisciti alla numerosa comunità di giocatori
+on\-line.Crea le tue unità personalizzate, scenari o campagne, e condividile
+con gli altri.
 .
 .SH OPZIONI
 .
 .TP 
-\fB\-\-bpp\fP\fI\ number\fP
+\fB\-\-bpp\fP\fI\ numero\fP
 imposta il numero di bit per pixel. Esempio: \-\-bpp 32
 .TP 
 \fB\-\-compress\fP\fI\ <infile>\fP\fB\ \fP\fI<outfile>\fP
@@ -83,7 +84,7 @@ qualsiasi dominio di debug. \fB\-\-log\-info\fP mostra tutti i messaggi,
 gli errori.
 .TP 
 \fB\-\-logdomains\fP
-Dumps a list of all log domains and exits.
+Stampa l'elenco di tutti i domini di log ed esce.
 .TP 
 \fB\-\-max\-fps\fP
 il numero di quadri al secondo che il gioco può mostrare, il valore dovrebbe
@@ -125,20 +126,20 @@ questa opzione è usata per eseguire dei benchmark con script.
 .
 .SH "opzioni per \-\-multiplayer"
 .
-The side\-specific multiplayer options are marked with
-<number>. <number> has to be replaced by a side number. It
-usually is 1 or 2 but depends on the number of players possible in the
-chosen scenario.
+Le opzioni multigiocatore specifiche delle fazioni sono indicate da
+<numero>. <numero> deve essere sostituito dal numero della
+fazione. Normalmente è 1 o 2 ma dipende dal numero di giocatori possibili
+nello scenario scelto.
 .TP 
-\fB\-\-algorithm<number>=value\fP
+\fB\-\-algorithm<numero>=valore\fP
 seleziona un algoritmo non standard per il controllo dell'IA di questa
 fazione. Valori disponibili: "idle_ai" e "sample_ai".
 .TP  
-\fB\-\-controller<number>=value\fP
+\fB\-\-controller<numero>=valore\fP
 seleziona il tipo di controllo per questa fazione. Valori disponibili:
 "human" e "ai".
 .TP  
-\fB\-\-era=value\fP
+\fB\-\-era=valore\fP
 usa questa opzione per giocare nell'era selezionata invece che in quella
 predefinita. L'era è scelta per ID. Le ere sono descritte nel file
 data/multiplayer.cfg.
@@ -147,20 +148,21 @@ data/multiplayer.cfg.
 esegue il gioco senza GUI. Deve apparire prima di \fB\-\-multiplayer\fP per avere
 l'effetto desiderato.
 .TP 
-\fB\-\-parm<number>=name:value\fP
-sets additional parameters for this side. This parameter depends on the
-options used with \fB\-\-controller\fP and \fB\-\-algorithm.\fP It should only be
-useful for people designing their own AI. (not yet documented completely)
+\fB\-\-parm<numero>=nome:valore\fP
+imposta parametri aggiuntivi per questa fazione. Questo parametro dipende
+dalle opzioni usate con \fB\-\-controller\fP e \fB\-\-algorithm.\fP Dovrebbe essere
+utile solo per chi sta programmando la propria IA. (non ancora documentata
+completamente)
 .TP 
-\fB\-\-scenario=value\fP
+\fB\-\-scenario=valore\fP
 seleziona uno scenario multigiocatore. lo scenario predefinito è
 "multiplayer_Charge".
 .TP 
-\fB\-\-side<number>=value\fP
+\fB\-\-side<numero>=valore\fP
 seleziona una fazione dell'era attuale per questa squadra. La fazione è
 scelta per ID. Le fazioni sono descritte nel file data/multiplayer.cfg.
 .TP 
-\fB\-\-turns=value\fP
+\fB\-\-turns=valore\fP
 imposta il numero di turni per lo scenario scelto. L'impostazione standard è
 "50"
 .TP 
