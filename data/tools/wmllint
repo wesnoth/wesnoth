@@ -440,10 +440,11 @@ def translator(filename, mapxforms, textxform):
     newdata = []
     lineno = baseline = 0
     while mfile:
-        line = mfile.pop(0)
-        if verbose >= 3:
-            sys.stdout.write(line + terminator)
-        lineno += 1
+        if not map_only:
+            line = mfile.pop(0)
+            if verbose >= 3:
+                sys.stdout.write(line + terminator)
+            lineno += 1
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
         # pathological and the parse won't handle them, the latter
