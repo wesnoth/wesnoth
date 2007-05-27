@@ -383,8 +383,8 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	const size_t height = 80;
 	const size_t border = 20;
 #endif
-	const int left = disp.x()/2 - width/2;
-	const int top = disp.y()/2 - height/2;
+	const int left = disp.w()/2 - width/2;
+	const int top = disp.h()/2 - height/2;
 
 	const events::event_context dialog_events_context;
 
@@ -478,8 +478,8 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	const size_t width = 250;
 	const size_t height = 20;
 #endif
-	const int left = disp.x()/2 - width/2;
-	const int top = disp.y()/2 - height/2;
+	const int left = disp.w()/2 - width/2;
+	const int top = disp.h()/2 - height/2;
 
 	const events::event_context dialog_events_context;
 

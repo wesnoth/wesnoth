@@ -1257,8 +1257,8 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	const events::event_context dialog_events_context;
 
-	const int centerx = disp.x()/2;
-	const int centery = disp.y()/2;
+	const int centerx = disp.w()/2;
+	const int centery = disp.h()/2;
 #ifdef USE_TINY_GUI
 	const int width = 300;			  // FIXME: should compute this, but using what data ?
 	const int height = 220;
@@ -1276,7 +1276,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	surface_restorer restorer;
 	gui::draw_dialog(xpos,ypos,width,height,disp.video(),_("Hotkey Settings"),NULL,&buttons,&restorer);
 
-	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
+	SDL_Rect clip_rect = { 0, 0, disp.w (), disp.h () };
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_PLUS,
 					     font::NORMAL_COLOUR,_("Press desired Hotkey"),
 					     0, 0);

@@ -691,7 +691,7 @@ void play_controller::play_slice()
 		scrolling_ = true;
 	}
 
-	if((key[SDLK_DOWN] && !menu_handler_.get_textbox().active()) || mousey > gui_->y()-scroll_threshold) {
+	if((key[SDLK_DOWN] && !menu_handler_.get_textbox().active()) || mousey > gui_->h()-scroll_threshold) {
 		gui_->scroll(0,preferences::scroll_speed());
 		scrolling_ = true;
 	}
@@ -701,7 +701,7 @@ void play_controller::play_slice()
 		scrolling_ = true;
 	}
 
-	if((key[SDLK_RIGHT] && !menu_handler_.get_textbox().active()) || mousex > gui_->x()-scroll_threshold) {
+	if((key[SDLK_RIGHT] && !menu_handler_.get_textbox().active()) || mousex > gui_->w()-scroll_threshold) {
 		gui_->scroll(preferences::scroll_speed(),0);
 		scrolling_ = true;
 	}

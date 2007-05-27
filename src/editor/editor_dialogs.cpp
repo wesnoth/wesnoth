@@ -63,8 +63,8 @@ std::string new_map_dialog(display& disp, const t_translation::t_letter fill_ter
 	int map_width(40), map_height(40);
 	const int width = 600;
 	const int height = 400;
-	const int xpos = disp.x()/2 - width/2;
-	const int ypos = disp.y()/2 - height/2;
+	const int xpos = disp.w()/2 - width/2;
+	const int ypos = disp.h()/2 - height/2;
 	const int horz_margin = 5;
 	const int vertical_margin = 20;
 
@@ -233,10 +233,10 @@ void preferences_dialog(display &disp, config &prefs) {
 
 	const int width = 600;
 	const int height = 200;
-	const int xpos = disp.x()/2 - width/2;
-	const int ypos = disp.y()/2 - height/2;
+	const int xpos = disp.w()/2 - width/2;
+	const int ypos = disp.h()/2 - height/2;
 
-	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
+	SDL_Rect clip_rect = disp.screen_area();
 
 	gui::button close_button(disp.video(),_("Close Window"));
 
@@ -417,8 +417,8 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	int map_width(curr_w), map_height(curr_h);
 	const int width = 600;
 	const int height = 200;
-	const int xpos = disp.x()/2 - width/2;
-	const int ypos = disp.y()/2 - height/2;
+	const int xpos = disp.w()/2 - width/2;
+	const int ypos = disp.h()/2 - height/2;
 	const int horz_margin = 5;
 	const int vertical_margin = 20;
 	const int button_padding = 20;

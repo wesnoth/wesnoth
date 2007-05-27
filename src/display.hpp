@@ -125,9 +125,9 @@ public:
 	//the dimensions of the display. x and y are width/height. mapx is the
 	//width of the portion of the display which shows the game area. Between
 	//mapx and x is the sidebar region.
-	int x() const { return screen_.getx(); }
-	int mapx() const { return x() - 140; }
-	int y() const { return screen_.gety(); }
+	int w() const { return screen_.getx(); }
+	int map_w() const { return w() - 140; }
+	int h() const { return screen_.gety(); }
 
 	const SDL_Rect& map_area() const 
 		{ return theme_.main_map_location(screen_area()); }
@@ -136,7 +136,9 @@ public:
 	const SDL_Rect& unit_image_area() const 
 		{ return theme_.unit_image_location(screen_area()); }
 
-	SDL_Rect screen_area() const;
+	SDL_Rect screen_area() const
+		{ const SDL_Rect res = {0,0,w(),h()}; return res; }
+
 
 	//check if pixel x,y is outside specified area
 	bool outside_area(const SDL_Rect& area, const int x, const int y) const;

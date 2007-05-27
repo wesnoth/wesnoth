@@ -42,8 +42,8 @@ file_dialog::file_dialog(display &disp, const std::string& file_path, const std:
 : gui::dialog(disp, title, file_path, gui::OK_CANCEL), files_list_(NULL), last_selection_(0)
 {
 	files_list_ = new gui::file_menu(disp.video(), file_path);
-	const unsigned file_list_height = (disp.y() / 2);
-	const unsigned file_list_width = minimum<unsigned>(files_list_->width(), (disp.x() / 4));
+	const unsigned file_list_height = (disp.h() / 2);
+	const unsigned file_list_width = minimum<unsigned>(files_list_->width(), (disp.w() / 4));
 	files_list_->set_measurements(file_list_width, file_list_height);
 	files_list_->set_max_height(file_list_height);
 	set_menu(files_list_);

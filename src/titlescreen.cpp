@@ -160,11 +160,11 @@ static void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, con
     std::string tip_of_day = get_tip_of_day(tips_of_day,ntip);
     if(tip_of_day.empty() == false) {
         tip_of_day = font::word_wrap_text(tip_of_day,font::SIZE_NORMAL,
-                                          (game_config::title_tip_width*screen.x())/1024);
+                                          (game_config::title_tip_width*screen.w())/1024);
 
         const std::string& tome = font::word_wrap_text(_("-- The Tome of Wesnoth"),
                 font::SIZE_NORMAL,
-                (game_config::title_tip_width*screen.x())/1024);
+                (game_config::title_tip_width*screen.w())/1024);
 
         const int pad = game_config::title_tip_padding;
 
@@ -173,7 +173,7 @@ static void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, con
         area.w = maximum<size_t>(area.w,tome_area.w) + 2*pad;
         area.h += tome_area.h + next_tip_button->location().h + 3*pad;
 
-        area.x = main_dialog_area->x - (game_config::title_tip_x*screen.x())/1024 - area.w;
+        area.x = main_dialog_area->x - (game_config::title_tip_x*screen.w())/1024 - area.w;
         area.y = main_dialog_area->y + main_dialog_area->h - area.h;
 
         // Note: The buttons' locations need to be set before the dialog frame is drawn.
@@ -216,10 +216,10 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	// Display Wesnoth logo
 	surface const title_surface(scale_surface(
 		image::get_image(game_config::game_title,image::UNSCALED),
-		screen.x(), screen.y()));
+		screen.w(), screen.h()));
 	screen.video().modeChanged(); // resets modeChanged value
-	int logo_x = game_config::title_logo_x * screen.x() / 1024,
-	    logo_y = game_config::title_logo_y * screen.y() / 768;
+	int logo_x = game_config::title_logo_x * screen.w() / 1024,
+	    logo_y = game_config::title_logo_y * screen.h() / 768;
 	do {
 		if (title_surface.null()) {
 			ERR_DP << "Could not find title image\n";
@@ -241,9 +241,9 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	const SDL_Rect version_area = font::draw_text(NULL,screen_area(),
 						      font::SIZE_TINY,
 	                                    font::NORMAL_COLOUR,version_str,0,0);
-	const size_t versiony = screen.y() - version_area.h;
+	const size_t versiony = screen.h() - version_area.h;
 
-	if(versiony < size_t(screen.y())) {
+	if(versiony < size_t(screen.h())) {
 		font::draw_text(&screen.video(),screen.screen_area(),
 				font::SIZE_TINY,
 				font::NORMAL_COLOUR,version_str,0,versiony);
@@ -273,14 +273,14 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	static const size_t nbuttons = sizeof(button_labels)/sizeof(*button_labels);
 
-	const int menu_xbase = (game_config::title_buttons_x*screen.x())/1024;
+	const int menu_xbase = (game_config::title_buttons_x*screen.w())/1024;
 	const int menu_xincr = 0;
 
 #ifdef USE_TINY_GUI
-	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768 - 15;
+	const int menu_ybase = (game_config::title_buttons_y*screen.h())/768 - 15;
 	const int menu_yincr = 15;
 #else
-	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768;
+	const int menu_ybase = (game_config::title_buttons_y*screen.h())/768;
 	const int menu_yincr = 35;
 #endif
 
@@ -320,8 +320,8 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
 	const int pad = game_config::title_tip_padding;
-	beg_button.set_location(screen.x() - pad - beg_button.location().w,
-		screen.y() - pad - beg_button.location().h);
+	beg_button.set_location(screen.w() - pad - beg_button.location().w,
+		screen.h() - pad - beg_button.location().h);
 	events::raise_draw_event();
 
 	LOG_DP << "drew buttons dialog\n";

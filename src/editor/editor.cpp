@@ -228,8 +228,7 @@ void map_editor::load_tooltips()
 	for (it = menus.begin(); it != menus.end(); it++) {
 
 		// Get the button's screen location
-		SDL_Rect screen;
-		screen.x = 0; screen.y = 0; screen.w = gui_.x(); screen.h = gui_.y();
+		SDL_Rect screen = gui_.screen_area();
 
 		const SDL_Rect tooltip_rect = (*it).location(screen);
 		std::string text = "";
@@ -1523,13 +1522,13 @@ void map_editor::main_loop() {
 		if(key_[SDLK_UP] || mousey == 0) {
 			gui_.scroll(0,-scroll_speed);
 		}
-		if(key_[SDLK_DOWN] || mousey == gui_.y()-1) {
+		if(key_[SDLK_DOWN] || mousey == gui_.h()-1) {
 			gui_.scroll(0,scroll_speed);
 		}
 		if(key_[SDLK_LEFT] || mousex == 0) {
 			gui_.scroll(-scroll_speed,0);
 		}
-		if(key_[SDLK_RIGHT] || mousex == gui_.x()-1) {
+		if(key_[SDLK_RIGHT] || mousex == gui_.w()-1) {
 			gui_.scroll(scroll_speed,0);
 		}
 
