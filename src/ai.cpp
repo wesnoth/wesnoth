@@ -484,7 +484,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 			if(show_move && unit_display::unit_visible_on_path(steps,
 						u_it->second, info_.units,info_.teams)) {
 
-				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
+				info_.disp.scroll_to_tiles(from,to);
 
 				unit_map::iterator up = info_.units.find(u_it->first);
 				unit_display::move_unit(info_.map,steps,up->second,info_.teams);

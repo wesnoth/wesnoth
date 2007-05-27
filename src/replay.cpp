@@ -890,7 +890,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(rt->second.steps,u->second,units,teams)) {
 
-				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
+				disp.scroll_to_tiles(src,dst);
 			}
 
 			if(!replayer.is_skipping()) {

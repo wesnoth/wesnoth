@@ -84,7 +84,7 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 	const int total_mvt_time = 150 * (int)(temp_unit.movement_cost(dst_terrain)/acceleration);
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = 1;
-	disp->scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
+	disp->scroll_to_tiles(a,b,display::ONSCREEN);
 
 	while(mvt_time < total_mvt_time-1) { // one draw in each hex at least
 		disp->delay(10);
@@ -409,7 +409,7 @@ void unit_attack(
 	                  || preferences::show_combat() == false;
 
 	if(!hide) {
-		disp->scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
+		disp->scroll_to_tiles(a,b,display::ONSCREEN);
 	}
 
 	log_scope("unit_attack");

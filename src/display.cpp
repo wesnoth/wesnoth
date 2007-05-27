@@ -633,10 +633,9 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 	}
 }
 
-void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
+void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
                               SCROLL_TYPE scroll_type, bool check_fogged)
 {
-	const gamemap::location loc1(x1,y1), loc2(x2,y2);
 	const int xpos1 = get_location_x(loc1);
 	const int ypos1 = get_location_y(loc1);
 	const int xpos2 = get_location_x(loc2);;
@@ -649,10 +648,10 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	const int diffx = maxx - minx;
 	const int diffy = maxy - miny;
 
-	// if rectangle formed by corners (x1,y1) and (x2,y2) is larger
-	// than map area then just scroll to (x1,y1)
+	// if rectangle formed by corners loc1 and loc2 is larger
+	// than map area then just scroll to loc1
 	if(diffx > map_area().w || diffy > map_area().h) {
-		scroll_to_tile(gamemap::location(x1,y1),scroll_type,check_fogged);
+		scroll_to_tile(loc1,scroll_type,check_fogged);
 	} else {
 		// only scroll if rectangle is not completely inside map area
 		// assume most paths are within rectangle, sometimes
@@ -661,7 +660,7 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 		if (outside_area(map_area(),minx,miny) ||
 		    outside_area(map_area(),maxx,maxy)) {
 			// scroll to middle point of rectangle
-			scroll_to_tile(gamemap::location((x1+x2)/2,(y1+y2)/2),scroll_type,check_fogged);
+			scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,check_fogged);
 		} // else don't scroll, rectangle is already on screen
 	}
 }
