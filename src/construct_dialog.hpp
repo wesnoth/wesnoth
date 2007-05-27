@@ -220,9 +220,9 @@ protected:
 private:
 //	enum INIT_STATE { STATE_UNINIT, STATE_CONTEXT_STARTED, STATE_FRAME_DRAWN, STATE_WIDGETS_JOINED, STATE_READY };
 //	void start_context();
-	void draw_frame(const dimension_measurements &dim);
-	void update_widget_positions(const dimension_measurements &dim);
-	void draw_contents(const dimension_measurements &dim);
+	void draw_frame();
+	void update_widget_positions();
+	void draw_contents();
 
 	//process - execute a single dialog processing loop and return the result
 	int process(dialog_process_info &info);
@@ -252,7 +252,7 @@ private:
 	dialog_textbox *text_widget_;
 	dialog_action *action_;
 	surface_restorer *bg_restore_;
-	dimension_measurements last_dimension_;
+	dimension_measurements dim_;
 	int result_;
 //	INIT_STATE state_;
 };

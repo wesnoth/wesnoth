@@ -264,6 +264,7 @@ int dialog::show(const dimension_measurements &dim)
 	}
 
 	LOG_DP << "showing dialog '" << title_ << "' '" << message_->get_text() << "'\n";
+	dim_ = dim;
 
 	//create the event context, remember to instruct any passed-in widgets to join it
 	const events::event_context dialog_events_context;
@@ -274,9 +275,9 @@ int dialog::show(const dimension_measurements &dim)
 	hotkey::basic_handler help_dispatcher(&disp_,&helper);
 
 	//draw
-	draw_frame(dim);
-	update_widget_positions(dim);
-	draw_contents(dim);
+	draw_frame();
+	update_widget_positions();
+	draw_contents();
 
 	//process
 	dialog_process_info dp_info;
@@ -293,7 +294,7 @@ int dialog::show(const dimension_measurements &dim)
 	return result();
 }
 
-void dialog::draw_contents(const dimension_measurements & /*dim*/)
+void dialog::draw_contents()
 {
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
@@ -311,7 +312,7 @@ void dialog::draw_contents(const dimension_measurements & /*dim*/)
 	disp_.invalidate_all();
 }
 
-void dialog::draw_frame(const dimension_measurements &dim)
+void dialog::draw_frame()
 {
 	CVideo& screen = disp_.video();
 	std::vector<button*> frame_buttons;
@@ -320,46 +321,46 @@ void dialog::draw_frame(const dimension_measurements &dim)
 		frame_buttons.push_back(*b);
 	}
 	bg_restore_ = new surface_restorer;
-	draw_dialog(dim.frame.x, dim.frame.y, dim.frame.w, dim.frame.h,
+	draw_dialog(dim_.frame.x, dim_.frame.y, dim_.frame.w, dim_.frame.h,
 		screen, title_, &style_, &frame_buttons, bg_restore_,
 		help_button_.topic().empty() ? NULL : &help_button_);
 }
 
-void dialog::update_widget_positions(const dimension_measurements &dim)
+void dialog::update_widget_positions()
 {
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
 			preview_pane *pane = *i;
 			pane->join();
-			pane->set_location(dim.panes.find(pane)->second);
+			pane->set_location(dim_.panes.find(pane)->second);
 		}
 	}
 	if(text_widget_) {
 		text_widget_->join();
-		text_widget_->set_location(dim.textbox);
+		text_widget_->set_location(dim_.textbox);
 		if(text_widget_->get_label()) {
-			text_widget_->get_label()->set_location(dim.label_x, dim.label_y);
+			text_widget_->get_label()->set_location(dim_.label_x, dim_.label_y);
 		}
 	}
 	if(get_menu().height() > 0) {
 		menu_->join();
 		menu_->set_numeric_keypress_selection(text_widget_ == NULL);
-		menu_->set_width( dim.menu_width );
-		menu_->set_max_width( dim.menu_width ); //lock the menu width
-		menu_->set_location( dim.menu_x, dim.menu_y );
+		menu_->set_width( dim_.menu_width );
+		menu_->set_max_width( dim_.menu_width ); //lock the menu width
+		menu_->set_location( dim_.menu_x, dim_.menu_y );
 	}
 	if(image_) {
 		image_->join();
-		image_->set_location(dim.image_x, dim.image_y);
+		image_->set_location(dim_.image_x, dim_.image_y);
 		if(image_->caption()) {
-			image_->caption()->set_location(dim.caption_x, dim.caption_y);
+			image_->caption()->set_location(dim_.caption_x, dim_.caption_y);
 		}
 	}
 	button_iterator b;
 	for(b = extra_buttons_.begin(); b != extra_buttons_.end(); ++b) {
 		dialog_button *btn = *b;
 		btn->join();
-		std::pair<int,int> coords = dim.buttons.find(btn)->second;
+		std::pair<int,int> coords = dim_.buttons.find(btn)->second;
 		btn->set_location(coords.first, coords.second);
 	}
 	for(b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b) {
@@ -368,9 +369,8 @@ void dialog::update_widget_positions(const dimension_measurements &dim)
 	}
 	help_button_.join();
 
-	message_->set_location(dim.message);
+	message_->set_location(dim_.message);
 	message_->join();
-	last_dimension_= dim;
 }
 
 void dialog::refresh()
@@ -694,7 +694,8 @@ int dialog::process(dialog_process_info &info)
 	//except if there is options and only an OK button
 	if (new_right_button && !info.right_button) {
 		if( standard_buttons_.empty() ||
-		    (!point_in_rect(mousex,mousey,last_dimension_.frame) && !(type_ == OK_ONLY && use_menu)) ) 
+		    (!point_in_rect(mousex,mousey,dim_.frame) && !(type_ == OK_ONLY && use_menu)) ) 
+			//FIXME: should check dim_.outer_frame instead of dim_.frame
 			return CLOSE_DIALOG;
 	}
 
