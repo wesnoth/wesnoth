@@ -647,8 +647,8 @@ int dialog::process(dialog_process_info &info)
 		if(type_ == MESSAGE) {
 			//special return value for escaping game event messages
 			return (ESCAPE_DIALOG);
-		} else if(type_ != OK_ONLY || !use_menu) {
-			return ((type_ == OK_ONLY && use_menu) ? 1 : CLOSE_DIALOG);
+		} else if(!(type_ == OK_ONLY && use_menu)) {
+			return (CLOSE_DIALOG);
 		}
 	}
 
@@ -698,7 +698,7 @@ int dialog::process(dialog_process_info &info)
 			)
 		) || (
 			new_right_button && !info.right_button &&
-			(type_ != OK_ONLY || !use_menu) &&
+			!(type_ == OK_ONLY && use_menu) &&
 			!point_in_rect(mousex,mousey,last_dimension_.frame) &&
 			!point_in_rect(mousex,mousey,last_dimension_.textbox) &&
 			!point_in_rect(mousex,mousey,last_dimension_.message)
