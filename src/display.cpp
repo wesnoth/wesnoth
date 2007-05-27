@@ -1899,7 +1899,7 @@ surface display::get_flag(const t_translation::t_letter& terrain, const gamemap:
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) &&
-		  (!fogged(loc) || !shrouded(loc) && !teams_[currentTeam_].is_enemy(i+1)))
+		  (!fogged(loc) || !teams_[currentTeam_].is_enemy(i+1)))
 		{
 			flags_[i].update_last_draw_time();
 			return image::get_image(flags_[i].get_current_frame());
