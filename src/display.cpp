@@ -1422,7 +1422,7 @@ void display::draw_terrain_on_tile(const gamemap::location& loc, image::TYPE ima
 
 	clip_rect_setter set_clip_rect(dst,clip_rect);
 
-	const std::vector<surface>& images = get_terrain_images(loc.x,loc.y,image_type,type);
+	const std::vector<surface>& images = get_terrain_images(loc,image_type,type);
 
 	std::vector<surface>::const_iterator itor;
 	for(itor = images.begin(); itor != images.end(); ++itor) {
@@ -1849,13 +1849,13 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	return res;
 }
 
-std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
+std::vector<surface> display::get_terrain_images(const gamemap::location &loc, 
+		image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
 {
 	std::vector<surface> res;
-	gamemap::location loc(x,y);
 
 	if(terrain_type == ADJACENT_FOGSHROUD) {
-		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(gamemap::location(x,y));
+		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(loc);
 
 		if(!fog_shroud.empty()) {
 			for(std::vector<std::string>::const_iterator it = fog_shroud.begin(); it != fog_shroud.end(); ++it) {

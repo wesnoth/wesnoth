@@ -432,8 +432,9 @@ private:
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos);
 
-	// std::vector<surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
-	std::vector<surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+	std::vector<surface> get_terrain_images(const gamemap::location &loc, 
+		image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
 	//this surface must be freed by the caller
