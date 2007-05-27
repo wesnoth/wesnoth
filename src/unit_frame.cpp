@@ -12,8 +12,10 @@
 */
 
 
-#include "display.hpp"
 #include "global.hpp"
+//note: global.hpp must be first!
+
+#include "display.hpp"
 #define UNIT_FRAME_H_PART2
 #include "unit_frame.hpp"
 
