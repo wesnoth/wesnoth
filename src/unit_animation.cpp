@@ -277,7 +277,6 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 	}
 	std::vector<config>::const_iterator myitor;
 	for(myitor = primary_filter.begin(); myitor != primary_filter.end(); myitor++) {
-		myitor->debug();
 		if(!attack->matches_filter(*myitor)) return -2;
 		result++;
 	}
@@ -286,7 +285,6 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 			return -2;
 	}
 	for(myitor = secondary_filter.begin(); myitor != secondary_filter.end(); myitor++) {
-		myitor->debug();
 		if(!secondary_attack->matches_filter(*myitor)) return -2;
 		result++;
 	}
