@@ -2358,17 +2358,6 @@ void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 	debugHighlights_[loc] += amount;
 }
 
-//NOTE : Hex outside the map are displayed as shrouded.
-//So they are updated and the shroud-transition soften the edge of the map
-bool display::shrouded(const gamemap::location& loc) const
-{
-	if (loc.x >= -1 && loc.y >= -1 && loc.x <= map_.x() && loc.y <= map_.y()) {
-		return team_valid() ? teams_[currentTeam_].shrouded(loc.x, loc.y) : false;
-	} else {
-		return true;
-	}
-}
-
 gui::button* display::find_button(const std::string& id)
 {
 	for (size_t i = 0; i < buttons_.size(); ++i) {

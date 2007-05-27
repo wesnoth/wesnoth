@@ -346,7 +346,8 @@ public:
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	//function which returns true if location (x,y) is covered in shroud.
-	bool shrouded(const gamemap::location& loc) const;
+	bool shrouded(const gamemap::location& loc) const
+		{ return team_valid() ? teams_[currentTeam_].shrouded(loc.x, loc.y) : false; }
 
 	bool fogged(const gamemap::location& loc) const
 		{ return team_valid() ? teams_[currentTeam_].fogged(loc.x, loc.y) : false; }
