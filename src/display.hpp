@@ -71,7 +71,6 @@ public:
 	//the map. Used for special effects like flashes.
 	void adjust_colours(int r, int g, int b);
 
-
 	//function which scrolls the display by xmov,ymov. Invalidation and
 	//redrawing will be scheduled.
 	void scroll(int xmov, int ymov);
@@ -231,7 +230,7 @@ private:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
 	//composes and draws the terrains on a tile
-	void draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
+	void draw_terrain_on_tile(const gamemap::location& loc, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
 
 

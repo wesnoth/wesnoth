@@ -1406,10 +1406,8 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	}
 }
 
-void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type)
+void display::draw_terrain_on_tile(const gamemap::location& loc, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type)
 {
-
-	const gamemap::location loc(x,y);
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
 
@@ -1424,7 +1422,7 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 
 	clip_rect_setter set_clip_rect(dst,clip_rect);
 
-	const std::vector<surface>& images = get_terrain_images(x,y,image_type,type);
+	const std::vector<surface>& images = get_terrain_images(loc.x,loc.y,image_type,type);
 
 	std::vector<surface>::const_iterator itor;
 	for(itor = images.begin(); itor != images.end(); ++itor) {
@@ -1479,7 +1477,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	}
 
 	if(!is_shrouded) {
-		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_BACKGROUND);
+		draw_terrain_on_tile(loc,image_type,ADJACENT_BACKGROUND);
 
 		surface flag(get_flag(terrain,loc));
 		if(flag != NULL) {
@@ -1518,7 +1516,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	draw_footstep(loc,xpos,ypos);
 
 	if(!is_shrouded) {
-		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_FOREGROUND);
+		draw_terrain_on_tile(loc,image_type,ADJACENT_FOREGROUND);
 	}
 
 	if(fogged(loc) && shrouded(loc) == false) {
@@ -1530,7 +1528,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	}
 
 	if(!shrouded(loc)) {
-		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_FOGSHROUD);
+		draw_terrain_on_tile(loc,image_type,ADJACENT_FOGSHROUD);
 	}
 
 	//draw the time-of-day mask on top of the hex
