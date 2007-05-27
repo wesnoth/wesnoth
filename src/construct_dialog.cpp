@@ -683,33 +683,26 @@ int dialog::process(dialog_process_info &info)
 	events::raise_process_event();
 	events::raise_draw_event();
 
-	const SDL_Rect menu_rect = menu_->location();
-	if(
-		(
-			//clicking outside of a drop-down or context-menu should close it
-			standard_buttons_.empty() &&
-			(
-				(
-					new_left_button && !info.left_button &&
-					!point_in_rect(mousex,mousey,menu_rect)
-				) || (
-					new_right_button && !info.right_button
-				)
-			)
-		) || (
-			new_right_button && !info.right_button &&
-			!(type_ == OK_ONLY && use_menu) &&
-			!point_in_rect(mousex,mousey,last_dimension_.frame) &&
-			!point_in_rect(mousex,mousey,last_dimension_.textbox) &&
-			!point_in_rect(mousex,mousey,last_dimension_.message)
-		) || (
-			//any keypress should close a dialog if it has one standard button (or less)
-			//and no menu options.
-			standard_buttons_.size() < 2 && new_key_down && !info.key_down && !use_menu
-		)
-	  )
-	{
-		return (CLOSE_DIALOG);
+	//left-clicking outside of a drop-down or context-menu should close it
+	if (new_left_button && !info.left_button) {
+		if (standard_buttons_.empty() && !point_in_rect(mousex,mousey, menu_->location()))
+			return CLOSE_DIALOG;
+	}
+
+	//right-clicking on a drop-down or context-menu
+	//or outside of a dialog should close it
+	//except if there is options and only an OK button
+	if (new_right_button && !info.right_button) {
+		if( standard_buttons_.empty() ||
+		    (!point_in_rect(mousex,mousey,last_dimension_.frame) && !(type_ == OK_ONLY && use_menu)) ) 
+			return CLOSE_DIALOG;
+	}
+
+	//any keypress should close a dialog if it has one standard button (or less)
+	//and no menu options.
+	if (new_key_down && !info.key_down) {
+		if (standard_buttons_.size() < 2 && !use_menu)
+			return CLOSE_DIALOG;
 	}
 
 	info.left_button = new_left_button;
