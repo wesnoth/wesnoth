@@ -1503,8 +1503,6 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 {
 	state_ =  STATE_DEFENDING;
 
-	delete anim_;
-
 	fighting_animation::hit_type hit_type;
 	if(damage >= hitpoints()) {
 		hit_type = fighting_animation::KILL;
@@ -1540,9 +1538,8 @@ const unit_animation & unit::set_attacking(const display &disp,const gamemap::lo
 	}else {
 		hit_type = fighting_animation::MISS;
 	}
-	start_animation(disp,loc,type.animation(disp,loc,this,hit_type,secondary_attack,swing_num,damage),true);
+	return *start_animation(disp,loc,type.animation(disp,loc,this,hit_type,secondary_attack,swing_num,damage),true,true);
 
-	return ((attack_animation*)anim_)->get_missile_anim();
 }
 void unit::set_leading(const display &disp,const gamemap::location& loc)
 {
@@ -1615,19 +1612,27 @@ void unit::set_idling(const display &disp,const gamemap::location& loc)
 	start_animation(disp,loc,idling_animation(disp,loc),true);
 }
 
-void unit::start_animation(const display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars)
+const unit_animation* unit::start_animation(const display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool is_attack_anim)
 {
 	draw_bars_ =  with_bars;
 	if(anim_) delete anim_;
-	if(animation) {
+	if(animation && !is_attack_anim) {
 		anim_ = new unit_animation(*animation);
+	}else if(animation && is_attack_anim) {
+		//TODO this, the is_attack_anim param and the return value are ugly hacks that need to be taken care of eventually
+		anim_ = new attack_animation(*(const attack_animation*)animation);
 	} else {
 		set_standing(disp,loc,with_bars);
-		return;
+		return NULL;
 	}
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	next_idling_= get_current_animation_tick() +10000 +rand()%10000;
+	if(is_attack_anim) {
+		return &((attack_animation*)anim_)->get_missile_anim();
+	} else {
+		return NULL;
+	}
 }
 
 void unit::restart_animation(const display& disp,int start_time) {

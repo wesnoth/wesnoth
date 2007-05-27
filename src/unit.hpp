@@ -238,8 +238,7 @@ class unit
 		STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
 		STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
 		STATE_RECRUITED, STATE_HEALED, STATE_POISONED, STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
-		//STATE state() const { return (state_ == STATE_IDLING) ? STATE_STANDING : state_; }
-		void start_animation(const display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars);
+		const unit_animation * start_animation(const display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool is_attack_anim =false);
 
 		//the name of the file to display (used in menus
 		const std::string& absolute_image() const { return cfg_["image"]; }
