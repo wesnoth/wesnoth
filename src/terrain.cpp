@@ -82,12 +82,8 @@ terrain_type::terrain_type(const config& cfg)
 #endif
 	light_modification_ = atoi(cfg["light"].c_str());
 
-	if (cfg["heals"] == "true") {
-		lg::wml_error << "terrain " << id() << " uses heals=true which is deprecated (use number), support will be removed in version 1.3.4\n";
-		heals_ = 8;
-	} else {
-		heals_ = lexical_cast_default<int>(cfg["heals"], 0);
-	}
+	heals_ = lexical_cast_default<int>(cfg["heals"], 0);
+
 	village_ = utils::string_bool(cfg["gives_income"]);
 	castle_ = utils::string_bool(cfg["recruit_onto"]);
 	keep_ = utils::string_bool(cfg["recruit_from"]);
