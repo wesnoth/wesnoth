@@ -71,11 +71,13 @@ public:
 	//the map. Used for special effects like flashes.
 	void adjust_colours(int r, int g, int b);
 
-	//function which scrolls the display by xmov,ymov. Invalidation and
+	//function which scrolls the display by xmov,ymov pixels. Invalidation and
 	//redrawing will be scheduled.
 	void scroll(int xmov, int ymov);
 
 	// Zooms the display by the specified amount. Negative values zoom out.
+	// Note the amount should be a multiple of four otherwise the images might
+	// start to look odd. (hex_width() gets rounding errors)
 	void set_zoom(int amount);
 
 	// sets the zoom amount to the default.
@@ -97,13 +99,13 @@ public:
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
 
-	//function which will scroll such that location x,y is on-screen.
-	// WARP jumps to x,y; SCROLL uses scroll speed;
+	//function which will scroll such that location loc is on-screen.
+	// WARP jumps to loc; SCROLL uses scroll speed;
 	// ONSCREEN only scrolls if x,y is offscreen
 	void scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
 
-	//function which will scroll such that location x1,y1 is on-screen.
-	//it will also try to make it such that x2,y2 is on-screen but this
+	//function which will scroll such that location loc is on-screen.
+	//it will also try to make it such that loc is on-screen but this
 	//is not guaranteed.
 	void scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
