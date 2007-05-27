@@ -241,7 +241,7 @@ private:
 	 *
 	 * @param num 		number of enemies which can reach the location
 	 * 					If num == 1 nothing is drawn
-	 * @paream xloc		the on screen x position in pixels
+	 * @param xloc		the on screen x position in pixels
 	 * @param yloc		the on screen y position in pixels
 	 */
 	void draw_enemies_reach(const unsigned int num, const int xloc, const int yloc);
