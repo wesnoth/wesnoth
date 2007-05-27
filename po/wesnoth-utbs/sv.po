@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-19 10:48+0200\n"
-"PO-Revision-Date: 2007-02-11 22:23+0100\n"
+"PO-Revision-Date: 2007-05-27 20:20+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -39,7 +39,7 @@ msgstr "Ökenväktare"
 
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:20
 msgid "(Nightmare)"
-msgstr ""
+msgstr "(Mardröm)"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:4
@@ -48,7 +48,6 @@ msgid "Desert Prowler"
 msgstr "Ökenstrykare"
 
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
 "ruins of fallen empires. Lead your people out of the desert on an epic "
@@ -62,7 +61,13 @@ msgid ""
 msgstr ""
 "I en avlägsen framtid kämpar en liten grupp alver för sin överlevnad bland "
 "ruinerna av fallna stater. Led ditt folk på en episk resa ut ur öknen i "
-"jakten på ett nytt hem."
+"jakten på ett nytt hem.\n"
+"\n"
+"(Expertnivå, 16 scenarier.)\n"
+"\n"
+"Kampanjen är under ombyggnad. Vissa scenarier kan skilja sig från tidigare "
+"versioner, vara obalanserade eller inte gå att spela. Feedback i forumet "
+"uppskattas mycket."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:8
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:9
@@ -141,8 +146,8 @@ msgstr ""
 "fundera över den särskilt länge, för jag blev väckt av ljudet av "
 "öronbedövande smällar, trä som trasades sönder och bybor som skrek. Det "
 "regnade flammande stenar från himlen den natten, stenblock större än du kan "
-"föreställa dig. De bombarderade landskapet som åskviggar, och satte allt "
-"derörde vid i brand. De krossade hus, väggar och alver. Det fanns inte "
+"föreställa dig. De bombarderade landskapet som åskviggar, och satte allt de "
+"rörde vid i brand. De krossade hus, väggar och alver. Det fanns inte "
 "någonstans att gömma sig, ingenstans att ta skydd. Jag var så rädd. Jag "
 "trodde att om jag försökte fly, så skulle jag bli krossad, så jag gömde mig "
 "och bad till Eloh. Jag har aldrig bett så intensivt som den natten. Jag "
@@ -506,9 +511,8 @@ msgid "Maybe they're hiding in the stables. Let's go check."
 msgstr "Kanske har de tagit skydd i stallen. Låt oss gå och se efter."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:730
-#, fuzzy
 msgid "Hey Naru, the rocks have stopped falling. You can come out now!"
-msgstr "Hej Nisa, det faller inte några stenar längre. Du kan komma ut nu!"
+msgstr "Hej, Naru, det faller inte några stenar längre. Du kan komma ut nu!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:749
@@ -1098,7 +1102,6 @@ msgstr ""
 "innan sanden kom."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:272
-#, fuzzy
 msgid ""
 "I've seen the ancient remains of stone castles and markers in the sands. The "
 "paths of the ancients may serve us yet again. If we follow the paths from "
@@ -1109,7 +1112,7 @@ msgstr ""
 "Jag har sett uråldriga lämningar av stenborgar och vägmärken i sanden. Den "
 "urgamla vägen kan nog än en gång komma till nytta. Om vi följer leden från "
 "oas till oas, så kan vi nog överleva hettan och törsten i öknen. Men det "
-"finns värre faror i öknen än törst."
+"finns värre faror i öknen än törst. Vi måste vara försiktiga."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:277
 msgid ""
@@ -1126,7 +1129,6 @@ msgstr ""
 "att plågas av dagens hetta och nattens köld, och resan kommer att bli svår."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:283
-#, fuzzy
 msgid ""
 "During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the end "
 "of each your turns, every unit in a sand, road, rubble or sand dune hex will "
@@ -1135,14 +1137,11 @@ msgid ""
 "regain full attack strenght."
 msgstr ""
 "Under dagtid (gryning, morgon, middag, eftermiddag och skymning) så kommer "
-"trupper som befinner sig på sand, väg, ruiner eller sanddyner att lida "
-"$temp_damage HP i skada varje drag. Uttorkning kan skada dina trupper "
-"allvarligt, men inte mer än att en enda hälsopoäng återstår. Trupper som "
-"befinner sig i en oas (grunt vatten) kommer dock att återfå 8 hälspoäng per "
-"drag."
+"trupper som befinner sig på sand, väg, ruiner eller sanddyner att ha "
+"försvagade attacker. Magiska attacker påverkas inte av detta. Trupper som "
+"befinner sig i en oas (grunt vatten) har full attackstyrka."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:290
-#, fuzzy
 msgid ""
 "Kaleh, be careful you don't recruit too many guards to go with us. I doubt "
 "we're going to find any other villages out in the sands, so the income that "
@@ -1181,21 +1180,23 @@ msgstr "Denna trupp tar inte någon skada av att vara ute i öknen."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:411
 msgid "Wait. I think I spotted something ahead of us..."
-msgstr ""
+msgstr "Vänta. Jag tror jag såg något där framme..."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:415
 msgid "What? I don't see a thing."
-msgstr ""
+msgstr "Vadå? Jag ser ingenting."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:419
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
-msgstr ""
+msgstr "Ser du de där lysande fläckarna? Skorpioner. Stora. Ett helt näste."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:426
 msgid ""
 "Do you want us to fight? We can still avoid them, but they are between us "
 "and the next oasis."
 msgstr ""
+"Skall vi slåss? Vi kan fortfarande undvika dem, men de är mellan oss och "
+"nästa oas."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:443
 msgid "Scorpions! We must have stumbled across a nest of them."
@@ -1224,14 +1225,12 @@ msgid ""
 msgstr "Bäraren av denna ring tar inte skada av hettan under dagen i öknen."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:523
-#, fuzzy
 msgid ""
 "Look, an oasis! Its refreshing water will allow our people to regain "
 "strenght and rest safely on the grass during the heat of the day."
 msgstr ""
-"Titta, en oas! Det uppfriskande vattnet kommer att bota alla våra skadade om "
-"de badar i det, och de andra kan vila ut i gröngräset runtom i hettan under "
-"dagen."
+"Titta, en oas! Det uppfriskande vattnet låter vårt folk återfå full styrka "
+"och de kan vila ut i gröngräset i hettan under dagen."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:554
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:556
@@ -1241,7 +1240,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:574
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:583
 msgid "Hunting Ogre"
-msgstr ""
+msgstr "Jagande rese"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:633
 msgid "Ogre ambush!"
@@ -1260,48 +1259,52 @@ msgstr ""
 "de är, desto större blir deras fall."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:671
-#, fuzzy
 msgid ""
 "That's the last of them. This looks like a hunting party, they must have a "
 "camp around here somewhere."
 msgstr ""
-"Det var den siste. Det ser ut som ett rövarband... De måste ha ett läger här "
-"i närheten."
+"Det var den siste. Det ser ut som en grupp jägare... De måste ha ett läger "
+"här i närheten."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:685
 msgid ""
 "Hey! Look there, they dropped something... A stone bottle, sealed. I wonder "
 "what's inside..."
 msgstr ""
+"Hallå! Titta där, de tappade någonting... En försluten stenflaska. Jag "
+"undrar vad det är i den."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:698
-#, fuzzy
 msgid "Nym! No! don't open..."
-msgstr "Nej, gör det inte..."
+msgstr "Nym! Nej, gör det inte..."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:708
 msgid ""
 "Too late. And it's just sand inside. Not worth... Whoa! What's happening?!"
 msgstr ""
+"För sent. Det är bara sand inuti. Det är inte värt... Oj! Vad är det som "
+"händer?!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:714
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:4
 msgid "Dust Devil"
-msgstr ""
+msgstr "Sanddemon"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:727
 msgid "It's a dust devil, but I have never seen one so small before."
-msgstr ""
+msgstr "Det är en sanddemon, men jag har aldrig sett en så liten."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:758
 msgid "It seems to like you, looks like you just got yourself a pet."
-msgstr ""
+msgstr "Den verkar tycka om dig. Det verkar som att du just fått ett husdjur."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:763
 msgid ""
 "No buts, girl, I told you not to open it. Let's go; I'd really like to get "
 "to an oasis soon."
 msgstr ""
+"Inga men, flicka. Jag sa till dig att inte öppna den. Nu fortsätter vi, jag "
+"skulle vilja nå fram till en oas snart."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:803
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:804
@@ -1316,16 +1319,16 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:826
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:827
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:828
-#, fuzzy
 msgid "Black Hand Bandit"
 msgstr "Svarta handen-skurk"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:843
-#, fuzzy
 msgid ""
 "And I tought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
-msgstr "Det här är vår oas, och vi skall vattna den med ert blod!"
+msgstr ""
+"Och jag som trodde att detta skulle vara ännu ett tråkigt vaktpass. Du där! "
+"Alv! Det här är vår oas, och vi skall vattna den med ert blod!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:848
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:873
@@ -1458,18 +1461,19 @@ msgid ""
 "The most hated living in my castle! To me! To me stray souls of the deserts! "
 "Let's cleanse this pollution!"
 msgstr ""
+"De mest hatade i mitt slott! Till mig! Till mig alla öknens vandrande "
+"själar! Nu rensar vi ut den här ohyran!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1206
-#, fuzzy
 msgid ""
 "Elf with a bow, I remember you. You thought me defeated, but I am back even "
 "more powerful than before. Death reigns eternal, your scorched bones and "
 "lifeless body will join my host."
 msgstr ""
-"Otrogna skall inte längre förorena min borg! Men vänta nu, jag kommer ihåg "
-"er alver. Ni trodde att jag var besegrad, men jag är tillbaka nu, och jag är "
-"ännu mäktigare än förut. Döden är den evige härskaren, och snart kommer era "
-"svedda ben och livlösa kroppar att följa en ny herre!"
+"Du alv med båge, jag kommer ihåg dig. Ni trodde att jag var besegrad, men "
+"jag är tillbaka nu, och jag är ännu mäktigare än förut. Döden är den evige "
+"härskaren, och snart kommer era svedda ben och livlösa kroppar införlivas i "
+"min här."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1211
 msgid ""
@@ -1480,13 +1484,11 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1223
 msgid "Nooo... (fades)"
-msgstr ""
+msgstr "Neeeej..."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1232
-#, fuzzy
 msgid "Searching his castle, we found a chest filled with gold."
-msgstr ""
-"När vi letade igenom hans borg så fann vi en kista med $goldreward guld."
+msgstr "När vi letade igenom hans borg så fann vi en kista med guld."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1268
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1269
@@ -1512,7 +1514,6 @@ msgstr ""
 "det strid de skall få!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1322
-#, fuzzy
 msgid ""
 "That's the last of those stinking beasts. They should trouble us no more."
 msgstr ""
@@ -1538,15 +1539,10 @@ msgstr ""
 "och dö."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1382
-#, fuzzy
 msgid "Bandits. If they get in our way, they're going to be sorry."
-msgstr ""
-"Så, de sätter till och med upp skyltar nu för tiden? Jag bryr mig inte om "
-"vilka de där typerna är, men om de står i vår väg, så kommer de att få ångra "
-"det."
+msgstr "Banditer. Om de står i vår väg, så kommer de att få ångra det."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1387
-#, fuzzy
 msgid ""
 "There's no way we can get all our people safely across the desert with "
 "outlaws harassing us. We must defeat them before we can continue."
@@ -1643,15 +1639,14 @@ msgstr ""
 "vår väg igen. Om jag ser igen så kommer jag inte att ha förbarmande med er."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1621
-#, fuzzy
 msgid ""
 "It's Holy Water. When anointed on a weapon it makes it deadly to magical "
 "creatures. Vials such as these are rare and valuable. We should choose "
 "carefully who will use it."
 msgstr ""
 "Det är vigvatten. Om ett vapen helgas med detta så blir det ett dödligt "
-"vapen mot de vandöda. Det finns inte många sådana flaskor. Vi måste noga "
-"välja vem som skall använda den."
+"vapen mot magiska varelser. Det finns inte många sådana flaskor. Vi måste "
+"noga välja vem som skall använda den."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1660
 msgid ""
@@ -1760,7 +1755,7 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1923
 msgid "Lost Soul"
-msgstr ""
+msgstr "Förlorad själ"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1967
 msgid ""
@@ -4400,7 +4395,7 @@ msgid ""
 msgstr ""
 "Den här grottan är het och kvav, jag kan redan känna att min rustning värms "
 "upp. Om vi dröjer för länge här kommer vi att rostas levande. Jag vill inte "
-"ens tänka'på vad som skulle hända om vi försökte gå över lavan. Å andra "
+"ens tänka på vad som skulle hända om vi försökte gå över lavan. Å andra "
 "sidan lyser den upp grottan rätt fint. Jag är dock tacksam för att trollen "
 "byggt en bro över den."
 
@@ -7203,7 +7198,6 @@ msgid "Oh Eloh save us, it's....it's an elf."
 msgstr "Eloh bevare oss, det är.... Det är en alv."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3756
-#, fuzzy
 msgid ""
 "Keratur, son of Tanuil. What in Eloh's name are you doing here? How could "
 "you do this? We thought you were dead."
@@ -11279,7 +11273,6 @@ msgstr ""
 "till så hårt vi förmådde."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Fish.cfg:923
-#, fuzzy
 msgid ""
 "Driven on by their dark priests and by their fear of Yanqui's wrath, the "
 "Wesmere elves fought stubbornly against our superior numbers. The fighting "
@@ -11297,7 +11290,7 @@ msgstr ""
 "den en gång vackra skogen dränktes i blod, och kroppar besudlade de soliga "
 "gläntorna. Slaget nådde sin kulmen när Yanqui uppenbarade sig i sin sanna "
 "form över skogen. Han flög och dränkte såväl anfallare som försvarare i eld "
-"och gladdes åt döden och förstörelsen. Vi hade inte kraft nog att bekämpa "
+"och gladdes åt döden och förödelsen. Vi hade inte kraft nog att bekämpa "
 "någon med hans styrka och vi åkallade Eloh i vår stund av nöd. Hon "
 "uppenbarade sig som ett starkt ljussken och striden böljade fram och åter "
 "över den brinnande skogen. Till slut högg hon huvudet av honom och fällde "
@@ -13981,9 +13974,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:26
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:34
-#, fuzzy
 msgid "arcane"
-msgstr "Narn"
+msgstr "ockult"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:33
@@ -14025,16 +14017,18 @@ msgid ""
 "A swirl of dust and desert sand, quick as a wind, impossible to spot when "
 "resting and as dangerous as sand storm when riled."
 msgstr ""
+"En virvel av sand och jord, snabb som vinden, omöjlig att se när den står "
+"still och farlig som en sandstorm när den väcks."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:28
 msgid "twister"
-msgstr ""
+msgstr "virvel"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:64
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:65
 msgid "sand storm"
-msgstr ""
+msgstr "sandstorm"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Explorer.cfg:4
 msgid "Dwarvish Explorer"
@@ -14500,7 +14494,7 @@ msgstr "Nagavakt"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 msgid "Necromancer"
-msgstr ""
+msgstr "Nekromantiker"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:22
 msgid ""
@@ -14519,11 +14513,26 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"En av de högsta cirklarna bland svart magi är nekromantins konst, den "
+"avskyvärda förmågan att väcka de döda till ett falskt liv. Upptäckten av "
+"denna konst hade fruktansvärda följder och medförde omedelbart "
+"mänsklighetens fördömande av svart magi, för med denna fick fruktan helt nya "
+"medel.\n"
+"\n"
+"Denna konst är det första steget mot att undfly dödens käftar. Det är den "
+"högsta makt en dödens magiker kan uppnå utan att förlora greppet om sin egen "
+"mänsklighet, men den bleknar i jämförelse med häxmästarens dödliga kraft. "
+"Deras dödliga kroppar blir också starkare av deras magi, i motsats till en "
+"häxmästares bräckliga uppenbarelse.\n"
+"\n"
+"Anmärkning: nekromantikerns distansattack är magisk och träffar ofta sitt "
+"mål. Nekromantikerns stav har pestens märke, och en fiende som träffas av "
+"denna kommer att återuppstå som vandöd."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:50
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
 msgid "chill wave"
-msgstr ""
+msgstr "köldvåg"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:34
 msgid ""
@@ -14670,9 +14679,8 @@ msgid "Eloh protect us, I have fallen."
 msgstr "Eloh, beskydda oss. Jag har fallit."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:73
-#, fuzzy
 msgid "Aaaargh! Curse you!"
-msgstr "Aaaargh! Färskt kött!"
+msgstr "Aaaargh! Förbannelse över dig!"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:95
 msgid "This can't be the end, I have too much left to see."
@@ -14802,118 +14810,3 @@ msgstr "Det långa mörkret (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:184
 msgid "The Long Dark (4)"
 msgstr "Det långa mörkret (4)"
-
-#~ msgid "(Very Hard)"
-#~ msgstr "(Mycket svårt)"
-
-#~ msgid "No!!!!"
-#~ msgstr "Nej!!!"
-
-#~ msgid ""
-#~ "I'm not sure who these guys are, but they don't sound friendly. "
-#~ "Nonetheless, if they get in our way, they're going to be sorry."
-#~ msgstr ""
-#~ "Jag vet inte vilka de där typerna är, men de verkar inte särskilt "
-#~ "vänliga. I vilket fall som helst, om de står i vår väg, så kommer de att "
-#~ "få ångra det."
-
-#~ msgid ""
-#~ "Did you see that? I think I just saw someone disappear behind that dune "
-#~ "over there. I think we're being watched. I suspect there are more enemies "
-#~ "lurking in these dunes than we originally thought."
-#~ msgstr ""
-#~ "Såg du det där? Jag tror att jag just såg någon försvinna bakom sanddynen "
-#~ "där borta. Jag tror att vi är iakttagna. Jag misstänker att det finns "
-#~ "fler fiender som lurar här än vi först trodde."
-
-#~ msgid ""
-#~ "There's no way we can get all our people safely across the desert if we "
-#~ "are under constant attack. Whoever they are, we must eliminate this "
-#~ "threat before we can continue."
-#~ msgstr ""
-#~ "Inte på något sätt kan alla av vårt folk ta sig genom öknen i säkerhet om "
-#~ "vi står under attack hela tiden. Vilka de än är så måste vi besegra dem "
-#~ "innan vi fortsätter."
-
-#~ msgid "Roaming Undead"
-#~ msgstr "Kringströvande vandöd"
-
-#, fuzzy
-#~ msgid "Hey {FOUND}, the rocks have stopped falling. You can come out now!"
-#~ msgstr ""
-#~ "Hördu Naru, det faller inte några stenar längre. Du kan komma ut nu!"
-
-#~ msgid ""
-#~ "The other shamans and I can provide minor healing to ease the exhaustion "
-#~ "and dehydration of the desert journey. But oases like the one next to us "
-#~ "are the key to our survival; their fresh water will heal our people much "
-#~ "faster and better than any of our powers."
-#~ msgstr ""
-#~ "De andra schamanerna och jag kan lindra utmattningen och uttorkningen "
-#~ "under ökenresan något. Men oaser, som den här bredvid oss, är livsviktiga "
-#~ "om vi skall kunna överleva. Deras färskvatten kan återställa vårt folks "
-#~ "krafter mycket snabbare och effektivare än vi kan."
-
-#~ msgid "We've hit a nest of scorpions!"
-#~ msgstr "Vi har stött på ett skorpionnäste!"
-
-#~ msgid "Ogre Hunter"
-#~ msgstr "Jägarrese"
-
-#~ msgid "Ogre Chief"
-#~ msgstr "Resehövding"
-
-#~ msgid "Ambush! Ogres!"
-#~ msgstr "Bakhåll! Resar!"
-
-#~ msgid "Black Lieutenant"
-#~ msgstr "Mörkerlöjtnant"
-
-#~ msgid "Go-hag"
-#~ msgstr "Go-hag"
-
-#~ msgid "tentacle"
-#~ msgstr "tentakel"
-
-#~ msgid "ink"
-#~ msgstr "bläck"
-
-#~ msgid "Oasis"
-#~ msgstr "Oas"
-
-#~ msgid "Lrea"
-#~ msgstr "Lrea"
-
-#~ msgid "Danu"
-#~ msgstr "Danu"
-
-#~ msgid "Hamm"
-#~ msgstr "Hamm"
-
-#~ msgid "Frea"
-#~ msgstr "Frea"
-
-#~ msgid "holy"
-#~ msgstr "helig"
-
-#~ msgid ""
-#~ "Skilled in commanding other elves, Desert Captains provide a bonus to all "
-#~ "level 1 units on adjacent hexes. Desert Captains prefer engaging the "
-#~ "enemy in melee combat, but are trained in archery as well.\n"
-#~ "\n"
-#~ "Special Notes: the leadership of a Captain enables friendly units next to "
-#~ "it to deal more damage in combat, though this only applies to units of "
-#~ "lower level."
-#~ msgstr ""
-#~ "Ökenkaptenerna är skickliga på att leda sina soldater, och ingjuter mod i "
-#~ "alla intillstående nivå 1-trupper. Ökenkaptenerna föredrar närstrid, men "
-#~ "de är även tränade i bågskytte. \n"
-#~ "\n"
-#~ "Anmärkning: under en kaptens ledarskap åsamkar allierade intillstående "
-#~ "trupper av lägre rang sina motståndare mer skada."
-
-#~ msgid "Troll Zombie"
-#~ msgstr "Trollzombie"
-
-#~ msgid "7"
-#~ msgstr "7"
