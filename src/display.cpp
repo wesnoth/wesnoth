@@ -1582,8 +1582,10 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 			SDL_BlitSurface(img,NULL,dst,&dstrect);
 		}
 	}
+
 	//find if this tile should be darkened or bightened (reach of a unit)
-	if (!reach_map_.empty()) {
+	//only for tiles on the map, might also might not be shown on any _off^* terrain
+	if (!reach_map_.empty() && map_.on_board(loc)) {
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach == reach_map_.end()) {
 			const surface img(image::get_image("terrain/darken.png",image::UNMASKED,image::NO_ADJUST_COLOUR));
