@@ -133,6 +133,7 @@ public:
 		int menu_x, menu_y;
 		int image_x, image_y, caption_x, caption_y;
 		std::map<dialog_button *const, std::pair<int,int> > buttons;
+		frame::dimension_measurements frame;
 	};
 private:
 	typedef std::vector<preview_pane *>::iterator pp_iterator;
@@ -241,7 +242,7 @@ private:
 	display &disp_;
 	dialog_image *image_;
 	const std::string title_, style_;
-	label* message_;
+	label *title_widget_, *message_;
 	const DIALOG_TYPE type_;
 	mutable gui::menu *menu_;
 	std::vector<preview_pane*> preview_panes_;

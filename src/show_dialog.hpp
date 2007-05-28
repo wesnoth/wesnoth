@@ -54,13 +54,50 @@ private:
 	bool reset_to;
 };
 
-void draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style=NULL, surface_restorer* restorer=NULL);
+class frame {
+public:
+	//Static members
+	static const std::string default_style;
+	static const int title_border_w, title_border_h;
 
-void draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std::string& dialog_style);
+	struct dimension_measurements {
+		dimension_measurements();
+		SDL_Rect interior, exterior, title, button_row;
+	};
+	frame(CVideo &video, const std::string& title="",
+                 const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
+                 surface_restorer* restorer=NULL, button* help_button=NULL);
+	~frame();
+
+	dimension_measurements layout(int x, int y, int w, int h);
+	void draw();
+
+	//called by draw
+	void draw_border();
+	void draw_background();
+
+	//also called by layout with null param
+	SDL_Rect draw_title(CVideo *video);
+
+private:
+	std::string title_;
+	CVideo &video_;
+	const std::string *dialog_style_;
+	std::vector<button*>* buttons_;
+	button* help_button_;
+	surface_restorer* restorer_;
+	dimension_measurements dim_;
+	surface top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
+	bool have_border_;
+};
+
+//frame_measurements draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style=NULL, surface_restorer* restorer=NULL);
+
+//SDL_Rect draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std::string& dialog_style);
 
 //given the location of a dialog, will draw its title.
 //Returns the area the title takes up
-SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text);
+//SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text, label** label_widget);
 
 //function to draw a dialog on the screen. x,y,w,h give the dimensions of the client area
 //of the dialog. 'title' is the title of the dialog. The title will be displayed at the
@@ -71,9 +108,12 @@ SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text);
 //below the client area.
 //if 'restorer' is present, it will be set to a restorer that will reset the screen area
 //to its original state after the dialog is drawn.
-void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& title,
-                 const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
-                 surface_restorer* restorer=NULL, button* help_button=NULL);
+//void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& title,
+ //                const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
+ //                surface_restorer* restorer=NULL, button* help_button=NULL, label** label_widget);
+//void draw_dialog(frame_measurements &fm, CVideo &video, const std::string& title,
+ //                const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
+ //                surface_restorer* restorer=NULL, button* help_button=NULL, label** label_widget);
 
 class dialog_action
 {

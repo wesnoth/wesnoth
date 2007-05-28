@@ -101,7 +101,9 @@ void default_map_generator::user_config(display& disp)
 	gui::button close_button(screen,_("Close Window"));
 	std::vector<gui::button*> buttons(1,&close_button);
 
-	gui::draw_dialog(xpos,ypos,width,height,screen,_("Map Generator"),NULL,&buttons,&restorer);
+	gui::frame f(screen,_("Map Generator"),NULL,&buttons,&restorer);
+	f.layout(xpos,ypos,width,height);
+	f.draw();
 
 	SDL_Rect dialog_rect = {xpos,ypos,width,height};
 	surface_restorer dialog_restorer(&screen,dialog_rect);

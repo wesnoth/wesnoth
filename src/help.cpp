@@ -2597,9 +2597,12 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	gui::button close_button_(disp.video(), _("Close"));
 	buttons_ptr.push_back(&close_button_);
 	surface_restorer restorer;
-	gui::draw_dialog(xloc, yloc, width, height, disp.video(), _("The Battle for Wesnoth Help"),
-					 NULL, &buttons_ptr, &restorer);
 
+	gui::frame f(disp.video(), _("The Battle for Wesnoth Help"),
+					 NULL, &buttons_ptr, &restorer);
+	f.layout(xloc, yloc, width, height);
+	f.draw();
+	
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
 	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
 		last_num_encountered_units < 0) {

@@ -856,7 +856,10 @@ void campaign_preview_pane::draw_contents()
 	/* background frame */
 	static const std::string default_style("mainmenu");
 	const std::string* style = &default_style;
-	gui::draw_dialog_frame(area.x,area.y,area.w,area.h,video(),style);
+	gui::frame f(video(), "", style);
+	f.layout(area.x,area.y,area.w,area.h);
+	f.draw_background();
+	f.draw_border();
 
 	/* description text */
 	const std::string& desc_text = font::word_wrap_text((*descriptions_)[index_].first,font::SIZE_SMALL,area.w-2*campaign_preview_border);

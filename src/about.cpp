@@ -228,7 +228,10 @@ void show_about(display &disp, std::string campaign)
 			map_rect.w * 13 / 16,
 			map_rect.h - top_margin - bottom_margin 
 		};
-        gui::draw_dialog_background(frame.x, frame.y, frame.w, frame.h,disp.video(),style);
+		gui::frame f(disp.video(), "", &style);
+		f.layout(frame.x, frame.y, frame.w, frame.h);
+        f.draw_background();
+
 		// draw one screen full of text
 		const int line_spacing = 5;
 		int y = map_rect.y + top_margin - offset;

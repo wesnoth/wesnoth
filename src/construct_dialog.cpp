@@ -110,7 +110,7 @@ dialog::dimension_measurements::dimension_measurements() :
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
 				const DIALOG_TYPE type, const std::string& dialog_style,
 				const std::string& help_topic) : disp_(disp), image_(NULL),
-				title_(title), style_(dialog_style), message_(NULL),
+				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
 				type_(type), menu_(NULL),
 				help_button_(disp, help_topic),  text_widget_(NULL),
 				action_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
@@ -158,6 +158,8 @@ dialog::~dialog()
 	{
 		delete menu_;
 	}
+	delete title_widget_;
+	delete message_;
 	delete text_widget_;
 	delete image_;
 //	delete action_;
@@ -171,7 +173,6 @@ dialog::~dialog()
 //		delete (*p);
 //	}
 	delete bg_restore_;
-	delete message_;
 }
 
 const bool dialog::option_checked(unsigned int option_index)
@@ -321,9 +322,10 @@ void dialog::draw_frame()
 		frame_buttons.push_back(*b);
 	}
 	bg_restore_ = new surface_restorer;
-	draw_dialog(dim_.interior.x, dim_.interior.y, dim_.interior.w, dim_.interior.h,
-		screen, title_, &style_, &frame_buttons, bg_restore_,
+	frame f(screen, title_, &style_, &frame_buttons, bg_restore_, 
 		help_button_.topic().empty() ? NULL : &help_button_);
+	dim_.frame = f.layout(dim_.interior.x, dim_.interior.y, dim_.interior.w, dim_.interior.h);
+	f.draw();
 }
 
 void dialog::update_widget_positions()
@@ -693,9 +695,9 @@ int dialog::process(dialog_process_info &info)
 	//note: this will also close any context-menu or drop-down when it is right-clicked
 	//      but that may be changed to allow right-click selection instead.
 	if (new_right_button && !info.right_button) {
-		if( standard_buttons_.empty() ||
-		    (!point_in_rect(mousex,mousey,dim_.interior) && !(type_ == OK_ONLY && use_menu)) ) 
-			//FIXME: should check outer frame instead of dim_.interior
+		if( standard_buttons_.empty()
+		|| (!point_in_rect(mousex,mousey,dim_.frame.exterior)
+		&& !(type_ == OK_ONLY && use_menu))) 
 			return CLOSE_DIALOG;
 	}
 

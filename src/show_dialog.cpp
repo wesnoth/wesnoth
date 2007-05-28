@@ -54,8 +54,15 @@ bool is_in_dialog = false;
 
 namespace gui {
 
+//static initialization
 const int ButtonHPadding = 10;
 const int ButtonVPadding = 10;
+
+const std::string frame::default_style("menu");
+const int frame::title_border_w = 10;
+const int frame::title_border_h = 5;
+
+
 
 bool in_dialog() { return is_in_dialog; }
 
@@ -79,192 +86,203 @@ dialog_manager::~dialog_manager()
 	SDL_PushEvent(&pb_event);
 }
 
-void draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style, surface_restorer* restorer)
+frame::frame(CVideo &video, const std::string& title,
+	 const std::string* style, std::vector<button*>* buttons,
+	 surface_restorer* restorer, button* help_button) : video_(video),
+	 title_(title), dialog_style_(style ? style : &default_style),
+	 buttons_(buttons), help_button_(help_button), restorer_(restorer),
+	 top_(image::get_image("misc/" + *dialog_style_ + "-border-top.png",image::UNSCALED)),
+	 bot_(image::get_image("misc/" + *dialog_style_ + "-border-bottom.png",image::UNSCALED)),
+	 left_(image::get_image("misc/" + *dialog_style_ + "-border-left.png",image::UNSCALED)),
+	 right_(image::get_image("misc/" + *dialog_style_ + "-border-right.png",image::UNSCALED)),
+	 top_left_(image::get_image("misc/" + *dialog_style_ + "-border-topleft.png",image::UNSCALED)),
+	 bot_left_(image::get_image("misc/" + *dialog_style_ + "-border-botleft.png",image::UNSCALED)),
+	 top_right_(image::get_image("misc/" + *dialog_style_ + "-border-topright.png",image::UNSCALED)),
+	 bot_right_(image::get_image("misc/" + *dialog_style_ + "-border-botright.png",image::UNSCALED)),
+	 bg_(image::get_image("misc/" + *dialog_style_ + "-background.png",image::UNSCALED))
 {
-	if(dialog_style == NULL) {
-		static const std::string default_style("menu");
-		dialog_style = &default_style;
-	}
 
-	const surface top(image::get_image("misc/" + *dialog_style + "-border-top.png",image::UNSCALED));
-	const surface bot(image::get_image("misc/" + *dialog_style + "-border-bottom.png",image::UNSCALED));
-	const surface left(image::get_image("misc/" + *dialog_style + "-border-left.png",image::UNSCALED));
-	const surface right(image::get_image("misc/" + *dialog_style + "-border-right.png",image::UNSCALED));
-
-	const bool have_border = top != NULL && bot != NULL && left != NULL && right != NULL;
-
-	if(have_border && restorer != NULL) {
-		const SDL_Rect rect = {x-top->h,y-left->w,w+left->w+right->w,h+top->h+bot->h};
-		*restorer = surface_restorer(&video,rect);
-	} else if(restorer != NULL) {
-		const SDL_Rect rect = {x,y,w,h};
-		*restorer = surface_restorer(&video,rect);
-	}
-
-	draw_dialog_background(x,y,w,h,video,*dialog_style);
-
-	if(have_border == false) {
-		return;
-	}
-
-	surface top_image(scale_surface(top,w,top->h));
-
-	if(top_image != NULL) {
-		video.blit_surface(x,y-top->h,top_image);
-	}
-
-	surface bot_image(scale_surface(bot,w,bot->h));
-
-	if(bot_image != NULL) {
-		video.blit_surface(x,y+h,bot_image);
-	}
-
-	surface left_image(scale_surface(left,left->w,h));
-
-	if(left_image != NULL) {
-		video.blit_surface(x-left->w,y,left_image);
-	}
-
-	surface right_image(scale_surface(right,right->w,h));
-
-	if(right_image != NULL) {
-		video.blit_surface(x+w,y,right_image);
-	}
-
-	update_rect(x-left->w,y-top->h,w+left->w+right->w,h+top->h+bot->h);
-
-	const surface top_left(image::get_image("misc/" + *dialog_style + "-border-topleft.png",image::UNSCALED));
-	const surface bot_left(image::get_image("misc/" + *dialog_style + "-border-botleft.png",image::UNSCALED));
-	const surface top_right(image::get_image("misc/" + *dialog_style + "-border-topright.png",image::UNSCALED));
-	const surface bot_right(image::get_image("misc/" + *dialog_style + "-border-botright.png",image::UNSCALED));
-	if(top_left == NULL || bot_left == NULL || top_right == NULL || bot_right == NULL) {
-		return;
-	}
-
-	video.blit_surface(x-top_left->w,y-top_left->h,top_left);
-	video.blit_surface(x-bot_left->w,y+h,bot_left);
-	video.blit_surface(x+w,y-top_right->h,top_right);
-	video.blit_surface(x+w,y+h,bot_right);
 }
 
-void draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std::string& style)
-{
-	const std::string menu_background = "misc/" + style + "-background.png";
+frame::~frame()
+{}
 
-	const surface bg(image::get_image(menu_background,image::UNSCALED));
-	if(bg == NULL) {
-		ERR_DP << "could not find dialog background '" << style << "'\n";
-		return;
+frame::dimension_measurements::dimension_measurements() :
+	interior(empty_rect), exterior(empty_rect), title(empty_rect), button_row(empty_rect)
+{}
+
+frame::dimension_measurements frame::layout(int x, int y, int w, int h) {
+	dim_ = dimension_measurements();
+	if(!title_.empty()) {
+		dim_.title = draw_title(NULL);
+		dim_.title.w += title_border_w;
+	}
+	if(buttons_ != NULL) {
+		for(std::vector<button*>::const_iterator b = buttons_->begin(); b != buttons_->end(); ++b) {
+			dim_.button_row.w += (**b).width() + ButtonHPadding;
+			dim_.button_row.h = maximum<int>((**b).height() + ButtonVPadding,dim_.button_row.h);
+		}
+
+		dim_.button_row.x = -dim_.button_row.w;
+		dim_.button_row.y = y + h;
+
+		dim_.button_row.w += ButtonHPadding;
 	}
 
-	const SDL_Rect& screen_bounds = screen_area();
-	if(x < 0) {
+	size_t buttons_width = dim_.button_row.w;
+
+	if(help_button_ != NULL) {
+		buttons_width += help_button_->width() + ButtonHPadding*2;
+		dim_.button_row.y = y + h;
+	}
+
+	y -= dim_.title.h;
+	w = maximum<int>(w,maximum<int>(int(dim_.title.w),int(buttons_width)));
+	h += dim_.title.h + dim_.button_row.h;
+	dim_.button_row.x += x + w;
+
+	have_border_ = top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL;
+	SDL_Rect bounds = screen_area();
+	if(have_border_) {
+		bounds.x += left_->w;
+		bounds.y += top_->h;
+		bounds.w -= left_->w + right_->w;
+		bounds.h -= top_->h + bot_->h;
+	}
+	if(x < bounds.x) {
 		w += x;
-		x = 0;
+		x = bounds.x;
 	}
-
-	if(y < 0) {
+	if(y < bounds.y) {
 		h += y;
-		y = 0;
+		y = bounds.y;
 	}
+	if(x > bounds.w) {
+		w = 0;
+	} else if(x + w > bounds.w) {
+		w = bounds.w - x;
+	}
+	if(y > bounds.h) {
+		h = 0;
+	} else if(y + h > bounds.h) {
+		h = bounds.h - y;
+	}
+	dim_.interior.x = x;
+	dim_.interior.y = y;
+	dim_.interior.w = w;
+	dim_.interior.h = h;
+	if(have_border_) {
+		dim_.exterior.x = dim_.interior.x - left_->w;
+		dim_.exterior.y = dim_.interior.y - top_->h;
+		dim_.exterior.w = dim_.interior.w + left_->w + right_->w;
+		dim_.exterior.h = dim_.interior.h + top_->h + bot_->h;
+	} else {
+		dim_.exterior = dim_.interior;
+	}
+	dim_.title.x = dim_.interior.x + title_border_w;
+	dim_.title.y = dim_.interior.y + title_border_h;
+	return dim_;
+}
 
-	if(x > screen_bounds.w) {
+void frame::draw_border()
+{
+	if(have_border_ == false) {
 		return;
 	}
 
-	if(y > screen_bounds.h) {
+	surface top_image(scale_surface(top_, dim_.interior.w, top_->h));
+
+	if(top_image != NULL) {
+		video_.blit_surface(dim_.interior.x, dim_.exterior.y, top_image);
+	}
+
+	surface bot_image(scale_surface(bot_, dim_.interior.w, bot_->h));
+
+	if(bot_image != NULL) {
+		video_.blit_surface(dim_.interior.x, dim_.interior.y + dim_.interior.h, bot_image);
+	}
+
+	surface left_image(scale_surface(left_, left_->w, dim_.interior.h));
+
+	if(left_image != NULL) {
+		video_.blit_surface(dim_.exterior.x, dim_.interior.y, left_image);
+	}
+
+	surface right_image(scale_surface(right_, right_->w, dim_.interior.h));
+
+	if(right_image != NULL) {
+		video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y, right_image);
+	}
+
+	update_rect(dim_.exterior);
+
+	if(top_left_ == NULL || bot_left_ == NULL || top_right_ == NULL || bot_right_ == NULL) {
 		return;
 	}
 
-	if(x + w > screen_bounds.w) {
-		w = screen_bounds.w - x;
-	}
+	video_.blit_surface(dim_.interior.x - top_left_->w, dim_.interior.y - top_left_->h, top_left_);
+	video_.blit_surface(dim_.interior.x - bot_left_->w, dim_.interior.y + dim_.interior.h, bot_left_);
+	video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y - top_right_->h, top_right_);
+	video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y + dim_.interior.h, bot_right_);
+}
 
-	if(y + h > screen_bounds.h) {
-		h = screen_bounds.h - y;
+void frame::draw_background()
+{
+	if(restorer_ != NULL) {
+		*restorer_ = surface_restorer(&video_, dim_.exterior);
 	}
-
-	for(int i = 0; i < w; i += bg->w) {
-		for(int j = 0; j < h; j += bg->h) {
+	if(bg_ == NULL) {
+		ERR_DP << "could not find dialog background '" << *dialog_style_ << "'\n";
+		return;
+	}
+	for(int i = 0; i < dim_.interior.w; i += bg_->w) {
+		for(int j = 0; j < dim_.interior.h; j += bg_->h) {
 			SDL_Rect src = {0,0,0,0};
-			src.w = minimum(w - i,bg->w);
-			src.h = minimum(h - j,bg->h);
+			src.w = minimum(dim_.interior.w - i, bg_->w);
+			src.h = minimum(dim_.interior.h - j, bg_->h);
 			SDL_Rect dst = src;
-			dst.x = x + i;
-			dst.y = y + j;
-			SDL_BlitSurface(bg,&src,video.getSurface(),&dst);
+			dst.x = dim_.interior.x + i;
+			dst.y = dim_.interior.y + j;
+			SDL_BlitSurface(bg_, &src, video_.getSurface(), &dst);
 		}
 	}
 }
 
-SDL_Rect draw_dialog_title(int x, int y, CVideo* video, const std::string& text)
+SDL_Rect frame::draw_title(CVideo* video)
 {
 	SDL_Rect rect = {0, 0, 10000, 10000};
 	rect = screen_area();
-
 	return font::draw_text(video, rect, font::SIZE_LARGE, font::TITLE_COLOUR,
-	                       text, x, y + 5, false, TTF_STYLE_BOLD);
+	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_BOLD);
 }
 
-void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& title,
-				 const std::string* style, std::vector<button*>* buttons,
-				 surface_restorer* restorer, button* help_button)
+void frame::draw()
 {
-	int border_size = 10;
-	SDL_Rect title_area = {0,0,0,0};
+	//draw background
+	draw_background();
 
-	if (!title.empty()) {
-		title_area = draw_dialog_title(0,0,NULL,title);
-		title_area.w += border_size;
+	//draw frame border
+	draw_border();
+
+	//draw title
+	if (!title_.empty()) {
+		draw_title(&video_);
 	}
 
-	SDL_Rect buttons_area = {0,0,0,0};
-
-	if(buttons != NULL) {
-		for(std::vector<button*>::const_iterator b = buttons->begin(); b != buttons->end(); ++b) {
-			buttons_area.w += (**b).width() + ButtonHPadding;
-			buttons_area.h = maximum<int>((**b).height() + ButtonVPadding,buttons_area.h);
-		}
-
-		buttons_area.x = -buttons_area.w;
-		buttons_area.y = y + h;
-
-		buttons_area.w += ButtonHPadding;
-	}
-
-	size_t buttons_width = buttons_area.w;
-
-	if(help_button != NULL) {
-		buttons_width += help_button->width() + ButtonHPadding*2;
-		buttons_area.y = y + h;
-	}
-
-	const int xpos = x;
-	const int ypos = y - int(title_area.h);
-	const int width = maximum<int>(w,maximum<int>(int(title_area.w),int(buttons_width)));
-	const int height = title_area.h + buttons_area.h + h;
-
-	buttons_area.x += xpos + width;
-
-	draw_dialog_frame(xpos,ypos,width,height,video,style,restorer);
-
-	if (!title.empty()) {
-		draw_dialog_title(x + border_size, y - title_area.h, &video, title);
-	}
-
-	if(buttons != NULL) {
+	//draw buttons
+	SDL_Rect buttons_area = dim_.button_row;
+	if(buttons_ != NULL) {
 #ifdef OK_BUTTON_ON_RIGHT
-		std::reverse(buttons->begin(),buttons->end());
+		std::reverse(buttons_->begin(),buttons_->end());
 #endif
-
-		for(std::vector<button*>::const_iterator b = buttons->begin(); b != buttons->end(); ++b) {
-			(**b).set_location(buttons_area.x,buttons_area.y);
+		for(std::vector<button*>::const_iterator b = buttons_->begin(); b != buttons_->end(); ++b) {
+			(**b).set_location(buttons_area.x, buttons_area.y);
 			buttons_area.x += (**b).width() + ButtonHPadding;
 		}
 	}
 
-	if(help_button != NULL) {
-		help_button->set_location(x+ButtonHPadding,buttons_area.y);
+	if(help_button_ != NULL) {
+		help_button_->set_location(dim_.interior.x+ButtonHPadding, buttons_area.y);
 	}
 }
 
@@ -392,7 +410,9 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::draw_dialog(left,top,width,height,disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	gui::frame f(disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	f.layout(left,top,width,height);
+	f.draw();
 
 	const SDL_Rect progress_rect = {left+border,top+border,width-border*2,height-border*2};
 	gui::progress_bar progress(disp.video());
@@ -487,7 +507,9 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::draw_dialog(left,top,width,height,disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	gui::frame f(disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	f.layout(left,top,width,height);
+	f.draw();
 
 	events::raise_draw_event();
 	disp.flip();
