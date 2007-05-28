@@ -35,9 +35,9 @@ size_specs::size_specs() {
 }
 
 void adjust_sizes(const display &disp, size_specs &sizes) {
-	sizes.brush_x = disp.map_area().w + 23;
+	sizes.brush_x = disp.map_outside_area().w + 23;
 	sizes.brush_y = 190;
-	sizes.palette_x = disp.map_area().w + 13;
+	sizes.palette_x = disp.map_outside_area().w + 13;
 	sizes.palette_y = sizes.brush_y + 160 + 10;
 	sizes.palette_w = sizes.terrain_space * default_palette_width;
 	sizes.palette_h = disp.h() - sizes.palette_y - 60;

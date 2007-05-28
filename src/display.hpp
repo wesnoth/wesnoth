@@ -86,9 +86,6 @@ public:
 	// Returns the current zoom factor.
 	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
 
-	//function to make a screenshot and save it in a default location
-	void screenshot();
-
 	//function which returns the size of a hex in pixels
 	//(from top tip to bottom tip or left edge to right edge)
 	int hex_size() const { return zoom_; }
@@ -96,6 +93,9 @@ public:
 	//function which returns the width of a pixel, up to where the next hex starts
 	//(i.e. not entirely from tip to tip -- use hex_size() to get the distance from tip to tip)
 	int hex_width() const { return (zoom_*3)/4; }
+
+	//function to make a screenshot and save it in a default location
+	void screenshot();
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
 
@@ -128,7 +128,17 @@ public:
 	int w() const { return screen_.getx(); }
 	int h() const { return screen_.gety(); }
 
-	const SDL_Rect& map_area() const 
+	/**
+	 * Returns the area used for the map
+	 */
+	const SDL_Rect& map_area() const;
+
+	/**
+	 * Returns the available area for a map, this may differ 
+	 * from the above. This area will get the background area 
+	 * applied to it.
+	 */
+	const SDL_Rect& map_outside_area() const
 		{ return theme_.main_map_location(screen_area()); }
 	const SDL_Rect& minimap_area() const 
 		{ return theme_.mini_map_location(screen_area()); }

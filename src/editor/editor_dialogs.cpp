@@ -35,8 +35,8 @@
 
 
 namespace {
-	const int map_min_height = 20;
-	const int map_min_width = 20;
+	const int map_min_height = 1;
+	const int map_min_width = 1;
 	const int map_max_height = 200;
 	const int map_max_width = 200;
 }

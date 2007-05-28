@@ -200,6 +200,32 @@ void display::adjust_colours(int r, int g, int b)
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
+const SDL_Rect& display::map_area() const 
+{
+	static SDL_Rect res = {0, 0, 0, 0};
+	res = map_outside_area();
+
+	// hex_size() is always a multiple of 4 and hex_width() a multiple of
+	// 3 so there shouldn't be off by one errors due to rounding
+	// To display a hex fully on screen a little bit extra space is needed
+	const int width = lexical_cast<int>((map_.x() + (1.0/3.0)) * hex_width()); 
+	const int height = lexical_cast<int>((map_.y() + 0.5) * hex_size());
+
+	if(width < res.w) {
+		// map is smaller, center
+		res.x += (res.w - width)/2;
+		res.w = width;
+	}
+
+	if(height < res.h) {
+		// map is smaller, center
+		res.y += (res.h - height)/2;
+		res.h = height;
+	}
+
+	return res;
+}
+
 bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 {
 	const int x_thresh = hex_width();
