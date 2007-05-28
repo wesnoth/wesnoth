@@ -465,6 +465,7 @@ int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt,
 		return 0;
 
 	int turns = 0, movement = u.movement_left();
+
 	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
 	    i != rt.steps.end(); ++i) {
 		wassert(map.on_board(*i));
@@ -481,36 +482,25 @@ int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt,
 		}
 
 		if (!u.get_ability_bool("skirmisher",*i)) {
-		  gamemap::location adj[6];
-		  get_adjacent_tiles(*i, adj);
-		  
-		  for (size_t j = 0; j != 6; ++j) {
-		    unit_map::const_iterator
-			 enemy_unit = find_visible_unit(units, adj[j], map, teams, teams[u.side()-1]),
-			 units_end = units.end();
-		    
-		    if (enemy_unit != units_end && teams[u.side()-1].is_enemy(enemy_unit->second.side()) &&
-			   enemy_unit->second.emits_zoc()){
+			gamemap::location adj[6];
+			get_adjacent_tiles(*i, adj);
 
-			 ++turns;
-			 rt.turn_waypoints.insert(std::make_pair(*(i), turns));
-			 movement = u.total_movement() - move_cost;
-			 if(movement < 0) {
-			   return -1;
+			for (size_t j = 0; j != 6; ++j) {
+				unit_map::const_iterator enemy_unit = find_visible_unit(units, adj[j], map, teams, teams[u.side()-1]);
+				if (enemy_unit != units.end() && teams[u.side()-1].is_enemy(enemy_unit->second.side())
+					&& enemy_unit->second.emits_zoc()) {
+					 movement = 0;
+				}
 			}
-
-		    }
-		  }
 		}
-
 	}
+	
 
 	//add "end-of-path" to waypoints.
 	if (turns > 0) {
 		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), turns+1));
-	}
-	else {
-		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), 0));
+	} else {
+		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), movement==0 ));
 	}
 
 	return turns;
