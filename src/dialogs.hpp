@@ -35,7 +35,7 @@ class file_dialog : public gui::dialog {
 public:
 	file_dialog(display &disp, const std::string& file_path, const std::string& title);
 	
-	virtual gui::dialog::dimension_measurements layout(int xloc=-1, int yloc=-1) const;
+	virtual gui::dialog::dimension_measurements layout(int xloc=-1, int yloc=-1);
 
 	/// Return the chosen file.
 	std::string get_choice() const { return chosen_file_; }

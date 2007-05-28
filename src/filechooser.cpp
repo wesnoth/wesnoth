@@ -55,7 +55,7 @@ file_dialog::file_dialog(display &disp, const std::string& file_path, const std:
 		gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_CHECKBOX_LEFT);
 }
 
-gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc) const
+gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
 {
 	gui::dialog::dimension_measurements dim = dialog::layout(xloc, yloc);
 
@@ -80,6 +80,8 @@ gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc) cons
 	y_shift = y_max - maximum<int>(textbox_bottom_y, label_bottom_y);
 	dim.textbox.y += y_shift;
 	dim.label_y += y_shift;
+
+	set_layout(dim);
 	return dim;
 }
 

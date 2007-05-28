@@ -76,17 +76,17 @@ public:
 		: dialog(disp, title, message, type), prevent_misclick_until_(0)
 	{}
 	~message_dialog();
-	int show(const dimension_measurements &dim, msecs minimum_lifetime);
+	int show_min_duration(msecs minimum_lifetime);
 protected:
 	void action(gui::dialog_process_info &dp_info);
 private:
 	msecs prevent_misclick_until_;
 };
 
-int message_dialog::show(const gui::dialog::dimension_measurements &dim, msecs minimum_lifetime)
+int message_dialog::show_min_duration(msecs minimum_lifetime)
 {
 	prevent_misclick_until_ = SDL_GetTicks() + minimum_lifetime;
-	return dialog::show(dim);
+	return dialog::show();
 }
 
 void message_dialog::action(gui::dialog_process_info &dp_info)
@@ -1467,7 +1467,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(!surface.null()) {
 				to_show.set_image(surface, caption);
 			}
-			to_show.show(to_show.layout(), lifetime);
+			to_show.show_min_duration(lifetime);
 		}
 
 		const vconfig::child_list commands = cfg.get_children(command_type);
@@ -1621,7 +1621,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(!options.empty()) {
 				to_show.set_menu(options);
 			}
-			option_chosen = to_show.show(to_show.layout(-1, map_area.y + 4), lifetime);
+			to_show.layout(-1, map_area.y + 4);
+			option_chosen = to_show.show_min_duration(lifetime);
 			LOG_DP << "showed dialog...\n";
 
 			if (option_chosen == gui::ESCAPE_DIALOG){

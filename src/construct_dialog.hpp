@@ -188,16 +188,18 @@ public:
 
 	//Specific preparations
 	//layout - determines dialog measurements based on all components
-	virtual dimension_measurements layout(int xloc=-1, int yloc=-1) const;
+	virtual dimension_measurements layout(int xloc=-1, int yloc=-1);
+	void set_layout(dimension_measurements &new_dim) { dim_ = new_dim; }
+	dimension_measurements get_layout() const { return dim_; }
 
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
-	int show(int xloc=-1, int yloc=-1);
-	int show(const dimension_measurements &dim);
+	int show(int xloc, int yloc);
+	int show();
 
 	//Results
 	int result() const { return result_; }
-	menu &get_menu() const;
+	menu &get_menu();
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
 	const std::string textbox_text() const { return text_widget_->text();}
 	const bool option_checked(unsigned int option_index=0);
@@ -217,10 +219,9 @@ protected:
 	void refresh();
 	label& get_message() const { return *message_; }
 	dialog_textbox& get_textbox() const { return *text_widget_; }
+	dialog_frame& get_frame();
 
 private:
-//	enum INIT_STATE { STATE_UNINIT, STATE_CONTEXT_STARTED, STATE_FRAME_DRAWN, STATE_WIDGETS_JOINED, STATE_READY };
-//	void start_context();
 	void draw_frame();
 	void update_widget_positions();
 	void draw_contents();
@@ -244,18 +245,19 @@ private:
 	const std::string title_, style_;
 	label *title_widget_, *message_;
 	const DIALOG_TYPE type_;
-	mutable gui::menu *menu_;
+	gui::menu *menu_;
 	std::vector<preview_pane*> preview_panes_;
 	std::vector< std::pair<dialog_button*,BUTTON_LOCATION> > button_pool_;
 	std::vector<dialog_button*> standard_buttons_;
 	std::vector<dialog_button*> extra_buttons_;
+	std::vector<button*> frame_buttons_;
 	help_button help_button_;
 	dialog_textbox *text_widget_;
 	dialog_action *action_;
+	dialog_frame *frame_;
 	surface_restorer *bg_restore_;
 	dimension_measurements dim_;
 	int result_;
-//	INIT_STATE state_;
 };
 
 } //end namespace gui

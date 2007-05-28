@@ -113,7 +113,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
 				type_(type), menu_(NULL),
 				help_button_(disp, help_topic),  text_widget_(NULL),
-				action_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
+				action_(NULL), frame_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
 {
 	CVideo& screen = disp_.video();
 
@@ -163,6 +163,7 @@ dialog::~dialog()
 	delete text_widget_;
 	delete image_;
 //	delete action_;
+	delete frame_;
 
 	button_pool_iterator b;
 	for (b = button_pool_.begin(); b != button_pool_.end(); ++b) {
@@ -238,7 +239,7 @@ void dialog::set_menu(const std::vector<std::string> &menu_items)
 		dialog::max_menu_width, NULL, &menu::default_style, false));
 }
 
-menu& dialog::get_menu() const
+menu& dialog::get_menu()
 {
 	if(menu_ == NULL)
 	{
@@ -253,11 +254,11 @@ menu& dialog::get_menu() const
 
 int dialog::show(int xloc, int yloc)
 {
-	dimension_measurements dim = layout(xloc, yloc);
-	return show(dim);
+	layout(xloc, yloc);
+	return show();
 }
 
-int dialog::show(const dimension_measurements &dim)
+int dialog::show()
 {
 	if(disp_.update_locked()) {
 		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'\n";
@@ -265,7 +266,7 @@ int dialog::show(const dimension_measurements &dim)
 	}
 
 	LOG_DP << "showing dialog '" << title_ << "' '" << message_->get_text() << "'\n";
-	dim_ = dim;
+	if(dim_.interior == empty_rect) { layout(); }
 
 	//create the event context, remember to instruct any passed-in widgets to join it
 	const events::event_context dialog_events_context;
@@ -313,19 +314,26 @@ void dialog::draw_contents()
 	disp_.invalidate_all();
 }
 
+dialog_frame& dialog::get_frame()
+{
+	if(frame_ == NULL) {
+		CVideo& screen = disp_.video();
+		frame_buttons_.clear();
+		for(button_iterator b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b)
+		{
+			frame_buttons_.push_back(*b);
+		}
+		delete bg_restore_;
+		bg_restore_ = new surface_restorer;
+		frame_ = new dialog_frame(screen, title_, &style_, &frame_buttons_, bg_restore_, 
+			help_button_.topic().empty() ? NULL : &help_button_);
+	}
+	return *frame_;
+}
+
 void dialog::draw_frame()
 {
-	CVideo& screen = disp_.video();
-	std::vector<button*> frame_buttons;
-	for(button_iterator b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b)
-	{
-		frame_buttons.push_back(*b);
-	}
-	bg_restore_ = new surface_restorer;
-	dialog_frame frame(screen, title_, &style_, &frame_buttons, bg_restore_, 
-		help_button_.topic().empty() ? NULL : &help_button_);
-	dim_.frame = frame.layout(dim_.interior.x, dim_.interior.y, dim_.interior.w, dim_.interior.h);
-	frame.draw();
+	get_frame().draw();
 }
 
 void dialog::update_widget_positions()
@@ -381,7 +389,7 @@ void dialog::refresh()
 	disp_.delay(10);
 }
 
-dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
+dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 {
 	CVideo& screen = disp_.video();
 	surface const scr = screen.getSurface();
@@ -620,6 +628,9 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 			}
 		}
 	}
+
+	dim.frame = get_frame().layout(dim.interior);
+	set_layout(dim);
 	return dim;
 }
 
