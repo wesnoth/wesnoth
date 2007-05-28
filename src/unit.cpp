@@ -2550,10 +2550,9 @@ void unit::add_modification(const std::string& type, const config& mod,
 
 	// Punctuation should be translatable: not all languages use latin punctuation.
 	// (however, there maybe is a better way to do it)
-	description += mod["name"];
-	if (!mod["description"].empty())
-		description += t_string(N_(": "), "wesnoth") + mod["description"];
-	description += " ";
+	if (!mod["description"].empty()) {
+		description += mod["description"] + " ";
+	}
 
 	if(effects_description.empty() == false) {
 		description += t_string(N_("("), "wesnoth");
