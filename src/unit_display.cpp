@@ -138,8 +138,6 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		temp_unit.set_facing(path[i].get_relative_dir(path[i+1]));
 
-		disp->remove_footstep(path[i]);
-
 		bool invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 				temp_unit.invisible(path[i],units,teams) &&
 				temp_unit.invisible(path[i+1],units,teams);
@@ -171,6 +169,7 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 
 	//make sure the entire path is cleaned properly
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
+		disp->remove_footstep(*it);
 		disp->invalidate(*it);
 	}
 	u.set_hidden(was_hidden);
