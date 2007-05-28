@@ -126,7 +126,7 @@ public:
 	struct dimension_measurements {
 		dimension_measurements();
 		int x, y;
-		SDL_Rect frame, message, textbox;
+		SDL_Rect interior, message, textbox;
 		unsigned int menu_width;
 		std::map<preview_pane *const, SDL_Rect > panes;
 		int label_x, label_y;

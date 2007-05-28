@@ -100,7 +100,7 @@ private:
 namespace gui {
 
 dialog::dimension_measurements::dimension_measurements() :
-	x(-1), y(-1), frame(empty_rect), message(empty_rect), textbox(empty_rect)
+	x(-1), y(-1), interior(empty_rect), message(empty_rect), textbox(empty_rect)
 {
 	//note: this is not defined in the header file to C++ ODR (one-definition rule)
 	//since each inclusion of the header file uses a different version of empty_rect 
@@ -321,7 +321,7 @@ void dialog::draw_frame()
 		frame_buttons.push_back(*b);
 	}
 	bg_restore_ = new surface_restorer;
-	draw_dialog(dim_.frame.x, dim_.frame.y, dim_.frame.w, dim_.frame.h,
+	draw_dialog(dim_.interior.x, dim_.interior.y, dim_.interior.w, dim_.interior.h,
 		screen, title_, &style_, &frame_buttons, bg_restore_,
 		help_button_.topic().empty() ? NULL : &help_button_);
 }
@@ -495,36 +495,36 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 	                         padding_height + menu_->height() +
 							 text_widget_height + check_button_height;
 
-	dim.frame.w = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
-	dim.frame.h = maximum<int>(total_height,int(preview_pane_height));
-	dim.frame.x = maximum<int>(0,dim.x >= 0 ? dim.x : scr->w/2 - (dim.frame.w + left_preview_pane_width + right_preview_pane_width)/2);
-	dim.frame.y = maximum<int>(0,dim.y >= 0 ? dim.y : scr->h/2 - (dim.frame.h + above_preview_pane_height)/2);
+	dim.interior.w = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
+	dim.interior.h = maximum<int>(total_height,int(preview_pane_height));
+	dim.interior.x = maximum<int>(0,dim.x >= 0 ? dim.x : scr->w/2 - (dim.interior.w + left_preview_pane_width + right_preview_pane_width)/2);
+	dim.interior.y = maximum<int>(0,dim.y >= 0 ? dim.y : scr->h/2 - (dim.interior.h + above_preview_pane_height)/2);
 
 	LOG_DP << "above_preview_pane_height: " << above_preview_pane_height << "; "
-		<< "dim.frame.y: " << scr->h/2 << " - " << (dim.frame.h + above_preview_pane_height)/2 << " = "
-		<< dim.frame.y << "; " << "dim.frame.h: " << dim.frame.h << "\n";
+		<< "dim.interior.y: " << scr->h/2 << " - " << (dim.interior.h + above_preview_pane_height)/2 << " = "
+		<< dim.interior.y << "; " << "dim.interior.h: " << dim.interior.h << "\n";
 
 	if(dim.x <= -1 || dim.y <= -1) {
-		dim.x = dim.frame.x + left_preview_pane_width;
-		dim.y = dim.frame.y + above_preview_pane_height;
+		dim.x = dim.interior.x + left_preview_pane_width;
+		dim.y = dim.interior.y + above_preview_pane_height;
 	}
 
-	if(dim.x + dim.frame.w > scr->w) {
-		dim.x = scr->w - dim.frame.w;
-		if(dim.x < dim.frame.x) {
-			dim.frame.x = dim.x;
+	if(dim.x + dim.interior.w > scr->w) {
+		dim.x = scr->w - dim.interior.w;
+		if(dim.x < dim.interior.x) {
+			dim.interior.x = dim.x;
 		}
 	}
 
-	if(dim.y + dim.frame.h > scr->h) {
-		dim.y = scr->h - dim.frame.h;
-		if(dim.y < dim.frame.y) {
-			dim.frame.y = dim.y;
+	if(dim.y + dim.interior.h > scr->h) {
+		dim.y = scr->h - dim.interior.h;
+		if(dim.y < dim.interior.y) {
+			dim.interior.y = dim.y;
 		}
 	}
 
-	dim.frame.w += left_preview_pane_width + right_preview_pane_width;
-	dim.frame.h += above_preview_pane_height;
+	dim.interior.w += left_preview_pane_width + right_preview_pane_width;
+	dim.interior.h += above_preview_pane_height;
 
 	dim.message.x = dim.x + image_width + left_padding + image_h_padding;
 	dim.message.y = dim.y + top_padding + caption_height;
@@ -532,9 +532,9 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 	//calculate the positions of the preview panes to the sides of the dialog
 	if(!preview_panes_.empty()) {
 
-		int left_preview_pane = dim.frame.x;
-		int right_preview_pane = dim.frame.x + total_width + left_preview_pane_width;
-		int above_left_preview_pane = dim.frame.x + dim.frame.w/2;
+		int left_preview_pane = dim.interior.x;
+		int right_preview_pane = dim.interior.x + total_width + left_preview_pane_width;
+		int above_left_preview_pane = dim.interior.x + dim.interior.w/2;
 		int above_right_preview_pane = above_left_preview_pane;
 
 		for(pp_const_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
@@ -551,7 +551,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 					right_preview_pane += area.w;
 				}
 			} else {
-				area.y = dim.frame.y;
+				area.y = dim.interior.y;
 				if(pane->left_side()) {
 					area.x = above_left_preview_pane - area.w;
 					above_left_preview_pane -= area.w;
@@ -689,13 +689,13 @@ int dialog::process(dialog_process_info &info)
 			return CLOSE_DIALOG;
 	}
 
-	//right-clicking on a drop-down or context-menu
-	//or outside of a dialog should close it
-	//except if there is options and only an OK button
+	//right-clicking outside of a dialog should close it unless a choice is required
+	//note: this will also close any context-menu or drop-down when it is right-clicked
+	//      but that may be changed to allow right-click selection instead.
 	if (new_right_button && !info.right_button) {
 		if( standard_buttons_.empty() ||
-		    (!point_in_rect(mousex,mousey,dim_.frame) && !(type_ == OK_ONLY && use_menu)) ) 
-			//FIXME: should check dim_.outer_frame instead of dim_.frame
+		    (!point_in_rect(mousex,mousey,dim_.interior) && !(type_ == OK_ONLY && use_menu)) ) 
+			//FIXME: should check outer frame instead of dim_.interior
 			return CLOSE_DIALOG;
 	}
 
