@@ -201,10 +201,11 @@ public:
 	void set_route(const paths::route* route);
 
 	//functions to get the on-screen positions of hexes.
+	// we have a 1 hex border so need to offset the loction with 1
 	int get_location_x(const gamemap::location& loc) const
-		{ return map_area().x + loc.x*hex_width() - xpos_; }
+		{ return map_area().x + (loc.x + 1) * hex_width() - xpos_; }
 	int get_location_y(const gamemap::location& loc) const
-		{ return map_area().y + loc.y*zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
+		{ return map_area().y + (loc.y + 1) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
 
 	//returns the locations of 2 hexes that bind the visible area of the map.
 	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;

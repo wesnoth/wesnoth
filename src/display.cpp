@@ -208,8 +208,9 @@ const SDL_Rect& display::map_area() const
 	// hex_size() is always a multiple of 4 and hex_width() a multiple of
 	// 3 so there shouldn't be off by one errors due to rounding
 	// To display a hex fully on screen a little bit extra space is needed
-	const int width = lexical_cast<int>((map_.x() + (1.0/3.0)) * hex_width()); 
-	const int height = lexical_cast<int>((map_.y() + 0.5) * hex_size());
+	// Also added 2 hexes for the border.
+	const int width = lexical_cast<int>((map_.x() + (7.0/3.0)) * hex_width()); 
+	const int height = lexical_cast<int>((map_.y() + 2.5) * hex_size());
 
 	if(width < res.w) {
 		// map is smaller, center
@@ -279,6 +280,9 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 		gamemap::location::DIRECTION* nearest_hex, 
 		gamemap::location::DIRECTION* second_nearest_hex) const
 {
+	// adjust for the 1 hex border
+	x -= hex_width() ;
+	y -= hex_size();
 	const int s = hex_size();
 	const int tesselation_x_size = hex_width() * 2;
 	const int tesselation_y_size = s;
@@ -398,22 +402,29 @@ void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gam
 
 	const int tile_width = hex_width();
 
-	topleft.x  = (xpos_ + rect.x) / tile_width;
-	topleft.y  = (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
+	// adjust for the 1 hex border
+	topleft.x  = -1 + (xpos_ + rect.x) / tile_width;
+	topleft.y  = -1 + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
 
-	bottomright.x  = (xpos_ + rect.x + rect.w) / tile_width;
-	bottomright.y  = ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
+	bottomright.x  = -1 + (xpos_ + rect.x + rect.w) / tile_width;
+	bottomright.y  = -1 + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
 
-	if(topleft.x > -1) {
+	// This routine does a rough approximation so might be off by one
+	// to be sure enough tiles are incuded the boundries are increased
+	// by one if the terrain is "on the map" due to the extra border
+	// this uses a bit larger area. 
+	// FIXME this routine should properly determine what to update and
+	// not increase by one just to be sure.
+	if(topleft.x >= -1) {
 		topleft.x--;
 	}
-	if(topleft.y > -1) {
+	if(topleft.y >= -1) {
 		topleft.y--;
 	}
-	if(bottomright.x < map_.x()) {
+	if(bottomright.x <= map_.x()) {
 		bottomright.x++;
 	}
-	if(bottomright.y < map_.y()) {
+	if(bottomright.y <= map_.y()) {
 		bottomright.y++;
 	}
 }
@@ -721,8 +732,9 @@ void display::bounds_check_position(int& xpos, int& ypos)
 {
 	const int tile_width = hex_width();
 
-	const int xend = tile_width*map_.x() + tile_width/3;
-	const int yend = zoom_*map_.y() + zoom_/2;
+	// adjust for the border 2 times 1 hex
+	const int xend = tile_width * (map_.x() + 2) + tile_width/3;
+	const int yend = zoom_ * (map_.y() + 2) + zoom_/2;
 
 	if(xpos > xend - map_area().w) {
 		xpos = xend - map_area().w;
@@ -1347,11 +1359,14 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const double xscaling = double(surf->w) / map_w;
 	const double yscaling = double(surf->h) / map_h;
 
-	const int xbox = static_cast<int>(xscaling*xpos_/(zoom_*0.75));
-	const int ybox = static_cast<int>(yscaling*ypos_/zoom_);
+	const int tile_width = hex_width();
 
-	const int wbox = static_cast<int>(xscaling*map_area().w/(zoom_*0.75) - xscaling) + 3;
-	const int hbox = static_cast<int>(yscaling*map_area().h/zoom_ - yscaling) + 3;
+	const int xbox = static_cast<int>(xscaling*(xpos_-tile_width)/tile_width);
+	const int ybox = static_cast<int>(yscaling*(ypos_-zoom_)/zoom_);
+
+	// The magic numbers experimental determined like in display::map_area()
+	const int wbox = static_cast<int>(xscaling*(map_area().w+(4.0/3.0)*tile_width)/tile_width - xscaling);
+	const int hbox = static_cast<int>(yscaling*(map_area().h+1.5*zoom_)/zoom_ - yscaling); 
 
 	const Uint32 boxcolour = SDL_MapRGB(surf->format,0xFF,0xFF,0xFF);
 	const surface screen(screen_.getSurface());
@@ -1584,7 +1599,9 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		draw_movement_info(loc,xpos,ypos);
 	}
 
-	if(grid_) {
+	// The grid outside the map looks odd, maybe even need to avoid it on all
+	// _off^* terrains. NOTE not too happy with now it looks at the outer border
+	if(grid_ && map_.on_board(loc)) {
 		surface grid_surface(image::get_image("terrain/grid.png"));
 		if(grid_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -1911,6 +1928,14 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 			if (!surface.null()) {
 				res.push_back(surface);
 			}
+		}
+	} else if(terrain_type == ADJACENT_BACKGROUND){
+		// this should only happen with the off map tiles and now 
+		// return the void image. NOTE this is a temp hack
+		const surface surface(image::get_image("terrain/void.png"));
+		wassert(!surface.null());
+		if (!surface.null()) {
+			res.push_back(surface);
 		}
 	}
 
