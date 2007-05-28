@@ -173,6 +173,7 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 		disp->invalidate(*it);
 	}
 	u.set_hidden(was_hidden);
+	disp->invalidate_unit();
 }
 
 void unit_die(const gamemap::location& loc, unit& loser,
