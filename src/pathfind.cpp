@@ -458,7 +458,8 @@ paths::paths(gamemap const &map, gamestatus const &status,
 		allow_teleport,additional_turns,true,viewing_team, see_all);
 }
 
-int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt,unit_map const &units, const std::vector<team>& teams)
+int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt, 
+		const unit_map &units, const std::vector<team>& teams)
 {
 	if(rt.steps.empty())
 		return 0;
