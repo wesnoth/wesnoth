@@ -1552,7 +1552,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		draw_terrain_on_tile(loc,image_type,ADJACENT_FOREGROUND);
 	}
 
-	if(fogged(loc) && shrouded(loc) == false) {
+	if(fogged(loc) && !is_shrouded) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -1560,7 +1560,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		}
 	}
 
-	if(!shrouded(loc)) {
+	if(!is_shrouded) {
 		draw_terrain_on_tile(loc,image_type,ADJACENT_FOGSHROUD);
 	}
 
