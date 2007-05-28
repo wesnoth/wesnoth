@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-19 23:27+0200\n"
-"PO-Revision-Date: 2007-05-10 22:39+0100\n"
+"PO-Revision-Date: 2007-05-26 18:28+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -25,11 +25,11 @@ msgstr "Wojownik"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:12
 msgid "(Easy)"
-msgstr ""
+msgstr "(łatwy)"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:13
 msgid "(Normal)"
-msgstr ""
+msgstr "(normalny)"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:13
 msgid "Commander"
@@ -37,14 +37,13 @@ msgstr "Dowódca"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:14
 msgid "(Challenging)"
-msgstr ""
+msgstr "(trudny)"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:14
 msgid "Lord"
 msgstr "Władca"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
-#, fuzzy
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
@@ -52,8 +51,9 @@ msgid ""
 "\n"
 "(Intermediate level, 27 scenarios.)"
 msgstr ""
-"Poprowadź księcia Haldrica przez zniszczenie Zielonej Wyspy i poprzez Ocean, "
-"by założyć królestwo Wesnoth i stawić czoła Jevyanowi, władcy liczów...\n"
+"Przeprowadź księcia Haldrica przez zniszczenie Zielonej Wyspy i poprzez "
+"Ocean, by założyć królestwo Wesnoth i stawić czoła Jevyanowi, władcy "
+"liczów...\n"
 "\n"
 "(Poziom średni, 27 scenariuszy)"
 
@@ -3201,9 +3201,8 @@ msgid "We come in peace. We only seek to re-provision our ships."
 msgstr "Przychodzimy w pokoju. Chcemy tylko ponownie zaopatrzyć nasze statki."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:228
-#, fuzzy
 msgid "(whispered) I don't think diplomacy is going to work."
-msgstr "<Szepcząc> Nie sądzę, żeby dyplomacja coś pomogła."
+msgstr "<szeptem> Nie sądzę, żeby dyplomacja coś pomogła."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:232
 msgid ""
@@ -3214,9 +3213,8 @@ msgstr ""
 "śśśmierć! Za chwałę Władców Morogor!"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:236
-#, fuzzy
 msgid "(whispered) Do I need to say, 'I told you so'?"
-msgstr "<Szepcząc> Czy muszę przypominać że, \"A nie mówiłam\"?"
+msgstr "<szeptem> Czy muszę dodawać \"A nie mówiłam\"?"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:251
 msgid "Bitey the Serpent"
@@ -3559,12 +3557,11 @@ msgstr ""
 "pasażerowie mogą bezpiecznie wysiąść tutaj."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:296
-#, fuzzy
 msgid ""
 "(whispered) Maybe it'd be best if you didn't mention our little friend "
 "following us..."
 msgstr ""
-"(Szeptem) Może byłoby lepiej, gdybyś nie wspomniał o naszym małym, śledzącym "
+"<szeptem> Może byłoby lepiej, gdybyś nie wspomniał o naszym małym, śledzącym "
 "nas przyjacielu..."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:302
@@ -3587,20 +3584,18 @@ msgstr ""
 "przyszłości."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:322
-#, fuzzy
 msgid ""
 "May the currents carry you swiftly my friend. (whispered) Jessica, send word "
 "that a third of the fleet is to return to the Green Isle, to look for more "
 "survivors. If they return tell them to keep returning until no more "
 "survivors are found."
 msgstr ""
-"Niech prądy morskie niosą cię szybko, mój przyjacielu. (Szeptem) Jessica, "
-"powiadom, że jedna trzecia floty ma powrócić na Zieloną Wyspę, by dalej "
+"Niech prądy morskie niosą cię szybko, mój przyjacielu. <szeptem> Jessica, "
+"przekaż, że jedna trzecia floty ma powrócić na Zieloną Wyspę, by dalej "
 "szukać ocalałych. Jeśli powrócą, powiedz im, by wciąż wracali, aż nie znajdą "
-"już nikogo."
+"już nikogo przy życiu."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:326
-#, fuzzy
 msgid ""
 "(whispered) Man the ships with skeleton crews, and give them the remaining "
 "supplies. Pass the word to Lord Typhon. Make sure than no more than a third "
@@ -3608,10 +3603,10 @@ msgid ""
 "Make haste, return before it is time to meet with these, what are they? Ahh, "
 "elves."
 msgstr ""
-"(Ciągle szeptem) Obsadź statki szczątkową załogą i daj im pozostałe zapasy. "
+"<szeptem> Obsadź statki szczątkową załogą i daj im pozostałe zapasy. "
 "Powiadom Lorda Typhona. Upewnij się, że nie zostanie wysłana więcej niż "
-"jedna trzecia floty. Nie możemy zapewnić orkom gotowych do użycia statków. "
-"Pośpiesz się, powróć zanim nadejdzie czas spotkania z tymi, no, kim oni są? "
+"jedna trzecia floty. Nie możemy dawać orkom gotowych do użycia statków. "
+"Spiesz się, powróć zanim nadejdzie czas spotkania z tymi, no, kim oni są? "
 "Aha, elfami."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:330
@@ -3962,13 +3957,12 @@ msgstr ""
 "Powinieneś iść ich \"powitać\"."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:649
-#, fuzzy
 msgid ""
 "(whispered) I fear our friend has said too much. You go on ahead, I'll catch "
 "up with you."
 msgstr ""
-"(Szepcąc) Obawiam się, że nasz przyjaciel powiedział za dużo. Idź naprzód, "
-"dogonię cię. "
+"<szeptem> Obawiam się, że nasz przyjaciel powiedział za dużo. Ruszaj "
+"przodem, dogonię cię."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:4
 msgid "The Dragon"
@@ -4436,9 +4430,8 @@ msgid "(Sigh) Agreed."
 msgstr "(Wzdycha) Zgoda."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:136
-#, fuzzy
 msgid "(whispered) Some friends. I must tell Haldric."
-msgstr "(Szeptem) Też mi przyjaciele. Muszę powiedzieć Haldricowi."
+msgstr "<szeptem> Ładni przyjaciele. Muszę powiedzieć Haldricowi."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:4
 msgid "The Vanguard"
@@ -5182,14 +5175,12 @@ msgid "We shall soon see if you have the Ruby of Fire!"
 msgstr "Wkrótce się przekonamy, czy masz Rubin Ognia!"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:388
-#, fuzzy
 msgid "(whispered) Commander, you remember the plan right?"
-msgstr "<Szeptem> Komendancie, czy dokładnie pamiętasz plan?"
+msgstr "<szeptem> Komendancie, czy dokładnie pamiętasz plan?"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:392
-#, fuzzy
 msgid "(whispered) Yes, sir. I am ready."
-msgstr "(Szeptem) Tak panie. Jestem gotowy."
+msgstr "<szeptem> Tak, panie. Jestem gotów."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:403
 msgid "He's raising our dead! Be careful!"

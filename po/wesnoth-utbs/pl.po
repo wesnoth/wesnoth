@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-05-19 10:48+0200\n"
-"PO-Revision-Date: 2007-05-10 22:45+0100\n"
+"PO-Revision-Date: 2007-05-26 18:38+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +27,11 @@ msgstr "Pustynny łowca"
 
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:18
 msgid "(Normal)"
-msgstr "(Normalny)"
+msgstr "(normalny)"
 
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:19
 msgid "(Challenging)"
-msgstr "(Trudny)"
+msgstr "(trudny)"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:4
@@ -41,7 +41,7 @@ msgstr "Pustynny strażnik"
 
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:20
 msgid "(Nightmare)"
-msgstr ""
+msgstr "(koszmar)"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:4
@@ -50,7 +50,6 @@ msgid "Desert Prowler"
 msgstr "Pustynny maruder"
 
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
 "ruins of fallen empires. Lead your people out of the desert on an epic "
@@ -66,7 +65,12 @@ msgstr ""
 "upadłych imperiów. Wyprowadź swoich ludzi z pustyni i wyrusz na epicką "
 "wyprawę w poszukiwaniu nowego domu.\n"
 "\n"
-"(Poziom zaawansowany, 16 scenariuszy)"
+"(Poziom zaawansowany, 16 scenariuszy)\n"
+"\n"
+"UWAGA: KAMPANIA JEST AKTUALNIE W PRZEBUDOWIE. NIEKTÓRE SCENARIUSZE MOGĄ SIĘ "
+"RÓŻNIĆ OD ZNANYCH WCZEŚNIEJSZYCH WERSJI, BYĆ NIEZRÓWNOWAŻONE LUB W OGÓLE NIE "
+"NADAWAĆ SIĘ DO GRY.\n"
+"BARDZO PROSIMY O ZGŁASZANIE OPINII NA FORUM."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:8
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:9
@@ -6726,12 +6730,12 @@ msgid ""
 "All right you runts, let's try this again. Pior, remember to swing your "
 "sword with your whole body, not just your arms."
 msgstr ""
-"No dobrze kurduple, spróbujmy jeszcze raz. Pior, pamiętaj by do machania "
+"No dobra, kurduple, spróbujmy jeszcze raz. Pior, pamiętaj by do machania "
 "mieczem używać całego ciała, nie tylko rąk."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:2673
 msgid "Yes Sir."
-msgstr "Tak jest."
+msgstr "Tak jest!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:2678
 msgid "Jarl, keep your feet moving. If you stand still you're a dead man."
@@ -6739,7 +6743,7 @@ msgstr "Jarl, ruszaj stopami. Jeśli będziesz stał w miejscu, umrzesz."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:2683
 msgid "Right, Sir."
-msgstr "Tak jest."
+msgstr "Rozumiem!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:2688
 msgid "Iona, try to vary your attacks more, you're becoming too predictable."
@@ -6747,7 +6751,7 @@ msgstr "Iona, próbuj różnych ataków, stajesz się przewidywalna."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:2693
 msgid "I'll try, Sir."
-msgstr "Tak jest."
+msgstr "Postaram się!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:2698
 msgid ""
@@ -14529,7 +14533,7 @@ msgstr "Opiekun nag"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 msgid "Necromancer"
-msgstr ""
+msgstr "Nekromanta"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:22
 msgid ""
@@ -14548,11 +14552,27 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"Jednym z najpotężniejszych aspektów tego, co zwykło się określać mianem "
+"\"czarnej magii\", jest sztuka nekromancji, czyli przerażająca zdolność do "
+"dawania zmarłym fałszywego życia. Odkrycie nekromancji miało straszliwe "
+"konsekwencje i sprawiło, że ludzkość potępiła czarną magię, gdyż może ona "
+"stanowić potężny oręż w służbie zła.\n"
+"\n"
+"Umiejętność ta jest pod każdym względem pierwszym krokiem w stronę oszukania "
+"śmierci. Stanowi ona szczyt mocy, jaką mroczny mag może posiąść nie tracąc "
+"przy tym swojego człowieczeństwa, ale blednie w porównaniu ze "
+"śmiercionośnymi mocami, którymi władają licze. Ponadto magia wzmacnia "
+"śmiertelne ciała nekromantów, w przeciwieństwie do kruchych, rozkładającej "
+"się ciał liczy.\n"
+"\n"
+"Uwagi specjalne: zdalne ataki nekromanty są magiczne i zawsze mają wysoką "
+"szansę trafienia przeciwnika. Różdżka nekromanty przenosi zarazę i każdy "
+"pokonany nią wróg powstanie z powrotem jako nieumarły."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:50
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
 msgid "chill wave"
-msgstr ""
+msgstr "fala chłodu"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:34
 msgid ""
@@ -14703,9 +14723,8 @@ msgid "Eloh protect us, I have fallen."
 msgstr "Niech Eloh nas chroni, umieram."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:73
-#, fuzzy
 msgid "Aaaargh! Curse you!"
-msgstr "Hahaaa! Świeże mięso!"
+msgstr "Aaaaa! Bądźcie przeklęci!"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:95
 msgid "This can't be the end, I have too much left to see."
