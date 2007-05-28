@@ -133,7 +133,7 @@ public:
 		int menu_x, menu_y;
 		int image_x, image_y, caption_x, caption_y;
 		std::map<dialog_button *const, std::pair<int,int> > buttons;
-		frame::dimension_measurements frame;
+		frame::dimension_measurements frame_dim;
 	};
 private:
 	typedef std::vector<preview_pane *>::iterator pp_iterator;
