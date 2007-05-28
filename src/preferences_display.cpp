@@ -1274,7 +1274,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	buttons.push_back(&close_button);
 
 	surface_restorer restorer;
-	gui::frame f(disp.video(),_("Hotkey Settings"),NULL,&buttons,&restorer);
+	gui::dialog_frame f(disp.video(),_("Hotkey Settings"),NULL,&buttons,&restorer);
 	f.layout(xpos,ypos,width,height);
 	f.draw();
 
@@ -1328,7 +1328,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 									text_size.w+60,
 									text_size.h+32};
 			surface_restorer restorer(&disp.video(),dlgr);
-			gui::frame mini_frame(disp.video());
+			gui::dialog_frame mini_frame(disp.video());
 			mini_frame.layout(centerx-text_size.w/2 - 20,
 									centery-text_size.h/2 - 6,
 									text_size.w+40,

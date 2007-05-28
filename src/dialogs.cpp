@@ -856,8 +856,8 @@ void campaign_preview_pane::draw_contents()
 	/* background frame */
 	static const std::string default_style("mainmenu");
 	const std::string* style = &default_style;
-	gui::frame f(video(), "", style);
-	f.layout(area.x,area.y,area.w,area.h);
+	gui::dialog_frame f(video(), "", style);
+	f.layout(area);
 	f.draw_background();
 	f.draw_border();
 

@@ -187,8 +187,8 @@ static void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, con
         help_tip_button->set_location(area.x + pad,
                                       area.y + area.h - pad - next_tip_button->location().h);
 		help_tip_button->set_dirty(); //force redraw even if location did not change.
-		gui::frame f(screen.video(), "", &style, NULL, &tip_of_day_restorer);
-		f.layout(area.x,area.y,area.w,area.h);
+		gui::dialog_frame f(screen.video(), "", &style, NULL, &tip_of_day_restorer);
+		f.layout(area);
 		f.draw_background();
 		f.draw_border();
 
@@ -297,8 +297,8 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
 
     const std::string style = "mainmenu";
-	gui::frame main_frame(screen.video(), "", &style);
-	main_frame.layout(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h);
+	gui::dialog_frame main_frame(screen.video(), "", &style);
+	main_frame.layout(main_dialog_area);
 	main_frame.draw_background();
 	main_frame.draw_border();
 

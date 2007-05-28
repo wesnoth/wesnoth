@@ -58,9 +58,9 @@ namespace gui {
 const int ButtonHPadding = 10;
 const int ButtonVPadding = 10;
 
-const std::string frame::default_style("menu");
-const int frame::title_border_w = 10;
-const int frame::title_border_h = 5;
+const std::string dialog_frame::default_style("menu");
+const int dialog_frame::title_border_w = 10;
+const int dialog_frame::title_border_h = 5;
 
 
 
@@ -86,7 +86,7 @@ dialog_manager::~dialog_manager()
 	SDL_PushEvent(&pb_event);
 }
 
-frame::frame(CVideo &video, const std::string& title,
+dialog_frame::dialog_frame(CVideo &video, const std::string& title,
 	 const std::string* style, std::vector<button*>* buttons,
 	 surface_restorer* restorer, button* help_button) : video_(video),
 	 title_(title), dialog_style_(style ? style : &default_style),
@@ -104,14 +104,18 @@ frame::frame(CVideo &video, const std::string& title,
 
 }
 
-frame::~frame()
+dialog_frame::~dialog_frame()
 {}
 
-frame::dimension_measurements::dimension_measurements() :
+dialog_frame::dimension_measurements::dimension_measurements() :
 	interior(empty_rect), exterior(empty_rect), title(empty_rect), button_row(empty_rect)
 {}
 
-frame::dimension_measurements frame::layout(int x, int y, int w, int h) {
+dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) {
+	return layout(rect.x, rect.y, rect.w, rect.h);
+}
+
+dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, int h) {
 	dim_ = dimension_measurements();
 	if(!title_.empty()) {
 		dim_.title = draw_title(NULL);
@@ -184,7 +188,7 @@ frame::dimension_measurements frame::layout(int x, int y, int w, int h) {
 	return dim_;
 }
 
-void frame::draw_border()
+void dialog_frame::draw_border()
 {
 	if(have_border_ == false) {
 		return;
@@ -226,7 +230,7 @@ void frame::draw_border()
 	video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y + dim_.interior.h, bot_right_);
 }
 
-void frame::draw_background()
+void dialog_frame::draw_background()
 {
 	if(restorer_ != NULL) {
 		*restorer_ = surface_restorer(&video_, dim_.exterior);
@@ -248,7 +252,7 @@ void frame::draw_background()
 	}
 }
 
-SDL_Rect frame::draw_title(CVideo* video)
+SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
 	SDL_Rect rect = {0, 0, 10000, 10000};
 	rect = screen_area();
@@ -256,7 +260,7 @@ SDL_Rect frame::draw_title(CVideo* video)
 	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_BOLD);
 }
 
-void frame::draw()
+void dialog_frame::draw()
 {
 	//draw background
 	draw_background();
@@ -410,9 +414,9 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::frame f(disp.video(),msg,NULL,&buttons_ptr,&restorer);
-	f.layout(left,top,width,height);
-	f.draw();
+	gui::dialog_frame frame(disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	frame.layout(left,top,width,height);
+	frame.draw();
 
 	const SDL_Rect progress_rect = {left+border,top+border,width-border*2,height-border*2};
 	gui::progress_bar progress(disp.video());
@@ -507,9 +511,9 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::frame f(disp.video(),msg,NULL,&buttons_ptr,&restorer);
-	f.layout(left,top,width,height);
-	f.draw();
+	gui::dialog_frame frame(disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	frame.layout(left,top,width,height);
+	frame.draw();
 
 	events::raise_draw_event();
 	disp.flip();

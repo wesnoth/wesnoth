@@ -322,10 +322,10 @@ void dialog::draw_frame()
 		frame_buttons.push_back(*b);
 	}
 	bg_restore_ = new surface_restorer;
-	frame f(screen, title_, &style_, &frame_buttons, bg_restore_, 
+	dialog_frame frame(screen, title_, &style_, &frame_buttons, bg_restore_, 
 		help_button_.topic().empty() ? NULL : &help_button_);
-	dim_.frame_dim = f.layout(dim_.interior.x, dim_.interior.y, dim_.interior.w, dim_.interior.h);
-	f.draw();
+	dim_.frame = frame.layout(dim_.interior.x, dim_.interior.y, dim_.interior.w, dim_.interior.h);
+	frame.draw();
 }
 
 void dialog::update_widget_positions()
@@ -696,7 +696,7 @@ int dialog::process(dialog_process_info &info)
 	//      but that may be changed to allow right-click selection instead.
 	if (new_right_button && !info.right_button) {
 		if( standard_buttons_.empty()
-		|| (!point_in_rect(mousex,mousey,dim_.frame_dim.exterior)
+		|| (!point_in_rect(mousex,mousey,dim_.frame.exterior)
 		&& !(type_ == OK_ONLY && use_menu))) 
 			return CLOSE_DIALOG;
 	}

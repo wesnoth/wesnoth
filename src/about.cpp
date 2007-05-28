@@ -222,14 +222,14 @@ void show_about(display &disp, std::string campaign)
 
 		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
 		std::string style = "mainmenu";
-		SDL_Rect frame = {
+		SDL_Rect frame_area = {
 			map_rect.x + map_rect.w * 3/32,
 			map_rect.y + top_margin,
 			map_rect.w * 13 / 16,
 			map_rect.h - top_margin - bottom_margin 
 		};
-		gui::frame f(disp.video(), "", &style);
-		f.layout(frame.x, frame.y, frame.w, frame.h);
+		gui::dialog_frame f(disp.video(), "", &style);
+		f.layout(frame_area);
         f.draw_background();
 
 		// draw one screen full of text

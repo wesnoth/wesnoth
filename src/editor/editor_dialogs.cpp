@@ -71,7 +71,10 @@ std::string new_map_dialog(display& disp, const t_translation::t_letter fill_ter
 	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
 	surface_restorer restorer(&disp.video(),dialog_rect);
 
-	gui::draw_dialog_frame(xpos,ypos,width,height,disp.video());
+	gui::dialog_frame frame(disp.video());
+	frame.layout(xpos,ypos,width,height);
+	frame.draw_background();
+	frame.draw_border();
 
 	SDL_Rect title_rect = font::draw_text(NULL,screen_area(),24,font::NORMAL_COLOUR,
 					      _("Create New Map"),0,0);
@@ -184,7 +187,8 @@ std::string new_map_dialog(display& disp, const t_translation::t_letter fill_ter
 		if (draw) {
 			map_width = width_slider.value();
 			map_height = height_slider.value();
-			gui::draw_dialog_frame(xpos,ypos,width,height,disp.video());
+			frame.draw_background();
+			frame.draw_border();
 			title_rect = font::draw_text(&disp.video(),screen_area(),24,font::NORMAL_COLOUR,
 										 _("Create New Map"),
 										 xpos+(width-title_rect.w)/2,ypos+10);
@@ -244,7 +248,9 @@ void preferences_dialog(display &disp, config &prefs) {
 	buttons.push_back(&close_button);
 
 	surface_restorer restorer;
-	gui::draw_dialog(xpos,ypos,width,height,disp.video(),_("Preferences"),NULL,&buttons,&restorer);
+	gui::dialog_frame frame(disp.video(),_("Preferences"),NULL,&buttons,&restorer);
+	frame.layout(xpos,ypos,width,height);
+	frame.draw();
 
 	const std::string& scroll_label = _("Scroll Speed:");
 
@@ -346,7 +352,7 @@ void preferences_dialog(display &disp, config &prefs) {
 
 		if(redraw_all) {
 			restorer.cancel();
-			gui::draw_dialog(xpos,ypos,width,height,disp.video(),_("Preferences"),NULL,&buttons,&restorer);
+			frame.draw();
 			fullscreen_button.set_dirty();
 			close_button.set_dirty();
 			resolution_button.set_dirty();
@@ -426,7 +432,10 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
 	surface_restorer restorer(&disp.video(),dialog_rect);
 
-	gui::draw_dialog_frame(xpos,ypos,width,height,disp.video());
+	gui::dialog_frame frame(disp.video());
+	frame.layout(xpos,ypos,width,height);
+	frame.draw_background();
+	frame.draw_border();
 
 	SDL_Rect title_rect = font::draw_text(NULL,screen_area(),24,font::NORMAL_COLOUR,
 					      _("Resize Map"),0,0);
@@ -487,7 +496,9 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 		if (draw) {
 			map_width = width_slider.value();
 			map_height = height_slider.value();
-			gui::draw_dialog_frame(xpos,ypos,width,height,disp.video());
+			frame.draw_background();
+			frame.draw_border();
+
 			title_rect = font::draw_text(&disp.video(),screen_area(),24,font::NORMAL_COLOUR,
 										 _("Resize Map"),
 										 xpos+(width-title_rect.w)/2,ypos+10);

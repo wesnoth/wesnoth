@@ -54,7 +54,7 @@ private:
 	bool reset_to;
 };
 
-class frame {
+class dialog_frame {
 public:
 	//Static members
 	static const std::string default_style;
@@ -64,12 +64,16 @@ public:
 		dimension_measurements();
 		SDL_Rect interior, exterior, title, button_row;
 	};
-	frame(CVideo &video, const std::string& title="",
+	dialog_frame(CVideo &video, const std::string& title="",
                  const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
                  surface_restorer* restorer=NULL, button* help_button=NULL);
-	~frame();
+	~dialog_frame();
 
 	dimension_measurements layout(int x, int y, int w, int h);
+	dimension_measurements layout(SDL_Rect const& frame_area);
+	void set_layout(dimension_measurements &new_dim) { dim_ = new_dim; }
+	dimension_measurements get_layout() const { return dim_; }
+
 	void draw();
 
 	//called by draw
