@@ -390,9 +390,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 			start_of_line = true;
 		} else {
 
-			const std::string word = format_string + current_word;
-
-			const size_t word_width = line_size(word,font_size).w;
+			const size_t word_width = line_size(current_word,font_size).w;
 
 			line_width += word_width;
 
