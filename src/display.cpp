@@ -1481,10 +1481,18 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 	surface const dst(screen_.getSurface());
 
+	// If the terrain is off the map it shouldn't be included for 
+	// reachmap, fog, shroud and the grid.
+	// In the future it may not depend on whether the location is on the map
+	// but whether it's an _off^* terrain.
+	// (atm not too happy with how the grid looks)
+	// (the shroud has some glitches due to commented out code
+	// but enabling it looks worse)
+	const bool on_map = map_.on_board(loc);
 	const bool is_shrouded = shrouded(loc);
 	t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
 
-	if(!is_shrouded) {
+	if(!is_shrouded || !on_map) {
 		terrain = map_.get_terrain(loc);
 	}
 
@@ -1509,7 +1517,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		image_type = image::SEMI_BRIGHTENED;
 	}
 
-	if(!is_shrouded) {
+	if(!is_shrouded /*|| !on_map*/) {
 		draw_terrain_on_tile(loc,image_type,ADJACENT_BACKGROUND);
 
 		surface flag(get_flag(terrain,loc));
@@ -1548,11 +1556,11 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 	draw_footstep(loc,xpos,ypos);
 
-	if(!is_shrouded) {
+	if(!is_shrouded /*|| !on_map*/) {
 		draw_terrain_on_tile(loc,image_type,ADJACENT_FOREGROUND);
 	}
 
-	if(fogged(loc) && !is_shrouded) {
+	if(fogged(loc) && on_map && !is_shrouded) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -1560,7 +1568,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		}
 	}
 
-	if(!is_shrouded) {
+	if(!is_shrouded && on_map) {
 		draw_terrain_on_tile(loc,image_type,ADJACENT_FOGSHROUD);
 	}
 
@@ -1583,9 +1591,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		}
 	}
 
-	//find if this tile should be darkened or bightened (reach of a unit)
-	//only for tiles on the map, might also might not be shown on any _off^* terrain
-	if (!reach_map_.empty() && map_.on_board(loc)) {
+	if (!reach_map_.empty() && on_map) {
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach == reach_map_.end()) {
 			const surface img(image::get_image("terrain/darken.png",image::UNMASKED,image::NO_ADJUST_COLOUR));
@@ -1601,9 +1607,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		draw_movement_info(loc,xpos,ypos);
 	}
 
-	// The grid outside the map looks odd, maybe even need to avoid it on all
-	// _off^* terrains. NOTE not too happy with now it looks at the outer border
-	if(grid_ && map_.on_board(loc)) {
+	if(grid_ && on_map) {
 		surface grid_surface(image::get_image("terrain/grid.png"));
 		if(grid_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
