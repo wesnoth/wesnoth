@@ -54,7 +54,6 @@ AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([1.9 tar-ustar foreign])
 AM_GNU_GETTEXT([external])
 AC_PROG_RANLIB
-AM_PATH_PYTHON
 
 #######################################################################
 # Configuration options                                               #
@@ -408,6 +407,10 @@ if test "x$python" = "xyes"; then
 					AC_MSG_WARN(*** Python development libraries required, Python support disabled)
 				fi
 				AC_SUBST([PYTHON_LIBS])
+
+				AC_SUBST(pkgpythondir)
+				pkgpythondir=$PYTHON_PREFIX"/lib/python"$PYTHON_VERSION"/site-packages"
+
 			fi
 		fi
 	fi
