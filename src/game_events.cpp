@@ -1474,6 +1474,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(!surface.null()) {
 				to_show.set_image(surface, caption);
 			}
+			to_show.layout();
 			to_show.show_min_duration(lifetime);
 		}
 
@@ -1628,7 +1629,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(!options.empty()) {
 				to_show.set_menu(options);
 			}
-			to_show.layout(-1, map_area.y + 4);
+			gui::dialog::dimension_measurements dim = to_show.layout(-1, map_area.y + 4);
+			to_show.get_menu().set_width( dim.menu_width );
+			to_show.get_menu().set_max_width( dim.menu_width );
+			to_show.get_menu().wrap_words();
+			to_show.layout();
 			option_chosen = to_show.show_min_duration(lifetime);
 			LOG_DP << "showed dialog...\n";
 

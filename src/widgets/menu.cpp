@@ -425,6 +425,9 @@ void menu::set_max_height(const int new_max_height)
 void menu::set_max_width(const int new_max_width)
 {
 	max_width_ = new_max_width;
+	itemRects_.clear();
+	column_widths_.clear();
+	update_size();
 }
 
 size_t menu::max_items_onscreen() const
@@ -862,7 +865,9 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				}
 			} else {
 				column.x = xpos;
-				const std::string to_show = (use_ellipsis_) ?
+				const bool has_wrap = (str.find_first_of("\r\n") != std::string::npos);
+				//prevent ellipsis calculation if there is any line wrapping
+				const std::string to_show = (use_ellipsis_ && !has_wrap) ?
 					font::make_text_ellipsis(str, style_->get_font_size(), loc.w - (xpos - rect.x)) : str;
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
@@ -939,6 +944,32 @@ void menu::draw()
 
 	update_rect(location());
 	set_dirty(false);
+}
+
+void menu::wrap_words()
+{
+	if(!use_ellipsis_) {
+		return;
+	}
+	std::vector<int> const &widths = column_widths();
+	for(std::vector<item>::iterator i = items_.begin(); i != items_.end(); ++i) {
+		int space_remaining = max_width_;
+		for(size_t col = 0; col < i->fields.size() && col < widths.size(); ++col) {
+			std::string &to_wrap = i->fields[col];
+			if (!to_wrap.empty()) {
+				if(widths[col] > space_remaining && to_wrap[0] != IMAGE_PREFIX) {
+					to_wrap = font::word_wrap_text(to_wrap, style_->get_font_size(), space_remaining);
+					break;
+				}
+				space_remaining -= widths[col] + 5;
+			}
+		}
+	}
+	itemRects_.clear();
+	column_widths_.clear();
+	max_items_ = -1; // Force recalculation of the max items.
+	item_height_ = -1; // Force recalculation of the item height.
+	update_size();
 }
 
 int menu::hit(int x, int y) const

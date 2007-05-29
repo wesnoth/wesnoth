@@ -194,6 +194,7 @@ public:
 	void scroll(unsigned int pos);
 
 	void sort_by(int column);
+	void wrap_words();
 
 protected:
 	bool item_ends_with_image(const std::string& item) const;
