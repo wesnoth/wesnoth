@@ -543,6 +543,7 @@ void unit_recruited(gamemap::location& loc)
 		disp->delay(10);
 	}
 	u->second.set_standing(*disp,loc);
+	disp->highlight_hex(loc);
 }
 
 void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
