@@ -984,6 +984,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
+		const std::string time = cfg["time"];
+		if(time.empty() == false) {
+			char buf[50];
+			snprintf(buf,sizeof(buf),"%d",SDL_GetTicks());
+			var = buf;
+		}
+
 		// random generation works as follows:
 		// random=[comma delimited list]
 		// Each element in the list will be considered a separate choice,
