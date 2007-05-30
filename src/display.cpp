@@ -2305,13 +2305,9 @@ void display::place_temporary_unit(unit &u, const gamemap::location& loc)
 void display::remove_temporary_unit()
 {
 
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(temp_unit_loc_, adjacent);
 	invalidate(temp_unit_loc_);
-	for (int i = 0; i < 6; i++) {
-		invalidate(adjacent[i]);
-	}
-	// remove unit after invalidating...
+	// redraw with no location to get rid of haloes
+	temp_unit_->redraw_unit(*this,gamemap::location());
 	temp_unit_ = NULL;
 }
 void display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
