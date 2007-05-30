@@ -60,6 +60,8 @@ public:
 	static const std::string default_style;
 	static const int title_border_w, title_border_h;
 
+	int vertical_padding() const;
+
 	struct dimension_measurements {
 		dimension_measurements();
 		SDL_Rect interior, exterior, title, button_row;

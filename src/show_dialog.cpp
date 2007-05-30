@@ -101,7 +101,7 @@ dialog_frame::dialog_frame(CVideo &video, const std::string& title,
 	 bot_right_(image::get_image("misc/" + *dialog_style_ + "-border-botright.png",image::UNSCALED)),
 	 bg_(image::get_image("misc/" + *dialog_style_ + "-background.png",image::UNSCALED))
 {
-
+	have_border_ = top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL;
 }
 
 dialog_frame::~dialog_frame()
@@ -113,6 +113,22 @@ dialog_frame::dimension_measurements::dimension_measurements() :
 
 dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) {
 	return layout(rect.x, rect.y, rect.w, rect.h);
+}
+
+int dialog_frame::vertical_padding() const {
+	int padding = 0;
+	if(buttons_ != NULL) {
+		for(std::vector<button*>::const_iterator b = buttons_->begin(); b != buttons_->end(); ++b) {
+			padding = maximum<int>((**b).height() + 2*ButtonVPadding, padding);
+		}
+	}
+	if(have_border_) {
+		padding += bot_->h + top_->h;
+	}
+	if(!title_.empty()) {
+		padding += font::get_max_height(font::SIZE_LARGE) + 2*dialog_frame::title_border_h;
+	}
+	return padding;
 }
 
 dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, int h) {
@@ -145,7 +161,6 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	h += dim_.title.h + dim_.button_row.h;
 	dim_.button_row.x += x + w;
 
-	have_border_ = top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL;
 	SDL_Rect bounds = screen_area();
 	if(have_border_) {
 		bounds.x += left_->w;

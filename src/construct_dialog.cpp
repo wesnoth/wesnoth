@@ -99,8 +99,8 @@ private:
 
 namespace gui {
 
-dialog::dimension_measurements::dimension_measurements() :
-	x(-1), y(-1), interior(empty_rect), message(empty_rect), textbox(empty_rect)
+dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), menu_height(-1), 
+	interior(empty_rect), message(empty_rect), textbox(empty_rect)
 {
 	//note: this is not defined in the header file to C++ ODR (one-definition rule)
 	//since each inclusion of the header file uses a different version of empty_rect 
@@ -357,6 +357,9 @@ void dialog::update_widget_positions()
 		menu_->set_numeric_keypress_selection(text_widget_ == NULL);
 		menu_->set_width( dim_.menu_width );
 		menu_->set_max_width( dim_.menu_width ); //lock the menu width
+		if(dim_.menu_height >= 0) {
+			menu_->set_max_height( dim_.menu_height );
+		}
 		menu_->set_location( dim_.menu_x, dim_.menu_y );
 	}
 	if(image_) {
@@ -501,9 +504,18 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 
 	const size_t text_and_image_height = image_height > total_text_height ? image_height : total_text_height;
 
-	const int total_height = text_and_image_height +
-	                         padding_height + menu_->height() +
-							 text_widget_height + check_button_height;
+	int total_height = text_and_image_height + padding_height + menu_->height() +
+		text_widget_height + check_button_height;
+
+	const int max_height = scr->h - get_frame().vertical_padding();
+	if(total_height > max_height) {
+		//try to reign in the menu height a little bit
+		const int menu_height = menu_->height();
+		if(menu_height > 0) {
+			dim.menu_height = maximum<int>(0, max_height - total_height + menu_height);
+			total_height -= menu_height - dim.menu_height;
+		}
+	}
 
 	dim.interior.w = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
 	dim.interior.h = maximum<int>(total_height,int(preview_pane_height));
