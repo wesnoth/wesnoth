@@ -150,8 +150,8 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	if(have_border_) {
 		bounds.x += left_->w;
 		bounds.y += top_->h;
-		bounds.w -= left_->w + right_->w;
-		bounds.h -= top_->h + bot_->h;
+		bounds.w -= left_->w;
+		bounds.h -= top_->h;
 	}
 	if(x < bounds.x) {
 		w += x;
