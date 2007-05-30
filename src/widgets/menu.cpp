@@ -948,12 +948,16 @@ void menu::draw()
 
 void menu::wrap_words()
 {
-	if(!use_ellipsis_) {
+	int total_width = max_width_ - (style_->get_cell_padding() + (2 * style_->get_thickness()));
+	if(has_scrollbar()) {
+		total_width -= scrollbar_width();
+	}
+	if(total_width <= 0) {
 		return;
 	}
 	std::vector<int> const &widths = column_widths();
 	for(std::vector<item>::iterator i = items_.begin(); i != items_.end(); ++i) {
-		int space_remaining = max_width_;
+		int space_remaining = total_width;
 		for(size_t col = 0; col < i->fields.size() && col < widths.size(); ++col) {
 			std::string &to_wrap = i->fields[col];
 			if (!to_wrap.empty()) {
