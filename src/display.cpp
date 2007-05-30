@@ -1288,7 +1288,7 @@ void display::draw_report(reports::TYPE report_num)
 							tod = status_.get_time_of_day(false,mouseoverHex_);
 						}
 						if(tod.bonus_modified > 0) {
-							surface tod_bright(image::get_image("misc/tod-bright.png",image::UNSCALED));
+							surface tod_bright(image::get_image(game_config:: tod_bright_image,image::UNSCALED));
 							if(tod_bright != NULL) {
 								draw_image_for_report(tod_bright,area);
 //								std::stringstream mod_str;
@@ -1548,8 +1548,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 			}
 		}
 	} else {
-		//FIXME: shouldn't void.png and fog.png be in the program configuration?
-		surface surface(image::get_image("terrain/void.png"));
+		surface surface(image::get_image(game_config::void_image));
 
 		if(surface == NULL) {
 			ERR_DP << "Could not get void surface!\n";
@@ -1567,7 +1566,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	}
 
 	if(fogged(loc) && on_map && !is_shrouded) {
-		const surface fog_surface(image::get_image("terrain/fog.png"));
+		const surface fog_surface(image::get_image(game_config::fog_image));
 		if(fog_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(fog_surface,NULL,dst,&dstrect);
@@ -1600,7 +1599,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	if (!reach_map_.empty() && on_map) {
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach == reach_map_.end()) {
-			const surface img(image::get_image("terrain/darken.png",image::UNMASKED,image::NO_ADJUST_COLOUR));
+			const surface img(image::get_image(game_config::unreachable_image,image::UNMASKED,image::NO_ADJUST_COLOUR));
 			if(img != NULL) {
 				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 				SDL_BlitSurface(img,NULL,dst,&dstrect);
@@ -1614,7 +1613,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	}
 
 	if(grid_ && on_map) {
-		surface grid_surface(image::get_image("terrain/grid.png"));
+		surface grid_surface(image::get_image(game_config::grid_image));
 		if(grid_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(grid_surface,NULL,dst,&dstrect);
@@ -1944,7 +1943,7 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 	} else if(terrain_type == ADJACENT_BACKGROUND){
 		// this should only happen with the off map tiles and now 
 		// return the void image. NOTE this is a temp hack
-		const surface surface(image::get_image("terrain/void.png"));
+		const surface surface(image::get_image(game_config::void_image));
 		wassert(!surface.null());
 		if (!surface.null()) {
 			res.push_back(surface);

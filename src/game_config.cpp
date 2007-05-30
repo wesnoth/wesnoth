@@ -45,6 +45,10 @@ namespace game_config
 	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;
 
 	std::string terrain_mask_image = "terrain/alphamask.png";
+	std::string grid_image = "terrain/grid.png";
+	std::string unreachable_image = "terrain/darken.png";
+	std::string void_image = "terrain/void.png";
+	std::string fog_image = "terrain/fog.png";
 
 	std::string energy_image = "misc/bar-energy.png";
 	std::string moved_ball_image = "misc/ball-moved.png";
@@ -60,8 +64,8 @@ namespace game_config
 
 	std::vector<std::string> foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
 
-	std::string observer_image;
-
+	std::string observer_image = "misc/eye.png";
+	std::string tod_bright_image = "misc/tod-bright.png";
 	std::string unchecked_menu_image = "buttons/checkbox.png";
 	std::string checked_menu_image = "buttons/checkbox-pressed.png";
 	std::string wml_menu_image = "buttons/WML-custom.png";
@@ -154,8 +158,13 @@ namespace game_config
 		foot_right_n = utils::split(v["footprint_right_n"]);
 
 		terrain_mask_image = v["terrain_mask_image"];
+		grid_image = v["grid_image"];
+		unreachable_image = v["unreachable_image"];
+		void_image = v["void_image"];
+		fog_image = v["fog_image"];
 
 		observer_image = v["observer_image"];
+		tod_bright_image = v["tod_bright_image"];
 
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];

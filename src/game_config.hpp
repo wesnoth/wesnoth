@@ -44,7 +44,8 @@ namespace game_config
 	  moved_ball_image, unmoved_ball_image, partmoved_ball_image,
 	  enemy_ball_image, ally_ball_image, energy_image,
 	  flag_image, flag_icon_image, cross_image,
-	  terrain_mask_image, observer_image,
+	  terrain_mask_image, grid_image, unreachable_image, void_image, fog_image,
+	  observer_image, tod_bright_image,
 	  checked_menu_image, unchecked_menu_image, wml_menu_image, level_image, ellipsis_image;
 
   	extern std::string flag_rgb;
