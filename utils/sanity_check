@@ -12,14 +12,18 @@ then
 		"this tool must be run from the Wesnoth utils directory."
 	exit 1
 fi
+problems=no
 
 # First sanity check:
 
 echo "Checking POTFILES correctness..."
+
+potfiles="po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in"
+
 # Gather the list of sources
 find src -name '*.cpp' -print | sort >/tmp/sschk$$_sources
 # See what's in the POTFILES
-sort -u po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in >/tmp/sschk$$_potmembers
+sort -u $potfiles >/tmp/sschk$$_potmembers
 # Figure out which sources are not listed but should be
 missing=`comm -23 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
 # Find invalid potfile entries
@@ -27,16 +31,27 @@ invalid=`comm -13 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
 if [ $missing ]
 then
     echo "  Missing from the POTFILE.in files: $missing"
+    problems=yes
 else
     echo "  All .cpp files have POTFILE.in entries." 
 fi 
 if [ $invalid ]
 then
     echo "  Invalid POTFILE entries: $invalid"
+    problems=yes
 else
     echo "  All POTFILE.in entries are valid." 
 fi
+
 # Check for duplicates
+sort $potfiles >/tmp/sschk$$_potsorted
+duplicates=`comm -23 /tmp/sschk$$_potsorted /tmp/sschk$$_potmembers | tr '\012' ' '`
+if [ $duplicates ]
+then
+	echo "  Duplicates within the entire POTFILES set: $duplicates"
+	problems=yes
+fi
+
 for file in po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in
 do
 	sort $file >/tmp/sschk$$_sorted
@@ -45,8 +60,10 @@ do
 	if [ $duplicates ]
 	then
 		echo "  Duplicates within $file: $duplicates"
+		problems=yes
 	fi
 done
+
 # Check on the editor subdirectory
 find src/editor -name '*.cpp' -print | sort >/tmp/sschk$$_sources
 # See what's in the POTFILES
@@ -58,12 +75,14 @@ invalid=`comm -13 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
 if [ $missing ]
 then
     echo "  Missing from the editor POTFILE.in: $missing"
+    problems=yes
 else
     echo "  All editor .cpp files have po/wesnoth-editor/POTFILE.in entries." 
 fi 
 if [ $invalid ]
 then
     echo "  Invalid po/wesnoth-editor/POTFILE.in entries: $invalid"
+    problems=yes
 else
     echo "  All po/wesnoth-editor/POTFILE.in entries are valid." 
 fi
@@ -71,4 +90,9 @@ fi
 # More sanity checks can go here...
 
 # Cleanup
-rm /tmp/sschk*
+if [ $problems = 'no' ]
+then
+	echo "All sanity checks passed."
+fi
+
+rm /tmp/sschk$$_*
