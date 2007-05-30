@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# sanity_check -- general sanity checker for the source and translations
+#
+
+# This had better take us to the top-level source directory.  
+# Otherwise, confusion will ensue. 
+cd ..
+if [ `basename $PWD` != 'wesnoth' ]
+then
+	echo "sanity_check: " \
+		"this tool must be run from the Wesnoth utils directory."
+	exit 1
+fi
+
+# First sanity check:
+
+echo "Checking POTFILES correctness..."
+# Gather the list of sources
+find src -name '*cpp' -print | sort >/tmp/sschk$$_sources
+# See what's in the POTFILES
+sort -u po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in >/tmp/sschk$$_potmembers
+# Figure out which sources are not listed but should be
+missing=`comm -23 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
+# Find invalid potfile entries
+invalid=`comm -13 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
+if [ $missing ]
+then
+    echo "Missing from the POTFILEs: $missing"
+else
+    echo "All .cpp files have POTFILE.in entries." 
+fi 
+if [ $invalid ]
+then
+    echo "Invalid POTFILE entries: $invalid"
+else
+    echo "All POTFILE.in entries are valid." 
+fi
+
+# More sanity checks can go here...
