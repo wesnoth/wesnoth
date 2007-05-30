@@ -261,6 +261,7 @@ void display::highlight_hex(gamemap::location hex)
 	}
 }
 
+// This function use the screen as reference
 const gamemap::location display::hex_clicked_on(int xclick, int yclick, 
 		gamemap::location::DIRECTION* nearest_hex, 
 		gamemap::location::DIRECTION* second_nearest_hex) const
@@ -276,6 +277,8 @@ const gamemap::location display::hex_clicked_on(int xclick, int yclick,
 	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick, nearest_hex, second_nearest_hex);
 }
 
+
+// This function use the rect of map_area as reference
 const gamemap::location display::pixel_position_to_hex(int x, int y, 
 		gamemap::location::DIRECTION* nearest_hex, 
 		gamemap::location::DIRECTION* second_nearest_hex) const
@@ -322,8 +325,11 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 	const gamemap::location res(x_base + x_modifier, y_base + y_modifier);
 
 	if(nearest_hex != NULL) {
-		const int centerx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/2;
-		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2;
+		// our x and y use the map_area as reference
+		// and the coorfinates given by get_location use the screen as reference
+		// so we need to convert it
+		const int centerx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/2 - hex_width();
+		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2 - hex_size();
 		const int x_offset = x - centerx;
 		const int y_offset = y - centery;
 		if(y_offset > 0) {
