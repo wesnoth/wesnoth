@@ -890,11 +890,7 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 			continue;
 		}
 
-		if(adj[n] == selected_hex_) {
-			return selected_hex_;
-		}
-
-		if(find_unit(adj[n]) != units_.end()) {
+		if(adj[n] != selected_hex_ && find_unit(adj[n]) != units_.end()) {
 			continue;
 		}
 
