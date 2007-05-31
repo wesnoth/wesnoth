@@ -12,6 +12,7 @@ Version 1.3.3+svn:
  * WML engine
    * removed deprecated keys image_healing and image_halo_healing
    * empty user_description now remains empty unless generate_description set (bug 8522).
+   * set_variable has the key time=stamp now, to get a timestamp in milliseconds
  * user interface:
    * fixed a lag in the path rendering when there is a lot of units
    * maps smaller than the screen are now shown centered on the screen

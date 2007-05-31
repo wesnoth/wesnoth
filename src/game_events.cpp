@@ -984,8 +984,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
+		// Note maybe we add more options later eg strftime formatting
+		// for now make the stamp mandatory
 		const std::string time = cfg["time"];
-		if(time.empty() == false) {
+		if(time == "stamp") {
 			char buf[50];
 			snprintf(buf,sizeof(buf),"%d",SDL_GetTicks());
 			var = buf;
