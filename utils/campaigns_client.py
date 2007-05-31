@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-import socket, struct, sys, wmldata, glob, os.path, shutil, threading, re
+import socket, struct, sys, glob, os.path, shutil, threading, re
+# in case the wesnoth python package has not been installed
+sys.path.append("data/tools")
+import wesnoth.wmldata
 
 # First port listed will bw used as default.
 portmap = (("15003", "1.3.x"), ("15004", "1.2.x"))
