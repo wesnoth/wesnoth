@@ -27,7 +27,7 @@
 # terrain coding it might get confused.
 
 import sys, os, re, getopt, curses.ascii, string, copy
-from wmltools import *
+from wesnoth.wmltools import *
 
 filemoves = {
     # Older includes all previous to 1.3.1.

@@ -50,7 +50,7 @@
 # The reporting format is compatible with GNU Emacs compile mode.
 
 import sys, os, time, re, getopt, md5
-from wmltools import *
+from wesnoth.wmltools import *
 
 def interpret(lines, css):
     "Interpret the ! convention for .cfg comments."

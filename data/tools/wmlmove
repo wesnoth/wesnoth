@@ -38,7 +38,7 @@ translation files.
 ''' 
 
 import sys, os, time, re, getopt, sre_constants, md5
-import wmltools
+import wesnoth.wmltools
 
 if __name__ == "__main__":
     # Process options.
