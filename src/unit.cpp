@@ -279,10 +279,6 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	  underlying_description_ = buf;
 	}
 
-	if(custom_unit_description_.empty()){
-	  custom_unit_description_=type()->language_name();
-	}
-
 	unrenamable_ = false;
 	anim_ = NULL;
 	getsHit_=0;
@@ -325,10 +321,6 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	    snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(),(SDL_GetTicks()));
 	  }
 	  underlying_description_ = buf;
-	}
-
-	if(custom_unit_description_.empty()){
-	  custom_unit_description_=type()->language_name();
 	}
 
 	unrenamable_ = false;

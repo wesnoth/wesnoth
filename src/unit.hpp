@@ -76,7 +76,7 @@ class unit
 		const std::string& name() const { if (description_.empty()) return language_name(); else return description_; }
 		void rename(const std::string& name) { if (!unrenamable_) custom_unit_description_ = name; }
 		// the unit type name
-		const std::string& description() const { return (custom_unit_description_ != "") ? custom_unit_description_ : description_; }
+  const std::string& description() const { return (custom_unit_description_); }
 		const std::string& underlying_description() const { return underlying_description_; }
 		const t_string& language_name() const { return language_name_; }
 		const std::string& undead_variation() const { return undead_variation_; }
