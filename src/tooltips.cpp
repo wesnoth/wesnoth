@@ -134,9 +134,11 @@ void clear_tooltips(const SDL_Rect& rect)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
 		if(rectangles_overlap(i->rect,rect)) {
+			if (i==current_tooltip) {
+				clear_tooltip();
+			}
 			i = tips.erase(i);
 			current_tooltip = tips.end();
-			clear_tooltip();
 		} else {
 			++i;
 		}
