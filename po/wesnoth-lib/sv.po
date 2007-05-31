@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-13 13:41+0200\n"
+"POT-Creation-Date: 2007-05-31 15:07+0200\n"
 "PO-Revision-Date: 2007-05-01 23:06+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
-#: src/editor/editor_dialogs.cpp:452
+#: src/editor/editor_dialogs.cpp:461
 msgid "OK"
 msgstr "OK"
 
@@ -32,8 +32,8 @@ msgid "No"
 msgstr "Nej"
 
 #: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
-#: src/editor/editor_dialogs.cpp:99 src/editor/editor_dialogs.cpp:451
-#: src/show_dialog.cpp:400 src/show_dialog.cpp:495
+#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:460
+#: src/show_dialog.cpp:428 src/show_dialog.cpp:525
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -41,7 +41,7 @@ msgstr "Avbryt"
 msgid "Close"
 msgstr "Stäng"
 
-#: src/construct_dialog.cpp:778 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Hjälp"
 
@@ -49,81 +49,81 @@ msgstr "Hjälp"
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Dina ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:189
+#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
 msgid "Create New Map"
 msgstr "Skapa ny karta"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:434
-#: src/mapgen_dialog.cpp:110
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:443
+#: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Bredd:"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:435
-#: src/mapgen_dialog.cpp:111
+#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:444
+#: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Höjd:"
 
-#: src/editor/editor_dialogs.cpp:96
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate New Map"
 msgstr "Generera ny karta"
 
-#: src/editor/editor_dialogs.cpp:97
+#: src/editor/editor_dialogs.cpp:100
 msgid "Generate Random Map"
 msgstr "Generera slumpkarta"
 
-#: src/editor/editor_dialogs.cpp:98
+#: src/editor/editor_dialogs.cpp:101
 msgid "Random Generator Settings"
 msgstr "Inställningar för slumpgenerator"
 
-#: src/editor/editor_dialogs.cpp:175
+#: src/editor/editor_dialogs.cpp:178
 msgid "Map creation failed."
 msgstr "Kunde inte skapa karta."
 
-#: src/editor/editor_dialogs.cpp:241 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: src/editor/editor_dialogs.cpp:247 src/editor/editor_dialogs.cpp:349
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:1158
+#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "Rullningsfart:"
 
-#: src/editor/editor_dialogs.cpp:306 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:312 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "Helskärm på/av"
 
-#: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:319 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "Visa rutnät"
 
-#: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:326 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "Videoläge"
 
-#: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:329 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "Snabbtangenter"
 
-#: src/editor/editor_dialogs.cpp:432 src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:441 src/editor/editor_dialogs.cpp:503
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "Ändra kartans storlek"
 
-#: src/editor/editor_dialogs.cpp:535
+#: src/editor/editor_dialogs.cpp:546
 msgid "X-Axis"
 msgstr "X-axel"
 
-#: src/editor/editor_dialogs.cpp:536
+#: src/editor/editor_dialogs.cpp:547
 msgid "Y-Axis"
 msgstr "Y-axel"
 
-#: src/editor/editor_dialogs.cpp:537
+#: src/editor/editor_dialogs.cpp:548
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Flippa (detta kan ändra kartans dimensioner):"
 
@@ -135,19 +135,19 @@ msgstr "Fil: "
 msgid "Delete File"
 msgstr "Radera fil"
 
-#: src/filechooser.cpp:54 src/filechooser.cpp:166
+#: src/filechooser.cpp:54 src/filechooser.cpp:168
 msgid "New Folder"
 msgstr "Ny mapp"
 
-#: src/filechooser.cpp:154
+#: src/filechooser.cpp:156
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
 
-#: src/filechooser.cpp:167
+#: src/filechooser.cpp:169
 msgid "Name: "
 msgstr "Namn: "
 
-#: src/filechooser.cpp:172
+#: src/filechooser.cpp:174
 msgid "Creation of the directory failed."
 msgstr "Kunde ej skapa mapp."
 
@@ -455,47 +455,47 @@ msgstr "Avsluta"
 msgid "Map Generator"
 msgstr "Kartgenerator"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Players:"
 msgstr "Spelare:"
 
-#: src/mapgen_dialog.cpp:112
+#: src/mapgen_dialog.cpp:114
 msgid "Number of Hills:"
 msgstr "Antal kullar:"
 
-#: src/mapgen_dialog.cpp:113
+#: src/mapgen_dialog.cpp:115
 msgid "Max Hill Size:"
 msgstr "Max kullstorlek:"
 
-#: src/mapgen_dialog.cpp:114
+#: src/mapgen_dialog.cpp:116
 msgid "Villages:"
 msgstr "Byar:"
 
-#: src/mapgen_dialog.cpp:115
+#: src/mapgen_dialog.cpp:117
 msgid "Castle Size:"
 msgstr "Borgstorlek:"
 
-#: src/mapgen_dialog.cpp:116
+#: src/mapgen_dialog.cpp:118
 msgid "Landform:"
 msgstr "Landskapstyp:"
 
-#: src/mapgen_dialog.cpp:236
+#: src/mapgen_dialog.cpp:238
 msgid "Roads Between Castles"
 msgstr "Vägar mellan borgar"
 
-#: src/mapgen_dialog.cpp:296
+#: src/mapgen_dialog.cpp:298
 msgid "/1000 tiles"
 msgstr "/1000 rutor"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Coastal"
 msgstr "Kustnära"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Inland"
 msgstr "Inland"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Island"
 msgstr "Ö"
 
@@ -880,46 +880,46 @@ msgstr "Välj upplösning"
 msgid "Hotkey Settings"
 msgstr "Snabbtangentsinställningar"
 
-#: src/preferences_display.cpp:1281 src/preferences_display.cpp:1334
+#: src/preferences_display.cpp:1283 src/preferences_display.cpp:1339
 msgid "Press desired Hotkey"
 msgstr "Tryck på önskad snabbtangent"
 
-#: src/preferences_display.cpp:1299
+#: src/preferences_display.cpp:1301
 msgid "Action"
 msgstr "Handling"
 
-#: src/preferences_display.cpp:1299
+#: src/preferences_display.cpp:1301
 msgid "Binding"
 msgstr "Koppling"
 
-#: src/preferences_display.cpp:1311
+#: src/preferences_display.cpp:1313
 msgid "Change Hotkey"
 msgstr "Ställ in snabbtangenter"
 
-#: src/preferences_display.cpp:1314
+#: src/preferences_display.cpp:1316
 msgid "Save Hotkeys"
 msgstr "Spara snabbtangenter"
 
-#: src/preferences_display.cpp:1361
+#: src/preferences_display.cpp:1366
 msgid "This Hotkey is already in use."
 msgstr "Den tangenten används redan till något annat."
 
-#: src/preferences_display.cpp:1394
+#: src/preferences_display.cpp:1399
 msgid "Saved Theme Preference: "
 msgstr "Sparad temainställning: "
 
-#: src/preferences_display.cpp:1400
+#: src/preferences_display.cpp:1405
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Det nya temat träder i kraft vid nästa spel."
 
-#: src/preferences_display.cpp:1404
+#: src/preferences_display.cpp:1409
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Inga kända teman. Försök att ändra i ett existerande spel."
 
-#: src/show_dialog.cpp:314
+#: src/show_dialog.cpp:342
 msgid "Error"
 msgstr "Fel"
 
-#: src/show_dialog.cpp:423
+#: src/show_dialog.cpp:453
 msgid "KB"
 msgstr "KB"

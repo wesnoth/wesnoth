@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-13 13:41+0200\n"
+"POT-Creation-Date: 2007-05-31 15:07+0200\n"
 "PO-Revision-Date: 2006-06-15 17:19+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
-#: src/editor/editor_dialogs.cpp:452
+#: src/editor/editor_dialogs.cpp:461
 msgid "OK"
 msgstr "Sane"
 
@@ -31,8 +31,8 @@ msgid "No"
 msgstr "Non"
 
 #: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
-#: src/editor/editor_dialogs.cpp:99 src/editor/editor_dialogs.cpp:451
-#: src/show_dialog.cpp:400 src/show_dialog.cpp:495
+#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:460
+#: src/show_dialog.cpp:428 src/show_dialog.cpp:525
 msgid "Cancel"
 msgstr "Abrogare"
 
@@ -40,7 +40,7 @@ msgstr "Abrogare"
 msgid "Close"
 msgstr "Claudere"
 
-#: src/construct_dialog.cpp:778 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Subsidium"
 
@@ -48,81 +48,81 @@ msgstr "Subsidium"
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Mutationes tuae ad chartam perdentur. Visne pergere?"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:189
+#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
 msgid "Create New Map"
 msgstr "Novam Chartam Creare"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:434
-#: src/mapgen_dialog.cpp:110
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:443
+#: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Amplitudo: "
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:435
-#: src/mapgen_dialog.cpp:111
+#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:444
+#: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Altitudo: "
 
-#: src/editor/editor_dialogs.cpp:96
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate New Map"
 msgstr "Chartam Novam Generare"
 
-#: src/editor/editor_dialogs.cpp:97
+#: src/editor/editor_dialogs.cpp:100
 msgid "Generate Random Map"
 msgstr "Chartam Fortuitam Generare"
 
-#: src/editor/editor_dialogs.cpp:98
+#: src/editor/editor_dialogs.cpp:101
 msgid "Random Generator Settings"
 msgstr "Impostationes Generatoris Fortuiti"
 
-#: src/editor/editor_dialogs.cpp:175
+#: src/editor/editor_dialogs.cpp:178
 msgid "Map creation failed."
 msgstr "Creatio chartae fefellit."
 
-#: src/editor/editor_dialogs.cpp:241 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "Fenestram Claudere"
 
-#: src/editor/editor_dialogs.cpp:247 src/editor/editor_dialogs.cpp:349
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:1158
+#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "Anteposita"
 
-#: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "Velocitas Gyri:"
 
-#: src/editor/editor_dialogs.cpp:306 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:312 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "Scrinium Totum vel in Fenestra Permutare"
 
-#: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:319 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "Rete Monstare"
 
-#: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:326 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "Modus Visivus"
 
-#: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:329 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "Claves Notarum"
 
-#: src/editor/editor_dialogs.cpp:432 src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:441 src/editor/editor_dialogs.cpp:503
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "Magnitudinem Chartae Mutare"
 
-#: src/editor/editor_dialogs.cpp:535
+#: src/editor/editor_dialogs.cpp:546
 msgid "X-Axis"
 msgstr "Axis X"
 
-#: src/editor/editor_dialogs.cpp:536
+#: src/editor/editor_dialogs.cpp:547
 msgid "Y-Axis"
 msgstr "Axis Y"
 
-#: src/editor/editor_dialogs.cpp:537
+#: src/editor/editor_dialogs.cpp:548
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Volvi (hoc dimensiones chartae mutare potest)"
 
@@ -134,19 +134,19 @@ msgstr ""
 msgid "Delete File"
 msgstr "Pligam Delere"
 
-#: src/filechooser.cpp:54 src/filechooser.cpp:166
+#: src/filechooser.cpp:54 src/filechooser.cpp:168
 msgid "New Folder"
 msgstr ""
 
-#: src/filechooser.cpp:154
+#: src/filechooser.cpp:156
 msgid "Deletion of the file failed."
 msgstr "Deletio pligae fallitur."
 
-#: src/filechooser.cpp:167
+#: src/filechooser.cpp:169
 msgid "Name: "
 msgstr ""
 
-#: src/filechooser.cpp:172
+#: src/filechooser.cpp:174
 #, fuzzy
 msgid "Creation of the directory failed."
 msgstr "Deletio pligae fallitur."
@@ -458,48 +458,48 @@ msgstr "Relinquere"
 msgid "Map Generator"
 msgstr "Generator Chartarum"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Players:"
 msgstr "Lusores:"
 
-#: src/mapgen_dialog.cpp:112
+#: src/mapgen_dialog.cpp:114
 msgid "Number of Hills:"
 msgstr "Numerus Collum:"
 
-#: src/mapgen_dialog.cpp:113
+#: src/mapgen_dialog.cpp:115
 msgid "Max Hill Size:"
 msgstr "Magnitudo Maxima Collum:"
 
-#: src/mapgen_dialog.cpp:114
+#: src/mapgen_dialog.cpp:116
 msgid "Villages:"
 msgstr "Pagi: "
 
-#: src/mapgen_dialog.cpp:115
+#: src/mapgen_dialog.cpp:117
 #, fuzzy
 msgid "Castle Size:"
 msgstr "Magnitudo Maxima Collum:"
 
-#: src/mapgen_dialog.cpp:116
+#: src/mapgen_dialog.cpp:118
 msgid "Landform:"
 msgstr "Forma terrae: "
 
-#: src/mapgen_dialog.cpp:236
+#: src/mapgen_dialog.cpp:238
 msgid "Roads Between Castles"
 msgstr "Viae Inter Castella"
 
-#: src/mapgen_dialog.cpp:296
+#: src/mapgen_dialog.cpp:298
 msgid "/1000 tiles"
 msgstr "pro M tegulis"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Coastal"
 msgstr "Maritima"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Inland"
 msgstr "Mediterraneua"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Island"
 msgstr "Insula"
 
@@ -907,48 +907,48 @@ msgstr "Resolutionem Eligere"
 msgid "Hotkey Settings"
 msgstr "Impostationes Clavium Notarum"
 
-#: src/preferences_display.cpp:1281 src/preferences_display.cpp:1334
+#: src/preferences_display.cpp:1283 src/preferences_display.cpp:1339
 msgid "Press desired Hotkey"
 msgstr "Premere Clavem Notarum volutam"
 
-#: src/preferences_display.cpp:1299
+#: src/preferences_display.cpp:1301
 msgid "Action"
 msgstr "Actio"
 
-#: src/preferences_display.cpp:1299
+#: src/preferences_display.cpp:1301
 msgid "Binding"
 msgstr "Adligatio"
 
-#: src/preferences_display.cpp:1311
+#: src/preferences_display.cpp:1313
 msgid "Change Hotkey"
 msgstr "Clavem Notarum Mutare"
 
-#: src/preferences_display.cpp:1314
+#: src/preferences_display.cpp:1316
 msgid "Save Hotkeys"
 msgstr "Claves Notarum Servare"
 
-#: src/preferences_display.cpp:1361
+#: src/preferences_display.cpp:1366
 msgid "This Hotkey is already in use."
 msgstr "Haec Clavis Notarum iam usum habet."
 
-#: src/preferences_display.cpp:1394
+#: src/preferences_display.cpp:1399
 msgid "Saved Theme Preference: "
 msgstr "Impostatio Modi Visivi Servata:"
 
-#: src/preferences_display.cpp:1400
+#: src/preferences_display.cpp:1405
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Novum modum visivum effectum habebit cum primum lusum restues vel incipies."
 
-#: src/preferences_display.cpp:1404
+#: src/preferences_display.cpp:1409
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Nulli modi visivi noti.  Forsitan potes mutare inter lusum existens."
 
-#: src/show_dialog.cpp:314
+#: src/show_dialog.cpp:342
 msgid "Error"
 msgstr "Mendum"
 
-#: src/show_dialog.cpp:423
+#: src/show_dialog.cpp:453
 msgid "KB"
 msgstr "KB"
 

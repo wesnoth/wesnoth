@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-13 13:41+0200\n"
+"POT-Creation-Date: 2007-05-31 15:07+0200\n"
 "PO-Revision-Date: 2007-02-21 22:34+0900\n"
 "Last-Translator: Claudio Terra <cbterra@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
-#: src/editor/editor_dialogs.cpp:452
+#: src/editor/editor_dialogs.cpp:461
 msgid "OK"
 msgstr "OK"
 
@@ -31,8 +31,8 @@ msgid "No"
 msgstr "Não"
 
 #: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
-#: src/editor/editor_dialogs.cpp:99 src/editor/editor_dialogs.cpp:451
-#: src/show_dialog.cpp:400 src/show_dialog.cpp:495
+#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:460
+#: src/show_dialog.cpp:428 src/show_dialog.cpp:525
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -40,7 +40,7 @@ msgstr "Cancelar"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/construct_dialog.cpp:778 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Ajuda"
 
@@ -48,81 +48,81 @@ msgstr "Ajuda"
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Suas modificações feitas no mapa serão perdidas. Continuar?"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:189
+#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
 msgid "Create New Map"
 msgstr "Criar novo mapa"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:434
-#: src/mapgen_dialog.cpp:110
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:443
+#: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Largura:"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:435
-#: src/mapgen_dialog.cpp:111
+#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:444
+#: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Altura:"
 
-#: src/editor/editor_dialogs.cpp:96
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate New Map"
 msgstr "Gerar novo mapa"
 
-#: src/editor/editor_dialogs.cpp:97
+#: src/editor/editor_dialogs.cpp:100
 msgid "Generate Random Map"
 msgstr "Gerar mapa aleatório"
 
-#: src/editor/editor_dialogs.cpp:98
+#: src/editor/editor_dialogs.cpp:101
 msgid "Random Generator Settings"
 msgstr "Configurações do gerador aleatório"
 
-#: src/editor/editor_dialogs.cpp:175
+#: src/editor/editor_dialogs.cpp:178
 msgid "Map creation failed."
 msgstr "Falha na criação do mapa"
 
-#: src/editor/editor_dialogs.cpp:241 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "Fechar Janela"
 
-#: src/editor/editor_dialogs.cpp:247 src/editor/editor_dialogs.cpp:349
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:1158
+#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "Velocidade de scroll:"
 
-#: src/editor/editor_dialogs.cpp:306 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:312 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "Alternar Tela Cheia"
 
-#: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:319 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "Mostrar Grade"
 
-#: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:326 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "Modo de vídeo"
 
-#: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:329 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "Teclas de Atalho"
 
-#: src/editor/editor_dialogs.cpp:432 src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:441 src/editor/editor_dialogs.cpp:503
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "Redimensionar Mapa"
 
-#: src/editor/editor_dialogs.cpp:535
+#: src/editor/editor_dialogs.cpp:546
 msgid "X-Axis"
 msgstr "Eixo X"
 
-#: src/editor/editor_dialogs.cpp:536
+#: src/editor/editor_dialogs.cpp:547
 msgid "Y-Axis"
 msgstr "Eixo Y"
 
-#: src/editor/editor_dialogs.cpp:537
+#: src/editor/editor_dialogs.cpp:548
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Girar o mapa (isso pode mudar as dimensões do mapa):"
 
@@ -134,19 +134,19 @@ msgstr "Arquivo: "
 msgid "Delete File"
 msgstr "Apagar Arquivo"
 
-#: src/filechooser.cpp:54 src/filechooser.cpp:166
+#: src/filechooser.cpp:54 src/filechooser.cpp:168
 msgid "New Folder"
 msgstr "Nova Pasta"
 
-#: src/filechooser.cpp:154
+#: src/filechooser.cpp:156
 msgid "Deletion of the file failed."
 msgstr "Não foi possível apagar o arquivo."
 
-#: src/filechooser.cpp:167
+#: src/filechooser.cpp:169
 msgid "Name: "
 msgstr "Nome: "
 
-#: src/filechooser.cpp:172
+#: src/filechooser.cpp:174
 msgid "Creation of the directory failed."
 msgstr "Criação da pasta falhou.."
 
@@ -455,47 +455,47 @@ msgstr "Sair"
 msgid "Map Generator"
 msgstr "Gerador de mapa"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Players:"
 msgstr "Jogadores:"
 
-#: src/mapgen_dialog.cpp:112
+#: src/mapgen_dialog.cpp:114
 msgid "Number of Hills:"
 msgstr "Número de montanhas:"
 
-#: src/mapgen_dialog.cpp:113
+#: src/mapgen_dialog.cpp:115
 msgid "Max Hill Size:"
 msgstr "Tamanho máximo das montanhas:"
 
-#: src/mapgen_dialog.cpp:114
+#: src/mapgen_dialog.cpp:116
 msgid "Villages:"
 msgstr "Vilas:"
 
-#: src/mapgen_dialog.cpp:115
+#: src/mapgen_dialog.cpp:117
 msgid "Castle Size:"
 msgstr "Tamanho do Castelo:"
 
-#: src/mapgen_dialog.cpp:116
+#: src/mapgen_dialog.cpp:118
 msgid "Landform:"
 msgstr "Forma do terreno:"
 
-#: src/mapgen_dialog.cpp:236
+#: src/mapgen_dialog.cpp:238
 msgid "Roads Between Castles"
 msgstr "Estradas entre castelos"
 
-#: src/mapgen_dialog.cpp:296
+#: src/mapgen_dialog.cpp:298
 msgid "/1000 tiles"
 msgstr "/1000 terrenos"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Coastal"
 msgstr "Costeiro"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Inland"
 msgstr "Continental"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Island"
 msgstr "Ilha"
 
@@ -882,46 +882,46 @@ msgstr "Escolher a resolução"
 msgid "Hotkey Settings"
 msgstr "Configuração de tecla de atalho"
 
-#: src/preferences_display.cpp:1281 src/preferences_display.cpp:1334
+#: src/preferences_display.cpp:1283 src/preferences_display.cpp:1339
 msgid "Press desired Hotkey"
 msgstr "Aperte a tecla de atalho desejada"
 
-#: src/preferences_display.cpp:1299
+#: src/preferences_display.cpp:1301
 msgid "Action"
 msgstr "Ação"
 
-#: src/preferences_display.cpp:1299
+#: src/preferences_display.cpp:1301
 msgid "Binding"
 msgstr "Teclas"
 
-#: src/preferences_display.cpp:1311
+#: src/preferences_display.cpp:1313
 msgid "Change Hotkey"
 msgstr "Mudar tecla de atalho"
 
-#: src/preferences_display.cpp:1314
+#: src/preferences_display.cpp:1316
 msgid "Save Hotkeys"
 msgstr "Salvar teclas de atalho"
 
-#: src/preferences_display.cpp:1361
+#: src/preferences_display.cpp:1366
 msgid "This Hotkey is already in use."
 msgstr "Esta tecla de atalho já esta em uso."
 
-#: src/preferences_display.cpp:1394
+#: src/preferences_display.cpp:1399
 msgid "Saved Theme Preference: "
 msgstr "Preferência de Tema: "
 
-#: src/preferences_display.cpp:1400
+#: src/preferences_display.cpp:1405
 msgid "New theme will take effect on next new or loaded game."
 msgstr "O novo tema terá efeito a partir do próximo jogo novo ou carregado."
 
-#: src/preferences_display.cpp:1404
+#: src/preferences_display.cpp:1409
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Nenhum tema conhecido. Tente mudar de dentro de um jogo existente."
 
-#: src/show_dialog.cpp:314
+#: src/show_dialog.cpp:342
 msgid "Error"
 msgstr "Erro"
 
-#: src/show_dialog.cpp:423
+#: src/show_dialog.cpp:453
 msgid "KB"
 msgstr "KB"

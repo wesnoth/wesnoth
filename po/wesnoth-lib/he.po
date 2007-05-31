@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-13 13:41+0200\n"
+"POT-Creation-Date: 2007-05-31 15:07+0200\n"
 "PO-Revision-Date: 2006-02-14 22:10+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
-#: src/editor/editor_dialogs.cpp:452
+#: src/editor/editor_dialogs.cpp:461
 msgid "OK"
 msgstr "אשר"
 
@@ -35,8 +35,8 @@ msgid "No"
 msgstr "לא"
 
 #: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
-#: src/editor/editor_dialogs.cpp:99 src/editor/editor_dialogs.cpp:451
-#: src/show_dialog.cpp:400 src/show_dialog.cpp:495
+#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:460
+#: src/show_dialog.cpp:428 src/show_dialog.cpp:525
 msgid "Cancel"
 msgstr "בטל"
 
@@ -44,7 +44,7 @@ msgstr "בטל"
 msgid "Close"
 msgstr "סגור"
 
-#: src/construct_dialog.cpp:778 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "עזרה"
 
@@ -52,81 +52,81 @@ msgstr "עזרה"
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "השינויים שביצעת במפה יאבדו. האם להמשיך?"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:189
+#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
 msgid "Create New Map"
 msgstr "יצירת מפה חדשה"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:434
-#: src/mapgen_dialog.cpp:110
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:443
+#: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "רוחב:"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:435
-#: src/mapgen_dialog.cpp:111
+#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:444
+#: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "גובה:"
 
-#: src/editor/editor_dialogs.cpp:96
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate New Map"
 msgstr "יצירת מפה חדשה"
 
-#: src/editor/editor_dialogs.cpp:97
+#: src/editor/editor_dialogs.cpp:100
 msgid "Generate Random Map"
 msgstr "יצירת מפה אקראית"
 
-#: src/editor/editor_dialogs.cpp:98
+#: src/editor/editor_dialogs.cpp:101
 msgid "Random Generator Settings"
 msgstr "אפשרויות מחולל אקראי"
 
-#: src/editor/editor_dialogs.cpp:175
+#: src/editor/editor_dialogs.cpp:178
 msgid "Map creation failed."
 msgstr "יצירת מפה נכשלה."
 
-#: src/editor/editor_dialogs.cpp:241 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "סגור חלון"
 
-#: src/editor/editor_dialogs.cpp:247 src/editor/editor_dialogs.cpp:349
-#: src/hotkeys.cpp:78 src/preferences_display.cpp:1158
+#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "העדפות"
 
-#: src/editor/editor_dialogs.cpp:249 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "מהירות גלילה:"
 
-#: src/editor/editor_dialogs.cpp:306 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:312 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "החלף מצב מסך מלא"
 
-#: src/editor/editor_dialogs.cpp:313 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:319 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "הצג סריג"
 
-#: src/editor/editor_dialogs.cpp:320 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:326 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "אופן תצוגה"
 
-#: src/editor/editor_dialogs.cpp:323 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:329 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "מקשי קיצור"
 
-#: src/editor/editor_dialogs.cpp:432 src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:441 src/editor/editor_dialogs.cpp:503
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "שנה גודל מפה"
 
-#: src/editor/editor_dialogs.cpp:535
+#: src/editor/editor_dialogs.cpp:546
 msgid "X-Axis"
 msgstr "ציר X"
 
-#: src/editor/editor_dialogs.cpp:536
+#: src/editor/editor_dialogs.cpp:547
 msgid "Y-Axis"
 msgstr "ציר Y"
 
-#: src/editor/editor_dialogs.cpp:537
+#: src/editor/editor_dialogs.cpp:548
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "הפיכה (עלול לשנות את מימדי המפה)"
 
@@ -138,19 +138,19 @@ msgstr ""
 msgid "Delete File"
 msgstr "מחק קובץ"
 
-#: src/filechooser.cpp:54 src/filechooser.cpp:166
+#: src/filechooser.cpp:54 src/filechooser.cpp:168
 msgid "New Folder"
 msgstr ""
 
-#: src/filechooser.cpp:154
+#: src/filechooser.cpp:156
 msgid "Deletion of the file failed."
 msgstr "מחיקת קובץ נכשלה"
 
-#: src/filechooser.cpp:167
+#: src/filechooser.cpp:169
 msgid "Name: "
 msgstr ""
 
-#: src/filechooser.cpp:172
+#: src/filechooser.cpp:174
 #, fuzzy
 msgid "Creation of the directory failed."
 msgstr "מחיקת קובץ נכשלה"
@@ -462,48 +462,48 @@ msgstr "צא"
 msgid "Map Generator"
 msgstr "יצירת מפה"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Players:"
 msgstr "שחקנים:"
 
-#: src/mapgen_dialog.cpp:112
+#: src/mapgen_dialog.cpp:114
 msgid "Number of Hills:"
 msgstr "מספר הגבעות:"
 
-#: src/mapgen_dialog.cpp:113
+#: src/mapgen_dialog.cpp:115
 msgid "Max Hill Size:"
 msgstr "גובה גבעה מירבי:"
 
-#: src/mapgen_dialog.cpp:114
+#: src/mapgen_dialog.cpp:116
 msgid "Villages:"
 msgstr "כפרים:"
 
-#: src/mapgen_dialog.cpp:115
+#: src/mapgen_dialog.cpp:117
 #, fuzzy
 msgid "Castle Size:"
 msgstr "גובה גבעה מירבי:"
 
-#: src/mapgen_dialog.cpp:116
+#: src/mapgen_dialog.cpp:118
 msgid "Landform:"
 msgstr "סוג קרקע:"
 
-#: src/mapgen_dialog.cpp:236
+#: src/mapgen_dialog.cpp:238
 msgid "Roads Between Castles"
 msgstr "דרכים בין הטירות"
 
-#: src/mapgen_dialog.cpp:296
+#: src/mapgen_dialog.cpp:298
 msgid "/1000 tiles"
 msgstr "/1000 מרצפות"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Coastal"
 msgstr "חופי"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Inland"
 msgstr "יבשתי"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:308
 msgid "Island"
 msgstr "אי"
 
@@ -902,46 +902,46 @@ msgstr "בחירת רזולוציה"
 msgid "Hotkey Settings"
 msgstr "מקשי קיצור"
 
-#: src/preferences_display.cpp:1281 src/preferences_display.cpp:1334
+#: src/preferences_display.cpp:1283 src/preferences_display.cpp:1339
 msgid "Press desired Hotkey"
 msgstr "הקש על מקש הקיצור הרצוי"
 
-#: src/preferences_display.cpp:1299
+#: src/preferences_display.cpp:1301
 msgid "Action"
 msgstr "פעולה"
 
-#: src/preferences_display.cpp:1299
+#: src/preferences_display.cpp:1301
 msgid "Binding"
 msgstr "הצמדה למקש"
 
-#: src/preferences_display.cpp:1311
+#: src/preferences_display.cpp:1313
 msgid "Change Hotkey"
 msgstr "עדכון מקש קיצור"
 
-#: src/preferences_display.cpp:1314
+#: src/preferences_display.cpp:1316
 msgid "Save Hotkeys"
 msgstr "שמירת מקשי קיצור"
 
-#: src/preferences_display.cpp:1361
+#: src/preferences_display.cpp:1366
 msgid "This Hotkey is already in use."
 msgstr "מקש קיצור זה כבר נמצא בשימוש."
 
-#: src/preferences_display.cpp:1394
+#: src/preferences_display.cpp:1399
 msgid "Saved Theme Preference: "
 msgstr "העדפות השמורות של ערכת הנושא : "
 
-#: src/preferences_display.cpp:1400
+#: src/preferences_display.cpp:1405
 msgid "New theme will take effect on next new or loaded game."
 msgstr "השינוי לערכת הנושא החדשה יתרחש במשחק חדש הבא או אחרי טעינת המשחק הבאה."
 
-#: src/preferences_display.cpp:1404
+#: src/preferences_display.cpp:1409
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "אין ערכות נושא ידועות. נסה לשנות מתוך משחק קיים."
 
-#: src/show_dialog.cpp:314
+#: src/show_dialog.cpp:342
 msgid "Error"
 msgstr "שגיאה"
 
-#: src/show_dialog.cpp:423
+#: src/show_dialog.cpp:453
 msgid "KB"
 msgstr "קילו-בייט"

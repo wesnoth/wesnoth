@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-24 22:22+0200\n"
+"POT-Creation-Date: 2007-05-31 15:05+0200\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -57,8 +57,7 @@ msgstr "Nuna celo:"
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:28
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:27
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-#: data/core/units/Orcish_Crossbowman.cfg:22
-#: data/core/units/Orcish_Slurbow.cfg:25
+#: data/core/units/orcs/Crossbowman.cfg:22 data/core/units/orcs/Slurbow.cfg:25
 msgid "short sword"
 msgstr "mallonga glavo"
 
@@ -66,23 +65,24 @@ msgstr "mallonga glavo"
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:55
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
-#: data/core/units/Undead_Necro_Dark_Sorcerer.cfg:60
-#: data/core/units/Undead_Necromancer.cfg:66
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:60
+#: data/core/units/undead/Necromancer.cfg:66
 msgid "chill wave"
 msgstr "frosta ondo"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
-#: data/core/units/Saurian_Augur.cfg:75 data/core/units/Saurian_Oracle.cfg:75
-#: data/core/units/Saurian_Soothsayer.cfg:75
-#: data/core/units/Undead_Necro_Ancient_Lich.cfg:71
-#: data/core/units/Undead_Necro_Dark_Adept.cfg:32
-#: data/core/units/Undead_Necro_Dark_Sorcerer.cfg:61
-#: data/core/units/Undead_Necro_Lich.cfg:76
-#: data/core/units/Undead_Necromancer.cfg:67
-#: data/core/units/Undead_Spirit_Ghost.cfg:64
-#: data/core/units/Undead_Spirit_Spectre.cfg:86
-#: data/core/units/Undead_Spirit_Wraith.cfg:67
+#: data/core/units/saurians/Augur.cfg:75
+#: data/core/units/saurians/Oracle.cfg:75
+#: data/core/units/saurians/Soothsayer.cfg:75
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:71
+#: data/core/units/undead/Necro_Dark_Adept.cfg:31
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:61
+#: data/core/units/undead/Necro_Lich.cfg:76
+#: data/core/units/undead/Necromancer.cfg:67
+#: data/core/units/undead/Spirit_Ghost.cfg:64
+#: data/core/units/undead/Spirit_Spectre.cfg:86
+#: data/core/units/undead/Spirit_Wraith.cfg:67
 msgid "cold"
 msgstr "frosto"
 
@@ -334,13 +334,14 @@ msgstr "invado"
 #
 #
 #: data/core/abilities.cfg:369 data/core/abilities.cfg:373
+#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
-"Enemy units cannot see or attack this unit when it is in forest, except for "
-"any turn immediately after this unit has attacked, or if there are enemy "
-"units next to this unit."
+"Enemy units cannot see this unit while it is in forest, except if they have "
+"units next to it. Any enemy unit that first discovers this unit immediately "
+"loses all its remaining movement."
 msgstr ""
 "Embusko:\n"
 "milit-unuo kapablas kaŝiĝi en arbaro, kie malamiko ne vidos ĝin.\n"
@@ -354,13 +355,14 @@ msgstr "nokta embusko"
 #
 #
 #: data/core/abilities.cfg:392 data/core/abilities.cfg:397
+#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
 "\n"
-"Enemy units cannot see or attack this unit at night, except for any turn "
-"immediately after this unit has attacked, or if there are enemy units next "
-"to this unit."
+"Enemy units cannot see this unit at night, except if they have units next to "
+"it. Any enemy unit that first discovers this unit immediately loses all its "
+"remaining movement."
 msgstr ""
 "Nokta embusko:La milit-unuo dum nokto nevidebla.\n"
 "\n"
@@ -379,9 +381,9 @@ msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
-"Enemy units cannot see or attack this unit when it is in deep water, except "
-"for any turn immediately after this unit has attacked, or if there are enemy "
-"units next to this unit."
+"Enemy units cannot see this unit while it is in deep water, except if they "
+"have units next to it. Any enemy unit that first discovers this unit "
+"immediately loses all its remaining movement."
 msgstr ""
 "Embusko:\n"
 "milit-unuo kapablas kaŝiĝi en arbaro, kie malamiko ne vidos ĝin.\n"
@@ -668,112 +670,112 @@ msgstr "+Finna traduko"
 msgid "French Translation"
 msgstr "+Franca traduko"
 
-#: data/core/about.cfg:505
+#: data/core/about.cfg:506
 #, fuzzy
 msgid "German Translation"
 msgstr "+Germana traduko"
 
-#: data/core/about.cfg:524
+#: data/core/about.cfg:525
 #, fuzzy
 msgid "Greek Translation"
 msgstr "+Greka traduko"
 
-#: data/core/about.cfg:536
+#: data/core/about.cfg:537
 #, fuzzy
 msgid "Hebrew Translation"
 msgstr "+Greka traduko"
 
-#: data/core/about.cfg:544
+#: data/core/about.cfg:545
 #, fuzzy
 msgid "Hungarian Translation"
 msgstr "+Hungara traduko"
 
-#: data/core/about.cfg:561
+#: data/core/about.cfg:562
 #, fuzzy
 msgid "Indonesian Translation"
 msgstr "+Estona traduko"
 
-#: data/core/about.cfg:568
+#: data/core/about.cfg:569
 #, fuzzy
 msgid "Italian Translation"
 msgstr "+Itala traduko"
 
-#: data/core/about.cfg:583
+#: data/core/about.cfg:584
 #, fuzzy
 msgid "Japanese Translation"
 msgstr "+Japana traduko"
 
-#: data/core/about.cfg:595
+#: data/core/about.cfg:596
 #, fuzzy
 msgid "Korean Translation"
 msgstr "+Norvega traduko"
 
-#: data/core/about.cfg:602
+#: data/core/about.cfg:603
 #, fuzzy
 msgid "Latin Translation"
 msgstr "+Latina traduko"
 
-#: data/core/about.cfg:609
+#: data/core/about.cfg:610
 #, fuzzy
 msgid "Norwegian Translation"
 msgstr "+Norvega traduko"
 
-#: data/core/about.cfg:621
+#: data/core/about.cfg:622
 #, fuzzy
 msgid "Polish Translation"
 msgstr "+Pola traduko"
 
-#: data/core/about.cfg:639
+#: data/core/about.cfg:640
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Portugala traduko (Brazila)"
 
-#: data/core/about.cfg:646
+#: data/core/about.cfg:647
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Portugala traduko (Brazila)"
 
-#: data/core/about.cfg:662
+#: data/core/about.cfg:663
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Rusa traduko"
 
-#: data/core/about.cfg:676
+#: data/core/about.cfg:677
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Serba traduko"
 
-#: data/core/about.cfg:685
+#: data/core/about.cfg:686
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Slovaka traduko"
 
-#: data/core/about.cfg:694
+#: data/core/about.cfg:695
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Slovenia traduko"
 
-#: data/core/about.cfg:702
+#: data/core/about.cfg:703
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Hispana traduko"
 
-#: data/core/about.cfg:719
+#: data/core/about.cfg:720
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Sveda traduko"
 
-#: data/core/about.cfg:732
+#: data/core/about.cfg:733
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+turka traduko"
 
-#: data/core/about.cfg:743
+#: data/core/about.cfg:744
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "+Slovenia traduko"
 
-#: data/core/about.cfg:750
+#: data/core/about.cfg:751
 #, fuzzy
 msgid "Bots"
 msgstr "+Robotoj"
@@ -2564,7 +2566,7 @@ msgstr ""
 #: data/core/terrain.cfg:764 data/core/terrain.cfg:775
 #: data/core/terrain.cfg:788 data/core/terrain.cfg:799
 #: data/core/terrain.cfg:812 data/core/terrain.cfg:827
-#: data/core/terrain.cfg:838 src/terrain.cpp:99
+#: data/core/terrain.cfg:838 src/terrain.cpp:95
 msgid "Village"
 msgstr "Vilaĝo"
 
@@ -3414,11 +3416,6 @@ msgid ""
 msgstr ""
 
 #: data/core/names.cfg:51
-#, fuzzy
-msgid " "
-msgstr ";"
-
-#: data/core/names.cfg:56
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
@@ -3863,85 +3860,88 @@ msgstr "Princino"
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
-#: data/core/units/Boat_Galleon.cfg:4
+#: data/core/units/boats/Galleon.cfg:4
 msgid "Galleon"
 msgstr "Galiono"
 
-#: data/core/units/Boat_Galleon.cfg:19
+#: data/core/units/boats/Galleon.cfg:19
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
 
-#: data/core/units/Boat_Galleon.cfg:21
+#: data/core/units/boats/Galleon.cfg:21
 msgid "dummy"
 msgstr "fikcia"
 
-#: data/core/units/Boat_Galleon.cfg:22 data/core/units/Drake_Enforcer.cfg:103
-#: data/core/units/Drake_Gladiator.cfg:155 data/core/units/Drake_Glider.cfg:77
-#: data/core/units/Drake_Hurricane.cfg:93 data/core/units/Drake_Sky.cfg:92
-#: data/core/units/Dwarvish_Fighter.cfg:86
-#: data/core/units/Dwarvish_Lord.cfg:67
-#: data/core/units/Dwarvish_Runemaster.cfg:23
-#: data/core/units/Dwarvish_Steelclad.cfg:66
-#: data/core/units/Elvish_Druid.cfg:28 data/core/units/Elvish_Druid.cfg:66
-#: data/core/units/Elvish_Enchantress.cfg:26
-#: data/core/units/Elvish_Enchantress.cfg:70
-#: data/core/units/Elvish_Shaman.cfg:30 data/core/units/Elvish_Shaman.cfg:68
-#: data/core/units/Elvish_Shyde.cfg:29 data/core/units/Elvish_Shyde.cfg:57
-#: data/core/units/Elvish_Sorceress.cfg:28
-#: data/core/units/Elvish_Sorceress.cfg:77 data/core/units/Elvish_Sylph.cfg:29
-#: data/core/units/Elvish_Sylph.cfg:57 data/core/units/Fire_Dragon.cfg:77
-#: data/core/units/Goblin_Pillager.cfg:73
-#: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:22
-#: data/core/units/Human_Loyalist_Iron_Mauler.cfg:24
-#: data/core/units/Human_Loyalist_Shock_Trooper.cfg:22
-#: data/core/units/Human_Mage.cfg:57 data/core/units/Human_Mage_Arch.cfg:30
-#: data/core/units/Human_Mage_Great.cfg:31
-#: data/core/units/Human_Mage_Red.cfg:52
-#: data/core/units/Human_Mage_Silver.cfg:37
-#: data/core/units/Human_Mage_White.cfg:119
-#: data/core/units/Human_Mage_of_Light.cfg:99
-#: data/core/units/Human_Outlaw.cfg:23 data/core/units/Human_Outlaw.cfg:60
-#: data/core/units/Human_Outlaw_Bandit.cfg:35
-#: data/core/units/Human_Outlaw_Footpad.cfg:24
-#: data/core/units/Human_Outlaw_Footpad.cfg:71
-#: data/core/units/Human_Outlaw_Ruffian.cfg:36
-#: data/core/units/Human_Outlaw_Thug.cfg:23
-#: data/core/units/Mermaid_Diviner.cfg:69
-#: data/core/units/Mermaid_Enchantress.cfg:26
-#: data/core/units/Mermaid_Enchantress.cfg:64
-#: data/core/units/Mermaid_Initiate.cfg:29
-#: data/core/units/Mermaid_Initiate.cfg:67
-#: data/core/units/Mermaid_Priestess.cfg:66
-#: data/core/units/Mermaid_Siren.cfg:30 data/core/units/Mermaid_Siren.cfg:75
-#: data/core/units/Merman_Entangler.cfg:57
-#: data/core/units/Merman_Netcaster.cfg:56
-#: data/core/units/Monster_Cave_Spider.cfg:94
-#: data/core/units/Monster_Cuttle_Fish.cfg:35
-#: data/core/units/Monster_Giant_Mudcrawler.cfg:47
-#: data/core/units/Monster_Giant_Mudcrawler.cfg:85
-#: data/core/units/Monster_Giant_Scorpion.cfg:79
-#: data/core/units/Monster_Mudcrawler.cfg:46
-#: data/core/units/Monster_Tentacle.cfg:63 data/core/units/Monster_Yeti.cfg:35
-#: data/core/units/Saurian_Augur.cfg:38 data/core/units/Saurian_Oracle.cfg:38
-#: data/core/units/Saurian_Soothsayer.cfg:38 data/core/units/Troll.cfg:27
-#: data/core/units/Troll_Great.cfg:28 data/core/units/Troll_Hero.cfg:27
-#: data/core/units/Troll_Rocklobber.cfg:29
-#: data/core/units/Troll_Rocklobber.cfg:66
-#: data/core/units/Troll_Warrior.cfg:29 data/core/units/Troll_Whelp.cfg:28
-#: data/core/units/Undead_Corpse_Soulless.cfg:48
-#: data/core/units/Undead_Corpse_Walking.cfg:50
-#: data/core/units/Undead_Necro_Dark_Sorcerer.cfg:24
-#: data/core/units/Undead_Necromancer.cfg:27
-#: data/core/units/Undead_Skeleton_Archer.cfg:33 data/core/units/Wose.cfg:32
-#: data/core/units/Wose_Ancient.cfg:94 data/core/units/Wose_Elder.cfg:93
+#: data/core/units/boats/Galleon.cfg:22
+#: data/core/units/drakes/Enforcer.cfg:103
+#: data/core/units/drakes/Gladiator.cfg:155
+#: data/core/units/drakes/Glider.cfg:77
+#: data/core/units/drakes/Hurricane.cfg:93 data/core/units/drakes/Sky.cfg:92
+#: data/core/units/dwarves/Fighter.cfg:86 data/core/units/dwarves/Lord.cfg:67
+#: data/core/units/dwarves/Runemaster.cfg:23
+#: data/core/units/dwarves/Steelclad.cfg:66 data/core/units/elves/Druid.cfg:28
+#: data/core/units/elves/Druid.cfg:66 data/core/units/elves/Enchantress.cfg:26
+#: data/core/units/elves/Enchantress.cfg:70
+#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Shaman.cfg:68
+#: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Shyde.cfg:57
+#: data/core/units/elves/Sorceress.cfg:28
+#: data/core/units/elves/Sorceress.cfg:77 data/core/units/elves/Sylph.cfg:29
+#: data/core/units/elves/Sylph.cfg:57 data/core/units/goblins/Pillager.cfg:73
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:22
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:24
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
+#: data/core/units/humans/Mage.cfg:57 data/core/units/humans/Mage_Arch.cfg:30
+#: data/core/units/humans/Mage_Great.cfg:31
+#: data/core/units/humans/Mage_Red.cfg:52
+#: data/core/units/humans/Mage_Silver.cfg:37
+#: data/core/units/humans/Mage_White.cfg:119
+#: data/core/units/humans/Mage_of_Light.cfg:99
+#: data/core/units/humans/Outlaw.cfg:23 data/core/units/humans/Outlaw.cfg:60
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
+#: data/core/units/humans/Outlaw_Footpad.cfg:71
+#: data/core/units/humans/Outlaw_Ruffian.cfg:36
+#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/merfolk/Diviner.cfg:67
+#: data/core/units/merfolk/Enchantress.cfg:26
+#: data/core/units/merfolk/Enchantress.cfg:64
+#: data/core/units/merfolk/Entangler.cfg:57
+#: data/core/units/merfolk/Initiate.cfg:29
+#: data/core/units/merfolk/Initiate.cfg:67
+#: data/core/units/merfolk/Netcaster.cfg:56
+#: data/core/units/merfolk/Priestess.cfg:64
+#: data/core/units/merfolk/Siren.cfg:30 data/core/units/merfolk/Siren.cfg:75
+#: data/core/units/monsters/Cave_Spider.cfg:94
+#: data/core/units/monsters/Cuttle_Fish.cfg:35
+#: data/core/units/monsters/Fire_Dragon.cfg:77
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:85
+#: data/core/units/monsters/Giant_Scorpion.cfg:79
+#: data/core/units/monsters/Mudcrawler.cfg:46
+#: data/core/units/monsters/Tentacle.cfg:63
+#: data/core/units/monsters/Yeti.cfg:35 data/core/units/saurians/Augur.cfg:38
+#: data/core/units/saurians/Oracle.cfg:38
+#: data/core/units/saurians/Soothsayer.cfg:38
+#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Rocklobber.cfg:29
+#: data/core/units/trolls/Rocklobber.cfg:66
+#: data/core/units/trolls/Troll.cfg:27 data/core/units/trolls/Warrior.cfg:29
+#: data/core/units/trolls/Whelp.cfg:28
+#: data/core/units/undead/Corpse_Soulless.cfg:48
+#: data/core/units/undead/Corpse_Walking.cfg:50
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:24
+#: data/core/units/undead/Necromancer.cfg:27
+#: data/core/units/undead/Skeleton_Archer.cfg:33
+#: data/core/units/wose/Ancient.cfg:94 data/core/units/wose/Elder.cfg:93
+#: data/core/units/wose/Wose.cfg:32
 msgid "impact"
 msgstr "frapo"
 
-#: data/core/units/Boat_Pirate_Galleon.cfg:3
+#: data/core/units/boats/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
 msgstr "Pirata galiono"
 
-#: data/core/units/Boat_Pirate_Galleon.cfg:17
+#: data/core/units/boats/Pirate_Galleon.cfg:17
 #, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
@@ -3952,103 +3952,104 @@ msgstr ""
 "varplenaj oni rekomendas ne navigi  tro for de marbordo, ĉar iu povus helpi "
 "malkargi ilin, por ke ili ne sinku..."
 
-#: data/core/units/Boat_Pirate_Galleon.cfg:19
-#: data/core/units/Boat_Transport_Galleon.cfg:20
+#: data/core/units/boats/Pirate_Galleon.cfg:19
+#: data/core/units/boats/Transport_Galleon.cfg:20
 msgid "ballista"
 msgstr "ŝtonĵetilo"
 
-#: data/core/units/Boat_Pirate_Galleon.cfg:21
-#: data/core/units/Boat_Transport_Galleon.cfg:22
-#: data/core/units/Drake_Clasher.cfg:123
-#: data/core/units/Drake_Enforcer.cfg:136
-#: data/core/units/Drake_Gladiator.cfg:112
-#: data/core/units/Drake_Slasher.cfg:122 data/core/units/Drake_Warden.cfg:128
-#: data/core/units/Dwarvish_Dragonguard.cfg:62
-#: data/core/units/Dwarvish_Guardsman.cfg:33
-#: data/core/units/Dwarvish_Guardsman.cfg:81
-#: data/core/units/Dwarvish_Sentinel.cfg:41
-#: data/core/units/Dwarvish_Sentinel.cfg:89
-#: data/core/units/Dwarvish_Stalwart.cfg:36
-#: data/core/units/Dwarvish_Stalwart.cfg:84
-#: data/core/units/Dwarvish_Thunderer.cfg:88
-#: data/core/units/Dwarvish_Thunderguard.cfg:72
-#: data/core/units/Elvish_Archer.cfg:77 data/core/units/Elvish_Avenger.cfg:111
-#: data/core/units/Elvish_Captain.cfg:85
-#: data/core/units/Elvish_Champion.cfg:82 data/core/units/Elvish_Druid.cfg:146
-#: data/core/units/Elvish_Fighter.cfg:67 data/core/units/Elvish_Hero.cfg:81
-#: data/core/units/Elvish_Marksman.cfg:103
-#: data/core/units/Elvish_Marshal.cfg:79
-#: data/core/units/Elvish_Outrider.cfg:81
-#: data/core/units/Elvish_Ranger.cfg:108 data/core/units/Elvish_Rider.cfg:83
-#: data/core/units/Elvish_Scout.cfg:82
-#: data/core/units/Elvish_Sharpshooter.cfg:97
-#: data/core/units/Elvish_Shyde.cfg:138 data/core/units/Goblin_Impaler.cfg:25
-#: data/core/units/Goblin_Impaler.cfg:207 data/core/units/Goblin_Rouser.cfg:43
-#: data/core/units/Goblin_Spearman.cfg:24
-#: data/core/units/Goblin_Spearman.cfg:160
-#: data/core/units/Human_Horse_Grand_Knight.cfg:64
-#: data/core/units/Human_Horse_Knight.cfg:63
-#: data/core/units/Human_Horse_Lancer.cfg:25
-#: data/core/units/Human_Horse_Paladin.cfg:71
-#: data/core/units/Human_Horseman.cfg:25
-#: data/core/units/Human_Loyalist_Bowman.cfg:62
-#: data/core/units/Human_Loyalist_Cavalier.cfg:86
-#: data/core/units/Human_Loyalist_Dragoon.cfg:85
-#: data/core/units/Human_Loyalist_Duelist.cfg:109
-#: data/core/units/Human_Loyalist_General.cfg:93
-#: data/core/units/Human_Loyalist_Grand_Marshal.cfg:89
-#: data/core/units/Human_Loyalist_Halberdier.cfg:31
-#: data/core/units/Human_Loyalist_Javelineer.cfg:28
-#: data/core/units/Human_Loyalist_Javelineer.cfg:84
-#: data/core/units/Human_Loyalist_Lieutenant.cfg:78
-#: data/core/units/Human_Loyalist_Longbowman.cfg:63
-#: data/core/units/Human_Loyalist_Master_Bowman.cfg:63
-#: data/core/units/Human_Loyalist_Master_at_Arms.cfg:188
-#: data/core/units/Human_Loyalist_Pikeman.cfg:54
-#: data/core/units/Human_Loyalist_Sergeant.cfg:82
-#: data/core/units/Human_Loyalist_Spearman.cfg:63
-#: data/core/units/Human_Loyalist_Spearman.cfg:204
-#: data/core/units/Human_Outlaw_Poacher.cfg:73
-#: data/core/units/Human_Outlaw_Trapper.cfg:103
-#: data/core/units/Human_Peasant.cfg:24 data/core/units/Human_Peasant.cfg:67
-#: data/core/units/Human_Woodsman.cfg:65
-#: data/core/units/Merman_Entangler.cfg:25
-#: data/core/units/Merman_Fighter.cfg:23 data/core/units/Merman_Hoplite.cfg:36
-#: data/core/units/Merman_Hunter.cfg:23 data/core/units/Merman_Hunter.cfg:174
-#: data/core/units/Merman_Javelineer.cfg:23
-#: data/core/units/Merman_Javelineer.cfg:154
-#: data/core/units/Merman_Netcaster.cfg:24
-#: data/core/units/Merman_Spearman.cfg:22
-#: data/core/units/Merman_Spearman.cfg:173
-#: data/core/units/Merman_Triton.cfg:23 data/core/units/Merman_Warrior.cfg:22
-#: data/core/units/Monster_Cuttle_Fish.cfg:197
-#: data/core/units/Monster_Giant_Scorpion.cfg:25
-#: data/core/units/Monster_Sea_Serpent.cfg:25
-#: data/core/units/Orcish_Archer.cfg:179
-#: data/core/units/Orcish_Crossbowman.cfg:62
-#: data/core/units/Orcish_Leader.cfg:68 data/core/units/Orcish_Ruler.cfg:66
-#: data/core/units/Orcish_Slurbow.cfg:75
-#: data/core/units/Orcish_Sovereign.cfg:67
-#: data/core/units/Orcish_Warlord.cfg:78
-#: data/core/units/Saurian_Ambusher.cfg:29
-#: data/core/units/Saurian_Ambusher.cfg:72
-#: data/core/units/Saurian_Flanker.cfg:30
-#: data/core/units/Saurian_Flanker.cfg:73
-#: data/core/units/Saurian_Skirmisher.cfg:32
-#: data/core/units/Saurian_Skirmisher.cfg:75
-#: data/core/units/Undead_Skele_Bone_Shooter.cfg:81
-#: data/core/units/Undead_Skele_Chocobone.cfg:26
-#: data/core/units/Undead_Skele_Death_Knight.cfg:89
-#: data/core/units/Undead_Skele_Soul_Shooter.cfg:71
-#: data/core/units/Undead_Skeleton_Archer.cfg:71
+#: data/core/units/boats/Pirate_Galleon.cfg:21
+#: data/core/units/boats/Transport_Galleon.cfg:22
+#: data/core/units/drakes/Clasher.cfg:125
+#: data/core/units/drakes/Enforcer.cfg:136
+#: data/core/units/drakes/Gladiator.cfg:112
+#: data/core/units/drakes/Slasher.cfg:122
+#: data/core/units/drakes/Warden.cfg:128
+#: data/core/units/dwarves/Dragonguard.cfg:62
+#: data/core/units/dwarves/Guardsman.cfg:33
+#: data/core/units/dwarves/Guardsman.cfg:81
+#: data/core/units/dwarves/Sentinel.cfg:41
+#: data/core/units/dwarves/Sentinel.cfg:89
+#: data/core/units/dwarves/Stalwart.cfg:36
+#: data/core/units/dwarves/Stalwart.cfg:84
+#: data/core/units/dwarves/Thunderer.cfg:88
+#: data/core/units/dwarves/Thunderguard.cfg:72
+#: data/core/units/elves/Archer.cfg:77 data/core/units/elves/Avenger.cfg:111
+#: data/core/units/elves/Captain.cfg:85 data/core/units/elves/Champion.cfg:82
+#: data/core/units/elves/Druid.cfg:146 data/core/units/elves/Fighter.cfg:67
+#: data/core/units/elves/Hero.cfg:81 data/core/units/elves/Marksman.cfg:103
+#: data/core/units/elves/Marshal.cfg:79 data/core/units/elves/Outrider.cfg:81
+#: data/core/units/elves/Ranger.cfg:108 data/core/units/elves/Rider.cfg:83
+#: data/core/units/elves/Scout.cfg:82
+#: data/core/units/elves/Sharpshooter.cfg:97
+#: data/core/units/elves/Shyde.cfg:138 data/core/units/goblins/Impaler.cfg:25
+#: data/core/units/goblins/Impaler.cfg:207
+#: data/core/units/goblins/Rouser.cfg:43
+#: data/core/units/goblins/Spearman.cfg:24
+#: data/core/units/goblins/Spearman.cfg:160
+#: data/core/units/humans/Horse_Grand_Knight.cfg:64
+#: data/core/units/humans/Horse_Knight.cfg:63
+#: data/core/units/humans/Horse_Lancer.cfg:25
+#: data/core/units/humans/Horse_Paladin.cfg:78
+#: data/core/units/humans/Horseman.cfg:25
+#: data/core/units/humans/Loyalist_Bowman.cfg:62
+#: data/core/units/humans/Loyalist_Cavalier.cfg:86
+#: data/core/units/humans/Loyalist_Dragoon.cfg:85
+#: data/core/units/humans/Loyalist_Duelist.cfg:109
+#: data/core/units/humans/Loyalist_General.cfg:93
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:89
+#: data/core/units/humans/Loyalist_Halberdier.cfg:31
+#: data/core/units/humans/Loyalist_Javelineer.cfg:28
+#: data/core/units/humans/Loyalist_Javelineer.cfg:84
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:78
+#: data/core/units/humans/Loyalist_Longbowman.cfg:63
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:63
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:188
+#: data/core/units/humans/Loyalist_Pikeman.cfg:54
+#: data/core/units/humans/Loyalist_Sergeant.cfg:82
+#: data/core/units/humans/Loyalist_Spearman.cfg:63
+#: data/core/units/humans/Loyalist_Spearman.cfg:204
+#: data/core/units/humans/Outlaw_Poacher.cfg:73
+#: data/core/units/humans/Outlaw_Trapper.cfg:103
+#: data/core/units/humans/Peasant.cfg:24 data/core/units/humans/Peasant.cfg:67
+#: data/core/units/humans/Woodsman.cfg:65
+#: data/core/units/merfolk/Entangler.cfg:25
+#: data/core/units/merfolk/Fighter.cfg:23
+#: data/core/units/merfolk/Hoplite.cfg:36
+#: data/core/units/merfolk/Hunter.cfg:23
+#: data/core/units/merfolk/Hunter.cfg:174
+#: data/core/units/merfolk/Javelineer.cfg:23
+#: data/core/units/merfolk/Javelineer.cfg:154
+#: data/core/units/merfolk/Netcaster.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:22
+#: data/core/units/merfolk/Spearman.cfg:173
+#: data/core/units/merfolk/Triton.cfg:23
+#: data/core/units/merfolk/Warrior.cfg:22
+#: data/core/units/monsters/Cuttle_Fish.cfg:197
+#: data/core/units/monsters/Giant_Scorpion.cfg:25
+#: data/core/units/monsters/Sea_Serpent.cfg:25
+#: data/core/units/orcs/Archer.cfg:179 data/core/units/orcs/Crossbowman.cfg:62
+#: data/core/units/orcs/Leader.cfg:68 data/core/units/orcs/Ruler.cfg:66
+#: data/core/units/orcs/Slurbow.cfg:80 data/core/units/orcs/Sovereign.cfg:67
+#: data/core/units/orcs/Warlord.cfg:78
+#: data/core/units/saurians/Ambusher.cfg:29
+#: data/core/units/saurians/Ambusher.cfg:72
+#: data/core/units/saurians/Flanker.cfg:30
+#: data/core/units/saurians/Flanker.cfg:73
+#: data/core/units/saurians/Skirmisher.cfg:32
+#: data/core/units/saurians/Skirmisher.cfg:75
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:81
+#: data/core/units/undead/Skele_Chocobone.cfg:26
+#: data/core/units/undead/Skele_Death_Knight.cfg:89
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:71
+#: data/core/units/undead/Skeleton_Archer.cfg:71
 msgid "pierce"
 msgstr "piko"
 
-#: data/core/units/Boat_Transport_Galleon.cfg:3
+#: data/core/units/boats/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
 msgstr "Transport ŝipo"
 
-#: data/core/units/Boat_Transport_Galleon.cfg:17
+#: data/core/units/boats/Transport_Galleon.cfg:17
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
@@ -4056,12 +4057,12 @@ msgstr ""
 "Komerca ŝipo estas armita kaj transportas aremajn milit-unuojn. Se ĝi "
 "albordiĝas, milit-unuoj povas elŝipiĝi kaj ataki."
 
-#: data/core/units/Drake_Armageddon.cfg:3
+#: data/core/units/drakes/Armageddon.cfg:3
 #, fuzzy
 msgid "Armageddon Drake"
 msgstr "Fajra drako"
 
-#: data/core/units/Drake_Armageddon.cfg:19
+#: data/core/units/drakes/Armageddon.cfg:19
 msgid ""
 "The Armageddon Drakes truly are amongst the toughest of all drakes - so "
 "accustomed to living near fire as to be nearly immune to any fire based "
@@ -4070,143 +4071,151 @@ msgid ""
 "of magma rivers."
 msgstr ""
 
-#: data/core/units/Drake_Armageddon.cfg:75 data/core/units/Drake_Burner.cfg:61
-#: data/core/units/Drake_Fire.cfg:68 data/core/units/Drake_Inferno.cfg:69
-#: data/core/units/Goblin_Direwolf_Rider.cfg:81 data/core/units/Gryphon.cfg:25
-#: data/core/units/Gryphon_Master.cfg:28 data/core/units/Gryphon_Rider.cfg:28
-#: data/core/units/Monster_Skeletal_Dragon.cfg:64
-#: data/core/units/Monster_Skeletal_Dragon.cfg:65
-#: data/core/units/Undead_Corpse_Ghoul.cfg:66
-#: data/core/units/Undead_Corpse_Necrophage.cfg:34
-#: data/core/units/Undead_Spirit_Nightgaunt.cfg:53
-#: data/core/units/Undead_Spirit_Shadow.cfg:27
+#: data/core/units/drakes/Armageddon.cfg:75
+#: data/core/units/drakes/Burner.cfg:61 data/core/units/drakes/Fire.cfg:68
+#: data/core/units/drakes/Inferno.cfg:69
+#: data/core/units/goblins/Direwolf_Rider.cfg:81
+#: data/core/units/monsters/Gryphon.cfg:25
+#: data/core/units/monsters/Gryphon_Master.cfg:28
+#: data/core/units/monsters/Gryphon_Rider.cfg:28
+#: data/core/units/monsters/Skeletal_Dragon.cfg:64
+#: data/core/units/monsters/Skeletal_Dragon.cfg:65
+#: data/core/units/undead/Corpse_Ghoul.cfg:66
+#: data/core/units/undead/Corpse_Necrophage.cfg:34
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:53
+#: data/core/units/undead/Spirit_Shadow.cfg:27
 msgid "claws"
 msgstr "ungegoj"
 
-#: data/core/units/Drake_Armageddon.cfg:77
-#: data/core/units/Drake_Blademaster.cfg:67
-#: data/core/units/Drake_Burner.cfg:63 data/core/units/Drake_Clasher.cfg:80
-#: data/core/units/Drake_Enforcer.cfg:70 data/core/units/Drake_Fighter.cfg:64
-#: data/core/units/Drake_Fire.cfg:70 data/core/units/Drake_Flameheart.cfg:79
-#: data/core/units/Drake_Flare.cfg:83 data/core/units/Drake_Gladiator.cfg:69
-#: data/core/units/Drake_Inferno.cfg:71 data/core/units/Drake_Slasher.cfg:74
-#: data/core/units/Drake_Warden.cfg:80 data/core/units/Drake_Warrior.cfg:71
-#: data/core/units/Dwarvish_Berserker.cfg:33
-#: data/core/units/Dwarvish_Dragonguard.cfg:25
-#: data/core/units/Dwarvish_Fighter.cfg:34
-#: data/core/units/Dwarvish_Lord.cfg:29 data/core/units/Dwarvish_Lord.cfg:104
-#: data/core/units/Dwarvish_Steelclad.cfg:29
-#: data/core/units/Dwarvish_Thunderer.cfg:41
-#: data/core/units/Dwarvish_Thunderguard.cfg:25
-#: data/core/units/Dwarvish_Ulfserker.cfg:33
-#: data/core/units/Elvish_Archer.cfg:24 data/core/units/Elvish_Avenger.cfg:63
-#: data/core/units/Elvish_Captain.cfg:37
-#: data/core/units/Elvish_Champion.cfg:24
-#: data/core/units/Elvish_Fighter.cfg:24 data/core/units/Elvish_Hero.cfg:23
-#: data/core/units/Elvish_Marksman.cfg:55
-#: data/core/units/Elvish_Marshal.cfg:36
-#: data/core/units/Elvish_Outrider.cfg:32 data/core/units/Elvish_Ranger.cfg:60
-#: data/core/units/Elvish_Rider.cfg:34 data/core/units/Elvish_Scout.cfg:33
-#: data/core/units/Elvish_Sharpshooter.cfg:49
-#: data/core/units/Fire_Dragon.cfg:27
-#: data/core/units/Goblin_Direwolf_Rider.cfg:35
-#: data/core/units/Goblin_Direwolf_Rider.cfg:83
-#: data/core/units/Goblin_Knight.cfg:35
-#: data/core/units/Goblin_Wolf_Rider.cfg:51 data/core/units/Gryphon.cfg:27
-#: data/core/units/Gryphon_Master.cfg:30 data/core/units/Gryphon_Rider.cfg:30
-#: data/core/units/Human_Horse_Grand_Knight.cfg:26
-#: data/core/units/Human_Horse_Knight.cfg:25
-#: data/core/units/Human_Loyalist_Bowman.cfg:25
-#: data/core/units/Human_Loyalist_Cavalier.cfg:37
-#: data/core/units/Human_Loyalist_Cavalryman.cfg:51
-#: data/core/units/Human_Loyalist_Dragoon.cfg:36
-#: data/core/units/Human_Loyalist_Duelist.cfg:71
-#: data/core/units/Human_Loyalist_Fencer.cfg:126
-#: data/core/units/Human_Loyalist_General.cfg:45
-#: data/core/units/Human_Loyalist_Grand_Marshal.cfg:41
-#: data/core/units/Human_Loyalist_Halberdier.cfg:215
-#: data/core/units/Human_Loyalist_Lieutenant.cfg:35
-#: data/core/units/Human_Loyalist_Longbowman.cfg:26
-#: data/core/units/Human_Loyalist_Master_Bowman.cfg:26
-#: data/core/units/Human_Loyalist_Master_at_Arms.cfg:30
-#: data/core/units/Human_Loyalist_Royal_Guard.cfg:28
-#: data/core/units/Human_Loyalist_Sergeant.cfg:34
-#: data/core/units/Human_Loyalist_Swordsman.cfg:27
-#: data/core/units/Human_Outlaw_Assassin.cfg:30
-#: data/core/units/Human_Outlaw_Assassin.cfg:111
-#: data/core/units/Human_Outlaw_Poacher.cfg:36
-#: data/core/units/Human_Outlaw_Rogue.cfg:29
-#: data/core/units/Human_Outlaw_Rogue.cfg:70
-#: data/core/units/Human_Outlaw_Thief.cfg:178
-#: data/core/units/Human_Outlaw_Trapper.cfg:36
-#: data/core/units/Human_Woodsman.cfg:28 data/core/units/Merman_Triton.cfg:70
-#: data/core/units/Monster_Cave_Spider.cfg:36
-#: data/core/units/Monster_Skeletal_Dragon.cfg:30
-#: data/core/units/Monster_Skeletal_Dragon.cfg:66
-#: data/core/units/Naga_Fighter.cfg:25 data/core/units/Naga_Myrmidon.cfg:29
-#: data/core/units/Naga_Warrior.cfg:28 data/core/units/Ogre.cfg:24
-#: data/core/units/Ogre_Young.cfg:24 data/core/units/Orcish_Archer.cfg:71
-#: data/core/units/Orcish_Assassin.cfg:72
-#: data/core/units/Orcish_Assassin.cfg:99
-#: data/core/units/Orcish_Crossbowman.cfg:24
-#: data/core/units/Orcish_Grunt.cfg:76 data/core/units/Orcish_Leader.cfg:30
-#: data/core/units/Orcish_Ruler.cfg:28 data/core/units/Orcish_Slayer.cfg:29
-#: data/core/units/Orcish_Slayer.cfg:120 data/core/units/Orcish_Slurbow.cfg:27
-#: data/core/units/Orcish_Sovereign.cfg:29
-#: data/core/units/Orcish_Warlord.cfg:25 data/core/units/Orcish_Warrior.cfg:23
-#: data/core/units/Undead_Bat_Blood.cfg:53
-#: data/core/units/Undead_Bat_Vampire.cfg:67
-#: data/core/units/Undead_Corpse_Ghoul.cfg:68
-#: data/core/units/Undead_Corpse_Necrophage.cfg:36
-#: data/core/units/Undead_Skele_Bone_Shooter.cfg:43
-#: data/core/units/Undead_Skele_Death_Knight.cfg:46
-#: data/core/units/Undead_Skele_Deathblade.cfg:44
-#: data/core/units/Undead_Skele_Draug.cfg:32
-#: data/core/units/Undead_Skele_Revenant.cfg:31
-#: data/core/units/Undead_Skele_Soul_Shooter.cfg:33
-#: data/core/units/Undead_Skeleton.cfg:108
-#: data/core/units/Undead_Spirit_Nightgaunt.cfg:54
-#: data/core/units/Undead_Spirit_Shadow.cfg:28
+#: data/core/units/drakes/Armageddon.cfg:77
+#: data/core/units/drakes/Blademaster.cfg:67
+#: data/core/units/drakes/Burner.cfg:63 data/core/units/drakes/Clasher.cfg:82
+#: data/core/units/drakes/Enforcer.cfg:70
+#: data/core/units/drakes/Fighter.cfg:64 data/core/units/drakes/Fire.cfg:70
+#: data/core/units/drakes/Flameheart.cfg:79
+#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Gladiator.cfg:69
+#: data/core/units/drakes/Inferno.cfg:71 data/core/units/drakes/Slasher.cfg:74
+#: data/core/units/drakes/Warden.cfg:80 data/core/units/drakes/Warrior.cfg:71
+#: data/core/units/dwarves/Berserker.cfg:33
+#: data/core/units/dwarves/Dragonguard.cfg:25
+#: data/core/units/dwarves/Fighter.cfg:34 data/core/units/dwarves/Lord.cfg:29
+#: data/core/units/dwarves/Lord.cfg:104
+#: data/core/units/dwarves/Steelclad.cfg:29
+#: data/core/units/dwarves/Thunderer.cfg:41
+#: data/core/units/dwarves/Thunderguard.cfg:25
+#: data/core/units/dwarves/Ulfserker.cfg:33
+#: data/core/units/elves/Archer.cfg:24 data/core/units/elves/Avenger.cfg:63
+#: data/core/units/elves/Captain.cfg:37 data/core/units/elves/Champion.cfg:24
+#: data/core/units/elves/Fighter.cfg:24 data/core/units/elves/Hero.cfg:23
+#: data/core/units/elves/Marksman.cfg:55 data/core/units/elves/Marshal.cfg:36
+#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Ranger.cfg:60
+#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Scout.cfg:33
+#: data/core/units/elves/Sharpshooter.cfg:49
+#: data/core/units/goblins/Direwolf_Rider.cfg:35
+#: data/core/units/goblins/Direwolf_Rider.cfg:83
+#: data/core/units/goblins/Knight.cfg:35
+#: data/core/units/goblins/Wolf_Rider.cfg:51
+#: data/core/units/humans/Horse_Grand_Knight.cfg:26
+#: data/core/units/humans/Horse_Knight.cfg:25
+#: data/core/units/humans/Loyalist_Bowman.cfg:25
+#: data/core/units/humans/Loyalist_Cavalier.cfg:37
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:51
+#: data/core/units/humans/Loyalist_Dragoon.cfg:36
+#: data/core/units/humans/Loyalist_Duelist.cfg:71
+#: data/core/units/humans/Loyalist_Fencer.cfg:126
+#: data/core/units/humans/Loyalist_General.cfg:45
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
+#: data/core/units/humans/Loyalist_Halberdier.cfg:215
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:35
+#: data/core/units/humans/Loyalist_Longbowman.cfg:26
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:26
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:30
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
+#: data/core/units/humans/Loyalist_Sergeant.cfg:34
+#: data/core/units/humans/Loyalist_Swordsman.cfg:27
+#: data/core/units/humans/Outlaw_Assassin.cfg:30
+#: data/core/units/humans/Outlaw_Assassin.cfg:111
+#: data/core/units/humans/Outlaw_Poacher.cfg:36
+#: data/core/units/humans/Outlaw_Rogue.cfg:29
+#: data/core/units/humans/Outlaw_Rogue.cfg:70
+#: data/core/units/humans/Outlaw_Thief.cfg:178
+#: data/core/units/humans/Outlaw_Trapper.cfg:36
+#: data/core/units/humans/Woodsman.cfg:28
+#: data/core/units/merfolk/Triton.cfg:70
+#: data/core/units/monsters/Cave_Spider.cfg:36
+#: data/core/units/monsters/Fire_Dragon.cfg:27
+#: data/core/units/monsters/Gryphon.cfg:27
+#: data/core/units/monsters/Gryphon_Master.cfg:30
+#: data/core/units/monsters/Gryphon_Rider.cfg:30
+#: data/core/units/monsters/Skeletal_Dragon.cfg:30
+#: data/core/units/monsters/Skeletal_Dragon.cfg:66
+#: data/core/units/monsters/Wolf.cfg:48 data/core/units/nagas/Fighter.cfg:25
+#: data/core/units/nagas/Myrmidon.cfg:29 data/core/units/nagas/Warrior.cfg:28
+#: data/core/units/ogres/Ogre.cfg:24 data/core/units/ogres/Young_Ogre.cfg:24
+#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:72
+#: data/core/units/orcs/Assassin.cfg:99
+#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Grunt.cfg:76
+#: data/core/units/orcs/Leader.cfg:30 data/core/units/orcs/Ruler.cfg:28
+#: data/core/units/orcs/Slayer.cfg:29 data/core/units/orcs/Slayer.cfg:120
+#: data/core/units/orcs/Slurbow.cfg:27 data/core/units/orcs/Sovereign.cfg:29
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:23
+#: data/core/units/undead/Bat_Blood.cfg:53
+#: data/core/units/undead/Bat_Vampire.cfg:67
+#: data/core/units/undead/Corpse_Ghoul.cfg:68
+#: data/core/units/undead/Corpse_Necrophage.cfg:36
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:43
+#: data/core/units/undead/Skele_Death_Knight.cfg:46
+#: data/core/units/undead/Skele_Deathblade.cfg:44
+#: data/core/units/undead/Skele_Draug.cfg:32
+#: data/core/units/undead/Skele_Revenant.cfg:31
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:33
+#: data/core/units/undead/Skeleton.cfg:108
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:54
+#: data/core/units/undead/Spirit_Shadow.cfg:28
 msgid "blade"
 msgstr "klingo"
 
-#: data/core/units/Drake_Armageddon.cfg:121
-#: data/core/units/Drake_Blademaster.cfg:114
-#: data/core/units/Drake_Burner.cfg:109 data/core/units/Drake_Fighter.cfg:111
-#: data/core/units/Drake_Fire.cfg:116 data/core/units/Drake_Flameheart.cfg:154
-#: data/core/units/Drake_Flare.cfg:135 data/core/units/Drake_Glider.cfg:129
-#: data/core/units/Drake_Hurricane.cfg:150
-#: data/core/units/Drake_Inferno.cfg:117 data/core/units/Drake_Sky.cfg:177
-#: data/core/units/Drake_Warrior.cfg:118 data/core/units/Fire_Dragon.cfg:113
-#: data/core/units/Fire_Dragon.cfg:114
+#: data/core/units/drakes/Armageddon.cfg:121
+#: data/core/units/drakes/Blademaster.cfg:114
+#: data/core/units/drakes/Burner.cfg:109
+#: data/core/units/drakes/Fighter.cfg:111 data/core/units/drakes/Fire.cfg:116
+#: data/core/units/drakes/Flameheart.cfg:154
+#: data/core/units/drakes/Flare.cfg:135 data/core/units/drakes/Glider.cfg:129
+#: data/core/units/drakes/Hurricane.cfg:150
+#: data/core/units/drakes/Inferno.cfg:117 data/core/units/drakes/Sky.cfg:177
+#: data/core/units/drakes/Warrior.cfg:118
+#: data/core/units/monsters/Fire_Dragon.cfg:113
+#: data/core/units/monsters/Fire_Dragon.cfg:114
 msgid "fire breath"
 msgstr "fajra spiro"
 
-#: data/core/units/Drake_Armageddon.cfg:123
-#: data/core/units/Drake_Blademaster.cfg:116
-#: data/core/units/Drake_Burner.cfg:111 data/core/units/Drake_Fighter.cfg:113
-#: data/core/units/Drake_Fire.cfg:118 data/core/units/Drake_Flameheart.cfg:156
-#: data/core/units/Drake_Flare.cfg:137 data/core/units/Drake_Glider.cfg:131
-#: data/core/units/Drake_Hurricane.cfg:152
-#: data/core/units/Drake_Inferno.cfg:119 data/core/units/Drake_Sky.cfg:179
-#: data/core/units/Drake_Warrior.cfg:120
-#: data/core/units/Dwarvish_Runemaster.cfg:63
-#: data/core/units/Fire_Dragon.cfg:116 data/core/units/Goblin_Pillager.cfg:36
-#: data/core/units/Human_Mage.cfg:105 data/core/units/Human_Mage_Arch.cfg:77
-#: data/core/units/Human_Mage_Great.cfg:78
-#: data/core/units/Human_Mage_Red.cfg:99
-#: data/core/units/Human_Mage_Silver.cfg:85
-#: data/core/units/Orcish_Archer.cfg:238
-#: data/core/units/Orcish_Crossbowman.cfg:101
-#: data/core/units/Orcish_Slurbow.cfg:114
+#: data/core/units/drakes/Armageddon.cfg:123
+#: data/core/units/drakes/Blademaster.cfg:116
+#: data/core/units/drakes/Burner.cfg:111
+#: data/core/units/drakes/Fighter.cfg:113 data/core/units/drakes/Fire.cfg:118
+#: data/core/units/drakes/Flameheart.cfg:156
+#: data/core/units/drakes/Flare.cfg:137 data/core/units/drakes/Glider.cfg:131
+#: data/core/units/drakes/Hurricane.cfg:152
+#: data/core/units/drakes/Inferno.cfg:119 data/core/units/drakes/Sky.cfg:179
+#: data/core/units/drakes/Warrior.cfg:120
+#: data/core/units/dwarves/Runemaster.cfg:63
+#: data/core/units/goblins/Pillager.cfg:36 data/core/units/humans/Mage.cfg:105
+#: data/core/units/humans/Mage_Arch.cfg:77
+#: data/core/units/humans/Mage_Great.cfg:78
+#: data/core/units/humans/Mage_Red.cfg:99
+#: data/core/units/humans/Mage_Silver.cfg:85
+#: data/core/units/monsters/Fire_Dragon.cfg:116
+#: data/core/units/orcs/Archer.cfg:238
+#: data/core/units/orcs/Crossbowman.cfg:101
+#: data/core/units/orcs/Slurbow.cfg:124
 msgid "fire"
 msgstr "fajro"
 
-#: data/core/units/Drake_Blademaster.cfg:3
+#: data/core/units/drakes/Blademaster.cfg:3
 msgid "Drake Blademaster"
 msgstr "Draka glavmastro"
 
-#: data/core/units/Drake_Blademaster.cfg:18
+#: data/core/units/drakes/Blademaster.cfg:18
 #, fuzzy
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
@@ -4216,45 +4225,45 @@ msgstr ""
 "La plej spertaj drakoj kreas specialajn milit-unuojn. Dum batalo uzas nigre-"
 "blankan batal-kolorigon."
 
-#: data/core/units/Drake_Blademaster.cfg:66
-#: data/core/units/Drake_Clasher.cfg:79 data/core/units/Drake_Enforcer.cfg:69
-#: data/core/units/Drake_Flameheart.cfg:78 data/core/units/Drake_Flare.cfg:82
-#: data/core/units/Drake_Gladiator.cfg:68 data/core/units/Drake_Warrior.cfg:70
-#: data/core/units/Elvish_Archer.cfg:22 data/core/units/Elvish_Avenger.cfg:61
-#: data/core/units/Elvish_Captain.cfg:35
-#: data/core/units/Elvish_Champion.cfg:22
-#: data/core/units/Elvish_Fighter.cfg:22 data/core/units/Elvish_Hero.cfg:21
-#: data/core/units/Elvish_Marksman.cfg:53
-#: data/core/units/Elvish_Marshal.cfg:34
-#: data/core/units/Elvish_Outrider.cfg:30 data/core/units/Elvish_Ranger.cfg:58
-#: data/core/units/Elvish_Rider.cfg:32 data/core/units/Elvish_Scout.cfg:31
-#: data/core/units/Elvish_Sharpshooter.cfg:47
-#: data/core/units/Human_Horse_Grand_Knight.cfg:24
-#: data/core/units/Human_Horse_Knight.cfg:23
-#: data/core/units/Human_Horse_Paladin.cfg:31
-#: data/core/units/Human_Loyalist_Bowman.cfg:23
-#: data/core/units/Human_Loyalist_Cavalier.cfg:35
-#: data/core/units/Human_Loyalist_Cavalryman.cfg:49
-#: data/core/units/Human_Loyalist_Dragoon.cfg:34
-#: data/core/units/Human_Loyalist_General.cfg:43
-#: data/core/units/Human_Loyalist_Grand_Marshal.cfg:39
-#: data/core/units/Human_Loyalist_Lieutenant.cfg:33
-#: data/core/units/Human_Loyalist_Longbowman.cfg:24
-#: data/core/units/Human_Loyalist_Master_Bowman.cfg:24
-#: data/core/units/Human_Loyalist_Royal_Guard.cfg:26
-#: data/core/units/Human_Loyalist_Sergeant.cfg:32
-#: data/core/units/Human_Loyalist_Swordsman.cfg:25
-#: data/core/units/Naga_Fighter.cfg:23 data/core/units/Naga_Myrmidon.cfg:27
-#: data/core/units/Naga_Warrior.cfg:26 data/core/units/Orcish_Grunt.cfg:74
-#: data/core/units/Orcish_Leader.cfg:28
+#: data/core/units/drakes/Blademaster.cfg:66
+#: data/core/units/drakes/Clasher.cfg:81
+#: data/core/units/drakes/Enforcer.cfg:69
+#: data/core/units/drakes/Flameheart.cfg:78
+#: data/core/units/drakes/Flare.cfg:82 data/core/units/drakes/Gladiator.cfg:68
+#: data/core/units/drakes/Warrior.cfg:70 data/core/units/elves/Archer.cfg:22
+#: data/core/units/elves/Avenger.cfg:61 data/core/units/elves/Captain.cfg:35
+#: data/core/units/elves/Champion.cfg:22 data/core/units/elves/Fighter.cfg:22
+#: data/core/units/elves/Hero.cfg:21 data/core/units/elves/Marksman.cfg:53
+#: data/core/units/elves/Marshal.cfg:34 data/core/units/elves/Outrider.cfg:30
+#: data/core/units/elves/Ranger.cfg:58 data/core/units/elves/Rider.cfg:32
+#: data/core/units/elves/Scout.cfg:31
+#: data/core/units/elves/Sharpshooter.cfg:47
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Horse_Knight.cfg:23
+#: data/core/units/humans/Horse_Paladin.cfg:38
+#: data/core/units/humans/Loyalist_Bowman.cfg:23
+#: data/core/units/humans/Loyalist_Cavalier.cfg:35
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:49
+#: data/core/units/humans/Loyalist_Dragoon.cfg:34
+#: data/core/units/humans/Loyalist_General.cfg:43
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:39
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:33
+#: data/core/units/humans/Loyalist_Longbowman.cfg:24
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:24
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:26
+#: data/core/units/humans/Loyalist_Sergeant.cfg:32
+#: data/core/units/humans/Loyalist_Swordsman.cfg:25
+#: data/core/units/nagas/Fighter.cfg:23 data/core/units/nagas/Myrmidon.cfg:27
+#: data/core/units/nagas/Warrior.cfg:26 data/core/units/orcs/Grunt.cfg:74
+#: data/core/units/orcs/Leader.cfg:28
 msgid "sword"
 msgstr "glavo"
 
-#: data/core/units/Drake_Burner.cfg:3
+#: data/core/units/drakes/Burner.cfg:3
 msgid "Drake Burner"
 msgstr "Drako bruligisto"
 
-#: data/core/units/Drake_Burner.cfg:18
+#: data/core/units/drakes/Burner.cfg:18
 #, fuzzy
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
@@ -4266,13 +4275,13 @@ msgstr ""
 "heredis kapablon sputi fajron. Tio, komune kun ilia forto, faras el ili "
 "danĝerajn kontraŭuloj en batalo."
 
-#: data/core/units/Drake_Clasher.cfg:3
+#: data/core/units/drakes/Clasher.cfg:3
 msgid "Drake Clasher"
 msgstr "Saŭro batalemulo"
 
 #
 #
-#: data/core/units/Drake_Clasher.cfg:24
+#: data/core/units/drakes/Clasher.cfg:26
 #, fuzzy
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
@@ -4288,7 +4297,9 @@ msgid ""
 "strength were themselves powerful weapons, and when combined with the "
 "armament worn by this caste, the resulting warriors lack some of the typical "
 "weaknesses of their kind, such as the strong vulnerability to spears and "
-"arrows."
+"arrows.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Drako batisto kapablas nek flugi nek spiri fajron, kaj ilia lerteco kun "
 "armiloj en batalo estas ne tro alta. Sed praktiko montras, ke ili kapablas "
@@ -4301,41 +4312,43 @@ msgstr ""
 "ili potencaj batalantoj, rezistaj kontraŭ tipaj malavantaĝoj de sia specio, "
 "kiel estas vundebleco al sagoj kaj lancoj."
 
-#: data/core/units/Drake_Clasher.cfg:122
-#: data/core/units/Drake_Enforcer.cfg:135
-#: data/core/units/Drake_Gladiator.cfg:111
-#: data/core/units/Dwarvish_Guardsman.cfg:31
-#: data/core/units/Dwarvish_Sentinel.cfg:39
-#: data/core/units/Dwarvish_Stalwart.cfg:34
-#: data/core/units/Goblin_Impaler.cfg:24
-#: data/core/units/Goblin_Impaler.cfg:206 data/core/units/Goblin_Rouser.cfg:41
-#: data/core/units/Goblin_Spearman.cfg:23
-#: data/core/units/Goblin_Spearman.cfg:159
-#: data/core/units/Human_Horseman.cfg:24
-#: data/core/units/Human_Loyalist_Javelineer.cfg:27
-#: data/core/units/Human_Loyalist_Spearman.cfg:62
-#: data/core/units/Merman_Entangler.cfg:24
-#: data/core/units/Merman_Hunter.cfg:22 data/core/units/Merman_Hunter.cfg:173
-#: data/core/units/Merman_Javelineer.cfg:22
-#: data/core/units/Merman_Javelineer.cfg:153
-#: data/core/units/Merman_Netcaster.cfg:23
-#: data/core/units/Merman_Spearman.cfg:21
-#: data/core/units/Merman_Spearman.cfg:172
-#: data/core/units/Saurian_Ambusher.cfg:27
-#: data/core/units/Saurian_Ambusher.cfg:70
-#: data/core/units/Saurian_Flanker.cfg:28
-#: data/core/units/Saurian_Flanker.cfg:71
-#: data/core/units/Saurian_Skirmisher.cfg:30
-#: data/core/units/Saurian_Skirmisher.cfg:73
-#: data/core/units/Undead_Skele_Chocobone.cfg:25
+#: data/core/units/drakes/Clasher.cfg:124
+#: data/core/units/drakes/Enforcer.cfg:135
+#: data/core/units/drakes/Gladiator.cfg:111
+#: data/core/units/dwarves/Guardsman.cfg:31
+#: data/core/units/dwarves/Sentinel.cfg:39
+#: data/core/units/dwarves/Stalwart.cfg:34
+#: data/core/units/goblins/Impaler.cfg:24
+#: data/core/units/goblins/Impaler.cfg:206
+#: data/core/units/goblins/Rouser.cfg:41
+#: data/core/units/goblins/Spearman.cfg:23
+#: data/core/units/goblins/Spearman.cfg:159
+#: data/core/units/humans/Horseman.cfg:24
+#: data/core/units/humans/Loyalist_Javelineer.cfg:27
+#: data/core/units/humans/Loyalist_Spearman.cfg:62
+#: data/core/units/merfolk/Entangler.cfg:24
+#: data/core/units/merfolk/Hunter.cfg:22
+#: data/core/units/merfolk/Hunter.cfg:173
+#: data/core/units/merfolk/Javelineer.cfg:22
+#: data/core/units/merfolk/Javelineer.cfg:153
+#: data/core/units/merfolk/Netcaster.cfg:23
+#: data/core/units/merfolk/Spearman.cfg:21
+#: data/core/units/merfolk/Spearman.cfg:172
+#: data/core/units/saurians/Ambusher.cfg:27
+#: data/core/units/saurians/Ambusher.cfg:70
+#: data/core/units/saurians/Flanker.cfg:28
+#: data/core/units/saurians/Flanker.cfg:71
+#: data/core/units/saurians/Skirmisher.cfg:30
+#: data/core/units/saurians/Skirmisher.cfg:73
+#: data/core/units/undead/Skele_Chocobone.cfg:25
 msgid "spear"
 msgstr "lanco"
 
-#: data/core/units/Drake_Enforcer.cfg:3
+#: data/core/units/drakes/Enforcer.cfg:3
 msgid "Drake Enforcer"
 msgstr "Saŭro inspektisto"
 
-#: data/core/units/Drake_Enforcer.cfg:24
+#: data/core/units/drakes/Enforcer.cfg:24
 #, fuzzy
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
@@ -4346,21 +4359,21 @@ msgstr ""
 "forĝejo donis al li mirindan skalon da armiloj, kaj vestis lin de kapo ĝis "
 "kalkano en brilan kirason."
 
-#: data/core/units/Drake_Enforcer.cfg:102
-#: data/core/units/Drake_Gladiator.cfg:154
-#: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:21
-#: data/core/units/Human_Loyalist_Iron_Mauler.cfg:23
-#: data/core/units/Human_Outlaw.cfg:22
-#: data/core/units/Human_Outlaw_Bandit.cfg:34
-#: data/core/units/Troll_Great.cfg:27
+#: data/core/units/drakes/Enforcer.cfg:102
+#: data/core/units/drakes/Gladiator.cfg:154
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:21
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:23
+#: data/core/units/humans/Outlaw.cfg:22
+#: data/core/units/humans/Outlaw_Bandit.cfg:34
+#: data/core/units/trolls/Great.cfg:27
 msgid "mace"
 msgstr "madzo"
 
-#: data/core/units/Drake_Fighter.cfg:3
+#: data/core/units/drakes/Fighter.cfg:3
 msgid "Drake Fighter"
 msgstr "Saŭro batalanto"
 
-#: data/core/units/Drake_Fighter.cfg:18
+#: data/core/units/drakes/Fighter.cfg:18
 msgid ""
 "Drake Fighters wield curved scimitars with deadly skill, and possess the "
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
@@ -4370,15 +4383,15 @@ msgstr ""
 "heredis kapablon elspiri fajron. La plej lertaj drak-soldatoj aniĝas al "
 "elitaj drak-batalantoj."
 
-#: data/core/units/Drake_Fighter.cfg:63
+#: data/core/units/drakes/Fighter.cfg:63
 msgid "scimitar"
 msgstr "kurbita sabro"
 
-#: data/core/units/Drake_Fire.cfg:3
+#: data/core/units/drakes/Fire.cfg:3
 msgid "Fire Drake"
 msgstr "Fajra drako"
 
-#: data/core/units/Drake_Fire.cfg:17
+#: data/core/units/drakes/Fire.cfg:17
 #, fuzzy
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
@@ -4389,13 +4402,13 @@ msgstr ""
 "armaĵo sputas flamon sur siajn kontraŭlojn. Ili estas simbolo de forto kaj "
 "majesteceo de sia speco."
 
-#: data/core/units/Drake_Flameheart.cfg:3
+#: data/core/units/drakes/Flameheart.cfg:3
 msgid "Drake Flameheart"
 msgstr "Flama saŭro"
 
 #
 #
-#: data/core/units/Drake_Flameheart.cfg:27
+#: data/core/units/drakes/Flameheart.cfg:27
 #, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
@@ -4414,13 +4427,13 @@ msgstr ""
 "najbaraj kampoj kaŭzi dum batalo  pli grandan damaĝon; tio validas nur por "
 "milit-unuoj sur malpli alta nivelo."
 
-#: data/core/units/Drake_Flare.cfg:3
+#: data/core/units/drakes/Flare.cfg:3
 msgid "Drake Flare"
 msgstr "Ardanta saŭro"
 
 #
 #
-#: data/core/units/Drake_Flare.cfg:26
+#: data/core/units/drakes/Flare.cfg:26
 #, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
@@ -4436,11 +4449,11 @@ msgstr ""
 "najbaraj kampoj kaŭzi dum batalo  pli grandan damaĝon; tio validas nur por "
 "milit-unuoj sur malpli alta nivelo."
 
-#: data/core/units/Drake_Gladiator.cfg:3
+#: data/core/units/drakes/Gladiator.cfg:3
 msgid "Drake Gladiator"
 msgstr "Saŭra gladiatoro"
 
-#: data/core/units/Drake_Gladiator.cfg:22
+#: data/core/units/drakes/Gladiator.cfg:22
 #, fuzzy
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
@@ -4458,11 +4471,11 @@ msgstr ""
 "armilaro. Tiu ĉi ekskluziva orientiĝo al armiloj iom malaltigas iliajn "
 "defendkapablojn"
 
-#: data/core/units/Drake_Glider.cfg:3
+#: data/core/units/drakes/Glider.cfg:3
 msgid "Drake Glider"
 msgstr "Ŝvebanta drako"
 
-#: data/core/units/Drake_Glider.cfg:21
+#: data/core/units/drakes/Glider.cfg:21
 #, fuzzy
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
@@ -4482,16 +4495,16 @@ msgstr ""
 "malamikojn per sia rapideco. La plej elstaraj ŝvebantaj drakoj povas ĝoji "
 "pro akcepto al vicoj de alteflugantaj ĉielaj drakoj"
 
-#: data/core/units/Drake_Glider.cfg:76 data/core/units/Drake_Hurricane.cfg:92
-#: data/core/units/Drake_Sky.cfg:91
+#: data/core/units/drakes/Glider.cfg:76
+#: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
 msgid "slam"
 msgstr "frapo"
 
-#: data/core/units/Drake_Hurricane.cfg:3
+#: data/core/units/drakes/Hurricane.cfg:3
 msgid "Hurricane Drake"
 msgstr "Ŝtormeg- drako"
 
-#: data/core/units/Drake_Hurricane.cfg:30
+#: data/core/units/drakes/Hurricane.cfg:30
 #, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
@@ -4504,11 +4517,11 @@ msgstr ""
 "granda flug-talento. Ili ŝvebas elte en aero, flugas super defendlinioj, kaj "
 "senpune sputas fajron sur kuntraŭlojn."
 
-#: data/core/units/Drake_Inferno.cfg:3
+#: data/core/units/drakes/Inferno.cfg:3
 msgid "Inferno Drake"
 msgstr "Infera drako"
 
-#: data/core/units/Drake_Inferno.cfg:18
+#: data/core/units/drakes/Inferno.cfg:18
 #, fuzzy
 msgid ""
 "The flying conflagrations known as Drake Infernos are the masters of the "
@@ -4522,11 +4535,11 @@ msgstr ""
 "vundeblaj per fajro. Ilia brilanta armaĵo estas simbolo de potenca kaj fiera "
 "kasto; idealo, kiun aliaj klopodas atingi."
 
-#: data/core/units/Drake_Sky.cfg:3
+#: data/core/units/drakes/Sky.cfg:3
 msgid "Sky Drake"
 msgstr "Flug-drako"
 
-#: data/core/units/Drake_Sky.cfg:29
+#: data/core/units/drakes/Sky.cfg:29
 #, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
@@ -4541,11 +4554,11 @@ msgstr ""
 "spiro fariĝis pereigo por multaj. Ili kapablas rapide ĉirkaŭi siajn "
 "viktimojn, kaj ĝis iu provos haltigi ilin, jam estas longe for."
 
-#: data/core/units/Drake_Slasher.cfg:3
+#: data/core/units/drakes/Slasher.cfg:3
 msgid "Drake Slasher"
 msgstr "Hak-drako"
 
-#: data/core/units/Drake_Slasher.cfg:24
+#: data/core/units/drakes/Slasher.cfg:24
 #, fuzzy
 msgid ""
 "Slashers are Clashers who have chosen to master the use of a halberd instead "
@@ -4562,18 +4575,19 @@ msgstr ""
 "Trejnado altigas ilian persistecon kaj defendkapablon, kaj tio estas granda "
 "avantaĝo kontraŭ gladiatoroj."
 
-#: data/core/units/Drake_Slasher.cfg:73 data/core/units/Drake_Slasher.cfg:121
-#: data/core/units/Drake_Warden.cfg:79 data/core/units/Drake_Warden.cfg:127
-#: data/core/units/Human_Loyalist_Halberdier.cfg:29
-#: data/core/units/Human_Loyalist_Halberdier.cfg:213
+#: data/core/units/drakes/Slasher.cfg:73
+#: data/core/units/drakes/Slasher.cfg:121 data/core/units/drakes/Warden.cfg:79
+#: data/core/units/drakes/Warden.cfg:127
+#: data/core/units/humans/Loyalist_Halberdier.cfg:29
+#: data/core/units/humans/Loyalist_Halberdier.cfg:213
 msgid "halberd"
 msgstr "halebardo"
 
-#: data/core/units/Drake_Warden.cfg:3
+#: data/core/units/drakes/Warden.cfg:3
 msgid "Drake Warden"
 msgstr "Gard-drako"
 
-#: data/core/units/Drake_Warden.cfg:25
+#: data/core/units/drakes/Warden.cfg:25
 #, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
@@ -4587,11 +4601,11 @@ msgstr ""
 "potenco estas grandega, nur malmultaj  sur ĉi tiu tero kuraĝus kontraŭstari "
 "ilin. Halebardo estas armilo de gardistoj, kaj ili majstre regas ĝin."
 
-#: data/core/units/Drake_Warrior.cfg:3
+#: data/core/units/drakes/Warrior.cfg:3
 msgid "Drake Warrior"
 msgstr "Drako batalanto"
 
-#: data/core/units/Drake_Warrior.cfg:17
+#: data/core/units/drakes/Warrior.cfg:17
 #, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
@@ -4602,11 +4616,11 @@ msgstr ""
 "granda forto ebligas al ili doni neniigajn batojn, kaj elteni similajn "
 "batojn."
 
-#: data/core/units/Dwarvish_Berserker.cfg:3
+#: data/core/units/dwarves/Berserker.cfg:3
 msgid "Dwarvish Berserker"
 msgstr "Nano rabiulo"
 
-#: data/core/units/Dwarvish_Berserker.cfg:20
+#: data/core/units/dwarves/Berserker.cfg:20
 #, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
@@ -4618,16 +4632,16 @@ msgstr ""
 "defendo kaj donadas al malamikoj grandegajn vundojn. Se ĝi komencos batali, "
 "furioze atakas kaj batalas sen paŭzo, ĝis unu el kontraŭuloj ne mortos."
 
-#: data/core/units/Dwarvish_Berserker.cfg:31
-#: data/core/units/Dwarvish_Ulfserker.cfg:31
+#: data/core/units/dwarves/Berserker.cfg:31
+#: data/core/units/dwarves/Ulfserker.cfg:31
 msgid "berserker frenzy"
 msgstr "furioza atako"
 
-#: data/core/units/Dwarvish_Dragonguard.cfg:3
+#: data/core/units/dwarves/Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
 msgstr "Nano draka gardisto"
 
-#: data/core/units/Dwarvish_Dragonguard.cfg:18
+#: data/core/units/dwarves/Dragonguard.cfg:18
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -4645,30 +4659,30 @@ msgstr ""
 "de nanaj frotikaĵoj konataj kaj timigaj; tiaj armiloj nur per unu trafo "
 "mortigis eĉ la plej fortajn batalantojn."
 
-#: data/core/units/Dwarvish_Dragonguard.cfg:23
-#: data/core/units/Dwarvish_Thunderer.cfg:39
-#: data/core/units/Dwarvish_Thunderguard.cfg:23
-#: data/core/units/Human_Outlaw_Assassin.cfg:28
-#: data/core/units/Human_Outlaw_Poacher.cfg:34
-#: data/core/units/Human_Outlaw_Rogue.cfg:27
-#: data/core/units/Human_Outlaw_Thief.cfg:176
-#: data/core/units/Human_Outlaw_Trapper.cfg:34
-#: data/core/units/Human_Woodsman.cfg:26 data/core/units/Orcish_Archer.cfg:69
-#: data/core/units/Orcish_Assassin.cfg:70 data/core/units/Orcish_Slayer.cfg:27
-#: data/core/units/Undead_Skele_Bone_Shooter.cfg:41
-#: data/core/units/Undead_Skele_Soul_Shooter.cfg:31
+#: data/core/units/dwarves/Dragonguard.cfg:23
+#: data/core/units/dwarves/Thunderer.cfg:39
+#: data/core/units/dwarves/Thunderguard.cfg:23
+#: data/core/units/humans/Outlaw_Assassin.cfg:28
+#: data/core/units/humans/Outlaw_Poacher.cfg:34
+#: data/core/units/humans/Outlaw_Rogue.cfg:27
+#: data/core/units/humans/Outlaw_Thief.cfg:176
+#: data/core/units/humans/Outlaw_Trapper.cfg:34
+#: data/core/units/humans/Woodsman.cfg:26 data/core/units/orcs/Archer.cfg:69
+#: data/core/units/orcs/Assassin.cfg:70 data/core/units/orcs/Slayer.cfg:27
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:41
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:31
 msgid "dagger"
 msgstr "ponardo"
 
-#: data/core/units/Dwarvish_Dragonguard.cfg:61
+#: data/core/units/dwarves/Dragonguard.cfg:61
 msgid "dragonstaff"
 msgstr "draka bastono"
 
-#: data/core/units/Dwarvish_Fighter.cfg:3
+#: data/core/units/dwarves/Fighter.cfg:3
 msgid "Dwarvish Fighter"
 msgstr "Nano batalanto"
 
-#: data/core/units/Dwarvish_Fighter.cfg:19
+#: data/core/units/dwarves/Fighter.cfg:19
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
 "feared opponents in close range combat. They are excellent in mountainous "
@@ -4679,26 +4693,25 @@ msgstr ""
 "miksbatalo kaj klingo de ilia batalhakilo faras el ili timindajn "
 "kontraŭulojn. Ilia forto kaj pesristemo kompensas ilian malrapidecon."
 
-#: data/core/units/Dwarvish_Fighter.cfg:33
-#: data/core/units/Undead_Skele_Deathblade.cfg:42
-#: data/core/units/Undead_Skele_Draug.cfg:30
-#: data/core/units/Undead_Skele_Revenant.cfg:29
-#: data/core/units/Undead_Skeleton.cfg:106
+#: data/core/units/dwarves/Fighter.cfg:33
+#: data/core/units/undead/Skele_Deathblade.cfg:42
+#: data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/undead/Skele_Revenant.cfg:29
+#: data/core/units/undead/Skeleton.cfg:106
 msgid "axe"
 msgstr "hakilo"
 
-#: data/core/units/Dwarvish_Fighter.cfg:85
-#: data/core/units/Dwarvish_Lord.cfg:66
-#: data/core/units/Dwarvish_Steelclad.cfg:65
-#: data/core/units/Troll_Warrior.cfg:27
+#: data/core/units/dwarves/Fighter.cfg:85 data/core/units/dwarves/Lord.cfg:66
+#: data/core/units/dwarves/Steelclad.cfg:65
+#: data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "martelo"
 
-#: data/core/units/Dwarvish_Guardsman.cfg:3
+#: data/core/units/dwarves/Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
 msgstr "Nano gardanto"
 
-#: data/core/units/Dwarvish_Guardsman.cfg:21
+#: data/core/units/dwarves/Guardsman.cfg:21
 #, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
@@ -4712,20 +4725,20 @@ msgstr ""
 "ilia malrapideco kaj sen forta atako, bone gardas flankojn de armeo kaj "
 "forbatas multajn atakojn kaj ĵetas pezajn lancojn sur malamikoj."
 
-#: data/core/units/Dwarvish_Guardsman.cfg:79
-#: data/core/units/Dwarvish_Sentinel.cfg:87
-#: data/core/units/Dwarvish_Stalwart.cfg:82
-#: data/core/units/Human_Loyalist_Javelineer.cfg:82
-#: data/core/units/Human_Loyalist_Spearman.cfg:202
+#: data/core/units/dwarves/Guardsman.cfg:79
+#: data/core/units/dwarves/Sentinel.cfg:87
+#: data/core/units/dwarves/Stalwart.cfg:82
+#: data/core/units/humans/Loyalist_Javelineer.cfg:82
+#: data/core/units/humans/Loyalist_Spearman.cfg:202
 #, fuzzy
 msgid "javelin"
 msgstr "Lancisto"
 
-#: data/core/units/Dwarvish_Lord.cfg:3
+#: data/core/units/dwarves/Lord.cfg:3
 msgid "Dwarvish Lord"
 msgstr "Nano nobelo"
 
-#: data/core/units/Dwarvish_Lord.cfg:19
+#: data/core/units/dwarves/Lord.cfg:19
 msgid ""
 "Clad in shining armor, these dwarves look like kings from under the "
 "mountains. They wield axe and hammer with masterful skill, and can hit a "
@@ -4737,21 +4750,21 @@ msgstr ""
 "hakilo. Dum paŝado estas malrapidaj, sed alimaniere ili estas pruvo de "
 "lerteco en  ilia nacio."
 
-#: data/core/units/Dwarvish_Lord.cfg:28
-#: data/core/units/Dwarvish_Steelclad.cfg:27
-#: data/core/units/Undead_Skele_Death_Knight.cfg:44
+#: data/core/units/dwarves/Lord.cfg:28
+#: data/core/units/dwarves/Steelclad.cfg:27
+#: data/core/units/undead/Skele_Death_Knight.cfg:44
 msgid "battle axe"
 msgstr "batalhakilo"
 
-#: data/core/units/Dwarvish_Lord.cfg:103
+#: data/core/units/dwarves/Lord.cfg:103
 msgid "hatchet"
 msgstr "hakilo"
 
-#: data/core/units/Dwarvish_Runemaster.cfg:3
+#: data/core/units/dwarves/Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
 msgstr "Nana run-mastro"
 
-#: data/core/units/Dwarvish_Runemaster.cfg:18
+#: data/core/units/dwarves/Runemaster.cfg:18
 #, fuzzy
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
@@ -4763,19 +4776,19 @@ msgstr ""
 "skribita sur objekto, kaj tio donas al objekto magian forton. La runoj "
 "aperas nur rare en batalo, sed iliaj majstroj kapablas efike utiligi tion."
 
-#: data/core/units/Dwarvish_Runemaster.cfg:22
+#: data/core/units/dwarves/Runemaster.cfg:22
 msgid "runic hammer"
 msgstr "runa martelo"
 
-#: data/core/units/Dwarvish_Runemaster.cfg:61
+#: data/core/units/dwarves/Runemaster.cfg:61
 msgid "Lightning bolt"
 msgstr "Fulma bato"
 
-#: data/core/units/Dwarvish_Sentinel.cfg:3
+#: data/core/units/dwarves/Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
 msgstr "Nano sentinelo"
 
-#: data/core/units/Dwarvish_Sentinel.cfg:21
+#: data/core/units/dwarves/Sentinel.cfg:21
 #, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
@@ -4786,11 +4799,11 @@ msgstr ""
 "Gardanto kun granda ŝildo kaj ankoraŭ pli granda kuraĝo ne cedos eĉ ĉe la "
 "plej forta malamika atako."
 
-#: data/core/units/Dwarvish_Stalwart.cfg:3
+#: data/core/units/dwarves/Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr "Nano fortulo"
 
-#: data/core/units/Dwarvish_Stalwart.cfg:20
+#: data/core/units/dwarves/Stalwart.cfg:20
 #, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
@@ -4803,11 +4816,11 @@ msgstr ""
 "materialo trovita en malamikaj ruinoj. Malgraŭ malrapideco, estas timigaj "
 "pro forto kaj persisteco."
 
-#: data/core/units/Dwarvish_Steelclad.cfg:3
+#: data/core/units/dwarves/Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
 msgstr "Nano kirasulo"
 
-#: data/core/units/Dwarvish_Steelclad.cfg:18
+#: data/core/units/dwarves/Steelclad.cfg:18
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
@@ -4815,11 +4828,11 @@ msgstr ""
 "Pli spertaj nano-batalantoj portas pezajn ringformajn kaj tabulformajn "
 "armaĵojn kaj nomiĝas pezkirasuloj."
 
-#: data/core/units/Dwarvish_Thunderer.cfg:3
+#: data/core/units/dwarves/Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
 msgstr "Nano tondoroestro"
 
-#: data/core/units/Dwarvish_Thunderer.cfg:18
+#: data/core/units/dwarves/Thunderer.cfg:18
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -4836,18 +4849,18 @@ msgstr ""
 "konstrui proprajn, neniam estus saĝa ankoraŭ iam batali kontraŭ nanoj; kaj "
 "ili ĵuris, ke neniam faros tion."
 
-#: data/core/units/Dwarvish_Thunderer.cfg:87
-#: data/core/units/Dwarvish_Thunderguard.cfg:71
+#: data/core/units/dwarves/Thunderer.cfg:87
+#: data/core/units/dwarves/Thunderguard.cfg:71
 msgid "thunderstick"
 msgstr "tondra bastono"
 
-#: data/core/units/Dwarvish_Thunderguard.cfg:3
+#: data/core/units/dwarves/Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
 msgstr "Nana tondra gardisto"
 
 #
 #
-#: data/core/units/Dwarvish_Thunderguard.cfg:19
+#: data/core/units/dwarves/Thunderguard.cfg:19
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -4869,11 +4882,11 @@ msgstr ""
 "Preparo de pafo el ĉi tiu ´tondra bastono´daŭras kelkajn minutojn, sed el "
 "vidpunkto de nanoj, sekvanta efiko indas iom atendi."
 
-#: data/core/units/Dwarvish_Ulfserker.cfg:3
+#: data/core/units/dwarves/Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
 msgstr "Nano furiozulo"
 
-#: data/core/units/Dwarvish_Ulfserker.cfg:20
+#: data/core/units/dwarves/Ulfserker.cfg:20
 #, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
@@ -4887,11 +4900,11 @@ msgstr ""
 "furiozaj: sendepende de vundoj atakas malamikon senrompe, ĝis unu el ili "
 "falos morta."
 
-#: data/core/units/Elvish_Archer.cfg:3
+#: data/core/units/elves/Archer.cfg:3
 msgid "Elvish Archer"
 msgstr "Elfo pafanto"
 
-#: data/core/units/Elvish_Archer.cfg:19
+#: data/core/units/elves/Archer.cfg:19
 msgid ""
 "Elves have always had a reputation for archery, a skill that, for many "
 "reasons, comes naturally to them. Even the frail of body can be deadly with "
@@ -4906,34 +4919,32 @@ msgstr ""
 "Ilia relativa nesperteco faras ilin vundeblaj en batalo, sed ilia natura "
 "talento superas spertojn eĉ  de la plej lertaj homaj rekrutoj."
 
-#: data/core/units/Elvish_Archer.cfg:75 data/core/units/Elvish_Avenger.cfg:109
-#: data/core/units/Elvish_Captain.cfg:83
-#: data/core/units/Elvish_Champion.cfg:80
-#: data/core/units/Elvish_Fighter.cfg:65 data/core/units/Elvish_Hero.cfg:79
-#: data/core/units/Elvish_Marshal.cfg:77
-#: data/core/units/Elvish_Outrider.cfg:79
-#: data/core/units/Elvish_Ranger.cfg:106 data/core/units/Elvish_Rider.cfg:81
-#: data/core/units/Elvish_Scout.cfg:80
-#: data/core/units/Human_Loyalist_Bowman.cfg:61
-#: data/core/units/Human_Loyalist_Longbowman.cfg:62
-#: data/core/units/Human_Loyalist_Master_Bowman.cfg:62
-#: data/core/units/Human_Outlaw_Poacher.cfg:72
-#: data/core/units/Human_Outlaw_Trapper.cfg:102
-#: data/core/units/Human_Woodsman.cfg:64 data/core/units/Orcish_Archer.cfg:177
-#: data/core/units/Orcish_Archer.cfg:236 data/core/units/Orcish_Leader.cfg:66
-#: data/core/units/Orcish_Ruler.cfg:64 data/core/units/Orcish_Sovereign.cfg:65
-#: data/core/units/Orcish_Warlord.cfg:76
-#: data/core/units/Undead_Skele_Bone_Shooter.cfg:79
-#: data/core/units/Undead_Skele_Soul_Shooter.cfg:69
-#: data/core/units/Undead_Skeleton_Archer.cfg:69
+#: data/core/units/elves/Archer.cfg:75 data/core/units/elves/Avenger.cfg:109
+#: data/core/units/elves/Captain.cfg:83 data/core/units/elves/Champion.cfg:80
+#: data/core/units/elves/Fighter.cfg:65 data/core/units/elves/Hero.cfg:79
+#: data/core/units/elves/Marshal.cfg:77 data/core/units/elves/Outrider.cfg:79
+#: data/core/units/elves/Ranger.cfg:106 data/core/units/elves/Rider.cfg:81
+#: data/core/units/elves/Scout.cfg:80
+#: data/core/units/humans/Loyalist_Bowman.cfg:61
+#: data/core/units/humans/Loyalist_Longbowman.cfg:62
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:62
+#: data/core/units/humans/Outlaw_Poacher.cfg:72
+#: data/core/units/humans/Outlaw_Trapper.cfg:102
+#: data/core/units/humans/Woodsman.cfg:64 data/core/units/orcs/Archer.cfg:177
+#: data/core/units/orcs/Archer.cfg:236 data/core/units/orcs/Leader.cfg:66
+#: data/core/units/orcs/Ruler.cfg:64 data/core/units/orcs/Sovereign.cfg:65
+#: data/core/units/orcs/Warlord.cfg:76
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:79
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:69
+#: data/core/units/undead/Skeleton_Archer.cfg:69
 msgid "bow"
 msgstr "pafarko"
 
-#: data/core/units/Elvish_Archer.cfg:158
+#: data/core/units/elves/Archer.cfg:158
 msgid "female^Elvish Archer"
 msgstr "Elfarkpafistino"
 
-#: data/core/units/Elvish_Avenger.cfg:3
+#: data/core/units/elves/Avenger.cfg:3
 msgid "Elvish Avenger"
 msgstr "Elfrevenĝisto"
 
@@ -4941,7 +4952,7 @@ msgstr "Elfrevenĝisto"
 #
 #
 #
-#: data/core/units/Elvish_Avenger.cfg:24
+#: data/core/units/elves/Avenger.cfg:24
 #, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
@@ -4967,17 +4978,17 @@ msgstr ""
 "Rimarko: Lerteco de venĝantoj ebligas fariĝi nevideblaj, ĝis malamiko ne "
 "staras sur najbara kampo, aŭ venĝantoj mem ne komencis ataki."
 
-#: data/core/units/Elvish_Avenger.cfg:170
+#: data/core/units/elves/Avenger.cfg:170
 msgid "female^Elvish Avenger"
 msgstr "Elfrevenĝistino"
 
-#: data/core/units/Elvish_Captain.cfg:3
+#: data/core/units/elves/Captain.cfg:3
 msgid "Elvish Captain"
 msgstr "Elfkapitano"
 
 #
 #
-#: data/core/units/Elvish_Captain.cfg:27
+#: data/core/units/elves/Captain.cfg:27
 #, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
@@ -4999,11 +5010,11 @@ msgstr ""
 "kaŭzi en batalo pli grandan damaĝon; tio validas nur por milit-unuoj sur "
 "malplialta nivelo."
 
-#: data/core/units/Elvish_Champion.cfg:3
+#: data/core/units/elves/Champion.cfg:3
 msgid "Elvish Champion"
 msgstr "Elfĉampiono"
 
-#: data/core/units/Elvish_Champion.cfg:18
+#: data/core/units/elves/Champion.cfg:18
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the rather docile reputation of their race. "
@@ -5017,7 +5028,7 @@ msgstr ""
 "pura arto, kies sekvo estas unika skermado. Malgraŭ tio, ke pafarkado estas "
 "nur duavica okupo, estas tiel lertaj, ke tio vekas miregon."
 
-#: data/core/units/Elvish_Druid.cfg:3
+#: data/core/units/elves/Druid.cfg:3
 msgid "female^Elvish Druid"
 msgstr "Elf-druidino"
 
@@ -5025,7 +5036,7 @@ msgstr "Elf-druidino"
 #
 #
 #
-#: data/core/units/Elvish_Druid.cfg:21
+#: data/core/units/elves/Druid.cfg:21
 #, fuzzy
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
@@ -5048,38 +5059,37 @@ msgstr ""
 "iliaj atakoj. Druidoj kapablas resanigi milit-unuojn ĉirkaŭajn, kaj kuraci "
 "venenon."
 
-#: data/core/units/Elvish_Druid.cfg:27
-#: data/core/units/Elvish_Enchantress.cfg:25
-#: data/core/units/Elvish_Shaman.cfg:29
-#: data/core/units/Elvish_Sorceress.cfg:27 data/core/units/Human_Mage.cfg:55
-#: data/core/units/Human_Mage_Arch.cfg:28
-#: data/core/units/Human_Mage_Great.cfg:29
-#: data/core/units/Human_Mage_Red.cfg:50
-#: data/core/units/Human_Mage_Silver.cfg:35
-#: data/core/units/Human_Mage_White.cfg:117
-#: data/core/units/Mermaid_Diviner.cfg:67
-#: data/core/units/Mermaid_Enchantress.cfg:24
-#: data/core/units/Mermaid_Initiate.cfg:27
-#: data/core/units/Mermaid_Priestess.cfg:64
-#: data/core/units/Saurian_Augur.cfg:36 data/core/units/Saurian_Oracle.cfg:36
-#: data/core/units/Saurian_Soothsayer.cfg:36
-#: data/core/units/Undead_Necro_Dark_Sorcerer.cfg:22
+#: data/core/units/elves/Druid.cfg:27 data/core/units/elves/Enchantress.cfg:25
+#: data/core/units/elves/Shaman.cfg:29 data/core/units/elves/Sorceress.cfg:27
+#: data/core/units/humans/Mage.cfg:55 data/core/units/humans/Mage_Arch.cfg:28
+#: data/core/units/humans/Mage_Great.cfg:29
+#: data/core/units/humans/Mage_Red.cfg:50
+#: data/core/units/humans/Mage_Silver.cfg:35
+#: data/core/units/humans/Mage_White.cfg:117
+#: data/core/units/merfolk/Diviner.cfg:65
+#: data/core/units/merfolk/Enchantress.cfg:24
+#: data/core/units/merfolk/Initiate.cfg:27
+#: data/core/units/merfolk/Priestess.cfg:62
+#: data/core/units/saurians/Augur.cfg:36
+#: data/core/units/saurians/Oracle.cfg:36
+#: data/core/units/saurians/Soothsayer.cfg:36
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:22
 msgid "staff"
 msgstr "bastono"
 
-#: data/core/units/Elvish_Druid.cfg:65 data/core/units/Elvish_Shyde.cfg:56
+#: data/core/units/elves/Druid.cfg:65 data/core/units/elves/Shyde.cfg:56
 msgid "ensnare"
 msgstr "kapto"
 
-#: data/core/units/Elvish_Druid.cfg:145 data/core/units/Elvish_Shyde.cfg:137
+#: data/core/units/elves/Druid.cfg:145 data/core/units/elves/Shyde.cfg:137
 msgid "thorns"
 msgstr "dornoj"
 
-#: data/core/units/Elvish_Enchantress.cfg:3
+#: data/core/units/elves/Enchantress.cfg:3
 msgid "female^Elvish Enchantress"
 msgstr "Elfsorĉistino"
 
-#: data/core/units/Elvish_Enchantress.cfg:19
+#: data/core/units/elves/Enchantress.cfg:19
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "humans are almost universally incapable of understanding it, let alone using "
@@ -5090,40 +5100,37 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Elvish_Enchantress.cfg:69
-#: data/core/units/Elvish_Shaman.cfg:67
-#: data/core/units/Elvish_Sorceress.cfg:76
+#: data/core/units/elves/Enchantress.cfg:69
+#: data/core/units/elves/Shaman.cfg:67 data/core/units/elves/Sorceress.cfg:76
 msgid "entangle"
 msgstr "enplekto"
 
-#: data/core/units/Elvish_Enchantress.cfg:148
-#: data/core/units/Elvish_Sorceress.cfg:156
-#: data/core/units/Elvish_Sylph.cfg:129
+#: data/core/units/elves/Enchantress.cfg:148
+#: data/core/units/elves/Sorceress.cfg:156 data/core/units/elves/Sylph.cfg:129
 msgid "faerie fire"
 msgstr "feina fairo"
 
-#: data/core/units/Elvish_Enchantress.cfg:149
-#: data/core/units/Elvish_Sorceress.cfg:157
-#: data/core/units/Elvish_Sylph.cfg:130
-#: data/core/units/Human_Horse_Paladin.cfg:33
-#: data/core/units/Human_Mage_White.cfg:176
-#: data/core/units/Human_Mage_of_Light.cfg:147
-#: data/core/units/Mermaid_Diviner.cfg:106
-#: data/core/units/Mermaid_Priestess.cfg:81
-#: data/core/units/Undead_Necro_Ancient_Lich.cfg:31
-#: data/core/units/Undead_Necro_Lich.cfg:36
-#: data/core/units/Undead_Spirit_Ghost.cfg:26
-#: data/core/units/Undead_Spirit_Spectre.cfg:46
-#: data/core/units/Undead_Spirit_Wraith.cfg:22
+#: data/core/units/elves/Enchantress.cfg:149
+#: data/core/units/elves/Sorceress.cfg:157 data/core/units/elves/Sylph.cfg:130
+#: data/core/units/humans/Horse_Paladin.cfg:40
+#: data/core/units/humans/Mage_White.cfg:176
+#: data/core/units/humans/Mage_of_Light.cfg:147
+#: data/core/units/merfolk/Diviner.cfg:104
+#: data/core/units/merfolk/Priestess.cfg:90
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:31
+#: data/core/units/undead/Necro_Lich.cfg:36
+#: data/core/units/undead/Spirit_Ghost.cfg:26
+#: data/core/units/undead/Spirit_Spectre.cfg:46
+#: data/core/units/undead/Spirit_Wraith.cfg:22
 #, fuzzy
 msgid "arcane"
 msgstr "distance"
 
-#: data/core/units/Elvish_Fighter.cfg:3
+#: data/core/units/elves/Fighter.cfg:3
 msgid "Elvish Fighter"
 msgstr "Elfbatalanto"
 
-#: data/core/units/Elvish_Fighter.cfg:19
+#: data/core/units/elves/Fighter.cfg:19
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
 "and agility serve them well, as does their skillful craftsmanship. An elf "
@@ -5135,11 +5142,11 @@ msgstr ""
 "fundamentojn de batalo kun glavo kaj kun pafarko dum  relative mallonga "
 "tempo, kaj kapablas utiligi ilin en batalkampo."
 
-#: data/core/units/Elvish_Hero.cfg:3
+#: data/core/units/elves/Hero.cfg:3
 msgid "Elvish Hero"
 msgstr "Eflheroo"
 
-#: data/core/units/Elvish_Hero.cfg:18
+#: data/core/units/elves/Hero.cfg:18
 #, fuzzy
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
@@ -5150,7 +5157,7 @@ msgstr ""
 "Relative malgranda kvanto de spertoj faros el elf-batalanto batalmajstron. "
 "Herooj batalas kun glavo kaj pafarko, kaj iliaj kapabloj neniam malaperas."
 
-#: data/core/units/Elvish_Marksman.cfg:3
+#: data/core/units/elves/Marksman.cfg:3
 msgid "Elvish Marksman"
 msgstr "Elf-pafisto"
 
@@ -5158,7 +5165,7 @@ msgstr "Elf-pafisto"
 #
 #
 #
-#: data/core/units/Elvish_Marksman.cfg:23
+#: data/core/units/elves/Marksman.cfg:23
 #, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
@@ -5182,22 +5189,22 @@ msgstr ""
 "Rimarko: Preciza pafado kaŭzas altan probablon trafi malamikon, sed nur dum "
 "atako."
 
-#: data/core/units/Elvish_Marksman.cfg:101
-#: data/core/units/Elvish_Sharpshooter.cfg:95
+#: data/core/units/elves/Marksman.cfg:101
+#: data/core/units/elves/Sharpshooter.cfg:95
 msgid "longbow"
 msgstr "longa arkpafilo"
 
-#: data/core/units/Elvish_Marksman.cfg:165
+#: data/core/units/elves/Marksman.cfg:165
 msgid "female^Elvish Marksman"
 msgstr "Elf-pafistino"
 
-#: data/core/units/Elvish_Marshal.cfg:3
+#: data/core/units/elves/Marshal.cfg:3
 msgid "Elvish Marshal"
 msgstr "Elfmarŝalo"
 
 #
 #
-#: data/core/units/Elvish_Marshal.cfg:28
+#: data/core/units/elves/Marshal.cfg:28
 #, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
@@ -5218,13 +5225,13 @@ msgstr ""
 "kaŭzi en batalo pli grandan damaĝon, sed validas nur por milit-unuoj sur "
 "malpli alta nivelo."
 
-#: data/core/units/Elvish_Outrider.cfg:3
+#: data/core/units/elves/Outrider.cfg:3
 msgid "Elvish Outrider"
 msgstr "Elf rapidrajdanto"
 
 #
 #
-#: data/core/units/Elvish_Outrider.cfg:21
+#: data/core/units/elves/Outrider.cfg:21
 #, fuzzy
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
@@ -5245,13 +5252,13 @@ msgstr ""
 "Rapideco de elf-batalantoj ebligas ataki en tempo kaj spaco, kiun ili mem "
 "elektos, kio estas avantaĝo kiu al multaj helpis savi vivon."
 
-#: data/core/units/Elvish_Ranger.cfg:2
+#: data/core/units/elves/Ranger.cfg:2
 msgid "Elvish Ranger"
 msgstr "Elfpotisto"
 
 #
 #
-#: data/core/units/Elvish_Ranger.cfg:21
+#: data/core/units/elves/Ranger.cfg:21
 #, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
@@ -5272,17 +5279,17 @@ msgstr ""
 "nur ĝis malamiko venos sur  najbara kampo, aŭ se limgardisto malkaŝiĝos per "
 "atako."
 
-#: data/core/units/Elvish_Ranger.cfg:167
+#: data/core/units/elves/Ranger.cfg:167
 msgid "female^Elvish Ranger"
 msgstr "Elf potistino"
 
-#: data/core/units/Elvish_Rider.cfg:3
+#: data/core/units/elves/Rider.cfg:3
 msgid "Elvish Rider"
 msgstr "Elfrajdanto"
 
 #
 #
-#: data/core/units/Elvish_Rider.cfg:22
+#: data/core/units/elves/Rider.cfg:22
 #, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
@@ -5300,11 +5307,11 @@ msgstr ""
 "Kombino de ega moviĝemo kaj de alta batalforto, estas granda avantaĝo por "
 "elfoj."
 
-#: data/core/units/Elvish_Scout.cfg:3
+#: data/core/units/elves/Scout.cfg:3
 msgid "Elvish Scout"
 msgstr "Elf-esploristo"
 
-#: data/core/units/Elvish_Scout.cfg:21
+#: data/core/units/elves/Scout.cfg:21
 #, fuzzy
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
@@ -5318,7 +5325,7 @@ msgstr ""
 "trairi densan arbaron sen grateto. Probable estas ununuraj rajdmilit-unuoj "
 "sur mondo, kiu estas pli sukcesaj en arbaro, ol en malfermita spaco."
 
-#: data/core/units/Elvish_Shaman.cfg:3
+#: data/core/units/elves/Shaman.cfg:3
 msgid "female^Elvish Shaman"
 msgstr "Elf-ŝamanino"
 
@@ -5326,7 +5333,7 @@ msgstr "Elf-ŝamanino"
 #
 #
 #
-#: data/core/units/Elvish_Shaman.cfg:23
+#: data/core/units/elves/Shaman.cfg:23
 #, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
@@ -5351,13 +5358,13 @@ msgstr ""
 "de liaj batoj je unu. Ŝamanoj kapablas kuraci iomete, sed efikon de veneno "
 "kapablas nur malrapidigi, ne forigi."
 
-#: data/core/units/Elvish_Sharpshooter.cfg:3
+#: data/core/units/elves/Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
 msgstr "Elf-tiraljoro"
 
 #
 #
-#: data/core/units/Elvish_Sharpshooter.cfg:22
+#: data/core/units/elves/Sharpshooter.cfg:22
 #, fuzzy
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
@@ -5371,17 +5378,17 @@ msgstr ""
 "per alia sago. Tio estas atesto pri elfaj kapabloj, kaj tiu ĉi rakonto povas "
 "esti serioze akceptata. Elf- pafistoj simple estas majstroj de pafarkado."
 
-#: data/core/units/Elvish_Sharpshooter.cfg:152
+#: data/core/units/elves/Sharpshooter.cfg:152
 msgid "female^Elvish Sharpshooter"
 msgstr "Elf-tiraljorino"
 
-#: data/core/units/Elvish_Shyde.cfg:3
+#: data/core/units/elves/Shyde.cfg:3
 msgid "female^Elvish Shyde"
 msgstr "Elf-feino"
 
 #
 #
-#: data/core/units/Elvish_Shyde.cfg:21
+#: data/core/units/elves/Shyde.cfg:21
 #, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
@@ -5399,15 +5406,15 @@ msgstr ""
 "malaltigas nombron de liaj  atakoj je unu. Feinoj kapablas kuraci ĉirkaŭajn "
 "milit-unuojn kaj resanigi venenigon."
 
-#: data/core/units/Elvish_Shyde.cfg:27 data/core/units/Elvish_Sylph.cfg:27
+#: data/core/units/elves/Shyde.cfg:27 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
 msgstr "tuŝo de feino"
 
-#: data/core/units/Elvish_Sorceress.cfg:3
+#: data/core/units/elves/Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
 msgstr "Elfino sorĉistino"
 
-#: data/core/units/Elvish_Sorceress.cfg:21
+#: data/core/units/elves/Sorceress.cfg:21
 msgid ""
 "The world of faerie is far more potent than the corporeal world. Simply "
 "bringing some of this world into our own can have violent results. This is "
@@ -5420,11 +5427,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Elvish_Sylph.cfg:3
+#: data/core/units/elves/Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Elf-silfino"
 
-#: data/core/units/Elvish_Sylph.cfg:21
+#: data/core/units/elves/Sylph.cfg:21
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
 "mundane natures. They are possessed of wondrous, and sometimes terrifying "
@@ -5434,36 +5441,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Elvish_Sylph.cfg:56
+#: data/core/units/elves/Sylph.cfg:56
 msgid "gossamer"
 msgstr "araneĵo"
 
-#: data/core/units/Fire_Dragon.cfg:4
-msgid "Fire Dragon"
-msgstr "Fajra drako"
-
-#: data/core/units/Fire_Dragon.cfg:21
-msgid ""
-"A fire dragon is an ancient and horrifying being that normally lives only in "
-"hushed rumor and fantastic stories. It is normal for centuries to pass "
-"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
-"form flying in the distance. Legends are very specific about the ravages of "
-"fire dragons: hideously swift in flight, leathery wings spread over one "
-"hundred feet in width, they swoop in and blast their prey with inferno jets "
-"of flame. Anything escaping the dragon's fire breath must beware its "
-"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
-"often take underlings whom they lead to victory."
-msgstr ""
-
-#: data/core/units/Fire_Dragon.cfg:24 data/core/units/Fire_Dragon.cfg:25
-msgid "bite"
-msgstr "mordo"
-
-#: data/core/units/Fire_Dragon.cfg:73 data/core/units/Fire_Dragon.cfg:74
-msgid "tail"
-msgstr "vosto"
-
-#: data/core/units/Goblin_Direwolf_Rider.cfg:3
+#: data/core/units/goblins/Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
 msgstr "Luprajdanto"
 
@@ -5471,7 +5453,7 @@ msgstr "Luprajdanto"
 #
 #
 #
-#: data/core/units/Goblin_Direwolf_Rider.cfg:22
+#: data/core/units/goblins/Direwolf_Rider.cfg:22
 #, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
@@ -5500,23 +5482,24 @@ msgstr ""
 "Rimarko: Viktimo, post trafo de veneniga ungego, iom post iom perdados "
 "sanon, ĝis ne resaniĝos en vilaĝo, aŭ helpe de kuracisto."
 
-#: data/core/units/Goblin_Direwolf_Rider.cfg:33
-#: data/core/units/Goblin_Knight.cfg:33
-#: data/core/units/Goblin_Wolf_Rider.cfg:49
-#: data/core/units/Monster_Cave_Spider.cfg:34
-#: data/core/units/Monster_Sea_Serpent.cfg:23
-#: data/core/units/Undead_Bat_Blood.cfg:51
-#: data/core/units/Undead_Bat_Vampire.cfg:65
+#: data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/goblins/Knight.cfg:33
+#: data/core/units/goblins/Wolf_Rider.cfg:49
+#: data/core/units/monsters/Cave_Spider.cfg:34
+#: data/core/units/monsters/Sea_Serpent.cfg:23
+#: data/core/units/monsters/Wolf.cfg:46
+#: data/core/units/undead/Bat_Blood.cfg:51
+#: data/core/units/undead/Bat_Vampire.cfg:65
 msgid "fangs"
 msgstr "ŝirdentoj"
 
-#: data/core/units/Goblin_Impaler.cfg:3
+#: data/core/units/goblins/Impaler.cfg:3
 msgid "Goblin Impaler"
 msgstr "Goblin surpikisto"
 
 #
 #
-#: data/core/units/Goblin_Impaler.cfg:20
+#: data/core/units/goblins/Impaler.cfg:20
 #, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
@@ -5533,13 +5516,13 @@ msgstr ""
 "Rimarko: Longeco de pikarmilo kaŭzas, ke ĉiam donas unuan baton, ankaŭ dum "
 "defendo."
 
-#: data/core/units/Goblin_Knight.cfg:3
+#: data/core/units/goblins/Knight.cfg:3
 msgid "Goblin Knight"
 msgstr "Goblin kavaliro"
 
 #
 #
-#: data/core/units/Goblin_Knight.cfg:19
+#: data/core/units/goblins/Knight.cfg:19
 #, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
@@ -5558,13 +5541,13 @@ msgstr ""
 "Iliaj lupoj estas trejnitaj por pli granda rapideco, kaj tio faras ilin "
 "danĝeraj en batalo."
 
-#: data/core/units/Goblin_Pillager.cfg:3
+#: data/core/units/goblins/Pillager.cfg:3
 msgid "Goblin Pillager"
 msgstr "Goblin rabisto"
 
 #
 #
-#: data/core/units/Goblin_Pillager.cfg:20
+#: data/core/units/goblins/Pillager.cfg:20
 #, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
@@ -5582,22 +5565,22 @@ msgstr ""
 "Rimarko: La reto malrapidigas kontraŭulon kaj malaltigas nombron de liaj "
 "batoj je unu."
 
-#: data/core/units/Goblin_Pillager.cfg:34
+#: data/core/units/goblins/Pillager.cfg:34
 msgid "torch"
 msgstr "torĉo"
 
-#: data/core/units/Goblin_Pillager.cfg:72
-#: data/core/units/Merman_Entangler.cfg:56
-#: data/core/units/Merman_Netcaster.cfg:55
+#: data/core/units/goblins/Pillager.cfg:72
+#: data/core/units/merfolk/Entangler.cfg:56
+#: data/core/units/merfolk/Netcaster.cfg:55
 msgid "net"
 msgstr "reto"
 
-#: data/core/units/Goblin_Rouser.cfg:3
+#: data/core/units/goblins/Rouser.cfg:3
 #, fuzzy
 msgid "Goblin Rouser"
 msgstr "Goblin surpikisto"
 
-#: data/core/units/Goblin_Rouser.cfg:27
+#: data/core/units/goblins/Rouser.cfg:27
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -5608,13 +5591,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Goblin_Spearman.cfg:3
+#: data/core/units/goblins/Spearman.cfg:3
 msgid "Goblin Spearman"
 msgstr "Goblin lancisto"
 
 #
 #
-#: data/core/units/Goblin_Spearman.cfg:19
+#: data/core/units/goblins/Spearman.cfg:19
 #, fuzzy
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
@@ -5636,13 +5619,13 @@ msgstr ""
 "orka gento, sed neniu scias multe pri ilia historio, por fari unusencan "
 "konkludon."
 
-#: data/core/units/Goblin_Wolf_Rider.cfg:3
+#: data/core/units/goblins/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
 msgstr "Luprajdanto"
 
 #
 #
-#: data/core/units/Goblin_Wolf_Rider.cfg:35
+#: data/core/units/goblins/Wolf_Rider.cfg:35
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being. Goblins are smaller and much weaker than orcs. Any who can manage to "
@@ -5663,52 +5646,11 @@ msgstr ""
 "kiraso estas sufiĉe malpeza. Diference de ĉevaloj la lupoj facile moviĝas en "
 "montoj, malgraŭ tio, ke akvo kaj arbaro malrapidigas ilin."
 
-#: data/core/units/Gryphon.cfg:3
-msgid "Gryphon"
-msgstr "Grifo"
-
-#: data/core/units/Gryphon.cfg:16
-msgid ""
-"These majestic and powerful creatures are masters of the sky. Gryphons are "
-"both dangerous and wary of other intelligent creatures, and thus should not "
-"be disturbed without a good reason."
-msgstr ""
-"Tiu ĉi majesta kaj potenca kreaĵo estas reganto de firmamento. Grifoj ne "
-"ŝatas aliajn inteligentajn specojn, kaj tial ilin neniu senkiale ĝenas."
-
-#: data/core/units/Gryphon_Master.cfg:3
-msgid "Gryphon Master"
-msgstr "Grif-estro"
-
-#: data/core/units/Gryphon_Master.cfg:18
-#, fuzzy
-msgid ""
-"Gryphon Masters have long experience flying the Gryphons, which have become "
-"an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
-msgstr ""
-"Grif-estroj havas multajn spertojn kun flugado sur grifoj, kiuj kvazaŭ "
-"fariĝis parto de ilia korpo. Tiu ĉi stranga rilato plenigas terrampulojn per "
-"timo, ĉar ĉi duopo kapablas ataki de ieajn."
-
-#: data/core/units/Gryphon_Rider.cfg:3
-msgid "Gryphon Rider"
-msgstr "Rajdanto sur grifo"
-
-#: data/core/units/Gryphon_Rider.cfg:18
-msgid ""
-"Only a few are able to bond with the mighty Gryphons. Those who do may "
-"become Gryphon Riders, and discover the world of the skies upon the backs of "
-"these flying beasts."
-msgstr ""
-"Nur malmultaj kapablas amikiĝi kun fortaj grifoj. Tiuj, kiuj kapablas rajdi "
-"sur ĉi tiuj bestoj, konkeras firmamenton."
-
-#: data/core/units/Human_Horse_Grand_Knight.cfg:3
+#: data/core/units/humans/Horse_Grand_Knight.cfg:3
 msgid "Grand Knight"
 msgstr "Granda kavaliro"
 
-#: data/core/units/Human_Horse_Grand_Knight.cfg:19
+#: data/core/units/humans/Horse_Grand_Knight.cfg:19
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
 "full plate, and riding steeds bred more for power than for speed, these "
@@ -5722,10 +5664,10 @@ msgstr ""
 "estas granda danĝero por infanteriuloj, kaj kutime mem breĉas ilian "
 "defendlinion."
 
-#: data/core/units/Human_Horse_Grand_Knight.cfg:21
-#: data/core/units/Human_Horse_Knight.cfg:20
-#: data/core/units/Human_Horse_Lancer.cfg:21
-#: data/core/units/Human_Horseman.cfg:21
+#: data/core/units/humans/Horse_Grand_Knight.cfg:21
+#: data/core/units/humans/Horse_Knight.cfg:20
+#: data/core/units/humans/Horse_Lancer.cfg:21
+#: data/core/units/humans/Horseman.cfg:21
 #, fuzzy
 msgid ""
 "\n"
@@ -5733,18 +5675,18 @@ msgid ""
 "Special Notes:"
 msgstr "Speciale"
 
-#: data/core/units/Human_Horse_Grand_Knight.cfg:63
-#: data/core/units/Human_Horse_Knight.cfg:62
-#: data/core/units/Human_Horse_Lancer.cfg:24
-#: data/core/units/Human_Horse_Paladin.cfg:70
+#: data/core/units/humans/Horse_Grand_Knight.cfg:63
+#: data/core/units/humans/Horse_Knight.cfg:62
+#: data/core/units/humans/Horse_Lancer.cfg:24
+#: data/core/units/humans/Horse_Paladin.cfg:77
 msgid "lance"
 msgstr "lanco"
 
-#: data/core/units/Human_Horse_Knight.cfg:3
+#: data/core/units/humans/Horse_Knight.cfg:3
 msgid "Knight"
 msgstr "Kavaliro"
 
-#: data/core/units/Human_Horse_Knight.cfg:18
+#: data/core/units/humans/Horse_Knight.cfg:18
 #, fuzzy
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
@@ -5762,11 +5704,11 @@ msgstr ""
 "Iliaj lacoj estas ĉiam pretaj, kaj akiritaj spertoj iliajn kapablojn "
 "plialtigas."
 
-#: data/core/units/Human_Horse_Lancer.cfg:3
+#: data/core/units/humans/Horse_Lancer.cfg:3
 msgid "Lancer"
 msgstr "Lancistoj"
 
-#: data/core/units/Human_Horse_Lancer.cfg:19
+#: data/core/units/humans/Horse_Lancer.cfg:19
 #, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
@@ -5783,11 +5725,11 @@ msgstr ""
 "batalfalango, kaj ankaŭ ili facile trairas defendliniojn. Iliaj "
 "defendkapabloj estas malpli grandaj."
 
-#: data/core/units/Human_Horse_Paladin.cfg:3
+#: data/core/units/humans/Horse_Paladin.cfg:3
 msgid "Paladin"
 msgstr "Palatino"
 
-#: data/core/units/Human_Horse_Paladin.cfg:22
+#: data/core/units/humans/Horse_Paladin.cfg:21
 #, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to semi-"
@@ -5805,11 +5747,11 @@ msgstr ""
 "talentojn. Palatinoj  pereigas ĉion ne sanktan, kaj kapablas flegi vunditajn "
 "kunbatalantojn."
 
-#: data/core/units/Human_Horseman.cfg:3
+#: data/core/units/humans/Horseman.cfg:3
 msgid "Horseman"
 msgstr "Rajdisto"
 
-#: data/core/units/Human_Horseman.cfg:19
+#: data/core/units/humans/Horseman.cfg:19
 #, fuzzy
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
@@ -5826,11 +5768,11 @@ msgstr ""
 "batalo. Rajdistoj estas bonegaj kontraŭ infanterio kiu ne tenas formacion, "
 "sed devas atenti lancistojn kaj pafarkistojn, por kiuj estas facilaj celoj."
 
-#: data/core/units/Human_Loyalist_Bowman.cfg:3
+#: data/core/units/humans/Loyalist_Bowman.cfg:3
 msgid "Bowman"
 msgstr "Pafarkisto"
 
-#: data/core/units/Human_Loyalist_Bowman.cfg:20
+#: data/core/units/humans/Loyalist_Bowman.cfg:20
 #, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -5844,11 +5786,11 @@ msgstr ""
 "devenon; terkulturistoj aŭ ĉarpentistoj, estas lertaj en batalo kun pafarko "
 "kaj mallonga glavo, kaj ofte troviĝas sur batalkampo."
 
-#: data/core/units/Human_Loyalist_Cavalier.cfg:3
+#: data/core/units/humans/Loyalist_Cavalier.cfg:3
 msgid "Cavalier"
 msgstr "Rajdanto"
 
-#: data/core/units/Human_Loyalist_Cavalier.cfg:19
+#: data/core/units/humans/Loyalist_Cavalier.cfg:19
 #, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
@@ -5860,29 +5802,28 @@ msgstr ""
 "ataki multajn kontraŭulojn, kaj ilia atako ofte deklinis rezulton dum la "
 "plej grandaj historiaj bataloj."
 
-#: data/core/units/Human_Loyalist_Cavalier.cfg:84
-#: data/core/units/Human_Loyalist_Dragoon.cfg:83
-#: data/core/units/Human_Loyalist_Duelist.cfg:107
-#: data/core/units/Human_Loyalist_General.cfg:91
-#: data/core/units/Human_Loyalist_Grand_Marshal.cfg:87
-#: data/core/units/Human_Loyalist_Lieutenant.cfg:76
-#: data/core/units/Human_Loyalist_Master_at_Arms.cfg:186
-#: data/core/units/Human_Loyalist_Sergeant.cfg:80
-#: data/core/units/Orcish_Crossbowman.cfg:60
-#: data/core/units/Orcish_Crossbowman.cfg:99
-#: data/core/units/Orcish_Slurbow.cfg:73
-#: data/core/units/Orcish_Slurbow.cfg:112
-#: data/core/units/Undead_Skele_Death_Knight.cfg:87
+#: data/core/units/humans/Loyalist_Cavalier.cfg:84
+#: data/core/units/humans/Loyalist_Dragoon.cfg:83
+#: data/core/units/humans/Loyalist_Duelist.cfg:107
+#: data/core/units/humans/Loyalist_General.cfg:91
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:87
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:76
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:186
+#: data/core/units/humans/Loyalist_Sergeant.cfg:80
+#: data/core/units/orcs/Crossbowman.cfg:60
+#: data/core/units/orcs/Crossbowman.cfg:99 data/core/units/orcs/Slurbow.cfg:78
+#: data/core/units/orcs/Slurbow.cfg:122
+#: data/core/units/undead/Skele_Death_Knight.cfg:87
 msgid "crossbow"
 msgstr "arbalesto"
 
-#: data/core/units/Human_Loyalist_Cavalryman.cfg:3
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:3
 msgid "Cavalryman"
 msgstr "Kavaleriano"
 
 #
 #
-#: data/core/units/Human_Loyalist_Cavalryman.cfg:21
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:21
 #, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
@@ -5900,11 +5841,11 @@ msgstr ""
 "utilas dum konkerado aŭ protektado de malfermita areo, por protekto de "
 "aliancanoj kaj esplorado."
 
-#: data/core/units/Human_Loyalist_Dragoon.cfg:3
+#: data/core/units/humans/Loyalist_Dragoon.cfg:3
 msgid "Dragoon"
 msgstr "Dragono"
 
-#: data/core/units/Human_Loyalist_Dragoon.cfg:18
+#: data/core/units/humans/Loyalist_Dragoon.cfg:18
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
 "of the crossbow, and outfitted with much more powerful steeds. Well-armored, "
@@ -5917,7 +5858,7 @@ msgstr ""
 "perfekte armaĵitaj kaj lertaj kun glavo, povas kuraĝe ataki, kaj defendi "
 "konkeritan teron. Ilia granda avantaĝo estas moviĝemo kaj rezisto."
 
-#: data/core/units/Human_Loyalist_Duelist.cfg:3
+#: data/core/units/humans/Loyalist_Duelist.cfg:3
 msgid "Duelist"
 msgstr "Duelisto"
 
@@ -5925,7 +5866,7 @@ msgstr "Duelisto"
 #
 #
 #
-#: data/core/units/Human_Loyalist_Duelist.cfg:20
+#: data/core/units/humans/Loyalist_Duelist.cfg:20
 #, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
@@ -5955,14 +5896,14 @@ msgstr ""
 "Rimarko: Energieco ebligas al skermistoj paŝi ĉe kontraŭlo sendepende de lia "
 "kontrola areo."
 
-#: data/core/units/Human_Loyalist_Duelist.cfg:69
-#: data/core/units/Human_Loyalist_Fencer.cfg:124
-#: data/core/units/Human_Loyalist_Master_at_Arms.cfg:28
+#: data/core/units/humans/Loyalist_Duelist.cfg:69
+#: data/core/units/humans/Loyalist_Fencer.cfg:124
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:28
 #, fuzzy
 msgid "sabre"
 msgstr "kapto"
 
-#: data/core/units/Human_Loyalist_Fencer.cfg:3
+#: data/core/units/humans/Loyalist_Fencer.cfg:3
 msgid "Fencer"
 msgstr "Skermisto"
 
@@ -5970,7 +5911,7 @@ msgstr "Skermisto"
 #
 #
 #
-#: data/core/units/Human_Loyalist_Fencer.cfg:21
+#: data/core/units/humans/Loyalist_Fencer.cfg:21
 #, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
@@ -5998,13 +5939,13 @@ msgstr ""
 "\n"
 "Rimarko: Skermistoj povas laŭvole trairadi malamikan areon sub kontrolo."
 
-#: data/core/units/Human_Loyalist_General.cfg:3
+#: data/core/units/humans/Loyalist_General.cfg:3
 msgid "General"
 msgstr "Generalo"
 
 #
 #
-#: data/core/units/Human_Loyalist_General.cfg:30
+#: data/core/units/humans/Loyalist_General.cfg:30
 #, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
@@ -6020,13 +5961,13 @@ msgstr ""
 "milit-unuoj sur najbaraj kampetoj; tio validas nur por milit-unuoj sur "
 "malpli alta nivelo."
 
-#: data/core/units/Human_Loyalist_Grand_Marshal.cfg:3
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Granda marŝalo"
 
 #
 #
-#: data/core/units/Human_Loyalist_Grand_Marshal.cfg:26
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:26
 #, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
@@ -6044,7 +5985,7 @@ msgstr ""
 "starantaj sur najbaraj kampoj; tio validas nur por milit-unuoj sur "
 "malplialta nivelo."
 
-#: data/core/units/Human_Loyalist_Halberdier.cfg:3
+#: data/core/units/humans/Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Halebardisto"
 
@@ -6052,7 +5993,7 @@ msgstr "Halebardisto"
 #
 #
 #
-#: data/core/units/Human_Loyalist_Halberdier.cfg:22
+#: data/core/units/humans/Loyalist_Halberdier.cfg:22
 #, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
@@ -6084,11 +6025,11 @@ msgstr ""
 "Rimarko: Longeco de armilo kabablas al halebardisto doni unuan baton, eĉ "
 "ankaŭ ĉe defendo."
 
-#: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:3
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
 msgstr "Peza infanteriano"
 
-#: data/core/units/Human_Loyalist_Heavy_Infantryman.cfg:16
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:16
 msgid ""
 "Heavy infantry are an unusual choice for outfitting troops. They are very "
 "difficult to send afield in war, and are typically useful only in the "
@@ -6106,13 +6047,13 @@ msgstr ""
 "en batallinio altigas batalforton. Malavantaĝoj estas evidentaj - fero estas "
 "peza kaj necesas zorgi pri ĝi - sed en kelkaj okazoj ĉi milit-unuoj utilas."
 
-#: data/core/units/Human_Loyalist_Iron_Mauler.cfg:3
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:3
 msgid "Iron Mauler"
 msgstr "Feroknedisto"
 
 #
 #
-#: data/core/units/Human_Loyalist_Iron_Mauler.cfg:18
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:18
 #, fuzzy
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
@@ -6134,13 +6075,13 @@ msgstr ""
 "povas facile moviĝi sur batalkampo. Ofte okazas, ke ili ne kapablas "
 "ĝustatempe helpi atakitan amikon."
 
-#: data/core/units/Human_Loyalist_Javelineer.cfg:3
+#: data/core/units/humans/Loyalist_Javelineer.cfg:3
 msgid "Javelineer"
 msgstr "Lancisto"
 
 #
 #
-#: data/core/units/Human_Loyalist_Javelineer.cfg:20
+#: data/core/units/humans/Loyalist_Javelineer.cfg:20
 #, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
@@ -6160,13 +6101,13 @@ msgstr ""
 "pikstangojn de granda distanco, ofte senpune, kaj samtempe tenas pozicion en "
 "miksbatalo."
 
-#: data/core/units/Human_Loyalist_Lieutenant.cfg:3
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
 msgstr "Leŭtenanto"
 
 #
 #
-#: data/core/units/Human_Loyalist_Lieutenant.cfg:25
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:25
 #, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
@@ -6181,11 +6122,11 @@ msgstr ""
 "kampoj kaŭzas dum batalo; tio validas nur por milit-unuoj sur malpli altaj "
 "niveloj."
 
-#: data/core/units/Human_Loyalist_Longbowman.cfg:3
+#: data/core/units/humans/Loyalist_Longbowman.cfg:3
 msgid "Longbowman"
 msgstr "Long-pafarkisto"
 
-#: data/core/units/Human_Loyalist_Longbowman.cfg:19
+#: data/core/units/humans/Loyalist_Longbowman.cfg:19
 #, fuzzy
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
@@ -6200,11 +6141,11 @@ msgstr ""
 "armilojn fiere, kaj plimulto el komencantoj ĝojas pri tago, kiam ankaŭ ili "
 "ricevos longan pafarkon."
 
-#: data/core/units/Human_Loyalist_Master_Bowman.cfg:3
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:3
 msgid "Master Bowman"
 msgstr "Pafarko-mastro"
 
-#: data/core/units/Human_Loyalist_Master_Bowman.cfg:19
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
 #, fuzzy
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
@@ -6223,7 +6164,7 @@ msgstr ""
 "inter diversaj gentoj superas ilin en pafado nur elfoj; kaj kelkaj homoj "
 "asertas - eble nur ĵaluze - ke tio estas dank´al  ilia pliaĝeco."
 
-#: data/core/units/Human_Loyalist_Master_at_Arms.cfg:3
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:3
 msgid "Master at Arms"
 msgstr "Armilestro"
 
@@ -6231,7 +6172,7 @@ msgstr "Armilestro"
 #
 #
 #
-#: data/core/units/Human_Loyalist_Master_at_Arms.cfg:21
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
 #, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
@@ -6259,13 +6200,13 @@ msgstr ""
 "Rimarko: Lerteco en skermado ebligas al skermajstroj tragliti ĉirkaŭ "
 "kontraŭulo ignorante  areon sub lia kontrolo."
 
-#: data/core/units/Human_Loyalist_Pikeman.cfg:3
+#: data/core/units/humans/Loyalist_Pikeman.cfg:3
 msgid "Pikeman"
 msgstr "Lancisto"
 
 #
 #
-#: data/core/units/Human_Loyalist_Pikeman.cfg:19
+#: data/core/units/humans/Loyalist_Pikeman.cfg:19
 #, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
@@ -6286,15 +6227,15 @@ msgstr ""
 "Rimarko: Longeco de armilo ebligas al pikstangistojn la unuan baton ankaŭ ĉe "
 "defendo."
 
-#: data/core/units/Human_Loyalist_Pikeman.cfg:53
+#: data/core/units/humans/Loyalist_Pikeman.cfg:53
 msgid "pike"
 msgstr "pikstango"
 
-#: data/core/units/Human_Loyalist_Royal_Guard.cfg:3
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:3
 msgid "Royal Guard"
 msgstr "Reĝa gardisto"
 
-#: data/core/units/Human_Loyalist_Royal_Guard.cfg:18
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:18
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
 "any of the higher nobility, they function as bodyguards, and partly as a "
@@ -6312,11 +6253,11 @@ msgstr ""
 "soldistoj. Ilia fidindeco kaj majstreco en miksbatalo estas avantaĝoj kiuj "
 "famigis ilin."
 
-#: data/core/units/Human_Loyalist_Sergeant.cfg:3
+#: data/core/units/humans/Loyalist_Sergeant.cfg:3
 msgid "Sergeant"
 msgstr "Serĝento"
 
-#: data/core/units/Human_Loyalist_Sergeant.cfg:24
+#: data/core/units/humans/Loyalist_Sergeant.cfg:24
 msgid ""
 "The Sergeant is an officer in the ranks of the Royal Army. Though "
 "academically trained, he will need some experience in the field before his "
@@ -6325,11 +6266,11 @@ msgstr ""
 "Serĝento estas oficisto, servanto de reĝa armeo. Estas klera, sed bezonas "
 "batalspertojn, por ke liaj gvidkapabloj estu konfirmitaj."
 
-#: data/core/units/Human_Loyalist_Shock_Trooper.cfg:3
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:3
 msgid "Shock Trooper"
 msgstr "Speciala piedsoldato"
 
-#: data/core/units/Human_Loyalist_Shock_Trooper.cfg:15
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:15
 #, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
@@ -6349,18 +6290,18 @@ msgstr ""
 "tio estas homoj aŭ monstroj. Malavantaĝo de peza armilaĵo estas malrapida "
 "moviĝo en batalo."
 
-#: data/core/units/Human_Loyalist_Shock_Trooper.cfg:20
-#: data/core/units/Human_Mage_of_Light.cfg:98
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:20
+#: data/core/units/humans/Mage_of_Light.cfg:98
 msgid "morning star"
 msgstr "madzo"
 
-#: data/core/units/Human_Loyalist_Spearman.cfg:3
+#: data/core/units/humans/Loyalist_Spearman.cfg:3
 msgid "Spearman"
 msgstr "Lanculo"
 
 #
 #
-#: data/core/units/Human_Loyalist_Spearman.cfg:20
+#: data/core/units/humans/Loyalist_Spearman.cfg:20
 #, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
@@ -6381,11 +6322,11 @@ msgstr ""
 "Rimarko: Longeco de armilo donas por lancisto avantaĝon de unua atako ankaŭ "
 "dum defendo."
 
-#: data/core/units/Human_Loyalist_Swordsman.cfg:3
+#: data/core/units/humans/Loyalist_Swordsman.cfg:3
 msgid "Swordsman"
 msgstr "Glav-batalisto"
 
-#: data/core/units/Human_Loyalist_Swordsman.cfg:17
+#: data/core/units/humans/Loyalist_Swordsman.cfg:17
 #, fuzzy
 msgid ""
 "An experienced soldier will often save enough to equip himseld with a suit "
@@ -6401,7 +6342,7 @@ msgstr ""
 "havas eraretojn, sed eblas per ili pli facile manovri, kaj pli taŭgas ĉe "
 "miksbatalo. "
 
-#: data/core/units/Human_Mage.cfg:3
+#: data/core/units/humans/Mage.cfg:3
 msgid "Mage"
 msgstr "Mago"
 
@@ -6411,7 +6352,7 @@ msgstr "Mago"
 #
 #
 #
-#: data/core/units/Human_Mage.cfg:29
+#: data/core/units/humans/Mage.cfg:29
 #, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
@@ -6454,15 +6395,16 @@ msgstr ""
 "Rimarko: Longdistanca atako de mago estas magia, do ĉiam havas altan ŝancon "
 "trafi malamikon."
 
-#: data/core/units/Human_Mage.cfg:103 data/core/units/Human_Mage_Silver.cfg:83
+#: data/core/units/humans/Mage.cfg:103
+#: data/core/units/humans/Mage_Silver.cfg:83
 msgid "missile"
 msgstr "misilo"
 
-#: data/core/units/Human_Mage.cfg:161
+#: data/core/units/humans/Mage.cfg:161
 msgid "female^Mage"
 msgstr "Magino"
 
-#: data/core/units/Human_Mage_Arch.cfg:3
+#: data/core/units/humans/Mage_Arch.cfg:3
 msgid "Arch Mage"
 msgstr "Arcimago"
 
@@ -6470,7 +6412,7 @@ msgstr "Arcimago"
 #
 #
 #
-#: data/core/units/Human_Mage_Arch.cfg:21
+#: data/core/units/humans/Mage_Arch.cfg:21
 #, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
@@ -6502,24 +6444,24 @@ msgstr ""
 "Rimarko: Fajraj kugloj de arkimago estas magiaj, kaj ĉiam havas altan "
 "probablon trafi kontraŭulon."
 
-#: data/core/units/Human_Mage_Arch.cfg:76
-#: data/core/units/Human_Mage_Great.cfg:77
-#: data/core/units/Human_Mage_Red.cfg:98
+#: data/core/units/humans/Mage_Arch.cfg:76
+#: data/core/units/humans/Mage_Great.cfg:77
+#: data/core/units/humans/Mage_Red.cfg:98
 msgid "fireball"
 msgstr "fajra globo"
 
-#: data/core/units/Human_Mage_Arch.cfg:116
+#: data/core/units/humans/Mage_Arch.cfg:116
 msgid "female^Arch Mage"
 msgstr "Arcimagiino"
 
-#: data/core/units/Human_Mage_Great.cfg:3
+#: data/core/units/humans/Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Granda mago"
 
 #
 #
 #
-#: data/core/units/Human_Mage_Great.cfg:22
+#: data/core/units/humans/Mage_Great.cfg:22
 #, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
@@ -6546,11 +6488,11 @@ msgstr ""
 "Rimarko: Fajraj kugloj de granda mago estas magiaj kaj ĉiam havas altan "
 "ŝancon trafi malamikon. "
 
-#: data/core/units/Human_Mage_Great.cfg:117
+#: data/core/units/humans/Mage_Great.cfg:117
 msgid "female^Great Mage"
 msgstr "Granda magistino"
 
-#: data/core/units/Human_Mage_Red.cfg:3
+#: data/core/units/humans/Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Ruĝa mago"
 
@@ -6558,7 +6500,7 @@ msgstr "Ruĝa mago"
 #
 #
 #
-#: data/core/units/Human_Mage_Red.cfg:21
+#: data/core/units/humans/Mage_Red.cfg:21
 #, fuzzy
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
@@ -6589,11 +6531,11 @@ msgstr ""
 "Rimarko: Fajraj pafaĵoj de magoj estas magiaj kaj posedas altan ŝancon trafi "
 "malamikon."
 
-#: data/core/units/Human_Mage_Red.cfg:138
+#: data/core/units/humans/Mage_Red.cfg:138
 msgid "female^Red Mage"
 msgstr "Ruĝa magiino"
 
-#: data/core/units/Human_Mage_Silver.cfg:3
+#: data/core/units/humans/Mage_Silver.cfg:3
 msgid "Silver Mage"
 msgstr "Arĝenta mago"
 
@@ -6603,7 +6545,7 @@ msgstr "Arĝenta mago"
 #
 #
 #
-#: data/core/units/Human_Mage_Silver.cfg:24
+#: data/core/units/humans/Mage_Silver.cfg:24
 #, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
@@ -6648,11 +6590,11 @@ msgstr ""
 "dum momento transporti el unu vilaĝo al alia, se ambaŭ vilaĝoj apartenas al "
 "unu ludanto, kaj celata vilaĝo estas vaka."
 
-#: data/core/units/Human_Mage_Silver.cfg:142
+#: data/core/units/humans/Mage_Silver.cfg:142
 msgid "female^Silver Mage"
 msgstr "Arĝenta magino"
 
-#: data/core/units/Human_Mage_White.cfg:3
+#: data/core/units/humans/Mage_White.cfg:3
 msgid "White Mage"
 msgstr "Blanka mago"
 
@@ -6660,7 +6602,7 @@ msgstr "Blanka mago"
 #
 #
 #
-#: data/core/units/Human_Mage_White.cfg:21
+#: data/core/units/humans/Mage_White.cfg:21
 #, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
@@ -6690,18 +6632,18 @@ msgstr ""
 "malamikon. Lumo kaŭzas grandegajn vundojn al ne malvivaj. Blankaj magoj "
 "kapablas kuraci ĉirkaŭajn milit-unuojn, kaj kapablas neŭtraligi venenon."
 
-#: data/core/units/Human_Mage_White.cfg:175
-#: data/core/units/Human_Mage_of_Light.cfg:146
-#: data/core/units/Mermaid_Diviner.cfg:105
-#: data/core/units/Mermaid_Priestess.cfg:80
+#: data/core/units/humans/Mage_White.cfg:175
+#: data/core/units/humans/Mage_of_Light.cfg:146
+#: data/core/units/merfolk/Diviner.cfg:103
+#: data/core/units/merfolk/Priestess.cfg:89
 msgid "lightbeam"
 msgstr "lumradio"
 
-#: data/core/units/Human_Mage_White.cfg:260
+#: data/core/units/humans/Mage_White.cfg:260
 msgid "female^White Mage"
 msgstr "Blanka magino"
 
-#: data/core/units/Human_Mage_of_Light.cfg:3
+#: data/core/units/humans/Mage_of_Light.cfg:3
 msgid "Mage of Light"
 msgstr "Mago de lumo"
 
@@ -6709,7 +6651,7 @@ msgstr "Mago de lumo"
 #
 #
 #
-#: data/core/units/Human_Mage_of_Light.cfg:23
+#: data/core/units/humans/Mage_of_Light.cfg:23
 #, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
@@ -6734,15 +6676,15 @@ msgstr ""
 "de lumo kapablas resanigi ĉirkaŭajn milit-unuojn, kaj kuraci venenigojn. Ili "
 "havas forton de iluminado, kiu lumigas kampojn ĉirkaŭ la mago."
 
-#: data/core/units/Human_Mage_of_Light.cfg:231
+#: data/core/units/humans/Mage_of_Light.cfg:231
 msgid "female^Mage of Light"
 msgstr "Magino de lumo"
 
-#: data/core/units/Human_Outlaw.cfg:3
+#: data/core/units/humans/Outlaw.cfg:3
 msgid "Outlaw"
 msgstr "Rabisto"
 
-#: data/core/units/Human_Outlaw.cfg:18
+#: data/core/units/humans/Outlaw.cfg:18
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -6758,23 +6700,23 @@ msgstr ""
 "rabistoj komprenas ilian mortigan forton. Rabistoj ne ŝatas batali dum tago, "
 "ili preferas nokton."
 
-#: data/core/units/Human_Outlaw.cfg:59
-#: data/core/units/Human_Outlaw_Footpad.cfg:70
-#: data/core/units/Troll_Rocklobber.cfg:65
+#: data/core/units/humans/Outlaw.cfg:59
+#: data/core/units/humans/Outlaw_Footpad.cfg:70
+#: data/core/units/trolls/Rocklobber.cfg:65
 msgid "sling"
 msgstr "katapulto"
 
-#: data/core/units/Human_Outlaw.cfg:97
+#: data/core/units/humans/Outlaw.cfg:97
 msgid "female^Outlaw"
 msgstr "Rabistino"
 
-#: data/core/units/Human_Outlaw_Assassin.cfg:3
+#: data/core/units/humans/Outlaw_Assassin.cfg:3
 msgid "Assassin"
 msgstr "Murdisto"
 
 #
 #
-#: data/core/units/Human_Outlaw_Assassin.cfg:21
+#: data/core/units/humans/Outlaw_Assassin.cfg:21
 #, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
@@ -6795,20 +6737,20 @@ msgstr ""
 "povas ataki de dorso, kaj kapablos fari duoblan vundon. Ĉe tranĉil-metado  "
 "li uzas venenigitajn tranĉilojn, kiuj po iome forprenas forton de malamiko."
 
-#: data/core/units/Human_Outlaw_Assassin.cfg:109
-#: data/core/units/Human_Outlaw_Rogue.cfg:68
+#: data/core/units/humans/Outlaw_Assassin.cfg:109
+#: data/core/units/humans/Outlaw_Rogue.cfg:68
 msgid "knife"
 msgstr "tranĉilo"
 
-#: data/core/units/Human_Outlaw_Assassin.cfg:159
+#: data/core/units/humans/Outlaw_Assassin.cfg:159
 msgid "female^Assassin"
 msgstr "Murdistino"
 
-#: data/core/units/Human_Outlaw_Bandit.cfg:3
+#: data/core/units/humans/Outlaw_Bandit.cfg:3
 msgid "Bandit"
 msgstr "Bandito"
 
-#: data/core/units/Human_Outlaw_Bandit.cfg:18
+#: data/core/units/humans/Outlaw_Bandit.cfg:18
 msgid ""
 "Bandits are a motley collection of men, most of dubious background. They are "
 "the strong arm of any organized group of criminals, and though they may lack "
@@ -6821,11 +6763,11 @@ msgstr ""
 "inteligento, ili eminentas en obeigo de viktimo. Simile kiel aliaj krimuloj, "
 "estas nervozaj dum taga lumo, kaj kutime laboras nokte."
 
-#: data/core/units/Human_Outlaw_Footpad.cfg:3
+#: data/core/units/humans/Outlaw_Footpad.cfg:3
 msgid "Footpad"
 msgstr "Lakeo"
 
-#: data/core/units/Human_Outlaw_Footpad.cfg:18
+#: data/core/units/humans/Outlaw_Footpad.cfg:18
 #, fuzzy
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
@@ -6841,23 +6783,23 @@ msgstr ""
 "batalo kaj malgraŭ mizera armilaro kapablas kaŭzi grandajn problemojn al "
 "malamikoj, prefere sub kovro de mallumo."
 
-#: data/core/units/Human_Outlaw_Footpad.cfg:22
-#: data/core/units/Human_Outlaw_Ruffian.cfg:33
-#: data/core/units/Human_Outlaw_Ruffian.cfg:34
-#: data/core/units/Human_Outlaw_Thug.cfg:22 data/core/units/Troll.cfg:26
-#: data/core/units/Troll_Hero.cfg:26
+#: data/core/units/humans/Outlaw_Footpad.cfg:22
+#: data/core/units/humans/Outlaw_Ruffian.cfg:33
+#: data/core/units/humans/Outlaw_Ruffian.cfg:34
+#: data/core/units/humans/Outlaw_Thug.cfg:22
+#: data/core/units/trolls/Hero.cfg:26 data/core/units/trolls/Troll.cfg:26
 msgid "club"
 msgstr "klabo"
 
-#: data/core/units/Human_Outlaw_Footpad.cfg:108
+#: data/core/units/humans/Outlaw_Footpad.cfg:108
 msgid "female^Footpad"
 msgstr "Lakeino"
 
-#: data/core/units/Human_Outlaw_Poacher.cfg:3
+#: data/core/units/humans/Outlaw_Poacher.cfg:3
 msgid "Poacher"
 msgstr "Ŝtelĉasisto"
 
-#: data/core/units/Human_Outlaw_Poacher.cfg:21
+#: data/core/units/humans/Outlaw_Poacher.cfg:21
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of bandits will need a few "
@@ -6868,13 +6810,13 @@ msgid ""
 "and in forests and swamps."
 msgstr ""
 
-#: data/core/units/Human_Outlaw_Rogue.cfg:3
+#: data/core/units/humans/Outlaw_Rogue.cfg:3
 msgid "Rogue"
 msgstr "Kanajlo"
 
 #
 #
-#: data/core/units/Human_Outlaw_Rogue.cfg:20
+#: data/core/units/humans/Outlaw_Rogue.cfg:20
 #, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
@@ -6894,16 +6836,16 @@ msgstr ""
 "Rimarko:  Se alianca milit-unuo vekos atenton de malamiko, ŝtelisto povas "
 "ataki de dorso, kaj kaŭzi duoblan vundon."
 
-#: data/core/units/Human_Outlaw_Rogue.cfg:107
+#: data/core/units/humans/Outlaw_Rogue.cfg:107
 msgid "female^Rogue"
 msgstr "Kanajlino"
 
-#: data/core/units/Human_Outlaw_Ruffian.cfg:3
+#: data/core/units/humans/Outlaw_Ruffian.cfg:3
 #, fuzzy
 msgid "Ruffian"
 msgstr "Ruino"
 
-#: data/core/units/Human_Outlaw_Ruffian.cfg:17
+#: data/core/units/humans/Outlaw_Ruffian.cfg:17
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
 "Those that attempt to make their way through life by the heavy end of a "
@@ -6911,13 +6853,13 @@ msgid ""
 "swing a bigger club or throw things, but not both."
 msgstr ""
 
-#: data/core/units/Human_Outlaw_Thief.cfg:3
+#: data/core/units/humans/Outlaw_Thief.cfg:3
 msgid "Thief"
 msgstr "Ŝtelisto"
 
 #
 #
-#: data/core/units/Human_Outlaw_Thief.cfg:21
+#: data/core/units/humans/Outlaw_Thief.cfg:21
 #, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
@@ -6940,15 +6882,15 @@ msgstr ""
 "Rimarko: Se alianca milit-unuo vekos atenton de malamiko, ŝtelisto povas "
 "ataki de dorso, kaj kaŭzi duoblan vundon."
 
-#: data/core/units/Human_Outlaw_Thief.cfg:217
+#: data/core/units/humans/Outlaw_Thief.cfg:217
 msgid "female^Thief"
 msgstr "Ŝtelistino"
 
-#: data/core/units/Human_Outlaw_Thug.cfg:3
+#: data/core/units/humans/Outlaw_Thug.cfg:3
 msgid "Thug"
 msgstr "Rabisto"
 
-#: data/core/units/Human_Outlaw_Thug.cfg:18
+#: data/core/units/humans/Outlaw_Thug.cfg:18
 #, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
@@ -6962,11 +6904,11 @@ msgstr ""
 "el sia grundo. Ili fariĝis rabistoj, por ke ili povu vivteni. Siajn "
 "viktimojn kutime mortigas per klaboj."
 
-#: data/core/units/Human_Outlaw_Trapper.cfg:3
+#: data/core/units/humans/Outlaw_Trapper.cfg:3
 msgid "Trapper"
 msgstr "Ĉasisto"
 
-#: data/core/units/Human_Outlaw_Trapper.cfg:21
+#: data/core/units/humans/Outlaw_Trapper.cfg:21
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
 "sizable group of bandits. They can track both man and beast, notice things "
@@ -6977,11 +6919,11 @@ msgid ""
 "unusually competent at night, and in forests and swamps."
 msgstr ""
 
-#: data/core/units/Human_Peasant.cfg:3
+#: data/core/units/humans/Peasant.cfg:3
 msgid "Peasant"
 msgstr "Kamparano"
 
-#: data/core/units/Human_Peasant.cfg:19
+#: data/core/units/humans/Peasant.cfg:19
 #, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
@@ -6994,29 +6936,29 @@ msgstr ""
 "sendas kamparanojn kontraŭ malamka aremo, tio signifas, ke jam havas neniajn "
 "milit-unuojn."
 
-#: data/core/units/Human_Peasant.cfg:23 data/core/units/Human_Peasant.cfg:66
+#: data/core/units/humans/Peasant.cfg:23 data/core/units/humans/Peasant.cfg:66
 msgid "pitchfork"
 msgstr "forkego"
 
-#: data/core/units/Human_Woodsman.cfg:3
+#: data/core/units/humans/Woodsman.cfg:3
 #, fuzzy
 msgid "Woodsman"
 msgstr "Glav-batalisto"
 
-#: data/core/units/Human_Woodsman.cfg:18
+#: data/core/units/humans/Woodsman.cfg:18
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoalburners, and others who eke out a "
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
 
-#: data/core/units/Mermaid_Diviner.cfg:3
+#: data/core/units/merfolk/Diviner.cfg:3
 msgid "female^Mermaid Diviner"
 msgstr "Mara divenistino"
 
 #
 #
-#: data/core/units/Mermaid_Diviner.cfg:27
+#: data/core/units/merfolk/Diviner.cfg:25
 #, fuzzy
 msgid ""
 "Mermaid Priestesses pursue their calling with a fervor that leaves their "
@@ -7038,13 +6980,13 @@ msgstr ""
 "milit-unuojn ĉirkaŭajn kaj kuraci venenigon. Posedas ankaŭ forton de "
 "ilumino, kiu altigas lumon sur najbaraj kampoj."
 
-#: data/core/units/Mermaid_Enchantress.cfg:3
+#: data/core/units/merfolk/Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
 msgstr "Mara fejno-sorĉistino"
 
 #
 #
-#: data/core/units/Mermaid_Enchantress.cfg:20
+#: data/core/units/merfolk/Enchantress.cfg:20
 #, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
@@ -7065,109 +7007,19 @@ msgstr ""
 "\n"
 "Rimarko: Akvaj atakoj estas magiaj kaj havas altan ŝancon trafi malamikon."
 
-#: data/core/units/Mermaid_Enchantress.cfg:62
-#: data/core/units/Mermaid_Initiate.cfg:65
-#: data/core/units/Mermaid_Siren.cfg:73
+#: data/core/units/merfolk/Enchantress.cfg:62
+#: data/core/units/merfolk/Initiate.cfg:65
+#: data/core/units/merfolk/Siren.cfg:73
 msgid "water spray"
 msgstr "akvoŝpruco"
 
-#: data/core/units/Mermaid_Initiate.cfg:3
-msgid "female^Mermaid Initiate"
-msgstr "Mara novicino"
-
-#
-#
-#
-#
-#: data/core/units/Mermaid_Initiate.cfg:23
-#, fuzzy
-msgid ""
-"Young Mermaids are often initiated into the water magics native to their "
-"people. The wondrous abilities this grants are inimitable by any other race, "
-"a mark of the faerie side of these creatures.\n"
-"\n"
-"Despite their frailty, this makes them quite formidable in combat, as they "
-"can call upon the very water about them to smite their enemies.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Junaj niksinoj ofte iniciiĝas en akvomagio. Tio donas al ili mirigajn "
-"kapablojnMalgraŭ gracileco niksinoj sukcesas  en batalo, ĉar kapablas alvoki "
-"akvon kontraŭ malamikoj.Rimarko: Akvoatakoj estas magiaj kaj alteŝancas "
-"vundi kontraŭlon."
-
-#: data/core/units/Mermaid_Priestess.cfg:3
-msgid "female^Mermaid Priestess"
-msgstr "Mara pastrino"
-
-#
-#
-#: data/core/units/Mermaid_Priestess.cfg:25
-#, fuzzy
-msgid ""
-"Among mermen traffic with the Gods is generally left to the mermaids. It is "
-"they who dedicate themselves to the ideal of bringing peace and life to the "
-"world, and they who study the arts of battling sickness and injury. Their "
-"diligence and piety also grant them certain spiritual powers, allowing them "
-"to guard their people against undead and spectral beings.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Mara nacio havas similajn idealojn kiel homoj, sed el kulturaj kialoj "
-"plenigas ilin maraj virgulinoj, kiuj posedas pli altajn intelektajn "
-"kapablojn. Estas inicitaj en idealon de tuttergloba paco, kaj studas kiel "
-"venki malsanojn kaj vundiĝojn, kiuj suferigas ilin same kiel homojn. Ilia "
-"diligento kaj humilo donas al ili spriritajn kapablojn, kiuj ebligas defendi "
-"sian nacion.\n"
-"\n"
-"Lumo estas magia kaj havas grandan ŝancon trafi kontraŭulojn. La lumo kaŭzas "
-"grandegajn damaĝojn al nemalvivaj. Maraj pastrinoj kapablas sanigi ĉirkaŭajn "
-"milit-unuojn, kaj kuraci ilian venenigon. Posedas ankaŭ forton de ilumino, "
-"kiu altigas lumon sur najbaraj kampoj."
-
-#: data/core/units/Mermaid_Siren.cfg:3
-#, fuzzy
-msgid "Mermaid Siren"
-msgstr "Lancisto"
-
-#
-#
-#
-#
-#: data/core/units/Mermaid_Siren.cfg:23
-msgid ""
-"The faerie nature of the mermaids is strongest in the Sirens, whose "
-"connection to naia often causes them to be mistaken for naiads themselves. "
-"Though certainly far from the truth, the mistake is understandable, as true "
-"naiads are rarely seen even by mermaids. The manifestation of their magic is "
-"certainly very similar; the water about a siren can be commanded at whim, "
-"like an extension of herself.\n"
-"\n"
-"The myriad applications of this rarely occur to land dwellers, who simply "
-"regard it with wonder.\n"
-"\n"
-"Special Notes: the attacks of a siren are magical in nature, and always have "
-"a high chance of hitting their opponents."
-msgstr ""
-"Magia karaktero de sirenoj estas la plej forta en sirenoj. La sireno "
-"kapablas regi akvon ĉirkaŭe, kvazaŭ ĝi estus parto de ilia korpo.\n"
-"\n"
-"Tio ĉi havas praktikan uzon, sed por sekteruloj tio estas simple miraklo.\n"
-"\n"
-"Rimarko: Atakoj de sirenoj estas magiaj kaj havas altan ŝancon trafi "
-"malamikon."
-
-#: data/core/units/Mermaid_Siren.cfg:28
-msgid "naia touch"
-msgstr "tuŝo de najado"
-
-#: data/core/units/Merman_Entangler.cfg:3
+#: data/core/units/merfolk/Entangler.cfg:3
 msgid "Merman Entangler"
 msgstr "Mara enplektanto"
 
 #
 #
-#: data/core/units/Merman_Entangler.cfg:20
+#: data/core/units/merfolk/Entangler.cfg:20
 #, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
@@ -7186,11 +7038,11 @@ msgstr ""
 "Rimarko: La reto malrapidigas kontraŭulon kaj malaltigas nombron de liaj "
 "batoj je unu."
 
-#: data/core/units/Merman_Fighter.cfg:3
+#: data/core/units/merfolk/Fighter.cfg:3
 msgid "Merman Fighter"
 msgstr "Mara soldato"
 
-#: data/core/units/Merman_Fighter.cfg:18
+#: data/core/units/merfolk/Fighter.cfg:18
 #, fuzzy
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
@@ -7199,17 +7051,18 @@ msgstr ""
 "Mara viro estas forta mara konkeranto, malgraŭ, ke li estas amfibio, sur "
 "tero havas problemojn."
 
-#: data/core/units/Merman_Fighter.cfg:22 data/core/units/Merman_Hoplite.cfg:35
-#: data/core/units/Merman_Triton.cfg:22 data/core/units/Merman_Triton.cfg:69
-#: data/core/units/Merman_Warrior.cfg:21
+#: data/core/units/merfolk/Fighter.cfg:22
+#: data/core/units/merfolk/Hoplite.cfg:35
+#: data/core/units/merfolk/Triton.cfg:22 data/core/units/merfolk/Triton.cfg:69
+#: data/core/units/merfolk/Warrior.cfg:21
 msgid "trident"
 msgstr "tridentforkego"
 
-#: data/core/units/Merman_Hoplite.cfg:3
+#: data/core/units/merfolk/Hoplite.cfg:3
 msgid "Merman Hoplite"
 msgstr "Mara peza infanteriano"
 
-#: data/core/units/Merman_Hoplite.cfg:21
+#: data/core/units/merfolk/Hoplite.cfg:21
 #, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
@@ -7224,11 +7077,11 @@ msgstr ""
 "malamikojn. En la plej granda mizero kapablas tion ankaŭ sur seka tero, "
 "malgraŭ tio, ke ilin ne eblas kompari kun piedhavantaj estuloj."
 
-#: data/core/units/Merman_Hunter.cfg:3
+#: data/core/units/merfolk/Hunter.cfg:3
 msgid "Merman Hunter"
 msgstr "Mara ĉasisto"
 
-#: data/core/units/Merman_Hunter.cfg:18
+#: data/core/units/merfolk/Hunter.cfg:18
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
@@ -7239,11 +7092,36 @@ msgstr ""
 "dum milito, precipe kontraŭ tiuj, kiuj ne hejmas en akvo. Dum milita tempo "
 "multaj fiŝistoj fariĝas volontuloj en armeo."
 
-#: data/core/units/Merman_Javelineer.cfg:3
+#: data/core/units/merfolk/Initiate.cfg:3
+msgid "female^Mermaid Initiate"
+msgstr "Mara novicino"
+
+#
+#
+#
+#
+#: data/core/units/merfolk/Initiate.cfg:23
+#, fuzzy
+msgid ""
+"Young Mermaids are often initiated into the water magics native to their "
+"people. The wondrous abilities this grants are inimitable by any other race, "
+"a mark of the faerie side of these creatures.\n"
+"\n"
+"Despite their frailty, this makes them quite formidable in combat, as they "
+"can call upon the very water about them to smite their enemies.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Junaj niksinoj ofte iniciiĝas en akvomagio. Tio donas al ili mirigajn "
+"kapablojnMalgraŭ gracileco niksinoj sukcesas  en batalo, ĉar kapablas alvoki "
+"akvon kontraŭ malamikoj.Rimarko: Akvoatakoj estas magiaj kaj alteŝancas "
+"vundi kontraŭlon."
+
+#: data/core/units/merfolk/Javelineer.cfg:3
 msgid "Merman Javelineer"
 msgstr "Mara lancisto"
 
-#: data/core/units/Merman_Javelineer.cfg:18
+#: data/core/units/merfolk/Javelineer.cfg:18
 msgid ""
 "Those mermen who master the art of javelinry can become nearly as effective "
 "as an archer - though the heft of their weapons impedes their range, the "
@@ -7255,13 +7133,13 @@ msgstr ""
 "estas pli granda. Moviĝemo de maraj viroj en akvo estas granda avantaĝo "
 "kompare kun ne naĝanta malamiko."
 
-#: data/core/units/Merman_Netcaster.cfg:3
+#: data/core/units/merfolk/Netcaster.cfg:3
 msgid "Merman Netcaster"
 msgstr "Maraj retĵetantoj"
 
 #
 #
-#: data/core/units/Merman_Netcaster.cfg:19
+#: data/core/units/merfolk/Netcaster.cfg:19
 #, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
@@ -7285,11 +7163,76 @@ msgstr ""
 "Rimarko: Kiun kaptos reto, estas malrapidigita kaj ĉe atako havas je unu "
 "bato malpli."
 
-#: data/core/units/Merman_Spearman.cfg:3
+#: data/core/units/merfolk/Priestess.cfg:3
+msgid "female^Mermaid Priestess"
+msgstr "Mara pastrino"
+
+#
+#
+#: data/core/units/merfolk/Priestess.cfg:23
+#, fuzzy
+msgid ""
+"Among mermen traffic with the Gods is generally left to the mermaids. It is "
+"they who dedicate themselves to the ideal of bringing peace and life to the "
+"world, and they who study the arts of battling sickness and injury. Their "
+"diligence and piety also grant them certain spiritual powers, allowing them "
+"to guard their people against undead and spectral beings.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Mara nacio havas similajn idealojn kiel homoj, sed el kulturaj kialoj "
+"plenigas ilin maraj virgulinoj, kiuj posedas pli altajn intelektajn "
+"kapablojn. Estas inicitaj en idealon de tuttergloba paco, kaj studas kiel "
+"venki malsanojn kaj vundiĝojn, kiuj suferigas ilin same kiel homojn. Ilia "
+"diligento kaj humilo donas al ili spriritajn kapablojn, kiuj ebligas defendi "
+"sian nacion.\n"
+"\n"
+"Lumo estas magia kaj havas grandan ŝancon trafi kontraŭulojn. La lumo kaŭzas "
+"grandegajn damaĝojn al nemalvivaj. Maraj pastrinoj kapablas sanigi ĉirkaŭajn "
+"milit-unuojn, kaj kuraci ilian venenigon. Posedas ankaŭ forton de ilumino, "
+"kiu altigas lumon sur najbaraj kampoj."
+
+#: data/core/units/merfolk/Siren.cfg:3
+#, fuzzy
+msgid "Mermaid Siren"
+msgstr "Lancisto"
+
+#
+#
+#
+#
+#: data/core/units/merfolk/Siren.cfg:23
+msgid ""
+"The faerie nature of the mermaids is strongest in the Sirens, whose "
+"connection to naia often causes them to be mistaken for naiads themselves. "
+"Though certainly far from the truth, the mistake is understandable, as true "
+"naiads are rarely seen even by mermaids. The manifestation of their magic is "
+"certainly very similar; the water about a siren can be commanded at whim, "
+"like an extension of herself.\n"
+"\n"
+"The myriad applications of this rarely occur to land dwellers, who simply "
+"regard it with wonder.\n"
+"\n"
+"Special Notes: the attacks of a siren are magical in nature, and always have "
+"a high chance of hitting their opponents."
+msgstr ""
+"Magia karaktero de sirenoj estas la plej forta en sirenoj. La sireno "
+"kapablas regi akvon ĉirkaŭe, kvazaŭ ĝi estus parto de ilia korpo.\n"
+"\n"
+"Tio ĉi havas praktikan uzon, sed por sekteruloj tio estas simple miraklo.\n"
+"\n"
+"Rimarko: Atakoj de sirenoj estas magiaj kaj havas altan ŝancon trafi "
+"malamikon."
+
+#: data/core/units/merfolk/Siren.cfg:28
+msgid "naia touch"
+msgstr "tuŝo de najado"
+
+#: data/core/units/merfolk/Spearman.cfg:3
 msgid "Merman Spearman"
 msgstr "Lancisto"
 
-#: data/core/units/Merman_Spearman.cfg:17
+#: data/core/units/merfolk/Spearman.cfg:17
 #, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
@@ -7305,11 +7248,11 @@ msgstr ""
 "akvonivelo. Eblas uzi ilin en miksbatalo subakva, kio pri sagoj ne eblas "
 "diri."
 
-#: data/core/units/Merman_Triton.cfg:3
+#: data/core/units/merfolk/Triton.cfg:3
 msgid "Merman Triton"
 msgstr "Mara Tritono"
 
-#: data/core/units/Merman_Triton.cfg:18
+#: data/core/units/merfolk/Triton.cfg:18
 #, fuzzy
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
@@ -7319,11 +7262,11 @@ msgstr ""
 "Tritonoj estas mastroj de maroj. Tritonoj lerte uzas tridentforkegon kaj "
 "facile venkos ĉiun malamikon, kiu tiel stultas, ke li batalus en ilia medio."
 
-#: data/core/units/Merman_Warrior.cfg:3
+#: data/core/units/merfolk/Warrior.cfg:3
 msgid "Merman Warrior"
 msgstr "Mara batalanto"
 
-#: data/core/units/Merman_Warrior.cfg:17
+#: data/core/units/merfolk/Warrior.cfg:17
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
@@ -7331,11 +7274,11 @@ msgstr ""
 "Maraj soldatoj kreas armean kernon de mara nacio. Portas fortajn "
 "tridentforkegojn kaj pereigas ĉion, kio kuraĝas enpaŝi iliajn akvojn."
 
-#: data/core/units/Monster_Cave_Spider.cfg:3
+#: data/core/units/monsters/Cave_Spider.cfg:3
 msgid "Giant Spider"
 msgstr "Aranego"
 
-#: data/core/units/Monster_Cave_Spider.cfg:18
+#: data/core/units/monsters/Cave_Spider.cfg:18
 #, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
@@ -7348,15 +7291,15 @@ msgstr ""
 "De proksime kapablas mordi kaj venenigi, de malproksime ili uzas araneaĵon "
 "por malrapidigi malamikojn."
 
-#: data/core/units/Monster_Cave_Spider.cfg:93
+#: data/core/units/monsters/Cave_Spider.cfg:93
 msgid "web"
 msgstr "reto"
 
-#: data/core/units/Monster_Cuttle_Fish.cfg:3
+#: data/core/units/monsters/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
 msgstr "Sepio"
 
-#: data/core/units/Monster_Cuttle_Fish.cfg:18
+#: data/core/units/monsters/Cuttle_Fish.cfg:18
 #, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
@@ -7370,20 +7313,47 @@ msgstr ""
 "prenilbrakoj, aŭ prikraĉi ilin per venena nigra inko. Se vi volas travivi "
 "renkontiĝon kun ĉi monstro, prefere restu sur bordo."
 
-#: data/core/units/Monster_Cuttle_Fish.cfg:34
-#: data/core/units/Monster_Tentacle.cfg:61
+#: data/core/units/monsters/Cuttle_Fish.cfg:34
+#: data/core/units/monsters/Tentacle.cfg:61
 msgid "tentacle"
 msgstr "prenilbrako"
 
-#: data/core/units/Monster_Cuttle_Fish.cfg:196
+#: data/core/units/monsters/Cuttle_Fish.cfg:196
 msgid "ink"
 msgstr "inko"
 
-#: data/core/units/Monster_Giant_Mudcrawler.cfg:3
+#: data/core/units/monsters/Fire_Dragon.cfg:4
+msgid "Fire Dragon"
+msgstr "Fajra drako"
+
+#: data/core/units/monsters/Fire_Dragon.cfg:21
+msgid ""
+"A fire dragon is an ancient and horrifying being that normally lives only in "
+"hushed rumor and fantastic stories. It is normal for centuries to pass "
+"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
+"form flying in the distance. Legends are very specific about the ravages of "
+"fire dragons: hideously swift in flight, leathery wings spread over one "
+"hundred feet in width, they swoop in and blast their prey with inferno jets "
+"of flame. Anything escaping the dragon's fire breath must beware its "
+"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
+"often take underlings whom they lead to victory."
+msgstr ""
+
+#: data/core/units/monsters/Fire_Dragon.cfg:24
+#: data/core/units/monsters/Fire_Dragon.cfg:25
+msgid "bite"
+msgstr "mordo"
+
+#: data/core/units/monsters/Fire_Dragon.cfg:73
+#: data/core/units/monsters/Fire_Dragon.cfg:74
+msgid "tail"
+msgstr "vosto"
+
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
 msgstr "Granda kot-vorulo"
 
-#: data/core/units/Monster_Giant_Mudcrawler.cfg:17
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:17
 #, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
@@ -7393,23 +7363,24 @@ msgstr ""
 "Granda kot-vorulo estas la plej granda speco de kot-voruloj, de magiaj "
 "kreaĵoj el argilo kaj akvo. Ili atakas per gleboj de ŝlimo aŭ per pugnobatoj."
 
-#: data/core/units/Monster_Giant_Mudcrawler.cfg:45
-#: data/core/units/Monster_Yeti.cfg:33 data/core/units/Troll_Rocklobber.cfg:27
-#: data/core/units/Troll_Whelp.cfg:26
-#: data/core/units/Undead_Skeleton_Archer.cfg:31
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:45
+#: data/core/units/monsters/Yeti.cfg:33
+#: data/core/units/trolls/Rocklobber.cfg:27
+#: data/core/units/trolls/Whelp.cfg:26
+#: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
 msgstr "pugno"
 
-#: data/core/units/Monster_Giant_Mudcrawler.cfg:83
-#: data/core/units/Monster_Mudcrawler.cfg:44
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:83
+#: data/core/units/monsters/Mudcrawler.cfg:44
 msgid "mud glob"
 msgstr "ŝlima glebo"
 
-#: data/core/units/Monster_Giant_Scorpion.cfg:3
+#: data/core/units/monsters/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
 msgstr "Skorpiego"
 
-#: data/core/units/Monster_Giant_Scorpion.cfg:20
+#: data/core/units/monsters/Giant_Scorpion.cfg:20
 #, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - the deadlliness of one the size of a "
@@ -7420,19 +7391,60 @@ msgstr ""
 "Normala skorpio estas danĝera sufiĉe - se ĝi esta granda kiel homo, ne "
 "necesas klarigi."
 
-#: data/core/units/Monster_Giant_Scorpion.cfg:24
+#: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
 msgstr "pikilo"
 
-#: data/core/units/Monster_Giant_Scorpion.cfg:78
+#: data/core/units/monsters/Giant_Scorpion.cfg:78
 msgid "pincers"
 msgstr "pinĉiloj"
 
-#: data/core/units/Monster_Mudcrawler.cfg:3
+#: data/core/units/monsters/Gryphon.cfg:3
+msgid "Gryphon"
+msgstr "Grifo"
+
+#: data/core/units/monsters/Gryphon.cfg:16
+msgid ""
+"These majestic and powerful creatures are masters of the sky. Gryphons are "
+"both dangerous and wary of other intelligent creatures, and thus should not "
+"be disturbed without a good reason."
+msgstr ""
+"Tiu ĉi majesta kaj potenca kreaĵo estas reganto de firmamento. Grifoj ne "
+"ŝatas aliajn inteligentajn specojn, kaj tial ilin neniu senkiale ĝenas."
+
+#: data/core/units/monsters/Gryphon_Master.cfg:3
+msgid "Gryphon Master"
+msgstr "Grif-estro"
+
+#: data/core/units/monsters/Gryphon_Master.cfg:18
+#, fuzzy
+msgid ""
+"Gryphon Masters have long experience flying the Gryphons, which have become "
+"an extension of themselves. This special relationship makes the heart of the "
+"earth-bound tremble, for these mighty flyers may strike from anywhere."
+msgstr ""
+"Grif-estroj havas multajn spertojn kun flugado sur grifoj, kiuj kvazaŭ "
+"fariĝis parto de ilia korpo. Tiu ĉi stranga rilato plenigas terrampulojn per "
+"timo, ĉar ĉi duopo kapablas ataki de ieajn."
+
+#: data/core/units/monsters/Gryphon_Rider.cfg:3
+msgid "Gryphon Rider"
+msgstr "Rajdanto sur grifo"
+
+#: data/core/units/monsters/Gryphon_Rider.cfg:18
+msgid ""
+"Only a few are able to bond with the mighty Gryphons. Those who do may "
+"become Gryphon Riders, and discover the world of the skies upon the backs of "
+"these flying beasts."
+msgstr ""
+"Nur malmultaj kapablas amikiĝi kun fortaj grifoj. Tiuj, kiuj kapablas rajdi "
+"sur ĉi tiuj bestoj, konkeras firmamenton."
+
+#: data/core/units/monsters/Mudcrawler.cfg:3
 msgid "Mudcrawler"
 msgstr "Kot-vorulo"
 
-#: data/core/units/Monster_Mudcrawler.cfg:18
+#: data/core/units/monsters/Mudcrawler.cfg:18
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -7440,20 +7452,20 @@ msgstr ""
 "Ŝlimuloj estas magiaj kreaĵoj el argilo kaj akvo. Sur malamikojn sputas "
 "ŝlimon."
 
-#: data/core/units/Monster_Sea_Serpent.cfg:3
+#: data/core/units/monsters/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
 msgstr "Mara serpento"
 
-#: data/core/units/Monster_Sea_Serpent.cfg:19
+#: data/core/units/monsters/Sea_Serpent.cfg:19
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr "Mara serpento estas ega monstro kapabla renversi ŝipon."
 
-#: data/core/units/Monster_Skeletal_Dragon.cfg:3
+#: data/core/units/monsters/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
 msgstr "Drako skeletulo"
 
-#: data/core/units/Monster_Skeletal_Dragon.cfg:25
+#: data/core/units/monsters/Skeletal_Dragon.cfg:25
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -7466,15 +7478,15 @@ msgstr ""
 "mortodormo, kaj al ili nun servas. Osta drako eble laŭ unu rigardo ne "
 "diferenciĝas de ostoamaso, sed nur malmultaj sukcesis observi pli."
 
-#: data/core/units/Monster_Skeletal_Dragon.cfg:28
+#: data/core/units/monsters/Skeletal_Dragon.cfg:28
 msgid "jaw"
 msgstr "mandiblo"
 
-#: data/core/units/Monster_Tentacle.cfg:3
+#: data/core/units/monsters/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
 msgstr "Prenilbrakoj el profundaĵoj."
 
-#: data/core/units/Monster_Tentacle.cfg:22
+#: data/core/units/monsters/Tentacle.cfg:22
 #, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
@@ -7483,11 +7495,15 @@ msgid ""
 "Special Notes:"
 msgstr "Prenilbrakoj estas membroj de iu monstro, kiu vivas en profundaĵo."
 
-#: data/core/units/Monster_Yeti.cfg:3
+#: data/core/units/monsters/Wolf.cfg:3
+msgid "Wolf"
+msgstr ""
+
+#: data/core/units/monsters/Yeti.cfg:3
 msgid "Yeti"
 msgstr "Jetio"
 
-#: data/core/units/Monster_Yeti.cfg:16
+#: data/core/units/monsters/Yeti.cfg:16
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
@@ -7497,11 +7513,11 @@ msgstr ""
 "neĝkovritaj montoj. Oni scias ne multe pri ili. Renkontiĝis ilin nur ne "
 "multaj homoj, sed plimulto el homoj dubas pri ilia ekzisto."
 
-#: data/core/units/Naga_Fighter.cfg:3
+#: data/core/units/nagas/Fighter.cfg:3
 msgid "Naga Fighter"
 msgstr "Serpenta batalanto"
 
-#: data/core/units/Naga_Fighter.cfg:19
+#: data/core/units/nagas/Fighter.cfg:19
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
 "mobility in water, giving them a whole world forbidden to land dwellers. "
@@ -7515,15 +7531,15 @@ msgstr ""
 "akvo, kaj tial ili restadas en golfetoj. Estas malgrandaj kaj iom gracilaj "
 "korpe, sed kutime estas pli viglaj ol kontraŭuloj."
 
-#: data/core/units/Naga_Fighter.cfg:61
+#: data/core/units/nagas/Fighter.cfg:61
 msgid "Nagini Fighter"
 msgstr "Serpent-batalistino"
 
-#: data/core/units/Naga_Myrmidon.cfg:3
+#: data/core/units/nagas/Myrmidon.cfg:3
 msgid "Naga Myrmidon"
 msgstr "Serpentmajstro"
 
-#: data/core/units/Naga_Myrmidon.cfg:19
+#: data/core/units/nagas/Myrmidon.cfg:19
 #, fuzzy
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
@@ -7538,11 +7554,11 @@ msgstr ""
 "batalantoj ne nur sur ĉiu malfermita spaco, sed ilia kapablo naĝi donas al "
 "ili mortigan moviĝecon."
 
-#: data/core/units/Naga_Myrmidon.cfg:65
+#: data/core/units/nagas/Myrmidon.cfg:65
 msgid "Nagini Myrmidon"
 msgstr "Serpentmajstrino"
 
-#: data/core/units/Naga_Myrmidon.cfg:68
+#: data/core/units/nagas/Myrmidon.cfg:68
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -7556,11 +7572,11 @@ msgstr ""
 "fortaj batalantoj ne nur sur ĉiu malfermita spaco, sed ilia kapablo naĝi "
 "donas al ili mortigan moviĝecon."
 
-#: data/core/units/Naga_Warrior.cfg:3
+#: data/core/units/nagas/Warrior.cfg:3
 msgid "Naga Warrior"
 msgstr "Serpent-batalanto"
 
-#: data/core/units/Naga_Warrior.cfg:18
+#: data/core/units/nagas/Warrior.cfg:18
 #, fuzzy
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
@@ -7576,11 +7592,11 @@ msgstr ""
 "malamikon. Ili turniĝas kaj tordiĝas, por eviti batojn de malamiko. Sur tero "
 "estas danĝeraj, sed frotado en akvo iom limigas ilin."
 
-#: data/core/units/Naga_Warrior.cfg:64
+#: data/core/units/nagas/Warrior.cfg:64
 msgid "Nagini Warrior"
 msgstr "Serpent-batalantino"
 
-#: data/core/units/Naga_Warrior.cfg:67
+#: data/core/units/nagas/Warrior.cfg:67
 #, fuzzy
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
@@ -7596,11 +7612,11 @@ msgstr ""
 "malamikon. Ili turniĝas kaj tordiĝas, por eviti batojn de malamiko. Sur tero "
 "estas danĝeraj, sed frotado en akvo iom limigas ilin."
 
-#: data/core/units/Ogre.cfg:3
+#: data/core/units/ogres/Ogre.cfg:3
 msgid "Ogre"
 msgstr "Ogro"
 
-#: data/core/units/Ogre.cfg:20
+#: data/core/units/ogres/Ogre.cfg:20
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -7611,15 +7627,15 @@ msgstr ""
 "homoj laŭ formo, sed estas pli altaj kaj misformitaj. Malgraŭ tio ke estas "
 "mallertaj kaj iom stultaj, ilian forton ne indas subtaksi."
 
-#: data/core/units/Ogre.cfg:23 data/core/units/Ogre_Young.cfg:23
+#: data/core/units/ogres/Ogre.cfg:23 data/core/units/ogres/Young_Ogre.cfg:23
 msgid "cleaver"
 msgstr "haketilo"
 
-#: data/core/units/Ogre_Young.cfg:3
+#: data/core/units/ogres/Young_Ogre.cfg:3
 msgid "Young Ogre"
 msgstr "Juna ogro"
 
-#: data/core/units/Ogre_Young.cfg:20
+#: data/core/units/ogres/Young_Ogre.cfg:20
 #, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
@@ -7629,11 +7645,11 @@ msgstr ""
 "Kelkaj orgoj jam en junaĝo estas kaptitaj kaj prenitaj por soldata trejnado. "
 "Ne estas sufiĉe lertaj, sed dank´al sia forto tio ne estas tiel grava."
 
-#: data/core/units/Orcish_Archer.cfg:3
+#: data/core/units/orcs/Archer.cfg:3
 msgid "Orcish Archer"
 msgstr "Orko pafarkisto"
 
-#: data/core/units/Orcish_Archer.cfg:18
+#: data/core/units/orcs/Archer.cfg:18
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and and those of slight build, are pragmatic enough to use "
@@ -7643,13 +7659,13 @@ msgid ""
 "alone."
 msgstr ""
 
-#: data/core/units/Orcish_Assassin.cfg:3
+#: data/core/units/orcs/Assassin.cfg:3
 msgid "Orcish Assassin"
 msgstr "Orko murdisto"
 
 #
 #
-#: data/core/units/Orcish_Assassin.cfg:23
+#: data/core/units/orcs/Assassin.cfg:23
 #, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
@@ -7668,16 +7684,15 @@ msgstr ""
 "Rimarko: Viktimo post trafo de venenita tranĉilo perdas sanon, ĝis ne estas "
 "resanigita en vilaĝo aŭ de kuracisto."
 
-#: data/core/units/Orcish_Assassin.cfg:97
-#: data/core/units/Orcish_Slayer.cfg:118
+#: data/core/units/orcs/Assassin.cfg:97 data/core/units/orcs/Slayer.cfg:118
 msgid "throwing knives"
 msgstr "ĵettranĉiloj"
 
-#: data/core/units/Orcish_Crossbowman.cfg:3
+#: data/core/units/orcs/Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
 msgstr "Orko arbalestisto"
 
-#: data/core/units/Orcish_Crossbowman.cfg:17
+#: data/core/units/orcs/Crossbowman.cfg:17
 msgid ""
 "Orcish crossbows are crude imitations of human or dwarvish design; a "
 "crossbow of any make, though, is a fairly potent device.  The orcs "
@@ -7685,11 +7700,11 @@ msgid ""
 "finesse, they make up for in numbers."
 msgstr ""
 
-#: data/core/units/Orcish_Grunt.cfg:3
+#: data/core/units/orcs/Grunt.cfg:3
 msgid "Orcish Grunt"
 msgstr "Orko grunto"
 
-#: data/core/units/Orcish_Grunt.cfg:18
+#: data/core/units/orcs/Grunt.cfg:18
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
@@ -7699,11 +7714,11 @@ msgstr ""
 "aŭ elfa soldato, sed kapablas doni pli fortan baton kaj same eltenos pli da "
 "batoj ĝis falos."
 
-#: data/core/units/Orcish_Leader.cfg:3
+#: data/core/units/orcs/Leader.cfg:3
 msgid "Orcish Leader"
 msgstr "Orko komandanto"
 
-#: data/core/units/Orcish_Leader.cfg:20
+#: data/core/units/orcs/Leader.cfg:20
 #, fuzzy
 msgid ""
 "Orcish Leaders are the leaders of orcish warrior bands. They carry a bow out "
@@ -7716,11 +7731,11 @@ msgstr ""
 "Ork-komandantoj gvidas sian tribon. Faras gravajn decidojn kaj gvidas sian "
 "nacion al bataloj."
 
-#: data/core/units/Orcish_Ruler.cfg:3
+#: data/core/units/orcs/Ruler.cfg:3
 msgid "Orcish Ruler"
 msgstr "Orko reganto"
 
-#: data/core/units/Orcish_Ruler.cfg:19
+#: data/core/units/orcs/Ruler.cfg:19
 #, fuzzy
 msgid ""
 "Orcish Rulers are the chieftains of their tribes. They make the important "
@@ -7737,19 +7752,19 @@ msgstr ""
 "gvidkapabloj faras ilin neanstataŭeblaj; se falos reganto, batalo estas "
 "perdita."
 
-#: data/core/units/Orcish_Ruler.cfg:26 data/core/units/Orcish_Sovereign.cfg:27
-#: data/core/units/Orcish_Warlord.cfg:23 data/core/units/Orcish_Warrior.cfg:21
+#: data/core/units/orcs/Ruler.cfg:26 data/core/units/orcs/Sovereign.cfg:27
+#: data/core/units/orcs/Warlord.cfg:23 data/core/units/orcs/Warrior.cfg:21
 #, fuzzy
 msgid "greatsword"
 msgstr "mallonga glavo"
 
-#: data/core/units/Orcish_Slayer.cfg:3
+#: data/core/units/orcs/Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Orko mortiganto"
 
 #
 #
-#: data/core/units/Orcish_Slayer.cfg:23
+#: data/core/units/orcs/Slayer.cfg:23
 #, fuzzy
 msgid ""
 "The larger or more skilled orcish assassins are called 'Slayers' by their "
@@ -7769,11 +7784,11 @@ msgstr ""
 "Rimarko: Viktimo trafita de veneniga tranĉilo perdas sanon, ĝis ne estas "
 "resanigita de kuracisto, aŭ en vilaĝo."
 
-#: data/core/units/Orcish_Slurbow.cfg:3
+#: data/core/units/orcs/Slurbow.cfg:3
 msgid "Orcish Slurbow"
 msgstr "Ork-tiraljoro"
 
-#: data/core/units/Orcish_Slurbow.cfg:20
+#: data/core/units/orcs/Slurbow.cfg:20
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to recock "
@@ -7786,11 +7801,11 @@ msgid ""
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
 
-#: data/core/units/Orcish_Sovereign.cfg:3
+#: data/core/units/orcs/Sovereign.cfg:3
 msgid "Orcish Sovereign"
 msgstr "Orko gentestro"
 
-#: data/core/units/Orcish_Sovereign.cfg:20
+#: data/core/units/orcs/Sovereign.cfg:20
 #, fuzzy
 msgid ""
 "Orcish Sovereigns are the chieftains of the largest and most powerful "
@@ -7807,11 +7822,11 @@ msgstr ""
 "kun glavo; ili vere estas potencaj batalantoj. Iliaj naturaj gvidkapabloj "
 "faras ilin neanstataŭeblaj; se falos reganto, batalo estas perdita."
 
-#: data/core/units/Orcish_Warlord.cfg:3
+#: data/core/units/orcs/Warlord.cfg:3
 msgid "Orcish Warlord"
 msgstr "Ork-duko"
 
-#: data/core/units/Orcish_Warlord.cfg:18
+#: data/core/units/orcs/Warlord.cfg:18
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
@@ -7820,11 +7835,11 @@ msgstr ""
 "Nur ruza kaj nevenkebla orko povas fariĝi duko. Ĉi tiuj batalantoj lertaj en "
 "batalo kun glavo kaj pafarko gvidas per fera mano orkajn batalmilit-unuojn."
 
-#: data/core/units/Orcish_Warrior.cfg:3
+#: data/core/units/orcs/Warrior.cfg:3
 msgid "Orcish Warrior"
 msgstr "Ork-batalanto"
 
-#: data/core/units/Orcish_Warrior.cfg:17
+#: data/core/units/orcs/Warrior.cfg:17
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
 "respected among the Orcs, and highly feared by their foes. Their only "
@@ -7834,11 +7849,11 @@ msgstr ""
 "altesimata kaj timiga inter malamikoj. Lia ununura manko estas ne kapablo "
 "uzi pafarkon."
 
-#: data/core/units/Saurian_Ambusher.cfg:3
+#: data/core/units/saurians/Ambusher.cfg:3
 msgid "Saurian Ambusher"
 msgstr "Saŭro embuskulo"
 
-#: data/core/units/Saurian_Ambusher.cfg:20
+#: data/core/units/saurians/Ambusher.cfg:20
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this is combined with experience, strength, "
@@ -7851,12 +7866,12 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Saurian_Augur.cfg:3
+#: data/core/units/saurians/Augur.cfg:3
 #, fuzzy
 msgid "Saurian Augur"
 msgstr "Saŭro embuskulo"
 
-#: data/core/units/Saurian_Augur.cfg:22
+#: data/core/units/saurians/Augur.cfg:22
 msgid ""
 "Saurians have some ability in what men call magic, but one which reeks of "
 "augury and all the unpleasantry of dark shamanism. As little as it may be "
@@ -7866,16 +7881,17 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Saurian_Augur.cfg:74 data/core/units/Saurian_Oracle.cfg:74
-#: data/core/units/Saurian_Soothsayer.cfg:74
+#: data/core/units/saurians/Augur.cfg:74
+#: data/core/units/saurians/Oracle.cfg:74
+#: data/core/units/saurians/Soothsayer.cfg:74
 msgid "curse"
 msgstr "anatemo"
 
-#: data/core/units/Saurian_Flanker.cfg:3
+#: data/core/units/saurians/Flanker.cfg:3
 msgid "Saurian Flanker"
 msgstr "Saŭro invadanto"
 
-#: data/core/units/Saurian_Flanker.cfg:21
+#: data/core/units/saurians/Flanker.cfg:21
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven, or human "
 "counterparts. This is of course a relative term, and they can still become "
@@ -7886,12 +7902,12 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Saurian_Oracle.cfg:3
+#: data/core/units/saurians/Oracle.cfg:3
 #, fuzzy
 msgid "Saurian Oracle"
 msgstr "Saŭro ŝamano"
 
-#: data/core/units/Saurian_Oracle.cfg:22
+#: data/core/units/saurians/Oracle.cfg:22
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifing, esoteric shapes and markings, both with paint and tattoo. Some "
@@ -7903,11 +7919,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Saurian_Skirmisher.cfg:3
+#: data/core/units/saurians/Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr "Saŭro batalemulo"
 
-#: data/core/units/Saurian_Skirmisher.cfg:23
+#: data/core/units/saurians/Skirmisher.cfg:23
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
 "of this, they are very, very agile. In combat, their size allows them to "
@@ -7921,11 +7937,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Saurian_Soothsayer.cfg:3
+#: data/core/units/saurians/Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Saŭro divenisto"
 
-#: data/core/units/Saurian_Soothsayer.cfg:22
+#: data/core/units/saurians/Soothsayer.cfg:22
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
 "magical and mysterious. It is clear that some of them are particularly "
@@ -7935,38 +7951,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Troll.cfg:3
-msgid "Troll"
-msgstr "Trolo"
-
-#
-#
-#: data/core/units/Troll.cfg:19
-#, fuzzy
-msgid ""
-"Trolls have long trouble the thoughts of humanity and dwarf-kind. Sages "
-"remain baffled at the origins of these creatures and the driving force "
-"behind their unnatural vitality and strength. A fully-grown troll towers "
-"above a man, and, even unarmed, would be a great threat in combat. The large "
-"clubs typically favored in fighting act as extensions of their arms, used "
-"for the same purpose of mauling their prey into submission.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Troloj estas enigmo por nanoj kaj homoj koncerne ilian devenon, kaj precipe "
-"pro ilia nenatura vivkapablo kaj forto. Matura trolo alte staras super homo, "
-"kaj eĉ senarmiloj estas granda minaco. Ili preferas klabegojn, kiuj "
-"plilongigas iliajn manojn.\n"
-"Rimarko: Troloj posedas kapablon regeneriĝi, kiu kuracas ilin kvazaŭ estus "
-"en vilaĝo."
-
-#: data/core/units/Troll_Great.cfg:3
+#: data/core/units/trolls/Great.cfg:3
 msgid "Great Troll"
 msgstr "Granda trolo"
 
 #
 #
-#: data/core/units/Troll_Great.cfg:20
+#: data/core/units/trolls/Great.cfg:20
 #, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
@@ -7985,13 +7976,13 @@ msgstr ""
 "Rimarko: Troloj posedas kapablon regeneriĝi, kiu kuracas ilin simile kvazaŭ "
 "ili estus en vilaĝo."
 
-#: data/core/units/Troll_Hero.cfg:3
+#: data/core/units/trolls/Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Trol-heroo"
 
 #
 #
-#: data/core/units/Troll_Hero.cfg:19
+#: data/core/units/trolls/Hero.cfg:19
 #, fuzzy
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
@@ -8006,13 +7997,13 @@ msgstr ""
 "Rimarko: Troloj posedas regeneriĝkapablon, kiu kuracas ilin kvazaŭ ili "
 "trovuĝus en vilaĝo."
 
-#: data/core/units/Troll_Rocklobber.cfg:3
+#: data/core/units/trolls/Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Trol-ŝtonĵetisto"
 
 #
 #
-#: data/core/units/Troll_Rocklobber.cfg:21
+#: data/core/units/trolls/Rocklobber.cfg:21
 #, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
@@ -8032,13 +8023,38 @@ msgstr ""
 "Rimarko: Ĵetita ŝtono malgraŭ senformeco, se trafos, estas pli detruiga ol "
 "sagoj kaj lancoj. Troloj kapablas resaniĝi, kvazaŭ ili estus en vilaĝo."
 
-#: data/core/units/Troll_Warrior.cfg:3
+#: data/core/units/trolls/Troll.cfg:3
+msgid "Troll"
+msgstr "Trolo"
+
+#
+#
+#: data/core/units/trolls/Troll.cfg:19
+#, fuzzy
+msgid ""
+"Trolls have long trouble the thoughts of humanity and dwarf-kind. Sages "
+"remain baffled at the origins of these creatures and the driving force "
+"behind their unnatural vitality and strength. A fully-grown troll towers "
+"above a man, and, even unarmed, would be a great threat in combat. The large "
+"clubs typically favored in fighting act as extensions of their arms, used "
+"for the same purpose of mauling their prey into submission.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Troloj estas enigmo por nanoj kaj homoj koncerne ilian devenon, kaj precipe "
+"pro ilia nenatura vivkapablo kaj forto. Matura trolo alte staras super homo, "
+"kaj eĉ senarmiloj estas granda minaco. Ili preferas klabegojn, kiuj "
+"plilongigas iliajn manojn.\n"
+"Rimarko: Troloj posedas kapablon regeneriĝi, kiu kuracas ilin kvazaŭ estus "
+"en vilaĝo."
+
+#: data/core/units/trolls/Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Trol-batalanto"
 
 #
 #
-#: data/core/units/Troll_Warrior.cfg:21
+#: data/core/units/trolls/Warrior.cfg:21
 #, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
@@ -8062,13 +8078,13 @@ msgstr ""
 "\n"
 "Rimarko: Troloj kapablas regeneriĝi, kvazaŭ lili troviĝus en vilaĝo."
 
-#: data/core/units/Troll_Whelp.cfg:3
+#: data/core/units/trolls/Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Trolido"
 
 #
 #
-#: data/core/units/Troll_Whelp.cfg:20
+#: data/core/units/trolls/Whelp.cfg:20
 #, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
@@ -8086,11 +8102,11 @@ msgstr ""
 "\n"
 "Rimarko: Troloj kapablas regeneriĝi, kvazaŭ ili estus en vilaĝo."
 
-#: data/core/units/Undead_Bat_Blood.cfg:3
+#: data/core/units/undead/Bat_Blood.cfg:3
 msgid "Blood Bat"
 msgstr "Sanga vesperto"
 
-#: data/core/units/Undead_Bat_Blood.cfg:19
+#: data/core/units/undead/Bat_Blood.cfg:19
 #, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
@@ -8104,11 +8120,11 @@ msgstr ""
 "viktimoj. Tiel ĝi povas fariĝi pli forta ol komence. Tiu ĉi ne malviva "
 "flugbesto havas krinon kovritan de sango de siaj viktimoj."
 
-#: data/core/units/Undead_Bat_Vampire.cfg:3
+#: data/core/units/undead/Bat_Vampire.cfg:3
 msgid "Vampire Bat"
 msgstr "Vampiro"
 
-#: data/core/units/Undead_Bat_Vampire.cfg:18
+#: data/core/units/undead/Bat_Vampire.cfg:18
 #, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
@@ -8120,7 +8136,7 @@ msgstr ""
 "Vampiroj mordas viktimojn. Malgraŭ tio, ke ŝirdentoj de vampiroj ne estas "
 "fortaj, per ili elsuĉos sangon kaj sanon de viktimo."
 
-#: data/core/units/Undead_Corpse_Ghoul.cfg:3
+#: data/core/units/undead/Corpse_Ghoul.cfg:3
 msgid "Ghoul"
 msgstr "Kadavromanĝulo"
 
@@ -8128,7 +8144,7 @@ msgstr "Kadavromanĝulo"
 #
 #
 #
-#: data/core/units/Undead_Corpse_Ghoul.cfg:21
+#: data/core/units/undead/Corpse_Ghoul.cfg:21
 #, fuzzy
 msgid ""
 "Only those with an dreadful knowledge of necromancy know what must be done "
@@ -8154,13 +8170,13 @@ msgstr ""
 "Rimarko: Ungegoj de kadavrovorulo estas venenaj; viktimo de atako  iom post "
 "iom perdadas sanon, ĝis ne resaniĝos en vilaĝo, aŭ ĉe kuracisto."
 
-#: data/core/units/Undead_Corpse_Necrophage.cfg:3
+#: data/core/units/undead/Corpse_Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Kadavrovorulo"
 
 #
 #
-#: data/core/units/Undead_Corpse_Necrophage.cfg:20
+#: data/core/units/undead/Corpse_Necrophage.cfg:20
 #, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
@@ -8178,11 +8194,11 @@ msgstr ""
 "Rimarko: Ungegoj de kadavromanĝuloj estas venenaj, viktimo de atako iom post "
 "iom perdiĝos sian sanon, ĝis resanigos ĝin kuracisto, aŭ vilaĝo."
 
-#: data/core/units/Undead_Corpse_Soulless.cfg:4
+#: data/core/units/undead/Corpse_Soulless.cfg:4
 msgid "Soulless"
 msgstr "Senanima korpo"
 
-#: data/core/units/Undead_Corpse_Soulless.cfg:22
+#: data/core/units/undead/Corpse_Soulless.cfg:22
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practicioners often use it to raise servants and soldiers from "
@@ -8192,19 +8208,19 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Undead_Corpse_Soulless.cfg:46
-#: data/core/units/Undead_Corpse_Walking.cfg:48
-#: data/core/units/Undead_Necro_Ancient_Lich.cfg:29
-#: data/core/units/Undead_Necro_Lich.cfg:34
-#: data/core/units/Undead_Spirit_Ghost.cfg:24
+#: data/core/units/undead/Corpse_Soulless.cfg:46
+#: data/core/units/undead/Corpse_Walking.cfg:48
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:29
+#: data/core/units/undead/Necro_Lich.cfg:34
+#: data/core/units/undead/Spirit_Ghost.cfg:24
 msgid "touch"
 msgstr "tuŝo"
 
-#: data/core/units/Undead_Corpse_Walking.cfg:4
+#: data/core/units/undead/Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Iranta kadavro"
 
-#: data/core/units/Undead_Corpse_Walking.cfg:22
+#: data/core/units/undead/Corpse_Walking.cfg:22
 #, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
@@ -8217,13 +8233,13 @@ msgstr ""
 "Malgraŭ tio, ke estas malfortaj en balalo, disvastigas malbenon ankaŭ al "
 "tiuj, kiujn mortigis, kaj per tio disvastigas armeon de ne malvivaj."
 
-#: data/core/units/Undead_Necro_Ancient_Lich.cfg:3
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Praostulo"
 
 #
 #
-#: data/core/units/Undead_Necro_Ancient_Lich.cfg:19
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:19
 #, fuzzy
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
@@ -8238,13 +8254,13 @@ msgstr ""
 "ŝancon trafi kontraŭulon. Tuŝo de praostulo prenas sano de viktimo kaj "
 "altigas lian propran sanon."
 
-#: data/core/units/Undead_Necro_Ancient_Lich.cfg:70
-#: data/core/units/Undead_Necro_Lich.cfg:75
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:70
+#: data/core/units/undead/Necro_Lich.cfg:75
 #, fuzzy
 msgid "chill tempest"
 msgstr "frosta ondo"
 
-#: data/core/units/Undead_Necro_Dark_Adept.cfg:4
+#: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Malluma adepto"
 
@@ -8252,7 +8268,7 @@ msgstr "Malluma adepto"
 #
 #
 #
-#: data/core/units/Undead_Necro_Dark_Adept.cfg:27
+#: data/core/units/undead/Necro_Dark_Adept.cfg:26
 #, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
@@ -8275,20 +8291,20 @@ msgstr ""
 "kultoj kaj obskuraj subteraj ordenoj, ilia trejnado daŭrigas ĝis tuta "
 "elĉerpiĝo."
 
-#: data/core/units/Undead_Necro_Dark_Adept.cfg:31
+#: data/core/units/undead/Necro_Dark_Adept.cfg:30
 #, fuzzy
 msgid "shadow wave"
 msgstr "puŝo"
 
-#: data/core/units/Undead_Necro_Dark_Adept.cfg:131
+#: data/core/units/undead/Necro_Dark_Adept.cfg:130
 msgid "female^Dark Adept"
 msgstr "Malluma adeptino"
 
-#: data/core/units/Undead_Necro_Dark_Sorcerer.cfg:3
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
 msgstr "Malluma sorĉisto"
 
-#: data/core/units/Undead_Necro_Dark_Sorcerer.cfg:18
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:18
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
@@ -8298,7 +8314,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Undead_Necro_Lich.cfg:3
+#: data/core/units/undead/Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Ostulo"
 
@@ -8306,7 +8322,7 @@ msgstr "Ostulo"
 #
 #
 #
-#: data/core/units/Undead_Necro_Lich.cfg:24
+#: data/core/units/undead/Necro_Lich.cfg:24
 #, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
@@ -8332,11 +8348,11 @@ msgstr ""
 "ŝancon trafi kontraŭulon. Tuŝo de ostulo suĉas sanon de viktimo kaj aldonas "
 "ĝin al ostulo"
 
-#: data/core/units/Undead_Necromancer.cfg:3
+#: data/core/units/undead/Necromancer.cfg:3
 msgid "Necromancer"
 msgstr "Sorĉisto"
 
-#: data/core/units/Undead_Necromancer.cfg:21
+#: data/core/units/undead/Necromancer.cfg:21
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -8349,16 +8365,16 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/Undead_Necromancer.cfg:25
+#: data/core/units/undead/Necromancer.cfg:25
 #, fuzzy
 msgid "plague staff"
 msgstr "kontaĝo"
 
-#: data/core/units/Undead_Skele_Bone_Shooter.cfg:3
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
 msgstr "Ost-metanto"
 
-#: data/core/units/Undead_Skele_Bone_Shooter.cfg:17
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:17
 #, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
@@ -8376,11 +8392,11 @@ msgstr ""
 "Tial kontraŭuloj nomis ilin \"ostĵetantoj\". Tiu ĉi abomenindaĵo vekas "
 "hororon ĉe ĉiuj vivaj estaĵoj."
 
-#: data/core/units/Undead_Skele_Chocobone.cfg:3
+#: data/core/units/undead/Skele_Chocobone.cfg:3
 msgid "Chocobone"
 msgstr "Ĉokobono"
 
-#: data/core/units/Undead_Skele_Chocobone.cfg:21
+#: data/core/units/undead/Skele_Chocobone.cfg:21
 #, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
@@ -8393,11 +8409,11 @@ msgstr ""
 "uzis por rajdado malaperinta civilizo. Ĉokobonoj estas pli rapidaj ol "
 "plimulto el kavalerio."
 
-#: data/core/units/Undead_Skele_Death_Knight.cfg:3
+#: data/core/units/undead/Skele_Death_Knight.cfg:3
 msgid "Death Knight"
 msgstr "Kavaliro de morto"
 
-#: data/core/units/Undead_Skele_Death_Knight.cfg:26
+#: data/core/units/undead/Skele_Death_Knight.cfg:26
 #, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
@@ -8411,11 +8427,11 @@ msgstr ""
 "malfidsento, reveniĝas al ĉi mondo kiel mortkavaliroj. Batalas kun samaj "
 "armiloj kiel dum vivo, kaj gvidas ne malvivajn sur vojo de venĝo."
 
-#: data/core/units/Undead_Skele_Deathblade.cfg:3
+#: data/core/units/undead/Skele_Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Skelet-skermisto"
 
-#: data/core/units/Undead_Skele_Deathblade.cfg:19
+#: data/core/units/undead/Skele_Deathblade.cfg:19
 #, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
@@ -8431,11 +8447,11 @@ msgstr ""
 "iliajn iamajn kapablojn.  Tiuj ĉi monstroj estas gracilaj, sed ege pli "
 "rapidaj en moviĝo kaj hakado ol aliaj al ili similaj."
 
-#: data/core/units/Undead_Skele_Draug.cfg:3
+#: data/core/units/undead/Skele_Draug.cfg:3
 msgid "Draug"
 msgstr "Draug"
 
-#: data/core/units/Undead_Skele_Draug.cfg:19
+#: data/core/units/undead/Skele_Draug.cfg:19
 #, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were.  "
@@ -8452,11 +8468,11 @@ msgstr ""
 "libereco, paco, kiu alportos por ili nur forto de armiloj. Rememorj pri "
 "malamikoj kaj kaŭzon de batalo jam longe falis en forgeson."
 
-#: data/core/units/Undead_Skele_Revenant.cfg:3
+#: data/core/units/undead/Skele_Revenant.cfg:3
 msgid "Revenant"
 msgstr "Mortulo"
 
-#: data/core/units/Undead_Skele_Revenant.cfg:18
+#: data/core/units/undead/Skele_Revenant.cfg:18
 #, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
@@ -8474,11 +8490,11 @@ msgstr ""
 "dum batalo: batalanto sentima, doloron ne sentanta, batalos plene ĝis tuta "
 "fino."
 
-#: data/core/units/Undead_Skele_Soul_Shooter.cfg:3
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
 msgstr "Animpafisto"
 
-#: data/core/units/Undead_Skele_Soul_Shooter.cfg:19
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:19
 #, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
@@ -8496,11 +8512,11 @@ msgstr ""
 "Pelas ilin nur malamo naskiĝinta el malespero de ilia malplena kaj sensenca "
 "ekzistado."
 
-#: data/core/units/Undead_Skeleton.cfg:3
+#: data/core/units/undead/Skeleton.cfg:3
 msgid "Skeleton"
 msgstr "Skeletulo"
 
-#: data/core/units/Undead_Skeleton.cfg:19
+#: data/core/units/undead/Skeleton.cfg:19
 #, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
@@ -8514,11 +8530,11 @@ msgstr ""
 "prudento, iras rekte al sia celo timante nek doloron nek morton, kaj nur lia "
 "ĉeesto fortimos ĉiun, kiu volus malobei lian mastron."
 
-#: data/core/units/Undead_Skeleton_Archer.cfg:3
+#: data/core/units/undead/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
 msgstr "Skeletulo pafarkisto"
 
-#: data/core/units/Undead_Skeleton_Archer.cfg:18
+#: data/core/units/undead/Skeleton_Archer.cfg:18
 #, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
@@ -8534,7 +8550,7 @@ msgstr ""
 "li faros ĉion por plenumi donitan taskon, ĉar por tiu, kiu mortis, jam timo "
 "ne ekzistas."
 
-#: data/core/units/Undead_Spirit_Ghost.cfg:3
+#: data/core/units/undead/Spirit_Ghost.cfg:3
 msgid "Ghost"
 msgstr "Spirito"
 
@@ -8542,7 +8558,7 @@ msgstr "Spirito"
 #
 #
 #
-#: data/core/units/Undead_Spirit_Ghost.cfg:20
+#: data/core/units/undead/Spirit_Ghost.cfg:20
 #, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
@@ -8564,19 +8580,19 @@ msgstr ""
 "Rimarko: Spiritoj havas eksterordinaran reziston kontraŭ vundoj, kaj sur "
 "akvosurfaco moviĝas malrapide"
 
-#: data/core/units/Undead_Spirit_Ghost.cfg:63
-#: data/core/units/Undead_Spirit_Spectre.cfg:85
-#: data/core/units/Undead_Spirit_Wraith.cfg:66
+#: data/core/units/undead/Spirit_Ghost.cfg:63
+#: data/core/units/undead/Spirit_Spectre.cfg:85
+#: data/core/units/undead/Spirit_Wraith.cfg:66
 msgid "wail"
 msgstr "kriĉo"
 
-#: data/core/units/Undead_Spirit_Nightgaunt.cfg:3
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:3
 msgid "Nightgaunt"
 msgstr "Nokta fantomo"
 
 #
 #
-#: data/core/units/Undead_Spirit_Nightgaunt.cfg:18
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:18
 #, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
@@ -8595,7 +8611,7 @@ msgstr ""
 "damaĝon. Nokta fantomo estas tre rezista al vundoj, kaj kapablas malrapide "
 "moviĝi en akvo. Nokta fantomo kapablas dum nokto kaŝiĝi senŝpure."
 
-#: data/core/units/Undead_Spirit_Shadow.cfg:3
+#: data/core/units/undead/Spirit_Shadow.cfg:3
 msgid "Shadow"
 msgstr "Ombro"
 
@@ -8603,7 +8619,7 @@ msgstr "Ombro"
 #
 #
 #
-#: data/core/units/Undead_Spirit_Shadow.cfg:19
+#: data/core/units/undead/Spirit_Shadow.cfg:19
 #, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
@@ -8623,14 +8639,14 @@ msgstr ""
 "vundoj, kaj super akvo moviĝas malrapide. Ombro kapablas nokte kaŝiĝi sen "
 "spure."
 
-#: data/core/units/Undead_Spirit_Spectre.cfg:3
+#: data/core/units/undead/Spirit_Spectre.cfg:3
 msgid "Spectre"
 msgstr "Fantomo"
 
 #
 #
 #
-#: data/core/units/Undead_Spirit_Spectre.cfg:20
+#: data/core/units/undead/Spirit_Spectre.cfg:20
 #, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
@@ -8649,12 +8665,12 @@ msgstr ""
 "\n"
 "Rimarko: trafo per klingo prenos sanon de viktimo kaj aldonos ĝin al fantomo."
 
-#: data/core/units/Undead_Spirit_Spectre.cfg:45
-#: data/core/units/Undead_Spirit_Wraith.cfg:21
+#: data/core/units/undead/Spirit_Spectre.cfg:45
+#: data/core/units/undead/Spirit_Wraith.cfg:21
 msgid "baneblade"
 msgstr "klingo de pereo"
 
-#: data/core/units/Undead_Spirit_Wraith.cfg:3
+#: data/core/units/undead/Spirit_Wraith.cfg:3
 msgid "Wraith"
 msgstr "Fantomo"
 
@@ -8662,7 +8678,7 @@ msgstr "Fantomo"
 #
 #
 #
-#: data/core/units/Undead_Spirit_Wraith.cfg:18
+#: data/core/units/undead/Spirit_Wraith.cfg:18
 #, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
@@ -8685,47 +8701,7 @@ msgstr ""
 "Rimarko: Trafo de klingo  prenos sanon de viktimo kaj aldonos al fantomo. "
 "Fantomoj estas ege rezistaj kontraŭ vundo, kaj kapablas moviĝi super akvo."
 
-#: data/core/units/Wose.cfg:3
-msgid "Wose"
-msgstr "Arbarulo"
-
-#
-#
-#
-#: data/core/units/Wose.cfg:21
-#, fuzzy
-msgid ""
-"Rarely seen even by elves, the Wose is an order of creature about which "
-"little is known. The elves are the source of most of this knowledge; they "
-"know that these beings are not descended from trees, despite the similarity "
-"in form, and they know that a wose is more closely tied to the faerie world "
-"than the elves themselves, though in a different way. The motives and "
-"workings of their kind are unknown, though most subscribe to the obvious "
-"theory that woses are dedicated wardens of the natural world.\n"
-"\n"
-"Woses are utterly unwarlike, but possess a great strength. They are, "
-"however, neither used to, nor quick at moving around.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Arbara viro estas rara kreaĵo, kaj eĉ elfoj ne scias multon pri ili. "
-"Plimulto el informoj devenas de elfoj; oni scias, ke ĉi kreaĵoj ne devenas "
-"de arboj, malgraŭ simila formo, kaj ke ili apartenas al magia mondo, simile "
-"kiel elfoj, sed alimaniere. Iliaj motivoj kaj agoj ne estas konataj, sed "
-"plimulto kliniĝas al la plej evidenta opinio, ke ili estas "
-"natruprotektantoj.\n"
-"\n"
-"Arbaraj viroj estas pacemaj, sed posedas egan forton. Ne estas tro rapidaj.\n"
-"\n"
-"Rimarko: Arbaraj viroj regeneriĝas helpe de natruaj fontoj, ili ne bezonas "
-"iri resaniĝi al vilaĝo."
-
-#: data/core/units/Wose.cfg:30 data/core/units/Wose_Ancient.cfg:92
-#: data/core/units/Wose_Elder.cfg:91
-msgid "crush"
-msgstr "frakaso"
-
-#: data/core/units/Wose_Ancient.cfg:3
+#: data/core/units/wose/Ancient.cfg:3
 msgid "Ancient Wose"
 msgstr "Pramaljuna arba-viro"
 
@@ -8733,7 +8709,7 @@ msgstr "Pramaljuna arba-viro"
 #
 #
 #
-#: data/core/units/Wose_Ancient.cfg:21
+#: data/core/units/wose/Ancient.cfg:21
 #, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
@@ -8760,7 +8736,12 @@ msgstr ""
 "Rimarko: Arbaraj viroj regeneriĝas ĉerpante fortojn el naturo, do ili ne "
 "bezonas premiĝi en vilaĝoj por akiri manĝaĵon kaj helpon."
 
-#: data/core/units/Wose_Elder.cfg:3
+#: data/core/units/wose/Ancient.cfg:92 data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Wose.cfg:30
+msgid "crush"
+msgstr "frakaso"
+
+#: data/core/units/wose/Elder.cfg:3
 msgid "Elder Wose"
 msgstr "Maljuna arbara viro"
 
@@ -8768,7 +8749,7 @@ msgstr "Maljuna arbara viro"
 #
 #
 #
-#: data/core/units/Wose_Elder.cfg:20
+#: data/core/units/wose/Elder.cfg:20
 #, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
@@ -8790,6 +8771,41 @@ msgstr ""
 "aliajn estaĵojn. Tio estas kialo de ilia nevidebleco - se ili staras "
 "senmovo. Kiel kutime eblas erare supozi, ke tio estas neordinare formita "
 "arbo. Senmove staranta arba viro ofte konfuzigos ankaŭ ne atenteman elfon."
+
+#: data/core/units/wose/Wose.cfg:3
+msgid "Wose"
+msgstr "Arbarulo"
+
+#
+#
+#
+#: data/core/units/wose/Wose.cfg:21
+#, fuzzy
+msgid ""
+"Rarely seen even by elves, the Wose is an order of creature about which "
+"little is known. The elves are the source of most of this knowledge; they "
+"know that these beings are not descended from trees, despite the similarity "
+"in form, and they know that a wose is more closely tied to the faerie world "
+"than the elves themselves, though in a different way. The motives and "
+"workings of their kind are unknown, though most subscribe to the obvious "
+"theory that woses are dedicated wardens of the natural world.\n"
+"\n"
+"Woses are utterly unwarlike, but possess a great strength. They are, "
+"however, neither used to, nor quick at moving around.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Arbara viro estas rara kreaĵo, kaj eĉ elfoj ne scias multon pri ili. "
+"Plimulto el informoj devenas de elfoj; oni scias, ke ĉi kreaĵoj ne devenas "
+"de arboj, malgraŭ simila formo, kaj ke ili apartenas al magia mondo, simile "
+"kiel elfoj, sed alimaniere. Iliaj motivoj kaj agoj ne estas konataj, sed "
+"plimulto kliniĝas al la plej evidenta opinio, ke ili estas "
+"natruprotektantoj.\n"
+"\n"
+"Arbaraj viroj estas pacemaj, sed posedas egan forton. Ne estas tro rapidaj.\n"
+"\n"
+"Rimarko: Arbaraj viroj regeneriĝas helpe de natruaj fontoj, ili ne bezonas "
+"iri resaniĝi al vilaĝo."
 
 #: data/hardwired/english.cfg:2
 msgid "Easy"
@@ -10281,29 +10297,14 @@ msgid "Attacker"
 msgstr "Atakanto"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:356
-#, fuzzy
-msgid "North-West"
-msgstr "Norduloj"
-
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:357
-msgid "North-East"
-msgstr ""
-
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:358
-msgid "Middle-East"
-msgstr ""
-
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:359
-msgid "South-East"
-msgstr ""
-
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
-msgid "South-West"
-msgstr ""
-
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:361
-msgid "Middle-West"
-msgstr ""
+#: src/mouse_events.cpp:194 src/mouse_events.cpp:302
+msgid "Defender"
+msgstr "Defendanto"
 
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
@@ -10456,7 +10457,7 @@ msgid "End Turn"
 msgstr "Fino de turno"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2508
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2416
 msgid "HP"
 msgstr "Vivoj"
 
@@ -10808,7 +10809,7 @@ msgstr "Spertoj:"
 msgid "Moves: "
 msgstr "Movoj:"
 
-#: src/display.cpp:515
+#: src/display.cpp:558
 msgid "Screenshot"
 msgstr "Foto el ekrano"
 
@@ -11101,11 +11102,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:861
+#: src/game_events.cpp:860
 msgid "Victory:"
 msgstr "Vi venkos, se:"
 
-#: src/game_events.cpp:864
+#: src/game_events.cpp:863
 msgid "Defeat:"
 msgstr "Malvenko, se:"
 
@@ -11205,11 +11206,11 @@ msgstr "Referenco al nekonata temo:"
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2600
+#: src/help.cpp:2601
 msgid "The Battle for Wesnoth Help"
 msgstr "Instrukcioj al Batalo por Vesnot"
 
-#: src/help.cpp:2648
+#: src/help.cpp:2651
 msgid "Parse error when parsing help text: "
 msgstr "Eraro ĉe analizado de helpteksto:"
 
@@ -11326,7 +11327,7 @@ msgstr "Nivelo"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:300 src/unit.cpp:2539
+#: src/menu_events.cpp:300 src/unit.cpp:2447
 msgid "Moves"
 msgstr "Movoj"
 
@@ -11611,10 +11612,6 @@ msgstr ""
 msgid "prompt^Command:"
 msgstr "Ordono:"
 
-#: src/mouse_events.cpp:194 src/mouse_events.cpp:302
-msgid "Defender"
-msgstr "Defendanto"
-
 #: src/mouse_events.cpp:212
 msgid "Expected Battle Result (HP)"
 msgstr ""
@@ -11658,19 +11655,19 @@ msgstr "Elektu armilojn:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:652 src/mouse_events.cpp:1339
+#: src/mouse_events.cpp:652 src/mouse_events.cpp:1335
 msgid "Damage Calculations"
 msgstr "Vundiĝelkalkulo"
 
-#: src/mouse_events.cpp:1322 src/reports.cpp:283
+#: src/mouse_events.cpp:1318 src/reports.cpp:283
 msgid "vs"
 msgstr "kontraŭ"
 
-#: src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:1346
 msgid "Attack Enemy"
 msgstr "Ataku malamikon"
 
-#: src/mouse_events.cpp:1351
+#: src/mouse_events.cpp:1347
 msgid "Choose weapon:"
 msgstr "Elektu armilojn:"
 
@@ -11729,12 +11726,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2643
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2550
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2650
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2557
 msgid ")"
 msgstr ")"
 
@@ -12124,8 +12121,8 @@ msgstr "Mi ne povas aldoni kontaktingon"
 msgid "Could not send initial handshake"
 msgstr "Mi ne povas sendi konektpeton."
 
-#: src/play_controller.cpp:391 src/playsingle_controller.cpp:346
-#: src/playsingle_controller.cpp:392
+#: src/play_controller.cpp:391 src/playsingle_controller.cpp:345
+#: src/playsingle_controller.cpp:391
 msgid "The file you have tried to load is corrupt"
 msgstr "Dosiero, kiun vi volas alŝuti, estas damaĝita."
 
@@ -12199,66 +12196,66 @@ msgid ""
 msgstr ""
 "Ludoj malakordiĝis kaj necesas ilin fini. Ĉu mi deponu erarraporton el ludo?"
 
-#: src/playsingle_controller.cpp:219
+#: src/playsingle_controller.cpp:218
 msgid "Game Over"
 msgstr "Fino de ludo"
 
-#: src/playsingle_controller.cpp:220
+#: src/playsingle_controller.cpp:219
 msgid "The game is over."
 msgstr "Ludo finiĝis"
 
-#: src/playsingle_controller.cpp:314
+#: src/playsingle_controller.cpp:313
 msgid "Remaining gold: "
 msgstr "Restanta oro:"
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:316
 msgid "Early finish bonus: "
 msgstr "Bonifiko pro rapida fino:"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:318
 msgid "per turn"
 msgstr "por turno"
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:319
 msgid "Turns finished early: "
 msgstr "Ŝparitaj tiroj:"
 
-#: src/playsingle_controller.cpp:322
+#: src/playsingle_controller.cpp:321
 msgid "Bonus: "
 msgstr "Bonifiko:"
 
-#: src/playsingle_controller.cpp:324
+#: src/playsingle_controller.cpp:323
 msgid "Gold: "
 msgstr "Oro:"
 
-#: src/playsingle_controller.cpp:329
+#: src/playsingle_controller.cpp:328
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% da oro restas por sekva scenejo"
 
-#: src/playsingle_controller.cpp:330
+#: src/playsingle_controller.cpp:329
 msgid "Retained Gold: "
 msgstr "Ŝparita oro:"
 
-#: src/playsingle_controller.cpp:335
+#: src/playsingle_controller.cpp:334
 msgid "Victory"
 msgstr "Venko"
 
-#: src/playsingle_controller.cpp:336
+#: src/playsingle_controller.cpp:335
 msgid "You have emerged victorious!"
 msgstr "Vi venkis!"
 
-#: src/playsingle_controller.cpp:340
+#: src/playsingle_controller.cpp:339
 msgid "Scenario Report"
 msgstr "Raporto pri scenejo"
 
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:356
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "Retkonekto rompiĝis kaj ludo ne povas daŭrigi. Ĉu mi savu ĝin?"
 
-#: src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:475
 msgid "It is now your turn"
 msgstr "Nun vi moviĝu"
 
@@ -12365,7 +12362,7 @@ msgstr "Neŭtralaj milit-unuoj:"
 msgid "Chaotic units: "
 msgstr "Kaosaj milit-unuoj:"
 
-#: src/reports.cpp:477
+#: src/reports.cpp:469
 msgid "Observers:"
 msgstr "Spektantoj:"
 
@@ -12425,15 +12422,15 @@ msgstr "prenita el"
 msgid "$error at $pos"
 msgstr "$error en $pos"
 
-#: src/terrain.cpp:104
+#: src/terrain.cpp:100
 msgid "Allied village"
 msgstr "Alianca vilaĝo"
 
-#: src/terrain.cpp:109
+#: src/terrain.cpp:105
 msgid "Enemy village"
 msgstr "Malamika vilaĝo"
 
-#: src/terrain.cpp:114
+#: src/terrain.cpp:110
 msgid "Owned village"
 msgstr "Nia vilaĝo"
 
@@ -12519,29 +12516,25 @@ msgstr "Kiu kreis la ludon"
 msgid "Quit the game"
 msgstr "Fini la ludon"
 
-#: src/titlescreen.cpp:307
+#: src/titlescreen.cpp:310
 msgid "More"
 msgstr "Pli"
 
-#: src/titlescreen.cpp:308
+#: src/titlescreen.cpp:311
 msgid "Help"
 msgstr ""
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:314
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2474 src/unit.cpp:2648
+#: src/unit.cpp:2382 src/unit.cpp:2555
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2556
+#: src/unit.cpp:2464
 msgid "XP to advance"
 msgstr "Spertoj por avanco"
-
-#: src/unit.cpp:2639
-msgid ": "
-msgstr ":"
 
 #: src/unit_types.cpp:193
 msgid "damage"
@@ -12586,6 +12579,17 @@ msgstr ""
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid " "
+#~ msgstr ";"
+
+#, fuzzy
+#~ msgid "North-West"
+#~ msgstr "Norduloj"
+
+#~ msgid ": "
+#~ msgstr ":"
 
 #~ msgid ""
 #~ "Even people happily living in their homes eventually need some kind of "
