@@ -243,7 +243,7 @@ bool is_format_char(char c)
 	}
 }
 
-static void cut_word(std::string& line, std::string& word, int size, int max_width)
+static void cut_word(std::string& line, std::string& word, int font_size, int style, int max_width)
 {
 	std::string tmp = line;
 	utils::utf8_iterator tc(word);
@@ -251,7 +251,7 @@ static void cut_word(std::string& line, std::string& word, int size, int max_wid
 
 	for(;tc != utils::utf8_iterator::end(word); ++tc) {
 		tmp.append(tc.substr().first, tc.substr().second);
-		SDL_Rect tsize = line_size(tmp, size);
+		SDL_Rect tsize = line_size(tmp, font_size, style);
 		if(tsize.w > max_width) {
 			const std::string& w = word;
 			if(line.empty() && first) {
@@ -341,6 +341,9 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 	bool start_of_line = true;
 	std::string wrapped_text;
 	std::string format_string;
+	SDL_Color color;
+	int font_sz = font_size;
+	int style = TTF_STYLE_NORMAL;
 	utils::utf8_iterator end = utils::utf8_iterator::end(unwrapped_text);
 
 	while(1) {
@@ -351,6 +354,11 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 				format_string.append(ch.substr().first, ch.substr().second);
 				++ch;
 			}
+			// we need to parse the special format characters
+			// to give the proper font_size and style to line_size()
+			font_sz = font_size;
+			style = TTF_STYLE_NORMAL;
+			parse_markup(format_string.begin(),format_string.end(),&font_sz,&color,&style);
 			current_line = format_string;
 			start_of_line = false;
 		}
@@ -390,13 +398,13 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 			start_of_line = true;
 		} else {
 
-			const size_t word_width = line_size(current_word,font_size).w;
+			const size_t word_width = line_size(current_word, font_sz, style).w;
 
 			line_width += word_width;
 
 			if((long)line_width > max_width) {
 				if((long)word_width > max_width) {
-					cut_word(current_line, current_word, font_size, max_width);
+					cut_word(current_line, current_word, font_sz, style, max_width);
 				}
 				if(current_word == " ")
 					current_word = "";
@@ -408,7 +416,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 		}
 
 		if(line_break || current_word.empty() && ch == end) {
-			SDL_Rect size = line_size(current_line, font_size);
+			SDL_Rect size = line_size(current_line, font_sz, style);
 			if(max_height > 0 && current_height + size.h >= size_t(max_height)) {
 				return wrapped_text;
 			}
