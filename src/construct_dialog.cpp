@@ -99,8 +99,8 @@ private:
 
 namespace gui {
 
-dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), menu_height(-1), 
-	interior(empty_rect), message(empty_rect), textbox(empty_rect)
+dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior(empty_rect), 
+	message(empty_rect), textbox(empty_rect), menu_height(-1) 
 {
 	//note: this is not defined in the header file to C++ ODR (one-definition rule)
 	//since each inclusion of the header file uses a different version of empty_rect 

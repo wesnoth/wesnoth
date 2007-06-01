@@ -88,8 +88,8 @@ dialog_manager::~dialog_manager()
 
 dialog_frame::dialog_frame(CVideo &video, const std::string& title,
 	 const std::string* style, std::vector<button*>* buttons,
-	 surface_restorer* restorer, button* help_button) : video_(video),
-	 title_(title), dialog_style_(style ? style : &default_style),
+	 surface_restorer* restorer, button* help_button) : title_(title), 
+	 video_(video), dialog_style_(style ? style : &default_style),
 	 buttons_(buttons), help_button_(help_button), restorer_(restorer),
 	 top_(image::get_image("misc/" + *dialog_style_ + "-border-top.png",image::UNSCALED)),
 	 bot_(image::get_image("misc/" + *dialog_style_ + "-border-bottom.png",image::UNSCALED)),
