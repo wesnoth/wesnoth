@@ -769,13 +769,12 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		}
 
 		if (cursor::get() != cursor::WAIT) {
-			if(selected_unit != units_.end() &&
-				 	(current_paths_.routes.count(new_hex) || attack_from.valid())) {
-				if(mouseover_unit == units_.end()) {
+			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
+				if(current_paths_.routes.count(new_hex)) {
 					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
-				} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.incapacitated()) {
-					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK) ;
-				} else  {
+				} else if (attack_from.valid()) {
+					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
+				} else {
 					cursor::set(cursor::NORMAL);
 				}
 			} else {
@@ -872,12 +871,15 @@ unit_map::const_iterator mouse_handler::find_unit(const gamemap::location& hex) 
 gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::location& loc, const gamemap::location::DIRECTION preferred, const gamemap::location::DIRECTION second_preferred)
 {
 	const unit_map::const_iterator current = find_unit(selected_hex_);
-	if(current == units_.end() || current->second.side() != team_num_) {
+	if(current == units_.end() || current->second.side() != team_num_
+		|| current->second.incapacitated()) {
 		return gamemap::location();
 	}
 
 	const unit_map::const_iterator enemy = find_unit(loc);
-	if(enemy == units_.end() || current_team().is_enemy(enemy->second.side()) == false) {
+	if(enemy == units_.end() || current_team().is_enemy(enemy->second.side()) == false
+		|| enemy->second.incapacitated())
+	{
 		return gamemap::location();
 	}
 
@@ -1085,9 +1087,10 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	const gamemap::location src = selected_hex_;
 	paths orig_paths = current_paths_;
 
+	const gamemap::location& attack_from = current_unit_attacks_from(hex, nearest_hex, second_nearest_hex);
+
 	//see if we're trying to do a move-and-attack
 	if(!browse && !commands_disabled && u != units_.end() && u->second.attacks_left()>0 && enemy != units_.end() && !current_route_.steps.empty()) {
-		const gamemap::location& attack_from = current_unit_attacks_from(hex, nearest_hex, second_nearest_hex);
 		if(attack_from.valid()) {
 			if(move_unit_along_current_route(false)) { //move the unit without updating shroud
 				// a WML event could have invalidated both attacker and defender
@@ -1152,10 +1155,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	}
 
 	//see if we're trying to attack an enemy
-	if(!commands_disabled && u != units_.end() && route != current_paths_.routes.end() && enemy != units_.end() &&
-	   hex != selected_hex_ && !browse &&
-	   enemy->second.side() != u->second.side() &&
-	   current_team().is_enemy(enemy->second.side())) {
+	if(!commands_disabled && !browse && attack_from.valid()) {
 		attack_enemy(u,enemy);
 	}
 
