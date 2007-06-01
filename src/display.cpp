@@ -2309,7 +2309,7 @@ void display::place_temporary_unit(unit &u, const gamemap::location& loc)
 
 void display::remove_temporary_unit()
 {
-	if(!temp_unit_a) return;
+	if(!temp_unit_) return;
 
 	invalidate(temp_unit_loc_);
 	// redraw with no location to get rid of haloes
