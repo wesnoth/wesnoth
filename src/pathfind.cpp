@@ -452,9 +452,10 @@ paths::paths(gamemap const &map, gamestatus const &status,
 		return;
 	}
 
+	const int movement_left = i->second.incapacitated() ? 0 : i->second.movement_left();
 	routes[loc].move_left = i->second.movement_left();
 	find_routes(map,status,gamedata,units,i->second,loc,
-		i->second.movement_left(),routes,teams,force_ignore_zoc,
+		movement_left,routes,teams,force_ignore_zoc,
 		allow_teleport,additional_turns,true,viewing_team, see_all);
 }
 
