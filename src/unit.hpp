@@ -107,7 +107,7 @@ class unit
 		bool incapacitated() const { return utils::string_bool(get_state("stoned"),false); }
 		const std::vector<std::string>& recruits() const { return recruits_; }
 		int total_movement() const { return max_movement_; }
-		int movement_left() const { return movement_; }
+		int movement_left() const { return incapacitated() ? 0 : movement_; }
 		void set_hold_position(bool value) { hold_position_ = value; }
 		bool hold_position() const { return hold_position_; }
 		void set_user_end_turn(bool value=true) { end_turn_ = value; }
