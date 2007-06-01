@@ -59,6 +59,7 @@ namespace {
 
 	const int MinZoom = 4;
 	const int MaxZoom = 200;
+	bool sunset = false;
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
@@ -788,6 +789,10 @@ void display::redraw_everything()
 	draw(true,true);
 }
 
+void display::toggle_sunset() {
+	sunset = !sunset;
+}
+
 void display::flip()
 {
 	if(video().faked()) {
@@ -796,16 +801,16 @@ void display::flip()
 
 	const surface frameBuffer = get_video_surface();
 
-	// use this bit of code to see how the view is updated
-	// change the frequency for keeping a good framerate
-	// (specially if you use use --fps-max)
-	/*if (rand()%100 <= 10) {
+	// this is just the debug function "sunset" to progressively darken the game area
+	// change the frequency for keeping a good framerate (specially if you use use --max-fps)
+	// FIXME: remove the use of random, and use some real timer
+	if (sunset && rand()%100 <= 10) {
 		SDL_Rect r = map_area(); //use frameBuffer to also test the UI
 		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
-		// adjust the alpha if you want progressive (or not) steps
+		// adjust the alpha if you want to balance cpu-cost / smooth sunset
 		fill_rect_alpha(r, color, 1, frameBuffer);
 		update_rect(r);
-	}*/
+	}
 
 	font::draw_floating_labels(frameBuffer);
 	events::raise_volatile_draw_event();

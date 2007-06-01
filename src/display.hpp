@@ -213,6 +213,10 @@ public:
 	//function to remove a footstep from a specific location
 	void remove_footstep(const gamemap::location& loc);
 
+	//debug function to toggle the "sunset "mode
+	//the map area become progressively darker except where hexes are refreshed
+	void toggle_sunset();
+
 	//function to float a label above a tile
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
