@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-31 15:07+0200\n"
+"POT-Creation-Date: 2007-06-02 18:45+0200\n"
 "PO-Revision-Date: 2006-06-15 17:19+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
-#: src/editor/editor_dialogs.cpp:461
+#: src/editor/editor_dialogs.cpp:411
 msgid "OK"
 msgstr "Sane"
 
@@ -31,8 +31,8 @@ msgid "No"
 msgstr "Non"
 
 #: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
-#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:460
-#: src/show_dialog.cpp:428 src/show_dialog.cpp:525
+#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
+#: src/show_dialog.cpp:425 src/show_dialog.cpp:522
 msgid "Cancel"
 msgstr "Abrogare"
 
@@ -40,89 +40,89 @@ msgstr "Abrogare"
 msgid "Close"
 msgstr "Claudere"
 
-#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:798 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Subsidium"
 
-#: src/editor/editor_dialogs.cpp:50
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Mutationes tuae ad chartam perdentur. Visne pergere?"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:192
 msgid "Create New Map"
 msgstr "Novam Chartam Creare"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:443
+#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:393
 #: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Amplitudo: "
 
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:444
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
 #: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Altitudo: "
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:98
 msgid "Generate New Map"
 msgstr "Chartam Novam Generare"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate Random Map"
 msgstr "Chartam Fortuitam Generare"
 
-#: src/editor/editor_dialogs.cpp:101
+#: src/editor/editor_dialogs.cpp:100
 msgid "Random Generator Settings"
 msgstr "Impostationes Generatoris Fortuiti"
 
-#: src/editor/editor_dialogs.cpp:178
+#: src/editor/editor_dialogs.cpp:177
 msgid "Map creation failed."
 msgstr "Creatio chartae fefellit."
 
-#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "Fenestram Claudere"
 
-#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:78
 #: src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "Anteposita"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "Velocitas Gyri:"
 
-#: src/editor/editor_dialogs.cpp:312 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "Scrinium Totum vel in Fenestra Permutare"
 
-#: src/editor/editor_dialogs.cpp:319 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "Rete Monstare"
 
-#: src/editor/editor_dialogs.cpp:326 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "Modus Visivus"
 
-#: src/editor/editor_dialogs.cpp:329 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "Claves Notarum"
 
-#: src/editor/editor_dialogs.cpp:441 src/editor/editor_dialogs.cpp:503
+#: src/editor/editor_dialogs.cpp:391 src/editor/editor_dialogs.cpp:453
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "Magnitudinem Chartae Mutare"
 
-#: src/editor/editor_dialogs.cpp:546
+#: src/editor/editor_dialogs.cpp:496
 msgid "X-Axis"
 msgstr "Axis X"
 
-#: src/editor/editor_dialogs.cpp:547
+#: src/editor/editor_dialogs.cpp:497
 msgid "Y-Axis"
 msgstr "Axis Y"
 
-#: src/editor/editor_dialogs.cpp:548
+#: src/editor/editor_dialogs.cpp:498
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Volvi (hoc dimensiones chartae mutare potest)"
 
@@ -503,7 +503,7 @@ msgstr "Mediterraneua"
 msgid "Island"
 msgstr "Insula"
 
-#: src/preferences.cpp:445
+#: src/preferences.cpp:459
 msgid "player"
 msgstr "lusor"
 
@@ -948,7 +948,7 @@ msgstr "Nulli modi visivi noti.  Forsitan potes mutare inter lusum existens."
 msgid "Error"
 msgstr "Mendum"
 
-#: src/show_dialog.cpp:453
+#: src/show_dialog.cpp:450
 msgid "KB"
 msgstr "KB"
 

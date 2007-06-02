@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-31 15:07+0200\n"
+"POT-Creation-Date: 2007-06-02 18:45+0200\n"
 "PO-Revision-Date: 2007-04-28 00:57+0100\n"
 "Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
-#: src/editor/editor_dialogs.cpp:461
+#: src/editor/editor_dialogs.cpp:411
 msgid "OK"
 msgstr "Ok"
 
@@ -31,8 +31,8 @@ msgid "No"
 msgstr "Non"
 
 #: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
-#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:460
-#: src/show_dialog.cpp:428 src/show_dialog.cpp:525
+#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
+#: src/show_dialog.cpp:425 src/show_dialog.cpp:522
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -40,89 +40,89 @@ msgstr "Annuler"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:798 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Aide"
 
-#: src/editor/editor_dialogs.cpp:50
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Vos modifications à la carte seront perdues. Continuer ?"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:192
 msgid "Create New Map"
 msgstr "Créer une nouvelle carte"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:443
+#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:393
 #: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Largeur :"
 
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:444
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
 #: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Hauteur :"
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:98
 msgid "Generate New Map"
 msgstr "Générer une nouvelle carte"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate Random Map"
 msgstr "Générer une carte aléatoire"
 
-#: src/editor/editor_dialogs.cpp:101
+#: src/editor/editor_dialogs.cpp:100
 msgid "Random Generator Settings"
 msgstr "Paramètres du générateur aléatoire"
 
-#: src/editor/editor_dialogs.cpp:178
+#: src/editor/editor_dialogs.cpp:177
 msgid "Map creation failed."
 msgstr "La création de la carte a échoué."
 
-#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "Fermer la fenêtre"
 
-#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:78
 #: src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "Vitesse de défilement :"
 
-#: src/editor/editor_dialogs.cpp:312 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "Plein écran"
 
-#: src/editor/editor_dialogs.cpp:319 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "Afficher la grille"
 
-#: src/editor/editor_dialogs.cpp:326 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "Mode vidéo"
 
-#: src/editor/editor_dialogs.cpp:329 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "Raccourcis clavier"
 
-#: src/editor/editor_dialogs.cpp:441 src/editor/editor_dialogs.cpp:503
+#: src/editor/editor_dialogs.cpp:391 src/editor/editor_dialogs.cpp:453
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "Redimensionner la carte"
 
-#: src/editor/editor_dialogs.cpp:546
+#: src/editor/editor_dialogs.cpp:496
 msgid "X-Axis"
 msgstr "Axe X"
 
-#: src/editor/editor_dialogs.cpp:547
+#: src/editor/editor_dialogs.cpp:497
 msgid "Y-Axis"
 msgstr "Axe Y"
 
-#: src/editor/editor_dialogs.cpp:548
+#: src/editor/editor_dialogs.cpp:498
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Retourner (cela peut modifier les dimensions de la carte) :"
 
@@ -505,7 +505,7 @@ msgstr "Continental"
 msgid "Island"
 msgstr "Insulaire"
 
-#: src/preferences.cpp:445
+#: src/preferences.cpp:459
 msgid "player"
 msgstr "joueur"
 
@@ -927,7 +927,7 @@ msgstr ""
 msgid "Error"
 msgstr "Erreur"
 
-#: src/show_dialog.cpp:453
+#: src/show_dialog.cpp:450
 msgid "KB"
 msgstr "Ko"
 

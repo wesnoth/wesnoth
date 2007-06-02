@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-31 15:05+0200\n"
+"POT-Creation-Date: 2007-06-02 18:43+0200\n"
 "PO-Revision-Date: 2006-10-11 02:18+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -26,6 +26,15 @@ msgstr ""
 
 #: data/_main.cfg:32
 msgid "Mouse Scrolling"
+msgstr ""
+
+#: data/_main.cfg:39
+#, fuzzy
+msgid "Official Wesnoth Server"
+msgstr "Unir-se al servidor oficial"
+
+#: data/_main.cfg:43
+msgid "Alternate Wesnoth Server"
 msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
@@ -50,15 +59,89 @@ msgstr "Campanya"
 msgid "Current Maintainer"
 msgstr ""
 
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:28
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:27
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:25
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:24
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
 #: data/core/units/orcs/Crossbowman.cfg:22 data/core/units/orcs/Slurbow.cfg:25
 msgid "short sword"
 msgstr "espasa curta"
 
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:54
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:55
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
+msgid "magic_blast"
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
+msgid "magic blast"
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
+#: data/core/units/boats/Galleon.cfg:22
+#: data/core/units/drakes/Enforcer.cfg:103
+#: data/core/units/drakes/Gladiator.cfg:155
+#: data/core/units/drakes/Glider.cfg:77
+#: data/core/units/drakes/Hurricane.cfg:93 data/core/units/drakes/Sky.cfg:92
+#: data/core/units/dwarves/Fighter.cfg:86 data/core/units/dwarves/Lord.cfg:67
+#: data/core/units/dwarves/Runemaster.cfg:23
+#: data/core/units/dwarves/Steelclad.cfg:66 data/core/units/elves/Druid.cfg:28
+#: data/core/units/elves/Druid.cfg:66 data/core/units/elves/Enchantress.cfg:26
+#: data/core/units/elves/Enchantress.cfg:70
+#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Shaman.cfg:68
+#: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Shyde.cfg:57
+#: data/core/units/elves/Sorceress.cfg:28
+#: data/core/units/elves/Sorceress.cfg:77 data/core/units/elves/Sylph.cfg:29
+#: data/core/units/elves/Sylph.cfg:57 data/core/units/goblins/Pillager.cfg:73
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:22
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:24
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
+#: data/core/units/humans/Mage.cfg:57 data/core/units/humans/Mage_Arch.cfg:30
+#: data/core/units/humans/Mage_Great.cfg:31
+#: data/core/units/humans/Mage_Red.cfg:52
+#: data/core/units/humans/Mage_Silver.cfg:37
+#: data/core/units/humans/Mage_White.cfg:119
+#: data/core/units/humans/Mage_of_Light.cfg:99
+#: data/core/units/humans/Outlaw.cfg:23 data/core/units/humans/Outlaw.cfg:60
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
+#: data/core/units/humans/Outlaw_Footpad.cfg:71
+#: data/core/units/humans/Outlaw_Ruffian.cfg:36
+#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/merfolk/Diviner.cfg:67
+#: data/core/units/merfolk/Enchantress.cfg:26
+#: data/core/units/merfolk/Enchantress.cfg:64
+#: data/core/units/merfolk/Entangler.cfg:57
+#: data/core/units/merfolk/Initiate.cfg:29
+#: data/core/units/merfolk/Initiate.cfg:67
+#: data/core/units/merfolk/Netcaster.cfg:56
+#: data/core/units/merfolk/Priestess.cfg:64
+#: data/core/units/merfolk/Siren.cfg:30 data/core/units/merfolk/Siren.cfg:75
+#: data/core/units/monsters/Cave_Spider.cfg:94
+#: data/core/units/monsters/Cuttle_Fish.cfg:35
+#: data/core/units/monsters/Fire_Dragon.cfg:77
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:85
+#: data/core/units/monsters/Giant_Scorpion.cfg:79
+#: data/core/units/monsters/Mudcrawler.cfg:46
+#: data/core/units/monsters/Tentacle.cfg:63
+#: data/core/units/monsters/Yeti.cfg:35 data/core/units/saurians/Augur.cfg:38
+#: data/core/units/saurians/Oracle.cfg:38
+#: data/core/units/saurians/Soothsayer.cfg:38
+#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Rocklobber.cfg:29
+#: data/core/units/trolls/Rocklobber.cfg:66
+#: data/core/units/trolls/Troll.cfg:27 data/core/units/trolls/Warrior.cfg:29
+#: data/core/units/trolls/Whelp.cfg:28
+#: data/core/units/undead/Corpse_Soulless.cfg:48
+#: data/core/units/undead/Corpse_Walking.cfg:50
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:24
+#: data/core/units/undead/Necromancer.cfg:27
+#: data/core/units/undead/Skeleton_Archer.cfg:33
+#: data/core/units/wose/Ancient.cfg:94 data/core/units/wose/Elder.cfg:93
+#: data/core/units/wose/Wose.cfg:32
+msgid "impact"
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:58
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:60
@@ -66,7 +149,7 @@ msgstr "espasa curta"
 msgid "chill wave"
 msgstr ""
 
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
+#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:60
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
 #: data/core/units/saurians/Augur.cfg:75
 #: data/core/units/saurians/Oracle.cfg:75
@@ -80,11 +163,6 @@ msgstr ""
 #: data/core/units/undead/Spirit_Spectre.cfg:86
 #: data/core/units/undead/Spirit_Wraith.cfg:67
 msgid "cold"
-msgstr ""
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:59
-#: data/core/abilities.cfg:526
-msgid "magical"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:27
@@ -366,6 +444,10 @@ msgstr ""
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+
+#: data/core/abilities.cfg:526
+msgid "magical"
 msgstr ""
 
 #: data/core/abilities.cfg:528
@@ -3024,71 +3106,6 @@ msgstr ""
 #: data/core/units/boats/Galleon.cfg:21
 msgid "dummy"
 msgstr "arma fictícia"
-
-#: data/core/units/boats/Galleon.cfg:22
-#: data/core/units/drakes/Enforcer.cfg:103
-#: data/core/units/drakes/Gladiator.cfg:155
-#: data/core/units/drakes/Glider.cfg:77
-#: data/core/units/drakes/Hurricane.cfg:93 data/core/units/drakes/Sky.cfg:92
-#: data/core/units/dwarves/Fighter.cfg:86 data/core/units/dwarves/Lord.cfg:67
-#: data/core/units/dwarves/Runemaster.cfg:23
-#: data/core/units/dwarves/Steelclad.cfg:66 data/core/units/elves/Druid.cfg:28
-#: data/core/units/elves/Druid.cfg:66 data/core/units/elves/Enchantress.cfg:26
-#: data/core/units/elves/Enchantress.cfg:70
-#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Shaman.cfg:68
-#: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Shyde.cfg:57
-#: data/core/units/elves/Sorceress.cfg:28
-#: data/core/units/elves/Sorceress.cfg:77 data/core/units/elves/Sylph.cfg:29
-#: data/core/units/elves/Sylph.cfg:57 data/core/units/goblins/Pillager.cfg:73
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:22
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:24
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
-#: data/core/units/humans/Mage.cfg:57 data/core/units/humans/Mage_Arch.cfg:30
-#: data/core/units/humans/Mage_Great.cfg:31
-#: data/core/units/humans/Mage_Red.cfg:52
-#: data/core/units/humans/Mage_Silver.cfg:37
-#: data/core/units/humans/Mage_White.cfg:119
-#: data/core/units/humans/Mage_of_Light.cfg:99
-#: data/core/units/humans/Outlaw.cfg:23 data/core/units/humans/Outlaw.cfg:60
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
-#: data/core/units/humans/Outlaw_Footpad.cfg:71
-#: data/core/units/humans/Outlaw_Ruffian.cfg:36
-#: data/core/units/humans/Outlaw_Thug.cfg:23
-#: data/core/units/merfolk/Diviner.cfg:67
-#: data/core/units/merfolk/Enchantress.cfg:26
-#: data/core/units/merfolk/Enchantress.cfg:64
-#: data/core/units/merfolk/Entangler.cfg:57
-#: data/core/units/merfolk/Initiate.cfg:29
-#: data/core/units/merfolk/Initiate.cfg:67
-#: data/core/units/merfolk/Netcaster.cfg:56
-#: data/core/units/merfolk/Priestess.cfg:64
-#: data/core/units/merfolk/Siren.cfg:30 data/core/units/merfolk/Siren.cfg:75
-#: data/core/units/monsters/Cave_Spider.cfg:94
-#: data/core/units/monsters/Cuttle_Fish.cfg:35
-#: data/core/units/monsters/Fire_Dragon.cfg:77
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:85
-#: data/core/units/monsters/Giant_Scorpion.cfg:79
-#: data/core/units/monsters/Mudcrawler.cfg:46
-#: data/core/units/monsters/Tentacle.cfg:63
-#: data/core/units/monsters/Yeti.cfg:35 data/core/units/saurians/Augur.cfg:38
-#: data/core/units/saurians/Oracle.cfg:38
-#: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Hero.cfg:27
-#: data/core/units/trolls/Rocklobber.cfg:29
-#: data/core/units/trolls/Rocklobber.cfg:66
-#: data/core/units/trolls/Troll.cfg:27 data/core/units/trolls/Warrior.cfg:29
-#: data/core/units/trolls/Whelp.cfg:28
-#: data/core/units/undead/Corpse_Soulless.cfg:48
-#: data/core/units/undead/Corpse_Walking.cfg:50
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:24
-#: data/core/units/undead/Necromancer.cfg:27
-#: data/core/units/undead/Skeleton_Archer.cfg:33
-#: data/core/units/wose/Ancient.cfg:94 data/core/units/wose/Elder.cfg:93
-#: data/core/units/wose/Wose.cfg:32
-msgid "impact"
-msgstr ""
 
 #: data/core/units/boats/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
@@ -6831,7 +6848,7 @@ msgstr "Assessí orc"
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
-"knives, are typically frail by orcish stabdards, although surprisingly "
+"knives, are typically frail by orcish standards, although surprisingly "
 "nimble. Though rarely the ones who deal the killing blow, their tactics are "
 "a considerable aid to their larger and more brutal kin.\n"
 "\n"
@@ -9444,7 +9461,7 @@ msgid ""
 msgstr ""
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:352
-#: src/mouse_events.cpp:193 src/mouse_events.cpp:303
+#: src/mouse_events.cpp:194 src/mouse_events.cpp:304
 msgid "Attacker"
 msgstr "Atacant"
 
@@ -9454,7 +9471,7 @@ msgstr "Atacant"
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:359
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:361
-#: src/mouse_events.cpp:194 src/mouse_events.cpp:302
+#: src/mouse_events.cpp:195 src/mouse_events.cpp:303
 msgid "Defender"
 msgstr "Defenedor"
 
@@ -9847,7 +9864,7 @@ msgstr "#(Invàlit)"
 msgid "Campaign"
 msgstr "Campanya"
 
-#: src/dialogs.cpp:469 src/game.cpp:1248
+#: src/dialogs.cpp:469 src/game.cpp:1242
 msgid "Multiplayer"
 msgstr "Multijugador"
 
@@ -9949,11 +9966,11 @@ msgstr "PX:"
 msgid "Moves: "
 msgstr "Moviments: "
 
-#: src/display.cpp:558
+#: src/display.cpp:559
 msgid "Screenshot"
 msgstr "captura"
 
-#: src/game.cpp:426 src/game.cpp:1333
+#: src/game.cpp:426 src/game.cpp:1327
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
@@ -10022,7 +10039,7 @@ msgstr "Ara vos conectareu a un servidor per a descarregar expansions."
 msgid "Server: "
 msgstr "Servidor: "
 
-#: src/game.cpp:912 src/multiplayer.cpp:132 src/multiplayer.cpp:169
+#: src/game.cpp:912 src/multiplayer.cpp:160 src/multiplayer.cpp:197
 msgid "Connecting to Server..."
 msgstr "Conectant amb el servidor..."
 
@@ -10092,146 +10109,142 @@ msgstr "Esteu segur de que voleu suprimir esta partida?"
 msgid "Downloading add-on..."
 msgstr "Descarregant expansió..."
 
-#: src/game.cpp:1097
-msgid "Cannot rescan the filesystem"
-msgstr "No ha sigut possible tornar a escanejar el sistema de fitxers."
-
-#: src/game.cpp:1122
+#: src/game.cpp:1116
 msgid "Add-on Installed"
 msgstr "Expansió instal·lada"
 
-#: src/game.cpp:1122
+#: src/game.cpp:1116
 msgid "The add-on has been installed."
 msgstr "La expansió ha sigut instal·lada correctament."
 
-#: src/game.cpp:1125
+#: src/game.cpp:1119
 msgid "Network communication error."
 msgstr "Erro de comunicació a la xàrcia."
 
-#: src/game.cpp:1127
+#: src/game.cpp:1121
 msgid "Remote host disconnected."
 msgstr "Servidor remot desconectat."
 
-#: src/game.cpp:1129
+#: src/game.cpp:1123
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "S'ha produït un erro creant els fitxers necessaris per a instal·lar esta "
 "campanya."
 
-#: src/game.cpp:1141 src/game.cpp:1180 src/game.cpp:1205
-#: src/multiplayer.cpp:216 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:388
+#: src/game.cpp:1135 src/game.cpp:1174 src/game.cpp:1199
+#: src/multiplayer.cpp:244 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:388
 msgid "Connection timed out"
 msgstr "Conexió perduda."
 
-#: src/game.cpp:1144 src/game.cpp:1182 src/game.cpp:1207
+#: src/game.cpp:1138 src/game.cpp:1176 src/game.cpp:1201
 msgid "The server responded with an error: \""
 msgstr "El servidor ha respòs amb un erro: \""
 
-#: src/game.cpp:1148
+#: src/game.cpp:1142
 msgid "Terms"
 msgstr "Termes"
 
-#: src/game.cpp:1178
+#: src/game.cpp:1172
 msgid "Sending add-on"
 msgstr "Enviant expansió..."
 
-#: src/game.cpp:1185 src/game.cpp:1210 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1179 src/game.cpp:1204 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr "Resposta"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1226
 msgid "Join Official Server"
 msgstr "Unir-se al servidor oficial"
 
-#: src/game.cpp:1233
+#: src/game.cpp:1227
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Entra al servidor oficial de Wesnoth per a partides multijugador"
 
-#: src/game.cpp:1235 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1229 src/multiplayer_lobby.cpp:532
 msgid "Join Game"
 msgstr "Unir-se"
 
-#: src/game.cpp:1236
+#: src/game.cpp:1230
 msgid "Join a server or hosted game"
 msgstr "Unix-te a un servidor o una partida"
 
-#: src/game.cpp:1238
+#: src/game.cpp:1232
 msgid "Host Networked Game"
 msgstr "Servir partida en xàrcia"
 
-#: src/game.cpp:1239
+#: src/game.cpp:1233
 msgid "Host a game without using a server"
 msgstr "Servix una partida sense usar el servidor"
 
-#: src/game.cpp:1241
+#: src/game.cpp:1235
 #, fuzzy
 msgid "Local Game"
 msgstr "Carrega una partida"
 
-#: src/game.cpp:1242
+#: src/game.cpp:1236
 #, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Juga una partida multijugador compartint la mateixa màquina"
 
-#: src/game.cpp:1250 src/multiplayer.cpp:196
+#: src/game.cpp:1244 src/multiplayer.cpp:224
 msgid "Login: "
 msgstr "Nom: "
 
-#: src/game.cpp:1287 src/playcampaign.cpp:90 src/playcampaign.cpp:360
+#: src/game.cpp:1281 src/playcampaign.cpp:90 src/playcampaign.cpp:360
 msgid "The game could not be loaded: "
 msgstr "No ha sigut possible guardar la partida:"
 
-#: src/game.cpp:1289 src/playcampaign.cpp:92 src/playcampaign.cpp:363
+#: src/game.cpp:1283 src/playcampaign.cpp:92 src/playcampaign.cpp:363
 msgid "Error while playing the game: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game.cpp:1301 src/playcampaign.cpp:94 src/playcampaign.cpp:366
+#: src/game.cpp:1295 src/playcampaign.cpp:94 src/playcampaign.cpp:366
 msgid "The game map could not be loaded: "
 msgstr "No ha sigut possible carregar la partida:"
 
-#: src/game.cpp:1325
+#: src/game.cpp:1319
 msgid "Language"
 msgstr "Idioma"
 
-#: src/game.cpp:1326
+#: src/game.cpp:1320
 msgid "Choose your preferred language:"
 msgstr "Trieu el vostre idioma:"
 
-#: src/game.cpp:1474
+#: src/game.cpp:1468
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "S'ha produït un erro en carregar les següents campanyes adicionals:"
 
-#: src/game.cpp:1479
+#: src/game.cpp:1473
 msgid "ERROR DETAILS:"
 msgstr "DETALLS DE L'ERRO:"
 
-#: src/game.cpp:1493
+#: src/game.cpp:1487
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Avís: s'ha produït un erro en carregar els fitxers de configuració del joc: '"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1537
 msgid "Error loading game configuration files: '"
 msgstr "Erro carregant els fitxers de configuració del joc: '"
 
-#: src/game.cpp:1544
+#: src/game.cpp:1538
 msgid "' (The game will now exit)"
 msgstr "' (ara es tancarà el joc)."
 
-#: src/game.cpp:1692
+#: src/game.cpp:1686
 msgid "Battle for Wesnoth"
 msgstr "Batalla per Wesnoth"
 
-#: src/game.cpp:1820
+#: src/game.cpp:1809
 msgid "Loading game configuration."
 msgstr "Carregant configuració del joc."
 
-#: src/game.cpp:1826
+#: src/game.cpp:1815
 msgid "Re-initialize fonts for the current language."
 msgstr "Reiniciant tipografies per a l'idioma actual."
 
-#: src/game.cpp:1842
+#: src/game.cpp:1831
 msgid "Loading title screen."
 msgstr "Carregant pantalla inicial."
 
@@ -10766,76 +10779,90 @@ msgstr "Comandament desconegut: "
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "No s'ha trobat cap etiqueta o unitat amb el nom '$search'."
 
-#: src/menu_events.cpp:1892
+#: src/menu_events.cpp:1894
 msgid "prompt^Command:"
 msgstr "Comandament:"
 
-#: src/mouse_events.cpp:212
+#: src/mouse_events.cpp:213
 #, fuzzy
 msgid "Expected Battle Result (HP)"
 msgstr "Previsió del resultat de la batalla (pv)"
 
-#: src/mouse_events.cpp:304
+#: src/mouse_events.cpp:305
 msgid " resistance vs "
 msgstr " resistència a "
 
-#: src/mouse_events.cpp:305
+#: src/mouse_events.cpp:306
 msgid " vulnerability vs "
 msgstr " vulnerabilitat de l'atacant contra"
 
-#: src/mouse_events.cpp:315
+#: src/mouse_events.cpp:316
 msgid "Slowed"
 msgstr "Retardat"
 
-#: src/mouse_events.cpp:322
+#: src/mouse_events.cpp:323
 msgid "Time of day"
 msgstr "Moment del dia"
 
-#: src/mouse_events.cpp:332
+#: src/mouse_events.cpp:333
 msgid "Leadership"
 msgstr "Lideratge"
 
-#: src/mouse_events.cpp:339
+#: src/mouse_events.cpp:340
 msgid "Total damage"
 msgstr "Dany total"
 
-#: src/mouse_events.cpp:346
+#: src/mouse_events.cpp:347
 msgid "No usable weapon"
 msgstr "Sense arma utilisable"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:352
 msgid "Chance of being unscathed"
 msgstr "Possibilitat de eixir il·lés"
 
-#: src/mouse_events.cpp:652 src/mouse_events.cpp:1335
+#: src/mouse_events.cpp:653 src/mouse_events.cpp:1339
 msgid "Damage Calculations"
 msgstr "Càlcul de dany"
 
-#: src/mouse_events.cpp:1318 src/reports.cpp:283
+#: src/mouse_events.cpp:1322 src/reports.cpp:283
 msgid "vs"
 msgstr "contra"
 
-#: src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:1350
 msgid "Attack Enemy"
 msgstr "Atac enemic"
 
-#: src/mouse_events.cpp:1347
+#: src/mouse_events.cpp:1351
 msgid "Choose weapon:"
 msgstr "Trieu l'arma:"
 
-#: src/multiplayer.cpp:101
+#: src/multiplayer.cpp:98
+#, fuzzy
+msgid "View List"
+msgstr "Llista d'unitats"
+
+#: src/multiplayer.cpp:104
+#, fuzzy
+msgid "List of Servers"
+msgstr "Conecta amb el servidor"
+
+#: src/multiplayer.cpp:105
+msgid "Choose a known server from the list"
+msgstr ""
+
+#: src/multiplayer.cpp:129
 msgid "Connect to Host"
 msgstr "Conecta amb el servidor"
 
-#: src/multiplayer.cpp:103
+#: src/multiplayer.cpp:130
 msgid "Choose host to connect to: "
 msgstr "Trieu el servidor: "
 
-#: src/multiplayer.cpp:142
+#: src/multiplayer.cpp:170
 msgid "Reading from Server..."
 msgstr "S'està llegint del servidor..."
 
-#: src/multiplayer.cpp:151
+#: src/multiplayer.cpp:179
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -10843,15 +10870,15 @@ msgstr ""
 "El servidor requerïx la versió '$version1', però esteu usant la versió "
 "'$version2'."
 
-#: src/multiplayer.cpp:163
+#: src/multiplayer.cpp:191
 msgid "Server-side redirect loop"
 msgstr "Redirecció del servidor"
 
-#: src/multiplayer.cpp:195
+#: src/multiplayer.cpp:223
 msgid "You must log in to this server"
 msgstr "Heu d'entrar en este servidor"
 
-#: src/multiplayer.cpp:201
+#: src/multiplayer.cpp:229
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -10859,17 +10886,17 @@ msgstr ""
 "El nom d'usuari que ha escollit es molt llarc. Per favor, escoja un nom de "
 "menys de 18 caràcters"
 
-#: src/multiplayer.cpp:379 src/multiplayer.cpp:394
+#: src/multiplayer.cpp:407 src/multiplayer.cpp:422
 #: src/multiplayer_wait.cpp:199
 msgid "No multiplayer sides available in this game"
 msgstr "No hi ha bandos disponibles en esta partida."
 
-#: src/multiplayer.cpp:380 src/multiplayer.cpp:395
+#: src/multiplayer.cpp:408 src/multiplayer.cpp:423
 #: src/multiplayer_wait.cpp:236
 msgid "Era not available"
 msgstr "Era no disponible"
 
-#: src/multiplayer.cpp:381 src/multiplayer.cpp:396
+#: src/multiplayer.cpp:409 src/multiplayer.cpp:424
 #: src/multiplayer_wait.cpp:241
 msgid "No multiplayer sides found"
 msgstr "No s'ha trobat cap bando."
@@ -11729,6 +11756,9 @@ msgstr "¡Ajudeu-nos a fer un millor Wesnoth per a tots!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Permetre emissions de resums"
+
+#~ msgid "Cannot rescan the filesystem"
+#~ msgstr "No ha sigut possible tornar a escanejar el sistema de fitxers."
 
 #, fuzzy
 #~ msgid " "

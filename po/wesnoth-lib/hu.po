@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-31 15:07+0200\n"
+"POT-Creation-Date: 2007-06-02 18:45+0200\n"
 "PO-Revision-Date: 2007-03-11 15:42+0100\n"
 "Last-Translator: Széll Tamás <tomi A digiflex POINT hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
-#: src/editor/editor_dialogs.cpp:461
+#: src/editor/editor_dialogs.cpp:411
 msgid "OK"
 msgstr "Oké"
 
@@ -35,8 +35,8 @@ msgid "No"
 msgstr "Nem"
 
 #: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
-#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:460
-#: src/show_dialog.cpp:428 src/show_dialog.cpp:525
+#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
+#: src/show_dialog.cpp:425 src/show_dialog.cpp:522
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -44,89 +44,89 @@ msgstr "Mégse"
 msgid "Close"
 msgstr "Bezár"
 
-#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:798 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Segítség"
 
-#: src/editor/editor_dialogs.cpp:50
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "A pályán eszközölt változások elvesznek. Folytatod?"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:192
 msgid "Create New Map"
 msgstr "Új pálya készítése"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:443
+#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:393
 #: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Szélesség:"
 
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:444
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
 #: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Magasság:"
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:98
 msgid "Generate New Map"
 msgstr "Új pálya generálása"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate Random Map"
 msgstr "Véletlenszerű pálya generálása"
 
-#: src/editor/editor_dialogs.cpp:101
+#: src/editor/editor_dialogs.cpp:100
 msgid "Random Generator Settings"
 msgstr "Véletlenszerű generálás beállításai"
 
-#: src/editor/editor_dialogs.cpp:178
+#: src/editor/editor_dialogs.cpp:177
 msgid "Map creation failed."
 msgstr "A pályakészítés sikertelen"
 
-#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
-#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:78
 #: src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "Görgetés sebessége:"
 
-#: src/editor/editor_dialogs.cpp:312 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
-#: src/editor/editor_dialogs.cpp:319 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "Rács megjelenítése"
 
-#: src/editor/editor_dialogs.cpp:326 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "Videó mód"
 
-#: src/editor/editor_dialogs.cpp:329 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "Gyorsbillentyűk"
 
-#: src/editor/editor_dialogs.cpp:441 src/editor/editor_dialogs.cpp:503
+#: src/editor/editor_dialogs.cpp:391 src/editor/editor_dialogs.cpp:453
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "Pálya átméretezése"
 
-#: src/editor/editor_dialogs.cpp:546
+#: src/editor/editor_dialogs.cpp:496
 msgid "X-Axis"
 msgstr "X-tengely"
 
-#: src/editor/editor_dialogs.cpp:547
+#: src/editor/editor_dialogs.cpp:497
 msgid "Y-Axis"
 msgstr "Y-tengely"
 
-#: src/editor/editor_dialogs.cpp:548
+#: src/editor/editor_dialogs.cpp:498
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Tükrözés (ez megváltoztathatja a pálya méreteit):"
 
@@ -503,7 +503,7 @@ msgstr "Szárazföld"
 msgid "Island"
 msgstr "Sziget"
 
-#: src/preferences.cpp:445
+#: src/preferences.cpp:459
 msgid "player"
 msgstr "játékos"
 
@@ -937,6 +937,6 @@ msgstr ""
 msgid "Error"
 msgstr "Hiba"
 
-#: src/show_dialog.cpp:453
+#: src/show_dialog.cpp:450
 msgid "KB"
 msgstr "KB"

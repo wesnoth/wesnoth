@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-31 15:07+0200\n"
+"POT-Creation-Date: 2007-06-02 18:45+0200\n"
 "PO-Revision-Date: 2006-03-21 12:58-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/construct_dialog.cpp:127 src/construct_dialog.cpp:134
-#: src/editor/editor_dialogs.cpp:461
+#: src/editor/editor_dialogs.cpp:411
 msgid "OK"
 msgstr "확인"
 
@@ -30,8 +30,8 @@ msgid "No"
 msgstr "아니오"
 
 #: src/construct_dialog.cpp:135 src/construct_dialog.cpp:138
-#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:460
-#: src/show_dialog.cpp:428 src/show_dialog.cpp:525
+#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
+#: src/show_dialog.cpp:425 src/show_dialog.cpp:522
 msgid "Cancel"
 msgstr "취소"
 
@@ -39,89 +39,89 @@ msgstr "취소"
 msgid "Close"
 msgstr "닫기"
 
-#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:798 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "도움말"
 
-#: src/editor/editor_dialogs.cpp:50
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "당신의 수정된 맵을 잃을 것입니다. 계속 하시겠습니까?"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:192
 msgid "Create New Map"
 msgstr "새로운 맵 제작"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:443
+#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:393
 #: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "가로:"
 
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:444
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
 #: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "높이:"
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:98
 msgid "Generate New Map"
 msgstr "새로운 맵 생성"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate Random Map"
 msgstr "랜덤 맵 생성"
 
-#: src/editor/editor_dialogs.cpp:101
+#: src/editor/editor_dialogs.cpp:100
 msgid "Random Generator Settings"
 msgstr "랜덤 생성기 설정"
 
-#: src/editor/editor_dialogs.cpp:178
+#: src/editor/editor_dialogs.cpp:177
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1272
 msgid "Close Window"
 msgstr "창 닫기"
 
-#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:78
 #: src/preferences_display.cpp:1158
 msgid "Preferences"
 msgstr "게임 옵션"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:301
 msgid "Scroll Speed:"
 msgstr "스크롤 속도:"
 
-#: src/editor/editor_dialogs.cpp:312 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:261
 msgid "Toggle Full Screen"
 msgstr "전체 화면 전환"
 
-#: src/editor/editor_dialogs.cpp:319 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:264
 msgid "Show Grid"
 msgstr "격자 표시"
 
-#: src/editor/editor_dialogs.cpp:326 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:282
 msgid "Video Mode"
 msgstr "비디오 모드"
 
-#: src/editor/editor_dialogs.cpp:329 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:284
 msgid "Hotkeys"
 msgstr "단축키"
 
-#: src/editor/editor_dialogs.cpp:441 src/editor/editor_dialogs.cpp:503
+#: src/editor/editor_dialogs.cpp:391 src/editor/editor_dialogs.cpp:453
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "맵 크기"
 
-#: src/editor/editor_dialogs.cpp:546
+#: src/editor/editor_dialogs.cpp:496
 msgid "X-Axis"
 msgstr "X-축"
 
-#: src/editor/editor_dialogs.cpp:547
+#: src/editor/editor_dialogs.cpp:497
 msgid "Y-Axis"
 msgstr "Y-축"
 
-#: src/editor/editor_dialogs.cpp:548
+#: src/editor/editor_dialogs.cpp:498
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "회전하기 (이 옵션은 맵의 넓이를 변화 시킬 수 있습니다):"
 
@@ -499,7 +499,7 @@ msgstr ""
 msgid "Island"
 msgstr ""
 
-#: src/preferences.cpp:445
+#: src/preferences.cpp:459
 msgid "player"
 msgstr ""
 
@@ -926,6 +926,6 @@ msgstr ""
 msgid "Error"
 msgstr "에러"
 
-#: src/show_dialog.cpp:453
+#: src/show_dialog.cpp:450
 msgid "KB"
 msgstr ""
