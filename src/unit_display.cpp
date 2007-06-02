@@ -33,7 +33,7 @@
 static void teleport_unit_between( const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	display* disp = display::get_singleton();
-	if(!disp || disp->update_locked() || disp->fogged(a) && disp->fogged(b)) {
+	if(!disp || disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)) {
 		return;
 	}
 
@@ -67,7 +67,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 static void move_unit_between( const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	display* disp = display::get_singleton();
-	if(!disp || disp->update_locked() || disp->fogged(a) && disp->fogged(b)) {
+	if(!disp || disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)) {
 		return;
 	}
 
@@ -180,7 +180,7 @@ void unit_die(const gamemap::location& loc, unit& loser,
 const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 {
 	display* disp = display::get_singleton();
-	if(!disp ||disp->update_locked() || disp->fogged(loc) || preferences::show_combat() == false) {
+	if(!disp ||disp->video().update_locked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
 		const std::string& die_sound = loser.die_sound();
@@ -222,7 +222,7 @@ static void unit_attack_ranged(
 {
 	display* disp = display::get_singleton();
 	if(!disp) return;
-	const bool hide = disp->update_locked() || disp->fogged(a) && disp->fogged(b)
+	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)
 		|| preferences::show_combat() == false ;
 
 	unit_map& units = disp->get_units();
@@ -408,7 +408,7 @@ void unit_attack(
 	display* disp = display::get_singleton();
 	if(!disp) return;
 	unit_map& units = disp->get_units();
-	const bool hide = disp->update_locked() || disp->fogged(a) && disp->fogged(b)
+	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)
 	                  || preferences::show_combat() == false;
 
 	if(!hide) {
@@ -532,7 +532,7 @@ void unit_attack(
 void unit_recruited(gamemap::location& loc)
 {
 	display* disp = display::get_singleton();
-	if(!disp || disp->update_locked() ||disp->fogged(loc)) return;
+	if(!disp || disp->video().update_locked() ||disp->fogged(loc)) return;
 	unit_map::iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
 
@@ -555,7 +555,7 @@ void unit_recruited(gamemap::location& loc)
 void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
 {
 	display* disp = display::get_singleton();
-	if(!disp || disp->update_locked() || disp->fogged(healed_loc)) return;
+	if(!disp || disp->video().update_locked() || disp->fogged(healed_loc)) return;
 	if(healing==0) return;
 	// This is all the pretty stuff.
 	int start_time = INT_MAX;

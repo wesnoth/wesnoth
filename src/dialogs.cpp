@@ -158,7 +158,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	//when the unit advances, it fades to white, and then switches to the
 	//new unit, then fades back to the normal colour
 
-	if(!gui.update_locked()) {
+	if(!gui.video().update_locked()) {
 		u->second.set_leveling_out(gui,u->first);
 		while(!u->second.get_animation()->animation_would_finish()) {
 			gui.invalidate(loc);
@@ -188,7 +188,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	u = units.find(loc);
 	gui.invalidate_unit();
 
-	if(u != units.end() && !gui.update_locked()) {
+	if(u != units.end() && !gui.video().update_locked()) {
 		u->second.set_leveling_in(gui,u->first);
 		while(!u->second.get_animation()->animation_would_finish()) {
 			gui.invalidate(loc);

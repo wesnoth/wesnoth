@@ -2491,7 +2491,7 @@ bool pump()
 		commit_new_handlers();
 
 		// dialogs can only be shown if the display is not locked
-		if(! screen->update_locked()) {
+		if(! screen->video().update_locked()) {
 			show_wml_errors();
 		}
 	}

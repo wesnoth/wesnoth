@@ -259,7 +259,7 @@ int dialog::show(int xloc, int yloc)
 
 int dialog::show()
 {
-	if(disp_.update_locked()) {
+	if(disp_.video().update_locked()) {
 		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'\n";
 		return CLOSE_DIALOG;
 	}

@@ -337,10 +337,6 @@ public:
 	unit_map& get_units() {return units_;};
 	const unit_map& get_const_units() const {return units_;};
 
-	//compat methods to be dropped after full migration
-	void lock_updates(bool value) {screen_.lock_updates(value); };
-	bool update_locked() const {return screen_.update_locked(); };
-
 	//functions to set/get whether 'turbo' mode is on. When turbo mode is on,
 	//everything moves much faster.
 	void set_turbo(const bool turbo) { turbo_ = turbo; }
