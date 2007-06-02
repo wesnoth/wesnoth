@@ -206,10 +206,6 @@ public:
 	const bool option_checked(unsigned int option_index=0);
 	display& get_display() { return disp_; }
 
-	//Backwards compatibility
-	//set_action - deprecated, subclass dialog instead and override action()
-	void set_action(dialog_action *const da) {action_ = da;}
-
 protected:
 	void set_result(const int result) { result_ = result; }
 
@@ -253,7 +249,6 @@ private:
 	std::vector<button*> frame_buttons_;
 	help_button help_button_;
 	dialog_textbox *text_widget_;
-	dialog_action *action_;
 	dialog_frame *frame_;
 	surface_restorer *bg_restore_;
 	dimension_measurements dim_;

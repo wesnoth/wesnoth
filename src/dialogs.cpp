@@ -291,7 +291,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 			options.push_back(gui::check_item(_("Don't ask me again!"),false));
 
 			const int res = gui::show_dialog(disp_,NULL,"",_("Do you really want to delete this game?"),gui::YES_NO,
-			                                 NULL,NULL,"",NULL,-1,NULL,&options);
+			                                 NULL,NULL,"",NULL,-1,&options);
 
 			//see if the user doesn't want to be asked this again
 			wassert(options.empty() == false);
@@ -599,7 +599,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	const int res = gui::show_dialog2(disp,NULL,
 					 _("Load Game"),
 					 _("Choose the game to load"),
-			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,&options,-1,-1,NULL,&buttons,"",&sorter);
+			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,&options,-1,-1,NULL,&buttons,"",&sorter);
 
 	write_save_index();
 

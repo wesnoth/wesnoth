@@ -113,7 +113,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
 				type_(type), menu_(NULL),
 				help_button_(disp, help_topic),  text_widget_(NULL),
-				action_(NULL), frame_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
+				frame_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
 {
 	CVideo& screen = disp_.video();
 
@@ -162,7 +162,6 @@ dialog::~dialog()
 	delete message_;
 	delete text_widget_;
 	delete image_;
-//	delete action_;
 	delete frame_;
 
 	button_pool_iterator b;
@@ -778,11 +777,6 @@ void dialog::action(dialog_process_info& info)
 			set_result(CONTINUE_DIALOG);
 			info.first_time = true;
 		}
-	}
-
-	//support for old-style dialog actions
-	if(!done() && action_ != NULL) {
-		set_result(action_->do_action());
 	}
 }
 

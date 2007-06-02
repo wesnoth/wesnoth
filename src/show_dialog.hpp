@@ -121,14 +121,6 @@ private:
  //                const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
  //                surface_restorer* restorer=NULL, button* help_button=NULL, label** label_widget);
 
-class dialog_action
-{
-public:
-	virtual ~dialog_action() {}
-
-	virtual int do_action() = 0;
-};
-
 class dialog_button_action
 {
 public:
@@ -180,7 +172,6 @@ int show_dialog(display &screen, surface image,
 				const std::string& text_widget_label="",
 				std::string* text_widget_text=NULL,
 				const int text_widget_max_chars = 256,
-				dialog_action* action=NULL,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
 				const std::string* dialog_style=NULL,
 				std::vector<dialog_button_info>* buttons=NULL,

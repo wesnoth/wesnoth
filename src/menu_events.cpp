@@ -346,7 +346,7 @@ namespace events{
 
 			selected = gui::show_dialog2(*gui_,NULL,_("Unit List"),"",
 										gui::OK_ONLY,&items,&preview_panes,
-										"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
+										"",NULL,0,NULL,-1,-1,NULL,NULL,"",&sorter);
 		}
 
 		if(selected > 0 && selected < int(locations_list.size())) {
@@ -434,7 +434,7 @@ namespace events{
 		}
 
 		gui::show_dialog2(*gui_,NULL,"","",gui::CLOSE_ONLY,&items,
-						 NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
+						 NULL,"",NULL,0,NULL,-1,-1,NULL,NULL,"",&sorter);
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
@@ -724,7 +724,7 @@ namespace events{
 
 			recruit_res = gui::show_dialog2(*gui_,NULL,_("Recruit"),
 					_("Select unit:") + std::string("\n"),
-					gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,NULL,-1,-1,
+					gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,-1,-1,
 					NULL,NULL,"recruit_and_recall");
 		}
 
@@ -876,7 +876,7 @@ namespace events{
 						_("Select unit:") + std::string("\n"),
 						gui::OK_CANCEL,&options,
 						&preview_panes,"",NULL,-1,
-						NULL,NULL,-1,-1,NULL,&buttons,"",&sorter);
+						NULL,-1,-1,NULL,&buttons,"",&sorter);
 			}
 
 			if(res >= 0) {

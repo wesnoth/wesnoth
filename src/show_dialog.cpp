@@ -350,7 +350,7 @@ int show_dialog(display& screen, surface image,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
 				int text_widget_max_chars,
-				dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
+				std::vector<check_item>* options, int xloc, int yloc,
 				const std::string* dialog_style, std::vector<dialog_button_info>* action_buttons,
 				const std::string& help_topic, const menu::sorter* sorter, menu::style* menu_style)
 {
@@ -374,9 +374,6 @@ int show_dialog(display& screen, surface image,
 	}
 	if(text_widget_text) {
 		d.set_textbox(text_widget_label,*text_widget_text, text_widget_max_chars);
-	}
-	if(action) {
-		d.set_action(action);
 	}
 	if(options) {
 		for(unsigned int i=0; i < options->size(); ++i) {

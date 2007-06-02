@@ -806,7 +806,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 
 		static const std::string style = "menu2";
 		const int res = gui::show_dialog(gui,NULL,"","",
-				gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,NULL,xloc,yloc,&style);
+				gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,xloc,yloc,&style);
 		if (size_t(res) >= items.size())
 			return;
 
