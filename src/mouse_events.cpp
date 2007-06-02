@@ -773,7 +773,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
 				if (attack_from.valid()) {
 					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
-				} else if (current_paths_.routes.count(new_hex)) {
+				} else if (current_paths_.routes.count(new_hex) && mouseover_unit==units_.end()) {
 					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
 				} else {
 					cursor::set(cursor::NORMAL);
@@ -873,7 +873,7 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 {
 	const unit_map::const_iterator current = find_unit(selected_hex_);
 	if(current == units_.end() || current->second.side() != team_num_
-		|| current->second.incapacitated()) {
+		|| current->second.attacks_left()==0 || current->second.incapacitated() ) {
 		return gamemap::location();
 	}
 
@@ -1156,10 +1156,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	}
 
 	//see if we're trying to attack an enemy
-	if(!commands_disabled && u != units_.end() && route != current_paths_.routes.end() && enemy != units_.end() &&
-	   hex != selected_hex_ && !browse &&
-	   enemy->second.side() != u->second.side() &&
-	   current_team().is_enemy(enemy->second.side())) {
+	if(!commands_disabled && !browse && attack_from.valid()) {
 		attack_enemy(u,enemy);
 	}
 
