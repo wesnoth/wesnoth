@@ -20,6 +20,7 @@ class game_state;
 class unit_map;
 class gamemap;
 
+#include "game_config.hpp"
 #include "terrain_translation.hpp"
 
 #include <string>
@@ -115,7 +116,7 @@ namespace preferences {
 	bool iconize_list();
 	void _set_iconize_list(bool show);
 
-	const std::string& official_network_host();
+	const std::vector<game_config::server_info>& server_list();
 
 	const std::string& network_host();
 	void set_network_host(const std::string& host);

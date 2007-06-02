@@ -106,6 +106,7 @@ namespace game_config
 	std::string path = "";
 #endif
 #endif
+	std::vector<server_info> server_list;
 
 	void load_config(const config* cfg)
 	{
@@ -174,6 +175,15 @@ namespace game_config
 		flag_rgb = v["flag_rgb"];
 		if( !flag_rgb.size()){
 			flag_rgb="green";
+		}
+
+		const std::vector<config *> &servers = v.get_children("server");
+		std::vector<config *>::const_iterator server;
+		for(server = servers.begin(); server != servers.end(); ++server) {
+			server_info sinf;
+			sinf.name = (**server)["name"];
+			sinf.address = (**server)["address"];
+			server_list.push_back(sinf);
 		}
 	}
 	

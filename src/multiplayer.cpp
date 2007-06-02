@@ -34,6 +34,7 @@
 #include "statistics.hpp"
 #include "serialization/string_utils.hpp"
 #include "upload_log.hpp"
+#include "wml_separators.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 
@@ -102,13 +103,14 @@ protected:
 		gui::dialog server_dialog(dialog()->get_display(), _("List of Servers"),
 			_("Choose a known server from the list"), gui::OK_CANCEL);
 		std::vector<std::string> servers;
-		servers.push_back(preferences::official_network_host());
-		//add alternate servers here...
-		//just a hardcoded list for now
-		servers.push_back("games.tuxfamily.org:14998");
+		const std::vector<game_config::server_info>& pref_servers = preferences::server_list();
+		std::vector<game_config::server_info>::const_iterator server;
+		for(server = pref_servers.begin(); server != pref_servers.end(); ++server) {
+			servers.push_back(server->address + HELP_STRING_SEPARATOR + server->name);
+		}
 		server_dialog.set_menu(servers);
 		if(server_dialog.show() >= 0) {
-			dialog()->get_textbox().set_text(servers[server_dialog.result()]);
+			dialog()->get_textbox().set_text(preferences::server_list()[server_dialog.result()].address);
 		}
 		dp_info.clear_buttons();
 		return gui::CONTINUE_DIALOG;
@@ -244,7 +246,7 @@ static server_type open_connection(display& disp, const std::string& original_ho
 		}
 	} while(!(data.child("join_lobby") || data.child("join_game")));
 
-	if (h != preferences::official_network_host())
+	if (h != preferences::server_list()[0].address)
 		preferences::set_network_host(h);
 
 	if (data.child("join_lobby")) {

@@ -40,6 +40,12 @@ namespace game_config
 
 	extern std::string path;
 
+	struct server_info {
+		std::string name;
+		std::string address; //may include ':' followed by port number
+	};
+	extern std::vector<server_info> server_list;
+
 	extern std::string game_icon, game_title, game_logo, title_music,
 	  moved_ball_image, unmoved_ball_image, partmoved_ball_image,
 	  enemy_ball_image, ally_ball_image, energy_image,
