@@ -14,6 +14,7 @@ Version 1.3.3+svn:
    * empty user_description now remains empty unless generate_description set (bug 8522).
    * set_variable has the key time=stamp now, to get a timestamp in milliseconds
    * move some terrain masks definition in [game_config]
+   * made defense_weight work again for values > 0
  * user interface:
    * fixed a lag in the path rendering when there is a lot of units
    * maps smaller than the screen are now shown centered on the screen

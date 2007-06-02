@@ -309,6 +309,35 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		return -1;
 	if (choices.size() == 1)
 		return choices[0];
+		
+	// Multiple options: first pass : get the best weight and the minimum simple rating for this weight
+	// simple rating = number of blows * damage per blows (resistance taken in account) * cth * weight
+	// elligible attacks for defense should have a simple rating greater or equal to this weight
+	
+	double max_weight = 0.0;
+	int min_rating = 0;
+	
+	for (i = 0; i < choices.size(); i++) {
+		const attack_type &def = defender.attacks()[choices[i]];
+		if (def.defense_weight() > max_weight) {
+			max_weight = def.defense_weight();
+			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
+								attacker, attacker_loc, &att,
+								units, teams, status, map, gamedata);
+			min_rating = (int) (def_stats->num_blows * def_stats->damage * def_stats->chance_to_hit * def.defense_weight());
+			delete def_stats;
+		} 
+		else if (def.defense_weight() == max_weight) {
+			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
+								attacker, attacker_loc, &att,
+								units, teams, status, map, gamedata);
+			int simple_rating = (int) (def_stats->num_blows * def_stats->damage *
+							def_stats->chance_to_hit * def.defense_weight());
+			if (simple_rating < min_rating )
+				min_rating = simple_rating;
+			delete def_stats;
+		}
+	}
 
 	// Multiple options: simulate them, save best.
 	for (i = 0; i < choices.size(); i++) {
@@ -324,7 +353,12 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		combatant *def_comb = new combatant(*def_stats, prev_def);
 		att_comb->fight(*def_comb);
 
-		if (!attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0)) {
+		int simple_rating = (int) (def_stats->num_blows * def_stats->damage *
+					def_stats->chance_to_hit * def.defense_weight());
+		
+		if (simple_rating >= min_rating &&
+			( !attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0) )
+		) {
 			delete attacker_combatant_;
 			delete defender_combatant_;
 			delete attacker_stats_;
