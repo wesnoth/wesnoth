@@ -1830,7 +1830,8 @@ namespace events{
 		} else if(cmd == "clear") {
 			gui_->clear_chat_messages();
 		} else if(cmd == "sunset") {
-			gui_->toggle_sunset();
+			int delay = lexical_cast_default<int>(data);
+			gui_->sunset(delay);
 		} else if(cmd == "w") {
 			save_game(data,gui::NULL_DIALOG);
 		} else if(cmd == "wq") {

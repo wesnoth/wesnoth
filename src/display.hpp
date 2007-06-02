@@ -115,6 +115,11 @@ public:
 	//invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
 
+	//debug function to toggle the "sunset" mode
+	//the map area become progressively darker except where hexes are refreshed
+	//delay it's the number of frames between each darkening (0 to toggle)
+	void sunset(const size_t delay = 0);
+
 	void flip();
 
 	//draws invalidated items. If update is true, will also copy the
@@ -212,10 +217,6 @@ public:
 
 	//function to remove a footstep from a specific location
 	void remove_footstep(const gamemap::location& loc);
-
-	//debug function to toggle the "sunset "mode
-	//the map area become progressively darker except where hexes are refreshed
-	void toggle_sunset();
 
 	//function to float a label above a tile
 	void float_label(const gamemap::location& loc, const std::string& text,

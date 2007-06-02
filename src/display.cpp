@@ -59,7 +59,8 @@ namespace {
 
 	const int MinZoom = 4;
 	const int MaxZoom = 200;
-	bool sunset = false;
+	size_t sunset_delay = 0;
+	size_t sunset_timer = 0;
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
@@ -789,8 +790,12 @@ void display::redraw_everything()
 	draw(true,true);
 }
 
-void display::toggle_sunset() {
-	sunset = !sunset;
+void display::sunset(size_t delay) {
+	if (sunset_delay == 0) {
+		sunset_delay = (delay == 0 ? 5 : delay);
+	} else {
+		sunset_delay = delay;
+	}
 }
 
 void display::flip()
@@ -801,10 +806,9 @@ void display::flip()
 
 	const surface frameBuffer = get_video_surface();
 
-	// this is just the debug function "sunset" to progressively darken the game area
-	// change the frequency for keeping a good framerate (specially if you use use --max-fps)
-	// FIXME: remove the use of random, and use some real timer
-	if (sunset && rand()%100 <= 10) {
+	// this is just the debug function "sunset" to progressively darken the map area
+	if (sunset_delay && ++sunset_timer > sunset_delay) {
+		sunset_timer = 0;
 		SDL_Rect r = map_area(); //use frameBuffer to also test the UI
 		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
 		// adjust the alpha if you want to balance cpu-cost / smooth sunset
