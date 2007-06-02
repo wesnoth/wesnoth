@@ -499,10 +499,11 @@ int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt,
 	//add "end-of-path" to waypoints.
 	if (turns > 0) {
 		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), turns+1));
+	} else if (movement==0 || map.is_village(*(rt.steps.end()-1))) {
+		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), 1));
 	} else {
-		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), movement==0 ));
+		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), 0));
 	}
-
 	return turns;
 }
 
