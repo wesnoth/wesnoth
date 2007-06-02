@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "construct_dialog.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -90,6 +91,29 @@ enum server_type {
 	SIMPLE_SERVER
 };
 
+class server_button : public gui::dialog_button
+{
+public:
+	server_button(CVideo &vid): dialog_button(vid, _("View List"))
+	{}
+protected:
+	int action(gui::dialog_process_info &dp_info)
+	{
+		gui::dialog server_dialog(dialog()->get_display(), _("List of Servers"),
+			_("Choose a known server from the list"), gui::OK_CANCEL);
+		std::vector<std::string> servers;
+		servers.push_back(preferences::official_network_host());
+		//add alternate servers here...
+		//just a hardcoded list for now
+		servers.push_back("games.tuxfamily.org:14998");
+		server_dialog.set_menu(servers);
+		if(server_dialog.show() >= 0) {
+			dialog()->get_textbox().set_text(servers[server_dialog.result()]);
+		}
+		dp_info.clear_buttons();
+		return gui::CONTINUE_DIALOG;
+	}
+};
 }
 
 static server_type open_connection(display& disp, const std::string& original_host)
@@ -97,14 +121,13 @@ static server_type open_connection(display& disp, const std::string& original_ho
 	std::string h = original_host;
 
 	if(h.empty()) {
-		h = preferences::network_host();
-		const int res = gui::show_dialog(disp, NULL, _("Connect to Host"), "",
-				gui::OK_CANCEL, NULL, NULL,
-				_("Choose host to connect to: "), &h);
-
-		if(res != 0 || h.empty()) {
+		gui::dialog d(disp, _("Connect to Host"), "", gui::OK_CANCEL);
+		d.set_textbox(_("Choose host to connect to: "), preferences::network_host());
+		d.add_button( new server_button(disp.video()), gui::dialog::BUTTON_EXTRA);
+		if(d.show() || d.textbox_text().empty()) {
 			return ABORT_SERVER;
 		}
+		h = d.textbox_text();
 	}
 
 	network::connection sock;
