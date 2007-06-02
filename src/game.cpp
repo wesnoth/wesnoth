@@ -1272,7 +1272,7 @@ bool game_controller::play_multiplayer()
 		} else if(res == 0 || res == 1) {
 			std::string host;
 			if(res == 0) {
-				host = preferences::server_list()[0].address;
+				host = preferences::server_list().front().address;
 			}
 
 			mp::start_client(disp(), game_config_, units_data_, host);

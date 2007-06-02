@@ -100,6 +100,7 @@ public:
 protected:
 	int action(gui::dialog_process_info &dp_info)
 	{
+		//diaplay a dialog with a list of known servers
 		gui::dialog server_dialog(dialog()->get_display(), _("List of Servers"),
 			_("Choose a known server from the list"), gui::OK_CANCEL);
 		std::vector<std::string> servers;
@@ -110,8 +111,10 @@ protected:
 		}
 		server_dialog.set_menu(servers);
 		if(server_dialog.show() >= 0) {
+			//now save the result back to the parent dialog
 			dialog()->get_textbox().set_text(preferences::server_list()[server_dialog.result()].address);
 		}
+		//the button state should be cleared after popping up an intermediate dialog
 		dp_info.clear_buttons();
 		return gui::CONTINUE_DIALOG;
 	}
@@ -246,7 +249,7 @@ static server_type open_connection(display& disp, const std::string& original_ho
 		}
 	} while(!(data.child("join_lobby") || data.child("join_game")));
 
-	if (h != preferences::server_list()[0].address)
+	if (h != preferences::server_list().front().address)
 		preferences::set_network_host(h);
 
 	if (data.child("join_lobby")) {

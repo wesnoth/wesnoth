@@ -422,7 +422,7 @@ const std::string& network_host()
 {
 	t_string& res = prefs["host"];
 	if(res.empty())
-		res = server_list()[0].address;
+		res = server_list().front().address;
 
 	return res;
 }
