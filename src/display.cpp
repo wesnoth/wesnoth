@@ -790,7 +790,7 @@ void display::redraw_everything()
 	draw(true,true);
 }
 
-void display::sunset(size_t delay) {
+void display::sunset(const size_t delay) {
 	if (sunset_delay == 0) {
 		sunset_delay = (delay == 0 ? 5 : delay);
 	} else {
