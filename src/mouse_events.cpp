@@ -873,7 +873,7 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 {
 	const unit_map::const_iterator current = find_unit(selected_hex_);
 	if(current == units_.end() || current->second.side() != team_num_
-		|| current->second.attacks_left()==0 || current->second.incapacitated() ) {
+		|| current->second.attacks_left()==0) {
 		return gamemap::location();
 	}
 
