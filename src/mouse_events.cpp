@@ -1155,7 +1155,10 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	}
 
 	//see if we're trying to attack an enemy
-	if(!commands_disabled && !browse && attack_from.valid()) {
+	if(!commands_disabled && u != units_.end() && route != current_paths_.routes.end() && enemy != units_.end() &&
+	   hex != selected_hex_ && !browse &&
+	   enemy->second.side() != u->second.side() &&
+	   current_team().is_enemy(enemy->second.side())) {
 		attack_enemy(u,enemy);
 	}
 
