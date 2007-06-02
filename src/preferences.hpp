@@ -18,6 +18,7 @@ class display;
 class team;
 struct game_state;
 
+#include "game_config.hpp"
 #include "unit.hpp"
 
 #include <string>
@@ -91,7 +92,7 @@ namespace preferences {
 	bool lobby_joins();
 	void _set_lobby_joins(bool show);
 
-	const std::string& official_network_host();
+	const std::vector<game_config::server_info>& server_list();
 
 	const std::string& network_host();
 	void set_network_host(const std::string& host);

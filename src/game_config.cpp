@@ -92,6 +92,7 @@ namespace game_config
 	std::string path = "";
 #endif
 #endif
+	std::vector<server_info> server_list;
 
 	void load_config(const config* cfg)
 	{
@@ -181,6 +182,14 @@ namespace game_config
 		  for(int i=255;i>0;i--){
 		    flag_rgb.push_back((Uint32)(i<<8));
 		  }
+		}
+		const std::vector<config *> &servers = v.get_children("server");
+		std::vector<config *>::const_iterator server;
+		for(server = servers.begin(); server != servers.end(); ++server) {
+			server_info sinf;
+			sinf.name = (**server)["name"];
+			sinf.address = (**server)["address"];
+			server_list.push_back(sinf);
 		}
 	}
 	const std::vector<Uint32>& tc_info(const std::string& name)

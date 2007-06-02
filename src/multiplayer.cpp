@@ -32,6 +32,7 @@
 #include "statistics.hpp"
 #include "serialization/string_utils.hpp"
 #include "upload_log.hpp"
+#include "wml_separators.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 
@@ -86,19 +87,59 @@ enum server_type {
 	SIMPLE_SERVER
 };
 
+class server_list_action : public gui::dialog_button_action
+{
+public:
+	server_list_action(display& disp, std::string& result) : disp_(disp), result_(result)
+	{}
+private:
+	gui::dialog_button_action::RESULT button_pressed(int /*menu_selection*/)
+	{
+		std::vector<std::string> servers;
+		const std::vector<game_config::server_info>& pref_servers = preferences::server_list();
+		std::vector<game_config::server_info>::const_iterator server;
+		for(server = pref_servers.begin(); server != pref_servers.end(); ++server) {
+			servers.push_back(server->address + HELP_STRING_SEPARATOR + server->name);
+		}
+		int res = gui::show_dialog(disp_, NULL, _("List of Servers"), 
+			_("Choose a known server from the list"), gui::OK_CANCEL, &servers);
+		if(res >= 0) {
+			result_ = pref_servers[res].address;
+		} else {
+			result_ = "invalid";
+		}
+		return gui::dialog_button_action::CLOSE_DIALOG;
+	}
+
+	display& disp_;
+	std::string& result_;
+};
+
 server_type open_connection(display& disp, const std::string& original_host)
 {
 	std::string h = original_host;
 
 	if(h.empty()) {
 		h = preferences::network_host();
-		const int res = gui::show_dialog(disp, NULL, _("Connect to Host"), "",
+		std::string list_return;
+		do {
+			if(!(list_return.empty() || list_return == "invalid")) {
+				h = list_return;
+			}
+			list_return = "";
+			server_list_action sla(disp, list_return);
+			gui::dialog_button sla_button(&sla,_("View List"));
+			std::vector<gui::dialog_button> buttons;
+			buttons.push_back(sla_button);
+			const int res = gui::show_dialog(disp, NULL, _("Connect to Host"), "",
 				gui::OK_CANCEL, NULL, NULL,
-				_("Choose host to connect to: "), &h);
+				_("Choose host to connect to: "), &h,
+				-1, NULL, NULL, -1, -1, NULL, &buttons);
 
-		if(res != 0 || h.empty()) {
-			return ABORT_SERVER;
-		}
+			if(list_return.empty() && (res != 0 || h.empty())) {
+				return ABORT_SERVER;
+			}
+		} while(!list_return.empty());
 	}
 
 	network::connection sock;
@@ -215,7 +256,7 @@ server_type open_connection(display& disp, const std::string& original_host)
 		}
 	} while(!(data.child("join_lobby") || data.child("join_game")));
 
-	if (h != preferences::official_network_host())
+	if (h != preferences::server_list().front().address)
 		preferences::set_network_host(h);
 
 	if (data.child("join_lobby")) {

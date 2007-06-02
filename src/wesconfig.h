@@ -5,7 +5,6 @@
 # include "config.h"
 #else
 # define VERSION "1.2.4"
-# define WESNOTH_DEFAULT_SERVER "devsrv.wesnoth.org:14999"
 # define PACKAGE "wesnoth"
 # ifndef LOCALEDIR
 #  define LOCALEDIR "translations"

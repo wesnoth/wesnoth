@@ -25,6 +25,7 @@
 #include "sound.hpp"
 #include "util.hpp"
 #include "video.hpp" // non_interactive()
+#include "wassert.hpp"
 #include "wesconfig.h"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
@@ -297,17 +298,32 @@ void _set_lobby_joins(bool show)
 		prefs["lobby_joins"] = "no";
 }
 
-const std::string& official_network_host()
+const std::vector<game_config::server_info>& server_list()
 {
-	static const std::string host = WESNOTH_DEFAULT_SERVER;
-	return host;
+	static std::vector<game_config::server_info> pref_servers;
+	if(pref_servers.empty()) {
+		std::vector<game_config::server_info> &game_servers = game_config::server_list;
+		wassert(game_servers.size() > 0);
+		pref_servers.insert(pref_servers.begin(), game_servers.begin(), game_servers.end());
+		const std::vector<config *> &user_servers = prefs.get_children("server");
+		std::vector<config *>::const_iterator server;
+		for(server = user_servers.begin(); server != user_servers.end(); ++server) {
+			game_config::server_info sinf;
+			sinf.name = (**server)["name"];
+			sinf.address = (**server)["address"];
+			pref_servers.push_back(sinf);
+		}
+	}
+	return pref_servers;
 }
+
 
 const std::string& network_host()
 {
 	t_string& res = prefs["host"];
 	if(res.empty())
-		res = WESNOTH_DEFAULT_SERVER;
+		res = server_list().front().address;
+
 
 	return res;
 }
