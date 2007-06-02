@@ -108,7 +108,7 @@ private:
 		} else {
 			result_ = "invalid";
 		}
-		return gui::dialog_button_action::CLOSE_DIALOG;
+		return gui::dialog_button_action::SAVE_TEXT;
 	}
 
 	display& disp_;

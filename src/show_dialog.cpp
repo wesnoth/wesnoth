@@ -820,6 +820,9 @@ int show_dialog(display& disp, surface image,
 					}
 				} else if(res == dialog_button_action::CLOSE_DIALOG) {
 					return -1;
+				} else if(res == dialog_button_action::SAVE_TEXT) {
+					*text_widget_text = text_widget.text();
+					return -1;
 				}
 
 				//reset button-tracking flags so that if the action displays a dialog, a button-press
