@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-17 11:50+0200\n"
+"POT-Creation-Date: 2007-06-02 18:48+0200\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -515,96 +515,96 @@ msgstr "Fince Tercüme"
 msgid "French Translation"
 msgstr "Fransızca Tercüme"
 
-#: data/about.cfg:343
+#: data/about.cfg:344
 msgid "German Translation"
 msgstr "Almanca Tercüme"
 
-#: data/about.cfg:361
+#: data/about.cfg:362
 msgid "Greek Translation"
 msgstr "Yunanca Tercüme"
 
-#: data/about.cfg:373
+#: data/about.cfg:374
 msgid "Hebrew Translation"
 msgstr "İbranice Tercüme"
 
-#: data/about.cfg:381
+#: data/about.cfg:382
 msgid "Hungarian Translation"
 msgstr "Macarca Tercüme"
 
-#: data/about.cfg:398
+#: data/about.cfg:399
 msgid "Indonesian Translation"
 msgstr "Endonezyaca Tercüme"
 
-#: data/about.cfg:405
+#: data/about.cfg:406
 msgid "Italian Translation"
 msgstr "İtalyanca Tercüme"
 
-#: data/about.cfg:420
+#: data/about.cfg:421
 msgid "Japanese Translation"
 msgstr "Japonca Tercüme"
 
-#: data/about.cfg:432
+#: data/about.cfg:433
 msgid "Korean Translation"
 msgstr "Korece Tercüme"
 
-#: data/about.cfg:439
+#: data/about.cfg:440
 msgid "Latin Translation"
 msgstr "Latince Tercüme"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 msgid "Norwegian Translation"
 msgstr "Norveççe Tercüme"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 msgid "Polish Translation"
 msgstr "Lehçe Tercüme"
 
-#: data/about.cfg:476
+#: data/about.cfg:477
 msgid "Portuguese Translation"
 msgstr "Portekizce Tercüme"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portekizce (Brezilya) Tercüme"
 
-#: data/about.cfg:499
+#: data/about.cfg:500
 msgid "Russian Translation"
 msgstr "Rusça Tercüme"
 
-#: data/about.cfg:513
+#: data/about.cfg:514
 msgid "Serbian Translation"
 msgstr "Sırpça Tercüme"
 
-#: data/about.cfg:522
+#: data/about.cfg:523
 msgid "Slovak Translation"
 msgstr "Slovakça Tercüme"
 
-#: data/about.cfg:531
+#: data/about.cfg:532
 msgid "Slovenian Translation"
 msgstr "Slovence Tercüme"
 
-#: data/about.cfg:539
+#: data/about.cfg:540
 msgid "Spanish Translation"
 msgstr "İspanyolca Tercüme"
 
-#: data/about.cfg:553
+#: data/about.cfg:554
 msgid "Swedish Translation"
 msgstr "İsveççe Tercüme"
 
-#: data/about.cfg:566
+#: data/about.cfg:567
 msgid "Turkish Translation"
 msgstr "Türkçe Tercüme"
 
-#: data/about.cfg:577
+#: data/about.cfg:578
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "Slovence Tercüme"
 
-#: data/about.cfg:584 data/help.cfg:252
+#: data/about.cfg:585 data/help.cfg:252
 msgid "Contributors"
 msgstr "Katkıda bulunanlar"
 
-#: data/about.cfg:613
+#: data/about.cfg:614
 msgid "Bots"
 msgstr "Botlar"
 
@@ -2129,6 +2129,15 @@ msgstr "Çarpışmayı göster"
 #: data/game.cfg:51
 msgid "Mouse Scrolling"
 msgstr "Fare Kaydırması"
+
+#: data/game.cfg:58
+#, fuzzy
+msgid "Official Wesnoth Server"
+msgstr "Resmi sunucuya gir"
+
+#: data/game.cfg:62
+msgid "Alternate Wesnoth Server"
+msgstr ""
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -10934,7 +10943,7 @@ msgstr "Şimdi eklentileri indirmek üzere bir eklenti sunucusuna bağlanacaksı
 msgid "Server: "
 msgstr "Sunucu: "
 
-#: src/game.cpp:882 src/multiplayer.cpp:126 src/multiplayer.cpp:163
+#: src/game.cpp:882 src/multiplayer.cpp:167 src/multiplayer.cpp:204
 msgid "Connecting to Server..."
 msgstr "Sunucuya bağlanılıyor..."
 
@@ -11017,7 +11026,7 @@ msgstr ""
 "Bu kampanyayı yüklemek için gerekli dosyaları oluşturmada bir hata oldu."
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
+#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Bağlantı süresi aşıldı"
 
@@ -11077,11 +11086,11 @@ msgstr "İnsan YZ ye karşı"
 msgid "Play a game against AI opponents"
 msgstr "YZ rakiplere karşı bir oyun oyna"
 
-#: src/game.cpp:1193 src/multiplayer.cpp:190
+#: src/game.cpp:1193 src/multiplayer.cpp:231
 msgid "Login: "
 msgstr "Giriş: "
 
-#: src/game.cpp:1195 src/multiplayer.cpp:195
+#: src/game.cpp:1195 src/multiplayer.cpp:236
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -11699,19 +11708,33 @@ msgstr "Düşmana saldır"
 msgid "Choose weapon:"
 msgstr "Silah seç:"
 
-#: src/multiplayer.cpp:95
+#: src/multiplayer.cpp:104
+#, fuzzy
+msgid "List of Servers"
+msgstr "Suncuya bağlan"
+
+#: src/multiplayer.cpp:105
+msgid "Choose a known server from the list"
+msgstr ""
+
+#: src/multiplayer.cpp:131
+#, fuzzy
+msgid "View List"
+msgstr "Birim listesi"
+
+#: src/multiplayer.cpp:134
 msgid "Connect to Host"
 msgstr "Sunucuya bağlan"
 
-#: src/multiplayer.cpp:97
+#: src/multiplayer.cpp:136
 msgid "Choose host to connect to: "
 msgstr "Bağlanılacak sunucu seç:"
 
-#: src/multiplayer.cpp:136
+#: src/multiplayer.cpp:177
 msgid "Reading from Server..."
 msgstr "Sunucu okunuyor..."
 
-#: src/multiplayer.cpp:145
+#: src/multiplayer.cpp:186
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -11719,25 +11742,25 @@ msgstr ""
 "Bu sunucu için '$version1' versiyonu lazim, sen ise '$version2' versiyonunu "
 "kullanıyorsun."
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:198
 msgid "Server-side redirect loop"
 msgstr "Server taraflı yönlendirme döngüsü"
 
-#: src/multiplayer.cpp:189
+#: src/multiplayer.cpp:230
 msgid "You must log in to this server"
 msgstr "Bu sunucuya giriş yapmanız lazım"
 
-#: src/multiplayer.cpp:373 src/multiplayer.cpp:388
+#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
 #: src/multiplayer_wait.cpp:192
 msgid "No multiplayer sides available in this game"
 msgstr "Bu oyunda çok oyunculu taraf yok"
 
-#: src/multiplayer.cpp:374 src/multiplayer.cpp:389
+#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
 #: src/multiplayer_wait.cpp:229
 msgid "Era not available"
 msgstr "Devir yok"
 
-#: src/multiplayer.cpp:375 src/multiplayer.cpp:390
+#: src/multiplayer.cpp:416 src/multiplayer.cpp:431
 #: src/multiplayer_wait.cpp:234
 msgid "No multiplayer sides found"
 msgstr "Çok oyunculu taraf yok"

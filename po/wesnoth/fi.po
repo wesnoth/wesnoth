@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-17 11:50+0200\n"
+"POT-Creation-Date: 2007-06-02 18:48+0200\n"
 "PO-Revision-Date: 2006-09-01 19:23+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -506,96 +506,96 @@ msgstr "Suomenkielinen käännös"
 msgid "French Translation"
 msgstr "Ranskankielinen käännös"
 
-#: data/about.cfg:343
+#: data/about.cfg:344
 msgid "German Translation"
 msgstr "Saksankielinen käännös"
 
-#: data/about.cfg:361
+#: data/about.cfg:362
 msgid "Greek Translation"
 msgstr "Kreikankielinen käännös"
 
-#: data/about.cfg:373
+#: data/about.cfg:374
 msgid "Hebrew Translation"
 msgstr "Hepreankielinen käännös"
 
-#: data/about.cfg:381
+#: data/about.cfg:382
 msgid "Hungarian Translation"
 msgstr "Unkarinkielinen käännös"
 
-#: data/about.cfg:398
+#: data/about.cfg:399
 msgid "Indonesian Translation"
 msgstr "Indonesiankielinen käännös"
 
-#: data/about.cfg:405
+#: data/about.cfg:406
 msgid "Italian Translation"
 msgstr "Italiankielinen käännös"
 
-#: data/about.cfg:420
+#: data/about.cfg:421
 msgid "Japanese Translation"
 msgstr "Japaninkielinen käännös"
 
-#: data/about.cfg:432
+#: data/about.cfg:433
 msgid "Korean Translation"
 msgstr "Koreankielinen käännös"
 
-#: data/about.cfg:439
+#: data/about.cfg:440
 msgid "Latin Translation"
 msgstr "Latinankielinen käännös"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 msgid "Norwegian Translation"
 msgstr "Norjankielinen käännös"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 msgid "Polish Translation"
 msgstr "Puolankielinen käännös"
 
-#: data/about.cfg:476
+#: data/about.cfg:477
 msgid "Portuguese Translation"
 msgstr "Portugalinkielinen käännös"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 msgid "Portuguese (Brazil) Translation"
 msgstr "Brasilianportugalinkielinen käännös"
 
-#: data/about.cfg:499
+#: data/about.cfg:500
 msgid "Russian Translation"
 msgstr "Venäjänkielinen käännös"
 
-#: data/about.cfg:513
+#: data/about.cfg:514
 msgid "Serbian Translation"
 msgstr "Serbiankielinen käännös"
 
-#: data/about.cfg:522
+#: data/about.cfg:523
 msgid "Slovak Translation"
 msgstr "Slovakiankielinen käännös"
 
-#: data/about.cfg:531
+#: data/about.cfg:532
 msgid "Slovenian Translation"
 msgstr "Sloveniankielinen käännös"
 
-#: data/about.cfg:539
+#: data/about.cfg:540
 msgid "Spanish Translation"
 msgstr "Espanjankielinen käännös"
 
-#: data/about.cfg:553
+#: data/about.cfg:554
 msgid "Swedish Translation"
 msgstr "Ruotsinkielinen käännös"
 
-#: data/about.cfg:566
+#: data/about.cfg:567
 msgid "Turkish Translation"
 msgstr "Turkinkielinen käännös"
 
-#: data/about.cfg:577
+#: data/about.cfg:578
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "Sloveniankielinen käännös"
 
-#: data/about.cfg:584 data/help.cfg:252
+#: data/about.cfg:585 data/help.cfg:252
 msgid "Contributors"
 msgstr "Tekijät"
 
-#: data/about.cfg:613
+#: data/about.cfg:614
 msgid "Bots"
 msgstr "Botit"
 
@@ -2129,6 +2129,15 @@ msgstr "Näytä taistelu"
 #: data/game.cfg:51
 msgid "Mouse Scrolling"
 msgstr "Vieritys hiirellä"
+
+#: data/game.cfg:58
+#, fuzzy
+msgid "Official Wesnoth Server"
+msgstr "Ota yhteys viralliseen palvelimeen"
+
+#: data/game.cfg:62
+msgid "Alternate Wesnoth Server"
+msgstr ""
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -10976,7 +10985,7 @@ msgstr "Yhdistetään palvelimeen lisäosien lataamiseksi."
 msgid "Server: "
 msgstr "Palvelin: "
 
-#: src/game.cpp:882 src/multiplayer.cpp:126 src/multiplayer.cpp:163
+#: src/game.cpp:882 src/multiplayer.cpp:167 src/multiplayer.cpp:204
 msgid "Connecting to Server..."
 msgstr "Yhdistetään palvelimeen..."
 
@@ -11058,7 +11067,7 @@ msgid ""
 msgstr "Tämän kampanjan asennustiedostoja luotaessa tapahtui virhe."
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
+#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Yhteys katkaistiin odotuksen jälkeen."
 
@@ -11118,11 +11127,11 @@ msgstr "Ihminen vastaan tekoäly"
 msgid "Play a game against AI opponents"
 msgstr "Pelaa tekoälyvastustajia vastaan."
 
-#: src/game.cpp:1193 src/multiplayer.cpp:190
+#: src/game.cpp:1193 src/multiplayer.cpp:231
 msgid "Login: "
 msgstr "Sisäänkirjautuminen: "
 
-#: src/game.cpp:1195 src/multiplayer.cpp:195
+#: src/game.cpp:1195 src/multiplayer.cpp:236
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -11755,44 +11764,58 @@ msgstr "Hyökkää vihollista vastaan"
 msgid "Choose weapon:"
 msgstr "Valitse ase:"
 
-#: src/multiplayer.cpp:95
+#: src/multiplayer.cpp:104
+#, fuzzy
+msgid "List of Servers"
+msgstr "Yhdistä palvelimeen"
+
+#: src/multiplayer.cpp:105
+msgid "Choose a known server from the list"
+msgstr ""
+
+#: src/multiplayer.cpp:131
+#, fuzzy
+msgid "View List"
+msgstr "Yksiköiden lista"
+
+#: src/multiplayer.cpp:134
 msgid "Connect to Host"
 msgstr "Yhdistä"
 
-#: src/multiplayer.cpp:97
+#: src/multiplayer.cpp:136
 msgid "Choose host to connect to: "
 msgstr "Valitse isäntäkone, johon yhdistetään: "
 
-#: src/multiplayer.cpp:136
+#: src/multiplayer.cpp:177
 msgid "Reading from Server..."
 msgstr "Haetaan tietoja palvelimelta..."
 
-#: src/multiplayer.cpp:145
+#: src/multiplayer.cpp:186
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "Palvelin edellyttää versiota '$version1', kun sinulla on versio '$version2.'"
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:198
 msgid "Server-side redirect loop"
 msgstr "Palvelinpuolen uudelleenohjaussilmukka"
 
-#: src/multiplayer.cpp:189
+#: src/multiplayer.cpp:230
 msgid "You must log in to this server"
 msgstr "Tälle palvelimelle vaaditaan kirjautumista."
 
-#: src/multiplayer.cpp:373 src/multiplayer.cpp:388
+#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
 #: src/multiplayer_wait.cpp:192
 msgid "No multiplayer sides available in this game"
 msgstr "Tässä pelissä ei ole vapaata puolta."
 
-#: src/multiplayer.cpp:374 src/multiplayer.cpp:389
+#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
 #: src/multiplayer_wait.cpp:229
 msgid "Era not available"
 msgstr "Aikakausi ei saatavilla"
 
-#: src/multiplayer.cpp:375 src/multiplayer.cpp:390
+#: src/multiplayer.cpp:416 src/multiplayer.cpp:431
 #: src/multiplayer_wait.cpp:234
 msgid "No multiplayer sides found"
 msgstr "Moninpelin puolia ei löytynyt."

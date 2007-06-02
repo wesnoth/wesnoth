@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-17 11:50+0200\n"
+"POT-Creation-Date: 2007-06-02 18:48+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -487,95 +487,95 @@ msgstr "芬兰语"
 msgid "French Translation"
 msgstr "法语"
 
-#: data/about.cfg:343
+#: data/about.cfg:344
 msgid "German Translation"
 msgstr "德语"
 
-#: data/about.cfg:361
+#: data/about.cfg:362
 msgid "Greek Translation"
 msgstr "希腊语"
 
-#: data/about.cfg:373
+#: data/about.cfg:374
 msgid "Hebrew Translation"
 msgstr "希伯来语"
 
-#: data/about.cfg:381
+#: data/about.cfg:382
 msgid "Hungarian Translation"
 msgstr "匈牙利语"
 
-#: data/about.cfg:398
+#: data/about.cfg:399
 msgid "Indonesian Translation"
 msgstr "印度尼西亚语"
 
-#: data/about.cfg:405
+#: data/about.cfg:406
 msgid "Italian Translation"
 msgstr "意大利语"
 
-#: data/about.cfg:420
+#: data/about.cfg:421
 msgid "Japanese Translation"
 msgstr "日语"
 
-#: data/about.cfg:432
+#: data/about.cfg:433
 msgid "Korean Translation"
 msgstr "韩语"
 
-#: data/about.cfg:439
+#: data/about.cfg:440
 msgid "Latin Translation"
 msgstr "拉丁语"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 msgid "Norwegian Translation"
 msgstr "挪威语"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 msgid "Polish Translation"
 msgstr "波兰语"
 
-#: data/about.cfg:476
+#: data/about.cfg:477
 msgid "Portuguese Translation"
 msgstr "葡萄牙语"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙语(巴西)"
 
-#: data/about.cfg:499
+#: data/about.cfg:500
 msgid "Russian Translation"
 msgstr "俄语"
 
-#: data/about.cfg:513
+#: data/about.cfg:514
 msgid "Serbian Translation"
 msgstr "塞尔维亚语"
 
-#: data/about.cfg:522
+#: data/about.cfg:523
 msgid "Slovak Translation"
 msgstr "斯洛伐克语"
 
-#: data/about.cfg:531
+#: data/about.cfg:532
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚语"
 
-#: data/about.cfg:539
+#: data/about.cfg:540
 msgid "Spanish Translation"
 msgstr "西班牙语"
 
-#: data/about.cfg:553
+#: data/about.cfg:554
 msgid "Swedish Translation"
 msgstr "瑞典语"
 
-#: data/about.cfg:566
+#: data/about.cfg:567
 msgid "Turkish Translation"
 msgstr "土耳其语"
 
-#: data/about.cfg:577
+#: data/about.cfg:578
 msgid "Valencian Translation"
 msgstr "巴伦西亚语"
 
-#: data/about.cfg:584 data/help.cfg:252
+#: data/about.cfg:585 data/help.cfg:252
 msgid "Contributors"
 msgstr "贡献者"
 
-#: data/about.cfg:613
+#: data/about.cfg:614
 #, fuzzy
 msgid "Bots"
 msgstr "电脑"
@@ -2033,6 +2033,15 @@ msgstr "显示战斗"
 #: data/game.cfg:51
 msgid "Mouse Scrolling"
 msgstr "鼠标滚屏"
+
+#: data/game.cfg:58
+#, fuzzy
+msgid "Official Wesnoth Server"
+msgstr "加入官方服务器"
+
+#: data/game.cfg:62
+msgid "Alternate Wesnoth Server"
+msgstr ""
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -10123,7 +10132,7 @@ msgstr "您将连接至服务器以下载插件。"
 msgid "Server: "
 msgstr "服务器： "
 
-#: src/game.cpp:882 src/multiplayer.cpp:126 src/multiplayer.cpp:163
+#: src/game.cpp:882 src/multiplayer.cpp:167 src/multiplayer.cpp:204
 msgid "Connecting to Server..."
 msgstr "正在连接到服务器..."
 
@@ -10205,7 +10214,7 @@ msgid ""
 msgstr "安装这个战役所需文件创建错误。"
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
+#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "连接超时"
 
@@ -10266,11 +10275,11 @@ msgstr "人vs电脑"
 msgid "Play a game against AI opponents"
 msgstr "与AI敌人作战"
 
-#: src/game.cpp:1193 src/multiplayer.cpp:190
+#: src/game.cpp:1193 src/multiplayer.cpp:231
 msgid "Login: "
 msgstr "登录名： "
 
-#: src/game.cpp:1195 src/multiplayer.cpp:195
+#: src/game.cpp:1195 src/multiplayer.cpp:236
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -10876,43 +10885,57 @@ msgstr "攻击敌人"
 msgid "Choose weapon:"
 msgstr "选择武器："
 
-#: src/multiplayer.cpp:95
+#: src/multiplayer.cpp:104
+#, fuzzy
+msgid "List of Servers"
+msgstr "连接到服务器"
+
+#: src/multiplayer.cpp:105
+msgid "Choose a known server from the list"
+msgstr ""
+
+#: src/multiplayer.cpp:131
+#, fuzzy
+msgid "View List"
+msgstr "单位列表"
+
+#: src/multiplayer.cpp:134
 msgid "Connect to Host"
 msgstr "连接主机"
 
-#: src/multiplayer.cpp:97
+#: src/multiplayer.cpp:136
 msgid "Choose host to connect to: "
 msgstr "选择要连接的主机： "
 
-#: src/multiplayer.cpp:136
+#: src/multiplayer.cpp:177
 msgid "Reading from Server..."
 msgstr "从服务器读取数据……"
 
-#: src/multiplayer.cpp:145
+#: src/multiplayer.cpp:186
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr "本服务器须要版本“$version1”，而您的版本是“$version2”。"
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:198
 msgid "Server-side redirect loop"
 msgstr "服务器重定向循环"
 
-#: src/multiplayer.cpp:189
+#: src/multiplayer.cpp:230
 msgid "You must log in to this server"
 msgstr "您必须登录这个服务器"
 
-#: src/multiplayer.cpp:373 src/multiplayer.cpp:388
+#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
 #: src/multiplayer_wait.cpp:192
 msgid "No multiplayer sides available in this game"
 msgstr "当前游戏无可用的对战阵营"
 
-#: src/multiplayer.cpp:374 src/multiplayer.cpp:389
+#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
 #: src/multiplayer_wait.cpp:229
 msgid "Era not available"
 msgstr "时期不可用"
 
-#: src/multiplayer.cpp:375 src/multiplayer.cpp:390
+#: src/multiplayer.cpp:416 src/multiplayer.cpp:431
 #: src/multiplayer_wait.cpp:234
 msgid "No multiplayer sides found"
 msgstr "没发现多人对战阵营"

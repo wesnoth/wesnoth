@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-17 11:50+0200\n"
+"POT-Creation-Date: 2007-06-02 18:48+0200\n"
 "PO-Revision-Date: 2007-04-23 11:20+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -525,95 +525,95 @@ msgstr "Traduzione in finlandese"
 msgid "French Translation"
 msgstr "Traduzione in francese"
 
-#: data/about.cfg:343
+#: data/about.cfg:344
 msgid "German Translation"
 msgstr "Traduzione in tedesco"
 
-#: data/about.cfg:361
+#: data/about.cfg:362
 msgid "Greek Translation"
 msgstr "Traduzione in greco"
 
-#: data/about.cfg:373
+#: data/about.cfg:374
 msgid "Hebrew Translation"
 msgstr "Traduzione in ebraico"
 
-#: data/about.cfg:381
+#: data/about.cfg:382
 msgid "Hungarian Translation"
 msgstr "Traduzione in ungherese"
 
-#: data/about.cfg:398
+#: data/about.cfg:399
 msgid "Indonesian Translation"
 msgstr "Traduzione in indonesiano"
 
-#: data/about.cfg:405
+#: data/about.cfg:406
 msgid "Italian Translation"
 msgstr "Traduzione in italiano"
 
-#: data/about.cfg:420
+#: data/about.cfg:421
 msgid "Japanese Translation"
 msgstr "Traduzione in giapponese"
 
-#: data/about.cfg:432
+#: data/about.cfg:433
 msgid "Korean Translation"
 msgstr "Traduzione in coreano"
 
-#: data/about.cfg:439
+#: data/about.cfg:440
 msgid "Latin Translation"
 msgstr "Traduzione in latino"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 msgid "Norwegian Translation"
 msgstr "Traduzione in norvegese"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 msgid "Polish Translation"
 msgstr "Traduzione in polacco"
 
-#: data/about.cfg:476
+#: data/about.cfg:477
 msgid "Portuguese Translation"
 msgstr "Traduzione in portoghese"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traduzione in portoghese (brasiliano)"
 
-#: data/about.cfg:499
+#: data/about.cfg:500
 msgid "Russian Translation"
 msgstr "Traduzione in russo"
 
-#: data/about.cfg:513
+#: data/about.cfg:514
 msgid "Serbian Translation"
 msgstr "Traduzione in serbo"
 
-#: data/about.cfg:522
+#: data/about.cfg:523
 msgid "Slovak Translation"
 msgstr "Traduzione in slovacco"
 
-#: data/about.cfg:531
+#: data/about.cfg:532
 msgid "Slovenian Translation"
 msgstr "Traduzione in sloveno"
 
-#: data/about.cfg:539
+#: data/about.cfg:540
 msgid "Spanish Translation"
 msgstr "Traduzione in spagnolo"
 
-#: data/about.cfg:553
+#: data/about.cfg:554
 msgid "Swedish Translation"
 msgstr "Traduzione in svedese"
 
-#: data/about.cfg:566
+#: data/about.cfg:567
 msgid "Turkish Translation"
 msgstr "Traduzione in turco"
 
-#: data/about.cfg:577
+#: data/about.cfg:578
 msgid "Valencian Translation"
 msgstr "Traduzione in valenciano"
 
-#: data/about.cfg:584 data/help.cfg:252
+#: data/about.cfg:585 data/help.cfg:252
 msgid "Contributors"
 msgstr "Contributi"
 
-#: data/about.cfg:613
+#: data/about.cfg:614
 msgid "Bots"
 msgstr "Automazioni"
 
@@ -2181,6 +2181,15 @@ msgstr "Mostra i combattimenti"
 #: data/game.cfg:51
 msgid "Mouse Scrolling"
 msgstr "Scrolling del mouse"
+
+#: data/game.cfg:58
+#, fuzzy
+msgid "Official Wesnoth Server"
+msgstr "Collegati al server ufficiale"
+
+#: data/game.cfg:62
+msgid "Alternate Wesnoth Server"
+msgstr ""
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -11684,7 +11693,7 @@ msgstr "Ti stai per connettere al server per scaricare le estensioni."
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:882 src/multiplayer.cpp:126 src/multiplayer.cpp:163
+#: src/game.cpp:882 src/multiplayer.cpp:167 src/multiplayer.cpp:204
 msgid "Connecting to Server..."
 msgstr "Connessione al server..."
 
@@ -11768,7 +11777,7 @@ msgstr ""
 "questa campagna."
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
+#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Connessione scaduta"
 
@@ -11828,11 +11837,11 @@ msgstr "Giocatore contro Computer"
 msgid "Play a game against AI opponents"
 msgstr "Gioca una partita contro il Computer"
 
-#: src/game.cpp:1193 src/multiplayer.cpp:190
+#: src/game.cpp:1193 src/multiplayer.cpp:231
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1195 src/multiplayer.cpp:195
+#: src/game.cpp:1195 src/multiplayer.cpp:236
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -12462,19 +12471,33 @@ msgstr "Attacca il nemico"
 msgid "Choose weapon:"
 msgstr "Scegli l'arma:"
 
-#: src/multiplayer.cpp:95
+#: src/multiplayer.cpp:104
+#, fuzzy
+msgid "List of Servers"
+msgstr "Connetti al server"
+
+#: src/multiplayer.cpp:105
+msgid "Choose a known server from the list"
+msgstr ""
+
+#: src/multiplayer.cpp:131
+#, fuzzy
+msgid "View List"
+msgstr "Lista delle unità"
+
+#: src/multiplayer.cpp:134
 msgid "Connect to Host"
 msgstr "Connetti al server"
 
-#: src/multiplayer.cpp:97
+#: src/multiplayer.cpp:136
 msgid "Choose host to connect to: "
 msgstr "Scegli l'host a cui connetterti: "
 
-#: src/multiplayer.cpp:136
+#: src/multiplayer.cpp:177
 msgid "Reading from Server..."
 msgstr "Ricezione dati dal server..."
 
-#: src/multiplayer.cpp:145
+#: src/multiplayer.cpp:186
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -12482,25 +12505,25 @@ msgstr ""
 "Il server richiede la versione «$version1» mentre tu hai la versione "
 "«$version2»"
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:198
 msgid "Server-side redirect loop"
 msgstr "Reindirizzamento ridondante da parte del server"
 
-#: src/multiplayer.cpp:189
+#: src/multiplayer.cpp:230
 msgid "You must log in to this server"
 msgstr "Devi effettuare il login al server"
 
-#: src/multiplayer.cpp:373 src/multiplayer.cpp:388
+#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
 #: src/multiplayer_wait.cpp:192
 msgid "No multiplayer sides available in this game"
 msgstr "Non ci sono posti liberi per giocatori remoti in questa partita."
 
-#: src/multiplayer.cpp:374 src/multiplayer.cpp:389
+#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
 #: src/multiplayer_wait.cpp:229
 msgid "Era not available"
 msgstr "Era non disponibile"
 
-#: src/multiplayer.cpp:375 src/multiplayer.cpp:390
+#: src/multiplayer.cpp:416 src/multiplayer.cpp:431
 #: src/multiplayer_wait.cpp:234
 msgid "No multiplayer sides found"
 msgstr "Nessuna fazione per il gioco in rete trovata"

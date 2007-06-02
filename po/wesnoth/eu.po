@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-17 11:50+0200\n"
+"POT-Creation-Date: 2007-06-02 18:48+0200\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -451,116 +451,116 @@ msgstr "+Finlandiera Itzulpena"
 msgid "French Translation"
 msgstr "+Frantses Itzulpena"
 
-#: data/about.cfg:343
+#: data/about.cfg:344
 #, fuzzy
 msgid "German Translation"
 msgstr "+Aleman Itzulpena"
 
-#: data/about.cfg:361
+#: data/about.cfg:362
 #, fuzzy
 msgid "Greek Translation"
 msgstr "+Greko Itzulpena"
 
-#: data/about.cfg:373
+#: data/about.cfg:374
 #, fuzzy
 msgid "Hebrew Translation"
 msgstr "+Greko Itzulpena"
 
-#: data/about.cfg:381
+#: data/about.cfg:382
 #, fuzzy
 msgid "Hungarian Translation"
 msgstr "+Hungariera Itzulpena"
 
-#: data/about.cfg:398
+#: data/about.cfg:399
 #, fuzzy
 msgid "Indonesian Translation"
 msgstr "+Estoniera itzulpena"
 
-#: data/about.cfg:405
+#: data/about.cfg:406
 #, fuzzy
 msgid "Italian Translation"
 msgstr "+Italiera Itzulpena"
 
-#: data/about.cfg:420
+#: data/about.cfg:421
 #, fuzzy
 msgid "Japanese Translation"
 msgstr "+Japoniera Itzulpena"
 
-#: data/about.cfg:432
+#: data/about.cfg:433
 #, fuzzy
 msgid "Korean Translation"
 msgstr "+Norvegiera Itzulpena"
 
-#: data/about.cfg:439
+#: data/about.cfg:440
 #, fuzzy
 msgid "Latin Translation"
 msgstr "+Latin Itzulpena"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 #, fuzzy
 msgid "Norwegian Translation"
 msgstr "+Norvegiera Itzulpena"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 #, fuzzy
 msgid "Polish Translation"
 msgstr "+Poloniera Itzulpena"
 
-#: data/about.cfg:476
+#: data/about.cfg:477
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Portuges (Brazil) Itzulpena"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Portuges (Brazil) Itzulpena"
 
-#: data/about.cfg:499
+#: data/about.cfg:500
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Errusiera Itzulpena"
 
-#: data/about.cfg:513
+#: data/about.cfg:514
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Serbiera Itzulpena"
 
-#: data/about.cfg:522
+#: data/about.cfg:523
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Eslovakiera Itzulpena"
 
-#: data/about.cfg:531
+#: data/about.cfg:532
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Eslobeniera Itzulpena"
 
-#: data/about.cfg:539
+#: data/about.cfg:540
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Gaztelania Itzulpena"
 
-#: data/about.cfg:553
+#: data/about.cfg:554
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Suediera Itzulpena"
 
-#: data/about.cfg:566
+#: data/about.cfg:567
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+Turkiera Itzulpena"
 
-#: data/about.cfg:577
+#: data/about.cfg:578
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "+Eslobeniera Itzulpena"
 
-#: data/about.cfg:584 data/help.cfg:252
+#: data/about.cfg:585 data/help.cfg:252
 msgid "Contributors"
 msgstr "Laguntzaileak"
 
-#: data/about.cfg:613
+#: data/about.cfg:614
 #, fuzzy
 msgid "Bots"
 msgstr "+Errobotak"
@@ -1917,6 +1917,15 @@ msgstr "Borrokak erakutsi"
 #, fuzzy
 msgid "Mouse Scrolling"
 msgstr "Sendaketak"
+
+#: data/game.cfg:58
+#, fuzzy
+msgid "Official Wesnoth Server"
+msgstr "Sartu zerbitzari ofizialera"
+
+#: data/game.cfg:62
+msgid "Alternate Wesnoth Server"
+msgstr ""
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -8836,7 +8845,7 @@ msgstr ""
 msgid "Server: "
 msgstr "Zerbitzaria:"
 
-#: src/game.cpp:882 src/multiplayer.cpp:126 src/multiplayer.cpp:163
+#: src/game.cpp:882 src/multiplayer.cpp:167 src/multiplayer.cpp:204
 msgid "Connecting to Server..."
 msgstr "Zerbitzarira konektatzen..."
 
@@ -8925,7 +8934,7 @@ msgid ""
 msgstr "Arazo bat egon da kanpaina instalatzeko behar den fitxategia sortzen."
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:210 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
+#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Konexioa denboraz kanpo"
 
@@ -8987,11 +8996,11 @@ msgstr "Gizakia vs AA"
 msgid "Play a game against AI opponents"
 msgstr "Jokatu AA aurkarien kontra"
 
-#: src/game.cpp:1193 src/multiplayer.cpp:190
+#: src/game.cpp:1193 src/multiplayer.cpp:231
 msgid "Login: "
 msgstr "Saioa hasi"
 
-#: src/game.cpp:1195 src/multiplayer.cpp:195
+#: src/game.cpp:1195 src/multiplayer.cpp:236
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -9617,44 +9626,58 @@ msgstr "Etsaia Eraso"
 msgid "Choose weapon:"
 msgstr "Arma aukeratu:"
 
-#: src/multiplayer.cpp:95
+#: src/multiplayer.cpp:104
+#, fuzzy
+msgid "List of Servers"
+msgstr "Zerbitzarira konektatu"
+
+#: src/multiplayer.cpp:105
+msgid "Choose a known server from the list"
+msgstr ""
+
+#: src/multiplayer.cpp:131
+#, fuzzy
+msgid "View List"
+msgstr "Unitate Zerrenda"
+
+#: src/multiplayer.cpp:134
 msgid "Connect to Host"
 msgstr "Ostalariari konektatu"
 
-#: src/multiplayer.cpp:97
+#: src/multiplayer.cpp:136
 msgid "Choose host to connect to: "
 msgstr "Aukeratu konektatu nahi duzun ostalaria:"
 
-#: src/multiplayer.cpp:136
+#: src/multiplayer.cpp:177
 #, fuzzy
 msgid "Reading from Server..."
 msgstr "Zerbitzarira konektatzen..."
 
-#: src/multiplayer.cpp:145
+#: src/multiplayer.cpp:186
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 
-#: src/multiplayer.cpp:157
+#: src/multiplayer.cpp:198
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/multiplayer.cpp:189
+#: src/multiplayer.cpp:230
 msgid "You must log in to this server"
 msgstr "Zerbitzarian saioa hasi behar duzu"
 
-#: src/multiplayer.cpp:373 src/multiplayer.cpp:388
+#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
 #: src/multiplayer_wait.cpp:192
 msgid "No multiplayer sides available in this game"
 msgstr ""
 
-#: src/multiplayer.cpp:374 src/multiplayer.cpp:389
+#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
 #: src/multiplayer_wait.cpp:229
 msgid "Era not available"
 msgstr "Garaia ez dao eskuragarri"
 
-#: src/multiplayer.cpp:375 src/multiplayer.cpp:390
+#: src/multiplayer.cpp:416 src/multiplayer.cpp:431
 #: src/multiplayer_wait.cpp:234
 msgid "No multiplayer sides found"
 msgstr "Ez da jokalari anitzeko alderik aurkitu"
