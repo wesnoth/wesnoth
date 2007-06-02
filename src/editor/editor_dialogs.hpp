@@ -23,11 +23,6 @@
 
 namespace map_editor {
 
-	// this is a debug variable to test what the proper alpha value is
-	// for the mouseover hex terrains. This is used for debugging only
-	// -- Mordante
-	extern Uint8 alpha;
-
 /// Notify the user that the map is changed and ask if the user wants to
 /// proceed. Return true if yes is answered.
 bool confirm_modification_disposal(display &disp);

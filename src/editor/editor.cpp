@@ -945,6 +945,7 @@ void map_editor::set_mouseover_overlay()
 	// NOTE when zooming and not moving the mouse there are glitches.
 	// Since the optimal alpha factor is unknown it has to be calculated
 	// on the fly and caching the surfaces makes no sense yet.
+	static const Uint8 alpha = 196;
 	static const int size = image_fg->w;
 	static const int half_size = size / 2;
 	static const int quarter_size = size / 4;
