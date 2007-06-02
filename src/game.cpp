@@ -806,7 +806,7 @@ bool game_controller::new_campaign()
 		return false;
 	}
 
-	res = gui::show_dialog2(disp(),NULL,_("Campaign"),
+	res = gui::show_dialog(disp(),NULL,_("Campaign"),
 			_("Choose the campaign you want to play:"),
 			gui::OK_CANCEL,&campaign_names,&preview_panes);
 
@@ -830,7 +830,7 @@ bool game_controller::new_campaign()
 			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 		}
 
-		const int res = gui::show_dialog2(disp(),NULL,_("Difficulty"),
+		const int res = gui::show_dialog(disp(),NULL,_("Difficulty"),
 		                            _("Select difficulty level:"),
 		                            gui::OK_CANCEL,&difficulty_options);
 		if(res == -1) {
@@ -1316,7 +1316,7 @@ bool game_controller::change_language()
 		}
 	}
 
-	const int res = gui::show_dialog2(disp(),NULL,_("Language"),
+	const int res = gui::show_dialog(disp(),NULL,_("Language"),
 	                         _("Choose your preferred language:"),
 	                         gui::OK_CANCEL,&langs);
 	if(size_t(res) < langs.size()) {

@@ -86,7 +86,7 @@ void combo::process_event()
 	if (!pressed())
 		return;
 	SDL_Rect const &loc = location();
-	set_selected_internal(gui::show_dialog2(*disp_, NULL, "", "", gui::MESSAGE, &items_,
+	set_selected_internal(gui::show_dialog(*disp_, NULL, "", "", gui::MESSAGE, &items_,
 	                                       NULL, "", NULL, -1, NULL, loc.x, loc.y + loc.h));
 }
 

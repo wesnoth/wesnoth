@@ -113,7 +113,7 @@ void advance_unit(const game_data& info,
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		res = gui::show_dialog2(gui,NULL,_("Advance Unit"),
+		res = gui::show_dialog(gui,NULL,_("Advance Unit"),
 		                       _("What should our victorious unit become?"),
 		                       gui::OK_ONLY, &lang_options, &preview_panes);
 	}
@@ -596,7 +596,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	if(show_replay != NULL)
 		options.push_back(gui::check_item(_("Show replay"),false));
 
-	const int res = gui::show_dialog2(disp,NULL,
+	const int res = gui::show_dialog(disp,NULL,
 					 _("Load Game"),
 					 _("Choose the game to load"),
 			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,&options,-1,-1,NULL,&buttons,"",&sorter);

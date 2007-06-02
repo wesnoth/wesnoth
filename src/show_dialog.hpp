@@ -180,8 +180,6 @@ int show_dialog(display &screen, surface image,
 				menu::style* menu_style=NULL
 			 );
 
-#define show_dialog2 show_dialog
-
 void show_error_message(display &disp, std::string const &message);
 
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

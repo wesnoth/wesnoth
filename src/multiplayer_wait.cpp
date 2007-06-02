@@ -254,7 +254,7 @@ void wait::join_game(bool observe)
 					possible_sides);
 			preview_panes.push_back(&leader_selector);
 
-			const int res = gui::show_dialog2(disp(), NULL, "", _("Choose your side:"),
+			const int res = gui::show_dialog(disp(), NULL, "", _("Choose your side:"),
 						gui::OK_CANCEL, &choices, &preview_panes);
 			if(res < 0) {
 				set_result(QUIT);

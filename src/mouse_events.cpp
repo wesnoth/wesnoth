@@ -1343,7 +1343,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		preview_panes.push_back(&attacker_preview);
 		preview_panes.push_back(&defender_preview);
 
-		res = gui::show_dialog2(*gui_,NULL,_("Attack Enemy"),
+		res = gui::show_dialog(*gui_,NULL,_("Attack Enemy"),
 				_("Choose weapon:")+std::string("\n"),
 				gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,-1,-1,
 				NULL,&buttons);

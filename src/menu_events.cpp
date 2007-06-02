@@ -260,7 +260,7 @@ namespace events{
 			}
 
 			if (items_sub.empty() == false) {
-				gui::show_dialog2(*gui_, NULL, "", title, gui::CLOSE_ONLY, &items_sub);
+				gui::show_dialog(*gui_, NULL, "", title, gui::CLOSE_ONLY, &items_sub);
 				button_flush = new input_blocker();
 			}
 		}
@@ -344,7 +344,7 @@ namespace events{
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
-			selected = gui::show_dialog2(*gui_,NULL,_("Unit List"),"",
+			selected = gui::show_dialog(*gui_,NULL,_("Unit List"),"",
 										gui::OK_ONLY,&items,&preview_panes,
 										"",NULL,0,NULL,-1,-1,NULL,NULL,"",&sorter);
 		}
@@ -433,7 +433,7 @@ namespace events{
 			items.push_back(str.str());
 		}
 
-		gui::show_dialog2(*gui_,NULL,"","",gui::CLOSE_ONLY,&items,
+		gui::show_dialog(*gui_,NULL,"","",gui::CLOSE_ONLY,&items,
 						 NULL,"",NULL,0,NULL,-1,-1,NULL,NULL,"",&sorter);
 	}
 
@@ -722,7 +722,7 @@ namespace events{
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
-			recruit_res = gui::show_dialog2(*gui_,NULL,_("Recruit"),
+			recruit_res = gui::show_dialog(*gui_,NULL,_("Recruit"),
 					_("Select unit:") + std::string("\n"),
 					gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,-1,-1,
 					NULL,NULL,"recruit_and_recall");
@@ -872,7 +872,7 @@ namespace events{
 				std::vector<gui::preview_pane*> preview_panes;
 				preview_panes.push_back(&unit_preview);
 
-				res = gui::show_dialog2(*gui_,NULL,_("Recall"),
+				res = gui::show_dialog(*gui_,NULL,_("Recall"),
 						_("Select unit:") + std::string("\n"),
 						gui::OK_CANCEL,&options,
 						&preview_panes,"",NULL,-1,
@@ -1316,7 +1316,7 @@ namespace events{
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
-			choice = gui::show_dialog2(*gui_,NULL,"",dsgettext(PACKAGE "-lib","Create Unit (Debug!)"),
+			choice = gui::show_dialog(*gui_,NULL,"",dsgettext(PACKAGE "-lib","Create Unit (Debug!)"),
 									  gui::OK_CANCEL,&options,&preview_panes);
 		}
 

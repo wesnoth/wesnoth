@@ -1155,7 +1155,7 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 			std::vector<gui::preview_pane*> panes;
 			panes.push_back(&dialog);
 
-			gui::show_dialog2(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes);
+			gui::show_dialog(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes);
 			return;
 		} catch(preferences_dialog::video_mode_change_exception& e) {
 			switch(e.type) {
@@ -1240,7 +1240,7 @@ bool show_video_mode_dialog(display& disp)
 		options.push_back(option.str());
 	}
 
-	const int result = gui::show_dialog2(disp,NULL,"",
+	const int result = gui::show_dialog(disp,NULL,"",
 	                                    _("Choose Resolution"),
 	                                    gui::OK_CANCEL,&options);
 	if(size_t(result) < resolutions.size() && resolutions[result] != current_res) {
@@ -1397,7 +1397,7 @@ bool show_theme_dialog(display& disp)
 	std::vector<std::string> options = disp.get_theme().get_known_themes();
 	if(options.size()){
 		std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
-		action = gui::show_dialog2(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
+		action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
 		if(action >= 0){
 		preferences::set_theme(options[action]);
 		//it would be preferable for the new theme to take effect
