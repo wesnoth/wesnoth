@@ -193,11 +193,6 @@ int main(int argc, char** argv)
 	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
 	textdomain (PACKAGE "-editor");
 
-        if (!filesystem_init()) {
-		std::cerr << "cannot init filesystem code\n";
-		return 1;
-	}
-
 	// Blatant cut and paste from game.cpp
 	image::set_wm_icon();
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
@@ -351,8 +346,6 @@ int main(int argc, char** argv)
 			return 0;
 		}
 	}
-
-	filesystem_close();
 
 	return 0;
 }

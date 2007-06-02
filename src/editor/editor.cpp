@@ -92,7 +92,6 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 		newfilename.erase(newfilename.begin());
 		newfilename.erase(newfilename.end() - 1);
 
-		#ifndef USE_ZIPIOS
 		//if the filename begins with a '~', then look
 		//in the user's data directory. If the filename begins with
 		//a '@' then we look in the user's data directory,
@@ -109,7 +108,6 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 				nfname = "data/" + newfilename.substr(1);
 			}
 		} else
-		#endif
 		if(newfilename.size() >= 2 && newfilename[0] == '.' &&
 			newfilename[1] == '/' ) {
 			//if the filename begins with a "./", then look
@@ -120,14 +118,6 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 			nfname = directory_name(filename) + nfname;
 
 		} else {
-#ifdef USE_ZIPIOS
-		if(newfilename != "" && newfilename[0] == '@') {
-			nfname = newfilename;
-			nfname.erase(nfname.begin(),nfname.begin()+1);
-			nfname = "data/" + nfname;
-		} else
-#endif
-
 				nfname = "data/" + newfilename;
 		}
 

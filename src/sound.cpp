@@ -699,15 +699,7 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		temp_chunk.group = group;
 		std::string const &filename = get_binary_file_location("sounds", file);
 		if (!filename.empty()) {
-#ifdef USE_ZIPIOS
-			std::string const &s = read_file(filename);
-			if (!s.empty()) {
-				SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
-				temp_chunk.set_data(Mix_LoadWAV_RW(ops,0));
-			}
-#else
 			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));
-#endif
 		}
 		if (temp_chunk.get_data() == NULL) {
 			ERR_AUDIO << "Could not load sound file '" << filename << "': "

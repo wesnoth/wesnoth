@@ -289,75 +289,6 @@ BPath be_path;
 #define LOG_FS LOG_STREAM(info, filesystem)
 #define ERR_FS LOG_STREAM(err, filesystem)
 
-#ifdef USE_ZIPIOS
-#include <zipios++/collcoll.h>
-#include <zipios++/dircoll.h>
-#include <zipios++/zipfile.h>
-#include <zipios++/simplesmartptr.h>
-#include <zipios++/basicentry.h>
-#include "zipios++/xcoll.hpp"
-
-namespace {
-	xzipios::XCColl* the_collection = NULL;
-
-	void register_zipdir(const std::string directory) {
-		// look for zip files
-		zipios::DirectoryCollection dir(directory,false);
-		zipios::ConstEntries entries = dir.entries();
-		for (zipios::ConstEntries::iterator i = entries.begin(); i != entries.end(); ++i) {
-			if ((**i).isValid()) {
-				const std::string fname = (**i).getName();
-				const std::string suffix = ".zip";
-				if ((fname.size() > suffix.size()) &&
-				    (0 == fname.compare(fname.size() - suffix.size(), suffix.size(), suffix))) {
-					zipios::ZipFile zip(game_config::path + "/" + fname);
-					the_collection->addCollection(zip);
-					LOG_FS << "zip collection " << fname
-					       << " has " << zip.size() << " elements\n";
-				}
-			}
-			else LOG_FS << "skipping invalid entry\n";
-		}
-
-	}
-}
-#endif
-
-bool filesystem_init()
-{
-#ifdef USE_ZIPIOS
-	if (the_collection != NULL) {
-		// this is a re-read, cleanup first !
-		delete the_collection;
-	}
-
-	the_collection = new xzipios::XCColl;
-
-	if (!get_user_data_dir().empty()) {
-		LOG_FS << "looking at user dir " << get_user_data_dir() << '\n';
-		zipios::DirectoryCollection dir(get_user_data_dir());
-		LOG_FS << "user collection has " << dir.size() << " elements\n";
-		the_collection->addCollection(dir);
-		register_zipdir(get_user_data_dir());
-	}
-	if (!game_config::path.empty()) {
-		LOG_FS << "looking at system dir " << game_config::path << '\n';
-		zipios::DirectoryCollection dir(game_config::path);
-		LOG_FS << "system collection has " << dir.size() << " elements\n";
-		the_collection->addCollection(dir);
-		register_zipdir(game_config::path);
-	}
-#endif
-	return true;
-}
-
-void filesystem_close()
-{
-#ifdef USE_ZIPIOS
-	delete the_collection;
-#endif
-}
-
 namespace {
 	const mode_t AccessMode = 00770;
 }
@@ -383,13 +314,6 @@ void get_files_in_dir(const std::string& directory,
                       FILE_NAME_MODE mode,
                       FILE_REORDER_OPTION reorder)
 {
-#ifdef USE_ZIPIOS
-	if (the_collection->hasSubdir(directory)) {
-		the_collection->childrenOf(directory, files, dirs);
-		return;
-	}
-#endif /* USE_ZIPIOS */
-
 	// if we have a path to find directories in, then
 	// convert relative pathnames to be rooted on the
 	// wesnoth path
@@ -759,14 +683,6 @@ static std::string read_stream(std::istream& s)
 std::istream *istream_file(std::string const &fname)
 {
 	LOG_FS << "streaming " << fname << " for reading.\n";
-#ifdef USE_ZIPIOS
-	if (!fname.empty() && fname[0] != '/' && the_collection) {
-		zipios::ConstEntryPointer p = the_collection->getEntry(fname);
-		if (p != 0)
-			if (std::istream *s = the_collection->getInputStream(p))
-				return s;
-	}
-#else
 	if (!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
 		std::ifstream *s = new std::ifstream((game_config::path + "/" + fname).c_str(),std::ios_base::binary);
 		if (s->is_open())
@@ -774,10 +690,10 @@ std::istream *istream_file(std::string const &fname)
 		LOG_FS << "could not open " << fname << " for reading.\n";
 		delete s;
 	}
-#endif
 
 	// FIXME: why do we rely on this even with relative paths ?
 	// still useful with zipios, for things like cache and prefs
+	// NOTE zipios has been removed not sure what to do with this code
 	std::istream *s = new std::ifstream(fname.c_str(), std::ios_base::binary);
 	if (s->fail())
 		LOG_FS << "streaming " << fname << " failed.\n";
@@ -857,27 +773,16 @@ static bool is_directory_internal(const std::string& fname)
 
 bool is_directory(const std::string& fname)
 {
-#ifdef USE_ZIPIOS
-	if(!fname.empty() && fname[0] != '/') {
-		return the_collection->hasSubdir(fname);
-	}
-
-#else
 	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
 		if(is_directory_internal(game_config::path + "/" + fname))
 			return true;
 	}
-#endif
 
 	return is_directory_internal(fname);
 }
 
 bool file_exists(const std::string& name)
 {
-#ifdef USE_ZIPIOS
-	if (the_collection->getEntry(name))
-		return true;
-#endif
 	std::ifstream file(name.c_str(),std::ios_base::binary);
 	if (file.rdstate() != 0)
 	        return false;

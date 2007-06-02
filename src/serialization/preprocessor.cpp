@@ -684,15 +684,7 @@ bool preprocessor_data::get_chunk()
 				std::string prefix;
 				std::string nfname;
 				std::string const &newfilename = symbol;
-#ifdef USE_ZIPIOS
-				if(newfilename != "" && newfilename[0] == '~') {
-					// I do not know of any valid use of {~xxx} when {xxx} is
-					// not used, and zipios takes care of both
-					LOG_CF << "ignoring reference to '" << newfilename << "'\n";
-				} else
-#endif
 				{
-#ifndef USE_ZIPIOS
 					//if the filename begins with a '~', then look
 					//in the user's data directory. If the filename begins with
 					//a '@' then we look in the user's data directory,
@@ -709,7 +701,6 @@ bool preprocessor_data::get_chunk()
 							nfname = "data/" + newfilename.substr(1);
 						}
 					} else
-#endif
 					if(newfilename.size() >= 2 && newfilename[0] == '.' &&
 						newfilename[1] == '/' ) {
 						//if the filename begins with a "./", then look
@@ -720,13 +711,6 @@ bool preprocessor_data::get_chunk()
 						nfname = directory_ + nfname;
 
 					} else {
-#ifdef USE_ZIPIOS
-						if(newfilename != "" && newfilename[0] == '@') {
-							nfname = newfilename;
-							nfname.erase(nfname.begin(),nfname.begin()+1);
-							nfname = "data/" + nfname;
-						} else
-#endif
 
 							nfname = "data/" + newfilename;
 					}

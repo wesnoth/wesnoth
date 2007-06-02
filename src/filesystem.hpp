@@ -62,8 +62,6 @@ bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname);
 
 //basic disk I/O
-bool filesystem_init();
-void filesystem_close();
 std::string read_file(const std::string& fname);
 std::istream *istream_file(std::string const &fname);
 std::ostream *ostream_file(std::string const &fname);

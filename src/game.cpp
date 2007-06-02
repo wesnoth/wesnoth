@@ -1092,12 +1092,6 @@ void game_controller::download_campaigns()
 		//put a break at line below to see that it really works.
 		unarchive_campaign(cfg);
 
-		// when using zipios, force a reread zip and directory indices
-		if (!filesystem_init()) {
-			gui::show_error_message(disp(), _("Cannot rescan the filesystem"));
-			return;
-		}
-
 		//force a reload of configuration information
 		const bool old_cache = use_caching_;
 		use_caching_ = false;
@@ -1772,11 +1766,6 @@ static int play_game(int argc, char** argv)
 
 	game_controller game(argc,argv);
 
-	if (!filesystem_init()) {
-		std::cerr << "cannot init filesystem code\n";
-		return 1;
-	}
-
 	// I would prefer to setup locale first so that early error
 	// messages can get localized, but we need the game_controller
 	// initialized to have get_intl_dir() to work.  Note: this
@@ -1969,8 +1958,6 @@ int main(int argc, char** argv)
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 	}
-
-	filesystem_close();
 
 	return 0;
 }

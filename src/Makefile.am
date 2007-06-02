@@ -34,7 +34,7 @@ noinst_LIBRARIES = libwesnoth-core.a
 pkgdatadir=$(datadir)/@DATADIR@
 
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
-	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL)
+	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(FREETYPE_LIBS) $(LIBINTL)
 
 #############################################################################
 #    Wesnoth                                                                #
@@ -254,7 +254,7 @@ wesnothd_SOURCES = \
 	loadscreen_empty.cpp \
 	serialization/parser.cpp
 
-wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
+wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 wesnothd_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
@@ -269,7 +269,7 @@ campaignd_SOURCES = \
 	loadscreen_empty.cpp \
 	serialization/parser.cpp
 
-campaignd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
+campaignd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 campaignd_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
@@ -295,9 +295,9 @@ cutter_SOURCES = \
 	loadscreen_empty.cpp \
 	serialization/parser.cpp
 
-exploder_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
+exploder_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS)
 exploder_DEPENDENCIES=libwesnoth-core.a
-cutter_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
+cutter_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS)
 cutter_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
@@ -326,7 +326,6 @@ noinst_HEADERS = \
 	widgets/scrollbar.hpp \
 	widgets/widget.hpp \
 	widgets/scrollarea.hpp \
-	zipios++/xcoll.hpp \
 	server/player.hpp \
 	server/game.hpp \
 	server/input_stream.hpp \
@@ -472,8 +471,7 @@ libwesnoth_core_a_SOURCES = \
 	serialization/binary_wml.cpp \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
-	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp
+	serialization/tokenizer.cpp
 
 if USESVN
 # Until game_config.cpp is removed, this will be needed to ensure that the
