@@ -12,7 +12,6 @@ dnl define([DEFAULT_SERVER],[server.wesnoth.org])
 define([DEFAULT_SERVER],[devsrv.wesnoth.org:14999])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [isaac@warp.es], [wesnoth])
-AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["]DEFAULT_SERVER["], [The default server for this version])
 
 dnl
 dnl Generate wesconfig.h from the information above
@@ -26,7 +25,6 @@ AC_CONFIG_COMMANDS([src/wesconfig.h],
 # include "config.h"
 #else
 # define VERSION "]WESNOTH_VERSION["
-# define WESNOTH_DEFAULT_SERVER "]DEFAULT_SERVER["
 # define PACKAGE "wesnoth"
 # ifndef LOCALEDIR
 #  define LOCALEDIR "translations"
