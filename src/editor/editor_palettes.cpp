@@ -41,10 +41,10 @@ terrain_group::terrain_group(const config& cfg, display& gui):
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 								 const gamemap &map, const config& cfg)
-	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0), map_(map),
+	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0), 
+	  checked_group_btn_(0), map_(map),
 	  top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button"),
-	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button"),
-	  checked_group_btn_(0)
+	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
 {
 
 	// get the available terrains temporary in terrains_
