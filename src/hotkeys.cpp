@@ -827,7 +827,7 @@ std::vector<std::string> command_executor::get_menu_images(const std::vector<std
 	std::vector<std::string> result;
 	bool has_image = false;
 
-	for(int i = 0; i < items.size(); ++i) {
+	for(size_t i = 0; i < items.size(); ++i) {
 		std::string const& item = items[i];
 		const hotkey::hotkey_item hk = hotkey::get_hotkey(item);
 
