@@ -366,7 +366,10 @@ static void unit_attack_ranged(
 			sound_played = true;
 			std::string text ;
 			if(damage) text = lexical_cast<std::string>(damage);
-			if(!hit_text.empty()) text = text + "\n" + hit_text;
+			if(!hit_text.empty()) {
+				text.insert(text.begin(),hit_text.size()/2,' ');
+				text = text + "\n" + hit_text;
+			}
 			sound::play_sound(defender.get_hit_sound());
 			disp->float_label(b,text,255,0,0);
 			disp->invalidate_unit();
@@ -490,7 +493,10 @@ void unit_attack(
 			sound_played = true;
 			std::string text ;
 			if(damage) text = lexical_cast<std::string>(damage);
-			if(!hit_text.empty()) text = text + "\n" + hit_text;
+			if(!hit_text.empty()) {
+				text.insert(text.begin(),hit_text.size()/2,' ');
+				text = text + "\n" + hit_text;
+			}
 			sound::play_sound(defender.get_hit_sound());
 			disp->float_label(b,text,255,0,0);
 			disp->invalidate_unit();
