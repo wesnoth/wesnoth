@@ -771,10 +771,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		if (cursor::get() != cursor::WAIT) {
 			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
-				if(current_paths_.routes.count(new_hex)) {
-					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
-				} else if (attack_from.valid()) {
+				if (attack_from.valid()) {
 					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
+				} else if (current_paths_.routes.count(new_hex)) {
+					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
 				} else {
 					cursor::set(cursor::NORMAL);
 				}
