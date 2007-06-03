@@ -791,11 +791,8 @@ void display::redraw_everything()
 }
 
 void display::sunset(const size_t delay) {
-	if (sunset_delay == 0) {
-		sunset_delay = (delay == 0 ? 5 : delay);
-	} else {
-		sunset_delay = delay;
-	}
+	// this allow both parametric and toggle use
+	sunset_delay = (sunset_delay == 0 && delay == 0) ? 5 : delay;
 }
 
 void display::flip()
