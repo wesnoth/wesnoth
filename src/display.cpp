@@ -1768,6 +1768,9 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 	std::vector<gamemap::location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
 
+	//we don't want to display movement info on the unit's hex (useless and unreadable)
+	if (i == route_.steps.begin()) return;
+
 	//if there isn't a match for "loc" in "route_.turn_waypoints", return.
 	std::map<gamemap::location, int>::iterator turn_waypoint_iter;
 	turn_waypoint_iter = route_.turn_waypoints.find(loc);
