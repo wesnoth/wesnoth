@@ -104,12 +104,18 @@ protected:
 		gui::dialog server_dialog(dialog()->get_display(), _("List of Servers"),
 			_("Choose a known server from the list"), gui::OK_CANCEL);
 		std::vector<std::string> servers;
+		std::ostringstream menu_heading;
+		menu_heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Address");
+		servers.push_back(menu_heading.str());
 		const std::vector<game_config::server_info>& pref_servers = preferences::server_list();
 		std::vector<game_config::server_info>::const_iterator server;
 		for(server = pref_servers.begin(); server != pref_servers.end(); ++server) {
-			servers.push_back(server->address + HELP_STRING_SEPARATOR + server->name);
+			servers.push_back(server->name + COLUMN_SEPARATOR + server->address);
 		}
 		server_dialog.set_menu(servers);
+		gui::menu::basic_sorter server_sorter;
+		server_sorter.set_alpha_sort(0).set_id_sort(1);
+		server_dialog.get_menu().set_sorter(&server_sorter);
 		if(server_dialog.show() >= 0) {
 			//now save the result back to the parent dialog
 			dialog()->get_textbox().set_text(preferences::server_list()[server_dialog.result()].address);

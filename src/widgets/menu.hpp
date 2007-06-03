@@ -193,6 +193,9 @@ public:
 
 	void scroll(unsigned int pos);
 
+	//currently, menus do not manage the memory of their sorter
+	//this should be changed to a more object-oriented approach
+	void set_sorter(sorter *s);
 	void sort_by(int column);
 	void wrap_words();
 

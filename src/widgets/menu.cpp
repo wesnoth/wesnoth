@@ -683,6 +683,17 @@ void menu::scroll(unsigned int)
 	set_dirty();
 }
 
+void menu::set_sorter(sorter *s)
+{
+	if(sortby_ >= 0) {
+		//clear an existing sort
+		sort_by(-1);
+	}
+	sorter_ = s;
+	sortreversed_ = false;
+	sortby_ = -1;
+}
+
 void menu::sort_by(int column)
 {
 	const bool already_sorted = (column == sortby_);
