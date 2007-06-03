@@ -19,9 +19,9 @@ Version 1.3.3+svn:
  * user interface:
    * fixed a lag in the path rendering when there is a lot of units
    * maps smaller than the screen are now shown centered on the screen
-   * the movement hint now display a "(1)" turn to reach, if the unit
-     will use all its movement points to reach this position
-   * fixed bug with the number of turns to reach when crossing ZoC
+   * the movement hint now display a "(1)" turn to reach, where the unit
+     will have no moves left (distance, village or ZoC)
+   * fixed bug with the number of turns to reach when crossing several ZoC
    * allow to choose the direction from where attacking, even when you
      are just near the enemy unit.
    * ability to view a list of MP servers with the Join Game dialog
