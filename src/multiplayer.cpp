@@ -96,13 +96,22 @@ private:
 	gui::dialog_button_action::RESULT button_pressed(int /*menu_selection*/)
 	{
 		std::vector<std::string> servers;
+		std::ostringstream menu_heading; 
+		menu_heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Address"); 
+		servers.push_back(menu_heading.str()); 
+
 		const std::vector<game_config::server_info>& pref_servers = preferences::server_list();
 		std::vector<game_config::server_info>::const_iterator server;
 		for(server = pref_servers.begin(); server != pref_servers.end(); ++server) {
-			servers.push_back(server->address + HELP_STRING_SEPARATOR + server->name);
+			servers.push_back(server->name + COLUMN_SEPARATOR + server->address);
 		}
+
+		gui::menu::basic_sorter server_sorter;
+		server_sorter.set_alpha_sort(0).set_id_sort(1);
+
 		int res = gui::show_dialog(disp_, NULL, _("List of Servers"), 
-			_("Choose a known server from the list"), gui::OK_CANCEL, &servers);
+			_("Choose a known server from the list"), gui::OK_CANCEL, &servers,
+			NULL, "", NULL, -1, NULL, NULL, -1, -1, NULL, NULL, "", &server_sorter);
 		if(res >= 0) {
 			result_ = pref_servers[res].address;
 		} else {
