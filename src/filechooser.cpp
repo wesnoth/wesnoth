@@ -52,7 +52,7 @@ file_dialog::file_dialog(display &disp, const std::string& file_path, const std:
 	add_button( new gui::dialog_button(disp.video(), _("Delete File"),
 		gui::button::TYPE_PRESS, gui::DELETE_ITEM), dialog::BUTTON_EXTRA);
 	add_button( new gui::dialog_button(disp.video(), _("New Folder"),
-		gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_CHECKBOX_LEFT);
+		gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_EXTRA_LEFT);
 }
 
 gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)

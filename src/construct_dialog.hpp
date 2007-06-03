@@ -122,7 +122,7 @@ private:
 
 class dialog {
 public:
-	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT };
+	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_EXTRA_LEFT, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT };
 	struct dimension_measurements {
 		dimension_measurements();
 		int x, y;

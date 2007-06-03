@@ -197,6 +197,7 @@ void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 	switch(loc)
 	{
 	case BUTTON_EXTRA:
+	case BUTTON_EXTRA_LEFT:
 	case BUTTON_CHECKBOX:
 	case BUTTON_CHECKBOX_LEFT:
 		extra_buttons_.push_back(btn);
@@ -437,6 +438,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		case BUTTON_CHECKBOX:
 			check_button_height += btn->height() + button_height_padding;
 			break;
+		case BUTTON_EXTRA_LEFT:
 		case BUTTON_CHECKBOX_LEFT:
 			left_check_button_height += btn->height() + button_height_padding;
 			break;
@@ -628,6 +630,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 				dim.buttons[b->first] = coords;
 				options_y += btn->height() + button_height_padding;
 				break;
+			case BUTTON_EXTRA_LEFT:
 			case BUTTON_CHECKBOX_LEFT:
 				coords.first = dim.x + ButtonHPadding;
 				coords.second = options_left_y;
