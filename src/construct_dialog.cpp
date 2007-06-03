@@ -25,6 +25,7 @@
 #include "hotkeys.hpp"
 #include "image.hpp"
 #include "key.hpp"
+#include "sound.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "thread.hpp"
@@ -709,8 +710,10 @@ int dialog::process(dialog_process_info &info)
 
 	//left-clicking outside of a drop-down or context-menu should close it
 	if (new_left_button && !info.left_button) {
-		if (standard_buttons_.empty() && !point_in_rect(mousex,mousey, menu_->location()))
+		if (standard_buttons_.empty() && !point_in_rect(mousex,mousey, menu_->location())) {
+			sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
+			}
 	}
 
 	//right-clicking outside of a dialog should close it unless a choice is required
@@ -719,8 +722,10 @@ int dialog::process(dialog_process_info &info)
 	if (new_right_button && !info.right_button) {
 		if( standard_buttons_.empty()
 		|| (!point_in_rect(mousex,mousey,dim_.frame.exterior)
-		&& !(type_ == OK_ONLY && use_menu))) 
+		&& type_ != YES_NO && !(type_ == OK_ONLY && use_menu))) {
+			sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
+		}
 	}
 
 	//any keypress should close a dialog if it has one standard button (or less)
