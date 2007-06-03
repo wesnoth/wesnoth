@@ -133,7 +133,7 @@ public:
 		int menu_x, menu_y, menu_height;
 		int image_x, image_y, caption_x, caption_y;
 		std::map<dialog_button *const, std::pair<int,int> > buttons;
-		dialog_frame::dimension_measurements frame;
+		//use get_frame().get_layout() to check frame dimensions
 	};
 private:
 	typedef std::vector<preview_pane *>::iterator pp_iterator;
@@ -189,7 +189,7 @@ public:
 	//Specific preparations
 	//layout - determines dialog measurements based on all components
 	virtual dimension_measurements layout(int xloc=-1, int yloc=-1);
-	void set_layout(dimension_measurements &new_dim) { dim_ = new_dim; }
+	void set_layout(dimension_measurements &new_dim);
 	dimension_measurements get_layout() const { return dim_; }
 
 	//Launching the dialog

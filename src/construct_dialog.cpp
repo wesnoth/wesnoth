@@ -640,11 +640,15 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 			}
 		}
 	}
-
-	dim.frame = get_frame().layout(dim.interior);
 	set_layout(dim);
 	return dim;
 }
+
+void dialog::set_layout(dimension_measurements &new_dim) {
+	get_frame().layout(new_dim.interior);
+	dim_ = new_dim;
+}
+
 
 int dialog::process(dialog_process_info &info)
 {
@@ -721,7 +725,7 @@ int dialog::process(dialog_process_info &info)
 	//      but that may be changed to allow right-click selection instead.
 	if (new_right_button && !info.right_button) {
 		if( standard_buttons_.empty()
-		|| (!point_in_rect(mousex,mousey,dim_.frame.exterior)
+		|| (!point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
 		&& type_ != YES_NO && !(type_ == OK_ONLY && use_menu))) {
 			sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
