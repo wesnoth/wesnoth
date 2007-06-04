@@ -1783,10 +1783,13 @@ void display::draw_movement_info(const gamemap::location& loc)
 #ifndef USE_TINY_GUI
 	const unit_map::const_iterator un = units_.find(route_.steps.front());
 	if(un != units_.end()) {
-		int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
+		const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
 		std::stringstream def_text;
 		def_text << def << "%";
-		SDL_Color color = {255 - def, 105 + def, 0, 0};
+		int red = 255 - maximum<int>(def-50, 0)*5;
+		int green = 255 - maximum<int>(50-def, 0)*5;
+		int blue = 0;
+		SDL_Color color = {red, green, blue, 0};
 
 		draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color, 0.5, 0.5);
 	}
