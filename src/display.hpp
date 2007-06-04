@@ -253,16 +253,6 @@ private:
 
 	gui::button::TYPE string_to_button_type(std::string type);
 
-	/**
-	 * Used to draw the number of enemies which can reach a location.
-	 *
-	 * @param num 		number of enemies which can reach the location
-	 * 					If num == 1 nothing is drawn
-	 * @param xloc		the on screen x position in pixels
-	 * @param yloc		the on screen y position in pixels
-	 */
-	void draw_enemies_reach(const unsigned int num, const int xloc, const int yloc);
-
 	// event raised when the map is being scrolled
 	mutable events::generic_event _scroll_event;
 
@@ -273,8 +263,13 @@ public:
 	//return with no effect.
 	void draw_footstep(const gamemap::location& loc, int xloc, int yloc);
 
+	//function to draw text on the center of a hex.
+	// The font size is adjusted to the zoom factor
+	void draw_text_in_hex(const gamemap::location& loc, const std::string& text,
+		size_t font_size, SDL_Color color);
+	
 	//draws the movement info (turns available) for a given location
-	void draw_movement_info(const gamemap::location& loc, int xloc, int yloc);
+	void draw_movement_info(const gamemap::location& loc);
 
 	//gets the underlying screen object.
 	CVideo& video() { return screen_; }

@@ -1610,12 +1610,14 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 				SDL_BlitSurface(img,NULL,dst,&dstrect);
 			}
-		} else {
-			draw_enemies_reach(reach->second,xpos,ypos);
+		} else if (reach->second > 1) {
+			const std::string num = lexical_cast<std::string>(reach->second);
+			draw_text_in_hex(loc, num, font::SIZE_PLUS, font::YELLOW_COLOUR);
 		}
 	}
-	if(!is_shrouded) {
-		draw_movement_info(loc,xpos,ypos);
+
+	if(!is_shrouded && on_map) {
+		draw_movement_info(loc);
 	}
 
 	if(grid_ && on_map) {
@@ -1653,32 +1655,6 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	}
 
 	update_rect(xpos,ypos,zoom_,zoom_);
-}
-
-void display::draw_enemies_reach(const unsigned int num, const int xloc, const int yloc)
-{
-	// only one can reach, don't number it
-	if (num == 1)
-		return;
-
-	// multiple can reach: print number (ie. Show Enemy Moves)
-	std::string str = lexical_cast<std::string>(num);
-	const SDL_Rect& rect = map_area();
-
-	const SDL_Rect& text_area = font::text_area(str,font::SIZE_LARGE);
-	const int x = xloc + zoom_/2 - text_area.w/2;
-	const int y = yloc + zoom_/2 - text_area.h/2;
-
-	//draw the text with a black outline
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y-1);
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y);
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y+1);
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y-1);
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y-1);
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y);
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y+1);
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y+1);
-	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::YELLOW_COLOUR,str,x,y);
 }
 
 void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
@@ -1763,7 +1739,35 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	draw_unit(xloc,yloc,image,vflip);
 }
 
-void display::draw_movement_info(const gamemap::location& loc, int xloc, int yloc)
+void display::draw_text_in_hex(const gamemap::location& loc, const std::string& text,
+		size_t font_size, SDL_Color color)
+{
+	if (text.empty()) return;
+	
+#ifdef USE_TINY_GUI
+	// FIXME: This 16/9 must be defined elsewhere,
+	// It's the ratio of the font size bewteen the two gui.
+	// It makes the text fill the hex like it does in the normal gui.
+	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor() * 16/9);
+#else
+	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor());
+#endif
+	
+	const SDL_Rect& text_area = font::text_area(text,font_sz);
+	const int x = get_location_x(loc) + hex_size()/2 - text_area.w/2;
+	const int y = get_location_y(loc) + hex_size()/2 - text_area.h/2;
+
+	const SDL_Rect& rect = map_area();
+	for (int dy=-1; dy <= 1; dy++) {
+		for (int dx=-1; dx <= 1; dx++) {
+			if (dx!=0 || dy!=0)
+				font::draw_text(&screen_, rect, font_sz, font::DARK_COLOUR, text, x+dx, y+dy);
+		}
+	}
+	font::draw_text(&screen_, rect,font_sz, color, text, x, y);
+}
+
+void display::draw_movement_info(const gamemap::location& loc)
 {
 	std::vector<gamemap::location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
@@ -1797,31 +1801,7 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 
 	const std::string& str = text.str();
 
-	if(str.empty() == false) {
-		const SDL_Rect& rect = map_area();
-#ifdef USE_TINY_GUI
-		// FIXME: This 16/9 must be defined elsewhere,
-		// It's the ratio of the font size bewteen the two gui.
-		// It makes the text fill the hex like it does in the normal gui.
-		const int font_size = static_cast<int>(font::SIZE_PLUS * get_zoom_factor() * 16/9);
-#else
-		const int font_size = static_cast<int>(font::SIZE_PLUS * get_zoom_factor());
-#endif
-		const SDL_Rect& text_area = font::text_area(str,font_size);
-		const int x = xloc + zoom_/2 - text_area.w/2;
-		const int y = yloc + zoom_/2 - text_area.h/2;
-
-		//draw the text with a black outline
-		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x-1,y-1);
-		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x-1,y);
-		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x-1,y+1);
-		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x,y-1);
-		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x+1,y-1);
-		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x+1,y);
-		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x+1,y+1);
-		font::draw_text(&screen_,rect,font_size,font::DARK_COLOUR,str,x,y+1);
-		font::draw_text(&screen_,rect,font_size,font::YELLOW_COLOUR,str,x,y);
-	}
+	draw_text_in_hex(loc, str, font::SIZE_PLUS, font::YELLOW_COLOUR);
 }
 
 static const std::string& get_direction(size_t n)
