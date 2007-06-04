@@ -622,10 +622,6 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 
 	int t_prev = SDL_GetTicks();
 	
-	// those values might need some fine-tuning:
-	const double accel_time = 0.3; // seconds until full speed is reached 
-	const double decel_time = 0.4; // seconds from full speed to stop
-
 	double velocity = 0.0;
 	while (dist_moved < dist_total) {
 		events::pump();
@@ -639,6 +635,10 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 		t_prev = t;
 
 		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
+
+		// those values might need some fine-tuning:
+		const double accel_time = 0.3 / turbo_speed(); // seconds until full speed is reached 
+		const double decel_time = 0.4 / turbo_speed(); // seconds from full speed to stop
 
 		double velocity_max = preferences::scroll_speed() * 60.0;
 		velocity_max *= turbo_speed();
