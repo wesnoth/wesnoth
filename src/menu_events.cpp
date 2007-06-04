@@ -309,11 +309,19 @@ namespace events{
 
 		std::vector<gamemap::location> locations_list;
 		std::vector<unit> units_list;
+		int selected = 0;
+		
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->second.side() != (gui_->viewing_team()+1))
 				continue;
 
 			std::stringstream row;
+			// if a unit is already selected on the map, we do the same in the unit list dialog
+			if (gui_->selected_hex() == i->first) {
+				 row << DEFAULT_ITEM;
+				 selected = units_list.size();
+			}
+			
 			row << i->second.language_name() << COLUMN_SEPARATOR
 				<< i->second.description() << COLUMN_SEPARATOR
 				<< i->second.level() << COLUMN_SEPARATOR
@@ -337,21 +345,21 @@ namespace events{
 			units_list.push_back(i->second);
 		}
 
-		int selected = 0;
-
 		{
 			dialogs::unit_preview_pane unit_preview(*gui_, &map_, units_list);
+			unit_preview.set_selection(selected);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
 			selected = gui::show_dialog(*gui_,NULL,_("Unit List"),"",
-										gui::OK_ONLY,&items,&preview_panes,
+										gui::OK_CANCEL,&items,&preview_panes,
 										"",NULL,0,NULL,-1,-1,NULL,NULL,"",&sorter);
 		}
 
-		if(selected > 0 && selected < int(locations_list.size())) {
+		if(selected >= 0 && selected < int(locations_list.size())) {
 			const gamemap::location& loc = locations_list[selected];
 			gui_->scroll_to_tile(loc,display::WARP);
+			gui_->select_hex(loc);
 		}
 	}
 
