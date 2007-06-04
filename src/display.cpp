@@ -1769,39 +1769,33 @@ void display::draw_text_in_hex(const gamemap::location& loc, const std::string& 
 
 void display::draw_movement_info(const gamemap::location& loc)
 {
-	std::vector<gamemap::location>::const_iterator i =
-	         std::find(route_.steps.begin(),route_.steps.end(),loc);
-
+	//check if there is a path and if we are not at its start because
 	//we don't want to display movement info on the unit's hex (useless and unreadable)
-	if (i == route_.steps.begin()) return;
+	if (route_.steps.empty() || route_.steps.front() == loc) return;
 
-	//if there isn't a match for "loc" in "route_.turn_waypoints", return.
-	std::map<gamemap::location, int>::iterator turn_waypoint_iter;
-	turn_waypoint_iter = route_.turn_waypoints.find(loc);
-	if(turn_waypoint_iter == route_.turn_waypoints.end()) {
-		return;
-	}
+	//search if there is a turn waypoint here
+	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
+	if(turn_waypoint_iter == route_.turn_waypoints.end()) return;
 
 	std::stringstream text;
 
 #ifndef USE_TINY_GUI
 	const unit_map::const_iterator un = units_.find(route_.steps.front());
-	/* YogiHH 15.04.2006
-	if this looks too ugly because fonts don't scale just reactivate the second condition
-	*/
-	if(un != units_.end() /*&& zoom_ >= DefaultZoom*/) {
+
+	if(un != units_.end()) {
 		text << (100-un->second.defense_modifier(map_.get_terrain(loc))) << "%";
 	}
 #endif
 
 	int turns_to_reach = turn_waypoint_iter->second;
 	if(turns_to_reach > 0 && turns_to_reach < 10) {
-		text << " (" << char('0' + turns_to_reach) << ")";
+#ifndef USE_TINY_GUI
+		text << " ";
+#endif
+		text << "(" << turns_to_reach << ")";
 	}
 
-	const std::string& str = text.str();
-
-	draw_text_in_hex(loc, str, font::SIZE_PLUS, font::YELLOW_COLOUR);
+	draw_text_in_hex(loc, text.str(), font::SIZE_PLUS, font::YELLOW_COLOUR);
 }
 
 static const std::string& get_direction(size_t n)
