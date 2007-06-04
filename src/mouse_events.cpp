@@ -55,6 +55,9 @@ static bool command_active()
 }
 
 namespace{
+	//minimum dragging distance to fire the drag&drop
+	const double drag_threshold = 14.0;
+
 	// This preview pane is shown in the "Damage Calculations" dialog.
 	class battle_prediction_pane : public gui::preview_pane
 	{
@@ -737,13 +740,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	// While we check the mouse buttons state, we also grab fresh position data.
 	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
 	int my = drag_from_y_;
-	if (dragging_ && !dragging_started_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON(1) != 0)) {
-		const int abs1 = abs(drag_from_x_- mx);
-		const int abs2 = abs(drag_from_y_- my);
-		//don't use int __cdecl ::abs() as direct parameter to maximum<int>()
-		//it gives problems with MSVC++ 6
-		const int drag_distance = maximum<int>(abs1, abs2);
-	 	if (drag_distance > 10) {
+	if (dragging_ && !dragging_started_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON_LEFT != 0)) {
+		const double drag_distance = pow(drag_from_x_- mx, 2) + pow(drag_from_y_- my, 2);
+		if (drag_distance > drag_threshold*drag_threshold) {
 			dragging_started_ = true;
 			cursor::set_dragging(true);
 		}
