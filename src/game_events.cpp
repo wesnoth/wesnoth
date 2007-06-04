@@ -1362,8 +1362,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(animate) {
 				unit_display::unit_recruited(loc);
 			}
-			else if(show)
-				un->second.redraw_unit(*screen, loc);
+			else if(show) {
+				screen->draw();
+			}
 		} else {
 			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 
