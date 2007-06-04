@@ -1,4 +1,4 @@
-/* $Id: unit_frame.hpp 9700 2006-01-15 12:00:53Z noyga $ */
+/* $Id$ */
 /*
    Copyright (C) 2006 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

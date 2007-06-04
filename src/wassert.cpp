@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
    Copyright (C) 2005 by Isaac Clerencia <isaac@sindominio.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

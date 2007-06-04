@@ -1,4 +1,4 @@
-/* $Id: unit_animation.cpp 9735 2006-01-18 18:31:24Z boucman $ */
+/* $Id$ */
 /*
    Copyright (C) 2006 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

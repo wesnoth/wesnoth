@@ -1,4 +1,4 @@
-
+/* $Id$ */
 /*
  * Copyright 2006 Dominic Bolin
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

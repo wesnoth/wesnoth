@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
    Copyright (C) 2005 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <davidnwhite@verizon.net>

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef PROXY_HPP_INCLUDED
 #define PROXY_HPP_INCLUDED
 

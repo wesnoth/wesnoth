@@ -1,4 +1,4 @@
-/* $Id: config.hpp 8785 2005-11-08 22:23:03Z jhinrichs $ */
+/* $Id$ */
 /*
    Copyright (C) 2005 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <davidnwhite@verizon.net>

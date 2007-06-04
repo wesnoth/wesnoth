@@ -1,4 +1,4 @@
-/* $Id: team.hpp 9124 2005-12-12 04:09:50Z darthfool $ */
+/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

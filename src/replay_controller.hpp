@@ -1,4 +1,4 @@
-/* $Id: replay_controller.hpp 7396 2005-07-02 21:37:20Z ott $ */
+/* $Id$ */
 /*
    Copyright (C) 2006 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <davidnwhite@verizon.net>

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef AI_DFOOL_HPP_INCLUDED
 #define AI_DFOOL_HPP_INCLUDED
 

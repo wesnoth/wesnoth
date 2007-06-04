@@ -1,4 +1,3 @@
-
 /* $Id$ */
 /*
    Copyright (C) 2006 by Dominic Bolin <dominic.bolin@exong.net>

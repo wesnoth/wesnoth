@@ -1,3 +1,4 @@
+/* $Id$ */
 #ifndef JM_LOADSCREEN_HPP
 #define JM_LOADSCREEN_HPP
 

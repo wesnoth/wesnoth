@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef AI_PYTHON_HPP_INCLUDED
 #define AI_PYTHON_HPP_INCLUDED
 
