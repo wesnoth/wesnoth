@@ -81,7 +81,7 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	const int total_mvt_time = 150 * (int)(temp_unit.movement_cost(dst_terrain)/acceleration);
+	const int total_mvt_time = static_cast<int>(150/acceleration * temp_unit.movement_cost(dst_terrain));
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = 1;
 	disp->scroll_to_tiles(a,b,display::ONSCREEN);
