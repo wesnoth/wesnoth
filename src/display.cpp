@@ -1740,7 +1740,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 }
 
 void display::draw_text_in_hex(const gamemap::location& loc, const std::string& text,
-		size_t font_size, SDL_Color color)
+		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
 	
@@ -1754,8 +1754,10 @@ void display::draw_text_in_hex(const gamemap::location& loc, const std::string& 
 #endif
 	
 	const SDL_Rect& text_area = font::text_area(text,font_sz);
-	const int x = get_location_x(loc) + hex_size()/2 - text_area.w/2;
-	const int y = get_location_y(loc) + hex_size()/2 - text_area.h/2;
+	const int x = get_location_x(loc) - text_area.w/2
+	              + static_cast<int>(x_in_hex* hex_size());
+	const int y = get_location_y(loc) - text_area.h/2
+	              + static_cast<int>(y_in_hex* hex_size());
 
 	const SDL_Rect& rect = map_area();
 	for (int dy=-1; dy <= 1; dy++) {
@@ -1777,26 +1779,34 @@ void display::draw_movement_info(const gamemap::location& loc)
 	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
 	if(turn_waypoint_iter == route_.turn_waypoints.end()) return;
 
-	std::stringstream text;
-
+	//display the def% of this terrain
 #ifndef USE_TINY_GUI
 	const unit_map::const_iterator un = units_.find(route_.steps.front());
-
 	if(un != units_.end()) {
-		text << (100-un->second.defense_modifier(map_.get_terrain(loc))) << "%";
+		int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
+		std::stringstream def_text;
+		def_text << def << "%";
+		SDL_Color color = {255 - def, 105 + def, 0, 0};
+
+		draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color, 0.5, 0.5);
 	}
 #endif
 
+	//display the number of turn to reach if > 0
 	int turns_to_reach = turn_waypoint_iter->second;
 	if(turns_to_reach > 0 && turns_to_reach < 10) {
+		std::stringstream turns_text;
+		turns_text << "(" << turns_to_reach << ")";
+		const SDL_Color turns_color = font::NORMAL_COLOUR;
 #ifndef USE_TINY_GUI
-		text << " ";
+		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.8);
+#else
+		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.5);
 #endif
-		text << "(" << turns_to_reach << ")";
 	}
-
-	draw_text_in_hex(loc, text.str(), font::SIZE_PLUS, font::YELLOW_COLOUR);
 }
+
+
 
 static const std::string& get_direction(size_t n)
 {

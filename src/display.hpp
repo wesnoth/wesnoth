@@ -263,10 +263,10 @@ public:
 	//return with no effect.
 	void draw_footstep(const gamemap::location& loc, int xloc, int yloc);
 
-	//function to draw text on the center of a hex.
-	// The font size is adjusted to the zoom factor
+	//function to draw text on a hex. (0.5, 0.5) is the center
+	//The font size is adjusted to the zoom factor
 	void draw_text_in_hex(const gamemap::location& loc, const std::string& text,
-		size_t font_size, SDL_Color color);
+		size_t font_size, SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
 	
 	//draws the movement info (turns available) for a given location
 	void draw_movement_info(const gamemap::location& loc);
