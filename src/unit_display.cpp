@@ -75,10 +75,13 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 
 	const double acceleration = disp->turbo_speed();
 
+	// we place the temporary unit to show it when scrolling
+	disp->place_temporary_unit(temp_unit,a);
+	disp->scroll_to_tiles(a,b,display::ONSCREEN);
+
 	const int total_mvt_time = static_cast<int>(150/acceleration * temp_unit.movement_cost(dst_terrain));
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = 1;
-	disp->scroll_to_tiles(a,b,display::ONSCREEN);
 
 	while(mvt_time < total_mvt_time-1) { // one draw in each hex at least
 		disp->delay(10);
