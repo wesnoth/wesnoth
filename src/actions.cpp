@@ -1884,13 +1884,10 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				//we have to swap out any unit that is already in the hex, so we can put our
 				//unit there, then we'll swap back at the end.
 				const temporary_unit_placer unit_placer(units,*step,ui->second);
-				if( team.auto_shroud_updates())
-        {
+				if( team.auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
 					    ui->second.side()-1,&known_units,&seen_units);
-				}
-				else
-				{
+				} else {
 					clear_shroud_unit(map,status,gamedata,units,*step,teams,
 							ui->second.side()-1,&known_units,&seen_units);
 				}
@@ -1898,6 +1895,18 @@ size_t move_unit(display* disp, const game_data& gamedata,
 					disp->invalidate_all();
 				}
 			}
+		}
+		//check to see if the unit was deleted during a sighted event in clear_shroud_unit()
+		ui = units.find(route.front());
+		if(ui == units.end()) {
+			//FIXME: the correct behavior for sighted event would be to halt movement,
+			// then fire "sighted" after firing "moveto" (see below).
+			//However, since we have fired "sighted" during movement calculations
+			// this is a workaround to prevent a crash.
+			if(move_recorder != NULL) {
+				move_recorder->add_movement(route.front(),*step);
+			}
+			return (step - route.begin());
 		}
 
 		//check if we have discovered an invisible enemy unit
