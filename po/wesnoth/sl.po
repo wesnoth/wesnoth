@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-02 18:43+0200\n"
+"POT-Creation-Date: 2007-06-05 10:56+0200\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -8885,7 +8885,7 @@ msgid ""
 msgstr ""
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:352
-#: src/mouse_events.cpp:194 src/mouse_events.cpp:304
+#: src/mouse_events.cpp:197 src/mouse_events.cpp:307
 msgid "Attacker"
 msgstr "Napadalec"
 
@@ -8895,7 +8895,7 @@ msgstr "Napadalec"
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:359
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:361
-#: src/mouse_events.cpp:195 src/mouse_events.cpp:303
+#: src/mouse_events.cpp:198 src/mouse_events.cpp:306
 msgid "Defender"
 msgstr "Branitelj"
 
@@ -9037,13 +9037,13 @@ msgid "End Turn"
 msgstr "Končaj potezo"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2416
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:298 src/unit.cpp:2416
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
-#: src/menu_events.cpp:833
+#: data/themes/experimental.cfg:158 src/menu_events.cpp:299
+#: src/menu_events.cpp:842
 msgid "XP"
 msgstr "XP"
 
@@ -9155,7 +9155,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:168 src/help.cpp:2597 src/menu_events.cpp:68
+#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:69
 msgid "Close"
 msgstr "Zapri"
 
@@ -9172,23 +9172,23 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Na voljo ni prostih gradov, kjer bi lahko vpoklicovali."
 
-#: src/actions.cpp:849 src/actions.cpp:1075
+#: src/actions.cpp:883 src/actions.cpp:1109
 msgid "poisoned"
 msgstr "zastrupljen"
 
-#: src/actions.cpp:853 src/actions.cpp:1079
+#: src/actions.cpp:887 src/actions.cpp:1113
 msgid "slowed"
 msgstr "upočasnjen"
 
-#: src/actions.cpp:859 src/actions.cpp:1085
+#: src/actions.cpp:893 src/actions.cpp:1119
 msgid "stone"
 msgstr "okamèni"
 
-#: src/actions.cpp:1982
+#: src/actions.cpp:2025
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:2022
+#: src/actions.cpp:2065
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
@@ -9197,7 +9197,7 @@ msgstr[1] "Zavezniške enote opažene!"
 msgstr[2] "Zavezniške enote opažene!"
 msgstr[3] "Zavezniške enote opažene!"
 
-#: src/actions.cpp:2025
+#: src/actions.cpp:2068
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
@@ -9206,7 +9206,7 @@ msgstr[1] "Sovražne enote opažene!"
 msgstr[2] "Sovražne enote opažene!"
 msgstr[3] "Sovražne enote opažene!"
 
-#: src/actions.cpp:2030
+#: src/actions.cpp:2073
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
@@ -9214,7 +9214,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2074
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
@@ -9222,12 +9222,12 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions.cpp:2032
+#: src/actions.cpp:2075
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions.cpp:2041
+#: src/actions.cpp:2084
 msgid "(press $hotkey to continue)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
 
@@ -9296,7 +9296,7 @@ msgstr "Vodič"
 msgid "replay"
 msgstr "vnovično predvajanje"
 
-#: src/dialogs.cpp:481 src/menu_events.cpp:447 src/multiplayer_lobby.cpp:408
+#: src/dialogs.cpp:481 src/menu_events.cpp:456 src/multiplayer_lobby.cpp:408
 msgid "Turn"
 msgstr "Poteza"
 
@@ -9348,8 +9348,8 @@ msgstr "Izbriši shranjen položaj"
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:295
-#: src/menu_events.cpp:831
+#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:296
+#: src/menu_events.cpp:840 src/multiplayer.cpp:108
 msgid "Name"
 msgstr "Ime"
 
@@ -9370,11 +9370,11 @@ msgstr "Izberite igro, ki jo želite naložiti"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:725 src/help.cpp:1083
+#: src/dialogs.cpp:725 src/help.cpp:1084
 msgid "level"
 msgstr "stopnja"
 
-#: src/dialogs.cpp:747 src/help.cpp:1141
+#: src/dialogs.cpp:747 src/help.cpp:1142
 msgid "HP: "
 msgstr "HP: "
 
@@ -9382,11 +9382,11 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:764 src/help.cpp:1142
+#: src/dialogs.cpp:764 src/help.cpp:1143
 msgid "Moves: "
 msgstr "Premiki: "
 
-#: src/display.cpp:559
+#: src/display.cpp:560
 msgid "Screenshot"
 msgstr "Posnetek zaslona"
 
@@ -9458,7 +9458,7 @@ msgstr "Zdaj se boste povezali s strežnikom za prenos dodatkov."
 msgid "Server: "
 msgstr "Strežnik: "
 
-#: src/game.cpp:912 src/multiplayer.cpp:160 src/multiplayer.cpp:197
+#: src/game.cpp:912 src/multiplayer.cpp:166 src/multiplayer.cpp:203
 msgid "Connecting to Server..."
 msgstr "Povezovanje s strežnikom ..."
 
@@ -9550,7 +9550,7 @@ msgid ""
 msgstr "Namestitev kampanje ni uspela; nekaj datotek ni bilo mogoče ustvariti."
 
 #: src/game.cpp:1135 src/game.cpp:1174 src/game.cpp:1199
-#: src/multiplayer.cpp:244 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:388
+#: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:388
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
@@ -9604,7 +9604,7 @@ msgstr "Naloži igro"
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Večigralska igra na istem računalniku"
 
-#: src/game.cpp:1244 src/multiplayer.cpp:224
+#: src/game.cpp:1244 src/multiplayer.cpp:230
 msgid "Login: "
 msgstr "Prijava: "
 
@@ -9676,100 +9676,100 @@ msgstr "Poraz:"
 msgid "Could not write to file"
 msgstr "Ni bilo mogoče pisati v datoteko."
 
-#: src/help.cpp:1103
+#: src/help.cpp:1104
 msgid "Advances to: "
 msgstr "Napreduje v: "
 
-#: src/help.cpp:1124
+#: src/help.cpp:1125
 msgid "Abilities: "
 msgstr "Sposobnosti: "
 
-#: src/help.cpp:1143
+#: src/help.cpp:1144
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/help.cpp:1144
+#: src/help.cpp:1145
 msgid "Alignment: "
 msgstr "Poravnava: "
 
-#: src/help.cpp:1150
+#: src/help.cpp:1151
 msgid "Required XP: "
 msgstr "Potrebni XP: "
 
-#: src/help.cpp:1159
+#: src/help.cpp:1160
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1166
+#: src/help.cpp:1167
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Izhod iz igre"
 
-#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:830
+#: src/help.cpp:1168 src/menu_events.cpp:295 src/menu_events.cpp:839
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/help.cpp:1168
+#: src/help.cpp:1169
 msgid "Strikes"
 msgstr "Udarci"
 
-#: src/help.cpp:1169
+#: src/help.cpp:1170
 msgid "Range"
 msgstr "Doseg"
 
-#: src/help.cpp:1170
+#: src/help.cpp:1171
 msgid "Special"
 msgstr "Posebnosti orožja"
 
-#: src/help.cpp:1220
+#: src/help.cpp:1221
 msgid "Resistances"
 msgstr "Odpornosti"
 
-#: src/help.cpp:1224
+#: src/help.cpp:1225
 msgid "Attack Type"
 msgstr "Tip napada"
 
-#: src/help.cpp:1225
+#: src/help.cpp:1226
 msgid "Resistance"
 msgstr "Odpornost"
 
-#: src/help.cpp:1250
+#: src/help.cpp:1251
 msgid "Terrain Modifiers"
 msgstr "Terenski prikrojevalci"
 
-#: src/help.cpp:1254
+#: src/help.cpp:1255
 msgid "Terrain"
 msgstr "Teren"
 
-#: src/help.cpp:1255
+#: src/help.cpp:1256
 msgid "Defense"
 msgstr "Obramba"
 
-#: src/help.cpp:1256
+#: src/help.cpp:1257
 msgid "Movement Cost"
 msgstr "Cena premika"
 
-#: src/help.cpp:2142
+#: src/help.cpp:2143
 msgid " < Back"
 msgstr "< Nazaj"
 
-#: src/help.cpp:2143
+#: src/help.cpp:2144
 msgid "Forward >"
 msgstr "Naprej >"
 
-#: src/help.cpp:2255
+#: src/help.cpp:2256
 msgid "Reference to unknown topic: "
 msgstr "Povezava do neznane teme: "
 
-#: src/help.cpp:2515
+#: src/help.cpp:2516
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2601
+#: src/help.cpp:2602
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoč za The Battle for Wesnoth "
 
-#: src/help.cpp:2651
+#: src/help.cpp:2652
 msgid "Parse error when parsing help text: "
 msgstr "Napaka med razčlenjevanjem pomoči: "
 
@@ -9793,28 +9793,28 @@ msgstr "Privzeti sistemski jezik"
 msgid "?"
 msgstr "?"
 
-#: src/loadscreen.cpp:160
+#: src/loadscreen.cpp:161
 msgid "Verifying cache."
 msgstr "Preverjanje predpomnilnika."
 
-#: src/loadscreen.cpp:179
+#: src/loadscreen.cpp:180
 msgid "Reading cache."
 msgstr "Branje predpomnilnika."
 
-#: src/loadscreen.cpp:198
+#: src/loadscreen.cpp:199
 msgid "Reading unit files."
 msgstr "Branje datotek enot."
 
-#: src/loadscreen.cpp:217
+#: src/loadscreen.cpp:218
 msgid "Reading files and creating cache."
 msgstr "Branje datotek in ustvarjanje predpomnilnika."
 
-#: src/menu_events.cpp:66
+#: src/menu_events.cpp:67
 #, fuzzy
 msgid "Detail"
 msgstr "rep"
 
-#: src/menu_events.cpp:101
+#: src/menu_events.cpp:102
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -9822,7 +9822,7 @@ msgstr ""
 "Moj gospod, ta enota je izkušena, na višji izkustveni stopnji! Ali res "
 "hočete odpraviti $noun?"
 
-#: src/menu_events.cpp:103
+#: src/menu_events.cpp:104
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -9830,115 +9830,115 @@ msgstr ""
 "Moj gospod, ta enota je blizu višji izkustveni stopnji! Ali res hočete "
 "odpraviti $noun?"
 
-#: src/menu_events.cpp:108
+#: src/menu_events.cpp:109
 msgid "her"
 msgstr "njo"
 
-#: src/menu_events.cpp:108
+#: src/menu_events.cpp:109
 msgid "him"
 msgstr "njega"
 
-#: src/menu_events.cpp:164 src/menu_events.cpp:240
+#: src/menu_events.cpp:165 src/menu_events.cpp:241
 msgid "Recruits"
 msgstr "Vpoklicane enote"
 
-#: src/menu_events.cpp:170 src/menu_events.cpp:244
+#: src/menu_events.cpp:171 src/menu_events.cpp:245
 msgid "Recalls"
 msgstr "Priklicane enote"
 
-#: src/menu_events.cpp:176 src/menu_events.cpp:248
+#: src/menu_events.cpp:177 src/menu_events.cpp:249
 msgid "Advancements"
 msgstr "Napredovanja"
 
-#: src/menu_events.cpp:182 src/menu_events.cpp:252
+#: src/menu_events.cpp:183 src/menu_events.cpp:253
 msgid "Losses"
 msgstr "Izgube"
 
-#: src/menu_events.cpp:188 src/menu_events.cpp:256
+#: src/menu_events.cpp:189 src/menu_events.cpp:257
 msgid "Kills"
 msgstr "Sovražnikove izgube"
 
-#: src/menu_events.cpp:194
+#: src/menu_events.cpp:195
 msgid "Damage Inflicted"
 msgstr "Storjena škoda"
 
-#: src/menu_events.cpp:200
+#: src/menu_events.cpp:201
 msgid "Damage Taken"
 msgstr "Utrpela škoda"
 
-#: src/menu_events.cpp:206
+#: src/menu_events.cpp:207
 msgid "Damage Inflicted (EV)"
 msgstr "Storjena škoda (pričakovana)"
 
-#: src/menu_events.cpp:213
+#: src/menu_events.cpp:214
 msgid "Damage Taken (EV)"
 msgstr "Utrpela škoda (pričakovana)"
 
-#: src/menu_events.cpp:222
+#: src/menu_events.cpp:223
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/menu_events.cpp:296 src/menu_events.cpp:832
+#: src/menu_events.cpp:297 src/menu_events.cpp:841
 msgid "Level"
 msgstr "Stopnja"
 
-#: src/menu_events.cpp:299
+#: src/menu_events.cpp:300
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:300 src/unit.cpp:2447
+#: src/menu_events.cpp:301 src/unit.cpp:2447
 msgid "Moves"
 msgstr "Premiki"
 
-#: src/menu_events.cpp:301
+#: src/menu_events.cpp:302
 msgid "Location"
 msgstr "Lega"
 
-#: src/menu_events.cpp:347
+#: src/menu_events.cpp:355
 msgid "Unit List"
 msgstr "Seznam enot"
 
-#: src/menu_events.cpp:361
+#: src/menu_events.cpp:370
 msgid "Leader"
 msgstr "Vodja"
 
-#: src/menu_events.cpp:362 src/multiplayer_connect.cpp:741
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
 msgid "Team"
 msgstr "Ekipa"
 
-#: src/menu_events.cpp:363 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:752
 #: src/multiplayer_wait.cpp:440
 msgid "Gold"
 msgstr "Zlato"
 
-#: src/menu_events.cpp:364
+#: src/menu_events.cpp:373
 msgid "Villages"
 msgstr "Vasi"
 
-#: src/menu_events.cpp:365
+#: src/menu_events.cpp:374
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:366
+#: src/menu_events.cpp:375
 msgid "Upkeep"
 msgstr "Plače"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:376 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:444
 msgid "Income"
 msgstr "Prihodki"
 
-#: src/menu_events.cpp:456 src/playcampaign.cpp:331 src/playcampaign.cpp:476
+#: src/menu_events.cpp:465 src/playcampaign.cpp:331 src/playcampaign.cpp:476
 msgid "Name:"
 msgstr "Ime:"
 
-#: src/menu_events.cpp:461 src/menu_events.cpp:474
+#: src/menu_events.cpp:470 src/menu_events.cpp:483
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Napaka"
 
-#: src/menu_events.cpp:461
+#: src/menu_events.cpp:470
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -9946,58 +9946,58 @@ msgstr ""
 "Imena shranjenih položajev ne smejo vsebovati dvopičij, vezajev ali "
 "poševnic. Prosim izberite drugačno ime."
 
-#: src/menu_events.cpp:471
+#: src/menu_events.cpp:480
 msgid "Saved"
 msgstr "Shranjeno"
 
-#: src/menu_events.cpp:471
+#: src/menu_events.cpp:480
 msgid "The game has been saved"
 msgstr "Igra je bila shranjena"
 
-#: src/menu_events.cpp:474 src/playcampaign.cpp:486
+#: src/menu_events.cpp:483 src/playcampaign.cpp:486
 msgid "The game could not be saved"
 msgstr "Igre ni bilo možno shraniti"
 
-#: src/menu_events.cpp:488
+#: src/menu_events.cpp:497
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Dèli karto z zavezniki"
 
-#: src/menu_events.cpp:493
+#: src/menu_events.cpp:502
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Shranjeni položaj že obstaja. Ali ga želite prepisati?"
 
-#: src/menu_events.cpp:505
+#: src/menu_events.cpp:514
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:510
+#: src/menu_events.cpp:519
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:745
+#: src/menu_events.cpp:609 src/menu_events.cpp:611 src/play_controller.cpp:746
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Samodejno shranjen položaj"
 
-#: src/menu_events.cpp:605
+#: src/menu_events.cpp:614
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ni bilo mogoče samodejno shraniti igre. Shranite jo ročno."
 
-#: src/menu_events.cpp:629
+#: src/menu_events.cpp:638
 msgid "Chat Log"
 msgstr "Dnevnik pogovorov"
 
-#: src/menu_events.cpp:639
+#: src/menu_events.cpp:648
 msgid "Message:"
 msgstr "Sporočilo:"
 
-#: src/menu_events.cpp:640
+#: src/menu_events.cpp:649
 msgid "Send to allies only"
 msgstr "Pošlji samo zaveznikom"
 
-#: src/menu_events.cpp:707
+#: src/menu_events.cpp:716
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
@@ -10006,27 +10006,27 @@ msgstr[1] "Zlata"
 msgstr[2] "Zlata"
 msgstr[3] "Zlata"
 
-#: src/menu_events.cpp:714
+#: src/menu_events.cpp:723
 msgid "You have no units available to recruit."
 msgstr "Nikogar ne morete vpoklicati."
 
-#: src/menu_events.cpp:725
+#: src/menu_events.cpp:734
 msgid "Recruit"
 msgstr "Vpokliči"
 
-#: src/menu_events.cpp:726 src/menu_events.cpp:876
+#: src/menu_events.cpp:735 src/menu_events.cpp:885
 msgid "Select unit:"
 msgstr "Izberite enoto:"
 
-#: src/menu_events.cpp:766
+#: src/menu_events.cpp:775
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Za vpoklic te enote nimate dovolj zlata"
 
-#: src/menu_events.cpp:823
+#: src/menu_events.cpp:832
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Od svojih enot ste ločeni in jih ne morete priklicati"
 
-#: src/menu_events.cpp:825
+#: src/menu_events.cpp:834
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10034,15 +10034,15 @@ msgstr ""
 "Nobenih enot ne morete priklicati\n"
 " (imeti morate preživele veterane iz prejšnjih scenarijev)"
 
-#: src/menu_events.cpp:864
+#: src/menu_events.cpp:873
 msgid "Dismiss Unit"
 msgstr "Odpravi enoto"
 
-#: src/menu_events.cpp:875
+#: src/menu_events.cpp:884
 msgid "Recall"
 msgstr "Prikliči"
 
-#: src/menu_events.cpp:887
+#: src/menu_events.cpp:896
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -10051,42 +10051,42 @@ msgstr[1] "Za priklic enote potrebujete vsaj $cost zlata"
 msgstr[2] "Za priklic enote potrebujete vsaj $cost zlata"
 msgstr[3] "Za priklic enote potrebujete vsaj $cost zlata"
 
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1225
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Niste še začeli svoje poteze. Ali jo res želite končati?"
 
-#: src/menu_events.cpp:1224 src/menu_events.cpp:1229
+#: src/menu_events.cpp:1233 src/menu_events.cpp:1238
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Nekatere enote se še lahko premaknejo. Ali res želite končati potezo?"
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1279
 msgid "Rename Unit"
 msgstr "Preimenuj enoto"
 
-#: src/menu_events.cpp:1352
+#: src/menu_events.cpp:1361
 msgid "Place Label"
 msgstr "Postavi oznako"
 
-#: src/menu_events.cpp:1355 src/menu_events.cpp:1358
+#: src/menu_events.cpp:1364 src/menu_events.cpp:1367
 msgid "Label:"
 msgstr "Oznaka:"
 
-#: src/menu_events.cpp:1361
+#: src/menu_events.cpp:1370
 #, fuzzy
 msgid "Team only"
 msgstr "Turkizna"
 
-#: src/menu_events.cpp:1459
+#: src/menu_events.cpp:1468
 msgid "Search"
 msgstr "Iskanje"
 
-#: src/menu_events.cpp:1502
+#: src/menu_events.cpp:1511
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Ukazi: whisper ignore emote. Vpišite /help [ukaz] za več podatkov."
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1562
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -10094,17 +10094,17 @@ msgstr ""
 "Pošlje privatno sporočilo. Dela samo opazovalcih. Uporaba: /whisper "
 "[igralec] [sporočilo]"
 
-#: src/menu_events.cpp:1557
+#: src/menu_events.cpp:1566
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Dodaj igralca na seznam ignoriranih. Uporaba: /ignore add [argument]"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1568
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Dodaj igralca na seznam ignoriranih. Uporaba: /ignore add [argument]"
 
-#: src/menu_events.cpp:1561
+#: src/menu_events.cpp:1570
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -10112,21 +10112,21 @@ msgid ""
 msgstr ""
 "Izbriši igralca s seznama ignoriranih. Uporaba: /ignore remove [argument]"
 
-#: src/menu_events.cpp:1563
+#: src/menu_events.cpp:1572
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Počisti seznam ignoriranih. Uporaba: /ignore clear"
 
-#: src/menu_events.cpp:1565
+#: src/menu_events.cpp:1574
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Prikaži seznam ignoriranih. Uporaba: /ignore list"
 
-#: src/menu_events.cpp:1567
+#: src/menu_events.cpp:1576
 msgid "Unknown subcommand"
 msgstr "Neznan podukaz"
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1579
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -10138,107 +10138,107 @@ msgstr ""
 "<argument>. Podukazi: add remove list clear. Vpišite /help ignore [podukaz] "
 "za več podatkov."
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1582
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Pošlji emotikon ali osebno dejanje. Uporaba: /emote [sporočilo]"
 
-#: src/menu_events.cpp:1575
+#: src/menu_events.cpp:1584
 msgid "Unknown command"
 msgstr "Neznan ukaz"
 
-#: src/menu_events.cpp:1587
+#: src/menu_events.cpp:1596
 msgid "Added to ignore list: "
 msgstr "Dodan na seznam ignoriranih: "
 
-#: src/menu_events.cpp:1589 src/menu_events.cpp:1596 src/menu_events.cpp:1603
+#: src/menu_events.cpp:1598 src/menu_events.cpp:1605 src/menu_events.cpp:1612
 msgid "Invalid username: "
 msgstr "Neveljavno uporabniško ime: "
 
-#: src/menu_events.cpp:1594
+#: src/menu_events.cpp:1603
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Dodan na seznam ignoriranih: "
 
-#: src/menu_events.cpp:1601
+#: src/menu_events.cpp:1610
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Odstranjen s seznama ignoriranih: "
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1636
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1637
+#: src/menu_events.cpp:1646
 msgid "Removed from ignore list: "
 msgstr "Odstranjen s seznama ignoriranih: "
 
-#: src/menu_events.cpp:1640
+#: src/menu_events.cpp:1649
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Odstranjen s seznama ignoriranih: "
 
-#: src/menu_events.cpp:1647
+#: src/menu_events.cpp:1656
 msgid "Unknown command: "
 msgstr "Neznan ukaz: "
 
-#: src/menu_events.cpp:1748
+#: src/menu_events.cpp:1757
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nisem našel oznake ali enote z '$search' v imenu."
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1904
 msgid "prompt^Command:"
 msgstr "Ukaz:"
 
-#: src/mouse_events.cpp:213
+#: src/mouse_events.cpp:216
 #, fuzzy
 msgid "Expected Battle Result (HP)"
 msgstr "Pričakovan izid (hp)"
 
-#: src/mouse_events.cpp:305
+#: src/mouse_events.cpp:308
 msgid " resistance vs "
 msgstr " odpornost na "
 
-#: src/mouse_events.cpp:306
+#: src/mouse_events.cpp:309
 msgid " vulnerability vs "
 msgstr " šibkost na "
 
-#: src/mouse_events.cpp:316
+#: src/mouse_events.cpp:319
 msgid "Slowed"
 msgstr "Upočasnjen"
 
-#: src/mouse_events.cpp:323
+#: src/mouse_events.cpp:326
 msgid "Time of day"
 msgstr "Čas dneva"
 
-#: src/mouse_events.cpp:333
+#: src/mouse_events.cpp:336
 msgid "Leadership"
 msgstr "Vodenje"
 
-#: src/mouse_events.cpp:340
+#: src/mouse_events.cpp:343
 msgid "Total damage"
 msgstr "Skupna škoda"
 
-#: src/mouse_events.cpp:347
+#: src/mouse_events.cpp:350
 msgid "No usable weapon"
 msgstr "Ni orožja"
 
-#: src/mouse_events.cpp:352
+#: src/mouse_events.cpp:355
 msgid "Chance of being unscathed"
 msgstr "Verjetnost da se ne poškuduje"
 
-#: src/mouse_events.cpp:653 src/mouse_events.cpp:1339
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1335
 msgid "Damage Calculations"
 msgstr "Izračun škode"
 
-#: src/mouse_events.cpp:1322 src/reports.cpp:283
+#: src/mouse_events.cpp:1318 src/reports.cpp:283
 msgid "vs"
 msgstr "proti"
 
-#: src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:1346
 msgid "Attack Enemy"
 msgstr "Napadi"
 
-#: src/mouse_events.cpp:1351
+#: src/mouse_events.cpp:1347
 msgid "Choose weapon:"
 msgstr "Izberite orožje:"
 
@@ -10256,19 +10256,23 @@ msgstr "Poveži se s strežnikom"
 msgid "Choose a known server from the list"
 msgstr ""
 
-#: src/multiplayer.cpp:129
+#: src/multiplayer.cpp:108
+msgid "Address"
+msgstr ""
+
+#: src/multiplayer.cpp:135
 msgid "Connect to Host"
 msgstr "Poveži se z gostiteljem"
 
-#: src/multiplayer.cpp:130
+#: src/multiplayer.cpp:136
 msgid "Choose host to connect to: "
 msgstr "Izberite gostitelja (za povezavo): "
 
-#: src/multiplayer.cpp:170
+#: src/multiplayer.cpp:176
 msgid "Reading from Server..."
 msgstr "Branje s strežnika ..."
 
-#: src/multiplayer.cpp:179
+#: src/multiplayer.cpp:185
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -10276,32 +10280,32 @@ msgstr ""
 "Strežnik zahteva različico '$version1' vi pa uporabljate različico "
 "'$version2'"
 
-#: src/multiplayer.cpp:191
+#: src/multiplayer.cpp:197
 msgid "Server-side redirect loop"
 msgstr "Preusmeritve na strani strežnika"
 
-#: src/multiplayer.cpp:223
+#: src/multiplayer.cpp:229
 msgid "You must log in to this server"
 msgstr "Prijaviti se morate na ta strežnik"
 
-#: src/multiplayer.cpp:229
+#: src/multiplayer.cpp:235
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
 "Izbrano prijavno ime je predolgo, prosimo uporabite ime krajše od 18 znakov,"
 
-#: src/multiplayer.cpp:407 src/multiplayer.cpp:422
+#: src/multiplayer.cpp:413 src/multiplayer.cpp:428
 #: src/multiplayer_wait.cpp:199
 msgid "No multiplayer sides available in this game"
 msgstr "Na voljo ni več nobene strani"
 
-#: src/multiplayer.cpp:408 src/multiplayer.cpp:423
+#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
 #: src/multiplayer_wait.cpp:236
 msgid "Era not available"
 msgstr "Era ni na voljo"
 
-#: src/multiplayer.cpp:409 src/multiplayer.cpp:424
+#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
 #: src/multiplayer_wait.cpp:241
 msgid "No multiplayer sides found"
 msgstr "Najdenih ni bilo nič strani"
@@ -10694,16 +10698,16 @@ msgstr "Ni bilo mogoče dodati vtičnice"
 msgid "Could not send initial handshake"
 msgstr "Ni bilo mogoče začeti rokovanja"
 
-#: src/play_controller.cpp:391 src/playsingle_controller.cpp:345
-#: src/playsingle_controller.cpp:391
+#: src/play_controller.cpp:392 src/playsingle_controller.cpp:346
+#: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
-#: src/play_controller.cpp:749
+#: src/play_controller.cpp:750
 msgid "Back to start"
 msgstr "Nazaj na začetek"
 
-#: src/play_controller.cpp:751
+#: src/play_controller.cpp:752
 msgid "Back to turn "
 msgstr "Nazaj k potezi "
 
@@ -10761,7 +10765,7 @@ msgstr "Ali želite shraniti igro? (zbriše avtomatsko shranjene položaje)"
 msgid "Unknown scenario: '"
 msgstr "Neznan scenarij: '"
 
-#: src/playmp_controller.cpp:276
+#: src/playmp_controller.cpp:277
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10769,60 +10773,60 @@ msgstr ""
 "Igre niso več sinhronizirane in se bodo morale končati. Ali naj shranim "
 "dnevnik napak iz igre?"
 
-#: src/playsingle_controller.cpp:218
+#: src/playsingle_controller.cpp:219
 msgid "Game Over"
 msgstr "Konec igre"
 
-#: src/playsingle_controller.cpp:219
+#: src/playsingle_controller.cpp:220
 msgid "The game is over."
 msgstr "Igra je končana"
 
-#: src/playsingle_controller.cpp:313
+#: src/playsingle_controller.cpp:314
 msgid "Remaining gold: "
 msgstr "Preostalo zlato: "
 
-#: src/playsingle_controller.cpp:316
+#: src/playsingle_controller.cpp:317
 msgid "Early finish bonus: "
 msgstr "Bonus za zgodnji konec: "
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:319
 msgid "per turn"
 msgstr "na potezo"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:320
 msgid "Turns finished early: "
 msgstr "Preostalih potez: "
 
-#: src/playsingle_controller.cpp:321
+#: src/playsingle_controller.cpp:322
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:323
+#: src/playsingle_controller.cpp:324
 msgid "Gold: "
 msgstr "Zlato: "
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:329
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
-#: src/playsingle_controller.cpp:329
+#: src/playsingle_controller.cpp:330
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:335
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playsingle_controller.cpp:335
+#: src/playsingle_controller.cpp:336
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
-#: src/playsingle_controller.cpp:339
+#: src/playsingle_controller.cpp:340
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:357
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10830,7 +10834,7 @@ msgstr ""
 "Zgodila se je mrežna prkinitev in igra se ne more nadaljevati. Ali želite "
 "shraniti igro?"
 
-#: src/playsingle_controller.cpp:475
+#: src/playsingle_controller.cpp:476
 msgid "It is now your turn"
 msgstr "Vaša poteza se je začela"
 

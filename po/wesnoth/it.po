@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-02 18:43+0200\n"
+"POT-Creation-Date: 2007-06-05 10:56+0200\n"
 "PO-Revision-Date: 2007-05-29 10:53+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -10969,7 +10969,7 @@ msgstr ""
 "ancora. E ancora... *Muah-ah-ah-ah*"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:352
-#: src/mouse_events.cpp:194 src/mouse_events.cpp:304
+#: src/mouse_events.cpp:197 src/mouse_events.cpp:307
 msgid "Attacker"
 msgstr "Attaccante"
 
@@ -10979,7 +10979,7 @@ msgstr "Attaccante"
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:359
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:361
-#: src/mouse_events.cpp:195 src/mouse_events.cpp:303
+#: src/mouse_events.cpp:198 src/mouse_events.cpp:306
 msgid "Defender"
 msgstr "Difensore"
 
@@ -11155,13 +11155,13 @@ msgid "End Turn"
 msgstr "Fine turno"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:297 src/unit.cpp:2416
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:298 src/unit.cpp:2416
 msgid "HP"
 msgstr "PF"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:298
-#: src/menu_events.cpp:833
+#: data/themes/experimental.cfg:158 src/menu_events.cpp:299
+#: src/menu_events.cpp:842
 msgid "XP"
 msgstr "PE"
 
@@ -11272,7 +11272,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:168 src/help.cpp:2597 src/menu_events.cpp:68
+#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:69
 msgid "Close"
 msgstr "Chiudi"
 
@@ -11290,51 +11290,51 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Non ci sono spazi vuoti nel castello per reclutare un'unità."
 
-#: src/actions.cpp:849 src/actions.cpp:1075
+#: src/actions.cpp:883 src/actions.cpp:1109
 msgid "poisoned"
 msgstr "avvelenato"
 
-#: src/actions.cpp:853 src/actions.cpp:1079
+#: src/actions.cpp:887 src/actions.cpp:1113
 msgid "slowed"
 msgstr "rallentato"
 
-#: src/actions.cpp:859 src/actions.cpp:1085
+#: src/actions.cpp:893 src/actions.cpp:1119
 msgid "stone"
 msgstr "pietrifica"
 
-#: src/actions.cpp:1982
+#: src/actions.cpp:2025
 msgid "Ambushed!"
 msgstr "Imboscata!"
 
-#: src/actions.cpp:2022
+#: src/actions.cpp:2065
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Avvistata un'unità alleata."
 msgstr[1] "Avvistate $friend unità alleate."
 
-#: src/actions.cpp:2025
+#: src/actions.cpp:2068
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Avvistata un'unità nemica!"
 msgstr[1] "Avvistate $enemies unità nemiche!"
 
-#: src/actions.cpp:2030
+#: src/actions.cpp:2073
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "(una amica"
 msgstr[1] "($friends amiche"
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2074
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] " una nemica"
 msgstr[1] " $enemies nemiche"
 
-#: src/actions.cpp:2032
+#: src/actions.cpp:2075
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unità avvistate! $friendphrase,$enemyphrase)"
 
-#: src/actions.cpp:2041
+#: src/actions.cpp:2084
 msgid "(press $hotkey to continue)"
 msgstr "(premi $hotkey per continuare)"
 
@@ -11402,7 +11402,7 @@ msgstr "Introduzione"
 msgid "replay"
 msgstr "replay"
 
-#: src/dialogs.cpp:481 src/menu_events.cpp:447 src/multiplayer_lobby.cpp:408
+#: src/dialogs.cpp:481 src/menu_events.cpp:456 src/multiplayer_lobby.cpp:408
 msgid "Turn"
 msgstr "Turno"
 
@@ -11454,8 +11454,8 @@ msgstr "Elimina salvataggio"
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:295
-#: src/menu_events.cpp:831
+#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:296
+#: src/menu_events.cpp:840 src/multiplayer.cpp:108
 msgid "Name"
 msgstr "Nome"
 
@@ -11476,11 +11476,11 @@ msgstr "Scegli la partita da caricare"
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/dialogs.cpp:725 src/help.cpp:1083
+#: src/dialogs.cpp:725 src/help.cpp:1084
 msgid "level"
 msgstr "Livello"
 
-#: src/dialogs.cpp:747 src/help.cpp:1141
+#: src/dialogs.cpp:747 src/help.cpp:1142
 msgid "HP: "
 msgstr "PF: "
 
@@ -11488,11 +11488,11 @@ msgstr "PF: "
 msgid "XP: "
 msgstr "PE: "
 
-#: src/dialogs.cpp:764 src/help.cpp:1142
+#: src/dialogs.cpp:764 src/help.cpp:1143
 msgid "Moves: "
 msgstr "Mosse: "
 
-#: src/display.cpp:559
+#: src/display.cpp:560
 msgid "Screenshot"
 msgstr "Anteprima"
 
@@ -11563,7 +11563,7 @@ msgstr "Ti stai per connettere al server per scaricare le estensioni."
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:912 src/multiplayer.cpp:160 src/multiplayer.cpp:197
+#: src/game.cpp:912 src/multiplayer.cpp:166 src/multiplayer.cpp:203
 msgid "Connecting to Server..."
 msgstr "Connessione al server..."
 
@@ -11655,7 +11655,7 @@ msgstr ""
 "questa campagna."
 
 #: src/game.cpp:1135 src/game.cpp:1174 src/game.cpp:1199
-#: src/multiplayer.cpp:244 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:388
+#: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:388
 msgid "Connection timed out"
 msgstr "Connessione scaduta"
 
@@ -11709,7 +11709,7 @@ msgstr ""
 "Gioca una partita in multigiocatore con IA o persone condividendo la stessa "
 "macchina"
 
-#: src/game.cpp:1244 src/multiplayer.cpp:224
+#: src/game.cpp:1244 src/multiplayer.cpp:230
 msgid "Login: "
 msgstr "Login: "
 
@@ -11783,99 +11783,99 @@ msgstr "Sconfitta:"
 msgid "Could not write to file"
 msgstr "Impossibile scrivere su file"
 
-#: src/help.cpp:1103
+#: src/help.cpp:1104
 msgid "Advances to: "
 msgstr "Avanza come: "
 
-#: src/help.cpp:1124
+#: src/help.cpp:1125
 msgid "Abilities: "
 msgstr "Abilità: "
 
-#: src/help.cpp:1143
+#: src/help.cpp:1144
 msgid "Cost: "
 msgstr "Costo:"
 
-#: src/help.cpp:1144
+#: src/help.cpp:1145
 msgid "Alignment: "
 msgstr "Allineamento: "
 
-#: src/help.cpp:1150
+#: src/help.cpp:1151
 msgid "Required XP: "
 msgstr "PE Richiesti: "
 
-#: src/help.cpp:1159
+#: src/help.cpp:1160
 msgid "unit help^Attacks"
 msgstr "Attacchi"
 
-#: src/help.cpp:1166
+#: src/help.cpp:1167
 msgid "unit help^Name"
 msgstr "Nome"
 
-#: src/help.cpp:1167 src/menu_events.cpp:294 src/menu_events.cpp:830
+#: src/help.cpp:1168 src/menu_events.cpp:295 src/menu_events.cpp:839
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help.cpp:1168
+#: src/help.cpp:1169
 msgid "Strikes"
 msgstr "Colpi"
 
-#: src/help.cpp:1169
+#: src/help.cpp:1170
 msgid "Range"
 msgstr "Raggio"
 
-#: src/help.cpp:1170
+#: src/help.cpp:1171
 msgid "Special"
 msgstr "Speciale"
 
-#: src/help.cpp:1220
+#: src/help.cpp:1221
 msgid "Resistances"
 msgstr "Resistenze"
 
-#: src/help.cpp:1224
+#: src/help.cpp:1225
 msgid "Attack Type"
 msgstr "Tipo di attacco"
 
-#: src/help.cpp:1225
+#: src/help.cpp:1226
 msgid "Resistance"
 msgstr "Resistenza"
 
-#: src/help.cpp:1250
+#: src/help.cpp:1251
 msgid "Terrain Modifiers"
 msgstr "Modificatori del terreno"
 
-#: src/help.cpp:1254
+#: src/help.cpp:1255
 msgid "Terrain"
 msgstr "Terreno"
 
-#: src/help.cpp:1255
+#: src/help.cpp:1256
 msgid "Defense"
 msgstr "Difesa"
 
-#: src/help.cpp:1256
+#: src/help.cpp:1257
 msgid "Movement Cost"
 msgstr "Costo di movimento"
 
-#: src/help.cpp:2142
+#: src/help.cpp:2143
 msgid " < Back"
 msgstr "< Indietro"
 
-#: src/help.cpp:2143
+#: src/help.cpp:2144
 msgid "Forward >"
 msgstr "Avanti >"
 
-#: src/help.cpp:2255
+#: src/help.cpp:2256
 msgid "Reference to unknown topic: "
 msgstr "Riferimento a un argomento sconosciuto: "
 
-#: src/help.cpp:2515
+#: src/help.cpp:2516
 msgid "corrupted original file"
 msgstr "file originale danneggiato"
 
-#: src/help.cpp:2601
+#: src/help.cpp:2602
 msgid "The Battle for Wesnoth Help"
 msgstr "Aiuto per The Battle for Wesnoth"
 
-#: src/help.cpp:2651
+#: src/help.cpp:2652
 msgid "Parse error when parsing help text: "
 msgstr "Errore durante il controllo del testo della guida: "
 
@@ -11899,27 +11899,27 @@ msgstr "Lingua di sistema"
 msgid "?"
 msgstr "?"
 
-#: src/loadscreen.cpp:160
+#: src/loadscreen.cpp:161
 msgid "Verifying cache."
 msgstr "Verifica della cache."
 
-#: src/loadscreen.cpp:179
+#: src/loadscreen.cpp:180
 msgid "Reading cache."
 msgstr "Lettura della cache."
 
-#: src/loadscreen.cpp:198
+#: src/loadscreen.cpp:199
 msgid "Reading unit files."
 msgstr "Caricamento file delle unità."
 
-#: src/loadscreen.cpp:217
+#: src/loadscreen.cpp:218
 msgid "Reading files and creating cache."
 msgstr "Lettura dei file e creazione della cache."
 
-#: src/menu_events.cpp:66
+#: src/menu_events.cpp:67
 msgid "Detail"
 msgstr "Dettagli"
 
-#: src/menu_events.cpp:101
+#: src/menu_events.cpp:102
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -11927,7 +11927,7 @@ msgstr ""
 "Mio signore, questa è un'unità esperta che è già avanzata di livello! Volete "
 "davvero eliminar$noun?"
 
-#: src/menu_events.cpp:103
+#: src/menu_events.cpp:104
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -11936,116 +11936,116 @@ msgstr ""
 "eliminar$noun?"
 
 # Testo integrativo per i messaggi precedenti: eliminarLA
-#: src/menu_events.cpp:108
+#: src/menu_events.cpp:109
 msgid "her"
 msgstr "la"
 
 # Testo integrativo per i messaggi precedenti: eliminarLO
-#: src/menu_events.cpp:108
+#: src/menu_events.cpp:109
 msgid "him"
 msgstr "lo"
 
-#: src/menu_events.cpp:164 src/menu_events.cpp:240
+#: src/menu_events.cpp:165 src/menu_events.cpp:241
 msgid "Recruits"
 msgstr "Reclutamenti"
 
-#: src/menu_events.cpp:170 src/menu_events.cpp:244
+#: src/menu_events.cpp:171 src/menu_events.cpp:245
 msgid "Recalls"
 msgstr "Richiami"
 
-#: src/menu_events.cpp:176 src/menu_events.cpp:248
+#: src/menu_events.cpp:177 src/menu_events.cpp:249
 msgid "Advancements"
 msgstr "Avanzamenti"
 
-#: src/menu_events.cpp:182 src/menu_events.cpp:252
+#: src/menu_events.cpp:183 src/menu_events.cpp:253
 msgid "Losses"
 msgstr "Perdite"
 
-#: src/menu_events.cpp:188 src/menu_events.cpp:256
+#: src/menu_events.cpp:189 src/menu_events.cpp:257
 msgid "Kills"
 msgstr "Uccisioni"
 
-#: src/menu_events.cpp:194
+#: src/menu_events.cpp:195
 msgid "Damage Inflicted"
 msgstr "Danni inflitti"
 
-#: src/menu_events.cpp:200
+#: src/menu_events.cpp:201
 msgid "Damage Taken"
 msgstr "Danni subiti"
 
-#: src/menu_events.cpp:206
+#: src/menu_events.cpp:207
 msgid "Damage Inflicted (EV)"
 msgstr "Danni inflitti (EV)"
 
-#: src/menu_events.cpp:213
+#: src/menu_events.cpp:214
 msgid "Damage Taken (EV)"
 msgstr "Danni subiti (EV)"
 
-#: src/menu_events.cpp:222
+#: src/menu_events.cpp:223
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: src/menu_events.cpp:296 src/menu_events.cpp:832
+#: src/menu_events.cpp:297 src/menu_events.cpp:841
 msgid "Level"
 msgstr "Livello"
 
-#: src/menu_events.cpp:299
+#: src/menu_events.cpp:300
 msgid "unit list^Traits"
 msgstr "Caratteristiche"
 
-#: src/menu_events.cpp:300 src/unit.cpp:2447
+#: src/menu_events.cpp:301 src/unit.cpp:2447
 msgid "Moves"
 msgstr "Mosse"
 
-#: src/menu_events.cpp:301
+#: src/menu_events.cpp:302
 msgid "Location"
 msgstr "Luogo"
 
-#: src/menu_events.cpp:347
+#: src/menu_events.cpp:355
 msgid "Unit List"
 msgstr "Lista delle unità"
 
-#: src/menu_events.cpp:361
+#: src/menu_events.cpp:370
 msgid "Leader"
 msgstr "Condottiero"
 
-#: src/menu_events.cpp:362 src/multiplayer_connect.cpp:741
+#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
 msgid "Team"
 msgstr "Verde-azzurro"
 
-#: src/menu_events.cpp:363 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:752
 #: src/multiplayer_wait.cpp:440
 msgid "Gold"
 msgstr "Oro"
 
-#: src/menu_events.cpp:364
+#: src/menu_events.cpp:373
 msgid "Villages"
 msgstr "Villaggi"
 
-#: src/menu_events.cpp:365
+#: src/menu_events.cpp:374
 msgid "status^Units"
 msgstr "Unità"
 
-#: src/menu_events.cpp:366
+#: src/menu_events.cpp:375
 msgid "Upkeep"
 msgstr "Mantenimento"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:376 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:444
 msgid "Income"
 msgstr "Entrate"
 
-#: src/menu_events.cpp:456 src/playcampaign.cpp:331 src/playcampaign.cpp:476
+#: src/menu_events.cpp:465 src/playcampaign.cpp:331 src/playcampaign.cpp:476
 msgid "Name:"
 msgstr "Nome:"
 
-#: src/menu_events.cpp:461 src/menu_events.cpp:474
+#: src/menu_events.cpp:470 src/menu_events.cpp:483
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Errore"
 
-#: src/menu_events.cpp:461
+#: src/menu_events.cpp:470
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -12053,84 +12053,84 @@ msgstr ""
 "I nomi dei salvataggi non possono contenere due punti, slash o blackslash. "
 "Per favore, scegli un nome differente."
 
-#: src/menu_events.cpp:471
+#: src/menu_events.cpp:480
 msgid "Saved"
 msgstr "Salvato"
 
-#: src/menu_events.cpp:471
+#: src/menu_events.cpp:480
 msgid "The game has been saved"
 msgstr "La partita è stata salvata"
 
-#: src/menu_events.cpp:474 src/playcampaign.cpp:486
+#: src/menu_events.cpp:483 src/playcampaign.cpp:486
 msgid "The game could not be saved"
 msgstr "La partita non può essere salvata"
 
-#: src/menu_events.cpp:488
+#: src/menu_events.cpp:497
 msgid "Save the Map As"
 msgstr "Salva la mappa come"
 
-#: src/menu_events.cpp:493
+#: src/menu_events.cpp:502
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Esiste già una mappa con questo nome. Vuoi sovrascriverla?"
 
-#: src/menu_events.cpp:505
+#: src/menu_events.cpp:514
 msgid "Map saved."
 msgstr "Mappa salvata."
 
-#: src/menu_events.cpp:510
+#: src/menu_events.cpp:519
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/menu_events.cpp:600 src/menu_events.cpp:602 src/play_controller.cpp:745
+#: src/menu_events.cpp:609 src/menu_events.cpp:611 src/play_controller.cpp:746
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Salvataggio automatico"
 
-#: src/menu_events.cpp:605
+#: src/menu_events.cpp:614
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Impossibile effettuare il salvataggio automatico. Si prega si salvare il "
 "gioco manualmente."
 
-#: src/menu_events.cpp:629
+#: src/menu_events.cpp:638
 msgid "Chat Log"
 msgstr "Cronologia chat"
 
-#: src/menu_events.cpp:639
+#: src/menu_events.cpp:648
 msgid "Message:"
 msgstr "Messaggio:"
 
-#: src/menu_events.cpp:640
+#: src/menu_events.cpp:649
 msgid "Send to allies only"
 msgstr "Invia solo agli alleati"
 
-#: src/menu_events.cpp:707
+#: src/menu_events.cpp:716
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Oro"
 msgstr[1] "Oro"
 
-#: src/menu_events.cpp:714
+#: src/menu_events.cpp:723
 msgid "You have no units available to recruit."
 msgstr "Non hai nessuna unità disponibile per il reclutamento."
 
-#: src/menu_events.cpp:725
+#: src/menu_events.cpp:734
 msgid "Recruit"
 msgstr "Recluta"
 
-#: src/menu_events.cpp:726 src/menu_events.cpp:876
+#: src/menu_events.cpp:735 src/menu_events.cpp:885
 msgid "Select unit:"
 msgstr "Seleziona unità:"
 
-#: src/menu_events.cpp:766
+#: src/menu_events.cpp:775
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Non hai abbastanza monete d'oro per reclutare questa unità"
 
-#: src/menu_events.cpp:823
+#: src/menu_events.cpp:832
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Sei separato dai tuoi soldati e non puoi richiamarli"
 
-#: src/menu_events.cpp:825
+#: src/menu_events.cpp:834
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -12138,57 +12138,57 @@ msgstr ""
 "Non ci sono truppe da richiamare.\n"
 "(Devi avere veterani sopravvissuti dai precedenti scenari)"
 
-#: src/menu_events.cpp:864
+#: src/menu_events.cpp:873
 msgid "Dismiss Unit"
 msgstr "Congeda l'unità"
 
-#: src/menu_events.cpp:875
+#: src/menu_events.cpp:884
 msgid "Recall"
 msgstr "Richiama"
 
-#: src/menu_events.cpp:887
+#: src/menu_events.cpp:896
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Devi avere almeno una moneta d'oro per richiamare un'unità"
 msgstr[1] "Devi avere almeno $cost monete d'oro per richiamare un'unità"
 
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1225
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Non hai ancora iniziato il tuo turno. Sei sicuro di volerlo terminare?"
 
-#: src/menu_events.cpp:1224 src/menu_events.cpp:1229
+#: src/menu_events.cpp:1233 src/menu_events.cpp:1238
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Alcune unità hanno dei movimenti a disposizione. Vuoi davvero terminare il "
 "tuo turno?"
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1279
 msgid "Rename Unit"
 msgstr "Rinomina unità"
 
-#: src/menu_events.cpp:1352
+#: src/menu_events.cpp:1361
 msgid "Place Label"
 msgstr "Imposta etichetta"
 
-#: src/menu_events.cpp:1355 src/menu_events.cpp:1358
+#: src/menu_events.cpp:1364 src/menu_events.cpp:1367
 msgid "Label:"
 msgstr "Etichetta:"
 
-#: src/menu_events.cpp:1361
+#: src/menu_events.cpp:1370
 msgid "Team only"
 msgstr "Solo squadra"
 
-#: src/menu_events.cpp:1459
+#: src/menu_events.cpp:1468
 msgid "Search"
 msgstr "Cerca"
 
-#: src/menu_events.cpp:1502
+#: src/menu_events.cpp:1511
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Comandi: whisper list emote. Scrivi /help [comando] per ulteriore aiuto."
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1562
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -12196,18 +12196,18 @@ msgstr ""
 "Invia un messaggio privato. Non si possono mandare messaggi ai giocatori che "
 "controllano una qualunque fazione in partita. Uso: /whisper [nick] [message]"
 
-#: src/menu_events.cpp:1557
+#: src/menu_events.cpp:1566
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Aggiungi il giocatore all'elenco degli amici. Uso: /list addfriend [argument]"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1568
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Aggiungi il giocatore all'elenco degli utenti da ignorare. Uso: /list ignore "
 "[argument]"
 
-#: src/menu_events.cpp:1561
+#: src/menu_events.cpp:1570
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -12215,20 +12215,20 @@ msgstr ""
 "Rimuovi il giocatore dal tuo elenco di amici o utenti da ignorare. Uso: /"
 "list remove [argument]"
 
-#: src/menu_events.cpp:1563
+#: src/menu_events.cpp:1572
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 "Svuota l'elenco degli amici e degli utenti da ignorare: Uso: /list clear"
 
-#: src/menu_events.cpp:1565
+#: src/menu_events.cpp:1574
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Mostra il tuo elenco di amici e utenti da ignorare. Uso: /list display"
 
-#: src/menu_events.cpp:1567
+#: src/menu_events.cpp:1576
 msgid "Unknown subcommand"
 msgstr "Comando sconosciuto"
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1579
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -12240,105 +12240,105 @@ msgstr ""
 "comandi: addfriend addignore remove display clear. Scrivi /help list "
 "[subcommand] per ulteriori informazioni."
 
-#: src/menu_events.cpp:1573
+#: src/menu_events.cpp:1582
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Invia un'emozione o una azione personale in chat. Uso: /emote [message]"
 
-#: src/menu_events.cpp:1575
+#: src/menu_events.cpp:1584
 msgid "Unknown command"
 msgstr "Comando sconosciuto"
 
-#: src/menu_events.cpp:1587
+#: src/menu_events.cpp:1596
 msgid "Added to ignore list: "
 msgstr "Aggiunto all'elenco degli utenti da ignorare:"
 
-#: src/menu_events.cpp:1589 src/menu_events.cpp:1596 src/menu_events.cpp:1603
+#: src/menu_events.cpp:1598 src/menu_events.cpp:1605 src/menu_events.cpp:1612
 msgid "Invalid username: "
 msgstr "Nome utente non valido:"
 
-#: src/menu_events.cpp:1594
+#: src/menu_events.cpp:1603
 msgid "Added to friends list: "
 msgstr "Aggiunto all'elenco degli amici:"
 
-#: src/menu_events.cpp:1601
+#: src/menu_events.cpp:1610
 msgid "Removed from list: "
 msgstr "Rimosso dall'elenco: "
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1636
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 "Non ci sono giocatori negli elenchi degli amici o degli utenti da ignorare."
 
-#: src/menu_events.cpp:1637
+#: src/menu_events.cpp:1646
 msgid "Removed from ignore list: "
 msgstr "Rimosso dall'elenco degli utenti da ignorare:"
 
-#: src/menu_events.cpp:1640
+#: src/menu_events.cpp:1649
 msgid "Removed from friends list: "
 msgstr "Rimosso dall'elenco degli amici:"
 
-#: src/menu_events.cpp:1647
+#: src/menu_events.cpp:1656
 msgid "Unknown command: "
 msgstr "Comando sconosciuto: "
 
-#: src/menu_events.cpp:1748
+#: src/menu_events.cpp:1757
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Non ho trovato nessuna etichetta contente '$search'."
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1904
 msgid "prompt^Command:"
 msgstr "Comando:"
 
-#: src/mouse_events.cpp:213
+#: src/mouse_events.cpp:216
 msgid "Expected Battle Result (HP)"
 msgstr "Probabile esito della battaglia (PF)"
 
-#: src/mouse_events.cpp:305
+#: src/mouse_events.cpp:308
 msgid " resistance vs "
 msgstr " resistenza a "
 
-#: src/mouse_events.cpp:306
+#: src/mouse_events.cpp:309
 msgid " vulnerability vs "
 msgstr " vulnerabilità a "
 
-#: src/mouse_events.cpp:316
+#: src/mouse_events.cpp:319
 msgid "Slowed"
 msgstr "Rallentato"
 
-#: src/mouse_events.cpp:323
+#: src/mouse_events.cpp:326
 msgid "Time of day"
 msgstr "Periodo del giorno"
 
-#: src/mouse_events.cpp:333
+#: src/mouse_events.cpp:336
 msgid "Leadership"
 msgstr "Comando"
 
-#: src/mouse_events.cpp:340
+#: src/mouse_events.cpp:343
 msgid "Total damage"
 msgstr "Danno totale"
 
-#: src/mouse_events.cpp:347
+#: src/mouse_events.cpp:350
 msgid "No usable weapon"
 msgstr "Arma non utilizzabile"
 
-#: src/mouse_events.cpp:352
+#: src/mouse_events.cpp:355
 msgid "Chance of being unscathed"
 msgstr "Probabilità di essere indenne"
 
-#: src/mouse_events.cpp:653 src/mouse_events.cpp:1339
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1335
 msgid "Damage Calculations"
 msgstr "Calcolo dei danni"
 
-#: src/mouse_events.cpp:1322 src/reports.cpp:283
+#: src/mouse_events.cpp:1318 src/reports.cpp:283
 msgid "vs"
 msgstr "contro"
 
-#: src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:1346
 msgid "Attack Enemy"
 msgstr "Attacca il nemico"
 
-#: src/mouse_events.cpp:1351
+#: src/mouse_events.cpp:1347
 msgid "Choose weapon:"
 msgstr "Scegli l'arma:"
 
@@ -12356,19 +12356,23 @@ msgstr "Connetti al server"
 msgid "Choose a known server from the list"
 msgstr ""
 
-#: src/multiplayer.cpp:129
+#: src/multiplayer.cpp:108
+msgid "Address"
+msgstr ""
+
+#: src/multiplayer.cpp:135
 msgid "Connect to Host"
 msgstr "Connetti al server"
 
-#: src/multiplayer.cpp:130
+#: src/multiplayer.cpp:136
 msgid "Choose host to connect to: "
 msgstr "Scegli l'host a cui connetterti: "
 
-#: src/multiplayer.cpp:170
+#: src/multiplayer.cpp:176
 msgid "Reading from Server..."
 msgstr "Ricezione dati dal server..."
 
-#: src/multiplayer.cpp:179
+#: src/multiplayer.cpp:185
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -12376,15 +12380,15 @@ msgstr ""
 "Il server richiede la versione «$version1» mentre tu hai la versione "
 "«$version2»"
 
-#: src/multiplayer.cpp:191
+#: src/multiplayer.cpp:197
 msgid "Server-side redirect loop"
 msgstr "Reindirizzamento ridondante da parte del server"
 
-#: src/multiplayer.cpp:223
+#: src/multiplayer.cpp:229
 msgid "You must log in to this server"
 msgstr "Devi effettuare il login al server"
 
-#: src/multiplayer.cpp:229
+#: src/multiplayer.cpp:235
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -12392,17 +12396,17 @@ msgstr ""
 "Il nome di login che hai utilizzato è troppo lungo, per favore usane uno con "
 "meno di 18 caratteri."
 
-#: src/multiplayer.cpp:407 src/multiplayer.cpp:422
+#: src/multiplayer.cpp:413 src/multiplayer.cpp:428
 #: src/multiplayer_wait.cpp:199
 msgid "No multiplayer sides available in this game"
 msgstr "Non ci sono posti liberi per giocatori remoti in questa partita."
 
-#: src/multiplayer.cpp:408 src/multiplayer.cpp:423
+#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
 #: src/multiplayer_wait.cpp:236
 msgid "Era not available"
 msgstr "Era non disponibile"
 
-#: src/multiplayer.cpp:409 src/multiplayer.cpp:424
+#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
 #: src/multiplayer_wait.cpp:241
 msgid "No multiplayer sides found"
 msgstr "Nessuna fazione per il gioco in rete trovata"
@@ -12792,16 +12796,16 @@ msgstr "Impossibile aggiungere un socket"
 msgid "Could not send initial handshake"
 msgstr "Impossibile inviare l'handshake iniziale"
 
-#: src/play_controller.cpp:391 src/playsingle_controller.cpp:345
-#: src/playsingle_controller.cpp:391
+#: src/play_controller.cpp:392 src/playsingle_controller.cpp:346
+#: src/playsingle_controller.cpp:392
 msgid "The file you have tried to load is corrupt"
 msgstr "Il file che hai provato a caricare è corrotto"
 
-#: src/play_controller.cpp:749
+#: src/play_controller.cpp:750
 msgid "Back to start"
 msgstr "Torna all'inizio"
 
-#: src/play_controller.cpp:751
+#: src/play_controller.cpp:752
 msgid "Back to turn "
 msgstr "Torno al turno"
 
@@ -12853,7 +12857,7 @@ msgstr "Vuoi salvare la partita? (cancella anche i salvataggi automatici)"
 msgid "Unknown scenario: '"
 msgstr "Scenario sconosciuto: '"
 
-#: src/playmp_controller.cpp:276
+#: src/playmp_controller.cpp:277
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -12861,60 +12865,60 @@ msgstr ""
 "La partita non è sincronizzata ed è necessario uscire. Vuoi salvare un file "
 "con gli errori occorsi nella partita?"
 
-#: src/playsingle_controller.cpp:218
+#: src/playsingle_controller.cpp:219
 msgid "Game Over"
 msgstr "Partita finita"
 
-#: src/playsingle_controller.cpp:219
+#: src/playsingle_controller.cpp:220
 msgid "The game is over."
 msgstr "La partita è finita."
 
-#: src/playsingle_controller.cpp:313
+#: src/playsingle_controller.cpp:314
 msgid "Remaining gold: "
 msgstr "Oro rimanente: "
 
-#: src/playsingle_controller.cpp:316
+#: src/playsingle_controller.cpp:317
 msgid "Early finish bonus: "
 msgstr "Bonus sui turni risparmiati: "
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:319
 msgid "per turn"
 msgstr "per turno"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:320
 msgid "Turns finished early: "
 msgstr "Turni risparmiati: "
 
-#: src/playsingle_controller.cpp:321
+#: src/playsingle_controller.cpp:322
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:323
+#: src/playsingle_controller.cpp:324
 msgid "Gold: "
 msgstr "Oro: "
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:329
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% dell'oro sarà trattenuto per il prossimo scenario"
 
-#: src/playsingle_controller.cpp:329
+#: src/playsingle_controller.cpp:330
 msgid "Retained Gold: "
 msgstr "Oro trattenuto: "
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:335
 msgid "Victory"
 msgstr "Vittoria"
 
-#: src/playsingle_controller.cpp:335
+#: src/playsingle_controller.cpp:336
 msgid "You have emerged victorious!"
 msgstr "Ne sei uscito vincente!"
 
-#: src/playsingle_controller.cpp:339
+#: src/playsingle_controller.cpp:340
 msgid "Scenario Report"
 msgstr "Risultati dello scenario"
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:357
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -12922,7 +12926,7 @@ msgstr ""
 "Si è verificata una disconnessione dalla rete e la partita non potrà "
 "proseguire. Vuoi salvare la partita?"
 
-#: src/playsingle_controller.cpp:475
+#: src/playsingle_controller.cpp:476
 msgid "It is now your turn"
 msgstr "Adesso è il tuo turno"
 
