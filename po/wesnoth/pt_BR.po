@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-05 10:47+0200\n"
-"PO-Revision-Date: 2007-04-04 21:00+0900\n"
+"PO-Revision-Date: 2007-06-05 20:34+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -299,7 +299,6 @@ msgid "slows"
 msgstr "lentidão"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -307,8 +306,7 @@ msgid ""
 msgstr ""
 "Lentidão:\n"
 "Este ataque deixa o alvo mais lento. A lentidão divide o dano causado pelos "
-"ataques por dois, e unidades lentas se movem à metade da velocidade normal "
-"(arredondado para cima)."
+"ataques por dois, e dobra os custos de movimento para a unidade afetada."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -2160,13 +2158,12 @@ msgid "Mouse Scrolling"
 msgstr "Scrolling pelo Mouse"
 
 #: data/game.cfg:58
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "Entrar no Servidor Oficial"
+msgstr "Servidor Oficial de Wesnoth"
 
 #: data/game.cfg:62
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Servidor Secundário de Wesnoth"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -12357,21 +12354,19 @@ msgstr "Escolha a arma:"
 
 #: src/multiplayer.cpp:100
 msgid "Address"
-msgstr ""
+msgstr "Endereço"
 
 #: src/multiplayer.cpp:112
-#, fuzzy
 msgid "List of Servers"
-msgstr "Conectar-se ao servidor"
+msgstr "Lista de Servidores"
 
 #: src/multiplayer.cpp:113
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Escolha um servidor listado"
 
 #: src/multiplayer.cpp:140
-#, fuzzy
 msgid "View List"
-msgstr "Lista de Unidades"
+msgstr "Ver Lista"
 
 #: src/multiplayer.cpp:143
 msgid "Connect to Host"
