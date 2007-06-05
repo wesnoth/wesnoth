@@ -75,12 +75,6 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 
 	const double acceleration = disp->turbo_speed();
 
-	gamemap::location src_adjacent[6];
-	get_adjacent_tiles(a, src_adjacent);
-
-	gamemap::location dst_adjacent[6];
-	get_adjacent_tiles(b, dst_adjacent);
-
 	const int total_mvt_time = static_cast<int>(150/acceleration * temp_unit.movement_cost(dst_terrain));
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = 1;
@@ -128,7 +122,6 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 	wassert(disp);
 	const unit_map& units = disp->get_units();
 
-	bool previous_visible = false;
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
 	unit temp_unit = u;
