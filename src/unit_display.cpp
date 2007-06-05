@@ -148,30 +148,15 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 			} else {
 				move_unit_between(map,path[i],path[i+1],temp_unit);
 			}
-			previous_visible = true;
-		} else if(previous_visible) {
-			gamemap::location arr[6];
-			disp->invalidate(path[i]);
-			get_adjacent_tiles(path[i], arr);
-			for (unsigned int i = 0; i < 6; i++) {
-				disp->invalidate(arr[i]);
-			}
-			disp->draw();
-			previous_visible = false;
-		} else {
-			previous_visible = false;
 		}
-
 	}
 	disp->remove_temporary_unit();
 	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
 	u.set_standing(*disp,path[path.size()-1]);
 
-	//make sure the entire path is cleaned properly
-	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
-		disp->remove_footstep(*it);
-		disp->invalidate(*it);
-	}
+	//clean the footsteps path, its hexes will be invalidated if needed
+	disp->set_route(NULL);
+
 	u.set_hidden(was_hidden);
 	disp->invalidate_unit();
 }
