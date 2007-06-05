@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-02 18:48+0200\n"
+"POT-Creation-Date: 2007-06-05 10:47+0200\n"
 "PO-Revision-Date: 2007-04-04 21:00+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -11479,7 +11479,8 @@ msgid "Date"
 msgstr "Data"
 
 #: src/dialogs.cpp:501 src/game.cpp:916 src/menu_events.cpp:233
-#: src/menu_events.cpp:709 src/multiplayer_lobby.cpp:33
+#: src/menu_events.cpp:709 src/multiplayer.cpp:100
+#: src/multiplayer_lobby.cpp:33
 msgid "Name"
 msgstr "Nome"
 
@@ -11582,7 +11583,7 @@ msgstr "Você vai agora se conectar a um servidor de extras."
 msgid "Server: "
 msgstr "Servidor: "
 
-#: src/game.cpp:882 src/multiplayer.cpp:167 src/multiplayer.cpp:204
+#: src/game.cpp:882 src/multiplayer.cpp:176 src/multiplayer.cpp:213
 msgid "Connecting to Server..."
 msgstr "Conectando ao servidor..."
 
@@ -11665,7 +11666,7 @@ msgstr ""
 "Houve um problema criando os arquivos necessários para instalar a campanha."
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
+#: src/multiplayer.cpp:260 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr "Time out na conexão"
 
@@ -11725,11 +11726,11 @@ msgstr "Humano contra o Computador"
 msgid "Play a game against AI opponents"
 msgstr "Jogar contra o computador"
 
-#: src/game.cpp:1193 src/multiplayer.cpp:231
+#: src/game.cpp:1193 src/multiplayer.cpp:240
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1195 src/multiplayer.cpp:236
+#: src/game.cpp:1195 src/multiplayer.cpp:245
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -12354,58 +12355,62 @@ msgstr "Atacar Inimigo"
 msgid "Choose weapon:"
 msgstr "Escolha a arma:"
 
-#: src/multiplayer.cpp:104
+#: src/multiplayer.cpp:100
+msgid "Address"
+msgstr ""
+
+#: src/multiplayer.cpp:112
 #, fuzzy
 msgid "List of Servers"
 msgstr "Conectar-se ao servidor"
 
-#: src/multiplayer.cpp:105
+#: src/multiplayer.cpp:113
 msgid "Choose a known server from the list"
 msgstr ""
 
-#: src/multiplayer.cpp:131
+#: src/multiplayer.cpp:140
 #, fuzzy
 msgid "View List"
 msgstr "Lista de Unidades"
 
-#: src/multiplayer.cpp:134
+#: src/multiplayer.cpp:143
 msgid "Connect to Host"
 msgstr "Conectar-se ao servidor"
 
-#: src/multiplayer.cpp:136
+#: src/multiplayer.cpp:145
 msgid "Choose host to connect to: "
 msgstr "Escolha aonde se conectar: "
 
-#: src/multiplayer.cpp:177
+#: src/multiplayer.cpp:186
 msgid "Reading from Server..."
 msgstr "Lendo do servidor..."
 
-#: src/multiplayer.cpp:186
+#: src/multiplayer.cpp:195
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "O servidor requer versão '$version1' enquanto você tem a versão '$version2'"
 
-#: src/multiplayer.cpp:198
+#: src/multiplayer.cpp:207
 msgid "Server-side redirect loop"
 msgstr "Redirecionamento em loop do servidor"
 
-#: src/multiplayer.cpp:230
+#: src/multiplayer.cpp:239
 msgid "You must log in to this server"
 msgstr "Você deve entrar neste servidor"
 
-#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
+#: src/multiplayer.cpp:423 src/multiplayer.cpp:438
 #: src/multiplayer_wait.cpp:192
 msgid "No multiplayer sides available in this game"
 msgstr "Não tem times disponíveis neste jogo."
 
-#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
+#: src/multiplayer.cpp:424 src/multiplayer.cpp:439
 #: src/multiplayer_wait.cpp:229
 msgid "Era not available"
 msgstr "Era não disponível"
 
-#: src/multiplayer.cpp:416 src/multiplayer.cpp:431
+#: src/multiplayer.cpp:425 src/multiplayer.cpp:440
 #: src/multiplayer_wait.cpp:234
 msgid "No multiplayer sides found"
 msgstr "Sem lados multijogadores."

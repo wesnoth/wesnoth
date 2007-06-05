@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-02 18:48+0200\n"
+"POT-Creation-Date: 2007-06-05 10:47+0200\n"
 "PO-Revision-Date: 2007-04-06 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -9762,7 +9762,8 @@ msgid "Date"
 msgstr "Dato"
 
 #: src/dialogs.cpp:501 src/game.cpp:916 src/menu_events.cpp:233
-#: src/menu_events.cpp:709 src/multiplayer_lobby.cpp:33
+#: src/menu_events.cpp:709 src/multiplayer.cpp:100
+#: src/multiplayer_lobby.cpp:33
 msgid "Name"
 msgstr "Navn"
 
@@ -9865,7 +9866,7 @@ msgstr ""
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:882 src/multiplayer.cpp:167 src/multiplayer.cpp:204
+#: src/game.cpp:882 src/multiplayer.cpp:176 src/multiplayer.cpp:213
 msgid "Connecting to Server..."
 msgstr "Tilslutter til server..."
 
@@ -9948,7 +9949,7 @@ msgstr ""
 "Kunne ikke lave de nødvendige filer for at denne kampagne kan installeres."
 
 #: src/game.cpp:1081 src/game.cpp:1120 src/game.cpp:1145
-#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
+#: src/multiplayer.cpp:260 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:386
 msgid "Connection timed out"
 msgstr ""
 
@@ -10008,11 +10009,11 @@ msgstr "Spil mod computeren"
 msgid "Play a game against AI opponents"
 msgstr "Spil mod computerstyrede spillere"
 
-#: src/game.cpp:1193 src/multiplayer.cpp:231
+#: src/game.cpp:1193 src/multiplayer.cpp:240
 msgid "Login: "
 msgstr "Brugernavn: "
 
-#: src/game.cpp:1195 src/multiplayer.cpp:236
+#: src/game.cpp:1195 src/multiplayer.cpp:245
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -10621,57 +10622,61 @@ msgstr "Angrib fjende"
 msgid "Choose weapon:"
 msgstr "Vælg våben:"
 
-#: src/multiplayer.cpp:104
+#: src/multiplayer.cpp:100
+msgid "Address"
+msgstr ""
+
+#: src/multiplayer.cpp:112
 #, fuzzy
 msgid "List of Servers"
 msgstr "Tilslut server"
 
-#: src/multiplayer.cpp:105
+#: src/multiplayer.cpp:113
 msgid "Choose a known server from the list"
 msgstr ""
 
-#: src/multiplayer.cpp:131
+#: src/multiplayer.cpp:140
 #, fuzzy
 msgid "View List"
 msgstr "Enhedsliste"
 
-#: src/multiplayer.cpp:134
+#: src/multiplayer.cpp:143
 msgid "Connect to Host"
 msgstr "Tilslut vært"
 
-#: src/multiplayer.cpp:136
+#: src/multiplayer.cpp:145
 msgid "Choose host to connect to: "
 msgstr "Vælg vært at tilslutte"
 
-#: src/multiplayer.cpp:177
+#: src/multiplayer.cpp:186
 msgid "Reading from Server..."
 msgstr "Læser fra server..."
 
-#: src/multiplayer.cpp:186
+#: src/multiplayer.cpp:195
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr "Serveren kræver version '$version1', men du kører '$version2'"
 
-#: src/multiplayer.cpp:198
+#: src/multiplayer.cpp:207
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/multiplayer.cpp:230
+#: src/multiplayer.cpp:239
 msgid "You must log in to this server"
 msgstr "Du skal logge ind på denne server"
 
-#: src/multiplayer.cpp:414 src/multiplayer.cpp:429
+#: src/multiplayer.cpp:423 src/multiplayer.cpp:438
 #: src/multiplayer_wait.cpp:192
 msgid "No multiplayer sides available in this game"
 msgstr "Der er ingen multiplayer-sider i dette spil"
 
-#: src/multiplayer.cpp:415 src/multiplayer.cpp:430
+#: src/multiplayer.cpp:424 src/multiplayer.cpp:439
 #: src/multiplayer_wait.cpp:229
 msgid "Era not available"
 msgstr "Ingen sådan æra"
 
-#: src/multiplayer.cpp:416 src/multiplayer.cpp:431
+#: src/multiplayer.cpp:425 src/multiplayer.cpp:440
 #: src/multiplayer_wait.cpp:234
 msgid "No multiplayer sides found"
 msgstr "Fandt ingen multiplayer-sider"
