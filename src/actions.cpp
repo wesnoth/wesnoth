@@ -2081,7 +2081,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
 				if(!hk.null()) {
 					symbols["hotkey"] = hk.get_name();
-					message += "\n" + vgettext("(press $hotkey to continue)", symbols);
+					message += "\n" + vgettext("(press $hotkey to resume interrupted movement)", symbols);
 				}
 			}
 
