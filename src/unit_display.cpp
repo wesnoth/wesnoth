@@ -75,8 +75,6 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 
 	const double acceleration = disp->turbo_speed();
 
-	// we place the temporary unit to show it when scrolling
-	//disp->place_temporary_unit(temp_unit,a);
 	disp->scroll_to_tiles(a,b,display::ONSCREEN);
 
 	const int total_mvt_time = static_cast<int>(150/acceleration * temp_unit.movement_cost(dst_terrain));
@@ -123,7 +121,17 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 	display* disp = display::get_singleton();
 	wassert(!path.empty());
 	wassert(disp);
+	// one hex path (strange), nothing to do
+	if (path.size()==1) return;
+	
 	const unit_map& units = disp->get_units();
+
+	// if the unit is visible scroll to there before hide it
+	bool invisible =  teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
+				u.invisible(path[0],units,teams);
+	if (!invisible) {
+		disp->scroll_to_tiles(path[0],path[1],display::ONSCREEN);
+	}
 
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
