@@ -477,7 +477,7 @@ namespace events{
 			try {
 				recorder.save_game(label, snapshot, gamestate_.starting_pos);
 				if(dialog_type != gui::NULL_DIALOG) {
-					gui::show_dialog(*gui_,NULL,_("Saved"),_("The game has been saved"), gui::OK_ONLY);
+					gui::show_dialog(*gui_,NULL,_("Saved"),_("The game has been saved"));
 				}
 			} catch(game::save_game_failed&) {
 				gui::show_dialog(*gui_,NULL,_("Error"),_("The game could not be saved"),gui::MESSAGE);
