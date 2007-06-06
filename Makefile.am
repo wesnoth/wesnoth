@@ -43,16 +43,12 @@ bundle_editor_contents=@PACKAGE_NAME@ Editor.app/Contents
 
 install-data-local:
 	@$(NORMAL_INSTALL)
-
 if OPTIPNG
 	(cd $(top_srcdir) && find images -name '*.png' -print  ) | while read p; do \
 	$(w_preparefileinstall) \
 	optipng -o4 $$d$$p; \
 	done
 endif
-
-
-
 if INSTALLDATA
 	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
 	( $(finddatadirs) ) | while read p; do \
