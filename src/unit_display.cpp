@@ -76,7 +76,7 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 	const double acceleration = disp->turbo_speed();
 
 	// we place the temporary unit to show it when scrolling
-	disp->place_temporary_unit(temp_unit,a);
+	//disp->place_temporary_unit(temp_unit,a);
 	disp->scroll_to_tiles(a,b,display::ONSCREEN);
 
 	const int total_mvt_time = static_cast<int>(150/acceleration * temp_unit.movement_cost(dst_terrain));
