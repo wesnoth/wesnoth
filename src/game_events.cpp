@@ -1699,6 +1699,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						if(un != units->end() && death_loc.matches_unit(un->second)) {
 							units->erase(un);
 						}
+					} else {
+						units->erase(un);
 					}
 				}
 			}
