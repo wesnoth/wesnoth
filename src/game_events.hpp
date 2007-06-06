@@ -58,8 +58,8 @@ struct manager {
 };
 
 struct entity_location : public gamemap::location {
-	entity_location(gamemap::location loc);
-	entity_location(unit_map::iterator itor);
+	entity_location(gamemap::location loc, const std::string& id="");
+	explicit entity_location(unit_map::iterator itor);
 	bool requires_unit() const;
 	bool matches_unit(const unit& u) const;
 private:

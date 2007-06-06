@@ -2508,7 +2508,8 @@ bool pump()
 	return result;
 }
 
-entity_location::entity_location(gamemap::location loc) : location(loc)
+entity_location::entity_location(gamemap::location loc, const std::string& id)
+	: location(loc), id_(id)
 {}
 
 entity_location::entity_location(unit_map::iterator itor) 
