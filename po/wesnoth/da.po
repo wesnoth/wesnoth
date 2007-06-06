@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-05 10:56+0200\n"
-"PO-Revision-Date: 2007-05-21 17:58+0200\n"
+"PO-Revision-Date: 2007-06-05 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -30,13 +30,12 @@ msgid "Mouse Scrolling"
 msgstr "Musepanorering"
 
 #: data/_main.cfg:39
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "Tilslut dig den officielle server"
+msgstr "Officiel Wesnoth-server"
 
 #: data/_main.cfg:43
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Alternativ Wesnoth-server"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -67,14 +66,12 @@ msgid "short sword"
 msgstr "kortsværd"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
-#, fuzzy
 msgid "magic_blast"
-msgstr "magisk"
+msgstr "magisk_eksplosion"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
-#, fuzzy
 msgid "magic blast"
-msgstr "magisk"
+msgstr "magisk eksplosion"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
 #: data/core/units/boats/Galleon.cfg:22
@@ -388,7 +385,6 @@ msgid "ambush"
 msgstr "baghold"
 
 #: data/core/abilities.cfg:369 data/core/abilities.cfg:373
-#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -400,9 +396,10 @@ msgstr ""
 "Baghold:\n"
 "Denne enhed kan gemme sig i skoven og forblive uset af fjender.\n"
 "\n"
-"Fjendtlige enheder kan ikke se eller angribe denne enhed så længe den "
-"opholder sig i skoven, med undtagelse for ture umiddelbart efter enheden har "
-"angrebet eller hvis der står en fjendtlig enhed ved siden af den."
+"Fjendtlige enheder kan ikke se eller angribe denne enhed, så længe den "
+"opholder sig i skoven, med mindre de har en enhed ved siden af den. En "
+"fjendtlig enhed som opdager denne enhed mister med det samme alle sine "
+"tilbageværende bevægelsespoint."
 
 # Har ikke kunnet finde et dansk ord for denne evne. Camouflage er ikke helt
 # godt for det er jo også tilfældet om dagen! (måske natcamouflage)
@@ -411,7 +408,6 @@ msgid "nightstalk"
 msgstr "natsløring"
 
 #: data/core/abilities.cfg:392 data/core/abilities.cfg:397
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -423,16 +419,15 @@ msgstr ""
 "Natsløring:\n"
 "Denne enhed bliver usynlig om natten.\n"
 "\n"
-"Fjendtlige enheder kan ikke se eller angribe denne enhed om natten, undtagen "
-"for enhver runde umiddelbart efter at denne enhed har angrebet, eller hvis "
-"der er fjendligt enheder tæt på denne enhed."
+"Fjendtlige enheder kan ikke se denne enhed om natten, med mindre de har "
+"enheder ved siden af. Enhver fjendtlig enhed som opdager denne enhed mister "
+"straks alle tilbageværende bevægelsespoint."
 
 #: data/core/abilities.cfg:412 data/core/abilities.cfg:417
 msgid "submerge"
 msgstr "dykke"
 
 #: data/core/abilities.cfg:416 data/core/abilities.cfg:421
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -444,10 +439,10 @@ msgstr ""
 "Baghold:\n"
 "Denne enhed kan gemme sig i dybt vand og forblive uset af fjender.\n"
 "\n"
-"Fjendtlige enheder kan ikke se eller angribe denne enhed så længe den "
-"opholder sig dybt under overfladen, med undtagelse for runder umiddelbart "
-"efter enheden har angrebet, eller hvis der står en fjendtlig enhed ved siden "
-"af den."
+"Fjendtlige enheder kan ikke se denne enhed så længe den opholder sig dybt "
+"under overfladen, med mindre de står ved siden af enheden. Enhver fjendtlig "
+"enhed som opdager denne enhed mister straks alle tilbageværende "
+"bevægelsespoint."
 
 #: data/core/abilities.cfg:441
 msgid "berserk"
@@ -5580,10 +5575,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-# en knægt? :)
 #: data/core/units/goblins/Knight.cfg:3
 msgid "Goblin Knight"
-msgstr "Goblin ridder"
+msgstr "Goblinridder"
 
 #: data/core/units/goblins/Knight.cfg:19
 msgid ""
@@ -5595,6 +5589,13 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
+"Goblinridderen har ikke meget til fælles med sin navnebror blandt "
+"menneskene, og deres titel er genstand for hån af deres fjender. De kan kun "
+"sammenlignes ved at de er eliten blandt ulveriddere, forfremmet til deres "
+"position ved succes i nogle hensynsløse angreb.\n"
+"\n"
+"Ulvene de ridder på er avlet til hastighed og styrke hvilket gør dem farlige "
+"i kamp."
 
 #: data/core/units/goblins/Pillager.cfg:3
 msgid "Goblin Pillager"
@@ -5641,10 +5642,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Fanebærere er en sjældenhed blandt gobliner. En goblin som har overlevet nok "
+"slag til at blive anset for at være veteran er sjælden nok, og det er endnu "
+"sjældnere at andre gobliner ser og respekterer dennes veteranstatus. Uanset "
+"dette så vil en goblinindpisker få sine yngre soldater til at kæmpe hårdere "
+"og længere, inden de dør.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/goblins/Spearman.cfg:3
 msgid "Goblin Spearman"
-msgstr "Goblin spydmand"
+msgstr "Goblinspydmand"
 
 #: data/core/units/goblins/Spearman.cfg:19
 msgid ""
@@ -5658,6 +5666,14 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
+"I ethvert kuld af orker, er der flere som er født mindre og svagere end de "
+"andre. Disse kaldes for »gobliner« og der bliver set ned på dem af de "
+"øvrige. I kamp modtager de det dårligste udstyr og bruges som en stødpude "
+"som kan give krigsherren tid til at forberede det rigtige angreb.\n"
+"\n"
+"Nogle spekulerer på at eksistensen af disse skabninger er begyndelsen på en "
+"fiasko i orkernes blodlinje, dog er der ingen der ved nok om deres historie "
+"til at kunne konkludere noget endeligt."
 
 #: data/core/units/goblins/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
@@ -5675,6 +5691,14 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
+"Ingen ved rigtigt hvordan evnen til at tæmme og ride på ulve opstod. "
+"Gobliner er mindre og meget svagere end orker. Enhver som kan opnå at få en "
+"ulv er meget mere sikker og spiller en meget mere vigtig rolle i kamp.\n"
+"\n"
+"Ulve ville aldrig kunne bære vægten af en mand i fuld rustning, men en "
+"goblin i læderrustning er en mindre vægt at bære. Til forskel fra heste kan "
+"disse gangere nemt rejse rundt i bjergene, dog gør vand og skove dem stadig "
+"langsommere."
 
 #: data/core/units/humans/Horse_Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -5688,6 +5712,11 @@ msgid ""
 "head of a charge is a terrifying sight for infantry, and is often enough to "
 "break right through a defensive line."
 msgstr ""
+"Storriddere har nået højdepunktet i brugen af sværd og lanse. I fuld "
+"rustning og ridende på store heste er de mere effektive i styrke end i "
+"fleksibilitet. Disse enheder udgør kernen i enhver stor kavaleristyrke. En "
+"storrider i front for et angreb udgør et frygteligt syn for infanterienheder "
+"og er ofte nok til at bryde igennem en forsvarslinje."
 
 #: data/core/units/humans/Horse_Grand_Knight.cfg:21
 #: data/core/units/humans/Horse_Knight.cfg:20
@@ -5709,7 +5738,6 @@ msgstr ""
 msgid "lance"
 msgstr "lanse"
 
-# en knægt? :)
 #: data/core/units/humans/Horse_Knight.cfg:3
 msgid "Knight"
 msgstr "Ridder"
@@ -5724,6 +5752,12 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
+"Ryttere som viser evner og disciplin forfremmes til riddere. Veteraner i "
+"kamp, som har set de ofte fatale konsekvenser af et mislykket angreb og har "
+"lært at bruge deres stormangreb på det rigtige tidspunkt. Riddere bærer også "
+"sværd i deres udrustning og øver i taktik, som er en mere tålmodig "
+"angrebsform men også mindre risikofyldt. Deres lanser er dog altid klar, og "
+"med erfaringen bliver dette våben endnu mere dødeligt for modstanderen."
 
 #: data/core/units/humans/Horse_Lancer.cfg:3
 msgid "Lancer"
@@ -5853,6 +5887,15 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scoutwork."
 msgstr ""
+"Kavalerister afskilles fra ryttere ved deres taktik og udstyr. En kavalerist "
+"har tungere rustning og bærer et sværd og skjold til forskel fra en lanse. "
+"Deres taktik inkluderer ikke stormangreb; i steden for manøvrerer de sig i "
+"position til at angribe med deres sværd, ved brug af både hest og rytter som "
+"et effektivt værktøj i nærkamp.\n"
+"\n"
+"Kavalerister er særdeles effektive til at indtage og holde positioner i "
+"åbent landskab, som støtte for venligsindede soldater og også til at spejde "
+"med."
 
 #: data/core/units/humans/Loyalist_Dragoon.cfg:3
 msgid "Dragoon"
@@ -5866,6 +5909,11 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
+"De mest talentfulde kavalerister i Wesnoths hær trænes i brugen af "
+"armbrøsten, og udstyres med langt bedre heste. Iført en god rustning og "
+"uddannet i brugen af deres sværd gør dem velegnede til at erobre fjendtligt "
+"land og holde det land de har indtaget. Deres mobilitet og modstandskraft "
+"giver dem stor værdi på slagmarken."
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:3
 msgid "Duelist"
@@ -7350,7 +7398,6 @@ msgid "Orcish Assassin"
 msgstr "Orkersnigmorder"
 
 #: data/core/units/orcs/Assassin.cfg:23
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7360,12 +7407,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Selvom nogle anser det for kujonagtigt at bruge gift, er det et våben som er "
-"velanset blandt orker, specielt blandt de svagere individer. "
-"Orkersnigmordere som bruger giften på kasteknive, er typisk en smule "
-"svagelige, men overraskende behændige. Selv om de sjældent er dem som giver "
-"et dræbende slag, så er deres taktik en væsentlig hjælp for deres større og "
-"mere brutale artsfæller.\n"
+"Selvom nogle anser det for kujonagtigt at bruge gift, er det et våben, som "
+"er velanset blandt orker, specielt blandt de svagere individer. "
+"Orksnigmordere som bruger giften på kasteknive, er typisk en smule svagelige "
+"i orksammenhænge, men overraskende behændige. Selv om det sjældent er dem "
+"som giver det dræbende slag, så er deres taktik en væsentlig hjælp for deres "
+"større og mere brutale artsfæller.\n"
 "\n"
 "Specielle bemærkninger:"
 
@@ -11263,22 +11310,20 @@ msgid "Choose weapon:"
 msgstr "Vælg våben:"
 
 #: src/multiplayer.cpp:98
-#, fuzzy
 msgid "View List"
-msgstr "Enhedsliste"
+msgstr "Vis liste"
 
 #: src/multiplayer.cpp:104
-#, fuzzy
 msgid "List of Servers"
-msgstr "Tilslut server"
+msgstr "Serverliste"
 
 #: src/multiplayer.cpp:105
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Vælg en kendt server fra listen"
 
 #: src/multiplayer.cpp:108
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: src/multiplayer.cpp:135
 msgid "Connect to Host"
