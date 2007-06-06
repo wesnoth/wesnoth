@@ -57,6 +57,15 @@ struct manager {
 	variable::manager variable_manager;
 };
 
+struct entity_location : public gamemap::location {
+	entity_location(gamemap::location loc);
+	entity_location(unit_map::iterator itor);
+	bool requires_unit() const;
+	bool matches_unit(const unit& u) const;
+private:
+	std::string id_;
+};
+
 game_state* get_state_of_game();
 void write_events(config& cfg);
 void add_events(const config::child_list& cfgs,const std::string& id);
@@ -66,13 +75,13 @@ bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
 //function to fire an event. Events may have up to two arguments, both of
 //which must be locations.
 bool fire(const std::string& event,
-          const gamemap::location& loc1=gamemap::location::null_location,
-          const gamemap::location& loc2=gamemap::location::null_location,
+          const entity_location& loc1=gamemap::location::null_location,
+          const entity_location& loc2=gamemap::location::null_location,
 		  const config& data=config());
 
 void raise(const std::string& event,
-          const gamemap::location& loc1=gamemap::location::null_location,
-          const gamemap::location& loc2=gamemap::location::null_location,
+          const entity_location& loc1=gamemap::location::null_location,
+          const entity_location& loc2=gamemap::location::null_location,
 		  const config& data=config());
 
 bool conditional_passed(const unit_map* units,

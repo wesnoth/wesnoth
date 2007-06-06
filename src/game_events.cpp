@@ -322,14 +322,14 @@ static bool events_init() { return screen != NULL; }
 namespace {
 
 struct queued_event {
-	queued_event(const std::string& name, const gamemap::location& loc1,
-	                                      const gamemap::location& loc2,
+	queued_event(const std::string& name, const game_events::entity_location& loc1,
+	                                      const game_events::entity_location& loc2,
 										  const config& data)
 			: name(name), loc1(loc1), loc2(loc2),data(data) {}
 
 	std::string name;
-	gamemap::location loc1;
-	gamemap::location loc2;
+	game_events::entity_location loc1;
+	game_events::entity_location loc2;
 	config data;
 };
 
@@ -1566,8 +1566,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(speaker != units->end()) {
 			LOG_DP << "scrolling to speaker..\n";
 			screen->highlight_hex(speaker->first);
-			// FIXME: Why is this y-1???
-			screen->scroll_to_tile(gamemap::location(speaker->first.x,speaker->first.y-1));
+			const int offset_from_center = maximum<int>(0, speaker->first.y - 1);
+			screen->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
 
 			if(image.empty()) {
 				image = speaker->second.profile();
@@ -1683,26 +1683,24 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "kill") {
-		unit_map::iterator un = units->begin();
-		while(un != units->end()) {
-			if(game_events::unit_matches_filter(un,cfg)) {
-				if(utils::string_bool(cfg["animate"])) {
-					screen->scroll_to_tile(un->first);
-					unit_display::unit_die(un->first,un->second);
-				}
-
-				if(utils::string_bool(cfg["fire_event"])) {
-					gamemap::location loc = un->first;
-					game_events::fire("die",loc,un->first);
-					un = units->find(loc);
-					if(un == units->end()) {
-						un = units->begin();
-						continue;
+		//Use (x,y) iteration because firing events ruins unit_map iteration
+		for(gamemap::location loc(0,0); loc.x < game_map->x(); ++loc.x) {
+			for(loc.y = 0; loc.y < game_map->y(); ++loc.y) {
+				unit_map::iterator un = units->find(loc);
+				if(un != units->end() && game_events::unit_matches_filter(un,cfg)) {
+					if(utils::string_bool(cfg["animate"])) {
+						screen->scroll_to_tile(loc);
+						unit_display::unit_die(loc, un->second);
+					}
+					if(utils::string_bool(cfg["fire_event"])) {
+						game_events::entity_location death_loc(un);
+						game_events::fire("die", death_loc, death_loc);
+						un = units->find(death_loc);
+						if(un != units->end() && death_loc.matches_unit(un->second)) {
+							units->erase(un);
+						}
 					}
 				}
-				units->erase(un++);
-			} else {
-				++un;
 			}
 		}
 
@@ -2234,6 +2232,16 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 	if(!special_matches) {
 		return false;
 	}
+	if(ev.loc1.requires_unit() 
+	&& (unit1 == units->end() || !ev.loc1.matches_unit(unit1->second))) {
+		//wrong or missing entity at src location
+		return false;
+	}
+	if(ev.loc2.requires_unit() 
+	&& (unit2 == units->end() || !ev.loc2.matches_unit(unit2->second))) {
+		//wrong or missing entity at dst location
+		return false;
+	}
 
 	//the event hasn't been filtered out, so execute the handler
 	const bool res = handler.handle_event(ev);
@@ -2413,8 +2421,8 @@ manager::~manager() {
 }
 
 void raise(const std::string& event,
-           const gamemap::location& loc1,
-           const gamemap::location& loc2,
+           const entity_location& loc1,
+           const entity_location& loc2,
 		   const config& data)
 {
 	if(!events_init())
@@ -2424,8 +2432,8 @@ void raise(const std::string& event,
 }
 
 bool fire(const std::string& event,
-          const gamemap::location& loc1,
-          const gamemap::location& loc2,
+          const entity_location& loc1,
+          const entity_location& loc2,
 		  const config& data)
 {
 	raise(event,loc1,loc2,data);
@@ -2498,6 +2506,23 @@ bool pump()
 	}
 
 	return result;
+}
+
+entity_location::entity_location(gamemap::location loc) : location(loc)
+{}
+
+entity_location::entity_location(unit_map::iterator itor) 
+	: location(itor->first), id_(itor->second.underlying_description())
+{}
+
+bool entity_location::matches_unit(const unit& u) const
+{ 
+	return id_ == u.underlying_description();
+}
+
+bool entity_location::requires_unit() const
+{ 
+	return !id_.empty();
 }
 
 } //end namespace game_events

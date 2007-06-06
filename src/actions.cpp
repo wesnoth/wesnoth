@@ -968,12 +968,12 @@ attack::attack(display& gui, const gamemap& map,
 				attackerxp_ = defenderxp_ = 0;
 				gui_.invalidate(a_->first);
 
-				gamemap::location loc = d_->first;
+				game_events::entity_location death_loc(d_);
 				gamemap::location attacker_loc = a_->first;
 				std::string undead_variation = d_->second.undead_variation();
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
-				game_events::fire("die",loc,attacker_loc);
+				game_events::fire("die",death_loc,attacker_loc);
 				
 				//WML can invalidate the attacker or defender if it does that abort and invalidate the unit in question
 				if(units_.find(attacker_) != a_) a_ = units_.end();
@@ -1004,10 +1004,10 @@ attack::attack(display& gui, const gamemap& map,
 							newunit.add_modification("variation",mod);
 							newunit.heal_all();
 						}
-						units_.add(new std::pair<gamemap::location,unit>(loc,newunit));
+						units_.add(new std::pair<gamemap::location,unit>(death_loc,newunit));
 						preferences::encountered_units().insert(newunit.id());
 						if (update_display_){
-							gui_.invalidate(loc);
+							gui_.invalidate(death_loc);
 						}
 					}
 				} else {
@@ -1189,11 +1189,11 @@ attack::attack(display& gui, const gamemap& map,
 				gui_.invalidate(d_->first);
 				std::string undead_variation = a_->second.undead_variation();
 
-				gamemap::location loc = a_->first;
+				game_events::entity_location death_loc(a_);
 				gamemap::location defender_loc = d_->first;
 				const int attacker_side = a_->second.side();
 				fire_event("attack_end");
-				game_events::fire("die",loc,defender_loc);
+				game_events::fire("die",death_loc,defender_loc);
 
 				//WML can invalidate the attacker or defender if it does that abort and invalidate the unit in question
 				if(units_.find(attacker_) != a_) a_ = units_.end();
@@ -1222,9 +1222,9 @@ attack::attack(display& gui, const gamemap& map,
 							variation["name"]=undead_variation;
 							newunit.add_modification("variation",mod);
 						}
-						units_.add(new std::pair<gamemap::location,unit>(loc,newunit));
+						units_.add(new std::pair<gamemap::location,unit>(death_loc,newunit));
 						if (update_display_){
-							gui_.invalidate(loc);
+							gui_.invalidate(death_loc);
 						}
 					}
 				} else {
