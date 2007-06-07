@@ -258,6 +258,9 @@ namespace {
 		// Don't add if it already exists.
 		if (dir->find_child("file", "name", "COPYING.txt")) return;
 		if (dir->find_child("file", "name", "COPYING")) return;
+		if (dir->find_child("file", "name", "copying.txt")) return;
+		if (dir->find_child("file", "name", "Copying.txt")) return;
+		if (dir->find_child("file", "name", "COPYING.TXT")) return;
 
 		// Copy over COPYING.txt
 		std::string contents = read_file("data/COPYING.txt");
