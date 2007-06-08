@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-05 10:47+0200\n"
-"PO-Revision-Date: 2007-03-27 23:29+0100\n"
+"PO-Revision-Date: 2007-06-08 19:27+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -292,7 +292,6 @@ msgid "slows"
 msgstr "spomaľuje"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -300,8 +299,8 @@ msgid ""
 msgstr ""
 "Spomalenie:\n"
 "Tento útok spomalí obeť do konca kola. Spomalená jednotka spôsobuje pri "
-"útoku polovičné zranenie a pohybuje sa len polovicou bežnej rýchlosti "
-"(zaokrúhlené nahor)."
+"útoku polovičné zranenie a jej pohyb stojí dvojnásobné množstvo pohybových "
+"bodov."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -2122,13 +2121,12 @@ msgid "Mouse Scrolling"
 msgstr "Rolovanie myši"
 
 #: data/game.cfg:58
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "Prihlás sa na Wesnoth"
+msgstr "Oficiálny server Wesnothu"
 
 #: data/game.cfg:62
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Alternatívny server Wesnothu"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -11908,21 +11906,19 @@ msgstr "Vyber si zbraň:"
 
 #: src/multiplayer.cpp:100
 msgid "Address"
-msgstr ""
+msgstr "Adresa"
 
 #: src/multiplayer.cpp:112
-#, fuzzy
 msgid "List of Servers"
-msgstr "Pripoj sa na server"
+msgstr "Zoznam serverov"
 
 #: src/multiplayer.cpp:113
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Vyberte si známy server zo zoznamu"
 
 #: src/multiplayer.cpp:140
-#, fuzzy
 msgid "View List"
-msgstr "Zoznam jednotiek"
+msgstr "Zobraz zoznam"
 
 #: src/multiplayer.cpp:143
 msgid "Connect to Host"
