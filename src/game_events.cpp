@@ -2240,7 +2240,7 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 		if(unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"),*ffi)) {
 			special_matches = true;
 		}
-		if(!sfi->empty()) {
+		if(!ffi->empty()) {
 			filtered_unit2 = true;
 		}
 	}
