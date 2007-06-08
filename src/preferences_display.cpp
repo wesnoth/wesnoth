@@ -224,14 +224,24 @@ private:
 	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_, scroll_slider_,
 				gamma_slider_, chat_lines_slider_, buffer_size_slider_;
 	gui::list_slider<double> turbo_slider_;
-	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, show_grid_button_,
-				lobby_minimaps_button_, show_lobby_joins_button1_, show_lobby_joins_button2_, show_lobby_joins_button3_, sort_list_by_group_button_,
-                iconize_list_button_, friends_list_button_, friends_back_button_, friends_add_friend_button_, friends_add_ignore_button_, friends_remove_button_, show_floating_labels_button_, turn_dialog_button_,
-				turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
-				show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
-				flip_time_button_, advanced_button_, sound_button_, music_button_, chat_timestamp_button_,
-				advanced_sound_button_, normal_sound_button_, UI_sound_button_,
-				sample_rate_button1_, sample_rate_button2_, sample_rate_button3_, confirm_sound_button_;
+	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, 
+	  		show_grid_button_, save_replays_button_, delete_autosaves_button_,
+			lobby_minimaps_button_, show_lobby_joins_button1_, 
+			show_lobby_joins_button2_, show_lobby_joins_button3_, 
+			sort_list_by_group_button_, iconize_list_button_, 
+			friends_list_button_, friends_back_button_, 
+			friends_add_friend_button_, friends_add_ignore_button_,
+			friends_remove_button_, show_floating_labels_button_, 
+			turn_dialog_button_, turn_bell_button_, 
+			show_team_colours_button_, show_colour_cursors_button_,
+			show_haloing_button_, video_mode_button_, 
+			theme_button_, hotkeys_button_, gamma_button_,
+			flip_time_button_, advanced_button_, sound_button_, 
+			music_button_, chat_timestamp_button_,
+			advanced_sound_button_, normal_sound_button_, 
+			UI_sound_button_, sample_rate_button1_, 
+			sample_rate_button2_, sample_rate_button3_, 
+			confirm_sound_button_;
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_, scroll_label_,
 				gamma_label_, chat_lines_label_, turbo_slider_label_,
 				sample_rate_label_, buffer_size_label_;
@@ -262,6 +272,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
+	  save_replays_button_(disp.video(), _("Save Replays"), gui::button::TYPE_CHECK),
+	  delete_autosaves_button_(disp.video(), _("Delete Autosaves"), gui::button::TYPE_CHECK),
 	  lobby_minimaps_button_(disp.video(), _("Show Lobby Minimaps"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button1_(disp.video(), _("Do Not Show Lobby Joins"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button2_(disp.video(), _("Show Lobby Joins Of Friends Only"), gui::button::TYPE_CHECK),
@@ -421,6 +433,11 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_ai_moves_button_.set_check(!show_ai_moves());
 	show_ai_moves_button_.set_help_string(_("Do not animate AI units moving"));
 
+	save_replays_button_.set_check(save_replays());
+	save_replays_button_.set_help_string(_("Save replays at scenario end."));
+
+	delete_autosaves_button_.set_check(delete_autosaves());
+	delete_autosaves_button_.set_help_string(_("Do not animate AI units moving"));
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
 
@@ -494,6 +511,8 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&fullscreen_button_);
 	h.push_back(&turbo_button_);
 	h.push_back(&show_ai_moves_button_);
+	h.push_back(&save_replays_button_);
+	h.push_back(&delete_autosaves_button_);
 	h.push_back(&show_grid_button_);
 	h.push_back(&lobby_minimaps_button_);
 	h.push_back(&sort_list_by_group_button_);
@@ -578,9 +597,11 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 							rect.w - horizontal_padding - right_border, 0 };
 	turbo_slider_.set_location(turbo_rect);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
-	ypos += item_interline; turn_dialog_button_.set_location(rect.x, ypos);
+	ypos += short_interline; turn_dialog_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
-	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
+	ypos += short_interline; show_grid_button_.set_location(rect.x, ypos);
+	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
+	ypos += short_interline; delete_autosaves_button_.set_location(rect.x, ypos);
 	hotkeys_button_.set_location(rect.x, bottom_row_y - hotkeys_button_.height());
 
 	// Display tab

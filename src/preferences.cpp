@@ -891,6 +891,26 @@ bool show_side_colours()
 	return prefs["show_side_colours"] != "no";
 }
 
+void set_save_replays(bool value)
+{
+	prefs["save_replays"] = value ? "yes" : "no";
+}
+
+bool save_replays()
+{
+	return prefs["save_replays"] != "no";
+}
+
+void set_delete_autosaves(bool value)
+{
+	prefs["delete_autosaves"] = value ? "yes" : "no";
+}
+
+bool delete_autosaves()
+{
+	return prefs["delete_autosaves"] == "yes";
+}
+
 void set_ask_delete_saves(bool value)
 {
 	prefs["ask_delete"] = value ? "yes" : "no";

@@ -197,6 +197,12 @@ namespace preferences {
 	void set_show_side_colours(bool value);
 	bool show_side_colours();
 
+	bool save_replays();
+	void set_save_replays(bool value);
+
+	bool delete_autosaves();
+	void set_delete_autosaves(bool value);
+
 	void set_ask_delete_saves(bool value);
 	bool ask_delete_saves();
 

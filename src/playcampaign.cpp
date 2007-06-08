@@ -108,13 +108,6 @@ static void clean_autosaves(const std::string &label)
 	}
 }
 
-void ask_about_autosaves(display& disp, std::string& label){
-	const int autosave_res = gui::show_dialog(disp, NULL, _("Autosaves"), 
-		_("Do you want to delete the autosaves of this scenario?"), gui::YES_NO);
-	if (autosave_res == 0){
-		clean_autosaves(label);
-	}
-}
 
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
 		const game_data& units_data, CVideo& video,
@@ -307,7 +300,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				                 _("You have been defeated!"),
 				                 gui::OK_ONLY);
 				//Make sure the user gets an opportunity to delete his autosaves
-				ask_about_autosaves(disp, gamestate.label);
+				if (preferences::delete_autosaves())
+					clean_autosaves(gamestate.label);
 			}
 			if(res == QUIT && io_type == IO_SERVER) {
 					config end;
@@ -504,9 +498,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	}
 
 	if (gamestate.campaign_type == "scenario"){
-		//This is the last scenario of the campaign.
-		//Make sure the user gets an opportunity to delete his autosaves
-		ask_about_autosaves(disp, gamestate.label);
+		if (preferences::delete_autosaves())
+			clean_autosaves(gamestate.label);
 	}
 	return VICTORY;
 }
