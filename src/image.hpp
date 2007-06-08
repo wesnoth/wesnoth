@@ -183,8 +183,10 @@ namespace image {
 	void set_zoom(int zoom);
 
 	// unscaled : image will be drawn "as is" without changing size, even in case of redraw
-	// scaled_to_hex : image will be scaled to fit into a hex, taking zoom into account
-	enum TYPE { UNSCALED, SCALED_TO_HEX, SCALED_TO_ZOOM, UNMASKED,  BRIGHTENED, SEMI_BRIGHTENED };
+	// hexed : the hex mask is applied on the image
+	// unmasked : image will be scaled to fit into a hex, taking zoom into account
+	// scaled_to_hex : same but ToD coloring is also applied
+	enum TYPE { UNSCALED, HEXED, UNMASKED, SCALED_TO_HEX, SCALED_TO_ZOOM, BRIGHTENED, SEMI_BRIGHTENED };
 
 	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR };
 

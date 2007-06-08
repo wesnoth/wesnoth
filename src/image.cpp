@@ -40,7 +40,7 @@ typedef std::pair<image::locator::value, int> locator_finder_pair;
 locator_finder_t locator_finder;
 
 // Definition of all image maps
-image::image_cache images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
+image::image_cache images_,hexed_images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
 image::image_cache brightened_images_,semi_brightened_images_;
 
 image::locator_cache alternative_images_;
@@ -81,6 +81,7 @@ mini_terrain_cache_map mini_terrain_cache;
 void flush_cache()
 {
 	reset_cache(images_);
+	reset_cache(hexed_images_);
 	reset_cache(scaled_to_hex_images_);
 	reset_cache(scaled_to_zoom_);
 	reset_cache(unmasked_images_);
@@ -102,6 +103,7 @@ void locator::init_index()
 		locator_finder.insert(locator_finder_pair(val_, index_));
 
 		images_.push_back(cache_item<surface>());
+		hexed_images_.push_back(cache_item<surface>());
 		scaled_to_hex_images_.push_back(cache_item<surface>());
 		scaled_to_zoom_.push_back(cache_item<surface>());
 		unmasked_images_.push_back(cache_item<surface>());
@@ -479,22 +481,26 @@ void set_zoom(int amount)
 	}
 }
 
+static surface get_hexed(const locator i_locator)
+{
+	// we don't want to add it to the unscaled cache
+	// since we will normaly never need the non-hexed one
+	surface image(get_image(i_locator, UNSCALED, NO_ADJUST_COLOUR, false));
+	// Re-cut scaled tiles according to a mask.
+	const surface hex(get_image(game_config::terrain_mask_image,
+					UNSCALED, NO_ADJUST_COLOUR));
+	return mask_surface(image, hex);
+}
+
 static surface get_unmasked(const locator i_locator)
 {
-	surface image(get_image(i_locator, UNSCALED));
-
-	// Re-cut scaled tiles according to a mask. Check if the surface we try
-	// to get is not the mask itself, to avoid an infinite loop.
-	surface res;
-	if(i_locator != locator(game_config::terrain_mask_image)) {
-		const surface hex(get_image(game_config::terrain_mask_image,
-					UNMASKED, NO_ADJUST_COLOUR));
-		res = mask_surface(scale_surface(image, zoom, zoom), hex);
-	} else {
-		res = scale_surface(image, zoom, zoom);
-	}
-
-	return res;
+	// if no scaling needed at this zoom level
+	// we just use the hexed image
+	surface image(get_image(i_locator, HEXED));
+	if (zoom != tile_size)
+		return scale_surface(image, zoom, zoom);
+	else
+		return image;
 }
 
 static surface get_scaled_to_hex(const locator i_locator, COLOUR_ADJUSTMENT adj)
@@ -572,8 +578,16 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 			imap = &images_;
 		}
 		break;
+	case HEXED:
+		imap = &hexed_images_;
+		break;
 	case UNMASKED:
-		imap = &unmasked_images_;
+		// only use separate cache if scaled
+		if(zoom != tile_size) {
+			imap = &unmasked_images_;
+		} else {
+			imap = &hexed_images_;
+		}
 		break;
 	case BRIGHTENED:
 		imap = &brightened_images_;
@@ -607,6 +621,9 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 			break;
 		case SCALED_TO_ZOOM:
 			res = get_scaled_to_zoom(i_locator);
+			break;
+		case HEXED:
+			res = get_hexed(i_locator);
 			break;
 		case UNMASKED:
 			res = get_unmasked(i_locator);
