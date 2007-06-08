@@ -747,6 +747,10 @@ void preferences_dialog::process_event()
 			set_show_ai_moves(!show_ai_moves_button_.checked());
 		if (show_grid_button_.pressed())
 			set_grid(show_grid_button_.checked());
+		if (save_replays_button_.pressed())
+			set_save_replays(save_replays_button_.checked());
+		if (delete_autosaves_button_.pressed())
+			set_grid(delete_autosaves_button_.checked());
 		if (turn_dialog_button_.pressed())
 			set_turn_dialog(turn_dialog_button_.checked());
 		if (show_team_colours_button_.pressed())
@@ -1081,6 +1085,8 @@ void preferences_dialog::set_selection(int index)
 	hotkeys_button_.hide(hide_general);
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);
+	save_replays_button_.hide(hide_general);
+	delete_autosaves_button_.hide(hide_general);
 
 	const bool hide_display = tab_ != DISPLAY_TAB;
 	gamma_label_.hide(hide_display);
