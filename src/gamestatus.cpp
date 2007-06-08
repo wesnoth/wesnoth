@@ -1329,7 +1329,7 @@ static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 	gs_wmi.clear();
 }
 
-game_state::game_state(const game_state& state)
+game_state::game_state(const game_state& state) : variable_set(/*silences gcc warning*/)
 {
 	*this = state;
 }
