@@ -291,7 +291,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				title = _("Scenario Report");
 			} else {
 				title = _("Victory");
-				report << _("You have emerged victorious!") << "\n";
+				report << _("You have emerged victorious!") << "\n~\n";
 			}
 			if (gamestate_.players.size() > 0 && 
 					 (has_next_scenario ||
