@@ -969,25 +969,27 @@ attack::attack(display& gui, const gamemap& map,
 				gui_.invalidate(a_->first);
 
 				game_events::entity_location death_loc(d_);
-				gamemap::location attacker_loc = a_->first;
+				game_events::entity_location attacker_loc(a_);
 				std::string undead_variation = d_->second.undead_variation();
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
 				game_events::fire("die",death_loc,attacker_loc);
-				
-				//WML can invalidate the attacker or defender if it does that abort and invalidate the unit in question
-				if(units_.find(attacker_) != a_) a_ = units_.end();
-				if(units_.find(defender_) != d_) d_ = units_.end();
-				if(a_ == units_.end() || d_ == units_.end()) break;
 
 				refresh_bc();
 
-				if(d_ != units_.end() && d_->second.hitpoints() <= 0) {
+				if(d_ == units_.end() || !death_loc.matches_unit(d_->second)) {
+					//WML has invalidated the dying unit, abort
+					break;
+				} else if(d_->second.hitpoints() <= 0) {
 					units_.erase(d_);
 					d_ = units_.end();
 				}
-				//plague units make new units on the target hex
-				if(a_ != units_.end() && a_stats_->plagues) {
+
+				if(a_ == units_.end() || !attacker_loc.matches_unit(a_->second)) {
+					//WML has invalidated the killing unit, abort
+					break;
+				} else if(a_stats_->plagues) {
+					//plague units make new units on the target hex
 					game_data::unit_type_map::const_iterator reanimitor;
 					LOG_NG<<"trying to reanimate "<<a_stats_->plague_type<<std::endl;
 					reanimitor = info_.unit_types.find(a_stats_->plague_type);
@@ -1190,24 +1192,26 @@ attack::attack(display& gui, const gamemap& map,
 				std::string undead_variation = a_->second.undead_variation();
 
 				game_events::entity_location death_loc(a_);
-				gamemap::location defender_loc = d_->first;
+				game_events::entity_location defender_loc(d_);
 				const int attacker_side = a_->second.side();
 				fire_event("attack_end");
 				game_events::fire("die",death_loc,defender_loc);
 
-				//WML can invalidate the attacker or defender if it does that abort and invalidate the unit in question
-				if(units_.find(attacker_) != a_) a_ = units_.end();
-				if(units_.find(defender_) != d_) d_ = units_.end();
-				if(a_ == units_.end() || d_ == units_.end()) break;
-
 				refresh_bc();
 
-				if(a_ != units_.end() && a_->second.hitpoints() <= 0) {
+				if(a_ == units_.end() || !death_loc.matches_unit(a_->second)) {
+					//WML has invalidated the dying unit, abort
+					break;
+				} else if(a_->second.hitpoints() <= 0) {
 					units_.erase(a_);
 					a_ = units_.end();
 				}
-				//plague units make new units on the target hex.
-				if(d_ != units_.end() && d_stats_->plagues) {
+
+				if(d_ == units_.end() || !defender_loc.matches_unit(d_->second)) {
+					//WML has invalidated the killing unit, abort
+					break;
+				} else if(d_stats_->plagues) {
+					//plague units make new units on the target hex.
 					game_data::unit_type_map::const_iterator reanimitor;
 					LOG_NG<<"trying to reanimate "<<d_stats_->plague_type<<std::endl;
 					reanimitor = info_.unit_types.find(d_stats_->plague_type);
