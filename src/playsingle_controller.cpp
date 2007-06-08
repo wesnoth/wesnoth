@@ -284,60 +284,66 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				return end_level.result == LEVEL_CONTINUE_NO_SAVE ? LEVEL_CONTINUE_NO_SAVE : VICTORY;
 			}
 
-
 			std::stringstream report;
-			for(i=teams_.begin(); i!=teams_.end(); ++i) {
-				if (!i->is_persistent())
-					continue;
+			std::string title;
 
-				player_info *player=gamestate_.get_player(i->save_id());
+			if (obs) {
+				title = _("Scenario Report");
+			} else {
+				title = _("Victory");
+				report << _("You have emerged victorious!") << "\n";
+			}
+			if (gamestate_.players.size() > 0 && 
+					 (has_next_scenario ||
+					 gamestate_.campaign_type == "test")) {
+				for(i=teams_.begin(); i!=teams_.end(); ++i) {
+					if (!i->is_persistent())
+						continue;
 
-				const int remaining_gold = i->gold();
-				const int finishing_bonus_per_turn =
-				             map_.villages().size() * game_config::village_income +
-				             game_config::base_income;
-				const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
-				const int finishing_bonus = end_level.gold_bonus ?
-				             (finishing_bonus_per_turn * turns_left) : 0;
+					player_info *player=gamestate_.get_player(i->save_id());
 
-				if(player) {
-					player->gold = ((remaining_gold + finishing_bonus) * 80) / 100;
+					const int remaining_gold = i->gold();
+					const int finishing_bonus_per_turn =
+						     map_.villages().size() * game_config::village_income +
+						     game_config::base_income;
+					const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
+					const int finishing_bonus = end_level.gold_bonus ?
+						     (finishing_bonus_per_turn * turns_left) : 0;
 
-					if(gamestate_.players.size()>1) {
-						if(i!=teams_.begin()) {
-							report << "\n";
+					if(player) {
+						player->gold = ((remaining_gold + finishing_bonus) * 80) / 100;
+
+						if(gamestate_.players.size()>1) {
+							if(i!=teams_.begin()) {
+								report << "\n";
+							}
+
+							report << font::BOLD_TEXT << i->current_player() << "\n";
 						}
 
-						report << font::BOLD_TEXT << i->current_player() << "\n";
-					}
+						report << _("Remaining gold: ")
+						       << remaining_gold << "\n";
+						if(end_level.gold_bonus) {
+							report << _("Early finish bonus: ")
+							       << finishing_bonus_per_turn
+							       << " " << _("per turn") << "\n"
+							       << _("Turns finished early: ")
+							       << turns_left << "\n"
+							       << _("Bonus: ")
+							       << finishing_bonus << "\n"
+							       << _("Gold: ")
+							       << (remaining_gold+finishing_bonus);
+						}
 
-					report << _("Remaining gold: ")
-					       << remaining_gold << "\n";
-					if(end_level.gold_bonus) {
-						report << _("Early finish bonus: ")
-						       << finishing_bonus_per_turn
-						       << " " << _("per turn") << "\n"
-						       << _("Turns finished early: ")
-						       << turns_left << "\n"
-						       << _("Bonus: ")
-						       << finishing_bonus << "\n"
-						       << _("Gold: ")
-						       << (remaining_gold+finishing_bonus);
+						// xgettext:no-c-format
+						report << '\n' << _("80% of gold is retained for the next scenario") << '\n'
+						       << _("Retained Gold: ") << player->gold;
 					}
-
-					// xgettext:no-c-format
-					report << '\n' << _("80% of gold is retained for the next scenario") << '\n'
-					       << _("Retained Gold: ") << player->gold;
 				}
 			}
 
-			if (!obs)
-				gui::show_dialog(*gui_, NULL, _("Victory"),
-				                 _("You have emerged victorious!"), gui::OK_ONLY);
-
-			if (gamestate_.players.size() > 0 && has_next_scenario ||
-					gamestate_.campaign_type == "test")
-				gui::show_dialog(*gui_, NULL, _("Scenario Report"), report.str(), gui::OK_ONLY);
+			gui::show_dialog(*gui_, NULL, 
+				title, report.str(), gui::OK_ONLY);
 
 			return VICTORY;
 		}
