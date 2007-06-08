@@ -79,6 +79,11 @@ AC_ARG_ENABLE([python],
 	      [python=$enableval],
 	      [python=yes])
 
+AC_ARG_ENABLE([python_install],
+              AS_HELP_STRING([--disable-python-install], [disable installation of Python developer tools]),
+	      [python_install=$enableval],
+	      [python_install=yes])
+
 AC_ARG_ENABLE([lite],
               AS_HELP_STRING([--enable-lite], [enable lite version of wesnoth (without music or large images)]),
 	      [lite=$enableval],
@@ -241,6 +246,7 @@ AC_ARG_ENABLE([display-revision],
 	      [svnrev=no])
 
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
+AM_CONDITIONAL([PYTHON_INSTALL], [test x$python_install = xyes])
 AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
@@ -806,19 +812,6 @@ if test "x$lite" = "xno"; then
         LIBS=$OLD_LIBS
     fi
 fi
-
-#######################################################################
-# Make UNUSED available for suppressing warnings of unused parameters #
-#######################################################################
-
-AH_VERBATIM([_GNU_SOURCE],
-          [/* Macro for declaring function arguments unused. */
-#if defined(__GNUC__)
-#  define UNUSED __attribute__((unused)) /* Flag variable as unused */
-#else /* not __GNUC__ */
-#  define UNUSED
-#endif
-])
 
 #######################################################################
 # Tune gettext stuff for our needs                                    #

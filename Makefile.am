@@ -140,7 +140,7 @@ ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = config/config.rpath config/mkinstalldirs config/py-compile
 
-if PYTHON
+if PYTHON_INSTALL
 pkgpython_PYTHON = data/tools/wesnoth/wmltools.py \
     data/tools/wesnoth/wmldata.py \
     data/tools/wesnoth/wmlparser.py \
