@@ -158,7 +158,7 @@ void display::new_turn()
 			const surface new_mask(image::get_image(tod.image_mask,image::UNMASKED));
 
 			const int niterations = (int)(10/turbo_speed());
-			const int frame_time = (int)(30/turbo_speed());
+			const int frame_time = 30;
 			const int starting_ticks = SDL_GetTicks();
 			for(int i = 0; i != niterations; ++i) {
 
