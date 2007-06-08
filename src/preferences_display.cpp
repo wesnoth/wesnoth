@@ -436,7 +436,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	save_replays_button_.set_help_string(_("Save replays at scenario end."));
 
 	delete_autosaves_button_.set_check(delete_autosaves());
-	delete_autosaves_button_.set_help_string(_("Do not animate AI units moving"));
+	delete_autosaves_button_.set_help_string(_("Automatically delete autosaves at the end of a scenario"));
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
 
