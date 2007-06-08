@@ -50,6 +50,7 @@ public:
 	bool has_attribute(const std::string& key) const {
 		return (*cfg_).values.find(key) != (*cfg_).values.end(); 
 	}
+	bool empty() const { return (null() || cfg_->empty()); }
 
 private:
 	const config* cfg_;

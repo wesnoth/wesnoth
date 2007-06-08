@@ -2189,6 +2189,7 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
+	bool filtered_unit1 = false, filtered_unit2 = false;
 	scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
 	scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
 
@@ -2200,6 +2201,9 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,*ffi)) {
 			return false;
 		}
+		if(!ffi->empty()) {
+			filtered_unit1 = true;
+		}
 	}
 	bool special_matches = false;
 	const vconfig::child_list first_special_filters = handler.first_special_filters();
@@ -2209,6 +2213,9 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 
 		if(unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"),*ffi)) {
 			special_matches = true;
+		}
+		if(!ffi->empty()) {
+			filtered_unit1 = true;
 		}
 	}
 	if(!special_matches) {
@@ -2221,6 +2228,9 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,*sfi)) {
 			return false;
 		}
+		if(!sfi->empty()) {
+			filtered_unit2 = true;
+		}
 	}
 	const vconfig::child_list second_special_filters = handler.second_special_filters();
 	special_matches = second_special_filters.size() ? false : true;
@@ -2230,16 +2240,19 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 		if(unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"),*ffi)) {
 			special_matches = true;
 		}
+		if(!sfi->empty()) {
+			filtered_unit2 = true;
+		}
 	}
 	if(!special_matches) {
 		return false;
 	}
-	if(ev.loc1.requires_unit() 
+	if(ev.loc1.requires_unit() && filtered_unit1
 	&& (unit1 == units->end() || !ev.loc1.matches_unit(unit1->second))) {
 		//wrong or missing entity at src location
 		return false;
 	}
-	if(ev.loc2.requires_unit() 
+	if(ev.loc2.requires_unit()  && filtered_unit2
 	&& (unit2 == units->end() || !ev.loc2.matches_unit(unit2->second))) {
 		//wrong or missing entity at dst location
 		return false;
