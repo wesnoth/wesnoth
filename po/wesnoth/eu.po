@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-05 10:56+0200\n"
+"POT-Creation-Date: 2007-06-08 12:42+0200\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -22,25 +22,25 @@ msgstr ""
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: data/_main.cfg:18
+#: data/_main.cfg:17
 msgid "Binary Saves"
 msgstr "Gorde konprimatuta"
 
-#: data/_main.cfg:25
+#: data/_main.cfg:24
 msgid "Show Combat"
 msgstr "Borrokak erakutsi"
 
-#: data/_main.cfg:32
+#: data/_main.cfg:31
 #, fuzzy
 msgid "Mouse Scrolling"
 msgstr "Sendaketak"
 
-#: data/_main.cfg:39
+#: data/_main.cfg:38
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "Sartu zerbitzari ofizialera"
 
-#: data/_main.cfg:43
+#: data/_main.cfg:42
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
@@ -7282,6 +7282,13 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
+#: data/hardwired/tips.cfg:38
+msgid ""
+"Because units with the 'loyal' trait have no upkeep, they can be especially "
+"good for stealing enemy villages to boost your income, especially if they "
+"have high mobility."
+msgstr ""
+
 #: data/multiplayer/_main.cfg:4
 msgid "User Map"
 msgstr "Erabiltzailearen mapa"
@@ -8404,7 +8411,7 @@ msgstr "BP"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
 #: data/themes/experimental.cfg:158 src/menu_events.cpp:299
-#: src/menu_events.cpp:842
+#: src/menu_events.cpp:850
 msgid "XP"
 msgstr "EP"
 
@@ -8543,55 +8550,56 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Ez dago gaztelu gelaxka librerik unitateak biltzeko."
 
-#: src/actions.cpp:883 src/actions.cpp:1109
+#: src/actions.cpp:883 src/actions.cpp:1111
 msgid "poisoned"
 msgstr "pozoindua"
 
-#: src/actions.cpp:887 src/actions.cpp:1113
+#: src/actions.cpp:887 src/actions.cpp:1115
 msgid "slowed"
 msgstr "mantsotua"
 
-#: src/actions.cpp:893 src/actions.cpp:1119
+#: src/actions.cpp:893 src/actions.cpp:1121
 msgid "stone"
 msgstr "harria"
 
-#: src/actions.cpp:2025
+#: src/actions.cpp:2029
 msgid "Ambushed!"
 msgstr "Segada batean harrapatuta!"
 
-#: src/actions.cpp:2065
+#: src/actions.cpp:2069
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unitate lagun bat ikustatua"
 msgstr[1] "Unitate lagun bat ikustatua"
 
-#: src/actions.cpp:2068
+#: src/actions.cpp:2072
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unitate etsai bat ikustatua!"
 msgstr[1] "Unitate etsai bat ikustatua!"
 
-#: src/actions.cpp:2073
+#: src/actions.cpp:2077
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2074
+#: src/actions.cpp:2078
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2075
+#: src/actions.cpp:2079
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitateak ikustatuta! ($friends lagun, $enemies etsai)"
 
-#: src/actions.cpp:2084
-msgid "(press $hotkey to continue)"
+#: src/actions.cpp:2088
+#, fuzzy
+msgid "(press $hotkey to keep moving)"
 msgstr "(sakatu $hotkey jarraitzeko)"
 
 #: src/dialogs.cpp:116
@@ -8712,7 +8720,7 @@ msgid "Date"
 msgstr "Data"
 
 #: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:296
-#: src/menu_events.cpp:840 src/multiplayer.cpp:108
+#: src/menu_events.cpp:848 src/multiplayer.cpp:108
 msgid "Name"
 msgstr "Izena"
 
@@ -8922,7 +8930,7 @@ msgid ""
 msgstr "Arazo bat egon da kanpaina instalatzeko behar den fitxategia sortzen."
 
 #: src/game.cpp:1135 src/game.cpp:1174 src/game.cpp:1199
-#: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:388
+#: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:371
 msgid "Connection timed out"
 msgstr "Konexioa denboraz kanpo"
 
@@ -8981,15 +8989,15 @@ msgstr "Jokatu jokalari-anitzeko jokua makina berdina banatzen"
 msgid "Login: "
 msgstr "Saioa hasi"
 
-#: src/game.cpp:1281 src/playcampaign.cpp:90 src/playcampaign.cpp:360
+#: src/game.cpp:1281 src/playcampaign.cpp:90 src/playcampaign.cpp:343
 msgid "The game could not be loaded: "
 msgstr "Ezin izan da jokua kargatu: "
 
-#: src/game.cpp:1283 src/playcampaign.cpp:92 src/playcampaign.cpp:363
+#: src/game.cpp:1283 src/playcampaign.cpp:92 src/playcampaign.cpp:346
 msgid "Error while playing the game: "
 msgstr "Errorea jokuan jolasterakoan:"
 
-#: src/game.cpp:1295 src/playcampaign.cpp:94 src/playcampaign.cpp:366
+#: src/game.cpp:1295 src/playcampaign.cpp:94 src/playcampaign.cpp:349
 msgid "The game map could not be loaded: "
 msgstr "Ezin izan da joku mapa kargatu: "
 
@@ -9040,11 +9048,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:860
+#: src/game_events.cpp:825
 msgid "Victory:"
 msgstr "Garaipena:"
 
-#: src/game_events.cpp:863
+#: src/game_events.cpp:828
 msgid "Defeat:"
 msgstr "Gainditu:"
 
@@ -9082,7 +9090,7 @@ msgstr ""
 msgid "unit help^Name"
 msgstr "Jokutik irten"
 
-#: src/help.cpp:1168 src/menu_events.cpp:295 src/menu_events.cpp:839
+#: src/help.cpp:1168 src/menu_events.cpp:295 src/menu_events.cpp:847
 msgid "Type"
 msgstr "Mota"
 
@@ -9255,7 +9263,7 @@ msgstr "Hartutako kaltea (BE)"
 msgid "Statistics"
 msgstr "Estatistikak"
 
-#: src/menu_events.cpp:297 src/menu_events.cpp:841
+#: src/menu_events.cpp:297 src/menu_events.cpp:849
 msgid "Level"
 msgstr "Maila"
 
@@ -9306,11 +9314,11 @@ msgstr "Gastuak"
 msgid "Income"
 msgstr "Irabaziak"
 
-#: src/menu_events.cpp:465 src/playcampaign.cpp:331 src/playcampaign.cpp:476
+#: src/menu_events.cpp:465 src/playcampaign.cpp:460
 msgid "Name:"
 msgstr "Izena:"
 
-#: src/menu_events.cpp:470 src/menu_events.cpp:483
+#: src/menu_events.cpp:470 src/menu_events.cpp:485
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Okerra"
@@ -9329,77 +9337,77 @@ msgstr "Gordeta"
 msgid "The game has been saved"
 msgstr "Jokua gordeta"
 
-#: src/menu_events.cpp:483 src/playcampaign.cpp:486
+#: src/menu_events.cpp:485 src/playcampaign.cpp:468
 msgid "The game could not be saved"
 msgstr "Ezin izan da jokua gorde"
 
-#: src/menu_events.cpp:497
+#: src/menu_events.cpp:501
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Banatu mapak"
 
-#: src/menu_events.cpp:502
+#: src/menu_events.cpp:506
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Gordeketa existitzen da dagoeneko. Gainidatzi nahi duzu?"
 
-#: src/menu_events.cpp:514
+#: src/menu_events.cpp:518
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:519
+#: src/menu_events.cpp:523
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:609 src/menu_events.cpp:611 src/play_controller.cpp:746
+#: src/menu_events.cpp:613 src/menu_events.cpp:615 src/play_controller.cpp:746
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Auto-Gorde"
 
-#: src/menu_events.cpp:614
+#: src/menu_events.cpp:618
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ezin izan da jokua automatikoki gorde. Mesedez gorde ezazu eskuz"
 
-#: src/menu_events.cpp:638
+#: src/menu_events.cpp:644
 msgid "Chat Log"
 msgstr "Berriketa historikoa"
 
-#: src/menu_events.cpp:648
+#: src/menu_events.cpp:654
 msgid "Message:"
 msgstr "Mezua:"
 
-#: src/menu_events.cpp:649
+#: src/menu_events.cpp:655
 msgid "Send to allies only"
 msgstr "Lagunei soilik bidali"
 
-#: src/menu_events.cpp:716
+#: src/menu_events.cpp:722
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Urrea"
 msgstr[1] "Urrea"
 
-#: src/menu_events.cpp:723
+#: src/menu_events.cpp:729
 msgid "You have no units available to recruit."
 msgstr "Ez duzu biltzeko unitaterik."
 
-#: src/menu_events.cpp:734
+#: src/menu_events.cpp:742
 msgid "Recruit"
 msgstr "Bildu"
 
-#: src/menu_events.cpp:735 src/menu_events.cpp:885
+#: src/menu_events.cpp:743 src/menu_events.cpp:893
 msgid "Select unit:"
 msgstr "Unitatea Aukeratu:"
 
-#: src/menu_events.cpp:775
+#: src/menu_events.cpp:783
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Ez duzu unitate hori biltzeko adina diru"
 
-#: src/menu_events.cpp:832
+#: src/menu_events.cpp:840
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Zure gudarietatik aldendua izan zara eta ezin dituzu deitu"
 
-#: src/menu_events.cpp:834
+#: src/menu_events.cpp:842
 #, fuzzy
 msgid ""
 "There are no troops available to recall\n"
@@ -9408,93 +9416,93 @@ msgstr ""
 "Ez dago deitzeko unitaterik\n"
 "(aurreko guda-guneko bizirik irtendako unitaterik izan behar duzu)"
 
-#: src/menu_events.cpp:873
+#: src/menu_events.cpp:881
 msgid "Dismiss Unit"
 msgstr "Unitatea lizentziatu"
 
-#: src/menu_events.cpp:884
+#: src/menu_events.cpp:892
 msgid "Recall"
 msgstr "Deitu"
 
-#: src/menu_events.cpp:896
+#: src/menu_events.cpp:904
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Gutxienez $cost urre izan behar duzu unitateak deidu ahal izateko"
 msgstr[1] "Gutxienez $cost urre izan behar duzu unitateak deidu ahal izateko"
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1233
 #, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Oraindik ez duzu zure txanda hasi. Benetan bukatu nahi duzu zure txanda?"
 
-#: src/menu_events.cpp:1233 src/menu_events.cpp:1238
+#: src/menu_events.cpp:1241 src/menu_events.cpp:1246
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Zenbait unitatek mugitu daitezke oraindik. Benetan bukatu nahi duzu zure "
 "txanda?"
 
-#: src/menu_events.cpp:1279
+#: src/menu_events.cpp:1287
 msgid "Rename Unit"
 msgstr "Unitatea berrizendatu"
 
-#: src/menu_events.cpp:1361
+#: src/menu_events.cpp:1369
 msgid "Place Label"
 msgstr "Etiketa ezarri"
 
-#: src/menu_events.cpp:1364 src/menu_events.cpp:1367
+#: src/menu_events.cpp:1372 src/menu_events.cpp:1375
 msgid "Label:"
 msgstr "Etiketa:"
 
-#: src/menu_events.cpp:1370
+#: src/menu_events.cpp:1378
 #, fuzzy
 msgid "Team only"
 msgstr "Taldea"
 
-#: src/menu_events.cpp:1468
+#: src/menu_events.cpp:1476
 msgid "Search"
 msgstr "Bilatu"
 
-#: src/menu_events.cpp:1511
+#: src/menu_events.cpp:1519
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1562
+#: src/menu_events.cpp:1570
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1566
+#: src/menu_events.cpp:1574
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1576
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1578
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1572
+#: src/menu_events.cpp:1580
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1574
+#: src/menu_events.cpp:1582
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1576
+#: src/menu_events.cpp:1584
 #, fuzzy
 msgid "Unknown subcommand"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/menu_events.cpp:1579
+#: src/menu_events.cpp:1587
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -9502,54 +9510,54 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1582
+#: src/menu_events.cpp:1590
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1592
 #, fuzzy
 msgid "Unknown command"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/menu_events.cpp:1596
+#: src/menu_events.cpp:1604
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1598 src/menu_events.cpp:1605 src/menu_events.cpp:1612
+#: src/menu_events.cpp:1606 src/menu_events.cpp:1613 src/menu_events.cpp:1620
 #, fuzzy
 msgid "Invalid username: "
 msgstr "Baliogabeko etiketa izen"
 
-#: src/menu_events.cpp:1603
+#: src/menu_events.cpp:1611
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1618
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:1636
+#: src/menu_events.cpp:1644
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1646
+#: src/menu_events.cpp:1654
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1649
+#: src/menu_events.cpp:1657
 msgid "Removed from friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1656
+#: src/menu_events.cpp:1664
 #, fuzzy
 msgid "Unknown command: "
 msgstr "Guda leku ezezaguna: '"
 
-#: src/menu_events.cpp:1757
+#: src/menu_events.cpp:1765
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Ezin izan da '$search' katea duen etiketa edo unitaterik aurkitu."
 
-#: src/menu_events.cpp:1904
+#: src/menu_events.cpp:1914
 msgid "prompt^Command:"
 msgstr "Komandoa:"
 
@@ -10084,8 +10092,8 @@ msgstr "Ezin izan da ostalariari konektatu."
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:392 src/playsingle_controller.cpp:346
-#: src/playsingle_controller.cpp:392
+#: src/play_controller.cpp:392 src/playsingle_controller.cpp:352
+#: src/playsingle_controller.cpp:398
 msgid "The file you have tried to load is corrupt"
 msgstr "Kargatu nahi zenuen fitxategia ondatuta dago"
 
@@ -10097,58 +10105,39 @@ msgstr ""
 msgid "Back to turn "
 msgstr ""
 
-#: src/playcampaign.cpp:112
-#, fuzzy
-msgid "Autosaves"
-msgstr "Auto-Gorde"
-
-#: src/playcampaign.cpp:113
-#, fuzzy
-msgid "Do you want to delete the autosaves of this scenario?"
-msgstr "Gudagune honen errepikapena gorde nahi al duzu?"
-
-#: src/playcampaign.cpp:306
+#: src/playcampaign.cpp:299
 msgid "Defeat"
 msgstr "Gainditu"
 
-#: src/playcampaign.cpp:307
+#: src/playcampaign.cpp:300
 msgid "You have been defeated!"
 msgstr "Gainditua izan zara!"
 
-#: src/playcampaign.cpp:322
+#: src/playcampaign.cpp:316
 msgid " replay"
 msgstr "errepikapena"
 
-#: src/playcampaign.cpp:330
-msgid "Do you want to save a replay of this scenario?"
-msgstr "Gudagune honen errepikapena gorde nahi al duzu?"
-
-#: src/playcampaign.cpp:332
-#, fuzzy
-msgid "Save Replay"
-msgstr "errepikatu"
-
-#: src/playcampaign.cpp:339
+#: src/playcampaign.cpp:324
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "Ezin izan da jokua gorde"
 
-#: src/playcampaign.cpp:379
+#: src/playcampaign.cpp:362
 #, fuzzy
 msgid "Receiving data..."
 msgstr "Jokuaren datuak lortzen..."
 
-#: src/playcampaign.cpp:381
+#: src/playcampaign.cpp:364
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Hurrengo maila jeisten..."
 
-#: src/playcampaign.cpp:475
+#: src/playcampaign.cpp:459
 #, fuzzy
-msgid "Do you want to save your game? (Also erases Auto-Save files)"
+msgid "Do you want to save your game?"
 msgstr "Zure jokua gorde nahi duzu?"
 
-#: src/playcampaign.cpp:502
+#: src/playcampaign.cpp:484
 msgid "Unknown scenario: '"
 msgstr "Guda leku ezezaguna: '"
 
@@ -10168,53 +10157,53 @@ msgstr "Jokua bukatu da"
 msgid "The game is over."
 msgstr "Jokua bukatu da."
 
-#: src/playsingle_controller.cpp:314
+#: src/playsingle_controller.cpp:291
+msgid "Scenario Report"
+msgstr "Gudagunearen txostena"
+
+#: src/playsingle_controller.cpp:293
+msgid "Victory"
+msgstr "Garaipena!"
+
+#: src/playsingle_controller.cpp:294
+msgid "You have emerged victorious!"
+msgstr "Garaile irten zara gudatik!"
+
+#: src/playsingle_controller.cpp:324
 msgid "Remaining gold: "
 msgstr "Gelditzen den urrea:"
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:327
 #, fuzzy
 msgid "Early finish bonus: "
 msgstr "Txanda azkarregi amaitu da: "
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:329
 msgid "per turn"
 msgstr "txandako"
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:330
 msgid "Turns finished early: "
 msgstr "Txanda azkarregi amaitu da: "
 
-#: src/playsingle_controller.cpp:322
+#: src/playsingle_controller.cpp:332
 msgid "Bonus: "
 msgstr "Bonusa: "
 
-#: src/playsingle_controller.cpp:324
+#: src/playsingle_controller.cpp:334
 msgid "Gold: "
 msgstr "Urrea:"
 
-#: src/playsingle_controller.cpp:329
+#: src/playsingle_controller.cpp:339
 #, fuzzy, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "Urrearen %80a hurrengo gudagunerako gorde da"
 
-#: src/playsingle_controller.cpp:330
+#: src/playsingle_controller.cpp:340
 msgid "Retained Gold: "
 msgstr "Lortutako Urrea:"
 
-#: src/playsingle_controller.cpp:335
-msgid "Victory"
-msgstr "Garaipena!"
-
-#: src/playsingle_controller.cpp:336
-msgid "You have emerged victorious!"
-msgstr "Garaile irten zara gudatik!"
-
-#: src/playsingle_controller.cpp:340
-msgid "Scenario Report"
-msgstr "Gudagunearen txostena"
-
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:363
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -10223,7 +10212,7 @@ msgstr ""
 "Sareko deskonexio bat gertatu da, eta jokuak ezin du jarraitu. Jokua gorde "
 "nahi duzu?"
 
-#: src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:482
 msgid "It is now your turn"
 msgstr "Zure txanda"
 
@@ -10543,6 +10532,25 @@ msgstr ""
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Autosaves"
+#~ msgstr "Auto-Gorde"
+
+#, fuzzy
+#~ msgid "Do you want to delete the autosaves of this scenario?"
+#~ msgstr "Gudagune honen errepikapena gorde nahi al duzu?"
+
+#~ msgid "Do you want to save a replay of this scenario?"
+#~ msgstr "Gudagune honen errepikapena gorde nahi al duzu?"
+
+#, fuzzy
+#~ msgid "Save Replay"
+#~ msgstr "errepikatu"
+
+#, fuzzy
+#~ msgid "Do you want to save your game? (Also erases Auto-Save files)"
+#~ msgstr "Zure jokua gorde nahi duzu?"
 
 #~ msgid "Cannot rescan the filesystem"
 #~ msgstr "Ezin da berriz eskaneatu fitxategi sistema"
@@ -10883,10 +10891,6 @@ msgstr ""
 
 #~ msgid "slow"
 #~ msgstr "mantso"
-
-#, fuzzy
-#~ msgid "Do you want to skip the replay?"
-#~ msgstr "Zure jokua gorde nahi duzu?"
 
 #, fuzzy
 #~ msgid "Initial time available to players at start of game"

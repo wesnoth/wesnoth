@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-05 10:56+0200\n"
+"POT-Creation-Date: 2007-06-08 12:42+0200\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -16,24 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/_main.cfg:18
+#: data/_main.cfg:17
 msgid "Binary Saves"
 msgstr "Servata Binaria"
 
-#: data/_main.cfg:25
+#: data/_main.cfg:24
 msgid "Show Combat"
 msgstr "Certamina Monstrare"
 
-#: data/_main.cfg:32
+#: data/_main.cfg:31
 msgid "Mouse Scrolling"
 msgstr "Gyrum Muris"
 
-#: data/_main.cfg:39
+#: data/_main.cfg:38
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "Ad Moderatrum Officiale Coniungere"
 
-#: data/_main.cfg:43
+#: data/_main.cfg:42
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
@@ -9091,6 +9091,13 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
+#: data/hardwired/tips.cfg:38
+msgid ""
+"Because units with the 'loyal' trait have no upkeep, they can be especially "
+"good for stealing enemy villages to boost your income, especially if they "
+"have high mobility."
+msgstr ""
+
 #: data/multiplayer/_main.cfg:4
 msgid "User Map"
 msgstr "Charta Utentis"
@@ -10384,7 +10391,7 @@ msgstr "PS"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
 #: data/themes/experimental.cfg:158 src/menu_events.cpp:299
-#: src/menu_events.cpp:842
+#: src/menu_events.cpp:850
 msgid "XP"
 msgstr "PE"
 
@@ -10514,55 +10521,56 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr ""
 "Non sunt tesserae vacuae castelli in quibus unitatem conscribere possis."
 
-#: src/actions.cpp:883 src/actions.cpp:1109
+#: src/actions.cpp:883 src/actions.cpp:1111
 msgid "poisoned"
 msgstr "venenatus"
 
-#: src/actions.cpp:887 src/actions.cpp:1113
+#: src/actions.cpp:887 src/actions.cpp:1115
 msgid "slowed"
 msgstr "lentifactus"
 
-#: src/actions.cpp:893 src/actions.cpp:1119
+#: src/actions.cpp:893 src/actions.cpp:1121
 msgid "stone"
 msgstr "petrificare"
 
-#: src/actions.cpp:2025
+#: src/actions.cpp:2029
 msgid "Ambushed!"
 msgstr "Insidiae!"
 
-#: src/actions.cpp:2065
+#: src/actions.cpp:2069
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Untitas socia vista"
 msgstr[1] "Untitas socia vista"
 
-#: src/actions.cpp:2068
+#: src/actions.cpp:2072
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unitas inimica vista!"
 msgstr[1] "Unitas inimica vista!"
 
-#: src/actions.cpp:2073
+#: src/actions.cpp:2077
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2074
+#: src/actions.cpp:2078
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2075
+#: src/actions.cpp:2079
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitates vistae! ($friends sociae, $enemies inimicae)"
 
-#: src/actions.cpp:2084
-msgid "(press $hotkey to continue)"
+#: src/actions.cpp:2088
+#, fuzzy
+msgid "(press $hotkey to keep moving)"
 msgstr "($hotkey premere ad pergendum)"
 
 #: src/dialogs.cpp:116
@@ -10683,7 +10691,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:296
-#: src/menu_events.cpp:840 src/multiplayer.cpp:108
+#: src/menu_events.cpp:848 src/multiplayer.cpp:108
 msgid "Name"
 msgstr "Nomen"
 
@@ -10881,7 +10889,7 @@ msgstr ""
 "Quaestio erat in creando pligas necessarias inaugurationi huius stipendii."
 
 #: src/game.cpp:1135 src/game.cpp:1174 src/game.cpp:1199
-#: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:388
+#: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:371
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
 
@@ -10939,15 +10947,15 @@ msgstr "Lusum lusorum plurem ludere compartentes eadem machinam."
 msgid "Login: "
 msgstr "Inire: "
 
-#: src/game.cpp:1281 src/playcampaign.cpp:90 src/playcampaign.cpp:360
+#: src/game.cpp:1281 src/playcampaign.cpp:90 src/playcampaign.cpp:343
 msgid "The game could not be loaded: "
 msgstr "Lusus non restitui potest: "
 
-#: src/game.cpp:1283 src/playcampaign.cpp:92 src/playcampaign.cpp:363
+#: src/game.cpp:1283 src/playcampaign.cpp:92 src/playcampaign.cpp:346
 msgid "Error while playing the game: "
 msgstr "Mendum in lusione: "
 
-#: src/game.cpp:1295 src/playcampaign.cpp:94 src/playcampaign.cpp:366
+#: src/game.cpp:1295 src/playcampaign.cpp:94 src/playcampaign.cpp:349
 msgid "The game map could not be loaded: "
 msgstr "Charta lusus restitui non potest: "
 
@@ -10996,11 +11004,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr "Revocans scrinium tituli."
 
-#: src/game_events.cpp:860
+#: src/game_events.cpp:825
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:863
+#: src/game_events.cpp:828
 msgid "Defeat:"
 msgstr "Clades:"
 
@@ -11037,7 +11045,7 @@ msgstr ""
 msgid "unit help^Name"
 msgstr "Lusum relinquere"
 
-#: src/help.cpp:1168 src/menu_events.cpp:295 src/menu_events.cpp:839
+#: src/help.cpp:1168 src/menu_events.cpp:295 src/menu_events.cpp:847
 msgid "Type"
 msgstr "Genus"
 
@@ -11210,7 +11218,7 @@ msgstr "Damnum Passum (Exsp)"
 msgid "Statistics"
 msgstr "Census"
 
-#: src/menu_events.cpp:297 src/menu_events.cpp:841
+#: src/menu_events.cpp:297 src/menu_events.cpp:849
 msgid "Level"
 msgstr "E gradu"
 
@@ -11261,11 +11269,11 @@ msgstr "Impensa"
 msgid "Income"
 msgstr "Merces"
 
-#: src/menu_events.cpp:465 src/playcampaign.cpp:331 src/playcampaign.cpp:476
+#: src/menu_events.cpp:465 src/playcampaign.cpp:460
 msgid "Name:"
 msgstr "Nomen:"
 
-#: src/menu_events.cpp:470 src/menu_events.cpp:483
+#: src/menu_events.cpp:470 src/menu_events.cpp:485
 #: src/multiplayer_create.cpp:493
 msgid "Error"
 msgstr "Mendum"
@@ -11286,77 +11294,77 @@ msgstr "Servatus"
 msgid "The game has been saved"
 msgstr "Lusus servatus est"
 
-#: src/menu_events.cpp:483 src/playcampaign.cpp:486
+#: src/menu_events.cpp:485 src/playcampaign.cpp:468
 msgid "The game could not be saved"
 msgstr "Lusus non servari potest"
 
-#: src/menu_events.cpp:497
+#: src/menu_events.cpp:501
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Chartas Compartire"
 
-#: src/menu_events.cpp:502
+#: src/menu_events.cpp:506
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Iam est nomen hoc. Visne id superscribere?"
 
-#: src/menu_events.cpp:514
+#: src/menu_events.cpp:518
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:519
+#: src/menu_events.cpp:523
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:609 src/menu_events.cpp:611 src/play_controller.cpp:746
+#: src/menu_events.cpp:613 src/menu_events.cpp:615 src/play_controller.cpp:746
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
 
-#: src/menu_events.cpp:614
+#: src/menu_events.cpp:618
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Non poteram lusum automatice servare. Amabo, serva eum manu."
 
-#: src/menu_events.cpp:638
+#: src/menu_events.cpp:644
 msgid "Chat Log"
 msgstr "Acta Colloquii"
 
-#: src/menu_events.cpp:648
+#: src/menu_events.cpp:654
 msgid "Message:"
 msgstr "Nuntius: "
 
-#: src/menu_events.cpp:649
+#: src/menu_events.cpp:655
 msgid "Send to allies only"
 msgstr "Mittere tantum sociis"
 
-#: src/menu_events.cpp:716
+#: src/menu_events.cpp:722
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Nummis Auri"
 msgstr[1] "Nummis Auri"
 
-#: src/menu_events.cpp:723
+#: src/menu_events.cpp:729
 msgid "You have no units available to recruit."
 msgstr "Non habes unitates quas conscribere potes"
 
-#: src/menu_events.cpp:734
+#: src/menu_events.cpp:742
 msgid "Recruit"
 msgstr "Conscribere"
 
-#: src/menu_events.cpp:735 src/menu_events.cpp:885
+#: src/menu_events.cpp:743 src/menu_events.cpp:893
 msgid "Select unit:"
 msgstr "Unitatem elegere: "
 
-#: src/menu_events.cpp:775
+#: src/menu_events.cpp:783
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Non habes satis auri ut unitatem illam conscribas"
 
-#: src/menu_events.cpp:832
+#: src/menu_events.cpp:840
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Separatus es a militibus tuis et eos non revocare potes"
 
-#: src/menu_events.cpp:834
+#: src/menu_events.cpp:842
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11364,59 +11372,59 @@ msgstr ""
 "Non sunt milites revocandi\n"
 "(Opus est veteranos habere qui supersunt ex missione praeterita)"
 
-#: src/menu_events.cpp:873
+#: src/menu_events.cpp:881
 msgid "Dismiss Unit"
 msgstr "Unitatem Dimittere"
 
-#: src/menu_events.cpp:884
+#: src/menu_events.cpp:892
 msgid "Recall"
 msgstr "Revocare"
 
-#: src/menu_events.cpp:896
+#: src/menu_events.cpp:904
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Opus est saltem $cost nummos auri ut unitatem revoces."
 msgstr[1] "Opus est saltem $cost nummos auri ut unitatem revoces."
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1233
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Tractum nondum coepisti. Visne vere tractum finire?"
 
-#: src/menu_events.cpp:1233 src/menu_events.cpp:1238
+#: src/menu_events.cpp:1241 src/menu_events.cpp:1246
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Nonnullis unitatibus puncta motus relicta sunt. Visne vere tractum finire?"
 
-#: src/menu_events.cpp:1279
+#: src/menu_events.cpp:1287
 msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
-#: src/menu_events.cpp:1361
+#: src/menu_events.cpp:1369
 msgid "Place Label"
 msgstr "Titulus Loci"
 
-#: src/menu_events.cpp:1364 src/menu_events.cpp:1367
+#: src/menu_events.cpp:1372 src/menu_events.cpp:1375
 msgid "Label:"
 msgstr "Titulus: "
 
-#: src/menu_events.cpp:1370
+#: src/menu_events.cpp:1378
 #, fuzzy
 msgid "Team only"
 msgstr "Caeruleus illustris"
 
-#: src/menu_events.cpp:1468
+#: src/menu_events.cpp:1476
 msgid "Search"
 msgstr "Investigatio"
 
-#: src/menu_events.cpp:1511
+#: src/menu_events.cpp:1519
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Imperia: whisper ignore emote. Scribe /help [imperium] si plus aditorium vis."
 
-#: src/menu_events.cpp:1562
+#: src/menu_events.cpp:1570
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -11424,21 +11432,21 @@ msgstr ""
 "Nuntium privatum mittit. Non potes mittere nuntios lusoribus qui partes in "
 "lusione imperant. Syntaxis: /whisper [cognomini] [nuntium]"
 
-#: src/menu_events.cpp:1566
+#: src/menu_events.cpp:1574
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:1568
+#: src/menu_events.cpp:1576
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1578
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -11447,21 +11455,21 @@ msgstr ""
 "Lusorem ex elencho tuo utentium ignoratorum. Syntaxis: /ignore remove "
 "[argumentum]"
 
-#: src/menu_events.cpp:1572
+#: src/menu_events.cpp:1580
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Elenchum tuum utentium ignoratorum dele. Syntaxis: /ignore clear"
 
-#: src/menu_events.cpp:1574
+#: src/menu_events.cpp:1582
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Elenchum utentium ignoratorum monstrare. Syntaxis: /ignore list"
 
-#: src/menu_events.cpp:1576
+#: src/menu_events.cpp:1584
 msgid "Unknown subcommand"
 msgstr "Imperium subordinatum incognitum"
 
-#: src/menu_events.cpp:1579
+#: src/menu_events.cpp:1587
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -11473,56 +11481,56 @@ msgstr ""
 "[argumentum (optionale)]. Subimperia: add remove list clear. Scribe /help "
 "ignore [subimperium] si vis plus sapere."
 
-#: src/menu_events.cpp:1582
+#: src/menu_events.cpp:1590
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Commotionem animi vel actionem personalem in sermone mittere. Syntaxis: /"
 "emote [nuntium]"
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1592
 msgid "Unknown command"
 msgstr "Imperium incognitum"
 
-#: src/menu_events.cpp:1596
+#: src/menu_events.cpp:1604
 msgid "Added to ignore list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:1598 src/menu_events.cpp:1605 src/menu_events.cpp:1612
+#: src/menu_events.cpp:1606 src/menu_events.cpp:1613 src/menu_events.cpp:1620
 msgid "Invalid username: "
 msgstr "Nomen utentis invalidum: "
 
-#: src/menu_events.cpp:1603
+#: src/menu_events.cpp:1611
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1618
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1636
+#: src/menu_events.cpp:1644
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1646
+#: src/menu_events.cpp:1654
 msgid "Removed from ignore list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1649
+#: src/menu_events.cpp:1657
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1656
+#: src/menu_events.cpp:1664
 msgid "Unknown command: "
 msgstr "Imperium incognitum: "
 
-#: src/menu_events.cpp:1757
+#: src/menu_events.cpp:1765
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
-#: src/menu_events.cpp:1904
+#: src/menu_events.cpp:1914
 msgid "prompt^Command:"
 msgstr "Imperium:"
 
@@ -12033,8 +12041,8 @@ msgstr "Non poteram portum ad congeriem portuum adiungere"
 msgid "Could not send initial handshake"
 msgstr "Non potui mittere salutationem initialem"
 
-#: src/play_controller.cpp:392 src/playsingle_controller.cpp:346
-#: src/playsingle_controller.cpp:392
+#: src/play_controller.cpp:392 src/playsingle_controller.cpp:352
+#: src/playsingle_controller.cpp:398
 msgid "The file you have tried to load is corrupt"
 msgstr "Pliga quam restituere conaris corrupta est"
 
@@ -12046,57 +12054,39 @@ msgstr "Rursus ad initium"
 msgid "Back to turn "
 msgstr "Rursus ad tractum "
 
-#: src/playcampaign.cpp:112
-#, fuzzy
-msgid "Autosaves"
-msgstr "Servatum-Automatarium"
-
-#: src/playcampaign.cpp:113
-#, fuzzy
-msgid "Do you want to delete the autosaves of this scenario?"
-msgstr "Visne versionem remonstrabilem missionis huius servare?"
-
-#: src/playcampaign.cpp:306
+#: src/playcampaign.cpp:299
 msgid "Defeat"
 msgstr "Clades"
 
-#: src/playcampaign.cpp:307
+#: src/playcampaign.cpp:300
 msgid "You have been defeated!"
 msgstr "Victus es!"
 
-#: src/playcampaign.cpp:322
+#: src/playcampaign.cpp:316
 msgid " replay"
 msgstr " remonstratum"
 
-#: src/playcampaign.cpp:330
-msgid "Do you want to save a replay of this scenario?"
-msgstr "Visne versionem remonstrabilem missionis huius servare?"
-
-#: src/playcampaign.cpp:332
-#, fuzzy
-msgid "Save Replay"
-msgstr "Remonstrare"
-
-#: src/playcampaign.cpp:339
+#: src/playcampaign.cpp:324
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "Lusus non servari potest"
 
-#: src/playcampaign.cpp:379
+#: src/playcampaign.cpp:362
 #, fuzzy
 msgid "Receiving data..."
 msgstr "Index lusorum recipitur..."
 
-#: src/playcampaign.cpp:381
+#: src/playcampaign.cpp:364
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Stipendium proximum trahitur..."
 
-#: src/playcampaign.cpp:475
-msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Visne lusum servare? (Etiam delet archiva Servatae Automatariae)"
+#: src/playcampaign.cpp:459
+#, fuzzy
+msgid "Do you want to save your game?"
+msgstr "Visne lusum servare?"
 
-#: src/playcampaign.cpp:502
+#: src/playcampaign.cpp:484
 msgid "Unknown scenario: '"
 msgstr "Missio incognita: '"
 
@@ -12116,58 +12106,58 @@ msgstr "Lusus Finitus"
 msgid "The game is over."
 msgstr "Lusus consummatus est."
 
-#: src/playsingle_controller.cpp:314
+#: src/playsingle_controller.cpp:291
+msgid "Scenario Report"
+msgstr "Renuntiatio Missionis"
+
+#: src/playsingle_controller.cpp:293
+msgid "Victory"
+msgstr "Victoria"
+
+#: src/playsingle_controller.cpp:294
+msgid "You have emerged victorious!"
+msgstr "Vicisti!"
+
+#: src/playsingle_controller.cpp:324
 msgid "Remaining gold: "
 msgstr "Aurum relinquum: "
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:327
 msgid "Early finish bonus: "
 msgstr "Bonum quod mature finisti: "
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:329
 msgid "per turn"
 msgstr "pro tractu"
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:330
 msgid "Turns finished early: "
 msgstr "Tractus quibus mature finisti: "
 
-#: src/playsingle_controller.cpp:322
+#: src/playsingle_controller.cpp:332
 msgid "Bonus: "
 msgstr "Bonum: "
 
-#: src/playsingle_controller.cpp:324
+#: src/playsingle_controller.cpp:334
 msgid "Gold: "
 msgstr "Aurum: "
 
-#: src/playsingle_controller.cpp:329
+#: src/playsingle_controller.cpp:339
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "LXXX pro cento auri retinentur pro scaenario insequenti"
 
-#: src/playsingle_controller.cpp:330
+#: src/playsingle_controller.cpp:340
 msgid "Retained Gold: "
 msgstr "Aurum Retentum: "
 
-#: src/playsingle_controller.cpp:335
-msgid "Victory"
-msgstr "Victoria"
-
-#: src/playsingle_controller.cpp:336
-msgid "You have emerged victorious!"
-msgstr "Vicisti!"
-
-#: src/playsingle_controller.cpp:340
-msgid "Scenario Report"
-msgstr "Renuntiatio Missionis"
-
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:363
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "Disiunctio retis accedit et lusus non pergit. Visne lusum servare?"
 
-#: src/playsingle_controller.cpp:476
+#: src/playsingle_controller.cpp:482
 msgid "It is now your turn"
 msgstr "Imperium nunc habes"
 
@@ -12491,6 +12481,24 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Potestatem facere summaria mittendi"
+
+#, fuzzy
+#~ msgid "Autosaves"
+#~ msgstr "Servatum-Automatarium"
+
+#, fuzzy
+#~ msgid "Do you want to delete the autosaves of this scenario?"
+#~ msgstr "Visne versionem remonstrabilem missionis huius servare?"
+
+#~ msgid "Do you want to save a replay of this scenario?"
+#~ msgstr "Visne versionem remonstrabilem missionis huius servare?"
+
+#, fuzzy
+#~ msgid "Save Replay"
+#~ msgstr "Remonstrare"
+
+#~ msgid "Do you want to save your game? (Also erases Auto-Save files)"
+#~ msgstr "Visne lusum servare? (Etiam delet archiva Servatae Automatariae)"
 
 #~ msgid "Cannot rescan the filesystem"
 #~ msgstr "Non potest systema pligarum rursus scannere"
@@ -13654,10 +13662,6 @@ msgstr "Potestatem facere summaria mittendi"
 
 #~ msgid "slow"
 #~ msgstr "lentifacere"
-
-#, fuzzy
-#~ msgid "Do you want to skip the replay?"
-#~ msgstr "Visne lusum servare?"
 
 #~ msgid ""
 #~ "Loyal:\n"

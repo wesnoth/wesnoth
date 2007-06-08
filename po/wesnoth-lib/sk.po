@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-05 10:57+0200\n"
+"POT-Creation-Date: 2007-06-08 12:43+0200\n"
 "PO-Revision-Date: 2007-01-08 22:55+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -33,7 +33,7 @@ msgstr "Nie"
 
 #: src/construct_dialog.cpp:137 src/construct_dialog.cpp:140
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
-#: src/show_dialog.cpp:425 src/show_dialog.cpp:522
+#: src/show_dialog.cpp:432 src/show_dialog.cpp:529
 msgid "Cancel"
 msgstr "Storno"
 
@@ -80,33 +80,33 @@ msgid "Map creation failed."
 msgstr "Nepodarilo sa vytvoriť mapu."
 
 #: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:1272
+#: src/preferences_display.cpp:1298
 msgid "Close Window"
 msgstr "Zavri okno"
 
 #: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:78
-#: src/preferences_display.cpp:1158
+#: src/preferences_display.cpp:1184
 msgid "Preferences"
 msgstr "Nastavenia"
 
-#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:301
+#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:312
 msgid "Scroll Speed:"
 msgstr "Rýchlosť rolovania:"
 
 #: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:59
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:270
 msgid "Toggle Full Screen"
 msgstr "Celá obrazovka (zapni/vypni)"
 
-#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:264
+#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:273
 msgid "Show Grid"
 msgstr "Ukáž mriežku"
 
-#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:282
+#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:293
 msgid "Video Mode"
 msgstr "Režim obrazovky"
 
-#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:284
+#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:295
 msgid "Hotkeys"
 msgstr "Klávesy"
 
@@ -508,7 +508,7 @@ msgstr "Ostrov"
 msgid "player"
 msgstr "hráč"
 
-#: src/preferences_display.cpp:80 src/preferences_display.cpp:112
+#: src/preferences_display.cpp:80 src/preferences_display.cpp:111
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -518,314 +518,331 @@ msgstr ""
 "na pixel, aby mohla hra bežať v okne. Obrazovka musí podporovať režim "
 "1024x768x16, aby mohla hra bežať na celej obrazovke."
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:271
 msgid "Accelerated Speed"
 msgstr "Zrýchlený pohyb"
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:272
 msgid "Skip AI Moves"
 msgstr "Neukazuj ťahy počítača"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:274
+#, fuzzy
+msgid "Save Replays"
+msgstr "Ulož klávesy"
+
+#: src/preferences_display.cpp:275
+msgid "Delete Autosaves"
+msgstr ""
+
+#: src/preferences_display.cpp:276
 #, fuzzy
 msgid "Show Lobby Minimaps"
 msgstr "Ukáž príchody do čakárne"
 
-#: src/preferences_display.cpp:266
+#: src/preferences_display.cpp:277
 #, fuzzy
 msgid "Do Not Show Lobby Joins"
 msgstr "Ukáž príchody do čakárne"
 
-#: src/preferences_display.cpp:267
+#: src/preferences_display.cpp:278
 #, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Ukáž príchody do čakárne"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:279
 #, fuzzy
 msgid "Show All Lobby Joins"
 msgstr "Ukáž príchody do čakárne"
 
-#: src/preferences_display.cpp:269
+#: src/preferences_display.cpp:280
 #, fuzzy
 msgid "Sort Lobby List"
 msgstr "Ukáž príchody do čakárne"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:281
 msgid "Iconize Lobby List"
 msgstr ""
 
-#: src/preferences_display.cpp:271
+#: src/preferences_display.cpp:282
 msgid "Friends List"
 msgstr ""
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:283
 msgid "Multiplayer Options"
 msgstr ""
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:284
 msgid "Add As Friend"
 msgstr ""
 
-#: src/preferences_display.cpp:274
+#: src/preferences_display.cpp:285
 msgid "Add As Ignore"
 msgstr ""
 
-#: src/preferences_display.cpp:275
+#: src/preferences_display.cpp:286
 #, fuzzy
 msgid "Remove"
 msgstr "Znova"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:287
 msgid "Show Floating Labels"
 msgstr "Ukáž pomocné nápisy"
 
-#: src/preferences_display.cpp:277
+#: src/preferences_display.cpp:288
 msgid "Turn Dialog"
 msgstr "Dialóg na začiatku kola"
 
-#: src/preferences_display.cpp:278
+#: src/preferences_display.cpp:289
 msgid "Turn Bell"
 msgstr "Zvuk na začiatku kola"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:290
 msgid "Show Team Colors"
 msgstr "Tímové farby"
 
-#: src/preferences_display.cpp:280
+#: src/preferences_display.cpp:291
 msgid "Show Color Cursors"
 msgstr "Farebný kurzor"
 
-#: src/preferences_display.cpp:281
+#: src/preferences_display.cpp:292
 msgid "Show Haloing Effects"
 msgstr "Žiarivé efekty"
 
-#: src/preferences_display.cpp:283
+#: src/preferences_display.cpp:294
 msgid "Theme"
 msgstr "Téma"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:296
 msgid "Adjust Gamma"
 msgstr "Nastav gamma"
 
-#: src/preferences_display.cpp:286
+#: src/preferences_display.cpp:297
 msgid "Reverse Time Graphics"
 msgstr "Otoč zobrazenie času"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:299
 msgid "Sound effects"
 msgstr "Zvukové efekty"
 
-#: src/preferences_display.cpp:289
+#: src/preferences_display.cpp:300
 msgid "Music"
 msgstr "Hudba"
 
-#: src/preferences_display.cpp:290
+#: src/preferences_display.cpp:301
 msgid "Chat Timestamping"
 msgstr "Čas pri rozhovore"
 
-#: src/preferences_display.cpp:291
+#: src/preferences_display.cpp:302
 msgid "Advanced Mode"
 msgstr "Rozšírený režim"
 
-#: src/preferences_display.cpp:292
+#: src/preferences_display.cpp:303
 msgid "Normal Mode"
 msgstr "Normálny režim"
 
-#: src/preferences_display.cpp:293
+#: src/preferences_display.cpp:304
 msgid "User Interface Sounds"
 msgstr ""
 
-#: src/preferences_display.cpp:296
+#: src/preferences_display.cpp:307
 #, fuzzy
 msgid "Custom"
 msgstr "Vystrihni"
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:308
 msgid "Apply"
 msgstr "Použi"
 
-#: src/preferences_display.cpp:299
+#: src/preferences_display.cpp:310
 msgid "Music Volume:"
 msgstr "Hlasitosť hudby:"
 
-#: src/preferences_display.cpp:299
+#: src/preferences_display.cpp:310
 msgid "SFX Volume:"
 msgstr "Hlasitosť efektov:"
 
-#: src/preferences_display.cpp:300
+#: src/preferences_display.cpp:311
 #, fuzzy
 msgid "UI Sound Volume:"
 msgstr "Hlasitosť efektov:"
 
-#: src/preferences_display.cpp:301
+#: src/preferences_display.cpp:312
 #, fuzzy
 msgid "Bell Volume:"
 msgstr "Hlasitosť efektov:"
 
-#: src/preferences_display.cpp:302
+#: src/preferences_display.cpp:313
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences_display.cpp:304
+#: src/preferences_display.cpp:315
 msgid "Sample Rate (Hz):"
 msgstr "Frekvencia (Hz):"
 
-#: src/preferences_display.cpp:327
+#: src/preferences_display.cpp:338
 msgid "Sound effects on/off"
 msgstr "Zvukové efekty (zapni/vypni)"
 
-#: src/preferences_display.cpp:331
+#: src/preferences_display.cpp:342
 msgid "Change the sound effects volume"
 msgstr "Nastav hlasitosť zvukových efektov"
 
-#: src/preferences_display.cpp:334
+#: src/preferences_display.cpp:345
 msgid "Music on/off"
 msgstr "Hudba (zapni/vypni)"
 
-#: src/preferences_display.cpp:338
+#: src/preferences_display.cpp:349
 msgid "Change the music volume"
 msgstr "Nastav hlasitosť hudby"
 
-#: src/preferences_display.cpp:344
+#: src/preferences_display.cpp:355
 #, fuzzy
 msgid "Change the bell volume"
 msgstr "Nastav hlasitosť hudby"
 
-#: src/preferences_display.cpp:347
+#: src/preferences_display.cpp:358
 msgid "Turn menu and button sounds on/off"
 msgstr ""
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:362
 msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 
-#: src/preferences_display.cpp:353
+#: src/preferences_display.cpp:364
 msgid "Change the sample rate"
 msgstr "Nastav frekvenciu"
 
-#: src/preferences_display.cpp:362
+#: src/preferences_display.cpp:373
 msgid "User defined sample rate"
 msgstr "Frekvencia podľa používateľa"
 
-#: src/preferences_display.cpp:371 src/preferences_display.cpp:375
+#: src/preferences_display.cpp:382 src/preferences_display.cpp:386
 msgid "Change the buffer size"
 msgstr "Nastav veľkosť zásobníka"
 
-#: src/preferences_display.cpp:373 src/preferences_display.cpp:861
+#: src/preferences_display.cpp:384 src/preferences_display.cpp:885
 msgid "Buffer Size: "
 msgstr "Veľkosť zásobníka: "
 
-#: src/preferences_display.cpp:380
+#: src/preferences_display.cpp:391
 msgid "Change the speed of scrolling around the map"
 msgstr "Nastav rýchlosť rolovania mapy"
 
-#: src/preferences_display.cpp:385 src/preferences_display.cpp:387
+#: src/preferences_display.cpp:396 src/preferences_display.cpp:398
 msgid "Set the amount of chat lines shown"
 msgstr "Nastav počet zobrazených riadkov rozhovoru"
 
-#: src/preferences_display.cpp:390
+#: src/preferences_display.cpp:401
 msgid "Add a timestamp to chat messages"
 msgstr "Pridávaj k rozhovoru aj časový údaj"
 
-#: src/preferences_display.cpp:393 src/preferences_display.cpp:398
+#: src/preferences_display.cpp:404 src/preferences_display.cpp:409
 msgid "Change the brightness of the display"
 msgstr "Nastav jas monitora"
 
-#: src/preferences_display.cpp:401
+#: src/preferences_display.cpp:412
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Nastav, či má hra prebiehať na celej obrazovke alebo v okne"
 
-#: src/preferences_display.cpp:404
+#: src/preferences_display.cpp:415
 msgid "Make units move and fight faster"
 msgstr "Nech sa jednotky pohybujú a bojujú rýchlejšie"
 
-#: src/preferences_display.cpp:419
+#: src/preferences_display.cpp:430
 #, fuzzy
 msgid "Units move and fight speed"
 msgstr "Nech sa jednotky pohybujú a bojujú rýchlejšie"
 
-#: src/preferences_display.cpp:422
+#: src/preferences_display.cpp:433
 msgid "Do not animate AI units moving"
 msgstr "Nekresli pohyb jednotiek počítača"
 
-#: src/preferences_display.cpp:425
+#: src/preferences_display.cpp:436
+msgid "Save replays at scenario end."
+msgstr ""
+
+#: src/preferences_display.cpp:439
+msgid "Automatically delete autosaves at the end of a scenario"
+msgstr ""
+
+#: src/preferences_display.cpp:441
 msgid "Overlay a grid onto the map"
 msgstr "Zobrazuj na mape šesťuholníkovú mriežku"
 
-#: src/preferences_display.cpp:428
+#: src/preferences_display.cpp:444
 #, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
 msgstr "Zobrazuj správy o hráčoch, ktorí prišli do čakárne na zápas"
 
-#: src/preferences_display.cpp:431
+#: src/preferences_display.cpp:447
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
-#: src/preferences_display.cpp:434
+#: src/preferences_display.cpp:450
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 
-#: src/preferences_display.cpp:437
+#: src/preferences_display.cpp:453
 #, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Zobrazuj správy o hráčoch, ktorí prišli do čakárne na zápas"
 
-#: src/preferences_display.cpp:439
+#: src/preferences_display.cpp:455
 #, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Zobrazuj správy o hráčoch, ktorí prišli do čakárne na zápas"
 
-#: src/preferences_display.cpp:441
+#: src/preferences_display.cpp:457
 #, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Zobrazuj správy o hráčoch, ktorí prišli do čakárne na zápas"
 
-#: src/preferences_display.cpp:443
+#: src/preferences_display.cpp:459
 msgid "View and edit your friends and ignores list"
 msgstr ""
 
-#: src/preferences_display.cpp:444
+#: src/preferences_display.cpp:460
 msgid "Back to the multiplayer options"
 msgstr ""
 
-#: src/preferences_display.cpp:445
+#: src/preferences_display.cpp:461
 msgid "Add this username to your friends list"
 msgstr ""
 
-#: src/preferences_display.cpp:446
+#: src/preferences_display.cpp:462
 msgid "Add this username to your ignores list"
 msgstr ""
 
-#: src/preferences_display.cpp:447
+#: src/preferences_display.cpp:463
 msgid "Remove this username from your list"
 msgstr ""
 
-#: src/preferences_display.cpp:450
+#: src/preferences_display.cpp:466
 msgid "Insert a username"
 msgstr ""
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:469
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Keď je jednotka zranená, zobraz nad ňou veľkosť zranenia"
 
-#: src/preferences_display.cpp:455
+#: src/preferences_display.cpp:471
 msgid "Change the resolution the game runs at"
 msgstr "Zmeň rozlíšenie, v ktorom beží hra"
 
-#: src/preferences_display.cpp:456
+#: src/preferences_display.cpp:472
 msgid "Change the theme the game runs with"
 msgstr "Zmeň grafickú tému, v ktorej beží hra"
 
-#: src/preferences_display.cpp:459
+#: src/preferences_display.cpp:475
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Na začiatku tvojho kola sa zobrazí dialóg"
 
-#: src/preferences_display.cpp:462
+#: src/preferences_display.cpp:478
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Na začiatku tvojho kola zaznie zvukový signál"
 
-#: src/preferences_display.cpp:465
+#: src/preferences_display.cpp:481
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -833,104 +850,104 @@ msgstr ""
 "Zobrazuj farebný kruh okolo každej jednotky, aby bolo vidno, ku ktorej "
 "strane patrí"
 
-#: src/preferences_display.cpp:468
+#: src/preferences_display.cpp:484
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Vyber si, či sa slnko pohybuje zľava doprava alebo sprava doľava."
 
-#: src/preferences_display.cpp:471
+#: src/preferences_display.cpp:487
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Používaj farebný kurzor myši (môže byť pomalší)"
 
-#: src/preferences_display.cpp:474
+#: src/preferences_display.cpp:490
 msgid "Use graphical special effects (may be slower)"
 msgstr "Používaj špeciálne grafické efekty (môžu byť pomalšie)"
 
-#: src/preferences_display.cpp:476
+#: src/preferences_display.cpp:492
 msgid "View and configure keyboard shortcuts"
 msgstr "Zobraz a nastav klávesové skratky"
 
-#: src/preferences_display.cpp:741
+#: src/preferences_display.cpp:765
 #, fuzzy
 msgid "Speed: "
 msgstr "Rýchlosť rolovania:"
 
-#: src/preferences_display.cpp:906
+#: src/preferences_display.cpp:930
 msgid "Chat Lines: "
 msgstr "Riadky rozhovoru: "
 
-#: src/preferences_display.cpp:1002
+#: src/preferences_display.cpp:1026
 msgid "yes"
 msgstr "áno"
 
-#: src/preferences_display.cpp:1004
+#: src/preferences_display.cpp:1028
 msgid "no"
 msgstr "nie"
 
-#: src/preferences_display.cpp:1146
+#: src/preferences_display.cpp:1172
 msgid "Prefs section^General"
 msgstr "Všeobecné"
 
-#: src/preferences_display.cpp:1147
+#: src/preferences_display.cpp:1173
 msgid "Prefs section^Display"
 msgstr "Obrazovka"
 
-#: src/preferences_display.cpp:1148
+#: src/preferences_display.cpp:1174
 msgid "Prefs section^Sound"
 msgstr "Zvuk"
 
-#: src/preferences_display.cpp:1149
+#: src/preferences_display.cpp:1175
 msgid "Prefs section^Multiplayer"
 msgstr "Zápas"
 
-#: src/preferences_display.cpp:1150
+#: src/preferences_display.cpp:1176
 msgid "Advanced section^Advanced"
 msgstr "Rozšírené"
 
-#: src/preferences_display.cpp:1215
+#: src/preferences_display.cpp:1241
 msgid "There are no alternative video modes available"
 msgstr "Alternatívne režimy obrazovky nie sú k dispozícii"
 
-#: src/preferences_display.cpp:1244
+#: src/preferences_display.cpp:1270
 msgid "Choose Resolution"
 msgstr "Vyber si rozlíšenie"
 
-#: src/preferences_display.cpp:1277
+#: src/preferences_display.cpp:1303
 msgid "Hotkey Settings"
 msgstr "Nastavenie kláves"
 
-#: src/preferences_display.cpp:1283 src/preferences_display.cpp:1339
+#: src/preferences_display.cpp:1309 src/preferences_display.cpp:1365
 msgid "Press desired Hotkey"
 msgstr "Stlač požadovanú klávesu"
 
-#: src/preferences_display.cpp:1301
+#: src/preferences_display.cpp:1327
 msgid "Action"
 msgstr "Akcia"
 
-#: src/preferences_display.cpp:1301
+#: src/preferences_display.cpp:1327
 msgid "Binding"
 msgstr "Pripájanie"
 
-#: src/preferences_display.cpp:1313
+#: src/preferences_display.cpp:1339
 msgid "Change Hotkey"
 msgstr "Zmeň klávesu"
 
-#: src/preferences_display.cpp:1316
+#: src/preferences_display.cpp:1342
 msgid "Save Hotkeys"
 msgstr "Ulož klávesy"
 
-#: src/preferences_display.cpp:1366
+#: src/preferences_display.cpp:1392
 msgid "This Hotkey is already in use."
 msgstr "Táto klávesa sa už používa."
 
-#: src/preferences_display.cpp:1399
+#: src/preferences_display.cpp:1425
 msgid "Saved Theme Preference: "
 msgstr "Uložená zvolená téma: "
 
-#: src/preferences_display.cpp:1405
+#: src/preferences_display.cpp:1431
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nová téma sa prejaví až pri najbližšom spustení alebo načítaní hry."
 
-#: src/preferences_display.cpp:1409
+#: src/preferences_display.cpp:1435
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
@@ -938,7 +955,7 @@ msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 msgid "Error"
 msgstr "Chyba"
 
-#: src/show_dialog.cpp:450
+#: src/show_dialog.cpp:457
 msgid "KB"
 msgstr "KB"
 
