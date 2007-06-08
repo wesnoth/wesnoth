@@ -38,6 +38,7 @@
 #include "widgets/progressbar.hpp"
 #include "widgets/textbox.hpp"
 #include "wassert.hpp"
+#include "config.h"	// For UNUSED
 
 #include "sdl_ttf/SDL_ttf.h"
 
@@ -322,7 +323,7 @@ private:
 		}
 	}
 
-	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int index=-1) const
+	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int index UNUSED) const
 	{
 		return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
 	}

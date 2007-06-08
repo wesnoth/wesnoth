@@ -807,7 +807,18 @@ if test "x$lite" = "xno"; then
     fi
 fi
 
+#######################################################################
+# Make UNUSED available for suppressing warnings of unused parameters #
+#######################################################################
 
+AH_VERBATIM([_GNU_SOURCE],
+          [/* Macro for declaring function arguments unused. */
+#if defined(__GNUC__)
+#  define UNUSED __attribute__((unused)) /* Flag variable as unused */
+#else /* not __GNUC__ */
+#  define UNUSED
+#endif
+])
 
 #######################################################################
 # Tune gettext stuff for our needs                                    #

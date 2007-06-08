@@ -23,6 +23,7 @@
 #include "sound.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
+#include "config.h"	// For UNUSED
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -297,7 +298,7 @@ void play_controller::init_gui(){
 	}
 }
 
-void play_controller::init_side(const unsigned int team_index, bool is_replay){
+void play_controller::init_side(const unsigned int team_index, bool is_replay UNUSED){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
@@ -875,7 +876,7 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 
 std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, int index) const
 {
-	if(index >= 0 && index < wml_commands_.size()) {
+	if(index >= 0 && (unsigned)index < wml_commands_.size()) {
 		wml_menu_item* const& wmi = wml_commands_[index];
 		if(wmi != NULL) {
 			return wmi->image.empty() ? game_config::wml_menu_image : wmi->image;

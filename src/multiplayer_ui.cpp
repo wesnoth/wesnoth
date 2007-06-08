@@ -26,6 +26,7 @@
 #include "video.hpp"
 #include "replay.hpp"
 #include "wml_separators.hpp"
+#include "config.h"	// for UNUSED
 
 #define LOG_NG lg::info(lg::engine)
 #define LOG_NW LOG_STREAM(info, network)
@@ -41,7 +42,7 @@ namespace {
 										   item_size_(empty_rect) 
 		{}
 		virtual void init();
-		virtual SDL_Rect item_size(const std::string& item) { return item_size_; }
+		virtual SDL_Rect item_size(const std::string& item UNUSED) { return item_size_; }
 		void set_width(const int width) { item_size_.w = width; }
 	private:
 		SDL_Rect item_size_;

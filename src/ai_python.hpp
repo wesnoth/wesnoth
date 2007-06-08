@@ -5,6 +5,7 @@
 
 #include "ai_interface.hpp"
 #include "menu_events.hpp"
+#undef _POSIX_C_SOURCE	// avoids a spurious compiler warning
 #include <Python.h>
 
 typedef struct {

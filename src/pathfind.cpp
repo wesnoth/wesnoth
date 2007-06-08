@@ -20,6 +20,7 @@ See the COPYING file for more details.
 #include "pathfind.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "config.h"	// For UNUSED
 
 class gamestatus;
 
@@ -516,7 +517,7 @@ shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 {
 }
 
-double shortest_path_calculator::cost(const gamemap::location& src,const gamemap::location& loc, const double so_far, const bool isDst) const
+double shortest_path_calculator::cost(const gamemap::location& src UNUSED,const gamemap::location& loc, const double so_far, const bool isDst) const
 {
 	wassert(map_.on_board(loc));
 

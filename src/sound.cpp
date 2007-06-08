@@ -618,7 +618,7 @@ void write_music_play_list(config& snapshot)
 void reposition_sound(int id, unsigned int distance)
 {
 	audio_lock lock();
-	for(int ch = 0; ch < channel_ids.size(); ++ch) {
+	for(unsigned int ch = 0; ch < channel_ids.size(); ++ch) {
 		int& ch_id = channel_ids[ch];
 		if(ch_id == id) {
 			if(distance >= DISTANCE_SILENT) {

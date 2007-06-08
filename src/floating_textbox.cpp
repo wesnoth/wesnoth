@@ -16,6 +16,7 @@
 
 #include "font.hpp"
 #include "preferences.hpp"
+#include "config.h"	// For UNUSED
 
 namespace gui{
 	floating_textbox::floating_textbox() : box_(NULL), check_(NULL), mode_(TEXTBOX_NONE), label_(0)
@@ -100,7 +101,7 @@ namespace gui{
 		update_location(gui);
 	}
 
-	void floating_textbox::tab(std::vector<team>& teams, const unit_map& units, display& gui)
+	void floating_textbox::tab(std::vector<team>& teams, const unit_map& units UNUSED, display& gui)
 	{
 		if(active() == false) {
 			return;

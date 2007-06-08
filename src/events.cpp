@@ -243,8 +243,8 @@ bool has_focus(const handler* ptr, const SDL_Event* event)
 	} else if(!event_contexts.back().handlers[index]->requires_event_focus(event)) {
 		//if the currently focused handler doesn't need focus for this event
 		//allow the first-in interested handler to take care of it
-		for(int i=0; i<event_contexts.back().handlers.size(); i++) {
-			if(i != index && event_contexts.back().handlers[i]->requires_event_focus(event)) {
+		for(unsigned int i=0; i<event_contexts.back().handlers.size(); i++) {
+			if(i != (unsigned)index && event_contexts.back().handlers[i]->requires_event_focus(event)) {
 				//focus_handler(event_contexts.back().handlers[i]); //steal focus?
 				return event_contexts.back().handlers[i] == ptr;
 			}
