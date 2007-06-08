@@ -23,7 +23,6 @@
 #include "sound.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
-#include "config.h"	// For UNUSED
 
 #define LOG_NG LOG_STREAM(info, engine)
 

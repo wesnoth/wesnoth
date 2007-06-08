@@ -20,7 +20,6 @@ See the COPYING file for more details.
 #include "pathfind.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
-#include "config.h"	// For UNUSED
 
 class gamestatus;
 
