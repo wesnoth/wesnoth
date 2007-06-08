@@ -134,6 +134,24 @@ private:
 	int index_;
 };
 
+typedef Uint32 msecs;
+const msecs prevent_misclick_duration = 10;
+const msecs average_frame_time = 30;
+
+class message_dialog : public gui::dialog
+{
+public:
+	message_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
+		: dialog(disp, title, message, type), prevent_misclick_until_(0)
+	{}
+	~message_dialog();
+	int show_min_duration(msecs minimum_lifetime);
+protected:
+	void action(gui::dialog_process_info &dp_info);
+private:
+	msecs prevent_misclick_until_;
+};
+
 } //end namespace dialogs
 
 #endif

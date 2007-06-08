@@ -65,43 +65,6 @@ std::vector< event_handler > new_handlers;
 typedef std::pair< std::string, config* > wmi_command_change;
 std::vector< wmi_command_change > wmi_command_changes;
 
-typedef Uint32 msecs;
-const msecs prevent_misclick_duration = 10;
-const msecs average_frame_time = 30;
-
-class message_dialog : public gui::dialog
-{
-public:
-	message_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
-		: dialog(disp, title, message, type), prevent_misclick_until_(0)
-	{}
-	~message_dialog();
-	int show_min_duration(msecs minimum_lifetime);
-protected:
-	void action(gui::dialog_process_info &dp_info);
-private:
-	msecs prevent_misclick_until_;
-};
-
-int message_dialog::show_min_duration(msecs minimum_lifetime)
-{
-	prevent_misclick_until_ = SDL_GetTicks() + minimum_lifetime;
-	return dialog::show();
-}
-
-void message_dialog::action(gui::dialog_process_info &dp_info)
-{
-	dialog::action(dp_info);
-	if(done() && SDL_GetTicks() < prevent_misclick_until_ && result() != gui::ESCAPE_DIALOG) {
-		//discard premature results
-		set_result(gui::CONTINUE_DIALOG);
-	}
-}
-
-message_dialog::~message_dialog()
-{
-}
-		
 } //end anonymous namespace
 
 #ifdef _MSC_VER
@@ -1472,8 +1435,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->draw();
 
 			const std::string duration_str = cfg["duration"];
-			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-			message_dialog to_show(*screen,((surface.null())? caption : ""),text);
+			const unsigned int lifetime = dialogs::average_frame_time * lexical_cast_default<unsigned int>(duration_str, dialogs::prevent_misclick_duration);
+			dialogs::message_dialog to_show(*screen,((surface.null())? caption : ""),text);
 			if(!surface.null()) {
 				to_show.set_image(surface, caption);
 			}
@@ -1621,10 +1584,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(get_replay_source().at_end() || options.empty()) {
 			const t_string msg = cfg["message"];
 			const std::string duration_str = cfg["duration"];
-			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
+			const unsigned int lifetime = dialogs::average_frame_time * lexical_cast_default<unsigned int>(duration_str, dialogs::prevent_misclick_duration);
 			const SDL_Rect& map_area = screen->map_area();
 
-			message_dialog to_show(*screen, ((surface.null())? caption : ""),
+			dialogs::message_dialog to_show(*screen, ((surface.null())? caption : ""),
 				msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));
 			if(!surface.null()) {
 				to_show.set_image(surface, caption);
