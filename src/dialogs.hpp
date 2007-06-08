@@ -135,8 +135,7 @@ private:
 };
 
 typedef Uint32 msecs;
-const msecs prevent_misclick_duration = 10;
-const msecs average_frame_time = 30;
+const msecs three_blinks = 300;	// 3 times the 0.1sec human reflex time
 
 class message_dialog : public gui::dialog
 {
