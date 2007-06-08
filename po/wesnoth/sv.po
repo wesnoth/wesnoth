@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-08 12:42+0200\n"
-"PO-Revision-Date: 2007-05-27 19:46+0200\n"
+"PO-Revision-Date: 2007-06-08 23:09+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -27,13 +27,12 @@ msgid "Mouse Scrolling"
 msgstr "Musrullning"
 
 #: data/_main.cfg:38
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "Anslut till den officiella servern"
+msgstr "Officiell Wesnoth-server"
 
 #: data/_main.cfg:42
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Alternativ Wesnoth-server"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -64,14 +63,12 @@ msgid "short sword"
 msgstr "kortsvärd"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
-#, fuzzy
 msgid "magic_blast"
-msgstr "magisk"
+msgstr "magisk_stöt"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
-#, fuzzy
 msgid "magic blast"
-msgstr "magisk"
+msgstr "magisk stöt"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
 #: data/core/units/boats/Galleon.cfg:22
@@ -385,7 +382,6 @@ msgid "ambush"
 msgstr "bakhåll"
 
 #: data/core/abilities.cfg:369 data/core/abilities.cfg:373
-#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -399,15 +395,14 @@ msgstr ""
 "fiender.\n"
 "\n"
 "Fiendetrupper kan inte se eller attackera den här truppen i skogen, förutom "
-"precis efter att den har attackerat, eller om det finns fiendetrupper "
-"alldeles bredvid."
+"då det finns fiendetrupper alldeles bredvid. Den fiendetrupp som först "
+"upptäcker den här truppen förlorar omedelbart resterande förflyttningspoäng."
 
 #: data/core/abilities.cfg:388 data/core/abilities.cfg:393
 msgid "nightstalk"
 msgstr "skuggsteg"
 
 #: data/core/abilities.cfg:392 data/core/abilities.cfg:397
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -420,15 +415,14 @@ msgstr ""
 "Den här truppen blir osynlig nattetid.\n"
 "\n"
 "Fiendetrupper kan inte se eller attackera den här truppen nattetid, förutom "
-"precis efter att den har attackerat, eller om det finns fiendetrupper "
-"alldeles bredvid."
+"då det finns fiendetrupper alldeles bredvid. Den fiendetrupp som först "
+"upptäcker den här truppen förlorar omedelbart resterande förflyttningspoäng."
 
 #: data/core/abilities.cfg:412 data/core/abilities.cfg:417
 msgid "submerge"
 msgstr "dyka"
 
 #: data/core/abilities.cfg:416 data/core/abilities.cfg:421
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -440,9 +434,10 @@ msgstr ""
 "Den här truppen kan gömma sig på djupt vatten, och blir inte upptäckt av "
 "sina fiender.\n"
 "\n"
-"Fiendetrupper kan inte se eller attackera den här truppen på djupt vatten, "
-"förutom precis efter att den har attackerat, eller om det finns "
-"fiendetrupper alldeles bredvid."
+"Fiendetrupper kan inte se eller attackera den här truppen då den är i djupt "
+"vatten, förutom då det finns fiendetrupper alldeles bredvid. Den fiendetrupp "
+"som först upptäcker den här truppen förlorar omedelbart resterande "
+"förflyttningspoäng."
 
 #: data/core/abilities.cfg:441
 msgid "berserk"
@@ -4590,7 +4585,6 @@ msgid "Drake Clasher"
 msgstr "Draksoldat"
 
 #: data/core/units/drakes/Clasher.cfg:26
-#, fuzzy
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
 "assume their relegation to melee combat is because of disability - an "
@@ -4621,7 +4615,9 @@ msgstr ""
 "sammanstötningar med andra mindre raser har de upptäckt att deras blotta "
 "storlek och styrka utgör kraftfulla vapen, och i kombination med deras "
 "rustningar upphävs deras ras annars så stora sårbarhet mot vapen som spjut "
-"och pilar."
+"och pilar.\n"
+"\n"
+"Anmärkning:"
 
 #: data/core/units/drakes/Clasher.cfg:124
 #: data/core/units/drakes/Enforcer.cfg:135
@@ -7705,7 +7701,7 @@ msgstr ""
 
 #: data/core/units/monsters/Wolf.cfg:3
 msgid "Wolf"
-msgstr ""
+msgstr "Varg"
 
 #: data/core/units/monsters/Yeti.cfg:3
 msgid "Yeti"
@@ -7869,7 +7865,6 @@ msgid "Orcish Assassin"
 msgstr "Lönnmördarorch"
 
 #: data/core/units/orcs/Assassin.cfg:23
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -9524,6 +9519,8 @@ msgid ""
 "good for stealing enemy villages to boost your income, especially if they "
 "have high mobility."
 msgstr ""
+"Då lojala trupper inte kräver underhåll, är de lämpade för att ta över "
+"fiendebyar för att öka din inkomst, särskilt om de kan förflytta sig snabbt."
 
 #: data/multiplayer/_main.cfg:4
 msgid "User Map"
@@ -10948,9 +10945,8 @@ msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Trupper inom synhåll! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2088
-#, fuzzy
 msgid "(press $hotkey to keep moving)"
-msgstr "(Tryck på $hotkey för att fortsätta)"
+msgstr "(tryck $hotkey för att fortsätta)"
 
 #: src/dialogs.cpp:116
 msgid "Advance Unit"
@@ -11947,22 +11943,20 @@ msgid "Choose weapon:"
 msgstr "Välj vapen: "
 
 #: src/multiplayer.cpp:98
-#, fuzzy
 msgid "View List"
-msgstr "Trupplista"
+msgstr "Se lista"
 
 #: src/multiplayer.cpp:104
-#, fuzzy
 msgid "List of Servers"
-msgstr "Anslut till server"
+msgstr "Serverlista"
 
 #: src/multiplayer.cpp:105
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Välj en känd server från listan"
 
 #: src/multiplayer.cpp:108
 msgid "Address"
-msgstr ""
+msgstr "Adress"
 
 #: src/multiplayer.cpp:135
 msgid "Connect to Host"
@@ -12436,9 +12430,8 @@ msgid "Downloading next scenario..."
 msgstr "Hämtar nästa scenario..."
 
 #: src/playcampaign.cpp:459
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Vill du verkligen radera detta spel?"
+msgstr "Vill du spara ditt spel?"
 
 #: src/playcampaign.cpp:484
 msgid "Unknown scenario: '"
@@ -12841,45 +12834,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
-
-#~ msgid "Autosaves"
-#~ msgstr "Autosparade spel"
-
-#~ msgid "Do you want to delete the autosaves of this scenario?"
-#~ msgstr "Vill de radera de autosparade utgångspunkterna för detta scenario?"
-
-#~ msgid "Do you want to save a replay of this scenario?"
-#~ msgstr "Vill du spara en repris för detta scenario?"
-
-#~ msgid "Save Replay"
-#~ msgstr "Spara repris"
-
-#~ msgid "Do you want to save your game? (Also erases Auto-Save files)"
-#~ msgstr "Vill du spara ditt spel? (Detta raderar autosparade spel)"
-
-#~ msgid "Cannot rescan the filesystem"
-#~ msgstr "Kan inte läsa om filsystemet"
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgid "North-West"
-#~ msgstr "Nordväst"
-
-#~ msgid "North-East"
-#~ msgstr "Nordöst"
-
-#~ msgid "Middle-East"
-#~ msgstr "Mitt-öst"
-
-#~ msgid "South-East"
-#~ msgstr "Sydöst"
-
-#~ msgid "South-West"
-#~ msgstr "Sydväst"
-
-#~ msgid "Middle-West"
-#~ msgstr "Mitt-väst"
-
-#~ msgid ": "
-#~ msgstr ": "
