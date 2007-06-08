@@ -315,24 +315,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				std::string label = gamestate.label + _(" replay");
 
-				bool retry = true;
+				if(preferences::save_replays()) {
+					try {
+						config snapshot;
 
-				while(retry) {
-					retry = false;
-
-					const int should_save = dialogs::get_save_name(disp,
-							_("Do you want to save a replay of this scenario?"),
-							_("Name:"),
-							&label, gui::YES_NO, _("Save Replay"));
-					if(should_save == 0) {
-						try {
-							config snapshot;
-
-							recorder.save_game(label, snapshot, gamestate.starting_pos);
-						} catch(game::save_game_failed&) {
-							gui::show_error_message(disp, _("The replay could not be saved"));
-							retry = true;
-						};
+						recorder.save_game(label, snapshot, gamestate.starting_pos);
+					} catch(game::save_game_failed&) {
+						gui::show_error_message(disp, _("The replay could not be saved"));
 					}
 				}
 
@@ -465,17 +454,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				while(retry) {
 					retry = false;
 
+#ifdef TINY_GUI
 					const int should_save = dialogs::get_save_name(disp,
-						_("Do you want to save your game? (Also erases Auto-Save files)"),
+						_("Do you want to save your game?"),
 						_("Name:"),
 						&gamestate.label);
-
-
-					if(should_save == 0) {
+					if(should_save == 0)
+#endif /* TINY_GUI */
+					{
 						try {
 							save_game(gamestate);
-							if (!oldlabel.empty())
-								clean_autosaves(oldlabel);
 						} catch(game::save_game_failed&) {
 							gui::show_error_message(disp, _("The game could not be saved"));
 							retry = true;

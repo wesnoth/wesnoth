@@ -20,6 +20,10 @@ Version 1.3.3+svn:
    * The two annoying end-of-scenario popups asking whether to save a
      replay and whether to delete autosaves have been replaced by user
      preference bits (in the "General" panel).
+   * The third annoying end-of-scenario prompt, asking if you want to save
+     an image of a new scenario immediately before entering it, is now only
+     presented if the game was built with TINY_GUI.  Non-tiny systems do this
+     automatically without asking.
 
   * Unit changes and balancing
 
