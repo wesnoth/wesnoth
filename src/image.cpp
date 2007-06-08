@@ -43,8 +43,6 @@ locator_finder_t locator_finder;
 image::image_cache images_,hexed_images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
 image::image_cache brightened_images_,semi_brightened_images_;
 
-image::locator_cache alternative_images_;
-
 // const int cache_version_ = 0;
 
 std::map<image::locator,bool> image_existance_map;
@@ -87,7 +85,6 @@ void flush_cache()
 	reset_cache(unmasked_images_);
 	reset_cache(brightened_images_);
 	reset_cache(semi_brightened_images_);
-	reset_cache(alternative_images_);
 	mini_terrain_cache.clear();
 	reversed_images_.clear();
 }
@@ -110,7 +107,6 @@ void locator::init_index()
 		brightened_images_.push_back(cache_item<surface>());
 		semi_brightened_images_.push_back(cache_item<surface>());
 
-		alternative_images_.push_back(cache_item<locator>());
 	} else {
 		index_ = i->second;
 	}
@@ -448,23 +444,25 @@ void set_colour_adjustment(int r, int g, int b)
 		reset_cache(scaled_to_hex_images_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
-		reset_cache(alternative_images_);
 		reversed_images_.clear();
 	}
 }
 
 void set_image_mask(const std::string& image)
 {
+
+	//image_mask are blitted in display.cpp
+	//so no need to flush the cache here
+/*	
 	if(image_mask != image) {
 		image_mask = image;
 		reset_cache(scaled_to_hex_images_);
 		reset_cache(scaled_to_zoom_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
-		reset_cache(alternative_images_);
 		reversed_images_.clear();
 	}
-
+*/
 }
 
 void set_zoom(int amount)
@@ -476,7 +474,6 @@ void set_zoom(int amount)
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(unmasked_images_);
-		reset_cache(alternative_images_);
 		reversed_images_.clear();
 	}
 }
