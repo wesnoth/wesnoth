@@ -61,7 +61,7 @@ surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 				cache_map::iterator i = cache.find(terrain);
 
 				if(i == cache.end()) {
-					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).symbol_image() + ".png",image::UNSCALED));
+					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).symbol_image() + ".png",image::HEXED));
 
 					if(tile == NULL) {
 						ERR_DP << "could not get image for terrrain '"
