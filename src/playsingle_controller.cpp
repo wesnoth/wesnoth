@@ -14,13 +14,13 @@
 
 #include "playsingle_controller.hpp"
 
+#include "construct_dialog.hpp"
 #include "ai_interface.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "marked-up_text.hpp"
 #include "sound.hpp"
-#include "dialogs.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -343,8 +343,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				}
 			}
 
-			dialogs::message_dialog(*gui_,
-				title, report.str()).show_min_duration(dialogs::three_blinks);
+			gui::message_dialog(*gui_,
+				title, report.str()).show_min_duration();
 
 			return VICTORY;
 		}

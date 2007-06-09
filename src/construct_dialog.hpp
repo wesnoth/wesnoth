@@ -256,5 +256,22 @@ private:
 	int result_;
 };
 
+typedef Uint32 msecs;
+const msecs three_blinks = 300;	// 3 times the 0.1sec human reflex time
+
+class message_dialog : public gui::dialog
+{
+public:
+	message_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
+		: dialog(disp, title, message, type, "translucent"), prevent_misclick_until_(0)
+	{}
+	~message_dialog();
+	int show_min_duration(msecs minimum_lifetime = three_blinks);
+protected:
+	void action(gui::dialog_process_info &dp_info);
+private:
+	msecs prevent_misclick_until_;
+};
+
 } //end namespace gui
 #endif
