@@ -17,7 +17,7 @@ if __name__ == "__main__":
     optionparser.add_option("-a", "--address", help = "specify server address",
         default = "campaigns.wesnoth.org")
     optionparser.add_option("-p", "--port",
-        help = "specify server port or bfW version (%s)" % " or ".join(
+        help = "specify server port or BfW version (%s)" % " or ".join(
         map(lambda x: x[1], CampaignClient.portmap)),
         default = CampaignClient.portmap[0][0])
     optionparser.add_option("-l", "--list", help = "list available campaigns",
