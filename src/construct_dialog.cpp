@@ -832,7 +832,7 @@ void dialog_image::draw_contents()
 	video().blit_surface(location().x, location().y, surf_);
 }
 
-int message_dialog::show_min_duration(msecs minimum_lifetime)
+int message_dialog::show(msecs minimum_lifetime)
 {
 	prevent_misclick_until_ = SDL_GetTicks() + minimum_lifetime;
 	return dialog::show();

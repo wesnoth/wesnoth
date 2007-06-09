@@ -344,7 +344,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			}
 
 			gui::message_dialog(*gui_,
-				title, report.str()).show_min_duration();
+				title, report.str()).show();
 
 			return VICTORY;
 		}

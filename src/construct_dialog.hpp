@@ -257,7 +257,7 @@ private:
 };
 
 typedef Uint32 msecs;
-const msecs three_blinks = 300;	// 3 times the 0.1sec human reflex time
+const msecs three_blinks = 300;	// 3 times the 0.1sec human reflex-arc time
 
 class message_dialog : public gui::dialog
 {
@@ -266,7 +266,7 @@ public:
 		: dialog(disp, title, message, type, "translucent"), prevent_misclick_until_(0)
 	{}
 	~message_dialog();
-	int show_min_duration(msecs minimum_lifetime = three_blinks);
+	int show(msecs minimum_lifetime = three_blinks);
 protected:
 	void action(gui::dialog_process_info &dp_info);
 private:

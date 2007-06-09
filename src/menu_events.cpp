@@ -467,7 +467,7 @@ namespace events{
 		if(res == 0) {
 
 			if(std::count_if(label.begin(),label.end(),is_illegal_file_char)) {
-				gui::message_dialog(*gui_,_("Error"),_("Save names may not contain colons, slashes, or backslashes. Please choose a different name.")).show_min_duration();
+				gui::message_dialog(*gui_,_("Error"),_("Save names may not contain colons, slashes, or backslashes. Please choose a different name.")).show();
 				save_game(message,dialog_type);
 				return;
 			}
@@ -477,11 +477,11 @@ namespace events{
 			try {
 				recorder.save_game(label, snapshot, gamestate_.starting_pos);
 				if(dialog_type != gui::NULL_DIALOG) {
-					gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show_min_duration();
+					gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show();
 				}
 			} catch(game::save_game_failed&) {
 				gui::message_dialog to_show(*gui_,_("Error"),_("The game could not be saved"));
-				to_show.show_min_duration();
+				to_show.show();
 				//do not bother retrying, since the user can just try to save the game again
 			};
 		} else if(res == 2) {
@@ -612,7 +612,7 @@ namespace events{
 				recorder.save_game(label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn), snapshot, starting_pos);
 			}
 		} catch(game::save_game_failed&) {
-			gui::message_dialog(*gui_,"",_("Could not auto save the game. Please save the game manually.")).show_min_duration();
+			gui::message_dialog(*gui_,"",_("Could not auto save the game. Please save the game manually.")).show();
 			//do not bother retrying, since the user can just save the game
 		}
 		end = SDL_GetTicks();
@@ -722,7 +722,7 @@ namespace events{
 
 		if(sample_units.empty()) {
 			gui::message_dialog to_show(*gui_,"",_("You have no units available to recruit."));
-			to_show.show_min_duration();
+			to_show.show();
 			return;
 		}
 
@@ -1869,7 +1869,7 @@ namespace events{
 				}
 		} else if(game_config::debug && cmd == "show_var") {
 			gui::message_dialog to_show(*gui_,"",gamestate_.get_variable(data));
-			to_show.show_min_duration();
+			to_show.show();
 		} else if(game_config::debug && cmd == "unit") {
 			const unit_map::iterator i = current_unit(mousehandler);
 			if(i != units_.end()) {

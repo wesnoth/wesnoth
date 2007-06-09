@@ -298,7 +298,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				gui::message_dialog(disp,
 				                 _("Defeat"),
 				                 _("You have been defeated!")
-				                 ).show_min_duration();
+				                 ).show();
 				//Make sure the user gets an opportunity to delete his autosaves
 				if (preferences::delete_autosaves())
 					clean_autosaves(gamestate.label);
