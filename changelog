@@ -44,6 +44,7 @@ Version 1.3.3+svn:
    * fixed a bug causing instantaneous move of unit when using acceleration
    * fixed briefly invisible unit when scrolling to show a move
    * fixed an invalid letter in the random winter scenario
+   * fixed a invalid memory access if a map has width of 0 (bug #9301)
    
 Version 1.3.3:
  * campaigns:

@@ -301,7 +301,7 @@ void gamemap::read(const std::string& data)
 	
 	// post processing on the map
 	const int width = tiles_.size();
-	const int height = tiles_[0].size();
+	const int height = width > 0 ? tiles_[0].size() : 0;
     x_ = width;
     y_ = height;
 	for(int x = 0; x < width; ++x) {
