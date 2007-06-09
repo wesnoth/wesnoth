@@ -295,10 +295,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					end.add_child("end_scenarios");
 					network::send_data(end);
 				}
-				gui::show_dialog(disp, NULL,
+				dialogs::message_dialog(disp,
 				                 _("Defeat"),
-				                 _("You have been defeated!"),
-				                 gui::OK_ONLY);
+				                 _("You have been defeated!")
+				                 ).show_min_duration(dialogs::three_blinks);
 				//Make sure the user gets an opportunity to delete his autosaves
 				if (preferences::delete_autosaves())
 					clean_autosaves(gamestate.label);

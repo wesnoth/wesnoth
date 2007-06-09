@@ -467,7 +467,7 @@ namespace events{
 		if(res == 0) {
 
 			if(std::count_if(label.begin(),label.end(),is_illegal_file_char)) {
-				gui::show_dialog(*gui_,NULL,_("Error"),_("Save names may not contain colons, slashes, or backslashes. Please choose a different name."),gui::OK_ONLY);
+				dialogs::message_dialog(*gui_,_("Error"),_("Save names may not contain colons, slashes, or backslashes. Please choose a different name.")).show_min_duration(dialogs::three_blinks);
 				save_game(message,dialog_type);
 				return;
 			}

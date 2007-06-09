@@ -20,6 +20,7 @@
 #include "intro.hpp"
 #include "marked-up_text.hpp"
 #include "sound.hpp"
+#include "dialogs.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -342,8 +343,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				}
 			}
 
-			gui::show_dialog(*gui_, NULL, 
-				title, report.str(), gui::OK_ONLY);
+			dialogs::message_dialog(*gui_,
+				title, report.str()).show_min_duration(dialogs::three_blinks);
 
 			return VICTORY;
 		}
