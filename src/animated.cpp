@@ -87,7 +87,7 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 {
 	started_ = true;
 	last_update_tick_ = current_ticks;
-	start_tick_ =  last_update_tick_ + ( starting_frame_time_ - start_time);
+	start_tick_ =  last_update_tick_ + (int)(( starting_frame_time_ - start_time)/acceleration);
 	cycles_ = cycles;
 	acceleration_ = acceleration;
 	if(acceleration_ <=0) acceleration_ = 1;
