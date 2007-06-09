@@ -287,9 +287,11 @@ public:
 	//function to invalidate that unit status displayed on the sidebar.
 	void invalidate_unit() { invalidateUnit_ = true; }
 
+private:
 	//function to invalidate animated terrains which may have changed.
 	void invalidate_animations();
 
+public:
 	//function to invalidate controls and panels when changed after
 	//they have been drawn initially. Useful for dynamic theme modification.
 	void invalidate_theme() { panelsDrawn_ = false; }

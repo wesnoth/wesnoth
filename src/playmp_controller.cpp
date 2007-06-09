@@ -172,7 +172,6 @@ void playmp_controller::play_human_turn(){
 
 		}
 
-		gui_->invalidate_animations();
 		gui_->draw();
 
 		turn_data_->send_data();

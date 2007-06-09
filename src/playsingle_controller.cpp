@@ -510,7 +510,6 @@ void playsingle_controller::play_human_turn(){
 	while(!end_turn_) {
 		play_slice();
 
-		gui_->invalidate_animations();
 		gui_->draw();
 	}
 }
