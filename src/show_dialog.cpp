@@ -91,15 +91,15 @@ dialog_frame::dialog_frame(CVideo &video, const std::string& title,
 	 surface_restorer* restorer, button* help_button) : title_(title), 
 	 video_(video), dialog_style_(style ? style : &default_style),
 	 buttons_(buttons), help_button_(help_button), restorer_(restorer),
-	 top_(image::get_image("panels/" + *dialog_style_ + "-border-top.png",image::UNSCALED)),
-	 bot_(image::get_image("panels/" + *dialog_style_ + "-border-bottom.png",image::UNSCALED)),
-	 left_(image::get_image("panels/" + *dialog_style_ + "-border-left.png",image::UNSCALED)),
-	 right_(image::get_image("panels/" + *dialog_style_ + "-border-right.png",image::UNSCALED)),
-	 top_left_(image::get_image("panels/" + *dialog_style_ + "-border-topleft.png",image::UNSCALED)),
-	 bot_left_(image::get_image("panels/" + *dialog_style_ + "-border-botleft.png",image::UNSCALED)),
-	 top_right_(image::get_image("panels/" + *dialog_style_ + "-border-topright.png",image::UNSCALED)),
-	 bot_right_(image::get_image("panels/" + *dialog_style_ + "-border-botright.png",image::UNSCALED)),
-	 bg_(image::get_image("panels/" + *dialog_style_ + "-background.png",image::UNSCALED))
+	 top_(image::get_image("dialogs/" + *dialog_style_ + "-border-top.png",image::UNSCALED)),
+	 bot_(image::get_image("dialogs/" + *dialog_style_ + "-border-bottom.png",image::UNSCALED)),
+	 left_(image::get_image("dialogs/" + *dialog_style_ + "-border-left.png",image::UNSCALED)),
+	 right_(image::get_image("dialogs/" + *dialog_style_ + "-border-right.png",image::UNSCALED)),
+	 top_left_(image::get_image("dialogs/" + *dialog_style_ + "-border-topleft.png",image::UNSCALED)),
+	 bot_left_(image::get_image("dialogs/" + *dialog_style_ + "-border-botleft.png",image::UNSCALED)),
+	 top_right_(image::get_image("dialogs/" + *dialog_style_ + "-border-topright.png",image::UNSCALED)),
+	 bot_right_(image::get_image("dialogs/" + *dialog_style_ + "-border-botright.png",image::UNSCALED)),
+	 bg_(image::get_image("dialogs/" + *dialog_style_ + "-background.png",image::UNSCALED))
 {
 	have_border_ = top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL;
 }
