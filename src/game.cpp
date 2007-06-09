@@ -1113,7 +1113,9 @@ void game_controller::download_campaigns()
 			}
 		}
 
-		gui::message_dialog(disp(),_("Add-on Installed"),_("The add-on has been installed.")).show();
+		/* GCC-3.3 needs a temp var otherwise compilation fails */
+		gui::message_dialog dlg(disp(),_("Add-on Installed"),_("The add-on has been installed."));
+		dlg.show();
 	} catch(config::error&) {
 		gui::show_error_message(disp(), _("Network communication error."));
 	} catch(network::error&) {
@@ -1175,7 +1177,9 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 		gui::show_error_message(disp(), _("The server responded with an error: \"") +
 		                        (*data.child("error"))["message"].str() + '"');
 	} else if(data.child("message")) {
-		gui::message_dialog(disp(),_("Response"),(*data.child("message"))["message"]).show();
+		/* GCC-3.3 needs a temp var otherwise compilation fails */
+		gui::message_dialog dlg(disp(),_("Response"),(*data.child("message"))["message"]);
+		dlg.show();
 	}
 }
 
@@ -1200,7 +1204,9 @@ void game_controller::delete_campaign(const std::string& campaign, network::conn
 		gui::show_error_message(disp(), _("The server responded with an error: \"") +
 		                        (*data.child("error"))["message"].str() + '"');
 	} else if(data.child("message")) {
-		gui::message_dialog(disp(),_("Response"),(*data.child("message"))["message"]).show();
+		/* GCC-3.3 needs a temp var otherwise compilation fails */
+		gui::message_dialog dlg(disp(),_("Response"),(*data.child("message"))["message"]);
+		dlg.show();
 	}
 }
 
