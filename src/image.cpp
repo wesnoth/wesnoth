@@ -448,7 +448,7 @@ void set_colour_adjustment(int r, int g, int b)
 	}
 }
 
-void set_image_mask(const std::string& image UNUSED)
+void set_image_mask(const std::string& /*image*/)
 {
 
 	//image_mask are blitted in display.cpp

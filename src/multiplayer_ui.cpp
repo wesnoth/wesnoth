@@ -41,7 +41,7 @@ namespace {
 										   item_size_(empty_rect) 
 		{}
 		virtual void init();
-		virtual SDL_Rect item_size(const std::string& item UNUSED) { return item_size_; }
+		virtual SDL_Rect item_size(const std::string& /*item*/) { return item_size_; }
 		void set_width(const int width) { item_size_.w = width; }
 	private:
 		SDL_Rect item_size_;

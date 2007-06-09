@@ -297,7 +297,7 @@ void play_controller::init_gui(){
 	}
 }
 
-void play_controller::init_side(const unsigned int team_index, bool is_replay UNUSED){
+void play_controller::init_side(const unsigned int team_index, bool /*is_replay*/){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 

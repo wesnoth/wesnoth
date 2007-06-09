@@ -100,7 +100,7 @@ namespace gui{
 		update_location(gui);
 	}
 
-	void floating_textbox::tab(std::vector<team>& teams, const unit_map& units UNUSED, display& gui)
+	void floating_textbox::tab(std::vector<team>& teams, const unit_map& /*units*/, display& gui)
 	{
 		if(active() == false) {
 			return;

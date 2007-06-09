@@ -506,7 +506,7 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 	execute_command(disp,hk->get_id(),executor);
 }
 
-bool command_executor::execute_command(HOTKEY_COMMAND command, int index UNUSED)
+bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 {
 	switch(command) {
 		case HOTKEY_CYCLE_UNITS:

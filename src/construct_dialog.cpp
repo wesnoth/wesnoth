@@ -88,7 +88,7 @@ private:
 		}
 	}
 
-	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int index UNUSED) const
+	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int/*index*/ =-1) const
 	{
 		return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
 	}
