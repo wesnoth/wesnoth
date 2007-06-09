@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-08 12:42+0200\n"
-"PO-Revision-Date: 2007-06-05 21:51+0100\n"
+"PO-Revision-Date: 2007-06-09 12:58+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -10100,6 +10100,9 @@ msgid ""
 "good for stealing enemy villages to boost your income, especially if they "
 "have high mobility."
 msgstr ""
+"Da Einheiten mit der Charakteristik »loyal« keine Unterhaltskosten "
+"verursachen, sind sie sehr gut dafür geeignet, gegnerische Dörfer zu "
+"erobern, vor allem, wenn sie über eine große Reichweite verfügen."
 
 #: data/multiplayer/_main.cfg:4
 msgid "User Map"
@@ -11590,7 +11593,6 @@ msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Einheiten gesichtet! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2088
-#, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(Drückt $hotkey um fortzufahren)"
 
@@ -13100,9 +13102,8 @@ msgid "Downloading next scenario..."
 msgstr "Nächstes Szenario wird geladen..."
 
 #: src/playcampaign.cpp:459
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
+msgstr "Möchtet Ihr diesen Spielstand speichern?"
 
 #: src/playcampaign.cpp:484
 msgid "Unknown scenario: '"
@@ -13507,22 +13508,3 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Erlauben, dass Zusammenfassungen übertragen werden dürfen"
-
-#~ msgid "Autosaves"
-#~ msgstr "Automatisch gespeicherte Spielstände"
-
-#~ msgid "Do you want to delete the autosaves of this scenario?"
-#~ msgstr ""
-#~ "Möchtet Ihr die automatisch gespeicherten Spielstände dieses Szenarios "
-#~ "löschen?"
-
-#~ msgid "Do you want to save a replay of this scenario?"
-#~ msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
-
-#~ msgid "Save Replay"
-#~ msgstr "Wiederholung speichern"
-
-#~ msgid "Do you want to save your game? (Also erases Auto-Save files)"
-#~ msgstr ""
-#~ "Möchtet Ihr diesen Spielstand abspeichern? (Überschreibt automatisch "
-#~ "gespeicherte Spielstände)"
