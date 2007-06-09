@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-05 10:47+0200\n"
-"PO-Revision-Date: 2007-02-24 11:26+0900\n"
+"PO-Revision-Date: 2007-06-09 09:15+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -291,7 +291,6 @@ msgid "slows"
 msgstr "遅化"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -299,7 +298,7 @@ msgid ""
 msgstr ""
 "遅化:\n"
 "この攻撃は、ターンが終わるまでターゲットを遅くします。遅化は攻撃によるダメー"
-"ジを半減させ、遅化されたユニットは通常の半分の速度（切り上げ）で動きます。"
+"ジを半減させ、遅化されたユニットの移動コストを倍にします。"
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -2108,13 +2107,12 @@ msgid "Mouse Scrolling"
 msgstr "マウススクロール"
 
 #: data/game.cfg:58
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "公式サーバーに参加"
+msgstr "公式サーバー"
 
 #: data/game.cfg:62
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "代わりの Wesnoth サーバー"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -11963,21 +11961,19 @@ msgstr "武器の選択:"
 
 #: src/multiplayer.cpp:100
 msgid "Address"
-msgstr ""
+msgstr "アドレス"
 
 #: src/multiplayer.cpp:112
-#, fuzzy
 msgid "List of Servers"
-msgstr "サーバーへの接続"
+msgstr "サーバーリスト"
 
 #: src/multiplayer.cpp:113
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "リストからサーバを選んでください"
 
 #: src/multiplayer.cpp:140
-#, fuzzy
 msgid "View List"
-msgstr "ユニット一覧"
+msgstr "リストを見る"
 
 #: src/multiplayer.cpp:143
 msgid "Connect to Host"
@@ -12410,14 +12406,12 @@ msgid "Back to turn "
 msgstr "戻るターン : "
 
 #: src/playcampaign.cpp:112
-#, fuzzy
 msgid "Autosaves"
 msgstr "自動保存"
 
 #: src/playcampaign.cpp:113
-#, fuzzy
 msgid "Do you want to delete the autosaves of this scenario?"
-msgstr "このシナリオのリプレイを保存しますか？"
+msgstr "このシナリオの自動保存を保存しますか？"
 
 #: src/playcampaign.cpp:304
 msgid "Defeat"
