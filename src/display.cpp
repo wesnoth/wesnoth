@@ -1598,8 +1598,9 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 				SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
 			}
 		}
-	} else {
+	} else if(on_map) {
 		surface surface(image::get_image(game_config::void_image));
+
 
 		if(surface == NULL) {
 			ERR_DP << "Could not get void surface!\n";
