@@ -53,7 +53,7 @@
 namespace gui {
 
 //static initialization
-const std::string dialog::default_style("menu");
+const std::string dialog::default_style("opaque");
 const std::string dialog::no_help("");
 const int dialog::message_font_size = font::SIZE_PLUS;
 const int dialog::caption_font_size = font::SIZE_LARGE;
