@@ -783,7 +783,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		}
 
 		if (attack_from.valid()) {
-			std::string dir_str = gamemap::location::write_direction(nearest_hex);
+			std::string dir_str = gamemap::location::write_direction(new_hex.get_relative_dir(attack_from));
 			surface attack_dir_surf = image::get_image("misc/attack-from-"+dir_str+".png", image::UNMASKED,image::NO_ADJUST_COLOUR);
 			gui_->set_mouseover_hex_overlay(attack_dir_surf);
 		} else {
@@ -896,9 +896,7 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 	gamemap::location adj[6];
 	get_adjacent_tiles(loc,adj);
 
-	//this loop is just hacked to look only the preferred direction
-	//since we now highlight this one
-	for(int n = preferred; n == preferred; ++n) {
+	for(size_t n = 0; n != 6; ++n) {
 		if(map_.on_board(adj[n]) == false) {
 			continue;
 		}
