@@ -478,6 +478,7 @@ private:
 
 	surface minimap_;
 	bool redrawMinimap_;
+	bool redraw_background_;
 
 	paths::route route_;
 

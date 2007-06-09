@@ -70,7 +70,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	temp_unit_(NULL),
-	minimap_(NULL), redrawMinimap_(false),
+	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
 	status_(status),
 	teams_(t), nextDraw_(0),
 	invalidateAll_(true), invalidateUnit_(true),
@@ -502,6 +502,7 @@ void display::scroll(int xmove, int ymove)
 	_scroll_event.notify_observers();
 	update_rect(map_area());
 
+	redraw_background_ = true;
 	redrawMinimap_ = true;
 }
 
@@ -536,6 +537,7 @@ void display::set_zoom(int amount)
 		energy_bar_rects_.clear();
 		image::set_zoom(zoom_);
 		map_labels_.recalculate_labels();
+		redraw_background_ = true;
 		invalidate_all();
 
 		// Forces a redraw after zooming. This prevents some graphic glitches from occurring.
@@ -786,6 +788,8 @@ void display::redraw_everything()
 
 	map_labels_.recalculate_labels();
 
+	redraw_background_ = true;
+
 	invalidate_all();
 	draw(true,true);
 }
@@ -902,6 +906,34 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 	update_rect(loc);
 }
 
+/**
+ * Proof-of-concept of the new background still has some flaws
+ * * upon scrolling the background static (so maps scrolls over wood)
+ * * _off^usr has redraw glitches since background is only updated every now and then
+ * * the alpha at the border tends to "build up"
+ * * we impose a huge performance hit
+ *
+ * needs quite some work to become fully working, but first evaluate whether
+ * the new way is really wanted.
+ */
+static void draw_background(surface screen, const SDL_Rect& area)
+{
+	static const surface wood(image::get_image("terrain/off-map/wood.png",image::UNSCALED));
+	static const unsigned int width = wood->w;
+	static const unsigned int height = wood->h;
+	wassert(!wood.null());
+
+	const unsigned int w_count = static_cast<int>(ceil(static_cast<double>(area.w) / static_cast<double>(width)));
+	const unsigned int h_count = static_cast<int>(ceil(static_cast<double>(area.h) / static_cast<double>(height)));
+
+	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
+		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
+			SDL_Rect clip = {w_off, h_off, 0, 0};
+			SDL_BlitSurface(wood, NULL, screen, &clip);
+		}
+	}
+}
+
 void display::draw(bool update,bool force)
 {
 	bool changed = false;
@@ -933,6 +965,19 @@ void display::draw(bool update,bool force)
 		panelsDrawn_ = true;
 
 		changed = true;
+	}
+
+	if(redraw_background_) {
+		// full redraw of the background
+		const SDL_Rect clip_rect = map_outside_area();
+		const surface outside_surf(screen_.getSurface());
+		clip_rect_setter set_clip_rect(outside_surf, clip_rect);
+		draw_background(outside_surf, clip_rect);
+
+		redraw_background_ = false;
+
+		// force a full map redraw
+		invalidateAll_ = true;
 	}
 
 	if(invalidateAll_ && !map_.empty()) {
@@ -1939,7 +1984,7 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 	} else if(terrain_type == ADJACENT_BACKGROUND){
 		// this should only happen with the off map tiles and now 
 		// return the void image. NOTE this is a temp hack
-		const surface surface(image::get_image(game_config::void_image));
+		const surface surface(image::get_image("terrain/off-map/alpha.png"));
 		wassert(!surface.null());
 		if (!surface.null()) {
 			res.push_back(surface);
