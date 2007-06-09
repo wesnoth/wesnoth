@@ -794,11 +794,10 @@ public:
 
 	surface create_surface();
 
-	bool expired() const;
+	bool expired() const { return lifetime_ == 0; }
 
-	const std::string& text() const;
 
-	void show(bool value);
+	void show(const bool value) { visible_ = value; }
 
 	bool scroll() const { return scroll_; }
 
@@ -944,12 +943,6 @@ void floating_label::undraw(surface screen)
 		}
 	}
 }
-
-bool floating_label::expired() const { return lifetime_ == 0; }
-
-const std::string& floating_label::text() const { return text_; }
-
-void floating_label::show(bool value) { visible_ = value; }
 
 }
 
