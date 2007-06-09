@@ -1,5 +1,5 @@
 """
-wmltools.py -- Python routines for working with a Battle For Wesnoth WMl tree
+wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
@@ -56,7 +56,7 @@ def iswml(filename):
     return filename.endswith(".cfg")
 
 def isresource(filename):
-    "Is the specifired name a resource?"
+    "Is the specified name a resource?"
     (root, ext) = os.path.splitext(filename)
     return ext and ext[1:] in resource_extensions
 
