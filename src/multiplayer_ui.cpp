@@ -26,7 +26,6 @@
 #include "video.hpp"
 #include "replay.hpp"
 #include "wml_separators.hpp"
-#include "wassert.hpp"
 
 #define LOG_NG lg::info(lg::engine)
 #define LOG_NW LOG_STREAM(info, network)

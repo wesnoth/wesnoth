@@ -16,11 +16,4 @@
 #include <cassert>
 #define wassert assert
 
-/* Macro for declaring function arguments unused. */
-#if defined(__GNUC__)
-#  define UNUSED __attribute__((unused)) /* Flag variable as unused */
-#else /* not __GNUC__ */
-#  define UNUSED
-#endif
-
 #endif

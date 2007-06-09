@@ -30,7 +30,6 @@
 #include "wesconfig.h"
 #include "wml_separators.hpp"
 #include "SDL.h"
-#include "wassert.hpp"
 
 #include <algorithm>
 #include <cstdlib>

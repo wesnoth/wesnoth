@@ -16,7 +16,6 @@
 
 #include "font.hpp"
 #include "preferences.hpp"
-#include "wassert.hpp"
 
 namespace gui{
 	floating_textbox::floating_textbox() : box_(NULL), check_(NULL), mode_(TEXTBOX_NONE), label_(0)
