@@ -1,11 +1,13 @@
 Version 1.3.3+svn:
  * map editor
    * the minimum map size is reduced to 1
-   * fixed the random map generator 
+   * fixed the random map generator
  * graphics
    * added sickle and scythe attack icons
    * added weapon-shop tent and oak tree
-   * added automatic side-coloring of custom flags 
+   * added automatic side-coloring of custom flags
+   * new animations: troll whelp idle, young ogre idle, master at arms crossbow
+     and defend
  * language and i18n:
    * updated translations: Czech, Danish, German, Italian, Japanese, Polish,
       Spanish, Swedish
@@ -32,7 +34,7 @@ Version 1.3.3+svn:
    * fixed blinking tooltips when clock is updated (bug #9209)
    * footsteps are now erased at the end of the unit's move
    * reduced "sea sickness" effect when scrolling at accelerated speed
-   * allow to select item in menu with right-click 
+   * allow to select item in menu with right-click
    * right-click outside of a cancelable dialog to close it
    * added experimental new background read comment before draw_background()
      in display.cpp
@@ -49,7 +51,7 @@ Version 1.3.3+svn:
    * fixed an invalid letter in the random winter scenario
    * fixed a invalid memory access if a map has width of 0 (bug #9301)
    * reduce memory usage for the default zoom level
-   
+
 Version 1.3.3:
  * campaigns:
    * Northern Rebirth
