@@ -408,7 +408,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	bool rval = true;
 	//sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
-		handle_event(event_info, cfg);
+		if(!handle_event(event_info, cfg)) {
+			mutated = false;
+		}
 	}
 
 	//allow undo sets the flag saying whether the event has mutated the game to false
@@ -1073,8 +1075,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			//otherwise execute 'else' statements
 			const vconfig::child_list commands = cfg.get_children(type);
 			for(vconfig::child_list::const_iterator cmd = commands.begin();
-			    cmd != commands.end(); ++cmd) {
-				handle_event(event_info, *cmd);
+			cmd != commands.end(); ++cmd) {
+				if(!handle_event(event_info, *cmd)) {
+					mutated = false;
+				}
 			}
 		}
 	}
@@ -1456,8 +1460,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		const vconfig::child_list commands = cfg.get_children(command_type);
 		for(vconfig::child_list::const_iterator cmd = commands.begin();
-		    cmd != commands.end(); ++cmd) {
-			handle_event(event_info, *cmd);
+		cmd != commands.end(); ++cmd) {
+			if(!handle_event(event_info, *cmd)) {
+				mutated = false;
+			}
 		}
 	}
 
@@ -1648,9 +1654,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			vconfig::child_list events = option_events[option_chosen];
 			for(vconfig::child_list::const_iterator itor = events.begin();
-					itor != events.end(); ++itor) {
-
-				handle_event(event_info, *itor);
+			itor != events.end(); ++itor) {
+				if(!handle_event(event_info, *itor)) {
+					mutated = false;
+				}
 			}
 		}
 	}

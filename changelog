@@ -19,6 +19,7 @@ Version 1.3.3+svn:
    * move some terrain masks definition in [game_config]
    * made defense_weight work again for values > 0
    * fixed some minor bugs with "sighted" event, "die" event, and [kill]
+   * now [allow_undo] should work as expected in sub-commands such as [then]
  * user interface:
    * fixed a lag in the path rendering when there is a lot of units
    * maps smaller than the screen are now shown centered on the screen
