@@ -1839,7 +1839,7 @@ namespace events{
 			}
 		} else if(cmd == "clear") {
 			gui_->clear_chat_messages();
-		} else if(cmd == "sunset") {
+		} else if(game_config::debug && cmd == "sunset") {
 			int delay = lexical_cast_default<int>(data);
 			gui_->sunset(delay);
 		} else if(cmd == "w") {
