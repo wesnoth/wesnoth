@@ -59,6 +59,7 @@ game_state* state_of_game = NULL;
 const game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
 int floating_label = 0;
+Uint32 pumped_mutations = 0;
 
 class event_handler;
 std::vector< event_handler > new_handlers;
@@ -2500,7 +2501,14 @@ bool pump()
 		}
 	}
 
+	if(result) {
+		++pumped_mutations;
+	}
 	return result;
+}
+
+Uint32 mutations() {
+	return pumped_mutations;
 }
 
 entity_location::entity_location(gamemap::location loc, const std::string& id)
