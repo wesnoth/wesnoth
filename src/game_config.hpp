@@ -54,7 +54,8 @@ namespace game_config
 	  observer_image, tod_bright_image,
 	  checked_menu_image, unchecked_menu_image, wml_menu_image, level_image, ellipsis_image;
 
-  	extern std::string flag_rgb;
+	extern std::string flag_rgb;
+	extern std::vector<Uint32> defense_color_scale;
 
 	extern std::vector<std::string> foot_left_nw,foot_left_n,foot_right_nw,foot_right_n;
 

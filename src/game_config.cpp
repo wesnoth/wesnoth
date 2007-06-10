@@ -59,6 +59,7 @@ namespace game_config
 	std::string flag_image = "flags/flag-1.png:150,flags/flag-2.png:150,flags/flag-3.png:150,flags/flag-4.png:150";
 	std::string flag_icon_image = "flags/flag_icon.png";
   	std::string flag_rgb = "green";
+	std::vector<Uint32> defense_color_scale;
 
 	std::string cross_image = "misc/cross.png";
 
@@ -171,10 +172,14 @@ namespace game_config
 		ellipsis_image = v["ellipsis_image"];
 
 		add_color_info(v);
-		
+
 		flag_rgb = v["flag_rgb"];
 		if( !flag_rgb.size()){
 			flag_rgb="green";
+		}
+		defense_color_scale = string2rgb(v["defense_color_scale"]);
+		if (defense_color_scale.empty()) {
+			defense_color_scale.push_back(0x00FFFF00);
 		}
 
 		const std::vector<config *> &servers = v.get_children("server");
