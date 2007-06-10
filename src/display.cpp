@@ -1832,10 +1832,10 @@ void display::draw_movement_info(const gamemap::location& loc)
 		const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
 		std::stringstream def_text;
 		def_text << def << "%";
-		int red = 255 - maximum<int>(def-50, 0)*5;
-		int green = 255 - maximum<int>(50-def, 0)*5;
-		int blue = 0;
-		SDL_Color color = {red, green, blue, 0};
+
+		// with 11 colors, the last one will be used only for def=100
+		int val = (game_config::defense_color_scale.size()-1) * def/100;
+		SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
 
 		draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color, 0.5, 0.5);
 	}
