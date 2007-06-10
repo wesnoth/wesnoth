@@ -27,6 +27,7 @@
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "sound.hpp"
+#include "construct_dialog.hpp"
 #include "show_dialog.hpp"
 #include "unit.hpp"
 #include "util.hpp"
@@ -2254,7 +2255,7 @@ void help_browser::handle_event(const SDL_Event &event)
 				if (t == NULL) {
 					std::stringstream msg;
 					msg << _("Reference to unknown topic: ") << "'" << ref << "'.";
-					gui::show_dialog(disp_, NULL, "", msg.str(), gui::OK_ONLY);
+					gui::message_dialog(disp_, "", msg.str()).show();
 					update_cursor();
 				}
 				else {
@@ -2650,7 +2651,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	catch (parse_error e) {
 		std::stringstream msg;
 		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
-		gui::show_dialog(disp, NULL, "", msg.str(), gui::OK_ONLY);
+		gui::message_dialog(disp, "", msg.str()).show();
 	}
 }
 

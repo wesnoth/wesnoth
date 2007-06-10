@@ -153,7 +153,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 		if(!chosen_file_.empty())
 		{
 			if(files_list_->delete_chosen_file() == -1) {
-				gui::dialog d(get_display(), "", _("Deletion of the file failed."), gui::OK_ONLY);
+				gui::message_dialog d(get_display(), _("Deletion of the file failed."));
 				d.show();
 				dp_info.clear_buttons();
 			} else {
@@ -171,7 +171,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 		if(d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty())
 		{
 			if( !files_list_->make_directory(d.textbox_text()) ) {
-				gui::dialog d2(get_display(), "", _("Creation of the directory failed."), gui::OK_ONLY);
+				gui::message_dialog d2(get_display(), _("Creation of the directory failed."));
 				d2.show();
 			} else {
 				dp_info.first_time = true;

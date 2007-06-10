@@ -512,13 +512,12 @@ namespace events{
 		if (res == 0) {
 			try {
 				write_file(input_name, map_.write());
-				gui::show_dialog(*gui_, NULL, "", _("Map saved."),
-								gui::OK_ONLY);
+				gui::message_dialog(*gui_, "", _("Map saved.")).show();
 			} catch (io_exception& e) {
 				utils::string_map symbols;
 				symbols["msg"] = e.what();
 				const std::string msg = vgettext("Could not save the map: $msg",symbols);
-				gui::show_dialog(*gui_, NULL, "", msg, gui::OK_ONLY);
+				gui::message_dialog(*gui_, "", msg).show();
 			}
 		}
 	}
@@ -773,8 +772,8 @@ namespace events{
 		wassert(u_type != gameinfo_.unit_types.end());
 
 		if(u_type->second.cost() > current_team.gold()) {
-			gui::show_dialog(*gui_,NULL,"",
-				 _("You don't have enough gold to recruit that unit"),gui::OK_ONLY);
+			gui::message_dialog(*gui_,"",
+				 _("You don't have enough gold to recruit that unit")).show();
 		} else {
 			last_recruit_ = name;
 
@@ -807,7 +806,7 @@ namespace events{
 				recorder.add_checksum_check(loc);
 			} else {
 				recorder.undo();
-				gui::show_dialog(*gui_,NULL,"",msg,gui::OK_ONLY);
+				gui::message_dialog(*gui_,"",msg).show();
 			}
 		}
 	}
