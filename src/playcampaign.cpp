@@ -299,21 +299,23 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				                 _("Defeat"),
 				                 _("You have been defeated!")
 				                 ).show();
-				//Make sure the user gets an opportunity to delete his autosaves
-				if (preferences::delete_autosaves())
-					clean_autosaves(gamestate.label);
 			}
 			if(res == QUIT && io_type == IO_SERVER) {
 					config end;
 					end.add_child("end_scenarios");
 					network::send_data(end);
 			}
-			//ask to save a replay of the game
-			if(res == VICTORY || res == DEFEAT || res == OBSERVER_END) {
+			// Temporary fix:
+			// Only apply preferences for replays and autosave
+			// deletes on victory.  We need to rethink what this
+			// code should be doing.
+			if(res == VICTORY) {
 				const std::string orig_scenario = gamestate.scenario;
 				gamestate.scenario = current_scenario;
 
 				std::string label = gamestate.label + _(" replay");
+				if (preferences::delete_autosaves())
+					clean_autosaves(gamestate.label);
 
 				if(preferences::save_replays()) {
 					try {
