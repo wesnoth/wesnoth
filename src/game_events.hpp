@@ -88,7 +88,7 @@ bool conditional_passed(const unit_map* units,
                         const vconfig cond);
 bool pump();
 
-//the count of pumped game event mutations to the gamestate
+//the count of game event mutations to the unit_map
 Uint32 mutations();
 
 }

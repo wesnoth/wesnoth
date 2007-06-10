@@ -59,7 +59,7 @@ game_state* state_of_game = NULL;
 const game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
 int floating_label = 0;
-Uint32 pumped_mutations = 0;
+Uint32 unit_mutations = 0;
 
 class event_handler;
 std::vector< event_handler > new_handlers;
@@ -468,7 +468,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					std::pair<gamemap::location,unit> *up = units->extract(u->first);
 					up->first = vacant_dst;
 					units->add(up);
-
+					unit_mutations++;
 					if(game_map->is_village(vacant_dst)) {
 						get_village(vacant_dst,*teams,side,*units);
 					}
@@ -1329,6 +1329,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			units->erase(loc);
 			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
+			unit_mutations++;
 			if(game_map->is_village(loc)) {
 				get_village(loc,*teams,new_unit.side()-1,*units);
 			}
@@ -1386,6 +1387,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					gamemap::location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u); //erase before recruiting, since recruiting can fire more events
+					unit_mutations++;
 					recruit_unit(*game_map,index+1,*units,to_recruit,loc,utils::string_bool(cfg["show"],true),false,true);
 					unit_recalled = true;
 					break;
@@ -1679,9 +1681,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						un = units->find(death_loc);
 						if(un != units->end() && death_loc.matches_unit(un->second)) {
 							units->erase(un);
+							unit_mutations++;
 						}
 					} else {
 						units->erase(un);
+						unit_mutations++;
 					}
 				}
 			}
@@ -1796,6 +1800,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			if(kill_units) {
 				units->erase(i++);
+				unit_mutations++;
 			} else {
 				++i;
 			}
@@ -1855,6 +1860,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				units->erase(loc);
 				units->add(new std::pair<gamemap::location,unit>(loc,u));
+				unit_mutations++;
 
 				std::string text = cfg["text"];
 				if(!text.empty())
@@ -2501,14 +2507,11 @@ bool pump()
 		}
 	}
 
-	if(result) {
-		++pumped_mutations;
-	}
 	return result;
 }
 
 Uint32 mutations() {
-	return pumped_mutations;
+	return unit_mutations;
 }
 
 entity_location::entity_location(gamemap::location loc, const std::string& id)
