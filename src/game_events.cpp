@@ -67,6 +67,14 @@ std::vector< wmi_command_change > wmi_command_changes;
 
 const gui::msecs prevent_misclick_duration = 10;
 const gui::msecs average_frame_time = 30;
+
+class wml_event_dialog : public gui::message_dialog {
+public:
+	wml_event_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::WML_EVENT)
+		: message_dialog(disp, title, message, type)
+	{}
+};
+
 } //end anonymous namespace
 
 #ifdef _MSC_VER
@@ -1438,7 +1446,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			const std::string duration_str = cfg["duration"];
 			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-			gui::message_dialog to_show(*screen,((surface.null())? caption : ""),text);
+			wml_event_dialog to_show(*screen,((surface.null())? caption : ""),text);
 			if(!surface.null()) {
 				to_show.set_image(surface, caption);
 			}
@@ -1589,7 +1597,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
 			const SDL_Rect& map_area = screen->map_area();
 
-			gui::message_dialog to_show(*screen, ((surface.null())? caption : ""),
+			wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
 				msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));
 			if(!surface.null()) {
 				to_show.set_image(surface, caption);

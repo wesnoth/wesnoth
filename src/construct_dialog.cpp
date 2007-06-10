@@ -123,6 +123,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	switch(type)
 	{
 	case MESSAGE:
+	case WML_EVENT:
 	default:
 		break;
 	case OK_ONLY:
@@ -237,8 +238,8 @@ void dialog::set_textbox(const std::string& text_widget_label,
 
 void dialog::set_menu(const std::vector<std::string> &menu_items)
 {
-	set_menu(new gui::menu(disp_.video(), menu_items, (type_==MESSAGE), -1,
-		dialog::max_menu_width, NULL, &menu::default_style, false));
+	set_menu(new gui::menu(disp_.video(), menu_items, (type_==WML_EVENT || type_==MESSAGE),
+		-1, dialog::max_menu_width, NULL, &menu::default_style, false));
 }
 
 menu& dialog::get_menu()
@@ -677,7 +678,7 @@ int dialog::process(dialog_process_info &info)
 	//escape quits from the dialog -- unless it's an "ok" dialog with a menu,
 	//since such dialogs require a selection of some kind.
 	if(!info.key_down && info.key[SDLK_ESCAPE]) {
-		if(type_ == MESSAGE) {
+		if(type_ == WML_EVENT) {
 			//special return value for escaping game event messages
 			return (ESCAPE_DIALOG);
 		} else if(!(type_ == OK_ONLY && use_menu)) {
