@@ -1361,7 +1361,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 {
 	log_scope("read_game_cfg");
 
-	if(defines.size() < 5) {
+	if(defines.size() < 6) {
 		bool is_valid = true;
 		std::stringstream str;
 		str << "-v" << game_config::version;
@@ -1552,6 +1552,10 @@ void game_controller::reset_game_cfg()
 	//load in the game's configuration files
 #if defined(__APPLE__)
 	defines_map_["APPLE"] = preproc_define();
+#endif
+
+#ifdef USE_TINY_GUI
+	defines_map_["TINY"] = preproc_define();
 #endif
 
 	if(multiplayer_mode_) {
