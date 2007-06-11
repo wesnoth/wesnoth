@@ -26,6 +26,7 @@
 #include "../mapgen.hpp"
 #include "../map_create.hpp"
 #include "../marked-up_text.hpp"
+#include "../construct_dialog.hpp"
 #include "../show_dialog.hpp"
 #include "../util.hpp"
 #include "../preferences_display.hpp"
