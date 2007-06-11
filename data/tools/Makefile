@@ -9,6 +9,12 @@ TOPDIR = ../../data/core ../data/{multiplayer,themes} ../../data/campaigns/*
 # otherwise the visibility checks aren't going to work right.
 # UMC = ../../../umc/*
 
+sanity-check: unresolved check-obsolete
+
+check-obsolete:
+	# Check for obsolete WML
+	wmllint --dryrun  $(TOPDIR) $(UMC)
+
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
 	@./wmlscope --unresolved $(TOPDIR) $(UMC)
