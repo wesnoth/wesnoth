@@ -39,35 +39,175 @@
 
 namespace {
 
+std::vector<std::string> create_unit_table(const game_data& gameinfo, const statistics::stats::str_int_map& m, unsigned int team)
+{
+	std::vector<std::string> table;
+	for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+		const game_data::unit_type_map::const_iterator type = gameinfo.unit_types.find(i->first);
+		if(type == gameinfo.unit_types.end()) {
+			continue;
+		}
+
+		std::stringstream str;
+
+		str << IMAGE_PREFIX << type->second.image();
+#ifndef LOW_MEM
+		str << "~RC(" << type->second.flag_rgb() << ">" << team << ")";
+#endif
+		str << COLUMN_SEPARATOR	<< type->second.language_name() << COLUMN_SEPARATOR << i->second << "\n";
+		table.push_back(str.str());
+	}
+
+	return table;
+}
+
 class statistics_dialog : public gui::dialog
 {
 public:
-	statistics_dialog(display &disp, const std::string& title="");
+	statistics_dialog(display &disp, const std::string& title, const game_data& gameinfo, const unsigned int team,
+		const std::string& player);
 	~statistics_dialog();
 protected:
 	void action(gui::dialog_process_info &dp_info);
 private:
 	gui::dialog_button *detail_btn_;
+	const game_data& gameinfo_;
+	std::string player_name_;
+	statistics::stats stats_;
+	unsigned int team_num_;
+	std::vector<int> unit_count_;
 };
 
 void statistics_dialog::action(gui::dialog_process_info &dp_info)
 {
-	bool has_details = (get_menu().selection() < 5);
+	int sel = get_menu().selection();
+	bool has_details = sel < 5 && sel >= 0 && unit_count_[sel] > 0;
 	detail_btn_->enable(has_details);
 	if(dp_info.double_clicked && has_details) {
-		set_result(get_menu().selection());
-	} else if(dp_info.key_down) {
+		set_result(sel);
+	} else if(dp_info.new_key_down && !dp_info.key_down) {
 		set_result(gui::CLOSE_DIALOG);
+	}
+
+	//prepare the sub-dialog for Statistic Details
+	std::string title;
+	std::vector<std::string> items_sub;
+	switch(result()) {
+	case gui::CLOSE_DIALOG:
+		break;
+	case 0:
+		items_sub = create_unit_table(gameinfo_, stats_.recruits, team_num_);
+		title = _("Recruits");
+		break;
+	case 1:
+		items_sub = create_unit_table(gameinfo_, stats_.recalls, team_num_);
+		title = _("Recalls");
+		break;
+	case 2:
+		items_sub = create_unit_table(gameinfo_, stats_.advanced_to, team_num_);
+		title = _("Advancements");
+		break;
+	case 3:
+		items_sub = create_unit_table(gameinfo_, stats_.deaths, team_num_);
+		title = _("Losses");
+		break;
+	case 4:
+		items_sub = create_unit_table(gameinfo_, stats_.killed, team_num_); 
+		// FIXME? Perhaps killed units shouldn't have the same team-color as your own.
+		title = _("Kills");
+		break;
+	default:
+		break;
+	}
+	if (items_sub.empty() == false) {
+		gui::dialog d(get_display(), title + " (" + player_name_ + ")", "", gui::CLOSE_ONLY);
+		d.set_menu(items_sub);
+		d.show();
+		dp_info.clear_buttons();
+		set_result(gui::CONTINUE_DIALOG);
 	}
 }
 
-statistics_dialog::statistics_dialog(display &disp, const std::string& title)
-		: dialog(disp, title, "", gui::NULL_DIALOG)
+statistics_dialog::statistics_dialog(display &disp, const std::string& title,
+const game_data& gameinfo, const unsigned int team, const std::string& player)
+: dialog(disp, title, "", gui::NULL_DIALOG), gameinfo_(gameinfo), player_name_(player),
+team_num_(team), unit_count_(5,0)
 {
-	detail_btn_ = new gui::standard_dialog_button(disp.video(), _("Detail"), 0 , false);
+	detail_btn_ = new gui::standard_dialog_button(disp.video(), _("Details"), 0 , false);
 	add_button(detail_btn_, gui::dialog::BUTTON_EXTRA);
 	add_button(new gui::standard_dialog_button(disp.video(), _("Close"), 1, true),
 				gui::dialog::BUTTON_STANDARD);
+
+	stats_ = statistics::calculate_stats(0, team_num_);
+	int n;
+	std::vector<std::string> items;
+	//prepare the menu items
+	{
+		std::stringstream str;
+		n = statistics::sum_str_int_map(stats_.recruits);
+		unit_count_[0] = n;
+		str << _("Recruits") << COLUMN_SEPARATOR << n;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		n = statistics::sum_str_int_map(stats_.recalls);
+		unit_count_[1] = n;
+		str << _("Recalls") << COLUMN_SEPARATOR << n;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		n = statistics::sum_str_int_map(stats_.advanced_to);
+		unit_count_[2] = n;
+		str << _("Advancements") << COLUMN_SEPARATOR << n;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		n = statistics::sum_str_int_map(stats_.deaths);
+		unit_count_[3] = n;
+		str << _("Losses") << COLUMN_SEPARATOR << n;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		n = statistics::sum_str_int_map(stats_.killed);
+		unit_count_[4] = n;
+		str << _("Kills") << COLUMN_SEPARATOR << n;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << _("Damage Inflicted") << COLUMN_SEPARATOR << stats_.damage_inflicted;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << _("Damage Taken") << COLUMN_SEPARATOR << stats_.damage_taken;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << _("Damage Inflicted (EV)") << COLUMN_SEPARATOR
+			<< (stats_.expected_damage_inflicted / 100.0);
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << _("Damage Taken (EV)") <<  COLUMN_SEPARATOR
+			<< (stats_.expected_damage_taken / 100.0);
+		items.push_back(str.str());
+	}
+	set_menu(items);
 }
 
 statistics_dialog::~statistics_dialog()
@@ -157,136 +297,13 @@ namespace events{
 
 	void menu_handler::show_statistics(const unsigned int team_num)
 	{
-		const statistics::stats& stats = statistics::calculate_stats(0, team_num);
-		std::vector<std::string> items;
-
-		{
-			std::stringstream str;
-			str << _("Recruits") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.recruits);
-			items.push_back(str.str());
-		}
-
-		{
-			std::stringstream str;
-			str << _("Recalls") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.recalls);
-			items.push_back(str.str());
-		}
-
-		{
-			std::stringstream str;
-			str << _("Advancements") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.advanced_to);
-			items.push_back(str.str());
-		}
-
-		{
-			std::stringstream str;
-			str << _("Losses") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.deaths);
-			items.push_back(str.str());
-		}
-
-		{
-			std::stringstream str;
-			str << _("Kills") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.killed);
-			items.push_back(str.str());
-		}
-
-		{
-			std::stringstream str;
-			str << _("Damage Inflicted") << COLUMN_SEPARATOR << stats.damage_inflicted;
-			items.push_back(str.str());
-		}
-
-		{
-			std::stringstream str;
-			str << _("Damage Taken") << COLUMN_SEPARATOR << stats.damage_taken;
-			items.push_back(str.str());
-		}
-
-		{
-			std::stringstream str;
-			str << _("Damage Inflicted (EV)") << COLUMN_SEPARATOR
-				<< (stats.expected_damage_inflicted / 100.0);
-			items.push_back(str.str());
-		}
-
-		{
-			std::stringstream str;
-			str << _("Damage Taken (EV)") <<  COLUMN_SEPARATOR
-				<< (stats.expected_damage_taken / 100.0);
-			items.push_back(str.str());
-		}
-
-		input_blocker *button_flush = NULL;
-		for(;;) {
-			//add player's name to title of dialog
-			std::stringstream str;
-			str <<  _("Statistics") << " (";
-			// Current Player name
-			str << teams_[gui_->viewing_team()].current_player();
-			str << ")";
-
-			statistics_dialog stats_dialog(*gui_, str.str());
-			stats_dialog.set_menu(items);
-			delete button_flush;
-			button_flush = NULL;
-			stats_dialog.show();
-			std::string title;
-			std::vector<std::string> items_sub;
-
-			switch(stats_dialog.result()) {
-			case gui::CLOSE_DIALOG:
-				return;
-			case 0:
-				items_sub = create_unit_table(stats.recruits,gui_->viewing_team()+1);
-				title = _("Recruits");
-				break;
-			case 1:
-				items_sub = create_unit_table(stats.recalls,gui_->viewing_team()+1);
-				title = _("Recalls");
-				break;
-			case 2:
-				items_sub = create_unit_table(stats.advanced_to,gui_->viewing_team()+1);
-				title = _("Advancements");
-				break;
-			case 3:
-				items_sub = create_unit_table(stats.deaths,gui_->viewing_team()+1);
-				title = _("Losses");
-				break;
-			case 4:
-				items_sub = create_unit_table(stats.killed,gui_->viewing_team()+1); // FIXME? Perhaps killed units shouldn't have the same team-color as your own.
-				title = _("Kills");
-				break;
-			default:
-				break;
-			}
-
-			if (items_sub.empty() == false) {
-				gui::show_dialog(*gui_, NULL, "", title, gui::CLOSE_ONLY, &items_sub);
-				button_flush = new input_blocker();
-			}
-		}
-	}
-
-	std::vector<std::string> menu_handler::create_unit_table(const statistics::stats::str_int_map& m,unsigned int team)
-	{
-		std::vector<std::string> table;
-		for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-			const game_data::unit_type_map::const_iterator type = gameinfo_.unit_types.find(i->first);
-			if(type == gameinfo_.unit_types.end()) {
-				continue;
-			}
-
-			std::stringstream str;
-
-			str << IMAGE_PREFIX << type->second.image();
-#ifndef LOW_MEM
-			str << "~RC(" << type->second.flag_rgb() << ">" << team << ")";
-#endif
-			str << COLUMN_SEPARATOR	<< type->second.language_name() << COLUMN_SEPARATOR << i->second << "\n";
-			table.push_back(str.str());
-		}
-
-		return table;
+		// Current Player name
+		const std::string player = teams_[team_num - 1].current_player();
+		//add player's name to title of dialog
+		std::stringstream title_str;
+		title_str <<  _("Statistics") << " (" << player << ")";
+		statistics_dialog stats_dialog(*gui_, title_str.str(), gameinfo_, team_num, player);
+		stats_dialog.show();
 	}
 
 	void menu_handler::unit_list()

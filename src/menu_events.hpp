@@ -120,7 +120,7 @@ protected:
 private:
 	//void do_speak(const std::string& message, bool allies_only);
 	void do_recruit(const std::string& name, const unsigned int team_num, const gamemap::location& last_hex);
-	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
+//	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	void write_game_snapshot(config& start) const;
 	bool has_friends() const;
 	bool clear_shroud(const unsigned int team_num);

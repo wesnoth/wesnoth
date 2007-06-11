@@ -30,16 +30,29 @@ struct dialog_process_info
 {
 public:
 	dialog_process_info() : left_button(true), right_button(true), key_down(true),
-		first_time(true), double_clicked(false), selection(-1)
+		first_time(true), double_clicked(false), selection(-1), clear_buttons_(false)
 	{}
 	void clear_buttons() {
-		left_button = true;
-		right_button = true;
-		key_down = true;
+		clear_buttons_ = true;
+	}
+	void cycle() {
+		if(clear_buttons_) {
+			left_button = true;
+			right_button = true;
+			key_down = true;
+			clear_buttons_ = false;
+		} else {
+			left_button = new_left_button;
+			right_button = new_right_button;
+			key_down = new_key_down;
+		}
 	}
 	CKey key;
 	bool left_button, right_button, key_down, first_time, double_clicked;
+	bool new_left_button, new_right_button, new_key_down;
 	int selection;
+private:
+	bool clear_buttons_;
 };
 
 class dialog_image : public widget {
@@ -212,9 +225,9 @@ protected:
 
 	//action - invoked at the end of the dialog-processing loop
 	virtual void action(dialog_process_info &dp_info);
-
 	//refresh - forces the display to refresh
 	void refresh();
+
 	label& get_message() const { return *message_; }
 	dialog_frame& get_frame();
 

@@ -294,6 +294,7 @@ int dialog::show()
 			refresh();
 		}
 		action(dp_info);
+		dp_info.cycle();
 	} while(!done());
 
 	return result();
@@ -661,9 +662,9 @@ int dialog::process(dialog_process_info &info)
 	int mousex, mousey;
 	int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
-	const bool new_right_button = (mouse_flags&SDL_BUTTON_RMASK) != 0;
-	const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
-	const bool new_key_down = info.key[SDLK_SPACE] || info.key[SDLK_RETURN] ||
+	info.new_right_button = (mouse_flags&SDL_BUTTON_RMASK) != 0;
+	info.new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
+	info.new_key_down = info.key[SDLK_SPACE] || info.key[SDLK_RETURN] ||
 					info.key[SDLK_ESCAPE] || info.key[SDLK_KP_ENTER];
 	info.double_clicked = menu_->double_clicked();
 	get_menu();
@@ -718,7 +719,7 @@ int dialog::process(dialog_process_info &info)
 	events::raise_draw_event();
 
 	//left-clicking outside of a drop-down or context-menu should close it
-	if (new_left_button && !info.left_button) {
+	if (info.new_left_button && !info.left_button) {
 		if (standard_buttons_.empty() && !point_in_rect(mousex,mousey, menu_->location())) {
 			sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
@@ -728,7 +729,7 @@ int dialog::process(dialog_process_info &info)
 	//right-clicking outside of a dialog should close it unless a choice is required
 	//note: this will also close any context-menu or drop-down when it is right-clicked
 	//      but that may be changed to allow right-click selection instead.
-	if (new_right_button && !info.right_button) {
+	if (info.new_right_button && !info.right_button) {
 		if( standard_buttons_.empty()
 		|| (!point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
 		&& type_ != YES_NO && !(type_ == OK_ONLY && use_menu))) {
@@ -739,14 +740,10 @@ int dialog::process(dialog_process_info &info)
 
 	//any keypress should close a dialog if it has one standard button (or less)
 	//and no menu options.
-	if (new_key_down && !info.key_down) {
+	if (info.new_key_down && !info.key_down) {
 		if (standard_buttons_.size() < 2 && !use_menu)
 			return CLOSE_DIALOG;
 	}
-
-	info.left_button = new_left_button;
-	info.right_button = new_right_button;
-	info.key_down = new_key_down;
 
 	//now handle any button presses
 	for(button_pool_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
@@ -757,6 +754,7 @@ int dialog::process(dialog_process_info &info)
 	if(help_button_.pressed()) {
 		return help_button_.action(info);
 	}
+
 	return CONTINUE_DIALOG;
 }
 
