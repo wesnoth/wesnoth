@@ -2068,7 +2068,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				if(nfriends > 0) {
 					message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
 					msg_colour = font::GOOD_COLOUR;
-				} else {
+				} else if(nenemies > 0) {
 					message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
 					msg_colour = font::BAD_COLOUR;
 				}
