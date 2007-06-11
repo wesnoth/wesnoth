@@ -681,8 +681,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 							rect.w - horizontal_padding - right_border, 0 };
 	buffer_size_slider_.set_location(buffer_rect);
 	ypos += item_interline;
-	const int nsb_x = rect.x + rect.w - normal_sound_button_.width() - right_border;
-	normal_sound_button_.set_location(nsb_x, ypos);
+	normal_sound_button_.set_location(rect.x, bottom_row_y - normal_sound_button_.height());
 
 
 	// Multiplayer tab
@@ -721,7 +720,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	friends_add_friend_button_.set_location(friends_xpos,ypos);
 	ypos += short_interline+3; friends_add_ignore_button_.set_location(friends_xpos,ypos);
 	ypos += short_interline+3; friends_remove_button_.set_location(friends_xpos,ypos);
-	ypos += item_interline*2; friends_back_button_.set_location(friends_xpos,ypos);
+	friends_back_button_.set_location(rect.x, bottom_row_y - friends_back_button_.height());
 	
 	//Advanced tab
 	ypos = rect.y + top_border;
