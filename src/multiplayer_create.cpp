@@ -18,6 +18,7 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
+#include "construct_dialog.hpp"
 #include "show_dialog.hpp"
 #include "map_create.hpp"
 #include "minimap.hpp"
@@ -187,7 +188,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 		eras.push_back((**er)["name"]);
 	}
 	if(eras.empty()) {
-		gui::show_dialog(disp, NULL, "", _("No multiplayer sides."), gui::OK_ONLY);
+		gui::message_dialog(disp, "", _("No multiplayer sides.")).show();
 		std::cerr << "ERROR: no eras found\n";
 		throw config::error(_("No eras found"));
 	}
@@ -290,7 +291,7 @@ void create::process_event()
 			set_result(CREATE);
 			return;
 		} else {
-			gui::show_dialog(disp_, NULL, "", _("You must enter a name."), gui::OK_ONLY);
+			gui::message_dialog(disp_, "", _("You must enter a name.")).show();
 		}
 	}
 

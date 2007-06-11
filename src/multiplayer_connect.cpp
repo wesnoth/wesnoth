@@ -1245,15 +1245,14 @@ void connect::load_game()
 		}
 
 		if(state_.campaign_type != "multiplayer") {
-			gui::show_dialog(disp(), NULL, "", _("This is not a multiplayer save"),
-					gui::OK_ONLY);
+			gui::message_dialog(disp(), "", _("This is not a multiplayer save")).show();
 			set_result(QUIT);
 			return;
 		}
 
 		if(state_.version != game_config::version) {
 			if(state_.version < game_config::min_savegame_version) {
-				gui::show_dialog(disp(), NULL, "", _("This save is from a version too old to be loaded."), gui::OK_ONLY);
+				gui::message_dialog(disp(), "", _("This save is from a version too old to be loaded.")).show();
 				set_result(QUIT);
 				return;
 			}

@@ -217,8 +217,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 					info["result"] = "defeat";
 				network::send_data(cfg);
 			} else {
-				gui::show_dialog(*gui_, NULL, _("Game Over"),
-				                 _("The game is over."), gui::OK_ONLY);
+				gui::message_dialog(*gui_,_("Game Over"),
+				                 _("The game is over.")).show();
 				return OBSERVER_END;
 			}
 		}
@@ -350,8 +350,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		}
 	} //end catch
 	catch(replay::error&) {
-		gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),
-		                 gui::OK_ONLY);
+		gui::message_dialog(*gui_,"",_("The file you have tried to load is corrupt")).show();
 		return QUIT;
 	}
 	catch(network::error& e) {
@@ -396,7 +395,7 @@ void playsingle_controller::play_turn(bool save)
 					replaying_ = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
 										  player_number_,status_,gamestate_);
 				} catch(replay::error&) {
-					gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
+					gui::message_dialog(*gui_,"",_("The file you have tried to load is corrupt")).show();
 
 					replaying_ = false;
 				}

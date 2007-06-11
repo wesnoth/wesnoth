@@ -173,8 +173,8 @@ std::string new_map_dialog(display& disp, const t_translation::t_letter fill_ter
 				const std::string map =
 					random_map_generator.get()->create_map(std::vector<std::string>());
 				if (map == "") {
-					gui::show_dialog(disp, NULL, "",
-									 _("Map creation failed."), gui::OK_ONLY);
+					gui::message_dialog(disp, "",
+									 _("Map creation failed.")).show();
 				}
 				return map;
 			}
