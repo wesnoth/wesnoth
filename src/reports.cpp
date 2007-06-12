@@ -127,7 +127,10 @@ report generate_report(TYPE type, const gamemap& map, unit_map& units,
 		report res;
 
 		//we call invisible with see_all=false to avoid cheat-detection of hidden enemies
-		if(map.on_board(mouseover) && u->second.invisible(mouseover,units,teams,false)) {
+		//don't display the icon on shrouded location to prevent cheat-detection of terrain
+		if(map.on_board(mouseover) && !current_team.shrouded(mouseover.x,mouseover.y)
+			&& u->second.invisible(mouseover,units,teams,false))
+		{
 			unit_status << "misc/invisible.png";
 			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);
