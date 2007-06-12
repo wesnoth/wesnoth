@@ -71,9 +71,14 @@ const gui::msecs average_frame_time = 30;
 
 class wml_event_dialog : public gui::message_dialog {
 public:
-	wml_event_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::WML_EVENT)
+	wml_event_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
 		: message_dialog(disp, title, message, type)
 	{}
+	void action(gui::dialog_process_info &info) {
+		if(result() == gui::CLOSE_DIALOG && !info.key_down && info.key[SDLK_ESCAPE]) {
+			set_result(gui::ESCAPE_DIALOG);
+		}
+	}
 };
 
 } //end anonymous namespace

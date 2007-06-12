@@ -38,7 +38,7 @@ extern const int ButtonVPadding;
 enum DIALOG_RESULT {
 	CREATE_ITEM =-5,
 	DELETE_ITEM=-4,
-	ESCAPE_DIALOG=-3, //special return used by WML_EVENT dialog
+	ESCAPE_DIALOG=-3, //special return used by WML event dialogs
 	CONTINUE_DIALOG=-2,
 	CLOSE_DIALOG=-1
 	/* results (0..N) reserved for standard button indeces */
@@ -140,7 +140,7 @@ struct dialog_button_info
 	std::string label;
 };
 
-enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY, CLOSE_ONLY, NULL_DIALOG, WML_EVENT };
+enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY, CLOSE_ONLY, NULL_DIALOG };
 
 struct check_item {
 	check_item(const std::string& label, bool checked) : label(label), checked(checked) {}
