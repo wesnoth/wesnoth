@@ -1741,27 +1741,33 @@ namespace events{
 				loc.y = (loc.y + 1) % map_.y();
 
 			//Search label
-			const terrain_label* label = gui_->labels().get_label(loc);
-			if(label) {
-				if(std::search(label->text().begin(), label->text().end(),
-						last_search_.begin(), last_search_.end(),
-						chars_equal_insensitive) != label->text().end()) {
-					found = !gui_->shrouded(loc);
+			if (!gui_->shrouded(loc)) {
+				const terrain_label* label = gui_->labels().get_label(loc);
+				if(label) {
+					if(std::search(label->text().begin(), label->text().end(),
+							last_search_.begin(), last_search_.end(),
+							chars_equal_insensitive) != label->text().end()) {
+						found = true;
+					}
 				}
 			}
 			//Search unit name
-			unit_map::const_iterator ui = units_.find(loc);
-			if(ui != units_.end()) {
-				const std::string name = ui->second.description();
-				if(std::search(name.begin(), name.end(),
-						last_search_.begin(), last_search_.end(),
-						chars_equal_insensitive) != name.end()) {
-					found = !gui_->fogged(loc);
+			if (!gui_->fogged(loc)) {
+				unit_map::const_iterator ui = units_.find(loc);
+				if(ui != units_.end()) {
+					const std::string name = ui->second.description();
+					if(std::search(name.begin(), name.end(),
+							last_search_.begin(), last_search_.end(),
+							chars_equal_insensitive) != name.end()) {
+						found = true;
+					}
 				}
 			}
+
 			if(loc == start)
 				break;
 		}
+
 		if(found) {
 			last_search_hit_ = loc;
 			gui_->scroll_to_tile(loc,display::ONSCREEN,false);
