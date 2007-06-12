@@ -99,10 +99,6 @@ team::team_info::team_info(const config& cfg)
 		team_name = cfg["side"];
 	}
 	
-	if(user_team_name.empty()) {
-		user_team_name = team_name;
-	}
-
 	save_id = cfg["save_id"];
 	if(save_id.empty()) {
 		save_id = cfg["description"];
@@ -266,7 +262,7 @@ void team::team_info::write(config& cfg) const
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
-	cfg["user_team_name"] = team_name;
+	cfg["user_team_name"] = user_team_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;

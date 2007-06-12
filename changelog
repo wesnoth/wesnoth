@@ -17,6 +17,7 @@ Version 1.3.3+svn:
    * removed deprecated keys image_healing and image_halo_healing
    * empty user_description now remains empty unless generate_description set
      (bug 8522).
+   * empty user_team_name remains empty (bug 9310).
    * set_variable has the key time=stamp now, to get a timestamp in milliseconds
    * move some terrain masks definition in [game_config]
    * made defense_weight work again for values > 0
