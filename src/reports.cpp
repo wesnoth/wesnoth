@@ -126,7 +126,8 @@ report generate_report(TYPE type, const gamemap& map, unit_map& units,
 		std::stringstream tooltip;
 		report res;
 
-		if(map.on_board(mouseover) && u->second.invisible(mouseover,units,teams)) {
+		//we call invisible with see_all=false to avoid cheat-detection of hidden enemies
+		if(map.on_board(mouseover) && u->second.invisible(mouseover,units,teams,false)) {
 			unit_status << "misc/invisible.png";
 			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);
