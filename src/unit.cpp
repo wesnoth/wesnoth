@@ -2963,8 +2963,7 @@ bool unit::invisible(const gamemap::location& loc,
 				if(see_all)	{
 					is_inv = false;
 					break;
-				} else if(!teams[side_-1].shrouded(u->first.x,u->first.y)
-						&& !teams[side_-1].fogged(u->first.x,u->first.y)
+				} else if(!teams[side_-1].fogged(u->first.x,u->first.y)
 						&& !u->second.invisible(u->first, units,teams,true)) {
 					is_inv = false;
 					break;
