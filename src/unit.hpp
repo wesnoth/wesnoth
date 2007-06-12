@@ -287,8 +287,9 @@ class unit
 		void generate_traits_description();
 		std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }
 
+		//only see_all=true use caching
 		bool invisible(const gamemap::location& loc,
-			const unit_map& units,const std::vector<team>& teams) const;
+			const unit_map& units,const std::vector<team>& teams, bool see_all=true) const;
 
 		unit_race::GENDER generate_gender(const unit_type& type, bool gen);
 		std::string image_mods() const;

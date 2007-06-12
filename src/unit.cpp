@@ -2940,12 +2940,16 @@ void unit::apply_modifications()
 }
 
 bool unit::invisible(const gamemap::location& loc,
-		const unit_map& units,const std::vector<team>& teams) const
+		const unit_map& units,const std::vector<team>& teams, bool see_all) const
 {
 	// fetch from cache
-	std::map<gamemap::location, bool>::const_iterator itor = invisibility_cache_.find(loc);
-	if(itor != invisibility_cache_.end()) {
-		return itor->second;
+	// FIXME: we use the cache only when using the default see_all=true
+	// maybe add a second cache if the see_all=false become more frequent
+	if(see_all) {
+		std::map<gamemap::location, bool>::const_iterator itor = invisibility_cache_.find(loc);
+		if(itor != invisibility_cache_.end()) {
+			return itor->second;
+		}
 	}
 
 	// test hidden status
@@ -2954,17 +2958,28 @@ bool unit::invisible(const gamemap::location& loc,
 	if(is_inv){
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {
-				is_inv = false;
-				break;
+				// enemy spotted in adjacent tiles, check if we can see him
+				// watch out to call invisible with see_all=true to avoid infinite recursive calls
+				if(see_all)	{
+					is_inv = false;
+					break;
+				} else if(!teams[side_-1].shrouded(u->first.x,u->first.y)
+						&& !teams[side_-1].fogged(u->first.x,u->first.y)
+						&& !u->second.invisible(u->first, units,teams,true)) {
+					is_inv = false;
+					break;
+				}
 			}
 		}
 	}
 
-	// add to caches
-	if(invisibility_cache_.empty()) {
-		units_with_cache.push_back(this);
+	if(see_all) {
+		// add to caches
+		if(invisibility_cache_.empty()) {
+			units_with_cache.push_back(this);
+		}
+		invisibility_cache_[loc] = is_inv;
 	}
-	invisibility_cache_[loc] = is_inv;
 
 	return is_inv;
 }
