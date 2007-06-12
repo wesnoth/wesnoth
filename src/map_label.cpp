@@ -97,29 +97,22 @@ size_t map_labels::get_max_chars()
 const terrain_label* map_labels::get_label(const gamemap::location& loc)
 {
 	team_label_map::const_iterator label_map;
-					
 	map_labels::label_map::const_iterator itor;
-	
-	if (team_)
-	{
-		label_map = labels_.find(team_name());
-		if (label_map != labels_.end())
-		{
-			itor = label_map->second.find(loc);
-		}
-	}
-	if (!team_ 
-			|| itor == label_map->second.end())
+
+	label_map = labels_.find(team_name());
+	if (label_map != labels_.end())
+		itor = label_map->second.find(loc);
+
+	//if no team label search global label
+	if (team_name() != "" &&
+		(label_map == labels_.end() || itor == label_map->second.end()))
 	{
 		label_map = labels_.find("");
 		if (label_map != labels_.end())
-		{
 			itor = label_map->second.find(loc);
-		}
 	}
-	
-	if(label_map != labels_.end()
-		  && itor != label_map->second.end()) {
+
+	if (label_map != labels_.end() && itor != label_map->second.end()) {
 		return itor->second;
 	} else {
 		return 0;
