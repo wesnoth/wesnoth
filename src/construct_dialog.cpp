@@ -677,7 +677,7 @@ int dialog::process(dialog_process_info &info)
 
 	//escape quits from the dialog -- unless it's an "ok" dialog with a menu,
 	//since such dialogs require a selection of some kind.
-	if(!info.key_down && info.key[SDLK_ESCAPE] && type_ != OK_ONLY || !use_menu) {
+	if(!info.key_down && info.key[SDLK_ESCAPE] && !(type_ == OK_ONLY && use_menu)) {
 		return (CLOSE_DIALOG);
 	}
 
