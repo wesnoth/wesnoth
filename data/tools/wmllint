@@ -420,8 +420,11 @@ class maptransform_error:
     def __repr__(self):
         return '"%s", line %d: %s' % (self.infile, self.inline, self.type)
 
+tagstack = []	# For tracking tag nesting
+
 def translator(filename, mapxforms, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
+    global tagstack
     modified = False
     mfile = []
     map_only = not filename.endswith(".cfg")
@@ -516,6 +519,24 @@ def translator(filename, mapxforms, textxform):
             newdata.append(newline + terminator)
             if newline != line:
                 modified = True
+            # Now do warnings based on the state of the tag stack
+            trimmed = newline.split("#")[0]
+            for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", trimmed):
+                tag = instance.group(1)
+                closer = instance.group(0)[1] == '/'
+                if not closer:
+                    tagstack.append(tag)
+                elif len(tagstack) == 0:
+                    print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
+                elif tagstack[-1] != tag:
+                    print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1], tag)
+                else:
+                    tagstack.pop()
+                #print '"%s", line %d: %s' % (filename, lineno+1, tagstack)
+    # It's an error if the tag stack is nonempty at the end of any file:
+    if tagstack:
+        print >>sys.stderr, '"%s", line %d: tag stack nonempty at end of file.' % (filename, lineno)
+    tagstack = []
     # Track which maps are modified, we'll use this later for determining
     # which files get a .map extension.
     if "maps" in filename:
@@ -677,7 +698,7 @@ if __name__ == '__main__':
             newstyle = newstyle or lock_terrain_coding == "newstyle"
             # Maybe we lose...
             if not oldstyle and not newstyle:
-                print "%s, line %d: leaving ambiguous terrain value %s alone." \
+                print '"%s", line %d: leaving ambiguous terrain value %s alone.' \
                       % (filename, lineno+1, value)
             else:
                 if oldstyle:
