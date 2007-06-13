@@ -1245,14 +1245,18 @@ void connect::load_game()
 		}
 
 		if(state_.campaign_type != "multiplayer") {
-			gui::message_dialog(disp(), "", _("This is not a multiplayer save")).show();
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::message_dialog dlg(disp(), "", _("This is not a multiplayer save"));
+			dlg.show();
 			set_result(QUIT);
 			return;
 		}
 
 		if(state_.version != game_config::version) {
 			if(state_.version < game_config::min_savegame_version) {
-				gui::message_dialog(disp(), "", _("This save is from a version too old to be loaded.")).show();
+				/* GCC-3.3 needs a temp var otherwise compilation fails */
+				gui::message_dialog dlg2(disp(), "", _("This save is from a version too old to be loaded."));
+				dlg2.show();
 				set_result(QUIT);
 				return;
 			}
