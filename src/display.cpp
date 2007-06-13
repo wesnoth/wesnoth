@@ -2692,4 +2692,16 @@ void display::remove_highlighted_loc(const gamemap::location &hex)
 	}
 }
 
+void display::announce(const std::string message, const SDL_Color& colour)
+{
+	font::add_floating_label(message,
+				 font::SIZE_XLARGE,
+				 colour,
+				 map_area().w/2,
+				 map_area().h/3,
+				 0.0,0.0,100,
+				 map_area(),
+				 font::CENTER_ALIGN);
+}
+
 display *display::singleton_ = NULL;

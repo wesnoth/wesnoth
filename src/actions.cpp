@@ -2027,10 +2027,8 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		if(discovered_unit) {
 			if (ambushed_string.empty())
 				ambushed_string = _("Ambushed!");
-			//we've been ambushed, so display an appropriate message
-			font::add_floating_label(ambushed_string,font::SIZE_XLARGE,font::BAD_COLOUR,
-			                         disp->map_area().w/2,disp->map_area().h/3,
-									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
+			//we've been ambushed, display an appropriate message
+			disp->announce(ambushed_string, font::BAD_COLOUR);
 		}
 
 		if(continue_move == false && seen_units.empty() == false) {
@@ -2089,9 +2087,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				}
 			}
 
-			font::add_floating_label(message,font::SIZE_XLARGE,msg_colour,
-			                         disp->map_area().w/2,disp->map_area().h/3,
-									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
+			disp->announce(message, msg_colour);
 		}
 
 		disp->draw();

@@ -420,6 +420,10 @@ public:
 
 	void remove_highlighted_loc(const gamemap::location &hex);
 
+	// Announce a message prominently
+	void announce(const std::string msg, 
+		       const SDL_Color& colour = font::GOOD_COLOUR);
+
 	void begin_game();
 
 	bool in_game() const { return in_game_; }
