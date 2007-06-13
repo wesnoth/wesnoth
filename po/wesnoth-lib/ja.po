@@ -4,14 +4,15 @@
 # Automatically generated, 2005.
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
+# naoki iimura <amatubu@mac.com>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-08 12:43+0200\n"
-"PO-Revision-Date: 2006-09-14 11:28+0900\n"
-"Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
+"PO-Revision-Date: 2007-06-11 22:11+0900\n"
+"Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,7 +131,7 @@ msgstr "反転する方向（マップの全体サイズが変わるかもしれ
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "ファイル:"
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -138,7 +139,7 @@ msgstr "ファイル削除"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:168
 msgid "New Folder"
-msgstr ""
+msgstr "新しいフォルダ"
 
 #: src/filechooser.cpp:156
 msgid "Deletion of the file failed."
@@ -146,12 +147,11 @@ msgstr "ファイルを削除できませんでした。"
 
 #: src/filechooser.cpp:169
 msgid "Name: "
-msgstr ""
+msgstr "名前:"
 
 #: src/filechooser.cpp:174
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "ファイルを削除できませんでした。"
+msgstr "ディレクトリを作成できませんでした。"
 
 #: src/hotkeys.cpp:49
 msgid "Next Unit"
@@ -214,7 +214,6 @@ msgid "Save Game"
 msgstr "ゲームを保存"
 
 #: src/hotkeys.cpp:65
-#, fuzzy
 msgid "Save The Map"
 msgstr "マップの保存"
 
@@ -283,9 +282,8 @@ msgid "Quit Game"
 msgstr "ゲームを終了"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Set Team Label"
-msgstr "ラベルを付ける"
+msgstr "チームラベルを付ける"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
@@ -404,21 +402,20 @@ msgid "Refresh Image Cache"
 msgstr "イメージキャッシュを更新"
 
 #: src/hotkeys.cpp:115
-#, fuzzy
 msgid "Delay transitions updates"
-msgstr "重なりの更新を遅らせる"
+msgstr "変化の更新を遅らせる"
 
 #: src/hotkeys.cpp:116
 msgid "Update transitions"
-msgstr ""
+msgstr "変化を更新する"
 
 #: src/hotkeys.cpp:118
 msgid "Delay Shroud Updates"
-msgstr "重なりの更新を遅らせる"
+msgstr "幕の更新を遅らせる"
 
 #: src/hotkeys.cpp:119
 msgid "Update Shroud Now"
-msgstr "重なりを今すぐ更新する"
+msgstr "幕を今すぐ更新する"
 
 #: src/hotkeys.cpp:120
 msgid "Continue Move"
@@ -477,9 +474,8 @@ msgid "Villages:"
 msgstr "村:"
 
 #: src/mapgen_dialog.cpp:117
-#, fuzzy
 msgid "Castle Size:"
-msgstr "最大の丘の大きさ:"
+msgstr "城の大きさ:"
 
 #: src/mapgen_dialog.cpp:118
 msgid "Landform:"
@@ -528,63 +524,56 @@ msgid "Skip AI Moves"
 msgstr "AI移動スキップ"
 
 #: src/preferences_display.cpp:274
-#, fuzzy
 msgid "Save Replays"
-msgstr "ホットキーを保存"
+msgstr "リプレイを保存"
 
 #: src/preferences_display.cpp:275
 msgid "Delete Autosaves"
-msgstr ""
+msgstr "自動保存を削除"
 
 #: src/preferences_display.cpp:276
-#, fuzzy
 msgid "Show Lobby Minimaps"
-msgstr "ロビー参加表示"
+msgstr "ロビーの小マップを表示"
 
 #: src/preferences_display.cpp:277
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "ロビー参加表示"
+msgstr "ロビーへの参加を表示しない"
 
 #: src/preferences_display.cpp:278
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "ロビー参加表示"
+msgstr "ロビーへの参加を友人のみ表示"
 
 #: src/preferences_display.cpp:279
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "ロビー参加表示"
+msgstr "ロビーへの参加をすべて表示"
 
 #: src/preferences_display.cpp:280
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "ロビー参加表示"
+msgstr "ロビーリストを並び替える"
 
 #: src/preferences_display.cpp:281
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "ロビーリストにアイコンを表示"
 
 #: src/preferences_display.cpp:282
 msgid "Friends List"
-msgstr ""
+msgstr "友人リスト"
 
 #: src/preferences_display.cpp:283
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "マルチプレイヤーオプション"
 
 #: src/preferences_display.cpp:284
 msgid "Add As Friend"
-msgstr ""
+msgstr "友人に追加"
 
 #: src/preferences_display.cpp:285
 msgid "Add As Ignore"
-msgstr ""
+msgstr "無視に追加"
 
 #: src/preferences_display.cpp:286
-#, fuzzy
 msgid "Remove"
-msgstr "リドゥ"
+msgstr "削除"
 
 #: src/preferences_display.cpp:287
 msgid "Show Floating Labels"
@@ -635,26 +624,24 @@ msgid "Chat Timestamping"
 msgstr "チャットの時刻表示"
 
 #: src/preferences_display.cpp:302
-#, fuzzy
 msgid "Advanced Mode"
-msgstr "上級者向け"
+msgstr "上級者モード"
 
 #: src/preferences_display.cpp:303
 msgid "Normal Mode"
-msgstr ""
+msgstr "通常モード"
 
 #: src/preferences_display.cpp:304
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "ユーザーインターフェースサウンド"
 
 #: src/preferences_display.cpp:307
-#, fuzzy
 msgid "Custom"
-msgstr "切り取り"
+msgstr "カスタム"
 
 #: src/preferences_display.cpp:308
 msgid "Apply"
-msgstr ""
+msgstr "適用"
 
 #: src/preferences_display.cpp:310
 msgid "Music Volume:"
@@ -665,14 +652,12 @@ msgid "SFX Volume:"
 msgstr "効果音ボリューム:"
 
 #: src/preferences_display.cpp:311
-#, fuzzy
 msgid "UI Sound Volume:"
-msgstr "効果音ボリューム:"
+msgstr "UI サウンドボリューム:"
 
 #: src/preferences_display.cpp:312
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "効果音ボリューム:"
+msgstr "ベルボリューム:"
 
 #: src/preferences_display.cpp:313
 msgid "Gamma:"
@@ -680,7 +665,7 @@ msgstr "ガンマ値:"
 
 #: src/preferences_display.cpp:315
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "サンプルレート(Hz):"
 
 #: src/preferences_display.cpp:338
 msgid "Sound effects on/off"
@@ -699,35 +684,32 @@ msgid "Change the music volume"
 msgstr "音楽の音の大きさを変更します"
 
 #: src/preferences_display.cpp:355
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "音楽の音の大きさを変更します"
+msgstr "ベルの音の大きさを変更します"
 
 #: src/preferences_display.cpp:358
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "メニューやボタンの音 入/切"
 
 #: src/preferences_display.cpp:362
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "ボタンをクリックしたときなどの音の大きさを変更します"
 
 #: src/preferences_display.cpp:364
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "言語を変更します"
+msgstr "サンプルレートを変更します"
 
 #: src/preferences_display.cpp:373
 msgid "User defined sample rate"
-msgstr ""
+msgstr "ユーザー定義サンプルレート"
 
 #: src/preferences_display.cpp:382 src/preferences_display.cpp:386
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "音楽の音の大きさを変更します"
+msgstr "バッファサイズを変更します"
 
 #: src/preferences_display.cpp:384 src/preferences_display.cpp:885
 msgid "Buffer Size: "
-msgstr ""
+msgstr "バッファサイズ: "
 
 #: src/preferences_display.cpp:391
 msgid "Change the speed of scrolling around the map"
@@ -754,9 +736,8 @@ msgid "Make units move and fight faster"
 msgstr "ユニットの移動と戦闘を高速に行います"
 
 #: src/preferences_display.cpp:430
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "ユニットの移動と戦闘を高速に行います"
+msgstr "ユニット移動と戦闘速度"
 
 #: src/preferences_display.cpp:433
 msgid "Do not animate AI units moving"
@@ -764,75 +745,66 @@ msgstr "AI移動時にアニメーションを行わないようにします"
 
 #: src/preferences_display.cpp:436
 msgid "Save replays at scenario end."
-msgstr ""
+msgstr "シナリオの最後にリプレイを保存する。"
 
 #: src/preferences_display.cpp:439
 msgid "Automatically delete autosaves at the end of a scenario"
-msgstr ""
+msgstr "シナリオの最後に自動保存を自動的に削除する"
 
 #: src/preferences_display.cpp:441
 msgid "Overlay a grid onto the map"
 msgstr "マップのグリッドを表示します"
 
 #: src/preferences_display.cpp:444
-#, fuzzy
 msgid "Show minimaps in the multiplayer lobby"
-msgstr ""
-"マルチプレイヤーロビーに参加しているプレイヤーについてのメッセージを表示しま"
-"す"
+msgstr "マルチプレイヤーロビーで小さな地図を表示します"
 
 #: src/preferences_display.cpp:447
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "ロビーのプレイヤーリストをプレイヤーのグループで並び替えます"
 
 #: src/preferences_display.cpp:450
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "ロビーにいるプレイヤーの名前の前にアイコンを表示します"
 
 #: src/preferences_display.cpp:453
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
-"マルチプレイヤーロビーに参加しているプレイヤーについてのメッセージを表示しま"
-"す"
+"マルチプレイヤーロビーに参加したプレイヤーについてのメッセージを表示しません"
 
 #: src/preferences_display.cpp:455
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr ""
-"マルチプレイヤーロビーに参加しているプレイヤーについてのメッセージを表示しま"
-"す"
+msgstr "マルチプレイヤーロビーに参加した友人についてのメッセージを表示します"
 
 #: src/preferences_display.cpp:457
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
-"マルチプレイヤーロビーに参加しているプレイヤーについてのメッセージを表示しま"
-"す"
+"マルチプレイヤーロビーに参加したすべてのプレイヤーについてのメッセージを表示"
+"します"
 
 #: src/preferences_display.cpp:459
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "友人と無視のリストを表示、編集します"
 
 #: src/preferences_display.cpp:460
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "マルチプレイヤーオプションに戻ります"
 
 #: src/preferences_display.cpp:461
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "このユーザ名を友人リストに追加します"
 
 #: src/preferences_display.cpp:462
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "このユーザ名を無視リストに追加します"
 
 #: src/preferences_display.cpp:463
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "このユーザ名をリストから削除します"
 
 #: src/preferences_display.cpp:466
 msgid "Insert a username"
-msgstr ""
+msgstr "ユーザ名を入力します"
 
 #: src/preferences_display.cpp:469
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -877,9 +849,8 @@ msgid "View and configure keyboard shortcuts"
 msgstr "キーボードショートカットの一覧表示と設定変更を行います"
 
 #: src/preferences_display.cpp:765
-#, fuzzy
 msgid "Speed: "
-msgstr "スクロール速度:"
+msgstr "速度:"
 
 #: src/preferences_display.cpp:930
 msgid "Chat Lines: "
