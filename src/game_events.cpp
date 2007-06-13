@@ -1623,7 +1623,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			to_show.get_menu().set_width( dim.menu_width );
 			to_show.get_menu().set_max_width( dim.menu_width );
 			to_show.get_menu().wrap_words();
-			to_show.layout(-1, map_area.y + 4);
+			static const int dialog_top_offset = 26;
+			to_show.layout(-1, map_area.y + dialog_top_offset);
 			option_chosen = to_show.show(lifetime);
 			LOG_DP << "showed dialog...\n";
 
