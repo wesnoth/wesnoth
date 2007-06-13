@@ -535,7 +535,7 @@ def translator(filename, mapxforms, textxform):
                 #print '"%s", line %d: %s' % (filename, lineno+1, tagstack)
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
-        print >>sys.stderr, '"%s", line %d: tag stack nonempty at end of file.' % (filename, lineno)
+        print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
     tagstack = []
     # Track which maps are modified, we'll use this later for determining
     # which files get a .map extension.
