@@ -1759,7 +1759,10 @@ namespace events{
 					if(std::search(name.begin(), name.end(),
 							last_search_.begin(), last_search_.end(),
 							chars_equal_insensitive) != name.end()) {
-						found = true;
+						if (ui->second.side() == gui_->viewing_team()+1
+						    || !ui->second.invisible(ui->first, units_,teams_)) {
+							found = true;
+						}
 					}
 				}
 			}
