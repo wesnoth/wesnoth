@@ -73,7 +73,7 @@ def convertor(linefilter, filelist):
         for filename in filelist:
             infp = open(filename, "r")
             outfp = open(filename + ".out", "w")
-            linefilter(infp, outfp)
+            linefilter(filename, infp, outfp)
             infp.close()
             outfp.close()
             os.remove(filename)
