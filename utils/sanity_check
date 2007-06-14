@@ -38,7 +38,7 @@ fi
 for file in $potfiles
 do
 	sort -u $file >/tmp/sschk$$_uniq
-	invalid=`comm -23 /tmp/sschk$$_uniq /tmp/sschk$$_potmembers | tr '\012' ' '`
+	invalid=`comm -23 /tmp/sschk$$_uniq /tmp/sschk$$_sources | tr '\012' ' '`
 	if [ "$invalid" ]
 	then
 	    echo "  Invalid $file entries: $invalid"
