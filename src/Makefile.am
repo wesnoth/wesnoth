@@ -19,10 +19,12 @@ if CAMPAIGNSERVER
 bin_PROGRAMS += campaignd
 endif
 
+CLEANFILES = 
+
 if TOOLS
 bin_PROGRAMS += exploder cutter
-bin_SCRIPTS += wmlscope wmllint
-CLEANFILES = $(bin_SCRIPTS)
+bin_SCRIPTS += wmlscope wmllint wmlindent
+CLEANFILES += $(bin_SCRIPTS)
 endif
 
 if EDITOR
@@ -540,7 +542,7 @@ endif
 #    Tag support
 #############################################################################
 
-CLEANFILES = TAGS
+CLEANFILES += TAGS
 
 TAGS:
 	etags -l c++ $(wesnoth_SOURCES) $(wesnoth_editor_SOURCES) $(wesnothd_SOURCES) $(campaignd_SOURCES) $(exploder_SOURCES) $(cutter_SOURCES) $(libwesnoth_core_a_SOURCES)

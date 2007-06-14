@@ -41,6 +41,11 @@ bundle_editor_contents=@PACKAGE_NAME@ Editor.app/Contents
 	echo "APPL????" > "$(bundle_editor_contents)/PkgInfo"
 	$(INSTALL_PROGRAM) $< "$(bundle_editor_contents)/MacOS/@PACKAGE_NAME@ Editor"
 
+# Run this before release to check that POTs and data are in good shape
+sanity-check:
+	cd utils; ./sanity_check
+	cd data/tools; make sanity-check
+
 install-data-local:
 	@$(NORMAL_INSTALL)
 if OPTIPNG
