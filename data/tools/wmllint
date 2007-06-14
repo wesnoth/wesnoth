@@ -422,6 +422,8 @@ def validate_stack(stack, file, lineno):
         name_in_attack = False
     elif len(stack) >= 2 and stack[-2] == 'attack' and stack[1] == 'name=':
         name_in_attack = True
+    if stack[-1] == "sound=" and stack[-2] == "animation":
+        print >>sys.stderr, '"%s", line %d: [amimation] with sound=' % (filename, lineno)
 
 def validate_on_pop(tagstack, closer, file, lineno):
     "Check for 'must contain' predication"
