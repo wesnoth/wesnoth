@@ -537,6 +537,15 @@ uninstall-hook:
 endif
 
 #############################################################################
+#    Tag support
+#############################################################################
+
+CLEANFILES = TAGS
+
+TAGS:
+	etags -l c++ $(wesnoth_SOURCES) $(wesnoth_editor_SOURCES) $(wesnothd_SOURCES) $(campaignd_SOURCES) $(exploder_SOURCES) $(cutter_SOURCES) $(libwesnoth_core_a_SOURCES)
+
+#############################################################################
 #    Scripts
 #############################################################################
 
