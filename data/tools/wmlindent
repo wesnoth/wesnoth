@@ -2,6 +2,8 @@
 """\
 wmlindent - re-indent WML in a uniform way.
 
+By Eric S. Raymond, June 2007.
+
 Call with no arguments to filter WML on stdin to reindented WML on
 stdout.  If arguments are specified, they are taken to be files to be
 re-indented in place; interrupting will be safe as each reindenting
@@ -14,7 +16,9 @@ them.
 
 Note: This does not include a parser.  It will produce bad results on WML
 that is syntactically unbalanced.  Unbalanced double quotes that aren't part
-of a multiline literal will also confuse it.
+of a multiline literal will also confuse it.  You will receive warnings
+oiif there's an indent open at end of file or if a closer occurs with
+indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
 import sys, os, getopt
@@ -70,13 +74,20 @@ def convertor(linefilter, filelist):
     if not filelist:
         linefilter("standard input", sys.stdin, sys.stdout)
     else:
-        for filename in filelist:
-            infp = open(filename, "r")
-            outfp = open(filename + ".out", "w")
-            linefilter(filename, infp, outfp)
-            infp.close()
-            outfp.close()
-            os.remove(filename)
+        try:
+            for filename in filelist:
+                infp = open(filename, "r")
+                outfp = open(filename + ".out", "w")
+                linefilter(filename, infp, outfp)
+                infp.close()
+                outfp.close()
+        except KeyboardInterrupt:
+            os.remove(filename + ".out")
+        else:
+            os.remove(filename)	# For Windows portability
+            # There's a tiny window here.  It's unavoidable, because there's
+            # no known way to do an atomic rename under Windows when the
+            # taget exists -- see Python manual 14.1.4::rename()
             os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
