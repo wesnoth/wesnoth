@@ -2,12 +2,15 @@
 """\
 wmlindent - re-indent WML in a uniform way.
 
-Call with no arguments to filter WML on stdin to reindented WML on stdout.
-If arguments are specified, they are taken to be files to be re-indented
-in place.  This code never modifies anything but leading whitespace on lines.
+Call with no arguments to filter WML on stdin to reindented WML on
+stdout.  If arguments are specified, they are taken to be files to be
+re-indented in place; interrupting will be safe as each reindenting
+will be done to a copy that is atomically renamed when it's done. This
+code never modifies anything but leading whitespace on lines.
 
-By default the indent unit is four spaces.  The option -i takes a string
-argument that sets the indent unit.
+The indent unit is four spaces.  Absence of an option to change this is
+deliberate; the purpose of this tool is to *prevent* style wars, not encourage
+them.
 
 Note: This does not include a parser.  It will produce bad results on WML
 that is syntactically unbalanced.  Unbalanced double quotes that aren't part
@@ -23,8 +26,9 @@ def is_directive(str):
             return True
     return False
 
-def reindent(baseindent, infp, outfp):
+def reindent(name, infp, outfp):
     "Reindent WML."
+    baseindent = "    "
     dostrip = True
     indent = ""
     for line in infp:
@@ -36,10 +40,13 @@ def reindent(baseindent, infp, outfp):
         if transformed == "":
             transformed = "\n"
         # In the close case, we must compute new indent *before* emitting
-        # the new line so the vlose tag will be at the same level as the
+        # the new line so the close tag will be at the same level as the
         # one that started the block.
         if transformed.startswith("[/"):
-            indent = indent[:-len(baseindent)]
+            if indent == "":
+                print >>sys.stderr, "wmlindent: from %s, close tag with indent already zero." % name
+            else:
+                indent = indent[:-len(baseindent)]
         if dostrip and transformed and not is_directive(transformed):
             output = indent + transformed
         else:
@@ -55,11 +62,13 @@ def reindent(baseindent, infp, outfp):
             dostrip = True
         elif syntax.count('"') == 1:
             dostrip = False
+    if indent != "":
+        print >>sys.stderr, "wmlindent: from %s, end of file with indent nonzero." % name
 
 def convertor(linefilter, filelist):
     "Apply a filter to command-line arguments."
     if not filelist:
-        linefilter(sys.stdin, sys.stdout)
+        linefilter("standard input", sys.stdin, sys.stdout)
     else:
         for filename in filelist:
             infp = open(filename, "r")
@@ -71,11 +80,8 @@ def convertor(linefilter, filelist):
             os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    indent = "    "
-    (options, arguments) = getopt.getopt(sys.argv[1:], "i:")
+    (options, arguments) = getopt.getopt(sys.argv[1:], "h:")
     for (opt, val) in options:
-        if opt == "-i":
-            indent = val
-        else:
+        if opt == "-?":
             print __doc__
-    convertor(lambda f1, f2: reindent(indent, f1, f2), arguments)
+    convertor(lambda n, f1, f2: reindent(n, f1, f2), arguments)
