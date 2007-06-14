@@ -271,14 +271,14 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			tooltip << _("weapon range: ") << range <<"\n";
 			tooltip << _("damage type: ") << lang_type << "\n";
 			//find all the unit types on the map, and show this weapon's bonus against all the different units
-			//don't show invisible units except if they are in our team
+			//don't show invisible units except if they are in our team or allied
 			std::set<std::string> seen_units;
 			std::map<int,std::vector<std::string> > resistances;
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
 				if(teams[team_index].is_enemy(u_it->second.side()) &&
 				   !current_team.fogged(u_it->first.x,u_it->first.y) &&
 				   seen_units.count(u_it->second.id()) == 0 &&
-				   ( current_side == u_it->second.side() ||
+				   ( !current_team.is_enemy(u_it->second.side()) ||
 				     !u_it->second.invisible(u_it->first,units,teams)))
 				{
 					seen_units.insert(u_it->second.id());
