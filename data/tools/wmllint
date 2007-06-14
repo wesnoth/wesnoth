@@ -22,7 +22,7 @@
 # 6. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
 #
-# This script will barf on maps with custom terrains.  Also, if you
+# This script will barf on 1.2.x maps with custom terrains.  Also, if you
 # have a single subdirectory that mixes old-style and new-style
 # terrain coding it might get confused.
 
@@ -409,6 +409,22 @@ def maptransform2(filename, baseline, inmap, y):
             # There's only one kind of underground keep at present.
             inmap[y][x] = inmap[y][x].replace("Ku", "Kud")
 
+name_in_attack = False
+
+def validate_stack(stack, file, lineno):
+    "Check for deprecated WML syntax."
+    global name_in_attack
+    #print '"%s", line %d: %s' % (filename, lineno+1, stack)
+    if stack[-1] == 'attack':
+        name_in_attack = False
+    elif len(stack) >= 2 and stack[-2] == 'attack' and stack[1] == 'name=':
+        name_in_attack = True
+
+def validate_on_pop(tagstack, closer, file, lineno):
+    "Check for 'must contain' predication"
+    if future and closer == 'attack' and not name_in_attack:
+        print >>sys.stderr, '"%s", line %d: [attack] with no name=' % (filename, lineno)        
+
 # Generic machinery starts here
 
 class maptransform_error:
@@ -526,13 +542,25 @@ def translator(filename, mapxforms, textxform):
                 closer = instance.group(0)[1] == '/'
                 if not closer:
                     tagstack.append(tag)
-                elif len(tagstack) == 0:
-                    print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
-                elif tagstack[-1] != tag:
-                    print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1], tag)
                 else:
-                    tagstack.pop()
-                #print '"%s", line %d: %s' % (filename, lineno+1, tagstack)
+                    while tagstack and tagstack[-1].endswith("="):
+                        tagstack.pop()
+                    if len(tagstack) == 0:
+                        print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
+                    elif tagstack[-1] != tag:
+                        print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1], tag)
+                    else:
+                        while tagstack and tagstack[-1].endswith("="):
+                            tagstack.pop()
+                        tagstack.pop()
+                        validate_on_pop(tagstack, closer, filename, lineno)
+            if tagstack:
+                for instance in re.finditer(r"([a-z][a-z_]*[a-z])\s*=", trimmed):
+                    attribute = instance.group(1)
+                    while tagstack and tagstack[-1].endswith("="):
+                        tagstack.pop()
+                    tagstack.append(attribute + "=")
+                    validate_stack(tagstack, filename, lineno)
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
@@ -587,10 +615,11 @@ Usage: wmllint [options]
 """)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cdDho:rv", [
+    (options, arguments) = getopt.getopt(sys.argv[1:], "cdfDho:rv", [
 	"help",
         "oldversion=",
 	"dryrun",
+        "future",
         "verbose",
         "clean",
         "revert",
@@ -598,6 +627,7 @@ if __name__ == '__main__':
         ])
     oldversion = 'older'
     dryrun = False
+    future = False
     verbose = 0
     clean = False
     diffs = False
@@ -608,6 +638,8 @@ if __name__ == '__main__':
             sys.exit(0)
         elif switch in ('-o', '--oldversion'):
             oldversion = val
+        elif switch in ('-f', '--future'):
+            future = True
         elif switch in ('-v', '--verbose'):
             verbose += 1
         elif switch in ('-d', '--dryrun'):
