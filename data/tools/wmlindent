@@ -1,0 +1,81 @@
+#!/usr/bin/env python
+"""\
+wmlindent - re-indent WML in a uniform way.
+
+Call with no arguments to filter WML on stdin to reindented WML on stdout.
+If arguments are specified, they are taken to be files to be re-indented
+in place.  This code never modifies anything but leading whitespace on lines.
+
+By default the indent unit is four spaces.  The option -i takes a string
+argument that sets the indent unit.
+
+Note: This does not include a parser.  It will produce bad results on WML
+that is syntactically unbalanced.  Unbalanced double quotes that aren't part
+of a multiline literal will also confuse it.
+"""
+
+import sys, os, getopt
+
+def is_directive(str):
+    "Identify things that shouldn't be indented."
+    for prefix in ("#ifdef", "#else", "#endif", "#define", "#enddef"):
+        if str.startswith(prefix):
+            return True
+    return False
+
+def reindent(baseindent, infp, outfp):
+    "Reindent WML."
+    dostrip = True
+    indent = ""
+    for line in infp:
+        # Strip each line, unless we're in something like a multiline string. 
+        if dostrip:
+            transformed = line.lstrip()
+        else:
+            transformed = line
+        if transformed == "":
+            transformed = "\n"
+        # In the close case, we must compute new indent *before* emitting
+        # the new line so the vlose tag will be at the same level as the
+        # one that started the block.
+        if transformed.startswith("[/"):
+            indent = indent[:-len(baseindent)]
+        if dostrip and transformed and not is_directive(transformed):
+            output = indent + transformed
+        else:
+            output = transformed
+        outfp.write(output)
+        # May need to indent based on the line we just saw.
+        if transformed.startswith("[") and not transformed.startswith("[/"):
+            indent += baseindent
+        # Compute the dostrip state likewise.  This is the only tricky part.
+        # We look for unbalanced string quotes,
+        syntax = transformed.split("#")[0]
+        if "=" in syntax and syntax.count('"') == 1:
+            dostrip = True
+        elif syntax.count('"') == 1:
+            dostrip = False
+
+def convertor(linefilter, filelist):
+    "Apply a filter to command-line arguments."
+    if not filelist:
+        linefilter(sys.stdin, sys.stdout)
+    else:
+        for filename in filelist:
+            infp = open(filename, "r")
+            outfp = open(filename + ".out", "w")
+            linefilter(infp, outfp)
+            infp.close()
+            outfp.close()
+            os.remove(filename)
+            os.rename(filename + ".out", filename)
+
+if __name__ == '__main__':
+    indent = "    "
+    (options, arguments) = getopt.getopt(sys.argv[1:], "i:")
+    for (opt, val) in options:
+        if opt == "-i":
+            indent = val
+        else:
+            print __doc__
+    convertor(lambda f1, f2: reindent(indent, f1, f2), arguments)
