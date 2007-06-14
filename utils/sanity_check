@@ -6,7 +6,7 @@
 # This had better take us to the top-level source directory.  
 # Otherwise, confusion will ensue. 
 cd ..
-if [ `basename $PWD` != 'wesnoth' ]
+if [ ! -d data -o ! -d images ]
 then
 	echo "sanity_check: " \
 		"this tool must be run from the Wesnoth utils directory."
