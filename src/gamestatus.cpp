@@ -426,6 +426,7 @@ game_state::game_state(const game_data& data, const config& cfg)
 	label = cfg["label"];
 	version = cfg["version"];
 	scenario = cfg["scenario"];
+	completion = cfg["completion"];
 	campaign = cfg["campaign"];
 
 	const config* snapshot = cfg.child("snapshot");
@@ -669,6 +670,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	out.write_key_val("label", gamestate.label);
 	out.write_key_val("version", game_config::version);
 	out.write_key_val("scenario", gamestate.scenario);
+	out.write_key_val("completion", gamestate.completion);
 	out.write_key_val("campaign", gamestate.campaign);
 	out.write_key_val("campaign_type", gamestate.campaign_type);
 	out.write_key_val("difficulty", gamestate.difficulty);

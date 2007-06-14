@@ -673,9 +673,9 @@ namespace{
 } //end anonymous namespace
 
 mouse_handler::mouse_handler(display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
-				gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack):
+				gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack, game_state& game_state):
 gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(gameinfo),
-undo_stack_(undo_stack), redo_stack_(redo_stack)
+undo_stack_(undo_stack), redo_stack_(redo_stack), game_state_(game_state)
 {
 	minimap_scrolling_ = false;
 	dragging_ = false;
@@ -1397,7 +1397,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		current_route_.steps.clear();
 		gui_->set_route(NULL);
 
-		check_victory(units_,teams_);
+		check_victory(units_,teams_,game_state_);
 
 		gui_->invalidate_all();
 		gui_->draw(); //clear the screen

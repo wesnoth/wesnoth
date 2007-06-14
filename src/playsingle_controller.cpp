@@ -406,7 +406,7 @@ void playsingle_controller::play_turn(bool save)
 			}
 
 			finish_side_turn();
-			check_victory(units_,teams_);
+			check_victory(units_,teams_,gamestate_);
 		}
 	}
 
@@ -529,7 +529,7 @@ void playsingle_controller::play_ai_turn(){
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
 						map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
 
-	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data);
+	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data, gamestate_);
 	util::scoped_ptr<ai_interface> ai_obj(create_ai(current_team().ai_algorithm(),ai_info));
 	ai_obj->user_interact().attach_handler(this);
 	ai_obj->unit_recruited().attach_handler(this);

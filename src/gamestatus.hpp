@@ -95,6 +95,7 @@ public:
 
 	std::string campaign; //the campaign being played
 	std::string scenario; //the scenario being played
+	std::string completion; // running. victory, or defeat
 
 	// information about campaign players who carry resources from
 	// previous levels, indexed by a string identifier (which is

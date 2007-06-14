@@ -1566,7 +1566,8 @@ void advance_unit(const game_data& info,
 }
 
 void check_victory(unit_map& units,
-                   std::vector<team>& teams)
+                   std::vector<team>& teams,
+		   game_state& gamestate)
 {
 	std::vector<int> seen_leaders;
 	for(unit_map::const_iterator i = units.begin();
@@ -1624,6 +1625,7 @@ void check_victory(unit_map& units,
 			std::cout << "\n";
 		}
 
+		gamestate.completion = found_player ? "victory" : "defeat";
 		LOG_NG << "throwing end level exception...\n";
 		throw end_level_exception(found_player ? VICTORY : DEFEAT);
 	}

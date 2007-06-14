@@ -276,6 +276,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			sound::play_no_music();
 
+			gamestate.completion = "running";
+
 			switch (io_type){
 			case IO_NONE:
 				res = playsingle_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);

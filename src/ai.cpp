@@ -26,6 +26,7 @@
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
+#include "playturn.hpp"
 #include "wassert.hpp"
 
 #define LOG_AI LOG_STREAM(info, ai)
@@ -1081,7 +1082,7 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 			}
 		}
 
-		check_victory(info_.units,info_.teams);
+		check_victory(info_.units,info_.teams,info_.game_state_);
 		raise_enemy_attacked();
 	}
 }

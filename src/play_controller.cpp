@@ -30,7 +30,7 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay) :
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(),
 	help_manager_(&game_config, &gameinfo, &map_),
-	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo, undo_stack_, redo_stack_),
+	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo, undo_stack_, redo_stack_, state_of_game),
 	menu_handler_(gui_, units_, teams_, level, gameinfo, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
 	generator_setter(&recorder), statistics_context_(level["name"]), gameinfo_(gameinfo), level_(level), game_config_(game_config),
 	gamestate_(state_of_game), status_(level, num_turns, &state_of_game),
