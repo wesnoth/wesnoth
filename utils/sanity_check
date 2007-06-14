@@ -31,28 +31,20 @@ invalid=`comm -13 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
 if [ $missing ]
 then
     echo "  Missing from the POTFILE.in files: $missing"
-    problems=yes
+    problems=missing
 else
     echo "  All .cpp files have POTFILE.in entries." 
 fi 
 if [ $invalid ]
 then
     echo "  Invalid POTFILE entries: $invalid"
-    problems=yes
+    problems=invalid
 else
     echo "  All POTFILE.in entries are valid." 
 fi
 
-# Check for duplicates
-sort $potfiles >/tmp/sschk$$_potsorted
-duplicates=`comm -23 /tmp/sschk$$_potsorted /tmp/sschk$$_potmembers | tr '\012' ' '`
-if [ $duplicates ]
-then
-	echo "  Duplicates within the entire POTFILES set: $duplicates"
-	problems=yes
-fi
-
-for file in po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in
+# Check for duplicates within the individual POT files
+for file in $potfiles
 do
 	sort $file >/tmp/sschk$$_sorted
 	sort -u $file >/tmp/sschk$$_uniq
@@ -60,31 +52,32 @@ do
 	if [ $duplicates ]
 	then
 		echo "  Duplicates within $file: $duplicates"
-		problems=yes
+		problems=within
 	fi
 done
 
-# Check on the editor subdirectory
-find src/editor -name '*.cpp' -print | sort >/tmp/sschk$$_sources
-# See what's in the POTFILES
-sort -u po/wesnoth-editor/POTFILES.in >/tmp/sschk$$_potmembers
-# Figure out which sources are not listed but should be
-missing=`comm -23 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
-# Find invalid potfile entries
-invalid=`comm -13 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
-if [ $missing ]
+# Check for duplication across POT files
+for afile in $potfiles
+do
+	for bfile in $potfiles
+	do
+		if [ $afile != $bfile ]
+		then
+			sort -u $afile >/tmp/sschk$$_afile
+			sort -u $bfile >/tmp/sschk$$_bfile
+			duplicates=`comm -12 /tmp/sschk$$_afile /tmp/sschk$$_bfile | tr '\012' ' '`
+			if [ $duplicates ]
+			then
+				echo "  Duplicated between $afile and $bfile: $duplicates"
+				problems=across
+			fi
+		fi
+	done
+done
+
+if  [ $problems != within -a $problems != across ]
 then
-    echo "  Missing from the editor POTFILE.in: $missing"
-    problems=yes
-else
-    echo "  All editor .cpp files have po/wesnoth-editor/POTFILE.in entries." 
-fi 
-if [ $invalid ]
-then
-    echo "  Invalid po/wesnoth-editor/POTFILE.in entries: $invalid"
-    problems=yes
-else
-    echo "  All po/wesnoth-editor/POTFILE.in entries are valid." 
+	echo "  No duplicates."
 fi
 
 # More sanity checks can go here...
