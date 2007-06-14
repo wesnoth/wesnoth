@@ -26,8 +26,6 @@ find src -name '*.cpp' -print | sort >/tmp/sschk$$_sources
 sort -u $potfiles >/tmp/sschk$$_potmembers
 # Figure out which sources are not listed but should be
 missing=`comm -23 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
-# Find invalid potfile entries
-invalid=`comm -13 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
 if [ $missing ]
 then
     echo "  Missing from the POTFILE.in files: $missing"
@@ -35,13 +33,20 @@ then
 else
     echo "  All .cpp files have POTFILE.in entries." 
 fi 
-if [ $invalid ]
-then
-    echo "  Invalid POTFILE entries: $invalid"
-    problems=invalid
-else
-    echo "  All POTFILE.in entries are valid." 
-fi
+
+# Find invalid potfile entries
+for file in $potfiles
+do
+	sort -u $file >/tmp/sschk$$_uniq
+	invalid=`comm -23 /tmp/sschk$$_uniq /tmp/sschk$$_potmembers | tr '\012' ' '`
+	if [ "$invalid" ]
+	then
+	    echo "  Invalid $file entries: $invalid"
+	    problems=invalid
+	else
+	    echo "  All $file entries are valid." 
+	fi
+done
 
 # Check for duplicates within the individual POT files
 for file in $potfiles
