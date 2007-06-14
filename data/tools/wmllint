@@ -25,6 +25,9 @@
 # This script will barf on 1.2.x maps with custom terrains.  Also, if you
 # have a single subdirectory that mixes old-style and new-style
 # terrain coding it might get confused.
+#
+# Note: You can shut wmmlint up about custom terrains by havung a comment
+# on the same line that includes the string "wmllint: ignore".
 
 import sys, os, re, getopt, curses.ascii, string, copy
 from wesnoth.wmltools import *
@@ -698,7 +701,7 @@ if __name__ == '__main__':
                 transformed = old.sub(new, transformed)
         # Handle terrain_liked=, terrain=, valid_terrain=, letter=
         spaceless = transformed.replace(" ", "").replace("\t", "")
-        if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless or 'letter=' in spaceless):
+        if spaceless and spaceless[0] != "#" and ("terrain_liked=" in spaceless or "terrain=" in spaceless or 'letter=' in spaceless) and "wmllint:ignore" not in spaceless:
             (key, pre, value, post) = parse_attribute(transformed)
             # We have to cope with the following cases...
             # Old style:
