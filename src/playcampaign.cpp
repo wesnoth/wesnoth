@@ -288,24 +288,21 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				break;
 			}
 
+			// tell all clients that the campaign won't continue
+			// why isn't this done on VICTORY as well?
+			if(io_type==IO_SERVER && (res==QUIT || res==DEFEAT)) {
+			 	config end;
+				end.add_child("end_scenarios");
+				network::send_data(end);
+			}
 
 			gamestate.snapshot = config();
+
 			if (res == DEFEAT) {
-				// tell all clients that the campaign won't continue
-				if(io_type == IO_SERVER) {
-					config end;
-					end.add_child("end_scenarios");
-					network::send_data(end);
-				}
 				gui::message_dialog(disp,
 				                 _("Defeat"),
 				                 _("You have been defeated!")
 				                 ).show();
-			}
-			if(res == QUIT && io_type == IO_SERVER) {
-					config end;
-					end.add_child("end_scenarios");
-					network::send_data(end);
 			}
 			// Temporary fix:
 			// Only apply preferences for replays and autosave
@@ -442,10 +439,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			//if this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
-				//For multiplayer, we want the save to contain the starting position.
-				//For campaings however, this is the start-of-scenario save and the
-				//starting position needs to be empty to force a reload of the scenario
-				//config.
+
+				// For multiplayer, we want the save to
+				// contain the starting position.  For
+				// campaigns however, this is the
+				// start-of-scenario save and the
+				// starting position needs to be empty
+				// to force a reload of the scenario
+				// config.
 				if (gamestate.campaign_type == "multiplayer"){
 					gamestate.starting_pos = *scenario;
 				}
