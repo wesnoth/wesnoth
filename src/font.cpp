@@ -860,13 +860,7 @@ surface floating_label::create_surface()
 				return NULL;
 			}
 
-			SDL_FillRect(tmp,NULL,SDL_MapRGB(tmp->format,bgcolour_.r,bgcolour_.g,bgcolour_.b));
-			if(bgalpha_ != 255) {
-				tmp.assign(adjust_surface_alpha_add(tmp,bgalpha_ - 255));
-				if(tmp == NULL) {
-					return NULL;
-				}
-			}
+			SDL_FillRect(tmp,NULL,SDL_MapRGBA(tmp->format,bgcolour_.r,bgcolour_.g,bgcolour_.b, bgalpha_));
 
 			surf_.assign(tmp);
 		} else {
