@@ -1864,14 +1864,15 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 				disp.video().blit_surface(xsrc,ysrc-height_adjust,crown);
 			}
 		}
-
-	}
-	for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
-		const surface img(image::get_image(*ov));
-		if(img != NULL) {
-			disp.draw_unit(xsrc,ysrc-height_adjust,img);
+		
+		for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
+			const surface img(image::get_image(*ov));
+			if(img != NULL) {
+				disp.draw_unit(xsrc,ysrc-height_adjust,img);
+			}
 		}
 	}
+
 	refreshing_ = false;
 	anim_->update_last_draw_time();
 }
