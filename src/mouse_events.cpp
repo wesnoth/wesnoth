@@ -982,6 +982,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		if (gui_->viewing_team() == team_num_-1 && !current_paths_.routes.empty()) {
 			selected_hex_ = gamemap::location();
 			gui_->select_hex(gamemap::location());
+			gui_->set_mouseover_hex_overlay(NULL);
 			gui_->unhighlight_reach();
 			current_paths_ = paths();
 			current_route_.steps.clear();
