@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-08 12:42+0200\n"
+"POT-Creation-Date: 2007-06-15 23:53+0200\n"
 "PO-Revision-Date: 2007-01-13 00:26+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -18,26 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/_main.cfg:17
+#: data/_main.cfg:18
 msgid "Binary Saves"
 msgstr ""
 
-#: data/_main.cfg:24
+#: data/_main.cfg:25
 #, fuzzy
 msgid "Show Combat"
 msgstr "Võitlus"
 
-#: data/_main.cfg:31
+#: data/_main.cfg:32
 #, fuzzy
 msgid "Mouse Scrolling"
 msgstr "Ravimine"
 
-#: data/_main.cfg:38
+#: data/_main.cfg:39
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "Ühendu ametliku serveriga"
 
-#: data/_main.cfg:42
+#: data/_main.cfg:43
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
@@ -109,7 +109,7 @@ msgstr "maagiline"
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Footpad.cfg:71
-#: data/core/units/humans/Outlaw_Ruffian.cfg:36
+#: data/core/units/humans/Outlaw_Ruffian.cfg:24
 #: data/core/units/humans/Outlaw_Thug.cfg:23
 #: data/core/units/merfolk/Diviner.cfg:67
 #: data/core/units/merfolk/Enchantress.cfg:26
@@ -184,7 +184,7 @@ msgid "Artwork and Graphics Designers"
 msgstr "Kunst ja graafika"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:525
-#: data/core/schedules.cfg:83 data/core/schedules.cfg:91
+#: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
 msgid "Underground"
 msgstr "Maa-alune"
 
@@ -223,372 +223,9 @@ msgstr ""
 
 #: data/campaigns/The_South_Guard/_main.cfg:41
 #: data/campaigns/Two_Brothers/_main.cfg:37
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54 data/core/about.cfg:298
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:55 data/core/about.cfg:298
 msgid "Miscellaneous"
 msgstr "Mitmesugune tugi"
-
-#: data/core/abilities.cfg:9
-msgid "heals +4"
-msgstr "tervendav +4"
-
-#: data/core/abilities.cfg:14
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent friendly units at the beginning of each "
-"turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Tervendav +4:\n"
-"Võimaldab üksusel iga järgmise käigu alguses tervendada lähedalasuvaid "
-"sõbralikke üksuseid.\n"
-"\n"
-"Selle ravija poolt hooldataval üksusel lisandub kuni 8 HP-d käigu igal "
-"käigul või mürgitusnähtud vastaval käigul ei esine.\n"
-"Mürgitatud üksust tervendamisega mürgitusest vabastada ei saa ja seega peaks "
-"ta otsima hoolitsust kas külast või üksuselt mis omab ravitsemisvõimet."
-
-#: data/core/abilities.cfg:30
-msgid "heals +8"
-msgstr "tervendav +8"
-
-#: data/core/abilities.cfg:35
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Tervendav +4:\n"
-"Võimaldab üksusel iga järgmise käigu alguses tervendada lähedalasuvaid "
-"sõbralikke üksuseid.\n"
-"\n"
-"Selle ravija poolt hooldataval üksusel lisandub kuni 8 HP-d igal käigul või "
-"mürgitusnähtud vastaval käigul ei esine.\n"
-"Mürgitatud üksust tervendamisega mürgitusest vabastada ei saa ja seega peaks "
-"ta otsima hoolitsust kas külast või üksuselt mis omab ravitsemisvõimet."
-
-#: data/core/abilities.cfg:45
-msgid "cures"
-msgstr "ravitsev"
-
-#: data/core/abilities.cfg:47
-msgid ""
-"Cures:\n"
-"A curer can cure a unit of poison, although that unit will receive no "
-"additional healing on the turn it is cured of the poison."
-msgstr ""
-"Ravitsev:\n"
-"Ravitseja suudab mürgitud üksust ravida, kuigi mürgituse eemaldamise käigul "
-"lisatervendamist ei saa."
-
-#: data/core/abilities.cfg:62
-msgid "regenerates"
-msgstr "taastuv"
-
-#: data/core/abilities.cfg:64
-#, fuzzy
-msgid ""
-"Regenerates:\n"
-"The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
-"the poison instead of healing."
-msgstr ""
-"Taastuv:\n"
-"Üksus tervendab iseennast 8 HP igal käigul. Kui üksus mürgitatakse, siis "
-"eemaldab ta mürgituse tervendamise asemel."
-
-#: data/core/abilities.cfg:81
-msgid "steadfast"
-msgstr "vankumatu"
-
-#: data/core/abilities.cfg:83
-msgid ""
-"Steadfast:\n"
-"This unit's resistances are doubled, up to a maximum of 50%, when defending. "
-"Vulnerabilities are not affected."
-msgstr ""
-"Vankumatu:\n"
-"Selle üksuse vastupanuvõime kahekordistatakse kaitsel kuni maksimaalne 50%. "
-"Haavatavustele see ei mõju."
-
-#: data/core/abilities.cfg:96 data/core/abilities.cfg:118
-#: data/core/abilities.cfg:152 data/core/abilities.cfg:198
-#: data/core/abilities.cfg:256
-msgid "leadership"
-msgstr "juhtimisvõime"
-
-#: data/core/abilities.cfg:100 data/core/abilities.cfg:122
-#: data/core/abilities.cfg:156 data/core/abilities.cfg:202
-#: data/core/abilities.cfg:260
-msgid ""
-"Leadership:\n"
-"This unit can lead friendly units that are next to it, making them fight "
-"better.\n"
-"\n"
-"Adjacent friendly units of lower level will do more damage in battle. When a "
-"unit adjacent to, of a lower level than, and on the same side as a unit with "
-"Leadership engages in combat, its attacks do 25% more damage times the "
-"difference in their levels."
-msgstr ""
-"Juhtimisvõime:\n"
-"See üksus suudab juhtida kõrvalasuvaid üksuseid, nii et nad võitlevad "
-"paremini.\n"
-"\n"
-"Lähedalasuvad madalama auastmega üksused teevad võitluses rohkem kahju. Kui "
-"üksus, millel on madalam auaste kui kõrvalasuval juhtimisvõimega üksusel, "
-"astub võitlusesse, siis tema rünnakud teevad vaenlasele 25% korda auastmete "
-"vahe võrra rohkem kahju."
-
-#: data/core/abilities.cfg:324
-msgid "skirmisher"
-msgstr "kähmleja"
-
-#: data/core/abilities.cfg:326
-msgid ""
-"Skirmisher:\n"
-"This unit is skilled in moving past enemies quickly, and ignores all enemy "
-"Zones of Control."
-msgstr ""
-"Kähmleja:\n"
-"See üksus omab oskust vaenlase üksustest kiiresti mööda liikuda ning "
-"ignoreerida kõiki vaenlase kontrollvöönde."
-
-#: data/core/abilities.cfg:339
-msgid "illuminates"
-msgstr "valgustav"
-
-#: data/core/abilities.cfg:343
-msgid ""
-"Illuminates:\n"
-"This unit illuminates the surrounding area, making lawful units fight "
-"better, and chaotic units fight worse.\n"
-"\n"
-"Any units adjacent to this unit will fight as if it were dusk when it is "
-"night, and as if it were day when it is dusk."
-msgstr ""
-"Valgustav:\n"
-"See üksus valgusta oma ümbritsevat piirkonda, mille tulemusel kuulekad "
-"üksused võitlevad paremini ja mittekuulekatel üksused halvemini.\n"
-".\n"
-"Kõik selle üksuse läheduses asuvad üksused võitlevad öösel nagu oleks "
-"videvik ja videviku ajal nagu oleks päev."
-
-#: data/core/abilities.cfg:353
-msgid "teleport"
-msgstr "teleport"
-
-#: data/core/abilities.cfg:355
-msgid ""
-"Teleport:\n"
-"This unit may teleport between any two friendly villages using one of its "
-"moves."
-msgstr ""
-"Teleportatsioon:\n"
-"See üksus suudab kahe sõbraliku küla vahel teleporteeruda kasutades selleks "
-"ühte oma liikumist."
-
-#: data/core/abilities.cfg:364 data/core/abilities.cfg:365
-msgid "ambush"
-msgstr "varitsus"
-
-#: data/core/abilities.cfg:369 data/core/abilities.cfg:373
-#, fuzzy
-msgid ""
-"Ambush:\n"
-"This unit can hide in forest, and remain undetected by its enemies.\n"
-"\n"
-"Enemy units cannot see this unit while it is in forest, except if they have "
-"units next to it. Any enemy unit that first discovers this unit immediately "
-"loses all its remaining movement."
-msgstr ""
-"Varitsus:\n"
-"See üksus võib peituda metsas ja jääda vaenlaste jaoks märkamatuks.\n"
-"\n"
-"Vaenlase üksused ei näe ega saa seda üksust rünnata selle üksuse metsas "
-"paiknemise korral, välja arvatud käigud peale vaenlast ründamist või juhul "
-"kui vaenlase üksused asuvad selle üksuse kõrval."
-
-#: data/core/abilities.cfg:388 data/core/abilities.cfg:393
-msgid "nightstalk"
-msgstr "öine varitseja"
-
-#: data/core/abilities.cfg:392 data/core/abilities.cfg:397
-msgid ""
-"Nightstalk:\n"
-"The unit becomes invisible during night.\n"
-"\n"
-"Enemy units cannot see this unit at night, except if they have units next to "
-"it. Any enemy unit that first discovers this unit immediately loses all its "
-"remaining movement."
-msgstr ""
-
-#: data/core/abilities.cfg:412 data/core/abilities.cfg:417
-msgid "submerge"
-msgstr "sukelduv"
-
-#: data/core/abilities.cfg:416 data/core/abilities.cfg:421
-#, fuzzy
-msgid ""
-"Submerge:\n"
-"This unit can hide in deep water, and remain undetected by its enemies.\n"
-"\n"
-"Enemy units cannot see this unit while it is in deep water, except if they "
-"have units next to it. Any enemy unit that first discovers this unit "
-"immediately loses all its remaining movement."
-msgstr ""
-"Varitsus:\n"
-"See üksus võib peituda metsas ja jääda vaenlaste jaoks märkamatuks.\n"
-"\n"
-"Vaenlase üksused ei näe ega saa seda üksust rünnata selle üksuse metsas "
-"paiknemise korral, välja arvatud käigud peale vaenlast ründamist või juhul "
-"kui vaenlase üksused asuvad selle üksuse kõrval."
-
-#: data/core/abilities.cfg:441
-msgid "berserk"
-msgstr "hullus"
-
-#: data/core/abilities.cfg:443
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-
-#: data/core/abilities.cfg:453
-msgid "backstab"
-msgstr "pussitama"
-
-#: data/core/abilities.cfg:455
-msgid ""
-"Backstab:\n"
-"This attack deals double damage if there is an enemy of the target on the "
-"opposite side of the target, and that unit is not incapacitated (e.g. turned "
-"to stone)."
-msgstr ""
-
-#: data/core/abilities.cfg:467 data/core/abilities.cfg:479
-msgid "plague"
-msgstr "katk"
-
-#: data/core/abilities.cfg:469 data/core/abilities.cfg:481
-msgid ""
-"Plague:\n"
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. (This "
-"doesn't work on Undead or units in villages.)"
-msgstr ""
-
-#: data/core/abilities.cfg:490
-msgid "slows"
-msgstr "aeglustus"
-
-#: data/core/abilities.cfg:492
-msgid ""
-"Slow:\n"
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled."
-msgstr ""
-
-#: data/core/abilities.cfg:501
-msgid "stones"
-msgstr "kivistama"
-
-#: data/core/abilities.cfg:503
-msgid ""
-"Stone:\n"
-"This attack turns the target to stone. Units that have been turned to stone "
-"may not move or attack."
-msgstr ""
-
-#: data/core/abilities.cfg:512
-msgid "marksman"
-msgstr "laskur"
-
-#: data/core/abilities.cfg:514
-msgid ""
-"Marksman:\n"
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-
-#: data/core/abilities.cfg:526
-msgid "magical"
-msgstr "maagiline"
-
-#: data/core/abilities.cfg:528
-msgid ""
-"Magical:\n"
-"This attack always has a 70% chance to hit."
-msgstr ""
-"Maagiline:\n"
-"Sellel rünnakul on alati 70% tabamistõenäosus."
-
-#: data/core/abilities.cfg:539
-#, fuzzy
-msgid "swarm"
-msgstr "obadus"
-
-#: data/core/abilities.cfg:541
-msgid ""
-"Swarm:\n"
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the % of HP/maximum HP the unit has. "
-"For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
-"strikes."
-msgstr ""
-
-#: data/core/abilities.cfg:550
-msgid "charge"
-msgstr "rünnak"
-
-#: data/core/abilities.cfg:552
-msgid ""
-"Charge:\n"
-"This attack deals double damage to the target. It also causes this unit to "
-"take double damage from the target's counterattack."
-msgstr ""
-
-#: data/core/abilities.cfg:564
-#, fuzzy
-msgid "drains"
-msgstr "kurnama"
-
-#: data/core/abilities.cfg:566
-msgid ""
-"Drain:\n"
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-
-#: data/core/abilities.cfg:575
-msgid "firststrike"
-msgstr "esimene rünnak"
-
-#: data/core/abilities.cfg:577
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-
-#: data/core/abilities.cfg:586
-msgid "poison"
-msgstr "mürk"
-
-#: data/core/abilities.cfg:588
-msgid ""
-"Poison:\n"
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. "
-msgstr ""
-"Mürgitus:\n"
-"See rünnak mürgitab ohvri. Mürgitatud üksused kaotavad iga käiguga 8 HP-d "
-"kuni nad kas terveks ravitakse või kuni nende elud kahanevad ühe HP-ni. "
 
 #: data/core/about.cfg:6
 msgid "Programming"
@@ -778,18 +415,6 @@ msgstr "Valentsiakeelne tõlge"
 #: data/core/about.cfg:751
 msgid "Bots"
 msgstr "Robotite tugi"
-
-#: data/core/amla.cfg:9
-msgid ", MAX XP +25%"
-msgstr ", MAX XP +25%"
-
-#: data/core/amla.cfg:9
-msgid "Max HP bonus +"
-msgstr "Maks. HP boonus +"
-
-#: data/core/amla.cfg:30
-msgid "Full Heal"
-msgstr "Täielik taastamine"
 
 #: data/core/fonts.cfg:6 data/hardwired/fonts.cfg:6
 #, fuzzy
@@ -1310,27 +935,27 @@ msgid ""
 "First and Second Watch count as night:\n"
 msgstr ""
 
-#: data/core/help.cfg:197 data/core/schedules.cfg:5
+#: data/core/help.cfg:197 data/core/macros/schedules.cfg:5
 msgid "Dawn"
 msgstr "Koit"
 
-#: data/core/help.cfg:198 data/core/schedules.cfg:18
+#: data/core/help.cfg:198 data/core/macros/schedules.cfg:18
 msgid "Morning"
 msgstr "Hommik"
 
-#: data/core/help.cfg:199 data/core/schedules.cfg:30
+#: data/core/help.cfg:199 data/core/macros/schedules.cfg:30
 msgid "Afternoon"
 msgstr "Pärastlõuna"
 
-#: data/core/help.cfg:200 data/core/schedules.cfg:41
+#: data/core/help.cfg:200 data/core/macros/schedules.cfg:41
 msgid "Dusk"
 msgstr "Hämarik"
 
-#: data/core/help.cfg:201 data/core/schedules.cfg:54
+#: data/core/help.cfg:201 data/core/macros/schedules.cfg:54
 msgid "First Watch"
 msgstr "Esimene vahtkond"
 
-#: data/core/help.cfg:202 data/core/schedules.cfg:69
+#: data/core/help.cfg:202 data/core/macros/schedules.cfg:69
 msgid "Second Watch"
 msgstr "Teine vahtkond"
 
@@ -1712,8 +1337,8 @@ msgstr "Tervisklik"
 
 #: data/core/help.cfg:339
 msgid ""
-"Renowned for their vitality, some dwarves are sturdier than others and "
-"recover more quickly when resting."
+"Renowned for their vitality, some dwarves are sturdier than others and can "
+"rest even when travelling."
 msgstr ""
 
 #: data/core/help.cfg:345 data/core/terrain.cfg:433 data/core/terrain.cfg:441
@@ -2214,145 +1839,520 @@ msgid ""
 "Clear chat messages."
 msgstr ""
 
-#: data/core/items.cfg:264
+#: data/core/macros/abilities.cfg:9
+msgid "heals +4"
+msgstr "tervendav +4"
+
+#: data/core/macros/abilities.cfg:14
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent friendly units at the beginning of each "
+"turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Tervendav +4:\n"
+"Võimaldab üksusel iga järgmise käigu alguses tervendada lähedalasuvaid "
+"sõbralikke üksuseid.\n"
+"\n"
+"Selle ravija poolt hooldataval üksusel lisandub kuni 8 HP-d käigu igal "
+"käigul või mürgitusnähtud vastaval käigul ei esine.\n"
+"Mürgitatud üksust tervendamisega mürgitusest vabastada ei saa ja seega peaks "
+"ta otsima hoolitsust kas külast või üksuselt mis omab ravitsemisvõimet."
+
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "tervendav +8"
+
+#: data/core/macros/abilities.cfg:35
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Tervendav +4:\n"
+"Võimaldab üksusel iga järgmise käigu alguses tervendada lähedalasuvaid "
+"sõbralikke üksuseid.\n"
+"\n"
+"Selle ravija poolt hooldataval üksusel lisandub kuni 8 HP-d igal käigul või "
+"mürgitusnähtud vastaval käigul ei esine.\n"
+"Mürgitatud üksust tervendamisega mürgitusest vabastada ei saa ja seega peaks "
+"ta otsima hoolitsust kas külast või üksuselt mis omab ravitsemisvõimet."
+
+#: data/core/macros/abilities.cfg:45
+msgid "cures"
+msgstr "ravitsev"
+
+#: data/core/macros/abilities.cfg:47
+msgid ""
+"Cures:\n"
+"A curer can cure a unit of poison, although that unit will receive no "
+"additional healing on the turn it is cured of the poison."
+msgstr ""
+"Ravitsev:\n"
+"Ravitseja suudab mürgitud üksust ravida, kuigi mürgituse eemaldamise käigul "
+"lisatervendamist ei saa."
+
+#: data/core/macros/abilities.cfg:62
+msgid "regenerates"
+msgstr "taastuv"
+
+#: data/core/macros/abilities.cfg:64
+#, fuzzy
+msgid ""
+"Regenerates:\n"
+"The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
+"the poison instead of healing."
+msgstr ""
+"Taastuv:\n"
+"Üksus tervendab iseennast 8 HP igal käigul. Kui üksus mürgitatakse, siis "
+"eemaldab ta mürgituse tervendamise asemel."
+
+#: data/core/macros/abilities.cfg:81
+msgid "steadfast"
+msgstr "vankumatu"
+
+#: data/core/macros/abilities.cfg:83
+msgid ""
+"Steadfast:\n"
+"This unit's resistances are doubled, up to a maximum of 50%, when defending. "
+"Vulnerabilities are not affected."
+msgstr ""
+"Vankumatu:\n"
+"Selle üksuse vastupanuvõime kahekordistatakse kaitsel kuni maksimaalne 50%. "
+"Haavatavustele see ei mõju."
+
+#: data/core/macros/abilities.cfg:96 data/core/macros/abilities.cfg:118
+#: data/core/macros/abilities.cfg:152 data/core/macros/abilities.cfg:198
+#: data/core/macros/abilities.cfg:256
+msgid "leadership"
+msgstr "juhtimisvõime"
+
+#: data/core/macros/abilities.cfg:100 data/core/macros/abilities.cfg:122
+#: data/core/macros/abilities.cfg:156 data/core/macros/abilities.cfg:202
+#: data/core/macros/abilities.cfg:260
+msgid ""
+"Leadership:\n"
+"This unit can lead friendly units that are next to it, making them fight "
+"better.\n"
+"\n"
+"Adjacent friendly units of lower level will do more damage in battle. When a "
+"unit adjacent to, of a lower level than, and on the same side as a unit with "
+"Leadership engages in combat, its attacks do 25% more damage times the "
+"difference in their levels."
+msgstr ""
+"Juhtimisvõime:\n"
+"See üksus suudab juhtida kõrvalasuvaid üksuseid, nii et nad võitlevad "
+"paremini.\n"
+"\n"
+"Lähedalasuvad madalama auastmega üksused teevad võitluses rohkem kahju. Kui "
+"üksus, millel on madalam auaste kui kõrvalasuval juhtimisvõimega üksusel, "
+"astub võitlusesse, siis tema rünnakud teevad vaenlasele 25% korda auastmete "
+"vahe võrra rohkem kahju."
+
+#: data/core/macros/abilities.cfg:324
+msgid "skirmisher"
+msgstr "kähmleja"
+
+#: data/core/macros/abilities.cfg:326
+msgid ""
+"Skirmisher:\n"
+"This unit is skilled in moving past enemies quickly, and ignores all enemy "
+"Zones of Control."
+msgstr ""
+"Kähmleja:\n"
+"See üksus omab oskust vaenlase üksustest kiiresti mööda liikuda ning "
+"ignoreerida kõiki vaenlase kontrollvöönde."
+
+#: data/core/macros/abilities.cfg:339
+msgid "illuminates"
+msgstr "valgustav"
+
+#: data/core/macros/abilities.cfg:343
+msgid ""
+"Illuminates:\n"
+"This unit illuminates the surrounding area, making lawful units fight "
+"better, and chaotic units fight worse.\n"
+"\n"
+"Any units adjacent to this unit will fight as if it were dusk when it is "
+"night, and as if it were day when it is dusk."
+msgstr ""
+"Valgustav:\n"
+"See üksus valgusta oma ümbritsevat piirkonda, mille tulemusel kuulekad "
+"üksused võitlevad paremini ja mittekuulekatel üksused halvemini.\n"
+".\n"
+"Kõik selle üksuse läheduses asuvad üksused võitlevad öösel nagu oleks "
+"videvik ja videviku ajal nagu oleks päev."
+
+#: data/core/macros/abilities.cfg:353
+msgid "teleport"
+msgstr "teleport"
+
+#: data/core/macros/abilities.cfg:355
+msgid ""
+"Teleport:\n"
+"This unit may teleport between any two friendly villages using one of its "
+"moves."
+msgstr ""
+"Teleportatsioon:\n"
+"See üksus suudab kahe sõbraliku küla vahel teleporteeruda kasutades selleks "
+"ühte oma liikumist."
+
+#: data/core/macros/abilities.cfg:364 data/core/macros/abilities.cfg:365
+msgid "ambush"
+msgstr "varitsus"
+
+#: data/core/macros/abilities.cfg:369 data/core/macros/abilities.cfg:373
+#, fuzzy
+msgid ""
+"Ambush:\n"
+"This unit can hide in forest, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is in forest, except if they have "
+"units next to it. Any enemy unit that first discovers this unit immediately "
+"loses all its remaining movement."
+msgstr ""
+"Varitsus:\n"
+"See üksus võib peituda metsas ja jääda vaenlaste jaoks märkamatuks.\n"
+"\n"
+"Vaenlase üksused ei näe ega saa seda üksust rünnata selle üksuse metsas "
+"paiknemise korral, välja arvatud käigud peale vaenlast ründamist või juhul "
+"kui vaenlase üksused asuvad selle üksuse kõrval."
+
+#: data/core/macros/abilities.cfg:388 data/core/macros/abilities.cfg:393
+msgid "nightstalk"
+msgstr "öine varitseja"
+
+#: data/core/macros/abilities.cfg:392 data/core/macros/abilities.cfg:397
+msgid ""
+"Nightstalk:\n"
+"The unit becomes invisible during night.\n"
+"\n"
+"Enemy units cannot see this unit at night, except if they have units next to "
+"it. Any enemy unit that first discovers this unit immediately loses all its "
+"remaining movement."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:412 data/core/macros/abilities.cfg:417
+msgid "submerge"
+msgstr "sukelduv"
+
+#: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:421
+#, fuzzy
+msgid ""
+"Submerge:\n"
+"This unit can hide in deep water, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is in deep water, except if they "
+"have units next to it. Any enemy unit that first discovers this unit "
+"immediately loses all its remaining movement."
+msgstr ""
+"Varitsus:\n"
+"See üksus võib peituda metsas ja jääda vaenlaste jaoks märkamatuks.\n"
+"\n"
+"Vaenlase üksused ei näe ega saa seda üksust rünnata selle üksuse metsas "
+"paiknemise korral, välja arvatud käigud peale vaenlast ründamist või juhul "
+"kui vaenlase üksused asuvad selle üksuse kõrval."
+
+#: data/core/macros/abilities.cfg:441
+msgid "berserk"
+msgstr "hullus"
+
+#: data/core/macros/abilities.cfg:443
+msgid ""
+"Berserk:\n"
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:453
+msgid "backstab"
+msgstr "pussitama"
+
+#: data/core/macros/abilities.cfg:455
+msgid ""
+"Backstab:\n"
+"This attack deals double damage if there is an enemy of the target on the "
+"opposite side of the target, and that unit is not incapacitated (e.g. turned "
+"to stone)."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:467 data/core/macros/abilities.cfg:479
+msgid "plague"
+msgstr "katk"
+
+#: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:481
+msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"identical to and on the same side as the unit with the Plague attack. (This "
+"doesn't work on Undead or units in villages.)"
+msgstr ""
+
+#: data/core/macros/abilities.cfg:490
+msgid "slows"
+msgstr "aeglustus"
+
+#: data/core/macros/abilities.cfg:492
+msgid ""
+"Slow:\n"
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:501
+msgid "stones"
+msgstr "kivistama"
+
+#: data/core/macros/abilities.cfg:503
+msgid ""
+"Stone:\n"
+"This attack turns the target to stone. Units that have been turned to stone "
+"may not move or attack."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:512
+msgid "marksman"
+msgstr "laskur"
+
+#: data/core/macros/abilities.cfg:514
+msgid ""
+"Marksman:\n"
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:526
+msgid "magical"
+msgstr "maagiline"
+
+#: data/core/macros/abilities.cfg:528
+msgid ""
+"Magical:\n"
+"This attack always has a 70% chance to hit."
+msgstr ""
+"Maagiline:\n"
+"Sellel rünnakul on alati 70% tabamistõenäosus."
+
+#: data/core/macros/abilities.cfg:539
+#, fuzzy
+msgid "swarm"
+msgstr "obadus"
+
+#: data/core/macros/abilities.cfg:541
+msgid ""
+"Swarm:\n"
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the % of HP/maximum HP the unit has. "
+"For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
+"strikes."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:550
+msgid "charge"
+msgstr "rünnak"
+
+#: data/core/macros/abilities.cfg:552
+msgid ""
+"Charge:\n"
+"This attack deals double damage to the target. It also causes this unit to "
+"take double damage from the target's counterattack."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:564
+#, fuzzy
+msgid "drains"
+msgstr "kurnama"
+
+#: data/core/macros/abilities.cfg:566
+msgid ""
+"Drain:\n"
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:575
+msgid "firststrike"
+msgstr "esimene rünnak"
+
+#: data/core/macros/abilities.cfg:577
+msgid ""
+"First Strike:\n"
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:586
+msgid "poison"
+msgstr "mürk"
+
+#: data/core/macros/abilities.cfg:588
+msgid ""
+"Poison:\n"
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. "
+msgstr ""
+"Mürgitus:\n"
+"See rünnak mürgitab ohvri. Mürgitatud üksused kaotavad iga käiguga 8 HP-d "
+"kuni nad kas terveks ravitakse või kuni nende elud kahanevad ühe HP-ni. "
+
+#: data/core/macros/amla.cfg:9
+msgid ", MAX XP +25%"
+msgstr ", MAX XP +25%"
+
+#: data/core/macros/amla.cfg:9
+msgid "Max HP bonus +"
+msgstr "Maks. HP boonus +"
+
+#: data/core/macros/amla.cfg:30
+msgid "Full Heal"
+msgstr "Täielik taastamine"
+
+#: data/core/macros/items.cfg:264
 msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
 msgstr ""
 
-#: data/core/items.cfg:268
+#: data/core/macros/items.cfg:268
 msgid "A swift victory"
 msgstr "Kiire võit"
 
-#: data/core/items.cfg:276
+#: data/core/macros/items.cfg:276
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
 
-#: data/core/items.cfg:283
+#: data/core/macros/items.cfg:283
 msgid "Lots of gold"
 msgstr "Palju kulda"
 
-#: data/core/items.cfg:291
+#: data/core/macros/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr ""
 
-#: data/core/items.cfg:298
+#: data/core/macros/items.cfg:298
 msgid "Peace throughout Wesnoth."
 msgstr "Rahu terves Wesnothis"
 
-#: data/core/items.cfg:306
+#: data/core/macros/items.cfg:306
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr ""
 
-#: data/core/items.cfg:313
+#: data/core/macros/items.cfg:313
 msgid "Don't make a wish."
 msgstr "Ära lootma hakka."
 
-#: data/core/items.cfg:336
+#: data/core/macros/items.cfg:336
 msgid "Potion of Healing"
 msgstr "Raviv võlujook"
 
-#: data/core/items.cfg:339
+#: data/core/macros/items.cfg:339
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Heaolutunne valdab joojat."
 
-#: data/core/items.cfg:340
+#: data/core/macros/items.cfg:340
 msgid "You are not worthy of healing."
 msgstr "Sa ei vääri ravimist."
 
-#: data/core/items.cfg:374
+#: data/core/macros/items.cfg:374
 msgid "Poison"
 msgstr "Mürk"
 
-#: data/core/items.cfg:377
+#: data/core/macros/items.cfg:377
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr ""
 
-#: data/core/items.cfg:412
+#: data/core/macros/items.cfg:412
 msgid "Holy Water"
 msgstr "Püha vesi"
 
-#: data/core/items.cfg:415
+#: data/core/macros/items.cfg:415
 msgid "This water will make melee weapons holy."
 msgstr ""
 
-#: data/core/items.cfg:416
+#: data/core/macros/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr ""
 "Mina ei oska selle asjaga midagi peale hakata! Las keegi teine võtab selle."
 
-#: data/core/items.cfg:451
+#: data/core/macros/items.cfg:451
 msgid "Potion of Strength"
 msgstr "Jõudu andev võlujook"
 
-#: data/core/items.cfg:454
+#: data/core/macros/items.cfg:454
 msgid "Strength is given to the drinker."
 msgstr "Jooja saab jõudu juurde."
 
-#: data/core/items.cfg:495
+#: data/core/macros/items.cfg:495
 msgid "Potion of Decay"
 msgstr "Kõdundav võlujook"
 
-#: data/core/items.cfg:498
+#: data/core/macros/items.cfg:498
 msgid "This poor unit drank something really bad."
 msgstr "See vaene tegelane jõi midagi väga halba."
 
-#: data/core/items.cfg:533
+#: data/core/macros/items.cfg:533
 msgid "Ring of Regeneration"
 msgstr "Taastumise Sõrmus"
 
-#: data/core/items.cfg:536
+#: data/core/macros/items.cfg:536
 msgid "This ring will heal the bearer a little each turn."
 msgstr "See sõrmus tervendab natukene kandjat igal käigul."
 
-#: data/core/items.cfg:555
+#: data/core/macros/items.cfg:555
 msgid "Can't set abilities yet, sorry."
 msgstr "Oskuste seadmine ebaõnnestus, vabandust."
 
-#: data/core/items.cfg:576
+#: data/core/macros/items.cfg:576
 msgid "Ring of Slowness"
 msgstr "Aegluse Sõrmus"
 
-#: data/core/items.cfg:579
+#: data/core/macros/items.cfg:579
 msgid "The bearer of this ring is slowed."
 msgstr "Selle sÃµrmuse kandja liikumine on aeglustatud."
 
-#: data/core/items.cfg:614
+#: data/core/macros/items.cfg:614
 msgid "Staff of Swiftness"
 msgstr "Väleduse sau"
 
-#: data/core/items.cfg:617
+#: data/core/macros/items.cfg:617
 msgid "This staff will grant the bearer swift movement."
 msgstr "See sau annab kandjale väleda liikumise."
 
-#: data/core/items.cfg:618
+#: data/core/macros/items.cfg:618
 msgid "Only magical beings can wield such an object."
 msgstr "Ainult maagilised olendid saavad seda objekti kanda."
 
-#: data/core/items.cfg:652
+#: data/core/macros/items.cfg:652
 msgid "Storm Trident"
 msgstr "Tormikolmhark"
 
-#: data/core/items.cfg:655
+#: data/core/macros/items.cfg:655
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Selle kolmhargiga saavad merimehed oma vastaste pihta elektrivälke lasta!"
 
-#: data/core/items.cfg:656
+#: data/core/macros/items.cfg:656
 msgid "Only the mermen can use this item!"
 msgstr "Ainult merineitsid saavad seda asja kasutada!"
 
-#: data/core/items.cfg:668
+#: data/core/macros/items.cfg:668
 msgid "storm trident"
 msgstr "tormikolmhark"
 
-#: data/core/items.cfg:742
+#: data/core/macros/items.cfg:742
 msgid "Zap"
 msgstr ""
 
-#: data/core/names.cfg:2
+#: data/core/macros/names.cfg:2
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -2415,7 +2415,7 @@ msgid ""
 "Amithrarion,Cálad,Legilad"
 msgstr ""
 
-#: data/core/names.cfg:3
+#: data/core/macros/names.cfg:3
 msgid ""
 "Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
 "Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
@@ -2484,7 +2484,7 @@ msgid ""
 "Eowathiel,Iséng,Legondra,Celorfilindë"
 msgstr ""
 
-#: data/core/names.cfg:7
+#: data/core/macros/names.cfg:7
 msgid ""
 "Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,Owaecyn,"
 "Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,Yryrcyn,Glynvan,"
@@ -2538,7 +2538,7 @@ msgid ""
 "Gwaeddyn,Saenvan,Todd,Tegwyn"
 msgstr ""
 
-#: data/core/names.cfg:8
+#: data/core/macros/names.cfg:8
 msgid ""
 "Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
 "Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
@@ -2592,7 +2592,7 @@ msgid ""
 "Jana,Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
 msgstr ""
 
-#: data/core/names.cfg:12
+#: data/core/macros/names.cfg:12
 msgid ""
 "Neptune,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
 "Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
@@ -2603,7 +2603,7 @@ msgid ""
 "Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
 msgstr ""
 
-#: data/core/names.cfg:13
+#: data/core/macros/names.cfg:13
 msgid ""
 "Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,Rân,"
 "Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
@@ -2611,7 +2611,7 @@ msgid ""
 "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
 msgstr ""
 
-#: data/core/names.cfg:17
+#: data/core/macros/names.cfg:17
 msgid ""
 "Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,Goshnak,"
 "Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,Hunk,Goshnak,"
@@ -2658,7 +2658,7 @@ msgid ""
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 msgstr ""
 
-#: data/core/names.cfg:21
+#: data/core/macros/names.cfg:21
 msgid ""
 "Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,Trithaithus,"
 "Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,Augaithing,Anthaas,"
@@ -2726,7 +2726,7 @@ msgid ""
 "Pelaithil,Gomaithsol,Augaithsil"
 msgstr ""
 
-#: data/core/names.cfg:25
+#: data/core/macros/names.cfg:25
 msgid ""
 "Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
 "Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
@@ -2737,7 +2737,7 @@ msgid ""
 "Klez,Zlek,Trixzed"
 msgstr ""
 
-#: data/core/names.cfg:26
+#: data/core/macros/names.cfg:26
 msgid ""
 "Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,Saxrireii,"
 "Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,Vilail,Aleiss,"
@@ -2747,7 +2747,7 @@ msgid ""
 "Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
 msgstr ""
 
-#: data/core/names.cfg:30
+#: data/core/macros/names.cfg:30
 msgid ""
 "Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
 "Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
@@ -2763,7 +2763,7 @@ msgid ""
 "Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
 msgstr ""
 
-#: data/core/names.cfg:34
+#: data/core/macros/names.cfg:34
 msgid ""
 "Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,Markaak,"
 "Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,Kingrok,"
@@ -2773,7 +2773,7 @@ msgid ""
 "Urkar"
 msgstr ""
 
-#: data/core/names.cfg:38
+#: data/core/macros/names.cfg:38
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
@@ -2781,7 +2781,7 @@ msgid ""
 "Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
 
-#: data/core/names.cfg:42
+#: data/core/macros/names.cfg:42
 msgid ""
 "Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
 "Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,Anexir,"
@@ -2795,7 +2795,7 @@ msgid ""
 "Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
 msgstr ""
 
-#: data/core/names.cfg:46
+#: data/core/macros/names.cfg:46
 msgid ""
 "Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
 "Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
@@ -2808,162 +2808,250 @@ msgid ""
 "Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
 msgstr ""
 
-#: data/core/names.cfg:47
+#: data/core/macros/names.cfg:47
 msgid ""
 "Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin Ka,"
 "Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
 "Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
 msgstr ""
 
-#: data/core/names.cfg:51
+#: data/core/macros/names.cfg:51
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
 
-#: data/core/schedules.cfg:100 data/core/schedules.cfg:111
+#: data/core/macros/schedules.cfg:100 data/core/macros/schedules.cfg:111
 msgid "Deep Underground"
 msgstr "Sügaval maa all"
 
-#: data/core/special-notes.cfg:2
+#: data/core/macros/special-notes.cfg:2
 msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
 
-#: data/core/special-notes.cfg:5
+#: data/core/macros/special-notes.cfg:5
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
 
-#: data/core/special-notes.cfg:8
+#: data/core/macros/special-notes.cfg:8
 msgid ""
 " This unit is capable of basic healing, though it can only delay the effects "
 "of poison, not cure them entirely."
 msgstr ""
 
-#: data/core/special-notes.cfg:11
+#: data/core/macros/special-notes.cfg:11
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 
-#: data/core/special-notes.cfg:14
+#: data/core/macros/special-notes.cfg:14
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
 
-#: data/core/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:17
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
 
-#: data/core/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:20
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
 
-#: data/core/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:23
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
 
-#: data/core/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:26
 msgid " Illumination increases the lighting level in adjacent areas."
 msgstr ""
 
-#: data/core/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:29
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
 
-#: data/core/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:32
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
 
-#: data/core/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 
-#: data/core/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:38
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 
-#: data/core/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:41
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
 
-#: data/core/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:44
 msgid ""
 "  If someone with the same allegiance distracts an enemy, this unit may "
 "backstab, inflicting double damage, by creeping around behind that enemy."
 msgstr ""
 
-#: data/core/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr ""
 
-#: data/core/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 
-#: data/core/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:53
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 
-#: data/core/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:56
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
 
-#: data/core/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:59
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
 
-#: data/core/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:62
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
 
-#: data/core/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:65
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
 
-#: data/core/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:68
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
 
-#: data/core/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:71
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
 
-#: data/core/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:74
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
+msgstr ""
+
+#: data/core/macros/traits.cfg:9
+msgid "loyal"
+msgstr "lojaalne"
+
+#: data/core/macros/traits.cfg:10
+msgid "female^loyal"
+msgstr "lojaalne"
+
+#: data/core/macros/traits.cfg:11
+msgid "Zero upkeep"
+msgstr "Null elatis"
+
+#: data/core/macros/traits.cfg:22
+msgid "undead"
+msgstr "kooljad"
+
+#: data/core/macros/traits.cfg:23
+msgid "female^undead"
+msgstr "surnust ülestõusnud"
+
+#: data/core/macros/traits.cfg:24
+msgid "Immune to poison"
+msgstr "Mürgi suhtes immuunne"
+
+#: data/core/macros/traits.cfg:32
+msgid "strong"
+msgstr "tugev"
+
+#: data/core/macros/traits.cfg:33
+msgid "female^strong"
+msgstr "tugev"
+
+#: data/core/macros/traits.cfg:50
+msgid "dextrous"
+msgstr ""
+
+#: data/core/macros/traits.cfg:51
+msgid "female^dextrous"
+msgstr "osav"
+
+#: data/core/macros/traits.cfg:64
+msgid "quick"
+msgstr "kiire"
+
+#: data/core/macros/traits.cfg:65
+msgid "female^quick"
+msgstr "kiire"
+
+#: data/core/macros/traits.cfg:81
+msgid "intelligent"
+msgstr "intelligentne"
+
+#: data/core/macros/traits.cfg:82
+msgid "female^intelligent"
+msgstr "intelligentne"
+
+#: data/core/macros/traits.cfg:94
+msgid "resilient"
+msgstr "vastupidav"
+
+#: data/core/macros/traits.cfg:95
+msgid "female^resilient"
+msgstr "vastupidav"
+
+#: data/core/macros/traits.cfg:111
+msgid "healthy"
+msgstr "terve"
+
+#: data/core/macros/traits.cfg:112
+msgid "female^healthy"
+msgstr "tervislik"
+
+#: data/core/macros/traits.cfg:113
+msgid "Can rest while moving"
+msgstr ""
+
+#: data/core/macros/traits.cfg:125
+msgid "fearless"
+msgstr "kartmatu"
+
+#: data/core/macros/traits.cfg:126
+msgid "female^fearless"
+msgstr "kartmatu"
+
+#: data/core/macros/traits.cfg:127
+msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
 #: data/core/team-colors.cfg:10
@@ -3003,7 +3091,7 @@ msgid "Teal"
 msgstr "Sinakasroheline"
 
 #: data/core/terrain.cfg:18 data/themes/macros.cfg:136
-#: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:427
+#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:427
 #: src/multiplayer_lobby.cpp:433
 msgid "Shroud"
 msgstr "Udu"
@@ -3136,94 +3224,6 @@ msgstr "Läbipääsmatu mäestik"
 msgid "Impassable Desert Mountains"
 msgstr "Läbipääsmatu mäestik"
 
-#: data/core/traits.cfg:9
-msgid "loyal"
-msgstr "lojaalne"
-
-#: data/core/traits.cfg:10
-msgid "female^loyal"
-msgstr "lojaalne"
-
-#: data/core/traits.cfg:11
-msgid "Zero upkeep"
-msgstr "Null elatis"
-
-#: data/core/traits.cfg:22
-msgid "undead"
-msgstr "kooljad"
-
-#: data/core/traits.cfg:23
-msgid "female^undead"
-msgstr "surnust ülestõusnud"
-
-#: data/core/traits.cfg:24
-msgid "Immune to poison"
-msgstr "Mürgi suhtes immuunne"
-
-#: data/core/traits.cfg:32
-msgid "strong"
-msgstr "tugev"
-
-#: data/core/traits.cfg:33
-msgid "female^strong"
-msgstr "tugev"
-
-#: data/core/traits.cfg:50
-msgid "dextrous"
-msgstr ""
-
-#: data/core/traits.cfg:51
-msgid "female^dextrous"
-msgstr "osav"
-
-#: data/core/traits.cfg:64
-msgid "quick"
-msgstr "kiire"
-
-#: data/core/traits.cfg:65
-msgid "female^quick"
-msgstr "kiire"
-
-#: data/core/traits.cfg:81
-msgid "intelligent"
-msgstr "intelligentne"
-
-#: data/core/traits.cfg:82
-msgid "female^intelligent"
-msgstr "intelligentne"
-
-#: data/core/traits.cfg:94
-msgid "resilient"
-msgstr "vastupidav"
-
-#: data/core/traits.cfg:95
-msgid "female^resilient"
-msgstr "vastupidav"
-
-#: data/core/traits.cfg:111
-msgid "healthy"
-msgstr "terve"
-
-#: data/core/traits.cfg:112
-msgid "female^healthy"
-msgstr "tervislik"
-
-#: data/core/traits.cfg:113
-msgid "Heals faster if resting"
-msgstr ""
-
-#: data/core/traits.cfg:125
-msgid "fearless"
-msgstr "kartmatu"
-
-#: data/core/traits.cfg:126
-msgid "female^fearless"
-msgstr "kartmatu"
-
-#: data/core/traits.cfg:127
-msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
-
 #: data/core/units/boats/Galleon.cfg:4
 msgid "Galleon"
 msgstr "Galeoon"
@@ -3339,7 +3339,7 @@ msgstr "ballista"
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:81
 #: data/core/units/undead/Skele_Chocobone.cfg:26
 #: data/core/units/undead/Skele_Death_Knight.cfg:89
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:71
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:70
 #: data/core/units/undead/Skeleton_Archer.cfg:71
 msgid "pierce"
 msgstr "torge"
@@ -3373,8 +3373,8 @@ msgstr ""
 #: data/core/units/drakes/Inferno.cfg:69
 #: data/core/units/goblins/Direwolf_Rider.cfg:81
 #: data/core/units/monsters/Gryphon.cfg:25
-#: data/core/units/monsters/Gryphon_Master.cfg:28
-#: data/core/units/monsters/Gryphon_Rider.cfg:28
+#: data/core/units/monsters/Gryphon_Master.cfg:27
+#: data/core/units/monsters/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Skeletal_Dragon.cfg:64
 #: data/core/units/monsters/Skeletal_Dragon.cfg:65
 #: data/core/units/undead/Corpse_Ghoul.cfg:66
@@ -3442,8 +3442,8 @@ msgstr "küünised"
 #: data/core/units/monsters/Cave_Spider.cfg:36
 #: data/core/units/monsters/Fire_Dragon.cfg:27
 #: data/core/units/monsters/Gryphon.cfg:27
-#: data/core/units/monsters/Gryphon_Master.cfg:30
-#: data/core/units/monsters/Gryphon_Rider.cfg:30
+#: data/core/units/monsters/Gryphon_Master.cfg:29
+#: data/core/units/monsters/Gryphon_Rider.cfg:29
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 #: data/core/units/monsters/Skeletal_Dragon.cfg:66
 #: data/core/units/monsters/Wolf.cfg:48 data/core/units/nagas/Fighter.cfg:25
@@ -3451,7 +3451,7 @@ msgstr "küünised"
 #: data/core/units/ogres/Ogre.cfg:24 data/core/units/ogres/Young_Ogre.cfg:24
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:72
 #: data/core/units/orcs/Assassin.cfg:99
-#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Grunt.cfg:76
+#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Grunt.cfg:59
 #: data/core/units/orcs/Leader.cfg:30 data/core/units/orcs/Ruler.cfg:28
 #: data/core/units/orcs/Slayer.cfg:29 data/core/units/orcs/Slayer.cfg:120
 #: data/core/units/orcs/Slurbow.cfg:27 data/core/units/orcs/Sovereign.cfg:29
@@ -3465,7 +3465,7 @@ msgstr "küünised"
 #: data/core/units/undead/Skele_Deathblade.cfg:44
 #: data/core/units/undead/Skele_Draug.cfg:32
 #: data/core/units/undead/Skele_Revenant.cfg:31
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:33
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:32
 #: data/core/units/undead/Skeleton.cfg:108
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:54
 #: data/core/units/undead/Spirit_Shadow.cfg:28
@@ -3549,7 +3549,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Sergeant.cfg:32
 #: data/core/units/humans/Loyalist_Swordsman.cfg:25
 #: data/core/units/nagas/Fighter.cfg:23 data/core/units/nagas/Myrmidon.cfg:27
-#: data/core/units/nagas/Warrior.cfg:26 data/core/units/orcs/Grunt.cfg:74
+#: data/core/units/nagas/Warrior.cfg:26 data/core/units/orcs/Grunt.cfg:57
 #: data/core/units/orcs/Leader.cfg:28
 msgid "sword"
 msgstr "mõõk"
@@ -3875,7 +3875,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman.cfg:26 data/core/units/orcs/Archer.cfg:69
 #: data/core/units/orcs/Assassin.cfg:70 data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:41
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:31
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:30
 msgid "dagger"
 msgstr "pistoda"
 
@@ -4095,7 +4095,7 @@ msgstr ""
 #: data/core/units/orcs/Ruler.cfg:64 data/core/units/orcs/Sovereign.cfg:65
 #: data/core/units/orcs/Warlord.cfg:76
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:79
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:69
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:68
 #: data/core/units/undead/Skeleton_Archer.cfg:69
 msgid "bow"
 msgstr "vibu"
@@ -5343,8 +5343,8 @@ msgid ""
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:22
-#: data/core/units/humans/Outlaw_Ruffian.cfg:33
-#: data/core/units/humans/Outlaw_Ruffian.cfg:34
+#: data/core/units/humans/Outlaw_Ruffian.cfg:21
+#: data/core/units/humans/Outlaw_Ruffian.cfg:22
 #: data/core/units/humans/Outlaw_Thug.cfg:22
 #: data/core/units/trolls/Hero.cfg:26 data/core/units/trolls/Troll.cfg:26
 msgid "club"
@@ -6667,7 +6667,7 @@ msgstr ""
 msgid "Soul Shooter"
 msgstr "Hingetulistaja"
 
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:19
+#: data/core/units/undead/Skele_Soul_Shooter.cfg:18
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -7282,13 +7282,6 @@ msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
-msgstr ""
-
-#: data/hardwired/tips.cfg:38
-msgid ""
-"Because units with the 'loyal' trait have no upkeep, they can be especially "
-"good for stealing enemy villages to boost your income, especially if they "
-"have high mobility."
 msgstr ""
 
 #: data/multiplayer/_main.cfg:4
@@ -7985,7 +7978,7 @@ msgid "4p - Lagoon"
 msgstr ""
 
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:4
-#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:13
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:23
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid " Recommended setting of 1 gold per village."
 msgstr ""
@@ -8038,17 +8031,17 @@ msgid ""
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 
-#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:12
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:22
 msgid "4p - The Wilderlands"
 msgstr ""
 
-#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:13
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:23
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 
-#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:58
+#: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:68
 #, fuzzy
 msgid "Monsters"
 msgstr "Koletised"
@@ -8360,13 +8353,13 @@ msgid "End Turn"
 msgstr "Lõpeta käik"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:298 src/unit.cpp:2416
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:315 src/unit.cpp:2417
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:180 data/themes/dfool.cfg:208
-#: data/themes/experimental.cfg:158 src/menu_events.cpp:299
-#: src/menu_events.cpp:850
+#: data/themes/experimental.cfg:158 src/menu_events.cpp:316
+#: src/menu_events.cpp:860
 msgid "XP"
 msgstr "XP"
 
@@ -8483,7 +8476,7 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:69
+#: src/about.cpp:168 src/help.cpp:2599 src/menu_events.cpp:138
 msgid "Close"
 msgstr "Sulge"
 
@@ -8512,42 +8505,42 @@ msgstr "aeglustatud"
 msgid "stone"
 msgstr "kivi"
 
-#: src/actions.cpp:2029
+#: src/actions.cpp:2028
 msgid "Ambushed!"
 msgstr "Varitsus!"
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2066
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "$friends sõbralikku üksust märgatud"
 msgstr[1] "$friends sõbralikku üksust märgatud"
 
-#: src/actions.cpp:2072
+#: src/actions.cpp:2069
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "$enemies vaenlase üksust märgatud!"
 msgstr[1] "$enemies vaenlase üksust märgatud!"
 
-#: src/actions.cpp:2077
+#: src/actions.cpp:2074
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2078
+#: src/actions.cpp:2075
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2079
+#: src/actions.cpp:2076
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Märkasime üksusi! ($friends sõbralikke, $enemies vaenulikke)"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2085
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(jätkamiseks vajuta $hotkey)"
@@ -8604,7 +8597,7 @@ msgstr "#(Vigane)"
 msgid "Campaign"
 msgstr "Sõjakäik"
 
-#: src/dialogs.cpp:469 src/game.cpp:1242
+#: src/dialogs.cpp:469 src/game.cpp:1247
 msgid "Multiplayer"
 msgstr "Mitu mängijat"
 
@@ -8616,7 +8609,7 @@ msgstr "Õpetus"
 msgid "replay"
 msgstr "kordus"
 
-#: src/dialogs.cpp:481 src/menu_events.cpp:456 src/multiplayer_lobby.cpp:408
+#: src/dialogs.cpp:481 src/menu_events.cpp:473 src/multiplayer_lobby.cpp:408
 msgid "Turn"
 msgstr "Käik"
 
@@ -8668,8 +8661,8 @@ msgstr "Kustuta salvestus"
 msgid "Date"
 msgstr "Kuupäev"
 
-#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:296
-#: src/menu_events.cpp:848 src/multiplayer.cpp:108
+#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:313
+#: src/menu_events.cpp:858 src/multiplayer.cpp:108
 msgid "Name"
 msgstr "Nimi"
 
@@ -8677,8 +8670,8 @@ msgstr "Nimi"
 msgid "Show replay"
 msgstr "Näita mängude korduseid"
 
-#: src/dialogs.cpp:600 src/multiplayer_create.cpp:88
-#: src/multiplayer_create.cpp:89
+#: src/dialogs.cpp:600 src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
 msgid "Load Game"
 msgstr "Lae mäng"
 
@@ -8690,11 +8683,11 @@ msgstr "Vali milline mäng laadida"
 msgid "Profile"
 msgstr "profiil"
 
-#: src/dialogs.cpp:725 src/help.cpp:1084
+#: src/dialogs.cpp:725 src/help.cpp:1085
 msgid "level"
 msgstr "tase"
 
-#: src/dialogs.cpp:747 src/help.cpp:1142
+#: src/dialogs.cpp:747 src/help.cpp:1143
 msgid "HP: "
 msgstr "HP:"
 
@@ -8702,15 +8695,15 @@ msgstr "HP:"
 msgid "XP: "
 msgstr "XP:"
 
-#: src/dialogs.cpp:764 src/help.cpp:1143
+#: src/dialogs.cpp:764 src/help.cpp:1144
 msgid "Moves: "
 msgstr "Käigud:"
 
-#: src/display.cpp:560
+#: src/display.cpp:562
 msgid "Screenshot"
 msgstr "Ekraanitõmmis"
 
-#: src/game.cpp:426 src/game.cpp:1327
+#: src/game.cpp:426 src/game.cpp:1332
 msgid "The Battle for Wesnoth"
 msgstr "Wesnothi Lahing"
 
@@ -8718,14 +8711,14 @@ msgstr "Wesnothi Lahing"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Hoiatus: Fail, mida sa proovisid laadida, on vigane. Laen ikkagi.\n"
 
-#: src/game.cpp:696 src/multiplayer_connect.cpp:1256
+#: src/game.cpp:696 src/multiplayer_connect.cpp:1258
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "See salvestus on pärit mängu mõnest teisest versioonist. Kas sa tahad "
 "proovida seda laadida?"
 
-#: src/game.cpp:701 src/multiplayer_connect.cpp:1262
+#: src/game.cpp:701 src/multiplayer_connect.cpp:1265
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -8848,250 +8841,250 @@ msgstr "Kas soovid ikka seda alla laadida?"
 msgid "Downloading add-on..."
 msgstr "Lisa allalaadimine..."
 
-#: src/game.cpp:1116
+#: src/game.cpp:1117
 msgid "Add-on Installed"
 msgstr "Lisa paigaldatud"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1117
 msgid "The add-on has been installed."
 msgstr "Lisa on paigaldatud."
 
-#: src/game.cpp:1119
+#: src/game.cpp:1120
 msgid "Network communication error."
 msgstr "Viga võrguühenduses."
 
-#: src/game.cpp:1121
+#: src/game.cpp:1122
 msgid "Remote host disconnected."
 msgstr "Teine pool katkestas ühenduse."
 
-#: src/game.cpp:1123
+#: src/game.cpp:1124
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Sõjakäigu paigaldamiseks vajalike failide loomisel tekkis probleem."
 
-#: src/game.cpp:1135 src/game.cpp:1174 src/game.cpp:1199
-#: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:371
+#: src/game.cpp:1136 src/game.cpp:1175 src/game.cpp:1202
+#: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:372
 msgid "Connection timed out"
 msgstr "Ühendus aegus."
 
-#: src/game.cpp:1138 src/game.cpp:1176 src/game.cpp:1201
+#: src/game.cpp:1139 src/game.cpp:1177 src/game.cpp:1204
 msgid "The server responded with an error: \""
 msgstr "Server vastas veateatega: \""
 
-#: src/game.cpp:1142
+#: src/game.cpp:1143
 msgid "Terms"
 msgstr "Tingimused"
 
-#: src/game.cpp:1172
+#: src/game.cpp:1173
 msgid "Sending add-on"
 msgstr "Lisa saatmine"
 
-#: src/game.cpp:1179 src/game.cpp:1204 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1181 src/game.cpp:1208 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr "Vastus"
 
-#: src/game.cpp:1226
+#: src/game.cpp:1231
 msgid "Join Official Server"
 msgstr "Ühendu ametliku serveriga"
 
-#: src/game.cpp:1227
+#: src/game.cpp:1232
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logi sisse ametlikku Wesnothi mitmemängija serverisse"
 
-#: src/game.cpp:1229 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1234 src/multiplayer_lobby.cpp:532
 msgid "Join Game"
 msgstr "Liitu mänguga"
 
-#: src/game.cpp:1230
+#: src/game.cpp:1235
 msgid "Join a server or hosted game"
 msgstr "Liitu serveri või võõrustatud mänguga."
 
-#: src/game.cpp:1232
+#: src/game.cpp:1237
 msgid "Host Networked Game"
 msgstr "Ole võrgumängu serveriks"
 
-#: src/game.cpp:1233
+#: src/game.cpp:1238
 msgid "Host a game without using a server"
 msgstr "Võõrusta mängu ilma ametlikku serverit kasutamata."
 
-#: src/game.cpp:1235
+#: src/game.cpp:1240
 #, fuzzy
 msgid "Local Game"
 msgstr "Lae mäng"
 
-#: src/game.cpp:1236
+#: src/game.cpp:1241
 #, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Mängige mitmekesi ühe arvuti taga"
 
-#: src/game.cpp:1244 src/multiplayer.cpp:230
+#: src/game.cpp:1249 src/multiplayer.cpp:230
 msgid "Login: "
 msgstr "Login:"
 
-#: src/game.cpp:1281 src/playcampaign.cpp:90 src/playcampaign.cpp:343
+#: src/game.cpp:1286 src/playcampaign.cpp:90 src/playcampaign.cpp:344
 msgid "The game could not be loaded: "
 msgstr "Mängu laadimine ebaõnnestus."
 
-#: src/game.cpp:1283 src/playcampaign.cpp:92 src/playcampaign.cpp:346
+#: src/game.cpp:1288 src/playcampaign.cpp:92 src/playcampaign.cpp:347
 msgid "Error while playing the game: "
 msgstr "Mängimise ajal tekkis viga: "
 
-#: src/game.cpp:1295 src/playcampaign.cpp:94 src/playcampaign.cpp:349
+#: src/game.cpp:1300 src/playcampaign.cpp:94 src/playcampaign.cpp:350
 msgid "The game map could not be loaded: "
 msgstr "Mängu kaarti ei õnnestunud laadida:"
 
-#: src/game.cpp:1319
+#: src/game.cpp:1324
 msgid "Language"
 msgstr "Keel"
 
-#: src/game.cpp:1320
+#: src/game.cpp:1325
 msgid "Choose your preferred language:"
 msgstr "Vali endale sobiv keel:"
 
-#: src/game.cpp:1468
+#: src/game.cpp:1473
 #, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Mängu kaarti ei õnnestunud laadida:"
 
-#: src/game.cpp:1473
+#: src/game.cpp:1478
 msgid "ERROR DETAILS:"
 msgstr "VEAINFO:"
 
-#: src/game.cpp:1487
+#: src/game.cpp:1492
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Hoiatus: Mängu konfiguratsioonifailide laadimisel tekkis viga: '"
 
-#: src/game.cpp:1537
+#: src/game.cpp:1542
 msgid "Error loading game configuration files: '"
 msgstr "Mängu konfiguratsioonifailide laadimisel tekkis viga: '"
 
-#: src/game.cpp:1538
+#: src/game.cpp:1543
 msgid "' (The game will now exit)"
 msgstr "'(Mäng läheb nüüd kinni)"
 
-#: src/game.cpp:1686
+#: src/game.cpp:1695
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:1809
+#: src/game.cpp:1818
 msgid "Loading game configuration."
 msgstr "Mängu sätete laadimine."
 
-#: src/game.cpp:1815
+#: src/game.cpp:1824
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1831
+#: src/game.cpp:1840
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:825
+#: src/game_events.cpp:841
 msgid "Victory:"
 msgstr "Võit:"
 
-#: src/game_events.cpp:828
+#: src/game_events.cpp:844
 msgid "Defeat:"
 msgstr "Kaotus:"
 
-#: src/gamestatus.cpp:825
+#: src/gamestatus.cpp:829
 #, fuzzy
 msgid "Could not write to file"
 msgstr "Võõrustajaga ei õnnestu ühendust luua."
 
-#: src/help.cpp:1104
+#: src/help.cpp:1105
 msgid "Advances to: "
 msgstr "Edutatakse:"
 
-#: src/help.cpp:1125
+#: src/help.cpp:1126
 msgid "Abilities: "
 msgstr "Võimed:"
 
-#: src/help.cpp:1144
+#: src/help.cpp:1145
 msgid "Cost: "
 msgstr "Maksumus:"
 
-#: src/help.cpp:1145
+#: src/help.cpp:1146
 msgid "Alignment: "
 msgstr "Meelelaad:"
 
-#: src/help.cpp:1151
+#: src/help.cpp:1152
 msgid "Required XP: "
 msgstr "Nõutav XP:"
 
-#: src/help.cpp:1160
+#: src/help.cpp:1161
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1167
+#: src/help.cpp:1168
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Välju mängust"
 
-#: src/help.cpp:1168 src/menu_events.cpp:295 src/menu_events.cpp:847
+#: src/help.cpp:1169 src/menu_events.cpp:312 src/menu_events.cpp:857
 msgid "Type"
 msgstr "Liik"
 
-#: src/help.cpp:1169
+#: src/help.cpp:1170
 msgid "Strikes"
 msgstr "Löögid"
 
-#: src/help.cpp:1170
+#: src/help.cpp:1171
 msgid "Range"
 msgstr "Ulatus"
 
-#: src/help.cpp:1171
+#: src/help.cpp:1172
 msgid "Special"
 msgstr "Eriline"
 
-#: src/help.cpp:1221
+#: src/help.cpp:1222
 msgid "Resistances"
 msgstr "Vastupanuliigid"
 
-#: src/help.cpp:1225
+#: src/help.cpp:1226
 msgid "Attack Type"
 msgstr "Rünnaku tüüp"
 
-#: src/help.cpp:1226
+#: src/help.cpp:1227
 msgid "Resistance"
 msgstr "Vastupanu"
 
-#: src/help.cpp:1251
+#: src/help.cpp:1252
 msgid "Terrain Modifiers"
 msgstr "Maastiku mõjutajad"
 
-#: src/help.cpp:1255
+#: src/help.cpp:1256
 msgid "Terrain"
 msgstr "Maastik"
 
-#: src/help.cpp:1256
+#: src/help.cpp:1257
 msgid "Defense"
 msgstr "Kaitse"
 
-#: src/help.cpp:1257
+#: src/help.cpp:1258
 msgid "Movement Cost"
 msgstr "Liikumiskulu"
 
-#: src/help.cpp:2143
+#: src/help.cpp:2144
 msgid " < Back"
 msgstr "< Tagasi"
 
-#: src/help.cpp:2144
+#: src/help.cpp:2145
 msgid "Forward >"
 msgstr "Edasi >"
 
-#: src/help.cpp:2256
+#: src/help.cpp:2257
 msgid "Reference to unknown topic: "
 msgstr ""
 
-#: src/help.cpp:2516
+#: src/help.cpp:2517
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2602
+#: src/help.cpp:2603
 msgid "The Battle for Wesnoth Help"
 msgstr "Wesnothi Lahingu käsiraamat"
 
-#: src/help.cpp:2652
+#: src/help.cpp:2653
 #, fuzzy
 msgid "Parse error when parsing help text: "
 msgstr "Mängimise ajal tekkis viga: "
@@ -9132,12 +9125,48 @@ msgstr ""
 msgid "Reading files and creating cache."
 msgstr ""
 
-#: src/menu_events.cpp:67
+#: src/menu_events.cpp:100 src/menu_events.cpp:149
+msgid "Recruits"
+msgstr "Värbamisi"
+
+#: src/menu_events.cpp:104 src/menu_events.cpp:157
+msgid "Recalls"
+msgstr "Tagasikutsumisi"
+
+#: src/menu_events.cpp:108 src/menu_events.cpp:165
+msgid "Advancements"
+msgstr "Edutamisi"
+
+#: src/menu_events.cpp:112 src/menu_events.cpp:173
+msgid "Losses"
+msgstr "Kaotusi"
+
+#: src/menu_events.cpp:117 src/menu_events.cpp:181
+msgid "Kills"
+msgstr "Tapmisi"
+
+#: src/menu_events.cpp:136
 #, fuzzy
-msgid "Detail"
+msgid "Details"
 msgstr "saba"
 
-#: src/menu_events.cpp:102
+#: src/menu_events.cpp:187
+msgid "Damage Inflicted"
+msgstr "Kahju tekitatud"
+
+#: src/menu_events.cpp:193
+msgid "Damage Taken"
+msgstr "Kahju saadud"
+
+#: src/menu_events.cpp:199
+msgid "Damage Inflicted (EV)"
+msgstr "Kahju tekitatud (EV)"
+
+#: src/menu_events.cpp:206
+msgid "Damage Taken (EV)"
+msgstr "Kahju saadud (EV)"
+
+#: src/menu_events.cpp:242
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -9145,7 +9174,7 @@ msgstr ""
 "Mu käskija, see üksus on võrlemisi kogenud, ta on heal tasemel! Kas sa "
 "tõesti saata minema see $noun?"
 
-#: src/menu_events.cpp:104
+#: src/menu_events.cpp:244
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -9153,116 +9182,80 @@ msgstr ""
 "Mu käskija, see üksus jõuab varsti uuele tasemele! Kas sa tõesti saata "
 "minema see $noun?"
 
-#: src/menu_events.cpp:109
+#: src/menu_events.cpp:249
 msgid "her"
 msgstr "teda"
 
-#: src/menu_events.cpp:109
+#: src/menu_events.cpp:249
 msgid "him"
 msgstr "teda"
 
-#: src/menu_events.cpp:165 src/menu_events.cpp:241
-msgid "Recruits"
-msgstr "Värbamisi"
-
-#: src/menu_events.cpp:171 src/menu_events.cpp:245
-msgid "Recalls"
-msgstr "Tagasikutsumisi"
-
-#: src/menu_events.cpp:177 src/menu_events.cpp:249
-msgid "Advancements"
-msgstr "Edutamisi"
-
-#: src/menu_events.cpp:183 src/menu_events.cpp:253
-msgid "Losses"
-msgstr "Kaotusi"
-
-#: src/menu_events.cpp:189 src/menu_events.cpp:257
-msgid "Kills"
-msgstr "Tapmisi"
-
-#: src/menu_events.cpp:195
-msgid "Damage Inflicted"
-msgstr "Kahju tekitatud"
-
-#: src/menu_events.cpp:201
-msgid "Damage Taken"
-msgstr "Kahju saadud"
-
-#: src/menu_events.cpp:207
-msgid "Damage Inflicted (EV)"
-msgstr "Kahju tekitatud (EV)"
-
-#: src/menu_events.cpp:214
-msgid "Damage Taken (EV)"
-msgstr "Kahju saadud (EV)"
-
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:304
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/menu_events.cpp:297 src/menu_events.cpp:849
+#: src/menu_events.cpp:314 src/menu_events.cpp:859
 #, fuzzy
 msgid "Level"
 msgstr "tase"
 
-#: src/menu_events.cpp:300
+#: src/menu_events.cpp:317
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:301 src/unit.cpp:2447
+#: src/menu_events.cpp:318 src/unit.cpp:2448
 msgid "Moves"
 msgstr "Käigud"
 
-#: src/menu_events.cpp:302
+#: src/menu_events.cpp:319
 msgid "Location"
 msgstr "Asukoht"
 
-#: src/menu_events.cpp:355
+#: src/menu_events.cpp:372
 msgid "Unit List"
 msgstr "Üksuste nimekiri"
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:387
 msgid "Leader"
 msgstr "Juht"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:741
+#: src/menu_events.cpp:388 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
 msgid "Team"
 msgstr "Meeskond"
 
-#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:389 src/multiplayer_connect.cpp:752
 #: src/multiplayer_wait.cpp:440
 msgid "Gold"
 msgstr "Kuld"
 
-#: src/menu_events.cpp:373
+#: src/menu_events.cpp:390
 msgid "Villages"
 msgstr "Külad"
 
-#: src/menu_events.cpp:374
+#: src/menu_events.cpp:391
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:375
+#: src/menu_events.cpp:392
 msgid "Upkeep"
 msgstr "Elatis"
 
-#: src/menu_events.cpp:376 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:393 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:444
 msgid "Income"
 msgstr "Sissetulek"
 
-#: src/menu_events.cpp:465 src/playcampaign.cpp:460
+#: src/menu_events.cpp:482 src/playcampaign.cpp:465
 msgid "Name:"
 msgstr "Nimi:"
 
-#: src/menu_events.cpp:470 src/menu_events.cpp:485
-#: src/multiplayer_create.cpp:493
+#: src/menu_events.cpp:487 src/menu_events.cpp:500
+#: src/multiplayer_create.cpp:494
 msgid "Error"
 msgstr "Viga"
 
-#: src/menu_events.cpp:470
+#: src/menu_events.cpp:487
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -9270,86 +9263,86 @@ msgstr ""
 "Salvestuse nimes ei tohi olla kooloneid ega kaldkriipse. Palun vali mõni "
 "teine nimi."
 
-#: src/menu_events.cpp:480
+#: src/menu_events.cpp:497
 msgid "Saved"
 msgstr "Salvestatud"
 
-#: src/menu_events.cpp:480
+#: src/menu_events.cpp:497
 msgid "The game has been saved"
 msgstr "Mäng on salvestatud"
 
-#: src/menu_events.cpp:485 src/playcampaign.cpp:468
+#: src/menu_events.cpp:500 src/playcampaign.cpp:473
 msgid "The game could not be saved"
 msgstr "Mängu salvestamine ebaõnnestus."
 
-#: src/menu_events.cpp:501
+#: src/menu_events.cpp:515
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Jaga kaarte"
 
-#: src/menu_events.cpp:506
+#: src/menu_events.cpp:520
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Salvestus on juba olemas. Kas sa tahad selle üle kirjutada?"
 
-#: src/menu_events.cpp:518
+#: src/menu_events.cpp:532
 msgid "Map saved."
 msgstr "Kaart salvestatud."
 
-#: src/menu_events.cpp:523
+#: src/menu_events.cpp:536
 msgid "Could not save the map: $msg"
 msgstr "Kaarti ei suudeta salvestada: $msg"
 
-#: src/menu_events.cpp:613 src/menu_events.cpp:615 src/play_controller.cpp:746
+#: src/menu_events.cpp:626 src/menu_events.cpp:628 src/play_controller.cpp:746
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Automaatne salvestus"
 
-#: src/menu_events.cpp:618
+#: src/menu_events.cpp:631
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Mängu automaatne salvestamine ebaõnnestus. Palun salvesta mäng käsitsi."
 
-#: src/menu_events.cpp:644
+#: src/menu_events.cpp:655
 msgid "Chat Log"
 msgstr "Vestluslogi"
 
-#: src/menu_events.cpp:654
+#: src/menu_events.cpp:665
 msgid "Message:"
 msgstr "Teade:"
 
-#: src/menu_events.cpp:655
+#: src/menu_events.cpp:666
 msgid "Send to allies only"
 msgstr "Saada ainult liitlastele"
 
-#: src/menu_events.cpp:722
+#: src/menu_events.cpp:733
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Kuld"
 msgstr[1] "Kuld"
 
-#: src/menu_events.cpp:729
+#: src/menu_events.cpp:740
 msgid "You have no units available to recruit."
 msgstr "Paistab, et sul ei ole kedagi värvata."
 
-#: src/menu_events.cpp:742
+#: src/menu_events.cpp:752
 msgid "Recruit"
 msgstr "Värba"
 
-#: src/menu_events.cpp:743 src/menu_events.cpp:893
+#: src/menu_events.cpp:753 src/menu_events.cpp:903
 msgid "Select unit:"
 msgstr "Vali üksus:"
 
-#: src/menu_events.cpp:783
+#: src/menu_events.cpp:793
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Sul ei ole selle üksuse värbamiseks piisavalt kulda."
 
-#: src/menu_events.cpp:840
+#: src/menu_events.cpp:850
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Sa oled oma sõjameestest lahutatud ja ei saa neid tagasi kutsuda."
 
-#: src/menu_events.cpp:842
+#: src/menu_events.cpp:852
 #, fuzzy
 msgid ""
 "There are no troops available to recall\n"
@@ -9358,22 +9351,22 @@ msgstr ""
 "Paistab et sa ei saa mitte kedagi tagasi kutsuda\n"
 "(Sul peab olema eelmistest stsenaariumitest ellujäänud üksusi)"
 
-#: src/menu_events.cpp:881
+#: src/menu_events.cpp:891
 msgid "Dismiss Unit"
 msgstr "Saada üksus erru"
 
-#: src/menu_events.cpp:892
+#: src/menu_events.cpp:902
 msgid "Recall"
 msgstr "Kutsu tagasi"
 
-#: src/menu_events.cpp:904
+#: src/menu_events.cpp:914
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Sul peab üksuse tagasi kutsumiseks olema vähemalt $gold kullatükki."
 msgstr[1] "Sul peab üksuse tagasi kutsumiseks olema vähemalt $gold kullatükki."
 
-#: src/menu_events.cpp:1233
+#: src/menu_events.cpp:1243
 #, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
@@ -9381,70 +9374,70 @@ msgstr ""
 "Sa ei ole oma käiku veel alustanud. Kas sa tõesti tahad oma käigu juba "
 "lõpetada?"
 
-#: src/menu_events.cpp:1241 src/menu_events.cpp:1246
+#: src/menu_events.cpp:1251 src/menu_events.cpp:1256
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Osad üksused saavad veel liikuda? Kas sa tahad tõesti oma käigu lõpetada?"
 
-#: src/menu_events.cpp:1287
+#: src/menu_events.cpp:1297
 msgid "Rename Unit"
 msgstr "Muuda üksuse nime"
 
-#: src/menu_events.cpp:1369
+#: src/menu_events.cpp:1379
 msgid "Place Label"
 msgstr "Paiguta silt"
 
-#: src/menu_events.cpp:1372 src/menu_events.cpp:1375
+#: src/menu_events.cpp:1382 src/menu_events.cpp:1385
 msgid "Label:"
 msgstr "Silt:"
 
-#: src/menu_events.cpp:1378
+#: src/menu_events.cpp:1388
 #, fuzzy
 msgid "Team only"
 msgstr "Meeskond"
 
-#: src/menu_events.cpp:1476
+#: src/menu_events.cpp:1486
 msgid "Search"
 msgstr "Otsi"
 
-#: src/menu_events.cpp:1519
+#: src/menu_events.cpp:1529
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1580
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1574
+#: src/menu_events.cpp:1584
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1576
+#: src/menu_events.cpp:1586
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1578
+#: src/menu_events.cpp:1588
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1580
+#: src/menu_events.cpp:1590
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1582
+#: src/menu_events.cpp:1592
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1594
 #, fuzzy
 msgid "Unknown subcommand"
 msgstr "Tundmatu stsenaarium : '"
 
-#: src/menu_events.cpp:1587
+#: src/menu_events.cpp:1597
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -9452,52 +9445,52 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1600
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1592
+#: src/menu_events.cpp:1602
 msgid "Unknown command"
 msgstr "Tundmatu käsk"
 
-#: src/menu_events.cpp:1604
+#: src/menu_events.cpp:1614
 msgid "Added to ignore list: "
 msgstr "Lisatud ignoreeritavate nimekirja:"
 
-#: src/menu_events.cpp:1606 src/menu_events.cpp:1613 src/menu_events.cpp:1620
+#: src/menu_events.cpp:1616 src/menu_events.cpp:1623 src/menu_events.cpp:1630
 msgid "Invalid username: "
 msgstr "Vigane kasutajanimi:"
 
-#: src/menu_events.cpp:1611
+#: src/menu_events.cpp:1621
 msgid "Added to friends list: "
 msgstr "Lisatud sõprade nimekirja:"
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1628
 msgid "Removed from list: "
 msgstr "Nimekirjast eemaldatud:"
 
-#: src/menu_events.cpp:1644
+#: src/menu_events.cpp:1654
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1654
+#: src/menu_events.cpp:1664
 msgid "Removed from ignore list: "
 msgstr "Eemaldatud ignoreeritavate nimekirjast:"
 
-#: src/menu_events.cpp:1657
+#: src/menu_events.cpp:1667
 msgid "Removed from friends list: "
 msgstr "Eemaldatud sõprade nimekrjast:"
 
-#: src/menu_events.cpp:1664
+#: src/menu_events.cpp:1674
 #, fuzzy
 msgid "Unknown command: "
 msgstr "Tundmatu stsenaarium : '"
 
-#: src/menu_events.cpp:1765
+#: src/menu_events.cpp:1784
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Ei leindud silti ega üksust mille nimes sisalduks tekst '$search'."
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1932
 msgid "prompt^Command:"
 msgstr "Käsk:"
 
@@ -9538,19 +9531,19 @@ msgstr "Kasutatavat relva ei ole"
 msgid "Chance of being unscathed"
 msgstr "Terve nahaga pääsemise võimalus"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1335
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1345
 msgid "Damage Calculations"
 msgstr "Kahju arvutamine"
 
-#: src/mouse_events.cpp:1318 src/reports.cpp:283
+#: src/mouse_events.cpp:1328 src/reports.cpp:292
 msgid "vs"
 msgstr "vs"
 
-#: src/mouse_events.cpp:1346
+#: src/mouse_events.cpp:1356
 msgid "Attack Enemy"
 msgstr "Ründa vaenlast"
 
-#: src/mouse_events.cpp:1347
+#: src/mouse_events.cpp:1357
 msgid "Choose weapon:"
 msgstr "Vali relv:"
 
@@ -9626,12 +9619,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2550
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2551
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2557
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2558
 msgid ")"
 msgstr ")"
 
@@ -9684,7 +9677,7 @@ msgstr "Värv"
 msgid "I'm Ready"
 msgstr "Olen valmis"
 
-#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:71
+#: src/multiplayer_connect.cpp:756 src/multiplayer_create.cpp:72
 #: src/multiplayer_wait.cpp:164
 msgid "Cancel"
 msgstr "Tühista"
@@ -9709,15 +9702,15 @@ msgstr "Arvuti mängija"
 msgid "Empty"
 msgstr "Tühi"
 
-#: src/multiplayer_connect.cpp:1248
+#: src/multiplayer_connect.cpp:1249
 msgid "This is not a multiplayer save"
 msgstr "See ei ole mitmemängija mängu salvestus"
 
-#: src/multiplayer_connect.cpp:1329
+#: src/multiplayer_connect.cpp:1332
 msgid "Cannot find era $era"
 msgstr "Ei leia ajastut $era"
 
-#: src/multiplayer_connect.cpp:1348
+#: src/multiplayer_connect.cpp:1351
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -9725,187 +9718,187 @@ msgstr ""
 "Võit:\n"
 "@Alista vaenlaste juht või juhid"
 
-#: src/multiplayer_connect.cpp:1407
+#: src/multiplayer_connect.cpp:1410
 msgid "Waiting for players to join..."
 msgstr "Ootan mängijate liitumist..."
 
-#: src/multiplayer_create.cpp:39 src/multiplayer_lobby.cpp:533
+#: src/multiplayer_create.cpp:40 src/multiplayer_lobby.cpp:533
 msgid "Create Game"
 msgstr "Loo mäng"
 
-#: src/multiplayer_create.cpp:49
+#: src/multiplayer_create.cpp:50
 msgid "Time limit"
 msgstr "Ajalimiit"
 
-#: src/multiplayer_create.cpp:62
+#: src/multiplayer_create.cpp:63
 msgid "Name of game:"
 msgstr "Mängu nimi:"
 
-#: src/multiplayer_create.cpp:64
+#: src/multiplayer_create.cpp:65
 msgid "Era:"
 msgstr "Ajastu:"
 
-#: src/multiplayer_create.cpp:65
+#: src/multiplayer_create.cpp:66
 msgid "Map to play:"
 msgstr "Mängu kaart:"
 
-#: src/multiplayer_create.cpp:66 src/multiplayer_lobby.cpp:416
+#: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:416
 #: src/multiplayer_lobby.cpp:417
 msgid "Use map settings"
 msgstr ""
 
-#: src/multiplayer_create.cpp:67
+#: src/multiplayer_create.cpp:68
 #, fuzzy
 msgid "Random start time"
 msgstr "Juhuslik kaart (Talv)"
 
-#: src/multiplayer_create.cpp:68
+#: src/multiplayer_create.cpp:69
 msgid "Fog Of War"
 msgstr "Sõjaudu"
 
-#: src/multiplayer_create.cpp:70
+#: src/multiplayer_create.cpp:71
 msgid "Observers"
 msgstr "Jälgijad"
 
-#: src/multiplayer_create.cpp:72
+#: src/multiplayer_create.cpp:73
 msgid "OK"
 msgstr "Nõus"
 
-#: src/multiplayer_create.cpp:73
+#: src/multiplayer_create.cpp:74
 msgid "Regenerate"
 msgstr "Taastu"
 
-#: src/multiplayer_create.cpp:74
+#: src/multiplayer_create.cpp:75
 msgid "Settings..."
 msgstr "Seaded..."
 
-#: src/multiplayer_create.cpp:121
+#: src/multiplayer_create.cpp:122
 #, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Maksimaalne mängu kestvus käikudes"
 
-#: src/multiplayer_create.cpp:124
+#: src/multiplayer_create.cpp:125
 msgid "Enables user time limit"
 msgstr ""
 
-#: src/multiplayer_create.cpp:130
+#: src/multiplayer_create.cpp:131
 msgid "Longest time allowed for first turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:136
+#: src/multiplayer_create.cpp:137
 msgid "Longest time possible for any turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:142
+#: src/multiplayer_create.cpp:143
 msgid "Time for general tasks each turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:148
+#: src/multiplayer_create.cpp:149
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
-#: src/multiplayer_create.cpp:153
+#: src/multiplayer_create.cpp:154
 msgid "The amount of income each village yields per turn"
 msgstr "Küla poolt antav sissetulek käigu kohta "
 
-#: src/multiplayer_create.cpp:158
+#: src/multiplayer_create.cpp:159
 msgid "The amount of experience a unit needs to advance"
 msgstr "Üksuse edutamiseks vajalik kogemuspunktide arv."
 
-#: src/multiplayer_create.cpp:161
+#: src/multiplayer_create.cpp:162
 msgid "Use scenario specific settings"
 msgstr ""
 
-#: src/multiplayer_create.cpp:164
+#: src/multiplayer_create.cpp:165
 msgid "Randomize time of day in begin"
 msgstr ""
 
-#: src/multiplayer_create.cpp:167
+#: src/multiplayer_create.cpp:168
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Vastase üksusi ei saa jälgida, enne kui nad jõuavad sinu üksuste "
 "nägemispiirkonda."
 
-#: src/multiplayer_create.cpp:170
+#: src/multiplayer_create.cpp:171
 msgid "The map is unknown until your units explore it"
 msgstr "See kaardi osa on tundmatu kuni sinu üksused selle läbi uurivad"
 
-#: src/multiplayer_create.cpp:173
+#: src/multiplayer_create.cpp:174
 msgid "Allow users who are not playing to watch the game"
 msgstr "Luba kõigil mängijatel, kes ei mängi, mängu jälgida."
 
-#: src/multiplayer_create.cpp:177
+#: src/multiplayer_create.cpp:178
 msgid "Share View"
 msgstr "Jaga vaadet"
 
-#: src/multiplayer_create.cpp:178
+#: src/multiplayer_create.cpp:179
 msgid "Share Maps"
 msgstr "Jaga kaarte"
 
-#: src/multiplayer_create.cpp:179
+#: src/multiplayer_create.cpp:180
 msgid "Share None"
 msgstr "Ära jaga midagi"
 
-#: src/multiplayer_create.cpp:190
+#: src/multiplayer_create.cpp:191
 msgid "No multiplayer sides."
 msgstr "Ilma poolteta."
 
-#: src/multiplayer_create.cpp:192
+#: src/multiplayer_create.cpp:193
 msgid "No eras found"
 msgstr "Ajajärke ei leitud"
 
-#: src/multiplayer_create.cpp:205
+#: src/multiplayer_create.cpp:206
 msgid "$login's game"
 msgstr "$login-i nimi"
 
-#: src/multiplayer_create.cpp:254
+#: src/multiplayer_create.cpp:255
 msgid "Invalid era selected"
 msgstr "Vigane ajajärk valitud"
 
-#: src/multiplayer_create.cpp:293
+#: src/multiplayer_create.cpp:294
 msgid "You must enter a name."
 msgstr "Sa pead sisestama nime."
 
-#: src/multiplayer_create.cpp:302
+#: src/multiplayer_create.cpp:303
 msgid "Turns: "
 msgstr "Käike:"
 
-#: src/multiplayer_create.cpp:304
+#: src/multiplayer_create.cpp:305
 msgid "Unlimited Turns"
 msgstr "Piiramatud käigud"
 
-#: src/multiplayer_create.cpp:332
+#: src/multiplayer_create.cpp:333
 #, fuzzy
 msgid "Init. Limit: "
 msgstr "Noviits"
 
-#: src/multiplayer_create.cpp:337
+#: src/multiplayer_create.cpp:338
 msgid "Turn Bonus: "
 msgstr "Käikude boonus:"
 
-#: src/multiplayer_create.cpp:341
+#: src/multiplayer_create.cpp:342
 #, fuzzy
 msgid "Reservoir: "
 msgstr "Server: "
 
-#: src/multiplayer_create.cpp:346
+#: src/multiplayer_create.cpp:347
 #, fuzzy
 msgid "Action Bonus: "
 msgstr "Tegevused"
 
-#: src/multiplayer_create.cpp:353
+#: src/multiplayer_create.cpp:354
 msgid "Village Gold: "
 msgstr "Külade kuld:"
 
-#: src/multiplayer_create.cpp:361
+#: src/multiplayer_create.cpp:362
 msgid "Exp. Mod.: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:363
+#: src/multiplayer_create.cpp:364
 msgid "Experience Modifier: "
 msgstr "Kogemuspunktide modifikaator:"
 
-#: src/multiplayer_create.cpp:491
+#: src/multiplayer_create.cpp:492
 msgid "Players: "
 msgstr "Mängijad:"
 
@@ -10014,7 +10007,7 @@ msgstr "Soklit ei suudetud soklite hulka lisada"
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:392 src/playsingle_controller.cpp:352
+#: src/play_controller.cpp:392 src/playsingle_controller.cpp:353
 #: src/playsingle_controller.cpp:398
 msgid "The file you have tried to load is corrupt"
 msgstr "Fail, mida sa proovisid laadida, on vigane"
@@ -10027,40 +10020,40 @@ msgstr "Tagasi algusesse"
 msgid "Back to turn "
 msgstr ""
 
-#: src/playcampaign.cpp:299
+#: src/playcampaign.cpp:303
 msgid "Defeat"
 msgstr "Kaotus"
 
-#: src/playcampaign.cpp:300
+#: src/playcampaign.cpp:304
 msgid "You have been defeated!"
 msgstr "Sind on alistatud!"
 
-#: src/playcampaign.cpp:316
+#: src/playcampaign.cpp:315
 msgid " replay"
 msgstr "kordus"
 
-#: src/playcampaign.cpp:324
+#: src/playcampaign.cpp:325
 msgid "The replay could not be saved"
 msgstr "Kordust ei suudetud salvestada"
 
-#: src/playcampaign.cpp:362
+#: src/playcampaign.cpp:363
 msgid "Receiving data..."
 msgstr "Andmete vastuvõtmine..."
 
-#: src/playcampaign.cpp:364
+#: src/playcampaign.cpp:365
 msgid "Downloading next scenario..."
 msgstr "Järgmise sõjakäigu allalaadimine..."
 
-#: src/playcampaign.cpp:459
+#: src/playcampaign.cpp:464
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Kas sa tahad päriselt ka seda mängu kustutada?"
 
-#: src/playcampaign.cpp:484
+#: src/playcampaign.cpp:489
 msgid "Unknown scenario: '"
 msgstr "Tundmatu stsenaarium: '"
 
-#: src/playmp_controller.cpp:277
+#: src/playmp_controller.cpp:276
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10068,56 +10061,56 @@ msgstr ""
 "Mäng ei ole enam sünkrooniseeritud ja peab lõpetada.  Kas sa soovid oma "
 "mängu vealogi salvestada?"
 
-#: src/playsingle_controller.cpp:219
+#: src/playsingle_controller.cpp:220
 msgid "Game Over"
 msgstr "Mäng läbi"
 
-#: src/playsingle_controller.cpp:220
+#: src/playsingle_controller.cpp:221
 msgid "The game is over."
 msgstr "Mäng on läbi."
 
-#: src/playsingle_controller.cpp:291
+#: src/playsingle_controller.cpp:292
 msgid "Scenario Report"
 msgstr "Stsenaariumi raport"
 
-#: src/playsingle_controller.cpp:293
+#: src/playsingle_controller.cpp:294
 msgid "Victory"
 msgstr "Võit"
 
-#: src/playsingle_controller.cpp:294
+#: src/playsingle_controller.cpp:295
 msgid "You have emerged victorious!"
 msgstr "Sa oled väljunud võidukalt!"
 
-#: src/playsingle_controller.cpp:324
+#: src/playsingle_controller.cpp:325
 msgid "Remaining gold: "
 msgstr "Allesjäänud kuld: "
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:328
 msgid "Early finish bonus: "
 msgstr "Varase lõpetamise preemia: "
 
-#: src/playsingle_controller.cpp:329
+#: src/playsingle_controller.cpp:330
 msgid "per turn"
 msgstr "käigu kohta"
 
-#: src/playsingle_controller.cpp:330
+#: src/playsingle_controller.cpp:331
 msgid "Turns finished early: "
 msgstr "Varem lõpetatud käikude arv:"
 
-#: src/playsingle_controller.cpp:332
+#: src/playsingle_controller.cpp:333
 msgid "Bonus: "
 msgstr "Preemia: "
 
-#: src/playsingle_controller.cpp:334
+#: src/playsingle_controller.cpp:335
 msgid "Gold: "
 msgstr "Kuld: "
 
-#: src/playsingle_controller.cpp:339
+#: src/playsingle_controller.cpp:340
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% kullast säilitatakse järgmiseks stsenaariumiks"
 
-#: src/playsingle_controller.cpp:340
+#: src/playsingle_controller.cpp:341
 msgid "Retained Gold: "
 msgstr "Säilitatud kuld: "
 
@@ -10152,15 +10145,15 @@ msgstr "Asenda "
 msgid "has left the game. What do you want to do?"
 msgstr "lahkus mängust. Mida sa teha sooviksid?"
 
-#: src/reports.cpp:131
+#: src/reports.cpp:135
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "See üksus on nähtamatu. Vastase üksused ei näe ega saa seda rünnata."
 
-#: src/reports.cpp:131
+#: src/reports.cpp:135
 msgid "invisible: "
 msgstr "nähtamatu: "
 
-#: src/reports.cpp:136
+#: src/reports.cpp:140
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
@@ -10168,11 +10161,11 @@ msgstr ""
 "See üksus on aeglustatud. Ta suudab rünnakul rakendada ainult poole oma "
 "jõust."
 
-#: src/reports.cpp:136
+#: src/reports.cpp:140
 msgid "slowed: "
 msgstr "aeglustatud: "
 
-#: src/reports.cpp:141
+#: src/reports.cpp:145
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10186,52 +10179,52 @@ msgstr ""
 "\n"
 "Ainult mürgist üksuste tapmiseks ei piisa, sest HP alla 1 ei lange."
 
-#: src/reports.cpp:141
+#: src/reports.cpp:145
 msgid "poisoned: "
 msgstr "mürgitatud: "
 
-#: src/reports.cpp:148
+#: src/reports.cpp:152
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "See üksus on kivistatud. Ta ei või liikuda ega rünnata."
 
-#: src/reports.cpp:148
+#: src/reports.cpp:152
 msgid "stone: "
 msgstr "kivi: "
 
-#: src/reports.cpp:256
+#: src/reports.cpp:260
 #, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "Kogukahju"
 msgstr[1] "Kogukahju"
 
-#: src/reports.cpp:257
+#: src/reports.cpp:261
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/reports.cpp:267
+#: src/reports.cpp:271
 msgid "weapon range: "
 msgstr "relva ulatus: "
 
-#: src/reports.cpp:268
+#: src/reports.cpp:272
 msgid "damage type: "
 msgstr "kahjustuse liik: "
 
-#: src/reports.cpp:330
+#: src/reports.cpp:339
 msgid "Lawful units: "
 msgstr "Kuulekad üksused:"
 
-#: src/reports.cpp:332
+#: src/reports.cpp:341
 msgid "Neutral units: "
 msgstr "Neutraalsed üksused:"
 
-#: src/reports.cpp:333
+#: src/reports.cpp:342
 msgid "Chaotic units: "
 msgstr "Korratud üksused:"
 
-#: src/reports.cpp:469
+#: src/reports.cpp:478
 msgid "Observers:"
 msgstr "Jälgijad:"
 
@@ -10394,11 +10387,11 @@ msgstr "Abiteave"
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2382 src/unit.cpp:2555
+#: src/unit.cpp:2383 src/unit.cpp:2556
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2464
+#: src/unit.cpp:2465
 msgid "XP to advance"
 msgstr ""
 

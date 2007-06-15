@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-08 12:43+0200\n"
+"POT-Creation-Date: 2007-06-15 23:54+0200\n"
 "PO-Revision-Date: 2007-03-16 13:50+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -126,13 +126,13 @@ msgstr ""
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:400
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:495
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
 msgid "Left click on Konrad"
 msgstr "Kliknij Konrada lewym przyciskiem"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:207
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:401
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:496
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:499
 msgid "Left click on Li'sar"
 msgstr "Kliknij Li'sar lewym przyciskiem"
 
@@ -283,30 +283,36 @@ msgstr "Niestety, atak na atrapę zużył całą Twoją turę. Teraz kolej na at
 msgid "The DUMMY gets a turn?"
 msgstr "ATRAPA ma swoją turę?"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:471
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
+#, fuzzy
 msgid ""
 "Yes: it's a magical quintain.\n"
-"Now, this quintain gets five chances to hit you, and if it hits every time, "
-"you'll drop from $student_hp to $future_hp hit points. Brace yourself!"
+"See the 3-5 in its description? The first number tells you that it does "
+"three\n"
+"points of damage when it hits.  The second tells you that it gets five "
+"chances\n"
+"to hit you per combat round. \n"
+"If it hits every time, you'll drop from $student_hp to $future_hp hit "
+"points. Brace yourself!"
 msgstr ""
 "Tak, bo to magiczna atrapa.\n"
 "Teraz atrapa dostanie pięć szans na trafienie ciebie, a jeśli za każdym "
 "razem trafi, to twoje PŻ spadną z $student_hp do $future_hp. Broń się!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:473
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:476
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Kliknij przycisk \"Zakończ turę\", w prawym dolnym rogu"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 msgid "Ouch! I need to heal! Only $student_hp hp left!"
 msgstr "Au! Potrzebuję leczenia! Zostało mi tylko $student_hp PŻ!"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:410
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
 msgid "Village"
 msgstr "Wioska"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:492
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:495
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and standing in one will heal you at the start of your next turn: "
@@ -316,15 +322,15 @@ msgstr ""
 "pomysł, a zakończenie twojej tury w jednej z nich pozwoli ci odzyskać część "
 "zdrowia - proponuję się tam wycofać."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:504
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:507
 msgid "Click on the village to move Konrad"
 msgstr "Kliknij wioskę, by przesunąć Konrada"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:505
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
 msgid "Click on the village to move Li'sar"
 msgstr "Kliknij wioskę, by przesunąć Li'sar"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:522
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:525
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen. Villages give gold: "
@@ -339,15 +345,15 @@ msgstr ""
 "*Kliknij lewym przyciskiem myszy lub naciśnij dowolny klawisz, by "
 "kontynuować..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:652
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:729
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:778
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:625
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:655
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
 msgid "Click on the End Turn button"
 msgstr "Kliknij przycisk \"Zakończ turę\""
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:558
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
 msgid ""
 "You're about to be healed by 8 hitpoints.  But I think you're going to need "
 "some help against that quintain."
@@ -355,16 +361,16 @@ msgstr ""
 "Za chwilę zostanie ci przywrócone 8 punktów życia. Myślę jednak, że będziesz "
 "potrzebować trochę pomocy w starciu z tą atrapą."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:566
 msgid "I'll recruit some elves!"
 msgstr "Powołam do służby kilku elfów!"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:935
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:566
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
 msgid "Keep"
 msgstr "Forteca"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:570
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
 msgid ""
 "A splendid idea. If you return to your keep, you can recruit two units. You "
 "have plenty of gold for that."
@@ -372,15 +378,15 @@ msgstr ""
 "Doskonały pomysł. Wróć do fortecy, gdzie możesz rekrutować dwie jednostki. "
 "Masz do tego wystarczający zapas złota."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:574
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:577
 msgid "Move Konrad to the keep"
 msgstr "Przesuń Konrada do fortecy"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:575
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:578
 msgid "Move Li'sar to the keep"
 msgstr "Przesuń Li'sar do fortecy"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:594
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it, by "
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
@@ -394,12 +400,12 @@ msgstr ""
 "*Kliknij lewym przyciskiem myszy lub naciśnij dowolny klawisz, by "
 "kontynuować..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:600
 msgid "Right click on one castle tile and select Recruit"
 msgstr "Kliknij prawym przyciskiem pole zamku i wybierz \"Rekrutuj\""
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:618
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:621
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:651
 msgid ""
 "These newly recruited units can do nothing this turn: you will control them "
 "next turn.\n"
@@ -415,20 +421,20 @@ msgstr ""
 "*Kliknij lewym przyciskiem myszy lub naciśnij dowolny klawisz, by "
 "kontynuować..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:625
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:655
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:628
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:658
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
 "Kliknij prawym przyciskiem drugie pole zamku i rekrutuj kolejną jednostkę"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:668
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:671
 msgid ""
 "Hey, the quintain just healed by two hitpoints! I'd better attack it at once!"
 msgstr ""
 "Ejże, atrapa odzyskała właśnie dwa punkty życia! Lepiej zaatakuję ją czym "
 "prędzej!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:676
 msgid ""
 "Yes, if a unit doesn't do anything for a turn, it will slowly heal.\n"
 "But before you send your fighters against the quintain, you should know they "
@@ -439,11 +445,11 @@ msgstr ""
 "Jednak zanim poślesz swoich wojowników przeciwko atrapie, musisz wiedzieć, "
 "że mają oni dwa rodzaje ataków..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:677
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:680
 msgid "I'll tell them to use the one which does most damage!"
 msgstr "Każę im po prostu użyć tego, który zadaje najwięcej obrażeń!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:681
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:684
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I guess you'll "
 "find out..."
@@ -451,19 +457,19 @@ msgstr ""
 "Tak? A który to będzie? Atak (5-4) mieczem, czy atak (3-3) z łuku? Zresztą "
 "wkrótce się przekonasz..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:683
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:686
 msgid "Left click on an Elvish Fighter"
 msgstr "Kliknij elfickiego wojownika lewym przyciskiem myszy"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:684
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:687
 msgid "End your turn, then attack again."
 msgstr "Zakończ swoją turę, po czym zaatakuj ponownie."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:694
 msgid "Left click on the Quintain to attack it."
 msgstr "Kliknij lewym przyciskiem atrapę, by ją zaatakować."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:723
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
 "attack, so the quintain defended with its melee attack (3-5). The ranged "
@@ -473,7 +479,7 @@ msgstr ""
 "więc atrapa również broniła się wręcz, atakiem (3-5). Wybór ataku na "
 "odległość byłby bezpieczniejszy."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:727
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
 "attack, so the quintain defended with its melee attack (3-5). The ranged "
@@ -485,7 +491,7 @@ msgstr ""
 "odległość byłby bezpieczniejszy.\n"
 "Zakończ swoją turę, a następnie zaatakuj ponownie."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:737
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:740
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
 "attack, so the quintain defended with its melee attack (3-5).\n"
@@ -495,13 +501,13 @@ msgstr ""
 "więc atrapa również broniła się wręcz, atakiem (3-5).\n"
 "Lepiej rozkaż drugiemu elfowi skorzystać z łuku."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:787
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:790
 msgid "Attack with the other Elf"
 msgstr "Zaatakuj drugim elfem"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:769
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:785
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:772
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:788
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3, or 3 damage, 3 attacks). "
 "The quintain has no ranged attack, only a melee attack, so it could not "
@@ -511,7 +517,7 @@ msgstr ""
 "obrażeń, 3 ataki). Atrapa potrafi walczyć wyłącznie wręcz i nie umie "
 "atakować na odległość, zatem nie może się przed takim atakiem bronić."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:776
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:779
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3, or 3 damage, 3 attacks). "
 "The quintain has no ranged attack, only a melee attack, so it could not "
@@ -523,15 +529,15 @@ msgstr ""
 "atakować na odległość, zatem nie może się przed takim atakiem bronić.\n"
 "Zakończ turę, a następnie zaatakuj ponownie."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:802
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:805
 msgid "Keep attacking, with both elves, until the quintain is finished!"
 msgstr "Atakuj dalej obydwoma elfami, aż atrapa zostanie pokonana!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:810
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:813
 msgid "Maybe you should recruit another elf?"
 msgstr "Może przydałoby się rekrutować kolejnego elfa?"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:815
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:818
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
@@ -539,7 +545,7 @@ msgstr ""
 "Uwaga:\n"
 "Kliknij jednostkę prawym przyciskiem, by zobaczyć dokładny \"Opis jednostki\""
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:830
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:833
 msgid ""
 "Note:\n"
 "Remember to pull back wounded units into villages, and recruit more if you "
@@ -550,7 +556,7 @@ msgstr ""
 "ich liczby, gdy zajdzie taka potrzeba. Zwróć szczególną uwagę na jednostki z "
 "największą liczbą punktów doświadczenia (PD)."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:847
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:850
 msgid ""
 "Note:\n"
 "These dummies only attack if you are a single tile away. With care, you "
@@ -560,7 +566,7 @@ msgstr ""
 "Atrapy atakują tylko wtedy, gdy znajdujesz się w odległości jednego pola od "
 "nich. Jeżeli zachowasz ostrożność, będziesz w stanie zabijać je pojedynczo."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
 msgid ""
 "Note:\n"
 "Each village you own can support a single unit for free. After that, each "
@@ -571,7 +577,7 @@ msgstr ""
 "darmo. Powyżej tej liczby każda jednostka kosztuje cię jedną sztukę złota na "
 "turę."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
 msgid ""
 "Note:\n"
 "When a unit gets enough experience (the experience bar is the smaller bar on "
@@ -585,7 +591,7 @@ msgstr ""
 "Elficcy wojownicy mają dwie możliwości awansu, a wybór drogi będzie należał "
 "do ciebie."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:876
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
 msgid ""
 "Note:\n"
 "Once you select a unit, you see percentages for different places: higher "
@@ -600,12 +606,12 @@ msgstr ""
 "atrap są magiczne, więc zawsze mają 70% szans na trafienie, bez względu na "
 "to, gdzie stoisz."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:898
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:901
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Atrapa zginęła, a ja mam więcej doświadczenia!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:902
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:906
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:909
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful."
@@ -614,7 +620,7 @@ msgstr ""
 "przeciwnika. Jednostka, która zdobędzie dostatecznie dużo doświadczenia, "
 "staje się potężniejsza. "
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:903
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:906
 msgid ""
 "Now Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -622,7 +628,7 @@ msgstr ""
 "Konradzie, zostawię cię teraz z jeszcze kilkoma atrapami, z którymi możesz "
 "poćwiczyć. Gdy już skończysz, czeka nas prawdziwa praca..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:910
 msgid ""
 "Now Li'sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -630,15 +636,15 @@ msgstr ""
 "Li'sar, zostawię cię teraz z jeszcze kilkoma atrapami, z którymi możesz "
 "poćwiczyć. Gdy już skończysz, czeka nas prawdziwa praca..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:954
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:957
 msgid "Do you want to keep practicing?"
 msgstr "Czy chcesz dalej trenować?"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:956
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:959
 msgid "Yes, I'm still figuring it out."
 msgstr "Tak, jeszcze się uczę."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:959
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:962
 msgid "No, I think I've got it."
 msgstr "Nie, chyba już wszystko rozumiem."
 
@@ -1564,13 +1570,13 @@ msgstr ""
 "narażeni na wszelkie ataki. Mimo tego mają potencjał, by pewnego dnia stać "
 "się wielkimi wojownikami."
 
-#: data/campaigns/tutorial/units/Fighter.cfg:21
 #: data/campaigns/tutorial/units/Fighter.cfg:22
+#: data/campaigns/tutorial/units/Fighter.cfg:23
 msgid "sword"
 msgstr "miecz"
 
 #: data/campaigns/tutorial/units/Fighteress.cfg:23
-#: data/campaigns/tutorial/units/Fighter.cfg:24
+#: data/campaigns/tutorial/units/Fighter.cfg:25
 msgid "blade"
 msgstr "sieczna"
 

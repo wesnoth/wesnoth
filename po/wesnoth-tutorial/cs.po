@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-08 12:43+0200\n"
+"POT-Creation-Date: 2007-06-15 23:54+0200\n"
 "PO-Revision-Date: 2007-06-08 23:20+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -127,13 +127,13 @@ msgstr ""
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:400
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:495
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
 msgid "Left click on Konrad"
 msgstr "Klikni levým tlačítkem na Konráda"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:207
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:401
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:496
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:499
 msgid "Left click on Li'sar"
 msgstr "Klikni levým tlačítkem na Lisar"
 
@@ -278,30 +278,36 @@ msgstr ""
 msgid "The DUMMY gets a turn?"
 msgstr "Tenhle PANÁK bude mít tah?"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:471
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
+#, fuzzy
 msgid ""
 "Yes: it's a magical quintain.\n"
-"Now, this quintain gets five chances to hit you, and if it hits every time, "
-"you'll drop from $student_hp to $future_hp hit points. Brace yourself!"
+"See the 3-5 in its description? The first number tells you that it does "
+"three\n"
+"points of damage when it hits.  The second tells you that it gets five "
+"chances\n"
+"to hit you per combat round. \n"
+"If it hits every time, you'll drop from $student_hp to $future_hp hit "
+"points. Brace yourself!"
 msgstr ""
 "Ano - je to kouzelný panák.\n"
 "No a tento panák má pět možností tě zasáhnout, a pokud tě pokaždé zasáhne, "
 "zbude ti $future_hp z $student_hp životů. Drž se!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:473
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:476
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Klikni na tlačítko 'Ukonči kolo' v pravém dolním rohu"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 msgid "Ouch! I need to heal! Only $student_hp hp left!"
 msgstr "Au! Musím se vyléčit! Zbývá mi jen $student_hp životů!"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:410
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
 msgid "Village"
 msgstr "Vesnice"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:492
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:495
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and standing in one will heal you at the start of your next turn: "
@@ -311,15 +317,15 @@ msgstr ""
 "ukončíš svůj tah ve vesnici, na začátku příštího se uzdravíš. Měl by ses "
 "tedy stáhnout právě tam."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:504
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:507
 msgid "Click on the village to move Konrad"
 msgstr "Klikni na vesnici pro přesun Konráda"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:505
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
 msgid "Click on the village to move Li'sar"
 msgstr "Klikni na vesnici pro přesun Lisar"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:522
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:525
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen. Villages give gold: "
@@ -332,15 +338,15 @@ msgstr ""
 "každou obsazenou vesnici.\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:652
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:729
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:778
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:625
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:655
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
 msgid "Click on the End Turn button"
 msgstr "Klikni na tlačítko 'Ukonči kolo'"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:558
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
 msgid ""
 "You're about to be healed by 8 hitpoints.  But I think you're going to need "
 "some help against that quintain."
@@ -348,16 +354,16 @@ msgstr ""
 "Za chvíli se uzdravíš o 8 životů. Ale myslím, že budeš proti tomu panákovi "
 "potřebovat nějakou pomoc."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:566
 msgid "I'll recruit some elves!"
 msgstr "Naverbuji nějaké elfy!"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:935
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:566
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
 msgid "Keep"
 msgstr "Tvrz"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:570
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
 msgid ""
 "A splendid idea. If you return to your keep, you can recruit two units. You "
 "have plenty of gold for that."
@@ -365,15 +371,15 @@ msgstr ""
 "Dobrý nápad. Pokud se vrátíš do své tvrze, můžeš naverbovat dvě jednotky. "
 "Máš k tomu spoustu peněz."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:574
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:577
 msgid "Move Konrad to the keep"
 msgstr "Přesuň Konráda do tvrze"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:575
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:578
 msgid "Move Li'sar to the keep"
 msgstr "Přesuň Lisar do tvrze"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:594
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it, by "
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
@@ -385,12 +391,12 @@ msgstr ""
 "pouze jeden druh jednotky: vyber jej.\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:600
 msgid "Right click on one castle tile and select Recruit"
 msgstr "Klikni pravým tlačítkem na prázdné políčko hradu a vyber „Naverbuj“"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:618
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:621
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:651
 msgid ""
 "These newly recruited units can do nothing this turn: you will control them "
 "next turn.\n"
@@ -404,20 +410,20 @@ msgstr ""
 "její popis na pravé straně obrazovky.\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:625
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:655
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:628
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:658
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
 "Klikni pravým tlačítkem na jiné políčko hradu a naverbuj další jednotku"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:668
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:671
 msgid ""
 "Hey, the quintain just healed by two hitpoints! I'd better attack it at once!"
 msgstr ""
 "Heeej, ten panák se právě uzdravil o dva životy! Asi by bylo lepší zase "
 "zaútočit!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:676
 msgid ""
 "Yes, if a unit doesn't do anything for a turn, it will slowly heal.\n"
 "But before you send your fighters against the quintain, you should know they "
@@ -427,30 +433,30 @@ msgstr ""
 "Ale předtím, než vyšleš své bojovníky proti panákovi, měl by jsi vědět že "
 "mají dva druhy útoku..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:677
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:680
 msgid "I'll tell them to use the one which does most damage!"
 msgstr "Řeknu jim, ať použijí ten, který způsobí největší zranění!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:681
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:684
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I guess you'll "
 "find out..."
 msgstr ""
 "A kterýpak to bude? Meč (5-4) nebo luk (3-3)? Myslím, že to zjistíš sám..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:683
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:686
 msgid "Left click on an Elvish Fighter"
 msgstr "Klikni levým tlačítkem na elfího bojovníka"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:684
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:687
 msgid "End your turn, then attack again."
 msgstr "Ukonči své kolo a pak opět zaútoč."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:694
 msgid "Left click on the Quintain to attack it."
 msgstr "Klikni levým tlačítkem na panáka, abys na něj zaútočil."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:723
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
 "attack, so the quintain defended with its melee attack (3-5). The ranged "
@@ -460,7 +466,7 @@ msgstr ""
 "takže se panák bránil svým útokem zblízka (3-5). Útok na dálku byl "
 "bezpečnější."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:727
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
 "attack, so the quintain defended with its melee attack (3-5). The ranged "
@@ -472,7 +478,7 @@ msgstr ""
 "bezpečnější.\n"
 "Ukonči svůj tah a pak zaútoč znovu."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:737
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:740
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
 "attack, so the quintain defended with its melee attack (3-5).\n"
@@ -482,13 +488,13 @@ msgstr ""
 "takže se panák bránil svým útokem zblízka (3-5). Měl by jsi s druhým elfem "
 "použít luk."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:787
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:790
 msgid "Attack with the other Elf"
 msgstr "Zaútoč dalším elfem"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:769
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:785
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:772
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:788
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3, or 3 damage, 3 attacks). "
 "The quintain has no ranged attack, only a melee attack, so it could not "
@@ -497,7 +503,7 @@ msgstr ""
 "Tvůj elf použil luk (3-3, nebo 3 útoky po 3 zraněních). Panák nemá útok na "
 "dálku, jen zblízka, takže se nemohl bránit."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:776
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:779
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3, or 3 damage, 3 attacks). "
 "The quintain has no ranged attack, only a melee attack, so it could not "
@@ -508,15 +514,15 @@ msgstr ""
 "dálku, jen zblízka, takže se nemohl bránit.\n"
 "Ukonči svůj tah a zaútoč znovu."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:802
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:805
 msgid "Keep attacking, with both elves, until the quintain is finished!"
 msgstr "Útoč oběma elfy, dokud panák nepadne!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:810
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:813
 msgid "Maybe you should recruit another elf?"
 msgstr "Možná by jsi měl naverbovat dalšího elfa?"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:815
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:818
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
@@ -525,7 +531,7 @@ msgstr ""
 "Můžeš klepnout pravým tlačítkem na jednotku a vybrat „Popis jednotky“ pro "
 "podrobnější informace."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:830
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:833
 msgid ""
 "Note:\n"
 "Remember to pull back wounded units into villages, and recruit more if you "
@@ -535,7 +541,7 @@ msgstr ""
 "Nezapomeň stahovat zraněné jednotky do vesnic a verbovat další, pokud je to "
 "zapotřebí. Velkou péči věnuj jednotkám s nejvyšší zkušeností (XP)."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:847
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:850
 msgid ""
 "Note:\n"
 "These dummies only attack if you are a single tile away. With care, you "
@@ -545,7 +551,7 @@ msgstr ""
 "Tito panáci útočí, pouze pokud jsi na vedlejším políčku. S trochou snahy by "
 "jsi měl být schopen zabít je všechny jednoho po druhém."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
 msgid ""
 "Note:\n"
 "Each village you own can support a single unit for free. After that, each "
@@ -555,7 +561,7 @@ msgstr ""
 "Každá vesnice, kterou vlastníš, může podporovat zdarma jednu jednotku. Pokud "
 "máš více jednotek než vesnic, stojí tě každá jednotka jeden zlatý za kolo."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
 msgid ""
 "Note:\n"
 "When a unit gets enough experience (the experience bar is the smaller bar on "
@@ -570,7 +576,7 @@ msgstr ""
 "si jednotku na druhé úrovni tě stojí dvakrát více než jednotku na první "
 "úrovni."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:876
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
 msgid ""
 "Note:\n"
 "Once you select a unit, you see percentages for different places: higher "
@@ -585,12 +591,12 @@ msgstr ""
 "jsou „magické“, takže mají vždy šanci na zásah 70% ať stojíš kde chceš."
 
 # pův.: cenné
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:898
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:901
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Pane, panák je mrtvý, a získal jsem další zkušenosti!"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:902
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:906
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:909
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful."
@@ -598,7 +604,7 @@ msgstr ""
 "Ano, bojem získáváš zkušenosti, zvláště zabíjením nepřátel: získej dostatek "
 "zkušeností a staneš se silnějším."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:903
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:906
 msgid ""
 "Now Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -606,7 +612,7 @@ msgstr ""
 "Teď tě opustím, Konráde, a nechám ti tu více panáků k procvičování! Poté se "
 "pustíme do opravdové práce..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:910
 msgid ""
 "Now Li'sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -614,15 +620,15 @@ msgstr ""
 "Teď tě opustím, Lisar, a nechám ti tu více panáků k procvičování! Poté se "
 "pustíme do opravdové práce..."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:954
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:957
 msgid "Do you want to keep practicing?"
 msgstr "Chceš pokračovat v tréninku?"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:956
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:959
 msgid "Yes, I'm still figuring it out."
 msgstr "Ano, stále mi to není úplně jasné."
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:959
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:962
 msgid "No, I think I've got it."
 msgstr "Ne, myslím že už to chápu."
 
@@ -1535,13 +1541,13 @@ msgstr ""
 "jednotek jsou zranitelní. Dřímá v nich však potenciál stát se jednoho dne "
 "velkými válečníky."
 
-#: data/campaigns/tutorial/units/Fighter.cfg:21
 #: data/campaigns/tutorial/units/Fighter.cfg:22
+#: data/campaigns/tutorial/units/Fighter.cfg:23
 msgid "sword"
 msgstr "meč"
 
 #: data/campaigns/tutorial/units/Fighteress.cfg:23
-#: data/campaigns/tutorial/units/Fighter.cfg:24
+#: data/campaigns/tutorial/units/Fighter.cfg:25
 msgid "blade"
 msgstr "čepel"
 

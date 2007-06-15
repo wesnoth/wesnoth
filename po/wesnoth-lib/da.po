@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-08 12:43+0200\n"
+"POT-Creation-Date: 2007-06-15 23:54+0200\n"
 "PO-Revision-Date: 2007-06-15 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/construct_dialog.cpp:129 src/construct_dialog.cpp:136
-#: src/editor/editor_dialogs.cpp:411
+#: src/editor/editor_dialogs.cpp:412
 msgid "OK"
 msgstr "O.k."
 
@@ -31,7 +31,7 @@ msgid "No"
 msgstr "Nej"
 
 #: src/construct_dialog.cpp:137 src/construct_dialog.cpp:140
-#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
+#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:411
 #: src/show_dialog.cpp:432 src/show_dialog.cpp:529
 msgid "Cancel"
 msgstr "Annuller"
@@ -40,90 +40,90 @@ msgstr "Annuller"
 msgid "Close"
 msgstr "Luk"
 
-#: src/construct_dialog.cpp:811 src/hotkeys.cpp:124
+#: src/construct_dialog.cpp:804 src/hotkeys.cpp:124
 msgid "Help"
 msgstr "Hjælp"
 
-#: src/editor/editor_dialogs.cpp:49
+#: src/editor/editor_dialogs.cpp:50
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Ønsker du at fortsætte? Dine ændringer til kortet vil blive tabt."
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:192
+#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
 msgid "Create New Map"
 msgstr "Opret nyt kort"
 
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:393
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
 #: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Bredde:"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
+#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:395
 #: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Højde:"
 
-#: src/editor/editor_dialogs.cpp:98
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate New Map"
 msgstr "Lav nyt kort"
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:100
 msgid "Generate Random Map"
 msgstr "Lav tilfældig kort"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:101
 msgid "Random Generator Settings"
 msgstr "Tilfældige genereringsindstillinger"
 
-#: src/editor/editor_dialogs.cpp:177
+#: src/editor/editor_dialogs.cpp:178
 msgid "Map creation failed."
 msgstr "Oprettelse af kort mislykkedes."
 
-#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:1298
+#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
+#: src/preferences_display.cpp:1297
 msgid "Close Window"
 msgstr "Luk vindue"
 
-#: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:78
-#: src/preferences_display.cpp:1184
+#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:78
+#: src/preferences_display.cpp:1183
 msgid "Preferences"
 msgstr "Indstillinger"
 
 # Igen. Kan man det både hori or verti?
-#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:312
+#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:312
 msgid "Scroll Speed:"
 msgstr "Panoreringshastighed:"
 
-#: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:59
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:270
 msgid "Toggle Full Screen"
 msgstr "Skift til/fra fuldskærm"
 
-#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:273
+#: src/editor/editor_dialogs.cpp:289 src/preferences_display.cpp:273
 msgid "Show Grid"
 msgstr "Vis net"
 
-#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:293
+#: src/editor/editor_dialogs.cpp:296 src/preferences_display.cpp:293
 msgid "Video Mode"
 msgstr "Videomode"
 
-#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:295
+#: src/editor/editor_dialogs.cpp:299 src/preferences_display.cpp:295
 msgid "Hotkeys"
 msgstr "Tastaturgenveje"
 
-#: src/editor/editor_dialogs.cpp:391 src/editor/editor_dialogs.cpp:453
+#: src/editor/editor_dialogs.cpp:392 src/editor/editor_dialogs.cpp:454
 #: src/hotkeys.cpp:110
 msgid "Resize Map"
 msgstr "Skift størrelse på kort"
 
-#: src/editor/editor_dialogs.cpp:496
+#: src/editor/editor_dialogs.cpp:497
 msgid "X-Axis"
 msgstr "X-akse"
 
-#: src/editor/editor_dialogs.cpp:497
+#: src/editor/editor_dialogs.cpp:498
 msgid "Y-Axis"
 msgstr "Y-akse"
 
-#: src/editor/editor_dialogs.cpp:498
+#: src/editor/editor_dialogs.cpp:499
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Vend rundt (dette kan ændre kortdimensionerne):"
 
@@ -708,7 +708,7 @@ msgstr "Brugerdefineret sampelniveau"
 msgid "Change the buffer size"
 msgstr "Indstil bufferstørrelsen"
 
-#: src/preferences_display.cpp:384 src/preferences_display.cpp:885
+#: src/preferences_display.cpp:384 src/preferences_display.cpp:884
 msgid "Buffer Size: "
 msgstr "Bufferstørrelse: "
 
@@ -853,87 +853,87 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Vis og indstil tastaturgenveje"
 
 # Igen. Kan man det både hori or verti? (er panoreringshastighed ?)
-#: src/preferences_display.cpp:765
+#: src/preferences_display.cpp:764
 msgid "Speed: "
 msgstr "Hastighed: "
 
-#: src/preferences_display.cpp:930
+#: src/preferences_display.cpp:929
 msgid "Chat Lines: "
 msgstr "Snakkelinjer: "
 
-#: src/preferences_display.cpp:1026
+#: src/preferences_display.cpp:1025
 msgid "yes"
 msgstr "ja"
 
-#: src/preferences_display.cpp:1028
+#: src/preferences_display.cpp:1027
 msgid "no"
 msgstr "nej"
 
-#: src/preferences_display.cpp:1172
+#: src/preferences_display.cpp:1171
 msgid "Prefs section^General"
 msgstr "Prefs section^Generelt"
 
-#: src/preferences_display.cpp:1173
+#: src/preferences_display.cpp:1172
 msgid "Prefs section^Display"
 msgstr "Prefs section^Skærm"
 
-#: src/preferences_display.cpp:1174
+#: src/preferences_display.cpp:1173
 msgid "Prefs section^Sound"
 msgstr "Prefs section^Lyd"
 
-#: src/preferences_display.cpp:1175
+#: src/preferences_display.cpp:1174
 msgid "Prefs section^Multiplayer"
 msgstr "Prefs section^Flerspiller"
 
-#: src/preferences_display.cpp:1176
+#: src/preferences_display.cpp:1175
 msgid "Advanced section^Advanced"
 msgstr "Advanced section^Avanceret"
 
-#: src/preferences_display.cpp:1241
+#: src/preferences_display.cpp:1240
 msgid "There are no alternative video modes available"
 msgstr "Der er ingen alternative videomodes tilgængelige"
 
-#: src/preferences_display.cpp:1270
+#: src/preferences_display.cpp:1269
 msgid "Choose Resolution"
 msgstr "Vælg opløsning"
 
-#: src/preferences_display.cpp:1303
+#: src/preferences_display.cpp:1302
 msgid "Hotkey Settings"
 msgstr "Genvejsindstillinger"
 
-#: src/preferences_display.cpp:1309 src/preferences_display.cpp:1365
+#: src/preferences_display.cpp:1308 src/preferences_display.cpp:1364
 msgid "Press desired Hotkey"
 msgstr "Tryk ønsket genvejstast"
 
-#: src/preferences_display.cpp:1327
+#: src/preferences_display.cpp:1326
 msgid "Action"
 msgstr "Aktion"
 
-#: src/preferences_display.cpp:1327
+#: src/preferences_display.cpp:1326
 msgid "Binding"
 msgstr "Sammenfæstning"
 
-#: src/preferences_display.cpp:1339
+#: src/preferences_display.cpp:1338
 msgid "Change Hotkey"
 msgstr "Skift genvejstast"
 
-#: src/preferences_display.cpp:1342
+#: src/preferences_display.cpp:1341
 msgid "Save Hotkeys"
 msgstr "Gem genvejstaster"
 
-#: src/preferences_display.cpp:1392
+#: src/preferences_display.cpp:1391
 msgid "This Hotkey is already in use."
 msgstr "Denne genvejstast er allerede i brug."
 
-#: src/preferences_display.cpp:1425
+#: src/preferences_display.cpp:1424
 msgid "Saved Theme Preference: "
 msgstr "Gem temapræference: "
 
-#: src/preferences_display.cpp:1431
+#: src/preferences_display.cpp:1430
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nyt tema vil være aktivt i næste nye eller hentede spil."
 
-#: src/preferences_display.cpp:1435
+#: src/preferences_display.cpp:1434
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Ingen kendte temaer. Prøv at ændre inde fra et eksisterende spil."
 
