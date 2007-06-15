@@ -618,6 +618,8 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 
 	cfg["scenario"] = gamestate.scenario;
 
+	cfg["completion"] = gamestate.completion;
+
 	cfg["campaign"] = gamestate.campaign;
 
 	cfg["campaign_type"] = gamestate.campaign_type;
