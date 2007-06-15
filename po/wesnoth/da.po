@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-08 12:42+0200\n"
-"PO-Revision-Date: 2007-06-05 13:44+0200\n"
+"PO-Revision-Date: 2007-06-15 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -3861,10 +3861,12 @@ msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" Denne enheds evner som stifinder tillader den at ignorere fjendtlige "
+"kontrolzoner og dermed bevæge sig uhindret omkring dem."
 
 #: data/core/special-notes.cfg:26
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " Oplysning øger lysniveauet i nærvedliggende arealer."
 
 #: data/core/special-notes.cfg:29
 msgid ""
@@ -3880,6 +3882,9 @@ msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" I skove, gør denne enheds bagholdsevne den usynlig for fjendtlige enheder "
+"med mindre de står lige op ad enheden eller har afsløret sig selv ved at "
+"angribe."
 
 #: data/core/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
@@ -3899,12 +3904,16 @@ msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
+" Når dens raseriangreb anvendes fortsætter denne enhed med at angribe indtil "
+"enten den eller dens fjende er død."
 
 #: data/core/special-notes.cfg:44
 msgid ""
 "  If someone with the same allegiance distracts an enemy, this unit may "
 "backstab, inflicting double damage, by creeping around behind that enemy."
 msgstr ""
+"  Hvis nogen med den samme loyalitet afleder fjenden kan denne enhed anvende "
+"et bagholdsangreb som giver dobbelt skade ved at flytte sig rundt om fjenden."
 
 #: data/core/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -3930,6 +3939,8 @@ msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" Denne enheds skydefærdighed giver den en høj chance for at ramme udvalgte "
+"fjender, men kun under angreb."
 
 #: data/core/special-notes.cfg:59
 msgid ""
@@ -3944,12 +3955,16 @@ msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
+" Sværmangrebet hos denne enhed bliver mindre dødeligt når dets medlemmer er "
+"sårede."
 
 #: data/core/special-notes.cfg:65
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
+" Brugen af et stormangreb fordobler både den skade som bliver forvoldt og "
+"den skade som modtages; dette gælder ikke forsvarsmæssig gengældelse."
 
 #: data/core/special-notes.cfg:68
 msgid ""
@@ -3972,6 +3987,8 @@ msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" Ofrene til denne enheds gift vil fortsætte med at modtage skade indtil de "
+"kan helbredes i en by eller af en enhed som kurerer sygdomme."
 
 #: data/core/team-colors.cfg:10
 msgid "Red"
@@ -4230,7 +4247,7 @@ msgstr "Galeon"
 
 #: data/core/units/boats/Galleon.cfg:19
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
+msgstr "Galeoner er oceangående skibe bygget til brug for handel og transport."
 
 # Ikke afklaret hvor den her er i spillet.
 #: data/core/units/boats/Galleon.cfg:21
@@ -4581,7 +4598,7 @@ msgstr ""
 
 #: data/core/units/drakes/Clasher.cfg:3
 msgid "Drake Clasher"
-msgstr ""
+msgstr "Nærkampshestedrage"
 
 #: data/core/units/drakes/Clasher.cfg:26
 msgid ""
@@ -4637,7 +4654,7 @@ msgstr "spyd"
 
 #: data/core/units/drakes/Enforcer.cfg:3
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "Politihestedrage"
 
 #: data/core/units/drakes/Enforcer.cfg:24
 msgid ""
@@ -6708,6 +6725,13 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"På hjemmebane i skoven og gode allierede for enhver hær, samt uundværlige "
+"for enhver gruppe af fredløse. De kan finde både menneske og dyr, bemærker "
+"ting som andre overse og er ofte de eneste som kan finde mad til bordet; det "
+"værende dyr eller grøntsager.\n"
+"\n"
+"Deres jagtevner er særdeles velegnede i kamp og gør dem også meget "
+"kompetente om natten, i skove og i sumpe."
 
 #: data/core/units/humans/Peasant.cfg:3
 msgid "Peasant"
@@ -6930,6 +6954,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Blandt havmænd overlades opbygningen af samfundet, i henhold til gudernes "
+"ønsker, ofte til havfruerne. Det er dem, som dedikerer dem selv til opgaven "
+"med at skabe fred og liv i verden, og det er dem som studerer professionerne "
+"krigstraumer og skadeudbedring. Deres hæderlighed og nøjsomhed giver dem "
+"også bestemte åndelige evner som gør, at de kan beskytte deres folk mod "
+"udøde og ånder.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/merfolk/Siren.cfg:3
 msgid "Mermaid Siren"
@@ -6950,6 +6982,16 @@ msgid ""
 "Special Notes: the attacks of a siren are magical in nature, and always have "
 "a high chance of hitting their opponents."
 msgstr ""
+"Fe-naturen hos havfruerne er stærkest hos sirenerne, hvis forbindelse til "
+"naia ofte gør, at de opfattes som naiader selv. Selvom det er langt fra "
+"sandheden er forvekslingen forståelig, da sande naiader sjældent ses, end "
+"ikke af havfruer. Deres magi ligner også naiaderne, vandet omkring en sirene "
+"kan kommanderes som en forlængelse af dens krop.\n"
+"\n"
+"Landboerne indser sjældent dette og opfatter ofte magien som et vidunder.\n"
+"\n"
+"Specielle bemærkninger: En sirenes angreb er magisk og har altid en høj "
+"chance for at ramme modstanderen."
 
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
@@ -7231,7 +7273,7 @@ msgstr ""
 
 #: data/core/units/monsters/Wolf.cfg:3
 msgid "Wolf"
-msgstr ""
+msgstr "Ulv"
 
 #: data/core/units/monsters/Yeti.cfg:3
 msgid "Yeti"
@@ -7379,7 +7421,7 @@ msgstr ""
 
 #: data/core/units/orcs/Archer.cfg:3
 msgid "Orcish Archer"
-msgstr "Orkerbueskytte"
+msgstr "Orkbueskytte"
 
 #: data/core/units/orcs/Archer.cfg:18
 msgid ""
@@ -7390,6 +7432,11 @@ msgid ""
 "weapons can still be quite deadly, and the wielders thereof rarely march "
 "alone."
 msgstr ""
+"Blandt orker bliver buen ofte anset som et kujonvåben; men selv orker, "
+"specielt unge og dem som er slankt bygget er pragmatiske nok til at anvende "
+"dem alligevel.  Orkbueskytter er sjældent veludrustet og har ikke modtaget "
+"nogen træning.  Selv så dårligt uddannet kan deres våben dog stadig være "
+"særdeles dødelig, og brugerne går derfor sjældent alene."
 
 # > to assassin eller a assassin?
 # Det er "assassinate"... Det her er "an assassin". :-)
@@ -8162,10 +8209,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Da de stadig var i live var »dødssværd« mestre i kamp, soldater som var både "
+"smidige og dødelige. Deres nye mestre som indså dette udstyrede dem med "
+"våben til deres evner. Selvom skrøbelige er disse monstre langt hurtigere "
+"end nogen andre af deres slags, både til fods og med deres klinger.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/undead/Skele_Draug.cfg:3
 msgid "Draug"
-msgstr ""
+msgstr "Draug"
 
 #: data/core/units/undead/Skele_Draug.cfg:19
 msgid ""
@@ -8177,6 +8230,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Der er ikke meget tilbage af deres tidligere status som mænd i disse høje "
+"ruiner. Krigere i hjertet men nu fortabt i drømmen om et evigt liv; de "
+"gennemlever en kamp i deres hukommelse og slås desperart for at slippe ud, "
+"men freden kan kun opnås igennem kamp. Så de kæmper; uden tanke på noget og "
+"med stor tålmodighed.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/undead/Skele_Revenant.cfg:3
 msgid "Revenant"
@@ -8193,6 +8253,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Skabningen revenant er hidkaldt for at kæmpe endnu engang. De var tidligere "
+"store krigere, men deres tid er nu glemt. Selv troldmanden, som hidkalder "
+"dem, kan kun gætte på deres fortid. Derudover er en revenant en magtfuldt og "
+"frygtløs kriger som ikke kan føle smerte, og som vil kæmpe til den bitre "
+"ende.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/undead/Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
@@ -8328,6 +8395,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Undertiden kaldt »de gennemsigtige mænd«, genfærd udgør den højre hånd i "
+"deres herrers magt. De er en uhellig terror for de levende, da de er lige så "
+"dødelige, som deres udseende giver indtryk af.\n"
+"\n"
+"Skabelsen af denne skabning er ingen præstation; den virkelige fare, i at "
+"møde en sådan skabning, er at den ofte er budbringer om en langt mere "
+"dødelig styrke, som vil følge i dens spor.\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/undead/Spirit_Spectre.cfg:45
 #: data/core/units/undead/Spirit_Wraith.cfg:21
@@ -9339,6 +9414,7 @@ msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
+"Spillerne må navigere i dette spredte terræn på en lille men tæt besat ø."
 
 #: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
@@ -9814,17 +9890,19 @@ msgstr "Monstre"
 
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:5
 msgid "4p - Xanthe Chaos"
-msgstr ""
+msgstr "4p - Xanthe kaos"
 
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
+"Et 24x28 2 mod 2 kort med neutrale borgtårne og et stort rodet slag i "
+"centrum."
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:3
 msgid "5p - Auction-X"
-msgstr ""
+msgstr "5p - Auktion-X"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid ""
@@ -9833,6 +9911,11 @@ msgid ""
 "and the best way to determine how much is an auction, LOWEST bid wins.  It "
 "is a very small map so 75 gold is recommended for the other players."
 msgstr ""
+"4 spillere omkring et centralt borgtårn, spil mod computerens overlevelses "
+"stil eller som en FFA eller 4 mod 1.  Den centrale spiller vil skulle have "
+"mere guld i et 4 mod 1 eller FFA, og den bedste måde at bestemme dette på er "
+"ved en auktion, det LAVESTE bud vinder.  Det er et meget lille kort så 75 "
+"guldstykker anbefales for de andre spillere."
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:19
 msgid "teamname^Northeast"
@@ -10008,6 +10091,10 @@ msgid ""
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
+"Et 40x30 3 mod 3 kort. Fleksibel koordinering af din loyalitet kræves for at "
+"du ungår at blive udmanøvreret. Hold sættes for spiller 145 mod 236 (nord "
+"mod syd), men hold som 146 eller 136 er også interessant at spille. Designet "
+"til 150 guldstykker i opstart og har 44 landsbyer."
 
 #: data/multiplayer/scenarios/8p_Morituri.cfg:3
 msgid "8p - Morituri"
@@ -10327,7 +10414,6 @@ msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enheder i syne! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2088
-#, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(tryk $hotkey for at fortsætte)"
 
@@ -11803,9 +11889,8 @@ msgid "Downloading next scenario..."
 msgstr "Henter næste scenarie..."
 
 #: src/playcampaign.cpp:459
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Vil du virkelig slette dette gemte spil?"
+msgstr "Vil du gemme dit spil?"
 
 #: src/playcampaign.cpp:484
 msgid "Unknown scenario: '"
