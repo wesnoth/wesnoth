@@ -213,9 +213,9 @@ void show_objectives(display& disp, const config& level, const std::string& obje
 	static const std::string no_objectives(_("No objectives available"));
 	const std::string& name = level["name"];
 
-	gui::show_dialog(disp, NULL, "", "*~" + name + "\n" +
-	                 (objectives.empty() ? no_objectives : objectives),
-	                 gui::OK_ONLY);
+	gui::message_dialog(disp, "", "*~" + name + "\n" +
+	                 (objectives.empty() ? no_objectives : objectives)
+	                 ).show();
 }
 
 int get_save_name(display & disp,const std::string& message, const std::string& txt_label,

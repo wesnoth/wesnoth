@@ -603,7 +603,7 @@ void map_editor::edit_load_map() {
 	if (res == 0) {
 		// Check if the mapname contains any illegal characters
 		if(!verify_filename(fn, false))	{
-			gui::show_dialog(gui_, NULL, "", _("Warning: Illegal characters found in the map name. Please save under a different name."), gui::OK_ONLY);
+			gui::message_dialog(gui_, "", _("Warning: Illegal characters found in the map name. Please save under a different name.")).show();
 		}
 
 		std::string new_map = read_file(fn);
@@ -616,7 +616,7 @@ void map_editor::edit_load_map() {
 			}
 		}
 		else {
-			gui::show_dialog(gui_, NULL, "", _("The file does not contain a valid map."), gui::OK_ONLY);
+			gui::message_dialog(gui_, "", _("The file does not contain a valid map.")).show();
 		}
 	}
 }
@@ -690,7 +690,7 @@ void map_editor::edit_revert() {
 		throw new_map_exception(new_map, filename_, scenario);
 	}
 	else {
-		gui::show_dialog(gui_, NULL, "", _("The file does not contain a valid map."), gui::OK_ONLY);
+		gui::message_dialog(gui_, "", _("The file does not contain a valid map.")).show();
 	}
 }
 
@@ -995,8 +995,8 @@ void map_editor::set_starting_position(const int player, const gamemap::location
 		map_.set_starting_position(player, gamemap::location());
 		save_undo_action(action);
 		recalculate_starting_pos_labels();
-		//gui::show_dialog(gui_, NULL, "",
-		//		                 _("You must have a hex selected on the board."), gui::OK_ONLY);
+		//gui::message_dialog(gui_, "",
+		//		                 _("You must have a hex selected on the board.")).show();
 	}
 }
 
@@ -1295,8 +1295,7 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 		write_file(filename, data);
 		num_operations_since_save_ = 0;
 		if (display_confirmation) {
-			gui::show_dialog(gui_, NULL, "", _("Map saved."),
-							 gui::OK_ONLY);
+			gui::message_dialog(gui_, "", _("Map saved.")).show();
 		}
 		if (from_scenario_)
 			original_filename_ = filename;
@@ -1305,7 +1304,7 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = vgettext("Could not save the map: $msg",symbols);
-		gui::show_dialog(gui_, NULL, "", msg, gui::OK_ONLY);
+		gui::message_dialog(gui_, "", msg).show();
 		return false;
 	}
 	return true;
@@ -1319,7 +1318,7 @@ bool map_editor::verify_filename(const std::string& filename, bool show_error) c
 
 	if(filename.find_first_not_of(allowed_characters, start_pos) != std::string::npos) {
 		if(show_error) {
-			gui::show_dialog(gui_, NULL, "", _("Error: Illegal character in filename."), gui::OK_ONLY);
+			gui::message_dialog(gui_, "", _("Error: Illegal character in filename.")).show();
 		}
 		return false;
 	}
