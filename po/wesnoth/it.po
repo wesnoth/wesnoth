@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-15 23:53+0200\n"
+"POT-Creation-Date: 2007-06-16 21:28+0200\n"
 "PO-Revision-Date: 2007-05-29 10:53+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -132,7 +132,7 @@ msgstr "esplosione magica"
 #: data/core/units/monsters/Yeti.cfg:35 data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:38
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Great.cfg:29 data/core/units/trolls/Hero.cfg:27
 #: data/core/units/trolls/Rocklobber.cfg:29
 #: data/core/units/trolls/Rocklobber.cfg:66
 #: data/core/units/trolls/Troll.cfg:27 data/core/units/trolls/Warrior.cfg:29
@@ -4773,7 +4773,6 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:23
 #: data/core/units/humans/Outlaw.cfg:22
 #: data/core/units/humans/Outlaw_Bandit.cfg:34
-#: data/core/units/trolls/Great.cfg:27
 msgid "mace"
 msgstr "mazza"
 
@@ -5126,7 +5125,7 @@ msgstr "ascia"
 
 #: data/core/units/dwarves/Fighter.cfg:85 data/core/units/dwarves/Lord.cfg:66
 #: data/core/units/dwarves/Steelclad.cfg:65
-#: data/core/units/trolls/Warrior.cfg:27
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "martello"
 
@@ -11247,7 +11246,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:168 src/help.cpp:2599 src/menu_events.cpp:138
+#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:138
 msgid "Close"
 msgstr "Chiudi"
 
@@ -11452,11 +11451,11 @@ msgstr "Scegli la partita da caricare"
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/dialogs.cpp:725 src/help.cpp:1085
+#: src/dialogs.cpp:725 src/help.cpp:1084
 msgid "level"
 msgstr "Livello"
 
-#: src/dialogs.cpp:747 src/help.cpp:1143
+#: src/dialogs.cpp:747 src/help.cpp:1142
 msgid "HP: "
 msgstr "PF: "
 
@@ -11464,7 +11463,7 @@ msgstr "PF: "
 msgid "XP: "
 msgstr "PE: "
 
-#: src/dialogs.cpp:764 src/help.cpp:1144
+#: src/dialogs.cpp:764 src/help.cpp:1143
 msgid "Moves: "
 msgstr "Mosse: "
 
@@ -11555,7 +11554,7 @@ msgstr "Sto richiedendo la lista delle estensioni."
 msgid "Error communicating with the server."
 msgstr "Errore di comunicazione con il server."
 
-#: src/game.cpp:946 src/titlescreen.cpp:234
+#: src/game.cpp:946 src/titlescreen.cpp:235
 msgid "Version"
 msgstr "Versione"
 
@@ -11759,99 +11758,99 @@ msgstr "Sconfitta:"
 msgid "Could not write to file"
 msgstr "Impossibile scrivere su file"
 
-#: src/help.cpp:1105
+#: src/help.cpp:1104
 msgid "Advances to: "
 msgstr "Avanza come: "
 
-#: src/help.cpp:1126
+#: src/help.cpp:1125
 msgid "Abilities: "
 msgstr "Abilità: "
 
-#: src/help.cpp:1145
+#: src/help.cpp:1144
 msgid "Cost: "
 msgstr "Costo:"
 
-#: src/help.cpp:1146
+#: src/help.cpp:1145
 msgid "Alignment: "
 msgstr "Allineamento: "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1151
 msgid "Required XP: "
 msgstr "PE Richiesti: "
 
-#: src/help.cpp:1161
+#: src/help.cpp:1160
 msgid "unit help^Attacks"
 msgstr "Attacchi"
 
-#: src/help.cpp:1168
+#: src/help.cpp:1167
 msgid "unit help^Name"
 msgstr "Nome"
 
-#: src/help.cpp:1169 src/menu_events.cpp:312 src/menu_events.cpp:857
+#: src/help.cpp:1168 src/menu_events.cpp:312 src/menu_events.cpp:857
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help.cpp:1170
+#: src/help.cpp:1169
 msgid "Strikes"
 msgstr "Colpi"
 
-#: src/help.cpp:1171
+#: src/help.cpp:1170
 msgid "Range"
 msgstr "Raggio"
 
-#: src/help.cpp:1172
+#: src/help.cpp:1171
 msgid "Special"
 msgstr "Speciale"
 
-#: src/help.cpp:1222
+#: src/help.cpp:1221
 msgid "Resistances"
 msgstr "Resistenze"
 
-#: src/help.cpp:1226
+#: src/help.cpp:1225
 msgid "Attack Type"
 msgstr "Tipo di attacco"
 
-#: src/help.cpp:1227
+#: src/help.cpp:1226
 msgid "Resistance"
 msgstr "Resistenza"
 
-#: src/help.cpp:1252
+#: src/help.cpp:1251
 msgid "Terrain Modifiers"
 msgstr "Modificatori del terreno"
 
-#: src/help.cpp:1256
+#: src/help.cpp:1255
 msgid "Terrain"
 msgstr "Terreno"
 
-#: src/help.cpp:1257
+#: src/help.cpp:1256
 msgid "Defense"
 msgstr "Difesa"
 
-#: src/help.cpp:1258
+#: src/help.cpp:1257
 msgid "Movement Cost"
 msgstr "Costo di movimento"
 
-#: src/help.cpp:2144
+#: src/help.cpp:2143
 msgid " < Back"
 msgstr "< Indietro"
 
-#: src/help.cpp:2145
+#: src/help.cpp:2144
 msgid "Forward >"
 msgstr "Avanti >"
 
-#: src/help.cpp:2257
+#: src/help.cpp:2256
 msgid "Reference to unknown topic: "
 msgstr "Riferimento a un argomento sconosciuto: "
 
-#: src/help.cpp:2517
+#: src/help.cpp:2516
 msgid "corrupted original file"
 msgstr "file originale danneggiato"
 
-#: src/help.cpp:2603
+#: src/help.cpp:2602
 msgid "The Battle for Wesnoth Help"
 msgstr "Aiuto per The Battle for Wesnoth"
 
-#: src/help.cpp:2653
+#: src/help.cpp:2652
 msgid "Parse error when parsing help text: "
 msgstr "Errore durante il controllo del testo della guida: "
 
@@ -13070,51 +13069,51 @@ msgstr "-- Il Tomo di Wesnoth"
 
 # Il carattere ^ separa la descrizione per i traduttore (commento) dal testo da
 # tradurre.  Bisogna tradurre SOLO quello che segue il carattere "^".
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Tutorial"
 msgstr "Tutorial"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Campaign"
 msgstr "Campagna"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Multiplayer"
 msgstr "Multigiocatore"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Load"
 msgstr "Carica"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Estensioni"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:261
 msgid "TitleScreen button^Language"
 msgstr "Lingua"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Preferences"
 msgstr "Preferenze"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:263
 msgid "Credits"
 msgstr "Riconoscimenti"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:264
 msgid "TitleScreen button^Quit"
 msgstr "Esci"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:265
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Inizia il corso per familiarizzare con il gioco"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:266
 msgid "Start a new single player campaign"
 msgstr "Inizia una campagna a giocatore singolo"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:267
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -13122,39 +13121,39 @@ msgstr ""
 "Partita multigiocatore (stessa postazione, LAN o Internet) o uno scenario "
 "singolo contro l'AI"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:268
 msgid "Load a single player saved game"
 msgstr "Carica una partita a giocatore singolo"
 
-#: src/titlescreen.cpp:268
+#: src/titlescreen.cpp:269
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Scarica campagne, ere o mappe non ufficiali"
 
-#: src/titlescreen.cpp:269
+#: src/titlescreen.cpp:270
 msgid "Change the language"
 msgstr "Cambia la lingua"
 
-#: src/titlescreen.cpp:270
+#: src/titlescreen.cpp:271
 msgid "Configure the game's settings"
 msgstr "Configura le impostazioni del gioco"
 
-#: src/titlescreen.cpp:271
+#: src/titlescreen.cpp:272
 msgid "View the credits"
 msgstr "Guarda i riconoscimenti"
 
-#: src/titlescreen.cpp:272
+#: src/titlescreen.cpp:273
 msgid "Quit the game"
 msgstr "Esci dal gioco"
 
-#: src/titlescreen.cpp:310
+#: src/titlescreen.cpp:311
 msgid "More"
 msgstr "Altro"
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:312
 msgid "Help"
 msgstr "Aiuto"
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:315
 msgid "Help Wesnoth by sending us information"
 msgstr "Aiuta Wesnoth mandandoci un rapporto"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-15 23:53+0200\n"
+"POT-Creation-Date: 2007-06-16 21:28+0200\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -128,7 +128,7 @@ msgstr "마법"
 #: data/core/units/monsters/Yeti.cfg:35 data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:38
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Great.cfg:29 data/core/units/trolls/Hero.cfg:27
 #: data/core/units/trolls/Rocklobber.cfg:29
 #: data/core/units/trolls/Rocklobber.cfg:66
 #: data/core/units/trolls/Troll.cfg:27 data/core/units/trolls/Warrior.cfg:29
@@ -3524,7 +3524,6 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:23
 #: data/core/units/humans/Outlaw.cfg:22
 #: data/core/units/humans/Outlaw_Bandit.cfg:34
-#: data/core/units/trolls/Great.cfg:27
 msgid "mace"
 msgstr "철퇴"
 
@@ -3782,7 +3781,7 @@ msgstr "액스"
 
 #: data/core/units/dwarves/Fighter.cfg:85 data/core/units/dwarves/Lord.cfg:66
 #: data/core/units/dwarves/Steelclad.cfg:65
-#: data/core/units/trolls/Warrior.cfg:27
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "해머"
 
@@ -8336,7 +8335,7 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:168 src/help.cpp:2599 src/menu_events.cpp:138
+#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:138
 msgid "Close"
 msgstr "닫기"
 
@@ -8533,11 +8532,11 @@ msgstr "불러올 게임을 고르십시오"
 msgid "Profile"
 msgstr "프로필"
 
-#: src/dialogs.cpp:725 src/help.cpp:1085
+#: src/dialogs.cpp:725 src/help.cpp:1084
 msgid "level"
 msgstr "레벨"
 
-#: src/dialogs.cpp:747 src/help.cpp:1143
+#: src/dialogs.cpp:747 src/help.cpp:1142
 msgid "HP: "
 msgstr "체력:"
 
@@ -8545,7 +8544,7 @@ msgstr "체력:"
 msgid "XP: "
 msgstr "경험치:"
 
-#: src/dialogs.cpp:764 src/help.cpp:1144
+#: src/dialogs.cpp:764 src/help.cpp:1143
 msgid "Moves: "
 msgstr "이동력:"
 
@@ -8632,7 +8631,7 @@ msgstr ""
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:946 src/titlescreen.cpp:234
+#: src/game.cpp:946 src/titlescreen.cpp:235
 msgid "Version"
 msgstr ""
 
@@ -8837,102 +8836,102 @@ msgstr ""
 msgid "Could not write to file"
 msgstr ""
 
-#: src/help.cpp:1105
+#: src/help.cpp:1104
 msgid "Advances to: "
 msgstr ""
 
-#: src/help.cpp:1126
+#: src/help.cpp:1125
 msgid "Abilities: "
 msgstr ""
 
-#: src/help.cpp:1145
+#: src/help.cpp:1144
 #, fuzzy
 msgid "Cost: "
 msgstr "이동력:"
 
-#: src/help.cpp:1146
+#: src/help.cpp:1145
 msgid "Alignment: "
 msgstr ""
 
-#: src/help.cpp:1152
+#: src/help.cpp:1151
 msgid "Required XP: "
 msgstr ""
 
-#: src/help.cpp:1161
+#: src/help.cpp:1160
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1168
+#: src/help.cpp:1167
 #, fuzzy
 msgid "unit help^Name"
 msgstr "게임을 나갑니다"
 
-#: src/help.cpp:1169 src/menu_events.cpp:312 src/menu_events.cpp:857
+#: src/help.cpp:1168 src/menu_events.cpp:312 src/menu_events.cpp:857
 msgid "Type"
 msgstr "종류"
 
-#: src/help.cpp:1170
+#: src/help.cpp:1169
 msgid "Strikes"
 msgstr "공격"
 
-#: src/help.cpp:1171
+#: src/help.cpp:1170
 msgid "Range"
 msgstr "레인지"
 
-#: src/help.cpp:1172
+#: src/help.cpp:1171
 msgid "Special"
 msgstr "특수"
 
-#: src/help.cpp:1222
+#: src/help.cpp:1221
 msgid "Resistances"
 msgstr "저항력"
 
-#: src/help.cpp:1226
+#: src/help.cpp:1225
 msgid "Attack Type"
 msgstr "공격 종류"
 
-#: src/help.cpp:1227
+#: src/help.cpp:1226
 msgid "Resistance"
 msgstr "저항력"
 
-#: src/help.cpp:1252
+#: src/help.cpp:1251
 msgid "Terrain Modifiers"
 msgstr "지형 효과"
 
-#: src/help.cpp:1256
+#: src/help.cpp:1255
 msgid "Terrain"
 msgstr "지형"
 
-#: src/help.cpp:1257
+#: src/help.cpp:1256
 msgid "Defense"
 msgstr "방어"
 
-#: src/help.cpp:1258
+#: src/help.cpp:1257
 #, fuzzy
 msgid "Movement Cost"
 msgstr "이동력"
 
-#: src/help.cpp:2144
+#: src/help.cpp:2143
 msgid " < Back"
 msgstr " < 뒤로"
 
-#: src/help.cpp:2145
+#: src/help.cpp:2144
 msgid "Forward >"
 msgstr "앞으로 >"
 
-#: src/help.cpp:2257
+#: src/help.cpp:2256
 msgid "Reference to unknown topic: "
 msgstr ""
 
-#: src/help.cpp:2517
+#: src/help.cpp:2516
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2603
+#: src/help.cpp:2602
 msgid "The Battle for Wesnoth Help"
 msgstr ""
 
-#: src/help.cpp:2653
+#: src/help.cpp:2652
 msgid "Parse error when parsing help text: "
 msgstr ""
 
@@ -10122,52 +10121,52 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth의 책"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Tutorial"
 msgstr "연습 게임"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Campaign"
 msgstr "캠페인"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Multiplayer"
 msgstr "멀티플레이"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Load"
 msgstr "게임 로드"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:260
 #, fuzzy
 msgid "TitleScreen button^Get Add-ons"
 msgstr "게임 로드"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:261
 msgid "TitleScreen button^Language"
 msgstr "언어 설정"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Preferences"
 msgstr "게임 옵션"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:263
 msgid "Credits"
 msgstr ""
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:264
 msgid "TitleScreen button^Quit"
 msgstr "나가기"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:265
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "게임에 친숙해지기 위해 연습 게임을 합니다"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:266
 msgid "Start a new single player campaign"
 msgstr "새로운 싱글 플레이어 캠페인을 시작합니다"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:267
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -10175,39 +10174,39 @@ msgstr ""
 "멀티플레이 (핫시트, 랜, 혹은 인터넷), 혹은 AI와 대항하는 싱글 시나리오를 플레"
 "이합니다"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:268
 msgid "Load a single player saved game"
 msgstr "저장 된 게임을 불러옵니다"
 
-#: src/titlescreen.cpp:268
+#: src/titlescreen.cpp:269
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 
-#: src/titlescreen.cpp:269
+#: src/titlescreen.cpp:270
 msgid "Change the language"
 msgstr "언어를 바꿉니다"
 
-#: src/titlescreen.cpp:270
+#: src/titlescreen.cpp:271
 msgid "Configure the game's settings"
 msgstr "게임을 설정합니다"
 
-#: src/titlescreen.cpp:271
+#: src/titlescreen.cpp:272
 msgid "View the credits"
 msgstr "제작진을 봅니다"
 
-#: src/titlescreen.cpp:272
+#: src/titlescreen.cpp:273
 msgid "Quit the game"
 msgstr "게임을 나갑니다"
 
-#: src/titlescreen.cpp:310
+#: src/titlescreen.cpp:311
 msgid "More"
 msgstr "더 보기"
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:312
 msgid "Help"
 msgstr ""
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:315
 msgid "Help Wesnoth by sending us information"
 msgstr "정보를 보냄으로써 Wesnoth 를 도와줍니다"
 

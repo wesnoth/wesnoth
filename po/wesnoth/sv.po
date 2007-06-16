@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-15 23:53+0200\n"
+"POT-Creation-Date: 2007-06-16 21:28+0200\n"
 "PO-Revision-Date: 2007-06-08 23:09+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -121,7 +121,7 @@ msgstr "magisk stöt"
 #: data/core/units/monsters/Yeti.cfg:35 data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:38
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Great.cfg:29 data/core/units/trolls/Hero.cfg:27
 #: data/core/units/trolls/Rocklobber.cfg:29
 #: data/core/units/trolls/Rocklobber.cfg:66
 #: data/core/units/trolls/Troll.cfg:27 data/core/units/trolls/Warrior.cfg:29
@@ -4672,7 +4672,6 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:23
 #: data/core/units/humans/Outlaw.cfg:22
 #: data/core/units/humans/Outlaw_Bandit.cfg:34
-#: data/core/units/trolls/Great.cfg:27
 msgid "mace"
 msgstr "spikklubba"
 
@@ -5010,7 +5009,7 @@ msgstr "yxa"
 
 #: data/core/units/dwarves/Fighter.cfg:85 data/core/units/dwarves/Lord.cfg:66
 #: data/core/units/dwarves/Steelclad.cfg:65
-#: data/core/units/trolls/Warrior.cfg:27
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "hammare"
 
@@ -10874,7 +10873,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:168 src/help.cpp:2599 src/menu_events.cpp:138
+#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:138
 msgid "Close"
 msgstr "Stäng"
 
@@ -11078,11 +11077,11 @@ msgstr "Välj spel"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:725 src/help.cpp:1085
+#: src/dialogs.cpp:725 src/help.cpp:1084
 msgid "level"
 msgstr "nivå"
 
-#: src/dialogs.cpp:747 src/help.cpp:1143
+#: src/dialogs.cpp:747 src/help.cpp:1142
 msgid "HP: "
 msgstr "HP: "
 
@@ -11090,7 +11089,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:764 src/help.cpp:1144
+#: src/dialogs.cpp:764 src/help.cpp:1143
 msgid "Moves: "
 msgstr "Förflyttning: "
 
@@ -11180,7 +11179,7 @@ msgstr "Hämtar lista över extramaterial"
 msgid "Error communicating with the server."
 msgstr "Kunde ej kommunicera med servern."
 
-#: src/game.cpp:946 src/titlescreen.cpp:234
+#: src/game.cpp:946 src/titlescreen.cpp:235
 msgid "Version"
 msgstr "Version"
 
@@ -11380,99 +11379,99 @@ msgstr "Nederlag:"
 msgid "Could not write to file"
 msgstr "Kunde inte skriva till fil"
 
-#: src/help.cpp:1105
+#: src/help.cpp:1104
 msgid "Advances to: "
 msgstr "Kan befordras till: "
 
-#: src/help.cpp:1126
+#: src/help.cpp:1125
 msgid "Abilities: "
 msgstr "Förmågor: "
 
-#: src/help.cpp:1145
+#: src/help.cpp:1144
 msgid "Cost: "
 msgstr "Kostnad: "
 
-#: src/help.cpp:1146
+#: src/help.cpp:1145
 msgid "Alignment: "
 msgstr "Sinnelag: "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1151
 msgid "Required XP: "
 msgstr "EP för nästa nivå: "
 
-#: src/help.cpp:1161
+#: src/help.cpp:1160
 msgid "unit help^Attacks"
 msgstr "Attacker"
 
-#: src/help.cpp:1168
+#: src/help.cpp:1167
 msgid "unit help^Name"
 msgstr "Namn"
 
-#: src/help.cpp:1169 src/menu_events.cpp:312 src/menu_events.cpp:857
+#: src/help.cpp:1168 src/menu_events.cpp:312 src/menu_events.cpp:857
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1170
+#: src/help.cpp:1169
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help.cpp:1171
+#: src/help.cpp:1170
 msgid "Range"
 msgstr "Räckvidd"
 
-#: src/help.cpp:1172
+#: src/help.cpp:1171
 msgid "Special"
 msgstr "Specialitet"
 
-#: src/help.cpp:1222
+#: src/help.cpp:1221
 msgid "Resistances"
 msgstr "Motståndskraft mot olika attacker"
 
-#: src/help.cpp:1226
+#: src/help.cpp:1225
 msgid "Attack Type"
 msgstr "Attacktyp"
 
-#: src/help.cpp:1227
+#: src/help.cpp:1226
 msgid "Resistance"
 msgstr "Motståndskraft"
 
-#: src/help.cpp:1252
+#: src/help.cpp:1251
 msgid "Terrain Modifiers"
 msgstr "Terrängavdrag"
 
-#: src/help.cpp:1256
+#: src/help.cpp:1255
 msgid "Terrain"
 msgstr "Terräng"
 
-#: src/help.cpp:1257
+#: src/help.cpp:1256
 msgid "Defense"
 msgstr "Försvar"
 
-#: src/help.cpp:1258
+#: src/help.cpp:1257
 msgid "Movement Cost"
 msgstr "Förflyttningskostnad"
 
-#: src/help.cpp:2144
+#: src/help.cpp:2143
 msgid " < Back"
 msgstr " < Tillbaka"
 
-#: src/help.cpp:2145
+#: src/help.cpp:2144
 msgid "Forward >"
 msgstr "Fram >"
 
-#: src/help.cpp:2257
+#: src/help.cpp:2256
 msgid "Reference to unknown topic: "
 msgstr "Referens till okänt ämne: "
 
-#: src/help.cpp:2517
+#: src/help.cpp:2516
 msgid "corrupted original file"
 msgstr "trasig originalfil"
 
-#: src/help.cpp:2603
+#: src/help.cpp:2602
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjälp om Kampen om Wesnoth"
 
-#: src/help.cpp:2653
+#: src/help.cpp:2652
 msgid "Parse error when parsing help text: "
 msgstr "Tolkningsfel när hjälptexten tolkades: "
 
@@ -12682,51 +12681,51 @@ msgstr "Kontrollerad by"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoths krönika"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Tutorial"
 msgstr "Träningsspel"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Campaign"
 msgstr "Kampanj"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Multiplayer"
 msgstr "Gruppspel"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Load"
 msgstr "Sparade spel"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Extramaterial"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:261
 msgid "TitleScreen button^Language"
 msgstr "Språk"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Preferences"
 msgstr "Inställningar"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:263
 msgid "Credits"
 msgstr "Medverkande"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:264
 msgid "TitleScreen button^Quit"
 msgstr "Avsluta"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:265
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Starta ett träningsspel för att bekanta dig med spelet"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:266
 msgid "Start a new single player campaign"
 msgstr "Starta en ny kampanj för en spelare"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:267
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -12734,39 +12733,39 @@ msgstr ""
 "Starta ett gruppspel (heta stolen, LAN eller Internet), eller ett separat "
 "scenario mot datorn"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:268
 msgid "Load a single player saved game"
 msgstr "Öppna ett sparat privat spel"
 
-#: src/titlescreen.cpp:268
+#: src/titlescreen.cpp:269
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Hämta hem användargjorda kampanjer, eror eller kartor"
 
-#: src/titlescreen.cpp:269
+#: src/titlescreen.cpp:270
 msgid "Change the language"
 msgstr "Byt språk"
 
-#: src/titlescreen.cpp:270
+#: src/titlescreen.cpp:271
 msgid "Configure the game's settings"
 msgstr "Konfigurera spelet"
 
-#: src/titlescreen.cpp:271
+#: src/titlescreen.cpp:272
 msgid "View the credits"
 msgstr "Medverkande"
 
-#: src/titlescreen.cpp:272
+#: src/titlescreen.cpp:273
 msgid "Quit the game"
 msgstr "Avsluta spelet"
 
-#: src/titlescreen.cpp:310
+#: src/titlescreen.cpp:311
 msgid "More"
 msgstr "Läs mer"
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:312
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:315
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjälp Wesnoth genom att skicka oss information"
 

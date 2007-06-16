@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-15 23:53+0200\n"
+"POT-Creation-Date: 2007-06-16 21:28+0200\n"
 "PO-Revision-Date: 2007-05-15 02:45+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -135,7 +135,7 @@ msgstr "магическа"
 #: data/core/units/monsters/Yeti.cfg:35 data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:38
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Great.cfg:29 data/core/units/trolls/Hero.cfg:27
 #: data/core/units/trolls/Rocklobber.cfg:29
 #: data/core/units/trolls/Rocklobber.cfg:66
 #: data/core/units/trolls/Troll.cfg:27 data/core/units/trolls/Warrior.cfg:29
@@ -4741,7 +4741,6 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:23
 #: data/core/units/humans/Outlaw.cfg:22
 #: data/core/units/humans/Outlaw_Bandit.cfg:34
-#: data/core/units/trolls/Great.cfg:27
 msgid "mace"
 msgstr "боздуган"
 
@@ -5099,7 +5098,7 @@ msgstr "секира"
 
 #: data/core/units/dwarves/Fighter.cfg:85 data/core/units/dwarves/Lord.cfg:66
 #: data/core/units/dwarves/Steelclad.cfg:65
-#: data/core/units/trolls/Warrior.cfg:27
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "чук"
 
@@ -11164,7 +11163,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:168 src/help.cpp:2599 src/menu_events.cpp:138
+#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:138
 msgid "Close"
 msgstr "Затваряне"
 
@@ -11368,11 +11367,11 @@ msgstr "Избор на игра за зареждане"
 msgid "Profile"
 msgstr "Профил"
 
-#: src/dialogs.cpp:725 src/help.cpp:1085
+#: src/dialogs.cpp:725 src/help.cpp:1084
 msgid "level"
 msgstr "ниво"
 
-#: src/dialogs.cpp:747 src/help.cpp:1143
+#: src/dialogs.cpp:747 src/help.cpp:1142
 msgid "HP: "
 msgstr "Здраве: "
 
@@ -11380,7 +11379,7 @@ msgstr "Здраве: "
 msgid "XP: "
 msgstr "Опит: "
 
-#: src/dialogs.cpp:764 src/help.cpp:1144
+#: src/dialogs.cpp:764 src/help.cpp:1143
 msgid "Moves: "
 msgstr "Ходове: "
 
@@ -11467,7 +11466,7 @@ msgstr "Запитване за списък с допълнения"
 msgid "Error communicating with the server."
 msgstr "Грешка при комуникацията със сървъра."
 
-#: src/game.cpp:946 src/titlescreen.cpp:234
+#: src/game.cpp:946 src/titlescreen.cpp:235
 msgid "Version"
 msgstr "Версия"
 
@@ -11667,99 +11666,99 @@ msgstr "Загуба:"
 msgid "Could not write to file"
 msgstr "Записът невъзможен "
 
-#: src/help.cpp:1105
+#: src/help.cpp:1104
 msgid "Advances to: "
 msgstr "Повишения: "
 
-#: src/help.cpp:1126
+#: src/help.cpp:1125
 msgid "Abilities: "
 msgstr "Умения: "
 
-#: src/help.cpp:1145
+#: src/help.cpp:1144
 msgid "Cost: "
 msgstr "Цена: "
 
-#: src/help.cpp:1146
+#: src/help.cpp:1145
 msgid "Alignment: "
 msgstr "Уклон: "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1151
 msgid "Required XP: "
 msgstr "Необходим опит: "
 
-#: src/help.cpp:1161
+#: src/help.cpp:1160
 msgid "unit help^Attacks"
 msgstr "Атаки"
 
-#: src/help.cpp:1168
+#: src/help.cpp:1167
 msgid "unit help^Name"
 msgstr "Име"
 
-#: src/help.cpp:1169 src/menu_events.cpp:312 src/menu_events.cpp:857
+#: src/help.cpp:1168 src/menu_events.cpp:312 src/menu_events.cpp:857
 msgid "Type"
 msgstr "Тип"
 
-#: src/help.cpp:1170
+#: src/help.cpp:1169
 msgid "Strikes"
 msgstr "Поражение"
 
-#: src/help.cpp:1171
+#: src/help.cpp:1170
 msgid "Range"
 msgstr "Обхват"
 
-#: src/help.cpp:1172
+#: src/help.cpp:1171
 msgid "Special"
 msgstr "Специални"
 
-#: src/help.cpp:1222
+#: src/help.cpp:1221
 msgid "Resistances"
 msgstr "Устойчивости"
 
-#: src/help.cpp:1226
+#: src/help.cpp:1225
 msgid "Attack Type"
 msgstr "Тип"
 
-#: src/help.cpp:1227
+#: src/help.cpp:1226
 msgid "Resistance"
 msgstr "Устойчивост"
 
-#: src/help.cpp:1252
+#: src/help.cpp:1251
 msgid "Terrain Modifiers"
 msgstr "Множители на терена"
 
-#: src/help.cpp:1256
+#: src/help.cpp:1255
 msgid "Terrain"
 msgstr "Терен"
 
-#: src/help.cpp:1257
+#: src/help.cpp:1256
 msgid "Defense"
 msgstr "Защита"
 
-#: src/help.cpp:1258
+#: src/help.cpp:1257
 msgid "Movement Cost"
 msgstr "Движение"
 
-#: src/help.cpp:2144
+#: src/help.cpp:2143
 msgid " < Back"
 msgstr " < Назад"
 
-#: src/help.cpp:2145
+#: src/help.cpp:2144
 msgid "Forward >"
 msgstr "Напред >"
 
-#: src/help.cpp:2257
+#: src/help.cpp:2256
 msgid "Reference to unknown topic: "
 msgstr "Препратка към непозната тема: "
 
-#: src/help.cpp:2517
+#: src/help.cpp:2516
 msgid "corrupted original file"
 msgstr "повреден оригинален файл"
 
-#: src/help.cpp:2603
+#: src/help.cpp:2602
 msgid "The Battle for Wesnoth Help"
 msgstr "Помощ на Битката за Уеснот"
 
-#: src/help.cpp:2653
+#: src/help.cpp:2652
 msgid "Parse error when parsing help text: "
 msgstr "Грешка при показването на помощният текст: "
 
@@ -12972,89 +12971,89 @@ msgstr "Притежавано селище"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Книгата на Уеснот"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Tutorial"
 msgstr "Обучение "
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Campaign"
 msgstr "Кампания"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Multiplayer"
 msgstr "Игра в мрежа"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Load"
 msgstr "Зареждане"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Допълнения"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:261
 msgid "TitleScreen button^Language"
 msgstr "Език"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Preferences"
 msgstr "Настройки"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:263
 msgid "Credits"
 msgstr "Автори"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:264
 msgid "TitleScreen button^Quit"
 msgstr "Изход"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:265
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Начално запознаване с играта"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:266
 msgid "Start a new single player campaign"
 msgstr "Нова кампания"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:267
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "Мрежова игра (Hotseat, LAN, Internet) или игра срещу компютър"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:268
 msgid "Load a single player saved game"
 msgstr "Зареждане на игра"
 
-#: src/titlescreen.cpp:268
+#: src/titlescreen.cpp:269
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Сваляне на направени от потребители кампании, ери или пакети с карти "
 
-#: src/titlescreen.cpp:269
+#: src/titlescreen.cpp:270
 msgid "Change the language"
 msgstr "Смяна на езика"
 
-#: src/titlescreen.cpp:270
+#: src/titlescreen.cpp:271
 msgid "Configure the game's settings"
 msgstr "Настройки за играта"
 
-#: src/titlescreen.cpp:271
+#: src/titlescreen.cpp:272
 msgid "View the credits"
 msgstr "Преглед на заслугите "
 
-#: src/titlescreen.cpp:272
+#: src/titlescreen.cpp:273
 msgid "Quit the game"
 msgstr "Изход от играта"
 
-#: src/titlescreen.cpp:310
+#: src/titlescreen.cpp:311
 msgid "More"
 msgstr "Още"
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:312
 msgid "Help"
 msgstr "Помощ"
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:315
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогнете на Уеснот, като ни пращате информация"
 

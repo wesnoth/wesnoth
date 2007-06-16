@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-15 23:53+0200\n"
+"POT-Creation-Date: 2007-06-16 21:28+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -130,7 +130,7 @@ msgstr "魔法"
 #: data/core/units/monsters/Yeti.cfg:35 data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:38
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Great.cfg:29 data/core/units/trolls/Hero.cfg:27
 #: data/core/units/trolls/Rocklobber.cfg:29
 #: data/core/units/trolls/Rocklobber.cfg:66
 #: data/core/units/trolls/Troll.cfg:27 data/core/units/trolls/Warrior.cfg:29
@@ -4069,7 +4069,6 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:23
 #: data/core/units/humans/Outlaw.cfg:22
 #: data/core/units/humans/Outlaw_Bandit.cfg:34
-#: data/core/units/trolls/Great.cfg:27
 msgid "mace"
 msgstr "锤"
 
@@ -4389,7 +4388,7 @@ msgstr "斧"
 
 #: data/core/units/dwarves/Fighter.cfg:85 data/core/units/dwarves/Lord.cfg:66
 #: data/core/units/dwarves/Steelclad.cfg:65
-#: data/core/units/trolls/Warrior.cfg:27
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "锤"
 
@@ -9858,7 +9857,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:168 src/help.cpp:2599 src/menu_events.cpp:138
+#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:138
 msgid "Close"
 msgstr "关闭"
 
@@ -10064,11 +10063,11 @@ msgstr "选择要载入的游戏"
 msgid "Profile"
 msgstr "资料"
 
-#: src/dialogs.cpp:725 src/help.cpp:1085
+#: src/dialogs.cpp:725 src/help.cpp:1084
 msgid "level"
 msgstr "等级"
 
-#: src/dialogs.cpp:747 src/help.cpp:1143
+#: src/dialogs.cpp:747 src/help.cpp:1142
 msgid "HP: "
 msgstr "生命值："
 
@@ -10076,7 +10075,7 @@ msgstr "生命值："
 msgid "XP: "
 msgstr "经验值："
 
-#: src/dialogs.cpp:764 src/help.cpp:1144
+#: src/dialogs.cpp:764 src/help.cpp:1143
 msgid "Moves: "
 msgstr "移动： "
 
@@ -10163,7 +10162,7 @@ msgstr "请求插件列表"
 msgid "Error communicating with the server."
 msgstr "与服务器通讯错误。"
 
-#: src/game.cpp:946 src/titlescreen.cpp:234
+#: src/game.cpp:946 src/titlescreen.cpp:235
 msgid "Version"
 msgstr "版本"
 
@@ -10366,99 +10365,99 @@ msgstr "失败："
 msgid "Could not write to file"
 msgstr "无法写入文件"
 
-#: src/help.cpp:1105
+#: src/help.cpp:1104
 msgid "Advances to: "
 msgstr "升级为： "
 
-#: src/help.cpp:1126
+#: src/help.cpp:1125
 msgid "Abilities: "
 msgstr "技能： "
 
-#: src/help.cpp:1145
+#: src/help.cpp:1144
 msgid "Cost: "
 msgstr "价格："
 
-#: src/help.cpp:1146
+#: src/help.cpp:1145
 msgid "Alignment: "
 msgstr "攻击属性： "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1151
 msgid "Required XP: "
 msgstr "升级所需经验值： "
 
-#: src/help.cpp:1161
+#: src/help.cpp:1160
 msgid "unit help^Attacks"
 msgstr "攻击"
 
-#: src/help.cpp:1168
+#: src/help.cpp:1167
 msgid "unit help^Name"
 msgstr "名称"
 
-#: src/help.cpp:1169 src/menu_events.cpp:312 src/menu_events.cpp:857
+#: src/help.cpp:1168 src/menu_events.cpp:312 src/menu_events.cpp:857
 msgid "Type"
 msgstr "类型"
 
-#: src/help.cpp:1170
+#: src/help.cpp:1169
 msgid "Strikes"
 msgstr "输出"
 
-#: src/help.cpp:1171
+#: src/help.cpp:1170
 msgid "Range"
 msgstr "范围"
 
-#: src/help.cpp:1172
+#: src/help.cpp:1171
 msgid "Special"
 msgstr "特性"
 
-#: src/help.cpp:1222
+#: src/help.cpp:1221
 msgid "Resistances"
 msgstr "抗性"
 
-#: src/help.cpp:1226
+#: src/help.cpp:1225
 msgid "Attack Type"
 msgstr "攻击类型"
 
-#: src/help.cpp:1227
+#: src/help.cpp:1226
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help.cpp:1252
+#: src/help.cpp:1251
 msgid "Terrain Modifiers"
 msgstr "地形影响"
 
-#: src/help.cpp:1256
+#: src/help.cpp:1255
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help.cpp:1257
+#: src/help.cpp:1256
 msgid "Defense"
 msgstr "闪避几率"
 
-#: src/help.cpp:1258
+#: src/help.cpp:1257
 msgid "Movement Cost"
 msgstr "移动点数耗费"
 
-#: src/help.cpp:2144
+#: src/help.cpp:2143
 msgid " < Back"
 msgstr " < 后退"
 
-#: src/help.cpp:2145
+#: src/help.cpp:2144
 msgid "Forward >"
 msgstr "前进 >"
 
-#: src/help.cpp:2257
+#: src/help.cpp:2256
 msgid "Reference to unknown topic: "
 msgstr "引用未知主题： "
 
-#: src/help.cpp:2517
+#: src/help.cpp:2516
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2603
+#: src/help.cpp:2602
 msgid "The Battle for Wesnoth Help"
 msgstr "韦诺之战帮助"
 
-#: src/help.cpp:2653
+#: src/help.cpp:2652
 msgid "Parse error when parsing help text: "
 msgstr "分析帮助文本时语法错误： "
 
@@ -11666,90 +11665,90 @@ msgstr "拥有的村庄"
 msgid "-- The Tome of Wesnoth"
 msgstr "——韦诺宝典"
 
-#: src/titlescreen.cpp:255
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Tutorial"
 msgstr "教程"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:257
 msgid "TitleScreen button^Campaign"
 msgstr "战役"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Multiplayer"
 msgstr "多人对战"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Load"
 msgstr "载入"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:260
 msgid "TitleScreen button^Get Add-ons"
 msgstr "下载插件"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:261
 msgid "TitleScreen button^Language"
 msgstr "语言"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:262
 msgid "TitleScreen button^Preferences"
 msgstr "设置"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:263
 #, fuzzy
 msgid "Credits"
 msgstr "特质"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:264
 msgid "TitleScreen button^Quit"
 msgstr "退出"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:265
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "执行教程来熟悉游戏"
 
-#: src/titlescreen.cpp:265
+#: src/titlescreen.cpp:266
 msgid "Start a new single player campaign"
 msgstr "开始一个新的单人游戏战役"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:267
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "进行多人对战（热座，局域网或Internet）， 或与电脑进行单人剧本对站。"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:268
 msgid "Load a single player saved game"
 msgstr "载入单人游戏存档"
 
-#: src/titlescreen.cpp:268
+#: src/titlescreen.cpp:269
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "下载用户自定的战役、时代或地图集"
 
-#: src/titlescreen.cpp:269
+#: src/titlescreen.cpp:270
 msgid "Change the language"
 msgstr "切换语言"
 
-#: src/titlescreen.cpp:270
+#: src/titlescreen.cpp:271
 msgid "Configure the game's settings"
 msgstr "配置游戏设置"
 
-#: src/titlescreen.cpp:271
+#: src/titlescreen.cpp:272
 msgid "View the credits"
 msgstr "查看荣誉名单"
 
-#: src/titlescreen.cpp:272
+#: src/titlescreen.cpp:273
 msgid "Quit the game"
 msgstr "退出游戏"
 
-#: src/titlescreen.cpp:310
+#: src/titlescreen.cpp:311
 msgid "More"
 msgstr "更多"
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:312
 msgid "Help"
 msgstr "帮助"
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:315
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
