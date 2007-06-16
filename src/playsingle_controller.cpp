@@ -479,7 +479,7 @@ void playsingle_controller::before_human_turn(bool save)
 	}
 
 	if(preferences::turn_dialog()) {
-		gui::message_dialog(*gui_,"",_("It is now your turn"));
+		gui::message_dialog(*gui_,"",_("It is now your turn")).show();
 	}
 
 	const std::string& turn_cmd = preferences::turn_cmd();

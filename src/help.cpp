@@ -28,7 +28,6 @@
 #include "sdl_utils.hpp"
 #include "sound.hpp"
 #include "construct_dialog.hpp"
-#include "show_dialog.hpp"
 #include "unit.hpp"
 #include "util.hpp"
 #include "video.hpp"

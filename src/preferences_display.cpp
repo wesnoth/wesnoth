@@ -78,7 +78,7 @@ void set_fullscreen(bool ison)
 			} else if(video.modePossible(1024,768,16,flags)) {
 				set_resolution(std::pair<int,int>(1024,768));
 			} else {
-				gui::message_dialog(*disp,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
+				gui::message_dialog(*disp,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen.")).show();
 			}
 		}
 	}
@@ -109,7 +109,7 @@ void set_resolution(const std::pair<int,int>& resolution)
 
 		} else {
 			write_resolution = false;
-			gui::message_dialog(*disp,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
+			gui::message_dialog(*disp,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen.")).show();
 		}
 	}
 
@@ -1389,7 +1389,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
 
 			if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
-				gui::message_dialog(disp,"",_("This Hotkey is already in use."));
+				gui::message_dialog(disp,"",_("This Hotkey is already in use.")).show();
 			} else {
 				newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
 						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
@@ -1428,11 +1428,11 @@ bool show_theme_dialog(display& disp)
 		preferences::set_theme(options[action]);
 		//it would be preferable for the new theme to take effect
 		//immediately, however, this will have to do for now.
-		gui::message_dialog(disp,"",_("New theme will take effect on next new or loaded game."));
+		gui::message_dialog(disp,"",_("New theme will take effect on next new or loaded game.")).show();
 		return(1);
 		}
 	}else{
-		gui::message_dialog(disp,"",_("No known themes.  Try changing from within an existing game."));
+		gui::message_dialog(disp,"",_("No known themes.  Try changing from within an existing game.")).show();
 	}
 	return(0);
 }
