@@ -703,65 +703,101 @@ surface blur_surface(surface const &surf, int depth)
 		return NULL;
 	}
 
+	const int max_blur = 256;
+	if(depth > max_blur) {
+		depth = max_blur;
+	}
+
+	Uint32 queue[max_blur];
+	const Uint32* end_queue = queue + max_blur;
+
+	const Uint32 ff = 0xff;
+
 	surface_lock lock(res);
 	for(int y = 0; y < res->h; ++y) {
-		int red = 0, green = 0, blue = 0, avg = 0;
+		const Uint32* front = &queue[0];
+		Uint32* back = &queue[0];
+		Uint32 red = 0, green = 0, blue = 0, avg = 0;
 		Uint32* p = lock.pixels() + y*res->w;
 		for(int x = 0; x <= depth && x < res->w; ++x, ++p) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
-			blue += *p&0xFF;
+			blue += (*p)&0xFF;
 			++avg;
+			*back++ = *p;
+			if(back == end_queue) {
+				back = &queue[0];
+			}
 		}
 
 		p = lock.pixels() + y*res->w;
 		for(int x = 0; x < res->w; ++x, ++p) {
-			*p = 0xFF000000 + ((red/avg) << 16) + ((green/avg) << 8) + blue/avg;
+			*p = 0xFF000000 | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
 			if(x >= depth) {
-				Uint32* q = p - depth;
-				red -= ((*q) >> 16)&0xFF;
-				green -= ((*q) >> 8)&0xFF;
-				blue -= *q&0xFF;
+				red -= ((*front) >> 16)&0xFF;
+				green -= ((*front) >> 8)&0xFF;
+				blue -= *front&0xFF;
 				--avg;
+				++front;
+				if(front == end_queue) {
+					front = &queue[0];
+				}
 			}
 
 			if(x + depth+1 < res->w) {
 				Uint32* q = p + depth+1;
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
-				blue += *q&0xFF;
+				blue += (*q)&0xFF;
 				++avg;
+				*back++ = *q;
+				if(back == end_queue) {
+					back = &queue[0];
+				}
 			}
 		}
 	}
 
 	for(int x = 0; x < res->w; ++x) {
-		int red = 0, green = 0, blue = 0, avg = 0;
+		const Uint32* front = &queue[0];
+		Uint32* back = &queue[0];
+		Uint32 red = 0, green = 0, blue = 0, avg = 0;
 		Uint32* p = lock.pixels() + x;
 		for(int y = 0; y <= depth && y < res->h; ++y, p += res->w) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += *p&0xFF;
 			++avg;
+			*back++ = *p;
+			if(back == end_queue) {
+				back = &queue[0];
+			}
 		}
 
 		p = lock.pixels() + x;
 		for(int y = 0; y < res->h; ++y, p += res->w) {
-			*p = 0xFF000000 + ((red/avg) << 16) + ((green/avg) << 8) + blue/avg;
+			*p = 0xFF000000 | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
 			if(y >= depth) {
-				Uint32* q = p - depth*res->w;
-				red -= ((*q) >> 16)&0xFF;
-				green -= ((*q) >> 8)&0xFF;
-				blue -= *q&0xFF;
+				red -= ((*front) >> 16)&0xFF;
+				green -= ((*front) >> 8)&0xFF;
+				blue -= *front&0xFF;
 				--avg;
+				++front;
+				if(front == end_queue) {
+					front = &queue[0];
+				}
 			}
 
 			if(y + depth+1 < res->h) {
 				Uint32* q = p + (depth+1)*res->w;
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
-				blue += *q&0xFF;
+				blue += (*q)&0xFF;
 				++avg;
+				*back++ = *q;
+				if(back == end_queue) {
+					back = &queue[0];
+				}
 			}
 		}
 	}
