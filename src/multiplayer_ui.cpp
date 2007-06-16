@@ -69,16 +69,17 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 	state.campaign_type = "multiplayer";
 	state.version = level["version"];
 
+	// [variables] might be used in a normal scenario too
+	const config* const vars = level.child("variables");
+	if(vars != NULL) {
+		state.variables = *vars;
+	}
 	//If we start a fresh game, there won't be any snapshot information. If however this
 	//is a savegame, we got a valid snapshot here.
 	if (saved_game){
 		state.snapshot = *(level.child("snapshot"));
 
-		const config* const vars = level.child("variables");
-		if(vars != NULL) {
-			state.variables = *vars;
-		}
-		else{
+		if(vars == NULL) {
 			if (state.snapshot.child("variables") != NULL){
 				state.variables = *state.snapshot.child("variables");
 			}
