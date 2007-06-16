@@ -250,6 +250,13 @@ void dialog_frame::draw_background()
 	if(restorer_ != NULL) {
 		*restorer_ = surface_restorer(&video_, dim_.exterior);
 	}
+
+	//FIXME: esr, make these three lines conditional; should
+	//happen only for transparent dialogs
+	surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
+	surf = blur_surface(surf, 8);
+	SDL_BlitSurface(surf, NULL, video_.getSurface(), &dim_.exterior);
+	
 	if(bg_ == NULL) {
 		ERR_DP << "could not find dialog background '" << *dialog_style_ << "'\n";
 		return;

@@ -696,77 +696,73 @@ surface blur_surface(surface const &surf, int depth)
 		return NULL;
 	}
 
-	surface nsurf = make_neutral_surface(surf);
-	surface res = create_compatible_surface(nsurf, surf->w, surf->h);
+	surface res = make_neutral_surface(surf);
 
-	if(nsurf == NULL || res == NULL) {
+	if(res == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
-	for(int count = 0; count < depth; ++count) {
-		surface_lock lock(nsurf);
-		surface_lock rlock(res);
-
-		{
-			Uint32* p = lock.pixels();
-			Uint32* left = p - 1;
-			Uint32* right = p + 1;
-			Uint32* top = p - res->w;
-			Uint32* bottom = p + res->w;
-			Uint32* rp = rlock.pixels();
-
-			for(int y = 0; y < res->h; ++y) {
-				for(int x = 0; x < res->w; ++x) {
-					Uint8 red, green, blue, alpha;
-					Uint16 rred=0, rgreen=0, rblue=0, ralpha=0;
-
-					if (x != 0) {
-						SDL_GetRGBA(*left, nsurf->format, &red, &green, &blue, &alpha);
-						rred += red;
-						rgreen += green;
-						rblue += blue;
-						ralpha += alpha;
-					}
-
-					if (x != res->w - 1) {
-						SDL_GetRGBA(*right, nsurf->format, &red, &green, &blue, &alpha);
-						rred += red;
-						rgreen += green;
-						rblue += blue;
-						ralpha += alpha;
-					}
-
-					if (y != 0) {
-						SDL_GetRGBA(*top, nsurf->format, &red, &green, &blue, &alpha);
-						rred += red;
-						rgreen += green;
-						rblue += blue;
-						ralpha += alpha;
-					}
-
-					if (y != res->h - 1) {
-						SDL_GetRGBA(*bottom, nsurf->format, &red, &green, &blue, &alpha);
-						rred += red;
-						rgreen += green;
-						rblue += blue;
-						ralpha += alpha;
-					}
-
-					rred /= 4;
-					rgreen /= 4;
-					rblue /= 4;
-					ralpha /= 4;
-
-					*rp = SDL_MapRGBA(res->format, (Uint8)rred, (Uint8)rgreen, (Uint8)rblue, (Uint8)ralpha);
-
-					++left; ++right; ++top; ++bottom; ++rp;
-				}
-			}
+	surface_lock lock(res);
+	for(int y = 0; y < res->h; ++y) {
+		int red = 0, green = 0, blue = 0, avg = 0;
+		Uint32* p = lock.pixels() + y*res->w;
+		for(int x = 0; x <= depth && x < res->w; ++x, ++p) {
+			red += ((*p) >> 16)&0xFF;
+			green += ((*p) >> 8)&0xFF;
+			blue += *p&0xFF;
+			++avg;
 		}
 
-		if (count < depth - 1) {
-			nsurf = res;
+		p = lock.pixels() + y*res->w;
+		for(int x = 0; x < res->w; ++x, ++p) {
+			*p = 0xFF000000 + ((red/avg) << 16) + ((green/avg) << 8) + blue/avg;
+			if(x >= depth) {
+				Uint32* q = p - depth;
+				red -= ((*q) >> 16)&0xFF;
+				green -= ((*q) >> 8)&0xFF;
+				blue -= *q&0xFF;
+				--avg;
+			}
+
+			if(x + depth+1 < res->w) {
+				Uint32* q = p + depth+1;
+				red += ((*q) >> 16)&0xFF;
+				green += ((*q) >> 8)&0xFF;
+				blue += *q&0xFF;
+				++avg;
+			}
+		}
+	}
+
+	for(int x = 0; x < res->w; ++x) {
+		int red = 0, green = 0, blue = 0, avg = 0;
+		Uint32* p = lock.pixels() + x;
+		for(int y = 0; y <= depth && y < res->h; ++y, p += res->w) {
+			red += ((*p) >> 16)&0xFF;
+			green += ((*p) >> 8)&0xFF;
+			blue += *p&0xFF;
+			++avg;
+		}
+
+		p = lock.pixels() + x;
+		for(int y = 0; y < res->h; ++y, p += res->w) {
+			*p = 0xFF000000 + ((red/avg) << 16) + ((green/avg) << 8) + blue/avg;
+			if(y >= depth) {
+				Uint32* q = p - depth*res->w;
+				red -= ((*q) >> 16)&0xFF;
+				green -= ((*q) >> 8)&0xFF;
+				blue -= *q&0xFF;
+				--avg;
+			}
+
+			if(y + depth+1 < res->h) {
+				Uint32* q = p + (depth+1)*res->w;
+				red += ((*q) >> 16)&0xFF;
+				green += ((*q) >> 8)&0xFF;
+				blue += *q&0xFF;
+				++avg;
+			}
 		}
 	}
 
