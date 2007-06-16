@@ -2601,7 +2601,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	surface_restorer restorer;
 
 	gui::dialog_frame f(disp.video(), _("The Battle for Wesnoth Help"),
-					 NULL, &buttons_ptr, &restorer);
+					 NULL, false, &buttons_ptr, &restorer);
 	f.layout(xloc, yloc, width, height);
 	f.draw();
 	

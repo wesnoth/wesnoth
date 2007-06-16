@@ -187,7 +187,8 @@ static void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, con
         help_tip_button->set_location(area.x + pad,
                                       area.y + area.h - pad - next_tip_button->location().h);
 		help_tip_button->set_dirty(); //force redraw even if location did not change.
-		gui::dialog_frame f(screen.video(), "", &style, NULL, &tip_of_day_restorer);
+		// No blurring.  Should we do that here?
+		gui::dialog_frame f(screen.video(), "", &style, false, NULL, &tip_of_day_restorer);
 		f.layout(area);
 		f.draw_background();
 		f.draw_border();

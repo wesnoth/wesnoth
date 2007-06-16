@@ -67,7 +67,7 @@ public:
 		SDL_Rect interior, exterior, title, button_row;
 	};
 	dialog_frame(CVideo &video, const std::string& title="",
-                 const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
+                 const std::string* dialog_style=NULL, bool blur=false, std::vector<button*>* buttons=NULL,
                  surface_restorer* restorer=NULL, button* help_button=NULL);
 	~dialog_frame();
 
@@ -89,6 +89,7 @@ private:
 	std::string title_;
 	CVideo &video_;
 	const std::string *dialog_style_;
+	bool blur_;
 	std::vector<button*>* buttons_;
 	button* help_button_;
 	surface_restorer* restorer_;

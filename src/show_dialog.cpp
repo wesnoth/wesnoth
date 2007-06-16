@@ -87,9 +87,10 @@ dialog_manager::~dialog_manager()
 }
 
 dialog_frame::dialog_frame(CVideo &video, const std::string& title,
-	 const std::string* style, std::vector<button*>* buttons,
+	 const std::string* style, bool blur, std::vector<button*>* buttons,
 	 surface_restorer* restorer, button* help_button) : title_(title), 
 	 video_(video), dialog_style_(style ? style : &default_style),
+	 blur_(blur),
 	 buttons_(buttons), help_button_(help_button), restorer_(restorer),
 	 top_(image::get_image("dialogs/" + *dialog_style_ + "-border-top.png",image::UNSCALED)),
 	 bot_(image::get_image("dialogs/" + *dialog_style_ + "-border-bottom.png",image::UNSCALED)),
@@ -251,12 +252,14 @@ void dialog_frame::draw_background()
 		*restorer_ = surface_restorer(&video_, dim_.exterior);
 	}
 
-	//FIXME: esr, make these three lines conditional; should
-	//happen only for transparent dialogs
-	surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
-	surf = blur_surface(surf, 8);
-	SDL_BlitSurface(surf, NULL, video_.getSurface(), &dim_.exterior);
-	
+
+	if (blur_) {
+		surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
+		const int blur_radius = 5;	// Blur out to 5 pixels.
+		surf = blur_surface(surf, blur_radius);
+		SDL_BlitSurface(surf, NULL, video_.getSurface(), &dim_.exterior);
+	}
+
 	if(bg_ == NULL) {
 		ERR_DP << "could not find dialog background '" << *dialog_style_ << "'\n";
 		return;
@@ -365,7 +368,9 @@ int show_dialog(display& screen, surface image,
 	const std::string& style = (dialog_style)? *dialog_style : dialog::default_style;
 	CVideo &disp = screen.video();
 
-	gui::dialog d(screen, title, message, type, style, help_topic);
+	// We don't let old-style dialogs have blurring because this call is
+	// (a) only used for opaque popups, and (b) is being phased out.
+	gui::dialog d(screen, title, message, type, style, false, help_topic);
 
 	//add the components
 	if(!image.null()) {
@@ -440,7 +445,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::dialog_frame frame(disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	gui::dialog_frame frame(disp.video(),msg,NULL,false,&buttons_ptr,&restorer);
 	frame.layout(left,top,width,height);
 	frame.draw();
 
@@ -537,7 +542,7 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::dialog_frame frame(disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	gui::dialog_frame frame(disp.video(),msg,NULL,false,&buttons_ptr,&restorer);
 	frame.layout(left,top,width,height);
 	frame.draw();
 

@@ -111,8 +111,9 @@ dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
 				const DIALOG_TYPE type, const std::string& dialog_style,
+	       			const bool blur,
 				const std::string& help_topic) : disp_(disp), image_(NULL),
-				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
+				title_(title), style_(dialog_style), blur_(blur), title_widget_(NULL), message_(NULL),
 				type_(type), menu_(NULL),
 				help_button_(disp, help_topic),  text_widget_(NULL),
 				frame_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
@@ -328,7 +329,7 @@ dialog_frame& dialog::get_frame()
 		}
 		delete bg_restore_;
 		bg_restore_ = new surface_restorer;
-		frame_ = new dialog_frame(screen, title_, &style_, &frame_buttons_, bg_restore_, 
+		frame_ = new dialog_frame(screen, title_, &style_, &blur_, &frame_buttons_, bg_restore_, 
 			help_button_.topic().empty() ? NULL : &help_button_);
 	}
 	return *frame_;

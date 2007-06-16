@@ -1299,7 +1299,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	buttons.push_back(&close_button);
 
 	surface_restorer restorer;
-	gui::dialog_frame f(disp.video(),_("Hotkey Settings"),NULL,&buttons,&restorer);
+	gui::dialog_frame f(disp.video(),_("Hotkey Settings"),NULL,false,&buttons,&restorer);
 	f.layout(xpos,ypos,width,height);
 	f.draw();
 
