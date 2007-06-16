@@ -414,21 +414,23 @@ def maptransform2(filename, baseline, inmap, y):
 
 name_in_attack = False
 
-def validate_stack(stack, file, lineno):
+def validate_stack(stack, filename, lineno):
     "Check for deprecated WML syntax."
     global name_in_attack
-    #print '"%s", line %d: %s' % (filename, lineno+1, stack)
+    if verbose:
+        print '"%s", line %d: %s' % (filename, lineno+1, stack)
     if stack[-1] == 'attack':
         name_in_attack = False
     elif len(stack) >= 2 and stack[-2] == 'attack' and stack[1] == 'name=':
         name_in_attack = True
     if stack[-1] == "sound=" and stack[-2] == "animation":
-        print >>sys.stderr, '"%s", line %d: [amimation] with sound=' % (filename, lineno)
+        print >>sys.stderr, '"%s", line %d: [animation] with sound=' % (filename, lineno)
 
 def validate_on_pop(tagstack, closer, file, lineno):
     "Check for 'must contain' predication"
-    if future and closer == 'attack' and not name_in_attack:
-        print >>sys.stderr, '"%s", line %d: [attack] with no name=' % (filename, lineno)        
+    if future:
+        if closer == 'attack' and not name_in_attack:
+            print >>sys.stderr, '"%s", line %d: [attack] with no name=' % (filename, lineno)
 
 # Generic machinery starts here
 
@@ -544,12 +546,12 @@ def translator(filename, mapxforms, textxform):
             trimmed = newline.split("#")[0]
             for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", trimmed):
                 tag = instance.group(1)
+                while tagstack and tagstack[-1].endswith("="):
+                    tagstack.pop()
                 closer = instance.group(0)[1] == '/'
                 if not closer:
                     tagstack.append(tag)
                 else:
-                    while tagstack and tagstack[-1].endswith("="):
-                        tagstack.pop()
                     if len(tagstack) == 0:
                         print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
                     elif tagstack[-1] != tag:
