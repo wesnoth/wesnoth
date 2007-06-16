@@ -79,10 +79,8 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 	if (saved_game){
 		state.snapshot = *(level.child("snapshot"));
 
-		if(vars == NULL) {
-			if (state.snapshot.child("variables") != NULL){
-				state.variables = *state.snapshot.child("variables");
-			}
+		if (state.snapshot.child("variables") != NULL){
+			state.variables = *state.snapshot.child("variables");
 		}
 
 		//We also need to take into account, that the reload could take place with different players.
