@@ -183,9 +183,6 @@ int show_dialog(display &screen, surface image,
 
 void show_error_message(display &disp, std::string const &message);
 
-void popup_transient(display& screen,
-		     const std::string& caption, const std::string& message);
-
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port);

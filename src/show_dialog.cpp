@@ -414,13 +414,6 @@ int show_dialog(display& screen, surface image,
 	return d.result();
 }
 
-void popup_transient(display& screen,
-			const std::string& caption, const std::string& message)
-{
-	// FIXME: placeholder for a semitransparent window with timeout
-	gui::show_dialog(screen, NULL, caption, message, gui::MESSAGE);
-}
-
 }
 
 namespace gui {
