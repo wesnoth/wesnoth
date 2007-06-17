@@ -714,12 +714,13 @@ surface blur_surface(surface const &surf, int depth)
 	const Uint32 ff = 0xff;
 
 	surface_lock lock(res);
-	for(int y = 0; y < res->h; ++y) {
+	int x, y;
+	for(y = 0; y < res->h; ++y) {
 		const Uint32* front = &queue[0];
 		Uint32* back = &queue[0];
 		Uint32 red = 0, green = 0, blue = 0, avg = 0;
 		Uint32* p = lock.pixels() + y*res->w;
-		for(int x = 0; x <= depth && x < res->w; ++x, ++p) {
+		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += (*p)&0xFF;
@@ -731,7 +732,7 @@ surface blur_surface(surface const &surf, int depth)
 		}
 
 		p = lock.pixels() + y*res->w;
-		for(int x = 0; x < res->w; ++x, ++p) {
+		for(x = 0; x < res->w; ++x, ++p) {
 			*p = 0xFF000000 | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
 			if(x >= depth) {
 				red -= ((*front) >> 16)&0xFF;
@@ -758,7 +759,7 @@ surface blur_surface(surface const &surf, int depth)
 		}
 	}
 
-	for(int x = 0; x < res->w; ++x) {
+	for(x = 0; x < res->w; ++x) {
 		const Uint32* front = &queue[0];
 		Uint32* back = &queue[0];
 		Uint32 red = 0, green = 0, blue = 0, avg = 0;
@@ -775,7 +776,7 @@ surface blur_surface(surface const &surf, int depth)
 		}
 
 		p = lock.pixels() + x;
-		for(int y = 0; y < res->h; ++y, p += res->w) {
+		for(y = 0; y < res->h; ++y, p += res->w) {
 			*p = 0xFF000000 | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
 			if(y >= depth) {
 				red -= ((*front) >> 16)&0xFF;

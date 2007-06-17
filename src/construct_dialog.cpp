@@ -329,7 +329,7 @@ dialog_frame& dialog::get_frame()
 		}
 		delete bg_restore_;
 		bg_restore_ = new surface_restorer;
-		frame_ = new dialog_frame(screen, title_, &style_, &blur_, &frame_buttons_, bg_restore_, 
+		frame_ = new dialog_frame(screen, title_, &style_, blur_, &frame_buttons_, bg_restore_, 
 			help_button_.topic().empty() ? NULL : &help_button_);
 	}
 	return *frame_;
