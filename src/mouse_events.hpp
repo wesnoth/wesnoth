@@ -78,7 +78,7 @@ private:
 	// the real function but can throw bad_alloc
 	bool attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender);
 	void show_attack_options(unit_map::const_iterator u);
-	gamemap::location current_unit_attacks_from(const gamemap::location& loc, const gamemap::location::DIRECTION preferred, const gamemap::location::DIRECTION second_preferred);
+	gamemap::location current_unit_attacks_from(const gamemap::location& loc);
 	unit_map::const_iterator find_unit(const gamemap::location& hex) const;
 	unit_map::iterator find_unit(const gamemap::location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
@@ -101,8 +101,8 @@ private:
 	int drag_from_y_;
 	
 	gamemap::location last_hex_;
+	gamemap::location last_empty_hex_;
 	gamemap::location selected_hex_;
-	gamemap::location::DIRECTION last_nearest_, last_second_nearest_;
 	gamemap::location next_unit_;
 	paths::route current_route_;
 	paths current_paths_;

@@ -683,8 +683,7 @@ undo_stack_(undo_stack), redo_stack_(redo_stack), game_state_(game_state)
 	drag_from_x_ = 0;
 	drag_from_y_ = 0;
 	last_hex_ = gamemap::location();
-	last_nearest_ = gamemap::location::NORTH;
-	last_second_nearest_ = gamemap::location::NORTH;
+	last_empty_hex_ = gamemap::location();
 	enemy_paths_ = false;
 	path_turns_ = 0;
 	undo_ = false;
@@ -748,7 +747,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		}
 	}
 
-	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_) {
+	if (new_hex == selected_hex_) {
+		last_empty_hex_ = new_hex;
+	}
+
+	if(new_hex != last_hex_) {
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
 			(*gui_).set_route(NULL);
@@ -763,9 +766,13 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
+		if (mouseover_unit == units_.end()) {
+			last_empty_hex_ = new_hex;
+		}
+
 		gamemap::location attack_from;
 		if(selected_unit != units_.end() && mouseover_unit != units_.end()) {
-			attack_from = current_unit_attacks_from(new_hex, nearest_hex, second_nearest_hex);
+			attack_from = current_unit_attacks_from(new_hex);
 		}
 
 		if (cursor::get() != cursor::WAIT) {
@@ -852,8 +859,6 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	}
 
 	last_hex_ = new_hex;
-	last_nearest_ = nearest_hex;
-	last_second_nearest_ = second_nearest_hex;
 }
 
 unit_map::iterator mouse_handler::selected_unit()
@@ -876,7 +881,7 @@ unit_map::const_iterator mouse_handler::find_unit(const gamemap::location& hex) 
 	return find_visible_unit(units_,hex,map_,teams_,viewing_team());
 }
 
-gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::location& loc, const gamemap::location::DIRECTION preferred, const gamemap::location::DIRECTION second_preferred)
+gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::location& loc)
 {
 	const unit_map::const_iterator current = find_unit(selected_hex_);
 	if(current == units_.end() || current->second.side() != team_num_
@@ -890,6 +895,9 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 	{
 		return gamemap::location();
 	}
+
+	const gamemap::location::DIRECTION preferred = loc.get_relative_dir(last_empty_hex_);
+	const gamemap::location::DIRECTION second_preferred = loc.get_relative_dir(selected_hex_);
 
 	int best_rating = 100;//smaller is better
 	gamemap::location res;
@@ -1096,8 +1104,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 
 	const gamemap::location src = selected_hex_;
 	paths orig_paths = current_paths_;
-
-	const gamemap::location& attack_from = current_unit_attacks_from(hex, nearest_hex, second_nearest_hex);
+	const gamemap::location& attack_from = current_unit_attacks_from(hex);
 
 	//see if we're trying to do a move-and-attack
 	if(!browse && !commands_disabled && u != units_.end() && u->second.attacks_left()>0 && enemy != units_.end() && !current_route_.steps.empty()) {
