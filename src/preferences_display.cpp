@@ -708,7 +708,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	friends_input_.set_location(rect.x,ypos);
 	
 	friends_.set_location(rect.x,ypos + item_interline);
-	friends_.set_max_height(height()-100);
+	friends_.set_max_height(height() - 100 - friends_back_button_.height());
 	
 	int friends_xpos;
 	
