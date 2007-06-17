@@ -764,7 +764,7 @@ surface blur_surface(surface const &surf, int depth)
 		Uint32* back = &queue[0];
 		Uint32 red = 0, green = 0, blue = 0, avg = 0;
 		Uint32* p = lock.pixels() + x;
-		for(int y = 0; y <= depth && y < res->h; ++y, p += res->w) {
+		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += *p&0xFF;
