@@ -416,21 +416,13 @@ name_in_attack = False
 
 def validate_stack(stack, filename, lineno):
     "Check for deprecated WML syntax."
-    global name_in_attack
-    if verbose:
+    if verbose >= 2:
         print '"%s", line %d: %s' % (filename, lineno+1, stack)
-    if stack[-1] == 'attack':
-        name_in_attack = False
-    elif len(stack) >= 2 and stack[-2] == 'attack' and stack[1] == 'name=':
-        name_in_attack = True
-    if stack[-1] == "sound=" and stack[-2] == "animation":
-        print >>sys.stderr, '"%s", line %d: [animation] with sound=' % (filename, lineno)
+    if future and stack[-1] == 'animation' and 'attack' in stack[:-1]:
+        print >>sys.stderr, '"%s", line %d: [attack] within [animation]' % (filename, lineno)
 
 def validate_on_pop(tagstack, closer, file, lineno):
-    "Check for 'must contain' predication"
-    if future:
-        if closer == 'attack' and not name_in_attack:
-            print >>sys.stderr, '"%s", line %d: [attack] with no name=' % (filename, lineno)
+    pass
 
 # Generic machinery starts here
 
@@ -567,7 +559,7 @@ def translator(filename, mapxforms, textxform):
                     while tagstack and tagstack[-1].endswith("="):
                         tagstack.pop()
                     tagstack.append(attribute + "=")
-                    validate_stack(tagstack, filename, lineno)
+                validate_stack(tagstack, filename, lineno)
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
@@ -672,7 +664,7 @@ if __name__ == '__main__':
     else:
         print >>sys.stderr, "wmllint: unrecognized version."
         sys.exit(1)
-    if not clean and not revert:
+    if not dryrun and not clean and not revert:
         explain = "Upgrades for:"
         for i in range(len(versions)-1):
             explain += " %s -> %s," % (versions[i],  versions[i+1])
