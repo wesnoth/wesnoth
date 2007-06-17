@@ -30,7 +30,7 @@ namespace game_config
 	extern int rest_heal_amount;
 	extern int recall_cost;
 	extern int kill_experience;
-	extern int lobby_refresh;
+	extern unsigned lobby_refresh;
 	extern const std::string version;
 #ifdef SVNREV
 	extern const std::string svnrev;

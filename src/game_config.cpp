@@ -33,7 +33,7 @@ namespace game_config
 	int rest_heal_amount= 2;
 	int recall_cost = 20;
 	int kill_experience = 8;
-	int lobby_refresh = 2000;
+	unsigned lobby_refresh = 2000;
 	const std::string version = VERSION;
 #ifdef SVNREV
 	const std::string svnrev = SVNREV;
@@ -122,7 +122,7 @@ namespace game_config
 		rest_heal_amount = atoi(v["rest_heal_amount"].c_str());
 		recall_cost = atoi(v["recall_cost"].c_str());
 		kill_experience = atoi(v["kill_experience"].c_str());
-		lobby_refresh = atoi(v["lobby_refresh"].c_str());
+		lobby_refresh = static_cast<unsigned>(atoi(v["lobby_refresh"].c_str()));
 
 		game_icon = v["icon"];
 		game_title = v["title"];
