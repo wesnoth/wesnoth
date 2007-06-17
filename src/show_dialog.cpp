@@ -120,7 +120,7 @@ int dialog_frame::vertical_padding() const {
 	int padding = 0;
 	if(buttons_ != NULL) {
 		for(std::vector<button*>::const_iterator b = buttons_->begin(); b != buttons_->end(); ++b) {
-			padding = maximum<int>((**b).height() + 2*ButtonVPadding, padding);
+			padding = maximum<int>((**b).height() + ButtonVPadding, padding);
 		}
 	}
 	if(have_border_) {

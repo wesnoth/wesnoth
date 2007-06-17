@@ -512,7 +512,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	int total_height = text_and_image_height + padding_height + menu_->height() +
 		text_widget_height + check_button_height;
 
-	const int max_height = scr->h - get_frame().vertical_padding();
+	const int max_height = scr->h - yloc - get_frame().vertical_padding();
 	if(total_height > max_height) {
 		//try to reign in the menu height a little bit
 		const int menu_height = menu_->height();
