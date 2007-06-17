@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-16 21:28+0200\n"
-"PO-Revision-Date: 2007-06-10 02:33+0900\n"
+"PO-Revision-Date: 2007-06-17 13:05+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -1005,7 +1005,6 @@ msgid "Damage Types and Resistance"
 msgstr "ダメージ型と抵抗値"
 
 #: data/core/help.cfg:179
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1014,7 +1013,7 @@ msgid ""
 "damage which they take from certain damage types."
 msgstr ""
 "Wesnothには物理的攻撃に関連する 斬撃、貫通、打撃の3つのダメージ型がありま"
-"す。 追加として魔法的攻撃に関連する 火炎、冷気、神聖の3つのダメージ型がありま"
+"す。 さらに、魔法的攻撃に関連する 火炎、冷気、神聖の3つのダメージ型がありま"
 "す。 ユニットごとにダメージ型によって、 異なる抵抗力を持ちます。"
 
 #: data/core/help.cfg:181
@@ -1620,13 +1619,12 @@ msgid "Healthy"
 msgstr "壮健"
 
 #: data/core/help.cfg:339
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 "ドワーフの中には体力があることで有名なものがおり、他のドワーフよりもたくまし"
-"く休んでいる時にはより早く回復することができる。"
+"く、移動している間でも休むことができる。"
 
 #: data/core/help.cfg:345 data/core/terrain.cfg:433 data/core/terrain.cfg:441
 msgid "Grassland"
@@ -3986,7 +3984,7 @@ msgstr "壮健"
 
 #: data/core/macros/traits.cfg:113
 msgid "Can rest while moving"
-msgstr ""
+msgstr "移動している間も休むことができる"
 
 #: data/core/macros/traits.cfg:125
 msgid "fearless"
@@ -9156,7 +9154,6 @@ msgstr ""
 "ニットを使用することができる。"
 
 #: data/hardwired/tips.cfg:3
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -9444,7 +9441,6 @@ msgstr ""
 "ある。マウスポインタをその上に置けば、説明や詳細を見ることができる。"
 
 #: data/hardwired/tips.cfg:36
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -9452,8 +9448,9 @@ msgid ""
 "adjust campaign difficulty."
 msgstr ""
 "「ヘルプ Wesnoth」ボタンを押すことで、Wesnothプロジェクトに匿名のあなたの進捗"
-"の要約を送ることができます。  この情報はキャンペーンの難しさを調整するのに不"
-"可欠です。"
+"の要約を送ることができます（ゲームのメインスクリーンの右下の角のあたりにある"
+"封筒のアイコンであらわされています）。  この情報はキャンペーンの難しさを調整"
+"するのに不可欠です。"
 
 #: data/hardwired/tips.cfg:37
 msgid ""
@@ -9461,6 +9458,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"レベルの低いユニットを早くレベルアップさせるためには、ベテランユニットとチー"
+"ムを組ませ、共通のターゲットに対してベテランにダメージを十分与えさせ、若手の"
+"パートナーに致死となる一撃を与えさせるのがよい。"
 
 #: data/multiplayer/_main.cfg:4
 msgid "User Map"
@@ -10367,6 +10367,8 @@ msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
+"24x28、2 対 2 用のマップ。予備の主塔があり、中央部の広場で大きく厄介な戦いが"
+"起こる。"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:3
 msgid "5p - Auction-X"
@@ -10500,12 +10502,18 @@ msgid ""
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"おめでとうございます。多くの人々に不可能だと言われたこのマップに生き残ること"
+"ができました。率直に言って、あなたがどのようにして生き残ったのか、その手がか"
+"りをつかんでいません。ですから、メールでリプレイデータを送ってください。"
+"roze@roze.mine.nu まで。ありがとう！"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
+"あなたはゲームに敗れましたが、心配することはありません。いつでも再挑戦するこ"
+"とができます。何度でも。また何度でも。 ムハハハハハ"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:352
 #: src/mouse_events.cpp:197 src/mouse_events.cpp:307
@@ -11457,7 +11465,6 @@ msgid "Kills"
 msgstr "倒した数"
 
 #: src/menu_events.cpp:136
-#, fuzzy
 msgid "Details"
 msgstr "詳細"
 
@@ -11743,16 +11750,16 @@ msgid "Unknown subcommand"
 msgstr "不明のサブコマンド"
 
 #: src/menu_events.cpp:1597
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
-"このリストに載っているプレイヤーからのメッセージを無視します。使い方: /"
-"ignore [サブコマンド] [引数](オプション) サブコマンド: add remove list "
-"clear。詳しくは /help ignore [サブコマンド] と入力してください。"
+"無視リストに載っているプレイヤーからのメッセージを無視し、友人リストに載って"
+"いるプレイヤーからのメッセージを強調します。使い方: /ignore [サブコマンド] "
+"[引数](オプション) サブコマンド: addfriend addignore remove display clear。詳"
+"しくは /help ignore [サブコマンド] と入力してください。"
 
 #: src/menu_events.cpp:1600
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
