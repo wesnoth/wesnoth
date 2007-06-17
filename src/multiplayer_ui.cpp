@@ -254,7 +254,7 @@ void ui::process_network()
 	}
 
 	//apply diffs at a set interval
-	if(gamelist_refresh_ && SDL_GetTicks() - lobby_clock_ > game_config::lobby_refresh)
+	if(gamelist_refresh_ && SDL_GetTicks() - lobby_clock_ > (unsigned)game_config::lobby_refresh)
 	{
 		const cursor::setter cursor_setter(cursor::WAIT);
 		gamelist_updated(false);
