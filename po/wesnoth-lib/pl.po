@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-16 21:28+0200\n"
-"PO-Revision-Date: 2007-05-05 15:17+0100\n"
+"PO-Revision-Date: 2007-06-17 16:39+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -510,9 +510,10 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"Tryb graficzny nie mógł być zmieniony. Twój system musi być ustawiony w tryb "
-"szesnastobitowego koloru, aby uruchomić grę w trybie okienkowym. Do gry w "
-"trybie pełnoekranowym potrzebujesz co najmniej trybu 1024x768x16."
+"Zmiana trybu graficznego nie powiodła się. Aby było możliwe uruchamianie gry "
+"w oknie, używany menedżer okien musi być ustawiony w tryb koloru 16-"
+"bitowego. Do gry w trybie pełnoekranowym wymagana jest rozdzielczość co "
+"najmniej 1024x768x16."
 
 #: src/preferences_display.cpp:272
 msgid "Accelerated Speed"
@@ -523,13 +524,12 @@ msgid "Skip AI Moves"
 msgstr "Pomiń ruchy komputera"
 
 #: src/preferences_display.cpp:275
-#, fuzzy
 msgid "Save Replays"
-msgstr "Zapisz skróty"
+msgstr "Zapisuj powtórki"
 
 #: src/preferences_display.cpp:276
 msgid "Delete Autosaves"
-msgstr ""
+msgstr "Usuwaj automatycznie zapisane gry"
 
 #: src/preferences_display.cpp:277
 msgid "Show Lobby Minimaps"
@@ -745,11 +745,12 @@ msgstr "Nie animuj ruchu jednostek komputera"
 
 #: src/preferences_display.cpp:437
 msgid "Save replays at scenario end."
-msgstr ""
+msgstr "Automatyczne zapisywanie powtórek pod koniec scenariusza"
 
 #: src/preferences_display.cpp:440
 msgid "Automatically delete autosaves at the end of a scenario"
 msgstr ""
+"Automatyczne usuwanie automatycznie zapisanych gier pod koniec scenariusza"
 
 #: src/preferences_display.cpp:442
 msgid "Overlay a grid onto the map"

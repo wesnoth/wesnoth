@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-16 21:28+0200\n"
-"PO-Revision-Date: 2007-05-26 18:39+0100\n"
+"PO-Revision-Date: 2007-06-17 16:43+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,8 @@ msgstr ""
 "X-Poedit-Country: POLAND\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2)\n"
+"X-Poedit-Basepath: /usr/local/share/wesnoth/\n"
+"X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #: data/_main.cfg:18
 msgid "Binary Saves"
@@ -32,13 +34,12 @@ msgid "Mouse Scrolling"
 msgstr "Przewijanie myszą"
 
 #: data/_main.cfg:39
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "Połącz z oficjalnym serwerem"
+msgstr "Oficjalny serwer Wesnoth"
 
 #: data/_main.cfg:43
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Alternatywny serwer Wesnoth"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -69,14 +70,12 @@ msgid "short sword"
 msgstr "krótki miecz"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
-#, fuzzy
 msgid "magic_blast"
-msgstr "magiczny"
+msgstr "magic_blast"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
-#, fuzzy
 msgid "magic blast"
-msgstr "magiczny"
+msgstr "magiczne uderzenie"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
 #: data/core/units/boats/Galleon.cfg:22
@@ -1678,14 +1677,12 @@ msgid "Healthy"
 msgstr "Zdrowy"
 
 #: data/core/help.cfg:339
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
-"Niektóre krasnoludy wyróżniają się niezwykłą nawet jak na swoją rasę "
-"żywotnością, dzięki której podczas odpoczynku odzyskują siły szybciej od "
-"innych jednostek."
+"Niektóre krasnoludy wyróżniają się żywotnością niezwykłą nawet jak na swoją "
+"rasę, dzięki której odpoczywają również w marszu."
 
 #: data/core/help.cfg:345 data/core/terrain.cfg:433 data/core/terrain.cfg:441
 msgid "Grassland"
@@ -2577,7 +2574,6 @@ msgid "ambush"
 msgstr "zasadzka"
 
 #: data/core/macros/abilities.cfg:369 data/core/macros/abilities.cfg:373
-#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -2589,16 +2585,15 @@ msgstr ""
 "Zasadzka:\n"
 "Jednostka potrafi ukrywać się w lesie i pozostawać niewidoczną dla wrogów.\n"
 "\n"
-"Jednostki nieprzyjaciela nie mogą zobaczyć ani zaatakować tej jednostki w "
-"lesie, chyba że atakowała ona w poprzedniej turze albo sąsiaduje z nią "
-"jednostka wroga."
+"Jednostki nieprzyjaciela nie mogą zobaczyć tej jednostki w lesie, chyba że "
+"znajdują się bezpośrednio obok niej. Jednostka wroga, która jako pierwsza "
+"zauważy taką jednostkę, natychmiast traci wszystkie pozostałe punkty ruchu."
 
 #: data/core/macros/abilities.cfg:388 data/core/macros/abilities.cfg:393
 msgid "nightstalk"
 msgstr "skradanie się"
 
 #: data/core/macros/abilities.cfg:392 data/core/macros/abilities.cfg:397
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -2610,15 +2605,15 @@ msgstr ""
 "Skradanie:\n"
 "Nocą jednostka staje się niewidoczna.\n"
 "\n"
-"Nieprzyjaciel nie może mocą zobaczyć ani zaatakować tej jednostki, chyba że "
-"atakowała ona w poprzedniej turze albo sąsiaduje z nią jednostka wroga."
+"Jednostki nieprzyjaciela nie mogą zobaczyć tej jednostki nocą, chyba że "
+"znajdują się bezpośrednio obok niej. Jednostka wroga, która jako pierwsza "
+"zauważy taką jednostkę, natychmiast traci wszystkie pozostałe punkty ruchu."
 
 #: data/core/macros/abilities.cfg:412 data/core/macros/abilities.cfg:417
 msgid "submerge"
 msgstr "zanurzenie"
 
 #: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:421
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -2631,9 +2626,10 @@ msgstr ""
 "Jednostka może ukryć się w głębokiej wodzie, pozostając niezauważoną przez "
 "wrogów.\n"
 "\n"
-"Wrogie jednostki nie mogą zauważyć ani zaatakować tej jednostki, gdy "
-"znajduje się ona w głębokiej wodzie, chyba że atakowała ona w poprzedniej "
-"turze lub sąsiaduje z nią jednostka wroga."
+"Jednostki nieprzyjaciela nie mogą zobaczyć ani zaatakować tej jednostki, gdy "
+"znajduje się ona w głębokiej wodzie, chyba że znajdują się bezpośrednio obok "
+"niej. Jednostka wroga, która jako pierwsza zauważy taką jednostkę, "
+"natychmiast traci wszystkie pozostałe punkty ruchu."
 
 #: data/core/macros/abilities.cfg:441
 msgid "berserk"
@@ -4102,7 +4098,7 @@ msgstr "zdrowa"
 
 #: data/core/macros/traits.cfg:113
 msgid "Can rest while moving"
-msgstr ""
+msgstr "Odpoczywa podczas ruchu"
 
 #: data/core/macros/traits.cfg:125
 msgid "fearless"
@@ -4634,7 +4630,6 @@ msgid "Drake Clasher"
 msgstr "Smoczy bojownik"
 
 #: data/core/units/drakes/Clasher.cfg:26
-#, fuzzy
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
 "assume their relegation to melee combat is because of disability - an "
@@ -4664,7 +4659,9 @@ msgstr ""
 "spotkaniach z mniej potężnymi rasami odkryli, że ich naturalna siła i "
 "rozmiar same w sobie są potężnym orężem. Gdy dodać do tego uzbrojenie "
 "noszone przez tę kastę, powstaje wojownik nieposiadający niektórych typowych "
-"słabości swego rodzaju, takich jak wrażliwość na oszczepy i strzały."
+"słabości swego rodzaju, takich jak wrażliwość na oszczepy i strzały.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/core/units/drakes/Clasher.cfg:124
 #: data/core/units/drakes/Enforcer.cfg:135
@@ -6999,7 +6996,7 @@ msgstr "proca"
 
 #: data/core/units/humans/Outlaw.cfg:97
 msgid "female^Outlaw"
-msgstr "Banita"
+msgstr "Banitka"
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:3
 msgid "Assassin"
@@ -7806,7 +7803,7 @@ msgstr ""
 
 #: data/core/units/monsters/Wolf.cfg:3
 msgid "Wolf"
-msgstr ""
+msgstr "Wilk"
 
 #: data/core/units/monsters/Yeti.cfg:3
 msgid "Yeti"
@@ -7978,7 +7975,6 @@ msgid "Orcish Assassin"
 msgstr "Ork zabójca"
 
 #: data/core/units/orcs/Assassin.cfg:23
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7990,9 +7986,10 @@ msgid ""
 msgstr ""
 "Choć niektórzy uważają używanie zatrutej broni za niehonorowe, to orkowie "
 "(zwłaszcza drobniejszej budowy) chętnie z niej korzystają. Miotający "
-"zatrutymi nożami orkowie zabójcy są zazwyczaj niezbyt silni, ale za to "
-"zdumiewająco zwinni. Choć rzadko zadają śmiertelny cios, stosowana przez "
-"nich taktyka bardzo pomaga ich większym i bardziej brutalnym pobratymcom.\n"
+"zatrutymi nożami orkowie zabójcy są zazwyczaj drobnej jak na orków postury, "
+"ale za to zdumiewająco zwinni. Choć rzadko zadają śmiertelny cios, stosowana "
+"przez nich taktyka bardzo pomaga ich większym i bardziej brutalnym "
+"pobratymcom.\n"
 "\n"
 "Uwagi specjalne:"
 
@@ -11121,9 +11118,8 @@ msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Zauważono jednostki! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2085
-#, fuzzy
 msgid "(press $hotkey to keep moving)"
-msgstr "(wciśnij $hotkey, aby kontynuować)"
+msgstr "(naciśnij $hotkey, by kontynuować ruch)"
 
 #: src/dialogs.cpp:116
 msgid "Advance Unit"
@@ -11721,7 +11717,6 @@ msgid "Kills"
 msgstr "Zabitych"
 
 #: src/menu_events.cpp:136
-#, fuzzy
 msgid "Details"
 msgstr "Szczegóły"
 
@@ -12119,22 +12114,20 @@ msgid "Choose weapon:"
 msgstr "Wybierz broń:"
 
 #: src/multiplayer.cpp:98
-#, fuzzy
 msgid "View List"
-msgstr "Lista jednostek"
+msgstr "Pokaż listę"
 
 #: src/multiplayer.cpp:104
-#, fuzzy
 msgid "List of Servers"
-msgstr "Połącz z serwerem"
+msgstr "Lista serwerów"
 
 #: src/multiplayer.cpp:105
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Wybierz znany serwer z listy"
 
 #: src/multiplayer.cpp:108
 msgid "Address"
-msgstr ""
+msgstr "Adres"
 
 #: src/multiplayer.cpp:135
 msgid "Connect to Host"
@@ -12606,9 +12599,8 @@ msgid "Downloading next scenario..."
 msgstr "Pobieranie następnego scenariusza..."
 
 #: src/playcampaign.cpp:464
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Czy chcesz pominąć powtórkę?"
+msgstr "Czy chcesz zapisać grę?"
 
 #: src/playcampaign.cpp:489
 msgid "Unknown scenario: '"
