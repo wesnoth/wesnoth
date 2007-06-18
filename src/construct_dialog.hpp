@@ -279,7 +279,7 @@ class message_dialog : public gui::dialog
 {
 public:
 	message_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
-		: dialog(disp, title, message, type, "translucent70"), prevent_misclick_until_(0)
+		: dialog(disp, title, message, type, "translucent65"), prevent_misclick_until_(0)
 	{}
 	~message_dialog();
 	int show(msecs minimum_lifetime = three_blinks);
