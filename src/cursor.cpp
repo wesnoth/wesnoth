@@ -159,6 +159,8 @@ void use_colour(bool value)
 	if(game_config::editor == false) {
 		//SDL_ShowCursor(value ? SDL_DISABLE : SDL_ENABLE);
 		hide_bw = value;
+		//with this, we will force an update of the SDL_Cursor
+		current_SDL_cursor = cursor::NUM_CURSORS;
 		set(current_cursor);
 	}
 }
