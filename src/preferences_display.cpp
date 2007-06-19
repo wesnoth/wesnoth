@@ -80,6 +80,8 @@ void set_fullscreen(bool ison)
 			} else {
 				gui::message_dialog(*disp,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen.")).show();
 			}
+			// we reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
+			set_colour_cursors(preferences::get("colour_cursors") == "yes");
 		}
 	}
 }
