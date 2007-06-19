@@ -1767,7 +1767,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		}
 	}
 
-	surface image(image::get_image(*image_str));
+	surface image(image::get_image(*image_str, image::UNMASKED, image::NO_ADJUST_COLOUR));
 	if(image == NULL) {
 		ERR_DP << "Could not find image: " << *image_str << "\n";
 		return;
