@@ -175,11 +175,8 @@ void set(CURSOR_TYPE type)
 {
 	current_cursor = type;
 
-	if(type == NUM_CURSORS) {
-		return;
-	}
 	const CURSOR_TYPE new_cursor = hide_bw && colour_ready ? cursor::NO_CURSOR : type;
-	if (new_cursor != current_SDL_cursor) {
+	if (new_cursor != current_SDL_cursor && new_cursor != NUM_CURSORS) {
 		SDL_Cursor * cursor_image = get_cursor(new_cursor);
 		if (cursor_image != NULL) {
 			SDL_SetCursor(cursor_image);
