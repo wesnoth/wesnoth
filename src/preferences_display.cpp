@@ -189,7 +189,7 @@ void set_colour_cursors(bool value)
 {
 	_set_colour_cursors(value);
 
-	cursor::use_colour(value);
+	cursor::set();
 }
 
 namespace {

@@ -100,15 +100,11 @@ const std::string colour_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png
 const int shift_x[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 2, 3, 0};
 const int shift_y[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 20, 22, 0};
 
-// The cursor wanted
-cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
-// The cursor used by SDL
-cursor::CURSOR_TYPE current_SDL_cursor = cursor::NUM_CURSORS;
+cursor::CURSOR_TYPE current_cursor = cursor::NORMAL;
 
 int cursor_x = -1, cursor_y = -1;
 surface cursor_buf = NULL;
 bool have_focus = true;
-bool hide_bw = false;
 bool colour_ready = false;
 
 }
@@ -142,9 +138,7 @@ namespace cursor
 {
 
 manager::manager()
-{
-	use_colour(use_colour_cursors());
-}
+{}
 
 manager::~manager()
 {
@@ -152,37 +146,30 @@ manager::~manager()
 	SDL_ShowCursor(SDL_ENABLE);
 }
 
-void use_colour(bool value)
-{
-	// NOTE: Disable the cursor seems to cause slow mouse in fullscreen.
-	// So we just use a transparent one
-	if(game_config::editor == false) {
-		//SDL_ShowCursor(value ? SDL_DISABLE : SDL_ENABLE);
-		hide_bw = value;
-		//with this, we will force an update of the SDL_Cursor
-		current_SDL_cursor = cursor::NUM_CURSORS;
-		set(current_cursor);
-	}
-}
-
 void temporary_use_bw()
 {
 	colour_ready = false;
-	set(current_cursor);
+	set();
 }
 
 void set(CURSOR_TYPE type)
 {
-	current_cursor = type;
+	// change only if it's a valid cursor
+	if (type != NUM_CURSORS) {
+		current_cursor = type;
+	} else if (current_cursor == NUM_CURSORS) {
+		// except if the current one is also invalid
+		// in this case change to a valid one
+		current_cursor = NORMAL;
+	} 
 
-	const CURSOR_TYPE new_cursor = hide_bw && colour_ready ? cursor::NO_CURSOR : type;
-	if (new_cursor != current_SDL_cursor && new_cursor != NUM_CURSORS) {
-		SDL_Cursor * cursor_image = get_cursor(new_cursor);
-		if (cursor_image != NULL) {
-			SDL_SetCursor(cursor_image);
-			current_SDL_cursor = new_cursor;
-		}
-	}
+	const CURSOR_TYPE new_cursor = use_colour_cursors() && colour_ready ? cursor::NO_CURSOR : current_cursor;
+
+	SDL_Cursor * cursor_image = get_cursor(new_cursor);
+	// uncomment this line if you want to prevent SDL to redraw the cursor
+	// (it was added to chase a blinking bug but had no effect and add a risk of bad update)
+	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
+		SDL_SetCursor(cursor_image);
 }
 
 void set_dragging(bool drag)
@@ -232,7 +219,7 @@ void draw(surface screen)
 	}
 
 	if(current_cursor == NUM_CURSORS) {
-		return;
+		current_cursor = NORMAL;
 	}
 
 	if (!colour_ready) {
@@ -240,7 +227,7 @@ void draw(surface screen)
 		// so it can now display colour cursor
 		colour_ready = true;
 		// just reset the cursor will hide the b&w
-		set(current_cursor);
+		set();
 	}
 
 	if(have_focus == false) {
