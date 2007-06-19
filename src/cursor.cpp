@@ -233,17 +233,17 @@ void draw(surface screen)
 	if(use_colour_cursors() == false) {
 		return;
 	}
-	
+
+	if(current_cursor == NUM_CURSORS) {
+		return;
+	}
+
 	if (!colour_ready) {
 		// display start to draw cursor
 		// so it can now display colour cursor
 		colour_ready = true;
 		// just reset the cursor will hide the b&w
 		set(current_cursor);
-	}
-
-	if(current_cursor == NUM_CURSORS) {
-		return;
 	}
 
 	if(have_focus == false) {
