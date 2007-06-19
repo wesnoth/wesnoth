@@ -12,6 +12,7 @@
 */
 
 #include "about.hpp"
+#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
@@ -221,14 +222,13 @@ void show_about(display &disp, std::string campaign)
 		// draw map to screen, thus erasing all text
 
 		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
-		std::string style = "translucent65";
 		SDL_Rect frame_area = {
 			map_rect.x + map_rect.w * 3/32,
 			map_rect.y + top_margin,
 			map_rect.w * 13 / 16,
 			map_rect.h - top_margin - bottom_margin 
 		};
-		gui::dialog_frame f(disp.video(), "", &style);
+		gui::dialog_frame f(disp.video(), "", &gui::dialog::message_style);
 		f.layout(frame_area);
         f.draw_background();
 

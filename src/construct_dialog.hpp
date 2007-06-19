@@ -26,6 +26,11 @@
 
 namespace gui {
 
+struct style {
+	std::string	panel;
+	int		blur_radius;
+};
+
 struct dialog_process_info
 {
 public:
@@ -160,7 +165,10 @@ private:
 public:
 
 	//Static members
-	static const std::string default_style;
+	static const struct style default_style;
+	static const struct style message_style;
+	static const struct style titlescreen_style;
+	static const struct style hotkeys_style;
 	static const std::string no_help;
 	static const int message_font_size;
 	static const int caption_font_size;
@@ -176,8 +184,7 @@ public:
 	//         throws utils::invalid_utf8_exception() if message is invalid
 	dialog(display &disp, const std::string& title="", const std::string& message="",
 				const DIALOG_TYPE type=MESSAGE, 
-				const std::string& dialog_style=default_style,
-	       			const bool blur=false,
+				const struct style *dialog_style=&default_style,
 				const std::string& help_topic=no_help);
 	virtual ~dialog();
 
@@ -254,8 +261,8 @@ private:
 	//Members
 	display &disp_;
 	dialog_image *image_;
-	const std::string title_, style_;
-	bool blur_;
+	const std::string title_;
+ 	const struct style *style_;
 	label *title_widget_, *message_;
 	const DIALOG_TYPE type_;
 	gui::menu *menu_;
@@ -279,7 +286,7 @@ class message_dialog : public gui::dialog
 {
 public:
 	message_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
-		: dialog(disp, title, message, type, "translucent65"), prevent_misclick_until_(0)
+		: dialog(disp, title, message, type, &message_style), prevent_misclick_until_(0)
 	{}
 	~message_dialog();
 	int show(msecs minimum_lifetime = three_blinks);

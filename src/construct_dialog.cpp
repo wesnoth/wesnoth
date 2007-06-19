@@ -52,8 +52,14 @@
 
 namespace gui {
 
+// This is where the connections between styles and the panel images
+// in the data tree gets made.
+const struct style dialog::default_style = {"opaque", 0};
+const struct style dialog::message_style = {"translucent65", 3};
+const struct style dialog::titlescreen_style = {"translucent54", 0};
+const struct style dialog::hotkeys_style = {"menu2", 0};
+
 //static initialization
-const std::string dialog::default_style("opaque");
 const std::string dialog::no_help("");
 const int dialog::message_font_size = font::SIZE_PLUS;
 const int dialog::caption_font_size = font::SIZE_LARGE;
@@ -110,10 +116,9 @@ dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior
 } 
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
-				const DIALOG_TYPE type, const std::string& dialog_style,
-	       			const bool blur,
+				const DIALOG_TYPE type, const struct style* dialog_style,
 				const std::string& help_topic) : disp_(disp), image_(NULL),
-				title_(title), style_(dialog_style), blur_(blur), title_widget_(NULL), message_(NULL),
+				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
 				type_(type), menu_(NULL),
 				help_button_(disp, help_topic),  text_widget_(NULL),
 				frame_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
@@ -153,6 +158,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 		ERR_DP << "Problem handling utf8 in message '" << message << "'\n";
 		throw;
 	}
+
 }
 
 dialog::~dialog()
@@ -329,7 +335,7 @@ dialog_frame& dialog::get_frame()
 		}
 		delete bg_restore_;
 		bg_restore_ = new surface_restorer;
-		frame_ = new dialog_frame(screen, title_, &style_, blur_, &frame_buttons_, bg_restore_, 
+		frame_ = new dialog_frame(screen, title_, style_, &frame_buttons_, bg_restore_, 
 			help_button_.topic().empty() ? NULL : &help_button_);
 	}
 	return *frame_;

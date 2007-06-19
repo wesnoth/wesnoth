@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
@@ -150,7 +151,7 @@ static const config get_tips_of_day()
 
 
 
-static void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std::string& style, gui::button* const next_tip_button, gui::button* const help_tip_button, const SDL_Rect* const main_dialog_area, surface_restorer& tip_of_day_restorer)
+static void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const struct gui::style *style, gui::button* const next_tip_button, gui::button* const help_tip_button, const SDL_Rect* const main_dialog_area, surface_restorer& tip_of_day_restorer)
 {
 
     // Restore the previous tip of day area to its old state (section of the title image).
@@ -187,8 +188,7 @@ static void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, con
         help_tip_button->set_location(area.x + pad,
                                       area.y + area.h - pad - next_tip_button->location().h);
 		help_tip_button->set_dirty(); //force redraw even if location did not change.
-		// No blurring.  Should we do that here?
-		gui::dialog_frame f(screen.video(), "", &style, false, NULL, &tip_of_day_restorer);
+		gui::dialog_frame f(screen.video(), "", style, NULL, &tip_of_day_restorer);
 		f.layout(area);
 		f.draw_background();
 		f.draw_border();
@@ -297,8 +297,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
 
-    const std::string style = "translucent54";
-	gui::dialog_frame main_frame(screen.video(), "", &style);
+	gui::dialog_frame main_frame(screen.video(), "", &gui::dialog::titlescreen_style);
 	main_frame.layout(main_dialog_area);
 	main_frame.draw_background();
 	main_frame.draw_border();
@@ -321,7 +320,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	surface_restorer tip_of_day_restorer;
 
-	draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
+	draw_tip_of_day(screen, tips_of_day, ntip, &gui::dialog::titlescreen_style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
 	const int pad = game_config::title_tip_padding;
 	beg_button.set_location(screen.w() - pad - beg_button.location().w,
@@ -350,7 +349,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 				*ntip = *ntip + 1;
 			}
 
-            draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
+            draw_tip_of_day(screen, tips_of_day, ntip, &gui::dialog::titlescreen_style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 		}
 
 		if(help_tip_button.pressed()) {

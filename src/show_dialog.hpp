@@ -57,7 +57,7 @@ private:
 class dialog_frame {
 public:
 	//Static members
-	static const std::string default_style;
+	static const struct style default_style;
 	static const int title_border_w, title_border_h;
 
 	int vertical_padding() const;
@@ -67,7 +67,8 @@ public:
 		SDL_Rect interior, exterior, title, button_row;
 	};
 	dialog_frame(CVideo &video, const std::string& title="",
-                 const std::string* dialog_style=NULL, bool blur=false, std::vector<button*>* buttons=NULL,
+                 const struct style *dialog_style=NULL, 
+		 std::vector<button*>* buttons=NULL,
                  surface_restorer* restorer=NULL, button* help_button=NULL);
 	~dialog_frame();
 
@@ -88,8 +89,7 @@ public:
 private:
 	std::string title_;
 	CVideo &video_;
-	const std::string *dialog_style_;
-	bool blur_;
+	const struct style *dialog_style_;
 	std::vector<button*>* buttons_;
 	button* help_button_;
 	surface_restorer* restorer_;
@@ -174,7 +174,7 @@ int show_dialog(display &screen, surface image,
 				std::string* text_widget_text=NULL,
 				const int text_widget_max_chars = 256,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
-				const std::string* dialog_style=NULL,
+				const struct style *dialog_style=NULL,
 				std::vector<dialog_button_info>* buttons=NULL,
 				const std::string& help_topic="",
 				const menu::sorter* sorter=NULL,

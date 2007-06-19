@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
+#include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
@@ -26,7 +27,6 @@
 #include "key.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "construct_dialog.hpp"
 #include "thread.hpp"
 #include "language.hpp"
 #include "sdl_utils.hpp"
@@ -58,7 +58,7 @@ namespace gui {
 const int ButtonHPadding = 10;
 const int ButtonVPadding = 10;
 
-const std::string dialog_frame::default_style("opaque");
+const struct style dialog_frame::default_style = {"opaque", false};
 const int dialog_frame::title_border_w = 10;
 const int dialog_frame::title_border_h = 5;
 
@@ -87,20 +87,19 @@ dialog_manager::~dialog_manager()
 }
 
 dialog_frame::dialog_frame(CVideo &video, const std::string& title,
-	 const std::string* style, bool blur, std::vector<button*>* buttons,
+	 const struct style *style, std::vector<button*>* buttons,
 	 surface_restorer* restorer, button* help_button) : title_(title), 
 	 video_(video), dialog_style_(style ? style : &default_style),
-	 blur_(blur),
 	 buttons_(buttons), help_button_(help_button), restorer_(restorer),
-	 top_(image::get_image("dialogs/" + *dialog_style_ + "-border-top.png",image::UNSCALED)),
-	 bot_(image::get_image("dialogs/" + *dialog_style_ + "-border-bottom.png",image::UNSCALED)),
-	 left_(image::get_image("dialogs/" + *dialog_style_ + "-border-left.png",image::UNSCALED)),
-	 right_(image::get_image("dialogs/" + *dialog_style_ + "-border-right.png",image::UNSCALED)),
-	 top_left_(image::get_image("dialogs/" + *dialog_style_ + "-border-topleft.png",image::UNSCALED)),
-	 bot_left_(image::get_image("dialogs/" + *dialog_style_ + "-border-botleft.png",image::UNSCALED)),
-	 top_right_(image::get_image("dialogs/" + *dialog_style_ + "-border-topright.png",image::UNSCALED)),
-	 bot_right_(image::get_image("dialogs/" + *dialog_style_ + "-border-botright.png",image::UNSCALED)),
-	 bg_(image::get_image("dialogs/" + *dialog_style_ + "-background.png",image::UNSCALED))
+	 top_(image::get_image("dialogs/" + dialog_style_->panel + "-border-top.png",image::UNSCALED)),
+	 bot_(image::get_image("dialogs/" + dialog_style_->panel + "-border-bottom.png",image::UNSCALED)),
+	 left_(image::get_image("dialogs/" + dialog_style_->panel + "-border-left.png",image::UNSCALED)),
+	 right_(image::get_image("dialogs/" + dialog_style_->panel + "-border-right.png",image::UNSCALED)),
+	 top_left_(image::get_image("dialogs/" + dialog_style_->panel + "-border-topleft.png",image::UNSCALED)),
+	 bot_left_(image::get_image("dialogs/" + dialog_style_->panel + "-border-botleft.png",image::UNSCALED)),
+	 top_right_(image::get_image("dialogs/" + dialog_style_->panel + "-border-topright.png",image::UNSCALED)),
+	 bot_right_(image::get_image("dialogs/" + dialog_style_->panel + "-border-botright.png",image::UNSCALED)),
+	 bg_(image::get_image("dialogs/" + dialog_style_->panel + "-background.png",image::UNSCALED))
 {
 	have_border_ = top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL;
 }
@@ -253,15 +252,14 @@ void dialog_frame::draw_background()
 	}
 
 
-	if (blur_) {
+	if (dialog_style_->blur_radius) {
 		surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
-		const int blur_radius = 5;	// Blur out to 5 pixels.
-		surf = blur_surface(surf, blur_radius);
+		surf = blur_surface(surf, dialog_style_->blur_radius);
 		SDL_BlitSurface(surf, NULL, video_.getSurface(), &dim_.exterior);
 	}
 
 	if(bg_ == NULL) {
-		ERR_DP << "could not find dialog background '" << *dialog_style_ << "'\n";
+		ERR_DP << "could not find dialog background '" << dialog_style_->panel << "'\n";
 		return;
 	}
 	for(int i = 0; i < dim_.interior.w; i += bg_->w) {
@@ -361,16 +359,14 @@ int show_dialog(display& screen, surface image,
 				std::string* text_widget_text,
 				int text_widget_max_chars,
 				std::vector<check_item>* options, int xloc, int yloc,
-				const std::string* dialog_style, std::vector<dialog_button_info>* action_buttons,
+				const struct style* dialog_style, std::vector<dialog_button_info>* action_buttons,
 				const std::string& help_topic, const menu::sorter* sorter, menu::style* menu_style)
 {
 	const std::string& title = (image.null())? caption : "";
-	const std::string& style = (dialog_style)? *dialog_style : dialog::default_style;
+	const struct style *style = (dialog_style)? dialog_style : &dialog::default_style;
 	CVideo &disp = screen.video();
 
-	// We don't let old-style dialogs have blurring because this call is
-	// (a) only used for opaque popups, and (b) is being phased out.
-	gui::dialog d(screen, title, message, type, style, false, help_topic);
+	gui::dialog d(screen, title, message, type, style, help_topic);
 
 	//add the components
 	if(!image.null()) {
@@ -438,7 +434,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::dialog_frame frame(disp.video(),msg,NULL,false,&buttons_ptr,&restorer);
+	gui::dialog_frame frame(disp.video(),msg,NULL,&buttons_ptr,&restorer);
 	frame.layout(left,top,width,height);
 	frame.draw();
 
@@ -535,7 +531,7 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::dialog_frame frame(disp.video(),msg,NULL,false,&buttons_ptr,&restorer);
+	gui::dialog_frame frame(disp.video(),msg,NULL,&buttons_ptr,&restorer);
 	frame.layout(left,top,width,height);
 	frame.draw();
 

@@ -248,7 +248,7 @@ void preferences_dialog(display &disp, config &prefs) {
 	buttons.push_back(&close_button);
 
 	surface_restorer restorer;
-	gui::dialog_frame frame(disp.video(),_("Preferences"),NULL,false,&buttons,&restorer);
+	gui::dialog_frame frame(disp.video(),_("Preferences"),NULL,&buttons,&restorer);
 	frame.layout(xpos,ypos,width,height);
 	frame.draw();
 

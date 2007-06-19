@@ -854,9 +854,7 @@ void campaign_preview_pane::draw_contents()
 		location().h-campaign_preview_border*6 };
 
 	/* background frame */
-	static const std::string default_style("translucent65");
-	const std::string* style = &default_style;
-	gui::dialog_frame f(video(), "", style);
+	gui::dialog_frame f(video(), "", &gui::dialog::message_style);
 	f.layout(area);
 	f.draw_background();
 	f.draw_border();

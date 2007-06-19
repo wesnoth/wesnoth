@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
+#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "events.hpp"
 #include "hotkeys.hpp"
@@ -804,9 +805,8 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 
 		std::vector<std::string> menu = get_menu_images(items);
 
-		static const std::string style = "menu2";
 		const int res = gui::show_dialog(gui,NULL,"","",
-				gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,xloc,yloc,&style);
+				gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,xloc,yloc,&gui::dialog::hotkeys_style);
 		if (size_t(res) >= items.size())
 			return;
 
