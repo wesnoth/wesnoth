@@ -722,6 +722,8 @@ int dialog::process(dialog_process_info &info)
 	//left-clicking outside of a drop-down or context-menu should close it
 	if (info.new_left_button && !info.left_button) {
 		if (standard_buttons_.empty() && !point_in_rect(mousex,mousey, menu_->location())) {
+			if (use_menu)
+				sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
 			}
 	}
