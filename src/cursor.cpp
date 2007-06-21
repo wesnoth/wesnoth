@@ -166,10 +166,10 @@ void set(CURSOR_TYPE type)
 	const CURSOR_TYPE new_cursor = use_colour_cursors() && colour_ready ? cursor::NO_CURSOR : current_cursor;
 
 	SDL_Cursor * cursor_image = get_cursor(new_cursor);
-	// uncomment this line if you want to prevent SDL to redraw the cursor
-	// (it was added to chase a blinking bug but had no effect and add a risk of bad update)
-	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
+	
+	if (cursor_image != NULL && cursor_image != SDL_GetCursor()) {
 		SDL_SetCursor(cursor_image);
+	}
 }
 
 void set_dragging(bool drag)
@@ -226,9 +226,10 @@ void draw(surface screen)
 		// display start to draw cursor
 		// so it can now display colour cursor
 		colour_ready = true;
-		// just reset the cursor will hide the b&w
-		set();
 	}
+		
+	// reset the cursor to be sure that we hide the b&w
+	set();
 
 	if(have_focus == false) {
 		cursor_buf = NULL;
