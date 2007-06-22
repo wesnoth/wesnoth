@@ -138,7 +138,10 @@ namespace cursor
 {
 
 manager::manager()
-{}
+{
+	SDL_ShowCursor(SDL_ENABLE);
+	set();
+}
 
 manager::~manager()
 {

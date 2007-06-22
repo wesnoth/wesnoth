@@ -391,8 +391,6 @@ bool game_controller::init_video()
 		return false;
 	}
 
-	cursor::set(cursor::WAIT);
-
 	return true;
 }
 
@@ -1916,6 +1914,9 @@ static int play_game(int argc, char** argv)
 		return 0;
 	}
 
+	const cursor::manager cursor_manager;
+	cursor::set(cursor::WAIT);
+
 	loadscreen::global_loadscreen = new loadscreen(game.disp().video());
 	loadscreen::global_loadscreen->clear_screen();
 
@@ -1939,7 +1940,6 @@ static int play_game(int argc, char** argv)
 		return 0;
 	}
 
-	const cursor::manager cursor_manager;
 #if defined(_X11) && !defined(__APPLE__)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
