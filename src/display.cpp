@@ -48,6 +48,15 @@
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)
 
+
+map_display::map_display()
+{
+}
+
+map_display::~map_display()
+{
+}
+
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
 
 namespace {

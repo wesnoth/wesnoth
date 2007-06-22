@@ -50,7 +50,14 @@ class unit_map;
 //   currently moused over (highlighted)
 // - the unit status, which displays an image for, and stats for, the
 //   current unit.
-class display
+class map_display
+{
+public:
+	map_display();
+	~map_display();
+};
+
+class display : public map_display
 {
 public:
 	display(unit_map& units, CVideo& video,
