@@ -143,6 +143,7 @@ bool operator==(const SDL_Color& a, const SDL_Color& b);
 bool operator!=(const SDL_Color& a, const SDL_Color& b);
 SDL_Color inverse(const SDL_Color& colour);
 SDL_Color int_to_color(const Uint32 rgb);
+Uint32 color_to_int(const SDL_Color& rgb);
 
 class config; // no need to include config.hpp
 

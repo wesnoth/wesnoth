@@ -34,6 +34,13 @@ SDL_Color int_to_color(const Uint32 rgb) {
 	return to_return;
 }
 
+Uint32 color_to_int(const SDL_Color& color) {
+	Uint32 to_return = color.r;
+	to_return = (to_return << 8) & color.g;
+	to_return = (to_return << 8) & color.b;
+	return to_return;
+}
+
 SDLKey sdl_keysym_from_name(std::string const &keyname)
 {
 	static bool initialized = false;

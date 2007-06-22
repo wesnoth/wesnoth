@@ -209,8 +209,10 @@ void button::draw_contents()
 	SDL_Color button_colour = font::BUTTON_COLOUR;
 
 	if (!enabled()) {
-		image = greyscale_image(image);
-		button_colour = font::STONED_COLOUR;
+		static const Uint32 disabled_btn_color = 0xAAAAAA;
+		static const double disabled_btn_adjust = 0.18;
+		image = blend_surface(greyscale_image(image), disabled_btn_adjust, disabled_btn_color);
+		button_colour = font::GRAY_COLOUR;
 	}
 
 	video().blit_surface(loc.x, loc.y, image);
