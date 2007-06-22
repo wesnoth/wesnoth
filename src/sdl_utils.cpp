@@ -813,6 +813,131 @@ surface blur_surface(surface const &surf, int depth)
 	return create_optimized_surface(res);
 }
 
+// Cross-fades a surface with alpha channel
+// FIXME: This is just a adapted copy-paste of the normal blur
+// but with blur alpha channel too
+surface blur_alpha_surface(surface const &surf, int depth)
+{
+	if(surf == NULL) {
+		return NULL;
+	}
+
+	surface res = make_neutral_surface(surf);
+
+	if(res == NULL) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+
+	const int max_blur = 256;
+	if(depth > max_blur) {
+		depth = max_blur;
+	}
+
+	Uint32 queue[max_blur];
+	const Uint32* end_queue = queue + max_blur;
+
+	const Uint32 ff = 0xff;
+
+	surface_lock lock(res);
+	int x, y;
+	for(y = 0; y < res->h; ++y) {
+		const Uint32* front = &queue[0];
+		Uint32* back = &queue[0];
+		Uint32 alpha=0, red = 0, green = 0, blue = 0, avg = 0;
+		Uint32* p = lock.pixels() + y*res->w;
+		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
+			alpha += ((*p) >> 24)&0xFF;
+			red += ((*p) >> 16)&0xFF;
+			green += ((*p) >> 8)&0xFF;
+			blue += (*p)&0xFF;
+			++avg;
+			*back++ = *p;
+			if(back == end_queue) {
+				back = &queue[0];
+			}
+		}
+
+		p = lock.pixels() + y*res->w;
+		for(x = 0; x < res->w; ++x, ++p) {
+			*p = (minimum(alpha/avg,ff) << 24) | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
+			if(x >= depth) {
+				alpha -= ((*front) >> 24)&0xFF;
+				red -= ((*front) >> 16)&0xFF;
+				green -= ((*front) >> 8)&0xFF;
+				blue -= *front&0xFF;
+				--avg;
+				++front;
+				if(front == end_queue) {
+					front = &queue[0];
+				}
+			}
+
+			if(x + depth+1 < res->w) {
+				Uint32* q = p + depth+1;
+				alpha += ((*q) >> 24)&0xFF;
+				red += ((*q) >> 16)&0xFF;
+				green += ((*q) >> 8)&0xFF;
+				blue += (*q)&0xFF;
+				++avg;
+				*back++ = *q;
+				if(back == end_queue) {
+					back = &queue[0];
+				}
+			}
+		}
+	}
+
+	for(x = 0; x < res->w; ++x) {
+		const Uint32* front = &queue[0];
+		Uint32* back = &queue[0];
+		Uint32 alpha=0, red = 0, green = 0, blue = 0, avg = 0;
+		Uint32* p = lock.pixels() + x;
+		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
+			alpha += ((*p) >> 24)&0xFF;
+			red += ((*p) >> 16)&0xFF;
+			green += ((*p) >> 8)&0xFF;
+			blue += *p&0xFF;
+			++avg;
+			*back++ = *p;
+			if(back == end_queue) {
+				back = &queue[0];
+			}
+		}
+
+		p = lock.pixels() + x;
+		for(y = 0; y < res->h; ++y, p += res->w) {
+			*p = (minimum(alpha/avg,ff) << 24) | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
+			if(y >= depth) {
+				alpha -= ((*front) >> 24)&0xFF;
+				red -= ((*front) >> 16)&0xFF;
+				green -= ((*front) >> 8)&0xFF;
+				blue -= *front&0xFF;
+				--avg;
+				++front;
+				if(front == end_queue) {
+					front = &queue[0];
+				}
+			}
+
+			if(y + depth+1 < res->h) {
+				Uint32* q = p + (depth+1)*res->w;
+				alpha += ((*q) >> 24)&0xFF;
+				red += ((*q) >> 16)&0xFF;
+				green += ((*q) >> 8)&0xFF;
+				blue += (*q)&0xFF;
+				++avg;
+				*back++ = *q;
+				if(back == end_queue) {
+					back = &queue[0];
+				}
+			}
+		}
+	}
+
+	return create_optimized_surface(res);
+}
+
 // Cuts a rectangle from a surface.
 surface cut_surface(surface const &surf, SDL_Rect const &r)
 {

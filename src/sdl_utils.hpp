@@ -127,6 +127,7 @@ surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize=
 surface adjust_surface_alpha_add(surface const &surf, int amount);
 surface mask_surface(surface const &surf, surface const &mask);
 surface blur_surface(surface const &surf, int depth = 1);
+surface blur_alpha_surface(surface const &surf, int depth = 1);
 surface cut_surface(surface const &surf, SDL_Rect const &r);
 surface blend_surface(surface const &surf, double amount, Uint32 colour);
 surface flip_surface(surface const &surf);
