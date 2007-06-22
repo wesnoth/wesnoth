@@ -53,11 +53,25 @@ class unit_map;
 class map_display
 {
 public:
-	map_display(const gamemap& map, const config& theme_cfg);
+	map_display(CVideo& video, const gamemap& map, const config& theme_cfg);
 	~map_display();
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
+
+	//the dimensions of the display. x and y are
+	//width/height. mapx is the width of the portion of the
+	//display which shows the game area. Between mapx and x is the
+	//sidebar region.
+	int w() const { return screen_.getx(); }
+	int h() const { return screen_.gety(); }
+	const SDL_Rect& minimap_area() const 
+		{ return theme_.mini_map_location(screen_area()); }
+	const SDL_Rect& unit_image_area() const 
+		{ return theme_.unit_image_location(screen_area()); }
+
+	SDL_Rect screen_area() const
+		{ const SDL_Rect res = {0,0,w(),h()}; return res; }
 
 	/**
 	 * Returns the area used for the map
@@ -82,6 +96,7 @@ public:
 	int hex_size() const { return zoom_; }
 
 protected:
+	CVideo& screen_;
 	const gamemap& map_;
 	theme theme_;
 	int zoom_;
@@ -152,21 +167,6 @@ public:
 	//display to the frame buffer. If force is true, will not skip frames,
 	//even if running behind.
 	void draw(bool update=true,bool force=false);
-
-	//the dimensions of the display. x and y are width/height. mapx is the
-	//width of the portion of the display which shows the game area. Between
-	//mapx and x is the sidebar region.
-	int w() const { return screen_.getx(); }
-	int h() const { return screen_.gety(); }
-
-	const SDL_Rect& minimap_area() const 
-		{ return theme_.mini_map_location(screen_area()); }
-	const SDL_Rect& unit_image_area() const 
-		{ return theme_.unit_image_location(screen_area()); }
-
-	SDL_Rect screen_area() const
-		{ const SDL_Rect res = {0,0,w(),h()}; return res; }
-
 
 	//check if pixel x,y is outside specified area
 	bool outside_area(const SDL_Rect& area, const int x, const int y) const;
@@ -474,7 +474,6 @@ private:
 	//this surface must be freed by the caller
 	surface get_minimap(int w, int h);
 
-	CVideo& screen_;
 	CKey keys_;
 	int xpos_, ypos_;
 

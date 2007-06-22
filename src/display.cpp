@@ -63,8 +63,13 @@ namespace {
 	size_t sunset_timer = 0;
 }
 
-map_display::map_display(const gamemap& map, const config& theme_cfg) : map_(map), theme_(theme_cfg,screen_area()), zoom_(DefaultZoom)
+map_display::map_display(CVideo& video, const gamemap& map, const config& theme_cfg) : screen_(video), map_(map), theme_(theme_cfg,screen_area()), zoom_(DefaultZoom)
 {
+	if(non_interactive()) {
+		screen_.lock_updates(true);
+	}
+
+	image::set_zoom(zoom_);
 }
 
 map_display::~map_display()
@@ -114,9 +119,9 @@ std::map<gamemap::location,fixed_t> display::debugHighlights_;
 display::display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
-	map_display(map, theme_cfg),
+	map_display(video, map, theme_cfg),
 	_scroll_event("scrolled"),
-	screen_(video), xpos_(0), ypos_(0),
+	xpos_(0), ypos_(0),
 	units_(units),
 	temp_unit_(NULL),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
@@ -132,13 +137,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	diagnostic_label_(0), fps_handle_(0)
 {
 	singleton_ = this;
-	if(non_interactive()) {
-		screen_.lock_updates(true);
-	}
-
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
-
-	image::set_zoom(zoom_);
 
 	//inits the flag list
 	flags_.reserve(teams_.size());
