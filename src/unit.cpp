@@ -627,7 +627,7 @@ void unit::new_turn()
 void unit::end_turn()
 {
 	set_state("slowed","");
-	if((movement_ != total_movement()) && !utils::string_bool(get_state("not_moved")) && !is_healthy_) {
+	if((movement_ != total_movement()) && !utils::string_bool(get_state("not_moved")) && (!is_healthy_ || attacks_left_ < max_attacks_)) {
 		resting_ = false;
 	}
 	set_state("not_moved","");
