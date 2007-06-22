@@ -111,6 +111,28 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 		y < area.y || y > area.y + area.h - y_thresh);
 }
 
+void map_display::screenshot()
+{
+	std::string datadir = get_screenshot_dir();
+	static unsigned int counter = 0;
+	std::string name;
+
+	do {
+		std::stringstream filename;
+
+		filename << datadir << "/" << _("Screenshot") << "_";
+		filename.width(5);
+		filename.fill('0');
+		filename.setf(std::ios_base::right);
+		filename << counter << ".bmp";
+
+		counter++;
+		name = filename.str();
+
+	} while(file_exists(name));
+
+	SDL_SaveBMP(screen_.getSurface().get(), name.c_str());
+}
 
 // Methods for superclass aware of units go here
 
@@ -561,29 +583,6 @@ void display::set_zoom(int amount)
 void display::set_default_zoom()
 { 
 	set_zoom(DefaultZoom - zoom_); 
-}
-
-void display::screenshot()
-{
-	std::string datadir = get_screenshot_dir();
-	static unsigned int counter = 0;
-	std::string name;
-
-	do {
-		std::stringstream filename;
-
-		filename << datadir << "/" << _("Screenshot") << "_";
-		filename.width(5);
-		filename.fill('0');
-		filename.setf(std::ios_base::right);
-		filename << counter << ".bmp";
-
-		counter++;
-		name = filename.str();
-
-	} while(file_exists(name));
-
-	SDL_SaveBMP(screen_.getSurface().get(), name.c_str());
 }
 
 void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)

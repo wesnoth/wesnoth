@@ -95,6 +95,11 @@ public:
 	//(from top tip to bottom tip or left edge to right edge)
 	int hex_size() const { return zoom_; }
 
+	// Returns the current zoom factor.
+	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
+	//function to make a screenshot and save it in a default location
+	void screenshot();
+
 protected:
 	CVideo& screen_;
 	const gamemap& map_;
@@ -131,12 +136,6 @@ public:
 
 	// sets the zoom amount to the default.
 	void set_default_zoom();
-
-	// Returns the current zoom factor.
-	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
-
-	//function to make a screenshot and save it in a default location
-	void screenshot();
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
 
