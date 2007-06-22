@@ -230,17 +230,17 @@ void draw(surface screen)
 		current_cursor = NORMAL;
 	}
 
+	if(have_focus == false) {
+		cursor_buf = NULL;
+		return;
+	}
+
 	if (!colour_ready) {
 		// display start to draw cursor
 		// so it can now display colour cursor
 		colour_ready = true;
 		// reset the cursor to be sure that we hide the b&w
 		set();
-	}
-
-	if(have_focus == false) {
-		cursor_buf = NULL;
-		return;
 	}
 
 	//FIXME: don't parse the file path every time
