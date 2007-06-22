@@ -116,7 +116,18 @@ dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) 
 	return layout(rect.x, rect.y, rect.w, rect.h);
 }
 
-int dialog_frame::vertical_padding() const {
+/*int dialog_frame::top_padding() const {
+	int padding = 0;
+	if(have_border_) {
+		padding += top_->h;
+	}
+	if(!title_.empty()) {
+		padding += font::get_max_height(font::SIZE_LARGE) + 2*dialog_frame::title_border_h;
+	}
+	return padding;
+}*/
+
+int dialog_frame::bottom_padding() const {
 	int padding = 0;
 	if(buttons_ != NULL) {
 		for(std::vector<button*>::const_iterator b = buttons_->begin(); b != buttons_->end(); ++b) {
@@ -124,10 +135,7 @@ int dialog_frame::vertical_padding() const {
 		}
 	}
 	if(have_border_) {
-		padding += bot_->h + top_->h;
-	}
-	if(!title_.empty()) {
-		padding += font::get_max_height(font::SIZE_LARGE) + 2*dialog_frame::title_border_h;
+		padding += bot_->h;
 	}
 	return padding;
 }
