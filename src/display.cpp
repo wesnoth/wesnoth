@@ -571,7 +571,7 @@ void display::set_zoom(int amount)
 	if (new_zoom > MaxZoom) {
 		new_zoom = MaxZoom;
 	}
-	if (new_zoom != zoom_ && team_valid()) {
+	if (new_zoom != zoom_) {
 		SDL_Rect const &area = map_area();
 		xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
 		ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
