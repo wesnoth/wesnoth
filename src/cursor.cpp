@@ -204,6 +204,10 @@ CURSOR_TYPE get()
 void set_focus(bool focus)
 {
 	have_focus = focus;
+	if (focus==false) {
+		colour_ready = false;
+		set();
+	}
 }
 
 setter::setter(CURSOR_TYPE type) : old_(current_cursor)
