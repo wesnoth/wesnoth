@@ -167,9 +167,10 @@ void set(CURSOR_TYPE type)
 
 	SDL_Cursor * cursor_image = get_cursor(new_cursor);
 	
-	if (cursor_image != NULL && cursor_image != SDL_GetCursor()) {
+	// cause problem on mac:
+	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
 		SDL_SetCursor(cursor_image);
-	}
+	
 }
 
 void set_dragging(bool drag)
@@ -226,10 +227,9 @@ void draw(surface screen)
 		// display start to draw cursor
 		// so it can now display colour cursor
 		colour_ready = true;
+		// reset the cursor to be sure that we hide the b&w
+		set();
 	}
-		
-	// reset the cursor to be sure that we hide the b&w
-	set();
 
 	if(have_focus == false) {
 		cursor_buf = NULL;
