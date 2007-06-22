@@ -35,7 +35,6 @@ Version 1.3.3+svn:
    * fixed some minor bugs with "sighted" event, "die" event, and [kill]
    * now [allow_undo] should work as expected in sub-commands such as [then]
  * user interface:
-   * fixed a lag in the path rendering when there is a lot of units
    * maps smaller than the screen are now shown centered on the screen
    * the movement hint now display a "(1)" turn to reach, where the unit
      will have no moves left (distance, village or ZoC)
@@ -62,6 +61,7 @@ Version 1.3.3+svn:
      the first unit, preselect the on-map-selected unit and highlight on map
      the selected one.
  * Miscellaneous and bugfixes
+   * fixed a lag in the path rendering when there is a lot of units (bug #9268)
    * fix bug #4299: word wrap for menus with very long option strings
    * various bugfixes and code cleanups
    * removed zipios support
