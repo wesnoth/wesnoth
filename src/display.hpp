@@ -53,8 +53,38 @@ class unit_map;
 class map_display
 {
 public:
-	map_display();
+	map_display(const gamemap& map, const config& theme_cfg);
 	~map_display();
+
+	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
+		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
+
+	/**
+	 * Returns the area used for the map
+	 */
+	const SDL_Rect& map_area() const;
+
+	/**
+	 * Returns the available area for a map, this may differ 
+	 * from the above. This area will get the background area 
+	 * applied to it.
+	 */
+	const SDL_Rect& map_outside_area() const
+		{ return theme_.main_map_location(screen_area()); }
+
+	//function which returns the width of a pixel, up to where the
+	//next hex starts (i.e. not entirely from tip to tip -- use
+	//hex_size() to get the distance from tip to tip)
+	int hex_width() const { return (zoom_*3)/4; }
+
+	//function which returns the size of a hex in pixels
+	//(from top tip to bottom tip or left edge to right edge)
+	int hex_size() const { return zoom_; }
+
+protected:
+	const gamemap& map_;
+	theme theme_;
+	int zoom_;
 };
 
 class display : public map_display
@@ -66,9 +96,6 @@ public:
 			const config& cfg, const config& level);
 	~display();
 	static display* get_singleton() { return singleton_ ;}
-
-	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
-		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
 
 	//new_turn should be called on every new turn, to update
 	//lighting settings.
@@ -92,14 +119,6 @@ public:
 
 	// Returns the current zoom factor.
 	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
-
-	//function which returns the size of a hex in pixels
-	//(from top tip to bottom tip or left edge to right edge)
-	int hex_size() const { return zoom_; }
-
-	//function which returns the width of a pixel, up to where the next hex starts
-	//(i.e. not entirely from tip to tip -- use hex_size() to get the distance from tip to tip)
-	int hex_width() const { return (zoom_*3)/4; }
 
 	//function to make a screenshot and save it in a default location
 	void screenshot();
@@ -140,18 +159,6 @@ public:
 	int w() const { return screen_.getx(); }
 	int h() const { return screen_.gety(); }
 
-	/**
-	 * Returns the area used for the map
-	 */
-	const SDL_Rect& map_area() const;
-
-	/**
-	 * Returns the available area for a map, this may differ 
-	 * from the above. This area will get the background area 
-	 * applied to it.
-	 */
-	const SDL_Rect& map_outside_area() const
-		{ return theme_.main_map_location(screen_area()); }
 	const SDL_Rect& minimap_area() const 
 		{ return theme_.mini_map_location(screen_area()); }
 	const SDL_Rect& unit_image_area() const 
@@ -469,8 +476,7 @@ private:
 
 	CVideo& screen_;
 	CKey keys_;
-	int xpos_, ypos_, zoom_;
-	const gamemap& map_;
+	int xpos_, ypos_;
 
 	std::map<gamemap::location, surface> hex_overlay_;
 	surface selected_hex_overlay_;
@@ -536,7 +542,6 @@ private:
 	bool turbo_, grid_;
 	double sidebarScaling_;
 
-	theme theme_;
 	terrain_builder builder_;
 
 	void create_buttons();

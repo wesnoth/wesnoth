@@ -48,16 +48,7 @@
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)
 
-
-map_display::map_display()
-{
-}
-
-map_display::~map_display()
-{
-}
-
-std::map<gamemap::location,fixed_t> display::debugHighlights_;
+// Methods for subclass aware only of terrain go here
 
 namespace {
 #ifdef USE_TINY_GUI
@@ -72,12 +63,61 @@ namespace {
 	size_t sunset_timer = 0;
 }
 
+map_display::map_display(const gamemap& map, const config& theme_cfg) : map_(map), theme_(theme_cfg,screen_area()), zoom_(DefaultZoom)
+{
+}
+
+map_display::~map_display()
+{
+}
+
+const SDL_Rect& map_display::map_area() const 
+{
+	static SDL_Rect res = {0, 0, 0, 0};
+	res = map_outside_area();
+
+	// hex_size() is always a multiple of 4 and hex_width() a multiple of
+	// 3 so there shouldn't be off by one errors due to rounding
+	// To display a hex fully on screen a little bit extra space is needed
+	// Also added 2 hexes for the border.
+	const int width = lexical_cast<int>((map_.x() + (7.0/3.0)) * hex_width()); 
+	const int height = lexical_cast<int>((map_.y() + 2.5) * hex_size());
+
+	if(width < res.w) {
+		// map is smaller, center
+		res.x += (res.w - width)/2;
+		res.w = width;
+	}
+
+	if(height < res.h) {
+		// map is smaller, center
+		res.y += (res.h - height)/2;
+		res.h = height;
+	}
+
+	return res;
+}
+
+bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
+{
+	const int x_thresh = hex_width();
+	const int y_thresh = hex_size();
+	return (x < area.x || x > area.x + area.w - x_thresh ||
+		y < area.y || y > area.y + area.h - y_thresh);
+}
+
+
+// Methods for superclass aware of units go here
+
+std::map<gamemap::location,fixed_t> display::debugHighlights_;
+
 display::display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
+	map_display(map, theme_cfg),
 	_scroll_event("scrolled"),
 	screen_(video), xpos_(0), ypos_(0),
-	zoom_(DefaultZoom), map_(map), units_(units),
+	units_(units),
 	temp_unit_(NULL),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
 	status_(status),
@@ -86,7 +126,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0),
 	turbo_speed_(2), turbo_(false), grid_(false), sidebarScaling_(1.0),
-	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
+	builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
 	diagnostic_label_(0), fps_handle_(0)
@@ -209,41 +249,6 @@ void display::adjust_colours(int r, int g, int b)
 {
 	const time_of_day& tod = status_.get_time_of_day();
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
-}
-
-const SDL_Rect& display::map_area() const 
-{
-	static SDL_Rect res = {0, 0, 0, 0};
-	res = map_outside_area();
-
-	// hex_size() is always a multiple of 4 and hex_width() a multiple of
-	// 3 so there shouldn't be off by one errors due to rounding
-	// To display a hex fully on screen a little bit extra space is needed
-	// Also added 2 hexes for the border.
-	const int width = lexical_cast<int>((map_.x() + (7.0/3.0)) * hex_width()); 
-	const int height = lexical_cast<int>((map_.y() + 2.5) * hex_size());
-
-	if(width < res.w) {
-		// map is smaller, center
-		res.x += (res.w - width)/2;
-		res.w = width;
-	}
-
-	if(height < res.h) {
-		// map is smaller, center
-		res.y += (res.h - height)/2;
-		res.h = height;
-	}
-
-	return res;
-}
-
-bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
-{
-	const int x_thresh = hex_width();
-	const int y_thresh = hex_size();
-	return (x < area.x || x > area.x + area.w - x_thresh ||
-		y < area.y || y > area.y + area.h - y_thresh);
 }
 
 void display::select_hex(gamemap::location hex)
