@@ -63,7 +63,9 @@ namespace {
 	size_t sunset_timer = 0;
 }
 
-map_display::map_display(CVideo& video, const gamemap& map, const config& theme_cfg) : screen_(video), map_(map), theme_(theme_cfg,screen_area()), zoom_(DefaultZoom)
+map_display::map_display(CVideo& video, const gamemap& map, const config& theme_cfg) : 
+	screen_(video), map_(map), xpos_(0), ypos_(0),
+	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom)
 {
 	if(non_interactive()) {
 		screen_.lock_updates(true);
@@ -103,12 +105,201 @@ const SDL_Rect& map_display::map_area() const
 	return res;
 }
 
-bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
+bool map_display::outside_area(const SDL_Rect& area, const int x, const int y) const
 {
 	const int x_thresh = hex_width();
 	const int y_thresh = hex_size();
 	return (x < area.x || x > area.x + area.w - x_thresh ||
 		y < area.y || y > area.y + area.h - y_thresh);
+}
+
+// This function use the screen as reference
+const gamemap::location map_display::hex_clicked_on(int xclick, int yclick, 
+		gamemap::location::DIRECTION* nearest_hex, 
+		gamemap::location::DIRECTION* second_nearest_hex) const
+{
+	const SDL_Rect& rect = map_area();
+	if(point_in_rect(xclick,yclick,rect) == false) {
+		return gamemap::location();
+	}
+
+	xclick -= rect.x;
+	yclick -= rect.y;
+
+	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick, nearest_hex, second_nearest_hex);
+}
+
+
+// This function use the rect of map_area as reference
+const gamemap::location map_display::pixel_position_to_hex(int x, int y, 
+		gamemap::location::DIRECTION* nearest_hex, 
+		gamemap::location::DIRECTION* second_nearest_hex) const
+{
+	// adjust for the 1 hex border
+	x -= hex_width() ;
+	y -= hex_size();
+	const int s = hex_size();
+	const int tesselation_x_size = hex_width() * 2;
+	const int tesselation_y_size = s;
+	const int x_base = x / tesselation_x_size * 2;
+	const int x_mod = x % tesselation_x_size;
+	const int y_base = y / tesselation_y_size;
+	const int y_mod = y % tesselation_y_size;
+
+	int x_modifier = 0;
+	int y_modifier = 0;
+
+	if (y_mod < tesselation_y_size / 2) {
+		if ((x_mod * 2 + y_mod) < (s / 2)) {
+			x_modifier = -1;
+			y_modifier = -1;
+		} else if ((x_mod * 2 - y_mod) < (s * 3 / 2)) {
+			x_modifier = 0;
+			y_modifier = 0;
+		} else {
+			x_modifier = 1;
+			y_modifier = -1;
+		}
+
+	} else {
+		if ((x_mod * 2 - (y_mod - s / 2)) < 0) {
+			x_modifier = -1;
+			y_modifier = 0;
+		} else if ((x_mod * 2 + (y_mod - s / 2)) < s * 2) {
+			x_modifier = 0;
+			y_modifier = 0;
+		} else {
+			x_modifier = 1;
+			y_modifier = 0;
+		}
+	}
+
+	const gamemap::location res(x_base + x_modifier, y_base + y_modifier);
+
+	if(nearest_hex != NULL) {
+		// our x and y use the map_area as reference
+		// and the coorfinates given by get_location use the screen as reference
+		// so we need to convert it
+		const int centerx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/2 - hex_width();
+		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2 - hex_size();
+		const int x_offset = x - centerx;
+		const int y_offset = y - centery;
+		if(y_offset > 0) {
+			if(x_offset > y_offset/2) {
+				*nearest_hex = gamemap::location::SOUTH_EAST;
+				if(second_nearest_hex != NULL) {
+					if(x_offset/2 > y_offset) {
+						*second_nearest_hex = gamemap::location::NORTH_EAST;
+					} else {
+						*second_nearest_hex = gamemap::location::SOUTH;
+					}
+				}
+			} else if(-x_offset > y_offset/2) {
+				*nearest_hex = gamemap::location::SOUTH_WEST;
+				if(second_nearest_hex != NULL) {
+					if(-x_offset/2 > y_offset) {
+						*second_nearest_hex = gamemap::location::NORTH_WEST;
+					} else {
+						*second_nearest_hex = gamemap::location::SOUTH;
+					}
+				}
+			} else {
+				*nearest_hex = gamemap::location::SOUTH;
+				if(second_nearest_hex != NULL) {
+					if(x_offset > 0) {
+						*second_nearest_hex = gamemap::location::SOUTH_EAST;
+					} else {
+						*second_nearest_hex = gamemap::location::SOUTH_WEST;
+					}
+				}
+			}
+		} else { // y_offset <= 0
+			if(x_offset > -y_offset/2) {
+				*nearest_hex = gamemap::location::NORTH_EAST;
+				if(second_nearest_hex != NULL) {
+					if(x_offset/2 > -y_offset) {
+						*second_nearest_hex = gamemap::location::SOUTH_EAST;
+					} else {
+						*second_nearest_hex = gamemap::location::NORTH;
+					}
+				}
+			} else if(-x_offset > -y_offset/2) {
+				*nearest_hex = gamemap::location::NORTH_WEST;
+				if(second_nearest_hex != NULL) {
+					if(-x_offset/2 > -y_offset) {
+						*second_nearest_hex = gamemap::location::SOUTH_WEST;
+					} else {
+						*second_nearest_hex = gamemap::location::NORTH;
+					}
+				}
+			} else {
+				*nearest_hex = gamemap::location::NORTH;
+				if(second_nearest_hex != NULL) {
+					if(x_offset > 0) {
+						*second_nearest_hex = gamemap::location::NORTH_EAST;
+					} else {
+						*second_nearest_hex = gamemap::location::NORTH_WEST;
+					}
+				}
+			}
+		}
+	}
+
+	return res;
+}
+
+void map_display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const
+{
+	// change the coordinates of the rect send to be relative 
+	// to the map area instead of the screen area
+	const SDL_Rect& map_rect = map_area();
+	rect.x -= map_rect.x;
+	rect.y -= map_rect.y;
+	rect.w += map_rect.x;
+	rect.h += map_rect.y;
+
+	const int tile_width = hex_width();
+
+	// adjust for the 1 hex border
+	topleft.x  = -1 + (xpos_ + rect.x) / tile_width;
+	topleft.y  = -1 + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
+
+	bottomright.x  = -1 + (xpos_ + rect.x + rect.w) / tile_width;
+	bottomright.y  = -1 + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
+
+	// This routine does a rough approximation so might be off by one
+	// to be sure enough tiles are incuded the boundries are increased
+	// by one if the terrain is "on the map" due to the extra border
+	// this uses a bit larger area. 
+	// FIXME this routine should properly determine what to update and
+	// not increase by one just to be sure.
+	if(topleft.x >= -1) {
+		topleft.x--;
+	}
+	if(topleft.y >= -1) {
+		topleft.y--;
+	}
+	if(bottomright.x <= map_.x()) {
+		bottomright.x++;
+	}
+	if(bottomright.y <= map_.y()) {
+		bottomright.y++;
+	}
+}
+
+gamemap::location map_display::minimap_location_on(int x, int y)
+{
+	const SDL_Rect rect = minimap_area();
+
+	if(x < rect.x || y < rect.y ||
+	   x >= rect.x + rect.w || y >= rect.y + rect.h) {
+		return gamemap::location();
+	}
+
+	const double xdiv = double(rect.w) / double(map_.x());
+	const double ydiv = double(rect.h) / double(map_.y());
+
+	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
 
 void map_display::screenshot()
@@ -143,7 +334,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		const config& theme_cfg, const config& cfg, const config& level) :
 	map_display(video, map, theme_cfg),
 	_scroll_event("scrolled"),
-	xpos_(0), ypos_(0),
 	units_(units),
 	temp_unit_(NULL),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
@@ -296,195 +486,6 @@ void display::highlight_hex(gamemap::location hex)
 	if(has_unit) {
 		invalidate_unit();
 	}
-}
-
-// This function use the screen as reference
-const gamemap::location display::hex_clicked_on(int xclick, int yclick, 
-		gamemap::location::DIRECTION* nearest_hex, 
-		gamemap::location::DIRECTION* second_nearest_hex) const
-{
-	const SDL_Rect& rect = map_area();
-	if(point_in_rect(xclick,yclick,rect) == false) {
-		return gamemap::location();
-	}
-
-	xclick -= rect.x;
-	yclick -= rect.y;
-
-	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick, nearest_hex, second_nearest_hex);
-}
-
-
-// This function use the rect of map_area as reference
-const gamemap::location display::pixel_position_to_hex(int x, int y, 
-		gamemap::location::DIRECTION* nearest_hex, 
-		gamemap::location::DIRECTION* second_nearest_hex) const
-{
-	// adjust for the 1 hex border
-	x -= hex_width() ;
-	y -= hex_size();
-	const int s = hex_size();
-	const int tesselation_x_size = hex_width() * 2;
-	const int tesselation_y_size = s;
-	const int x_base = x / tesselation_x_size * 2;
-	const int x_mod = x % tesselation_x_size;
-	const int y_base = y / tesselation_y_size;
-	const int y_mod = y % tesselation_y_size;
-
-	int x_modifier = 0;
-	int y_modifier = 0;
-
-	if (y_mod < tesselation_y_size / 2) {
-		if ((x_mod * 2 + y_mod) < (s / 2)) {
-			x_modifier = -1;
-			y_modifier = -1;
-		} else if ((x_mod * 2 - y_mod) < (s * 3 / 2)) {
-			x_modifier = 0;
-			y_modifier = 0;
-		} else {
-			x_modifier = 1;
-			y_modifier = -1;
-		}
-
-	} else {
-		if ((x_mod * 2 - (y_mod - s / 2)) < 0) {
-			x_modifier = -1;
-			y_modifier = 0;
-		} else if ((x_mod * 2 + (y_mod - s / 2)) < s * 2) {
-			x_modifier = 0;
-			y_modifier = 0;
-		} else {
-			x_modifier = 1;
-			y_modifier = 0;
-		}
-	}
-
-	const gamemap::location res(x_base + x_modifier, y_base + y_modifier);
-
-	if(nearest_hex != NULL) {
-		// our x and y use the map_area as reference
-		// and the coorfinates given by get_location use the screen as reference
-		// so we need to convert it
-		const int centerx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/2 - hex_width();
-		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2 - hex_size();
-		const int x_offset = x - centerx;
-		const int y_offset = y - centery;
-		if(y_offset > 0) {
-			if(x_offset > y_offset/2) {
-				*nearest_hex = gamemap::location::SOUTH_EAST;
-				if(second_nearest_hex != NULL) {
-					if(x_offset/2 > y_offset) {
-						*second_nearest_hex = gamemap::location::NORTH_EAST;
-					} else {
-						*second_nearest_hex = gamemap::location::SOUTH;
-					}
-				}
-			} else if(-x_offset > y_offset/2) {
-				*nearest_hex = gamemap::location::SOUTH_WEST;
-				if(second_nearest_hex != NULL) {
-					if(-x_offset/2 > y_offset) {
-						*second_nearest_hex = gamemap::location::NORTH_WEST;
-					} else {
-						*second_nearest_hex = gamemap::location::SOUTH;
-					}
-				}
-			} else {
-				*nearest_hex = gamemap::location::SOUTH;
-				if(second_nearest_hex != NULL) {
-					if(x_offset > 0) {
-						*second_nearest_hex = gamemap::location::SOUTH_EAST;
-					} else {
-						*second_nearest_hex = gamemap::location::SOUTH_WEST;
-					}
-				}
-			}
-		} else { // y_offset <= 0
-			if(x_offset > -y_offset/2) {
-				*nearest_hex = gamemap::location::NORTH_EAST;
-				if(second_nearest_hex != NULL) {
-					if(x_offset/2 > -y_offset) {
-						*second_nearest_hex = gamemap::location::SOUTH_EAST;
-					} else {
-						*second_nearest_hex = gamemap::location::NORTH;
-					}
-				}
-			} else if(-x_offset > -y_offset/2) {
-				*nearest_hex = gamemap::location::NORTH_WEST;
-				if(second_nearest_hex != NULL) {
-					if(-x_offset/2 > -y_offset) {
-						*second_nearest_hex = gamemap::location::SOUTH_WEST;
-					} else {
-						*second_nearest_hex = gamemap::location::NORTH;
-					}
-				}
-			} else {
-				*nearest_hex = gamemap::location::NORTH;
-				if(second_nearest_hex != NULL) {
-					if(x_offset > 0) {
-						*second_nearest_hex = gamemap::location::NORTH_EAST;
-					} else {
-						*second_nearest_hex = gamemap::location::NORTH_WEST;
-					}
-				}
-			}
-		}
-	}
-
-	return res;
-}
-
-void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const
-{
-	// change the coordinates of the rect send to be relative 
-	// to the map area instead of the screen area
-	const SDL_Rect& map_rect = map_area();
-	rect.x -= map_rect.x;
-	rect.y -= map_rect.y;
-	rect.w += map_rect.x;
-	rect.h += map_rect.y;
-
-	const int tile_width = hex_width();
-
-	// adjust for the 1 hex border
-	topleft.x  = -1 + (xpos_ + rect.x) / tile_width;
-	topleft.y  = -1 + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
-
-	bottomright.x  = -1 + (xpos_ + rect.x + rect.w) / tile_width;
-	bottomright.y  = -1 + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
-
-	// This routine does a rough approximation so might be off by one
-	// to be sure enough tiles are incuded the boundries are increased
-	// by one if the terrain is "on the map" due to the extra border
-	// this uses a bit larger area. 
-	// FIXME this routine should properly determine what to update and
-	// not increase by one just to be sure.
-	if(topleft.x >= -1) {
-		topleft.x--;
-	}
-	if(topleft.y >= -1) {
-		topleft.y--;
-	}
-	if(bottomright.x <= map_.x()) {
-		bottomright.x++;
-	}
-	if(bottomright.y <= map_.y()) {
-		bottomright.y++;
-	}
-}
-
-gamemap::location display::minimap_location_on(int x, int y)
-{
-	const SDL_Rect rect = minimap_area();
-
-	if(x < rect.x || y < rect.y ||
-	   x >= rect.x + rect.w || y >= rect.y + rect.h) {
-		return gamemap::location();
-	}
-
-	const double xdiv = double(rect.w) / double(map_.x());
-	const double ydiv = double(rect.h) / double(map_.y());
-
-	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
 
 void display::scroll(int xmove, int ymove)

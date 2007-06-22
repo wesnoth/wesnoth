@@ -86,6 +86,9 @@ public:
 	const SDL_Rect& map_outside_area() const
 		{ return theme_.main_map_location(screen_area()); }
 
+	//check if pixel x,y is outside specified area
+	bool outside_area(const SDL_Rect& area, const int x,const int y) const;
+
 	//function which returns the width of a pixel, up to where the
 	//next hex starts (i.e. not entirely from tip to tip -- use
 	//hex_size() to get the distance from tip to tip)
@@ -97,12 +100,42 @@ public:
 
 	// Returns the current zoom factor.
 	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
+
+	//given x,y co-ordinates of an onscreen pixel, will return the
+	//location of the hex that this pixel corresponds to. Returns an
+	//invalid location is the mouse isn't over any valid location.
+	const gamemap::location hex_clicked_on(int x, int y, 
+		gamemap::location::DIRECTION* nearest_hex=NULL, 
+		gamemap::location::DIRECTION* second_nearest_hex=NULL) const;
+
+	//given x,y co-ordinates of a pixel on the map, will return the
+	//location of the hex that this pixel corresponds to. Returns an
+	//invalid location if the mouse isn't over any valid location.
+	const gamemap::location pixel_position_to_hex(int x, int y, 
+		gamemap::location::DIRECTION* nearest_hex=NULL, 
+		gamemap::location::DIRECTION* second_nearest_hex=NULL) const;
+
+	//given x,y co-ordinates of the mouse, will return the location of the
+	//hex in the minimap that the mouse is currently over, or an invalid
+	//location if the mouse isn't over the minimap.
+	gamemap::location minimap_location_on(int x, int y);
+
+	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
+
+	//functions to get the on-screen positions of hexes.
+	// we have a 1 hex border so need to offset the loction with 1
+	int get_location_x(const gamemap::location& loc) const
+		{ return map_area().x + (loc.x + 1) * hex_width() - xpos_; }
+	int get_location_y(const gamemap::location& loc) const
+		{ return map_area().y + (loc.y + 1) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
+
 	//function to make a screenshot and save it in a default location
 	void screenshot();
 
 protected:
 	CVideo& screen_;
 	const gamemap& map_;
+	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;
 };
@@ -167,9 +200,6 @@ public:
 	//even if running behind.
 	void draw(bool update=true,bool force=false);
 
-	//check if pixel x,y is outside specified area
-	bool outside_area(const SDL_Rect& area, const int x, const int y) const;
-
 	//function to display a location as selected. If a unit is in the location,
 	//and there is no unit in the currently highlighted hex, the unit will be
 	//displayed in the sidebar.
@@ -182,25 +212,6 @@ public:
 	//clicked on, while highlighting is used when a location has been moused
 	//over
 	void highlight_hex(gamemap::location hex);
-
-	//given x,y co-ordinates of an onscreen pixel, will return the
-	//location of the hex that this pixel corresponds to. Returns an
-	//invalid location is the mouse isn't over any valid location.
-	const gamemap::location hex_clicked_on(int x, int y, 
-		gamemap::location::DIRECTION* nearest_hex=NULL, 
-		gamemap::location::DIRECTION* second_nearest_hex=NULL) const;
-
-	//given x,y co-ordinates of a pixel on the map, will return the
-	//location of the hex that this pixel corresponds to. Returns an
-	//invalid location if the mouse isn't over any valid location.
-	const gamemap::location pixel_position_to_hex(int x, int y, 
-		gamemap::location::DIRECTION* nearest_hex=NULL, 
-		gamemap::location::DIRECTION* second_nearest_hex=NULL) const;
-
-	//given x,y co-ordinates of the mouse, will return the location of the
-	//hex in the minimap that the mouse is currently over, or an invalid
-	//location if the mouse isn't over the minimap.
-	gamemap::location minimap_location_on(int x, int y);
 
 	//sets the paths that are currently displayed as available for the unit
 	//to move along.  All other paths will be greyed out.
@@ -217,13 +228,6 @@ public:
 	//unit. If NULL, no route is displayed.
 	//route does not have to remain valid after being set
 	void set_route(const paths::route* route);
-
-	//functions to get the on-screen positions of hexes.
-	// we have a 1 hex border so need to offset the loction with 1
-	int get_location_x(const gamemap::location& loc) const
-		{ return map_area().x + (loc.x + 1) * hex_width() - xpos_; }
-	int get_location_y(const gamemap::location& loc) const
-		{ return map_area().y + (loc.y + 1) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
 
 	//returns the locations of 2 hexes that bind the visible area of the map.
 	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
@@ -442,8 +446,6 @@ public:
 	bool in_game() const { return in_game_; }
 	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
-	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
-
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -474,7 +476,6 @@ private:
 	surface get_minimap(int w, int h);
 
 	CKey keys_;
-	int xpos_, ypos_;
 
 	std::map<gamemap::location, surface> hex_overlay_;
 	surface selected_hex_overlay_;
