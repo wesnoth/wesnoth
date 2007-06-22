@@ -39,8 +39,6 @@ Version 1.3.3+svn:
    * the movement hint now display a "(1)" turn to reach, where the unit
      will have no moves left (distance, village or ZoC)
    * fixed bug with the number of turns to reach when crossing several ZoC
-   * allow to choose the direction from where attacking, even when you
-     are just near the enemy unit.
    * ability to view a list of MP servers with the Join Game dialog
    * fixed blinking tooltips when clock is updated (bug #9209)
    * footsteps are now erased at the end of the unit's move
@@ -54,6 +52,11 @@ Version 1.3.3+svn:
    * restore search of no-team-only map labels
    * ability to delete Add-Ons
    * make disabled buttons more obviously disabled
+   * allow to choose the direction from where attacking, even when you
+     are just near the enemy unit.
+   * new indicator for the attack direction
+   * new method to choose attack direction, use now the last highlighted hex
+     instead of clicked triangle.
  * Miscellaneous and bugfixes
    * fix bug #4299: word wrap for menus with very long option strings
    * various bugfixes and code cleanups
