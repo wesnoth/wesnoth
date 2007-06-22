@@ -129,6 +129,10 @@ public:
 	int get_location_y(const gamemap::location& loc) const
 		{ return map_area().y + (loc.y + 1) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
 
+	//returns the locations of 2 hexes that bind the visible area
+	//of the map.
+	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
+
 	//function to make a screenshot and save it in a default location
 	void screenshot();
 
@@ -158,13 +162,14 @@ public:
 	//the map. Used for special effects like flashes.
 	void adjust_colours(int r, int g, int b);
 
-	//function which scrolls the display by xmov,ymov pixels. Invalidation and
-	//redrawing will be scheduled.
+	//function which scrolls the display by xmov,ymov
+	//pixels. Invalidation and redrawing will be scheduled.
 	void scroll(int xmov, int ymov);
 
-	// Zooms the display by the specified amount. Negative values zoom out.
-	// Note the amount should be a multiple of four otherwise the images might
-	// start to look odd. (hex_width() gets rounding errors)
+	// Zooms the display by the specified amount. Negative values
+	// zoom out.  Note the amount should be a multiple of four
+	// otherwise the images might start to look odd. (hex_width()
+	// gets rounding errors)
 	void set_zoom(int amount);
 
 	// sets the zoom amount to the default.
@@ -182,15 +187,18 @@ public:
 	//is not guaranteed.
 	void scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
-	//scrolls to the leader of a certain side. This will normally be the playing team.
+
+	//scrolls to the leader of a certain side. This will normally
+	//be the playing team.
 	void scroll_to_leader(unit_map& units, int side);
 
 	//invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
 
-	//debug function to toggle the "sunset" mode
-	//the map area become progressively darker except where hexes are refreshed
-	//delay it's the number of frames between each darkening (0 to toggle)
+	//debug function to toggle the "sunset" mode the map area
+	//become progressively darker except where hexes are refreshed
+	//delay it's the number of frames between each darkening (0 to
+	//toggle)
 	void sunset(const size_t delay = 0);
 
 	void flip();
@@ -200,17 +208,17 @@ public:
 	//even if running behind.
 	void draw(bool update=true,bool force=false);
 
-	//function to display a location as selected. If a unit is in the location,
-	//and there is no unit in the currently highlighted hex, the unit will be
-	//displayed in the sidebar.
+	//function to display a location as selected. If a unit is in
+	//the location, and there is no unit in the currently
+	//highlighted hex, the unit will be displayed in the sidebar.
 	void select_hex(gamemap::location hex);
 	const gamemap::location& selected_hex() { return selectedHex_; }
 	const gamemap::location& mouseover_hex() { return mouseoverHex_; }
 
-	//function to highlight a location. If a unit is in the location, it will
-	//be displayed in the sidebar. Selection is used when a unit has been
-	//clicked on, while highlighting is used when a location has been moused
-	//over
+	//function to highlight a location. If a unit is in the
+	//location, it will be displayed in the sidebar. Selection is
+	//used when a unit has been clicked on, while highlighting is
+	//used when a location has been moused over
 	void highlight_hex(gamemap::location hex);
 
 	//sets the paths that are currently displayed as available for the unit
@@ -228,9 +236,6 @@ public:
 	//unit. If NULL, no route is displayed.
 	//route does not have to remain valid after being set
 	void set_route(const paths::route* route);
-
-	//returns the locations of 2 hexes that bind the visible area of the map.
-	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
 
 	//function to remove a footstep from a specific location
 	void remove_footstep(const gamemap::location& loc);

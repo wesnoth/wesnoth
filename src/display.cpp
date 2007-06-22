@@ -302,6 +302,14 @@ gamemap::location map_display::minimap_location_on(int x, int y)
 	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
 
+void map_display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
+{
+	SDL_Rect r = map_area();
+	r.x=0;
+	r.y=0;
+	get_rect_hex_bounds(r, topleft, bottomright);
+}
+
 void map_display::screenshot()
 {
 	std::string datadir = get_screenshot_dir();
@@ -2127,14 +2135,6 @@ void display::set_route(const paths::route* route)
 	}
 
 	invalidate_route();
-}
-
-void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
-{
-	SDL_Rect r = map_area();
-	r.x=0;
-	r.y=0;
-	get_rect_hex_bounds(r, topleft, bottomright);
 }
 
 void display::remove_footstep(const gamemap::location& loc)
