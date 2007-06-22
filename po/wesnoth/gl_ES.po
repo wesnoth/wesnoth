@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-18 19:36+0200\n"
+"POT-Creation-Date: 2007-06-22 13:11+0200\n"
 "PO-Revision-Date: 2006-05-07 23:49+0100\n"
 "Last-Translator: Elestel <dadoverde@hotmail.com>\n"
 "Language-Team: none\n"
@@ -3282,7 +3282,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Spearman.cfg:63
 #: data/core/units/humans/Loyalist_Spearman.cfg:204
 #: data/core/units/humans/Outlaw_Poacher.cfg:73
-#: data/core/units/humans/Outlaw_Trapper.cfg:103
+#: data/core/units/humans/Outlaw_Trapper.cfg:138
 #: data/core/units/humans/Peasant.cfg:24 data/core/units/humans/Peasant.cfg:67
 #: data/core/units/humans/Woodsman.cfg:65
 #: data/core/units/merfolk/Entangler.cfg:25
@@ -3409,7 +3409,7 @@ msgstr "garras"
 #: data/core/units/humans/Outlaw_Rogue.cfg:29
 #: data/core/units/humans/Outlaw_Rogue.cfg:70
 #: data/core/units/humans/Outlaw_Thief.cfg:178
-#: data/core/units/humans/Outlaw_Trapper.cfg:36
+#: data/core/units/humans/Outlaw_Trapper.cfg:71
 #: data/core/units/humans/Woodsman.cfg:28
 #: data/core/units/merfolk/Triton.cfg:70
 #: data/core/units/monsters/Cave_Spider.cfg:36
@@ -3834,7 +3834,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Poacher.cfg:34
 #: data/core/units/humans/Outlaw_Rogue.cfg:27
 #: data/core/units/humans/Outlaw_Thief.cfg:176
-#: data/core/units/humans/Outlaw_Trapper.cfg:34
+#: data/core/units/humans/Outlaw_Trapper.cfg:69
 #: data/core/units/humans/Woodsman.cfg:26 data/core/units/orcs/Archer.cfg:69
 #: data/core/units/orcs/Assassin.cfg:70 data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:41
@@ -4047,7 +4047,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Longbowman.cfg:62
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:62
 #: data/core/units/humans/Outlaw_Poacher.cfg:72
-#: data/core/units/humans/Outlaw_Trapper.cfg:102
+#: data/core/units/humans/Outlaw_Trapper.cfg:137
 #: data/core/units/humans/Woodsman.cfg:64 data/core/units/orcs/Archer.cfg:177
 #: data/core/units/orcs/Archer.cfg:236 data/core/units/orcs/Leader.cfg:66
 #: data/core/units/orcs/Ruler.cfg:64 data/core/units/orcs/Sovereign.cfg:65
@@ -4748,7 +4748,7 @@ msgid ""
 "reliably dodge any offensive move is a luxury only afforded to the fit of "
 "body, and then only to those who endure rigorous training.\n"
 "\n"
-"Outfitted with only a dagger and rapier, fencers are light on their feet and "
+"Outfitted with only a dagger and sabre, fencers are light on their feet and "
 "useful in many situations where their armor-bound peers are at a "
 "disadvantage. They take relish in dancing circles around troops like heavy "
 "infantry, mocking the price in reduced mobility paid for full armor.\n"
@@ -8373,16 +8373,16 @@ msgstr ""
 msgid "Skip animation"
 msgstr "Saltar animación"
 
-#: src/about.cpp:40 src/about.cpp:63 src/multiplayer_connect.cpp:355
+#: src/about.cpp:41 src/about.cpp:64 src/multiplayer_connect.cpp:355
 #: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:446
 msgid "+"
 msgstr "+"
 
-#: src/about.cpp:47 src/about.cpp:70
+#: src/about.cpp:48 src/about.cpp:71
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:138
+#: src/about.cpp:169 src/help.cpp:2598 src/menu_events.cpp:138
 msgid "Close"
 msgstr ""
 
@@ -8495,11 +8495,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:467 src/game.cpp:809
+#: src/dialogs.cpp:467 src/game.cpp:810
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:469 src/game.cpp:1247
+#: src/dialogs.cpp:469 src/game.cpp:1357
 msgid "Multiplayer"
 msgstr ""
 
@@ -8561,7 +8561,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:313
+#: src/dialogs.cpp:571 src/game.cpp:1056 src/menu_events.cpp:313
 #: src/menu_events.cpp:858 src/multiplayer.cpp:108
 msgid "Name"
 msgstr ""
@@ -8599,271 +8599,300 @@ msgstr ""
 msgid "Moves: "
 msgstr ""
 
-#: src/display.cpp:562
+#: src/display.cpp:576
 msgid "Screenshot"
 msgstr ""
 
-#: src/game.cpp:426 src/game.cpp:1332
+#: src/game.cpp:427 src/game.cpp:1442
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:671
+#: src/game.cpp:672
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 
-#: src/game.cpp:696 src/multiplayer_connect.cpp:1258
+#: src/game.cpp:697 src/multiplayer_connect.cpp:1258
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 
-#: src/game.cpp:701 src/multiplayer_connect.cpp:1265
+#: src/game.cpp:702 src/multiplayer_connect.cpp:1265
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:709 src/game.cpp:712 src/multiplayer_connect.cpp:1241
+#: src/game.cpp:710 src/game.cpp:713 src/multiplayer_connect.cpp:1241
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game.cpp:715
+#: src/game.cpp:716
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:810
+#: src/game.cpp:811
 msgid "Choose the campaign you want to play:"
 msgstr ""
 
-#: src/game.cpp:833
+#: src/game.cpp:834
 msgid "Difficulty"
 msgstr ""
 
-#: src/game.cpp:834
+#: src/game.cpp:835
 msgid "Select difficulty level:"
 msgstr ""
 
-#: src/game.cpp:861
+#: src/game.cpp:862
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:864
+#: src/game.cpp:865
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:867
+#: src/game.cpp:868
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:895
+#: src/game.cpp:897
 msgid "Connect to Server"
 msgstr ""
 
-#: src/game.cpp:896
+#: src/game.cpp:898
 msgid "You will now connect to a server to download add-ons."
 msgstr ""
 
-#: src/game.cpp:897
+#: src/game.cpp:900
 msgid "Server: "
 msgstr ""
 
-#: src/game.cpp:912 src/multiplayer.cpp:166 src/multiplayer.cpp:203
+#: src/game.cpp:901 src/game.cpp:948
+msgid "Remove Add-ons"
+msgstr ""
+
+#: src/game.cpp:936
+msgid "You have no Add-ons installed."
+msgstr ""
+
+#: src/game.cpp:948
+msgid "Choose the add-on to remove."
+msgstr ""
+
+#: src/game.cpp:966
+msgid "Confirm"
+msgstr ""
+
+#: src/game.cpp:997
+msgid "Add-on deleted"
+msgstr ""
+
+#: src/game.cpp:1002
+msgid "Add-on could not be deleted -- a file was not found."
+msgstr ""
+
+#: src/game.cpp:1002 src/menu_events.cpp:487 src/menu_events.cpp:500
+#: src/multiplayer_create.cpp:494
+msgid "Error"
+msgstr ""
+
+#: src/game.cpp:1022 src/multiplayer.cpp:166 src/multiplayer.cpp:203
 msgid "Connecting to Server..."
 msgstr ""
 
-#: src/game.cpp:915
+#: src/game.cpp:1025
 msgid "Could not connect to host."
 msgstr ""
 
-#: src/game.cpp:924
+#: src/game.cpp:1034
 msgid "Asking for list of add-ons"
 msgstr ""
 
-#: src/game.cpp:937
+#: src/game.cpp:1047
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:946 src/titlescreen.cpp:235
+#: src/game.cpp:1056 src/titlescreen.cpp:235
 msgid "Version"
 msgstr ""
 
-#: src/game.cpp:947
+#: src/game.cpp:1057
 msgid "Author"
 msgstr ""
 
-#: src/game.cpp:947
+#: src/game.cpp:1057
 msgid "Downloads"
 msgstr ""
 
-#: src/game.cpp:947
+#: src/game.cpp:1057
 msgid "Size"
 msgstr ""
 
-#: src/game.cpp:1005
+#: src/game.cpp:1115
 msgid "Publish add-on: "
 msgstr ""
 
-#: src/game.cpp:1009
+#: src/game.cpp:1119
 msgid "Delete add-on: "
 msgstr ""
 
-#: src/game.cpp:1013
+#: src/game.cpp:1123
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/game.cpp:1020
+#: src/game.cpp:1130
 msgid "Choose the add-on to download."
 msgstr ""
 
-#: src/game.cpp:1020
+#: src/game.cpp:1130
 msgid "Get Add-ons"
 msgstr ""
 
-#: src/game.cpp:1061
+#: src/game.cpp:1171
 msgid "Dependencies"
 msgstr ""
 
-#: src/game.cpp:1062
+#: src/game.cpp:1172
 msgid "This add-on requires the following additional dependencies:"
 msgstr ""
 
-#: src/game.cpp:1064
+#: src/game.cpp:1174
 msgid "Do you still want to download it?"
 msgstr ""
 
-#: src/game.cpp:1073
+#: src/game.cpp:1183
 msgid "Downloading add-on..."
 msgstr ""
 
-#: src/game.cpp:1117
+#: src/game.cpp:1227
 msgid "Add-on Installed"
 msgstr ""
 
-#: src/game.cpp:1117
+#: src/game.cpp:1227
 msgid "The add-on has been installed."
 msgstr ""
 
-#: src/game.cpp:1120
+#: src/game.cpp:1230
 msgid "Network communication error."
 msgstr ""
 
-#: src/game.cpp:1122
+#: src/game.cpp:1232
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/game.cpp:1124
+#: src/game.cpp:1234
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1136 src/game.cpp:1175 src/game.cpp:1202
+#: src/game.cpp:1246 src/game.cpp:1285 src/game.cpp:1312
 #: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:372
 msgid "Connection timed out"
 msgstr ""
 
-#: src/game.cpp:1139 src/game.cpp:1177 src/game.cpp:1204
+#: src/game.cpp:1249 src/game.cpp:1287 src/game.cpp:1314
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/game.cpp:1143
+#: src/game.cpp:1253
 msgid "Terms"
 msgstr ""
 
-#: src/game.cpp:1173
+#: src/game.cpp:1283
 msgid "Sending add-on"
 msgstr ""
 
-#: src/game.cpp:1181 src/game.cpp:1208 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1291 src/game.cpp:1318 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr ""
 
-#: src/game.cpp:1231
+#: src/game.cpp:1341
 msgid "Join Official Server"
 msgstr ""
 
-#: src/game.cpp:1232
+#: src/game.cpp:1342
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:1234 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1344 src/multiplayer_lobby.cpp:532
 msgid "Join Game"
 msgstr ""
 
-#: src/game.cpp:1235
+#: src/game.cpp:1345
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:1237
+#: src/game.cpp:1347
 msgid "Host Networked Game"
 msgstr ""
 
-#: src/game.cpp:1238
+#: src/game.cpp:1348
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:1240
+#: src/game.cpp:1350
 msgid "Local Game"
 msgstr ""
 
-#: src/game.cpp:1241
+#: src/game.cpp:1351
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr ""
 
-#: src/game.cpp:1249 src/multiplayer.cpp:230
+#: src/game.cpp:1359 src/multiplayer.cpp:230
 msgid "Login: "
 msgstr ""
 
-#: src/game.cpp:1286 src/playcampaign.cpp:90 src/playcampaign.cpp:344
+#: src/game.cpp:1396 src/playcampaign.cpp:90 src/playcampaign.cpp:344
 msgid "The game could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1288 src/playcampaign.cpp:92 src/playcampaign.cpp:347
+#: src/game.cpp:1398 src/playcampaign.cpp:92 src/playcampaign.cpp:347
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:1300 src/playcampaign.cpp:94 src/playcampaign.cpp:350
+#: src/game.cpp:1410 src/playcampaign.cpp:94 src/playcampaign.cpp:350
 msgid "The game map could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1324
+#: src/game.cpp:1434
 msgid "Language"
 msgstr ""
 
-#: src/game.cpp:1325
+#: src/game.cpp:1435
 msgid "Choose your preferred language:"
 msgstr ""
 
-#: src/game.cpp:1473
+#: src/game.cpp:1583
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr ""
 
-#: src/game.cpp:1478
+#: src/game.cpp:1588
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game.cpp:1492
+#: src/game.cpp:1602
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1542
+#: src/game.cpp:1652
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1543
+#: src/game.cpp:1653
 msgid "' (The game will now exit)"
 msgstr ""
 
-#: src/game.cpp:1695
+#: src/game.cpp:1805
 msgid "Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:1818
+#: src/game.cpp:1928
 msgid "Loading game configuration."
 msgstr ""
 
-#: src/game.cpp:1824
+#: src/game.cpp:1934
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1840
+#: src/game.cpp:1950
 msgid "Loading title screen."
 msgstr ""
 
@@ -9130,11 +9159,6 @@ msgstr ""
 
 #: src/menu_events.cpp:482 src/playcampaign.cpp:465
 msgid "Name:"
-msgstr ""
-
-#: src/menu_events.cpp:487 src/menu_events.cpp:500
-#: src/multiplayer_create.cpp:494
-msgid "Error"
 msgstr ""
 
 #: src/menu_events.cpp:487
@@ -10133,7 +10157,7 @@ msgstr ""
 msgid "Owned village"
 msgstr ""
 
-#: src/titlescreen.cpp:165
+#: src/titlescreen.cpp:166
 msgid "-- The Tome of Wesnoth"
 msgstr ""
 
@@ -10154,7 +10178,7 @@ msgid "TitleScreen button^Load"
 msgstr ""
 
 #: src/titlescreen.cpp:260
-msgid "TitleScreen button^Get Add-ons"
+msgid "TitleScreen button^Add-ons"
 msgstr ""
 
 #: src/titlescreen.cpp:261
@@ -10211,15 +10235,15 @@ msgstr ""
 msgid "Quit the game"
 msgstr ""
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:310
 msgid "More"
 msgstr ""
 
-#: src/titlescreen.cpp:312
+#: src/titlescreen.cpp:311
 msgid "Help"
 msgstr ""
 
-#: src/titlescreen.cpp:315
+#: src/titlescreen.cpp:314
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 

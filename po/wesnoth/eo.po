@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-18 19:36+0200\n"
+"POT-Creation-Date: 2007-06-22 13:11+0200\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -4028,7 +4028,7 @@ msgstr "ŝtonĵetilo"
 #: data/core/units/humans/Loyalist_Spearman.cfg:63
 #: data/core/units/humans/Loyalist_Spearman.cfg:204
 #: data/core/units/humans/Outlaw_Poacher.cfg:73
-#: data/core/units/humans/Outlaw_Trapper.cfg:103
+#: data/core/units/humans/Outlaw_Trapper.cfg:138
 #: data/core/units/humans/Peasant.cfg:24 data/core/units/humans/Peasant.cfg:67
 #: data/core/units/humans/Woodsman.cfg:65
 #: data/core/units/merfolk/Entangler.cfg:25
@@ -4158,7 +4158,7 @@ msgstr "ungegoj"
 #: data/core/units/humans/Outlaw_Rogue.cfg:29
 #: data/core/units/humans/Outlaw_Rogue.cfg:70
 #: data/core/units/humans/Outlaw_Thief.cfg:178
-#: data/core/units/humans/Outlaw_Trapper.cfg:36
+#: data/core/units/humans/Outlaw_Trapper.cfg:71
 #: data/core/units/humans/Woodsman.cfg:28
 #: data/core/units/merfolk/Triton.cfg:70
 #: data/core/units/monsters/Cave_Spider.cfg:36
@@ -4684,7 +4684,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Poacher.cfg:34
 #: data/core/units/humans/Outlaw_Rogue.cfg:27
 #: data/core/units/humans/Outlaw_Thief.cfg:176
-#: data/core/units/humans/Outlaw_Trapper.cfg:34
+#: data/core/units/humans/Outlaw_Trapper.cfg:69
 #: data/core/units/humans/Woodsman.cfg:26 data/core/units/orcs/Archer.cfg:69
 #: data/core/units/orcs/Assassin.cfg:70 data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:41
@@ -4947,7 +4947,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Longbowman.cfg:62
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:62
 #: data/core/units/humans/Outlaw_Poacher.cfg:72
-#: data/core/units/humans/Outlaw_Trapper.cfg:102
+#: data/core/units/humans/Outlaw_Trapper.cfg:137
 #: data/core/units/humans/Woodsman.cfg:64 data/core/units/orcs/Archer.cfg:177
 #: data/core/units/orcs/Archer.cfg:236 data/core/units/orcs/Leader.cfg:66
 #: data/core/units/orcs/Ruler.cfg:64 data/core/units/orcs/Sovereign.cfg:65
@@ -5938,7 +5938,7 @@ msgid ""
 "reliably dodge any offensive move is a luxury only afforded to the fit of "
 "body, and then only to those who endure rigorous training.\n"
 "\n"
-"Outfitted with only a dagger and rapier, fencers are light on their feet and "
+"Outfitted with only a dagger and sabre, fencers are light on their feet and "
 "useful in many situations where their armor-bound peers are at a "
 "disadvantage. They take relish in dancing circles around troops like heavy "
 "infantry, mocking the price in reduced mobility paid for full armor.\n"
@@ -10594,16 +10594,16 @@ msgstr "por turno"
 msgid "Skip animation"
 msgstr "+Slovaka traduko"
 
-#: src/about.cpp:40 src/about.cpp:63 src/multiplayer_connect.cpp:355
+#: src/about.cpp:41 src/about.cpp:64 src/multiplayer_connect.cpp:355
 #: src/multiplayer_connect.cpp:452 src/multiplayer_wait.cpp:446
 msgid "+"
 msgstr ""
 
-#: src/about.cpp:47 src/about.cpp:70
+#: src/about.cpp:48 src/about.cpp:71
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:168 src/help.cpp:2598 src/menu_events.cpp:138
+#: src/about.cpp:169 src/help.cpp:2598 src/menu_events.cpp:138
 msgid "Close"
 msgstr "Fermu"
 
@@ -10722,11 +10722,11 @@ msgstr "%a %b %d %H:%M %J"
 msgid "#(Invalid)"
 msgstr "#(Nevalida)"
 
-#: src/dialogs.cpp:467 src/game.cpp:809
+#: src/dialogs.cpp:467 src/game.cpp:810
 msgid "Campaign"
 msgstr "Militekspedicio"
 
-#: src/dialogs.cpp:469 src/game.cpp:1247
+#: src/dialogs.cpp:469 src/game.cpp:1357
 msgid "Multiplayer"
 msgstr "Komuna ludo"
 
@@ -10790,7 +10790,7 @@ msgstr "Forviŝu registritan"
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:571 src/game.cpp:946 src/menu_events.cpp:313
+#: src/dialogs.cpp:571 src/game.cpp:1056 src/menu_events.cpp:313
 #: src/menu_events.cpp:858 src/multiplayer.cpp:108
 msgid "Name"
 msgstr "Nomo"
@@ -10828,28 +10828,28 @@ msgstr "Spertoj:"
 msgid "Moves: "
 msgstr "Movoj:"
 
-#: src/display.cpp:562
+#: src/display.cpp:576
 msgid "Screenshot"
 msgstr "Foto el ekrano"
 
-#: src/game.cpp:426 src/game.cpp:1332
+#: src/game.cpp:427 src/game.cpp:1442
 msgid "The Battle for Wesnoth"
 msgstr "Batalo pri Vesnot"
 
-#: src/game.cpp:671
+#: src/game.cpp:672
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Atentu: La dosiero kiun vi volis alŝuti estas damaĝita. Sed malgraŭ tio mi "
 "provos daŭrigi.\n"
 
-#: src/game.cpp:696 src/multiplayer_connect.cpp:1258
+#: src/game.cpp:697 src/multiplayer_connect.cpp:1258
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu ŝarĝi "
 "ĝin?"
 
-#: src/game.cpp:701 src/multiplayer_connect.cpp:1265
+#: src/game.cpp:702 src/multiplayer_connect.cpp:1265
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -10857,263 +10857,295 @@ msgstr ""
 "Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu ŝarĝi "
 "ĝin?"
 
-#: src/game.cpp:709 src/game.cpp:712 src/multiplayer_connect.cpp:1241
+#: src/game.cpp:710 src/game.cpp:713 src/multiplayer_connect.cpp:1241
 msgid "The file you have tried to load is corrupt: '"
 msgstr "La dosiero, kiun vi volis ŝarĝi, estas damaĝita: '"
 
-#: src/game.cpp:715
+#: src/game.cpp:716
 msgid "File I/O Error while reading the game"
 msgstr "Eraro ĉe legado de lud-dosiero"
 
-#: src/game.cpp:810
+#: src/game.cpp:811
 msgid "Choose the campaign you want to play:"
 msgstr "Elektu kiun kampanjon vi volas ludi:"
 
-#: src/game.cpp:833
+#: src/game.cpp:834
 msgid "Difficulty"
 msgstr "Komplikeco"
 
-#: src/game.cpp:834
+#: src/game.cpp:835
 msgid "Select difficulty level:"
 msgstr "Elektu komplikecon:"
 
-#: src/game.cpp:861
+#: src/game.cpp:862
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:864
+#: src/game.cpp:865
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:867
+#: src/game.cpp:868
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:895
+#: src/game.cpp:897
 msgid "Connect to Server"
 msgstr "Aliĝu al servilo"
 
-#: src/game.cpp:896
+#: src/game.cpp:898
 #, fuzzy
 msgid "You will now connect to a server to download add-ons."
 msgstr "Nun vi aliĝos al  servilo kun kampanjoj, por elŝuti kampanjojn."
 
-#: src/game.cpp:897
+#: src/game.cpp:900
 msgid "Server: "
 msgstr "Servilo:"
 
-#: src/game.cpp:912 src/multiplayer.cpp:166 src/multiplayer.cpp:203
+#: src/game.cpp:901 src/game.cpp:948
+msgid "Remove Add-ons"
+msgstr ""
+
+#: src/game.cpp:936
+#, fuzzy
+msgid "You have no Add-ons installed."
+msgstr "kampanjo instalita"
+
+#: src/game.cpp:948
+#, fuzzy
+msgid "Choose the add-on to remove."
+msgstr "Elektu kampanjon, kiun vi volas alŝuti."
+
+#: src/game.cpp:966
+msgid "Confirm"
+msgstr ""
+
+#: src/game.cpp:997
+#, fuzzy
+msgid "Add-on deleted"
+msgstr "kampanjo instalata"
+
+#: src/game.cpp:1002
+msgid "Add-on could not be deleted -- a file was not found."
+msgstr ""
+
+#: src/game.cpp:1002 src/menu_events.cpp:487 src/menu_events.cpp:500
+#: src/multiplayer_create.cpp:494
+msgid "Error"
+msgstr "Eraro"
+
+#: src/game.cpp:1022 src/multiplayer.cpp:166 src/multiplayer.cpp:203
 msgid "Connecting to Server..."
 msgstr "Mi aliĝas al servilo..."
 
-#: src/game.cpp:915
+#: src/game.cpp:1025
 msgid "Could not connect to host."
 msgstr "Ne eblas aliĝi al servilo."
 
-#: src/game.cpp:924
+#: src/game.cpp:1034
 msgid "Asking for list of add-ons"
 msgstr ""
 
-#: src/game.cpp:937
+#: src/game.cpp:1047
 msgid "Error communicating with the server."
 msgstr "Eraro dum komunikado kun servero."
 
-#: src/game.cpp:946 src/titlescreen.cpp:235
+#: src/game.cpp:1056 src/titlescreen.cpp:235
 msgid "Version"
 msgstr "Versio"
 
-#: src/game.cpp:947
+#: src/game.cpp:1057
 msgid "Author"
 msgstr "Aŭtoro"
 
-#: src/game.cpp:947
+#: src/game.cpp:1057
 msgid "Downloads"
 msgstr "Enŝutoj"
 
-#: src/game.cpp:947
+#: src/game.cpp:1057
 msgid "Size"
 msgstr "Grandeco"
 
-#: src/game.cpp:1005
+#: src/game.cpp:1115
 #, fuzzy
 msgid "Publish add-on: "
 msgstr "Publiku kampanjon:"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1119
 #, fuzzy
 msgid "Delete add-on: "
 msgstr "Forigu kampanjon:"
 
-#: src/game.cpp:1013
+#: src/game.cpp:1123
 #, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr "Sur ĉi tiu servilo estas neniaj disponeblaj kampanjoj."
 
-#: src/game.cpp:1020
+#: src/game.cpp:1130
 #, fuzzy
 msgid "Choose the add-on to download."
 msgstr "Elektu kampanjon, kiun vi volas alŝuti."
 
-#: src/game.cpp:1020
+#: src/game.cpp:1130
 msgid "Get Add-ons"
 msgstr ""
 
-#: src/game.cpp:1061
+#: src/game.cpp:1171
 #, fuzzy
 msgid "Dependencies"
 msgstr "Princino"
 
-#: src/game.cpp:1062
+#: src/game.cpp:1172
 msgid "This add-on requires the following additional dependencies:"
 msgstr ""
 
-#: src/game.cpp:1064
+#: src/game.cpp:1174
 #, fuzzy
 msgid "Do you still want to download it?"
 msgstr "Reale vi volas forviŝi ĉi tiun savitan ludon?"
 
-#: src/game.cpp:1073
+#: src/game.cpp:1183
 #, fuzzy
 msgid "Downloading add-on..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/game.cpp:1117
+#: src/game.cpp:1227
 #, fuzzy
 msgid "Add-on Installed"
 msgstr "kampanjo instalata"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1227
 #, fuzzy
 msgid "The add-on has been installed."
 msgstr "kampanjo instalita"
 
-#: src/game.cpp:1120
+#: src/game.cpp:1230
 msgid "Network communication error."
 msgstr "Eraro dum reta komunikado."
 
-#: src/game.cpp:1122
+#: src/game.cpp:1232
 msgid "Remote host disconnected."
 msgstr "Servilo deŝaltiĝis"
 
-#: src/game.cpp:1124
+#: src/game.cpp:1234
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Okazis eraro dum kreo de instaldosieroj."
 
-#: src/game.cpp:1136 src/game.cpp:1175 src/game.cpp:1202
+#: src/game.cpp:1246 src/game.cpp:1285 src/game.cpp:1312
 #: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:372
 msgid "Connection timed out"
 msgstr "Aliĝtempo pasis"
 
-#: src/game.cpp:1139 src/game.cpp:1177 src/game.cpp:1204
+#: src/game.cpp:1249 src/game.cpp:1287 src/game.cpp:1314
 msgid "The server responded with an error: \""
 msgstr "Servilo anoncis erearon: \""
 
-#: src/game.cpp:1143
+#: src/game.cpp:1253
 msgid "Terms"
 msgstr "Kondiĉoj"
 
-#: src/game.cpp:1173
+#: src/game.cpp:1283
 #, fuzzy
 msgid "Sending add-on"
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/game.cpp:1181 src/game.cpp:1208 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1291 src/game.cpp:1318 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr "Respondo"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1341
 msgid "Join Official Server"
 msgstr "Aliĝu al servilo de Vesnot"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1342
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Aliĝu al oficiala Vesnot servilo"
 
-#: src/game.cpp:1234 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1344 src/multiplayer_lobby.cpp:532
 msgid "Join Game"
 msgstr "Aliĝu al ludo"
 
-#: src/game.cpp:1235
+#: src/game.cpp:1345
 msgid "Join a server or hosted game"
 msgstr "Aliĝu al servilo aŭ en komencitan ludon"
 
-#: src/game.cpp:1237
+#: src/game.cpp:1347
 msgid "Host Networked Game"
 msgstr "Fondu retludon"
 
-#: src/game.cpp:1238
+#: src/game.cpp:1348
 msgid "Host a game without using a server"
 msgstr "Fondu novan ludon sen helpo de servilo"
 
-#: src/game.cpp:1240
+#: src/game.cpp:1350
 #, fuzzy
 msgid "Local Game"
 msgstr "Legi ludon"
 
-#: src/game.cpp:1241
+#: src/game.cpp:1351
 #, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Vi ludas kelkaj per unu maŝino"
 
-#: src/game.cpp:1249 src/multiplayer.cpp:230
+#: src/game.cpp:1359 src/multiplayer.cpp:230
 msgid "Login: "
 msgstr "Aliĝo:"
 
-#: src/game.cpp:1286 src/playcampaign.cpp:90 src/playcampaign.cpp:344
+#: src/game.cpp:1396 src/playcampaign.cpp:90 src/playcampaign.cpp:344
 msgid "The game could not be loaded: "
 msgstr "Ne eblis alŝuti ludon:"
 
-#: src/game.cpp:1288 src/playcampaign.cpp:92 src/playcampaign.cpp:347
+#: src/game.cpp:1398 src/playcampaign.cpp:92 src/playcampaign.cpp:347
 msgid "Error while playing the game: "
 msgstr "Eraro ĉe ludado:"
 
-#: src/game.cpp:1300 src/playcampaign.cpp:94 src/playcampaign.cpp:350
+#: src/game.cpp:1410 src/playcampaign.cpp:94 src/playcampaign.cpp:350
 msgid "The game map could not be loaded: "
 msgstr "Ne eblis alŝuti ludmapon:"
 
-#: src/game.cpp:1324
+#: src/game.cpp:1434
 msgid "Language"
 msgstr "Lingvo"
 
-#: src/game.cpp:1325
+#: src/game.cpp:1435
 msgid "Choose your preferred language:"
 msgstr "Elektu preferatan lingvon"
 
-#: src/game.cpp:1473
+#: src/game.cpp:1583
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 
-#: src/game.cpp:1478
+#: src/game.cpp:1588
 msgid "ERROR DETAILS:"
 msgstr "DETALOJ DE ERARO:"
 
-#: src/game.cpp:1492
+#: src/game.cpp:1602
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Atento: Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1652
 msgid "Error loading game configuration files: '"
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1653
 msgid "' (The game will now exit)"
 msgstr "' (Ludo nun finiĝas))"
 
-#: src/game.cpp:1695
+#: src/game.cpp:1805
 msgid "Battle for Wesnoth"
 msgstr "Batalo por Vesnot"
 
-#: src/game.cpp:1818
+#: src/game.cpp:1928
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game.cpp:1824
+#: src/game.cpp:1934
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1840
+#: src/game.cpp:1950
 msgid "Loading title screen."
 msgstr ""
 
@@ -11388,11 +11420,6 @@ msgstr "Enspezo"
 #: src/menu_events.cpp:482 src/playcampaign.cpp:465
 msgid "Name:"
 msgstr "Nomo:"
-
-#: src/menu_events.cpp:487 src/menu_events.cpp:500
-#: src/multiplayer_create.cpp:494
-msgid "Error"
-msgstr "Eraro"
 
 #: src/menu_events.cpp:487
 msgid ""
@@ -12448,7 +12475,7 @@ msgstr "Malamika vilaĝo"
 msgid "Owned village"
 msgstr "Nia vilaĝo"
 
-#: src/titlescreen.cpp:165
+#: src/titlescreen.cpp:166
 msgid "-- The Tome of Wesnoth"
 msgstr "- Kroniko de Vesnot"
 
@@ -12470,7 +12497,7 @@ msgstr "Legi ludon"
 
 #: src/titlescreen.cpp:260
 #, fuzzy
-msgid "TitleScreen button^Get Add-ons"
+msgid "TitleScreen button^Add-ons"
 msgstr "Legi ludon"
 
 #: src/titlescreen.cpp:261
@@ -12530,15 +12557,15 @@ msgstr "Kiu kreis la ludon"
 msgid "Quit the game"
 msgstr "Fini la ludon"
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:310
 msgid "More"
 msgstr "Pli"
 
-#: src/titlescreen.cpp:312
+#: src/titlescreen.cpp:311
 msgid "Help"
 msgstr ""
 
-#: src/titlescreen.cpp:315
+#: src/titlescreen.cpp:314
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
