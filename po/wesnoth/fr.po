@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-22 13:11+0200\n"
-"PO-Revision-Date: 2007-06-21 22:20+0200\n"
+"PO-Revision-Date: 2007-06-22 22:11+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -6291,9 +6291,7 @@ msgstr "sabre"
 msgid "Fencer"
 msgstr "Bretteur"
 
-# Le Français corrigé avant l'Anglais : c'est un sabre et non une rapière.
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -11495,32 +11493,28 @@ msgid "Server: "
 msgstr "Serveur : "
 
 #: src/game.cpp:901 src/game.cpp:948
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Télécharger des extensions"
+msgstr "Désinstaller des extensions"
 
 #: src/game.cpp:936
-#, fuzzy
 msgid "You have no Add-ons installed."
-msgstr "L'extension a été installée."
+msgstr "Aucune extension n'est installée."
 
 #: src/game.cpp:948
-#, fuzzy
 msgid "Choose the add-on to remove."
-msgstr "Choisissez l'extension à télécharger."
+msgstr "Choisissez l'extension à desinstaller."
 
 #: src/game.cpp:966
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmation"
 
 #: src/game.cpp:997
-#, fuzzy
 msgid "Add-on deleted"
-msgstr "Extension installée"
+msgstr "Extension desinstallée"
 
 #: src/game.cpp:1002
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr ""
+msgstr "L'extension n'a pu être désinstallée : un fichier n'a pas été trouvé."
 
 #: src/game.cpp:1002 src/menu_events.cpp:487 src/menu_events.cpp:500
 #: src/multiplayer_create.cpp:494
@@ -13075,9 +13069,7 @@ msgstr "Multijoueur"
 msgid "TitleScreen button^Load"
 msgstr "Charger"
 
-# "Télécharger des Extensions" est un peu trop long dans les menus
 #: src/titlescreen.cpp:260
-#, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "Extensions"
 
