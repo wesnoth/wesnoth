@@ -257,7 +257,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 					       N_("TitleScreen button^Campaign"),
 					       N_("TitleScreen button^Multiplayer"),
 					       N_("TitleScreen button^Load"),
-					       N_("TitleScreen button^Get Add-ons"),
+					       N_("TitleScreen button^Add-ons"),
 					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
 					       N_("Credits"),

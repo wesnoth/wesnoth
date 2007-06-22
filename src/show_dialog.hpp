@@ -57,7 +57,6 @@ private:
 class dialog_frame {
 public:
 	//Static members
-	static const struct style default_style;
 	static const int title_border_w, title_border_h;
 
 	int vertical_padding() const;

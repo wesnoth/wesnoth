@@ -54,10 +54,10 @@ namespace gui {
 
 // This is where the connections between styles and the panel images
 // in the data tree gets made.
-const struct style dialog::default_style = {"opaque", 0};
-const struct style dialog::message_style = {"translucent65", 3};
-const struct style dialog::titlescreen_style = {"translucent54", 0};
-const struct style dialog::hotkeys_style = {"menu2", 0};
+const struct style dialog::default_style("opaque", 0);
+const struct style dialog::message_style("translucent65", 3);
+const struct style dialog::titlescreen_style("translucent54", 0);
+const struct style dialog::hotkeys_style("menu2", 0);
 
 //static initialization
 const std::string dialog::no_help("");

@@ -98,7 +98,8 @@ public:
 
 	bool new_campaign();
 	bool play_multiplayer();
-	void download_campaigns();
+	void manage_addons();
+	void download_campaigns(std::string host);
 	bool change_language();
 
 	void show_help();
@@ -888,17 +889,126 @@ static std::string format_file_size(const std::string& size_str)
 namespace
 {
 
-void game_controller::download_campaigns()
-{
-	std::string host = preferences::campaign_server();
+	// Manage add-ons
+	void game_controller::manage_addons()
+	{
+		int res;
 
-	const int res = gui::show_dialog(disp(),NULL,_("Connect to Server"),
+		gui::dialog d(disp(),_("Connect to Server"),
 	        _("You will now connect to a server to download add-ons."),
-	        gui::OK_CANCEL,NULL,NULL,_("Server: "),&host);
-	if(res != 0) {
-		return;
+	        gui::OK_CANCEL);
+		d.set_textbox(_("Server: "), preferences::campaign_server());
+		d.add_button( new gui::dialog_button(disp().video(), _("Remove Add-ons"),
+			gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
+		res = d.show();
+		const std::string host = d.textbox_text();
+
+		if (res == 0 )	// Get Add-Ons
+		{
+			download_campaigns(host);
+		}
+		else if (res == 2) // Manage Add-Ons
+		{
+
+			std::vector<std::string> addons;
+
+			const std::string campaign_dir = get_user_data_dir() + "/data/campaigns/";
+
+			get_files_in_dir(campaign_dir, &addons, NULL, FILE_NAME_ONLY);
+
+			// Strip the ".cfg" extension and replace "_" with " " for display.
+			std::vector<std::string>::iterator i = addons.begin();
+			while(i != addons.end())
+			{
+				std::string::size_type pos = i->rfind(".cfg", i->size());
+				if(pos == std::string::npos) {
+					i = addons.erase(i);
+				} else {
+					i->erase(pos);
+					std::replace(i->begin(), i->end(), '_', ' ');
+					i++;
+				}
+			}
+
+
+			if (addons.empty())
+			{
+				gui::show_error_message(disp(), _("You have no Add-ons installed."));
+				return;
+			}			
+
+			gui::menu::basic_sorter sorter;
+			sorter.set_alpha_sort(1);
+
+
+			int index = 0;
+		 
+			do
+			{
+				gui::dialog addon_dialog(disp(), _("Remove Add-ons"), _("Choose the add-on to remove."),
+						gui::OK_CANCEL);
+				gui::menu::imgsel_style &addon_style = gui::menu::bluebg_style;
+
+				gui::menu *addon_menu = new gui::menu(disp().video(), addons, false, -1,
+						gui::dialog::max_menu_width, &sorter, &addon_style, false);
+				addon_dialog.set_menu(addon_menu);
+				index = addon_dialog.show();
+
+				if(index < 0) return;
+
+				const std::string confirm_message =
+					"Are you sure you want to remove the add-on \'"
+					+ addons.at(index)
+					+ "?\'";
+				res = gui::show_dialog(
+						disp(),
+						NULL,
+						_("Confirm"),
+						confirm_message,
+						gui::YES_NO);
+			} while (res != 0);
+
+			bool delete_success = true;
+
+			//Put underscores back in the name and remove the addon
+			std::string filename = addons.at(index);
+			std::replace(filename.begin(), filename.end(), ' ', '_');
+			delete_success &= delete_directory(campaign_dir + filename + ".cfg");
+			if (delete_success)
+			{
+				delete_success &= delete_directory(campaign_dir + filename);
+			}
+
+			//Report results
+			if (delete_success)
+			{
+				//force a reload of configuration information
+				const bool old_cache = use_caching_;
+				use_caching_ = false;
+				old_defines_map_.clear();
+				refresh_game_cfg();
+				use_caching_ = old_cache;
+				::init_textdomains(game_config_);
+				paths_manager_.set_paths(game_config_);
+				clear_binary_paths_cache();
+
+				std::string success_message = "Add-on \'" + addons.at(index) + "\' deleted.";
+
+				gui::show_dialog(disp(), NULL, _("Add-on deleted"), success_message,
+						gui::OK_ONLY);
+			}
+			else
+			{
+				gui::show_dialog(disp(), NULL, _("Error"), _("Add-on could not be deleted -- a file was not found."),
+						gui::OK_ONLY);
+			}
+	}
+		else // Cancel or unexpected result
+			return;
 	}
 
+void game_controller::download_campaigns(std::string host)
+{
 	const std::vector<std::string> items = utils::split(host, ':');
 	if(items.empty()) {
 		return;
@@ -1908,7 +2018,7 @@ static int play_game(int argc, char** argv)
 			help::show_help(game.disp());
 			continue;
 		} else if(res == gui::GET_ADDONS) {
-			game.download_campaigns();
+			game.manage_addons();
 			continue;
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();

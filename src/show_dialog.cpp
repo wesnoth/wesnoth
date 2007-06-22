@@ -58,7 +58,8 @@ namespace gui {
 const int ButtonHPadding = 10;
 const int ButtonVPadding = 10;
 
-const struct style dialog_frame::default_style = {"opaque", false};
+static const struct style &default_style = dialog::default_style; //{"opaque", false}
+
 const int dialog_frame::title_border_w = 10;
 const int dialog_frame::title_border_h = 5;
 

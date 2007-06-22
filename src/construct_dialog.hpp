@@ -27,8 +27,9 @@
 namespace gui {
 
 struct style {
+	style(std::string const& p, int br) : panel(p), blur_radius(br) {}
 	std::string	panel;
-	int		blur_radius;
+	int	blur_radius;
 };
 
 struct dialog_process_info
