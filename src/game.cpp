@@ -1628,9 +1628,9 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 {
 	try {
 		if(old_defines_map_.empty() || defines_map_ != old_defines_map_ || reset_translations) {
+			cursor::setter cur(cursor::WAIT);
 
 			units_data_.clear();
-
 			if(!reset_translations) {
 				game_config_.clear();
 				read_game_cfg(defines_map_, game_config_, use_caching_);
