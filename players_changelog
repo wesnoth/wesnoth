@@ -60,10 +60,9 @@ Version 1.3.3+svn:
    * Restore search of no-team-only map labels.
 
   * Unit changes and balancing
-
-  * Multiplayer
-   * healthy units now can rest even when they move instead of having a double
-     bonus.
+    * Units with the 'healthy' trait now rest even when they move (but not
+      attack/be attacked) instead of having a double resting bonus.
+    * Increased the HP of the Skeleton Archer from 30 to 31.
 
   * Miscellaneous and bugfixes
    * Fixed a lag in the path rendering when there is a lot of units (bug #9268)
