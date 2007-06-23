@@ -379,6 +379,171 @@ gui::button::TYPE map_display::string_to_button_type(std::string type)
 	return res;
 }
 
+static const std::string& get_direction(size_t n)
+{
+	static std::string const dirs[6] = { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
+	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
+}
+
+std::vector<std::string> map_display::get_fog_shroud_graphics(const gamemap::location& loc)
+{
+	std::vector<std::string> res;
+
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(loc,adjacent);
+	t_translation::t_letter tiles[6];
+	
+	static const t_translation::t_letter terrain_types[] = 
+		{ t_translation::FOGGED, t_translation::VOID_TERRAIN, t_translation::NONE_TERRAIN };
+
+	for(int i = 0; i != 6; ++i) {
+		if(shrouded(adjacent[i])) {
+			tiles[i] = t_translation::VOID_TERRAIN;
+		} else if(!fogged(loc) && fogged(adjacent[i])) {
+			tiles[i] = t_translation::FOGGED;
+		} else {
+			tiles[i] = t_translation::NONE_TERRAIN; 
+		}
+	}
+
+
+	for(const t_translation::t_letter *terrain = terrain_types; 
+			*terrain != t_translation::NONE_TERRAIN; terrain ++) {
+
+		//find somewhere that doesn't have overlap to use as a starting point
+		int start;
+		for(start = 0; start != 6; ++start) {
+			if(tiles[start] != *terrain) {
+				break;
+			}
+		}
+
+		if(start == 6) {
+			start = 0;
+		}
+
+		//find all the directions overlap occurs from
+		for(int i = (start+1)%6, n = 0; i != start && n != 6; ++n) {
+			if(tiles[i] == *terrain) {
+				std::ostringstream stream;
+				std::string name;
+				// if(*terrain == terrain_type::VOID_TERRAIN)
+				//	stream << "void";
+				//else
+				//	stream << "fog";
+				stream << "terrain/" << map_.get_terrain_info(*terrain).symbol_image();
+
+				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
+					stream << get_direction(i);
+
+					if(!image::exists(stream.str() + ".png")) {
+						//if we don't have any surface at all,
+						//then move onto the next overlapped area
+						if(name.empty()) {
+							i = (i+1)%6;
+						}
+						break;
+					} else {
+						name = stream.str();
+					}
+				}
+
+				if(!name.empty()) {
+					res.push_back(name + ".png");
+				}
+			} else {
+				i = (i+1)%6;
+			}
+		}
+	}
+
+	return res;
+}
+
+std::vector<surface> map_display::get_terrain_images(const gamemap::location &loc, 
+		const time_of_day& tod,
+		image::TYPE image_type, 
+		ADJACENT_TERRAIN_TYPE terrain_type)
+{
+	std::vector<surface> res;
+
+	if(terrain_type == ADJACENT_FOGSHROUD) {
+		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(loc);
+
+		if(!fog_shroud.empty()) {
+			for(std::vector<std::string>::const_iterator it = fog_shroud.begin(); it != fog_shroud.end(); ++it) {
+				image::locator image(*it);
+				// image.filename = "terrain/" + *it;
+
+				const surface surface(image::get_image(image, image_type));
+				if (!surface.null()) {
+					res.push_back(surface);
+				}
+			}
+
+		}
+
+		return res;
+	}
+
+	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
+	      (terrain_type == ADJACENT_FOREGROUND ?
+		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
+	const terrain_builder::imagelist* const terrains = builder_.get_terrain_at(loc,
+			tod.id, builder_terrain_type);
+
+	if(terrains != NULL) {
+		for(std::vector<animated<image::locator> >::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
+			// it->update_current_frame();
+			image::locator image = it->get_current_frame();
+			// image.filename = "terrain/" + image.filename;
+
+			const surface surface(image::get_image(image, image_type));
+			if (!surface.null()) {
+				res.push_back(surface);
+			}
+		}
+	} else if(terrain_type == ADJACENT_BACKGROUND){
+		// this should only happen with the off map tiles and now 
+		// return the void image. NOTE this is a temp hack
+		const surface surface(image::get_image("terrain/off-map/alpha.png"));
+		wassert(!surface.null());
+		if (!surface.null()) {
+			res.push_back(surface);
+		}
+	}
+
+	return res;
+}
+
+void map_display::draw_terrain_on_tile(const gamemap::location& loc, 
+				       const time_of_day& tod,
+				       image::TYPE image_type, 
+				       ADJACENT_TERRAIN_TYPE type)
+{
+	int xpos = int(get_location_x(loc));
+	int ypos = int(get_location_y(loc));
+
+	SDL_Rect clip_rect = map_area();
+
+	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
+	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
+		return;
+	}
+
+	surface const dst(screen_.getSurface());
+
+	clip_rect_setter set_clip_rect(dst,clip_rect);
+
+	const std::vector<surface>& images = get_terrain_images(loc,tod,image_type,type);
+
+	std::vector<surface>::const_iterator itor;
+	for(itor = images.begin(); itor != images.end(); ++itor) {
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+		SDL_BlitSurface(*itor,NULL,dst,&dstrect);
+	}
+}
+
 // Methods for superclass aware of units go here
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
@@ -1002,6 +1167,7 @@ static void draw_background(surface screen, const SDL_Rect& area)
 void display::draw(bool update,bool force)
 {
 	bool changed = false;
+
 	//log_scope("Drawing");
 	invalidate_animations();
 
@@ -1076,7 +1242,9 @@ void display::draw(bool update,bool force)
 			if (units_.find(*it) != units_.end()) {
 				unit_invals.insert(*it);
 			}
-			draw_tile(*it, clip_rect);
+			const time_of_day& tod = status_.get_time_of_day();
+			const time_of_day& tod_at = timeofday_at(status_,units_,*it,map_);
+			draw_tile(*it, tod, tod_at, clip_rect);
 			simulate_delay += 1;
 		}
 
@@ -1562,32 +1730,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	}
 }
 
-void display::draw_terrain_on_tile(const gamemap::location& loc, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type)
-{
-	int xpos = int(get_location_x(loc));
-	int ypos = int(get_location_y(loc));
-
-	SDL_Rect clip_rect = map_area();
-
-	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
-	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
-		return;
-	}
-
-	surface const dst(screen_.getSurface());
-
-	clip_rect_setter set_clip_rect(dst,clip_rect);
-
-	const std::vector<surface>& images = get_terrain_images(loc,image_type,type);
-
-	std::vector<surface>::const_iterator itor;
-	for(itor = images.begin(); itor != images.end(); ++itor) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(*itor,NULL,dst,&dstrect);
-	}
-}
-
-void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
+void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day & tod_at, const SDL_Rect &clip_rect)
 {
 	if(screen_.update_locked()) {
 		return;
@@ -1620,8 +1763,6 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 
 	image::TYPE image_type = image::SCALED_TO_HEX;
 
-	const time_of_day& tod = status_.get_time_of_day();
-	const time_of_day& tod_at = timeofday_at(status_,units_,loc,map_);
 	std::string mask = tod_at.image_mask;
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL || tod.image_mask != tod_at.image_mask) {
 		image_type = image::SCALED_TO_HEX;
@@ -1640,7 +1781,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	}
 
 	if(!is_shrouded /*|| !on_map*/) {
-		draw_terrain_on_tile(loc,image_type,ADJACENT_BACKGROUND);
+	  draw_terrain_on_tile(loc, tod, image_type, ADJACENT_BACKGROUND);
 
 		surface flag(get_flag(terrain,loc));
 		if(flag != NULL) {
@@ -1679,7 +1820,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	draw_footstep(loc,xpos,ypos);
 
 	if(!is_shrouded /*|| !on_map*/) {
-		draw_terrain_on_tile(loc,image_type,ADJACENT_FOREGROUND);
+		draw_terrain_on_tile(loc,tod,image_type,ADJACENT_FOREGROUND);
 	}
 
 	if(fogged(loc) && on_map && !is_shrouded) {
@@ -1691,7 +1832,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 	}
 
 	if(!is_shrouded && on_map) {
-		draw_terrain_on_tile(loc,image_type,ADJACENT_FOGSHROUD);
+		draw_terrain_on_tile(loc,tod,image_type,ADJACENT_FOGSHROUD);
 	}
 
 	//draw the time-of-day mask on top of the hex
@@ -1918,146 +2059,6 @@ void display::draw_movement_info(const gamemap::location& loc)
 		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.5);
 #endif
 	}
-}
-
-
-
-static const std::string& get_direction(size_t n)
-{
-	static std::string const dirs[6] = { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
-	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
-}
-
-std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
-{
-	std::vector<std::string> res;
-
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
-	t_translation::t_letter tiles[6];
-	
-	static const t_translation::t_letter terrain_types[] = 
-		{ t_translation::FOGGED, t_translation::VOID_TERRAIN, t_translation::NONE_TERRAIN };
-
-	for(int i = 0; i != 6; ++i) {
-		if(shrouded(adjacent[i])) {
-			tiles[i] = t_translation::VOID_TERRAIN;
-		} else if(!fogged(loc) && fogged(adjacent[i])) {
-			tiles[i] = t_translation::FOGGED;
-		} else {
-			tiles[i] = t_translation::NONE_TERRAIN; 
-		}
-	}
-
-
-	for(const t_translation::t_letter *terrain = terrain_types; 
-			*terrain != t_translation::NONE_TERRAIN; terrain ++) {
-
-		//find somewhere that doesn't have overlap to use as a starting point
-		int start;
-		for(start = 0; start != 6; ++start) {
-			if(tiles[start] != *terrain) {
-				break;
-			}
-		}
-
-		if(start == 6) {
-			start = 0;
-		}
-
-		//find all the directions overlap occurs from
-		for(int i = (start+1)%6, n = 0; i != start && n != 6; ++n) {
-			if(tiles[i] == *terrain) {
-				std::ostringstream stream;
-				std::string name;
-				// if(*terrain == terrain_type::VOID_TERRAIN)
-				//	stream << "void";
-				//else
-				//	stream << "fog";
-				stream << "terrain/" << map_.get_terrain_info(*terrain).symbol_image();
-
-				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
-					stream << get_direction(i);
-
-					if(!image::exists(stream.str() + ".png")) {
-						//if we don't have any surface at all,
-						//then move onto the next overlapped area
-						if(name.empty()) {
-							i = (i+1)%6;
-						}
-						break;
-					} else {
-						name = stream.str();
-					}
-				}
-
-				if(!name.empty()) {
-					res.push_back(name + ".png");
-				}
-			} else {
-				i = (i+1)%6;
-			}
-		}
-	}
-
-	return res;
-}
-
-std::vector<surface> display::get_terrain_images(const gamemap::location &loc, 
-		image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
-{
-	std::vector<surface> res;
-
-	if(terrain_type == ADJACENT_FOGSHROUD) {
-		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(loc);
-
-		if(!fog_shroud.empty()) {
-			for(std::vector<std::string>::const_iterator it = fog_shroud.begin(); it != fog_shroud.end(); ++it) {
-				image::locator image(*it);
-				// image.filename = "terrain/" + *it;
-
-				const surface surface(image::get_image(image, image_type));
-				if (!surface.null()) {
-					res.push_back(surface);
-				}
-			}
-
-		}
-
-		return res;
-	}
-
-	const time_of_day& tod = status_.get_time_of_day();
-	// const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
-
-	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
-	      (terrain_type == ADJACENT_FOREGROUND ?
-		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
-	const terrain_builder::imagelist* const terrains = builder_.get_terrain_at(loc,
-			tod.id, builder_terrain_type);
-
-	if(terrains != NULL) {
-		for(std::vector<animated<image::locator> >::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
-			// it->update_current_frame();
-			image::locator image = it->get_current_frame();
-			// image.filename = "terrain/" + image.filename;
-
-			const surface surface(image::get_image(image, image_type));
-			if (!surface.null()) {
-				res.push_back(surface);
-			}
-		}
-	} else if(terrain_type == ADJACENT_BACKGROUND){
-		// this should only happen with the off map tiles and now 
-		// return the void image. NOTE this is a temp hack
-		const surface surface(image::get_image("terrain/off-map/alpha.png"));
-		wassert(!surface.null());
-		if (!surface.null()) {
-			res.push_back(surface);
-		}
-	}
-
-	return res;
 }
 
 surface display::get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc)

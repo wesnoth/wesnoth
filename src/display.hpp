@@ -144,6 +144,17 @@ public:
 
 	// Will be overridden in the display subclass
 	bool fogged(const gamemap::location& loc UNUSED) const {return false;};
+	bool shrouded(const gamemap::location& loc UNUSED) const {return false;};
+
+protected:
+	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
+
+	std::vector<surface> get_terrain_images(const gamemap::location &loc, 
+					const time_of_day& tod,
+					image::TYPE type, 
+					ADJACENT_TERRAIN_TYPE terrain_type);
+
+	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
 protected:
 	CVideo& screen_;
@@ -158,6 +169,11 @@ protected:
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
 
+	//composes and draws the terrains on a tile
+	void draw_terrain_on_tile(const gamemap::location& loc, 
+				  const time_of_day& tod,
+				  image::TYPE image_type, 
+				  ADJACENT_TERRAIN_TYPE type);
 };
 
 class display : public map_display
@@ -283,11 +299,6 @@ public:
 	void clear_mouseover_hex_overlay() { mouseover_hex_overlay_ = NULL; }
 	
 private:
-	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
-
-	//composes and draws the terrains on a tile
-	void draw_terrain_on_tile(const gamemap::location& loc, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
-
 	// event raised when the map is being scrolled
 	mutable events::generic_event _scroll_event;
 
@@ -465,7 +476,7 @@ private:
 	display(const display&);
 	void operator=(const display&);
 
-	void draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect);
+	void draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day& tod_at, const SDL_Rect &clip_rect);
 	void draw_sidebar();
 	void draw_minimap(int x, int y, int w, int h);
 	void draw_game_status();
@@ -478,11 +489,6 @@ private:
 
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos);
-
-	std::vector<surface> get_terrain_images(const gamemap::location &loc, 
-		image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
-
-	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
 	//this surface must be freed by the caller
 	surface get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc);
