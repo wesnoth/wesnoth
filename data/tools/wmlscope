@@ -132,7 +132,7 @@ class CrossRefLister(CrossRef):
         # Bug: finds only the first definition of each macro in scope.
         doclist = self.xref.keys()
         doclist = filter(lambda x: self.xref[x][0].docstring.count("\n") > 1, doclist)
-        doclist.sort(lambda x, y: cmp(self.xref[x][0], self.xref[y]))
+        doclist.sort(lambda x, y: cmp(self.xref[x][0], self.xref[y][0]))
         outstr = ""
         filename = None
         counted = 0
