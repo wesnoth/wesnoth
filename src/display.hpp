@@ -143,7 +143,7 @@ public:
 	void create_buttons();
 
 	// Will be overridden in the display subclass
-	bool fogged(const gamemap::location& loc) const	{ return false; }
+	bool fogged(const gamemap::location& loc UNUSED) const {return false;};
 
 protected:
 	CVideo& screen_;
