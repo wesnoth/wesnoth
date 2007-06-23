@@ -116,7 +116,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) 
 	return layout(rect.x, rect.y, rect.w, rect.h);
 }
 
-/*int dialog_frame::top_padding() const {
+int dialog_frame::top_padding() const {
 	int padding = 0;
 	if(have_border_) {
 		padding += top_->h;
@@ -125,7 +125,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) 
 		padding += font::get_max_height(font::SIZE_LARGE) + 2*dialog_frame::title_border_h;
 	}
 	return padding;
-}*/
+}
 
 int dialog_frame::bottom_padding() const {
 	int padding = 0;

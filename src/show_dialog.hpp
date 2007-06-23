@@ -59,7 +59,7 @@ public:
 	//Static members
 	static const int title_border_w, title_border_h;
 
-//	int top_padding() const;
+	int top_padding() const;
 	int bottom_padding() const;
 
 	struct dimension_measurements {

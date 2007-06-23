@@ -539,9 +539,10 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		}
 	}
 
+	const int frame_top_pad = get_frame().top_padding();
 	const int frame_bottom_pad = get_frame().bottom_padding();
 	if(dim.y + dim.interior.h + frame_bottom_pad > scr->h) {
-		dim.y = scr->h - dim.interior.h - frame_bottom_pad;
+		dim.y = maximum<int>(frame_top_pad, scr->h - dim.interior.h - frame_bottom_pad);
 		if(dim.y < dim.interior.y) {
 			dim.interior.y = dim.y;
 		}
@@ -555,13 +556,10 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		//try to rein in the menu height a little bit
 		const int menu_height = menu_->height();
 		if(menu_height > 0) {
-			dim.menu_height = maximum<int>(0, max_height - dim.interior.h + menu_height);
+			dim.menu_height = maximum<int>(1, max_height - dim.interior.h + menu_height);
 			dim.interior.h -= menu_height - dim.menu_height;
 		}
 	}
-
-	dim.message.x = dim.x + image_width + left_padding + image_h_padding;
-	dim.message.y = dim.y + top_padding + caption_height;
 
 	//calculate the positions of the preview panes to the sides of the dialog
 	if(!preview_panes_.empty()) {
