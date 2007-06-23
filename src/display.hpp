@@ -136,12 +136,19 @@ public:
 	//function to make a screenshot and save it in a default location
 	void screenshot();
 
+	theme& get_theme() { return theme_; }
+	gui::button* find_button(const std::string& id);
+	gui::button::TYPE string_to_button_type(std::string type);
+	void create_buttons();
+
 protected:
 	CVideo& screen_;
 	const gamemap& map_;
 	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;
+  	// Not set by the initializer
+	std::vector<gui::button> buttons_;
 };
 
 class display : public map_display
@@ -272,9 +279,6 @@ private:
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(const gamemap::location& loc, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
-
-	gui::button::TYPE string_to_button_type(std::string type);
-
 	// event raised when the map is being scrolled
 	mutable events::generic_event _scroll_event;
 
@@ -391,9 +395,6 @@ public:
 	bool team_valid() const { return currentTeam_ < teams_.size(); }
 	const std::string current_team_name() const;
 			
-	theme& get_theme() { return theme_; }
-	gui::button* find_button(const std::string& id);
-
 	const theme::menu* menu_pressed();
 
 	//finds the menu which has a given item in it, and enables or disables it.
@@ -547,9 +548,6 @@ private:
 	double sidebarScaling_;
 
 	terrain_builder builder_;
-
-	void create_buttons();
-	std::vector<gui::button> buttons_;
 
 	bool first_turn_, in_game_;
 

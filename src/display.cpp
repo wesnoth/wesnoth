@@ -333,6 +333,50 @@ void map_display::screenshot()
 	SDL_SaveBMP(screen_.getSurface().get(), name.c_str());
 }
 
+gui::button* map_display::find_button(const std::string& id)
+{
+	for (size_t i = 0; i < buttons_.size(); ++i) {
+		if(buttons_[i].id() == id) {
+			return &buttons_[i];
+		}
+	}
+	return NULL;
+}
+
+void map_display::create_buttons()
+{
+	std::vector<gui::button> work;
+
+	const std::vector<theme::menu>& buttons = theme_.menus();
+	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
+		gui::button b(screen_,i->title(),string_to_button_type(i->type()),i->image());
+		b.set_id(i->get_id());
+		const SDL_Rect& loc = i->location(screen_area());
+		b.set_location(loc.x,loc.y);
+		if (!i->tooltip().empty()){
+			tooltips::add_tooltip(loc, i->tooltip());
+		}
+		if(rects_overlap(b.location(),map_area())) {
+			b.set_volatile(true);
+		}
+
+		gui::button* b_prev = find_button(b.id());
+		if(b_prev) b.enable(b_prev->enabled());
+
+		work.push_back(b);
+	}
+
+	buttons_.swap(work);
+}
+
+gui::button::TYPE map_display::string_to_button_type(std::string type)
+{
+	gui::button::TYPE res = gui::button::TYPE_PRESS;
+	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }
+	else if (type == "image") { res = gui::button::TYPE_IMAGE; }
+	return res;
+}
+
 // Methods for superclass aware of units go here
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
@@ -2469,16 +2513,6 @@ void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 	debugHighlights_[loc] += amount;
 }
 
-gui::button* display::find_button(const std::string& id)
-{
-	for (size_t i = 0; i < buttons_.size(); ++i) {
-		if(buttons_[i].id() == id) {
-			return &buttons_[i];
-		}
-	}
-	return NULL;
-}
-
 const theme::menu* display::menu_pressed()
 {
 
@@ -2514,40 +2548,6 @@ void display::begin_game()
 	in_game_ = true;
 	create_buttons();
 	invalidate_all();
-}
-
-void display::create_buttons()
-{
-	std::vector<gui::button> work;
-
-	const std::vector<theme::menu>& buttons = theme_.menus();
-	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		gui::button b(screen_,i->title(),string_to_button_type(i->type()),i->image());
-		b.set_id(i->get_id());
-		const SDL_Rect& loc = i->location(screen_area());
-		b.set_location(loc.x,loc.y);
-		if (!i->tooltip().empty()){
-			tooltips::add_tooltip(loc, i->tooltip());
-		}
-		if(rects_overlap(b.location(),map_area())) {
-			b.set_volatile(true);
-		}
-
-		gui::button* b_prev = find_button(b.id());
-		if(b_prev) b.enable(b_prev->enabled());
-
-		work.push_back(b);
-	}
-
-	buttons_.swap(work);
-}
-
-gui::button::TYPE display::string_to_button_type(std::string type)
-{
-	gui::button::TYPE res = gui::button::TYPE_PRESS;
-	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }
-	else if (type == "image") { res = gui::button::TYPE_IMAGE; }
-	return res;
 }
 
 namespace {
