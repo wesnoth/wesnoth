@@ -142,6 +142,9 @@ public:
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
 
+	// Will be overridden in the display subclass
+	bool fogged(const gamemap::location& loc) const	{ return false; }
+
 protected:
 	CVideo& screen_;
 	const gamemap& map_;
@@ -154,6 +157,7 @@ protected:
 	bool redraw_background_;
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
+
 };
 
 class display : public map_display
@@ -393,8 +397,8 @@ public:
 	bool fogged(const gamemap::location& loc) const
 		{ return team_valid() ? teams_[currentTeam_].fogged(loc.x, loc.y) : false; }
 
-	//the viewing team is the team currently viewing the game. The playing team
-	//is the team whose turn it is
+	//the viewing team is the team currently viewing the game. The
+	//playing team is the team whose turn it is
 	size_t viewing_team() const { return currentTeam_; }
 	size_t playing_team() const { return activeTeam_; }
 	bool team_valid() const { return currentTeam_ < teams_.size(); }
