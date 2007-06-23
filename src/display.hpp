@@ -53,7 +53,8 @@ class unit_map;
 class map_display
 {
 public:
-	map_display(CVideo& video, const gamemap& map, const config& theme_cfg);
+	map_display(CVideo& video, const gamemap& map, const config& theme_cfg,
+			const config& cfg, const config& level);
 	~map_display();
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
@@ -147,6 +148,10 @@ protected:
 	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;
+	terrain_builder builder_;
+	surface minimap_;
+	bool redrawMinimap_;
+	bool redraw_background_;
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
 };
@@ -500,10 +505,6 @@ private:
 	const SDL_Rect& calculate_energy_bar(surface surf);
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 
-	surface minimap_;
-	bool redrawMinimap_;
-	bool redraw_background_;
-
 	paths::route route_;
 
 	const gamestatus& status_;
@@ -541,13 +542,9 @@ private:
 
 	size_t currentTeam_, activeTeam_;
 
-
-
 	double turbo_speed_;
 	bool turbo_, grid_;
 	double sidebarScaling_;
-
-	terrain_builder builder_;
 
 	bool first_turn_, in_game_;
 
@@ -591,7 +588,7 @@ private:
 	//
 	std::vector<animated<image::locator> > flags_;
 
-	//the handle for the label which displays fps
+	//the handle for the label which displays frames per second
 	int fps_handle_;
 	static display * singleton_;
 };

@@ -63,9 +63,11 @@ namespace {
 	size_t sunset_timer = 0;
 }
 
-map_display::map_display(CVideo& video, const gamemap& map, const config& theme_cfg) : 
+map_display::map_display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) : 
 	screen_(video), map_(map), xpos_(0), ypos_(0),
-	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom)
+	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom),
+	builder_(cfg, level, map),
+	minimap_(NULL), redrawMinimap_(false), redraw_background_(true)
 {
 	if(non_interactive()) {
 		screen_.lock_updates(true);
@@ -384,18 +386,16 @@ std::map<gamemap::location,fixed_t> display::debugHighlights_;
 display::display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
-	map_display(video, map, theme_cfg),
+	map_display(video, map, theme_cfg, cfg, level),
 	_scroll_event("scrolled"),
 	units_(units),
 	temp_unit_(NULL),
-	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
 	status_(status),
 	teams_(t), nextDraw_(0),
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0),
 	turbo_speed_(2), turbo_(false), grid_(false), sidebarScaling_(1.0),
-	builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
 	diagnostic_label_(0), fps_handle_(0)
