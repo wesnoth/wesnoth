@@ -1224,8 +1224,6 @@ void display::draw(bool update,bool force)
 
 	process_reachmap_changes();
 
-	int simulate_delay = 0;
-
 	if(!panelsDrawn_) {
 		draw_all_panels();
 		//invalidate the reports so they are redrawn
@@ -1262,13 +1260,15 @@ void display::draw(bool update,bool force)
 		redrawMinimap_ = true;
 	}
 
+	int simulate_delay = 0;
 	if(!map_.empty() && !invalidated_.empty()) {
 		changed = true;
 		
 		halo::unrender(invalidated_);
 
-		// Units can overlap multiple hexes, so we need to (1) redraw
-		// them last, and (2) redraw them if they are adjacent existing hexes.
+		// Units can overlap multiple hexes, so we need to (1)
+		// redraw them last, and (2) redraw them if they are
+		// adjacent existing hexes.
 		std::set<gamemap::location> unit_invals;
 
 		SDL_Rect clip_rect = map_area();
