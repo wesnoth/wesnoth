@@ -113,19 +113,29 @@ if __name__ == "__main__":
         data = cs.list_campaigns()
         if data:
             campaigns = data.get_or_create_sub("campaigns")
-            sys.stdout.write("name\tauthor\tversion\tuploads\tdownloads\tsize\tdate\n")
-            for campaign in campaigns.get_all("campaign"):
-                if options.wml:
+            if options.wml:
+                for campaign in campaigns.get_all("campaign"):
                     campaign.debug(show_contents = True,
                         use_color = options.color)
-                else:
-                    sys.stdout.write(campaign.get_text_val("name", "?") + "\t" +
-                        campaign.get_text_val("author", "?") + "\t" +
-                        campaign.get_text_val("version", "?") + "\t" +
-                        campaign.get_text_val("uploads", "?") + "\t" +
-                        campaign.get_text_val("downloads", "?") + "\t" +
-                        campaign.get_text_val("size", "?") + "\t" +
-                        time.ctime(int(campaign.get_text_val("timestamp", "?"))) + "\n")
+            else:
+                column_sizes = [4, 6, 7, 7, 9, 4, 9]
+                columns = [["name", "author", "version", "uploads", "downloads", "size", "timestamp"]]
+                for campaign in campaigns.get_all("campaign"):  
+                    column = [campaign.get_text_val("name", "?"),
+                        campaign.get_text_val("author", "?"),
+                        campaign.get_text_val("version", "?"),
+                        campaign.get_text_val("uploads", "?"),
+                        campaign.get_text_val("downloads", "?"),
+                        campaign.get_text_val("size", "?"),
+                        time.ctime(int(campaign.get_text_val("timestamp", "?")))]
+                    columns.append(column)
+                    for i, s in enumerate(column_sizes):
+                        if 1 + len(column[i]) > s:
+                            column_sizes[i] = 1 + len(column[i])
+                for c in columns:
+                    for i, f in enumerate(c):
+                        sys.stdout.write(f.ljust(column_sizes[i]))
+                    sys.stdout.write("\n")
             for message in data.find_all("message", "error"):
                 print message.get_text_val("message")
         else:
