@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-import sys, os.path, re
+import sys, os.path, re, time
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 import wesnoth.wmldata as wmldata
@@ -81,18 +81,19 @@ if __name__ == "__main__":
         data = cs.list_campaigns()
         if data:
             campaigns = data.get_or_create_sub("campaigns")
+            sys.stdout.write("name\tauthor\tversion\tuploads\tdownloads\tsize\tdate\n")
             for campaign in campaigns.get_all("campaign"):
                 if options.wml:
                     campaign.debug(show_contents = True,
                         use_color = options.color)
                 else:
-                    sys.stdout.write(campaign.get_text_val("name", "?") + " " +
-                        campaign.get_text_val("author", "?") + " " +
-                        campaign.get_text_val("version", "?") + " " +
-                        "(" + campaign.get_text_val("uploads", "?") + " up/" +
-                        campaign.get_text_val("downloads", "?") + " down) " +
-                        campaign.get_text_val("size", "?") + "\n")
-                sys.stdout.write("_" * 20 + "\n")
+                    sys.stdout.write(campaign.get_text_val("name", "?") + "\t" +
+                        campaign.get_text_val("author", "?") + "\t" +
+                        campaign.get_text_val("version", "?") + "\t" +
+                        campaign.get_text_val("uploads", "?") + "\t" +
+                        campaign.get_text_val("downloads", "?") + "\t" +
+                        campaign.get_text_val("size", "?") + "\t" +
+                        time.ctime(int(campaign.get_text_val("timestamp", "?"))) + "\n")
             for message in data.find_all("message", "error"):
                 print message.get_text_val("message")
         else:
