@@ -55,7 +55,7 @@ class map_display
 public:
 	map_display(CVideo& video, const gamemap& map, const config& theme_cfg,
 			const config& cfg, const config& level);
-	~map_display();
+	virtual ~map_display();
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
@@ -146,9 +146,9 @@ public:
 	void create_buttons();
 
 	// Will be overridden in the display subclass
-	bool fogged(const gamemap::location& loc UNUSED) const {return false;};
-	bool shrouded(const gamemap::location& loc UNUSED) const {return false;};
-	void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
+	virtual bool fogged(const gamemap::location& loc UNUSED) const {return false;};
+	virtual bool shrouded(const gamemap::location& loc UNUSED) const {return false;};
+	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
 
 	//debug function to toggle the "sunset" mode the map area
 	//become progressively darker except where hexes are refreshed
