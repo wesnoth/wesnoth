@@ -487,7 +487,7 @@ private:
 	display(const display&);
 	void operator=(const display&);
 
-	void draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day& tod_at, const SDL_Rect &clip_rect);
+	void draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day& tod_at, image::TYPE image_type, const SDL_Rect &clip_rect);
 	void draw_sidebar();
 	void draw_minimap(int x, int y, int w, int h);
 	void draw_game_status();

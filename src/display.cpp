@@ -1281,7 +1281,21 @@ void display::draw(bool update,bool force)
 			}
 			const time_of_day& tod = status_.get_time_of_day();
 			const time_of_day& tod_at = timeofday_at(status_,units_,*it,map_);
-			draw_tile(*it, tod, tod_at, clip_rect);
+			image::TYPE image_type = image::SCALED_TO_HEX;
+
+
+			unit_map::iterator un = find_visible_unit(units_, *it, map_, 
+							teams_,teams_[currentTeam_]);
+
+			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
+			   *it == selectedHex_ && (un != units_.end())) {
+				image_type = image::BRIGHTENED;
+			}
+			else if (highlighted_locations_.find(*it) != highlighted_locations_.end()) {
+				image_type = image::SEMI_BRIGHTENED;
+			}
+
+			draw_tile(*it, tod, tod_at, image_type, clip_rect);
 			simulate_delay += 1;
 		}
 
@@ -1733,7 +1747,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	}
 }
 
-void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day & tod_at, const SDL_Rect &clip_rect)
+void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day & tod_at, image::TYPE image_type, const SDL_Rect &clip_rect)
 {
 	if(screen_.update_locked()) {
 		return;
@@ -1764,20 +1778,7 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		terrain = map_.get_terrain(loc);
 	}
 
-	image::TYPE image_type = image::SCALED_TO_HEX;
-
 	std::string mask = tod_at.image_mask;
-
-	unit_map::iterator un = find_visible_unit(units_, loc, map_, 
-					teams_,teams_[currentTeam_]);
-
-	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
-	   loc == selectedHex_ && (un != units_.end())) {
-		image_type = image::BRIGHTENED;
-	}
-	else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
-		image_type = image::SEMI_BRIGHTENED;
-	}
 
 	if(!is_shrouded /*|| !on_map*/) {
 	  draw_terrain_on_tile(loc, tod, image_type, ADJACENT_BACKGROUND);
