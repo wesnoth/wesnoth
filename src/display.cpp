@@ -1767,10 +1767,6 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 	image::TYPE image_type = image::SCALED_TO_HEX;
 
 	std::string mask = tod_at.image_mask;
-	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL || tod.image_mask != tod_at.image_mask) {
-		image_type = image::SCALED_TO_HEX;
-		mask = tod_at.image_mask;
-	}
 
 	unit_map::iterator un = find_visible_unit(units_, loc, map_, 
 					teams_,teams_[currentTeam_]);
