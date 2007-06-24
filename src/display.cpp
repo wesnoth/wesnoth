@@ -68,6 +68,7 @@ map_display::map_display(CVideo& video, const gamemap& map, const config& theme_
 	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom),
 	builder_(cfg, level, map),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
+	invalidateAll_(true), 
 	fps_handle_(0)
 {
 	if(non_interactive()) {
@@ -748,7 +749,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	temp_unit_(NULL),
 	status_(status),
 	teams_(t), nextDraw_(0),
-	invalidateAll_(true), invalidateUnit_(true),
+	invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0),
 	turbo_speed_(2), turbo_(false), grid_(false), sidebarScaling_(1.0),
@@ -1191,6 +1192,8 @@ void display::redraw_everything()
 
 	bounds_check_position();
 
+	invalidateGameStatus_ = true;
+
 	for(size_t n = 0; n != reports::NUM_REPORTS; ++n) {
 		reportRects_[n] = empty_rect;
 		reportSurfaces_[n].assign(NULL);
@@ -1226,11 +1229,7 @@ void display::draw(bool update,bool force)
 
 	if(!panelsDrawn_) {
 		draw_all_panels();
-		//invalidate the reports so they are redrawn
-		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
-		invalidateGameStatus_ = true;
 		panelsDrawn_ = true;
-
 		changed = true;
 	}
 

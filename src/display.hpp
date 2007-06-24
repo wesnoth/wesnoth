@@ -148,6 +148,7 @@ public:
 	// Will be overridden in the display subclass
 	bool fogged(const gamemap::location& loc UNUSED) const {return false;};
 	bool shrouded(const gamemap::location& loc UNUSED) const {return false;};
+	void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
 
 	//debug function to toggle the "sunset" mode the map area
 	//become progressively darker except where hexes are refreshed
@@ -170,7 +171,6 @@ protected:
 
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
-	void draw_all_panels();
 
 protected:
 	CVideo& screen_;
@@ -182,14 +182,20 @@ protected:
 	surface minimap_;
 	bool redrawMinimap_;
 	bool redraw_background_;
+	bool invalidateAll_;
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
+	std::set<gamemap::location> invalidated_;
 
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(const gamemap::location& loc, 
 				  const time_of_day& tod,
 				  image::TYPE image_type, 
 				  ADJACENT_TERRAIN_TYPE type);
+
+	// redraw all panels associated with the map display
+	void draw_all_panels();
+
 private:
 	//the handle for the label which displays frames per second
 	int fps_handle_;
@@ -533,8 +539,6 @@ private:
 
 	void invalidate_route();
 
-	std::set<gamemap::location> invalidated_;
-	bool invalidateAll_;
 	bool invalidateUnit_;
 	bool invalidateGameStatus_;
 
