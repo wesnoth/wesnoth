@@ -1046,7 +1046,7 @@ void game_controller::download_campaigns(std::string host)
 			return;
 		}
 
-		std::vector<std::string> campaigns, options;
+		std::vector<std::string> campaigns, versions, uploads, options;
 
 		std::string sep(1, COLUMN_SEPARATOR);
 
@@ -1064,6 +1064,8 @@ void game_controller::download_campaigns(std::string host)
 		for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
 			const std::string& name = (**i)["name"];
 			campaigns.push_back(name);
+			versions.push_back((**i)["version"]);
+			uploads.push_back((**i)["uploads"]);
 
 			if(std::count(publish_options.begin(),publish_options.end(),name) != 0) {
 				delete_options.push_back(name);
@@ -1196,6 +1198,20 @@ void game_controller::download_campaigns(std::string host)
 		//remove any existing versions of the just downloaded campaign
 		//assuming it consists of a dir and a cfg file
 		remove_campaign(campaigns[index]);
+
+		//add revision info to the addon
+                config *maindir = cfg.find_child("dir", "name", campaigns[index]);
+                if (maindir) {
+                    config f;
+                    f["name"] = "info.cfg";
+                    std::string s;
+                    s += "[info]\n";
+                    s += "version=" + versions[index] + "\n";
+                    s += "uploads=" + uploads[index] + "\n";
+                    s += "[/info]\n";
+                    f["contents"] = s;
+                    maindir->add_child("file", f);
+                }
 
 		//put a break at line below to see that it really works.
 		unarchive_campaign(cfg);
