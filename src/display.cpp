@@ -1765,8 +1765,8 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 
 	// If the terrain is off the map it shouldn't be included for 
 	// reachmap, fog, shroud and the grid.
-	// In the future it may not depend on whether the location is on the map
-	// but whether it's an _off^* terrain.
+	// In the future it may not depend on whether the location is
+	// on the map but whether it's an _off^* terrain.
 	// (atm not too happy with how the grid looks)
 	// (the shroud has some glitches due to commented out code
 	// but enabling it looks worse)
@@ -1778,10 +1778,12 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		terrain = map_.get_terrain(loc);
 	}
 
+	// tod_at may differ from tod if our hex is illuminated 
 	std::string mask = tod_at.image_mask;
 
 	if(!is_shrouded /*|| !on_map*/) {
-	  draw_terrain_on_tile(loc, tod, image_type, ADJACENT_BACKGROUND);
+		// unshrouded terrain (the normal case)
+		draw_terrain_on_tile(loc,tod, image_type, ADJACENT_BACKGROUND);
 
 		surface flag(get_flag(terrain,loc));
 		if(flag != NULL) {
@@ -1796,8 +1798,9 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 
 			surface overlay_surface(image::get_image(overlays.first->second.image,image_type));
 
-			//note that dstrect can be changed by SDL_BlitSurface and so a
-			//new instance should be initialized to pass to each call to
+			//note that dstrect can be changed by
+			//SDL_BlitSurface and so a new instance should
+			//be initialized to pass to each call to
 			//SDL_BlitSurface
 			if(overlay_surface != NULL) {
 				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -1805,8 +1808,8 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 			}
 		}
 	} else if(on_map) {
+		// shrouded but on map
 		surface surface(image::get_image(game_config::void_image));
-
 
 		if(surface == NULL) {
 			ERR_DP << "Could not get void surface!\n";
@@ -1817,12 +1820,14 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		SDL_BlitSurface(surface,NULL,dst,&dstrect);
 	}
 
+	// footsteps indicating a movement path may be required
 	draw_footstep(loc,xpos,ypos);
 
 	if(!is_shrouded /*|| !on_map*/) {
 		draw_terrain_on_tile(loc,tod,image_type,ADJACENT_FOREGROUND);
 	}
 
+	// apply fogging
 	if(fogged(loc) && on_map && !is_shrouded) {
 		const surface fog_surface(image::get_image(game_config::fog_image));
 		if(fog_surface != NULL) {
@@ -1854,6 +1859,7 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		}
 	}
 
+	// draw reach_map information
 	if (!reach_map_.empty() && on_map) {
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach == reach_map_.end()) {
@@ -1868,10 +1874,12 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		}
 	}
 
+	// perhaps show how many turns it would take to reach this hex
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);
 	}
 
+	// draw the grid, if that's been enabled 
 	if(grid_ && on_map) {
 		surface grid_surface(image::get_image(game_config::grid_image));
 		if(grid_surface != NULL) {
@@ -1880,6 +1888,7 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		}
 	}
 
+	// draw cross images for debug highlights 
 	if(game_config::debug && debugHighlights_.count(loc)) {
 		const surface cross(image::get_image(game_config::cross_image));
 		if(cross != NULL) {
@@ -1896,12 +1905,12 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		}
 	}
 
-    if(loc == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL) {
+	// paint sekection and mouseover overlays
+	if(loc == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL) {
 		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 		SDL_BlitSurface(selected_hex_overlay_,NULL,dst,&dstrect);
 	}
-
-    if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL) {
+	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL) {
 		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 		SDL_BlitSurface(mouseover_hex_overlay_,NULL,dst,&dstrect);
 	}
