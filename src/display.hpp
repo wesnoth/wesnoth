@@ -170,6 +170,8 @@ protected:
 
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
+	void draw_all_panels();
+
 protected:
 	CVideo& screen_;
 	const gamemap& map_;

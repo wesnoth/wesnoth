@@ -690,6 +690,23 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 	update_rect(loc);
 }
 
+void map_display::draw_all_panels()
+{
+	surface const screen(screen_.getSurface());
+
+	const std::vector<theme::panel>& panels = theme_.panels();
+	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
+		draw_panel(video(),*p,buttons_);
+	}
+
+	const std::vector<theme::label>& labels = theme_.labels();
+	for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
+		draw_label(video(),screen,*i);
+	}
+
+	create_buttons();
+}
+
 /**
  * Proof-of-concept of the new background still has some flaws
  * * upon scrolling the background static (so maps scrolls over wood)
@@ -1210,20 +1227,7 @@ void display::draw(bool update,bool force)
 	int simulate_delay = 0;
 
 	if(!panelsDrawn_) {
-		surface const screen(screen_.getSurface());
-
-		const std::vector<theme::panel>& panels = theme_.panels();
-		for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-			draw_panel(video(),*p,buttons_);
-		}
-
-		const std::vector<theme::label>& labels = theme_.labels();
-		for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-			draw_label(video(),screen,*i);
-		}
-
-		create_buttons();
-
+		draw_all_panels();
 		//invalidate the reports so they are redrawn
 		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
 		invalidateGameStatus_ = true;
