@@ -1772,8 +1772,8 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		mask = tod_at.image_mask;
 	}
 
-	unit_map::iterator un = find_visible_unit(units_, loc, map_,
-											  teams_,teams_[currentTeam_]);
+	unit_map::iterator un = find_visible_unit(units_, loc, map_, 
+					teams_,teams_[currentTeam_]);
 
 	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
 	   loc == selectedHex_ && (un != units_.end())) {
