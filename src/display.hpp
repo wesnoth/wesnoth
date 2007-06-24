@@ -60,6 +60,9 @@ public:
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
 
+	//gets the underlying screen object.
+	CVideo& video() { return screen_; }
+
 	//the dimensions of the display. x and y are
 	//width/height. mapx is the width of the portion of the
 	//display which shows the game area. Between mapx and x is the
@@ -146,6 +149,17 @@ public:
 	bool fogged(const gamemap::location& loc UNUSED) const {return false;};
 	bool shrouded(const gamemap::location& loc UNUSED) const {return false;};
 
+	//debug function to toggle the "sunset" mode the map area
+	//become progressively darker except where hexes are refreshed
+	//delay it's the number of frames between each darkening (0 to
+	//toggle)
+	void sunset(const size_t delay = 0);
+
+	void flip();
+
+	//function which copies the backbuffer to the framebuffer.
+	void update_display();
+
 protected:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
@@ -174,6 +188,9 @@ protected:
 				  const time_of_day& tod,
 				  image::TYPE image_type, 
 				  ADJACENT_TERRAIN_TYPE type);
+private:
+	//the handle for the label which displays frames per second
+	int fps_handle_;
 };
 
 class display : public map_display
@@ -226,14 +243,6 @@ public:
 
 	//invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
-
-	//debug function to toggle the "sunset" mode the map area
-	//become progressively darker except where hexes are refreshed
-	//delay it's the number of frames between each darkening (0 to
-	//toggle)
-	void sunset(const size_t delay = 0);
-
-	void flip();
 
 	//draws invalidated items. If update is true, will also copy the
 	//display to the frame buffer. If force is true, will not skip frames,
@@ -317,9 +326,6 @@ public:
 	//draws the movement info (turns available) for a given location
 	void draw_movement_info(const gamemap::location& loc);
 
-	//gets the underlying screen object.
-	CVideo& video() { return screen_; }
-
 	//function to invalidate all tiles.
 	void invalidate_all();
 
@@ -363,9 +369,6 @@ public:
 	//function to serialize overlay data
 	void write_overlays(config& cfg) const;
 
-
-	//function which copies the backbuffer to the framebuffer.
-	void update_display();
 
 	//functions used in the editor.
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
@@ -598,8 +601,6 @@ private:
 	//
 	std::vector<animated<image::locator> > flags_;
 
-	//the handle for the label which displays frames per second
-	int fps_handle_;
 	static display * singleton_;
 };
 

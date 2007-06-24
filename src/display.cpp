@@ -67,7 +67,8 @@ map_display::map_display(CVideo& video, const gamemap& map, const config& theme_
 	screen_(video), map_(map), xpos_(0), ypos_(0),
 	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom),
 	builder_(cfg, level, map),
-	minimap_(NULL), redrawMinimap_(false), redraw_background_(true)
+	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
+	fps_handle_(0)
 {
 	if(non_interactive()) {
 		screen_.lock_updates(true);
@@ -544,6 +545,179 @@ void map_display::draw_terrain_on_tile(const gamemap::location& loc,
 	}
 }
 
+void map_display::sunset(const size_t delay) {
+	// this allow both parametric and toggle use
+	sunset_delay = (sunset_delay == 0 && delay == 0) ? 5 : delay;
+}
+
+void map_display::flip()
+{
+	if(video().faked()) {
+		return;
+	}
+
+	const surface frameBuffer = get_video_surface();
+
+	// this is just the debug function "sunset" to progressively darken the map area
+	if (sunset_delay && ++sunset_timer > sunset_delay) {
+		sunset_timer = 0;
+		SDL_Rect r = map_area(); //use frameBuffer to also test the UI
+		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
+		// adjust the alpha if you want to balance cpu-cost / smooth sunset
+		fill_rect_alpha(r, color, 1, frameBuffer);
+		update_rect(r);
+	}
+
+	font::draw_floating_labels(frameBuffer);
+	events::raise_volatile_draw_event();
+	cursor::draw(frameBuffer);
+
+	video().flip();
+
+	cursor::undraw(frameBuffer);
+	events::raise_volatile_undraw_event();
+	font::undraw_floating_labels(frameBuffer);
+}
+
+void map_display::update_display()
+{
+	if(screen_.update_locked()) {
+		return;
+	}
+
+	if(preferences::show_fps()) {
+		static int last_sample = SDL_GetTicks();
+		static int frames = 0;
+		++frames;
+
+		if(frames == 10) {
+			const int this_sample = SDL_GetTicks();
+
+			const int fps = (frames*1000)/(this_sample - last_sample);
+			last_sample = this_sample;
+			frames = 0;
+
+			if(fps_handle_ != 0) {
+				font::remove_floating_label(fps_handle_);
+				fps_handle_ = 0;
+			}
+			std::ostringstream stream;
+			stream << fps << "fps";
+			fps_handle_ = font::add_floating_label(stream.str(),12,font::NORMAL_COLOUR,10,100,0,0,-1,screen_area(),font::LEFT_ALIGN);
+		}
+	} else if(fps_handle_ != 0) {
+		font::remove_floating_label(fps_handle_);
+		fps_handle_ = 0;
+	}
+
+	flip();
+}
+
+static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
+{
+	//log_scope("draw panel");
+	surface surf(image::get_image(panel.image(),image::UNSCALED));
+
+	const SDL_Rect screen = screen_area();
+	SDL_Rect& loc = panel.location(screen);
+	if(!surf.null()) {
+		if(surf->w != loc.w || surf->h != loc.h) {
+			surf.assign(scale_surface(surf,loc.w,loc.h));
+		}
+
+		video.blit_surface(loc.x,loc.y,surf);
+		update_rect(loc);
+	}
+
+	static bool first_time = true;
+	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
+		if(rects_overlap(b->location(),loc)) {
+			b->set_dirty(true);
+			if (first_time){
+				//FixMe
+				//YogiHH: This is only made to have the buttons store their background information,
+				//otherwise the background will appear completely black. It would more
+				//straightforward to call bg_update, but that is not public and there seems to be
+				//no other way atm to call it. I will check if bg_update can be made public.
+				b->hide(true);
+				b->hide(false);
+			}
+		}
+	}
+}
+
+static void draw_label(CVideo& video, surface target, const theme::label& label)
+{
+	//log_scope("draw label");
+
+        std::stringstream temp;
+	Uint32 RGB=label.font_rgb();
+        int red = (RGB & 0x00FF0000)>>16;
+        int green = (RGB & 0x0000FF00)>>8;
+        int blue = (RGB & 0x000000FF);
+
+        std::string c_start="<";
+        std::string c_sep=",";
+        std::string c_end=">";
+        std::stringstream color;
+        color<< c_start << red << c_sep << green << c_sep << blue << c_end;
+        std::string text = label.text();
+
+        if(label.font_rgb_set()) {
+		color<<text;
+		text = color.str();
+        }
+	const std::string& icon = label.icon();
+	SDL_Rect& loc = label.location(screen_area());
+
+	if(icon.empty() == false) {
+		surface surf(image::get_image(icon,image::UNSCALED));
+		if(!surf.null()) {
+			if(surf->w > loc.w || surf->h > loc.h) {
+				surf.assign(scale_surface(surf,loc.w,loc.h));
+			}
+
+			SDL_BlitSurface(surf,NULL,target,&loc);
+		}
+
+		if(text.empty() == false) {
+			tooltips::add_tooltip(loc,text);
+		}
+	} else if(text.empty() == false) {
+		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
+	}
+
+	update_rect(loc);
+}
+
+/**
+ * Proof-of-concept of the new background still has some flaws
+ * * upon scrolling the background static (so maps scrolls over wood)
+ * * _off^usr has redraw glitches since background is only updated every now and then
+ * * the alpha at the border tends to "build up"
+ * * we impose a huge performance hit
+ *
+ * needs quite some work to become fully working, but first evaluate whether
+ * the new way is really wanted.
+ */
+static void draw_background(surface screen, const SDL_Rect& area)
+{
+	static const surface wood(image::get_image("terrain/off-map/wood.png",image::UNSCALED));
+	static const unsigned int width = wood->w;
+	static const unsigned int height = wood->h;
+	wassert(!wood.null());
+
+	const unsigned int w_count = static_cast<int>(ceil(static_cast<double>(area.w) / static_cast<double>(width)));
+	const unsigned int h_count = static_cast<int>(ceil(static_cast<double>(area.h) / static_cast<double>(height)));
+
+	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
+		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
+			SDL_Rect clip = {w_off, h_off, 0, 0};
+			SDL_BlitSurface(wood, NULL, screen, &clip);
+		}
+	}
+}
+
 // Methods for superclass aware of units go here
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
@@ -563,7 +737,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	turbo_speed_(2), turbo_(false), grid_(false), sidebarScaling_(1.0),
 	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
-	diagnostic_label_(0), fps_handle_(0)
+	diagnostic_label_(0)
 {
 	singleton_ = this;
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
@@ -1024,146 +1198,6 @@ void display::redraw_everything()
 	draw(true,true);
 }
 
-void display::sunset(const size_t delay) {
-	// this allow both parametric and toggle use
-	sunset_delay = (sunset_delay == 0 && delay == 0) ? 5 : delay;
-}
-
-void display::flip()
-{
-	if(video().faked()) {
-		return;
-	}
-
-	const surface frameBuffer = get_video_surface();
-
-	// this is just the debug function "sunset" to progressively darken the map area
-	if (sunset_delay && ++sunset_timer > sunset_delay) {
-		sunset_timer = 0;
-		SDL_Rect r = map_area(); //use frameBuffer to also test the UI
-		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
-		// adjust the alpha if you want to balance cpu-cost / smooth sunset
-		fill_rect_alpha(r, color, 1, frameBuffer);
-		update_rect(r);
-	}
-
-	font::draw_floating_labels(frameBuffer);
-	events::raise_volatile_draw_event();
-	cursor::draw(frameBuffer);
-
-	video().flip();
-
-	cursor::undraw(frameBuffer);
-	events::raise_volatile_undraw_event();
-	font::undraw_floating_labels(frameBuffer);
-}
-
-static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
-{
-	//log_scope("draw panel");
-	surface surf(image::get_image(panel.image(),image::UNSCALED));
-
-	const SDL_Rect screen = screen_area();
-	SDL_Rect& loc = panel.location(screen);
-	if(!surf.null()) {
-		if(surf->w != loc.w || surf->h != loc.h) {
-			surf.assign(scale_surface(surf,loc.w,loc.h));
-		}
-
-		video.blit_surface(loc.x,loc.y,surf);
-		update_rect(loc);
-	}
-
-	static bool first_time = true;
-	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
-		if(rects_overlap(b->location(),loc)) {
-			b->set_dirty(true);
-			if (first_time){
-				//FixMe
-				//YogiHH: This is only made to have the buttons store their background information,
-				//otherwise the background will appear completely black. It would more
-				//straightforward to call bg_update, but that is not public and there seems to be
-				//no other way atm to call it. I will check if bg_update can be made public.
-				b->hide(true);
-				b->hide(false);
-			}
-		}
-	}
-}
-
-static void draw_label(CVideo& video, surface target, const theme::label& label)
-{
-	//log_scope("draw label");
-
-        std::stringstream temp;
-	Uint32 RGB=label.font_rgb();
-        int red = (RGB & 0x00FF0000)>>16;
-        int green = (RGB & 0x0000FF00)>>8;
-        int blue = (RGB & 0x000000FF);
-
-        std::string c_start="<";
-        std::string c_sep=",";
-        std::string c_end=">";
-        std::stringstream color;
-        color<< c_start << red << c_sep << green << c_sep << blue << c_end;
-        std::string text = label.text();
-
-        if(label.font_rgb_set()) {
-		color<<text;
-		text = color.str();
-        }
-	const std::string& icon = label.icon();
-	SDL_Rect& loc = label.location(screen_area());
-
-	if(icon.empty() == false) {
-		surface surf(image::get_image(icon,image::UNSCALED));
-		if(!surf.null()) {
-			if(surf->w > loc.w || surf->h > loc.h) {
-				surf.assign(scale_surface(surf,loc.w,loc.h));
-			}
-
-			SDL_BlitSurface(surf,NULL,target,&loc);
-		}
-
-		if(text.empty() == false) {
-			tooltips::add_tooltip(loc,text);
-		}
-	} else if(text.empty() == false) {
-		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
-	}
-
-
-	update_rect(loc);
-}
-
-/**
- * Proof-of-concept of the new background still has some flaws
- * * upon scrolling the background static (so maps scrolls over wood)
- * * _off^usr has redraw glitches since background is only updated every now and then
- * * the alpha at the border tends to "build up"
- * * we impose a huge performance hit
- *
- * needs quite some work to become fully working, but first evaluate whether
- * the new way is really wanted.
- */
-static void draw_background(surface screen, const SDL_Rect& area)
-{
-	static const surface wood(image::get_image("terrain/off-map/wood.png",image::UNSCALED));
-	static const unsigned int width = wood->w;
-	static const unsigned int height = wood->h;
-	wassert(!wood.null());
-
-	const unsigned int w_count = static_cast<int>(ceil(static_cast<double>(area.w) / static_cast<double>(width)));
-	const unsigned int h_count = static_cast<int>(ceil(static_cast<double>(area.h) / static_cast<double>(height)));
-
-	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
-		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
-			SDL_Rect clip = {w_off, h_off, 0, 0};
-			SDL_BlitSurface(wood, NULL, screen, &clip);
-		}
-	}
-}
-
 void display::draw(bool update,bool force)
 {
 	bool changed = false;
@@ -1308,40 +1342,6 @@ void display::draw(bool update,bool force)
 		// opposite effect.
 		nextDraw_ = maximum<int>(nextDraw_, SDL_GetTicks());
 	}
-}
-
-void display::update_display()
-{
-	if(screen_.update_locked()) {
-		return;
-	}
-
-	if(preferences::show_fps()) {
-		static int last_sample = SDL_GetTicks();
-		static int frames = 0;
-		++frames;
-
-		if(frames == 10) {
-			const int this_sample = SDL_GetTicks();
-
-			const int fps = (frames*1000)/(this_sample - last_sample);
-			last_sample = this_sample;
-			frames = 0;
-
-			if(fps_handle_ != 0) {
-				font::remove_floating_label(fps_handle_);
-				fps_handle_ = 0;
-			}
-			std::ostringstream stream;
-			stream << fps << "fps";
-			fps_handle_ = font::add_floating_label(stream.str(),12,font::NORMAL_COLOUR,10,100,0,0,-1,screen_area(),font::LEFT_ALIGN);
-		}
-	} else if(fps_handle_ != 0) {
-		font::remove_floating_label(fps_handle_);
-		fps_handle_ = 0;
-	}
-
-	flip();
 }
 
 void display::draw_sidebar()
