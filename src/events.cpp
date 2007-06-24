@@ -66,7 +66,6 @@ struct context
 	std::vector<handler*> handlers;
 	int focused_handler;
 
-private:
 	void delete_handler_index(size_t handler);
 };
 
@@ -77,9 +76,9 @@ void context::add_handler(handler* ptr)
 
 void context::delete_handler_index(size_t handler)
 {
-	if(focused_handler == int(handler)) {
+	if(focused_handler == static_cast<int>(handler)) {
 		focused_handler = -1;
-	} else if(focused_handler > int(handler)) {
+	} else if(focused_handler > static_cast<int>(handler)) {
 		--focused_handler;
 	}
 
@@ -221,32 +220,43 @@ void focus_handler(const handler* ptr)
 	}
 }
 
-bool has_focus(const handler* ptr, const SDL_Event* event)
+bool has_focus(const handler* hand, const SDL_Event* event)
 {
 	if(event_contexts.empty()) {
 		return true;
 	}
 
-	if(ptr->requires_event_focus(event) == false) {
+	if(hand->requires_event_focus(event) == false) {
 		return true;
 	}
 
-	const int index = event_contexts.back().focused_handler;
+	const int foc_i = event_contexts.back().focused_handler;
 
 	//if no-one has focus at the moment, this handler obviously wants
 	//focus, so give it to it.
-	if(index == -1) {
-		focus_handler(ptr);
+	if(foc_i == -1) {
+		focus_handler(hand);
 		return true;
-	} else if(event_contexts.back().handlers[index] == ptr){
+	}
+
+	handler *const foc_hand = event_contexts.back().handlers[foc_i];
+	if(foc_hand == hand){
 		return true;
-	} else if(!event_contexts.back().handlers[index]->requires_event_focus(event)) {
+	} else if(!foc_hand->requires_event_focus(event)) {
 		//if the currently focused handler doesn't need focus for this event
-		//allow the first-in interested handler to take care of it
-		for(unsigned int i=0; i<event_contexts.back().handlers.size(); i++) {
-			if(i != (unsigned)index && event_contexts.back().handlers[i]->requires_event_focus(event)) {
-				//focus_handler(event_contexts.back().handlers[i]); //steal focus?
-				return event_contexts.back().handlers[i] == ptr;
+		//allow the most recent interested handler to take care of it
+		int back_i = event_contexts.back().handlers.size() - 1;
+		for(int i=back_i; i>=0; --i) {
+			handler *const theif_hand = event_contexts.back().handlers[i];
+			if(i != foc_i && theif_hand->requires_event_focus(event)) {
+				//steal focus
+				focus_handler(theif_hand); 
+				if(foc_i < back_i) {
+					//position the previously focused handler to allow stealing back
+					event_contexts.back().delete_handler_index(foc_i);
+					event_contexts.back().add_handler(foc_hand);
+				}
+				return theif_hand == hand;
 			}
 		}
 	}

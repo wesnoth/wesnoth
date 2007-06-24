@@ -366,7 +366,27 @@ bool textbox::requires_event_focus(const SDL_Event* event) const
 	if(!focus_ || !editable_ || hidden()) {
 		return false;
 	}
-	return (event==NULL || event->type == SDL_KEYDOWN);
+	if(event == NULL) {
+		//when event is not specified, signal that focus may be desired later
+		return true;
+	}
+
+	if(event->type == SDL_KEYDOWN) {
+		SDLKey key = event->key.keysym.sym;
+		switch(key) {
+		case SDLK_UP:
+		case SDLK_DOWN:
+		case SDLK_PAGEUP:
+		case SDLK_PAGEDOWN:
+			//in the future we may need to check for input history or multi-line support
+			//for now, just return false since these events are not handled.
+			return false;
+		default:
+			return true;
+		}
+	}
+	//mouse events are processed regardless of focus
+	return false;
 }
 
 void textbox::handle_event(const SDL_Event& event)
