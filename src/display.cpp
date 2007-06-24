@@ -736,6 +736,76 @@ static void draw_background(surface screen, const SDL_Rect& area)
 	}
 }
 
+void map_display::draw_text_in_hex(const gamemap::location& loc, const std::string& text,
+		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
+{
+	if (text.empty()) return;
+	
+#ifdef USE_TINY_GUI
+	// FIXME: This 16/9 must be defined elsewhere,
+	// It's the ratio of the font size bewteen the two gui.
+	// It makes the text fill the hex like it does in the normal gui.
+	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor() * 16/9);
+#else
+	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor());
+#endif
+	
+	const SDL_Rect& text_area = font::text_area(text,font_sz);
+	const int x = get_location_x(loc) - text_area.w/2
+	              + static_cast<int>(x_in_hex* hex_size());
+	const int y = get_location_y(loc) - text_area.h/2
+	              + static_cast<int>(y_in_hex* hex_size());
+
+	const SDL_Rect& rect = map_area();
+	for (int dy=-1; dy <= 1; dy++) {
+		for (int dx=-1; dx <= 1; dx++) {
+			if (dx!=0 || dy!=0)
+				font::draw_text(&screen_, rect, font_sz, font::DARK_COLOUR, text, x+dx, y+dy);
+		}
+	}
+	font::draw_text(&screen_, rect,font_sz, color, text, x, y);
+}
+
+void display::draw_movement_info(const gamemap::location& loc)
+{
+	//check if there is a path and if we are not at its start because
+	//we don't want to display movement info on the unit's hex (useless and unreadable)
+	if (route_.steps.empty() || route_.steps.front() == loc) return;
+
+	//search if there is a turn waypoint here
+	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
+	if(turn_waypoint_iter == route_.turn_waypoints.end()) return;
+
+	//display the def% of this terrain
+#ifndef USE_TINY_GUI
+	const unit_map::const_iterator un = units_.find(route_.steps.front());
+	if(un != units_.end()) {
+		const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
+		std::stringstream def_text;
+		def_text << def << "%";
+
+		// with 11 colors, the last one will be used only for def=100
+		int val = (game_config::defense_color_scale.size()-1) * def/100;
+		SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
+
+		draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color, 0.5, 0.5);
+	}
+#endif
+
+	//display the number of turn to reach if > 0
+	int turns_to_reach = turn_waypoint_iter->second;
+	if(turns_to_reach > 0 && turns_to_reach < 10) {
+		std::stringstream turns_text;
+		turns_text << "(" << turns_to_reach << ")";
+		const SDL_Color turns_color = font::NORMAL_COLOUR;
+#ifndef USE_TINY_GUI
+		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.8);
+#else
+		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.5);
+#endif
+	}
+}
+
 // Methods for superclass aware of units go here
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
@@ -1482,9 +1552,11 @@ void display::draw_report(reports::TYPE report_num)
 			surf.assign(NULL);
 			rect = new_rect;
 
-			//if the rectangle is present, and we are blitting text, then
-			//we need to backup the surface. (Images generally won't need backing
-			//up unless they are transperant, but that is done later)
+			//if the rectangle is present, and we are
+			//blitting text, then we need to backup the
+			//surface. (Images generally won't need
+			//backing up unless they are transperant, but
+			//that is done later)
 			if(rect.w > 0 && rect.h > 0) {
 				surf.assign(get_surface_portion(screen_.getSurface(),rect));
 				if(reportSurfaces_[report_num] == NULL) {
@@ -1897,7 +1969,7 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 	}
 
 	// Add the top layer overlay surfaces
-	if(! hex_overlay_.empty()) {
+	if(!hex_overlay_.empty()) {
 		std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(loc);
 		if(itor != hex_overlay_.end()) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -1905,7 +1977,7 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		}
 	}
 
-	// paint sekection and mouseover overlays
+	// paint selection and mouseover overlays
 	if(loc == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL) {
 		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 		SDL_BlitSurface(selected_hex_overlay_,NULL,dst,&dstrect);
@@ -1998,76 +2070,6 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	}
 
 	draw_unit(xloc,yloc,image,vflip);
-}
-
-void display::draw_text_in_hex(const gamemap::location& loc, const std::string& text,
-		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
-{
-	if (text.empty()) return;
-	
-#ifdef USE_TINY_GUI
-	// FIXME: This 16/9 must be defined elsewhere,
-	// It's the ratio of the font size bewteen the two gui.
-	// It makes the text fill the hex like it does in the normal gui.
-	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor() * 16/9);
-#else
-	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor());
-#endif
-	
-	const SDL_Rect& text_area = font::text_area(text,font_sz);
-	const int x = get_location_x(loc) - text_area.w/2
-	              + static_cast<int>(x_in_hex* hex_size());
-	const int y = get_location_y(loc) - text_area.h/2
-	              + static_cast<int>(y_in_hex* hex_size());
-
-	const SDL_Rect& rect = map_area();
-	for (int dy=-1; dy <= 1; dy++) {
-		for (int dx=-1; dx <= 1; dx++) {
-			if (dx!=0 || dy!=0)
-				font::draw_text(&screen_, rect, font_sz, font::DARK_COLOUR, text, x+dx, y+dy);
-		}
-	}
-	font::draw_text(&screen_, rect,font_sz, color, text, x, y);
-}
-
-void display::draw_movement_info(const gamemap::location& loc)
-{
-	//check if there is a path and if we are not at its start because
-	//we don't want to display movement info on the unit's hex (useless and unreadable)
-	if (route_.steps.empty() || route_.steps.front() == loc) return;
-
-	//search if there is a turn waypoint here
-	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
-	if(turn_waypoint_iter == route_.turn_waypoints.end()) return;
-
-	//display the def% of this terrain
-#ifndef USE_TINY_GUI
-	const unit_map::const_iterator un = units_.find(route_.steps.front());
-	if(un != units_.end()) {
-		const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
-		std::stringstream def_text;
-		def_text << def << "%";
-
-		// with 11 colors, the last one will be used only for def=100
-		int val = (game_config::defense_color_scale.size()-1) * def/100;
-		SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
-
-		draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color, 0.5, 0.5);
-	}
-#endif
-
-	//display the number of turn to reach if > 0
-	int turns_to_reach = turn_waypoint_iter->second;
-	if(turns_to_reach > 0 && turns_to_reach < 10) {
-		std::stringstream turns_text;
-		turns_text << "(" << turns_to_reach << ")";
-		const SDL_Color turns_color = font::NORMAL_COLOUR;
-#ifndef USE_TINY_GUI
-		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.8);
-#else
-		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.5);
-#endif
-	}
 }
 
 surface display::get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc)
