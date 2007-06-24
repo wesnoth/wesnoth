@@ -247,16 +247,16 @@ bool has_focus(const handler* hand, const SDL_Event* event)
 		//allow the most recent interested handler to take care of it
 		int back_i = event_contexts.back().handlers.size() - 1;
 		for(int i=back_i; i>=0; --i) {
-			handler *const theif_hand = event_contexts.back().handlers[i];
-			if(i != foc_i && theif_hand->requires_event_focus(event)) {
+			handler *const thief_hand = event_contexts.back().handlers[i];
+			if(i != foc_i && thief_hand->requires_event_focus(event)) {
 				//steal focus
-				focus_handler(theif_hand); 
+				focus_handler(thief_hand); 
 				if(foc_i < back_i) {
 					//position the previously focused handler to allow stealing back
 					event_contexts.back().delete_handler_index(foc_i);
 					event_contexts.back().add_handler(foc_hand);
 				}
-				return theif_hand == hand;
+				return thief_hand == hand;
 			}
 		}
 	}
