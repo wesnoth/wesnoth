@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-import sys, os.path, re, time
+import sys, os.path, re, time, glob
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 import wesnoth.wmldata as wmldata
+import wesnoth.wmlparser as wmlparser
 from wesnoth.campaignserver_client import CampaignClient
 
 if __name__ == "__main__":
@@ -41,6 +42,13 @@ if __name__ == "__main__":
     optionparser.add_option("-u", "--upload",
         help = "upload campaign " +
         "(UPLOAD specifies the path to the .pbl file)")
+    optionparser.add_option("-s", "--status",
+        help = "Display the status of addons installed in the given " +
+        "directory.")
+    optionparser.add_option("-f", "--update",
+        help = "Update all installed campaigns in the given directory. " +
+        "This works by comparing the info.cfg file in each addon directory " +
+        "with the version on the server.")
     optionparser.add_option("-v", "--validate",
         help = "validate python scripts in a campaign " +
         "(VALIDATE specifies the name of the campaign, " +
@@ -75,6 +83,30 @@ if __name__ == "__main__":
     address = options.address
     if not ":" in address:
         address += ":" + str(port)
+        
+    def get(name, version, uploads, cdir):
+        mythread = cs.get_campaign_async(name, options.raw_download)
+
+        while not mythread.event.isSet():
+            mythread.event.wait(1)
+            print "%s: %d/%d" % (name, cs.counter, cs.length)
+
+        if options.raw_download:
+            file(name, "w").write(mythread.data)
+        else:
+            print "Unpacking %s..." % name
+            cs.unpackdir(mythread.data, cdir,  verbose = options.verbose)
+            d = os.path.join(cdir, name)
+            info = os.path.join(d, "info.cfg")
+            try:
+                f = file(info, "w")
+                f.write("[info]\nversion=%s\nuploads=%s\n[/info]\n" %
+                    (version, uploads))
+                f.close()
+            except OSError:
+                pass
+            for message in mythread.data.find_all("message", "error"):
+                print message.get_text_val("message")
 
     if options.list:
         cs = CampaignClient(address)
@@ -100,32 +132,22 @@ if __name__ == "__main__":
             sys.stderr.write("Could not connect.\n")
     elif options.download:
         cs = CampaignClient(address)
-        if re.escape(options.download).replace("\\_", "_") == options.download:
-            fetchlist = [options.download]
-        else:
-            fetchlist = []
-            data = cs.list_campaigns()
-            if data:
-                campaigns = data.get_or_create_sub("campaigns")
-                for campaign in campaigns.get_all("campaign"):
-                    name = campaign.get_text_val("name", "?")
+        fetchlist = []
+        data = cs.list_campaigns()
+        if data:
+            campaigns = data.get_or_create_sub("campaigns")
+            for campaign in campaigns.get_all("campaign"):
+                name = campaign.get_text_val("name", "?")
+                version = campaign.get_text_val("version", "")
+                uploads = campaign.get_text_val("uploads", "")
+                if re.escape(options.download).replace("\\_", "_") == options.download:
+                    if name == options.download:
+                        fetchlist.append((name, version, uploads))
+                else:
                     if re.search(options.download, name):
-                        fetchlist.append(name)
-        for name in fetchlist:
-            mythread = cs.get_campaign_async(name, options.raw_download)
-
-            while not mythread.event.isSet():
-                mythread.event.wait(1)
-                print "%s: %d/%d" % (name, cs.counter, cs.length)
-
-            if options.raw_download:
-                file(name, "w").write(mythread.data)
-            else:
-                print "Unpacking %s..." % name
-                cs.unpackdir(mythread.data, options.campaigns_dir,
-                    verbose = options.verbose)
-                for message in mythread.data.find_all("message", "error"):
-                    print message.get_text_val("message")
+                        fetchlist.append((name, version, uploads))
+        for name, version, uploads in fetchlist:
+            get(name, version, uploads, options.campaigns_dir)
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)
@@ -157,6 +179,52 @@ if __name__ == "__main__":
             print "%d/%d" % (cs.counter, cs.length)
         for message in mythread.data.find_all("message", "error"):
             print message.get_text_val("message")
+    elif options.update or options.status:
+        if options.status:
+            cdir = options.status
+        else:
+            cdir = options.update
+        dirs = glob.glob(os.path.join(cdir, "*"))
+        dirs = [x for x in dirs if os.path.isdir(x)]
+        cs = CampaignClient(address)
+        data = cs.list_campaigns()
+        if not data:
+            sys.stderr.write("Could not connect to campaign server.\n")
+            sys.exit(-1)
+        campaigns = {}
+        for c in data.get_or_create_sub("campaigns").get_all("campaign"):
+            name = c.get_text_val("name")
+            campaigns[name] = c
+        for dir in dirs:
+            dirname = os.path.basename(dir)
+            if dirname in campaigns:
+                info = os.path.join(dir, "info.cfg")
+                version = campaigns[dirname].get_text_val("version", "")
+                srev = campaigns[dirname].get_text_val("uploads", "")
+                if os.path.exists(info):
+                    p = wmlparser.Parser(None)
+                    p.parse_file(info)
+                    info = wmldata.DataSub("WML")
+                    p.parse_top(info)
+                    
+                    lrev = info.get_or_create_sub("info").get_text_val("uploads", "")
+                    if not srev:
+                        sys.stdout.write(" ? " + dirname + " has no " +
+                            "version info on the server.\n")
+                    elif srev == lrev:
+                        sys.stdout.write("   " + dirname + " - is up to date.\n")
+                    else:
+                        sys.stdout.write(" * " + dirname + " - you have " +
+                            "version " + lrev + " but version " + srev +
+                            " is available.\n")
+                        if options.update: get(dirname, version, srev, cdir)
+                else:
+                    sys.stdout.write(" ? " + dirname + " - is installed but has no " +
+                        "version info.\n")
+                    if options.update: get(dirname, version, srev, cdir)
+            else:
+                sys.stdout.write(" - %s - is installed but not on server.\n" %
+                    dirname)
     else:
         optionparser.print_help()
 

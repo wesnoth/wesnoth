@@ -1,4 +1,4 @@
-import socket, struct, glob, sys, shutil, threading
+import socket, struct, glob, sys, shutil, threading, os
 import wesnoth.wmldata as wmldata
 
 class CampaignClient:
@@ -407,3 +407,4 @@ class CampaignClient:
             if verbose:
                 print i * " " + name
             self.unpackdir(dir, path + "/" + name, i + 2, verbose)
+
