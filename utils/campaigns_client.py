@@ -89,6 +89,8 @@ if __name__ == "__main__":
                     sys.stdout.write(campaign.get_text_val("name", "?") + " " +
                         campaign.get_text_val("author", "?") + " " +
                         campaign.get_text_val("version", "?") + " " +
+                        "(" + campaign.get_text_val("uploads", "?") + " up/" +
+                        campaign.get_text_val("downloads", "?") + " down) " +
                         campaign.get_text_val("size", "?") + "\n")
                 sys.stdout.write("_" * 20 + "\n")
             for message in data.find_all("message", "error"):
