@@ -37,7 +37,7 @@ class unit_map;
 #include <set>
 #include <string>
 
-//display: class which takes care of displaying the map and
+//map_display and display: classes which take care of displaying the map and
 //game-data on the screen.
 //
 //the display is divided into two main sections: the game area,
@@ -50,6 +50,7 @@ class unit_map;
 //   currently moused over (highlighted)
 // - the unit status, which displays an image for, and stats for, the
 //   current unit.
+
 class map_display
 {
 public:
@@ -133,6 +134,10 @@ public:
 	int get_location_y(const gamemap::location& loc) const
 		{ return map_area().y + (loc.y + 1) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
 
+	//function which determines whether a grid should be overlayed on the
+	//game board to more clearly show where hexes are.
+	void set_grid(const bool grid) { grid_ = grid; }
+
 	//returns the locations of 2 hexes that bind the visible area
 	//of the map.
 	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
@@ -188,6 +193,7 @@ protected:
 	bool redrawMinimap_;
 	bool redraw_background_;
 	bool invalidateAll_;
+	bool grid_;
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
 	std::set<gamemap::location> invalidated_;
@@ -403,12 +409,9 @@ public:
 	//Delay routines: use these not SDL_Delay (for --nogui).
 	void delay(unsigned int milliseconds) const;
 
-	//function which determines whether a grid should be overlayed on the
-	//game board to more clearly show where hexes are.
-	void set_grid(const bool grid) { grid_ = grid; }
-
-	//a debug highlight draws a cross on a tile to emphasize something there.
-	//it is used in debug mode, typically to show AI plans.
+	//a debug highlight draws a cross on a tile to emphasize
+	//something there.  it is used in debug mode, typically to
+	//show AI plans.
 	static void debug_highlight(const gamemap::location& loc, fixed_t amount);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
@@ -562,7 +565,7 @@ private:
 	size_t currentTeam_, activeTeam_;
 
 	double turbo_speed_;
-	bool turbo_, grid_;
+	bool turbo_;
 	double sidebarScaling_;
 
 	bool first_turn_, in_game_;

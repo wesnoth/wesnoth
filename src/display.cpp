@@ -68,7 +68,7 @@ map_display::map_display(CVideo& video, const gamemap& map, const config& theme_
 	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom),
 	builder_(cfg, level, map),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
-	invalidateAll_(true), 
+	invalidateAll_(true), grid_(false),
 	fps_handle_(0)
 {
 	if(non_interactive()) {
@@ -768,8 +768,10 @@ void map_display::draw_text_in_hex(const gamemap::location& loc, const std::stri
 
 void display::draw_movement_info(const gamemap::location& loc)
 {
-	//check if there is a path and if we are not at its start because
-	//we don't want to display movement info on the unit's hex (useless and unreadable)
+
+	//check if there is a path and if we are not at its start
+	//because we don't want to display movement info on the unit's
+	//hex (useless and unreadable)
 	if (route_.steps.empty() || route_.steps.front() == loc) return;
 
 	//search if there is a turn waypoint here
@@ -822,7 +824,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0),
-	turbo_speed_(2), turbo_(false), grid_(false), sidebarScaling_(1.0),
+	turbo_speed_(2), turbo_(false), sidebarScaling_(1.0),
 	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
 	diagnostic_label_(0)
@@ -1203,9 +1205,9 @@ void display::scroll_to_leader(unit_map& units, int side)
 	const unit_map::iterator leader = find_leader(units,side);
 
 	if(leader != units_.end()) {
-		/* YogiHH: I can't see why we need another key_handler here, therefore
-		i will comment it out
-		const hotkey::basic_handler key_events_handler(gui_);
+		/* YogiHH: I can't see why we need another key_handler
+		here, therefore i will comment it out const
+		hotkey::basic_handler key_events_handler(gui_);
 		*/
 		scroll_to_tile(leader->first, ONSCREEN);
 	}
@@ -1423,10 +1425,12 @@ void display::draw(bool update,bool force)
 		// set the theortical next draw time
 		nextDraw_ += time_between_draws;
 		
-		// if the next draw already should have been finished we'll enter an
-		// update frenzy, so make sure that the too late value doesn't keep
-		// growing. Note if force is used too often we can also get the 
-		// opposite effect.
+
+		// if the next draw already should have been finished
+		// we'll enter an update frenzy, so make sure that the
+		// too late value doesn't keep growing. Note if force
+		// is used too often we can also get the opposite
+		// effect.
 		nextDraw_ = maximum<int>(nextDraw_, SDL_GetTicks());
 	}
 }
