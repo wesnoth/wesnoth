@@ -752,7 +752,7 @@ void preferences_dialog::process_event()
 		if (save_replays_button_.pressed())
 			set_save_replays(save_replays_button_.checked());
 		if (delete_autosaves_button_.pressed())
-			set_grid(delete_autosaves_button_.checked());
+			set_delete_autosaves(delete_autosaves_button_.checked());
 		if (turn_dialog_button_.pressed())
 			set_turn_dialog(turn_dialog_button_.checked());
 		if (show_team_colours_button_.pressed())
