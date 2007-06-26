@@ -140,6 +140,13 @@ public:
 	int get_location_y(const gamemap::location& loc) const
 		{ return map_area().y + (loc.y + 1) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
 
+	//function which returns true if location (x,y) is covered in shroud.
+	bool shrouded(const gamemap::location& loc) const
+		{return !viewpoint_ || viewpoint_->shrouded(loc.x, loc.y);}
+	//function which returns true if location (x,y) is covered in fog.
+	bool fogged(const gamemap::location& loc) const
+		{return !viewpoint_ || viewpoint_->fogged(loc.x, loc.y);}
+
 	//function which determines whether a grid should be overlayed on the
 	//game board to more clearly show where hexes are.
 	void set_grid(const bool grid) { grid_ = grid; }
@@ -158,12 +165,10 @@ public:
 	void invalidate_theme() { panelsDrawn_ = false; }
 
 	// Will be overridden in the display subclass
-	virtual bool fogged(const gamemap::location& loc UNUSED) const {return false;};
-	virtual bool shrouded(const gamemap::location& loc UNUSED) const {return false;};
 	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
 	virtual void draw_minimap_units(int x UNUSED, int y UNUSED, int w UNUSED, int h UNUSED) {};
 	//this surface must be freed by the caller
-	virtual surface get_minimap(int w, int h);
+	surface get_minimap(int w, int h);
 
 	const gamemap& get_map()const { return map_;}
 
@@ -255,6 +260,7 @@ protected:
 protected:
 	CVideo& screen_;
 	const gamemap& map_;
+	const viewpoint *viewpoint_;
 	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;
@@ -479,17 +485,11 @@ public:
 	static void debug_highlight(const gamemap::location& loc, fixed_t amount);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
-	//function which returns true if location (x,y) is covered in shroud.
-	bool shrouded(const gamemap::location& loc) const
-		{ return team_valid() ? teams_[currentTeam_].shrouded(loc.x, loc.y) : false; }
-
-	bool fogged(const gamemap::location& loc) const
-		{ return team_valid() ? teams_[currentTeam_].fogged(loc.x, loc.y) : false; }
-
 	//the viewing team is the team currently viewing the game. The
 	//playing team is the team whose turn it is
 	size_t viewing_team() const { return currentTeam_; }
 	size_t playing_team() const { return activeTeam_; }
+
 	bool team_valid() const { return currentTeam_ < teams_.size(); }
 	const std::string current_team_name() const;
 
@@ -534,9 +534,6 @@ private:
 
 	//this surface must be freed by the caller
 	surface get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc);
-
-	//this surface must be freed by the caller
-	virtual surface get_minimap(int w, int h);
 
 	CKey keys_;
 

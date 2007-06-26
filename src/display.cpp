@@ -64,7 +64,7 @@ namespace {
 }
 
 map_display::map_display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) : 
-	screen_(video), map_(map), xpos_(0), ypos_(0),
+	screen_(video), map_(map), viewpoint_(NULL), xpos_(0), ypos_(0),
 	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom),
 	builder_(cfg, level, map),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
@@ -1026,7 +1026,7 @@ surface map_display::get_minimap(int w, int h)
 	}
 
 	if(minimap_ == NULL) {
-		minimap_ = image::getMinimap(w, h, map_);
+		minimap_ = image::getMinimap(w, h, map_, viewpoint_);
 	}
 
 	return minimap_;
@@ -2598,13 +2598,14 @@ const std::string display::current_team_name() const
 	return std::string();
 }
 
-void display::set_team(size_t team)
+void display::set_team(size_t teamindex)
 {
-	wassert(team < teams_.size());
-	currentTeam_ = team;
+	wassert(teamindex < teams_.size());
+	currentTeam_ = teamindex;
 	if (!is_observer())
 	{
-		labels().set_team(&teams_[team]);
+		labels().set_team(&teams_[teamindex]);
+		viewpoint_ = &teams_[teamindex];
 	}
 	else
 	{
@@ -2613,10 +2614,10 @@ void display::set_team(size_t team)
 	labels().recalculate_labels();
 }
 
-void display::set_playing_team(size_t team)
+void display::set_playing_team(size_t teamindex)
 {
-	wassert(team < teams_.size());
-	activeTeam_ = team;
+	wassert(teamindex < teams_.size());
+	activeTeam_ = teamindex;
 	invalidate_game_status();
 }
 
@@ -2767,20 +2768,5 @@ void display::prune_chat_messages(bool remove_all)
 		prune_chat_messages(remove_all);
 	}
 }
-
-surface display::get_minimap(int w, int h)
-{
-	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
-		minimap_ = NULL;
-	}
-
-	const team *tm = team_valid() ? &teams_[currentTeam_] : NULL;
-	if(minimap_ == NULL) {
-		minimap_ = image::getMinimap(w, h, map_, tm);
-	}
-
-	return minimap_;
-}
-
 
 display *display::singleton_ = NULL;
