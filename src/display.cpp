@@ -519,32 +519,42 @@ std::vector<surface> map_display::get_terrain_images(const gamemap::location &lo
 	return res;
 }
 
-void map_display::draw_terrain_on_tile(const gamemap::location& loc, 
+void map_display::tile_stack_append(const surface surf) 
+{
+	if (surf)
+		tile_stack_.push_back(surf);
+};
+
+void map_display::tile_stack_terrains(const gamemap::location& loc, 
 				       const time_of_day& tod,
 				       image::TYPE image_type, 
 				       ADJACENT_TERRAIN_TYPE type)
+// find all terrain images matching our specs, drop them on the terrain stack 
 {
-	int xpos = int(get_location_x(loc));
-	int ypos = int(get_location_y(loc));
-
-	SDL_Rect clip_rect = map_area();
-
-	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
-	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
-		return;
-	}
-
-	surface const dst(screen_.getSurface());
-
-	clip_rect_setter set_clip_rect(dst,clip_rect);
-
 	const std::vector<surface>& images = get_terrain_images(loc,tod,image_type,type);
 
 	std::vector<surface>::const_iterator itor;
-	for(itor = images.begin(); itor != images.end(); ++itor) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(*itor,NULL,dst,&dstrect);
+	for(itor = images.begin(); itor != images.end(); ++itor)
+		tile_stack_append(*itor);
+}
+
+void map_display::tile_stack_render(int x, int y)
+// Render a stack of tile surfaces at the specified location
+{
+	surface const dst(screen_.getSurface());
+
+	std::vector<surface>::const_iterator itor;
+	for(itor=tile_stack_.begin(); itor!=tile_stack_.end(); ++itor) {
+		//note that dstrect can be changed by
+		//SDL_BlitSurface and so a new instance should
+		//be initialized to pass to each call to
+		//SDL_BlitSurface
+		SDL_Rect dstrect = { x, y, 0, 0 };
+		SDL_BlitSurface(*itor, NULL, dst, &dstrect);
 	}
+	tile_stack_.clear();
+
+	update_rect(x, y, zoom_, zoom_);
 }
 
 void map_display::sunset(const size_t delay) {
@@ -2028,8 +2038,6 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		return;
 	}
 
-	surface const dst(screen_.getSurface());
-
 	// If the terrain is off the map it shouldn't be included for 
 	// reachmap, fog, shroud and the grid.
 	// In the future it may not depend on whether the location is
@@ -2045,117 +2053,71 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		terrain = map_.get_terrain(loc);
 	}
 
+	tile_stack_clear();
+
 	// tod_at may differ from tod if our hex is illuminated 
 	std::string mask = tod_at.image_mask;
 
 	if(!is_shrouded /*|| !on_map*/) {
 		// unshrouded terrain (the normal case)
-		draw_terrain_on_tile(loc,tod, image_type, ADJACENT_BACKGROUND);
+		tile_stack_terrains(loc,tod, image_type, ADJACENT_BACKGROUND);
 
 		// village-control flags.
-		surface flag(get_flag(terrain,loc));
-		if(flag != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(flag,NULL,dst,&dstrect);
-		}
+		tile_stack_append(get_flag(terrain,loc));
 
 		typedef overlay_map::const_iterator Itor;
 
 		for(std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
 			overlays.first != overlays.second; ++overlays.first) {
 
-			surface overlay_surface(image::get_image(overlays.first->second.image,image_type));
-
-			//note that dstrect can be changed by
-			//SDL_BlitSurface and so a new instance should
-			//be initialized to pass to each call to
-			//SDL_BlitSurface
-			if(overlay_surface != NULL) {
-				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-				SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
-			}
+			tile_stack_append(image::get_image(overlays.first->second.image,image_type));
 		}
 	} else if(on_map) {
 		// shrouded but on map
-		surface surface(image::get_image(game_config::void_image));
-
-		if(surface == NULL) {
-			ERR_DP << "Could not get void surface!\n";
-			return;
-		}
-
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(surface,NULL,dst,&dstrect);
+		tile_stack_append(image::get_image(game_config::void_image));
 	}
 
 	// footsteps indicating a movement path may be required
 	// this has to be done before fogging because you might
 	// specify a goto to a place your unit can't reach in one turn.
-	draw_footstep(loc,xpos,ypos);
+	tile_stack_append(footstep_image(loc));
 
 	if(!is_shrouded /*|| !on_map*/) {
-		draw_terrain_on_tile(loc,tod,image_type,ADJACENT_FOREGROUND);
+		tile_stack_terrains(loc,tod,image_type,ADJACENT_FOREGROUND);
 	}
 
 	// apply fogging
 	if(fogged(loc) && on_map && !is_shrouded) {
-		const surface fog_surface(image::get_image(game_config::fog_image));
-		if(fog_surface != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(fog_surface,NULL,dst,&dstrect);
-		}
+		tile_stack_append(image::get_image(game_config::fog_image));
 	}
 
 	if(!is_shrouded && on_map) {
-		draw_terrain_on_tile(loc,tod,image_type,ADJACENT_FOGSHROUD);
+		tile_stack_terrains(loc,tod,image_type,ADJACENT_FOGSHROUD);
 	}
 
 	//draw the time-of-day mask on top of the terrain in the hex
-	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
-		if(tod_hex_mask1 != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(tod_hex_mask1,NULL,dst,&dstrect);
-		}
 
-		if(tod_hex_mask2 != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(tod_hex_mask2,NULL,dst,&dstrect);
-		}
+	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
+		tile_stack_append(tod_hex_mask1);
+		tile_stack_append(tod_hex_mask2);
 	} else if(mask != "") {
-		const surface img(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
-		if(img != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(img,NULL,dst,&dstrect);
-		}
+		tile_stack_append(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
 	}
 
 	// draw reach_map information
 	if (!reach_map_.empty() && on_map) {
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach == reach_map_.end()) {
-			const surface img(image::get_image(game_config::unreachable_image,image::UNMASKED,image::NO_ADJUST_COLOUR));
-			if(img != NULL) {
-				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-				SDL_BlitSurface(img,NULL,dst,&dstrect);
-			}
+			tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED,image::NO_ADJUST_COLOUR));
 		} else if (reach->second > 1) {
 			const std::string num = lexical_cast<std::string>(reach->second);
 			draw_text_in_hex(loc, num, font::SIZE_PLUS, font::YELLOW_COLOUR);
 		}
 	}
 
-	// perhaps show how many turns it would take to reach this hex
-	if(!is_shrouded && on_map) {
-		draw_movement_info(loc);
-	}
-
 	// draw the grid, if that's been enabled 
 	if(grid_ && on_map) {
-		surface grid_surface(image::get_image(game_config::grid_image));
-		if(grid_surface != NULL) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(grid_surface,NULL,dst,&dstrect);
-		}
+		tile_stack_append(image::get_image(game_config::grid_image));
 	}
 
 	// draw cross images for debug highlights 
@@ -2169,32 +2131,31 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 	// Add the top layer overlay surfaces
 	if(!hex_overlay_.empty()) {
 		std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(loc);
-		if(itor != hex_overlay_.end()) {
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(itor->second,NULL,dst,&dstrect);
-		}
+		if(itor != hex_overlay_.end())
+			tile_stack_append(itor->second);
 	}
 
 	// paint selection and mouseover overlays
-	if(loc == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(selected_hex_overlay_,NULL,dst,&dstrect);
-	}
-	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(mouseover_hex_overlay_,NULL,dst,&dstrect);
-	}
+	if(loc == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL)
+		tile_stack_append(selected_hex_overlay_);
+	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL)
+		tile_stack_append(mouseover_hex_overlay_);
 
-	update_rect(xpos,ypos,zoom_,zoom_);
+	tile_stack_render(xpos, ypos);
+
+	// perhaps show how many turns it would take to reach this hex
+	if(!is_shrouded && on_map) {
+		draw_movement_info(loc);
+	}
 }
 
-void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
+surface display::footstep_image(const gamemap::location& loc)
 {
 	std::vector<gamemap::location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
 
 	if(i == route_.steps.begin() || i == route_.steps.end()) {
-		return;
+		return NULL;
 	}
 
 	const bool left_foot = is_even(i - route_.steps.begin());
@@ -2238,7 +2199,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	}
 
 	if(image_category == NULL || image_category->empty()) {
-		return;
+		return NULL;
 	}
 
 	const std::string* image_str = &image_category->front();
@@ -2255,7 +2216,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	surface image(image::get_image(*image_str, image::UNMASKED, image::NO_ADJUST_COLOUR));
 	if(image == NULL) {
 		ERR_DP << "Could not find image: " << *image_str << "\n";
-		return;
+		return NULL;
 	}
 
 	const bool hflip = !(direction > gamemap::location::NORTH &&
@@ -2266,8 +2227,11 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	if(!hflip) {
 		image.assign(image::reverse_image(image));
 	}
+	if(vflip) {
+		image.assign(flop_surface(image));
+	}
 
-	draw_unit(xloc,yloc,image,vflip);
+	return image;
 }
 
 surface display::get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc)

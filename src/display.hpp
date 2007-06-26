@@ -288,10 +288,13 @@ protected:
 
 
 	//composes and draws the terrains on a tile
-	void draw_terrain_on_tile(const gamemap::location& loc, 
+	void tile_stack_terrains(const gamemap::location& loc, 
 				  const time_of_day& tod,
 				  image::TYPE image_type, 
 				  ADJACENT_TERRAIN_TYPE type);
+	void tile_stack_append(surface surf);
+	void tile_stack_render(int x, int y);
+	void tile_stack_clear() {tile_stack_.clear();};
 
 	// redraw all panels associated with the map display
 	void draw_all_panels();
@@ -303,7 +306,10 @@ protected:
 	bool draw_init();
 	void draw_wrap(bool update,bool force,bool changed);
 
+
 private:
+	//the tile stack for terrain rendering
+  	std::vector<surface> tile_stack_;
 	//the handle for the label which displays frames per second
 	int fps_handle_;
 };
@@ -406,11 +412,11 @@ private:
 	mutable events::generic_event _scroll_event;
 
 public:
-	//function to draw a footstep for the given location, on screen at
+	//function to return a footstep for the given location, on screen at
 	//pixel co-ordinates (xloc,yloc). A footstep will only be drawn if
 	//loc is on the current route set by set_route. Otherwise it will
-	//return with no effect.
-	void draw_footstep(const gamemap::location& loc, int xloc, int yloc);
+	//return NULL.
+	surface footstep_image(const gamemap::location& loc);
 
 	//draws the movement info (turns available) for a given location
 	void draw_movement_info(const gamemap::location& loc);
