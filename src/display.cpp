@@ -1578,7 +1578,8 @@ void display::draw_report(reports::TYPE report_num)
 		int x = rect.x, y = rect.y;
 
 		if(!report.empty()) {
-			// Add prefix, postfix elements. Make sure that they get the same tooltip as the guys
+			// Add prefix, postfix elements. Make sure
+			// that they get the same tooltip as the guys
 			// around them.
 			std::stringstream temp;
 			Uint32 RGB = item->font_rgb();
@@ -1861,6 +1862,7 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		// unshrouded terrain (the normal case)
 		draw_terrain_on_tile(loc,tod, image_type, ADJACENT_BACKGROUND);
 
+		// village-control flags.
 		surface flag(get_flag(terrain,loc));
 		if(flag != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -2007,10 +2009,10 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 
 	const bool left_foot = is_even(i - route_.steps.begin());
 
-	//generally we want the footsteps facing toward the direction they're going
-	//to go next.
-	//if we're on the last step, then we want them facing according to where
-	//they came from, so we move i back by one
+	//generally we want the footsteps facing toward the direction
+	//they're going to go next.  if we're on the last step, then
+	//we want them facing according to where they came from, so we
+	//move i back by one
 	if(i+1 == route_.steps.end() && i != route_.steps.begin()) {
 		--i;
 	}
