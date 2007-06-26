@@ -1589,7 +1589,130 @@ void display::draw(bool update,bool force)
 				image_type = image::SEMI_BRIGHTENED;
 			}
 
-			draw_tile(*it, tod, tod_at, image_type, clip_rect);
+			if(screen_.update_locked()) {
+				continue;
+			}
+
+			int xpos = int(get_location_x(*it));
+			int ypos = int(get_location_y(*it));
+
+			if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
+			   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
+				continue;
+			}
+
+			// If the terrain is off the map it shouldn't
+			// be included for reachmap, fog, shroud and
+			// the grid.  In the future it may not depend
+			// on whether the location is on the map but
+			// whether it's an _off^* terrain.  (atm not
+			// too happy with how the grid looks) (the
+			// shroud has some glitches due to commented
+			// out code but enabling it looks worse)
+			const bool on_map = map_.on_board(*it);
+			const bool is_shrouded = shrouded(*it);
+			t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
+
+			if(!is_shrouded || !on_map) {
+				terrain = map_.get_terrain(*it);
+			}
+
+			tile_stack_clear();
+
+			// tod_at may differ from tod if hex is illuminated 
+			std::string mask = tod_at.image_mask;
+
+			if(!is_shrouded /*|| !on_map*/) {
+				// unshrouded terrain (the normal case)
+				tile_stack_terrains(*it,tod, image_type, ADJACENT_BACKGROUND);
+
+				// village-control flags.
+				tile_stack_append(get_flag(terrain,*it));
+
+				typedef overlay_map::const_iterator Itor;
+
+				for(std::pair<Itor,Itor> overlays = overlays_.equal_range(*it);
+					overlays.first != overlays.second; ++overlays.first) {
+
+					tile_stack_append(image::get_image(overlays.first->second.image,image_type));
+				}
+			} else if(on_map) {
+				// shrouded but on map
+				tile_stack_append(image::get_image(game_config::void_image));
+			}
+
+			// footsteps indicating a movement path may be
+			// required; this has to be done before fogging
+			// because you might specify a goto to a place
+			// your unit can't reach in one turn.
+			tile_stack_append(footstep_image(*it));
+
+			if(!is_shrouded /*|| !on_map*/) {
+				tile_stack_terrains(*it,tod,image_type,ADJACENT_FOREGROUND);
+			}
+
+			// apply fogging
+			if(fogged(*it) && on_map && !is_shrouded) {
+				tile_stack_append(image::get_image(game_config::fog_image));
+			}
+
+			if(!is_shrouded && on_map) {
+				tile_stack_terrains(*it,tod,image_type,ADJACENT_FOGSHROUD);
+			}
+
+			//draw the time-of-day mask on top of the
+			//terrain in the hex
+			if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
+				tile_stack_append(tod_hex_mask1);
+				tile_stack_append(tod_hex_mask2);
+			} else if(mask != "") {
+				tile_stack_append(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
+			}
+
+			// draw reach_map information
+			if (!reach_map_.empty() && on_map) {
+				reach_map::iterator reach = reach_map_.find(*it);
+				if (reach == reach_map_.end()) {
+					tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED,image::NO_ADJUST_COLOUR));
+				} else if (reach->second > 1) {
+					const std::string num = lexical_cast<std::string>(reach->second);
+					draw_text_in_hex(*it, num, font::SIZE_PLUS, font::YELLOW_COLOUR);
+				}
+			}
+
+			// draw the grid, if that's been enabled 
+			if(grid_ && on_map) {
+				tile_stack_append(image::get_image(game_config::grid_image));
+			}
+
+			// draw cross images for debug highlights 
+			if(game_config::debug && debugHighlights_.count(*it)) {
+				const surface cross(image::get_image(game_config::cross_image));
+				if(cross != NULL) {
+					draw_unit(xpos,ypos,cross,false,debugHighlights_[*it],0);
+				}
+			}
+
+			// Add the top layer overlay surfaces
+			if(!hex_overlay_.empty()) {
+				std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(*it);
+				if(itor != hex_overlay_.end())
+					tile_stack_append(itor->second);
+			}
+
+			// paint selection and mouseover overlays
+			if(*it == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL)
+				tile_stack_append(selected_hex_overlay_);
+			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL)
+				tile_stack_append(mouseover_hex_overlay_);
+
+			tile_stack_render(xpos, ypos);
+
+			// perhaps show how many turns it would take
+			// to reach this hex
+			if(!is_shrouded && on_map) {
+				draw_movement_info(*it);
+			}
 			//simulate_delay += 1;
 		}
 
@@ -2021,131 +2144,6 @@ void display::draw_movement_info(const gamemap::location& loc)
 #else
 		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.5);
 #endif
-	}
-}
-
-void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day & tod_at, image::TYPE image_type, const SDL_Rect &clip_rect)
-{
-	if(screen_.update_locked()) {
-		return;
-	}
-
-	int xpos = int(get_location_x(loc));
-	int ypos = int(get_location_y(loc));
-
-	if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
-	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
-		return;
-	}
-
-	// If the terrain is off the map it shouldn't be included for 
-	// reachmap, fog, shroud and the grid.
-	// In the future it may not depend on whether the location is
-	// on the map but whether it's an _off^* terrain.
-	// (atm not too happy with how the grid looks)
-	// (the shroud has some glitches due to commented out code
-	// but enabling it looks worse)
-	const bool on_map = map_.on_board(loc);
-	const bool is_shrouded = shrouded(loc);
-	t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
-
-	if(!is_shrouded || !on_map) {
-		terrain = map_.get_terrain(loc);
-	}
-
-	tile_stack_clear();
-
-	// tod_at may differ from tod if our hex is illuminated 
-	std::string mask = tod_at.image_mask;
-
-	if(!is_shrouded /*|| !on_map*/) {
-		// unshrouded terrain (the normal case)
-		tile_stack_terrains(loc,tod, image_type, ADJACENT_BACKGROUND);
-
-		// village-control flags.
-		tile_stack_append(get_flag(terrain,loc));
-
-		typedef overlay_map::const_iterator Itor;
-
-		for(std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
-			overlays.first != overlays.second; ++overlays.first) {
-
-			tile_stack_append(image::get_image(overlays.first->second.image,image_type));
-		}
-	} else if(on_map) {
-		// shrouded but on map
-		tile_stack_append(image::get_image(game_config::void_image));
-	}
-
-	// footsteps indicating a movement path may be required
-	// this has to be done before fogging because you might
-	// specify a goto to a place your unit can't reach in one turn.
-	tile_stack_append(footstep_image(loc));
-
-	if(!is_shrouded /*|| !on_map*/) {
-		tile_stack_terrains(loc,tod,image_type,ADJACENT_FOREGROUND);
-	}
-
-	// apply fogging
-	if(fogged(loc) && on_map && !is_shrouded) {
-		tile_stack_append(image::get_image(game_config::fog_image));
-	}
-
-	if(!is_shrouded && on_map) {
-		tile_stack_terrains(loc,tod,image_type,ADJACENT_FOGSHROUD);
-	}
-
-	//draw the time-of-day mask on top of the terrain in the hex
-
-	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
-		tile_stack_append(tod_hex_mask1);
-		tile_stack_append(tod_hex_mask2);
-	} else if(mask != "") {
-		tile_stack_append(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
-	}
-
-	// draw reach_map information
-	if (!reach_map_.empty() && on_map) {
-		reach_map::iterator reach = reach_map_.find(loc);
-		if (reach == reach_map_.end()) {
-			tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED,image::NO_ADJUST_COLOUR));
-		} else if (reach->second > 1) {
-			const std::string num = lexical_cast<std::string>(reach->second);
-			draw_text_in_hex(loc, num, font::SIZE_PLUS, font::YELLOW_COLOUR);
-		}
-	}
-
-	// draw the grid, if that's been enabled 
-	if(grid_ && on_map) {
-		tile_stack_append(image::get_image(game_config::grid_image));
-	}
-
-	// draw cross images for debug highlights 
-	if(game_config::debug && debugHighlights_.count(loc)) {
-		const surface cross(image::get_image(game_config::cross_image));
-		if(cross != NULL) {
-			draw_unit(xpos,ypos,cross,false,debugHighlights_[loc],0);
-		}
-	}
-
-	// Add the top layer overlay surfaces
-	if(!hex_overlay_.empty()) {
-		std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(loc);
-		if(itor != hex_overlay_.end())
-			tile_stack_append(itor->second);
-	}
-
-	// paint selection and mouseover overlays
-	if(loc == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL)
-		tile_stack_append(selected_hex_overlay_);
-	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL)
-		tile_stack_append(mouseover_hex_overlay_);
-
-	tile_stack_render(xpos, ypos);
-
-	// perhaps show how many turns it would take to reach this hex
-	if(!is_shrouded && on_map) {
-		draw_movement_info(loc);
 	}
 }
 
