@@ -155,6 +155,25 @@ public:
 	virtual bool shrouded(const gamemap::location& loc UNUSED) const {return false;};
 	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
 
+	const gamemap& get_map()const { return map_;}
+
+	// The last action in drawing a tile is adding the overlays
+	// these overlays are drawn in the following order
+	// hex_overlay_ 			if the drawn location is in the map
+	// selected_hex_overlay_	if the drawn location is selected
+	// mouseover_hex_overlay_	if the drawn location is underneath the mouse
+	//
+	// These functions require a prerendered surface since they are
+	// drawn at the top, they are not influenced by TOD, shroud etc
+	void set_hex_overlay(const gamemap::location& loc, surface image) { hex_overlay_[loc] = image; }
+	void clear_hex_overlay(const gamemap::location& loc);
+	
+	void set_selected_hex_overlay(const surface& image) { selected_hex_overlay_ = image; }
+	void clear_selected_hex_overlay() { selected_hex_overlay_ = NULL; }
+
+	void set_mouseover_hex_overlay(const surface& image) { mouseover_hex_overlay_ = image; }
+	void clear_mouseover_hex_overlay() { mouseover_hex_overlay_ = NULL; }
+	
 	//debug function to toggle the "sunset" mode the map area
 	//become progressively darker except where hexes are refreshed
 	//delay it's the number of frames between each darkening (0 to
@@ -170,6 +189,21 @@ public:
 
 	//function which copies the backbuffer to the framebuffer.
 	void update_display();
+
+	//function to draw the image of a unit at a certain location
+	//x,y: pixel location on screen to draw the unit
+	//image: the image of the unit
+	//reverse: if the unit should be flipped across the y axis
+	//upside_down: if the unit should be flipped across the x axis
+	//alpha: the merging to use with the background
+	//blendto: if blendto is not 0, then the alpha parameter will be used
+	//         to blend to this colour, instead of the background
+	//submerged: the amount of the unit out of 1.0 that is submerged
+	//           (presumably under water) and thus shouldn't be drawn
+	void draw_unit(int x, int y, surface image,
+		        bool upside_down=false,fixed_t alpha=ftofxp(1.0),
+			Uint32 blendto=0, double blend_ratio=0,
+			double submerged=0.0);
 
 protected:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
@@ -194,9 +228,15 @@ protected:
 	bool redraw_background_;
 	bool invalidateAll_;
 	bool grid_;
+
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
 	std::set<gamemap::location> invalidated_;
+	std::map<gamemap::location, surface> hex_overlay_;
+	surface selected_hex_overlay_;
+	surface mouseover_hex_overlay_;
+	gamemap::location selectedHex_;
+	gamemap::location mouseoverHex_;
 
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(const gamemap::location& loc, 
@@ -304,28 +344,9 @@ public:
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
-	const gamemap& get_map()const { return map_;}
-
-	//expose the event so that observers can be notified about map scrolling
+	//expose the event so observers can be notified about map scrolling
 	events::generic_event &scroll_event() const { return _scroll_event; }
 
-	// The last action in drawing a tile is adding the overlays
-	// these overlays are drawn in the following order
-	// hex_overlay_ 			if the drawn location is in the map
-	// selected_hex_overlay_	if the drawn location is selected
-	// mouseover_hex_overlay_	if the drawn location is underneath the mouse
-	//
-	// These functions require a prerendered surface since they are
-	// drawn at the top, they are not influenced by TOD, shroud etc
-	void set_hex_overlay(const gamemap::location& loc, surface image) { hex_overlay_[loc] = image; }
-	void clear_hex_overlay(const gamemap::location& loc);
-	
-	void set_selected_hex_overlay(const surface& image) { selected_hex_overlay_ = image; }
-	void clear_selected_hex_overlay() { selected_hex_overlay_ = NULL; }
-
-	void set_mouseover_hex_overlay(const surface& image) { mouseover_hex_overlay_ = image; }
-	void clear_mouseover_hex_overlay() { mouseover_hex_overlay_ = NULL; }
-	
 private:
 	// event raised when the map is being scrolled
 	mutable events::generic_event _scroll_event;
@@ -447,21 +468,6 @@ public:
 	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type, bool bell);
 	void clear_chat_messages() { prune_chat_messages(true); }
 
-	//function to draw the image of a unit at a certain location
-	//x,y: pixel location on screen to draw the unit
-	//image: the image of the unit
-	//reverse: if the unit should be flipped across the y axis
-	//upside_down: if the unit should be flipped across the x axis
-	//alpha: the merging to use with the background
-	//blendto: if blendto is not 0, then the alpha parameter will be used
-	//         to blend to this colour, instead of the background
-	//submerged: the amount of the unit out of 1.0 that is submerged
-	//           (presumably under water) and thus shouldn't be drawn
-	void draw_unit(int x, int y, surface image,
-		        bool upside_down=false,fixed_t alpha=ftofxp(1.0),
-			Uint32 blendto=0, double blend_ratio=0,
-			double submerged=0.0);
-
 	//rebuild the dynamic terrain at the given location.
 	void rebuild_terrain(const gamemap::location &loc) 
 		{ builder_.rebuild_terrain(loc); }
@@ -511,13 +517,6 @@ private:
 	surface get_minimap(int w, int h);
 
 	CKey keys_;
-
-	std::map<gamemap::location, surface> hex_overlay_;
-	surface selected_hex_overlay_;
-	surface mouseover_hex_overlay_;
-
-	gamemap::location selectedHex_;
-	gamemap::location mouseoverHex_;
 
 	unit_map& units_;
 

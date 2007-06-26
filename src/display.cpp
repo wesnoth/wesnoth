@@ -635,11 +635,16 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 		if(rects_overlap(b->location(),loc)) {
 			b->set_dirty(true);
 			if (first_time){
-				//FixMe
-				//YogiHH: This is only made to have the buttons store their background information,
-				//otherwise the background will appear completely black. It would more
-				//straightforward to call bg_update, but that is not public and there seems to be
-				//no other way atm to call it. I will check if bg_update can be made public.
+				//FixMe YogiHH: This is only made to
+				//have the buttons store their
+				//background information, otherwise
+				//the background will appear
+				//completely black. It would more
+				//straightforward to call bg_update,
+				//but that is not public and there
+				//seems to be no other way atm to call
+				//it. I will check if bg_update can be
+				//made public.
 				b->hide(true);
 				b->hide(false);
 			}
@@ -766,46 +771,59 @@ void map_display::draw_text_in_hex(const gamemap::location& loc, const std::stri
 	font::draw_text(&screen_, rect,font_sz, color, text, x, y);
 }
 
-void display::draw_movement_info(const gamemap::location& loc)
+void map_display::clear_hex_overlay(const gamemap::location& loc)
+{
+	if(! hex_overlay_.empty()) {
+		std::map<gamemap::location, surface>::iterator itor = hex_overlay_.find(loc);
+		if(itor != hex_overlay_.end()) {
+			hex_overlay_.erase(itor);
+		}
+	}
+}
+
+void map_display::draw_unit(int x, int y, surface image,
+		bool upside_down, fixed_t alpha, Uint32 blendto,
+		double blend_ratio, double submerged)
 {
 
-	//check if there is a path and if we are not at its start
-	//because we don't want to display movement info on the unit's
-	//hex (useless and unreadable)
-	if (route_.steps.empty() || route_.steps.front() == loc) return;
+	surface surf(image);
 
-	//search if there is a turn waypoint here
-	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
-	if(turn_waypoint_iter == route_.turn_waypoints.end()) return;
-
-	//display the def% of this terrain
-#ifndef USE_TINY_GUI
-	const unit_map::const_iterator un = units_.find(route_.steps.front());
-	if(un != units_.end()) {
-		const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
-		std::stringstream def_text;
-		def_text << def << "%";
-
-		// with 11 colors, the last one will be used only for def=100
-		int val = (game_config::defense_color_scale.size()-1) * def/100;
-		SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
-
-		draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color, 0.5, 0.5);
+	if(upside_down) {
+		surf.assign(flop_surface(surf));
 	}
-#endif
 
-	//display the number of turn to reach if > 0
-	int turns_to_reach = turn_waypoint_iter->second;
-	if(turns_to_reach > 0 && turns_to_reach < 10) {
-		std::stringstream turns_text;
-		turns_text << "(" << turns_to_reach << ")";
-		const SDL_Color turns_color = font::NORMAL_COLOUR;
-#ifndef USE_TINY_GUI
-		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.8);
-#else
-		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.5);
-#endif
+	if(blend_ratio != 0) {
+		surf = blend_surface(surf, blend_ratio, blendto);
 	}
+	if(alpha > ftofxp(1.0)) {
+		surf = brighten_image(surf,alpha);
+	//} else if(alpha != 1.0 && blendto != 0) {
+	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
+	} else if(alpha != ftofxp(1.0)) {
+		surf = adjust_surface_alpha(surf,alpha,false);
+	}
+
+	if(surf == NULL) {
+		ERR_DP << "surface lost...\n";
+		return;
+	}
+
+	const int submerge_height = minimum<int>(surf->h,maximum<int>(0,int(surf->h*(1.0-submerged))));
+
+	SDL_Rect clip_rect = map_area();
+	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
+	video().blit_surface(x,y,surf,&srcrect,&clip_rect);
+
+	if(submerge_height != surf->h) {
+		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2),false));
+
+		srcrect.y = submerge_height;
+		srcrect.h = surf->h-submerge_height;
+		y += submerge_height;
+
+		video().blit_surface(x,y,surf,&srcrect,&clip_rect);
+	}
+
 }
 
 // Methods for superclass aware of units go here
@@ -1824,6 +1842,48 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	}
 }
 
+void display::draw_movement_info(const gamemap::location& loc)
+{
+
+	//check if there is a path and if we are not at its start
+	//because we don't want to display movement info on the unit's
+	//hex (useless and unreadable)
+	if (route_.steps.empty() || route_.steps.front() == loc) return;
+
+	//search if there is a turn waypoint here
+	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
+	if(turn_waypoint_iter == route_.turn_waypoints.end()) return;
+
+	//display the def% of this terrain
+#ifndef USE_TINY_GUI
+	const unit_map::const_iterator un = units_.find(route_.steps.front());
+	if(un != units_.end()) {
+		const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
+		std::stringstream def_text;
+		def_text << def << "%";
+
+		// with 11 colors, the last one will be used only for def=100
+		int val = (game_config::defense_color_scale.size()-1) * def/100;
+		SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
+
+		draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color, 0.5, 0.5);
+	}
+#endif
+
+	//display the number of turn to reach if > 0
+	int turns_to_reach = turn_waypoint_iter->second;
+	if(turns_to_reach > 0 && turns_to_reach < 10) {
+		std::stringstream turns_text;
+		turns_text << "(" << turns_to_reach << ")";
+		const SDL_Color turns_color = font::NORMAL_COLOUR;
+#ifndef USE_TINY_GUI
+		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.8);
+#else
+		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.5);
+#endif
+	}
+}
+
 void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day & tod_at, image::TYPE image_type, const SDL_Rect &clip_rect)
 {
 	if(screen_.update_locked()) {
@@ -2220,61 +2280,6 @@ void display::float_label(const gamemap::location& loc, const std::string& text,
 	int lifetime = static_cast<int>(60/turbo_speed());
 	font::add_floating_label(text,font::SIZE_XLARGE,color,get_location_x(loc)+zoom_/2,get_location_y(loc),
 	                         0,-2*turbo_speed(),lifetime,screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);
-}
-
-void display::clear_hex_overlay(const gamemap::location& loc)
-{
-	if(! hex_overlay_.empty()) {
-		std::map<gamemap::location, surface>::iterator itor = hex_overlay_.find(loc);
-		if(itor != hex_overlay_.end()) {
-			hex_overlay_.erase(itor);
-		}
-	}
-}
-
-void display::draw_unit(int x, int y, surface image,
-		bool upside_down, fixed_t alpha, Uint32 blendto,
-		double blend_ratio, double submerged)
-{
-
-	surface surf(image);
-
-	if(upside_down) {
-		surf.assign(flop_surface(surf));
-	}
-
-	if(blend_ratio != 0) {
-		surf = blend_surface(surf, blend_ratio, blendto);
-	}
-	if(alpha > ftofxp(1.0)) {
-		surf = brighten_image(surf,alpha);
-	//} else if(alpha != 1.0 && blendto != 0) {
-	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
-	} else if(alpha != ftofxp(1.0)) {
-		surf = adjust_surface_alpha(surf,alpha,false);
-	}
-
-	if(surf == NULL) {
-		ERR_DP << "surface lost...\n";
-		return;
-	}
-
-	const int submerge_height = minimum<int>(surf->h,maximum<int>(0,int(surf->h*(1.0-submerged))));
-
-	SDL_Rect clip_rect = map_area();
-	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
-	video().blit_surface(x,y,surf,&srcrect,&clip_rect);
-
-	if(submerge_height != surf->h) {
-		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2),false));
-
-		srcrect.y = submerge_height;
-		srcrect.h = surf->h-submerge_height;
-		y += submerge_height;
-
-		video().blit_surface(x,y,surf,&srcrect,&clip_rect);
-	}
-
 }
 
 struct is_energy_colour {
