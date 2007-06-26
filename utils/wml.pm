@@ -73,7 +73,7 @@ sub read_binary
 	while(@chars) {
 		my $char = shift @chars;
 		my $code = ord $char;
-		my $remaining = $#chars + 1;
+		my $remaining = @chars;
 		if($code == $wml::open_element) {
 			my $word = &read_word($schema,\@chars);
 			$cur = &add_child($cur,$word);
