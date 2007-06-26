@@ -1897,6 +1897,8 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 	}
 
 	// footsteps indicating a movement path may be required
+	// this has to be done before fogging because you might
+	// specify a goto to a place your unit can't reach in one turn.
 	draw_footstep(loc,xpos,ypos);
 
 	if(!is_shrouded /*|| !on_map*/) {
@@ -1916,7 +1918,7 @@ void display::draw_tile(const gamemap::location &loc, const time_of_day& tod, co
 		draw_terrain_on_tile(loc,tod,image_type,ADJACENT_FOGSHROUD);
 	}
 
-	//draw the time-of-day mask on top of the hex
+	//draw the time-of-day mask on top of the terrain in the hex
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 		if(tod_hex_mask1 != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
