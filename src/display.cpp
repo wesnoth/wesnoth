@@ -69,8 +69,8 @@ map_display::map_display(CVideo& video, const gamemap& map, const config& theme_
 	builder_(cfg, level, map),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
 	invalidateAll_(true), grid_(false),
-	diagnostic_label_(0),
-	fps_handle_(0)
+	diagnostic_label_(0), panelsDrawn_(false),
+	nextDraw_(0), fps_handle_(0)
 {
 	if(non_interactive()) {
 		screen_.lock_updates(true);
@@ -865,6 +865,74 @@ void map_display::set_diagnostic(const std::string& msg)
 	}
 }
 
+bool map_display::draw_init()
+// Initiate a redraw.  May require redrawing panels and background
+{
+	bool changed = false;
+
+	if(!panelsDrawn_) {
+		draw_all_panels();
+		panelsDrawn_ = true;
+		changed = true;
+	}
+
+	if(redraw_background_) {
+		// full redraw of the background
+		const SDL_Rect clip_rect = map_outside_area();
+		const surface outside_surf(screen_.getSurface());
+		clip_rect_setter set_clip_rect(outside_surf, clip_rect);
+		draw_background(outside_surf, clip_rect);
+
+		redraw_background_ = false;
+
+		// force a full map redraw
+		invalidateAll_ = true;
+	}
+
+	if(invalidateAll_ && !map_.empty()) {
+		INFO_DP << "draw() with invalidateAll\n";
+		gamemap::location topleft;
+		gamemap::location bottomright;
+		get_visible_hex_bounds(topleft, bottomright);
+		for(int x = topleft.x; x <= bottomright.x; ++x)
+			for(int y = topleft.y; y <= bottomright.y; ++y)
+				invalidated_.insert(gamemap::location(x,y));
+		invalidateAll_ = false;
+
+		redrawMinimap_ = true;
+	}
+
+	return changed;
+}
+
+void map_display::draw_wrap(bool update,bool force,bool changed)
+{
+	static const int time_between_draws = preferences::draw_delay();
+	const int current_time = SDL_GetTicks();
+	const int wait_time = nextDraw_ - current_time;
+
+	if(update) {
+		if(force || changed) {
+			if(!force && wait_time > 0) {
+				// if it's not time yet to draw delay until it is
+				SDL_Delay(wait_time);
+			}
+			update_display();
+		}
+		
+		// set the theortical next draw time
+		nextDraw_ += time_between_draws;
+		
+
+		// if the next draw already should have been finished
+		// we'll enter an update frenzy, so make sure that the
+		// too late value doesn't keep growing. Note if force
+		// is used too often we can also get the opposite
+		// effect.
+		nextDraw_ = maximum<int>(nextDraw_, SDL_GetTicks());
+	}
+}
+
 //Delay routines: use these not SDL_Delay (for --nogui).
 
 void map_display::delay(unsigned int milliseconds) const
@@ -957,9 +1025,9 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	units_(units),
 	temp_unit_(NULL),
 	status_(status),
-	teams_(t), nextDraw_(0),
+	teams_(t),
 	invalidateUnit_(true),
-	invalidateGameStatus_(true), panelsDrawn_(false),
+	invalidateGameStatus_(true),
 	currentTeam_(0), activeTeam_(0),
 	turbo_speed_(2), turbo_(false), sidebarScaling_(1.0),
 	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
@@ -1411,46 +1479,14 @@ void display::redraw_everything()
 
 void display::draw(bool update,bool force)
 {
-	bool changed = false;
-
 	//log_scope("Drawing");
 	invalidate_animations();
 
 	process_reachmap_changes();
 
-	if(!panelsDrawn_) {
-		draw_all_panels();
-		panelsDrawn_ = true;
-		changed = true;
-	}
+	bool changed = map_display::draw_init();
 
-	if(redraw_background_) {
-		// full redraw of the background
-		const SDL_Rect clip_rect = map_outside_area();
-		const surface outside_surf(screen_.getSurface());
-		clip_rect_setter set_clip_rect(outside_surf, clip_rect);
-		draw_background(outside_surf, clip_rect);
-
-		redraw_background_ = false;
-
-		// force a full map redraw
-		invalidateAll_ = true;
-	}
-
-	if(invalidateAll_ && !map_.empty()) {
-		INFO_DP << "draw() with invalidateAll\n";
-		gamemap::location topleft;
-		gamemap::location bottomright;
-		get_visible_hex_bounds(topleft, bottomright);
-		for(int x = topleft.x; x <= bottomright.x; ++x)
-			for(int y = topleft.y; y <= bottomright.y; ++y)
-				invalidated_.insert(gamemap::location(x,y));
-		invalidateAll_ = false;
-
-		redrawMinimap_ = true;
-	}
-
-	int simulate_delay = 0;
+	//int simulate_delay = 0;
 	if(!map_.empty() && !invalidated_.empty()) {
 		changed = true;
 		
@@ -1487,13 +1523,13 @@ void display::draw(bool update,bool force)
 			}
 
 			draw_tile(*it, tod, tod_at, image_type, clip_rect);
-			simulate_delay += 1;
+			//simulate_delay += 1;
 		}
 
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
 			unit &u = units_.find(*it)->second;
 			u.redraw_unit(*this, *it);
-			simulate_delay += 1;
+			//simulate_delay += 1;
 		}
 		if (temp_unit_ && invalidated_.find(temp_unit_loc_) != invalidated_.end()) {
 			temp_unit_->redraw_unit(*this, temp_unit_loc_);
@@ -1503,8 +1539,8 @@ void display::draw(bool update,bool force)
 		
 		invalidated_.clear();
 	} else if (!map_.empty()) {
-		// if no hexes are invalidated we still need to update the haloes since
-		// there might be animated or expired haloes
+		// if no hexes are invalidated we still need to update the
+		// haloes since there might be animated or expired haloes
 		wassert(invalidated_.empty());
 		halo::unrender(invalidated_);
 		halo::render();
@@ -1525,33 +1561,10 @@ void display::draw(bool update,bool force)
 
 	prune_chat_messages();
 
-	static const int time_between_draws = preferences::draw_delay();
-	const int current_time = SDL_GetTicks();
-	const int wait_time = nextDraw_ - current_time;
-
 	// simulate slow pc
 	//SDL_Delay(2*simulate_delay + rand() % 20);
 
-	if(update) {
-		if(force || changed) {
-			if(!force && wait_time > 0) {
-				// if it's not time yet to draw delay until it is
-				SDL_Delay(wait_time);
-			}
-			update_display();
-		}
-		
-		// set the theortical next draw time
-		nextDraw_ += time_between_draws;
-		
-
-		// if the next draw already should have been finished
-		// we'll enter an update frenzy, so make sure that the
-		// too late value doesn't keep growing. Note if force
-		// is used too often we can also get the opposite
-		// effect.
-		nextDraw_ = maximum<int>(nextDraw_, SDL_GetTicks());
-	}
+	map_display::draw_wrap(update, force, changed);
 }
 
 void display::draw_sidebar()

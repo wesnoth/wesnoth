@@ -155,6 +155,7 @@ public:
 	gui::button* find_button(const std::string& id);
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
+	void invalidate_theme() { panelsDrawn_ = false; }
 
 	// Will be overridden in the display subclass
 	virtual bool fogged(const gamemap::location& loc UNUSED) const {return false;};
@@ -259,6 +260,10 @@ protected:
 	bool invalidateAll_;
 	bool grid_;
 	int diagnostic_label_;
+	bool panelsDrawn_;
+	// holds the tick count for when the next drawing event is scheduled
+	// drawing shouldn't occur before this time
+	int nextDraw_;
 
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
@@ -270,6 +275,7 @@ protected:
 	gamemap::location mouseoverHex_;
 	std::set<gamemap::location> highlighted_locations_;
 
+
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(const gamemap::location& loc, 
 				  const time_of_day& tod,
@@ -280,6 +286,11 @@ protected:
 	void draw_all_panels();
 
 	void invalidate_locations_in_rect(SDL_Rect r);
+
+	//function to invalidate controls and panels when changed after
+	//they have been drawn initially. Useful for dynamic theme modification.
+	bool draw_init();
+	void draw_wrap(bool update,bool force,bool changed);
 
 private:
 	//the handle for the label which displays frames per second
@@ -411,10 +422,6 @@ private:
 	void invalidate_animations();
 
 public:
-	//function to invalidate controls and panels when changed after
-	//they have been drawn initially. Useful for dynamic theme modification.
-	void invalidate_theme() { panelsDrawn_ = false; }
-
 	//function to schedule the minimap for recalculation. Useful if any
 	//terrain in the map has changed.
 	void recalculate_minimap();
@@ -544,10 +551,6 @@ private:
 
 	const std::vector<team>& teams_;
 
-	// holds the tick count for when the next drawing event is scheduled
-	// drawing shouldn't occur before this time
-	int nextDraw_;
-
 	void invalidate_route();
 
 	bool invalidateUnit_;
@@ -565,8 +568,6 @@ private:
 	typedef std::multimap<gamemap::location,overlay> overlay_map;
 
 	overlay_map overlays_;
-
-	bool panelsDrawn_;
 
 	size_t currentTeam_, activeTeam_;
 
