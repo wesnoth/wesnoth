@@ -161,6 +161,9 @@ public:
 	virtual bool fogged(const gamemap::location& loc UNUSED) const {return false;};
 	virtual bool shrouded(const gamemap::location& loc UNUSED) const {return false;};
 	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
+	virtual void draw_minimap_units(int x UNUSED, int y UNUSED, int w UNUSED, int h UNUSED) {};
+	//this surface must be freed by the caller
+	virtual surface get_minimap(int w, int h);
 
 	const gamemap& get_map()const { return map_;}
 
@@ -237,6 +240,8 @@ public:
 		       const SDL_Color& colour = font::GOOD_COLOUR);
 
 protected:
+	void draw_minimap(int x, int y, int w, int h);
+
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
 	std::vector<surface> get_terrain_images(const gamemap::location &loc, 
@@ -421,6 +426,8 @@ private:
 	//function to invalidate animated terrains which may have changed.
 	void invalidate_animations();
 
+	virtual void draw_minimap_units(int x, int y, int w, int h);
+
 public:
 	//function to schedule the minimap for recalculation. Useful if any
 	//terrain in the map has changed.
@@ -514,7 +521,6 @@ private:
 
 	void draw_tile(const gamemap::location &loc, const time_of_day& tod, const time_of_day& tod_at, image::TYPE image_type, const SDL_Rect &clip_rect);
 	void draw_sidebar();
-	void draw_minimap(int x, int y, int w, int h);
 	void draw_game_status();
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
@@ -530,7 +536,7 @@ private:
 	surface get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc);
 
 	//this surface must be freed by the caller
-	surface get_minimap(int w, int h);
+	virtual surface get_minimap(int w, int h);
 
 	CKey keys_;
 

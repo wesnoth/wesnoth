@@ -23,7 +23,7 @@
 
 namespace image {
 
-surface getMinimap(int w, int h, const gamemap& map, const team* tm)
+surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 {
 	const int scale = 8;
 
@@ -55,8 +55,8 @@ surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 
 			const gamemap::location loc(x,y);
 			if(map.on_board(loc)) {
-				const bool shrouded = tm != NULL && tm->shrouded(x,y);
-				const bool fogged = tm != NULL && tm->fogged(x,y) && !shrouded;
+				const bool shrouded = vw != NULL && vw->shrouded(x,y);
+				const bool fogged = vw != NULL && vw->fogged(x,y) && !shrouded;
 				const t_translation::t_letter terrain = shrouded ? t_translation::VOID_TERRAIN : map[x][y];
 				cache_map::iterator i = cache.find(terrain);
 

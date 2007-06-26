@@ -235,6 +235,22 @@ private:
     int y_;
 };
 
+class viewpoint
+{
+public:
+	virtual bool shrouded(int x, int y) const = 0;
+	virtual bool fogged(int x, int y) const = 0;
+	virtual ~viewpoint() {};
+};
+
+class omniscient : public viewpoint
+{
+public:
+	virtual bool shrouded(int x UNUSED, int y UNUSED) const {return false;};
+	virtual bool fogged(int x UNUSED, int y UNUSED) const {return false;};
+	virtual ~omniscient() {};
+};
+
 //a utility function which parses ranges of locations
 //into a vector of locations
 std::vector<gamemap::location> parse_location_range(const std::string& xvals,

@@ -28,7 +28,7 @@ struct time_of_day;
 
 //This class stores all the data for a single 'side' (in game nomenclature).
 //e.g. there is only one leader unit per team.
-class team
+class team : public viewpoint
 {
 	class shroud_map {
 	public:
@@ -114,6 +114,8 @@ public:
 
 	static std::map<int, color_range> team_color_range_;
 	team(const config& cfg, int gold=100);
+
+	~team() {};
 
 	void write(config& cfg) const;
 

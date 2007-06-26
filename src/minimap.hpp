@@ -22,7 +22,7 @@ class team;
 namespace image {
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
-	surface getMinimap(int w, int h, const gamemap& map_, const team* tm=NULL);
+	surface getMinimap(int w, int h, const gamemap& map_, const viewpoint* vm=NULL);
 }
 
 #endif

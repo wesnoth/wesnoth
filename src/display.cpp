@@ -911,6 +911,13 @@ void map_display::draw_wrap(bool update,bool force,bool changed)
 	const int current_time = SDL_GetTicks();
 	const int wait_time = nextDraw_ - current_time;
 
+	if(redrawMinimap_) {
+		redrawMinimap_ = false;
+		const SDL_Rect area = minimap_area();
+		draw_minimap(area.x,area.y,area.w,area.h);
+		changed = true;
+	}
+
 	if(update) {
 		if(force || changed) {
 			if(!force && wait_time > 0) {
@@ -1012,6 +1019,56 @@ void map_display::announce(const std::string message, const SDL_Color& colour)
 				 font::CENTER_ALIGN);
 }
 
+surface map_display::get_minimap(int w, int h)
+{
+	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
+		minimap_ = NULL;
+	}
+
+	if(minimap_ == NULL) {
+		minimap_ = image::getMinimap(w, h, map_);
+	}
+
+	return minimap_;
+}
+
+void map_display::draw_minimap(int x, int y, int w, int h)
+{
+	const surface surf(get_minimap(w,h));
+	if(surf == NULL) {
+		return;
+	}
+
+	SDL_Rect minimap_location = {x,y,w,h};
+
+	clip_rect_setter clip_setter(video().getSurface(),minimap_location);
+
+	SDL_Rect loc = minimap_location;
+	SDL_BlitSurface(surf,NULL,video().getSurface(),&loc);
+
+	int map_w = map_.x(), map_h = map_.y();
+
+	draw_minimap_units(x, y, w, h);
+
+	const double xscaling = double(surf->w) / map_w;
+	const double yscaling = double(surf->h) / map_h;
+
+	const int tile_width = hex_width();
+
+	const int xbox = static_cast<int>(xscaling*(xpos_-tile_width)/tile_width);
+	const int ybox = static_cast<int>(yscaling*(ypos_-zoom_)/zoom_);
+
+	// The magic numbers experimental determined like in display::map_area()
+	const int wbox = static_cast<int>(xscaling*(map_area().w+(4.0/3.0)*tile_width)/tile_width - xscaling);
+	const int hbox = static_cast<int>(yscaling*(map_area().h+1.5*zoom_)/zoom_ - yscaling); 
+
+	const Uint32 boxcolour = SDL_MapRGB(surf->format,0xFF,0xFF,0xFF);
+	const surface screen(screen_.getSurface());
+
+	draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
+
+	update_rect(minimap_location);
+}
 
 // Methods for superclass aware of units go here
 
@@ -1546,14 +1603,6 @@ void display::draw(bool update,bool force)
 		halo::render();
 	}
 
-	if(redrawMinimap_) {
-		redrawMinimap_ = false;
-		const SDL_Rect area = minimap_area();
-		draw_minimap(area.x,area.y,area.w,area.h);
-		changed = true;
-	}
-
-
 	if(!map_.empty()) {
 		draw_sidebar();
 		changed = true;
@@ -1840,22 +1889,8 @@ void display::draw_report(reports::TYPE report_num)
 	}
 }
 
-void display::draw_minimap(int x, int y, int w, int h)
+void display::draw_minimap_units(int x, int y, int w, int h)
 {
-	const surface surf(get_minimap(w,h));
-	if(surf == NULL) {
-		return;
-	}
-
-	SDL_Rect minimap_location = {x,y,w,h};
-
-	clip_rect_setter clip_setter(video().getSurface(),minimap_location);
-
-	SDL_Rect loc = minimap_location;
-	SDL_BlitSurface(surf,NULL,video().getSurface(),&loc);
-
-	int map_w = map_.x(), map_h = map_.y();
-
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(fogged(u->first) ||
 				(teams_[currentTeam_].is_enemy(u->second.side()) &&
@@ -1866,30 +1901,11 @@ void display::draw_minimap(int x, int y, int w, int h)
 		const int side = u->second.side();
 		const SDL_Color col = team::get_side_colour(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
-		SDL_Rect rect = { x + (u->first.x * w) / map_w,
-		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_h,
-		                  w / map_w, h / map_h };
+		SDL_Rect rect = { x + (u->first.x * w) / map_.x(),
+		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_.y(),
+		                  w / map_.x(), h / map_.y() };
 		SDL_FillRect(video().getSurface(),&rect,mapped_col);
 	}
-
-	const double xscaling = double(surf->w) / map_w;
-	const double yscaling = double(surf->h) / map_h;
-
-	const int tile_width = hex_width();
-
-	const int xbox = static_cast<int>(xscaling*(xpos_-tile_width)/tile_width);
-	const int ybox = static_cast<int>(yscaling*(ypos_-zoom_)/zoom_);
-
-	// The magic numbers experimental determined like in display::map_area()
-	const int wbox = static_cast<int>(xscaling*(map_area().w+(4.0/3.0)*tile_width)/tile_width - xscaling);
-	const int hbox = static_cast<int>(yscaling*(map_area().h+1.5*zoom_)/zoom_ - yscaling); 
-
-	const Uint32 boxcolour = SDL_MapRGB(surf->format,0xFF,0xFF,0xFF);
-	const surface screen(screen_.getSurface());
-
-	draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
-
-	update_rect(minimap_location);
 }
 
 void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
@@ -2270,20 +2286,6 @@ surface display::get_flag(const t_translation::t_letter& terrain, const gamemap:
 	}
 
 	return surface(NULL);
-}
-
-surface display::get_minimap(int w, int h)
-{
-	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
-		minimap_ = NULL;
-	}
-
-	if(minimap_ == NULL) {
-		minimap_ = image::getMinimap(w, h, map_,
-		                             team_valid() ? &teams_[currentTeam_] : NULL);
-	}
-
-	return minimap_;
 }
 
 void display::highlight_reach(const paths &paths_list)
@@ -2765,5 +2767,20 @@ void display::prune_chat_messages(bool remove_all)
 		prune_chat_messages(remove_all);
 	}
 }
+
+surface display::get_minimap(int w, int h)
+{
+	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
+		minimap_ = NULL;
+	}
+
+	const team *tm = team_valid() ? &teams_[currentTeam_] : NULL;
+	if(minimap_ == NULL) {
+		minimap_ = image::getMinimap(w, h, map_, tm);
+	}
+
+	return minimap_;
+}
+
 
 display *display::singleton_ = NULL;
