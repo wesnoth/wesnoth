@@ -125,6 +125,12 @@ public:
 	//location if the mouse isn't over the minimap.
 	gamemap::location minimap_location_on(int x, int y);
 
+	const gamemap::location& selected_hex() { return selectedHex_; }
+	const gamemap::location& mouseover_hex() { return mouseoverHex_; }
+
+	virtual void select_hex(gamemap::location hex);
+	virtual void highlight_hex(gamemap::location hex);
+
 	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
 
 	//functions to get the on-screen positions of hexes.
@@ -205,6 +211,30 @@ public:
 			Uint32 blendto=0, double blend_ratio=0,
 			double submerged=0.0);
 
+	const theme::menu* menu_pressed();
+
+	//finds the menu which has a given item in it, and enables or 
+	//disables it.
+	void enable_menu(const std::string& item, bool enable);
+
+	void set_diagnostic(const std::string& msg);
+
+	//Delay routines: use these not SDL_Delay (for --nogui).
+	void delay(unsigned int milliseconds) const;
+
+	//Add a location to highlight. Note that this has nothing to do with
+	//selecting hexes, it is pure highlighting. These hexes will be
+	//highlighted slightly darker than the currently selected hex.
+	void add_highlighted_loc(const gamemap::location &hex);
+
+	void clear_highlighted_locs();
+
+	void remove_highlighted_loc(const gamemap::location &hex);
+
+	// Announce a message prominently
+	void announce(const std::string msg, 
+		       const SDL_Color& colour = font::GOOD_COLOUR);
+
 protected:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
@@ -228,6 +258,7 @@ protected:
 	bool redraw_background_;
 	bool invalidateAll_;
 	bool grid_;
+	int diagnostic_label_;
 
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
@@ -237,6 +268,7 @@ protected:
 	surface mouseover_hex_overlay_;
 	gamemap::location selectedHex_;
 	gamemap::location mouseoverHex_;
+	std::set<gamemap::location> highlighted_locations_;
 
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(const gamemap::location& loc, 
@@ -246,6 +278,8 @@ protected:
 
 	// redraw all panels associated with the map display
 	void draw_all_panels();
+
+	void invalidate_locations_in_rect(SDL_Rect r);
 
 private:
 	//the handle for the label which displays frames per second
@@ -311,15 +345,13 @@ public:
 	//function to display a location as selected. If a unit is in
 	//the location, and there is no unit in the currently
 	//highlighted hex, the unit will be displayed in the sidebar.
-	void select_hex(gamemap::location hex);
-	const gamemap::location& selected_hex() { return selectedHex_; }
-	const gamemap::location& mouseover_hex() { return mouseoverHex_; }
+	virtual void select_hex(gamemap::location hex);
 
 	//function to highlight a location. If a unit is in the
 	//location, it will be displayed in the sidebar. Selection is
 	//used when a unit has been clicked on, while highlighting is
 	//used when a location has been moused over
-	void highlight_hex(gamemap::location hex);
+	virtual void highlight_hex(gamemap::location hex);
 
 	//sets the paths that are currently displayed as available for the unit
 	//to move along.  All other paths will be greyed out.
@@ -427,9 +459,6 @@ public:
 
 	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
 
-	//Delay routines: use these not SDL_Delay (for --nogui).
-	void delay(unsigned int milliseconds) const;
-
 	//a debug highlight draws a cross on a tile to emphasize
 	//something there.  it is used in debug mode, typically to
 	//show AI plans.
@@ -449,11 +478,6 @@ public:
 	size_t playing_team() const { return activeTeam_; }
 	bool team_valid() const { return currentTeam_ < teams_.size(); }
 	const std::string current_team_name() const;
-			
-	const theme::menu* menu_pressed();
-
-	//finds the menu which has a given item in it, and enables or disables it.
-	void enable_menu(const std::string& item, bool enable);
 
 	void add_observer(const std::string& name) { observers_.insert(name); }
 	void remove_observer(const std::string& name) { observers_.erase(name); }
@@ -461,8 +485,6 @@ public:
 
 	map_labels& labels() { return map_labels_; }
 	const map_labels& labels() const { return map_labels_; }
-
-	void set_diagnostic(const std::string& msg);
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type, bool bell);
@@ -473,19 +495,6 @@ public:
 		{ builder_.rebuild_terrain(loc); }
 	//rebuild all dynamic terrain.
 	void rebuild_all() { builder_.rebuild_all(); }
-
-	//Add a location to highlight. Note that this has nothing to do with
-	//selecting hexes, it is pure highlighting. These hexes will be
-	//highlighted slightly darker than the currently selected hex.
-	void add_highlighted_loc(const gamemap::location &hex);
-
-	void clear_highlighted_locs();
-
-	void remove_highlighted_loc(const gamemap::location &hex);
-
-	// Announce a message prominently
-	void announce(const std::string msg, 
-		       const SDL_Color& colour = font::GOOD_COLOUR);
 
 	void begin_game();
 
@@ -544,8 +553,6 @@ private:
 	bool invalidateUnit_;
 	bool invalidateGameStatus_;
 
-	void invalidate_locations_in_rect(SDL_Rect r);
-
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
 		        int handle) : image(img), halo(halo_img),
@@ -600,10 +607,6 @@ private:
 
 	//for debug mode
 	static std::map<gamemap::location,fixed_t> debugHighlights_;
-
-	std::set<gamemap::location> highlighted_locations_;
-
-	int diagnostic_label_;
 
 	//animated flags for each team
 	//

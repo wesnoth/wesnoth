@@ -69,6 +69,7 @@ map_display::map_display(CVideo& video, const gamemap& map, const config& theme_
 	builder_(cfg, level, map),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
 	invalidateAll_(true), grid_(false),
+	diagnostic_label_(0),
 	fps_handle_(0)
 {
 	if(non_interactive()) {
@@ -826,6 +827,124 @@ void map_display::draw_unit(int x, int y, surface image,
 
 }
 
+void map_display::select_hex(gamemap::location hex)
+{
+	invalidate(selectedHex_);
+	selectedHex_ = hex;
+	invalidate(selectedHex_);
+}
+
+void map_display::highlight_hex(gamemap::location hex)
+{
+	invalidate(mouseoverHex_);
+	mouseoverHex_ = hex;
+	invalidate(mouseoverHex_);
+}
+
+void map_display::invalidate_locations_in_rect(SDL_Rect r)
+{
+	gamemap::location topleft, bottomright;
+	get_rect_hex_bounds(r, topleft, bottomright);
+	for (int x = topleft.x; x <= bottomright.x; ++x) {
+		for (int y = topleft.y; y <= bottomright.y; ++y) {
+			gamemap::location loc(x, y);
+			invalidate(loc);
+		}
+	}
+}
+
+void map_display::set_diagnostic(const std::string& msg)
+{
+	if(diagnostic_label_ != 0) {
+		font::remove_floating_label(diagnostic_label_);
+		diagnostic_label_ = 0;
+	}
+
+	if(msg != "") {
+		diagnostic_label_ = font::add_floating_label(msg,font::SIZE_PLUS,font::YELLOW_COLOUR,300.0,50.0,0.0,0.0,-1,map_area());
+	}
+}
+
+//Delay routines: use these not SDL_Delay (for --nogui).
+
+void map_display::delay(unsigned int milliseconds) const
+{
+	if (!game_config::no_delay)
+		SDL_Delay(milliseconds);
+}
+
+const theme::menu* map_display::menu_pressed()
+{
+
+	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
+		if(i->pressed()) {
+			const size_t index = i - buttons_.begin();
+			wassert(index < theme_.menus().size());
+			return &theme_.menus()[index];
+		}
+	}
+
+	return NULL;
+}
+
+void map_display::enable_menu(const std::string& item, bool enable)
+{
+	for(std::vector<theme::menu>::const_iterator menu = theme_.menus().begin();
+			menu != theme_.menus().end(); ++menu) {
+
+		std::vector<std::string>::const_iterator hasitem =
+			std::find(menu->items().begin(), menu->items().end(), item);
+
+		if(hasitem != menu->items().end()) {
+			const size_t index = menu - theme_.menus().begin();
+			wassert(index < buttons_.size());
+			buttons_[index].enable(enable);
+		}
+	}
+}
+
+void map_display::add_highlighted_loc(const gamemap::location &hex) 
+{
+	// Only invalidate and insert if this is a new addition, for
+	// efficiency.
+	if (highlighted_locations_.find(hex) == highlighted_locations_.end()) {
+		highlighted_locations_.insert(hex);
+		invalidate(hex);
+	}
+}
+
+void map_display::clear_highlighted_locs() 
+{
+	for (std::set<gamemap::location>::const_iterator it = highlighted_locations_.begin();
+		 it != highlighted_locations_.end(); it++) {
+		invalidate(*it);
+	}
+	highlighted_locations_.clear();
+}
+
+void map_display::remove_highlighted_loc(const gamemap::location &hex) 
+{
+	std::set<gamemap::location>::iterator it = highlighted_locations_.find(hex);
+	// Only invalidate and remove if the hex was found, for efficiency.
+	if (it != highlighted_locations_.end()) {
+		highlighted_locations_.erase(it);
+		invalidate(hex);
+	}
+}
+
+void map_display::announce(const std::string message, const SDL_Color& colour)
+{
+	font::add_floating_label(message,
+				 font::SIZE_XLARGE,
+				 colour,
+				 map_area().w/2,
+				 map_area().h/3,
+				 0.0,0.0,100,
+				 map_area(),
+				 font::CENTER_ALIGN);
+}
+
+
 // Methods for superclass aware of units go here
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
@@ -844,8 +963,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	currentTeam_(0), activeTeam_(0),
 	turbo_speed_(2), turbo_(false), sidebarScaling_(1.0),
 	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
-	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true),
-	diagnostic_label_(0)
+	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true)
 {
 	singleton_ = this;
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
@@ -966,10 +1084,7 @@ void display::select_hex(gamemap::location hex)
 	if(fogged(hex)) {
 		return;
 	}
-
-	invalidate(selectedHex_);
-	selectedHex_ = hex;
-	invalidate(selectedHex_);
+	map_display::select_hex(hex);
 	invalidate_unit();
 }
 
@@ -977,9 +1092,7 @@ void display::highlight_hex(gamemap::location hex)
 {
 	const int has_unit = units_.count(mouseoverHex_) + units_.count(hex);
 
-	invalidate(mouseoverHex_);
-	mouseoverHex_ = hex;
-	invalidate(mouseoverHex_);
+	map_display::highlight_hex(hex);
 	invalidate_game_status();
 
 	if(has_unit) {
@@ -1039,18 +1152,6 @@ void display::scroll(int xmove, int ymove)
 
 	redraw_background_ = true;
 	redrawMinimap_ = true;
-}
-
-void display::invalidate_locations_in_rect(SDL_Rect r)
-{
-	gamemap::location topleft, bottomright;
-	get_rect_hex_bounds(r, topleft, bottomright);
-	for (int x = topleft.x; x <= bottomright.x; ++x) {
-		for (int y = topleft.y; y <= bottomright.y; ++y) {
-			gamemap::location loc(x, y);
-			invalidate(loc);
-		}
-	}
 }
 
 void display::set_zoom(int amount)
@@ -2419,6 +2520,13 @@ void display::recalculate_minimap()
 	redraw_minimap();
 	// remove unit after invalidating...
 }
+
+void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
+{
+	wassert(game_config::debug);
+	debugHighlights_[loc] += amount;
+}
+
 void display::place_temporary_unit(unit &u, const gamemap::location& loc)
 {
 	temp_unit_ = &u;
@@ -2512,14 +2620,6 @@ double display::turbo_speed() const
 		return 1.0;
 }
 
-//Delay routines: use these not SDL_Delay (for --nogui).
-
-void display::delay(unsigned int milliseconds) const
-{
-	if (!game_config::no_delay)
-		SDL_Delay(milliseconds);
-}
-
 // timestring() returns the current date as a string.
 // Uses preferences::clock_format() for formatting.
 static std::string timestring ()
@@ -2530,42 +2630,6 @@ static std::string timestring ()
     strftime(buf,sizeof(buf),preferences::clock_format().c_str(),lt);
 
     return buf;
-}
-
-void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
-{
-	wassert(game_config::debug);
-	debugHighlights_[loc] += amount;
-}
-
-const theme::menu* display::menu_pressed()
-{
-
-	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
-		if(i->pressed()) {
-			const size_t index = i - buttons_.begin();
-			wassert(index < theme_.menus().size());
-			return &theme_.menus()[index];
-		}
-	}
-
-	return NULL;
-}
-
-void display::enable_menu(const std::string& item, bool enable)
-{
-	for(std::vector<theme::menu>::const_iterator menu = theme_.menus().begin();
-			menu != theme_.menus().end(); ++menu) {
-
-		std::vector<std::string>::const_iterator hasitem =
-			std::find(menu->items().begin(), menu->items().end(), item);
-
-		if(hasitem != menu->items().end()) {
-			const size_t index = menu - theme_.menus().begin();
-			wassert(index < buttons_.size());
-			buttons_[index].enable(enable);
-		}
-	}
 }
 
 void display::begin_game()
@@ -2687,59 +2751,6 @@ void display::prune_chat_messages(bool remove_all)
 
 		prune_chat_messages(remove_all);
 	}
-}
-
-void display::set_diagnostic(const std::string& msg)
-{
-	if(diagnostic_label_ != 0) {
-		font::remove_floating_label(diagnostic_label_);
-		diagnostic_label_ = 0;
-	}
-
-	if(msg != "") {
-		diagnostic_label_ = font::add_floating_label(msg,font::SIZE_PLUS,font::YELLOW_COLOUR,300.0,50.0,0.0,0.0,-1,map_area());
-	}
-}
-
-void display::add_highlighted_loc(const gamemap::location &hex) 
-{
-	// Only invalidate and insert if this is a new addition, for
-	// efficiency.
-	if (highlighted_locations_.find(hex) == highlighted_locations_.end()) {
-		highlighted_locations_.insert(hex);
-		invalidate(hex);
-	}
-}
-
-void display::clear_highlighted_locs() 
-{
-	for (std::set<gamemap::location>::const_iterator it = highlighted_locations_.begin();
-		 it != highlighted_locations_.end(); it++) {
-		invalidate(*it);
-	}
-	highlighted_locations_.clear();
-}
-
-void display::remove_highlighted_loc(const gamemap::location &hex) 
-{
-	std::set<gamemap::location>::iterator it = highlighted_locations_.find(hex);
-	// Only invalidate and remove if the hex was found, for efficiency.
-	if (it != highlighted_locations_.end()) {
-		highlighted_locations_.erase(it);
-		invalidate(hex);
-	}
-}
-
-void display::announce(const std::string message, const SDL_Color& colour)
-{
-	font::add_floating_label(message,
-				 font::SIZE_XLARGE,
-				 colour,
-				 map_area().w/2,
-				 map_area().h/3,
-				 0.0,0.0,100,
-				 map_area(),
-				 font::CENTER_ALIGN);
 }
 
 display *display::singleton_ = NULL;
