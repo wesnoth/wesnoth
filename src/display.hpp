@@ -231,6 +231,14 @@ public:
 	//Delay routines: use these not SDL_Delay (for --nogui).
 	void delay(unsigned int milliseconds) const;
 
+	//functions to set/get whether 'turbo' mode is on. When turbo
+	//mode is on, everything moves much faster.
+	void set_turbo(const bool turbo) { turbo_ = turbo; }
+
+	double turbo_speed() const;
+
+	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
+
 	//Add a location to highlight. Note that this has nothing to do with
 	//selecting hexes, it is pure highlighting. These hexes will be
 	//highlighted slightly darker than the currently selected hex.
@@ -240,10 +248,45 @@ public:
 
 	void remove_highlighted_loc(const gamemap::location &hex);
 
+	void bounds_check_position();
+	void bounds_check_position(int& xpos, int& ypos);
+
+	//function to invalidate all tiles.
+	void invalidate_all();
+
+	//function which scrolls the display by xmov,ymov
+	//pixels. Invalidation and redrawing will be scheduled.
+	void scroll(int xmov, int ymov);
+
+	// Zooms the display by the specified amount. Negative values
+	// zoom out.  Note the amount should be a multiple of four
+	// otherwise the images might start to look odd. (hex_width()
+	// gets rounding errors)
+	void set_zoom(int amount);
+
+	// sets the zoom amount to the default.
+	void set_default_zoom();
+
+	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
+
+	//function which will scroll such that location loc is on-screen.
+	// WARP jumps to loc; SCROLL uses scroll speed;
+	// ONSCREEN only scrolls if x,y is offscreen
+	void scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
+
+	//function which will scroll such that location loc is on-screen.
+	//it will also try to make it such that loc is on-screen but this
+	//is not guaranteed.
+	void scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
+	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
+
 	//draws invalidated items. If update is true, will also copy the
 	//display to the frame buffer. If force is true, will not skip frames,
 	//even if running behind.
 	virtual void draw(bool update=true,bool force=false) = 0;
+
+	map_labels& labels() { return map_labels_; }
+	const map_labels& labels() const { return map_labels_; }
 
 	// Announce a message prominently
 	void announce(const std::string msg, 
@@ -251,6 +294,8 @@ public:
 
 protected:
 	void draw_minimap(int x, int y, int w, int h);
+
+	virtual void zoom_redraw_hook() {};
 
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
@@ -276,9 +321,15 @@ protected:
 	bool grid_;
 	int diagnostic_label_;
 	bool panelsDrawn_;
+	double turbo_speed_;
+	bool turbo_;
+	map_labels map_labels_;
+	// event raised when the map is being scrolled
+	mutable events::generic_event _scroll_event;
 	// holds the tick count for when the next drawing event is scheduled
 	// drawing shouldn't occur before this time
 	int nextDraw_;
+
 
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
@@ -289,7 +340,7 @@ protected:
 	gamemap::location selectedHex_;
 	gamemap::location mouseoverHex_;
 	std::set<gamemap::location> highlighted_locations_;
-
+	CKey keys_;
 
 	//composes and draws the terrains on a tile
 	void tile_stack_terrains(const gamemap::location& loc, 
@@ -343,32 +394,6 @@ public:
 	//the map. Used for special effects like flashes.
 	void adjust_colours(int r, int g, int b);
 
-	//function which scrolls the display by xmov,ymov
-	//pixels. Invalidation and redrawing will be scheduled.
-	void scroll(int xmov, int ymov);
-
-	// Zooms the display by the specified amount. Negative values
-	// zoom out.  Note the amount should be a multiple of four
-	// otherwise the images might start to look odd. (hex_width()
-	// gets rounding errors)
-	void set_zoom(int amount);
-
-	// sets the zoom amount to the default.
-	void set_default_zoom();
-
-	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
-
-	//function which will scroll such that location loc is on-screen.
-	// WARP jumps to loc; SCROLL uses scroll speed;
-	// ONSCREEN only scrolls if x,y is offscreen
-	void scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
-
-	//function which will scroll such that location loc is on-screen.
-	//it will also try to make it such that loc is on-screen but this
-	//is not guaranteed.
-	void scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
-
 	//scrolls to the leader of a certain side. This will normally
 	//be the playing team.
 	void scroll_to_leader(unit_map& units, int side);
@@ -416,10 +441,6 @@ public:
 	//expose the event so observers can be notified about map scrolling
 	events::generic_event &scroll_event() const { return _scroll_event; }
 
-private:
-	// event raised when the map is being scrolled
-	mutable events::generic_event _scroll_event;
-
 public:
 	//function to return a footstep for the given location, on screen at
 	//pixel co-ordinates (xloc,yloc). A footstep will only be drawn if
@@ -429,9 +450,6 @@ public:
 
 	//draws the movement info (turns available) for a given location
 	void draw_movement_info(const gamemap::location& loc);
-
-	//function to invalidate all tiles.
-	void invalidate_all();
 
 	//function to invalidate a specific tile for redrawing
 	void invalidate(const gamemap::location& loc);
@@ -486,14 +504,6 @@ public:
 	unit_map& get_units() {return units_;};
 	const unit_map& get_const_units() const {return units_;};
 
-	//functions to set/get whether 'turbo' mode is on. When turbo mode is on,
-	//everything moves much faster.
-	void set_turbo(const bool turbo) { turbo_ = turbo; }
-
-	double turbo_speed() const;
-
-	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
-
 	//a debug highlight draws a cross on a tile to emphasize
 	//something there.  it is used in debug mode, typically to
 	//show AI plans.
@@ -511,9 +521,6 @@ public:
 	void add_observer(const std::string& name) { observers_.insert(name); }
 	void remove_observer(const std::string& name) { observers_.erase(name); }
 	const std::set<std::string>& observers() const { return observers_; }
-
-	map_labels& labels() { return map_labels_; }
-	const map_labels& labels() const { return map_labels_; }
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type, bool bell);
@@ -534,6 +541,8 @@ private:
 	display(const display&);
 	void operator=(const display&);
 
+	void zoom_redraw_hook() {energy_bar_rects_.clear();}
+
 	void draw_sidebar();
 	void draw_game_status();
 
@@ -543,13 +552,8 @@ private:
 	surface reportSurfaces_[reports::NUM_REPORTS];
 	reports::report reports_[reports::NUM_REPORTS];
 
-	void bounds_check_position();
-	void bounds_check_position(int& xpos, int& ypos);
-
 	//this surface must be freed by the caller
 	surface get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc);
-
-	CKey keys_;
 
 	unit_map& units_;
 
@@ -564,7 +568,6 @@ private:
 	paths::route route_;
 
 	const gamestatus& status_;
-
 
 	const std::vector<team>& teams_;
 
@@ -588,15 +591,11 @@ private:
 
 	size_t currentTeam_, activeTeam_;
 
-	double turbo_speed_;
-	bool turbo_;
 	double sidebarScaling_;
 
 	bool first_turn_, in_game_;
 
 	std::set<std::string> observers_;
-
-	map_labels map_labels_;
 
 	struct chat_message
 	{

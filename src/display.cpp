@@ -70,6 +70,9 @@ map_display::map_display(CVideo& video, const gamemap& map, const config& theme_
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
 	invalidateAll_(true), grid_(false),
 	diagnostic_label_(0), panelsDrawn_(false),
+	turbo_speed_(2), turbo_(false), 
+	map_labels_(*this,map, 0),
+	_scroll_event("scrolled"),
 	nextDraw_(0), fps_handle_(0)
 {
 	if(non_interactive()) {
@@ -1080,6 +1083,292 @@ void map_display::draw_minimap(int x, int y, int w, int h)
 	update_rect(minimap_location);
 }
 
+void map_display::scroll(int xmove, int ymove)
+{
+	const int orig_x = xpos_;
+	const int orig_y = ypos_;
+	xpos_ += xmove;
+	ypos_ += ymove;
+	bounds_check_position();
+	const int dx = orig_x - xpos_; // dx = -xmove
+	const int dy = orig_y - ypos_; // dy = -ymove
+
+	//only invalidate if we've actually moved
+	if(dx == 0 && dy == 0)
+		return;
+
+	map_labels_.scroll(dx, dy);
+	font::scroll_floating_labels(dx, dy);
+	
+	surface screen(screen_.getSurface());
+	
+	SDL_Rect dstrect = map_area();
+	dstrect.x += dx;
+	dstrect.y += dy;
+	dstrect = intersect_rects(dstrect, map_area());
+
+	SDL_Rect srcrect = dstrect;
+	srcrect.x -= dx;
+	srcrect.y -= dy;
+	
+	SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+	
+	//invalidate locations in the newly visible rects
+
+	if (dy != 0) {
+		SDL_Rect r = map_area();
+		r.x = 0;
+		r.y = dy < 0 ? r.h+dy : 0;
+		r.h = abs(dy);
+		invalidate_locations_in_rect(r);
+	}
+	if (dx != 0) {
+		SDL_Rect r = map_area();
+		r.x = dx < 0 ? r.w+dx : 0;
+		r.y = 0;
+		r.w = abs(dx);
+		invalidate_locations_in_rect(r);
+	}
+
+	_scroll_event.notify_observers();
+	update_rect(map_area());
+
+	redraw_background_ = true;
+	redrawMinimap_ = true;
+}
+
+void map_display::set_zoom(int amount)
+{
+	int new_zoom = zoom_ + amount;
+	if (new_zoom < MinZoom) {
+		new_zoom = MinZoom;
+	}
+	if (new_zoom > MaxZoom) {
+		new_zoom = MaxZoom;
+	}
+	if (new_zoom != zoom_) {
+		SDL_Rect const &area = map_area();
+		xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
+		ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
+		zoom_ = new_zoom;
+		bounds_check_position();
+
+		zoom_redraw_hook();
+		image::set_zoom(zoom_);
+		map_labels_.recalculate_labels();
+		redraw_background_ = true;
+		invalidate_all();
+
+		// Forces a redraw after zooming. 
+		// This prevents some graphic glitches from occurring.
+		draw();
+	}
+}
+
+void map_display::set_default_zoom()
+{ 
+	set_zoom(DefaultZoom - zoom_); 
+}
+
+void map_display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
+{
+	if(screen_.update_locked() || (check_fogged && fogged(loc))) {
+		return;
+	}
+
+	if(map_.on_board(loc) == false) {
+		return;
+	}
+
+	// current position of target (upper left tile corner) in screen coordinates
+	const int screenxpos = get_location_x(loc);
+	const int screenypos = get_location_y(loc);
+
+	if (scroll_type == ONSCREEN) {
+		// the tile must be fully visible
+		SDL_Rect r = map_area();
+		r.w -= hex_width();
+		r.h -= zoom_;
+
+		if (!outside_area(r,screenxpos,screenypos)) {
+			return;
+		}
+	}
+
+	const SDL_Rect area = map_area();
+	const int xmove_expected = (screenxpos + hex_width()/2) - (area.x + area.w/2 - zoom_/2);
+	const int ymove_expected = (screenypos + zoom_/2)       - (area.y + area.h/2 - zoom_/2);
+
+	int xpos = xpos_ + xmove_expected;
+	int ypos = ypos_ + ymove_expected;
+	bounds_check_position(xpos, ypos);
+	int xmove = xpos - xpos_;
+	int ymove = ypos - ypos_;
+
+	if(scroll_type == WARP ) {
+		scroll(xmove,ymove);
+		draw();
+		return;
+	}
+
+	// doing an animated scroll, with acceleration etc.
+
+	int x_old = 0;
+	int y_old = 0;
+
+	const double dist_total = hypot(xmove, ymove);
+	double dist_moved = 0.0;
+
+	int t_prev = SDL_GetTicks();
+	
+	double velocity = 0.0;
+	while (dist_moved < dist_total) {
+		events::pump();
+		
+		int t = SDL_GetTicks();
+		double dt = (t - t_prev) / 1000.0;
+		if (dt > 0.200) {
+			// do not skip too many frames on slow pcs
+			dt = 0.200;
+		}
+		t_prev = t;
+
+		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
+
+		// those values might need some fine-tuning:
+		const double accel_time = 0.3 / turbo_speed(); // seconds until full speed is reached 
+		const double decel_time = 0.4 / turbo_speed(); // seconds from full speed to stop
+
+		double velocity_max = preferences::scroll_speed() * 60.0;
+		velocity_max *= turbo_speed();
+		double accel = velocity_max / accel_time;
+		double decel = velocity_max / decel_time;
+
+		// If we started to decelerate now, where would we stop?
+		double stop_time = velocity / decel;
+		double dist_stop = dist_moved + velocity*stop_time - 0.5*decel*stop_time*stop_time;
+		if (dist_stop > dist_total || velocity > velocity_max) {
+			velocity -= decel * dt;
+			if (velocity < 1.0) velocity = 1.0;
+		} else {
+			velocity += accel * dt;
+			if (velocity > velocity_max) velocity = velocity_max;
+		}
+
+		dist_moved += velocity * dt;
+		if (dist_moved > dist_total) dist_moved = dist_total;
+
+		int x_new = round_double(xmove * dist_moved / dist_total);
+		int y_new = round_double(ymove * dist_moved / dist_total);
+
+		int dx = x_new - x_old;
+		int dy = y_new - y_old;
+
+		scroll(dx,dy);
+		x_old += dx;
+		y_old += dy;
+		draw();
+	}
+}
+
+void map_display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
+                              SCROLL_TYPE scroll_type, bool check_fogged)
+{
+	const int xpos1 = get_location_x(loc1);
+	const int ypos1 = get_location_y(loc1);
+	const int xpos2 = get_location_x(loc2);;
+	const int ypos2 = get_location_y(loc2);;
+
+	const int minx = minimum<int>(xpos1,xpos2);
+	const int maxx = maximum<int>(xpos1,xpos2);
+	const int miny = minimum<int>(ypos1,ypos2);
+	const int maxy = maximum<int>(ypos1,ypos2);
+	const int diffx = maxx - minx;
+	const int diffy = maxy - miny;
+
+	// if rectangle formed by corners loc1 and loc2 is larger
+	// than map area then just scroll to loc1
+	if(diffx > map_area().w || diffy > map_area().h) {
+		scroll_to_tile(loc1,scroll_type,check_fogged);
+	} else {
+		// only scroll if rectangle is not completely inside map area
+		// assume most paths are within rectangle, sometimes
+		// with rugged terrain this is not true -- but use common
+		// cases to determine behaviour instead of exceptions
+		if (outside_area(map_area(),minx,miny) ||
+		    outside_area(map_area(),maxx,maxy)) {
+			// scroll to middle point of rectangle
+			scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,check_fogged);
+		} // else don't scroll, rectangle is already on screen
+	}
+}
+
+void map_display::bounds_check_position()
+{
+	const int orig_zoom = zoom_;
+
+	if(zoom_ < MinZoom) {
+		zoom_ = MinZoom;
+	}
+
+	if(zoom_ > MaxZoom) {
+		zoom_ = MaxZoom;
+	}
+
+	bounds_check_position(xpos_, ypos_);
+
+	if(zoom_ != orig_zoom) {
+		image::set_zoom(zoom_);
+	}
+}
+
+void map_display::bounds_check_position(int& xpos, int& ypos)
+{
+	const int tile_width = hex_width();
+
+	// adjust for the border 2 times 1 hex
+	const int xend = tile_width * (map_.x() + 2) + tile_width/3;
+	const int yend = zoom_ * (map_.y() + 2) + zoom_/2;
+
+	if(xpos > xend - map_area().w) {
+		xpos = xend - map_area().w;
+	}
+
+	if(ypos > yend - map_area().h) {
+		ypos = yend - map_area().h;
+	}
+
+	if(xpos < 0) {
+		xpos = 0;
+	}
+
+	if(ypos < 0) {
+		ypos = 0;
+	}
+}
+
+void map_display::invalidate_all()
+{
+	INFO_DP << "invalidate_all()";
+	invalidateAll_ = true;
+	invalidated_.clear();
+	update_rect(map_area());
+}
+
+double map_display::turbo_speed() const
+{
+	bool res = turbo_;
+	if(keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT]) {
+		res = !res;
+	}
+
+	res |= screen_.faked();
+	if (res)
+		return turbo_speed_;
+	else
+		return 1.0;
+}
+
 // Methods for superclass aware of units go here
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
@@ -1088,7 +1377,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
 	map_display(video, map, theme_cfg, cfg, level),
-	_scroll_event("scrolled"),
 	units_(units),
 	temp_unit_(NULL),
 	status_(status),
@@ -1096,8 +1384,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	invalidateUnit_(true),
 	invalidateGameStatus_(true),
 	currentTeam_(0), activeTeam_(0),
-	turbo_speed_(2), turbo_(false), sidebarScaling_(1.0),
-	first_turn_(true), in_game_(false), map_labels_(*this,map, 0),
+	sidebarScaling_(1.0),
+	first_turn_(true), in_game_(false), 
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true)
 {
 	singleton_ = this;
@@ -1235,225 +1523,6 @@ void display::highlight_hex(gamemap::location hex)
 	}
 }
 
-void display::scroll(int xmove, int ymove)
-{
-	const int orig_x = xpos_;
-	const int orig_y = ypos_;
-	xpos_ += xmove;
-	ypos_ += ymove;
-	bounds_check_position();
-	const int dx = orig_x - xpos_; // dx = -xmove
-	const int dy = orig_y - ypos_; // dy = -ymove
-
-	//only invalidate if we've actually moved
-	if(dx == 0 && dy == 0)
-		return;
-
-	map_labels_.scroll(dx, dy);
-	font::scroll_floating_labels(dx, dy);
-	
-	surface screen(screen_.getSurface());
-	
-	SDL_Rect dstrect = map_area();
-	dstrect.x += dx;
-	dstrect.y += dy;
-	dstrect = intersect_rects(dstrect, map_area());
-
-	SDL_Rect srcrect = dstrect;
-	srcrect.x -= dx;
-	srcrect.y -= dy;
-	
-	SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
-	
-	//invalidate locations in the newly visible rects
-
-	if (dy != 0) {
-		SDL_Rect r = map_area();
-		r.x = 0;
-		r.y = dy < 0 ? r.h+dy : 0;
-		r.h = abs(dy);
-		invalidate_locations_in_rect(r);
-	}
-	if (dx != 0) {
-		SDL_Rect r = map_area();
-		r.x = dx < 0 ? r.w+dx : 0;
-		r.y = 0;
-		r.w = abs(dx);
-		invalidate_locations_in_rect(r);
-	}
-
-	_scroll_event.notify_observers();
-	update_rect(map_area());
-
-	redraw_background_ = true;
-	redrawMinimap_ = true;
-}
-
-void display::set_zoom(int amount)
-{
-	int new_zoom = zoom_ + amount;
-	if (new_zoom < MinZoom) {
-		new_zoom = MinZoom;
-	}
-	if (new_zoom > MaxZoom) {
-		new_zoom = MaxZoom;
-	}
-	if (new_zoom != zoom_) {
-		SDL_Rect const &area = map_area();
-		xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
-		ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
-		zoom_ = new_zoom;
-		bounds_check_position();
-
-		energy_bar_rects_.clear();
-		image::set_zoom(zoom_);
-		map_labels_.recalculate_labels();
-		redraw_background_ = true;
-		invalidate_all();
-
-		// Forces a redraw after zooming. This prevents some graphic glitches from occurring.
-		draw();
-	}
-}
-
-void display::set_default_zoom()
-{ 
-	set_zoom(DefaultZoom - zoom_); 
-}
-
-void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
-{
-	if(screen_.update_locked() || (check_fogged && fogged(loc))) {
-		return;
-	}
-
-	if(map_.on_board(loc) == false) {
-		return;
-	}
-
-	// current position of target (upper left tile corner) in screen coordinates
-	const int screenxpos = get_location_x(loc);
-	const int screenypos = get_location_y(loc);
-
-	if (scroll_type == ONSCREEN) {
-		// the tile must be fully visible
-		SDL_Rect r = map_area();
-		r.w -= hex_width();
-		r.h -= zoom_;
-
-		if (!outside_area(r,screenxpos,screenypos)) {
-			return;
-		}
-	}
-
-	const SDL_Rect area = map_area();
-	const int xmove_expected = (screenxpos + hex_width()/2) - (area.x + area.w/2 - zoom_/2);
-	const int ymove_expected = (screenypos + zoom_/2)       - (area.y + area.h/2 - zoom_/2);
-
-	int xpos = xpos_ + xmove_expected;
-	int ypos = ypos_ + ymove_expected;
-	bounds_check_position(xpos, ypos);
-	int xmove = xpos - xpos_;
-	int ymove = ypos - ypos_;
-
-	if(scroll_type == WARP ) {
-		scroll(xmove,ymove);
-		draw();
-		return;
-	}
-
-	// doing an animated scroll, with acceleration etc.
-
-	int x_old = 0;
-	int y_old = 0;
-
-	const double dist_total = hypot(xmove, ymove);
-	double dist_moved = 0.0;
-
-	int t_prev = SDL_GetTicks();
-	
-	double velocity = 0.0;
-	while (dist_moved < dist_total) {
-		events::pump();
-		
-		int t = SDL_GetTicks();
-		double dt = (t - t_prev) / 1000.0;
-		if (dt > 0.200) {
-			// do not skip too many frames on slow pcs
-			dt = 0.200;
-		}
-		t_prev = t;
-
-		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
-
-		// those values might need some fine-tuning:
-		const double accel_time = 0.3 / turbo_speed(); // seconds until full speed is reached 
-		const double decel_time = 0.4 / turbo_speed(); // seconds from full speed to stop
-
-		double velocity_max = preferences::scroll_speed() * 60.0;
-		velocity_max *= turbo_speed();
-		double accel = velocity_max / accel_time;
-		double decel = velocity_max / decel_time;
-
-		// If we started to decelerate now, where would we stop?
-		double stop_time = velocity / decel;
-		double dist_stop = dist_moved + velocity*stop_time - 0.5*decel*stop_time*stop_time;
-		if (dist_stop > dist_total || velocity > velocity_max) {
-			velocity -= decel * dt;
-			if (velocity < 1.0) velocity = 1.0;
-		} else {
-			velocity += accel * dt;
-			if (velocity > velocity_max) velocity = velocity_max;
-		}
-
-		dist_moved += velocity * dt;
-		if (dist_moved > dist_total) dist_moved = dist_total;
-
-		int x_new = round_double(xmove * dist_moved / dist_total);
-		int y_new = round_double(ymove * dist_moved / dist_total);
-
-		int dx = x_new - x_old;
-		int dy = y_new - y_old;
-
-		scroll(dx,dy);
-		x_old += dx;
-		y_old += dy;
-		draw();
-	}
-}
-
-void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
-                              SCROLL_TYPE scroll_type, bool check_fogged)
-{
-	const int xpos1 = get_location_x(loc1);
-	const int ypos1 = get_location_y(loc1);
-	const int xpos2 = get_location_x(loc2);;
-	const int ypos2 = get_location_y(loc2);;
-
-	const int minx = minimum<int>(xpos1,xpos2);
-	const int maxx = maximum<int>(xpos1,xpos2);
-	const int miny = minimum<int>(ypos1,ypos2);
-	const int maxy = maximum<int>(ypos1,ypos2);
-	const int diffx = maxx - minx;
-	const int diffy = maxy - miny;
-
-	// if rectangle formed by corners loc1 and loc2 is larger
-	// than map area then just scroll to loc1
-	if(diffx > map_area().w || diffy > map_area().h) {
-		scroll_to_tile(loc1,scroll_type,check_fogged);
-	} else {
-		// only scroll if rectangle is not completely inside map area
-		// assume most paths are within rectangle, sometimes
-		// with rugged terrain this is not true -- but use common
-		// cases to determine behaviour instead of exceptions
-		if (outside_area(map_area(),minx,miny) ||
-		    outside_area(map_area(),maxx,maxy)) {
-			// scroll to middle point of rectangle
-			scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,check_fogged);
-		} // else don't scroll, rectangle is already on screen
-	}
-}
-
 void display::scroll_to_leader(unit_map& units, int side)
 {
 	const unit_map::iterator leader = find_leader(units,side);
@@ -1464,50 +1533,6 @@ void display::scroll_to_leader(unit_map& units, int side)
 		hotkey::basic_handler key_events_handler(gui_);
 		*/
 		scroll_to_tile(leader->first, ONSCREEN);
-	}
-}
-
-void display::bounds_check_position()
-{
-	const int orig_zoom = zoom_;
-
-	if(zoom_ < MinZoom) {
-		zoom_ = MinZoom;
-	}
-
-	if(zoom_ > MaxZoom) {
-		zoom_ = MaxZoom;
-	}
-
-	bounds_check_position(xpos_, ypos_);
-
-	if(zoom_ != orig_zoom) {
-		image::set_zoom(zoom_);
-	}
-}
-
-void display::bounds_check_position(int& xpos, int& ypos)
-{
-	const int tile_width = hex_width();
-
-	// adjust for the border 2 times 1 hex
-	const int xend = tile_width * (map_.x() + 2) + tile_width/3;
-	const int yend = zoom_ * (map_.y() + 2) + zoom_/2;
-
-	if(xpos > xend - map_area().w) {
-		xpos = xend - map_area().w;
-	}
-
-	if(ypos > yend - map_area().h) {
-		ypos = yend - map_area().h;
-	}
-
-	if(xpos < 0) {
-		xpos = 0;
-	}
-
-	if(ypos < 0) {
-		ypos = 0;
 	}
 }
 
@@ -1581,8 +1606,9 @@ void editor_display::draw(bool update,bool force)
 
 			tile_stack_clear();
 
-			tile_stack_terrains(*it,"morning",image_type,ADJACENT_BACKGROUND);
-			tile_stack_terrains(*it,"morning",image_type,ADJACENT_FOREGROUND);
+			const std::string nodarken = "morning";
+			tile_stack_terrains(*it,nodarken,image_type,ADJACENT_BACKGROUND);
+			tile_stack_terrains(*it,nodarken,image_type,ADJACENT_FOREGROUND);
 
 			// draw the grid, if that's been enabled 
 			if(grid_) {
@@ -2506,14 +2532,6 @@ void display::invalidate(const gamemap::location& loc)
 	}
 }
 
-void display::invalidate_all()
-{
-	INFO_DP << "invalidate_all()";
-	invalidateAll_ = true;
-	invalidated_.clear();
-	update_rect(map_area());
-}
-
 void display::invalidate_animations()
 {
 	new_animation_frame();
@@ -2645,20 +2663,6 @@ void display::set_playing_team(size_t teamindex)
 	invalidate_game_status();
 }
 
-
-double display::turbo_speed() const
-{
-	bool res = turbo_;
-	if(keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT]) {
-		res = !res;
-	}
-
-	res |= screen_.faked();
-	if (res)
-		return turbo_speed_;
-	else
-		return 1.0;
-}
 
 // timestring() returns the current date as a string.
 // Uses preferences::clock_format() for formatting.

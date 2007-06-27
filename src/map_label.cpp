@@ -31,12 +31,12 @@ namespace {
 //or the tile below is obscured. This is because in the case where the tile
 //itself is visible, but the tile below is obscured, the bottom half of the
 //tile will still be shrouded, and the label being drawn looks weird
-static bool is_shrouded(const display& disp, const gamemap::location& loc)
+static bool is_shrouded(const map_display& disp, const gamemap::location& loc)
 {
 	return disp.shrouded(loc) || disp.shrouded(gamemap::location(loc.x,loc.y+1));
 }
 
-map_labels::map_labels(const display& disp, 
+map_labels::map_labels(const map_display& disp, 
 					   const gamemap& map, 
 					   const team* team) : 
 		disp_(disp), 
@@ -45,7 +45,7 @@ map_labels::map_labels(const display& disp,
 {
 }
 
-map_labels::map_labels(const display& disp, 
+map_labels::map_labels(const map_display& disp, 
 					   const config& cfg, 
 					   const gamemap& map,
 					   const team* team) : 
@@ -120,7 +120,7 @@ const terrain_label* map_labels::get_label(const gamemap::location& loc)
 }
 
 
-const display& map_labels::disp() const
+const map_display& map_labels::disp() const
 {
 	return disp_;
 }
