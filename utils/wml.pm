@@ -112,17 +112,31 @@ sub read_text
 	my $token = '';
 	my $state = 'SEEK';
 	my $name = '';
-
+	my $macro=0;
 
 	foreach my $char (@chars) {
 		if($state eq 'SEEK') {
 			next if $char =~ /\s/;
 			if($char eq '[') {
-				$state = 'ELEMENT';
+			    $state = 'ELEMENT';
+			    $token = '';
+			} elsif($char eq '{') {
+				$state = 'MACRO';
 				$token = '';
+				$macro++;
 			} else {
 				$state = 'NAME';
 				$token .= $char;
+			}
+		 } elsif($state eq 'MACRO') {
+			if($char eq '{'){
+			    $macro++;
+			}elsif($char eq '}'){
+			    $macro--;
+			}
+			if(0 == $macro){
+			    $state = 'SEEK';
+			    $token = '';
 			}
 		} elsif($state eq 'NAME') {
 			if($char eq '=') {
@@ -178,7 +192,7 @@ sub read_text
 				$token .= $char;
 			}
 		}  elsif($state eq 'CLOSE_ELEMENT') {
-			if($char eq ']') {
+		    if($char eq ']') {
 				my $expected = $cur->{'name'};
 				$expected eq $token or confess "close element '$token' doesn't match current open element '$expected'";
 				pop @stack or confess "illegal close element '$token'";
@@ -333,7 +347,7 @@ sub get_children
 	my @res = ();
 
 	foreach my $child (@{$doc->{'children'}}) {
-		if($child->{'name'} eq $name) {
+	     if($child->{'name'} eq $name) {
 			push @res, $child;
 		}
 	}
