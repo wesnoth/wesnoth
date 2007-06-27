@@ -240,6 +240,11 @@ public:
 
 	void remove_highlighted_loc(const gamemap::location &hex);
 
+	//draws invalidated items. If update is true, will also copy the
+	//display to the frame buffer. If force is true, will not skip frames,
+	//even if running behind.
+	virtual void draw(bool update=true,bool force=false) = 0;
+
 	// Announce a message prominently
 	void announce(const std::string msg, 
 		       const SDL_Color& colour = font::GOOD_COLOUR);
@@ -250,12 +255,11 @@ protected:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
 	std::vector<surface> get_terrain_images(const gamemap::location &loc, 
-					const time_of_day& tod,
+					const std::string timeid,
 					image::TYPE type, 
 					ADJACENT_TERRAIN_TYPE terrain_type);
 
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
-
 
 protected:
 	CVideo& screen_;
@@ -289,7 +293,7 @@ protected:
 
 	//composes and draws the terrains on a tile
 	void tile_stack_terrains(const gamemap::location& loc, 
-				  const time_of_day& tod,
+				  const std::string timeid,
 				  image::TYPE image_type, 
 				  ADJACENT_TERRAIN_TYPE type);
 	void tile_stack_append(surface surf);
@@ -312,6 +316,13 @@ private:
   	std::vector<surface> tile_stack_;
 	//the handle for the label which displays frames per second
 	int fps_handle_;
+};
+
+class editor_display : public map_display
+{
+public:
+	// draw for the editor display only to know about terrain
+	void draw(bool update=true,bool force=false);
 };
 
 class display : public map_display
@@ -365,9 +376,7 @@ public:
 	//invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
 
-	//draws invalidated items. If update is true, will also copy the
-	//display to the frame buffer. If force is true, will not skip frames,
-	//even if running behind.
+	// draw for the game display has to know about units 
 	void draw(bool update=true,bool force=false);
 
 	//function to display a location as selected. If a unit is in
