@@ -1369,6 +1369,21 @@ double map_display::turbo_speed() const
 		return 1.0;
 }
 
+#if 0
+// Methods for editor subclass go here
+
+editor_display::editor_display(CVideo& video, const gamemap& map,
+		const config& theme_cfg, const config& cfg, 
+		const config& level) :
+	map_display(video, map, theme_cfg, cfg, level)
+{
+	//clear the screen contents
+	surface const disp(screen_.getSurface());
+	SDL_Rect area = screen_area();
+	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
+}
+#endif
+
 // Methods for superclass aware of units go here
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
@@ -1569,6 +1584,7 @@ void display::redraw_everything()
 	draw(true,true);
 }
 
+#if 0
 void editor_display::draw(bool update,bool force)
 {
 	bool changed = map_display::draw_init();
@@ -1631,6 +1647,7 @@ void editor_display::draw(bool update,bool force)
 
 	map_display::draw_wrap(update, force, changed);
 }
+#endif
 
 void display::draw(bool update,bool force)
 {

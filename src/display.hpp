@@ -369,12 +369,18 @@ private:
 	int fps_handle_;
 };
 
+#if 0
 class editor_display : public map_display
 {
 public:
-	// draw for the editor display only to know about terrain
+	editor_display(CVideo& video, const gamemap& map, const config& theme_cfg,
+			const config& cfg, const config& level);
+	~editor_display();
+
+	// draw() for the editor display only has to know about terrain
 	void draw(bool update=true,bool force=false);
 };
+#endif
 
 class display : public map_display
 {
