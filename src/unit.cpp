@@ -1673,9 +1673,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	else height_adjust = int(height_adjust * disp.get_zoom_factor());
 
 	unit_frame current_frame;
-	if(anim_->animation_finished()) current_frame = anim_->get_last_frame();
-	else if(anim_->get_begin_time() > anim_->get_animation_time()) current_frame = anim_->get_first_frame();
-	else current_frame = anim_->get_current_frame();
+	current_frame = anim_->get_current_frame();
 
 	double tmp_offset = current_frame.offset(anim_->get_current_frame_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;

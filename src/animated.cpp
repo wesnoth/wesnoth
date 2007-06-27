@@ -118,7 +118,7 @@ void animated<T,T_void_value>::update_last_draw_time()
 			current_frame_key_ = 0;
 		}
 	}
-	while(get_current_frame_end_time() < get_animation_time() &&  // catch up
+	if(get_current_frame_end_time() < get_animation_time() &&  // catch up
 			get_current_frame_end_time() < get_end_time()) {// don't go after the end
 		current_frame_key_++;
 	}

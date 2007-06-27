@@ -302,7 +302,6 @@ bool terrain_builder::start_animation(building_rule &rule)
 
 				variant->second.image = th;
 				variant->second.image.start_animation(0, true);
-				variant->second.image.update_last_draw_time();
 			}
 		}
 	}
