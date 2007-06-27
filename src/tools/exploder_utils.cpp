@@ -81,7 +81,7 @@ void masked_overwrite_surface(surface dest, surface src, surface mask, int x, in
 		small_shift_before = 0;
 	}
 
-	if(x + src_width <= dest->w) {
+	if(x + src_width <= unsigned(dest->w)) {
 		small_shift_after = 0;
 	} else {
 		small_shift_after = src_width - (dest->w - x);
@@ -100,7 +100,7 @@ void masked_overwrite_surface(surface dest, surface src, surface mask, int x, in
 		y = 0;
 	}
 
-	if(y + src_height > dest->h) {
+	if(y + src_height > unsigned(dest->h)) {
 		src_height = dest->h - y;
 	}
 
