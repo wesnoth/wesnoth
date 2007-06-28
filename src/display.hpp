@@ -213,6 +213,12 @@ public:
 	//function which copies the backbuffer to the framebuffer.
 	void update_display();
 
+	//rebuild the dynamic terrain at the given location.
+	void rebuild_terrain(const gamemap::location &loc) 
+		{ builder_.rebuild_terrain(loc); }
+	//rebuild all dynamic terrain.
+	void rebuild_all() { builder_.rebuild_all(); }
+
 	//function to draw the image of a unit at a certain location
 	//x,y: pixel location on screen to draw the unit
 	//image: the image of the unit
@@ -302,6 +308,14 @@ public:
 	// Announce a message prominently
 	void announce(const std::string msg, 
 		       const SDL_Color& colour = font::GOOD_COLOUR);
+
+	//function to schedule the minimap for recalculation. Useful if any
+	//terrain in the map has changed.
+	void recalculate_minimap();
+
+	//function to schedule the minimap to be redrawn. Useful if units
+	//have moved about on the map
+	void redraw_minimap() { redrawMinimap_ = true; }
 
 protected:
 	void draw_minimap(int x, int y, int w, int h);
@@ -478,14 +492,6 @@ private:
 	virtual void draw_minimap_units(int x, int y, int w, int h);
 
 public:
-	//function to schedule the minimap for recalculation. Useful if any
-	//terrain in the map has changed.
-	void recalculate_minimap();
-
-	//function to schedule the minimap to be redrawn. Useful if units
-	//have moved about on the map
-	void redraw_minimap() { redrawMinimap_ = true; }
-
 	//temporarily place a unit on map (moving: can overlap others)
 	void place_temporary_unit(unit &u, const gamemap::location& loc);
 	void remove_temporary_unit();
@@ -535,12 +541,6 @@ public:
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type, bool bell);
 	void clear_chat_messages() { prune_chat_messages(true); }
-
-	//rebuild the dynamic terrain at the given location.
-	void rebuild_terrain(const gamemap::location &loc) 
-		{ builder_.rebuild_terrain(loc); }
-	//rebuild all dynamic terrain.
-	void rebuild_all() { builder_.rebuild_all(); }
 
 	void begin_game();
 

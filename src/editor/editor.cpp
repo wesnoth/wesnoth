@@ -151,7 +151,7 @@ t_translation::t_letter map_editor::old_fg_terrain_;
 t_translation::t_letter map_editor::old_bg_terrain_;
 int map_editor::old_brush_size_;
 
-map_editor::map_editor(game_display &gui, editormap &map, config &theme, config &game_config)
+map_editor::map_editor(editor_display &gui, editormap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  theme_(theme), game_config_(game_config), map_dirty_(false),  auto_update_(true), l_button_palette_dirty_(true),
 	  everything_dirty_(false), palette_(gui, size_specs_, map, game_config), brush_(gui, size_specs_),
@@ -192,7 +192,7 @@ map_editor::map_editor(game_display &gui, editormap &map, config &theme, config 
 	hotkey::load_descriptions();
 	recalculate_starting_pos_labels();
 	gui_.invalidate_game_status();
-	gui_.begin_game();
+	//gui_.begin_game();
 	gui_.invalidate_all();
 	gui_.draw();
 	palette_.adjust_size();

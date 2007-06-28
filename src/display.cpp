@@ -1449,6 +1449,16 @@ editor_display::editor_display(CVideo& video, const gamemap& map,
 	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 }
 
+void display::recalculate_minimap()
+{
+	if(minimap_ != NULL) {
+		minimap_.assign(NULL);
+	}
+
+	redraw_minimap();
+	// remove unit after invalidating...
+}
+
 // Methods for superclass aware of units go here
 
 std::map<gamemap::location,fixed_t> game_display::debugHighlights_;
@@ -2581,16 +2591,6 @@ void game_display::invalidate_animations()
 	}
 
 
-}
-
-void game_display::recalculate_minimap()
-{
-	if(minimap_ != NULL) {
-		minimap_.assign(NULL);
-	}
-
-	redraw_minimap();
-	// remove unit after invalidating...
 }
 
 void game_display::debug_highlight(const gamemap::location& loc, fixed_t amount)

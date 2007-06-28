@@ -45,7 +45,7 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 class map_editor : public events::handler,
 				   public hotkey::command_executor {
 public:
-	map_editor(game_display &gui, editormap &map, config &theme, config &game_config);
+	map_editor(editor_display &gui, editormap &map, config &theme, config &game_config);
 	virtual ~map_editor();
 
 	/// Enter the main loop. The loop runs until set_abort() is called
@@ -301,7 +301,7 @@ private:
 		int starting_side;
 	};
 
-	game_display &gui_;
+	editor_display &gui_;
 	editormap &map_;
 	std::string filename_, original_filename_;
 	bool from_scenario_;
