@@ -174,7 +174,7 @@ public:
 
 	// Will be overridden in the display subclass
 	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
-	virtual void draw_minimap_units(int x UNUSED, int y UNUSED, int w UNUSED, int h UNUSED) {};
+	virtual void draw_minimap_units(int /* x */, int /* y */, int /* w */, int /* h */) {};
 	//this surface must be freed by the caller
 	surface get_minimap(int w, int h);
 

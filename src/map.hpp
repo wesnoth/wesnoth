@@ -246,8 +246,8 @@ public:
 class omniscient : public viewpoint
 {
 public:
-	virtual bool shrouded(int x UNUSED, int y UNUSED) const {return false;};
-	virtual bool fogged(int x UNUSED, int y UNUSED) const {return false;};
+	virtual bool shrouded(int /* x */, int /* y */) const {return false;};
+	virtual bool fogged(int /* x */, int /* y */) const {return false;};
 	virtual ~omniscient() {};
 };
 
