@@ -142,10 +142,10 @@ public:
 
 	//function which returns true if location (x,y) is covered in shroud.
 	bool shrouded(const gamemap::location& loc) const
-		{return !viewpoint_ || viewpoint_->shrouded(loc.x, loc.y);}
+		{return viewpoint_ && viewpoint_->shrouded(loc.x, loc.y);}
 	//function which returns true if location (x,y) is covered in fog.
 	bool fogged(const gamemap::location& loc) const
-		{return !viewpoint_ || viewpoint_->fogged(loc.x, loc.y);}
+		{return viewpoint_ && viewpoint_->fogged(loc.x, loc.y);}
 
 	//function which determines whether a grid should be overlayed on the
 	//game board to more clearly show where hexes are.
