@@ -27,13 +27,6 @@ namespace t_translation {
 /***************************************************************************************/
 // forward declaration of internal functions
 	
-
-	//this is used for error messages used in string_to_number_ 
-	//so we can't use this function to convert us. So we do the conversion here 
-	//manually not the best solution but good enough for a tempory solution
-	const t_letter OBSOLETE_KEEP('_' << 24 | 'K' << 16, 0xFFFFFFFF);
-
-
 	// the low level convertors, these function are the ones which
 	// now about the internal format. All other functions are unaware
 	// of the internal format
@@ -794,10 +787,6 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		}
 	}	
 
-	if(result == OBSOLETE_KEEP) {
-		lg::wml_error << "Using _K for a keep is deprecated, support will be removed in version 1.3.5\n";
-		result = HUMAN_KEEP;
-	}
 	return result;
 }
 
