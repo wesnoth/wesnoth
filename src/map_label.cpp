@@ -242,7 +242,7 @@ const terrain_label* new_label)
 	
 }
 
-void map_labels::clear(const std::string& team_name, replay* replay)
+void map_labels::clear(const std::string& team_name)
 {
 	team_label_map::iterator i = labels_.find(team_name);
 	if (i != labels_.end())
@@ -255,12 +255,6 @@ void map_labels::clear(const std::string& team_name, replay* replay)
 	{
 		clear_map(i->second);
 	}
-	
-	if (replay)
-	{
-		replay->clear_labels(team_name);
-	}
-	
 }
 
 void map_labels::clear_map(const label_map& m)

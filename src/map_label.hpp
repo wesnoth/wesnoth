@@ -23,7 +23,6 @@ class config;
 #include <string>
 
 class display;
-class team;
 class terrain_label;
 class replay;
 class game_state;
@@ -55,7 +54,7 @@ public:
 	void add_label(const gamemap::location&,
 				   const terrain_label*);
 	
-	void clear(const std::string&, replay*);
+	void clear(const std::string&);
 
 	void scroll(double xmove, double ymove);
 

@@ -1408,7 +1408,8 @@ namespace events{
 		if (gui_->team_valid()
 		   && !is_observer())
 		{
-			gui_->labels().clear(gui_->current_team_name(),&recorder);
+			gui_->labels().clear(gui_->current_team_name());
+			recorder.clear_labels(gui_->current_team_name());
 		}
 	}
 

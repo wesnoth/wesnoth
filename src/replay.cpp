@@ -703,7 +703,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 		
 		} else if((child = cfg->child("clear_labels")) != NULL) {
 			
-			disp.labels().clear(std::string((*child)["team_name"]),0);
+			disp.labels().clear(std::string((*child)["team_name"]));
 		}
 
 		else if((child = cfg->child("rename")) != NULL) {
