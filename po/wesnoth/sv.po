@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-22 13:11+0200\n"
-"PO-Revision-Date: 2007-06-08 23:09+0200\n"
+"PO-Revision-Date: 2007-06-27 23:05+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -1676,13 +1676,12 @@ msgid "Healthy"
 msgstr ""
 
 #: data/core/help.cfg:339
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 "Vissa dvärgar är vitt kända för sin vitalitet. De är härdigare än andra och "
-"återhämtar sig snabbare när de vilar."
+"kan återhämta sig även under färd."
 
 #: data/core/help.cfg:345 data/core/terrain.cfg:433 data/core/terrain.cfg:441
 msgid "Grassland"
@@ -4057,7 +4056,7 @@ msgstr ""
 
 #: data/core/macros/traits.cfg:113
 msgid "Can rest while moving"
-msgstr ""
+msgstr "Kan vila under förflyttning"
 
 #: data/core/macros/traits.cfg:125
 msgid "fearless"
@@ -6184,7 +6183,6 @@ msgid "Fencer"
 msgstr "Fäktare"
 
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -8551,7 +8549,7 @@ msgstr ""
 "mål: att uppnå odödlighet. Omvandlingen in i vandöden kräver stort offer; "
 "sinnet bevaras, och med det anden, men kroppen tillåts vittra.\n"
 "\n"
-"Det är inte känt annat än för nekromantikernas inre kretsar huruvida "
+"Det är inte känt annat än för nekromanternas inre kretsar huruvida "
 "odödligheten är oändlig eller om livet bara förlängs. Dock visar själva det "
 "faktum att detta diskuteras på vad de faktiskt har uppnått.\n"
 "\n"
@@ -8559,7 +8557,7 @@ msgstr ""
 
 #: data/core/units/undead/Necromancer.cfg:3
 msgid "Necromancer"
-msgstr "Nekromantiker"
+msgstr "Nekromant"
 
 #: data/core/units/undead/Necromancer.cfg:21
 msgid ""
@@ -8796,10 +8794,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Det är en av skapelsen större nåder att människans själ är oföränderlig och "
-"oförstörbar. Detta bekymrar dock inte nekromantikern, som genom detta inte "
-"ser sitt värv särdeles försvårat. Med sin själ fångad av ohyggliga "
-"besvärjelser är spöket en pålitlig tjänare, som kan bindas att genomföra de "
-"uppgifter mästaren vill ha utförda.\n"
+"oförstörbar. Detta bekymrar dock inte nekromanten, som genom detta inte ser "
+"sitt värv särdeles försvårat. Med sin själ fångad av ohyggliga besvärjelser "
+"är spöket en pålitlig tjänare, som kan bindas att genomföra de uppgifter "
+"mästaren vill ha utförda.\n"
 "\n"
 "Anmärkning:"
 
@@ -8847,7 +8845,7 @@ msgstr ""
 "mörkret. Sedan dess har världens skuggor injagat skräck i mänskligheten, men "
 "det är inte känt varför.\n"
 "\n"
-"Svaret på denna fråga är alltför uppenbart för nekromantiker.\n"
+"Svaret på denna fråga är alltför uppenbart för nekromanter.\n"
 "\n"
 "Anmärkning:"
 
@@ -8867,9 +8865,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"De onda andarna är de av nekromantikerns skapelser som står honom närmast. "
+"De onda andarna är de av nekromantens skapelser som står honom närmast. "
 "Dessa styggelser injagar namnlös fasa i alla levande, för de är precis lika "
 "dödliga som de ser ut.\n"
+"\n"
 "De största faran i att möta en ond ande är att den med stor sannolikhet bara "
 "varslar om en än större fara i ankommande.\n"
 "\n"
@@ -8896,7 +8895,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Dessa förvridna former av vad som en gång var krigare är bland de mest "
-"ohyggliga skapelser en nekromantiker kan åstadkomma, för ett svärdshugg skär "
+"ohyggliga skapelser en nekromanter kan åstadkomma, för ett svärdshugg skär "
 "rakt igenom dem, som genom luft. Den stora fruktan som förknippas med dessa "
 "varselser kommer av tron att de är oövervinnliga, något som turligt nog "
 "långt ifrån är sant.\n"
@@ -11165,32 +11164,28 @@ msgid "Server: "
 msgstr "Server: "
 
 #: src/game.cpp:901 src/game.cpp:948
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Hämta extramaterial"
+msgstr "Radera extramaterial"
 
 #: src/game.cpp:936
-#, fuzzy
 msgid "You have no Add-ons installed."
-msgstr "Extramaterialet har installerats."
+msgstr "Du har inget extramaterial installerat."
 
 #: src/game.cpp:948
-#, fuzzy
 msgid "Choose the add-on to remove."
-msgstr "Välj extramaterial att hämta hem:"
+msgstr "Välj extramaterial att radera."
 
 #: src/game.cpp:966
 msgid "Confirm"
-msgstr ""
+msgstr "Bekräfta"
 
 #: src/game.cpp:997
-#, fuzzy
 msgid "Add-on deleted"
-msgstr "Extramaterialet har installerats"
+msgstr "Extramaterialet har raderats"
 
 #: src/game.cpp:1002
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr ""
+msgstr "Extramaterialet kunde inte raderas - en fil kunde inte hittas."
 
 #: src/game.cpp:1002 src/menu_events.cpp:487 src/menu_events.cpp:500
 #: src/multiplayer_create.cpp:494
@@ -11566,9 +11561,8 @@ msgid "Kills"
 msgstr "Dödade fiender"
 
 #: src/menu_events.cpp:136
-#, fuzzy
 msgid "Details"
-msgstr "Detalj"
+msgstr "Detaljer"
 
 #: src/menu_events.cpp:187
 msgid "Damage Inflicted"
@@ -12727,7 +12721,6 @@ msgid "TitleScreen button^Load"
 msgstr "Sparade spel"
 
 #: src/titlescreen.cpp:260
-#, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "Extramaterial"
 
@@ -12856,15 +12849,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
-
-#~ msgid "Heals faster if resting"
-#~ msgstr "Läker snabbare under vila"
-
-#~ msgid ""
-#~ "Because units with the 'loyal' trait have no upkeep, they can be "
-#~ "especially good for stealing enemy villages to boost your income, "
-#~ "especially if they have high mobility."
-#~ msgstr ""
-#~ "Då lojala trupper inte kräver underhåll, är de lämpade för att ta över "
-#~ "fiendebyar för att öka din inkomst, särskilt om de kan förflytta sig "
-#~ "snabbt."
