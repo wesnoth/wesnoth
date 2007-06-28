@@ -27,7 +27,7 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 #include "halo.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "gamestatus.hpp"
 #include "actions.hpp"
 #include "game_events.hpp"

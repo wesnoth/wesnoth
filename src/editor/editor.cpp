@@ -1024,7 +1024,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	const gamemap::location& minimap_loc = gui_.minimap_location_on(mousex,mousey);
 	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
 	if (minimap_loc.valid()) {
-		gui_.scroll_to_tile(minimap_loc,game_display::WARP,false);
+		gui_.scroll_to_tile(minimap_loc,display::WARP,false);
 	}
 	else if (key_[SDLK_RSHIFT] || key_[SDLK_LSHIFT]) {
 		if (key_[SDLK_RALT] || key_[SDLK_LALT]) {
@@ -1235,7 +1235,7 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 	const gamemap::location& minimap_loc = gui_.minimap_location_on(mousex,mousey);
 	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
 	if (minimap_loc.valid()) {
-		gui_.scroll_to_tile(minimap_loc,game_display::WARP,false);
+		gui_.scroll_to_tile(minimap_loc,display::WARP,false);
 	}
 }
 

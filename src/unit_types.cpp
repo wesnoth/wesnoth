@@ -22,7 +22,7 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 #include "color_range.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 
 #include <algorithm>
 #include <cstdlib>

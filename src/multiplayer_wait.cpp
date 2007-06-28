@@ -13,7 +13,7 @@
 
 #include "global.hpp"
 
-#include "display.hpp"
+#include "game_display.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

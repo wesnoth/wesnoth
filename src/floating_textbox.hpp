@@ -17,7 +17,7 @@
 
 #include "global.hpp"
 
-#include "display.hpp"
+#include "game_display.hpp"
 #include "scoped_resource.hpp"
 #include "team.hpp"
 #include "widgets/textbox.hpp"

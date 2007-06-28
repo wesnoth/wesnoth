@@ -14,7 +14,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "events.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"

@@ -16,7 +16,7 @@
 #include "actions.hpp"
 #include "ai_interface.hpp"
 #include "dialogs.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"

@@ -21,7 +21,7 @@
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"

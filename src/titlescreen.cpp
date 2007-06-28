@@ -16,7 +16,7 @@
 #include "config.hpp"
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"

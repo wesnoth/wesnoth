@@ -14,7 +14,7 @@
 #include "playturn.hpp"
 
 #include "config.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"

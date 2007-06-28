@@ -15,7 +15,7 @@
 
 #include <memory>
 
-#include "display.hpp"
+#include "game_display.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
 #include "construct_dialog.hpp"

@@ -15,7 +15,7 @@
 #include "global.hpp"
 
 #include "dialogs.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "game_events.hpp"

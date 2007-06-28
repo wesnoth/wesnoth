@@ -14,7 +14,7 @@
 #include "global.hpp"
 
 #include "color_range.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

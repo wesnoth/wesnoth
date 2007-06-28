@@ -18,7 +18,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
-#include "display.hpp"
+#include "game_display.hpp"
 #include "pathfind.hpp"
 #include "unit_map.hpp"
 
