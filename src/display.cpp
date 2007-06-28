@@ -2665,6 +2665,7 @@ void display::set_team(size_t teamindex)
 	else
 	{
 		labels().set_team(0);
+		viewpoint_ = NULL;
 	}
 	labels().recalculate_labels();
 }
