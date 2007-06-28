@@ -153,16 +153,16 @@ wesnoth_DEPENDENCIES=libwesnoth-core.a
 #    Editor                                                                 #
 #############################################################################
 
-# Presence of game_display.cpp in this list is temporary
+# FIXME: Presence of game_display.cpp in this list is temporary
 
 wesnoth_editor_SOURCES = \
 	editor/editor.cpp \
 	editor/editor_layout.cpp \
 	editor/map_manip.cpp \
+	editor/editor_display.cpp \
 	editor/editor_palettes.cpp \
 	editor/editor_main.cpp \
 	editor/editor_dialogs.cpp \
-	editor/editor_display.cpp \
 	editor/editor_undo.cpp \
 	about.cpp \
 	actions.cpp \
