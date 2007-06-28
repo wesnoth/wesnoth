@@ -53,7 +53,7 @@ sub send_data {
 sub send_error($$) {
 	my ($sock, $msg) = @_;
 	print STDERR "sending error: '$msg'\n";
-	my $doc = {'name' => '', [{'name' => 'error', 'message' => $msg, 'attr' => {}}], 'attr' => {}};
+	my $doc = {'name' => '', 'children' => [{'name' => 'error', 'attr' => {'message' => $msg}}], 'attr' => {}};
 	&send_data($doc,$sock);
 }
 
@@ -126,23 +126,23 @@ sub received_packet($$) {
 
 	unless($socket_user_name{$sock}) {
 		if(my $login = &wml::has_child($doc, 'login')) {
-			print STDERR "user attempting to log in...\n";
 			my $attr = $login->{'attr'};
 			my $username = $attr->{'username'};
+			print STDERR "user attempting to log in as \"$username\"...\n";
 			unless($username =~ /^[A-Za-z0-9_]{1,18}$/) {
-				&send_error($sock, 'This username is not valid');
+				&send_error($sock, 'This username is not valid.');
 				return;
 			}
 
 			foreach my $disallowed (@disallowed_names) {
-				if($disallowed eq $login) {
-					&send_error($sock, 'This username is disallowed');
+				if($disallowed eq $username) {
+					&send_error($sock, 'This username is disallowed.');
 					return;
 				}
 			}
 
-			if($user_name_socket{$login}) {
-				&send_error($sock, 'This uesrname is already taken');
+			if($user_name_socket{$username}) {
+				&send_error($sock, 'This username is already taken.');
 			}
 
 			print STDERR "log in okay; telling to join lobby\n";
