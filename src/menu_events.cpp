@@ -1399,7 +1399,9 @@ namespace events{
 			else {
 				colour = team::get_side_colour(gui_->viewing_team() + 1);
 			}
-			gui_->labels().set_label(mousehandler.get_last_hex(), d.textbox_text(), &recorder, team_name, colour);
+			const terrain_label *res = gui_->labels().set_label(mousehandler.get_last_hex(), d.textbox_text(), team_name, colour);
+			if (res)
+				recorder.add_label(res);
 		}
 	}
 

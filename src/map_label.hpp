@@ -24,7 +24,6 @@ class config;
 
 class display;
 class terrain_label;
-class replay;
 class game_state;
 
 
@@ -47,7 +46,6 @@ public:
 	const terrain_label* get_label(const gamemap::location& loc);
 	const terrain_label* set_label(const gamemap::location& loc, 
 							   const std::string& text,
-							   replay* = 0,
 							   const std::string team = "",
 							   const SDL_Color colour = font::NORMAL_COLOUR);
 	

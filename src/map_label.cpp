@@ -20,7 +20,6 @@
 #include "language.hpp"
 #include "map_label.hpp"
 #include "wassert.hpp"
-#include "replay.hpp"
 #include "game_events.hpp"
 
 namespace {
@@ -145,10 +144,9 @@ void map_labels::set_team(const team* team)
 
 
 const terrain_label* map_labels::set_label(const gamemap::location& loc, 
-										   const std::string& text,
-										   replay* replay,
-										   const std::string team_name, 
-										   const SDL_Color colour)
+					   const std::string& text, 
+					   const std::string team_name, 
+					   const SDL_Color colour)
 {
 	terrain_label* res = 0;
 	const team_label_map::const_iterator current_label_map = labels_.find(team_name);
@@ -160,12 +158,8 @@ const terrain_label* map_labels::set_label(const gamemap::location& loc,
 		// Found old checking if need to erase it
 		if(text.empty())
 		{
-			if (replay)
-			{
-				const_cast<terrain_label*>(current_label->second)->set_text("");
-				replay->add_label(current_label->second);
-			}
-			
+			const_cast<terrain_label*>(current_label->second)->set_text("");
+			res = new terrain_label("",team_name,loc,*this,colour);
 			delete current_label->second;
 			const_cast<label_map&>(current_label_map->second).erase(loc);
 					
@@ -187,10 +181,6 @@ const terrain_label* map_labels::set_label(const gamemap::location& loc,
 			const_cast<terrain_label*>(current_label->second)->update_info(text,
 																		   team_name,
 																		    colour);
-			if (replay)
-			{
-				replay->add_label(current_label->second);
-			}
 			res = const_cast<terrain_label*>(current_label->second);
 		}
 	}
@@ -212,10 +202,6 @@ const terrain_label* map_labels::set_label(const gamemap::location& loc,
 		add_label(loc,label);
 		
 		res = label;
-		if (replay)
-		{
-			replay->add_label(label);
-		}
 		
 		if (update)
 		{

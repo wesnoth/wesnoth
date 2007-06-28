@@ -2074,10 +2074,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		terrain_label label(screen->labels(),cfg.get_config());
 			
 		screen->labels().set_label(label.location(),
-								   label.text(),
-								   0,
-								   label.team_name(),
-								   label.colour());
+					   label.text(),
+					   label.team_name(),
+					   label.colour());
 	}
 
 	LOG_NG << "done handling command...\n";

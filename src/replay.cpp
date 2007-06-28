@@ -696,10 +696,9 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			terrain_label label(disp.labels(),*child);
 			
 			disp.labels().set_label(label.location(),
-									label.text(),
-									0,
-									label.team_name(),
-									label.colour());
+						label.text(),
+						label.team_name(),
+						label.colour());
 		
 		} else if((child = cfg->child("clear_labels")) != NULL) {
 			
