@@ -770,16 +770,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			last_empty_hex_ = new_hex;
 		}
 
-		gamemap::location attack_from;
-		if(selected_unit != units_.end() && mouseover_unit != units_.end()) {
-			attack_from = current_unit_attacks_from(new_hex);
-		}
+		gamemap::location attack_from = current_unit_attacks_from(new_hex);
 
 		if (cursor::get() != cursor::WAIT) {
-			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
+			if(selected_unit != units_.end() && selected_unit->second.side() == team_num_
+			   && !selected_unit->second.incapacitated()) {
 				if (attack_from.valid()) {
 					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
-				} else if (current_paths_.routes.count(new_hex) && mouseover_unit==units_.end()) {
+				} else if (mouseover_unit==units_.end() && current_paths_.routes.count(new_hex)) {
 					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
 				} else {
 					cursor::set(cursor::NORMAL);
