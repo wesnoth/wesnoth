@@ -243,14 +243,6 @@ public:
 	virtual ~viewpoint() {};
 };
 
-class omniscient : public viewpoint
-{
-public:
-	virtual bool shrouded(int /* x */, int /* y */) const {return false;};
-	virtual bool fogged(int /* x */, int /* y */) const {return false;};
-	virtual ~omniscient() {};
-};
-
 //a utility function which parses ranges of locations
 //into a vector of locations
 std::vector<gamemap::location> parse_location_range(const std::string& xvals,
