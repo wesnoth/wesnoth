@@ -18,7 +18,6 @@
 #include "../filesystem.hpp"
 #include "../font.hpp"
 #include "../game_config.hpp"
-#include "../gamestatus.hpp"
 #include "../gettext.hpp"
 #include "../image.hpp"
 #include "../language.hpp"
@@ -305,7 +304,6 @@ int main(int argc, char** argv)
 
 	srand(time(NULL));
 	bool done = false;
-	gamestatus status(cfg, 0);
 	config* theme_cfg = cfg.find_child("theme", "name", "editor");
 	config dummy_theme;
 	if (!theme_cfg) {
