@@ -82,7 +82,7 @@ public:
 	game_controller(int argc, char** argv);
 	~game_controller();
 
-	display& disp();
+	game_display& disp();
 
 	bool init_video();
 	bool init_config();
@@ -127,8 +127,8 @@ private:
 	int arg_;
 	const char* const * const argv_;
 
-	//this should get destroyed *after* the video, since we want to clean up threads
-	//after the display disappears.
+	//this should get destroyed *after* the video, since we want
+	//to clean up threads after the display disappears.
 	const threading::manager thread_manager;
 
 	CVideo video_;
@@ -149,7 +149,7 @@ private:
 	config game_config_;
 	game_data units_data_;
 
-	util::scoped_ptr<display> disp_;
+	util::scoped_ptr<game_display> disp_;
 
 	game_state state_;
 
@@ -267,7 +267,7 @@ game_controller::game_controller(int argc, char** argv)
 	}
 }
 
-display& game_controller::disp()
+game_display& game_controller::disp()
 {
 	if(disp_.get() == NULL) {
 
@@ -280,7 +280,7 @@ display& game_controller::disp()
 		static gamemap dummy_map(dummy_cfg, "");
 		static gamestatus dummy_status(dummy_cfg, 0);
 		static std::vector<team> dummy_teams;
-		disp_.assign(new display(dummy_umap, video_, dummy_map, dummy_status,
+		disp_.assign(new game_display(dummy_umap, video_, dummy_map, dummy_status,
 			dummy_teams, dummy_cfg, dummy_cfg, dummy_cfg));
 	}
 

@@ -25,7 +25,7 @@
 #include "unit_frame.hpp"
 
 
-class display;
+class game_display;
 
 class unit_animation:public animated<unit_frame>
 {
@@ -35,7 +35,7 @@ class unit_animation:public animated<unit_frame>
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
 		explicit unit_animation(int start_time,const unit_frame &frame);
-		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit) const;
+		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit) const;
 
 	private:
 		t_translation::t_list terrain_types_;
@@ -57,7 +57,7 @@ class fighting_animation:public unit_animation
 		explicit fighting_animation(const config& cfg);
 		explicit fighting_animation(int start_time,const unit_frame &frame):
 			unit_animation(start_time,frame) {};
-		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num,int damage) const;
+		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num,int damage) const;
 
 	private:
 		std::vector<config> primary_filter;
@@ -130,7 +130,7 @@ class healing_animation:public unit_animation
 		explicit healing_animation(const config& cfg);
 		explicit healing_animation(int start_time,const unit_frame &frame):
 			unit_animation(start_time,frame){};
-		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
+		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
 
 	private:
 		std::vector<int> damage_;
@@ -193,7 +193,7 @@ class poison_animation:public unit_animation
 		explicit poison_animation(const config& cfg);
 		explicit poison_animation(int start_time,const unit_frame &frame):
 			unit_animation(start_time,frame){};
-		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
+		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
 
 	private:
 		std::vector<int> damage_;
@@ -205,7 +205,7 @@ class healed_animation:public unit_animation
 		explicit healed_animation(const config& cfg);
 		explicit healed_animation(int start_time,const unit_frame &frame):
 			unit_animation(start_time,frame){};
-		int matches(const display &disp,const gamemap::location& loc,const unit* my_unit,int healing) const;
+		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,int healing) const;
 
 	private:
 		std::vector<int> healing_;

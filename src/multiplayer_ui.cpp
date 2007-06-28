@@ -209,7 +209,7 @@ std::string chat::format_message(const msg& message)
 	}
 }
 
-ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist) :
+ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(disp.video()),
 	disp_(disp),
 	initialized_(false),
@@ -384,7 +384,7 @@ void ui::send_chat_query(const std::string& args)
 	network::send_data(data);
 }
 
-void ui::add_chat_message(const std::string& speaker, int /*side*/, const std::string& message, display::MESSAGE_TYPE /*type*/)
+void ui::add_chat_message(const std::string& speaker, int /*side*/, const std::string& message, game_display::MESSAGE_TYPE /*type*/)
 {
 	chat_.add_message(speaker,message);
 	chat_.update_textbox(chat_textbox_);

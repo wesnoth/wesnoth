@@ -36,7 +36,7 @@ struct command_disabler
 
 class mouse_handler{
 public:
-	mouse_handler(display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
+	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
 		gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack, game_state& gamestate);
 	void set_team(const int team_number);
 	void mouse_motion(const SDL_MouseMotionEvent& event, const bool browse);
@@ -56,7 +56,7 @@ public:
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
 	void set_current_paths(paths new_paths);
 	void set_selected_hex(gamemap::location hex) { selected_hex_ = hex; }
-	void set_gui(display* gui) { gui_ = gui; }
+	void set_gui(game_display* gui) { gui_ = gui; }
 	void set_undo(const bool undo) { undo_ = undo; }
 
 	unit_map::iterator selected_unit();
@@ -84,7 +84,7 @@ private:
 	bool unit_in_cycle(unit_map::const_iterator it);
 	void select_unit(const unit_map::const_iterator &it, const unit_map::const_iterator &bound);
 
-	display* gui_;
+	game_display* gui_;
 	std::vector<team>& teams_;
 	unit_map& units_;
 	gamemap& map_;

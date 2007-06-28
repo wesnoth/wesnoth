@@ -73,7 +73,7 @@ public:
 		config scenario_data;
 	};
 
-	create(display& dist, const config& game_config, chat& c, config& gamelist);
+	create(game_display& dist, const config& game_config, chat& c, config& gamelist);
 	~create();
 
 	parameters& get_parameters();

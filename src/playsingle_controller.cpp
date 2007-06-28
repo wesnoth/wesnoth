@@ -52,9 +52,9 @@ void playsingle_controller::init_gui(){
 	play_controller::init_gui();
 
 	if(first_human_team_ != -1) {
-		gui_->scroll_to_tile(map_.starting_position(first_human_team_ + 1), display::WARP);
+		gui_->scroll_to_tile(map_.starting_position(first_human_team_ + 1), game_display::WARP);
 	}
-	gui_->scroll_to_tile(map_.starting_position(1), display::WARP);
+	gui_->scroll_to_tile(map_.starting_position(1), game_display::WARP);
 
 	update_locker lock_display(gui_->video(),recorder.is_skipping());
 	events::raise_draw_event();
@@ -449,7 +449,7 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 			}
 
 			if(game_config::debug)
-				display::clear_debug_highlights();
+				game_display::clear_debug_highlights();
 
 			LOG_NG << "human finished turn...\n";
 		} else if(current_team().is_ai()) {

@@ -26,7 +26,7 @@
 #include "unit.hpp"
 
 turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
-                     const gamestatus& status, display& gui, gamemap& map,
+                     const gamestatus& status, game_display& gui, gamemap& map,
 		     std::vector<team>& teams, unsigned int team_num, unit_map& units,
 			 replay_network_sender& replay_sender, undo_list& undo_stack)
   : gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
@@ -72,7 +72,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		sound::play_UI_sound(game_config::sounds::receive_message);
 
 		const config& cwhisper = *cfg.child("whisper");
-		gui_.add_chat_message("whisper: "+cwhisper["sender"],0,cwhisper["message"], display::MESSAGE_PRIVATE, preferences::message_bell());
+		gui_.add_chat_message("whisper: "+cwhisper["sender"],0,cwhisper["message"], game_display::MESSAGE_PRIVATE, preferences::message_bell());
 		}
 	if(cfg.child("observer") != NULL) {
 		const config::child_list& observers = cfg.get_children("observer");

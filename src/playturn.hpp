@@ -13,7 +13,7 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
-class display;
+class game_display;
 class config;
 class game_state;
 class replay_network_sender;
@@ -33,7 +33,7 @@ class turn_info
 {
 public:
 	turn_info(const game_data& gameinfo, game_state& state_of_game,
-	          const gamestatus& status, display& gui, gamemap& map,
+	          const gamestatus& status, game_display& gui, gamemap& map,
 		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
 		  replay_network_sender& network_sender, undo_list& undo_stack);
 
@@ -62,7 +62,7 @@ private:
 	const game_data& gameinfo_;
 	game_state& state_of_game_;
 	const gamestatus& status_;
-	display& gui_;
+	game_display& gui_;
 	gamemap& map_;
 	std::vector<team>& teams_;
 	unsigned int team_num_;

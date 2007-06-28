@@ -15,6 +15,7 @@
 
 class config;
 class display;
+class game_display;
 
 #include "map.hpp"
 #include "construct_dialog.hpp"
@@ -61,11 +62,11 @@ private:
 //note that 'loc' is not a reference, because deleting an item from the units map
 //(when replacing the unit that is being advanced) will possibly invalidate the reference
 void advance_unit(const game_data& info, const gamemap& map,unit_map& units, gamemap::location loc,
-				  display& gui, bool random_choice=false);
+				  game_display& gui, bool random_choice=false);
 
-bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice);
+bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, game_display& gui, size_t choice);
 
-void show_objectives(display& disp, const config& level, const std::string& objectives);
+void show_objectives(game_display& disp, const config& level, const std::string& objectives);
 
 // Ask user if I should really save the game and what name I should use
 // returns 0 iff user wants to save the game
@@ -92,8 +93,8 @@ class unit_preview_pane : public gui::preview_pane
 public:
 	enum TYPE { SHOW_ALL, SHOW_BASIC };
 
-	unit_preview_pane(display &disp, const gamemap* map, const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
-	unit_preview_pane(display &disp, const gamemap* map, std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
+	unit_preview_pane(game_display &disp, const gamemap* map, const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
+	unit_preview_pane(game_display &disp, const gamemap* map, std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
 
 	bool show_above() const;
 	bool left_side() const;
@@ -101,7 +102,7 @@ public:
 
 	handler_vector handler_members();
 private:
-	display& disp_;
+	game_display& disp_;
 
 	void draw_contents();
 	void process_event();
@@ -115,7 +116,7 @@ private:
 	bool weapons_;
 };
 
-void show_unit_description(display &disp, const unit& u);
+void show_unit_description(game_display &disp, const unit& u);
 
 
 class campaign_preview_pane : public gui::preview_pane

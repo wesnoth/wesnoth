@@ -64,7 +64,7 @@ namespace{
 	public:
 
 		// Lengthy constructor.
-		battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
+		battle_prediction_pane(game_display &disp, const battle_context& bc, const gamemap& map,
 							   const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc);
@@ -79,7 +79,7 @@ namespace{
 		void set_selection(int) {}
 
 	private:
-		display &disp_;
+		game_display &disp_;
 		const battle_context& bc_;
 		const gamemap& map_;
 		const std::vector<team>& teams_;
@@ -165,7 +165,7 @@ namespace{
 	const int battle_prediction_pane::inter_units_gap_ = 30;
 	const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
-	battle_prediction_pane::battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
+	battle_prediction_pane::battle_prediction_pane(game_display &disp, const battle_context& bc, const gamemap& map,
 												   const std::vector<team>& teams, const unit_map& units,
 												   const gamestatus& status, const game_data& gamedata,
 												   const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
@@ -634,7 +634,7 @@ namespace{
 	class attack_prediction_displayer : public gui::dialog_button_action
 	{
 	public:
-		attack_prediction_displayer(display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
+		attack_prediction_displayer(game_display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
 								    const std::vector<team>& teams, const unit_map& units,
 								    const gamestatus& status, const game_data& gamedata,
 									const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
@@ -660,7 +660,7 @@ namespace{
 		}
 
 	private:
-		display &disp_;
+		game_display &disp_;
 		const std::vector<battle_context>& bc_vector_;
 		const gamemap& map_;
 	const std::vector<team>& teams_;
@@ -672,7 +672,7 @@ namespace{
 	};
 } //end anonymous namespace
 
-mouse_handler::mouse_handler(display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
+mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
 				gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack, game_state& game_state):
 gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(gameinfo),
 undo_stack_(undo_stack), redo_stack_(redo_stack), game_state_(game_state)
@@ -721,7 +721,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			if(loc.valid()) {
 				if(loc != last_hex_) {
 					last_hex_ = loc;
-					(*gui_).scroll_to_tile(loc,display::WARP,false);
+					(*gui_).scroll_to_tile(loc,game_display::WARP,false);
 				}
 			} else {
 				// clicking outside of the minimap will end minimap scrolling
@@ -1012,7 +1012,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		if(loc.valid()) {
 			minimap_scrolling_ = true;
 			last_hex_ = loc;
-			gui_->scroll_to_tile(loc,display::WARP,false);
+			gui_->scroll_to_tile(loc,game_display::WARP,false);
 		} else {
 		const SDL_Rect& rect = gui_->map_area();
 		const int centerx = (rect.x + rect.w)/2;
@@ -1080,7 +1080,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	if(loc.valid()) {
 		minimap_scrolling_ = true;
 		last_hex_ = loc;
-		gui_->scroll_to_tile(loc,display::WARP,false);
+		gui_->scroll_to_tile(loc,game_display::WARP,false);
 		return;
 	}
 
@@ -1488,7 +1488,7 @@ inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,false,teleport,viewing_team(),path_turns_);
 		gui_->highlight_reach(current_paths_);
 
-		gui_->scroll_to_tile(it->first,display::WARP);
+		gui_->scroll_to_tile(it->first,game_display::WARP);
 	}
 
 	if (it == itx) {

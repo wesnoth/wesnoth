@@ -525,7 +525,7 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 	return false;
 }
 
-lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
+lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	mp::ui(disp, _("Game Lobby"), cfg, c, gamelist),
 
 	observe_game_(disp.video(), _("Observe Game")),

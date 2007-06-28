@@ -13,7 +13,7 @@
 #ifndef AI_INTERFACE_HPP_INCLUDED
 #define AI_INTERFACE_HPP_INCLUDED
 
-class display;
+class game_display;
 class gamemap;
 
 #include "generic_event.hpp"
@@ -32,13 +32,13 @@ public:
 	///info: a structure which holds references to all the important objects
 	///that an AI might need access to in order to make and implement its decisions
 	struct info {
-		info(display& disp, const gamemap& map, const game_data& gameinfo, unit_map& units,
+		info(game_display& disp, const gamemap& map, const game_data& gameinfo, unit_map& units,
 			std::vector<team>& teams, unsigned int team_num, const gamestatus& state, class turn_info& turn_data, class game_state& game_state)
 			: disp(disp), map(map), gameinfo(gameinfo), units(units), teams(teams),
 			  team_num(team_num), state(state), turn_data_(turn_data), game_state_(game_state)		{}
 
 		///the display object, used to draw the moves the AI makes.
-		display& disp;
+		game_display& disp;
 
 		///the map of the game -- use this object to find the terrain at any location
 		const gamemap& map;

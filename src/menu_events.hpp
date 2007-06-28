@@ -53,14 +53,14 @@ protected:
 	void do_speak(const std::string& message, bool allies_only=false);
 
 	//called from do_speak
-	virtual void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE)=0;
+	virtual void add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE)=0;
 	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
 	virtual void send_chat_query(const std::string& /*args*/) {}
 };
 
 class menu_handler : private chat_handler {
 public:
-	menu_handler(display* gui, unit_map& units, std::vector<team>& teams,
+	menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const game_data& gameinfo, const gamemap& map,
 		const config& game_config, const gamestatus& status, game_state& gamestate,
 		undo_list& undo_stack, undo_list& redo_stack);
@@ -68,7 +68,7 @@ public:
 
 	const undo_list& get_undo_list() const;
 	gui::floating_textbox& get_textbox();
-	void set_gui(display* gui) { gui_ = gui; }
+	void set_gui(game_display* gui) { gui_ = gui; }
 
 	void objectives(const unsigned int team_num);
 	void show_statistics(const unsigned int team_num);
@@ -115,7 +115,7 @@ public:
 	void autosave(const std::string &label, unsigned turn, const config &starting_pos) const;
 	bool has_team() const;
 protected:
-	void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE);
+	void add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 private:
 	//void do_speak(const std::string& message, bool allies_only);
@@ -126,7 +126,7 @@ private:
 	bool clear_shroud(const unsigned int team_num);
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 
-	display* gui_;
+	game_display* gui_;
 	unit_map& units_;
 	std::vector<team>& teams_;
 	const config& level_;

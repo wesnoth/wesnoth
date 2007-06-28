@@ -151,7 +151,7 @@ t_translation::t_letter map_editor::old_fg_terrain_;
 t_translation::t_letter map_editor::old_bg_terrain_;
 int map_editor::old_brush_size_;
 
-map_editor::map_editor(display &gui, editormap &map, config &theme, config &game_config)
+map_editor::map_editor(game_display &gui, editormap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  theme_(theme), game_config_(game_config), map_dirty_(false),  auto_update_(true), l_button_palette_dirty_(true),
 	  everything_dirty_(false), palette_(gui, size_specs_, map, game_config), brush_(gui, size_specs_),
@@ -1024,7 +1024,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	const gamemap::location& minimap_loc = gui_.minimap_location_on(mousex,mousey);
 	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
 	if (minimap_loc.valid()) {
-		gui_.scroll_to_tile(minimap_loc,display::WARP,false);
+		gui_.scroll_to_tile(minimap_loc,game_display::WARP,false);
 	}
 	else if (key_[SDLK_RSHIFT] || key_[SDLK_LSHIFT]) {
 		if (key_[SDLK_RALT] || key_[SDLK_LALT]) {
@@ -1235,7 +1235,7 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 	const gamemap::location& minimap_loc = gui_.minimap_location_on(mousex,mousey);
 	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
 	if (minimap_loc.valid()) {
-		gui_.scroll_to_tile(minimap_loc,display::WARP,false);
+		gui_.scroll_to_tile(minimap_loc,game_display::WARP,false);
 	}
 }
 

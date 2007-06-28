@@ -140,7 +140,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	}
 }
 
-int unit_animation::matches(const display& disp, const gamemap::location& loc,const unit* my_unit) const
+int unit_animation::matches(const game_display& disp, const gamemap::location& loc,const unit* my_unit) const
 {
 	int result = 0;
 	if(terrain_types_.empty() == false) {
@@ -245,7 +245,7 @@ fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg)
 }
 
 
-int fighting_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,
+int fighting_animation::matches(const game_display& disp, const gamemap::location & loc,const unit* my_unit,
 		hit_type hit,const attack_type* attack, const attack_type* secondary_attack,int swing,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
@@ -292,7 +292,7 @@ int fighting_animation::matches(const display& disp, const gamemap::location & l
 }
 
 
-int poison_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
+int poison_animation::matches(const game_display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
 	if(result == -2) return -2;
@@ -306,7 +306,7 @@ int poison_animation::matches(const display& disp, const gamemap::location & loc
 	return result;
 }
 
-int healed_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int healing) const
+int healed_animation::matches(const game_display& disp, const gamemap::location & loc,const unit* my_unit,int healing) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
 	if(result == -2) return -2;
@@ -320,7 +320,7 @@ int healed_animation::matches(const display& disp, const gamemap::location & loc
 	return result;
 }
 
-int healing_animation::matches(const display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
+int healing_animation::matches(const game_display& disp, const gamemap::location & loc,const unit* my_unit,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit);
 	if(result == -2) return -2;

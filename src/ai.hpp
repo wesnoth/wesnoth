@@ -238,7 +238,7 @@ protected:
 	//function which rates the value of moving onto certain terrain for a unit
 	virtual int rate_terrain(const unit& u, const location& loc);
 
-	display& disp_;
+	game_display& disp_;
 	const gamemap& map_;
 	const game_data& gameinfo_;
 	unit_map& units_;

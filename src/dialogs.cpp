@@ -57,7 +57,7 @@ void advance_unit(const game_data& info,
 				  const gamemap& map,
                   unit_map& units,
                   gamemap::location loc,
-                  display& gui, bool random_choice)
+                  game_display& gui, bool random_choice)
 {
 	unit_map::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false)
@@ -139,7 +139,7 @@ void advance_unit(const game_data& info,
 	}
 }
 
-bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice)
+bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, game_display& gui, size_t choice)
 {
 	const events::command_disabler cmd_disabler;
 
@@ -208,7 +208,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	return true;
 }
 
-void show_objectives(display& disp, const config& level, const std::string& objectives)
+void show_objectives(game_display& disp, const config& level, const std::string& objectives)
 {
 	static const std::string no_objectives(_("No objectives available"));
 	const std::string& name = level["name"];
@@ -622,7 +622,7 @@ namespace {
 	static const int unit_preview_border = 10;
 }
 
-unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
+unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
 				    : gui::preview_pane(disp.video()), disp_(disp),
 				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
 				      map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
@@ -634,7 +634,7 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 	unit_store_.push_back(u);
 }
 
-unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, std::vector<unit>& units, TYPE type, bool on_left_side)
+unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map, std::vector<unit>& units, TYPE type, bool on_left_side)
                                     : gui::preview_pane(disp.video()), disp_(disp),
 				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
 				      map_(map), units_(&units), index_(0), left_(on_left_side),
@@ -810,7 +810,7 @@ void unit_preview_pane::process_event()
 	}
 }
 
-void show_unit_description(display &disp, const unit& u)
+void show_unit_description(game_display &disp, const unit& u)
 {
 	help::show_help(disp,"unit_" + u.id());
 }

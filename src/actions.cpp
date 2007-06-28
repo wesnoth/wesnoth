@@ -753,7 +753,7 @@ attack::~attack()
 	delete bc_;
 }
 
-attack::attack(display& gui, const gamemap& map,
+attack::attack(game_display& gui, const gamemap& map,
             std::vector<team>& teams,
             gamemap::location attacker,
             gamemap::location defender,
@@ -1383,7 +1383,7 @@ void reset_resting(unit_map& units, unsigned int side)
 	}
 }
 
-void calculate_healing(display& disp, const gamemap& map,
+void calculate_healing(game_display& disp, const gamemap& map,
                        unit_map& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display)
 {
@@ -1787,7 +1787,7 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 	game_events::pump();
 }
 
-bool clear_shroud(display& disp, const gamestatus& status,
+bool clear_shroud(game_display& disp, const gamestatus& status,
 		const gamemap& map, const game_data& gamedata,
                   unit_map& units, std::vector<team>& teams, int team)
 {
@@ -1813,7 +1813,7 @@ bool clear_shroud(display& disp, const gamestatus& status,
 	return result;
 }
 
-size_t move_unit(display* disp, const game_data& gamedata,
+size_t move_unit(game_display* disp, const game_data& gamedata,
                  const gamestatus& status, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  std::vector<gamemap::location> route,
@@ -2136,7 +2136,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 	return false;
 }
 
-void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& status, const gamemap& map,
+void apply_shroud_changes(undo_list& undos, game_display* disp, const gamestatus& status, const gamemap& map,
 	const game_data& gamedata, unit_map& units, std::vector<team>& teams, int team)
 {
 	// No need to do this if the team isn't using fog or shroud.

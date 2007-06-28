@@ -19,7 +19,7 @@
 #include "map_label.hpp"
 #include "gamestatus.hpp"
 
-class display;
+class game_display;
 class config_writer;
 class unit_map;
 
@@ -137,7 +137,7 @@ extern replay recorder;
 
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
-bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
+bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo,
                unit_map& units,
 	       std::vector<team>& teams, int team_num, const gamestatus& state,
 	       game_state& state_of_game, replay* obj=NULL);

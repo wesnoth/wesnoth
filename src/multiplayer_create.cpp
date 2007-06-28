@@ -36,7 +36,7 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 
 namespace mp {
 
-create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
+create::create(game_display& disp, const config &cfg, chat& c, config& gamelist) :
 	ui(disp, _("Create Game"), cfg, c, gamelist),
 
 	tooltip_manager_(disp.video()),

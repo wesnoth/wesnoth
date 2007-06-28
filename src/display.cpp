@@ -63,7 +63,7 @@ namespace {
 	size_t sunset_timer = 0;
 }
 
-map_display::map_display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) : 
+display::display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) : 
 	screen_(video), map_(map), viewpoint_(NULL), xpos_(0), ypos_(0),
 	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom),
 	builder_(cfg, level, map),
@@ -71,6 +71,7 @@ map_display::map_display(CVideo& video, const gamemap& map, const config& theme_
 	invalidateAll_(true), grid_(false),
 	diagnostic_label_(0), panelsDrawn_(false),
 	turbo_speed_(2), turbo_(false), 
+	invalidateGameStatus_(true),
 	map_labels_(*this,map, 0),
 	_scroll_event("scrolled"),
 	nextDraw_(0), fps_handle_(0)
@@ -82,11 +83,11 @@ map_display::map_display(CVideo& video, const gamemap& map, const config& theme_
 	image::set_zoom(zoom_);
 }
 
-map_display::~map_display()
+display::~display()
 {
 }
 
-const SDL_Rect& map_display::map_area() const 
+const SDL_Rect& display::map_area() const 
 {
 	static SDL_Rect res = {0, 0, 0, 0};
 	res = map_outside_area();
@@ -113,7 +114,7 @@ const SDL_Rect& map_display::map_area() const
 	return res;
 }
 
-bool map_display::outside_area(const SDL_Rect& area, const int x, const int y) const
+bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 {
 	const int x_thresh = hex_width();
 	const int y_thresh = hex_size();
@@ -122,7 +123,7 @@ bool map_display::outside_area(const SDL_Rect& area, const int x, const int y) c
 }
 
 // This function use the screen as reference
-const gamemap::location map_display::hex_clicked_on(int xclick, int yclick, 
+const gamemap::location display::hex_clicked_on(int xclick, int yclick, 
 		gamemap::location::DIRECTION* nearest_hex, 
 		gamemap::location::DIRECTION* second_nearest_hex) const
 {
@@ -139,7 +140,7 @@ const gamemap::location map_display::hex_clicked_on(int xclick, int yclick,
 
 
 // This function use the rect of map_area as reference
-const gamemap::location map_display::pixel_position_to_hex(int x, int y, 
+const gamemap::location display::pixel_position_to_hex(int x, int y, 
 		gamemap::location::DIRECTION* nearest_hex, 
 		gamemap::location::DIRECTION* second_nearest_hex) const
 {
@@ -256,7 +257,7 @@ const gamemap::location map_display::pixel_position_to_hex(int x, int y,
 	return res;
 }
 
-void map_display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const
+void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const
 {
 	// change the coordinates of the rect send to be relative 
 	// to the map area instead of the screen area
@@ -295,7 +296,7 @@ void map_display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft,
 	}
 }
 
-gamemap::location map_display::minimap_location_on(int x, int y)
+gamemap::location display::minimap_location_on(int x, int y)
 {
 	const SDL_Rect rect = minimap_area();
 
@@ -310,7 +311,7 @@ gamemap::location map_display::minimap_location_on(int x, int y)
 	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
 
-void map_display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
+void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
 {
 	SDL_Rect r = map_area();
 	r.x=0;
@@ -318,7 +319,7 @@ void map_display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::lo
 	get_rect_hex_bounds(r, topleft, bottomright);
 }
 
-void map_display::screenshot()
+void display::screenshot()
 {
 	std::string datadir = get_screenshot_dir();
 	static unsigned int counter = 0;
@@ -341,7 +342,7 @@ void map_display::screenshot()
 	SDL_SaveBMP(screen_.getSurface().get(), name.c_str());
 }
 
-gui::button* map_display::find_button(const std::string& id)
+gui::button* display::find_button(const std::string& id)
 {
 	for (size_t i = 0; i < buttons_.size(); ++i) {
 		if(buttons_[i].id() == id) {
@@ -351,7 +352,7 @@ gui::button* map_display::find_button(const std::string& id)
 	return NULL;
 }
 
-void map_display::create_buttons()
+void display::create_buttons()
 {
 	std::vector<gui::button> work;
 
@@ -377,7 +378,7 @@ void map_display::create_buttons()
 	buttons_.swap(work);
 }
 
-gui::button::TYPE map_display::string_to_button_type(std::string type)
+gui::button::TYPE display::string_to_button_type(std::string type)
 {
 	gui::button::TYPE res = gui::button::TYPE_PRESS;
 	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }
@@ -391,7 +392,7 @@ static const std::string& get_direction(size_t n)
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
-std::vector<std::string> map_display::get_fog_shroud_graphics(const gamemap::location& loc)
+std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
 {
 	std::vector<std::string> res;
 
@@ -466,7 +467,7 @@ std::vector<std::string> map_display::get_fog_shroud_graphics(const gamemap::loc
 	return res;
 }
 
-std::vector<surface> map_display::get_terrain_images(const gamemap::location &loc, 
+std::vector<surface> display::get_terrain_images(const gamemap::location &loc, 
 						     const std::string timeid,
 		image::TYPE image_type, 
 		ADJACENT_TERRAIN_TYPE terrain_type)
@@ -522,13 +523,13 @@ std::vector<surface> map_display::get_terrain_images(const gamemap::location &lo
 	return res;
 }
 
-void map_display::tile_stack_append(const surface surf) 
+void display::tile_stack_append(const surface surf) 
 {
 	if (surf)
 		tile_stack_.push_back(surf);
 };
 
-void map_display::tile_stack_terrains(const gamemap::location& loc, 
+void display::tile_stack_terrains(const gamemap::location& loc, 
 				       const std::string timeid,
 				       image::TYPE image_type, 
 				       ADJACENT_TERRAIN_TYPE type)
@@ -541,7 +542,7 @@ void map_display::tile_stack_terrains(const gamemap::location& loc,
 		tile_stack_append(*itor);
 }
 
-void map_display::tile_stack_render(int x, int y)
+void display::tile_stack_render(int x, int y)
 // Render a stack of tile surfaces at the specified location
 {
 	surface const dst(screen_.getSurface());
@@ -560,12 +561,12 @@ void map_display::tile_stack_render(int x, int y)
 	update_rect(x, y, zoom_, zoom_);
 }
 
-void map_display::sunset(const size_t delay) {
+void display::sunset(const size_t delay) {
 	// this allow both parametric and toggle use
 	sunset_delay = (sunset_delay == 0 && delay == 0) ? 5 : delay;
 }
 
-void map_display::flip()
+void display::flip()
 {
 	if(video().faked()) {
 		return;
@@ -594,7 +595,7 @@ void map_display::flip()
 	font::undraw_floating_labels(frameBuffer);
 }
 
-void map_display::update_display()
+void display::update_display()
 {
 	if(screen_.update_locked()) {
 		return;
@@ -710,7 +711,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 	update_rect(loc);
 }
 
-void map_display::draw_all_panels()
+void display::draw_all_panels()
 {
 	surface const screen(screen_.getSurface());
 
@@ -755,7 +756,7 @@ static void draw_background(surface screen, const SDL_Rect& area)
 	}
 }
 
-void map_display::draw_text_in_hex(const gamemap::location& loc, const std::string& text,
+void display::draw_text_in_hex(const gamemap::location& loc, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
@@ -785,7 +786,7 @@ void map_display::draw_text_in_hex(const gamemap::location& loc, const std::stri
 	font::draw_text(&screen_, rect,font_sz, color, text, x, y);
 }
 
-void map_display::clear_hex_overlay(const gamemap::location& loc)
+void display::clear_hex_overlay(const gamemap::location& loc)
 {
 	if(! hex_overlay_.empty()) {
 		std::map<gamemap::location, surface>::iterator itor = hex_overlay_.find(loc);
@@ -795,7 +796,7 @@ void map_display::clear_hex_overlay(const gamemap::location& loc)
 	}
 }
 
-void map_display::draw_unit(int x, int y, surface image,
+void display::draw_unit(int x, int y, surface image,
 		bool upside_down, fixed_t alpha, Uint32 blendto,
 		double blend_ratio, double submerged)
 {
@@ -840,21 +841,21 @@ void map_display::draw_unit(int x, int y, surface image,
 
 }
 
-void map_display::select_hex(gamemap::location hex)
+void display::select_hex(gamemap::location hex)
 {
 	invalidate(selectedHex_);
 	selectedHex_ = hex;
 	invalidate(selectedHex_);
 }
 
-void map_display::highlight_hex(gamemap::location hex)
+void display::highlight_hex(gamemap::location hex)
 {
 	invalidate(mouseoverHex_);
 	mouseoverHex_ = hex;
 	invalidate(mouseoverHex_);
 }
 
-void map_display::invalidate_locations_in_rect(SDL_Rect r)
+void display::invalidate_locations_in_rect(SDL_Rect r)
 {
 	gamemap::location topleft, bottomright;
 	get_rect_hex_bounds(r, topleft, bottomright);
@@ -866,7 +867,7 @@ void map_display::invalidate_locations_in_rect(SDL_Rect r)
 	}
 }
 
-void map_display::set_diagnostic(const std::string& msg)
+void display::set_diagnostic(const std::string& msg)
 {
 	if(diagnostic_label_ != 0) {
 		font::remove_floating_label(diagnostic_label_);
@@ -878,7 +879,7 @@ void map_display::set_diagnostic(const std::string& msg)
 	}
 }
 
-bool map_display::draw_init()
+bool display::draw_init()
 // Initiate a redraw.  May require redrawing panels and background
 {
 	bool changed = false;
@@ -918,7 +919,7 @@ bool map_display::draw_init()
 	return changed;
 }
 
-void map_display::draw_wrap(bool update,bool force,bool changed)
+void display::draw_wrap(bool update,bool force,bool changed)
 {
 	static const int time_between_draws = preferences::draw_delay();
 	const int current_time = SDL_GetTicks();
@@ -955,13 +956,13 @@ void map_display::draw_wrap(bool update,bool force,bool changed)
 
 //Delay routines: use these not SDL_Delay (for --nogui).
 
-void map_display::delay(unsigned int milliseconds) const
+void display::delay(unsigned int milliseconds) const
 {
 	if (!game_config::no_delay)
 		SDL_Delay(milliseconds);
 }
 
-const theme::menu* map_display::menu_pressed()
+const theme::menu* display::menu_pressed()
 {
 
 	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
@@ -975,7 +976,7 @@ const theme::menu* map_display::menu_pressed()
 	return NULL;
 }
 
-void map_display::enable_menu(const std::string& item, bool enable)
+void display::enable_menu(const std::string& item, bool enable)
 {
 	for(std::vector<theme::menu>::const_iterator menu = theme_.menus().begin();
 			menu != theme_.menus().end(); ++menu) {
@@ -991,7 +992,7 @@ void map_display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
-void map_display::add_highlighted_loc(const gamemap::location &hex) 
+void display::add_highlighted_loc(const gamemap::location &hex) 
 {
 	// Only invalidate and insert if this is a new addition, for
 	// efficiency.
@@ -1001,7 +1002,7 @@ void map_display::add_highlighted_loc(const gamemap::location &hex)
 	}
 }
 
-void map_display::clear_highlighted_locs() 
+void display::clear_highlighted_locs() 
 {
 	for (std::set<gamemap::location>::const_iterator it = highlighted_locations_.begin();
 		 it != highlighted_locations_.end(); it++) {
@@ -1010,7 +1011,7 @@ void map_display::clear_highlighted_locs()
 	highlighted_locations_.clear();
 }
 
-void map_display::remove_highlighted_loc(const gamemap::location &hex) 
+void display::remove_highlighted_loc(const gamemap::location &hex) 
 {
 	std::set<gamemap::location>::iterator it = highlighted_locations_.find(hex);
 	// Only invalidate and remove if the hex was found, for efficiency.
@@ -1020,7 +1021,7 @@ void map_display::remove_highlighted_loc(const gamemap::location &hex)
 	}
 }
 
-void map_display::announce(const std::string message, const SDL_Color& colour)
+void display::announce(const std::string message, const SDL_Color& colour)
 {
 	font::add_floating_label(message,
 				 font::SIZE_XLARGE,
@@ -1032,7 +1033,7 @@ void map_display::announce(const std::string message, const SDL_Color& colour)
 				 font::CENTER_ALIGN);
 }
 
-surface map_display::get_minimap(int w, int h)
+surface display::get_minimap(int w, int h)
 {
 	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
 		minimap_ = NULL;
@@ -1045,7 +1046,7 @@ surface map_display::get_minimap(int w, int h)
 	return minimap_;
 }
 
-void map_display::draw_minimap(int x, int y, int w, int h)
+void display::draw_minimap(int x, int y, int w, int h)
 {
 	const surface surf(get_minimap(w,h));
 	if(surf == NULL) {
@@ -1083,7 +1084,7 @@ void map_display::draw_minimap(int x, int y, int w, int h)
 	update_rect(minimap_location);
 }
 
-void map_display::scroll(int xmove, int ymove)
+void display::scroll(int xmove, int ymove)
 {
 	const int orig_x = xpos_;
 	const int orig_y = ypos_;
@@ -1137,7 +1138,7 @@ void map_display::scroll(int xmove, int ymove)
 	redrawMinimap_ = true;
 }
 
-void map_display::set_zoom(int amount)
+void display::set_zoom(int amount)
 {
 	int new_zoom = zoom_ + amount;
 	if (new_zoom < MinZoom) {
@@ -1165,12 +1166,12 @@ void map_display::set_zoom(int amount)
 	}
 }
 
-void map_display::set_default_zoom()
+void display::set_default_zoom()
 { 
 	set_zoom(DefaultZoom - zoom_); 
 }
 
-void map_display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
+void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
 {
 	if(screen_.update_locked() || (check_fogged && fogged(loc))) {
 		return;
@@ -1271,7 +1272,7 @@ void map_display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scrol
 	}
 }
 
-void map_display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
+void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
                               SCROLL_TYPE scroll_type, bool check_fogged)
 {
 	const int xpos1 = get_location_x(loc1);
@@ -1303,7 +1304,7 @@ void map_display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::
 	}
 }
 
-void map_display::bounds_check_position()
+void display::bounds_check_position()
 {
 	const int orig_zoom = zoom_;
 
@@ -1322,7 +1323,7 @@ void map_display::bounds_check_position()
 	}
 }
 
-void map_display::bounds_check_position(int& xpos, int& ypos)
+void display::bounds_check_position(int& xpos, int& ypos)
 {
 	const int tile_width = hex_width();
 
@@ -1347,7 +1348,7 @@ void map_display::bounds_check_position(int& xpos, int& ypos)
 	}
 }
 
-void map_display::invalidate_all()
+void display::invalidate_all()
 {
 	INFO_DP << "invalidate_all()";
 	invalidateAll_ = true;
@@ -1355,7 +1356,7 @@ void map_display::invalidate_all()
 	update_rect(map_area());
 }
 
-double map_display::turbo_speed() const
+double display::turbo_speed() const
 {
 	bool res = turbo_;
 	if(keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT]) {
@@ -1369,12 +1370,78 @@ double map_display::turbo_speed() const
 		return 1.0;
 }
 
+void display::redraw_everything()
+{
+	if(screen_.update_locked())
+		return;
+
+	invalidateGameStatus_ = true;
+
+	for(size_t n = 0; n != reports::NUM_REPORTS; ++n) {
+		reportRects_[n] = empty_rect;
+		reportSurfaces_[n].assign(NULL);
+		reports_[n] = reports::report();
+	}
+
+	bounds_check_position();
+
+	tooltips::clear_tooltips();
+
+	theme_.set_resolution(screen_area());
+
+	if(buttons_.empty() == false) {
+		create_buttons();
+	}
+
+	panelsDrawn_ = false;
+
+	map_labels_.recalculate_labels();
+
+	redraw_background_ = true;
+
+	invalidate_all();
+	draw(true,true);
+}
+
+void display::draw_image_for_report(surface& img, SDL_Rect& rect)
+{
+	SDL_Rect visible_area = get_non_transparent_portion(img);
+	SDL_Rect target = rect;
+	if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
+		if(visible_area.w == 0 || visible_area.h == 0) {
+			return;
+		}
+
+		if(visible_area.w > rect.w || visible_area.h > rect.h) {
+			img.assign(get_surface_portion(img,visible_area));
+			img.assign(scale_surface(img,rect.w,rect.h));
+			visible_area.x = 0;
+			visible_area.y = 0;
+			visible_area.w = img->w;
+			visible_area.h = img->h;
+		} else {
+			target.x = rect.x + (rect.w - visible_area.w)/2;
+			target.y = rect.y + (rect.h - visible_area.h)/2;
+			target.w = visible_area.w;
+			target.h = visible_area.h;
+		}
+
+		SDL_BlitSurface(img,&visible_area,screen_.getSurface(),&target);
+	} else {
+		if(img->w != rect.w || img->h != rect.h) {
+			img.assign(scale_surface(img,rect.w,rect.h));
+		}
+
+		SDL_BlitSurface(img,NULL,screen_.getSurface(),&target);
+	}
+}
+
 // Methods for editor subclass go here
 
 editor_display::editor_display(CVideo& video, const gamemap& map,
 		const config& theme_cfg, const config& cfg, 
 		const config& level) :
-	map_display(video, map, theme_cfg, cfg, level)
+	display(video, map, theme_cfg, cfg, level)
 {
 	//clear the screen contents
 	surface const disp(screen_.getSurface());
@@ -1384,18 +1451,17 @@ editor_display::editor_display(CVideo& video, const gamemap& map,
 
 // Methods for superclass aware of units go here
 
-std::map<gamemap::location,fixed_t> display::debugHighlights_;
+std::map<gamemap::location,fixed_t> game_display::debugHighlights_;
 
-display::display(unit_map& units, CVideo& video, const gamemap& map,
+game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
-	map_display(video, map, theme_cfg, cfg, level),
+	display(video, map, theme_cfg, cfg, level),
 	units_(units),
 	temp_unit_(NULL),
 	status_(status),
 	teams_(t),
 	invalidateUnit_(true),
-	invalidateGameStatus_(true),
 	currentTeam_(0), activeTeam_(0),
 	sidebarScaling_(1.0),
 	first_turn_(true), in_game_(false), 
@@ -1450,14 +1516,14 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 }
 
-display::~display()
+game_display::~game_display()
 {
 	// SDL_FreeSurface(minimap_);
 	prune_chat_messages(true);
 	singleton_ = NULL;
 }
 
-void display::new_turn()
+void game_display::new_turn()
 {
 	const time_of_day& tod = status_.get_time_of_day();
 
@@ -1509,26 +1575,26 @@ void display::new_turn()
 	draw();
 }
 
-void display::adjust_colours(int r, int g, int b)
+void game_display::adjust_colours(int r, int g, int b)
 {
 	const time_of_day& tod = status_.get_time_of_day();
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
-void display::select_hex(gamemap::location hex)
+void game_display::select_hex(gamemap::location hex)
 {
 	if(fogged(hex)) {
 		return;
 	}
-	map_display::select_hex(hex);
+	display::select_hex(hex);
 	invalidate_unit();
 }
 
-void display::highlight_hex(gamemap::location hex)
+void game_display::highlight_hex(gamemap::location hex)
 {
 	const int has_unit = units_.count(mouseoverHex_) + units_.count(hex);
 
-	map_display::highlight_hex(hex);
+	display::highlight_hex(hex);
 	invalidate_game_status();
 
 	if(has_unit) {
@@ -1536,7 +1602,7 @@ void display::highlight_hex(gamemap::location hex)
 	}
 }
 
-void display::scroll_to_leader(unit_map& units, int side)
+void game_display::scroll_to_leader(unit_map& units, int side)
 {
 	const unit_map::iterator leader = find_leader(units,side);
 
@@ -1549,42 +1615,10 @@ void display::scroll_to_leader(unit_map& units, int side)
 	}
 }
 
-void display::redraw_everything()
-{
-	if(screen_.update_locked() || teams_.empty())
-		return;
-
-	bounds_check_position();
-
-	invalidateGameStatus_ = true;
-
-	for(size_t n = 0; n != reports::NUM_REPORTS; ++n) {
-		reportRects_[n] = empty_rect;
-		reportSurfaces_[n].assign(NULL);
-		reports_[n] = reports::report();
-	}
-
-	tooltips::clear_tooltips();
-
-	theme_.set_resolution(screen_area());
-
-	if(buttons_.empty() == false) {
-		create_buttons();
-	}
-
-	panelsDrawn_ = false;
-
-	map_labels_.recalculate_labels();
-
-	redraw_background_ = true;
-
-	invalidate_all();
-	draw(true,true);
-}
 
 void editor_display::draw(bool update,bool force)
 {
-	bool changed = map_display::draw_init();
+	bool changed = display::draw_init();
 
 	//int simulate_delay = 0;
 	if(!map_.empty() && !invalidated_.empty()) {
@@ -1642,17 +1676,17 @@ void editor_display::draw(bool update,bool force)
 		wassert(invalidated_.empty());
 	}
 
-	map_display::draw_wrap(update, force, changed);
+	display::draw_wrap(update, force, changed);
 }
 
-void display::draw(bool update,bool force)
+void game_display::draw(bool update,bool force)
 {
 	//log_scope("Drawing");
 	invalidate_animations();
 
 	process_reachmap_changes();
 
-	bool changed = map_display::draw_init();
+	bool changed = display::draw_init();
 
 	//int simulate_delay = 0;
 	if(!map_.empty() && !invalidated_.empty()) {
@@ -1847,95 +1881,10 @@ void display::draw(bool update,bool force)
 	// simulate slow pc
 	//SDL_Delay(2*simulate_delay + rand() % 20);
 
-	map_display::draw_wrap(update, force, changed);
+	display::draw_wrap(update, force, changed);
 }
 
-void display::draw_sidebar()
-{
-	draw_report(reports::REPORT_CLOCK);
-	draw_report(reports::REPORT_COUNTDOWN);
-
-	if(teams_.empty()) {
-		return;
-	}
-
-	if(invalidateUnit_) {
-		//we display the unit the mouse is over if it is over a unit
-		//otherwise we display the unit that is selected
-		unit_map::const_iterator i =
-			find_visible_unit(units_,mouseoverHex_,
-					map_,
-					teams_,teams_[viewing_team()]);
-
-		if(i == units_.end()) {
-			i = find_visible_unit(units_,selectedHex_,
-					map_,
-					teams_,teams_[viewing_team()]);
-		}
-
-		if(i != units_.end()) {
-			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
-				draw_report(reports::TYPE(r));
-			}
-		}
-
-		invalidateUnit_ = false;
-	}
-
-	if(invalidateGameStatus_) {
-		draw_game_status();
-		invalidateGameStatus_ = false;
-	}
-}
-
-void display::draw_game_status()
-{
-	if(teams_.empty()) {
-		return;
-	}
-
-	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
-		draw_report(reports::TYPE(r));
-	}
-
-	// the mouse-over needs to update the visibility icon
-	draw_report(reports::UNIT_STATUS);
-}
-
-void display::draw_image_for_report(surface& img, SDL_Rect& rect)
-{
-	SDL_Rect visible_area = get_non_transparent_portion(img);
-	SDL_Rect target = rect;
-	if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
-		if(visible_area.w == 0 || visible_area.h == 0) {
-			return;
-		}
-
-		if(visible_area.w > rect.w || visible_area.h > rect.h) {
-			img.assign(get_surface_portion(img,visible_area));
-			img.assign(scale_surface(img,rect.w,rect.h));
-			visible_area.x = 0;
-			visible_area.y = 0;
-			visible_area.w = img->w;
-			visible_area.h = img->h;
-		} else {
-			target.x = rect.x + (rect.w - visible_area.w)/2;
-			target.y = rect.y + (rect.h - visible_area.h)/2;
-			target.w = visible_area.w;
-			target.h = visible_area.h;
-		}
-
-		SDL_BlitSurface(img,&visible_area,screen_.getSurface(),&target);
-	} else {
-		if(img->w != rect.w || img->h != rect.h) {
-			img.assign(scale_surface(img,rect.w,rect.h));
-		}
-
-		SDL_BlitSurface(img,NULL,screen_.getSurface(),&target);
-	}
-}
-
-void display::draw_report(reports::TYPE report_num)
+void game_display::draw_report(reports::TYPE report_num)
 {
 	if(!team_valid()) {
 		return;
@@ -2123,7 +2072,60 @@ void display::draw_report(reports::TYPE report_num)
 	}
 }
 
-void display::draw_minimap_units(int x, int y, int w, int h)
+void game_display::draw_game_status()
+{
+
+	if(teams_.empty()) {
+		return;
+	}
+
+	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
+		draw_report(reports::TYPE(r));
+	}
+
+	// the mouse-over needs to update the visibility icon
+	draw_report(reports::UNIT_STATUS);
+}
+
+void game_display::draw_sidebar()
+{
+	draw_report(reports::REPORT_CLOCK);
+	draw_report(reports::REPORT_COUNTDOWN);
+
+	if(teams_.empty()) {
+		return;
+	}
+
+	if(invalidateUnit_) {
+		//we display the unit the mouse is over if it is over a unit
+		//otherwise we display the unit that is selected
+		unit_map::const_iterator i =
+			find_visible_unit(units_,mouseoverHex_,
+					map_,
+					teams_,teams_[viewing_team()]);
+
+		if(i == units_.end()) {
+			i = find_visible_unit(units_,selectedHex_,
+					map_,
+					teams_,teams_[viewing_team()]);
+		}
+
+		if(i != units_.end()) {
+			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
+				draw_report(reports::TYPE(r));
+			}
+		}
+
+		invalidateUnit_ = false;
+	}
+
+	if(invalidateGameStatus_) {
+		draw_game_status();
+		invalidateGameStatus_ = false;
+	}
+}
+
+void game_display::draw_minimap_units(int x, int y, int w, int h)
 {
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(fogged(u->first) ||
@@ -2142,7 +2144,7 @@ void display::draw_minimap_units(int x, int y, int w, int h)
 	}
 }
 
-void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
+void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
 	height = static_cast<size_t>(height*get_zoom_factor());
@@ -2206,7 +2208,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	}
 }
 
-void display::draw_movement_info(const gamemap::location& loc)
+void game_display::draw_movement_info(const gamemap::location& loc)
 {
 
 	//check if there is a path and if we are not at its start
@@ -2248,7 +2250,7 @@ void display::draw_movement_info(const gamemap::location& loc)
 	}
 }
 
-surface display::footstep_image(const gamemap::location& loc)
+surface game_display::footstep_image(const gamemap::location& loc)
 {
 	std::vector<gamemap::location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
@@ -2333,7 +2335,7 @@ surface display::footstep_image(const gamemap::location& loc)
 	return image;
 }
 
-surface display::get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc)
+surface game_display::get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc)
 {
 	if(!map_.is_village(terrain)) {
 		return surface(NULL);
@@ -2351,13 +2353,13 @@ surface display::get_flag(const t_translation::t_letter& terrain, const gamemap:
 	return surface(NULL);
 }
 
-void display::highlight_reach(const paths &paths_list)
+void game_display::highlight_reach(const paths &paths_list)
 {
 	unhighlight_reach();
 	highlight_another_reach(paths_list);
 }
 
-void display::highlight_another_reach(const paths &paths_list)
+void game_display::highlight_another_reach(const paths &paths_list)
 {
 	paths::routes_map::const_iterator r;
 
@@ -2368,13 +2370,13 @@ void display::highlight_another_reach(const paths &paths_list)
 	reach_map_changed_ = true;
 }
 
-void display::unhighlight_reach()
+void game_display::unhighlight_reach()
 {
 	reach_map_ = reach_map();
 	reach_map_changed_ = true;
 }
 
-void display::process_reachmap_changes()
+void game_display::process_reachmap_changes()
 {
 	if (!reach_map_changed_) return;
 	if (reach_map_.empty() != reach_map_old_.empty()) {
@@ -2418,7 +2420,7 @@ void display::process_reachmap_changes()
 	reach_map_changed_ = false;
 }
 
-void display::invalidate_route()
+void game_display::invalidate_route()
 {
 	for(std::vector<gamemap::location>::const_iterator i = route_.steps.begin();
 	    i != route_.steps.end(); ++i) {
@@ -2426,7 +2428,7 @@ void display::invalidate_route()
 	}
 }
 
-void display::set_route(const paths::route* route)
+void game_display::set_route(const paths::route* route)
 {
 	invalidate_route();
 
@@ -2440,7 +2442,7 @@ void display::set_route(const paths::route* route)
 	invalidate_route();
 }
 
-void display::remove_footstep(const gamemap::location& loc)
+void game_display::remove_footstep(const gamemap::location& loc)
 {
 	const std::vector<gamemap::location>::iterator it = std::find(route_.steps.begin(),route_.steps.end(),loc);
 	if(it != route_.steps.end()) {
@@ -2448,7 +2450,7 @@ void display::remove_footstep(const gamemap::location& loc)
 	}
 }
 
-void display::float_label(const gamemap::location& loc, const std::string& text,
+void game_display::float_label(const gamemap::location& loc, const std::string& text,
 						  int red, int green, int blue)
 {
 	if(preferences::show_floating_labels() == false || fogged(loc)) {
@@ -2468,7 +2470,7 @@ struct is_energy_colour {
 												  (colour&0x000000FF) > 0x00000099; }
 };
 
-const SDL_Rect& display::calculate_energy_bar(surface surf)
+const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 {
 	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects_.find(surf);
 	if(i != energy_bar_rects_.end()) {
@@ -2504,7 +2506,7 @@ const SDL_Rect& display::calculate_energy_bar(surface surf)
 	return calculate_energy_bar(surf);
 }
 
-void display::invalidate(const gamemap::location& loc)
+void game_display::invalidate(const gamemap::location& loc)
 {
 	if(!invalidateAll_) {
 		if (invalidated_.insert(loc).second) {
@@ -2545,7 +2547,7 @@ void display::invalidate(const gamemap::location& loc)
 	}
 }
 
-void display::invalidate_animations()
+void game_display::invalidate_animations()
 {
 	new_animation_frame();
 	gamemap::location topleft;
@@ -2581,7 +2583,7 @@ void display::invalidate_animations()
 
 }
 
-void display::recalculate_minimap()
+void game_display::recalculate_minimap()
 {
 	if(minimap_ != NULL) {
 		minimap_.assign(NULL);
@@ -2591,20 +2593,20 @@ void display::recalculate_minimap()
 	// remove unit after invalidating...
 }
 
-void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
+void game_display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 {
 	wassert(game_config::debug);
 	debugHighlights_[loc] += amount;
 }
 
-void display::place_temporary_unit(unit &u, const gamemap::location& loc)
+void game_display::place_temporary_unit(unit &u, const gamemap::location& loc)
 {
 	temp_unit_ = &u;
 	temp_unit_loc_ = loc;
 	invalidate(loc);
 }
 
-void display::remove_temporary_unit()
+void game_display::remove_temporary_unit()
 {
 	if(!temp_unit_) return;
 
@@ -2613,7 +2615,7 @@ void display::remove_temporary_unit()
 	temp_unit_->redraw_unit(*this,gamemap::location());
 	temp_unit_ = NULL;
 }
-void display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
+void game_display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
 	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2, 
 			get_location_y(loc) + hex_size() / 2, halo, loc);
@@ -2622,7 +2624,7 @@ void display::add_overlay(const gamemap::location& loc, const std::string& img, 
 	overlays_.insert(overlay_map::value_type(loc,item));
 }
 
-void display::remove_overlay(const gamemap::location& loc)
+void game_display::remove_overlay(const gamemap::location& loc)
 {
 	typedef overlay_map::const_iterator Itor;
 	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
@@ -2634,7 +2636,7 @@ void display::remove_overlay(const gamemap::location& loc)
 	overlays_.erase(loc);
 }
 
-void display::write_overlays(config& cfg) const
+void game_display::write_overlays(config& cfg) const
 {
 	for(overlay_map::const_iterator i = overlays_.begin(); i != overlays_.end(); ++i) {
 		config& item = cfg.add_child("item");
@@ -2644,7 +2646,7 @@ void display::write_overlays(config& cfg) const
 	}
 }
 
-const std::string display::current_team_name() const
+const std::string game_display::current_team_name() const
 {
 	if (team_valid())
 	{
@@ -2653,7 +2655,7 @@ const std::string display::current_team_name() const
 	return std::string();
 }
 
-void display::set_team(size_t teamindex)
+void game_display::set_team(size_t teamindex)
 {
 	wassert(teamindex < teams_.size());
 	currentTeam_ = teamindex;
@@ -2670,7 +2672,7 @@ void display::set_team(size_t teamindex)
 	labels().recalculate_labels();
 }
 
-void display::set_playing_team(size_t teamindex)
+void game_display::set_playing_team(size_t teamindex)
 {
 	wassert(teamindex < teams_.size());
 	activeTeam_ = teamindex;
@@ -2690,7 +2692,7 @@ static std::string timestring ()
     return buf;
 }
 
-void display::begin_game()
+void game_display::begin_game()
 {
 	in_game_ = true;
 	create_buttons();
@@ -2705,7 +2707,7 @@ namespace {
 	const SDL_Color chat_message_bg     = {0,0,0,140};
 }
 
-void display::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type, bool bell)
+void game_display::add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type, bool bell)
 {
 	config* cignore;
 	bool ignored = false;
@@ -2791,7 +2793,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	}
 }
 
-void display::prune_chat_messages(bool remove_all)
+void game_display::prune_chat_messages(bool remove_all)
 {
 	const unsigned int message_ttl = remove_all ? 0 : 1200000;
 	const unsigned int max_chat_messages = preferences::chat_lines();
@@ -2811,4 +2813,4 @@ void display::prune_chat_messages(bool remove_all)
 	}
 }
 
-display *display::singleton_ = NULL;
+game_display *game_display::singleton_ = NULL;

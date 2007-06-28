@@ -39,7 +39,7 @@ const int leader_pane_border = 10;
 
 namespace mp {
 
-wait::leader_preview_pane::leader_preview_pane(display& disp, const game_data* data,
+wait::leader_preview_pane::leader_preview_pane(game_display& disp, const game_data* data,
 		const config::child_list& side_list) :
 	gui::preview_pane(disp.video()),
 	side_list_(side_list),
@@ -158,7 +158,7 @@ handler_vector wait::leader_preview_pane::handler_members() {
 }
 
 
-wait::wait(display& disp, const config& cfg, const game_data& data, mp::chat& c, config& gamelist) :
+wait::wait(game_display& disp, const config& cfg, const game_data& data, mp::chat& c, config& gamelist) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
 
 	cancel_button_(disp.video(), _("Cancel")),

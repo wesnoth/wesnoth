@@ -21,7 +21,7 @@ namespace gui{
 	floating_textbox::floating_textbox() : box_(NULL), check_(NULL), mode_(TEXTBOX_NONE), label_(0)
 	{}
 
-	void floating_textbox::close(display& gui)
+	void floating_textbox::close(game_display& gui)
 	{
 		if(!active()) {
 			return;
@@ -38,7 +38,7 @@ namespace gui{
 		gui.invalidate_all();
 	}
 
-	void floating_textbox::update_location(display& gui)
+	void floating_textbox::update_location(game_display& gui)
 	{
 		if (box_ == NULL)
 			return;
@@ -82,7 +82,7 @@ namespace gui{
 	}
 
 	void floating_textbox::show(gui::TEXTBOX_MODE mode, const std::string& label,
-		const std::string& check_label, bool checked, display& gui)
+		const std::string& check_label, bool checked, game_display& gui)
 	{
 		close(gui);
 
@@ -100,7 +100,7 @@ namespace gui{
 		update_location(gui);
 	}
 
-	void floating_textbox::tab(std::vector<team>& teams, const unit_map& /*units*/, display& gui)
+	void floating_textbox::tab(std::vector<team>& teams, const unit_map& /*units*/, game_display& gui)
 	{
 		if(active() == false) {
 			return;
@@ -182,7 +182,7 @@ namespace gui{
 						completion_list += " ";
 						completion_list += *it;
 					}
-					gui.add_chat_message("",0,completion_list,display::MESSAGE_PRIVATE,false);
+					gui.add_chat_message("",0,completion_list,game_display::MESSAGE_PRIVATE,false);
 				}
 				box_->set_text(text);
 			}

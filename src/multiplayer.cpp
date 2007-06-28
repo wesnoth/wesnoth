@@ -127,7 +127,7 @@ protected:
 };
 }
 
-static server_type open_connection(display& disp, const std::string& original_host)
+static server_type open_connection(game_display& disp, const std::string& original_host)
 {
 	std::string h = original_host;
 
@@ -279,7 +279,7 @@ static server_type open_connection(display& disp, const std::string& original_ho
 // creating the dialogs, then, according to the dialog result, of calling other
 // of those screen functions.
 
-static void enter_wait_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, bool observe)
+static void enter_wait_mode(game_display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, bool observe)
 {
 	mp::ui::result res;
 	game_state state;
@@ -323,7 +323,7 @@ static void enter_wait_mode(display& disp, const config& game_config, game_data&
 	}
 }
 
-static void enter_connect_mode(display& disp, const config& game_config, game_data& data,
+static void enter_connect_mode(game_display& disp, const config& game_config, game_data& data,
 		mp::chat& chat, config& gamelist, const mp::create::parameters& params,
 		mp::controller default_controller, bool is_server)
 {
@@ -367,7 +367,7 @@ static void enter_connect_mode(display& disp, const config& game_config, game_da
 	}
 }
 
-static void enter_create_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server)
+static void enter_create_mode(game_display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server)
 {
 	mp::ui::result res;
 	mp::create::parameters params;
@@ -393,7 +393,7 @@ static void enter_create_mode(display& disp, const config& game_config, game_dat
 	}
 }
 
-static void enter_lobby_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist)
+static void enter_lobby_mode(game_display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist)
 {
 	mp::ui::result res;
 
@@ -465,7 +465,7 @@ static void enter_lobby_mode(display& disp, const config& game_config, game_data
 
 namespace mp {
 
-void start_server(display& disp, const config& game_config, game_data& data,
+void start_server(game_display& disp, const config& game_config, game_data& data,
 		mp::controller default_controller, bool is_server)
 {
 	const set_random_generator generator_setter(&recorder);
@@ -475,7 +475,7 @@ void start_server(display& disp, const config& game_config, game_data& data,
 	enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
 }
 
-void start_client(display& disp, const config& game_config, game_data& data,
+void start_client(game_display& disp, const config& game_config, game_data& data,
 		const std::string host)
 {
 	const set_random_generator generator_setter(&recorder);

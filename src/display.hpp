@@ -51,18 +51,20 @@ class unit_map;
 // - the unit status, which displays an image for, and stats for, the
 //   current unit.
 
-class map_display
+class display
 {
 public:
-	map_display(CVideo& video, const gamemap& map, const config& theme_cfg,
+	display(CVideo& video, const gamemap& map, const config& theme_cfg,
 			const config& cfg, const config& level);
-	virtual ~map_display();
+	virtual ~display();
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
 
 	//gets the underlying screen object.
 	CVideo& video() { return screen_; }
+
+	virtual bool in_game() const { return false; }
 
 	//the dimensions of the display. x and y are
 	//width/height. mapx is the width of the portion of the
@@ -131,6 +133,9 @@ public:
 	virtual void select_hex(gamemap::location hex);
 	virtual void highlight_hex(gamemap::location hex);
 
+	//function to invalidate the game status displayed on the sidebar.
+	void invalidate_game_status() { invalidateGameStatus_ = true; }
+
 	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
 
 	//functions to get the on-screen positions of hexes.
@@ -157,6 +162,9 @@ public:
 
 	//function to make a screenshot and save it in a default location
 	void screenshot();
+
+	//invalidates entire screen, including all tiles and sidebar.
+	void redraw_everything();
 
 	theme& get_theme() { return theme_; }
 	gui::button* find_button(const std::string& id);
@@ -280,6 +288,9 @@ public:
 	void scroll_to_tiles(const gamemap::location& loc1, const gamemap::location& loc2,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
 
+	//expose the event so observers can be notified about map scrolling
+	events::generic_event &scroll_event() const { return _scroll_event; }
+
 	//draws invalidated items. If update is true, will also copy the
 	//display to the frame buffer. If force is true, will not skip frames,
 	//even if running behind.
@@ -306,7 +317,8 @@ protected:
 
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
-protected:
+	void draw_image_for_report(surface& img, SDL_Rect& rect);
+
 	CVideo& screen_;
 	const gamemap& map_;
 	const viewpoint *viewpoint_;
@@ -323,13 +335,16 @@ protected:
 	bool panelsDrawn_;
 	double turbo_speed_;
 	bool turbo_;
+	bool invalidateGameStatus_;
 	map_labels map_labels_;
 	// event raised when the map is being scrolled
 	mutable events::generic_event _scroll_event;
 	// holds the tick count for when the next drawing event is scheduled
 	// drawing shouldn't occur before this time
 	int nextDraw_;
-
+	SDL_Rect reportRects_[reports::NUM_REPORTS];
+	surface reportSurfaces_[reports::NUM_REPORTS];
+	reports::report reports_[reports::NUM_REPORTS];
 
   	// Not set by the initializer
 	std::vector<gui::button> buttons_;
@@ -361,7 +376,6 @@ protected:
 	bool draw_init();
 	void draw_wrap(bool update,bool force,bool changed);
 
-
 private:
 	//the tile stack for terrain rendering
   	std::vector<surface> tile_stack_;
@@ -369,7 +383,7 @@ private:
 	int fps_handle_;
 };
 
-class editor_display : public map_display
+class editor_display : public display
 {
 public:
 	editor_display(CVideo& video, const gamemap& map, const config& theme_cfg,
@@ -379,15 +393,15 @@ public:
 	void draw(bool update=true,bool force=false);
 };
 
-class display : public map_display
+class game_display : public display
 {
 public:
-	display(unit_map& units, CVideo& video,
+	game_display(unit_map& units, CVideo& video,
 			const gamemap& map, const gamestatus& status,
 			const std::vector<team>& t, const config& theme_cfg,
 			const config& cfg, const config& level);
-	~display();
-	static display* get_singleton() { return singleton_ ;}
+	~game_display();
+	static game_display* get_singleton() { return singleton_ ;}
 
 	//new_turn should be called on every new turn, to update
 	//lighting settings.
@@ -400,9 +414,6 @@ public:
 	//scrolls to the leader of a certain side. This will normally
 	//be the playing team.
 	void scroll_to_leader(unit_map& units, int side);
-
-	//invalidates entire screen, including all tiles and sidebar.
-	void redraw_everything();
 
 	// draw for the game display has to know about units 
 	void draw(bool update=true,bool force=false);
@@ -441,9 +452,6 @@ public:
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
-	//expose the event so observers can be notified about map scrolling
-	events::generic_event &scroll_event() const { return _scroll_event; }
-
 public:
 	//function to return a footstep for the given location, on screen at
 	//pixel co-ordinates (xloc,yloc). A footstep will only be drawn if
@@ -457,9 +465,8 @@ public:
 	//function to invalidate a specific tile for redrawing
 	void invalidate(const gamemap::location& loc);
 
-	//function to invalidate the game status displayed on the sidebar.
-	void invalidate_game_status() { invalidateGameStatus_ = true; }
 	const gamestatus &get_game_status() { return status_; }
+	void draw_report(reports::TYPE report_num);
 
 	//function to invalidate that unit status displayed on the sidebar.
 	void invalidate_unit() { invalidateUnit_ = true; }
@@ -537,23 +544,17 @@ public:
 
 	void begin_game();
 
-	bool in_game() const { return in_game_; }
+	virtual bool in_game() const { return in_game_; }
 	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
 private:
-	display(const display&);
-	void operator=(const display&);
+	game_display(const game_display&);
+	void operator=(const game_display&);
 
 	void zoom_redraw_hook() {energy_bar_rects_.clear();}
 
 	void draw_sidebar();
 	void draw_game_status();
-
-	void draw_image_for_report(surface& img, SDL_Rect& rect);
-	void draw_report(reports::TYPE report_num);
-	SDL_Rect reportRects_[reports::NUM_REPORTS];
-	surface reportSurfaces_[reports::NUM_REPORTS];
-	reports::report reports_[reports::NUM_REPORTS];
 
 	//this surface must be freed by the caller
 	surface get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc);
@@ -577,7 +578,6 @@ private:
 	void invalidate_route();
 
 	bool invalidateUnit_;
-	bool invalidateGameStatus_;
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
@@ -632,7 +632,7 @@ private:
 	//
 	std::vector<animated<image::locator> > flags_;
 
-	static display * singleton_;
+	static game_display * singleton_;
 };
 
 #endif

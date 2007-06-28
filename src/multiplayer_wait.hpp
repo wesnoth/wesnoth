@@ -29,7 +29,7 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(display& disp, const config& cfg, const game_data& data, chat& c, config& gamelist);
+	wait(game_display& disp, const config& cfg, const game_data& data, chat& c, config& gamelist);
 	virtual void process_event();
 
 	void join_game(bool observe);
@@ -49,7 +49,7 @@ private:
 	class leader_preview_pane : public gui::preview_pane
 	{
 	public:
-		leader_preview_pane(display& disp, const game_data* data,
+		leader_preview_pane(game_display& disp, const game_data* data,
 				const config::child_list& side_list);
 
 		bool show_above() const;

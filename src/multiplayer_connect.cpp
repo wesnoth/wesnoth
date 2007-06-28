@@ -729,7 +729,7 @@ void connect::side::resolve_random()
 	}
 }
 
-connect::connect(display& disp, const config& game_config, const game_data& data,
+connect::connect(game_display& disp, const config& game_config, const game_data& data,
 		chat& c, config& gamelist, const create::parameters& params,
 		mp::controller default_controller) :
 	mp::ui(disp, _("Game Lobby"), game_config, c, gamelist),

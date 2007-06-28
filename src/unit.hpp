@@ -20,7 +20,7 @@
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 
-class display;
+class game_display;
 class gamestatus;
 class config_writer;
 
@@ -120,7 +120,7 @@ class unit
 		void end_turn();
 		void new_level();
 		// called on every draw
-		void refresh(const display& disp,const gamemap::location& loc) {
+		void refresh(const game_display& disp,const gamemap::location& loc) {
 			if (state_ == STATE_IDLING && anim_ && anim_->animation_finished()) {
 				set_standing(disp, loc);
 				return;
@@ -169,31 +169,31 @@ class unit
 
 		// a sdl surface, ready for display for place where we need a fix image of the unit
 		const surface still_image(bool scaled = false) const;
-		void redraw_unit(display& disp,gamemap::location hex);
+		void redraw_unit(game_display& disp,gamemap::location hex);
 
-		void set_standing(const display& disp,const gamemap::location& loc, bool with_bars = true);
-		void set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num);
-		void set_leading(const display& disp,const gamemap::location& loc);
-		void set_healing(const display& disp,const gamemap::location& loc,int damage);
-		void set_leveling_in(const display& disp,const gamemap::location& loc);
-		void set_leveling_out(const display& disp,const gamemap::location& loc);
-		void set_teleporting (const display& disp,const gamemap::location& loc);
-		void set_extra_anim(const display& disp,const gamemap::location& loc, std::string flag);
-		void set_dying(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
-		void set_walking(const display& disp,const gamemap::location& loc);
-		const unit_animation & set_attacking( const display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num);
-		void set_recruited(const display& disp,const gamemap::location& loc);
-		void set_healed(const display& disp,const gamemap::location& loc,int healing);
-		void set_victorious(const display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
-		void set_poisoned(const display& disp,const gamemap::location& loc,int damage);
-		void set_idling(const display& disp,const gamemap::location& loc);
-		void restart_animation(const display& disp,int start_time);
+		void set_standing(const game_display& disp,const gamemap::location& loc, bool with_bars = true);
+		void set_defending(const game_display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num);
+		void set_leading(const game_display& disp,const gamemap::location& loc);
+		void set_healing(const game_display& disp,const gamemap::location& loc,int damage);
+		void set_leveling_in(const game_display& disp,const gamemap::location& loc);
+		void set_leveling_out(const game_display& disp,const gamemap::location& loc);
+		void set_teleporting (const game_display& disp,const gamemap::location& loc);
+		void set_extra_anim(const game_display& disp,const gamemap::location& loc, std::string flag);
+		void set_dying(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
+		void set_walking(const game_display& disp,const gamemap::location& loc);
+		const unit_animation & set_attacking( const game_display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num);
+		void set_recruited(const game_display& disp,const gamemap::location& loc);
+		void set_healed(const game_display& disp,const gamemap::location& loc,int healing);
+		void set_victorious(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
+		void set_poisoned(const game_display& disp,const gamemap::location& loc,int damage);
+		void set_idling(const game_display& disp,const gamemap::location& loc);
+		void restart_animation(const game_display& disp,int start_time);
 		const unit_animation* get_animation() const {  return anim_;};
 		void set_offset(double offset){offset_ = offset;}
 		void set_facing(gamemap::location::DIRECTION dir);
 		gamemap::location::DIRECTION facing() const { return facing_; }
 
-		std::set<gamemap::location> overlaps(const display &disp, const gamemap::location &loc) const;
+		std::set<gamemap::location> overlaps(const game_display &disp, const gamemap::location &loc) const;
 		const t_string& traits_description() const { return traits_description_; }
 
 		int value() const { return unit_value_; }
@@ -238,9 +238,9 @@ class unit
 		STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
 		STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
 		STATE_RECRUITED, STATE_HEALED, STATE_POISONED, STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
-		const unit_animation * start_animation(const display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool is_attack_anim =false);
+		const unit_animation * start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool is_attack_anim =false);
 
-		//the name of the file to display (used in menus
+		//the name of the file to game_display (used in menus
 		const std::string& absolute_image() const { return cfg_["image"]; }
 		const std::string& image_halo() const { return cfg_["halo"]; }
 		const std::string& image_fighting(attack_type::RANGE range) const;
@@ -253,25 +253,25 @@ class unit
 		unit_type::ALIGNMENT alignment() const { return alignment_; }
 		const std::string& race() const { return race_->name(); }
 
-		const defensive_animation* defend_animation(const display& disp, const gamemap::location& loc,
+		const defensive_animation* defend_animation(const game_display& disp, const gamemap::location& loc,
 				fighting_animation::hit_type hits,const attack_type* attack,
 				const attack_type* secondary_attack,int swing_num,int damage) const;
-		const unit_animation* teleport_animation(const display& disp, const gamemap::location& loc) const;
-		const unit_animation* extra_animation(const display& disp, const gamemap::location& loc,const std::string &flag) const;
-		const death_animation* die_animation(const display& disp, const gamemap::location& loc,
+		const unit_animation* teleport_animation(const game_display& disp, const gamemap::location& loc) const;
+		const unit_animation* extra_animation(const game_display& disp, const gamemap::location& loc,const std::string &flag) const;
+		const death_animation* die_animation(const game_display& disp, const gamemap::location& loc,
 				fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
-		const movement_animation* move_animation(const display& disp, const gamemap::location& loc) const;
-		const standing_animation* stand_animation(const display& disp, const gamemap::location& loc) const;
-		const leading_animation* lead_animation(const display& disp, const gamemap::location& loc) const;
-		const healing_animation* heal_animation(const display& disp, const gamemap::location& loc,int damage) const;
-		const victory_animation* victorious_animation(const display& disp, const gamemap::location& loc,
+		const movement_animation* move_animation(const game_display& disp, const gamemap::location& loc) const;
+		const standing_animation* stand_animation(const game_display& disp, const gamemap::location& loc) const;
+		const leading_animation* lead_animation(const game_display& disp, const gamemap::location& loc) const;
+		const healing_animation* heal_animation(const game_display& disp, const gamemap::location& loc,int damage) const;
+		const victory_animation* victorious_animation(const game_display& disp, const gamemap::location& loc,
 				fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
-		const recruit_animation* recruiting_animation(const display& disp, const gamemap::location& loc) const;
-		const idle_animation* idling_animation(const display& disp, const gamemap::location& loc) const;
-		const levelin_animation* levelingin_animation(const display& disp, const gamemap::location& loc) const;
-		const levelout_animation* levelingout_animation(const display& disp, const gamemap::location& loc) const;
-		const healed_animation* get_healed_animation(const display& disp, const gamemap::location& loc,int healing) const;
-		const poison_animation* poisoned_animation(const display& disp, const gamemap::location& loc,int damage) const;
+		const recruit_animation* recruiting_animation(const game_display& disp, const gamemap::location& loc) const;
+		const idle_animation* idling_animation(const game_display& disp, const gamemap::location& loc) const;
+		const levelin_animation* levelingin_animation(const game_display& disp, const gamemap::location& loc) const;
+		const levelout_animation* levelingout_animation(const game_display& disp, const gamemap::location& loc) const;
+		const healed_animation* get_healed_animation(const game_display& disp, const gamemap::location& loc,int healing) const;
+		const poison_animation* poisoned_animation(const game_display & disp, const gamemap::location& loc,int damage) const;
 
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;

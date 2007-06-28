@@ -50,7 +50,7 @@
 
 namespace {
 
-display* screen = NULL;
+game_display* screen = NULL;
 soundsource::manager* soundsources = NULL;
 gamemap* game_map = NULL;
 unit_map* units = NULL;
@@ -71,7 +71,7 @@ const gui::msecs average_frame_time = 30;
 
 class wml_event_dialog : public gui::message_dialog {
 public:
-	wml_event_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
+	wml_event_dialog(game_display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
 		: message_dialog(disp, title, message, type)
 	{}
 	void action(gui::dialog_process_info &info) {
@@ -137,7 +137,7 @@ static void show_wml_errors()
 			msg << " (" << itor->second << ")";
 		}
 					
-		screen->add_chat_message(caption, 0, msg.str(), display::MESSAGE_PUBLIC, false);
+		screen->add_chat_message(caption, 0, msg.str(), game_display::MESSAGE_PUBLIC, false);
 		std::cerr << caption << ": " << msg.str() << '\n';
 	}
 }
@@ -619,7 +619,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string check_fogged = cfg["check_fogged"];
 		wassert(state_of_game != NULL);
 		const gamemap::location loc(atoi(x.c_str()), atoi(y.c_str()));
-		screen->scroll_to_tile(loc,display::SCROLL,utils::string_bool(check_fogged,false));
+		screen->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
 	}
 
 	else if(cmd == "scroll_to_unit") {
@@ -630,7 +630,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 		std::string check_fogged = cfg["check_fogged"];
 		if(u != units->end()) {
-			screen->scroll_to_tile(u->first,display::SCROLL,utils::string_bool(check_fogged,false));
+			screen->scroll_to_tile(u->first,game_display::SCROLL,utils::string_bool(check_fogged,false));
 		}
 	}
 
@@ -2326,7 +2326,7 @@ bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 static config::child_list unit_wml_configs;
 static std::set<std::string> unit_wml_ids;
 
-manager::manager(const config& cfg, display& gui_, gamemap& map_,
+manager::manager(const config& cfg, game_display& gui_, gamemap& map_,
 		 soundsource::manager& sndsources_,
                  unit_map& units_,
                  std::vector<team>& teams_,

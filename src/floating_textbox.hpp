@@ -36,11 +36,11 @@ namespace gui{
 		const util::scoped_ptr<gui::button>& check() const { return check_; }
 		const util::scoped_ptr<gui::textbox>& box() const { return box_; }
 
-		void close(display& gui);
-		void update_location(display& gui);
+		void close(game_display& gui);
+		void update_location(game_display& gui);
 		void show(gui::TEXTBOX_MODE mode, const std::string& label,
-			const std::string& check_label, bool checked, display& gui);
-		void tab(std::vector<team>& teams, const unit_map& units, display& gui);
+			const std::string& check_label, bool checked, game_display& gui);
+		void tab(std::vector<team>& teams, const unit_map& units, game_display& gui);
 		bool active() const { return box_.get() != NULL; }
 
 	private:

@@ -157,7 +157,7 @@ private:
 //attack: executes an attack.
 class attack {
 	public:
-		attack(display& gui, const gamemap& map,
+	    attack(game_display& gui, const gamemap& map,
             std::vector<team>& teams,
             gamemap::location attacker,
             gamemap::location defender,
@@ -172,7 +172,7 @@ class attack {
 		class attack_end_exception {};
 		void fire_event(const std::string& n);
 		void refresh_bc();
-		display& gui_;
+		game_display& gui_;
 		const gamemap& map_;
 		std::vector<team>& teams_;
 		gamemap::location attacker_;
@@ -218,7 +218,7 @@ void reset_resting(unit_map& units, unsigned int side);
 
 //calculates healing for all units for the given side. Should be called
 //at the beginning of a side's turn.
-void calculate_healing(display& disp, const gamemap& map,
+void calculate_healing(game_display& disp, const gamemap& map,
                        unit_map& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display);
 
@@ -291,7 +291,7 @@ typedef std::deque<undo_action> undo_list;
 //steps. If the unit cannot make it completely along the path this turn,
 //a goto order will be set. If move_recorder is not NULL, the move will
 //be recorded in it. If undos is not NULL, undo information will be added.
-size_t move_unit(display* disp, const game_data& gamedata,
+size_t move_unit(game_display* disp, const game_data& gamedata,
 				const gamestatus& status, const gamemap& map,
 				unit_map& units, std::vector<team>& teams,
 				std::vector<gamemap::location> steps,
@@ -306,13 +306,13 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 
 //function which will clear shroud away for the given 0-based team based on
 //current unit positions. Returns true if some shroud is actually cleared away.
-bool clear_shroud(display& disp, const gamestatus& status,
+bool clear_shroud(game_display& disp, const gamestatus& status,
 		const gamemap& map, const game_data& gamedata,
 		unit_map& units, std::vector<team>& teams, int team);
 
 //function to apply pending shroud changes in the undo stack.
 //it needs tons of parameters because it calls clear_shroud(...) (see above)
-void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& status, const gamemap& map,
+void apply_shroud_changes(undo_list& undos, game_display* disp, const gamestatus& status, const gamemap& map,
 	const game_data& gamedata, unit_map& units, std::vector<team>& teams, int team);
 
 //will return true iff the unit at 'loc' has any possible moves it can do

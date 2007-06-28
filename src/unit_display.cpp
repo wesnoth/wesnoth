@@ -32,14 +32,14 @@
 
 static void teleport_unit_between( const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)) {
 		return;
 	}
 
 	temp_unit.set_teleporting(*disp,a);
 	if (!disp->fogged(a)) { // teleport
-		disp->scroll_to_tile(a,display::ONSCREEN);
+		disp->scroll_to_tile(a,game_display::ONSCREEN);
 		while(!temp_unit.get_animation()->animation_finished()  && temp_unit.get_animation()->get_animation_time() < 0) {
 			disp->invalidate(a);
 			disp->place_temporary_unit(temp_unit, a);
@@ -50,7 +50,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 	}
 	if (!disp->fogged(b)) { // teleport
 		temp_unit.restart_animation(*disp,0);
-		disp->scroll_to_tile(b,display::ONSCREEN);
+		disp->scroll_to_tile(b,game_display::ONSCREEN);
 		while(!temp_unit.get_animation()->animation_finished()) {
 			disp->invalidate(b);
 			disp->place_temporary_unit(temp_unit, b);
@@ -66,7 +66,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 
 static void move_unit_between( const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)) {
 		return;
 	}
@@ -75,7 +75,7 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 
 	const double acceleration = disp->turbo_speed();
 
-	disp->scroll_to_tiles(a,b,display::ONSCREEN);
+	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 
 	const int total_mvt_time = static_cast<int>(150/acceleration * temp_unit.movement_cost(dst_terrain));
 	const unsigned int start_time = SDL_GetTicks();
@@ -102,7 +102,7 @@ namespace unit_display
 
 bool unit_visible_on_path( const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	wassert(disp);
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		const bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
@@ -118,7 +118,7 @@ bool unit_visible_on_path( const std::vector<gamemap::location>& path, const uni
 
 void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams)
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	wassert(!path.empty());
 	wassert(disp);
 	// one hex path (strange), nothing to do
@@ -130,7 +130,7 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 	bool invisible =  teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 				u.invisible(path[0],units,teams);
 	if (!invisible) {
-		disp->scroll_to_tiles(path[0],path[1],display::ONSCREEN);
+		disp->scroll_to_tiles(path[0],path[1],game_display::ONSCREEN);
 	}
 
 	bool was_hidden = u.get_hidden();
@@ -168,7 +168,7 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 void unit_die(const gamemap::location& loc, unit& loser,
 const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
@@ -209,7 +209,7 @@ static void unit_attack_ranged(
 			int damage, const attack_type& attack, const attack_type* secondary_attack, int swing,std::string hit_text)
 
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	if(!disp) return;
 	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)
 		|| preferences::show_combat() == false ;
@@ -394,14 +394,14 @@ void unit_attack(
                  const attack_type& attack, const attack_type* secondary_attack,
 		  int swing,std::string hit_text)
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	if(!disp) return;
 	unit_map& units = disp->get_units();
 	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)
 	                  || preferences::show_combat() == false;
 
 	if(!hide) {
-		disp->scroll_to_tiles(a,b,display::ONSCREEN);
+		disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 	}
 
 	log_scope("unit_attack");
@@ -520,13 +520,13 @@ void unit_attack(
 
 void unit_recruited(gamemap::location& loc)
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() ||disp->fogged(loc)) return;
 	unit_map::iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
 
 	u->second.set_hidden(true);
-	disp->scroll_to_tile(loc,display::ONSCREEN);
+	disp->scroll_to_tile(loc,game_display::ONSCREEN);
 	disp->draw();
 	u->second.set_recruited(*disp,loc);
 	u->second.set_hidden(false);
@@ -543,12 +543,12 @@ void unit_recruited(gamemap::location& loc)
 
 void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
 {
-	display* disp = display::get_singleton();
+	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->fogged(healed_loc)) return;
 	if(healing==0) return;
 	// This is all the pretty stuff.
 	int start_time = INT_MAX;
-	disp->scroll_to_tile(healed_loc, display::ONSCREEN);
+	disp->scroll_to_tile(healed_loc, game_display::ONSCREEN);
 	disp->select_hex(healed_loc);
 	unit healed = healed_p;
 	bool was_hidden = healed.get_hidden();

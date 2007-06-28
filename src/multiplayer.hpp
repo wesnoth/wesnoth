@@ -16,7 +16,7 @@
 #include "multiplayer_ui.hpp"
 
 class config;
-class display;
+class game_display;
 struct game_data;
 
 namespace mp {
@@ -33,7 +33,7 @@ namespace mp {
  * @param default_controller The default controller type
  * @param is_server   Whether to open a port to the outside, or not.
  */
-void start_server(display& disp, const config& game_config, game_data& data,
+void start_server(game_display& disp, const config& game_config, game_data& data,
 		mp::controller default_controller, bool is_server);
 
 /** Starts a multiplayer game in client mode.
@@ -43,7 +43,7 @@ void start_server(display& disp, const config& game_config, game_data& data,
  * @param data        The global game data (unit types, etc)
  * @param host        The host to connect to.
  */
-void start_client(display& disp, const config& game_config, game_data& data,
+void start_client(game_display& disp, const config& game_config, game_data& data,
 		const std::string host);
 
 }

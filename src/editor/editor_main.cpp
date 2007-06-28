@@ -327,7 +327,7 @@ int main(int argc, char** argv)
 			editormap map(cfg, mapdata);
 
 			const config dummy_cfg;
-			display gui(units, video, map, status, teams,
+			game_display gui(units, video, map, status, teams,
 				    *theme_cfg, cfg, dummy_cfg);
 
 			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);

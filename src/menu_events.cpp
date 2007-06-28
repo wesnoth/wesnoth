@@ -64,7 +64,7 @@ std::vector<std::string> create_unit_table(const game_data& gameinfo, const stat
 class statistics_dialog : public gui::dialog
 {
 public:
-	statistics_dialog(display &disp, const std::string& title, const game_data& gameinfo, const unsigned int team,
+	statistics_dialog(game_display &disp, const std::string& title, const game_data& gameinfo, const unsigned int team,
 		const std::string& player);
 	~statistics_dialog();
 protected:
@@ -128,7 +128,7 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 	}
 }
 
-statistics_dialog::statistics_dialog(display &disp, const std::string& title,
+statistics_dialog::statistics_dialog(game_display &disp, const std::string& title,
 const game_data& gameinfo, const unsigned int team, const std::string& player)
 : dialog(disp, title, "", gui::NULL_DIALOG), gameinfo_(gameinfo), player_name_(player),
 team_num_(team), unit_count_(5,0)
@@ -221,11 +221,11 @@ namespace events{
 	class delete_recall_unit : public gui::dialog_button_action
 	{
 	public:
-		delete_recall_unit(display& disp, std::vector<unit>& units) : disp_(disp), units_(units) {}
+		delete_recall_unit(game_display& disp, std::vector<unit>& units) : disp_(disp), units_(units) {}
 	private:
 		gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
-		display& disp_;
+		game_display& disp_;
 		std::vector<unit>& units_;
 	};
 
@@ -268,7 +268,7 @@ namespace events{
 		return c == '/' || c == '\\' || c == ':';
 	}
 
-	menu_handler::menu_handler(display* gui, unit_map& units, std::vector<team>& teams,
+	menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const game_data& gameinfo, const gamemap& map,
 		const config& game_config, const gamestatus& status, game_state& gamestate,
 		undo_list& undo_stack, undo_list& redo_stack) :
@@ -376,7 +376,7 @@ namespace events{
 
 		if(selected >= 0 && selected < int(locations_list.size())) {
 			const gamemap::location& loc = locations_list[selected];
-			gui_->scroll_to_tile(loc,display::WARP);
+			gui_->scroll_to_tile(loc,game_display::WARP);
 			gui_->select_hex(loc);
 		}
 	}
@@ -1273,7 +1273,7 @@ namespace events{
 		const unit_map::const_iterator i = team_leader(team_num,units_);
 		if(i != units_.end()) {
 			clear_shroud(team_num);
-			gui_->scroll_to_tile(i->first,display::WARP);
+			gui_->scroll_to_tile(i->first,game_display::WARP);
 		}
 	}
 
@@ -1497,7 +1497,7 @@ namespace events{
 		chat_handler::do_speak(textbox_info_.box()->text(),textbox_info_.check() != NULL ? textbox_info_.check()->checked() : false);
 	}
 
-	void menu_handler::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type)
+	void menu_handler::add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type)
 	{
 		gui_->add_chat_message(speaker,side,message,type,false);
 	}
@@ -1564,7 +1564,7 @@ namespace events{
 			cwhisper["sender"] = preferences::login();
 			cwhisper["receiver"] = arg1;
 			data.add_child("whisper", cwhisper);
-			add_chat_message("whisper to "+cwhisper["receiver"],0,cwhisper["message"], display::MESSAGE_PRIVATE);
+			add_chat_message("whisper to "+cwhisper["receiver"],0,cwhisper["message"], game_display::MESSAGE_PRIVATE);
 			network::send_data(data);
 
 		} else if (cmd == help) {
@@ -1611,23 +1611,23 @@ namespace events{
 			if (arg1 == addignore){
 				if(preferences::_set_relationship(arg2, "ignored"))
 				{
-					add_chat_message("ignores list",0, _("Added to ignore list: ")+arg2,display::MESSAGE_PRIVATE);
+					add_chat_message("ignores list",0, _("Added to ignore list: ")+arg2,game_display::MESSAGE_PRIVATE);
 				} else {
-					add_chat_message("ignores list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
+					add_chat_message("ignores list",0, _("Invalid username: ")+arg2,game_display::MESSAGE_PRIVATE);
 				}
 			} else if (arg1 == addfriend){
 				if(preferences::_set_relationship(arg2, "friend"))
 				{
-					add_chat_message("friends list",0, _("Added to friends list: ")+arg2,display::MESSAGE_PRIVATE);
+					add_chat_message("friends list",0, _("Added to friends list: ")+arg2,game_display::MESSAGE_PRIVATE);
 				} else {
-					add_chat_message("friends list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
+					add_chat_message("friends list",0, _("Invalid username: ")+arg2,game_display::MESSAGE_PRIVATE);
                 }
 			} else if (arg1 == remove){
 				if(preferences::_set_relationship(arg2, "no"))
 				{
-					add_chat_message("list",0, _("Removed from list: ")+arg2,display::MESSAGE_PRIVATE);
+					add_chat_message("list",0, _("Removed from list: ")+arg2,game_display::MESSAGE_PRIVATE);
 				} else {
-					add_chat_message("list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
+					add_chat_message("list",0, _("Invalid username: ")+arg2,game_display::MESSAGE_PRIVATE);
 				}
 			} else if (arg1 == display){
 				std::string text_ignore;
@@ -1644,11 +1644,11 @@ namespace events{
 					}
 					if(!text_ignore.empty()){
 						text_ignore.erase(text_ignore.length()-1,1);
-						add_chat_message("ignores list",0, text_ignore,display::MESSAGE_PRIVATE);
+						add_chat_message("ignores list",0, text_ignore,game_display::MESSAGE_PRIVATE);
 					}
 					if(!text_friend.empty()){
 						text_friend.erase(text_friend.length()-1,1);
-						add_chat_message("friends list",0, text_friend,display::MESSAGE_PRIVATE);
+						add_chat_message("friends list",0, text_friend,game_display::MESSAGE_PRIVATE);
 					}
 					if (text_friend.empty() && text_ignore.empty()) {
 						add_chat_message("list",0, _("There are no players on your friends or ignore list."));
@@ -1661,17 +1661,17 @@ namespace events{
 					for(nick= cignore->values.begin() ; nick!= cignore->values.end(); nick++) {
 						if((*cignore)[nick->first] != "no") {
                             if((*cignore)[nick->first] == "ignored") {
-							    add_chat_message("ignore list",0, _("Removed from ignore list: ")+nick->first,display::MESSAGE_PRIVATE);
+							    add_chat_message("ignore list",0, _("Removed from ignore list: ")+nick->first,game_display::MESSAGE_PRIVATE);
 						    }
                             if((*cignore)[nick->first] == "friend") {
-							    add_chat_message("friend list",0, _("Removed from friends list: ")+nick->first,display::MESSAGE_PRIVATE);
+							    add_chat_message("friend list",0, _("Removed from friends list: ")+nick->first,game_display::MESSAGE_PRIVATE);
 						    }
 							(*cignore)[nick->first] = "no";
 						}
 					}
 				}
 			} else {
-				add_chat_message("list",0,_("Unknown command: ")+arg1,display::MESSAGE_PRIVATE);
+				add_chat_message("list",0,_("Unknown command: ")+arg1,game_display::MESSAGE_PRIVATE);
 			}
 		} else if ((cmd == emote || cmd == emote2) && argc > 0) {
 			//emote message
@@ -1705,7 +1705,7 @@ namespace events{
 
 		recorder.speak(cfg);
 		add_chat_message(cfg["description"],side,message,
-							  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
+							  private_message ? game_display::MESSAGE_PRIVATE : game_display::MESSAGE_PUBLIC);
 
 	}
 
@@ -1773,7 +1773,7 @@ namespace events{
 
 		if(found) {
 			last_search_hit_ = loc;
-			gui_->scroll_to_tile(loc,display::ONSCREEN,false);
+			gui_->scroll_to_tile(loc,game_display::ONSCREEN,false);
 			gui_->highlight_hex(loc);
 		} else {
 			last_search_hit_ = gamemap::location();

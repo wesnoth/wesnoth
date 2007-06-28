@@ -22,7 +22,7 @@ class config;
 #include <map>
 #include <string>
 
-class map_display;
+class display;
 class team;
 class terrain_label;
 class replay;
@@ -36,8 +36,8 @@ public:
 	typedef std::map<gamemap::location,const terrain_label*> label_map;
 	typedef std::map<std::string,label_map> team_label_map;
 	
-	map_labels(const map_display& disp, const gamemap& map, const team*);
-	map_labels(const map_display& disp, const config& cfg, const gamemap& map, const team*);
+	map_labels(const display& disp, const gamemap& map, const team*);
+	map_labels(const display& disp, const config& cfg, const gamemap& map, const team*);
 	~map_labels();
 
 	void write(config& res) const;
@@ -64,7 +64,7 @@ public:
 
 	void recalculate_shroud();
 
-	const map_display& disp() const;
+	const display& disp() const;
 	
 	const std::string& team_name() const;
 	
@@ -76,7 +76,7 @@ private:
 	map_labels(const map_labels&);
 	void operator=(const map_labels&);
 
-	const map_display& disp_;
+	const display& disp_;
 	const team* team_;
 	const gamemap& map_;
 

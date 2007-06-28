@@ -72,7 +72,7 @@ class ui : public gui::widget, private events::chat_handler, private font::float
 public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PREFERENCES, PLAY, QUIT };
 
-	ui(display& d, const std::string& title,
+	ui(game_display& d, const std::string& title,
 			const config& cfg, chat& c, config& gamelist);
 
 	// Asks the multiplayer_ui to pump some data from the network, and then
@@ -96,8 +96,8 @@ protected:
 
 	SDL_Rect client_area() const;
 
-	display& disp_;
-	display& disp() { return disp_; };
+	game_display& disp_;
+	game_display& disp() { return disp_; };
 
 	// Returns the main game config, as defined by loading the preprocessed
 	// WML files. Children of this class may need this to obtain, for
@@ -113,7 +113,7 @@ protected:
 
 	// Override chat_handler
 	void send_chat_query(const std::string& args);
-	void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE);
+	void add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 
 

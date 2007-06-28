@@ -572,7 +572,7 @@ replay& get_replay_source()
 	}
 }
 
-static void check_checksums(display& disp,const unit_map& units,const config& cfg)
+static void check_checksums(game_display& disp,const unit_map& units,const config& cfg)
 {
 	if(! game_config::mp_debug) {
 		return;
@@ -583,7 +583,7 @@ static void check_checksums(display& disp,const unit_map& units,const config& cf
 		if(u == units.end()) {
 			std::stringstream message;
 			message << "non existant unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
-			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE,false);
+			disp.add_chat_message("verification",1,message.str(),game_display::MESSAGE_PRIVATE,false);
 			continue;
 		}
 		std::string check;
@@ -591,12 +591,12 @@ static void check_checksums(display& disp,const unit_map& units,const config& cf
 		if(check != (**ci)["value"]) {
 			std::stringstream message;
 			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE,false);
+			disp.add_chat_message("verification",1,message.str(),game_display::MESSAGE_PRIVATE,false);
 		}
 	}
 }
 
-bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
+bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo,
                unit_map& units,
 	       std::vector<team>& teams, int team_num, const gamestatus& state,
 	       game_state& state_of_game, replay* obj)
@@ -688,7 +688,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 						(is_lobby_join_of_friend && preferences::lobby_joins() == preferences::SHOW_FRIENDS)))) {
 					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
 					disp.add_chat_message(speaker_name,side,(*child)["message"],
-						  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE, preferences::message_bell());
+						  team_name == "" ? game_display::MESSAGE_PUBLIC : game_display::MESSAGE_PRIVATE, preferences::message_bell());
 				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {

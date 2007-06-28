@@ -98,9 +98,9 @@ void play_controller::init(CVideo& video){
 
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
 	if (theme_cfg)
-		gui_ = new display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
+		gui_ = new game_display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
 	else
-		gui_ = new display(units_,video,map_,status_,teams_,config(), game_config_, level_);
+		gui_ = new game_display(units_,video,map_,status_,teams_,config(), game_config_, level_);
 	mouse_handler_.set_gui(gui_);
 	menu_handler_.set_gui(gui_);
 	theme::set_known_themes(&game_config_);

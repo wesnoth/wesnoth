@@ -141,7 +141,7 @@ public:
 	typedef std::vector<side> side_list;
 
 
-	connect(display& disp, const config& game_config, const game_data& data,
+	connect(game_display& disp, const config& game_config, const game_data& data,
 			chat& c, config& gamelist, const create::parameters& params,
 			mp::controller default_controller);
 

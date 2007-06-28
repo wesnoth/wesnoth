@@ -93,7 +93,7 @@ private:
 class lobby : public ui
 {
 public:
-	lobby(display& d, const config& cfg, chat& c, config& gamelist);
+	lobby(game_display& d, const config& cfg, chat& c, config& gamelist);
 
 	virtual void process_event();
 
