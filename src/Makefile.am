@@ -68,6 +68,7 @@ wesnoth_SOURCES = \
 	floating_textbox.cpp \
 	font.cpp \
 	game.cpp \
+	game_display.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
 	generic_event.cpp \
@@ -152,6 +153,8 @@ wesnoth_DEPENDENCIES=libwesnoth-core.a
 #    Editor                                                                 #
 #############################################################################
 
+# Presence of game_display.cpp in this list is temporary
+
 wesnoth_editor_SOURCES = \
 	editor/editor.cpp \
 	editor/editor_layout.cpp \
@@ -159,6 +162,7 @@ wesnoth_editor_SOURCES = \
 	editor/editor_palettes.cpp \
 	editor/editor_main.cpp \
 	editor/editor_dialogs.cpp \
+	editor/editor_display.cpp \
 	editor/editor_undo.cpp \
 	about.cpp \
 	actions.cpp \
@@ -177,6 +181,7 @@ wesnoth_editor_SOURCES = \
 	filechooser.cpp \
 	floating_textbox.cpp \
 	font.cpp \
+	game_display.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
 	generic_event.cpp \
