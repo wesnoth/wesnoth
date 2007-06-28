@@ -74,21 +74,21 @@ def convertor(linefilter, filelist):
     if not filelist:
         linefilter("standard input", sys.stdin, sys.stdout)
     else:
-        try:
-            for filename in filelist:
+	for filename in filelist:
+            try:
                 infp = open(filename, "r")
                 outfp = open(filename + ".out", "w")
                 linefilter(filename, infp, outfp)
                 infp.close()
                 outfp.close()
-        except KeyboardInterrupt:
-            os.remove(filename + ".out")
-        else:
-            os.remove(filename)	# For Windows portability
-            # There's a tiny window here.  It's unavoidable, because there's
-            # no known way to do an atomic rename under Windows when the
-            # taget exists -- see Python manual 14.1.4::rename()
-            os.rename(filename + ".out", filename)
+            except KeyboardInterrupt:
+                os.remove(filename + ".out")
+            else:
+                os.remove(filename)	# For Windows portability
+                # There's a tiny window here. It's unavoidable, because there's
+                # no known way to do an atomic rename under Windows when the
+                # target exists -- see Python manual 14.1.4::rename()
+                os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
     (options, arguments) = getopt.getopt(sys.argv[1:], "h:")
