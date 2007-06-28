@@ -26,7 +26,6 @@
 #include "../minimap.hpp"
 #include "../preferences.hpp"
 #include "../random.hpp"
-#include "../team.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 #include "../wesconfig.h"
@@ -307,9 +306,6 @@ int main(int argc, char** argv)
 	srand(time(NULL));
 	bool done = false;
 	gamestatus status(cfg, 0);
-	std::vector<team> teams;
-	// Add a dummy team so the reports will be handled properly.
-	teams.push_back(team(cfg));
 	config* theme_cfg = cfg.find_child("theme", "name", "editor");
 	config dummy_theme;
 	if (!theme_cfg) {
@@ -318,7 +314,6 @@ int main(int argc, char** argv)
 	}
 
 	std::cerr << "entering while...\n";
-	unit_map units;
 	events::event_context ec;
 	map_editor::check_data(mapdata, filename, from_scenario, cfg);
 	while (!done) {
