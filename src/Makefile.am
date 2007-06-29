@@ -338,7 +338,6 @@ noinst_HEADERS = \
 	server/input_stream.hpp \
 	server/proxy.hpp \
 	server/metrics.hpp \
-	editor/scenario_editor.hpp \
 	editor/editor_undo.hpp \
 	editor/map_manip.hpp \
 	editor/editor_layout.hpp \
