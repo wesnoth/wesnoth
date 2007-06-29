@@ -185,7 +185,9 @@ def convertor(linefilter, arglist):
                     else:
                         if verbose >= 1:
                             sys.stderr.write("wmlindent: %s changed\n" % filename)
-                        if not dryrun:
+                        if dryrun:
+                            os.remove(filename + ".out")
+                        else:
                             os.remove(filename)	# For Windows portability
                             # There's a tiny window open if you keyboard-
                             # interrupt here. It's unavoidable, because
