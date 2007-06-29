@@ -231,7 +231,7 @@ void game_display::draw(bool update,bool force)
 		// Units can overlap multiple hexes, so we need to (1)
 		// redraw them last, and (2) redraw them if they are
 		// adjacent existing hexes.
-		std::set<gamemap::location> unit_invals;
+		std::set<gamemap::location, ordered_draw> unit_invals;
 
 		SDL_Rect clip_rect = map_area();
 		surface const dst(screen_.getSurface());
@@ -239,9 +239,10 @@ void game_display::draw(bool update,bool force)
 
 		std::set<gamemap::location>::const_iterator it;
 		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
-			if (units_.find(*it) != units_.end()) {
+			if ((temp_unit_ && temp_unit_loc_==*it) || units_.find(*it) != units_.end()) {
 				unit_invals.insert(*it);
 			}
+
 			const time_of_day& tod = status_.get_time_of_day();
 			const time_of_day& tod_at = timeofday_at(status_,units_,*it,map_);
 			image::TYPE image_type = image::SCALED_TO_HEX;
@@ -388,12 +389,16 @@ void game_display::draw(bool update,bool force)
 		}
 
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
-			unit &u = units_.find(*it)->second;
-			u.redraw_unit(*this, *it);
-			//simulate_delay += 1;
-		}
-		if (temp_unit_ && invalidated_.find(temp_unit_loc_) != invalidated_.end()) {
-			temp_unit_->redraw_unit(*this, temp_unit_loc_);
+			unit_map::iterator u_it = units_.find(*it);
+			if (u_it != units_.end()) {
+				u_it->second.redraw_unit(*this, *it);
+				//simulate_delay += 1;
+			}
+
+			if (temp_unit_ && temp_unit_loc_ == *it) {
+				temp_unit_->redraw_unit(*this, temp_unit_loc_);
+				//simulate_delay += 1;
+			}
 		}
 
 		halo::render();

@@ -385,6 +385,14 @@ protected:
 
 	void invalidate_locations_in_rect(SDL_Rect r);
 
+	// Strict weak ordering to sort a STL-set of hexes for drawing
+	// using the z-order. (1000 are just to weight the y compare to x)
+	struct ordered_draw : public std::binary_function<gamemap::location, gamemap::location, bool> {
+		bool operator()(gamemap::location a, gamemap::location b) {
+			return (a.y*2 + a.x%2) * 1000 + a.x < (b.y*2 + b.x%2) * 1000 + b.x;
+		}
+	};
+
 	//function to invalidate controls and panels when changed after
 	//they have been drawn initially. Useful for dynamic theme modification.
 	bool draw_init();
