@@ -150,6 +150,8 @@ def convertor(linefilter, arglist):
     else:
         for arg in arglist:
             for filename in allwmlfiles(arg):
+                if verbose:
+                    sys.stderr.write(arg + ": ")
                 try:
                     infp = open(filename, "r")
                     outfp = open(filename + ".out", "w")
@@ -160,8 +162,12 @@ def convertor(linefilter, arglist):
                     os.remove(filename + ".out")
                 else:
                     if filecmp.cmp(filename, filename + ".out"):
+                        if verbose:
+                            sys.stderr.write("unchanged\n")
                         os.remove(filename + ",out")
                     else:
+                        if verbose:
+                            sys.stderr.write("changed\n")
                         os.remove(filename)	# For Windows portability
                         # There's a tiny window open if you keyboard-
                         # interrupt here. It's unavoidable, because
@@ -171,8 +177,11 @@ def convertor(linefilter, arglist):
                         os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h:")
+    (options, arguments) = getopt.getopt(sys.argv[1:], "h:v")
+    verbose = False
     for (opt, val) in options:
         if opt == "-?":
             print __doc__
+        elif opt == '-v':
+            verbose = True
     convertor(lambda n, f1, f2: reindent(n, f1, f2), arguments)
