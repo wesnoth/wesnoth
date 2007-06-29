@@ -1,18 +1,17 @@
-# translation of lt.po to Lietuvių
-#  Andrius Štikonas <stikonas@gmail.com>, 2007.
 # Translators:
+#  Andrius Štikonas <stikonas@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: lt\n"
+"Project-Id-Version: wesnoth--lt-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-29 12:20+0200\n"
-"PO-Revision-Date: 2007-06-22 13:59+0300\n"
+"PO-Revision-Date: 2007-06-25 22:43+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 
@@ -396,7 +395,7 @@ msgstr "Valensų vertimas"
 
 #: data/core/about.cfg:751
 msgid "Bots"
-msgstr ""
+msgstr "Botai"
 
 #: data/core/fonts.cfg:6 data/hardwired/fonts.cfg:6
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
@@ -524,6 +523,12 @@ msgid ""
 "preserving your best troops so that they can be used again in later "
 "scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"Kampainja susideda iš daugelio scenarijų, kurie seka vienas kitą, pasakodami "
+"istoriją. Kampanijoje dažnai turėsite žaisti atidžiau, išsaugodami "
+"geriausius savo karius, kad jie vėl galėtų būti panaudoti vėlesniuose "
+"kampanijos scenarijuose."
 
 #: data/core/help.cfg:100
 msgid "Recruiting and Recalling"
@@ -637,7 +642,7 @@ msgstr ""
 
 #: data/core/help.cfg:136
 msgid "Movement"
-msgstr ""
+msgstr "Judėjimas"
 
 #: data/core/help.cfg:137
 msgid ""
@@ -1235,7 +1240,7 @@ msgstr ""
 
 #: data/core/help.cfg:330
 msgid "Dextrous"
-msgstr ""
+msgstr "Vikrus"
 
 #: data/core/help.cfg:331
 msgid ""
@@ -1657,7 +1662,7 @@ msgstr ""
 
 #: data/core/help.cfg:591
 msgid "General commands"
-msgstr ""
+msgstr "Bendros komandos"
 
 #: data/core/help.cfg:595
 msgid ""
@@ -1966,7 +1971,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:491
 msgid "slows"
-msgstr ""
+msgstr "sulėtina"
 
 #: data/core/macros/abilities.cfg:493
 msgid ""
@@ -3259,11 +3264,11 @@ msgstr "stipri"
 
 #: data/core/macros/traits.cfg:50
 msgid "dextrous"
-msgstr ""
+msgstr "vikrus"
 
 #: data/core/macros/traits.cfg:51
 msgid "female^dextrous"
-msgstr ""
+msgstr "vikri"
 
 #: data/core/macros/traits.cfg:64
 msgid "quick"
@@ -3287,7 +3292,7 @@ msgstr "atsparus"
 
 #: data/core/macros/traits.cfg:95
 msgid "female^resilient"
-msgstr "female^atspari"
+msgstr "atspari"
 
 #: data/core/macros/traits.cfg:111
 msgid "healthy"
@@ -3422,7 +3427,7 @@ msgstr ""
 
 #: data/core/terrain.cfg:376
 msgid "Oasis"
-msgstr ""
+msgstr "Oazė"
 
 #: data/core/terrain.cfg:392
 msgid "Snow Forest"
@@ -3625,7 +3630,7 @@ msgstr ""
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:53
 #: data/core/units/undead/Spirit_Shadow.cfg:27
 msgid "claws"
-msgstr ""
+msgstr "nagai"
 
 #: data/core/units/drakes/Armageddon.cfg:77
 #: data/core/units/drakes/Blademaster.cfg:67
@@ -3882,7 +3887,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw.cfg:22
 #: data/core/units/humans/Outlaw_Bandit.cfg:34
 msgid "mace"
-msgstr ""
+msgstr "vėzdas"
 
 #: data/core/units/drakes/Fighter.cfg:3
 msgid "Drake Fighter"
@@ -4417,7 +4422,7 @@ msgstr ""
 #: data/core/units/saurians/Soothsayer.cfg:36
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:22
 msgid "staff"
-msgstr ""
+msgstr "lazda"
 
 #: data/core/units/elves/Druid.cfg:65 data/core/units/elves/Shyde.cfg:56
 msgid "ensnare"
@@ -4425,7 +4430,7 @@ msgstr ""
 
 #: data/core/units/elves/Druid.cfg:145 data/core/units/elves/Shyde.cfg:137
 msgid "thorns"
-msgstr ""
+msgstr "dygliai"
 
 #: data/core/units/elves/Enchantress.cfg:3
 msgid "female^Elvish Enchantress"
@@ -4715,7 +4720,7 @@ msgstr ""
 #: data/core/units/undead/Bat_Blood.cfg:51
 #: data/core/units/undead/Bat_Vampire.cfg:65
 msgid "fangs"
-msgstr ""
+msgstr "iltys"
 
 #: data/core/units/goblins/Impaler.cfg:3
 msgid "Goblin Impaler"
@@ -4866,7 +4871,7 @@ msgstr ""
 
 #: data/core/units/humans/Horse_Lancer.cfg:3
 msgid "Lancer"
-msgstr "Ietininkas"
+msgstr "Ulonas"
 
 #: data/core/units/humans/Horse_Lancer.cfg:19
 msgid ""
@@ -5257,7 +5262,7 @@ msgstr ""
 
 #: data/core/units/humans/Loyalist_Spearman.cfg:3
 msgid "Spearman"
-msgstr ""
+msgstr "Ietininkas"
 
 #: data/core/units/humans/Loyalist_Spearman.cfg:20
 msgid ""
@@ -5935,7 +5940,7 @@ msgstr ""
 
 #: data/core/units/monsters/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "Sepija"
 
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
 msgid ""
@@ -5950,7 +5955,7 @@ msgstr ""
 #: data/core/units/monsters/Cuttle_Fish.cfg:34
 #: data/core/units/monsters/Tentacle.cfg:61
 msgid "tentacle"
-msgstr ""
+msgstr "čiuptuvas"
 
 #: data/core/units/monsters/Cuttle_Fish.cfg:196
 msgid "ink"
@@ -6416,7 +6421,7 @@ msgstr ""
 #: data/core/units/saurians/Oracle.cfg:74
 #: data/core/units/saurians/Soothsayer.cfg:74
 msgid "curse"
-msgstr ""
+msgstr "prakeikimas"
 
 #: data/core/units/saurians/Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -7478,7 +7483,7 @@ msgstr ""
 
 #: data/multiplayer/eras.cfg:24
 msgid "Age of Heroes"
-msgstr ""
+msgstr "Herojų amžius"
 
 #: data/multiplayer/eras.cfg:37
 msgid "Great War"
@@ -7486,11 +7491,11 @@ msgstr "Didysis karas"
 
 #: data/multiplayer/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
-msgstr ""
+msgstr "Tamsos sąjunga"
 
 #: data/multiplayer/factions/alliance_of_light.cfg:4
 msgid "Alliance of Light"
-msgstr ""
+msgstr "Šviesos sąjunga"
 
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
@@ -7863,11 +7868,11 @@ msgstr ""
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:18
 msgid "statue"
-msgstr ""
+msgstr "statula"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Tai iš akmens padaryta skulptūra."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
@@ -7986,7 +7991,7 @@ msgstr ""
 
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
-msgstr ""
+msgstr "3ž- Horatii sala"
 
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
@@ -8037,7 +8042,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Morituri.cfg:66
 #: data/multiplayer/scenarios/8p_Morituri.cfg:76
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "Komanda 1"
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:28
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:38
@@ -8052,7 +8057,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Morituri.cfg:46
 #: data/multiplayer/scenarios/8p_Morituri.cfg:86
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "Komanda 2"
 
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
@@ -8112,7 +8117,7 @@ msgstr ""
 
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
-msgstr ""
+msgstr "4ž - Kalvos karalius"
 
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
@@ -8145,7 +8150,7 @@ msgstr ""
 
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
-msgstr ""
+msgstr "4ž - Lagūna"
 
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:4
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:23
@@ -8257,7 +8262,7 @@ msgstr ""
 
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
-msgstr ""
+msgstr "5ž - Baimės miškas"
 
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
@@ -8903,7 +8908,7 @@ msgstr "MB"
 
 #: src/game.cpp:895
 msgid "Connect to Server"
-msgstr ""
+msgstr "Prisijungti prie serverio"
 
 #: src/game.cpp:896
 msgid "You will now connect to a server to download add-ons."
@@ -8956,7 +8961,7 @@ msgstr ""
 
 #: src/game.cpp:1045
 msgid "Error communicating with the server."
-msgstr ""
+msgstr "Klaida, bendraujant su serveriu"
 
 #: src/game.cpp:1054 src/titlescreen.cpp:235
 msgid "Version"
@@ -9090,7 +9095,7 @@ msgstr ""
 
 #: src/game.cpp:1410 src/playcampaign.cpp:90 src/playcampaign.cpp:344
 msgid "The game could not be loaded: "
-msgstr ""
+msgstr "Žaidimas negali būti įkeltas: "
 
 #: src/game.cpp:1412 src/playcampaign.cpp:92 src/playcampaign.cpp:347
 msgid "Error while playing the game: "
@@ -9146,15 +9151,15 @@ msgstr ""
 
 #: src/game_events.cpp:841
 msgid "Victory:"
-msgstr ""
+msgstr "Pergalė:"
 
 #: src/game_events.cpp:844
 msgid "Defeat:"
-msgstr ""
+msgstr "Pralaimėjimas:"
 
 #: src/gamestatus.cpp:829
 msgid "Could not write to file"
-msgstr ""
+msgstr "Nepavyksta įrašyti į bylą"
 
 #: src/help.cpp:1104
 msgid "Advances to: "
@@ -9202,7 +9207,7 @@ msgstr ""
 
 #: src/help.cpp:1221
 msgid "Resistances"
-msgstr ""
+msgstr "Atsparumai"
 
 #: src/help.cpp:1225
 msgid "Attack Type"
@@ -9210,7 +9215,7 @@ msgstr "Atakos tipas"
 
 #: src/help.cpp:1226
 msgid "Resistance"
-msgstr ""
+msgstr "Atsparumas"
 
 #: src/help.cpp:1251
 msgid "Terrain Modifiers"
@@ -9230,11 +9235,11 @@ msgstr ""
 
 #: src/help.cpp:2143
 msgid " < Back"
-msgstr ""
+msgstr " < Atgal"
 
 #: src/help.cpp:2144
 msgid "Forward >"
-msgstr ""
+msgstr "Pirmyn >"
 
 #: src/help.cpp:2256
 msgid "Reference to unknown topic: "
@@ -9374,7 +9379,7 @@ msgstr ""
 
 #: src/menu_events.cpp:387
 msgid "Leader"
-msgstr ""
+msgstr "Vadas"
 
 #: src/menu_events.cpp:388 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
@@ -9419,11 +9424,11 @@ msgstr "Išsaugota"
 
 #: src/menu_events.cpp:497
 msgid "The game has been saved"
-msgstr ""
+msgstr "Žaidimas išsaugotas"
 
 #: src/menu_events.cpp:500 src/playcampaign.cpp:473
 msgid "The game could not be saved"
-msgstr ""
+msgstr "Žaidimas negali būti išsaugotas"
 
 #: src/menu_events.cpp:515
 msgid "Save the Map As"
@@ -9431,7 +9436,7 @@ msgstr "Išsaugoti žemėlapį kaip"
 
 #: src/menu_events.cpp:520
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Žemėlapis jau egzistuoja. Ar norite jį perrašyti?"
 
 #: src/menu_events.cpp:532
 msgid "Map saved."
@@ -9439,7 +9444,7 @@ msgstr "Žemėlapis išsaugotas."
 
 #: src/menu_events.cpp:536
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
 
 #: src/menu_events.cpp:626 src/menu_events.cpp:628 src/play_controller.cpp:746
 #: src/playcampaign.cpp:101
@@ -9460,7 +9465,7 @@ msgstr "Pranešimas:"
 
 #: src/menu_events.cpp:666
 msgid "Send to allies only"
-msgstr ""
+msgstr "Siųsti tik draugams"
 
 #: src/menu_events.cpp:733
 msgid "unit^Gold"
@@ -9629,7 +9634,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1935
 msgid "prompt^Command:"
-msgstr ""
+msgstr "Komanda:"
 
 #: src/mouse_events.cpp:216
 msgid "Expected Battle Result (HP)"
@@ -9649,11 +9654,11 @@ msgstr "Sulėtintas"
 
 #: src/mouse_events.cpp:326
 msgid "Time of day"
-msgstr ""
+msgstr "Paros laikas"
 
 #: src/mouse_events.cpp:336
 msgid "Leadership"
-msgstr ""
+msgstr "Vadovavimas"
 
 #: src/mouse_events.cpp:343
 msgid "Total damage"
@@ -9673,11 +9678,11 @@ msgstr ""
 
 #: src/mouse_events.cpp:1333 src/reports.cpp:292
 msgid "vs"
-msgstr ""
+msgstr "prieš"
 
 #: src/mouse_events.cpp:1361
 msgid "Attack Enemy"
-msgstr ""
+msgstr "Pulti priešą"
 
 #: src/mouse_events.cpp:1362
 msgid "Choose weapon:"
@@ -9709,7 +9714,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:176
 msgid "Reading from Server..."
-msgstr ""
+msgstr "Skaitoma iš serverio..."
 
 #: src/multiplayer.cpp:185
 msgid ""
@@ -9771,7 +9776,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:486
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Anoniminis vietinis žaidėjas"
 
 #: src/multiplayer_connect.cpp:507
 msgid "Computer player"
@@ -9876,7 +9881,7 @@ msgstr ""
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:416
 #: src/multiplayer_lobby.cpp:417
 msgid "Use map settings"
-msgstr ""
+msgstr "Naudoti žemėlapio nustatymus"
 
 #: src/multiplayer_create.cpp:68
 msgid "Random start time"
@@ -9888,7 +9893,7 @@ msgstr "Karo rūkas"
 
 #: src/multiplayer_create.cpp:71
 msgid "Observers"
-msgstr ""
+msgstr "Stebėtojai"
 
 #: src/multiplayer_create.cpp:73
 msgid "OK"
@@ -9984,7 +9989,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:294
 msgid "You must enter a name."
-msgstr ""
+msgstr "Jūs privalote įvesti vardą."
 
 #: src/multiplayer_create.cpp:303
 msgid "Turns: "
@@ -9992,7 +9997,7 @@ msgstr "Ėjimai: "
 
 #: src/multiplayer_create.cpp:305
 msgid "Unlimited Turns"
-msgstr ""
+msgstr "Neriboti ėjimai"
 
 #: src/multiplayer_create.cpp:333
 msgid "Init. Limit: "
@@ -10088,11 +10093,11 @@ msgstr ""
 
 #: src/multiplayer_ui.cpp:364
 msgid "Message: "
-msgstr ""
+msgstr "Žinutė: "
 
 #: src/multiplayer_wait.cpp:123
 msgid "Leader: "
-msgstr ""
+msgstr "Vadas: "
 
 #: src/multiplayer_wait.cpp:125
 msgid "Recruits: "
@@ -10100,11 +10105,11 @@ msgstr ""
 
 #: src/multiplayer_wait.cpp:165
 msgid "Waiting for game to start..."
-msgstr ""
+msgstr "Laukiama žaidimo pradžios..."
 
 #: src/multiplayer_wait.cpp:184
 msgid "Getting game data..."
-msgstr ""
+msgstr "Gaunami žaidimo duomenys..."
 
 #: src/multiplayer_wait.cpp:257
 msgid "Choose your side:"
@@ -10116,7 +10121,7 @@ msgstr ""
 
 #: src/network.cpp:129
 msgid "Client disconnected"
-msgstr ""
+msgstr "Klientas atsijungė"
 
 #: src/network.cpp:476
 msgid "Could not add socket to socket set"
@@ -10145,7 +10150,7 @@ msgstr ""
 
 #: src/playcampaign.cpp:304
 msgid "You have been defeated!"
-msgstr ""
+msgstr "Jūs nugalėtas!"
 
 #: src/playcampaign.cpp:315
 msgid " replay"
@@ -10157,7 +10162,7 @@ msgstr ""
 
 #: src/playcampaign.cpp:363
 msgid "Receiving data..."
-msgstr ""
+msgstr "Atsiunčiami duomenys..."
 
 #: src/playcampaign.cpp:365
 msgid "Downloading next scenario..."
@@ -10258,7 +10263,7 @@ msgstr ""
 
 #: src/playturn.cpp:221
 msgid "has left the game. What do you want to do?"
-msgstr ""
+msgstr "paliko žaidimą. Ką norite daryti?"
 
 #: src/reports.cpp:135
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -10416,7 +10421,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:257
 msgid "TitleScreen button^Campaign"
-msgstr ""
+msgstr "Kampanija"
 
 #: src/titlescreen.cpp:258
 msgid "TitleScreen button^Multiplayer"
@@ -10424,7 +10429,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Load"
-msgstr ""
+msgstr "Įkelti"
 
 #: src/titlescreen.cpp:260
 msgid "TitleScreen button^Add-ons"
@@ -10432,11 +10437,11 @@ msgstr ""
 
 #: src/titlescreen.cpp:261
 msgid "TitleScreen button^Language"
-msgstr ""
+msgstr "Kalba"
 
 #: src/titlescreen.cpp:262
 msgid "TitleScreen button^Preferences"
-msgstr ""
+msgstr "Nustatymai"
 
 #: src/titlescreen.cpp:263
 msgid "Credits"
@@ -10444,7 +10449,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:264
 msgid "TitleScreen button^Quit"
-msgstr ""
+msgstr "Išjungti"
 
 #: src/titlescreen.cpp:265
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -10474,7 +10479,7 @@ msgstr "Keiskite kalbą"
 
 #: src/titlescreen.cpp:271
 msgid "Configure the game's settings"
-msgstr ""
+msgstr "Konfigūruoti žaidimo nustatymus"
 
 #: src/titlescreen.cpp:272
 msgid "View the credits"
