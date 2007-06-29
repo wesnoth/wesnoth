@@ -3,6 +3,7 @@ use wml;
 use IO::Socket;
 use IO::Select;
 use Fcntl;
+use Carp qw(confess);
 
 my %pending_handshake = ();
 my %outgoing_schemas = ();
@@ -12,6 +13,7 @@ my %connection_nums = ();
 my %user_name_socket = ();
 my %socket_user_name = ();
 my %lobby_players = ();
+my %socks_map = ();
 my @games = ();
 my $current_game_id = 1;
 my $current_connection_num = 1;
@@ -41,7 +43,8 @@ sub send_data {
 	my $doc = shift @_;
 	return unless @_;
 	print "SENDING: {{{" . &wml::write_text($doc) . "}}}\n";
-	foreach my $sock (@_) {
+	foreach my $socket (@_) {
+		my $sock = $socks_map{$socket};
 		my $packet = &wml::write_binary($outgoing_schemas{$sock}, $doc) . chr 0;
 		my $header = pack('N',length $packet);
 		$packet = $header . $packet;
@@ -64,6 +67,7 @@ sub socket_connected($) {
 	$outgoing_schemas{$sock} = [];
 	$incoming_schemas{$sock} = [];
 	$pending_handshake{$sock} = 1;
+	$socks_map{$sock} = $sock;
 	my $flags = '';
 	fcntl($sock, F_GETFL, $flags) or die "Couldn't get flags: $!";
 	$flags |= O_NONBLOCK;
@@ -72,7 +76,9 @@ sub socket_connected($) {
 
 sub socket_disconnected($) {
 	my ($sock) = @_;
+	$sock = $socks_map{$sock};
 	print STDERR "disconnected: $sock\n";
+	delete $socks_map{$sock};
 	delete $outgoing_schemas{$sock};
 	delete $incoming_schemas{$sock};
 	delete $incoming_bufs{$sock};
