@@ -6,9 +6,12 @@ By Eric S. Raymond, June 2007.
 
 Call with no arguments to filter WML on stdin to reindented WML on
 stdout.  If arguments are specified, they are taken to be files to be
-re-indented in place; interrupting will be safe as each reindenting
-will be done to a copy that is atomically renamed when it's done. This
-code never modifies anything but leading whitespace on lines.
+re-indented in place; a directory name causes reindenting on all WML
+beneath it.
+
+This code never modifies anything but leading whitespace on lines.
+Interrupting will be safe, as each reindenting will be done to a copy
+that is atomically renamed when it's done.
 
 The indent unit is four spaces.  Absence of an option to change this is
 deliberate; the purpose of this tool is to *prevent* style wars, not encourage
@@ -17,11 +20,11 @@ them.
 Note: This does not include a parser.  It will produce bad results on WML
 that is syntactically unbalanced.  Unbalanced double quotes that aren't part
 of a multiline literal will also confuse it.  You will receive warnings
-oiif there's an indent open at end of file or if a closer occurs with
+if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, getopt
+import sys, os, getopt, wmltools
 
 def is_directive(str):
     "Identify things that shouldn't be indented."
@@ -55,7 +58,7 @@ def reindent(name, infp, outfp):
             output = indent + transformed
         else:
             output = transformed
-        outfp.write(output)
+        outfp.write(output.rstrip() + "\n")
         # May need to indent based on the line we just saw.
         if transformed.startswith("[") and not transformed.startswith("[/"):
             indent += baseindent
@@ -69,26 +72,44 @@ def reindent(name, infp, outfp):
     if indent != "":
         print >>sys.stderr, "wmlindent: from %s, end of file with indent nonzero." % name
 
-def convertor(linefilter, filelist):
+def allwmlfiles(dir):
+    "Get names of all WML files under dir, or dir itself if not a directory."
+    datafiles = []
+    if not os.path.isdir(dir):
+        if dir.endswith(".cfg"):
+            datafiles.append(dir)
+    else:
+        for root, dirs, files in os.walk(dir):
+            if wmltools.vcdir in dirs:
+                dirs.remove(wmltools.vcdir)
+            for name in files:
+                if os.path.join(root, name).endswith(".cfg"):
+                    datafiles.append(os.path.join(root, name))
+    return datafiles
+
+def convertor(linefilter, arglist):
     "Apply a filter to command-line arguments."
-    if not filelist:
+    if not arglist:
         linefilter("standard input", sys.stdin, sys.stdout)
     else:
-	for filename in filelist:
-            try:
-                infp = open(filename, "r")
-                outfp = open(filename + ".out", "w")
-                linefilter(filename, infp, outfp)
-                infp.close()
-                outfp.close()
-            except KeyboardInterrupt:
-                os.remove(filename + ".out")
-            else:
-                os.remove(filename)	# For Windows portability
-                # There's a tiny window here. It's unavoidable, because there's
-                # no known way to do an atomic rename under Windows when the
-                # target exists -- see Python manual 14.1.4::rename()
-                os.rename(filename + ".out", filename)
+        for arg in arglist:
+            for filename in allwmlfiles(arg):
+                try:
+                    infp = open(filename, "r")
+                    outfp = open(filename + ".out", "w")
+                    linefilter(filename, infp, outfp)
+                    infp.close()
+                    outfp.close()
+                except KeyboardInterrupt:
+                    os.remove(filename + ".out")
+                else:
+                    os.remove(filename)	# For Windows portability
+                    # There's a tiny window open if you keyboard-
+                    # interrupt here. It's unavoidable, because
+                    # there's no known way to do an atomic rename
+                    # under Windows when the target exists -- see
+                    # Python manual 14.1.4::rename()
+                    os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
     (options, arguments) = getopt.getopt(sys.argv[1:], "h:")
