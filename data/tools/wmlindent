@@ -161,7 +161,7 @@ def convertor(linefilter, arglist):
         for arg in arglist:
             for filename in allwmlfiles(arg):
                 if verbose:
-                    sys.stderr.write(arg + ": ")
+                    sys.stderr.write(filename + ": ")
                 try:
                     infp = open(filename, "r")
                     outfp = open(filename + ".out", "w")
