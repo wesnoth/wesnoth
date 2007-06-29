@@ -60,6 +60,13 @@ sub send_error($$) {
 	&send_data($doc,$sock);
 }
 
+sub send_to_lobby {
+	my ($doc, @users, $exclude);
+	foreach my $sock (@users) {
+		&send_data($doc, $sock) unless $sock eq $exclude;
+	}
+}
+
 sub socket_connected($) {
 	my ($sock) = @_;
 	print STDERR "connected: $sock\n";
@@ -176,7 +183,7 @@ sub received_packet($$) {
 		} elsif(my $message = &wml::has_child($doc, 'message')) {
 			my $attr = $message->{'attr'};
 			$attr->{'sender'} = $socket_user_name{$sock};
-			&send_data($doc, keys %lobby_players);
+			&send_to_lobby($doc, keys %lobby_players, $sock);
 		}
 		return;
 	}
