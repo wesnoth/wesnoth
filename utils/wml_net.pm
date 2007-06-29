@@ -62,6 +62,7 @@ sub write_packet
 	my ($sock,$doc) = @_;
 
 	my $data = &wml::write_binary($wml_net::outgoing_schemas{$sock},$doc);
+	$data .= chr 0;
 	my $header = pack('N',length $data);
 	print $sock "$header$data" or die "Error writing to socket: $!";
 }
