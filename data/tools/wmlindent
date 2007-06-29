@@ -160,8 +160,6 @@ def convertor(linefilter, arglist):
     else:
         for arg in arglist:
             for filename in allwmlfiles(arg):
-                if verbose:
-                    sys.stderr.write(filename + ": ")
                 try:
                     infp = open(filename, "r")
                     outfp = open(filename + ".out", "w")
@@ -173,14 +171,15 @@ def convertor(linefilter, arglist):
                     os.remove(filename + ".out")
                 except KeyboardInterrupt:
                     os.remove(filename + ".out")
+                    sys.stderr.write("wmlindent: %s interrupted\n" % filename)
                 else:
                     if filecmp.cmp(filename, filename + ".out"):
-                        if verbose:
-                            sys.stderr.write("unchanged\n")
+                        if verbose >= 2:
+                            sys.stderr.write("wmlindent: %s unchanged\n" % filename)
                         os.remove(filename + ".out")
                     else:
-                        if verbose:
-                            sys.stderr.write("changed\n")
+                        if verbose >= 1:
+                            sys.stderr.write("wmlindent: %s changed\n" % filename)
                         os.remove(filename)	# For Windows portability
                         # There's a tiny window open if you keyboard-
                         # interrupt here. It's unavoidable, because
@@ -191,10 +190,10 @@ def convertor(linefilter, arglist):
 
 if __name__ == '__main__':
     (options, arguments) = getopt.getopt(sys.argv[1:], "h:v")
-    verbose = False
+    verbose = 0
     for (opt, val) in options:
         if opt == "-?":
             print __doc__
         elif opt == '-v':
-            verbose = True
+            verbose += 1
     convertor(lambda n, f1, f2: reindent(n, f1, f2), arguments)
