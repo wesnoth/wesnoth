@@ -37,15 +37,25 @@ def reindent(name, infp, outfp):
     "Reindent WML."
     baseindent = "    "
     dostrip = True
+    seen_wml = False
+    inmacro = False
     indent = ""
     for line in infp:
         # Strip each line, unless we're in something like a multiline string. 
         if dostrip:
-            transformed = line.lstrip()
+            transformed = line.strip() + "\n"
         else:
             transformed = line
-        if transformed == "":
-            transformed = "\n"
+        # Track whether we've seen real WML rather than just macro definitions
+        if transformed.startswith("#define"):
+            saved_indent = indent
+            indent = baseindent
+            inmacro = True
+        elif transformed.startswith("#enddef"):
+            indent = saved_indent
+            inmacro = False
+        elif not inmacro and transformed[0] in ('[', ']'):
+            seen_wml = True
         # In the close case, we must compute new indent *before* emitting
         # the new line so the close tag will be at the same level as the
         # one that started the block.
@@ -58,18 +68,17 @@ def reindent(name, infp, outfp):
             output = indent + transformed
         else:
             output = transformed
-        outfp.write(output.rstrip() + "\n")
+        outfp.write(output)
         # May need to indent based on the line we just saw.
         if transformed.startswith("[") and not transformed.startswith("[/"):
             indent += baseindent
         # Compute the dostrip state likewise.  This is the only tricky part.
         # We look for unbalanced string quotes,
         syntax = transformed.split("#")[0]
-        if "=" in syntax and syntax.count('"') == 1:
-            dostrip = True
-        elif syntax.count('"') == 1:
-            dostrip = False
-    if indent != "":
+        if syntax.count('"') == 1:
+            dostrip =  "=" not in syntax
+    # Pure macro files look like they have unbalanced indents.  That's OK
+    if indent != "" and seen_wml:
         print >>sys.stderr, "wmlindent: from %s, end of file with indent nonzero." % name
 
 def allwmlfiles(dir):
