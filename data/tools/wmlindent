@@ -22,6 +22,11 @@ Runs of entirely blank lines will be reduced to one blank line, except
 in two cases where they will be discarded: (a) before WML closing
 tags, and (b) after WML opening tags.
 
+It is possible to wrap a section of lines in special comments so that
+wmlindent will ignore them.  You may need to do this for unbalanced
+macros (it'ds better, though, to get rid of those where possible.
+Use 'wmlindent: {start,stop} ignoring' anywhere in a comment.
+
 Interrupting will be safe, as each reindenting will be done to a copy
 that is atomically renamed when it's done.  If the output file is identical
 to the input, the output file will simply be deleted, so the timestamp
@@ -68,6 +73,7 @@ def reindent(name, infp, outfp):
     dostrip = True
     seen_wml = False
     inmacro = False
+    ignoring = False
     indent = ""
     lasttag = ""
     countlines = 0
@@ -75,6 +81,16 @@ def reindent(name, infp, outfp):
     multitag = re.compile(r"\[a-z]].*\[[a-z]")	# Avoid triggering on arrays
     for line in infp:
         countlines += 1
+        # Implement passthrough mode
+        if "wmlindent: start ignoring" in line:
+            ignoring = True
+            outfp.write(line)
+            continue
+        elif ignoring:
+            outfp.write(line)
+            if "wmlindent: stop ignoring" in line:
+                ignoring = False
+            continue
         # Detect things we can't handle
         if multitag.search(line):
             raise bailout(name, countlines, "multiple tags on the line")

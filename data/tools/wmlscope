@@ -151,7 +151,8 @@ class CrossRefLister(CrossRef):
                 hdr = []
                 dfp = open(filename)
                 for line in dfp:
-                    if line[0] == '#':
+                    line = line.lstrip()
+                    if line and line[0] == '#':
                         hdr.append(line[1:])
                     else:
                         break
