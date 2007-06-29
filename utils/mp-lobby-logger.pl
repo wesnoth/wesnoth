@@ -2,57 +2,103 @@
 
 use strict;
 use warnings;
-use wml_net;
 use wml;
+use IO::Socket;
 use POSIX qw(strftime);
+use Getopt::Std;
 use Data::Dumper;
 
-my $usage = '$0 username [server] [port]';
-if (@ARGV > 3 or @ARGV == 0) {die "Usage: $usage\n";}
+my $usage = 'Usage: $0 [-e count] [-h host] [-p port] [username]';
+die "$usage\n" unless @ARGV > 1;
 
-my $USERNAME = $ARGV[0];
-my $HOST = 'server.wesnoth.org';
+my %opts = ();
+getopts('e:h:p:',\%opts);
+
+my $USERNAME = 'log';
+my $HOST = '127.0.0.1';
 my $PORT = '15000';
-if ($ARGV[1]) {$HOST = $ARGV[1];}
-if ($ARGV[2]) {$PORT = $ARGV[2];}
+if ($ARGV[1]) {$USERNAME = $ARGV[0];}
+if ($opts{'h'}) {$HOST = $opts{'h'};}
+if ($opts{'p'}) {$PORT = $opts{'p'};}
 my $LOGIN_RESPONSE = "[login]\nusername=\"$USERNAME\"\n[/login]";
 my $VERSION_RESPONSE = "[version]\nversion=\"test\"\n[/version]";
 my @usernamelist = ();
+my %outgoing_schemas = ();
+my %incoming_schemas = ();
 
 
-print STDERR "Connecting to $HOST:$PORT as $USERNAME.\n";
-my $socket = eval {&wml_net::connect($HOST,$PORT)};
-$@ eq '' or die "Error: $@";
-defined($socket) or die "Error: Can't connect to the server.";
+sub connect {
+	my ($host,$port) = @_;
+	my $sock = IO::Socket::INET->new(PeerAddr => $host, PeerPort => $port, Proto => 'tcp', Type => SOCK_STREAM)
+		or die "Could not connect to $host:$port: $@\n";
+	print $sock pack('N',0) or die "Could not send initial handshake";
 
+	my $connection_num = "";
+	read $sock, $connection_num, 4;
+	die "Could not read connection number" if length($connection_num) != 4;
 
-sub read_server_response {
-	my $response = eval {
-		&wml_net::read_packet($socket)
-	};
-	$@ eq '' or die "Error: $@";
-	#print STDERR Dumper($response);
-	return $response;
+	$outgoing_schemas{$sock} = [];
+	$incoming_schemas{$sock} = [];
+	return $sock;
 }
 
-sub write_to_server {
-	my $message = shift;
-	#print STDERR $message;
-	eval {
-		&wml_net::write_packet($socket,&wml::read_text($message))
-	};
-	$@ eq '' or die "Error: $@";
+sub disconnect {
+	my ($sock) = @_;
+	delete($outgoing_schemas{$sock});
+	delete($incoming_schemas{$sock});
+	close $sock;
 }
+
+sub read_packet {
+	my ($sock) = @_;
+	my $buf = '';
+	read $sock, $buf, 4;
+	die "Could not read length" if length($buf) != 4;
+
+	my $len = unpack('N',$buf);
+
+	my $res = "\0" * $len;
+	my $count = 0;
+	while($len > $count) {
+		$buf = '';
+		my $bytes = $len - $count;
+		read $sock, $buf, $bytes or die "Error reading socket: $!";
+		substr($res, $count, length $buf) = $buf;
+		$count += length $buf;
+	}
+
+	$res = substr($res,0,$len-1);
+
+	return &wml::read_binary($incoming_schemas{$sock},$res);
+}
+
+sub write_packet {
+	my ($sock,$doc) = @_;
+	my $data = &wml::write_binary($outgoing_schemas{$sock},$doc);
+	$data .= chr 0;
+	my $header = pack('N',length $data);
+	print $sock "$header$data" or die "Error writing to socket: $!";
+}
+
+sub write_bad_packet {
+	my ($sock, $doc) = @_;
+	my $data = &wml::write_binary($outgoing_schemas{$sock},$doc);
+	$data .= chr 0;
+	my $header = pack('N', (length $data) * 2);
+	print $sock "$header$data" or die "Error writing to socket: $!";
+}
+
 
 sub login {
-	my $response = read_server_response();
+	my $sock = shift;
+	my $response = &read_packet($sock);
 	# server asks for the version string or tells us to login right away
 	if (&wml::has_child($response, 'version')) {
-		write_to_server($VERSION_RESPONSE);
-		$response = read_server_response();
+		&write_packet($sock, &wml::read_text($VERSION_RESPONSE));
+		$response = &read_packet($sock);
 		# server asks for a login
 		if (&wml::has_child($response, 'mustlogin')) {
-			write_to_server($LOGIN_RESPONSE);
+			&write_packet($sock, &wml::read_text($LOGIN_RESPONSE));
 		} elsif (my $error = &wml::has_child($response, 'error')) {
 			print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 		} else {
@@ -61,13 +107,13 @@ sub login {
 	} elsif (my $error = &wml::has_child($response, 'error')) {
 		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 	} elsif (&wml::has_child($response, 'mustlogin')) {
-		write_to_server($LOGIN_RESPONSE);
+		&write_packet($sock, &wml::read_text($LOGIN_RESPONSE));
 	} else {
 		print STDERR "Error: Server didn't ask for version or login and gave no error.\nDumper($response)" and die;
 	}
 
 	# server sends the join lobby response
-	$response = read_server_response();
+	$response = &read_packet($sock);
 	if (&wml::has_child($response, 'join_lobby')) {
 	} elsif (my $error = &wml::has_child($response, 'error')) {
 		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
@@ -76,7 +122,7 @@ sub login {
 	}
 
 	# server sends the initial list of games and players
-	$response = read_server_response();
+	$response = &read_packet($sock);
 	#print STDERR Dumper($response);
 	if (&wml::has_child($response, 'gamelist')) {
 		foreach (@ {$response->{'children'}}) {
@@ -92,10 +138,25 @@ sub login {
 	print STDERR "usernames: @usernamelist\n";
 }
 
-login();
+# make several connections and send packets with a wrong length then sleep indefinitely
+if (my $count = $opts{'e'}) {
+	for (1..$count) {
+		my $socket = &connect($HOST,$PORT);
+		&write_bad_packet($socket, &wml::read_text($VERSION_RESPONSE));
+	}
+	sleep();
+}
+
+
+
+print STDERR "Connecting to $HOST:$PORT as $USERNAME.\n";
+my $socket = &connect($HOST,$PORT);
+defined($socket) or die "Error: Can't connect to the server.";
+
+login($socket);
 
 while (1) {
-	my $response = read_server_response();
+	my $response = &read_packet($socket);
 	# print only chat messages
 	foreach (@ {$response->{'children'}}) {
 		if ($_->{'name'} eq 'message') {
