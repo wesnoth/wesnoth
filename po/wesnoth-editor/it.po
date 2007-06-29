@@ -7,13 +7,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-18 19:36+0200\n"
+"POT-Creation-Date: 2007-06-29 12:20+0200\n"
 "PO-Revision-Date: 2007-05-07 17:05+0200\n"
 "Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: data/core/editor-groups.cfg:11
+msgid "all"
+msgstr ""
+
+#: data/core/editor-groups.cfg:17
+#, fuzzy
+msgid "water"
+msgstr "Incolla"
+
+#: data/core/editor-groups.cfg:29
+msgid "flat"
+msgstr ""
+
+#: data/core/editor-groups.cfg:35
+msgid "desert"
+msgstr ""
+
+#: data/core/editor-groups.cfg:41
+msgid "forest"
+msgstr ""
+
+#: data/core/editor-groups.cfg:47
+msgid "frozen"
+msgstr ""
+
+#: data/core/editor-groups.cfg:53
+msgid "rough"
+msgstr ""
+
+#: data/core/editor-groups.cfg:59
+msgid "cave"
+msgstr ""
+
+#: data/core/editor-groups.cfg:65
+#, fuzzy
+msgid "village"
+msgstr "Villaggi:"
+
+#: data/core/editor-groups.cfg:71
+#, fuzzy
+msgid "castle"
+msgstr "Incolla"
 
 #: data/themes/editor.cfg:494
 msgid "File"
@@ -87,7 +130,7 @@ msgstr "Lingua"
 msgid "Choose your preferred language:"
 msgstr "Scegli la lingua che preferisci:"
 
-#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:288
+#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:286
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Editor per le mappe di Battle for Wesnoth"
 
@@ -252,9 +295,6 @@ msgstr "Sfondo"
 #~ msgid "Max Hill Size:"
 #~ msgstr "Dimensione Massima delle colline:"
 
-#~ msgid "Villages:"
-#~ msgstr "Villaggi:"
-
 #~ msgid "Landform:"
 #~ msgstr "Terreno:"
 
@@ -281,9 +321,6 @@ msgstr "Sfondo"
 
 #~ msgid "Start P"
 #~ msgstr "Inizio"
-
-#~ msgid "Paste"
-#~ msgstr "Incolla"
 
 #~ msgid "Ok"
 #~ msgstr "Ok"

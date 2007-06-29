@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ed-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-18 19:36+0200\n"
+"POT-Creation-Date: 2007-06-29 12:20+0200\n"
 "PO-Revision-Date: 2004-10-18 18:33+0200\n"
 "Last-Translator: lynx \n"
 "Language-Team:  sl\n"
@@ -19,6 +19,48 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 "X-Generator: KBabel 1.9\n"
+
+#: data/core/editor-groups.cfg:11
+msgid "all"
+msgstr ""
+
+#: data/core/editor-groups.cfg:17
+msgid "water"
+msgstr ""
+
+#: data/core/editor-groups.cfg:29
+msgid "flat"
+msgstr ""
+
+#: data/core/editor-groups.cfg:35
+msgid "desert"
+msgstr ""
+
+#: data/core/editor-groups.cfg:41
+msgid "forest"
+msgstr ""
+
+#: data/core/editor-groups.cfg:47
+msgid "frozen"
+msgstr ""
+
+#: data/core/editor-groups.cfg:53
+msgid "rough"
+msgstr ""
+
+#: data/core/editor-groups.cfg:59
+msgid "cave"
+msgstr ""
+
+#: data/core/editor-groups.cfg:65
+#, fuzzy
+msgid "village"
+msgstr "Vasi:"
+
+#: data/core/editor-groups.cfg:71
+#, fuzzy
+msgid "castle"
+msgstr "Obala"
 
 #: data/themes/editor.cfg:494
 msgid "File"
@@ -92,7 +134,7 @@ msgstr "Jezik"
 msgid "Choose your preferred language:"
 msgstr "Izberite jezik"
 
-#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:288
+#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:286
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Urejevalnik kart za Battle for Wesnoth"
 
@@ -257,9 +299,6 @@ msgstr "BG"
 #~ msgid "Max Hill Size:"
 #~ msgstr "Največja velikost griča:"
 
-#~ msgid "Villages:"
-#~ msgstr "Vasi:"
-
 #~ msgid "Landform:"
 #~ msgstr "Oblika terena:"
 
@@ -268,9 +307,6 @@ msgstr "BG"
 
 #~ msgid "/1000 tiles"
 #~ msgstr "/1000 plošč"
-
-#~ msgid "Coastal"
-#~ msgstr "Obala"
 
 #~ msgid "Inland"
 #~ msgstr "Celina"

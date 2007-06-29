@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-18 19:36+0200\n"
+"POT-Creation-Date: 2007-06-29 12:20+0200\n"
 "PO-Revision-Date: 2007-05-01 21:49+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -18,6 +18,49 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.10\n"
+
+#: data/core/editor-groups.cfg:11
+msgid "all"
+msgstr ""
+
+#: data/core/editor-groups.cfg:17
+#, fuzzy
+msgid "water"
+msgstr "Vlož"
+
+#: data/core/editor-groups.cfg:29
+msgid "flat"
+msgstr ""
+
+#: data/core/editor-groups.cfg:35
+msgid "desert"
+msgstr ""
+
+#: data/core/editor-groups.cfg:41
+msgid "forest"
+msgstr ""
+
+#: data/core/editor-groups.cfg:47
+msgid "frozen"
+msgstr ""
+
+#: data/core/editor-groups.cfg:53
+msgid "rough"
+msgstr ""
+
+#: data/core/editor-groups.cfg:59
+msgid "cave"
+msgstr ""
+
+#: data/core/editor-groups.cfg:65
+#, fuzzy
+msgid "village"
+msgstr "Vesnic:"
+
+#: data/core/editor-groups.cfg:71
+#, fuzzy
+msgid "castle"
+msgstr "Vlož"
 
 #: data/themes/editor.cfg:494
 msgid "File"
@@ -91,7 +134,7 @@ msgstr "Jazyk"
 msgid "Choose your preferred language:"
 msgstr "Vyber si preferovaný jazyk:"
 
-#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:288
+#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:286
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Editor hry Bitva o Wesnoth"
 
@@ -254,9 +297,6 @@ msgstr "Pozadí"
 #~ msgid "Max Hill Size:"
 #~ msgstr "Maximální velikost kopce:"
 
-#~ msgid "Villages:"
-#~ msgstr "Vesnic:"
-
 #~ msgid "Landform:"
 #~ msgstr "Typ krajiny:"
 
@@ -283,9 +323,6 @@ msgstr "Pozadí"
 
 #~ msgid "Start P"
 #~ msgstr "Poč. pos."
-
-#~ msgid "Paste"
-#~ msgstr "Vlož"
 
 #~ msgid "Ok"
 #~ msgstr "OK"

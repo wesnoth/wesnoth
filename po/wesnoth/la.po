@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-22 13:11+0200\n"
+"POT-Creation-Date: 2007-06-29 12:20+0200\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -41,7 +41,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:27
 #: data/campaigns/Northern_Rebirth/_main.cfg:57
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:33
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:32
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:23
 #: data/campaigns/The_South_Guard/_main.cfg:27
 #: data/campaigns/Two_Brothers/_main.cfg:23
@@ -170,7 +170,7 @@ msgstr "frigidum"
 #: data/campaigns/Eastern_Invasion/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:35
 #: data/campaigns/Northern_Rebirth/_main.cfg:26
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:44
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:31
 #: data/campaigns/The_South_Guard/_main.cfg:35
 #: data/campaigns/Two_Brothers/_main.cfg:32
@@ -178,7 +178,7 @@ msgstr "frigidum"
 msgid "Artwork and Graphics Designers"
 msgstr "Inventores artium ingenuarum et digitarum"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:525
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
 msgid "Underground"
 msgstr "Sub terra"
@@ -203,7 +203,7 @@ msgstr "Reditio ceca"
 msgid "Code and Translation Assistance"
 msgstr "Reditio coreana"
 
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:37
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:36
 #, fuzzy
 msgid "WML Contributors"
 msgstr "+Qui confert"
@@ -226,39 +226,39 @@ msgstr "Varii"
 msgid "Programming"
 msgstr ""
 
-#: data/core/about.cfg:59
+#: data/core/about.cfg:60
 #, fuzzy
 msgid "General Purpose Administration and Coordination"
 msgstr "+Administratores Communes"
 
-#: data/core/about.cfg:69
+#: data/core/about.cfg:70
 #, fuzzy
 msgid "Artwork and Graphics"
 msgstr "+Inventores artium ingenuarum"
 
-#: data/core/about.cfg:182
+#: data/core/about.cfg:183
 msgid "Music"
 msgstr "Musica"
 
-#: data/core/about.cfg:193
+#: data/core/about.cfg:194
 msgid "Sound Effects"
 msgstr ""
 
-#: data/core/about.cfg:202
+#: data/core/about.cfg:203
 #, fuzzy
 msgid "Campaign Design"
 msgstr "Inventor Stipendii"
 
-#: data/core/about.cfg:228
+#: data/core/about.cfg:229
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "Chartae Plurum Lusorum"
 
-#: data/core/about.cfg:243
+#: data/core/about.cfg:244
 msgid "Packagers"
 msgstr "Factores Fasciculorum"
 
-#: data/core/about.cfg:266 data/core/help.cfg:254
+#: data/core/about.cfg:267 data/core/help.cfg:254
 msgid "Contributors"
 msgstr "+Qui confert"
 
@@ -2613,7 +2613,7 @@ msgstr ""
 msgid "plague"
 msgstr "pestilentia"
 
-#: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:481
+#: data/core/macros/abilities.cfg:469
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2625,11 +2625,24 @@ msgstr ""
 "consimili et ex eadem parte unitatis cum oppugnatione Pestilentiae "
 "substituitur."
 
-#: data/core/macros/abilities.cfg:490
+#: data/core/macros/abilities.cfg:481
+#, fuzzy
+msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn't work on Undead or units in villages."
+msgstr ""
+"Pestilentia:\n"
+"Cum unitas ab oppugnatione Pestilentiae interficitur, illa unitas ab unitate "
+"consimili et ex eadem parte unitatis cum oppugnatione Pestilentiae "
+"substituitur."
+
+#: data/core/macros/abilities.cfg:491
 msgid "slows"
 msgstr "lentifacit"
 
-#: data/core/macros/abilities.cfg:492
+#: data/core/macros/abilities.cfg:493
 #, fuzzy
 msgid ""
 "Slow:\n"
@@ -2641,11 +2654,11 @@ msgstr ""
 "damnum oppugnationum dimidia parte et unitates lentifactae se movent cum "
 "celeritate dimidia (si adest fractio numero superiori utitur)."
 
-#: data/core/macros/abilities.cfg:501
+#: data/core/macros/abilities.cfg:502
 msgid "stones"
 msgstr "petrificat"
 
-#: data/core/macros/abilities.cfg:503
+#: data/core/macros/abilities.cfg:504
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2655,11 +2668,11 @@ msgstr ""
 "Haec oppugnatio petrificavit scopum. Unitates quae in saxum mutantur neque "
 "movere neque oppugnare possunt."
 
-#: data/core/macros/abilities.cfg:512
+#: data/core/macros/abilities.cfg:513
 msgid "marksman"
 msgstr "peritus arcus"
 
-#: data/core/macros/abilities.cfg:514
+#: data/core/macros/abilities.cfg:515
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -2668,11 +2681,11 @@ msgstr ""
 "Si uteris huic oppugnationi in offensione, habet semper probabilitatem "
 "saltem LX pro centum feriendi."
 
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:527
 msgid "magical"
 msgstr "magicalis"
 
-#: data/core/macros/abilities.cfg:528
+#: data/core/macros/abilities.cfg:529
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -2680,11 +2693,11 @@ msgstr ""
 "Magicalis:\n"
 "Haec oppugnatio semper probabilitatem LXX pro cento habet feriendi."
 
-#: data/core/macros/abilities.cfg:539
+#: data/core/macros/abilities.cfg:540
 msgid "swarm"
 msgstr "examen"
 
-#: data/core/macros/abilities.cfg:541
+#: data/core/macros/abilities.cfg:542
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -2698,11 +2711,11 @@ msgstr ""
 "gratia, unitas quae tres partes SP possidit tres partes oppugnationes "
 "accipiet."
 
-#: data/core/macros/abilities.cfg:550
+#: data/core/macros/abilities.cfg:551
 msgid "charge"
 msgstr "incurrere"
 
-#: data/core/macros/abilities.cfg:552
+#: data/core/macros/abilities.cfg:553
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -2712,11 +2725,11 @@ msgstr ""
 "Haec oppugnatio damnum duplice facit scopo. Atque efficit ut haec unitas "
 "damnum duplice ex oppugnatione scopi in vicem accipiat."
 
-#: data/core/macros/abilities.cfg:564
+#: data/core/macros/abilities.cfg:565
 msgid "drains"
 msgstr "exhaurit"
 
-#: data/core/macros/abilities.cfg:566
+#: data/core/macros/abilities.cfg:567
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -2726,11 +2739,11 @@ msgstr ""
 "Haec unitas salutem ex unitatibus vivis exhaurit, se sanans dimidiam partem "
 "damni inflecti (ignorans fractiones)."
 
-#: data/core/macros/abilities.cfg:575
+#: data/core/macros/abilities.cfg:576
 msgid "firststrike"
 msgstr "ictus primus"
 
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/abilities.cfg:578
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -2738,11 +2751,11 @@ msgstr ""
 "Ictus Primus:\n"
 "Haec unitas semper prima percutit, etsi defendit."
 
-#: data/core/macros/abilities.cfg:586
+#: data/core/macros/abilities.cfg:587
 msgid "poison"
 msgstr "venenum"
 
-#: data/core/macros/abilities.cfg:588
+#: data/core/macros/abilities.cfg:589
 #, fuzzy
 msgid ""
 "Poison:\n"
@@ -10377,7 +10390,7 @@ msgid "End Turn"
 msgstr "Tractum finire"
 
 #: data/themes/default.cfg:171 data/themes/dfool.cfg:198
-#: data/themes/experimental.cfg:149 src/menu_events.cpp:315 src/unit.cpp:2417
+#: data/themes/experimental.cfg:149 src/menu_events.cpp:315 src/unit.cpp:2415
 msgid "HP"
 msgstr "PS"
 
@@ -10614,11 +10627,11 @@ msgstr "%a·%b·%d·%H:%M·%Y"
 msgid "#(Invalid)"
 msgstr "#(Inritus)"
 
-#: src/dialogs.cpp:467 src/game.cpp:810
+#: src/dialogs.cpp:467 src/game.cpp:808
 msgid "Campaign"
 msgstr "Stipendium"
 
-#: src/dialogs.cpp:469 src/game.cpp:1357
+#: src/dialogs.cpp:469 src/game.cpp:1371
 msgid "Multiplayer"
 msgstr "Cum lusoribus pluribus"
 
@@ -10682,7 +10695,7 @@ msgstr "Servatum Delere"
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:571 src/game.cpp:1056 src/menu_events.cpp:313
+#: src/dialogs.cpp:571 src/game.cpp:1054 src/menu_events.cpp:313
 #: src/menu_events.cpp:858 src/multiplayer.cpp:108
 msgid "Name"
 msgstr "Nomen"
@@ -10720,136 +10733,136 @@ msgstr "PE: "
 msgid "Moves: "
 msgstr "Puncta motus: "
 
-#: src/display.cpp:576
+#: src/display.cpp:324
 msgid "Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/game.cpp:427 src/game.cpp:1442
+#: src/game.cpp:425 src/game.cpp:1456
 msgid "The Battle for Wesnoth"
 msgstr "Proelium pro Occidiseptentrione"
 
-#: src/game.cpp:672
+#: src/game.cpp:670
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Monitum: Pliga quam restituere conaris corrupta est. Tamen restituens.\n"
 
-#: src/game.cpp:697 src/multiplayer_connect.cpp:1258
+#: src/game.cpp:695 src/multiplayer_connect.cpp:1258
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr "Servatus est ex versione alia lusus. Visne eum restituere conari?"
 
-#: src/game.cpp:702 src/multiplayer_connect.cpp:1265
+#: src/game.cpp:700 src/multiplayer_connect.cpp:1265
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Servatus est ex versione alia lusus. Visne eum restituere conari?"
 
-#: src/game.cpp:710 src/game.cpp:713 src/multiplayer_connect.cpp:1241
+#: src/game.cpp:708 src/game.cpp:711 src/multiplayer_connect.cpp:1241
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Pliga quae restituere conaris corrupta est: '"
 
-#: src/game.cpp:716
+#: src/game.cpp:714
 msgid "File I/O Error while reading the game"
 msgstr "Mendum I/E pligarum dum lusus legitur"
 
-#: src/game.cpp:811
+#: src/game.cpp:809
 msgid "Choose the campaign you want to play:"
 msgstr "Stipendium elige quod ludere vis:"
 
-#: src/game.cpp:834
+#: src/game.cpp:832
 msgid "Difficulty"
 msgstr "Difficultas"
 
-#: src/game.cpp:835
+#: src/game.cpp:833
 msgid "Select difficulty level:"
 msgstr "Gradum difficultatis elige:"
 
-#: src/game.cpp:862
+#: src/game.cpp:860
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:865
+#: src/game.cpp:863
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:868
+#: src/game.cpp:866
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:897
+#: src/game.cpp:895
 msgid "Connect to Server"
 msgstr "Ad Moderatrum Coniungere"
 
-#: src/game.cpp:898
+#: src/game.cpp:896
 msgid "You will now connect to a server to download add-ons."
 msgstr "Iam ad moderatrum stipendiorum coniungeris ut adiuncta trahas."
 
-#: src/game.cpp:900
+#: src/game.cpp:898
 msgid "Server: "
 msgstr "Moderatrum: "
 
-#: src/game.cpp:901 src/game.cpp:948
+#: src/game.cpp:899 src/game.cpp:946
 #, fuzzy
 msgid "Remove Add-ons"
 msgstr "Adiuncta Trahere"
 
-#: src/game.cpp:936
+#: src/game.cpp:934
 #, fuzzy
 msgid "You have no Add-ons installed."
 msgstr "Adiunctum inauguratum est."
 
-#: src/game.cpp:948
+#: src/game.cpp:946
 #, fuzzy
 msgid "Choose the add-on to remove."
 msgstr "Adiunctum eligere quod trahendum est."
 
-#: src/game.cpp:966
+#: src/game.cpp:964
 msgid "Confirm"
 msgstr ""
 
-#: src/game.cpp:997
+#: src/game.cpp:995
 #, fuzzy
 msgid "Add-on deleted"
 msgstr "Adiunctum Inauguratur"
 
-#: src/game.cpp:1002
+#: src/game.cpp:1000
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 
-#: src/game.cpp:1002 src/menu_events.cpp:487 src/menu_events.cpp:500
+#: src/game.cpp:1000 src/menu_events.cpp:487 src/menu_events.cpp:500
 #: src/multiplayer_create.cpp:494
 msgid "Error"
 msgstr "Mendum"
 
-#: src/game.cpp:1022 src/multiplayer.cpp:166 src/multiplayer.cpp:203
+#: src/game.cpp:1020 src/multiplayer.cpp:166 src/multiplayer.cpp:203
 msgid "Connecting to Server..."
 msgstr "Ad Moderatrum Coniungens..."
 
-#: src/game.cpp:1025
+#: src/game.cpp:1023
 msgid "Could not connect to host."
 msgstr "Non poteram cum hospite coniungere."
 
-#: src/game.cpp:1034
+#: src/game.cpp:1032
 msgid "Asking for list of add-ons"
 msgstr "Petiens elenchum adiuncta"
 
-#: src/game.cpp:1047
+#: src/game.cpp:1045
 msgid "Error communicating with the server."
 msgstr "Mendum in communicatione cum moderatro."
 
-#: src/game.cpp:1056 src/titlescreen.cpp:235
+#: src/game.cpp:1054 src/titlescreen.cpp:235
 msgid "Version"
 msgstr "Versio"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1055
 msgid "Author"
 msgstr "Scriptor"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1055
 msgid "Downloads"
 msgstr "Quoties tractum"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1055
 msgid "Size"
 msgstr "Magnitudo"
 
@@ -10891,141 +10904,141 @@ msgstr "Visne vere hunc lusum delere?"
 msgid "Downloading add-on..."
 msgstr "Adiunctum trahitur..."
 
-#: src/game.cpp:1227
+#: src/game.cpp:1241
 msgid "Add-on Installed"
 msgstr "Adiunctum Inauguratur"
 
-#: src/game.cpp:1227
+#: src/game.cpp:1241
 msgid "The add-on has been installed."
 msgstr "Adiunctum inauguratum est."
 
-#: src/game.cpp:1230
+#: src/game.cpp:1244
 msgid "Network communication error."
 msgstr "Menda communicationis retis."
 
-#: src/game.cpp:1232
+#: src/game.cpp:1246
 msgid "Remote host disconnected."
 msgstr "Hospes remotus disiungitur."
 
-#: src/game.cpp:1234
+#: src/game.cpp:1248
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Quaestio erat in creando pligas necessarias inaugurationi huius stipendii."
 
-#: src/game.cpp:1246 src/game.cpp:1285 src/game.cpp:1312
+#: src/game.cpp:1260 src/game.cpp:1299 src/game.cpp:1326
 #: src/multiplayer.cpp:250 src/multiplayer_ui.cpp:66 src/playcampaign.cpp:372
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
 
-#: src/game.cpp:1249 src/game.cpp:1287 src/game.cpp:1314
+#: src/game.cpp:1263 src/game.cpp:1301 src/game.cpp:1328
 msgid "The server responded with an error: \""
 msgstr "Moderatrum respondet cum mendo: \""
 
-#: src/game.cpp:1253
+#: src/game.cpp:1267
 msgid "Terms"
 msgstr "Condicio"
 
-#: src/game.cpp:1283
+#: src/game.cpp:1297
 msgid "Sending add-on"
 msgstr "Adiunctum mittitur"
 
-#: src/game.cpp:1291 src/game.cpp:1318 src/multiplayer_wait.cpp:340
+#: src/game.cpp:1305 src/game.cpp:1332 src/multiplayer_wait.cpp:340
 msgid "Response"
 msgstr "Responsum"
 
-#: src/game.cpp:1341
+#: src/game.cpp:1355
 msgid "Join Official Server"
 msgstr "Ad Moderatrum Officiale Coniungere"
 
-#: src/game.cpp:1342
+#: src/game.cpp:1356
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "In moderatrum officiale Wesnoth lusorum plurum inire"
 
-#: src/game.cpp:1344 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1358 src/multiplayer_lobby.cpp:532
 msgid "Join Game"
 msgstr "Ad Lusum Coniungere"
 
-#: src/game.cpp:1345
+#: src/game.cpp:1359
 msgid "Join a server or hosted game"
 msgstr "Ad lusum in hospite moderatrove coniungere"
 
-#: src/game.cpp:1347
+#: src/game.cpp:1361
 msgid "Host Networked Game"
 msgstr "Lusus in Rete Hospes Esse"
 
-#: src/game.cpp:1348
+#: src/game.cpp:1362
 msgid "Host a game without using a server"
 msgstr "Lusus hospes esse sine moderatro"
 
-#: src/game.cpp:1350
+#: src/game.cpp:1364
 #, fuzzy
 msgid "Local Game"
 msgstr "Lusum Restituere"
 
-#: src/game.cpp:1351
+#: src/game.cpp:1365
 #, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Lusum lusorum plurem ludere compartentes eadem machinam."
 
-#: src/game.cpp:1359 src/multiplayer.cpp:230
+#: src/game.cpp:1373 src/multiplayer.cpp:230
 msgid "Login: "
 msgstr "Inire: "
 
-#: src/game.cpp:1396 src/playcampaign.cpp:90 src/playcampaign.cpp:344
+#: src/game.cpp:1410 src/playcampaign.cpp:90 src/playcampaign.cpp:344
 msgid "The game could not be loaded: "
 msgstr "Lusus non restitui potest: "
 
-#: src/game.cpp:1398 src/playcampaign.cpp:92 src/playcampaign.cpp:347
+#: src/game.cpp:1412 src/playcampaign.cpp:92 src/playcampaign.cpp:347
 msgid "Error while playing the game: "
 msgstr "Mendum in lusione: "
 
-#: src/game.cpp:1410 src/playcampaign.cpp:94 src/playcampaign.cpp:350
+#: src/game.cpp:1424 src/playcampaign.cpp:94 src/playcampaign.cpp:350
 msgid "The game map could not be loaded: "
 msgstr "Charta lusus restitui non potest: "
 
-#: src/game.cpp:1434
+#: src/game.cpp:1448
 msgid "Language"
 msgstr "Lingua"
 
-#: src/game.cpp:1435
+#: src/game.cpp:1449
 msgid "Choose your preferred language:"
 msgstr "Linguam antepositam elige: "
 
-#: src/game.cpp:1583
+#: src/game.cpp:1597
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Haec stipendia errores continent et restitui non possunt: "
 
-#: src/game.cpp:1588
+#: src/game.cpp:1602
 msgid "ERROR DETAILS:"
 msgstr "SINGULA ERRORIS:"
 
-#: src/game.cpp:1602
+#: src/game.cpp:1616
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Monitum: Menda in restituendo pligas configuationis lusus: '"
 
-#: src/game.cpp:1652
+#: src/game.cpp:1666
 msgid "Error loading game configuration files: '"
 msgstr "Mendum in restituendo pligas configuationis: '"
 
-#: src/game.cpp:1653
+#: src/game.cpp:1667
 msgid "' (The game will now exit)"
 msgstr "' (Lusus iam exibit)"
 
-#: src/game.cpp:1805
+#: src/game.cpp:1819
 msgid "Battle for Wesnoth"
 msgstr "Proelium pro Occidiseptentrione"
 
-#: src/game.cpp:1928
+#: src/game.cpp:1945
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Mendum in restituendo pligas configuationis: '"
 
-#: src/game.cpp:1934
+#: src/game.cpp:1951
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1950
+#: src/game.cpp:1966
 msgid "Loading title screen."
 msgstr "Revocans scrinium tituli."
 
@@ -11251,7 +11264,7 @@ msgstr "E gradu"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:318 src/unit.cpp:2448
+#: src/menu_events.cpp:318 src/unit.cpp:2446
 msgid "Moves"
 msgstr "Puncta motus"
 
@@ -11434,17 +11447,17 @@ msgstr "Titulus: "
 msgid "Team only"
 msgstr "Caeruleus illustris"
 
-#: src/menu_events.cpp:1486
+#: src/menu_events.cpp:1489
 msgid "Search"
 msgstr "Investigatio"
 
-#: src/menu_events.cpp:1529
+#: src/menu_events.cpp:1532
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Imperia: whisper ignore emote. Scribe /help [imperium] si plus aditorium vis."
 
-#: src/menu_events.cpp:1580
+#: src/menu_events.cpp:1583
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -11452,21 +11465,21 @@ msgstr ""
 "Nuntium privatum mittit. Non potes mittere nuntios lusoribus qui partes in "
 "lusione imperant. Syntaxis: /whisper [cognomini] [nuntium]"
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1587
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:1586
+#: src/menu_events.cpp:1589
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
 "[argumentum]"
 
-#: src/menu_events.cpp:1588
+#: src/menu_events.cpp:1591
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -11475,21 +11488,21 @@ msgstr ""
 "Lusorem ex elencho tuo utentium ignoratorum. Syntaxis: /ignore remove "
 "[argumentum]"
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1593
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Elenchum tuum utentium ignoratorum dele. Syntaxis: /ignore clear"
 
-#: src/menu_events.cpp:1592
+#: src/menu_events.cpp:1595
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Elenchum utentium ignoratorum monstrare. Syntaxis: /ignore list"
 
-#: src/menu_events.cpp:1594
+#: src/menu_events.cpp:1597
 msgid "Unknown subcommand"
 msgstr "Imperium subordinatum incognitum"
 
-#: src/menu_events.cpp:1597
+#: src/menu_events.cpp:1600
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -11501,56 +11514,56 @@ msgstr ""
 "[argumentum (optionale)]. Subimperia: add remove list clear. Scribe /help "
 "ignore [subimperium] si vis plus sapere."
 
-#: src/menu_events.cpp:1600
+#: src/menu_events.cpp:1603
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Commotionem animi vel actionem personalem in sermone mittere. Syntaxis: /"
 "emote [nuntium]"
 
-#: src/menu_events.cpp:1602
+#: src/menu_events.cpp:1605
 msgid "Unknown command"
 msgstr "Imperium incognitum"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1617
 msgid "Added to ignore list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:1616 src/menu_events.cpp:1623 src/menu_events.cpp:1630
+#: src/menu_events.cpp:1619 src/menu_events.cpp:1626 src/menu_events.cpp:1633
 msgid "Invalid username: "
 msgstr "Nomen utentis invalidum: "
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1624
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
-#: src/menu_events.cpp:1628
+#: src/menu_events.cpp:1631
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1654
+#: src/menu_events.cpp:1657
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1664
+#: src/menu_events.cpp:1667
 msgid "Removed from ignore list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1667
+#: src/menu_events.cpp:1670
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Ex elencho utentium ignoratorum sublatus: "
 
-#: src/menu_events.cpp:1674
+#: src/menu_events.cpp:1677
 msgid "Unknown command: "
 msgstr "Imperium incognitum: "
 
-#: src/menu_events.cpp:1784
+#: src/menu_events.cpp:1787
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
-#: src/menu_events.cpp:1932
+#: src/menu_events.cpp:1935
 msgid "prompt^Command:"
 msgstr "Imperium:"
 
@@ -11591,19 +11604,19 @@ msgstr "Nullum telum utibile"
 msgid "Chance of being unscathed"
 msgstr "Probabilitas damnum effugendi"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1352
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
 msgid "Damage Calculations"
 msgstr "Rationes Damni"
 
-#: src/mouse_events.cpp:1335 src/reports.cpp:292
+#: src/mouse_events.cpp:1333 src/reports.cpp:292
 msgid "vs"
 msgstr "contra"
 
-#: src/mouse_events.cpp:1363
+#: src/mouse_events.cpp:1361
 msgid "Attack Enemy"
 msgstr "Hostem Oppugnare"
 
-#: src/mouse_events.cpp:1364
+#: src/mouse_events.cpp:1362
 msgid "Choose weapon:"
 msgstr "Telum eligere: "
 
@@ -11681,12 +11694,12 @@ msgid "Normal"
 msgstr "Normalis"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2551
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:444 src/unit.cpp:2549
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2558
+#: src/multiplayer_wait.cpp:436 src/multiplayer_wait.cpp:447 src/unit.cpp:2556
 msgid ")"
 msgstr ")"
 
@@ -12447,11 +12460,11 @@ msgstr "Auxilium"
 msgid "Help Wesnoth by sending us information"
 msgstr "Occidiseptentrionem adiuvare mittans nuntios"
 
-#: src/unit.cpp:2383 src/unit.cpp:2556
+#: src/unit.cpp:2381 src/unit.cpp:2554
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2465
+#: src/unit.cpp:2463
 msgid "XP to advance"
 msgstr "PE ad promotionem"
 

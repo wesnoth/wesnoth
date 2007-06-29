@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor-sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-18 19:36+0200\n"
+"POT-Creation-Date: 2007-06-29 12:20+0200\n"
 "PO-Revision-Date: 2007-02-03 03:32+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -18,6 +18,46 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: data/core/editor-groups.cfg:11
+msgid "all"
+msgstr ""
+
+#: data/core/editor-groups.cfg:17
+msgid "water"
+msgstr ""
+
+#: data/core/editor-groups.cfg:29
+msgid "flat"
+msgstr ""
+
+#: data/core/editor-groups.cfg:35
+msgid "desert"
+msgstr ""
+
+#: data/core/editor-groups.cfg:41
+msgid "forest"
+msgstr ""
+
+#: data/core/editor-groups.cfg:47
+msgid "frozen"
+msgstr ""
+
+#: data/core/editor-groups.cfg:53
+msgid "rough"
+msgstr ""
+
+#: data/core/editor-groups.cfg:59
+msgid "cave"
+msgstr ""
+
+#: data/core/editor-groups.cfg:65
+msgid "village"
+msgstr ""
+
+#: data/core/editor-groups.cfg:71
+msgid "castle"
+msgstr ""
 
 #: data/themes/editor.cfg:494
 msgid "File"
@@ -91,7 +131,7 @@ msgstr "Језик"
 msgid "Choose your preferred language:"
 msgstr "Изаберите жељени језик:"
 
-#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:288
+#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:286
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Бој за Веснот — уређивач мапа"
 
