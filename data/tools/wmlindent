@@ -9,13 +9,21 @@ stdout.  If arguments are specified, they are taken to be files to be
 re-indented in place; a directory name causes reindenting on all WML
 beneath it.
 
-This code never modifies anything but leading and trailing whitespace on lines.
-Interrupting will be safe, as each reindenting will be done to a copy
-that is atomically renamed when it's done.
-
 The indent unit is four spaces.  Absence of an option to change this is
 deliberate; the purpose of this tool is to *prevent* style wars, not encourage
 them.
+
+On non-empty lines, this code never modifies anything but leading and
+trailing whitespace. Leading whitespace will be regularized to the
+current indent; trailing whitespace will be stripped.  After processing
+all lines will end with a Unix-style \n end-of-line marker.
+
+Runs of entirely blank lines will be reduced to one blank line, except
+in two cases where they will be discarded: (a) before WML closing
+tags, and (b) after WML opening tags.
+
+Interrupting will be safe, as each reindenting will be done to a copy
+that is atomically renamed when it's done.
 
 Note: This does not include a parser.  It will produce bad results on WML
 that is syntactically unbalanced.  Unbalanced double quotes that aren't part
@@ -33,6 +41,14 @@ def is_directive(str):
             return True
     return False
 
+def closer(str):
+    "Are we looking at a closing tag?"
+    return str.startswith("[/")
+
+def opener(str):
+    "Are we looking at an opening tag?"
+    return str.startswith("[") and not closer(str)
+
 def reindent(name, infp, outfp):
     "Reindent WML."
     baseindent = "    "
@@ -40,6 +56,8 @@ def reindent(name, infp, outfp):
     seen_wml = False
     inmacro = False
     indent = ""
+    lasttag = ""
+    countblanks = 0
     for line in infp:
         # Strip each line, unless we're in something like a multiline string. 
         if dostrip:
@@ -59,11 +77,23 @@ def reindent(name, infp, outfp):
         # In the close case, we must compute new indent *before* emitting
         # the new line so the close tag will be at the same level as the
         # one that started the block.
-        if transformed.startswith("[/"):
+        if closer(transformed):
             if indent == "":
                 print >>sys.stderr, "wmlindent: from %s, close tag with indent already zero." % name
             else:
                 indent = indent[:-len(baseindent)]
+        # Cope with blank lines outside of multiline literals
+        if dostrip:
+            if transformed == "\n":
+                countblanks += 1
+                continue
+            elif countblanks > 0:
+                countblanks = 0
+                # All sequences of blank lines get mapped to one blank
+                # line, except (a) before closing tags and (b) after
+                # opening tags, In these cases they are ignored.
+                if not closer(transformed) and not opener(lasttag):
+                    outfp.write("\n")
         # Here's where we apply the current indent
         if dostrip and transformed and not is_directive(transformed):
             output = indent + transformed
@@ -82,6 +112,11 @@ def reindent(name, infp, outfp):
         syntax = transformed.split("#")[0]
         if syntax.count('"') == 1:
             dostrip =  "=" not in syntax
+        # Are we going to be immediately following a tag?
+        if opener(transformed) or closer(transformed):
+            lasttag = transformed
+        else:
+            lasttag = ""
     # Pure macro files look like they have unbalanced indents.  That's OK
     if indent != "" and seen_wml:
         print >>sys.stderr, "wmlindent: from %s, end of file with indent nonzero." % name
