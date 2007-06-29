@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use wml_net;
+use wml;
 use POSIX qw(strftime);
 use Data::Dumper;
 
@@ -46,20 +47,20 @@ sub write_to_server {
 sub login {
 	my $response = read_server_response();
 	# server asks for the version string or tells us to login right away
-	if ($response->{'children'}[0]->{'name'} eq 'version') {
+	if (&wml::has_child($response, 'version')) {
 		write_to_server($VERSION_RESPONSE);
 		$response = read_server_response();
 		# server asks for a login
-		if ($response->{'children'}[0]->{'name'} eq 'mustlogin') {
-	        	write_to_server($LOGIN_RESPONSE);
-		} elsif ($response->{'children'}[0]->{'name'} eq 'error') {
-		        print STDERR "Error: $response->{'children'}[0]->{'attr'}->{'message'}.\n" and die;
+		if (&wml::has_child($response, 'mustlogin')) {
+			write_to_server($LOGIN_RESPONSE);
+		} elsif (my $error = &wml::has_child($response, 'error')) {
+			print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 		} else {
-		        print STDERR "Error: Server didn't ask us to log in and gave no error.\nDumper($response)" and die;
+			print STDERR "Error: Server didn't ask us to log in and gave no error.\nDumper($response)" and die;
 		}
-	} elsif ($response->{'children'}[0]->{'name'} eq 'error') {
-		print STDERR "Error: $response->{'children'}[0]->{'attr'}->{'message'}.\n" and die;
-	} elsif ($response->{'children'}[0]->{'name'} eq 'mustlogin') {
+	} elsif (my $error = &wml::has_child($response, 'error')) {
+		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
+	} elsif (&wml::has_child($response, 'mustlogin')) {
 		write_to_server($LOGIN_RESPONSE);
 	} else {
 		print STDERR "Error: Server didn't ask for version or login and gave no error.\nDumper($response)" and die;
@@ -67,9 +68,9 @@ sub login {
 
 	# server sends the join lobby response
 	$response = read_server_response();
-	if ($response->{'children'}[0]->{'name'} eq 'join_lobby') {
-	} elsif ($response->{'children'}[0]->{'name'} eq 'error') {
-		print STDERR "Error: $response->{'children'}[0]->{'attr'}->{'message'}.\n" and die;
+	if (&wml::has_child($response, 'join_lobby')) {
+	} elsif (my $error = &wml::has_child($response, 'error')) {
+		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 	} else {
 		print STDERR "Error: Server didn't ask us to join the lobby and gave no error.\nDumper($response)" and die;
 	}
@@ -77,14 +78,14 @@ sub login {
 	# server sends the initial list of games and players
 	$response = read_server_response();
 	#print STDERR Dumper($response);
-	if ($response->{'children'}[0]->{'name'} eq 'gamelist') {
+	if (&wml::has_child($response, 'gamelist')) {
 		foreach (@ {$response->{'children'}}) {
 			if ($_->{'name'} eq 'user') {
 				$usernamelist[@usernamelist] = $_->{'attr'}->{'name'};
 			}
 		}
-	} elsif ($response->{'children'}[0]->{'name'} eq 'error') {
-		print STDERR "Error: $response->{'children'}[0]->{'attr'}->{'message'}.\n" and die;
+	} elsif (my $error = &wml::has_child($response, 'error')) {
+		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 	} else {
 		print STDERR "Error: Server didn't send the initial gamelist and gave no error.\nDumper($response)" and die;
 	}
@@ -93,44 +94,49 @@ sub login {
 
 login();
 
-while (1) {                         
-        my $response = read_server_response();
-        # print only chat messages  
-        foreach (@ {$response->{'children'}}) {
-                if ($_->{'name'} eq 'message') {
-                        print STDERR strftime "%Y%m%d %T ", localtime();
-                        # /me actions
-                        if ($_->{'attr'}->{'message'} =~ s,^/me,,) {
-                                print STDERR "* " . $_->{'attr'}->{'sender'} . "" . $_->{'attr'}->{'message'} . "\n";
-                        } else {    
-                                print STDERR "<" . $_->{'attr'}->{'sender'} . "> " . $_->{'attr'}->{'message'} . "\n";
-                        }           
-                } elsif ($_->{'name'} eq 'whisper') {
-                        print STDERR strftime "%Y%m%d %T ", localtime();
-                        print STDERR "*" . $_->{'attr'}->{'sender'} . "* " . $_->{'attr'}->{'message'} . "\n";
-                } elsif ($_->{'name'} eq 'gamelist_diff') {
-                        foreach (@ {$_->{'children'}}) {
-                                if ($_->{'name'} eq 'insert_child') {
-                                        if ($_->{'children'}[0]->{'name'} eq 'user') {
-                                                print STDERR strftime "%Y%m%d %T ", localtime();
-                                                print STDERR "--> $_->{'children'}[0]->{'attr'}->{'name'} has logged on. ($_->{'attr'}->{'index'})\n";
-                                                $usernamelist[@usernamelist] = $_->{'children'}[0]->{'attr'}->{'name'};
-                                                #print STDERR "usernames: @usernamelist\n";
-                                        }
-                                        #print STDERR Dumper($_);
-                                } elsif ($_->{'name'} eq 'delete_child' and $_->{'children'}[0]->{'name'} eq 'user') {
-                                        print STDERR strftime "%Y%m%d %T ", localtime();
-                                        my $index = $_->{'attr'}->{'index'};
-                                        print STDERR "<-- $usernamelist[$index] has logged off. ($index)\n";
-                                        splice(@usernamelist,$index,1);
-                                        #print STDERR "usernames: @usernamelist\n";
-                                }   
-                        }           
-                } else {            
-                        #print STDERR Dumper($_);
-                }                   
-        }                           
-                                    
+while (1) {
+	my $response = read_server_response();
+	# print only chat messages
+	foreach (@ {$response->{'children'}}) {
+		if ($_->{'name'} eq 'message') {
+			print STDERR strftime "%Y%m%d %T ", localtime();
+			# /me actions
+			if ($_->{'attr'}->{'message'} =~ s,^/me,,) {
+				print STDERR "* " . $_->{'attr'}->{'sender'} . "" . $_->{'attr'}->{'message'} . "\n";
+			} else {
+				print STDERR "<" . $_->{'attr'}->{'sender'} . "> " . $_->{'attr'}->{'message'} . "\n";
+			}
+		} elsif ($_->{'name'} eq 'whisper') {
+			print STDERR strftime "%Y%m%d %T ", localtime();
+			print STDERR "*" . $_->{'attr'}->{'sender'} . "* " . $_->{'attr'}->{'message'} . "\n";
+		} elsif ($_->{'name'} eq 'gamelist_diff') {
+			foreach (@ {$_->{'children'}}) {
+				my $index = $_->{'attr'}->{'index'};
+				if ($_->{'name'} eq 'insert_child') {
+					if (my $user = &wml::has_child($_, 'user')) {
+						my $username = $user->{'attr'}->{'name'};
+						print STDERR strftime "%Y%m%d %T ", localtime();
+						print STDERR "--> $username has logged on. ($index)\n";
+						$usernamelist[@usernamelist] = $username;
+						#print STDERR "usernames: @usernamelist\n";
+					}
+					#print STDERR Dumper($_);
+				} elsif ($_->{'name'} eq 'delete_child' and &wml::has_child($_, 'user')) {
+					print STDERR strftime "%Y%m%d %T ", localtime();
+					print STDERR "<-- $usernamelist[$index] has logged off. ($index)\n";
+					splice(@usernamelist,$index,1);
+					#print STDERR "usernames: @usernamelist\n";
+				} else {
+					#print STDERR Dumper($_);
+				}
+			}
+		} elsif ($_->{'name'} eq 'create_game') {
+			#print STDERR Dumper($_);
+		} else {
+			#print STDERR Dumper($_);
+		}
+	}
+
 }
 #print STDERR "Connection closed.\n\n"
 
