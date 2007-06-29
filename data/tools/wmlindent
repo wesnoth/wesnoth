@@ -84,6 +84,9 @@ def reindent(name, infp, outfp):
         # Implement passthrough mode
         if "wmlindent: start ignoring" in line:
             ignoring = True
+            if countblanks > 0:
+                countblanks = 0
+                outfp.write("\n")
             outfp.write(line)
             continue
         elif ignoring:
