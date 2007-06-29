@@ -338,6 +338,8 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
 			}
 
+			tile_stack_render(xpos, ypos);
+
 			// draw reach_map information
 			if (!reach_map_.empty() && on_map) {
 				reach_map::iterator reach = reach_map_.find(*it);
