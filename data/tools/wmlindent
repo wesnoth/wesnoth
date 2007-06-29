@@ -9,7 +9,7 @@ stdout.  If arguments are specified, they are taken to be files to be
 re-indented in place; a directory name causes reindenting on all WML
 beneath it.
 
-This code never modifies anything but leading whitespace on lines.
+This code never modifies anything but leading and trailing whitespace on lines.
 Interrupting will be safe, as each reindenting will be done to a copy
 that is atomically renamed when it's done.
 
@@ -64,10 +64,15 @@ def reindent(name, infp, outfp):
                 print >>sys.stderr, "wmlindent: from %s, close tag with indent already zero." % name
             else:
                 indent = indent[:-len(baseindent)]
+        # Here's where we apply the current indent
         if dostrip and transformed and not is_directive(transformed):
             output = indent + transformed
         else:
             output = transformed
+        # Nuke trailing space and canonicalize to Unix-style end-of-line
+        if dostrip:
+            output = output.rstrip() + "\n"
+        # And ship the line
         outfp.write(output)
         # May need to indent based on the line we just saw.
         if transformed.startswith("[") and not transformed.startswith("[/"):
