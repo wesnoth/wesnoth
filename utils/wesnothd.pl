@@ -61,9 +61,9 @@ sub send_error($$) {
 }
 
 sub send_to_lobby {
-	my ($doc, @users, $exclude);
-	foreach my $sock (@users) {
-		&send_data($doc, $sock) unless $sock eq $exclude;
+	my ($doc, $exclude, @users) = @_;
+	foreach my $socket (@users) {
+		&send_data($doc, $socks_map{$socket}) unless $socks_map{$socket} eq $exclude;
 	}
 }
 
@@ -183,12 +183,14 @@ sub received_packet($$) {
 		} elsif(my $message = &wml::has_child($doc, 'message')) {
 			my $attr = $message->{'attr'};
 			$attr->{'sender'} = $socket_user_name{$sock};
-			&send_to_lobby($doc, keys %lobby_players, $sock);
-		} elsif(my $message = &wml::has_child($doc, 'whisper')) {
-			my $attr = $message->{'attr'};
+			&send_to_lobby($doc, $sock, keys %lobby_players);
+		} elsif(my $whisper = &wml::has_child($doc, 'whisper')) {
+			my $attr = $whisper->{'attr'};
 			$attr->{'sender'} = $socket_user_name{$sock};
 			my $receiver = $attr->{'receiver'};
 			&send_data($doc, $user_name_socket{$receiver});
+		#} elsif(my $query = &wml::has_child($doc, 'query')) {
+		#	my $type = $query->{'attr'}->{'type'};
 		}
 		return;
 	}
