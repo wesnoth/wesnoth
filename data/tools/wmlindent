@@ -27,6 +27,11 @@ that is atomically renamed when it's done.  If the output file is identical
 to the input, the output file will simply be deleted, so the timestamp
 on the input file won't be touched.
 
+The --dryrun option detects and reports files that would be changed
+without changing them. The --verbose or -v option enables reporting
+of files that are (or would be, under --dryrun) changed.  With -v -v,
+unchanged files are also reported.
+
 Note: This does not include a parser.  It will produce bad results on WML
 that is syntactically unbalanced.  Unbalanced double quotes that aren't part
 of a multiline literal will also confuse it.  You will receive warnings
@@ -180,20 +185,26 @@ def convertor(linefilter, arglist):
                     else:
                         if verbose >= 1:
                             sys.stderr.write("wmlindent: %s changed\n" % filename)
-                        os.remove(filename)	# For Windows portability
-                        # There's a tiny window open if you keyboard-
-                        # interrupt here. It's unavoidable, because
-                        # there's no known way to do an atomic rename
-                        # under Windows when the target exists -- see
-                        # Python manual 14.1.4::rename()
-                        os.rename(filename + ".out", filename)
+                        if not dryrun:
+                            os.remove(filename)	# For Windows portability
+                            # There's a tiny window open if you keyboard-
+                            # interrupt here. It's unavoidable, because
+                            # there's no known way to do an atomic rename
+                            # under Windows when the target exists -- see
+                            # Python manual 14.1.4::rename()
+                            os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h:v")
+    (options, arguments) = getopt.getopt(sys.argv[1:], "h:v",
+                                         ['dryrun', 'verbose'])
     verbose = 0
+    dryrun = False
     for (opt, val) in options:
         if opt == "-?":
             print __doc__
+        elif opt in ('-d', '--dryrun'):
+            dryrun = True
+            verbose = max(1, verbose)
         elif opt == '-v':
             verbose += 1
     convertor(lambda n, f1, f2: reindent(n, f1, f2), arguments)
