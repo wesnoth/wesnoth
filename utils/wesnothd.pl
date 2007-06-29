@@ -143,6 +143,7 @@ sub received_packet($$) {
 
 			if($user_name_socket{$username}) {
 				&send_error($sock, 'This username is already taken.');
+				return;
 			}
 
 			print STDERR "log in okay; telling to join lobby\n";
@@ -157,7 +158,7 @@ sub received_packet($$) {
 			$socket_user_name{$sock} = $username;
 			return;
 		} else {
-			&send_error($sock, 'You must login first');
+			&send_error($sock, 'You must login first.');
 			return;
 		}
 	}
