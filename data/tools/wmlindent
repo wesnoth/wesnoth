@@ -34,7 +34,7 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, getopt, filecmp, wmltools
+import sys, os, getopt, filecmp, wmltools, re
 
 def is_directive(str):
     "Identify things that shouldn't be indented."
@@ -51,6 +51,12 @@ def opener(str):
     "Are we looking at an opening tag?"
     return str.startswith("[") and not closer(str)
 
+class bailout:
+    def __init__(self, filename, lineno, msg):
+        self.filename = filename
+        self.lineno = lineno
+        self.msg = msg
+
 def reindent(name, infp, outfp):
     "Reindent WML."
     baseindent = "    "
@@ -59,10 +65,14 @@ def reindent(name, infp, outfp):
     inmacro = False
     indent = ""
     lasttag = ""
-    countlines = 1
+    countlines = 0
     countblanks = 0
+    multitag = re.compile(r"\].*\[")
     for line in infp:
         countlines += 1
+        # Detect things we can't handle
+        if multitag.search(line):
+            raise bailout(name, countlines, "multiple tags on the line")
         # Strip each line, unless we're in something like a multiline string. 
         if dostrip:
             transformed = line.strip() + "\n"
@@ -158,13 +168,16 @@ def convertor(linefilter, arglist):
                     linefilter(filename, infp, outfp)
                     infp.close()
                     outfp.close()
+                except bailout, e:
+                    sys.stderr.write('wmlindent: "%s", %d: %s\n' % (e.filename, e.lineno, e.msg))
+                    os.remove(filename + ".out")
                 except KeyboardInterrupt:
                     os.remove(filename + ".out")
                 else:
                     if filecmp.cmp(filename, filename + ".out"):
                         if verbose:
                             sys.stderr.write("unchanged\n")
-                        os.remove(filename + ",out")
+                        os.remove(filename + ".out")
                     else:
                         if verbose:
                             sys.stderr.write("changed\n")
