@@ -184,6 +184,11 @@ sub received_packet($$) {
 			my $attr = $message->{'attr'};
 			$attr->{'sender'} = $socket_user_name{$sock};
 			&send_to_lobby($doc, keys %lobby_players, $sock);
+		} elsif(my $message = &wml::has_child($doc, 'whisper')) {
+			my $attr = $message->{'attr'};
+			$attr->{'sender'} = $socket_user_name{$sock};
+			my $receiver = $attr->{'receiver'};
+			&send_data($doc, $user_name_socket{$receiver});
 		}
 		return;
 	}
