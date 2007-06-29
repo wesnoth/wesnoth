@@ -228,35 +228,20 @@ void game_display::draw(bool update,bool force)
 		
 		halo::unrender(invalidated_);
 
-		// Units can overlap multiple hexes, so we need to (1)
-		// redraw them last, and (2) redraw them if they are
-		// adjacent existing hexes.
+		// z-ordered set to store invalidated units
 		std::set<gamemap::location, ordered_draw> unit_invals;
 
+		const time_of_day& tod = status_.get_time_of_day();
+		
 		SDL_Rect clip_rect = map_area();
 		surface const dst(screen_.getSurface());
 		clip_rect_setter set_clip_rect(dst, clip_rect);
 
 		std::set<gamemap::location>::const_iterator it;
 		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
+			//store invalidated units
 			if ((temp_unit_ && temp_unit_loc_==*it) || units_.find(*it) != units_.end()) {
 				unit_invals.insert(*it);
-			}
-
-			const time_of_day& tod = status_.get_time_of_day();
-			const time_of_day& tod_at = timeofday_at(status_,units_,*it,map_);
-			image::TYPE image_type = image::SCALED_TO_HEX;
-
-
-			unit_map::iterator un = find_visible_unit(units_, *it, map_, 
-							teams_,teams_[currentTeam_]);
-
-			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
-			   *it == selectedHex_ && (un != units_.end())) {
-				image_type = image::BRIGHTENED;
-			}
-			else if (highlighted_locations_.find(*it) != highlighted_locations_.end()) {
-				image_type = image::SEMI_BRIGHTENED;
 			}
 
 			if(screen_.update_locked()) {
@@ -281,6 +266,25 @@ void game_display::draw(bool update,bool force)
 			// out code but enabling it looks worse)
 			const bool on_map = map_.on_board(*it);
 			const bool is_shrouded = shrouded(*it);
+
+			image::TYPE image_type = image::SCALED_TO_HEX;
+
+			if (*it == mouseoverHex_) {
+				image_type = image::BRIGHTENED;
+			} else if (on_map && *it == selectedHex_) {
+				unit_map::iterator un = find_visible_unit(units_, *it, map_,
+				teams_,teams_[currentTeam_]);
+				if (un != units_.end()) {
+					image_type = image::BRIGHTENED;
+				}
+			}
+			//currently only used in editor
+			/*
+				else if (highlighted_locations_.find(*it) != highlighted_locations_.end()) {
+				image_type = image::SEMI_BRIGHTENED;
+			}
+			*/
+			
 			t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
 
 			if(!is_shrouded || !on_map) {
@@ -288,9 +292,6 @@ void game_display::draw(bool update,bool force)
 			}
 
 			tile_stack_clear();
-
-			// tod_at may differ from tod if hex is illuminated 
-			std::string mask = tod_at.image_mask;
 
 			if(!is_shrouded /*|| !on_map*/) {
 				// unshrouded terrain (the normal case)
@@ -332,13 +333,17 @@ void game_display::draw(bool update,bool force)
 
 			//draw the time-of-day mask on top of the
 			//terrain in the hex
+			// tod may differ from tod if hex is illuminated
+			std::string tod_hex_mask = timeofday_at(status_,units_,*it,map_).image_mask;
 			if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 				tile_stack_append(tod_hex_mask1);
 				tile_stack_append(tod_hex_mask2);
-			} else if(mask != "") {
-				tile_stack_append(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
+			} else if(tod_hex_mask != "") {
+				tile_stack_append(image::get_image(tod_hex_mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
 			}
 
+			//FIXME: this is a temporary hack to render/flush
+			//the stack, so we can draw text
 			tile_stack_render(xpos, ypos);
 
 			// draw reach_map information
@@ -380,14 +385,15 @@ void game_display::draw(bool update,bool force)
 
 			tile_stack_render(xpos, ypos);
 
-			// perhaps show how many turns it would take
-			// to reach this hex
+			// show def% and turn to reach infos
 			if(!is_shrouded && on_map) {
 				draw_movement_info(*it);
 			}
 			//simulate_delay += 1;
 		}
 
+		// Units can overlap multiple hexes, so we need to
+		// redraw them last and in the good sequence.
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
 			unit_map::iterator u_it = units_.find(*it);
 			if (u_it != units_.end()) {
