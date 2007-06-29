@@ -67,7 +67,7 @@ def reindent(name, infp, outfp):
     lasttag = ""
     countlines = 0
     countblanks = 0
-    multitag = re.compile(r"\].*\[")
+    multitag = re.compile(r"\[a-z]].*\[[a-z]")	# Avoid triggering on arrays
     for line in infp:
         countlines += 1
         # Detect things we can't handle
