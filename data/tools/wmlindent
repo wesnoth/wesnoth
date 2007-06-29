@@ -23,7 +23,9 @@ in two cases where they will be discarded: (a) before WML closing
 tags, and (b) after WML opening tags.
 
 Interrupting will be safe, as each reindenting will be done to a copy
-that is atomically renamed when it's done.
+that is atomically renamed when it's done.  If the output file is identical
+to the input, the output file will simply be deleted, so the timestamp
+on the input file won't be touched.
 
 Note: This does not include a parser.  It will produce bad results on WML
 that is syntactically unbalanced.  Unbalanced double quotes that aren't part
@@ -32,7 +34,7 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, getopt, wmltools
+import sys, os, getopt, filecmp, wmltools
 
 def is_directive(str):
     "Identify things that shouldn't be indented."
@@ -57,8 +59,10 @@ def reindent(name, infp, outfp):
     inmacro = False
     indent = ""
     lasttag = ""
+    countlines = 1
     countblanks = 0
     for line in infp:
+        countlines += 1
         # Strip each line, unless we're in something like a multiline string. 
         if dostrip:
             transformed = line.strip() + "\n"
@@ -79,7 +83,7 @@ def reindent(name, infp, outfp):
         # one that started the block.
         if closer(transformed):
             if indent == "":
-                print >>sys.stderr, "wmlindent: from %s, close tag with indent already zero." % name
+                print >>sys.stderr, 'wmlindent: "%s", line %d: close tag with indent already zero.' % (name, countlines)
             else:
                 indent = indent[:-len(baseindent)]
         # Cope with blank lines outside of multiline literals
@@ -107,11 +111,14 @@ def reindent(name, infp, outfp):
         # May need to indent based on the line we just saw.
         if transformed.startswith("[") and not transformed.startswith("[/"):
             indent += baseindent
-        # Compute the dostrip state likewise.  This is the only tricky part.
-        # We look for unbalanced string quotes,
-        syntax = transformed.split("#")[0]
-        if syntax.count('"') == 1:
-            dostrip =  "=" not in syntax
+        # Compute the dostrip state likewise.
+        # We look for unbalanced string quotes.
+        if dostrip:
+            eligible = transformed.split("#")[0]
+        else:
+            eligible = transformed
+        if eligible.count('"') % 2:
+            dostrip = not dostrip
         # Are we going to be immediately following a tag?
         if opener(transformed) or closer(transformed):
             lasttag = transformed
@@ -119,7 +126,7 @@ def reindent(name, infp, outfp):
             lasttag = ""
     # Pure macro files look like they have unbalanced indents.  That's OK
     if indent != "" and seen_wml:
-        print >>sys.stderr, "wmlindent: from %s, end of file with indent nonzero." % name
+        print >>sys.stderr, 'wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines)
 
 def allwmlfiles(dir):
     "Get names of all WML files under dir, or dir itself if not a directory."
@@ -152,13 +159,16 @@ def convertor(linefilter, arglist):
                 except KeyboardInterrupt:
                     os.remove(filename + ".out")
                 else:
-                    os.remove(filename)	# For Windows portability
-                    # There's a tiny window open if you keyboard-
-                    # interrupt here. It's unavoidable, because
-                    # there's no known way to do an atomic rename
-                    # under Windows when the target exists -- see
-                    # Python manual 14.1.4::rename()
-                    os.rename(filename + ".out", filename)
+                    if filecmp.cmp(filename, filename + ".out"):
+                        os.remove(filename + ",out")
+                    else:
+                        os.remove(filename)	# For Windows portability
+                        # There's a tiny window open if you keyboard-
+                        # interrupt here. It's unavoidable, because
+                        # there's no known way to do an atomic rename
+                        # under Windows when the target exists -- see
+                        # Python manual 14.1.4::rename()
+                        os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
     (options, arguments) = getopt.getopt(sys.argv[1:], "h:")
