@@ -189,13 +189,17 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	xpos += vision_icon->w + h_padding_;
 
 	const surface status_text(font::get_rendered_text(game.status, font::SIZE_NORMAL, font_color));
-	const surface vision_text(font::get_rendered_text(font::make_text_ellipsis(game.vision, font::SIZE_NORMAL, maximum<int>((item_rect.x + item_rect.w - margin_ - status_text->w - 2 * h_padding_) - xpos, 0)),font::SIZE_NORMAL, font::NORMAL_COLOUR));
+
+	const int status_text_width = status_text ? status_text->w : 0;
+	const surface vision_text(font::get_rendered_text(font::make_text_ellipsis(game.vision, font::SIZE_NORMAL, maximum<int>((item_rect.x + item_rect.w - margin_ - status_text_width - 2 * h_padding_) - xpos, 0)),font::SIZE_NORMAL, font::NORMAL_COLOUR));
 	// draw vision text
 	video().blit_surface(xpos, ypos, vision_text);
 
 	// draw status text
-	xpos = item_rect.x + item_rect.w - margin_ - status_text->w;
-	video().blit_surface(xpos, ypos, status_text);
+	xpos = item_rect.x + item_rect.w - margin_ - status_text_width;
+	if(status_text) {
+		video().blit_surface(xpos, ypos, status_text);
+	}
 
 	//if(selected_ == index)
 	//	draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 153, 0, 0, 0.3, video().getSurface());
