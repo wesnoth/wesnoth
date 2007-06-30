@@ -70,8 +70,8 @@ bool point_in_rect(int x, int y, const SDL_Rect& rect)
 
 bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
 {
-	return point_in_rect(rect1.x,rect1.y,rect2) || point_in_rect(rect2.x+rect2.w,rect2.y,rect1) ||
-	       point_in_rect(rect2.x,rect2.y+rect2.h,rect1) || point_in_rect(rect1.x+rect1.w,rect1.y+rect1.h,rect2);
+	return (rect1.x < rect2.x+rect2.w && rect2.x < rect1.x+rect1.w &&
+			rect1.y < rect2.y+rect2.h && rect2.y < rect1.y+rect1.h);
 }
 
 SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
