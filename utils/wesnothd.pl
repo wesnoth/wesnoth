@@ -137,7 +137,7 @@ sub received_packet($$) {
 	my $text = &wml::write_text($doc);
 	print STDERR "RECEIVED: $text";
 
-	unless($socket_user_name{$sock}) {
+	if(not $socket_user_name{$sock}) {
 		if(my $login = &wml::has_child($doc, 'login')) {
 			my $attr = $login->{'attr'};
 			my $username = $attr->{'username'};
@@ -174,11 +174,10 @@ sub received_packet($$) {
 			&send_error($sock, 'You must login first.');
 			return;
 		}
-	}
-
-	if($lobby_players{$sock}) {
+	} elsif($lobby_players{$sock}) {
 		if(my $create_game = &wml::has_child($doc, 'create_game')) {
-			push @games, &create_game($create_game, $socket_user_name{$sock});
+			$create_game->{'name'} = 'game';
+			push @games, &create_game($create_game, $sock);
 			delete $lobby_players{$sock};
 		} elsif(my $message = &wml::has_child($doc, 'message')) {
 			my $attr = $message->{'attr'};
@@ -193,6 +192,46 @@ sub received_packet($$) {
 		#	my $type = $query->{'attr'}->{'type'};
 		}
 		return;
+	} else {
+		my $game;
+		foreach my $g (@games) {
+			my $players = $g->{'players'};
+			if($players->{$sock}) {
+				$game = $g;
+				last;
+			}
+		}
+
+		print STDERR "Illegal socket: '$sock'\n" and return unless $game;
+		if($game->{'owner'} eq $sock and
+		   my $side = &wml::has_child($doc, 'side')) {
+			if(not &wml::has_child($game->{'level'},'side')) {
+				#level is not initialized yet, initialize it
+				my $level = $game->{'level'};
+				my $level_attr = $level->{'attr'};
+				my $doc_attr = $doc->{'attr'};
+				if($side->{'shroud'} ne 'yes') {
+					$level_attr->{'map_data'} = $doc_attr->{'map_data'};
+					$level_attr->{'map'} = $doc_attr->{'map'};
+				}
+				if(my $era = &wml::has_child($doc, 'era')) {
+					$level_attr->{'mp_era'} = $era->{'attr'}->{'id'};
+				}
+
+				my @mp_flags = qw(mp_use_map_settings mp_village_gold mp_fog mp_shroud experience_modifier mp_countdown mp_countdown_init_time mp_countdown_turn_bonus mp_countdown_reservoir_time mp_countdown_action_bonus hash);
+				foreach my $flag (@mp_flags) {
+					$level_attr->{$flag} = $doc_attr->{$flag};
+				}
+
+				my $games = $gamelist->{'children'};
+				push @$games, $level;
+				$game->{'description'} = $level;
+				$game->{'level'} = $doc;
+
+				&sync_lobby();
+			} else {
+			}
+		}
 	}
 }
 
