@@ -15,7 +15,7 @@
 
 #include "ai.hpp"
 #include "game_config.hpp"
-#include "game_display.hpp"
+//#include "game_display.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "util.hpp"
