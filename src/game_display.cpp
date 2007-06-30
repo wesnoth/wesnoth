@@ -239,13 +239,20 @@ void game_display::draw(bool update,bool force)
 
 		std::set<gamemap::location>::const_iterator it;
 		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
-			//store invalidated units
-			if ((temp_unit_ && temp_unit_loc_==*it) || units_.find(*it) != units_.end()) {
-				unit_invals.insert(*it);
-			}
-
 			int xpos = get_location_x(*it);
 			int ypos = get_location_y(*it);
+
+			//store invalidated units
+			if ((temp_unit_ && temp_unit_loc_==*it) || units_.find(*it) != units_.end()) {
+				//a unit can use big sprites or haloes
+				//so we use a bigger rectangle to check
+				//his visibility in the view
+				const int padding = zoom_ * 2;
+				SDL_Rect unit_rect = {xpos-padding, ypos-padding, zoom_+padding, zoom_+padding};
+				if(rects_overlap(unit_rect,clip_rect)) {
+					unit_invals.insert(*it);
+				}
+			}
 
 			SDL_Rect hex_rect = {xpos, ypos, zoom_, zoom_};
 			if(!rects_overlap(hex_rect,clip_rect)) {
