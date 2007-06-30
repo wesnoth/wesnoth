@@ -53,6 +53,7 @@ wesnoth_SOURCES = \
 	animated.cpp \
 	astarnode.cpp \
 	attack_prediction.cpp \
+	basic_dialog.cpp \
 	builder.cpp \
 	cavegen.cpp \
 	checksum.cpp \
@@ -168,6 +169,7 @@ wesnoth_editor_SOURCES = \
 	actions.cpp \
 	animated.cpp \
 	astarnode.cpp \
+	basic_dialog.cpp \
 	builder.cpp \
 	cavegen.cpp \
 	checksum.cpp \
@@ -349,6 +351,7 @@ noinst_HEADERS = \
 	ai2.hpp \
 	ai_python.hpp \
 	attack_prediction.hpp \
+	basic_dialog.hpp \
 	cursor.hpp \
 	tooltips.hpp \
 	halo.hpp \
@@ -375,6 +378,7 @@ noinst_HEADERS = \
 	builder.hpp \
 	publish_campaign.hpp \
 	game_config.hpp \
+	game_display.hpp \
 	terrain.hpp \
 	terrain_translation.hpp \
 	config.hpp \
