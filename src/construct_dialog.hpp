@@ -114,7 +114,7 @@ public:
 		: button(video,label,type,"",DEFAULT_SPACE,false), simple_result_(simple_result),
 		parent_(NULL), handler_(handler)
 	{}
-	void set_parent(class dialog *parent) {
+	void set_parent(class basic_dialog *parent) {
 		parent_ = parent;
 	}
 	bool is_option() const {
@@ -122,10 +122,10 @@ public:
 	}
 	virtual int action(dialog_process_info &info);
 protected:
-	class dialog *dialog() const { return parent_; }
+	class basic_dialog *dialog() const { return parent_; }
 	const int simple_result_;
 private:
-	class dialog *parent_;
+	class basic_dialog *parent_;
 	dialog_button_action *handler_;
 };
 
@@ -140,7 +140,7 @@ private:
 };
 
 
-class dialog {
+class basic_dialog {
 public:
 	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_EXTRA_LEFT, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT };
 	struct dimension_measurements {
@@ -170,7 +170,6 @@ public:
 	static const struct style message_style;
 	static const struct style titlescreen_style;
 	static const struct style hotkeys_style;
-	static const std::string no_help;
 	static const int message_font_size;
 	static const int caption_font_size;
 	static const int max_menu_width;
@@ -183,11 +182,10 @@ public:
 	//Constructor & destructor
 	//dialog - throws button::error() if standard buttons fail to initialize
 	//         throws utils::invalid_utf8_exception() if message is invalid
-	dialog(display &disp, const std::string& title="", const std::string& message="",
+	basic_dialog(display &disp, const std::string& title="", const std::string& message="",
 				const DIALOG_TYPE type=MESSAGE, 
-				const struct style *dialog_style=&default_style,
-				const std::string& help_topic=no_help);
-	virtual ~dialog();
+				const struct style *dialog_style=&default_style);
+	virtual ~basic_dialog();
 
 	//Adding components - the dialog will manage the memory of these widgets,
 	//therefore do not attempt to reference its widgets after destroying it
@@ -218,8 +216,8 @@ public:
 
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
-	int show(int xloc, int yloc);
-	int show();
+	virtual int show(int xloc, int yloc);
+	virtual int show();
 
 	//Results
 	int result() const { return result_; }
@@ -239,28 +237,20 @@ protected:
 	void refresh();
 
 	label& get_message() const { return *message_; }
-	dialog_frame& get_frame();
+	virtual dialog_frame& get_frame(button *help_button=NULL);
+
+	display &disp_;
+
+	//process - execute a single dialog processing loop 
+	//and return the result
+	virtual int process(dialog_process_info &info);
+	virtual void update_widget_positions();
 
 private:
 	void draw_frame();
-	void update_widget_positions();
 	void draw_contents();
 
-	//process - execute a single dialog processing loop and return the result
-	int process(dialog_process_info &info);
-
-	class help_button : public dialog_button {
-	public:
-		help_button(display& disp, const std::string &help_topic);
-		int action(dialog_process_info &info);
-		const std::string topic() const { return topic_; }
-	private:
-		display &disp_;
-		const std::string topic_;
-	};
-
 	//Members
-	display &disp_;
 	dialog_image *image_;
 	const std::string title_;
  	const struct style *style_;
@@ -272,7 +262,6 @@ private:
 	std::vector<dialog_button*> standard_buttons_;
 	std::vector<dialog_button*> extra_buttons_;
 	std::vector<button*> frame_buttons_;
-	help_button help_button_;
 	dialog_textbox *text_widget_;
 	dialog_frame *frame_;
 	surface_restorer *bg_restore_;
@@ -283,11 +272,11 @@ private:
 typedef Uint32 msecs;
 const msecs three_blinks = 300;	// 3 times the 0.1sec human reflex-arc time
 
-class message_dialog : public gui::dialog
+class message_dialog : public gui::basic_dialog
 {
 public:
 	message_dialog(display &disp, const std::string& title="", const std::string& message="", const gui::DIALOG_TYPE type=gui::MESSAGE)
-		: dialog(disp, title, message, type, &message_style), prevent_misclick_until_(0)
+		: basic_dialog(disp, title, message, type, &message_style), prevent_misclick_until_(0)
 	{}
 	~message_dialog();
 	int show(msecs minimum_lifetime = three_blinks);
@@ -295,6 +284,34 @@ protected:
 	void action(gui::dialog_process_info &dp_info);
 private:
 	msecs prevent_misclick_until_;
+};
+
+class dialog : public gui::basic_dialog
+{
+public:
+	dialog(display &disp, const std::string& title="", 
+	       const std::string& message="",
+	       const DIALOG_TYPE type=MESSAGE, 
+	       const struct style *dialog_style=&default_style,
+	       const std::string& help_topic="");
+
+	class help_button : public dialog_button {
+	public:
+		help_button(display& disp, const std::string &help_topic);
+		int action(dialog_process_info &info);
+		const std::string topic() const { return topic_; }
+	private:
+		display &disp_;
+		const std::string topic_;
+	};
+
+	int process(dialog_process_info &info);
+	void update_widget_positions();
+	dialog_frame& get_frame();
+	int show();
+	int show(int xloc, int yloc);
+
+	help_button help_button_;
 };
 
 } //end namespace gui

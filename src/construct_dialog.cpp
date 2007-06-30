@@ -22,7 +22,6 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "gettext.hpp"
-#include "help.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
 #include "key.hpp"
@@ -54,25 +53,24 @@ namespace gui {
 
 // This is where the connections between styles and the panel images
 // in the data tree gets made.
-const struct style dialog::default_style("opaque", 0);
-const struct style dialog::message_style("translucent65", 3);
-const struct style dialog::titlescreen_style("translucent54", 0);
-const struct style dialog::hotkeys_style("menu2", 0);
+const struct style basic_dialog::default_style("opaque", 0);
+const struct style basic_dialog::message_style("translucent65", 3);
+const struct style basic_dialog::titlescreen_style("translucent54", 0);
+const struct style basic_dialog::hotkeys_style("menu2", 0);
 
 //static initialization
-const std::string dialog::no_help("");
-const int dialog::message_font_size = font::SIZE_PLUS;
-const int dialog::caption_font_size = font::SIZE_LARGE;
-const size_t dialog::left_padding = font::relative_size(10);
-const size_t dialog::right_padding = font::relative_size(10);
-const size_t dialog::image_h_pad = font::relative_size(/*image_ == NULL ? 0 :*/ 10);
-const size_t dialog::top_padding = font::relative_size(10);
-const size_t dialog::bottom_padding = font::relative_size(10);
+const int basic_dialog::message_font_size = font::SIZE_PLUS;
+const int basic_dialog::caption_font_size = font::SIZE_LARGE;
+const size_t basic_dialog::left_padding = font::relative_size(10);
+const size_t basic_dialog::right_padding = font::relative_size(10);
+const size_t basic_dialog::image_h_pad = font::relative_size(/*image_ == NULL ? 0 :*/ 10);
+const size_t basic_dialog::top_padding = font::relative_size(10);
+const size_t basic_dialog::bottom_padding = font::relative_size(10);
 
 #ifdef USE_TINY_GUI
-	const int dialog::max_menu_width = 300;
+	const int basic_dialog::max_menu_width = 300;
 #else
-	const int dialog::max_menu_width = -1;
+	const int basic_dialog::max_menu_width = -1;
 #endif
 
 }
@@ -81,33 +79,11 @@ namespace {
 
 std::vector<std::string> empty_string_vector;
 
-struct help_handler : public hotkey::command_executor
-{
-	help_handler(display& disp, const std::string& topic) : disp_(disp), topic_(topic)
-	{}
-
-private:
-	void show_help()
-	{
-		if(topic_.empty() == false) {
-			help::show_help(disp_,topic_);
-		}
-	}
-
-	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int/*index*/ =-1) const
-	{
-		return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
-	}
-
-	display& disp_;
-	std::string topic_;
-};
-
 } //end anonymous namespace
 
 namespace gui {
 
-dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior(empty_rect), 
+basic_dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior(empty_rect), 
 	message(empty_rect), textbox(empty_rect), menu_height(-1) 
 {
 	//note: this is not defined in the header file to C++ ODR (one-definition rule)
@@ -115,17 +91,15 @@ dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior
 	//(unnamed namespace and/or const object defined at declaration time). 
 } 
 
-dialog::dialog(display &disp, const std::string& title, const std::string& message,
-				const DIALOG_TYPE type, const struct style* dialog_style,
-				const std::string& help_topic) : disp_(disp), image_(NULL),
+basic_dialog::basic_dialog(display &disp, const std::string& title, const std::string& message,
+				const DIALOG_TYPE type, const struct style* dialog_style
+				) : disp_(disp), image_(NULL),
 				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
-				type_(type), menu_(NULL),
-				help_button_(disp, help_topic),  text_widget_(NULL),
+				type_(type), menu_(NULL), text_widget_(NULL),
 				frame_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
 {
 	CVideo& screen = disp_.video();
 
-	help_button_.set_parent(this);
 	switch(type)
 	{
 	case MESSAGE:
@@ -161,7 +135,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 
 }
 
-dialog::~dialog()
+basic_dialog::~basic_dialog()
 {
 	if(menu_ != empty_menu)
 	{
@@ -184,7 +158,7 @@ dialog::~dialog()
 	delete bg_restore_;
 }
 
-const bool dialog::option_checked(unsigned int option_index)
+const bool basic_dialog::option_checked(unsigned int option_index)
 {
 	unsigned int i = 0;
 	button_pool_iterator b;
@@ -198,7 +172,7 @@ const bool dialog::option_checked(unsigned int option_index)
 	return false;
 }
 
-void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
+void basic_dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 {
 	std::pair<dialog_button *, BUTTON_LOCATION> new_pair(btn,loc);
 	button_pool_.push_back(new_pair);
@@ -219,20 +193,20 @@ void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 	}
 }
 
-void dialog::add_button(dialog_button_info btn_info, BUTTON_LOCATION loc)
+void basic_dialog::add_button(dialog_button_info btn_info, BUTTON_LOCATION loc)
 {
 	dialog_button *btn = new dialog_button(disp_.video(), btn_info.label, button::TYPE_PRESS, CONTINUE_DIALOG, btn_info.handler);
 	add_button(btn, loc);
 }
 
-void dialog::add_option(const std::string& label, bool checked, BUTTON_LOCATION loc)
+void basic_dialog::add_option(const std::string& label, bool checked, BUTTON_LOCATION loc)
 {
 	gui::dialog_button *btn = new dialog_button(disp_.video(), label, button::TYPE_CHECK);
 	btn->set_check(checked);
 	add_button(btn, loc);
 }
 
-void dialog::set_textbox(const std::string& text_widget_label,
+void basic_dialog::set_textbox(const std::string& text_widget_label,
 				const std::string& text_widget_text,
 				const int text_widget_max_chars, const unsigned int text_box_width)
 {
@@ -242,13 +216,13 @@ void dialog::set_textbox(const std::string& text_widget_label,
 	text_widget_->set_wrap(!editable_textbox);
 }
 
-void dialog::set_menu(const std::vector<std::string> &menu_items)
+void basic_dialog::set_menu(const std::vector<std::string> &menu_items)
 {
 	set_menu(new gui::menu(disp_.video(), menu_items, (type_==MESSAGE),
-		-1, dialog::max_menu_width, NULL, &menu::default_style, false));
+		-1, basic_dialog::max_menu_width, NULL, &menu::default_style, false));
 }
 
-menu& dialog::get_menu()
+menu& basic_dialog::get_menu()
 {
 	if(menu_ == NULL)
 	{
@@ -261,13 +235,13 @@ menu& dialog::get_menu()
 	return *menu_;
 }
 
-int dialog::show(int xloc, int yloc)
+int basic_dialog::show(int xloc, int yloc)
 {
 	layout(xloc, yloc);
 	return show();
 }
 
-int dialog::show()
+int basic_dialog::show()
 {
 	if(disp_.video().update_locked()) {
 		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'\n";
@@ -281,9 +255,6 @@ int dialog::show()
 	const events::event_context dialog_events_context;
 	const dialog_manager manager;
 	const events::resize_lock prevent_resizing;
-
-	help_handler helper(disp_,help_button_.topic());
-	hotkey::basic_handler help_dispatcher(&disp_,&helper);
 
 	//draw
 	draw_frame();
@@ -306,7 +277,7 @@ int dialog::show()
 	return result();
 }
 
-void dialog::draw_contents()
+void basic_dialog::draw_contents()
 {
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
@@ -324,7 +295,7 @@ void dialog::draw_contents()
 	disp_.invalidate_all();
 }
 
-dialog_frame& dialog::get_frame()
+dialog_frame& basic_dialog::get_frame(button *help_button)
 {
 	if(frame_ == NULL) {
 		CVideo& screen = disp_.video();
@@ -336,17 +307,17 @@ dialog_frame& dialog::get_frame()
 		delete bg_restore_;
 		bg_restore_ = new surface_restorer;
 		frame_ = new dialog_frame(screen, title_, style_, &frame_buttons_, bg_restore_, 
-			help_button_.topic().empty() ? NULL : &help_button_);
+			help_button);
 	}
 	return *frame_;
 }
 
-void dialog::draw_frame()
+void basic_dialog::draw_frame()
 {
 	get_frame().draw();
 }
 
-void dialog::update_widget_positions()
+void basic_dialog::update_widget_positions()
 {
 	if(!preview_panes_.empty()) {
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
@@ -390,19 +361,18 @@ void dialog::update_widget_positions()
 		dialog_button *btn = *b;
 		btn->join();
 	}
-	help_button_.join();
 
 	message_->set_location(dim_.message);
 	message_->join();
 }
 
-void dialog::refresh()
+void basic_dialog::refresh()
 {
 	disp_.flip();
 	disp_.delay(10);
 }
 
-dialog::dimension_measurements dialog::layout(int xloc, int yloc)
+basic_dialog::dimension_measurements basic_dialog::layout(int xloc, int yloc)
 {
 	CVideo& screen = disp_.video();
 	surface const scr = screen.getSurface();
@@ -655,13 +625,13 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	return dim;
 }
 
-void dialog::set_layout(dimension_measurements &new_dim) {
+void basic_dialog::set_layout(dimension_measurements &new_dim) {
 	get_frame().layout(new_dim.interior);
 	dim_ = new_dim;
 }
 
 
-int dialog::process(dialog_process_info &info)
+int basic_dialog::process(dialog_process_info &info)
 {
 
 	int mousex, mousey;
@@ -752,9 +722,6 @@ int dialog::process(dialog_process_info &info)
 			return b->first->action(info);
 		}
 	}
-	if(help_button_.pressed()) {
-		return help_button_.action(info);
-	}
 
 	return CONTINUE_DIALOG;
 }
@@ -778,7 +745,7 @@ int dialog_button::action(dialog_process_info &info) {
 	return simple_result_;
 }
 
-void dialog::action(dialog_process_info& info)
+void basic_dialog::action(dialog_process_info& info)
 {
 	//default way of handling a "delete item" request
 	if(result() == DELETE_ITEM) {
@@ -807,18 +774,7 @@ int standard_dialog_button::action(dialog_process_info &/*info*/) {
 }
 
 
-dialog::help_button::help_button(display& disp, const std::string &help_topic)
-	: dialog_button(disp.video(), _("Help")), disp_(disp), topic_(help_topic)
-{}
-
-int dialog::help_button::action(dialog_process_info &info) {
-	if(!topic_.empty()) {
-		help::show_help(disp_,topic_);
-		info.clear_buttons();
-	}
-	return CONTINUE_DIALOG;
-}
-void dialog::set_image(surface surf, const std::string &caption)
+void basic_dialog::set_image(surface surf, const std::string &caption)
 {
 	label *label_ptr = NULL;
 	if(!caption.empty()) {
@@ -832,15 +788,17 @@ void dialog_image::draw_contents()
 	video().blit_surface(location().x, location().y, surf_);
 }
 
+// methods for message_dialog subclass begin here
+
 int message_dialog::show(msecs minimum_lifetime)
 {
 	prevent_misclick_until_ = SDL_GetTicks() + minimum_lifetime;
-	return dialog::show();
+	return basic_dialog::show();
 }
 
 void message_dialog::action(gui::dialog_process_info &dp_info)
 {
-	dialog::action(dp_info);
+	basic_dialog::action(dp_info);
 	if(done() && SDL_GetTicks() < prevent_misclick_until_ && result() != gui::ESCAPE_DIALOG) {
 		//discard premature results
 		set_result(gui::CONTINUE_DIALOG);
@@ -850,5 +808,96 @@ void message_dialog::action(gui::dialog_process_info &dp_info)
 message_dialog::~message_dialog()
 {
 }
+
+}//end namespace gui
 		
+// methods for dialog subclass begin here
+
+#include "help.hpp"
+
+namespace {
+
+struct help_handler : public hotkey::command_executor
+{
+	help_handler(display& disp, const std::string& topic) : disp_(disp), topic_(topic)
+	{}
+
+private:
+	void show_help()
+	{
+		if(topic_.empty() == false) {
+			help::show_help(disp_,topic_);
+		}
+	}
+
+	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int/*index*/ =-1) const
+	{
+		return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
+	}
+
+	display& disp_;
+	std::string topic_;
+};
+
+} //end anonymous namespace
+
+namespace gui {
+
+dialog::dialog(display &disp, const std::string& title, const std::string& message,
+				const DIALOG_TYPE type, const struct style* dialog_style,
+				const std::string& help_topic) :
+		basic_dialog(disp, title, message, type, dialog_style),
+		help_button_(disp, help_topic)
+{
+	help_button_.set_parent(this);
+}
+
+void dialog::update_widget_positions()
+{
+	basic_dialog::update_widget_positions();
+	help_button_.join();
+}
+
+int dialog::process(dialog_process_info &info)
+{
+	int res = basic_dialog::process(info);
+
+	if(res == CONTINUE_DIALOG && help_button_.pressed()) {
+		return help_button_.action(info);
+	}
+
+	return res;
+}
+
+int dialog::show()
+{
+	help_handler helper(disp_,help_button_.topic());
+	hotkey::basic_handler help_dispatcher(&disp_,&helper);
+
+	return basic_dialog::show();
+}
+
+int dialog::show(int xloc, int yloc)
+{
+	layout(xloc, yloc);
+	return show();
+}
+
+dialog_frame& dialog::get_frame()
+{
+	return basic_dialog::get_frame(help_button_.topic().empty() ? NULL : &help_button_);
+}
+
+dialog::help_button::help_button(display& disp, const std::string &help_topic)
+	: dialog_button(disp.video(), _("Help")), disp_(disp), topic_(help_topic)
+{}
+
+int dialog::help_button::action(dialog_process_info &info) {
+	if(!topic_.empty()) {
+		help::show_help(disp_,topic_);
+		info.clear_buttons();
+	}
+	return CONTINUE_DIALOG;
+}
+
 }//end namespace gui

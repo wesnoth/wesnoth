@@ -118,7 +118,7 @@ private:
 	std::string id_;
 
 	friend class scrollpane;
-	friend class dialog;
+	friend class basic_dialog;
 };
 
 }
