@@ -352,6 +352,7 @@ noinst_HEADERS = \
 	ai_python.hpp \
 	attack_prediction.hpp \
 	basic_dialog.hpp \
+	file_chooser.hpp \
 	cursor.hpp \
 	tooltips.hpp \
 	halo.hpp \

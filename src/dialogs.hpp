@@ -24,36 +24,10 @@ class game_display;
 
 #include "widgets/button.hpp"
 
-namespace gui
-{
-	class file_menu;
-}
+#include "file_chooser.hpp"
 
-namespace dialogs
-{
-
-class file_dialog : public gui::dialog {
-public:
-	file_dialog(display &disp, const std::string& file_path, const std::string& title);
-	
-	virtual gui::dialog::dimension_measurements layout(int xloc=-1, int yloc=-1);
-
-	/// Return the chosen file.
-	std::string get_choice() const { return chosen_file_; }
-
-protected:
-	void action(gui::dialog_process_info &dp_info);
-	const std::string unformat_filename(const std::string& filename) const;
-	const std::string format_filename(const std::string& filename) const;
-	const std::string format_dirname(const std::string& dirname) const;
-
-private:
-	gui::file_menu *files_list_;
-	int last_selection_;
-	std::string last_textbox_text_;
-	std::string chosen_file_;
-};
-
+namespace dialogs {
+ 
 //function to handle an advancing unit. If there is only one choice to advance
 //to, the unit will be automatically advanced. If there is a choice, and 'random_choice'
 //is true, then a unit will be selected at random. Otherwise, a dialog will be displayed
@@ -79,14 +53,6 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 //a replay of the game in show_replay. If show_replay is NULL, then
 //the user will not be asked if they want to show a replay.
 std::string load_game_dialog(display& disp, const config& terrain_config, const game_data& data, bool* show_replay);
-
-/// Show a dialog where the user can navigate through files and select a
-/// file. The filename is used as a starting point in the navigation and
-/// contains the chosen file when the function returns.  Return the
-/// index of the button pressed, or -1 if the dialog was canceled
-/// through keypress.
-int show_file_chooser_dialog(display &displ, std::string &filename,
-                             std::string const &title, int xloc = -1, int yloc = -1);
 
 class unit_preview_pane : public gui::preview_pane
 {
