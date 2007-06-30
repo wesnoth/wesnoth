@@ -70,6 +70,9 @@ sub read_binary
 		push @chars, substr($input, $i, 1);
 	}
 
+	#to see all the characters input for debugging
+	#print STDERR "INPUT: " . (join ', ', (map {ord} @chars)) . "\n";
+	
 	while(@chars) {
 		my $char = shift @chars;
 		my $code = ord $char;
@@ -409,15 +412,18 @@ sub get_diff
 	my $attr1 = $doc1->{'attr'};
 	my $attr2 = $doc2->{'attr'};
 	my $d = 0;
-	while(my ($key, $value) = each %$attr1) {
-		if($attr2->{$key} ne $value) {
-			my $child = {'name' => 'insert', 'children' => [], 'attr' => {$key => $value}};
+	my @keys1 = keys %$attr1;
+	my @keys2 = keys %$attr2;
+
+	foreach my $key (@keys1) {
+		if($attr1->{$key} ne $attr2->{$key}) {
+			my $child = {'name' => 'insert', 'children' => [], 'attr' => {$key => $attr1->{$key}}};
 			push @{$diffs->{'children'}}, $child;
 			++$d;
 		}
 	}
 
-	while(my ($key, $value) = each %$attr1) {
+	foreach my $key (@keys2) {
 		if(undef $attr1->{$key}) {
 			my $child = {'name' => 'delete', 'children' => [], 'attr' => {$key => 'x'}};
 			push @{$diffs->{'children'}}, $child;
@@ -462,7 +468,7 @@ sub get_diff
 			if($n < @$a1 and $n < @$a2) {
 				if(not &docs_equal($a1->[$n], $a2->[$n])) {
 					my $diff = &get_diff($a1->[$n], $a2->[$n], $key);
-					my $change = {'name' => 'change_child', 'children' => [$diff], 'index' => $n};
+					my $change = {'name' => 'change_child', 'children' => $diff->{'children'}, 'attr' => {'index' => $n}};
 					push @{$diffs->{'children'}}, $change;
 					++$d;
 				}
