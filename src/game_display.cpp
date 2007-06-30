@@ -244,11 +244,11 @@ void game_display::draw(bool update,bool force)
 				unit_invals.insert(*it);
 			}
 
-			int xpos = int(get_location_x(*it));
-			int ypos = int(get_location_y(*it));
+			int xpos = get_location_x(*it);
+			int ypos = get_location_y(*it);
 
-			if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
-			   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
+			SDL_Rect hex_rect = {xpos, ypos, zoom_, zoom_};
+			if(!rects_overlap(hex_rect,clip_rect)) {
 				continue;
 			}
 
@@ -374,9 +374,9 @@ void game_display::draw(bool update,bool force)
 			}
 
 			// paint selection and mouseover overlays
-			if(*it == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL)
+			if(*it == selectedHex_ && on_map && selected_hex_overlay_ != NULL)
 				tile_stack_append(selected_hex_overlay_);
-			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL)
+			if(*it == mouseoverHex_ && on_map && mouseover_hex_overlay_ != NULL)
 				tile_stack_append(mouseover_hex_overlay_);
 
 			tile_stack_render(xpos, ypos);
