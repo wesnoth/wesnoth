@@ -113,9 +113,16 @@ void advance_unit(const game_data& info,
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		res = gui::show_dialog(gui,NULL,_("Advance Unit"),
-		                       _("What should our victorious unit become?"),
-		                       gui::OK_ONLY, &lang_options, &preview_panes);
+		gui::basic_dialog advances = gui::basic_dialog(gui,
+				      _("Advance Unit"),
+		                      _("What should our victorious unit become?"),
+		                      gui::OK_ONLY);
+		advances.set_menu(lang_options);
+		std::vector<gui::preview_pane*>::const_iterator itor;
+		for(itor = preview_panes.begin(); itor != preview_panes.end(); ++itor)
+
+			advances.add_pane(*itor);
+		res = advances.show();
 	}
 
 	recorder.choose_option(res);

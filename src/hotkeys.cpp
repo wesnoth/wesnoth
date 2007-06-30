@@ -16,7 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
-#include "construct_dialog.hpp"
+#include "basic_dialog.hpp"
 #include "display.hpp"
 #include "events.hpp"
 #include "hotkeys.hpp"
@@ -478,7 +478,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 {
 	if(event.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
 		std::cerr << "escape pressed..showing quit\n";
-		const int res = gui::show_dialog(disp,NULL,_("Quit"),_("Do you really want to quit?"),gui::YES_NO);
+		const int res = gui::basic_dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
 		if(res == 0) {
 			throw end_level_exception(QUIT);
 		} else {
@@ -779,7 +779,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_QUIT_GAME: {
 			if(disp.in_game()) {
 				std::cerr << "is in game -- showing quit message\n";
-				const int res = gui::show_dialog(disp,NULL,_("Quit"),_("Do you really want to quit?"),gui::YES_NO);
+				const int res = gui::basic_dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
 				if(res == 0) {
 					throw end_level_exception(QUIT);
 				}
@@ -805,8 +805,10 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 
 		std::vector<std::string> menu = get_menu_images(items);
 
-		const int res = gui::show_dialog(gui,NULL,"","",
-				gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,xloc,yloc,&gui::dialog::hotkeys_style);
+		gui::basic_dialog mmenu = gui::basic_dialog(gui,"","",
+				gui::MESSAGE, &gui::basic_dialog::hotkeys_style);
+		mmenu.set_menu(menu);
+		const int res = mmenu.show(xloc, yloc);
 		if (size_t(res) >= items.size())
 			return;
 
