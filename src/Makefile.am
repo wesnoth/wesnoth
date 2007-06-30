@@ -50,7 +50,7 @@ wesnoth_SOURCES = \
 	ai_attack.cpp \
 	ai_move.cpp \
 	ai_python.cpp \
-	animated.cpp \
+	animated_game.cpp \
 	astarnode.cpp \
 	attack_prediction.cpp \
 	basic_dialog.cpp \
@@ -167,7 +167,7 @@ wesnoth_editor_SOURCES = \
 	editor/editor_undo.cpp \
 	about.cpp \
 	actions.cpp \
-	animated.cpp \
+	animated_editor.cpp \
 	astarnode.cpp \
 	basic_dialog.cpp \
 	builder.cpp \
@@ -436,6 +436,7 @@ noinst_HEADERS = \
 	about.hpp \
 	unit.hpp \
 	animated.hpp \
+	animated.i \
 	mapgen_dialog.hpp \
 	marked-up_text.hpp \
 	ai_dfool.hpp \

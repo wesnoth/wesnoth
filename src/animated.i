@@ -273,11 +273,3 @@ int animated<T,T_void_value>::get_end_time() const
 	return frames_.back().start_time_ + frames_.back().duration_;
 }
 
-// Force compilation of the following template instantiations
-
-#include "unit_frame.hpp"
-#include "image.hpp"
-
-template class animated< image::locator >;
-template class animated< std::string >;
-template class animated< unit_frame >;
