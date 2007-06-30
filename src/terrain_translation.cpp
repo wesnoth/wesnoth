@@ -32,18 +32,6 @@ namespace t_translation {
 	// of the internal format
 	
 	/**
-	 * This is the new convertor converts a single line
-	 * and only acceptes the new terrain string format
-	 *
-	 * @param str		the terrain string in new format
-	 * @param filler	if the terrain has only 1 layer then the filler will be used
-	 * 					as the second layer
-	 *
-	 * @return 			the list of converted terrains
-	 */
-	static t_list string_to_vector_(const std::string& str, const t_layer filler);
-	
-	/**
 	 * Get the mask for a single layer
 	 *
 	 * @param terrain 	1 layer of a terrain, might have a wildcard
@@ -202,7 +190,36 @@ std::string write_letter(const t_letter& letter)
 
 t_list read_list(const std::string& str, const t_layer filler)
 {
-	return string_to_vector_(str, filler);
+	// handle an empty string
+	t_list result;
+
+	if(str.empty()) {
+		return result;
+	}
+		
+	size_t offset = 0;
+	while(offset < str.length()) {
+
+		// get a terrain chunk
+		const std::string separators = ",";
+		const size_t pos_separator = str.find_first_of(separators, offset);
+		const std::string terrain = str.substr(offset, pos_separator - offset);
+
+		// process the chunk
+		const t_letter tile = string_to_number_(terrain, filler);
+
+		// add the resulting terrain number
+		result.push_back(tile);
+
+		//evaluate the separator
+		if(pos_separator == std::string::npos) {
+			offset =  str.length();
+		} else {
+			offset = pos_separator + 1;
+		}
+	}
+
+	return result;
 }
 
 std::string write_list(const t_list& list)
@@ -655,40 +672,6 @@ t_map read_builder_map(const std::string& str)
 
 /***************************************************************************************/	
 //internal
-
-static t_list string_to_vector_(const std::string& str, const t_layer filler)
-{
-	// handle an empty string
-	t_list result;
-
-	if(str.empty()) {
-		return result;
-	}
-		
-	size_t offset = 0;
-	while(offset < str.length()) {
-
-		// get a terrain chunk
-		const std::string separators = ",";
-		const size_t pos_separator = str.find_first_of(separators, offset);
-		const std::string terrain = str.substr(offset, pos_separator - offset);
-
-		// process the chunk
-		const t_letter tile = string_to_number_(terrain, filler);
-
-		// add the resulting terrain number
-		result.push_back(tile);
-
-		//evaluate the separator
-		if(pos_separator == std::string::npos) {
-			offset =  str.length();
-		} else {
-			offset = pos_separator + 1;
-		}
-	}
-
-	return result;
-}
 
 inline t_layer get_layer_mask_(t_layer terrain)
 {

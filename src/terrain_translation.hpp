@@ -82,7 +82,7 @@ namespace t_translation {
 	};
 	
 	/** 
-	 * Contains an x and c coordinate used for starting positions
+	 * Contains an x and y coordinate used for starting positions
 	 * in maps
 	 */
 	struct coordinate {
@@ -232,7 +232,7 @@ namespace t_translation {
 	 * @param starting_positions A starting positions map, as returned from read_game_map
 	 *
 	 * @returns			A terrain string which can be read with read_game_map.
-	 * 					For readability the map is padded to groups of 7 chars
+	 * 					For readability the map is padded to groups of 12 chars
 	 * 					followed by a comma and space
 	 */
 	std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions = std::map<int, coordinate>());
