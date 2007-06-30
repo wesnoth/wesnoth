@@ -15,6 +15,7 @@
 #include "SDL_keysym.h"
 
 #include "../config.hpp"
+#include "../basic_dialog.hpp"
 #include "../cursor.hpp"
 #include "../file_chooser.hpp"
 #include "../filesystem.hpp"
@@ -457,9 +458,12 @@ void map_editor::change_language() {
 	langs.reserve(langdefs.size());
 	std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
 
-	const int res = gui::show_dialog(gui_,NULL,_("Language"),
-	                         _("Choose your preferred language:"),
-	                         gui::OK_CANCEL,&langs);
+	const std::string language = _("Language");
+	const std::string preferred = _("Choose your preferred language:");
+	gui::basic_dialog lmenu = gui::basic_dialog(gui_, language, preferred,
+					  gui::OK_CANCEL);
+	lmenu.set_menu(langs);
+	int res = lmenu.show();
 	const std::vector<language_def>& languages = get_languages();
 	if(size_t(res) < languages.size()) {
 		::set_language(languages[res]);
@@ -506,9 +510,9 @@ void map_editor::edit_save_as() {
 				continue;
 			}
 			else if (file_exists(input_name)) {
-				overwrite = gui::show_dialog(gui_, NULL, "",
+				overwrite = gui::basic_dialog(gui_, "",
 					_("The map already exists. Do you want to overwrite it?"),
-					gui::YES_NO);
+					gui::YES_NO).show();
 			}
 			else
 				overwrite = 0;
@@ -538,10 +542,12 @@ void map_editor::perform_set_starting_pos() {
 		str << _("Player") << " " << i + 1;
 		players.push_back(str.str());
 	}
-	int res = gui::show_dialog(gui_, NULL, _("Which Player?"),
-	                                 _("Which player should start here?"),
-	                                 gui::OK_CANCEL, &players);
-
+	gui::basic_dialog pmenu = gui::basic_dialog(gui_, 
+				       _("Which Player?"),
+				       _("Which player should start here?"),
+				       gui::OK_CANCEL);
+	pmenu.set_menu(players);
+	int res = pmenu.show(); 
 	if (res >= 0) {
 		// we erase previous starting position on this hex
 		// this will prevent to cause a "stack" of these
@@ -1242,12 +1248,12 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 bool map_editor::confirm_exit_and_save() {
 	if (!changed_since_save())
 		return true;
-	if (gui::show_dialog(gui_, NULL, "",
-	                     _("Quit Editor"), gui::YES_NO) != 0) {
+	if (gui::basic_dialog(gui_, "",
+	                     _("Quit Editor"), gui::YES_NO).show() != 0) {
 		return false;
 	}
-	if (gui::show_dialog(gui_, NULL, "",
-		             _("Do you want to save the map before quitting?"), gui::YES_NO) == 0) {
+	if (gui::basic_dialog(gui_, "",
+		             _("Do you want to save the map before quitting?"), gui::YES_NO).show() == 0) {
 		if (!save_map("", false)) {
 			return false;
 		}
@@ -1345,8 +1351,10 @@ void map_editor::show_menu(const std::vector<std::string>& items_arg, const int 
 		menu.push_back(str.str());
 	}
 	static const std::string style = "menu2";
-	const int res = gui::show_dialog(gui_, NULL, "", "", gui::MESSAGE, &menu, NULL, "",
-	                                 NULL, 256, NULL, xloc, yloc, &gui::basic_dialog::hotkeys_style);
+	gui::basic_dialog kmenu = gui::basic_dialog(gui_, "", "", gui::MESSAGE,
+						    &gui::basic_dialog::hotkeys_style);
+	kmenu.set_menu(menu);
+	const int res = kmenu.show(xloc, yloc);
 	if(res < 0 || (unsigned)res >= items.size())
 		return;
 	const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();

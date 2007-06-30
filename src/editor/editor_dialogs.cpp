@@ -27,7 +27,7 @@
 #include "../map_create.hpp"
 #include "../marked-up_text.hpp"
 #include "../construct_dialog.hpp"
-#include "../show_dialog.hpp"
+#include "../basic_dialog.hpp"
 #include "../util.hpp"
 #include "../preferences_display.hpp"
 #include "../video.hpp"
@@ -46,9 +46,9 @@ namespace {
 namespace map_editor {
 
 bool confirm_modification_disposal(display& disp) {
-	const int res = gui::show_dialog(disp, NULL, "",
+	const int res = gui::basic_dialog(disp, "",
 					 _("Your modifications to the map will be lost. Continue?"),
-					 gui::OK_CANCEL);
+					 gui::OK_CANCEL).show();
 	return res == 0;
 }
 
@@ -497,11 +497,11 @@ FLIP_AXIS flip_dialog(display &disp) {
 	items.push_back(_("X-Axis"));
 	items.push_back(_("Y-Axis"));
 	const std::string msg = _("Flip around (this may change the dimensions of the map):");
-	const int res =
-		gui::show_dialog(disp, NULL, "",
+	 gui::basic_dialog flipmenu = gui::basic_dialog(disp, "",
 						 font::word_wrap_text(msg, 12, 180),
-						 gui::OK_CANCEL, &items);
-	switch (res) {
+						 gui::OK_CANCEL);
+	flipmenu.set_menu(items);
+	switch (flipmenu.show()) {
 	case 0:
 		return FLIP_X;
 	case 1:
