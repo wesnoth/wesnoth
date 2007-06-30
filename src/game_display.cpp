@@ -223,7 +223,7 @@ void game_display::draw(bool update,bool force)
 	bool changed = display::draw_init();
 
 	//int simulate_delay = 0;
-	if(!map_.empty() && !invalidated_.empty()) {
+	if(!map_.empty() && !invalidated_.empty() && !screen_.update_locked()) {
 		changed = true;
 		
 		halo::unrender(invalidated_);
@@ -242,10 +242,6 @@ void game_display::draw(bool update,bool force)
 			//store invalidated units
 			if ((temp_unit_ && temp_unit_loc_==*it) || units_.find(*it) != units_.end()) {
 				unit_invals.insert(*it);
-			}
-
-			if(screen_.update_locked()) {
-				continue;
 			}
 
 			int xpos = int(get_location_x(*it));
