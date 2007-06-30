@@ -416,7 +416,6 @@ void game_display::draw(bool update,bool force)
 	} else if (!map_.empty()) {
 		// if no hexes are invalidated we still need to update the
 		// haloes since there might be animated or expired haloes
-		wassert(invalidated_.empty());
 		halo::unrender(invalidated_);
 		halo::render();
 	}
