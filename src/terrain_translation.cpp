@@ -112,14 +112,14 @@ namespace t_translation {
 
 const t_letter OFF_MAP = string_to_number_("_off^_off");
 const t_letter OFF_MAP_USER = string_to_number_("_off^_usr");
-const t_letter OFF_MAP_BORDER_LEFT = string_to_number_("_off^bl");
-const t_letter OFF_MAP_BORDER_RIGHT = string_to_number_("_off^br");
-const t_letter OFF_MAP_BORDER_TOP = string_to_number_("_off^bt");
-const t_letter OFF_MAP_BORDER_TOP_LEFT = string_to_number_("_off^btl");
-const t_letter OFF_MAP_BORDER_TOP_RIGHT = string_to_number_("_off^btr");
-const t_letter OFF_MAP_BORDER_BOTTOM = string_to_number_("_off^bb");
-const t_letter OFF_MAP_BORDER_BOTTOM_LEFT = string_to_number_("_off^bbl");
-const t_letter OFF_MAP_BORDER_BOTTOM_RIGHT = string_to_number_("_off^bbr");
+const t_letter OFF_MAP_BORDER_LEFT = string_to_number_("_off^_bl");
+const t_letter OFF_MAP_BORDER_RIGHT = string_to_number_("_off^_br");
+const t_letter OFF_MAP_BORDER_TOP = string_to_number_("_off^_bt");
+const t_letter OFF_MAP_BORDER_TOP_LEFT = string_to_number_("_off^_btl");
+const t_letter OFF_MAP_BORDER_TOP_RIGHT = string_to_number_("_off^_btr");
+const t_letter OFF_MAP_BORDER_BOTTOM = string_to_number_("_off^_bb");
+const t_letter OFF_MAP_BORDER_BOTTOM_LEFT = string_to_number_("_off^_bbl");
+const t_letter OFF_MAP_BORDER_BOTTOM_RIGHT = string_to_number_("_off^_bbr");
 
 const t_letter VOID_TERRAIN = string_to_number_("_s");
 const t_letter FOGGED = string_to_number_("_f");
