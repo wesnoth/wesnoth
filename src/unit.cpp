@@ -1863,7 +1863,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	anim_->update_last_draw_time();
 }
 
-void clear_haloes()
+void unit::clear_haloes()
 {
 	if(unit_halo_ != halo::NO_HALO) {
 		halo::remove(unit_halo_);
