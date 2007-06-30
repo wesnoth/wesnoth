@@ -444,7 +444,7 @@ bool unit_movement_type::is_flying() const
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      hide_help_(o.hide_help_), advances_to_(o.advances_to_),
+      hide_help_(o.hide_help_), advances_to_(o.advances_to_), advances_from_(o.advances_from_),
       experience_needed_(o.experience_needed_), alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
@@ -931,6 +931,13 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
+// Allow storing "advances from" info for convenience in Help.
+void unit_type::add_advancesfrom(const unit_type &from_unit)
+{
+	const std::string &from_id = from_unit.cfg_["id"];
+	advances_from_.push_back(from_id);
+}
+
 
 void unit_type::add_advancement(const unit_type &to_unit,int xp)
 {
@@ -1022,6 +1029,28 @@ void game_data::set_config(const config& cfg)
                 from_unit->second.add_advancement(to_unit->second,xp);
 		increment_set_config_progress();
         }
+
+	// For all unit types, store what units they advance from
+	for(unit_type_map::iterator from_unit = unit_types.begin();
+			from_unit != unit_types.end();
+			++from_unit)
+	{
+		std::vector<std::string> to_units_ids = from_unit->second.advances_to();
+		for ( std::vector<std::string>::iterator to_unit_id = to_units_ids.begin();
+				to_unit_id != to_units_ids.end();
+				++to_unit_id)
+		{
+			unit_type_map::iterator to_unit = unit_types.find(*to_unit_id);
+			if (to_unit != unit_types.end())
+			{
+				to_unit->second.add_advancesfrom(from_unit->second);
+			}
+			else
+			{
+				lg::warn(lg::config) << "unknown unit " << *to_unit_id << " advanced to by unit " << from_unit->first << "\n";
+			}
+		}
+	} 
 
 }
 

@@ -1097,6 +1097,28 @@ public:
 
 		ss << "\n";
 
+		// Print cross-references to units that this unit advances from.
+		std::vector<std::string> from_units = type_.advances_from();
+		if (!from_units.empty())
+		{
+			ss << _("Advances from: ");
+			for (std::vector<std::string>::const_iterator from_iter = from_units.begin();
+					from_iter != from_units.end();
+					++from_iter)
+			{
+				std::string unit_id = *from_iter;
+				std::map<std::string,unit_type>::const_iterator from_type = game_info->unit_types.find(unit_id);
+				if (from_type != game_info->unit_types.end())
+				{
+					std::string lang_unit = from_type->second.language_name();
+					std::string ref_id = std::string("unit_") + from_type->second.id();
+					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
+					if (from_iter + 1 != from_units.end()) ss << ", ";
+				}
+			}
+			ss << "\n";
+		}
+
 		// Print the units this unit can advance to. Cross reference
 		// to the topics containing information about those units.
 		std::vector<std::string> next_units = type_.advances_to();

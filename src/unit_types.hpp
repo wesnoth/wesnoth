@@ -153,6 +153,8 @@ public:
     // this is used to implement the [advancefrom] tag
     void add_advancement(const unit_type &advance_to,int experience);
 
+	// Adds units that this unit advances from, for help file purposes.
+	void add_advancesfrom(const unit_type &advance_from);
 
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
@@ -184,6 +186,7 @@ public:
 
 	int experience_needed(bool with_acceleration=true) const;
 	std::vector<std::string> advances_to() const { return advances_to_; }
+	std::vector<std::string> advances_from() const { return advances_from_; }
 	const config::child_list& modification_advancements() const { return cfg_.get_children("advancement"); }
 	const std::string& usage() const { return cfg_["usage"]; }
 
@@ -248,8 +251,9 @@ private:
 
 	bool zoc_, hide_help_;
 
-    std::vector<std::string> advances_to_;
-    int experience_needed_;
+	std::vector<std::string> advances_to_;
+	std::vector<std::string> advances_from_;
+	int experience_needed_;
 
 
 	ALIGNMENT alignment_;
