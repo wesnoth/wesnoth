@@ -335,12 +335,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 
 unit::~unit()
 {
-	if(unit_halo_ != halo::NO_HALO)  {
-		halo::remove(unit_halo_);
-	}
-	if(unit_anim_halo_ != halo::NO_HALO) {
-		halo::remove(unit_anim_halo_);
-	}
+	clear_haloes();
 
 	delete anim_;
 
@@ -1644,14 +1639,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 			(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			disp.get_teams()[disp.viewing_team()].is_enemy(side())) ){
 
-		if(unit_halo_ != halo::NO_HALO) {
-			halo::remove(unit_halo_);
-			unit_halo_ = halo::NO_HALO;
-		}
-		if(unit_anim_halo_ != halo::NO_HALO) {
-			halo::remove(unit_anim_halo_);
-			unit_anim_halo_ = halo::NO_HALO;
-		}
+		clear_haloes();
 		if(anim_) anim_->update_last_draw_time();
 		return;
 	}
@@ -1873,6 +1861,18 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 
 	refreshing_ = false;
 	anim_->update_last_draw_time();
+}
+
+void clear_haloes()
+{
+	if(unit_halo_ != halo::NO_HALO) {
+		halo::remove(unit_halo_);
+		unit_halo_ = halo::NO_HALO;
+	}
+	if(unit_anim_halo_ != halo::NO_HALO) {
+		halo::remove(unit_anim_halo_);
+		unit_anim_halo_ = halo::NO_HALO;
+	}
 }
 
 std::set<gamemap::location> unit::overlaps(const game_display &disp, const gamemap::location &loc) const
@@ -3103,12 +3103,5 @@ void unit::set_hidden(bool state) {
 	hidden_ = state;
 	if(!state) return;
 	// we need to get rid of haloes immediately to avoid display glitches
-	if(unit_halo_ != halo::NO_HALO) {
-		halo::remove(unit_halo_);
-		unit_halo_ = halo::NO_HALO;
-	}
-	if(unit_anim_halo_ != halo::NO_HALO) {
-		halo::remove(unit_anim_halo_);
-		unit_anim_halo_ = halo::NO_HALO;
-	}
+	clear_haloes();
 }
