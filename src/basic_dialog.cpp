@@ -17,7 +17,6 @@
 
 #include "basic_dialog.hpp"
 #include "config.hpp"
-#include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
 #include "gettext.hpp"
@@ -26,18 +25,11 @@
 #include "key.hpp"
 #include "sound.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
-#include "thread.hpp"
 #include "language.hpp"
-#include "sdl_utils.hpp"
-#include "tooltips.hpp"
-#include "util.hpp"
-#include "video.hpp"
+#include "marked-up_text.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
-#include "widgets/progressbar.hpp"
 #include "widgets/textbox.hpp"
-#include "wassert.hpp"
 
 #include "sdl_ttf/SDL_ttf.h"
 

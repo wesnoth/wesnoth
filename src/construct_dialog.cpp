@@ -12,38 +12,10 @@
    See the COPYING file for more details.
 */
 #include "construct_dialog.hpp"
-#include "config.hpp"
-#include "cursor.hpp"
 #include "display.hpp"
-#include "help.hpp"
-#include "events.hpp"
 #include "gettext.hpp"
+#include "help.hpp"
 #include "hotkeys.hpp"
-#include "image.hpp"
-#include "key.hpp"
-#include "sound.hpp"
-#include "log.hpp"
-#include "marked-up_text.hpp"
-#include "thread.hpp"
-#include "language.hpp"
-#include "sdl_utils.hpp"
-#include "tooltips.hpp"
-#include "util.hpp"
-#include "video.hpp"
-#include "widgets/button.hpp"
-#include "widgets/menu.hpp"
-#include "widgets/progressbar.hpp"
-#include "widgets/textbox.hpp"
-#include "wassert.hpp"
-
-#include "sdl_ttf/SDL_ttf.h"
-
-#include <iostream>
-#include <numeric>
-
-#define ERR_DP LOG_STREAM(err, display)
-#define LOG_DP LOG_STREAM(info, display)
-#define ERR_G  LOG_STREAM(err, general)
 
 namespace {
 
