@@ -15,6 +15,7 @@
 
 #include "ai.hpp"
 #include "game_config.hpp"
+#include "game_display.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "util.hpp"
@@ -711,7 +712,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri) {
 
 		if(game_config::debug) {
-			//display::debug_highlight(*ri,0.2);
+			//game_display::debug_highlight(*ri,static_cast<size_t>(0.2));
 		}
 
 		//this is set to 'true' if we are hesitant to proceed because of enemy units,
