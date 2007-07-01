@@ -71,7 +71,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /D "HAVE_PYTHON" /FR /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /GR /GX /Zi /O2 /I "c:/projects/wesnoth/wesnothd/src" /I "c:/projects/wesnoth/include/SDL-1.2.9/include" /I "c:/projects/wesnoth/include" /I "c:/projects/wesnoth/wesnothd/src/sdl_ttf" /I "c:/program files/python 2.4/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include/freetype" /I "c:/projects/wesnoth/include/SDL_image-1.2.4" /I "c:/projects/wesnoth/include/SDL_mixer-1.2.6" /I "c:/projects/wesnoth/include/SDL_net-1.2.5" /I "src/sdl_ttf" /I "c:/projects/wesnoth/include/libintl-devel/include" /I "c:/usr/include" /D "WIN32" /D "_NODEBUG" /D "_WINDOWS" /D "_MBCS" /D "NOT_HAVE_FRIBIDI" /D "NODEBUG_CONFIG" /FR"" /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GR /GX /Zi /Od /I "c:/projects/wesnoth/wesnothd/src" /I "c:/projects/wesnoth/include/SDL-1.2.9/include" /I "c:/projects/wesnoth/include" /I "c:/projects/wesnoth/wesnothd/src/sdl_ttf" /I "c:/program files/python 2.4/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include/freetype" /I "c:/projects/wesnoth/include/SDL_image-1.2.4" /I "c:/projects/wesnoth/include/SDL_mixer-1.2.6" /I "c:/projects/wesnoth/include/SDL_net-1.2.5" /I "src/sdl_ttf" /I "c:/projects/wesnoth/include/libintl-devel/include" /I "c:/usr/include" /D "WIN32" /D "_NODEBUG" /D "_WINDOWS" /D "_MBCS" /D "NOT_HAVE_FRIBIDI" /D "NODEBUG_CONFIG" /FR"" /YX /FD /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_NODEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -122,7 +122,7 @@ SOURCE=.\src\ai_python.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\animated.cpp
+SOURCE=.\src\animated_game.cpp
 # End Source File
 # Begin Source File
 
@@ -131,6 +131,10 @@ SOURCE=.\src\astarnode.cpp
 # Begin Source File
 
 SOURCE=.\src\attack_prediction.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\basic_dialog.cpp
 # End Source File
 # Begin Source File
 
@@ -230,11 +234,19 @@ SOURCE=.\src\game_config.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\game_display.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\game_events.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\gamestatus.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\generate_report.cpp
 # End Source File
 # Begin Source File
 
@@ -490,6 +502,10 @@ SOURCE=.\src\terrain.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\terrain_filter.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\terrain_translation.cpp
 # End Source File
 # Begin Source File
@@ -711,6 +727,10 @@ SOURCE=.\src\font.hpp
 # Begin Source File
 
 SOURCE=.\src\game_config.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\game_display.hpp
 # End Source File
 # Begin Source File
 
@@ -947,10 +967,6 @@ SOURCE=.\src\widgets\scrollpane.hpp
 # Begin Source File
 
 SOURCE=.\src\sdl_utils.hpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\shared_ptr.hpp
 # End Source File
 # Begin Source File
 

@@ -8,12 +8,12 @@ CFG=Map Editor - Win32 Release
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
-!MESSAGE NMAKE /f "Map Editor.mak".
+!MESSAGE NMAKE /f "map_editor.mak".
 !MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "Map Editor.mak" CFG="Map Editor - Win32 Release"
+!MESSAGE NMAKE /f "map_editor.mak" CFG="Map Editor - Win32 Release"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
@@ -104,7 +104,7 @@ SOURCE=.\src\actions.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\animated.cpp
+SOURCE=.\src\animated_editor.cpp
 # End Source File
 # Begin Source File
 
@@ -113,6 +113,10 @@ SOURCE=.\src\astarnode.cpp
 # Begin Source File
 
 SOURCE=.\src\attack_prediction.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\basic_dialog.cpp
 # End Source File
 # Begin Source File
 
@@ -176,6 +180,10 @@ SOURCE=.\src\editor\editor_dialogs.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\editor\editor_display.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\editor\editor_layout.cpp
 # End Source File
 # Begin Source File
@@ -216,11 +224,19 @@ SOURCE=.\src\game_config.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\game_display.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\game_events.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\gamestatus.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\generate_report.cpp
 # End Source File
 # Begin Source File
 
@@ -368,10 +384,6 @@ SOURCE=.\src\reports.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\scenario_editor.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\widgets\scrollarea.cpp
 # End Source File
 # Begin Source File
@@ -417,6 +429,10 @@ SOURCE=.\src\team.cpp
 # Begin Source File
 
 SOURCE=.\src\terrain.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\terrain_filter.cpp
 # End Source File
 # Begin Source File
 
